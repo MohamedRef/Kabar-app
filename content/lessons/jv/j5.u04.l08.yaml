@@ -1,0 +1,187 @@
+schema: kabar.lesson/v1
+id: j5.u04.l08
+language: jv
+title: Grup kulawarga
+can_do:
+  ar_eg: تقرا جروب العيلة وتشوف مين بيخلط اللغات ومين بيكلّم بالكراما.
+  ar: أن تقرأ مجموعة العائلة وتلاحظ من يمزج اللغات ومن يتكلم بالكراما.
+  en: Read a family group chat and see who code-mixes and who gets krama.
+slides:
+  - title: Grup "Kulawarga Bayu"
+    body:
+      ar_eg: |
+        بايو وريك جروب العيلة. خد بالك من الفرق: مع أمه بيكتب كراما وما بيحطّش ولا كلمة إنجليزي. مع أخته الصغيرة بيخلط عادي.
+        ده نفس القانون اللي في المكتبة: الخلط حاجة غير رسمية، وعمرك ما تخلط إنجليزي في كراما لحد أكبر منك.
+        كلمة جديدة: dong = حرف إندونيسي في آخر الجملة بيضغط شوية، زي «بقى» عندنا: «ابعتها بقى!».
+      ar: |
+        أراك بايو مجموعة العائلة. لاحظ الفرق: مع أمه يكتب بالكراما ولا يضع أي كلمة إنجليزية، ومع أخته الصغيرة يمزج بحرية.
+        هذه هي القاعدة نفسها في المكتبة: المزج غير رسمي، ولا تمزج الإنجليزية بالكراما مع من هو أكبر منك أبدًا.
+        كلمة جديدة: dong = أداة إندونيسية في آخر الجملة تفيد الإلحاح اللطيف، مثل «بقى» المصرية: «أرسلها بقى!».
+      en: |
+        Bayu showed you his family group. Notice the difference: to his mother he writes krama with not one English word; with his little sister he mixes freely.
+        That's the library rule: code-mixing is informal, and you never mix English into krama to an elder.
+        New word: dong = an Indonesian end-of-sentence particle that nudges, like Egyptian «بقى»: "send it already!".
+    grammar: jv.codemix
+    examples:
+      - text: Le, wis neng Ambarawa durung?
+        ar_eg: (الأم) يا ابني، وصلت أمباراوا ولا لسه؟
+        ar: (الأم) يا بني، هل وصلت إلى أمباراوا أم ليس بعد؟
+        en: (Mum) Son, are you in Ambarawa yet?
+      - text: Sampun, Bu. Niki kula wonten museum.
+        ar_eg: (بايو) آه يا ماما. أنا دلوقتي في المتحف. (كراما)
+        ar: (بايو) نعم يا أمي، أنا الآن في المتحف. (كراما)
+        en: (Bayu) Yes, Mum. I'm at the museum now. (krama)
+      - text: Mas, fotone share neng grup dong!
+        ar_eg: (أخته) يا أبيه، ابعت الصور على الجروب بقى!
+        ar: (أخته) يا أخي، شارك الصور في المجموعة!
+        en: (his sister) Bro, share the photos in the group already!
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بايو بيكتب كراما لمين؟
+      ar: لمن يكتب بايو بالكراما؟
+      en: Who does Bayu write krama to?
+    options: [adhine, ibune, kancane]
+    answer: 1
+    explain:
+      ar_eg: لأمه (ibune). Sampun وkula وwonten كلها كراما.
+      ar: لأمه (ibune)، فـ Sampun وkula وwonten كلها كراما.
+      en: To his mother (ibune). Sampun, kula and wonten are all krama.
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي رسالة فيها كلمة إنجليزي؟
+      ar: أي رسالة فيها كلمة إنجليزية؟
+      en: Which message has an English word in it?
+    options:
+      - Le, wis neng Ambarawa durung?
+      - Sampun, Bu. Niki kula wonten museum.
+      - Mas, fotone share neng grup dong!
+    answer: 2
+    explain:
+      ar_eg: share إنجليزي، وdong إندونيسي. رسالة الأخت هي اللي فيها خلط.
+      ar: share إنجليزية وdong إندونيسية، فرسالة الأخت هي المختلطة.
+      en: share is English and dong is Indonesian; the sister's message is the mixed one.
+    words: [dong]
+  - id: e03
+    type: listen
+    text: Sampun, Bu. Niki kula wonten museum.
+    question:
+      ar_eg: بايو فين؟
+      ar: أين بايو؟
+      en: Where is Bayu?
+    options: ["Di stasiun.", "Di museum.", "Di rumah."]
+    answer: 1
+    meaning:
+      ar_eg: آه يا ماما. أنا دلوقتي في المتحف.
+      ar: نعم يا أمي، أنا الآن في المتحف.
+      en: Yes, Mum. I'm at the museum now.
+    words: [wonten, sampun]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: Le
+        ar_eg: يا ابني (نداء للولد)
+        ar: يا بني (نداء للصبي)
+        en: son (calling a boy)
+      - text: dong
+        ar_eg: بقى (إلحاح لطيف)
+        ar: إلحاح لطيف في آخر الجملة
+        en: come on (pushy particle)
+      - text: sampun
+        ar_eg: خلاص / أيوه (كراما)
+        ar: نعم / قد (كراما)
+        en: already, yes (krama)
+      - text: wonten
+        ar_eg: في / موجود (كراما)
+        ar: في / موجود (كراما)
+        en: at, there is (krama)
+      - text: niki
+        ar_eg: ده / دي (كراما)
+        ar: هذا (كراما)
+        en: this (krama)
+    words: [dong, sampun, wonten]
+  - id: e05
+    type: fill_blank
+    sentence: Mas, fotone share neng grup ___!
+    meaning:
+      ar_eg: يا أبيه، ابعت الصور على الجروب بقى!
+      ar: يا أخي، شارك الصور في المجموعة!
+      en: Bro, share the photos in the group already!
+    options: [sampun, dong, wonten]
+    answers: [dong]
+    words: [dong]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: (لماما، كراما) آه يا ماما، أنا في المتحف.
+      ar: (للأم، كراما) نعم يا أمي، أنا في المتحف.
+      en: (to Mum, krama) Yes, Mum, I'm at the museum.
+    answer: Sampun, Bu. Kula wonten museum.
+    distractors: [OTW, neng]
+    explain:
+      ar_eg: 'لماما: كراما من غير إنجليزي، فـ OTW وneng مش مكانهم هنا.'
+      ar: للأم كراما بلا إنجليزية، فلا مكان هنا لـ OTW ولا neng.
+      en: To Mum it's krama with no English, so OTW and neng don't belong.
+    words: [sampun, wonten]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (لأختك الصغيرة، شات) بعتّ الصور على الجروب.
+      ar: (لأختك الصغيرة، دردشة) شاركت الصور في المجموعة.
+      en: (to your little sister, chat) I've shared the photos in the group.
+    answers:
+      - Fotone wis tak share neng grup.
+      - Fotone wis tak share nang grup.
+      - Foto-fotone wis tak share neng grup.
+      - Fotone wis tak kirim neng grup.
+      - Fotone wis dishare neng grup.
+      - Wis tak share neng grup fotone.
+      - Fotone wis tak share ing grup.
+  - id: e08
+    type: speaking
+    text: Sampun, Bu. Niki kula wonten museum.
+    meaning:
+      ar_eg: آه يا ماما. أنا دلوقتي في المتحف.
+      ar: نعم يا أمي، أنا الآن في المتحف.
+      en: Yes, Mum. I'm at the museum now.
+    words: [sampun, wonten]
+dialogue:
+  title: Karo ibu, karo adhi
+  lines:
+    - speaker: Mohamed
+      text: Mas, karo ibumu kok nganggo krama?
+      ar_eg: يا بايو، ليه بتكلّم مامتك بالكراما؟
+      ar: يا بايو، لماذا تكلّم أمك بالكراما؟
+      en: Bayu, how come you use krama with your mum?
+    - speaker: Mas Bayu
+      text: Karo ibu kudu sopan. Ora nganggo basa Inggris.
+      ar_eg: مع ماما لازم أكون مؤدّب. من غير إنجليزي.
+      ar: مع أمي يجب أن أكون مهذبًا، بلا إنجليزية.
+      en: With Mum I have to be polite. No English.
+    - speaker: Mohamed
+      text: Nanging karo adhimu campur kode, ta?
+      ar_eg: بس مع أختك بتخلط، مش كده؟
+      ar: لكنك تمزج اللغات مع أختك، أليس كذلك؟
+      en: But with your sister you code-mix, right?
+    - speaker: Mas Bayu
+      text: Iya. Adhiku malah nulis "dong", kaya wong Jakarta.
+      ar_eg: آه. وأختي كمان بتكتب «dong» زي أهل جاكرتا.
+      ar: نعم. بل إن أختي تكتب «dong» كأهل جاكرتا.
+      en: Yes. My sister even writes "dong", like people from Jakarta.
+    - speaker: Mohamed
+      text: Hehe, grup kulawargamu telung basa!
+      ar_eg: هههه، جروب عيلتك فيه تلات لغات!
+      ar: هههه، مجموعة عائلتك فيها ثلاث لغات!
+      en: Haha, your family group has three languages!
+new_words:
+  - word: dong
+    pos: particle
+    ar_eg: بقى (إلحاح لطيف، إندونيسي)
+    ar: أداة إلحاح لطيف (إندونيسية)
+    en: come on, already (pushy Indonesian particle)
+review:
+  status: draft
+  verified: false

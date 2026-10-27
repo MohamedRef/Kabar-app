@@ -1,0 +1,172 @@
+schema: kabar.lesson/v1
+id: bipa7.u04.l09
+language: id
+title: Tebak logat
+can_do:
+  ar_eg: تخمّن المتكلّم منين من كلمة أو اتنين، وتعرف تقول إنك غلطت بلطف.
+  ar: أن تخمّن موطن المتكلّم من كلمة أو اثنتين، وتعترف بالخطأ بلطف.
+  en: Guess where a speaker is from from a word or two, and own a wrong guess gracefully.
+slides:
+  - title: Kedengarannya dari timur
+    body:
+      ar_eg: |
+        لعبة النهارده: اسمع وخمّن.
+        - Kedengarannya dia dari Ambon. ← شكله (من صوته) من أمبون.
+        - Petunjuknya «beta» dan «seng». ← الدليل «beta» و«seng».
+        ولو غلطت؟ Maaf, saya salah tebak! (آسف، خمّنت غلط!)
+        ملخّص الدلايل:
+        - sa / ko / tra ← بابوا
+        - beta / ale / seng ← أمبون
+        - ngana / torang / nyanda ← مانادو
+        - gue / lu ← جاكرتا
+      ar: |
+        لعبة اليوم: استمع وخمّن.
+        - Kedengarannya dia dari Ambon. ← يبدو من صوته أنّه من أمبون.
+        - Petunjuknya «beta» dan «seng». ← القرينة «beta» و«seng».
+        وإن أخطأت؟ Maaf, saya salah tebak! (عذرًا، أخطأتُ التخمين!)
+        خلاصة القرائن:
+        - sa / ko / tra ← بابوا
+        - beta / ale / seng ← أمبون
+        - ngana / torang / nyanda ← مانادو
+        - gue / lu ← جاكرتا
+      en: |
+        Today's game: listen and guess.
+        - Kedengarannya dia dari Ambon. → He sounds like he's from Ambon.
+        - Petunjuknya «beta» dan «seng». → The clue is «beta» and «seng».
+        Wrong? Maaf, saya salah tebak! (Sorry, wrong guess!)
+        The clues:
+        - sa / ko / tra → Papua
+        - beta / ale / seng → Ambon
+        - ngana / torang / nyanda → Manado
+        - gue / lu → Jakarta
+exercises:
+  - id: e01
+    type: listen
+    text: Ngana so makan? Torang mau pigi ke pasar.
+    question:
+      ar_eg: المتكلّم شكله منين؟
+      ar: من أين يبدو المتكلّم؟
+      en: Where does the speaker seem to be from?
+    options:
+      - من بابوا.
+      - من مانادو.
+      - من أمبون.
+    answer: 1
+    words: [ngana, torang, menebak]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Kedengarannya dia dari Jakarta» معناها إيه؟
+      ar: ما معنى «Kedengarannya dia dari Jakarta»؟
+      en: What does "Kedengarannya dia dari Jakarta" mean?
+    options:
+      - هو رايح جاكرتا.
+      - هو مش بيسمع كويس.
+      - من صوته شكله من جاكرتا.
+    answer: 2
+    words: [kedengarannya]
+  - id: e03
+    type: fill_blank
+    sentence: Maaf, saya ___! Ternyata dia dari Manado, bukan dari Ambon.
+    meaning:
+      ar_eg: آسف، خمّنت غلط! طلع من مانادو، مش من أمبون.
+      ar: عذرًا، أخطأت التخمين! تبيّن أنّه من مانادو لا من أمبون.
+      en: Sorry, wrong guess! Turns out he's from Manado, not Ambon.
+    options: [salah tebak, kedengarannya, petunjuk]
+    answers: [salah tebak]
+    words: [salah tebak]
+  - id: e04
+    type: listen
+    text: Beta seng tahu, ale tanya dia saja.
+    question:
+      ar_eg: إيه الدليل على المنطقة؟
+      ar: ما القرينة على المنطقة؟
+      en: What's the clue to the region?
+    options:
+      - «beta» و«seng»، يبقى أمبون.
+      - «tahu»، يبقى جاكرتا.
+      - «dia»، يبقى بابوا.
+    answer: 0
+    words: [beta, seng, petunjuk]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: من صوته شكله من بابوا.
+      ar: يبدو من صوته أنّه من بابوا.
+      en: He sounds like he's from Papua.
+    answer: Kedengarannya dia dari Papua.
+    distractors: [salah, tebak]
+    words: [kedengarannya]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: خمّنت غلط تاني مرة!
+      ar: أخطأت التخمين مرّة أخرى!
+      en: I guessed wrong again!
+    answers:
+      - Saya salah tebak lagi!
+      - Aku salah tebak lagi!
+      - Lagi-lagi saya salah tebak!
+    words: [salah tebak]
+  - id: e07
+    type: speaking
+    text: Kedengarannya Ibu dari Manado. Petunjuknya kata "nyanda".
+    meaning:
+      ar_eg: من صوت حضرتك شكلك من مانادو. الدليل كلمة «nyanda».
+      ar: يبدو من صوتك يا سيّدتي أنّك من مانادو، والقرينة كلمة «nyanda».
+      en: You sound like you're from Manado, ma'am. The clue is the word "nyanda".
+    words: [kedengarannya, nyanda, petunjuk]
+  - id: e08
+    type: dictation
+    text: Tidak apa-apa salah tebak. Logat itu memang mirip.
+    meaning:
+      ar_eg: مش مشكلة إنك تخمّن غلط. اللهجات دي فعلًا شبه بعض.
+      ar: لا بأس بالخطأ في التخمين، فاللهجتان متشابهتان فعلًا.
+      en: It's fine to guess wrong. Those accents really are alike.
+    words: [salah tebak]
+  - id: e09
+    type: speaking
+    text: Dia bilang "sa tra tahu". Kedengarannya dia dari Papua.
+    meaning:
+      ar_eg: قال «sa tra tahu». من صوته شكله من بابوا.
+      ar: قال «sa tra tahu»، فيبدو أنّه من بابوا.
+      en: He said "sa tra tahu". He sounds like he's from Papua.
+    words: [kedengarannya, sa, tra]
+dialogue:
+  title: Kuis di atas perahu
+  lines:
+    - speaker: Om Nus
+      text: Tebak, Mohamed. Bapak itu bilang, "Torang samua basudara." Dari mana dia?
+      ar_eg: خمّن يا محمد. الراجل ده قال «Torang samua basudara». هو منين؟
+      ar: خمّن يا محمد. قال ذلك الرجل «Torang samua basudara»، فمن أين هو؟
+      en: Guess, Mohamed. That man said, "Torang samua basudara." Where's he from?
+    - speaker: Mohamed
+      text: Basudara… kedengarannya dari Ambon!
+      ar_eg: basudara… شكله من أمبون!
+      ar: basudara… يبدو أنّه من أمبون!
+      en: Basudara… sounds like Ambon!
+    - speaker: Om Nus
+      text: Salah tebak! Petunjuknya "torang". Orang Ambon bilang "katong".
+      ar_eg: خمّنت غلط! الدليل «torang». أهل أمبون بيقولوا «katong».
+      ar: أخطأت! القرينة «torang»، وأهل أمبون يقولون «katong».
+      en: Wrong guess! The clue is "torang". Ambon people say "katong".
+    - speaker: Mohamed
+      text: Aduh! Jadi dia dari Manado. Om, satu lagi, ya!
+      ar_eg: يا خبر! يبقى من مانادو. يا عمّو، كمان واحدة!
+      ar: آه! إذن هو من مانادو. يا عمّ، واحدة أخرى!
+      en: Oops! So he's from Manado. Om, one more!
+new_words:
+  - word: kedengarannya
+    pos: adverb
+    ar_eg: من صوته شكله…
+    ar: يبدو من الصوت أنّ…
+    en: it sounds like, by the sound of it
+  - word: salah tebak
+    pos: phrase
+    ar_eg: خمّن غلط
+    ar: أخطأ التخمين
+    en: wrong guess, to guess wrong
+review:
+  status: draft
+  verified: false

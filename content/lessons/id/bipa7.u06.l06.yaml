@@ -1,166 +1,207 @@
 schema: kabar.lesson/v1
 id: bipa7.u06.l06
 language: id
-title: Ulangan Unit 6
+title: Jurnalisme warga
 can_do:
-  ar_eg: تحكم على الكلام اللي على الإنترنت، تتأكّد منه، وتكتب عنه بموضوعية.
-  ar: أن تحكم على ما يُنشر على الإنترنت، وتتحقّق منه، وتكتب عنه بموضوعية.
-  en: Judge what is true online, check it, and write about it objectively.
+  ar_eg: تبلّغ عن حدث شفته بعينك بأمانة، وتعرف إمتى تنزّل الفيديو وإمتى لأ.
+  ar: أن تنقل حدثًا شهدته بأمانة، وتعرف متى تنشر التسجيل ومتى تمتنع.
+  en: Report something you witnessed honestly, and know when to post the footage and when not to.
+slides:
+  - title: Semua orang bisa jadi reporter
+    body:
+      ar_eg: |
+        الـ jurnalisme warga (صحافة المواطن) يعني إنت، مش صحفي، بتنقل الخبر.
+        - saksi mata = شاهد عيان: شاف الـ kejadian (الحدث) بنفسه
+        - rekaman = تسجيل (فيديو أو صوت)
+        - mengunggah = ينزّل / يرفع على النت (upload)
+        مثال حقيقي: في مارس ٢٠١٧ مركب سياحي كبير اسمه Caledonian Sky شحط على شعاب راجا أمبات. غطّاسين وأهالي صوّروا الضرر، والصور وصلت الإعلام بسرعة.
+        قبل ما تنزّل: متأكّد من المكان والوقت؟ فيه وشوش ناس متعوّرة؟ (ماتنزّلهاش!)
+      ar: |
+        الـ jurnalisme warga (صحافة المواطن) أن تنقل أنت الخبر وإن لم تكن صحفيًّا.
+        - saksi mata = شاهد عيان رأى الـ kejadian (الحادث) بنفسه
+        - rekaman = تسجيل (مرئيّ أو صوتيّ)
+        - mengunggah = يرفع إلى الإنترنت
+        مثال واقعيّ: في مارس ٢٠١٧ جنحت سفينة سياحية كبيرة اسمها Caledonian Sky على مرجان راجا أمبات، فصوّر غوّاصون وأهالٍ الضرر، وبلغت الصور وسائل الإعلام سريعًا.
+        وقبل أن ترفع: أأنت متأكّد من المكان والزمان؟ أفي التسجيل وجوه مصابين؟ (فلا تنشره!)
+      en: |
+        Jurnalisme warga (citizen journalism) means you, not a professional, carry the news.
+        - saksi mata = eyewitness who saw the kejadian (incident) firsthand
+        - rekaman = recording (video or audio)
+        - mengunggah = to upload
+        A real example: in March 2017 a big cruise ship, the Caledonian Sky, ran aground on a Raja Ampat reef. Divers and locals filmed the damage, and the images reached the media fast.
+        Before you upload: are you sure of the place and time? Are injured people's faces visible? (Don't post them!)
+    examples:
+      - text: Seorang saksi mata merekam kejadian itu dengan ponselnya.
+        ar_eg: شاهد عيان صوّر الحدث ده بموبايله.
+        ar: صوّر شاهد عيان الحادث بهاتفه.
+        en: An eyewitness recorded the incident on their phone.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: sinonim
-        ar_eg: مرادف
-        ar: مرادف
-        en: synonym
-      - text: hoaks
-        ar_eg: خبر كدب / إشاعة
-        ar: خبر كاذب
-        en: hoax
-      - text: verifikasi
-        ar_eg: تحقّق
-        ar: تحقّق
-        en: verification
-      - text: privasi
-        ar_eg: خصوصية
-        ar: خصوصية
-        en: privacy
-      - text: opini
-        ar_eg: رأي
-        ar: رأي
-        en: opinion
-    words: [sinonim, hoaks, verifikasi, privasi, opini]
+      - text: jurnalisme warga
+        ar_eg: صحافة المواطن
+        ar: صحافة المواطن
+        en: citizen journalism
+      - text: saksi mata
+        ar_eg: شاهد عيان
+        ar: شاهد عيان
+        en: eyewitness
+      - text: rekaman
+        ar_eg: تسجيل
+        ar: تسجيل
+        en: recording
+      - text: mengunggah
+        ar_eg: ينزّل على النت
+        ar: يرفع إلى الإنترنت
+        en: to upload
+      - text: kejadian
+        ar_eg: حدث / حادثة
+        ar: حادث
+        en: incident
+    words: [jurnalisme warga, saksi mata, rekaman, mengunggah, kejadian]
   - id: e02
+    type: listen
+    text: Saya saksi mata. Saya melihat kapal itu menabrak karang pukul sembilan pagi.
+    question:
+      ar_eg: المتكلّم شاف إيه؟
+      ar: ماذا رأى المتكلّم؟
+      en: What did the speaker see?
+    options:
+      - مركب بيخبط في الشعاب الساعة تسعة الصبح.
+      - حفلة على الشط.
+      - سمكة مانتا.
+    answer: 0
+    words: [saksi mata]
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: لقيت سكرين شوت لخبر غريب في جروب العيلة. أول خطوة إيه؟
-      ar: وجدت لقطة شاشة لخبر غريب في مجموعة العائلة. ما الخطوة الأولى؟
-      en: You find a screenshot of a strange story in the family group. What's the first step?
+      ar_eg: قبل ما تنزّل فيديو لحادثة، لازم تعمل إيه؟
+      ar: ماذا ينبغي قبل رفع تسجيل لحادث؟
+      en: Before uploading footage of an incident, what should you do?
     options:
-      - تدوّر على مصدر رسمي يأكّد الخبر.
-      - تشيّره في كل الجروبات.
-      - تعدّل العنوان وتنشره.
-    answer: 0
-    words: [tangkapan layar, sumber resmi, cek fakta]
-  - id: e03
-    type: fill_blank
-    sentence: '"Menyebarkan hoaks" dan "mengunggah foto" adalah contoh ___.'
-    meaning:
-      ar_eg: «ينشر إشاعة» و«يرفع صورة» أمثلة لكلمات بتيجي مع بعض.
-      ar: «ينشر إشاعة» و«يرفع صورة» مثالان على التلازم اللفظي.
-      en: '"Spreading a hoax" and "uploading a photo" are examples of collocation.'
-    options: [antonim, kolokasi, hiponim]
-    answers: [kolokasi]
-    words: [kolokasi, antonim, hiponim, menyebarkan]
-  - id: e04
-    type: listen
-    text: Unggahan yang provokatif itu ternyata berita palsu.
-    question:
-      ar_eg: طلع إيه البوست المستفزّ ده؟
-      ar: ماذا تبيّن أنّ ذلك المنشور الاستفزازي؟
-      en: What did the inflammatory post turn out to be?
-    options:
-      - خبر حقيقي.
-      - رأي متوازن.
-      - خبر مزيّف.
+      - تزوّد عليه موسيقى درامية.
+      - تنزّله في أسرع وقت من غير ما تبص.
+      - تتأكّد من المكان والوقت وتخبّي وشوش المتعوّرين.
     answer: 2
-    words: [unggahan, provokatif, berita palsu]
+    words: [mengunggah, rekaman]
+  - id: e04
+    type: fill_blank
+    sentence: Polisi meminta ___ dari ponsel warga sebagai bukti.
+    meaning:
+      ar_eg: البوليس طلب التسجيل من موبايل المواطن كدليل.
+      ar: طلبت الشرطة التسجيل من هاتف المواطن دليلًا.
+      en: The police asked for the recording from a resident's phone as evidence.
+    options: [rekaman, tautan, kejadian]
+    answers: [rekaman]
+    words: [rekaman]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه اللي حصل في راجا أمبات في مارس ٢٠١٧؟
+      ar: ماذا حدث في راجا أمبات في مارس ٢٠١٧؟
+      en: What happened in Raja Ampat in March 2017?
+    options:
+      - اتعمل فيها مهرجان مزيكا.
+      - مركب سياحي شحط على الشعاب.
+      - اتبنى فيها مطار جديد.
+    answer: 1
+    words: [kejadian]
+  - id: e06
     type: build_sentence
     source:
-      ar_eg: الإعلام الموثوق بيسمع الطرفين.
-      ar: يستمع الإعلام الموثوق إلى الطرفين.
-      en: Credible media hear both sides.
-    answer: Media yang kredibel mendengar kedua belah pihak.
-    distractors: [opini, hoaks]
-    words: [kredibel, kedua belah pihak]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في المناظرة، أنهي جملة بتستعمل «repetisi» علشان تأكّد الفكرة؟
-      ar: في المناظرة، أيّ جملة تستعمل «repetisi» لتأكيد الفكرة؟
-      en: In the debate, which line uses "repetisi" to drive the point home?
-    options:
-      - Media sosial punya manfaat dan dampak negatif.
-      - Literasi digital melindungi anak. Literasi digital melindungi keluarga.
-      - Kecanduan gim juga ada.
-    answer: 1
-    words: [repetisi, literasi digital, dampak negatif, kecanduan]
+      ar_eg: نزّلت الفيديو بعد ما اتأكّدت من المكان.
+      ar: رفعت الفيديو بعد أن تحقّقت من المكان.
+      en: I uploaded the video after checking the location.
+    answer: Saya mengunggah video itu setelah memeriksa lokasinya.
+    distractors: [saksi, mata]
+    words: [mengunggah]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: الخبر ده مضلّل، ماتنشروش.
-      ar: هذا الخبر مضلِّل، فلا تنشره.
-      en: This story is misleading, so don't spread it.
+      ar_eg: صحافة المواطن بتساعد الأخبار توصل بسرعة.
+      ar: تساعد صحافة المواطن على وصول الأخبار بسرعة.
+      en: Citizen journalism helps news travel fast.
     answers:
-      - Berita ini menyesatkan, jangan disebarkan.
-      - Berita ini menyesatkan, jangan menyebarkannya.
-      - Berita itu menyesatkan, jangan disebarkan.
-      - Kabar ini menyesatkan, jangan disebarkan.
-    words: [menyesatkan, menyebarkan]
+      - Jurnalisme warga membantu berita sampai dengan cepat.
+      - Jurnalisme warga membantu berita tersebar dengan cepat.
+      - Jurnalisme warga membuat berita cepat sampai.
+      - Jurnalisme warga membantu berita sampai lebih cepat.
+    words: [jurnalisme warga]
   - id: e08
     type: speaking
-    text: Wartawan yang objektif memisahkan fakta dari opini.
+    text: Jangan mengunggah rekaman yang memperlihatkan wajah korban.
     meaning:
-      ar_eg: الصحفي الموضوعي بيفصل الحقيقة عن الرأي.
-      ar: يفصل الصحفيّ الموضوعيّ الحقيقة عن الرأي.
-      en: An objective journalist keeps fact apart from opinion.
-    words: [objektif, opini]
+      ar_eg: ماتنزّلش تسجيل باين فيه وش الضحية.
+      ar: لا ترفع تسجيلًا يُظهر وجه الضحيّة.
+      en: Don't upload footage that shows a victim's face.
+    words: [mengunggah, rekaman]
   - id: e09
     type: dictation
-    text: Tim cek fakta melakukan verifikasi dengan sumber resmi.
+    text: Saksi mata menceritakan kejadian itu kepada reporter.
     meaning:
-      ar_eg: فريق التحقّق اتأكّد من الخبر من مصدر رسمي.
-      ar: تحقّق فريق تقصّي الحقائق من الخبر عبر مصدر رسمي.
-      en: The fact-check team verified it with an official source.
-    words: [cek fakta, verifikasi, sumber resmi]
+      ar_eg: شاهد العيان حكى الحدث للمراسل.
+      ar: روى شاهد العيان الحادث للمراسل.
+      en: The eyewitness told the reporter about the incident.
+    words: [saksi mata, kejadian, reporter]
   - id: e10
-    type: translate
-    direction: from_target
-    source_text: Hoaks itu menyebar cepat karena banyak orang tidak tahu cara cek fakta.
-    answers_meaning:
-      ar_eg:
-        - الإشاعة دي انتشرت بسرعة علشان ناس كتير ماتعرفش تتأكّد من الحقيقة.
-        - الخبر الكدب ده اتنشر بسرعة لإن ناس كتير مش عارفين يتحقّقوا.
-      ar:
-        - انتشر ذلك الخبر الكاذب سريعًا لأنّ كثيرين لا يعرفون كيف يتحقّقون من الحقيقة.
-        - سرعان ما انتشرت تلك الإشاعة لجهل كثيرين بطرق التحقّق.
-      en:
-        - That hoax spread fast because many people don't know how to fact-check.
-        - The hoax spread quickly since lots of people can't check facts.
-    words: [hoaks, cek fakta]
+    type: speaking
+    text: Dalam jurnalisme warga, kejujuran lebih penting daripada kecepatan.
+    meaning:
+      ar_eg: في صحافة المواطن، الأمانة أهمّ من السرعة.
+      ar: في صحافة المواطن، الصدق أهمّ من السرعة.
+      en: In citizen journalism, honesty matters more than speed.
+    words: [jurnalisme warga]
 dialogue:
-  title: Lukisan di tebing Misool
+  title: Video dari dermaga
   lines:
-    - speaker: Kak Selvi
-      text: Lihat tebing itu. Ada lukisan tangan merah yang sudah sangat tua.
-      ar_eg: بص على الجرف ده. فيه رسومات إيدين حمرا قديمة جدًّا.
-      ar: انظر إلى ذلك الجرف، عليه رسوم أيدٍ حمراء قديمة جدًّا.
-      en: Look at that cliff. There are red hand paintings that are very old.
     - speaker: Mohamed
-      text: Di internet ada unggahan yang bilang umurnya satu juta tahun. Itu benar?
-      ar_eg: فيه بوست على النت بيقول إن عمرها مليون سنة. ده صح؟
-      ar: في الإنترنت منشور يقول إنّ عمرها مليون سنة. أهذا صحيح؟
-      en: There's a post online saying they're a million years old. Is that true?
+      text: Kak Selvi, saya punya rekaman perahu terbalik di dermaga tadi pagi.
+      ar_eg: يا كاك سيلفي، معايا تسجيل لمركب اتقلب عند الرصيف الصبح.
+      ar: يا كاك سيلفي، لديّ تسجيل لقارب انقلب عند الرصيف صباح اليوم.
+      en: Kak Selvi, I've got footage of a boat that capsized at the pier this morning.
     - speaker: Kak Selvi
-      text: Ayo cek fakta. Para peneliti hanya memperkirakan ribuan tahun, dan mereka masih berhati-hati.
-      ar_eg: يلا نتأكّد. الباحثين بيقدّروا عمرها بآلاف السنين بس، ولسّه حذرين.
-      ar: هيّا نتحقّق. يقدّرها الباحثون بآلاف السنين فقط، وما زالوا حذرين.
-      en: Let's fact-check. Researchers only estimate thousands of years, and they're still cautious.
+      text: Kamu saksi mata? Semua penumpangnya selamat?
+      ar_eg: إنت شاهد عيان؟ كل الركّاب سليمين؟
+      ar: أأنت شاهد عيان؟ هل نجا الركّاب كلّهم؟
+      en: You're an eyewitness? Were all the passengers safe?
     - speaker: Mohamed
-      text: Jadi unggahan itu menyesatkan. Terima kasih, Kak. Besok saya berangkat ke Manokwari.
-      ar_eg: يبقى البوست ده مضلّل. شكرًا يا كاك. بكرة مسافر مانوكواري.
-      ar: إذن ذلك المنشور مضلِّل. شكرًا يا كاك، غدًا أسافر إلى مانوكواري.
-      en: So that post is misleading. Thanks, Kak. Tomorrow I'm off to Manokwari.
-souvenir:
-  id: bipa7.u06.souvenir
-  title: Misool
-  note:
-    ar_eg: ميسول في جنوب راجا أمبات، جزر جيرية ومغارات وبحيرات مخفية. على جروفها رسومات قديمة بالأحمر، إيدين وسمك وأشكال، والباحثين بيقدّروا إن عمرها آلاف السنين، بس العمر بالظبط لسّه مش متحدّد. وأهل القرى هناك اتّفقوا على مناطق بحرية ممنوع فيها الصيد علشان السمك يرجع يكتر. وعلى فكرة، كلمة «hoaks» كلمة رسمية في قاموس KBBI، مش بس عامّية.
-    ar: ميسول في جنوب راجا أمبات، جزر كلسية وكهوف وبحيرات خفيّة. وعلى جروفها رسوم حمراء قديمة لأيدٍ وأسماك وأشكال، يقدّر الباحثون عمرها بآلاف السنين، وإن لم يُحسم عمرها بدقّة بعد. واتّفق أهل القرى هناك على مناطق بحرية يُمنع فيها الصيد لتتعافى الأسماك. وكلمة «hoaks» مدرجة رسميًّا في معجم KBBI، وليست عامّية فحسب.
-    en: Misool lies in southern Raja Ampat, a world of karst islands, caves and hidden lagoons. Its cliffs carry old red paintings of hands, fish and shapes; researchers estimate them at thousands of years old, though their exact age is still unsettled. Villages there have agreed on no-fishing zones so the fish can recover. And "hoaks" is an official entry in the KBBI dictionary, not just slang.
+      text: Selamat semua. Tapi ada satu ibu yang menangis di video. Boleh saya unggah?
+      ar_eg: كلهم سليمين. بس فيه ست بتعيّط في الفيديو. ينفع أنزّله؟
+      ar: نجوا جميعًا، لكنّ في الفيديو امرأة تبكي. هل أرفعه؟
+      en: All safe. But there's a woman crying in the video. Can I upload it?
+    - speaker: Kak Selvi
+      text: Boleh, tetapi tutupi wajahnya dulu. Jurnalisme warga juga punya etika.
+      ar_eg: ينفع، بس غطّي وشها الأول. صحافة المواطن ليها أخلاقيات هي كمان.
+      ar: نعم، لكن أخفِ وجهها أوّلًا، فلصحافة المواطن أخلاقيّاتها أيضًا.
+      en: Yes, but blur her face first. Citizen journalism has ethics too.
+new_words:
+  - word: jurnalisme warga
+    pos: noun
+    ar_eg: صحافة المواطن
+    ar: صحافة المواطن
+    en: citizen journalism
+  - word: saksi mata
+    pos: noun
+    ar_eg: شاهد عيان
+    ar: شاهد عيان
+    en: eyewitness
+  - word: rekaman
+    pos: noun
+    ar_eg: تسجيل
+    ar: تسجيل
+    en: recording, footage
+  - word: mengunggah
+    pos: verb
+    ar_eg: ينزّل على النت (أبلود)
+    ar: يرفع إلى الإنترنت
+    en: to upload
+  - word: kejadian
+    pos: noun
+    ar_eg: حدث / حادثة
+    ar: حادث، واقعة
+    en: incident, event
 review:
   status: draft
   verified: false
