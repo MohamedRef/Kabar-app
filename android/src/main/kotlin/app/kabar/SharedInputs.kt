@@ -12,7 +12,8 @@ import java.io.IOException
 
 /**
  * Turns a share intent into the JSON of `kabar_protocol::reader::SharedInput`:
- * `{"kind":"text","text":…,"source":…}` or `{"kind":"image","path":…,"mime":…,"source":…}`.
+ * `{"kind":"text","text":…,"source":…}` or `{"kind":"image","path":…,"mime":…,"source":…}`,
+ * plus `"more": n` when n further images were shared with it (only the first is read).
  */
 internal object SharedInputs {
     /** Screenshots are a few MB; anything this big is not something we can read. */
@@ -32,6 +33,10 @@ internal object SharedInputs {
                     text(intent.getCharSequenceExtra(Intent.EXTRA_TEXT), source)
                 }
             }
+            Intent.ACTION_SEND_MULTIPLE -> {
+                val uris = streams(intent)
+                image(context, uris.firstOrNull(), intent.type.orEmpty(), source, more = uris.size - 1)
+            }
             else -> null
         }
 
@@ -46,7 +51,7 @@ internal object SharedInputs {
     }
 
     /** Copies a picked or shared image into the cache; the JSON of an image `SharedInput`. */
-    fun image(context: Context, uri: Uri?, type: String, source: String?): String? {
+    fun image(context: Context, uri: Uri?, type: String, source: String?, more: Int = 0): String? {
         // Only content:// URIs: a file:// URI could point at our own private files.
         if (uri == null || uri.scheme != ContentResolver.SCHEME_CONTENT) return null
         val resolver = context.contentResolver
@@ -80,8 +85,17 @@ internal object SharedInputs {
             .put("path", out.absolutePath)
             .put("mime", mime)
             .putOpt("source", source)
+            .apply { if (more > 0) put("more", more) }
             .toString()
     }
+
+    private fun streams(intent: Intent): List<Uri> =
+        if (Build.VERSION.SDK_INT >= 33) {
+            intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM, Uri::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM)
+        }.orEmpty()
 
     private fun stream(intent: Intent): Uri? =
         if (Build.VERSION.SDK_INT >= 33) {
