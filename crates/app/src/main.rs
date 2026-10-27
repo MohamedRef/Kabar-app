@@ -312,7 +312,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     coach::use_clock(coach, db.clone());
     schedule::use_optimizer(db.clone(), ui, coach);
     use_learner_profile(&db, coach);
-    coach::notify::use_local_reminders(&db, coach, ui);
+    coach::notify::use_local_reminders(&db, coach, ui, prefs);
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);

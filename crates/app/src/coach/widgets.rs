@@ -6,7 +6,8 @@ use kabar_protocol::coach::{LocalTime, PlanSize, QuietHours, ReminderStyle};
 use super::{labels, logic};
 use crate::i18n::Msg;
 use crate::icons;
-use crate::{Ui, platform};
+use crate::settings::device::DevicePrefs;
+use crate::{Db, Ui, platform};
 
 /// Kak Nur speaking.
 #[component]
@@ -142,6 +143,10 @@ pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) ->
     let mut asked = use_signal(|| 0u32);
     let _ = asked();
     let allowed = platform::notifications_enabled() != Some(false);
+    let db = use_context::<Db>();
+    let prefs = use_context::<DevicePrefs>();
+    let here = prefs.reminds_here(*ui.tablet.read());
+    let asleep = here && platform::reminders::battery_unrestricted() == Some(false);
     rsx! {
         div { class: "choices", role: "group",
             for style in labels::STYLES {
@@ -163,7 +168,7 @@ pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) ->
             }
         }
         if value != ReminderStyle::Off {
-            if !platform::LOCAL_REMINDERS {
+            if !platform::reminders::available() {
                 p { class: "hint", "{ui.t(Msg::RemindersElsewhere)}" }
             } else if !allowed {
                 p { class: "hint", "{ui.t(Msg::RemindersBlocked)}" }
@@ -176,6 +181,30 @@ pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) ->
                         asked += 1;
                     },
                     "{ui.t(Msg::RemindersAllow)}"
+                }
+            }
+            if platform::reminders::available() {
+                label { class: "row",
+                    input {
+                        r#type: "checkbox",
+                        checked: here,
+                        onchange: move |e: FormEvent| prefs.set_remind_here(&db, e.checked()),
+                    }
+                    " {ui.t(Msg::RemindHere)}"
+                }
+                p { class: "hint", "{ui.t(Msg::RemindHereHint)}" }
+            }
+            if asleep {
+                p { class: "hint", "{ui.t(Msg::RemindersAsleep)}" }
+                button {
+                    class: "secondary",
+                    onclick: move |_| {
+                        if let Err(e) = platform::open_app_page(platform::AppPage::Details) {
+                            eprintln!("kabar: {e}");
+                        }
+                        asked += 1;
+                    },
+                    "{ui.t(Msg::RemindersBattery)}"
                 }
             }
         }
