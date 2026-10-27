@@ -410,9 +410,9 @@ fn log_episode(coach: Coach, db: &Db, p: &Player) {
     coach.record(db, practice, (summary.duration_ms / 1000) as u32);
 }
 
-/// The kendang tap for a right answer (silent when sounds are off).
+/// The chime for a right answer (silent when sounds are off).
 fn chime(ui: Ui) {
-    crate::sounds::play(ui, crate::sounds::Sound::Kendang);
+    crate::sounds::play(ui, crate::sounds::Sound::Ding);
 }
 
 // ---------------------------------------------------------------------------
