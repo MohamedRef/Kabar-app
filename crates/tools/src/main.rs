@@ -18,6 +18,7 @@ mod explains;
 mod freq;
 mod gloss;
 mod golden;
+mod hashscan;
 mod kaikki;
 mod levels;
 mod packs;
@@ -126,6 +127,11 @@ fn main() -> Result<()> {
                 println!("lesson↔bridge: {i}");
             }
             anyhow::ensure!(issues.is_empty(), "{} lesson↔bridge issue(s)", issues.len());
+            let issues = hashscan::check(&root)?;
+            for i in &issues {
+                println!("yaml: {i}");
+            }
+            anyhow::ensure!(issues.is_empty(), "{} YAML value(s) cut by a \" #\" comment", issues.len());
             levels::run(&root, levels::Cmd::Validate)?;
             golden::run(&root, golden::Cmd::Validate)?;
             packs::run(&root, packs::Cmd::Build { check: true })?;

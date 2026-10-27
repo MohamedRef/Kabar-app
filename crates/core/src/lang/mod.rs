@@ -6,6 +6,7 @@ pub mod langid;
 pub mod morph_id;
 pub mod morph_jv;
 pub mod normalize;
+pub mod street;
 pub mod token;
 
 use serde::{Deserialize, Serialize};
