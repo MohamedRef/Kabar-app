@@ -60,21 +60,21 @@ every morning. CI warns when the table below is behind the content.
 | BIPA 3 | Lombok | B1 | 10 | 70 | 660 | 289 | 1,391 / 1,600 | ~8 h | 39 |
 | BIPA 4 | Sulawesi | B2 | 10 | 80 | 709 | 230 | 1,621 / 2,100 | ~8 h | 37 |
 | BIPA 5 | Kalimantan | C1 | 10 | 90 | 865 | 306 | 1,926 / 2,700 | ~9 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 100 | 990 | 391 | 2,317 / 3,300 | ~10 h | 38 |
-| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 100 | 1,009 | 385 | 2,702 / 4,000 | ~10 h | 38 |
-| **Total** |  | — | 70 | 623 | 5,958 | 2,704 | 2,702 / 4,000 | ~66 h | 260 |
+| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,260 | 607 | 2,533 / 3,300 | ~13 h | 38 |
+| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 100 | 1,009 | 385 | 2,918 / 4,000 | ~10 h | 38 |
+| **Total** |  | — | 70 | 650 | 6,228 | 2,920 | 2,918 / 4,000 | ~69 h | 260 |
 
 **Javanese (J1–J6)**
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | J1 | Surabaya | — | 7 | 50 | 452 | 258 | 258 / 250 | ~6 h | 34 |
-| J2 | Madiun | — | 6 | 36 | 341 | 149 | 407 / 500 | ~4 h | 35 |
-| J3 | Solo (Surakarta) | — | 6 | 42 | 364 | 98 | 505 / 750 | ~4 h | 35 |
-| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 594 / 1,000 | ~5 h | 38 |
-| J5 | Semarang | — | 6 | 66 | 621 | 255 | 849 / 1,250 | ~7 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 80 | 748 | 255 | 1,103 / 1,500 | ~8 h | 37 |
-| **Total** |  | — | 37 | 322 | 2,961 | 1,105 | 1,103 / 1,500 | ~35 h | 218 |
+| J2 | Madiun | — | 6 | 48 | 461 | 245 | 503 / 500 | ~5 h | 35 |
+| J3 | Solo (Surakarta) | — | 6 | 42 | 364 | 98 | 601 / 750 | ~4 h | 35 |
+| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 690 / 1,000 | ~5 h | 38 |
+| J5 | Semarang | — | 6 | 66 | 621 | 255 | 945 / 1,250 | ~7 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 80 | 748 | 255 | 1,199 / 1,500 | ~8 h | 37 |
+| **Total** |  | — | 37 | 334 | 3,081 | 1,201 | 1,199 / 1,500 | ~36 h | 218 |
 
 **Reference content and stories**
 

@@ -55,6 +55,8 @@ pub enum Line {
     ReportSteadyWeek,
     ReportLightWeek,
     ReportComeback,
+    /// The learner's first week: a start, not a "busy week".
+    ReportFirstWeek,
     // Rewards
     PelitaLit,
     PelitaFrozen,
@@ -79,7 +81,7 @@ pub enum Line {
 }
 
 impl Line {
-    pub const ALL: [Self; 38] = [
+    pub const ALL: [Self; 39] = [
         Self::OnboardHello,
         Self::OnboardWhy,
         Self::OnboardFocus,
@@ -106,6 +108,7 @@ impl Line {
         Self::ReportSteadyWeek,
         Self::ReportLightWeek,
         Self::ReportComeback,
+        Self::ReportFirstWeek,
         Self::PelitaLit,
         Self::PelitaFrozen,
         Self::PelitaRelit,
@@ -149,6 +152,7 @@ impl Line {
             Self::ReportSteadyWeek => "report_steady_week",
             Self::ReportLightWeek => "report_light_week",
             Self::ReportComeback => "report_comeback",
+            Self::ReportFirstWeek => "report_first_week",
             Self::PelitaLit => "pelita_lit",
             Self::PelitaFrozen => "pelita_frozen",
             Self::PelitaRelit => "pelita_relit",

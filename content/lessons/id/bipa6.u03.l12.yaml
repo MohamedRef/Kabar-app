@@ -1,0 +1,169 @@
+schema: kabar.lesson/v1
+id: bipa6.u03.l12
+language: id
+title: Wawancara tokoh adat
+can_do:
+  ar_eg: تعمل حوار باحترام مع كبير من كبار العادات وتسأله عن البيت واللقب والفنون.
+  ar: أن تحاور أحد كبار العُرف باحترام وتسأله عن البيت واللقب والفنون.
+  en: Interview a customary elder respectfully about the house, titles and arts.
+slides:
+  - title: Bertanya dengan sopan
+    body:
+      ar_eg: |
+        الـ tokoh adat (كبير العادات) بيستاهل احترام. ابدأ بالأدب، واسأل أسئلة مفتوحة:
+        - Mohon maaf, Datuk, boleh saya bertanya tentang …? = لو سمحت يا داتوك، ممكن أسأل عن …؟
+        - Bagaimana adat mengatur …? = العادات بتنظم … إزاي؟
+        - Siapa pewaris …? = مين اللي بيورث …؟ (pewaris = الوريث)
+        وفي الآخر: Terima kasih atas waktu dan petuahnya, Datuk.
+      ar: |
+        للـ tokoh adat (كبير العُرف) حقّ الاحترام؛ فابدأ بأدب واسأل أسئلة مفتوحة:
+        - Mohon maaf, Datuk, boleh saya bertanya tentang …? = عذرًا يا داتوك، أيمكنني السؤال عن …؟
+        - Bagaimana adat mengatur …? = كيف ينظّم العُرف …؟
+        - Siapa pewaris …? = من وارث …؟ (pewaris = الوارث)
+        وفي الختام: Terima kasih atas waktu dan petuahnya, Datuk.
+      en: |
+        A tokoh adat (customary elder) deserves respect. Open politely and ask open questions:
+        - Mohon maaf, Datuk, boleh saya bertanya tentang …? = Excuse me, Datuk, may I ask about …?
+        - Bagaimana adat mengatur …? = How does custom govern …?
+        - Siapa pewaris …? = Who is the heir to …? (pewaris = heir)
+        To close: Terima kasih atas waktu dan petuahnya, Datuk.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي سؤال مؤدب لكبير العادات؟
+      ar: أيّ سؤال مهذّب لكبير العُرف؟
+      en: Which is a polite question for a customary elder?
+    options:
+      - Kenapa adat ini aneh?
+      - Mohon maaf, Datuk, boleh saya bertanya tentang rumah gadang?
+      - Datuk, cepat jawab!
+    answer: 1
+    words: [datuk, rumah gadang]
+  - id: e02
+    type: listen
+    text: Tokoh adat itu menjelaskan bahwa pewaris rumah gadang adalah anak perempuan.
+    question:
+      ar_eg: مين اللي بيورث البيت الكبير؟
+      ar: من يرث البيت الكبير؟
+      en: Who inherits the great house?
+    options:
+      - الابن الكبير.
+      - الخال.
+      - البنت.
+    answer: 2
+    words: [tokoh adat, pewaris]
+  - id: e03
+    type: fill_blank
+    sentence: Siapa ___ gelar Datuk setelah Bapak?
+    meaning:
+      ar_eg: مين اللي هيورث لقب داتوك بعد حضرتك؟
+      ar: من سيرث لقب داتوك بعدك؟
+      en: Who will inherit the Datuk title after you, sir?
+    options: [pewaris, pesilat, pemilik]
+    answers: [pewaris]
+    words: [pewaris]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: العادات بتنظم تقسيم الورث إزاي؟
+      ar: كيف ينظّم العُرف تقسيم الميراث؟
+      en: How does custom govern the sharing of inheritance?
+    answer: Bagaimana adat mengatur pembagian warisan?
+    distractors: [lingkaran, dendang]
+    words: [adat, warisan]
+  - id: e05
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كبير العادات اتكلم عن وليمة تعيين الزعيم.
+      ar: تحدّث كبير العُرف عن وليمة تنصيب الزعيم.
+      en: The customary elder talked about the chief's installation feast.
+    answers:
+      - Tokoh adat itu bercerita tentang kenduri pelantikan penghulu.
+      - Tokoh adat itu berbicara tentang kenduri pelantikan penghulu.
+      - Tokoh adat bercerita tentang kenduri pelantikan penghulu.
+    words: [tokoh adat, kenduri, penghulu]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «pewaris» يعني مين؟
+      ar: من «pewaris»؟
+      en: Who is a "pewaris"?
+    options:
+      - الوريث.
+      - الضيف.
+      - المحرر.
+    answer: 0
+    words: [pewaris]
+  - id: e07
+    type: speaking
+    text: Terima kasih atas waktu dan petuahnya, Datuk.
+    meaning:
+      ar_eg: شكرًا على وقتك ونصايحك يا داتوك.
+      ar: شكرًا على وقتك ونصائحك يا داتوك.
+      en: Thank you for your time and your counsel, Datuk.
+    words: [datuk, petuah]
+  - id: e08
+    type: dictation
+    text: Kemenakan itu adalah pewaris gelar mamaknya.
+    meaning:
+      ar_eg: ابن الأخت ده هو وريث لقب خاله.
+      ar: ابن الأخت هذا هو وارث لقب خاله.
+      en: That nephew is the heir to his uncle's title.
+    words: [kemenakan, pewaris, mamak]
+  - id: e09
+    type: fill_blank
+    sentence: Menurut ___, randai harus diajarkan kepada anak muda.
+    meaning:
+      ar_eg: حسب كبير العادات، الرانداي لازم يتعلّم للشباب.
+      ar: بحسب كبير العُرف، ينبغي تعليم الرانداي للشباب.
+      en: According to the customary elder, randai must be taught to the young.
+    options: [tokoh adat, rangkiang, lingkaran]
+    answers: [tokoh adat]
+    words: [tokoh adat, randai]
+  - id: e10
+    type: speaking
+    text: Mohon maaf, Datuk, mengapa atap rumah gadang berbentuk gonjong?
+    meaning:
+      ar_eg: لو سمحت يا داتوك، ليه سقف البيت الكبير شكله زي القرون؟
+      ar: عذرًا يا داتوك، لماذا يتّخذ سقف البيت الكبير شكل القرون؟
+      en: Excuse me, Datuk, why is the great house's roof shaped in peaks?
+    words: [datuk, gonjong]
+dialogue:
+  title: Bertamu ke rumah Datuk
+  lines:
+    - speaker: Mohamed
+      text: Mohon maaf, Datuk. Boleh saya bertanya tentang adat di kampung ini?
+      ar_eg: لو سمحت يا داتوك. ممكن أسأل عن العادات في البلد دي؟
+      ar: عذرًا يا داتوك، أيمكنني أن أسأل عن العُرف في هذه البلدة؟
+      en: Excuse me, Datuk. May I ask about the customs of this village?
+    - speaker: Uda Rafi
+      text: Datuk senang, Mohamed. Silakan. Beliau tokoh adat paling tua di sini.
+      ar_eg: الداتوك مبسوط يا محمد. اتفضل. هو أكبر كبير عادات هنا.
+      ar: الداتوك مسرور يا محمد، تفضّل؛ فهو أكبر كبار العُرف هنا.
+      en: Datuk is happy to, Mohamed. Go ahead. He's the eldest customary leader here.
+    - speaker: Mohamed
+      text: Siapa pewaris gelar Datuk nanti?
+      ar_eg: مين اللي هيورث لقب الداتوك بعدين؟
+      ar: من سيرث لقب الداتوك لاحقًا؟
+      en: Who will be the heir to the Datuk title?
+    - speaker: Uda Rafi
+      text: Kata Datuk, kemenakannya. Itu adat kami sejak dulu.
+      ar_eg: الداتوك بيقول ابن أخته. دي عادتنا من زمان.
+      ar: يقول الداتوك إنه ابن أخته، وهذا عُرفنا منذ القدم.
+      en: Datuk says his nephew. That's been our custom since long ago.
+new_words:
+  - word: tokoh adat
+    pos: noun
+    ar_eg: كبير العادات
+    ar: كبير العُرف، زعيم تقليدي
+    en: customary elder
+  - word: pewaris
+    pos: noun
+    ar_eg: الوريث
+    ar: الوارث
+    en: heir
+review:
+  status: draft
+  verified: false

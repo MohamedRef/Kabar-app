@@ -224,10 +224,10 @@ pub fn st(lang: UiLanguage, msg: S) -> &'static str {
             "About ten minutes of {level} questions: a little listening, reading, vocabulary and grammar, plus one writing and one speaking task. No marking as you go, and it's not an exam. At the end you'll see your skill map and the forecast."
         }
         (CheckNoTest, ArEg) => {
-            "لسه مفيش أسئلة فحص لـ {level} في كبر، فالمرة دي هنبص على مذاكرتك في الشهر اللي فات بس."
+            "لسه مفيش أسئلة فحص لـ {level} في \u{2068}Kabar\u{2069}، فالمرة دي هنبص على مذاكرتك في الشهر اللي فات بس."
         }
         (CheckNoTest, Ar) => {
-            "لا توجد بعد أسئلة فحص لـ {level} في كبر، لذا سننظر هذه المرة في دراستك خلال الشهر الماضي فقط."
+            "لا توجد بعد أسئلة فحص لـ {level} في \u{2068}Kabar\u{2069}، لذا سننظر هذه المرة في دراستك خلال الشهر الماضي فقط."
         }
         (CheckNoTest, En) => {
             "Kabar has no check questions for {level} yet, so this time we'll look at your last month of study only."
