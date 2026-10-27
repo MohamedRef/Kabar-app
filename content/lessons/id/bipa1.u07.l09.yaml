@@ -100,12 +100,12 @@ exercises:
   - id: e06
     type: build_sentence
     source:
-      ar_eg: إيه رأيك نقعد في كافيه في كيمانج؟
-      ar: ما رأيك أن نجلس في مقهى في كيمانغ؟
-      en: How about we hang out in Kemang?
-    answer: Bagaimana kalau kita nongkrong di Kemang?
+      ar_eg: إيه رأيك نقعد ونرغي في كيمانج؟
+      ar: ما رأيك أن نجلس ونتحدّث في كيمانغ؟
+      en: How about we hang out and chat in Kemang?
+    answer: Bagaimana kalau kita nongkrong dan ngobrol di Kemang?
     distractors: [berapa, sana]
-    words: [bagaimana kalau, nongkrong]
+    words: [bagaimana kalau, nongkrong, ngobrol]
   - id: e07
     type: listen
     text: Hebat! Kamu bisa menari tari Bali?
@@ -132,17 +132,17 @@ exercises:
       ar_eg: صاحبك قالك «أنا بعرف أرقص رقص بالي!» — ترد بإيه؟
       ar: قال صديقك «أجيد رقص بالي!» — بماذا ترد؟
       en: Your friend says "I can do Balinese dance!" — what do you say?
-    options: ['Hebat!', 'Tidak apa-apa.', 'Nongkrong!']
+    options: ['Hebat!', 'Tidak apa-apa.', 'Ngobrol!']
     answer: 0
-    words: [hebat, tidak apa-apa, nongkrong, menari, tari]
+    words: [hebat, tidak apa-apa, ngobrol, menari, tari]
   - id: e10
     type: speaking
-    text: Hebat! Bagaimana kalau kita nongkrong hari Sabtu?
+    text: Hebat! Bagaimana kalau kita nongkrong dan ngobrol hari Sabtu?
     meaning:
-      ar_eg: جامد! إيه رأيك نقعد سوا يوم السبت؟
-      ar: رائع! ما رأيك أن نلتقي يوم السبت؟
-      en: Great! How about hanging out on Saturday?
-    words: [hebat, nongkrong]
+      ar_eg: جامد! إيه رأيك نقعد ونرغي سوا يوم السبت؟
+      ar: رائع! ما رأيك أن نلتقي ونتحدّث يوم السبت؟
+      en: Great! How about hanging out for a chat on Saturday?
+    words: [hebat, nongkrong, ngobrol]
 dialogue:
   title: Teman baru di Kemang
   lines:
@@ -167,10 +167,10 @@ dialogue:
       ar: أتمنى أن أشاهد الرقص البالي! هل ترقصين كثيرًا؟
       en: I'd love to see Balinese dance! Do you dance often?
     - speaker: Komang
-      text: Ya, setiap hari Minggu.
-      ar_eg: أيوه، كل يوم حد.
-      ar: نعم، كل يوم أحد.
-      en: Yes, every Sunday.
+      text: Ya, setiap hari Minggu. Lalu kami nongkrong dan ngobrol.
+      ar_eg: أيوه، كل يوم حد. وبعدها بنقعد ونرغي.
+      ar: نعم، كل يوم أحد. وبعدها نجلس معًا ونتحدّث.
+      en: Yes, every Sunday. Then we hang out and chat.
     - speaker: Mohamed
       text: Wah, hebat! Aku nggak bisa menari.
       ar_eg: يا سلام، جامد! أنا مابعرفش أرقص.
@@ -202,6 +202,11 @@ new_words:
     ar_eg: يقعد مع الصحاب في كافيه أو قهوة (عامية)
     ar: يجلس مع الأصحاب في مقهى (عامية)
     en: to hang out (casual)
+  - word: ngobrol
+    pos: verb
+    ar_eg: يدردش، يرغي مع حد (عامية)
+    ar: يتحادث، يدردش (عامية)
+    en: to chat, to have a chat (casual)
 review:
   status: draft
   verified: false
