@@ -19,13 +19,13 @@ version = 1
 [[scenes]]
 id = "uu.friend"
 level = "j1"
-title.arz = "صاحبك ⁨Bayu⁩"
-title.ar = "صديقك ⁨Bayu⁩"
-title.en = "Your friend Bayu"
-setting.arz = "إنت و⁨Bayu⁩، زميلك في الكورس وفي سنّك، قاعدين في ⁨warung⁩ جنب الجامعة في ⁨Solo⁩."
-setting.ar = "أنت و⁨Bayu⁩، زميلك في الدورة ومن عمرك، تجلسان في ⁨warung⁩ قرب الجامعة في ⁨Solo⁩."
-setting.en = "You and Bayu, a classmate your age, are sitting at a warung near the campus in Solo."
-partner.name = "Bayu"
+title.arz = "صاحبك ⁨Dimas⁩"
+title.ar = "صديقك ⁨Dimas⁩"
+title.en = "Your friend Dimas"
+setting.arz = "إنت و⁨Dimas⁩، صاحبك اللي من سنّك، قاعدين في ⁨warung⁩ جنب الجامعة في ⁨Yogya⁩."
+setting.ar = "أنت و⁨Dimas⁩، صديقك الذي من عمرك، تجلسان في ⁨warung⁩ قرب الجامعة في ⁨Yogya⁩."
+setting.en = "You and Dimas, a friend your age, are sitting at a warung near the campus in Yogya."
+partner.name = "Dimas"
 partner.owed = "ngoko"
 partner.role.arz = "صاحبك، من سنّك"
 partner.role.ar = "صديقك، من عمرك"
@@ -33,9 +33,9 @@ partner.role.en = "a friend your age"
 
 [[scenes.turns]]
 id = "hello"
-situation.arz = "⁨Bayu⁩ لسه واصل وبيسلّم عليك."
-situation.ar = "وصل ⁨Bayu⁩ للتو ويحيّيك."
-situation.en = "Bayu has just arrived and greets you."
+situation.arz = "⁨Dimas⁩ لسه واصل وبيسلّم عليك."
+situation.ar = "وصل ⁨Dimas⁩ للتو ويحيّيك."
+situation.en = "Dimas has just arrived and greets you."
 partner_says.text = "Piye kabare?"
 partner_says.uses = ["how_are_you:ngoko"]
 partner_says.meaning.arz = "عامل إيه؟"
@@ -62,9 +62,9 @@ uses = ["good:krama", "thank:krama", "you_singular:krama_inggil", "how:krama"]
 meaning.arz = "بخير، متشكر جدًا. وسيادتك عامل إيه؟"
 meaning.ar = "بخير، شكرًا جزيلًا. وكيف حال حضرتك؟"
 meaning.en = "Fine, thank you. And how are you, sir?"
-why.arz = "مؤدبة قوي، بس دي لغة الكبار. ⁨Bayu⁩ ممكن يضحك ويحس إنك بتبعد عنه، زي ما تقول لصاحبك «سيادتك». مفيش ضرر، بس ⁨ngoko⁩ أدفى."
-why.ar = "مهذبة جدًا، لكنها لغة الكبار. قد يضحك ⁨Bayu⁩ ويشعر أنك تبتعد عنه، كأنك تقول لصديقك «سيادتك». لا ضرر، لكن ⁨ngoko⁩ أدفأ."
-why.en = "Very polite, but that's how you talk to elders. Bayu might laugh and feel you're keeping your distance, like calling a friend 'sir'. No harm done; ngoko is warmer."
+why.arz = "مؤدبة قوي، بس دي لغة الكبار. ⁨Dimas⁩ ممكن يضحك ويحس إنك بتبعد عنه، زي ما تقول لصاحبك «سيادتك». مفيش ضرر، بس ⁨ngoko⁩ أدفى."
+why.ar = "مهذبة جدًا، لكنها لغة الكبار. قد يضحك ⁨Dimas⁩ ويشعر أنك تبتعد عنه، كأنك تقول لصديقك «سيادتك». لا ضرر، لكن ⁨ngoko⁩ أدفأ."
+why.en = "Very polite, but that's how you talk to elders. Dimas might laugh and feel you're keeping your distance, like calling a friend 'sir'. No harm done; ngoko is warmer."
 
 [[scenes.turns.choices]]
 text = "Sae, matur nuwun. Sampeyan pripun?"
@@ -80,9 +80,9 @@ why.en = "Krama is polite, good for someone you don't know or at the market. Wit
 
 [[scenes.turns]]
 id = "eaten"
-situation.arz = "الضهر قرّب، و⁨Bayu⁩ بيبص في المنيو."
-situation.ar = "اقترب الظهر، و⁨Bayu⁩ ينظر في قائمة الطعام."
-situation.en = "It's nearly noon, and Bayu is looking at the menu."
+situation.arz = "الضهر قرّب، و⁨Dimas⁩ بيبص في المنيو."
+situation.ar = "اقترب الظهر، و⁨Dimas⁩ ينظر في قائمة الطعام."
+situation.en = "It's nearly noon, and Dimas is looking at the menu."
 partner_says.text = "Kowe wis mangan?"
 partner_says.uses = ["you_singular:ngoko", "already:ngoko", "eat:ngoko"]
 partner_says.meaning.arz = "إنت كلت؟"
@@ -121,15 +121,15 @@ uses = ["not_yet:krama", "please_go_ahead:krama", "eat:krama", "together:krama"]
 meaning.arz = "لسه يا فندم. اتفضل نتغدى سوا."
 meaning.ar = "ليس بعد. تفضل لنأكل معًا."
 meaning.en = "Not yet. Please, let us eat together."
-why.arz = "كلها ⁨krama⁩ سليمة، بس تقيلة على قعدة صحاب. ⁨Bayu⁩ هيفهمك، ويمكن يهزر معاك على الأدب ده كله."
-why.ar = "كلها ⁨krama⁩ سليمة، لكنها ثقيلة على جلسة أصدقاء. سيفهمك ⁨Bayu⁩، وربما يمازحك على هذا التهذيب كله."
-why.en = "All correct krama, but heavy for friends hanging out. Bayu will understand, and might tease you about all the manners."
+why.arz = "كلها ⁨krama⁩ سليمة، بس تقيلة على قعدة صحاب. ⁨Dimas⁩ هيفهمك، ويمكن يهزر معاك على الأدب ده كله."
+why.ar = "كلها ⁨krama⁩ سليمة، لكنها ثقيلة على جلسة أصدقاء. سيفهمك ⁨Dimas⁩، وربما يمازحك على هذا التهذيب كله."
+why.en = "All correct krama, but heavy for friends hanging out. Dimas will understand, and might tease you about all the manners."
 
 [[scenes.turns]]
 id = "drink"
-situation.arz = "الجرسون جه، و⁨Bayu⁩ بيسألك هتشرب إيه."
-situation.ar = "جاء النادل، و⁨Bayu⁩ يسألك ماذا ستشرب."
-situation.en = "The waiter comes over. Bayu asks what you'll drink."
+situation.arz = "الجرسون جه، و⁨Dimas⁩ بيسألك هتشرب إيه."
+situation.ar = "جاء النادل، و⁨Dimas⁩ يسألك ماذا ستشرب."
+situation.en = "The waiter comes over. Dimas asks what you'll drink."
 partner_says.text = "Kowe arep ngombe apa?"
 partner_says.uses = ["you_singular:ngoko", "will_going_to:ngoko", "drink:ngoko", "what:ngoko"]
 partner_says.meaning.arz = "هتشرب إيه؟"
@@ -168,15 +168,15 @@ uses = ["i_me:krama", "will_going_to:krama", "drink:krama", "water:krama", "just
 meaning.arz = "أنا هشرب مية بس، يا فندم."
 meaning.ar = "سأشرب ماءً فقط، من فضلك."
 meaning.en = "I shall have just water, thank you."
-why.arz = "جملة ⁨krama⁩ سليمة، تنفع مع حد أكبر منك. مع ⁨Bayu⁩ بتبان زي ما تكون في مقابلة شغل."
-why.ar = "جملة ⁨krama⁩ سليمة تصلح مع من هو أكبر منك. مع ⁨Bayu⁩ تبدو كأنك في مقابلة عمل."
-why.en = "Sound krama, fine for someone older. With Bayu it sounds like a job interview."
+why.arz = "جملة ⁨krama⁩ سليمة، تنفع مع حد أكبر منك. مع ⁨Dimas⁩ بتبان زي ما تكون في مقابلة شغل."
+why.ar = "جملة ⁨krama⁩ سليمة تصلح مع من هو أكبر منك. مع ⁨Dimas⁩ تبدو كأنك في مقابلة عمل."
+why.en = "Sound krama, fine for someone older. With Dimas it sounds like a job interview."
 
 [[scenes.turns]]
 id = "market"
-situation.arz = "⁨Bayu⁩ بيعزمك تروحوا السوق بكرة."
-situation.ar = "يدعوك ⁨Bayu⁩ للذهاب إلى السوق غدًا."
-situation.en = "Bayu invites you to the market tomorrow."
+situation.arz = "⁨Dimas⁩ بيعزمك تروحوا السوق بكرة."
+situation.ar = "يدعوك ⁨Dimas⁩ للذهاب إلى السوق غدًا."
+situation.en = "Dimas invites you to the market tomorrow."
 partner_says.text = "Sesuk kowe melu menyang pasar?"
 partner_says.uses = ["tomorrow:ngoko", "you_singular:ngoko", "follow_join:ngoko", "to_toward:ngoko", "market:ngoko"]
 partner_says.meaning.arz = "تيجي معايا السوق بكرة؟"
@@ -203,9 +203,9 @@ uses = ["yes:krama", "i_me:krama", "follow_join:krama"]
 meaning.arz = "حاضر، هاجي مع حضرتك."
 meaning.ar = "نعم، سأرافقك (بأدب)."
 meaning.en = "Yes, I shall come along."
-why.arz = "مهذبة وسليمة، بس ⁨inggih⁩ و⁨tumut⁩ بيخلّوا ⁨Bayu⁩ يحس إنه بقى «الأستاذ». مع صاحبك قول ⁨iya, aku melu⁩."
-why.ar = "مهذبة وسليمة، لكن ⁨inggih⁩ و⁨tumut⁩ تجعلان ⁨Bayu⁩ يشعر أنه صار «الأستاذ». مع صديقك قل ⁨iya, aku melu⁩."
-why.en = "Polite and correct, but inggih and tumut make Bayu sound like your boss. With a friend: iya, aku melu."
+why.arz = "مهذبة وسليمة، بس ⁨inggih⁩ و⁨tumut⁩ بيخلّوا ⁨Dimas⁩ يحس إنه بقى «الأستاذ». مع صاحبك قول ⁨iya, aku melu⁩."
+why.ar = "مهذبة وسليمة، لكن ⁨inggih⁩ و⁨tumut⁩ تجعلان ⁨Dimas⁩ يشعر أنه صار «الأستاذ». مع صديقك قل ⁨iya, aku melu⁩."
+why.en = "Polite and correct, but inggih and tumut make Dimas sound like your boss. With a friend: iya, aku melu."
 
 [[scenes.turns.choices]]
 text = "Inggih, dalem ndherek."
@@ -221,9 +221,9 @@ why.en = "That's krama andhap, the humble speech for people far above you. To a 
 
 [[scenes.turns]]
 id = "goodbye"
-situation.arz = "⁨Bayu⁩ قام عشان يروّح."
-situation.ar = "نهض ⁨Bayu⁩ ليعود إلى البيت."
-situation.en = "Bayu gets up to head home."
+situation.arz = "⁨Dimas⁩ قام عشان يروّح."
+situation.ar = "نهض ⁨Dimas⁩ ليعود إلى البيت."
+situation.en = "Dimas gets up to head home."
 partner_says.text = "Aku mulih dhisik, ya."
 partner_says.uses = ["i_me:ngoko", "go_home:ngoko", "first_beforehand:ngoko", "yes:ngoko"]
 partner_says.meaning.arz = "أنا هروّح الأول، ماشي."
@@ -274,13 +274,13 @@ why.en = "Sugeng kondur is a beautiful farewell, but it's for an elder or an hon
 [[scenes]]
 id = "uu.market"
 level = "j2"
-title.arz = "في السوق مع ⁨Bu Darmi⁩"
-title.ar = "في السوق مع ⁨Bu Darmi⁩"
-title.en = "At the market with Bu Darmi"
-setting.arz = "سوق ⁨Pasar Gede⁩ في ⁨Solo⁩ الصبح. ⁨Bu Darmi⁩ بتبيع موز وبيض. مع البياعين الأكبر منك، الجاويين بيتكلموا كلام مؤدب بسيط: ⁨krama⁩ خفيفة فيها كلمات ⁨madya⁩ زي ⁨niki⁩ و⁨mawon⁩ و⁨nggih⁩."
-setting.ar = "سوق ⁨Pasar Gede⁩ في ⁨Solo⁩ صباحًا. تبيع ⁨Bu Darmi⁩ الموز والبيض. مع الباعة الأكبر سنًّا يتكلم الجاويون كلامًا مهذبًا بسيطًا: ⁨krama⁩ خفيفة فيها كلمات ⁨madya⁩ مثل ⁨niki⁩ و⁨mawon⁩ و⁨nggih⁩."
-setting.en = "Pasar Gede in Solo, in the morning. Bu Darmi sells bananas and eggs. With older sellers, people speak simple polite Javanese: light krama with madya words like niki, mawon and nggih."
-partner.name = "Bu Darmi"
+title.arz = "في السوق مع ⁨Bu Siti⁩"
+title.ar = "في السوق مع ⁨Bu Siti⁩"
+title.en = "At the market with Bu Siti"
+setting.arz = "سوق ⁨Pasar Gede⁩ في ⁨Solo⁩ الصبح. ⁨Bu Siti⁩ بتبيع موز وبيض. مع البياعين الأكبر منك، الجاويين بيتكلموا كلام مؤدب بسيط: ⁨krama⁩ خفيفة فيها كلمات ⁨madya⁩ زي ⁨niki⁩ و⁨mawon⁩ و⁨nggih⁩."
+setting.ar = "سوق ⁨Pasar Gede⁩ في ⁨Solo⁩ صباحًا. تبيع ⁨Bu Siti⁩ الموز والبيض. مع الباعة الأكبر سنًّا يتكلم الجاويون كلامًا مهذبًا بسيطًا: ⁨krama⁩ خفيفة فيها كلمات ⁨madya⁩ مثل ⁨niki⁩ و⁨mawon⁩ و⁨nggih⁩."
+setting.en = "Pasar Gede in Solo, in the morning. Bu Siti sells bananas and eggs. With older sellers, people speak simple polite Javanese: light krama with madya words like niki, mawon and nggih."
+partner.name = "Bu Siti"
 partner.owed = "krama"
 partner.role.arz = "بياعة فاكهة أكبر منك"
 partner.role.ar = "بائعة فاكهة أكبر منك سنًّا"
@@ -288,9 +288,9 @@ partner.role.en = "a fruit seller, older than you"
 
 [[scenes.turns]]
 id = "bananas"
-situation.arz = "⁨Bu Darmi⁩ بترحّب بيك، وإنت عايز موز."
-situation.ar = "ترحّب بك ⁨Bu Darmi⁩، وأنت تريد موزًا."
-situation.en = "Bu Darmi welcomes you. You'd like some bananas."
+situation.arz = "⁨Bu Siti⁩ بترحّب بيك، وإنت عايز موز."
+situation.ar = "ترحّب بك ⁨Bu Siti⁩، وأنت تريد موزًا."
+situation.en = "Bu Siti welcomes you. You'd like some bananas."
 partner_says.text = "Monggo, Mas. Badhe tumbas napa?"
 partner_says.uses = ["please_go_ahead:krama", "older_sibling:ngoko", "will_going_to:krama", "buy:krama", "what:madya"]
 partner_says.meaning.arz = "اتفضل يا أستاذ. عايز تشتري إيه؟"
@@ -329,15 +329,15 @@ uses = ["excuse_me:krama", "you_singular:krama_inggil", "have_own:krama_inggil",
 meaning.arz = "لا مؤاخذة يا هانم، سيادتك عندك موز كويس؟"
 meaning.ar = "عذرًا يا سيدتي، هل لدى حضرتك موز جيد؟"
 meaning.en = "Pardon me, madam, might you possess some good bananas?"
-why.arz = "مؤدبة قوي، يمكن زيادة عن اللزوم. ⁨kagungan⁩ تبجيل كبير على بضاعة السوق، فبتبان زي خطبة. ⁨Bu Darmi⁩ هتنبسط، بس الأبسط أدفى هنا."
-why.ar = "مهذبة جدًا، وربما أكثر من اللازم. ⁨kagungan⁩ تبجيل كبير لبضاعة السوق، فتبدو كخطبة. ستسعد ⁨Bu Darmi⁩، لكن الأبسط أدفأ هنا."
-why.en = "Very polite, maybe more than the moment needs. Kagungan is a lofty honorific for market goods, so it sounds like a speech. Bu Darmi will be charmed, but simpler is warmer here."
+why.arz = "مؤدبة قوي، يمكن زيادة عن اللزوم. ⁨kagungan⁩ تبجيل كبير على بضاعة السوق، فبتبان زي خطبة. ⁨Bu Siti⁩ هتنبسط، بس الأبسط أدفى هنا."
+why.ar = "مهذبة جدًا، وربما أكثر من اللازم. ⁨kagungan⁩ تبجيل كبير لبضاعة السوق، فتبدو كخطبة. ستسعد ⁨Bu Siti⁩، لكن الأبسط أدفأ هنا."
+why.en = "Very polite, maybe more than the moment needs. Kagungan is a lofty honorific for market goods, so it sounds like a speech. Bu Siti will be charmed, but simpler is warmer here."
 
 [[scenes.turns]]
 id = "two"
-situation.arz = "⁨Bu Darmi⁩ بتشكر في الموز بتاعها."
-situation.ar = "تمدح ⁨Bu Darmi⁩ موزها."
-situation.en = "Bu Darmi praises her bananas."
+situation.arz = "⁨Bu Siti⁩ بتشكر في الموز بتاعها."
+situation.ar = "تمدح ⁨Bu Siti⁩ موزها."
+situation.en = "Bu Siti praises her bananas."
 partner_says.text = "Niki sae, Mas. Mboten awis."
 partner_says.uses = ["this:madya", "good:krama", "older_sibling:ngoko", "no_not:krama", "expensive:krama"]
 partner_says.meaning.arz = "ده حلو يا أستاذ، ومش غالي."
@@ -458,9 +458,9 @@ uses = ["ten:ngoko", "just_merely:ngoko"]
 meaning.arz = "عشرة بس."
 meaning.ar = "عشرة فقط."
 meaning.en = "Ten."
-why.arz = "قصيرة وسادة. مع ⁨Bu Darmi⁩ حتى الأرقام ليها شكل مؤدب: ⁨sedasa⁩ بدل ⁨sepuluh⁩."
-why.ar = "قصيرة وعادية. مع ⁨Bu Darmi⁩ حتى للأرقام صيغة مهذبة: ⁨sedasa⁩ بدل ⁨sepuluh⁩."
-why.en = "Short and plain. With Bu Darmi even numbers have a polite form: sedasa instead of sepuluh."
+why.arz = "قصيرة وسادة. مع ⁨Bu Siti⁩ حتى الأرقام ليها شكل مؤدب: ⁨sedasa⁩ بدل ⁨sepuluh⁩."
+why.ar = "قصيرة وعادية. مع ⁨Bu Siti⁩ حتى للأرقام صيغة مهذبة: ⁨sedasa⁩ بدل ⁨sepuluh⁩."
+why.en = "Short and plain. With Bu Siti even numbers have a polite form: sedasa instead of sepuluh."
 
 [[scenes.turns.choices]]
 text = "Sedasa kemawon, menawi panjenengan kersa."
@@ -476,9 +476,9 @@ why.en = "Very gracious, but you're the customer, so kersa makes it sound like y
 
 [[scenes.turns]]
 id = "thanks"
-situation.arz = "دفعت، و⁨Bu Darmi⁩ بتديك الكيس."
-situation.ar = "دفعت، و⁨Bu Darmi⁩ تناولك الكيس."
-situation.en = "You've paid, and Bu Darmi hands you the bag."
+situation.arz = "دفعت، و⁨Bu Siti⁩ بتديك الكيس."
+situation.ar = "دفعت، و⁨Bu Siti⁩ تناولك الكيس."
+situation.en = "You've paid, and Bu Siti hands you the bag."
 partner_says.text = "Matur nuwun, Mas."
 partner_says.uses = ["thank:krama", "older_sibling:ngoko"]
 partner_says.meaning.arz = "متشكرة يا أستاذ."
@@ -505,9 +505,9 @@ uses = ["yes:ngoko", "thank:ngoko"]
 meaning.arz = "آه، شكرًا."
 meaning.ar = "نعم، شكرًا."
 meaning.en = "Yeah, thanks."
-why.arz = "ودودة مع صاحب، بس ⁨Bu Darmi⁩ قالتلك ⁨matur nuwun⁩، فرد عليها بنفس الذوق."
-why.ar = "ودودة مع صديق، لكن ⁨Bu Darmi⁩ قالت لك ⁨matur nuwun⁩، فردّ عليها باللطف نفسه."
-why.en = "Friendly with a mate, but Bu Darmi said matur nuwun to you, so match her courtesy."
+why.arz = "ودودة مع صاحب، بس ⁨Bu Siti⁩ قالتلك ⁨matur nuwun⁩، فرد عليها بنفس الذوق."
+why.ar = "ودودة مع صديق، لكن ⁨Bu Siti⁩ قالت لك ⁨matur nuwun⁩، فردّ عليها باللطف نفسه."
+why.en = "Friendly with a mate, but Bu Siti said matur nuwun to you, so match her courtesy."
 
 [[scenes.turns.choices]]
 text = "Inggih, matur sembah nuwun."
@@ -522,7 +522,7 @@ why.ar = "⁨matur sembah nuwun⁩ أرفع عبارات الشكر في الج�
 why.en = "Matur sembah nuwun is the highest thanks in Javanese, for a revered elder or a ceremony. At the market, matur nuwun is plenty."
 
 # =============================================================================
-# uu.grandmother (J3): Mbah Sri, a friend's grandmother. Krama, with krama
+# uu.grandmother (J3): Mbah Putri, a friend's grandmother. Krama, with krama
 # inggil for her actions and krama (or krama andhap) for yours. Opens with
 # "Have you eaten?" at three levels, like lesson j3.u01.l03 (Respect Meter).
 # =============================================================================
@@ -530,13 +530,13 @@ why.en = "Matur sembah nuwun is the highest thanks in Javanese, for a revered el
 [[scenes]]
 id = "uu.grandmother"
 level = "j3"
-title.arz = "زيارة ⁨Mbah Sri⁩"
-title.ar = "زيارة ⁨Mbah Sri⁩"
-title.en = "Visiting Mbah Sri"
-setting.arz = "إنت في بيت صاحبك في ⁨Yogya⁩، وتيتته ⁨Mbah Sri⁩ قاعدة في البلكونة. هي بتكلمك ⁨ngoko⁩ بحنية، وإنت بترد بـ⁨krama⁩: كلمات تبجيل ⁨krama inggil⁩ لحاجاتها هي، وكلمات بسيطة أو متواضعة لحاجاتك إنت."
-setting.ar = "أنت في بيت صديقك في ⁨Yogya⁩، وجدته ⁨Mbah Sri⁩ جالسة في الشرفة. تكلمك بـ⁨ngoko⁩ بحنان، وترد أنت بـ⁨krama⁩: ألفاظ التبجيل ⁨krama inggil⁩ لأفعالها هي، وألفاظ بسيطة أو متواضعة لأفعالك أنت."
-setting.en = "You're at your friend's house in Yogya. His grandmother, Mbah Sri, is sitting on the porch. She speaks ngoko to you, fondly; you answer in krama: krama inggil honour words for her actions, plain or humble words for your own."
-partner.name = "Mbah Sri"
+title.arz = "زيارة ⁨Mbah Putri⁩"
+title.ar = "زيارة ⁨Mbah Putri⁩"
+title.en = "Visiting Mbah Putri"
+setting.arz = "إنت في بيت صاحبك في ⁨Yogya⁩، وتيتته ⁨Mbah Putri⁩ قاعدة في البلكونة. هي بتكلمك ⁨ngoko⁩ بحنية، وإنت بترد بـ⁨krama⁩: كلمات تبجيل ⁨krama inggil⁩ لحاجاتها هي، وكلمات بسيطة أو متواضعة لحاجاتك إنت."
+setting.ar = "أنت في بيت صديقك في ⁨Yogya⁩، وجدته ⁨Mbah Putri⁩ جالسة في الشرفة. تكلمك بـ⁨ngoko⁩ بحنان، وترد أنت بـ⁨krama⁩: ألفاظ التبجيل ⁨krama inggil⁩ لأفعالها هي، وألفاظ بسيطة أو متواضعة لأفعالك أنت."
+setting.en = "You're at your friend's house in Yogya. His grandmother, Mbah Putri, is sitting on the porch. She speaks ngoko to you, fondly; you answer in krama: krama inggil honour words for her actions, plain or humble words for your own."
+partner.name = "Mbah Putri"
 partner.owed = "krama"
 partner.role.arz = "تيتا صاحبك"
 partner.role.ar = "جدة صديقك"
@@ -544,9 +544,9 @@ partner.role.en = "your friend's grandmother"
 
 [[scenes.turns]]
 id = "eaten"
-situation.arz = "وقت الغدا، وعايز تسأل ⁨Mbah Sri⁩ هي كلت ولا لأ. ده نفس سؤال درس «مقياس الاحترام»."
-situation.ar = "إنه وقت الغداء، وتريد أن تسأل ⁨Mbah Sri⁩ هل أكلت. إنه سؤال درس «مقياس الاحترام» نفسه."
-situation.en = "It's lunchtime and you want to ask Mbah Sri whether she has eaten: the same question as the Respect Meter lesson."
+situation.arz = "وقت الغدا، وعايز تسأل ⁨Mbah Putri⁩ هي كلت ولا لأ. ده نفس سؤال درس «مقياس الاحترام»."
+situation.ar = "إنه وقت الغداء، وتريد أن تسأل ⁨Mbah Putri⁩ هل أكلت. إنه سؤال درس «مقياس الاحترام» نفسه."
+situation.en = "It's lunchtime and you want to ask Mbah Putri whether she has eaten: the same question as the Respect Meter lesson."
 
 [[scenes.turns.choices]]
 text = "Panjenengan sampun dhahar?"
@@ -586,9 +586,9 @@ why.en = "This is what she says to you, and as the elder she can. From the young
 
 [[scenes.turns]]
 id = "you-eaten"
-situation.arz = "⁨Mbah Sri⁩ ابتسمت وردّت عليك بسؤال."
-situation.ar = "ابتسمت ⁨Mbah Sri⁩ وردّت عليك بسؤال."
-situation.en = "Mbah Sri smiles and asks you back."
+situation.arz = "⁨Mbah Putri⁩ ابتسمت وردّت عليك بسؤال."
+situation.ar = "ابتسمت ⁨Mbah Putri⁩ وردّت عليك بسؤال."
+situation.en = "Mbah Putri smiles and asks you back."
 partner_says.text = "Wis. Kowe wis mangan?"
 partner_says.uses = ["already:ngoko", "you_singular:ngoko", "eat:ngoko"]
 partner_says.meaning.arz = "آه كلت. وإنت كلت؟"
@@ -633,9 +633,9 @@ why.en = "She uses ngoko with you because you're younger, but your answer goes u
 
 [[scenes.turns]]
 id = "drink"
-situation.arz = "⁨Mbah Sri⁩ قامت تجيبلك حاجة تشربها. عايز تقولها تقعد وإنت تجيب بنفسك."
-situation.ar = "نهضت ⁨Mbah Sri⁩ لتحضر لك شيئًا تشربه، وتريد أن تقول لها أن تجلس وستحضره بنفسك."
-situation.en = "Mbah Sri gets up to fetch you a drink. You want to tell her to sit and that you'll get it yourself."
+situation.arz = "⁨Mbah Putri⁩ قامت تجيبلك حاجة تشربها. عايز تقولها تقعد وإنت تجيب بنفسك."
+situation.ar = "نهضت ⁨Mbah Putri⁩ لتحضر لك شيئًا تشربه، وتريد أن تقول لها أن تجلس وستحضره بنفسك."
+situation.en = "Mbah Putri gets up to fetch you a drink. You want to tell her to sit and that you'll get it yourself."
 partner_says.text = "Ayo ngombe dhisik. Mbah njupuk wedang."
 partner_says.uses = ["please_go_ahead:ngoko", "drink:ngoko", "first_beforehand:ngoko", "grandparent:ngoko", "take:ngoko", "drink_noun:ngoko"]
 partner_says.meaning.arz = "تعالى اشرب الأول. تيتا هتجيب حاجة تتشرب."
@@ -680,9 +680,9 @@ why.en = "Your heart's in the right place, but lungguh and aku sound like talkin
 
 [[scenes.turns]]
 id = "tomorrow"
-situation.arz = "قعدتوا شوية، و⁨Mbah Sri⁩ مبسوطة بزيارتك."
-situation.ar = "جلستما قليلًا، و⁨Mbah Sri⁩ سعيدة بزيارتك."
-situation.en = "You've chatted a while, and Mbah Sri is pleased you came."
+situation.arz = "قعدتوا شوية، و⁨Mbah Putri⁩ مبسوطة بزيارتك."
+situation.ar = "جلستما قليلًا، و⁨Mbah Putri⁩ سعيدة بزيارتك."
+situation.en = "You've chatted a while, and Mbah Putri is pleased you came."
 partner_says.text = "Sesuk kowe mrene maneh?"
 partner_says.uses = ["tomorrow:ngoko", "you_singular:ngoko", "to_here:ngoko", "again_more:ngoko"]
 partner_says.meaning.arz = "هتيجي هنا تاني بكرة؟"
