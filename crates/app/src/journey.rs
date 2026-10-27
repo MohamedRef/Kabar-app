@@ -87,6 +87,8 @@ fn land_path(svg: &'static str, class: &str) -> &'static str {
 struct Journey {
     route: Route,
     completed: Rc<BTreeSet<String>>,
+    /// Lessons passed with a reasonable score: their Javanese counts as approved.
+    approved: Rc<BTreeSet<String>>,
     /// Where the placement test started the journey (e.g. `bipa2`).
     start: Option<String>,
 }
@@ -105,7 +107,7 @@ impl Journey {
     }
 
     fn progress(&self) -> Progress {
-        let p = Progress::new(self.curriculum(), &self.completed);
+        let p = Progress::new(self.curriculum(), &self.completed).with_approved(&self.approved);
         match &self.start {
             Some(level) => p.start_at(self.curriculum(), level),
             None => p,
@@ -170,6 +172,12 @@ pub fn JourneyScreen() -> Element {
             BTreeSet::new()
         }))
     });
+    let approved = use_hook(|| {
+        Rc::new(db.0.borrow().approved_lessons().unwrap_or_else(|e| {
+            eprintln!("kabar: reading approved lessons failed: {e}");
+            BTreeSet::new()
+        }))
+    });
     let coach = use_context::<crate::coach::Coach>();
     let start = use_hook(|| start_level(&db, coach.profile.peek().as_ref()));
     let mut route = use_signal(|| Route::Indonesian);
@@ -188,7 +196,12 @@ pub fn JourneyScreen() -> Element {
             };
         }
     };
-    let j = Journey { route: route(), completed: completed.clone(), start: start.clone() };
+    let j = Journey {
+        route: route(),
+        completed: completed.clone(),
+        approved: approved.clone(),
+        start: start.clone(),
+    };
     let suitcase_count = [&routes.id, &routes.jv]
         .into_iter()
         .map(|c| souvenirs(c, &Progress::new(c, &completed)).len())
@@ -226,7 +239,7 @@ pub fn JourneyScreen() -> Element {
                 }
             }
             if pane() == Pane::Suitcase {
-                Suitcase { completed: completed.clone() }
+                Suitcase { completed: completed.clone(), approved: approved.clone() }
             } else if compact {
                 RouteList { key: "{j.route:?}", j: j.clone() }
             } else {
@@ -332,7 +345,7 @@ fn level_head(
                         bdi { lang: j.route.target_lang(), dir: "ltr", "{level.place()}" }
                         " "
                         span { class: "pill latin", bdi { "{level.code}" } }
-                        if cur.unverified() {
+                        if cur.unverified() && !progress.level_approved(level) {
                             " "
                             span { class: "badge-unverified", "{ui.t(Msg::JourneyUnverified)}" }
                         }
@@ -816,13 +829,17 @@ fn local_souvenir(unit_id: &str, lang: UiLanguage) -> Option<(String, String)> {
 }
 
 #[component]
-fn Suitcase(completed: Rc<BTreeSet<String>>) -> Element {
+fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
     let routes = ROUTES.as_ref().expect("checked by JourneyScreen");
     let cards: Vec<_> = [(&routes.id, "id"), (&routes.jv, "jv")]
         .into_iter()
-        .flat_map(|(c, tl)| souvenirs(c, &Progress::new(c, &completed)).into_iter().map(move |s| (s, tl)))
+        .flat_map(|(c, tl)| {
+            souvenirs(c, &Progress::new(c, &completed).with_approved(&approved))
+                .into_iter()
+                .map(move |s| (s, tl))
+        })
         .collect();
     rsx! {
         section { class: "suitcase", aria_label: "{ui.t(Msg::JourneySuitcase)}",

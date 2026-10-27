@@ -23,6 +23,8 @@ just run-phone-preview   # same app in a 412×915 window, to check the phone lay
 
 To jump straight into a lesson or test, start the app with `KABAR_OPEN_LESSON`, e.g. `KABAR_OPEN_LESSON=bipa1.u01.l01 just run-mac`. Every file in `content/lessons/` (BIPA 1–2 and J1–J3, each lesson 7 minutes or less; see `docs/PEDAGOGY.md`) and `content/tests/` is built in automatically (`crates/app/build.rs`), so `KABAR_OPEN_LESSON=bipa1.test` opens the BIPA 1 level test ("Take a flight") and `KABAR_OPEN_LESSON=placement` the placement test (also offered on Today until you have a result). Closing a lesson saves your place; tests start over when reopened.
 
+Lessons start marked "not reviewed yet". Finishing one with 80% or more right on the first try (with at least half the exercises answered, not skipped) counts as your approval: the badge comes off that lesson and its words in Review, and off a unit's souvenir and a level's title once all their lessons are passed. This works the same for Javanese, on every device after sync.
+
 Data lives in `~/Library/Application Support/app.Kabar.Kabar/kabar.db`. Delete it to see the first-launch screen again (or use Settings → "Show the welcome screen again").
 
 ## 3. Galaxy S24 Ultra and Tab S11

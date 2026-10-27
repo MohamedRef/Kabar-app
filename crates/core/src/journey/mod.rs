@@ -138,7 +138,8 @@ pub fn parse_curriculum(yaml: &str) -> Result<Curriculum, ParseError> {
 }
 
 impl Curriculum {
-    /// Javanese content stays flagged unverified until the user approves it.
+    /// Javanese content stays flagged unverified until the user approves it
+    /// (see `Progress::unit_approved` and `Progress::level_approved`).
     pub fn unverified(&self) -> bool {
         self.language == "jv"
     }
@@ -188,6 +189,8 @@ pub struct Progress {
     done: BTreeSet<String>,
     done_levels: BTreeSet<String>,
     current: Option<String>,
+    /// Lessons the learner approved by passing them (`lesson::approves`).
+    approved: BTreeSet<String>,
 }
 
 impl Progress {
@@ -211,7 +214,23 @@ impl Progress {
             }
         }
         let current = curriculum.lessons().find(|l| !done.contains(&l.id)).map(|l| l.id.clone());
-        Self { done, done_levels, current }
+        Self { done, done_levels, current, approved: BTreeSet::new() }
+    }
+
+    /// Adds the lessons the learner approved by passing them.
+    pub fn with_approved(mut self, approved: &BTreeSet<String>) -> Self {
+        self.approved = approved.clone();
+        self
+    }
+
+    /// Every lesson of the unit was passed with a reasonable score.
+    pub fn unit_approved(&self, unit: &Unit) -> bool {
+        !unit.lessons.is_empty() && unit.lessons.iter().all(|l| self.approved.contains(&l.id))
+    }
+
+    /// Every lesson of the level was passed with a reasonable score.
+    pub fn level_approved(&self, level: &Level) -> bool {
+        level.lessons().next().is_some() && level.lessons().all(|l| self.approved.contains(&l.id))
     }
 
     /// Applies a placement result: when the current lesson sits before
@@ -295,7 +314,7 @@ pub fn souvenirs(curriculum: &Curriculum, progress: &Progress) -> Vec<Souvenir> 
                 stop: u.stop.clone(),
                 name: c.souvenir.clone(),
                 note: c.note.clone(),
-                unverified: curriculum.unverified(),
+                unverified: curriculum.unverified() && !progress.unit_approved(u),
             })
         })
         .collect()
