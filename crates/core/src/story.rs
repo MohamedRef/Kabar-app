@@ -35,7 +35,9 @@ const SINETRON_CAST: &[(&str, bool, i8)] = &[
     ("Pak Hendra", true, -2),
     ("Pak Mahmoud", true, -15),
     // Javanese season (e71+).
-    ("Cak Heru", true, 8),
+    ("Mas Heru", true, 8),
+    // Heru's name before J1 moved to Jogja; e75-e77 and e107 still use it.
+    ("Cak Heru", true, 9),
     ("Mas Yudha", true, 14),
     ("Mas Dimas", true, 2),
     ("Pak Harsono", true, -10),
