@@ -1083,18 +1083,18 @@ fn SessionPane(left: usize, on_undo: EventHandler<()>) -> Element {
             h2 { class: "rev-pane-title", "{ui.t(Msg::RevThisSession)}" }
             div { class: "rev-pane-counts",
                 div { class: "rev-pane-big",
-                    span { class: "rev-stat-value", "{num(&ui, answers.len() as u64)}" }
+                    span { class: "rev-stat-value", "{ui.num(answers.len() as u64)}" }
                     span { class: "rev-stat-label", "{ui.t(Msg::RevAnswered)}" }
                 }
                 div { class: "rev-pane-big",
-                    span { class: "rev-stat-value", "{num(&ui, (left + 1) as u64)}" }
+                    span { class: "rev-stat-value", "{ui.num((left + 1) as u64)}" }
                     span { class: "rev-stat-label", "{ui.t(Msg::RevRemaining)}" }
                 }
             }
             ul { class: "rev-pane-ratings",
                 for r in Rating::ALL {
                     li { key: "{r:?}", class: rate_class(r),
-                        span { class: "rev-pane-n", "{num(&ui, count(r))}" }
+                        span { class: "rev-pane-n", "{ui.num(count(r))}" }
                         span { "{ui.t(rating_msg(r))}" }
                     }
                 }
