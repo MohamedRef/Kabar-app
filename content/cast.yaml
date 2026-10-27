@@ -1,0 +1,347 @@
+schema: kabar.cast/v1
+# The cast registry: every recurring character in Kabar, the units they
+# belong to and the programs they appear in. `kabar-content` checks it
+# against every lesson, test, Sinetron episode, Radio script, persona and
+# game scene (rules in docs/CAST.md):
+#   - personas, Radio hosts and game partners must be listed here;
+#   - so must anyone who speaks in 3+ units' lessons or 5+ Sinetron episodes;
+#   - nobody else may share a listed character's name (honorifics aside),
+#     except the family members listed under `family`.
+# `id` is the stable key other files use (persona files, portraits:
+# assets/src/personas/<id>.png). Never rename an id; rename `name` instead.
+
+# Speaker labels that are roles, not people. They may appear anywhere.
+roles: [learner, Narrator, Petugas, Bakul, Penjual, Pelayan, Resepsionis, Dokter, Bapak, Ibu, Sopir, Guru, Pembawa acara, Penyiar]
+
+characters:
+  # --- Everywhere ----------------------------------------------------------
+  - id: mohamed
+    name: Mohamed
+    home: Cairo
+    about: The learner. Every lesson dialogue is written from his side.
+    in: [lessons, tests, chat]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7, j1, j2, j3, j4, j5, j6]
+  - id: kak-nur
+    name: Kak Nur
+    home: Jakarta
+    about: The coach. Greets you in onboarding, plans the day and cheers you on (content/coach).
+    in: [coach]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7, j1, j2, j3, j4, j5, j6]
+  - id: mas-rizal
+    name: Mas Rizal
+    home: Jakarta
+    about: The lesson guide. Friendly standard Indonesian; walks you through scenes from BIPA 1 to BIPA 5.
+    in: [lessons]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, j5]
+
+  # --- Indonesian lessons (BIPA 1-4) ---------------------------------------
+  - id: rina
+    name: Rina
+    home: Jakarta
+    about: Your Jakarta friend from the first lesson; later a colleague and debate partner. Also in Kabar Pagi.
+    in: [lessons, pagi]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5]
+  - id: ibu-rina
+    name: Ibu Rina
+    home: Jakarta
+    about: Rina's mother, who welcomes you to the family home.
+    in: [lessons]
+    units: [bipa1.u03]
+    family: [rina]
+  - id: raka
+    name: Raka
+    home: Jakarta
+    about: A Jakarta friend of Rina's who becomes a tour guide in Bali (renamed from Dimas, who is the Yogyakarta persona).
+    in: [lessons, tests]
+    levels: [bipa1, bipa2, bipa3, bipa6]
+  - id: ni-luh
+    name: Ni Luh
+    aliases: [Luh]
+    home: Bali (lives in Jakarta)
+    about: Rina's Balinese friend; your guide to Bali in BIPA 2.
+    in: [lessons]
+    levels: [bipa1, bipa2, bipa3]
+  - id: pak-irwan
+    name: Pak Irwan
+    aliases: [Irwan]
+    home: Jakarta
+    about: Your Indonesian teacher, patient and wears glasses (renamed from Pak Budi, who is the Sinetron's warung owner).
+    in: [lessons, tests, radio]
+    levels: [bipa1, bipa2, bipa3, bipa4]
+  - id: bu-yanti
+    name: Bu Yanti
+    aliases: [Yanti]
+    home: Jakarta
+    about: Your landlady (ibu kos), who has a cat and cooks fried rice (renamed from Bu Sari, so Sari stays the Sinetron daughter).
+    in: [lessons, tests, radio]
+    levels: [bipa1, bipa2, bipa3]
+  - id: andi
+    name: Andi
+    home: Makassar
+    about: A Makassar friend who argues about careers, tourism and the news with you in BIPA 4.
+    in: [lessons]
+    units: [bipa4.u01, bipa4.u04, bipa4.u06]
+
+  # --- Indonesian lessons (BIPA 5-7) ---------------------------------------
+  - id: pak-hendra
+    name: Pak Hendra
+    home: Balikpapan
+    about: The manager who interviews you in Balikpapan; in the Sinetron he is Sari's boss.
+    in: [lessons, sinetron]
+    units: [bipa5.u01, bipa5.u02, bipa5.u03, bipa5.u05, bipa5.u06, bipa5.u08, bipa5.u10]
+  - id: bu-lestari
+    name: Bu Lestari
+    home: Balikpapan
+    about: The Balikpapan company's HR head who hires you as a translator; she knows Kalimantan's arts and food.
+    in: [lessons]
+    units: [bipa5.u01, bipa5.u02, bipa5.u03, bipa5.u04, bipa5.u05, bipa5.u06]
+  - id: bang-togar
+    name: Bang Togar
+    home: Medan (family in Samosir)
+    about: A Batak perantau in Medan who loves short stories, satire and a good joke.
+    in: [lessons]
+    units: [bipa6.u01, bipa6.u06]
+  - id: kaka-yohana
+    name: Kaka Yohana
+    home: Sorong
+    about: A reporter at the local radio in Sorong who has you help write stories and explains Papuan Malay.
+    in: [lessons]
+    units: [bipa7.u01, bipa7.u04]
+
+  # --- Conversation personas (content/personas) ----------------------------
+  - id: mbak-gadis
+    name: Mbak Gadis
+    aliases: [Gadis]
+    home: Jakarta
+    voice: id-ID-GadisNeural
+    about: Your office colleague in Jakarta; teaches the Jakarta slang people really speak.
+    in: [chat]
+    units: [bipa1.u02, bipa1.u07, bipa2.u02, bipa2.u08, bipa3.u10, bipa4.u01]
+  - id: mas-ardi
+    name: Mas Ardi
+    aliases: [Ardi]
+    home: Bali
+    voice: id-ID-ArdiNeural
+    about: A hotel receptionist in Bali; also runs the two-minute placement chat when you first open Kabar.
+    in: [chat, placement]
+    units: [bipa1.u02, bipa1.u04, bipa2.u01, bipa2.u05, bipa2.u08, bipa4.u05]
+  - id: mas-dimas
+    name: Mas Dimas
+    aliases: [Dimas]
+    home: Yogyakarta
+    voice: jv-ID-DimasNeural
+    about: A university student in Yogyakarta, the friend who teaches you Javanese; Mbah Putri is his grandmother.
+    in: [chat, lessons, games]
+    units: [j1.u01, j1.u02, j2.u04, j2.u06, j3.u01, j3.u02, j3.u03, j4.u04, j4.u05, j4.u06, j6.u01, j6.u02, j6.u03, j6.u04, j6.u05, j6.u06]
+  - id: bu-siti
+    name: Bu Siti
+    home: Solo (Pasar Gede)
+    voice: jv-ID-SitiNeural
+    about: A fruit-and-tempe seller at Pasar Gede in Solo who haggles with you and models polite krama.
+    in: [chat, lessons, games]
+    units: [bipa2.u04, j1.u07, j2.u03, j3.u01, j3.u02, j3.u03, j3.u05, j3.u06]
+
+  # --- Kabar Radio hosts -----------------------------------------------------
+  - id: kak-tiara
+    name: Kak Tiara
+    aliases: [Tiara]
+    home: Jakarta
+    voice: id-ID-GadisNeural
+    about: Kabar Radio host, a Jakarta teacher who travels the journey with you. Shares a voice with Mbak Gadis.
+    in: [radio]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7]
+  - id: kak-reza
+    name: Kak Reza
+    aliases: [Reza]
+    home: Bandung
+    voice: id-ID-ArdiNeural
+    about: Kabar Radio co-host, a Bandung office worker married to Laras. Shares a voice with Mas Ardi.
+    in: [radio]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7]
+
+  # --- Javanese lessons and games ------------------------------------------
+  - id: cak-heru
+    name: Cak Heru
+    home: Surabaya
+    about: Your Surabaya mate in J1; speaks Arek Javanese (rek, koen, gak).
+    in: [lessons]
+    units: [j1.u01, j1.u02, j1.u03, j1.u04, j1.u05, j1.u06, j1.u07]
+  - id: mas-yudha
+    name: Mas Yudha
+    aliases: [Yudha]
+    home: Surabaya (Gubeng)
+    about: A student in Surabaya you meet in J1; later sends you code-mixed voice notes (renamed from Mas Bayu).
+    in: [lessons]
+    units: [j1.u02, j1.u07, j5.u04]
+  - id: bu-darmi
+    name: Bu Darmi
+    home: Caruban
+    about: Runs the pecel warung in Caruban where you order food in J2.
+    in: [lessons]
+    units: [j2.u02]
+  - id: pak-harjo
+    name: Pak Harjo
+    home: Solo
+    about: An older gentleman who corrects your krama. Your Javanese teacher in Solo, later the batik maker and tomb keeper you meet on the way to Kotagede.
+    in: [lessons, games]
+    units: [j3.u03, j3.u06, j5.u02, j6.u05]
+    family: [bu-harjo]
+  - id: bu-harjo
+    name: Bu Harjo
+    home: Solo
+    about: Pak Harjo's wife.
+    in: [lessons]
+    units: [j3.u03]
+    family: [pak-harjo]
+  - id: mbah-putri
+    name: Mbah Putri
+    aliases: [Putri]
+    home: a village near Yogyakarta
+    about: Mas Dimas's grandmother. You speak krama inggil to her; she answers in warm ngoko.
+    in: [lessons, games]
+    units: [j3.u01, j3.u02, j4.u01, j4.u02, j4.u06]
+  - id: pak-karto
+    name: Pak Karto
+    home: Solo
+    about: Your elderly neighbour in the Unggah-Ungguh game; krama with a little krama inggil.
+    in: [games]
+    units: [j3.u04, j4.u04]
+  - id: pak-harsono
+    name: Pak Harsono
+    home: Yogyakarta
+    about: Your host father in Yogyakarta; the krama inggil lessons use him and his wife.
+    in: [lessons]
+    units: [j4.u01, j4.u03, j4.u06]
+    family: [bu-harsono]
+  - id: bu-harsono
+    name: Bu Harsono
+    home: Yogyakarta
+    about: Your host mother in Yogyakarta.
+    in: [lessons]
+    units: [j4.u01, j4.u02, j4.u03]
+    family: [pak-harsono]
+  - id: mbak-ayu
+    name: Mbak Ayu
+    home: Semarang
+    about: Checks your Javanese writing in Semarang and reads the news and Wikipedia with you in J5.
+    in: [lessons]
+    units: [j5.u01, j5.u02, j5.u03]
+  - id: pak-slamet
+    name: Pak Slamet
+    home: Kotagede
+    about: An aksara Jawa teacher in Kotagede who checks your letters and pasangan.
+    in: [lessons]
+    units: [j4.u02, j6.u01, j6.u04]
+
+  # --- Sinetron (content/stories/sinetron) ---------------------------------
+  - id: pak-budi
+    name: Pak Budi
+    aliases: [Budi]
+    home: Madiun
+    about: Runs the family warung in Madiun; Sari and Bayu's father.
+    in: [sinetron, lessons]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7, j2]
+    family: [bu-rahayu, sari, bayu]
+  - id: bu-rahayu
+    name: Bu Rahayu
+    aliases: [Rahayu]
+    home: Madiun
+    about: Pak Budi's wife and the warung's cook; speaks Javanese at home.
+    in: [sinetron, lessons]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7, j2]
+    family: [pak-budi, sari, bayu]
+  - id: sari
+    name: Sari
+    home: Madiun (studies in Cairo)
+    about: Pak Budi's daughter, a student at Al-Azhar in Cairo; later works in Balikpapan and marries Karim.
+    in: [sinetron, lessons]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7, j2]
+    family: [pak-budi, bu-rahayu, bayu]
+  - id: bayu
+    name: Bayu
+    home: Madiun
+    about: Sari's little brother at the warung; later a journalist with a fellowship in Papua.
+    in: [sinetron, lessons]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7, j2]
+    family: [pak-budi, bu-rahayu, sari]
+  - id: nadia
+    name: Nadia
+    home: Cairo
+    about: Sari's Egyptian classmate and best friend in Cairo; Karim's sister.
+    in: [sinetron]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7]
+    family: [karim]
+  - id: karim
+    name: Karim
+    home: Cairo (comes to Madiun)
+    about: Nadia's brother, who travels to Madiun, cooks koshari at the warung and marries Sari.
+    in: [sinetron]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7]
+    family: [nadia]
+  - id: mas-joko
+    name: Mas Joko
+    aliases: [Joko]
+    home: Madiun
+    about: Works at Pak Budi's warung; always guessing wrong, always cheerful.
+    in: [sinetron]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7]
+  - id: hagga-fatma
+    name: Hagga Fatma
+    aliases: [Fatma]
+    home: Cairo
+    about: Sari's landlady in Cairo, who offers everyone tea and comforts her when things go wrong.
+    in: [sinetron]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa7]
+  - id: bu-tini
+    name: Bu Tini
+    aliases: [Tini]
+    home: Madiun
+    about: A warung regular who knows everyone, and later adds three hundred guests to the wedding.
+    in: [sinetron]
+    levels: [bipa2, bipa3, bipa4, bipa5, bipa6]
+  - id: kak-nella
+    name: Kak Nella
+    aliases: [Nella]
+    home: Sorong
+    about: Bayu's colleague in Sorong who teaches him Papuan Malay.
+    in: [sinetron]
+    units: [bipa7.u02, bipa7.u03, bipa7.u04, bipa7.u06, bipa7.u07]
+
+  # --- Kabar Pagi (content/pagi) --------------------------------------------
+  - id: omar
+    name: Omar
+    home: Yogyakarta (from Egypt)
+    about: An Egyptian student in Yogyakarta. Class, the mosque, Ramadan and calls home to Cairo.
+    in: [pagi]
+    levels: [bipa1, bipa2]
+  - id: adit
+    name: Adit
+    home: Yogyakarta
+    about: Omar's friend, always hungry, a regular at Bu Murni's warung (renamed from Andi).
+    in: [pagi]
+    levels: [bipa1]
+  - id: bu-murni
+    name: Bu Murni
+    home: Yogyakarta
+    about: Runs the little warung Adit loves (renamed from Bu Siti, who is the Solo market persona).
+    in: [pagi]
+    levels: [bipa1]
+  - id: tasya
+    name: Tasya
+    home: Yogyakarta
+    about: A schoolgirl whose family's days at home and at the beach fill several Pagi stories (renamed from Dewi).
+    in: [pagi]
+    levels: [bipa1, bipa2]
+  - id: nisa
+    name: Nisa
+    home: Yogyakarta
+    about: Appears in a couple of Pagi stories (renamed from Lina).
+    in: [pagi]
+    levels: [bipa1, bipa2]
+  - id: pak-udin
+    name: Pak Udin
+    aliases: [Udin]
+    home: Yogyakarta
+    about: An office worker who shops at the market on Sundays and rides an ojek to work (renamed from Pak Joko, who is the Sinetron's Mas Joko).
+    in: [pagi]
+    levels: [bipa1, bipa2]
