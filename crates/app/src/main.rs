@@ -14,6 +14,7 @@ mod journey;
 mod lesson;
 mod listen;
 mod map_art;
+mod misc_art;
 mod packs;
 mod penlab;
 mod platform;
@@ -317,6 +318,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         style { {MAIN_CSS} }
         style { {theme_css} }
         style { {pron_font} }
+        style { {misc_art::paper_css()} }
         div {
             class: "app",
             lang: lang.tag(),

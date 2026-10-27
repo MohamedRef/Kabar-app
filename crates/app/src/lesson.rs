@@ -1146,6 +1146,10 @@ fn SummaryView(
     let num = |n: u32| format_number(u64::from(n), lang, eastern);
     rsx! {
         article { class: "lp-summary",
+            div { class: "lp-gong reveal", aria_hidden: "true",
+                span { class: "lp-gong-ring" }
+                crate::misc_art::Picture { art: crate::misc_art::Art::Gong, class: "" }
+            }
             h2 { class: "lp-done reveal", "{lt(lang, L::Done)}" }
             p { class: "lp-lesson-title reveal", bdi { lang: target, dir: "ltr", "{lesson.title}" } }
             if perfect {
