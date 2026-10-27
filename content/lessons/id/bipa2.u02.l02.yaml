@@ -117,6 +117,62 @@ exercises:
       ar: أبي مزارع، وأمي تاجرة.
       en: My father is a farmer, and my mother is a trader.
     words: [petani, pedagang]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: penjual
+        ar_eg: بيّاع
+        ar: بائع
+        en: seller
+      - text: pedagang
+        ar_eg: تاجر
+        ar: تاجر
+        en: trader
+      - text: petani
+        ar_eg: فلاح
+        ar: مزارع
+        en: farmer
+      - text: pemandu wisata
+        ar_eg: مرشد سياحي
+        ar: مرشد سياحي
+        en: tour guide
+      - text: pengunjung
+        ar_eg: زائر
+        ar: زائر
+        en: visitor
+      - text: turis
+        ar_eg: سايح
+        ar: سائح
+        en: tourist
+    words: [penjual, pedagang, petani, pemandu wisata, pengunjung, turis]
+  - id: e08
+    type: listen
+    text: Banyak turis dan pengunjung di pasar.
+    options: ['Banyak turis dan pengunjung di pasar.', 'Banyak penjual dan pedagang di pasar.', 'Banyak turis dan pemandu wisata di pasar.']
+    answer: 0
+    meaning:
+      ar_eg: فيه سيّاح وزوار كتير في السوق.
+      ar: في السوق سيّاح وزوار كثيرون.
+      en: There are lots of tourists and visitors at the market.
+    words: [turis, pengunjung, penjual, pedagang, pemandu wisata]
+  - id: e09
+    type: fill_blank
+    sentence: ___ batik itu ramah sekali.
+    meaning:
+      ar_eg: بيّاع الباتيك ده لطيف أوي.
+      ar: بائع الباتيك ذاك ودود جدًا.
+      en: That batik seller is really friendly.
+    options: [Penjual, Turis, Petani]
+    answers: [Penjual]
+    words: [penjual]
+  - id: e10
+    type: speaking
+    text: Saya pemandu wisata untuk pengunjung dari Mesir.
+    meaning:
+      ar_eg: أنا مرشد سياحي للزوار اللي جايين من مصر.
+      ar: أنا مرشد سياحي للزوار القادمين من مصر.
+      en: I'm a tour guide for visitors from Egypt.
+    words: [pemandu wisata, pengunjung]
 dialogue:
   title: Di Pasar Badung
   lines:

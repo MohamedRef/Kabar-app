@@ -110,47 +110,72 @@ exercises:
     words: [mengapa, memilih, pekerjaan]
   - id: e02
     type: listen
-    text: Saya belajar bahasa Indonesia karena saya suka Bali.
-    options: [Saya belajar bahasa Indonesia karena saya suka Bali., Saya belajar bahasa Indonesia karena saya tinggal di Bali., 'Saya belajar bahasa Indonesia, tapi saya suka Bali.']
+    text: Kenapa? Soalnya saya capek.
+    options: ['Kenapa? Soalnya saya capek.', 'Mengapa? Sebab saya capek.', 'Kenapa? Karena saya capek.']
     answer: 0
-    words: [karena]
+    meaning:
+      ar_eg: ليه؟ أصلي تعبان.
+      ar: لماذا؟ لأني متعب.
+      en: Why? 'Cause I'm tired.
+    words: [kenapa, soalnya, mengapa, sebab, karena]
   - id: e03
     type: fill_blank
-    sentence: Saya tidak datang ___ saya sakit.
+    sentence: Saya tidak datang, ___ saya capek.
     meaning:
-      ar_eg: مجيتش عشان كنت عيان.
-      ar: لم آتِ لأنني كنت مريضًا.
-      en: I didn't come because I was ill.
-    options: [mengapa, tetapi, karena]
-    answers: [karena]
-    words: [karena]
+      ar_eg: مجيتش، أصلي كنت تعبان.
+      ar: لم آتِ لأني كنت متعبًا.
+      en: I didn't come, 'cause I was tired.
+    options: [soalnya, mengapa, memilih]
+    answers: [soalnya]
+    words: [soalnya]
   - id: e04
     type: build_sentence
     source:
-      ar_eg: ليه بتتعلم إندونيسي؟
-      ar: لماذا تتعلم الإندونيسية؟
-      en: Why are you learning Indonesian?
-    answer: Kenapa kamu belajar bahasa Indonesia?
-    alternatives: []
-    distractors: [karena, kapan]
-    words: [kenapa, belajar]
+      ar_eg: أنا بتعلم إندونيسي عشان بحب بالي.
+      ar: أتعلم الإندونيسية لأني أحب بالي.
+      en: I'm learning Indonesian because I love Bali.
+    answer: Saya belajar bahasa Indonesia karena saya suka Bali.
+    distractors: [kenapa, mengapa]
+    words: [belajar, karena]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عشان بحب أقابل ناس جديدة.
-      ar: لأنني أحب لقاء أناس جدد.
-      en: Because I like meeting new people.
-    answers: [Karena saya suka bertemu orang baru., Karena saya suka bertemu orang baru, Karena aku suka bertemu orang baru., Sebab saya suka bertemu orang baru., Karena saya senang bertemu orang baru., Soalnya saya suka bertemu orang baru., Karena saya suka bertemu dengan orang baru.]
-    words: [karena, bertemu]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تسأل بأدب «حضرتك اخترت ده ليه؟»
+      ar: كيف تسأل بأدب «لماذا اخترتَ هذا؟»
+      en: How do you ask politely "Why did you choose this?"
+    options: ['Mengapa Anda memilih ini?', 'Kenapa kamu memilih ini?', 'Soalnya Anda memilih ini?']
+    answer: 0
+    explain:
+      ar_eg: mengapa وAnda للكلام الرسمي؛ kenapa وkamu للكلام العادي.
+      ar: mengapa وAnda للرسمي، وkenapa وkamu للعادي.
+      en: mengapa and Anda are formal; kenapa and kamu are everyday.
+    words: [mengapa, kenapa, memilih, soalnya]
   - id: e06
     type: speaking
-    text: Saya belajar bahasa Indonesia karena saya suka Bali.
+    text: Mengapa Anda memilih Bali? — Sebab saya suka pantainya.
     meaning:
-      ar_eg: بتعلم إندونيسي عشان بحب بالي.
-      ar: أتعلم الإندونيسية لأنني أحب بالي.
-      en: I'm learning Indonesian because I love Bali.
-    words: [karena]
+      ar_eg: حضرتك اخترت بالي ليه؟ — عشان بحب البحر بتاعها.
+      ar: لماذا اخترتَ بالي؟ — لأني أحب شاطئها.
+      en: Why did you choose Bali? — Because I love its beaches.
+    words: [mengapa, memilih, sebab]
+  - id: e07
+    type: fill_blank
+    sentence: Saya ___ pekerjaan ini karena saya suka bahasa.
+    meaning:
+      ar_eg: اخترت الشغلانة دي عشان بحب اللغات.
+      ar: اخترت هذا العمل لأني أحب اللغات.
+      en: I chose this job because I love languages.
+    options: [memilih, sebab, mengapa]
+    answers: [memilih]
+    words: [memilih, karena]
+  - id: e08
+    type: speaking
+    text: Kenapa? Sebab saya suka bahasa Indonesia.
+    meaning:
+      ar_eg: ليه؟ عشان بحب الإندونيسي.
+      ar: لماذا؟ لأني أحب اللغة الإندونيسية.
+      en: Why? Because I love Indonesian.
+    words: [kenapa, sebab]
 dialogue:
   title: Kenapa bahasa Indonesia?
   lines:

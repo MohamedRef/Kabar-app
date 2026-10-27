@@ -114,44 +114,79 @@ exercises:
   - id: e02
     type: listen
     text: Lho, kamu di sini?
-    options: ['Wah, kamu di sini!', 'Aduh, kamu di sini!', 'Lho, kamu di sini?']
+    options: ['Kok kamu di sini?', 'Wah, kamu di sini!', 'Lho, kamu di sini?']
     answer: 2
-    words: [lho]
+    words: [lho, kok, wah]
   - id: e03
     type: fill_blank
-    sentence: Ikut ___! Saya juga mau ke Lovina.
+    sentence: Ikut ___! Saya juga mau ke Lovina, lho.
     meaning:
-      ar_eg: خدوني معاكم بقى! أنا كمان عايز أروح لوفينا.
+      ar_eg: خدوني معاكم بقى! أنا كمان عايز أروح لوفينا على فكرة.
       ar: خذوني معكم! أنا أيضًا أريد الذهاب إلى لوفينا.
-      en: Let me come too! I want to go to Lovina as well.
+      en: Let me come too! I want to go to Lovina as well, you know.
     options: [kan, lho, dong]
     answers: [dong]
-    words: [dong]
+    words: [dong, lho]
   - id: e04
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: إزاي غالي أوي كده؟
-      ar: كيف يكون غاليًا إلى هذا الحد؟
-      en: How come it's so expensive?
-    answers: ['Kok mahal sekali?', 'Kok mahal banget?', Kok mahal sekali, Kok mahal banget, 'Kok mahal banget sih?', 'Kok mahal sekali sih?', 'Kok mahal sih?', 'Kenapa mahal sekali?', 'Kenapa mahal banget?']
-    words: [kok]
+    type: match_pairs
+    pairs:
+      - text: kok
+        ar_eg: إزاي كده؟ (استغراب)
+        ar: كيف ذلك؟ (استغراب)
+        en: how come? (surprise)
+      - text: dong
+        ar_eg: بقى (إلحاح)
+        ar: هيّا (إلحاح)
+        en: come on (urging)
+      - text: sih
+        ar_eg: يعني / بقى (تليين السؤال)
+        ar: يا ترى (تليين)
+        en: softener in questions
+      - text: deh
+        ar_eg: خلاص / طيب (موافقة)
+        ar: حسنًا (قبول)
+        en: OK then (agreeing)
+      - text: kan
+        ar_eg: مش كده؟
+        ar: أليس كذلك؟
+        en: right? isn't it?
+      - text: ketinggalan
+        ar_eg: اتنسى / فاته
+        ar: تُرك سهوًا
+        en: left behind
+    words: [kok, dong, sih, deh, kan, ketinggalan]
   - id: e05
-    type: dictation
-    text: Aduh, kameranya ketinggalan!
+    type: listen
+    text: Kameranya ketinggalan, kan?
+    options: ['Kameranya ketinggalan, kan?', 'Kameranya ketinggalan, lho!', 'Kok kameranya ketinggalan, sih?']
+    answer: 0
     meaning:
-      ar_eg: يا خبر، الكاميرا اتنسيت!
-      ar: يا للمصيبة، نسيتُ الكاميرا!
-      en: Oh no, the camera got left behind!
-    words: [aduh, ketinggalan]
+      ar_eg: الكاميرا اتنسيت، مش كده؟
+      ar: نسينا الكاميرا، أليس كذلك؟
+      en: The camera got left behind, right?
+    words: [ketinggalan, kan, lho, kok, sih]
   - id: e06
     type: speaking
-    text: Wah, lumba-lumbanya banyak sekali!
+    text: Wah, lumba-lumbanya banyak sekali! Aduh, kameranya ketinggalan!
     meaning:
-      ar_eg: ياه، الدلافين كتير أوي!
-      ar: يا للروعة، الدلافين كثيرة جدًا!
-      en: Wow, there are so many dolphins!
-    words: [wah, lumba-lumba]
+      ar_eg: ياه، الدلافين كتير أوي! يا خبر، الكاميرا اتنسيت!
+      ar: يا للروعة، الدلافين كثيرة جدًا! يا للمصيبة، نسيتُ الكاميرا!
+      en: Wow, there are so many dolphins! Oh no, the camera got left behind!
+    words: [wah, lumba-lumba, aduh, ketinggalan]
+  - id: e07
+    type: multiple_choice
+    question: Kok mahal ___?
+    question_meaning:
+      ar_eg: (بتشتكي) إزاي غالي كده بقى؟
+      ar: (تشكو) كيف يكون غاليًا هكذا؟
+      en: (complaining) How come it's so expensive?
+    options: [sih, dong, deh, kan]
+    answer: 0
+    explain:
+      ar_eg: sih بتيجي مع kok وkenapa عشان تليّن السؤال أو الشكوى. dong للطلب، وdeh للموافقة.
+      ar: sih ترافق kok وkenapa لتليين السؤال أو الشكوى، وdong للطلب، وdeh للموافقة.
+      en: sih goes with kok / kenapa to soften a question or complaint; dong urges, deh agrees.
+    words: [kok, sih, dong, deh, kan]
 dialogue:
   title: Pagi di perahu
   lines:
