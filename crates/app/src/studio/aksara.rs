@@ -287,7 +287,7 @@ pub fn AksaraScreen() -> Element {
                     sheet.set(Some(doc.id));
                     started.set(now_ms());
                 }
-                Err(e) => eprintln!("kabar: saving the aksara sheet failed: {e}"),
+                Err(e) => crate::diag::report!("saving the aksara sheet failed: {e}"),
             }
         }
     };

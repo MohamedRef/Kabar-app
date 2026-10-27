@@ -65,7 +65,7 @@ fn submit(mut session: Signal<Option<Session>>, db: &Db, coach: Coach) {
     if best_before.is_none_or(|b| score > b)
         && let Err(e) = db.0.borrow_mut().set_local_value(&level_key(s.level), &score.to_string())
     {
-        eprintln!("kabar: saving the Rupiah best failed: {e}");
+        crate::diag::report!("saving the Rupiah best failed: {e}");
     }
     s.pending = Some(Finished { millis, score, best_before });
     let kind = ActivityKind::Practice {

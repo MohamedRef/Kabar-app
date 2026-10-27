@@ -35,7 +35,7 @@ Data lives in `~/Library/Application Support/app.Kabar.Kabar/kabar.db`. Delete i
 | Phone | the **gear** at the top of every screen (or Settings in Today's links) |
 | Tablet and wide windows | **Settings**, pinned to the foot of the side bar |
 
-Sections: Learning (pronunciation, translation under sentences, sounds), Look & language (language, theme, text size, digits), Kak Nur & reminders, Android (notifications for the lock-screen player, background audio, S Pen hover, App info), Tablet (slim side bar, layout), Mac (shortcuts, mouse hover peek, slim side bar, Quick Lookup coming later), Offline & storage (packs, export, data folder), Account & sync (Kabar Cloud, devices, Cost & limits) and About. Android, Tablet and Mac only appear on those devices. Choices marked "This device only" (text size, hover peek, side bar) stay on that device; the rest sync. Escape closes the sheet. `KABAR_OPEN_SETTINGS=<section>` (`learning`, `look`, `coach`, `mac`, `storage`, `account`, `about`…) opens it at launch for previews.
+Sections: Learning (pronunciation, translation under sentences, sounds), Look & language (language, theme, text size, digits), Kak Nur & reminders, Android (notifications for the lock-screen player, background audio, S Pen hover, App info), Tablet (slim side bar, layout), Mac (shortcuts, mouse hover peek, slim side bar, Quick Lookup coming later), Offline & storage (packs, export, data folder, what happened lately), Account & sync (Kabar Cloud, devices, Cost & limits) and About. Android, Tablet and Mac only appear on those devices. Choices marked "This device only" (text size, hover peek, side bar) stay on that device; the rest sync. Escape closes the sheet. `KABAR_OPEN_SETTINGS=<section>` (`learning`, `look`, `coach`, `mac`, `storage`, `account`, `about`…) opens it at launch for previews.
 
 ## 3. Galaxy S24 Ultra and Tab S11
 
@@ -130,7 +130,13 @@ On the Mac: `just run-mac`. After the welcome screen, Kak Nur's onboarding asks 
 
 To start onboarding again, delete the database (§2). On the Galaxy devices: `just apk` and `just install <serial>` as in §3.
 
-On the S24 Ultra and Tab S11, reminders are local notifications from Kak Nur: choosing a reminder style asks for Android's notification permission, and the app schedules the next few reminders itself, so they work offline and without Kabar Cloud. Studying, snoozing or changing a setting re-plans them; a goal met on another device silences the rest once this device has synced. If notifications are off, Settings → Kak Nur says so and opens the system setting. Push through FCM (reminders even when the app hasn't been opened for days) and Mac notifications come next (issue #127); the Mac shows reminders as "coming soon".
+Reminders are local notifications from Kak Nur: choosing a reminder style asks for notification permission, and the app schedules the next few reminders itself, so they work offline and without Kabar Cloud.
+- **One device rings.** By default only the phone (S24 Ultra) rings. On the Tab S11 or the Mac, tick "Remind me on this device" under the reminder style to hear from Kak Nur there too. The setting is per device and never syncs.
+- **Re-planning.** Studying, snoozing or changing a setting re-plans the reminders. A reminder that rang counts toward the day's limit on every device once the app is opened again.
+- **Time zones.** Alarms follow the device's time zone, so daylight saving (Egypt's ends this week) keeps 19:00 at 19:00.
+- **Samsung "sleeping apps".** One UI stops the alarms of apps it puts to sleep. If Kabar isn't exempt, the reminder settings say so: tap "Open battery settings" → Battery → **Unrestricted** (or Settings → Battery → Background usage limits → Never sleeping apps → add Kabar).
+- **Mac.** Notifications work in the bundled `Kabar.app` (`just bundle-mac`), not in `just run-mac`.
+- **Still to come.** If you finish today's goal on the tablet while the phone is closed, the phone can still ring once. Only push through Kabar Cloud can stop that, and it's planned in issue #187 (needs Cloud deployed and Firebase).
 
 ### Settings: Cost & limits, and Export everything
 
@@ -160,6 +166,8 @@ Writing the draft needs an AI engine, so until the app is connected to Kabar Clo
 `android/` (repo root) is a small Gradle library module: the share target (`ShareActivity`), the pending-share hand-off (`PendingShare`) and on-device OCR with ML Kit Text Recognition v2 (`OcrBridge`). Nothing to configure: the `#[manganis::ffi("../../android")]` marker in `crates/app/src/platform/android.rs` makes `dx` (0.7.10) copy the folder into its generated Gradle project as `:plugins:plugin`, add it as an app dependency, and let the manifest merger add the share activity. Gradle downloads ML Kit from Google's Maven repository (free) on the first Android build after this change, so be online for that one.
 
 `just apk` now stops with "dx did not build android/ into the APK" if the Kotlin classes are missing.
+
+When something goes wrong on a device, `adb logcat -s kabar` shows what Kabar reported (an Android app's stderr goes nowhere). The same lines, the last 200, are under Settings → Offline & storage → **What happened lately**, with a Copy button. Lines that carry a sign-in token are left out.
 
 ### App icon on Android and the Mac
 The phone and tablet show Kabar's own launcher icon (adaptive, with a themed-icon layer for One UI). dx always writes its default Dioxus icon into the app it generates, so Kabar ships its icon from the `android/` module under the name `ic_kabar_launcher` and uses its own manifest, `crates/app/AndroidManifest.xml` (`[application] android_manifest` in `crates/app/Dioxus.toml`). That file is dx's template with Kabar's icon and the text-to-speech `<queries>`: **add any new Android permission or intent there**, Dioxus.toml no longer feeds the manifest. `just apk` (and CI's preview build) stops if the APK's icon is not Kabar's, as long as the Android build-tools' `aapt2` is on your PATH.

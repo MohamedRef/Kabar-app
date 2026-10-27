@@ -5,6 +5,7 @@ use kabar_core::locale::UiLanguage;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum T {
+    ListenIntro,
     SinetronIntro,
     RadioIntro,
     Episode,
@@ -50,10 +51,19 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (SinetronIntro, ArEg) => "حلقة جديدة بتفتح مع كل وحدة بتخلّصها في الرحلة.",
         (SinetronIntro, Ar) => "تُفتح حلقة جديدة مع كل وحدة تُنهيها في الرحلة.",
         (SinetronIntro, En) => "A new episode opens with every unit you finish on the Journey.",
-        (RadioIntro, ArEg) => "حلقة لكل وحدة: جاديس وأردي بيراجعوا كلماتها معاك. نزّلها واسمعها في الطريق.",
-        (RadioIntro, Ar) => "حلقة لكل وحدة: غاديس وأردي يراجعان كلماتها معك. نزّلها واستمع إليها في الطريق.",
+        (ListenIntro, ArEg) => "مسلسل قصير بحلقة لكل وحدة بتخلّصها، وراديو بيراجع معاك كلمات الوحدة.",
+        (ListenIntro, Ar) => "مسلسل قصير بحلقة لكل وحدة تُنهيها، وإذاعة تراجع معك كلمات الوحدة.",
+        (ListenIntro, En) => {
+            "A short drama with an episode for every unit you finish, and a radio show that goes over the unit's words."
+        }
+        (RadioIntro, ArEg) => {
+            "حلقة لكل وحدة: Kak Tiara وKak Reza بيراجعوا كلماتها معاك. نزّلها واسمعها في الطريق."
+        }
+        (RadioIntro, Ar) => {
+            "حلقة لكل وحدة: Kak Tiara وKak Reza يراجعان كلماتها معك. نزّلها واستمع إليها في الطريق."
+        }
         (RadioIntro, En) => {
-            "One episode per unit: Gadis and Ardi go over its words with you. Download one for the road."
+            "One episode per unit: Kak Tiara and Kak Reza go over its words with you. Download one for the road."
         }
         (Episode, ArEg | Ar) => "الحلقة",
         (Episode, En) => "Episode",

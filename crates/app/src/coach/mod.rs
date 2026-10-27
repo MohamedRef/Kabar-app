@@ -52,7 +52,7 @@ impl Coach {
     /// Call inside `use_context_provider`.
     pub fn load(db: &Db) -> Self {
         let store = db.0.borrow();
-        let log = |what: &str, e: &dyn std::fmt::Display| eprintln!("kabar: loading {what} failed: {e}");
+        let log = |what: &str, e: &dyn std::fmt::Display| crate::diag::report!("loading {what} failed: {e}");
         let profile = store.coach_profile().unwrap_or_else(|e| {
             log("coach profile", &e);
             None
@@ -99,7 +99,7 @@ impl Coach {
     pub fn save_profile(mut self, db: &Db, profile: CoachProfile) {
         match db.0.borrow_mut().save_coach_profile(&profile) {
             Ok(()) => self.profile.set(Some(profile)),
-            Err(e) => eprintln!("kabar: saving the coach profile failed: {e}"),
+            Err(e) => crate::diag::report!("saving the coach profile failed: {e}"),
         }
     }
 
@@ -112,7 +112,7 @@ impl Coach {
                 Some(e)
             }
             Err(e) => {
-                eprintln!("kabar: recording activity failed: {e}");
+                crate::diag::report!("recording activity failed: {e}");
                 None
             }
         }
@@ -122,7 +122,7 @@ impl Coach {
     pub fn retract(mut self, db: &Db, ids: &[String]) {
         for id in ids {
             if let Err(e) = db.0.borrow_mut().retract_activity(id) {
-                eprintln!("kabar: undo failed: {e}");
+                crate::diag::report!("undo failed: {e}");
                 return;
             }
         }
@@ -132,13 +132,13 @@ impl Coach {
     pub fn save_reminders(mut self, db: &Db, state: ReminderState) {
         match db.0.borrow_mut().save_reminder_state(&state) {
             Ok(()) => self.reminders.set(state),
-            Err(e) => eprintln!("kabar: saving reminders failed: {e}"),
+            Err(e) => crate::diag::report!("saving reminders failed: {e}"),
         }
     }
 
     pub fn use_batik(mut self, db: &Db, item_id: Option<&str>) {
         if let Err(e) = db.0.borrow_mut().set_local_value(BATIK_KEY, item_id.unwrap_or_default()) {
-            eprintln!("kabar: saving the batik failed: {e}");
+            crate::diag::report!("saving the batik failed: {e}");
         }
         self.batik.set(item_id.map(str::to_string));
     }
@@ -193,7 +193,7 @@ pub fn plan_for(db: &Db, profile: &CoachProfile, events: &[ActivityEvent], date:
     let due = crate::review::due_words(db, &sched, crate::store::now_ms()).len() as u32;
     let plan = build_plan(db, due, profile, events, date, profile.daily_size, false);
     if let Err(e) = db.0.borrow_mut().save_plan(&plan) {
-        eprintln!("kabar: saving today's plan failed: {e}");
+        crate::diag::report!("saving today's plan failed: {e}");
     }
     plan
 }
