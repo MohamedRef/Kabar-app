@@ -403,10 +403,18 @@ h3 { font-size: var(--fs-md); margin-block: var(--sp-4) var(--sp-2); }
 
 .coach-grid { display: grid; gap: 0 1rem; align-items: start; }
 .app:not([data-width="compact"]) .coach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-/* Today: one centred column unless there are side cards to fill the second. */
+/* Today: one centred column on phones and tablet portrait. From expanded
+   up, the plan leads and the side cards (recap, placement, Kabar Pagi) sit
+   in a narrower supporting column. */
 .app:not([data-width="compact"]) .today-grid { grid-template-columns: minmax(0, 1fr); max-inline-size: 46rem; margin-inline: auto; }
-.app:not([data-width="compact"]) .today-grid:has(> .today-side .card) { grid-template-columns: repeat(2, minmax(0, 1fr)); max-inline-size: none; }
-.app:not([data-width="compact"]) .today-grid:has(> .today-side .card) .today-side > :first-child { margin-block-start: 0 !important; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .today-grid:has(> .today-side .card) {
+  grid-template-columns: minmax(0, 3fr) minmax(18rem, 2fr); max-inline-size: 72rem; gap: 0 var(--sp-6);
+}
+.today-grid:has(> .today-side .card) .today-side > :first-child { margin-block-start: 0 !important; }
+/* The side cards are quieter than the plan. */
+.today-side .card h2 { font-size: var(--fs-md); }
+/* The recap's four numbers as a steady 2×2, never three and an orphan. */
+.today-side .stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 .nur { display: flex; gap: 0.75rem; align-items: flex-start; margin-block: 0.75rem; }
 .nur-avatar {
@@ -464,6 +472,13 @@ h3 { font-size: var(--fs-md); margin-block: var(--sp-4) var(--sp-2); }
   border-radius: var(--radius);
 }
 .plan-item.done { background: var(--surface-2); }
+/* The next step stands out: a tinted row, a bigger title, the filled button. */
+.plan-item.next {
+  border-color: color-mix(in srgb, var(--sawah) 45%, var(--line));
+  background: color-mix(in srgb, var(--sawah) 7%, var(--surface));
+  padding-block: var(--sp-3);
+}
+.plan-item.next .plan-text strong { font-size: var(--fs-lg); }
 .plan-item.done .plan-text strong { color: var(--muted); }
 .plan-text { flex: 1; min-inline-size: 0; }
 button.check {
@@ -571,7 +586,7 @@ span.time-input select { border: 0; background: transparent; min-block-size: 40p
 .big { font-size: 1.6rem; }
 
 .play-grid { display: grid; gap: 0.75rem; margin-block-end: 1rem; }
-.app:not([data-width="compact"]) .play-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.app:not([data-width="compact"]) .play-grid { grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr)); }
 .app:not([data-width="compact"]) .pagi-layout,
 .app:not([data-width="compact"]) .pasar-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1rem; align-items: start; }
 .app:not([data-width="compact"]) .pasar-layout .transcript { grid-row: span 2; }
