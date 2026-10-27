@@ -94,12 +94,12 @@ const MALE_TITLES: &[&str] =
 const FEMALE_NAMES: &[&str] = &[
     "rina", "sari", "darmi", "ani", "siti", "gadis", "dewi", "wulan", "tari", "rara", "sinta", "lia", "yani",
     "lina", "ratna", "rahayu", "nur", "putri", "ayu", "luh", "yohana", "ruth", "ester", "debora", "frida",
-    "grace", "selvi", "lince",
+    "grace", "selvi", "lince", "yanti", "tiara", "intan", "nirmala", "laras",
 ];
 const MALE_NAMES: &[&str] = &[
     "mohamed", "muhammad", "dimas", "ardi", "bayu", "agus", "bagus", "budi", "joko", "andi", "heru", "harjo",
     "wiryo", "hasan", "yudi", "fikri", "darmo", "anton", "man", "mat", "yosua", "steven", "benny", "elias",
-    "yance",
+    "yance", "raka", "fadil", "reza", "bimo", "irwan",
 ];
 
 /// Guesses a speaker's voice from Indonesian/Javanese titles (Bu, Mbak, Pak,

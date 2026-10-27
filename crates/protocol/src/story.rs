@@ -144,6 +144,9 @@ pub struct Persona {
     /// Azure voice name.
     pub voice: String,
     pub home: String,
+    /// The curriculum units whose scenes this persona practises.
+    #[serde(default)]
+    pub units: Vec<String>,
     pub role: Localized,
     pub personality: Localized,
     pub style: PersonaStyle,

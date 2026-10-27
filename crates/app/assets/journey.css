@@ -196,3 +196,20 @@
 }
 @keyframes jm-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 @keyframes jm-glow { 50% { fill-opacity: 0.75; } }
+
+/* ---------- artwork (docs/VISUAL-ASSETS.md, prompt 5) ---------- */
+/* Handmade paper under a see-through sea; --map-paper comes from map_art.rs. */
+.jm-stage { background: var(--map-paper, none) repeat center / 512px, var(--sea); }
+.jm-stage .sea { fill-opacity: 0.55; }
+/* Landmark stickers keep their size while zooming, like the pins. */
+.jm-sticker { cursor: pointer; transform: scale(var(--inv)); }
+.jm-sticker .sticker-edge { fill: var(--surface); stroke: var(--line); stroke-width: 0.3; }
+.jm-sticker[data-selected="true"] .sticker-edge { stroke: var(--dawn); stroke-width: 0.8; }
+.level-art {
+  flex: none; inline-size: 4.5rem; block-size: 4.5rem; border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--surface), 0 0 0 4px var(--line);
+}
+.level-head[data-done="true"] .level-art { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--sawah); }
+.app:not([data-width="compact"]) .level-art { inline-size: 6rem; block-size: 6rem; }
+.jm-sticker .sticker-leader { stroke: var(--indigo); stroke-opacity: 0.5; stroke-width: 0.5; stroke-dasharray: 1 1; stroke-linecap: round; }
+.jm-sticker[data-selected="true"] .sticker-leader { stroke: var(--dawn); stroke-opacity: 0.9; }
