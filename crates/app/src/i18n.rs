@@ -591,6 +591,7 @@ pub enum Msg {
     TranslationWorking,
     TranslationByAi,
     TranslationWordByWord,
+    TranslationWordByWordShort,
     TranslationNeedsCloud,
     TranslationResetsLater,
     TranslationUnreachable,
@@ -2151,6 +2152,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (TranslationWordByWord, ArEg) => "كلمة بكلمة من قاموس \u{2068}Kabar\u{2069}",
         (TranslationWordByWord, Ar) => "كلمة بكلمة من قاموس \u{2068}Kabar\u{2069}",
         (TranslationWordByWord, En) => "Word by word, from Kabar's dictionary",
+        (TranslationWordByWordShort, ArEg) => "كلمة بكلمة:",
+        (TranslationWordByWordShort, Ar) => "كلمة بكلمة:",
+        (TranslationWordByWordShort, En) => "Word by word:",
         (TranslationNeedsCloud, ArEg) => {
             "الترجمة الكاملة بتشتغل لما توصّل \u{2068}Kabar Cloud\u{2069}. لحد ده، تحت كل سطر معنى كلماته واحدة واحدة."
         }
