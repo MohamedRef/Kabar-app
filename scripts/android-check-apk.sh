@@ -56,3 +56,14 @@ if command -v aapt2 >/dev/null; then
   fi
   echo "Launcher icon: Kabar's; TTS queries present; release build ($(grep -o "versionCode='[0-9]*'" <<<"$badging"))"
 fi
+
+# Native libraries: arm64 only, stored uncompressed, because the manifest asks
+# Android not to extract them (scripts/android-release-apk.sh).
+libs="$(unzip -Z1 "$APK" | grep '^lib/.*[^/]$' || true)"
+other="$(grep -v '^lib/arm64-v8a/' <<<"$libs" || true)"
+[ -z "$other" ] || fail "The APK carries libraries for CPUs Kabar never runs on:" $other
+methods="$(unzip -Zv "$APK" 'lib/*' | grep 'compression method' || true)"
+if grep -q deflated <<<"$methods"; then
+  fail "Native libraries are compressed; extractNativeLibs=false needs them stored."
+fi
+echo "Native libraries: arm64-v8a only, stored uncompressed"
