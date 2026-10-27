@@ -90,7 +90,9 @@ impl Track {
             return true;
         }
         // A street form ("nggak", "makasih") is known once its formal twin is.
-        if self.lang == "id" && kabar_core::lang::street::formal(kabar_core::lang::Lang::Indonesian, w).is_some_and(at) {
+        if self.lang == "id"
+            && kabar_core::lang::street::formal(kabar_core::lang::Lang::Indonesian, w).is_some_and(at)
+        {
             return true;
         }
         if let Some((a, b)) = w.split_once('-')
@@ -334,10 +336,17 @@ mod tests {
         Track {
             lang: "id".into(),
             order: vec!["a".into(), "b".into()],
-            taught: [("saya", 0), ("makan", 0), ("rumah sakit", 0), ("nasi", 1), ("tidak", 1), ("terima kasih", 1)]
-                .into_iter()
-                .map(|(w, p)| (w.to_owned(), p))
-                .collect(),
+            taught: [
+                ("saya", 0),
+                ("makan", 0),
+                ("rumah sakit", 0),
+                ("nasi", 1),
+                ("tidak", 1),
+                ("terima kasih", 1),
+            ]
+            .into_iter()
+            .map(|(w, p)| (w.to_owned(), p))
+            .collect(),
             units: BTreeMap::new(),
             lesson_level: BTreeMap::new(),
             exclude: BTreeSet::new(),

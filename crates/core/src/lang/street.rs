@@ -9,10 +9,7 @@ use super::Lang;
 const ID: &str = include_str!("../../../../content/freq/id.street.tsv");
 
 fn parse(text: &'static str) -> Vec<(&'static str, &'static str)> {
-    text.lines()
-        .filter(|l| !l.is_empty() && !l.starts_with('#'))
-        .filter_map(|l| l.split_once('\t'))
-        .collect()
+    text.lines().filter(|l| !l.is_empty() && !l.starts_with('#')).filter_map(|l| l.split_once('\t')).collect()
 }
 
 fn table(lang: Lang) -> &'static [(&'static str, &'static str)] {
@@ -44,6 +41,10 @@ mod tests {
         }
         let rows = ID.lines().filter(|l| !l.is_empty() && !l.starts_with('#')).count();
         assert_eq!(rows, t.len(), "every row is street<TAB>formal");
+        // Outputs are already formal, so folding twice changes nothing.
+        for (s, f) in t {
+            assert_eq!(formal(Lang::Indonesian, f), None, "{s} → {f} → ?");
+        }
     }
 
     #[test]
