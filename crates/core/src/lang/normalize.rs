@@ -97,6 +97,48 @@ static SEED: &[Norm] = &[
     n("yg", "yang", Id),
 ];
 
+/// Spoken Indonesian forms and their formal twins: the same word in the
+/// other register, not a synonym. Lessons accept both registers, so grading
+/// maps each side to the formal twin before comparing. Sorted by form.
+static SPOKEN: &[(&str, &str)] = &[
+    ("abis", "habis"),
+    ("aja", "saja"),
+    ("belom", "belum"),
+    ("bener", "benar"),
+    ("emang", "memang"),
+    ("engga", "tidak"),
+    ("enggak", "tidak"),
+    ("ga", "tidak"),
+    ("gak", "tidak"),
+    ("gimana", "bagaimana"),
+    ("gini", "begini"),
+    ("gitu", "begitu"),
+    ("kalo", "kalau"),
+    ("kayak", "seperti"),
+    ("ngerti", "mengerti"),
+    ("ngga", "tidak"),
+    ("nggak", "tidak"),
+    ("pake", "pakai"),
+    ("sampe", "sampai"),
+    ("tapi", "tetapi"),
+    ("tau", "tahu"),
+    ("udah", "sudah"),
+];
+
+/// The formal twin of a lowercase Indonesian word ("udah" → "sudah",
+/// "tp" → "tapi" → "tetapi"), from [`SPOKEN`] and the one-word Indonesian
+/// chat forms in the seed list. `None` for a word that is already formal.
+pub fn formal_twin(word: &str) -> Option<&'static str> {
+    let spoken = |w: &str| SPOKEN.binary_search_by(|(f, _)| f.cmp(&w)).ok().map(|i| SPOKEN[i].1);
+    if let Some(twin) = spoken(word) {
+        return Some(twin);
+    }
+    // "g" alone is too ambiguous (see `normalize`).
+    let chat =
+        lookup(word).filter(|n| n.lang == Lang::Indonesian && n.form != "g" && !n.full.contains(' '))?;
+    Some(spoken(chat.full).unwrap_or(chat.full))
+}
+
 /// Looks up a lowercase form in the seed list.
 pub fn lookup(form: &str) -> Option<&'static Norm> {
     SEED.binary_search_by(|e| e.form.cmp(form)).ok().map(|i| &SEED[i])
@@ -123,6 +165,20 @@ pub fn normalize(form: &str, prev: Option<&str>, next: Option<&str>) -> Option<&
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn spoken_forms_are_sorted_and_map_to_formal_words() {
+        assert!(SPOKEN.windows(2).all(|w| w[0].0 < w[1].0), "keep SPOKEN sorted by form");
+        for (form, twin) in SPOKEN {
+            assert_eq!(formal_twin(twin), None, "{form} → {twin} must end on a formal word");
+        }
+        assert_eq!(formal_twin("nggak"), Some("tidak"));
+        assert_eq!(formal_twin("udh"), Some("sudah"));
+        assert_eq!(formal_twin("tp"), Some("tetapi"), "chat form → spoken → formal");
+        assert_eq!(formal_twin("gpp"), None, "several words: not a twin");
+        assert_eq!(formal_twin("ra"), None, "Javanese");
+        assert_eq!(formal_twin("makan"), None);
+    }
 
     #[test]
     fn seed_is_sorted_and_unique() {
