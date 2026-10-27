@@ -58,7 +58,7 @@ fn grammar_examples_use_spec_test_texts() {
 fn bipa_1_and_2_lessons_and_tests_exist() {
     let report = check_repo(root()).expect("content files load");
     assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa1.")).count(), 74);
-    assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa2.")).count(), 58);
+    assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa2.")).count(), 62);
     for test in ["bipa1.test", "bipa2.test", "placement"] {
         assert!(report.tests.iter().any(|t| t == test), "missing content/tests/id/{test}.yaml");
     }
@@ -103,7 +103,7 @@ fn lesson_checks_reject_broken_lessons() {
 #[test]
 fn javanese_lessons_and_story_assets_exist() {
     let report = check_repo(root()).expect("content files load");
-    for (level, n) in [("j1.", 33), ("j2.", 29), ("j3.", 42)] {
+    for (level, n) in [("j1.", 36), ("j2.", 36), ("j3.", 42)] {
         assert_eq!(report.lessons.iter().filter(|l| l.starts_with(level)).count(), n, "{level} lessons");
     }
     for id in ["mas-dimas", "bu-siti", "mbak-gadis", "mas-ardi", "sinetron.e01", "radio.bipa1.u01"] {
