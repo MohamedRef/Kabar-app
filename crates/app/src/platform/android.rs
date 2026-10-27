@@ -172,6 +172,43 @@ pub fn pick_state() -> Result<super::PickState, String> {
     })
 }
 
+/// `ExportSave.open(activity, path, name)`: the system "Save to" dialog for
+/// the file at `path`.
+pub fn save_document(path: &str, name: &str) -> Result<(), String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.ExportSave"))?;
+        let (path, name) = (env.new_string(path)?, env.new_string(name)?);
+        env.call_static_method(
+            &class,
+            jni_str!("open"),
+            jni_sig!("(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;)V"),
+            &[JValue::Object(activity), JValue::Object(&path), JValue::Object(&name)],
+        )?;
+        Ok(())
+    })
+}
+
+/// `ExportSave.state()` (and `name()` once saved); a finished state is reset.
+pub fn save_state() -> Result<super::SaveState, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.ExportSave"))?;
+        let state = env.call_static_method(&class, jni_str!("state"), jni_sig!("()I"), &[])?.i()?;
+        let out = match state {
+            1 => return Ok(super::SaveState::Open),
+            2 => super::SaveState::Failed,
+            3 => {
+                let name = env
+                    .call_static_method(&class, jni_str!("name"), jni_sig!("()Ljava/lang/String;"), &[])?
+                    .l()?;
+                super::SaveState::Saved(to_string(env, name)?.filter(|n| !n.is_empty()))
+            }
+            _ => super::SaveState::Cancelled,
+        };
+        env.call_static_method(&class, jni_str!("reset"), jni_sig!("()V"), &[])?;
+        Ok(out)
+    })
+}
+
 /// `OcrBridge.recognize(path)`: ML Kit Text Recognition v2, blocking.
 pub fn ocr_image(path: &Path) -> Result<OcrResult, String> {
     let path = path.to_str().ok_or("image path is not valid UTF-8")?;
@@ -245,6 +282,82 @@ pub fn open_url(url: &str) -> Result<(), String> {
             jni_sig!("(Ljava/lang/String;Landroid/net/Uri;)V"),
             &[(&action).into(), (&uri).into()],
         )?;
+        // FLAG_ACTIVITY_NEW_TASK
+        env.call_method(
+            &intent,
+            jni_str!("addFlags"),
+            jni_sig!("(I)Landroid/content/Intent;"),
+            &[0x1000_0000.into()],
+        )?;
+        env.call_method(
+            activity,
+            jni_str!("startActivity"),
+            jni_sig!("(Landroid/content/Intent;)V"),
+            &[(&intent).into()],
+        )?;
+        Ok(())
+    })
+}
+
+/// `NotificationManager.areNotificationsEnabled()` for Kabar.
+pub fn notifications_enabled() -> Result<bool, String> {
+    with_activity(|env, activity| {
+        let name = env.new_string("notification")?;
+        let manager = env
+            .call_method(
+                activity,
+                jni_str!("getSystemService"),
+                jni_sig!("(Ljava/lang/String;)Ljava/lang/Object;"),
+                &[(&name).into()],
+            )?
+            .l()?;
+        env.call_method(&manager, jni_str!("areNotificationsEnabled"), jni_sig!("()Z"), &[])?.z()
+    })
+}
+
+/// Opens Kabar's own page in Android Settings: its notification settings, or
+/// App info (storage, battery, permissions).
+pub fn open_app_page(page: super::AppPage) -> Result<(), String> {
+    with_activity(|env, activity| {
+        let package = env
+            .call_method(activity, jni_str!("getPackageName"), jni_sig!("()Ljava/lang/String;"), &[])?
+            .l()?;
+        let intent = match page {
+            super::AppPage::Notifications => {
+                let action = env.new_string("android.settings.APP_NOTIFICATION_SETTINGS")?;
+                let intent = env.new_object(
+                    jni_str!("android/content/Intent"),
+                    jni_sig!("(Ljava/lang/String;)V"),
+                    &[(&action).into()],
+                )?;
+                let extra = env.new_string("android.provider.extra.APP_PACKAGE")?;
+                env.call_method(
+                    &intent,
+                    jni_str!("putExtra"),
+                    jni_sig!("(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;"),
+                    &[(&extra).into(), (&package).into()],
+                )?;
+                intent
+            }
+            super::AppPage::Details => {
+                let action = env.new_string("android.settings.APPLICATION_DETAILS_SETTINGS")?;
+                let package = to_string(env, package)?.unwrap_or_default();
+                let uri = env.new_string(format!("package:{package}"))?;
+                let uri = env
+                    .call_static_method(
+                        jni_str!("android/net/Uri"),
+                        jni_str!("parse"),
+                        jni_sig!("(Ljava/lang/String;)Landroid/net/Uri;"),
+                        &[(&uri).into()],
+                    )?
+                    .l()?;
+                env.new_object(
+                    jni_str!("android/content/Intent"),
+                    jni_sig!("(Ljava/lang/String;Landroid/net/Uri;)V"),
+                    &[(&action).into(), (&uri).into()],
+                )?
+            }
+        };
         // FLAG_ACTIVITY_NEW_TASK
         env.call_method(
             &intent,

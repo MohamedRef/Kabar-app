@@ -55,24 +55,24 @@ table below doesn't match the content.
 |---|---|---|--:|--:|--:|--:|--:|--:|
 | BIPA 1 | Jakarta | A1 | 10 | 74 | 600 | 410 | ~8 h | 35 |
 | BIPA 2 | Bali | A2 | 10 | 62 | 502 | 298 | ~7 h | 35 |
-| BIPA 3 | Lombok | B1 | 10 | 70 | 647 | 274 | ~8 h | 39 |
-| BIPA 4 | Sulawesi | B2 | 10 | 80 | 679 | 251 | ~8 h | 37 |
-| BIPA 5 | Kalimantan | C1 | 10 | 90 | 854 | 353 | ~9 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 100 | 986 | 400 | ~10 h | 38 |
+| BIPA 3 | Lombok | B1 | 10 | 70 | 647 | 269 | ~8 h | 39 |
+| BIPA 4 | Sulawesi | B2 | 10 | 80 | 679 | 205 | ~8 h | 37 |
+| BIPA 5 | Kalimantan | C1 | 10 | 90 | 854 | 298 | ~9 h | 38 |
+| BIPA 6 | Sumatra | C2 | 10 | 100 | 986 | 380 | ~10 h | 38 |
 | BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 100 | 1,009 | 385 | ~10 h | 38 |
-| **Total** |  | — | 70 | 576 | 5,277 | 2,371 | ~60 h | 260 |
+| **Total** |  | — | 70 | 576 | 5,277 | 2,245 | ~60 h | 260 |
 
 **Javanese (J1–J6)**
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|
-| J1 | Surabaya | — | 7 | 36 | 292 | 145 | ~4 h | 34 |
+| J1 | Surabaya | — | 7 | 36 | 292 | 143 | ~4 h | 34 |
 | J2 | Madiun | — | 6 | 36 | 308 | 146 | ~4 h | 35 |
-| J3 | Solo (Surakarta) | — | 6 | 42 | 348 | 97 | ~4 h | 35 |
+| J3 | Solo (Surakarta) | — | 6 | 42 | 348 | 96 | ~4 h | 35 |
 | J4 | Yogyakarta | — | 6 | 48 | 431 | 87 | ~5 h | 38 |
 | J5 | Semarang | — | 6 | 54 | 492 | 151 | ~6 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 541 | 100 | ~6 h | 37 |
-| **Total** |  | — | 37 | 276 | 2,412 | 726 | ~29 h | 218 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 541 | 93 | ~6 h | 37 |
+| **Total** |  | — | 37 | 276 | 2,412 | 716 | ~29 h | 218 |
 
 **Reference content and stories**
 
@@ -91,8 +91,8 @@ table below doesn't match the content.
 | Kabar Pagi stories | 24 | morning stories |
 | Games | 3 | Pasar!, Unggah-Ungguh, Minimal Pairs |
 | Aksara Jawa glyphs | 41 | stroke order is a draft (pen work paused) |
-| Golden-set items | 661 | 19 golden sets for the AI tasks |
-| Versioned AI prompts | 23 | `prompts/` |
+| Golden-set items | 691 | 20 golden sets for the AI tasks |
+| Versioned AI prompts | 24 | `prompts/` |
 | Offline pack manifests | 107 | one per unit |
 
 <!-- kabar-stats:end -->
