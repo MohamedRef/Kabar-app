@@ -9,6 +9,11 @@
     its own `ic_launcher` into the app module, and app resources beat library
     ones, so the icon needs its own name.
   - The text-to-speech <queries> block that used to live in [android.raw].
+  - MainActivity handles every configuration change itself. Recreating it
+    would drop the WebView that holds the running app: dark mode (Samsung's
+    sunset switch), split screen and pop-up view on the Tab S11, display
+    size, font size, language and keyboards all reach the page as CSS
+    media queries and resize events instead.
 
   dx no longer adds permissions, features or deep links from Dioxus.toml to
   this file: add them here. Re-check it against dx's template when dx is
@@ -34,7 +39,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_security_config">
-        <activity android:configChanges="orientation|screenLayout|screenSize|keyboardHidden" android:exported="true"
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|keyboardHidden|keyboard|navigation|uiMode|density|fontScale|locale|layoutDirection|colorMode" android:exported="true"
             android:label="@string/app_name" android:name="dev.dioxus.main.MainActivity">
             <meta-data android:name="android.app.lib_name" android:value="main" />
             <meta-data android:name="android.app.func_name" android:value="ANativeActivity_onCreate" />

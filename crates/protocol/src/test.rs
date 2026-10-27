@@ -87,6 +87,13 @@ pub struct TestItem {
     /// Overrides the section's level (placement).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub level: Option<String>,
+    /// The curriculum unit this item tests, e.g. `bipa1.u04`, so results
+    /// can send the learner back to it.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub unit: Option<String>,
+    /// Grammar-library ids the item checks, e.g. `id.question.apa`.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub grammar: Vec<String>,
     #[serde(flatten)]
     pub kind: TestItemKind,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -242,5 +249,19 @@ mod tests {
             r#"{"id":"t1","type":"speaking_task","prompt":{"ar_eg":"x","ar":"x","en":"x"},"sample":"s"}"#;
         let err = serde_json::from_str::<TestItem>(json).unwrap_err().to_string();
         assert!(err.contains("speaking_task") && err.contains("rubric"), "{err}");
+    }
+
+    #[test]
+    fn items_carry_their_unit_and_grammar() {
+        let json = r#"{"id":"t01","unit":"bipa1.u04","grammar":["id.question.apa"],"type":"speaking","text":"Halo","meaning":{"ar_eg":"a","ar":"b","en":"c"}}"#;
+        let item: TestItem = serde_json::from_str(json).unwrap();
+        assert_eq!(item.unit.as_deref(), Some("bipa1.u04"));
+        assert_eq!(item.grammar, ["id.question.apa"]);
+        // Untagged items still parse, and write back without the new keys.
+        let json =
+            r#"{"id":"t02","type":"speaking","text":"Halo","meaning":{"ar_eg":"a","ar":"b","en":"c"}}"#;
+        let item: TestItem = serde_json::from_str(json).unwrap();
+        assert_eq!(item.unit, None);
+        assert!(!serde_json::to_string(&item).unwrap().contains("unit"));
     }
 }

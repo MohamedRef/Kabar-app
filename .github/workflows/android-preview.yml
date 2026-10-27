@@ -5,6 +5,10 @@ name: Android preview APK
 # the release key in ~/.kabar). The key is kept in the Actions cache so
 # updates install over each other; if the cache expires (7 days unused) a new
 # key is made and the next preview needs an uninstall first.
+#
+# Pull-request runs never touch that key: they sign with a one-off key (enough
+# to prove the APK signs) and get a read-only token. Only pushes to main and
+# manual runs restore the key, and only the separate `publish` job can write.
 
 on:
   push:
@@ -24,15 +28,20 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   apk:
     name: Build preview APK
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    env:
+      # A PR's own copy of this workflow runs here, so it must not reach the key.
+      KEEP_KEY: ${{ github.event_name != 'pull_request' }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-linux-android
@@ -43,7 +52,7 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-      - uses: cargo-bins/cargo-binstall@main
+      - uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
       - name: Install dx 0.7.10
         run: cargo binstall -y --force dioxus-cli@0.7.10
 
@@ -70,6 +79,7 @@ jobs:
         run: scripts/android-check-apk.sh dist/android/release/kabar-unsigned.apk
 
       - name: Restore preview signing key
+        if: env.KEEP_KEY == 'true'
         id: key
         uses: actions/cache/restore@v4
         with:
@@ -84,7 +94,7 @@ jobs:
             -keyalg RSA -keysize 4096 -validity 3650 -dname "CN=Kabar preview" \
             -storepass "$(cat ~/.kabar-preview/pass)" -keypass "$(cat ~/.kabar-preview/pass)"
       - name: Save preview signing key
-        if: steps.key.outputs.cache-hit != 'true'
+        if: env.KEEP_KEY == 'true' && steps.key.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
           path: ~/.kabar-preview
@@ -109,10 +119,23 @@ jobs:
           path: dist/android/kabar-preview.apk
           retention-days: 14
 
+  publish:
+    name: Publish the preview release
+    needs: apk
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: kabar-preview-apk
+          path: dist/android
       - name: Publish as the "preview" release
-        if: github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           gh release delete preview --cleanup-tag -y || true
           gh release create preview dist/android/kabar-preview.apk \
