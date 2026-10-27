@@ -227,6 +227,30 @@ pub fn deck_headline(n: usize) -> String {
     format!("Kamu sudah tahu {n} kata")
 }
 
+/// A sound-rule side that is a description, not letters ("(vowel)",
+/// "(dropped)", "(سكون)", "(آخر الكلمة)"), shown from the UI text tables in
+/// the learner's language instead of as raw content.
+pub fn rule_placeholder(side: &str) -> Option<crate::i18n::Msg> {
+    use crate::i18n::Msg;
+    match side.trim() {
+        "(vowel)" => Some(Msg::SoundVowel),
+        "(dropped)" => Some(Msg::SoundDropped),
+        "(سكون)" => Some(Msg::SoundSukun),
+        "(آخر الكلمة)" => Some(Msg::SoundWordEnd),
+        _ => None,
+    }
+}
+
+/// The rules the Sound lab picker shows before "show every rule": the most
+/// common shifts, in this order.
+pub const COMMON_RULES: [&str; 5] = ["fa_p", "qaf_k", "kha_k", "ta_marbuta_at", "shin_sy"];
+
+/// Which rule ids the picker shows: all of them when expanded, else the
+/// common ones plus the selected rule (so a pick never disappears).
+pub fn picker_rules<'a>(all: &[&'a str], expanded: bool, selected: Option<&str>) -> Vec<&'a str> {
+    all.iter().copied().filter(|id| expanded || COMMON_RULES.contains(id) || selected == Some(*id)).collect()
+}
+
 /// Where a Rupiah Reader best score is kept on this device.
 pub fn best_key(level: &str) -> String {
     format!("play.rupiah.best.{level}")
@@ -382,5 +406,42 @@ mod tests {
         assert_eq!(parse_amount(""), None);
         assert_eq!(parse_amount("0"), None);
         assert_eq!(parse_amount("25rb"), None);
+    }
+
+    /// Every descriptive rule side in the shipped content is localized, and
+    /// the Arabic UIs never show "vowel" or "dropped" (#165).
+    #[test]
+    fn sound_rule_placeholders_are_localized() {
+        use crate::i18n::t;
+        use kabar_core::locale::UiLanguage::{Ar, ArEg, En};
+        let data = super::super::content::bridge().as_ref().expect("bridge content");
+        for r in &data.rules {
+            for side in [&r.from, &r.to] {
+                let looks_descriptive = side.starts_with('(');
+                assert_eq!(rule_placeholder(side).is_some(), looks_descriptive, "{}: {side}", r.id);
+                if let Some(msg) = rule_placeholder(side) {
+                    for lang in [ArEg, Ar] {
+                        assert!(!t(lang, msg).chars().any(|c| c.is_ascii_alphabetic()), "{side} in {lang:?}");
+                    }
+                    assert!(t(En, msg).is_ascii());
+                }
+            }
+        }
+        assert_eq!(rule_placeholder("p"), None);
+    }
+
+    #[test]
+    fn the_rule_picker_starts_short() {
+        let data = super::super::content::bridge().as_ref().expect("bridge content");
+        let ids: Vec<&str> = data.rules.iter().map(|r| r.id.as_str()).collect();
+        for id in COMMON_RULES {
+            assert!(ids.contains(&id), "{id} is not a rule");
+        }
+        assert_eq!(picker_rules(&ids, false, None).len(), COMMON_RULES.len());
+        assert_eq!(picker_rules(&ids, true, None), ids);
+        // A picked rule outside the common ones stays visible.
+        let short = picker_rules(&ids, false, Some("ayn_dropped"));
+        assert_eq!(short.len(), COMMON_RULES.len() + 1);
+        assert!(short.contains(&"ayn_dropped"));
     }
 }
