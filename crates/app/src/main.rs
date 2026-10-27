@@ -22,6 +22,7 @@ mod pron;
 mod reader;
 mod review;
 mod screens;
+mod souvenir_art;
 mod stats;
 mod store;
 mod studio;
