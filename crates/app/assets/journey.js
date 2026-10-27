@@ -11,8 +11,25 @@
   const g = svg && svg.querySelector(".jm-viewport");
   if (!g) return;
 
-  const MIN = 1, MAX = 12, DRAG_SLOP = 6;
+  const MAX = 12, DRAG_SLOP = 6;
   const vb = svg.viewBox.baseVal;
+  // Pins, names and stickers are drawn in design units of viewBox width / 200
+  // (`pin_scale` in journey.rs). A tall stage (the Mac and tablet landscape
+  // fill the window's height) slices the map, so it shows bigger: `pinFit`
+  // (≤ 1) caps a design unit at PIN_PX screen pixels so pins keep the size
+  // they have on a short stage, and `meet` is how far the learner may zoom
+  // out to see the whole map again.
+  const PIN_PX = 5.2;
+  function pinFit() {
+    const m = svg.getScreenCTM();
+    if (!m || !m.a) return 1;
+    return Math.min(1, PIN_PX / (m.a * vb.width / 200));
+  }
+  function meet() {
+    const m = svg.getScreenCTM(), r = stage.getBoundingClientRect();
+    if (!m || !m.a || !r.width || !r.height) return 1;
+    return Math.min(1, Math.min(r.width / vb.width, r.height / vb.height) / m.a);
+  }
   const st = { s: 1, x: 0, y: 0 };
   const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
   let raf = 0, anim = 0;
@@ -31,7 +48,7 @@
     return lo > hi ? (lo + hi) / 2 : Math.min(hi, Math.max(lo, t));
   }
   function clamp() {
-    st.s = Math.min(MAX, Math.max(MIN, st.s));
+    st.s = Math.min(MAX, Math.max(meet(), st.s));
     const v = visible();
     st.x = clampAxis(st.x, v.x0, v.x1, vb.x, vb.x + vb.width);
     st.y = clampAxis(st.y, v.y0, v.y1, vb.y, vb.y + vb.height);
@@ -40,8 +57,9 @@
     raf = 0;
     g.setAttribute("transform", `translate(${st.x.toFixed(3)} ${st.y.toFixed(3)}) scale(${st.s.toFixed(4)})`);
     // Pins and labels keep their size; the land and the stops around each
-    // place spread out underneath them.
-    svg.style.setProperty("--inv", (1 / st.s).toFixed(4));
+    // place spread out underneath them. Zoomed out past the map's designed
+    // scale (whole map in a tall stage), they shrink with it so names stay clear.
+    svg.style.setProperty("--inv", Math.min(1, pinFit() / st.s).toFixed(4));
     stage.dataset.zoomed = st.s > 1.01 ? "true" : "false";
   }
   function schedule() {
@@ -55,7 +73,7 @@
     return { x: p.x, y: p.y };
   }
   function zoomAt(p, factor) {
-    const ns = Math.min(MAX, Math.max(MIN, st.s * factor));
+    const ns = Math.min(MAX, Math.max(meet(), st.s * factor));
     const f = ns / st.s;
     st.x = p.x - (p.x - st.x) * f;
     st.y = p.y - (p.y - st.y) * f;
@@ -79,7 +97,7 @@
   }
   function center() { return { x: vb.x + vb.width / 2, y: vb.y + vb.height / 2 }; }
   function target(factor, p) {
-    const ns = Math.min(MAX, Math.max(MIN, st.s * factor)), f = ns / st.s;
+    const ns = Math.min(MAX, Math.max(meet(), st.s * factor)), f = ns / st.s;
     return { s: ns, x: p.x - (p.x - st.x) * f, y: p.y - (p.y - st.y) * f };
   }
 
