@@ -1,162 +1,213 @@
 schema: kabar.lesson/v1
 id: bipa6.u08.l06
 language: id
-title: Ulangan Unit 8
+title: Metode ilmiah
 can_do:
-  ar_eg: تقرا وتكتب شرح علمي بسيط ومرتّب.
-  ar: أن تقرأ شرحًا علميًّا مبسّطًا مرتّبًا وتكتبه.
-  en: Read and write a clear, simple science explainer.
+  ar_eg: توصف تجربة علمية بسيطة خطوة بخطوة وتفهم ليه محتاجين مجموعة ضابطة.
+  ar: أن تصف تجربة علمية بسيطة خطوة خطوة وتفهم الحاجة إلى مجموعة ضابطة.
+  en: Describe a simple experiment step by step and see why you need a control group.
+slides:
+  - title: Kacang hijau di jendela
+    body:
+      ar_eg: |
+        Bu Laila بتعمل تجربة: هل النور بيأثر على طول نبات الفول الأخضر (kacang hijau)؟
+        - metode ilmiah = المنهج العلمي: سؤال، تجربة، نتيجة
+        - variabel = المتغيّر: هنا كمية النور
+        - kelompok kontrol = المجموعة الضابطة: نباتات في ظروف عادية عشان نقارن
+        - mengukur = يقيس: Kami mengukur tinggi tanaman setiap hari.
+        - mengulang = يعيد: العالِم بيعيد التجربة كذا مرة عشان يتأكد.
+      ar: |
+        تجري Bu Laila تجربة: هل يؤثّر الضوء في طول نبات الماش (kacang hijau)؟
+        - metode ilmiah = المنهج العلمي: سؤال فتجربة فنتيجة
+        - variabel = المتغيّر، وهو هنا مقدار الضوء
+        - kelompok kontrol = المجموعة الضابطة: نباتات في ظروف عادية للمقارنة
+        - mengukur = يقيس: Kami mengukur tinggi tanaman setiap hari.
+        - mengulang = يكرّر: يكرّر العالِم التجربة مرّات ليتأكّد.
+      en: |
+        Bu Laila runs an experiment: does light affect how tall mung bean (kacang hijau) sprouts grow?
+        - metode ilmiah = the scientific method: question, experiment, result
+        - variabel = variable; here, the amount of light
+        - kelompok kontrol = control group: plants in normal conditions to compare against
+        - mengukur = to measure: Kami mengukur tinggi tanaman setiap hari.
+        - mengulang = to repeat: a scientist repeats an experiment several times to be sure.
+    examples:
+      - text: Kelompok kontrol diletakkan di dekat jendela, sedangkan kelompok lain di dalam lemari.
+        ar_eg: المجموعة الضابطة اتحطت جنب الشباك، والمجموعة التانية جوه الدولاب.
+        ar: وُضعت المجموعة الضابطة قرب النافذة، والمجموعة الأخرى داخل الخزانة.
+        en: The control group was placed by the window, the other group inside a cupboard.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: peneliti
-        ar_eg: باحث
-        ar: باحث
-        en: researcher
-      - text: serangga
-        ar_eg: حشرة
-        ar: حشرة
-        en: insect
-      - text: mekar
-        ar_eg: يفتّح (الورد)
-        ar: يتفتّح
-        en: to bloom
-      - text: tahap
-        ar_eg: مرحلة
-        ar: مرحلة
-        en: stage, phase
-      - text: perumpamaan
-        ar_eg: تشبيه
-        ar: تشبيه
-        en: analogy, comparison
-    words: [peneliti, serangga, mekar, tahap, perumpamaan]
+      - text: metode ilmiah
+        ar_eg: المنهج العلمي
+        ar: المنهج العلمي
+        en: scientific method
+      - text: variabel
+        ar_eg: متغيّر
+        ar: متغيّر
+        en: variable
+      - text: kelompok kontrol
+        ar_eg: مجموعة ضابطة
+        ar: مجموعة ضابطة
+        en: control group
+      - text: mengukur
+        ar_eg: يقيس
+        ar: يقيس
+        en: to measure
+      - text: mengulang
+        ar_eg: يعيد
+        ar: يكرّر
+        en: to repeat
+    words: [metode ilmiah, variabel, kelompok kontrol, mengukur, mengulang]
   - id: e02
+    type: listen
+    text: Setiap pagi kami mengukur tinggi tanaman dengan penggaris.
+    question:
+      ar_eg: بيقيسوا إيه كل يوم الصبح؟
+      ar: ماذا يقيسون كلّ صباح؟
+      en: What do they measure every morning?
+    options:
+      - وزن الميه.
+      - طول النبات.
+      - حرارة الأوضة.
+    answer: 1
+    words: [mengukur]
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: الرافليزيا عايشة على نبات تاني. النبات ده اسمه إيه؟
-      ar: تعيش الرافليزيا على نبات آخر. ما اسم ذلك النبات؟
-      en: Rafflesia lives on another plant. What is that plant called?
-    options: [parasit, inang, spesies]
-    answer: 1
-    words: [inang, parasit]
-  - id: e03
-    type: fill_blank
-    sentence: Bunga itu berbau busuk ___ lalat datang.
-    meaning:
-      ar_eg: الوردة ريحتها وحشة فالدبّان بييجي.
-      ar: رائحة الزهرة كريهة فيأتي الذباب.
-      en: The flower smells foul, so the flies come.
-    options: [sehingga, proses, langka]
-    answers: [sehingga]
-    words: [sehingga]
-  - id: e04
-    type: listen
-    text: Para ilmuwan menemukan spesies baru setelah pengamatan selama tiga tahun.
-    question:
-      ar_eg: العلما لقوا النوع الجديد إمتى؟
-      ar: متى وجد العلماء النوع الجديد؟
-      en: When did the scientists find the new species?
+      ar_eg: ليه محتاجين kelompok kontrol؟
+      ar: لماذا نحتاج إلى kelompok kontrol؟
+      en: Why do we need a kelompok kontrol?
     options:
-      - بعد تلات سنين ملاحظة.
-      - من أول يوم.
-      - بعد ثوران بركان.
-    answer: 0
-    words: [ilmuwan, spesies, pengamatan]
+      - عشان التجربة تبقى أسرع.
+      - عشان نوفر فلوس.
+      - عشان نقارن بيها النتيجة.
+    answer: 2
+    words: [kelompok kontrol]
+  - id: e04
+    type: fill_blank
+    sentence: Dalam percobaan ini, ___ yang diubah hanya jumlah cahaya.
+    meaning:
+      ar_eg: في التجربة دي، المتغيّر الوحيد اللي اتغيّر هو كمية النور.
+      ar: في هذه التجربة، المتغيّر الوحيد الذي يُغيَّر هو مقدار الضوء.
+      en: In this experiment, the only variable changed is the amount of light.
+    options: [variabel, kelompok kontrol, metode ilmiah]
+    answers: [variabel]
+    words: [variabel, percobaan]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: النتيجة غريبة. العالِم المفروض يعمل إيه؟
+      ar: جاءت النتيجة غريبة. ماذا ينبغي للعالِم أن يفعل؟
+      en: The result is odd. What should the scientist do?
+    options:
+      - يعيد التجربة.
+      - يرمي النتيجة.
+      - يغيّر الأرقام.
+    answer: 0
+    explain:
+      ar_eg: 'mengulang جزء من الـ metode ilmiah: التجربة الكويسة لازم تدي نفس النتيجة تاني.'
+      ar: mengulang جزء من الـ metode ilmiah، فالتجربة الجيّدة تعطي النتيجة نفسها مجدّدًا.
+      en: mengulang is part of the metode ilmiah; a good experiment gives the same result again.
+    words: [mengulang, metode ilmiah]
+  - id: e06
     type: build_sentence
     source:
-      ar_eg: بمعنى تاني، الوردة العملاقة دي نادرة جدًا.
-      ar: بعبارة أخرى، هذه الزهرة العملاقة نادرة جدًّا.
-      en: In other words, this giant flower is very rare.
-    answer: Dengan kata lain, bunga raksasa ini sangat langka.
-    distractors: [magma, inang]
-    words: [dengan kata lain, raksasa, langka]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة بتشرح «Penyerbukan dilakukan oleh serangga» ببساطة؟
-      ar: أيّ جملة تشرح «Penyerbukan dilakukan oleh serangga» ببساطة؟
-      en: Which sentence explains "Penyerbukan dilakukan oleh serangga" simply?
-    options:
-      - Bunga makan serangga.
-      - Serangga takut pada bunga.
-      - Serangga membawa serbuk dari bunga ke bunga.
-    answer: 2
-    words: [penyerbukan, serangga]
+      ar_eg: العلماء بيستخدموا المنهج العلمي.
+      ar: يستعمل العلماء المنهج العلمي.
+      en: Scientists use the scientific method.
+    answer: Para ilmuwan memakai metode ilmiah.
+    distractors: [variabel, mengukur]
+    words: [metode ilmiah, ilmuwan]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: الباحث شرح عملية الثوران ببساطة.
-      ar: شرح الباحث عملية الثوران ببساطة.
-      en: The researcher explained the eruption process simply.
+      ar_eg: لازم نعيد التجربة تلات مرات.
+      ar: علينا أن نكرّر التجربة ثلاث مرّات.
+      en: We have to repeat the experiment three times.
     answers:
-      - Peneliti itu menjelaskan proses letusan dengan sederhana.
-      - Peneliti itu menjelaskan proses letusan secara sederhana.
-      - Peneliti itu menjelaskan proses letusan dengan bahasa sederhana.
-    words: [peneliti, proses, letusan, sederhana]
+      - Kita harus mengulang percobaan tiga kali.
+      - Kami harus mengulang percobaan tiga kali.
+      - Kita harus mengulang percobaan itu tiga kali.
+      - Kita harus mengulangi percobaan tiga kali.
+    words: [mengulang]
   - id: e08
-    type: translate
-    direction: from_target
-    source_text: Pada dasarnya, Rafflesia adalah parasit yang langka.
-    answers_meaning:
-      ar_eg:
-        - في الأساس، الرافليزيا طفيلي نادر.
-        - الرافليزيا أساسًا نبات طفيلي ونادر.
-      ar:
-        - الرافليزيا في الأساس طفيلي نادر.
-        - الرافليزيا أساسًا نبات طفيلي نادر.
-      en:
-        - Basically, Rafflesia is a rare parasite.
-        - At heart, Rafflesia is a rare parasitic plant.
-    words: [pada dasarnya, parasit, langka]
+    type: speaking
+    text: Tanaman di kelompok kontrol tumbuh hijau dan kuat.
+    meaning:
+      ar_eg: النباتات اللي في المجموعة الضابطة طلعت خضرا وقوية.
+      ar: نمت نباتات المجموعة الضابطة خضراء قويّة.
+      en: The plants in the control group grew green and strong.
+    words: [kelompok kontrol]
   - id: e09
     type: dictation
-    text: Ilmuwan itu membayangkan magma seperti sup panas.
+    text: Peneliti mengukur variabel yang sama setiap hari.
     meaning:
-      ar_eg: العالِم ده تخيّل الماجما زي شوربة سخنة.
-      ar: تخيّل العالِم الصهارة كحساء ساخن.
-      en: The scientist pictured magma as hot soup.
-    words: [ilmuwan, membayangkan, magma]
+      ar_eg: الباحث بيقيس نفس المتغيّر كل يوم.
+      ar: يقيس الباحث المتغيّر نفسه كلّ يوم.
+      en: The researcher measures the same variable every day.
+    words: [mengukur, variabel]
   - id: e10
-    type: speaking
-    text: Bunga itu mekar sehingga banyak serangga datang.
+    type: fill_blank
+    sentence: Langkah pertama dalam ___ adalah bertanya.
     meaning:
-      ar_eg: الوردة فتّحت فحشرات كتير جت.
-      ar: تفتّحت الزهرة فجاءت حشرات كثيرة.
-      en: The flower bloomed, so many insects came.
-    words: [mekar, sehingga, serangga]
+      ar_eg: أول خطوة في المنهج العلمي إنك تسأل.
+      ar: الخطوة الأولى في المنهج العلمي هي السؤال.
+      en: The first step in the scientific method is asking a question.
+    options: [metode ilmiah, kelompok kontrol, variabel]
+    answers: [metode ilmiah]
+    words: [metode ilmiah]
 dialogue:
-  title: Akhirnya mekar
+  title: Percobaan di dapur
   lines:
-    - speaker: Bu Laila
-      text: Rafflesia yang kita amati mekar pagi ini. Kamu beruntung!
-      ar_eg: الرافليزيا اللي كنا بنلاحظها فتّحت النهارده الصبح. إنت محظوظ!
-      ar: تفتّحت الرافليزيا التي نلاحظها هذا الصباح. أنت محظوظ!
-      en: The Rafflesia we've been watching bloomed this morning. You're lucky!
+    - speaker: Aisyah
+      text: Om, kenapa kacang hijau di lemari tumbuh tinggi tapi kuning?
+      ar_eg: يا عمو، ليه الفول اللي في الدولاب طويل بس أصفر؟
+      ar: يا عمّو، لماذا نما الماش في الخزانة طويلًا لكنه أصفر؟
+      en: Uncle, why did the beans in the cupboard grow tall but yellow?
     - speaker: Mohamed
-      text: Akhirnya! Setelah semua pengamatan itu, saya melihatnya sendiri.
-      ar_eg: أخيرًا! بعد كل الملاحظات دي، شفتها بعيني.
-      ar: أخيرًا! بعد كلّ تلك الملاحظات، رأيتها بعيني.
-      en: At last! After all that observing, I've seen it with my own eyes.
+      text: Karena tidak ada cahaya. Cahaya adalah variabelnya.
+      ar_eg: عشان مافيش نور. النور هو المتغيّر.
+      ar: لأنه لا ضوء هناك، والضوء هو المتغيّر.
+      en: Because there's no light. Light is the variable.
     - speaker: Bu Laila
-      text: Besok kamu ke Padang, kan? Jangan lupa tulis penjelasannya untuk blogmu.
-      ar_eg: بكرة رايح بادانج، صح؟ ماتنساش تكتب الشرح للبلوج بتاعك.
-      ar: غدًا تذهب إلى بادانغ، أليس كذلك؟ لا تنسَ كتابة الشرح لمدوّنتك.
-      en: You're off to Padang tomorrow, right? Don't forget to write the explainer for your blog.
-    - speaker: Mohamed
-      text: Pasti. Dengan bahasa sederhana, supaya Aisyah juga bisa membacanya.
-      ar_eg: أكيد. بكلام بسيط، علشان عائشة كمان تقدر تقراه.
-      ar: بالتأكيد، وبلغة بسيطة كي تقرأه عائشة أيضًا.
-      en: Definitely. In simple language, so Aisyah can read it too.
-souvenir:
-  id: bipa6.u08.souvenir
-  title: Rafflesia arnoldii
-  note:
-    ar_eg: الرافليزيا أرنولدي أكبر وردة مفردة في الدنيا، عرضها ممكن يوصل لحوالي متر ووزنها لحوالي 10 كيلو. مالهاش ورق ولا ساق ولا جذور، وعايشة طفيلي على نبات متسلّق. البرعم بياخد شهور، والوردة بتفضل مفتّحة حوالي أسبوع بس، وريحتها زي اللحمة البايظة علشان تجذب الدبّان. العلم الغربي سجّلها سنة 1818 في بنجكولو، واتسمّت على اسم رافلز وأرنولد. وهي واحدة من التلات ورود الوطنية لإندونيسيا، وعلشان كده بنجكولو اسمها «أرض الرافليزيا».
-    ar: الرافليزيا أرنولدي أكبر زهرة مفردة في العالم، قد يبلغ قطرها نحو متر ووزنها نحو عشرة كيلوغرامات. لا أوراق لها ولا ساق ولا جذور، وتعيش متطفّلة على نبات متسلّق. يستغرق برعمها شهورًا، ولا تبقى متفتّحة إلّا نحو أسبوع، ورائحتها كاللحم الفاسد لتجذب الذباب. سجّلها العلم الغربي عام 1818 في بنغكولو، وسُمّيت باسمَي رافلز وأرنولد. وهي إحدى الأزهار الوطنية الثلاث لإندونيسيا، ولذلك تُلقّب بنغكولو «أرض الرافليزيا».
-    en: Rafflesia arnoldii is the world's largest single flower, up to about a metre across and around 10 kg. It has no leaves, stem or roots and lives as a parasite on a climbing vine. Its bud takes months to develop, the flower stays open only about a week, and it smells of rotting meat to attract flies. Western science recorded it in 1818 in Bengkulu, naming it after Raffles and Arnold. It is one of Indonesia's three national flowers, which is why Bengkulu is called "Bumi Rafflesia".
+      text: Dan kacang di jendela adalah kelompok kontrol. Kita bandingkan keduanya.
+      ar_eg: والفول اللي عند الشباك هو المجموعة الضابطة. هنقارن الاتنين.
+      ar: والماش عند النافذة هو المجموعة الضابطة، وسنقارن بينهما.
+      en: And the beans at the window are the control group. We compare the two.
+    - speaker: Aisyah
+      text: Besok aku mengukur lagi, lalu kita ulang percobaannya, ya!
+      ar_eg: بكرة هقيس تاني، وبعدين نعيد التجربة، ماشي!
+      ar: سأقيس غدًا مجدّدًا، ثم نعيد التجربة، اتفقنا!
+      en: Tomorrow I'll measure again, then we'll repeat the experiment, okay!
+new_words:
+  - word: metode ilmiah
+    pos: noun
+    ar_eg: المنهج العلمي
+    ar: المنهج العلمي
+    en: scientific method
+  - word: variabel
+    pos: noun
+    ar_eg: متغيّر
+    ar: متغيّر
+    en: variable
+  - word: kelompok kontrol
+    pos: noun
+    ar_eg: مجموعة ضابطة
+    ar: مجموعة ضابطة
+    en: control group
+  - word: mengukur
+    pos: verb
+    ar_eg: يقيس
+    ar: يقيس
+    en: to measure
+  - word: mengulang
+    pos: verb
+    ar_eg: يعيد
+    ar: يكرّر، يعيد
+    en: to repeat
 review:
   status: draft
   verified: false

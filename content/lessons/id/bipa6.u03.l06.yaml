@@ -1,163 +1,215 @@
 schema: kabar.lesson/v1
 id: bipa6.u03.l06
 language: id
-title: Ulangan Unit 3
+title: Silat dan randai
 can_do:
-  ar_eg: تشرح عادة من عادات المينانج، وتستخدم مثل في مكانه.
-  ar: أن تشرح عرفًا من أعراف المينانغ وتوظّف مثلًا في موضعه.
-  en: Explain a Minang custom and use a proverb in its place.
+  ar_eg: 'توصف عرض الرانداي المينانجي: قتال وغنا وحكاية في دايرة.'
+  ar: 'أن تصف عرض الرانداي المينانغي: قتال وغناء وحكاية في دائرة.'
+  en: Describe a Minang randai show, with martial arts, song and story in a circle.
+slides:
+  - title: Teater di tengah lingkaran
+    body:
+      ar_eg: |
+        زمان، الشباب المينانجي كانوا بيبيتوا في الـ surau ويتعلموا الدين والـ silat مع بعض.
+        - silat = فن قتال تقليدي (بالمينانجي silek)
+        - pesilat = اللي بيلعب silat
+        - randai = مسرح شعبي مينانجي: حركات silat + dendang + حكاية
+        - lingkaran = دايرة. اللاعيبة بيلفوا في دايرة والحكاية بتتمثل في النص.
+        - dendang = غنوة شعبية بتتغنى في العرض
+      ar: |
+        كان شباب المينانغ قديمًا يبيتون في الـ surau، يتعلّمون الدين والـ silat معًا.
+        - silat = فنّ قتال تقليدي (بالمينانغية silek)
+        - pesilat = لاعب الـ silat
+        - randai = مسرح شعبي مينانغي: حركات silat مع dendang وحكاية
+        - lingkaran = دائرة؛ يدور المؤدّون في دائرة وتُمثَّل الحكاية في وسطها.
+        - dendang = أغنية شعبية تُغنّى في العرض
+      en: |
+        Young Minang men once slept at the surau, learning religion and silat together.
+        - silat = traditional martial art (silek in Minang)
+        - pesilat = silat fighter
+        - randai = Minang folk theatre: silat moves, dendang and a story
+        - lingkaran = circle. Performers move in a circle while the story is acted in the middle.
+        - dendang = a folk song sung during the show
+    examples:
+      - text: Para pesilat bergerak dalam lingkaran sambil menyanyikan dendang.
+        ar_eg: لاعيبة السيلات بيتحركوا في دايرة وهما بيغنوا.
+        ar: يتحرّك لاعبو السيلات في دائرة وهم يغنّون.
+        en: The silat fighters move in a circle as they sing.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: peribahasa
-        ar_eg: أمثال
-        ar: أمثال
-        en: proverb
-      - text: pusaka
-        ar_eg: إرث عيلة
-        ar: إرث عائلي
-        en: family heritage
-      - text: syarak
-        ar_eg: شرع
-        ar: شرع
-        en: Islamic law
-      - text: kerabat
-        ar_eg: قرايب
-        ar: أقارب
-        en: relatives
-      - text: teguh
-        ar_eg: ثابت / متين
-        ar: راسخ
-        en: firm, steadfast
-    words: [peribahasa, pusaka, syarak, kerabat, teguh]
+      - text: silat
+        ar_eg: فن قتال تقليدي
+        ar: فنّ قتال تقليدي
+        en: traditional martial art
+      - text: pesilat
+        ar_eg: لعيب سيلات
+        ar: لاعب سيلات
+        en: silat fighter
+      - text: randai
+        ar_eg: مسرح شعبي مينانجي
+        ar: مسرح شعبي مينانغي
+        en: Minang folk theatre
+      - text: lingkaran
+        ar_eg: دايرة
+        ar: دائرة
+        en: circle
+      - text: dendang
+        ar_eg: غنوة شعبية
+        ar: أغنية شعبية
+        en: folk song
+    words: [silat, pesilat, randai, lingkaran, dendang]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: مين بيرشد ولاد الأخت عند المينانج؟
-      ar: مَن يرشد أبناء الأخت عند المينانغ؟
-      en: Who guides a sister's children among the Minang?
-    options: [kakek, mamak, tetangga]
-    answer: 1
-    words: [mamak]
-  - id: e03
-    type: fill_blank
-    sentence: Adat bersendi ___, syarak bersendi Kitabullah.
-    meaning:
-      ar_eg: العادة قايمة على الشرع، والشرع قايم على كتاب الله.
-      ar: العرف قائم على الشرع، والشرع قائم على كتاب الله.
-      en: Custom rests on sharia; sharia rests on the Book of God.
-    options: [syarak, surau, suku]
-    answers: [syarak]
-    words: [syarak, bersendi]
-  - id: e04
-    type: listen
-    text: Rumah gadang itu pusaka yang turun ke anak perempuan.
-    question:
-      ar_eg: البيت بيتورث لمين؟
-      ar: لمن يُورَّث البيت؟
-      en: Who inherits the house?
+      ar_eg: الـ randai فيه إيه؟
+      ar: ممّ يتكوّن الـ randai؟
+      en: What does a randai combine?
     options:
-      - للولاد.
-      - للخال.
-      - للبنات.
+      - مزيكا غربية بس.
+      - حركات silat وغنا وحكاية.
+      - رقص من غير كلام.
+    answer: 1
+    words: [randai, silat]
+  - id: e03
+    type: listen
+    text: Dulu anak laki-laki belajar mengaji dan silat di surau.
+    question:
+      ar_eg: الولاد زمان كانوا بيتعلموا إيه في الـ surau؟
+      ar: ماذا كان الصبيان يتعلّمون قديمًا في الـ surau؟
+      en: What did boys once learn at the surau?
+    options:
+      - الحساب والطبخ.
+      - الزراعة والصيد.
+      - القرآن والسيلات.
     answer: 2
-    words: [pusaka]
+    words: [silat]
+  - id: e04
+    type: fill_blank
+    sentence: Penonton duduk mengelilingi ___ para pemain randai.
+    meaning:
+      ar_eg: الجمهور قاعد حوالين دايرة لاعيبة الرانداي.
+      ar: يجلس الجمهور حول دائرة مؤدّي الرانداي.
+      en: The audience sits around the circle of randai players.
+    options: [lingkaran, dendang, kenduri]
+    answers: [lingkaran]
+    words: [lingkaran, randai]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: القرار اتاخد بالتوافق في الزاوية.
-      ar: اتُّخذ القرار بالتوافق في الزاوية.
-      en: The decision was made by consensus at the surau.
-    answer: Keputusan diambil secara mufakat di surau.
-    distractors: [warisan, gading]
-    words: [mufakat, surau]
-  - id: e06
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي مثل بيقول «محدش كامل»؟
-      ar: أيّ مثل يعني «لا أحد كامل»؟
-      en: Which proverb means "nobody's perfect"?
+      ar_eg: «pesilat» يعني مين؟
+      ar: من «pesilat»؟
+      en: Who is a "pesilat"?
     options:
-      - Tak ada gading yang tak retak.
-      - Nasi sudah menjadi bubur.
-      - Lain lubuk lain ikannya.
+      - اللي بيلعب silat.
+      - اللي بيبيع silat.
+      - اللي بيكتب عن silat.
     answer: 0
-    words: [gading, retak]
+    explain:
+      ar_eg: pe- + silat = اللي بيعمل الحاجة، زي pelari (عدّاء).
+      ar: pe- + silat = فاعل الشيء، مثل pelari (عدّاء).
+      en: pe- + silat = the one who does it, like pelari (runner).
+    words: [pesilat]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الغنوة الشعبية بتحكي قصة حب حزينة.
+      ar: تروي الأغنية الشعبية قصّة حبّ حزينة.
+      en: The folk song tells a sad love story.
+    answer: Dendang itu menceritakan kisah cinta yang sedih.
+    distractors: [lingkaran, pesilat]
+    words: [dendang]
   - id: e07
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بالعكس، النسب في مصر من الأب.
-      ar: على العكس، النسب في مصر من جهة الأب.
-      en: Conversely, descent in Egypt is through the father.
-    answers:
-      - Sebaliknya, garis keturunan di Mesir dari ayah.
-      - Sebaliknya, di Mesir garis keturunan mengikuti ayah.
-      - Sebaliknya, garis keturunan di Mesir bersifat patrilineal.
-      - Sebaliknya, di Mesir garis keturunannya dari pihak ayah.
-    words: [sebaliknya, garis keturunan]
-  - id: e08
-    type: translate
     direction: from_target
-    source_text: Seperti kata pepatah, di mana bumi dipijak, di situ langit dijunjung.
+    source_text: Randai biasanya dipentaskan pada malam hari di lapangan kampung.
     answers_meaning:
       ar_eg:
-        - زي ما بيقول المثل، يا غريب كن أديب.
-        - زي المثل ما بيقول، احترم عادات البلد اللي إنت فيها.
+        - الرانداي عادةً بيتعرض بالليل في ساحة البلد.
+        - عرض الرانداي غالبًا بيبقى بالليل في ميدان القرية.
       ar:
-        - كما يقول المثل، يا غريب كن أديبًا.
-        - وكما يقول المثل، احترم أعراف البلد الذي تنزل فيه.
+        - يُعرض الرانداي عادةً ليلًا في ساحة القرية.
+        - غالبًا ما يُقدَّم الرانداي ليلًا في ميدان البلدة.
       en:
-        - As the saying goes, when in Rome, do as the Romans do.
-        - As the proverb says, honour the ways of the land you stand on.
-    words: [pepatah, menjunjung]
+        - Randai is usually performed at night on the village field.
+        - A randai is mostly staged at night in the village square.
+    words: [randai]
+  - id: e08
+    type: speaking
+    text: Pesilat itu bergerak pelan, lalu tiba-tiba melompat.
+    meaning:
+      ar_eg: لعيب السيلات اتحرك بالراحة، وبعدين فجأة نط.
+      ar: تحرّك لاعب السيلات ببطء ثم قفز فجأة.
+      en: The fighter moved slowly, then suddenly leapt.
+    words: [pesilat]
   - id: e09
     type: dictation
-    text: Warisan pribadi dibagi menurut syarak, tetapi pusaka menurut adat.
+    text: Silat bukan hanya bela diri, tetapi juga seni dan adat.
     meaning:
-      ar_eg: الميراث الشخصي بيتقسم بالشرع، وإرث العيلة بالعادة.
-      ar: يُقسم الميراث الشخصي وفق الشرع، والإرث العائلي وفق العرف.
-      en: Personal inheritance is divided by sharia, but family heritage by custom.
-    words: [warisan, adat]
+      ar_eg: السيلات مش بس دفاع عن النفس، ده كمان فن وعادة.
+      ar: ليس السيلات دفاعًا عن النفس فحسب، بل هو فنّ وعُرف أيضًا.
+      en: Silat isn't only self-defence; it's also art and custom.
+    words: [silat]
   - id: e10
-    type: speaking
-    text: Kedua budaya serupa, sedikit demi sedikit saya memahaminya.
+    type: fill_blank
+    sentence: Suara ___ terdengar dari tengah lingkaran.
     meaning:
-      ar_eg: الثقافتين شبه بعض، وأنا بفهمها شوية بشوية.
-      ar: الثقافتان متشابهتان، وأنا أفهمهما شيئًا فشيئًا.
-      en: The two cultures are alike, and little by little I understand them.
-    words: [serupa, sedikit demi sedikit]
+      ar_eg: صوت الغنوة الشعبية كان طالع من نص الدايرة.
+      ar: كان صوت الأغنية الشعبية يُسمع من وسط الدائرة.
+      en: The sound of a folk song came from the middle of the circle.
+    options: [dendang, pesilat, penghulu]
+    answers: [dendang]
+    words: [dendang, lingkaran]
 dialogue:
-  title: Perpisahan di Bukittinggi
+  title: Malam randai
   lines:
-    - speaker: Uda Rafi
-      text: Besok kamu ke Palembang. Apa yang paling kamu ingat dari ranah Minang?
-      ar_eg: بكرة رايح باليمبانج. إيه أكتر حاجة هتفتكرها من أرض المينانج؟
-      ar: غدًا تسافر إلى باليمبانغ. ما أكثر ما ستذكره من أرض المينانغ؟
-      en: Tomorrow you go to Palembang. What will you remember most from the Minang lands?
+    - speaker: Uni Lisa
+      text: Mohamed, malam ini ada randai di lapangan. Ayo kita nonton!
+      ar_eg: يا محمد، الليلة فيه رانداي في الساحة. يلا نتفرج!
+      ar: يا محمد، الليلة عرض رانداي في الساحة. هيّا نشاهده!
+      en: Mohamed, there's a randai on the field tonight. Let's go watch!
     - speaker: Mohamed
-      text: Atap rumah gadang yang seperti tanduk kerbau, dan adat yang bersendi syarak.
-      ar_eg: سقف البيت الكبير اللي زي قرون الجاموسة، والعادات اللي قايمة على الشرع.
-      ar: سقوف الرومة غادانغ التي تشبه قرون الجاموس، والعرف القائم على الشرع.
-      en: The rumah gadang roofs shaped like buffalo horns, and custom resting on sharia.
-    - speaker: Uda Rafi
-      text: Dan peribahasanya, kan? Ingat, di mana bumi dipijak …
-      ar_eg: والأمثال كمان، صح؟ افتكر، يا غريب …
-      ar: والأمثال أيضًا، أليس كذلك؟ تذكّر، يا غريب …
-      en: And the proverbs, right? Remember, di mana bumi dipijak …
+      text: Randai itu seperti teater? Atau seperti silat?
+      ar_eg: الرانداي ده زي المسرح؟ ولا زي السيلات؟
+      ar: هل الرانداي مسرح أم سيلات؟
+      en: Is randai like theatre? Or like silat?
+    - speaker: Uni Lisa
+      text: Dua-duanya. Para pesilat menari dalam lingkaran, dan ada dendang juga.
+      ar_eg: الاتنين. لاعيبة السيلات بيرقصوا في دايرة، وكمان فيه غنا.
+      ar: كلاهما؛ يرقص لاعبو السيلات في دائرة، ويرافقهم الغناء.
+      en: Both. The fighters dance in a circle, and there's singing too.
     - speaker: Mohamed
-      text: … di situ langit dijunjung. Terima kasih, Uda. Utang budi saya besar.
-      ar_eg: … كن أديب. شكرًا يا أودا. جميلك عليّ كبير.
-      ar: … كن أديبًا. شكرًا يا أودا، فضلك عليّ كبير.
-      en: … di situ langit dijunjung. Thank you, Uda. I owe you a great debt.
-souvenir:
-  id: bipa6.u03.souvenir
-  title: Rumah Gadang
-  note:
-    ar_eg: الرومة غادانج بيت المينانجكاباو الكبير، وسقفه طالع لفوق زي قرون الجاموسة. البيت ملك الستات، وبيتورث من الأم لبنتها، والولاد زمان كانوا بيناموا في الزاوية. ومع إن المجتمع نسبه من ناحية الأم، هو مسلم ومتدين جدًا، وبيلخّصوا ده في «العادة قايمة على الشرع، والشرع قايم على كتاب الله».
-    ar: الرومة غادانغ بيت المينانغكاباو الكبير، وتنتصب سقوفه كقرون الجاموس. والبيت ملك للنساء يُورَّث من الأمّ إلى ابنتها، وكان الصبيان قديمًا يبيتون في الزاوية. ومع أنّ النسب في هذا المجتمع أمومي فهو مسلم شديد التديّن، ويلخّصون ذلك في «العرف قائم على الشرع، والشرع قائم على كتاب الله».
-    en: The rumah gadang is the Minangkabau great house, its roof sweeping up like buffalo horns. The house belongs to the women and passes from mother to daughter, while boys once slept at the surau. Though descent is matrilineal, the society is devoutly Muslim, summed up as "custom rests on sharia, and sharia rests on the Book of God".
+      text: Seru sekali! Di Mesir kami punya tahtib, tarian dengan tongkat.
+      ar_eg: حلو أوي! إحنا في مصر عندنا التحطيب، رقصة بالعصاية.
+      ar: رائع! لدينا في مصر التحطيب، رقصة بالعصا.
+      en: How fun! In Egypt we have tahtib, a stick dance.
+new_words:
+  - word: silat
+    pos: noun
+    ar_eg: فن قتال تقليدي
+    ar: فنّ قتال تقليدي
+    en: silat (traditional martial art)
+  - word: pesilat
+    pos: noun
+    ar_eg: لعيب سيلات
+    ar: لاعب سيلات
+    en: silat fighter
+  - word: randai
+    pos: noun
+    ar_eg: مسرح شعبي مينانجي
+    ar: مسرح شعبي مينانغي
+    en: randai (Minang folk theatre)
+  - word: lingkaran
+    pos: noun
+    ar_eg: دايرة
+    ar: دائرة
+    en: circle
+  - word: dendang
+    pos: noun
+    ar_eg: غنوة شعبية
+    ar: أغنية شعبية
+    en: folk song (Minang)
 review:
   status: draft
   verified: false
