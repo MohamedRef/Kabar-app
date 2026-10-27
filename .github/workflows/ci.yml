@@ -50,6 +50,13 @@ jobs:
       - name: Reading coverage (advisory)
         run: |
           { echo '```'; cargo run -q -p kabar-tools -- coverage --warn; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+      # Advisory (#140): closed exercises that don't say why the answer is right.
+      - name: Answer explanations (advisory)
+        run: |
+          { echo '```'; cargo run -q -p kabar-tools -- explains --warn; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+      # Advisory until the Jogja/Madiun relocation lands: Javanese is Jogja + Madiun only.
+      - name: Javanese dialect (advisory)
+        run: cargo run -q -p kabar-tools -- dialect --warn
 
   android:
     name: Android arm64 compiles
