@@ -219,6 +219,7 @@ pub fn LevelCheckScreen() -> Element {
             div { class: "st-head",
                 button {
                     class: "st-back",
+                    "data-back": "true",
                     aria_label: st(lang, S::CheckClose),
                     title: st(lang, S::CheckClose),
                     onclick: move |_| super::back(ui),

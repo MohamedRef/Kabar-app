@@ -57,6 +57,22 @@ impl PronMode {
     pub const ALL: [Self; 3] = [Self::On, Self::Tap, Self::Off];
 }
 
+/// How the translation shows under Indonesian and Javanese sentences.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum TranslationMode {
+    /// Always under the sentence.
+    #[default]
+    On,
+    /// Behind a tap, so the learner tries to read it first.
+    Tap,
+    Off,
+}
+
+impl TranslationMode {
+    pub const ALL: [Self; 3] = [Self::On, Self::Tap, Self::Off];
+}
+
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct Settings {
     pub ui_language: UiLanguage,
@@ -69,6 +85,10 @@ pub struct Settings {
     pub sounds_off: bool,
     /// Arabic-script pronunciation next to target-language text.
     pub pronunciation: PronMode,
+    /// The translation under target-language sentences.
+    pub translation: TranslationMode,
+    /// Word colours (verb, noun, affixes) are off; on by default.
+    pub word_colours_off: bool,
 }
 
 /// Keys as stored in the `settings` table.
@@ -79,6 +99,8 @@ pub mod keys {
     pub const WELCOMED: &str = "welcomed";
     pub const SOUNDS_OFF: &str = "sounds_off";
     pub const PRONUNCIATION: &str = "pronunciation";
+    pub const TRANSLATION: &str = "translation";
+    pub const WORD_COLOURS_OFF: &str = "word_colours_off";
 }
 
 impl Settings {
@@ -94,6 +116,10 @@ impl Settings {
                 keys::WELCOMED => s.welcomed = serde_json::from_str(value).unwrap_or_default(),
                 keys::SOUNDS_OFF => s.sounds_off = serde_json::from_str(value).unwrap_or_default(),
                 keys::PRONUNCIATION => s.pronunciation = serde_json::from_str(value).unwrap_or_default(),
+                keys::TRANSLATION => s.translation = serde_json::from_str(value).unwrap_or_default(),
+                keys::WORD_COLOURS_OFF => {
+                    s.word_colours_off = serde_json::from_str(value).unwrap_or_default()
+                }
                 _ => {}
             }
         }
@@ -114,6 +140,12 @@ impl Settings {
         push(self.welcomed != other.welcomed, keys::WELCOMED, json(&other.welcomed));
         push(self.sounds_off != other.sounds_off, keys::SOUNDS_OFF, json(&other.sounds_off));
         push(self.pronunciation != other.pronunciation, keys::PRONUNCIATION, json(&other.pronunciation));
+        push(self.translation != other.translation, keys::TRANSLATION, json(&other.translation));
+        push(
+            self.word_colours_off != other.word_colours_off,
+            keys::WORD_COLOURS_OFF,
+            json(&other.word_colours_off),
+        );
         out
     }
 }
@@ -165,6 +197,15 @@ mod tests {
         let new = Settings { pronunciation: PronMode::Tap, ..Settings::default() };
         let pairs = Settings::default().changed_pairs(&new);
         assert_eq!(pairs, vec![("pronunciation", "\"tap\"".to_string())]);
+        assert_eq!(Settings::from_pairs(pairs.iter().map(|(k, v)| (*k, v.as_str()))), new);
+    }
+
+    #[test]
+    fn translation_defaults_on_and_round_trips() {
+        assert_eq!(Settings::default().translation, TranslationMode::On);
+        let new = Settings { translation: TranslationMode::Tap, ..Settings::default() };
+        let pairs = Settings::default().changed_pairs(&new);
+        assert_eq!(pairs, vec![("translation", "\"tap\"".to_string())]);
         assert_eq!(Settings::from_pairs(pairs.iter().map(|(k, v)| (*k, v.as_str()))), new);
     }
 }

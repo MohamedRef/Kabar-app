@@ -176,6 +176,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
         lesson_values.insert(stem(file).to_owned(), value);
     }
     check_forward_words(&report.curricula, &lesson_values, &mut problems);
+    check_retaught_words(&report.curricula, &lesson_values, &mut problems);
     for level in LESSON_LEVELS {
         for id in index.lessons_of(level) {
             if !report.lessons.iter().any(|l| l == id) {
@@ -278,6 +279,40 @@ fn check_forward_words(
                             "{id} {ex}: practises '{w}', which is first taught later in {} (teach it earlier or drop the tag)",
                             order[later]
                         ));
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// Words with two unrelated senses, each taught once (minggu = Sunday and
+/// week; melamar = propose and apply; dalem = humble "I" and krama inggil
+/// "home"; papan = place and board).
+const TWO_SENSES: [&str; 4] = ["minggu", "melamar", "dalem", "papan"];
+
+/// A word is taught once, in the first lesson that lists it in `new_words`;
+/// later lessons recycle it in exercises and texts but don't present it as
+/// new again.
+fn check_retaught_words(
+    curricula: &[Curriculum],
+    lessons: &BTreeMap<String, serde_json::Value>,
+    problems: &mut Vec<String>,
+) {
+    use serde_json::Value;
+    for c in curricula {
+        let mut first: BTreeMap<String, &str> = BTreeMap::new();
+        let ids = c.levels.iter().flat_map(|l| &l.units).flat_map(|u| &u.lessons).map(|l| l.id.as_str());
+        for id in ids.filter(|id| lessons.contains_key(*id)) {
+            let new_words = lessons[id].get("new_words").and_then(Value::as_array).into_iter().flatten();
+            for w in new_words.filter_map(|w| w.get("word").and_then(Value::as_str)).map(str::to_lowercase) {
+                match first.get(&w) {
+                    Some(&earlier) if earlier != id && !TWO_SENSES.contains(&w.as_str()) => problems.push(format!(
+                        "{id}: '{w}' is already taught in {earlier}; drop it from new_words (recycling it in exercises is fine)"
+                    )),
+                    Some(_) => {}
+                    None => {
+                        first.insert(w, id);
                     }
                 }
             }

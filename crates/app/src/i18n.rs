@@ -522,6 +522,7 @@ pub enum Msg {
     OcrUnavailable,
     PickFailed,
     ScreenshotEmpty,
+    ShareFirstImageOnly,
     SharedFrom,
     Close,
     Delete,
@@ -540,6 +541,7 @@ pub enum Msg {
     TranslationUnreachable,
     TranslationTryAgain,
     TranslationRetry,
+    ReaderWriteFailed,
     // Unggah-Ungguh Simulator (M11)
     UnggahTitle,
     UnggahBlurb,
@@ -1956,6 +1958,11 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (TranslationRetry, ArEg) => "جرّب تاني",
         (TranslationRetry, Ar) => "أعد المحاولة",
         (TranslationRetry, En) => "Try again",
+        (ReaderWriteFailed, ArEg) => "معرفتش أحفظ ده دلوقتي، ومفيش حاجة اتغيّرت. جرّب تاني بعد شوية.",
+        (ReaderWriteFailed, Ar) => "تعذّر الحفظ الآن، ولم يتغيّر شيء. حاول مجددًا بعد قليل.",
+        (ReaderWriteFailed, En) => {
+            "Couldn't save that just now, so nothing changed. Please try again in a moment."
+        }
         (ReaderIntro, ArEg) => "الصق أي كلام إندونيسي أو جاوي، أو افتح سكرين شوت، وكل كلمة هتبقى ليها شرح.",
         (ReaderIntro, Ar) => "الصق أي نص إندونيسي أو جاوي، أو افتح لقطة شاشة، وستجد شرحًا لكل كلمة.",
         (ReaderIntro, En) => {
@@ -2223,6 +2230,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ScreenshotEmpty, ArEg) => "ملقيتش كلام في الصورة دي.",
         (ScreenshotEmpty, Ar) => "لم أجد نصًا في الصورة.",
         (ScreenshotEmpty, En) => "No text found in that image.",
+        (ShareFirstImageOnly, ArEg) => "بنقرا أول صورة بس. ابعت الباقي واحدة واحدة.",
+        (ShareFirstImageOnly, Ar) => "نقرأ الصورة الأولى فقط. أرسل البقية واحدة تلو الأخرى.",
+        (ShareFirstImageOnly, En) => "Reading the first image only. Share the others one at a time.",
         (SharedFrom, ArEg) => "اتبعت من",
         (SharedFrom, Ar) => "مُشارَك من",
         (SharedFrom, En) => "Shared from",

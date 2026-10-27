@@ -31,7 +31,6 @@ import android.os.IBinder
  */
 class PlaybackService : Service() {
     private var session: MediaSession? = null
-    private var focus: AudioFocusRequest? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -54,7 +53,6 @@ class PlaybackService : Service() {
             ACTION_PAUSE -> PlaybackBridge.pause()
             ACTION_PLAY -> PlaybackBridge.resume()
             ACTION_STOP -> PlaybackBridge.stop(this)
-            else -> requestFocus()
         }
         refresh()
         return START_NOT_STICKY
@@ -63,31 +61,9 @@ class PlaybackService : Service() {
     override fun onDestroy() {
         PlaybackBridge.service = null
         PlaybackBridge.release()
-        abandonFocus()
         session?.release()
         session = null
         super.onDestroy()
-    }
-
-    /** Asks for audio focus; another app's call or music pauses the episode. */
-    fun requestFocus(): Boolean {
-        val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        val req = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
-            .setAudioAttributes(ATTRIBUTES)
-            .setOnAudioFocusChangeListener { change ->
-                if (change == AudioManager.AUDIOFOCUS_LOSS || change == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT) {
-                    PlaybackBridge.pause()
-                }
-            }
-            .build()
-        focus = req
-        return am.requestAudioFocus(req) == AudioManager.AUDIOFOCUS_REQUEST_GRANTED
-    }
-
-    private fun abandonFocus() {
-        val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        focus?.let { am.abandonAudioFocusRequest(it) }
-        focus = null
     }
 
     /** Updates the session state and the notification from the player. */
@@ -139,7 +115,7 @@ class PlaybackService : Service() {
             PendingIntent.getActivity(this, 0, it, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         }
         return Notification.Builder(this, CHANNEL)
-            .setSmallIcon(android.R.drawable.ic_media_play)
+            .setSmallIcon(app.kabar.bridge.R.drawable.ic_stat_kabar)
             .setContentTitle(PlaybackBridge.title)
             .setContentText(PlaybackBridge.show)
             .setContentIntent(open)
@@ -186,10 +162,15 @@ object PlaybackBridge {
     private var path: String? = null
     @Volatile private var ended = false
     private val lock = Any()
+    private var app: Context? = null
+    private var focus: AudioFocusRequest? = null
+    /** Paused by a short focus loss (a call, a voice note): play on when it ends. */
+    @Volatile private var resumeOnGain = false
 
     /** Loads `path` (an MP3 on the device) and plays it from `at` seconds. */
     @JvmStatic
     fun play(context: Context, path: String, title: String, show: String, at: Double, rate: Float) {
+        app = context.applicationContext
         synchronized(lock) {
             this.title = title
             this.show = show
@@ -199,8 +180,14 @@ object PlaybackBridge {
                 release()
                 val p = MediaPlayer()
                 p.setAudioAttributes(PlaybackService.ATTRIBUTES)
-                p.setDataSource(path)
-                p.prepare()
+                try {
+                    p.setDataSource(path)
+                    p.prepare()
+                } catch (e: Exception) {
+                    // A damaged download: Rust gets the message and plays in the app instead.
+                    p.release()
+                    throw IllegalStateException("This episode file can't be played (${e.message})", e)
+                }
                 p.setOnCompletionListener {
                     ended = true
                     service?.refresh()
@@ -210,15 +197,15 @@ object PlaybackBridge {
             }
             val p = player ?: return
             p.seekTo((at * 1000).toInt())
-            applyRate(p)
-            p.start()
+            if (gainFocus()) {
+                applyRate(p)
+                p.start()
+            }
         }
         val app = context.applicationContext
-        val intent = Intent(app, PlaybackService::class.java)
         if (service == null) {
-            app.startForegroundService(intent)
+            app.startForegroundService(Intent(app, PlaybackService::class.java))
         } else {
-            service?.requestFocus()
             service?.refresh()
         }
     }
@@ -234,10 +221,10 @@ object PlaybackBridge {
         synchronized(lock) {
             val p = player ?: return
             ended = false
+            if (!gainFocus()) return
             applyRate(p)
             p.start()
         }
-        service?.requestFocus()
         service?.refresh()
     }
 
@@ -247,7 +234,7 @@ object PlaybackBridge {
             val p = player ?: return
             ended = false
             p.seekTo((at * 1000).toInt())
-            if (!p.isPlaying) {
+            if (!p.isPlaying && gainFocus()) {
                 applyRate(p)
                 p.start()
             }
@@ -290,7 +277,48 @@ object PlaybackBridge {
             player?.release()
             player = null
             path = null
+            abandonFocus()
         }
+    }
+
+    /**
+     * Asks for audio focus before any start, so an episode never plays over a
+     * call or another app's audio. A call pauses it until the call ends; music
+     * from another app pauses it for good.
+     */
+    private fun gainFocus(): Boolean {
+        val ctx = app ?: return true
+        val am = ctx.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        val req = focus ?: AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
+            .setAudioAttributes(PlaybackService.ATTRIBUTES)
+            .setOnAudioFocusChangeListener { change ->
+                when (change) {
+                    AudioManager.AUDIOFOCUS_LOSS -> {
+                        resumeOnGain = false
+                        pause()
+                    }
+                    AudioManager.AUDIOFOCUS_LOSS_TRANSIENT, AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK -> {
+                        // Speech under another sound is hard to follow: pause rather than duck.
+                        resumeOnGain = isPlaying()
+                        pause()
+                    }
+                    AudioManager.AUDIOFOCUS_GAIN -> if (resumeOnGain) {
+                        resumeOnGain = false
+                        resume()
+                    }
+                }
+            }
+            .build()
+            .also { focus = it }
+        return am.requestAudioFocus(req) == AudioManager.AUDIOFOCUS_REQUEST_GRANTED
+    }
+
+    private fun abandonFocus() {
+        val ctx = app ?: return
+        val am = ctx.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        focus?.let { am.abandonAudioFocusRequest(it) }
+        focus = null
+        resumeOnGain = false
     }
 
     private fun applyRate(p: MediaPlayer) {

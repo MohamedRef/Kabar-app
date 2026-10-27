@@ -159,6 +159,7 @@ pub fn PanelView() -> Element {
             div { class: "panel-close",
                 button {
                     class: "ghost",
+                    "data-back": "true",
                     aria_label: "{ui.t(Msg::Close)}",
                     onclick: move |_| {
                         let mut p = st.panel;
@@ -309,11 +310,24 @@ fn WordCard(i: usize) -> Element {
                             let surface = surface.clone();
                             let sentence = sentence.clone();
                             move |_| {
-                                let _ = db.0.borrow_mut().save_word(&k, &surface, &sentence, Some(&open.text.id));
-                                if st.status(&k) == WordStatus::New {
-                                    st.set_status(&db, &k, WordStatus::Learning);
+                                let saved = super::add_to_review(
+                                    &mut db.0.borrow_mut(),
+                                    &k,
+                                    &surface,
+                                    &sentence,
+                                    &open.text.id,
+                                );
+                                match saved {
+                                    Ok(promoted) => {
+                                        if promoted {
+                                            let mut statuses = st.statuses;
+                                            statuses.write().insert(k.clone(), WordStatus::Learning);
+                                        }
+                                        added.set(true);
+                                    }
+                                    // The button stays ready for another try.
+                                    Err(e) => st.write_failed("adding to review", &e),
                                 }
-                                added.set(true);
                             }
                         },
                         if *added.read() { "{ui.t(Msg::AddedToReview)}" } else { "{ui.t(Msg::AddToReview)}" }
@@ -354,8 +368,11 @@ fn WordCard(i: usize) -> Element {
                                     let db = db.clone();
                                     let k = k.clone();
                                     move |_| {
-                                        let _ = db.0.borrow_mut().add_feedback("gloss", &k, up);
-                                        thanks.set(true);
+                                        let sent = db.0.borrow_mut().add_feedback("gloss", &k, up);
+                                        match sent {
+                                            Ok(()) => thanks.set(true),
+                                            Err(e) => st.write_failed("saving feedback", &e),
+                                        }
                                     }
                                 },
                                 "{icon}"
@@ -486,9 +503,14 @@ fn PhraseCard(tokens: Vec<usize>, save_first: bool) -> Element {
                             onclick: {
                                 let db = db.clone();
                                 move |_| {
-                                    let _ = db.0.borrow_mut().remove_highlight(&h.id);
-                                    let mut hl = st.highlights;
-                                    hl.write().retain(|x| x.id != h.id);
+                                    let removed = db.0.borrow_mut().remove_highlight(&h.id);
+                                    match removed {
+                                        Ok(()) => {
+                                            let mut hl = st.highlights;
+                                            hl.write().retain(|x| x.id != h.id);
+                                        }
+                                        Err(e) => st.write_failed("removing a highlight", &e),
+                                    }
                                 }
                             },
                             "{ui.t(Msg::RemoveHighlight)}"
