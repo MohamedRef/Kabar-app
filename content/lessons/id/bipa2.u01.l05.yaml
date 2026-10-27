@@ -51,9 +51,9 @@ exercises:
       ar_eg: حسب النص، أنهي جاميلان أسرع؟
       ar: بحسب النص، أيّ غاميلان أسرع؟
       en: According to the text, which gamelan is faster?
-    options: [gamelan Jawa, gamelan Bali]
+    options: [Gamelan Jawa lebih cepat., Gamelan Bali lebih cepat.]
     answer: 1
-    words: [lebih]
+    words: [lebih, cepat]
   - id: e03
     type: multiple_choice
     question_meaning:
@@ -100,7 +100,11 @@ exercises:
         ar_eg: خفيف
         ar: خفيف
         en: light (not heavy)
-    words: [logam, kayu, bambu, berat, ringan]
+      - text: dengan
+        ar_eg: مع / بـ
+        ar: مع / بـ
+        en: with
+    words: [logam, kayu, bambu, berat, ringan, dengan]
   - id: e06
     type: fill_blank
     sentence: Gendang ini dari ___, bukan dari logam.
@@ -123,7 +127,7 @@ exercises:
       en: Balinese gamelan is faster than Javanese gamelan.
     answer: Gamelan Bali lebih cepat daripada gamelan Jawa.
     distractors: [paling, dengan]
-    words: [lebih, daripada]
+    words: [lebih, daripada, cepat]
   - id: e08
     type: translate
     direction: to_target
@@ -146,12 +150,26 @@ exercises:
     words: [logam, berat]
   - id: e09
     type: dictation
-    text: Suling ini dari bambu dan ringan sekali.
+    text: Saya bermain gamelan dengan teman.
     meaning:
-      ar_eg: الناي ده من البامبو وخفيف جدًا.
-      ar: هذا الناي من الخيزران وخفيف جدًا.
-      en: This flute is made of bamboo and is very light.
-    words: [suling, bambu, ringan]
+      ar_eg: أنا بعزف جاميلان مع صاحبي.
+      ar: أعزف الغاميلان مع صديقي.
+      en: I play gamelan with a friend.
+    words: [bermain, dengan, teman]
+  - id: e10
+    type: fill_blank
+    sentence: Orang Bali bermain gamelan ___ cepat.
+    meaning:
+      ar_eg: أهل بالي بيعزفوا الجاميلان بسرعة.
+      ar: يعزف أهل بالي الغاميلان بسرعة.
+      en: Balinese people play gamelan quickly.
+    options: [dengan, daripada, paling]
+    answers: [dengan]
+    explain:
+      ar_eg: dengan + صفة = بالطريقة دي، فـ dengan cepat = بسرعة.
+      ar: dengan + صفة تعني «بهذه الطريقة»، فـ dengan cepat = بسرعة.
+      en: dengan + adjective describes how, so dengan cepat = quickly.
+    words: [dengan, cepat]
 dialogue:
   title: Di sekolah musik, Ubud
   lines:
@@ -196,6 +214,16 @@ new_words:
     ar_eg: خشب
     ar: خشب
     en: wood
+  - word: cepat
+    pos: adjective
+    ar_eg: سريع / بسرعة
+    ar: سريع
+    en: fast, quick
+  - word: dengan
+    pos: preposition
+    ar_eg: مع / بـ (dengan cepat = بسرعة)
+    ar: مع / بـ (dengan cepat = بسرعة)
+    en: with; in a … way (dengan cepat = quickly)
 review:
   status: draft
   verified: false

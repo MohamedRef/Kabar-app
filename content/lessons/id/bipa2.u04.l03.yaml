@@ -61,7 +61,7 @@ exercises:
       ar_eg: عايز تعزم ني لوه تروحوا السوق سوا. تقول إيه؟
       ar: تريد أن تدعو ني لوه للذهاب معًا إلى السوق. ماذا تقول؟
       en: You want to invite Ni Luh to go to the market together. What do you say?
-    options: [Ayo kita ke pasar!, Ayo kami ke pasar!, Jangan ke pasar!]
+    options: [Ayo kita ke pasar!, Ayo kami ke pasar!, Yuk kami ke pasar!]
     answer: 0
     explain:
       ar_eg: العزومة فيها اللي قدامك، يبقى kita مش kami.
@@ -117,7 +117,7 @@ exercises:
       ar_eg: يلا نبتدي.
       ar: لنبدأ.
       en: Let us begin.
-    words: [mari]
+    words: [mari, mulai]
   - id: e07
     type: listen
     text: Nanti dulu, saya masih capek.
@@ -147,7 +147,17 @@ exercises:
       en: Your friend says "Let's go to the market!" and you don't want to now. What do you say?
     options: ['Nanti dulu, ya.', 'Ayo!', 'Mari kita mulai.']
     answer: 0
-    words: [nanti dulu, ayo, mari]
+    words: [nanti dulu, ayo, mari, mulai]
+  - id: e10
+    type: fill_blank
+    sentence: Semua sudah datang. Ayo, kita ___!
+    meaning:
+      ar_eg: الكل وصل. يلا نبدأ!
+      ar: وصل الجميع. هيا نبدأ!
+      en: Everyone's here. Come on, let's start!
+    options: [mulai, lupa, pulang]
+    answers: [mulai]
+    words: [ayo, mulai]
 dialogue:
   lines:
     - speaker: Raka
@@ -191,6 +201,11 @@ new_words:
     ar_eg: بعدين
     ar: لاحقًا، ليس الآن
     en: later, not now
+  - word: mulai
+    pos: verb
+    ar_eg: يبدأ
+    ar: يبدأ
+    en: to start, begin
 review:
   status: draft
   verified: false
