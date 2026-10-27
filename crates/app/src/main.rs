@@ -39,6 +39,7 @@ mod store;
 mod studio;
 mod teach;
 mod theme;
+mod update;
 
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -226,6 +227,10 @@ impl Ui {
 
 fn main() {
     diag::install_panic_hook();
+    // Automatic updates on the Mac: a verified download from the last
+    // session goes in before the window opens (and Kabar reopens).
+    #[cfg(target_os = "macos")]
+    update::apply_staged_on_launch();
     #[cfg(all(feature = "desktop", not(target_os = "android")))]
     {
         use dioxus::desktop::{Config, LogicalSize, WindowBuilder};
@@ -260,6 +265,7 @@ fn open_store() -> Result<(Store, std::path::PathBuf), String> {
     std::fs::create_dir_all(&dir).map_err(|e| format!("{}: {e}", dir.display()))?;
     let path = dir.join("kabar.db");
     packs::init(&dir);
+    update::init(&dir);
     Ok((Store::open(&path).map_err(|e| e.to_string())?, path))
 }
 
@@ -586,6 +592,7 @@ fn Shell() -> Element {
     settings::menu::use_menu_events(ui, settings_nav);
     let settings_open = *settings_nav.open.read();
     back::use_back(ui, current, settings_open);
+    update::view::use_android_install(ui);
     // Full-screen players keep the whole screen; everywhere else on the
     // phone a slim top bar carries the gear.
     let top_bar =

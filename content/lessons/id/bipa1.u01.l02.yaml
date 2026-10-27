@@ -103,7 +103,7 @@ exercises:
       ar_eg: Sama-sama رد على «شكرًا»، وSelamat jalan وداع. الرد على Apa kabar هو Baik.
       ar: Sama-sama جواب «شكرًا»، وSelamat jalan للوداع، أما جواب Apa kabar فهو Baik.
       en: Sama-sama answers "thank you" and Selamat jalan is a goodbye; Apa kabar is answered with Baik.
-    words: [baik, terima kasih]
+    words: [baik, terima kasih, Pak / Bu]
   - id: e03
     type: fill_blank
     sentence: Selamat sore, Pak. Apa ___?
@@ -113,7 +113,7 @@ exercises:
       en: Good afternoon, sir. How are you?
     options: [baik, juga, kabar]
     answers: [kabar]
-    words: [apa, kabar]
+    words: [apa, kabar, Pak / Bu]
   - id: e04
     type: build_sentence
     source:
@@ -131,27 +131,27 @@ exercises:
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: شكرًا. أنا كمان كويس. وحضرتك يا أستاذ؟
-      ar: شكرًا. أنا أيضًا بخير. وأنت يا سيدي؟
-      en: Thank you. I'm fine too. And you, sir?
-    answers: ['Terima kasih. Saya juga baik. Dan Bapak?', 'Terima kasih. Saya juga baik. Dan Bapak', 'Terima kasih, saya juga baik. Dan Bapak?', 'Terima kasih. Saya juga baik, dan Bapak?', 'Terima kasih. Saya baik juga. Dan Bapak?', 'Terima kasih. Saya juga baik. Bapak?']
+      ar_eg: شكرًا. كويس كمان. وحضرتك يا أستاذ؟
+      ar: شكرًا. بخير أيضًا. وأنت يا سيدي؟
+      en: Thank you. Fine too. And you, sir?
+    answers: ['Terima kasih. Baik juga. Dan Bapak?', 'Terima kasih, baik juga. Dan Bapak?', 'Terima kasih. Baik juga. Dan Bapak', 'Terima kasih. Saya juga baik. Dan Bapak?', 'Terima kasih. Saya juga baik. Dan Bapak', 'Terima kasih, saya juga baik. Dan Bapak?', 'Terima kasih. Saya juga baik, dan Bapak?', 'Terima kasih. Saya baik juga. Dan Bapak?', 'Terima kasih. Saya juga baik. Bapak?']
     words: [terima kasih, juga, baik, dan]
   - id: e06
     type: dictation
-    text: Saya juga baik. Dan Ibu?
+    text: Baik juga. Dan Bu Yanti?
     meaning:
-      ar_eg: أنا كمان كويس. وحضرتك؟
-      ar: أنا أيضًا بخير. وأنتِ؟
-      en: I'm fine too. And you, ma'am?
-    words: [juga, baik, dan]
+      ar_eg: كويس كمان. وحضرتك يا مدام يانتي؟
+      ar: بخير أيضًا. وأنتِ يا سيدة يانتي؟
+      en: Fine too. And you, Bu Yanti?
+    words: [juga, baik, dan, Pak / Bu]
   - id: e07
     type: speaking
-    text: Sama-sama, Bu. Apa kabar?
+    text: Sama-sama, Pak. Apa kabar?
     meaning:
-      ar_eg: العفو يا مدام. إزيك؟
-      ar: العفو يا سيدتي. كيف حالكِ؟
-      en: You're welcome, ma'am. How are you?
-    words: [sama-sama, apa, kabar]
+      ar_eg: العفو يا أستاذ. إزيك؟
+      ar: العفو يا سيدي. كيف حالك؟
+      en: You're welcome, sir. How are you?
+    words: [sama-sama, apa, kabar, Pak / Bu]
 dialogue:
   title: Pagi di Kota Tua
   lines:
@@ -217,6 +217,11 @@ new_words:
     ar_eg: كمان
     ar: أيضًا
     en: also, too
+  - word: Pak / Bu
+    pos: noun
+    ar_eg: يا أستاذ / يا مدام، وكمان «حضرتك» (من Bapak وIbu)
+    ar: يا سيدي / يا سيدتي، وتعني «حضرتك» أيضًا (من Bapak وIbu)
+    en: sir / ma'am, also polite "you" (short for Bapak, Ibu)
 review:
   status: draft
   verified: false

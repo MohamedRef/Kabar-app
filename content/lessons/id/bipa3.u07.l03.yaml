@@ -108,7 +108,7 @@ exercises:
       ar_eg: القماش ده أنا نسجته بنفسي. حلو كهدية من السفر!
       ar: نسجتُ هذا القماش بنفسي. إنه هدية سفر جميلة!
       en: I wove this cloth myself. It makes a nice souvenir!
-    words: [menenun, oleh-oleh]
+    words: [menenun, oleh-oleh, sendiri]
   - id: e04
     type: multiple_choice
     question: Oleh-oleh ini saya ___ di Sade.
@@ -169,18 +169,32 @@ exercises:
     words: [menerima, membalas]
   - id: e09
     type: fill_blank
-    sentence: Ibu-ibu di Sade ___ kain setiap hari.
+    sentence: Ibu-ibu di Sade ___ kain sendiri setiap hari.
     meaning:
-      ar_eg: الستات في ساديه بينسجوا قماش كل يوم.
-      ar: تنسج نساء سادي القماش كل يوم.
-      en: The women in Sade weave cloth every day.
+      ar_eg: الستات في ساديه بينسجوا القماش بنفسهم كل يوم.
+      ar: تنسج نساء سادي القماش بأنفسهنّ كل يوم.
+      en: The women in Sade weave their own cloth every day.
     options: [menenun, tenun, ditenun]
     answers: [menenun]
     explain:
       ar_eg: هنا الجملة معلوم عادية (الفاعل ibu-ibu في الأول)، فبنستعمل meN-.
       ar: الجملة هنا مبنية للمعلوم والفاعل في أولها، فنستعمل meN-.
       en: This is an ordinary active sentence (the doer comes first), so use meN-.
-    words: [menenun]
+    words: [menenun, sendiri]
+  - id: e10
+    type: multiple_choice
+    question: Foto ini saya ambil sendiri.
+    question_meaning:
+      ar_eg: مين اللي صوّر الصورة؟
+      ar: من التقط الصورة؟
+      en: Who took the photo?
+    options: ['Dia sendiri.', 'Temannya.', 'Orang di Sade.']
+    answer: 0
+    explain:
+      ar_eg: sendiri = بنفسه. saya ambil sendiri = أنا اللي صوّرتها بنفسي.
+      ar: sendiri = بنفسه، وsaya ambil sendiri = التقطتها بنفسي.
+      en: sendiri = oneself. saya ambil sendiri = I took it myself.
+    words: [sendiri, mengambil]
 dialogue:
   title: Penenun di Sade
   lines:
@@ -205,7 +219,7 @@ dialogue:
       ar: تفضّل! وأرسل إليّ الصورة لاحقًا.
       en: Go ahead! Send me the photo later, OK?
 new_words:
-  - word: menerima
+  - word: menerima / terima
     pos: verb
     ar_eg: يستلم / يستقبل
     ar: يتسلّم / يستقبل
@@ -230,6 +244,11 @@ new_words:
     ar_eg: يرد (على رسالة)
     ar: يردّ (على رسالة)
     en: to reply
+  - word: sendiri
+    pos: adverb
+    ar_eg: بنفسه / لوحده (saya tenun sendiri = نسجته بنفسي)
+    ar: بنفسه / وحده
+    en: oneself, by oneself; own
 review:
   status: draft
   verified: false

@@ -115,7 +115,7 @@ exercises:
     text: Penerbangan ke Jakarta terlambat tiga puluh menit.
     options: [Penerbangan ke Jakarta terlambat tiga puluh menit., Penerbangan ke Jakarta terlambat tiga belas menit., Penerbangan ke Jakarta tepat waktu.]
     answer: 0
-    words: [penerbangan, terlambat]
+    words: [penerbangan, terlambat, menit]
   - id: e03
     type: multiple_choice
     question_meaning:
@@ -159,12 +159,10 @@ exercises:
       en: The schedule for flights to Cairo is over there.
     words: [jadwal, penerbangan, tujuan]
   - id: e07
-    type: dictation
+    type: listen
     text: Jadwal pesawat ada di sana.
-    meaning:
-      ar_eg: جدول مواعيد الطيارات هناك.
-      ar: جدول مواعيد الطائرات هناك.
-      en: The flight timetable is over there.
+    options: [Jadwal pesawat ada di sana., Jadwal kereta ada di sana., Jadwal pesawat ada di sini.]
+    answer: 0
     words: [jadwal]
   - id: e08
     type: speaking
@@ -173,17 +171,17 @@ exercises:
       ar_eg: انتباه من فضلكم. رحلة جاكرتا متأخرة تلاتين دقيقة.
       ar: انتباه من فضلكم. رحلة جاكرتا متأخرة ثلاثين دقيقة.
       en: Attention please. The flight to Jakarta is thirty minutes late.
-    words: [penerbangan, tujuan, terlambat]
+    words: [penerbangan, tujuan, terlambat, menit]
   - id: e09
     type: fill_blank
-    sentence: Mohon maaf atas ___ ini.
+    sentence: Mohon maaf atas ___ tiga puluh menit ini.
     meaning:
-      ar_eg: نعتذر عن التأخير ده.
-      ar: نعتذر عن هذا التأخير.
-      en: We apologise for this delay.
+      ar_eg: نعتذر عن التأخير ده نص الساعة.
+      ar: نعتذر عن هذا التأخير لمدة ثلاثين دقيقة.
+      en: We apologise for this thirty-minute delay.
     options: [keterlambatan, jadwal, tujuan]
     answers: [keterlambatan]
-    words: [keterlambatan]
+    words: [keterlambatan, menit]
 dialogue:
   title: Di ruang tunggu
   lines:
@@ -239,6 +237,11 @@ new_words:
     ar_eg: تأخير
     ar: تأخير
     en: delay
+  - word: menit
+    pos: noun
+    ar_eg: دقيقة
+    ar: دقيقة
+    en: minute
 review:
   status: draft
   verified: false

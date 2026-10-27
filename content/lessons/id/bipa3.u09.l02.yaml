@@ -132,7 +132,7 @@ exercises:
       en: The princess thought for days on end but couldn't choose.
     options: [bermaaf-maafan, berhari-hari, berbondong-bondong]
     answers: [berhari-hari]
-    words: [berhari-hari]
+    words: [berhari-hari, berpikir]
   - id: e06
     type: build_sentence
     source:
@@ -176,6 +176,20 @@ exercises:
     options: [berjam-jam, bermaaf-maafan, berkejar-kejaran]
     answer: 0
     words: [berjam-jam]
+  - id: e10
+    type: multiple_choice
+    question: Pangeran itu berpikir berjam-jam, lalu dia pergi ke istana.
+    question_meaning:
+      ar_eg: الأمير عمل إيه قبل ما يروح القصر؟
+      ar: ماذا فعل الأمير قبل أن يذهب إلى القصر؟
+      en: What did the prince do before he went to the palace?
+    options: ['Dia berpikir lama.', 'Dia tidur lama.', 'Dia makan lama.']
+    answer: 0
+    explain:
+      ar_eg: berpikir = يفكّر، وberjam-jam = لساعات.
+      ar: berpikir = يفكّر، وberjam-jam = ساعات طويلة.
+      en: berpikir = think; berjam-jam = for hours.
+    words: [berpikir, berjam-jam, pangeran]
 dialogue:
   title: Cerita untuk besok
   lines:
@@ -230,6 +244,11 @@ new_words:
     ar_eg: قصر
     ar: قصر
     en: palace
+  - word: berpikir
+    pos: verb
+    ar_eg: يفكّر
+    ar: يفكّر
+    en: to think
 review:
   status: draft
   verified: false

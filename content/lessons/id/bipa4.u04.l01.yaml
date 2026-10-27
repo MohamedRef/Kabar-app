@@ -105,11 +105,11 @@ exercises:
     words: [deras, akibatnya, terendam]
   - id: e04
     type: multiple_choice
-    question: Air sungai terus naik. ___, warga harus mengungsi.
+    question: Air sungai naik lagi. ___, warga harus mengungsi.
     question_meaning:
-      ar_eg: مية النهر بتعلى على طول. …، السكان لازم ينزحوا.
-      ar: يواصل منسوب النهر الارتفاع. …، يجب أن ينزح السكان.
-      en: The river keeps rising. …, residents must evacuate.
+      ar_eg: مية النهر علت تاني. …، السكان لازم ينزحوا.
+      ar: ارتفع منسوب النهر مرة أخرى. …، يجب أن ينزح السكان.
+      en: The river has risen again. …, residents must evacuate.
     options: ["Oleh karena itu", "Sehingga", "Karena"]
     answer: 0
     explain:
@@ -154,12 +154,36 @@ exercises:
     words: [deras, akibatnya, terendam]
   - id: e08
     type: speaking
-    text: Tanggul di dekat pasar rusak. Oleh karena itu, pemerintah harus segera memperbaikinya.
+    text: Tanggul di dekat pasar rusak, maka pemerintah harus segera memperbaikinya.
     meaning:
-      ar_eg: السد اللي جنب السوق باظ. عشان كده، الحكومة لازم تصلحه حالًا.
+      ar_eg: السد اللي جنب السوق باظ. فالحكومة لازم تصلحه حالًا.
       ar: تضرر السد قرب السوق، لذلك يجب على الحكومة إصلاحه فورًا.
-      en: The levee near the market is damaged. Therefore, the government must repair it immediately.
-    words: [tanggul, oleh karena itu]
+      en: The levee near the market is damaged, so the government must repair it immediately.
+    words: [tanggul, maka]
+  - id: e09
+    type: multiple_choice
+    question: Jalan banjir, maka sekolah libur.
+    question_meaning:
+      ar_eg: المدرسة أجازة ليه؟
+      ar: لماذا المدرسة في عطلة؟
+      en: Why is school closed?
+    options: ['Karena jalan banjir.', 'Karena hari Minggu.', 'Karena guru sakit.']
+    answer: 0
+    explain:
+      ar_eg: maka = فـ / إذن، بتيجي قبل النتيجة.
+      ar: maka = لذا، تسبق النتيجة.
+      en: maka = so, before the result.
+    words: [maka]
+  - id: e10
+    type: fill_blank
+    sentence: Hujan turun deras, ___ acara dibatalkan.
+    meaning:
+      ar_eg: المطر نزل جامد، فالحفلة اتلغت.
+      ar: هطل المطر بغزارة، لذا أُلغي الحفل.
+      en: It rained hard, so the event was cancelled.
+    options: [maka, karena, walaupun]
+    answers: [maka]
+    words: [maka, deras]
 dialogue:
   title: Di ruang redaksi Parepare
   lines:
@@ -210,6 +234,11 @@ new_words:
     ar_eg: جسر / سد على النهر
     ar: سدّ ترابي
     en: levee, embankment
+  - word: maka
+    pos: conjunction
+    ar_eg: فـ / إذن (رسمي؛ مايجيش مع karena)
+    ar: لذا / فـ (رسمية؛ لا تجتمع مع karena)
+    en: so, therefore (formal; not after karena)
 review:
   status: draft
   verified: false

@@ -84,7 +84,11 @@ exercises:
         ar_eg: يحب / يرضى (كراما، عن نفسك)
         ar: يريد (كراما، عن نفسك)
         en: want, be willing (krama, about yourself)
-    words: [ngunjuk, nginum, kersa, purun]
+      - text: gelem
+        ar_eg: عايز (نغوكو)
+        ar: يرغب (نغوكو)
+        en: willing (ngoko)
+    words: [ngunjuk, nginum, kersa, purun, gelem]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -107,7 +111,7 @@ exercises:
       ar_eg: حضرتك تحب تشرب شاي يا أستاذ؟
       ar: هل تودّ شرب الشاي يا سيدي؟
       en: Would you like some tea, sir?
-    words: [kersa, ngunjuk]
+    words: [kersa, ngunjuk, gelem]
   - id: e04
     type: multiple_choice
     question_meaning:
@@ -175,6 +179,20 @@ exercises:
       ar: نعم، بكل سرور يا سيدتي. سأشرب الشاي فقط.
       en: Yes, please, ma'am. I'll just have tea.
     words: [purun, nginum]
+  - id: e10
+    type: multiple_choice
+    question: Kowe gelem ngombe teh?
+    question_meaning:
+      ar_eg: إزاي تقول الجملة دي لحد كبير بالكراما إنغيل؟
+      ar: كيف تقول هذه الجملة لكبير بالكراما إنغيل؟
+      en: How do you say this to an elder in krama inggil?
+    options: ['Panjenengan kersa ngunjuk teh?', 'Panjenengan purun nginum teh?', 'Kowe gelem nginum teh?']
+    answer: 0
+    explain:
+      ar_eg: gelem (نغوكو) ← kersa (كراما إنغيل للي قدامك). وngombe ← ngunjuk.
+      ar: gelem (نغوكو) ← kersa (كراما إنغيل للمخاطَب)، وngombe ← ngunjuk.
+      en: gelem (ngoko) becomes kersa (krama inggil, for the other person); ngombe becomes ngunjuk.
+    words: [gelem, kersa]
 dialogue:
   title: Ing dalemipun Pak Harsono
   lines:
@@ -229,6 +247,11 @@ new_words:
     ar_eg: اتفضل اشرب (للضيف أو الكبير؛ في الشات monggo diunjuk)
     ar: تفضّل بالشرب (للضيف أو الكبير)
     en: please have a drink (to a guest or elder; chat monggo diunjuk) = silakan diminum
+  - word: gelem
+    pos: verb
+    ar_eg: عايز، موافق (نغوكو)
+    ar: يرغب، يقبل (نغوكو)
+    en: to be willing, to want (ngoko)
 review:
   status: draft
   verified: false

@@ -57,7 +57,7 @@ exercises:
       ar_eg: هناك فيه مباني قديمة من أيام الهولنديين.
       ar: هناك مبانٍ قديمة من عهد الهولنديين.
       en: There are old buildings there from the Dutch era.
-    words: [jaman, Walanda]
+    words: [jaman, Walanda, anyar]
   - id: e03
     type: fill_blank
     sentence: Gedhong-gedhong iki saka ___ Walanda.
@@ -135,18 +135,18 @@ exercises:
     words: [jaman, Walanda]
   - id: e08
     type: fill_blank
-    sentence: Iki ___ artikel Kutha Lama.
+    sentence: Iki ___ artikel anyar.
     meaning:
-      ar_eg: ده ملخّص مقالة كوتا لاما.
-      ar: هذا ملخّص مقالة كوتا لاما.
-      en: This is the summary of the Kota Lama article.
+      ar_eg: ده ملخّص المقالة الجديدة.
+      ar: هذا ملخّص المقالة الجديدة.
+      en: This is the summary of the new article.
     options: [jamane, ringkesane, papane]
     answers: [ringkesane]
     explain:
       ar_eg: ringkesan + -e = ringkesane، يعني «ملخّص الـ…».
       ar: ringkesan + -e = ringkesane، أي «ملخّص …».
       en: ringkesan + -e = ringkesane, "the summary of …".
-    words: [ringkesan]
+    words: [ringkesan, anyar]
   - id: e09
     type: speaking
     text: Ringkesane, Kutha Lama iku papan lawas saka jaman Walanda.
@@ -155,6 +155,20 @@ exercises:
       ar: الملخّص أن كوتا لاما مكان قديم من عهد الهولنديين.
       en: In short, Kota Lama is an old place from the Dutch era.
     words: [ringkesan, Walanda]
+  - id: e10
+    type: multiple_choice
+    question: Gedhong iki anyar, dudu lawas.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['المبنى ده جديد، مش قديم.', 'المبنى ده قديم، مش جديد.', 'المبنى ده كبير، مش صغير.']
+    answer: 0
+    explain:
+      ar_eg: anyar = جديد (baru)، وعكسها lawas = قديم (lama).
+      ar: anyar = جديد (baru)، وضدّها lawas = قديم.
+      en: anyar = new (baru); its opposite is lawas = old.
+    words: [anyar, lawas]
 dialogue:
   title: Ringkesane apa?
   lines:
@@ -200,6 +214,11 @@ new_words:
     ar_eg: هولندا / الهولنديين
     ar: هولندا / الهولنديون
     en: Holland, the Dutch = Belanda
+  - word: anyar
+    pos: adjective
+    ar_eg: جديد
+    ar: جديد
+    en: new = baru
 review:
   status: draft
   verified: false

@@ -110,7 +110,7 @@ exercises:
       - Bagi para petani, penghasilan adalah hal yang paling penting.
       - Bagi petani, penghasilan paling penting.
       - Bagi petani, penghasilan adalah yang paling penting.
-    words: [bagi, penghasilan]
+    words: [bagi, penghasilan, hal]
   - id: e07
     type: dictation
     text: Setiap pihak punya sudut pandang sendiri.
@@ -127,6 +127,30 @@ exercises:
       ar: من وجهة نظري، لكلا الطرفين شيء من الحقّ.
       en: From my point of view, both sides have a point.
     words: [sudut pandang, pihak]
+  - id: e09
+    type: multiple_choice
+    question: 'Ada dua hal yang penting: hutan dan penghasilan petani.'
+    question_meaning:
+      ar_eg: الكلام عن كام حاجة مهمة؟
+      ar: كم أمرًا مهمًا يذكر؟
+      en: How many important things are mentioned?
+    options: ['Dua.', 'Satu.', 'Tiga.']
+    answer: 0
+    explain:
+      ar_eg: hal = حاجة / أمر. dua hal = حاجتين.
+      ar: hal = أمر، وdua hal = أمران.
+      en: hal = thing, matter; dua hal = two things.
+    words: [hal]
+  - id: e10
+    type: fill_blank
+    sentence: Kebakaran hutan adalah ___ yang serius.
+    meaning:
+      ar_eg: حرايق الغابات حاجة خطيرة.
+      ar: حرائق الغابات أمر خطير.
+      en: Forest fires are a serious matter.
+    options: [hal, pihak, sudut pandang]
+    answers: [hal]
+    words: [hal]
 dialogue:
   title: Diskusi di perahu klotok
   lines:
@@ -161,6 +185,11 @@ new_words:
     ar_eg: دخل
     ar: دخل
     en: income
+  - word: hal
+    pos: noun
+    ar_eg: حاجة / أمر / موضوع
+    ar: أمر / شيء
+    en: thing, matter
 review:
   status: draft
   verified: false

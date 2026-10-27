@@ -14,7 +14,8 @@ pub const MIN_TYPES: usize = 2;
 pub fn check(id: &str, lesson: &Value, problems: &mut Vec<String>) {
     let exercises: Vec<&Value> =
         lesson.get("exercises").and_then(Value::as_array).into_iter().flatten().collect();
-    let fields: Vec<(String, Vec<String>)> = exercises.iter().map(|e| (target_text(e), tags(e))).collect();
+    let fields: Vec<(String, Vec<String>)> =
+        exercises.iter().map(|e| (target_text(e, true), tags(e))).collect();
     let new_words = lesson.get("new_words").and_then(Value::as_array).into_iter().flatten();
     for word in new_words.filter_map(|w| w.get("word").and_then(Value::as_str)) {
         let forms = forms(word);
@@ -42,7 +43,7 @@ pub fn check(id: &str, lesson: &Value, problems: &mut Vec<String>) {
 /// The forms a `new_words` entry can be met in: lower case, without a
 /// parenthetical note or trailing "?", and split on "/" or "," when it lists
 /// alternatives ("-ipun / -nipun").
-fn forms(word: &str) -> Vec<String> {
+pub(crate) fn forms(word: &str) -> Vec<String> {
     let mut plain = String::new();
     let mut depth = 0;
     for c in word.chars() {
@@ -67,8 +68,10 @@ fn tags(e: &Value) -> Vec<String> {
     words.filter_map(Value::as_str).map(str::to_lowercase).collect()
 }
 
-/// The target-language text an exercise puts in front of the learner.
-fn target_text(e: &Value) -> String {
+/// The target-language text an exercise puts in front of the learner. A
+/// translation's accepted variants count only with `all_answers`; otherwise
+/// just the model answer the learner is shown.
+pub(crate) fn target_text(e: &Value, all_answers: bool) -> String {
     let s = |k: &str| e.get(k).and_then(Value::as_str).unwrap_or("").to_owned();
     let list = |k: &str| -> Vec<String> {
         let items = e.get(k).and_then(Value::as_array).into_iter().flatten();
@@ -77,8 +80,14 @@ fn target_text(e: &Value) -> String {
     let mut out = Vec::new();
     match e.get("type").and_then(Value::as_str).unwrap_or("") {
         "multiple_choice" => {
-            out.push(s("question"));
-            out.extend(list("options"));
+            // A gapped question is read with its right answer in the gap.
+            let options = list("options");
+            let answer = e.get("answer").and_then(Value::as_u64).and_then(|i| options.get(i as usize));
+            match answer {
+                Some(answer) => out.push(s("question").replacen("___", answer, 1)),
+                None => out.push(s("question")),
+            }
+            out.extend(options);
         }
         "listen" => {
             out.push(s("text"));
@@ -90,7 +99,9 @@ fn target_text(e: &Value) -> String {
         }
         "translate" => {
             out.push(s("source_text"));
-            out.extend(list("answers"));
+            let answers = list("answers");
+            let shown = if all_answers { answers.len() } else { 1 };
+            out.extend(answers.into_iter().take(shown));
         }
         "build_sentence" => out.push(s("answer")),
         "fill_blank" => {
@@ -166,5 +177,11 @@ mod tests {
         check("j3.u01.l03", &lesson, &mut problems);
         assert_eq!(problems.len(), 1, "{problems:?}");
         assert!(problems[0].contains("'dereng' is retrieved in 2 exercise(s) of 2 type(s)"));
+    }
+
+    #[test]
+    fn gapped_questions_read_with_their_answer() {
+        let e = json!({"type": "multiple_choice", "question": "Aku mangan karo ___ kerja.", "options": ["kanca", "omah"], "answer": 0});
+        assert!(target_text(&e, true).starts_with("aku mangan karo kanca kerja."));
     }
 }

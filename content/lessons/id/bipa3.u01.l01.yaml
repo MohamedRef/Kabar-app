@@ -100,14 +100,14 @@ exercises:
     words: [wisuda]
   - id: e03
     type: listen
-    text: Semoga pengantin baru langgeng!
-    options: ["Semoga pengantin baru senang!", "Selamat pengantin baru datang!", "Semoga pengantin baru langgeng!"]
+    text: Semoga pengantin baru langgeng sampai tua!
+    options: ["Semoga pengantin baru senang sampai tua!", "Selamat pengantin baru datang!", "Semoga pengantin baru langgeng sampai tua!"]
     answer: 2
     meaning:
-      ar_eg: ربنا يخلّي العرسان الجداد لبعض!
-      ar: دام الودّ بين العروسين!
-      en: May the newlyweds' marriage last!
-    words: [pengantin, langgeng]
+      ar_eg: ربنا يخلّي العرسان الجداد لبعض لحد ما يكبروا!
+      ar: دام الودّ بين العروسين حتى الشيخوخة!
+      en: May the newlyweds' marriage last until they're old!
+    words: [pengantin, langgeng, tua]
   - id: e04
     type: multiple_choice
     question_meaning:
@@ -120,7 +120,7 @@ exercises:
       ar_eg: "Semoga membawa berkah تنفع لأي حاجة جديدة: بيت، شغل، عربية."
       ar: "تصلح Semoga membawa berkah لكل شيء جديد: بيت أو عمل أو سيارة."
       en: Semoga membawa berkah fits anything new — a house, a job, a car.
-    words: [berkah]
+    words: [berkah, membawa]
   - id: e05
     type: fill_blank
     sentence: Selamat atas ___ anak pertama Ibu!
@@ -134,13 +134,13 @@ exercises:
   - id: e06
     type: build_sentence
     source:
-      ar_eg: يا رب العرسان الجداد يفضلوا مبسوطين على طول.
-      ar: نرجو أن يكون العروسان سعيدين دائمًا.
-      en: May the newlyweds always be happy.
-    answer: Semoga pengantin baru bahagia selalu.
-    alternatives: ["Semoga pengantin baru selalu bahagia."]
+      ar_eg: يا رب العرسان الجداد يفضلوا مبسوطين لحد ما يكبروا.
+      ar: نرجو أن يبقى العروسان سعيدين حتى الشيخوخة.
+      en: May the newlyweds be happy until they're old.
+    answer: Semoga pengantin baru bahagia sampai tua.
+    alternatives: ["Semoga pengantin baru bahagia sampai tua!"]
     distractors: [wisuda, sembuh]
-    words: [pengantin, bahagia]
+    words: [pengantin, bahagia, tua]
   - id: e07
     type: fill_blank
     sentence: Selamat menikah! Semoga ___ sampai tua.
@@ -150,7 +150,7 @@ exercises:
       en: Congratulations on your wedding! May it last until you're old.
     options: [langgeng, kelahiran, wisuda]
     answers: [langgeng]
-    words: [langgeng]
+    words: [langgeng, tua]
   - id: e08
     type: translate
     direction: to_target
@@ -178,7 +178,17 @@ exercises:
       ar_eg: مبروك المولود يا مدام. ربنا يجعله بركة!
       ar: مبارك المولود يا سيدتي. جعله الله بركة!
       en: Congratulations on the birth of your child. May the baby bring blessings!
-    words: [kelahiran, berkah]
+    words: [kelahiran, berkah, membawa]
+  - id: e10
+    type: listen
+    text: Semoga rumah baru membawa berkah.
+    options: ['Semoga rumah baru membawa berkah.', 'Semoga rumah baru cepat selesai.', 'Selamat atas rumah baru Ibu.']
+    answer: 0
+    meaning:
+      ar_eg: يا رب البيت الجديد يجيب البركة.
+      ar: عسى أن يجلب البيت الجديد البركة.
+      en: May the new house bring blessings.
+    words: [membawa, berkah]
 dialogue:
   title: Nyongkolan di Mataram
   lines:
@@ -239,6 +249,16 @@ new_words:
     ar_eg: دايم، بيدوم (بيتقال للعرسان)
     ar: دائم (يُقال للعروسين)
     en: lasting (said to couples)
+  - word: membawa
+    pos: verb
+    ar_eg: يجيب / يشيل معاه (semoga membawa berkah = يا رب يجيب البركة)
+    ar: يحمل / يجلب
+    en: to bring, carry
+  - word: tua
+    pos: adjective
+    ar_eg: عجوز / كبير في السن (sampai tua = لحد ما نكبر)
+    ar: مسنّ / كبير في السن
+    en: old (of people)
 review:
   status: draft
   verified: false

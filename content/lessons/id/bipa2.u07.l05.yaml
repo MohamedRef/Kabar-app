@@ -58,7 +58,7 @@ exercises:
       ar_eg: المدرّب عايز الناس يقوموا يقفوا. يقول إيه؟
       ar: يريد المدرّب أن يقف الجميع. ماذا يقول؟
       en: The coach wants everyone to stand up. What does he say?
-    options: [Diri!, Berdiri!, Mendiri!]
+    options: [Lihat!, Berdiri!, Mendiri!]
     answer: 1
     explain:
       ar_eg: أفعال ber- بتفضل زي ما هي في الأمر.
@@ -77,23 +77,23 @@ exercises:
     words: [angkat, turunkan]
   - id: e03
     type: fill_blank
-    sentence: Sekarang ___ dan berlari di tempat.
+    sentence: Jangan takut. Sekarang ___ dan berlari di tempat.
     meaning:
-      ar_eg: دلوقتي قوم اقف واجري في مكانك.
-      ar: الآن قِف واركض في مكانك.
-      en: Now stand up and run on the spot.
-    options: [mendiri, berdiri, diri]
+      ar_eg: ماتخافش. دلوقتي قوم اقف واجري في مكانك.
+      ar: لا تخف. الآن قف واركض في مكانك.
+      en: Don't be afraid. Now stand up and run on the spot.
+    options: [mendiri, berdiri, duduk]
     answers: [berdiri]
-    words: [berdiri]
+    words: [berdiri, takut, tempat]
   - id: e04
     type: build_sentence
     source:
-      ar_eg: قوم اقف، وبعدين نُط تلات مرات.
-      ar: قِف ثم اقفز ثلاث مرات.
-      en: Stand up, then jump three times.
-    answer: Berdiri, lalu lompat tiga kali.
+      ar_eg: قوم اقف، وبعدين نُط في مكانك تلات مرات.
+      ar: قف، ثم اقفز في مكانك ثلاث مرات.
+      en: Stand up, then jump on the spot three times.
+    answer: Berdiri, lalu lompat di tempat tiga kali.
     distractors: [duduk, melompat]
-    words: [berdiri, lompat]
+    words: [berdiri, lompat, tempat]
   - id: e05
     type: translate
     direction: to_target
@@ -114,22 +114,22 @@ exercises:
     words: [putar, bahu]
   - id: e07
     type: speaking
-    text: Ayo, angkat tangan! Satu, dua, tiga!
+    text: Lihat ke depan, lalu lompat di tempat. Jangan takut!
     meaning:
-      ar_eg: يلا، ارفعوا إيديكم! واحد، اتنين، تلاتة!
-      ar: هيّا، ارفعوا أيديكم! واحد، اثنان، ثلاثة!
-      en: Come on, hands up! One, two, three!
-    words: [angkat, tangan]
+      ar_eg: بُص قدامك، وبعدين نُط في مكانك. ماتخافش!
+      ar: انظر إلى الأمام، ثم اقفز في مكانك. لا تخف!
+      en: Look ahead, then jump on the spot. Don't be afraid!
+    words: [lihat, lompat, tempat, takut]
   - id: e08
     type: listen
     text: Putar kepala, lalu lompat.
-    options: ['Putar kepala, lalu lompat.', 'Turunkan kepala, lalu lompat.', 'Putar kepala, lalu berdiri.']
+    options: ['Putar kepala, lalu lompat.', 'Lihat kepala, lalu lompat.', 'Putar kepala, lalu berdiri.']
     answer: 0
     meaning:
       ar_eg: لِف راسك، وبعدين نُط.
       ar: أدِر رأسك، ثم اقفز.
       en: Turn your head, then jump.
-    words: [putar, lompat, turunkan, berdiri]
+    words: [putar, lompat, lihat, berdiri]
   - id: e09
     type: multiple_choice
     question_meaning:
@@ -139,6 +139,16 @@ exercises:
     options: [putar, turunkan, lompat]
     answer: 2
     words: [lompat, putar, turunkan]
+  - id: e10
+    type: fill_blank
+    sentence: Jangan ___! Kamu bisa!
+    meaning:
+      ar_eg: ماتخافش! أكيد هتقدر.
+      ar: لا تخف! ستستطيع بالتأكيد.
+      en: Don't be afraid! You can do it.
+    options: [takut, lompat, lihat]
+    answers: [takut]
+    words: [takut]
 dialogue:
   title: Senam pagi di Kuta
   lines:
@@ -193,6 +203,21 @@ new_words:
     ar_eg: يقف (على رجليه)
     ar: يقف
     en: to stand
+  - word: tempat
+    pos: noun
+    ar_eg: مكان (di tempat = في مكانك)
+    ar: مكان (di tempat = في المكان نفسه)
+    en: place (di tempat = on the spot)
+  - word: lihat
+    pos: verb
+    ar_eg: بُص / شوف (أمر)
+    ar: انظر (أمر)
+    en: look! see (command form of melihat)
+  - word: takut
+    pos: adjective
+    ar_eg: خايف (jangan takut = ماتخافش)
+    ar: خائف (jangan takut = لا تخف)
+    en: afraid (jangan takut = don't be afraid)
 review:
   status: draft
   verified: false

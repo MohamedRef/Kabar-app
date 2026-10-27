@@ -27,7 +27,7 @@ exercises:
       ar_eg: maneh = تاني (lagi). يعني ده بيحصل كتير هناك، فاكر kerep؟
       ar: maneh = مرة أخرى (lagi)، أي أن ذلك يتكرر هناك، كما في kerep.
       en: maneh = again (lagi), so it happens often there; remember kerep?
-    words: [rob, kebanjiran]
+    words: [rob, kebanjiran, maneh]
   - id: e02
     type: listen
     text: Dalan kasebut ditutup dening polisi nganti sore.
@@ -59,7 +59,7 @@ exercises:
       ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
       ar: صباح الغد سينظّف السكانُ هذا الطريق.
       en: Tomorrow morning the road will be cleaned by the residents.
-    words: [diresiki, warga]
+    words: [diresiki, warga, bakal]
   - id: e04
     type: match_pairs
     pairs:
@@ -101,7 +101,7 @@ exercises:
       ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
       ar: صباح الغد سينظّف السكانُ هذا الطريق.
       en: Tomorrow morning the road will be cleaned by the residents.
-    words: [diresiki, warga, dening]
+    words: [diresiki, warga, dening, bakal]
   - id: e07
     type: translate
     direction: to_target
@@ -123,7 +123,31 @@ exercises:
       ar_eg: أخبار من سيمارانج. الشارع في كاليجاوي غرق من المد تاني.
       ar: أخبار من سيمارانج. غمر المدُّ طريقَ كاليغاوي مرة أخرى.
       en: News from Semarang. The road in Kaligawe was flooded by the tide again.
-    words: [kebanjiran, rob]
+    words: [kebanjiran, rob, maneh]
+  - id: e09
+    type: fill_blank
+    sentence: Sesuk dalan iki ___ diresiki.
+    meaning:
+      ar_eg: بكرة الشارع ده هيتنضّف.
+      ar: سيُنظَّف هذا الشارع غدًا.
+      en: Tomorrow this road will be cleaned.
+    options: [bakal, wis, lagi]
+    answers: [bakal]
+    words: [bakal]
+  - id: e10
+    type: multiple_choice
+    question: Dalan ing Kaligawe kebanjiran rob maneh.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['الشارع في كاليجاوي غرق تاني من مية البحر.', 'الشارع في كاليجاوي لسه ماغرقش.', 'الشارع في كاليجاوي عمره ما غرق.']
+    answer: 0
+    explain:
+      ar_eg: maneh = تاني (lagi). بتيجي بعد الفعل.
+      ar: maneh = مرة أخرى (lagi)، وتأتي بعد الفعل.
+      en: maneh = again (lagi); it comes after the verb.
+    words: [maneh, rob]
 dialogue:
   title: Krungu warta radio
   lines:
@@ -158,6 +182,16 @@ new_words:
     ar_eg: اتقفل (من tutup = يقفل)
     ar: أُغلق (من tutup = أغلق)
     en: was closed (from tutup) = ditutup
+  - word: bakal
+    pos: particle
+    ar_eg: هـ (مستقبل)، حـ
+    ar: سوف، سـ
+    en: will (future) = akan
+  - word: maneh
+    pos: adverb
+    ar_eg: تاني / كمان مرة
+    ar: مرة أخرى
+    en: again = lagi
 review:
   status: draft
   verified: false

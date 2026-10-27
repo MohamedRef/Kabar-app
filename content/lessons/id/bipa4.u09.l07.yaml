@@ -43,7 +43,7 @@ exercises:
       - Larangan kantong plastik merugikan semua warga.
       - Kantong plastik mudah didaur ulang.
     answer: 0
-    words: [larangan, kantong plastik, berpendapat]
+    words: [larangan, kantong plastik, berpendapat, tepat, mudah]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -76,7 +76,7 @@ exercises:
       ar_eg: البلاستيك اللي بيتستعمل مرة واحدة صعب يتعاد تدويره.
       ar: يصعب إعادة تدوير البلاستيك أحادي الاستخدام.
       en: Single-use plastic is hard to recycle.
-    words: [sekali pakai, mendaur ulang]
+    words: [sekali pakai, mendaur ulang, mudah]
   - id: e05
     type: match_pairs
     pairs:
@@ -119,7 +119,7 @@ exercises:
       en: I believe this policy is the right one.
     answer: Saya berpendapat bahwa kebijakan ini sudah tepat.
     distractors: [solusi, menolak]
-    words: [berpendapat, kebijakan]
+    words: [berpendapat, kebijakan, tepat]
   - id: e08
     type: translate
     direction: to_target
@@ -135,7 +135,21 @@ exercises:
       - "Solusinya mudah: membawa tas belanja sendiri."
       - Solusinya gampang, yaitu kita membawa tas belanja sendiri.
       - Solusinya mudah, yaitu kita bawa tas belanja sendiri.
-    words: [solusi]
+    words: [solusi, mudah]
+  - id: e09
+    type: multiple_choice
+    question: Menurut saya, larangan ini kebijakan yang tepat.
+    question_meaning:
+      ar_eg: الكاتب موافق على المنع؟
+      ar: هل يوافق الكاتب على المنع؟
+      en: Does the writer agree with the ban?
+    options: ['Ya, dia setuju.', 'Tidak, dia tidak setuju.', 'Dia belum tahu.']
+    answer: 0
+    explain:
+      ar_eg: tepat = صح / في محلّه.
+      ar: tepat = صائب.
+      en: tepat = right, appropriate.
+    words: [tepat, larangan]
 dialogue:
   title: Membahas opini
   lines:
@@ -164,7 +178,17 @@ dialogue:
       ar_eg: حلو. النص العرضي الكويس فعلًا بيشوف الناحيتين.
       ar: جميل. النص العرضي الجيد ينظر فعلًا إلى الجانبين.
       en: Good. A good exposition does look at both sides.
-new_words: []
+new_words:
+  - word: tepat
+    pos: adjective
+    ar_eg: صح / مظبوط / في الصميم
+    ar: صائب / دقيق
+    en: right, exact, appropriate
+  - word: mudah
+    pos: adjective
+    ar_eg: سهل
+    ar: سهل
+    en: easy
 review:
   status: draft
   verified: false

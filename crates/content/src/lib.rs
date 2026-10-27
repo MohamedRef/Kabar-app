@@ -9,6 +9,7 @@
 //! `cargo test -p kabar-content` runs both over the whole repository.
 
 pub mod cast;
+pub mod core_words;
 pub mod lessons;
 pub mod model;
 pub mod retrieval;
@@ -179,6 +180,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
     }
     check_forward_words(&report.curricula, &lesson_values, &mut problems);
     check_retaught_words(&report.curricula, &lesson_values, &mut problems);
+    core_words::check(root, &report.curricula, &lesson_values, &mut problems);
     for level in LESSON_LEVELS {
         for id in index.lessons_of(level) {
             if !report.lessons.iter().any(|l| l == id) {
@@ -310,8 +312,11 @@ fn check_radio_words(
         for unit in c.levels.iter().flat_map(|l| &l.units) {
             for lesson in unit.lessons.iter().filter_map(|l| lessons.get(&l.id)) {
                 let new_words = lesson.get("new_words").and_then(Value::as_array).into_iter().flatten();
+                // Every form counts: "apa / opo" teaches apa and opo.
                 taught.extend(
-                    new_words.filter_map(|w| w.get("word").and_then(Value::as_str)).map(str::to_lowercase),
+                    new_words
+                        .filter_map(|w| w.get("word").and_then(Value::as_str))
+                        .flat_map(retrieval::forms),
                 );
             }
             taught_by.insert(unit.id.as_str(), taught.clone());

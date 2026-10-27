@@ -65,7 +65,7 @@ exercises:
       - dianggap biasa saja.
       - dianggap tidak sopan.
     answer: 2
-    words: [dianggap]
+    words: [dianggap, biasa]
   - id: e03
     type: fill_blank
     sentence: Di Mesir, sudah menjadi ___ minum teh setelah makan.
@@ -110,7 +110,7 @@ exercises:
       - Makan pakai garpu dan sendok dianggap biasa di sini.
       - Di sini, makan dengan sendok dan garpu dianggap biasa.
       - Makan dengan sendok dan garpu dianggap biasa di sini.
-    words: [dianggap]
+    words: [dianggap, biasa]
   - id: e07
     type: dictation
     text: Adab makan di rumah nenek sangat ketat.
@@ -127,6 +127,20 @@ exercises:
       ar: في مصر وإندونيسيا، الأكل مع العائلة عادة جميلة.
       en: In Egypt and Indonesia, eating with the family is a lovely custom.
     words: [bersama, kebiasaan]
+  - id: e09
+    type: multiple_choice
+    question: Di Indonesia, makan dengan tangan kanan itu biasa.
+    question_meaning:
+      ar_eg: الأكل بالإيد اليمين في إندونيسيا عامل إزاي؟
+      ar: كيف يُنظر إلى الأكل باليد اليمنى في إندونيسيا؟
+      en: How is eating with your right hand seen in Indonesia?
+    options: ['Normal saja.', 'Tidak sopan.', 'Dilarang.']
+    answer: 0
+    explain:
+      ar_eg: biasa = عادي.
+      ar: biasa = عادي.
+      en: biasa = normal, usual.
+    words: [biasa]
 dialogue:
   title: Makan malam di rumah Rina
   lines:
@@ -162,10 +176,11 @@ new_words:
     ar_eg: بيتعتبر
     ar: يُعدّ
     en: to be considered
-  - word: bersama
-    ar_eg: مع بعض
-    ar: معًا
-    en: together
+  - word: biasa
+    pos: adjective
+    ar_eg: عادي (biasa saja = عادي خالص)
+    ar: عادي
+    en: normal, usual
 review:
   status: draft
   verified: false

@@ -59,7 +59,7 @@ exercises:
       ar_eg: الصراع بين آري وأبوه، عشان أبوه عايز آري يدرس في ماتارام.
       ar: الصراع بين آري وأبيه، لأنّ أباه يريده أن يدرس في ماتارام.
       en: The conflict is between Ari and his father, because his father wants Ari to go to school in Mataram.
-    words: [konflik]
+    words: [konflik, sekolah]
   - id: e03
     type: multiple_choice
     question_meaning:
@@ -79,7 +79,7 @@ exercises:
       ar_eg: مين بطل الفيلم؟
       ar: مَن بطل الفيلم؟
       en: Who is the main character?
-    options: ["Ayah Ari, seorang nelayan.", "Ari, seorang anak nelayan.", "Seorang guru di Mataram."]
+    options: ["Ayah Ari, seorang nelayan.", "Ari, seorang anak nelayan.", "Seorang guru di kota."]
     answer: 1
     words: [tokoh utama]
   - id: e05
@@ -128,7 +128,7 @@ exercises:
       ar_eg: menyukai = يحب. menakuti = يخوّف، وmenghadiri = يحضر (حفلة أو اجتماع).
       ar: menyukai = يحبّ. أمّا menakuti فتعني يُخيف، وmenghadiri تعني يحضر (حفلًا أو اجتماعًا).
       en: menyukai = to like. menakuti = to frighten; menghadiri = to attend.
-    words: [menyukai]
+    words: [menyukai, sekolah, kota]
   - id: e08
     type: build_sentence
     source:
@@ -155,6 +155,20 @@ exercises:
       - Alurnya agak lambat, tetapi filmnya sangat mengharukan.
       - Alurnya agak lambat, tapi filmnya sangat mengharukan.
     words: [alur, mengharukan]
+  - id: e10
+    type: multiple_choice
+    question: Ayah Ari ingin Ari sekolah di kota.
+    question_meaning:
+      ar_eg: أبو آري عايزه يدرس فين؟
+      ar: أين يريد أبو آري أن يدرس ابنه؟
+      en: Where does Ari's father want him to study?
+    options: ['Di sekolah di kota.', 'Di laut, menjadi nelayan.', 'Di rumah.']
+    answer: 0
+    explain:
+      ar_eg: sekolah di kota = يدرس في مدرسة في المدينة. kota = مدينة.
+      ar: sekolah di kota = يدرس في مدرسة بالمدينة، وkota = مدينة.
+      en: sekolah di kota = go to school in the city. kota = city.
+    words: [sekolah, kota]
 dialogue:
   title: Di kafe Gili Trawangan
   lines:
@@ -183,6 +197,17 @@ dialogue:
       ar_eg: أربع نجوم. الأحداث بطيئة شوية، بس النهاية مؤثرة. يلا نتفرج عليه النهارده بالليل!
       ar: أربع نجوم. الحبكة بطيئة قليلًا، لكنّ النهاية مؤثّرة. هيّا نشاهده الليلة!
       en: Four stars. The plot is a bit slow, but the ending is moving. Let's watch it tonight!
+new_words:
+  - word: sekolah
+    pos: noun
+    ar_eg: مدرسة؛ sekolah di = يدرس في
+    ar: مدرسة؛ sekolah di = يدرس في
+    en: school; sekolah di = study at
+  - word: kota
+    pos: noun
+    ar_eg: مدينة
+    ar: مدينة
+    en: city, town
 review:
   status: draft
   verified: false

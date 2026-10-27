@@ -154,7 +154,7 @@ Writing the draft needs an AI engine, so until the app is connected to Kabar Clo
 ## 9. Reader, Share-to-Kabar and the Screenshot Decoder (M5)
 
 ### Reader on the Mac
-`just run-mac` → **Reader** (القارئ). Paste the §24 chat lines and read: hover a word to peek, click for the full card, drag-select a phrase, right-click → Save. Try split mode (جنب بعض) and the three explanation voices. Words come from the content pack (2,000 Indonesian and 1,000 Javanese glosses, 581 Arabic Bridge cards, the Javanese speech-level table), all marked "not reviewed yet". A Javanese word's card shows its Indonesian equivalent and every speech level (try `Monggo dhahar, Bu.`).
+`just run-mac` → **Reader** (القارئ). Paste the §24 chat lines and read: hover a word to peek, click for the full card, drag-select a phrase, right-click → Save. The meanings and the line translation sit beside each line (one column on a phone). Tap **Aa** in the Reader's bar for the explanation voice, text size, line spacing and line width (narrow puts the meanings under each line); these stay on this device. On the tablet and the Mac, **Focus mode** (وضع التركيز) hides the sidebar while you read, and the word card still opens beside the text. Words come from the content pack (2,000 Indonesian and 1,000 Javanese glosses, 581 Arabic Bridge cards, the Javanese speech-level table), all marked "not reviewed yet". A Javanese word's card shows its Indonesian equivalent and every speech level (try `Monggo dhahar, Bu.`).
 
 **Teach Kabar from the Reader:** open a word's card → **Teach Kabar** (it's the main button when Kabar has no gloss). The Teach screen opens with the word and its sentence filled in; go back to the Reader and the text is still open. Approved words show first in the card with a "taught by you" badge; a draft shows a "review it" chip instead.
 
@@ -301,3 +301,26 @@ python3 scripts/assets/synth_sounds.py               # gong and kendang, 3 varia
 - Build out of memory on 8 GB: `CARGO_BUILD_JOBS=2 just apk`.
 - `dx did not build android/ into the APK`: make sure `dx --version` says 0.7.10 (it must match the `manganis` version in `crates/app/Cargo.toml`), then check that `target/dx/kabar/release/android/app/settings.gradle` contains `include ':plugins:plugin'`.
 - Gradle can't resolve `com.google.mlkit:text-recognition`: the first build needs internet (Google Maven).
+
+## 17. App updates (over the air)
+
+Kabar updates itself on every device (design: `docs/RELEASE.md` §5). Settings → **About Kabar → Updates** shows this build, where things stand, **Check for updates**, how updates happen (**Automatic**, **Tell me first**, **Only when I check**) and the channel (Alpha, Beta, Stable; a preview build is fixed to Preview). A card on Today says when a new Kabar is ready.
+
+- **Preview APK (now).** The `Android preview APK` workflow builds every merge to `main` for the `preview` channel and publishes a signed `update.json` next to `kabar-preview.apk`. Install a preview that has this feature once by hand; from then on it updates itself. The first install of an update asks Android to allow "Install unknown apps" for Kabar and to confirm; after Kabar installed itself once, Android 12+ lets later updates go in quietly (in Automatic mode: while Kabar is in the background and not mid-lesson).
+- **Release builds (release day, only when you say go).** Once: `just update-keygen` (secret into the Keychain, public half into `crates/app/update-key.pub`; commit it and back the secret up with the Android key). Each release: `just release`, then `just publish-update "<what's new>" "<الجديد>"`. It zips Kabar.app with `ditto`, writes and signs one feed per channel the version belongs to, verifies it, and uploads it to the `update-alpha` / `update-beta` / `update-stable` releases.
+- **Mobile data.** Automatic downloads wait for Wi-Fi (and Data Saver); the offer shows in Settings with a Download button meanwhile. If Android needs a confirmation while Kabar is in the background, it comes as a "tap to install" notification and opens when you're back in Kabar.
+- **Preview key renewed.** If the CI cache expired (7 days with no build), previews get a new key; Settings says to install the newest `kabar-preview.apk` by hand once.
+- **Mac.** In Automatic mode the new Kabar.app goes in the next time Kabar opens; **Update and restart** does it now. Keep Kabar.app in Applications (a copy run from Downloads can't replace itself).
+- **Offline packs** you downloaded update during the same check.
+
+**Try it locally** (a development build, no GitHub): serve a feed folder and point the app at it. These variables work in debug builds only.
+
+```sh
+cargo test -p kabar-tools write_update_fixture -- --ignored   # refreshes fixtures/update (signed with a test key)
+(cd fixtures/update && python3 -m http.server 8765) &
+KABAR_UPDATE_URL=http://127.0.0.1:8765 \
+KABAR_UPDATE_KEY="$(grep -v '^#' fixtures/update/test-key.pub)" \
+KABAR_UPDATE_PLATFORM=android-arm64 KABAR_OPEN_SETTINGS=about cargo run -p kabar-app
+```
+
+About 20 seconds after start (or on **Check for updates**) it finds 1.0.0-alpha.2, downloads it, checks the signature and SHA-256, and shows it ready. Installing needs a real phone or Mac.

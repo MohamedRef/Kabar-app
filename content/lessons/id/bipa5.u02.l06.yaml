@@ -69,7 +69,7 @@ exercises:
       ar_eg: اعتذار + kurang setuju + السبب، ومن غير لغة الشارع.
       ar: اعتذار ثم kurang setuju ثم السبب، بلا عامّية.
       en: An apology, kurang setuju and a reason, with no slang.
-    words: [kurang setuju]
+    words: [kurang setuju, benar]
   - id: e03
     type: fill_blank
     sentence: Saya mengerti pendapat Ibu. ___, kota baru itu bisa merusak hutan.
@@ -79,10 +79,10 @@ exercises:
       en: I understand your view, ma'am. Even so, the new city could damage the forest.
     options: [Meskipun begitu, Selain itu, Karena itu]
     answers: [Meskipun begitu]
-    words: [meskipun begitu, pendapat]
+    words: [meskipun begitu, pendapat, mengerti]
   - id: e04
     type: listen
-    text: Itu benar, tetapi Jakarta tetap butuh perbaikan.
+    text: Itu benar, tetapi Jakarta tetap perlu perbaikan.
     question:
       ar_eg: المتكلم بيعمل إيه؟
       ar: ماذا يفعل المتكلّم؟
@@ -92,7 +92,7 @@ exercises:
       - بيعترف بنقطة وبعدين بيعترض.
       - بيغيّر الموضوع.
     answer: 1
-    words: [menyanggah]
+    words: [menyanggah, benar]
   - id: e05
     type: build_sentence
     source:
@@ -114,7 +114,7 @@ exercises:
       - Itu benar, tapi pemerintah harus melindungi hutan.
       - Itu benar, tetapi pemerintah harus menjaga hutan.
       - Itu betul, tetapi pemerintah harus melindungi hutan.
-    words: [menyanggah]
+    words: [menyanggah, benar]
   - id: e07
     type: dictation
     text: Meskipun begitu, pendapat Anda tetap penting bagi kami.
@@ -130,7 +130,7 @@ exercises:
       ar_eg: فاهم رأي حضرتك. ومع كده، أنا مش موافق قوي.
       ar: أفهم رأيك، ومع ذلك لا أوافق تمامًا.
       en: I understand your view. Even so, I don't quite agree.
-    words: [pendapat, meskipun begitu, kurang setuju]
+    words: [pendapat, meskipun begitu, kurang setuju, mengerti]
   - id: e09
     type: multiple_choice
     question: "Dalam debat, kita ___ argumen lawan dengan data."
@@ -141,6 +141,20 @@ exercises:
     options: [menyanggah, pendapat, kurang]
     answer: 0
     words: [menyanggah]
+  - id: e10
+    type: multiple_choice
+    question: Saya mengerti alasan Bapak, tetapi saya kurang setuju.
+    question_meaning:
+      ar_eg: المتكلم فاهم رأي الأستاذ؟
+      ar: هل يفهم المتكلّم رأي الأستاذ؟
+      en: Does the speaker understand the man's view?
+    options: ['Ya, tetapi dia tidak setuju.', 'Tidak, dia tidak mengerti.', 'Ya, dan dia setuju.']
+    answer: 0
+    explain:
+      ar_eg: mengerti = يفهم. ممكن تفهم الرأي ومتوافقش عليه.
+      ar: mengerti = يفهم، وقد تفهم الرأي دون أن توافق عليه.
+      en: mengerti = understand; you can understand a view and still disagree.
+    words: [mengerti, kurang setuju]
 dialogue:
   title: Debat di radio kampus
   lines:
@@ -179,6 +193,16 @@ new_words:
     ar_eg: يرد ويعترض
     ar: يعترض، يفنّد
     en: to rebut
+  - word: benar
+    pos: adjective
+    ar_eg: صح / حقيقي (itu benar = ده صح)
+    ar: صحيح
+    en: true, right
+  - word: mengerti
+    pos: verb
+    ar_eg: يفهم
+    ar: يفهم
+    en: to understand
 review:
   status: draft
   verified: false

@@ -767,6 +767,41 @@ button.icon-button { inline-size: 44px; padding: 0; flex: none; }
 }
 /* ---------- Reader ---------- */
 .reader .reader-bar { display: grid; gap: 0.75rem; }
+/* With a text open the bar is one line, so the text starts near the top. */
+.reader .reader-bar.one-line { display: flex; align-items: center; gap: var(--sp-2); padding-block: var(--sp-2); }
+.reader-bar.one-line h2 { margin: 0; flex: 1; font-size: var(--fs-lg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.read-aa .latin { font-family: var(--font-latin); font-weight: 600; }
+.read-settings { display: grid; gap: var(--sp-2); }
+/* label and choices on one line, wrapping on a phone */
+.read-settings .field { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-3); }
+.read-settings .field .label { min-inline-size: 8rem; }
+.read-settings .row { flex-wrap: wrap; }
+.read-settings .label { font-size: var(--fs-sm); color: var(--muted); font-weight: 600; }
+.read-settings [class^="read-size-"] .latin { font-family: var(--font-latin); line-height: 1; }
+.read-size-s .latin { font-size: var(--fs-sm); }
+.read-size-m .latin { font-size: var(--fs-md); }
+.read-size-l .latin { font-size: var(--fs-lg); }
+.read-size-xl .latin { font-size: var(--fs-xl); }
+
+/* Reading settings (issue #180): a scale on the text and everything under
+   it, a spacing factor, and the line width on tablet and Mac. */
+.reader { --read-scale: 1; --read-space: 1; --read-max: 64rem; }
+.reader[data-read-size="s"] { --read-scale: 0.88; }
+.reader[data-read-size="l"] { --read-scale: 1.15; }
+.reader[data-read-size="xl"] { --read-scale: 1.32; }
+.reader[data-read-spacing="snug"] { --read-space: 0.86; }
+.reader[data-read-spacing="airy"] { --read-space: 1.2; }
+.reader[data-read-width="narrow"] { --read-max: 40rem; }
+.reader[data-read-width="wide"] { --read-max: none; }
+.app:not([data-width="compact"]) .reader .read-card > * { max-inline-size: var(--read-max); margin-inline: auto; }
+
+/* Focus mode: the sidebar and the bar's title step aside; the word card
+   still opens in the side pane. */
+.app:has(.reader.focus) .shell { grid-template-columns: minmax(0, 1fr); }
+.app:has(.reader.focus) .nav { display: none; }
+.app:has(.reader.focus) .content { max-inline-size: none; }
+.reader.focus .reader-bar.one-line h2 { visibility: hidden; }
+.reader.focus .reader-bar.one-line { box-shadow: none; background: transparent; border-color: transparent; }
 .small { font-size: 0.85rem; }
 .ghost { border-color: transparent; background: transparent; min-inline-size: 44px; }
 .visually-hidden { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
@@ -793,7 +828,7 @@ button.icon-button { inline-size: 44px; padding: 0; flex: none; }
 .read-card { position: relative; }
 
 /* the text itself: always Latin, always LTR, generous for reading */
-.doc { position: relative; font-family: var(--font-latin); font-size: 1.25rem; line-height: 2.1; -webkit-user-select: text; user-select: text; }
+.doc { position: relative; font-family: var(--font-latin); font-size: calc(1.25rem * var(--read-scale, 1)); line-height: calc(2.1 * var(--read-space, 1)); -webkit-user-select: text; user-select: text; }
 .doc .seg { margin-block-end: 0.6rem; }
 /* One column of text: book-like line length. Side-by-side translation and
    chat bubbles use the full width. */
@@ -835,10 +870,10 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 /* the text, row by row: the original line, its words' meanings and the
    whole line's translation under it (side by side on wide windows) */
 .split-head { display: none; }
-.doc.split .seg { display: grid; gap: 0.35rem 1.5rem; padding-block: 0.6rem; border-block-end: 1px solid var(--line); }
+.doc.split .seg { display: grid; gap: 0.35rem 1.5rem; padding-block: calc(0.6rem * var(--read-space, 1)); border-block-end: 1px solid var(--line); }
 .doc.split .seg:last-child { border-block-end: 0; }
 .under { display: grid; gap: 0.45rem; align-content: start; }
-.explain { display: flex; flex-wrap: wrap; gap: 0.35rem; font-size: 0.95rem; line-height: 1.6; font-family: inherit; }
+.explain { display: flex; flex-wrap: wrap; gap: 0.35rem; font-size: calc(0.95rem * var(--read-scale, 1)); line-height: calc(1.6 * var(--read-space, 1)); font-family: inherit; }
 .app:lang(ar) .explain { font-family: var(--font-arabic); }
 .chip { display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; gap: 0.25rem; padding-block: 0.1rem; padding-inline: 0.5rem; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; }
 .chip.from-arabic { border-color: var(--gold); text-decoration: none; }
@@ -847,13 +882,13 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .explain .chip-gloss { color: var(--text); }
 /* the whole line's translation: the learner's language, quiet but readable */
 .tr-line {
-  margin: 0; font-family: var(--font-arabic); font-size: 1.08rem; line-height: 1.75; color: var(--text);
+  margin: 0; font-family: var(--font-arabic); font-size: calc(1.08rem * var(--read-scale, 1)); line-height: calc(1.75 * var(--read-space, 1)); color: var(--text);
   border-inline-start: 3px solid color-mix(in srgb, var(--indigo) 45%, transparent); padding-inline-start: 0.7rem;
   -webkit-user-select: text; user-select: text;
 }
-.tr-line:lang(en) { font-family: var(--font-latin); font-size: 1rem; }
+.tr-line:lang(en) { font-family: var(--font-latin); font-size: calc(1rem * var(--read-scale, 1)); }
 .tr-line.pending { color: var(--muted); border-inline-start-style: dashed; }
-.tr-line.word-by-word { color: var(--muted); font-size: 0.98rem; border-inline-start-style: dotted; }
+.tr-line.word-by-word { color: var(--muted); font-size: calc(0.98rem * var(--read-scale, 1)); border-inline-start-style: dotted; }
 @media (prefers-reduced-motion: no-preference) {
   /* A few pulses, not forever: a hung request shouldn't keep every line moving. */
   .tr-line.pending { animation: tr-pulse 1.2s ease-in-out 8 alternate; }
@@ -865,7 +900,9 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .tr-status .tr-badge { font-size: 0.8rem; font-weight: 600; color: var(--indigo); background: color-mix(in srgb, var(--indigo) 10%, transparent); border-radius: 999px; padding-inline: 0.6rem; }
 .tr-status p, .tr-status span { margin: 0; }
 .app:not([data-width="compact"]) .doc.split .seg { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
-.app:not([data-width="compact"]) .split-head { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+/* Narrow: one column, like a phone, the meanings under each line. */
+.app:not([data-width="compact"]) .reader[data-read-width="narrow"] .doc.split .seg { grid-template-columns: minmax(0, 1fr); }
+.app:not([data-width="compact"]) .reader:not([data-read-width="narrow"]) .split-head { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
 .doc.split .seg.bubble { direction: inherit; }
 .doc.split .seg.bubble .orig { max-inline-size: none; }
 

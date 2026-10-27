@@ -30,3 +30,4 @@ pub mod story;
 pub mod sync;
 pub mod sync_client;
 pub mod theme;
+pub mod update;

@@ -94,29 +94,29 @@ exercises:
       ar_eg: الساعة ٨ الصبح. تقول إيه للمُدرّسة؟
       ar: الساعة الثامنة صباحًا. ماذا تقول للمعلّمة؟
       en: It's 8 a.m. What do you say to the teacher?
-    options: ['Selamat sore, Bu!', 'Selamat malam, Bu!', 'Selamat pagi, Bu!']
+    options: ['Selamat sore, Bu!', 'Selamat malam, Bu!', 'Selamat pagi, Bu!', 'Selamat jalan, Bu!']
     answer: 2
     explain:
       ar_eg: الساعة ٨ لسه الصبح، يبقى pagi.
       ar: الثامنة صباحًا من الـ pagi.
       en: 8 a.m. is still pagi.
-    words: [selamat, pagi]
+    words: [selamat, pagi, selamat jalan]
   - id: e03
     type: fill_blank
-    sentence: Selamat ___, Pak! Sampai jumpa besok.
+    sentence: Selamat ___, Bu! Sampai jumpa besok.
     meaning:
-      ar_eg: (الساعة ٩ بالليل) تصبح على خير يا أستاذ! أشوفك بكرة.
-      ar: (الساعة التاسعة ليلًا) تصبح على خير يا سيدي! إلى اللقاء غدًا.
-      en: (9 p.m.) Good night, sir! See you tomorrow.
+      ar_eg: (الساعة ٩ بالليل) تصبحي على خير يا مدام! أشوفك بكرة.
+      ar: (الساعة التاسعة ليلًا) تصبحين على خير يا سيدتي! إلى اللقاء غدًا.
+      en: (9 p.m.) Good night, ma'am! See you tomorrow.
     options: [malam, siang, pagi, sore]
     answers: [malam]
     words: [malam, sampai jumpa]
   - id: e04
     type: listen
     text: Selamat sore
-    options: [Selamat siang, Selamat sore, Selamat malam]
+    options: [Selamat siang, Selamat sore, Selamat malam, Selamat jalan]
     answer: 1
-    words: [sore]
+    words: [sore, selamat jalan]
   - id: e05
     type: build_sentence
     source:
@@ -142,6 +142,19 @@ exercises:
       ar: طاب يومكِ يا سيدتي! إلى اللقاء غدًا.
       en: Good afternoon, ma'am! See you tomorrow.
     words: [selamat, siang, sampai jumpa, besok]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Raka ماشي من عندك وإنت قاعد. تقوله إيه؟
+      ar: يغادر Raka وأنت باقٍ. ماذا تقول له؟
+      en: Raka is leaving and you are staying. What do you say to him?
+    options: [Selamat pagi!, Selamat jalan!, Selamat malam!]
+    answer: 1
+    explain:
+      ar_eg: selamat jalan = امشي بالسلامة، بنقولها للي ماشي.
+      ar: selamat jalan = سِرْ بسلامة، تقال للراحل.
+      en: selamat jalan = go safely, said to the one leaving.
+    words: [selamat jalan]
 dialogue:
   title: Pagi di Kota Tua
   lines:
@@ -202,6 +215,11 @@ new_words:
     ar_eg: بكرة
     ar: غدًا
     en: tomorrow
+  - word: selamat jalan
+    pos: phrase
+    ar_eg: مع السلامة (للي ماشي)
+    ar: مع السلامة (للراحل)
+    en: goodbye (to someone leaving)
 review:
   status: draft
   verified: false

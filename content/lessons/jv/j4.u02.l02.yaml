@@ -85,7 +85,11 @@ exercises:
         ar_eg: قريب
         ar: قريب
         en: near
-    words: [dalem, garwa, kagem, dhaharan, caket]
+      - text: kanggo
+        ar_eg: لـ / عشان (نغوكو)
+        ar: لِـ (نغوكو)
+        en: for (ngoko)
+    words: [dalem, garwa, kagem, dhaharan, caket, kanggo]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -111,7 +115,7 @@ exercises:
       ar_eg: لـ حد كبير kagem. «kangge kula» يعني «عشاني أنا»، وiki kanggo kowe نغوكو.
       ar: للكبير kagem، و«kangge kula» = لي أنا، وiki kanggo kowe نغوكو.
       en: For an elder, kagem. "kangge kula" means "for me"; iki kanggo kowe is ngoko.
-    words: [kagem]
+    words: [kagem, kanggo]
   - id: e04
     type: listen
     text: Garwanipun Bapak saweg tindak dhateng peken.
@@ -176,6 +180,20 @@ exercises:
       ar: هذا طعام للجدة.
       en: This is food for Grandma.
     words: [dhaharan, kagem]
+  - id: e10
+    type: multiple_choice
+    question: Iki kanggo kowe.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['ده عشانك.', 'ده من عندك.', 'ده معاك.']
+    answer: 0
+    explain:
+      ar_eg: kanggo = لـ / عشان (untuk). في الكراما kangge، ولما يبقى لحد كبير kagem.
+      ar: kanggo = لِـ (untuk)؛ وفي الكراما kangge، وللكبير kagem.
+      en: kanggo = for (untuk); krama kangge, and kagem when it is for an elder.
+    words: [kanggo, kagem]
 dialogue:
   title: Bakpia kagem garwanipun
   lines:
@@ -235,6 +253,11 @@ new_words:
     ar_eg: قريب (كراما لـ cedhak)
     ar: قريب (كراما لـ cedhak)
     en: near (krama for cedhak) = dekat
+  - word: kanggo
+    pos: preposition
+    ar_eg: لـ، عشان (نغوكو)
+    ar: لِـ، من أجل (نغوكو)
+    en: for (ngoko) = untuk
 review:
   status: draft
   verified: false

@@ -154,7 +154,7 @@ exercises:
       en: My house is at the end of the alley, the last house.
     options: [antara, seberang, ujung]
     answers: [ujung]
-    words: [ujung, gang]
+    words: [ujung, gang, terakhir]
   - id: e05
     type: build_sentence
     source:
@@ -166,12 +166,12 @@ exercises:
     words: [tetangga, anjing, ekor]
   - id: e06
     type: dictation
-    text: Warung di ujung gang itu lengkap.
+    text: Warung terakhir di ujung gang itu lengkap.
     meaning:
-      ar_eg: الكشك اللي في آخر الحارة دي فيه كل حاجة.
-      ar: الدكان في نهاية ذلك الزقاق فيه كل شيء.
-      en: The shop at the end of that alley has everything.
-    words: [ujung, gang, lengkap]
+      ar_eg: آخر كشك في آخر الحارة فيه كل حاجة.
+      ar: آخر دكان في نهاية الزقاق فيه كل شيء.
+      en: The last shop at the end of the alley has everything.
+    words: [ujung, gang, lengkap, terakhir]
   - id: e07
     type: speaking
     text: Kos saya di seberang warung. Warungnya lengkap!
@@ -180,6 +180,20 @@ exercises:
       ar: سكني مقابل الدكان، والدكان فيه كل شيء!
       en: My boarding house is across from a shop. The shop has everything!
     words: [kos, seberang, lengkap]
+  - id: e08
+    type: multiple_choice
+    question: Rumah saya rumah terakhir di gang ini.
+    question_meaning:
+      ar_eg: بيته فين؟
+      ar: أين بيته؟
+      en: Where is the house?
+    options: [آخر بيت في الحارة, أول بيت في الحارة, في نص الحارة]
+    answer: 0
+    explain:
+      ar_eg: terakhir = الأخير، وpertama = الأول.
+      ar: terakhir = الأخير، وpertama = الأول.
+      en: terakhir = last; pertama = first.
+    words: [terakhir]
 dialogue:
   title: Jalan di Sanur
   lines:
@@ -244,6 +258,11 @@ new_words:
     ar_eg: كامل، فيه كل حاجة
     ar: كامل
     en: complete
+  - word: terakhir
+    pos: adjective
+    ar_eg: الأخير / آخر واحد
+    ar: الأخير
+    en: last
 review:
   status: draft
   verified: false
