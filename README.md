@@ -68,13 +68,13 @@ every morning. CI warns when the table below is behind the content.
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
-| J1 | Surabaya | — | 7 | 36 | 312 | 146 | 146 / 250 | ~4 h | 34 |
-| J2 | Madiun | — | 6 | 36 | 341 | 149 | 295 / 500 | ~4 h | 35 |
-| J3 | Solo (Surakarta) | — | 6 | 42 | 364 | 98 | 393 / 750 | ~4 h | 35 |
-| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 482 / 1,000 | ~5 h | 38 |
-| J5 | Semarang | — | 6 | 66 | 621 | 255 | 737 / 1,250 | ~7 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 542 | 95 | 831 / 1,500 | ~6 h | 37 |
-| **Total** |  | — | 37 | 288 | 2,615 | 833 | 831 / 1,500 | ~31 h | 218 |
+| J1 | Surabaya | — | 7 | 50 | 452 | 258 | 258 / 250 | ~6 h | 34 |
+| J2 | Madiun | — | 6 | 36 | 341 | 149 | 407 / 500 | ~4 h | 35 |
+| J3 | Solo (Surakarta) | — | 6 | 42 | 364 | 98 | 505 / 750 | ~4 h | 35 |
+| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 594 / 1,000 | ~5 h | 38 |
+| J5 | Semarang | — | 6 | 66 | 621 | 255 | 849 / 1,250 | ~7 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 542 | 95 | 943 / 1,500 | ~6 h | 37 |
+| **Total** |  | — | 37 | 302 | 2,755 | 945 | 943 / 1,500 | ~32 h | 218 |
 
 **Reference content and stories**
 

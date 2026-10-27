@@ -1,211 +1,248 @@
 schema: kabar.lesson/v1
 id: j1.u04.l04
 language: jv
-title: VN saka Cak Heru
+title: Paket kurma
 can_do:
-  ar_eg: تفهم فويس نوت قصيرة فيها tak وlho وkok وترد عليها.
-  ar: أن تفهم رسالة صوتية قصيرة فيها tak وlho وkok وتردّ عليها.
-  en: Follow a voice note with tak, lho and kok.
+  ar_eg: 'تتابع طرد: العنوان، الحاجة اللي وصلت بايظة، وإنها اتأخرت أوي.'
+  ar: 'أن تتابع طردًا: العنوان، والبضاعة التي وصلت تالفة، والتأخّر الطويل.'
+  en: 'Follow up a parcel: the address, goods that arrived broken, and a delivery that''s taking too long.'
 slides:
-  - title: VN saka pasar Ampel
-    grammar: jv.particle.basic
+  - title: Paketku endi?
     body:
       ar_eg: |
-        Cak Heru بعتلك فويس نوت (VN) من سوق أمبل. اسمعها الأول من غير ما تقرا، ودوّر على تلات حاجات:
-        - هو فين؟ (nang …)
-        - هيعمل إيه؟ (tak + فعل = أنا هـ…)
-        - حاسس بإيه؟ (lho = على فكرة، kok = إيه ده؟!)
-        كلمة واحدة ممكن تكون جديدة عليك في السياق ده: «Ngomong ae» = قول بس / قولّي وخلاص.
+        paket = طرد، barang = حاجة، بضاعة، alamat = عنوان.
+        rusak = بايظ: Barange rusak = الحاجة بايظة.
+        ganti = يغيّر، يبدّل: Tak ganti = هبدّلهولك.
+        bali = يرجع: Aku bali nang omah = راجع البيت.
+        wektu = وقت. kesuwen = أخد وقت كتير أوي: Kok kesuwen? = إيه التأخير ده؟
       ar: |
-        أرسل لك Cak Heru رسالة صوتية (VN) من سوق أمبل. استمع إليها أولًا دون قراءة، وابحث عن ثلاثة أمور:
-        - أين هو؟ (nang …)
-        - ماذا سيفعل؟ (tak + فعل = سأ…)
-        - بماذا يشعر؟ (lho = للتنبيه، وkok = للتعجّب)
-        وتعبير قد يبدو جديدًا هنا: «Ngomong ae» = قل فقط.
+        paket = طرد، barang = شيء، بضاعة، alamat = عنوان.
+        rusak = تالف: Barange rusak = البضاعة تالفة.
+        ganti = يغيّر، يستبدل: Tak ganti = سأستبدله لك.
+        bali = يرجع: Aku bali nang omah = أعود إلى البيت.
+        wektu = وقت. kesuwen = استغرق وقتًا طويلًا جدًّا: Kok kesuwen? = لماذا كلّ هذا التأخير؟
       en: |
-        Cak Heru sends you a voice note (VN) from Ampel market. Listen first without reading, and catch three things:
-        - Where is he? (nang …)
-        - What will he do? (tak + verb = I'll …)
-        - How does he feel? (lho = you know!, kok = how come?!)
-        One phrase may look new in this context: "Ngomong ae" = just say so.
+        paket = parcel, barang = thing, goods, alamat = address.
+        rusak = broken: Barange rusak = The goods are broken.
+        ganti = change, replace: Tak ganti = I'll replace it.
+        bali = go back: Aku bali nang omah = I'm going back home.
+        wektu = time. kesuwen = taking too long: Kok kesuwen? = Why so long?
     examples:
-      - text: Mohamed, aku isih nang Ampel. Kurmane enak lho!
-        ar_eg: يا محمد، أنا لسه في أمبل. البلح حلو أوي على فكرة!
-        ar: يا محمد، ما زلت في أمبل. التمر لذيذ جدًا!
-        en: Mohamed, I'm still at Ampel. The dates are really good, you know!
-      - text: Sek, tak takon regane. Lho, kok larang?
-        ar_eg: استنى، هسأل على السعر. إيه ده، غالي كده ليه؟
-        ar: انتظر، سأسأل عن السعر. ماذا؟ لماذا هو غالٍ هكذا؟
-        en: Hold on, I'll ask the price. Whoa, how come it's so expensive?
-      - text: Kowe arep kurma? Ngomong ae, tak tuku. Aku mulih bengi.
-        ar_eg: عايز بلح؟ قول بس وأنا أشتريلك. أنا راجع بالليل.
-        ar: هل تريد تمرًا؟ قل فقط وسأشتريه. سأعود إلى البيت ليلًا.
-        en: Do you want dates? Just say so and I'll buy some. I'll be home tonight.
+      - text: Barange rusak, Mas.
+        ar_eg: الحاجة بايظة يا ماس.
+        ar: البضاعة تالفة يا أخي.
+        en: The goods are broken, Mas.
+      - text: Alamate ngendi, Cak?
+        ar_eg: العنوان فين يا تشاك؟
+        ar: أين العنوان يا تشاك؟
+        en: What's the address, Cak?
+      - text: Paketku kok durung tekan? Kesuwen!
+        ar_eg: الطرد بتاعي ليه لسه ما وصلش؟ اتأخر أوي!
+        ar: لماذا لم يصل طردي بعد؟ تأخّر كثيرًا!
+        en: Why hasn't my parcel arrived? It's taking forever!
 exercises:
   - id: e01
-    type: listen
-    text: Mohamed, aku isih nang Ampel. Kurmane enak lho!
-    question:
-      ar_eg: Cak Heru فين دلوقتي؟
-      ar: أين Cak Heru الآن؟
-      en: Where is Cak Heru now?
-    options: ["Nang omah.", "Nang Ampel.", "Nang Tunjungan."]
-    answer: 1
-    meaning:
-      ar_eg: يا محمد، أنا لسه في أمبل. البلح حلو أوي على فكرة!
-      ar: يا محمد، ما زلت في أمبل. التمر لذيذ جدًا!
-      en: Mohamed, I'm still at Ampel. The dates are really good, you know!
-    words: [isih, lho]
-  - id: e02
-    type: listen
-    text: Sek, tak takon regane. Lho, kok larang?
-    question:
-      ar_eg: Cak Heru شايف السعر إزاي؟
-      ar: ما رأي Cak Heru في السعر؟
-      en: What does Cak Heru think of the price?
-    options: ["Regane larang.", "Kurmane ora ana.", "Kurmane ora enak."]
-    answer: 0
-    meaning:
-      ar_eg: استنى، هسأل على السعر. إيه ده، غالي كده ليه؟
-      ar: انتظر، سأسأل عن السعر. ماذا؟ لماذا هو غالٍ هكذا؟
-      en: Hold on, I'll ask the price. Whoa, how come it's so expensive?
-    explain:
-      ar_eg: kok larang? = غالي كده ليه؟! kok في الأول = استغراب.
-      ar: kok larang? = لماذا هو غالٍ هكذا؟! وkok في أول الجملة للتعجّب.
-      en: kok larang? = how come it's so expensive?! kok at the start shows surprise.
-    words: [takon, kok, larang]
-  - id: e03
-    type: multiple_choice
-    question: Kowe arep kurma? Ngomong ae, tak tuku.
-    question_meaning:
-      ar_eg: لو قلتله «آه»، Cak Heru هيعمل إيه؟
-      ar: إذا قلت له «نعم»، ماذا سيفعل Cak Heru؟
-      en: If you say yes, what will Cak Heru do?
-    options: ["Dheweke mulih.", "Dheweke lapor pusat.", "Dheweke tuku kurma."]
-    answer: 2
-    explain:
-      ar_eg: tak tuku = أنا هشتري. يعني هو هيشتريلك البلح.
-      ar: tak tuku = سأشتري، أي أنه سيشتري لك التمر.
-      en: tak tuku = I'll buy (it). So he'll buy the dates for you.
-    words: [tuku]
-  - id: e04
-    type: multiple_choice
-    question: Aku mulih bengi.
-    question_meaning:
-      ar_eg: Cak Heru راجع البيت إمتى؟
-      ar: متى يعود Cak Heru إلى البيت؟
-      en: When is Cak Heru going home?
-    options: ["Esuk.", "Bengi.", "Awan."]
-    answer: 1
-    explain:
-      ar_eg: mulih = يروّح (pulang)، bengi = بالليل.
-      ar: mulih = يعود إلى البيت (pulang)، وbengi = ليلًا.
-      en: mulih = go home (pulang), bengi = at night.
-    words: [mulih]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: tak takon
-        ar_eg: هسأل
-        ar: سأسأل
-        en: I'll ask
-      - text: kok larang?
-        ar_eg: غالي كده ليه؟!
-        ar: لماذا هو غالٍ هكذا؟!
-        en: how come it's so expensive?!
-      - text: enak lho
-        ar_eg: حلو أوي على فكرة
-        ar: لذيذ حقًّا
-        en: it's good, you know
-      - text: ngomong ae
-        ar_eg: قول بس
-        ar: قل فقط
-        en: just say so
-      - text: mulih
-        ar_eg: يروّح البيت
-        ar: يعود إلى البيت
-        en: go home
-    words: [takon, kok, larang, lho, ngomong, ae, mulih]
+      - text: barang
+        ar_eg: حاجة، بضاعة
+        ar: بضاعة
+        en: goods, thing
+      - text: paket
+        ar_eg: طرد
+        ar: طرد
+        en: parcel
+      - text: alamat
+        ar_eg: عنوان
+        ar: عنوان
+        en: address
+      - text: rusak
+        ar_eg: بايظ
+        ar: تالف
+        en: broken
+    words: [barang, paket, alamat, rusak]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: bali
+        ar_eg: يرجع
+        ar: يرجع
+        en: go back
+      - text: wektu
+        ar_eg: وقت
+        ar: وقت
+        en: time
+      - text: ganti
+        ar_eg: يبدّل
+        ar: يستبدل
+        en: replace, change
+      - text: kesuwen
+        ar_eg: أخد وقت كتير
+        ar: طال كثيرًا
+        en: taking too long
+    words: [bali, wektu, ganti, kesuwen]
+  - id: e03
+    type: listen
+    text: Barange rusak, Mas.
+    question:
+      ar_eg: المشكلة إيه؟
+      ar: ما المشكلة؟
+      en: What's the problem?
+    options: [الحاجة بايظة يا ماس, العنوان غلط يا ماس, الطرد وصل يا ماس]
+    answer: 0
+    meaning:
+      ar_eg: الحاجة بايظة يا ماس.
+      ar: البضاعة تالفة يا أخي.
+      en: The goods are broken, Mas.
+    words: [barang, rusak, alamat, paket]
+  - id: e04
+    type: fill_blank
+    sentence: Paketku kok durung tekan? ___!
+    meaning:
+      ar_eg: الطرد بتاعي ليه لسه ما وصلش؟ ___!
+      ar: لماذا لم يصل طردي بعد؟ ___!
+      en: Why hasn't my parcel arrived? ___!
+    options: [Kesuwen, Rusak, Ganti]
+    answers: [Kesuwen]
+    words: [kesuwen, paket, rusak, ganti]
+  - id: e05
+    type: multiple_choice
+    question: Alamate ngendi, Cak?
+    question_meaning:
+      ar_eg: بيسأل عن إيه؟
+      ar: عمّ يسأل؟
+      en: What is he asking for?
+    options: [العنوان, الوقت, السعر]
+    answer: 0
+    explain:
+      ar_eg: alamat = عنوان. الوقت = wektu، السعر = rega.
+      ar: alamat = عنوان. أمّا الوقت فـwektu، والسعر فـrega.
+      en: alamat = address. Time is wektu, price is rega.
+    words: [alamat]
   - id: e06
     type: fill_blank
-    sentence: Lho, ___ larang?
+    sentence: Barange rusak? Tak ___, ya.
     meaning:
-      ar_eg: إيه ده، غالي كده ليه؟
-      ar: ماذا؟ لماذا هو غالٍ هكذا؟
-      en: Whoa, how come it's so expensive?
-    options: ["ae", "kok", "ta"]
-    answers: ["kok"]
-    explain:
-      ar_eg: kok قبل الصفة = «إشمعنى؟ ليه كده؟».
-      ar: kok قبل الصفة تعني «لماذا هكذا؟».
-      en: kok before the adjective = "how come?!".
-    words: [kok, larang]
+      ar_eg: الحاجة بايظة؟ ___ لك.
+      ar: البضاعة تالفة؟ سأ___ ها لك.
+      en: The goods are broken? I'll ___ them.
+    options: [ganti, bali, wektu]
+    answers: [ganti]
+    words: [ganti, bali, wektu, barang]
   - id: e07
-    type: dictation
-    text: Sek, tak takon regane.
-    meaning:
-      ar_eg: استنى، هسأل على السعر.
-      ar: انتظر، سأسأل عن السعر.
-      en: Hold on, I'll ask the price.
-    words: [sek, takon, rega]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "رد على الفويس نوت: «ماشي يا Cak، هستناك في البيت.»"
-      ar: "ردّ على الرسالة الصوتية: «حسنًا يا Cak، سأنتظرك في البيت.»"
-      en: "Reply to the voice note: \"OK, Cak, I'll wait for you at home.\""
-    answers:
-      - Iya Cak, tak tunggu nang omah.
-      - Iya Cak, tak tunggu nang omah
-      - Iya, Cak, tak tunggu nang omah.
-      - Iya Cak, tak tunggu nang omah, ya.
-      - Iya Cak, tak tunggu nang omah ya
-      - Iya Cak, tak tunggu neng omah.
-      - Oke Cak, tak tunggu nang omah.
-      - Iya, tak tunggu nang omah, Cak.
-      - Iya, tak tunggu nang omah.
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «مفيش وقت» بالجاوي؟
+      ar: كيف تقول «لا يوجد وقت» بالجاوية؟
+      en: '"There''s no time" in Javanese?'
+    options: [Ora ana barang., Ora ana wektu., Ora ana alamat.]
+    answer: 1
     explain:
-      ar_eg: tak tunggu = هستنى (أنا)، nang omah = في البيت.
-      ar: tak tunggu = سأنتظر، وnang omah = في البيت.
-      en: tak tunggu = I'll wait, nang omah = at home.
-    words: [tunggu, nang, omah]
+      ar_eg: wektu = وقت. barang = حاجة، alamat = عنوان.
+      ar: wektu = وقت. أمّا barang فبضاعة، وalamat فعنوان.
+      en: wektu = time. barang = goods, alamat = address.
+    words: [wektu, barang, alamat]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: أنا راجع البيت.
+      ar: أنا عائد إلى البيت.
+      en: I'm going back home.
+    answer: Aku bali nang omah.
+    distractors: [ganti, paket]
+    words: [bali]
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Paket kurma saka Mesir wis tekan.
+    answers_meaning:
+      ar_eg: [طرد البلح من مصر وصل, وصل طرد البلح اللي من مصر]
+      ar: [وصل طرد التمر من مصر, طرد التمر من مصر قد وصل]
+      en: [The parcel of dates from Egypt has arrived, The date parcel from Egypt arrived]
+    words: [paket]
+  - id: e10
     type: speaking
-    text: Kurmane enak lho, Cak!
+    text: Kok kesuwen? Aku bali wae.
     meaning:
-      ar_eg: البلح حلو أوي على فكرة يا Cak!
-      ar: التمر لذيذ حقًّا يا Cak!
-      en: The dates are really good, you know, Cak!
-    words: [lho]
+      ar_eg: إيه التأخير ده؟ أنا راجع وخلاص.
+      ar: لماذا كلّ هذا التأخير؟ سأعود إذن.
+      en: Why so long? I'll just go back.
+    words: [kesuwen, bali]
 dialogue:
-  title: Bengi, Cak Heru mulih
   lines:
-    - speaker: Cak Heru
-      text: Mohamed, kurmane wis tak tuku!
-      ar_eg: يا محمد، اشتريت البلح خلاص!
-      ar: يا محمد، اشتريت التمر!
-      en: Mohamed, I've bought the dates!
+    - speaker: Petugas
+      text: Sugeng siang, Mas. Paket saka ngendi?
+      ar_eg: مساء الخير يا ماس. الطرد جاي منين؟
+      ar: طاب يومك يا أخي. من أين الطرد؟
+      en: Good afternoon, Mas. Where's the parcel from?
     - speaker: Mohamed
-      text: Suwun, Cak! Regane pira?
-      ar_eg: متشكر يا Cak! بكام؟
-      ar: شكرًا يا Cak! كم سعره؟
-      en: Thanks, Cak! How much was it?
-    - speaker: Cak Heru
-      text: Larang, rek! Kurma Ajwa lho.
-      ar_eg: غالي يا جدع! ده بلح عجوة على فكرة.
-      ar: غالٍ يا صاحبي! إنه تمر عجوة.
-      en: Pricey, mate! They're Ajwa dates, you know.
+      text: Saka Mesir, isine kurma. Kok kesuwen, Mas?
+      ar_eg: من مصر، وفيه بلح. ليه اتأخر كده يا ماس؟
+      ar: من مصر، وفيه تمر. لماذا تأخّر هكذا يا أخي؟
+      en: From Egypt, it's dates. Why has it taken so long, Mas?
+    - speaker: Petugas
+      text: Sepurane. Alamate kliru, saiki wis tekan.
+      ar_eg: معلش. العنوان كان غلط، ودلوقتي وصل.
+      ar: عذرًا. كان العنوان خاطئًا، والآن وصل.
+      en: Sorry. The address was wrong, but it's here now.
     - speaker: Mohamed
-      text: Ora apa-apa, Cak. Ayo mangan kurmane sek!
-      ar_eg: مش مشكلة يا Cak. يلا ناكل البلح الأول!
-      ar: لا بأس يا Cak. هيّا نأكل التمر أولًا!
-      en: No problem, Cak. Let's eat the dates first!
-    - speaker: Cak Heru
-      text: Ayo! Enak lho, rek.
-      ar_eg: يلا! حلو أوي يا جدع.
-      ar: هيّا! إنه لذيذ يا صاحبي.
-      en: Let's go! They're really good, mate.
+      text: Lho, kotake rusak! Barange isih apik?
+      ar_eg: إيه ده، الكرتونة بايظة! الحاجة لسه سليمة؟
+      ar: ما هذا، الصندوق تالف! هل البضاعة سليمة؟
+      en: Hey, the box is broken! Are the goods still OK?
+    - speaker: Petugas
+      text: Isih apik, Mas. Kotake tak ganti.
+      ar_eg: لسه سليمة يا ماس. هبدّلك الكرتونة.
+      ar: ما زالت سليمة يا أخي. سأستبدل الصندوق.
+      en: Still fine, Mas. I'll replace the box.
+    - speaker: Mohamed
+      text: Matur nuwun. Aku bali nang omah saiki.
+      ar_eg: شكرًا. أنا راجع البيت دلوقتي.
+      ar: شكرًا. أعود إلى البيت الآن.
+      en: Thanks. I'm heading home now.
+new_words:
+  - word: barang
+    pos: noun
+    ar_eg: حاجة، بضاعة
+    ar: شيء، بضاعة
+    en: thing, goods
+  - word: paket
+    pos: noun
+    ar_eg: طرد
+    ar: طرد
+    en: parcel
+  - word: alamat
+    pos: noun
+    arabic: عَلامة
+    ar_eg: عنوان
+    ar: عنوان
+    en: address
+  - word: rusak
+    pos: adjective
+    ar_eg: بايظ
+    ar: تالف، معطّل
+    en: broken
+  - word: bali
+    pos: verb
+    ar_eg: يرجع
+    ar: يرجع، يعود
+    en: go back, return
+  - word: wektu
+    pos: noun
+    arabic: وَقْت
+    ar_eg: وقت
+    ar: وقت
+    en: time
+  - word: ganti
+    pos: verb
+    ar_eg: يبدّل، يغيّر
+    ar: يستبدل، يغيّر
+    en: replace, change
+  - word: kesuwen
+    pos: adjective
+    ar_eg: أخد وقت كتير أوي
+    ar: استغرق وقتًا طويلًا جدًّا
+    en: taking too long
 review:
   status: draft
   verified: false

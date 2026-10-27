@@ -1,204 +1,241 @@
 schema: kabar.lesson/v1
 id: j1.u05.l03
 language: jv
-title: Rek!
+title: Ambek, sampek, maeng
 can_do:
-  ar_eg: تتابع حوار سريع بلهجة سورابايا (Arek).
-  ar: أن تتابع حوارًا سريعًا بلهجة سورابايا (Arek).
-  en: Follow a fast Arek dialogue.
+  ar_eg: 'تفهم كلمات سورابايا اللي بتربط الكلام: مع، لحد، بس، من شوية، بعدين.'
+  ar: 'أن تفهم كلمات سورابايا التي تربط الكلام: مع، حتى، فقط، قبل قليل، لاحقًا.'
+  en: 'Understand the Surabaya linking words: with, until, only, earlier, later.'
 slides:
-  - title: Arek ↔ ngoko
+  - title: Arek ngomong ngene
     body:
       ar_eg: |
-        قبل ما نروح كنجران مع Cak Heru وNing Lia، راجع الجدول ده بسرعة (Arek ⇐ النغوكو العادي):
-        - koen ⇐ kowe · gak ⇐ ora · onok ⇐ ana
-        - kate ⇐ arep · wes ⇐ wis · yok opo ⇐ piye · lapo ⇐ ngapa
-        - ae ⇐ wae · ta ⇐ to · rek = يا جماعة
-        وdudu (مش، قبل الاسم) هي هي في الاتنين.
-        Arek بيبان «ناشف» لسامع من سولو، بس بين الصحاب ده الدفا نفسه.
+        أهل سورابايا عندهم كلمات صغيرة خاصة بيهم:
+        ambek = مع (= karo)، sampek = لحد (= nganti)، mek = بس (= mung).
+        ndek = في، عند (= nang/ing): ndek warung = في القهوة.
+        maeng = من شوية (= mau)، engkok = بعدين (= mengko).
+        lek = لو (= yen). cangkruk = يقعد يدردش مع صحابه على القهوة، عادة سورابايا!
       ar: |
-        قبل الذهاب إلى كنجران مع Cak Heru وNing Lia، راجع هذا الجدول (Arek ⇐ النغوكو القياسي):
-        - koen ⇐ kowe · gak ⇐ ora · onok ⇐ ana
-        - kate ⇐ arep · wes ⇐ wis · yok opo ⇐ piye · lapo ⇐ ngapa
-        - ae ⇐ wae · ta ⇐ to · rek = يا جماعة
-        وdudu (ليس، قبل الاسم) واحدة فيهما.
-        يبدو كلام Arek جافًّا لأهل سولو، لكنه بين الأصدقاء ودٌّ خالص.
+        لأهل سورابايا كلمات صغيرة خاصّة بهم:
+        ambek = مع (= karo)، sampek = حتى (= nganti)، mek = فقط (= mung).
+        ndek = في، عند (= nang/ing): ndek warung = في المقهى.
+        maeng = قبل قليل (= mau)، engkok = لاحقًا (= mengko).
+        lek = إذا (= yen). cangkruk = يجلس مع أصحابه في المقهى للسمر، وهي عادة سورابايا!
       en: |
-        Before we head to Kenjeran with Cak Heru and Ning Lia, a quick table (Arek ⇒ standard ngoko):
-        - koen ⇒ kowe · gak ⇒ ora · onok ⇒ ana
-        - kate ⇒ arep · wes ⇒ wis · yok opo ⇒ piye · lapo ⇒ ngapa
-        - ae ⇒ wae · ta ⇒ to · rek = guys
-        dudu (not, before nouns) is the same in both.
-        Arek sounds blunt to Solo ears; between friends it's pure warmth.
-    grammar: jv.dialect.arek
+        Surabaya people have their own little words:
+        ambek = with (= karo), sampek = until (= nganti), mek = only (= mung).
+        ndek = at, in (= nang/ing): ndek warung = at the stall.
+        maeng = earlier (= mau), engkok = later (= mengko).
+        lek = if (= yen). cangkruk = hang out chatting at a coffee stall, a Surabaya habit!
     examples:
-      - text: Kate lapo, Cak?
-        ar_eg: 'ناوي تعمل إيه يا معلم؟ (Arek) — العادي: Arep ngapa, Mas?'
-        ar: 'ماذا ستفعل يا أخي؟ (Arek) — القياسي: Arep ngapa, Mas?'
-        en: 'What are you going to do, brother? (Arek) — standard: Arep ngapa, Mas?'
+      - text: Aku cangkruk ambek Cak Heru ndek warung.
+        ar_eg: أنا قاعد مع تشاك هيرو على القهوة.
+        ar: أجلس مع تشاك هيرو في المقهى.
+        en: I'm hanging out with Cak Heru at the stall.
+      - text: Maeng aku ndek pasar.
+        ar_eg: من شوية كنت في السوق.
+        ar: كنت في السوق قبل قليل.
+        en: I was at the market earlier.
+      - text: Lek onok wektu, ayo cangkruk!
+        ar_eg: لو فيه وقت، يلا نقعد على القهوة!
+        ar: إن كان هناك وقت، هيّا نجلس في المقهى!
+        en: If there's time, let's hang out!
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الحوار) Cak Heru عايز يروح كنجران ليه؟
-      ar: (من الحوار) لماذا يريد Cak Heru الذهاب إلى كنجران؟
-      en: (From the dialogue) Why does Cak Heru want to go to Kenjeran?
-    options: [Tuku kopi, Sinau basa Jawa, Mangan lontong kupang]
-    answer: 2
-    explain:
-      ar_eg: قال «Mangan lontong kupang» = ناكل لونتونج كوبانج.
-      ar: قال «Mangan lontong kupang» أي نأكل لونتونغ كوبانغ.
-      en: He said "Mangan lontong kupang" = to eat lontong kupang.
-    words: [mangan]
-  - id: e02
-    type: multiple_choice
-    question: Kupange gak onok, rek.
-    question_meaning:
-      ar_eg: البيّاع قال كده. أنهي جملة بالنغوكو العادي نفس المعنى؟
-      ar: هكذا قال البائع. أيّ جملة بالنغوكو القياسي تؤدي المعنى نفسه؟
-      en: The seller said this. Which standard ngoko sentence means the same?
-    options: [Kupange ora ana., Kupange wis ana., Kupange dudu kupang.]
-    answer: 0
-    explain:
-      ar_eg: gak onok = ora ana = مفيش.
-      ar: gak onok = ora ana = لا يوجد.
-      en: gak onok = ora ana = there isn't any.
-    words: [gak, onok, ora ana]
-  - id: e03
-    type: listen
-    text: Kate lapo nang Kenjeran?
-    options: ['Kate nang endi, Cak?', 'Lapo koen nang Kenjeran?', 'Kate lapo nang Kenjeran?']
-    answer: 2
-    words: [kate, lapo, nang]
-  - id: e04
-    type: fill_blank
-    sentence: Koen wis mangan ___, Mohamed?
-    meaning:
-      ar_eg: إنت كلت، مش كده يا محمد؟ (Arek)
-      ar: لقد أكلت، أليس كذلك يا محمد؟ (Arek)
-      en: You've eaten, right, Mohamed? (Arek)
-    answers: [ta, to]
-    explain:
-      ar_eg: ta = kan? بتاعة سورابايا. في وسط جاوة to، وماشية برضه.
-      ar: ta = kan? في سورابايا، وفي وسط جاوة to، وكلتاهما مقبولة.
-      en: ta is Surabaya's "right?" (kan?); Central Java says to, also accepted.
-    words: [ta]
-  - id: e05
-    type: fill_blank
-    sentence: Lontong balap ___, Cak.
-    meaning:
-      ar_eg: لونتونج بالاب بس يا معلم.
-      ar: لونتونغ بالاب فقط يا أخي.
-      en: Just lontong balap, Cak.
-    options: [ta, lho, ae]
-    answers: [ae]
-    explain:
-      ar_eg: ae = wae = saja (بس).
-      ar: ae = wae = saja (فقط).
-      en: ae = wae = saja (just).
-    words: [ae]
-  - id: e06
-    type: listen
-    text: Lontong balap ae, Cak.
-    options: ['Lontong balap ae, Cak.', 'Lontong kupang ae, Cak.', 'Lontong balap ta, Cak?']
-    answer: 0
-    meaning:
-      ar_eg: لونتونج بالاب بس يا معلم.
-      ar: لونتونغ بالاب فقط يا أخي.
-      en: Just lontong balap, Cak.
-    words: [lontong balap, lontong kupang, ae, ta]
-  - id: e07
     type: match_pairs
     pairs:
-      - text: lontong kupang
-        ar_eg: لونتونج بالكوبانج (بلح بحر صغير)
-        ar: لونتونغ بالكوبانغ (محار صغير)
-        en: lontong with tiny clams
-      - text: lontong balap
-        ar_eg: لونتونج بالفول النابت والتوفو
-        ar: لونتونغ بالبراعم والتوفو
-        en: lontong with sprouts and tofu
-      - text: kate
-        ar_eg: هـ / ناوي
-        ar: سوف
-        en: going to
-      - text: lapo
-        ar_eg: ليه / بتعمل إيه
-        ar: لماذا / ماذا تفعل
-        en: why / what for
-      - text: onok
-        ar_eg: فيه
-        ar: يوجد
-        en: there is
-      - text: gak
-        ar_eg: مش
-        ar: لا
-        en: not
-    words: [lontong kupang, lontong balap, kate, lapo, onok, gak]
+      - text: ambek
+        ar_eg: مع
+        ar: مع
+        en: with
+      - text: sampek
+        ar_eg: لحد
+        ar: حتى
+        en: until
+      - text: mek
+        ar_eg: بس
+        ar: فقط
+        en: only
+      - text: ndek
+        ar_eg: في، عند
+        ar: في، عند
+        en: at, in
+    words: [ambek, sampek, mek, ndek]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: engkok
+        ar_eg: بعدين
+        ar: لاحقًا
+        en: later
+      - text: maeng
+        ar_eg: من شوية
+        ar: قبل قليل
+        en: earlier
+      - text: cangkruk
+        ar_eg: يقعد يدردش على القهوة
+        ar: يسمر في المقهى
+        en: hang out at a stall
+      - text: lek
+        ar_eg: لو
+        ar: إذا
+        en: if
+    words: [engkok, maeng, cangkruk, lek]
+  - id: e03
+    type: listen
+    text: Maeng aku ndek pasar.
+    question:
+      ar_eg: كان فين؟
+      ar: أين كان؟
+      en: Where was he?
+    options: [من شوية كنت في السوق, بعدين هروح السوق, أنا مش في السوق]
+    answer: 0
+    meaning:
+      ar_eg: من شوية كنت في السوق.
+      ar: كنت في السوق قبل قليل.
+      en: I was at the market earlier.
+    words: [maeng, ndek, engkok]
+  - id: e04
+    type: fill_blank
+    sentence: Aku cangkruk ___ Cak Heru.
+    meaning:
+      ar_eg: أنا قاعد ___ تشاك هيرو.
+      ar: أجلس ___ تشاك هيرو.
+      en: I'm hanging out ___ Cak Heru.
+    options: [ambek, sampek, lek]
+    answers: [ambek]
+    words: [ambek, sampek, lek, cangkruk]
+  - id: e05
+    type: multiple_choice
+    question: Engkok bengi aku teko.
+    question_meaning:
+      ar_eg: هييجي إمتى؟
+      ar: متى يأتي؟
+      en: When is he coming?
+    options: [بالليل، بعدين, الصبح بدري, من شوية]
+    answer: 0
+    explain:
+      ar_eg: engkok = بعدين، وbengi = بالليل. «من شوية» = maeng.
+      ar: engkok = لاحقًا، وbengi = ليلًا. أمّا «قبل قليل» فـmaeng.
+      en: engkok = later, bengi = at night. "Earlier" is maeng.
+    words: [engkok, maeng]
+  - id: e06
+    type: fill_blank
+    sentence: Aku ndek kantor ___ bengi.
+    meaning:
+      ar_eg: أنا في المكتب ___ بالليل.
+      ar: أنا في المكتب ___ الليل.
+      en: I'm at the office ___ night.
+    options: [sampek, ambek, mek]
+    answers: [sampek]
+    words: [sampek, ambek, mek, ndek]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «لحظة بس يا جدع!» بكلام سورابايا؟
+      ar: كيف تقول «لحظة فقط يا صاحبي!» بلهجة سورابايا؟
+      en: '"Just a moment, mate!" Surabaya-style?'
+    options: ['Mek sedhela, rek!', 'Lek sedhela, rek!', 'Maeng sedhela, rek!']
+    answer: 0
+    explain:
+      ar_eg: mek = بس (= mung). lek = لو، maeng = من شوية.
+      ar: mek = فقط (= mung). أمّا lek فإذا، وmaeng فقبل قليل.
+      en: mek = only (= mung). lek = if, maeng = earlier.
+    words: [mek, lek, maeng]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: مفيش كوبانج يا جماعة. (Arek)
-      ar: لا يوجد كوبانغ يا جماعة. (Arek)
-      en: There's no kupang, guys. (Arek)
-    answer: Kupange gak onok, rek.
-    distractors: [kate, dudu]
-    words: [gak, onok, rek]
+      ar_eg: لو فيه وقت، يلا نقعد على القهوة!
+      ar: إن كان هناك وقت، هيّا نسمر في المقهى!
+      en: If there's time, let's hang out!
+    answer: Lek onok wektu, ayo cangkruk!
+    distractors: [maeng, mek]
+    words: [lek, cangkruk, maeng, mek]
   - id: e09
-    type: dictation
-    text: Koen wis mangan ta, rek?
-    meaning:
-      ar_eg: كلت ولا إيه يا صاحبي؟
-      ar: هل أكلتَ يا صاح؟
-      en: You've eaten, right, mate?
-    words: [koen, ta, rek]
+    type: translate
+    direction: from_target
+    source_text: Aku cangkruk ambek kanca ndek warung kopi.
+    answers_meaning:
+      ar_eg: [أنا قاعد مع صاحبي على القهوة, بقعد مع صحابي في القهوة]
+      ar: [أجلس مع صديقي في المقهى, أسمر مع أصدقائي في المقهى]
+      en: ['I''m hanging out with a friend at the coffee stall', I hang out with friends at the coffee stall]
+    words: [cangkruk, ambek, ndek]
   - id: e10
     type: speaking
-    text: Rek, ayo nang Kenjeran!
+    text: Engkok bengi aku teko, rek.
     meaning:
-      ar_eg: يلا يا جماعة على كنجران!
-      ar: هيا يا جماعة إلى كنجران!
-      en: Guys, let's go to Kenjeran!
-    words: [rek, ayo, nang]
+      ar_eg: بعدين بالليل هاجي يا جدع.
+      ar: سآتي لاحقًا في الليل يا صاحبي.
+      en: I'll come later tonight, mate.
+    words: [engkok]
 dialogue:
-  title: Ayo nang Kenjeran!
   lines:
     - speaker: Cak Heru
-      text: Rek, ayo nang Kenjeran!
-      ar_eg: يلا يا جماعة على كنجران!
-      ar: هيا يا جماعة إلى كنجران!
-      en: Guys, let's go to Kenjeran!
-    - speaker: Ning Lia
-      text: Kate lapo nang Kenjeran, Cak?
-      ar_eg: هنعمل إيه في كنجران يا معلم؟
-      ar: ماذا سنفعل في كنجران يا أخي؟
-      en: What are we going to do at Kenjeran, Cak?
-    - speaker: Cak Heru
-      text: Mangan lontong kupang. Koen wis mangan ta, Mohamed?
-      ar_eg: ناكل لونتونج كوبانج. إنت كلت ولا إيه يا محمد؟
-      ar: نأكل لونتونغ كوبانغ. هل أكلتَ يا محمد؟
-      en: Eat lontong kupang. You've eaten, right, Mohamed?
+      text: Rek, maeng koen ndek endi? Tak goleki.
+      ar_eg: يا جدع، كنت فين من شوية؟ دوّرت عليك.
+      ar: يا صاحبي، أين كنت قبل قليل؟ بحثت عنك.
+      en: Mate, where were you earlier? I was looking for you.
     - speaker: Mohamed
-      text: Durung, Cak. Aku durung mangan.
-      ar_eg: لسه يا معلم. أنا لسه ماكلتش.
-      ar: ليس بعد يا أخي. لم آكل بعد.
-      en: Not yet, Cak. I haven't eaten yet.
-    - speaker: Ning Lia
-      text: Lho, durung mangan? Ayo, rek!
-      ar_eg: إيه ده، لسه ماكلتش؟ يلا يا جماعة!
-      ar: حقًّا؟ لم تأكل بعد؟ هيا يا جماعة!
-      en: What, you haven't eaten? Come on, guys!
+      text: Maeng aku ndek pasar ambek Mas Yudha.
+      ar_eg: من شوية كنت في السوق مع ماس يودا.
+      ar: كنت في السوق قبل قليل مع ماس يودا.
+      en: I was at the market with Mas Yudha earlier.
+    - speaker: Cak Heru
+      text: Engkok bengi cangkruk yok! Lek onok wektu.
+      ar_eg: بالليل بعدين يلا نقعد على القهوة! لو فيه وقت.
+      ar: هيّا نسمر في المقهى الليلة! إن كان لديك وقت.
+      en: Let's hang out tonight! If you've got time.
+    - speaker: Mohamed
+      text: Onok, Cak. Tapi mek sedhela, sampek jam sanga ae.
+      ar_eg: فيه يا تشاك. بس شوية بس، لحد الساعة تسعة.
+      ar: لديّ يا تشاك. لكن لوقت قصير فقط، حتى التاسعة.
+      en: I have, Cak. But just a little while, until nine.
+    - speaker: Cak Heru
+      text: Sip! Ndek warunge Cak Man, ya.
+      ar_eg: تمام! في قهوة تشاك مان.
+      ar: ممتاز! في مقهى تشاك مان.
+      en: Great! At Cak Man's stall, then.
 new_words:
-  - word: lontong kupang
-    pos: noun
-    ar_eg: رز مضغوط (lontong) مع بلح البحر الصغير (kupang) في صوص، أكلة ساحل سورابايا
-    ar: أرز مضغوط مع محار صغير في مرق، طبق ساحل سورابايا
-    en: rice cake with tiny shellfish in broth, a Surabaya coast dish
-  - word: lontong balap
-    pos: noun
-    ar_eg: lontong بالفول النابت والتوفو، أكلة سورابايا المشهورة
-    ar: أرز مضغوط مع براعم الفول والتوفو، طبق سورابايا الشهير
-    en: rice cake with bean sprouts and tofu, Surabaya's signature dish
+  - word: ambek
+    pos: preposition
+    ar_eg: مع (= karo)
+    ar: مع (= karo)
+    en: with (Surabaya, = karo)
+  - word: sampek
+    pos: preposition
+    ar_eg: لحد (= nganti)
+    ar: حتى (= nganti)
+    en: until (Surabaya)
+  - word: mek
+    pos: particle
+    ar_eg: بس (= mung)
+    ar: فقط (= mung)
+    en: only (Surabaya, = mung)
+  - word: ndek
+    pos: preposition
+    ar_eg: في، عند
+    ar: في، عند
+    en: at, in (Surabaya)
+  - word: engkok
+    pos: adverb
+    ar_eg: بعدين (= mengko)
+    ar: لاحقًا (= mengko)
+    en: later (Surabaya, = mengko)
+  - word: maeng
+    pos: adverb
+    ar_eg: من شوية (= mau)
+    ar: قبل قليل (= mau)
+    en: earlier (Surabaya, = mau)
+  - word: cangkruk
+    pos: verb
+    ar_eg: يقعد يدردش على القهوة
+    ar: يسمر مع أصحابه في المقهى
+    en: hang out chatting at a stall
+  - word: lek
+    pos: conjunction
+    ar_eg: لو (= yen)
+    ar: إذا (= yen)
+    en: if (Surabaya, = yen)
 review:
   status: draft
   verified: false
