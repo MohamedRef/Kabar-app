@@ -517,7 +517,7 @@ Not sent to Codex. This is what Kabar has now. The original prompt is kept below
 | Icons | Kabar draws its own stroke icons on the Lucide 24 px grid (`crates/app/src/icons.rs`, `assets/icons/custom/`). No Lucide files are copied. |
 | Fonts | Plus Jakarta Sans, IBM Plex Sans Arabic and Amiri are bundled from Fontsource 5.3.0 (OFL 1.1, licenses checked). Noto Naskh Arabic and Noto Sans Javanese were already in `content/fonts/`. Noto Emoji is not added: the app uses no emoji glyphs that need it. |
 | Geodata | Already done: Natural Earth (public domain) via `kabar-tools --bin journey-map`. |
-| Gong, ding and kendang | Synthesized by `scripts/assets/synth_sounds.py`, three variations each. Mohamed picked gong 3 (lesson end) and ding 1 (right answer) by ear; the kendang taps are kept as alternatives. Switch by changing `sounds.rs`. |
+| Gong, ding and kendang | Synthesized by `scripts/assets/synth_sounds.py`, three variations each. Mohamed picked gong 3 (lesson end) and ding 1 (right answer) by ear; those are the defaults, and Settings › Learning lets him pick any of the nine (tap to preview). |
 | Kenney UI clicks | Not added. kenney.nl is blocked from the build container, and the app has no button clicks wired yet. Download *Interface Sounds* (CC0) on the Mac if we want clicks. |
 | Freesound gamelan | Skipped, as the prompt allows. |
 
