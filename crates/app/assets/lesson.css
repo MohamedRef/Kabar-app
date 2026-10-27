@@ -150,6 +150,8 @@
 }
 .lp-blank.filled { background: var(--lp-review); border-radius: 6px 6px 0 0; }
 .lp-blank-input { max-inline-size: 10ch; }
+/* Followed by ",", ".", "!"...: no gap before the punctuation (#156). */
+.lp-blank.hug-end, .lp-blank-input.hug-end { margin-inline-end: 0; padding-inline-end: 0.05rem; text-align: end; }
 
 /* build sentence */
 .lp-answer-line, .lp-bank { display: flex; flex-wrap: wrap; gap: 0.5rem; }
