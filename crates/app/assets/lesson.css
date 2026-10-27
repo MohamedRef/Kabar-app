@@ -11,10 +11,11 @@
   inset: 0;
   z-index: 30;
   display: flex;
-  flex-direction: column;
   background: var(--bg);
   outline: none;
 }
+/* The lesson itself; the notes pane sits beside it on wide windows. */
+.lp-main { flex: 1; min-inline-size: 0; display: flex; flex-direction: column; }
 
 .lp-col { inline-size: 100%; max-inline-size: 720px; margin-inline: auto; padding-inline: 1rem; }
 
@@ -274,3 +275,102 @@
    line when short. */
 .bidi-group { unicode-bidi: isolate; }
 .bidi-group.nowrap { white-space: nowrap; }
+
+/* ---------- lesson notes: the supporting pane on wide windows (notes.rs) ---------- */
+.lp-notes {
+  flex: none;
+  inline-size: 20rem;
+  overflow-y: auto;
+  background: var(--surface);
+  border-inline-start: 1px solid var(--line-soft);
+  padding-block: max(var(--sp-5), env(safe-area-inset-top)) var(--sp-6);
+  padding-inline: var(--sp-5);
+  display: grid;
+  align-content: start;
+  gap: var(--sp-4);
+}
+.app:is([data-width="large"], [data-width="extra-large"]) .lp-notes { inline-size: 24rem; padding-inline: var(--sp-6); }
+.ln-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-2); }
+.ln-kicker { margin: 0; font-size: var(--fs-xs); color: var(--muted); font-weight: 600; letter-spacing: 0.02em; }
+.ln-title { margin: 0; font-family: var(--font-latin); font-size: var(--fs-xl); color: var(--indigo); }
+.ln-hide { color: var(--muted); font-size: 1.4rem; line-height: 1; padding: 0; inline-size: 44px; }
+.ln-cando { margin: 0; font-size: var(--fs-sm); }
+
+.ln-outline { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-1); }
+.ln-part {
+  position: relative;
+  padding-block: var(--sp-2);
+  padding-inline: 2rem var(--sp-3);
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+}
+/* The rail of the outline: a dot per part, filled once it's done. */
+.ln-part::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: var(--sp-3);
+  inset-block-start: 0.95rem;
+  inline-size: 0.6rem;
+  block-size: 0.6rem;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  background: var(--surface);
+}
+.ln-part.done::before { background: var(--sawah); border-color: var(--sawah); }
+.ln-part.current { background: var(--surface-2); color: var(--text); }
+.ln-part.current::before { border-color: var(--indigo); background: var(--indigo); }
+.ln-part-name { font-weight: 600; }
+.ln-count { margin-inline-start: var(--sp-2); font-size: var(--fs-sm); font-variant-numeric: tabular-nums; }
+.ln-slides { list-style: none; margin: var(--sp-1) 0 0; padding: 0; display: grid; gap: 0.1rem; font-size: var(--fs-sm); }
+.ln-slides li { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ln-slides li.done { color: var(--muted); }
+.ln-slides li.current { color: var(--indigo); font-weight: 600; }
+.ln-slides li.current::before { content: "› "; }
+[dir="rtl"] .ln-slides li.current::before { content: "‹ "; }
+
+.ln-dots { list-style: none; margin: var(--sp-2) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.ln-dot {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 1.4rem;
+  block-size: 1.4rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--surface);
+}
+.ln-dot.current { border-color: var(--indigo); border-width: 2.5px; }
+.ln-dot.right { background: var(--sawah); border-color: var(--sawah); }
+.ln-dot.missed { background: var(--dawn-soft); border-color: var(--dawn); color: var(--dawn); }
+.ln-dot.skipped { background: var(--surface-2); color: var(--muted); }
+
+.ln-words h3 { margin-block: 0 var(--sp-2); font-size: var(--fs-md); }
+.ln-words ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-1); }
+.ln-words li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--sp-2); padding-block: var(--sp-1); border-block-end: 1px solid var(--line-soft); }
+.ln-words li:last-child { border-block-end: 0; }
+.ln-word {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  min-block-size: 36px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--sp-1);
+  font-weight: 600;
+}
+.ln-word:hover .latin { text-decoration: underline; text-underline-offset: 0.2em; }
+.ln-word .bridge-word { text-decoration: underline 2px var(--gold); text-underline-offset: 0.25em; }
+.ln-meaning { font-size: var(--fs-sm); }
+.ln-bridge { font-family: var(--font-arabic); color: var(--gold); font-size: var(--fs-sm); }
+.ln-hidden-note { margin: 0 0 var(--sp-2); font-size: var(--fs-xs); }
+.lp-notes-show { color: var(--muted); font-size: var(--fs-sm); white-space: nowrap; }
+@media (prefers-reduced-motion: no-preference) {
+  .lp-notes { animation: ln-in var(--dur-slow) var(--ease) both; }
+  .ln-dot { transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease); }
+}
+@keyframes ln-in { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: none; } }
+[dir="rtl"] .lp-notes { animation-name: ln-in-rtl; }
+@keyframes ln-in-rtl { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
