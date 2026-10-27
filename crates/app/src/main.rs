@@ -8,6 +8,7 @@ mod cloud;
 mod coach;
 mod cost;
 mod data_export;
+mod fonts;
 mod i18n;
 mod icons;
 mod journey;
@@ -16,6 +17,7 @@ mod listen;
 mod map_art;
 #[cfg(all(feature = "desktop", not(target_os = "android")))]
 mod menu;
+mod misc_art;
 mod packs;
 mod penlab;
 mod platform;
@@ -24,6 +26,7 @@ mod pron;
 mod reader;
 mod review;
 mod screens;
+mod sounds;
 mod souvenir_art;
 mod stats;
 mod store;
@@ -262,11 +265,12 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     // KABAR_OPEN_LESSON=bipa1.u01.l01 opens the Lesson Player at launch
     // (previews and screenshots on the Mac).
     let open_lesson = use_hook(|| std::env::var("KABAR_OPEN_LESSON").ok());
-    // KABAR_OPEN_SCREEN=stats | level_check opens those screens the same way.
+    // KABAR_OPEN_SCREEN=stats | level_check | journey | reader opens those screens the same way.
     let open_screen = use_hook(|| match std::env::var("KABAR_OPEN_SCREEN").as_deref() {
         Ok("stats") => Some(Screen::Stats),
         Ok("level_check") => Some(Screen::LevelCheck),
         Ok("journey") => Some(Screen::Journey),
+        Ok("reader") => Some(Screen::Reader),
         _ => None,
     });
     let ui = use_context_provider(|| Ui {
@@ -306,6 +310,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let width = ui.width.read().as_str();
     let theme_css = use_hook(theme::stylesheet);
     let pron_font = use_hook(pron::font_css);
+    let ui_fonts = use_hook(fonts::css);
     // The theme draws the kawung background in its own colour; a batik from
     // the Warung overrides it on this device.
     let batik = use_memo(move || {
@@ -323,6 +328,8 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         style { {MAIN_CSS} }
         style { {theme_css} }
         style { {pron_font} }
+        style { {ui_fonts} }
+        style { {misc_art::paper_css()} }
         div {
             class: "app",
             lang: lang.tag(),
