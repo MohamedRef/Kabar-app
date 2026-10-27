@@ -172,6 +172,43 @@ pub fn pick_state() -> Result<super::PickState, String> {
     })
 }
 
+/// `ExportSave.open(activity, path, name)`: the system "Save to" dialog for
+/// the file at `path`.
+pub fn save_document(path: &str, name: &str) -> Result<(), String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.ExportSave"))?;
+        let (path, name) = (env.new_string(path)?, env.new_string(name)?);
+        env.call_static_method(
+            &class,
+            jni_str!("open"),
+            jni_sig!("(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;)V"),
+            &[JValue::Object(activity), JValue::Object(&path), JValue::Object(&name)],
+        )?;
+        Ok(())
+    })
+}
+
+/// `ExportSave.state()` (and `name()` once saved); a finished state is reset.
+pub fn save_state() -> Result<super::SaveState, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.ExportSave"))?;
+        let state = env.call_static_method(&class, jni_str!("state"), jni_sig!("()I"), &[])?.i()?;
+        let out = match state {
+            1 => return Ok(super::SaveState::Open),
+            2 => super::SaveState::Failed,
+            3 => {
+                let name = env
+                    .call_static_method(&class, jni_str!("name"), jni_sig!("()Ljava/lang/String;"), &[])?
+                    .l()?;
+                super::SaveState::Saved(to_string(env, name)?.filter(|n| !n.is_empty()))
+            }
+            _ => super::SaveState::Cancelled,
+        };
+        env.call_static_method(&class, jni_str!("reset"), jni_sig!("()V"), &[])?;
+        Ok(out)
+    })
+}
+
 /// `OcrBridge.recognize(path)`: ML Kit Text Recognition v2, blocking.
 pub fn ocr_image(path: &Path) -> Result<OcrResult, String> {
     let path = path.to_str().ok_or("image path is not valid UTF-8")?;

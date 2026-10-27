@@ -33,6 +33,7 @@ pub enum S {
     TranslationOn,
     TranslationTap,
     TranslationOff,
+    WordColours,
     // look
     TextSize,
     TextSmall,
@@ -159,6 +160,10 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (TranslationOff, Ar) => "مخفية",
         (TranslationOff, En) => "Hidden",
 
+        (WordColours, ArEg) => "لوّن الكلمات (فعل، اسم، سوابق ولواحق)",
+        (WordColours, Ar) => "لوّن الكلمات (فعل، اسم، سوابق ولواحق)",
+        (WordColours, En) => "Colour words (verb, noun, prefixes and suffixes)",
+
         (TextSize, ArEg | Ar) => "حجم الخط",
         (TextSize, En) => "Text size",
         (TextSmall, ArEg | Ar) => "صغير",
@@ -176,11 +181,13 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (Notifications, ArEg | Ar) => "الإشعارات",
         (Notifications, En) => "Notifications",
         (NotificationsBody, ArEg) => {
-            "Kabar بيستخدم الإشعار عشان أزرار تشغيل المسلسل والراديو تبان على شاشة القفل."
+            "تذكيرات Kak Nur بتوصل كإشعارات. أزرار تشغيل المسلسل والراديو على شاشة القفل شغالة في الحالتين."
         }
-        (NotificationsBody, Ar) => "يستخدم Kabar الإشعار لتظهر أزرار تشغيل المسلسل والراديو على شاشة القفل.",
+        (NotificationsBody, Ar) => {
+            "تصل تذكيرات Kak Nur كإشعارات. أزرار تشغيل المسلسل والراديو على شاشة القفل تعمل في الحالتين."
+        }
         (NotificationsBody, En) => {
-            "Kabar uses a notification to put Sinetron and Radio controls on the lock screen."
+            "Kak Nur's reminders arrive as notifications. The Sinetron and Radio lock-screen controls work either way."
         }
         (NotificationsOn, ArEg) => "مسموح بيها",
         (NotificationsOn, Ar) => "مسموح بها",

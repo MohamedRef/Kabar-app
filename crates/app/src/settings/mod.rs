@@ -247,6 +247,7 @@ pub fn SettingsSheet() -> Element {
                 if drilled {
                     button {
                         class: "icon-button",
+                        "data-back": "true",
                         aria_label: "{st(lang, S::Back)}",
                         onclick: move |_| section_sig.set(None),
                         span { aria_hidden: "true", if lang.dir() == kabar_core::locale::Direction::Rtl { "→" } else { "←" } }
@@ -255,6 +256,8 @@ pub fn SettingsSheet() -> Element {
                 h2 { id: "settings-title", "{title}" }
                 button {
                     class: "icon-button",
+                    // Back steps out of a section first (the button above).
+                    "data-back": if drilled { "false" } else { "true" },
                     aria_label: "{st(lang, S::Close)}",
                     title: "{st(lang, S::Close)}",
                     onclick: move |_| nav.close(),

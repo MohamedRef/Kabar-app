@@ -27,11 +27,10 @@ pub fn data_dir() -> Result<PathBuf, String> {
     }
 }
 
-/// Where Settings → Export saves its file: `~/Downloads` on the Mac (and other
-/// desktops); on Android the app's external files directory
-/// (`Android/data/app.kabar/files`), which a computer can open over USB
-/// without any permission. A share-sheet / MediaStore "Downloads" bridge is a
-/// follow-up (it needs a FileProvider in `android/`).
+/// Where Settings → Export writes its file: `~/Downloads` on the Mac (and
+/// other desktops); on Android the app's external files directory
+/// (`Android/data/app.kabar/files`), from where [`save_document`] copies it
+/// to a place the learner picks (the Files app can't open `Android/data`).
 pub fn export_dir() -> Result<PathBuf, String> {
     #[cfg(target_os = "android")]
     {
@@ -194,6 +193,49 @@ pub fn pick_state() -> PickState {
     #[cfg(not(target_os = "android"))]
     {
         PickState::Done
+    }
+}
+
+/// Where the "Save to" dialog of [`save_document`] is.
+#[derive(Clone, Debug, PartialEq, Eq)]
+#[allow(dead_code)] // each platform builds only some variants
+pub enum SaveState {
+    Open,
+    /// Copied; the name the learner gave it, when the provider says.
+    Saved(Option<String>),
+    Cancelled,
+    Failed,
+}
+
+/// Whether a written file is handed to the system "Save to" dialog after
+/// writing (Android: app files are out of the Files app's reach).
+pub const SAVE_DIALOG: bool = cfg!(target_os = "android");
+
+/// Shows the system "Save to" dialog for `path` (Android); poll [`save_state`].
+pub fn save_document(path: &Path, name: &str) -> Result<(), String> {
+    #[cfg(target_os = "android")]
+    {
+        android::save_document(path.to_str().ok_or("path is not valid UTF-8")?, name)
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        let _ = (path, name);
+        Err("no save dialog on this platform".to_string())
+    }
+}
+
+/// See [`save_document`].
+pub fn save_state() -> SaveState {
+    #[cfg(target_os = "android")]
+    {
+        android::save_state().unwrap_or_else(|e| {
+            eprintln!("kabar: save dialog state: {e}");
+            SaveState::Failed
+        })
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        SaveState::Cancelled
     }
 }
 

@@ -6,7 +6,7 @@ APK="${1:-}"
 [ -f "$APK" ] || { echo "No APK found from dx bundle"; exit 1; }
 
 missing=0
-for cls in app/kabar/ShareActivity app/kabar/PendingShare app/kabar/OcrBridge app/kabar/ImagePickActivity; do
+for cls in app/kabar/ShareActivity app/kabar/PendingShare app/kabar/OcrBridge app/kabar/ImagePickActivity app/kabar/ExportSaveActivity; do
   if ! unzip -p "$APK" 'classes*.dex' | LC_ALL=C grep -aqF "L$cls;"; then
     echo "Missing $cls in $APK"
     missing=1

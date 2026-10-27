@@ -59,6 +59,23 @@ pub fn LearningSection() -> Element {
                 label {
                     input {
                         r#type: "checkbox",
+                        checked: !settings.word_colours_off,
+                        onchange: {
+                            let db = db.clone();
+                            move |e: FormEvent| {
+                                let on = e.checked();
+                                ui.update_settings(&db, |s| s.word_colours_off = !on)
+                            }
+                        },
+                    }
+                    " {st(lang, S::WordColours)}"
+                }
+            }
+
+            div { class: "field",
+                label {
+                    input {
+                        r#type: "checkbox",
                         checked: !settings.sounds_off,
                         onchange: {
                             let db = db.clone();

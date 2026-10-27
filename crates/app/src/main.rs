@@ -3,6 +3,7 @@
 mod account;
 mod ai;
 mod audio;
+mod back;
 mod chat;
 mod cloud;
 mod coach;
@@ -501,6 +502,7 @@ fn Shell() -> Element {
     #[cfg(all(feature = "desktop", not(target_os = "android")))]
     settings::menu::use_menu_events(ui, settings_nav);
     let settings_open = *settings_nav.open.read();
+    back::use_back(ui, current, settings_open);
     // Full-screen players keep the whole screen; everywhere else on the
     // phone a slim top bar carries the gear.
     let top_bar =
