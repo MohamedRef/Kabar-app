@@ -99,12 +99,12 @@ exercises:
   - id: e06
     type: build_sentence
     source:
-      ar_eg: الكوباية دي مشروخة، ماتستعملهاش.
-      ar: هذه الكأس متصدّعة، فلا تستعملها.
-      en: This glass is cracked; don't use it.
-    answer: Gelas ini retak, jangan dipakai.
+      ar_eg: حتى الكوباية الغالية ممكن تتشرخ.
+      ar: حتى الكأس الغالية قد تتصدّع.
+      en: Even an expensive glass can crack.
+    answer: Gelas yang mahal pun bisa retak.
     distractors: [teguh, gading]
-    words: [retak]
+    words: [retak, pun]
   - id: e07
     type: translate
     direction: from_target
@@ -122,7 +122,7 @@ exercises:
     words: [gading, retak]
   - id: e08
     type: speaking
-    text: Kalau kita bersatu, tim kita akan tetap teguh.
+    text: Kalau kita bersatu, kita akan tetap teguh.
     meaning:
       ar_eg: لو اتّحدنا، فريقنا هيفضل ثابت.
       ar: إن اتّحدنا ظلّ فريقنا راسخًا.
@@ -135,7 +135,21 @@ exercises:
       ar_eg: حتى أجمل عاج ممكن يتشرخ.
       ar: حتى أجمل العاج قد يتصدّع.
       en: Even the finest ivory can crack.
-    words: [gading, retak]
+    words: [gading, retak, pun]
+  - id: e10
+    type: multiple_choice
+    question: Orang pintar pun bisa salah.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['حتى الشاطر ممكن يغلط.', 'الشاطر عمره ما بيغلط.', 'الشاطر بس اللي بيغلط.']
+    answer: 0
+    explain:
+      ar_eg: '«pun» بييجي بعد الكلمة ويعني «حتى»: orang pintar pun = حتى الشاطر.'
+      ar: '«pun» يأتي بعد الكلمة بمعنى «حتى»: orang pintar pun = حتى الذكيّ.'
+      en: '«pun» follows the word it stresses and means «even»: orang pintar pun = even a clever person.'
+    words: [pun]
 dialogue:
   title: Salah hitung
   lines:
@@ -175,6 +189,11 @@ new_words:
     ar_eg: شوية بشوية
     ar: شيئًا فشيئًا
     en: little by little
+  - word: pun
+    pos: particle
+    ar_eg: حتى
+    ar: حتى
+    en: even (after the word it stresses)
 review:
   status: draft
   verified: false
