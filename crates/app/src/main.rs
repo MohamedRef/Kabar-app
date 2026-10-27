@@ -290,6 +290,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_width_tracking(ui.width, ui.tablet);
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
+    use_learner_profile(&db, coach);
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
@@ -421,6 +422,25 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
 
 /// Mirrors the window width into `width`, so layout follows the window,
 /// not the device (split screen, DeX and Mac windows all just work).
+/// Keeps the AI prompts' learner profile current: it follows the activity
+/// log (lessons, reviews, practice) and the onboarding answers. The minute
+/// clock is only peeked, so the deck isn't re-read every minute.
+fn use_learner_profile(db: &Db, coach: Coach) {
+    let ai = use_context::<teach::Ai>();
+    let db = db.clone();
+    use_effect(move || {
+        let events = coach.events.read();
+        let profile = coach.profile.read();
+        let offset = profile
+            .as_ref()
+            .map(|p| p.utc_offset_min)
+            .or(*coach.device_offset.peek())
+            .unwrap_or(kabar_protocol::coach::CoachProfile::default().utc_offset_min);
+        let today = coach::clock::today(*coach.now_ms.peek(), offset);
+        ai.0.set_profile(ai::learner_profile(&db, profile.as_ref(), &events, today));
+    });
+}
+
 fn use_width_tracking(mut width: Signal<WidthClass>, mut tablet: Signal<bool>) {
     use_future(move || async move {
         let mut eval = document::eval(
