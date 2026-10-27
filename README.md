@@ -60,9 +60,9 @@ every morning. CI warns when the table below is behind the content.
 | BIPA 3 | Lombok | B1 | 10 | 97 | 936 | 505 | 1,623 / 1,600 | ~11 h | 39 |
 | BIPA 4 | Sulawesi | B2 | 10 | 114 | 1,062 | 502 | 2,125 / 2,100 | ~12 h | 37 |
 | BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,235 | 599 | 2,723 / 2,700 | ~13 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 606 | 3,329 / 3,300 | ~13 h | 38 |
-| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 704 | 4,033 / 4,000 | ~15 h | 38 |
-| **Total** |  | — | 70 | 788 | 7,657 | 4,035 | 4,033 / 4,000 | ~86 h | 260 |
+| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 608 | 3,331 / 3,300 | ~13 h | 38 |
+| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 704 | 4,035 / 4,000 | ~15 h | 38 |
+| **Total** |  | — | 70 | 788 | 7,657 | 4,037 | 4,035 / 4,000 | ~86 h | 260 |
 
 **Javanese (J1–J6)**
 
@@ -72,9 +72,9 @@ every morning. CI warns when the table below is behind the content.
 | J2 | Madiun | — | 6 | 48 | 461 | 240 | 405 / 500 | ~5 h | 35 |
 | J3 | Pakualaman, Yogyakarta | — | 6 | 61 | 554 | 250 | 613 / 750 | ~6 h | 35 |
 | J4 | Malioboro, Yogyakarta | — | 6 | 69 | 648 | 248 | 838 / 1,000 | ~8 h | 38 |
-| J5 | Kutha Pendekar (Madiun) | — | 6 | 66 | 621 | 253 | 1,042 / 1,250 | ~7 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 80 | 748 | 246 | 1,251 / 1,500 | ~8 h | 37 |
-| **Total** |  | — | 37 | 374 | 3,491 | 1,498 | 1,251 / 1,500 | ~41 h | 218 |
+| J5 | Kutha Pendekar (Madiun) | — | 6 | 72 | 683 | 302 | 1,091 / 1,250 | ~8 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 86 | 808 | 294 | 1,348 / 1,500 | ~9 h | 37 |
+| **Total** |  | — | 37 | 386 | 3,613 | 1,595 | 1,348 / 1,500 | ~42 h | 218 |
 
 **Reference content and stories**
 
