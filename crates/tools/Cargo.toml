@@ -17,6 +17,7 @@ path = "src/bin/journey_map.rs"
 
 [dependencies]
 kabar-core.workspace = true
+kabar-content = { path = "../content" }
 kabar-protocol = { workspace = true, features = ["schema"] }
 # Kabar Cloud's request builders and reply parsers, so the bake-off sends
 # exactly what production sends. Native build: plain Rust, no Worker runtime.

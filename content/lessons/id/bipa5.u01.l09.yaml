@@ -59,17 +59,21 @@ exercises:
         en: requirement
     words: [lowongan, tunjangan, atasan, kekurangan, syarat]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة رسمية بالكامل؟
-      ar: أيّ جملة رسمية تمامًا؟
-      en: Which sentence is fully formal?
-    options:
-      - Apakah Ibu sudah membaca surat lamaran saya?
-      - Ibu udah baca surat lamaran saya?
-      - Apakah Ibu udah membaca surat lamaran gue?
-    answer: 0
-    words: [atasan]
+    type: match_pairs
+    pairs:
+      - text: fasih
+        ar_eg: بطلاقة / فصيح
+        ar: فصيح، بطلاقة
+        en: fluent
+      - text: magang
+        ar_eg: تدريب في شركة (إنترنشيب)
+        ar: تدريب عملي
+        en: internship; to intern
+      - text: sertifikat
+        ar_eg: شهادة
+        ar: شهادة
+        en: certificate
+    words: [fasih, magang, sertifikat]
   - id: e03
     type: listen
     text: Lamaran dikirim paling lambat tanggal tiga puluh November.

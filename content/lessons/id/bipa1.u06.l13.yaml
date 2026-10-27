@@ -155,13 +155,25 @@ exercises:
     answers: [Saya jarang memasak., Saya jarang memasak, Aku jarang memasak., Saya jarang masak., Aku jarang masak.]
     words: [jarang, memasak]
   - id: e11
-    type: dictation
-    text: Saya sedang membaca buku.
-    meaning:
-      ar_eg: أنا بقرا كتاب دلوقتي.
-      ar: أنا أقرأ كتابًا الآن.
-      en: I'm reading a book.
-    words: [sedang, membaca, buku]
+    type: match_pairs
+    pairs:
+      - text: roti
+        ar_eg: عيش، توست
+        ar: خبز
+        en: bread
+      - text: tugas
+        ar_eg: مهمة، واجب
+        ar: مهمّة، واجب
+        en: task, assignment
+      - text: kelas
+        ar_eg: فصل، حصة
+        ar: صفّ، حصّة
+        en: class, classroom
+      - text: pensil
+        ar_eg: قلم رصاص
+        ar: قلم رصاص
+        en: pencil
+    words: [roti, tugas, kelas, pensil]
   - id: e12
     type: speaking
     text: Kami akan ke Blok M nanti malam.

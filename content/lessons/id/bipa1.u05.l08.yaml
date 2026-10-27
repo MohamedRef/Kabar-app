@@ -1,240 +1,229 @@
 schema: kabar.lesson/v1
 id: bipa1.u05.l08
 language: id
-title: Monyet di Ubud
+title: Di loket Ancol
 can_do:
-  ar_eg: تسمّي الحيوانات اللي هتشوفها في الإجازة، وتفهم يافطة «خطر».
-  ar: أن تسمّي الحيوانات التي تراها في العطلة، وتفهم لافتة «خطر».
-  en: Name the animals you meet on holiday and understand a danger sign.
+  ar_eg: تشتري تذكرة وتسأل أسئلة عند الشباك.
+  ar: أن تشتري تذكرة وتطرح أسئلة عند شبّاك التذاكر.
+  en: Buy a ticket and ask questions at a counter.
 slides:
-  - title: Binatang
+  - title: Di loket
     body:
       ar_eg: |
-        binatang = حيوان. kuda = حصان (جزيرة سومبا مشهورة بالخيل)، sapi = بقرة، ayam = فرخة (sate ayam!)، monyet = قرد، ular = تعبان.
-        terbang = يطير: burung terbang (الطير بيطير).
-        bahaya = خطر. على اليافطات: «Bahaya!».
-        في أوبود في بالي فيه غابة قرود. القرود هناك عسل، بس بتخطف الشنط والنضارات!
+        عند الشباك (loket) هتحتاج كام جملة بس:
+        - Permisi, Mbak. = لو سمحتي (عشان تبدأ بأدب).
+        - Berapa harga tiketnya? = التذكرة بكام؟
+        - Dua tiket, Mbak. = تذكرتين لو سمحتي.
+        - Ada …? = فيه …؟
+        - Boleh saya …? = ممكن …؟
+        - Terima kasih banyak! — Sama-sama.
       ar: |
-        binatang = حيوان. kuda = حصان (وجزيرة سومبا مشهورة بالخيل)، sapi = بقرة، ayam = دجاجة (sate ayam!)، monyet = قرد، ular = أفعى.
-        terbang = يطير: burung terbang (الطائر يطير).
-        bahaya = خطر، وعلى اللافتات: «Bahaya!».
-        في أوبود ببالي غابة قرود؛ قرودها لطيفة لكنها تخطف الحقائب والنظّارات!
+        عند شبّاك التذاكر (loket) تكفيك بضع جمل:
+        - Permisi, Mbak. = من فضلك (لتبدأ بأدب).
+        - Berapa harga tiketnya? = كم ثمن التذكرة؟
+        - Dua tiket, Mbak. = تذكرتان من فضلك.
+        - Ada …? = هل يوجد …؟
+        - Boleh saya …? = هل يمكنني …؟
+        - Terima kasih banyak! — Sama-sama.
       en: |
-        binatang = animal. kuda = horse (Sumba island is famous for them), sapi = cow, ayam = chicken (sate ayam!), monyet = monkey, ular = snake.
-        terbang = fly: burung terbang (birds fly).
-        bahaya = danger; signs say "Bahaya!".
-        Ubud in Bali has a monkey forest. The monkeys are cute, but they grab bags and glasses!
+        At the ticket counter (loket) a few lines do it all:
+        - Permisi, Mbak. = Excuse me (a polite opener).
+        - Berapa harga tiketnya? = How much is the ticket?
+        - Dua tiket, Mbak. = Two tickets, please.
+        - Ada …? = Is there …?
+        - Boleh saya …? = May I …?
+        - Terima kasih banyak! — Sama-sama.
+    grammar: id.politeness.phrases
     examples:
-      - text: Di Ubud ada banyak monyet.
-        ar_eg: في أوبود فيه قرود كتير.
-        ar: في أوبود قرود كثيرة.
-        en: There are lots of monkeys in Ubud.
-      - text: Burung terbang di langit.
-        ar_eg: العصافير بتطير في السما.
-        ar: الطيور تطير في السماء.
-        en: Birds fly in the sky.
-      - text: Bahaya! Ada ular.
-        ar_eg: خطر! فيه تعابين.
-        ar: خطر! هناك أفعى.
-        en: Danger! There's a snake.
+      - text: Permisi, Mbak. Berapa harga tiket masuk?
+        ar_eg: لو سمحتي، تذكرة الدخول بكام؟
+        ar: من فضلك، كم ثمن تذكرة الدخول؟
+        en: Excuse me, how much is an entrance ticket?
+      - text: Kolam renang buka jam delapan.
+        ar_eg: حمام السباحة بيفتح الساعة ٨.
+        ar: يفتح المسبح في الساعة الثامنة.
+        en: The pool opens at eight.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: binatang
-        ar_eg: حيوان
-        ar: حيوان
-        en: animal
-      - text: kuda
-        ar_eg: حصان
-        ar: حصان
-        en: horse
-      - text: ayam
-        ar_eg: فرخة
-        ar: دجاجة
-        en: chicken
-      - text: sapi
-        ar_eg: بقرة
-        ar: بقرة
-        en: cow
-    words: [binatang, kuda, ayam, sapi]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تسأل التذكرة بكام. تقول إيه؟
+      ar: تريد أن تسأل عن ثمن التذكرة. ماذا تقول؟
+      en: You want to ask how much the ticket costs. What do you say?
+    options: ['Ada apa tiketnya?', 'Bagaimana tiketnya?', 'Berapa harga tiketnya?']
+    answer: 2
+    explain:
+      ar_eg: السعر رقم، يبقى berapa (بكام). bagaimana بتسأل عن الحال.
+      ar: السعر عدد فيُسأل عنه بـ berapa، أما bagaimana فللحال.
+      en: A price is a number, so berapa; bagaimana asks how something is.
+    words: [berapa, harga, tiket]
   - id: e02
-    type: match_pairs
-    pairs:
-      - text: monyet
-        ar_eg: قرد
-        ar: قرد
-        en: monkey
-      - text: ular
-        ar_eg: تعبان
-        ar: أفعى
-        en: snake
-      - text: terbang
-        ar_eg: يطير
-        ar: يطير
-        en: fly
-      - text: bahaya
-        ar_eg: خطر
-        ar: خطر
-        en: danger
-    words: [monyet, ular, terbang, bahaya]
-  - id: e03
     type: listen
-    text: Di Ubud ada banyak monyet. Monyet binatang yang lucu.
-    question:
-      ar_eg: في أوبود فيه إيه كتير؟
-      ar: ماذا يكثر في أوبود؟
-      en: What is there a lot of in Ubud?
-    options: [قرود, تعابين, خيل]
-    answer: 0
+    text: Tiga puluh lima ribu rupiah
+    options: [Tiga belas ribu rupiah, Tiga puluh lima ribu rupiah, Lima puluh tiga ribu rupiah]
+    answer: 1
+    words: [ribu, rupiah]
+  - id: e03
+    type: fill_blank
+    sentence: ___, Mbak. Berapa harga tiket masuk?
     meaning:
-      ar_eg: في أوبود فيه قرود كتير. القرد حيوان عسول.
-      ar: في أوبود قرود كثيرة، والقرد حيوان لطيف.
-      en: There are lots of monkeys in Ubud. Monkeys are cute animals.
-    words: [monyet, binatang]
+      ar_eg: لو سمحتي، تذكرة الدخول بكام؟
+      ar: من فضلك، كم ثمن تذكرة الدخول؟
+      en: Excuse me, how much is an entrance ticket?
+    options: [Permisi, Sama-sama, Silakan]
+    answers: [Permisi]
+    explain:
+      ar_eg: permisi بتفتح الكلام مع حد غريب.
+      ar: permisi لافتتاح الكلام مع الغرباء.
+      en: permisi opens a conversation with a stranger.
+    words: [permisi]
   - id: e04
     type: fill_blank
-    sentence: Burung ___ di langit.
+    sentence: Tiket masuk di ___ itu.
     meaning:
-      ar_eg: العصافير ___ في السما.
-      ar: الطيور ___ في السماء.
-      en: Birds ___ in the sky.
-    options: [terbang, berenang, duduk]
-    answers: [terbang]
-    words: [terbang]
+      ar_eg: تذكرة الدخول من الشباك ده.
+      ar: تذكرة الدخول من ذلك الشباك.
+      en: Entry tickets are at that counter.
+    options: [loket, uang, petugas]
+    answers: [loket]
+    words: [tiket masuk, loket]
   - id: e05
-    type: multiple_choice
-    question: Bahaya! Ada ular.
-    question_meaning:
-      ar_eg: على يافطة في الغابة مكتوب كده. معناها إيه؟
-      ar: هذا مكتوب على لافتة في الغابة. ما معناه؟
-      en: This is on a sign in the forest. What does it mean?
-    options: [خطر! فيه تعابين., أهلًا! فيه قرود., ممنوع الأكل.]
-    answer: 0
-    explain:
-      ar_eg: bahaya = خطر، وular = تعبان.
-      ar: bahaya خطر، وular أفعى.
-      en: bahaya = danger, ular = snake.
-    words: [bahaya, ular]
-  - id: e06
-    type: fill_blank
-    sentence: Nenek punya banyak ___ di rumah. Mereka tidak bisa terbang tinggi.
-    meaning:
-      ar_eg: جدتي عندها ___ كتير في البيت. ما بيقدروش يطيروا عالي.
-      ar: لدى جدّتي ___ كثير في البيت، ولا تستطيع الطيران عاليًا.
-      en: Grandma has lots of ___ at home. They can't fly high.
-    options: [ayam, kuda, ular]
-    answers: [ayam]
-    words: [ayam, kuda, ular]
-  - id: e07
     type: build_sentence
     source:
-      ar_eg: في سومبا فيه خيل وبقر كتير.
-      ar: في سومبا خيل وأبقار كثيرة.
-      en: In Sumba there are lots of horses and cows.
-    answer: Di Sumba ada banyak kuda dan sapi.
-    distractors: [ayam, terbang]
-    words: [kuda, sapi]
-  - id: e08
-    type: translate
-    direction: from_target
-    source_text: Ada monyet dan ular di pohon itu! Bahaya!
-    answers_meaning:
-      ar_eg: [فيه قرد وتعبان على الشجرة دي! خطر!, فيه قرد وتعبان في الشجرة دي! خطر!]
-      ar: [على تلك الشجرة قرد وأفعى! خطر!, هناك قرد وأفعى على تلك الشجرة! خطر!]
-      en: ['There''s a monkey and a snake in that tree! Danger!', There are monkeys and snakes in that tree! Danger!]
-    words: [monyet, ular, bahaya]
-  - id: e09
-    type: speaking
-    text: Ayam tidak bisa terbang tinggi.
-    meaning:
-      ar_eg: الفراخ ما تقدرش تطير عالي.
-      ar: لا يستطيع الدجاج أن يطير عاليًا.
-      en: Chickens can't fly high.
-    words: [ayam, terbang]
-  - id: e10
-    type: multiple_choice
-    question: Kuda, sapi, dan ayam adalah ___.
-    options: [binatang, bahaya, burung]
+      ar_eg: الموظف موجود عند الشباك.
+      ar: الموظف عند الشباك.
+      en: The attendant is at the counter.
+    answer: Petugas itu ada di loket.
+    distractors: [uang, jadi]
+    words: [petugas, loket]
+  - id: e06
+    type: listen
+    text: Ini uangnya, Mbak. Dua tiket masuk.
+    options: ['Ini uangnya, Mbak. Dua tiket masuk.', 'Ini tiketnya, Mbak. Dua tiket masuk.', 'Ini uangnya, Mbak. Tiga tiket masuk.']
     answer: 0
-    explain:
-      ar_eg: 'الحصان والبقرة والفرخة: حيوانات = binatang.'
-      ar: 'الحصان والبقرة والدجاجة حيوانات: binatang.'
-      en: 'Horses, cows and chickens are animals: binatang.'
-    words: [binatang, kuda, sapi, ayam]
+    meaning:
+      ar_eg: اتفضلي الفلوس يا آنسة. تذكرتين دخول.
+      ar: تفضلي المال يا آنسة. تذكرتا دخول.
+      en: Here's the money, miss. Two entry tickets.
+    words: [uang, tiket masuk]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: loket
+        ar_eg: شباك التذاكر
+        ar: شباك التذاكر
+        en: ticket counter
+      - text: tiket masuk
+        ar_eg: تذكرة دخول
+        ar: تذكرة دخول
+        en: entry ticket
+      - text: uang
+        ar_eg: فلوس
+        ar: مال، نقود
+        en: money
+      - text: petugas
+        ar_eg: موظف
+        ar: موظف
+        en: attendant, officer
+      - text: jadi
+        ar_eg: يبقى، يعني
+        ar: إذن، فيكون
+        en: so, that makes
+      - text: harga
+        ar_eg: سعر
+        ar: سعر
+        en: price
+    words: [loket, tiket masuk, uang, petugas, jadi, harga]
+  - id: e08
+    type: multiple_choice
+    question: "Petugas loket: ___ tujuh puluh ribu, Pak."
+    question_meaning:
+      ar_eg: موظف الشباك بيقول «يبقى سبعين ألف يا أستاذ». إيه الكلمة الناقصة؟
+      ar: يقول موظف الشباك «إذن سبعون ألفًا يا سيدي». ما الكلمة الناقصة؟
+      en: The counter clerk says "That makes seventy thousand, sir." Which word is missing?
+    options: [Jadi, Ada, Uang]
+    answer: 0
+    words: [petugas, loket, jadi, uang]
+  - id: e09
+    type: dictation
+    text: Jadi tujuh puluh ribu, Pak.
+    meaning:
+      ar_eg: يبقى سبعين ألف يا أستاذ.
+      ar: إذن سبعون ألفًا يا سيدي.
+      en: So that's seventy thousand, sir.
+    words: [jadi, ribu]
+  - id: e10
+    type: speaking
+    text: Permisi, Mbak. Dua tiket masuk. Jadi berapa?
+    meaning:
+      ar_eg: لو سمحتي يا آنسة. تذكرتين دخول. يبقوا كام؟
+      ar: عذرًا يا آنسة. تذكرتا دخول. فكم يكون المبلغ؟
+      en: Excuse me, miss. Two entry tickets. So how much is that?
+    words: [permisi, tiket masuk, jadi]
 dialogue:
+  title: Di loket Ancol
   lines:
-    - speaker: Ni Luh
-      text: Selamat datang di Ubud! Ada banyak monyet di Ubud.
-      ar_eg: أهلًا بيك في أوبود! فيه قرود كتير هنا.
-      ar: أهلًا بك في أوبود! فيها قرود كثيرة.
-      en: Welcome to Ubud! There are lots of monkeys in Ubud.
     - speaker: Mohamed
-      text: Monyetnya lucu! Boleh foto?
-      ar_eg: القرود عسل! ينفع أصوّر؟
-      ar: ما ألطف القرود! هل أستطيع التصوير؟
-      en: The monkeys are cute! Can I take photos?
-    - speaker: Ni Luh
-      text: Boleh. Tapi monyet di Ubud bahaya untuk tas kamu!
-      ar_eg: ينفع. بس قرود أوبود خطر على شنطتك!
-      ar: نعم. لكن قرود أوبود خطر على حقيبتك!
-      en: Sure. But Ubud's monkeys are a danger to your bag!
+      text: Permisi, Mbak. Berapa harga tiket masuk?
+      ar_eg: لو سمحتي، تذكرة الدخول بكام؟
+      ar: من فضلك، كم ثمن تذكرة الدخول؟
+      en: Excuse me. How much is an entrance ticket?
+    - speaker: Petugas loket
+      text: Tiga puluh lima ribu rupiah, Pak.
+      ar_eg: خمسة وتلاتين ألف روبية يا أستاذ.
+      ar: خمسة وثلاثون ألف روبية يا سيدي.
+      en: Thirty-five thousand rupiah, sir.
     - speaker: Mohamed
-      text: Oh! Tas saya hilang!
-      ar_eg: يا خبر! شنطتي ضاعت!
-      ar: آه! اختفت حقيبتي!
-      en: Oh! My bag's gone!
-    - speaker: Ni Luh
-      text: Di pohon itu! Ada monyet dan tas kamu.
-      ar_eg: على الشجرة دي! فيه قرد ومعاه شنطتك.
-      ar: على تلك الشجرة! هناك قرد ومعه حقيبتك.
-      en: In that tree! There's a monkey with your bag.
+      text: Dua tiket, Mbak.
+      ar_eg: تذكرتين لو سمحتي.
+      ar: تذكرتان من فضلك.
+      en: Two tickets, please.
+    - speaker: Petugas loket
+      text: Jadi tujuh puluh ribu, Pak.
+      ar_eg: يبقى سبعين ألف يا أستاذ.
+      ar: إذن سبعون ألفًا يا سيدي.
+      en: So that's seventy thousand, sir.
     - speaker: Mohamed
-      text: Monyet itu lucu, tapi bahaya!
-      ar_eg: القرد ده عسول، بس خطر!
-      ar: ذلك القرد لطيف، لكنه خطر!
-      en: That monkey's cute, but dangerous!
+      text: Boleh saya foto di pantai?
+      ar_eg: ممكن أصوّر على البحر؟
+      ar: هل يمكنني التصوير على الشاطئ؟
+      en: May I take photos on the beach?
+    - speaker: Petugas loket
+      text: Boleh, Pak. Silakan.
+      ar_eg: ممكن يا أستاذ. اتفضل.
+      ar: نعم يا سيدي. تفضل.
+      en: Yes, sir. Go ahead.
 new_words:
-  - word: binatang
+  - word: loket
     pos: noun
-    ar_eg: حيوان
-    ar: حيوان
-    en: animal
-  - word: kuda
+    ar_eg: شباك التذاكر
+    ar: شبّاك التذاكر
+    en: ticket counter, window
+  - word: tiket
     pos: noun
-    ar_eg: حصان
-    ar: حصان
-    en: horse
-  - word: ayam
+    ar_eg: تذكرة
+    ar: تذكرة
+    en: ticket
+  - word: tiket masuk
     pos: noun
-    ar_eg: فرخة
-    ar: دجاجة
-    en: chicken
-  - word: sapi
+    ar_eg: تذكرة دخول
+    ar: تذكرة دخول
+    en: entrance ticket
+  - word: jadi
+    pos: conjunction
+    ar_eg: يبقى / يعني
+    ar: إذن
+    en: so, that makes
+  - word: uang
     pos: noun
-    ar_eg: بقرة
-    ar: بقرة
-    en: cow
-  - word: monyet
+    ar_eg: فلوس
+    ar: نقود
+    en: money
+  - word: petugas
     pos: noun
-    ar_eg: قرد
-    ar: قرد
-    en: monkey
-  - word: ular
-    pos: noun
-    ar_eg: تعبان
-    ar: أفعى، ثعبان
-    en: snake
-  - word: terbang
-    pos: verb
-    ar_eg: يطير
-    ar: يطير
-    en: fly
-  - word: bahaya
-    pos: noun
-    ar_eg: خطر
-    ar: خطر
-    en: danger
+    ar_eg: موظف
+    ar: موظف
+    en: staff member, officer
 review:
   status: draft
   verified: false

@@ -143,13 +143,21 @@ exercises:
     answers: [Saya punya tiga adik., Saya punya tiga adik, Aku punya tiga adik., Saya punya tiga orang adik.]
     words: [punya, tiga, adik]
   - id: e11
-    type: dictation
-    text: Buku-buku itu punya Rina.
-    meaning:
-      ar_eg: الكتب دي بتاعة رينا.
-      ar: تلك الكتب لرينا.
-      en: Those books are Rina's.
-    words: [buku, punya]
+    type: match_pairs
+    pairs:
+      - text: nenek
+        ar_eg: جدة (تيتا)
+        ar: جدّة
+        en: grandmother
+      - text: pacar
+        ar_eg: حبيب أو حبيبة (قبل الجواز)
+        ar: حبيب أو حبيبة (قبل الزواج)
+        en: boyfriend, girlfriend
+      - text: pria
+        ar_eg: راجل (كلمة رسمية)
+        ar: رجل، ذكر (رسمي)
+        en: man, male (formal)
+    words: [nenek, pacar, pria]
   - id: e12
     type: speaking
     text: Ini keluarga saya. Kakak saya sudah menikah, adik saya belum.

@@ -1,199 +1,241 @@
 schema: kabar.lesson/v1
 id: bipa1.u10.l04
 language: id
-title: Cerita di kapal
+title: Mimpi dan cita-cita
 can_do:
-  ar_eg: تحكي حكاية من ٦ جمل.
-  ar: أن تروي قصة من ست جمل.
-  en: Tell a 6-sentence story.
+  ar_eg: 'تتكلم عن أحلامك وطموحك: تتمنى، متأكد، تنجح أو تفشل، فخور، وتدعي.'
+  ar: 'أن تتحدث عن أحلامك وطموحك: تأمل، متأكد، تنجح أو تفشل، فخور، وتدعو.'
+  en: 'Talk about dreams and ambitions: hope, be sure, succeed or fail, be proud, and pray.'
 slides:
-  - title: Cerita = حكاية
+  - title: Cita-cita
     body:
-      ar_eg: |-
-        عشان تحكي يومك في ٦ جمل:
-        1. ابدأ بكلمة وقت: Tadi pagi / Kemarin …
-        2. كل جملة S + P + O + K: Saya naik kapal dari Marina Ancol.
-        3. اربط بـ lalu، setelah itu، sebelum …
-        4. ضيف تجربة: Ini pertama kali saya … / Saya belum pernah …
-        5. اختم بإحساسك: Saya capek, tapi senang.
-        setelah itu / sesudah itu = «بعد كده»، وlalu = «وبعدين». نوّع بينهم عشان الحكاية تبقى حلوة ومش بتكرر نفس الكلمة.
-      ar: |-
-        لتروي يومك في ست جمل:
-        1. ابدأ بظرف زمان: Tadi pagi / Kemarin …
-        2. اجعل كل جملة S + P + O + K: Saya naik kapal dari Marina Ancol.
-        3. اربط بـ lalu وsetelah itu وsebelum …
-        4. أضف تجربة: Ini pertama kali saya … / Saya belum pernah …
-        5. واختم بشعورك: Saya capek, tapi senang.
-        setelah itu / sesudah itu = «بعد ذلك»، وlalu = «ثم». نوّع بينها كي لا تتكرر الكلمة نفسها في القصة.
-      en: |-
-        To tell your day in six sentences:
-        1. Open with a time word: Tadi pagi / Kemarin …
-        2. Make each sentence S + P + O + K: Saya naik kapal dari Marina Ancol.
-        3. Link with lalu, setelah itu, sebelum …
-        4. Add an experience: Ini pertama kali saya … / Saya belum pernah …
-        5. End with how you feel: Saya capek, tapi senang.
-        setelah itu / sesudah itu = "after that", lalu = "then". Mix them so your story doesn't repeat the same word.
-    grammar: id.time.sequence
+      ar_eg: |
+        mimpi = حلم (وإنت نايم أو حلم في حياتك). cita-cita = طموح، الحلم الكبير: «Cita-cita saya jadi dokter.»
+        berharap = يتمنى ويأمل. yakin = متأكد: «Saya yakin!»
+        sukses = نجاح أو ناجح، وgagal = يفشل. bangga = فخور.
+        berdoa = يدعي (من doa = دعاء، من العربي). أما salat فهي الصلاة نفسها.
+      ar: |
+        mimpi = حلم (في النوم أو في الحياة). cita-cita = الطموح، الحلم الكبير: «Cita-cita saya jadi dokter.»
+        berharap = يأمل. yakin = متأكد: «Saya yakin!»
+        sukses = النجاح أو ناجح، وgagal = يفشل. bangga = فخور.
+        berdoa = يدعو (من doa = دعاء، من العربية)، أما salat فالصلاة نفسها.
+      en: |
+        mimpi = dream (asleep or in life). cita-cita = ambition, your big dream: "Cita-cita saya jadi dokter."
+        berharap = hope. yakin = sure: "Saya yakin!"
+        sukses = success, successful; gagal = fail. bangga = proud.
+        berdoa = pray, make du'a (doa, from Arabic دعاء); salat is ritual prayer.
     examples:
-      - text: Tadi pagi saya bangun jam lima. Lalu saya naik kapal.
-        ar_eg: النهارده الصبح صحيت الساعة خمسة. وبعدين ركبت المركب.
-        ar: استيقظت هذا الصباح في الخامسة، ثم ركبت القارب.
-        en: This morning I got up at five. Then I took the boat.
-      - text: Kami makan ikan bakar. Setelah itu, kami berenang.
-        ar_eg: كلنا سمك مشوي. بعد كده عُمنا.
-        ar: أكلنا سمكًا مشويًا، وبعد ذلك سبحنا.
-        en: We ate grilled fish. After that, we swam.
+      - text: Cita-cita saya jadi dokter.
+        ar_eg: حلمي أبقى دكتور.
+        ar: طموحي أن أصبح طبيبًا.
+        en: My ambition is to be a doctor.
+      - text: Saya yakin kamu sukses!
+        ar_eg: أنا متأكد إنك هتنجح!
+        ar: أنا متأكد أنك ستنجح!
+        en: I'm sure you'll succeed!
+      - text: Sebelum ujian, saya berdoa.
+        ar_eg: قبل الامتحان بدعي ربنا.
+        ar: قبل الامتحان أدعو الله.
+        en: Before an exam, I pray.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تقول «دي حكايتي»؟
-      ar: كيف تقول «هذه قصتي»؟
-      en: How do you say "This is my story"?
-    options: ['Ini cerita saya.', 'Ini kalimat saya.', 'Ini kapal saya.']
-    answer: 0
-    words: [cerita]
+    type: match_pairs
+    pairs:
+      - text: mimpi
+        ar_eg: حلم
+        ar: حلم
+        en: dream
+      - text: yakin
+        ar_eg: متأكد
+        ar: متأكد
+        en: sure
+      - text: sukses
+        ar_eg: نجاح، ناجح
+        ar: نجاح، ناجح
+        en: success
+      - text: berdoa
+        ar_eg: يدعي
+        ar: يدعو
+        en: pray
+    words: [mimpi, yakin, sukses, berdoa]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: berharap
+        ar_eg: يتمنى
+        ar: يأمل
+        en: hope
+      - text: cita-cita
+        ar_eg: طموح
+        ar: طموح
+        en: ambition
+      - text: bangga
+        ar_eg: فخور
+        ar: فخور
+        en: proud
+      - text: gagal
+        ar_eg: يفشل
+        ar: يفشل
+        en: fail
+    words: [berharap, cita-cita, bangga, gagal]
+  - id: e03
     type: listen
-    text: Setelah itu, kami senang sekali.
-    options: ['Setelah itu, kami senang sekali.', 'Sebelum itu, kami senang sekali.', 'Setelah itu, kami capek sekali.']
+    text: Tadi malam saya mimpi pergi ke Bali.
+    question:
+      ar_eg: حلم بإيه؟
+      ar: بمَ حلم؟
+      en: What did he dream about?
+    options: [إنه راح بالي, إنه فشل, إنه نجح]
     answer: 0
     meaning:
-      ar_eg: بعد كده، كنا مبسوطين أوي.
-      ar: بعد ذلك كنا سعداء جدًا.
-      en: After that, we were really happy.
-    words: [setelah itu, senang]
-  - id: e03
-    type: fill_blank
-    sentence: Ini ___ saya di kapal.
-    meaning:
-      ar_eg: دي حكايتي على المركب.
-      ar: هذه قصتي على السفينة.
-      en: This is my story on the boat.
-    options: [cerita, ikan bakar, senang]
-    answers: [cerita]
-    words: [cerita, kapal]
+      ar_eg: امبارح بالليل حلمت إني رحت بالي.
+      ar: حلمت الليلة الماضية أني ذهبت إلى بالي.
+      en: Last night I dreamt I went to Bali.
+    words: [mimpi]
   - id: e04
     type: fill_blank
-    sentence: Saya ___ pernah snorkeling. Ini pertama kali!
+    sentence: Cita-cita saya jadi dokter. Saya ___ sukses!
     meaning:
-      ar_eg: أنا لسه عمري ما عملت سنوركلنج. دي أول مرة!
-      ar: لم يسبق لي الغطس السطحي، هذه أول مرة!
-      en: I'd never been snorkeling. This is the first time!
-    options: [belum, bukan, sudah]
-    answers: [belum]
-    explain:
-      ar_eg: أول مرة يعني قبل كده لسه ماحصلش، belum pernah.
-      ar: 'أول مرة تعني أنه لم يسبق بعدُ: belum pernah.'
-      en: 'First time means it hadn''t happened yet: belum pernah.'
-    words: [belum pernah, pertama kali]
+      ar_eg: حلمي أبقى دكتور. ___ أنجح!
+      ar: طموحي أن أصبح طبيبًا، و___ أن أنجح!
+      en: My ambition is to be a doctor. I ___ I succeed!
+    options: [berharap, gagal, bangga]
+    answers: [berharap]
+    words: [berharap, sukses, gagal, bangga, cita-cita]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: كلنا سمك مشوي في الجزيرة.
-      ar: أكلنا سمكًا مشويًا في الجزيرة.
-      en: We ate grilled fish on the island.
-    answer: Kami makan ikan bakar di pulau.
-    distractors: [kapal, dari]
-    words: [makan, ikan bakar, pulau]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: قبل الامتحان بتطلب من ربنا يوفقك. بالإندونيسي؟
+      ar: قبل الامتحان تسأل الله التوفيق. بالإندونيسية؟
+      en: Before an exam you ask God for help. In Indonesian?
+    options: [berdoa, gagal, mimpi]
+    answer: 0
+    explain:
+      ar_eg: berdoa = يدعي. gagal يفشل وmimpi حلم.
+      ar: berdoa يدعو، أما gagal فيفشل وmimpi حلم.
+      en: berdoa = pray; gagal is fail and mimpi dream.
+    words: [berdoa, gagal, mimpi]
   - id: e06
+    type: fill_blank
+    sentence: Anak saya pintar dan rajin. Saya ___!
+    meaning:
+      ar_eg: ابني شاطر ومجتهد. أنا ___!
+      ar: ابني ذكي ومجتهد. أنا ___!
+      en: My child is clever and hard-working. I'm ___!
+    options: [bangga, gagal, yakin]
+    answers: [bangga]
+    words: [bangga, yakin]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: بعد ما وصلنا الجزيرة، كلنا سمك مشوي.
-      ar: بعد أن وصلنا إلى الجزيرة، أكلنا سمكًا مشويًا.
-      en: After arriving at the island, we ate grilled fish.
-    answer: Setelah sampai di pulau, kami makan ikan bakar.
-    alternatives: [Setelah sampai di pulau kami makan ikan bakar.]
-    distractors: [sebelum, ke]
-    words: [setelah, sampai, pulau, ikan bakar]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بعد كده، عُمنا في البحر.
-      ar: بعد ذلك، سبحنا في البحر.
-      en: After that, we swam in the sea.
-    answers: ['Setelah itu, kami berenang di laut.', 'Sesudah itu, kami berenang di laut.', Setelah itu kami berenang di laut., Sesudah itu kami berenang di laut., Lalu kami berenang di laut., 'Setelah itu, kita berenang di laut.', 'Setelah itu, kami berenang di laut']
-    words: [setelah itu, berenang, laut]
+      ar_eg: أنا متأكد إنك هتنجح!
+      ar: أنا متأكد أنك ستنجح!
+      en: I'm sure you'll succeed!
+    answer: Saya yakin kamu sukses!
+    distractors: [gagal, mimpi]
+    words: [yakin, sukses]
   - id: e08
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا تعبان، بس مبسوط.
-      ar: أنا متعب، لكني سعيد.
-      en: I'm tired, but happy.
-    answers: ['Saya capek, tapi senang.', 'Saya capek, tetapi senang.', Saya capek tapi senang., 'Saya capek, tapi saya senang.', 'Aku capek, tapi senang.', 'Saya lelah, tetapi senang.', 'Saya capek, tapi senang']
-    words: [capek, tapi, senang]
+    direction: from_target
+    source_text: Tidak apa-apa gagal. Coba lagi!
+    answers_meaning:
+      ar_eg: [مش مشكلة لو فشلت. جرّب تاني!, عادي تفشل. حاول تاني!]
+      ar: [لا بأس بالفشل. حاول مرة أخرى!, لا بأس أن تفشل. جرّب ثانية!]
+      en: ['It''s OK to fail. Try again!', Failing is fine. Try again!]
+    words: [gagal]
   - id: e09
-    type: dictation
-    text: Ikan bakarnya enak sekali!
-    meaning:
-      ar_eg: السمك المشوي حلو أوي!
-      ar: السمك المشوي لذيذ جدًا!
-      en: The grilled fish is delicious!
-    words: [ikan bakar, enak]
-  - id: e10
     type: speaking
-    text: Ini cerita saya. Tadi pagi saya naik kapal. Setelah itu, saya berenang. Saya capek, tapi senang.
+    text: Cita-cita saya jadi guru. Saya berharap sukses.
     meaning:
-      ar_eg: دي حكايتي. النهارده الصبح ركبت مركب. بعد كده عُمت. أنا تعبان، بس مبسوط.
-      ar: هذه قصتي. هذا الصباح ركبت قاربًا، وبعد ذلك سبحت. أنا متعب لكني سعيد.
-      en: This is my story. This morning I took a boat. After that, I swam. I'm tired, but happy.
-    words: [cerita, tadi, kapal, setelah itu, capek, senang]
+      ar_eg: حلمي أبقى مدرس. وبتمنى أنجح.
+      ar: طموحي أن أصبح معلّمًا، وآمل أن أنجح.
+      en: My ambition is to be a teacher. I hope I succeed.
+    words: [cita-cita, berharap]
+  - id: e10
+    type: multiple_choice
+    question: Setiap malam, sebelum tidur, saya ___.
+    options: [berdoa, sukses, cita-cita]
+    answer: 0
+    explain:
+      ar_eg: 'قبل النوم بيدعي: berdoa.'
+      ar: 'قبل النوم يدعو: berdoa.'
+      en: 'Before sleep, he prays: berdoa.'
+    words: [berdoa, sukses, cita-cita]
 dialogue:
-  title: Pulang dari Pulau Pramuka
   lines:
-    - speaker: Mas Rizal
-      text: Mohamed, bagaimana hari ini? Coba cerita!
-      ar_eg: يا محمد، النهارده كان عامل إزاي؟ احكيلي!
-      ar: يا محمد، كيف كان يومك؟ احكِ لي!
-      en: Mohamed, how was today? Tell me!
+    - speaker: Rina
+      text: Mohamed, apa cita-cita kamu?
+      ar_eg: يا محمد، إيه حلمك الكبير؟
+      ar: يا محمد، ما طموحك؟
+      en: Mohamed, what's your big dream?
     - speaker: Mohamed
-      text: Tadi pagi saya bangun jam lima. Lalu saya naik kapal dari Marina Ancol.
-      ar_eg: النهارده الصبح صحيت الساعة خمسة. وبعدين ركبت المركب من مارينا أنكول.
-      ar: هذا الصباح استيقظت في الخامسة، ثم ركبت القارب من مارينا أنكول.
-      en: This morning I got up at five. Then I took the boat from Marina Ancol.
+      text: Saya berharap bisa berbicara bahasa Indonesia setiap hari.
+      ar_eg: بتمنى أقدر أتكلم إندونيسي كل يوم.
+      ar: آمل أن أتحدّث الإندونيسية كل يوم.
+      en: I hope to speak Indonesian every day.
+    - speaker: Rina
+      text: Saya yakin kamu sukses! Kamu rajin.
+      ar_eg: أنا متأكدة إنك هتنجح! إنت مجتهد.
+      ar: أنا متأكدة أنك ستنجح! أنت مجتهد.
+      en: I'm sure you'll make it! You work hard.
     - speaker: Mohamed
-      text: Setelah sampai di pulau, kami makan ikan bakar.
-      ar_eg: بعد ما وصلنا الجزيرة، كلنا سمك مشوي.
-      ar: بعد أن وصلنا إلى الجزيرة، أكلنا سمكًا مشويًا.
-      en: After we got to the island, we ate grilled fish.
+      text: Terima kasih. Kadang-kadang saya gagal…
+      ar_eg: شكرًا. ساعات بفشل…
+      ar: شكرًا. أحيانًا أفشل…
+      en: Thanks. Sometimes I fail…
+    - speaker: Rina
+      text: Tidak apa-apa. Saya bangga, kamu sudah banyak belajar!
+      ar_eg: عادي. أنا فخورة بيك، إنت اتعلمت كتير!
+      ar: لا بأس. أنا فخورة، فقد تعلّمت الكثير!
+      en: 'That''s OK. I''m proud: you''ve learnt so much!'
     - speaker: Mohamed
-      text: Setelah itu, kami berenang di laut. Ikannya banyak sekali!
-      ar_eg: بعد كده عُمنا في البحر. السمك كان كتير أوي!
-      ar: بعد ذلك سبحنا في البحر، وكانت الأسماك كثيرة جدًا!
-      en: After that, we swam in the sea. There were so many fish!
-    - speaker: Mas Rizal
-      text: Wah, seru sekali!
-      ar_eg: الله، ده ممتع جدًا!
-      ar: يا للمتعة!
-      en: Wow, how exciting!
-    - speaker: Mohamed
-      text: Ya. Sekarang saya capek, tapi senang.
-      ar_eg: أيوه. دلوقتي أنا تعبان، بس مبسوط.
-      ar: نعم. أنا متعب الآن، لكني سعيد.
-      en: Yes. Now I'm tired, but happy.
+      text: Saya juga berdoa setiap hari.
+      ar_eg: وأنا كمان بدعي كل يوم.
+      ar: وأنا أيضًا أدعو كل يوم.
+      en: I pray every day too.
 new_words:
-  - word: cerita
+  - word: mimpi
     pos: noun
-    ar_eg: حكاية؛ يحكي
-    ar: قصة؛ يروي
-    en: story; to tell
-  - word: setelah itu
-    pos: phrase
-    ar_eg: بعد كده
-    ar: بعد ذلك
-    en: after that
-  - word: ikan bakar
-    pos: noun
-    ar_eg: سمك مشوي
-    ar: سمك مشوي
-    en: grilled fish
-  - word: senang
+    ar_eg: حلم؛ يحلم
+    ar: حلم؛ يحلم
+    en: dream
+  - word: yakin
     pos: adjective
-    ar_eg: مبسوط
-    ar: سعيد
-    en: happy, glad
+    arabic: يقين
+    ar_eg: متأكد
+    ar: متأكد، واثق
+    en: sure, certain
+  - word: sukses
+    pos: adjective
+    ar_eg: نجاح، ناجح
+    ar: نجاح، ناجح
+    en: success, successful
+  - word: berdoa
+    pos: verb
+    arabic: دعاء
+    ar_eg: يدعي (ربنا)
+    ar: يدعو (الله)
+    en: pray, make du'a
+  - word: berharap
+    pos: verb
+    ar_eg: يتمنى، يأمل
+    ar: يأمل
+    en: hope
+  - word: cita-cita
+    pos: noun
+    ar_eg: طموح، حلم الحياة
+    ar: طموح، أمنية
+    en: ambition, life goal
+  - word: bangga
+    pos: adjective
+    ar_eg: فخور
+    ar: فخور
+    en: proud
+  - word: gagal
+    pos: verb
+    ar_eg: يفشل
+    ar: يفشل
+    en: fail
 review:
   status: draft
   verified: false

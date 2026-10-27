@@ -1,186 +1,242 @@
 schema: kabar.lesson/v1
 id: bipa2.u01.l04
 language: id
-title: Toko alat musik
+title: Tebal dan tipis
 can_do:
-  ar_eg: تختار بين آلات موسيقية في محل وتقارن بينها.
-  ar: أن تختار بين الآلات الموسيقية في متجر.
-  en: Choose between instruments in a shop.
+  ar_eg: تقارن الحاجات بالسُمك والعرض والمساحة والملمس والخامة.
+  ar: أن تقارن الأشياء بالسُّمك والعرض والمساحة والملمس والمادة.
+  en: Compare things by thickness, width, space, texture and material.
 slides:
-  - title: Lebih, paling
+  - title: Tebal, lebar, luas
     body:
       ar_eg: |
-        فكّر بسرعة قبل ما تدخل المحل:
-        - بين اتنين: lebih + صفة + daripada → Yang ini lebih murah daripada yang itu.
-        - الأكتر في الكل: paling + صفة أو ter- → Mana yang paling bagus? / Ini yang terbaik.
-        - Ada yang lebih …? = فيه حاجة … أكتر؟
-        وانت بتشتري: agak (شوية)، cukup (برضه / كفاية)، terlalu (زيادة)، lumayan (مش بطال).
-        Terlalu mahal untuk saya = غالي عليّا زيادة. جملة مؤدبة ومش بتجرح البياع.
+        أزواج مفيدة مع lebih … daripada:
+        tebal ↔ tipis: تخين ↔ رفيع (كتاب، قماش).
+        lebar ↔ sempit: عريض ↔ ضيق (شارع، باب).
+        luas = واسع، كبير في المساحة (بيت، أوضة). وkasar = خشن، عكس lembut.
+        الخامات: besi = حديد، plastik = بلاستيك، وإنت عارف kayu وbambu وlogam.
       ar: |
-        تذكير سريع قبل دخول المتجر:
-        - بين اثنين: lebih + الصفة + daripada.
-        - الأكثر بين الجميع: paling + الصفة أو ter-.
-        - Ada yang lebih …؟ = هل يوجد ما هو … أكثر؟
-        عند الشراء: agak (قليلًا)، cukup (إلى حد ما)، terlalu (أكثر من اللازم)، lumayan (لا بأس).
-        Terlalu mahal untuk saya = غالٍ جدًا بالنسبة لي، وهي عبارة مهذبة.
+        أزواج مفيدة مع lebih … daripada:
+        tebal ↔ tipis: سميك ↔ رقيق (كتاب، قماش).
+        lebar ↔ sempit: عريض ↔ ضيّق (شارع، باب).
+        luas = واسع المساحة (بيت، غرفة). وkasar = خشن، ضدّ lembut.
+        المواد: besi = حديد، plastik = بلاستيك، وأنت تعرف kayu وbambu وlogam.
       en: |
-        Quick reminder before you walk in:
-        - Between two: lebih + adjective + daripada.
-        - The most of all: paling + adjective, or ter-.
-        - Ada yang lebih …? = Is there a more … one?
-        While shopping: agak (a bit), cukup (fairly), terlalu (too), lumayan (not bad).
-        Terlalu mahal untuk saya = too expensive for me — polite and easy on the seller.
-    grammar: id.comparison.lebih
+        Useful pairs with lebih … daripada:
+        tebal ↔ tipis: thick ↔ thin (books, cloth).
+        lebar ↔ sempit: wide ↔ narrow (roads, doors).
+        luas = spacious (a house, a room). kasar = rough, the opposite of lembut.
+        Materials: besi = iron, plastik = plastic; you know kayu, bambu and logam.
     examples:
-      - text: Ada yang lebih murah?
-        ar_eg: فيه حاجة أرخص؟
-        ar: هل يوجد ما هو أرخص؟
-        en: Is there a cheaper one?
-      - text: Terlalu mahal untuk saya.
-        ar_eg: غالي عليّا زيادة.
-        ar: إنه غالٍ جدًا بالنسبة لي.
-        en: It's too expensive for me.
+      - text: Buku ini lebih tebal daripada buku itu.
+        ar_eg: الكتاب ده أتخن من الكتاب ده.
+        ar: هذا الكتاب أسمك من ذاك.
+        en: This book is thicker than that one.
+      - text: Jalan ini sempit, tapi jalan itu lebar.
+        ar_eg: الشارع ده ضيق، بس الشارع ده عريض.
+        ar: هذا الشارع ضيّق، أما ذاك فعريض.
+        en: This road is narrow, but that one is wide.
+      - text: Pintu itu dari besi, jadi berat.
+        ar_eg: الباب ده حديد، عشان كده تقيل.
+        ar: ذلك الباب من حديد، لذا هو ثقيل.
+        en: That door is iron, so it's heavy.
 exercises:
   - id: e01
-    type: listen
-    text: Ada yang lebih murah?
-    options: ['Ada yang lebih murah?', 'Ada yang paling murah?', 'Ada yang lebih mahal?']
-    answer: 0
-    words: [lebih, murah]
+    type: match_pairs
+    pairs:
+      - text: tebal
+        ar_eg: تخين
+        ar: سميك
+        en: thick
+      - text: tipis
+        ar_eg: رفيع
+        ar: رقيق
+        en: thin
+      - text: lebar
+        ar_eg: عريض
+        ar: عريض
+        en: wide
+      - text: sempit
+        ar_eg: ضيق
+        ar: ضيّق
+        en: narrow
+    words: [tebal, tipis, lebar, sempit]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: بو كومانج بتقول «Yang ini terbaik». قصدها إيه؟ اختار الجملة اللي بنفس المعنى.
-      ar: تقول بو كومانغ «Yang ini terbaik». اختر الجملة التي بالمعنى نفسه.
-      en: Bu Komang says "Yang ini terbaik". Pick the sentence with the same meaning.
-    options: [Yang ini cukup baik., Yang ini paling baik., Yang ini lebih baik.]
-    answer: 1
-    explain:
-      ar_eg: terbaik = paling baik = الأحسن في الكل.
-      ar: terbaik = paling baik = الأفضل على الإطلاق.
-      en: terbaik = paling baik = the best of all.
-    words: [terbaik, paling]
+    type: match_pairs
+    pairs:
+      - text: luas
+        ar_eg: واسع
+        ar: واسع
+        en: spacious
+      - text: kasar
+        ar_eg: خشن
+        ar: خشن
+        en: rough
+      - text: besi
+        ar_eg: حديد
+        ar: حديد
+        en: iron
+      - text: plastik
+        ar_eg: بلاستيك
+        ar: بلاستيك
+        en: plastic
+    words: [luas, kasar, besi, plastik]
   - id: e03
-    type: fill_blank
-    sentence: Ada banyak ___ di toko ini.
+    type: listen
+    text: Suling ini dari plastik, bukan dari bambu.
+    question:
+      ar_eg: الناي ده معمول من إيه؟
+      ar: مِمَّ صُنع هذا الناي؟
+      en: What is the flute made of?
+    options: [بلاستيك, خشب, حديد]
+    answer: 0
     meaning:
-      ar_eg: فيه اختيارات كتير في المحل ده.
-      ar: في هذا المتجر خيارات كثيرة.
-      en: There's lots of choice in this shop.
-    options: [pilihan, bambu, kuat]
-    answers: [pilihan]
-    words: [pilihan]
+      ar_eg: الناي ده بلاستيك، مش بامبو.
+      ar: هذا الناي من البلاستيك لا من الخيزران.
+      en: This flute is plastic, not bamboo.
+    words: [plastik]
   - id: e04
-    type: build_sentence
-    source:
-      ar_eg: أنهي أحسن واحد؟
-      ar: أيها الأفضل؟
-      en: Which one is the best?
-    answer: Mana yang paling bagus?
-    distractors: [lebih, daripada]
-    words: [mana, paling, bagus]
+    type: fill_blank
+    sentence: Kamus ini lebih ___ daripada buku cerita.
+    meaning:
+      ar_eg: القاموس ده ___ من كتاب الحكايات.
+      ar: هذا القاموس ___ من كتاب القصص.
+      en: This dictionary is ___ than the storybook.
+    options: [tebal, sempit, kasar]
+    answers: [tebal]
+    words: [tebal, sempit, kasar]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: عايز ناي أمتن. تسأل البياعة إزاي؟
-      ar: تريد نايًا أمتن. كيف تسأل البائعة؟
-      en: You want a sturdier flute. How do you ask the seller?
-    options: ['Ada suling bambu yang lebih kuat?', 'Ada suling bambu yang lebih berat?', 'Ada bambu suling yang lebih kuat?']
+      ar_eg: إيه عكس lebar؟
+      ar: ما ضدّ lebar؟
+      en: What's the opposite of lebar?
+    options: [sempit, luas, tebal]
     answer: 0
-    words: [bambu, kuat]
+    explain:
+      ar_eg: lebar = عريض، وعكسها sempit = ضيق.
+      ar: lebar عريض وضدّها sempit ضيّق.
+      en: lebar = wide; its opposite is sempit, narrow.
+    words: [sempit, lebar, luas, tebal]
   - id: e06
+    type: fill_blank
+    sentence: Rumah nenek ___ sekali. Ada lima kamar.
+    meaning:
+      ar_eg: بيت تيتا ___ أوي. فيه خمس أوض.
+      ar: بيت جدّتي ___ جدًا، فيه خمس غرف.
+      en: Grandma's house is very ___. It has five rooms.
+    options: [luas, tipis, besi]
+    answers: [luas]
+    words: [luas, tipis, besi]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: البامبو ده متين، بس خفيف.
-      ar: هذا الخيزران متين، لكنه خفيف.
-      en: This bamboo is strong, but light.
-    answer: Bambu ini kuat, tapi ringan.
-    distractors: [lebih, paling]
-    words: [bambu, kuat, ringan]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: البامبو بتاعه قوي وصوته جميل.
-      ar: خيزرانه متين وصوته جميل.
-      en: Its bamboo is strong and it sounds beautiful.
-    answers: [Bambunya kuat dan suaranya indah., Bambunya kuat dan suaranya indah, 'Bambunya kuat, suaranya indah.', Bambunya kuat dan suaranya bagus.]
-    words: [kuat, bambu, indah]
+      ar_eg: الهدوم دي رقيقة، مش تقيلة.
+      ar: هذه الملابس رقيقة، ليست ثقيلة.
+      en: These clothes are thin, not heavy.
+    answer: Baju ini tipis, tidak berat.
+    distractors: [besi, lebar]
+    words: [tipis]
   - id: e08
-    type: fill_blank
-    sentence: Gitar ini bagus, tapi ___ berat untuk saya.
-    meaning:
-      ar_eg: الجيتار ده حلو، بس تقيل عليّا زيادة.
-      ar: هذه القيثارة جيدة، لكنها ثقيلة جدًا بالنسبة لي.
-      en: This guitar is nice, but too heavy for me.
-    answers: [terlalu]
-    words: [terlalu, berat]
+    type: translate
+    direction: from_target
+    source_text: Kain ini kasar, tidak lembut.
+    answers_meaning:
+      ar_eg: [القماش ده خشن، مش ناعم, القماشة دي خشنة مش ناعمة]
+      ar: [هذا القماش خشن، ليس ناعمًا, هذا القماش خشن لا ناعم]
+      en: ['This cloth is rough, not soft', 'This fabric is rough, not soft']
+    words: [kasar]
   - id: e09
-    type: dictation
-    text: Pilihannya banyak sekali!
-    meaning:
-      ar_eg: الاختيارات كتير أوي!
-      ar: الخيارات كثيرة جدًا!
-      en: There's so much to choose from!
-    words: [pilihan, banyak]
-  - id: e10
     type: speaking
-    text: Wah, terlalu mahal untuk saya. Ada pilihan yang lebih murah?
+    text: Jalan ini sempit, tapi jalan itu lebar.
     meaning:
-      ar_eg: يا خبر، غالي عليّا زيادة. فيه اختيار أرخص؟
-      ar: آه، إنه غالٍ جدًا بالنسبة لي. هل يوجد خيار أرخص؟
-      en: Oh, that's too expensive for me. Is there a cheaper choice?
-    words: [terlalu, pilihan, lebih, murah]
+      ar_eg: الشارع ده ضيق، بس ده عريض.
+      ar: هذا الشارع ضيّق وذاك عريض.
+      en: This road is narrow, but that one is wide.
+    words: [sempit, lebar]
+  - id: e10
+    type: multiple_choice
+    question: Pintu itu dari ___, jadi berat sekali.
+    options: [besi, plastik, bambu]
+    answer: 0
+    explain:
+      ar_eg: 'الحديد تقيل: besi.'
+      ar: 'الحديد ثقيل: besi.'
+      en: 'Iron is heavy: besi.'
+    words: [besi, plastik]
 dialogue:
-  title: Di toko Bu Komang, Ubud
   lines:
     - speaker: Mohamed
-      text: Berapa harganya?
-      ar_eg: بكام؟
-      ar: كم ثمنه؟
-      en: How much is it?
-    - speaker: Bu Komang
-      text: Tiga ratus ribu.
-      ar_eg: تلتمية ألف.
-      ar: ثلاثمئة ألف.
-      en: Three hundred thousand.
+      text: Gendang ini lebih besar daripada gendang itu.
+      ar_eg: الطبلة دي أكبر من الطبلة دي.
+      ar: هذا الطبل أكبر من ذاك.
+      en: This drum is bigger than that one.
+    - speaker: Penjual
+      text: Ya, Pak. Yang ini dari kayu, tidak dari plastik.
+      ar_eg: أيوه يا أستاذ. دي خشب، مش بلاستيك.
+      ar: نعم يا سيدي، هذا من الخشب لا البلاستيك.
+      en: Yes, sir. This one's wood, not plastic.
     - speaker: Mohamed
-      text: Wah, terlalu mahal untuk saya. Ada yang lebih murah?
-      ar_eg: يا خبر، غالي عليّا زيادة. فيه حاجة أرخص؟
-      ar: آه، إنه غالٍ جدًا بالنسبة لي. هل يوجد ما هو أرخص؟
-      en: Oh, that's too expensive for me. Is there a cheaper one?
-    - speaker: Bu Komang
-      text: Ada. Yang ini seratus lima puluh ribu. Agak kecil, tapi suaranya lumayan.
-      ar_eg: فيه. ده بمية وخمسين ألف. صغير شوية، بس صوته مش بطال.
-      ar: نعم. هذا بمئة وخمسين ألفًا. صغير قليلًا، لكن صوته لا بأس به.
-      en: Yes. This one is a hundred and fifty thousand. It's a bit small, but it sounds not bad.
+      text: Yang plastik lebih murah?
+      ar_eg: والبلاستيك أرخص؟
+      ar: وهل البلاستيكي أرخص؟
+      en: Is the plastic one cheaper?
+    - speaker: Penjual
+      text: Lebih murah, tapi suaranya kurang bagus.
+      ar_eg: أرخص، بس صوته مش حلو قوي.
+      ar: أرخص، لكن صوته أقلّ جودة.
+      en: Cheaper, but it doesn't sound as good.
     - speaker: Mohamed
-      text: Yang kecil lebih ringan. Saya beli yang ini saja.
-      ar_eg: الصغير أخف. هشتري ده بس.
-      ar: الصغير أخف. سأشتري هذا فقط.
-      en: The small one is lighter. I'll just take this one.
-    - speaker: Bu Komang
-      text: Pilihan yang bagus! Terima kasih, Pak.
-      ar_eg: اختيار حلو! شكرًا يا أستاذ.
-      ar: اختيار جيد! شكرًا يا سيدي.
-      en: Good choice! Thank you, sir.
+      text: Tokonya luas sekali!
+      ar_eg: المحل واسع أوي!
+      ar: المتجر واسع جدًا!
+      en: The shop is so spacious!
+    - speaker: Penjual
+      text: Pintunya sempit, tapi di dalam luas!
+      ar_eg: الباب ضيق، بس جوه واسع!
+      ar: بابه ضيّق، لكنه واسع من الداخل!
+      en: The door's narrow, but inside it's roomy!
 new_words:
-  - word: kuat
+  - word: tebal
     pos: adjective
-    ar_eg: قوي، متين
-    ar: قوي، متين
-    en: strong
-    arabic: قوي
-  - word: bambu
+    ar_eg: تخين
+    ar: سميك
+    en: thick
+  - word: tipis
+    pos: adjective
+    ar_eg: رفيع، خفيف
+    ar: رقيق
+    en: thin
+  - word: lebar
+    pos: adjective
+    ar_eg: عريض
+    ar: عريض
+    en: wide
+  - word: sempit
+    pos: adjective
+    ar_eg: ضيق
+    ar: ضيّق
+    en: narrow
+  - word: luas
+    pos: adjective
+    ar_eg: واسع
+    ar: واسع
+    en: spacious, wide (area)
+  - word: kasar
+    pos: adjective
+    ar_eg: خشن
+    ar: خشن
+    en: rough, coarse
+  - word: besi
     pos: noun
-    ar_eg: بامبو، خيزران
-    ar: خيزران
-    en: bamboo
-  - word: pilihan
+    ar_eg: حديد
+    ar: حديد
+    en: iron
+  - word: plastik
     pos: noun
-    ar_eg: اختيار
-    ar: اختيار
-    en: choice
+    ar_eg: بلاستيك
+    ar: بلاستيك
+    en: plastic
 review:
   status: draft
   verified: false

@@ -1,181 +1,186 @@
 schema: kabar.lesson/v1
 id: bipa2.u01.l06
 language: id
-title: Ulangan Unit 1
+title: Toko alat musik
 can_do:
-  ar_eg: توصف الآلات الموسيقية وتقارن بينها.
-  ar: أن تصف الآلات الموسيقية وتقارن بينها.
-  en: Describe and compare instruments.
+  ar_eg: تختار بين آلات موسيقية في محل وتقارن بينها.
+  ar: أن تختار بين الآلات الموسيقية في متجر.
+  en: Choose between instruments in a shop.
+slides:
+  - title: Lebih, paling
+    body:
+      ar_eg: |
+        فكّر بسرعة قبل ما تدخل المحل:
+        - بين اتنين: lebih + صفة + daripada → Yang ini lebih murah daripada yang itu.
+        - الأكتر في الكل: paling + صفة أو ter- → Mana yang paling bagus? / Ini yang terbaik.
+        - Ada yang lebih …? = فيه حاجة … أكتر؟
+        وانت بتشتري: agak (شوية)، cukup (برضه / كفاية)، terlalu (زيادة)، lumayan (مش بطال).
+        Terlalu mahal untuk saya = غالي عليّا زيادة. جملة مؤدبة ومش بتجرح البياع.
+      ar: |
+        تذكير سريع قبل دخول المتجر:
+        - بين اثنين: lebih + الصفة + daripada.
+        - الأكثر بين الجميع: paling + الصفة أو ter-.
+        - Ada yang lebih …؟ = هل يوجد ما هو … أكثر؟
+        عند الشراء: agak (قليلًا)، cukup (إلى حد ما)، terlalu (أكثر من اللازم)، lumayan (لا بأس).
+        Terlalu mahal untuk saya = غالٍ جدًا بالنسبة لي، وهي عبارة مهذبة.
+      en: |
+        Quick reminder before you walk in:
+        - Between two: lebih + adjective + daripada.
+        - The most of all: paling + adjective, or ter-.
+        - Ada yang lebih …? = Is there a more … one?
+        While shopping: agak (a bit), cukup (fairly), terlalu (too), lumayan (not bad).
+        Terlalu mahal untuk saya = too expensive for me — polite and easy on the seller.
+    grammar: id.comparison.lebih
+    examples:
+      - text: Ada yang lebih murah?
+        ar_eg: فيه حاجة أرخص؟
+        ar: هل يوجد ما هو أرخص؟
+        en: Is there a cheaper one?
+      - text: Terlalu mahal untuk saya.
+        ar_eg: غالي عليّا زيادة.
+        ar: إنه غالٍ جدًا بالنسبة لي.
+        en: It's too expensive for me.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: gendang
-        ar_eg: طبلة
-        ar: طبل
-        en: drum
-      - text: suling
-        ar_eg: ناي
-        ar: ناي
-        en: bamboo flute
-      - text: biola
-        ar_eg: كمنجة
-        ar: كمان
-        en: violin
-      - text: suara
-        ar_eg: صوت
-        ar: صوت
-        en: sound
-      - text: dunia
-        ar_eg: العالم / الدنيا
-        ar: العالم
-        en: world
-    words: [gendang, suling, biola, suara, dunia]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: lebih besar
-        ar_eg: أكبر
-        ar: أكبر
-        en: bigger
-      - text: terbesar
-        ar_eg: الأكبر
-        ar: الأكبر
-        en: biggest
-      - text: agak besar
-        ar_eg: كبير شوية
-        ar: كبير قليلًا
-        en: a bit big
-      - text: terlalu besar
-        ar_eg: كبير زيادة
-        ar: كبير أكثر من اللازم
-        en: too big
-    words: [lebih, paling, agak, terlalu]
-  - id: e03
     type: listen
-    text: Mana yang paling ringan?
-    options: ['Mana yang paling ringan?', 'Mana yang lebih ringan?', 'Mana yang paling berat?']
+    text: Ada yang lebih murah?
+    options: ['Ada yang lebih murah?', 'Ada yang paling murah?', 'Ada yang lebih mahal?']
     answer: 0
-    words: [paling, ringan]
-  - id: e04
+    words: [lebih, murah]
+  - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة معناها «الجونج أعلى صوتًا من الطبلة»؟
-      ar: أيّ جملة تعني «صوت الغونغ أعلى من صوت الطبل»؟
-      en: Which sentence means "The gong is louder than the drum"?
-    options: [Gong lebih keras daripada gendang., Gong lebih keras dengan gendang., Gong paling keras daripada gendang.]
-    answer: 0
+      ar_eg: بو كومانج بتقول «Yang ini terbaik». قصدها إيه؟ اختار الجملة اللي بنفس المعنى.
+      ar: تقول بو كومانغ «Yang ini terbaik». اختر الجملة التي بالمعنى نفسه.
+      en: Bu Komang says "Yang ini terbaik". Pick the sentence with the same meaning.
+    options: [Yang ini cukup baik., Yang ini paling baik., Yang ini lebih baik.]
+    answer: 1
     explain:
-      ar_eg: بين حاجتين lebih … daripada. paling للأكتر في المجموعة كلها.
-      ar: بين شيئين lebih … daripada، وpaling للأكثر في المجموعة كلها.
-      en: Between two things it's lebih … daripada; paling is for the most of a group.
-    words: [lebih, daripada, keras]
+      ar_eg: terbaik = paling baik = الأحسن في الكل.
+      ar: terbaik = paling baik = الأفضل على الإطلاق.
+      en: terbaik = paling baik = the best of all.
+    words: [terbaik, paling]
+  - id: e03
+    type: fill_blank
+    sentence: Ada banyak ___ di toko ini.
+    meaning:
+      ar_eg: فيه اختيارات كتير في المحل ده.
+      ar: في هذا المتجر خيارات كثيرة.
+      en: There's lots of choice in this shop.
+    options: [pilihan, bambu, kuat]
+    answers: [pilihan]
+    words: [pilihan]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: أنهي أحسن واحد؟
+      ar: أيها الأفضل؟
+      en: Which one is the best?
+    answer: Mana yang paling bagus?
+    distractors: [lebih, daripada]
+    words: [mana, paling, bagus]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: صاحبك عزف على الجيتار وكان مش بطال. تقوله إيه؟
-      ar: عزف صديقك على القيثارة وكان عزفه لا بأس به. ماذا تقول له؟
-      en: Your friend played the guitar and it was not bad. What do you say?
-    options: [Kurang!, Lumayan!, Terlalu bagus!]
-    answer: 1
-    words: [lumayan]
+      ar_eg: عايز ناي أمتن. تسأل البياعة إزاي؟
+      ar: تريد نايًا أمتن. كيف تسأل البائعة؟
+      en: You want a sturdier flute. How do you ask the seller?
+    options: ['Ada suling bambu yang lebih kuat?', 'Ada suling bambu yang lebih berat?', 'Ada bambu suling yang lebih kuat?']
+    answer: 0
+    words: [bambu, kuat]
   - id: e06
-    type: fill_blank
-    sentence: Kopinya ___ manis. Saya mau gula lagi.
-    meaning:
-      ar_eg: القهوة سكرها قليل. عايز سكر تاني.
-      ar: القهوة قليلة الحلاوة. أريد مزيدًا من السكر.
-      en: The coffee isn't sweet enough. I want more sugar.
-    options: [lebih, terlalu, kurang]
-    answers: [kurang]
-    words: [kurang]
+    type: build_sentence
+    source:
+      ar_eg: البامبو ده متين، بس خفيف.
+      ar: هذا الخيزران متين، لكنه خفيف.
+      en: This bamboo is strong, but light.
+    answer: Bambu ini kuat, tapi ringan.
+    distractors: [lebih, paling]
+    words: [bambu, kuat, ringan]
   - id: e07
-    type: fill_blank
-    sentence: Ini warung ___ di Ubud. Makanannya enak dan murah!
-    meaning:
-      ar_eg: (اكتب صيغة ter- من baik) ده أحسن مطعم صغير في أوبود. أكله حلو ورخيص!
-      ar: (اكتب صيغة ter- من baik) هذا أفضل مطعم شعبي في أوبود. طعامه لذيذ ورخيص!
-      en: (Write the ter- form of baik.) This is the best food stall in Ubud. The food is tasty and cheap!
-    answers: [terbaik]
-    words: [terbaik]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: الكمنجة أخف من الجيتار.
-      ar: الكمان أخف من القيثارة.
-      en: The violin is lighter than the guitar.
-    answer: Biola lebih ringan daripada gitar.
-    distractors: [paling, dengan]
-    words: [biola, lebih, ringan, daripada]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: الجاميلان البالي مشهور في العالم.
-      ar: الغاميلان البالي مشهور في العالم.
-      en: Balinese gamelan is famous around the world.
-    answer: Gamelan Bali terkenal di dunia.
-    distractors: [paling, lebih]
-    words: [terkenal, dunia]
-  - id: e10
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: الصوت عالي زيادة.
-      ar: الصوت عالٍ أكثر من اللازم.
-      en: The sound is too loud.
-    answers: [Suaranya terlalu keras., Suaranya terlalu keras, Suara ini terlalu keras., Suaranya terlalu kencang.]
-    words: [suara, terlalu, keras]
-  - id: e11
+      ar_eg: البامبو بتاعه قوي وصوته جميل.
+      ar: خيزرانه متين وصوته جميل.
+      en: Its bamboo is strong and it sounds beautiful.
+    answers: [Bambunya kuat dan suaranya indah., Bambunya kuat dan suaranya indah, 'Bambunya kuat, suaranya indah.', Bambunya kuat dan suaranya bagus.]
+    words: [kuat, bambu, indah]
+  - id: e08
+    type: fill_blank
+    sentence: Gitar ini bagus, tapi ___ berat untuk saya.
+    meaning:
+      ar_eg: الجيتار ده حلو، بس تقيل عليّا زيادة.
+      ar: هذه القيثارة جيدة، لكنها ثقيلة جدًا بالنسبة لي.
+      en: This guitar is nice, but too heavy for me.
+    answers: [terlalu]
+    words: [terlalu, berat]
+  - id: e09
     type: dictation
-    text: Pura ini paling indah di Ubud.
+    text: Pilihannya banyak sekali!
     meaning:
-      ar_eg: المعبد ده أجمل معبد في أوبود.
-      ar: هذا المعبد أجمل معبد في أوبود.
-      en: This temple is the most beautiful in Ubud.
-    words: [paling, indah, pura]
-  - id: e12
+      ar_eg: الاختيارات كتير أوي!
+      ar: الخيارات كثيرة جدًا!
+      en: There's so much to choose from!
+    words: [pilihan, banyak]
+  - id: e10
     type: speaking
-    text: Suling ini agak kecil, tapi lebih murah daripada biola.
+    text: Wah, terlalu mahal untuk saya. Ada pilihan yang lebih murah?
     meaning:
-      ar_eg: الناي ده صغير شوية، بس أرخص من الكمنجة.
-      ar: هذا الناي صغير قليلًا، لكنه أرخص من الكمان.
-      en: This flute is a bit small, but cheaper than the violin.
-    words: [agak, lebih, daripada]
+      ar_eg: يا خبر، غالي عليّا زيادة. فيه اختيار أرخص؟
+      ar: آه، إنه غالٍ جدًا بالنسبة لي. هل يوجد خيار أرخص؟
+      en: Oh, that's too expensive for me. Is there a cheaper choice?
+    words: [terlalu, pilihan, lebih, murah]
 dialogue:
-  title: Malam gamelan
+  title: Di toko Bu Komang, Ubud
   lines:
-    - speaker: Ni Luh
-      text: Bagaimana gamelannya, Mohamed?
-      ar_eg: إيه رأيك في الجاميلان يا محمد؟
-      ar: ما رأيك في الغاميلان يا محمد؟
-      en: How was the gamelan, Mohamed?
     - speaker: Mohamed
-      text: Indah sekali! Tapi gongnya agak keras.
-      ar_eg: جميل أوي! بس الجونج صوته عالي شوية.
-      ar: جميل جدًا! لكن الغونغ عالٍ قليلًا.
-      en: Beautiful! But the gong was a bit loud.
-    - speaker: Ni Luh
-      text: Ya, gong paling besar dan paling keras.
-      ar_eg: أيوه، الجونج أكبر واحد وأعلاهم صوتًا.
-      ar: نعم، الغونغ هو الأكبر والأعلى صوتًا.
-      en: Yes, the gong is the biggest and the loudest.
+      text: Berapa harganya?
+      ar_eg: بكام؟
+      ar: كم ثمنه؟
+      en: How much is it?
+    - speaker: Bu Komang
+      text: Tiga ratus ribu.
+      ar_eg: تلتمية ألف.
+      ar: ثلاثمئة ألف.
+      en: Three hundred thousand.
     - speaker: Mohamed
-      text: Gamelan Bali lebih cepat daripada musik Mesir, ya?
-      ar_eg: الجاميلان البالي أسرع من المزيكا المصرية، صح؟
-      ar: الغاميلان البالي أسرع من الموسيقى المصرية، أليس كذلك؟
-      en: Balinese gamelan is faster than Egyptian music, isn't it?
-    - speaker: Ni Luh
-      text: Mungkin! Tapi musik Mesir juga terkenal di dunia.
-      ar_eg: يمكن! بس المزيكا المصرية كمان مشهورة في العالم.
-      ar: ربما! لكن الموسيقى المصرية مشهورة في العالم أيضًا.
-      en: Maybe! But Egyptian music is famous around the world too.
-souvenir:
-  id: bipa2.u01.souvenir
-  title: Gamelan Bali
-  note:
-    ar_eg: الجاميلان فرقة كاملة من آلات برونز بتتخبط ومعاها جونجات كبيرة. في بالي بيبقى سريع ولامع كأنه بيلمع في ودنك، وفي جاوة هادي وبطيء زي التأمل. لو سمعته في أوبود بالليل هتفهم ليه بالي مشهورة بالفن.
-    ar: الغاميلان فرقة كاملة من آلات برونزية تُقرع ومعها غونغات كبيرة. في بالي يكون سريعًا متلألئًا، وفي جاوة هادئًا بطيئًا كالتأمل. ومن يسمعه ليلًا في أوبود يدرك لماذا اشتهرت بالي بالفن.
-    en: Gamelan is a whole ensemble of bronze metallophones and gongs. In Bali it's fast and shimmering; in Java it's slow and meditative. Hear it on an Ubud evening and you'll see why Bali is famous for its art.
+      text: Wah, terlalu mahal untuk saya. Ada yang lebih murah?
+      ar_eg: يا خبر، غالي عليّا زيادة. فيه حاجة أرخص؟
+      ar: آه، إنه غالٍ جدًا بالنسبة لي. هل يوجد ما هو أرخص؟
+      en: Oh, that's too expensive for me. Is there a cheaper one?
+    - speaker: Bu Komang
+      text: Ada. Yang ini seratus lima puluh ribu. Agak kecil, tapi suaranya lumayan.
+      ar_eg: فيه. ده بمية وخمسين ألف. صغير شوية، بس صوته مش بطال.
+      ar: نعم. هذا بمئة وخمسين ألفًا. صغير قليلًا، لكن صوته لا بأس به.
+      en: Yes. This one is a hundred and fifty thousand. It's a bit small, but it sounds not bad.
+    - speaker: Mohamed
+      text: Yang kecil lebih ringan. Saya beli yang ini saja.
+      ar_eg: الصغير أخف. هشتري ده بس.
+      ar: الصغير أخف. سأشتري هذا فقط.
+      en: The small one is lighter. I'll just take this one.
+    - speaker: Bu Komang
+      text: Pilihan yang bagus! Terima kasih, Pak.
+      ar_eg: اختيار حلو! شكرًا يا أستاذ.
+      ar: اختيار جيد! شكرًا يا سيدي.
+      en: Good choice! Thank you, sir.
+new_words:
+  - word: kuat
+    pos: adjective
+    ar_eg: قوي، متين
+    ar: قوي، متين
+    en: strong
+    arabic: قوي
+  - word: bambu
+    pos: noun
+    ar_eg: بامبو، خيزران
+    ar: خيزران
+    en: bamboo
+  - word: pilihan
+    pos: noun
+    ar_eg: اختيار
+    ar: اختيار
+    en: choice
 review:
   status: draft
   verified: false
