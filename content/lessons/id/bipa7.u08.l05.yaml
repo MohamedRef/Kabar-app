@@ -1,207 +1,210 @@
 schema: kabar.lesson/v1
 id: bipa7.u08.l05
 language: id
-title: Wawancara pengusaha
+title: QRIS
 can_do:
-  ar_eg: تعمل مقابلة مع صاحب مشروع عن بدايته ومشاكله ومكسبه.
-  ar: أن تحاور صاحب مشروع عن بدايته وعقباته وأرباحه.
-  en: Interview a business owner about their start, obstacles and profit.
+  ar_eg: تدفع وتستلم فلوس بكود QR في المحلّات الإندونيسية.
+  ar: أن تدفع وتتسلّم المال برمز QR في المتاجر الإندونيسية.
+  en: Pay and get paid with a QR code at Indonesian shops.
 slides:
-  - title: Pertanyaan untuk pengusaha
-    grammar: id.conjunction.intersentential
+  - title: Satu kode untuk semua
     body:
       ar_eg: |
-        أسئلة مقابلة مع pengusaha (رجل/سيدة أعمال)، والإجابات متألّفة للدرس:
-        - Bagaimana Mama merintis (بدأ من الصفر) usaha ini?
-          Saya mulai dengan satu kompor. Akan tetapi, pesanan cepat bertambah.
-        - Apa kendala (عقبة) terbesar?
-          Ongkos kirim sagu mahal. Oleh sebab itu, saya membeli langsung dari petani.
-        - Apakah laba (مكسب) sudah stabil?
-          Sudah. Bahkan, saya bisa membayar sekolah lima keponakan.
-        لاحظ إن الإجابات المترابطة بأدوات الربط بتبان أوضح وأقنع.
+        الـ QRIS (بينطقوها «كيو-ريس») كود QR واحد عملاه بنك إندونيسيا سنة ٢٠١٩. أي تطبيق بنك أو محفظة إلكترونية يقدر يدفع بيه.
+        - nontunai = من غير كاش
+        - memindai = يعمل سكان (scan) للكود
+        - saldo = الرصيد اللي في حسابك
+        - transaksi = عملية دفع / معاملة
+        الخطوات: افتح التطبيق ← memindai الكود ← اكتب المبلغ ← PIN ← «Transaksi berhasil».
+        حتى بياع العصير على العربية عنده QRIS.
       ar: |
-        أسئلة مقابلة مع pengusaha (صاحبة أعمال)، والأجوبة مؤلَّفة للدرس:
-        - Bagaimana Mama merintis (أسّست من الصفر) usaha ini?
-          Saya mulai dengan satu kompor. Akan tetapi, pesanan cepat bertambah.
-        - Apa kendala (العقبة) terbesar?
-          Ongkos kirim sagu mahal. Oleh sebab itu, saya membeli langsung dari petani.
-        - Apakah laba (الربح) sudah stabil?
-          Sudah. Bahkan, saya bisa membayar sekolah lima keponakan.
-        لاحظ أنّ الأجوبة المربوطة بأدوات الربط أوضح وأقنع.
+        الـ QRIS (تُنطق «كيو-ريس») رمز QR موحّد أطلقه بنك إندونيسيا سنة ٢٠١٩، يدفع به أيّ تطبيق مصرفيّ أو محفظة إلكترونية.
+        - nontunai = غير نقديّ
+        - memindai = يمسح الرمز ضوئيًّا
+        - saldo = الرصيد في حسابك
+        - transaksi = معاملة، عملية دفع
+        الخطوات: افتح التطبيق ← memindai الرمز ← اكتب المبلغ ← الرقم السرّيّ ← «Transaksi berhasil».
+        حتى بائع العصير على عربته لديه QRIS.
       en: |
-        Interview questions for a pengusaha (entrepreneur), with answers invented for the lesson:
-        - Bagaimana Mama merintis (start from scratch) usaha ini?
-          Saya mulai dengan satu kompor. Akan tetapi, pesanan cepat bertambah.
-        - Apa kendala (obstacle) terbesar?
-          Ongkos kirim sagu mahal. Oleh sebab itu, saya membeli langsung dari petani.
-        - Apakah laba (profit) sudah stabil?
-          Sudah. Bahkan, saya bisa membayar sekolah lima keponakan.
-        Notice how answers linked with connectors sound clearer and more convincing.
+        QRIS (said "kyoo-ris") is a single QR code launched by Bank Indonesia in 2019. Any bank app or e-wallet can pay with it.
+        - nontunai = cashless
+        - memindai = to scan
+        - saldo = the balance in your account
+        - transaksi = transaction
+        Steps: open the app → memindai the code → enter the amount → PIN → "Transaksi berhasil".
+        Even the juice seller with a cart has QRIS.
+    examples:
+      - text: Saldo saya tidak cukup, jadi transaksinya gagal.
+        ar_eg: رصيدي مش كفاية، فالعملية فشلت.
+        ar: رصيدي غير كافٍ، فأخفقت المعاملة.
+        en: My balance wasn't enough, so the transaction failed.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: pengusaha
-        ar_eg: رجل/سيدة أعمال
-        ar: رائد أعمال
-        en: entrepreneur
-      - text: merintis
-        ar_eg: يبدأ من الصفر
-        ar: يؤسّس من الصفر
-        en: to pioneer, start from scratch
-      - text: kendala
-        ar_eg: عقبة
-        ar: عقبة
-        en: obstacle
-      - text: laba
-        ar_eg: مكسب
-        ar: ربح
-        en: profit
-    words: [pengusaha, merintis, kendala, laba]
+      - text: QRIS
+        ar_eg: كود QR الموحّد
+        ar: رمز QR الموحّد
+        en: national QR code
+      - text: nontunai
+        ar_eg: من غير كاش
+        ar: غير نقديّ
+        en: cashless
+      - text: saldo
+        ar_eg: رصيد
+        ar: رصيد
+        en: balance
+      - text: transaksi
+        ar_eg: عملية دفع
+        ar: معاملة
+        en: transaction
+      - text: memindai
+        ar_eg: يعمل سكان
+        ar: يمسح ضوئيًّا
+        en: to scan
+    words: [QRIS, nontunai, saldo, transaksi, memindai]
   - id: e02
+    type: listen
+    text: Silakan pindai kode QRIS di meja kasir.
+    question:
+      ar_eg: الكاشير بيطلب إيه؟
+      ar: ماذا يطلب أمين الصندوق؟
+      en: What is the cashier asking?
+    options:
+      - تدفع كاش.
+      - تعمل سكان لكود QRIS اللي على الترابيزة.
+      - تستنّى برّه.
+    answer: 1
+    words: [memindai, QRIS]
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: إيه أكبر عقبة عند ماما إستر؟
-      ar: ما أكبر عقبة لدى ماما إستر؟
-      en: What is Mama Ester's biggest obstacle?
+      ar_eg: مين اللي عمل الـ QRIS؟
+      ar: من أطلق الـ QRIS؟
+      en: Who created QRIS?
     options:
-      - مافيش زباين.
-      - مصاريف شحن السجو غالية.
-      - مابتعرفش تطبخ.
-    answer: 1
-    words: [kendala]
-  - id: e03
-    type: fill_blank
-    sentence: Mama Ester ___ usaha kue sagu sejak tahun 2015.
-    meaning:
-      ar_eg: ماما إستر بدأت مشروع كيك السجو من الصفر من سنة 2015.
-      ar: أسّست ماما إستر مشروع كعك الساغو منذ عام 2015.
-      en: Mama Ester has been building her sago-cake business from scratch since 2015.
-    options: [merintis, menyesuaikan, mencoblos]
-    answers: [merintis]
-    words: [merintis]
-  - id: e04
-    type: listen
-    text: Laba usaha ini dipakai untuk membayar sekolah keponakan.
-    question:
-      ar_eg: مكسب المشروع بيروح فين؟
-      ar: فيمَ يُنفق ربح المشروع؟
-      en: What is the business's profit used for?
-    options:
-      - مصاريف مدارس ولاد إخواتها.
-      - عربية جديدة.
-      - سفر لجاكرتا.
+      - بنك إندونيسيا.
+      - شركة تليفونات.
+      - مدينة سورونج.
     answer: 0
-    words: [laba]
+    words: [QRIS]
+  - id: e04
+    type: fill_blank
+    sentence: Sebelum membayar, cek dulu ___ di aplikasimu.
+    meaning:
+      ar_eg: قبل ما تدفع، بص على الرصيد في التطبيق الأول.
+      ar: قبل الدفع، تحقّق من رصيدك في التطبيق.
+      en: Before paying, check your balance in the app first.
+    options: [saldo, tengkulak, QRIS]
+    answers: [saldo]
+    words: [saldo]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Transaksi berhasil» معناها إيه؟
+      ar: ما معنى «Transaksi berhasil»؟
+      en: What does "Transaksi berhasil" mean?
+    options:
+      - العملية فشلت.
+      - الرصيد خلص.
+      - العملية تمّت بنجاح.
+    answer: 2
+    words: [transaksi]
+  - id: e06
     type: build_sentence
     source:
-      ar_eg: سيدة الأعمال دي بتشغّل عشر ستات.
-      ar: توظّف رائدة الأعمال هذه عشر نساء.
-      en: This entrepreneur employs ten women.
-    answer: Pengusaha ini mempekerjakan sepuluh perempuan.
-    distractors: [laba, kendala]
-    words: [pengusaha]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي سؤال مناسب تسأله لسيدة أعمال عن البداية؟
-      ar: أيّ سؤال يناسب سؤال صاحبة أعمال عن البداية؟
-      en: Which question suits asking an entrepreneur about her start?
-    options:
-      - Berapa umur Mama?
-      - Apa warna favorit Mama?
-      - Bagaimana Mama merintis usaha ini?
-    answer: 2
-    words: [merintis, pengusaha]
+      ar_eg: المحلّ ده بيقبل الدفع من غير كاش.
+      ar: يقبل هذا المتجر الدفع غير النقديّ.
+      en: This shop accepts cashless payment.
+    answer: Toko ini menerima pembayaran nontunai.
+    distractors: [saldo, pindai]
+    words: [nontunai]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: المكسب زاد السنة دي.
-      ar: ارتفع الربح هذا العام.
-      en: Profit went up this year.
+      ar_eg: ممكن أدفع بالـ QRIS؟
+      ar: هل يمكنني الدفع بـ QRIS؟
+      en: Can I pay with QRIS?
     answers:
-      - Labanya naik tahun ini.
-      - Laba naik tahun ini.
-      - Tahun ini labanya naik.
-      - Labanya meningkat tahun ini.
-    words: [laba]
+      - Bisa bayar pakai QRIS?
+      - Boleh saya bayar dengan QRIS?
+      - Apakah saya bisa membayar dengan QRIS?
+      - Bisa saya bayar pakai QRIS?
+    words: [QRIS]
   - id: e08
     type: speaking
-    text: Setiap pengusaha pasti menghadapi kendala.
+    text: Saya sudah memindai kodenya, tetapi transaksinya belum masuk.
     meaning:
-      ar_eg: كل صاحب مشروع لازم يقابل عقبات.
-      ar: لا بدّ أن يواجه كلّ رائد أعمال عقبات.
-      en: Every entrepreneur faces obstacles.
-    words: [pengusaha, kendala]
+      ar_eg: أنا عملت سكان للكود، بس العملية لسه ماوصلتش.
+      ar: مسحت الرمز، لكنّ المعاملة لم تصل بعد.
+      en: I've scanned the code, but the transaction hasn't gone through yet.
+    words: [memindai, transaksi]
   - id: e09
     type: dictation
-    text: Kendala utama kami adalah ongkos kirim.
+    text: Pembayaran nontunai membuat saldo mudah dipantau.
     meaning:
-      ar_eg: أكبر عقبة عندنا هي مصاريف الشحن.
-      ar: عقبتنا الكبرى تكلفة الشحن.
-      en: Our main obstacle is shipping costs.
-    words: [kendala]
+      ar_eg: الدفع من غير كاش بيخلّي الرصيد سهل تتابعه.
+      ar: يُسهّل الدفع غير النقديّ مراقبة الرصيد.
+      en: Cashless payment makes your balance easy to track.
+    words: [nontunai, saldo]
   - id: e10
-    type: translate
-    direction: from_target
-    source_text: Ia merintis usahanya dari dapur kecil. Bahkan, kini labanya cukup untuk membuka toko.
-    answers_meaning:
-      ar_eg:
-        - بدأت مشروعها من مطبخ صغير. لا وكمان دلوقتي مكسبها يكفّي تفتح محل.
-        - ابتدت من مطبخ صغير، ودلوقتي مكسبها بقى يكفّي محل كمان.
-      ar:
-        - أسّست مشروعها من مطبخ صغير، بل صار ربحها الآن يكفي لافتتاح متجر.
-        - بدأت من مطبخ صغير، والآن يكفي ربحها لفتح متجر.
-      en:
-        - She started her business from a small kitchen. In fact, her profit is now enough to open a shop.
-        - She began in a tiny kitchen, and now her profit even covers opening a shop.
-    words: [merintis, laba]
+    type: speaking
+    text: Setiap transaksi QRIS tercatat di aplikasi, jadi Mama tidak perlu menghitung uang kembalian.
+    meaning:
+      ar_eg: كل عملية QRIS بتتسجّل في التطبيق، فماما مش محتاجة تعدّ الفكّة.
+      ar: تُسجَّل كلّ معاملة QRIS في التطبيق، فلا تحتاج ماما إلى عدّ الباقي.
+      en: Every QRIS transaction is logged in the app, so Mama doesn't need to count change.
+    words: [transaksi, QRIS]
 dialogue:
-  title: Dapur kue sagu
+  title: Pinang dan QR
   lines:
     - speaker: Mohamed
-      text: Mama Ester, boleh saya rekam wawancara ini untuk kelas Bu Frida?
-      ar_eg: يا ماما إستر، ممكن أسجّل المقابلة دي لمحاضرة الدكتورة فريدة؟
-      ar: يا ماما إستر، أتسمحين بتسجيل هذا الحوار لمحاضرة الدكتورة فريدا؟
-      en: Mama Ester, may I record this interview for Bu Frida's class?
+      text: Mama Ester, saya tidak bawa uang tunai. Bisa bayar pakai QRIS?
+      ar_eg: يا ماما إستر، أنا مش معايا كاش. ينفع أدفع بالـ QRIS؟
+      ar: يا ماما إستر، ليس معي نقود. هل أدفع بـ QRIS؟
+      en: Mama Ester, I didn't bring cash. Can I pay with QRIS?
     - speaker: Mama Ester
-      text: Boleh. Saya merintis usaha ini dengan satu kompor dan satu panci.
-      ar_eg: ماشي. أنا بدأت المشروع ده بوابور واحد وحلّة واحدة.
-      ar: نعم. أسّست هذا المشروع بموقد واحد وقدر واحدة.
-      en: Sure. I started this business with one stove and one pot.
+      text: Bisa! Kodenya di sana, di samping keranjang pinang. Silakan pindai.
+      ar_eg: ينفع! الكود هناك جنب سلّة البينانج. اعمل سكان.
+      ar: نعم! الرمز هناك بجانب سلّة البينانغ، امسحه.
+      en: Sure! The code's over there, next to the betel-nut basket. Go ahead and scan.
     - speaker: Mohamed
-      text: Apa kendala terbesar waktu itu?
-      ar_eg: إيه كانت أكبر عقبة ساعتها؟
-      ar: ما كانت أكبر عقبة حينها؟
-      en: What was the biggest obstacle back then?
+      text: Sudah, Mama. Dua puluh ribu. Transaksinya berhasil?
+      ar_eg: خلاص يا ماما. عشرين ألف. العملية نجحت؟
+      ar: تمّ يا ماما، عشرون ألفًا. هل نجحت المعاملة؟
+      en: Done, Mama. Twenty thousand. Did the transaction go through?
     - speaker: Mama Ester
-      text: Modal. Akan tetapi, mama-mama di gereja membantu. Sekarang labanya kami bagi bersama.
-      ar_eg: رأس المال. بس ستات الكنيسة ساعدوني. ودلوقتي بنقسم المكسب سوا.
-      ar: رأس المال. لكنّ نساء الكنيسة ساعدنني، والآن نتقاسم الربح معًا.
-      en: Capital. However, the women at church helped. Now we share the profit together.
+      text: Masuk. Sekarang saya jarang pegang uang tunai. Semua nontunai.
+      ar_eg: وصلت. دلوقتي نادرًا لما بمسك كاش. كله من غير كاش.
+      ar: وصلت. صرت نادرًا ما أمسك النقود، فكلّ شيء غير نقديّ.
+      en: It's in. These days I rarely handle cash. It's all cashless.
 new_words:
-  - word: pengusaha
+  - word: QRIS
     pos: noun
-    ar_eg: رجل/سيدة أعمال
-    ar: رائد أعمال
-    en: entrepreneur
-  - word: merintis
+    ar_eg: كود QR الموحّد للدفع
+    ar: رمز QR الموحّد للدفع
+    en: QRIS (national QR payment code)
+  - word: nontunai
+    pos: adjective
+    ar_eg: من غير كاش
+    ar: غير نقديّ
+    en: cashless
+  - word: saldo
+    pos: noun
+    ar_eg: رصيد
+    ar: رصيد
+    en: balance (of an account)
+  - word: transaksi
+    pos: noun
+    ar_eg: عملية دفع / معاملة
+    ar: معاملة
+    en: transaction
+  - word: memindai
     pos: verb
-    ar_eg: يبدأ من الصفر
-    ar: يؤسّس من الصفر
-    en: to pioneer, start from scratch
-  - word: kendala
-    pos: noun
-    ar_eg: عقبة
-    ar: عقبة
-    en: obstacle
-  - word: laba
-    pos: noun
-    ar_eg: مكسب
-    ar: ربح
-    en: profit
+    ar_eg: يعمل سكان
+    ar: يمسح ضوئيًّا
+    en: to scan
 review:
   status: draft
   verified: false

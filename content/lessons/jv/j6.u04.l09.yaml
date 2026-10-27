@@ -1,0 +1,188 @@
+schema: kabar.lesson/v1
+id: j6.u04.l09
+language: jv
+title: Papan arah
+can_do:
+  ar_eg: تقرا لافتات الاتجاهات بالخط الجاوي وتعرف تروح فين.
+  ar: أن تقرأ لافتات الاتجاه بالخط الجاوي وتعرف طريقك.
+  en: Read direction signs in aksara Jawa and find your way.
+slides:
+  - title: Ing prapatan
+    body:
+      ar_eg: |
+        عند تقاطع في Jagalan فيه لافتات اتجاهات بالخط الجاوي. فيها كل حاجة من الوحدة دي:
+        cakra في Kraton وPrambanan · pengkal في Ngayogyakarta (gya) · pasangan sa جنب الحرف في Taman Sari.
+        وكلمتين للاتجاهات: ngiwa = لف شمال، nengen = لف يمين.
+      ar: |
+        عند تقاطع في Jagalan لافتات اتجاه بالخط الجاوي، وفيها كل ما في هذه الوحدة:
+        cakra في Kraton وPrambanan · pengkal في Ngayogyakarta (gya) · pasangan sa بجانب الحرف في Taman Sari.
+        وكلمتان للاتجاه: ngiwa = انعطف يسارًا، nengen = انعطف يمينًا.
+      en: |
+        At a crossroads in Jagalan there are direction signs in aksara Jawa, with everything from this unit:
+        cakra in Kraton and Prambanan · pengkal in Ngayogyakarta (gya) · pasangan sa, beside the letter, in Taman Sari.
+        Two direction words: ngiwa = turn left, nengen = turn right.
+    grammar: jv.aksara.pasangan
+    examples:
+      - text: ← ꦏꦿꦠꦺꦴꦤ꧀ꦔꦪꦺꦴꦒꦾꦏꦂꦠ (Kraton Ngayogyakarta)
+        ar_eg: قصر السلطان في يوجياكرتا ← شمال
+        ar: قصر سلطان يوجياكرتا ← يسارًا
+        en: the Sultan's palace of Yogyakarta ← left
+      - text: ← ꦠꦩꦤ꧀ꦱꦫꦶ (Taman Sari)
+        ar_eg: Taman Sari، قصر المية القديم ← شمال
+        ar: Taman Sari، قصر الماء القديم ← يسارًا
+        en: Taman Sari, the old water castle ← left
+      - text: ꦥꦿꦩ꧀ꦧꦤꦤ꧀ → (Prambanan)
+        ar_eg: معبد Prambanan → يمين
+        ar: معبد Prambanan → يمينًا
+        en: Prambanan temple → right
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تروح المعبد. تلف فين؟
+      ar: تريد الذهاب إلى المعبد. إلى أين تنعطف؟
+      en: You want to go to the temple. Which way do you turn?
+    options: [ngiwa, nengen]
+    answer: 1
+    explain:
+      ar_eg: ꦥꦿꦩ꧀ꦧꦤꦤ꧀ → يعني يمين = nengen.
+      ar: ꦥꦿꦩ꧀ꦧꦤꦤ꧀ → أي يمينًا = nengen.
+      en: ꦥꦿꦩ꧀ꦧꦤꦤ꧀ → means right = nengen.
+    words: [nengen]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي لافتة فيها pengkal (y جوه المقطع)؟
+      ar: أي لافتة فيها pengkal (y داخل المقطع)؟
+      en: Which sign has a pengkal (a y inside the syllable)?
+    options: [Taman Sari, Prambanan, Kraton Ngayogyakarta]
+    answer: 2
+    explain:
+      ar_eg: "Ngayogyakarta فيها gya: ꦒ وعليها pengkal."
+      ar: "في Ngayogyakarta المقطع gya: ꦒ عليها pengkal."
+      en: "Ngayogyakarta has gya: ꦒ with pengkal."
+    words: [pengkal]
+  - id: e03
+    type: listen
+    text: Taman Sari ngiwa.
+    question:
+      ar_eg: ديماس قال اسم مكان. أنهي لافتة؟
+      ar: ذكر ديماس اسم مكان. أي لافتة؟
+      en: Dimas named a place. Which sign is it?
+    options: ["ꦏꦿꦠꦺꦴꦤ꧀", "ꦠꦩꦤ꧀ꦱꦫꦶ", "ꦥꦿꦩ꧀ꦧꦤꦤ꧀"]
+    answer: 1
+    meaning:
+      ar_eg: Taman Sari شمال.
+      ar: Taman Sari يسارًا.
+      en: Taman Sari is to the left.
+    words: [ngiwa, pasangan]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: ꦔꦶꦮ
+        ar_eg: ngiwa — لف شمال
+        ar: ngiwa — انعطف يسارًا
+        en: ngiwa — turn left
+      - text: ꦤꦼꦔꦼꦤ꧀
+        ar_eg: nengen — لف يمين
+        ar: nengen — انعطف يمينًا
+        en: nengen — turn right
+      - text: ꦏꦿꦠꦺꦴꦤ꧀
+        ar_eg: Kraton — قصر السلطان
+        ar: Kraton — قصر السلطان
+        en: Kraton — the Sultan's palace
+      - text: ꦥꦿꦩ꧀ꦧꦤꦤ꧀
+        ar_eg: Prambanan — معبد قديم
+        ar: Prambanan — معبد قديم
+        en: Prambanan — an ancient temple
+    words: [ngiwa, nengen, cakra]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "في ꦠꦩꦤ꧀ꦱꦫꦶ، الـ sa مكتوبة إزاي؟"
+      ar: "في ꦠꦩꦤ꧀ꦱꦫꦶ، كيف كُتبت sa؟"
+      en: "In ꦠꦩꦤ꧀ꦱꦫꦶ, how is the sa written?"
+    options: [cakra, pasangan sa ing sisih tengen, layar]
+    answer: 1
+    explain:
+      ar_eg: الـ n في Taman مالهاش حركة، وpasangan sa من التلاتة اللي بيقعدوا جنب الحرف (ha وsa وpa).
+      ar: الـ n في Taman ساكنة، وpasangan sa من الثلاثة التي تقع بجانب الحرف (ha وsa وpa).
+      en: The n of Taman is vowel-less, and pasangan sa is one of the three that sit beside the letter (ha, sa, pa).
+    words: [pasangan]
+  - id: e06
+    type: fill_blank
+    sentence: Yen arep menyang Prambanan, ___.
+    meaning:
+      ar_eg: لو رايح Prambanan، لف يمين.
+      ar: إن كنت ذاهبًا إلى Prambanan فانعطف يمينًا.
+      en: If you're going to Prambanan, turn right.
+    options: [ngiwa, nengen]
+    answers: [nengen]
+    words: [nengen]
+  - id: e07
+    type: fill_blank
+    sentence: ꦔꦶꦮ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: لف شمال)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: انعطف يسارًا)"
+      en: Type the reading in Latin letters. (It means "turn left".)
+    answers: [ngiwa]
+    words: [ngiwa]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦏꦿꦠꦺꦴꦤ꧀ꦔꦪꦺꦴꦒꦾꦏꦂꦠ"
+      ar: "اكتب بالحروف اللاتينية: ꦏꦿꦠꦺꦴꦤ꧀ꦔꦪꦺꦴꦒꦾꦏꦂꦠ"
+      en: "Write in Latin letters: ꦏꦿꦠꦺꦴꦤ꧀ꦔꦪꦺꦴꦒꦾꦏꦂꦠ"
+    answers: [Kraton Ngayogyakarta, KratonNgayogyakarta]
+    explain:
+      ar_eg: "kra (cakra) + ton، وبعدين nga-yog-ya-kar-ta: الـ g عليها pengkal، والـ r في kar عليها layar."
+      ar: "kra (cakra) + ton، ثم nga-yog-ya-kar-ta: على الـ g علامة pengkal، وعلى الـ r في kar علامة layar."
+      en: kra (cakra) + ton, then nga-yo-gya-kar-ta, with pengkal on the g and layar on the r of kar.
+    words: [cakra, pengkal]
+  - id: e09
+    type: speaking
+    text: Kraton ngiwa, Prambanan nengen.
+    meaning:
+      ar_eg: القصر شمال، والمعبد يمين.
+      ar: القصر يسارًا، والمعبد يمينًا.
+      en: The Kraton is left, Prambanan is right.
+    words: [ngiwa, nengen]
+dialogue:
+  title: Arep menyang ngendi?
+  lines:
+    - speaker: Bayu
+      text: Med, sesuk arep menyang ngendi?
+      ar_eg: يا محمد، رايح فين بكرة؟
+      ar: يا محمد، إلى أين ستذهب غدًا؟
+      en: Med, where are you off to tomorrow?
+    - speaker: Mohamed
+      text: Menyang Prambanan. Papane muni nengen.
+      ar_eg: رايح Prambanan. اللافتة بتقول يمين.
+      ar: إلى Prambanan. اللافتة تقول يمينًا.
+      en: To Prambanan. The sign says right.
+    - speaker: Bayu
+      text: Bener. Nanging adoh, numpak bis wae.
+      ar_eg: صح. بس بعيد، اركب أتوبيس أحسن.
+      ar: صحيح، لكنه بعيد، فاركب الحافلة.
+      en: Right. But it's far — better take the bus.
+    - speaker: Mohamed
+      text: Oke. Matur nuwun, Mas!
+      ar_eg: ماشي. متشكر يا Bayu!
+      ar: حسنًا. شكرًا يا Bayu!
+      en: OK. Thanks, Mas!
+new_words:
+  - word: ngiwa
+    pos: verb
+    ar_eg: يلف شمال
+    ar: ينعطف يسارًا
+    en: turn left, go left = belok kiri
+  - word: nengen
+    pos: verb
+    ar_eg: يلف يمين
+    ar: ينعطف يمينًا
+    en: turn right, go right = belok kanan
+review:
+  status: draft
+  verified: false
