@@ -448,9 +448,16 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
             .find(|c| !c.is_whitespace())
             .is_some_and(|&c| is_latin_letter(c) && c.is_uppercase())
     };
+    // "-ku" after a space or an Arabic letter ("aku و-ku") is a suffix: its
+    // hyphen stays inside the Latin run, never mirrored to "ku-".
+    let affix_at = |i: usize| {
+        chars[i] == '-'
+            && latin(i + 1)
+            && (i == 0 || !(is_latin_letter(chars[i - 1]) || chars[i - 1].is_ascii_digit()))
+    };
     let mut i = 0;
     while i < chars.len() {
-        let affix = chars[i] == '-' && latin(i + 1) && (i == 0 || !chars[i - 1].is_alphanumeric());
+        let affix = affix_at(i);
         if latin(i) || affix {
             let start = i;
             let mut end = i;
@@ -489,10 +496,7 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
             i = end;
         } else {
             let start = i;
-            while i < chars.len()
-                && !latin(i)
-                && !(chars[i] == '-' && latin(i + 1) && (i == 0 || !chars[i - 1].is_alphanumeric()))
-            {
+            while i < chars.len() && !latin(i) && !affix_at(i) {
                 i += 1;
             }
             let run: String = chars[start..i].iter().collect();
@@ -562,7 +566,7 @@ fn RichRuns(text: String, target: &'static str, pron: bool) -> Element {
             for (j , unit) in pron_units(runs, target, say).into_iter().enumerate() {
                 match unit {
                     Unit::Plain(t) => rsx! {
-                        span { key: "{key}.{j}", "{localize_digits(&t, lang, eastern)}" }
+                        span { key: "{key}.{j}", "{localize_digits(&in_direction(&t, dir == \"rtl\"), lang, eastern)}" }
                     },
                     Unit::Latin { phrases, close, short } => rsx! {
                         // The phrase, its closing quote and its pronunciation
@@ -659,6 +663,13 @@ fn pron_units(runs: Vec<(bool, String)>, target: &str, say: bool) -> Vec<Unit> {
         }
     }
     out
+}
+
+/// UI-language text as drawn in a line of direction `rtl`: an arrow written
+/// between an Arabic word and a Latin one ("besar = كبير → lebih besar")
+/// points along the reading, so it turns around in a right-to-left line.
+fn in_direction(text: &str, rtl: bool) -> std::borrow::Cow<'_, str> {
+    if rtl && text.contains('→') { text.replace('→', "←").into() } else { text.into() }
 }
 
 /// One piece of a drawn Latin unit, in reading order.
@@ -2218,6 +2229,19 @@ mod tests {
         let runs = latin_runs("- Menurut X, … = على حسب X …");
         assert_eq!(runs[1], (true, "Menurut X, …".into()));
         assert_eq!(runs[3], (true, "X …".into()));
+    }
+
+    #[test]
+    fn suffixes_keep_their_hyphen_and_arrows_follow_the_line() {
+        let runs = latin_runs("aku و-ku = saya");
+        assert_eq!(runs, vec![(true, "aku".into()), (false, " و".into()), (true, "-ku = saya".into()),]);
+        // A hyphen inside a Latin word is still a hyphen, not a new run.
+        assert_eq!(latin_runs("anak-anak"), vec![(true, "anak-anak".into())]);
+        let runs = latin_runs("besar = كبير → lebih besar = أكبر");
+        let plain: String =
+            runs.iter().filter(|(l, _)| !l).map(|(_, t)| in_direction(t, true).into_owned()).collect();
+        assert!(plain.contains('←') && !plain.contains('→'), "{plain}");
+        assert_eq!(in_direction("a → b", false), "a → b");
     }
 
     #[test]
