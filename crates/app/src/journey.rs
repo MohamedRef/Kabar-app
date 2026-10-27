@@ -852,6 +852,7 @@ fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> 
             ul { class: "souvenirs",
                 for (s, tl) in cards {
                     li { key: "{s.unit_id}", class: "souvenir card",
+                        crate::souvenir_art::SouvenirArt { unit_id: s.unit_id.clone(), size: crate::souvenir_art::Size::Thumb }
                         div { class: "souvenir-stamp", aria_hidden: "true", bdi { "{s.level_code}" } }
                         h3 { bdi { lang: tl, dir: "ltr", "{local_souvenir(&s.unit_id, lang).map(|(t, _)| t).unwrap_or(s.name.clone())}" } }
                         p { class: "muted souvenir-where",

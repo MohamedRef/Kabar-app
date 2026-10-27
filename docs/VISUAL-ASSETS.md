@@ -395,13 +395,13 @@ natively at its final size.
 
 ---
 
-## Prompt 4d — Souvenir cards, last four
+## Prompt 4d — Souvenir cards, three linked redos
 
-Review of the 4c batch (2026-10-27): rumah-gadang and kotagede-silver are approved and in the repo. Four still miss: becak (drawn as a full two-wheeled bicycle towing a cart, three wheels in a row), gamelan (kettles look like bells, a stray see-through frame over the sky, random cords), wayang (a walking cartoon figure with legs and dots on the head, not a wayang kulit profile, no banana-trunk base) and raja-ampat (islets read as lily pads with leaf veins, seen from the side, one cut by the frame). 4c was drawn with code (SVG), which matches the set's flat look; that is fine, but the shapes must be right.
+Every card must show a real unit's souvenir: `assets/souvenirs.md` (generated from the curriculum) lists all 107 and which have art. Review of the 4c batch (2026-10-27): rumah-gadang and kotagede-silver are approved and in the repo. Four still miss: becak (drawn as a full two-wheeled bicycle towing a cart, three wheels in a row), gamelan (kettles look like bells, a stray see-through frame over the sky, random cords), wayang (a walking cartoon figure with legs and dots on the head, not a wayang kulit profile, no banana-trunk base) and raja-ampat (islets read as lily pads with leaf veins, seen from the side, one cut by the frame). 4c was drawn with code (SVG), which matches the set's flat look; that is fine, but the shapes must be right. Wayang is dropped: no unit's souvenir is wayang. Gamelan is redrawn as the Balinese gamelan its unit (bipa2.u01, Ubud) is about, and raja-ampat as the Wayag karst islets of bipa7.u05.
 
 ```text
-Redo FOUR souvenir card illustrations for "Kabar", an Indonesian + Javanese learning
-app. Nine cards of this set are approved; the four new ones must look like they
+Redo THREE souvenir card illustrations for "Kabar", an Indonesian + Javanese learning
+app. Nine cards of this set are approved; the three new ones must look like they
 belong to the same collection.
 
 BEFORE YOU START:
@@ -434,8 +434,9 @@ signatures, brands or existing characters. Do not imitate any named artist. Noth
 may be see-through or overlap the frame; every object sits fully inside the picture
 panel.
 
-CARDS (filename: subject, with exactly what must be right):
-- becak.png: an Indonesian becak, side view, parked under a green tree, facing right.
+CARDS (filename: the souvenir it shows, then exactly what must be right):
+- becak.png: for the unit "Malioboro, Yogyakarta" (souvenir: Malioboro street, full
+  of becak). An Indonesian becak, side view, parked under a green tree, facing right.
   Exactly THREE wheels, and in side view you see only TWO of them: one front wheel
   under the passenger seat (its twin is hidden behind it) and one rear wheel. At the
   FRONT (right): a wide passenger bench seat for two with a folding hood (a curved
@@ -443,41 +444,31 @@ CARDS (filename: subject, with exactly what must be right):
   bicycle saddle raised above the rear wheel, pedals and chain below the saddle,
   joined to the seat's back by one sturdy frame. The rider's handlebar is a bar
   behind the hood, NOT a separate bicycle with its own front wheel. No rider.
-- gamelan.png: a Javanese bonang seen from the front and slightly above. A long, low
-  wooden frame (rancak) with carved orange ends, standing on short legs on the
-  ground. On it, TWO straight rows of five bronze kettle gongs each, all the same
-  size, resting on cords stretched along the frame. Each kettle: a wide, low, round
-  pot (wider than tall, like an upturned bowl with a flat shoulder), in Bromo orange
-  with a dark outline, with a small round raised knob (pencu) in the CENTRE OF ITS
-  TOP, and the knob is a solid filled circle, never a ring or a dot pair. Two
-  padded beaters (sticks with indigo cord-wrapped heads) lie on the frame. Nothing
-  else above the frame: just the pink sky and the pale sun.
-- wayang.png: a wayang kulit puppet seen as a shadow on a glowing white screen
-  (kelir) with a dark wooden frame, lit by an oil lamp (blencong) hanging in front
-  near the top. The shadow is ONE solid dark silhouette in STRICT SIDE PROFILE,
-  facing right, standing still (no walking pose): a tall slender body with a long
-  flowing cloth (wiron) falling to the feet, both feet side by side pointing right,
-  a small head with a long pointed nose and a tall pointed headdress, and two very
-  long thin arms hanging down in front, each held by a thin rod (cempurit). Inside
-  the silhouette, a few small cut-out patterns (simple diamonds, circles and curls)
-  so it looks pierced like real leather puppets. No eyes, no face, no dots on the
-  head. One central rod (gapit) runs from the head down through the body into a
-  horizontal banana-trunk (gedebog) at the bottom of the screen, drawn as a pale
-  green log. Original design, not a known character.
-- raja-ampat.png: small karst islets in a turquoise sea, seen from directly ABOVE
-  (map view: no hills, no horizon, no sky, no sun; the whole picture panel is sea).
-  Water in two or three flat turquoise tones, darker in the middle, lighter near the
-  islets. Six or seven islets of different sizes, each a lumpy irregular rounded
-  shape (like a mushroom cap seen from above), filled with two greens (darker rim,
-  lighter top), a dark outline and a pale sand/shallow-water ring around it. No
-  leaf veins, no midribs, no pointed tips: they must not look like leaves or lily
-  pads. All islets fully inside the panel, one small boat (a white speck with a
-  short wake) for scale.
+- gamelan.png: for the unit "Ubud, Bali" (souvenir: Balinese gamelan). Two Balinese
+  gamelan instruments side by side, seen from the front and slightly above:
+  (1) a reyong: ONE long straight row of twelve small bronze kettle gongs resting on
+  cords in a long, low wooden frame whose two ends sweep upward in carved curls,
+  the frame painted Bromo orange with indigo details; each kettle is a wide, low,
+  round pot (wider than tall, like an upturned bowl) in warm bronze-orange with a
+  dark outline and a small SOLID round knob in the centre of its top;
+  (2) in front, a gangsa: a short metallophone with seven flat bronze bars laid
+  across a carved wooden case, bamboo tubes visible below. Two small wooden mallets
+  lie on the gangsa. Nothing above the instruments but the pink sky and pale sun.
+- raja-ampat.png: for the unit "Wayag, Raja Ampat" (souvenir: the karst islands of
+  Wayag). Small karst islets in a turquoise sea, seen from directly ABOVE (map view:
+  no hills, no horizon, no sky, no sun; the whole picture panel is sea). Water in two
+  or three flat turquoise tones, darker in the middle, lighter near the islets. Six
+  or seven islets of different sizes, each a lumpy irregular rounded shape (like a
+  mushroom cap seen from above), filled with two greens (darker rim, lighter top),
+  a dark outline and a pale sand/shallow-water ring around it. No leaf veins, no
+  midribs, no pointed tips: they must not look like leaves or lily pads. All islets
+  fully inside the panel, one small boat (a white speck with a short wake) for
+  scale.
 
 SAVE: masters to assets/src/souvenirs/<name>.png (1024x1536), replacing nothing else.
 Then run: python3 scripts/assets/export_souvenirs.py
 It exports all 13 cards to assets/export/souvenirs/ and rebuilds
-assets/src/souvenirs/contact-sheet.png. Look at the contact sheet: if any of the four
+assets/src/souvenirs/contact-sheet.png. Look at the contact sheet: if any of the three
 new cards stands out from the nine approved ones, or any subject is hard to
 recognise at thumbnail size, redo it.
 

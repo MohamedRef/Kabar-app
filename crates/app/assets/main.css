@@ -809,3 +809,17 @@ button.journal-delete { color: var(--dawn); border-color: var(--dawn); }
 .pron-guide .pron-sign { font-family: "Kabar Naskh", var(--font-arabic); font-size: 1.3rem; white-space: nowrap; color: var(--indigo); }
 .pron-guide .pron-example { white-space: nowrap; }
 .pron-guide .pron-example .pron { display: inline; }
+
+/* Souvenir art (souvenir_art.rs): a card's picture panel, cropped out of the
+   1024x1536 card (panel at x 120–910, y 110–980), or the level's landmark. */
+.souvenir-art { overflow: hidden; border-radius: 12px; margin-block-end: 0.75rem; }
+/* The crop is a picture, not text: pin it LTR so the offsets mean the same in RTL. */
+.souvenir-art.card-art { position: relative; aspect-ratio: 790 / 870; direction: ltr; }
+.souvenir-art.card-art img {
+  position: absolute; inset-inline-start: -15.19%; inset-block-start: -12.64%; inline-size: 129.62%; max-inline-size: none;
+}
+.souvenir-art.place-art {
+  display: grid; place-items: center; padding-block: 0.75rem; background: var(--map-paper, none) repeat center / 256px, var(--surface-2);
+}
+.souvenir-art.place-art img { inline-size: min(9rem, 60%); aspect-ratio: 1; border-radius: 50%; }
+.lp-souvenir .souvenir-art { max-inline-size: 22rem; margin-inline: auto; }
