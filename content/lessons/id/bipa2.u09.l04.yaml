@@ -10,16 +10,16 @@ slides:
   - title: Ke alam
     body:
       ar_eg: |
-        hutan = غابة، air terjun = شلال (حرفيًا «مية واقعة»)، batu = حجر أو صخرة، karang = شعاب مرجانية.
-        kompas = بوصلة، ransel = شنطة ضهر.
+        hutan = غابة، air terjun = شلال (حرفيًا «مية واقعة»)، karang = شعاب مرجانية.
+        kompas = بوصلة، ransel = شنطة ضهر، sandal = صندل (أحسن من الجزمة للشلال!).
         penginapan = مكان تبات فيه (من inap = يبات)، vila = فيلا.
       ar: |
-        hutan = غابة، air terjun = شلال (حرفيًا «ماء ساقط»)، batu = حجر أو صخرة، karang = شعاب مرجانية.
-        kompas = بوصلة، ransel = حقيبة ظهر.
+        hutan = غابة، air terjun = شلال (حرفيًا «ماء ساقط»)، karang = شعاب مرجانية.
+        kompas = بوصلة، ransel = حقيبة ظهر، sandal = صندل (أفضل من الحذاء عند الشلال!).
         penginapan = مكان المبيت (من inap = يبيت)، vila = فيلا.
       en: |
-        hutan = forest, air terjun = waterfall (literally "falling water"), batu = stone, rock, karang = coral reef.
-        kompas = compass, ransel = backpack.
+        hutan = forest, air terjun = waterfall (literally "falling water"), karang = coral reef.
+        kompas = compass, ransel = backpack, sandal = sandals (better than shoes at a waterfall!).
         penginapan = lodging, guesthouse (inap = stay overnight), vila = villa.
     examples:
       - text: Di Bali ada air terjun yang indah.
@@ -46,15 +46,15 @@ exercises:
         ar_eg: شلال
         ar: شلال
         en: waterfall
-      - text: batu
-        ar_eg: حجر، صخرة
-        ar: حجر، صخرة
-        en: stone
+      - text: sandal
+        ar_eg: صندل
+        ar: صندل
+        en: sandals
       - text: karang
         ar_eg: شعاب مرجانية
         ar: شعاب مرجانية
         en: coral
-    words: [hutan, air terjun, batu, karang]
+    words: [hutan, air terjun, sandal, karang]
   - id: e02
     type: match_pairs
     pairs:
@@ -105,13 +105,13 @@ exercises:
       ar_eg: بتعرف الشمال فين بإيه؟
       ar: بمَ تعرف اتجاه الشمال؟
       en: What shows you which way is north?
-    options: [kompas, batu, vila]
+    options: [kompas, sandal, vila]
     answer: 0
     explain:
       ar_eg: kompas = بوصلة.
       ar: kompas = بوصلة.
       en: kompas = compass.
-    words: [kompas, batu, vila]
+    words: [kompas, sandal, vila]
   - id: e06
     type: fill_blank
     sentence: Di ___ ada banyak pohon dan monyet.
@@ -129,7 +129,7 @@ exercises:
       ar: نقيم في فيلا قرب الشاطئ.
       en: We're staying in a villa near the beach.
     answer: Kami tinggal di vila dekat pantai.
-    distractors: [hutan, batu]
+    distractors: [hutan, sandal]
     words: [vila]
   - id: e08
     type: translate
@@ -150,14 +150,14 @@ exercises:
     words: [ransel, kompas, hutan]
   - id: e10
     type: multiple_choice
-    question: Rumah itu dari ___, bukan kayu.
-    options: [batu, karang, air terjun]
+    question: Ke air terjun, pakai ___ saja.
+    options: [sandal, karang, air terjun]
     answer: 0
     explain:
-      ar_eg: 'البيت من حجر: batu.'
-      ar: 'البيت من حجر: batu.'
-      en: 'The house is stone: batu.'
-    words: [batu, karang, air terjun]
+      ar_eg: 'للمشي في المية البس صندل: sandal.'
+      ar: 'للمشي في الماء البس صندلًا: sandal.'
+      en: 'For walking in water, wear sandals: sandal.'
+    words: [sandal, karang, air terjun]
 dialogue:
   lines:
     - speaker: Ni Luh
@@ -176,10 +176,10 @@ dialogue:
       ar: قليلًا. سنمشي عبر الغابة.
       en: Fairly. We walk through the forest.
     - speaker: Mohamed
-      text: Saya bawa ransel dan air.
-      ar_eg: هاخد شنطة الضهر ومية.
-      ar: سآخذ حقيبة الظهر والماء.
-      en: I'll bring my backpack and water.
+      text: Saya bawa ransel, air, dan sandal.
+      ar_eg: هاخد شنطة الضهر ومية وصندل.
+      ar: سآخذ حقيبة الظهر والماء والصندل.
+      en: I'll bring my backpack, water and sandals.
     - speaker: Ni Luh
       text: Bagus. Malamnya kita tidur di penginapan dekat sana.
       ar_eg: حلو. بالليل ننام في مكان قريب من هناك.
@@ -201,11 +201,11 @@ new_words:
     ar_eg: شلال
     ar: شلال
     en: waterfall
-  - word: batu
+  - word: sandal
     pos: noun
-    ar_eg: حجر، صخرة
-    ar: حجر، صخرة
-    en: stone, rock
+    ar_eg: صندل
+    ar: صندل
+    en: sandals
   - word: karang
     pos: noun
     ar_eg: شعاب مرجانية

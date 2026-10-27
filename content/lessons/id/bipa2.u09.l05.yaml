@@ -1,25 +1,25 @@
 schema: kabar.lesson/v1
 id: bipa2.u09.l05
 language: id
-title: Kemeja, dasi, perak
+title: Pesta di Ubud
 can_do:
-  ar_eg: تختار لبس لفرح أو حفلة، وتتكلم عن الحرير والفضة والإزاز.
-  ar: أن تختار ملابس لحفل أو عرس، وتتحدث عن الحرير والفضة والزجاج.
-  en: Choose clothes for a party or wedding and talk about silk, silver and glass.
+  ar_eg: تختار لبس لحفلة، وتتكلم عن الحرير والفضة والإزاز والحجر.
+  ar: أن تختار ملابس لحفل، وتتحدث عن الحرير والفضة والزجاج والحجر.
+  en: Choose clothes for a party and talk about silk, silver, glass and stone.
 slides:
   - title: Ke pesta
     body:
       ar_eg: |
-        gaun = فستان سهرة، jas = جاكت بدلة، kemeja = قميص بزراير، dasi = كرافتة، sandal = صندل.
-        sutra = حرير، perak = فضة (Celuk في بالي = قرية الفضة).
+        gaun = فستان سهرة، jas = جاكت بدلة، kemeja = قميص بزراير، dasi = كرافتة.
+        sutra = حرير، perak = فضة (Celuk في بالي = قرية الفضة)، batu = حجر: perak dengan batu biru.
         kaca = إزاز، وفاكر kacamata؟ = نضارة («إزاز العين»).
       ar: |
-        gaun = فستان سهرة، jas = سترة البدلة، kemeja = قميص بأزرار، dasi = ربطة عنق، sandal = صندل.
-        sutra = حرير، perak = فضّة (قرية Celuk في بالي مشهورة بالفضّة).
+        gaun = فستان سهرة، jas = سترة البدلة، kemeja = قميص بأزرار، dasi = ربطة عنق.
+        sutra = حرير، perak = فضّة (قرية Celuk في بالي مشهورة بالفضّة)، batu = حجر: perak dengan batu biru.
         kaca = زجاج، وتذكّر kacamata = نظارة («زجاج العين»).
       en: |
-        gaun = gown, dress, jas = suit jacket, kemeja = shirt (with buttons), dasi = tie, sandal = sandals.
-        sutra = silk, perak = silver (Celuk in Bali is the silver village).
+        gaun = gown, dress, jas = suit jacket, kemeja = shirt (with buttons), dasi = tie.
+        sutra = silk, perak = silver (Celuk in Bali is the silver village), batu = stone: perak dengan batu biru.
         kaca = glass; remember kacamata = glasses ("eye glass").
     examples:
       - text: Ke pesta, saya pakai kemeja putih dan dasi.
@@ -58,10 +58,10 @@ exercises:
   - id: e02
     type: match_pairs
     pairs:
-      - text: sandal
-        ar_eg: صندل
-        ar: صندل
-        en: sandals
+      - text: batu
+        ar_eg: حجر
+        ar: حجر
+        en: stone
       - text: sutra
         ar_eg: حرير
         ar: حرير
@@ -74,7 +74,7 @@ exercises:
         ar_eg: فضة
         ar: فضّة
         en: silver
-    words: [sandal, sutra, kaca, perak]
+    words: [batu, sutra, kaca, perak]
   - id: e03
     type: listen
     text: Di Celuk ada banyak toko perak.
@@ -91,14 +91,14 @@ exercises:
     words: [perak]
   - id: e04
     type: fill_blank
-    sentence: Ke pantai, pakai ___ saja.
+    sentence: Rumah itu dari ___, bukan kayu.
     meaning:
-      ar_eg: على البحر، البس ___ وخلاص.
-      ar: إلى الشاطئ، البس ___ فقط.
-      en: For the beach, just wear ___.
-    options: [sandal, jas, dasi]
-    answers: [sandal]
-    words: [sandal, jas, dasi]
+      ar_eg: البيت ده من ___، مش خشب.
+      ar: ذلك البيت من ___ لا من الخشب.
+      en: That house is made of ___, not wood.
+    options: [batu, sutra, jas]
+    answers: [batu]
+    words: [batu, sutra, jas]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -125,11 +125,11 @@ exercises:
   - id: e07
     type: build_sentence
     source:
-      ar_eg: هلبس قميص أبيض وجاكت أسود.
-      ar: سألبس قميصًا أبيض وسترة سوداء.
-      en: I'll wear a white shirt and a black jacket.
-    answer: Saya pakai kemeja putih dan jas hitam.
-    distractors: [gaun, sandal]
+      ar_eg: هلبس قميص أبيض وجاكت أزرق.
+      ar: سألبس قميصًا أبيض وسترة زرقاء.
+      en: I'll wear a white shirt and a blue jacket.
+    answer: Saya pakai kemeja putih dan jas biru.
+    distractors: [gaun, batu]
     words: [kemeja, jas]
   - id: e08
     type: translate
@@ -151,13 +151,13 @@ exercises:
   - id: e10
     type: multiple_choice
     question: Kain ini dari ___, jadi mahal.
-    options: [sutra, kaca, sandal]
+    options: [sutra, kaca, batu]
     answer: 0
     explain:
       ar_eg: القماش الحرير غالي.
       ar: قماش الحرير غالٍ.
       en: Silk cloth is expensive.
-    words: [sutra, kaca, sandal]
+    words: [sutra, kaca, batu]
 dialogue:
   lines:
     - speaker: Rina
@@ -186,10 +186,10 @@ dialogue:
       ar: نعم، فستان حرير من أمي.
       en: Yes, a silk dress from my mum.
     - speaker: Mohamed
-      text: Bagus! Saya mau beli perak di Celuk untuk mereka.
-      ar_eg: حلو! أنا عايز أشتري لهم فضة من تشيلوك.
-      ar: جميل! أريد شراء فضّة لهم من تشيلوك.
-      en: Lovely! I want to buy them some silver in Celuk.
+      text: Bagus! Saya mau beli perak dengan batu biru di Celuk untuk mereka.
+      ar_eg: حلو! أنا عايز أشتري لهم فضة بحجر أزرق من تشيلوك.
+      ar: جميل! أريد شراء فضّة بحجر أزرق لهم من تشيلوك.
+      en: Lovely! I want to buy them some silver with a blue stone in Celuk.
 new_words:
   - word: gaun
     pos: noun
@@ -211,11 +211,11 @@ new_words:
     ar_eg: كرافتة
     ar: ربطة عنق
     en: tie
-  - word: sandal
+  - word: batu
     pos: noun
-    ar_eg: صندل
-    ar: صندل
-    en: sandals
+    ar_eg: حجر، صخرة
+    ar: حجر، صخرة
+    en: stone, rock
   - word: sutra
     pos: noun
     ar_eg: حرير
