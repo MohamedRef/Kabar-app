@@ -104,30 +104,55 @@ exercises:
     distractors: [kiri, atau]
     words: [belok, perempatan, lalu, lurus]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: امشي دغري، وبعدين خش شمال.
-      ar: امشِ مستقيمًا، ثم انعطف يسارًا.
-      en: Go straight, then turn left.
-    answers: ['Jalan lurus, lalu belok kiri.', 'Jalan lurus, kemudian belok kiri.', Jalan lurus lalu belok kiri., Jalan lurus kemudian belok kiri., 'Jalan lurus, lalu belok kiri', 'Jalan lurus, kemudian belok kiri', 'Lurus, lalu belok kiri.', 'Lurus, kemudian belok kiri.', Lurus lalu belok kiri]
-    words: [lurus, lalu, belok, kiri]
+    type: multiple_choice
+    question: Jalan lurus, lalu belok kiri.
+    question_meaning:
+      ar_eg: نفس المعنى، بس بكلمة تانية بدل lalu؟
+      ar: المعنى نفسه بكلمة أخرى بدل lalu؟
+      en: Same meaning, with another word instead of lalu?
+    options: ['Jalan lurus, kemudian belok kiri.', 'Jalan lurus, sebelum belok kiri.', 'Jalan lurus, atau belok kiri.']
+    answer: 0
+    explain:
+      ar_eg: kemudian = lalu (وبعدين)، بس أرسمى شوية.
+      ar: kemudian = lalu (ثم)، وهي أكثر رسمية.
+      en: kemudian = lalu (then), a little more formal.
+    words: [kemudian]
   - id: e06
     type: dictation
-    text: Jalan lurus, lalu belok kanan.
+    text: Saya naik bus, kemudian jalan kaki.
     meaning:
-      ar_eg: امشي دغري، وبعدين خش يمين.
-      ar: امشِ مستقيمًا ثم انعطف يمينًا.
-      en: Go straight, then turn right.
-    words: [lurus, lalu, belok, kanan]
+      ar_eg: بركب الأتوبيس، وبعدين بمشي.
+      ar: أركب الحافلة ثم أمشي.
+      en: I take the bus, then walk.
+    words: [naik, bus, kemudian, jalan kaki]
   - id: e07
     type: speaking
-    text: Jalan lurus, lalu belok kiri di lampu merah. Monas di sebelah kanan.
+    text: Jalan lurus, kemudian belok kiri di lampu merah. Monas di sebelah kanan.
     meaning:
-      ar_eg: امشي دغري، وبعدين خش شمال عند الإشارة. موناس على اليمين.
-      ar: امشِ مستقيمًا، ثم انعطف يسارًا عند الإشارة. موناس على اليمين.
-      en: Go straight, then turn left at the traffic light. Monas is on the right.
-    words: [lurus, lalu, belok, lampu merah]
+      ar_eg: امشي على طول، وبعدين لف شمال عند الإشارة. مونَس على اليمين.
+      ar: امشِ مستقيمًا ثم انعطف يسارًا عند الإشارة. مونَس على اليمين.
+      en: Go straight, then turn left at the lights. Monas is on the right.
+    words: [lurus, kemudian, belok, lampu merah]
+  - id: e08
+    type: listen
+    text: Saya jalan kaki ke perempatan.
+    options: ['Saya jalan kaki ke perempatan.', 'Saya naik bus ke perempatan.', 'Saya belok kiri di perempatan.']
+    answer: 0
+    meaning:
+      ar_eg: أنا ماشي على رجلي لحد التقاطع.
+      ar: أمشي إلى التقاطع.
+      en: I'm walking to the crossroads.
+    words: [jalan kaki, perempatan, naik, bus]
+  - id: e09
+    type: fill_blank
+    sentence: Saya tidak ___ bus. Saya jalan kaki.
+    meaning:
+      ar_eg: أنا مش راكب أتوبيس. أنا ماشي.
+      ar: لا أركب الحافلة. أمشي.
+      en: I'm not taking the bus. I'm walking.
+    options: [naik, belok, lurus]
+    answers: [naik]
+    words: [naik, bus, jalan kaki]
 dialogue:
   lines:
     - speaker: Rina
