@@ -94,17 +94,29 @@ exercises:
     distractors: [data, orisinal]
     words: [tesis]
   - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تخلّي مقالك orisinal وإنت بتستعمل مصادر؟
-      ar: كيف تحافظ على أصالة مقالتك مع استعمال المصادر؟
-      en: How do you keep your essay original while using sources?
-    options:
-      - تنسخ المصادر كلها وتغيّر كلمة واحدة.
-      - ماتستعملش مصادر خالص.
-      - تعيد صياغة الأفكار بكلامك وتذكر كل مصدر.
-    answer: 2
-    words: [orisinal, plagiarisme]
+    type: match_pairs
+    pairs:
+      - text: pembahasan
+        ar_eg: مناقشة
+        ar: مناقشة
+        en: discussion
+      - text: kriteria
+        ar_eg: معايير
+        ar: معايير
+        en: criteria
+      - text: menganalisis
+        ar_eg: يحلّل
+        ar: يحلّل
+        en: to analyse
+      - text: penulisan
+        ar_eg: الكتابة، التأليف
+        ar: الكتابة، التأليف
+        en: writing (the process, style)
+      - text: mendasar
+        ar_eg: جوهري، أساسي
+        ar: جوهري
+        en: fundamental
+    words: [pembahasan, kriteria, menganalisis, penulisan, mendasar]
   - id: e07
     type: translate
     direction: to_target

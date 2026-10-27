@@ -1,203 +1,237 @@
 schema: kabar.lesson/v1
 id: bipa5.u10.l08
 language: id
-title: Laporan perjalanan
+title: Cap Go Meh di Singkawang
 can_do:
-  ar_eg: تحكي رحلتك في كاليمانتان كتقرير مترابط فيه رأيك.
-  ar: أن تروي رحلتك في كاليمانتان تقريرًا مترابطًا يحمل رأيك.
-  en: Tell your Kalimantan journey as a connected report with your own view.
+  ar_eg: 'توصف احتفال كاب جو ميه: الموكب والباروجساي والصواريخ والمعابد الصينية والبخور، والمصور، وإيه اللي لافت للنظر.'
+  ar: 'أن تصف احتفال كاب غو ميه: المسيرة ورقصة الأسد والمفرقعات والمعابد الصينية والبخور، والمصوّر، وما يلفت النظر.'
+  en: 'Describe Cap Go Meh: the parade and procession, lion dance, firecrackers, Chinese temples and incense, the photographer and what stands out.'
 slides:
-  - title: Merangkum perjalanan
-    grammar: id.argument.connectors
+  - title: Kota seribu kelenteng
     body:
       ar_eg: |
-        التقرير عن رحلة محتاج ترتيب وروابط:
-        - Pertama-tama … Selain itu … Di sisi lain … Sebagai penutup …
-        كلمتين جداد:
-        - menyaksikan = يشهد / يشوف بعينه: menyaksikan sendiri = شاف بنفسه
-        - tak terlupakan = مايتنسيش (tak = tidak، terlupakan = ممكن يتنسي)
+        Cap Go Meh = الليلة الخامسة عشر بعد رأس السنة الصينية (Imlek).
+        parade = استعراض، arak-arakan = موكب ماشي في الشارع.
+        barongsai = رقصة الأسد الصيني، petasan = صواريخ وبمب.
+        kelenteng = معبد صيني (سينجكاوانج اسمها "مدينة الألف معبد")، dupa = بخور (عيدان البخور).
+        fotografer = مصور، menonjol = لافت للنظر، بارز.
       ar: |
-        يحتاج تقرير الرحلة إلى ترتيب وروابط:
-        - Pertama-tama … Selain itu … Di sisi lain … Sebagai penutup …
-        وكلمتان جديدتان:
-        - menyaksikan = يشهد، يرى بعينه: menyaksikan sendiri = رأى بنفسه
-        - tak terlupakan = لا يُنسى (tak = tidak، وterlupakan = يمكن أن يُنسى)
+        Cap Go Meh = الليلة الخامسة عشرة بعد رأس السنة الصينية (Imlek).
+        parade = استعراض، arak-arakan = موكب يسير في الشوارع.
+        barongsai = رقصة الأسد الصينية، petasan = مفرقعات.
+        kelenteng = معبد صيني (تُلقّب سينغكاوانغ "مدينة الألف معبد")، dupa = بخور (أعواد البخور).
+        fotografer = مصوّر، menonjol = بارز، لافت للنظر.
       en: |
-        A journey report needs order and connectors:
-        - Pertama-tama … Selain itu … Di sisi lain … Sebagai penutup …
-        Two new words:
-        - menyaksikan = to witness: menyaksikan sendiri = to see for yourself
-        - tak terlupakan = unforgettable (tak = tidak, terlupakan = forgettable)
+        Cap Go Meh = the fifteenth night after Chinese New Year (Imlek).
+        parade = parade, arak-arakan = street procession.
+        barongsai = Chinese lion dance, petasan = firecrackers.
+        kelenteng = Chinese temple (Singkawang is called "city of a thousand temples"), dupa = incense (joss sticks).
+        fotografer = photographer, menonjol = prominent, striking.
+    examples:
+      - text: Arak-arakan tatung adalah bagian paling menonjol dari Cap Go Meh di Singkawang.
+        ar_eg: موكب التاتونج أبرز حاجة في كاب جو ميه في سينجكاوانج.
+        ar: موكب التاتونغ أبرز ما في كاب غو ميه في سينغكاوانغ.
+        en: The tatung procession is the most striking part of Cap Go Meh in Singkawang.
+      - text: Bau dupa keluar dari setiap kelenteng.
+        ar_eg: ريحة البخور طالعة من كل معبد.
+        ar: تفوح رائحة البخور من كل معبد.
+        en: The smell of incense comes from every temple.
+      - text: Fotografer dari seluruh dunia datang untuk memotret barongsai.
+        ar_eg: مصورين من كل حتة في العالم بييجوا يصوروا الباروجساي.
+        ar: يأتي مصوّرون من أنحاء العالم لتصوير رقصة الأسد.
+        en: Photographers from all over the world come to shoot the lion dance.
 exercises:
   - id: e01
-    type: listen
-    text: Selama perjalanan di Kalimantan, saya menyaksikan Cap Go Meh di Singkawang.
-    question:
-      ar_eg: شاف إيه في سينجكاوانج؟
-      ar: ماذا شاهد في سينغكاوانغ؟
-      en: What did he see in Singkawang?
-    options:
-      - سوق عايم.
-      - احتفال كاب جو مي.
-      - رقصة أبو قرن.
-    answer: 1
-    words: [menyaksikan]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «tak terlupakan» معناها إيه؟
-      ar: ما معنى «tak terlupakan»؟
-      en: What does "tak terlupakan" mean?
-    options:
-      - مايتنسيش.
-      - مش مهم.
-      - اتنسى بسرعة.
-    answer: 0
-    words: [tak terlupakan]
-  - id: e03
-    type: fill_blank
-    sentence: Pasar terapung di Banjarmasin adalah pengalaman yang ___.
-    meaning:
-      ar_eg: السوق العايم في بنجرماسين تجربة ماتتنسيش.
-      ar: السوق العائمة في بنجرماسين تجربة لا تُنسى.
-      en: The floating market in Banjarmasin is an unforgettable experience.
-    options: [tak terlupakan, mencolok, gugup]
-    answers: [tak terlupakan]
-    words: [tak terlupakan, terapung]
-  - id: e04
-    type: build_sentence
-    source:
-      ar_eg: أولًا، زرت باليكبابان.
-      ar: أوّلًا، زرتُ باليكبابان.
-      en: First of all, I visited Balikpapan.
-    answer: Pertama-tama, saya mengunjungi Balikpapan.
-    distractors: [menyaksikan, jeda]
-    words: [pertama-tama]
-  - id: e05
-    type: translate
-    direction: from_target
-    source_text: Saya menyaksikan sendiri dampak kabut asap di Tanjung Puting.
-    answers_meaning:
-      ar_eg:
-        - شفت بعيني أثر الدخان في تانجونج بوتينج.
-        - أنا بنفسي شفت الدخان عمل إيه في تانجونج بوتينج.
-      ar:
-        - شهدتُ بنفسي أثر ضباب الدخان في تانجونغ بوتينغ.
-        - رأيت بعيني آثار الدخان في تانجونغ بوتينغ.
-      en:
-        - I saw the effects of the haze in Tanjung Puting for myself.
-        - I witnessed the haze's impact in Tanjung Puting with my own eyes.
-    words: [menyaksikan, kabut asap]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Saya melihat orangutan. ___, saya belajar tentang hak ulayat.» تحط إيه؟
-      ar: ماذا تضع في «Saya melihat orangutan. ___, saya belajar tentang hak ulayat.»؟
-      en: Which fits "Saya melihat orangutan. ___, saya belajar tentang hak ulayat."?
-    options: [Meskipun, Karena, Selain itu]
-    answer: 2
-    explain:
-      ar_eg: بتضيف حاجة تانية حصلت، يبقى Selain itu (وكمان).
-      ar: تضيف أمرًا آخر، فالمناسب Selain itu (فضلًا عن ذلك).
-      en: You're adding another thing, so Selain itu (besides that).
-    words: [selain itu, hak ulayat]
-  - id: e07
-    type: speaking
-    text: Perjalanan ini tak terlupakan karena saya bertemu banyak orang baik.
-    meaning:
-      ar_eg: الرحلة دي ماتتنسيش عشان قابلت ناس طيبين كتير.
-      ar: هذه الرحلة لا تُنسى لأنّي التقيت أناسًا طيّبين كثيرين.
-      en: This journey is unforgettable because I met so many kind people.
-    words: [tak terlupakan]
-  - id: e08
-    type: dictation
-    text: Sebagai penutup, Kalimantan mengajarkan saya arti toleransi.
-    meaning:
-      ar_eg: وفي الختام، كاليمانتان علمتني معنى التسامح.
-      ar: وختامًا، علّمتني كاليمانتان معنى التسامح.
-      en: To close, Kalimantan taught me what tolerance means.
-    words: [sebagai penutup, toleransi]
-  - id: e09
     type: match_pairs
     pairs:
-      - text: merdu
-        ar_eg: صوته حلو
-        ar: عذب الصوت
-        en: melodious
-      - text: rumah panjang
-        ar_eg: البيت الطويل
-        ar: البيت الطويل
-        en: longhouse
-      - text: pemerataan
-        ar_eg: توزيع بالعدل
-        ar: توزيع عادل
-        en: fair distribution
-      - text: gengsi
-        ar_eg: برستيج
-        ar: وجاهة
-        en: prestige
-      - text: kenaikan
-        ar_eg: زيادة
-        ar: ارتفاع
-        en: rise, increase
-    words: [merdu, rumah panjang, pemerataan, gengsi, kenaikan]
-  - id: e10
+      - text: parade
+        ar_eg: استعراض
+        ar: استعراض
+        en: parade
+      - text: arak-arakan
+        ar_eg: موكب
+        ar: موكب
+        en: procession
+      - text: barongsai
+        ar_eg: رقصة الأسد
+        ar: رقصة الأسد
+        en: lion dance
+      - text: petasan
+        ar_eg: صواريخ وبمب
+        ar: مفرقعات
+        en: firecrackers
+    words: [parade, arak-arakan, barongsai, petasan]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kelenteng
+        ar_eg: معبد صيني
+        ar: معبد صيني
+        en: Chinese temple
+      - text: dupa
+        ar_eg: بخور
+        ar: بخور
+        en: incense
+      - text: fotografer
+        ar_eg: مصور
+        ar: مصوّر
+        en: photographer
+      - text: menonjol
+        ar_eg: لافت للنظر
+        ar: بارز
+        en: striking
+    words: [kelenteng, dupa, fotografer, menonjol]
+  - id: e03
+    type: listen
+    text: Hati-hati, suara petasannya keras sekali!
+    question:
+      ar_eg: إيه اللي صوته عالي؟
+      ar: ما الذي صوته عالٍ؟
+      en: What is loud?
+    options: [الصواريخ, المزيكا, العربيات]
+    answer: 0
+    meaning:
+      ar_eg: خد بالك، صوت الصواريخ عالي أوي!
+      ar: احذر، صوت المفرقعات عالٍ جدًا!
+      en: Careful, the firecrackers are really loud!
+    words: [petasan]
+  - id: e04
+    type: fill_blank
+    sentence: Umat Buddha dan Konghucu berdoa di ___.
+    meaning:
+      ar_eg: البوذيين والكونفوشيين بيصلوا في ال___.
+      ar: يصلّي البوذيون والكونفوشيوسيون في ال___.
+      en: Buddhists and Confucians pray at the ___.
+    options: [kelenteng, parade, fotografer]
+    answers: [kelenteng]
+    words: [kelenteng, parade, fotografer]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الرقصة اللي فيها اتنين لابسين أسد صيني ملون وبينطوا اسمها إيه؟
+      ar: ما الرقصة التي يرتدي فيها شخصان زيّ أسد صيني ملوّن ويقفزان؟
+      en: What's the dance where two people in a colourful Chinese lion costume leap about?
+    options: [dupa, menonjol, barongsai]
+    answer: 2
+    explain:
+      ar_eg: barongsai = رقصة الأسد.
+      ar: barongsai = رقصة الأسد.
+      en: barongsai = lion dance.
+    words: [dupa, menonjol, barongsai]
+  - id: e06
+    type: fill_blank
+    sentence: Seorang ___ memotret arak-arakan dari atas gedung.
+    meaning:
+      ar_eg: ___ بيصور الموكب من فوق مبنى.
+      ar: يصوّر ___ الموكب من أعلى مبنى.
+      en: A ___ shoots the procession from a rooftop.
+    options: [fotografer, dupa, petasan]
+    answers: [fotografer]
+    words: [fotografer, dupa, petasan, arak-arakan]
+  - id: e07
+    type: multiple_choice
+    question: Warna merah sangat ___ di kota itu saat Imlek.
+    options: [arak-arakan, menonjol, kelenteng]
+    answer: 1
+    explain:
+      ar_eg: menonjol = لافت للنظر.
+      ar: menonjol = بارز.
+      en: menonjol = striking, prominent.
+    words: [arak-arakan, menonjol, kelenteng]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: ريحة البخور طالعة من المعبد.
+      ar: تفوح رائحة البخور من المعبد.
+      en: The smell of incense comes from the temple.
+    answer: Bau dupa keluar dari kelenteng.
+    distractors: [petasan, parade]
+    words: [dupa, kelenteng]
+  - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: شفت بعيني ناس من ديانات مختلفة عايشين مع بعض في سلام.
-      ar: شهدتُ أناسًا من أديان مختلفة يعيشون معًا في وئام.
-      en: I witnessed people of different religions living together in harmony.
-    answers:
-      - Saya menyaksikan orang dari agama yang berbeda hidup rukun.
-      - Saya menyaksikan orang-orang dari agama berbeda hidup rukun.
-      - Saya menyaksikan orang dari berbagai agama hidup rukun.
-      - Saya menyaksikan orang dari agama yang berbeda hidup bersama dengan rukun.
-    words: [menyaksikan, rukun]
+    direction: from_target
+    source_text: Parade Cap Go Meh dimulai jam delapan pagi.
+    answers_meaning:
+      ar_eg: [استعراض كاب جو ميه بيبدأ الساعة تمانية الصبح, الاستعراض بيبدأ تمانية الصبح]
+      ar: [يبدأ استعراض كاب غو ميه في الثامنة صباحًا, ينطلق الاستعراض الساعة الثامنة صباحًا]
+      en: [The Cap Go Meh parade starts at eight in the morning, The parade begins at 8 a.m.]
+    words: [parade]
+  - id: e10
+    type: speaking
+    text: Barongsai dan arak-arakan tatung paling menonjol tahun ini.
+    meaning:
+      ar_eg: الباروجساي وموكب التاتونج كانوا أبرز حاجة السنة دي.
+      ar: كانت رقصة الأسد وموكب التاتونغ الأبرز هذا العام.
+      en: The lion dance and the tatung procession stood out most this year.
+    words: [barongsai, arak-arakan, menonjol]
 dialogue:
-  title: Malam terakhir di Singkawang
   lines:
-    - speaker: Rina
-      text: Mohamed, perjalanan kita di Kalimantan hampir selesai. Apa yang paling kamu ingat?
-      ar_eg: يا محمد، رحلتنا في كاليمانتان قربت تخلص. إيه أكتر حاجة فاكرها؟
-      ar: يا محمد، أوشكت رحلتنا في كاليمانتان على الانتهاء. ما أكثر ما تتذكّره؟
-      en: Mohamed, our Kalimantan trip is almost over. What do you remember most?
+    - speaker: Bu Meilin
+      text: Selamat datang di Singkawang, Pak Mohamed! Besok puncak Cap Go Meh.
+      ar_eg: أهلًا بيك في سينجكاوانج يا أستاذ محمد! بكرة ذروة كاب جو ميه.
+      ar: أهلًا بك في سينغكاوانغ يا أستاذ محمد! غدًا ذروة كاب غو ميه.
+      en: Welcome to Singkawang, Mohamed! Tomorrow is the height of Cap Go Meh.
     - speaker: Mohamed
-      text: Pertama-tama, rumah panjang Pak Lawing dan suara sapenya yang merdu.
-      ar_eg: أولًا، البيت الطويل بتاع الأستاذ لاوينج وصوت السابي الحلو بتاعه.
-      ar: أوّلًا، البيت الطويل للأستاذ لاوينغ وصوت سابيه العذب.
-      en: First of all, Pak Lawing's longhouse and the sweet sound of his sape.
-    - speaker: Mas Rizal
-      text: Bagaimana dengan hal yang sulit?
-      ar_eg: وإيه الحاجات الصعبة؟
-      ar: وماذا عن الأمور الصعبة؟
-      en: What about the hard parts?
+      text: Saya sudah mencium bau dupa dari kelenteng di ujung jalan.
+      ar_eg: أنا شميت ريحة البخور من المعبد اللي في آخر الشارع.
+      ar: شممت رائحة البخور من المعبد في آخر الشارع.
+      en: I can already smell incense from the temple at the end of the street.
+    - speaker: Bu Meilin
+      text: Besok ada parade, barongsai, dan arak-arakan tatung. Jangan kaget dengan petasan!
+      ar_eg: بكرة فيه استعراض وباروجساي وموكب التاتونج. ما تتخضش من الصواريخ!
+      ar: غدًا استعراض ورقصة أسد وموكب التاتونغ. لا تفزع من المفرقعات!
+      en: Tomorrow there's a parade, lion dance and the tatung procession. Don't jump at the firecrackers!
     - speaker: Mohamed
-      text: Saya menyaksikan sendiri kabut asap dan warga yang digusur. Itu juga bagian dari cerita.
-      ar_eg: شفت بعيني الدخان والناس اللي اتطردت من أرضها. ودي كمان جزء من الحكاية.
-      ar: شهدتُ بنفسي ضباب الدخان وأناسًا أُخلوا من أراضيهم، وهذا أيضًا جزء من الحكاية.
-      en: I saw the haze and evicted residents for myself. That's part of the story too.
-    - speaker: Rina
-      text: Dan malam ini, Cap Go Meh. Tionghoa, Dayak, dan Melayu merayakan bersama.
-      ar_eg: والليلة، كاب جو مي. الصينيين والداياك والملايو بيحتفلوا مع بعض.
-      ar: والليلة كاب غو مي، يحتفل فيها الصينيون والدّاياك والملايو معًا.
-      en: And tonight, Cap Go Meh. Chinese, Dayak and Malay people celebrating together.
-    - speaker: Mohamed
-      text: Sebagai penutup laporan saya, Kalimantan tak terlupakan.
-      ar_eg: وفي ختام تقريري، كاليمانتان ماتتنسيش.
-      ar: وختامًا لتقريري، كاليمانتان لا تُنسى.
-      en: To close my report, Kalimantan is unforgettable.
+      text: Apa yang paling menonjol?
+      ar_eg: إيه أبرز حاجة؟
+      ar: ما الأبرز؟
+      en: What stands out most?
+    - speaker: Bu Meilin
+      text: 'Tatung: orang Tionghoa dan Dayak berjalan bersama. Fotografer dari luar negeri datang khusus untuk itu.'
+      ar_eg: 'التاتونج: صينيين وداياك ماشيين مع بعض. مصورين من بره بييجوا مخصوص عشانهم.'
+      ar: 'التاتونغ: يسير التيونغهوا والداياك معًا، ويأتي مصوّرون من الخارج خصيصًا لذلك.'
+      en: 'The tatung: Chinese Indonesians and Dayak walk together. Photographers come from abroad just for that.'
 new_words:
-  - word: menyaksikan
-    pos: verb
-    ar_eg: يشهد / يشوف بعينه
-    ar: يشهد
-    en: to witness
-  - word: tak terlupakan
+  - word: parade
+    pos: noun
+    ar_eg: استعراض
+    ar: استعراض
+    en: parade
+  - word: arak-arakan
+    pos: noun
+    ar_eg: موكب
+    ar: موكب
+    en: procession
+  - word: barongsai
+    pos: noun
+    ar_eg: رقصة الأسد الصيني
+    ar: رقصة الأسد الصينية
+    en: lion dance
+  - word: petasan
+    pos: noun
+    ar_eg: صواريخ وبمب
+    ar: مفرقعات
+    en: firecrackers
+  - word: kelenteng
+    pos: noun
+    ar_eg: معبد صيني
+    ar: معبد صيني
+    en: Chinese temple
+  - word: dupa
+    pos: noun
+    ar_eg: بخور
+    ar: بخور
+    en: incense
+  - word: fotografer
+    pos: noun
+    ar_eg: مصور
+    ar: مصوّر
+    en: photographer
+  - word: menonjol
     pos: adjective
-    ar_eg: مايتنسيش
-    ar: لا يُنسى
-    en: unforgettable
+    ar_eg: لافت للنظر، بارز
+    ar: بارز، لافت
+    en: striking, prominent
 review:
   status: draft
   verified: false
