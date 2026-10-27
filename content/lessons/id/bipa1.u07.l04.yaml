@@ -88,11 +88,15 @@ exercises:
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: المنظر جميل جدًا.
-      ar: المنظر جميل جدًا.
-      en: The view is very beautiful.
-    answers: [Pemandangannya indah sekali., Pemandangannya sangat indah., Pemandangannya indah banget., Pemandangan indah sekali., Pemandangannya bagus sekali., Pemandangannya sangat bagus.]
-    words: [pemandangan, indah]
+      ar_eg: صح، المنظر جميل جدًا.
+      ar: صحيح، المنظر جميل جدًا.
+      en: True, the view is very beautiful.
+    answers: ['Benar, pemandangannya indah sekali.', 'Betul, pemandangannya indah sekali.', 'Bener, pemandangannya indah banget.', 'Benar, pemandangannya sangat indah.', 'Betul, pemandangannya sangat indah.', 'Bener, pemandangannya indah sekali.', 'Betul, pemandangannya indah banget.', 'Benar, pemandangannya indah banget.']
+    explain:
+      ar_eg: صح = benar أو betul، وفي الشارع bener.
+      ar: صحيح = benar أو betul، وفي العامية bener.
+      en: True = benar or betul; on the street, bener.
+    words: [pemandangan, indah, benar, betul]
   - id: e05
     type: match_pairs
     pairs:
@@ -142,12 +146,26 @@ exercises:
     words: [betul]
   - id: e09
     type: speaking
-    text: Betul, pemandangannya sangat indah.
+    text: Bener banget, pemandangannya sangat indah.
     meaning:
-      ar_eg: صح، المنظر جميل جدًا.
-      ar: صحيح، المنظر جميل جدًا.
-      en: True, the view is very beautiful.
-    words: [betul, pemandangan, sangat, indah]
+      ar_eg: عندك حق والله، المنظر جميل جدًا.
+      ar: صحيح تمامًا، المنظر جميل جدًا.
+      en: So true, the view is very beautiful.
+    words: [benar, pemandangan, sangat, indah]
+  - id: e10
+    type: fill_blank
+    sentence: Pantai Kuta sangat terkenal. Itu ___!
+    meaning:
+      ar_eg: شاطئ كوتا مشهور جدًا. ده صح!
+      ar: شاطئ كوتا مشهور جدًا. هذا صحيح!
+      en: Kuta Beach is very famous. That's true!
+    options: [benar, sangat, sekali]
+    answers: [benar]
+    explain:
+      ar_eg: itu benar = ده صح. sangat وsekali محتاجين صفة جنبهم.
+      ar: itu benar = هذا صحيح، أما sangat وsekali فتحتاجان صفة.
+      en: itu benar = that's true; sangat and sekali need an adjective next to them.
+    words: [benar]
 dialogue:
   lines:
     - speaker: Ni Luh
@@ -201,6 +219,11 @@ new_words:
     ar_eg: صح
     ar: صحيح
     en: right, true
+  - word: benar / bener
+    pos: adjective
+    ar_eg: صح، حقيقي (زي betul)؛ في الشارع bener (bener banget = عندك حق والله)
+    ar: صحيح، حقيقي (مثل betul)؛ في العامية bener
+    en: true, right (like betul); on the street bener (bener banget = so true)
 review:
   status: draft
   verified: false

@@ -1345,6 +1345,30 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                 h2 { class: "lp-slide-title", Title { text: title.clone(), target } }
             }
             p { class: "lp-slide-body pre", Rich { text: pick(&slide.body, lang).trim().to_string(), target, pron: true } }
+            if let Some(table) = &slide.table {
+                div { class: "lp-table-wrap",
+                    table { class: "lp-table",
+                        thead {
+                            tr {
+                                for (i, h) in table.head.iter().enumerate() {
+                                    th { key: "{i}", bdi { lang: target, dir: "ltr", "{h}" } }
+                                }
+                                th { "{lt(lang, L::TableMeaning)}" }
+                            }
+                        }
+                        tbody {
+                            for (i, row) in table.rows.iter().enumerate() {
+                                tr { key: "{i}",
+                                    for (j, cell) in row.cells.iter().enumerate() {
+                                        td { key: "{j}", lang: target, Rich { text: cell.clone(), target, pron: true } }
+                                    }
+                                    td { class: "muted", "{pick(&row.meaning, lang)}" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             if !slide.examples.is_empty() {
                 p { class: "muted lp-small", "{lt(lang, L::Examples)}" }
                 ul { class: "lp-examples",
