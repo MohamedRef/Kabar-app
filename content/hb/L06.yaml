@@ -1,0 +1,944 @@
+schema: batna.content/v1
+lecture: hb.L06
+title: Steatotic Liver Disease
+author: Dr. Ahmed Zeid
+book: { chapter: 1, pages: [97, 112] }
+# The book mixes NAFLD/NASH (old) and MASLD/MASH (2023 nomenclature) terms.
+# Items keep the term the book uses on that page.
+topics:
+  - { id: nomenclature, title: "Pathology and the SLD nomenclature" }
+  - { id: progression, title: "Progression and metabolic links" }
+  - { id: t2dm, title: "MASLD and type 2 diabetes" }
+  - { id: steatosis, title: "Steatosis assessment" }
+  - { id: fibrosis, title: "Fibrosis predictors, FIB-4 and FibroScan" }
+  - { id: screening, title: "Who to screen and referral pathways" }
+  - { id: lifestyle, title: "Weight loss and supplements" }
+  - { id: drugs, title: "Antidiabetic drugs in MASLD" }
+  - { id: cirrhosis-dm, title: "Diabetes drugs in cirrhosis" }
+  - { id: new-drugs, title: "Obeticholic acid and resmetirom" }
+items:
+  # --- Pathology and nomenclature (p97-98) ---
+  - id: hb.L06.001
+    kind: enumerate
+    topic: nomenclature
+    prompt: Mention the three pathological aspects of steatotic liver disease.
+    points: [Steatosis, Inflammation, Fibrosis]
+    pass: 3
+    src: { page: 97 }
+    status: unverified
+  - id: hb.L06.002
+    kind: card
+    topic: nomenclature
+    front: In the fibrosis stages figure, where does scar tissue first appear and how does it progress (F1 to F4)?
+    back: Scar is laid down around the central veins and portal tracts, then spreads into bridges and finally nodules (F4, cirrhosis).
+    src: { page: 97 }
+    status: unverified
+  - id: hb.L06.003
+    kind: card
+    topic: nomenclature
+    front: What does the NAFLD spectrum figure show, from left to right?
+    back: Normal liver, simple steatosis, then NASH.
+    src: { page: 97 }
+    status: unverified
+  - id: hb.L06.004
+    kind: enumerate
+    topic: nomenclature
+    prompt: Enumerate the five categories under the umbrella term steatotic liver disease (SLD).
+    points:
+      - MASLD (metabolic dysfunction-associated steatotic liver disease), with MASH as its steatohepatitis form
+      - MetALD (MASLD with increased alcohol intake)
+      - ALD (alcohol-associated liver disease)
+      - "Specific aetiology SLD: DILI, monogenic diseases, miscellaneous"
+      - Cryptogenic SLD
+    pass: 4
+    src: { page: 98 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.005
+    kind: card
+    topic: nomenclature
+    front: What do NAFLD and NASH become in the new nomenclature?
+    back: NAFLD becomes MASLD (metabolic dysfunction-associated steatotic liver disease); NASH becomes MASH (metabolic dysfunction-associated steatohepatitis).
+    src: { page: 98 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.006
+    kind: cloze
+    topic: nomenclature
+    text: "MetALD covers a weekly alcohol intake of about {{c1::140–350 g (women)}} or {{c2::210–420 g (men)}}; above that it is ALD."
+    src: { page: 98 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L06.007
+    kind: cloze
+    topic: nomenclature
+    text: "As an average daily intake, MetALD lies between {{c1::20–50 g (women)}} and {{c2::30–60 g (men)}} of alcohol."
+    src: { page: 98 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L06.008
+    kind: card
+    topic: nomenclature
+    front: How many adult cardiometabolic criteria are needed to call steatosis MASLD?
+    back: At least 1 of 5.
+    src: { page: 98 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.009
+    kind: enumerate
+    topic: nomenclature
+    prompt: Enumerate the 5 adult cardiometabolic criteria for MASLD (with cut-offs).
+    points:
+      - "BMI ≥25 kg/m² (≥23 in Asians) or waist >94 cm (men) / >80 cm (women), or ethnicity-adjusted equivalent"
+      - "Fasting glucose ≥5.6 mmol/L (100 mg/dL), or 2-h post-load glucose ≥7.8 mmol/L (140 mg/dL), or HbA1c ≥5.7%, or type 2 diabetes or its treatment"
+      - "Blood pressure ≥130/85 mmHg or antihypertensive drug treatment"
+      - "Plasma triglycerides ≥1.70 mmol/L (150 mg/dL) or lipid-lowering treatment"
+      - "HDL ≤1.0 mmol/L (40 mg/dL) in men or ≤1.3 mmol/L (50 mg/dL) in women, or lipid-lowering treatment"
+    pass: 4
+    src: { page: 98 }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L06.010
+    kind: cloze
+    topic: nomenclature
+    text: "MASLD adult criterion for body size: BMI ≥{{c1::25}} kg/m² (≥{{c2::23}} in Asians), or waist circumference >{{c3::94 cm in men and 80 cm in women}}."
+    src: { page: 98 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L06.011
+    kind: cloze
+    topic: nomenclature
+    text: "MASLD adult glycaemic criterion: fasting glucose ≥{{c1::5.6 mmol/L (100 mg/dL)}}, 2-hour glucose ≥{{c2::7.8 mmol/L (140 mg/dL)}}, or HbA1c ≥{{c3::5.7%}}."
+    src: { page: 98 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L06.012
+    kind: cloze
+    topic: nomenclature
+    text: "MASLD adult lipid criteria: triglycerides ≥{{c1::1.70 mmol/L (150 mg/dL)}}, or HDL ≤{{c2::1.0 mmol/L (40 mg/dL)}} in men and ≤{{c3::1.3 mmol/L (50 mg/dL)}} in women."
+    src: { page: 98 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L06.013
+    kind: card
+    topic: nomenclature
+    front: Why was steatotic liver disease adopted as the new name for NAFLD?
+    back: It lets clinicians pin down the underlying cause, or mixed causes, more precisely, and it avoids stigmatization.
+    src: { page: 112 }
+    status: unverified
+
+  # --- MASLD in type 2 diabetes (p99, p103) ---
+  - id: hb.L06.014
+    kind: card
+    topic: t2dm
+    front: Do normal transaminases exclude significant liver disease in type 2 diabetes?
+    back: No. In diabetics biopsied at low ALT cut-offs, NASH and advanced fibrosis were still common ("do not trust liver enzymes").
+    src: { page: 99 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.015
+    kind: cloze
+    topic: t2dm
+    text: "In the biopsy study of type 2 diabetics with low liver enzymes, NASH was present in about {{c1::58%}}, and {{c2::63%}} of patients had ALT below 30 IU/L."
+    src: { page: 99 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L06.016
+    kind: enumerate
+    topic: t2dm
+    prompt: Mention the clinical predictors of advanced fibrosis (F3–F4) in type 2 diabetics from the study on page 99.
+    points:
+      - GGT
+      - "Waist circumference (men >102 cm, women >88 cm)"
+      - "Low HDL (men <1.03, women <1.29 mmol/L)"
+      - FIB-4
+    pass: 3
+    src: { page: 99 }
+    status: unverified
+  - id: hb.L06.017
+    kind: card
+    topic: t2dm
+    front: What is the relationship between MASLD and type 2 diabetes?
+    back: Strongly bidirectional. Most researchers think MASLD comes first and starts the chain that leads to T2DM; insulin resistance is the common root of both.
+    src: { page: 103 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.018
+    kind: card
+    topic: t2dm
+    front: "\"Chicken or egg\": what matters more than which of MASLD or T2DM comes first?"
+    back: The right diagnosis and management at the right time.
+    src: { page: 103 }
+    status: unverified
+
+  # --- Progression and metabolic links (p100) ---
+  - id: hb.L06.019
+    kind: cloze
+    topic: progression
+    text: "MASLD is the hepatic manifestation of {{c1::metabolic syndrome}}."
+    src: { page: 100, quote: "MASLD is the hepatic manifestation of metabolic syndrome." }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.020
+    kind: card
+    topic: progression
+    front: Strongest risk factors for fibrosis, cirrhosis, HCC and mortality in MASLD?
+    back: Type 2 diabetes and obesity.
+    src: { page: 100 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.021
+    kind: order
+    topic: progression
+    prompt: Put the progression of MASLD in order (book figure).
+    steps: [Normal liver, Steatosis, MASH, Fibrosis, Cirrhosis, HCC]
+    src: { page: 100 }
+    status: unverified
+  - id: hb.L06.022
+    kind: card
+    topic: progression
+    front: In the MASLD progression figure, which cell activation drives MASH to fibrosis?
+    back: Activation of hepatic stellate cells.
+    src: { page: 100 }
+    status: unverified
+  - id: hb.L06.023
+    kind: card
+    topic: progression
+    front: Three drivers of steatosis shown in the MASLD progression figure?
+    back: Obesity, insulin resistance and increased free fatty acids.
+    src: { page: 100 }
+    status: unverified
+  - id: hb.L06.024
+    kind: card
+    topic: progression
+    front: Two extrahepatic outcomes linked to MASH in the progression figure?
+    back: Type 2 diabetes and cardiovascular disease.
+    src: { page: 100 }
+    status: unverified
+
+  # --- Steatosis assessment (p101) ---
+  - id: hb.L06.025
+    kind: card
+    topic: steatosis
+    front: Preferred first-line imaging to diagnose NAFLD?
+    back: Ultrasound.
+    src: { page: 101 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.026
+    kind: card
+    topic: steatosis
+    front: Which test gives a quantitative estimate of liver fat?
+    back: Magnetic resonance spectroscopy (MRS).
+    src: { page: 101 }
+    status: unverified
+  - id: hb.L06.027
+    kind: cloze
+    topic: steatosis
+    text: "The Fatty Liver Index (FLI) is calculated from {{c1::serum triglycerides}}, {{c2::BMI}}, {{c3::waist circumference and GGT}}."
+    src: { page: 101 }
+    status: unverified
+  - id: hb.L06.028
+    kind: card
+    topic: steatosis
+    front: What goes into the NAFLD Liver Score (NLS)?
+    back: Presence or absence of metabolic syndrome and type 2 diabetes, fasting serum insulin, and aminotransferases.
+    src: { page: 101 }
+    status: unverified
+
+  # --- Fibrosis predictors, FIB-4, FibroScan (p101-102) ---
+  - id: hb.L06.029
+    kind: table
+    topic: fibrosis
+    title: Predictors of progression to fibrosis in MASH (book table)
+    columns: [Factor, Detail]
+    rows:
+      - ["Sex", "Men and post-menopausal women are at higher risk; estrogen inhibits stellate cell activation and fibrogenesis"]
+      - ["Age", "Older age goes with more severe fibrosis"]
+      - ["Diabetes", "Onset of diabetes parallels fibrosis progression"]
+      - ["BMI", "A rise or fall in BMI goes with progression or resolution of fibrosis"]
+      - ["Inflammation", "Degree of inflammation is linked to progression to advanced fibrosis"]
+      - ["AST/ALT ratio", "Normal ratio is <1"]
+      - ["Hepatic iron / hemochromatosis", "Iron in hepatocytes is linked to mild NAFLD"]
+      - ["PNPLA3 and TM6SF2 polymorphisms", "Genes for proteins that make and break down fat"]
+    blanks: [[0, 1], [2, 1], [5, 1], [6, 1]]
+    src: { page: 101 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.030
+    kind: card
+    topic: fibrosis
+    front: Why are pre-menopausal women at lower risk of MASH fibrosis?
+    back: Estrogen inhibits stellate cell activation and fibrogenesis.
+    src: { page: 101 }
+    status: unverified
+  - id: hb.L06.031
+    kind: card
+    topic: fibrosis
+    front: Two gene polymorphisms that predict fibrosis progression in MASH?
+    back: PNPLA3 and TM6SF2.
+    src: { page: 101 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.032
+    kind: card
+    topic: fibrosis
+    front: FIB-4 formula?
+    back: (Age × AST) ÷ (platelet count × √ALT).
+    src: { page: 102 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.033
+    kind: cloze
+    topic: fibrosis
+    text: "FIB-4 bands on page 102: below {{c1::1.3}} is low risk, {{c2::1.3–3.25}} is intermediate, and above {{c3::3.25}} is high risk."
+    src: { page: 102 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L06.034
+    kind: cloze
+    topic: fibrosis
+    text: "A FibroScan median stiffness is calculated from {{c1::10}} valid measurements, and IQR/median above {{c2::30%}} means the reading is not reliable."
+    src: { page: 102 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L06.035
+    kind: card
+    topic: fibrosis
+    front: On a FibroScan report, what do the two big numbers measure, and in what units?
+    back: Liver stiffness E in kPa (fibrosis) and CAP in dB/m (steatosis).
+    src: { page: 102 }
+    status: unverified
+
+  # --- Who to screen; referral (p102, p104) ---
+  - id: hb.L06.036
+    kind: card
+    topic: screening
+    front: Is general population screening for MASLD advised?
+    back: No.
+    src: { page: 102 }
+    status: unverified
+  - id: hb.L06.037
+    kind: enumerate
+    topic: screening
+    prompt: Although population screening is not advised, what three things does the lecture say we need to do for MASLD?
+    points:
+      - Screen all prediabetics and type 2 diabetics
+      - Identify patients at high risk of progressive disease
+      - Assess the degree of fibrosis and stage the liver disease
+    pass: 3
+    src: { page: 102 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.038
+    kind: order
+    topic: screening
+    prompt: "EASL 2021 pathway in primary care or diabetology clinic, for a patient with only metabolic co-factors or alcohol: order the steps."
+    steps:
+      - Check liver risk factors and test AST, ALT, GGT, ALP and platelets
+      - Calculate FIB-4
+      - "If FIB-4 ≥1.30: transient elastography"
+      - "If liver stiffness ≥8 kPa: patented serum test if available, else consider biopsy"
+      - "If both agree: F3–F4 highly likely, refer to liver clinic"
+    src: { page: 104 }
+    status: unverified
+  - id: hb.L06.039
+    kind: cloze
+    topic: screening
+    text: "EASL 2021: FIB-4 below {{c1::1.30}} or liver stiffness below {{c2::8 kPa}} means low risk: no referral, lifestyle changes, and re-test in {{c3::1–3 years}}."
+    src: { page: 104 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L06.040
+    kind: card
+    topic: screening
+    front: In the EASL 2021 pathway, who goes straight to the liver specialist without FIB-4?
+    back: Patients with viral hepatitis or other chronic liver disease, or clinical signs of advanced liver disease or cirrhosis.
+    src: { page: 104 }
+    status: unverified
+  - id: hb.L06.041
+    kind: cloze
+    topic: screening
+    text: "ADA 2025: FIB-4 <{{c1::1.3}} means re-assess every 1–3 years; FIB-4 >{{c2::2.67}} means hepatology referral; in between, do VCTE and refer if stiffness ≥{{c3::8.0 kPa}}."
+    src: { page: 104 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L06.042
+    kind: card
+    topic: screening
+    front: Which patients enter the ADA 2025 MASLD fibrosis pathway?
+    back: Type 2 diabetes, or obesity with at least one cardiometabolic risk factor, or persistently raised liver enzymes.
+    src: { page: 104 }
+    status: unverified
+  - id: hb.L06.043
+    kind: table
+    topic: screening
+    title: ADA care of people with diabetes and MASLD (liver monitoring)
+    columns: [Stage, Liver monitoring, MASH drug]
+    rows:
+      - ["F0–F1", "FIB-4 every 1–2 years; LSM by elastography (or ELF) if FIB-4 >1.3", "Not indicated"]
+      - ["F2–F3 (at-risk MASH)", "Consider annual imaging (LSM by elastography or MRE) and blood fibrosis biomarkers", "Resmetirom, GLP-1RA"]
+      - ["Compensated cirrhosis", "Tailored to severity and complications; screen for HCC", "Avoid"]
+      - ["Decompensated cirrhosis", "Tailored to severity and complications; screen for HCC", "Avoid"]
+    blanks: [[0, 1], [1, 2], [2, 2], [3, 2]]
+    src: { page: 111 }
+    status: unverified
+    tags: [high-yield]
+
+  # --- Lifestyle and supplements (p105-106) ---
+  - id: hb.L06.044
+    kind: card
+    topic: lifestyle
+    front: What do the weight-loss studies (diet, diet + exercise, orlistat, surgery) show in NAFLD?
+    back: Weight loss by any of these routes improved ALT in nearly all studies, and histology where it was measured.
+    src: { page: 105 }
+    status: unverified
+  - id: hb.L06.045
+    kind: card
+    topic: lifestyle
+    front: Which NAFLD patients does the lecture say may get vitamin E?
+    back: Only adults with NASH who do not have diabetes or cirrhosis.
+    src: { page: 106, quote: "vitamin E is only recommended in adults with NASH who do not have diabetes or cirrhosis" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.046
+    kind: enumerate
+    topic: lifestyle
+    prompt: Mention the antioxidant dietary agents listed for NAFLD.
+    points:
+      - Vitamin E and vitamin C
+      - Resveratrol (red grape skin)
+      - Green tea extract
+      - Coffee
+      - Garlic (S-allylmercaptocysteine)
+      - Ginger
+    pass: 4
+    src: { page: 106 }
+    status: unverified
+  - id: hb.L06.047
+    kind: card
+    topic: lifestyle
+    front: Two liver-related benefits of coffee mentioned in the lecture?
+    back: It lowers the risk of type 2 diabetes and is linked to less fibrosis in NASH.
+    src: { page: 106 }
+    status: unverified
+  - id: hb.L06.048
+    kind: enumerate
+    topic: lifestyle
+    prompt: Mention the anti-inflammatory dietary supplements listed for NAFLD.
+    points:
+      - Polyunsaturated and monounsaturated fatty acids
+      - Vitamin D
+      - Probiotics, prebiotics and synbiotics
+    pass: 3
+    src: { page: 106 }
+    status: unverified
+  - id: hb.L06.049
+    kind: card
+    topic: lifestyle
+    front: Why are probiotics proposed in NAFLD?
+    back: The gut–liver axis is an important pathway in NAFLD development.
+    src: { page: 106 }
+    status: unverified
+  - id: hb.L06.050
+    kind: cloze
+    topic: lifestyle
+    text: "Insulin-sensitizing and lipid-lowering supplements for NAFLD: {{c1::cinnamon}}, {{c2::curcumin}} and {{c3::carnitine}}."
+    src: { page: 106 }
+    status: unverified
+  - id: hb.L06.051
+    kind: card
+    topic: lifestyle
+    front: How does carnitine fit into NAFLD treatment?
+    back: It is an essential component of mitochondrial beta-oxidation.
+    src: { page: 106 }
+    status: unverified
+
+  # --- Antidiabetic drugs (p107-109, 111) ---
+  - id: hb.L06.052
+    kind: card
+    topic: drugs
+    front: In the insulin-sensitizer table, which drugs improved histology in RCTs, and what about metformin?
+    back: Pioglitazone (alone, with vitamin E, or with diet) improved ALT and histology, including in RCTs. Metformin improved ALT, but histology data were few and mixed (one RCT positive, one negative).
+    src: { page: 107 }
+    status: unverified
+  - id: hb.L06.053
+    kind: enumerate
+    topic: drugs
+    prompt: Mention the actions of the GLP-1 analogue liraglutide.
+    points:
+      - Controls serum glucose
+      - Induces insulin secretion
+      - Reduces glucagon secretion
+      - Weight loss, appetite suppression and delayed gastric emptying
+    pass: 3
+    src: { page: 107 }
+    status: unverified
+  - id: hb.L06.054
+    kind: card
+    topic: drugs
+    front: Which DPP-4 inhibitor showed anti-steatotic and anti-inflammatory activity in a NASH mouse model?
+    back: Linagliptin, which has high exposure in hepatic tissue.
+    src: { page: 108 }
+    status: unverified
+  - id: hb.L06.055
+    kind: card
+    topic: drugs
+    front: What did empagliflozin do in non-diabetic NAFLD (Taheri RCT, 2020)?
+    back: Improved steatosis and, more importantly, fibrosis on transient elastography and CAP.
+    src: { page: 109 }
+    status: unverified
+  - id: hb.L06.056
+    kind: cloze
+    topic: drugs
+    text: "Empagliflozin's antifibrotic effect may come from inhibiting hepatic {{c1::IL-6}}, {{c2::TNF-alpha}} and {{c3::MCP-1}}."
+    src: { page: 109 }
+    status: unverified
+  - id: hb.L06.057
+    kind: table
+    topic: drugs
+    title: How antidiabetic agents improve NAFLD/MASLD (book figure)
+    columns: [Agent, Main liver-relevant effects]
+    rows:
+      - ["Pioglitazone", "↓ insulin resistance, ↓ inflammation, ↓ FFA flux, body fat redistribution"]
+      - ["GLP-1 receptor agonists", "↓ FFA flux, ↓ body weight, ↓ gluconeogenesis, ↓ inflammation"]
+      - ["SGLT2 inhibitors", "↓ body weight, ↓ insulin/glucagon ratio, ↓ inflammation, ↓ oxidative stress, ↑ adiponectin"]
+      - ["Multi-agonists", "↓ insulin resistance, ↓ inflammation, ↓↓ body weight, ↓ FFA flux, glucagon receptor activation"]
+    blanks: [[0, 1], [1, 1], [2, 1], [3, 1]]
+    src: { page: 109 }
+    status: unverified
+  - id: hb.L06.058
+    kind: table
+    topic: drugs
+    title: ADA MASLD treatment algorithm for prediabetes or diabetes (book figure)
+    columns: [Stage, Obesity drugs, Diabetes drugs, MASH drugs]
+    rows:
+      - ["F0–F1", "Prefer GLP-1RA, dual GIP/GLP-1RA", "Prefer GLP-1RA, dual GIP/GLP-1RA, pioglitazone, SGLT2i", "Not indicated"]
+      - ["F2–F3 (at-risk MASH)", "Prefer GLP-1RA, dual GIP/GLP-1RA", "Prefer GLP-1RA, dual GIP/GLP-1RA, pioglitazone", "Resmetirom, GLP-1RA"]
+      - ["Compensated cirrhosis", "As F2–F3, with caution", "As F2–F3, with caution", "Avoid"]
+      - ["Decompensated cirrhosis", "Avoid", "Insulin only", "Avoid"]
+    blanks: [[0, 3], [1, 2], [1, 3], [2, 3], [3, 1], [3, 2]]
+    src: { page: 111 }
+    status: unverified
+    tags: [high-yield]
+    update:
+      text: "Semaglutide 2.4 mg received FDA accelerated approval for non-cirrhotic MASH with F2–F3 fibrosis in August 2025."
+      ref: "FDA approval of Wegovy for MASH, August 2025"
+  - id: hb.L06.059
+    kind: card
+    topic: drugs
+    front: Per the lecture, which MASLD patients should get antidiabetic drugs chosen for liver benefit?
+    back: Only diabetic patients with MASLD, if indicated; the evidence for histologic benefit is growing.
+    src: { page: 112 }
+    status: unverified
+  - id: hb.L06.060
+    kind: card
+    topic: drugs
+    front: In F2–F3 MASH with diabetes, when does ADA say to consider resmetirom?
+    back: After optimizing treatment of obesity and/or diabetes for at least 6–12 months.
+    src: { page: 111 }
+    status: unverified
+
+  # --- Diabetes drugs in cirrhosis (p110-111) ---
+  - id: hb.L06.061
+    kind: table
+    topic: cirrhosis-dm
+    title: Antidiabetic drugs in compensated cirrhosis (book figure)
+    columns: [Drug, Caution]
+    rows:
+      - ["Metformin", "Be cautious of cirrhotic decompensation"]
+      - ["Sulfonylurea", "Start at low doses to avoid hypoglycaemia"]
+      - ["Alpha-glucosidase inhibitor", "May be useful, but limited data"]
+      - ["Thiazolidinedione", "Be cautious of cardiovascular events"]
+      - ["DPP-4 inhibitor", "Be cautious of decompensation and hepatic failure"]
+      - ["GLP-1 receptor agonist", "Limited data"]
+      - ["SGLT2 inhibitor", "Limited data"]
+    blanks: [[0, 1], [1, 1], [3, 1], [4, 1]]
+    src: { page: 110 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.062
+    kind: card
+    topic: cirrhosis-dm
+    front: Diabetes treatment in decompensated cirrhosis?
+    back: Basal long-acting insulin with or without rapid-acting insulin analogue, with close dose titration and glucose monitoring. Insulin only.
+    src: { page: 110 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.063
+    kind: card
+    topic: cirrhosis-dm
+    front: Can resmetirom be used in cirrhosis, per the ADA figure?
+    back: No. Avoid resmetirom in cirrhosis.
+    src: { page: 111 }
+    status: unverified
+  - id: hb.L06.064
+    kind: card
+    topic: cirrhosis-dm
+    front: Which extra care team members does the ADA figure add for MASLD cirrhosis?
+    back: A transplant team for decompensated cirrhosis and a social support team.
+    src: { page: 111 }
+    status: unverified
+
+  # --- Obeticholic acid and resmetirom (p110, 112) ---
+  - id: hb.L06.065
+    kind: card
+    topic: new-drugs
+    front: What is obeticholic acid (Ocaliva)?
+    back: A bile acid analogue of chenodeoxycholic acid, 100× more potent; a first-in-class selective FXR agonist with anti-inflammatory and anti-fibrotic effects.
+    src: { page: 110 }
+    status: unverified
+  - id: hb.L06.066
+    kind: card
+    topic: new-drugs
+    front: What happened to obeticholic acid as a NASH treatment?
+    back: The FDA rejected it twice.
+    src: { page: 110 }
+    status: unverified
+  - id: hb.L06.067
+    kind: cloze
+    topic: new-drugs
+    text: "Resmetirom (Rezdiffra) was FDA-approved for MASLD on {{c1::14 March 2024}}, for {{c2::F2–F3}} fibrosis, together with diet and exercise."
+    src: { page: 110 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.068
+    kind: card
+    topic: new-drugs
+    front: Mechanism of resmetirom?
+    back: A thyroid hormone receptor-beta agonist; activating these receptors in the liver reduces intrahepatic triglyceride accumulation.
+    src: { page: 110 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.069
+    kind: cloze
+    topic: new-drugs
+    text: "Oral once-daily resmetirom gave NASH resolution in {{c1::30%}} of patients and fibrosis regression of at least one stage in {{c2::26%}}."
+    src: { page: 110 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L06.070
+    kind: enumerate
+    topic: new-drugs
+    prompt: Mention the main treatment options for MASLD summarized in the lecture's conclusions.
+    points:
+      - Diet and lifestyle modification
+      - Treatment of the components of metabolic syndrome
+      - Resmetirom, newly FDA-approved
+      - Selected antidiabetic agents, only in diabetic MASLD if indicated
+    pass: 3
+    src: { page: 112 }
+    status: unverified
+
+  # --- MCQs ---
+  - id: hb.L06.071
+    kind: mcq
+    topic: nomenclature
+    stem: A 46-year-old man has hepatic steatosis on ultrasound. BMI 31, BP 128/80, triglycerides 2.1 mmol/L. He drinks about 280 g of alcohol a week. No other liver disease. How is he classified?
+    options:
+      - MASLD
+      - MetALD
+      - ALD
+      - Cryptogenic SLD
+      - Specific aetiology SLD
+    answer: 1
+    why:
+      - Pure MASLD has lower alcohol intake than 210 g/week in men.
+      - Correct. He meets cardiometabolic criteria and drinks 210–420 g/week, so MASLD with increased alcohol intake.
+      - ALD starts above about 420 g/week in men.
+      - Cryptogenic SLD has no cardiometabolic criteria and no cause.
+      - That group is for DILI, monogenic and other specific causes.
+    src: { page: 98 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.072
+    kind: mcq
+    topic: nomenclature
+    stem: Which of these is NOT one of the adult cardiometabolic criteria for MASLD?
+    options:
+      - HbA1c 5.8%
+      - Waist 96 cm in a man
+      - Serum ferritin 600 ng/mL
+      - Triglycerides 1.8 mmol/L
+      - HDL 1.2 mmol/L in a woman
+    answer: 2
+    why:
+      - HbA1c ≥5.7% is a glycaemic criterion.
+      - Waist >94 cm in men is a criterion.
+      - Correct. Ferritin is not one of the 5 criteria.
+      - Triglycerides ≥1.70 mmol/L is a criterion.
+      - HDL ≤1.3 mmol/L in women is a criterion.
+    src: { page: 98 }
+    status: unverified
+  - id: hb.L06.073
+    kind: mcq
+    topic: screening
+    stem: A 58-year-old woman with type 2 diabetes has normal ALT. FIB-4 is 1.9. Under the EASL 2021 pathway, what is next?
+    options:
+      - Reassure and re-test in 3 years
+      - Transient elastography
+      - Liver biopsy
+      - Refer directly for transplant assessment
+      - No action, because ALT is normal
+    answer: 1
+    why:
+      - Re-testing in 1–3 years is for FIB-4 below 1.30.
+      - Correct. FIB-4 ≥1.30 is intermediate-high risk, so measure liver stiffness.
+      - Biopsy is considered only after elastography ≥8 kPa with no patented serum test or discordant results.
+      - Nothing suggests end-stage disease.
+      - Normal enzymes do not exclude NASH or advanced fibrosis in diabetes.
+    src: { page: 104 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.074
+    kind: mcq
+    topic: fibrosis
+    stem: A FibroScan report shows median stiffness 9.5 kPa, IQR 3.6, IQR/median 38%. How should it be read?
+    options:
+      - Reliable; F3–F4 highly likely
+      - Unreliable because IQR/median is above 30%
+      - Reliable; low risk
+      - Unreliable because fewer than 20 measurements are needed
+      - Shows steatosis grade only
+    answer: 1
+    why:
+      - The variability is too high to trust the value.
+      - Correct. IQR/median above 30% means no reliability.
+      - 9.5 kPa is not low, and the reading is not reliable anyway.
+      - The median needs 10 valid measurements, not 20.
+      - Stiffness in kPa reflects fibrosis; CAP shows steatosis.
+    src: { page: 102 }
+    status: unverified
+  - id: hb.L06.075
+    kind: mcq
+    topic: lifestyle
+    stem: A 40-year-old non-diabetic man has biopsy-proven NASH with F2 fibrosis and no cirrhosis. Which supplement does the lecture recommend for him?
+    options:
+      - Vitamin E
+      - Vitamin D for all NASH patients
+      - Carnitine
+      - Garlic extract
+      - Ginger
+    answer: 0
+    why:
+      - Correct. Vitamin E is recommended only in adults with NASH without diabetes or cirrhosis, which fits him.
+      - Vitamin D deficiency is linked to NAFLD, but it is not a recommendation for all.
+      - Carnitine is listed as a supplement, not a recommendation.
+      - Garlic is listed as an antioxidant, not recommended therapy.
+      - Ginger is only listed.
+    src: { page: 106 }
+    status: unverified
+  - id: hb.L06.076
+    kind: mcq
+    topic: cirrhosis-dm
+    stem: A 64-year-old man with MASH cirrhosis, ascites and prior hepatic encephalopathy has HbA1c 8.6%. Which diabetes treatment fits the figure in the lecture?
+    options:
+      - Metformin
+      - Glimepiride
+      - Basal insulin with or without rapid-acting insulin
+      - Pioglitazone
+      - Resmetirom
+    answer: 2
+    why:
+      - Metformin needs caution even in compensated cirrhosis; not for decompensated.
+      - Sulfonylureas are for compensated cirrhosis at low doses.
+      - Correct. Decompensated cirrhosis means insulin only, with close titration.
+      - Thiazolidinediones are not for decompensated cirrhosis.
+      - Resmetirom is not a diabetes drug and is avoided in cirrhosis.
+    src: { page: 110 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L06.077
+    kind: mcq
+    topic: new-drugs
+    stem: A 52-year-old woman has MASH with F3 fibrosis, no cirrhosis. Which drug did the FDA approve on 14 March 2024 for her stage?
+    options:
+      - Obeticholic acid
+      - Resmetirom
+      - Vitamin E
+      - Metformin
+      - Linagliptin
+    answer: 1
+    why:
+      - The FDA rejected obeticholic acid twice for NASH.
+      - Correct. Resmetirom, a THR-beta agonist, is approved for F2–F3 with diet and exercise.
+      - Vitamin E is a recommendation, not an FDA-approved MASH drug.
+      - Metformin does not reliably improve histology.
+      - Linagliptin data come from a mouse model.
+    src: { page: 110 }
+    status: unverified
+  - id: hb.L06.078
+    kind: mcq
+    topic: fibrosis
+    stem: A 61-year-old man with MASLD has AST 60, ALT 40, platelets 120. Calculate FIB-4 and place him in the page 102 bands.
+    options:
+      - About 0.9, low risk
+      - About 2.0, intermediate risk
+      - About 4.8, high risk
+      - About 7.5, high risk
+      - Cannot be calculated without age-adjusted cut-offs
+    answer: 2
+    why:
+      - Too low; recompute (61 × 60) / (120 × 6.3).
+      - Too low.
+      - Correct. 3660 / 759 ≈ 4.8, above 3.25, high risk.
+      - Too high.
+      - FIB-4 only needs age, AST, ALT and platelets.
+    src: { page: 102 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L06.079
+    kind: mcq
+    topic: fibrosis
+    stem: Which factor in the book's table is linked to a lower risk of fibrosis progression in MASH?
+    options:
+      - Male sex
+      - Older age
+      - Pre-menopausal female sex
+      - New-onset diabetes
+      - PNPLA3 polymorphism
+    answer: 2
+    why:
+      - Men are at higher risk.
+      - Older age goes with more severe fibrosis.
+      - Correct. Estrogen inhibits stellate cell activation, so pre-menopausal women are at lower risk.
+      - Diabetes onset parallels fibrosis progression.
+      - PNPLA3 polymorphism is a risk factor.
+    src: { page: 101 }
+    status: unverified
+  - id: hb.L06.080
+    kind: mcq
+    topic: drugs
+    stem: An obese 49-year-old man with type 2 diabetes has MASLD at F0–F1. Which diabetes drugs does the ADA algorithm prefer?
+    options:
+      - Insulin only
+      - Sulfonylureas
+      - GLP-1RA, dual GIP/GLP-1RA, pioglitazone or SGLT2 inhibitor
+      - Resmetirom
+      - DPP-4 inhibitors
+    answer: 2
+    why:
+      - Insulin only is for decompensated cirrhosis.
+      - Sulfonylureas have no liver benefit and are not preferred.
+      - Correct. These lower cardiovascular risk and steatosis.
+      - MASH drugs are not indicated at F0–F1.
+      - DPP-4 inhibitors are not in the preferred list.
+    src: { page: 111 }
+    status: unverified
+
+  # --- Cases ---
+  - id: hb.L06.081
+    kind: case
+    topic: screening
+    stem: A 55-year-old man with type 2 diabetes (HbA1c 7.9%), BMI 33 and hypertension is seen in diabetes clinic. ALT 28 IU/L. Ultrasound shows a bright liver.
+    steps:
+      - reveal: ""
+        question: Does his normal ALT rule out significant liver disease?
+        options: ["No; NASH and advanced fibrosis are common in T2DM with normal enzymes", "Yes; ALT under 30 excludes NASH", "Yes, if ultrasound is normal", "Only a biopsy can say anything"]
+        answer: 0
+        why: Do not trust liver enzymes in type 2 diabetes.
+      - reveal: Age 55, AST 34, ALT 28, platelets 190. FIB-4 is about 1.9.
+        question: Under ADA 2025, what is next?
+        options: [VCTE (transient elastography), Re-assess FIB-4 in 3 years, Hepatology referral now, Liver biopsy]
+        answer: 0
+        why: FIB-4 1.3–2.67 goes to VCTE or an alternative test.
+      - reveal: Liver stiffness is 10.5 kPa; IQR/median 12%.
+        question: What now?
+        options: [Hepatology referral, Reassure and re-test in 1–3 years, Repeat FibroScan in 1 week, Stop all diabetes drugs]
+        answer: 0
+        why: Stiffness ≥8.0 kPa means hepatology referral and intensified management of comorbidities; the reading is reliable (IQR/median under 30%).
+      - reveal: He is found to have F2–F3 at-risk MASH, no cirrhosis.
+        question: Which diabetes drug class fits best?
+        options: ["GLP-1RA or dual GIP/GLP-1RA (or pioglitazone)", Sulfonylurea, Insulin only, DPP-4 inhibitor]
+        answer: 0
+        why: ADA prefers GLP-1RA, dual GIP/GLP-1RA or pioglitazone at F2–F3, with resmetirom considered after 6–12 months.
+    src: { page: 104 }
+    status: unverified
+  - id: hb.L06.082
+    kind: case
+    topic: nomenclature
+    stem: A 38-year-old woman has steatosis on ultrasound. BMI 23, no diabetes, BP 118/74, normal lipids. She drinks no alcohol and takes no drugs.
+    steps:
+      - reveal: ""
+        question: Does she meet MASLD criteria?
+        options: ["No; she has none of the cardiometabolic criteria", "Yes; steatosis alone is MASLD", "Yes, because she is female", "Only if FIB-4 is high"]
+        answer: 0
+        why: MASLD needs at least 1 of 5 cardiometabolic criteria.
+      - reveal: Work-up for other causes is negative.
+        question: How is her steatosis classified?
+        options: [Cryptogenic SLD, MetALD, ALD, MASH]
+        answer: 0
+        why: SLD without cardiometabolic criteria or another cause is cryptogenic.
+    src: { page: 98 }
+    status: unverified
+  - id: hb.L06.083
+    kind: case
+    topic: cirrhosis-dm
+    stem: A 60-year-old woman with MASLD cirrhosis (Child-Pugh A, no varices) has type 2 diabetes on metformin and glimepiride.
+    steps:
+      - reveal: ""
+        question: Which caution applies to metformin in her cirrhosis?
+        options: [Watch for cirrhotic decompensation, Stop it at once, No caution needed, Double the dose]
+        answer: 0
+        why: The figure says be cautious of cirrhotic decompensation with metformin.
+      - reveal: Her doctor asks about adding resmetirom.
+        question: Is that appropriate?
+        options: [No; avoid resmetirom in cirrhosis, Yes; she has F4, "Yes, with vitamin E", Only after 3 months of metformin]
+        answer: 0
+        why: Resmetirom is approved for F2–F3 and avoided in cirrhosis.
+      - reveal: A year later she develops ascites and hepatic encephalopathy.
+        question: How should her diabetes now be treated?
+        options: [Insulin only, Add pioglitazone, Keep metformin and glimepiride, Switch to a DPP-4 inhibitor]
+        answer: 0
+        why: In decompensated cirrhosis, use basal ± rapid-acting insulin with close titration.
+    src: { page: 110 }
+    status: unverified
+
+  # --- Book questions (p112) ---
+  - id: hb.L06.084
+    kind: essay
+    topic: progression
+    prompt: What are the main causes of steatotic liver disease, and how do they contribute to it? Discuss the role of obesity, insulin resistance and metabolic syndrome.
+    outline:
+      - "SLD categories": ["MASLD, MetALD, ALD, specific aetiology (DILI, monogenic), cryptogenic"]
+      - "Metabolic syndrome": ["MASLD is its hepatic manifestation", "At least 1 of 5 cardiometabolic criteria"]
+      - "Obesity and T2DM": ["Strongest risk factors for fibrosis, cirrhosis, HCC and death", "Bidirectional link with T2DM"]
+      - "Insulin resistance": ["Common root of MASLD and T2DM", "Raises FFA flux to the liver"]
+    src: { page: 112 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L06.085
+    kind: essay
+    topic: steatosis
+    prompt: Describe the pathophysiology of steatotic liver disease, and the role of imaging, liver biopsy and laboratory tests in diagnosing SLD.
+    outline:
+      - "Pathophysiology": ["Obesity, IR and FFAs cause steatosis", "MASH, stellate cell activation, fibrosis, cirrhosis, HCC"]
+      - "Imaging": ["Ultrasound first line", "MRS quantifies fat; FibroScan stiffness and CAP"]
+      - "Scores and labs": ["FLI, NLS for steatosis", "FIB-4 for fibrosis; normal ALT does not exclude disease"]
+      - "Biopsy": ["When non-invasive tests are discordant or unavailable (EASL 2021)"]
+    src: { page: 112 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L06.086
+    kind: essay
+    topic: lifestyle
+    prompt: Discuss the role of lifestyle modifications, such as weight loss and exercise, in managing steatotic liver disease.
+    outline:
+      - "Weight loss": ["Diet, diet plus exercise, drugs or surgery all improve ALT and histology", "Main available treatment with control of metabolic syndrome"]
+      - "Supplements": ["Vitamin E only in non-diabetic, non-cirrhotic NASH", "Coffee, green tea, omega-3, vitamin D, probiotics"]
+      - "Drug support": ["GLP-1RA, dual GIP/GLP-1RA for obesity", "Metabolic surgery per guidelines"]
+    src: { page: 112 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L06.087
+    kind: essay
+    topic: progression
+    prompt: Discuss the risk of progression to cirrhosis, liver failure and HCC in SLD, and explain the importance of early diagnosis and treatment.
+    outline:
+      - "Progression": ["Steatosis, MASH, fibrosis, cirrhosis, HCC", "T2DM and obesity drive it"]
+      - "Predictors": ["Age, male sex, diabetes, BMI, inflammation, PNPLA3/TM6SF2"]
+      - "Early diagnosis": ["Screen prediabetes and T2DM with FIB-4 then elastography", "Stage fibrosis, refer high risk"]
+      - "Early treatment": ["Lifestyle, metabolic control", "Resmetirom at F2–F3; HCC screening in cirrhosis"]
+    src: { page: 112 }
+    status: unverified
+    tags: [book-question]

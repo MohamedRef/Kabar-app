@@ -1,0 +1,691 @@
+schema: batna.content/v1
+lecture: hb.L05
+title: "Hepatitis C Virus: Clinical Overview and Modern Management"
+author: Dr. Ahmed Kamal Ali
+book: { chapter: 1, pages: [90, 96] }
+topics:
+  - { id: virology, title: "Virology and epidemiology" }
+  - { id: transmission, title: "Transmission and risk groups" }
+  - { id: natural-history, title: "Natural history" }
+  - { id: clinical, title: "Clinical features and extrahepatic disease" }
+  - { id: diagnosis, title: "Diagnosis and fibrosis staging" }
+  - { id: daas, title: "Direct-acting antivirals and regimens" }
+  - { id: management, title: "Before, during and after treatment" }
+  - { id: special, title: "Special populations" }
+  - { id: prevention, title: "Prevention and screening" }
+items:
+  # --- Virology and epidemiology (p90) ---
+  - id: hb.L05.001
+    kind: cloze
+    topic: virology
+    text: "HCV belongs to the family {{c1::Flaviviridae}}, genus {{c2::Hepacivirus}}."
+    src: { page: 90 }
+    status: unverified
+  - id: hb.L05.002
+    kind: card
+    topic: virology
+    front: What kind of genome does HCV have?
+    back: Single-stranded, positive-sense RNA.
+    src: { page: 90, quote: "Single-stranded positive-sense RNA" }
+    status: unverified
+  - id: hb.L05.003
+    kind: cloze
+    topic: virology
+    text: "HCV has genotypes {{c1::1 to 7}}; the most common in Egypt and the Middle East are {{c2::1, 3 and 4}}."
+    src: { page: 90 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L05.004
+    kind: cloze
+    topic: virology
+    text: "About {{c1::58 million}} people live with chronic HCV (WHO, 2024)."
+    src: { page: 90 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L05.005
+    kind: card
+    topic: virology
+    front: Where did Egypt stand on HCV prevalence, and what changed it?
+    back: Egypt historically had the highest HCV prevalence in the world; national screening and treatment campaigns cut the burden sharply.
+    src: { page: 90 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.006
+    kind: card
+    topic: virology
+    front: Three long-term outcomes that make HCV a leading liver disease?
+    back: Chronic liver disease, cirrhosis and hepatocellular carcinoma (HCC).
+    src: { page: 90 }
+    status: unverified
+
+  # --- Transmission and risk groups (p90-91) ---
+  - id: hb.L05.007
+    kind: enumerate
+    topic: transmission
+    prompt: Enumerate the modes of HCV transmission, from most to least important.
+    points:
+      - "Blood-borne (primary): needle sharing in IV drug use"
+      - "Blood-borne: blood transfusions"
+      - "Blood-borne: unsafe medical procedures"
+      - Sexual transmission (less common)
+      - Vertical transmission (rare)
+    pass: 4
+    src: { page: 90 }
+    status: unverified
+  - id: hb.L05.008
+    kind: enumerate
+    topic: transmission
+    prompt: Enumerate the HCV risk groups listed in the lecture.
+    points:
+      - IV drug users
+      - Recipients of unscreened blood
+      - Hemodialysis patients
+      - Healthcare workers (needlestick injuries)
+      - Children born to HCV-positive mothers
+    pass: 4
+    src: { page: 91 }
+    status: unverified
+  - id: hb.L05.009
+    kind: cloze
+    topic: transmission
+    text: "Vertical HCV transmission is {{c1::rare}}, and sexual transmission is {{c2::less common}}; the main route is {{c3::blood-borne}}."
+    src: { page: 90 }
+    status: unverified
+
+  # --- Natural history (p91) ---
+  - id: hb.L05.010
+    kind: cloze
+    topic: natural-history
+    text: "After acute HCV infection, {{c1::15–45%}} clear the virus spontaneously, and {{c2::55–85%}} stay infected for more than 6 months."
+    src: { page: 91 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L05.011
+    kind: cloze
+    topic: natural-history
+    text: "Chronic HCV leads to cirrhosis in about {{c1::15–30%}} of patients over {{c2::20 years}}."
+    src: { page: 91 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L05.012
+    kind: card
+    topic: natural-history
+    front: In HCV, in which patients does HCC mainly arise?
+    back: Mainly in patients who already have cirrhosis.
+    src: { page: 91 }
+    status: unverified
+  - id: hb.L05.013
+    kind: card
+    topic: natural-history
+    front: How long must HCV infection persist to be called chronic?
+    back: More than 6 months.
+    src: { page: 91 }
+    status: unverified
+
+  # --- Clinical features (p91-92) ---
+  - id: hb.L05.014
+    kind: card
+    topic: clinical
+    front: How does acute HCV usually present?
+    back: Often asymptomatic; otherwise nonspecific fatigue, anorexia, nausea and jaundice.
+    src: { page: 91 }
+    status: unverified
+  - id: hb.L05.015
+    kind: card
+    topic: clinical
+    front: Symptoms of chronic HCV when it is not silent?
+    back: Fatigue, right upper quadrant discomfort and arthralgia. It is often silent for years.
+    src: { page: 92 }
+    status: unverified
+  - id: hb.L05.016
+    kind: enumerate
+    topic: clinical
+    prompt: Mention four extrahepatic manifestations of chronic HCV named in the lecture.
+    points:
+      - Cryoglobulinemia
+      - Glomerulonephritis
+      - Lymphoma
+      - Insulin resistance
+    pass: 3
+    src: { page: 92 }
+    status: unverified
+    tags: [high-yield]
+
+  # --- Diagnosis (p92) ---
+  - id: hb.L05.017
+    kind: card
+    topic: diagnosis
+    front: Screening test for HCV?
+    back: HCV antibody (anti-HCV).
+    src: { page: 92 }
+    status: unverified
+  - id: hb.L05.018
+    kind: cloze
+    topic: diagnosis
+    text: "A positive anti-HCV is confirmed with {{c1::HCV RNA (PCR)}} or {{c2::HCV core antigen}}."
+    src: { page: 92 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.019
+    kind: card
+    topic: diagnosis
+    front: Why is HCV genotyping less critical today?
+    back: Pangenotypic DAAs work across genotypes. Genotyping is still used for treatment planning.
+    src: { page: 92 }
+    status: unverified
+  - id: hb.L05.020
+    kind: cloze
+    topic: diagnosis
+    text: "HCV fibrosis is assessed non-invasively with {{c1::FibroScan}}, {{c2::APRI}} and {{c3::FIB-4}}; liver biopsy is now rarely used."
+    src: { page: 92 }
+    status: unverified
+
+  # --- Treatment and DAAs (p92-93) ---
+  - id: hb.L05.021
+    kind: card
+    topic: daas
+    front: Define SVR12 in HCV treatment.
+    back: Undetectable HCV RNA 12 weeks after the end of treatment. SVR12 means cure.
+    src: { page: 92, quote: "undetectable HCV RNA 12 weeks after treatment (SVR12 = cure)" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.022
+    kind: card
+    topic: daas
+    front: Three drawbacks of the old interferon ± ribavirin regimen?
+    back: Toxic, long duration, and low efficacy.
+    src: { page: 92 }
+    status: unverified
+  - id: hb.L05.023
+    kind: cloze
+    topic: daas
+    text: "Modern DAAs are {{c1::oral}}, {{c2::short duration}}, and cure more than {{c3::95%}} of patients."
+    src: { page: 92 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L05.024
+    kind: table
+    topic: daas
+    title: DAA classes, examples and targets (book table)
+    columns: [Class, Examples, Target]
+    rows:
+      - ["NS3/4A protease inhibitors", "Grazoprevir, glecaprevir", "Viral polyprotein cleavage"]
+      - ["NS5A inhibitors", "Ledipasvir, velpatasvir, pibrentasvir", "Replication complex"]
+      - ["NS5B polymerase inhibitors", "Sofosbuvir", "Viral RNA replication"]
+    blanks: [[0, 1], [0, 2], [1, 1], [1, 2], [2, 1], [2, 2]]
+    src: { page: 92 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.025
+    kind: cloze
+    topic: daas
+    text: "The -previr drugs (grazoprevir, glecaprevir) inhibit {{c1::NS3/4A protease}}; the -asvir drugs inhibit {{c2::NS5A}}; sofosbuvir inhibits {{c3::NS5B polymerase}}."
+    src: { page: 93 }
+    status: unverified
+  - id: hb.L05.026
+    kind: table
+    topic: daas
+    title: Common HCV regimens (book list)
+    columns: [Regimen, Brand, Duration, Genotypes]
+    rows:
+      - ["Sofosbuvir + velpatasvir", "Epclusa", "12 weeks", "Pangenotypic"]
+      - ["Glecaprevir + pibrentasvir", "Mavyret", "8–12 weeks", "Pangenotypic"]
+      - ["Sofosbuvir + ledipasvir", "Harvoni", "12 weeks", "Genotypes 1 and 4"]
+      - ["Sofosbuvir + daclatasvir", "—", "—", "Pangenotypic; special considerations for genotype 3"]
+    blanks: [[0, 2], [1, 2], [2, 3], [3, 3]]
+    src: { page: 93 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.027
+    kind: cloze
+    topic: daas
+    text: "Glecaprevir + pibrentasvir (Mavyret) runs {{c1::8–12 weeks}}; sofosbuvir + velpatasvir (Epclusa) runs {{c2::12 weeks}}."
+    src: { page: 93 }
+    status: unverified
+    tags: [numbers]
+
+  # --- Management (p93) ---
+  - id: hb.L05.028
+    kind: order
+    topic: management
+    prompt: Put the pre-treatment work-up for HCV in the lecture's order.
+    steps:
+      - Confirm HCV RNA
+      - Assess fibrosis (FIB-4, FibroScan)
+      - Test for HIV and HBV, including total anti-HBc
+      - Check liver and renal function
+      - Pregnancy test if relevant
+      - Check for drug–drug interactions
+    src: { page: 93 }
+    status: unverified
+  - id: hb.L05.029
+    kind: card
+    topic: management
+    front: Which HBV marker must be checked before starting DAAs, beyond HBsAg?
+    back: Total anti-HBc (total HBcAb), because DAAs can reactivate HBV.
+    src: { page: 93 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.030
+    kind: card
+    topic: management
+    front: Which drug does the lecture call absolutely contraindicated with DAAs, and why?
+    back: Amiodarone. It can cause serious bradycardia (the known interaction is with sofosbuvir).
+    src: { page: 93, quote: "Amiodarone is absolutely contraindicated… can result in serious bradycardia" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.031
+    kind: card
+    topic: management
+    front: Two things to monitor during DAA treatment?
+    back: Adherence and drug interactions.
+    src: { page: 93 }
+    status: unverified
+  - id: hb.L05.032
+    kind: enumerate
+    topic: management
+    prompt: After SVR in a cirrhotic HCV patient, what continued follow-up does the lecture require?
+    points:
+      - HCV RNA at 12 weeks post-treatment to confirm SVR12
+      - HCC surveillance every 6 months
+      - Primary prophylaxis against variceal bleeding in those with CSPH
+      - Prevention of decompensation in those with CSPH
+    pass: 3
+    src: { page: 93 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.033
+    kind: cloze
+    topic: management
+    text: "Cirrhotic patients still need HCC surveillance every {{c1::6 months}} after SVR, because cure does not remove the cancer risk of cirrhosis."
+    src: { page: 93 }
+    status: unverified
+
+  # --- Special populations (p94) ---
+  - id: hb.L05.034
+    kind: card
+    topic: special
+    front: How does the lecture adjust DAA therapy in decompensated cirrhosis?
+    back: Add ribavirin, or extend treatment to 24 weeks.
+    src: { page: 94 }
+    status: unverified
+    update:
+      text: Protease-inhibitor regimens (glecaprevir/pibrentasvir, grazoprevir) are contraindicated in decompensated (Child-Pugh B or C) cirrhosis; use sofosbuvir/velpatasvir ± ribavirin.
+      ref: "EASL recommendations on treatment of hepatitis C 2020; AASLD-IDSA HCV guidance"
+    tags: [high-yield]
+  - id: hb.L05.035
+    kind: card
+    topic: special
+    front: Preferred DAA regimen in severe CKD, per the lecture?
+    back: Glecaprevir/pibrentasvir. Sofosbuvir is better avoided in severe CKD.
+    src: { page: 94 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.036
+    kind: card
+    topic: special
+    front: If only sofosbuvir regimens are available in severe CKD, what does the lecture advise?
+    back: Use them with close observation, without changing the sofosbuvir dose.
+    src: { page: 94 }
+    status: unverified
+  - id: hb.L05.037
+    kind: cloze
+    topic: special
+    text: "The ribavirin dose must be adjusted when creatinine clearance is below {{c1::50}} mL/min."
+    src: { page: 94 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L05.038
+    kind: card
+    topic: special
+    front: Are DAAs approved in pregnancy or lactation?
+    back: No. DAAs are not currently approved in pregnancy or lactation.
+    src: { page: 94 }
+    status: unverified
+  - id: hb.L05.039
+    kind: card
+    topic: special
+    front: When treating HCV in HBV co-infection, what must you watch for?
+    back: HBV reactivation. HCV is still treated in HIV or HBV co-infection.
+    src: { page: 94 }
+    status: unverified
+
+  # --- Prevention and screening (p94) ---
+  - id: hb.L05.040
+    kind: enumerate
+    topic: prevention
+    prompt: Mention the HCV screening recommendations in the lecture.
+    points:
+      - All adults 18 years and older, at least once
+      - "High-risk groups: IV drug users, prisoners, dialysis patients"
+      - Pregnant women, once in each pregnancy
+    pass: 3
+    src: { page: 94 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.041
+    kind: enumerate
+    topic: prevention
+    prompt: Mention three measures to prevent HCV.
+    points:
+      - Safe injections and blood screening
+      - Harm reduction in IV drug users
+      - Safe healthcare practices
+    pass: 3
+    src: { page: 94 }
+    status: unverified
+  - id: hb.L05.042
+    kind: card
+    topic: prevention
+    front: What does the lecture call Egypt's mass HCV screening program?
+    back: A global success model.
+    src: { page: 94 }
+    status: unverified
+
+  # --- MCQs ---
+  - id: hb.L05.043
+    kind: mcq
+    topic: diagnosis
+    stem: A 34-year-old blood donor in Alexandria is found to be anti-HCV positive. He feels well and his ALT is normal. What is the next step?
+    options:
+      - Start sofosbuvir/velpatasvir for 12 weeks
+      - Request HCV RNA by PCR
+      - Request HCV genotyping
+      - Arrange a liver biopsy
+      - Repeat anti-HCV in 6 months
+    answer: 1
+    why:
+      - Treatment needs confirmed viremia first; antibody alone may mean past cleared infection.
+      - Correct. HCV RNA (or core antigen) confirms active infection after a positive screen.
+      - Genotyping is for treatment planning and only after viremia is confirmed.
+      - Biopsy is rarely used now; fibrosis is staged non-invasively.
+      - Waiting delays diagnosis; confirmation is done now, not by repeating the screen.
+    src: { page: 92 }
+    status: unverified
+  - id: hb.L05.044
+    kind: mcq
+    topic: management
+    stem: A 62-year-old man with chronic HCV takes amiodarone for atrial fibrillation. He is about to start a sofosbuvir-based regimen. What is the main danger of this combination?
+    options:
+      - Severe hepatotoxicity
+      - Serious bradycardia
+      - Acute kidney injury
+      - QT shortening and torsades
+      - Loss of DAA efficacy
+    answer: 1
+    why:
+      - Hepatotoxicity is not the interaction the lecture warns about.
+      - Correct. Amiodarone is absolutely contraindicated because it can cause serious bradycardia.
+      - Renal injury is not the described risk.
+      - Amiodarone prolongs, not shortens, the QT; this is not the stated interaction.
+      - The risk is cardiac toxicity, not reduced antiviral effect.
+    src: { page: 93 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.045
+    kind: mcq
+    topic: daas
+    stem: Which of these drugs is an NS5B polymerase inhibitor?
+    options:
+      - Glecaprevir
+      - Velpatasvir
+      - Sofosbuvir
+      - Grazoprevir
+      - Pibrentasvir
+    answer: 2
+    why:
+      - Glecaprevir is an NS3/4A protease inhibitor.
+      - Velpatasvir is an NS5A inhibitor.
+      - Correct. Sofosbuvir inhibits the NS5B polymerase and so viral RNA replication.
+      - Grazoprevir is an NS3/4A protease inhibitor.
+      - Pibrentasvir is an NS5A inhibitor.
+    src: { page: 93 }
+    status: unverified
+  - id: hb.L05.046
+    kind: mcq
+    topic: special
+    stem: A 55-year-old woman on hemodialysis has chronic HCV (viremic, compensated liver). All DAAs are available. Which regimen does the lecture prefer?
+    options:
+      - Sofosbuvir + velpatasvir with reduced sofosbuvir dose
+      - Glecaprevir + pibrentasvir
+      - Sofosbuvir + ledipasvir plus full-dose ribavirin
+      - Pegylated interferon + ribavirin
+      - Defer treatment until after kidney transplant
+    answer: 1
+    why:
+      - Sofosbuvir is better avoided in severe CKD, and the lecture never reduces its dose.
+      - Correct. Glecaprevir/pibrentasvir is the preferred option in severe CKD.
+      - Ribavirin needs dose adjustment below CrCl 50, so full dose is wrong.
+      - Interferon regimens are toxic, long and less effective.
+      - Effective safe DAAs exist; no reason to delay.
+    src: { page: 94 }
+    status: unverified
+  - id: hb.L05.047
+    kind: mcq
+    topic: natural-history
+    stem: A nurse has acute HCV after a needlestick injury. Which statement about her prognosis is most accurate?
+    options:
+      - Almost all patients clear the virus spontaneously
+      - 15–45% clear the virus spontaneously; the rest become chronic
+      - Chronic infection is defined as viremia beyond 4 weeks
+      - About 80% develop cirrhosis within 5 years
+      - HCC usually occurs without cirrhosis
+    answer: 1
+    why:
+      - Most patients (55–85%) do not clear HCV.
+      - Correct. Spontaneous clearance is 15–45%; 55–85% persist beyond 6 months.
+      - Chronic means more than 6 months.
+      - Cirrhosis is about 15–30% over 20 years.
+      - HCC occurs mainly with cirrhosis.
+    src: { page: 91 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L05.048
+    kind: mcq
+    topic: management
+    stem: A patient finishes 12 weeks of sofosbuvir/velpatasvir. When is cure confirmed?
+    options:
+      - HCV RNA undetectable at week 4 of treatment
+      - HCV RNA undetectable at the end of treatment
+      - HCV RNA undetectable 12 weeks after the end of treatment
+      - Anti-HCV becomes negative
+      - ALT normalizes
+    answer: 2
+    why:
+      - On-treatment response is not cure.
+      - End-of-treatment response can still relapse.
+      - Correct. SVR12, undetectable RNA 12 weeks after treatment, equals cure.
+      - Anti-HCV usually stays positive for life after cure.
+      - ALT can normalize without viral clearance.
+    src: { page: 92 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L05.049
+    kind: mcq
+    topic: clinical
+    stem: A 50-year-old man with chronic HCV has palpable purpura, arthralgia and proteinuria with hematuria. Which extrahepatic manifestation best explains this?
+    options:
+      - Porphyria cutanea tarda
+      - Mixed cryoglobulinemia with glomerulonephritis
+      - IgA vasculitis unrelated to HCV
+      - Insulin resistance
+      - Non-Hodgkin lymphoma
+    answer: 1
+    why:
+      - Not listed in the lecture, and it causes blistering, not purpura with nephritis.
+      - Correct. Cryoglobulinemia and glomerulonephritis are HCV extrahepatic manifestations.
+      - With chronic HCV, the HCV-related cause comes first.
+      - Insulin resistance does not cause purpura or nephritis.
+      - Lymphoma is HCV-related but does not explain purpura and nephritis.
+    src: { page: 92 }
+    status: unverified
+  - id: hb.L05.050
+    kind: mcq
+    topic: special
+    stem: A patient with HCV, Child-Pugh B decompensated cirrhosis, is to start sofosbuvir/velpatasvir. Per the lecture, how is the regimen adjusted?
+    options:
+      - No adjustment is needed
+      - Add ribavirin or extend to 24 weeks
+      - Shorten to 8 weeks
+      - Halve the sofosbuvir dose
+      - Add pegylated interferon
+    answer: 1
+    why:
+      - The lecture says decompensated cirrhosis needs adjusted regimens.
+      - Correct. Add ribavirin, or increase the duration to 24 weeks.
+      - Shortening is for easy-to-treat patients, not decompensated ones.
+      - Sofosbuvir dose is not modified.
+      - Interferon is contraindicated and is the old toxic regimen.
+    src: { page: 94 }
+    status: unverified
+
+  # --- Cases ---
+  - id: hb.L05.051
+    kind: case
+    topic: management
+    stem: A 45-year-old Egyptian man is found anti-HCV positive during a national screening campaign. He has no symptoms.
+    steps:
+      - reveal: ""
+        question: What confirms active infection?
+        options: [HCV RNA by PCR, Repeat anti-HCV, Liver biopsy, Genotyping]
+        answer: 0
+        why: HCV RNA (or core antigen) confirms viremia; antibody alone may mean cleared infection.
+      - reveal: HCV RNA is detectable. Platelets 210, AST 40, ALT 52. FIB-4 is low and FibroScan 6 kPa.
+        question: Before choosing a DAA, which test besides HIV must be done?
+        options: [HBsAg and total anti-HBc, Anti-HAV IgM, Serum ceruloplasmin, AFP only]
+        answer: 0
+        why: The lecture lists HBV testing including total anti-HBc, because DAAs can reactivate HBV.
+      - reveal: HBV and HIV tests are negative. Renal function is normal. He takes no other drugs.
+        question: Which regimen fits?
+        options: ["Sofosbuvir + velpatasvir, 12 weeks", "Interferon + ribavirin, 48 weeks", "Sofosbuvir alone, 12 weeks", "Ribavirin alone"]
+        answer: 0
+        why: A pangenotypic DAA combination is standard; interferon is obsolete and monotherapy is not a regimen.
+      - reveal: He completes treatment.
+        question: How is cure documented?
+        options: [HCV RNA 12 weeks after treatment, Anti-HCV turning negative, Normal ALT at end of treatment, FibroScan improvement]
+        answer: 0
+        why: SVR12 equals cure.
+    src: { page: 93 }
+    status: unverified
+  - id: hb.L05.052
+    kind: case
+    topic: special
+    stem: A 58-year-old woman with chronic HCV has cirrhosis on FibroScan (25 kPa). Endoscopy shows small varices.
+    steps:
+      - reveal: She takes amiodarone for paroxysmal AF.
+        question: What must be addressed before a sofosbuvir regimen?
+        options: [Stop or replace amiodarone, Double the sofosbuvir dose, Add ribavirin, Nothing]
+        answer: 0
+        why: Amiodarone is absolutely contraindicated with sofosbuvir because of serious bradycardia.
+      - reveal: Her cardiologist switches her to another agent. She is compensated, eGFR 80.
+        question: She reaches SVR12. What follow-up does the lecture require?
+        options: [HCC surveillance every 6 months plus portal hypertension care, Discharge from clinic, Yearly anti-HCV, Repeat DAA course in 1 year]
+        answer: 0
+        why: Cirrhotic patients keep 6-monthly HCC surveillance and prophylaxis against bleeding and decompensation when CSPH is present.
+    src: { page: 93 }
+    status: unverified
+  - id: hb.L05.053
+    kind: case
+    topic: special
+    stem: A 30-year-old woman is anti-HCV positive with detectable HCV RNA at her first antenatal visit.
+    steps:
+      - reveal: ""
+        question: Should DAAs be started now?
+        options: ["No, DAAs are not approved in pregnancy", "Yes, sofosbuvir/velpatasvir", "Yes, glecaprevir/pibrentasvir", "Yes, with ribavirin"]
+        answer: 0
+        why: DAAs are not currently approved in pregnancy or lactation.
+      - reveal: She asks about the baby.
+        question: How common is vertical transmission of HCV?
+        options: [Rare, The main route, About 50%, Universal without treatment]
+        answer: 0
+        why: Vertical transmission is rare; children of HCV-positive mothers are still a risk group.
+    src: { page: 94 }
+    status: unverified
+
+  # --- Book essay questions (p95-96) ---
+  - id: hb.L05.054
+    kind: essay
+    topic: virology
+    prompt: Discuss the global epidemiology of HCV infection, including transmission routes and major risk factors.
+    outline:
+      - "Global prevalence and regional variation": ["~58 million with chronic HCV (WHO 2024)", "Genotypes 1, 3, 4 common in Egypt and the Middle East"]
+      - "Impact of national programs": ["Egypt once had the highest prevalence", "Mass screening and treatment: a global success model"]
+      - "Blood-borne transmission": ["Needle sharing, transfusion, unsafe procedures", "Sexual less common, vertical rare"]
+      - "Key risk groups": ["IVDU, unscreened blood, hemodialysis", "Healthcare workers, children of HCV-positive mothers"]
+    src: { page: 95 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L05.055
+    kind: essay
+    topic: natural-history
+    prompt: Describe the natural history of HCV infection and its progression to chronic liver disease.
+    outline:
+      - "Acute vs chronic": ["15–45% clear spontaneously", "55–85% persist beyond 6 months"]
+      - "Host factors influencing progression": ["Not detailed in the lecture text; include factors that speed fibrosis such as alcohol, co-infection and insulin resistance"]
+      - "Long-term complications": ["Cirrhosis ~15–30% over 20 years", "HCC mainly in cirrhosis"]
+      - "Role of fibrosis": ["Fibrosis stage drives prognosis and follow-up", "Staged by FibroScan, APRI, FIB-4"]
+    src: { page: 95 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L05.056
+    kind: essay
+    topic: diagnosis
+    prompt: Outline the diagnostic approach for a patient suspected to have hepatitis C.
+    outline:
+      - "Screening": ["Anti-HCV antibody"]
+      - "Confirmation": ["HCV RNA (PCR) or HCV core antigen"]
+      - "Fibrosis assessment": ["FIB-4, APRI, FibroScan", "Biopsy rarely needed"]
+      - "Genotyping": ["For treatment planning; less critical with pangenotypic DAAs"]
+    src: { page: 95 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L05.057
+    kind: essay
+    topic: daas
+    prompt: Compare and contrast older interferon-based regimens with modern DAA therapies for HCV.
+    outline:
+      - "Mechanism": ["Interferon: non-specific immune modulation", "DAAs: NS3/4A, NS5A, NS5B targets"]
+      - "Side effects": ["Interferon ± ribavirin: toxic", "DAAs: well tolerated"]
+      - "Duration and route": ["Interferon: long, injected", "DAAs: oral, 8–12 weeks"]
+      - "SVR and tolerability": ["Interferon: low efficacy", "DAAs: >95% cure"]
+      - "Global impact": ["Made mass treatment and elimination programs possible, as in Egypt"]
+    src: { page: 95 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L05.058
+    kind: essay
+    topic: prevention
+    prompt: Evaluate the public health strategies used to reduce the burden of HCV at a population level.
+    outline:
+      - "National screening programs": ["All adults ≥18 once; high-risk groups; each pregnancy", "Egypt's mass screening as model"]
+      - "Harm reduction": ["Needle exchange and safe injections for IVDU"]
+      - "Safe healthcare": ["Blood screening, safe injections and procedures"]
+      - "Education and WHO elimination goals": ["Awareness campaigns", "Screening plus harm reduction are key to elimination"]
+    src: { page: 96 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L05.059
+    kind: essay
+    topic: special
+    prompt: Discuss the challenges of managing HCV in special populations such as cirrhosis, renal failure, or HIV co-infection.
+    outline:
+      - "Decompensated cirrhosis": ["Adjusted regimens: add ribavirin or extend to 24 weeks"]
+      - "Renal impairment": ["Prefer glecaprevir/pibrentasvir in severe CKD", "Sofosbuvir without dose change if needed; adjust ribavirin if CrCl <50"]
+      - "HBV co-infection": ["Test total anti-HBc", "Monitor HBV reactivation"]
+      - "HIV co-infection": ["Treat HCV", "Check drug interactions with antiretrovirals"]
+    src: { page: 96 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L05.060
+    kind: essay
+    topic: management
+    prompt: Describe the components of a comprehensive HCV management plan from diagnosis through post-treatment follow-up.
+    outline:
+      - "Diagnosis and staging": ["Confirm HCV RNA", "Fibrosis by FIB-4 or FibroScan; HIV, HBV, liver and renal function, pregnancy test"]
+      - "Choosing a DAA": ["Pangenotypic regimen", "Check drug–drug interactions (amiodarone contraindicated)"]
+      - "During treatment": ["Adherence", "Drug interactions"]
+      - "SVR confirmation": ["HCV RNA 12 weeks after treatment"]
+      - "Long-term care in cirrhosis": ["HCC surveillance every 6 months", "Variceal and decompensation prophylaxis if CSPH"]
+    src: { page: 96 }
+    status: unverified
+    tags: [book-question]
