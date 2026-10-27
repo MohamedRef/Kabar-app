@@ -5,9 +5,9 @@
 //! with pan and zoom, and a side panel for the chosen place. Nothing is
 //! locked: every lesson opens, and "Take a flight" opens the level test.
 
-use std::collections::BTreeSet;
+use std::collections::{BTreeSet, HashMap};
 use std::rc::Rc;
-use std::sync::LazyLock;
+use std::sync::{LazyLock, Mutex};
 
 use dioxus::prelude::*;
 use kabar_core::journey::layout::{MapLayout, RouteStyle, SegmentKind};
@@ -20,9 +20,7 @@ use kabar_core::locale::{UiLanguage, format_number};
 use crate::i18n::Msg;
 use crate::{Db, Ui};
 use kabar_protocol::coach::CoachProfile;
-
-const CURRICULUM_ID: &str = include_str!("../../../curriculum/indonesian.yaml");
-const CURRICULUM_JV: &str = include_str!("../../../curriculum/javanese.yaml");
+use kabar_protocol::lesson::Souvenir;
 
 const JOURNEY_CSS: &str = include_str!("../assets/journey.css");
 const PAN_ZOOM_JS: &str = include_str!("../assets/journey.js");
@@ -37,8 +35,9 @@ struct Routes {
 }
 
 static ROUTES: LazyLock<Result<Routes, String>> = LazyLock::new(|| {
-    let id = parse_curriculum(CURRICULUM_ID).map_err(|e| e.to_string())?;
-    let jv = parse_curriculum(CURRICULUM_JV).map_err(|e| e.to_string())?;
+    use crate::embedded::{CURRICULUM_ID, CURRICULUM_JV, unpack};
+    let id = parse_curriculum(&unpack(CURRICULUM_ID)).map_err(|e| e.to_string())?;
+    let jv = parse_curriculum(&unpack(CURRICULUM_JV)).map_err(|e| e.to_string())?;
     let (id_map, jv_map) = (MapLayout::new(&id), MapLayout::new(&jv));
     Ok(Routes { id, jv, id_map, jv_map })
 });
@@ -770,12 +769,16 @@ pub fn current_unit(completed: &BTreeSet<String>, start: Option<&str>, javanese:
 /// The souvenir a unit's lesson content ships (its target-language name and
 /// the note in the UI language). The curriculum's card is English only, so
 /// it's the fallback for units whose lessons aren't written yet.
+/// Each unit's lessons are unpacked and parsed once, not on every render.
 fn local_souvenir(unit_id: &str, lang: UiLanguage) -> Option<(String, String)> {
-    find_unit(unit_id)?.lessons.iter().rev().find_map(|l| {
-        let lesson = kabar_core::lesson::parse_lesson(crate::lesson::lesson_content(&l.id)?).ok()?;
-        let s = lesson.souvenir?;
-        Some((s.title, kabar_core::lesson::pick(&s.note, lang).to_string()))
-    })
+    static FOUND: LazyLock<Mutex<HashMap<String, Option<Souvenir>>>> = LazyLock::new(Default::default);
+    let mut found = FOUND.lock().unwrap_or_else(|e| e.into_inner());
+    let s = found.entry(unit_id.to_string()).or_insert_with(|| {
+        find_unit(unit_id)?.lessons.iter().rev().find_map(|l| {
+            kabar_core::lesson::parse_lesson(&crate::lesson::lesson_content(&l.id)?).ok()?.souvenir
+        })
+    });
+    s.as_ref().map(|s| (s.title.clone(), kabar_core::lesson::pick(&s.note, lang).to_string()))
 }
 
 #[component]

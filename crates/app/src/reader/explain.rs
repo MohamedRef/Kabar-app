@@ -22,14 +22,14 @@ use crate::Ui;
 use crate::i18n::Msg;
 use crate::teach::Ai;
 
-// `GRAMMAR`: every `content/grammar/<lang>/<id>.yaml`, listed by build.rs.
-include!(concat!(env!("OUT_DIR"), "/grammar.rs"));
+use crate::embedded::{self, GRAMMAR};
 
 /// The embedded grammar library, parsed once.
 pub fn library() -> &'static Library {
     static LIBRARY: OnceLock<Library> = OnceLock::new();
     LIBRARY.get_or_init(|| {
-        let (library, problems) = Library::from_yaml(GRAMMAR.iter().copied());
+        let files: Vec<_> = embedded::all(GRAMMAR).collect();
+        let (library, problems) = Library::from_yaml(files.iter().map(|(id, yaml)| (*id, yaml.as_str())));
         for p in problems {
             eprintln!("kabar: grammar entry skipped: {p}");
         }
@@ -305,7 +305,8 @@ mod tests {
 
     #[test]
     fn every_embedded_grammar_file_loads() {
-        let (lib, problems) = Library::from_yaml(GRAMMAR.iter().copied());
+        let files: Vec<_> = embedded::all(GRAMMAR).collect();
+        let (lib, problems) = Library::from_yaml(files.iter().map(|(id, yaml)| (*id, yaml.as_str())));
         assert!(problems.is_empty(), "{problems:#?}");
         assert_eq!(lib.len(), GRAMMAR.len());
         assert!(GRAMMAR.len() > 100);
