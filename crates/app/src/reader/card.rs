@@ -7,6 +7,7 @@ use kabar_core::locale::UiLanguage;
 use kabar_core::settings::PronMode;
 use kabar_protocol::content::Lang;
 use kabar_protocol::reader::WordStatus;
+use kabar_protocol::srs::StudyLanguage;
 
 use super::content::taught_info;
 use super::doc::{Tag, Word};
@@ -15,6 +16,7 @@ use super::glossary::{Shift, SpeechLevel, WordInfo, WordLang};
 use super::morph::MorphDetail;
 use super::{Panel, Peek, ReaderState};
 use crate::annotated::parts::{PartsLine, SayWord};
+use crate::coach::Coach;
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
 use crate::pron::{Pron, PronGuide};
@@ -95,6 +97,18 @@ pub fn PeekView(peek: Peek) -> Element {
             }
         }
     }
+}
+
+/// Records the lookup once per word shown (see `review::note_evidence`).
+#[component]
+fn NoteLookup(language: StudyLanguage, words: Vec<String>) -> Element {
+    let db = use_context::<Db>();
+    let coach = use_context::<Coach>();
+    use_effect(use_reactive!(|(language, words)| {
+        let signals: Vec<_> = words.into_iter().map(|w| (w, kabar_core::review::Signal::LookedUp)).collect();
+        crate::review::note_evidence(&db, &coach, language, &signals);
+    }));
+    rsx! {}
 }
 
 /// Surface word, normalized form and language tag.
@@ -223,11 +237,24 @@ fn WordCard(i: usize) -> Element {
         context: Some(sentence.clone()),
     });
 
+    // Opening a deck word's card to read its meaning is evidence for its review.
+    let lookup = (w.key.is_some() && w.tag != Tag::English).then(|| {
+        let javanese = w.info.as_ref().map(|i| i.lang) == Some(WordLang::Javanese) || w.tag == Tag::Javanese;
+        let words =
+            [w.info.as_ref().map(|i| i.lemma.clone()), Some(w.analyzed.lookup_form()), Some(surface.clone())];
+        (
+            if javanese { StudyLanguage::Jv } else { StudyLanguage::Id },
+            words.into_iter().flatten().collect::<Vec<_>>(),
+        )
+    });
     let word_tag = if w.tag == Tag::Javanese { "jv" } else { "id" }.to_string();
 
     rsx! {
         div { class: "word-card",
             Headline { w: w.clone(), surface: surface.clone() }
+            if let Some((language, words)) = lookup {
+                NoteLookup { language, words }
+            }
 
             if let Some((parts, class)) = breakdown {
                 div { class: "field",
@@ -571,7 +598,7 @@ pub(crate) fn speak(text: &str, lang_tag: &str) {
         Err(SpeakError::UseWebView) => {}
         Ok(()) => return,
         Err(e) => {
-            eprintln!("kabar: no reader audio: {e:?}");
+            crate::diag::report!("no reader audio: {e:?}");
             return;
         }
     }

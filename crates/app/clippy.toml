@@ -1,0 +1,5 @@
+# Problems are reported through diag::report!, which reaches logcat on
+# Android (where stderr goes nowhere) and Settings → Your data.
+disallowed-macros = [
+    { path = "std::eprintln", reason = "use crate::diag::report! so it reaches logcat and Settings" },
+]

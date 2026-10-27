@@ -169,7 +169,7 @@ pub fn OfflinePacks() -> Element {
             let result = rx.await.unwrap_or_else(|_| Err("stopped".into()));
             busy.write().remove(&id);
             if let Err(e) = result {
-                eprintln!("kabar: pack {id}: {e}");
+                crate::diag::report!("pack {id}: {e}");
                 notice.set(Some(if e == NOT_CONFIGURED { Notice::NotConfigured } else { Notice::Failed }));
             }
             reload();
@@ -185,7 +185,7 @@ pub fn OfflinePacks() -> Element {
                 let _ = tx.send(refresh_index(store).map(drop));
             });
             if let Ok(Err(e)) = rx.await {
-                eprintln!("kabar: pack index: {e}");
+                crate::diag::report!("pack index: {e}");
                 notice.set(Some(Notice::Failed));
             }
             checking.set(false);

@@ -48,6 +48,7 @@ if command -v aapt2 >/dev/null; then
   fi
   grep -q "TTS_SERVICE" <<<"$manifest" || fail "The manifest lost its text-to-speech <queries> block."
   grep -q "REQUEST_INSTALL_PACKAGES" <<<"$manifest" || fail "The manifest lost REQUEST_INSTALL_PACKAGES (self-updates)."
+  grep -q "windowSoftInputMode" <<<"$manifest" || fail "MainActivity lost windowSoftInputMode=adjustResize: the keyboard would cover the Check button."
   # A debuggable APK runs slower and lets anyone with USB read Kabar's data.
   if grep -q "^application-debuggable" <<<"$badging"; then
     fail "The APK is debuggable: build it with scripts/android-release-apk.sh."

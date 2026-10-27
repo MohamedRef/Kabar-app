@@ -15,7 +15,6 @@ use kabar_core::coach::level::{Moved, decide};
 use kabar_core::coach::voice::Line;
 use kabar_core::lesson::level_test::{Scored, SelfGrade, TestResults, TestRunner, TestStep, parse_test};
 use kabar_core::lesson::{Answer, pick, references};
-use kabar_core::srs::Scheduler;
 use kabar_core::stats::level_check::{self as lc, mini_check, month_seed};
 use kabar_core::stats::{self as core_stats, pace};
 use kabar_protocol::coach::{LocalDate, Skill};
@@ -106,7 +105,8 @@ fn conclude(db: &Db, coach: Coach, s: &Setup, runner: Option<&TestRunner>) -> Le
     let radar = lc::radar(&check_skills, &recent);
 
     // Kak Nur's rule, fed with the full level test (if fresh) and the month.
-    let retention = core_stats::retention(&Scheduler::default(), &logs.log, now, lc::LOOKBACK_DAYS as u64);
+    let sched = crate::schedule::scheduler(&coach, &db.0.borrow());
+    let retention = core_stats::retention(&sched, &logs.log, now, lc::LOOKBACK_DAYS as u64);
     let active = core_stats::window(&totals, today, lc::LOOKBACK_DAYS).days;
     let (tests, _) = level_tests(db, &s.level, coach.offset());
     let level_test = s.pass_mark.and_then(|mark| lc::fresh_level_test(&tests, mark, today));
@@ -135,7 +135,7 @@ fn conclude(db: &Db, coach: Coach, s: &Setup, runner: Option<&TestRunner>) -> Le
         duration_ms: res.as_ref().map_or(0, |r| r.duration_ms),
     };
     if let Err(e) = db.0.borrow_mut().record_lesson_event(LEVEL_CHECK_LESSON_ID, LEVEL_CHECK_KIND, &result) {
-        eprintln!("kabar: saving the level check failed: {e}");
+        crate::diag::report!("saving the level check failed: {e}");
     }
     // Kak Nur's log: one practice entry per skill (reports, weak spots).
     if let Some(r) = runner {

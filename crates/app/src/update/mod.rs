@@ -380,7 +380,7 @@ impl Updater {
             f(&mut s.prefs);
             s.channel = self.info.channel(s.prefs.channel);
             if let Err(e) = save_prefs(&self.dir, &s.prefs) {
-                eprintln!("kabar: update prefs: {e}");
+                crate::diag::report!("update prefs: {e}");
             }
         });
     }
@@ -501,7 +501,7 @@ impl Updater {
         match self.fetch_build(&format!("{base}/{}", offer.asset.file), &offer, &path) {
             Ok(()) => {
                 if let Err(e) = save_staged(&self.dir, &offer) {
-                    eprintln!("kabar: update staged.json: {e}");
+                    crate::diag::report!("update staged.json: {e}");
                 }
                 self.set_phase(Phase::Ready(offer));
             }
@@ -723,7 +723,7 @@ pub fn apply_staged_on_launch() {
             bundle::relaunch(&app);
         }
         Err(e) => {
-            eprintln!("kabar: update {} not applied: {e}", offer.label());
+            crate::diag::report!("update {} not applied: {e}", offer.label());
             let mut prefs = prefs;
             prefs.auto_failed = Some(offer.key());
             let _ = save_prefs(&dir, &prefs);

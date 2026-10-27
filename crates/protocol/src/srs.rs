@@ -55,6 +55,34 @@ pub struct ReviewEvent {
     /// Time spent answering.
     pub duration_ms: u32,
     pub mode: ReviewMode,
+    /// Where the evidence came from. Absent in older payloads (= a review).
+    #[serde(default, skip_serializing_if = "Evidence::is_review")]
+    pub evidence: Evidence,
+}
+
+/// What a review event is evidence of. Besides real reviews, the learner's
+/// memory of a deck word shows elsewhere: answering it in a lesson exercise
+/// or tapping it for its meaning while reading. Those move the card's
+/// schedule but stay out of review counts and retention.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub enum Evidence {
+    /// A review-screen answer.
+    #[default]
+    Review,
+    /// A lesson or level-test exercise that tested the word.
+    Exercise,
+    /// The learner looked the word up while reading (always "Again").
+    Lookup,
+    /// From a newer client: it moves the schedule but is never counted.
+    #[serde(other)]
+    Other,
+}
+
+impl Evidence {
+    pub fn is_review(&self) -> bool {
+        *self == Self::Review
+    }
 }
 
 /// Bumped when [`Card`] changes shape; older payloads still read through
@@ -211,9 +239,18 @@ mod tests {
             rating: Rating::Good,
             duration_ms: 1200,
             mode: ReviewMode::CardWall,
+            evidence: Evidence::Review,
         };
         let json = serde_json::to_string(&ev).unwrap();
         assert!(json.contains(r#""mode":"card-wall""#));
+        assert!(!json.contains("evidence"), "reviews keep the old shape");
         assert_eq!(serde_json::from_str::<ReviewEvent>(&json).unwrap(), ev);
+
+        let lookup = ReviewEvent { evidence: Evidence::Lookup, ..ev };
+        let json = serde_json::to_string(&lookup).unwrap();
+        assert!(json.contains(r#""evidence":"lookup""#));
+        assert_eq!(serde_json::from_str::<ReviewEvent>(&json).unwrap(), lookup);
+        let newer = json.replace(r#""lookup""#, r#""listening""#);
+        assert_eq!(serde_json::from_str::<ReviewEvent>(&newer).unwrap().evidence, Evidence::Other);
     }
 }

@@ -27,7 +27,7 @@ fn make_due_report(db: &Db, coach: Coach, profile: &CoachProfile) {
     let events = coach.events.peek().clone();
     let r = report_for_week(&events, week, coach.today());
     if let Err(e) = db.0.borrow_mut().save_report(&r) {
-        eprintln!("kabar: saving the weekly report failed: {e}");
+        crate::diag::report!("saving the weekly report failed: {e}");
     }
 }
 

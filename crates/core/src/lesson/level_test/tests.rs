@@ -256,3 +256,35 @@ fn the_progress_bar_walks_the_items() {
     r.answer(&Answer::Choice(1), EG);
     assert!((r.fraction() - 2.0 / 8.0).abs() < 1e-4);
 }
+
+#[test]
+fn tagged_items_point_back_to_their_units() {
+    let tagged = PLACEMENT
+        .replace("{id: p3,", "{id: p3, unit: bipa2.u10,")
+        .replace("{id: p4,", "{id: p4, unit: bipa2.u03,")
+        .replace("{id: p1,", "{id: p1, unit: bipa1.u01,");
+    let mut r = TestRunner::new(parse_test(&tagged).unwrap());
+    r.start();
+    r.answer(&Answer::Choice(0), EG);
+    r.answer(&Answer::Choice(0), EG); // bipa1: 100%
+    r.answer(&Answer::Choice(1), EG); // p3 (u10) wrong
+    r.answer(&Answer::Choice(1), EG); // p4 (u03) wrong → start in bipa2
+    let res = r.results();
+    assert_eq!(res.start_level.as_deref(), Some("bipa2"));
+    // Route order, not string order: u03 comes before u10.
+    assert_eq!(res.start_unit.as_deref(), Some("bipa2.u03"));
+    assert_eq!(res.weak_units, [("bipa2.u03".to_string(), 1.0), ("bipa2.u10".to_string(), 1.0)]);
+    assert_eq!(r.placement().unwrap().start_unit.as_deref(), Some("bipa2.u03"));
+}
+
+#[test]
+fn untagged_tests_have_no_weak_units() {
+    let mut r = placement();
+    r.start();
+    for _ in 0..4 {
+        r.answer(&Answer::Choice(1), EG);
+    }
+    let res = r.results();
+    assert!(res.weak_units.is_empty());
+    assert_eq!(res.start_unit, None);
+}

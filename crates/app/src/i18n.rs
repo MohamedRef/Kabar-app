@@ -77,6 +77,13 @@ pub enum Msg {
     ExportSaving,
     ExportSaved,
     ExportFailed,
+    DiagTitle,
+    DiagBody,
+    DiagEmpty,
+    DiagCount,
+    DiagRefresh,
+    DiagCopy,
+    DiagCopied,
     ExportAndroidHint,
     PenLabIntro,
     PenLabClear,
@@ -282,6 +289,10 @@ pub enum Msg {
     RemindersElsewhere,
     RemindersBlocked,
     RemindersAllow,
+    RemindHere,
+    RemindHereHint,
+    RemindersAsleep,
+    RemindersBattery,
     QuietFrom,
     QuietTo,
     ReportWhen,
@@ -407,6 +418,12 @@ pub enum Msg {
     DetectiveBlurb,
     DetectiveIntro,
     DetectiveAllRules,
+    DetectiveShowAllRules,
+    DetectiveShowFewerRules,
+    SoundVowel,
+    SoundDropped,
+    SoundSukun,
+    SoundWordEnd,
     DetectiveGuessArabic,
     DetectiveGuessIndonesian,
     DetectiveNoRounds,
@@ -599,6 +616,13 @@ pub enum Msg {
     PairsTipTitle,
     PairsTheTwoWords,
     SettingsPron,
+    SettingsRetention,
+    RetentionLight,
+    RetentionBalanced,
+    RetentionFirm,
+    RetentionHint,
+    RetentionTuned,
+    RetentionLearning,
     PronModeOn,
     PronModeTap,
     PronModeOff,
@@ -837,6 +861,33 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (CostClaudeHowTo, En) => {
             "To switch it on, set CLAUDE_ENABLED = \"true\" in Kabar Cloud's wrangler.toml and run just deploy-cloud. An in-app switch comes with the AI engines screen."
         }
+        (DiagTitle, ArEg) => "اللي حصل مؤخرًا",
+        (DiagTitle, Ar) => "ما حدث مؤخرًا",
+        (DiagTitle, En) => "What happened lately",
+        (DiagBody, ArEg) => {
+            "لو حاجة اشتغلت غلط، انسخ دول وابعتهم. فيهم بس رسايل التطبيق، من غير كلامك ولا مفاتيح الدخول."
+        }
+        (DiagBody, Ar) => {
+            "إن عمل شيء على غير المتوقع، انسخ هذه السطور وأرسلها. فيها رسائل التطبيق فقط، بلا نصوصك ولا مفاتيح الدخول."
+        }
+        (DiagBody, En) => {
+            "If something misbehaved, copy these and send them. They hold only the app's own messages, never your texts or sign-in keys."
+        }
+        (DiagEmpty, ArEg) => "مفيش حاجة غلط من ساعة ما فتحت التطبيق.",
+        (DiagEmpty, Ar) => "لم يحدث أي خطأ منذ فتح التطبيق.",
+        (DiagEmpty, En) => "Nothing has gone wrong since Kabar opened.",
+        (DiagCount, ArEg) => "{n} سطر",
+        (DiagCount, Ar) => "{n} سطر",
+        (DiagCount, En) => "{n} lines",
+        (DiagRefresh, ArEg) => "حدّث",
+        (DiagRefresh, Ar) => "تحديث",
+        (DiagRefresh, En) => "Refresh",
+        (DiagCopy, ArEg) => "انسخ",
+        (DiagCopy, Ar) => "نسخ",
+        (DiagCopy, En) => "Copy",
+        (DiagCopied, ArEg) => "اتنسخ",
+        (DiagCopied, Ar) => "نُسخ",
+        (DiagCopied, En) => "Copied",
         (ExportTitle, ArEg | Ar) => "بياناتك",
         (ExportTitle, En) => "Your data",
         (ExportBody, ArEg) => {
@@ -1448,10 +1499,14 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (QuietHours, ArEg) => "ساعات الهدوء",
         (QuietHours, Ar) => "ساعات الهدوء",
         (QuietHours, En) => "Quiet hours",
-        (RemindersElsewhere, ArEg) => "التذكيرات بتوصلك على الموبايل والتابلت. على الماك لسه جاية قريب.",
-        (RemindersElsewhere, Ar) => "تصلك التذكيرات على الهاتف والجهاز اللوحي، وعلى الماك قريبًا.",
+        (RemindersElsewhere, ArEg) => {
+            "التذكيرات بتوصلك على الموبايل. هنا بتشتغل في تطبيق \u{2068}Kabar\u{2069} المتسطّب بس."
+        }
+        (RemindersElsewhere, Ar) => {
+            "تصلك التذكيرات على الهاتف، وهنا تعمل في تطبيق \u{2068}Kabar\u{2069} المثبّت فقط."
+        }
         (RemindersElsewhere, En) => {
-            "Reminders reach you on your phone and tablet. On the Mac they're coming soon."
+            "Reminders reach you on your phone. Here they work in the installed Kabar app."
         }
         (RemindersBlocked, ArEg) => {
             "الإشعارات مقفولة لـ\u{2068}Kabar\u{2069} على الجهاز ده، فمش هقدر أفكّرك هنا."
@@ -1465,6 +1520,30 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RemindersAllow, ArEg) => "اسمح بالإشعارات",
         (RemindersAllow, Ar) => "اسمح بالإشعارات",
         (RemindersAllow, En) => "Allow notifications",
+        (RemindHere, ArEg) => "فكّرني على الجهاز ده",
+        (RemindHere, Ar) => "ذكّرني على هذا الجهاز",
+        (RemindHere, En) => "Remind me on this device",
+        (RemindHereHint, ArEg) => {
+            "عادةً الموبايل بس هو اللي بيرنّ، عشان ميرنّش جهازين مع بعض. شغّلها هنا لو عايز الجهاز ده كمان."
+        }
+        (RemindHereHint, Ar) => {
+            "عادةً يرنّ الهاتف وحده كي لا يرنّ جهازان معًا. فعّلها هنا إن أردت هذا الجهاز أيضًا."
+        }
+        (RemindHereHint, En) => {
+            "Usually only your phone rings, so two devices never go off together. Turn this on to hear from me here too."
+        }
+        (RemindersAsleep, ArEg) => {
+            "سامسونج ممكن تنيّم \u{2068}Kabar\u{2069} لو مافتحتهوش كام يوم، وساعتها التذكيرات بتقف. من البطارية اختار «بدون قيود» عشان أفضل أفكّرك."
+        }
+        (RemindersAsleep, Ar) => {
+            "قد يُنيم سامسونج \u{2068}Kabar\u{2069} إن لم تفتحه أيامًا فتتوقف التذكيرات. اختر «غير مقيّد» من إعدادات البطارية لأبقى أذكّرك."
+        }
+        (RemindersAsleep, En) => {
+            "Samsung may put Kabar to sleep after a few days unopened, and reminders stop. Set its battery use to Unrestricted so I can keep reminding you."
+        }
+        (RemindersBattery, ArEg) => "افتح إعدادات البطارية",
+        (RemindersBattery, Ar) => "افتح إعدادات البطارية",
+        (RemindersBattery, En) => "Open battery settings",
         (QuietFrom, ArEg | Ar) => "من",
         (QuietFrom, En) => "From",
         (QuietTo, ArEg) => "لحد",
@@ -1826,6 +1905,22 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (DetectiveAllRules, ArEg) => "كل القواعد",
         (DetectiveAllRules, Ar) => "كل القواعد",
         (DetectiveAllRules, En) => "All rules",
+        (DetectiveShowAllRules, ArEg) => "وريني كل القواعد ({n})",
+        (DetectiveShowAllRules, Ar) => "اعرض كل القواعد ({n})",
+        (DetectiveShowAllRules, En) => "Show every rule ({n})",
+        (DetectiveShowFewerRules, ArEg) => "وريني الأشهر بس",
+        (DetectiveShowFewerRules, Ar) => "اعرض الأشهر فقط",
+        (DetectiveShowFewerRules, En) => "Just the common ones",
+        // Placeholders on either side of a sound rule (content/bridge/sound-rules.json).
+        (SoundVowel, ArEg | Ar) => "(حركة)",
+        (SoundVowel, En) => "(vowel)",
+        (SoundDropped, ArEg) => "(بيختفي)",
+        (SoundDropped, Ar) => "(يُحذف)",
+        (SoundDropped, En) => "(dropped)",
+        (SoundSukun, ArEg | Ar) => "(سكون)",
+        (SoundSukun, En) => "(no vowel)",
+        (SoundWordEnd, ArEg | Ar) => "(آخر الكلمة)",
+        (SoundWordEnd, En) => "(end of word)",
         (DetectiveGuessArabic, ArEg) => "إيه الكلمة العربي اللي ورا دي؟",
         (DetectiveGuessArabic, Ar) => "ما الكلمة العربية وراء هذه الكلمة؟",
         (DetectiveGuessArabic, En) => "Which Arabic word is behind it?",
@@ -2477,6 +2572,39 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (SettingsPron, ArEg) => "تعريب النطق (النطق بالحروف العربي)",
         (SettingsPron, Ar) => "النطق بالحروف العربية",
         (SettingsPron, En) => "Pronunciation in Arabic script",
+        (SettingsRetention, ArEg) => "عايز تفتكر الكلمات قد إيه؟",
+        (SettingsRetention, Ar) => "إلى أي حد تريد أن تتذكر الكلمات؟",
+        (SettingsRetention, En) => "How firmly to remember words",
+        (RetentionLight, ArEg) => "خفيف",
+        (RetentionLight, Ar) => "خفيف",
+        (RetentionLight, En) => "Light",
+        (RetentionBalanced, ArEg) => "متوازن",
+        (RetentionBalanced, Ar) => "متوازن",
+        (RetentionBalanced, En) => "Balanced",
+        (RetentionFirm, ArEg) => "ثابت",
+        (RetentionFirm, Ar) => "ثابت",
+        (RetentionFirm, En) => "Firm",
+        (RetentionHint, ArEg) => {
+            "كل كلمة بترجعلك في المعاد اللي هتكون فيه على وشك تنساها. كل ما النسبة تعلى، المراجعات تكتر. المتوازن هو الأنسب لمعظم الناس."
+        }
+        (RetentionHint, Ar) => {
+            "تعود كل كلمة في الوقت الذي تكون فيه على وشك نسيانها. كلما ارتفعت النسبة زادت المراجعات. المتوازن هو الأنسب لمعظم المتعلمين."
+        }
+        (RetentionHint, En) => {
+            "Each word comes back just as you're about to forget it. A higher target means more reviews. Balanced suits most learners."
+        }
+        (RetentionTuned, ArEg) => "المواعيد متظبطة على ذاكرتك انت، من {n} مراجعة.",
+        (RetentionTuned, Ar) => "المواعيد مضبوطة على ذاكرتك أنت، من {n} مراجعة.",
+        (RetentionTuned, En) => "Timing is tuned to your own memory, from {n} reviews.",
+        (RetentionLearning, ArEg) => {
+            "\u{2068}Kabar\u{2069} بيتعلم ذاكرتك: بعد حوالي {n} مراجعة هيظبط المواعيد عليك انت."
+        }
+        (RetentionLearning, Ar) => {
+            "يتعلّم \u{2068}Kabar\u{2069} ذاكرتك: بعد نحو {n} مراجعة سيضبط المواعيد عليك أنت."
+        }
+        (RetentionLearning, En) => {
+            "Kabar is learning your memory: after about {n} reviews it tunes the timing to you."
+        }
         (PronModeOn, ArEg) => "ظاهر على طول",
         (PronModeOn, Ar) => "ظاهر دائمًا",
         (PronModeOn, En) => "Always shown",

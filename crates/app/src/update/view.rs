@@ -300,7 +300,7 @@ fn PhaseView(phase: Phase, auto: bool) -> Element {
 fn open_install_permission() {
     #[cfg(target_os = "android")]
     if let Err(e) = crate::platform::android::open_install_permission() {
-        eprintln!("kabar: {e}");
+        crate::diag::report!("{e}");
     }
 }
 

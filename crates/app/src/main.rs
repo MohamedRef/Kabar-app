@@ -10,6 +10,7 @@ mod cloud;
 mod coach;
 mod cost;
 mod data_export;
+mod diag;
 mod embedded;
 mod fonts;
 mod i18n;
@@ -27,6 +28,7 @@ mod play;
 mod pron;
 mod reader;
 mod review;
+mod schedule;
 mod screens;
 mod settings;
 mod sounds;
@@ -182,7 +184,7 @@ impl Ui {
         let mut new = old.clone();
         f(&mut new);
         if let Err(e) = db.0.borrow_mut().save_settings(&old, &new) {
-            eprintln!("kabar: saving settings failed: {e}");
+            crate::diag::report!("saving settings failed: {e}");
         }
         self.settings.set(new);
     }
@@ -206,6 +208,7 @@ impl Ui {
 }
 
 fn main() {
+    diag::install_panic_hook();
     // Automatic updates on the Mac: a verified download from the last
     // session goes in before the window opens (and Kabar reopens).
     #[cfg(target_os = "macos")]
@@ -315,8 +318,9 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_width_tracking(ui.width, ui.tablet);
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
+    schedule::use_optimizer(db.clone(), ui, coach);
     use_learner_profile(&db, coach);
-    coach::notify::use_local_reminders(&db, coach, ui);
+    coach::notify::use_local_reminders(&db, coach, ui, prefs);
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
@@ -413,7 +417,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
         let mut handle = match cloud::start(config, path, device, vault) {
             Ok(h) => h,
             Err(e) => {
-                eprintln!("kabar: sync didn't start: {e}");
+                crate::diag::report!("sync didn't start: {e}");
                 return;
             }
         };

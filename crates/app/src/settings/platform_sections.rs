@@ -34,7 +34,7 @@ pub fn AndroidSection() -> Element {
         }
     });
     let mut open = move |page: AppPage| {
-        let ok = platform::open_app_page(page).map_err(|e| eprintln!("kabar: {e}")).is_ok();
+        let ok = platform::open_app_page(page).map_err(|e| crate::diag::report!("{e}")).is_ok();
         failed.set(!ok);
     };
     let pen = *prefs.pen_hover.read();
@@ -224,6 +224,7 @@ pub fn StorageSection() -> Element {
             span { class: "label", "{st(ui.lang(), S::DataFolder)}" }
             p { code { dir: "ltr", bdi { "{dir}" } } }
         }
+        crate::diag::DiagnosticsCard {}
     }
 }
 

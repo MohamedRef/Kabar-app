@@ -390,6 +390,14 @@ impl Store {
         Ok(Self { conn, device, clock })
     }
 
+    /// Changes whenever anything in the database may have changed: rows this
+    /// connection wrote, or a commit from another one (the sync engine). For
+    /// caching data derived from the store, like the review deck.
+    pub fn change_stamp(&self) -> Result<(u64, i64)> {
+        let others: i64 = self.conn.query_row("PRAGMA data_version", [], |r| r.get(0))?;
+        Ok((self.conn.total_changes(), others))
+    }
+
     pub fn device_id(&self) -> &DeviceId {
         &self.device
     }
@@ -1355,7 +1363,8 @@ mod tests {
         use kabar_protocol::test::PlacementResult;
         let mut store = Store::open_in_memory().unwrap();
         assert_eq!(store.placement().unwrap(), None);
-        let placed = |level: &str| PlacementResult { start_level: level.into(), sections: vec![] };
+        let placed =
+            |level: &str| PlacementResult { start_level: level.into(), start_unit: None, sections: vec![] };
         store.record_lesson_event("placement", "placed", &placed("bipa2")).unwrap();
         store.record_lesson_event("placement", "placed", &placed("bipa3")).unwrap();
         assert_eq!(store.placement().unwrap(), Some(placed("bipa3")));
@@ -1615,6 +1624,7 @@ mod tests {
             rating: Rating::Hard,
             duration_ms: 3000,
             mode: ReviewMode::CardWall,
+            evidence: Default::default(),
         };
         store.append_review(&remote).unwrap();
         assert_eq!(store.review_log().unwrap(), [remote]);
