@@ -101,14 +101,6 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: pedas
-        ar_eg: حرّاق
-        ar: حارّ
-        en: spicy
-      - text: manis
-        ar_eg: مسكّر
-        ar: حلو
-        en: sweet
       - text: asin
         ar_eg: مالح
         ar: مالح
@@ -121,7 +113,19 @@ exercises:
         ar_eg: مُر
         ar: مُرّ
         en: bitter
-    words: [pedas, manis, asin, asam, pahit]
+      - text: gurih
+        ar_eg: طعمه غني
+        ar: غنيّ الطعم
+        en: savoury
+      - text: sambal
+        ar_eg: شطة إندونيسي
+        ar: صلصة حارة
+        en: chilli sauce
+      - text: gula
+        ar_eg: سكر
+        ar: سكّر
+        en: sugar
+    words: [asin, asam, pahit, gurih, sambal, gula]
   - id: e02
     type: listen
     text: Kopinya pahit sekali.
@@ -140,7 +144,7 @@ exercises:
       ar_eg: lezat = لذيذ، من «لذّة». وgurih كلمة إندونيسية = طعمه غني.
       ar: lezat من «لذّة»، أما gurih فإندونيسية الأصل.
       en: lezat comes from «لذّة»; gurih is a native word (savoury).
-    words: [lezat]
+    words: [lezat, gurih]
   - id: e04
     type: fill_blank
     sentence: Es teh ini terlalu ___. Gulanya banyak sekali.
@@ -156,22 +160,23 @@ exercises:
       en: Lots of sugar makes it manis.
     words: [manis, gula, terlalu]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: عايز أطلب ساتيه فراخ.
-      ar: أريد أن أطلب ساتيه دجاج.
-      en: I'd like to order chicken satay.
-    answer: Saya mau pesan sate ayam.
-    distractors: [babi, pedas]
-    words: [pesan]
+    type: listen
+    text: Sate ini halal dan lezat.
+    options: ['Sate ini halal dan lezat.', 'Sate ini asin dan asam.', 'Sate ini pahit dan gurih.']
+    answer: 0
+    meaning:
+      ar_eg: السَتيه ده حلال ولذيذ.
+      ar: هذا الساتيه حلال ولذيذ.
+      en: This satay is halal and delicious.
+    words: [halal, lezat, asin, asam, pahit, gurih]
   - id: e06
     type: dictation
-    text: Semua makanannya halal.
+    text: Makanannya halal, tidak pakai gula.
     meaning:
-      ar_eg: كل الأكل بتاعه حلال.
-      ar: كل طعامه حلال.
-      en: All the food is halal.
-    words: [halal]
+      ar_eg: الأكل حلال، ومن غير سكر.
+      ar: الطعام حلال، وبلا سكّر.
+      en: The food is halal, with no sugar.
+    words: [halal, gula]
   - id: e07
     type: speaking
     text: Saya mau pesan nasi campur, tidak pakai sambal.
@@ -180,6 +185,15 @@ exercises:
       ar: أريد أن أطلب ناسي تشامبور بدون صلصة حارّة.
       en: I'd like to order nasi campur, without sambal.
     words: [pesan, pakai, sambal]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تسأل «الأكل هنا حلال؟»
+      ar: كيف تسأل «هل الطعام هنا حلال؟»
+      en: How do you ask "Is the food here halal?"
+    options: ['Makanan di sini halal?', 'Sambal di sini asam?', 'Makanan di sini lezat?']
+    answer: 0
+    words: [halal, sambal, asam, lezat]
 dialogue:
   title: Malam di pasar Gianyar
   lines:

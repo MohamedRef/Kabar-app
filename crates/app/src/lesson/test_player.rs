@@ -27,20 +27,26 @@ use crate::{Db, Screen, Ui};
 const TEST_CSS: &str = include_str!("../../assets/test.css");
 
 #[component]
-pub fn TestScreen(id: String, yaml: &'static str) -> Element {
+pub fn TestScreen(id: String, yaml: String) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.settings.read().ui_language;
-    let body = match parse_test(yaml) {
-        Err(e) => rsx! { Notice { title: lt(lang, L::BrokenTitle), body: e.to_string(), id: id.clone() } },
+    // Parsed once per test, not on every render.
+    let parsed = use_memo(use_reactive!(|yaml| match parse_test(&yaml) {
+        Err(e) => Err(e.to_string()),
         Ok(test) => {
             let issues = validate_test(&test);
             if issues.is_empty() {
-                rsx! { TestView { key: "{id}", test } }
+                Ok(test)
             } else {
-                let list = issues.iter().map(|i| i.to_string()).collect::<Vec<_>>().join("\n");
-                rsx! { Notice { title: lt(lang, L::BrokenTitle), body: list, id: id.clone() } }
+                Err(issues.iter().map(|i| i.to_string()).collect::<Vec<_>>().join("\n"))
             }
         }
+    }));
+    let body = match &*parsed.read() {
+        Err(problems) => {
+            rsx! { Notice { title: lt(lang, L::BrokenTitle), body: problems.clone(), id: id.clone() } }
+        }
+        Ok(test) => rsx! { TestView { key: "{id}", test: test.clone() } },
     };
     rsx! {
         style { {TEST_CSS} }

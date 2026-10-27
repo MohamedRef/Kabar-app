@@ -77,7 +77,7 @@ fn setup(db: &Db, coach: &Coach) -> Setup {
     let previous = checks.last().cloned();
     let last = previous.as_ref().map(|c| (c.level.as_str(), c.moved, c.date));
     let level = lc::current_level(&journey, last, last_pass);
-    let full = crate::lesson::test_content(&format!("{level}.test")).and_then(|y| parse_test(y).ok());
+    let full = crate::lesson::test_content(&format!("{level}.test")).and_then(|y| parse_test(&y).ok());
     Setup {
         today,
         pass_mark: full.as_ref().and_then(|t| t.pass_mark),
