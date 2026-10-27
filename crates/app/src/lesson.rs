@@ -696,6 +696,8 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
     let mut finished = use_signal(|| false);
     // Listening items skipped because the device has no voice for them.
     let mut voice_skips = use_signal(|| 0u32);
+    // The one step that carries the "no voice" note (see `voice_note_step`).
+    let mut voice_note_at = use_signal(|| None::<Step>);
 
     // Save where we are on open (Lanjut) and play the first exercise's audio.
     use_hook(move || {
@@ -825,15 +827,19 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
         if !*audio_missing.read() {
             return;
         }
-        let skip = {
+        let (skip, from) = {
             let p = player.read();
-            matches!(p.step(), Step::Exercise { .. })
+            let skip = matches!(p.step(), Step::Exercise { .. })
                 && p.pending().is_none()
-                && p.exercise().is_some_and(needs_audio)
+                && p.exercise().is_some_and(needs_audio);
+            (skip, p.step())
         };
         if skip {
             voice_skips += 1;
             commit(&|p| Some(p.skip()));
+            let to = player.peek().step();
+            let next = voice_note_step(*voice_note_at.peek(), from, to);
+            voice_note_at.set(next);
         }
     });
 
@@ -953,7 +959,7 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
             }
             div { class: "lp-body",
                 div { class: "lp-col", key: "{step:?}",
-                    if *voice_skips.read() > 0 {
+                    if show_voice_note(*voice_note_at.read(), *voice_skips.read(), step) {
                         p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
                     }
                     match step {
@@ -1492,12 +1498,14 @@ pub fn ExerciseView(
             let (before, after) = (before.to_string(), after.to_string());
             let chosen = draft.read().choice.and_then(|i| options.get(i).cloned());
             let right = options.iter().position(|o| answers.iter().any(|a| a.eq_ignore_ascii_case(o)));
+            // "Selamat ___, Pak!": the blank hugs the comma, no gap before it.
+            let hug = if blank_hugs_next(&after) { " hug-end" } else { "" };
             rsx! {
                 p { class: "lp-question lp-blank-line", lang: target, dir: "ltr",
                     "{before}"
                     if options.is_empty() {
                         input {
-                            class: "lp-blank-input",
+                            class: "lp-blank-input{hug}",
                             r#type: "text",
                             lang: target,
                             autocomplete: "off",
@@ -1509,7 +1517,7 @@ pub fn ExerciseView(
                             oninput: move |e: FormEvent| draft.write().text = e.value(),
                         }
                     } else {
-                        span { class: if chosen.is_some() { "lp-blank filled" } else { "lp-blank" },
+                        span { class: if chosen.is_some() { "lp-blank filled{hug}" } else { "lp-blank{hug}" },
                             "{chosen.clone().unwrap_or_default()}"
                         }
                     }
@@ -1611,6 +1619,29 @@ impl ChoiceMark {
             ChoiceMark::YoursWrong => L::ChoiceYours,
         }
     }
+}
+
+/// Where the "no voice, listening skipped" note goes after a skip from `from`
+/// to `to`: the first step the learner actually sees after the first skip.
+/// A run of back-to-back skips carries it forward; later skips leave it put,
+/// so the note shows once per lesson instead of on every step.
+fn voice_note_step(note: Option<Step>, from: Step, to: Step) -> Option<Step> {
+    match note {
+        None => Some(to),
+        Some(at) if at == from => Some(to),
+        kept => kept,
+    }
+}
+
+/// Whether the text after a blank starts with punctuation that should sit
+/// right against the filled word.
+fn blank_hugs_next(after: &str) -> bool {
+    after.starts_with([',', '.', '!', '?', ';', ':', ')', '…'])
+}
+
+/// The note shows on its one step, and again in the summary.
+fn show_voice_note(note: Option<Step>, skips: u32, step: Step) -> bool {
+    skips > 0 && (note == Some(step) || step == Step::Summary)
 }
 
 /// The mark for one option. Nothing is marked until the answer is checked;
@@ -1819,6 +1850,38 @@ mod tests {
                 assert!(!lt(lang, m.says()).is_empty());
             }
         }
+    }
+
+    /// The "no voice" note shows once: on the first step after the first run
+    /// of skipped listening items, and in the summary (#156).
+    #[test]
+    fn the_no_voice_note_shows_once_per_lesson() {
+        let ex = |index| Step::Exercise { index, retry: false };
+        // e2 is skipped, landing on e3: the note goes on e3.
+        let note = voice_note_step(None, ex(2), ex(3));
+        assert_eq!(note, Some(ex(3)));
+        // e3 is a listening item too: the note moves on with the skip.
+        let note = voice_note_step(note, ex(3), ex(4));
+        assert_eq!(note, Some(ex(4)));
+        // A later skip (e7 -> e8) leaves it where the learner saw it.
+        let note = voice_note_step(note, ex(7), ex(8));
+        assert_eq!(note, Some(ex(4)));
+        assert!(show_voice_note(note, 3, ex(4)));
+        assert!(!show_voice_note(note, 3, ex(5)));
+        assert!(!show_voice_note(note, 3, ex(8)));
+        assert!(show_voice_note(note, 3, Step::Summary));
+        assert!(!show_voice_note(None, 0, Step::Summary));
+    }
+
+    /// A filled blank sits right against the punctuation after it (#156).
+    #[test]
+    fn a_blank_hugs_following_punctuation() {
+        let sentence = "Selamat ___, Pak!";
+        let (_, after) = sentence.split_once("___").unwrap();
+        assert!(blank_hugs_next(after));
+        assert!(blank_hugs_next("."));
+        assert!(!blank_hugs_next(" pagi."));
+        assert!(!blank_hugs_next(""));
     }
 
     /// Both halves of a matched couple share a tint; unmatched ones keep their state.
