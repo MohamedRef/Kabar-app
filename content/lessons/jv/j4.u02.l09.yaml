@@ -1,0 +1,181 @@
+schema: kabar.lesson/v1
+id: j4.u02.l09
+language: jv
+title: Pak Slamet ing Malioboro
+can_do:
+  ar_eg: تقرا وصف قصير عن حد كبير بأسماء التبجيل.
+  ar: أن تقرأ وصفًا قصيرًا لشخص كبير بأسماء التبجيل.
+  en: Read a short profile of an elder written with honorific nouns.
+slides:
+  - title: Pak Slamet
+    body:
+      ar_eg: |
+        محمد كتب فقرة قصيرة لحصة الجاوي عن Pak Slamet، بياع الباتيك في Malioboro.
+        عشان بيتكلم عن حد كبير، كل حاجة بتاعته متكرّمة: asmanipun، yuswanipun، dalemipun، garwanipun، astanipun، وkagungan putra.
+      ar: |
+        كتب محمد فقرة قصيرة لدرس الجاوية عن Pak Slamet، بائع الباتيك في Malioboro.
+        ولأنه يتحدث عن كبير، فكل ما يخصّه مكرَّم: asmanipun، yuswanipun، dalemipun، garwanipun، astanipun، وkagungan putra.
+      en: |
+        Mohamed wrote a short paragraph for his Javanese class about Pak Slamet, the batik seller on Malioboro.
+        Because he's writing about an elder, everything of Pak Slamet's is raised: asmanipun, yuswanipun, dalemipun, garwanipun, astanipun, and kagungan putra.
+    grammar: jv.krama-inggil.nouns
+    examples:
+      - text: Asmanipun Pak Slamet. Yuswanipun seket gangsal.
+        ar_eg: اسمه Pak Slamet. عنده خمسة وخمسين سنة.
+        ar: اسمه Pak Slamet، وعمره خمسة وخمسون عامًا.
+        en: His name is Pak Slamet. He is fifty-five.
+      - text: Dalemipun caket kaliyan Malioboro. Pak Slamet kagungan putra tiga.
+        ar_eg: بيته قريب من Malioboro. وPak Slamet عنده تلات عيال.
+        ar: بيته قريب من Malioboro، ولـ Pak Slamet ثلاثة أبناء.
+        en: His house is near Malioboro. Pak Slamet has three children.
+      - text: Garwanipun saweg gerah, astanipun sakit.
+        ar_eg: مراته عيّانة، إيدها بتوجعها.
+        ar: زوجته مريضة، ويدها تؤلمها.
+        en: His wife is unwell; her hand hurts.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Pak Slamet عنده كام سنة؟
+      ar: كم عمر Pak Slamet؟
+      en: How old is Pak Slamet?
+    options: [sewidak, seket gangsal, selangkung]
+    answer: 1
+    explain:
+      ar_eg: «Yuswanipun seket gangsal» = عمره ٥٥.
+      ar: «Yuswanipun seket gangsal» = عمره ٥٥.
+      en: '"Yuswanipun seket gangsal" = he is 55.'
+    words: [yuswa]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Pak Slamet عنده كام عيّل؟
+      ar: كم ابنًا لـ Pak Slamet؟
+      en: How many children does Pak Slamet have?
+    options: [kalih, sekawan, tiga]
+    answer: 2
+    explain:
+      ar_eg: «kagungan putra tiga» = عنده تلاتة. kagungan وputra الاتنين krama inggil.
+      ar: «kagungan putra tiga» = له ثلاثة، وkagungan وputra كلاهما krama inggil.
+      en: '"kagungan putra tiga" = he has three. kagungan and putra are both krama inggil.'
+    words: [kagungan, putra]
+  - id: e03
+    type: listen
+    text: Garwanipun saweg gerah, astanipun sakit.
+    question:
+      ar_eg: مين العيّان؟
+      ar: من المريض؟
+      en: Who is unwell?
+    options: [Pak Slamet, garwanipun Pak Slamet, putranipun Pak Slamet]
+    answer: 1
+    meaning:
+      ar_eg: مراته عيّانة، إيدها بتوجعها.
+      ar: زوجته مريضة، ويدها تؤلمها.
+      en: His wife is unwell; her hand hurts.
+    words: [garwa, gerah, asta]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: asma
+        ar_eg: اسم (للكبير)
+        ar: اسم (للكبير)
+        en: name (for an elder)
+      - text: yuswa
+        ar_eg: سن / عمر (للكبير)
+        ar: عمر (للكبير)
+        en: age (for an elder)
+      - text: dalem
+        ar_eg: بيت (للكبير)
+        ar: بيت (للكبير)
+        en: home (an elder's)
+      - text: garwa
+        ar_eg: زوج / زوجة (للكبير)
+        ar: زوج / زوجة (للكبير)
+        en: spouse (an elder's)
+      - text: kagungan
+        ar_eg: عنده (للكبير)
+        ar: يملك (للكبير)
+        en: have (for an elder)
+    words: [asma, yuswa, dalem, garwa, kagungan]
+  - id: e05
+    type: fill_blank
+    sentence: Pak Slamet ___ putra tiga.
+    meaning:
+      ar_eg: Pak Slamet عنده تلات عيال.
+      ar: لـ Pak Slamet ثلاثة أبناء.
+      en: Pak Slamet has three children.
+    options: [gadhah, kagungan, duwe]
+    answers: [kagungan]
+    explain:
+      ar_eg: محمد بيتكلم عن حد كبير، يبقى kagungan. gadhah عن نفسك، وduwe نغوكو.
+      ar: يتحدث محمد عن كبير فيقول kagungan، وgadhah للنفس، وduwe نغوكو.
+      en: Mohamed is writing about an elder, so kagungan. gadhah is for yourself; duwe is ngoko.
+    words: [kagungan]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: (Pak Slamet عن نفسه) عندي تلات عيال.
+      ar: (Pak Slamet عن نفسه) لي ثلاثة أبناء.
+      en: (Pak Slamet about himself) I have three children.
+    answer: Kula gadhah anak tiga.
+    distractors: [kagungan, putra]
+    explain:
+      ar_eg: هو نفسه بيقول الكلام العادي - gadhah وanak، مش kagungan وputra.
+      ar: يستعمل هو عن نفسه الألفاظ العادية - gadhah وanak - لا kagungan وputra.
+      en: About himself he uses the plain words, gadhah and anak, not kagungan and putra.
+    words: [gadhah]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بيته قريب من Malioboro.
+      ar: بيته قريب من Malioboro.
+      en: His house is near Malioboro.
+    answers:
+      - Dalemipun caket kaliyan Malioboro.
+      - Dalemipun Pak Slamet caket kaliyan Malioboro.
+      - Dalemipun caket saking Malioboro.
+    explain:
+      ar_eg: بيت الكبير dalem، وcaket kaliyan = قريب من.
+      ar: بيت الكبير dalem، وcaket kaliyan = قريب من.
+      en: An elder's house is dalem; caket kaliyan = near.
+    words: [dalem, caket]
+  - id: e08
+    type: dictation
+    text: Asmanipun Pak Slamet. Yuswanipun seket gangsal.
+    meaning:
+      ar_eg: اسمه Pak Slamet. عنده خمسة وخمسين سنة.
+      ar: اسمه Pak Slamet، وعمره خمسة وخمسون عامًا.
+      en: His name is Pak Slamet. He is fifty-five.
+    words: [asma, yuswa]
+dialogue:
+  title: Wonten Malioboro
+  lines:
+    - speaker: Mohamed
+      text: Sugeng siang, Pak Slamet. Garwanipun pripun?
+      ar_eg: نهارك سعيد يا Pak Slamet. المدام عاملة إيه؟
+      ar: طاب نهارك يا Pak Slamet. كيف حال زوجتك؟
+      en: Good afternoon, Pak Slamet. How is your wife?
+    - speaker: Pak Slamet
+      text: Semah kula taksih sakit, Mas. Tanganipun taksih sakit.
+      ar_eg: مراتي لسه تعبانة يا ابني. إيدها لسه بتوجعها.
+      ar: زوجتي ما زالت مريضة يا بني، ويدها ما زالت تؤلمها.
+      en: My wife is still unwell. Her hand still hurts.
+    - speaker: Mohamed
+      text: Menika jeruk kagem garwanipun, Pak.
+      ar_eg: دول برتقان علشان المدام يا أستاذ.
+      ar: هذا برتقال لزوجتك يا سيدي.
+      en: These oranges are for your wife, sir.
+    - speaker: Pak Slamet
+      text: Wah, matur nuwun sanget, Mas.
+      ar_eg: الله، شكرًا جدًا يا ابني.
+      ar: شكرًا جزيلًا يا بني.
+      en: Oh, thank you very much.
+    - speaker: Mohamed
+      text: Sami-sami, Pak.
+      ar_eg: العفو يا أستاذ.
+      ar: عفوًا يا سيدي.
+      en: You're welcome, sir.
+review:
+  status: draft
+  verified: false
