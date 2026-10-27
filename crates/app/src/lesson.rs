@@ -99,7 +99,7 @@ fn Notice(title: &'static str, body: String, id: String) -> Element {
     rsx! {
         div { class: "lp",
             div { class: "lp-top",
-                button { class: "lp-close", aria_label: lt(lang, L::Close), onclick: move |_| ui.close_lesson(), "×" }
+                button { class: "lp-close", "data-back": "true", aria_label: lt(lang, L::Close), onclick: move |_| ui.close_lesson(), "×" }
             }
             div { class: "lp-body",
                 div { class: "lp-col",
@@ -938,6 +938,7 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
             div { class: "lp-top",
                 button {
                     class: "lp-close",
+                    "data-back": "true",
                     aria_label: lt(lang, L::Close),
                     title: lt(lang, L::Close),
                     onclick: move |_| close(),
