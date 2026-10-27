@@ -1,0 +1,599 @@
+schema: batna.content/v1
+lecture: hb.L16
+title: Benign Hepatic Tumors and Approach to Focal Liver Lesions
+author: Dr. Perihan Salem
+book:
+  chapter: 1
+  pages: [311, 317]
+topics:
+- id: fll
+  title: Focal liver lesions and classification
+- id: adenoma
+  title: Hepatocellular adenoma
+- id: fnh
+  title: Focal nodular hyperplasia
+- id: nrh
+  title: Nodular regenerative hyperplasia
+- id: biliary-cystic
+  title: Biliary and cystic lesions
+- id: mesenchymal
+  title: Hemangioma, peliosis, angiomyolipoma
+items:
+- id: hb.L16.001
+  kind: card
+  topic: fll
+  front: What is a focal liver lesion (FLL)?
+  back: An abnormal area of tissue (a mass or cyst) in the liver, often found incidentally on imaging done for other
+    organs.
+  src:
+    page: 311
+  status: unverified
+- id: hb.L16.002
+  kind: card
+  topic: fll
+  front: Are most focal liver lesions benign or malignant, and why still evaluate them?
+  back: Most are benign; they are evaluated to exclude serious disease such as HCC, cholangiocarcinoma or metastases.
+  src:
+    page: 311
+  status: unverified
+- id: hb.L16.003
+  kind: enumerate
+  topic: fll
+  prompt: Mention the classification of benign liver tumours.
+  points:
+  - 'Hepatocellular tumours: adenoma, FNH, NRH'
+  - 'Biliary and cystic lesions: bile duct adenoma, biliary adenofibroma, biliary papillomatosis, simple cyst, polycystic
+    disease'
+  - 'Mesenchymal tumours: hemangioma, peliosis hepatis, angiomyolipoma'
+  pass: 3
+  src:
+    page: 311
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L16.004
+  kind: table
+  topic: fll
+  title: The three commonest benign liver tumours
+  columns:
+  - Tumour
+  - Rank
+  - Typical patient / number
+  rows:
+  - - Hemangioma
+    - 1st (5-10% of population)
+    - Small ones asymptomatic
+  - - Focal nodular hyperplasia
+    - 2nd
+    - Usually multiple, <2 cm (per book)
+  - - Hepatocellular adenoma
+    - 3rd
+    - Women of childbearing age, usually single
+  blanks:
+  - [0, 1]
+  - [1, 1]
+  - [2, 1]
+  - [2, 2]
+  src:
+    page: 311
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L16.005
+  kind: cloze
+  topic: adenoma
+  text: Hepatocellular adenoma is the {{c1::3rd}} most common benign liver tumour; it mostly affects {{c2::women
+    of childbearing age}} and is usually {{c3::single}}.
+  src:
+    page: 311
+  status: unverified
+- id: hb.L16.006
+  kind: enumerate
+  topic: adenoma
+  prompt: Clinical picture of hepatic adenoma?
+  points:
+  - Asymptomatic
+  - Pressure on nearby vessels or bile ducts
+  - Right hypochondrial pain from capsule stretch
+  - Diffuse abdominal pain with intraperitoneal hemorrhage if it ruptures
+  - Malignant transformation
+  pass: 4
+  src:
+    page: 312
+  status: unverified
+- id: hb.L16.007
+  kind: cloze
+  topic: adenoma
+  text: Hepatic adenoma undergoes malignant transformation in up to {{c1::8%}} of all patients and up to {{c2::40-50%}}
+    in men.
+  src:
+    page: 312
+    quote: Malignant transformation in up to 8% of all patients & up to 40-50% in men
+  status: unverified
+- id: hb.L16.008
+  kind: card
+  topic: adenoma
+  front: Lab findings in hepatic adenoma?
+  back: Normal transaminases, alkaline phosphatase and AFP, unless the tumour compresses bile ducts and causes obstructive
+    jaundice.
+  src:
+    page: 312
+  status: unverified
+- id: hb.L16.009
+  kind: enumerate
+  topic: adenoma
+  prompt: Risk factors for hepatocellular adenoma?
+  points:
+  - Long-standing oral contraceptive use (up to 90% of cases)
+  - Glycogen storage diseases
+  - Long-standing anabolic steroid use
+  pass: 3
+  src:
+    page: 312
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L16.010
+  kind: cloze
+  topic: adenoma
+  text: Up to {{c1::90%}} of hepatic adenoma patients have a history of long-term {{c2::oral contraceptive}} use.
+  src:
+    page: 312
+  status: unverified
+- id: hb.L16.011
+  kind: card
+  topic: adenoma
+  front: How is hepatic adenoma usually found and then characterised?
+  back: Routine abdominal ultrasound (cheap and sensitive), then contrast-enhanced ultrasound or MRI to tell adenoma
+    from FNH; liver biopsy if needed.
+  src:
+    page: 312
+  status: unverified
+- id: hb.L16.012
+  kind: enumerate
+  topic: adenoma
+  prompt: Indications for surgical excision of hepatic adenoma?
+  points:
+  - Symptomatic
+  - Larger than 5 cm (risk of rupture and bleeding)
+  - Pedunculated (risk of torsion)
+  - In men (high malignant transformation)
+  pass: 4
+  src:
+    page: 312
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L16.013
+  kind: card
+  topic: adenoma
+  front: Treatment of a bleeding hepatic adenoma?
+  back: Trans-arterial embolization (TAE).
+  src:
+    page: 312
+  status: unverified
+- id: hb.L16.014
+  kind: card
+  topic: adenoma
+  front: First step in managing any hepatic adenoma?
+  back: 'Stop risk factors: hormones (OCP) and anabolic steroids.'
+  src:
+    page: 312
+  status: unverified
+- id: hb.L16.015
+  kind: mcq
+  topic: adenoma
+  stem: A 29-year-old woman on the combined pill for 10 years has a single 6 cm liver adenoma found on ultrasound.
+    She is asymptomatic. Which is the best management per the book?
+  options:
+  - Reassure and continue the pill
+  - Stop the pill and refer for surgical excision
+  - Biopsy and repeat in 5 years
+  - Start sorafenib
+  - Liver transplant
+  answer: 1
+  why:
+  - Hormones are a risk factor and must be stopped.
+  - 'Correct: stop OCP; size >5 cm risks rupture and bleeding, so excise.'
+  - A >5 cm adenoma is an indication for surgery, not long observation.
+  - This is a benign tumour.
+  - Transplant is not needed for a benign resectable lesion.
+  src:
+    page: 312
+  status: unverified
+- id: hb.L16.016
+  kind: mcq
+  topic: adenoma
+  stem: A 35-year-old male bodybuilder on anabolic steroids has a 3 cm hepatic adenoma. Why does the book favour
+    excision even though it is under 5 cm?
+  options:
+  - Adenomas in men have a high malignant transformation rate
+  - Steroids make adenomas pedunculated
+  - Men always bleed
+  - AFP is raised in men
+  - Adenomas in men are always multiple
+  answer: 0
+  why:
+  - 'Correct: malignant transformation reaches 40-50% in men, so men are an indication for surgery.'
+  - Pedunculation is a separate indication, not caused by steroids.
+  - Bleeding risk relates to size, not sex.
+  - Adenoma labs (including AFP) are normal.
+  - Adenomas are usually single.
+  src:
+    page: 312
+  status: unverified
+- id: hb.L16.017
+  kind: card
+  topic: fnh
+  front: 'FNH: frequency rank among benign liver tumours?'
+  back: Second most frequent.
+  src:
+    page: 313
+  status: unverified
+- id: hb.L16.018
+  kind: card
+  topic: fnh
+  front: Do hormonal therapy or pregnancy contraindicate FNH?
+  back: No, FNH is not a contraindication to hormonal therapy or pregnancy.
+  src:
+    page: 313
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L16.019
+  kind: card
+  topic: fnh
+  front: Proposed pathogenesis of FNH?
+  back: A hyperplastic response to an artery-to-portal vein shunt.
+  src:
+    page: 313
+  status: unverified
+- id: hb.L16.020
+  kind: cloze
+  topic: fnh
+  text: 'FNH histology: normal hepatocytes with fibrous tissue holding large arteries and proliferating bile ducts,
+    with a {{c1::central scar}} in up to {{c2::60%}} of cases; the background liver is {{c3::normal}}.'
+  src:
+    page: 313
+    quote: central scar in upto 60% of cases
+  status: unverified
+- id: hb.L16.021
+  kind: card
+  topic: fnh
+  front: How is FNH diagnosed?
+  back: Imaging (ultrasound, contrast-enhanced ultrasound, MRI), with biopsy as for adenoma.
+  src:
+    page: 313
+  status: unverified
+- id: hb.L16.022
+  kind: card
+  topic: fnh
+  front: Treatment of FNH?
+  back: Conservative follow-up, because FNH is static with rare rupture or malignancy; consider surgery only if
+    symptomatic, large or pedunculated.
+  src:
+    page: 314
+  status: unverified
+- id: hb.L16.023
+  kind: table
+  topic: fnh
+  title: Adenoma versus FNH
+  columns:
+  - Feature
+  - Hepatic adenoma
+  - FNH
+  rows:
+  - - Frequency
+    - 3rd most common
+    - 2nd most common
+  - - Number (book)
+    - Usually single
+    - Usually multiple, <2 cm
+  - - Hormones / pregnancy
+    - OCP is the main risk factor; stop it
+    - Not a contraindication
+  - - Malignant change
+    - Up to 8% (40-50% in men)
+    - Rare
+  - - Histology clue
+    - '-'
+    - Central scar (up to 60%), normal background
+  - - Management
+    - Stop hormones; excise if symptomatic, >5 cm, pedunculated, or male
+    - Conservative follow-up
+  blanks:
+  - [0, 1]
+  - [0, 2]
+  - [2, 2]
+  - [3, 1]
+  - [3, 2]
+  - [4, 2]
+  - [5, 1]
+  - [5, 2]
+  src:
+    page: 313
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L16.024
+  kind: mcq
+  topic: fnh
+  stem: A 30-year-old woman wants to start the pill. Ultrasound shows two small liver lesions, and MRI shows a central
+    scar in a normal background liver. What do you advise?
+  options:
+  - The pill is contraindicated
+  - Resect both lesions
+  - The pill and pregnancy are allowed; follow up
+  - Trans-arterial embolization
+  - Biopsy both before any decision
+  answer: 2
+  why:
+  - That is the adenoma rule; FNH is not a contraindication to hormones.
+  - FNH is static with rare complications; surgery only if symptomatic, large or pedunculated.
+  - 'Correct: FNH (central scar, normal background) allows hormonal therapy and pregnancy; manage conservatively.'
+  - TAE is for bleeding adenomas.
+  - Typical imaging is enough here; biopsy is reserved for unclear cases.
+  src:
+    page: 313
+  status: unverified
+- id: hb.L16.025
+  kind: card
+  topic: nrh
+  front: What is nodular regenerative hyperplasia (NRH)?
+  back: A non-specific response to obliteration of small portal veins.
+  src:
+    page: 314
+  status: unverified
+- id: hb.L16.026
+  kind: enumerate
+  topic: nrh
+  prompt: Causes of small portal vein obliteration in NRH?
+  points:
+  - 'Systemic vasculitis: RA, PAN, SLE, SS'
+  - Portal vein thrombosis (hypercoagulable state)
+  - 'Toxic drug injury: methotrexate, azathioprine'
+  pass: 3
+  src:
+    page: 314
+  status: unverified
+- id: hb.L16.027
+  kind: cloze
+  topic: nrh
+  text: NRH shows micronodules of {{c1::1-2 mm}} outlined by atrophy {{c2::without fibrous septa}}.
+  src:
+    page: 315
+  status: unverified
+- id: hb.L16.028
+  kind: card
+  topic: nrh
+  front: How does NRH present?
+  back: Asymptomatic, or with signs and symptoms of portal hypertension.
+  src:
+    page: 315
+  status: unverified
+- id: hb.L16.029
+  kind: mcq
+  topic: nrh
+  stem: A 50-year-old woman with rheumatoid arthritis on long-term methotrexate has splenomegaly and varices. Liver
+    biopsy shows 1-2 mm nodules with surrounding atrophy and no fibrous septa. Diagnosis?
+  options:
+  - Cirrhosis
+  - Nodular regenerative hyperplasia
+  - FNH
+  - Hepatic adenoma
+  - Peliosis hepatis
+  answer: 1
+  why:
+  - Cirrhosis has fibrous septa around nodules.
+  - 'Correct: NRH, from small portal vein obliteration (RA vasculitis, methotrexate), presents with portal hypertension.'
+  - FNH has a central scar with large arteries and bile ducts.
+  - Adenoma is a single mass, linked to OCP and steroids.
+  - Peliosis is blood-filled cavities.
+  src:
+    page: 315
+  status: unverified
+- id: hb.L16.030
+  kind: enumerate
+  topic: biliary-cystic
+  prompt: Biliary and cystic benign lesions of the liver?
+  points:
+  - Bile duct adenoma
+  - Biliary adenofibroma
+  - Biliary papillomatosis
+  - Simple hepatic cyst
+  - Polycystic disease
+  pass: 4
+  src:
+    page: 315
+  status: unverified
+- id: hb.L16.031
+  kind: card
+  topic: biliary-cystic
+  front: What is biliary papillomatosis?
+  back: A benign biliary tumour with thick mucus secretion that can obstruct the bile ducts without an obvious mass.
+  src:
+    page: 315
+  status: unverified
+- id: hb.L16.032
+  kind: card
+  topic: biliary-cystic
+  front: 'Simple hepatic cyst: nature and management?'
+  back: Solitary, non-parasitic, usually developmental; follow-up only.
+  src:
+    page: 315
+  status: unverified
+- id: hb.L16.033
+  kind: card
+  topic: biliary-cystic
+  front: Which organs can polycystic disease involve?
+  back: Liver, lung and kidney (multiple cysts).
+  src:
+    page: 315
+  status: unverified
+- id: hb.L16.034
+  kind: cloze
+  topic: mesenchymal
+  text: Cavernous hemangioma is the {{c1::most common}} benign liver tumour, found in {{c2::5-10%}} of the population.
+  src:
+    page: 315
+    quote: It is the first most common benign hepatic tumor occurring in 5-10% of population
+  status: unverified
+- id: hb.L16.035
+  kind: card
+  topic: mesenchymal
+  front: Clinical features of a large hemangioma?
+  back: Right hypochondrial pain, mass effect, possibly a vascular bruit. Rupture is rare and malignancy does not
+    occur.
+  src:
+    page: 315
+  status: unverified
+- id: hb.L16.036
+  kind: card
+  topic: mesenchymal
+  front: What can enlarge a hemangioma?
+  back: Pregnancy and oral contraceptives.
+  src:
+    page: 315
+  status: unverified
+- id: hb.L16.037
+  kind: card
+  topic: mesenchymal
+  front: Peliosis hepatis versus hemangioma?
+  back: Both are blood-filled cavities, but peliosis walls lack the well-developed structure of hemangioma, and
+    anabolic steroid use is usually present.
+  src:
+    page: 316
+  status: unverified
+- id: hb.L16.038
+  kind: cloze
+  topic: mesenchymal
+  text: Hepatic angiomyolipoma is rare, affects women more than men ({{c1::5:1}}), mean age in the {{c2::fifth decade}},
+    usually solitary.
+  src:
+    page: 316
+  status: unverified
+- id: hb.L16.039
+  kind: card
+  topic: mesenchymal
+  front: Histological components of angiomyolipoma?
+  back: Lipomatous, myomatous, angiomatous and trabecular.
+  src:
+    page: 316
+  status: unverified
+- id: hb.L16.040
+  kind: mcq
+  topic: mesenchymal
+  stem: A 45-year-old woman has an incidental 2 cm liver hemangioma. She is asymptomatic. What is true per the book?
+  options:
+  - It carries a risk of malignant change
+  - Rupture is common
+  - It may enlarge with pregnancy or OCP
+  - It must be resected
+  - It is the third commonest benign tumour
+  answer: 2
+  why:
+  - Malignant transformation does not occur.
+  - Rupture is rare.
+  - 'Correct: hemangiomas may enlarge during pregnancy and with OCP.'
+  - Small lesions are asymptomatic and need no surgery.
+  - It is the most common.
+  src:
+    page: 315
+  status: unverified
+- id: hb.L16.041
+  kind: case
+  topic: adenoma
+  stem: A 32-year-old woman on the combined pill for 12 years has right hypochondrial pain.
+  steps:
+  - reveal: 'Ultrasound: a single 7 cm solid liver lesion. Transaminases, ALP and AFP are normal.'
+    question: Most likely lesion?
+    options:
+    - Hemangioma
+    - Hepatocellular adenoma
+    - HCC
+    - Simple cyst
+    answer: 1
+    why: A single solid lesion in a young woman on long-term OCP with normal labs fits adenoma.
+  - question: Best test to tell it from FNH?
+    options:
+    - CT chest
+    - Contrast-enhanced ultrasound or MRI
+    - AFP-L3
+    - ERCP
+    answer: 1
+    why: The book uses contrast-enhanced US or MRI to differentiate adenoma from FNH.
+  - reveal: While awaiting surgery she collapses with diffuse abdominal pain and falling hemoglobin.
+    question: Best immediate treatment?
+    options:
+    - Observation
+    - Trans-arterial embolization
+    - Start the pill again
+    - Liver transplant
+    answer: 1
+    why: Bleeding adenomas are treated with trans-arterial embolization.
+  src:
+    page: 312
+  status: unverified
+- id: hb.L16.042
+  kind: essay
+  topic: fll
+  prompt: Mention the classification of benign liver tumors.
+  outline:
+  - Hepatocellular:
+    - Hepatocellular adenoma
+    - FNH
+    - NRH
+  - Biliary and cystic:
+    - Bile duct adenoma, biliary adenofibroma, biliary papillomatosis
+    - Simple cyst, polycystic disease
+  - Mesenchymal:
+    - Cavernous hemangioma
+    - Peliosis hepatis
+    - Angiomyolipoma
+  src:
+    page: 317
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L16.043
+  kind: essay
+  topic: adenoma
+  prompt: Mention the treatment of hepatic adenoma.
+  outline:
+  - Remove risk factors:
+    - Stop OCP / hormones and anabolic steroids
+  - Surgical excision if:
+    - Symptomatic
+    - '>5 cm (rupture and bleeding)'
+    - Pedunculated (torsion)
+    - Male (40-50% malignant change)
+  - Bleeding:
+    - Trans-arterial embolization
+  src:
+    page: 317
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L16.044
+  kind: essay
+  topic: mesenchymal
+  prompt: How to diagnose liver hemangioma by contrast-enhanced CT?
+  outline:
+  - Book facts:
+    - Most common benign tumour (5-10%)
+    - Usually asymptomatic; bruit, pain if large
+    - No malignant change; rupture rare
+  - Contrast CT (not in the book text):
+    - Peripheral nodular discontinuous arterial enhancement
+    - Progressive centripetal fill-in on portal and delayed phases
+    - Stays iso- or hyperdense to blood pool, no washout
+  src:
+    page: 317
+  status: unverified
+  update:
+    text: 'The book text does not describe the CT pattern. Standard teaching: peripheral, nodular, discontinuous
+      arterial enhancement with progressive centripetal fill-in, iso- or hyperdense to blood pool on delayed phases
+      (no washout); MRI is markedly T2 bright.'
+    ref: EASL CPG on benign liver tumours 2016
+  tags:
+  - book-question
