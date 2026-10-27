@@ -84,6 +84,16 @@ pub fn of(speaker: &str, mood: Mood) -> Option<&'static str> {
     url(cast_id(speaker)?, mood)
 }
 
+/// The characters of `program` named in `text` who have a face:
+/// `(registry name, face)`.
+pub fn mentioned(program: &str, text: &str) -> Vec<(&'static str, &'static str)> {
+    REGISTRY
+        .mentioned(program, text)
+        .into_iter()
+        .filter_map(|id| Some((REGISTRY.name_of(id)?, url(id, Mood::Neutral)?)))
+        .collect()
+}
+
 /// A decorative face; the name next to it carries the meaning.
 #[component]
 pub fn Face(src: &'static str, class: &'static str) -> Element {
