@@ -177,36 +177,37 @@ exercises:
     answer: 1
     words: [sinau, basa]
   - id: e04
-    type: fill_blank
-    sentence: Aku ___ Mesir.
+    type: listen
+    text: Iya, aku bakul.
+    options: ['Iya, aku bakul.', 'Ora, aku bakul.', 'Iya, aku guru.']
+    answer: 0
     meaning:
-      ar_eg: أنا مصري.
-      ar: أنا مصري.
-      en: I'm Egyptian.
-    options: [saka, wong, basa]
-    answers: [wong]
-    explain:
-      ar_eg: الجنسية = wong + البلد. «Aku saka Mesir» صح كمان بس معناها «أنا من مصر».
-      ar: الجنسية = wong + البلد، أما «Aku saka Mesir» فمعناها «أنا من مصر».
-      en: Nationality = wong + country. "Aku saka Mesir" is also correct but means "I'm from Egypt".
-    words: [wong]
+      ar_eg: أيوه، أنا بيّاع.
+      ar: نعم، أنا بائع.
+      en: Yes, I'm a seller.
+    words: [iya, ora, bakul]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: أنا مصري، من القاهرة.
-      ar: أنا مصري، من القاهرة.
-      en: I'm Egyptian, from Cairo.
-    answer: Aku wong Mesir, saka Kairo.
-    distractors: [saya, iku]
-    words: [wong, saka]
+    type: multiple_choice
+    question: Kowe sinau basa Jawa?
+    question_meaning:
+      ar_eg: إنت فعلًا بتتعلم جاوي. ترد إزاي؟
+      ar: أنت تتعلم الجاوية فعلًا. كيف تردّ؟
+      en: You really are learning Javanese. How do you answer?
+    options: ['Iya, aku sinau basa Jawa.', 'Ora, aku bakul.', 'Iya, aku wong gedhe.']
+    answer: 0
+    explain:
+      ar_eg: iya = أيوه، ora = لأ. وwong gedhe معناها «شخص كبير / مهم».
+      ar: iya = نعم، وora = لا، وwong gedhe تعني «شخص كبير أو مهم».
+      en: iya = yes, ora = no; wong gedhe means "a grown-up / important person".
+    words: [sinau, basa, iya, ora, bakul, gedhe]
   - id: e06
     type: speaking
-    text: Jenengku Mohamed. Aku wong Mesir.
+    text: Jenengku Mohamed, aku wong Mesir. Omahku ora gedhe.
     meaning:
-      ar_eg: اسمي محمد. أنا مصري.
-      ar: اسمي محمد. أنا مصري.
-      en: My name is Mohamed. I'm Egyptian.
-    words: [jeneng, wong]
+      ar_eg: اسمي محمد، أنا مصري. بيتي مش كبير.
+      ar: اسمي محمد، أنا مصري. بيتي ليس كبيرًا.
+      en: My name is Mohamed, I'm Egyptian. My house isn't big.
+    words: [jeneng, wong, ora, gedhe]
 dialogue:
   title: Kenalan
   lines:

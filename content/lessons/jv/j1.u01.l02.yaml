@@ -127,18 +127,33 @@ exercises:
     distractors: [dalu, piye]
     words: [apik, matur nuwun]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: إزيك؟ (لصاحبك)
-      ar: كيف حالك؟ (لصديقك)
-      en: How are you? (to a friend)
-    answers: ["Piye kabare?", Piye kabare, "Piye kabarmu?", Piye kabarmu, "Yok opo kabare?", Yok opo kabare, "Pie kabare?", Pie kabare]
-    explain:
-      ar_eg: piye = bagaimana، kabare = kabarnya. وفي سورابايا كمان «Yok opo kabare?».
-      ar: piye = bagaimana، وkabare = kabarnya، ويقال في سورابايا أيضًا «Yok opo kabare?».
-      en: piye = bagaimana, kabare = kabarnya. Surabaya also says "Yok opo kabare?".
-    words: [piye, kabare]
+    type: match_pairs
+    pairs:
+      - text: piye
+        ar_eg: إزاي
+        ar: كيف
+        en: how
+      - text: apik
+        ar_eg: كويس
+        ar: جيد
+        en: good
+      - text: suwun
+        ar_eg: ميرسي
+        ar: شكرًا (للأصدقاء)
+        en: thanks (casual)
+      - text: padha-padha
+        ar_eg: العفو (ngoko)
+        ar: عفوًا (ngoko)
+        en: you're welcome (ngoko)
+      - text: sami-sami
+        ar_eg: العفو (krama)
+        ar: عفوًا (krama)
+        en: you're welcome (krama)
+      - text: ati-ati
+        ar_eg: خلي بالك
+        ar: انتبه
+        en: take care
+    words: [piye, apik, suwun, padha-padha, sami-sami, ati-ati]
   - id: e07
     type: translate
     direction: from_target
@@ -148,6 +163,16 @@ exercises:
       ar: [انتبه لنفسك!, انتبه لنفسك, في أمان الله!, رافقتك السلامة]
       en: [Take care!, Take care, Be careful!, Be careful, Safe trip!, Have a safe trip]
     words: [ati-ati]
+  - id: e08
+    type: fill_blank
+    sentence: Matur nuwun, Pak. — ___.
+    meaning:
+      ar_eg: شكرًا يا أستاذ. — العفو.
+      ar: شكرًا يا سيدي. — عفوًا.
+      en: Thank you, sir. — You're welcome.
+    options: [Sami-sami, Sugeng dalu, Piye]
+    answers: [Sami-sami]
+    words: [matur nuwun, sami-sami]
 dialogue:
   title: Pasar Turi, esuk
   lines:

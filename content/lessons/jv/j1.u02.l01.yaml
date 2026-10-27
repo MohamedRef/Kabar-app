@@ -124,26 +124,67 @@ exercises:
     distractors: [apa, sapa]
     words: [kowe, saka, ngendi]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اسمك إيه؟ (لصاحب)
-      ar: ما اسمك؟ (لصديق)
-      en: What's your name? (to a friend)
-    answers: ['Jenengmu sapa?', Jenengmu sapa, 'Jenengmu sopo?', Jenengmu sopo, 'Sapa jenengmu?', Sapa jenengmu, 'Sopo jenengmu?']
-    explain:
-      ar_eg: jeneng = nama، -mu = بتاعك، sapa = مين. وفي الشات sopo.
-      ar: jeneng = nama، و-mu للمخاطب، وsapa = مَن، وفي الدردشة sopo.
-      en: jeneng = nama, -mu = your, sapa = who (chat sopo).
-    words: [jeneng, sapa]
+    type: match_pairs
+    pairs:
+      - text: apa
+        ar_eg: إيه
+        ar: ماذا
+        en: what
+      - text: sapa
+        ar_eg: مين
+        ar: مَن
+        en: who
+      - text: kapan
+        ar_eg: إمتى
+        ar: متى
+        en: when
+      - text: saka
+        ar_eg: من (مكان)
+        ar: مِن
+        en: from
+      - text: jeneng
+        ar_eg: اسم
+        ar: اسم
+        en: name
+      - text: omah
+        ar_eg: بيت
+        ar: بيت
+        en: house
+    words: [apa, sapa, kapan, saka, jeneng, omah]
   - id: e06
     type: speaking
-    text: Omahmu ngendi?
+    text: Jenengku Mohamed. Omahmu ngendi?
     meaning:
-      ar_eg: بيتك فين؟
-      ar: أين بيتك؟
-      en: Where's your house?
-    words: [omah, ngendi]
+      ar_eg: اسمي محمد. بيتك فين؟
+      ar: اسمي محمد. أين بيتك؟
+      en: My name is Mohamed. Where's your house?
+    words: [jeneng, omah, ngendi]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «إمتى»؟
+      ar: أيّ كلمة تعني «متى»؟
+      en: Which word means "when"?
+    options: [kapan, apa, ngendi]
+    answer: 0
+    explain:
+      ar_eg: kapan زي الإندونيسي بالظبط. apa = إيه، ngendi = فين.
+      ar: kapan كما في الإندونيسية تمامًا، وapa = ماذا، وngendi = أين.
+      en: kapan is the same as in Indonesian; apa = what, ngendi = where.
+    words: [kapan, apa, ngendi]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «إيه»؟
+      ar: أيّ كلمة تعني «ماذا»؟
+      en: Which word means "what"?
+    options: [sapa, apa, kapan]
+    answer: 1
+    explain:
+      ar_eg: apa = إيه، وفي الشات بتتكتب opo. sapa = مين.
+      ar: apa = ماذا، وتُكتب في المحادثات opo، وsapa = مَن.
+      en: apa = what (written opo in chat); sapa = who.
+    words: [apa, sapa, kapan]
 dialogue:
   title: Stasiun Gubeng
   lines:
