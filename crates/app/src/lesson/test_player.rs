@@ -752,6 +752,17 @@ fn Results(test: TestContent, results: TestResults, on_retry: EventHandler<()>) 
             (item, q, a)
         })
         .collect();
+    // The units behind the missed points (tagged content only), most missed
+    // first, with the lesson that goes back over each.
+    let weak_units: Vec<(String, String)> = results
+        .weak_units
+        .iter()
+        .filter_map(|(unit, _)| {
+            Some((crate::journey::unit_title(lang, unit)?, crate::journey::unit_refresher(unit)?))
+        })
+        .take(3)
+        .collect();
+    let start_unit = results.start_unit.as_deref().and_then(|u| crate::journey::unit_title(lang, u));
     let answer_tag = |item: &TestItem| match &item.kind {
         TestItemKind::Exercise(ExerciseKind::MultipleChoice { options_meaning, .. })
             if !options_meaning.is_empty() =>
@@ -772,6 +783,9 @@ fn Results(test: TestContent, results: TestResults, on_retry: EventHandler<()>) 
                         p { class: "reveal",
                             Rich { text: lt(lang, L::PlacementBody).replace("{level}", &level_label(start)), target }
                         }
+                    }
+                    if let Some(unit) = &start_unit {
+                        p { class: "reveal", Rich { text: lt(lang, L::PlacementUnit).replace("{unit}", unit), target } }
                     }
                 },
                 (_, Some(true)) => rsx! {
@@ -794,6 +808,19 @@ fn Results(test: TestContent, results: TestResults, on_retry: EventHandler<()>) 
                     ul { class: "lt-skills",
                         for (skill, tally) in results.skills.iter() {
                             SkillBar { key: "{skill:?}", label: lt(lang, skill_label(*skill)), tally: tally.clone() }
+                        }
+                    }
+                }
+            }
+            if !weak_units.is_empty() && test.kind == TestKind::Level {
+                section { class: "card reveal d2",
+                    h3 { "{lt(lang, L::UnitsToRevisit)}" }
+                    ul { class: "lt-units",
+                        for (title, lesson) in weak_units.iter().cloned() {
+                            li { key: "{lesson}",
+                                span { Rich { text: title, target } }
+                                button { onclick: move |_| ui.open_lesson(lesson.clone()), "{lt(lang, L::Revisit)}" }
+                            }
                         }
                     }
                 }
