@@ -426,7 +426,9 @@ pub mod reminders {
     pub fn battery_unrestricted() -> Option<bool> {
         #[cfg(target_os = "android")]
         {
-            super::android::battery_unrestricted().map_err(|e| crate::diag::report!("battery check: {e}")).ok()
+            super::android::battery_unrestricted()
+                .map_err(|e| crate::diag::report!("battery check: {e}"))
+                .ok()
         }
         #[cfg(not(target_os = "android"))]
         {
