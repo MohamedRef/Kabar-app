@@ -2,7 +2,9 @@
 """Synthesize Kabar's lesson sounds (SPEC §9; docs/VISUAL-ASSETS.md, prompt 8).
 
 Nothing is downloaded, so there is no licence to track: a gong for the end of
-a lesson and a kendang tap for a right answer, three variations of each.
+a lesson and a short rising chime ("ding") for a right answer, three
+variations of each. The kendang taps were the first right-answer sound; they
+stay as alternatives.
 Renders 48 kHz mono, normalizes to about -16 LUFS (measured with ffmpeg's
 EBU R128 filter), and writes 16-bit WAV to assets/sounds/ (WAV plays in every
 web view Kabar runs in) plus an OGG preview of each next to it.
@@ -69,6 +71,27 @@ def kendang(pitch: float, length: float, noise: float, bend: float, seed: int) -
     return body * fade
 
 
+def chime(notes: list[float], gap: float, partials: list[tuple[float, float, float]], tail: float, seed: int) -> np.ndarray:
+    """Quick rising struck notes (a bell or a saron bar): each note is a few
+    partials with a hard attack and a fast decay, the last one rings longer."""
+    rng = np.random.default_rng(seed)
+    n = int((gap * (len(notes) - 1) + tail) * RATE)
+    t = np.arange(n) / RATE
+    out = np.zeros(n)
+    for i, f0 in enumerate(notes):
+        start = int(i * gap * RATE)
+        m = n - start
+        tt = t[:m]
+        life = tail if i == len(notes) - 1 else gap * 2.2
+        note = np.zeros(m)
+        for ratio, amp, decay in partials:
+            note += amp * np.sin(2 * np.pi * f0 * ratio * tt + rng.uniform(0, 2 * np.pi)) * envelope(m, 0.002, life * decay)
+        out[start:] += note * (0.8 if i < len(notes) - 1 else 1.0)
+    fade = np.ones(n)
+    fade[-int(0.05 * RATE):] = np.linspace(1, 0, int(0.05 * RATE))
+    return out * fade
+
+
 def write_wav(path: Path, x: np.ndarray) -> None:
     pcm = (np.clip(x, -1, 1) * 32767).astype("<i2")
     with wave.open(str(path), "wb") as w:
@@ -110,6 +133,10 @@ VARIANTS = {
     "kendang-1": lambda: kendang(200, 0.15, 0.25, 0.35, 1),  # round "dhung"
     "kendang-2": lambda: kendang(180, 0.17, 0.18, 0.5, 2),  # lower, more bend
     "kendang-3": lambda: kendang(220, 0.13, 0.32, 0.25, 3),  # tighter "tak"
+    # right-answer chimes: short, bright, rising
+    "ding-1": lambda: chime([784, 1047], 0.09, [(1, 1, 0.35), (2, 0.25, 0.2), (3, 0.08, 0.12)], 0.45, 1),  # soft two-note rise
+    "ding-2": lambda: chime([1047, 1568], 0.08, [(1, 1, 0.4), (2.76, 0.3, 0.18), (5.4, 0.12, 0.08)], 0.6, 2),  # sparkly bell, a fifth up
+    "ding-3": lambda: chime([587, 660, 880], 0.07, [(1, 1, 0.35), (2.4, 0.35, 0.15), (3.9, 0.12, 0.08)], 0.5, 3),  # saron bars, slendro-ish run
 }
 
 
