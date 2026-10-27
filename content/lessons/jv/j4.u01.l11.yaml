@@ -1,0 +1,195 @@
+schema: kabar.lesson/v1
+id: j4.u01.l11
+language: jv
+title: Enjing, siang, sonten
+can_do:
+  ar_eg: تفهم وتحكي يوم حد كبير بأفعال التبجيل.
+  ar: أن تفهم يوم الكبير وترويه بأفعال التبجيل.
+  en: Follow and retell an elder's day with honorific verbs.
+slides:
+  - title: Siram, dhahar, sare
+    body:
+      ar_eg: |
+        Bu Harsono كانت برّه طول اليوم، ومحمد بيحكيلها تيتة عملت إيه. اسمع الأول من غير ما تبص على الكلام.
+        كل حاجة عملتها تيتة بالـ krama inggil (siram، dhahar، mirsani، sare)، وحاجات محمد بالكراما العادية (nginum). lajeng = وبعدين (بالإندونيسي lalu).
+      ar: |
+        كانت Bu Harsono خارج البيت طوال اليوم، ومحمد يروي لها ما فعلته الجدة. استمع أولًا دون أن تنظر إلى النص.
+        كل أفعال الجدة بالـ krama inggil (siram، dhahar، mirsani، sare)، وأفعال محمد بالكراما العادية (nginum). lajeng = ثم (بالإندونيسية lalu).
+      en: |
+        Bu Harsono was out all day, and Mohamed tells her about Grandma's day. Listen first without looking at the text.
+        Everything Grandma did is krama inggil (siram, dhahar, mirsani, sare); Mohamed's own actions are plain krama (nginum). lajeng = then (Indonesian lalu).
+    grammar: jv.krama-inggil.verbs
+    examples:
+      - text: Enjing, Simbah siram lajeng dhahar.
+        ar_eg: الصبح تيتة استحمّت وبعدين فطرت.
+        ar: في الصباح استحمّت الجدة ثم أكلت.
+        en: In the morning Grandma had a bath and then ate.
+      - text: Siang, Simbah mirsani TV. Kula nginum teh kaliyan Simbah.
+        ar_eg: الضهر تيتة اتفرجت على التلفزيون. وأنا شربت شاي مع تيتة.
+        ar: ظهرًا شاهدت الجدة التلفاز، وشربتُ الشاي معها.
+        en: At midday Grandma watched TV. I had tea with her.
+      - text: Sonten, Pak Harsono kondur, lajeng Simbah sare.
+        ar_eg: العصر Pak Harsono رجع، وبعدين تيتة نامت.
+        ar: في المساء عاد Pak Harsono، ثم نامت الجدة.
+        en: In the afternoon Pak Harsono came home, and then Grandma went to sleep.
+exercises:
+  - id: e01
+    type: listen
+    text: Enjing, Simbah siram lajeng dhahar.
+    question:
+      ar_eg: تيتة عملت إيه الأول الصبح؟
+      ar: ماذا فعلت الجدة أولًا في الصباح؟
+      en: What did Grandma do first in the morning?
+    options: [siram, sare, mirsani TV]
+    answer: 0
+    meaning:
+      ar_eg: الصبح تيتة استحمّت وبعدين فطرت.
+      ar: في الصباح استحمّت الجدة ثم أكلت.
+      en: In the morning Grandma had a bath and then ate.
+    words: [siram, dhahar]
+  - id: e02
+    type: listen
+    text: Siang, Simbah mirsani TV. Kula nginum teh kaliyan Simbah.
+    question:
+      ar_eg: مين شرب شاي مع تيتة؟
+      ar: من شرب الشاي مع الجدة؟
+      en: Who had tea with Grandma?
+    options: [Pak Harsono, Mohamed, Bu Harsono]
+    answer: 1
+    meaning:
+      ar_eg: الضهر تيتة اتفرجت على التلفزيون. وأنا شربت شاي مع تيتة.
+      ar: ظهرًا شاهدت الجدة التلفاز، وشربتُ الشاي معها.
+      en: At midday Grandma watched TV. I had tea with her.
+    words: [mirsani, nginum]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Pak Harsono رجع البيت إمتى؟
+      ar: متى عاد Pak Harsono إلى البيت؟
+      en: When did Pak Harsono come home?
+    options: [enjing, siang, sonten]
+    answer: 2
+    explain:
+      ar_eg: «Sonten, Pak Harsono kondur» = العصر Pak Harsono رجع.
+      ar: «Sonten, Pak Harsono kondur» = عاد Pak Harsono في المساء.
+      en: '"Sonten, Pak Harsono kondur" = Pak Harsono came home in the afternoon.'
+    words: [kondur]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: محمد كمان اتفرج على التلفزيون. يقولها عن نفسه إزاي؟
+      ar: شاهد محمد التلفاز أيضًا. كيف يقول ذلك عن نفسه؟
+      en: Mohamed watched TV too. How does he say that about himself?
+    options: ['Kula mirsani TV.', 'Kula ningali TV.', 'Aku nonton TV.']
+    answer: 1
+    explain:
+      ar_eg: mirsani للكبير بس. عن نفسك ningali (كراما عادية).
+      ar: mirsani للكبير وحده، وعن النفس ningali (كراما عادية).
+      en: mirsani is for the elder only. About yourself it's ningali (plain krama).
+    words: [mirsani, ningali]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: siram
+        ar_eg: يستحمى (krama inggil)
+        ar: يستحمّ (krama inggil)
+        en: bathe (krama inggil)
+      - text: dhahar
+        ar_eg: ياكل (krama inggil)
+        ar: يأكل (krama inggil)
+        en: eat (krama inggil)
+      - text: mirsani
+        ar_eg: يتفرج / يشوف (krama inggil)
+        ar: يشاهد / يرى (krama inggil)
+        en: watch, see (krama inggil)
+      - text: sare
+        ar_eg: ينام (krama inggil)
+        ar: ينام (krama inggil)
+        en: sleep (krama inggil)
+      - text: lajeng
+        ar_eg: وبعدين (كراما)
+        ar: ثم (كراما)
+        en: then (krama)
+    words: [siram, dhahar, mirsani, sare, lajeng]
+  - id: e06
+    type: dictation
+    text: Sonten, Pak Harsono kondur, lajeng Simbah sare.
+    meaning:
+      ar_eg: العصر Pak Harsono رجع، وبعدين تيتة نامت.
+      ar: في المساء عاد Pak Harsono، ثم نامت الجدة.
+      en: In the afternoon Pak Harsono came home, and then Grandma went to sleep.
+    words: [kondur, lajeng, sare]
+  - id: e07
+    type: fill_blank
+    sentence: Siang, kula ___ teh kaliyan Simbah.
+    meaning:
+      ar_eg: الضهر أنا شربت شاي مع تيتة.
+      ar: ظهرًا شربتُ الشاي مع الجدة.
+      en: At midday I had tea with Grandma.
+    answers: [nginum]
+    explain:
+      ar_eg: إنت اللي بتشرب، يبقى nginum. ngunjuk لتيتة.
+      ar: أنت الشارب فتقول nginum، أما ngunjuk فللجدة.
+      en: You're the one drinking, so nginum. ngunjuk is for Grandma.
+    words: [nginum]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الصبح تيتة استحمّت وبعدين فطرت.
+      ar: في الصباح استحمّت الجدة ثم أكلت.
+      en: In the morning Grandma had a bath and then ate.
+    answers:
+      - Enjing, Simbah siram lajeng dhahar.
+      - Enjing, Simbah siram, lajeng dhahar.
+      - Enjing, Mbah Putri siram lajeng dhahar.
+      - Enjing, Simbah sampun siram lajeng dhahar.
+    explain:
+      ar_eg: الاتنين فعلين لتيتة، يبقى الاتنين krama inggil - siram وdhahar.
+      ar: الفعلان للجدة فكلاهما krama inggil - siram وdhahar.
+      en: Both actions are Grandma's, so both are krama inggil, siram and dhahar.
+    words: [siram, dhahar, lajeng]
+  - id: e09
+    type: speaking
+    text: Simbah saweg sare, Bu.
+    meaning:
+      ar_eg: تيتة نايمة يا هانم.
+      ar: الجدة نائمة يا سيدتي.
+      en: Grandma is asleep, ma'am.
+    words: [sare]
+dialogue:
+  title: Bu Harsono kondur
+  lines:
+    - speaker: Bu Harsono
+      text: Mas, Simbah sampun dhahar?
+      ar_eg: يا محمد، تيتة أكلت؟
+      ar: يا محمد، هل أكلت الجدة؟
+      en: Mohamed, has Grandma eaten?
+    - speaker: Mohamed
+      text: Sampun, Bu. Enjing Simbah siram lajeng dhahar.
+      ar_eg: أيوه يا هانم. الصبح استحمّت وبعدين أكلت.
+      ar: نعم يا سيدتي. في الصباح استحمّت ثم أكلت.
+      en: Yes, ma'am. In the morning she had a bath and then ate.
+    - speaker: Bu Harsono
+      text: Siang Simbah mirsani TV?
+      ar_eg: والضهر اتفرجت على التلفزيون؟
+      ar: وهل شاهدت التلفاز ظهرًا؟
+      en: Did she watch TV at midday?
+    - speaker: Mohamed
+      text: Inggih, Bu. Kula ugi ningali TV kaliyan Simbah.
+      ar_eg: أيوه يا هانم. وأنا كمان اتفرجت معاها.
+      ar: نعم يا سيدتي. وشاهدتُه معها أيضًا.
+      en: Yes, ma'am. I watched TV with her too.
+    - speaker: Bu Harsono
+      text: Simbah wonten pundi, Mas?
+      ar_eg: تيتة فين يا محمد؟
+      ar: أين الجدة يا محمد؟
+      en: Where's Grandma, Mohamed?
+    - speaker: Mohamed
+      text: Saweg sare, Bu.
+      ar_eg: نايمة يا هانم.
+      ar: نائمة يا سيدتي.
+      en: She's asleep, ma'am.
+review:
+  status: draft
+  verified: false

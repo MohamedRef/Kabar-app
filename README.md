@@ -58,11 +58,11 @@ every morning. CI warns when the table below is behind the content.
 | BIPA 1 | Jakarta | A1 | 10 | 98 | 934 | 606 | 605 / 600 | ~11 h | 35 |
 | BIPA 2 | Bali | A2 | 10 | 85 | 791 | 497 | 1,102 / 1,100 | ~10 h | 35 |
 | BIPA 3 | Lombok | B1 | 10 | 97 | 936 | 505 | 1,607 / 1,600 | ~11 h | 39 |
-| BIPA 4 | Sulawesi | B2 | 10 | 80 | 709 | 230 | 1,837 / 2,100 | ~8 h | 37 |
-| BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,235 | 602 | 2,438 / 2,700 | ~13 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 607 | 3,045 / 3,300 | ~13 h | 38 |
-| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 705 | 3,750 / 4,000 | ~15 h | 38 |
-| **Total** |  | — | 70 | 754 | 7,292 | 3,752 | 3,750 / 4,000 | ~81 h | 260 |
+| BIPA 4 | Sulawesi | B2 | 10 | 114 | 1,049 | 502 | 2,109 / 2,100 | ~12 h | 37 |
+| BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,235 | 602 | 2,710 / 2,700 | ~13 h | 38 |
+| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 607 | 3,317 / 3,300 | ~13 h | 38 |
+| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 705 | 4,022 / 4,000 | ~15 h | 38 |
+| **Total** |  | — | 70 | 788 | 7,632 | 4,024 | 4,022 / 4,000 | ~85 h | 260 |
 
 **Javanese (J1–J6)**
 
@@ -71,10 +71,10 @@ every morning. CI warns when the table below is behind the content.
 | J1 | Surabaya | — | 7 | 50 | 452 | 258 | 258 / 250 | ~6 h | 34 |
 | J2 | Madiun | — | 6 | 48 | 461 | 245 | 503 / 500 | ~5 h | 35 |
 | J3 | Yogyakarta | — | 6 | 61 | 554 | 250 | 753 / 750 | ~6 h | 35 |
-| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 842 / 1,000 | ~5 h | 38 |
-| J5 | Semarang | — | 6 | 66 | 621 | 255 | 1,097 / 1,250 | ~7 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 80 | 748 | 255 | 1,351 / 1,500 | ~8 h | 37 |
-| **Total** |  | — | 37 | 353 | 3,271 | 1,353 | 1,351 / 1,500 | ~38 h | 218 |
+| J4 | Yogyakarta | — | 6 | 69 | 648 | 248 | 1,000 / 1,000 | ~8 h | 38 |
+| J5 | Semarang | — | 6 | 66 | 621 | 255 | 1,255 / 1,250 | ~7 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 80 | 748 | 247 | 1,501 / 1,500 | ~8 h | 37 |
+| **Total** |  | — | 37 | 374 | 3,484 | 1,503 | 1,501 / 1,500 | ~41 h | 218 |
 
 **Reference content and stories**
 

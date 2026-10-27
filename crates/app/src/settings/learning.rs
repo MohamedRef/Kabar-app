@@ -2,7 +2,7 @@
 //! These sync to every device.
 
 use dioxus::prelude::*;
-use kabar_core::settings::{PronMode, RetentionPct, TranslationMode};
+use kabar_core::settings::{CorrectSound, EndSound, PronMode, RetentionPct, TranslationMode};
 
 use super::text::{S, st};
 use crate::i18n::Msg;
@@ -130,7 +130,90 @@ pub fn LearningSection() -> Element {
                     " {ui.t(Msg::SettingsSounds)}"
                 }
             }
+
+            if !settings.sounds_off {
+                div { class: "field",
+                    span { class: "label", "{st(lang, S::SoundCorrect)}" }
+                    div { class: "row", role: "group",
+                        for choice in CorrectSound::ALL {
+                            button {
+                                key: "{choice.id()}",
+                                aria_pressed: if settings.correct_sound == choice { "true" } else { "false" },
+                                onclick: {
+                                    let db = db.clone();
+                                    move |_| {
+                                        crate::sounds::preview_correct(choice);
+                                        ui.update_settings(&db, |s| s.correct_sound = choice)
+                                    }
+                                },
+                                "{st(lang, correct_label(choice))}"
+                            }
+                        }
+                    }
+                }
+                div { class: "field",
+                    span { class: "label", "{st(lang, S::SoundEnd)}" }
+                    div { class: "row", role: "group",
+                        for choice in EndSound::ALL {
+                            button {
+                                key: "{choice.id()}",
+                                aria_pressed: if settings.end_sound == choice { "true" } else { "false" },
+                                onclick: {
+                                    let db = db.clone();
+                                    move |_| {
+                                        crate::sounds::preview_end(choice);
+                                        ui.update_settings(&db, |s| s.end_sound = choice)
+                                    }
+                                },
+                                "{st(lang, end_label(choice))}"
+                            }
+                        }
+                    }
+                    p { class: "muted small", "{st(lang, S::SoundHint)}" }
+                }
+            }
+
+            if crate::platform::can_vibrate() {
+                div { class: "field",
+                    label {
+                        input {
+                            r#type: "checkbox",
+                            checked: !settings.haptics_off,
+                            onchange: {
+                                let db = db.clone();
+                                move |e: FormEvent| {
+                                    let on = e.checked();
+                                    ui.update_settings(&db, |s| s.haptics_off = !on);
+                                    if on {
+                                        crate::platform::vibrate(crate::platform::Haptic::Correct);
+                                    }
+                                }
+                            },
+                        }
+                        " {st(lang, S::Vibration)}"
+                    }
+                }
+            }
         }
+    }
+}
+
+fn correct_label(choice: CorrectSound) -> S {
+    match choice {
+        CorrectSound::Ding1 => S::DingSoft,
+        CorrectSound::Ding2 => S::DingBell,
+        CorrectSound::Ding3 => S::DingSaron,
+        CorrectSound::Kendang1 => S::KendangRound,
+        CorrectSound::Kendang2 => S::KendangLow,
+        CorrectSound::Kendang3 => S::KendangTight,
+    }
+}
+
+fn end_label(choice: EndSound) -> S {
+    match choice {
+        EndSound::Gong1 => S::GongWarm,
+        EndSound::Gong2 => S::GongDeep,
+        EndSound::Gong3 => S::GongBright,
     }
 }
 

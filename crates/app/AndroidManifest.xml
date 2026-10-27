@@ -38,6 +38,9 @@
     <!-- Android 12+: once Kabar installed itself, later updates need no
          confirmation (only honoured with this normal permission). -->
     <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />
+    <!-- A light tap of vibration on answers and at a lesson's end
+         (app.kabar.Haptics; Settings › Learning can turn it off). -->
+    <uses-permission android:name="android.permission.VIBRATE" />
     <!-- Automatic update downloads wait for Wi-Fi (isActiveNetworkMetered). -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 

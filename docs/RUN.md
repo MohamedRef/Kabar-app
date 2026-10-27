@@ -285,7 +285,7 @@ pip3 install cairosvg Pillow numpy PyYAML      # once; ffmpeg comes from `brew i
 python3 scripts/assets/draw_souvenirs.py bipa3.u06   # one card (or no argument for all)
 python3 scripts/assets/export_souvenirs.py
 python3 scripts/assets/draw_misc.py                  # hero, empty states, gong, notebook paper
-python3 scripts/assets/synth_sounds.py               # gong and kendang, 3 variations each
+python3 scripts/assets/synth_sounds.py               # gong, ding and kendang, 3 variations each
 ```
 
 **Kenney UI clicks.** kenney.nl is blocked from the cloud container, so this one is a Mac step:

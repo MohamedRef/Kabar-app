@@ -174,7 +174,7 @@ The tablet is where Kabar becomes creative.
 - **Ink:** batik-indigo pen by default; highlighter colors match word statuses; an optional paper texture in the Notebook.
 - **Type:** a clean Latin sans for Indonesian/Javanese; a beautiful Arabic face for explanations (e.g., IBM Plex Sans Arabic or Noto Naskh Arabic — OFL only). Optional Eastern Arabic numerals (٠١٢٣) in the Arabic UI.
 - **RTL done right:** logical CSS properties everywhere, mirrored navigation in the Arabic UI, Latin snippets isolated with `<bdi>`.
-- **Sound** (toggleable): soft gamelan-like tones — a gong when a lesson ends, a light *kendang* tap for correct answers. Synthesized or CC0; listed in ATTRIBUTION.md.
+- **Sound** (toggleable): soft gamelan-like tones — a gong when a lesson ends, a short rising chime for correct answers (Mohamed chose it over the original *kendang* tap, 2026-10-27). Synthesized or CC0; listed in ATTRIBUTION.md.
 - **Motion:** calm and quick (150–250 ms), respects reduced-motion. Subtle haptics on Android.
 - **Original art only:** no copyrighted characters, mascots or brand art.
 
