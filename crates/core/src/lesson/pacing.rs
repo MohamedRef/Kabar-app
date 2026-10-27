@@ -24,6 +24,9 @@ pub const MIN_EXERCISE_TYPES: usize = 4;
 
 /// Reading a slide, plus each of its examples.
 pub const SLIDE_SECONDS: u32 = 30;
+/// A slide table replaces body bullets, so it adds no time but stays small.
+pub const MAX_TABLE_ROWS: usize = 6;
+pub const MAX_TABLE_COLUMNS: usize = 4;
 pub const SLIDE_EXAMPLE_SECONDS: u32 = 10;
 /// Hearing and reading one dialogue line.
 pub const DIALOGUE_LINE_SECONDS: u32 = 8;

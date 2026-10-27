@@ -103,6 +103,20 @@ impl Validator {
                 }
                 self.localized(&format!("{p}.examples[{j}]"), &e.meaning);
             }
+            if let Some(t) = &s.table {
+                if !(2..=pacing::MAX_TABLE_COLUMNS).contains(&t.head.len()) {
+                    self.issue(format!("{p}.table.head"), format!("2–{} columns", pacing::MAX_TABLE_COLUMNS));
+                }
+                if !(2..=pacing::MAX_TABLE_ROWS).contains(&t.rows.len()) {
+                    self.issue(format!("{p}.table.rows"), format!("2–{} rows", pacing::MAX_TABLE_ROWS));
+                }
+                for (j, r) in t.rows.iter().enumerate() {
+                    if r.cells.len() != t.head.len() || r.cells.iter().any(|c| c.trim().is_empty()) {
+                        self.issue(format!("{p}.table.rows[{j}]"), "one non-empty cell per column");
+                    }
+                    self.localized(&format!("{p}.table.rows[{j}]"), &r.meaning);
+                }
+            }
         }
         if !(pacing::MIN_EXERCISES..=pacing::MAX_EXERCISES).contains(&l.exercises.len()) {
             self.issue(
