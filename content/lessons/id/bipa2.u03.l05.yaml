@@ -71,30 +71,50 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: لازم نروح بوابة خمسة دلوقتي.
-      ar: يجب أن نذهب إلى البوابة الخامسة الآن.
-      en: We have to go to gate five now.
-    answer: Kita harus ke pintu lima sekarang.
-    distractors: [dilarang, tujuh]
-    words: [harus, pintu]
+      ar_eg: لازم نتوجه حالًا لبوابة سبعة.
+      ar: يجب أن نتوجه فورًا إلى البوابة السابعة.
+      en: We have to head to gate seven right away.
+    answer: Kita harus segera menuju pintu tujuh.
+    distractors: [dilarang, pindah]
+    words: [harus, segera, menuju, pintu]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لو سمحت، بوابة خمسة فين؟
-      ar: من فضلك، أين البوابة الخامسة؟
-      en: Excuse me, where is gate five?
-    answers: ['Permisi, pintu lima di mana?', 'Permisi, pintu lima di mana', 'Permisi, di mana pintu lima?', 'Maaf, pintu lima di mana?', 'Maaf, di mana pintu lima?']
-    words: [pintu]
+    type: match_pairs
+    pairs:
+      - text: segera
+        ar_eg: فورًا، حالًا
+        ar: فورًا
+        en: right away
+      - text: menuju
+        ar_eg: يتوجه لـ
+        ar: يتوجه إلى
+        en: head for
+      - text: pindah
+        ar_eg: يتنقل
+        ar: ينتقل
+        en: move
+      - text: untung
+        ar_eg: من حسن الحظ
+        ar: لحسن الحظ
+        en: luckily
+      - text: jadwal
+        ar_eg: جدول مواعيد
+        ar: جدول مواعيد
+        en: timetable
+      - text: tujuan
+        ar_eg: وجهة
+        ar: وجهة
+        en: destination
+    words: [segera, menuju, pindah, untung, jadwal, tujuan]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الطيارة دي بتتأخر كتير.
-      ar: هذه الطائرة تتأخر كثيرًا.
-      en: This plane is often late.
-    answers: [Pesawat ini sering terlambat., Pesawat ini sering terlambat, Pesawatnya sering terlambat.]
-    words: [sering, terlambat]
+    type: fill_blank
+    sentence: ___ kita tidak terlambat!
+    meaning:
+      ar_eg: الحمد لله إننا ما اتأخرناش!
+      ar: لحسن الحظ لم نتأخر!
+      en: Luckily we're not late!
+    options: [Untung, Segera, Pindah]
+    answers: [Untung]
+    words: [untung]
   - id: e08
     type: build_sentence
     source:
@@ -114,12 +134,12 @@ exercises:
     words: [pindah, pintu]
   - id: e10
     type: speaking
-    text: Permisi, Pak. Penerbangan ke Jakarta terlambat, ya?
+    text: Untung saya tidak terlambat. Saya segera menuju pintu tujuh.
     meaning:
-      ar_eg: لو سمحت يا أستاذ. رحلة جاكرتا متأخرة، صح؟
-      ar: عفوًا يا سيدي. رحلة جاكرتا متأخرة، أليس كذلك؟
-      en: Excuse me, sir. The flight to Jakarta is delayed, right?
-    words: [penerbangan, terlambat]
+      ar_eg: الحمد لله ما اتأخرتش. أنا رايح حالًا على بوابة سبعة.
+      ar: لحسن الحظ لم أتأخر. سأتوجه فورًا إلى البوابة السابعة.
+      en: Luckily I'm not late. I'm heading straight to gate seven.
+    words: [untung, segera, menuju]
 dialogue:
   title: Pintu pindah!
   lines:

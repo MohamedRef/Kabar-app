@@ -123,20 +123,24 @@ exercises:
         ar_eg: تقيل
         ar: ثقيل
         en: heavy
-    words: [gendang, suling, ringan, berat]
+      - text: suara
+        ar_eg: صوت
+        ar: صوت
+        en: sound, voice
+    words: [gendang, suling, ringan, berat, suara]
   - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: أنهي جملة معناها «الجونج أكبر من الناي»؟
       ar: أيّ جملة تعني «الغونغ أكبر من الناي»؟
       en: Which sentence means "The gong is bigger than the flute"?
-    options: [Gong lebih besar daripada suling., Gong lebih besar dengan suling., Gong besar lebih daripada suling.]
+    options: [Gong lebih besar daripada suling., Gong lebih besar dengan suling., Gong lebih keras daripada suling.]
     answer: 0
     explain:
       ar_eg: lebih قبل الصفة، و«من» = daripada مش dengan.
       ar: lebih تسبق الصفة، و«من» هي daripada لا dengan.
       en: lebih comes before the adjective, and "than" is daripada, not dengan.
-    words: [lebih, daripada]
+    words: [lebih, daripada, keras]
   - id: e03
     type: listen
     text: Suling lebih ringan daripada gendang.
@@ -145,24 +149,23 @@ exercises:
     words: [suling, ringan, gendang]
   - id: e04
     type: fill_blank
-    sentence: Gitar ini ___ mahal daripada gitar itu.
+    sentence: Suara gendang lebih ___ daripada suara suling.
     meaning:
-      ar_eg: الجيتار ده أغلى من الجيتار ده.
-      ar: هذه القيثارة أغلى من تلك.
-      en: This guitar is more expensive than that guitar.
-    options: [daripada, lebih, kurang]
-    answers: [lebih]
-    words: [lebih, mahal]
+      ar_eg: صوت الطبلة أعلى من صوت الناي.
+      ar: صوت الطبل أعلى من صوت الناي.
+      en: The drum is louder than the flute.
+    options: [keras, ringan, berat]
+    answers: [keras]
+    words: [suara, gendang, keras, lebih, daripada]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: بالي أصغر من جاوة.
-      ar: بالي أصغر من جاوة.
-      en: Bali is smaller than Java.
-    answer: Bali lebih kecil daripada Jawa.
-    alternatives: []
-    distractors: [dengan, paling]
-    words: [lebih, kecil, daripada]
+      ar_eg: الطبلة تقيلة، بس الناي خفيف.
+      ar: الطبل ثقيل، لكن الناي خفيف.
+      en: The drum is heavy, but the flute is light.
+    answer: Gendang berat, tapi suling ringan.
+    distractors: [lebih, daripada]
+    words: [gendang, berat, suling, ringan]
   - id: e06
     type: speaking
     text: Suara gong lebih keras daripada suara suling.

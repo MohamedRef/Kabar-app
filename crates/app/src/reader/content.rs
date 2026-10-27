@@ -1,6 +1,6 @@
 //! The vocabulary content pack (every Indonesian and Javanese gloss batch,
 //! the Arabic Bridge cards and the Javanese speech-level table from
-//! `content/`), merged over the hand-made seed. Embedded in
+//! `content/`), merged over the hand-made seed. Embedded (compressed) in
 //! the binary until downloadable content packs arrive, so lookups never wait
 //! for the network.
 
@@ -17,10 +17,34 @@ use super::glossary::{
 
 // `GLOSS_BATCHES` (Indonesian) and `GLOSS_BATCHES_JV`: every
 // `content/glosses/<lang>/*.jsonl`, listed by build.rs.
-include!(concat!(env!("OUT_DIR"), "/glosses.rs"));
+use crate::embedded::{BRIDGE_ID, GLOSS_BATCHES, GLOSS_BATCHES_JV, SPEECH_LEVELS, unpack};
 
-const BRIDGE_ID: &str = include_str!("../../../../content/bridge/id.jsonl");
-const SPEECH_LEVELS: &str = include_str!("../../../../content/javanese/speech-levels.jsonl");
+/// `prepare` applied to every gloss entry, Indonesian batches first, in file
+/// order. The batches are unpacked, parsed and prepared on all cores: the
+/// Reader's first popover waits for this.
+fn gloss_entries<T: Send>(
+    prepare: impl Fn(GlossEntry) -> T + Sync,
+) -> impl Iterator<Item = Result<T, serde_json::Error>> {
+    let batches: Vec<&[u8]> = GLOSS_BATCHES.iter().chain(GLOSS_BATCHES_JV).copied().collect();
+    let cores = std::thread::available_parallelism().map_or(1, |n| n.get()).min(8);
+    let prepare = &prepare;
+    let parts: Vec<Vec<_>> = std::thread::scope(|s| {
+        let workers: Vec<_> = batches
+            .chunks(batches.len().div_ceil(cores).max(1))
+            .map(|chunk| {
+                s.spawn(move || {
+                    let mut out = Vec::new();
+                    for b in chunk {
+                        out.extend(jsonl::<GlossEntry>(&unpack(b)).map(|r| r.map(prepare)));
+                    }
+                    out
+                })
+            })
+            .collect();
+        workers.into_iter().map(|w| w.join().expect("gloss parser panicked")).collect()
+    });
+    parts.into_iter().flatten()
+}
 
 /// Words by lowercase spelling; one entry per language (Indonesian and
 /// Javanese share ~350 spellings).
@@ -139,10 +163,7 @@ pub fn taught_info(t: &TaughtEntry) -> Option<WordInfo> {
 
 /// The content pack's words and ranks (Indonesian and Javanese).
 pub fn known_words() -> Vec<kabar_core::ink::spell::Known> {
-    GLOSS_BATCHES
-        .iter()
-        .chain(GLOSS_BATCHES_JV)
-        .flat_map(|b| jsonl::<GlossEntry>(b))
+    gloss_entries(|e| e)
         .filter_map(Result::ok)
         .map(|e| kabar_core::ink::spell::Known { lang: e.lang, word: e.word.to_lowercase(), rank: e.rank })
         .collect()
@@ -155,7 +176,7 @@ impl LocalGlossary {
             g.upsert(k.to_string(), v);
         }
 
-        let bridges: HashMap<String, BridgeEntry> = jsonl::<BridgeEntry>(BRIDGE_ID)
+        let bridges: HashMap<String, BridgeEntry> = jsonl::<BridgeEntry>(&unpack(BRIDGE_ID))
             .filter_map(|r| r.map_err(|e| crate::diag::report!("bad bridge entry: {e}")).ok())
             .map(|b| (b.word.to_lowercase(), b))
             .collect();
@@ -163,23 +184,27 @@ impl LocalGlossary {
         // Indonesian word → its lemma and root, for Javanese words whose card is
         // their Indonesian equivalent's (ngurmati → menghormati → hormat).
         let mut id_stems: HashMap<String, Vec<String>> = HashMap::new();
-        let entries = GLOSS_BATCHES.iter().chain(GLOSS_BATCHES_JV).flat_map(|b| jsonl::<GlossEntry>(b));
-        for entry in entries {
-            let e = match entry {
-                Ok(e) => e,
-                Err(err) => {
-                    crate::diag::report!("bad gloss entry: {err}");
-                    continue;
-                }
-            };
-            let Some(mut info) = word_info(&e) else { continue };
-            // Bridge card: by word, else the lemma, else the root (memikirkan → pikir).
+        // On the parser threads: the popover view and its Bridge card, by word,
+        // else the lemma, else the root (memikirkan → pikir).
+        let prepared = gloss_entries(|e| {
+            let mut info = word_info(&e)?;
             info.bridge = [Some(&e.word), Some(&e.lemma), e.root.as_ref()]
                 .into_iter()
                 .flatten()
                 .filter_map(|k| bridges.get(&k.to_lowercase()))
                 .find(|b| b.lang == e.lang)
                 .map(bridge);
+            Some((e, info))
+        });
+        for entry in prepared {
+            let (e, mut info) = match entry {
+                Ok(Some(prepared)) => prepared,
+                Ok(None) => continue,
+                Err(err) => {
+                    crate::diag::report!("bad gloss entry: {err}");
+                    continue;
+                }
+            };
             match e.lang {
                 content::Lang::Id => {
                     let stems = [Some(e.lemma.clone()), e.root.clone()].into_iter().flatten().collect();
@@ -240,6 +265,11 @@ impl LocalGlossary {
             }
         }
         g.add_speech_levels();
+        // A second push gives a Vec room for four; most spellings have one or two.
+        for list in g.words.values_mut() {
+            list.shrink_to_fit();
+        }
+        g.words.shrink_to_fit();
         g
     }
 
@@ -247,7 +277,7 @@ impl LocalGlossary {
     /// points at the whole row.
     fn add_speech_levels(&mut self) {
         let mut done: HashSet<String> = HashSet::new();
-        for row in jsonl::<SpeechLevelEntry>(SPEECH_LEVELS) {
+        for row in jsonl::<SpeechLevelEntry>(&unpack(SPEECH_LEVELS)) {
             let row = match row {
                 Ok(r) => r,
                 Err(err) => {
@@ -310,7 +340,7 @@ impl LocalGlossary {
 
     /// Adds a word, replacing the same spelling in the same language.
     fn upsert(&mut self, key: String, info: WordInfo) {
-        let list = self.words.entry(key).or_default();
+        let list = self.words.entry(key).or_insert_with(|| Vec::with_capacity(1));
         match list.iter_mut().find(|w| w.lang == info.lang) {
             Some(w) => *w = info,
             None => list.push(info),
@@ -386,15 +416,13 @@ mod tests {
 
     #[test]
     fn every_line_parses() {
-        for b in GLOSS_BATCHES.iter().chain(GLOSS_BATCHES_JV) {
-            for r in jsonl::<GlossEntry>(b) {
-                r.unwrap();
-            }
-        }
-        for r in jsonl::<BridgeEntry>(BRIDGE_ID) {
+        for r in gloss_entries(|e| e) {
             r.unwrap();
         }
-        for r in jsonl::<SpeechLevelEntry>(SPEECH_LEVELS) {
+        for r in jsonl::<BridgeEntry>(&unpack(BRIDGE_ID)) {
+            r.unwrap();
+        }
+        for r in jsonl::<SpeechLevelEntry>(&unpack(SPEECH_LEVELS)) {
             r.unwrap();
         }
     }

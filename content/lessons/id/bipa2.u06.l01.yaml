@@ -104,14 +104,6 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kamar mandi
-        ar_eg: حمّام
-        ar: حمّام
-        en: bathroom
-      - text: kamar tidur
-        ar_eg: أوضة نوم
-        ar: غرفة نوم
-        en: bedroom
       - text: ruang tamu
         ar_eg: صالون
         ar: غرفة الضيوف
@@ -120,26 +112,38 @@ exercises:
         ar_eg: مستشفى
         ar: مستشفى
         en: hospital
-      - text: rumah makan
-        ar_eg: مطعم
-        ar: مطعم
-        en: restaurant
-    words: [kamar mandi, kamar tidur, ruang tamu, rumah sakit, rumah makan]
+      - text: meja makan
+        ar_eg: سفرة
+        ar: مائدة الطعام
+        en: dining table
+      - text: kereta api
+        ar_eg: قطر
+        ar: قطار
+        en: train
+      - text: mata air
+        ar_eg: عين مية
+        ar: ينبوع
+        en: spring
+      - text: kos
+        ar_eg: سكن، أوضة مأجّرة
+        ar: سكن مستأجر
+        en: boarding house
+    words: [ruang tamu, rumah sakit, meja makan, kereta api, mata air, kos]
   - id: e02
     type: listen
     text: Kamar mandinya di mana?
     options: ['Ruang tamunya di mana?', 'Kamar tidurnya di mana?', 'Kamar mandinya di mana?']
     answer: 2
-    words: [kamar mandi]
+    words: [kamar mandi, ruang tamu, kamar tidur]
   - id: e03
     type: multiple_choice
     question_meaning:
       ar_eg: أنهي مركّب معناه حرفيًا «عين مية» زي العربي؟
       ar: أيّ مركّب يعني حرفيًا «عين ماء» كما في العربية؟
       en: Which compound literally means «عين ماء» (eye of water), as in Arabic?
-    options: [kamar mandi, kereta api, mata air]
+    options: [rumah makan, kereta api, mata air]
     answer: 2
-    words: [mata air]
+    words: [mata air, kereta api, rumah makan]
   - id: e04
     type: fill_blank
     sentence: Kami makan malam di meja ___.
@@ -153,28 +157,39 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: المستشفى دي قريبة من السكن بتاعي.
-      ar: ذلك المستشفى قريب من سكني.
-      en: That hospital is near my boarding house.
-    answer: Rumah sakit itu dekat dengan kos saya.
-    distractors: [makan, ini]
-    words: [rumah sakit, kos]
+      ar_eg: المطعم ده قريب من السكن بتاعي.
+      ar: ذلك المطعم قريب من سكني.
+      en: That restaurant is near my boarding house.
+    answer: Rumah makan itu dekat kos saya.
+    distractors: [sakit, ini]
+    words: [rumah makan, kos]
   - id: e06
-    type: dictation
-    text: Rumah makan itu di depan rumah sakit.
+    type: listen
+    text: Rumah makan itu dekat stasiun kereta api.
+    options: ['Rumah makan itu dekat stasiun kereta api.', 'Rumah sakit itu dekat mata air.', 'Kos itu dekat stasiun kereta api.']
+    answer: 0
     meaning:
-      ar_eg: المطعم ده قدّام المستشفى.
-      ar: ذلك المطعم أمام المستشفى.
-      en: That restaurant is in front of the hospital.
-    words: [rumah makan, rumah sakit]
+      ar_eg: المطعم ده قريب من محطة القطر.
+      ar: ذلك المطعم قريب من محطة القطار.
+      en: That restaurant is near the train station.
+    words: [rumah makan, kereta api, rumah sakit, mata air, kos]
   - id: e07
     type: speaking
-    text: Kamar mandi saya di dalam kamar tidur.
+    text: Kamar tidur saya di sebelah ruang tamu.
     meaning:
-      ar_eg: الحمّام بتاعي جوّه أوضة النوم.
-      ar: حمّامي داخل غرفة النوم.
-      en: My bathroom is inside the bedroom.
-    words: [kamar mandi, kamar tidur]
+      ar_eg: أوضة نومي جنب الصالون.
+      ar: غرفة نومي بجانب غرفة الضيوف.
+      en: My bedroom is next to the living room.
+    words: [kamar tidur, ruang tamu]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في البيت، بناكل فين؟
+      ar: في البيت، أين نأكل؟
+      en: At home, where do we eat?
+    options: ['di meja makan', 'di rumah sakit', 'di kamar tidur']
+    answer: 0
+    words: [meja makan, rumah sakit, kamar tidur]
 dialogue:
   title: Rumah Bu Yanti di Sanur
   lines:
