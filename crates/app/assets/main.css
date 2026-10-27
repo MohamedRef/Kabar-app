@@ -620,14 +620,38 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 /* bubbles are physical chat sides, not reading direction */
 .doc .seg.bubble { direction: ltr; }
 
-/* split mode: original | explanation, row by row */
+/* the text, row by row: the original line, its words' meanings and the
+   whole line's translation under it (side by side on wide windows) */
 .split-head { display: none; }
-.doc.split .seg { display: grid; gap: 0.25rem 1.25rem; padding-block: 0.4rem; border-block-end: 1px solid var(--line); }
+.doc.split .seg { display: grid; gap: 0.35rem 1.5rem; padding-block: 0.6rem; border-block-end: 1px solid var(--line); }
+.doc.split .seg:last-child { border-block-end: 0; }
+.under { display: grid; gap: 0.45rem; align-content: start; }
 .explain { display: flex; flex-wrap: wrap; gap: 0.35rem; font-size: 0.95rem; line-height: 1.6; font-family: inherit; }
 .app:lang(ar) .explain { font-family: var(--font-arabic); }
 .chip { display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; gap: 0.25rem; padding-block: 0.1rem; padding-inline: 0.5rem; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; }
 .chip.from-arabic { border-color: var(--gold); text-decoration: none; }
 .chip .latin { font-weight: 600; }
+.explain .chip { padding-block: 0.2rem; padding-inline: 0.6rem; gap: 0.4rem; cursor: pointer; }
+.explain .chip-gloss { color: var(--text); }
+/* the whole line's translation: the learner's language, quiet but readable */
+.tr-line {
+  margin: 0; font-family: var(--font-arabic); font-size: 1.08rem; line-height: 1.75; color: var(--text);
+  border-inline-start: 3px solid color-mix(in srgb, var(--indigo) 45%, transparent); padding-inline-start: 0.7rem;
+  -webkit-user-select: text; user-select: text;
+}
+.tr-line:lang(en) { font-family: var(--font-latin); font-size: 1rem; }
+.tr-line.pending { color: var(--muted); border-inline-start-style: dashed; }
+.tr-line.word-by-word { color: var(--muted); font-size: 0.98rem; border-inline-start-style: dotted; }
+@media (prefers-reduced-motion: no-preference) {
+  /* A few pulses, not forever: a hung request shouldn't keep every line moving. */
+  .tr-line.pending { animation: tr-pulse 1.2s ease-in-out 8 alternate; }
+}
+@keyframes tr-pulse { from { opacity: 0.35; } to { opacity: 1; } }
+.seg.bubble .under { max-inline-size: 85%; }
+.seg.bubble.right .under { justify-items: end; }
+.tr-status { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; margin-block-end: 0.5rem; }
+.tr-status .tr-badge { font-size: 0.8rem; font-weight: 600; color: var(--indigo); background: color-mix(in srgb, var(--indigo) 10%, transparent); border-radius: 999px; padding-inline: 0.6rem; }
+.tr-status p, .tr-status span { margin: 0; }
 .app:not([data-width="compact"]) .doc.split .seg { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
 .app:not([data-width="compact"]) .split-head { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
 .doc.split .seg.bubble { direction: inherit; }
@@ -679,6 +703,15 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .panel .phrase { margin-block-start: 1.5rem; }
 /* Room for the close button beside a long headline. */
 .panel .headline { padding-inline-end: 1.75rem; }
+/* Phones and tablets: the word card floats next to its word, on the side of
+   the window with room, and scrolls inside that room. */
+.app:is([data-width="compact"], [data-width="medium"]) .panel.anchored {
+  inset-inline: 0.5rem; border-radius: 16px; max-block-size: min(var(--anchor-room), 75dvh);
+  padding-block-end: 1rem; box-shadow: var(--shadow); z-index: 30;
+}
+.app:is([data-width="compact"], [data-width="medium"]) .panel.anchored.below { inset-block: var(--anchor-y) auto; }
+.app:is([data-width="compact"], [data-width="medium"]) .panel.anchored.above { inset-block: auto var(--anchor-y); }
+@media (prefers-reduced-motion: no-preference) { .panel.anchored { animation: reveal 150ms ease-out both; } }
 .explain-glue { display: grid; gap: 0.5rem; justify-items: start; border-inline-start: 3px solid var(--indigo); padding-inline-start: 0.75rem; }
 .explain-glue p { margin: 0; }
 .grammar-entry { border: 1px solid var(--line); border-radius: 12px; padding-block: 0.5rem; padding-inline: 0.75rem; }
