@@ -1,200 +1,231 @@
 schema: kabar.lesson/v1
 id: bipa3.u04.l05
 language: id
-title: Teks eksplanasi
+title: Rokok dan stres
 can_do:
-  ar_eg: تشرح ليه أكلة معيّنة صحية، في نص قصير مترتّب.
-  ar: أن تشرح لماذا يكون طعام ما صحيًا في نص قصير مرتّب.
-  en: Explain why a food is healthy.
+  ar_eg: تتكلم مع دكتور عن السجاير والكحول والتوتر وصحة الجسم والنفس.
+  ar: أن تتحدث مع طبيب عن التدخين والكحول والتوتر وصحة الجسد والنفس.
+  en: Talk with a doctor about smoking, alcohol, stress and physical and mental health.
 slides:
-  - title: Teks eksplanasi dalam tiga langkah
-    grammar: id.definition.adalah-merupakan
+  - title: Kata dokter
     body:
       ar_eg: |
-        النص التفسيري (teks eksplanasi) بيمشي كده:
-        ١) التعريف: Stroberi merupakan buah yang kaya vitamin C.
-        ٢) الشرح: فيها إيه (mengandung = فيها / بتحتوي على) وفايدتها إيه (manfaat، من العربي «منفعة»): … menyehatkan tubuh.
-        ٣) الخلاصة: Jadi, …
+        penyakit = مرض (من sakit). kanker = سرطان. otak = مخ.
+        rokok = سيجارة، سجاير (merokok = يدخّن). alkohol = كحول.
+        stres = توتر، ضغط عصبي. mental = نفسي، fisik = بدني: kesehatan mental dan fisik.
       ar: |
-        يسير النص التفسيري (teks eksplanasi) هكذا:
-        ١) التعريف: Stroberi merupakan buah yang kaya vitamin C.
-        ٢) الشرح: ما يحتويه (mengandung = يحتوي على) وما فائدته (manfaat، من العربية «منفعة»): … menyehatkan tubuh.
-        ٣) الخلاصة: Jadi, …
+        penyakit = مرض (من sakit). kanker = سرطان. otak = دماغ.
+        rokok = سيجارة (merokok = يدخّن). alkohol = كحول.
+        stres = توتر، إجهاد نفسي. mental = نفسي، fisik = جسدي: kesehatan mental dan fisik.
       en: |
-        An explanation text goes like this:
-        1) Definition: Stroberi merupakan buah yang kaya vitamin C.
-        2) Explanation: what it contains (mengandung) and its benefits (manfaat, from Arabic «منفعة»): … menyehatkan tubuh.
-        3) Conclusion: Jadi, …
+        penyakit = illness, disease (from sakit). kanker = cancer. otak = brain.
+        rokok = cigarette (merokok = smoke). alkohol = alcohol.
+        stres = stress. mental = mental, fisik = physical: kesehatan mental dan fisik.
     examples:
-      - text: Stroberi mengandung serat dan sedikit lemak.
-        ar_eg: الفراولة فيها ألياف ودهون قليلة.
-        ar: تحتوي الفراولة على الألياف وقليل من الدهون.
-        en: Strawberries contain fibre and little fat.
+      - text: Rokok bisa membuat penyakit kanker.
+        ar_eg: السجاير ممكن تعمل سرطان.
+        ar: قد يسبّب التدخين مرض السرطان.
+        en: Cigarettes can cause cancer.
+      - text: Tidur yang cukup baik untuk otak.
+        ar_eg: النوم الكفاية كويس للمخ.
+        ar: النوم الكافي مفيد للدماغ.
+        en: Enough sleep is good for the brain.
+      - text: Olahraga baik untuk tubuh dan mental.
+        ar_eg: الرياضة كويسة للجسم وللنفسية.
+        ar: الرياضة مفيدة للجسد والنفس.
+        en: Exercise is good for body and mind.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: manfaat
-        ar_eg: فايدة، منفعة
-        ar: فائدة، منفعة
-        en: benefit
-      - text: mengandung
-        ar_eg: فيه، بيحتوي على
-        ar: يحتوي على
-        en: to contain
-      - text: lemak
-        ar_eg: دهون
-        ar: دهون
-        en: fat
-      - text: seimbang
-        ar_eg: متوازن
-        ar: متوازن
-        en: balanced
-    words: [manfaat, mengandung, lemak, seimbang]
+      - text: penyakit
+        ar_eg: مرض
+        ar: مرض
+        en: illness
+      - text: kanker
+        ar_eg: سرطان
+        ar: سرطان
+        en: cancer
+      - text: otak
+        ar_eg: مخ
+        ar: دماغ
+        en: brain
+      - text: rokok
+        ar_eg: سيجارة
+        ar: سيجارة
+        en: cigarette
+    words: [penyakit, kanker, otak, rokok]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة تنفع تعريف في أول النص التفسيري؟
-      ar: أيّ جملة تصلح تعريفًا في بداية النص التفسيري؟
-      en: Which sentence works as the definition at the start of an explanation text?
-    options: ["Jadi, makanlah stroberi setiap hari.", "Stroberi merupakan buah yang kaya vitamin C.", "Wah, stroberinya manis sekali!"]
-    answer: 1
-    words: [kaya]
+    type: match_pairs
+    pairs:
+      - text: alkohol
+        ar_eg: كحول
+        ar: كحول
+        en: alcohol
+      - text: stres
+        ar_eg: توتر
+        ar: توتر
+        en: stress
+      - text: mental
+        ar_eg: نفسي
+        ar: نفسي
+        en: mental
+      - text: fisik
+        ar_eg: بدني
+        ar: جسدي
+        en: physical
+    words: [alkohol, stres, mental, fisik]
   - id: e03
     type: listen
-    text: Tempe mengandung banyak protein dan sedikit lemak. Manfaatnya, tempe menguatkan tubuh.
+    text: Pekerjaan saya berat. Saya sering stres.
     question:
-      ar_eg: التمبيه فيه شوية قليلين من إيه؟
-      ar: ممّ يحتوي التمبيه على القليل؟
-      en: What does tempeh contain only a little of?
-    options: [protein, serat, lemak]
-    answer: 2
+      ar_eg: هو حاسس بإيه؟
+      ar: بماذا يشعر؟
+      en: How does he feel?
+    options: [تعبان من رجله, متوتر, جعان]
+    answer: 1
     meaning:
-      ar_eg: التمبيه فيه بروتين كتير ودهون قليلة. وفايدته إنه بيقوّي الجسم.
-      ar: يحتوي التمبيه على كثير من البروتين وقليل من الدهون، ومن فوائده أنه يقوّي الجسم.
-      en: Tempeh contains a lot of protein and little fat. Its benefit is that it strengthens the body.
-    words: [mengandung, lemak, manfaat]
+      ar_eg: شغلي تقيل. أنا كتير ببقى متوتر.
+      ar: عملي شاق. كثيرًا ما أشعر بالتوتر.
+      en: My job is hard. I'm often stressed.
+    words: [stres]
   - id: e04
     type: fill_blank
-    sentence: Stroberi ___ vitamin C.
+    sentence: Ayah saya berhenti merokok. Sekarang dia tidak membeli ___ lagi.
     meaning:
-      ar_eg: الفراولة فيها فيتامين سي.
-      ar: تحتوي الفراولة على فيتامين C.
-      en: Strawberries contain vitamin C.
-    options: [merupakan, mengandung, menaikkan]
-    answers: [mengandung]
-    words: [mengandung]
+      ar_eg: أبويا بطّل تدخين. دلوقتي مابقاش بيشتري ___.
+      ar: توقف أبي عن التدخين. لم يعد يشتري ___.
+      en: My father quit smoking. He doesn't buy ___ any more.
+    options: [otak, rokok, mental]
+    answers: [rokok]
+    words: [rokok, otak, mental]
   - id: e05
-    type: fill_blank
-    sentence: Apa ___ sayur bagi tubuh?
-    meaning:
-      ar_eg: إيه فايدة الخضار للجسم؟
-      ar: ما فائدة الخضار للجسم؟
-      en: What are the benefits of vegetables for the body?
-    options: [lemak, manfaat, panen]
-    answers: [manfaat]
-    words: [manfaat]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مرض خطير جدًا بنقول عليه بالعربي «سرطان»؟
+      ar: ما الكلمة التي تعني «سرطان»؟
+      en: Which word means 'cancer'?
+    options: [penyakit, alkohol, kanker]
+    answer: 2
+    explain:
+      ar_eg: kanker = سرطان. وpenyakit = مرض بشكل عام.
+      ar: kanker = سرطان، وpenyakit = مرض عمومًا.
+      en: kanker = cancer; penyakit = illness in general.
+    words: [kanker, penyakit, alkohol]
   - id: e06
+    type: fill_blank
+    sentence: Lari dan berenang adalah olahraga ___.
+    meaning:
+      ar_eg: الجري والعوم رياضة ___.
+      ar: الجري والسباحة رياضة ___.
+      en: Running and swimming are ___ exercise.
+    options: [fisik, stres, kanker]
+    answers: [fisik]
+    words: [fisik, stres, kanker]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: الأكل المقلي فيه دهون كتير.
-      ar: يحتوي الطعام المقلي على كثير من الدهون.
-      en: Fried food contains a lot of fat.
-    answer: Makanan goreng mengandung banyak lemak.
-    distractors: [merupakan, sedikit]
-    words: [mengandung, lemak]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الفراولة تعتبر فاكهة غنية بفيتامين سي.
-      ar: تُعدّ الفراولة فاكهة غنية بفيتامين C.
-      en: Strawberries are a fruit rich in vitamin C.
-    answers:
-      - Stroberi merupakan buah yang kaya vitamin C.
-      - Stroberi merupakan buah yang kaya vitamin C
-      - Stroberi adalah buah yang kaya vitamin C.
-      - Stroberi merupakan buah yang kaya akan vitamin C.
-      - Stroberi adalah buah yang kaya akan vitamin C.
-      - Stroberi merupakan buah kaya vitamin C.
-      - Stroberi adalah buah kaya vitamin C.
-    words: [kaya]
+      ar_eg: الكحول مش كويس للمخ.
+      ar: الكحول ليس جيدًا للدماغ.
+      en: Alcohol is not good for the brain.
+    answer: Alkohol tidak baik untuk otak.
+    distractors: [rokok, mental]
+    words: [alkohol, otak]
   - id: e08
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الخضار ليه فوايد كتير للجسم.
-      ar: للخضار فوائد كثيرة للجسم.
-      en: Vegetables have many benefits for the body.
-    answers:
-      - Sayur punya banyak manfaat bagi tubuh.
-      - Sayur punya banyak manfaat bagi tubuh
-      - Sayur punya banyak manfaat untuk tubuh.
-      - Sayur memiliki banyak manfaat bagi tubuh.
-      - Sayur memiliki banyak manfaat untuk tubuh.
-      - Sayuran punya banyak manfaat bagi tubuh.
-      - Sayuran memiliki banyak manfaat bagi tubuh.
-      - Sayuran punya banyak manfaat untuk tubuh.
-      - Sayuran memiliki banyak manfaat untuk tubuh.
-    words: [manfaat]
+    direction: from_target
+    source_text: Mental dan fisik yang sehat sama-sama perlu.
+    answers_meaning:
+      ar_eg: [الصحة النفسية والصحة البدنية الاتنين مهمين, محتاجين الصحة النفسية والبدنية مع بعض]
+      ar: [الصحة النفسية والصحة الجسدية كلتاهما ضرورية, نحتاج إلى الصحة النفسية والجسدية معًا]
+      en: [Mental health and physical health are both needed, We need both mental and physical health]
+    words: [mental, fisik]
   - id: e09
     type: speaking
-    text: Ikan mengandung lemak yang sehat.
+    text: Rokok dan alkohol membuat banyak penyakit.
     meaning:
-      ar_eg: السمك فيه دهون صحية.
-      ar: يحتوي السمك على دهون صحية.
-      en: Fish contains healthy fat.
-    words: [mengandung, lemak]
+      ar_eg: السجاير والكحول بيعملوا أمراض كتير.
+      ar: التدخين والكحول يسبّبان أمراضًا كثيرة.
+      en: Cigarettes and alcohol cause many illnesses.
+    words: [rokok, alkohol, penyakit]
+  - id: e10
+    type: multiple_choice
+    question: Menurut dokter, ___ jantung bisa datang karena stres.
+    options: [penyakit, otak, fisik]
+    answer: 0
+    explain:
+      ar_eg: penyakit jantung = مرض القلب.
+      ar: penyakit jantung = مرض القلب.
+      en: penyakit jantung = heart disease.
+    words: [penyakit, otak, stres, kanker]
 dialogue:
-  title: Teks tentang stroberi
   lines:
-    - speaker: Rina
-      text: Mohamed, teks eksplanasimu sudah selesai?
-      ar_eg: يا محمد، خلّصت النص التفسيري بتاعك؟
-      ar: يا محمد، هل أنهيت نصّك التفسيري؟
-      en: Mohamed, have you finished your explanation text?
+    - speaker: Dokter
+      text: Pak Mohamed, tekanan darah Anda agak tinggi. Apakah Anda merokok?
+      ar_eg: يا أستاذ محمد، ضغطك عالي شوية. بتدخّن؟
+      ar: يا سيد محمد، ضغط دمك مرتفع قليلًا. هل تدخّن؟
+      en: Mr Mohamed, your blood pressure is a bit high. Do you smoke?
     - speaker: Mohamed
-      text: 'Sudah. Dengar, ya: "Stroberi merupakan buah yang kaya vitamin C."'
-      ar_eg: "أيوه. اسمعي: «الفراولة تعتبر فاكهة غنية بفيتامين سي»."
-      ar: "نعم. اسمعي: «تُعدّ الفراولة فاكهة غنية بفيتامين C»."
-      en: 'Yes. Listen: "Strawberries are a fruit rich in vitamin C."'
-    - speaker: Rina
-      text: Bagus! Lalu, apa manfaatnya?
-      ar_eg: حلو! وبعدين، فايدتها إيه؟
-      ar: جميل! وما فائدتها؟
-      en: Good! And what are their benefits?
+      text: Tidak, Dok. Saya juga tidak minum alkohol.
+      ar_eg: لأ يا دكتور. ولا بشرب كحول.
+      ar: لا يا دكتور. ولا أشرب الكحول.
+      en: No, doctor. And I don't drink alcohol.
+    - speaker: Dokter
+      text: Bagus. Apakah Anda sering stres?
+      ar_eg: كويس. بتتوتر كتير؟
+      ar: جيد. هل تشعر بالتوتر كثيرًا؟
+      en: Good. Are you often stressed?
     - speaker: Mohamed
-      text: '"Stroberi mengandung serat dan sedikit lemak, jadi stroberi menyehatkan tubuh."'
-      ar_eg: «الفراولة فيها ألياف ودهون قليلة، فبتخلّي الجسم صحي».
-      ar: «تحتوي الفراولة على الألياف وقليل من الدهون، لذلك تقوّي صحة الجسم».
-      en: '"Strawberries contain fibre and little fat, so they keep the body healthy."'
-    - speaker: Rina
-      text: Kesimpulannya?
-      ar_eg: والخلاصة؟
-      ar: والخلاصة؟
-      en: And the conclusion?
-    - speaker: Mohamed
-      text: '"Jadi, makanlah stroberi dari Sembalun!"'
-      ar_eg: «يبقى كُلوا فراولة سمبالون!»
-      ar: «إذن، كُلوا فراولة سمبالون!»
-      en: '"So, eat strawberries from Sembalun!"'
+      text: Ya, pekerjaan saya berat dan saya kurang tidur.
+      ar_eg: أيوه، شغلي تقيل ومش بنام كفاية.
+      ar: نعم، عملي شاق ولا أنام كفاية.
+      en: Yes, my work is hard and I don't sleep enough.
+    - speaker: Dokter
+      text: Stres tidak baik untuk tubuh. Jaga tubuh dan mental Anda, ya.
+      ar_eg: التوتر مش كويس للجسم. خلّي بالك من صحتك البدنية والنفسية.
+      ar: التوتر ليس جيدًا للجسد. اعتنِ بصحتك الجسدية والنفسية.
+      en: Stress isn't good for the body. Look after your physical and mental health.
 new_words:
-  - word: manfaat
+  - word: penyakit
     pos: noun
-    ar_eg: فايدة، منفعة
-    ar: فائدة، منفعة
-    en: benefit
-    arabic: منفعة
-  - word: mengandung
-    pos: verb
-    ar_eg: فيه، بيحتوي على
-    ar: يحتوي على
-    en: to contain
-  - word: lemak
+    ar_eg: مرض
+    ar: مرض
+    en: illness, disease
+  - word: kanker
     pos: noun
-    ar_eg: دهون
-    ar: دهون
-    en: fat
+    ar_eg: سرطان
+    ar: سرطان
+    en: cancer
+  - word: otak
+    pos: noun
+    ar_eg: مخ
+    ar: دماغ
+    en: brain
+  - word: rokok
+    pos: noun
+    ar_eg: سيجارة، سجاير
+    ar: سيجارة
+    en: cigarette
+  - word: alkohol
+    pos: noun
+    ar_eg: كحول
+    ar: كحول
+    en: alcohol
+  - word: stres
+    pos: noun
+    ar_eg: توتر، ضغط عصبي
+    ar: توتر، إجهاد
+    en: stress
+  - word: mental
+    pos: adjective
+    ar_eg: نفسي
+    ar: نفسي
+    en: mental
+  - word: fisik
+    pos: adjective
+    ar_eg: بدني
+    ar: جسدي
+    en: physical
 review:
   status: draft
   verified: false
