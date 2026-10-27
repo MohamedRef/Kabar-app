@@ -1,0 +1,207 @@
+schema: kabar.lesson/v1
+id: bipa6.u01.l13
+language: id
+title: Ulangan Unit 1
+can_do:
+  ar_eg: تقرا قصة وتطلّع اللي ماتقالش فيها، وتتكلم عن شخصياتها وموضوعها.
+  ar: أن تقرأ قصّة وتستخرج ما لم يُقل فيها، وتتحدّث عن شخصياتها وموضوعها.
+  en: Read a story, infer what it leaves unsaid, and discuss its characters and theme.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tersirat
+        ar_eg: ضمني / بين السطور
+        ar: ضمني
+        en: implied
+      - text: alur
+        ar_eg: حبكة
+        ar: حبكة
+        en: plot
+      - text: tokoh
+        ar_eg: شخصية
+        ar: شخصيّة
+        en: character
+      - text: amanat
+        ar_eg: عبرة / رسالة
+        ar: عبرة
+        en: moral, message
+      - text: ulasan
+        ar_eg: مراجعة / نقد
+        ar: مراجعة
+        en: review
+    words: [tersirat, alur, tokoh, amanat, ulasan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مضيفك قال «Nanti saya kabari, ya.» على عرضك. ده معناه غالبًا إيه؟
+      ar: قال مضيفك «Nanti saya kabari, ya.» ردًّا على عرضك. ماذا يعني غالبًا؟
+      en: Your host says "Nanti saya kabari, ya." to your offer. What does it usually mean?
+    options:
+      - موافق حالًا.
+      - لأ، بأدب.
+      - هيتصل بكرة أكيد.
+    answer: 1
+    words: [tersirat]
+  - id: e03
+    type: fill_blank
+    sentence: ___ cerpen ini adalah sebuah rumah tua di Medan.
+    meaning:
+      ar_eg: مكان القصة دي بيت قديم في ميدان.
+      ar: مكان هذه القصّة بيت قديم في ميدان.
+      en: This story's setting is an old house in Medan.
+    options: [Latar, Watak, Tema]
+    answers: [Latar]
+    words: [latar]
+  - id: e04
+    type: listen
+    text: Anak itu merantau karena ada konflik dengan ayahnya.
+    question:
+      ar_eg: الابن سافر ليه؟
+      ar: لماذا اغترب الابن؟
+      en: Why did the son leave home?
+    options:
+      - علشان كان فيه خلاف بينه وبين أبوه.
+      - علشان كسب جايزة.
+      - علشان بيدرس طب.
+    answer: 0
+    words: [merantau, konflik]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الأب مرسوم كراجل ساكت بس طيب.
+      ar: يُصوَّر الأب رجلًا صامتًا لكنّه طيّب.
+      en: The father is portrayed as quiet but good-natured.
+    answer: Ayah digambarkan sebagai orang yang pendiam tetapi baik.
+    distractors: [simbol, latar]
+    words: [digambarkan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الكرسي الفاضي رمز للشوق.
+      ar: الكرسيّ الفارغ رمز للشوق.
+      en: The empty chair is a symbol of longing.
+    answers:
+      - Kursi kosong itu simbol rindu.
+      - Kursi kosong itu adalah simbol kerinduan.
+      - Kursi yang kosong itu simbol kerinduan.
+      - Kursi kosong adalah simbol rindu.
+    words: [simbol, rindu]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Cerpen ini punya akhir terbuka, jadi setiap pembaca menafsirkannya sendiri.
+    answers_meaning:
+      ar_eg:
+        - القصة دي نهايتها مفتوحة، فكل قارئ بيفسّرها على مزاجه.
+        - نهاية القصة مفتوحة، وكل واحد بيقراها يفهمها بطريقته.
+      ar:
+        - لهذه القصّة نهاية مفتوحة، فيفسّرها كلّ قارئ بنفسه.
+        - نهاية القصّة مفتوحة، ولكلّ قارئ تفسيره.
+      en:
+        - This story has an open ending, so every reader interprets it for themselves.
+        - The ending is open, so each reader makes their own reading.
+    words: [akhir terbuka, menafsirkan]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Gaya bahasanya menyentuh» معناها إيه؟
+      ar: ما معنى «Gaya bahasanya menyentuh»؟
+      en: What does "Gaya bahasanya menyentuh" mean?
+    options:
+      - أسلوبها ممل.
+      - أسلوبها صعب.
+      - أسلوبها مؤثّر.
+    answer: 2
+    words: [gaya bahasa, menyentuh]
+  - id: e09
+    type: dictation
+    text: Ayahnya pulang letih; dia menghela napas, lalu terdiam.
+    meaning:
+      ar_eg: أبوه رجع هلكان؛ اتنهد، وبعدين سكت.
+      ar: عاد أبوه منهكًا؛ تنهّد ثم صمت.
+      en: His father came home weary; he sighed, then fell silent.
+    words: [letih, menghela, terdiam]
+  - id: e10
+    type: speaking
+    text: Di tengah keheningan, dia teringat suara riang anaknya, penuh kerinduan.
+    meaning:
+      ar_eg: في وسط السكون، افتكر صوت ابنه الفرحان، وهو مليان حنين.
+      ar: في خضمّ السكون تذكّر صوت ابنه المرح، ممتلئًا بالحنين.
+      en: In the silence, he remembered his son's cheerful voice, full of longing.
+    words: [keheningan, riang, kerinduan]
+  - id: e11
+    type: match_pairs
+    pairs:
+      - text: pencerita
+        ar_eg: الراوي
+        ar: الراوي
+        en: narrator
+      - text: cerpenis
+        ar_eg: كاتب قصص قصيرة
+        ar: قاصّ
+        en: short-story writer
+      - text: berbisik
+        ar_eg: يوشوش
+        ar: يهمس
+        en: to whisper
+      - text: berkelana
+        ar_eg: يلف البلاد
+        ar: يجوب البلاد
+        en: to wander far
+      - text: terpaku
+        ar_eg: اتسمّر
+        ar: تسمّر
+        en: to stand rooted
+      - text: lugu
+        ar_eg: على نياته
+        ar: ساذج، بريء
+        en: naive
+    words: [pencerita, cerpenis, berbisik, berkelana, terpaku, lugu]
+  - id: e12
+    type: multiple_choice
+    question_meaning:
+      ar_eg: '«"Aku tidak tahu," gumamku, lalu aku menutup buku.» الراوي هنا إيه؟'
+      ar: '«"Aku tidak tahu," gumamku, lalu aku menutup buku.» ما نوع الراوي هنا؟'
+      en: '«"Aku tidak tahu," gumamku, lalu aku menutup buku.» What kind of narrator is this?'
+    options: [orang ketiga, orang pertama, redaktur]
+    answer: 1
+    explain:
+      ar_eg: الراوي بيقول «aku» وبيبرطم بنفسه، يبقى orang pertama.
+      ar: يقول الراوي «aku» ويتمتم بنفسه، فهو orang pertama.
+      en: The narrator says «aku» and does the muttering, so orang pertama.
+    words: [orang pertama, bergumam, tanda petik]
+dialogue:
+  title: Di rumah Tjong A Fie
+  lines:
+    - speaker: Kak Mei
+      text: Rumah ini dibangun oleh Tjong A Fie, saudagar Hakka yang kaya.
+      ar_eg: البيت ده بناه تجونج أ في، تاجر هاكّا غني.
+      ar: بنى هذا البيتَ تجونغ آ في، التاجر الهاكّاوي الثري.
+      en: This house was built by Tjong A Fie, a wealthy Hakka merchant.
+    - speaker: Mohamed
+      text: Gayanya campuran, ya. Ada Tionghoa, Melayu, dan Eropa.
+      ar_eg: طرازه خليط، صح؟ فيه صيني وملايو وأوروبي.
+      ar: طرازه مزيج، صيني وملايوي وأوروبي.
+      en: The style is a mix, isn't it. Chinese, Malay and European.
+    - speaker: Kak Mei
+      text: Betul. Dia juga membantu membangun masjid dan kelenteng. Seperti cerpen, rumah ini punya makna tersirat.
+      ar_eg: مظبوط. وكمان ساعد في بناء جوامع ومعابد. زي القصة، البيت ده ليه معنى بين السطور.
+      ar: صحيح. وأسهم أيضًا في بناء مساجد ومعابد. وللبيت، كالقصّة، معنى ضمني.
+      en: Right. He also helped build mosques and temples. Like a short story, this house has an implied meaning.
+    - speaker: Mohamed
+      text: Amanatnya, Medan adalah rumah bagi semua orang.
+      ar_eg: والعبرة إن ميدان بيت لكل الناس.
+      ar: وعبرته أنّ ميدان بيت للجميع.
+      en: Its message is that Medan is home to everyone.
+souvenir:
+  id: bipa6.u01.souvenir
+  title: Rumah Tjong A Fie
+  note:
+    ar_eg: في ميدان، بيت تجونج أ في اتبنى في آخر القرن التسعتاشر لتاجر صيني من الهاكّا. الطراز فيه صيني وملايو وأوروبي مع بعض، وصاحبه ساعد في بناء جوامع ومعابد وكنايس. ميدان نفسها خليط من باتاك وملايو وصينيين وهنود وجاويين، وكتّاب القصة القصيرة فيها بيحكوا الخليط ده.
+    ar: في ميدان، بُني بيت تجونغ آ في أواخر القرن التاسع عشر لتاجر صيني من الهاكّا، يمزج طرازه الصيني بالملايوي والأوروبي، وقد أسهم صاحبه في بناء مساجد ومعابد وكنائس. وميدان نفسها مزيج من الباتاك والملايو والصينيين والهنود والجاويين، ويروي كتّاب القصّة القصيرة فيها هذا المزيج.
+    en: In Medan, the Tjong A Fie Mansion was built in the late 19th century for a Hakka Chinese merchant. Its style blends Chinese, Malay and European, and its owner helped fund mosques, temples and churches. Medan itself is a mix of Batak, Malay, Chinese, Indian and Javanese people, and its short-story writers capture that mix.
+review:
+  status: draft
+  verified: false
