@@ -1,201 +1,184 @@
 schema: kabar.lesson/v1
 id: j2.u03.l06
 language: jv
-title: Ulangan J2.3
+title: Pasar! Jawa
 can_do:
-  ar_eg: تتعامل مع الأسعار والباقي.
-  ar: أن تتعامل مع الأسعار والباقي.
-  en: Handle prices and change.
+  ar_eg: تفاصل في السعر بالجاوي.
+  ar: أن تساوم على السعر بالجاوية.
+  en: Haggle in Javanese.
 slides:
-  - title: Ringkesan J2.3
+  - title: Oleh kurang, Bu?
     body:
       ar_eg: |
-        - 11–19: sewelas، rolas، telulas، patbelas، limalas، nembelas، pitulas، wolulas، sangalas.
-        - 21–29 بـ -likur: selikur … patlikur، و25 = selawe، nemlikur … sangalikur.
-        - 50 = seket، 60 = sewidak. والباقي: telung puluh، patang puluh، pitung puluh …
-        - قبل atus / ewu / kilo شكل الوصل: rong atus، limang atus، telung ewu، telung kilo. وsatus، sewu، sejuta.
-        - yuta / juta = مليون. setengah = نص. susuk = الباقي. Kabeh dadi … = الكل …
-        - الفصال: Oleh kurang? · … wae, ya? · Ora oleh, wis pas. · Ya wis, oleh.
+        جمل الفصال اللي هتحتاجها:
+        - Larang! = غالي! · murah = رخيص
+        - Oleh kurang, Bu? = ينفع تنزلي شوية يا طنط؟ (oleh = boleh، kurang = أقل)
+        - Selawe ewu wae, ya? = خمسة وعشرين ألف بس، ماشي؟
+        - Ora oleh. Wis pas. = مينفعش، ده آخر سعر. (wis pas = sudah pas)
+        - Ya wis, oleh. = خلاص، ماشي. (ya wis = ya sudah)
+        الفصال في السوق الجاوي لعبة لطيفة، مش خناقة: ابتسم، قول Bu أو Pak، وحط ya في الآخر. ومع البياعين الكبار الكراما هتبقى أحلى — هتتعلمها في J3.
       ar: |
-        - 11–19: sewelas، rolas، telulas، patbelas، limalas، nembelas، pitulas، wolulas، sangalas.
-        - 21–29 بـ -likur: selikur … patlikur، و25 = selawe، ثم nemlikur … sangalikur.
-        - 50 = seket، و60 = sewidak، والباقي قياسي: telung puluh، patang puluh، pitung puluh …
-        - قبل atus / ewu / kilo صيغة الوصل: rong atus، limang atus، telung ewu، telung kilo، ثم satus، sewu، sejuta.
-        - yuta / juta = مليون، setengah = نصف، susuk = الباقي، Kabeh dadi … = المجموع …
-        - المساومة: Oleh kurang? · … wae, ya? · Ora oleh, wis pas. · Ya wis, oleh.
+        عبارات المساومة التي ستحتاجها:
+        - Larang! = غالٍ! · murah = رخيص
+        - Oleh kurang, Bu? = هل يمكن أن تُنقصي السعر يا سيدتي؟ (oleh = boleh، kurang = أقل)
+        - Selawe ewu wae, ya? = خمسة وعشرون ألفًا فقط، اتفقنا؟
+        - Ora oleh. Wis pas. = لا يمكن، هذا آخر سعر. (wis pas = sudah pas)
+        - Ya wis, oleh. = حسنًا، موافقة. (ya wis = ya sudah)
+        والمساومة في السوق الجاوي لعبة ودودة لا شجار: ابتسم، وقل Bu أو Pak، واختم بـ ya. ومع الباعة الكبار تكون الكراما أجمل، وستتعلمها في J3.
       en: |
-        - 11–19: sewelas, rolas, telulas, patbelas, limalas, nembelas, pitulas, wolulas, sangalas.
-        - 21–29 with -likur: selikur … patlikur, 25 = selawe, nemlikur … sangalikur.
-        - 50 = seket, 60 = sewidak. The rest: telung puluh, patang puluh, pitung puluh …
-        - Before atus / ewu / kilo use linking forms: rong atus, limang atus, telung ewu, telung kilo. And satus, sewu, sejuta.
-        - yuta / juta = million. setengah = half. susuk = change. Kabeh dadi … = That comes to …
-        - Haggling: Oleh kurang? · … wae, ya? · Ora oleh, wis pas. · Ya wis, oleh.
+        Haggling lines you'll need:
+        - Larang! = Expensive! · murah = cheap
+        - Oleh kurang, Bu? = Can you go lower, ma'am? (oleh = boleh, kurang = less)
+        - Selawe ewu wae, ya? = Just 25,000, OK?
+        - Ora oleh. Wis pas. = Can't. That's the final price. (wis pas = sudah pas)
+        - Ya wis, oleh. = All right, deal. (ya wis = ya sudah)
+        Haggling at a Javanese market is a friendly game, not a fight: smile, say Bu or Pak, end with ya. With older sellers krama is even nicer — that comes in J3.
     grammar: jv.number.full
+    examples:
+      - text: Wolulikur ewu wae, ya?
+        ar_eg: تمانية وعشرين ألف بس، ماشي؟
+        ar: ثمانية وعشرون ألفًا فقط، اتفقنا؟
+        en: Just 28,000, OK?
+      - text: Ya wis, selawe.
+        ar_eg: خلاص، خمسة وعشرين.
+        ar: حسنًا، خمسة وعشرون.
+        en: All right, twenty-five.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: rolas
-        ar_eg: ١٢
-        ar: ١٢
-        en: '12'
-      - text: nembelas
-        ar_eg: ١٦
-        ar: ١٦
-        en: '16'
-      - text: patlikur
-        ar_eg: ٢٤
-        ar: ٢٤
-        en: '24'
-      - text: sewidak
-        ar_eg: ٦٠
-        ar: ٦٠
-        en: '60'
-      - text: sangang puluh
-        ar_eg: ٩٠
-        ar: ٩٠
-        en: '90'
-    words: [rolas, nembelas, patlikur, sewidak, sangang puluh]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تسأل البياعة بأدب لو ممكن تنزّل السعر. تقول إيه؟
+      ar: تريد أن تسأل البائعة بلطف إن كانت تُنقص السعر. ماذا تقول؟
+      en: You want to ask the seller politely if she can go lower. What do you say?
+    options: ['Oleh kurang, Bu?', 'Wis pas, Bu.', 'Ora oleh, Bu.']
+    answer: 0
+    words: [oleh, kurang]
   - id: e02
     type: multiple_choice
-    question: 13 = ?
     question_meaning:
-      ar_eg: إزاي تقول ١٣؟
-      ar: كيف تقول ١٣؟
-      en: How do you say 13?
-    options: [telulikur, telung puluh, telulas]
-    answer: 2
-    words: [telulas]
-  - id: e03
-    type: multiple_choice
-    question: 500.000 = ?
-    question_meaning:
-      ar_eg: إزاي تقول ٥٠٠ ألف؟
-      ar: كيف تقول ٥٠٠ ألف؟
-      en: How do you say 500,000?
-    options: [limalas ewu, limang atus ewu, lima atus ewu]
+      ar_eg: البياعة وافقت على السعر بتاعك. قالت إيه؟
+      ar: وافقت البائعة على سعرك. ماذا قالت؟
+      en: The seller accepts your price. What did she say?
+    options: ['Wis pas, Mas.', 'Ya wis, oleh.', 'Ora oleh, Mas.']
     answer: 1
-    explain:
-      ar_eg: قبل atus الشكل limang. وlimalas ewu = 15.000 بس.
-      ar: قبل atus تأتي limang، وlimalas ewu = 15.000.
-      en: Before atus the form is limang; limalas ewu is only 15,000.
-    words: [limang, atus, ewu]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الحساب ٧٥ ألف، وإنت دفعت ١٠٠ ألف. الباقي كام؟
-      ar: الحساب ٧٥ ألفًا ودفعتَ ١٠٠ ألف. كم الباقي؟
-      en: The bill is 75,000 and you paid 100,000. What's the change?
-    options: [selawe ewu, limalas ewu, seket ewu]
-    answer: 0
-    words: [susuk, selawe]
-  - id: e05
-    type: listen
-    text: Susuke selawe ewu.
-    options: [Susuke selawe ewu., Susuke sewidak ewu., Susuke seket ewu.]
-    answer: 0
-    words: [susuk, selawe]
-  - id: e06
+    words: [ya wis, oleh, wis pas]
+  - id: e03
     type: fill_blank
-    sentence: Bawang putih ___ kilo limalas ewu.
+    sentence: Telung puluh ewu? ___ banget, Bu!
     meaning:
-      ar_eg: نص كيلو التوم بخمستاشر ألف.
-      ar: نصف كيلو الثوم بخمسة عشر ألفًا.
-      en: Half a kilo of garlic is 15,000.
-    options: [rada, setengah, akeh]
-    answers: [setengah]
-    words: [setengah, bawang putih, limalas]
-  - id: e07
+      ar_eg: تلاتين ألف؟ غالي أوي يا طنط!
+      ar: ثلاثون ألفًا؟ غالٍ جدًا يا سيدتي!
+      en: Thirty thousand? That's really expensive, ma'am!
+    options: [Larang, Murah, Legi]
+    answers: [Larang]
+    words: [larang]
+  - id: e04
     type: fill_blank
     sentence: Regane ___ ewu.
     meaning:
-      ar_eg: سعره ستين ألف.
-      ar: ثمنه ستون ألفًا.
-      en: It costs 60,000.
-    answers: [sewidak]
+      ar_eg: سعره تمانية وعشرين ألف.
+      ar: ثمنه ثمانية وعشرون ألفًا.
+      en: It costs 28,000.
+    answers: [wolulikur]
     explain:
-      ar_eg: '60 ليها كلمة خاصة: sewidak.'
-      ar: 'للستين لفظ خاص: sewidak.'
-      en: '60 has its own word: sewidak.'
-    words: [sewidak]
-  - id: e08
+      ar_eg: 'من 21 لـ 29 بـ -likur: wolu + likur = wolulikur.'
+      ar: 'الأعداد 21–29 بـ -likur: wolu + likur = wolulikur.'
+      en: '21–29 use -likur: wolu + likur = wolulikur.'
+    words: [wolulikur]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: البصل الأحمر الكيلو بتلاتين ألف.
-      ar: الكيلو من البصل الأحمر بثلاثين ألفًا.
-      en: Shallots are 30,000 a kilo.
-    answer: Bawang abang sekilo telung puluh ewu.
-    distractors: [telu, atus]
-    words: [bawang abang, sekilo, telung puluh, ewu]
-  - id: e09
+      ar_eg: خمسة وعشرين ألف بس، ماشي؟
+      ar: خمسة وعشرون ألفًا فقط، اتفقنا؟
+      en: Just 25,000, OK?
+    answer: Selawe ewu wae, ya?
+    distractors: [seket, ora]
+    words: [selawe, ewu, wae]
+  - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: ينفع تنزّل شوية يا عم؟
-      ar: هل يمكن أن تُنقص السعر يا سيدي؟
-      en: Can you go lower, sir?
-    answers: ['Oleh kurang, Pak?', 'Oleh kurang, Pak', 'Oleh kurang?', Oleh kurang]
+      ar_eg: ينفع تنزلي شوية يا طنط؟
+      ar: هل يمكن أن تُنقصي السعر يا سيدتي؟
+      en: Can you go lower, ma'am?
+    answers: ['Oleh kurang, Bu?', 'Oleh kurang, Bu', 'Oleh kurang?', Oleh kurang, 'Oleh kurang ora, Bu?', 'Oleh kurang ora, Bu']
+    words: [oleh, kurang]
+  - id: e07
+    type: listen
+    text: Wis pas, Mas. Ora oleh kurang.
+    options: ['Wis pas, Mas. Ora oleh kurang.', 'Ya wis, Mas. Oleh kurang.', 'Wis pas, Mas. Oleh kurang.']
+    answer: 0
+    meaning:
+      ar_eg: ده آخر سعر يا أستاذ. مينفعش أنزّل.
+      ar: هذا آخر سعر يا أخي. لا يمكن التخفيض.
+      en: That's the final price, Mas. I can't go lower.
+    words: [wis pas, oleh, kurang, ya wis]
+  - id: e08
+    type: listen
+    text: Wolulikur ewu wae.
+    options: [Wolulikur ewu wae., Wolulas ewu wae., Wolung puluh ewu wae.]
+    answer: 0
+    explain:
+      ar_eg: wolulas = 18، wolulikur = 28، wolung puluh = 80.
+      ar: wolulas = 18، وwolulikur = 28، وwolung puluh = 80.
+      en: wolulas = 18, wolulikur = 28, wolung puluh = 80.
+    words: [wolulikur]
+  - id: e09
+    type: dictation
+    text: Oleh kurang, Bu?
+    meaning:
+      ar_eg: ينفع تنزلي شوية يا طنط؟
+      ar: هل يمكن أن تُنقصي السعر يا سيدتي؟
+      en: Can you go lower, ma'am?
     words: [oleh, kurang]
   - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ده الباقي يا أستاذ.
-      ar: هذا الباقي يا أخي.
-      en: Here's your change, Mas.
-    answers: ["Iki susuke, Mas.", "Iki susuke, Mas", "Iki susuke.", Iki susuke]
-    words: [susuk, iki]
-  - id: e11
-    type: dictation
-    text: Ya wis, oleh.
-    meaning:
-      ar_eg: خلاص، ماشي.
-      ar: حسنًا، موافق.
-      en: All right, deal.
-    words: [ya wis, oleh]
-  - id: e12
     type: speaking
-    text: Selawe ewu wae, ya, Bu?
+    text: Wah, larang. Selawe ewu wae, ya?
     meaning:
-      ar_eg: خمسة وعشرين ألف بس، ماشي يا طنط؟
-      ar: خمسة وعشرون ألفًا فقط، اتفقنا يا سيدتي؟
-      en: Just 25,000, OK, ma'am?
-    words: [selawe, ewu, wae]
+      ar_eg: ياه، غالي. خمسة وعشرين ألف بس، ماشي؟
+      ar: آه، غالٍ. خمسة وعشرون ألفًا فقط، اتفقنا؟
+      en: Oh, that's expensive. Just 25,000, OK?
+    words: [larang, selawe, wae]
 dialogue:
-  title: Mulih saka pasar
+  title: Neng pasar Nganjuk
   lines:
-    - speaker: Sari
-      text: Mohamed, bawange sekilo pira?
-      ar_eg: محمد، البصل الكيلو بكام؟
-      ar: يا محمد، بكم كيلو البصل؟
-      en: Mohamed, how much was a kilo of onions?
     - speaker: Mohamed
-      text: Selawe ewu. Aku tuku telung kilo.
-      ar_eg: خمسة وعشرين ألف. اشتريت تلاتة كيلو.
-      ar: خمسة وعشرون ألفًا. اشتريتُ ثلاثة كيلو.
-      en: Twenty-five thousand. I bought three kilos.
-    - speaker: Sari
-      text: Selawe? Murah tenan!
-      ar_eg: خمسة وعشرين؟ رخيص بجد!
-      ar: خمسة وعشرون؟ رخيص حقًا!
-      en: Twenty-five? That's really cheap!
+      text: Bu, bawang abang sekilo pira?
+      ar_eg: يا طنط، البصل الأحمر الكيلو بكام؟
+      ar: يا سيدتي، بكم كيلو البصل الأحمر؟
+      en: Ma'am, how much is a kilo of shallots?
+    - speaker: Bu Karti
+      text: Telung puluh ewu, Mas.
+      ar_eg: تلاتين ألف يا أستاذ.
+      ar: ثلاثون ألفًا يا أخي.
+      en: Thirty thousand, Mas.
     - speaker: Mohamed
-      text: Iya! Kabeh pitung puluh lima ewu, susuke selawe ewu.
-      ar_eg: أيوه! الكل خمسة وسبعين ألف، والباقي خمسة وعشرين ألف.
-      ar: نعم! المجموع خمسة وسبعون ألفًا، والباقي خمسة وعشرون ألفًا.
-      en: Yes! Seventy-five thousand altogether, twenty-five thousand change.
-    - speaker: Sari
-      text: Apik tenan, Mohamed!
-      ar_eg: برافو عليك يا محمد!
-      ar: أحسنت يا محمد!
-      en: Well done, Mohamed!
-souvenir:
-  id: j2.u03.souvenir
-  title: Bawang merah Nganjuk
-  note:
-    ar_eg: 'نغانجوك اسمها «مدينة البصل»: حقول البصل الأحمر الصغير (bawang abang) بتمتد على مدّ الشوف، والشوالات بتتكوم في السوق. وفي السوق هتسمع seket وselawe كل شوية، والأرقام الخاصة دي هي سر الفصال الحلو. دلوقتي تقدر تسأل عن السعر وتفاصل وتعدّ الباقي بالجاوي، وده إنجاز بجد!'
-    ar: 'تُلقَّب نغانجوك بـ«مدينة البصل»: تمتد حقول البصل الأحمر الصغير (bawang abang) على مد البصر، وتتكدّس أكياسه في السوق. وستسمع هناك seket وselawe باستمرار، فهذه الأعداد الخاصة مفتاح المساومة اللطيفة. صرتَ تسأل عن السعر وتساوم وتعدّ الباقي بالجاوية، وهذا إنجاز حقيقي!'
-    en: Nganjuk is known as the onion town — fields of shallots (bawang abang) stretch to the horizon and sacks pile up at the market. You'll hear seket and selawe there all day; those special numbers are the key to friendly haggling. You can now ask prices, bargain and count your change in Javanese — a real achievement!
+      text: Wah, larang. Oleh kurang, Bu?
+      ar_eg: ياه، غالي. ينفع تنزلي شوية يا طنط؟
+      ar: آه، غالٍ. هل يمكن أن تُنقصي يا سيدتي؟
+      en: Oh, that's expensive. Can you go lower, ma'am?
+    - speaker: Bu Karti
+      text: Mas arep tuku pirang kilo?
+      ar_eg: عايز تشتري كام كيلو يا أستاذ؟
+      ar: كم كيلو تريد أن تشتري يا أخي؟
+      en: How many kilos do you want, Mas?
+    - speaker: Mohamed
+      text: Telung kilo. Selawe ewu wae, ya?
+      ar_eg: تلاتة كيلو. خمسة وعشرين ألف بس، ماشي؟
+      ar: ثلاثة كيلو. خمسة وعشرون ألفًا فقط، اتفقنا؟
+      en: Three kilos. Just twenty-five thousand, OK?
+    - speaker: Bu Karti
+      text: Ya wis, selawe. Kabeh dadi pitung puluh lima ewu.
+      ar_eg: خلاص، خمسة وعشرين. الكل خمسة وسبعين ألف.
+      ar: حسنًا، خمسة وعشرون. المجموع خمسة وسبعون ألفًا.
+      en: All right, twenty-five. That's seventy-five thousand altogether.
+new_words:
+  - word: pas / wis pas
+    pos: phrase
+    ar_eg: آخر سعر
+    ar: السعر النهائي
+    en: that's the final price (sudah pas)
 review:
   status: draft
   verified: false
+game: uu.market

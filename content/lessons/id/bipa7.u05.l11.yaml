@@ -1,0 +1,192 @@
+schema: kabar.lesson/v1
+id: bipa7.u05.l11
+language: id
+title: Menceritakan sejarah
+can_do:
+  ar_eg: تحكي عصر تاريخي بالكلام بترتيب ومن غير تكرار.
+  ar: أن تروي حقبة تاريخية شفاهةً بترتيب ودون تكرار.
+  en: Retell a historical era aloud, in order and without repetition.
+slides:
+  - title: Dari VOC sampai merdeka
+    grammar: id.cohesion.grammatical
+    body:
+      ar_eg: |
+        ملخّص تقدر تحكيه (مختصر للدرس):
+        Era VOC dimulai tahun 1602. Kongsi dagang Belanda tersebut menguasai perdagangan rempah. Setelah VOC bubar pada 1799, periode penjajahan Belanda berlanjut di bawah pemerintahan kolonial. Pada 1942, Jepang datang dan menggantikannya. Masa itu singkat, tetapi berat. Akhirnya, pada 1945, Indonesia merdeka.
+        - era = عصر، periode = فترة، penjajahan = استعمار، pemerintahan = حكم / حكومة
+        خد بالك من الكلمات اللي بتربط: tersebut، -nya، Masa itu.
+      ar: |
+        ملخّص يمكنك روايته (مختصر للدرس):
+        Era VOC dimulai tahun 1602. Kongsi dagang Belanda tersebut menguasai perdagangan rempah. Setelah VOC bubar pada 1799, periode penjajahan Belanda berlanjut di bawah pemerintahan kolonial. Pada 1942, Jepang datang dan menggantikannya. Masa itu singkat, tetapi berat. Akhirnya, pada 1945, Indonesia merdeka.
+        - era = عصر، periode = فترة، penjajahan = استعمار، pemerintahan = حكم
+        وانتبه إلى أدوات الربط: tersebut، -nya، Masa itu.
+      en: |
+        A summary you can retell (shortened for the lesson):
+        Era VOC dimulai tahun 1602. Kongsi dagang Belanda tersebut menguasai perdagangan rempah. Setelah VOC bubar pada 1799, periode penjajahan Belanda berlanjut di bawah pemerintahan kolonial. Pada 1942, Jepang datang dan menggantikannya. Masa itu singkat, tetapi berat. Akhirnya, pada 1945, Indonesia merdeka.
+        - era = era, periode = period, penjajahan = colonial rule, pemerintahan = government, rule
+        Notice the linking words: tersebut, -nya, Masa itu.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: era
+        ar_eg: عصر
+        ar: عصر
+        en: era
+      - text: periode
+        ar_eg: فترة
+        ar: فترة
+        en: period
+      - text: penjajahan
+        ar_eg: استعمار / احتلال
+        ar: استعمار
+        en: colonial rule, colonisation
+      - text: pemerintahan
+        ar_eg: حكم / حكومة
+        ar: حكم
+        en: government, rule
+    words: [era, periode, penjajahan, pemerintahan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الاحتلال الياباني بدأ إمتى؟
+      ar: متى بدأ الاحتلال الياباني؟
+      en: When did the Japanese occupation begin?
+    options: ["1602", "1799", "1942"]
+    answer: 2
+    words: [periode]
+  - id: e03
+    type: fill_blank
+    sentence: Masa ___ Belanda berlangsung sangat lama.
+    meaning:
+      ar_eg: فترة الاستعمار الهولندي طوّلت جدًا.
+      ar: دامت حقبة الاستعمار الهولندي طويلًا جدًّا.
+      en: The period of Dutch colonial rule lasted a very long time.
+    options: [penjajahan, era, pemerintahan]
+    answers: [penjajahan]
+    words: [penjajahan]
+  - id: e04
+    type: listen
+    text: Era VOC dimulai pada tahun seribu enam ratus dua.
+    question:
+      ar_eg: عصر الشركة الهولندية بدأ إمتى؟
+      ar: متى بدأ عصر الشركة الهولندية؟
+      en: When did the VOC era begin?
+    options:
+      - سنة 1602.
+      - سنة 1620.
+      - سنة 1206.
+    answer: 0
+    words: [era]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الحكم الاستعماري خلص سنة 1945.
+      ar: انتهى الحكم الاستعماري عام 1945.
+      en: Colonial rule ended in 1945.
+    answer: Pemerintahan kolonial berakhir pada tahun 1945.
+    distractors: [era, periode]
+    words: [pemerintahan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في «Jepang datang dan menggantikannya»، الـ -nya راجعة على إيه؟
+      ar: على ماذا يعود -nya في «Jepang datang dan menggantikannya»؟
+      en: In "Jepang datang dan menggantikannya", what does -nya refer to?
+    options:
+      - على اليابان.
+      - على الحكم الهولندي.
+      - على سنة 1945.
+    answer: 1
+    words: [pemerintahan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الفترة دي كانت قصيرة بس صعبة.
+      ar: كانت تلك الفترة قصيرة لكنّها صعبة.
+      en: That period was short but hard.
+    answers:
+      - Periode itu singkat, tetapi berat.
+      - Periode itu singkat tetapi berat.
+      - Periode tersebut singkat, tetapi berat.
+      - Periode itu pendek, tetapi berat.
+    words: [periode]
+  - id: e08
+    type: speaking
+    text: Pada era penjajahan, rempah-rempah menjadi rebutan bangsa Eropa.
+    meaning:
+      ar_eg: في عصر الاستعمار، التوابل كانت حاجة الأوروبيين بيتخانقوا عليها.
+      ar: كانت التوابل في عصر الاستعمار مطمعًا تتنازعه الأمم الأوروبية.
+      en: In the colonial era, spices were fought over by European nations.
+    words: [era, penjajahan]
+  - id: e09
+    type: dictation
+    text: Pemerintahan Jepang di Indonesia berlangsung dari 1942 sampai 1945.
+    meaning:
+      ar_eg: الحكم الياباني في إندونيسيا استمر من 1942 لـ 1945.
+      ar: استمرّ الحكم الياباني في إندونيسيا من 1942 إلى 1945.
+      en: Japanese rule in Indonesia lasted from 1942 to 1945.
+    words: [pemerintahan]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Setiap periode dalam sejarah meninggalkan jejak yang berbeda.
+    answers_meaning:
+      ar_eg:
+        - كل فترة في التاريخ بتسيب أثر مختلف.
+        - كل حقبة في التاريخ سابت بصمة مختلفة.
+      ar:
+        - تترك كلّ حقبة في التاريخ أثرًا مختلفًا.
+        - لكلّ فترة تاريخية بصمة مختلفة.
+      en:
+        - Every period in history leaves a different mark.
+        - Each period of history leaves its own trace.
+    words: [periode]
+dialogue:
+  title: Latihan bercerita
+  lines:
+    - speaker: Pak Hasan
+      text: Coba ceritakan periode penjajahan dalam satu menit.
+      ar_eg: يلا احكي فترة الاستعمار في دقيقة واحدة.
+      ar: هيّا اروِ حقبة الاستعمار في دقيقة واحدة.
+      en: Try telling the colonial period in one minute.
+    - speaker: Mohamed
+      text: Era VOC dimulai 1602. Kongsi tersebut menguasai rempah, lalu pemerintahan kolonial menggantikannya.
+      ar_eg: عصر الشركة بدأ 1602. الشركة دي سيطرت على التوابل، وبعدين الحكم الاستعماري خد مكانها.
+      ar: بدأ عصر الشركة عام 1602، فسيطرت على التوابل، ثمّ حلّ محلّها الحكم الاستعماري.
+      en: The VOC era began in 1602. That company controlled spices, then the colonial government replaced it.
+    - speaker: Pak Hasan
+      text: Bagus, kamu pakai "tersebut" dan "-nya". Tidak ada pengulangan.
+      ar_eg: حلو، استعملت «tersebut» و«-nya». مفيش تكرار.
+      ar: أحسنت، استعملت «tersebut» و«-nya» دون تكرار.
+      en: Good, you used "tersebut" and "-nya". No repetition.
+    - speaker: Mohamed
+      text: Lalu periode Jepang, singkat tetapi berat, sampai merdeka tahun 1945.
+      ar_eg: وبعدين فترة اليابان، قصيرة بس صعبة، لحد الاستقلال سنة 1945.
+      ar: ثمّ حقبة اليابان، قصيرة شاقّة، حتّى الاستقلال عام 1945.
+      en: Then the Japanese period, short but hard, until independence in 1945.
+new_words:
+  - word: era
+    pos: noun
+    ar_eg: عصر
+    ar: عصر
+    en: era
+  - word: periode
+    pos: noun
+    ar_eg: فترة
+    ar: فترة
+    en: period
+  - word: penjajahan
+    pos: noun
+    ar_eg: استعمار / احتلال
+    ar: استعمار
+    en: colonial rule, colonisation
+  - word: pemerintahan
+    pos: noun
+    ar_eg: حكم / حكومة
+    ar: حكم
+    en: government, rule
+review:
+  status: draft
+  verified: false

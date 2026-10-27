@@ -1,0 +1,201 @@
+schema: kabar.lesson/v1
+id: bipa7.u04.l11
+language: id
+title: Peta dialek
+can_do:
+  ar_eg: تكتب تقرير قصير عن لهجة، فين بتتقال وإيه اللي بيميّزها.
+  ar: أن تكتب تقريرًا قصيرًا عن لهجة، أين تُتكلّم وما يميّزها.
+  en: Write a short report on a dialect, where it is spoken and what marks it out.
+slides:
+  - title: Kerangka laporan dialek
+    grammar: id.register.context
+    body:
+      ar_eg: |
+        تقرير اللهجة بيمشي كده:
+        1. الـ sebaran (الانتشار): Dialek Betawi tersebar di Jakarta dan sekitarnya.
+        2. الـ penanda (العلامات): Penanda utamanya adalah akhiran -in dan kata ganti gue / lu.
+        3. إزاي تـ membedakan (تفرّق): Kita bisa membedakannya dari dialek Medan lewat kata ganti dan partikelnya.
+        4. خاتمة: Dialek ini makin populer lewat film dan media sosial.
+        الـ kata ganti = الضمير.
+      ar: |
+        يسير تقرير اللهجة هكذا:
+        1. الـ sebaran (الانتشار): Dialek Betawi tersebar di Jakarta dan sekitarnya.
+        2. الـ penanda (العلامات): Penanda utamanya adalah akhiran -in dan kata ganti gue / lu.
+        3. كيف تـ membedakan (تميّز): Kita bisa membedakannya dari dialek Medan lewat kata ganti dan partikelnya.
+        4. الخاتمة: Dialek ini makin populer lewat film dan media sosial.
+        والـ kata ganti = الضمير.
+      en: |
+        A dialect report runs like this:
+        1. Sebaran (spread): Dialek Betawi tersebar di Jakarta dan sekitarnya.
+        2. Penanda (markers): Penanda utamanya adalah akhiran -in dan kata ganti gue / lu.
+        3. How to membedakan (tell apart): Kita bisa membedakannya dari dialek Medan lewat kata ganti dan partikelnya.
+        4. Wrap-up: Dialek ini makin populer lewat film dan media sosial.
+        kata ganti = pronoun.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sebaran
+        ar_eg: انتشار / توزيع
+        ar: انتشار
+        en: spread, distribution
+      - text: kata ganti
+        ar_eg: ضمير
+        ar: ضمير
+        en: pronoun
+      - text: membedakan
+        ar_eg: يفرّق بين
+        ar: يميّز بين
+        en: to tell apart, to distinguish
+      - text: penanda
+        ar_eg: علامة
+        ar: علامة / مؤشّر
+        en: marker
+    words: [sebaran, kata ganti, membedakan, penanda]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحد علامة على لهجة بيتاوي (جاكرتا)؟
+      ar: أيّها علامة على لهجة بيتاوي (جاكرتا)؟
+      en: Which is a marker of the Betawi (Jakarta) dialect?
+    options:
+      - اللاحقة -in، زي bacain.
+      - الضمير kitong.
+      - كلمة bah.
+    answer: 0
+    words: [penanda]
+  - id: e03
+    type: fill_blank
+    sentence: Peta ini menunjukkan ___ dialek Melayu di Indonesia timur.
+    meaning:
+      ar_eg: الخريطة دي بتوضّح انتشار لهجات الملايو في شرق إندونيسيا.
+      ar: تبيّن هذه الخريطة انتشار لهجات الملايوية في شرق إندونيسيا.
+      en: This map shows the spread of Malay dialects in eastern Indonesia.
+    options: [sebaran, penanda, kata ganti]
+    answers: [sebaran]
+    words: [sebaran]
+  - id: e04
+    type: listen
+    text: Kata ganti adalah cara paling mudah untuk membedakan dialek.
+    question:
+      ar_eg: إيه أسهل طريقة تفرّق بيها اللهجات؟
+      ar: ما أسهل طريقة للتمييز بين اللهجات؟
+      en: What's the easiest way to tell dialects apart?
+    options:
+      - الأسامي.
+      - الضماير.
+      - الأرقام.
+    answer: 1
+    words: [kata ganti, membedakan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الضمير sa علامة على ملايو بابوا.
+      ar: الضمير sa علامة على ملايو بابوا.
+      en: The pronoun sa is a marker of Papuan Malay.
+    answer: Kata ganti sa adalah penanda Melayu Papua.
+    distractors: [sebaran, membedakan]
+    words: [kata ganti, penanda]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه اللي يتكتب في جزء «sebaran» من التقرير؟
+      ar: ماذا يُكتب في جزء «sebaran» من التقرير؟
+      en: What goes in the "sebaran" part of the report?
+    options:
+      - رأيك في اللهجة.
+      - قايمة كلمات.
+      - الأماكن اللي اللهجة منتشرة فيها.
+    answer: 2
+    words: [sebaran]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنا لسه مش قادر أفرّق بين اللهجتين دول.
+      ar: لا أستطيع بعدُ أن أميّز بين هاتين اللهجتين.
+      en: I can't tell these two dialects apart yet.
+    answers:
+      - Saya belum bisa membedakan kedua dialek ini.
+      - Saya belum bisa membedakan dua dialek ini.
+      - Aku belum bisa membedakan kedua dialek ini.
+      - Saya masih belum bisa membedakan kedua dialek ini.
+    words: [membedakan]
+  - id: e08
+    type: speaking
+    text: Penanda utama dialek ini adalah kata ganti dan partikelnya.
+    meaning:
+      ar_eg: العلامة الأساسية للهجة دي هي الضماير والأدوات الصغيرة.
+      ar: العلامة الأساسية لهذه اللهجة ضمائرها وأدواتها.
+      en: This dialect's main markers are its pronouns and particles.
+    words: [penanda, kata ganti]
+  - id: e09
+    type: dictation
+    text: Sebaran dialek Betawi meluas lewat televisi.
+    meaning:
+      ar_eg: انتشار لهجة بيتاوي اتّسع عن طريق التلفزيون.
+      ar: اتّسع انتشار لهجة بيتاوي عبر التلفاز.
+      en: The Betawi dialect spread further through television.
+    words: [sebaran]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Dengan penanda yang jelas, kita mudah membedakan asal pembicara.
+    answers_meaning:
+      ar_eg:
+        - بالعلامات الواضحة، بنعرف بسهولة نفرّق المتكلم منين.
+        - لو العلامات واضحة، سهل نعرف المتكلم جاي منين.
+      ar:
+        - بالعلامات الواضحة يسهل علينا تمييز أصل المتكلّم.
+        - تُيسّر العلامات الواضحة معرفة منشأ المتكلّم.
+      en:
+        - With clear markers, we can easily tell where a speaker comes from.
+        - Clear markers make it easy to tell a speaker's origin.
+    words: [penanda, membedakan]
+dialogue:
+  title: Peta di dinding radio
+  lines:
+    - speaker: Kaka Yohana
+      text: Laporanmu bagus. Tapi tambahkan sebarannya, di mana saja dialek itu dipakai.
+      ar_eg: تقريرك حلو. بس ضيف الانتشار، اللهجة دي بتتقال في أنهي أماكن.
+      ar: تقريرك جيّد، لكن أضف انتشارها، أين تُستعمل تلك اللهجة.
+      en: Your report is good. But add the spread, all the places the dialect is used.
+    - speaker: Mohamed
+      text: Baik. Dari Sorong sampai Jayapura, lalu ke pegunungan.
+      ar_eg: ماشي. من سورونج لحد جايابورا، وبعدين للجبال.
+      ar: حسنًا. من سورونغ حتّى جايابورا، ثمّ إلى الجبال.
+      en: Right. From Sorong to Jayapura, then up into the mountains.
+    - speaker: Kaka Yohana
+      text: Dan bagaimana pendengar bisa membedakannya dari dialek Ambon?
+      ar_eg: والمستمعين يقدروا يفرّقوها إزاي عن لهجة أمبون؟
+      ar: وكيف يميّزها المستمعون من لهجة أمبون؟
+      en: And how can listeners tell it apart from the Ambon dialect?
+    - speaker: Mohamed
+      text: Itu belum saya tahu. Saya akan bertanya kepada Om Nus dulu.
+      ar_eg: ده لسه مش عارفه. هسأل عمّ نوس الأول.
+      ar: لا أعرف ذلك بعد، سأسأل العمّ نوس أوّلًا.
+      en: That I don't know yet. I'll ask Om Nus first.
+new_words:
+  - word: sebaran
+    pos: noun
+    ar_eg: انتشار / توزيع
+    ar: انتشار
+    en: spread, distribution
+  - word: kata ganti
+    pos: noun
+    ar_eg: ضمير
+    ar: ضمير
+    en: pronoun
+  - word: membedakan
+    pos: verb
+    ar_eg: يفرّق بين
+    ar: يميّز بين
+    en: to tell apart, to distinguish
+  - word: penanda
+    pos: noun
+    ar_eg: علامة
+    ar: علامة / مؤشّر
+    en: marker
+review:
+  status: draft
+  verified: false

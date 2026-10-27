@@ -1,0 +1,198 @@
+schema: kabar.lesson/v1
+id: bipa7.u06.l12
+language: id
+title: Berita berimbang
+can_do:
+  ar_eg: تكتب خبر متوازن بيدّي كلمة للطرفين وبيفصل الحقيقة عن الرأي.
+  ar: أن تكتب خبرًا متوازنًا يُنصف الطرفين ويفصل الحقيقة عن الرأي.
+  en: Write a balanced news piece that gives both sides a voice and keeps fact apart from opinion.
+slides:
+  - title: Fakta di depan, opini di belakang
+    grammar: id.cohesion.lexical
+    body:
+      ar_eg: |
+        الخبر المتوازن (مثال متألّف للدرس):
+        Sebuah unggahan (بوست) tentang larangan memancing di Misool menjadi viral. Menurut kepala kampung, larangan itu sementara agar ikan berkembang biak. Namun, sebagian nelayan mengatakan bahwa mereka kehilangan penghasilan.
+        - اسمع kedua belah pihak (الطرفين)، واكتب كلامهم بالعدل.
+        - خليك objektif (موضوعي): الحقايق الأول.
+        - الـ opini (الرأي) يتنسب لصاحبه بـ menurut أو mengatakan، مش لك إنت.
+      ar: |
+        خبر متوازن (مثال مؤلَّف للدرس):
+        Sebuah unggahan (منشور) tentang larangan memancing di Misool menjadi viral. Menurut kepala kampung, larangan itu sementara agar ikan berkembang biak. Namun, sebagian nelayan mengatakan bahwa mereka kehilangan penghasilan.
+        - استمع إلى kedua belah pihak (الطرفين)، وانقل قولهما بإنصاف.
+        - كن objektif (موضوعيًّا): الحقائق أوّلًا.
+        - وانسب الـ opini (الرأي) إلى صاحبه بـ menurut أو mengatakan، لا إلى نفسك.
+      en: |
+        A balanced report (example invented for the lesson):
+        Sebuah unggahan (post) tentang larangan memancing di Misool menjadi viral. Menurut kepala kampung, larangan itu sementara agar ikan berkembang biak. Namun, sebagian nelayan mengatakan bahwa mereka kehilangan penghasilan.
+        - Hear kedua belah pihak (both sides) and report them fairly.
+        - Stay objektif (objective): facts first.
+        - Attribute each opini (opinion) to its owner with menurut or mengatakan, never to yourself.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kedua belah pihak
+        ar_eg: الطرفين
+        ar: الطرفان
+        en: both sides
+      - text: objektif
+        ar_eg: موضوعي
+        ar: موضوعي
+        en: objective
+      - text: opini
+        ar_eg: رأي
+        ar: رأي
+        en: opinion
+      - text: unggahan
+        ar_eg: بوست
+        ar: منشور
+        en: (social media) post
+    words: [kedua belah pihak, objektif, opini, unggahan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة رأي مش حقيقة؟
+      ar: أيّ جملة رأي لا حقيقة؟
+      en: Which sentence is an opinion, not a fact?
+    options:
+      - Larangan memancing berlaku selama tiga bulan.
+      - Larangan itu adalah keputusan yang paling bodoh.
+      - Kepala kampung mengumumkan larangan itu pada hari Senin.
+    answer: 1
+    words: [opini]
+  - id: e03
+    type: fill_blank
+    sentence: Wartawan yang baik mewawancarai ___, bukan hanya satu.
+    meaning:
+      ar_eg: الصحفي الكويس بيعمل مقابلة مع الطرفين، مش طرف واحد بس.
+      ar: يحاور الصحفيّ الجيّد الطرفين، لا طرفًا واحدًا.
+      en: A good reporter interviews both sides, not just one.
+    options: [kedua belah pihak, unggahan, opini]
+    answers: [kedua belah pihak]
+    words: [kedua belah pihak]
+  - id: e04
+    type: listen
+    text: Unggahan itu dibagikan lebih dari sepuluh ribu kali dalam sehari.
+    question:
+      ar_eg: البوست اتشيّر قد إيه؟
+      ar: كم مرّة شوركَ المنشور؟
+      en: How many times was the post shared?
+    options:
+      - أكتر من عشر آلاف مرة في يوم.
+      - عشر مرات.
+      - ألف مرة في شهر.
+    answer: 0
+    words: [unggahan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الصحفي لازم يفضل موضوعي.
+      ar: يجب أن يبقى الصحفيّ موضوعيًّا.
+      en: A journalist must stay objective.
+    answer: Wartawan harus tetap objektif.
+    distractors: [opini, unggahan]
+    words: [objektif]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تكتب رأي الصيادين في خبر موضوعي؟
+      ar: كيف تكتب رأي الصيّادين في خبر موضوعي؟
+      en: How do you write the fishermen's view in an objective report?
+    options:
+      - Nelayan benar, kepala kampung salah.
+      - Menurut saya, nelayan kasihan sekali.
+      - Sebagian nelayan mengatakan bahwa mereka kehilangan penghasilan.
+    answer: 2
+    words: [objektif, opini]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الخبر ده بيعرض رأي الطرفين.
+      ar: يعرض هذا الخبر رأي الطرفين.
+      en: This report presents both sides' views.
+    answers:
+      - Berita ini menyajikan pendapat kedua belah pihak.
+      - Berita ini menyajikan opini kedua belah pihak.
+      - Berita ini memuat pendapat kedua belah pihak.
+      - Berita ini menampilkan pendapat kedua belah pihak.
+    words: [kedua belah pihak]
+  - id: e08
+    type: speaking
+    text: Opini harus dipisahkan dari fakta dalam berita yang objektif.
+    meaning:
+      ar_eg: في الخبر الموضوعي، الرأي لازم يتفصل عن الحقيقة.
+      ar: يجب فصل الرأي عن الحقيقة في الخبر الموضوعي.
+      en: In an objective report, opinion must be kept apart from fact.
+    words: [opini, objektif]
+  - id: e09
+    type: dictation
+    text: Unggahan itu memuat opini, bukan fakta.
+    meaning:
+      ar_eg: البوست ده فيه رأي، مش حقيقة.
+      ar: يتضمّن ذلك المنشور رأيًا لا حقيقة.
+      en: That post contains opinion, not fact.
+    words: [unggahan, opini]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Setelah mendengar kedua belah pihak, ia menulis laporan yang objektif.
+    answers_meaning:
+      ar_eg:
+        - بعد ما سمع الطرفين، كتب تقرير موضوعي.
+        - سمع الطرفين وبعدين كتب تقرير محايد.
+      ar:
+        - كتب تقريرًا موضوعيًّا بعد أن استمع إلى الطرفين.
+        - بعد الاستماع إلى الطرفين، كتب تقريرًا موضوعيًّا.
+      en:
+        - After hearing both sides, he wrote an objective report.
+        - Having heard both sides, she wrote an objective report.
+    words: [kedua belah pihak, objektif]
+dialogue:
+  title: Dua suara di dermaga
+  lines:
+    - speaker: Kak Selvi
+      text: Unggahan tentang larangan memancing itu sudah viral. Tulis beritanya, ya.
+      ar_eg: البوست عن منع الصيد بقى ترند. اكتب الخبر.
+      ar: انتشر منشور منع الصيد انتشارًا واسعًا، فاكتب الخبر.
+      en: That post about the fishing ban has gone viral. Write up the story.
+    - speaker: Mohamed
+      text: Saya sudah bicara dengan kepala kampung. Menurut beliau, larangan itu hanya sementara.
+      ar_eg: اتكلمت مع شيخ القرية. على حسب كلامه، المنع ده مؤقت بس.
+      ar: تحدّثتُ مع رئيس القرية، وقال إنّ المنع مؤقّت فقط.
+      en: I've spoken to the village head. According to him, the ban is only temporary.
+    - speaker: Kak Selvi
+      text: Dan nelayan? Berita yang objektif harus mendengar kedua belah pihak.
+      ar_eg: والصيادين؟ الخبر الموضوعي لازم يسمع الطرفين.
+      ar: والصيّادون؟ يجب أن يسمع الخبر الموضوعي الطرفين.
+      en: And the fishermen? An objective story has to hear both sides.
+    - speaker: Mohamed
+      text: Besok pagi saya wawancara mereka. Opini saya sendiri tidak saya masukkan.
+      ar_eg: بكرة الصبح هعمل معاهم مقابلة. ورأيي الشخصي مش هحطّه.
+      ar: سأحاورهم صباح الغد، ولن أُدخل رأيي الشخصي.
+      en: I'll interview them tomorrow morning. And I'm leaving my own opinion out.
+new_words:
+  - word: kedua belah pihak
+    pos: phrase
+    ar_eg: الطرفين
+    ar: الطرفان
+    en: both sides
+  - word: objektif
+    pos: adjective
+    ar_eg: موضوعي
+    ar: موضوعي
+    en: objective
+  - word: opini
+    pos: noun
+    ar_eg: رأي
+    ar: رأي
+    en: opinion
+  - word: unggahan
+    pos: noun
+    ar_eg: بوست
+    ar: منشور
+    en: (social media) post
+review:
+  status: draft
+  verified: false

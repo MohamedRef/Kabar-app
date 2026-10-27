@@ -600,7 +600,18 @@ fn ReviewHome() -> Element {
     let width = *ui.width.read();
     let modes = [
         (ReviewMode::Classic, Msg::RevClassic, Msg::RevClassicHint),
-        (ReviewMode::CardWall, Msg::RevWall, Msg::RevWallHint),
+        // Say how this device moves cards: pen on the tablet, mouse on the Mac.
+        (
+            ReviewMode::CardWall,
+            Msg::RevWall,
+            if *ui.tablet.read() {
+                Msg::RevWallHint
+            } else if cfg!(target_os = "android") {
+                Msg::RevWallHintTouch
+            } else {
+                Msg::RevWallHintMouse
+            },
+        ),
         (ReviewMode::Burst, Msg::RevBurst, Msg::RevBurstHint),
     ];
     let nothing_due = stats.due + stats.new_available == 0;

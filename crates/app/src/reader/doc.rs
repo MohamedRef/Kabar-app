@@ -242,11 +242,13 @@ impl<'a> Builder<'a> {
         let seg = self.segments.len();
         let first = self.tokens.len();
         if kind != SegKind::Chrome {
-            for a in engine().analyze(&self.body[start..end]) {
+            let analyzed = engine().analyze(&self.body[start..end]);
+            let context = line_lang(&analyzed);
+            for a in analyzed {
                 let (s, e) = (start + a.token.start, start + a.token.end);
                 // "512gb" and "17" are numbers, not words to learn.
                 let number = a.token.text.starts_with(|c: char| c.is_ascii_digit());
-                let word = (a.token.is_wordlike() && !number).then(|| word_of(a, lex));
+                let word = (a.token.is_wordlike() && !number).then(|| word_of(a, lex, context));
                 self.tokens.push(ReadToken { start: s, end: e, seg, word });
             }
         }
@@ -258,7 +260,22 @@ impl<'a> Builder<'a> {
     }
 }
 
-fn word_of(mut analyzed: AnalyzedToken, lex: Lexicon) -> Word {
+/// Indonesian or Javanese, whichever most of the line's words are; `None`
+/// on a tie or when neither shows up.
+fn line_lang(tokens: &[AnalyzedToken]) -> Option<WordLang> {
+    let count = |l: Lang| tokens.iter().filter(|t| t.token.is_wordlike() && t.lang.lang == l).count();
+    let (id, jv) = (count(Lang::Indonesian), count(Lang::Javanese));
+    match id.cmp(&jv) {
+        std::cmp::Ordering::Greater => Some(WordLang::Indonesian),
+        std::cmp::Ordering::Less => Some(WordLang::Javanese),
+        std::cmp::Ordering::Equal => None,
+    }
+}
+
+/// `context` is the line's language: a word both dictionaries have takes
+/// the line's sense ("Bu" in an Indonesian sentence is "Mrs", not the
+/// Javanese "Mum"), whatever the engine guessed for the word alone.
+fn word_of(mut analyzed: AnalyzedToken, lex: Lexicon, context: Option<WordLang>) -> Word {
     let lookup = analyzed.lookup_form();
     let surface = analyzed.token.lower();
     let root = match &analyzed.morph {
@@ -274,6 +291,7 @@ fn word_of(mut analyzed: AnalyzedToken, lex: Lexicon) -> Word {
     forms.extend(redup.as_deref());
     forms.extend(root.as_deref());
     let prefer = match analyzed.lang.lang {
+        Lang::Javanese | Lang::Indonesian if context.is_some() => context,
         Lang::Javanese => Some(WordLang::Javanese),
         Lang::Indonesian => Some(WordLang::Indonesian),
         Lang::English => Some(WordLang::English),
@@ -301,6 +319,13 @@ fn word_of(mut analyzed: AnalyzedToken, lex: Lexicon) -> Word {
 
     let tag = match (analyzed.lang.lang, info.as_ref().map(|i| i.lang).or(taught_lang)) {
         (Lang::Proper, _) => Tag::Proper,
+        // The entry the line's language picked decides between the two.
+        (Lang::Indonesian | Lang::Javanese, Some(l @ WordLang::Indonesian)) if context == Some(l) => {
+            Tag::Indonesian
+        }
+        (Lang::Indonesian | Lang::Javanese, Some(l @ WordLang::Javanese)) if context == Some(l) => {
+            Tag::Javanese
+        }
         (Lang::Indonesian, _) => Tag::Indonesian,
         (Lang::Javanese, _) => Tag::Javanese,
         (Lang::English, _) => Tag::English,
