@@ -22,7 +22,6 @@ use crate::hub::{Conn, Hub};
 use crate::internal::{
     BlobData, BlobGet, BlobPut, DEVICE_HEADER, Expiry, Refresh, Register, Revoke, SetPush,
 };
-use crate::sql::Sql;
 
 /// Close code sent to a signed-out device.
 const CLOSE_REVOKED: u16 = 4001;
@@ -36,6 +35,9 @@ thread_local! {
 pub struct Account {
     state: State,
     env: Env,
+    /// Why storage couldn't be set up at start, if it couldn't: every
+    /// request then gets that reason instead of a stray SQL error.
+    storage: std::result::Result<(), String>,
 }
 
 impl Account {
@@ -167,7 +169,12 @@ impl Account {
             return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
         }
         let pair = WebSocketPair::new()?;
-        let conn = Conn { device: device.clone(), conn_id: random_hex(8), ready: false };
+        // Unique ids are what keep a broadcast from skipping every socket, so
+        // no randomness means no socket.
+        let Ok(conn_id) = random_hex(8) else {
+            return api_error(ErrorCode::Internal, "no secure randomness for the connection id");
+        };
+        let conn = Conn { device: device.clone(), conn_id, ready: false };
         self.state.accept_websocket_with_tags(&pair.server, &[&device.0]);
         pair.server.serialize_attachment(&conn)?;
         Devices::open(&db).touch(&device, now_ms(), false).map_err(sql_err)?;
@@ -187,16 +194,18 @@ impl DurableObject for Account {
     fn new(state: State, env: Env) -> Self {
         let db = DoSql(state.storage().sql());
         // Synchronous, so it finishes before any event is delivered.
-        if let Err(e) = crate::devices::migrate(&db)
-            .and_then(|_| db.exec_batch(crate::hub::SCHEMA))
-            .and_then(|_| db.exec_batch(blobs::SCHEMA))
-        {
+        let storage = crate::account::open(&db, |w| console_error!("{w}"));
+        if let Err(e) = &storage {
             console_error!("migration failed: {e}");
         }
-        Self { state, env }
+        Self { state, env, storage }
     }
 
     async fn fetch(&self, mut req: Request) -> Result<Response> {
+        if let Err(why) = &self.storage {
+            let answer = crate::account::unavailable(why);
+            return api_error(answer.code, answer.message);
+        }
         let db = self.db();
         let devices = Devices::open(&db);
         let now = now_ms();
@@ -285,6 +294,15 @@ impl DurableObject for Account {
             );
             return Ok(());
         };
+        if let Err(why) = &self.storage {
+            let message = crate::account::unavailable(why).message;
+            Self::send(
+                &ws,
+                &ServerMsg::Error { code: kabar_protocol::sync::SyncErrorCode::Internal, message },
+            );
+            let _ = ws.close(Some(1011), Some("storage unavailable"));
+            return Ok(());
+        }
         let Some(mut conn) = ws.deserialize_attachment::<Conn>()? else {
             let _ = ws.close(Some(1011), Some("lost connection state"));
             return Ok(());
@@ -314,6 +332,9 @@ impl DurableObject for Account {
     /// token or Firebase isn't set up; the next `PUT /v1/devices/me/push`
     /// arms it again, so an idle account costs nothing.
     async fn alarm(&self) -> Result<Response> {
+        if self.storage.is_err() {
+            return Response::empty();
+        }
         let now = now_ms();
         let targets = Devices::open(&self.db()).push_targets().map_err(sql_err)?;
         let Some(sa) = self.service_account().filter(|_| !targets.is_empty()) else {

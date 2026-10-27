@@ -206,7 +206,8 @@ pub enum EngineError {
     },
 }
 
-/// Shared cache key (spec §19): (task, input hash, engine, prompt version).
+/// Shared cache key (spec §19): (task, input hash, engine, prompt version),
+/// plus the learner profile the prompt was written for.
 #[derive(Clone, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub struct CacheKey {
     pub task: Task,
@@ -214,19 +215,31 @@ pub struct CacheKey {
     pub input_hash: String,
     pub engine: EngineId,
     pub prompt_version: u32,
+    /// Short hash of the profile's level part (levels and known-word band),
+    /// so an answer pitched at BIPA 1 isn't served at BIPA 4. Empty from
+    /// clients older than protocol 2026-10-27; their ids keep the old form.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub profile_hash: String,
 }
 
 impl CacheKey {
     /// Stable string form, used as the D1 primary key.
     pub fn id(&self) -> String {
-        format!(
-            "{}:{}:v{}:{}",
-            self.task.as_str(),
-            self.engine.as_str(),
-            self.prompt_version,
-            self.input_hash
-        )
+        let (task, engine, v, input) =
+            (self.task.as_str(), self.engine.as_str(), self.prompt_version, &self.input_hash);
+        if self.profile_hash.is_empty() {
+            format!("{task}:{engine}:v{v}:{input}")
+        } else {
+            format!("{task}:{engine}:v{v}:p{}:{input}", self.profile_hash)
+        }
     }
+}
+
+/// `POST /v1/ai/reject`: the learner gave 👎 to an answer, so Kabar Cloud
+/// drops it from the shared cache (every model's copy) and stops serving it.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct AiReject {
+    pub cache_key: CacheKey,
 }
 
 #[cfg(test)]
@@ -243,6 +256,25 @@ mod tests {
         for e in EngineId::ALL {
             assert_eq!(serde_json::to_string(&e).unwrap(), format!("\"{}\"", e.as_str()));
         }
+    }
+
+    #[test]
+    fn cache_ids_keep_the_old_form_without_a_profile() {
+        let mut key = CacheKey {
+            task: Task::GradeAnswer,
+            input_hash: "ab12".into(),
+            engine: EngineId::WorkersAi,
+            prompt_version: 1,
+            profile_hash: String::new(),
+        };
+        assert_eq!(key.id(), "grade_answer:workers_ai:v1:ab12");
+        let old: CacheKey = serde_json::from_str(
+            r#"{"task":"grade_answer","input_hash":"ab12","engine":"workers_ai","prompt_version":1}"#,
+        )
+        .unwrap();
+        assert_eq!(old, key, "older clients send no profile_hash");
+        key.profile_hash = "9f3c".into();
+        assert_eq!(key.id(), "grade_answer:workers_ai:v1:p9f3c:ab12");
     }
 
     #[test]
