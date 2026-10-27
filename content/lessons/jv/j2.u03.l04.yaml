@@ -59,9 +59,9 @@ exercises:
       ar_eg: البياعة وافقت على السعر بتاعك. قالت إيه؟
       ar: وافقت البائعة على سعرك. ماذا قالت؟
       en: The seller accepts your price. What did she say?
-    options: ['Larang, Mas.', 'Ya wis, oleh.', 'Ora oleh, Mas.']
+    options: ['Wis pas, Mas.', 'Ya wis, oleh.', 'Ora oleh, Mas.']
     answer: 1
-    words: [ya wis, oleh]
+    words: [ya wis, oleh, wis pas]
   - id: e03
     type: fill_blank
     sentence: Telung puluh ewu? ___ banget, Bu!
@@ -104,18 +104,15 @@ exercises:
     answers: ['Oleh kurang, Bu?', 'Oleh kurang, Bu', 'Oleh kurang?', Oleh kurang, 'Oleh kurang ora, Bu?', 'Oleh kurang ora, Bu']
     words: [oleh, kurang]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: هشتري تلاتة كيلو.
-      ar: سأشتري ثلاثة كيلوغرامات.
-      en: I'll buy three kilos.
-    answers: [Aku tuku telung kilo., Aku tuku telung kilo, Tak tuku telung kilo., Tak tuku telung kilo, Aku arep tuku telung kilo., Aku arep tuku telung kilo]
-    explain:
-      ar_eg: قبل kilo بنستخدم شكل الوصل telung، زي telung ewu.
-      ar: قبل kilo نستعمل صيغة الوصل telung كما في telung ewu.
-      en: Before kilo use the linking form telung, as in telung ewu.
-    words: [tuku, telung, kilo]
+    type: listen
+    text: Wis pas, Mas. Ora oleh kurang.
+    options: ['Wis pas, Mas. Ora oleh kurang.', 'Ya wis, Mas. Oleh kurang.', 'Wis pas, Mas. Oleh kurang.']
+    answer: 0
+    meaning:
+      ar_eg: ده آخر سعر يا أستاذ. مينفعش أنزّل.
+      ar: هذا آخر سعر يا أخي. لا يمكن التخفيض.
+      en: That's the final price, Mas. I can't go lower.
+    words: [wis pas, oleh, kurang, ya wis]
   - id: e08
     type: listen
     text: Wolulikur ewu wae.

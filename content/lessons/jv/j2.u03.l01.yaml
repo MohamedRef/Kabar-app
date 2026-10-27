@@ -141,6 +141,44 @@ exercises:
       ar: أحد عشر، اثنا عشر، ثلاثة عشر
       en: eleven, twelve, thirteen
     words: [sewelas, rolas, telulas]
+  - id: e08
+    type: match_pairs
+    pairs:
+      - text: sewelas
+        ar_eg: حداشر (11)
+        ar: أحد عشر (11)
+        en: eleven (11)
+      - text: rolas
+        ar_eg: اتناشر (12)
+        ar: اثنا عشر (12)
+        en: twelve (12)
+      - text: limalas
+        ar_eg: خمستاشر (15)
+        ar: خمسة عشر (15)
+        en: fifteen (15)
+      - text: selikur
+        ar_eg: واحد وعشرين (21)
+        ar: واحد وعشرون (21)
+        en: twenty-one (21)
+      - text: selawe
+        ar_eg: خمسة وعشرين (25)
+        ar: خمسة وعشرون (25)
+        en: twenty-five (25)
+      - text: taun
+        ar_eg: سنة
+        ar: سنة
+        en: year
+    words: [sewelas, rolas, limalas, selikur, selawe, taun]
+  - id: e09
+    type: listen
+    text: Umurku sewelas taun.
+    options: [Umurku sewelas taun., Umurku rolas taun., Umurku limalas taun., Umurku selikur taun.]
+    answer: 0
+    meaning:
+      ar_eg: عندي حداشر سنة.
+      ar: عمري أحد عشر عامًا.
+      en: I'm eleven years old.
+    words: [umur, sewelas, taun, rolas, limalas, selikur]
 dialogue:
   lines:
     - speaker: Mohamed
