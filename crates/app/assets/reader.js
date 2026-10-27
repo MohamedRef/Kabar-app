@@ -1,6 +1,6 @@
 // Kabar Reader input layer: one input model on every device (SPEC §3).
-//   peek  : mouse hover · pen hover · finger tap
-//   open  : mouse click · pen tap · finger long-press
+//   peek  : mouse hover · pen hover
+//   open  : mouse click · pen tap · pen resting on a word · finger tap
 //   phrase: drag-select (mouse, finger) · pen loop around words (lasso)
 //   save  : right-click → Save · pen highlight stroke · long-press → Save
 // Words are spans with data-i inside #reader-doc; the doc re-renders, so all
@@ -20,21 +20,33 @@ if (!window.__kabarReaderInit) {
 
   let penInRange = false;
   let peekTimer = 0;
+  let dwellTimer = 0;
+  let dwellOn = -1;
   let lastPeek = -1;
   let press = null; // { id, type, x, y, t, moved, pts, el }
   let longTimer = 0;
   let suppressClick = false;
 
-  // Where to float the peek card: below the word, or above it near the bottom
-  // of the window. `start` is measured from the inline-start edge (RTL-aware).
+  // Where to float a card next to the word: on the side of the window with
+  // more room (below unless the word sits low), with that room in px so the
+  // card can scroll inside it. `start` is from the inline-start edge (RTL-aware).
   function rectOf(el) {
     const r = el.getBoundingClientRect();
     const rtl = getComputedStyle(document.documentElement.querySelector(".app") || el).direction === "rtl";
     const raw = rtl ? innerWidth - r.right : r.left;
     const start = Math.max(8, Math.min(raw, innerWidth - 340));
-    return r.bottom > innerHeight * 0.6
-      ? { start, below: false, y: innerHeight - r.top + 6 }
-      : { start, below: true, y: r.bottom + 6 };
+    // The bottom navigation bar covers the end of the window on phones.
+    const nav = document.querySelector("nav.nav")?.getBoundingClientRect();
+    const floor = nav && nav.top > innerHeight / 2 ? nav.top : innerHeight;
+    const above = r.top - 8, beneath = floor - r.bottom - 8;
+    return beneath >= Math.min(above, 360)
+      ? { start, below: true, y: r.bottom + 6, room: beneath }
+      : { start, below: false, y: innerHeight - r.top + 6, room: above };
+  }
+
+  function open(el) {
+    lastPeek = -1;
+    send({ type: "open", i: idx(el), ...rectOf(el) });
   }
 
   function peek(el) {
@@ -166,7 +178,16 @@ if (!window.__kabarReaderInit) {
       if ((e.pointerType === "pen" ? app.penHover : app.mouseHover) === "off") return;
       const el = wordAt(e.clientX, e.clientY);
       clearTimeout(peekTimer);
-      if (el) peekTimer = setTimeout(() => peek(el), e.pointerType === "pen" ? 60 : 140);
+      clearTimeout(dwellTimer);
+      if (!el) return;
+      peekTimer = setTimeout(() => peek(el), e.pointerType === "pen" ? 60 : 140);
+      // A pen that rests on one word opens its full card.
+      if (e.pointerType === "pen" && idx(el) !== dwellOn) {
+        dwellTimer = setTimeout(() => {
+          dwellOn = idx(el);
+          open(el);
+        }, 700);
+      }
     }
   });
 
@@ -183,6 +204,8 @@ if (!window.__kabarReaderInit) {
     const to = e.relatedTarget instanceof Element ? e.relatedTarget : null;
     if (!to?.closest?.("#" + ROOT)) {
       clearTimeout(peekTimer);
+      clearTimeout(dwellTimer);
+      dwellOn = -1;
       link(null);
     }
   });
@@ -201,7 +224,7 @@ if (!window.__kabarReaderInit) {
       longTimer = setTimeout(() => {
         suppressClick = true;
         navigator.vibrate?.(12);
-        send({ type: "open", i: idx(el) });
+        open(el);
       }, 480);
     }
   });
@@ -223,12 +246,7 @@ if (!window.__kabarReaderInit) {
       return;
     }
     suppressClick = true;
-    if (p.type === "touch") {
-      lastPeek = -1;
-      peek(el);
-    } else {
-      send({ type: "open", i: idx(el) });
-    }
+    open(el);
   });
 
   document.addEventListener("pointercancel", () => {

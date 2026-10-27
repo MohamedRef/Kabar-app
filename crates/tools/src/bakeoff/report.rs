@@ -23,6 +23,8 @@ pub const MIN_VALID: f64 = 0.98;
 pub fn latency_budget_ms(task: Task) -> u64 {
     match task {
         Task::AnalyzeText | Task::ExplainSentence => 2_000,
+        // The whole text, under each line: worth a little longer.
+        Task::TranslateText => 6_000,
         Task::GradeAnswer | Task::ReadHandwriting | Task::GuessSketch | Task::CheckStrokes => 3_000,
         Task::RoleplayTurn => 4_000,
         _ => 30_000,
