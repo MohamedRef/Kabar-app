@@ -1,201 +1,239 @@
 schema: kabar.lesson/v1
 id: bipa5.u01.l08
 language: id
-title: Wawancara kedua
+title: Evaluasi tiga bulan
 can_do:
-  ar_eg: تتكلم مع الـ HR في مقابلة تانية عن فترة التجربة واللايحة والتعريف بالشغل.
-  ar: أن تناقش مع الموارد البشرية في مقابلة ثانية فترة التجربة واللائحة وبرنامج التعريف.
-  en: Discuss probation, rules and orientation with HR in a second interview.
+  ar_eg: 'تفهم تقييم الأداء: منتج وكفء وثابت، المساهمة ونقط القوة، والمستشار، والاستقالة.'
+  ar: 'أن تفهم تقييم الأداء: منتج وكفء وثابت، والمساهمة ونقاط القوة، والمستشار، والاستقالة.'
+  en: 'Follow a performance review: productive, efficient, consistent, contribution and strengths, the adviser, and resigning.'
 slides:
-  - title: Sebelum kontrak
-    grammar: id.register.formal-informal
+  - title: Evaluasi kinerja
     body:
       ar_eg: |
-        في المقابلة التانية الـ HR بيشرحلك الشروط. خليك رسمي (saya، Bapak / Ibu، Apakah …؟):
-        - tata tertib = لايحة المكتب وقواعده
-        - orientasi = برنامج تعريف للموظفين الجداد
-        - masa percobaan، tunjangan، atasan: كلمات عرفتها قبل كده
-        وأحسن رد: «Saya bersedia» = أنا موافق ومستعد.
+        evaluasi = تقييم (evaluasi kinerja = تقييم الأداء).
+        produktif = منتج، efisien = كفء وبيوفر وقت وفلوس، konsisten = ثابت على نفس المستوى.
+        kontribusi = مساهمة، keunggulan = ميزة أو نقطة قوة.
+        penasihat = مستشار بينصح (penasihat hukum = مستشار قانوني)، pengunduran diri = استقالة.
       ar: |
-        في المقابلة الثانية تشرح لك الموارد البشرية الشروط، فالتزم الرسمي (saya وBapak / Ibu وApakah …؟):
-        - tata tertib = لائحة المكتب وقواعده
-        - orientasi = برنامج تعريف للموظفين الجدد
-        - masa percobaan وtunjangan وatasan: كلمات تعرفها
-        وأفضل جواب: «Saya bersedia» = أنا موافق ومستعدّ.
+        evaluasi = تقييم (evaluasi kinerja = تقييم الأداء).
+        produktif = منتج، efisien = كفء يوفّر الوقت والمال، konsisten = ثابت على المستوى نفسه.
+        kontribusi = مساهمة، keunggulan = ميزة، نقطة قوة.
+        penasihat = مستشار ناصح (penasihat hukum = مستشار قانوني)، pengunduran diri = استقالة.
       en: |
-        In a second interview HR explains the terms. Stay formal (saya, Bapak / Ibu, Apakah …?):
-        - tata tertib = office rules
-        - orientasi = orientation for new staff
-        - masa percobaan, tunjangan, atasan: words you know
-        The best reply: «Saya bersedia» = I'm willing.
+        evaluasi = evaluation (evaluasi kinerja = performance review).
+        produktif = productive, efisien = efficient, konsisten = consistent.
+        kontribusi = contribution, keunggulan = strength, advantage.
+        penasihat = adviser (penasihat hukum = legal adviser), pengunduran diri = resignation.
+    examples:
+      - text: Evaluasi kinerja dilakukan setiap bulan Desember.
+        ar_eg: تقييم الأداء بيتعمل كل شهر ديسمبر.
+        ar: يُجرى تقييم الأداء كل شهر ديسمبر.
+        en: Performance reviews take place every December.
+      - text: Timnya kecil, tetapi sangat produktif.
+        ar_eg: فريقه صغير بس منتج جدًا.
+        ar: فريقه صغير لكنه منتج جدًا.
+        en: His team is small but very productive.
+      - text: Surat pengunduran diri saya sudah di meja Bapak.
+        ar_eg: جواب استقالتي على مكتب حضرتك.
+        ar: رسالة استقالتي على مكتبك يا سيّدي.
+        en: My resignation letter is on your desk, sir.
 exercises:
   - id: e01
-    type: listen
-    text: Minggu pertama ada orientasi untuk karyawan baru di ruang rapat.
-    question:
-      ar_eg: إيه اللي هيحصل أول أسبوع؟
-      ar: ماذا سيحدث في الأسبوع الأول؟
-      en: What happens in the first week?
-    options:
-      - اجتماع عن الميزانية.
-      - برنامج تعريف للموظفين الجداد.
-      - مقابلة شغل تالتة.
-    answer: 1
-    words: [orientasi]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «tata tertib kantor» معناها إيه؟
-      ar: ما معنى «tata tertib kantor»؟
-      en: What does "tata tertib kantor" mean?
-    options:
-      - لايحة المكتب وقواعده.
-      - مواعيد الغدا.
-      - مرتبات الموظفين.
-    answer: 0
-    words: [tata tertib]
-  - id: e03
-    type: fill_blank
-    sentence: Silakan baca ___ kantor sebelum mulai bekerja.
-    meaning:
-      ar_eg: اتفضل اقرا لايحة المكتب قبل ما تبدأ شغل.
-      ar: تفضّل اقرأ لائحة المكتب قبل أن تبدأ العمل.
-      en: Please read the office rules before you start work.
-    options: [tata tertib, basa-basi, jam karet]
-    answers: [tata tertib]
-    words: [tata tertib]
-  - id: e04
-    type: build_sentence
-    source:
-      ar_eg: في فترة التجربة، هكون مسؤول عن ملفات العملا.
-      ar: خلال فترة التجربة، سأكون مسؤولًا عن ملفات العملاء.
-      en: During probation, I'll be responsible for client files.
-    answer: Selama masa percobaan, saya bertanggung jawab atas berkas klien.
-    distractors: [bawahan, gue]
-    words: [masa percobaan, bertanggung jawab]
-  - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: شكرًا يا أستاذة، أنا مستعد أبدأ الاتنين الجاي.
-      ar: شكرًا يا سيدتي، أنا مستعدّ للبدء الإثنين المقبل.
-      en: Thank you, ma'am. I'm willing to start next Monday.
-    answers:
-      - Terima kasih, Bu. Saya bersedia mulai Senin depan.
-      - Terima kasih, Bu, saya bersedia mulai hari Senin depan.
-      - Terima kasih, Ibu. Saya bersedia mulai Senin depan.
-      - Terima kasih, Bu. Saya bersedia mulai bekerja Senin depan.
-    words: [bersedia]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أول ما تقابل مديرك الجديد، تقول إيه؟
-      ar: ماذا تقول حين تلتقي رئيسك الجديد أول مرة؟
-      en: What do you say when you first meet your new boss?
-    options:
-      - Hai, Hendra! Gue anak baru.
-      - Bro, aku Mohamed, ya.
-      - Selamat pagi, Pak Hendra. Saya Mohamed, karyawan baru.
-    answer: 2
-    explain:
-      ar_eg: 'مع الـ atasan: Pak + الاسم وsaya، ومن غير gue ولا bro.'
-      ar: 'مع الرئيس: Pak مع الاسم وsaya، دون gue أو bro.'
-      en: With a superior, use Pak + name and saya, never gue or bro.
-    words: [atasan]
-  - id: e07
-    type: speaking
-    text: Kapan orientasi untuk karyawan baru dimulai, Bu?
-    meaning:
-      ar_eg: برنامج التعريف للموظفين الجداد هيبدأ إمتى يا أستاذة؟
-      ar: متى يبدأ برنامج التعريف للموظفين الجدد يا سيدتي؟
-      en: When does orientation for new staff start, ma'am?
-    words: [orientasi]
-  - id: e08
-    type: dictation
-    text: Menurut tata tertib, karyawan tidak boleh pakai jam karet.
-    meaning:
-      ar_eg: حسب اللايحة، ممنوع الموظفين يتأخروا.
-      ar: بحسب اللائحة، لا يجوز للموظفين التأخّر.
-      en: According to the rules, staff may not run on rubber time.
-    words: [tata tertib, jam karet]
-  - id: e09
     type: match_pairs
     pairs:
-      - text: rekan kerja
-        ar_eg: زميل شغل
-        ar: زميل عمل
-        en: colleague
-      - text: sungkan
-        ar_eg: مكسوف من باب الاحترام
-        ar: محرج توقيرًا
-        en: reluctant out of deference
-      - text: basa-basi
-        ar_eg: كلام مجاملة
-        ar: كلام مجاملة
-        en: small talk
-      - text: orientasi
-        ar_eg: برنامج تعريف
-        ar: برنامج تعريف
-        en: orientation
-      - text: fasih
-        ar_eg: بطلاقة
-        ar: بطلاقة
-        en: fluent
-    words: [rekan kerja, sungkan, basa-basi, orientasi, fasih]
-  - id: e10
-    type: fill_blank
-    sentence: Saya ___ berbahasa Arab, jadi saya bisa menangani klien dari Mesir.
+      - text: evaluasi
+        ar_eg: تقييم
+        ar: تقييم
+        en: evaluation
+      - text: produktif
+        ar_eg: منتج
+        ar: منتج
+        en: productive
+      - text: efisien
+        ar_eg: كفء
+        ar: كفء
+        en: efficient
+      - text: konsisten
+        ar_eg: ثابت
+        ar: ثابت
+        en: consistent
+    words: [evaluasi, produktif, efisien, konsisten]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kontribusi
+        ar_eg: مساهمة
+        ar: مساهمة
+        en: contribution
+      - text: keunggulan
+        ar_eg: ميزة
+        ar: ميزة، تفوّق
+        en: strength
+      - text: penasihat
+        ar_eg: مستشار بينصح
+        ar: مستشار ناصح
+        en: adviser
+      - text: pengunduran
+        ar_eg: انسحاب، استقالة
+        ar: انسحاب، استقالة
+        en: withdrawal, resignation
+    words: [kontribusi, keunggulan, penasihat, pengunduran]
+  - id: e03
+    type: listen
+    text: Kontribusi Anda tahun ini sangat besar.
+    question:
+      ar_eg: المدير بيمدح إيه؟
+      ar: ماذا يمدح المدير؟
+      en: What is the manager praising?
+    options: [غيابك, مساهمتك, مرتبك]
+    answer: 1
     meaning:
-      ar_eg: أنا بتكلم عربي بطلاقة، فأقدر أتولى العملا اللي من مصر.
-      ar: أتحدّث العربية بطلاقة، فأستطيع أن أتولّى العملاء القادمين من مصر.
-      en: I'm fluent in Arabic, so I can handle clients from Egypt.
-    options: [fasih, sungkan, magang]
-    answers: [fasih]
-    words: [fasih, menangani]
+      ar_eg: مساهمتك السنة دي كانت كبيرة أوي.
+      ar: كانت مساهمتك هذا العام كبيرة جدًا.
+      en: Your contribution this year was huge.
+    words: [kontribusi]
+  - id: e04
+    type: fill_blank
+    sentence: 'Mesin baru ini lebih ___: listriknya hemat dan cepat.'
+    meaning:
+      ar_eg: 'المكنة الجديدة دي ___ أكتر: بتوفر كهربا وسريعة.'
+      ar: 'هذه الآلة الجديدة أكثر ___: توفّر الكهرباء وسريعة.'
+      en: 'This new machine is more ___: it saves power and is fast.'
+    options: [efisien, konsisten, penasihat]
+    answers: [efisien]
+    words: [efisien, konsisten, penasihat]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: 'إيه اللي يميزك عن باقي المرشحين؟ بالإندونيسي: Apa ___ Anda?'
+      ar: 'ما الذي يميّزك عن بقية المرشحين؟ بالإندونيسية: Apa ___ Anda؟'
+      en: 'What sets you apart from other candidates? In Indonesian: Apa ___ Anda?'
+    options: [evaluasi, keunggulan, pengunduran]
+    answer: 1
+    explain:
+      ar_eg: keunggulan = ميزة، نقطة قوة.
+      ar: keunggulan = ميزة، نقطة قوة.
+      en: keunggulan = strength, advantage.
+    words: [evaluasi, keunggulan, pengunduran]
+  - id: e06
+    type: fill_blank
+    sentence: Nilainya selalu baik dari awal sampai akhir. Dia sangat ___.
+    meaning:
+      ar_eg: درجاتها دايمًا كويسة من الأول للآخر. هي ___ جدًا.
+      ar: درجاتها جيدة دائمًا من البداية إلى النهاية. إنها ___ جدًا.
+      en: Her marks are always good from start to finish. She's very ___.
+    options: [konsisten, produktif, kontribusi]
+    answers: [konsisten]
+    words: [konsisten, produktif, kontribusi]
+  - id: e07
+    type: multiple_choice
+    question: Sebelum menandatangani kontrak, tanyakan dulu kepada ___ hukum Anda.
+    options: [produktif, evaluasi, penasihat]
+    answer: 2
+    explain:
+      ar_eg: penasihat hukum = مستشار قانوني.
+      ar: penasihat hukum = مستشار قانوني.
+      en: penasihat hukum = legal adviser.
+    words: [produktif, evaluasi, penasihat]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: التقييم بيوري نقط القوة والضعف.
+      ar: يُظهر التقييم نقاط القوة والضعف.
+      en: The evaluation shows strengths and weaknesses.
+    answer: Evaluasi menunjukkan keunggulan dan kelemahan.
+    distractors: [kontribusi, penasihat]
+    words: [evaluasi, keunggulan]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Pengunduran dirinya mengejutkan semua orang.
+    answers_meaning:
+      ar_eg: [استقالته فاجأت الكل, استقالتها صدمت الناس كلها]
+      ar: [فاجأت استقالته الجميع, أدهشت استقالتها الجميع]
+      en: [His resignation surprised everyone, Her resignation shocked everyone]
+    words: [pengunduran]
+  - id: e10
+    type: speaking
+    text: Kantor kami kecil, tetapi produktif dan efisien.
+    meaning:
+      ar_eg: مكتبنا صغير بس منتج وكفء.
+      ar: مكتبنا صغير لكنه منتج وكفء.
+      en: Our office is small but productive and efficient.
+    words: [produktif, efisien]
 dialogue:
-  title: Wawancara dengan Bu Lestari
   lines:
-    - speaker: Bu Lestari
-      text: Pak Mohamed, ini wawancara kedua. Saya ingin menjelaskan tata tertib kantor kami.
-      ar_eg: يا أستاذ محمد، دي المقابلة التانية. عايزة أشرحلك لايحة المكتب عندنا.
-      ar: يا أستاذ محمد، هذه المقابلة الثانية، وأودّ أن أشرح لك لائحة مكتبنا.
-      en: Pak Mohamed, this is the second interview. I'd like to explain our office rules.
+    - speaker: Pak Hendra
+      text: Pak Mohamed, ini evaluasi tiga bulan pertama Anda.
+      ar_eg: يا أستاذ محمد، ده تقييم أول تلات شهور ليك.
+      ar: يا أستاذ محمد، هذا تقييم أشهرك الثلاثة الأولى.
+      en: Mohamed, this is your first three-month review.
     - speaker: Mohamed
-      text: Baik, Bu. Apakah ada masa percobaan?
-      ar_eg: تمام يا أستاذة. فيه فترة تجربة؟
-      ar: حسنًا يا سيدتي. هل هناك فترة تجربة؟
-      en: Certainly, ma'am. Is there a probation period?
-    - speaker: Bu Lestari
-      text: Ada, tiga bulan. Minggu pertama ada orientasi untuk karyawan baru.
-      ar_eg: أيوه، ٣ شهور. وأول أسبوع فيه برنامج تعريف للموظفين الجداد.
-      ar: نعم، ثلاثة أشهر، وفي الأسبوع الأول برنامج تعريف للموظفين الجدد.
-      en: Yes, three months. In the first week there's orientation for new staff.
+      text: Terima kasih, Pak. Apa ada yang perlu saya perbaiki?
+      ar_eg: شكرًا يا فندم. فيه حاجة محتاج أحسنها؟
+      ar: شكرًا يا سيّدي. هل هناك ما ينبغي تحسينه؟
+      en: Thank you, sir. Is there anything I should improve?
+    - speaker: Pak Hendra
+      text: Terjemahan Anda konsisten dan efisien. Kontribusi Anda jelas.
+      ar_eg: ترجمتك ثابتة المستوى وكفء. ومساهمتك واضحة.
+      ar: ترجمتك ثابتة وفعّالة، ومساهمتك واضحة.
+      en: Your translations are consistent and efficient. Your contribution is clear.
     - speaker: Mohamed
-      text: Saya bersedia. Siapa yang bertanggung jawab atas orientasi itu?
-      ar_eg: أنا موافق. مين المسؤول عن برنامج التعريف ده؟
-      ar: أنا موافق. من المسؤول عن برنامج التعريف هذا؟
-      en: I'm willing. Who is responsible for the orientation?
-    - speaker: Bu Lestari
-      text: Pak Hendra, calon atasan Anda. Beliau tidak suka jam karet, ya!
-      ar_eg: الأستاذ هندرا، اللي هيبقى مديرك. وهو مابيحبش التأخير، خد بالك!
-      ar: الأستاذ هندرا، رئيسك المرتقب، وهو لا يحبّ التأخّر، فانتبه!
-      en: Pak Hendra, who would be your boss. He doesn't like rubber time!
+      text: Saya senang mendengarnya. Saya ingin lebih produktif lagi.
+      ar_eg: مبسوط إني سمعت كده. وعايز أكون منتج أكتر.
+      ar: يسرّني سماع ذلك. أريد أن أكون أكثر إنتاجًا.
+      en: I'm glad to hear it. I'd like to be even more productive.
+    - speaker: Pak Hendra
+      text: Bagus. Setelah pengunduran diri Pak Rudi, Anda jadi penasihat bahasa untuk tim.
+      ar_eg: كويس. بعد استقالة أستاذ رودي، هتبقى المستشار اللغوي للفريق.
+      ar: جيد. بعد استقالة الأستاذ رودي ستصبح المستشار اللغوي للفريق.
+      en: Good. Since Pak Rudi resigned, you'll be the team's language adviser.
     - speaker: Mohamed
-      text: Tenang, Bu. Saya selalu datang tepat waktu.
-      ar_eg: اطمني يا أستاذة. أنا دايمًا بوصل في ميعادي.
-      ar: اطمئنّي يا سيدتي، فأنا أصل دائمًا في الموعد.
-      en: Don't worry, ma'am. I'm always on time.
+      text: Itu keunggulan saya, Pak. Saya siap.
+      ar_eg: دي نقطة قوتي يا فندم. أنا جاهز.
+      ar: هذه نقطة قوّتي يا سيّدي. أنا مستعد.
+      en: That's my strength, sir. I'm ready.
 new_words:
-  - word: tata tertib
+  - word: evaluasi
     pos: noun
-    ar_eg: لايحة / قواعد
-    ar: لائحة، نظام داخلي
-    en: rules, regulations
-  - word: orientasi
+    ar_eg: تقييم
+    ar: تقييم
+    en: evaluation, review
+  - word: produktif
+    pos: adjective
+    ar_eg: منتج
+    ar: منتج
+    en: productive
+  - word: efisien
+    pos: adjective
+    ar_eg: كفء، موفّر
+    ar: كفء، فعّال
+    en: efficient
+  - word: konsisten
+    pos: adjective
+    ar_eg: ثابت، ماشي على نفس المستوى
+    ar: ثابت، متّسق
+    en: consistent
+  - word: kontribusi
     pos: noun
-    ar_eg: برنامج تعريف للجداد
-    ar: برنامج تعريفي
-    en: orientation, induction
+    ar_eg: مساهمة
+    ar: مساهمة
+    en: contribution
+  - word: keunggulan
+    pos: noun
+    ar_eg: ميزة، نقطة قوة
+    ar: ميزة، تفوّق
+    en: strength, advantage
+  - word: penasihat
+    pos: noun
+    ar_eg: مستشار (بينصح)
+    ar: مستشار، ناصح
+    en: adviser
+  - word: pengunduran
+    pos: noun
+    ar_eg: انسحاب (pengunduran diri = استقالة)
+    ar: انسحاب (pengunduran diri = استقالة)
+    en: withdrawal (pengunduran diri = resignation)
 review:
   status: draft
   verified: false

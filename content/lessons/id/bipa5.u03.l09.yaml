@@ -1,194 +1,234 @@
 schema: kabar.lesson/v1
 id: bipa5.u03.l09
 language: id
-title: Ulangan Unit 3
+title: Rapat pemasaran
 can_do:
-  ar_eg: تشرح تكنولوجيا وأثرها بأسلوب رسمي، وتلخّص مقال عنها.
-  ar: أن تشرح تقنيةً وأثرها بأسلوب رسمي وتلخّص مقالة عنها.
-  en: Explain a technology and its effects formally, and summarise an article on it.
+  ar_eg: 'تشارك في اجتماع تسويق: التريند والمنصات والعالم الافتراضي، والإعلان التجاري الحصري، والنجم المحبوب والعدسة.'
+  ar: 'أن تشارك في اجتماع تسويق: الاتجاهات والمنصّات والعالم الافتراضي، والإعلان التجاري الحصري، والنجم المحبوب والعدسة.'
+  en: 'Take part in a marketing meeting: trends, platforms, virtual events, an exclusive commercial deal, an idol and the lens.'
+slides:
+  - title: Menjual lewat layar
+    body:
+      ar_eg: |
+        tren = تريند، موضة (sedang tren = عامل تريند)، platform = منصة (platform digital).
+        virtual = افتراضي (pameran virtual = معرض أونلاين)، instan = فوري، سريع التحضير (mi instan، pesan instan).
+        komersial = تجاري (iklan komersial)، eksklusif = حصري.
+        idola = نجم الناس بتحبه (idola remaja)، lensa = عدسة (lensa kamera).
+      ar: |
+        tren = اتجاه رائج، موضة (sedang tren = رائج الآن)، platform = منصّة (platform digital).
+        virtual = افتراضي (pameran virtual = معرض افتراضي)، instan = فوري، سريع التحضير (mi instan، pesan instan).
+        komersial = تجاري (iklan komersial)، eksklusif = حصري.
+        idola = نجم محبوب، معبود الجماهير (idola remaja)، lensa = عدسة (lensa kamera).
+      en: |
+        tren = trend (sedang tren = trending), platform = platform (platform digital).
+        virtual = virtual (pameran virtual = online fair), instan = instant (mi instan, pesan instan).
+        komersial = commercial (iklan komersial), eksklusif = exclusive.
+        idola = idol, star (idola remaja = teen idol), lensa = lens (lensa kamera).
+    examples:
+      - text: Video pendek sedang menjadi tren di semua platform.
+        ar_eg: الفيديوهات القصيرة عاملة تريند على كل المنصات.
+        ar: الفيديوهات القصيرة رائجة على كل المنصّات.
+        en: Short videos are trending on every platform.
+      - text: Kami punya kontrak eksklusif dengan idola remaja itu.
+        ar_eg: عندنا عقد حصري مع النجم اللي المراهقين بيحبوه ده.
+        ar: لدينا عقد حصري مع نجم المراهقين ذاك.
+        en: We have an exclusive contract with that teen idol.
+      - text: Pameran virtual itu gratis, tetapi tujuannya komersial.
+        ar_eg: المعرض الافتراضي ده ببلاش، بس هدفه تجاري.
+        ar: المعرض الافتراضي مجاني، لكن هدفه تجاري.
+        en: The virtual fair is free, but its aim is commercial.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: penggunaan
-        ar_eg: استخدام
-        ar: استخدام
-        en: use
-      - text: pertumbuhan
-        ar_eg: نمو
-        ar: نموّ
-        en: growth
-      - text: bocor
-        ar_eg: يتسرّب
-        ar: يتسرّب
-        en: to leak
-      - text: ringkasan
-        ar_eg: ملخص
-        ar: ملخّص
-        en: summary
-      - text: jaminan
-        ar_eg: ضمان
-        ar: ضمان
-        en: guarantee
-    words: [penggunaan, pertumbuhan, bocor, ringkasan, jaminan]
+      - text: tren
+        ar_eg: تريند
+        ar: اتجاه رائج
+        en: trend
+      - text: platform
+        ar_eg: منصة
+        ar: منصّة
+        en: platform
+      - text: virtual
+        ar_eg: افتراضي
+        ar: افتراضي
+        en: virtual
+      - text: instan
+        ar_eg: فوري
+        ar: فوري
+        en: instant
+    words: [tren, platform, virtual, instan]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: komersial
+        ar_eg: تجاري
+        ar: تجاري
+        en: commercial
+      - text: eksklusif
+        ar_eg: حصري
+        ar: حصري
+        en: exclusive
+      - text: idola
+        ar_eg: نجم محبوب
+        ar: معبود الجماهير
+        en: idol
+      - text: lensa
+        ar_eg: عدسة
+        ar: عدسة
+        en: lens
+    words: [komersial, eksklusif, idola, lensa]
+  - id: e03
+    type: listen
+    text: Wawancara eksklusif ini hanya ada di kanal kami.
+    question:
+      ar_eg: الحوار ده نوعه إيه؟
+      ar: ما نوع هذه المقابلة؟
+      en: What kind of interview is it?
+    options: [حصري, قديم, ممنوع]
+    answer: 0
+    meaning:
+      ar_eg: الحوار الحصري ده موجود على قناتنا بس.
+      ar: هذه المقابلة الحصرية متاحة على قناتنا فقط.
+      en: This exclusive interview is only on our channel.
+    words: [eksklusif]
+  - id: e04
+    type: fill_blank
+    sentence: 'Sekarang orang bekerja dengan pesan ___: semuanya harus cepat.'
+    meaning:
+      ar_eg: 'الناس دلوقتي بتشتغل برسايل ___: كل حاجة لازم تبقى بسرعة.'
+      ar: 'يعمل الناس الآن بالرسائل ___: كل شيء يجب أن يكون سريعًا.'
+      en: 'People now work by ___ messaging: everything must be fast.'
+    options: [instan, komersial, lensa]
+    answers: [instan]
+    words: [instan, komersial, lensa]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: إيه الاسم اللي معناه «الأمان» من aman؟
-      ar: ما الاسم المجرّد من aman؟
-      en: What is the abstract noun from aman?
-    options: [pengamanan, keamanan, amanan]
-    answer: 1
+      ar_eg: يوتيوب وتيك توك وإنستجرام، كل واحد فيهم إيه؟
+      ar: 'يوتيوب وتيك توك وإنستغرام: ما كلٌّ منها؟'
+      en: 'YouTube, TikTok and Instagram: what is each one?'
+    options: [idola, virtual, platform]
+    answer: 2
     explain:
-      ar_eg: الصفة + ke-…-an = الفكرة المجردة (الأمان).
-      ar: الصفة مع ke-…-an تعطي المعنى المجرد.
-      en: Adjective + ke-…-an gives the abstract idea.
-    words: [keamanan]
-  - id: e03
+      ar_eg: platform = منصة.
+      ar: platform = منصّة.
+      en: platform = platform.
+    words: [idola, virtual, platform]
+  - id: e06
     type: fill_blank
-    sentence: ___ jalan tol di Samarinda selesai tahun lalu.
+    sentence: Fotonya buram. Mungkin ___ kameranya kotor.
     meaning:
-      ar_eg: بناء الطريق السريع في ساماريندا خلص السنة اللي فاتت.
-      ar: اكتمل بناء الطريق السريع في ساماريندا العام الماضي.
-      en: Construction of the toll road in Samarinda finished last year.
-    options: [Pembangunan, Membangun, Dibangun]
-    answers: [Pembangunan]
-    words: [pembangunan]
-  - id: e04
-    type: listen
-    text: Pertumbuhan ekonomi digital sangat pesat, tetapi pekerjanya perlu jaminan.
-    question:
-      ar_eg: المتكلم بيقول إيه؟
-      ar: ماذا يقول المتكلّم؟
-      en: What does the speaker say?
-    options:
-      - الاقتصاد الرقمي بينمو بسرعة، بس العمال محتاجين ضمان.
-      - الاقتصاد الرقمي بيقل.
-      - العمال عندهم ضمان كويس.
+      ar_eg: الصورة مش واضحة. يمكن ___ الكاميرا وسخة.
+      ar: الصورة مشوّشة. ربما ___ الكاميرا متّسخة.
+      en: The photo is blurry. Maybe the camera ___ is dirty.
+    options: [lensa, tren, eksklusif]
+    answers: [lensa]
+    words: [lensa, tren, eksklusif]
+  - id: e07
+    type: multiple_choice
+    question: Penyanyi itu ___ jutaan remaja di Asia.
+    options: [idola, instan, platform]
     answer: 0
-    words: [pertumbuhan, pesat, jaminan]
-  - id: e05
+    explain:
+      ar_eg: idola = نجم بيحبوه الناس.
+      ar: idola = نجم محبوب.
+      en: idola = idol.
+    words: [idola, instan, platform]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: والنتيجة، بيانات المستخدمين اتسرّبت.
-      ar: ونتيجةً لذلك تسرّبت بيانات المستخدمين.
-      en: As a result, users' data leaked.
-    answer: Akibatnya, data pengguna bocor.
-    distractors: [mencegah, penggunaan]
-    words: [akibatnya, bocor]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عشان نمنع الخطر ده، غيّر الباسورد بتاعك.
-      ar: لمنع هذا الخطر، غيّر كلمة مرورك.
-      en: To prevent this risk, change your password.
-    answers:
-      - Untuk mencegah risiko ini, ganti kata sandi Anda.
-      - Untuk mencegah risiko ini, ganti kata sandimu.
-      - Untuk mencegah risiko itu, ganti kata sandi Anda.
-      - Untuk mencegah risiko ini, gantilah kata sandi Anda.
-    words: [mencegah, risiko, kata sandi]
-  - id: e07
+      ar_eg: الإعلان ده تجاري، مش تعليمي.
+      ar: هذا الإعلان تجاري، لا تعليمي.
+      en: This ad is commercial, not educational.
+    answer: Iklan ini komersial, bukan pendidikan.
+    distractors: [virtual, tren]
+    words: [komersial]
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Artikel ini membahas perkembangan dompet digital.
+    source_text: Rapat virtual ini dimulai jam sembilan.
     answers_meaning:
-      ar_eg:
-        - المقال ده بيتكلم عن تطوّر المحافظ الإلكترونية.
-        - المقال ده بيناقش تطوّر المحفظة الإلكترونية.
-      ar:
-        - تتناول هذه المقالة تطوّر المحافظ الرقمية.
-        - تناقش هذه المقالة تطوّر المحفظة الرقمية.
-      en:
-        - This article discusses the development of e-wallets.
-        - This article discusses how digital wallets have developed.
-    words: [membahas, perkembangan, dompet digital]
-  - id: e08
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إنت خلّصت عرضك. تقول إيه؟
-      ar: انتهيت من عرضك. ماذا تقول؟
-      en: You've finished your talk. What do you say?
-    options:
-      - Pertama-tama, saya akan membahas …
-      - Pada kesempatan ini, …
-      - Terima kasih atas perhatian Anda.
-    answer: 2
-    words: [perhatian]
-  - id: e09
-    type: dictation
-    text: Secara singkat, perubahan teknologi membawa kemudahan dan risiko.
-    meaning:
-      ar_eg: باختصار، تغيّر التكنولوجيا بيجيب سهولة ومخاطر.
-      ar: باختصار، يحمل تغيّر التقنية سهولةً ومخاطر.
-      en: In short, technological change brings convenience and risks.
-    words: [secara singkat, perubahan, kemudahan, risiko]
+      ar_eg: [الاجتماع الأونلاين ده هيبدأ الساعة تسعة, الاجتماع الافتراضي بيبدأ تسعة]
+      ar: [يبدأ هذا الاجتماع الافتراضي في التاسعة, يبدأ الاجتماع الافتراضي الساعة التاسعة]
+      en: [This virtual meeting starts at nine, 'The online meeting begins at nine o''clock']
+    words: [virtual]
   - id: e10
     type: speaking
-    text: Gagasan utama artikel ini adalah keamanan data pribadi.
+    text: Tren ini datang dari platform video pendek.
     meaning:
-      ar_eg: الفكرة الأساسية في المقال ده هي أمان البيانات الشخصية.
-      ar: الفكرة الرئيسة في هذه المقالة أمن البيانات الشخصية.
-      en: The main idea of this article is personal data security.
-    words: [gagasan utama, keamanan]
-  - id: e11
-    type: fill_blank
-    sentence: Saya membeli batik lewat ___, lalu barangnya diantar ojek daring.
-    meaning:
-      ar_eg: اشتريت باتيك من بث مباشر، وبعدين الأوجيك وصّلها.
-      ar: اشتريت باتيك عبر بثّ مباشر، ثم أوصله سائق درّاجة أجرة.
-      en: I bought batik on a live stream, then an app ojek delivered it.
-    options: [siaran langsung, tenaga kerja, otomatisasi]
-    answers: [siaran langsung]
-    words: [siaran langsung, ojek daring]
-  - id: e12
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Kecerdasan buatan tidak bisa menggantikan rasa bahasa.» معناها إيه؟
-      ar: ما معنى «Kecerdasan buatan tidak bisa menggantikan rasa bahasa.»؟
-      en: What does "Kecerdasan buatan tidak bisa menggantikan rasa bahasa." mean?
-    options:
-      - الذكاء الاصطناعي بيعلّم الإحساس باللغة.
-      - الذكاء الاصطناعي مايقدرش ياخد مكان الإحساس باللغة.
-      - الذكاء الاصطناعي بيكره اللغات.
-    answer: 1
-    words: [kecerdasan buatan, menggantikan]
+      ar_eg: التريند ده جاي من منصة الفيديوهات القصيرة.
+      ar: جاء هذا الاتجاه من منصّة الفيديوهات القصيرة.
+      en: This trend comes from a short-video platform.
+    words: [tren, platform]
 dialogue:
-  title: Kapal di Sungai Mahakam
   lines:
-    - speaker: Mas Rizal
-      text: Lihat, Mohamed, kapal-kapal di Mahakam sekarang dipesan lewat aplikasi.
-      ar_eg: بص يا محمد، المراكب في ماهاكام بقت بتتحجز بالتطبيق.
-      ar: انظر يا محمد، صارت مراكب ماهاكام تُحجز عبر التطبيق.
-      en: Look, Mohamed, the boats on the Mahakam are booked through an app now.
+    - speaker: Bu Lestari
+      text: Kita mau mempromosikan kopi Kalimantan. Ada ide?
+      ar_eg: عايزين نعمل دعاية لقهوة كاليمانتان. حد عنده فكرة؟
+      ar: نريد الترويج لقهوة كاليمانتان. هل من أفكار؟
+      en: We want to promote Kalimantan coffee. Any ideas?
+    - speaker: Rina
+      text: Video pendek sedang tren. Kita pakai platform yang disukai anak muda.
+      ar_eg: الفيديوهات القصيرة عاملة تريند. نستخدم المنصة اللي الشباب بيحبوها.
+      ar: الفيديوهات القصيرة رائجة. لنستخدم المنصّة التي يحبّها الشباب.
+      en: Short videos are trending. Let's use the platform young people like.
     - speaker: Mohamed
-      text: Wah, perubahan yang besar. Kemudahannya luar biasa.
-      ar_eg: يا سلام، تغيير كبير. السهولة مش طبيعية.
-      ar: يا للعجب، تغيّر كبير وسهولة مدهشة.
-      en: Wow, a big change. Amazingly convenient.
-    - speaker: Mas Rizal
-      text: Betul, tetapi penggunaan aplikasi juga punya risiko.
-      ar_eg: مظبوط، بس استخدام التطبيقات برضه له مخاطر.
-      ar: صحيح، لكنّ استخدام التطبيقات له مخاطره أيضًا.
-      en: True, but using apps carries risks too.
-    - speaker: Mohamed
-      text: Ya, data bisa bocor. Untuk mencegahnya, saya pakai kata sandi yang kuat.
-      ar_eg: أيوه، البيانات ممكن تتسرّب. وعشان أمنع ده، بستخدم باسورد قوي.
-      ar: نعم، قد تتسرّب البيانات، ولمنع ذلك أستعمل كلمة مرور قويّة.
-      en: Yes, data can leak. To prevent it, I use a strong password.
-    - speaker: Mas Rizal
-      text: Secara singkat, kamu sudah ahli teknologi!
-      ar_eg: باختصار، إنت بقيت خبير تكنولوجيا!
-      ar: باختصار، صرت خبيرًا في التقنية!
-      en: In short, you're a tech expert now!
-souvenir:
-  id: bipa5.u03.souvenir
-  title: Sungai Mahakam
-  note:
-    ar_eg: نهر ماهاكام هو شريان شرق كاليمانتان، وعليه مدينة ساماريندا. زمان الناس كانوا بيتنقلوا ويتاجروا بالمراكب بس، ودلوقتي الأوجيك الأونلاين والمحافظ الإلكترونية وصلت لكل حتة. إندونيسيا من أكبر أسواق التطبيقات في العالم، ومن الطبيعي تلاقي بياعة في السوق بتقبل الدفع بالـ QR.
-    ar: نهر ماهاكام شريان شرق كاليمانتان، وعلى ضفافه مدينة ساماريندا. كان الناس قديمًا يتنقّلون ويتاجرون بالمراكب وحدها، أمّا اليوم فقد بلغت الدراجات الأجرة عبر التطبيقات والمحافظ الرقمية كلّ مكان. وإندونيسيا من أكبر أسواق التطبيقات في العالم، فلا عجب أن تقبل بائعة في السوق الدفع برمز QR.
-    en: The Mahakam is East Kalimantan's lifeline, with Samarinda on its banks. People once travelled and traded only by boat; now app-based ride-hailing and e-wallets reach everywhere. Indonesia is one of the world's biggest app economies, so don't be surprised when a market seller takes payment by QR code.
+      text: Bagaimana kalau kita kerja sama dengan idola lokal? Kontraknya eksklusif.
+      ar_eg: إيه رأيكم نشتغل مع نجم محلي الناس بتحبه؟ بعقد حصري.
+      ar: ما رأيكم أن نتعاون مع نجم محلي؟ بعقد حصري.
+      en: How about working with a local idol? An exclusive contract.
+    - speaker: Bu Lestari
+      text: Mahal, tapi nilai komersialnya tinggi. Kita juga bisa buat pameran virtual.
+      ar_eg: غالي، بس قيمته التجارية عالية. وممكن كمان نعمل معرض أونلاين.
+      ar: مكلف، لكن قيمته التجارية عالية. ويمكننا أيضًا إقامة معرض افتراضي.
+      en: Expensive, but high commercial value. We could also run a virtual fair.
+    - speaker: Rina
+      text: Asal jangan seperti kopi instan. Ini kopi asli, harus difoto dengan lensa yang bagus!
+      ar_eg: بس من غير ما يبان زي النسكافيه. دي قهوة أصلية، لازم تتصور بعدسة حلوة!
+      ar: بشرط ألّا تبدو كقهوة سريعة التحضير. هذه قهوة أصيلة يجب تصويرها بعدسة جيدة!
+      en: As long as it doesn't look like instant coffee. This is the real thing; shoot it with a good lens!
+new_words:
+  - word: tren
+    pos: noun
+    ar_eg: تريند، موضة
+    ar: اتجاه رائج، موضة
+    en: trend
+  - word: platform
+    pos: noun
+    ar_eg: منصة
+    ar: منصّة
+    en: platform
+  - word: virtual
+    pos: adjective
+    ar_eg: افتراضي، أونلاين
+    ar: افتراضي
+    en: virtual
+  - word: instan
+    pos: adjective
+    ar_eg: فوري، سريع التحضير
+    ar: فوري، سريع التحضير
+    en: instant
+  - word: komersial
+    pos: adjective
+    ar_eg: تجاري
+    ar: تجاري
+    en: commercial
+  - word: eksklusif
+    pos: adjective
+    ar_eg: حصري
+    ar: حصري
+    en: exclusive
+  - word: idola
+    pos: noun
+    ar_eg: نجم الناس بتحبه
+    ar: معبود الجماهير، نجم
+    en: idol, star
+  - word: lensa
+    pos: noun
+    ar_eg: عدسة
+    ar: عدسة
+    en: lens
 review:
   status: draft
   verified: false

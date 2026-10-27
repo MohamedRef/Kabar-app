@@ -1,188 +1,171 @@
 schema: kabar.lesson/v1
 id: bipa5.u08.l09
 language: id
-title: Ulangan Unit 8
+title: Tanggapan
 can_do:
-  ar_eg: تقرا مقال رأي وتردّ عليه بأدب وبكلام متوازن.
-  ar: أن تقرأ مقالة رأي وتردّ عليها بأدب وتوازن.
-  en: Read an opinion piece and answer it politely and in a balanced way.
+  ar_eg: تكتب ردّ قصير على مقال رأي، توافق في حتة وتختلف في حتة بأدب.
+  ar: أن تكتب ردًّا قصيرًا على مقالة رأي، توافق في جانب وتخالف في آخر بلطف.
+  en: Write a short response to an op-ed, agreeing in part and disagreeing politely.
+slides:
+  - title: Menulis tanggapan
+    grammar: id.hedging
+    body:
+      ar_eg: |
+        الردّ (tanggapan) الكويس فيه 3 خطوات:
+        1. Saya sependapat sebagian dengan penulis. = أنا متفق مع الكاتب في جزء.
+        2. Namun, tampaknya … = بس، يبدو إن …
+        3. Menurut sumber lain, … = على حسب مصدر تاني، …
+        واختم بحاجة berimbang (متوازنة)، مش هجوم.
+      ar: |
+        للردّ (tanggapan) الجيّد ثلاث خطوات:
+        1. Saya sependapat sebagian dengan penulis. = أتّفق مع الكاتب جزئيًّا.
+        2. Namun, tampaknya … = لكن يبدو أنّ …
+        3. Menurut sumber lain, … = بحسب مصدر آخر، …
+        واختم بخلاصة berimbang (متوازنة)، لا بهجوم.
+      en: |
+        A good response (tanggapan) has three steps:
+        1. Saya sependapat sebagian dengan penulis. = I partly agree with the writer.
+        2. Namun, tampaknya … = However, it seems …
+        3. Menurut sumber lain, … = According to another source, …
+        Then close with something balanced (berimbang), not an attack.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: tampaknya
-        ar_eg: يبدو إن
-        ar: يبدو أنّ
-        en: it seems
-      - text: bukti
-        ar_eg: دليل
-        ar: دليل
-        en: evidence
-      - text: responden
-        ar_eg: المشاركين في الاستطلاع
-        ar: المستجيبون
-        en: respondents
       - text: tanggapan
         ar_eg: ردّ / تعليق
         ar: ردّ
         en: response
-      - text: keberatan
-        ar_eg: اعتراض
-        ar: اعتراض
-        en: objection
-    words: [tampaknya, bukti, responden, tanggapan, keberatan]
+      - text: sependapat
+        ar_eg: متفق في الرأي
+        ar: متّفق في الرأي
+        en: to agree, of the same opinion
+      - text: sebagian
+        ar_eg: جزء / في جزء
+        ar: جزئيًّا
+        en: partly, a part
+      - text: sumber
+        ar_eg: مصدر
+        ar: مصدر
+        en: source
+      - text: berimbang
+        ar_eg: متوازن
+        ar: متوازن
+        en: balanced
+    words: [tanggapan, sependapat, sebagian, sumber, berimbang]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة ألطف؟
-      ar: أيّ جملة ألطف؟
-      en: Which sentence is gentler?
+      ar_eg: أنهي بداية أحسن لردّ مؤدب؟
+      ar: أيّ بداية أنسب لردّ مهذّب؟
+      en: Which is the better opening for a polite response?
     options:
-      - Data Anda salah.
-      - Data itu barangkali kurang lengkap.
-      - Data itu bohong.
+      - Penulis itu bodoh dan salah.
+      - Saya sependapat sebagian dengan penulis.
+      - Artikel ini tidak perlu dibaca.
     answer: 1
-    words: [barangkali, kurang tepat]
+    words: [sependapat, sebagian]
   - id: e03
     type: fill_blank
-    sentence: Anak muda ___ membaca berita di ponsel.
+    sentence: Menurut ___ lain, harga beras justru turun bulan lalu.
     meaning:
-      ar_eg: الشباب بيميلوا يقروا الأخبار على الموبايل.
-      ar: يميل الشباب إلى قراءة الأخبار على الهاتف.
-      en: Young people tend to read the news on their phones.
-    options: [cenderung, sependapat, berimbang]
-    answers: [cenderung]
-    words: [cenderung]
+      ar_eg: على حسب مصدر تاني، سعر الرز بالعكس نزل الشهر اللي فات.
+      ar: بحسب مصدر آخر، انخفض سعر الأرزّ في الشهر الماضي على العكس.
+      en: According to another source, rice prices actually fell last month.
+    options: [sumber, tanggapan, sebagian]
+    answers: [sumber]
+    words: [sumber]
   - id: e04
     type: listen
-    text: Separuh responden mengeluh tentang harga bahan pokok.
+    text: Tanggapan Anda sangat berimbang dan sopan.
     question:
-      ar_eg: كام واحد من المشاركين بيشتكوا؟
-      ar: كم من المستجيبين يشكون؟
-      en: How many respondents are complaining?
+      ar_eg: الردّ اتوصف إزاي؟
+      ar: كيف وُصف الردّ؟
+      en: How is the response described?
     options:
-      - التلت.
-      - النص.
-      - الأغلبية الكبيرة.
+      - قصير وزعلان.
+      - متوازن ومؤدب.
+      - طويل ومن غير دليل.
     answer: 1
-    words: [separuh, mengeluh, bahan pokok]
+    words: [tanggapan, berimbang]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: يبدو إن الكاتب منحاز لطرف واحد.
-      ar: يبدو أنّ الكاتب ينحاز إلى طرف واحد.
-      en: The writer seems to take one side.
-    answer: Tampaknya penulis berpihak pada satu kelompok.
-    distractors: [sepakat, sumber]
-    words: [tampaknya, berpihak]
+      ar_eg: أنا متفق مع الكاتب في جزء، بس الدليل قليل.
+      ar: أتّفق مع الكاتب جزئيًّا، لكنّ الدليل قليل.
+      en: I partly agree with the writer, but the evidence is thin.
+    answer: Saya sependapat sebagian, tetapi buktinya kurang.
+    distractors: [sumber, berimbang]
+    words: [sependapat, sebagian, bukti]
   - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: أنا متفق في جزء، بس محتاجين مصدر تاني.
-      ar: أتّفق جزئيًّا، لكنّنا نحتاج إلى مصدر آخر.
-      en: I partly agree, but we need another source.
+      ar_eg: لازم المقال يبقى متوازن ويجيب مصادر كتير.
+      ar: ينبغي أن تكون المقالة متوازنة وأن تذكر مصادر كثيرة.
+      en: An article should be balanced and cite many sources.
     answers:
-      - Saya sependapat sebagian, tetapi kita perlu sumber lain.
-      - Saya sependapat sebagian, namun kita membutuhkan sumber lain.
-      - Saya sependapat sebagian, tapi kita perlu sumber yang lain.
-      - Sebagian saya sependapat, tetapi kita perlu sumber lain.
-    words: [sependapat, sebagian, sumber]
+      - Artikel harus berimbang dan menyebut banyak sumber.
+      - Artikel seharusnya berimbang dan menyebutkan banyak sumber.
+      - Sebuah artikel harus berimbang dan memakai banyak sumber.
+      - Artikel sebaiknya berimbang dan menyertakan banyak sumber.
+    words: [berimbang, sumber]
   - id: e07
     type: translate
     direction: from_target
-    source_text: Meskipun klaimnya menarik, buktinya belum cukup.
+    source_text: Saya ingin menulis tanggapan terhadap opini kemarin.
     answers_meaning:
       ar_eg:
-        - رغم إن الادعاء مثير، الدليل لسه مش كفاية.
-        - الرأي حلو، بس الدليل لسه مش كافي.
+        - عايز أكتب ردّ على مقال الرأي بتاع امبارح.
+        - نفسي أكتب تعليق على مقال الرأي اللي نزل امبارح.
       ar:
-        - رغم أنّ الادّعاء لافت، فالدليل ليس كافيًا بعد.
-        - مع أنّ الادّعاء مثير للاهتمام، لم يكفِ الدليل بعد.
+        - أريد أن أكتب ردًّا على مقالة الرأي المنشورة أمس.
+        - أودّ كتابة تعليق على مقالة رأي الأمس.
       en:
-        - Although the claim is interesting, the evidence isn't enough yet.
-        - The claim is interesting, but there isn't enough evidence yet.
-    words: [meskipun, klaim, bukti]
+        - I want to write a response to yesterday's op-ed.
+        - I'd like to write a reply to yesterday's opinion piece.
+    words: [tanggapan]
   - id: e08
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Mayoritas responden sepakat» معناها إيه؟
-      ar: ما معنى «Mayoritas responden sepakat»؟
-      en: What does "Mayoritas responden sepakat" mean?
-    options:
-      - أغلب المشاركين متفقين.
-      - تلت المشاركين اعترضوا.
-      - المشاركين ماردّوش.
-    answer: 0
-    words: [mayoritas, sepakat]
-  - id: e09
-    type: dictation
-    text: Hasil survei itu tampaknya kurang berimbang.
-    meaning:
-      ar_eg: نتيجة الاستطلاع ده يبدو إنها مش متوازنة قوي.
-      ar: يبدو أنّ نتيجة ذلك الاستطلاع غير متوازنة تمامًا.
-      en: That survey's results seem not quite balanced.
-    words: [hasil, berimbang]
-  - id: e10
     type: speaking
-    text: Itu fakta, tetapi pada umumnya debat seperti ini tidak ada pemenangnya.
+    text: Saya sependapat sebagian, namun tampaknya penulis kurang berimbang.
     meaning:
-      ar_eg: دي حقيقة، بس في الغالب النقاش اللي زي ده مافيهوش حد كسبان.
-      ar: هذه حقيقة، لكنّ مثل هذه المناظرة لا فائز فيها في الغالب.
-      en: That's a fact, but generally a debate like this has no winner.
-    words: [fakta, pada umumnya, debat]
-  - id: e11
-    type: fill_blank
-    sentence: Selisih dua persen itu masih di dalam ___, jadi hasilnya belum jelas.
-    meaning:
-      ar_eg: فرق الاتنين في المية ده لسه جوه هامش الخطأ، فالنتيجة لسه مش أكيدة.
-      ar: فرق الاثنين بالمئة ما زال ضمن هامش الخطأ، فالنتيجة غير مؤكّدة بعد.
-      en: That two-point gap is still within the margin of error, so the result isn't certain.
-    options: [margin kesalahan, kolom, sikap]
-    answers: [margin kesalahan]
-    words: [margin kesalahan]
-  - id: e12
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Kolumnis itu bersikap kritis, tetapi tulisannya tidak sinis.» معناها إيه؟
-      ar: ما معنى «Kolumnis itu bersikap kritis, tetapi tulisannya tidak sinis.»؟
-      en: What does "Kolumnis itu bersikap kritis, tetapi tulisannya tidak sinis." mean?
-    options:
-      - كاتب العمود موافق على كل حاجة.
-      - كاتب العمود ناقد، بس كتابته مش ساخرة.
-      - كاتب العمود بيتريق على القراء.
-    answer: 1
-    words: [kolumnis, kritis, sinis, sikap]
+      ar_eg: أنا متفق في جزء، بس يبدو إن الكاتب مش متوازن قوي.
+      ar: أتّفق جزئيًّا، لكن يبدو أنّ الكاتب غير متوازن تمامًا.
+      en: I partly agree, but the writer seems not quite balanced.
+    words: [sependapat, sebagian, berimbang]
 dialogue:
-  title: Batu yang terakhir
+  title: Surat pembaca
   lines:
-    - speaker: Pak Hendra
-      text: Jadi, Mohamed, menurut koran, harga permata Martapura terlalu mahal. Bagaimana pendapatmu?
-      ar_eg: ها يا محمد، الجرنال بيقول أسعار أحجار مارتابورا غالية قوي. إيه رأيك؟
-      ar: إذن يا محمد، تقول الصحيفة إنّ أحجار مارتابورا غالية جدًّا. ما رأيك؟
-      en: So, Mohamed, the paper says Martapura gems are too expensive. What do you think?
+    - speaker: Mas Rizal
+      text: Mohamed, koran Banjarmasin menerima surat pembaca. Mau menulis tanggapan?
+      ar_eg: يا محمد، جرنال بانجارماسين بيستقبل رسايل القرّاء. تحب تكتب ردّ؟
+      ar: يا محمد، صحيفة بانجارماسين تستقبل رسائل القرّاء. أتريد أن تكتب ردًّا؟
+      en: Mohamed, the Banjarmasin paper takes readers' letters. Want to write a response?
     - speaker: Mohamed
-      text: Saya sependapat sebagian, Pak. Tetapi penulisnya hanya bertanya kepada dua puluh responden.
-      ar_eg: أنا متفق في جزء يا أستاذ. بس الكاتب سأل عشرين واحد بس.
-      ar: أتّفق جزئيًّا يا سيّدي، لكنّ الكاتب لم يسأل إلا عشرين مستجيبًا.
-      en: I partly agree, sir. But the writer only asked twenty respondents.
-    - speaker: Pak Hendra
-      text: Betul. Barangkali harga di sini malah lebih murah daripada di Jakarta.
-      ar_eg: مظبوط. يمكن السعر هنا أرخص من جاكرتا كمان.
-      ar: صحيح. ربّما الأسعار هنا أرخص من جاكرتا أصلًا.
-      en: True. Perhaps prices here are actually cheaper than in Jakarta.
+      text: Boleh, Mas. Saya sependapat sebagian dengan opini tentang harga beras.
+      ar_eg: ماشي يا ريزال. أنا متفق في جزء مع مقال الرأي عن سعر الرز.
+      ar: حسنًا. أتّفق جزئيًّا مع مقالة الرأي عن سعر الأرزّ.
+      en: Sure. I partly agree with the op-ed about rice prices.
+    - speaker: Mas Rizal
+      text: Bagus. Jangan lupa menyebut sumber, supaya tanggapanmu berimbang.
+      ar_eg: حلو. ماتنساش تذكر المصدر، علشان ردّك يبقى متوازن.
+      ar: جميل. لا تنسَ أن تذكر المصدر لكي يكون ردّك متوازنًا.
+      en: Good. Don't forget to cite a source, so your response is balanced.
     - speaker: Mohamed
-      text: Kalau begitu, saya beli batu ini saja, sebagai kenang-kenangan.
-      ar_eg: يبقى خلاص، هاشتري الحجر ده، كتذكار.
-      ar: إذن سأشتري هذا الحجر تذكارًا.
-      en: In that case, I'll just buy this stone, as a keepsake.
-souvenir:
-  id: bipa5.u08.souvenir
-  title: Pasar Permata Martapura
-  note:
-    ar_eg: مارتابورا، جنب بانجارماسين، اسمها «مدينة الماس». الناس بيدوّروا على الماس والأحجار في الطين جنب الأنهار بإيديهم، والسوق مليان أحجار كريمة وعقيق وخواتم. وخد بالك، مقالات الرأي الإندونيسي بتلطّف كتير (tampaknya، barangkali)، لأن الهجوم المباشر بيبان قلة ذوق.
-    ar: مارتابورا، قرب بانجارماسين، تُلقّب «مدينة الماس». ينقّب الناس بأيديهم عن الماس والأحجار في طين ضفاف الأنهار، وتمتلئ سوقها بالأحجار الكريمة والعقيق والخواتم. ولاحظ أنّ مقالات الرأي الإندونيسية تكثر من التلطيف (tampaknya، barangkali)، فالمواجهة المباشرة تُعدّ فظاظة.
-    en: Martapura, near Banjarmasin, is called the "diamond town". People pan by hand for diamonds and gems in the riverside mud, and the market is full of gemstones, agates and rings. Note, too, that Indonesian op-eds hedge a lot (tampaknya, barangkali), because direct confrontation reads as rude.
+      text: Siap. Saya akan menulis dengan sopan, tidak menyerang.
+      ar_eg: تمام. هكتب بأدب، من غير هجوم.
+      ar: حاضر. سأكتب بأدب، دون هجوم.
+      en: Will do. I'll write politely, without attacking.
+new_words:
+  - word: sebagian
+    ar_eg: جزء / في جزء
+    ar: جزئيًّا
+    en: partly, a part
+  - word: berimbang
+    pos: adjective
+    ar_eg: متوازن
+    ar: متوازن
+    en: balanced
 review:
   status: draft
   verified: false

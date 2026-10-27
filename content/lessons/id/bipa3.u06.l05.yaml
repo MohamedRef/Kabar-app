@@ -1,202 +1,231 @@
 schema: kabar.lesson/v1
 id: bipa3.u06.l05
 language: id
-title: Keluhan hotel
+title: Layanan hotel
 can_do:
-  ar_eg: تكتب شكوى مؤدبة لفندق وتفهم ردّهم.
-  ar: أن تكتب شكوى مهذبة إلى فندق وتفهم ردّه.
-  en: Write a polite complaint to a hotel and understand the reply.
+  ar_eg: تتكلم عن خدمة الفندق ومرافقه وجودتها، وتطلب طلب بأدب كزبون.
+  ar: أن تتحدث عن خدمة الفندق ومرافقه وجودتها، وتقدّم طلبًا بأدب بصفتك عميلًا.
+  en: Talk about a hotel's service, facilities and quality, and make a request as a guest.
 slides:
-  - title: Surat keluhan yang sopan
+  - title: Di hotel
     body:
       ar_eg: |
-        شكوى إندونيسية مؤدبة ماشية بالترتيب ده:
-        Yth. … → Dengan hormat, → Mohon maaf sebelumnya → المشكلة (tidak sebersih / tidak sesuai) → الطلب (secepatnya / mengembalikan uang) → شكرًا → Hormat saya,
-        والفندق غالبًا هيرد بـ Mohon maklum (أرجو تفهّمك). وmaklum جاية من العربي «معلوم».
+        layanan = خدمة (layanan kamar = خدمة الغرف). fasilitas = مرافق (حمام سباحة، جيم...).
+        kualitas = جودة. pelanggan = زبون، عميل. permintaan = طلب.
+        tersedia = موجود، متاح. menyediakan = يوفّر. terbatas = محدود.
       ar: |
-        للشكوى الإندونيسية المهذبة ترتيب ثابت:
-        Yth. … ← Dengan hormat, ← Mohon maaf sebelumnya ← المشكلة (tidak sebersih / tidak sesuai) ← الطلب (secepatnya / mengembalikan uang) ← الشكر ← Hormat saya,
-        وغالبًا يردّ الفندق بـ Mohon maklum (نرجو تفهّمكم)، وmaklum من العربية «معلوم».
+        layanan = خدمة (layanan kamar = خدمة الغرف). fasilitas = مرافق (مسبح، نادٍ رياضي...).
+        kualitas = جودة. pelanggan = زبون، عميل. permintaan = طلب.
+        tersedia = متوفّر، متاح. menyediakan = يوفّر. terbatas = محدود.
       en: |
-        A polite Indonesian complaint follows this order:
-        Yth. … → Dengan hormat, → Mohon maaf sebelumnya → the problem (tidak sebersih / tidak sesuai) → the request (secepatnya / mengembalikan uang) → thanks → Hormat saya,
-        The hotel will often reply Mohon maklum (please understand). maklum comes from Arabic «معلوم».
-    grammar: id.prefix.se
+        layanan = service (layanan kamar = room service). fasilitas = facilities (pool, gym...).
+        kualitas = quality. pelanggan = customer. permintaan = request.
+        tersedia = available. menyediakan = provide. terbatas = limited.
     examples:
-      - text: Saya kecewa karena kamar saya tidak sesuai dengan pesanan.
-        ar_eg: أنا زعلان (مخذول) عشان الأوضة مش زي اللي حجزته.
-        ar: أنا خائب الأمل لأن غرفتي لا تطابق الحجز.
-        en: I'm disappointed because my room doesn't match my booking.
+      - text: Hotel ini menyediakan sarapan gratis.
+        ar_eg: الفندق ده بيوفّر فطار ببلاش.
+        ar: يوفّر هذا الفندق فطورًا مجانيًا.
+        en: This hotel provides free breakfast.
+      - text: Kamar dengan pemandangan laut masih tersedia.
+        ar_eg: الأوض اللي بتطل على البحر لسه متاحة.
+        ar: الغرف المطلّة على البحر ما زالت متاحة.
+        en: Rooms with a sea view are still available.
+      - text: Kualitas layanannya tidak sesuai dengan harganya.
+        ar_eg: جودة الخدمة مش على قد السعر.
+        ar: جودة الخدمة لا تتناسب مع السعر.
+        en: The quality of service doesn't match the price.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة معناها «أنا زعلان عشان أوضتي مش نضيفة زي الصورة»؟
-      ar: أيّ جملة تعني «أنا خائب الأمل لأن غرفتي ليست بنظافة الصورة»؟
-      en: Which sentence means "I'm disappointed because my room isn't as clean as the photo"?
-    options:
-      - Saya senang karena kamar saya sebersih foto.
-      - Saya capek karena kamar saya tidak bersih.
-      - Saya kecewa karena kamar saya tidak sebersih foto.
-    answer: 2
-    explain:
-      ar_eg: kecewa = زعلان / مخذول (لما حاجة ما تطلعش زي ما كنت مستني).
-      ar: kecewa = خائب الأمل (حين لا يأتي الشيء كما توقعت).
-      en: kecewa = disappointed (when something isn't what you expected).
-    words: [kecewa, bersih]
-  - id: e02
-    type: listen
-    text: Mohon maaf sebelumnya, air panas di kamar saya mati sehari penuh.
-    options:
-      - Mohon maaf sebelumnya, air panas di kamar saya mati seminggu penuh.
-      - Mohon maaf sebelumnya, air panas di kamar saya mati sehari penuh.
-      - Mohon maaf sebelumnya, AC di kamar saya mati sehari penuh.
-    answer: 1
-    meaning:
-      ar_eg: آسف مقدمًا، المية السخنة في أوضتي كانت مقطوعة يوم بحاله.
-      ar: أعتذر مسبقًا، انقطع الماء الساخن في غرفتي يومًا كاملًا.
-      en: Sorry in advance, but the hot water in my room was off for a whole day.
-    words: [sebelumnya]
-  - id: e03
     type: match_pairs
     pairs:
-      - text: kecewa
-        ar_eg: زعلان / مخذول
-        ar: خائب الأمل
-        en: disappointed
-      - text: pihak hotel
-        ar_eg: إدارة الفندق
-        ar: إدارة الفندق
-        en: the hotel (management)
-      - text: mohon maklum
-        ar_eg: أرجو تفهّمك
-        ar: نرجو تفهّمكم
-        en: please understand
-      - text: secepatnya
-        ar_eg: في أسرع وقت
-        ar: في أسرع وقت
-        en: as soon as possible
-      - text: tidak sesuai dengan
-        ar_eg: مش زي / مش مطابق لـ
-        ar: غير مطابق لـ
-        en: not in line with
-    words: [kecewa, pihak, maklum, secepatnya, sesuai]
+      - text: layanan
+        ar_eg: خدمة
+        ar: خدمة
+        en: service
+      - text: fasilitas
+        ar_eg: مرافق
+        ar: مرافق
+        en: facilities
+      - text: kualitas
+        ar_eg: جودة
+        ar: جودة
+        en: quality
+      - text: pelanggan
+        ar_eg: زبون
+        ar: عميل
+        en: customer
+    words: [layanan, fasilitas, kualitas, pelanggan]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: permintaan
+        ar_eg: طلب
+        ar: طلب
+        en: request
+      - text: tersedia
+        ar_eg: متاح
+        ar: متوفّر
+        en: available
+      - text: menyediakan
+        ar_eg: يوفّر
+        ar: يوفّر
+        en: provide
+      - text: terbatas
+        ar_eg: محدود
+        ar: محدود
+        en: limited
+    words: [permintaan, tersedia, menyediakan, terbatas]
+  - id: e03
+    type: listen
+    text: Maaf, kamar untuk malam ini sudah tidak tersedia.
+    question:
+      ar_eg: الأوض عاملة إيه؟
+      ar: ما وضع الغرف؟
+      en: What about the rooms?
+    options: [فيه أوض فاضية, مافيش أوض متاحة, الأوض رخيصة]
+    answer: 1
+    meaning:
+      ar_eg: آسفين، الأوض للّيلة دي مابقتش متاحة.
+      ar: عذرًا، لم تعد الغرف متاحة لهذه الليلة.
+      en: Sorry, there are no rooms available tonight any more.
+    words: [tersedia]
   - id: e04
     type: fill_blank
-    sentence: Kamar saya tidak ___ foto di situs web hotel.
+    sentence: 'Hotel ini punya banyak ___: kolam renang, restoran dan tempat olahraga.'
     meaning:
-      ar_eg: (اكتب se- + bersih) أوضتي مش نضيفة زي الصورة اللي على موقع الفندق.
-      ar: (اكتب se- مع bersih) غرفتي ليست بنظافة الصورة على موقع الفندق.
-      en: (Write se- + bersih.) My room isn't as clean as the photo on the hotel website.
-    answers: [sebersih]
-    words: [bersih]
+      ar_eg: 'الفندق ده عنده ___ كتير: حمام سباحة ومطعم ومكان رياضة.'
+      ar: 'لهذا الفندق ___ كثيرة: مسبح ومطعم ونادٍ رياضي.'
+      en: 'This hotel has lots of ___: a pool, a restaurant and a gym.'
+    options: [fasilitas, permintaan, terbatas]
+    answers: [fasilitas]
+    words: [fasilitas, permintaan, terbatas]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: بطلب من إدارة الفندق تصلّح التكييف في أسرع وقت.
-      ar: أطلب من إدارة الفندق إصلاح المكيّف في أسرع وقت.
-      en: I'm asking the hotel to repair the AC as soon as possible.
-    answer: Saya minta pihak hotel memperbaiki AC-nya secepatnya.
-    alternatives:
-      - Saya minta pihak hotel secepatnya memperbaiki AC-nya.
-    distractors: [sebaiknya, sebuah]
-    words: [pihak, memperbaiki, secepatnya]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا زعلان عشان الأوضة مش زي اللي حجزته.
-      ar: أنا خائب الأمل لأن الغرفة لا تطابق حجزي.
-      en: I'm disappointed because the room doesn't match my booking.
-    answers:
-      - Saya kecewa karena kamarnya tidak sesuai dengan pesanan saya.
-      - Saya kecewa karena kamarnya tidak sesuai dengan pesanan saya
-      - Saya kecewa karena kamar saya tidak sesuai dengan pesanan saya.
-      - Saya kecewa karena kamar saya tidak sesuai dengan pesanan saya
-      - Saya kecewa karena kamarnya tidak sesuai dengan pesanan.
-      - Saya kecewa karena kamarnya tidak sesuai dengan pesanan
-      - Saya kecewa karena kamar ini tidak sesuai dengan pesanan saya.
-      - Saya kecewa sebab kamarnya tidak sesuai dengan pesanan saya.
-      - Saya kecewa karena kamarnya tidak sesuai pesanan saya.
-      - Aku kecewa karena kamarnya tidak sesuai dengan pesananku.
-    words: [kecewa, sesuai]
-  - id: e07
-    type: dictation
-    text: Mohon maklum, pihak hotel akan memperbaiki AC-nya secepatnya.
-    meaning:
-      ar_eg: أرجو تفهّمك، إدارة الفندق هتصلّح التكييف في أسرع وقت.
-      ar: نرجو تفهّمكم، ستُصلح إدارة الفندق المكيّف في أسرع وقت.
-      en: Please understand; the hotel will repair the AC as soon as possible.
-    words: [maklum, pihak, memperbaiki, secepatnya]
-  - id: e08
-    type: speaking
-    text: Dengan hormat, saya ingin menyampaikan keluhan tentang kamar 12.
-    meaning:
-      ar_eg: تحية طيبة وبعد، حابب أقدّم شكوى بخصوص أوضة 12.
-      ar: تحية طيبة وبعد، أودّ تقديم شكوى بشأن الغرفة 12.
-      en: Dear Sir or Madam, I would like to make a complaint about room 12.
-    words: [hormat, menyampaikan, keluhan]
-  - id: e09
     type: multiple_choice
     question_meaning:
-      ar_eg: الفندق عايز يقولك «اعذرنا / افهم ظروفنا». يقول إيه؟
-      ar: يريد الفندق أن يقول «نرجو تفهّمكم». ماذا يقول؟
-      en: The hotel wants to say "please bear with us". Which phrase?
-    options:
-      - Mohon maklum, Pak.
-      - Hormat saya, Pak.
-      - Sebaiknya, Pak.
+      ar_eg: اللي بيشتري حاجة أو بينزل في فندق بنسميه إيه؟
+      ar: ماذا نسمّي من يشتري شيئًا أو ينزل في فندق؟
+      en: What do we call someone who buys something or stays at a hotel?
+    options: [kualitas, pelanggan, layanan]
+    answer: 1
+    explain:
+      ar_eg: pelanggan = زبون، عميل.
+      ar: pelanggan = زبون، عميل.
+      en: pelanggan = customer.
+    words: [pelanggan, kualitas, layanan]
+  - id: e06
+    type: fill_blank
+    sentence: Tempat parkir di hotel ini ___. Ada sepuluh saja.
+    meaning:
+      ar_eg: الركنة في الفندق ده ___. عشرة بس.
+      ar: مواقف السيارات في هذا الفندق ___. عشرة فقط.
+      en: Parking at this hotel is ___. There are only ten spaces.
+    options: [tersedia, terbatas, pelanggan]
+    answers: [terbatas]
+    words: [terbatas, tersedia, pelanggan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الفندق بيوفّر خدمة غرف ٢٤ ساعة.
+      ar: يوفّر الفندق خدمة الغرف على مدار الساعة.
+      en: The hotel provides 24-hour room service.
+    answer: Hotel menyediakan layanan kamar dua puluh empat jam.
+    distractors: [kualitas, fasilitas]
+    words: [menyediakan, layanan]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kualitas makanannya sangat baik.
+    answers_meaning:
+      ar_eg: [جودة الأكل كويسة جدًا, الأكل جودته عالية]
+      ar: [جودة الطعام جيدة جدًا, الطعام عالي الجودة]
+      en: [The quality of the food is very good, The food is of very good quality]
+    words: [kualitas]
+  - id: e09
+    type: speaking
+    text: 'Saya punya satu permintaan: tolong bersihkan kamar saya.'
+    meaning:
+      ar_eg: 'عندي طلب واحد: لو سمحت نضّفوا أوضتي.'
+      ar: 'لديّ طلب واحد: من فضلكم نظّفوا غرفتي.'
+      en: 'I have one request: please clean my room.'
+    words: [permintaan]
+  - id: e10
+    type: multiple_choice
+    question: Fasilitas hotel ini lengkap. Restoran kami ___ makanan halal.
+    options: [menyediakan, terbatas, permintaan]
     answer: 0
     explain:
-      ar_eg: maklum من «معلوم»، يعني «مفهوم». Mohon maklum = اعذرنا / افهم ظروفنا.
-      ar: maklum من «معلوم»، وMohon maklum = نرجو أن تعذرنا وتتفهّم.
-      en: maklum comes from «معلوم» (known, understood). Mohon maklum = please bear with us.
-    words: [maklum]
+      ar_eg: menyediakan = يوفّر.
+      ar: menyediakan = يوفّر.
+      en: menyediakan = provide.
+    words: [menyediakan, terbatas, permintaan, fasilitas]
 dialogue:
-  title: Jawaban manajer
   lines:
-    - speaker: Manajer
-      text: Selamat pagi, Pak Mohamed. Saya manajer hotel. Saya sudah membaca email Bapak.
-      ar_eg: صباح الخير يا أستاذ محمد. أنا مديرة الفندق. قريت الإيميل بتاعك.
-      ar: صباح الخير يا سيد محمد. أنا مديرة الفندق، وقد قرأتُ رسالتك.
-      en: Good morning, Mr Mohamed. I'm the hotel manager. I've read your email.
+    - speaker: Resepsionis
+      text: Selamat pagi, Pak. Ada yang bisa saya bantu?
+      ar_eg: صباح الخير يا فندم. أقدر أساعدك في حاجة؟
+      ar: صباح الخير يا سيدي. هل من خدمة؟
+      en: Good morning, sir. How can I help?
     - speaker: Mohamed
-      text: Terima kasih, Bu. Sebenarnya, saya kecewa. Air panasnya mati sehari penuh.
-      ar_eg: شكرًا يا مدام. الحقيقة إني زعلان. المية السخنة كانت مقطوعة يوم بحاله.
-      ar: شكرًا يا سيدتي. في الحقيقة أنا خائب الأمل، فقد انقطع الماء الساخن يومًا كاملًا.
-      en: Thank you. Actually, I'm disappointed. The hot water was off for a whole day.
-    - speaker: Manajer
-      text: Mohon maaf dan mohon maklum, Pak. Petugas kami sudah memperbaikinya.
-      ar_eg: آسفين جدًا واعذرنا يا فندم. الموظف بتاعنا صلّحها خلاص.
-      ar: نعتذر ونرجو تفهّمك يا سيدي. لقد أصلحها موظفنا.
-      en: We apologise and ask for your understanding, sir. Our staff have fixed it.
+      text: Pagi. Apakah hotel ini menyediakan layanan antar ke bandara?
+      ar_eg: صباح النور. الفندق بيوفّر توصيل للمطار؟
+      ar: صباح النور. هل يوفّر الفندق خدمة توصيل إلى المطار؟
+      en: Morning. Does the hotel provide an airport transfer?
+    - speaker: Resepsionis
+      text: Ada, Pak, tapi mobilnya terbatas. Kapan Bapak ke bandara?
+      ar_eg: أيوه يا فندم، بس العربيات محدودة. حضرتك رايح المطار إمتى؟
+      ar: نعم يا سيدي، لكن السيارات محدودة. متى ستذهب إلى المطار؟
+      en: Yes, sir, but cars are limited. When are you going to the airport?
     - speaker: Mohamed
-      text: Baik. Tapi kamar saya juga tidak sebersih foto di situs web.
-      ar_eg: ماشي. بس أوضتي كمان مش نضيفة زي الصورة اللي على الموقع.
-      ar: حسنًا. لكن غرفتي أيضًا ليست بنظافة الصورة على الموقع.
-      en: All right. But my room also isn't as clean as the photo on the website.
-    - speaker: Manajer
-      text: Kami minta maaf. Pihak hotel akan mengembalikan uang Bapak untuk satu malam.
-      ar_eg: إحنا آسفين. الفندق هيرجّعلك فلوس ليلة.
-      ar: نعتذر إليك. ستردّ إدارة الفندق إليك ثمن ليلة واحدة.
-      en: We apologise. The hotel will refund you for one night.
+      text: Besok, jam enam pagi. Masih tersedia?
+      ar_eg: بكرة، الساعة ستة الصبح. لسه متاح؟
+      ar: غدًا في السادسة صباحًا. هل ما زال متاحًا؟
+      en: Tomorrow, 6 a.m. Is it still available?
+    - speaker: Resepsionis
+      text: Masih. Permintaan Bapak sudah saya catat. Terima kasih sudah menjadi pelanggan kami.
+      ar_eg: لسه. سجّلت طلب حضرتك. شكرًا إنك عميل عندنا.
+      ar: نعم. سجّلت طلبك. شكرًا لكونك من عملائنا.
+      en: It is. I've noted your request. Thank you for being our guest.
 new_words:
-  - word: kecewa
-    pos: adjective
-    ar_eg: زعلان / مخذول
-    ar: خائب الأمل
-    en: disappointed
-  - word: pihak
+  - word: layanan
     pos: noun
-    ar_eg: طرف / جهة (pihak hotel = إدارة الفندق)
-    ar: طرف / جهة (pihak hotel = إدارة الفندق)
-    en: party, side (pihak hotel = the hotel management)
-  - word: maklum
+    ar_eg: خدمة
+    ar: خدمة
+    en: service
+  - word: fasilitas
+    pos: noun
+    ar_eg: مرافق
+    ar: مرافق
+    en: facilities
+  - word: kualitas
+    pos: noun
+    ar_eg: جودة
+    ar: جودة
+    en: quality
+  - word: pelanggan
+    pos: noun
+    ar_eg: زبون، عميل
+    ar: زبون، عميل
+    en: customer
+  - word: permintaan
+    pos: noun
+    ar_eg: طلب
+    ar: طلب
+    en: request
+  - word: tersedia
     pos: adjective
-    ar_eg: مفهوم (mohon maklum = اعذرنا)
-    ar: معلوم (mohon maklum = نرجو التفهّم)
-    en: understood (mohon maklum = please understand)
-    arabic: معلوم
+    ar_eg: متاح، موجود
+    ar: متوفّر، متاح
+    en: available
+  - word: menyediakan
+    pos: verb
+    ar_eg: يوفّر
+    ar: يوفّر
+    en: provide
+  - word: terbatas
+    pos: adjective
+    ar_eg: محدود
+    ar: محدود
+    en: limited
 review:
   status: draft
   verified: false

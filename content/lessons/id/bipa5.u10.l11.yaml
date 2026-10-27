@@ -1,0 +1,199 @@
+schema: kabar.lesson/v1
+id: bipa5.u10.l11
+language: id
+title: Menulis laporan
+can_do:
+  ar_eg: تكتب تقرير قصير بالبيانات وفيه وجهة نظرك.
+  ar: أن تكتب تقريرًا قصيرًا بالبيانات يحمل وجهة نظرك.
+  en: Write a short report with data and your own point of view.
+slides:
+  - title: Data dulu, pendapat kemudian
+    grammar: id.argument.connectors
+    body:
+      ar_eg: |
+        التقرير الكويس بيعرض (menyajikan) البيانات الأول، وبعدين رأيك:
+        - Berdasarkan data, … = بناءً على البيانات، …
+        - Selain itu, … = غير كده، …
+        - Dengan demikian, … = وبكده، …
+        - Menurut saya, … = في رأيي، … (رأيك في الآخر، ولطّفه بـ tampaknya)
+        وموضوعنا: keberagaman (التنوّع) وtoleransi (التسامح) في سينجكاوانج، وإزاي الناس rukun (عايشين في وفاق).
+      ar: |
+        يعرض (menyajikan) التقرير الجيّد البيانات أوّلًا ثمّ الرأي:
+        - Berdasarkan data, … = بناءً على البيانات، …
+        - Selain itu, … = إضافةً إلى ذلك، …
+        - Dengan demikian, … = وبذلك، …
+        - Menurut saya, … = في رأيي، … (الرأي في الآخر، ملطّفًا بـ tampaknya)
+        وموضوعنا: keberagaman (التنوّع) وtoleransi (التسامح) في سينغكاوانغ، وكيف يعيش الناس rukun (في وئام).
+      en: |
+        A good report presents (menyajikan) the data first, then your view:
+        - Berdasarkan data, … = Based on the data, …
+        - Selain itu, … = Besides, …
+        - Dengan demikian, … = Thus, …
+        - Menurut saya, … = In my view, … (opinion last, softened with tampaknya)
+        Our topic: keberagaman (diversity) and toleransi (tolerance) in Singkawang, and how people live rukun (in harmony).
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: menyajikan
+        ar_eg: يعرض / يقدّم
+        ar: يعرض
+        en: to present
+      - text: keberagaman
+        ar_eg: تنوّع
+        ar: تنوّع
+        en: diversity
+      - text: toleransi
+        ar_eg: تسامح
+        ar: تسامح
+        en: tolerance
+      - text: rukun
+        ar_eg: عايشين في وفاق
+        ar: في وئام
+        en: in harmony
+    words: [menyajikan, keberagaman, toleransi, rukun]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: رأيك الشخصي يتحط فين في التقرير؟
+      ar: أين يوضع رأيك الشخصي في التقرير؟
+      en: Where does your own opinion go in the report?
+    options:
+      - في أول جملة.
+      - في الآخر، بعد البيانات.
+      - مايتحطش خالص.
+    answer: 1
+    words: [menyajikan]
+  - id: e03
+    type: fill_blank
+    sentence: Warga Tionghoa, Dayak dan Melayu di Singkawang hidup ___.
+    meaning:
+      ar_eg: الصينيين والداياك والملايو في سينجكاوانج عايشين في وفاق.
+      ar: يعيش الصينيون والداياك والملايو في سينغكاوانغ في وئام.
+      en: Chinese, Dayak and Malay residents of Singkawang live in harmony.
+    options: [rukun, toleransi, menyajikan]
+    answers: [rukun]
+    words: [rukun]
+  - id: e04
+    type: listen
+    text: Laporan ini menyajikan data tentang keberagaman agama di Singkawang.
+    question:
+      ar_eg: التقرير بيعرض بيانات عن إيه؟
+      ar: عمَّ يعرض التقرير بيانات؟
+      en: What does the report present data on?
+    options:
+      - تنوّع الأديان.
+      - أسعار الأكل.
+      - المطر.
+    answer: 0
+    words: [menyajikan, keberagaman]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: بناءً على البيانات، التسامح هنا قوي جدًا.
+      ar: بناءً على البيانات، التسامح هنا قويّ جدًّا.
+      en: Based on the data, tolerance here is very strong.
+    answer: Berdasarkan data, toleransi di sini sangat kuat.
+    distractors: [rukun, menyajikan]
+    words: [toleransi, berdasarkan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: التنوّع ده قوة للمدينة.
+      ar: هذا التنوّع قوّة للمدينة.
+      en: This diversity is a strength for the city.
+    answers:
+      - Keberagaman ini adalah kekuatan bagi kota.
+      - Keberagaman ini merupakan kekuatan kota.
+      - Keberagaman ini kekuatan bagi kota ini.
+      - Keberagaman ini menjadi kekuatan kota.
+    words: [keberagaman]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Dengan demikian, toleransi membuat warga hidup rukun.
+    answers_meaning:
+      ar_eg:
+        - وبكده، التسامح بيخلّي الناس عايشين في وفاق.
+        - يبقى التسامح هو اللي مخلّي الناس متفقين وعايشين مع بعض.
+      ar:
+        - وبذلك يجعل التسامح السكّان يعيشون في وئام.
+        - إذن، التسامح يجعل الناس يعيشون في وفاق.
+      en:
+        - Thus, tolerance lets residents live in harmony.
+        - So tolerance keeps people living in harmony.
+    words: [toleransi, rukun]
+  - id: e08
+    type: speaking
+    text: Menurut saya, Singkawang adalah contoh toleransi yang indah.
+    meaning:
+      ar_eg: في رأيي، سينجكاوانج مثال حلو للتسامح.
+      ar: في رأيي، سينغكاوانغ مثال جميل على التسامح.
+      en: In my view, Singkawang is a beautiful example of tolerance.
+    words: [toleransi]
+  - id: e09
+    type: dictation
+    text: Kami menyajikan data dari tiga kelurahan.
+    meaning:
+      ar_eg: إحنا بنعرض بيانات من 3 أحياء.
+      ar: نعرض بيانات من ثلاثة أحياء.
+      en: We present data from three neighbourhoods.
+    words: [menyajikan]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «keberagaman» جاية من أنهي كلمة؟
+      ar: من أيّ كلمة جاءت «keberagaman»؟
+      en: Which word does "keberagaman" come from?
+    options: [ragam, rukun, berat]
+    answer: 0
+    words: [keberagaman]
+dialogue:
+  title: Draf laporan
+  lines:
+    - speaker: Mohamed
+      text: Mas, ini draf laporan saya. Saya menyajikan data dulu, lalu pendapat saya.
+      ar_eg: يا ريزال، ده مسودة تقريري. عرضت البيانات الأول، وبعدين رأيي.
+      ar: هذه مسوّدة تقريري. عرضت البيانات أوّلًا ثمّ رأيي.
+      en: Mas, here's my report draft. I present the data first, then my opinion.
+    - speaker: Mas Rizal
+      text: Bagus. Bagian tentang keberagaman sangat menarik.
+      ar_eg: حلو. الجزء بتاع التنوّع حلو قوي.
+      ar: جميل. الجزء الخاصّ بالتنوّع شائق جدًّا.
+      en: Good. The part on diversity is really interesting.
+    - speaker: Mohamed
+      text: Di Singkawang ada vihara, masjid dan gereja yang berdekatan. Warganya hidup rukun.
+      ar_eg: في سينجكاوانج فيه معابد وجوامع وكنايس جنب بعض. والناس عايشين في وفاق.
+      ar: في سينغكاوانغ معابد ومساجد وكنائس متجاورة، ويعيش أهلها في وئام.
+      en: In Singkawang there are temples, mosques and churches close together. People live in harmony.
+    - speaker: Mas Rizal
+      text: Dengan demikian, kesimpulanmu jelas. Toleransi bukan sekadar kata di sana.
+      ar_eg: وبكده، خلاصتك واضحة. التسامح هناك مش مجرد كلمة.
+      ar: وبذلك تكون خلاصتك واضحة، فالتسامح هناك ليس مجرّد كلمة.
+      en: Thus, your conclusion is clear. Tolerance there is more than a word.
+new_words:
+  - word: menyajikan
+    pos: verb
+    ar_eg: يعرض / يقدّم
+    ar: يعرض
+    en: to present
+  - word: keberagaman
+    pos: noun
+    ar_eg: تنوّع
+    ar: تنوّع
+    en: diversity
+  - word: toleransi
+    pos: noun
+    ar_eg: تسامح
+    ar: تسامح
+    en: tolerance
+  - word: rukun
+    pos: adjective
+    arabic: ركن
+    ar_eg: عايشين في وفاق
+    ar: في وئام
+    en: in harmony
+review:
+  status: draft
+  verified: false
