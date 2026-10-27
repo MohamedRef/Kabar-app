@@ -91,6 +91,7 @@ macro_rules! bundled {
 const BUILTIN: &[(&str, &str)] = bundled![
     "analyze_text@v1.md",
     "explain_sentence@v1.md",
+    "translate_text@v1.md",
     "grade_answer@v1.md",
     "roleplay_turn@v1.md",
     "roleplay_turn@v2.md",
