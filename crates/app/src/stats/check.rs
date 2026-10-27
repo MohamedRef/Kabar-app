@@ -32,7 +32,7 @@ use crate::coach::{Coach, labels, say, widgets::Nur};
 use crate::lesson::text::{L, lt};
 use crate::lesson::{
     Draft, ExerciseView, MAX_STEP_MS, Rich, TextAnswer, autoplay_text, draft_answer, instruction,
-    needs_audio, now_ms, option_count, speak, target_tag,
+    item_prompt, needs_audio, now_ms, option_count, speak, target_tag,
 };
 use crate::{Db, Screen, Ui};
 
@@ -54,6 +54,19 @@ struct Setup {
     /// `None` when Kabar has no test items for this level yet.
     mini: Option<TestContent>,
     previous: Option<LevelCheckResult>,
+    /// Kak Nur's welcome on the intro, worded for how the check was reached.
+    welcome: Line,
+}
+
+/// Kak Nur's welcome: a first check is introduced as the starting point; one
+/// opened from the monthly invitation says a month has passed; one opened by
+/// hand is simply welcome, whenever the learner likes.
+fn welcome_line(first: bool, invited: bool) -> Line {
+    match (first, invited) {
+        (true, _) => Line::LevelCheckFirst,
+        (false, true) => Line::LevelCheckInvite,
+        (false, false) => Line::LevelCheckAnytime,
+    }
 }
 
 fn setup(db: &Db, coach: &Coach) -> Setup {
@@ -70,6 +83,7 @@ fn setup(db: &Db, coach: &Coach) -> Setup {
         pass_mark: full.as_ref().and_then(|t| t.pass_mark),
         mini: full.as_ref().map(|t| mini_check(t, month_seed(today))),
         level,
+        welcome: welcome_line(previous.is_none(), *super::CHECK_INVITED.peek()),
         previous,
     }
 }
@@ -162,6 +176,7 @@ pub fn LevelCheckScreen() -> Element {
             rsx! {
                 Intro {
                     level: s.level.clone(),
+                    welcome: s.welcome,
                     has_test: s.mini.is_some(),
                     on_start: move |_| {
                         if s2.mini.is_some() {
@@ -217,13 +232,13 @@ pub fn LevelCheckScreen() -> Element {
 }
 
 #[component]
-fn Intro(level: String, has_test: bool, on_start: EventHandler<()>) -> Element {
+fn Intro(level: String, welcome: Line, has_test: bool, on_start: EventHandler<()>) -> Element {
     let ui = use_context::<Ui>();
     let coach = use_context::<Coach>();
     let lang = ui.lang();
     let label = iso(&level_label(&level));
     let name = coach.profile.read().as_ref().map(|p| p.name.clone()).unwrap_or_default();
-    let invite = say(&ui, Line::LevelCheckInvite, coach.today(), &[("name", &name)]);
+    let invite = say(&ui, welcome, coach.today(), &[("name", &name)]);
     let (text, button) = if has_test {
         (fill(st(lang, S::CheckIntro), &[("level", &label)]), S::CheckStart)
     } else {
@@ -294,6 +309,17 @@ fn Runner(runner: Signal<Option<TestRunner>>, on_done: EventHandler<()>) -> Elem
             commit(&|r| r.skip());
         }
     });
+    // Play the first item's audio as it opens, as the Lesson Player does
+    // (later items play from `commit`). Without a voice this is what sets
+    // `missing`, so a listening item is skipped on sight, not after Play.
+    use_hook(move || {
+        let r = runner.peek();
+        let first =
+            r.as_ref().filter(|r| matches!(r.step(), TestStep::Item { .. })).and_then(|r| r.exercise());
+        if let Some((text, audio)) = first.and_then(|ex| autoplay_text(&ex)) {
+            speak(&text, LANGUAGE, false, audio.as_deref(), missing);
+        }
+    });
 
     // Enter = next, 1–9 = pick an option (same keys as the Lesson Player and
     // the level tests).
@@ -349,16 +375,18 @@ fn Runner(runner: Signal<Option<TestRunner>>, on_done: EventHandler<()>) -> Elem
         .open_answers()
         .map(|rec| {
             let it = &r.test().sections[rec.section].items[rec.item];
-            let (prompt, refs) = match (&it.kind, it.exercise()) {
+            // The same "what was asked" line as the level tests' self-check,
+            // so a translate item shows the sentence it asked about.
+            let refs = match (&it.kind, it.exercise()) {
                 (TestItemKind::WritingTask(t) | TestItemKind::SpeakingTask(t), _) => {
-                    (pick(&t.prompt, lang).trim().to_string(), vec![t.sample.trim().to_string()])
+                    vec![t.sample.trim().to_string()]
                 }
-                (_, Some(ex)) => (String::new(), references(&ex, lang).into_iter().take(3).collect()),
-                _ => (String::new(), Vec::new()),
+                (_, Some(ex)) => references(&ex, lang).into_iter().take(3).collect(),
+                _ => Vec::new(),
             };
             (
                 rec.id.clone(),
-                prompt,
+                item_prompt(it, lang).trim().to_string(),
                 r.pending_answer(&rec.id).unwrap_or_default().to_string(),
                 refs,
                 rec.self_grade,
@@ -697,4 +725,29 @@ fn PaceNote() -> Element {
         &[("minutes", &labels::minutes(&ui, p.minutes_per_day.round() as u32)), ("days", &ui.num(p.days))],
     );
     rsx! { p { class: "muted small", "{text}" } }
+}
+
+#[cfg(test)]
+mod tests {
+    use kabar_core::coach::voice;
+    use kabar_core::locale::UiLanguage;
+
+    use super::*;
+
+    #[test]
+    fn the_welcome_fits_how_the_check_was_reached() {
+        assert_eq!(welcome_line(true, false), Line::LevelCheckFirst);
+        assert_eq!(welcome_line(true, true), Line::LevelCheckFirst);
+        assert_eq!(welcome_line(false, true), Line::LevelCheckInvite);
+        assert_eq!(welcome_line(false, false), Line::LevelCheckAnytime);
+        // Only the monthly invitation says a month has passed.
+        for seed in 0..4 {
+            for line in [Line::LevelCheckFirst, Line::LevelCheckAnytime] {
+                let ar = voice::say(UiLanguage::ArEg, line, seed, &[("name", "Mohamed")]);
+                assert!(!ar.contains("شهر"), "{ar}");
+                let en = voice::say(UiLanguage::En, line, seed, &[("name", "Mohamed")]);
+                assert!(!en.contains("month"), "{en}");
+            }
+        }
+    }
 }
