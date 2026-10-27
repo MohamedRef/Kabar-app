@@ -4,6 +4,7 @@
 
 pub mod api;
 #[cfg(test)]
+#[allow(clippy::disallowed_macros)] // the e2e run prints its timings
 mod e2e;
 pub mod engine;
 pub mod link;
@@ -155,7 +156,7 @@ pub fn start(
             let runtime = match tokio::runtime::Builder::new_current_thread().enable_all().build() {
                 Ok(r) => r,
                 Err(e) => {
-                    eprintln!("kabar: no runtime for sync: {e}");
+                    crate::diag::report!("no runtime for sync: {e}");
                     return;
                 }
             };

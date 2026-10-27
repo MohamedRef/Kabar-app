@@ -156,7 +156,7 @@ impl LocalGlossary {
         }
 
         let bridges: HashMap<String, BridgeEntry> = jsonl::<BridgeEntry>(BRIDGE_ID)
-            .filter_map(|r| r.map_err(|e| eprintln!("kabar: bad bridge entry: {e}")).ok())
+            .filter_map(|r| r.map_err(|e| crate::diag::report!("bad bridge entry: {e}")).ok())
             .map(|b| (b.word.to_lowercase(), b))
             .collect();
 
@@ -168,7 +168,7 @@ impl LocalGlossary {
             let e = match entry {
                 Ok(e) => e,
                 Err(err) => {
-                    eprintln!("kabar: bad gloss entry: {err}");
+                    crate::diag::report!("bad gloss entry: {err}");
                     continue;
                 }
             };
@@ -251,7 +251,7 @@ impl LocalGlossary {
             let row = match row {
                 Ok(r) => r,
                 Err(err) => {
-                    eprintln!("kabar: bad speech-level entry: {err}");
+                    crate::diag::report!("bad speech-level entry: {err}");
                     continue;
                 }
             };

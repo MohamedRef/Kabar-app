@@ -98,11 +98,11 @@ impl PartialEq for Engine {
 pub(crate) fn load_deck(db: &Db, sched: &Scheduler) -> Deck {
     let store = db.0.borrow();
     let cards = store.cards().unwrap_or_else(|e| {
-        eprintln!("kabar: reading cards failed: {e}");
+        crate::diag::report!("reading cards failed: {e}");
         Vec::new()
     });
     let log = store.review_log().unwrap_or_else(|e| {
-        eprintln!("kabar: reading the review log failed: {e}");
+        crate::diag::report!("reading the review log failed: {e}");
         Vec::new()
     });
     Deck::new(cards, log, sched)
@@ -188,7 +188,7 @@ impl Engine {
                 true
             }
             Err(e) => {
-                eprintln!("kabar: saving a review failed: {e}");
+                crate::diag::report!("saving a review failed: {e}");
                 error.set(Some(Msg::RevSaveFailed));
                 false
             }
@@ -210,7 +210,7 @@ impl Engine {
                 true
             }
             Err(e) => {
-                eprintln!("kabar: undo failed: {e}");
+                crate::diag::report!("undo failed: {e}");
                 false
             }
         }
@@ -243,7 +243,7 @@ impl Engine {
     fn seed(&self) {
         let mut deck = self.deck;
         if let Err(e) = self.db.0.borrow_mut().upsert_cards(&seed_bridge_deck()) {
-            eprintln!("kabar: seeding the starter deck failed: {e}");
+            crate::diag::report!("seeding the starter deck failed: {e}");
             let mut error = self.error;
             error.set(Some(Msg::RevSaveFailed));
             return;
@@ -429,7 +429,7 @@ fn speak(text: &str, language: StudyLanguage) {
         Err(SpeakError::UseWebView) => {}
         Ok(()) => return,
         Err(e) => {
-            eprintln!("kabar: no review audio: {e:?}");
+            crate::diag::report!("no review audio: {e:?}");
             return;
         }
     }

@@ -898,3 +898,12 @@ button.journal-delete { color: var(--dawn); border-color: var(--dawn); }
 }
 .souvenir-art.place-art img { inline-size: min(9rem, 60%); aspect-ratio: 1; border-radius: 50%; }
 .lp-souvenir .souvenir-art { max-inline-size: 22rem; margin-inline: auto; }
+
+/* Settings → Your data: recent diagnostics (diag.rs). */
+.diag-lines {
+  max-block-size: 18rem;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.8rem;
+}

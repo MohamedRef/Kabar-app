@@ -151,6 +151,8 @@ Writing the draft needs an AI engine, so until the app is connected to Kabar Clo
 
 `just apk` now stops with "dx did not build android/ into the APK" if the Kotlin classes are missing.
 
+When something goes wrong on a device, `adb logcat -s kabar` shows what Kabar reported (an Android app's stderr goes nowhere). The same lines, the last 200, are under Settings → Your data → **What happened lately**, with a Copy button. Lines that carry a sign-in token are left out.
+
 ### App icon on Android and the Mac
 The phone and tablet show Kabar's own launcher icon (adaptive, with a themed-icon layer for One UI). dx always writes its default Dioxus icon into the app it generates, so Kabar ships its icon from the `android/` module under the name `ic_kabar_launcher` and uses its own manifest, `crates/app/AndroidManifest.xml` (`[application] android_manifest` in `crates/app/Dioxus.toml`). That file is dx's template with Kabar's icon and the text-to-speech `<queries>`: **add any new Android permission or intent there**, Dioxus.toml no longer feeds the manifest. `just apk` (and CI's preview build) stops if the APK's icon is not Kabar's, as long as the Android build-tools' `aapt2` is on your PATH.
 

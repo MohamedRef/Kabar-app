@@ -69,7 +69,7 @@ impl Store {
             .filter_map(|(id, payload)| match serde_json::from_str(&payload) {
                 Ok(card) => Some(card),
                 Err(e) => {
-                    eprintln!("kabar: skipping unreadable card {id}: {e}");
+                    crate::diag::report!("skipping unreadable card {id}: {e}");
                     None
                 }
             })

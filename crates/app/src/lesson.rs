@@ -756,15 +756,15 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                 {
                     let mut store = db.0.borrow_mut();
                     if let Err(e) = store.record_lesson_event(&p.lesson().id, "completed", &p.completed()) {
-                        eprintln!("kabar: saving the lesson result failed: {e}");
+                        crate::diag::report!("saving the lesson result failed: {e}");
                     }
                     // The new words join the review deck.
                     let approved = kabar_core::lesson::approves(&p.completed());
                     if !episode && let Err(e) = store.add_lesson_cards(p.lesson(), approved) {
-                        eprintln!("kabar: adding the lesson's words to review failed: {e}");
+                        crate::diag::report!("adding the lesson's words to review failed: {e}");
                     }
                     if !episode && let Err(e) = store.clear_position() {
-                        eprintln!("kabar: clearing the lesson position failed: {e}");
+                        crate::diag::report!("clearing the lesson position failed: {e}");
                     }
                 }
                 if episode { log_episode(coach, &db, &p) } else { log_activity(coach, &db, &p) }
@@ -1056,7 +1056,7 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
 
 fn save(db: CopyValue<Db>, pos: &LessonPosition) {
     if let Err(e) = db.read().0.borrow_mut().save_position(pos) {
-        eprintln!("kabar: saving the lesson position failed: {e}");
+        crate::diag::report!("saving the lesson position failed: {e}");
     }
 }
 

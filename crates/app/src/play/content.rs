@@ -30,7 +30,7 @@ fn guarded<T>(what: &str, parse: impl FnOnce() -> Result<T, String>) -> Loaded<T
     std::panic::catch_unwind(std::panic::AssertUnwindSafe(parse))
         .unwrap_or_else(|_| Err(format!("{what}: the parser stopped unexpectedly")))
         .map_err(|e| {
-            eprintln!("kabar: loading {what} failed: {e}");
+            crate::diag::report!("loading {what} failed: {e}");
             e
         })
 }
