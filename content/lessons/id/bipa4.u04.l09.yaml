@@ -144,6 +144,44 @@ exercises:
       - Menurut seorang pedagang, saluran airnya tersumbat sampah.
       - Menurut salah satu pedagang, saluran air tersumbat sampah.
     words: [narasumber]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: harian
+        ar_eg: يومي
+        ar: يومي
+        en: daily
+      - text: gosip
+        ar_eg: نميمة
+        ar: نميمة
+        en: gossip
+      - text: tuduhan
+        ar_eg: اتهام
+        ar: اتّهام
+        en: accusation
+      - text: komite
+        ar_eg: لجنة
+        ar: لجنة
+        en: committee
+      - text: politisi
+        ar_eg: سياسي
+        ar: سياسي
+        en: politician
+      - text: tragedi
+        ar_eg: مأساة
+        ar: مأساة
+        en: tragedy
+    words: [harian, gosip, tuduhan, komite, politisi, tragedi]
+  - id: e10
+    type: fill_blank
+    sentence: Pemerintah akan ___ keputusan itu besok pagi.
+    meaning:
+      ar_eg: الحكومة هـ___ القرار ده بكرة الصبح.
+      ar: ستُ___ الحكومة ذلك القرار صباح الغد.
+      en: The government will ___ that decision tomorrow morning.
+    options: [mengumumkan, terungkap, dirilis]
+    answers: [mengumumkan]
+    words: [mengumumkan, terungkap, dirilis]
 dialogue:
   title: Di ruang redaksi
   lines:
