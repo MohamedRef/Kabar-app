@@ -520,14 +520,14 @@ fn id_note(label: &str) -> Option<(Label, Option<WordClass>)> {
         ),
         "ke-" => note(
             "ordinal (kedua 'second') or 'all … together' (ketiga 'all three')",
-            "عدد ترتيبي (kedua: الثاني) أو المجموعة كلها",
-            "ترتيب (kedua: التاني) أو «التلاتة كلهم»",
+            "عدد ترتيبي (\u{2068}kedua\u{2069}: الثاني) أو المجموعة كلها",
+            "ترتيب (\u{2068}kedua\u{2069}: التاني) أو «التلاتة كلهم»",
             None,
         ),
         "se-" => note(
             "one; the same; as … as",
             "واحد، نفس، أو «مثل» في المقارنة",
-            "واحد، نفس، أو «قد» في المقارنة (sebesar: قد كده في الكبر)",
+            "واحد، نفس، أو «قد» في المقارنة (\u{2068}sebesar\u{2069}: قد كده في الكبر)",
             None,
         ),
         "kau-" => note("you do it to it (passive with 'you')", "أنت تفعله به", "إنت اللي بتعمله فيه", V),
@@ -588,8 +588,8 @@ fn jv_note(label: &str) -> Option<(Label, Option<WordClass>)> {
     Some(match label {
         "N-" => note(
             "active verb (like Indonesian meN-)",
-            "فعل مبني للمعلوم (مثل meN- الإندونيسية)",
-            "فعل عادي (زي meN- في الإندونيسي)",
+            "فعل مبني للمعلوم (مثل \u{2068}meN-\u{2069} الإندونيسية)",
+            "فعل عادي (زي \u{2068}meN-\u{2069} في الإندونيسي)",
             V,
         ),
         "di-" => note("passive: it is done", "مبني للمجهول", "مبني للمجهول", V),
@@ -600,25 +600,33 @@ fn jv_note(label: &str) -> Option<(Label, Option<WordClass>)> {
             V,
         ),
         "ka-" => note("passive, formal", "مبني للمجهول، رسمي", "مبني للمجهول، رسمي", V),
-        "ke-" => {
-            note("happened by accident (like ter-)", "حدث دون قصد (مثل ter-)", "حصل من غير قصد (زي ter-)", V)
-        }
+        "ke-" => note(
+            "happened by accident (like ter-)",
+            "حدث دون قصد (مثل \u{2068}ter-\u{2069})",
+            "حصل من غير قصد (زي \u{2068}ter-\u{2069})",
+            V,
+        ),
         "sa-" => note("one; as … as", "واحد، أو «مثل» في المقارنة", "واحد، أو «قد» في المقارنة", None),
         "tak-" => note("I do it (or: let me)", "أنا أفعله (أو: دعني)", "أنا اللي بعمله (أو: سيبني أعمله)", V),
         "kok-" => note("you do it", "أنت تفعله", "إنت اللي بتعمله", V),
         "-ake" | "-aken" | "-ke" => note(
             "makes it happen, or does it for someone (like -kan)",
-            "يجعله يحدث أو لأجل أحد (مثل -kan)",
-            "يخلّيه يحصل أو يعمله لحد (زي -kan)",
+            "يجعله يحدث أو لأجل أحد (مثل \u{2068}-\u{2060}kan\u{2069})",
+            "يخلّيه يحصل أو يعمله لحد (زي \u{2068}-\u{2060}kan\u{2069})",
             V,
         ),
         "-i" => note(
             "does it to or at something (like -i)",
-            "يوقعه على الشيء (مثل -i)",
-            "يعمله على الحاجة (زي -i)",
+            "يوقعه على الشيء (مثل \u{2068}-\u{2060}i\u{2069})",
+            "يعمله على الحاجة (زي \u{2068}-\u{2060}i\u{2069})",
             V,
         ),
-        "-ana" => note("do it to it! (command of -i)", "أمر من صيغة -i", "أمر: اعمله فيه!", V),
+        "-ana" => note(
+            "do it to it! (command of -i)",
+            "أمر من صيغة \u{2068}-\u{2060}i\u{2069}",
+            "أمر: اعمله فيه!",
+            V,
+        ),
         "-en" => note(
             "do it! (command), or 'too …'",
             "أمر، أو «زيادة عن اللزوم»",
@@ -634,14 +642,14 @@ fn jv_note(label: &str) -> Option<(Label, Option<WordClass>)> {
         ),
         "-e" | "-ne" => note(
             "his / her / its, or 'the' (like -nya)",
-            "ـه / ـها، أو أداة تعريف (مثل -nya)",
-            "بتاعه، أو بمعنى «الـ» (زي -nya)",
+            "ـه / ـها، أو أداة تعريف (مثل \u{2068}-\u{2060}nya\u{2069})",
+            "بتاعه، أو بمعنى «الـ» (زي \u{2068}-\u{2060}nya\u{2069})",
             N,
         ),
         "-ipun" => note(
             "'the' / his, polite (krama of -e)",
-            "أداة تعريف مهذبة (كراما لـ -e)",
-            "«الـ» بالأدب (كراما بتاعة -e)",
+            "أداة تعريف مهذبة (كراما لـ \u{2068}-\u{2060}e\u{2069})",
+            "«الـ» بالأدب (كراما بتاعة \u{2068}-\u{2060}e\u{2069})",
             N,
         ),
         "-mu" => note("your", "ـك", "بتاعك", None),

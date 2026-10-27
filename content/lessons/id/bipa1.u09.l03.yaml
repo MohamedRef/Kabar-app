@@ -41,27 +41,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: di atas
-        ar_eg: فوق
-        ar: فوق
-        en: on, above
-      - text: di bawah
-        ar_eg: تحت
-        ar: تحت
-        en: under
       - text: di depan
-        ar_eg: قدّام
+        ar_eg: قدام
         ar: أمام
-        en: in front of
+        en: in front
       - text: di belakang
         ar_eg: ورا
         ar: خلف
         en: behind
-      - text: di dalam
-        ar_eg: جوه
-        ar: داخل
-        en: inside
-    words: [atas, bawah, depan, belakang, dalam]
+      - text: di samping
+        ar_eg: جنب
+        ar: بجانب
+        en: beside
+      - text: di antara
+        ar_eg: بين
+        ar: بين
+        en: between
+      - text: kamar mandi
+        ar_eg: حمّام
+        ar: حمّام
+        en: bathroom
+      - text: dapur
+        ar_eg: مطبخ
+        ar: مطبخ
+        en: kitchen
+    words: [depan, belakang, samping, antara, kamar mandi, dapur]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -119,6 +123,35 @@ exercises:
       ar: الكرسي أمام الطاولة.
       en: The chair is in front of the table.
     words: [kursi, depan, meja]
+  - id: e07
+    type: listen
+    text: Kamar mandi di antara kamar dan dapur.
+    options: ['Kamar mandi di antara kamar dan dapur.', 'Kamar mandi di samping dapur.', 'Kamar mandi di belakang pintu.']
+    answer: 0
+    meaning:
+      ar_eg: الحمّام بين الأوضة والمطبخ.
+      ar: الحمّام بين الغرفة والمطبخ.
+      en: The bathroom is between the bedroom and the kitchen.
+    words: [kamar mandi, antara, kamar, dapur, samping, belakang, pintu]
+  - id: e08
+    type: fill_blank
+    sentence: Kamar mandi di ___ dapur.
+    meaning:
+      ar_eg: الحمّام جنب المطبخ.
+      ar: الحمّام بجانب المطبخ.
+      en: The bathroom is next to the kitchen.
+    options: [samping, pintu, kamar]
+    answers: [samping]
+    words: [kamar mandi, samping, dapur]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «الشنطة ورا الباب»؟
+      ar: كيف تقول «الحقيبة خلف الباب»؟
+      en: How do you say "The bag is behind the door"?
+    options: ['Tasnya di belakang pintu.', 'Tasnya di antara pintu.', 'Tasnya di pintu belakang.']
+    answer: 0
+    words: [belakang, pintu, antara]
 dialogue:
   title: Tiket ke Monas
   lines:

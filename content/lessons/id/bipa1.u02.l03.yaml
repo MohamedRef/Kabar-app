@@ -41,14 +41,6 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: orang Mesir
-        ar_eg: مصري
-        ar: مصري
-        en: Egyptian (person)
-      - text: bahasa Arab
-        ar_eg: اللغة العربي
-        ar: اللغة العربية
-        en: Arabic (language)
       - text: dari mana
         ar_eg: منين
         ar: من أين
@@ -57,30 +49,42 @@ exercises:
         ar_eg: فين
         ar: أين
         en: where
-      - text: sedikit
-        ar_eg: شوية
-        ar: قليلًا
-        en: a little
-    words: [orang, bahasa, dari, mana, sedikit]
+      - text: ke mana
+        ar_eg: على فين
+        ar: إلى أين
+        en: where to
+      - text: tinggal
+        ar_eg: ساكن / يسكن
+        ar: يسكن
+        en: to live (somewhere)
+      - text: tapi
+        ar_eg: بس / لكن
+        ar: لكن
+        en: but
+    words: [dari, mana, di mana, ke mana, tinggal, tapi]
   - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: عايز تعرف Ni Luh ساكنة فين. تسأل إيه؟
       ar: تريد أن تعرف أين تسكن Ni Luh. ماذا تسأل؟
       en: You want to know where Ni Luh lives. What do you ask?
-    options: ['Kamu dari mana?', 'Kamu siapa?', 'Kamu tinggal di mana?']
+    options: ['Kamu dari mana?', 'Kamu ke mana?', 'Kamu tinggal di mana?']
     answer: 2
     explain:
-      ar_eg: di mana = فين (المكان). dari mana = منين (الأصل).
-      ar: di mana للمكان (أين)، وdari mana للأصل (من أين).
-      en: di mana asks for the place; dari mana asks for the origin.
+      ar_eg: di mana = فين (المكان). dari mana = منين (الأصل). ke mana = على فين (رايح فين).
+      ar: di mana للمكان (أين)، وdari mana للأصل (من أين)، وke mana للوجهة (إلى أين).
+      en: di mana asks for the place; dari mana for the origin; ke mana for where someone is going.
     words: [tinggal, di mana]
   - id: e03
     type: listen
-    text: Saya dari Kairo
-    options: [Saya orang Kairo, Saya dari Kairo, Saya di Kairo]
-    answer: 1
-    words: [dari]
+    text: Kamu ke mana?
+    options: ['Kamu ke mana?', 'Kamu dari mana?', 'Kamu di mana?']
+    answer: 0
+    meaning:
+      ar_eg: إنت رايح فين؟
+      ar: إلى أين أنت ذاهب؟
+      en: Where are you going?
+    words: [ke mana]
   - id: e04
     type: fill_blank
     sentence: Anda ___ mana? — Saya dari Mesir.
@@ -130,12 +134,12 @@ exercises:
     words: [orang, tapi, tinggal]
   - id: e09
     type: dictation
-    text: Saya dari Mesir.
+    text: Saya dari Mesir, tapi saya tinggal di Jakarta.
     meaning:
-      ar_eg: أنا من مصر.
-      ar: أنا من مصر.
-      en: I'm from Egypt.
-    words: [dari, Mesir]
+      ar_eg: أنا من مصر، بس ساكن في جاكرتا.
+      ar: أنا من مصر، لكنني أسكن في جاكرتا.
+      en: I'm from Egypt, but I live in Jakarta.
+    words: [dari, Mesir, tapi, tinggal]
 dialogue:
   title: Kopi di Menteng
   lines:

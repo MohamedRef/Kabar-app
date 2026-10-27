@@ -13,12 +13,15 @@ slides:
         sebelah بتيجي كمان مع اليمين والشمال: di sebelah kanan = على اليمين، di sebelah kiri = على الشمال.
         Masjid Istiqlal di sebelah kiri = جامع الاستقلال على الشمال.
         ومع الحركة غيّر di بـ ke أو dari: masuk ke dalam = يدخل جوه، dari belakang = من ورا.
+        والشارع = jalan: di sebelah kanan jalan = على يمين الشارع.
       ar: |
         وتأتي sebelah مع اليمين واليسار: di sebelah kanan = على اليمين، di sebelah kiri = على اليسار.
         ومع الحركة تُستبدل di بـ ke أو dari: masuk ke dalam = يدخل إلى الداخل، dari belakang = من الخلف.
+        والشارع = jalan: di sebelah kanan jalan = على يمين الشارع.
       en: |
         sebelah also goes with left and right: di sebelah kanan = on the right, di sebelah kiri = on the left.
         With movement, swap di for ke or dari: masuk ke dalam = go inside, dari belakang = from behind.
+        Street = jalan: di sebelah kanan jalan = on the right side of the street.
     grammar: id.location.words
     examples:
       - text: Kamar mandinya di sebelah kanan.
@@ -27,25 +30,15 @@ slides:
         en: The bathroom is on the right.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: meja
-        ar_eg: ترابيزة
-        ar: طاولة
-        en: table
-      - text: kursi
-        ar_eg: كرسي
-        ar: كرسي
-        en: chair
-      - text: kamar
-        ar_eg: أوضة
-        ar: غرفة
-        en: room
-      - text: tas
-        ar_eg: شنطة
-        ar: حقيبة
-        en: bag
-    words: [meja, kursi, kamar, tas]
+    type: fill_blank
+    sentence: Bank di sebelah kiri ___.
+    meaning:
+      ar_eg: البنك على شمال الشارع.
+      ar: البنك على يسار الشارع.
+      en: The bank is on the left side of the street.
+    options: [jalan, kanan, kamar]
+    answers: [jalan]
+    words: [sebelah, kiri, jalan]
   - id: e02
     type: listen
     text: Kamar mandinya di sebelah kiri.
@@ -99,6 +92,24 @@ exercises:
       ar: الحمّام على اليمين.
       en: The bathroom is on the right.
     words: [sebelah, kanan]
+  - id: e07
+    type: listen
+    text: Pasar di sebelah kanan jalan.
+    options: ['Pasar di sebelah kanan jalan.', 'Pasar di sebelah kiri jalan.', 'Pasar di jalan kanan.']
+    answer: 0
+    meaning:
+      ar_eg: السوق على يمين الشارع.
+      ar: السوق على يمين الشارع.
+      en: The market is on the right side of the street.
+    words: [sebelah, kanan, jalan, kiri]
+  - id: e08
+    type: speaking
+    text: Rumah saya di sebelah kanan jalan.
+    meaning:
+      ar_eg: بيتي على يمين الشارع.
+      ar: بيتي على يمين الشارع.
+      en: My house is on the right side of the street.
+    words: [sebelah, kanan, jalan]
 dialogue:
   lines:
     - speaker: Mohamed
@@ -137,6 +148,11 @@ new_words:
     ar_eg: شمال
     ar: يسار
     en: left (side)
+  - word: jalan
+    pos: noun
+    ar_eg: شارع، طريق
+    ar: شارع، طريق
+    en: street, road
 review:
   status: draft
   verified: false

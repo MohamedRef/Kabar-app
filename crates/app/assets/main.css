@@ -103,6 +103,12 @@
 .wp-confix { color: var(--wp-confix); }
 .wp-clitic { color: var(--wp-clitic); }
 .wp-root { color: var(--wc, var(--wp-root)); font-weight: 600; }
+/* Settings → word colours off (settings.word_colours_off): plain text
+   everywhere; the parts keep their "+" and labels. */
+.app[data-word-colours="off"] :is(.wc-ink, .wp-prefix, .wp-suffix, .wp-confix, .wp-clitic, .wp-root) { color: inherit; }
+.app[data-word-colours="off"] .wc-line { text-decoration: none; }
+.app[data-word-colours="off"] .class-chip { color: inherit; background: var(--surface-2); border-color: var(--line); }
+.app[data-word-colours="off"] :is(.colour-legend, .annot-legend) { display: none; }
 
 * { box-sizing: border-box; }
 
@@ -252,6 +258,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 
 /* ---------- Shell & adaptive navigation ---------- */
 .shell { display: grid; min-block-size: 100dvh; }
+/* the phone's top bar keeps its height on short screens */
+.app[data-width="compact"] .shell { align-content: start; }
 .content { padding: var(--gutter); padding-block-end: 6rem; max-inline-size: 76rem; inline-size: 100%; margin-inline: auto; }
 .app:not([data-width="compact"]) .content { padding-block: var(--sp-6) var(--sp-8); }
 
@@ -307,6 +315,32 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 }
 .brand-small { font-weight: 700; color: var(--indigo); font-size: 1.1rem; }
 .gear-button { border-color: transparent; background: transparent; display: inline-flex; align-items: center; justify-content: center; block-size: 44px; color: var(--muted); }
+
+/* The phone's More tab and sheet; the top bar's back arrow and title */
+.nav-more { display: none; }
+.app[data-width="compact"] .nav-more { display: flex; }
+.more-backdrop { position: fixed; inset: 0; z-index: 30; background: rgb(0 0 0 / 0.3); }
+.more-sheet {
+  position: fixed; z-index: 31; inset-inline: 0; inset-block-end: 0; max-block-size: 85dvh; overflow-y: auto;
+  background: var(--surface); border-start-start-radius: var(--radius); border-start-end-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 0.75rem 1rem; padding-block-end: max(1rem, env(safe-area-inset-bottom));
+}
+.more-head { display: flex; align-items: center; justify-content: space-between; }
+.more-head h2 { margin: 0; font-size: 1.15rem; }
+.more-list { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+.more-list button {
+  inline-size: 100%; display: grid; grid-template-columns: 1.6rem 1fr; column-gap: 0.75rem; align-items: center;
+  text-align: start; border: 0; border-radius: 12px; background: transparent; padding: 0.7rem 0.5rem;
+}
+.more-list button[aria-current="page"] { background: var(--surface-2); color: var(--indigo); }
+.more-title { font-weight: 600; }
+.more-sub { grid-column: 2; font-size: 0.82rem; color: var(--muted); }
+.top-title { display: flex; align-items: center; gap: 0.25rem; min-inline-size: 0; }
+.top-title h1 { margin: 0; font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Rail labels stay on one line (long ones are shortened or ellipsed). */
+.app[data-width="medium"] .nav-label,
+.app[data-nav="slim"] .nav-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-inline-size: 100%; }
+.app[data-width="medium"] .nav-item { min-inline-size: 0; }
 
 /* Settings › Tablet / Mac: the slim rail on wide windows too */
 .app[data-nav="slim"]:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .shell { grid-template-columns: 5.5rem 1fr; }
@@ -564,7 +598,7 @@ button.game-card {
 .game-text { display: flex; flex-direction: column; gap: 0.2rem; min-inline-size: 0; }
 .play-header { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-block-end: 0.75rem; }
 .play-header h2 { margin: 0; font-size: 1.3rem; }
-.play-header .back { padding-inline: 0.5rem; text-decoration: none; }
+.play-header .back { padding-inline: 0.75rem; min-block-size: 44px; text-decoration: none; border-color: var(--line); color: var(--text); }
 .unverified { background: var(--surface-2); color: var(--muted); border: 1px dashed var(--line); }
 .gold-pill, .bonus-pill { background: var(--gold-soft); color: var(--text); align-self: flex-start; }
 .bonus-pill { background: var(--dawn); color: var(--surface); }
@@ -823,6 +857,42 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .word-card { display: grid; gap: 0.75rem; }
 .word-card .field { margin: 0; }
 .word-card .field p { margin-block: 0.15rem; }
+
+/* Word breakdown (reader/morph.rs): pieces in their --wp-* colours with a
+   "+" and the kind under each, so colour is never the only cue. */
+.parts-line { display: inline-flex; flex-wrap: wrap; align-items: flex-start; gap: 0.15rem 0.35rem; }
+.parts-line .piece { display: inline-grid; justify-items: center; font-weight: 600; }
+.parts-line .plus { color: var(--muted); }
+.parts-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.75rem; }
+.say-word { display: inline-flex; align-items: center; gap: 0.35rem; }
+.say-word button.icon { min-block-size: 44px; min-inline-size: 44px; padding: 0; border-radius: 50%; }
+.piece-kind { font-size: 0.7rem; font-weight: 400; color: var(--muted); }
+.class-chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding-inline: 0.55rem;
+  border-radius: 999px;
+  color: var(--wc);
+  background: color-mix(in srgb, var(--wc) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--wc) 45%, transparent);
+  margin-inline-end: 0.25rem;
+}
+.morph-detail { border-block-start: 1px solid var(--line); padding-block-start: 0.5rem; }
+.morph-detail > summary { cursor: pointer; display: flex; gap: 0.5rem; align-items: center; min-block-size: 44px; font-weight: 600; }
+.morph-body { display: grid; gap: 0.6rem; padding-block: 0.25rem 0.5rem; }
+.morph-notes { margin: 0; padding-inline-start: 1.1rem; display: grid; gap: 0.3rem; }
+.morph-notes .piece { font-weight: 700; }
+.morph-notes bdi { white-space: nowrap; }
+.morph-entry > summary { cursor: pointer; min-block-size: 32px; }
+.morph-entry p { margin-block: 0.25rem; color: var(--muted); }
+.colour-legend { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; font-size: 0.75rem; color: var(--muted); }
+.legend-item { display: inline-flex; align-items: center; gap: 0.3rem; }
+.legend-item .dot { inline-size: 0.7rem; block-size: 0.7rem; border-radius: 50%; background: var(--wc, currentColor); }
+.legend-item.wp-prefix .dot { background: var(--wp-prefix); }
+.legend-item.wp-suffix .dot { background: var(--wp-suffix); }
+.legend-item.wp-confix .dot { background: var(--wp-confix); }
+.legend-item.wp-clitic .dot { background: var(--wp-clitic); }
+.legend-item[class*="wp-"] { color: var(--muted); }
 .levels dl { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.75rem; margin: 0; }
 .levels dt { color: var(--muted); }
 .levels dd { margin: 0; font-weight: 600; }
@@ -999,6 +1069,10 @@ button.journal-delete { color: var(--dawn); border-color: var(--dawn); }
   text-align: start;
 }
 .pron.inline { display: inline; font-size: 1.15em; margin-inline: 0.3em; opacity: 0.85; }
+/* A block pronunciation is only as wide as its text, so in an English (LTR)
+   page it sits at the start under its sentence instead of floating. */
+.pron:not(.inline) { inline-size: fit-content; max-inline-size: 100%; justify-self: start; align-self: start; }
+.pron-unit.nowrap { white-space: nowrap; }
 .pron-reveal {
   font-family: var(--font-arabic);
   font-size: 0.8rem;

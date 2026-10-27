@@ -10,11 +10,13 @@ use std::collections::HashSet;
 use dioxus::prelude::*;
 use kabar_core::coach::onboarding::starting_unit;
 use kabar_core::pagi::{self, PagiWords, Story};
+use kabar_core::settings::TranslationMode;
 use kabar_protocol::coach::{ActivityEvent, ActivityKind, CoachProfile, LocalDate, LocalTime, Skill};
 
-use super::logic::{self, Segment, meaning};
+use super::logic::{self, meaning};
 use super::speech::{self, Voice};
 use super::{ContentProblem, PlayHeader, PlayNav, Route, content};
+use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::i18n::Msg;
 use crate::{Db, Ui};
@@ -97,7 +99,8 @@ pub fn PagiPlayer() -> Element {
     let speaking = use_signal(|| None::<usize>);
     let mut step_mode = use_signal(|| false);
     let mut shown = use_signal(|| 1usize);
-    let mut all_translations = use_signal(|| false);
+    // The translation setting decides whether the story starts translated.
+    let mut all_translations = use_signal(|| ui.settings.peek().translation == TranslationMode::On);
     let revealed = use_signal(HashSet::<usize>::new);
     use_drop(speech::stop);
 
@@ -185,10 +188,8 @@ pub fn PagiPlayer() -> Element {
                             key: "{i}",
                             class: if now == Some(i) { "sentence speaking" } else { "sentence" },
                             div { class: "sentence-row",
-                                p { class: "id-text latin", lang: "id", dir: "ltr",
-                                    for (j , seg) in logic::segments(&s.id, &targets).into_iter().enumerate() {
-                                        Seg { key: "{j}", seg }
-                                    }
+                                p { class: "id-text",
+                                    Annotated { text: s.id.clone(), tag: "id", marked: targets.clone() }
                                 }
                                 if *voice.read() == Voice::Ready {
                                     button {
@@ -262,19 +263,4 @@ pub fn PagiPlayer() -> Element {
 
 fn trilingual(s: &pagi::StorySentence) -> kabar_protocol::content::Trilingual {
     kabar_protocol::content::Trilingual { arz: s.arz.clone(), ar: s.ar.clone(), en: s.en.clone() }
-}
-
-/// A piece of a sentence; target words are highlighted, in Bridge gold when
-/// they come from Arabic.
-#[component]
-fn Seg(seg: Segment) -> Element {
-    match &seg.target {
-        None => rsx! { "{seg.text}" },
-        Some(target) => {
-            let arabic = content::bridge().as_ref().ok().and_then(|d| d.entry(target)).is_some();
-            rsx! {
-                mark { class: if arabic { "target bridge-word" } else { "target" }, "{seg.text}" }
-            }
-        }
-    }
 }

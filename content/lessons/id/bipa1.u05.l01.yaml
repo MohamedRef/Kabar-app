@@ -100,10 +100,14 @@ exercises:
         ar_eg: يعوم
         ar: يسبح
         en: swim
-      - text: bermain
-        ar_eg: يلعب
-        ar: يلعب
-        en: play
+      - text: berjalan
+        ar_eg: يمشي
+        ar: يمشي
+        en: walk
+      - text: berbicara
+        ar_eg: يتكلم
+        ar: يتكلم
+        en: speak
       - text: bekerja
         ar_eg: يشتغل
         ar: يعمل
@@ -116,7 +120,7 @@ exercises:
         ar_eg: يقضي أجازة
         ar: يقضي عطلة
         en: go on holiday
-    words: [berenang, bermain, bekerja, belajar, berlibur]
+    words: [berenang, berjalan, berbicara, bekerja, belajar, berlibur]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -132,10 +136,14 @@ exercises:
     words: [bekerja]
   - id: e03
     type: listen
-    text: Anak-anak bermain di taman.
-    options: [Anak-anak berenang di pantai., Anak-anak bermain di taman., Anak-anak belajar di rumah.]
-    answer: 1
-    words: [anak-anak, bermain, taman]
+    text: Raka berjalan ke pantai.
+    options: ['Raka berjalan ke pantai.', 'Raka berenang di pantai.', 'Raka berbicara di pantai.']
+    answer: 0
+    meaning:
+      ar_eg: راكا ماشي للبحر.
+      ar: راكا يمشي إلى الشاطئ.
+      en: Raka is walking to the beach.
+    words: [berjalan, berenang, berbicara, pantai]
   - id: e04
     type: fill_blank
     sentence: Rina ___ di pantai.
@@ -147,30 +155,56 @@ exercises:
     answers: [berenang]
     words: [berenang, pantai]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: راكا بيقضي الأجازة في أنكول.
-      ar: يقضي راكا عطلته في أنكول.
-      en: Raka is on holiday in Ancol.
-    answer: Raka berlibur di Ancol.
-    distractors: [kami, berenang]
-    words: [berlibur]
-  - id: e06
-    type: dictation
-    text: Rina berenang di pantai.
+    type: listen
+    text: Kami jalan-jalan ke Ancol.
+    options: ['Kami jalan-jalan ke Ancol.', 'Kami berjalan ke Ancol.', 'Kami berlibur ke Ancol.']
+    answer: 0
     meaning:
-      ar_eg: رينا بتعوم في البحر.
-      ar: رينا تسبح في الشاطئ.
-      en: Rina is swimming at the beach.
-    words: [berenang, pantai]
+      ar_eg: إحنا بنتفسح في أنكول.
+      ar: نتنزه في أنكول.
+      en: We're going out to Ancol.
+    explain:
+      ar_eg: jalan-jalan = يتفسّح، لكن berjalan = يمشي على رجليه.
+      ar: jalan-jalan = يتنزه، أما berjalan = يمشي على قدميه.
+      en: jalan-jalan = go out, sightsee; berjalan = walk on foot.
+    words: [jalan-jalan, berjalan, berlibur]
+  - id: e06
+    type: fill_blank
+    sentence: Saya ___ bahasa Indonesia.
+    meaning:
+      ar_eg: أنا بتعلم إندونيسي.
+      ar: أتعلم اللغة الإندونيسية.
+      en: I'm learning Indonesian.
+    options: [belajar, bekerja, berenang]
+    answers: [belajar]
+    words: [belajar]
   - id: e07
     type: speaking
-    text: Hari Minggu kami jalan-jalan ke Ancol.
+    text: Hari Minggu kami jalan-jalan ke pantai.
     meaning:
-      ar_eg: يوم الحد بنتفسح في أنكول.
-      ar: يوم الأحد نتنزه في أنكول.
-      en: On Sunday we go out to Ancol.
-    words: [jalan-jalan]
+      ar_eg: يوم الحد بنتفسح على البحر.
+      ar: يوم الأحد نتنزه على الشاطئ.
+      en: On Sunday we go out to the beach.
+    words: [jalan-jalan, pantai]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «إحنا بنتفسح في جاكرتا»؟
+      ar: كيف تقول «نتنزه في جاكرتا»؟
+      en: How do you say "We're going out in Jakarta"?
+    options: ['Kami jalan-jalan di Jakarta.', 'Kami berbicara di Jakarta.', 'Kami bekerja di Jakarta.']
+    answer: 0
+    words: [jalan-jalan, berbicara, bekerja]
+  - id: e09
+    type: listen
+    text: Saya bekerja di Jakarta, tapi berlibur di pantai.
+    options: ['Saya bekerja di Jakarta, tapi berlibur di pantai.', 'Saya berlibur di Jakarta, tapi bekerja di pantai.', 'Saya belajar di Jakarta, tapi berlibur di pantai.']
+    answer: 0
+    meaning:
+      ar_eg: أنا بشتغل في جاكرتا، بس بقضي الأجازة على البحر.
+      ar: أعمل في جاكرتا، لكن أقضي عطلتي على الشاطئ.
+      en: I work in Jakarta, but I holiday at the beach.
+    words: [bekerja, berlibur, belajar]
 dialogue:
   title: Hari Minggu di Ancol
   lines:

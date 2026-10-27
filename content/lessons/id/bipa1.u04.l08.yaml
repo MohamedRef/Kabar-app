@@ -58,13 +58,13 @@ exercises:
       ar_eg: يوم السبت اسمه إيه بالإندونيسي؟
       ar: ما اسم يوم السبت بالإندونيسية؟
       en: What is Saturday in Indonesian?
-    options: [Senin, Sabtu, Minggu]
+    options: [Ahad, Sabtu, Minggu]
     answer: 1
     explain:
-      ar_eg: Sabtu ← السبت. وMinggu هو الحد.
-      ar: Sabtu ← السبت، وMinggu هو الأحد.
-      en: Sabtu ← «السبت»; Minggu is Sunday.
-    words: [Sabtu]
+      ar_eg: Sabtu ← السبت. وMinggu وAhad الاتنين يعني الحد.
+      ar: Sabtu ← السبت، وMinggu وAhad كلاهما الأحد.
+      en: Sabtu ← «السبت»; Minggu and Ahad both mean Sunday.
+    words: [Sabtu, Minggu, Ahad]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -77,7 +77,7 @@ exercises:
       ar_eg: الترتيب بعد الاسم، و«الأول» = pertama.
       ar: العدد الترتيبي بعد الاسم، و«الأول» = pertama.
       en: The ordinal follows the noun, and "first" = pertama.
-    words: [hari, pertama]
+    words: [hari, pertama, ke-]
   - id: e03
     type: multiple_choice
     question_meaning:
@@ -90,7 +90,7 @@ exercises:
       ar_eg: kedua بعد الاسم = التاني. قبل الاسم = الاتنين (كلاهما). وdua anak = عيلين.
       ar: kedua بعد الاسم = الثاني، وقبله = كلاهما، وdua anak = طفلان.
       en: kedua after the noun = second; before it = both; dua anak = two children.
-    words: [kedua, anak]
+    words: [kedua, ke-, anak]
   - id: e04
     type: fill_blank
     sentence: Selamat ___ tahun, Raka!
@@ -139,6 +139,48 @@ exercises:
       ar: عيد ميلاد سعيد يا رينا!
       en: Happy birthday, Rina!
     words: [ulang tahun]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: Sabtu
+        ar_eg: السبت
+        ar: السبت
+        en: Saturday
+      - text: Ahad
+        ar_eg: الحد (من العربي)
+        ar: الأحد (من العربية)
+        en: Sunday (from Arabic)
+      - text: minggu
+        ar_eg: أسبوع
+        ar: أسبوع
+        en: week
+      - text: pertama
+        ar_eg: أول
+        ar: أول
+        en: first
+      - text: kedua
+        ar_eg: تاني
+        ar: ثانٍ
+        en: second
+      - text: ketiga
+        ar_eg: تالت
+        ar: ثالث
+        en: third
+    words: [Sabtu, Ahad, minggu, pertama, ke-]
+  - id: e10
+    type: fill_blank
+    sentence: Toko itu tutup hari Sabtu dan hari ___.
+    meaning:
+      ar_eg: المحل ده بيقفل يوم السبت ويوم الحد.
+      ar: ذلك المتجر يغلق يومي السبت والأحد.
+      en: That shop is closed on Saturday and Sunday.
+    options: [Ahad, pertama, kedua]
+    answers: [Ahad]
+    explain:
+      ar_eg: Ahad (من العربي «الأحد») = Minggu، والاتنين بيتقالوا.
+      ar: Ahad (من العربية «الأحد») = Minggu، وكلاهما مستعمل.
+      en: Ahad (from Arabic) = Minggu; both are used.
+    words: [Sabtu, Ahad, tutup]
 dialogue:
   lines:
     - speaker: Raka
