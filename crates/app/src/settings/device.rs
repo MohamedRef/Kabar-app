@@ -11,6 +11,10 @@ const PEN_HOVER_KEY: &str = "pref.pen_hover_peek";
 const MOUSE_HOVER_KEY: &str = "pref.mouse_hover_peek";
 const NAV_STYLE_KEY: &str = "pref.nav_style";
 const REMIND_HERE_KEY: &str = "pref.remind_here";
+const READ_SIZE_KEY: &str = "pref.read_size";
+const READ_SPACING_KEY: &str = "pref.read_spacing";
+const READ_WIDTH_KEY: &str = "pref.read_width";
+const READ_FOCUS_KEY: &str = "pref.read_focus";
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub enum TextSize {
@@ -63,6 +67,65 @@ impl NavStyle {
     }
 }
 
+/// A device preference with a few named values: the stored string doubles as
+/// the `data-*` value the CSS keys on, and unknown strings fall back to the
+/// default.
+macro_rules! choice {
+    ($(#[$doc:meta])* $name:ident { $($variant:ident = $s:literal),+ $(,)? } default $def:ident) => {
+        $(#[$doc])*
+        #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+        pub enum $name {
+            $($variant,)+
+        }
+
+        impl Default for $name {
+            fn default() -> Self {
+                Self::$def
+            }
+        }
+
+        impl $name {
+            pub const ALL: &[Self] = &[$(Self::$variant),+];
+
+            pub fn as_str(self) -> &'static str {
+                match self {
+                    $(Self::$variant => $s,)+
+                }
+            }
+
+            fn parse(s: &str) -> Self {
+                Self::ALL.iter().copied().find(|t| t.as_str() == s).unwrap_or_default()
+            }
+        }
+    };
+}
+
+choice! {
+    /// The Reader's text size, on top of the app's text size.
+    ReadSize { Smaller = "s", Normal = "m", Larger = "l", Largest = "xl" } default Normal
+}
+
+choice! {
+    /// The Reader's line spacing.
+    ReadSpacing { Snug = "snug", Normal = "normal", Airy = "airy" } default Normal
+}
+
+choice! {
+    /// The Reader's line width on tablet and Mac: one narrow column with the
+    /// meanings under each line, the book-width two columns, or the window.
+    ReadWidth { Narrow = "narrow", Book = "book", Wide = "wide" } default Book
+}
+
+/// How the Reader lays its text out on this device (issue #180).
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct Reading {
+    pub size: ReadSize,
+    pub spacing: ReadSpacing,
+    pub width: ReadWidth,
+    /// Tablet and Mac: the sidebar and the Reader's bar step aside.
+    pub focus: bool,
+}
+
 #[derive(Clone, Copy)]
 pub struct DevicePrefs {
     pub text_size: Signal<TextSize>,
@@ -75,6 +138,7 @@ pub struct DevicePrefs {
     /// then only the phone rings (see [`Self::reminds_here`]), so the phone
     /// and the tablet never both go off.
     pub remind_here: Signal<Option<bool>>,
+    pub reading: Signal<Reading>,
 }
 
 impl DevicePrefs {
@@ -92,6 +156,12 @@ impl DevicePrefs {
                 get(NAV_STYLE_KEY).map_or_else(NavStyle::default, |v| NavStyle::parse(&v)),
             ),
             remind_here: Signal::new(get(REMIND_HERE_KEY).map(|v| v == "on")),
+            reading: Signal::new(Reading {
+                size: get(READ_SIZE_KEY).map_or_else(ReadSize::default, |v| ReadSize::parse(&v)),
+                spacing: get(READ_SPACING_KEY).map_or_else(ReadSpacing::default, |v| ReadSpacing::parse(&v)),
+                width: get(READ_WIDTH_KEY).map_or_else(ReadWidth::default, |v| ReadWidth::parse(&v)),
+                focus: get(READ_FOCUS_KEY).as_deref() == Some("on"),
+            }),
         }
     }
 
@@ -120,6 +190,23 @@ impl DevicePrefs {
     pub fn set_mouse_hover(mut self, db: &Db, on: bool) {
         save(db, MOUSE_HOVER_KEY, if on { "on" } else { "off" });
         self.mouse_hover.set(on);
+    }
+
+    pub fn set_reading(mut self, db: &Db, r: Reading) {
+        let old = *self.reading.peek();
+        if r.size != old.size {
+            save(db, READ_SIZE_KEY, r.size.as_str());
+        }
+        if r.spacing != old.spacing {
+            save(db, READ_SPACING_KEY, r.spacing.as_str());
+        }
+        if r.width != old.width {
+            save(db, READ_WIDTH_KEY, r.width.as_str());
+        }
+        if r.focus != old.focus {
+            save(db, READ_FOCUS_KEY, if r.focus { "on" } else { "off" });
+        }
+        self.reading.set(r);
     }
 
     pub fn set_nav_style(mut self, db: &Db, style: NavStyle) {
@@ -151,6 +238,14 @@ mod tests {
         }
         for n in NavStyle::ALL {
             assert_eq!(NavStyle::parse(n.as_str()), n);
+        }
+        assert_eq!(ReadWidth::parse("huge"), ReadWidth::Book);
+        assert_eq!(ReadSize::parse(""), ReadSize::Normal);
+        for &w in ReadWidth::ALL {
+            assert_eq!(ReadWidth::parse(w.as_str()), w);
+        }
+        for &s in ReadSpacing::ALL {
+            assert_eq!(ReadSpacing::parse(s.as_str()), s);
         }
     }
 

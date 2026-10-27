@@ -19,6 +19,7 @@ pub mod explain;
 pub mod glossary;
 pub mod grammar;
 pub mod morph;
+mod reading;
 pub mod translate;
 mod web;
 
@@ -384,33 +385,22 @@ pub fn Reader() -> Element {
     });
 
     let open = st.open.read().clone();
-    let voice = *st.voice.read();
+    let prefs = use_context::<crate::settings::device::DevicePrefs>();
+    let read = reading::attrs(*prefs.reading.read(), open.is_some(), *ui.width.read());
+    let sheet = use_signal(|| false);
 
     rsx! {
-        div { class: "reader",
-            div { class: "card reader-bar",
-                div { class: "row",
-                    h2 { style: "margin: 0; flex: 1", "{ui.t(Msg::NavReader)}" }
-                    if open.is_some() {
-                        button { onclick: move |_| st.close(), "{ui.t(Msg::ReaderNew)}" }
-                    }
-                }
-                div { class: "row",
-                    span { class: "muted", "{ui.t(Msg::Voice)}" }
-                    div { class: "row", role: "group", aria_label: "{ui.t(Msg::Voice)}",
-                        for v in UiLanguage::ALL {
-                            button {
-                                key: "{v.tag()}",
-                                lang: v.tag(),
-                                aria_pressed: if voice == v { "true" } else { "false" },
-                                onclick: move |_| {
-                                    let mut voice = st.voice;
-                                    voice.set(v);
-                                },
-                                "{v.native_name()}"
-                            }
-                        }
-                    }
+        div {
+            class: if read.focus { "reader focus" } else { "reader" },
+            "data-read-size": read.size,
+            "data-read-spacing": read.spacing,
+            "data-read-width": read.width,
+            if open.is_some() {
+                reading::OpenBar { sheet }
+            } else {
+                div { class: "card reader-bar",
+                    h2 { style: "margin: 0", "{ui.t(Msg::NavReader)}" }
+                    reading::VoicePicker {}
                 }
             }
 
