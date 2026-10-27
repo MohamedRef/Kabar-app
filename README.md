@@ -60,9 +60,9 @@ every morning. CI warns when the table below is behind the content.
 | BIPA 3 | Lombok | B1 | 10 | 70 | 660 | 289 | 1,391 / 1,600 | ~8 h | 39 |
 | BIPA 4 | Sulawesi | B2 | 10 | 80 | 709 | 230 | 1,621 / 2,100 | ~8 h | 37 |
 | BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,235 | 602 | 2,222 / 2,700 | ~13 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,260 | 607 | 2,829 / 3,300 | ~13 h | 38 |
+| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 607 | 2,829 / 3,300 | ~13 h | 38 |
 | BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 705 | 3,534 / 4,000 | ~15 h | 38 |
-| **Total** |  | — | 70 | 727 | 7,007 | 3,536 | 3,534 / 4,000 | ~78 h | 260 |
+| **Total** |  | — | 70 | 727 | 7,016 | 3,536 | 3,534 / 4,000 | ~78 h | 260 |
 
 **Javanese (J1–J6)**
 
@@ -70,11 +70,11 @@ every morning. CI warns when the table below is behind the content.
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | J1 | Surabaya | — | 7 | 50 | 452 | 258 | 258 / 250 | ~6 h | 34 |
 | J2 | Madiun | — | 6 | 48 | 461 | 245 | 503 / 500 | ~5 h | 35 |
-| J3 | Solo (Surakarta) | — | 6 | 42 | 364 | 98 | 601 / 750 | ~4 h | 35 |
-| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 690 / 1,000 | ~5 h | 38 |
-| J5 | Semarang | — | 6 | 66 | 621 | 255 | 945 / 1,250 | ~7 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 542 | 95 | 1,039 / 1,500 | ~6 h | 37 |
-| **Total** |  | — | 37 | 314 | 2,875 | 1,041 | 1,039 / 1,500 | ~34 h | 218 |
+| J3 | Solo (Surakarta) | — | 6 | 61 | 554 | 250 | 753 / 750 | ~6 h | 35 |
+| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 842 / 1,000 | ~5 h | 38 |
+| J5 | Semarang | — | 6 | 66 | 621 | 255 | 1,097 / 1,250 | ~7 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 542 | 95 | 1,191 / 1,500 | ~6 h | 37 |
+| **Total** |  | — | 37 | 333 | 3,065 | 1,193 | 1,191 / 1,500 | ~36 h | 218 |
 
 **Reference content and stories**
 
