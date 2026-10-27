@@ -97,6 +97,28 @@ static SEED: &[Norm] = &[
     n("yg", "yang", Id),
 ];
 
+/// Street forms whose formal twin is too loose to grade by: "terus" also
+/// means "keep on", not only "lalu".
+const NOT_FOR_GRADING: &[&str] = &["terus"];
+
+/// The formal twin of a lowercase Indonesian word for grading ("udah" →
+/// "sudah", "tp" → "tapi" → "tetapi"), from the street list
+/// ([`super::street`]) and the one-word Indonesian chat forms in the seed
+/// list. One word maps to one word; `None` for a word that is already formal.
+pub fn formal_twin(word: &str) -> Option<&'static str> {
+    let street = |w: &str| {
+        super::street::formal(Lang::Indonesian, w)
+            .filter(|f| !f.contains(' ') && !NOT_FOR_GRADING.contains(&w))
+    };
+    if let Some(twin) = street(word) {
+        return Some(twin);
+    }
+    // "g" alone is too ambiguous (see `normalize`).
+    let chat =
+        lookup(word).filter(|n| n.lang == Lang::Indonesian && n.form != "g" && !n.full.contains(' '))?;
+    Some(street(chat.full).unwrap_or(chat.full))
+}
+
 /// Looks up a lowercase form in the seed list.
 pub fn lookup(form: &str) -> Option<&'static Norm> {
     SEED.binary_search_by(|e| e.form.cmp(form)).ok().map(|i| &SEED[i])
@@ -123,6 +145,22 @@ pub fn normalize(form: &str, prev: Option<&str>, next: Option<&str>) -> Option<&
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn formal_twins_for_grading() {
+        assert_eq!(formal_twin("nggak"), Some("tidak"));
+        assert_eq!(formal_twin("ngga"), Some("tidak"));
+        assert_eq!(formal_twin("udh"), Some("sudah"));
+        assert_eq!(formal_twin("tp"), Some("tetapi"), "chat form → street form → formal");
+        assert_eq!(formal_twin("makasih"), None, "two words: not a one-word twin");
+        assert_eq!(formal_twin("terus"), None, "too loose to grade by");
+        assert_eq!(formal_twin("gpp"), None);
+        assert_eq!(formal_twin("ra"), None, "Javanese");
+        assert_eq!(formal_twin("makan"), None);
+        for w in ["tidak", "sudah", "tetapi", "saja", "bagaimana"] {
+            assert_eq!(formal_twin(w), None, "{w} is already formal");
+        }
+    }
 
     #[test]
     fn seed_is_sorted_and_unique() {
