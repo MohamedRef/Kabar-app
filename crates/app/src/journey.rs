@@ -711,11 +711,13 @@ fn MapView(j: Journey) -> Element {
                             }
                         }
                     }
-                    div { class: "jm-controls",
-                        button { aria_label: "{ui.t(Msg::JourneyZoomIn)}", title: "{ui.t(Msg::JourneyZoomIn)}", onclick: move |_| zoom_in("zoom(1.5)"), "+" }
-                        button { aria_label: "{ui.t(Msg::JourneyZoomOut)}", title: "{ui.t(Msg::JourneyZoomOut)}", onclick: move |_| zoom_out("zoom(1 / 1.5)"), "−" }
-                        button { aria_label: "{ui.t(Msg::JourneyZoomReset)}", title: "{ui.t(Msg::JourneyZoomReset)}", onclick: move |_| zoom_reset("reset()"), {icon_reset()} }
-                    }
+                }
+                // Under the map, never over it, so no zoom button sits on a pin
+                // or a landmark in either reading direction.
+                div { class: "jm-controls", role: "group",
+                    button { aria_label: "{ui.t(Msg::JourneyZoomIn)}", title: "{ui.t(Msg::JourneyZoomIn)}", onclick: move |_| zoom_in("zoom(1.5)"), "+" }
+                    button { aria_label: "{ui.t(Msg::JourneyZoomOut)}", title: "{ui.t(Msg::JourneyZoomOut)}", onclick: move |_| zoom_out("zoom(1 / 1.5)"), "−" }
+                    button { aria_label: "{ui.t(Msg::JourneyZoomReset)}", title: "{ui.t(Msg::JourneyZoomReset)}", onclick: move |_| zoom_reset("reset()"), {icon_reset()} }
                 }
                 p { class: "muted jm-hint", "{ui.t(Msg::JourneyMapHint)}" }
                 {continue_bar(&ui, &j, &progress)}
