@@ -13,6 +13,8 @@ then content rules) on every CI run.
 | `stories/sinetron/sinetron.eNN.yaml` | `kabar.story/v1` | Sinetron episodes; episode N unlocks after the unit in `unlock_after`. |
 | `pron/id.tsv`, `pron/overrides.tsv` | TSV (`kabar_core::pron`) | Arabic-script pronunciation data. `id.tsv` is cut from the g2p_id lexicon by `kabar-tools pron import <lexicon_id.tsv>` (don't hand-edit); `overrides.tsv` holds hand corrections as marked spellings (é open e, ê weak e, ò open o, â plain a, ' glottal stop). Check a word with `kabar-tools pron show [--lang jv] <words>`. Javanese is rules plus overrides and stays unverified. |
 | `radio/<lang>/radio.<unit-id>.yaml` | `kabar.radio/v1` | Prebuilt Kabar Radio scripts for the first units: two hosts, intro → dialogue → word spotlight → recap → outro. |
+| `cast.yaml` | `kabar.cast/v1` | The cast registry: every recurring character, their units and programs. Rules and name decisions in `docs/CAST.md`. |
+| `pending.yaml` | `kabar.pending/v1` | Units still waiting for a Radio episode, a Sinetron episode or a chat partner. Only shrinks. |
 
 ## Lesson rules (checked in `crates/content/src/lessons.rs`)
 
@@ -78,7 +80,9 @@ lines may add `correction: {wrong, right, why}`. Voices are the Azure neural
 voices in `kabar_content::lessons::VOICES`. The checks require the cast, hosts
 and speakers to match, ids to follow the file names, and radio episodes to be
 long enough for their minutes. See `crates/content/src/lessons.rs` for the
-exact fields.
+exact fields. Every speaker name follows the cast registry (`cast.yaml`,
+`docs/CAST.md`): one name means one person, and recurring characters, hosts
+and personas must be listed with their units.
 
 ## Review
 

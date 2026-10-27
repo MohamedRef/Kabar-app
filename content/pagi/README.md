@@ -36,9 +36,9 @@ engine passes, the app picks the best match from this bank
 ## Content
 
 Original stories written for Kabar with Claude Code at build time. Recurring
-friendly cast and settings so mornings feel familiar: Andi and Bu Siti's
-warung, Dewi's family at home and at the beach, Omar (an Egyptian student in
-Yogyakarta) at class and the mosque, Rina at the office, Pak Joko at the
+friendly cast and settings so mornings feel familiar (all in `content/cast.yaml`): Adit and Bu Murni's
+warung, Tasya's family at home and at the beach, Omar (an Egyptian student in
+Yogyakarta) at class and the mosque, Rina at the office, Pak Udin at the
 market, the angkot, ojek rides, rainy afternoons. A few stories link Egypt and
 Indonesia (a phone call to Cairo, Ramadan in Yogyakarta, Arabic loanwords).
 The words come from the most frequent Indonesian words (`content/freq/id.tsv`,

@@ -1206,6 +1206,10 @@ fn SummaryView(
             }
             if let Some(s) = &lesson.souvenir {
                 section { class: "card lp-souvenir reveal d3",
+                    crate::souvenir_art::SouvenirArt {
+                        unit_id: crate::souvenir_art::unit_of(&s.id).to_string(),
+                        size: crate::souvenir_art::Size::Card,
+                    }
                     p { class: "muted lp-small", "{lt(lang, L::Souvenir)}" }
                     h3 { bdi { lang: target, dir: "ltr", "{s.title}" } }
                     p { Rich { text: pick(&s.note, lang).to_string(), target } }

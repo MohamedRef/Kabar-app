@@ -14,6 +14,7 @@ mod icons;
 mod journey;
 mod lesson;
 mod listen;
+mod map_art;
 mod packs;
 mod penlab;
 mod platform;
@@ -22,6 +23,7 @@ mod pron;
 mod reader;
 mod review;
 mod screens;
+mod souvenir_art;
 mod stats;
 mod store;
 mod studio;
@@ -261,6 +263,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let open_screen = use_hook(|| match std::env::var("KABAR_OPEN_SCREEN").as_deref() {
         Ok("stats") => Some(Screen::Stats),
         Ok("level_check") => Some(Screen::LevelCheck),
+        Ok("journey") => Some(Screen::Journey),
         _ => None,
     });
     let ui = use_context_provider(|| Ui {

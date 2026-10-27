@@ -395,6 +395,16 @@ natively at its final size.
 
 ---
 
+## Souvenir cards per unit: drawn in code
+
+Mohamed chose (2026-10-27) one card per unit, and that Kabar draws in code whatever suits flat geometry. Every unit's card is now drawn by `scripts/assets/draw_souvenirs.py`, one `@scene("<unit id>")` per unit, in the frame, palette and paper texture of the approved set. The six approved Codex cards (bipa4.u03, bipa6.u03, bipa6.u09, j3.u03, j3.u05, j6.u01) are kept as they are. Prompts 4d and 4e were never sent and are retired.
+
+- Subjects come from `assets/souvenirs.md`, which is generated from the curriculum, and from each unit's souvenir note.
+- To change a card, edit its scene and run `python3 scripts/assets/draw_souvenirs.py <unit>`, then `python3 scripts/assets/export_souvenirs.py`.
+- A new unit fails `every_unit_has_its_own_card` until its scene is drawn.
+
+---
+
 ## Prompt 5 — Journey Map decorations
 
 ```text
@@ -463,6 +473,13 @@ are ORIGINAL fictional adult characters: AI conversation partners and the cast o
 short serialized story. Draw all of them in this one session with the same hand so
 they look like one cast.
 
+HOW TO GENERATE (strict):
+- Use your image generation tool. Do NOT draw the portraits with code (no SVG,
+  Pillow, Cairo or canvas drawing).
+- Generate EACH image as its own separate request, directly at 1024x1024. Never
+  generate a sheet, grid or collage and split it. Never upscale a smaller image; only
+  crop, never enlarge. No post-processing recolour, hue shift or filter.
+
 STYLE (every portrait):
 - Calm, warm, grown-up illustration. Flat vector-like shapes, soft layered depth,
   gentle paper grain, warm soft light. Not photorealistic, not anime, not cartoonish,
@@ -512,7 +529,8 @@ CSS, so keep them square). Make assets/src/personas/cast-sheet.png showing all s
 neutral portraits side by side plus each one's expressions, so I can check
 consistency.
 
-Do not commit. List the files when done.
+Do not commit. List the files when done, and confirm each image was generated
+natively at 1024x1024 with the image tool.
 ```
 
 ---
