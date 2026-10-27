@@ -1549,27 +1549,79 @@ fn Choices(
     answer: usize,
     #[props(default)] chips: bool,
 ) -> Element {
+    let ui = use_context::<Ui>();
+    let lang = ui.settings.read().ui_language;
     let chosen = draft.read().choice;
     rsx! {
         div { class: if chips { "lp-choices chips" } else { "lp-choices" }, role: "group",
             for (i, label) in labels.iter().enumerate() {
-                button {
-                    key: "{i}",
-                    class: match (locked, i == answer, chosen == Some(i)) {
-                        (true, true, _) => "lp-choice right",
-                        (true, false, true) => "lp-choice wrong",
-                        _ => "lp-choice",
-                    },
-                    aria_pressed: if chosen == Some(i) { "true" } else { "false" },
-                    disabled: locked,
-                    onclick: move |_| draft.write().choice = Some(i),
-                    if i < 9 {
-                        span { class: "lp-key", aria_hidden: "true", "{i + 1}" }
+                {
+                    let mark = choice_mark(locked, i == answer, chosen == Some(i));
+                    let aria = mark.map(|m| format!("{label} — {}", lt(lang, m.says())));
+                    rsx! {
+                        button {
+                            key: "{i}",
+                            class: match mark {
+                                Some(ChoiceMark::Right | ChoiceMark::YoursRight) => "lp-choice right",
+                                Some(ChoiceMark::YoursWrong) => "lp-choice wrong",
+                                None => "lp-choice",
+                            },
+                            aria_pressed: if chosen == Some(i) { "true" } else { "false" },
+                            aria_label: aria,
+                            disabled: locked,
+                            onclick: move |_| draft.write().choice = Some(i),
+                            if let Some(m) = mark {
+                                span { class: "lp-key lp-mark", aria_hidden: "true", "{m.glyph()}" }
+                            } else if i < 9 {
+                                span { class: "lp-key", aria_hidden: "true", "{i + 1}" }
+                            }
+                            bdi { lang: tag, dir: "auto", "{label}" }
+                        }
                     }
-                    bdi { lang: tag, dir: "auto", "{label}" }
                 }
             }
         }
+    }
+}
+
+/// How a graded choice is marked, so right and wrong never rely on colour
+/// alone (WCAG 1.4.1): a glyph in the key-badge slot plus an aria label.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum ChoiceMark {
+    /// The right answer, which the learner didn't pick.
+    Right,
+    /// The learner's pick, and it's right.
+    YoursRight,
+    /// The learner's pick, and it's wrong.
+    YoursWrong,
+}
+
+impl ChoiceMark {
+    fn glyph(self) -> &'static str {
+        match self {
+            ChoiceMark::Right | ChoiceMark::YoursRight => "✓",
+            ChoiceMark::YoursWrong => "✗",
+        }
+    }
+
+    fn says(self) -> L {
+        match self {
+            ChoiceMark::Right => L::ChoiceCorrect,
+            ChoiceMark::YoursRight => L::ChoiceYoursCorrect,
+            ChoiceMark::YoursWrong => L::ChoiceYours,
+        }
+    }
+}
+
+/// The mark for one option. Nothing is marked until the answer is checked;
+/// other options stay unmarked.
+fn choice_mark(locked: bool, is_answer: bool, is_chosen: bool) -> Option<ChoiceMark> {
+    match (locked, is_answer, is_chosen) {
+        (false, _, _) => None,
+        (true, true, true) => Some(ChoiceMark::YoursRight),
+        (true, true, false) => Some(ChoiceMark::Right),
+        (true, false, true) => Some(ChoiceMark::YoursWrong),
+        (true, false, false) => None,
     }
 }
 
@@ -1642,18 +1694,13 @@ fn MatchPairs(
     locked: bool,
     on_matched: EventHandler<Vec<String>>,
 ) -> Element {
+    let ui = use_context::<Ui>();
+    let lang = ui.settings.read().ui_language;
     let d = draft.read().clone();
     let words: Vec<String> = pairs.iter().map(|p| p.0.clone()).collect();
-    let state = |sel: Option<usize>, i: usize, wrong: Option<usize>| {
-        if d.matched.contains(&i) {
-            "lp-pair done"
-        } else if wrong == Some(i) {
-            "lp-pair wrong"
-        } else if sel == Some(i) {
-            "lp-pair selected"
-        } else {
-            "lp-pair"
-        }
+    let state = |sel: Option<usize>, i: usize, wrong: Option<usize>| pair_class(&d.matched, sel, i, wrong);
+    let done_label = |i: usize, text: &str| {
+        d.matched.contains(&i).then(|| format!("{text} — {}", lt(lang, L::PairMatched)))
     };
     rsx! {
         div { class: "lp-pairs",
@@ -1664,6 +1711,7 @@ fn MatchPairs(
                         class: state(d.left, i, d.wrong.map(|w| w.0)),
                         disabled: locked || d.matched.contains(&i),
                         aria_pressed: if d.left == Some(i) { "true" } else { "false" },
+                        aria_label: done_label(i, word),
                         onclick: {
                             let words = words.clone();
                             move |_| {
@@ -1671,6 +1719,9 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
+                        if d.matched.contains(&i) {
+                            span { class: "lp-pair-tick", aria_hidden: "true", "✓" }
+                        }
                         bdi { lang: target, dir: "ltr", class: "latin", "{word}" }
                     }
                 }
@@ -1682,6 +1733,7 @@ fn MatchPairs(
                         class: state(d.right, i, d.wrong.map(|w| w.1)),
                         disabled: locked || d.matched.contains(&i),
                         aria_pressed: if d.right == Some(i) { "true" } else { "false" },
+                        aria_label: done_label(i, &pairs[i].1),
                         onclick: {
                             let words = words.clone();
                             move |_| {
@@ -1689,11 +1741,29 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
+                        if d.matched.contains(&i) {
+                            span { class: "lp-pair-tick", aria_hidden: "true", "✓" }
+                        }
                         Rich { text: pairs[i].1.clone(), target }
                     }
                 }
             }
         }
+    }
+}
+
+/// The class of one pair button. A matched couple reads as done, not
+/// disabled: both halves share one of four tints (by the order they were
+/// matched), so the learner can see which word went with which meaning.
+fn pair_class(matched: &[usize], sel: Option<usize>, i: usize, wrong: Option<usize>) -> String {
+    if let Some(k) = matched.iter().position(|&m| m == i) {
+        format!("lp-pair done couple-{}", k % 4)
+    } else if wrong == Some(i) {
+        "lp-pair wrong".into()
+    } else if sel == Some(i) {
+        "lp-pair selected".into()
+    } else {
+        "lp-pair".into()
     }
 }
 
@@ -1733,6 +1803,35 @@ mod tests {
     const FIXTURE: &str = include_str!("../../../fixtures/lessons/bipa1.u01.l01.yaml");
 
     use kabar_core::lesson::level_test::{SelfGrade, TestRunner, TestStep, parse_test, validate_test};
+
+    /// Graded choices carry a glyph and a spoken label, not just a colour (#149).
+    #[test]
+    fn graded_choices_are_marked_beyond_colour() {
+        assert_eq!(choice_mark(false, true, true), None);
+        assert_eq!(choice_mark(true, false, false), None);
+        assert_eq!(choice_mark(true, true, false), Some(ChoiceMark::Right));
+        assert_eq!(choice_mark(true, true, true), Some(ChoiceMark::YoursRight));
+        assert_eq!(choice_mark(true, false, true), Some(ChoiceMark::YoursWrong));
+        assert_eq!(ChoiceMark::Right.glyph(), "✓");
+        assert_eq!(ChoiceMark::YoursWrong.glyph(), "✗");
+        for lang in [UiLanguage::ArEg, UiLanguage::Ar, UiLanguage::En] {
+            for m in [ChoiceMark::Right, ChoiceMark::YoursRight, ChoiceMark::YoursWrong] {
+                assert!(!lt(lang, m.says()).is_empty());
+            }
+        }
+    }
+
+    /// Both halves of a matched couple share a tint; unmatched ones keep their state.
+    #[test]
+    fn matched_pairs_share_a_couple_tint() {
+        let matched = [2, 0, 4, 1, 3];
+        assert_eq!(pair_class(&matched, None, 2, None), "lp-pair done couple-0");
+        assert_eq!(pair_class(&matched, None, 0, None), "lp-pair done couple-1");
+        assert_eq!(pair_class(&matched, None, 3, None), "lp-pair done couple-0");
+        assert_eq!(pair_class(&[], Some(1), 1, None), "lp-pair selected");
+        assert_eq!(pair_class(&[], Some(1), 1, Some(1)), "lp-pair wrong");
+        assert_eq!(pair_class(&[], None, 1, None), "lp-pair");
+    }
 
     /// The reference answer for a closed exercise.
     fn right_answer(ex: &Exercise) -> Answer {
