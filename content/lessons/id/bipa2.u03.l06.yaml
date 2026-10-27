@@ -1,188 +1,238 @@
 schema: kabar.lesson/v1
 id: bipa2.u03.l06
 language: id
-title: Ulangan Unit 3
+title: Tanda dan aturan
 can_do:
-  ar_eg: تعمل إعلان قصير بنفسك.
-  ar: أن تُلقي إعلانًا قصيرًا.
-  en: Make a short announcement.
+  ar_eg: 'تقرا اليافطات والتحذيرات: القواعد والطابور والمجاني وحزام الأمان والحرامية والطوارئ.'
+  ar: 'أن تقرأ اللافتات والتحذيرات: القواعد والطابور والمجاني وحزام الأمان واللصوص والطوارئ.'
+  en: 'Read signs and warnings: rules, queues, free things, seatbelts, thieves and emergencies.'
+slides:
+  - title: Tanda
+    body:
+      ar_eg: |
+        tanda = علامة أو يافطة: tanda dilarang merokok.
+        aturan = قاعدة أو نظام. peringatan = تحذير (من ingat: «فكّر الناس»!).
+        antrean = طابور (من antre). gratis = ببلاش.
+        sabuk = حزام: sabuk pengaman = حزام الأمان. darurat = طوارئ: pintu darurat.
+        pencuri = حرامي (curi = يسرق): «Awas pencuri!»
+      ar: |
+        tanda = علامة أو لافتة: tanda dilarang merokok.
+        aturan = قاعدة، نظام. peringatan = تحذير (من ingat: «التذكير»!).
+        antrean = طابور (من antre). gratis = مجّانًا.
+        sabuk = حزام: sabuk pengaman = حزام الأمان. darurat = طوارئ: pintu darurat.
+        pencuri = لصّ (curi = يسرق): «Awas pencuri!»
+      en: |
+        tanda = sign, mark: tanda dilarang merokok.
+        aturan = rule. peringatan = warning (from ingat: a "reminder"!).
+        antrean = queue (from antre). gratis = free of charge.
+        sabuk = belt: sabuk pengaman = seatbelt. darurat = emergency: pintu darurat.
+        pencuri = thief (curi = steal): "Awas pencuri!"
+    examples:
+      - text: 'Ada tanda: Dilarang merokok.'
+        ar_eg: 'فيه يافطة: ممنوع التدخين.'
+        ar: 'هناك لافتة: ممنوع التدخين.'
+        en: 'There''s a sign: No smoking.'
+      - text: Pakai sabuk pengaman, ya!
+        ar_eg: اربط حزام الأمان!
+        ar: اربط حزام الأمان!
+        en: Wear your seatbelt!
+      - text: Awas pencuri! Hati-hati dengan tas Anda.
+        ar_eg: خلي بالك من الحرامية! حافظ على شنطتك.
+        ar: احذر اللصوص! انتبه لحقيبتك.
+        en: Beware of thieves! Watch your bag.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: beberapa
-        ar_eg: كام، بعض
-        ar: بضعة
-        en: several
-      - text: seluruh
-        ar_eg: كل (الحاجة كلها)
-        ar: كامل
-        en: whole
-      - text: penumpang
-        ar_eg: راكب
-        ar: راكب
-        en: passenger
-      - text: jadwal
-        ar_eg: جدول مواعيد
-        ar: جدول مواعيد
-        en: timetable
-      - text: segera
-        ar_eg: فورًا
-        ar: فورًا
-        en: immediately
-    words: [beberapa, seluruh, penumpang, jadwal, segera]
+      - text: tanda
+        ar_eg: يافطة، علامة
+        ar: لافتة، علامة
+        en: sign
+      - text: aturan
+        ar_eg: قاعدة
+        ar: قاعدة
+        en: rule
+      - text: peringatan
+        ar_eg: تحذير
+        ar: تحذير
+        en: warning
+      - text: antrean
+        ar_eg: طابور
+        ar: طابور
+        en: queue
+    words: [tanda, aturan, peringatan, antrean]
   - id: e02
     type: match_pairs
     pairs:
-      - text: Dilarang parkir
-        ar_eg: ممنوع الركن
-        ar: يُمنع الوقوف
-        en: No parking
-      - text: Harap antre
-        ar_eg: برجاء الوقوف في الطابور
-        ar: يُرجى الوقوف في الصف
-        en: Please queue
-      - text: Awas
-        ar_eg: احترس
-        ar: احذر
-        en: Beware
-      - text: tepat waktu
-        ar_eg: في المعاد
-        ar: في الموعد
-        en: on time
-    words: [dilarang, harap, awas, tepat waktu]
+      - text: gratis
+        ar_eg: ببلاش
+        ar: مجّاني
+        en: free
+      - text: sabuk
+        ar_eg: حزام
+        ar: حزام
+        en: belt
+      - text: pencuri
+        ar_eg: حرامي
+        ar: لصّ
+        en: thief
+      - text: darurat
+        ar_eg: طوارئ
+        ar: طوارئ
+        en: emergency
+    words: [gratis, sabuk, pencuri, darurat]
   - id: e03
     type: listen
-    text: Para penumpang yang terhormat, mohon perhatian.
-    options: ['Semua penumpang, harap tenang.', 'Para penumpang yang terhormat, mohon maaf.', 'Para penumpang yang terhormat, mohon perhatian.']
-    answer: 2
-    words: [para, penumpang, mohon, perhatian]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ جملة صحيحة؟
-      en: Which sentence is correct?
-    options: [Semua penumpang sudah naik., Semua penumpang-penumpang sudah naik., Penumpang semua-semua sudah naik.]
+    text: Awas pencuri! Hati-hati dengan tas Anda.
+    question:
+      ar_eg: التحذير من إيه؟
+      ar: مِمَّ التحذير؟
+      en: What's the warning about?
+    options: [الحرامية, الأرض الزلقة, الكلب]
     answer: 0
-    explain:
-      ar_eg: semua كفاية تقول إنهم كتير، متكررش الاسم.
-      ar: semua تغني عن تكرار الاسم.
-      en: semua already shows plural; don't reduplicate.
-    words: [semua, penumpang]
+    meaning:
+      ar_eg: خلي بالك من الحرامية! حافظ على شنطتك.
+      ar: احذر اللصوص! انتبه لحقيبتك.
+      en: Beware of thieves! Watch your bag.
+    words: [pencuri]
+  - id: e04
+    type: fill_blank
+    sentence: Air putih di sini ___, tidak pakai uang.
+    meaning:
+      ar_eg: المية هنا ___، من غير فلوس.
+      ar: الماء هنا ___، بلا مال.
+      en: The water here is ___, no money needed.
+    options: [gratis, antrean, pencuri]
+    answers: [gratis]
+    words: [gratis, antrean, pencuri]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: لافتة عند باب المعبد بتقول إن الدخول ممنوع. مكتوب إيه؟
-      ar: لافتة عند باب المعبد تمنع الدخول. ماذا كُتب عليها؟
-      en: A sign at the temple door forbids entry. What does it say?
-    options: [Larang masuk., Dilarang masuk., Harap masuk.]
-    answer: 1
-    words: [dilarang, masuk]
+      ar_eg: في العربية، قبل ما تتحرك لازم تربط…؟
+      ar: في السيارة، قبل الانطلاق يجب أن تربط…؟
+      en: In a car, before you set off you fasten your…?
+    options: [sabuk pengaman, pintu darurat, tanda]
+    answer: 0
+    explain:
+      ar_eg: sabuk pengaman = حزام الأمان.
+      ar: sabuk pengaman = حزام الأمان.
+      en: sabuk pengaman = seatbelt.
+    words: [sabuk, darurat, tanda]
   - id: e06
     type: fill_blank
-    sentence: ___ hari ada tiga penerbangan ke Jakarta.
+    sentence: 'Di bandara ada banyak ___: dilarang merokok, harap antre.'
     meaning:
-      ar_eg: كل يوم فيه تلات رحلات لجاكرتا.
-      ar: كل يوم توجد ثلاث رحلات إلى جاكرتا.
-      en: Every day there are three flights to Jakarta.
-    options: [Semua, Para, Setiap]
-    answers: [Setiap]
-    words: [setiap, penerbangan]
+      ar_eg: 'في المطار فيه ___ كتير: ممنوع التدخين، اقفوا في الطابور.'
+      ar: 'في المطار ___ كثيرة: ممنوع التدخين، يُرجى الوقوف في الطابور.'
+      en: 'The airport has lots of ___: no smoking, please queue.'
+    options: [aturan, peringatan, darurat]
+    answers: [aturan]
+    words: [aturan, peringatan, darurat]
   - id: e07
-    type: fill_blank
-    sentence: Kereta ini ___ terlambat. Biasanya tepat waktu.
-    meaning:
-      ar_eg: القطر ده نادرًا لما بيتأخر. عادةً بيوصل في ميعاده.
-      ar: نادرًا ما يتأخر هذا القطار، فهو عادةً في موعده.
-      en: This train is rarely late. It's usually on time.
-    options: [jarang, sering, selalu]
-    answers: [jarang]
-    words: [jarang, terlambat]
+    type: build_sentence
+    source:
+      ar_eg: الطابور طويل أوي.
+      ar: الطابور طويل جدًا.
+      en: The queue is really long.
+    answer: Antreannya panjang sekali.
+    distractors: [gratis, sabuk]
+    words: [antrean]
   - id: e08
-    type: build_sentence
-    source:
-      ar_eg: ممنوع التدخين في المطار.
-      ar: يُمنع التدخين في المطار.
-      en: No smoking in the airport.
-    answer: Dilarang merokok di bandara.
-    distractors: [harap, larang]
-    words: [dilarang, merokok, bandara]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: كام طيارة متأخرين النهارده.
-      ar: تأخرت عدة طائرات اليوم.
-      en: Several planes are late today.
-    answer: Beberapa pesawat terlambat hari ini.
-    alternatives: [Hari ini beberapa pesawat terlambat.]
-    distractors: [para, tepat]
-    words: [beberapa, terlambat]
-  - id: e10
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (إعلان) انتباه من فضلكم. رحلة بالي متأخرة ساعة.
-      ar: (إعلان) انتباه من فضلكم. رحلة بالي متأخرة ساعة.
-      en: (announcement) Attention please. The flight to Bali is one hour late.
-    answers: [Mohon perhatian. Penerbangan ke Bali terlambat satu jam., Mohon perhatian. Penerbangan ke Bali terlambat satu jam, 'Mohon perhatian, penerbangan ke Bali terlambat satu jam.', Mohon perhatian. Penerbangan tujuan Bali terlambat satu jam., Mohon perhatian. Penerbangan ke Bali terlambat sejam.]
-    words: [mohon, perhatian, penerbangan, terlambat]
-  - id: e11
-    type: dictation
-    text: Pesawat ke Kairo biasanya tepat waktu.
-    meaning:
-      ar_eg: الطيارة للقاهرة عادةً بتبقى في معادها.
-      ar: الطائرة إلى القاهرة في موعدها عادةً.
-      en: The plane to Cairo is usually on time.
-    words: [biasanya, tepat waktu]
-  - id: e12
+    direction: from_target
+    source_text: 'Peringatan: pakai sabuk pengaman!'
+    answers_meaning:
+      ar_eg: ['تحذير: اربط حزام الأمان!', 'تنبيه: البس حزام الأمان!']
+      ar: ['تحذير: اربط حزام الأمان!']
+      en: ['Warning: wear your seatbelt!', 'Warning: fasten your seatbelt!']
+    words: [peringatan, sabuk]
+  - id: e09
     type: speaking
-    text: Mohon perhatian. Para penumpang tujuan Jakarta, harap segera menuju pintu lima. Terima kasih.
+    text: Pintu darurat di sebelah kiri.
     meaning:
-      ar_eg: انتباه من فضلكم. حضرات الركاب المتجهين لجاكرتا، برجاء التوجه فورًا لبوابة خمسة. شكرًا.
-      ar: انتباه من فضلكم. السادة الركاب المتجهون إلى جاكرتا، يُرجى التوجه فورًا إلى البوابة الخامسة. شكرًا.
-      en: Attention please. Passengers to Jakarta, please go to gate five immediately. Thank you.
-    words: [mohon, perhatian, para, harap, segera]
+      ar_eg: باب الطوارئ على الشمال.
+      ar: باب الطوارئ على اليسار.
+      en: The emergency exit is on the left.
+    words: [darurat]
+  - id: e10
+    type: multiple_choice
+    question: Dilarang merokok di sini. Itu ___ bandara.
+    options: [aturan, gratis, tanda]
+    answer: 0
+    explain:
+      ar_eg: 'ممنوع التدخين = قاعدة: aturan.'
+      ar: 'منع التدخين قاعدة: aturan.'
+      en: 'No smoking is a rule: aturan.'
+    words: [aturan, gratis, tanda]
 dialogue:
-  title: Mohamed membuat pengumuman
   lines:
-    - speaker: Mas Rizal
-      text: Mohamed, coba baca pengumuman ini untuk teman-teman kita.
-      ar_eg: يا محمد، جرّب تقرا الإعلان ده لصحابنا.
-      ar: يا محمد، حاول أن تقرأ هذا الإعلان لأصدقائنا.
-      en: Mohamed, try reading this announcement to our friends.
+    - speaker: Satpam
+      text: 'Permisi, Pak. Antreannya di sana. Ada aturan: harap antre.'
+      ar_eg: 'لو سمحت يا أستاذ. الطابور هناك. فيه نظام: اقف في الطابور.'
+      ar: 'عفوًا يا سيدي، الطابور هناك. القاعدة: يُرجى الانتظار في الطابور.'
+      en: 'Excuse me, sir. The queue is over there. The rule is: please queue.'
     - speaker: Mohamed
-      text: Mohon perhatian. Bus kita terlambat dua puluh menit.
-      ar_eg: انتباه من فضلكم. الأتوبيس بتاعنا متأخر عشرين دقيقة.
-      ar: انتباه من فضلكم. حافلتنا متأخرة عشرين دقيقة.
-      en: Attention please. Our bus is twenty minutes late.
+      text: Oh, maaf, Pak. Saya tidak melihat tandanya.
+      ar_eg: آه، آسف يا أستاذ. ما شفتش اليافطة.
+      ar: آه، عذرًا يا سيدي، لم أرَ اللافتة.
+      en: Oh, sorry. I didn't see the sign.
+    - speaker: Satpam
+      text: Tidak apa-apa. Hati-hati juga, ada pencuri di sini.
+      ar_eg: ولا يهمك. وخلي بالك، فيه حرامية هنا.
+      ar: لا بأس. وانتبه، هنا لصوص.
+      en: No problem. And be careful, there are thieves here.
     - speaker: Mohamed
-      text: Harap tunggu di sini. Dilarang merokok di dalam.
-      ar_eg: برجاء الانتظار هنا. ممنوع التدخين جوه.
-      ar: يُرجى الانتظار هنا. يُمنع التدخين في الداخل.
-      en: Please wait here. No smoking inside.
-    - speaker: Mas Rizal
-      text: Bagus sekali! Semua orang mengerti.
-      ar_eg: حلو جدًا! كل الناس فهمت.
-      ar: ممتاز! فهم الجميع.
-      en: Excellent! Everyone understood.
-    - speaker: Mohamed
-      text: Terima kasih. Bus di Bali sering terlambat, ya?
-      ar_eg: شكرًا. الأتوبيسات في بالي بتتأخر كتير، صح؟
-      ar: شكرًا. الحافلات في بالي تتأخر كثيرًا، أليس كذلك؟
-      en: Thanks. Buses in Bali are often late, aren't they?
-    - speaker: Mas Rizal
-      text: Kadang-kadang. Jalannya sering macet!
-      ar_eg: ساعات. الطريق بيبقى زحمة كتير!
-      ar: أحيانًا. فالطريق مزدحم كثيرًا!
-      en: Sometimes. The roads are often jammed!
-souvenir:
-  id: bipa2.u03.souvenir
-  title: Tiba di Bandara Ngurah Rai
-  note:
-    ar_eg: أول ما تنزل في مطار نجوراه راي في بالي هتسمع إعلانات بالإندونيسي الرسمي، وأغلبها بيبدأ بالجملة المشهورة «Para penumpang yang terhormat…» يعني «حضرات الركاب الكرام». دلوقتي إنت فاهم الجملة دي وفاهم اللي بعدها كمان. أهلًا بيك في بالي!
-    ar: حين تهبط في مطار نغوراه راي في بالي تسمع إعلانات بالإندونيسية الرسمية، يبدأ أكثرها بالعبارة الشهيرة «Para penumpang yang terhormat…» أي «السادة الركاب الكرام». وأنت الآن تفهم هذه العبارة وما بعدها. أهلًا بك في بالي!
-    en: Land at Bali's Ngurah Rai airport and you'll hear announcements in formal Indonesian, most opening with the classic "Para penumpang yang terhormat…" — dear passengers. Now you understand that line and what comes after it. Welcome to Bali!
+      text: Terima kasih, Pak. Pintu darurat di mana?
+      ar_eg: شكرًا يا أستاذ. باب الطوارئ فين؟
+      ar: شكرًا يا سيدي. أين باب الطوارئ؟
+      en: Thank you. Where's the emergency exit?
+    - speaker: Satpam
+      text: Di sebelah kiri, dekat kafe. Air putih di kafe itu gratis!
+      ar_eg: على الشمال، جنب الكافيه. والمية في الكافيه ده ببلاش!
+      ar: على اليسار قرب المقهى، والماء في ذلك المقهى مجّاني!
+      en: On the left, near the café. The water at that café is free!
+new_words:
+  - word: tanda
+    pos: noun
+    ar_eg: يافطة، علامة
+    ar: لافتة، علامة
+    en: sign, mark
+  - word: aturan
+    pos: noun
+    ar_eg: قاعدة، نظام
+    ar: قاعدة، نظام
+    en: rule
+  - word: peringatan
+    pos: noun
+    ar_eg: تحذير
+    ar: تحذير
+    en: warning
+  - word: antrean
+    pos: noun
+    ar_eg: طابور
+    ar: طابور
+    en: queue
+  - word: gratis
+    pos: adjective
+    ar_eg: ببلاش
+    ar: مجّاني
+    en: free (of charge)
+  - word: sabuk
+    pos: noun
+    ar_eg: حزام (sabuk pengaman = حزام الأمان)
+    ar: حزام (sabuk pengaman = حزام الأمان)
+    en: belt (sabuk pengaman = seatbelt)
+  - word: pencuri
+    pos: noun
+    ar_eg: حرامي
+    ar: لصّ
+    en: thief
+  - word: darurat
+    pos: noun
+    arabic: ضرورة
+    ar_eg: طوارئ
+    ar: طوارئ
+    en: emergency
 review:
   status: draft
   verified: false

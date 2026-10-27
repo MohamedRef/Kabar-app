@@ -475,9 +475,9 @@ Every recurring character in `content/cast.yaml` (except the learner) gets one p
 | 6b | the Sinetron cast | 11 · **done**, in the app |
 | 6c | Indonesian lessons | 11 · **done**, in the app |
 | 6d | Javanese lessons and the Unggah-Ungguh game | 11 · **done**, in the app |
-| 6e | Kabar Pagi | 6 |
+| 6e | Kabar Pagi | 6 · **done**, in the app |
 
-Codex saves PNG masters (it draws them at 1254 px). After review, `python3 scripts/assets/export_personas.py --import <folder>` checks every file name against `assets/portraits.yaml`, stores each master as a 1024 px WebP (a PNG would add about 2 MB per face to the repo), and writes the 256 px app exports and the cast sheet. The original PNGs are kept in the project files (`portraits/codex-6a-originals/`, `-6b-`, `-6c-` and `-6d-`).
+Codex saves PNG masters (it draws them at 1254 px). After review, `python3 scripts/assets/export_personas.py --import <folder>` checks every file name against `assets/portraits.yaml`, stores each master as a 1024 px WebP (a PNG would add about 2 MB per face to the repo), and writes the 256 px app exports and the cast sheet. The original PNGs are kept in the project files (`portraits/codex-6a-originals/`, `-6b-` … `-6e-`, and `-redo-` for the redrawn Nadia and Pak Harjo).
 
 Where the faces show (`crates/app/src/portraits.rs`; build.rs embeds every export, and a speaker label finds its cast id through `content/cast.yaml`, so later batches need no code):
 
@@ -487,6 +487,7 @@ Where the faces show (`crates/app/src/portraits.rs`; build.rs embeds every expor
 | chat partners | the partner list, the scene picker and the chat header | thinking while they write, explaining after a fix, laughing when your message needed none, listening otherwise |
 | Radio hosts and the Sinetron cast | beside each speaker's name in the player | neutral |
 | lesson characters | beside each speaker's name in Lesson Player dialogues | neutral |
+| Kabar Pagi characters | a row of faces under the story title, for everyone the story's sentences name (`Cast::mentioned`) | neutral |
 
 Anyone without a portrait yet keeps their initial (chat) or no face (player). `every_character_has_a_portrait_entry` (crates/content/tests) fails CI if a cast id has no entry, an entry names someone outside the cast, or a portrait file has no entry.
 

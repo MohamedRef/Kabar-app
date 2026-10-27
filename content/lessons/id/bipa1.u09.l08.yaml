@@ -1,236 +1,240 @@
 schema: kabar.lesson/v1
 id: bipa1.u09.l08
 language: id
-title: Bank, warung, gereja
+title: Naik motor atau taksi?
 can_do:
-  ar_eg: تسأل عن أماكن في المدينة وتفهم المسافة بالمتر وطلوع ونزول السلم.
-  ar: أن تسأل عن أماكن في المدينة وتفهم المسافة بالأمتار وصعود الدرج ونزوله.
-  en: Ask for places in town and understand distances in metres and going up or down stairs.
+  ar_eg: تختار مواصلة وتقول إنها آمنة أو بطيئة، وتقول إنك قربت توصل.
+  ar: أن تختار وسيلة نقل وتقول إنها آمنة أو بطيئة، وأنك أوشكت على الوصول.
+  en: Choose transport, say whether it's safe or slow, and say you're almost there.
 slides:
-  - title: Di kota
+  - title: Naik apa?
     body:
       ar_eg: |
-        gedung = مبنى، bank = بنك، warung = مطعم أو دكان صغير شعبي، gereja = كنيسة (وmasjid انت عارفها).
-        tangga = سلم: naik tangga (يطلع السلم)، turun tangga (ينزل السلم). وturun كمان «ينزل» من الأتوبيس.
-        jarak = مسافة: Jaraknya dua ratus meter. (meter = متر.)
+        naik + المواصلة: naik sepeda (عجلة)، naik motor (موتوسيكل)، naik taksi. وtruk = عربية نقل.
+        في إندونيسيا الموتوسيكلات في كل حتة، وفيه «أوجيك»: موتوسيكل أجرة.
+        cari = يدوّر على (عامية، والرسمي mencari). aman = آمن. lambat = بطيء.
+        hampir = تقريبًا، قرّب: «Hampir sampai!» = قربنا نوصل!
       ar: |
-        gedung = مبنى، bank = مصرف، warung = مطعم أو دكّان شعبي صغير، gereja = كنيسة (وmasjid تعرفها).
-        tangga = درج: naik tangga (يصعد الدرج)، turun tangga (ينزل الدرج). وturun أيضًا «ينزل» من الحافلة.
-        jarak = مسافة: Jaraknya dua ratus meter. (meter = متر.)
+        naik + وسيلة النقل: naik sepeda (درّاجة)، naik motor (درّاجة نارية)، naik taksi. وtruk = شاحنة.
+        تملأ الدرّاجات النارية إندونيسيا، ومنها «أوجيك»: درّاجة نارية للأجرة.
+        cari = يبحث عن (بالعامية، والفصيح mencari). aman = آمن. lambat = بطيء.
+        hampir = تقريبًا، كاد: «Hampir sampai!» = أوشكنا على الوصول!
       en: |
-        gedung = building, bank = bank, warung = a small local eatery or shop, gereja = church (you know masjid).
-        tangga = stairs: naik tangga (go upstairs), turun tangga (go downstairs). turun also means get off a bus.
-        jarak = distance: Jaraknya dua ratus meter. (meter = metre.)
+        naik + vehicle: naik sepeda (bicycle), naik motor (motorbike), naik taksi. truk = lorry, truck.
+        Motorbikes are everywhere in Indonesia, including ojek, motorbike taxis.
+        cari = look for (casual; formal mencari). aman = safe. lambat = slow.
+        hampir = almost: "Hampir sampai!" = Nearly there!
     examples:
-      - text: Bank itu di sebelah kiri gedung besar.
-        ar_eg: البنك على شمال المبنى الكبير.
-        ar: المصرف على يسار المبنى الكبير.
-        en: The bank is to the left of the big building.
-      - text: Jaraknya dua ratus meter dari sini.
-        ar_eg: المسافة ٢٠٠ متر من هنا.
-        ar: المسافة مئتا متر من هنا.
-        en: It's two hundred metres from here.
-      - text: Turun dari bus di halte Monas.
-        ar_eg: انزل من الأتوبيس عند محطة موناس.
-        ar: انزل من الحافلة عند محطة موناس.
-        en: Get off the bus at the Monas stop.
+      - text: Saya naik motor ke kantor.
+        ar_eg: بروح الشغل بالموتوسيكل.
+        ar: أذهب إلى المكتب بالدرّاجة النارية.
+        en: I ride a motorbike to the office.
+      - text: Taksi itu lambat, jalannya ramai.
+        ar_eg: التاكسي بطيء، الشارع زحمة.
+        ar: سيارة الأجرة بطيئة، فالشارع مزدحم.
+        en: The taxi is slow; the road is busy.
+      - text: Kita hampir sampai!
+        ar_eg: قربنا نوصل!
+        ar: أوشكنا على الوصول!
+        en: We're nearly there!
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: gedung
-        ar_eg: مبنى
-        ar: مبنى
-        en: building
-      - text: bank
-        ar_eg: بنك
-        ar: مصرف
-        en: bank
-      - text: warung
-        ar_eg: مطعم صغير
-        ar: مطعم شعبي
-        en: small eatery
-      - text: gereja
-        ar_eg: كنيسة
-        ar: كنيسة
-        en: church
-    words: [gedung, bank, warung, gereja]
+      - text: sepeda
+        ar_eg: عجلة
+        ar: درّاجة
+        en: bicycle
+      - text: taksi
+        ar_eg: تاكسي
+        ar: سيارة أجرة
+        en: taxi
+      - text: motor
+        ar_eg: موتوسيكل
+        ar: درّاجة نارية
+        en: motorbike
+      - text: truk
+        ar_eg: عربية نقل
+        ar: شاحنة
+        en: truck
+    words: [sepeda, taksi, motor, truk]
   - id: e02
     type: match_pairs
     pairs:
-      - text: tangga
-        ar_eg: سلم
-        ar: درج
-        en: stairs
-      - text: turun
-        ar_eg: ينزل
-        ar: ينزل
-        en: go down
-      - text: jarak
-        ar_eg: مسافة
-        ar: مسافة
-        en: distance
-      - text: meter
-        ar_eg: متر
-        ar: متر
-        en: metre
-    words: [tangga, turun, jarak, meter]
+      - text: cari
+        ar_eg: يدوّر على
+        ar: يبحث عن
+        en: look for
+      - text: aman
+        ar_eg: آمن
+        ar: آمن
+        en: safe
+      - text: lambat
+        ar_eg: بطيء
+        ar: بطيء
+        en: slow
+      - text: hampir
+        ar_eg: تقريبًا
+        ar: تقريبًا
+        en: almost
+    words: [cari, aman, lambat, hampir]
   - id: e03
     type: listen
-    text: Warung itu di depan gereja.
+    text: Saya cari taksi ke stasiun.
     question:
-      ar_eg: المطعم الصغير فين؟
-      ar: أين المطعم الشعبي؟
-      en: Where's the warung?
-    options: [قدام الكنيسة, ورا البنك, جنب المحطة]
+      ar_eg: بيدوّر على إيه؟
+      ar: عمَّ يبحث؟
+      en: What's he looking for?
+    options: [تاكسي, موتوسيكل, عجلة]
     answer: 0
     meaning:
-      ar_eg: المطعم الصغير ده قدام الكنيسة.
-      ar: ذلك المطعم الشعبي أمام الكنيسة.
-      en: That warung is in front of the church.
-    words: [warung, gereja]
+      ar_eg: بدوّر على تاكسي للمحطة.
+      ar: أبحث عن سيارة أجرة إلى المحطة.
+      en: I'm looking for a taxi to the station.
+    words: [cari, taksi]
   - id: e04
     type: fill_blank
-    sentence: Jaraknya lima ratus ___.
+    sentence: Naik motor, kita ___ sampai!
     meaning:
-      ar_eg: المسافة خمسمية ___.
-      ar: المسافة خمسمئة ___.
-      en: It's five hundred ___ away.
-    options: [meter, tangga, gedung]
-    answers: [meter]
-    words: [jarak, meter, tangga, gedung]
+      ar_eg: بالموتوسيكل، ___ نوصل!
+      ar: بالدرّاجة النارية ___ نصل!
+      en: By motorbike, we're ___ there!
+    options: [hampir, aman, lambat]
+    answers: [hampir]
+    words: [motor, hampir, aman, lambat]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: عايز تسحب فلوس. تروح فين؟
-      ar: تريد سحب نقود. إلى أين تذهب؟
-      en: You want to withdraw money. Where do you go?
-    options: [bank, gereja, warung]
+      ar_eg: عربية كبيرة جدًا بتشيل بضاعة. اسمها؟
+      ar: سيارة كبيرة جدًا تنقل البضائع. ما اسمها؟
+      en: A very big vehicle that carries goods. What is it?
+    options: [truk, sepeda, taksi]
     answer: 0
     explain:
-      ar_eg: bank. gereja كنيسة، وwarung مطعم صغير.
-      ar: bank، أما gereja فكنيسة وwarung مطعم شعبي.
-      en: bank; gereja is a church and warung a small eatery.
-    words: [bank, gereja, warung]
+      ar_eg: truk = عربية نقل.
+      ar: truk = شاحنة.
+      en: truk = truck.
+    words: [truk, sepeda, taksi]
   - id: e06
     type: fill_blank
-    sentence: Kantor saya di lantai tiga. Saya naik ___.
+    sentence: Jalan ini ramai. Busnya ___, kita hampir terlambat.
     meaning:
-      ar_eg: مكتبي في الدور التالت. بطلع على ___.
-      ar: مكتبي في الطابق الثالث، فأصعد ___.
-      en: My office is on the third floor. I take the ___.
-    options: [tangga, jarak, bank]
-    answers: [tangga]
-    words: [tangga, jarak, bank]
+      ar_eg: الشارع ده زحمة. الأتوبيس ___، وهنتأخر.
+      ar: هذا الشارع مزدحم، والحافلة ___، فكدنا نتأخر.
+      en: This road is busy. The bus is ___; we're nearly late.
+    options: [lambat, aman, hampir]
+    answers: [lambat]
+    words: [lambat, hampir]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: انزل من الأتوبيس عند المحطة.
-      ar: انزل من الحافلة عند المحطة.
-      en: Get off the bus at the stop.
-    answer: Turun dari bus di halte.
-    distractors: [naik, meter]
-    words: [turun]
+      ar_eg: ركوب العجلة هنا آمن.
+      ar: ركوب الدرّاجة هنا آمن.
+      en: Cycling here is safe.
+    answer: Naik sepeda di sini aman.
+    distractors: [truk, cari]
+    words: [sepeda, aman]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Gedung itu tinggi sekali.
+    source_text: Saya naik motor ke kampus.
     answers_meaning:
-      ar_eg: [المبنى ده عالي أوي, العمارة دي عالية جدًا]
-      ar: [ذلك المبنى عالٍ جدًا, ذلك المبنى شاهق]
-      en: [That building is very tall, That building is really tall]
-    words: [gedung]
+      ar_eg: [بروح الجامعة بالموتوسيكل, بركب موتوسيكل للجامعة]
+      ar: [أذهب إلى الجامعة بالدرّاجة النارية, أركب الدرّاجة النارية إلى الجامعة]
+      en: [I ride a motorbike to campus, I go to campus by motorbike]
+    words: [motor]
   - id: e09
     type: speaking
-    text: Jarak dari stasiun ke museum dua ratus meter.
+    text: Truk itu besar dan lambat.
     meaning:
-      ar_eg: المسافة من المحطة للمتحف ٢٠٠ متر.
-      ar: المسافة من المحطة إلى المتحف مئتا متر.
-      en: It's two hundred metres from the station to the museum.
-    words: [jarak, meter]
+      ar_eg: عربية النقل دي كبيرة وبطيئة.
+      ar: تلك الشاحنة كبيرة وبطيئة.
+      en: That truck is big and slow.
+    words: [truk, lambat]
   - id: e10
     type: multiple_choice
-    question: Dari lantai dua ke lantai satu, kita ___.
-    options: [turun, naik, jarak]
+    question: Dompet saya hilang! Saya ___ dompet saya.
+    options: [cari, naik, turun]
     answer: 0
     explain:
-      ar_eg: من فوق لتحت = turun. naik العكس.
-      ar: من الأعلى إلى الأسفل turun، وnaik عكسها.
-      en: Going down is turun; naik is going up.
-    words: [turun]
+      ar_eg: 'لما حاجة تضيع، بتدوّر عليها: cari.'
+      ar: 'إذا ضاع شيء بحثت عنه: cari.'
+      en: 'When something''s lost, you look for it: cari.'
+    words: [cari]
 dialogue:
   lines:
+    - speaker: Raka
+      text: Mohamed, kamu cari apa?
+      ar_eg: يا محمد، بتدوّر على إيه؟
+      ar: يا محمد، عمَّ تبحث؟
+      en: Mohamed, what are you looking for?
     - speaker: Mohamed
-      text: Permisi, Pak. Bank di mana?
-      ar_eg: لو سمحت يا أستاذ، البنك فين؟
-      ar: عفوًا يا سيدي، أين المصرف؟
-      en: Excuse me, sir. Where's the bank?
-    - speaker: Satpam
-      text: Banknya di gedung itu, di sebelah gereja.
-      ar_eg: البنك في المبنى ده، جنب الكنيسة.
-      ar: المصرف في ذلك المبنى بجوار الكنيسة.
-      en: The bank's in that building, next to the church.
+      text: Saya cari taksi ke museum.
+      ar_eg: بدوّر على تاكسي للمتحف.
+      ar: أبحث عن سيارة أجرة إلى المتحف.
+      en: I'm looking for a taxi to the museum.
+    - speaker: Raka
+      text: Taksi lambat, jalannya ramai. Kita naik motor saya!
+      ar_eg: التاكسي بطيء والشارع زحمة. تعالى نركب الموتوسيكل بتاعي!
+      ar: سيارة الأجرة بطيئة والشارع مزدحم. لنركب درّاجتي النارية!
+      en: Taxis are slow; the roads are busy. Let's take my motorbike!
     - speaker: Mohamed
-      text: Jauh, Pak?
-      ar_eg: بعيد يا أستاذ؟
-      ar: هل هو بعيد يا سيدي؟
-      en: Is it far?
-    - speaker: Satpam
-      text: Tidak. Jaraknya seratus meter. Jalan lurus, lalu belok kanan.
-      ar_eg: لأ. المسافة ١٠٠ متر. امشي على طول، وبعدين حوّد يمين.
-      ar: لا، المسافة مئة متر. امشِ مستقيمًا ثم انعطف يمينًا.
-      en: No. It's a hundred metres. Go straight, then turn right.
+      text: Motor? Aman?
+      ar_eg: موتوسيكل؟ أمان؟
+      ar: درّاجة نارية؟ هل هي آمنة؟
+      en: A motorbike? Is it safe?
+    - speaker: Raka
+      text: Aman! Saya jalan pelan-pelan.
+      ar_eg: أمان! هسوق براحة.
+      ar: آمنة! سأسير ببطء.
+      en: Safe! I'll go slowly.
     - speaker: Mohamed
-      text: Ada warung di dekat bank?
-      ar_eg: فيه مطعم صغير جنب البنك؟
-      ar: هل هناك مطعم شعبي قرب المصرف؟
-      en: Is there a warung near the bank?
-    - speaker: Satpam
-      text: Ada, di bawah, dekat tangga.
-      ar_eg: أيوه، تحت، جنب السلم.
-      ar: نعم، في الأسفل قرب الدرج.
-      en: Yes, downstairs, near the stairs.
+      text: Kita hampir sampai!
+      ar_eg: قربنا نوصل!
+      ar: أوشكنا على الوصول!
+      en: We're nearly there!
 new_words:
-  - word: gedung
+  - word: sepeda
     pos: noun
-    ar_eg: مبنى، عمارة
-    ar: مبنى
-    en: building
-  - word: bank
+    ar_eg: عجلة
+    ar: درّاجة
+    en: bicycle
+  - word: taksi
     pos: noun
-    ar_eg: بنك
-    ar: مصرف، بنك
-    en: bank
-  - word: warung
+    ar_eg: تاكسي
+    ar: سيارة أجرة
+    en: taxi
+  - word: motor
     pos: noun
-    ar_eg: مطعم أو دكان صغير
-    ar: مطعم أو دكّان شعبي صغير
-    en: small eatery, stall
-  - word: gereja
+    ar_eg: موتوسيكل
+    ar: درّاجة نارية
+    en: motorbike
+  - word: truk
     pos: noun
-    ar_eg: كنيسة
-    ar: كنيسة
-    en: church
-  - word: tangga
-    pos: noun
-    ar_eg: سلم
-    ar: درج، سلّم
-    en: stairs, ladder
-  - word: turun
+    ar_eg: عربية نقل
+    ar: شاحنة
+    en: truck, lorry
+  - word: cari
     pos: verb
-    ar_eg: ينزل
-    ar: ينزل
-    en: go down, get off
-  - word: jarak
-    pos: noun
-    ar_eg: مسافة
-    ar: مسافة
-    en: distance
-  - word: meter
-    pos: noun
-    ar_eg: متر
-    ar: متر
-    en: metre
+    ar_eg: يدوّر على (عامية)
+    ar: يبحث عن (عامية)
+    en: look for (casual)
+  - word: aman
+    pos: adjective
+    arabic: أمان
+    ar_eg: آمن، أمان
+    ar: آمن
+    en: safe
+  - word: lambat
+    pos: adjective
+    ar_eg: بطيء
+    ar: بطيء
+    en: slow
+  - word: hampir
+    pos: adverb
+    ar_eg: تقريبًا، قرّب
+    ar: تقريبًا، كاد
+    en: almost, nearly
 review:
   status: draft
   verified: false
