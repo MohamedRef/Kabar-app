@@ -21,6 +21,7 @@ use kabar_protocol::lesson::{
 };
 
 use self::text::{L, lt};
+use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::platform::{self, TtsStatus};
 use crate::pron::Pron;
@@ -1145,9 +1146,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                                 },
                                 span { class: "lp-example-icon", {speaker_icon()} }
                                 span { class: "lp-example-text",
-                                    bdi { lang: target, dir: "ltr", class: "latin lp-target", "{ex.text}" }
-                                    Pron { text: ex.text.clone(), tag: target }
-                                    span { class: "muted", Rich { text: pick(&ex.meaning, lang).to_string(), target } }
+                                    Annotated { text: ex.text.clone(), tag: target, meaning: pick(&ex.meaning, lang).to_string(), class: "lp-target" }
                                 }
                             }
                         }
@@ -1183,9 +1182,7 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
                                 move |_| speak_line(&d, i, &l, missing)
                             },
                             span { class: "lp-speaker", bdi { "{line.speaker}" } }
-                            bdi { lang: target, dir: "ltr", class: "latin lp-target", "{line.text}" }
-                            Pron { text: line.text.clone(), tag: target }
-                            span { class: "muted", Rich { text: pick(&line.meaning, lang).to_string(), target } }
+                            Annotated { text: line.text.clone(), tag: target, meaning: pick(&line.meaning, lang).to_string(), class: "lp-target" }
                         }
                     }
                 }
@@ -1240,8 +1237,7 @@ fn SummaryView(
                     ul { class: "lp-words",
                         for w in lesson.new_words.iter() {
                             li { key: "{w.word}", class: if w.arabic.is_some() { "bridge-row" } else { "" },
-                                bdi { lang: target, dir: "ltr", class: if w.arabic.is_some() { "latin bridge-word" } else { "latin" }, "{w.word}" }
-                                Pron { text: w.word.clone(), tag: target }
+                                Annotated { text: w.word.clone(), tag: target, class: if w.arabic.is_some() { "bridge-word" } else { "" } }
                                 span { class: "muted", Rich { text: pick(&w.meaning, lang).to_string(), target } }
                                 if let Some(ar) = &w.arabic {
                                     span { class: "lp-bridge", title: lt(lang, L::FromArabic),
@@ -1358,14 +1354,14 @@ fn Feedback(
                 },
                 Grade::Almost { expected } => rsx! {
                     p { class: "lp-verdict", "{lt(lang, L::Almost)}" }
-                    p { bdi { lang: target, dir: "ltr", class: "lp-answer latin", "{expected}" } }
-                    Pron { text: expected.clone(), tag: target }
+                    p { Annotated { text: expected.clone(), tag: target, class: "lp-answer" } }
                 },
                 Grade::Wrong => rsx! {
                     p { class: "lp-verdict", "{lt(lang, L::NotYet)}" }
-                    p { bdi { lang: answer_tag, dir: if answer_tag == target { "ltr" } else { "auto" }, class: "lp-answer", "{answer}" } }
                     if answer_tag == target {
-                        Pron { text: answer.clone(), tag: target }
+                        p { Annotated { text: answer.clone(), tag: target, class: "lp-answer" } }
+                    } else {
+                        p { bdi { lang: answer_tag, dir: "auto", class: "lp-answer", "{answer}" } }
                     }
                     if !retry {
                         p { class: "muted lp-small", "{lt(lang, L::AgainAtEnd)}" }
@@ -1388,8 +1384,7 @@ fn Feedback(
             if let Some(t) = transcript {
                 p { class: "lp-small",
                     span { class: "muted", "{lt(lang, L::Transcript)} " }
-                    bdi { lang: target, dir: "ltr", class: "latin lp-target", "{t}" }
-                    Pron { text: t.clone(), tag: target }
+                    Annotated { text: t.clone(), tag: target, class: "lp-target" }
                 }
             }
             if let Some(m) = meaning {
