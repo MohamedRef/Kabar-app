@@ -94,7 +94,7 @@ pub fn load_entries(root: &Root) -> Result<Vec<BridgeEntry>> {
 pub fn load_rules(root: &Root) -> Result<Vec<SoundRule>> {
     let path = rules_path(root);
     let text = fs::read_to_string(&path).with_context(|| format!("reading {}", path.display()))?;
-    serde_json::from_str(&text).with_context(|| path.display().to_string())
+    kabar_protocol::content::from_json_strict(&text).with_context(|| path.display().to_string())
 }
 
 fn save_entries(root: &Root, entries: &[BridgeEntry]) -> Result<()> {
@@ -112,7 +112,10 @@ pub fn read_jsonl<T: serde::de::DeserializeOwned>(path: &std::path::Path) -> Res
     text.lines()
         .enumerate()
         .filter(|(_, l)| !l.trim().is_empty())
-        .map(|(i, l)| serde_json::from_str(l).with_context(|| format!("{}:{}", path.display(), i + 1)))
+        .map(|(i, l)| {
+            kabar_protocol::content::from_json_strict(l)
+                .with_context(|| format!("{}:{}", path.display(), i + 1))
+        })
         .collect()
 }
 

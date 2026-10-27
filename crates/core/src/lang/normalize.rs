@@ -101,17 +101,20 @@ static SEED: &[Norm] = &[
 /// means "keep on", not only "lalu".
 const NOT_FOR_GRADING: &[&str] = &["terus"];
 
-/// The formal twin of a lowercase Indonesian word for grading ("udah" →
-/// "sudah", "tp" → "tapi" → "tetapi"), from the street list
-/// ([`super::street`]) and the one-word Indonesian chat forms in the seed
-/// list. One word maps to one word; `None` for a word that is already formal.
-pub fn formal_twin(word: &str) -> Option<&'static str> {
+/// The formal twin of a lowercase word for grading, in `lang`'s street list
+/// ([`super::street`]): Indonesian "udah" → "sudah"; Javanese once its list
+/// lands (#297). Indonesian also folds its one-word chat forms ("tp" → "tapi"
+/// → "tetapi"). One word maps to one word; `None` for a word that is already
+/// formal, or a language without a list.
+pub fn formal_twin(lang: Lang, word: &str) -> Option<&'static str> {
     let street = |w: &str| {
-        super::street::formal(Lang::Indonesian, w)
-            .filter(|f| !f.contains(' ') && !NOT_FOR_GRADING.contains(&w))
+        super::street::formal(lang, w).filter(|f| !f.contains(' ') && !NOT_FOR_GRADING.contains(&w))
     };
     if let Some(twin) = street(word) {
         return Some(twin);
+    }
+    if lang != Lang::Indonesian {
+        return None;
     }
     // "g" alone is too ambiguous (see `normalize`).
     let chat =
@@ -148,17 +151,18 @@ mod tests {
 
     #[test]
     fn formal_twins_for_grading() {
-        assert_eq!(formal_twin("nggak"), Some("tidak"));
-        assert_eq!(formal_twin("ngga"), Some("tidak"));
-        assert_eq!(formal_twin("udh"), Some("sudah"));
-        assert_eq!(formal_twin("tp"), Some("tetapi"), "chat form → street form → formal");
-        assert_eq!(formal_twin("makasih"), None, "two words: not a one-word twin");
-        assert_eq!(formal_twin("terus"), None, "too loose to grade by");
-        assert_eq!(formal_twin("gpp"), None);
-        assert_eq!(formal_twin("ra"), None, "Javanese");
-        assert_eq!(formal_twin("makan"), None);
+        assert_eq!(formal_twin(Id, "nggak"), Some("tidak"));
+        assert_eq!(formal_twin(Id, "ngga"), Some("tidak"));
+        assert_eq!(formal_twin(Id, "udh"), Some("sudah"));
+        assert_eq!(formal_twin(Id, "tp"), Some("tetapi"), "chat form → street form → formal");
+        assert_eq!(formal_twin(Id, "makasih"), None, "two words: not a one-word twin");
+        assert_eq!(formal_twin(Id, "terus"), None, "too loose to grade by");
+        assert_eq!(formal_twin(Id, "gpp"), None);
+        assert_eq!(formal_twin(Id, "ra"), None, "Javanese");
+        assert_eq!(formal_twin(Jv, "aja"), None, "Javanese aja is \"don't\", not saja");
+        assert_eq!(formal_twin(Id, "makan"), None);
         for w in ["tidak", "sudah", "tetapi", "saja", "bagaimana"] {
-            assert_eq!(formal_twin(w), None, "{w} is already formal");
+            assert_eq!(formal_twin(Id, w), None, "{w} is already formal");
         }
     }
 

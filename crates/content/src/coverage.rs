@@ -2,7 +2,9 @@
 //! Kabar Radio script or lesson dialogue that the curriculum has not taught by
 //! the time the learner meets it. Comfortable reading needs about 95–98% known
 //! words (Laufer 1989; Hu & Nation 2000), so items above [`Item::limit`] get
-//! flagged for glossing or re-wording.
+//! flagged for glossing or re-wording. Glosses in notes may close the gap, but
+//! only so far: the raw share, with notes ignored, has its own cap
+//! ([`Item::raw_limit`]), so a script cannot be glossed into shape.
 //!
 //! A word counts as known when a `new_words` entry at or before the item's
 //! position teaches it (a taught phrase covers its words; a suffixed or
@@ -38,6 +40,8 @@ pub struct Item {
     pub tokens: usize,
     /// Unknown tokens, with repeats.
     pub unknown: Vec<String>,
+    /// Unknown tokens when note glosses are ignored (raw coverage).
+    pub raw: usize,
 }
 
 impl Item {
@@ -54,6 +58,22 @@ impl Item {
 
     pub fn over(&self) -> bool {
         self.percent() > self.limit()
+    }
+
+    /// Unknown share when note glosses are ignored: what the script asks of
+    /// the learner before any help.
+    pub fn raw_percent(&self) -> f64 {
+        if self.tokens == 0 { 0.0 } else { 100.0 * self.raw as f64 / self.tokens as f64 }
+    }
+
+    /// The highest acceptable raw share: 15% in the first two levels, 18% later.
+    /// Glosses may close the gap to [`Item::limit`], but only this far.
+    pub fn raw_limit(&self) -> f64 {
+        if self.level < 2 { 15.0 } else { 18.0 }
+    }
+
+    pub fn raw_over(&self) -> bool {
+        self.raw_percent() > self.raw_limit()
     }
 
     /// The most frequent unknown words, most frequent first.
@@ -323,7 +343,7 @@ fn item(
 ) -> Item {
     let mut ls = Vec::new();
     lines(doc, &mut ls);
-    let (mut tokens, mut unknown) = (0, Vec::new());
+    let (mut tokens, mut unknown, mut raw) = (0, Vec::new(), 0);
     // A word glossed in a note stays known for the rest of the item.
     let mut explained = BTreeSet::new();
     for (text, note) in ls {
@@ -331,8 +351,9 @@ fn item(
         let (n, u) = measure(track, names, pos, text, &explained);
         tokens += n;
         unknown.extend(u);
+        raw += measure(track, names, pos, text, &BTreeSet::new()).1.len();
     }
-    Item { id, kind, after, level, tokens, unknown }
+    Item { id, kind, after, level, tokens, unknown, raw }
 }
 
 /// Coverage of every Sinetron episode, Radio script and lesson dialogue.
@@ -409,6 +430,7 @@ mod tests {
         ]});
         let i = item(&track(), &BTreeSet::new(), "x".into(), "radio", "u".into(), (0, 0), &doc);
         assert_eq!(i.unknown, vec!["enak".to_owned()]);
+        assert_eq!(i.raw, 3);
     }
 
     #[test]

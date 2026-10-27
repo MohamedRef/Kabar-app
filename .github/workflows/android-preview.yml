@@ -223,3 +223,13 @@ jobs:
           done
           gh release upload preview dist/android/kabar-preview.apk "${builds[@]}" --clobber
           gh release upload preview dist/update/update.json.sig dist/update/update.json --clobber
+          # Feed builds are named by build number (#295), so nothing a live
+          # update.json names is ever overwritten. Keep this build and the one
+          # before it (a device may have just read the previous feed) and
+          # drop older ones so the release doesn't grow without end. Feed
+          # files from before #295 (no build number) count as build 0.
+          gh api "repos/$GH_REPO/releases/tags/preview" \
+            --jq '.assets[] | select(.name | test("^kabar-[0-9]")) | "\((.name | capture("-b(?<b>[0-9]+)-").b) // "0") \(.id)"' \
+            | sort -rn | tail -n +3 | while read -r _ id; do
+                gh api -X DELETE "repos/$GH_REPO/releases/assets/$id"
+              done
