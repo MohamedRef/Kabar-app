@@ -335,7 +335,7 @@ fn EntryLine(kind: EntryKind) -> Element {
                 "{what} · "
                 bdi { lang: "id", "{name}" }
                 if let Some(s) = score {
-                    " · {ui.num(s)}%"
+                    " · {ui.whole_percent(s)}"
                 }
             }
         }
