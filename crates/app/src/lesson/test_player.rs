@@ -719,7 +719,7 @@ fn SkillBar(label: &'static str, tally: Tally) -> Element {
     let ui = use_context::<Ui>();
     let share = tally.share().unwrap_or(0.0);
     let pct = percent(share);
-    let shown = ui.num(pct);
+    let shown = ui.whole_percent(pct);
     rsx! {
         li { class: "lt-skill",
             span { class: "lt-skill-name", "{label}" }
@@ -732,7 +732,7 @@ fn SkillBar(label: &'static str, tally: Tally) -> Element {
                 aria_valuenow: "{pct}",
                 div { class: "lt-skill-fill", style: "inline-size: {pct}%" }
             }
-            span { class: "lt-skill-pct", bdi { "{shown}%" } }
+            span { class: "lt-skill-pct", bdi { "{shown}" } }
         }
     }
 }
