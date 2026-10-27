@@ -1,11 +1,75 @@
-//! Embeds the build-time content: every `<id>.yaml` under `content/lessons`,
-//! `tests`, `stories`, `radio` and `personas` becomes an `(id, include_str!(..))` row, and
-//! every `content/glosses/<lang>/*.jsonl` batch an `include_str!(..)` entry,
-//! and every `content/grammar/<lang>/<id>.yaml` a row too, so a new lesson,
-//! test, gloss batch or grammar point needs no code change.
+//! Embeds the build-time content, DEFLATE-compressed (~25 MB of YAML and
+//! JSONL ship as ~7 MB; `crate::embedded` unpacks one file at a time):
+//! every `<id>.yaml` under `content/lessons`, `tests`, `stories`, `radio`,
+//! `personas` and `grammar` becomes an `(id, include_bytes!(..))` row, every
+//! `content/glosses/<lang>/*.jsonl` batch an `include_bytes!(..)` entry, and
+//! the big single files (Bridge, frequency list, speech levels, curricula)
+//! a constant each, so a new lesson, test, gloss batch or grammar point
+//! needs no code change.
 
 use std::path::{Path, PathBuf};
 use std::{env, fs};
+
+use miniz_oxide::deflate::compress_to_vec;
+
+/// Highest miniz level: slower to pack (only when content changes), not to unpack.
+const LEVEL: u8 = 10;
+
+struct Packer {
+    out_dir: PathBuf,
+    count: usize,
+}
+
+impl Packer {
+    /// Compresses `file` into OUT_DIR and returns an `include_bytes!` of it.
+    fn pack(&mut self, file: &Path) -> String {
+        println!("cargo:rerun-if-changed={}", file.display());
+        let raw = fs::read(file).unwrap_or_else(|e| panic!("{}: {e}", file.display()));
+        std::str::from_utf8(&raw).unwrap_or_else(|e| panic!("{}: not UTF-8: {e}", file.display()));
+        self.count += 1;
+        let packed = self.out_dir.join(format!("c{:04}.z", self.count));
+        fs::write(&packed, compress_to_vec(&raw, LEVEL)).expect("write packed content");
+        format!("include_bytes!({:?})", packed.display().to_string())
+    }
+
+    fn table(&mut self, name: &str, dir: &Path) -> String {
+        println!("cargo:rerun-if-changed={}", dir.display());
+        let mut files = Vec::new();
+        yaml_files(dir, &mut files);
+        files.sort();
+        let mut src = format!("pub const {name}: &[(&str, &[u8])] = &[\n");
+        for f in files {
+            let id = f.file_stem().and_then(|s| s.to_str()).expect("UTF-8 content file name");
+            src.push_str(&format!("    ({id:?}, {}),\n", self.pack(&f)));
+        }
+        src.push_str("];\n");
+        src
+    }
+
+    fn jsonl_list(&mut self, name: &str, dir: &Path) -> String {
+        println!("cargo:rerun-if-changed={}", dir.display());
+        let mut files: Vec<PathBuf> = fs::read_dir(dir)
+            .map(|entries| {
+                entries
+                    .flatten()
+                    .map(|e| e.path())
+                    .filter(|p| p.extension().is_some_and(|e| e == "jsonl"))
+                    .collect()
+            })
+            .unwrap_or_default();
+        files.sort();
+        let mut src = format!("pub const {name}: &[&[u8]] = &[\n");
+        for f in files {
+            src.push_str(&format!("    {},\n", self.pack(&f)));
+        }
+        src.push_str("];\n");
+        src
+    }
+
+    fn single(&mut self, name: &str, file: &Path) -> String {
+        format!("pub const {name}: &[u8] = {};\n", self.pack(file))
+    }
+}
 
 fn yaml_files(dir: &Path, out: &mut Vec<PathBuf>) {
     let Ok(entries) = fs::read_dir(dir) else { return };
@@ -19,65 +83,27 @@ fn yaml_files(dir: &Path, out: &mut Vec<PathBuf>) {
     }
 }
 
-fn table(name: &str, dir: &Path) -> String {
-    println!("cargo:rerun-if-changed={}", dir.display());
-    let mut files = Vec::new();
-    yaml_files(dir, &mut files);
-    files.sort();
-    let mut src = format!("pub const {name}: &[(&str, &str)] = &[\n");
-    for f in files {
-        let id = f.file_stem().and_then(|s| s.to_str()).expect("UTF-8 content file name");
-        let path = f.canonicalize().expect("content file path");
-        src.push_str(&format!("    ({id:?}, include_str!({:?})),\n", path.display().to_string()));
-    }
-    src.push_str("];\n");
-    src
-}
-
-fn jsonl_list(name: &str, dir: &Path) -> String {
-    println!("cargo:rerun-if-changed={}", dir.display());
-    let mut files: Vec<PathBuf> = fs::read_dir(dir)
-        .map(|entries| {
-            entries
-                .flatten()
-                .map(|e| e.path())
-                .filter(|p| p.extension().is_some_and(|e| e == "jsonl"))
-                .collect()
-        })
-        .unwrap_or_default();
-    files.sort();
-    let mut src = format!("pub const {name}: &[&str] = &[\n");
-    for f in files {
-        let path = f.canonicalize().expect("content file path");
-        src.push_str(&format!("    include_str!({:?}),\n", path.display().to_string()));
-    }
-    src.push_str("];\n");
-    src
-}
-
 fn main() {
     let manifest = PathBuf::from(env::var("CARGO_MANIFEST_DIR").expect("CARGO_MANIFEST_DIR"));
-    let content = manifest.join("../../content");
-    let mut src =
-        String::from("// Generated by build.rs from content/{lessons,tests,stories,radio,personas}.\n");
-    src.push_str(&table("LESSONS", &content.join("lessons")));
-    src.push_str(&table("TESTS", &content.join("tests")));
-    src.push_str(&table("STORIES", &content.join("stories")));
-    src.push_str(&table("RADIO", &content.join("radio")));
-    src.push_str(&table("PERSONAS", &content.join("personas")));
-    let out = PathBuf::from(env::var("OUT_DIR").expect("OUT_DIR")).join("content.rs");
-    fs::write(out, src).expect("write content.rs");
+    let root = manifest.join("../..").canonicalize().expect("repo root");
+    let content = root.join("content");
+    let out_dir = PathBuf::from(env::var("OUT_DIR").expect("OUT_DIR"));
+    let mut p = Packer { out_dir: out_dir.clone(), count: 0 };
 
-    let glosses = content.join("glosses");
-    let mut src = String::from("// Generated by build.rs from content/glosses.\n");
-    src.push_str(&jsonl_list("GLOSS_BATCHES", &glosses.join("id")));
-    src.push_str(&jsonl_list("GLOSS_BATCHES_JV", &glosses.join("jv")));
-    let out = PathBuf::from(env::var("OUT_DIR").expect("OUT_DIR")).join("glosses.rs");
-    fs::write(out, src).expect("write glosses.rs");
-
+    let mut src = String::from("// Generated by build.rs from content/ and curriculum/ (raw DEFLATE).\n");
+    src.push_str(&p.table("LESSONS", &content.join("lessons")));
+    src.push_str(&p.table("TESTS", &content.join("tests")));
+    src.push_str(&p.table("STORIES", &content.join("stories")));
+    src.push_str(&p.table("RADIO", &content.join("radio")));
+    src.push_str(&p.table("PERSONAS", &content.join("personas")));
     // The grammar library for "Explain this sentence".
-    let mut src = String::from("// Generated by build.rs from content/grammar.\n");
-    src.push_str(&table("GRAMMAR", &content.join("grammar")));
-    let out = PathBuf::from(env::var("OUT_DIR").expect("OUT_DIR")).join("grammar.rs");
-    fs::write(out, src).expect("write grammar.rs");
+    src.push_str(&p.table("GRAMMAR", &content.join("grammar")));
+    src.push_str(&p.jsonl_list("GLOSS_BATCHES", &content.join("glosses/id")));
+    src.push_str(&p.jsonl_list("GLOSS_BATCHES_JV", &content.join("glosses/jv")));
+    src.push_str(&p.single("BRIDGE_ID", &content.join("bridge/id.jsonl")));
+    src.push_str(&p.single("FREQ_ID", &content.join("freq/id.tsv")));
+    src.push_str(&p.single("SPEECH_LEVELS", &content.join("javanese/speech-levels.jsonl")));
+    src.push_str(&p.single("CURRICULUM_ID", &root.join("curriculum/indonesian.yaml")));
+    src.push_str(&p.single("CURRICULUM_JV", &root.join("curriculum/javanese.yaml")));
+    fs::write(out_dir.join("content.rs"), src).expect("write content.rs");
 }

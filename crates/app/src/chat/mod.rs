@@ -26,7 +26,7 @@ use kabar_protocol::story::Persona;
 
 use self::text::{T, tt};
 use crate::coach::Coach;
-use crate::lesson::embedded::PERSONAS;
+use crate::embedded::{self, PERSONAS};
 use crate::lesson::target_tag;
 use crate::listen::player::ProgramPlayer;
 use crate::reader::card::InfoView;
@@ -42,9 +42,8 @@ const CHAT_CSS: &str = include_str!("../../assets/chat.css");
 /// broken file stays listed with its error.
 static PERSONA_LIST: LazyLock<Vec<Result<Persona, (String, String)>>> = LazyLock::new(|| {
     const ORDER: [&str; 4] = ["mas-dimas", "bu-siti", "mbak-gadis", "mas-ardi"];
-    let mut all: Vec<_> = PERSONAS
-        .iter()
-        .map(|(id, yaml)| parse_persona(yaml).map_err(|e| (id.to_string(), e.to_string())))
+    let mut all: Vec<_> = embedded::all(PERSONAS)
+        .map(|(id, yaml)| parse_persona(&yaml).map_err(|e| (id.to_string(), e.to_string())))
         .collect();
     all.sort_by_key(|p| {
         let id = match p {
@@ -142,6 +141,7 @@ enum View {
 
 #[component]
 pub fn ChatScreen() -> Element {
+    use_hook(crate::reader::warm_up);
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let coach = use_context::<Coach>();

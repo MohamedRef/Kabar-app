@@ -32,10 +32,10 @@ use crate::coach::{Coach, labels};
 use crate::{Db, Screen, Ui};
 
 const STATS_CSS: &str = include_str!("../../assets/stats.css");
-const CURRICULUM_ID: &str = include_str!("../../../../curriculum/indonesian.yaml");
 
 /// The Indonesian route, parsed once.
-pub static CURRICULUM: LazyLock<Option<Curriculum>> = LazyLock::new(|| parse_curriculum(CURRICULUM_ID).ok());
+pub static CURRICULUM: LazyLock<Option<Curriculum>> =
+    LazyLock::new(|| parse_curriculum(&crate::embedded::unpack(crate::embedded::CURRICULUM_ID)).ok());
 
 /// Where "Back" on Stats and the level check returns to.
 static RETURN_TO: GlobalSignal<Screen> = Signal::global(|| Screen::Today);

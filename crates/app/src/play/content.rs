@@ -11,12 +11,11 @@ use kabar_core::pagi::StoryBank;
 
 use super::logic;
 
-const BRIDGE_JSONL: &str = include_str!("../../../../content/bridge/id.jsonl");
+use crate::embedded::{BRIDGE_ID, FREQ_ID, SPEECH_LEVELS, unpack};
+
 const SOUND_RULES_JSON: &str = include_str!("../../../../content/bridge/sound-rules.json");
-const FREQ_TSV: &str = include_str!("../../../../content/freq/id.tsv");
 const PASAR_TOML: &str = include_str!("../../../../content/games/pasar.toml");
 const UNGGAH_TOML: &str = include_str!("../../../../content/games/unggah-ungguh.toml");
-const SPEECH_LEVELS_JSONL: &str = include_str!("../../../../content/javanese/speech-levels.jsonl");
 const PAIRS_TOML: &str = include_str!("../../../../content/games/minimal-pairs.toml");
 const STORIES_JSONL: &str = include_str!("../../../../content/pagi/stories.jsonl");
 
@@ -38,7 +37,9 @@ fn guarded<T>(what: &str, parse: impl FnOnce() -> Result<T, String>) -> Loaded<T
 pub fn bridge() -> &'static Loaded<BridgeData> {
     static DATA: OnceLock<Loaded<BridgeData>> = OnceLock::new();
     DATA.get_or_init(|| {
-        guarded("content/bridge", || BridgeData::parse(BRIDGE_JSONL, SOUND_RULES_JSON, Some(FREQ_TSV)))
+        guarded("content/bridge", || {
+            BridgeData::parse(&unpack(BRIDGE_ID), SOUND_RULES_JSON, Some(&unpack(FREQ_ID)))
+        })
     })
 }
 
@@ -50,7 +51,7 @@ pub fn pasar() -> &'static Loaded<PasarData> {
 pub fn unggah() -> &'static Loaded<UnggahData> {
     static DATA: OnceLock<Loaded<UnggahData>> = OnceLock::new();
     DATA.get_or_init(|| {
-        guarded("content/games/unggah-ungguh.toml", || UnggahData::parse(UNGGAH_TOML, SPEECH_LEVELS_JSONL))
+        guarded("content/games/unggah-ungguh.toml", || UnggahData::parse(UNGGAH_TOML, &unpack(SPEECH_LEVELS)))
     })
 }
 
@@ -67,7 +68,7 @@ pub fn stories() -> &'static Loaded<StoryBank> {
 /// The most frequent Indonesian words, most useful first.
 pub fn frequent_words() -> &'static [String] {
     static DATA: OnceLock<Vec<String>> = OnceLock::new();
-    DATA.get_or_init(|| logic::top_words(FREQ_TSV, NEW_POOL))
+    DATA.get_or_init(|| logic::top_words(&unpack(FREQ_ID), NEW_POOL))
 }
 
 #[cfg(test)]
@@ -84,7 +85,7 @@ mod tests {
 
     #[test]
     fn the_shipped_files_are_present() {
-        assert!(BRIDGE_JSONL.lines().count() > 100);
+        assert!(unpack(BRIDGE_ID).lines().count() > 100);
         assert!(SOUND_RULES_JSON.contains("fa_p"));
         assert_eq!(frequent_words().len(), NEW_POOL);
     }
