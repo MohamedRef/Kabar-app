@@ -34,6 +34,7 @@ pub enum S {
     TranslationTap,
     TranslationOff,
     WordColours,
+    GrammarHints,
     // look
     TextSize,
     TextSmall,
@@ -163,6 +164,9 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (WordColours, ArEg) => "لوّن الكلمات (فعل، اسم، سوابق ولواحق)",
         (WordColours, Ar) => "لوّن الكلمات (فعل، اسم، سوابق ولواحق)",
         (WordColours, En) => "Colour words (verb, noun, prefixes and suffixes)",
+        (GrammarHints, ArEg) => "اعرض القواعد اللي في الجملة (تحت السطر وفي كارت الكلمة)",
+        (GrammarHints, Ar) => "اعرض القواعد الواردة في الجملة (تحت السطر وفي بطاقة الكلمة)",
+        (GrammarHints, En) => "Show grammar hints (under lines and in word cards)",
 
         (TextSize, ArEg | Ar) => "حجم الخط",
         (TextSize, En) => "Text size",
