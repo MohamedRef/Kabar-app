@@ -10,16 +10,16 @@ slides:
   - title: Hati-hati dengan pil diet
     body:
       ar_eg: |
-        diet = رجيم، نظام أكل، protein = بروتين، pil = حباية (pil vitamin).
-        cairan = سوايل، سائل (minum banyak cairan)، beracun = سام (jamur beracun).
+        suplemen = مكمّل غذائي (suplemen vitamin)، protein = بروتين، pil = حباية (pil vitamin).
+        cairan = سوايل، سائل (minum banyak cairan)، beracun = سام (buah beracun).
         organ = عضو في الجسم (ginjal adalah organ)، lidah = لسان، kuku = ضافر.
       ar: |
-        diet = حمية، protein = بروتين، pil = حبّة دواء (pil vitamin).
-        cairan = سوائل، سائل (minum banyak cairan)، beracun = سامّ (jamur beracun).
+        suplemen = مكمّل غذائي، protein = بروتين، pil = حبّة دواء (pil vitamin).
+        cairan = سوائل، سائل (minum banyak cairan)، beracun = سامّ (buah beracun).
         organ = عضو من أعضاء الجسم، lidah = لسان، kuku = ظفر.
       en: |
-        diet = diet, protein = protein, pil = pill (pil vitamin).
-        cairan = fluid, liquid (minum banyak cairan); beracun = poisonous (jamur beracun).
+        suplemen = (food) supplement, protein = protein, pil = pill (pil vitamin).
+        cairan = fluid, liquid (minum banyak cairan); beracun = poisonous (buah beracun).
         organ = (body) organ; lidah = tongue; kuku = nail.
     examples:
       - text: Daging dan ikan banyak mengandung protein.
@@ -38,10 +38,10 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: diet
-        ar_eg: رجيم
-        ar: حمية
-        en: diet
+      - text: suplemen
+        ar_eg: مكمّل غذائي
+        ar: مكمّل غذائي
+        en: supplement
       - text: protein
         ar_eg: بروتين
         ar: بروتين
@@ -54,7 +54,7 @@ exercises:
         ar_eg: سوايل
         ar: سوائل
         en: fluid
-    words: [diet, protein, pil, cairan]
+    words: [suplemen, protein, pil, cairan]
   - id: e02
     type: match_pairs
     pairs:
@@ -77,17 +77,17 @@ exercises:
     words: [beracun, organ, lidah, kuku]
   - id: e03
     type: listen
-    text: Jangan makan jamur itu. Jamurnya beracun!
+    text: Jangan makan buah itu. Buahnya beracun!
     question:
-      ar_eg: المشروم ماله؟
-      ar: ما مشكلة الفطر؟
-      en: What's wrong with the mushroom?
+      ar_eg: الفاكهة مالها؟
+      ar: ما مشكلة الفاكهة؟
+      en: What's wrong with the fruit?
     options: [سام, مستوي, غالي]
     answer: 0
     meaning:
-      ar_eg: ما تاكلش المشروم ده. ده سام!
-      ar: لا تأكل ذلك الفطر. إنه سامّ!
-      en: Don't eat that mushroom. It's poisonous!
+      ar_eg: ما تاكلش الفاكهة دي. دي سامة!
+      ar: لا تأكل تلك الفاكهة. إنها سامّة!
+      en: Don't eat that fruit. It's poisonous!
     words: [beracun]
   - id: e04
     type: fill_blank
@@ -96,9 +96,9 @@ exercises:
       ar_eg: الدكتور بص على ___ي. لونه أبيض عشان أنا عيان.
       ar: نظر الطبيب إلى ___ي. لونه أبيض بسبب المرض.
       en: The doctor looked at my ___. It's white because I'm ill.
-    options: [lidah, kuku, diet]
+    options: [lidah, kuku, suplemen]
     answers: [lidah]
-    words: [lidah, kuku, diet]
+    words: [lidah, kuku, suplemen]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -114,14 +114,14 @@ exercises:
     words: [organ, kuku, pil]
   - id: e06
     type: fill_blank
-    sentence: Saya sedang ___. Saya tidak makan gula dan nasi putih.
+    sentence: Pemain bola itu minum ___ protein setiap pagi.
     meaning:
-      ar_eg: أنا عامل ___. مش باكل سكر ولا رز أبيض.
-      ar: أتّبع ___. لا آكل السكر ولا الأرز الأبيض.
-      en: I'm on a ___. I don't eat sugar or white rice.
-    options: [diet, cairan, beracun]
-    answers: [diet]
-    words: [diet, cairan, beracun]
+      ar_eg: لاعب الكورة ده بيشرب ___ بروتين كل يوم الصبح.
+      ar: يشرب ذلك اللاعب ___ بروتين كل صباح.
+      en: That footballer drinks a protein ___ every morning.
+    options: [suplemen, cairan, beracun]
+    answers: [suplemen]
+    words: [suplemen, cairan, beracun, protein]
   - id: e07
     type: multiple_choice
     question: Minum satu ___ setelah makan malam.
@@ -152,12 +152,12 @@ exercises:
     words: [protein, cairan]
   - id: e10
     type: speaking
-    text: Pil diet ini beracun untuk organ tubuh.
+    text: Suplemen dan pil diet ini beracun untuk organ tubuh.
     meaning:
-      ar_eg: حبوب الرجيم دي سامة لأعضاء الجسم.
-      ar: حبوب الحمية هذه سامّة لأعضاء الجسم.
-      en: These diet pills are poisonous to the body's organs.
-    words: [pil, diet, beracun, organ, kuku]
+      ar_eg: المكمّلات وحبوب الرجيم دي سامة لأعضاء الجسم.
+      ar: هذه المكمّلات وحبوب الحمية سامّة لأعضاء الجسم.
+      en: These supplements and diet pills are poisonous to the body's organs.
+    words: [suplemen, pil, beracun, organ, kuku]
 dialogue:
   lines:
     - speaker: Andi
@@ -186,11 +186,11 @@ dialogue:
       ar: حسنًا، سأرمي هذه الحبوب.
       en: OK, I'll just throw these pills away.
 new_words:
-  - word: diet
+  - word: suplemen
     pos: noun
-    ar_eg: رجيم، نظام أكل
-    ar: حمية
-    en: diet
+    ar_eg: مكمّل غذائي
+    ar: مكمّل غذائي
+    en: (food) supplement
   - word: protein
     pos: noun
     ar_eg: بروتين

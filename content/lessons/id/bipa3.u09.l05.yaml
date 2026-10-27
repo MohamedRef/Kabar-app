@@ -1,202 +1,235 @@
 schema: kabar.lesson/v1
 id: bipa3.u09.l05
 language: id
-title: Juha dari Mesir
+title: Singa dan tikus
 can_do:
-  ar_eg: تحكي حدوتة مصرية (جحا والحمار) بالإندونيسي.
-  ar: أن تروي حكاية مصرية (جحا وابنه والحمار) بالإندونيسية.
-  en: Tell an Egyptian tale (Juha, his son and the donkey) in Indonesian.
+  ar_eg: 'تحكي حدوتة الأسد والفار: الصيد والقفص والتاج ونصيب كل واحد.'
+  ar: 'أن تحكي حكاية الأسد والفأر: الصيد والقفص والتاج ومصير كل واحد.'
+  en: 'Tell the fable of the lion and the mouse: the hunt, the cage, the crown and each one''s fate.'
 slides:
-  - title: Dongeng dari Mesir
+  - title: Seekor singa yang sombong
     body:
       ar_eg: |
-        دلوقتي دورك تحكي! استعمل القالب: Pada zaman dahulu, hiduplah … ← Suatu hari … ← Akhirnya … ← Amanat.
-        في إندونيسيا بيحكوا حواديت شبه حواديت جحا عن Nasruddin Hoja (نصر الدين خوجة) وAbu Nawas (أبو نواس)، أبطال الذكاء والضحك.
-        كلمات الحدوتة: keledai (حمار)، menunggang (يركب حيوان)، menuntun (يشد / يقود بإيده)، menertawakan (يضحك على).
+        menolong = ينجد، يساعد (من tolong): Tikus menolong singa.
+        singa = أسد، tikus = فار. berburu = يصطاد (حيوانات).
+        kandang = قفص، زريبة. mahkota = تاج. ratu = ملكة.
+        nasib = نصيب، حظ (من العربي «نصيب»).
       ar: |
-        حان دورك لتحكي! استعمل القالب: Pada zaman dahulu, hiduplah … ← Suatu hari … ← Akhirnya … ← Amanat.
-        وفي إندونيسيا تُروى حكايات شبيهة بحكايات جحا عن Nasruddin Hoja (نصر الدين خوجة) وAbu Nawas (أبو نواس)، أبطال الفطنة والطرافة.
-        مفردات الحكاية: keledai (حمار)، menunggang (يركب دابة)، menuntun (يقود بيده)، menertawakan (يضحك من).
+        menolong = ينجد، يساعد (من tolong): Tikus menolong singa.
+        singa = أسد، tikus = فأر. berburu = يصطاد (الحيوانات).
+        kandang = قفص، حظيرة. mahkota = تاج. ratu = ملكة.
+        nasib = نصيب، حظّ (من العربية «نصيب»).
       en: |
-        Now it's your turn to tell one! Use the frame: Pada zaman dahulu, hiduplah … → Suatu hari … → Akhirnya … → Amanat.
-        In Indonesia, tales like Juha's are told about Nasruddin Hoja and Abu Nawas, the heroes of clever, funny stories.
-        Story words: keledai (donkey), menunggang (to ride an animal), menuntun (to lead by hand), menertawakan (to laugh at).
+        menolong = help, rescue (from tolong): Tikus menolong singa.
+        singa = lion, tikus = mouse, rat. berburu = hunt.
+        kandang = cage, pen. mahkota = crown. ratu = queen.
+        nasib = fate, lot, luck (from Arabic naṣīb).
     examples:
-      - text: Pada zaman dahulu, hiduplah seorang laki-laki bernama Juha.
-        ar_eg: كان يا ما كان، كان فيه راجل اسمه جحا.
-        ar: كان يا ما كان، عاش رجلٌ اسمه جحا.
-        en: Once upon a time there lived a man called Juha.
+      - text: Seekor singa tidur di bawah pohon.
+        ar_eg: أسد نايم تحت شجرة.
+        ar: أسدٌ نائم تحت شجرة.
+        en: A lion is sleeping under a tree.
+      - text: Orang-orang itu berburu di hutan.
+        ar_eg: الناس دول بيصطادوا في الغابة.
+        ar: أولئك الناس يصطادون في الغابة.
+        en: Those people are hunting in the forest.
+      - text: Ratu memakai mahkota emas.
+        ar_eg: الملكة لابسة تاج دهب.
+        ar: تلبس الملكة تاجًا من ذهب.
+        en: The queen wears a golden crown.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: keledai
-        ar_eg: حمار
-        ar: حمار
-        en: donkey
-      - text: menunggang
-        ar_eg: يركب (حمار / حصان)
-        ar: يركب (دابة)
-        en: to ride (an animal)
-      - text: menuntun
-        ar_eg: يشد / يقود بإيده
-        ar: يقود باليد
-        en: to lead (by the hand or rein)
-      - text: menertawakan
-        ar_eg: يضحك على
-        ar: يضحك من / يسخر من
-        en: to laugh at
-      - text: amanat
-        ar_eg: العبرة
-        ar: العبرة
-        en: moral
-    words: [keledai, menunggang, menuntun, menertawakan, amanat]
+      - text: menolong
+        ar_eg: ينجد
+        ar: ينجد
+        en: help, rescue
+      - text: singa
+        ar_eg: أسد
+        ar: أسد
+        en: lion
+      - text: tikus
+        ar_eg: فار
+        ar: فأر
+        en: mouse
+      - text: berburu
+        ar_eg: يصطاد
+        ar: يصطاد
+        en: hunt
+    words: [menolong, singa, tikus, berburu]
   - id: e02
-    type: multiple_choice
-    question: Juha ___ keledai, dan anaknya berjalan kaki.
-    options: [menuntun, menunggang, menenun]
-    answer: 1
-    explain:
-      ar_eg: جحا راكب والولد ماشي، فـ menunggang (يركب).
-      ar: جحا راكب والولد ماشٍ، فالفعل menunggang (يركب).
-      en: Juha rides while his son walks, so menunggang (ride).
-    words: [menunggang, keledai]
+    type: match_pairs
+    pairs:
+      - text: kandang
+        ar_eg: قفص
+        ar: قفص
+        en: cage
+      - text: mahkota
+        ar_eg: تاج
+        ar: تاج
+        en: crown
+      - text: ratu
+        ar_eg: ملكة
+        ar: ملكة
+        en: queen
+      - text: nasib
+        ar_eg: نصيب، حظ
+        ar: نصيب
+        en: fate, lot
+    words: [kandang, mahkota, ratu, nasib]
   - id: e03
     type: listen
-    text: Orang-orang di pasar menertawakan Juha.
-    options:
-      - Orang-orang di pasar menertawakan Juha.
-      - Orang-orang di pasar menunggu Juha.
-      - Anak-anak di pasar menertawakan Juha.
-    answer: 0
+    text: Seekor tikus kecil berlari di dekat singa.
+    question:
+      ar_eg: مين اللي جري جنب الأسد؟
+      ar: من ركض قرب الأسد؟
+      en: Who ran past the lion?
+    options: [قطة, فار, كلب]
+    answer: 1
     meaning:
-      ar_eg: الناس في السوق ضحكوا على جحا.
-      ar: ضحك الناس في السوق من جحا.
-      en: The people at the market laughed at Juha.
-    words: [menertawakan]
+      ar_eg: فار صغير جري جنب الأسد.
+      ar: ركض فأر صغير قرب الأسد.
+      en: A little mouse ran past the lion.
+    words: [tikus, singa]
   - id: e04
     type: fill_blank
-    sentence: Mereka berjalan kaki dan ___ keledainya.
+    sentence: Para pemburu memasukkan singa itu ke dalam ___.
     meaning:
-      ar_eg: مشيوا على رجليهم وشدّوا الحمار وراهم.
-      ar: مشوا على أقدامهم وقادوا حمارهم.
-      en: They walked and led their donkey.
-    options: [menunggang, menertawakan, menuntun]
-    answers: [menuntun]
-    words: [menuntun, keledai]
+      ar_eg: الصيادين حطّوا الأسد في ___.
+      ar: وضع الصيادون الأسد في ___.
+      en: The hunters put the lion in a ___.
+    options: [kandang, mahkota, ratu]
+    answers: [kandang]
+    words: [kandang, mahkota, ratu]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: إيه عبرة حدوتة جحا والحمار؟
-      ar: ما عبرة حكاية جحا وابنه والحمار؟
-      en: What's the moral of the story of Juha and the donkey?
-    options:
-      - Keledai lebih pintar daripada orang.
-      - Jangan pergi ke pasar.
-      - Kita tidak bisa menyenangkan semua orang.
-    answer: 2
+      ar_eg: اللي بيلبسه الملك أو الملكة على راسه؟
+      ar: ماذا يلبس الملك أو الملكة على الرأس؟
+      en: What does a king or queen wear on their head?
+    options: [nasib, mahkota, kandang]
+    answer: 1
     explain:
-      ar_eg: menyenangkan هنا فعل = يرضي / يفرّح. «رضا الناس غاية لا تُدرك».
-      ar: menyenangkan هنا فعل بمعنى يُرضي، و«رضا الناس غاية لا تُدرك».
-      en: Here menyenangkan is a verb, "to please". You can't please everyone.
-    words: [amanat]
+      ar_eg: mahkota = تاج.
+      ar: mahkota = تاج.
+      en: mahkota = crown.
+    words: [mahkota, nasib, kandang]
   - id: e06
+    type: fill_blank
+    sentence: Dulu dia miskin, sekarang kaya. ___nya berubah!
+    meaning:
+      ar_eg: زمان كان فقير، دلوقتي غني. ___ه اتغيّر!
+      ar: كان فقيرًا والآن صار غنيًّا. تغيّر ___ه!
+      en: He used to be poor; now he's rich. His ___ has changed!
+    options: [Nasib, Ratu, Singa]
+    answers: [Nasib]
+    words: [nasib, ratu, singa]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: في يوم من الأيام، جحا وابنه راحوا السوق.
-      ar: وفي يوم من الأيام ذهب جحا وابنه إلى السوق.
-      en: One day, Juha and his son went to the market.
-    answer: Suatu hari, Juha dan anaknya pergi ke pasar.
-    distractors: [hiduplah, keledai]
-    words: [suatu hari]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الناس ضحكوا على جحا وحماره.
-      ar: ضحك الناس من جحا وحماره.
-      en: The people laughed at Juha and his donkey.
-    answers:
-      - Orang-orang menertawakan Juha dan keledainya.
-      - Orang-orang menertawakan Juha dan keledainya
-      - Orang menertawakan Juha dan keledainya.
-      - Orang menertawakan Juha dan keledainya
-      - Orang-orang itu menertawakan Juha dan keledainya.
-      - Semua orang menertawakan Juha dan keledainya.
-      - Orang-orang menertawakan Juha dan keledai itu.
-      - Juha dan keledainya ditertawakan orang-orang.
-      - Juha dan keledainya ditertawakan oleh orang-orang.
-    words: [menertawakan, keledai]
+      ar_eg: الملك كان بيحب يصطاد.
+      ar: كان الملك يحب الصيد.
+      en: The king loved to hunt.
+    answer: Raja itu suka berburu.
+    distractors: [tikus, kandang]
+    words: [berburu]
   - id: e08
-    type: dictation
-    text: Akhirnya, mereka berdua menuntun keledai itu.
-    meaning:
-      ar_eg: وفي الآخر، الاتنين شدّوا الحمار ومشيوا.
-      ar: وفي النهاية قاد الاثنان ذلك الحمار.
-      en: In the end, the two of them led the donkey.
-    words: [menuntun, keledai]
+    type: translate
+    direction: from_target
+    source_text: Ratu itu sangat baik kepada orang miskin.
+    answers_meaning:
+      ar_eg: [الملكة دي طيبة جدًا مع الفقرا, الملكة كانت طيبة أوي مع الغلابة]
+      ar: [كانت تلك الملكة طيبة جدًا مع الفقراء]
+      en: [That queen was very kind to the poor, The queen was very good to poor people]
+    words: [ratu]
   - id: e09
     type: speaking
-    text: Juha dan anaknya menunggang keledai berdua.
+    text: Tikus kecil itu menolong singa.
     meaning:
-      ar_eg: جحا وابنه ركبوا الحمار هم الاتنين.
-      ar: ركب جحا وابنه الحمار معًا.
-      en: Juha and his son both rode the donkey.
-    words: [menunggang, keledai]
+      ar_eg: الفار الصغير ده أنقذ الأسد.
+      ar: أنقذ ذلك الفأر الصغير الأسد.
+      en: The little mouse rescued the lion.
+    words: [menolong, tikus, singa]
+  - id: e10
+    type: multiple_choice
+    question: Terima kasih sudah ___ saya!
+    options: [kandang, berburu, menolong]
+    answer: 2
+    explain:
+      ar_eg: menolong = ينجد، يساعد.
+      ar: menolong = ينجد، يساعد.
+      en: menolong = help, rescue.
+    words: [menolong, berburu, kandang]
 dialogue:
-  title: Juha dan keledainya
   lines:
-    - speaker: Mohamed
-      text: Mas, di Mesir ada dongeng tentang Juha. Mau dengar?
-      ar_eg: يا ماس، في مصر فيه حدوتة عن جحا. تحب تسمعها؟
-      ar: يا ماس، في مصر حكاية عن جحا. أتحب أن تسمعها؟
-      en: Mas, in Egypt there's a tale about Juha. Want to hear it?
     - speaker: Mas Rizal
-      text: Mau! Di Indonesia kami punya cerita Abu Nawas.
-      ar_eg: أكيد! إحنا في إندونيسيا عندنا حواديت أبو نواس.
-      ar: بالتأكيد! لدينا في إندونيسيا حكايات أبي نواس.
-      en: Yes please! In Indonesia we have the Abu Nawas stories.
+      text: Mohamed, kamu tahu cerita singa dan tikus?
+      ar_eg: يا محمد، تعرف حدوتة الأسد والفار؟
+      ar: يا محمد، أتعرف قصة الأسد والفأر؟
+      en: Mohamed, do you know the story of the lion and the mouse?
     - speaker: Mohamed
-      text: Suatu hari, Juha menunggang keledai, dan anaknya berjalan kaki. Orang-orang bilang, “Kasihan anaknya!”
-      ar_eg: 'في يوم من الأيام، جحا ركب الحمار وابنه ماشي. الناس قالوا: «يا حرام على الولد!»'
-      ar: 'في يوم من الأيام ركب جحا الحمار ومشى ابنه، فقال الناس: «مسكين الولد!»'
-      en: One day, Juha rode the donkey and his son walked. People said, "Poor boy!"
-    - speaker: Mohamed
-      text: Lalu mereka berdua menunggang keledai. Orang-orang bilang, “Kasihan keledainya!”
-      ar_eg: 'بعدين ركبوا الحمار هم الاتنين. الناس قالوا: «يا حرام على الحمار!»'
-      ar: 'ثم ركبا الحمار معًا، فقال الناس: «مسكين الحمار!»'
-      en: Then they both rode the donkey. People said, "Poor donkey!"
-    - speaker: Mohamed
-      text: Akhirnya, mereka berdua menuntun keledai itu. Orang-orang menertawakan mereka!
-      ar_eg: وفي الآخر الاتنين مشيوا وشدّوا الحمار. والناس ضحكوا عليهم!
-      ar: وفي النهاية قادا الحمار ماشيَين، فضحك الناس منهما!
-      en: In the end, they both walked, leading the donkey. People laughed at them!
+      text: Belum. Bagaimana ceritanya?
+      ar_eg: لأ. الحكاية إيه؟
+      ar: لا. ما القصة؟
+      en: No. How does it go?
     - speaker: Mas Rizal
-      text: Ha-ha! Amanatnya, kita tidak bisa menyenangkan semua orang.
-      ar_eg: هههه! العبرة إننا مش هنقدر نرضي كل الناس.
-      ar: ها ها! والعبرة أننا لا نستطيع إرضاء جميع الناس.
-      en: Ha ha! The moral is, you can't please everyone.
+      text: Seekor singa melepaskan seekor tikus kecil. Lalu orang-orang yang berburu menangkap singa itu.
+      ar_eg: أسد ساب فار صغير يمشي. وبعدين الصيادين مسكوا الأسد.
+      ar: أطلق أسدٌ سراح فأر صغير. ثم أمسك الصيادون بالأسد.
+      en: A lion let a little mouse go. Then some hunters caught the lion.
+    - speaker: Mohamed
+      text: Wah, bagaimana nasib singa itu?
+      ar_eg: ياه، وحصل إيه للأسد؟
+      ar: وماذا كان مصير الأسد؟
+      en: Oh no, what happened to the lion?
+    - speaker: Mas Rizal
+      text: Tikus itu datang dan memotong talinya. Singa itu bebas!
+      ar_eg: الفار جه وقطع الحبل. والأسد بقى حر!
+      ar: جاء الفأر وقطع الحبل. فتحرّر الأسد!
+      en: The mouse came and cut through the rope. The lion was free!
 new_words:
-  - word: keledai
+  - word: menolong
+    pos: verb
+    ar_eg: ينجد، يساعد
+    ar: ينجد، يساعد
+    en: help, rescue
+  - word: singa
     pos: noun
-    ar_eg: حمار
-    ar: حمار
-    en: donkey
-  - word: menunggang
+    ar_eg: أسد
+    ar: أسد
+    en: lion
+  - word: tikus
+    pos: noun
+    ar_eg: فار
+    ar: فأر
+    en: mouse, rat
+  - word: berburu
     pos: verb
-    ar_eg: يركب (حمار / حصان)
-    ar: يركب (دابة)
-    en: to ride (an animal)
-  - word: menuntun
-    pos: verb
-    ar_eg: يشد / يقود بإيده
-    ar: يقود باليد
-    en: to lead (by the hand or rein)
-  - word: menertawakan
-    pos: verb
-    ar_eg: يضحك على
-    ar: يضحك من / يسخر من
-    en: to laugh at
+    ar_eg: يصطاد
+    ar: يصطاد
+    en: hunt
+  - word: kandang
+    pos: noun
+    ar_eg: قفص، زريبة
+    ar: قفص، حظيرة
+    en: cage, pen
+  - word: mahkota
+    pos: noun
+    ar_eg: تاج
+    ar: تاج
+    en: crown
+  - word: ratu
+    pos: noun
+    ar_eg: ملكة
+    ar: ملكة
+    en: queen
+  - word: nasib
+    pos: noun
+    arabic: نصيب
+    ar_eg: نصيب، حظ
+    ar: نصيب، حظّ
+    en: fate, lot, luck
 review:
   status: draft
   verified: false

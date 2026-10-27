@@ -1,171 +1,231 @@
 schema: kabar.lesson/v1
 id: bipa3.u02.l06
 language: id
-title: Diskusi sampah plastik
+title: Asap di pantai
 can_do:
-  ar_eg: "تشارك في نقاش عن البلاستيك: تقول رأيك، توافق، وتعترض بأدب."
-  ar: "أن تشارك في نقاش عن البلاستيك: تعبّر عن رأيك وتوافق وتعترض بأدب."
-  en: Agree and disagree in a discussion.
+  ar_eg: 'تتكلم عن الأرض والبحر: الطاقة، الحرق، سطح البحر وإيه اللي ممنوع قانونًا.'
+  ar: 'أن تتحدث عن الأرض والبحر: الطاقة والحرق وسطح البحر وما يمنعه القانون.'
+  en: 'Talk about the earth and the sea: energy, burning, the sea surface and what''s against the law.'
+slides:
+  - title: Bumi kita
+    body:
+      ar_eg: |
+        bumi = الأرض (الكوكب)، planet = كوكب. lautan = بحور ومحيطات واسعة، permukaan = سطح (permukaan laut).
+        energi = طاقة (energi matahari = طاقة شمسية). gas = غاز.
+        membakar = يحرق (من bakar). ilegal = ممنوع بالقانون.
+      ar: |
+        bumi = الأرض (الكوكب)، planet = كوكب. lautan = محيط، بحار واسعة، permukaan = سطح (permukaan laut).
+        energi = طاقة (energi matahari = طاقة شمسية). gas = غاز.
+        membakar = يحرق (من bakar). ilegal = غير قانوني.
+      en: |
+        bumi = the earth, planet = planet. lautan = ocean, the open sea, permukaan = surface (permukaan laut).
+        energi = energy (energi matahari = solar energy). gas = gas.
+        membakar = burn (from bakar). ilegal = illegal.
+    examples:
+      - text: Bumi adalah planet kita.
+        ar_eg: الأرض هي كوكبنا.
+        ar: الأرض كوكبنا.
+        en: The earth is our planet.
+      - text: Jangan membakar sampah plastik!
+        ar_eg: ما تحرقش زبالة البلاستيك!
+        ar: لا تحرق نفايات البلاستيك!
+        en: Don't burn plastic rubbish!
+      - text: Menjual telur penyu itu ilegal.
+        ar_eg: بيع بيض السلاحف ممنوع بالقانون.
+        ar: بيع بيض السلاحف غير قانوني.
+        en: Selling turtle eggs is illegal.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: رينا قالت «Menurut saya, sedotan plastik harus dilarang» وانت موافق. ترد بإيه؟
-      ar: قالت رينا «Menurut saya, sedotan plastik harus dilarang» وأنت توافقها. بمَ تردّ؟
-      en: 'Rina says "Menurut saya, sedotan plastik harus dilarang", and you agree. What do you answer?'
-    options: ["Saya sependapat. Sedotan plastik berbahaya bagi penyu.", "Kamu salah!", "Benarkah? Siapa pun tidak tahu."]
-    answer: 0
-    words: [sependapat, berbahaya]
-  - id: e02
-    type: listen
-    text: Saya kurang setuju. Menurut saya, dendanya terlalu berat untuk pedagang kecil.
-    question:
-      ar_eg: راكا مش موافق ليه؟
-      ar: لماذا لا يوافق راكا؟
-      en: Why doesn't Raka agree?
-    options: ["Plastik tidak berbahaya.", "Dendanya terlalu berat untuk pedagang kecil.", "Dia suka sedotan plastik."]
-    answer: 1
-    meaning:
-      ar_eg: أنا مش موافق أوي. في رأيي الغرامة تقيلة أوي على التجار الصغيرين.
-      ar: لا أوافق تمامًا؛ في رأيي الغرامة ثقيلة جدًا على صغار التجار.
-      en: I don't quite agree. In my opinion the fine is too heavy for small traders.
-    words: [denda, kurang setuju]
-  - id: e03
     type: match_pairs
     pairs:
-      - text: melarang
-        ar_eg: يمنع
-        ar: يمنع
-        en: to ban, forbid
-      - text: solusi
-        ar_eg: حل
-        ar: حلّ
-        en: solution
-      - text: denda
-        ar_eg: غرامة
-        ar: غرامة
-        en: fine (penalty)
-      - text: ada benarnya
-        ar_eg: عندك حق شوية
-        ar: فيه شيء من الصواب
-        en: that's partly true
-    words: [melarang, solusi, denda]
+      - text: bumi
+        ar_eg: الأرض
+        ar: الأرض
+        en: the earth
+      - text: planet
+        ar_eg: كوكب
+        ar: كوكب
+        en: planet
+      - text: energi
+        ar_eg: طاقة
+        ar: طاقة
+        en: energy
+      - text: gas
+        ar_eg: غاز
+        ar: غاز
+        en: gas
+    words: [bumi, planet, energi, gas]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: membakar
+        ar_eg: يحرق
+        ar: يحرق
+        en: burn
+      - text: permukaan
+        ar_eg: سطح
+        ar: سطح
+        en: surface
+      - text: lautan
+        ar_eg: محيط، بحور
+        ar: محيط
+        en: ocean
+      - text: ilegal
+        ar_eg: ممنوع بالقانون
+        ar: غير قانوني
+        en: illegal
+    words: [membakar, permukaan, lautan, ilegal]
+  - id: e03
+    type: listen
+    text: Di sini menjual telur penyu itu ilegal.
+    question:
+      ar_eg: بيع بيض السلاحف عامل إزاي؟
+      ar: ما حكم بيع بيض السلاحف؟
+      en: What about selling turtle eggs?
+    options: [مسموح, ممنوع بالقانون, رخيص]
+    answer: 1
+    meaning:
+      ar_eg: هنا بيع بيض السلاحف ممنوع بالقانون.
+      ar: بيع بيض السلاحف هنا غير قانوني.
+      en: Selling turtle eggs is illegal here.
+    words: [ilegal]
   - id: e04
     type: fill_blank
-    sentence: Gili Trawangan ___ mobil dan sepeda motor.
+    sentence: Jangan ___ sampah plastik. Itu berbahaya.
     meaning:
-      ar_eg: جيلي تراوانجان بتمنع العربيات والموتوسيكلات.
-      ar: تمنع جيلي تراوانغان السيارات والدراجات النارية.
-      en: Gili Trawangan bans cars and motorbikes.
-    options: [mengurangi, melarang, membuang]
-    answers: [melarang]
-    words: [melarang]
+      ar_eg: ما ___ زبالة البلاستيك. ده خطر.
+      ar: لا ___ نفايات البلاستيك. هذا خطر.
+      en: Don't ___ plastic rubbish. It's dangerous.
+    options: [lautan, membakar, planet]
+    answers: [membakar]
+    words: [membakar, lautan, planet]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إحنا عايشين على أنهي كوكب؟
+      ar: على أي كوكب نعيش؟
+      en: Which planet do we live on?
+    options: [lautan, gas, bumi]
+    answer: 2
+    explain:
+      ar_eg: bumi = الأرض، كوكبنا.
+      ar: bumi = الأرض، كوكبنا.
+      en: bumi = the earth, our planet.
+    words: [bumi, lautan, gas]
+  - id: e06
+    type: fill_blank
+    sentence: Rumah ini memakai ___ matahari.
+    meaning:
+      ar_eg: البيت ده بيستخدم ___ الشمس.
+      ar: يستخدم هذا البيت ___ الشمس.
+      en: This house uses solar ___.
+    options: [ilegal, energi, permukaan]
+    answers: [energi]
+    words: [energi, ilegal, permukaan]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: في رأيك، إيه الحل؟
-      ar: في رأيك، ما الحل؟
-      en: In your opinion, what's the solution?
-    answer: Menurut Anda, apa solusinya?
-    alternatives: ["Apa solusinya, menurut Anda?"]
-    distractors: [dengan, setuju]
-    words: [solusi]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عندك حق شوية، بس الغرامة تقيلة أوي.
-      ar: في كلامك شيء من الصواب، لكنّ الغرامة ثقيلة جدًا.
-      en: That's partly true, but the fine is too heavy.
-    answers:
-      - Ada benarnya, tetapi dendanya terlalu berat.
-      - Ada benarnya, tetapi dendanya terlalu berat
-      - Ada benarnya, tapi dendanya terlalu berat.
-      - Ada benarnya, tapi dendanya terlalu berat
-      - Ada benarnya, tetapi denda itu terlalu berat.
-      - Ada benarnya, tapi denda itu terlalu berat.
-      - Ada benarnya, tetapi dendanya terlalu mahal.
-    words: [denda]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: في رأيي، سنجيجي لازم تمنع الشفاطات البلاستيك.
-      ar: في رأيي، يجب أن تمنع سنغيغي المصّاصات البلاستيكية.
-      en: In my opinion, Senggigi should ban plastic straws.
-    answers:
-      - Menurut saya, Senggigi harus melarang sedotan plastik.
-      - Menurut saya, Senggigi harus melarang sedotan plastik
-      - Menurut saya, Senggigi sebaiknya melarang sedotan plastik.
-      - Menurut saya, sebaiknya Senggigi melarang sedotan plastik.
-      - Menurut aku, Senggigi harus melarang sedotan plastik.
-      - Menurut saya Senggigi harus melarang sedotan plastik.
-    words: [melarang, sedotan]
+      ar_eg: الطاقة اللي من الغاز مش نضيفة.
+      ar: الطاقة من الغاز ليست نظيفة.
+      en: Energy from gas isn't clean.
+    answer: Energi dari gas tidak bersih.
+    distractors: [bumi, lautan]
+    words: [energi, gas]
   - id: e08
-    type: dictation
-    text: Jadi, kesimpulannya, tas kain adalah solusi yang baik.
-    meaning:
-      ar_eg: يعني في الآخر، الشنطة القماش حل كويس.
-      ar: إذن، الخلاصة أنّ حقيبة القماش حلّ جيّد.
-      en: So, to conclude, cloth bags are a good solution.
-    words: [solusi, kesimpulannya]
+    type: translate
+    direction: from_target
+    source_text: Bumi adalah planet yang indah.
+    answers_meaning:
+      ar_eg: [الأرض كوكب جميل, الأرض كوكب حلو]
+      ar: [الأرض كوكب جميل]
+      en: [The earth is a beautiful planet, Earth is a beautiful planet]
+    words: [bumi, planet]
   - id: e09
     type: speaking
-    text: Saya kurang setuju. Menurut saya, denda bukan solusi.
+    text: Jangan membakar sampah di pantai.
     meaning:
-      ar_eg: أنا مش موافق أوي. في رأيي، الغرامة مش حل.
-      ar: لا أوافق تمامًا؛ في رأيي، الغرامة ليست حلًّا.
-      en: I don't quite agree. In my opinion, a fine isn't the solution.
-    words: [denda, solusi, kurang setuju]
+      ar_eg: ما تحرقش زبالة على الشط.
+      ar: لا تحرق النفايات على الشاطئ.
+      en: Don't burn rubbish on the beach.
+    words: [membakar]
+  - id: e10
+    type: multiple_choice
+    question: Banyak sampah plastik ada di ___ laut.
+    options: [planet, permukaan, lautan]
+    answer: 1
+    explain:
+      ar_eg: permukaan laut = سطح البحر.
+      ar: permukaan laut = سطح البحر.
+      en: permukaan laut = the sea surface.
+    words: [permukaan, lautan, planet]
 dialogue:
-  title: Diskusi di kafe
   lines:
-    - speaker: Rina
-      text: Katanya, di Gili ada denda untuk sampah plastik. Bagaimana pendapatmu, Raka?
-      ar_eg: بيقولوا إن في جيلي فيه غرامة على الزبالة البلاستيك. إيه رأيك يا راكا؟
-      ar: يقولون إنّ في جيلي غرامة على النفايات البلاستيكية. ما رأيك يا راكا؟
-      en: They say there's a fine for plastic rubbish on the Gilis. What do you think, Raka?
-    - speaker: Raka
-      text: Saya kurang setuju. Dendanya terlalu berat untuk pedagang kecil.
-      ar_eg: أنا مش موافق أوي. الغرامة تقيلة أوي على التجار الصغيرين.
-      ar: لا أوافق تمامًا؛ الغرامة ثقيلة جدًا على صغار التجار.
-      en: I don't quite agree. The fine is too heavy for small traders.
+    - speaker: Mas Rizal
+      text: Lihat, Mohamed! Ada asap di sana. Orang membakar sampah.
+      ar_eg: بص يا محمد! فيه دخان هناك. الناس بتحرق زبالة.
+      ar: انظر يا محمد! هناك دخان. الناس يحرقون النفايات.
+      en: Look, Mohamed! There's smoke over there. People are burning rubbish.
     - speaker: Mohamed
-      text: Ada benarnya. Tapi bukankah plastik berbahaya bagi penyu?
-      ar_eg: عندك حق شوية. بس مش البلاستيك خطر على السلاحف؟
-      ar: في كلامك شيء من الصواب، لكن أليس البلاستيك خطرًا على السلاحف؟
-      en: That's partly true. But isn't plastic dangerous for turtles?
-    - speaker: Raka
-      text: Betul. Jadi, apa solusinya?
-      ar_eg: صح. طب إيه الحل؟
-      ar: صحيح. فما الحل إذن؟
-      en: True. So what's the solution?
+      text: Wah, itu tidak baik untuk bumi.
+      ar_eg: ياه، ده مش كويس للأرض.
+      ar: هذا ليس جيدًا للأرض.
+      en: Oh, that's bad for the earth.
+    - speaker: Mas Rizal
+      text: Betul. Di permukaan laut juga banyak plastik.
+      ar_eg: صح. وعلى سطح البحر كمان فيه بلاستيك كتير.
+      ar: صحيح. وعلى سطح البحر أيضًا بلاستيك كثير.
+      en: Right. There's a lot of plastic on the sea surface too.
     - speaker: Mohamed
-      text: Menurut saya, sebaiknya kita melarang sedotan dan kantong plastik dulu.
-      ar_eg: في رأيي، الأحسن نمنع الشفاطات والأكياس البلاستيك الأول.
-      ar: في رأيي، الأفضل أن نمنع المصّاصات والأكياس البلاستيكية أولًا.
-      en: In my opinion, we'd better ban straws and plastic bags first.
-    - speaker: Rina
-      text: Saya sependapat. Siapa pun bisa membawa tas kain!
-      ar_eg: رأيي زي رأيك. أي حد يقدر يجيب شنطة قماش!
-      ar: أشاركك الرأي. يستطيع أيّ أحد أن يحمل حقيبة قماش!
-      en: I agree. Anyone can bring a cloth bag!
+      text: Di Mesir juga sama. Kita harus menjaga lautan.
+      ar_eg: في مصر نفس الحكاية. لازم نحافظ على البحور.
+      ar: وفي مصر كذلك. علينا أن نحافظ على البحار.
+      en: Same in Egypt. We have to look after the oceans.
+    - speaker: Mas Rizal
+      text: Ya. Menjual telur penyu juga ilegal, tapi masih ada orang yang menjualnya.
+      ar_eg: أيوه. وبيع بيض السلاحف ممنوع، بس لسه فيه ناس بتبيعه.
+      ar: نعم. وبيع بيض السلاحف ممنوع قانونًا، لكن ما زال البعض يبيعه.
+      en: Yes. Selling turtle eggs is illegal too, but some people still sell them.
 new_words:
-  - word: melarang
+  - word: bumi
+    pos: noun
+    ar_eg: الأرض (الكوكب)
+    ar: الأرض
+    en: the earth
+  - word: planet
+    pos: noun
+    ar_eg: كوكب
+    ar: كوكب
+    en: planet
+  - word: energi
+    pos: noun
+    ar_eg: طاقة
+    ar: طاقة
+    en: energy
+  - word: gas
+    pos: noun
+    ar_eg: غاز
+    ar: غاز
+    en: gas
+  - word: membakar
     pos: verb
-    ar_eg: يمنع
-    ar: يمنع
-    en: to ban, forbid
-  - word: solusi
+    ar_eg: يحرق
+    ar: يحرق
+    en: burn
+  - word: permukaan
     pos: noun
-    ar_eg: حل
-    ar: حلّ
-    en: solution
-  - word: denda
+    ar_eg: سطح
+    ar: سطح
+    en: surface
+  - word: lautan
     pos: noun
-    ar_eg: غرامة
-    ar: غرامة
-    en: fine (penalty)
+    ar_eg: محيط، بحور واسعة
+    ar: محيط، بحار
+    en: ocean, the open sea
+  - word: ilegal
+    pos: adjective
+    ar_eg: ممنوع بالقانون
+    ar: غير قانوني
+    en: illegal
 review:
   status: draft
   verified: false
