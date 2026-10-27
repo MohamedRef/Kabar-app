@@ -117,27 +117,28 @@ exercises:
       en: The board is discussing promotions for next quarter.
     words: [direksi, berunding, promo, kuartal]
   - id: e10
-    type: translate
-    direction: from_target
-    source_text: Untuk sementara, harga satuan untuk pesanan kecil belum bisa turun.
-    answers_meaning:
-      ar_eg:
-        - حاليًا، سعر الوحدة للطلبيات الصغيرة لسه مايقدرش ينزل.
-        - في الوقت الحالي، مش هنقدر نقلّل سعر الوحدة للطلبيات الصغيرة لسه.
-      ar:
-        - في الوقت الحالي لا يمكن بعدُ خفض سعر الوحدة للطلبيات الصغيرة.
-        - لا يستطيع سعر الوحدة للطلبيات الصغيرة أن ينخفض مؤقّتًا.
-      en:
-        - For now, the unit price for small orders can't come down yet.
-        - We can't lower the unit price on small orders for the time being.
-    words: [sementara, harga satuan, pesanan, belum bisa]
+    type: speaking
+    text: Kemasan baru membuat rendang laris, dan harganya terjangkau.
+    meaning:
+      ar_eg: التغليف الجديد خلّى الرندانج عليه طلب، وسعره معقول.
+      ar: جعل التغليف الجديد الرندانغ رائجًا، وسعره في المتناول.
+      en: The new packaging made the rendang sell well, and it's affordable.
+    words: [kemasan, laris, terjangkau]
   - id: e11
     type: match_pairs
     pairs:
-      - text: pendanaan
-        ar_eg: تمويل
-        ar: تمويل
-        en: funding
+      - text: waralaba
+        ar_eg: فرانشايز
+        ar: امتياز تجاري
+        en: franchise
+      - text: pelanggan setia
+        ar_eg: زبون دايم
+        ar: زبون وفيّ
+        en: loyal customer
+      - text: usulan
+        ar_eg: اقتراح
+        ar: اقتراح
+        en: proposal
       - text: kemitraan
         ar_eg: شراكة
         ar: شراكة
@@ -146,33 +147,24 @@ exercises:
         ar_eg: حل وسط
         ar: حلّ وسط
         en: compromise
-      - text: kemasan
-        ar_eg: تغليف
-        ar: تغليف
-        en: packaging
       - text: grosir
         ar_eg: جملة
         ar: جملة
         en: wholesale
-      - text: terjangkau
-        ar_eg: سعره معقول
-        ar: في المتناول
-        en: affordable
-    words: [pendanaan, kemitraan, kompromi, kemasan, grosir, terjangkau]
+    words: [waralaba, pelanggan setia, usulan, kemitraan, kompromi, grosir]
   - id: e12
     type: listen
-    text: Rendang itu laris, jadi kami bisa melunasi utang lebih cepat.
+    text: Pembahasan cabang baru ditunda, tetapi promosi Ramadan disetujui hari ini.
     question:
-      ar_eg: هيعملوا إيه عشان المبيعات حلوة؟
-      ar: ماذا سيفعلون لأن المبيعات جيدة؟
-      en: What will good sales let them do?
-    options: [هنسدّ الدين أسرع, هنستلف تاني, هنقفل المحل]
-    answer: 0
-    meaning:
-      ar_eg: الرندانج عليه طلب، فهنقدر نسدّ الدين أسرع.
-      ar: الرندانغ رائج، لذا سنسدّد الدين أسرع.
-      en: The rendang is selling well, so we can pay off the debt sooner.
-    words: [laris, melunasi]
+      ar_eg: إيه اللي اتوافق عليه النهارده؟
+      ar: ما الذي أُقرّ اليوم؟
+      en: What was approved today?
+    options:
+      - الفرع الجديد.
+      - عرض رمضان.
+      - المستثمر الجديد.
+    answer: 1
+    words: [ditunda, cabang, promosi]
 dialogue:
   title: Makan rendang bersama
   lines:
