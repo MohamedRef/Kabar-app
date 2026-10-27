@@ -107,15 +107,15 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | bipa7.u09 | Danau Sentani | Festival Danau Sentani (Lake Sentani festival) | `bipa7.u09.png` |
 | bipa7.u10 | Lembah Baliem (Wamena) | Festival Lembah Baliem (Baliem valley festival) | `bipa7.u10.png` |
 
-## J1 · Surabaya
+## J1 · Malioboro, Yogyakarta
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
-| j1.u01 | Pasar Turi | Suroboyo Bus (Suroboyo Bus) | `j1.u01.png` |
-| j1.u02 | Gubeng | Stasiun Gubeng (Gubeng station) | `j1.u02.png` |
-| j1.u03 | Tunjungan | Jalan Tunjungan di malam hari (Jalan Tunjungan at night) | `j1.u03.png` |
-| j1.u04 | Ampel | Masjid Sunan Ampel (Sunan Ampel mosque) | `j1.u04.png` |
-| j1.u05 | Kenjeran | Pantai Kenjeran (Kenjeran beach) | `j1.u05.png` |
+| j1.u01 | Malioboro | Angkringan Malioboro (Angkringan Malioboro) | `j1.u01.png` |
+| j1.u02 | Tugu | Stasiun Tugu (Tugu station) | `j1.u02.png` |
+| j1.u03 | Alun-alun Kidul | Alun-alun Kidul di malam hari (Alun-alun Kidul at night) | `j1.u03.png` |
+| j1.u04 | Jalan Kaliurang | Jalan Kaliurang (Jalan Kaliurang) | `j1.u04.png` |
+| j1.u05 | Parangtritis | Pantai Parangtritis (Parangtritis beach) | `j1.u05.png` |
 | j1.u06 | Wonokromo | Kebun Binatang Surabaya (Surabaya zoo) | `j1.u06.png` |
 | j1.u07 | Pasar Atom | Pasar Atom (Pasar Atom) | `j1.u07.png` |
 
@@ -136,12 +136,12 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 |---|---|---|---|
 | j3.u01 | Lempuyangan | Stasiun Lempuyangan (Lempuyangan station) | `j3.u01.png` |
 | j3.u02 | Pasar Kranggan | Pasar Kranggan (Pasar Kranggan) | `j3.u02.png` |
-| j3.u03 | Kauman | Kampung Kauman (Kampung Kauman) | `j3.u03.png` |
+| j3.u03 | Jalan Kaliurang | Kampung Kauman (Kampung Kauman) | `j3.u03.png` |
 | j3.u04 | Pakualaman | Pura Pakualaman (Pura Pakualaman) | `j3.u04.png` |
 | j3.u05 | Pasar Beringharjo | Batik Beringharjo (Batik from Beringharjo) | `j3.u05.png` |
 | j3.u06 | Giriloyo | Batik tulis Giriloyo (Giriloyo batik tulis) | `j3.u06.png` |
 
-## J4 · Yogyakarta
+## J4 · Malioboro, Yogyakarta
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
