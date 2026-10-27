@@ -541,6 +541,7 @@ pub enum Msg {
     TranslationUnreachable,
     TranslationTryAgain,
     TranslationRetry,
+    ReaderWriteFailed,
     // Unggah-Ungguh Simulator (M11)
     UnggahTitle,
     UnggahBlurb,
@@ -1957,6 +1958,11 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (TranslationRetry, ArEg) => "جرّب تاني",
         (TranslationRetry, Ar) => "أعد المحاولة",
         (TranslationRetry, En) => "Try again",
+        (ReaderWriteFailed, ArEg) => "معرفتش أحفظ ده دلوقتي، ومفيش حاجة اتغيّرت. جرّب تاني بعد شوية.",
+        (ReaderWriteFailed, Ar) => "تعذّر الحفظ الآن، ولم يتغيّر شيء. حاول مجددًا بعد قليل.",
+        (ReaderWriteFailed, En) => {
+            "Couldn't save that just now, so nothing changed. Please try again in a moment."
+        }
         (ReaderIntro, ArEg) => "الصق أي كلام إندونيسي أو جاوي، أو افتح سكرين شوت، وكل كلمة هتبقى ليها شرح.",
         (ReaderIntro, Ar) => "الصق أي نص إندونيسي أو جاوي، أو افتح لقطة شاشة، وستجد شرحًا لكل كلمة.",
         (ReaderIntro, En) => {
