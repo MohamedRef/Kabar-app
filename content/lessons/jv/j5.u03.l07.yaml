@@ -1,0 +1,190 @@
+schema: kabar.lesson/v1
+id: j5.u03.l07
+language: jv
+title: Menu warung
+can_do:
+  ar_eg: تقرا يافطة منيو عربية أكل مكتوبة على السمع وتطلب بالإملا الصح.
+  ar: أن تقرأ لافتة قائمة طعام مكتوبة كما تُنطق وتطلب بالإملاء القياسي.
+  en: Read a street-stall menu spelled by ear and order in standard spelling.
+slides:
+  - title: Warung Bu Sri
+    body:
+      ar_eg: |
+        بو سري عندها عربية أكل في سيمبانج ليما، واليافطة بتاعتها مكتوبة على السمع زي الشات. اقراها وافهم الأسعار (RB = ribu = ألف).
+        كلمات جديدة: sega kucing = «رز القطة»، لفّة رز صغيرة بحاجة بسيطة جواها، أكلة شعبية رخيصة. tela = كسافا (ketela، وبتتنطق «تيلو»).
+      ar: |
+        لدى بو سري كشك طعام في سيمبانغ ليما، ولافتته مكتوبة كما تُنطق مثل الدردشة. اقرأها وافهم الأسعار (RB = ribu = ألف).
+        كلمات جديدة: sega kucing = «أرز القطة»، لفافة أرز صغيرة بقليل من الإضافات، طعام شعبي رخيص. وtela = الكسافا (ketela، وتُنطق «تيلو»).
+      en: |
+        Bu Sri has a food stall at Simpang Lima, and her sign is spelled by ear, like a chat. Read it and work out the prices (RB = ribu = thousand).
+        New words: sega kucing = "cat rice", a tiny packet of rice with a little topping, cheap street food. tela = cassava (ketela, said "telo").
+    grammar: jv.orthography
+    examples:
+      - text: SEGO KUCING 3RB · TELO GORENG 2RB
+        ar_eg: رز القطة ٣ آلاف · كسافا محمّرة ألفين. (الإملا الصح sega kucing، tela goreng)
+        ar: أرز القطة ٣ آلاف · كسافا مقلية ألفان. (القياسي sega kucing، tela goreng)
+        en: Cat rice 3,000 · fried cassava 2,000. (standard sega kucing, tela goreng)
+      - text: Monggo pinarak, Mas!
+        ar_eg: اتفضّل استريّح يا أستاذ! (الإملا الصح Mangga pinarak)
+        ar: تفضّل بالجلوس يا سيدي! (القياسي Mangga pinarak)
+        en: Please come in and sit down! (standard Mangga pinarak)
+      - text: Mangan neng kene opo dibungkus?
+        ar_eg: هتاكل هنا ولا تيك أواي؟ (الإملا الصح apa)
+        ar: هل ستأكل هنا أم تأخذه معك؟ (القياسي apa)
+        en: Eat here or take away? (standard apa)
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: رز القطة بكام؟
+      ar: كم سعر أرز القطة؟
+      en: How much is the sega kucing?
+    options: [rong ewu, telung ewu, limang ewu]
+    answer: 1
+    words: [sega kucing]
+  - id: e02
+    type: multiple_choice
+    question: TELO GORENG
+    question_meaning:
+      ar_eg: دي تتكتب إزاي بالإملا الصح؟
+      ar: كيف تُكتب بالإملاء القياسي؟
+      en: How is this written in standard spelling?
+    options: [tela goreng, telo goreng, tolo goreng]
+    answer: 0
+    explain:
+      ar_eg: a اللي في آخر الكلمة بتتنطق o، زي sega «سيغو». فالإملا الصح tela.
+      ar: a في آخر الكلمة تُنطق o، كما في sega «سيغو»، فالقياسي tela.
+      en: A final a is said o, like sega "sego", so the standard is tela.
+    words: [tela]
+  - id: e03
+    type: listen
+    text: Mangan neng kene apa dibungkus?
+    question:
+      ar_eg: بو سري بتسألك على إيه؟
+      ar: عمَّ تسألك بو سري؟
+      en: What is Bu Sri asking you?
+    options: ["Mau minum apa?", "Berapa harganya?", "Makan di sini atau dibungkus?"]
+    answer: 2
+    meaning:
+      ar_eg: هتاكل هنا ولا تيك أواي؟
+      ar: هل ستأكل هنا أم تأخذه معك؟
+      en: Eat here or take away?
+    explain:
+      ar_eg: apa بين اختيارين = «ولا» (atau).
+      ar: apa بين خيارين = «أم» (atau).
+      en: apa between two choices = "or" (atau).
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: sega kucing
+        ar_eg: رز القطة (لفّة رز صغيرة)
+        ar: أرز القطة (لفافة أرز صغيرة)
+        en: cat rice (tiny rice packet)
+      - text: tela
+        ar_eg: كسافا
+        ar: كسافا
+        en: cassava
+      - text: dibungkus
+        ar_eg: متغلّف / تيك أواي
+        ar: مغلّف / سفري
+        en: wrapped to take away
+      - text: pinarak
+        ar_eg: يتفضّل يقعد
+        ar: يتفضّل بالجلوس
+        en: come in and sit (polite)
+      - text: regane
+        ar_eg: سعره
+        ar: سعره
+        en: its price
+    words: [sega kucing, tela, dibungkus]
+  - id: e05
+    type: fill_blank
+    sentence: ___ pinarak, Mas!
+    meaning:
+      ar_eg: اتفضّل استريّح يا أستاذ!
+      ar: تفضّل بالجلوس يا سيدي!
+      en: Please come in and sit down!
+    options: [Monggo, Mangga]
+    answers: [Mangga]
+    explain:
+      ar_eg: monggo إملا شات. الصح mangga.
+      ar: monggo إملاء الدردشة، والقياسي mangga.
+      en: monggo is chat spelling; the standard is mangga.
+  - id: e06
+    type: dictation
+    text: Mangan neng kene apa dibungkus?
+    meaning:
+      ar_eg: هتاكل هنا ولا تيك أواي؟
+      ar: هل ستأكل هنا أم تأخذه معك؟
+      en: Eat here or take away?
+    words: [dibungkus]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: (بالإملا الصح) هشتري اتنين رز قطة وكسافا محمّرة.
+      ar: (بالإملاء القياسي) سأشتري اثنين من أرز القطة وكسافا مقلية.
+      en: (standard spelling) I'll buy two sega kucing and fried cassava.
+    answer: Aku tuku sega kucing loro lan tela goreng.
+    distractors: [sego, telo]
+    explain:
+      ar_eg: sego وtelo إملا شات. وloro هنا «اتنين»، فتفضل loro.
+      ar: sego وtelo إملاء دردشة، وloro هنا «اثنان» فتبقى loro.
+      en: sego and telo are chat spellings; loro here means "two", so it stays loro.
+    words: [sega kucing, tela]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بالإملا الصح) الكسافا المحمّرة بكام؟
+      ar: (بالإملاء القياسي) بكم الكسافا المقلية؟
+      en: (standard spelling) How much is the fried cassava?
+    answers:
+      - Tela goreng regane pira?
+      - Regane tela goreng pira?
+      - Pira regane tela goreng?
+      - Tela gorenge pira?
+      - Tela goreng pira?
+      - Tela goreng pira regane?
+    words: [tela]
+dialogue:
+  title: Tuku ing warung
+  lines:
+    - speaker: Bu Sri
+      text: Mangga pinarak, Mas!
+      ar_eg: اتفضّل استريّح يا أستاذ!
+      ar: تفضّل بالجلوس يا سيدي!
+      en: Please come in and sit down!
+    - speaker: Mohamed
+      text: Sega kucing kalih, Bu, kaliyan tela goreng.
+      ar_eg: اتنين رز قطة يا طنط، وكسافا محمّرة.
+      ar: اثنان من أرز القطة يا سيدتي، وكسافا مقلية.
+      en: Two sega kucing, ma'am, and fried cassava.
+    - speaker: Bu Sri
+      text: Mangan neng kene apa dibungkus?
+      ar_eg: هتاكل هنا ولا تيك أواي؟
+      ar: هل ستأكل هنا أم تأخذه معك؟
+      en: Eat here or take away?
+    - speaker: Mohamed
+      text: Dibungkus, Bu. Pinten?
+      ar_eg: تيك أواي يا طنط. بكام؟
+      ar: سفري يا سيدتي. بكم؟
+      en: To take away, ma'am. How much?
+    - speaker: Bu Sri
+      text: Wolung ewu, Mas.
+      ar_eg: تمن تلاف يا أستاذ.
+      ar: ثمانية آلاف يا سيدي.
+      en: Eight thousand.
+new_words:
+  - word: sega kucing
+    pos: noun
+    ar_eg: رز القطة، لفّة رز صغيرة رخيصة (بتتنطق «سيغو»)
+    ar: أرز القطة، لفافة أرز صغيرة رخيصة (تُنطق «سيغو»)
+    en: cat rice, a tiny cheap rice packet (said "sego") = nasi kucing
+  - word: tela
+    pos: noun
+    ar_eg: كسافا (بتتنطق «تيلو»)
+    ar: الكسافا (تُنطق «تيلو»)
+    en: cassava (said "telo") = ketela, singkong
+review:
+  status: draft
+  verified: false

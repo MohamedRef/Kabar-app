@@ -1,180 +1,195 @@
 schema: kabar.lesson/v1
 id: bipa3.u04.l06
 language: id
-title: Ulangan Unit 4
+title: Tips sehat di radio
 can_do:
-  ar_eg: تعرّف حاجة وتشرح فايدتها للصحة.
-  ar: أن تعرّف شيئًا وتشرح فائدته للصحة.
-  en: Define and explain.
+  ar_eg: تسمع نصايح أكل صحي في الراديو وتفهم إيه اللي لازم تاكله وليه.
+  ar: أن تستمع إلى نصائح غذائية في الإذاعة وتفهم ما ينبغي أكله ولماذا.
+  en: Follow healthy-eating tips on the radio and catch the reasons.
+slides:
+  - title: Radio Sembalun pagi ini
+    grammar: id.definition.adalah-merupakan
+    body:
+      ar_eg: |
+        الصبح في سيمبالون، الراديو بيدّي نصايح عن الفطار الصحي. الدرس ده للسمع الأول:
+        اسمع الجمل في التمارين، وارجع هنا لو محتاج.
+        دوّر على: الفطار المتوازن فيه إيه؟ نقلّل إيه، وليه؟ والفاكهة مفيدة في إيه؟
+      ar: |
+        في الصباح في سيمبالون تقدّم الإذاعة نصائح عن الفطور الصحي. هذا الدرس للاستماع أولًا:
+        استمع إلى الجمل في التمارين، وعُد إلى هنا عند الحاجة.
+        ابحث عن: ممّ يتكوّن الفطور المتوازن؟ ماذا نقلّل ولماذا؟ وما فائدة الفاكهة؟
+      en: |
+        Morning in Sembalun: the radio is giving tips on a healthy breakfast. This lesson is listening first:
+        hear the sentences in the exercises and come back here if you need to.
+        Listen for: what's in a balanced breakfast? What should we cut down on, and why? What is fruit good for?
+    examples:
+      - text: Sarapan yang sehat adalah sarapan yang seimbang, yaitu ada nasi, sayur, dan protein.
+        ar_eg: الفطار الصحي هو الفطار المتوازن، يعني فيه رز وخضار وبروتين.
+        ar: الفطور الصحي هو الفطور المتوازن، أي فيه أرز وخضار وبروتين.
+        en: A healthy breakfast is a balanced breakfast, namely with rice, vegetables and protein.
+      - text: Kurangi makanan goreng, karena makanan goreng mengandung banyak lemak.
+        ar_eg: قلّل الأكل المقلي، عشان الأكل المقلي فيه دهون كتير.
+        ar: قلّل الطعام المقلي، لأنّ الطعام المقلي يحتوي على دهون كثيرة.
+        en: Cut down on fried food, because fried food contains a lot of fat.
+      - text: Jangan lupa makan buah. Buah kaya serat dan vitamin, jadi buah menyehatkan tubuh.
+        ar_eg: متنساش تاكل فاكهة. الفاكهة غنية بالألياف والفيتامينات، فبتخلّي الجسم صحي.
+        ar: لا تنسَ أكل الفاكهة؛ فهي غنية بالألياف والفيتامينات، ولذلك تقوّي صحة الجسم.
+        en: Don't forget to eat fruit. Fruit is rich in fibre and vitamins, so it keeps the body healthy.
 exercises:
   - id: e01
+    type: listen
+    text: Sarapan yang sehat adalah sarapan yang seimbang, yaitu ada nasi, sayur, dan protein.
+    question:
+      ar_eg: حسب الراديو، الفطار المتوازن فيه إيه؟
+      ar: بحسب الإذاعة، ممّ يتكوّن الفطور المتوازن؟
+      en: According to the radio, what's in a balanced breakfast?
+    options: ["Nasi, sayur, dan protein.", "Roti, kopi, dan gula.", "Buah dan susu saja."]
+    answer: 0
+    meaning:
+      ar_eg: الفطار الصحي هو الفطار المتوازن، يعني فيه رز وخضار وبروتين.
+      ar: الفطور الصحي هو الفطور المتوازن، أي فيه أرز وخضار وبروتين.
+      en: A healthy breakfast is a balanced breakfast, namely with rice, vegetables and protein.
+    words: [seimbang, yaitu]
+  - id: e02
+    type: listen
+    text: Kurangi makanan goreng, karena makanan goreng mengandung banyak lemak.
+    question:
+      ar_eg: ليه لازم نقلّل الأكل المقلي؟
+      ar: لماذا ينبغي أن نقلّل الطعام المقلي؟
+      en: Why should we cut down on fried food?
+    options: ["Karena mahal.", "Karena tidak enak.", "Karena mengandung banyak lemak."]
+    answer: 2
+    meaning:
+      ar_eg: قلّل الأكل المقلي، عشان الأكل المقلي فيه دهون كتير.
+      ar: قلّل الطعام المقلي، لأنّ الطعام المقلي يحتوي على دهون كثيرة.
+      en: Cut down on fried food, because fried food contains a lot of fat.
+    words: [mengandung, lemak]
+  - id: e03
+    type: listen
+    text: Buah kaya serat dan vitamin, jadi buah menyehatkan tubuh.
+    options:
+      - Buah kaya serat dan vitamin, jadi buah menguatkan tulang.
+      - Buah kaya serat dan vitamin, jadi buah menyehatkan tubuh.
+      - Sayur kaya serat dan vitamin, jadi sayur menyehatkan tubuh.
+    answer: 1
+    meaning:
+      ar_eg: الفاكهة غنية بالألياف والفيتامينات، فبتخلّي الجسم صحي.
+      ar: الفاكهة غنية بالألياف والفيتامينات، ولذلك تقوّي صحة الجسم.
+      en: Fruit is rich in fibre and vitamins, so it keeps the body healthy.
+    words: [serat, menyehatkan]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الراديو قال نعمل إيه في الأكل المقلي؟
+      ar: ماذا قالت الإذاعة أن نفعل بالطعام المقلي؟
+      en: What did the radio say to do about fried food?
+    options: ["Makan lebih banyak.", "Menguranginya.", "Memanaskannya lagi."]
+    answer: 1
+    explain:
+      ar_eg: «Kurangi» أمر من mengurangi = قلّل.
+      ar: «Kurangi» صيغة أمر من mengurangi، أي قلّل.
+      en: '"Kurangi" is the command form of mengurangi, "cut down on".'
+    words: [mengurangi]
+  - id: e05
     type: match_pairs
     pairs:
-      - text: gizi
-        ar_eg: تغذية، قيمة غذائية
-        ar: تغذية
-        en: nutrition
+      - text: seimbang
+        ar_eg: متوازن
+        ar: متوازن
+        en: balanced
+      - text: lemak
+        ar_eg: دهون
+        ar: دهون
+        en: fat
       - text: serat
         ar_eg: ألياف
         ar: ألياف
         en: fibre
-      - text: makanan pokok
-        ar_eg: الأكل الأساسي
-        ar: الغذاء الأساسي
-        en: staple food
-      - text: tekanan darah
-        ar_eg: ضغط الدم
-        ar: ضغط الدم
-        en: blood pressure
-      - text: manfaat
-        ar_eg: فايدة
-        ar: فائدة
-        en: benefit
-    words: [gizi, serat, makanan pokok, tekanan darah, manfaat]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ جملة صحيحة؟
-      en: Which sentence is correct?
-    options: ["Sayur ini adalah segar.", "Sayur ini segar.", "Sayur ini merupakan segar."]
-    answer: 1
-    explain:
-      ar_eg: segar صفة، ومفيش adalah ولا merupakan قبل الصفة.
-      ar: segar صفة، ولا تسبق الصفةَ adalah ولا merupakan.
-      en: segar is an adjective; neither adalah nor merupakan goes before an adjective.
-  - id: e03
-    type: listen
-    text: Sembalun merupakan daerah sayur dan stroberi.
-    options: ["Sembalun adalah daerah sayur dan stroberi.", "Sembalun merupakan daerah sayur dan stroberi.", "Sembalun merupakan daerah jagung dan stroberi."]
-    answer: 1
-    meaning:
-      ar_eg: سمبالون منطقة خضار وفراولة.
-      ar: سمبالون منطقة لزراعة الخضار والفراولة.
-      en: Sembalun is an area of vegetables and strawberries.
-  - id: e04
-    type: listen
-    text: Bu Rohani punya dua kebun, yaitu kebun sayur dan kebun stroberi.
-    question:
-      ar_eg: مدام روحاني عندها أنهي جناين؟
-      ar: ما البساتين التي تملكها السيدة روحاني؟
-      en: What gardens does Bu Rohani have?
-    options: ["kebun jagung dan kebun ubi", "kebun kopi dan kebun teh", "kebun sayur dan kebun stroberi"]
-    answer: 2
-    meaning:
-      ar_eg: "مدام روحاني عندها جنينتين: جنينة خضار وجنينة فراولة."
-      ar: للسيدة روحاني بستانان، وهما بستان خضار وبستان فراولة.
-      en: Bu Rohani has two gardens, namely a vegetable garden and a strawberry garden.
-    words: [kebun, yaitu]
-  - id: e05
-    type: fill_blank
-    sentence: Bu Sari ___ sayur sebelum memasaknya.
-    meaning:
-      ar_eg: مدام ساري بتنضّف الخضار قبل ما تطبخه.
-      ar: تنظّف السيدة ساري الخضار قبل طبخها.
-      en: Bu Sari cleans the vegetables before cooking them.
-    options: [bersih, membersih, membersihkan]
-    answers: [membersihkan]
-    words: [membersihkan]
+      - text: mengandung
+        ar_eg: فيه، يحتوي على
+        ar: يحتوي على
+        en: to contain
+      - text: menyehatkan
+        ar_eg: يخلّي الواحد صحي
+        ar: يجعله صحيًّا
+        en: to make healthy
+    words: [seimbang, lemak, serat, mengandung, menyehatkan]
   - id: e06
-    type: fill_blank
-    sentence: Jalan kaki setiap pagi bisa ___ tekanan darah.
-    meaning:
-      ar_eg: المشي كل يوم الصبح ممكن ينزّل الضغط.
-      ar: المشي كل صباح قد يخفّض ضغط الدم.
-      en: Walking every morning can lower blood pressure.
-    options: [mematikan, menurunkan, menaikkan]
-    answers: [menurunkan]
-    words: [menurunkan, tekanan darah]
+    type: multiple_choice
+    question: Buah ___ serat dan vitamin.
+    options: [kaya, bukan, yaitu]
+    answer: 0
+    explain:
+      ar_eg: kaya + حاجة = غني بحاجة. «Buah kaya serat» = الفاكهة غنية بالألياف.
+      ar: kaya + اسم = غنيّ بـ. «Buah kaya serat» أي الفاكهة غنية بالألياف.
+      en: kaya + noun = rich in. "Buah kaya serat" = fruit is rich in fibre.
+    words: [kaya, serat]
   - id: e07
+    type: fill_blank
+    sentence: Makanan goreng ___ banyak lemak.
+    meaning:
+      ar_eg: الأكل المقلي فيه دهون كتير.
+      ar: يحتوي الطعام المقلي على دهون كثيرة.
+      en: Fried food contains a lot of fat.
+    answers: [mengandung]
+    words: [mengandung, lemak]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: "فيه هنا أكلتين أساسيتين: الرز والدرة."
-      ar: هنا غذاءان أساسيان، وهما الأرز والذرة.
-      en: There are two staple foods here, namely rice and corn.
-    answer: Ada dua makanan pokok di sini, yaitu nasi dan jagung.
-    distractors: [adalah, bukan]
-    words: [makanan pokok, yaitu, jagung]
-  - id: e08
+      ar_eg: قلّل الأكل المقلي، واشرب مية كتير.
+      ar: قلّل الطعام المقلي، واشرب ماءً كثيرًا.
+      en: Cut down on fried food, and drink lots of water.
+    answer: Kurangi makanan goreng dan minum banyak air putih.
+    alternatives: ["Minum banyak air putih dan kurangi makanan goreng."]
+    distractors: [mengandung, sayur]
+    words: [mengurangi]
+  - id: e09
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: اللبن بيقوّي العضم.
-      ar: الحليب يقوّي العظام.
-      en: Milk strengthens the bones.
+      ar_eg: الفطار الصحي هو الفطار المتوازن.
+      ar: الفطور الصحي هو الفطور المتوازن.
+      en: A healthy breakfast is a balanced breakfast.
     answers:
-      - Susu menguatkan tulang.
-      - Susu menguatkan tulang
-      - Susu bisa menguatkan tulang.
-      - Susu menguatkan tulang-tulang.
-    words: [menguatkan, tulang]
-  - id: e09
-    type: translate
-    direction: from_target
-    source_text: Tempe bukan daging, tetapi tempe mengandung banyak protein.
-    answers_meaning:
-      ar_eg:
-        - التمبيه مش لحمة، بس فيه بروتين كتير.
-        - التمبيه مش لحمة، لكن فيه بروتين كتير.
-      ar:
-        - التمبيه ليس لحمًا، لكنه يحتوي على كثير من البروتين.
-        - ليس التمبيه لحمًا، لكنه يحتوي على بروتين كثير.
-      en:
-        - Tempeh isn't meat, but it contains a lot of protein.
-        - Tempeh is not meat, but it contains lots of protein.
-        - Tempeh isn't meat, but tempeh contains a lot of protein.
-    words: [mengandung]
-  - id: e10
-    type: dictation
-    text: Makanan yang sama setiap hari membosankan.
-    meaning:
-      ar_eg: نفس الأكل كل يوم بيزهّق.
-      ar: الطعام نفسه كل يوم مملّ.
-      en: The same food every day is boring.
-    words: [membosankan]
-  - id: e11
-    type: speaking
-    text: Stroberi merupakan buah yang kaya vitamin C dan menyehatkan tubuh.
-    meaning:
-      ar_eg: الفراولة فاكهة غنية بفيتامين سي وبتخلّي الجسم صحي.
-      ar: الفراولة فاكهة غنية بفيتامين C وتقوّي صحة الجسم.
-      en: Strawberries are a fruit rich in vitamin C, and they keep the body healthy.
-    words: [kaya, menyehatkan, tubuh]
+      - Sarapan yang sehat adalah sarapan yang seimbang.
+      - Sarapan yang sehat adalah sarapan yang seimbang
+      - Sarapan sehat adalah sarapan yang seimbang.
+      - Sarapan sehat adalah sarapan yang seimbang
+      - Sarapan yang sehat merupakan sarapan yang seimbang.
+      - Sarapan sehat merupakan sarapan yang seimbang.
+    explain:
+      ar_eg: "هنا adalah (أو merupakan) لازم، عشان بعدها اسم: «sarapan yang seimbang»."
+      ar: "adalah (أو merupakan) لازمة هنا لأنّ بعدها اسمًا: «sarapan yang seimbang»."
+      en: adalah (or merupakan) is needed here because a noun follows, "sarapan yang seimbang".
+    words: [seimbang]
 dialogue:
-  title: Oleh-oleh dari Sembalun
+  title: Sarapan di rumah Bu Rohani
   lines:
     - speaker: Bu Rohani
-      text: Mohamed, ini stroberi dari kebun saya. Oleh-oleh untuk Bu Sari.
-      ar_eg: يا محمد، دي فراولة من جنينتي. هدية لمدام ساري.
-      ar: يا محمد، هذه فراولة من بستاني، هدية للسيدة ساري.
-      en: Mohamed, here are strawberries from my garden. A gift for Bu Sari.
+      text: Mohamed, tadi kamu dengar radio? Katanya, sarapan harus seimbang.
+      ar_eg: محمد، سمعت الراديو من شوية؟ بيقولوا الفطار لازم يكون متوازن.
+      ar: يا محمد، هل سمعت الإذاعة قبل قليل؟ يقولون إنّ الفطور يجب أن يكون متوازنًا.
+      en: Mohamed, did you hear the radio just now? They say breakfast should be balanced.
     - speaker: Mohamed
-      text: Terima kasih banyak, Bu! Stroberi Sembalun manis dan bergizi.
-      ar_eg: متشكر أوي يا حاجة! فراولة سمبالون مسكّرة ومغذّية.
-      ar: شكرًا جزيلًا يا سيدتي! فراولة سمبالون حلوة ومغذّية.
-      en: Thank you so much, Bu! Sembalun strawberries are sweet and nutritious.
+      text: Ya, Bu. Ada nasi, sayur, dan protein. Tapi saya biasanya makan nasi goreng saja.
+      ar_eg: أيوه يا طنط. رز وخضار وبروتين. بس أنا عادةً باكل رز مقلي وخلاص.
+      ar: "نعم يا سيدتي: أرز وخضار وبروتين. لكنّي عادةً آكل أرزًا مقليًّا فقط."
+      en: Yes, Ma'am. Rice, vegetables and protein. But I usually just eat fried rice.
     - speaker: Bu Rohani
-      text: Ya. Jangan lupa, makanan yang seimbang menyehatkan tubuh.
-      ar_eg: أيوه. وماتنساش، الأكل المتوازن بيخلّي الجسم صحي.
-      ar: نعم. ولا تنسَ أن الطعام المتوازن يقوّي صحة الجسم.
-      en: Yes. And don't forget, a balanced diet keeps the body healthy.
+      text: Wah, makanan goreng mengandung banyak lemak. Kurangi, ya!
+      ar_eg: يا خبر، الأكل المقلي فيه دهون كتير. قلّله بقى!
+      ar: أوه، الطعام المقلي يحتوي على دهون كثيرة. قلّل منه!
+      en: Oh dear, fried food contains a lot of fat. Cut down on it!
     - speaker: Mohamed
-      text: Siap, Bu! Di Mataram, saya mau mengurangi makanan goreng.
-      ar_eg: حاضر يا حاجة! في ماتارام هقلّل الأكل المقلي.
-      ar: حاضر يا سيدتي! سأقلّل الطعام المقلي في ماتارام.
-      en: Will do, Bu! In Mataram I'm going to cut down on fried food.
+      text: Baik, Bu. Mulai besok saya makan buah juga.
+      ar_eg: حاضر. من بكرة هاكل فاكهة كمان.
+      ar: حسنًا يا سيدتي. ابتداءً من الغد سآكل الفاكهة أيضًا.
+      en: All right, Ma'am. From tomorrow I'll eat fruit too.
     - speaker: Bu Rohani
-      text: Bagus! Semoga sehat selalu, ya.
-      ar_eg: حلو! ربنا يديك الصحة على طول.
-      ar: أحسنت! دمتَ بصحة وعافية.
-      en: Good! Stay healthy always.
-souvenir:
-  id: bipa3.u04.souvenir
-  title: Kebun stroberi Sembalun
-  note:
-    ar_eg: وادي سمبالون تحت جبل رينجاني، والجو فيه ساقع ومنعش طول السنة. الفلاحين هناك بيزرعوا خضار وفراولة بتتباع في أسواق الجزيرة كلها، والناس بتيجي مخصوص تقطف الفراولة بإيديها. لو عديت من هناك، جرّب فراولة طازة من الغيط على طول!
-    ar: يقع وادي سمبالون عند سفح جبل رينجاني، وهواؤه بارد منعش طوال العام. يزرع فلاحوه الخضار والفراولة التي تُباع في أسواق الجزيرة كلها، ويأتي الزوار خصيصًا ليقطفوا الفراولة بأيديهم. فإن مررتَ به، فتذوّق فراولة طازجة من البستان مباشرة!
-    en: Sembalun valley lies at the foot of Mount Rinjani, cool and fresh all year round. Its farmers grow vegetables and strawberries sold in markets across the island, and visitors come especially to pick strawberries by hand. If you pass through, taste one straight from the field!
+      text: Bagus! Ini, stroberi dari kebun saya. Kaya vitamin C!
+      ar_eg: برافو! خد، فراولة من الجنينة بتاعتي. غنية بفيتامين سي!
+      ar: أحسنت! تفضّل، فراولة من بستاني، غنية بفيتامين ج!
+      en: Great! Here, strawberries from my garden. Rich in vitamin C!
 review:
   status: draft
   verified: false

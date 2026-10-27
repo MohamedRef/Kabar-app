@@ -1,0 +1,160 @@
+schema: kabar.lesson/v1
+id: j6.u02.l08
+language: jv
+title: Layang cekak
+can_do:
+  ar_eg: تقرا رسالة قصيرة بالخط الجاوي وتعرف المطلوب منك.
+  ar: أن تقرأ رسالة قصيرة بالخط الجاوي وتعرف المطلوب منك.
+  en: Read a short note in aksara Jawa and know what you're asked to do.
+slides:
+  - title: Layang ing lawang
+    body:
+      ar_eg: |
+        محمد رجع البيت لقى ورقة من ديماس على الباب، مكتوبة بالخط الجاوي. تلات جمل قصيرة، كل كلماتها بتخلص بحرف متحرك.
+        فاكر الكلمات دي من J1–J3؟ lunga = راح، teka = جه، tuku = اشترى.
+      ar: |
+        عاد محمد إلى البيت فوجد على الباب ورقة من ديماس بالخط الجاوي: ثلاث جمل قصيرة، كل كلماتها تنتهي بصائت.
+        أتذكر هذه الكلمات من J1–J3؟ lunga = ذهب، teka = جاء، tuku = اشترى.
+      en: |
+        Mohamed came home and found a note from Dimas on the door, in aksara Jawa. Three short sentences, every word ending in a vowel.
+        Remember these from J1–J3? lunga = go (away), teka = come, tuku = buy.
+    grammar: jv.aksara.sandhangan-swara
+    examples:
+      - text: ꦲꦏꦸꦭꦸꦔꦔꦗꦶ (Aku lunga ngaji.)
+        ar_eg: أنا رحت حلقة القرآن.
+        ar: ذهبتُ إلى حلقة القرآن.
+        en: I've gone to Qur'an class.
+      - text: ꦠꦼꦏꦱꦺꦴꦫꦺ (Teka sore.)
+        ar_eg: راجع العصر.
+        ar: أعود عصرًا.
+        en: Back this afternoon.
+      - text: ꦏꦺꦴꦮꦺꦠꦸꦏꦸꦱꦼꦒꦪ (Kowe tuku sega, ya?)
+        ar_eg: اشتري رز، ماشي؟
+        ar: اشترِ أرزًا، اتفقنا؟
+        en: Buy some rice, OK?
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ديماس راح فين؟
+      ar: إلى أين ذهب ديماس؟
+      en: Where has Dimas gone?
+    options: [pasar, ngaji, sekolah]
+    answer: 1
+    words: [wulu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: هيرجع إمتى؟
+      ar: متى يعود؟
+      en: When will he be back?
+    options: [esuk, awan, sore]
+    answer: 2
+    words: [taling tarung, taling]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ديماس عايز محمد يعمل إيه؟
+      ar: ماذا يريد ديماس من محمد؟
+      en: What does Dimas want Mohamed to do?
+    options: [tuku sega, maca buku, lunga ngaji]
+    answer: 0
+    explain:
+      ar_eg: ꦏꦺꦴꦮꦺꦠꦸꦏꦸꦱꦼꦒꦪ = Kowe tuku sega, ya? يعني «اشتري رز، ماشي؟».
+      ar: ꦏꦺꦴꦮꦺꦠꦸꦏꦸꦱꦼꦒꦪ = Kowe tuku sega, ya? أي «اشترِ أرزًا».
+      en: ꦏꦺꦴꦮꦺꦠꦸꦏꦸꦱꦼꦒꦪ = Kowe tuku sega, ya? "Buy some rice, OK?"
+    words: [suku, pepet]
+  - id: e04
+    type: listen
+    text: Aku lunga ngaji.
+    question:
+      ar_eg: ديماس قرا سطر من الورقة على التليفون. أنهي سطر؟
+      ar: قرأ ديماس سطرًا من الورقة على الهاتف. أيّه؟
+      en: On the phone, Dimas read one line of the note. Which one?
+    options: ["ꦏꦺꦴꦮꦺꦭꦸꦔꦔꦗꦶ", "ꦲꦏꦸꦭꦸꦔꦔꦗꦶ", "ꦲꦏꦸꦭꦸꦔꦱꦺꦴꦫꦺ"]
+    answer: 1
+    meaning:
+      ar_eg: أنا رحت حلقة القرآن.
+      ar: ذهبتُ إلى حلقة القرآن.
+      en: I've gone to Qur'an class.
+    words: [suku, wulu]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: ꦭꦸꦔ
+        ar_eg: lunga — يروح / يمشي
+        ar: lunga — يذهب
+        en: lunga — go (away)
+      - text: ꦠꦸꦏꦸ
+        ar_eg: tuku — يشتري
+        ar: tuku — يشتري
+        en: tuku — buy
+      - text: ꦠꦼꦏ
+        ar_eg: teka — ييجي
+        ar: teka — يأتي
+        en: teka — come
+      - text: ꦱꦼꦒ
+        ar_eg: sega — رز
+        ar: sega — أرز
+        en: sega — rice
+    words: [suku, pepet]
+  - id: e06
+    type: fill_blank
+    sentence: ꦠꦸꦏꦸ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: يشتري)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: يشتري)"
+      en: Type the reading in Latin letters. (It means "buy".)
+    answers: [tuku]
+    words: [suku]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: "اكتب الرد تحت الورقة: «Aku tuku sega.» (هشتري رز) مقطع مقطع."
+      ar: "اكتب الرد تحت الورقة: «Aku tuku sega.» (سأشتري أرزًا) مقطعًا مقطعًا."
+      en: "Write a reply under the note — «Aku tuku sega.» (I'll buy rice) — syllable by syllable."
+    answer: ꦲ ꦏꦸ ꦠꦸ ꦏꦸ ꦱꦼ ꦒ
+    distractors: ["ꦠꦺꦴ"]
+    words: [suku, pepet]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦏꦺꦴꦮꦺꦠꦸꦏꦸꦱꦼꦒꦪ"
+      ar: "اكتب بالحروف اللاتينية: ꦏꦺꦴꦮꦺꦠꦸꦏꦸꦱꦼꦒꦪ"
+      en: "Write in Latin letters: ꦏꦺꦴꦮꦺꦠꦸꦏꦸꦱꦼꦒꦪ"
+    answers: ["Kowe tuku sega, ya?", kowe tuku sega ya, kowetukusegaya]
+    words: [taling tarung, suku, pepet]
+  - id: e09
+    type: speaking
+    text: Aku lunga ngaji. Teka sore.
+    meaning:
+      ar_eg: رحت حلقة القرآن. راجع العصر.
+      ar: ذهبتُ إلى حلقة القرآن. أعود عصرًا.
+      en: I've gone to Qur'an class. Back this afternoon.
+dialogue:
+  title: Telpon saka Dimas
+  lines:
+    - speaker: Dimas
+      text: Med, wis maca layangku ing lawang?
+      ar_eg: يا محمد، قريت ورقتي اللي على الباب؟
+      ar: يا محمد، أقرأت ورقتي على الباب؟
+      en: Med, have you read my note on the door?
+    - speaker: Mohamed
+      text: Wis, Mas. Kowe lunga ngaji, teka sore.
+      ar_eg: قريتها يا ديماس. إنت رحت الحلقة وراجع العصر.
+      ar: نعم يا ديماس. ذهبتَ إلى الحلقة وتعود عصرًا.
+      en: Yes, Mas. You've gone to class and you're back this afternoon.
+    - speaker: Dimas
+      text: Bener. Aja lali tuku sega, ya.
+      ar_eg: صح. ماتنساش تشتري رز.
+      ar: صحيح. لا تنسَ شراء الأرز.
+      en: Right. Don't forget to buy rice.
+    - speaker: Mohamed
+      text: Iya, sega loro. Siji kanggo kowe!
+      ar_eg: حاضر، اتنين رز. واحد ليك!
+      ar: حسنًا، أرز لاثنين، واحد لك!
+      en: Sure, two portions of rice. One's for you!
+review:
+  status: draft
+  verified: false

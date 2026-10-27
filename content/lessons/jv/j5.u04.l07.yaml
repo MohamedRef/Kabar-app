@@ -1,0 +1,196 @@
+schema: kabar.lesson/v1
+id: j5.u04.l07
+language: jv
+title: Review museum
+can_do:
+  ar_eg: تقرا ريفيو أونلاين مخلوط اللغات وتعرف إيه الحلو وإيه المشكلة.
+  ar: أن تقرأ مراجعة إلكترونية مختلطة اللغات وتعرف المزايا والعيوب.
+  en: Read a code-mixed online review and find what's good and what's not.
+slides:
+  - title: Bintang lima
+    body:
+      ar_eg: |
+        ده ريفيو على الخريطة عن متحف السكة الحديد في أمباراوا. الريفيوهات بتخلط زي البوستات: هيكل جاوي (-e، lan، nanging، rada) وكلمات إندونيسي وإنجليزي.
+        كلمات جديدة: resik = نضيف (bersih؛ فاكر diresiki؟)، cocok = مناسب (cocok)، recommended = أنصح بيه (إنجليزي). وbintang = نجمة، وparkir = الركنة، زي الإندونيسي.
+      ar: |
+        هذه مراجعة على الخريطة عن متحف السكك الحديدية في أمباراوا. والمراجعات تمزج كالمنشورات: هيكل جاوي (-e، وlan، وnanging، وrada) وكلمات إندونيسية وإنجليزية.
+        كلمات جديدة: resik = نظيف (bersih؛ تذكّر diresiki)، وcocok = مناسب (cocok)، وrecommended = أنصح به (إنجليزية). وbintang = نجمة، وparkir = موقف السيارات، كالإندونيسية.
+      en: |
+        A map review of the Ambarawa railway museum. Reviews mix just like posts: a Javanese frame (-e, lan, nanging, rada) with Indonesian and English words.
+        New words: resik = clean (bersih; remember diresiki?), cocok = suitable (cocok), recommended = recommended (English). bintang = star and parkir = parking, as in Indonesian.
+    grammar: jv.codemix
+    examples:
+      - text: Museume resik lan apik, cocok kanggo healing bareng kulawarga.
+        ar_eg: المتحف نضيف وحلو، مناسب للفسحة مع العيلة.
+        ar: المتحف نظيف وجميل، مناسب للنزهة مع العائلة.
+        en: The museum is clean and nice, perfect for a family getaway.
+      - text: Tikete murah, nanging parkire rada adoh.
+        ar_eg: التذكرة رخيصة، بس الركنة بعيدة شوية.
+        ar: التذكرة رخيصة، لكن الموقف بعيد قليلًا.
+        en: The ticket is cheap, but the parking is a bit far.
+      - text: Recommended bgt, bintang lima!
+        ar_eg: أنصح بيه جدًا، خمس نجوم!
+        ar: أنصح به بشدة، خمس نجوم!
+        en: Highly recommended, five stars!
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحب الريفيو إدّى كام نجمة؟
+      ar: كم نجمة أعطى صاحب المراجعة؟
+      en: How many stars did the reviewer give?
+    options: [telu, papat, lima]
+    answer: 2
+    words: [recommended]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسب الريفيو، إيه المشكلة الوحيدة؟
+      ar: بحسب المراجعة، ما العيب الوحيد؟
+      en: According to the review, what is the one problem?
+    options: [tikete larang, parkire rada adoh, museume cilik]
+    answer: 1
+    explain:
+      ar_eg: nanging (بس) بتقدّم المشكلة. والتذكرة murah = رخيصة، مش larang.
+      ar: nanging (لكن) تقدّم العيب، والتذكرة murah = رخيصة لا larang.
+      en: nanging (but) introduces the problem; the ticket is murah (cheap), not larang.
+  - id: e03
+    type: listen
+    text: Museume resik lan apik, cocok kanggo healing bareng kulawarga.
+    question:
+      ar_eg: المتحف مناسب لإيه؟
+      ar: لِمَ يناسب المتحف؟
+      en: What is the museum good for?
+    options: [kanggo healing bareng kulawarga, kanggo kuliah, kanggo tuku tiket murah]
+    answer: 0
+    meaning:
+      ar_eg: المتحف نضيف وحلو، مناسب للفسحة مع العيلة.
+      ar: المتحف نظيف وجميل، مناسب للنزهة مع العائلة.
+      en: The museum is clean and nice, perfect for a family getaway.
+    words: [resik, cocok]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: resik
+        ar_eg: نضيف
+        ar: نظيف
+        en: clean
+      - text: cocok
+        ar_eg: مناسب
+        ar: مناسب
+        en: suitable
+      - text: recommended
+        ar_eg: أنصح بيه
+        ar: أنصح به
+        en: recommended
+      - text: rada
+        ar_eg: شوية
+        ar: قليلًا
+        en: a bit
+      - text: murah
+        ar_eg: رخيص
+        ar: رخيص
+        en: cheap
+    words: [resik, cocok, recommended]
+  - id: e05
+    type: fill_blank
+    sentence: Museume ___ lan apik.
+    meaning:
+      ar_eg: المتحف نضيف وحلو.
+      ar: المتحف نظيف وجميل.
+      en: The museum is clean and nice.
+    options: [rada, resik, wajib]
+    answers: [resik]
+    words: [resik]
+  - id: e06
+    type: dictation
+    text: Tikete murah, nanging parkire rada adoh.
+    meaning:
+      ar_eg: التذكرة رخيصة، بس الركنة بعيدة شوية.
+      ar: التذكرة رخيصة، لكن الموقف بعيد قليلًا.
+      en: The ticket is cheap, but the parking is a bit far.
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Museume resik lan apik, cocok kanggo healing bareng kulawarga.
+    answers_meaning:
+      ar_eg:
+        - المتحف نضيف وحلو، مناسب للفسحة مع العيلة.
+        - المتحف نضيف وحلو، ينفع فسحة مع العيلة.
+        - المتحف نضيف وجميل، مناسب نروّق فيه مع العيلة.
+        - المتحف نضيف وحلو، مناسب للخروجة مع العيلة.
+      ar:
+        - المتحف نظيف وجميل، مناسب للنزهة مع العائلة.
+        - المتحف نظيف وجميل، يصلح للترويح عن النفس مع العائلة.
+        - المتحف نظيف وجميل ومناسب لنزهة عائلية.
+      en:
+        - The museum is clean and nice, perfect for a family getaway.
+        - The museum is clean and nice, suitable for unwinding with the family.
+        - The museum is clean and good, great for healing with the family.
+        - The museum is clean and nice, good for a getaway with family.
+        - The museum is clean and beautiful, suitable for relaxing with the family.
+    words: [resik, cocok]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: (ريفيو) التذكرة رخيصة، ومناسب للعيلة.
+      ar: (مراجعة) التذكرة رخيصة، ومناسب للعائلة.
+      en: (review) Cheap tickets, suitable for families.
+    answer: Tikete murah, cocok kanggo kulawarga.
+    distractors: [resik, rada]
+    words: [cocok]
+  - id: e09
+    type: speaking
+    text: Recommended bgt, museume resik lan apik!
+    meaning:
+      ar_eg: أنصح بيه جدًا، المتحف نضيف وحلو!
+      ar: أنصح به بشدة، المتحف نظيف وجميل!
+      en: Highly recommended, the museum is clean and nice!
+    words: [recommended, resik]
+dialogue:
+  title: Nulis review
+  lines:
+    - speaker: Mohamed
+      text: Mas, aku arep nulis review museum iki.
+      ar_eg: يا بايو، أنا عايز أكتب ريفيو للمتحف ده.
+      ar: يا بايو، أريد أن أكتب مراجعة لهذا المتحف.
+      en: Bayu, I want to write a review of this museum.
+    - speaker: Mas Bayu
+      text: Apik! Tulis wae, museume resik, cocok kanggo kulawarga.
+      ar_eg: حلو! اكتب إن المتحف نضيف ومناسب للعيلة.
+      ar: جميل! اكتب أن المتحف نظيف ومناسب للعائلة.
+      en: Nice! Just write that the museum's clean and good for families.
+    - speaker: Mohamed
+      text: Bintang pira, Mas?
+      ar_eg: كام نجمة يا بايو؟
+      ar: كم نجمة يا بايو؟
+      en: How many stars, Bayu?
+    - speaker: Mas Bayu
+      text: Lima! Nanging parkire rada adoh, tulis uga.
+      ar_eg: خمسة! بس الركنة بعيدة شوية، اكتبها برضه.
+      ar: خمس! لكن الموقف بعيد قليلًا، اكتب ذلك أيضًا.
+      en: Five! But the parking's a bit far, write that too.
+    - speaker: Mohamed
+      text: Oke. Recommended bgt!
+      ar_eg: تمام. أنصح بيه جدًا!
+      ar: حسنًا. أنصح به بشدة!
+      en: OK. Highly recommended!
+new_words:
+  - word: resik
+    pos: adjective
+    ar_eg: نضيف
+    ar: نظيف
+    en: clean = bersih
+  - word: cocok
+    pos: adjective
+    ar_eg: مناسب
+    ar: مناسب
+    en: suitable, a good fit = cocok
+  - word: recommended
+    pos: adjective
+    ar_eg: أنصح بيه (إنجليزي في الريفيوهات)
+    ar: أنصح به (إنجليزية في المراجعات)
+    en: recommended (English, common in reviews)
+review:
+  status: draft
+  verified: false

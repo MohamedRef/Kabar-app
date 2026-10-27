@@ -1,0 +1,175 @@
+schema: kabar.lesson/v1
+id: j6.u05.l06
+language: jv
+title: Umure masjid
+can_do:
+  ar_eg: تقرا سنة مكتوبة بالأرقام الجاوية على لوحة وتحسب منها.
+  ar: أن تقرأ سنة بالأرقام الجاوية على لوحة وتحسب بها.
+  en: Read a year in Javanese numerals on a plaque and work with it.
+slides:
+  - title: Prasasti ing masjid
+    body:
+      ar_eg: |
+        محمد صوّر لوحة على Masjid Gedhe في كوتاغيدي ووراها لـ Pak Harjo في Imogiri. فيها سنة البنا بالأرقام الجاوية.
+        كلمة جديدة: dibangun = اتبنى. والأرقام دايمًا بين علامتين ꧇، حتى لو جت بعد كلمة: ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇.
+      ar: |
+        صوّر محمد لوحة على Masjid Gedhe في كوتاغيدي وأراها لـ Pak Harjo في Imogiri، وفيها سنة البناء بالأرقام الجاوية.
+        كلمة جديدة: dibangun = بُني. والأعداد دائمًا بين علامتي ꧇، ولو جاءت بعد كلمة: ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇.
+      en: |
+        Mohamed photographed a plaque on the Masjid Gedhe in Kotagede and showed it to Pak Harjo at Imogiri. It gives the year it was built, in Javanese numerals.
+        New word: dibangun = was built. Numbers always sit between two ꧇, even after a word: ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇.
+    grammar: jv.aksara.murda-rekan
+    examples:
+      - text: ꦩꦱ꧀ꦗꦶꦢ꧀ꦒꦼꦝꦺ (Masjid Gedhe)
+        ar_eg: الجامع الكبير
+        ar: المسجد الكبير
+        en: the Great Mosque
+      - text: ꦢꦶꦧꦔꦸꦤ꧀ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇꧉ (Dibangun taun 1587.)
+        ar_eg: اتبنى سنة 1587.
+        ar: بُني سنة 1587.
+        en: Built in 1587.
+      - text: ꦲꦸꦩꦸꦫꦺ꧇꧔꧓꧙꧇ꦠꦲꦸꦤ꧀꧉ (Umure 439 taun.)
+        ar_eg: عمره 439 سنة.
+        ar: عمره 439 سنة.
+        en: It's 439 years old.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الجامع اتبنى سنة كام؟
+      ar: في أي سنة بُني المسجد؟
+      en: In what year was the mosque built?
+    options: ["1578", "1587", "1857"]
+    answer: 1
+    explain:
+      ar_eg: ꧑ ꧕ ꧘ ꧗ = 1 5 8 7، يعني سنة 1587.
+      ar: ꧑ ꧕ ꧘ ꧗ = 1 5 8 7، أي سنة 1587.
+      en: ꧑ ꧕ ꧘ ꧗ = 1 5 8 7.
+    words: [dibangun, angka]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسب اللوحة، الجامع عمره كام سنة؟
+      ar: بحسب اللوحة، كم عمر المسجد؟
+      en: According to the plaque, how old is the mosque?
+    options: ["439", "349", "493"]
+    answer: 0
+    explain:
+      ar_eg: ꧔꧓꧙ = 439، و2026 − 1587 = 439.
+      ar: ꧔꧓꧙ = 439، و2026 − 1587 = 439.
+      en: ꧔꧓꧙ = 439, and 2026 − 1587 = 439.
+    words: [angka]
+  - id: e03
+    type: listen
+    text: Masjid iki dibangun taun sewu limang atus wolung puluh pitu.
+    question:
+      ar_eg: سمعت أنهي سنة؟
+      ar: أي سنة سمعت؟
+      en: Which year did you hear?
+    options: ["꧇꧑꧕꧗꧘꧇", "꧇꧑꧕꧘꧗꧇", "꧇꧑꧘꧕꧗꧇"]
+    answer: 1
+    meaning:
+      ar_eg: الجامع ده اتبنى سنة 1587.
+      ar: بُني هذا المسجد سنة 1587.
+      en: This mosque was built in 1587.
+    words: [dibangun, angka]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: ꧓
+        ar_eg: "3 (تلاتة)"
+        ar: "3 (ثلاثة)"
+        en: "3"
+      - text: ꧕
+        ar_eg: "5 (خمسة)"
+        ar: "5 (خمسة)"
+        en: "5"
+      - text: ꧘
+        ar_eg: "8 (تمانية)"
+        ar: "8 (ثمانية)"
+        en: "8"
+      - text: ꧙
+        ar_eg: "9 (تسعة)"
+        ar: "9 (تسعة)"
+        en: "9"
+    words: [angka]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "ليه ꧇꧑꧕꧘꧗꧇ بين علامتين ꧇؟"
+      ar: "لماذا ꧇꧑꧕꧘꧗꧇ بين علامتي ꧇؟"
+      en: "Why is ꧇꧑꧕꧘꧗꧇ between two ꧇ marks?"
+    options: ["Iku pada pangkat, kanggo angka.", "Iku jeneng.", "Iku aksara rekan."]
+    answer: 0
+    explain:
+      ar_eg: ꧇ اسمها pada pangkat، بتحاوط الرقم عشان مايتلخبطش مع الحروف.
+      ar: ꧇ اسمها pada pangkat، تحيط بالعدد كي لا يلتبس بالحروف.
+      en: ꧇ is pada pangkat; it encloses a number so it isn't confused with letters.
+    words: [pada pangkat]
+  - id: e06
+    type: fill_blank
+    sentence: ꧇꧑꧕꧘꧗꧇ = ___
+    meaning:
+      ar_eg: اكتب السنة بالأرقام العادية.
+      ar: اكتب السنة بالأرقام العادية.
+      en: Write the year in ordinary digits.
+    answers: ["1587"]
+    words: [angka]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية والأرقام: ꦢꦶꦧꦔꦸꦤ꧀ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇꧉"
+      ar: "اكتب بالحروف اللاتينية والأرقام: ꦢꦶꦧꦔꦸꦤ꧀ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇꧉"
+      en: "Write in Latin letters and digits: ꦢꦶꦧꦔꦸꦤ꧀ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇꧉"
+    answers: ["Dibangun taun 1587.", dibangun taun 1587, dibangun tahun 1587]
+    words: [dibangun]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: الجامع ده اتبنى سنة 1587.
+      ar: بُني هذا المسجد سنة 1587.
+      en: This mosque was built in 1587.
+    answer: Masjid iki dibangun taun 1587.
+    distractors: [umure]
+    words: [dibangun]
+  - id: e09
+    type: speaking
+    text: Masjid Gedhe dibangun taun sewu limang atus wolung puluh pitu.
+    meaning:
+      ar_eg: الجامع الكبير اتبنى سنة 1587.
+      ar: بُني المسجد الكبير سنة 1587.
+      en: The Great Mosque was built in 1587.
+    words: [dibangun]
+dialogue:
+  title: Foto prasasti
+  lines:
+    - speaker: Mohamed
+      text: Pak, menika foto saking Masjid Gedhe Kotagedhe.
+      ar_eg: يا حاج، دي صورة من الجامع الكبير في كوتاغيدي.
+      ar: يا سيدي، هذه صورة من المسجد الكبير في كوتاغيدي.
+      en: Sir, this is a photo from the Great Mosque in Kotagede.
+    - speaker: Pak Harjo
+      text: Wah, prasasti. Panjenengan saged maos angkanipun?
+      ar_eg: يا سلام، لوحة تاريخية. عرفت تقرا الأرقام؟
+      ar: رائع، نقش تذكاري. هل تستطيع قراءة الأعداد؟
+      en: Ah, a plaque. Can you read the numbers?
+    - speaker: Mohamed
+      text: Saged. Dibangun taun sewu limang atus wolung puluh pitu.
+      ar_eg: أيوه. اتبنى سنة 1587.
+      ar: نعم. بُني سنة 1587.
+      en: Yes. Built in fifteen eighty-seven.
+    - speaker: Pak Harjo
+      text: Leres. Sampun sepuh sanget, nggih?
+      ar_eg: مظبوط. قديم قوي، مش كده؟
+      ar: صحيح. قديم جدًّا، أليس كذلك؟
+      en: Right. Very old, isn't it?
+new_words:
+  - word: dibangun
+    pos: verb
+    ar_eg: اتبنى
+    ar: بُني
+    en: was built = dibangun
+review:
+  status: draft
+  verified: false

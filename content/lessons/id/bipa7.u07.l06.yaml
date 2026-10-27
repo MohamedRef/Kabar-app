@@ -1,162 +1,201 @@
 schema: kabar.lesson/v1
 id: bipa7.u07.l06
 language: id
-title: Ulangan Unit 7
+title: Kebebasan pers
 can_do:
-  ar_eg: تتكلّم عن مؤسسات الدولة والانتخابات، وتظبط كلامك على اللي بيسمعك.
-  ar: أن تتحدّث عن مؤسسات الدولة والانتخابات، وتكيّف كلامك مع سامعك.
-  en: Discuss state institutions and elections, tuning your words to your audience.
+  ar_eg: تتكلّم عن حرية الصحافة في إندونيسيا وتعرف حقّك في الردّ على خبر غلط.
+  ar: أن تتحدّث عن حرّية الصحافة في إندونيسيا وتعرف حقّك في الردّ على خبر خاطئ.
+  en: Discuss press freedom in Indonesia and know your right of reply to a wrong story.
+slides:
+  - title: Dari bredel ke Dewan Pers
+    body:
+      ar_eg: |
+        في عصر الـ Orde Baru الحكومة كانت بتعمل sensor (رقابة) وكانت بتقفل الجرايد: مجلة Tempo اتقفلت سنة ١٩٩٤.
+        بعد الإصلاح جه قانون الصحافة رقم ٤٠ لسنة ١٩٩٩، وضمن الـ kebebasan pers (حرية الصحافة).
+        - Dewan Pers = مجلس الصحافة: هيئة مستقلّة بتحمي حرية الصحافة وبتحكم في الشكاوى.
+        - hak jawab = حق الردّ: لو جرنال كتب عنك حاجة غلط، من حقّك يطلع ردّك.
+        الحرية جاية معاها مسؤولية: الصحفي لازم يتأكّد ويسمع الطرفين.
+      ar: |
+        في عهد الـ Orde Baru مارست الحكومة الـ sensor (الرقابة) وأغلقت الصحف، فقد أُغلقت مجلّة Tempo سنة ١٩٩٤.
+        وبعد الإصلاح صدر قانون الصحافة رقم ٤٠ لسنة ١٩٩٩ فكفل الـ kebebasan pers (حرّية الصحافة).
+        - Dewan Pers = مجلس الصحافة، هيئة مستقلّة تحمي حرّية الصحافة وتفصل في الشكاوى.
+        - hak jawab = حقّ الردّ: إن نشرت صحيفة عنك خطأً فمن حقّك نشر ردّك.
+        والحرّية تقترن بالمسؤولية: على الصحفيّ أن يتحقّق ويسمع الطرفين.
+      en: |
+        Under the Orde Baru the government used sensor (censorship) and shut papers down: Tempo magazine was banned in 1994.
+        After the reforms came Press Law No. 40 of 1999, which guaranteed kebebasan pers (press freedom).
+        - Dewan Pers = the Press Council, an independent body that protects press freedom and handles complaints.
+        - hak jawab = right of reply: if a paper writes something wrong about you, you have the right to have your reply published.
+        Freedom comes with responsibility: a journalist must verify and hear both sides.
+    examples:
+      - text: Kepala dinas itu memakai hak jawab untuk membantah berita kemarin.
+        ar_eg: رئيس المصلحة استعمل حق الردّ علشان ينفي خبر امبارح.
+        ar: استعمل رئيس الدائرة حقّ الردّ لنفي خبر الأمس.
+        en: The department head used the right of reply to rebut yesterday's story.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: khalayak
-        ar_eg: الجمهور
-        ar: الجمهور
-        en: the public, audience
-      - text: DPR
-        ar_eg: البرلمان
-        ar: البرلمان
-        en: parliament (DPR)
-      - text: pemilu
-        ar_eg: الانتخابات
-        ar: الانتخابات العامة
-        en: general election
-      - text: golput
-        ar_eg: مقاطعة التصويت
-        ar: الامتناع عن التصويت
-        en: abstaining (not voting)
-      - text: aspirasi
-        ar_eg: مطالب الناس
-        ar: تطلّعات الناس ومطالبهم
-        en: aspirations, demands
-    words: [khalayak, DPR, pemilu, golput, aspirasi]
+      - text: kebebasan pers
+        ar_eg: حرية الصحافة
+        ar: حرّية الصحافة
+        en: press freedom
+      - text: sensor
+        ar_eg: رقابة
+        ar: رقابة
+        en: censorship
+      - text: Dewan Pers
+        ar_eg: مجلس الصحافة
+        ar: مجلس الصحافة
+        en: Press Council
+      - text: hak jawab
+        ar_eg: حق الردّ
+        ar: حقّ الردّ
+        en: right of reply
+      - text: Orde Baru
+        ar_eg: النظام الجديد (سوهارتو)
+        ar: النظام الجديد
+        en: New Order
+    words: [kebebasan pers, sensor, Dewan Pers, hak jawab, Orde Baru]
   - id: e02
+    type: listen
+    text: Majalah Tempo pernah dibredel pada tahun 1994.
+    question:
+      ar_eg: إيه اللي حصل لمجلة تمبو سنة ١٩٩٤؟
+      ar: ماذا حدث لمجلّة تمبو سنة ١٩٩٤؟
+      en: What happened to Tempo magazine in 1994?
+    options:
+      - كسبت جايزة.
+      - اتقفلت بأمر الحكومة.
+      - فتحت مكتب في مصر.
+    answer: 1
+    words: [sensor]
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة مكتوبة بأسلوب مؤدّب لمسؤول؟
-      ar: أيّ جملة مكتوبة بأسلوب مهذّب لمسؤول؟
-      en: Which sentence is written courteously for an official?
+      ar_eg: جرنال كتب عنك معلومة غلط. تستعمل إيه؟
+      ar: نشرت صحيفة عنك معلومة خاطئة. بمَ تستعين؟
+      en: A paper printed false information about you. What do you use?
     options:
-      - Pak, jalannya kapan dibenerin sih?
-      - Kami mohon Bapak berkenan meninjau pelayanan publik di desa kami.
-      - Buruan perbaiki!
-    answer: 1
-    words: [santun, pelayanan publik]
-  - id: e03
-    type: fill_blank
-    sentence: Pada hari pemilu, pemilih ___ surat suara dengan paku.
-    meaning:
-      ar_eg: يوم الانتخابات، الناخب بيخرّم ورقة التصويت بمسمار.
-      ar: يوم الانتخابات يثقب الناخب ورقة الاقتراع بمسمار.
-      en: On election day, voters punch the ballot with a nail.
-    options: [mencoblos, mengesahkan, menyesuaikan]
-    answers: [mencoblos]
-    words: [mencoblos, pemilih, surat suara, mengesahkan, menyesuaikan]
-  - id: e04
-    type: listen
-    text: Pembawa berita mengumumkan bahwa DPR telah mengesahkan undang-undang itu.
-    question:
-      ar_eg: المذيع أعلن إيه؟
-      ar: ماذا أعلن مقدّم الأخبار؟
-      en: What did the anchor announce?
-    options:
-      - إن الانتخابات اتأجّلت.
-      - إن الجيش وصل.
-      - إن البرلمان أقرّ القانون.
+      - الـ sensor.
+      - الـ tagar.
+      - الـ hak jawab.
     answer: 2
-    words: [pembawa berita, DPR, mengesahkan, undang-undang]
+    words: [hak jawab]
+  - id: e04
+    type: fill_blank
+    sentence: Wartawan boleh mengadu ke ___ jika kebebasannya dilanggar.
+    meaning:
+      ar_eg: الصحفي يقدر يشتكي لمجلس الصحافة لو حريته اتنتهكت.
+      ar: يحقّ للصحفيّ الشكوى إلى مجلس الصحافة إن انتُهكت حرّيته.
+      en: A journalist may complain to the Press Council if their freedom is violated.
+    options: [Dewan Pers, Orde Baru, hak jawab]
+    answers: [Dewan Pers]
+    words: [Dewan Pers]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي قانون ضمن حرية الصحافة؟
+      ar: أيّ قانون كفل حرّية الصحافة؟
+      en: Which law guaranteed press freedom?
+    options:
+      - القانون رقم ٤٠ لسنة ١٩٩٩.
+      - قانون الـ VOC.
+      - إعلان الاستقلال ١٩٤٥.
+    answer: 0
+    words: [kebebasan pers]
+  - id: e06
     type: build_sentence
     source:
-      ar_eg: كل مواطن ليه حق التصويت.
-      ar: لكلّ مواطن حقّ الاقتراع.
-      en: Every citizen has the right to vote.
-    answer: Setiap warga negara punya hak pilih.
-    distractors: [golput, lugas]
-    words: [hak pilih]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إيه الـ «lembaga negara» اللي بيساعد في الكوارث في الخبر؟
-      ar: ما الـ «lembaga negara» التي تساعد في الكوارث في الخبر؟
-      en: Which "lembaga negara" helps in disasters in the news story?
-    options: [TNI, pembaca sasaran, artikel opini]
-    answer: 0
-    words: [TNI, lembaga negara, pembaca sasaran]
+      ar_eg: الرقابة بتسكّت الصحفيين.
+      ar: الرقابة تُخرس الصحفيين.
+      en: Censorship silences journalists.
+    answer: Sensor membungkam para wartawan.
+    distractors: [hak, jawab]
+    words: [sensor]
   - id: e07
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: في تقديري، المشاركة في الانتخابات مسؤولية.
-      ar: في تقديري، المشاركة في الانتخابات مسؤولية.
-      en: In my humble view, taking part in elections is a responsibility.
-    answers:
-      - Menurut hemat saya, partisipasi dalam pemilu adalah tanggung jawab.
-      - Menurut hemat saya, partisipasi dalam pemilu merupakan tanggung jawab.
-      - Menurut hemat saya, partisipasi di pemilu adalah tanggung jawab.
-    words: [menurut hemat saya, partisipasi, pemilu]
-  - id: e08
-    type: speaking
-    text: Wakil rakyat menerima pengaduan warga tentang lampu jalan.
-    meaning:
-      ar_eg: نايب الشعب استلم شكوى الأهالي عن نور الشارع.
-      ar: تسلّم نائب الشعب شكوى الأهالي بشأن إنارة الطريق.
-      en: The representative received residents' complaint about the street lights.
-    words: [wakil rakyat, pengaduan]
-  - id: e09
-    type: dictation
-    text: Artikel opini itu ditulis dengan bahasa yang lugas.
-    meaning:
-      ar_eg: مقال الرأي ده متكتب بلغة مباشرة وواضحة.
-      ar: كُتب مقال الرأي ذاك بلغة مباشرة واضحة.
-      en: That op-ed is written in plain language.
-    words: [artikel opini, lugas]
-  - id: e10
-    type: translate
     direction: from_target
-    source_text: Berita untuk khalayak harus lugas, sedangkan surat kepada pejabat harus santun.
+    source_text: Kebebasan pers bukan kebebasan untuk menyebarkan hoaks.
     answers_meaning:
       ar_eg:
-        - الخبر للجمهور لازم يبقى مباشر، أما الجواب للمسؤول لازم يبقى مؤدّب.
-        - للناس اكتب ببساطة، وللمسؤول اكتب بأدب.
+        - حرية الصحافة مش حرية إنك تنشر إشاعات.
+        - حرية الصحافة ماتعنيش إنك تنشر أخبار كدب.
       ar:
-        - يجب أن يكون الخبر للجمهور مباشرًا، أمّا الرسالة إلى المسؤول فمهذّبة.
-        - الخبر للعامّة مباشر، والرسالة للمسؤول مهذّبة.
+        - ليست حرّية الصحافة حرّيةً لنشر الشائعات.
+        - حرّية الصحافة لا تعني حرّية نشر الأكاذيب.
       en:
-        - News for the public should be plain, whereas a letter to an official should be courteous.
-        - Write plainly for the public and courteously to officials.
-    words: [khalayak, lugas, santun]
+        - Press freedom is not freedom to spread hoaxes.
+        - Freedom of the press doesn't mean freedom to spread fake news.
+    words: [kebebasan pers, hoaks]
+  - id: e08
+    type: speaking
+    text: Setelah reformasi, Dewan Pers menjadi lembaga yang independen.
+    meaning:
+      ar_eg: بعد الإصلاح، مجلس الصحافة بقى هيئة مستقلّة.
+      ar: بعد الإصلاح صار مجلس الصحافة هيئة مستقلّة.
+      en: After the reforms, the Press Council became an independent body.
+    words: [Dewan Pers]
+  - id: e09
+    type: dictation
+    text: Setiap orang punya hak jawab atas berita tentang dirinya.
+    meaning:
+      ar_eg: كل واحد ليه حق الردّ على أي خبر عنه.
+      ar: لكلّ شخص حقّ الردّ على ما يُنشر عنه.
+      en: Everyone has a right of reply to news about themselves.
+    words: [hak jawab]
+  - id: e10
+    type: speaking
+    text: Pada masa Orde Baru, sensor membuat banyak berita tidak pernah terbit.
+    meaning:
+      ar_eg: في عصر النظام الجديد، الرقابة خلّت أخبار كتير ماتطلعش خالص.
+      ar: في عهد النظام الجديد حالت الرقابة دون نشر أخبار كثيرة.
+      en: Under the New Order, censorship meant many stories were never published.
+    words: [Orde Baru, sensor, kebebasan pers]
 dialogue:
-  title: Perahu ke Pulau Mansinam
+  title: Telepon yang marah
   lines:
     - speaker: Bu Debora
-      text: Hari libur kita ke Mansinam. Pulau kecil ini penting bagi sejarah Papua.
-      ar_eg: في الإجازة هنروح مانسينام. الجزيرة الصغيرة دي مهمّة لتاريخ بابوا.
-      ar: سنذهب في العطلة إلى مانسينام، فهذه الجزيرة الصغيرة مهمّة لتاريخ بابوا.
-      en: On our day off we're going to Mansinam. This little island matters to Papua's history.
+      text: Mohamed, kepala dinas menelepon. Dia marah dengan beritamu tentang jalan rusak.
+      ar_eg: يا محمد، رئيس المصلحة اتّصل. زعلان من خبرك عن الطريق البايظ.
+      ar: يا محمد، اتّصل رئيس الدائرة، وهو غاضب من خبرك عن الطريق المتضرّر.
+      en: Mohamed, the department head called. He's angry about your broken-road story.
     - speaker: Mohamed
-      text: Saya baca tentang dua misionaris yang datang pada tahun 1855.
-      ar_eg: قريت عن اتنين مبشّرين جم سنة 1855.
-      ar: قرأتُ عن مبشّرَين وصلا عام 1855.
-      en: I read about two missionaries who arrived in 1855.
+      text: Apakah beritanya salah, Bu? Saya sudah wawancara warga dan melihat sendiri.
+      ar_eg: الخبر غلط يا أبلة؟ أنا عملت مقابلات مع الأهالي وشفت بنفسي.
+      ar: أكان الخبر خاطئًا؟ لقد قابلت السكّان ورأيت بنفسي.
+      en: Was the story wrong, Bu? I interviewed residents and saw it myself.
     - speaker: Bu Debora
-      text: Betul. Sekarang tanggal 5 Februari diperingati setiap tahun di Tanah Papua.
-      ar_eg: صح. ودلوقتي يوم 5 فبراير بيتحتفل بيه كل سنة في بابوا.
-      ar: صحيح، ويُحتفى بالخامس من فبراير كلّ عام في أرض بابوا.
-      en: Right. Now the 5th of February is commemorated every year across Papua.
+      text: Faktanya benar. Tapi kita lupa meminta tanggapan dinas. Berikan dia hak jawab besok.
+      ar_eg: الحقايق صح. بس نسينا ناخد رأي المصلحة. اديله حق الردّ بكرة.
+      ar: الوقائع صحيحة، لكنّنا نسينا أخذ ردّ الدائرة، فامنحه حقّ الردّ غدًا.
+      en: The facts are right. But we forgot to ask the department to respond. Give him his right of reply tomorrow.
     - speaker: Mohamed
-      text: Terima kasih untuk semuanya, Bu. Minggu depan saya ke Jayapura.
-      ar_eg: شكرًا على كل حاجة يا مدام. الأسبوع الجاي رايح جايابورا.
-      ar: شكرًا على كلّ شيء يا سيّدتي. الأسبوع القادم إلى جايابورا.
-      en: Thank you for everything, Bu. Next week I'm off to Jayapura.
-souvenir:
-  id: bipa7.u07.souvenir
-  title: Pulau Mansinam
-  note:
-    ar_eg: مانسينام جزيرة صغيرة قصاد مانوكواري. في 5 فبراير 1855 نزل عليها مبشّرين ألمان، أوتّو وجايسلر، ويوم 5 فبراير بقى عطلة في أقاليم بابوا للاحتفال بدخول الإنجيل. وبمناسبة الوحدة دي، إندونيسيا جمهورية رئاسية، والشعب بينتخب الرئيس مباشرة، والـ DPR (البرلمان) والـ TNI (الجيش) بيظهروا كل يوم في الأخبار.
-    ar: مانسينام جزيرة صغيرة قبالة مانوكواري، نزل عليها في 5 فبراير 1855 مبشّران ألمانيّان هما أوتّو وغايسلر، وصار هذا اليوم عطلة في أقاليم بابوا احتفاءً بوصول الإنجيل. وإندونيسيا جمهورية رئاسية ينتخب الشعب رئيسها مباشرة، ويظهر الـ DPR (البرلمان) والـ TNI (الجيش) في الأخبار يوميًّا.
-    en: Mansinam is a small island off Manokwari. On 5 February 1855 two German missionaries, Ottow and Geissler, landed there, and the date is now a holiday in Papua marking the arrival of the Gospel. Indonesia is a presidential republic with direct elections; the DPR (parliament) and TNI (armed forces) feature in the news every day.
+      text: Baik. Kebebasan pers juga berarti adil kepada semua pihak.
+      ar_eg: حاضر. حرية الصحافة معناها كمان العدل مع كل الأطراف.
+      ar: حسنًا. فحرّية الصحافة تعني أيضًا الإنصاف لكلّ الأطراف.
+      en: Okay. Press freedom also means being fair to every side.
+new_words:
+  - word: kebebasan pers
+    pos: noun
+    ar_eg: حرية الصحافة
+    ar: حرّية الصحافة
+    en: press freedom
+  - word: sensor
+    pos: noun
+    ar_eg: رقابة
+    ar: رقابة
+    en: censorship
+  - word: Dewan Pers
+    pos: noun
+    ar_eg: مجلس الصحافة
+    ar: مجلس الصحافة
+    en: Press Council
+  - word: hak jawab
+    pos: noun
+    ar_eg: حق الردّ
+    ar: حقّ الردّ
+    en: right of reply
 review:
   status: draft
   verified: false
