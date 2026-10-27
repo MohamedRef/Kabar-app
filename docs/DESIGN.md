@@ -72,7 +72,13 @@ Use these before inventing a new look.
 | Pill | `.pill` + `neutral` / `info` / `gold` / `good` | Short labels and states. Default (dawn) for levels and "new" |
 | Note / callout | `.note` | Tinted surface with an indigo start border |
 | Side pane | `.panel`, `.lp-notes` | Supporting content beside the main column on expanded+; a bottom sheet on phones |
+| Sidebar group | `.nav-group` + `.nav-heading` | Learn · Practise · Me. Named on the sidebar, thin dividers on the rail, invisible in the phone's bottom bar |
+| Answer row | `.rate-row` | Stays in one place: bottom of the screen on phone and tablet portrait, under a steady-height card on wide windows |
 | Feedback | glyph + words + colour | Never colour alone (✓ / ↺ / –, a verdict line) |
+
+Key hints (Space, 1–4, ?) show only on keyboard and mouse devices, never on
+touch screens. A list-detail selection (Journey's stop) lives above the
+layout switch, so it survives a resize or a rotation.
 
 Disabled controls say why when it isn't obvious from the screen (a line of
 muted text next to them), instead of only greying out.
