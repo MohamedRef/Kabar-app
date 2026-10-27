@@ -564,32 +564,25 @@ fn RichRuns(text: String, target: &'static str, pron: bool) -> Element {
                     Unit::Plain(t) => rsx! {
                         span { key: "{key}.{j}", "{localize_digits(&t, lang, eastern)}" }
                     },
-                    Unit::Latin { phrases, close, short } => {
-                        let last = phrases.len().saturating_sub(1);
-                        rsx! {
-                            // The phrase, its closing quote and its pronunciation
-                            // stay together; a short one stays on one line.
-                            span { key: "{key}.{j}", class: if short { "pron-unit nowrap" } else { "pron-unit" },
-                                bdi { lang: target, dir: "ltr", class: "latin",
-                                    for (k , ph) in phrases.iter().enumerate() {
-                                        span { key: "{k}",
-                                            "{ph.text}"
-                                            if ph.say && (k < last || close.is_empty()) {
-                                                Pron { text: ph.text.clone(), tag: target, inline: true }
-                                            }
-                                            "{ph.sep}"
-                                        }
-                                    }
-                                }
-                                if !close.is_empty() {
-                                    span { "{close}" }
-                                    if phrases.get(last).is_some_and(|p| p.say) {
-                                        Pron { text: phrases[last].text.clone(), tag: target, inline: true }
-                                    }
+                    Unit::Latin { phrases, close, short } => rsx! {
+                        // The phrase, its closing quote and its pronunciation
+                        // stay together; a short one stays on one line.
+                        span { key: "{key}.{j}", class: if short { "pron-unit nowrap" } else { "pron-unit" },
+                            for (k , bit) in layout(&phrases, &close, dir == "rtl").into_iter().enumerate() {
+                                match bit {
+                                    Bit::Latin(t) => rsx! {
+                                        bdi { key: "{k}", lang: target, dir: "ltr", class: "latin", "{t}" }
+                                    },
+                                    Bit::Close(t) | Bit::Sep(t) => rsx! {
+                                        span { key: "{k}", "{t}" }
+                                    },
+                                    Bit::Say(t) => rsx! {
+                                        Pron { key: "{k}", text: t, tag: target, inline: true }
+                                    },
                                 }
                             }
                         }
-                    }
+                    },
                 }
             }
         }
@@ -663,6 +656,39 @@ fn pron_units(runs: Vec<(bool, String)>, target: &str, say: bool) -> Vec<Unit> {
             && next.is_empty()
         {
             runs.next();
+        }
+    }
+    out
+}
+
+/// One piece of a drawn Latin unit, in reading order.
+#[derive(Debug, PartialEq)]
+enum Bit {
+    Latin(String),
+    Close(String),
+    /// The Arabic-script pronunciation of the phrase before it.
+    Say(String),
+    Sep(String),
+}
+
+/// The order a Latin unit is drawn in: each phrase in its own LTR isolate,
+/// then the closing quote, then its pronunciation outside the isolate so in
+/// an Arabic line it reads after the word (to its left), never before it.
+/// Arrows turn around in a right-to-left line so "A ← B" still points from
+/// the Indonesian to the Javanese side.
+fn layout(phrases: &[Phrase], close: &str, rtl: bool) -> Vec<Bit> {
+    let last = phrases.len().saturating_sub(1);
+    let mut out = Vec::new();
+    for (k, ph) in phrases.iter().enumerate() {
+        out.push(Bit::Latin(ph.text.clone()));
+        if k == last && !close.is_empty() {
+            out.push(Bit::Close(close.to_string()));
+        }
+        if ph.say {
+            out.push(Bit::Say(ph.text.clone()));
+        }
+        if !ph.sep.is_empty() {
+            out.push(Bit::Sep(if rtl { ph.sep.replace('→', "←") } else { ph.sep.clone() }));
         }
     }
     out
@@ -2146,7 +2172,7 @@ mod tests {
         assert!(problems.is_empty(), "{}", problems.join("\n"));
         assert!(lesson_content("bipa1.u01.l01").is_some());
         assert!(lesson_content("bipa2.u10.l05").is_some());
-        assert!(lesson_content("bipa7.u10.l10").is_some());
+        assert!(lesson_content("bipa7.u10.l14").is_some());
         assert!(lesson_content("bipa8.u01.l01").is_none());
     }
 
@@ -2217,6 +2243,31 @@ mod tests {
         let units = pron_units(vec![(true, "ora ↔ tidak".into())], "id", true);
         let Unit::Latin { phrases, .. } = &units[0] else { panic!() };
         assert!(phrases.iter().all(|p| p.say));
+    }
+
+    #[test]
+    fn pronunciation_is_drawn_after_its_word_and_quote_outside_the_latin_isolate() {
+        let units = pron_units(latin_runs("«selamat jalan» لما تمشي"), "id", true);
+        let Unit::Latin { phrases, close, .. } = &units[1] else { panic!("{units:?}") };
+        assert_eq!(
+            layout(phrases, close, true),
+            [Bit::Latin("selamat jalan".into()), Bit::Close("»".into()), Bit::Say("selamat jalan".into())]
+        );
+        let units = pron_units(latin_runs("- Selamat pagi → Sugeng enjing (صباح الخير)"), "jv", true);
+        let Some(Unit::Latin { phrases, close, .. }) = units.iter().find(|u| matches!(u, Unit::Latin { .. }))
+        else {
+            panic!("{units:?}")
+        };
+        assert_eq!(
+            layout(phrases, close, true),
+            [
+                Bit::Latin("Selamat pagi".into()),
+                Bit::Sep(" ← ".into()),
+                Bit::Latin("Sugeng enjing".into()),
+                Bit::Say("Sugeng enjing".into()),
+            ]
+        );
+        assert_eq!(layout(phrases, close, false)[1], Bit::Sep(" → ".into()));
     }
 
     #[test]

@@ -4,7 +4,7 @@
 //! needs no code change. Speaker labels ("Kak Tiara") find their cast id
 //! through the registry; anyone without a portrait keeps their initial.
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::sync::LazyLock;
 
 use base64::Engine as _;
@@ -62,6 +62,22 @@ static REGISTRY: LazyLock<Cast> = LazyLock::new(|| {
         Cast::default()
     })
 });
+
+/// Forms of address that come before a name; they keep their own meaning.
+const HONORIFICS: &[&str] = &[
+    "bu", "ibu", "pak", "bapak", "mas", "mbak", "kak", "dik", "om", "tante", "mbah", "bude", "pakde", "cak",
+    "ning",
+];
+
+static NAME_WORDS: LazyLock<HashSet<String>> = LazyLock::new(|| {
+    REGISTRY.name_words().map(str::to_lowercase).filter(|w| !HONORIFICS.contains(&w.as_str())).collect()
+});
+
+/// The word is part of a cast member's name ("Gadis", "Murni"), not an
+/// honorific: written with a capital, it's the character, not "girl".
+pub fn is_cast_name(word: &str) -> bool {
+    NAME_WORDS.contains(&word.to_lowercase())
+}
 
 /// The cast id behind a speaker label or persona name, if the character is
 /// in the registry.

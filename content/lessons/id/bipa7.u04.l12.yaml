@@ -1,0 +1,198 @@
+schema: kabar.lesson/v1
+id: bipa7.u04.l12
+language: id
+title: Dari mana dia?
+can_do:
+  ar_eg: تخمّن المتكلم منين من كلامه، وتشرح الدليل بأدب.
+  ar: أن تخمّن منشأ المتكلّم من كلامه وتعلّل تخمينك بأدب.
+  en: Guess where a speaker is from by how they talk, and explain your clues politely.
+slides:
+  - title: Detektif bahasa
+    grammar: id.register.context
+    body:
+      ar_eg: |
+        عشان تـ menebak (تخمّن) الـ daerah asal (المنطقة اللي جاي منها):
+        1. دوّر على petunjuk (دليل / قرينة): ضمير؟ أداة؟ لكنة؟
+        2. قول تخمينك بأدب: Dari logatnya, sepertinya Bapak dari Medan, ya?
+        3. لو مش متأكد، اسأل: Maaf, Ibu aslinya dari mana?
+        وإنت بتتكلم، خلّيك netral (محايد): saya / Anda / tidak. ماتقلّدش اللهجة قدّام صاحبها.
+      ar: |
+        لكي تـ menebak (تخمّن) الـ daerah asal (المنطقة الأصلية):
+        1. ابحث عن petunjuk (قرينة): ضمير؟ أداة؟ لكنة؟
+        2. قل تخمينك بأدب: Dari logatnya, sepertinya Bapak dari Medan, ya?
+        3. وإن لم تكن متأكّدًا فاسأل: Maaf, Ibu aslinya dari mana?
+        وفي كلامك أنت ابقَ netral (محايدًا): saya / Anda / tidak، ولا تقلّد اللهجة أمام أهلها.
+      en: |
+        To menebak (guess) someone's daerah asal (home region):
+        1. Look for a petunjuk (clue): a pronoun? a particle? an accent?
+        2. Say your guess politely: Dari logatnya, sepertinya Bapak dari Medan, ya?
+        3. If you're unsure, ask: Maaf, Ibu aslinya dari mana?
+        And in your own speech stay netral (neutral): saya / Anda / tidak. Don't imitate a dialect in front of its speakers.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: menebak
+        ar_eg: يخمّن
+        ar: يخمّن
+        en: to guess
+      - text: petunjuk
+        ar_eg: دليل / قرينة
+        ar: قرينة
+        en: clue, hint
+      - text: daerah asal
+        ar_eg: البلد اللي جاي منها
+        ar: المنطقة الأصلية
+        en: home region
+      - text: netral
+        ar_eg: محايد
+        ar: محايد
+        en: neutral
+    words: [menebak, petunjuk, daerah asal, netral]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي طريقة مؤدّبة تخمّن بيها المتكلم منين؟
+      ar: أيّ طريقة مهذّبة لتخمين منشأ المتكلّم؟
+      en: Which is a polite way to guess where someone is from?
+    options:
+      - Kamu orang kampung, ya?
+      - Logatmu aneh sekali!
+      - Dari logatnya, sepertinya Bapak dari Medan, ya?
+    answer: 2
+    words: [menebak]
+  - id: e03
+    type: fill_blank
+    sentence: Kata "kitong" adalah ___ bahwa dia dari Papua.
+    meaning:
+      ar_eg: كلمة «kitong» دليل إنه من بابوا.
+      ar: كلمة «kitong» قرينة على أنّه من بابوا.
+      en: The word "kitong" is a clue that he is from Papua.
+    options: [petunjuk, netral, daerah asal]
+    answers: [petunjuk]
+    words: [petunjuk]
+  - id: e04
+    type: listen
+    text: Maaf, Ibu daerah asalnya dari mana?
+    question:
+      ar_eg: المتكلم بيسأل عن إيه؟
+      ar: عمَّ يسأل المتحدّث؟
+      en: What is the speaker asking about?
+    options:
+      - الست جاية منين أصلًا.
+      - الست ساكنة فين دلوقتي.
+      - الست رايحة فين.
+    answer: 0
+    words: [daerah asal]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: لغته محايدة، فصعب أخمّن هو منين.
+      ar: لغته محايدة، فيصعب تخمين منشئه.
+      en: His language is neutral, so it's hard to guess where he's from.
+    answer: Bahasanya netral, jadi sulit menebak asalnya.
+    distractors: [petunjuk, logat]
+    words: [netral, menebak]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه الأحسن ماتقلّدش اللهجة قدّام أهلها؟
+      ar: لماذا الأفضل ألّا تقلّد اللهجة أمام أهلها؟
+      en: Why is it better not to imitate a dialect in front of its speakers?
+    options:
+      - علشان اللهجات ممنوعة.
+      - علشان ممكن تتفهم سخرية.
+      - علشان مش هيفهموك خالص.
+    answer: 1
+    words: [netral]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: خمّنت إنها من جاوة.
+      ar: خمّنتُ أنّها من جاوة.
+      en: I guessed she was from Java.
+    answers:
+      - Saya menebak dia dari Jawa.
+      - Saya menebak bahwa dia dari Jawa.
+      - Aku menebak dia dari Jawa.
+      - Saya menebak dia berasal dari Jawa.
+    words: [menebak]
+  - id: e08
+    type: speaking
+    text: Petunjuk pertama saya adalah kata "bah" di awal kalimat.
+    meaning:
+      ar_eg: أول دليل عندي هو كلمة «bah» في أول الجملة.
+      ar: قرينتي الأولى كلمة «bah» في مطلع الجملة.
+      en: My first clue is the word "bah" at the start of the sentence.
+    words: [petunjuk]
+  - id: e09
+    type: dictation
+    text: Daerah asal kakek saya adalah Sumatra Barat.
+    meaning:
+      ar_eg: جدّي أصله من سومطرة الغربية.
+      ar: موطن جدّي الأصلي سومطرة الغربية.
+      en: My grandfather's home region is West Sumatra.
+    words: [daerah asal]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Di kantor, ia berbicara netral, tetapi di rumah logat daerah asalnya kembali.
+    answers_meaning:
+      ar_eg:
+        - في الشغل بيتكلم محايد، بس في البيت لهجة بلده بترجع.
+        - في المكتب كلامه محايد، وفي البيت بيرجع للهجة بلده.
+      ar:
+        - يتكلّم في المكتب بلغة محايدة، لكنّ لهجة موطنه تعود في البيت.
+        - لغته في العمل محايدة، وفي البيت تعود إليه لكنة بلده.
+      en:
+        - At the office he speaks neutrally, but at home his regional accent comes back.
+        - At work she sounds neutral, but at home her hometown accent returns.
+    words: [netral, daerah asal]
+dialogue:
+  title: Permainan tebak asal
+  lines:
+    - speaker: Om Nus
+      text: Coba ko tebak. Ibu di perahu itu bilang "Enak, to?" Dari mana dia?
+      ar_eg: يلا خمّن. الست اللي في المركب قالت «Enak, to?». هي منين؟
+      ar: هيّا خمّن. قالت السيّدة في القارب «Enak, to?». من أين هي؟
+      en: Go on, guess. The lady on the boat said "Enak, to?" Where's she from?
+    - speaker: Mohamed
+      text: Petunjuknya "to". Saya menebak dia dari Jawa Tengah.
+      ar_eg: الدليل هو «to». أخمّن إنها من وسط جاوة.
+      ar: القرينة «to»، وأخمّن أنّها من جاوة الوسطى.
+      en: The clue is "to". I'd guess she's from Central Java.
+    - speaker: Om Nus
+      text: Hebat! Dan saya, daerah asal saya dari mana?
+      ar_eg: برافو! وأنا بقى، أنا أصلي منين؟
+      ar: أحسنت! وأنا، ما موطني الأصلي؟
+      en: Brilliant! And me, where am I from?
+    - speaker: Mohamed
+      text: Itu terlalu mudah, Om. Dari cara Om bilang "kitong"!
+      ar_eg: دي سهلة قوي يا عمّ. من طريقة ما بتقول «kitong»!
+      ar: هذا سهل جدًّا يا عمّ، من طريقة قولك «kitong»!
+      en: That's too easy, Om. From the way you say "kitong"!
+new_words:
+  - word: menebak
+    pos: verb
+    ar_eg: يخمّن
+    ar: يخمّن
+    en: to guess
+  - word: petunjuk
+    pos: noun
+    ar_eg: دليل / قرينة
+    ar: قرينة
+    en: clue, hint
+  - word: daerah asal
+    pos: noun
+    ar_eg: البلد اللي جاي منها
+    ar: المنطقة الأصلية
+    en: home region
+  - word: netral
+    pos: adjective
+    ar_eg: محايد
+    ar: محايد
+    en: neutral
+review:
+  status: draft
+  verified: false

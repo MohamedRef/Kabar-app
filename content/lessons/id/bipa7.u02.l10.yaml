@@ -1,202 +1,239 @@
 schema: kabar.lesson/v1
 id: bipa7.u02.l10
 language: id
-title: Ulangan Unit 2
+title: Langit dan laut malam
 can_do:
-  ar_eg: تشرح ظاهرة طبيعية بالكتابة وفي عرض رسمي.
-  ar: أن تشرح ظاهرة طبيعية كتابةً وفي عرض رسمي.
-  en: Explain a natural phenomenon in writing and in a formal talk.
+  ar_eg: توصف ظواهر في السما والبحر وتشرح سببها ببساطة.
+  ar: أن تصف ظواهر في السماء والبحر وتشرح سببها ببساطة.
+  en: Describe sky and sea phenomena and explain their cause simply.
+slides:
+  - title: Fenomena yang bisa dilihat
+    body:
+      ar_eg: |
+        gerhana matahari = كسوف الشمس. يوم 9 مارس 2016 حصل gerhana total في بالو وتيرنات.
+        kulminasi = الشمس بتبقى فوق راسك بالظبط، ساعتها ييجي hari tanpa bayangan (يوم من غير ضل)، مرتين في السنة في إندونيسيا.
+        hujan meteor = زخّة شهب. rasi bintang = كوكبة؛ الفلاحين في جاوة كانوا بيزرعوا على حسب ظهور Waluku (الجبّار).
+        bioluminesensi = كائنات بتنوّر لوحدها، زي plankton (عوالق) اللي بيخلّي الموج يلمع أزرق بالليل.
+      ar: |
+        gerhana matahari = كسوف الشمس. في 9 مارس 2016 وقع gerhana total في بالو وتيرناتي.
+        kulminasi = تعامد الشمس فوق الرأس، فيحلّ hari tanpa bayangan (يوم انعدام الظلّ) مرّتين في السنة في إندونيسيا.
+        hujan meteor = زخّة شهب. rasi bintang = كوكبة؛ كان فلّاحو جاوة يزرعون بحسب ظهور Waluku (الجبّار).
+        bioluminesensi = كائنات تضيء ذاتيًّا، مثل plankton (العوالق) التي تجعل الموج يتلألأ أزرق ليلًا.
+      en: |
+        gerhana matahari = solar eclipse. On 9 March 2016 a gerhana total crossed Palu and Ternate.
+        kulminasi = the sun directly overhead, giving a hari tanpa bayangan (shadowless day) twice a year in Indonesia.
+        hujan meteor = meteor shower. rasi bintang = constellation; Javanese farmers planted by the rise of Waluku (Orion).
+        bioluminesensi = living things that make their own light, like plankton that make waves glow blue at night.
+    examples:
+      - text: Pada hari tanpa bayangan, tiang bendera tidak punya bayangan.
+        ar_eg: في اليوم اللي من غير ضل، صاري العلم مالوش ضل.
+        ar: في يوم انعدام الظلّ لا يكون لسارية العلم ظلّ.
+        en: On a shadowless day, the flagpole casts no shadow.
+      - text: Malam ini ada hujan meteor di langit timur.
+        ar_eg: الليلة فيه زخّة شهب في السما ناحية الشرق.
+        ar: الليلة زخّة شهب في السماء الشرقية.
+        en: There's a meteor shower in the eastern sky tonight.
+      - text: Ombak bercahaya biru karena plankton.
+        ar_eg: الموج بينوّر أزرق بسبب العوالق.
+        ar: يتلألأ الموج بالأزرق بسبب العوالق.
+        en: The waves glow blue because of plankton.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: memaparkan
-        ar_eg: يعرض بالتفصيل
-        ar: يعرض مفصّلًا
-        en: to set out, to present
-      - text: ekosistem
-        ar_eg: نظام بيئي
-        ar: نظام بيئي
-        en: ecosystem
-      - text: pemutihan
-        ar_eg: ابيضاض
-        ar: ابيضاض
-        en: bleaching
-      - text: persentase
-        ar_eg: نسبة مئوية
-        ar: نسبة مئوية
-        en: percentage
-      - text: tahapan
-        ar_eg: مراحل
-        ar: مراحل
-        en: stages
-    words: [memaparkan, ekosistem, pemutihan, persentase, tahapan]
+      - text: gerhana matahari
+        ar_eg: كسوف الشمس
+        ar: كسوف الشمس
+        en: solar eclipse
+      - text: gerhana total
+        ar_eg: كسوف أو خسوف كلّي
+        ar: كسوف أو خسوف كلّي
+        en: total eclipse
+      - text: hari tanpa bayangan
+        ar_eg: يوم من غير ضل
+        ar: يوم انعدام الظلّ
+        en: shadowless day
+      - text: kulminasi
+        ar_eg: الشمس في أعلى نقطة / تعامد الشمس
+        ar: تعامد الشمس، بلوغ الذروة
+        en: culmination (sun directly overhead)
+    words: [gerhana matahari, gerhana total, hari tanpa bayangan, kulminasi]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة بتأكّد على نقطة مهمة في عرض رسمي؟
-      ar: أيّ جملة تؤكّد نقطة مهمّة في عرض رسمي؟
-      en: Which sentence stresses a key point in a formal talk?
-    options:
-      - Pokoknya gitu deh.
-      - Perlu digarisbawahi bahwa pemanasan global adalah penyebab utamanya.
-      - Saya lupa poinnya.
-    answer: 1
-    words: [perlu digarisbawahi, pemanasan global, penyebab]
-  - id: e03
-    type: fill_blank
-    sentence: Setelah pemutihan tahun 2020, karang di teluk ini mulai ___ diri.
-    meaning:
-      ar_eg: بعد ابيضاض 2020، المرجان في الخليج ده بدأ يتعافى.
-      ar: بعد ابيضاض 2020 بدأ المرجان في هذا الخليج يتعافى.
-      en: After the 2020 bleaching, the coral in this bay began to recover.
-    options: [memulihkan, beralih, terbagi]
-    answers: [memulihkan]
-    words: [memulihkan, beralih, terbagi]
-  - id: e04
-    type: listen
-    text: Arus membawa nutrisi, sehingga keanekaragaman hayati di sini sangat tinggi.
-    question:
-      ar_eg: ليه التنوّع البيولوجي عالي هنا؟
-      ar: لماذا التنوّع الحيوي مرتفع هنا؟
-      en: Why is biodiversity so high here?
-    options:
-      - علشان التيار بيجيب مغذّيات.
-      - علشان المية ساكنة.
-      - علشان مفيش غطّاسين.
-    answer: 0
-    words: [arus, nutrisi, keanekaragaman hayati]
-  - id: e05
-    type: build_sentence
-    source:
-      ar_eg: نسبة المرجان الحي فضلت ثابتة تقريبًا في المحمية.
-      ar: ظلّت نسبة المرجان الحيّ مستقرّة نسبيًّا في المحمية.
-      en: Live coral cover stayed fairly stable in the conservation area.
-    answer: Persentase karang hidup relatif stabil di kawasan konservasi.
-    distractors: [tajam, alga]
-    words: [relatif stabil, kawasan konservasi]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إيه اللي بيدّي المرجان لونه؟
-      ar: ما الذي يمنح المرجان لونه؟
-      en: What gives coral its colour?
-    options: [arus, segitiga, alga]
-    answer: 2
-    words: [alga, arus, segitiga]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عدد السمك طلع بسرعة بعد ما نزل بشكل حاد.
-      ar: ارتفع عدد الأسماك بحدّة بعد انخفاض شديد.
-      en: The number of fish rose steeply after falling sharply.
-    answers:
-      - Jumlah ikan meningkat tajam setelah menurun drastis.
-      - Setelah menurun drastis, jumlah ikan meningkat tajam.
-      - Jumlah ikan meningkat tajam sesudah menurun drastis.
-    words: [meningkat tajam, menurun drastis]
-  - id: e08
-    type: speaking
-    text: Yang saya hormati hadirin, teks eksplanasi ini menjelaskan bagaimana terumbu terbentuk.
-    meaning:
-      ar_eg: حضرات الحضور المحترمين، النص التفسيري ده بيشرح إزاي الشعاب بتتكوّن.
-      ar: حضرات الحضور الكرام، يشرح هذا النصّ التفسيري كيف تتكوّن الشعاب.
-      en: Honoured guests, this explanation text explains how reefs form.
-    words: [yang saya hormati, teks eksplanasi, terbentuk]
-  - id: e09
-    type: dictation
-    text: Segitiga Terumbu Karang adalah ekosistem laut yang sangat kaya.
-    meaning:
-      ar_eg: مثلث الشعاب المرجانية نظام بيئي بحري غني جدًا.
-      ar: مثلّث الشعاب المرجانية نظام بيئي بحري بالغ الغنى.
-      en: The Coral Triangle is an extremely rich marine ecosystem.
-    words: [segitiga, ekosistem]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Presentasi ini terbagi menjadi tiga tahapan, dari penyebab sampai pemulihan.
-    answers_meaning:
-      ar_eg:
-        - العرض ده متقسّم لتلات مراحل، من السبب لحد التعافي.
-        - العرض ده تلات أجزاء، من السبب للتعافي.
-      ar:
-        - ينقسم هذا العرض إلى ثلاث مراحل، من السبب إلى التعافي.
-        - يتألّف العرض من ثلاث مراحل تمتدّ من السبب إلى التعافي.
-      en:
-        - This presentation is divided into three stages, from cause to recovery.
-        - The talk has three stages, running from the cause to the recovery.
-    words: [terbagi, tahapan, penyebab]
-  - id: e11
     type: match_pairs
     pairs:
-      - text: endemik
-        ar_eg: متوطّن
-        ar: مستوطن
-        en: endemic
-      - text: abrasi
-        ar_eg: تآكل الشط
-        ar: تآكل الساحل
-        en: coastal erosion
-      - text: lestari
-        ar_eg: مستدام
-        ar: مستدام
-        en: sustainable
-      - text: gugusan
-        ar_eg: مجموعة جزر
-        ar: أرخبيل
-        en: cluster of islands
-      - text: pembicara
-        ar_eg: متكلّم
-        ar: متحدّث
-        en: speaker
-    words: [endemik, abrasi, lestari, gugusan, pembicara]
-  - id: e12
+      - text: hujan meteor
+        ar_eg: زخّة شهب
+        ar: زخّة شهب
+        en: meteor shower
+      - text: rasi bintang
+        ar_eg: كوكبة نجوم / برج
+        ar: كوكبة نجمية
+        en: constellation
+      - text: bioluminesensi
+        ar_eg: توهّج حيوي (كائنات بتنوّر)
+        ar: تلألؤ حيوي
+        en: bioluminescence
+      - text: plankton
+        ar_eg: عوالق / بلانكتون
+        ar: عوالق
+        en: plankton
+    words: [hujan meteor, rasi bintang, bioluminesensi, plankton]
+  - id: e03
+    type: listen
+    text: Petani dulu menanam padi ketika rasi bintang Waluku muncul.
+    question:
+      ar_eg: كانوا بيزرعوا إمتى؟
+      ar: متى كانوا يزرعون؟
+      en: When did they plant?
+    options: [كوكبة نجوم, كسوف, زخّة شهب]
+    answer: 0
+    meaning:
+      ar_eg: الفلاحين زمان كانوا بيزرعوا الرز لما كوكبة والوكو تظهر.
+      ar: كان الفلّاحون قديمًا يزرعون الأرز حين تظهر كوكبة والوكو.
+      en: Farmers used to plant rice when the Waluku constellation appeared.
+    words: [rasi bintang]
+  - id: e04
+    type: fill_blank
+    sentence: Matahari berada tepat di atas kepala saat ___.
+    meaning:
+      ar_eg: الشمس بتبقى فوق الراس بالظبط وقت الـ ___.
+      ar: تكون الشمس فوق الرأس تمامًا وقت ___.
+      en: The sun is right overhead at ___.
+    options: [kulminasi, plankton, rasi bintang]
+    answers: [kulminasi]
+    words: [kulminasi, plankton, rasi bintang]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: '«Setelah tutup sasi, hasil laut bertambah.» ده مثال على إيه؟'
-      ar: '«Setelah tutup sasi, hasil laut bertambah.» على أيّ شيء هذا مثال؟'
-      en: '«Setelah tutup sasi, hasil laut bertambah.» What is this an example of?'
-    options:
-      - سبب ونتيجة.
-      - مقارنة بين بلدين.
-      - عنوان خبر.
+      ar_eg: إيه اللي بيخلّي البحر ينوّر بالليل؟
+      ar: ما الذي يجعل البحر يضيء ليلًا؟
+      en: What makes the sea glow at night?
+    options: [Hujan meteor yang jatuh ke laut., Gerhana matahari., Bioluminesensi dari plankton.]
+    answer: 2
+    explain:
+      ar_eg: 'العوالق بتنوّر لوحدها: ده توهّج حيوي.'
+      ar: العوالق تضيء ذاتيًّا، وهذا تلألؤ حيوي.
+      en: 'Plankton make their own light: bioluminescence.'
+    words: [bioluminesensi, plankton, hujan meteor, gerhana matahari]
+  - id: e06
+    type: fill_blank
+    sentence: Saat ___, langit siang menjadi gelap seperti malam.
+    meaning:
+      ar_eg: وقت الـ ___، سما النهار بتضلم زي الليل.
+      ar: عند ___ تصبح سماء النهار مظلمة كالليل.
+      en: During a ___, the daytime sky goes dark like night.
+    options: [gerhana total, hari tanpa bayangan, kulminasi]
+    answers: [gerhana total]
+    words: [gerhana total, hari tanpa bayangan, kulminasi]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: ما تبصّش للكسوف من غير نضّارة مخصوصة.
+      ar: لا تنظر إلى الكسوف دون نظّارة خاصّة.
+      en: Don't look at the eclipse without special glasses.
+    answer: Jangan melihat gerhana matahari tanpa kacamata khusus.
+    distractors: [meteor, bintang]
+    words: [gerhana matahari]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Hari tanpa bayangan terjadi dua kali setahun di Indonesia.
+    answers_meaning:
+      ar_eg: [اليوم اللي من غير ضل بيحصل مرتين في السنة في إندونيسيا, يوم من غير ضل بييجي مرتين كل سنة في إندونيسيا]
+      ar: [يحدث يوم انعدام الظلّ مرّتين في السنة في إندونيسيا, يقع يوم انعدام الظلّ مرّتين سنويًّا في إندونيسيا]
+      en: [The shadowless day happens twice a year in Indonesia, Indonesia has a shadowless day twice a year]
+    words: [hari tanpa bayangan]
+  - id: e09
+    type: speaking
+    text: Kami menonton hujan meteor dan mencari rasi bintang.
+    meaning:
+      ar_eg: إحنا اتفرّجنا على زخّة الشهب ودوّرنا على الكوكبات.
+      ar: شاهدنا زخّة الشهب وبحثنا عن الكوكبات.
+      en: We watched the meteor shower and looked for constellations.
+    words: [hujan meteor, rasi bintang]
+  - id: e10
+    type: multiple_choice
+    question: Fenomena mana yang bisa dilihat di siang hari?
+    options: [Gerhana total matahari., Hujan meteor., Bioluminesensi di ombak.]
     answer: 0
     explain:
-      ar_eg: السبب قفل الساسي، والنتيجة إن خير البحر زاد. ده قلب نص الـ eksplanasi.
-      ar: السبب إغلاق الساسي، والنتيجة ازدياد خيرات البحر، وهذا جوهر نصّ الـ eksplanasi.
-      en: The cause is closing the sasi; the effect is more sea produce. That's the heart of an explanation text.
-    words: [tutup sasi, hasil laut, teks eksplanasi]
+      ar_eg: الكسوف بيحصل بالنهار؛ الشهب والتوهّج بنشوفهم بالليل.
+      ar: الكسوف نهاري، أمّا الشهب والتلألؤ فليليّان.
+      en: An eclipse is a daytime event; meteors and glowing waves are night ones.
+    words: [gerhana total, hujan meteor, bioluminesensi, kulminasi, plankton]
 dialogue:
-  title: Tepuk tangan di Waisai
   lines:
     - speaker: Pak Yance
-      text: Presentasimu jelas sekali. Kepala dinas minta salinan grafiknya.
-      ar_eg: عرضك كان واضح جدًا. مدير الإدارة طلب نسخة من الرسم.
-      ar: كان عرضك واضحًا جدًّا، وطلب رئيس الإدارة نسخة من الرسم.
-      en: Your presentation was very clear. The head of the agency wants a copy of the chart.
+      text: Malam ini kita naik perahu sebentar. Saya mau tunjukkan sesuatu.
+      ar_eg: الليلة هنركب المركب شوية. عايز أورّيك حاجة.
+      ar: سنركب القارب الليلة قليلًا، أريد أن أريك شيئًا.
+      en: Tonight we'll take the boat out for a bit. I want to show you something.
     - speaker: Mohamed
-      text: Terima kasih. Saya gugup waktu beralih ke bagian pemutihan.
-      ar_eg: شكرًا. اتوترت لما انتقلت لجزء الابيضاض.
-      ar: شكرًا. ارتبكت حين انتقلت إلى جزء الابيضاض.
-      en: Thanks. I got nervous moving on to the bleaching part.
+      text: Apa, Pak? Hujan meteor?
+      ar_eg: إيه يا أستاذ؟ زخّة شهب؟
+      ar: ما هو يا سيّدي؟ زخّة شهب؟
+      en: What, sir? A meteor shower?
     - speaker: Pak Yance
-      text: Tidak terlihat. Besok kita ke Arborek, desa kecil di atas pasir putih.
-      ar_eg: ماكانش باين. بكرة هنروح أربوريك، قرية صغيرة على رمل أبيض.
-      ar: لم يظهر ذلك. غدًا نذهب إلى أربوريك، قرية صغيرة على رمل أبيض.
-      en: It didn't show. Tomorrow we go to Arborek, a little village on white sand.
+      text: Bukan. Coba celupkan tanganmu ke air.
+      ar_eg: لأ. جرّب تحطّ إيدك في المية.
+      ar: لا. جرّب أن تغمس يدك في الماء.
+      en: No. Try dipping your hand in the water.
     - speaker: Mohamed
-      text: Kata orang, di sana banyak cerita rakyat. Saya tidak sabar.
-      ar_eg: بيقولوا إن هناك حواديت شعبية كتير. مش قادر أستنى.
-      ar: يُقال إنّ هناك حكايات شعبية كثيرة، ولا أطيق صبرًا.
-      en: People say there are lots of folk tales there. I can't wait.
-souvenir:
-  id: bipa7.u02.souvenir
-  title: Terumbu karang Raja Ampat
-  note:
-    ar_eg: راجا أمبات في قلب مثلث الشعاب المرجانية، وفيها أعلى تنوّع بيولوجي بحري اتسجّل على الكوكب. المسوح العلمية لقت فيها حوالي تلات أرباع أنواع المرجان الصلب المعروفة في العالم، وأكتر من ألف نوع سمك شعاب. اسمها معناه «الأربع ملوك»، على اسم أربع جزر كبيرة، Waigeo وBatanta وSalawati وMisool. والزوّار بيدفعوا رسم دخول بيساعد في حماية المحميات وأهلها.
-    ar: تقع راجا أمبات في قلب مثلّث الشعاب المرجانية، وفيها أعلى تنوّع حيوي بحري سُجّل على الأرض. وجدت المسوح العلمية فيها نحو ثلاثة أرباع أنواع المرجان الصلب المعروفة في العالم، وأكثر من ألف نوع من أسماك الشعاب. ومعنى اسمها «الملوك الأربعة» نسبةً إلى أربع جزر كبرى هي Waigeo وBatanta وSalawati وMisool. ويدفع الزوّار رسم دخول يُسهم في حماية المحميات وسكّانها.
-    en: Raja Ampat sits at the heart of the Coral Triangle and holds the highest marine biodiversity recorded on Earth. Scientific surveys found about three quarters of the world's known hard coral species there and more than a thousand reef fish species. Its name means "Four Kings", after four large islands, Waigeo, Batanta, Salawati and Misool. Visitors pay an entry fee that helps protect the marine areas and the people who live by them.
+      text: Wah, airnya bercahaya biru! Ini bioluminesensi?
+      ar_eg: يا سلام، المية بتنوّر أزرق! ده التوهّج الحيوي؟
+      ar: يا للروعة، الماء يتلألأ بالأزرق! أهذا تلألؤ حيوي؟
+      en: Wow, the water's glowing blue! Is this bioluminescence?
+    - speaker: Pak Yance
+      text: Betul. Plankton kecil sekali yang membuat cahaya itu.
+      ar_eg: مظبوط. عوالق صغيّرة جدًا هي اللي بتعمل النور ده.
+      ar: صحيح، عوالق دقيقة جدًا هي التي تصنع ذلك الضوء.
+      en: Right. Tiny plankton make that light.
+    - speaker: Mohamed
+      text: Di atas ada rasi bintang, di bawah ada cahaya laut. Luar biasa.
+      ar_eg: فوق فيه نجوم، وتحت فيه نور البحر. حاجة تجنّن.
+      ar: في الأعلى كوكبات وفي الأسفل ضوء البحر، شيء مذهل.
+      en: Constellations above, sea light below. Amazing.
+new_words:
+  - word: gerhana matahari
+    pos: noun
+    ar_eg: كسوف الشمس
+    ar: كسوف الشمس
+    en: solar eclipse
+  - word: gerhana total
+    pos: noun
+    ar_eg: كسوف أو خسوف كلّي
+    ar: كسوف أو خسوف كلّي
+    en: total eclipse
+  - word: hari tanpa bayangan
+    pos: noun
+    ar_eg: يوم من غير ضل
+    ar: يوم انعدام الظلّ
+    en: shadowless day
+  - word: kulminasi
+    pos: noun
+    ar_eg: الشمس في أعلى نقطة / تعامد الشمس
+    ar: تعامد الشمس، بلوغ الذروة
+    en: culmination (sun directly overhead)
+  - word: hujan meteor
+    pos: noun
+    ar_eg: زخّة شهب
+    ar: زخّة شهب
+    en: meteor shower
+  - word: rasi bintang
+    pos: noun
+    ar_eg: كوكبة نجوم / برج
+    ar: كوكبة نجمية
+    en: constellation
+  - word: bioluminesensi
+    pos: noun
+    ar_eg: توهّج حيوي (كائنات بتنوّر)
+    ar: تلألؤ حيوي
+    en: bioluminescence
+  - word: plankton
+    pos: noun
+    ar_eg: عوالق / بلانكتون
+    ar: عوالق
+    en: plankton
 review:
   status: draft
   verified: false
