@@ -31,7 +31,7 @@ the Arabic words Indonesian already borrowed.
 | Teach Kabar: teach it a word, approve it, see it everywhere | ✓ | ✓ | ✓ |
 | Play: Arabic Bridge games, Kabar Pagi, Rupiah Reader, Pasar!, Unggah-Ungguh, Minimal Pairs | ✓ | ✓ | ✓ |
 | Watch & listen: Sinetron, Kabar Radio, offline download, background playback | ✓ | ✓ background audio | ✓ background audio |
-| Persona chats (Bu Siti, Mas Dimas, Mbak Gadis, Mas Ardi) | ✓ | ✓ | ✓ |
+| Persona chats: a chat partner for every level (10 personas) | ✓ | ✓ | ✓ |
 | Studio: AI mind maps, Study Desk panes | ✓ | — | ✓ |
 | Offline packs (audio per unit) | ✓ | ✓ | ✓ |
 | Sync through Kabar Cloud, Google sign-in, Devices screen | ✓ | ✓ | ✓ |
@@ -87,7 +87,7 @@ table below doesn't match the content.
 | Pronunciation lexicon | 18,309 | plus 30 hand overrides |
 | Sinetron episodes | 70 | each unlocks after its unit |
 | Kabar Radio episodes | 15 | prebuilt, downloadable for offline |
-| Conversation personas | 4 |  |
+| Conversation personas | 10 |  |
 | Kabar Pagi stories | 24 | morning stories |
 | Games | 3 | Pasar!, Unggah-Ungguh, Minimal Pairs |
 | Aksara Jawa glyphs | 41 | stroke order is a draft (pen work paused) |
