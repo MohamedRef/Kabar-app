@@ -56,12 +56,12 @@ exercises:
     words: [menyapu, lantai]
   - id: e03
     type: speaking
-    text: Pak Irwan mengajar bahasa Indonesia.
+    text: Saya makan ikan dan minum air.
     meaning:
-      ar_eg: أستاذ إروان بيدرّس إندونيسي.
-      ar: الأستاذ إروان يدرّس الإندونيسية.
-      en: Pak Irwan teaches Indonesian.
-    words: [mengajar]
+      ar_eg: أنا باكل سمك وبشرب مية.
+      ar: آكل السمك وأشرب الماء.
+      en: I'm eating fish and drinking water.
+    words: [makan, ikan, minum]
   - id: e04
     type: match_pairs
     pairs:
@@ -85,7 +85,11 @@ exercises:
         ar_eg: يصحى
         ar: يستيقظ
         en: to wake up
-    words: [makan, minum, mandi, tidur, bangun]
+      - text: lantai
+        ar_eg: أرضية، بلاط
+        ar: أرضية
+        en: floor
+    words: [makan, minum, mandi, tidur, bangun, lantai]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -111,13 +115,42 @@ exercises:
   - id: e07
     type: listen
     text: Saya minum kopi.
-    options: [Saya makan nasi., Saya minum kopi., Saya minum teh.]
+    options: [Saya makan ikan., Saya minum kopi., Saya minum teh.]
     answer: 1
     meaning:
       ar_eg: بشرب قهوة.
       ar: أشرب القهوة.
       en: I'm drinking coffee.
-    words: [minum]
+    words: [minum, makan, ikan]
+  - id: e08
+    type: listen
+    text: Saya bangun jam lima dan mandi.
+    options: ['Saya bangun jam lima dan mandi.', 'Saya tidur jam lima dan mandi.', 'Saya bangun jam lima dan makan.']
+    answer: 0
+    meaning:
+      ar_eg: أنا بصحى الساعة خمسة وبستحمى.
+      ar: أستيقظ في الخامسة وأستحم.
+      en: I get up at five and shower.
+    words: [bangun, mandi, tidur]
+  - id: e09
+    type: fill_blank
+    sentence: Saya ___ jam sepuluh malam.
+    meaning:
+      ar_eg: أنا بنام الساعة عشرة بالليل.
+      ar: أنام في العاشرة ليلًا.
+      en: I go to sleep at ten p.m.
+    options: [tidur, bangun, mandi]
+    answers: [tidur]
+    words: [tidur]
+  - id: e10
+    type: build_sentence
+    source:
+      ar_eg: العيال نايمين على الأرض.
+      ar: الأطفال ينامون على الأرض.
+      en: The children are sleeping on the floor.
+    answer: Anak-anak tidur di lantai.
+    distractors: [makan, ikan]
+    words: [tidur, lantai]
 dialogue:
   lines:
     - speaker: Rina

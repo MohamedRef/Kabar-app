@@ -39,18 +39,21 @@ slides:
         - Boleh saya foto? = ممكن أصوّر؟
         الرد بالموافقة: Boleh! أو Silakan = اتفضل.
         وBoleh! لوحدها كمان معناها «ماشي، موافق» لما حد يقترح حاجة.
+        وللتعليق: Bagus! = حلو! وSeru! = ممتع / يجنن! ومع الجو: musim hujan = موسم المطر.
       ar: |
         Boleh + فعل؟ = «هل يمكنني …؟» للاستئذان:
         - Boleh saya duduk? = هل يمكنني الجلوس؟
         - Boleh saya foto? = هل يمكنني التصوير؟
         والجواب بالموافقة: Boleh! أو Silakan = تفضل.
         وتأتي Boleh! وحدها بمعنى «موافق» جوابًا عن اقتراح.
+        وللتعليق: Bagus! = جميل! وSeru! = ممتع! ومع الطقس: musim hujan = موسم المطر.
       en: |
         Boleh + verb? = "May I …?" to ask permission:
         - Boleh saya duduk? = May I sit down?
         - Boleh saya foto? = May I take a photo?
         Say yes with Boleh! or Silakan = Go ahead / Please do.
         Boleh! on its own also means "Sure!" when someone suggests something.
+        To react: Bagus! = Nice! and Seru! = Fun! With weather: musim hujan = the rainy season.
     grammar: id.politeness.phrases
     examples:
       - text: Boleh saya foto? — Silakan.
@@ -65,27 +68,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: bagaimana
-        ar_eg: إزاي / عامل إيه
-        ar: كيف
-        en: how
       - text: permisi
-        ar_eg: عن إذنك / لو سمحت
+        ar_eg: عن إذنك
         ar: عن إذنك
         en: excuse me
       - text: silakan
         ar_eg: اتفضل
-        ar: تفضّل
-        en: go ahead, please do
-      - text: cuaca
-        ar_eg: الجو
-        ar: الطقس
-        en: weather
-      - text: hujan
-        ar_eg: مطر
-        ar: مطر
-        en: rain
-    words: [bagaimana, permisi, silakan, cuaca, hujan]
+        ar: تفضل
+        en: please, go ahead
+      - text: musim
+        ar_eg: موسم
+        ar: موسم
+        en: season
+      - text: seru
+        ar_eg: ممتع، يجنن
+        ar: ممتع
+        en: fun, exciting
+      - text: bagus
+        ar_eg: حلو، كويس
+        ar: جميل، جيد
+        en: nice, good
+      - text: terlambat
+        ar_eg: متأخر
+        ar: متأخر
+        en: late
+    words: [permisi, silakan, musim, seru, bagus, terlambat]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -101,14 +108,14 @@ exercises:
     words: [permisi]
   - id: e03
     type: multiple_choice
-    question: Terima kasih banyak!
+    question: Bagaimana liburanmu?
     question_meaning:
-      ar_eg: حد قالك «شكرًا جدًا!». ترد بإيه؟
-      ar: قال لك أحدهم «شكرًا جزيلًا!». بماذا تردّ؟
-      en: Someone says "Thanks a lot!". How do you reply?
-    options: [Sama-sama., Boleh., Permisi.]
+      ar_eg: «الأجازة كانت عاملة إزاي؟» — رد إزاي؟
+      ar: «كيف كانت عطلتك؟» — بماذا تجيب؟
+      en: '"How was your holiday?" — how do you answer?'
+    options: ['Seru! Pantainya bagus.', 'Silakan, Bu.', 'Permisi, Pak.']
     answer: 0
-    words: [sama-sama]
+    words: [seru, bagus]
   - id: e04
     type: fill_blank
     sentence: ___ saya foto? — Silakan.
@@ -139,11 +146,42 @@ exercises:
     words: [permisi, boleh, duduk]
   - id: e07
     type: speaking
-    text: Terima kasih banyak, Bu!
+    text: Maaf, saya terlambat. Boleh saya duduk?
     meaning:
-      ar_eg: شكرًا جدًا يا مدام!
-      ar: شكرًا جزيلًا يا سيدتي!
-      en: Thank you very much, ma'am!
+      ar_eg: آسف إني اتأخرت. ممكن أقعد؟
+      ar: عذرًا على التأخير. هل يمكنني الجلوس؟
+      en: Sorry I'm late. May I sit down?
+    words: [terlambat, boleh, duduk]
+  - id: e08
+    type: listen
+    text: Liburannya seru! Pantainya bagus.
+    options: ['Liburannya seru! Pantainya bagus.', 'Liburannya seru! Pantainya panas.', 'Liburannya bagus! Pantainya seru.']
+    answer: 0
+    meaning:
+      ar_eg: الأجازة كانت تجنن! والبحر حلو.
+      ar: كانت العطلة ممتعة! والشاطئ جميل.
+      en: The holiday was fun! The beach is lovely.
+    words: [seru, bagus]
+  - id: e09
+    type: fill_blank
+    sentence: Sekarang musim ___.
+    meaning:
+      ar_eg: دلوقتي موسم المطر.
+      ar: الآن موسم المطر.
+      en: It's the rainy season now.
+    options: [hujan, seru, bagus]
+    answers: [hujan]
+    words: [musim, hujan]
+  - id: e10
+    type: listen
+    text: Maaf, saya terlambat. Sekarang musim hujan.
+    options: ['Maaf, saya terlambat. Sekarang musim hujan.', 'Maaf, saya terlambat. Sekarang musim panas.', 'Maaf, saya duduk. Sekarang musim hujan.']
+    answer: 0
+    meaning:
+      ar_eg: آسف إني اتأخرت. أصل دلوقتي موسم المطر.
+      ar: عذرًا على التأخير، فالآن موسم المطر.
+      en: Sorry I'm late. It's the rainy season now.
+    words: [terlambat, musim]
 dialogue:
   title: Senin pagi
   lines:
