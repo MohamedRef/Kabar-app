@@ -200,7 +200,7 @@ pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) ->
                     class: "secondary",
                     onclick: move |_| {
                         if let Err(e) = platform::open_app_page(platform::AppPage::Details) {
-                            eprintln!("kabar: {e}");
+                            crate::diag::report!("{e}");
                         }
                         asked += 1;
                     },
