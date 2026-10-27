@@ -1,193 +1,231 @@
 schema: kabar.lesson/v1
 id: bipa4.u07.l08
 language: id
-title: Ulangan Unit 7
+title: Susah tidur
 can_do:
-  ar_eg: تدّي نصايح صحية وتتكلم عن الوقاية والعلاج والخدمات الصحية.
-  ar: أن تقدّم نصائح صحية وتتحدث عن الوقاية والعلاج والخدمات الصحية.
-  en: Give health advice and talk about prevention, treatment and health services.
+  ar_eg: تتكلم عن التوتر وقلة النوم والاكتئاب وتشجّع حد يروح لمعالج.
+  ar: أن تتحدث عن القلق والأرق والاكتئاب وتشجّع شخصًا على العلاج النفسي.
+  en: Talk about anxiety, poor sleep and depression, and encourage someone to see a therapist.
 slides:
-  - title: Keluarga peN-…-an
+  - title: Kesehatan jiwa juga penting
     body:
       ar_eg: |
-        افتكر: فعل meN- ← اسم peN-…-an بنفس الأنف:
-        memeriksa → pemeriksaan، mengobati → pengobatan، mencegah → pencegahan، menggunakan → penggunaan.
-        me- لوحدها ← pe-…-an: melayani → pelayanan، merawat → perawatan.
-        والشخص بـ peN- بس: penderita، pengguna.
+        gelisah = قلقان ومش مرتاح، kelelahan = تعب شديد، إرهاق، nyenyak = نوم عميق (tidur nyenyak).
+        bernapas / bernafas = يتنفّس (الاتنين صح)، pingsan = أغمى عليه.
+        depresi = اكتئاب، trauma = صدمة نفسية، terapi = علاج (terapi bicara = علاج بالكلام).
       ar: |
-        تذكّر: فعل meN- ← اسم peN-…-an بالصوت الأنفي نفسه:
-        memeriksa → pemeriksaan، mengobati → pengobatan، mencegah → pencegahan، menggunakan → penggunaan.
-        me- وحدها ← pe-…-an: melayani → pelayanan، merawat → perawatan.
-        والشخص بـ peN- فقط: penderita، pengguna.
+        gelisah = قلِق مضطرب، kelelahan = إرهاق شديد، nyenyak = عميق (tidur nyenyak = نوم عميق).
+        bernapas / bernafas = يتنفّس (الصيغتان صحيحتان)، pingsan = أُغمي عليه.
+        depresi = اكتئاب، trauma = صدمة نفسية، terapi = علاج (terapi bicara = العلاج بالكلام).
       en: |
-        Remember: meN- verb → peN-…-an noun with the same nasal:
-        memeriksa → pemeriksaan, mengobati → pengobatan, mencegah → pencegahan, menggunakan → penggunaan.
-        Plain me- → pe-…-an: melayani → pelayanan, merawat → perawatan.
-        The person takes peN- alone: penderita, pengguna.
-    grammar: id.confix.peng-an
+        gelisah = restless, anxious; kelelahan = exhaustion; nyenyak = sound (tidur nyenyak = sleep soundly).
+        bernapas / bernafas = to breathe (both spellings are used); pingsan = to faint.
+        depresi = depression, trauma = trauma, terapi = therapy (terapi bicara = talking therapy).
     examples:
-      - text: Pemeriksaan rutin penting bagi penderita darah tinggi.
-        ar_eg: الكشف الدوري مهم لعيانين الضغط.
-        ar: الفحص الدوري مهم لمرضى ارتفاع الضغط.
-        en: Routine check-ups are important for people with high blood pressure.
-      - text: Penggunaan garam harus dikurangi.
-        ar_eg: استعمال الملح لازم يقل.
-        ar: يجب تقليل استخدام الملح.
-        en: Salt use should be reduced.
+      - text: Sejak gempa itu, dia sering gelisah di malam hari.
+        ar_eg: من ساعة الزلزال ده، بيبقى قلقان كتير بالليل.
+        ar: منذ ذلك الزلزال وهو يقلق كثيرًا في الليل.
+        en: Since that earthquake, he's often restless at night.
+      - text: Tarik napas, lalu bernapas pelan-pelan.
+        ar_eg: خد نفس، وبعدين اتنفّس بالراحة.
+        ar: خذ نفسًا ثم تنفّس ببطء.
+        en: Take a breath, then breathe slowly.
+      - text: Terapi bisa membantu orang dengan depresi.
+        ar_eg: العلاج ممكن يساعد الناس اللي عندهم اكتئاب.
+        ar: قد يساعد العلاج المصابين بالاكتئاب.
+        en: Therapy can help people with depression.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: pemeriksaan
-        ar_eg: فحص / كشف
-        ar: فحص
-        en: examination, check-up
-      - text: pengobatan
+      - text: gelisah
+        ar_eg: قلقان
+        ar: قلِق
+        en: restless
+      - text: kelelahan
+        ar_eg: تعب شديد
+        ar: إرهاق
+        en: exhaustion
+      - text: nyenyak
+        ar_eg: نوم عميق
+        ar: عميق (نوم)
+        en: sound (sleep)
+      - text: bernapas
+        ar_eg: يتنفّس
+        ar: يتنفّس
+        en: to breathe
+    words: [gelisah, kelelahan, nyenyak, bernapas]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: pingsan
+        ar_eg: أغمى عليه
+        ar: أُغمي عليه
+        en: to faint
+      - text: depresi
+        ar_eg: اكتئاب
+        ar: اكتئاب
+        en: depression
+      - text: trauma
+        ar_eg: صدمة نفسية
+        ar: صدمة نفسية
+        en: trauma
+      - text: terapi
         ar_eg: علاج
         ar: علاج
-        en: treatment
-      - text: pelayanan
-        ar_eg: خدمة
-        ar: خدمة
-        en: service
-      - text: perawatan
-        ar_eg: رعاية / تمريض
-        ar: رعاية
-        en: care
-      - text: pendaftaran
-        ar_eg: تسجيل
-        ar: تسجيل
-        en: registration
-    words: [pemeriksaan, pengobatan, pelayanan, perawatan, pendaftaran]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إيه اسم peN-…-an من menggunakan؟
-      ar: ما اسم peN-…-an من menggunakan؟
-      en: What is the peN-…-an noun of menggunakan?
-    options: [pengunaan, penggunaan, pemgunaan]
-    answer: 1
-    explain:
-      ar_eg: menggunakan فيها meng-، يبقى peng-…-an، والـ g بتاعة guna بتفضل = penggunaan.
-      ar: في menggunakan البادئة meng-، فتصير peng-…-an مع بقاء g في guna، أي penggunaan.
-      en: menggunakan has meng-, so the noun has peng-…-an and keeps the g of guna = penggunaan.
-    words: [penggunaan]
+        en: therapy
+    words: [pingsan, depresi, trauma, terapi]
   - id: e03
     type: listen
-    text: Penyakit ini menular, jadi anak-anak perlu imunisasi.
-    options: ["Penyakit ini menular, jadi anak-anak perlu imunisasi.", "Penyakit ini tidak menular, jadi anak-anak tidak perlu imunisasi.", "Penyakit ini menular, jadi orang tua perlu imunisasi."]
+    text: Dia pingsan karena kelelahan dan tidak makan.
+    question:
+      ar_eg: حصله إيه؟
+      ar: ماذا حدث له؟
+      en: What happened to him?
+    options: [أغمى عليه, نام كويس, اتنفّس]
     answer: 0
     meaning:
-      ar_eg: المرض ده معدي، عشان كده الأطفال محتاجين تطعيم.
-      ar: هذا المرض معدٍ، لذلك يحتاج الأطفال إلى التطعيم.
-      en: This disease is contagious, so children need immunisation.
-    words: [menular, imunisasi]
+      ar_eg: أغمى عليه من التعب وعشان ما كلش.
+      ar: أُغمي عليه من الإرهاق وعدم الأكل.
+      en: He fainted from exhaustion and not eating.
+    words: [pingsan, kelelahan]
   - id: e04
+    type: fill_blank
+    sentence: Udara di kamar ini panas. Saya sulit ___.
+    meaning:
+      ar_eg: الهوا في الأوضة دي حر. صعب عليّ ___.
+      ar: الهواء في هذه الغرفة حارّ. يصعب عليّ ___.
+      en: The air in this room is hot. It's hard to ___.
+    options: [bernapas, pingsan, terapi]
+    answers: [bernapas]
+    words: [bernapas, pingsan, terapi]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: صاحبك عنده كحة وسخونية بس خايف من المصاريف. تنصحه بإيه؟
-      ar: صديقك مصاب بسعال وحمّى لكنه يخشى التكاليف. بماذا تنصحه؟
-      en: Your friend has a cough and fever but is worried about the cost. What do you advise?
-    options: ["Periksa ke pasar saja. Biayanya ditanggung BPJS.", "Jangan ke puskesmas. Pengobatan itu menular.", "Periksa ke puskesmas saja. Biayanya ditanggung BPJS."]
-    answer: 2
-    words: [puskesmas, ditanggung]
-  - id: e05
-    type: listen
-    text: Intinya, olahraga teratur menurunkan risiko penyakit jantung.
-    options: ["Intinya, olahraga teratur meningkatkan risiko penyakit jantung.", "Intinya, olahraga teratur menurunkan risiko penyakit jantung.", "Intinya, makanan teratur menurunkan risiko penyakit jantung."]
+      ar_eg: نمت كويس أوي امبارح. بالإندونيسي؟
+      ar: نمت جيدًا جدًا أمس. بالإندونيسية؟
+      en: I slept really well last night. In Indonesian?
+    options: [Tidur saya gelisah., Tidur saya nyenyak., Tidur saya trauma.]
     answer: 1
-    meaning:
-      ar_eg: الخلاصة، الرياضة المنتظمة بتقلّل خطر أمراض القلب.
-      ar: خلاصة القول، الرياضة المنتظمة تقلّل خطر أمراض القلب.
-      en: The main point is that regular exercise lowers the risk of heart disease.
-    words: [intinya, teratur, risiko, jantung]
+    explain:
+      ar_eg: tidur nyenyak = نوم عميق ومريح.
+      ar: tidur nyenyak = نوم عميق.
+      en: tidur nyenyak = sound sleep.
+    words: [gelisah, nyenyak, trauma]
   - id: e06
     type: fill_blank
-    sentence: ___ lebih baik daripada pengobatan.
+    sentence: Setelah kecelakaan itu, anak itu punya ___. Dia takut naik mobil.
     meaning:
-      ar_eg: (اكتب الكلمة) الوقاية أحسن من العلاج.
-      ar: (اكتب الكلمة) الوقاية خير من العلاج.
-      en: (Type the word.) Prevention is better than cure.
-    answers: [Pencegahan, pencegahan]
-    words: [pencegahan, pengobatan]
+      ar_eg: بعد الحادثة دي، الولد عنده ___. بيخاف يركب عربية.
+      ar: بعد ذلك الحادث أصيب الطفل بـ ___، فصار يخاف ركوب السيارة.
+      en: After that accident, the child has ___. He's scared to ride in cars.
+    options: [trauma, kelelahan, nyenyak]
+    answers: [trauma]
+    words: [trauma, kelelahan, nyenyak]
   - id: e07
-    type: fill_blank
-    sentence: Banyak ___ darah tinggi tidak merasakan gejala.
-    meaning:
-      ar_eg: عيانين ضغط كتير مش بيحسوا بأعراض.
-      ar: كثير من مرضى ارتفاع الضغط لا يشعرون بأعراض.
-      en: Many people with high blood pressure feel no symptoms.
-    options: [penderitaan, menderita, penderita]
-    answers: [penderita]
-    words: [penderita, darah tinggi, gejala]
+    type: multiple_choice
+    question: Dia sedih setiap hari selama berbulan-bulan. Mungkin dia ___.
+    options: [pingsan, nyenyak, depresi]
+    answer: 2
+    explain:
+      ar_eg: depresi = اكتئاب، زعل طويل.
+      ar: depresi = اكتئاب.
+      en: depresi = depression.
+    words: [pingsan, nyenyak, depresi]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: الأحسن تعمل كشف طبي بشكل دوري.
-      ar: يُستحسن أن تُجري فحصًا طبيًا بانتظام.
-      en: You should have a health check-up regularly.
-    answer: Sebaiknya Anda melakukan pemeriksaan kesehatan secara rutin.
-    alternatives: ["Anda sebaiknya melakukan pemeriksaan kesehatan secara rutin."]
-    distractors: [pemeriksa, gejala]
-    words: [pemeriksaan, kesehatan, rutin]
+      ar_eg: العلاج ساعدني أنام كويس.
+      ar: ساعدني العلاج على النوم العميق.
+      en: Therapy helped me sleep soundly.
+    answer: Terapi membantu saya tidur nyenyak.
+    distractors: [gelisah, depresi]
+    words: [terapi, nyenyak, gelisah, depresi]
   - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الأحسن تقلّل السكر والملح.
-      ar: يُستحسن أن تقلّل السكر والملح.
-      en: You should cut down on sugar and salt.
-    answers:
-      - Sebaiknya Anda mengurangi gula dan garam.
-      - Sebaiknya Anda mengurangi gula dan garam
-      - Sebaiknya kamu mengurangi gula dan garam.
-      - Anda sebaiknya mengurangi gula dan garam.
-      - Sebaiknya Anda mengurangi penggunaan gula dan garam.
-      - Sebaiknya kurangi gula dan garam.
-      - Sebaiknya Anda kurangi gula dan garam.
+    direction: from_target
+    source_text: Kalau gelisah, duduk dan bernapas pelan-pelan.
+    answers_meaning:
+      ar_eg: [لو قلقان، اقعد واتنفّس بالراحة, لو حاسس بقلق اقعد وخد نفسك بهدوء]
+      ar: [إذا شعرت بالقلق فاجلس وتنفّس ببطء, عند القلق اجلس وتنفّس بهدوء]
+      en: ['If you feel anxious, sit down and breathe slowly', 'When restless, sit and breathe slowly']
+    words: [gelisah, bernapas]
   - id: e10
     type: speaking
-    text: Kalau gejalanya parah, segera periksa ke puskesmas.
+    text: Kelelahan dan trauma bisa diobati dengan terapi.
     meaning:
-      ar_eg: لو الأعراض جامدة، روح البوسكسماس على طول.
-      ar: إن كانت الأعراض شديدة، فاذهب فورًا إلى المركز الصحي.
-      en: If the symptoms are severe, get checked at the puskesmas right away.
-    words: [gejala, parah, puskesmas]
+      ar_eg: التعب الشديد والصدمة ممكن يتعالجوا بالعلاج.
+      ar: يمكن معالجة الإرهاق والصدمة بالعلاج.
+      en: Exhaustion and trauma can be treated with therapy.
+    words: [kelelahan, trauma, terapi, pingsan, depresi]
 dialogue:
-  title: Saran untuk Mas Rizal
   lines:
-    - speaker: Mas Rizal
-      text: Akhir-akhir ini saya sering pusing.
-      ar_eg: اليومين دول بيجيلي صداع ودوخة كتير.
-      ar: أشعر بالدوار كثيرًا في الآونة الأخيرة.
-      en: I've been getting dizzy a lot lately.
     - speaker: Mohamed
-      text: Mungkin tekanan darahmu tinggi. Sebaiknya kamu periksa ke puskesmas.
-      ar_eg: يمكن ضغطك عالي. الأحسن تروح تكشف في البوسكسماس.
-      ar: ربما ضغطك مرتفع. يُستحسن أن تفحص نفسك في المركز الصحي.
-      en: Maybe your blood pressure is high. You should get checked at the puskesmas.
-    - speaker: Mas Rizal
-      text: Apakah pemeriksaannya mahal?
-      ar_eg: هو الكشف غالي؟
-      ar: هل الفحص مكلف؟
-      en: Is the check-up expensive?
+      text: Kak Nurul, wajahmu pucat. Kamu sakit?
+      ar_eg: يا نورول، وشك أصفر. إنتي عيانة؟
+      ar: يا نورول، وجهك شاحب. هل أنتِ مريضة؟
+      en: Nurul, you look pale. Are you ill?
+    - speaker: Nurul
+      text: Saya kelelahan. Sudah seminggu saya tidak tidur nyenyak.
+      ar_eg: أنا تعبانة خالص. بقالي أسبوع ما نمتش كويس.
+      ar: أنا مرهقة. لم أنم نومًا عميقًا منذ أسبوع.
+      en: I'm exhausted. I haven't slept properly for a week.
     - speaker: Mohamed
-      text: Tidak. Dengan kartu BPJS, biayanya ditanggung.
-      ar_eg: لأ. بكارت الـ BPJS المصاريف متغطية.
-      ar: لا. ببطاقة BPJS تكون التكاليف مغطاة.
-      en: No. With a BPJS card, the cost is covered.
-    - speaker: Mas Rizal
-      text: Baik, besok saya ke sana. Terima kasih sarannya.
-      ar_eg: تمام، بكرة هروح. شكرًا على النصيحة.
-      ar: حسنًا، سأذهب غدًا. شكرًا على النصيحة.
-      en: OK, I'll go tomorrow. Thanks for the advice.
-souvenir:
-  id: bipa4.u07.souvenir
-  title: Hiu paus Botubarani
-  note:
-    ar_eg: في قرية بوتوباراني جنب جورونتالو، أسماك القرش الحوتي (hiu paus) بتقرّب من الشط، وبتيجي على بقايا الجمبري من مصنع قريب. ممكن تشوفها من مركب صغير وانت ساكت ومن غير ما تلمسها. ولو تعبت في رحلتك، هتلاقي في كل منطقة puskesmas، والتأمين الصحي الحكومي BPJS بيغطي أغلب الناس في إندونيسيا.
-    ar: في قرية بوتوباراني قرب غورونتالو تقترب أسماك القرش الحوتي (hiu paus) من الشاطئ، تجذبها بقايا الروبيان من مصنع قريب، فيمكن مشاهدتها من قارب صغير بهدوء ودون لمسها. وإن مرضت في رحلتك فستجد في كل منطقة مركزًا صحيًا (puskesmas)، ويغطي التأمين الصحي الوطني BPJS معظم سكان إندونيسيا.
-    en: At Botubarani village near Gorontalo, whale sharks (hiu paus) come close to the shore, drawn by shrimp scraps from a nearby factory. You can watch them quietly from a small boat, without touching them. And if you fall ill on your travels, every area has a puskesmas, and the national BPJS health insurance covers most of Indonesia's population.
+      text: Kenapa? Ada masalah di kantor?
+      ar_eg: ليه؟ فيه مشكلة في الشغل؟
+      ar: لماذا؟ هل هناك مشكلة في العمل؟
+      en: Why? Is something wrong at work?
+    - speaker: Nurul
+      text: Banyak. Malam hari saya gelisah, kadang sulit bernapas.
+      ar_eg: كتير. بالليل ببقى قلقانة، وساعات بيبقى صعب أتنفّس.
+      ar: مشكلات كثيرة. أقلق ليلًا، وأحيانًا يصعب عليّ التنفّس.
+      en: Lots. At night I'm restless, and sometimes it's hard to breathe.
+    - speaker: Mohamed
+      text: Jangan tunggu sampai pingsan. Coba datang ke ahli terapi, ya.
+      ar_eg: ما تستنيش لحد ما يغمى عليكي. جرّبي تروحي لمعالج نفسي.
+      ar: لا تنتظري حتى يُغمى عليك. جرّبي زيارة معالج نفسي.
+      en: Don't wait until you faint. Try seeing a therapist, OK?
+new_words:
+  - word: gelisah
+    pos: adj
+    ar_eg: قلقان ومش مرتاح
+    ar: قلِق، مضطرب
+    en: restless, anxious
+  - word: kelelahan
+    pos: noun
+    ar_eg: تعب شديد، إرهاق
+    ar: إرهاق
+    en: exhaustion
+  - word: nyenyak
+    pos: adj
+    ar_eg: عميق (tidur nyenyak)
+    ar: عميق (نوم)
+    en: sound (of sleep)
+  - word: bernapas / bernafas
+    pos: verb
+    ar_eg: يتنفّس
+    ar: يتنفّس
+    en: to breathe
+  - word: pingsan
+    pos: verb
+    ar_eg: أغمى عليه
+    ar: أُغمي عليه
+    en: to faint
+  - word: depresi
+    pos: noun
+    ar_eg: اكتئاب
+    ar: اكتئاب
+    en: depression
+  - word: trauma
+    pos: noun
+    ar_eg: صدمة نفسية
+    ar: صدمة نفسية
+    en: trauma
+  - word: terapi
+    pos: noun
+    ar_eg: علاج
+    ar: علاج
+    en: therapy
 review:
   status: draft
   verified: false

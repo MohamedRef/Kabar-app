@@ -1,58 +1,74 @@
 schema: kabar.lesson/v1
 id: bipa4.u08.l08
 language: id
-title: Ulangan Unit 8
+title: Dongeng dari Mesir
 can_do:
-  ar_eg: تكتب وتحكي حكاية بعبارات طويلة مترتبة وتحلّل عناصرها.
-  ar: أن تكتب حكاية وترويها بعبارات طويلة مرتبة وتحلّل عناصرها.
-  en: Write and analyse a narrative with well-built long phrases.
+  ar_eg: تحكي حدوتة مصرية (جحا وحماره) بالإندونيسي.
+  ar: أن تروي حكاية مصرية (جحا وحماره) بالإندونيسية.
+  en: Retell an Egyptian folk tale (Juha and his donkey) in Indonesian.
 slides:
-  - title: Frasa panjang dalam dongeng
+  - title: Juha dan keledainya
     body:
       ar_eg: |
-        افتكر الترتيب:
-        عبارة الاسم: seorang / sebuah ← الاسم ← اسم واصف ← صفة ← المالك ← itu ← yang …
-        عبارة الفعل: tidak / sudah / belum ← harus / bisa / boleh ← الفعل.
-        وsangat قبل الصفة أو sekali بعدها، مش الاتنين.
-        وعناصر الحكاية: tokoh، watak، latar، alur، amanat.
+        وقت تحكي حدوتتك! استعمل اللي اتعلمته:
+        البداية: Pada zaman dahulu, hiduplah …
+        عبارات طويلة: seorang lelaki lucu dari Mesir، keledai tua milik Juha.
+        وفي الآخر قول الـ amanat.
       ar: |
-        تذكّر الترتيب:
-        العبارة الاسمية: seorang / sebuah ← الاسم ← اسم واصف ← صفة ← المالك ← itu ← yang …
-        العبارة الفعلية: tidak / sudah / belum ← harus / bisa / boleh ← الفعل.
-        وsangat قبل الصفة أو sekali بعدها، لا الاثنتان.
-        وعناصر الحكاية: tokoh، watak، latar، alur، amanat.
+        حان وقت حكايتك! استعمل ما تعلمته:
+        البداية: Pada zaman dahulu, hiduplah …
+        عبارات طويلة: seorang lelaki lucu dari Mesir، keledai tua milik Juha.
+        وفي النهاية اذكر الـ amanat.
       en: |
-        Remember the order:
-        Noun phrase: seorang / sebuah → noun → noun modifier → adjective → owner → itu → yang …
-        Verb phrase: tidak / sudah / belum → harus / bisa / boleh → verb.
-        sangat before the adjective or sekali after it, never both.
-        A tale's elements: tokoh, watak, latar, alur, amanat.
+        Time to tell your own tale! Use what you've learned:
+        Opening: Pada zaman dahulu, hiduplah …
+        Long phrases: seorang lelaki lucu dari Mesir, keledai tua milik Juha.
+        End with the amanat.
     grammar: id.phrase.complex
     examples:
-      - text: Pada zaman dahulu, hiduplah seorang putri cantik dari negeri itu.
-        ar_eg: كان يا ما كان، كان فيه أميرة جميلة من البلد دي.
-        ar: كان يا ما كان، عاشت أميرة جميلة من تلك البلاد.
-        en: Once upon a time there lived a beautiful princess from that land.
-      - text: Putri itu sudah harus pulang sebelum malam.
-        ar_eg: الأميرة كان لازم تروّح قبل الليل.
-        ar: كان على الأميرة أن تعود قبل الليل.
-        en: The princess had to go home before nightfall.
+      - text: Pada zaman dahulu, hiduplah seorang lelaki lucu bernama Juha.
+        ar_eg: كان يا ما كان، كان فيه راجل دمه خفيف اسمه جحا.
+        ar: كان يا ما كان، عاش رجل طريف اسمه جحا.
+        en: Once upon a time there lived a funny man called Juha.
+      - text: Juha dan anaknya menuntun keledai tua mereka ke pasar.
+        ar_eg: جحا وابنه شدّوا حمارهم العجوز ومشيوا بيه للسوق.
+        ar: قاد جحا وابنه حمارهما العجوز إلى السوق.
+        en: Juha and his son led their old donkey to the market.
 exercises:
   - id: e01
+    type: listen
+    text: Juha dan anaknya pergi ke pasar dengan seekor keledai.
+    options: ["Juha dan istrinya pergi ke pasar dengan seekor keledai.", "Juha dan anaknya pergi ke pasar dengan seekor kuda.", "Juha dan anaknya pergi ke pasar dengan seekor keledai."]
+    answer: 2
+    meaning:
+      ar_eg: جحا وابنه راحوا السوق ومعاهم حمار.
+      ar: ذهب جحا وابنه إلى السوق ومعهما حمار.
+      en: Juha and his son went to the market with a donkey.
+    words: [keledai]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في الآخر جحا وابنه مشيوا جنب الحمار. الناس عملت إيه؟
+      ar: في النهاية مشى جحا وابنه بجانب الحمار. ماذا فعل الناس؟
+      en: In the end Juha and his son walk beside the donkey. What do people do?
+    options: ["Orang-orang menertawakan mereka.", "Orang-orang menuntun mereka.", "Orang-orang menjual mereka."]
+    answer: 0
+    words: [menertawakan]
+  - id: e03
     type: match_pairs
     pairs:
-      - text: tokoh
-        ar_eg: شخصية
-        ar: شخصية
-        en: character
-      - text: latar
-        ar_eg: مكان وزمان الحكاية
-        ar: مكان الحكاية وزمانها
-        en: setting
-      - text: alur
-        ar_eg: حبكة
-        ar: حبكة
-        en: plot
+      - text: keledai
+        ar_eg: حمار
+        ar: حمار
+        en: donkey
+      - text: menuntun
+        ar_eg: يشد / يقود (بالإيد أو بالحبل)
+        ar: يقود (باليد أو بالحبل)
+        en: to lead (by the hand or a rope)
+      - text: menertawakan
+        ar_eg: يضحك على
+        ar: يضحك على، يسخر من
+        en: to laugh at
       - text: amanat
         ar_eg: عبرة
         ar: عبرة
@@ -61,136 +77,91 @@ exercises:
         ar_eg: طبع
         ar: طبع
         en: personality
-    words: [tokoh, latar, alur, amanat, watak]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي عبارة ترتيبها صح؟
-      ar: أيّ عبارة ترتيبها صحيح؟
-      en: Which phrase is in the right order?
-    options: [sebuah perahu kayu tua milik nelayan itu, sebuah tua perahu kayu milik nelayan itu, perahu sebuah kayu tua milik nelayan itu]
-    answer: 0
-    explain:
-      ar_eg: sebuah ← perahu ← kayu (اسم واصف) ← tua (صفة) ← milik nelayan ← itu.
-      ar: sebuah ← perahu ← kayu (اسم واصف) ← tua (صفة) ← milik nelayan ← itu.
-      en: sebuah → perahu → kayu (noun modifier) → tua (adjective) → milik nelayan → itu.
-    words: [perahu, milik, nelayan]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح في الكتابة؟
-      ar: أيّ جملة صحيحة في الكتابة؟
-      en: Which sentence is correct in writing?
-    options: ["Putri itu sangat cantik sekali.", "Putri itu cantik sekali.", "Putri itu sekali cantik."]
-    answer: 1
+    words: [keledai, menuntun, menertawakan, amanat, watak]
   - id: e04
-    type: listen
-    text: Kancil yang licik itu menertawakan buaya-buaya yang sombong.
-    options: ["Kancil yang setia itu menertawakan buaya-buaya yang sombong.", "Buaya yang licik itu menertawakan kancil yang sombong.", "Kancil yang licik itu menertawakan buaya-buaya yang sombong."]
-    answer: 2
+    type: fill_blank
+    sentence: Juha ___ keledainya, dan anaknya naik di atasnya.
     meaning:
-      ar_eg: الغزال القزم المكّار ضحك على التماسيح المتكبّرة.
-      ar: سخر الغزال القزم الماكر من التماسيح المتكبّرة.
-      en: The cunning mouse-deer laughed at the arrogant crocodiles.
-    words: [licik, menertawakan, sombong]
+      ar_eg: جحا بيشد حماره، وابنه راكب عليه.
+      ar: يقود جحا حماره، وابنه راكب عليه.
+      en: Juha leads his donkey, and his son rides on it.
+    options: [menertawakan, menuntun, melanggar]
+    answers: [menuntun]
+    words: [menuntun, keledai]
   - id: e05
-    type: fill_blank
-    sentence: Anak ___ itu malu pada ibunya sendiri.
-    meaning:
-      ar_eg: الابن العاق ده اتكسف من أمه.
-      ar: خجل ذلك الابن العاقّ من أمه.
-      en: That ungrateful son was ashamed of his own mother.
-    options: [setia, pemberani, durhaka]
-    answers: [durhaka]
-    words: [durhaka]
-  - id: e06
-    type: fill_blank
-    sentence: Kamu ___ boleh masuk. Tunggu sebentar, ya.
-    meaning:
-      ar_eg: (اكتب الكلمة) لسه مش مسموح لك تدخل. استنى شوية.
-      ar: (اكتب الكلمة) لا يُسمح لك بالدخول بعد. انتظر قليلًا.
-      en: (Type the word.) You may not come in yet. Wait a moment.
-    answers: [belum]
-    explain:
-      ar_eg: belum (لسه) بييجي قبل الفعل المساعد boleh.
-      ar: belum (بعدُ) تأتي قبل الفعل المساعد boleh.
-      en: belum (not yet) comes before the modal boleh.
-  - id: e07
     type: build_sentence
     source:
-      ar_eg: كان يا ما كان، كان فيه صياد فقير في قرية صغيرة.
-      ar: كان يا ما كان، عاش صياد فقير في قرية صغيرة.
-      en: Once upon a time, a poor fisherman lived in a small village.
-    answer: Pada zaman dahulu, hiduplah seorang nelayan miskin di sebuah desa kecil.
-    distractors: [sekali, milik]
-    words: [nelayan]
-  - id: e08
+      ar_eg: الناس ضحكوا على جحا وابنه.
+      ar: ضحك الناس على جحا وابنه.
+      en: People laughed at Juha and his son.
+    answer: Orang-orang menertawakan Juha dan anaknya.
+    distractors: [menuntun, keledai]
+    words: [menertawakan]
+  - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: البطل في الحكاية دي كلب وفي.
-      ar: الشخصية الرئيسية في هذه الحكاية كلب وفيّ.
-      en: The main character of this story is a loyal dog.
+      ar_eg: عبرة الحكاية دي إننا مانقدرش نرضّي كل الناس.
+      ar: عبرة هذه الحكاية أننا لا نستطيع إرضاء جميع الناس.
+      en: The moral of this story is that we can't please everyone.
     answers:
-      - Tokoh utama cerita ini adalah seekor anjing yang setia.
-      - Tokoh utama cerita ini adalah seekor anjing yang setia
-      - Tokoh utama cerita ini seekor anjing yang setia.
-      - Tokoh utama dalam cerita ini adalah seekor anjing yang setia.
-      - Tokoh utama cerita ini adalah seekor anjing setia.
-      - Tokoh utama cerita ini adalah anjing yang setia.
-      - Tokoh utama dongeng ini adalah seekor anjing yang setia.
-    words: [tokoh, setia]
-  - id: e09
+      - Amanat cerita ini adalah kita tidak bisa menyenangkan semua orang.
+      - Amanat cerita ini adalah kita tidak bisa menyenangkan semua orang
+      - Amanat cerita ini adalah bahwa kita tidak bisa menyenangkan semua orang.
+      - Amanat cerita ini adalah kita tidak dapat menyenangkan semua orang.
+      - Amanat dongeng ini adalah kita tidak bisa menyenangkan semua orang.
+      - "Amanat cerita ini: kita tidak bisa menyenangkan semua orang."
+      - Amanatnya, kita tidak bisa menyenangkan semua orang.
+    words: [amanat]
+  - id: e07
     type: dictation
-    text: Pemuda itu melanggar janjinya dan terkena kutukan.
+    text: Seorang lelaki tua menuntun keledainya ke pasar.
     meaning:
-      ar_eg: الشاب ده خلف وعده واتصاب بلعنة.
-      ar: نقض ذلك الشاب وعده فأصابته لعنة.
-      en: The young man broke his promise and was struck by a curse.
-    words: [melanggar, kutukan]
-  - id: e10
+      ar_eg: راجل عجوز بيشد حماره للسوق.
+      ar: يقود رجل عجوز حماره إلى السوق.
+      en: An old man leads his donkey to the market.
+    words: [menuntun, keledai]
+  - id: e08
     type: speaking
-    text: Amanat kisah ini adalah jangan sombong kepada orang lain.
+    text: Semua orang menertawakan Juha, tetapi dia masih tersenyum.
     meaning:
-      ar_eg: عبرة الحكاية دي إنك ماتتكبّرش على الناس.
-      ar: عبرة هذه القصة ألّا تتكبّر على الآخرين.
-      en: The moral of this story is not to be arrogant towards others.
-    words: [amanat, kisah, sombong]
+      ar_eg: كل الناس ضحكت على جحا، بس هو فضل مبتسم.
+      ar: ضحك الجميع على جحا، لكنه ظل مبتسمًا.
+      en: Everyone laughed at Juha, but he kept smiling.
+    words: [menertawakan]
 dialogue:
-  title: Legenda dari Minahasa
+  title: Dongeng Juha
   lines:
-    - speaker: Opa Jemmy
-      text: Kalian tahu legenda Toar dan Lumimuut?
-      ar_eg: تعرفوا أسطورة تُوار ولوميمووت؟
-      ar: هل تعرفون أسطورة توار ولوميموت؟
-      en: Do you know the legend of Toar and Lumimuut?
     - speaker: Mohamed
-      text: Belum, Opa. Siapa tokoh utamanya?
-      ar_eg: لسه يا جدو. مين البطل فيها؟
-      ar: ليس بعد يا جدي. من الشخصية الرئيسية فيها؟
-      en: Not yet, Grandpa. Who's the main character?
-    - speaker: Opa Jemmy
-      text: Lumimuut, seorang perempuan yang lahir dari sebuah batu besar.
-      ar_eg: لوميمووت، ست اتولدت من صخرة كبيرة.
-      ar: لوميموت، امرأة وُلدت من صخرة كبيرة.
-      en: Lumimuut, a woman who was born from a great rock.
+      text: Di Mesir ada dongeng terkenal tentang Juha dan keledainya.
+      ar_eg: في مصر فيه حدوتة مشهورة عن جحا وحماره.
+      ar: في مصر حكاية مشهورة عن جحا وحماره.
+      en: In Egypt there's a famous tale about Juha and his donkey.
+    - speaker: Mas Rizal
+      text: Ceritakan, dong!
+      ar_eg: احكيها بقى!
+      ar: احكِها لي!
+      en: Go on, tell it!
     - speaker: Mohamed
-      text: Wah, kisah yang ajaib sekali!
-      ar_eg: الله، دي حكاية عجيبة أوي!
-      ar: يا لها من قصة عجيبة!
-      en: Wow, what a wondrous story!
-    - speaker: Opa Jemmy
-      text: Ya. Menurut legenda, Lumimuut dan anaknya, Toar, adalah nenek moyang orang Minahasa.
-      ar_eg: أيوه. حسب الأسطورة، لوميمووت وابنها تُوار هما جدود شعب الميناهاسا.
-      ar: نعم. بحسب الأسطورة، لوميموت وابنها توار هما سلفا شعب المِيناهاسا.
-      en: Yes. According to the legend, Lumimuut and her son Toar are the ancestors of the Minahasa people.
-souvenir:
-  id: bipa4.u08.souvenir
-  title: Legenda Toar dan Lumimuut
-  note:
-    ar_eg: شعب الميناهاسا في شمال سولاويزي، حوالين مانادو وتوموهون، بيحكوا إن أصلهم من لوميمووت، ست طلعت من صخرة في أرضهم، ومن ابنها تُوار. الحكاية دي بيتعلّموها العيال لحد النهارده، وبتخلّي الناس يحسّوا إنهم كلهم عيلة واحدة. ولما تسمعها في مانادو هتلاقي فيها نفس العناصر اللي اتعلمتها زي tokoh، latar، وamanat.
-    ar: يروي شعب المِيناهاسا في شمال سولاويسي، حول مانادو وتوموهون، أن أصله يعود إلى لوميموت، المرأة التي خرجت من صخرة في أرضهم، وإلى ابنها توار. وما زال الأطفال يتعلمون هذه الحكاية حتى اليوم، فهي تُشعر الناس بأنهم أسرة واحدة. وإذا سمعتها في مانادو فستجد فيها العناصر نفسها التي تعلمتها مثل tokoh وlatar وamanat.
-    en: The Minahasa people of North Sulawesi, around Manado and Tomohon, trace their origin to Lumimuut, a woman who came out of a rock in their land, and to her son Toar. Children still learn the tale today, and it makes people feel they are one family. Hear it in Manado and you'll spot the same elements you've learned, tokoh, latar and amanat.
+      text: Juha naik keledai, dan anaknya berjalan. Orang-orang bilang Juha tidak kasihan pada anaknya.
+      ar_eg: جحا ركب الحمار وابنه ماشي. الناس قالت إن جحا ماعندوش رحمة بابنه.
+      ar: ركب جحا الحمار ومشى ابنه، فقال الناس إن جحا لا يرحم ابنه.
+      en: Juha rides the donkey and his son walks. People say Juha has no pity for his son.
+    - speaker: Mas Rizal
+      text: Lalu?
+      ar_eg: وبعدين؟
+      ar: ثم ماذا؟
+      en: And then?
+    - speaker: Mohamed
+      text: Akhirnya mereka berdua menuntun keledai itu, dan semua orang menertawakan mereka!
+      ar_eg: في الآخر الاتنين شدّوا الحمار ومشيوا، والناس كلها ضحكت عليهم!
+      ar: وفي النهاية قاد الاثنان الحمار مشيًا، فضحك عليهما الجميع!
+      en: In the end they both lead the donkey on foot, and everyone laughs at them!
+    - speaker: Mas Rizal
+      text: Ha ha! Jadi amanatnya, kita tidak bisa menyenangkan semua orang.
+      ar_eg: ها ها! يعني العبرة إننا مانقدرش نرضّي كل الناس.
+      ar: ها ها! إذن العبرة أننا لا نستطيع إرضاء الجميع.
+      en: Ha ha! So the moral is, we can't please everyone.
 review:
   status: draft
   verified: false
