@@ -93,17 +93,29 @@ exercises:
     distractors: [sederhana, membayangkan]
     words: [perumpamaan]
   - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة فيها تشبيه؟
-      ar: أيّ جملة فيها تشبيه؟
-      en: Which sentence uses an analogy?
-    options:
-      - Magma itu seperti sup panas di dalam panci.
-      - Magma bersuhu sangat tinggi.
-      - Magma ada di bawah tanah.
-    answer: 0
-    words: [perumpamaan]
+    type: match_pairs
+    pairs:
+      - text: badak
+        ar_eg: خرتيت
+        ar: وحيد القرن
+        en: rhinoceros
+      - text: gurita
+        ar_eg: أخطبوط
+        ar: أخطبوط
+        en: octopus
+      - text: mamalia
+        ar_eg: ثدييات
+        ar: ثدييات
+        en: mammal
+      - text: sirip
+        ar_eg: زعنفة
+        ar: زعنفة
+        en: fin
+      - text: kuman
+        ar_eg: ميكروب، جرثومة
+        ar: جرثومة
+        en: germ
+    words: [badak, gurita, mamalia, sirip, kuman]
   - id: e07
     type: translate
     direction: to_target
