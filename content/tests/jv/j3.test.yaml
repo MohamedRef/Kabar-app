@@ -35,18 +35,21 @@ sections:
       en: Listen, replay as you like, then pick exactly what you heard or write it. Watch the krama words.
     items:
       - id: t01
+        unit: j3.u01
         type: listen
         text: Panjenengan sampun dhahar, Mbah?
         options: ["Sampeyan sampun nedha, Mbah?", "Panjenengan sampun dhahar, Mbah?", "Kowe wis mangan, Mbah?"]
         answer: 1
         words: [panjenengan, dhahar]
       - id: t02
+        unit: j3.u03
         type: listen
         text: Kula badhe dhateng peken.
         options: ["Kula badhe dhateng peken.", "Kula dereng dhateng peken.", "Kula badhe dhateng Kauman."]
         answer: 0
         words: [badhe, dhateng, peken]
       - id: t03
+        unit: j3.u04
         type: listen
         text: Saking mriki lurus kemawon, lajeng nengen.
         options:
@@ -56,18 +59,21 @@ sections:
         answer: 2
         words: [mriki, lajeng]
       - id: t04
+        unit: j3.u05
         type: listen
         text: Kalih atus ewu angsal, Bu?
         options: ["Tigang atus ewu angsal, Bu?", "Kalih atus ewu angsal, Bu?", "Kalih atus seket ewu, Bu?"]
         answer: 1
         words: [kalih, angsal]
       - id: t05
+        unit: j3.u04
         type: listen
         text: Nyuwun sewu, asmanipun sinten?
         options: ["Nyuwun sewu, asmanipun sinten?", "Nyuwun sewu, Pasar Klewer ing pundi?", "Nyuwun sewu, reginipun pinten?"]
         answer: 0
         words: [nyuwun sewu, sinten]
       - id: t06
+        unit: j3.u03
         type: dictation
         text: Nyuwun sewu, kula mboten ngertos.
         meaning:
@@ -87,6 +93,7 @@ sections:
       en: Read the krama dialogues and text, and answer from what they say.
     items:
       - id: t07
+        unit: j3.u05
         type: multiple_choice
         question: |
           Bu Siti: Mangga, Mas. Badhe pados menapa?
@@ -105,6 +112,7 @@ sections:
         answer: 1
         words: [kangge, ibu kula]
       - id: t08
+        unit: j3.u05
         type: multiple_choice
         question: |
           Bu Siti: Mangga, Mas. Badhe pados menapa?
@@ -127,6 +135,7 @@ sections:
           en: tigang atus ewu (300,000) was the first price; she came down to kalih atus seket ewu (250,000) and Mohamed said inggih.
         words: [tigang atus, kalih atus seket]
       - id: t09
+        unit: j3.u05
         type: multiple_choice
         question: Wah, awis sanget, Bu. Saged kirang?
         question_meaning:
@@ -140,6 +149,7 @@ sections:
         answer: 0
         words: [awis, saged, kirang]
       - id: t10
+        unit: j3.u04
         type: multiple_choice
         question: |
           Mohamed: Nyuwun sewu, Mbah. Pasar Triwindu ing pundi, nggih?
@@ -154,6 +164,7 @@ sections:
         answer: 1
         words: [celak, tebih, mlampah]
       - id: t11
+        unit: j3.u04
         type: multiple_choice
         question: |
           Mohamed: Nyuwun sewu, Mbah. Pasar Triwindu ing pundi, nggih?
@@ -168,6 +179,7 @@ sections:
         answer: 2
         words: [lurus, lajeng, ngiwa]
       - id: t12
+        unit: j3.u06
         type: multiple_choice
         question: |
           DAMEL BATIK TULIS
@@ -180,6 +192,7 @@ sections:
         answer: 2
         words: [amargi, dangu]
       - id: t13
+        unit: j3.u06
         type: multiple_choice
         question: |
           DAMEL BATIK TULIS
@@ -199,6 +212,7 @@ sections:
       en: Vocabulary
     items:
       - id: t14
+        unit: j3.u03
         type: match_pairs
         pairs:
           - text: sampun
@@ -223,6 +237,7 @@ sections:
             en: there is, be present (= ana)
         words: [sampun, dereng, badhe, mboten, wonten]
       - id: t15
+        unit: j3.u05
         type: match_pairs
         pairs:
           - text: setunggal
@@ -247,6 +262,7 @@ sections:
             en: ten (10)
         words: [setunggal, kalih, sekawan, gangsal, sedasa]
       - id: t16
+        unit: j3.u05
         type: match_pairs
         pairs:
           - text: regi
@@ -267,6 +283,7 @@ sections:
             en: to buy (= tuku)
         words: [regi, awis, mirah, tumbas]
       - id: t17
+        unit: j3.u05
         type: fill_blank
         sentence: ___ ewu angsal, Bu?
         meaning:
@@ -281,6 +298,7 @@ sections:
           en: selawe (25) is ngoko; in krama it's selangkung. gangsal is five.
         words: [selangkung]
       - id: t18
+        unit: j3.u05
         type: multiple_choice
         question_meaning:
           ar_eg: إزاي تقول ٣٠٠٠ بالكراما؟
@@ -297,6 +315,7 @@ sections:
       en: Grammar and speech level
     items:
       - id: t19
+        unit: j3.u01
         type: multiple_choice
         question_meaning:
           ar_eg: بتشتري من Bu Siti، بياعة كبيرة في السن مش عارفها قوي. تكلمها بأنهي مستوى؟
@@ -306,6 +325,7 @@ sections:
         answer: 1
         words: [krama, unggah-ungguh]
       - id: t20
+        unit: j3.u03
         type: multiple_choice
         question_meaning:
           ar_eg: جدّة صاحبك بتسألك أكلت ولا لأ، وإنت أكلت. تقول إيه؟
@@ -319,6 +339,7 @@ sections:
           en: dhahar (krama inggil) is only for the person you honour, never for yourself; about yourself say nedha.
         words: [nedha, dhahar]
       - id: t21
+        unit: j3.u02
         type: fill_blank
         sentence: Mbah, ___ sampun dhahar?
         meaning:
@@ -329,6 +350,7 @@ sections:
         answers: [panjenengan]
         words: [panjenengan]
       - id: t22
+        unit: j3.u02
         type: multiple_choice
         question_meaning:
           ar_eg: 'بتحكي لـ Bu Siti عن Dimas (مش موجود): "هو من Yogya". أنهي جملة؟'
@@ -338,6 +360,7 @@ sections:
         answer: 1
         words: [piyambakipun, saking]
       - id: t23
+        unit: j3.u03
         type: fill_blank
         sentence: Inggih, kula ___ sinau krama.
         meaning:
@@ -352,6 +375,7 @@ sections:
           en: isih means still, but it's ngoko; in a krama sentence (inggih, kula) use taksih.
         words: [taksih]
       - id: t24
+        unit: j3.u03
         type: fill_blank
         sentence: Kula dhateng Kauman ___ Mas Dimas.
         meaning:
@@ -362,6 +386,7 @@ sections:
         answers: [kaliyan]
         words: [kaliyan]
       - id: t25
+        unit: j3.u04
         type: fill_blank
         sentence: Nyuwun sewu, Bu, Pasar Klewer ing ___?
         meaning:
@@ -372,6 +397,7 @@ sections:
         answers: [pundi]
         words: [pundi]
       - id: t26
+        unit: j3.u03
         type: fill_blank
         sentence: Dereng, Bu. Kula dereng ___.
         meaning:
@@ -381,6 +407,7 @@ sections:
         answers: [nedha, Nedha, neda, Neda]
         words: [nedha, dereng]
       - id: t27
+        unit: j3.u06
         type: multiple_choice
         question: regi + -ne
         question_meaning:
@@ -395,6 +422,7 @@ sections:
           en: After a vowel add -nipun (reginipun); after a consonant add -ipun (batikipun).
         words: [-ipun, -nipun]
       - id: t28
+        unit: j3.u06
         type: fill_blank
         sentence: Batikipun ___ wonten Laweyan.
         meaning:
@@ -409,6 +437,7 @@ sections:
           en: 'In krama the passive is dipun-, and the verb itself is krama too: damel, not gawe.'
         words: [dipundamel]
       - id: t29
+        unit: j3.u06
         type: fill_blank
         sentence: Kula ___ batik kangge ibu kula.
         meaning:
@@ -419,6 +448,7 @@ sections:
         answers: [tumbasaken]
         words: [tumbasaken, -aken]
       - id: t30
+        unit: j3.u04
         type: build_sentence
         source:
           ar_eg: لا مؤاخذة يا حاج، Pura Mangkunegaran فين؟
@@ -439,6 +469,7 @@ sections:
       en: Write in krama. Standard or chat spelling (kulo, sampeyan, dereng), with or without accents, is all fine.
     items:
       - id: t31
+        unit: j3.u03
         type: translate
         direction: to_target
         source_meaning:
@@ -466,6 +497,7 @@ sections:
           - Dereng kulo dereng neda
         words: [dereng, nedha]
       - id: t32
+        unit: j3.u05
         type: translate
         direction: to_target
         source_meaning:
@@ -491,6 +523,7 @@ sections:
           - Nyuwun sewu Bu niki pinten? Saged kirang
         words: [nyuwun sewu, reginipun, pinten, kirang]
       - id: t33
+        unit: j3.u03
         type: writing_task
         points: 4
         prompt:
@@ -525,6 +558,7 @@ sections:
       en: Speak calmly and at ease. Above all, pick the right level for each person.
     items:
       - id: t34
+        unit: j3.u04
         type: speaking
         text: Nyuwun sewu, Mbah. Pasar Triwindu ing pundi, nggih?
         meaning:
@@ -533,6 +567,7 @@ sections:
           en: Excuse me, Grandma. Where is Pasar Triwindu, please?
         words: [nyuwun sewu, ing pundi, nggih]
       - id: t35
+        unit: j3.u01
         type: speaking_task
         points: 4
         prompt:

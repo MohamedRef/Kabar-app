@@ -42,6 +42,7 @@ levels:
   # ───────────────────────────── J1 · Surabaya ─────────────────────────────
   - id: j1
     code: J1
+    vocab_target: 250
     title: { target: "Suroboyo", en: "Survival ngoko and chat Javanese", ar: "النغوكو للنجاة وجاوية الدردشة" }
     requires: [bipa1]
     journey: { place: Surabaya, kind: train_line, note: "Start of the line: Surabaya Pasar Turi / Gubeng." }
@@ -205,6 +206,7 @@ levels:
   # ───────────────────────────── J2 · Madiun ─────────────────────────────
   - id: j2
     code: J2
+    vocab_target: 500
     title: { target: "Madiun", en: "Everyday ngoko (Mataraman)", ar: "النغوكو اليومية (ماتارامان)" }
     requires: [j1]
     journey: { place: Madiun, kind: train_line, note: "West along the line into Mataraman country: Madiun, Ponorogo, Ngawi." }
@@ -322,6 +324,7 @@ levels:
   # ───────────────────────────── J3 · Solo ─────────────────────────────
   - id: j3
     code: J3
+    vocab_target: 750
     title: { target: "Sala", en: "Krama basics: when and with whom", ar: "أساسيات الكراما: متى ومع من" }
     requires: [j2]
     journey: { place: "Solo (Surakarta)", kind: train_line }
@@ -444,6 +447,7 @@ levels:
   # ───────────────────────────── J4 · Yogyakarta ─────────────────────────────
   - id: j4
     code: J4
+    vocab_target: 1000
     title: { target: "Ngayogyakarta", en: "Krama inggil, krama andhap and etiquette", ar: "الكراما إنغيل والكراما أندهاب وآداب الكلام" }
     requires: [j3]
     journey: { place: Yogyakarta, kind: train_line }
@@ -573,6 +577,7 @@ levels:
   # ───────────────────────────── J5 · Semarang (branch line) ─────────────────────────────
   - id: j5
     code: J5
+    vocab_target: 1250
     title: { target: "Semarang", en: "Reading real Javanese texts", ar: "قراءة نصوص جاوية حقيقية" }
     requires: [j4]
     journey: { place: Semarang, kind: branch_line, note: "A branch line north to the coast: Semarang, Kudus, Demak." }
@@ -709,6 +714,7 @@ levels:
   # ───────────────────────────── J6 · Kotagede ─────────────────────────────
   - id: j6
     code: J6
+    vocab_target: 1500
     title: { target: "Kutha Gedhe", en: "Aksara Jawa (Javanese script)", ar: "الأبجدية الجاوية (هانا تشارا كا)" }
     requires: [j5]
     journey: { place: "Kotagede, old Mataram capital", kind: city, note: "End of the line." }
