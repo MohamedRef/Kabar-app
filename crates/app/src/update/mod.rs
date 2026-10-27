@@ -142,6 +142,9 @@ pub enum Failure {
     Install(String),
     /// The feed needs a newer Kabar: install by hand once.
     TooNew,
+    /// Preview only: CI's signing key was renewed; install the newest
+    /// preview by hand once.
+    KeyChanged,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -258,6 +261,8 @@ pub struct Updater {
     platform: Option<UpdatePlatform>,
     /// A local feed folder instead of GitHub (development only).
     feed_override: Option<String>,
+    /// Pause before re-reading a feed whose signature didn't match.
+    retry_after: Duration,
     tx: watch::Sender<Status>,
     /// One check, download or install at a time.
     job: Mutex<()>,
@@ -333,7 +338,15 @@ impl Updater {
         }
         let status = Status { off, phase, channel: installed.channel, preview: info.preview, prefs };
         let (tx, _) = watch::channel(status);
-        Self { dir, info, platform, feed_override, tx, job: Mutex::new(()) }
+        Self {
+            dir,
+            info,
+            platform,
+            feed_override,
+            retry_after: Duration::from_secs(20),
+            tx,
+            job: Mutex::new(()),
+        }
     }
 
     /// What's installed, on the channel chosen now.
@@ -383,9 +396,14 @@ impl Updater {
             .prefs
             .last_check_ms
             .is_none_or(|t| now_ms().saturating_sub(t) >= CHECK_EVERY.as_millis() as u64);
+        // Automatic downloads wait for Wi-Fi (a ~45 MB APK on mobile data,
+        // up to every merge on the preview channel); the offer still shows.
+        let auto = s.prefs.mode == Mode::Auto && !metered();
         if due {
-            self.check(s.prefs.mode == Mode::Auto);
+            self.check(auto);
             crate::packs::update_installed();
+        } else if auto && let Phase::Available(_) = s.phase {
+            self.download();
         }
     }
 
@@ -426,10 +444,26 @@ impl Updater {
     fn fetch_offer(&self) -> Result<Option<Offer>, Failure> {
         let key = self.info.key.ok_or(Failure::Verify("no key".into()))?;
         let base = self.feed_url();
-        let json = get_small(&format!("{base}/{MANIFEST_FILE}"))?;
-        let sig = get_small(&format!("{base}/{SIGNATURE_FILE}"))?;
-        let sig = String::from_utf8(sig).map_err(|_| Failure::Verify("signature".into()))?;
-        let m = verify_manifest(&json, &sig, &key).map_err(update_failure)?;
+        let fetch = || -> Result<_, Failure> {
+            let json = get_small(&format!("{base}/{MANIFEST_FILE}"))?;
+            let sig = get_small(&format!("{base}/{SIGNATURE_FILE}"))?;
+            let sig = String::from_utf8(sig).map_err(|_| Failure::Verify("signature".into()))?;
+            Ok(verify_manifest(&json, &sig, &key))
+        };
+        // A feed caught mid-upload pairs a new signature with the old
+        // manifest: look once more before calling it a failure.
+        let m = match fetch()? {
+            Err(UpdateError::NotSigned) => {
+                std::thread::sleep(self.retry_after);
+                fetch()?
+            }
+            first => first,
+        };
+        let m = m.map_err(|e| match e {
+            // A preview whose CI key was renewed can't verify any newer feed.
+            UpdateError::NotSigned if self.info.preview => Failure::KeyChanged,
+            other => update_failure(other),
+        })?;
         let platform = self.platform.ok_or(Failure::Verify("no platform".into()))?;
         match decide(&self.installed(), &m, platform).map_err(update_failure)? {
             Decision::UpToDate => {
@@ -610,6 +644,9 @@ impl Updater {
 pub struct InstallTexts {
     pub done_title: String,
     pub done_body: String,
+    /// "Kabar's update is ready: tap to install", if Android must ask
+    /// while Kabar is in the background.
+    pub ready_title: String,
 }
 
 #[cfg(target_os = "android")]
@@ -639,7 +676,7 @@ fn install_build(path: &Path, offer: &Offer, _texts: &InstallTexts) -> Phase {
             why: Failure::Install("not running from Kabar.app".into()),
         };
     };
-    match bundle::install_zip(path, &app, bundle::ditto_extract) {
+    match bundle::install_zip(path, &app, bundle::ditto_extract, |new| bundle::check_signature(new, &app)) {
         Ok(()) => Phase::Installed(offer.clone()),
         Err(e) => Phase::Failed { offer: Some(offer.clone()), why: Failure::Install(e) },
     }
@@ -675,7 +712,7 @@ pub fn apply_staged_on_launch() {
         check_download(&offer.asset, bytes.len() as u64, &kabar_core::packs::sha256_hex(&bytes)).is_ok()
     });
     let result = if verified {
-        bundle::install_zip(&path, &app, bundle::ditto_extract)
+        bundle::install_zip(&path, &app, bundle::ditto_extract, |new| bundle::check_signature(new, &app))
     } else {
         Err("changed on disk".into())
     };
@@ -699,6 +736,18 @@ pub fn apply_staged_on_launch() {
 pub fn restart() {
     if let Some(app) = bundle::running_bundle() {
         bundle::relaunch(&app);
+    }
+}
+
+/// Android: on mobile data or with Data Saver on.
+fn metered() -> bool {
+    #[cfg(target_os = "android")]
+    {
+        crate::platform::android::network_metered().unwrap_or(true)
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        false
     }
 }
 
@@ -898,13 +947,14 @@ mod tests {
             preview: false,
             key: Some(parse_public_key(key).unwrap()),
         };
-        let u = Updater::new(
+        let mut u = Updater::new(
             data.path().join("updates"),
             info,
             Some(UpdatePlatform::AndroidArm64),
             Some(feed.to_owned()),
             None,
         );
+        u.retry_after = Duration::from_millis(10);
         (Box::leak(Box::new(u)), data)
     }
 

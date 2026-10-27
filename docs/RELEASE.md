@@ -69,7 +69,8 @@ are only steps 5 to 7.
    Developer.
 2. **Once:** tooling. `just setup-mac`, then `just check` (MAC-TODO §1).
 3. **Once:** the release key, `just android-keystore`, and its backup
-   (MAC-TODO §3). Then the update key, `just update-keygen`: commit
+   (MAC-TODO §3). Then `just mac-codesign-cert` (Kabar.app's signing
+   identity) and the update key, `just update-keygen`: commit
    `crates/app/update-key.pub` and back the secret up with the Android key
    (§5).
 4. **Once:** Kabar Cloud. The Google sign-in clients, `just cloud-setup`,
@@ -102,7 +103,7 @@ $0 (GitHub Releases of the public repository).
 | Feed | `update.json` + `update.json.sig` on the channel's release | same |
 | Build | the signed APK | `Kabar.app` zipped with `ditto` |
 | Install | PackageInstaller; Android checks it's the same package and signing key | unzip beside the running app, swap with renames, reopen |
-| Automatic mode | downloads in the background; installs quietly when Kabar is in the background and not mid-lesson (Android 12+, once Kabar installed itself), otherwise one tap | downloads in the background; goes in at the next launch |
+| Automatic mode | downloads in the background on Wi-Fi only (mobile data and Data Saver wait; the offer still shows); installs quietly when Kabar is in the background and not mid-lesson (Android 12+, once Kabar installed itself), otherwise one tap | downloads in the background; goes in at the next launch |
 
 **Channels.** `alpha`, `beta`, `stable` for release builds (the learner
 picks in Settings; a beta also reaches alpha, a release reaches everyone),
@@ -118,6 +119,13 @@ the manifest (no URLs or paths). (3) The download's size and SHA-256 against
 the signed manifest, streamed while downloading and again right before
 installing. (4) Android: the APK's package, signing certificate and
 `versionCode` against the installed Kabar, then Android's own checks.
+Mac: once Kabar.app is signed with the free "Kabar Code Signing"
+certificate (`just mac-codesign-cert`, once), a new bundle must pass
+`codesign --verify --deep --strict` and match the running app's designated
+requirement. The same identity on every build also keeps the Keychain
+trusting Kabar after an update (the Kabar Cloud sign-in).
+A feed caught mid-upload (new signature, old manifest) is read once more
+20 seconds later before it counts as a failure.
 Anything that fails is deleted and never installed; the current Kabar stays.
 
 **Keys.** The release update key is made once on the Mac
@@ -127,7 +135,8 @@ committed. Until then release builds say updates switch on after that step.
 Back the secret up with the Android key: losing it means one manual install
 on each device with a new key. Preview builds use a second CI key kept in the
 Actions cache next to the preview APK key; if the cache expires both keys
-change and a preview needs one manual reinstall anyway.
+change and a preview needs one manual reinstall anyway; Settings then says
+so instead of a generic error.
 
 **Nothing is published before the learner says go**: the preview feed
 follows `main` as the preview APK always has; the release feeds don't exist

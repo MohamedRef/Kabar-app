@@ -35,6 +35,8 @@ pub enum U {
     FailedVerify,
     FailedInstall,
     TooNew,
+    KeyChanged,
+    WaitingWifi,
     Later,
     // mode and channel
     Mode,
@@ -57,6 +59,7 @@ pub enum U {
     // the notification Android shows once the new Kabar is in
     DoneTitle,
     DoneBody,
+    ReadyTitle,
 }
 
 pub fn ut(lang: UiLanguage, u: U) -> &'static str {
@@ -178,6 +181,18 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (TooNew, En) => {
             "This update needs one install by hand (from the Mac); after that it's automatic again."
         }
+        (KeyChanged, ArEg) => {
+            "مفتاح توقيع نسخ المعاينة اتغيّر، فالنسخة دي مش هتقدر تتأكد من الجديد. نزّل kabar-preview.apk بإيدك مرة واحدة، وبعدها يرجع تلقائي."
+        }
+        (KeyChanged, Ar) => {
+            "تغيّر مفتاح توقيع إصدارات المعاينة، فلا يستطيع هذا الإصدار التحقق من الجديد. نزّل kabar-preview.apk يدويًا مرة واحدة، ثم يعود تلقائيًا."
+        }
+        (KeyChanged, En) => {
+            "The preview signing key changed, so this build can't verify new ones. Install the newest kabar-preview.apk by hand once; after that it's automatic again."
+        }
+        (WaitingWifi, ArEg) => "هتنزل لوحدها أول ما تتوصل بواي فاي، أو نزّلها دلوقتي.",
+        (WaitingWifi, Ar) => "سينزل وحده عند الاتصال بشبكة Wi-Fi، أو نزّله الآن.",
+        (WaitingWifi, En) => "It downloads by itself on Wi-Fi, or download it now.",
         (Later, ArEg) => "بعدين",
         (Later, Ar) => "لاحقًا",
         (Later, En) => "Later",
@@ -255,5 +270,8 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (DoneBody, ArEg) => "افتحه وكمّل من مكانك.",
         (DoneBody, Ar) => "افتحه وتابع من حيث توقفت.",
         (DoneBody, En) => "Open it and carry on where you left off.",
+        (ReadyTitle, ArEg) => "تحديث Kabar جاهز: دوس عشان تثبّته",
+        (ReadyTitle, Ar) => "تحديث Kabar جاهز: المس للتثبيت",
+        (ReadyTitle, En) => "Kabar's update is ready: tap to install",
     }
 }

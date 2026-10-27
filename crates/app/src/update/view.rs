@@ -42,7 +42,11 @@ pub fn use_update_status() -> Signal<Option<Status>> {
 }
 
 fn texts(lang: UiLanguage) -> InstallTexts {
-    InstallTexts { done_title: ut(lang, U::DoneTitle).into(), done_body: ut(lang, U::DoneBody).into() }
+    InstallTexts {
+        done_title: ut(lang, U::DoneTitle).into(),
+        done_body: ut(lang, U::DoneBody).into(),
+        ready_title: ut(lang, U::ReadyTitle).into(),
+    }
 }
 
 /// Runs a blocking updater call off the UI thread.
@@ -141,7 +145,7 @@ pub fn UpdatesCard() -> Element {
                     })}
                 }
             } else {
-                PhaseView { phase: s.phase.clone() }
+                PhaseView { phase: s.phase.clone(), auto: s.prefs.mode == Mode::Auto }
                 div { class: "row update-check",
                     button {
                         disabled: busy,
@@ -202,7 +206,7 @@ pub fn UpdatesCard() -> Element {
 }
 
 #[component]
-fn PhaseView(phase: Phase) -> Element {
+fn PhaseView(phase: Phase, auto: bool) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
     let action = primary_action(lang, &phase);
@@ -231,6 +235,7 @@ fn PhaseView(phase: Phase) -> Element {
         Phase::Failed { why: Failure::Verify(_), .. } => Some(U::FailedVerify),
         Phase::Failed { why: Failure::Install(_), .. } => Some(U::FailedInstall),
         Phase::Failed { why: Failure::TooNew, .. } => Some(U::TooNew),
+        Phase::Failed { why: Failure::KeyChanged, .. } => Some(U::KeyChanged),
     };
     let Some(headline) = headline else { return rsx! {} };
     let detail = match &phase {
@@ -262,6 +267,9 @@ fn PhaseView(phase: Phase) -> Element {
             }
             if matches!(phase, Phase::Installing(_)) && cfg!(target_os = "android") {
                 p { class: "muted", "{ut(lang, U::InstallingAndroid)}" }
+            }
+            if matches!(phase, Phase::Available(_)) && auto && cfg!(target_os = "android") {
+                p { class: "muted", "{ut(lang, U::WaitingWifi)}" }
             }
             if matches!(phase, Phase::Installed(_)) {
                 p { class: "muted", "{ut(lang, U::NextLaunch)}" }

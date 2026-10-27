@@ -24,12 +24,14 @@ fn bundle_of(exe: &Path) -> Option<PathBuf> {
 }
 
 /// Unzips `zip` with `extract` into a folder beside `bundle`, checks it holds
-/// one complete `.app`, and swaps it in.
+/// one complete `.app` that passes `check` (the code signature on the Mac),
+/// and swaps it in.
 #[cfg_attr(not(target_os = "macos"), allow(dead_code))]
 pub fn install_zip(
     zip: &Path,
     bundle: &Path,
     extract: impl FnOnce(&Path, &Path) -> Result<(), String>,
+    check: impl FnOnce(&Path) -> Result<(), String>,
 ) -> Result<(), String> {
     let parent = bundle.parent().ok_or("Kabar.app has no folder")?;
     let stage = parent.join(format!(".kabar-update-{}", std::process::id()));
@@ -49,6 +51,7 @@ pub fn install_zip(
         if !new.join("Contents/Info.plist").is_file() || !new.join("Contents/MacOS").is_dir() {
             return Err("the zip's Kabar.app is incomplete".into());
         }
+        check(new)?;
         swap(bundle, new)
     })();
     let _ = fs::remove_dir_all(&stage);
@@ -85,6 +88,46 @@ pub fn ditto_extract(zip: &Path, into: &Path) -> Result<(), String> {
         Ok(())
     } else {
         Err(format!("ditto: {}", String::from_utf8_lossy(&out.stderr).trim()))
+    }
+}
+
+/// The new bundle's code signature must be intact, and when the running
+/// Kabar is signed with a certificate ("Kabar Code Signing",
+/// `scripts/mac-codesign-cert.sh`), the new one must satisfy the same
+/// designated requirement: the same signer, so the Keychain keeps trusting
+/// it (the Kabar Cloud sign-in) and a second check beyond the hash.
+/// Ad-hoc builds (no certificate yet) are only required to be consistent.
+#[cfg(target_os = "macos")]
+pub fn check_signature(new: &Path, running: &Path) -> Result<(), String> {
+    use std::process::Command;
+    let codesign = |args: &[&str], path: &Path| {
+        Command::new("/usr/bin/codesign").args(args).arg(path).output().map_err(|e| format!("codesign: {e}"))
+    };
+    let requirement = |path: &Path| -> Option<String> {
+        let out = codesign(&["-d", "-r-"], path).ok()?;
+        // codesign prints the requirement on stdout or stderr depending on the version.
+        let text =
+            format!("{}{}", String::from_utf8_lossy(&out.stdout), String::from_utf8_lossy(&out.stderr));
+        text.lines().find_map(|l| l.strip_prefix("designated => ")).map(str::to_owned)
+    };
+    let current = requirement(running).filter(|r| r.contains("certificate"));
+    let Some(current) = current else {
+        // Not certificate-signed yet: nothing to match against.
+        return Ok(());
+    };
+    let verify = codesign(&["--verify", "--deep", "--strict"], new)?;
+    if !verify.status.success() {
+        return Err(format!(
+            "the new Kabar.app's signature is broken: {}",
+            String::from_utf8_lossy(&verify.stderr).trim()
+        ));
+    }
+    let req = format!("={current}");
+    let same = codesign(&["--verify", "-R", &req], new)?;
+    if same.status.success() {
+        Ok(())
+    } else {
+        Err("the new Kabar.app isn't signed by the same signer".into())
     }
 }
 
@@ -126,11 +169,16 @@ mod tests {
         let staged = tempfile::tempdir().unwrap();
         let zip = dir.path().join("Kabar.app.zip");
         fs::write(&zip, b"zip").unwrap();
-        install_zip(&zip, &bundle, |z, into| {
-            assert_eq!(z, zip);
-            let new = fake_app(staged.path(), "new");
-            fs::rename(new, into.join("Kabar.app")).map_err(|e| e.to_string())
-        })
+        install_zip(
+            &zip,
+            &bundle,
+            |z, into| {
+                assert_eq!(z, zip);
+                let new = fake_app(staged.path(), "new");
+                fs::rename(new, into.join("Kabar.app")).map_err(|e| e.to_string())
+            },
+            |_| Ok(()),
+        )
         .unwrap();
         assert_eq!(fs::read_to_string(bundle.join("Contents/MacOS/kabar")).unwrap(), "new");
         let left: Vec<_> = fs::read_dir(&apps).unwrap().flatten().map(|e| e.file_name()).collect();
@@ -142,13 +190,29 @@ mod tests {
         let dir = tempfile::tempdir().unwrap();
         let bundle = fake_app(dir.path(), "old");
         let zip = dir.path().join("x.zip");
-        let err = install_zip(&zip, &bundle, |_, into| {
-            fs::create_dir_all(into.join("Kabar.app/Contents")).map_err(|e| e.to_string())
-        })
+        let err = install_zip(
+            &zip,
+            &bundle,
+            |_, into| fs::create_dir_all(into.join("Kabar.app/Contents")).map_err(|e| e.to_string()),
+            |_| Ok(()),
+        )
         .unwrap_err();
         assert!(err.contains("incomplete"), "{err}");
         assert_eq!(fs::read_to_string(bundle.join("Contents/MacOS/kabar")).unwrap(), "old");
-        assert!(install_zip(&zip, &bundle, |_, _| Err("bad zip".into())).is_err());
+        assert!(install_zip(&zip, &bundle, |_, _| Err("bad zip".into()), |_| Ok(())).is_err());
+        // A bundle that fails the signature check never replaces the old one.
+        let staged = tempfile::tempdir().unwrap();
+        let err = install_zip(
+            &zip,
+            &bundle,
+            |_, into| {
+                let new = fake_app(staged.path(), "new");
+                fs::rename(new, into.join("Kabar.app")).map_err(|e| e.to_string())
+            },
+            |_| Err("other signer".into()),
+        )
+        .unwrap_err();
+        assert_eq!(err, "other signer");
         assert_eq!(fs::read_to_string(bundle.join("Contents/MacOS/kabar")).unwrap(), "old");
     }
 
@@ -171,7 +235,7 @@ mod tests {
             .unwrap();
         assert!(ok.success());
         let bundle = fake_app(&dir.path().join("Applications"), "old");
-        install_zip(&zip, &bundle, ditto_extract).unwrap();
+        install_zip(&zip, &bundle, ditto_extract, |new| check_signature(new, &bundle)).unwrap();
         assert_eq!(fs::read_to_string(bundle.join("Contents/MacOS/kabar")).unwrap(), "new");
         assert!(fs::symlink_metadata(bundle.join("Contents/MacOS/link")).unwrap().file_type().is_symlink());
     }

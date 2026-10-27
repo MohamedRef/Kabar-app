@@ -68,6 +68,7 @@ just check                # fmt + clippy + tests: all green
 
 - [ ] On both devices, Settings → About → Software information → tap **Build number** 7 times. Then turn on Developer options → **USB debugging** and **Wireless debugging**.
 - [ ] `just android-keystore` (once). Back up `~/.kabar/kabar-release.jks` somewhere safe, such as an encrypted USB stick or a password manager attachment. Losing it means reinstalling the app from scratch.
+- [ ] `just mac-codesign-cert` (once): a free self-signed "Kabar Code Signing" certificate, so Kabar.app keeps one code identity across updates (macOS asks for your password once). Then check `just bundle-mac` prints "signed …", and that after installing an update Kabar is still signed in to Kabar Cloud without a Keychain prompt.
 - [ ] `just update-keygen` (once, release day): the update key for over-the-air updates. Commit `crates/app/update-key.pub`; back the secret up with the keystore (`security find-generic-password -s kabar-update -w`). RELEASE.md §5.
 - [ ] `just apk` → `dist/android/kabar.apk`.
 - [ ] `just devices`, then `just install <serial>` for the S24 Ultra and again for the Tab S11. For wireless, use `just pair` / `just connect` (RUN.md §3).

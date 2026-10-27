@@ -8,9 +8,11 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.app.ActivityManager
 import android.content.pm.PackageInfo
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
@@ -48,6 +50,64 @@ object UpdateInstaller {
     @JvmStatic
     fun canRequestInstalls(activity: Activity): Boolean = activity.packageManager.canRequestPackageInstalls()
 
+    /** On mobile data or with Data Saver on: automatic downloads wait for Wi-Fi. */
+    @JvmStatic
+    fun isMetered(activity: Activity): Boolean {
+        val cm = activity.getSystemService(ConnectivityManager::class.java) ?: return true
+        return cm.isActiveNetworkMetered ||
+            cm.restrictBackgroundStatus == ConnectivityManager.RESTRICT_BACKGROUND_STATUS_ENABLED
+    }
+
+    /**
+     * Android's confirmation screen, kept when it arrived while Kabar was in
+     * the background (Android 10+ blocks starting it from there). Shown on
+     * the next resume, and offered as a notification meanwhile.
+     */
+    @Volatile internal var pendingConfirm: Intent? = null
+
+    @JvmStatic
+    fun showPendingConfirm(activity: Activity) {
+        val confirm = pendingConfirm ?: return
+        pendingConfirm = null
+        activity.getSystemService(NotificationManager::class.java)?.cancel(CONFIRM_NOTIFICATION_ID)
+        try {
+            activity.startActivity(confirm.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        } catch (e: Exception) {
+            done(FAILED, e.message)
+        }
+    }
+
+    internal fun inForeground(): Boolean {
+        val info = ActivityManager.RunningAppProcessInfo()
+        ActivityManager.getMyMemoryState(info)
+        return info.importance <= ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+    }
+
+    /** "Tap to install the update": the confirmation screen, from the shade. */
+    internal fun notifyConfirm(context: Context, confirm: Intent) {
+        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val title = prefs.getString("ready_title", null) ?: return
+        val nm = context.getSystemService(NotificationManager::class.java) ?: return
+        if (!nm.areNotificationsEnabled()) return
+        ensureChannel(nm)
+        val open = PendingIntent.getActivity(context, 1, confirm, PendingIntent.FLAG_IMMUTABLE)
+        nm.notify(
+            CONFIRM_NOTIFICATION_ID,
+            Notification.Builder(context, CHANNEL)
+                .setSmallIcon(app.kabar.bridge.R.drawable.ic_stat_kabar)
+                .setContentTitle(title)
+                .setContentIntent(open)
+                .setAutoCancel(true)
+                .build(),
+        )
+    }
+
+    private fun ensureChannel(nm: NotificationManager) {
+        if (nm.getNotificationChannel(CHANNEL) == null) {
+            nm.createNotificationChannel(NotificationChannel(CHANNEL, "Kabar updates", NotificationManager.IMPORTANCE_LOW))
+        }
+    }
+
     /** Opens Kabar's "Install unknown apps" switch in Android Settings. */
     @JvmStatic
     fun openInstallPermission(activity: Activity) {
@@ -75,10 +135,19 @@ object UpdateInstaller {
     /**
      * Installs the APK at [path]. [versionCode] is the signed manifest's (0 to
      * skip that check). [doneTitle]/[doneBody] are the "Kabar was updated"
-     * notification in the learner's language, shown once the new version is in.
+     * notification in the learner's language, shown once the new version is in;
+     * [readyTitle] the "tap to install" one, if Android must ask while Kabar
+     * is in the background.
      */
     @JvmStatic
-    fun install(activity: Activity, path: String, versionCode: Long, doneTitle: String, doneBody: String) {
+    fun install(
+        activity: Activity,
+        path: String,
+        versionCode: Long,
+        doneTitle: String,
+        doneBody: String,
+        readyTitle: String,
+    ) {
         current = WORKING
         message = null
         val context = activity.applicationContext
@@ -87,7 +156,7 @@ object UpdateInstaller {
                 val file = File(path)
                 check(context, file, versionCode)
                 context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
-                    .putString("title", doneTitle).putString("body", doneBody).apply()
+                    .putString("title", doneTitle).putString("body", doneBody).putString("ready_title", readyTitle).apply()
                 commit(context, file)
             } catch (e: Exception) {
                 Log.w(TAG, "Update not installed", e)
@@ -171,10 +240,9 @@ object UpdateInstaller {
         val body = prefs.getString("body", null) ?: ""
         prefs.edit().clear().apply()
         val nm = context.getSystemService(NotificationManager::class.java) ?: return
+        nm.cancel(CONFIRM_NOTIFICATION_ID)
         if (!nm.areNotificationsEnabled()) return
-        if (nm.getNotificationChannel(CHANNEL) == null) {
-            nm.createNotificationChannel(NotificationChannel(CHANNEL, "Kabar updates", NotificationManager.IMPORTANCE_LOW))
-        }
+        ensureChannel(nm)
         val launch = context.packageManager.getLaunchIntentForPackage(context.packageName) ?: return
         val open = PendingIntent.getActivity(context, 0, launch, PendingIntent.FLAG_IMMUTABLE)
         val notification =
@@ -190,6 +258,7 @@ object UpdateInstaller {
 
     private const val CHANNEL = "kabar_updates"
     private const val NOTIFICATION_ID = 7301
+    private const val CONFIRM_NOTIFICATION_ID = 7302
 }
 
 /** The installer's verdict, and the "Kabar was updated" moment after it. */
@@ -210,11 +279,18 @@ class UpdateInstallReceiver : BroadcastReceiver() {
                     UpdateInstaller.done(UpdateInstaller.FAILED, "no confirmation screen")
                     return
                 }
-                try {
-                    context.startActivity(confirm.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-                    UpdateInstaller.done(UpdateInstaller.WAITING_USER, null)
-                } catch (e: Exception) {
-                    UpdateInstaller.done(UpdateInstaller.FAILED, e.message)
+                UpdateInstaller.done(UpdateInstaller.WAITING_USER, null)
+                if (UpdateInstaller.inForeground()) {
+                    try {
+                        context.startActivity(confirm.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                    } catch (e: Exception) {
+                        UpdateInstaller.done(UpdateInstaller.FAILED, e.message)
+                    }
+                } else {
+                    // Android 10+ won't open it from the background: keep it
+                    // for the next resume and offer it in the shade.
+                    UpdateInstaller.pendingConfirm = confirm
+                    UpdateInstaller.notifyConfirm(context, confirm)
                 }
             }
             // The new Kabar is in; this process ends now.
