@@ -835,9 +835,9 @@ fn ReadView(open: Open) -> Element {
             }
             None => c.push_str(" name"),
         }
-        if let Some(class) = morph::class_of_word(w) {
+        if let Some(class) = w.class {
             c.push_str(" wc-ink ");
-            c.push_str(morph::class_css(class));
+            c.push_str(class.css());
         }
         if w.is_bridge() {
             c.push_str(" from-arabic");

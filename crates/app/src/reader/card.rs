@@ -12,7 +12,7 @@ use super::content::taught_info;
 use super::doc::{Tag, Word};
 use super::explain::ExplainCard;
 use super::glossary::{Shift, SpeechLevel, WordInfo, WordLang};
-use super::morph::{MorphDetail, PartsLine, class_of_word};
+use super::morph::{MorphDetail, PartsLine};
 use super::{Panel, Peek, ReaderState};
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
@@ -202,7 +202,7 @@ fn WordCard(i: usize) -> Element {
     let sentence = open.doc.sentence_of(i).to_string();
     let key = w.key.clone();
     let status = key.as_deref().map(|k| st.status(k));
-    let breakdown = w.breakdown().map(|_| (parts_of_token(&w.analyzed), class_of_word(&w)));
+    let breakdown = w.breakdown().map(|_| (parts_of_token(&w.analyzed), w.class));
     let speak_text = w.analyzed.normalized.as_ref().map_or(surface.clone(), |n| n.full.clone());
     let taught = w.taught_approved().and_then(taught_info);
     let speech_tag = match w.tag {
