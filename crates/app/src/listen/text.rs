@@ -34,6 +34,7 @@ pub enum T {
     Questions,
     NextTime,
     Words,
+    WordsHint,
     Back,
     Broken,
     Scene,
@@ -57,13 +58,13 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
             "A short drama with an episode for every unit you finish, and a radio show that goes over the unit's words."
         }
         (RadioIntro, ArEg) => {
-            "حلقة لكل وحدة: Kak Tiara وKak Reza بيراجعوا كلماتها معاك. نزّلها واسمعها في الطريق."
+            "حلقة لكل وحدة: Kak Tiara وKak Reza بيراجعوا كلمات الإندونيسي معاك، وMbak Sekar وMas Galih كلمات الجاوي. نزّلها واسمعها في الطريق."
         }
         (RadioIntro, Ar) => {
-            "حلقة لكل وحدة: Kak Tiara وKak Reza يراجعان كلماتها معك. نزّلها واستمع إليها في الطريق."
+            "حلقة لكل وحدة: Kak Tiara وKak Reza يراجعان معك كلمات الإندونيسية، وMbak Sekar وMas Galih كلمات الجاوية. نزّلها واستمع إليها في الطريق."
         }
         (RadioIntro, En) => {
-            "One episode per unit: Kak Tiara and Kak Reza go over its words with you. Download one for the road."
+            "One episode per unit: Kak Tiara and Kak Reza go over the Indonesian words with you, Mbak Sekar and Mas Galih the Javanese ones. Download one for the road."
         }
         (Episode, ArEg | Ar) => "الحلقة",
         (Episode, En) => "Episode",
@@ -147,6 +148,9 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (NextTime, En) => "Next time",
         (Words, ArEg | Ar) => "كلمات الحلقة",
         (Words, En) => "Words in this episode",
+        (WordsHint, ArEg) => "كلها من دروس الوحدة. دوس على كلمة تشوف معناها.",
+        (WordsHint, Ar) => "كلّها من دروس الوحدة. انقر كلمة لترى معناها.",
+        (WordsHint, En) => "All from this unit's lessons. Tap a word for its meaning.",
         (Back, ArEg | Ar) => "رجوع",
         (Back, En) => "Back",
         (Broken, ArEg) => "الحلقة دي فيها مشكلة في الملف، ومش هتشتغل لحد ما تتصلّح.",

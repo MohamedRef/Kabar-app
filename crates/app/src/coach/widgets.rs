@@ -200,7 +200,7 @@ pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) ->
                     class: "secondary",
                     onclick: move |_| {
                         if let Err(e) = platform::open_app_page(platform::AppPage::Details) {
-                            crate::diag::report!("{e}");
+                            crate::diag::report!("opening the app settings page failed: {e}");
                         }
                         asked += 1;
                     },
