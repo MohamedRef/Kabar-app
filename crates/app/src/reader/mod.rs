@@ -315,6 +315,8 @@ pub fn Reader() -> Element {
     translate::use_translation(st);
     let busy = use_signal(|| None::<Msg>);
     let recent = use_signal(|| db.0.borrow().recent_texts(12).unwrap_or_default());
+    // The reading settings popover under Aa.
+    let sheet = use_signal(|| false);
 
     // Pen, mouse and touch input from the WebView.
     use_future({
@@ -349,6 +351,11 @@ pub fn Reader() -> Element {
                             st.panel.set(Some(Panel::Phrase { tokens, save_first: true }));
                         }
                         FromJs::Highlight { tokens } => st.save_phrase(&db, &tokens),
+                        // One layer at a time: the settings popover first.
+                        FromJs::Escape if *sheet.peek() => {
+                            let mut sheet = sheet;
+                            sheet.set(false);
+                        }
                         FromJs::Escape => {
                             st.peek.set(None);
                             st.panel.set(None);
@@ -387,7 +394,6 @@ pub fn Reader() -> Element {
     let open = st.open.read().clone();
     let prefs = use_context::<crate::settings::device::DevicePrefs>();
     let read = reading::attrs(*prefs.reading.read(), open.is_some(), *ui.width.read());
-    let sheet = use_signal(|| false);
 
     rsx! {
         div {
