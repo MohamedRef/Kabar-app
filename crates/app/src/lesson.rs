@@ -5,6 +5,7 @@
 //! The exercise views below are standalone components (exercise + `Draft`
 //! signal in, events out) so level tests can reuse them without the player.
 
+mod notes;
 mod test_player;
 pub use test_player::PlacementInvite;
 pub(crate) use test_player::item_prompt;
@@ -816,6 +817,8 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
     let mut finished = use_signal(|| false);
     // Listening items skipped because the device has no voice for them.
     let mut voice_skips = use_signal(|| 0u32);
+    // The lesson notes pane on wide windows; the learner can tuck it away.
+    let mut notes_open = use_signal(|| true);
 
     // Save where we are on open (Lanjut) and play the first exercise's audio.
     use_hook(move || {
@@ -1050,10 +1053,15 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
     let summary = p.summary();
     let retry = matches!(step, Step::Exercise { retry: true, .. });
     let lesson = l.clone();
+    let wide = *ui.width.read() >= kabar_core::layout::WidthClass::Expanded;
+    let marks = if wide { exercise_marks(&p) } else { Vec::new() };
+    let answering = matches!(step, Step::Exercise { .. }) && pending.is_none();
     drop(p);
 
+    let with_notes = wide && *notes_open.read();
     rsx! {
-        div { class: "lp",
+        div { class: if with_notes { "lp with-notes" } else { "lp" },
+            div { class: "lp-main",
             div { class: "lp-top",
                 button {
                     class: "lp-close",
@@ -1070,6 +1078,9 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                     aria_valuemax: "100",
                     aria_valuenow: "{pct}",
                     div { class: "lp-bar", style: "inline-size: {pct}%" }
+                }
+                if wide && !with_notes {
+                    notes::ShowNotes { on_show: move |_| notes_open.set(true) }
                 }
             }
             div { class: "lp-body",
@@ -1150,8 +1161,39 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                     }
                 }
             }
+            }
+            if with_notes {
+                notes::LessonNotes {
+                    lesson: lesson.clone(),
+                    step,
+                    marks,
+                    answering,
+                    missing: audio_missing,
+                    on_hide: move |_| notes_open.set(false),
+                }
+            }
         }
     }
+}
+
+/// One mark per exercise for the notes pane: how its first try went (or its
+/// retry, once that's done), the one on screen, or not reached yet.
+fn exercise_marks(p: &Player) -> Vec<notes::Mark> {
+    use notes::Mark;
+    let results = p.completed().results;
+    let current = match p.step() {
+        Step::Exercise { index, .. } => Some(index),
+        _ => None,
+    };
+    p.lesson()
+        .exercises
+        .iter()
+        .enumerate()
+        .map(|(i, ex)| {
+            let done = results.iter().find(|r| r.id == ex.id).map(|r| Mark::of(r.retry.unwrap_or(r.first)));
+            if current == Some(i) { Mark::Current } else { done.unwrap_or(Mark::Todo) }
+        })
+        .collect()
 }
 
 fn save(db: CopyValue<Db>, pos: &LessonPosition) {

@@ -8,6 +8,7 @@ pub mod coach_screen;
 pub mod journal;
 pub mod labels;
 pub mod logic;
+pub mod notify;
 pub mod onboarding;
 pub mod settings;
 pub mod today;
