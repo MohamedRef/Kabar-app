@@ -4,10 +4,6 @@
 //! A unit without its own card shows its level's landmark from the Journey
 //! Map, so every souvenir has a picture of the place it was earned in.
 
-use std::collections::HashMap;
-use std::sync::LazyLock;
-
-use base64::Engine as _;
 use dioxus::prelude::*;
 
 use crate::map_art;
@@ -23,23 +19,11 @@ pub enum Size {
     Thumb,
 }
 
-fn data_url(bytes: &[u8]) -> String {
-    format!("data:image/webp;base64,{}", base64::engine::general_purpose::STANDARD.encode(bytes))
-}
-
-static URLS: LazyLock<HashMap<(&'static str, Size), String>> = LazyLock::new(|| {
-    SOUVENIR_CARDS
-        .iter()
-        .flat_map(|&(unit, card, thumb)| {
-            [((unit, Size::Card), data_url(card)), ((unit, Size::Thumb), data_url(thumb))]
-        })
-        .collect()
-});
-
 /// The unit's own souvenir card, as a `data:` URL.
 pub fn card(unit_id: &str, size: Size) -> Option<&'static str> {
-    let unit = SOUVENIR_CARDS.iter().find(|c| c.0 == unit_id)?.0;
-    URLS.get(&(unit, size)).map(String::as_str)
+    let &(_, card, thumb) = SOUVENIR_CARDS.iter().find(|c| c.0 == unit_id)?;
+    let bytes = if size == Size::Card { card } else { thumb };
+    Some(crate::embedded::cached_data_url("image/webp", bytes))
 }
 
 /// The unit of a lesson souvenir id (`bipa1.u01.souvenir` → `bipa1.u01`).
