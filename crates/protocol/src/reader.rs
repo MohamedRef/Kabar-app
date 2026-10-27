@@ -50,6 +50,10 @@ pub enum SharedInput {
         mime: Option<String>,
         #[serde(default)]
         source: Option<String>,
+        /// How many more images came in the same share. Only this first one
+        /// is read; the Reader says so.
+        #[serde(default)]
+        more: u32,
     },
 }
 
@@ -138,7 +142,11 @@ mod tests {
             SharedInput::Text { text: "arp dicul piro".into(), source: Some("com.whatsapp".into()) }
         );
         let i: SharedInput = serde_json::from_str(r#"{"kind":"image","path":"/c/s.png"}"#).unwrap();
-        assert!(matches!(i, SharedInput::Image { mime: None, .. }));
+        assert!(matches!(i, SharedInput::Image { mime: None, more: 0, .. }));
+        let many: SharedInput =
+            serde_json::from_str(r#"{"kind":"image","path":"/c/s.png","mime":"image/png","more":2}"#)
+                .unwrap();
+        assert!(matches!(many, SharedInput::Image { more: 2, .. }));
     }
 
     #[test]

@@ -334,6 +334,13 @@ impl Store {
         Self::init(Connection::open_in_memory()?)
     }
 
+    /// Every later write fails, as on a full or locked disk (tests of the
+    /// screens' error paths).
+    #[cfg(test)]
+    pub fn refuse_writes(&self) {
+        self.conn.execute_batch("PRAGMA query_only = ON").unwrap();
+    }
+
     fn init(mut conn: Connection) -> Result<Self> {
         conn.pragma_update(None, "journal_mode", "WAL")?;
         conn.pragma_update(None, "foreign_keys", "ON")?;

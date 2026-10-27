@@ -80,6 +80,22 @@ impl Default for RetentionPct {
     }
 }
 
+/// How the translation shows under Indonesian and Javanese sentences.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum TranslationMode {
+    /// Always under the sentence.
+    #[default]
+    On,
+    /// Behind a tap, so the learner tries to read it first.
+    Tap,
+    Off,
+}
+
+impl TranslationMode {
+    pub const ALL: [Self; 3] = [Self::On, Self::Tap, Self::Off];
+}
+
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct Settings {
     pub ui_language: UiLanguage,
@@ -96,6 +112,10 @@ pub struct Settings {
     pub desired_retention: RetentionPct,
     /// FSRS parameters fitted to this learner's reviews, once there are enough.
     pub fsrs: Option<FsrsParams>,
+    /// The translation under target-language sentences.
+    pub translation: TranslationMode,
+    /// Word colours (verb, noun, affixes) are off; on by default.
+    pub word_colours_off: bool,
 }
 
 /// Keys as stored in the `settings` table.
@@ -108,6 +128,8 @@ pub mod keys {
     pub const PRONUNCIATION: &str = "pronunciation";
     pub const DESIRED_RETENTION: &str = "desired_retention";
     pub const FSRS_PARAMS: &str = "fsrs_params";
+    pub const TRANSLATION: &str = "translation";
+    pub const WORD_COLOURS_OFF: &str = "word_colours_off";
 }
 
 impl Settings {
@@ -127,6 +149,10 @@ impl Settings {
                     s.desired_retention = serde_json::from_str(value).unwrap_or_default()
                 }
                 keys::FSRS_PARAMS => s.fsrs = serde_json::from_str(value).unwrap_or_default(),
+                keys::TRANSLATION => s.translation = serde_json::from_str(value).unwrap_or_default(),
+                keys::WORD_COLOURS_OFF => {
+                    s.word_colours_off = serde_json::from_str(value).unwrap_or_default()
+                }
                 _ => {}
             }
         }
@@ -153,6 +179,12 @@ impl Settings {
             json(&other.desired_retention),
         );
         push(self.fsrs != other.fsrs, keys::FSRS_PARAMS, json(&other.fsrs));
+        push(self.translation != other.translation, keys::TRANSLATION, json(&other.translation));
+        push(
+            self.word_colours_off != other.word_colours_off,
+            keys::WORD_COLOURS_OFF,
+            json(&other.word_colours_off),
+        );
         out
     }
 }
@@ -218,6 +250,15 @@ mod tests {
         let new = Settings { pronunciation: PronMode::Tap, ..Settings::default() };
         let pairs = Settings::default().changed_pairs(&new);
         assert_eq!(pairs, vec![("pronunciation", "\"tap\"".to_string())]);
+        assert_eq!(Settings::from_pairs(pairs.iter().map(|(k, v)| (*k, v.as_str()))), new);
+    }
+
+    #[test]
+    fn translation_defaults_on_and_round_trips() {
+        assert_eq!(Settings::default().translation, TranslationMode::On);
+        let new = Settings { translation: TranslationMode::Tap, ..Settings::default() };
+        let pairs = Settings::default().changed_pairs(&new);
+        assert_eq!(pairs, vec![("translation", "\"tap\"".to_string())]);
         assert_eq!(Settings::from_pairs(pairs.iter().map(|(k, v)| (*k, v.as_str()))), new);
     }
 }
