@@ -144,7 +144,7 @@ impl Engine {
                     Ok(token) => self.sign_in(token).await,
                     Err(OAuthError::Cancelled) => self.problem = Some(Problem::SignInCancelled),
                     Err(e) => {
-                        eprintln!("kabar: Google sign-in: {e}");
+                        crate::diag::report!("Google sign-in: {e}");
                         self.problem = Some(Problem::SignInFailed);
                     }
                 }
@@ -209,7 +209,7 @@ impl Engine {
                 self.retry_at = Instant::now();
             }
             Err(e) => {
-                eprintln!("kabar: Kabar Cloud sign-in: {e}");
+                crate::diag::report!("Kabar Cloud sign-in: {e}");
                 self.problem = Some(match &e {
                     CloudError::Api { code: ErrorCode::NotAllowed, .. } => Problem::NotAllowed,
                     CloudError::Network(_) => Problem::Network,
@@ -278,7 +278,7 @@ impl Engine {
     }
 
     fn cloud_error(&mut self, e: &CloudError) {
-        eprintln!("kabar: Kabar Cloud: {e}");
+        crate::diag::report!("Kabar Cloud: {e}");
         if e.is_signed_out() {
             self.problem = Some(Problem::SignedOutRemotely);
             self.sign_out_locally();
@@ -301,7 +301,7 @@ impl Engine {
         let mut request = match self.api.sync_url().into_client_request() {
             Ok(r) => r,
             Err(e) => {
-                eprintln!("kabar: bad sync url: {e}");
+                crate::diag::report!("bad sync url: {e}");
                 self.stopped = true;
                 return;
             }
@@ -326,7 +326,7 @@ impl Engine {
                 } else {
                     self.problem = Some(Problem::Network);
                 }
-                eprintln!("kabar: sync connect: {e}");
+                crate::diag::report!("sync connect: {e}");
                 self.schedule_retry();
             }
         }
@@ -358,7 +358,7 @@ impl Engine {
             }
             Some(Ok(_)) => return,
             Some(Err(e)) => {
-                eprintln!("kabar: sync socket: {e}");
+                crate::diag::report!("sync socket: {e}");
                 self.drop_socket();
                 return;
             }
@@ -376,7 +376,7 @@ impl Engine {
                 }
                 self.pump().await;
             }
-            Err(e) => eprintln!("kabar: unreadable sync message: {e}"),
+            Err(e) => crate::diag::report!("unreadable sync message: {e}"),
         }
     }
 
@@ -393,7 +393,7 @@ impl Engine {
                     }
                     Err(e) => {
                         // Not saved, so the next hello brings them again.
-                        eprintln!("kabar: applying remote ops: {e}");
+                        crate::diag::report!("applying remote ops: {e}");
                         self.drop_socket();
                         return;
                     }
@@ -403,17 +403,17 @@ impl Engine {
                 }
                 Effect::Acked { done, rejected } => {
                     for r in &rejected {
-                        eprintln!("kabar: op {} rejected: {:?}", r.op_id, r.reason);
+                        crate::diag::report!("op {} rejected: {:?}", r.op_id, r.reason);
                     }
                     let ids =
                         done.iter().map(String::as_str).chain(rejected.iter().map(|r| r.op_id.as_str()));
                     if let Err(e) = self.store.remove_from_outbox(ids) {
-                        eprintln!("kabar: outbox: {e}");
+                        crate::diag::report!("outbox: {e}");
                     }
                     self.touch_last_sync();
                 }
                 Effect::Reconnect { reason } => {
-                    eprintln!("kabar: sync reconnects: {reason}");
+                    crate::diag::report!("sync reconnects: {reason}");
                     if let Some(mut ws) = self.ws.take() {
                         let _ = ws.close(None).await;
                     }
@@ -448,7 +448,7 @@ impl Engine {
         let outbox = match self.store.outbox(MAX_OPS_PER_PUSH) {
             Ok(o) => o,
             Err(e) => {
-                eprintln!("kabar: reading outbox: {e}");
+                crate::diag::report!("reading outbox: {e}");
                 return;
             }
         };
@@ -461,7 +461,7 @@ impl Engine {
         let Some(ws) = &mut self.ws else { return };
         let text = serde_json::to_string(msg).unwrap_or_default();
         if let Err(e) = ws.send(Message::Text(text.into())).await {
-            eprintln!("kabar: sync send: {e}");
+            crate::diag::report!("sync send: {e}");
             self.drop_socket();
         }
     }

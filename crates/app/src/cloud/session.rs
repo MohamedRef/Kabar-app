@@ -24,7 +24,7 @@ impl KeyringVault {
     pub fn new() -> Self {
         init_default_store();
         let entry = keyring_core::Entry::new(SERVICE, USER)
-            .map_err(|e| eprintln!("kabar: no credential store: {e}"))
+            .map_err(|e| crate::diag::report!("no credential store: {e}"))
             .ok();
         Self { entry }
     }
@@ -40,7 +40,7 @@ impl SessionVault for KeyringVault {
         let Some(entry) = &self.entry else { return };
         let json = serde_json::to_string(session).unwrap_or_default();
         if let Err(e) = entry.set_password(&json) {
-            eprintln!("kabar: saving the session failed: {e}");
+            crate::diag::report!("saving the session failed: {e}");
         }
     }
 
@@ -65,7 +65,7 @@ fn init_default_store() {
         let store: Store = keyring_core::mock::Store::new().map(|s| s as _);
         match store {
             Ok(store) => keyring_core::set_default_store(store),
-            Err(e) => eprintln!("kabar: credential store unavailable: {e}"),
+            Err(e) => crate::diag::report!("credential store unavailable: {e}"),
         }
     });
 }
