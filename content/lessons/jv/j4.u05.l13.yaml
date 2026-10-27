@@ -1,0 +1,257 @@
+schema: kabar.lesson/v1
+id: j4.u05.l13
+language: jv
+title: Ulangan J4.5
+can_do:
+  ar_eg: تختار بين ngoko alus وkrama alus.
+  ar: أن تختار بين ngoko alus وkrama alus.
+  en: Pick ngoko alus vs krama alus.
+slides:
+  - title: Papat undha-usuk
+    body:
+      ar_eg: |
+        «رايح فين؟» بأربع درجات:
+        ngoko lugu (صاحبك): Kowe arep lunga menyang ngendi?
+        ngoko alus (قريب وأكبر: أختك الكبيرة، صاحب أكبر): Panjenengan / Mas arep tindak menyang ngendi?
+        krama lugu (بياع، غريب في سنّك): Sampeyan badhe kesah dhateng pundi?
+        krama alus (الكبار، المدرسين): Panjenengan badhe tindak dhateng pundi?
+        السؤال اللي تسأله لنفسك: هو قريب مني؟ وهو أكبر مني؟
+      ar: |
+        «إلى أين تذهب؟» بأربع درجات:
+        ngoko lugu (الصديق): Kowe arep lunga menyang ngendi?
+        ngoko alus (القريب الأكبر): Panjenengan / Mas arep tindak menyang ngendi?
+        krama lugu (البائع، النظير الغريب): Sampeyan badhe kesah dhateng pundi?
+        krama alus (الكبار، المعلمون): Panjenengan badhe tindak dhateng pundi?
+        واسأل نفسك: هل هو قريب مني؟ وهل هو أكبر مني؟
+      en: |
+        "Where are you going?" at four steps:
+        ngoko lugu (a friend): Kowe arep lunga menyang ngendi?
+        ngoko alus (close and senior: older sister, older friend): Panjenengan / Mas arep tindak menyang ngendi?
+        krama lugu (a seller, a stranger your age): Sampeyan badhe kesah dhateng pundi?
+        krama alus (elders, teachers): Panjenengan badhe tindak dhateng pundi?
+        Ask yourself two things: are they close to me? Are they older than me?
+    grammar: jv.speechlevel.mixed
+    examples:
+      - text: Mbak wis dhahar? — Pak, panjenengan sampun dhahar?
+        ar_eg: أكلتي يا أبلة؟ (ngoko alus) — حضرتك أكلت يا أستاذ؟ (krama alus)
+        ar: هل أكلتِ يا أختي؟ (ngoko alus) — هل تفضّلت بالأكل يا سيدي؟ (krama alus)
+        en: Have you eaten, sis? (ngoko alus) — Have you eaten, sir? (krama alus)
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ngoko lugu
+        ar_eg: "لصاحبك: Kowe arep lunga menyang ngendi?"
+        ar: "للصديق: Kowe arep lunga menyang ngendi?"
+        en: "to a friend: Kowe arep lunga menyang ngendi?"
+      - text: ngoko alus
+        ar_eg: "لقريب أكبر: Mas arep tindak menyang ngendi?"
+        ar: "للقريب الأكبر: Mas arep tindak menyang ngendi?"
+        en: "to someone close and older: Mas arep tindak menyang ngendi?"
+      - text: krama lugu
+        ar_eg: "لبياع أو غريب: Sampeyan badhe kesah dhateng pundi?"
+        ar: "للبائع أو الغريب: Sampeyan badhe kesah dhateng pundi?"
+        en: "to a seller or stranger: Sampeyan badhe kesah dhateng pundi?"
+      - text: krama alus
+        ar_eg: "لكبير: Panjenengan badhe tindak dhateng pundi?"
+        ar: "للكبير: Panjenengan badhe tindak dhateng pundi?"
+        en: "to an elder: Panjenengan badhe tindak dhateng pundi?"
+    words: [ngoko lugu, ngoko alus, krama lugu, krama alus]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: jagong
+        ar_eg: يحضر فرح كضيف (jagong manten)
+        ar: يحضر عرسًا ضيفًا (jagong manten)
+        en: attend a wedding as a guest (jagong manten)
+      - text: buwuh
+        ar_eg: النقطة، فلوس الفرح في ظرف
+        ar: النقوط، مال العرس في ظرف
+        en: gift money for a wedding or family event
+      - text: siraman
+        ar_eg: سيرامان، صبّ مَيّة الورد على العرسان قبل الفرح
+        ar: السيرامان، صبّ ماء الورد على العروسين قبل العرس
+        en: siraman, the bridal bathing rite
+    words: [jagong, buwuh, siraman]
+  - id: e03
+    type: listen
+    text: Panjenengan badhe tindak dhateng pundi?
+    options: ['Panjenengan arep tindak menyang ngendi?', 'Panjenengan badhe tindak dhateng pundi?', 'Sampeyan badhe kesah dhateng pundi?']
+    answer: 1
+    meaning:
+      ar_eg: سيادتك رايح فين؟ (krama alus)
+      ar: إلى أين تتوجّهون؟ (krama alus)
+      en: Where are you going, sir? (krama alus)
+    words: [krama alus]
+  - id: e04
+    type: fill_blank
+    sentence: Mbak wis ___? Aku wis tangi.
+    meaning:
+      ar_eg: صحيتي يا أبلة؟ أنا صحيت.
+      ar: هل استيقظتِ يا أختي؟ أنا استيقظت.
+      en: Are you up, sis? I'm up.
+    options: [wungu, tangi, sare]
+    answers: [wungu]
+    words: [wungu]
+  - id: e05
+    type: fill_blank
+    sentence: Kula ___ wangsul saking kampus, Pak.
+    meaning:
+      ar_eg: أنا لسه راجع من الجامعة يا أستاذ.
+      ar: عدتُ لتوّي من الجامعة يا سيدي.
+      en: I've just got back from campus, sir.
+    options: [nembe, badhe, dereng]
+    answers: [nembe]
+    words: [nembe]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: (ngoko alus) يا أبلة، واخدة شمسية؟
+      ar: (ngoko alus) يا أختي، هل تحملين مظلة؟
+      en: (ngoko alus) Sis, are you taking an umbrella?
+    answer: Mbak, panjenengan ngasta payung?
+    distractors: [nggawa, kowe]
+    words: [ngasta]
+  - id: e07
+    type: speaking
+    text: Mas, sampeyan arep kondur jam pira?
+    meaning:
+      ar_eg: هتروّح الساعة كام يا أبو الشباب؟ (ngoko alus)
+      ar: متى ستعود إلى البيت يا أخي؟ (ngoko alus)
+      en: What time are you going home, bro? (ngoko alus)
+    words: [ngoko alus, kondur]
+  - id: e08
+    type: match_pairs
+    pairs:
+      - text: arisan
+        ar_eg: جمعية، لمّة عيلة
+        ar: جمعية، لقاء عائلي
+        en: savings club, get-together
+      - text: bales
+        ar_eg: يرد
+        ar: يردّ
+        en: reply
+      - text: uleman
+        ar_eg: دعوة
+        ar: دعوة
+        en: invitation
+      - text: sumbangan
+        ar_eg: النقطة
+        ar: النقوط
+        en: cash gift
+      - text: tumpeng
+        ar_eg: تومبنج
+        ar: تومبنغ
+        en: tumpeng
+      - text: karcis
+        ar_eg: تذكرة
+        ar: تذكرة
+        en: ticket
+    words: [arisan, bales, uleman, sumbangan, tumpeng, karcis]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: ijab
+        ar_eg: كتب الكتاب
+        ar: عقد القران
+        en: marriage contract
+      - text: besan
+        ar_eg: النسايب
+        ar: الأصهار
+        en: co-parents-in-law
+      - text: getun
+        ar_eg: ندمان
+        ar: نادم
+        en: regretful
+      - text: gela
+        ar_eg: محبط
+        ar: خائب الأمل
+        en: disappointed
+      - text: duka
+        ar_eg: زعلان (للكبير)
+        ar: غاضب (للكبير)
+        en: angry (elder)
+      - text: gotong royong
+        ar_eg: شغل جماعي للحي
+        ar: عمل جماعي
+        en: community work
+    words: [ijab, besan, getun, gela, duka, gotong royong]
+  - id: e10
+    type: fill_blank
+    sentence: Mas Rudi ora bales. Aku ___ wae.
+    meaning:
+      ar_eg: ماس رودي ما ردّش. هـ ___ أحسن.
+      ar: لم يردّ ماس رودي، سـ ___ إذن.
+      en: Mas Rudi isn't replying. I'll just ___.
+    options: [nelpon, kumpul, kondangan]
+    answers: [nelpon]
+    words: [nelpon, kumpul, kondangan, bales]
+  - id: e11
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تقول لبو هارسونو «كل سنة وانتي طيبة». تقول إيه؟
+      ar: تريد أن تقول لبو هارسونو «عيد ميلاد سعيد». ماذا تقول؟
+      en: You want to wish Bu Harsono a happy birthday. What do you say?
+    options: ['Sugeng ambal warsa, Bu!', 'Sepura, Bu!', 'Muga-muga berkah, Bu!']
+    answer: 0
+    explain:
+      ar_eg: sugeng ambal warsa = كل سنة وانتي طيبة (كراما).
+      ar: sugeng ambal warsa = عيد ميلاد سعيد (كراما).
+      en: sugeng ambal warsa = happy birthday (krama).
+    words: [sugeng ambal warsa, warsa, sepura, muga-muga, berkah]
+  - id: e12
+    type: fill_blank
+    sentence: Bengi iki ana ___ sendratari ing Prambanan.
+    meaning:
+      ar_eg: الليلة فيه ___ باليه في برامبانان.
+      ar: الليلة ___ باليه في برامبانان.
+      en: Tonight there's a dance drama ___ at Prambanan.
+    options: [pagelaran, penganten, salam]
+    answers: [pagelaran]
+    words: [pagelaran, penganten, salam, sendratari]
+dialogue:
+  title: Ing ngarep Masjid Syuhada
+  lines:
+    - speaker: Mohamed
+      text: Mbak Ratri, panjenengan arep tindak menyang ngendi?
+      ar_eg: يا أبلة راتري، حضرتك رايحة فين؟
+      ar: يا راتري، إلى أين تذهبين؟
+      en: Ratri, where are you going?
+    - speaker: Mbak Ratri
+      text: Menyang Masjid Syuhada, Mohamed. Kowe?
+      ar_eg: على مسجد الشهدا يا محمد. وإنت؟
+      ar: إلى مسجد الشهداء يا محمد. وأنت؟
+      en: To the Syuhada Mosque, Mohamed. You?
+    - speaker: Mohamed
+      text: Aku uga, Mbak. Lho, iku Pak Bambang.
+      ar_eg: وأنا كمان. الله، ده الدكتور بامبانج.
+      ar: وأنا أيضًا. انظري، هذا الأستاذ بامبانغ.
+      en: Me too. Oh, there's Pak Bambang.
+    - speaker: Mohamed
+      text: Sugeng siang, Pak. Panjenengan badhe tindak dhateng masjid ugi?
+      ar_eg: مساء الخير يا أستاذ. حضرتك رايح المسجد كمان؟
+      ar: طاب يومك يا سيدي. هل تتوجّه إلى المسجد أيضًا؟
+      en: Good afternoon, sir. Are you going to the mosque too?
+    - speaker: Pak Bambang
+      text: Inggih, Mas. Mangga.
+      ar_eg: أيوه يا ابني. يلا بينا.
+      ar: نعم يا بني. تفضّل.
+      en: Yes. After you.
+    - speaker: Mbak Ratri
+      text: Kramamu apik tenan, Mohamed!
+      ar_eg: الكراما بتاعتك حلوة بجد يا محمد!
+      ar: كراماك جميلة حقًا يا محمد!
+      en: Your krama is really good, Mohamed!
+souvenir:
+  id: j4.u05.souvenir
+  title: Kotabaru
+  note:
+    ar_eg: |
+      كوتابارو حي اتبنى أيام الهولنديين بشوارع واسعة وفيلات وجناين، وفي نصه مسجد الشهدا (Masjid Syuhada)، اتبنى أوائل الخمسينات تخليدًا لشهداء الاستقلال — وsyuhada هي «شهداء» العربي بالظبط. في البيوت هنا هتسمع ngoko alus كل يوم: الأخ الصغير بيقول لأخته الكبيرة «Mbak wis dhahar?»، إطار بيتي ودافي وجواه احترام.
+    ar: |
+      كوتابارو حيّ بُني في العهد الهولندي بشوارع واسعة وفيلات وحدائق، وفي وسطه مسجد الشهداء (Masjid Syuhada) الذي بُني أوائل الخمسينيات تخليدًا لشهداء الاستقلال، وsyuhada هي «شهداء» العربية بعينها. وفي بيوته تسمع ngoko alus كل يوم: يقول الأخ الأصغر لأخته الكبرى «Mbak wis dhahar?»، إطار بيتيّ دافئ في داخله احترام.
+    en: |
+      Kotabaru is a Dutch-era quarter of wide streets, villas and gardens, and at its heart stands the Syuhada Mosque, built in the early 1950s to honour those who died for independence. Syuhada is Arabic «شهداء», martyrs. In the homes here you'll hear ngoko alus every day: a younger brother asking his older sister "Mbak wis dhahar?", a warm, familiar frame with respect inside.
+review:
+  status: draft
+  verified: false
