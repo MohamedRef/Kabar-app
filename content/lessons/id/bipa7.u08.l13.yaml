@@ -1,0 +1,183 @@
+schema: kabar.lesson/v1
+id: bipa7.u08.l13
+language: id
+title: Anggaran usaha
+can_do:
+  ar_eg: تعمل ميزانية بسيطة لمشروع صغير وتحسب المكسب.
+  ar: أن تُعدّ ميزانية بسيطة لمشروع صغير وتحسب الربح.
+  en: Draw up a simple budget for a small business and work out the profit.
+slides:
+  - title: Masuk, keluar, sisa
+    body:
+      ar_eg: |
+        أي ميزانية فيها حاجتين:
+        - pemasukan = الفلوس اللي داخلة (البيع)
+        - pengeluaran = الفلوس اللي خارجة (الخامات، الإيجار، المواصلات)
+        laba = pemasukan − pengeluaran
+        مثال: Pemasukan bulan ini Rp6.000.000. Pengeluarannya Rp4.500.000. Jadi labanya Rp1.500.000.
+        خلّي بالك: الـ omzet هو كل البيع، مش المكسب!
+      ar: |
+        في كلّ ميزانية أمران:
+        - pemasukan = المال الداخل (المبيعات)
+        - pengeluaran = المال الخارج (الخامات والإيجار والنقل)
+        laba = pemasukan − pengeluaran
+        مثال: Pemasukan bulan ini Rp6.000.000. Pengeluarannya Rp4.500.000. Jadi labanya Rp1.500.000.
+        وانتبه: الـ omzet هو مجموع المبيعات لا الربح!
+      en: |
+        Every budget has two sides:
+        - pemasukan = money coming in (sales)
+        - pengeluaran = money going out (materials, rent, transport)
+        laba = pemasukan − pengeluaran
+        Example: Pemasukan bulan ini Rp6.000.000. Pengeluarannya Rp4.500.000. Jadi labanya Rp1.500.000.
+        Careful: omzet is total sales, not profit!
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيجار الكشك يتحسب فين؟
+      ar: أين يُحسب إيجار الكشك؟
+      en: Where does the kiosk rent go?
+    options:
+      - في الـ pemasukan.
+      - في الـ laba.
+      - في الـ pengeluaran.
+    answer: 2
+    words: [pengeluaran]
+  - id: e02
+    type: listen
+    text: Pemasukan kami bulan ini enam juta rupiah dari penjualan noken.
+    question:
+      ar_eg: الفلوس اللي دخلت الشهر ده كام؟
+      ar: كم بلغ الدخل هذا الشهر؟
+      en: How much came in this month?
+    options:
+      - ستة مليون روبية.
+      - ست آلاف روبية.
+      - ستين مليون روبية.
+    answer: 0
+    words: [pemasukan]
+  - id: e03
+    type: fill_blank
+    sentence: Kalau ___ lebih besar dari pemasukan, usaha kita rugi.
+    meaning:
+      ar_eg: لو المصاريف أكبر من الدخل، مشروعنا بيخسر.
+      ar: إن زادت النفقات على الدخل خسر مشروعنا.
+      en: If spending is bigger than income, our business makes a loss.
+    options: [pengeluaran, omzet, saldo]
+    answers: [pengeluaran]
+    words: [pengeluaran, pemasukan]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: المكسب هو الدخل ناقص المصاريف.
+      ar: الربح هو الدخل مطروحًا منه النفقات.
+      en: Profit is income minus spending.
+    answer: Laba adalah pemasukan dikurangi pengeluaran.
+    distractors: [omzet, modal]
+    words: [laba, pemasukan, pengeluaran]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الدخل ٦ مليون والمصاريف ٤٫٥ مليون. المكسب كام؟
+      ar: الدخل ستّة ملايين والنفقات أربعة ملايين ونصف. كم الربح؟
+      en: Income is 6 million and spending 4.5 million. What's the profit?
+    options:
+      - ١٠٫٥ مليون.
+      - ١٫٥ مليون.
+      - ٦ مليون.
+    answer: 1
+    words: [laba]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أكبر مصروف عندنا المواصلات.
+      ar: أكبر نفقاتنا النقل.
+      en: Our biggest expense is transport.
+    answers:
+      - Pengeluaran terbesar kami adalah transportasi.
+      - Pengeluaran kami yang paling besar adalah transportasi.
+      - Pengeluaran terbesar kami transportasi.
+      - Pengeluaran paling besar kami adalah ongkos transportasi.
+    words: [pengeluaran]
+  - id: e07
+    type: speaking
+    text: Omzet kami naik, tetapi pengeluaran juga naik. Jadi laba kami tetap.
+    meaning:
+      ar_eg: مبيعاتنا زادت، بس المصاريف زادت كمان. فمكسبنا زي ما هو.
+      ar: ارتفعت مبيعاتنا، لكنّ النفقات ارتفعت أيضًا، فبقي ربحنا كما هو.
+      en: Our turnover rose, but so did spending. So our profit stayed the same.
+    words: [omzet, pengeluaran, laba]
+  - id: e08
+    type: dictation
+    text: Catat semua pemasukan dan pengeluaran setiap hari.
+    meaning:
+      ar_eg: سجّل كل الدخل والمصاريف كل يوم.
+      ar: دوّن كلّ الدخل والنفقات يوميًّا.
+      en: Write down all income and spending every day.
+    words: [pemasukan, pengeluaran]
+  - id: e09
+    type: speaking
+    text: Pemasukan dari QRIS langsung masuk ke saldo koperasi.
+    meaning:
+      ar_eg: الدخل اللي بييجي من QRIS بيدخل على طول في رصيد الجمعية.
+      ar: يدخل الدخل الآتي عبر QRIS مباشرةً في رصيد الجمعية.
+      en: Income via QRIS goes straight into the co-op's balance.
+    words: [pemasukan, saldo, QRIS]
+  - id: e10
+    type: match_pairs
+    pairs:
+      - text: nilai tambah
+        ar_eg: قيمة مضافة
+        ar: قيمة مضافة
+        en: added value
+      - text: resesi
+        ar_eg: ركود اقتصادي
+        ar: ركود اقتصادي
+        en: recession
+      - text: kesenjangan
+        ar_eg: فجوة / تفاوت
+        ar: فجوة، تفاوت
+        en: gap, inequality
+      - text: bunga majemuk
+        ar_eg: فايدة مركّبة
+        ar: فائدة مركّبة
+        en: compound interest
+    words: [nilai tambah, resesi, kesenjangan, bunga majemuk]
+dialogue:
+  title: Buku kas Kaka Benny
+  lines:
+    - speaker: Mohamed
+      text: Kaka Benny, omzet bulan ini enam juta. Itu laba Kaka?
+      ar_eg: يا كاكا بيني، المبيعات الشهر ده ستة مليون. ده مكسبك؟
+      ar: يا كاكا بيني، بلغت المبيعات هذا الشهر ستّة ملايين. أهذا ربحك؟
+      en: Kaka Benny, turnover this month is six million. Is that your profit?
+    - speaker: Kaka Benny
+      text: Bukan. Itu pemasukan. Pengeluarannya belum dihitung, benang dan ongkos kapal.
+      ar_eg: لأ. ده الدخل. المصاريف لسه ماتحسبتش، الخيط ومصاريف المركب.
+      ar: لا، هذا الدخل، ولم تُحسب النفقات بعد، الخيوط وأجرة السفينة.
+      en: No. That's income. Spending isn't counted yet, thread and shipping costs.
+    - speaker: Mohamed
+      text: Pengeluarannya empat setengah juta. Jadi labanya satu setengah juta.
+      ar_eg: المصاريف أربعة ونص مليون. يبقى المكسب مليون ونص.
+      ar: النفقات أربعة ملايين ونصف، فالربح مليون ونصف.
+      en: Spending is four and a half million. So profit is one and a half million.
+    - speaker: Kaka Benny
+      text: Betul! Kamu bisa jadi bendahara koperasi kami.
+      ar_eg: صح! إنت ممكن تبقى أمين صندوق الجمعية بتاعتنا.
+      ar: صحيح! يمكنك أن تصير أمين صندوق جمعيّتنا.
+      en: Right! You could be our cooperative's treasurer.
+new_words:
+  - word: pemasukan
+    pos: noun
+    ar_eg: الدخل (الفلوس الداخلة)
+    ar: الدخل، الإيرادات
+    en: income, revenue
+  - word: pengeluaran
+    pos: noun
+    ar_eg: المصاريف
+    ar: النفقات
+    en: spending, expenses
+review:
+  status: draft
+  verified: false

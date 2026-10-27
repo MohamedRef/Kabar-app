@@ -37,6 +37,13 @@
   max-inline-size: 7.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-block-size: 1em;
 }
 .annot-g:lang(en) { font-family: var(--font-latin); }
+.annot-g.annot-name { font-style: italic; }
+/* A fixed expression ("Selamat pagi"): one meaning under all its words,
+   with a thin bracket line to show they go together. */
+.annot-phrase { display: inline; }
+.annot-phrase.glossed { display: inline-flex; flex-direction: column; align-items: stretch; vertical-align: top; margin-block-end: 0.15rem; }
+.annot-phrase-words { white-space: nowrap; }
+.annot-phrase.glossed > .annot-g { max-inline-size: none; text-align: center; border-block-start: 1px solid var(--surface-2); }
 .annot-note { display: block; font-size: 0.92rem; line-height: 1.5; }
 .annot-note bdi { font-weight: 600; margin-inline-end: 0.35rem; }
 .annot-legend summary { cursor: pointer; color: var(--muted); font-size: 0.85rem; }

@@ -286,10 +286,10 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (Listen, En) => "Listen",
 
         (NotConnected, ArEg) => {
-            "كبر لسه مش شايف الخط والرسم على الجهاز ده. ده محتاج Kabar Cloud أو التعرف على الخط من الأندرويد، وجايين. لحد كده تقدر تكتب اللي كتبته."
+            "\u{2068}Kabar\u{2069} لسه مش شايف الخط والرسم على الجهاز ده. ده محتاج Kabar Cloud أو التعرف على الخط من الأندرويد، وجايين. لحد كده تقدر تكتب اللي كتبته."
         }
         (NotConnected, Ar) => {
-            "لا يستطيع كبر قراءة الخط والرسم على هذا الجهاز بعد؛ يحتاج ذلك إلى Kabar Cloud أو التعرف على الخط في أندرويد، وهما في الطريق. يمكنك حتى ذلك الحين كتابة ما خططته."
+            "لا يستطيع \u{2068}Kabar\u{2069} قراءة الخط والرسم على هذا الجهاز بعد؛ يحتاج ذلك إلى Kabar Cloud أو التعرف على الخط في أندرويد، وهما في الطريق. يمكنك حتى ذلك الحين كتابة ما خططته."
         }
         (NotConnected, En) => {
             "Kabar can't read ink on this device yet: that needs Kabar Cloud or Android's handwriting recognizer, both on the way. Until then you can type what you wrote."
@@ -304,8 +304,8 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (TryAgain, Ar) => "حدث خطأ. حاول مجددًا.",
         (TryAgain, En) => "Something went wrong. Try again.",
 
-        (GambarIntro, ArEg) => "ارسم الكلمة في دقيقة، وكبر يحاول يخمّن هي إيه.",
-        (GambarIntro, Ar) => "ارسم الكلمة في دقيقة، ويحاول كبر تخمينها.",
+        (GambarIntro, ArEg) => "ارسم الكلمة في دقيقة، و \u{2068}Kabar\u{2069} يحاول يخمّن هي إيه.",
+        (GambarIntro, Ar) => "ارسم الكلمة في دقيقة، ويحاول \u{2068}Kabar\u{2069} تخمينها.",
         (GambarIntro, En) => "Draw the word in a minute and Kabar tries to guess it.",
         (Start, ArEg) => "يلا نبدأ",
         (Start, Ar) => "ابدأ",
@@ -319,26 +319,30 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (Done, ArEg) => "خلصت",
         (Done, Ar) => "انتهيت",
         (Done, En) => "Done",
-        (Guessing, ArEg) => "كبر بيبص على رسمتك…",
-        (Guessing, Ar) => "كبر ينظر إلى رسمتك…",
+        (Guessing, ArEg) => "\u{2068}Kabar\u{2069} بيبص على رسمتك…",
+        (Guessing, Ar) => "\u{2068}Kabar\u{2069} ينظر إلى رسمتك…",
         (Guessing, En) => "Kabar is looking at your drawing…",
-        (Got, ArEg) => "كبر عرفها! برافو.",
-        (Got, Ar) => "عرفها كبر! أحسنت.",
+        (Got, ArEg) => "\u{2068}Kabar\u{2069} عرفها! برافو.",
+        (Got, Ar) => "عرفها \u{2068}Kabar\u{2069}! أحسنت.",
         (Got, En) => "Kabar got it! Nice.",
         (Close, ArEg) => "قرّب جدًا، كانت في باله.",
         (Close, Ar) => "اقترب جدًا، كانت ضمن تخميناته.",
         (Close, En) => "So close: it was on Kabar's list.",
-        (Missed, ArEg) => "كبر شاف حاجة تانية خالص، وده نص المتعة.",
-        (Missed, Ar) => "رأى كبر شيئًا آخر، وهذه نصف المتعة.",
+        (Missed, ArEg) => "\u{2068}Kabar\u{2069} شاف حاجة تانية خالص، وده نص المتعة.",
+        (Missed, Ar) => "رأى \u{2068}Kabar\u{2069} شيئًا آخر، وهذه نصف المتعة.",
         (Missed, En) => "Kabar saw something else entirely, which is half the fun.",
-        (Unclear, ArEg) => "كبر مش قادر يحدد. جرّب خطوط أوضح المرة الجاية.",
-        (Unclear, Ar) => "لم يستطع كبر التحديد. جرّب خطوطًا أوضح المرة القادمة.",
+        (Unclear, ArEg) => "\u{2068}Kabar\u{2069} مش قادر يحدد. جرّب خطوط أوضح المرة الجاية.",
+        (Unclear, Ar) => "لم يستطع \u{2068}Kabar\u{2069} التحديد. جرّب خطوطًا أوضح المرة القادمة.",
         (Unclear, En) => "Kabar couldn't tell. Try bolder lines next time.",
-        (KabarSaw, ArEg) => "كبر شاف:",
-        (KabarSaw, Ar) => "رأى كبر:",
+        (KabarSaw, ArEg) => "\u{2068}Kabar\u{2069} شاف:",
+        (KabarSaw, Ar) => "رأى \u{2068}Kabar\u{2069}:",
         (KabarSaw, En) => "Kabar saw:",
-        (SelfCheck, ArEg) => "كبر لسه مش بيشوف الرسم على الجهاز ده. بصّ على رسمتك: شبه الكلمة؟",
-        (SelfCheck, Ar) => "لا يرى كبر الرسم على هذا الجهاز بعد. انظر إلى رسمتك: هل تشبه الكلمة؟",
+        (SelfCheck, ArEg) => {
+            "\u{2068}Kabar\u{2069} لسه مش بيشوف الرسم على الجهاز ده. بصّ على رسمتك: شبه الكلمة؟"
+        }
+        (SelfCheck, Ar) => {
+            "لا يرى \u{2068}Kabar\u{2069} الرسم على هذا الجهاز بعد. انظر إلى رسمتك: هل تشبه الكلمة؟"
+        }
         (SelfCheck, En) => {
             "Kabar can't see drawings on this device yet. Look at yours: does it look like the word?"
         }
@@ -351,12 +355,12 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (NextRound, ArEg) => "كلمة تانية",
         (NextRound, Ar) => "كلمة أخرى",
         (NextRound, En) => "Next word",
-        (Score, ArEg) => "عرفهم كبر",
-        (Score, Ar) => "خمّنها كبر",
+        (Score, ArEg) => "عرفهم \u{2068}Kabar\u{2069}",
+        (Score, Ar) => "خمّنها \u{2068}Kabar\u{2069}",
         (Score, En) => "guessed",
 
-        (MapIntro, ArEg) => "اكتب موضوع، وكبر يعمله خريطة كلمات تكمّل عليها بالقلم.",
-        (MapIntro, Ar) => "اكتب موضوعًا، وسيصنع كبر خريطة كلمات تكملها بالقلم.",
+        (MapIntro, ArEg) => "اكتب موضوع، و \u{2068}Kabar\u{2069} يعمله خريطة كلمات تكمّل عليها بالقلم.",
+        (MapIntro, Ar) => "اكتب موضوعًا، وسيصنع \u{2068}Kabar\u{2069} خريطة كلمات تكملها بالقلم.",
         (MapIntro, En) => "Name a topic and Kabar draws a word map you can extend with the pen.",
         (Topic, ArEg | Ar) => "di pasar، keluarga، cuaca…",
         (Topic, En) => "di pasar, keluarga, cuaca…",
@@ -374,10 +378,10 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (Maps, En) => "Your maps",
 
         (ListenIntro, ArEg) => {
-            "حطه جنب يوتيوب في الشاشة المقسومة. سمعت كلمة؟ اكتبها زي ما سمعتها، وكبر يقولك ممكن تكون إيه."
+            "حطه جنب يوتيوب في الشاشة المقسومة. سمعت كلمة؟ اكتبها زي ما سمعتها، و \u{2068}Kabar\u{2069} يقولك ممكن تكون إيه."
         }
         (ListenIntro, Ar) => {
-            "ضعه بجانب يوتيوب في الشاشة المقسومة. سمعت كلمة؟ اكتبها كما سمعتها، وسيقترح كبر ما قد تكون."
+            "ضعه بجانب يوتيوب في الشاشة المقسومة. سمعت كلمة؟ اكتبها كما سمعتها، وسيقترح \u{2068}Kabar\u{2069} ما قد تكون."
         }
         (ListenIntro, En) => {
             "Put this next to YouTube in split screen. Heard a word? Write it the way it sounded and Kabar suggests what it could be."
@@ -385,14 +389,14 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (HeardIt, ArEg) => "اللي سمعته",
         (HeardIt, Ar) => "ما سمعته",
         (HeardIt, En) => "What you heard",
-        (NoSuggestions, ArEg) => "مش لاقي كلمة قريبة. ممكن تعلّمها لكبر.",
-        (NoSuggestions, Ar) => "لا كلمة قريبة. يمكنك تعليمها لكبر.",
+        (NoSuggestions, ArEg) => "مش لاقي كلمة قريبة. ممكن تعلّمها لـ \u{2068}Kabar\u{2069}.",
+        (NoSuggestions, Ar) => "لا كلمة قريبة. يمكنك تعليمها لـ \u{2068}Kabar\u{2069}.",
         (NoSuggestions, En) => "No close word yet. You could teach it to Kabar.",
         (AddReview, ArEg) => "للمراجعة",
         (AddReview, Ar) => "أضف للمراجعة",
         (AddReview, En) => "Add to review",
-        (TeachIt, ArEg) => "علّمها لكبر",
-        (TeachIt, Ar) => "علّمها لكبر",
+        (TeachIt, ArEg) => "علّمها لـ \u{2068}Kabar\u{2069}",
+        (TeachIt, Ar) => "علّمها لـ \u{2068}Kabar\u{2069}",
         (TeachIt, En) => "Teach Kabar",
         (Saved, ArEg) => "اتحفظت",
         (Saved, Ar) => "حُفظت",
@@ -404,8 +408,12 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (WriteTab, ArEg) => "إملا",
         (WriteTab, Ar) => "إملاء",
         (WriteTab, En) => "Dictation",
-        (DictationIntro, ArEg) => "اسمع الكلمة واكتبها بالقلم. كبر هيعلّم على الحروف اللي محتاجة تتظبط.",
-        (DictationIntro, Ar) => "استمع إلى الكلمة واكتبها بالقلم، وسيعلّم كبر على الحروف التي تحتاج تصحيحًا.",
+        (DictationIntro, ArEg) => {
+            "اسمع الكلمة واكتبها بالقلم. \u{2068}Kabar\u{2069} هيعلّم على الحروف اللي محتاجة تتظبط."
+        }
+        (DictationIntro, Ar) => {
+            "استمع إلى الكلمة واكتبها بالقلم، وسيضع \u{2068}Kabar\u{2069} علامة على الحروف التي تحتاج تصحيحًا."
+        }
         (DictationIntro, En) => {
             "Listen to the word and write it with the pen; Kabar marks the letters to fix."
         }

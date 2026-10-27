@@ -736,14 +736,14 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
     use T::*;
     use UiLanguage::*;
     match (msg, lang) {
-        (Title, ArEg) => "علّم كبر كلمة جديدة",
-        (Title, Ar) => "علّم كبر كلمة جديدة",
+        (Title, ArEg) => "علّم \u{2068}Kabar\u{2069} كلمة جديدة",
+        (Title, Ar) => "علّم \u{2068}Kabar\u{2069} كلمة جديدة",
         (Title, En) => "Teach Kabar a word",
         (Intro, ArEg) => {
-            "لقيت كلمة كبر مش عارفها؟ دوّر عليها، والصق الشرح أو اللينك هنا. كبر هيكتبها بأسلوبه، وإنت تراجعها قبل ما تتحفظ."
+            "لقيت كلمة \u{2068}Kabar\u{2069} مش عارفها؟ دوّر عليها، والصق الشرح أو اللينك هنا. \u{2068}Kabar\u{2069} هيكتبها بأسلوبه، وإنت تراجعها قبل ما تتحفظ."
         }
         (Intro, Ar) => {
-            "وجدت كلمة لا يعرفها كبر؟ ابحث عنها، والصق الشرح أو الرابط هنا. سيكتبها كبر بأسلوبه، وتراجعها أنت قبل حفظها."
+            "وجدت كلمة لا يعرفها \u{2068}Kabar\u{2069}؟ ابحث عنها، والصق الشرح أو الرابط هنا. سيكتبها \u{2068}Kabar\u{2069} بأسلوبه، وتراجعها أنت قبل حفظها."
         }
         (Intro, En) => {
             "Found a word Kabar doesn't know? Look it up and paste the explanation or the link here. Kabar writes it up in its own style, and you check it before it's saved."
@@ -774,11 +774,15 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (PastePlaceholder, ArEg) => "الصق هنا الشرح من جوجل أو من أي قاموس",
         (PastePlaceholder, Ar) => "الصق هنا الشرح من جوجل أو من أي قاموس",
         (PastePlaceholder, En) => "Paste the explanation from Google or any dictionary",
-        (LinkHint, ArEg) => "لو الموقع مارضيش يفتح جوه كبر، انسخ الجزء المهم والصقه.",
-        (LinkHint, Ar) => "إذا رفض الموقع الفتح داخل كبر، انسخ الجزء المهم والصقه.",
+        (LinkHint, ArEg) => "لو الموقع مارضيش يفتح جوه \u{2068}Kabar\u{2069}، انسخ الجزء المهم والصقه.",
+        (LinkHint, Ar) => "إذا رفض الموقع الفتح داخل \u{2068}Kabar\u{2069}، انسخ الجزء المهم والصقه.",
         (LinkHint, En) => "If the site won't open inside Kabar, copy the part that matters and paste it.",
-        (WiktionaryHint, ArEg) => "كبر هيجيب تعريف الكلمة من ويكاموس الإنجليزي، ببلاش ومن غير حساب.",
-        (WiktionaryHint, Ar) => "سيجلب كبر تعريف الكلمة من ويكاموس الإنجليزي مجانًا ودون حساب.",
+        (WiktionaryHint, ArEg) => {
+            "\u{2068}Kabar\u{2069} هيجيب تعريف الكلمة من ويكاموس الإنجليزي، ببلاش ومن غير حساب."
+        }
+        (WiktionaryHint, Ar) => {
+            "سيجلب \u{2068}Kabar\u{2069} تعريف الكلمة من ويكاموس الإنجليزي مجانًا ودون حساب."
+        }
         (WiktionaryHint, En) => "Kabar fetches the word's entry from English Wiktionary: free, no account.",
         (ScreenshotHint, ArEg) => {
             "عندك سكرين شوت للشرح؟ قراية الصور على الجهاز جاية مع القارئ؛ لحد كده انسخ النص منها."
@@ -789,14 +793,14 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (ScreenshotHint, En) => {
             "Got a screenshot of the explanation? On-device reading comes with the Reader; until then, copy its text."
         }
-        (Teach, ArEg) => "علّم كبر",
-        (Teach, Ar) => "علّم كبر",
+        (Teach, ArEg) => "علّم \u{2068}Kabar\u{2069}",
+        (Teach, Ar) => "علّم \u{2068}Kabar\u{2069}",
         (Teach, En) => "Teach Kabar",
         (Fetching, ArEg) => "بيقرا الصفحة…",
         (Fetching, Ar) => "يقرأ الصفحة…",
         (Fetching, En) => "Reading the page…",
-        (Thinking, ArEg) => "كبر بيكتب الشرح بأسلوبه…",
-        (Thinking, Ar) => "يكتب كبر الشرح بأسلوبه…",
+        (Thinking, ArEg) => "\u{2068}Kabar\u{2069} بيكتب الشرح بأسلوبه…",
+        (Thinking, Ar) => "يكتب \u{2068}Kabar\u{2069} الشرح بأسلوبه…",
         (Thinking, En) => "Kabar is writing it up…",
         (TaughtByYou, ArEg) => "إنت اللي علّمته",
         (TaughtByYou, Ar) => "من تعليمك",
@@ -844,11 +848,15 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (TooLong, ArEg) => "دي طويلة شوية؛ كلمة أو عبارة قصيرة بس.",
         (TooLong, Ar) => "هذا طويل قليلًا؛ كلمة أو عبارة قصيرة فقط.",
         (TooLong, En) => "That's a bit long; a word or short phrase works best.",
-        (NeedSource, ArEg) => "الصق الشرح اللي لقيته، وكبر يكمل.",
-        (NeedSource, Ar) => "الصق الشرح الذي وجدته، وسيكمل كبر.",
+        (NeedSource, ArEg) => "الصق الشرح اللي لقيته، و \u{2068}Kabar\u{2069} يكمل.",
+        (NeedSource, Ar) => "الصق الشرح الذي وجدته، وسيكمل \u{2068}Kabar\u{2069}.",
         (NeedSource, En) => "Paste what you found and Kabar takes it from there.",
-        (LinkFailed, ArEg) => "الموقع ده مش راضي يفتح جوه كبر. انسخ الجزء المهم والصقه في «لزق نص».",
-        (LinkFailed, Ar) => "هذا الموقع لا يفتح داخل كبر. انسخ الجزء المهم والصقه في «لصق نص».",
+        (LinkFailed, ArEg) => {
+            "الموقع ده مش راضي يفتح جوه \u{2068}Kabar\u{2069}. انسخ الجزء المهم والصقه في «لزق نص»."
+        }
+        (LinkFailed, Ar) => {
+            "هذا الموقع لا يفتح داخل \u{2068}Kabar\u{2069}. انسخ الجزء المهم والصقه في «لصق نص»."
+        }
         (LinkFailed, En) => {
             "This site won't open inside Kabar. Copy the part that matters into “Paste text”."
         }
@@ -863,13 +871,15 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (ResetsLater, ArEg) => "الحصة المجانية خلصت النهارده. جرّب تاني بكرة.",
         (ResetsLater, Ar) => "نفدت الحصة المجانية اليوم. جرّب مجددًا غدًا.",
         (ResetsLater, En) => "Today's free quota is used up. Try again tomorrow.",
-        (Unreachable, ArEg) => "كبر مش قادر يوصل للنت دلوقتي. أول ما ترجع أونلاين جرّب تاني.",
-        (Unreachable, Ar) => "لا يستطيع كبر الاتصال الآن. جرّب مجددًا عند عودة الاتصال.",
+        (Unreachable, ArEg) => "\u{2068}Kabar\u{2069} مش قادر يوصل للنت دلوقتي. أول ما ترجع أونلاين جرّب تاني.",
+        (Unreachable, Ar) => "لا يستطيع \u{2068}Kabar\u{2069} الاتصال الآن. جرّب مجددًا عند عودة الاتصال.",
         (Unreachable, En) => "Kabar can't reach its helpers right now. Try again once you're online.",
         (NotConnected, ArEg) => {
-            "كبر لسه مش متوصّل بـ Kabar Cloud، فمش هيقدر يكتب الشرح دلوقتي. أول ما يتوصّل هيشتغل."
+            "\u{2068}Kabar\u{2069} لسه مش متوصّل بـ Kabar Cloud، فمش هيقدر يكتب الشرح دلوقتي. أول ما يتوصّل هيشتغل."
         }
-        (NotConnected, Ar) => "كبر غير متصل بعد بـ Kabar Cloud، لذا لا يمكنه كتابة الشرح الآن.",
+        (NotConnected, Ar) => {
+            "\u{2068}Kabar\u{2069} غير متصل بعد بـ Kabar Cloud، لذا لا يمكنه كتابة الشرح الآن."
+        }
         (NotConnected, En) => {
             "Kabar isn't connected to Kabar Cloud yet, so it can't write this up right now."
         }

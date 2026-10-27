@@ -1,60 +1,63 @@
 schema: kabar.lesson/v1
 id: bipa1.u08.l06
 language: id
-title: Jujur dan cerdas
+title: Sepupu yang nakal
 can_do:
-  ar_eg: 'توصف شخصية حد: صغير في السن، أمين، ذكي، خجول، شقي أو غريب.'
-  ar: 'أن تصف شخصية أحد: شاب، أمين، ذكي، خجول، مشاغب أو غريب.'
-  en: 'Describe someone''s character: young, honest, clever, shy, naughty or odd.'
+  ar_eg: 'توصف عيل شقي: زهقان وعطشان، رسم على ودنه ورقبته، وتقول وسيم أو وحش، وحنين.'
+  ar: 'أن تصف طفلًا مشاغبًا: ضجِر وعطشان، رسم على أذنه ورقبته، وتقول وسيم أو قبيح، ورقيق.'
+  en: 'Describe a naughty child: bored and thirsty, drawing on his ears and neck; say handsome or ugly, and gentle.'
 slides:
-  - title: Orangnya…
+  - title: Anak nakal
     body:
       ar_eg: |
-        muda = صغير في السن، شاب. jujur = أمين وصادق. cerdas = ذكي (أرسمي من pintar).
-        pemalu = خجول (من malu = كسوف، وpe- = الشخص اللي كده).
-        nakal = شقي، للعيال غالبًا. jahat = شرير. aneh = غريب. kurus = رفيع.
+        nakal = شقي، للعيال غالبًا. bosan = زهقان، والعيل الزهقان بيبقى nakal!
+        haus = عطشان (زي lapar للجوع). telinga = ودن، leher = رقبة.
+        tampan = وسيم، أرسمي من ganteng. jelek = وحش (في الشكل أو الجودة).
+        lembut = ناعم أو حنين: Rina orangnya lembut.
       ar: |
-        muda = صغير السنّ، شابّ. jujur = أمين صادق. cerdas = ذكي (أرسم من pintar).
-        pemalu = خجول (من malu = الخجل، وpe- = صاحب الصفة).
-        nakal = مشاغب، للأطفال غالبًا. jahat = شرّير. aneh = غريب. kurus = نحيف.
+        nakal = مشاغب، للأطفال غالبًا. bosan = ضجِر، والطفل الضجِر يصير nakal!
+        haus = عطشان (مثل lapar للجوع). telinga = أذن، leher = رقبة.
+        tampan = وسيم، أرسم من ganteng. jelek = قبيح أو رديء.
+        lembut = ناعم أو رقيق: Rina orangnya lembut.
       en: |
-        muda = young. jujur = honest. cerdas = intelligent (more formal than pintar).
-        pemalu = shy (malu = shame, pe- = a person who is).
-        nakal = naughty, mostly of kids. jahat = wicked. aneh = strange. kurus = thin.
+        nakal = naughty, mostly of kids. bosan = bored, and a bored kid turns nakal!
+        haus = thirsty (like lapar for hunger). telinga = ear, leher = neck.
+        tampan = handsome, more formal than ganteng. jelek = ugly, bad.
+        lembut = soft, gentle: Rina orangnya lembut.
     examples:
-      - text: Guru saya masih muda.
-        ar_eg: المدرس بتاعي لسه صغير في السن.
-        ar: معلّمي ما زال شابًّا.
-        en: My teacher is still young.
-      - text: Anak itu nakal, tapi lucu.
-        ar_eg: العيل ده شقي، بس عسول.
-        ar: ذلك الطفل مشاغب لكنه لطيف.
-        en: That child is naughty, but cute.
-      - text: Dia orangnya jujur dan cerdas.
-        ar_eg: هو شخص أمين وذكي.
-        ar: إنه شخص أمين وذكي.
-        en: He's honest and clever.
+      - text: Sepupu saya bosan, jadi dia nakal.
+        ar_eg: ابن خالتي زهقان، عشان كده بقى شقي.
+        ar: ابن خالتي ضجِر، لذلك صار مشاغبًا.
+        en: My cousin is bored, so he's being naughty.
+      - text: Ada gambar di leher dan telinganya!
+        ar_eg: فيه رسمة على رقبته وودنه!
+        ar: هناك رسمة على رقبته وأذنه!
+        en: There's a drawing on his neck and ear!
+      - text: Saya haus. Minta air, ya!
+        ar_eg: أنا عطشان. مية لو سمحت!
+        ar: أنا عطشان. ماءً من فضلك!
+        en: I'm thirsty. Water, please!
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: muda
-        ar_eg: صغير في السن
-        ar: شابّ
-        en: young
-      - text: jujur
-        ar_eg: أمين
-        ar: أمين، صادق
-        en: honest
-      - text: jahat
-        ar_eg: شرير
-        ar: شرّير
-        en: wicked
-      - text: aneh
-        ar_eg: غريب
-        ar: غريب
-        en: strange
-    words: [muda, jujur, jahat, aneh]
+      - text: telinga
+        ar_eg: ودن
+        ar: أذن
+        en: ear
+      - text: leher
+        ar_eg: رقبة
+        ar: رقبة
+        en: neck
+      - text: haus
+        ar_eg: عطشان
+        ar: عطشان
+        en: thirsty
+      - text: bosan
+        ar_eg: زهقان
+        ar: ضجِر
+        en: bored
+    words: [telinga, leher, haus, bosan]
   - id: e02
     type: match_pairs
     pairs:
@@ -62,175 +65,178 @@ exercises:
         ar_eg: شقي
         ar: مشاغب
         en: naughty
-      - text: kurus
-        ar_eg: رفيع
-        ar: نحيف
-        en: thin
-      - text: pemalu
-        ar_eg: خجول
-        ar: خجول
-        en: shy
-      - text: cerdas
-        ar_eg: ذكي
-        ar: ذكي
-        en: intelligent
-    words: [nakal, kurus, pemalu, cerdas]
+      - text: lembut
+        ar_eg: حنين، ناعم
+        ar: رقيق
+        en: gentle
+      - text: tampan
+        ar_eg: وسيم
+        ar: وسيم
+        en: handsome
+      - text: jelek
+        ar_eg: وحش
+        ar: قبيح
+        en: ugly
+    words: [nakal, lembut, tampan, jelek]
   - id: e03
     type: listen
-    text: Adik saya pemalu. Dia pendiam di kelas.
+    text: Saya haus. Minta air putih, ya!
     question:
-      ar_eg: أخوه الصغير شكله إيه؟
-      ar: كيف أخوه الصغير؟
-      en: What is his little brother like?
-    options: [خجول, شقي, شرير]
+      ar_eg: هو عايز إيه؟
+      ar: ماذا يريد؟
+      en: What does he want?
+    options: [مية, أكل, ينام]
     answer: 0
     meaning:
-      ar_eg: أخويا الصغير خجول. ساكت في الفصل.
-      ar: أخي الصغير خجول، صامت في الصفّ.
-      en: My little brother is shy. He's quiet in class.
-    words: [pemalu]
+      ar_eg: أنا عطشان. مية لو سمحت!
+      ar: أنا عطشان. ماءً من فضلك!
+      en: I'm thirsty. Water, please!
+    words: [haus]
   - id: e04
     type: fill_blank
-    sentence: Anak itu ___! Dia tidak mau tidur.
+    sentence: Anak itu ___! Dia menggambar di baju saya.
     meaning:
-      ar_eg: العيل ده ___! مش عايز ينام.
-      ar: ذلك الطفل ___! لا يريد النوم.
-      en: That child is ___! He won't go to sleep.
-    options: [nakal, kurus, muda]
+      ar_eg: العيل ده ___! بيرسم على هدومي.
+      ar: ذلك الطفل ___! يرسم على ثيابي.
+      en: That child is ___! He's drawing on my clothes.
+    options: [nakal, bosan, lembut]
     answers: [nakal]
-    words: [nakal, kurus, muda]
+    words: [nakal, bosan, lembut]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: حد بيقول الحقيقة دايمًا. هو…؟
-      ar: شخص يقول الحقيقة دائمًا. هو…؟
-      en: Someone always tells the truth. They're…?
-    options: [jujur, jahat, aneh]
+      ar_eg: ganteng في الكلام العادي. والكلمة الأرسمي؟
+      ar: ganteng في الكلام اليومي، فما الكلمة الأرسم؟
+      en: ganteng in everyday talk. The more formal word?
+    options: [tampan, cantik, jelek]
     answer: 0
     explain:
-      ar_eg: jujur = أمين وصادق. jahat شرير، وaneh غريب.
-      ar: jujur أمين صادق، أما jahat فشرّير وaneh غريب.
-      en: jujur = honest; jahat is wicked and aneh strange.
-    words: [jujur, jahat, aneh]
+      ar_eg: tampan = وسيم (للراجل). cantik للست، وjelek عكسهم.
+      ar: tampan للرجل الوسيم، وcantik للمرأة، وjelek ضدّهما.
+      en: tampan for a handsome man; cantik for a woman; jelek is the opposite.
+    words: [tampan, jelek]
   - id: e06
     type: fill_blank
-    sentence: Ibu guru masih ___. Umurnya dua puluh lima tahun.
+    sentence: Gadis Bali itu pakai bunga di ___.
     meaning:
-      ar_eg: المدرسة لسه ___. عندها ٢٥ سنة.
-      ar: ما زالت المعلّمة ___، عمرها خمس وعشرون سنة.
-      en: The teacher is still ___. She's twenty-five.
-    options: [muda, cerdas, pemalu]
-    answers: [muda]
-    words: [muda, cerdas, pemalu]
+      ar_eg: البنت البالية دي حاطّة وردة على ___.
+      ar: تضع الفتاة البالية زهرة على ___.
+      en: The Balinese girl wears a flower on her ___.
+    options: [telinga, leher, mata]
+    answers: [telinga]
+    words: [telinga, leher]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: الراجل ده غريب شوية.
-      ar: ذلك الرجل غريب قليلًا.
-      en: That man is a bit strange.
-    answer: Orang itu agak aneh.
-    distractors: [jahat, kurus]
-    words: [aneh]
+      ar_eg: الولد ده زهقان وعطشان.
+      ar: ذلك الولد ضجِر وعطشان.
+      en: That boy is bored and thirsty.
+    answer: Anak itu bosan dan haus.
+    distractors: [leher, jelek]
+    words: [bosan, haus]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Di film itu, ada orang jahat.
+    source_text: Rina orangnya lembut.
     answers_meaning:
-      ar_eg: [في الفيلم ده فيه واحد شرير, فيه شرير في الفيلم ده]
-      ar: [في ذلك الفيلم شخص شرّير, هناك رجل شرّير في ذلك الفيلم]
-      en: ['There''s a bad guy in that film', 'In that film there''s a wicked person']
-    words: [jahat]
+      ar_eg: [رينا إنسانة حنينة, رينا حنينة]
+      ar: [رينا شخص رقيق, رينا رقيقة]
+      en: [Rina is a gentle person, Rina is gentle]
+    words: [lembut]
   - id: e09
     type: speaking
-    text: Dia cerdas dan jujur.
+    text: Saya tidak nakal dan tidak jelek. Saya tampan!
     meaning:
-      ar_eg: هو ذكي وأمين.
-      ar: إنه ذكي وأمين.
-      en: He's clever and honest.
-    words: [cerdas, jujur]
+      ar_eg: أنا مش شقي ومش وحش. أنا وسيم!
+      ar: لست مشاغبًا ولا قبيحًا. أنا وسيم!
+      en: I'm not naughty and I'm not ugly. I'm handsome!
+    words: [nakal, jelek, tampan]
   - id: e10
     type: multiple_choice
-    question: Rina makan sedikit. Dia ___.
-    options: [kurus, gemuk, nakal]
+    question_meaning:
+      ar_eg: الكوفية بتتلبس فين؟
+      ar: أين يُلبس الوشاح؟
+      en: Where do you wear a scarf?
+    options: [leher, telinga, mata]
     answer: 0
     explain:
-      ar_eg: 'بتاكل قليل، فهي رفيعة: kurus.'
-      ar: 'تأكل قليلًا فهي نحيفة: kurus.'
-      en: 'She eats little, so she''s thin: kurus.'
-    words: [kurus, nakal]
+      ar_eg: 'على الرقبة: leher. telinga ودن وmata عين.'
+      ar: 'على الرقبة: leher، أما telinga فأذن وmata عين.'
+      en: 'On your neck: leher. telinga is an ear and mata an eye.'
+    words: [leher, telinga]
 dialogue:
   lines:
     - speaker: Mohamed
-      text: Rina, siapa guru baru itu?
-      ar_eg: يا رينا، مين المدرسة الجديدة دي؟
-      ar: يا رينا، من تلك المعلّمة الجديدة؟
-      en: Rina, who's that new teacher?
+      text: Rina, siapa anak kecil itu?
+      ar_eg: يا رينا، مين العيل الصغير ده؟
+      ar: يا رينا، من ذلك الطفل الصغير؟
+      en: Rina, who's that little kid?
     - speaker: Rina
-      text: Itu Bu Sinta. Dia masih muda, tapi cerdas sekali.
-      ar_eg: دي الأستاذة سينتا. لسه صغيرة، بس ذكية جدًا.
-      ar: تلك الأستاذة سينتا، شابّة لكنها ذكية جدًا.
-      en: That's Mrs Sinta. She's young, but very clever.
+      text: Itu sepupu saya, Dodi. Dia bosan, jadi dia nakal.
+      ar_eg: دا ابن خالتي، دودي. زهقان، فبقى شقي.
+      ar: ذاك ابن خالتي دودي. إنه ضجِر، لذلك صار مشاغبًا.
+      en: That's my cousin Dodi. He's bored, so he's being naughty.
     - speaker: Mohamed
-      text: Dan anak kurus itu? Dia pendiam.
-      ar_eg: والولد الرفيع ده؟ ساكت خالص.
-      ar: وذلك الولد النحيف؟ إنه صامت.
-      en: And that thin boy? He's quiet.
+      text: Ada gambar di leher dan telinganya!
+      ar_eg: فيه رسمة على رقبته وودنه!
+      ar: هناك رسمة على رقبته وأذنه!
+      en: There's a drawing on his neck and ear!
     - speaker: Rina
-      text: Itu Dodi. Dia pemalu, tapi jujur.
-      ar_eg: دا دودي. خجول بس أمين.
-      ar: ذاك دودي، خجول لكنه أمين.
-      en: That's Dodi. He's shy, but honest.
+      text: Dodi, wajahmu jelek sekarang!
+      ar_eg: يا دودي، وشك بقى وحش دلوقتي!
+      ar: يا دودي، صار وجهك قبيحًا الآن!
+      en: Dodi, your face looks awful now!
     - speaker: Mohamed
-      text: Dan anak itu? Dia agak aneh.
-      ar_eg: والولد ده؟ غريب شوية.
-      ar: وذلك الولد؟ غريب قليلًا.
-      en: And that kid? He's a bit odd.
+      text: Tapi dia tersenyum. Kamu lembut sekali, Rina.
+      ar_eg: بس هو مبتسم. إنتي حنينة أوي يا رينا.
+      ar: لكنه يبتسم. أنتِ رقيقة جدًا يا رينا.
+      en: But he's smiling. You're so gentle, Rina.
     - speaker: Rina
-      text: Bukan aneh, dia lucu! Dia tidak jahat.
-      ar_eg: مش غريب، دا دمه خفيف! ومش شرير.
-      ar: ليس غريبًا، إنه ظريف! وليس شرّيرًا.
-      en: Not odd, he's funny! He isn't mean.
+      text: Sekarang dia haus. Ini air, Dodi!
+      ar_eg: دلوقتي هو عطشان. خد المية يا دودي!
+      ar: الآن هو عطشان. هذا ماء يا دودي!
+      en: Now he's thirsty. Here's some water, Dodi!
 new_words:
-  - word: muda
+  - word: telinga
+    pos: noun
+    ar_eg: ودن
+    ar: أذن
+    en: ear
+  - word: leher
+    pos: noun
+    ar_eg: رقبة
+    ar: رقبة، عنق
+    en: neck
+  - word: haus
     pos: adjective
-    ar_eg: صغير في السن، شاب
-    ar: شابّ، صغير السنّ
-    en: young
-  - word: jujur
+    ar_eg: عطشان
+    ar: عطشان
+    en: thirsty
+  - word: bosan
     pos: adjective
-    ar_eg: أمين، صادق
-    ar: أمين، صادق
-    en: honest
-  - word: jahat
-    pos: adjective
-    ar_eg: شرير
-    ar: شرّير
-    en: wicked, mean
-  - word: aneh
-    pos: adjective
-    ar_eg: غريب
-    ar: غريب
-    en: strange, odd
+    ar_eg: زهقان
+    ar: ضجِر، ملول
+    en: bored
   - word: nakal
     pos: adjective
     ar_eg: شقي
     ar: مشاغب
     en: naughty
-  - word: kurus
+  - word: lembut
     pos: adjective
-    ar_eg: رفيع
-    ar: نحيف
-    en: thin
-  - word: pemalu
+    ar_eg: حنين، ناعم
+    ar: رقيق، ناعم
+    en: gentle, soft
+  - word: tampan
     pos: adjective
-    ar_eg: خجول
-    ar: خجول
-    en: shy
-  - word: cerdas
+    ar_eg: وسيم
+    ar: وسيم
+    en: handsome
+  - word: jelek
     pos: adjective
-    ar_eg: ذكي
-    ar: ذكي
-    en: intelligent, smart
+    ar_eg: وحش
+    ar: قبيح، رديء
+    en: ugly, bad
 review:
   status: draft
   verified: false

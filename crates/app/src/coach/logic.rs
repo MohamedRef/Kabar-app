@@ -256,7 +256,8 @@ pub fn done_events<'a>(events: &'a [ActivityEvent], date: LocalDate, item_id: &s
 }
 
 /// Kak Nur's note on a weekly report, picked from the data: celebrate a
-/// comeback, praise a strong week, and keep a light week light.
+/// comeback, welcome a first week, praise a strong week, and keep a light
+/// week light.
 pub fn report_note(report: &WeeklyReport, events: &[ActivityEvent]) -> Line {
     if report.days_studied == 0 {
         return Line::ReportLightWeek;
@@ -268,6 +269,10 @@ pub fn report_note(report: &WeeklyReport, events: &[ActivityEvent]) -> Line {
         let before = history::last_study_day(events, first);
         if before.is_some_and(|b| first.days_since(b) > COMEBACK_AFTER_DAYS) {
             return Line::ReportComeback;
+        }
+        // Kabar is new this week: a welcome, not a "busy week".
+        if before.is_none() && report.days_studied < 3 {
+            return Line::ReportFirstWeek;
         }
     }
     let best_of_several = report.league.of > 1 && report.league.rank == 1;
@@ -526,5 +531,9 @@ mod tests {
         // Back after two weeks away: a comeback, whatever the numbers.
         let back = vec![ev("x", week.add_days(-15), 0, reviews()), ev("y", week.add_days(2), 1, reviews())];
         assert_eq!(report_note(&report(week, 1, 1, 3), &back), Line::ReportComeback);
+
+        // Day one with Kabar is a start, not a light week.
+        let first = vec![ev("z", week.add_days(4), 1, reviews())];
+        assert_eq!(report_note(&report(week, 1, 1, 1), &first), Line::ReportFirstWeek);
     }
 }
