@@ -637,8 +637,13 @@ fn Shell() -> Element {
                             screen.set(item);
                         },
                         span { class: "nav-icon", aria_hidden: "true", {icons::nav(item)} }
-                        span { class: "nav-label",
-                            "{more::rail_label(ui.lang(), item).unwrap_or(ui.t(item.label()))}"
+                        // One name everywhere; the narrow rail shows its short
+                        // form (CSS picks the span, so a resize needs no render).
+                        if let Some(short) = more::rail_label(ui.lang(), item) {
+                            span { class: "nav-label nav-label-full", "{ui.t(item.label())}" }
+                            span { class: "nav-label nav-label-short", "{short}" }
+                        } else {
+                            span { class: "nav-label", "{ui.t(item.label())}" }
                         }
                     }
                         }

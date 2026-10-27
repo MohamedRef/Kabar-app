@@ -12,6 +12,7 @@ pub enum T {
     TeachIt,
     Legend,
     Unverified,
+    Name,
 }
 
 pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
@@ -39,5 +40,8 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (Unverified, ArEg) => "لسه متراجعش",
         (Unverified, Ar) => "لم يُراجَع بعد",
         (Unverified, En) => "not reviewed yet",
+        (Name, ArEg) => "اسم",
+        (Name, Ar) => "اسم عَلَم",
+        (Name, En) => "a name",
     }
 }

@@ -1,169 +1,240 @@
 schema: kabar.lesson/v1
 id: bipa7.u06.l09
 language: id
-title: Membuat utas
+title: Keamanan siber
 can_do:
-  ar_eg: تكتب سلسلة بوستات قصيرة (ثريد) تصحّح فيها إشاعة بمصادر.
-  ar: أن تكتب سلسلة منشورات قصيرة تصحّح فيها شائعة بالمصادر.
-  en: Write a short thread that corrects a rumour, with sources.
+  ar_eg: تحمي حساباتك وبياناتك وتتصرّف لو حصل تنمّر أو تسريب.
+  ar: أن تحمي حساباتك وبياناتك وتتصرّف عند التنمّر أو التسرّب.
+  en: Protect your accounts and data and respond to bullying or a leak.
 slides:
-  - title: Utas cek fakta
+  - title: Melindungi diri di internet
     body:
       ar_eg: |
-        الـ utas (ثريد) سلسلة بوستات قصيرة ورا بعض: 1/5، 2/5…
-        والـ tagar (هاشتاج) زي #CekFakta بيخلّي الناس تلاقيه.
-        شكل الـ utas الكويس:
-        1/ الإشاعة: «Air laut di Sorong beracun.»
-        2/ الحقيقة: Menurut sumber resmi, airnya aman.
-        3/ الدليل: لينك من موقع رسمي.
-        4/ نصيحة: Jangan sebarkan sebelum cek fakta.
-        5/ الختام: Bagikan utas ini, bukan hoaksnya!
+        keamanan siber = الأمن السيبراني.
+        pengelabuan (phishing) = رسالة بتقلّد بنك أو شركة علشان تاخد باسوردك.
+        rekayasa sosial = الخداع النفسي: «أنا من خدمة العملا، ابعتلي الكود».
+        autentikasi dua faktor = تحقّق بخطوتين، أأمن.
+        kebocoran data = تسريب بيانات. قانون Pelindungan Data Pribadi (2022) بيتكلّم عن pelindungan data.
+        doksing = نشر عنوانك وبياناتك علشان يأذوك. perundungan siber = التنمّر الإلكتروني.
       ar: |
-        الـ utas سلسلة منشورات قصيرة متتابعة: 1/5، 2/5…
-        والـ tagar (وسم، هاشتاغ) مثل #CekFakta يسهّل العثور عليها.
-        هيكل الـ utas الجيّدة:
-        1/ الشائعة: «Air laut di Sorong beracun.»
-        2/ الحقيقة: Menurut sumber resmi, airnya aman.
-        3/ الدليل: رابط إلى موقع رسميّ.
-        4/ نصيحة: Jangan sebarkan sebelum cek fakta.
-        5/ الختام: Bagikan utas ini, bukan hoaksnya!
+        keamanan siber = الأمن السيبراني.
+        pengelabuan (phishing) = رسالة تقلّد مصرفًا أو شركة لتسرق كلمة مرورك.
+        rekayasa sosial = الخداع النفسي: «أنا من خدمة العملاء، أرسل إليّ الرمز».
+        autentikasi dua faktor = المصادقة الثنائية، وهي أكثر أمانًا.
+        kebocoran data = تسرّب البيانات. ويتناول قانون Pelindungan Data Pribadi (2022) مسألة pelindungan data.
+        doksing = نشر عنوانك وبياناتك لإيذائك. perundungan siber = التنمّر الإلكتروني.
       en: |
-        An utas (thread) is a chain of short posts: 1/5, 2/5…
-        A tagar (hashtag) like #CekFakta helps people find it.
-        A good utas:
-        1/ The rumour: "Air laut di Sorong beracun."
-        2/ The truth: Menurut sumber resmi, airnya aman.
-        3/ The evidence: a link from an official site.
-        4/ Advice: Jangan sebarkan sebelum cek fakta.
-        5/ Close: Bagikan utas ini, bukan hoaksnya!
+        keamanan siber = cybersecurity.
+        pengelabuan (phishing) = a message imitating a bank or company to steal your password.
+        rekayasa sosial = social engineering: "I'm from customer service, send me the code."
+        autentikasi dua faktor = two-factor authentication, much safer.
+        kebocoran data = a data leak. The 2022 Personal Data Protection law covers pelindungan data.
+        doksing = publishing your address and details to harm you. perundungan siber = cyberbullying.
+    examples:
+      - text: Pesan itu adalah pengelabuan yang meniru bank.
+        ar_eg: الرسالة دي تصيّد بيقلّد البنك.
+        ar: تلك الرسالة تصيّد احتيالي يقلّد المصرف.
+        en: That message is phishing that imitates a bank.
+      - text: Aktifkan autentikasi dua faktor di semua akunmu.
+        ar_eg: شغّل التحقّق بخطوتين على كل حساباتك.
+        ar: فعّل المصادقة الثنائية في كلّ حساباتك.
+        en: Turn on two-factor authentication on all your accounts.
+      - text: Korban perundungan siber perlu dukungan, bukan disalahkan.
+        ar_eg: ضحية التنمّر الإلكتروني محتاج دعم، مش لوم.
+        ar: يحتاج ضحيّة التنمّر الإلكتروني إلى الدعم لا اللوم.
+        en: Cyberbullying victims need support, not blame.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الـ «utas» يبقى إيه؟
-      ar: ما الـ «utas»؟
-      en: What is an "utas"?
-    options:
-      - فيديو طويل.
-      - سلسلة بوستات قصيرة ورا بعض.
-      - رسالة خاصة.
-    answer: 1
-    words: [utas]
+    type: match_pairs
+    pairs:
+      - text: keamanan siber
+        ar_eg: الأمن السيبراني
+        ar: الأمن السيبراني
+        en: cybersecurity
+      - text: pengelabuan
+        ar_eg: تصيّد احتيالي (فيشينج)
+        ar: التصيّد الاحتيالي
+        en: phishing, deception
+      - text: rekayasa sosial
+        ar_eg: هندسة اجتماعية (خداع الناس)
+        ar: الهندسة الاجتماعية
+        en: social engineering
+      - text: autentikasi
+        ar_eg: تحقّق من الهوية
+        ar: المصادقة
+        en: authentication
+    words: [keamanan siber, pengelabuan, rekayasa sosial, autentikasi]
   - id: e02
-    type: listen
-    text: Pakai tagar CekFakta supaya utasmu mudah ditemukan.
-    question:
-      ar_eg: ليه نستعمل الهاشتاج؟
-      ar: لماذا نستعمل الوسم؟
-      en: Why use the hashtag?
-    options:
-      - علشان الثريد يتلاقى بسهولة.
-      - علشان البوست يبقى أطول.
-      - علشان نخبّي الثريد.
-    answer: 0
-    words: [tagar, utas]
+    type: match_pairs
+    pairs:
+      - text: kebocoran data
+        ar_eg: تسريب بيانات
+        ar: تسرّب البيانات
+        en: data leak
+      - text: pelindungan data
+        ar_eg: حماية البيانات
+        ar: حماية البيانات
+        en: data protection
+      - text: doksing
+        ar_eg: نشر بيانات حد الشخصية علشان يأذوه
+        ar: كشف البيانات الشخصية للإيذاء
+        en: doxxing
+      - text: perundungan siber
+        ar_eg: تنمّر إلكتروني
+        ar: التنمّر الإلكتروني
+        en: cyberbullying
+    words: [kebocoran data, pelindungan data, doksing, perundungan siber]
   - id: e03
-    type: fill_blank
-    sentence: Saya menulis ___ lima bagian untuk membantah hoaks itu.
+    type: listen
+    text: Setelah kebocoran data, jutaan nomor telepon dijual di internet.
+    question:
+      ar_eg: حصل إيه قبل ما الأرقام تتباع؟
+      ar: ماذا حدث قبل بيع الأرقام؟
+      en: What happened before the numbers were sold?
+    options: [تسريب بيانات, تحقّق بخطوتين, تنمّر]
+    answer: 0
     meaning:
-      ar_eg: كتبت ثريد من خمس أجزاء علشان أردّ على الإشاعة دي.
-      ar: كتبت سلسلة من خمسة أجزاء لتفنيد تلك الشائعة.
-      en: I wrote a five-part thread to debunk that hoax.
-    options: [utas, tagar, tautan]
-    answers: [utas]
-    words: [utas, hoaks]
+      ar_eg: بعد تسريب البيانات، ملايين أرقام التليفون اتباعت على الإنترنت.
+      ar: بعد تسرّب البيانات بيعت ملايين أرقام الهواتف على الإنترنت.
+      en: After the data leak, millions of phone numbers were sold online.
+    words: [kebocoran data]
   - id: e04
-    type: build_sentence
-    source:
-      ar_eg: شيّر الثريد ده، مش الإشاعة!
-      ar: شارك هذه السلسلة لا الشائعة!
-      en: Share this thread, not the hoax!
-    answer: Bagikan utas ini, bukan hoaksnya!
-    distractors: [tagar, sumber]
-    words: [utas, hoaks]
+    type: fill_blank
+    sentence: 'Penipu itu memakai ___: dia pura-pura menjadi petugas bank.'
+    meaning:
+      ar_eg: 'النصّاب ده استعمل ___: عمل نفسه موظّف بنك.'
+      ar: استعمل المحتال ___ فتظاهر بأنه موظّف مصرف.
+      en: 'The scammer used ___: he pretended to be a bank officer.'
+    options: [rekayasa sosial, pelindungan data, keamanan siber]
+    answers: [rekayasa sosial]
+    words: [rekayasa sosial, pelindungan data, keamanan siber]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: إيه أحسن حاجة تحطّها في الجزء ٣/ من الثريد؟
-      ar: ما أفضل ما تضعه في الجزء ٣/ من السلسلة؟
-      en: What's best to put in part 3/ of the thread?
-    options:
-      - نكتة.
-      - صورة قطة.
-      - دليل من مصدر رسمي.
-    answer: 2
-    words: [sumber resmi, utas]
+      ar_eg: «doksing» يعني إيه؟
+      ar: ما «doksing»؟
+      en: What is 'doksing'?
+    options: [Mengunduh film., Menyebarkan alamat dan data pribadi orang lain untuk menyakitinya., Mengganti kata sandi.]
+    answer: 1
+    explain:
+      ar_eg: doksing = نشر بيانات حد علشان يأذوه.
+      ar: doksing = نشر بيانات شخص لإيذائه.
+      en: doksing = exposing someone's details to harm them.
+    words: [doksing]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الهاشتاج ده بقى تريند النهارده.
-      ar: صار هذا الوسم رائجًا اليوم.
-      en: This hashtag is trending today.
-    answers:
-      - Tagar ini menjadi tren hari ini.
-      - Tagar ini sedang tren hari ini.
-      - Tagar ini jadi trending hari ini.
-      - Hari ini tagar ini menjadi tren.
-    words: [tagar]
+    type: fill_blank
+    sentence: Kode OTP adalah bagian dari ___.
+    meaning:
+      ar_eg: كود الـ OTP جزء من ___.
+      ar: رمز OTP جزء من ___.
+      en: An OTP code is part of ___.
+    options: [autentikasi, doksing, pengelabuan]
+    answers: [autentikasi]
+    words: [autentikasi, doksing, pengelabuan]
   - id: e07
-    type: speaking
-    text: Satu per lima. Ada pesan berantai tentang air laut beracun. Mari kita cek fakta.
-    meaning:
-      ar_eg: ١ من ٥. فيه رسالة بتتلفّ عن إن مية البحر مسمومة. يلا نتأكّد.
-      ar: ١ من ٥. تنتشر رسالة عن مياه بحر مسمومة، فلنتحقّق.
-      en: One of five. There's a chain message about poisoned seawater. Let's fact-check.
-    words: [cek fakta, utas]
+    type: build_sentence
+    source:
+      ar_eg: قانون حماية البيانات اتطلّع سنة 2022.
+      ar: صدر قانون حماية البيانات عام 2022.
+      en: The data protection law was passed in 2022.
+    answer: Undang-undang pelindungan data disahkan tahun 2022.
+    distractors: [kebocoran data, doksing]
+    words: [pelindungan data]
   - id: e08
-    type: dictation
-    text: Utas yang baik memakai sumber yang kredibel.
-    meaning:
-      ar_eg: الثريد الكويس بيستعمل مصادر موثوقة.
-      ar: تعتمد السلسلة الجيّدة مصادر موثوقة.
-      en: A good thread uses credible sources.
-    words: [utas, kredibel]
+    type: translate
+    direction: from_target
+    source_text: Jangan klik tautan pengelabuan, sekalipun pesannya tampak resmi.
+    answers_meaning:
+      ar_eg: [ما تدوسش على لينك التصيّد حتى لو الرسالة باينة رسمية, ما تفتحش لينكات الفيشينج حتى لو الرسالة شكلها رسمي]
+      ar: [لا تنقر رابط التصيّد حتى لو بدت الرسالة رسمية, لا تفتح روابط التصيّد الاحتيالي وإن بدت الرسالة رسمية]
+      en: ['Don''t click a phishing link, even if the message looks official', 'Never open phishing links, however official the message seems']
+    words: [pengelabuan]
   - id: e09
     type: speaking
-    text: Jangan pakai terlalu banyak tagar. Dua atau tiga sudah cukup.
+    text: Kebocoran data dan perundungan siber adalah masalah keamanan siber.
     meaning:
-      ar_eg: ماتحطّش هاشتاجات كتير. اتنين أو تلاتة كفاية.
-      ar: لا تكثر من الوسوم، فاثنان أو ثلاثة تكفي.
-      en: Don't use too many hashtags. Two or three is enough.
-    words: [tagar]
+      ar_eg: تسريب البيانات والتنمّر الإلكتروني مشاكل أمن سيبراني.
+      ar: تسرّب البيانات والتنمّر الإلكتروني من مشكلات الأمن السيبراني.
+      en: Data leaks and cyberbullying are cybersecurity problems.
+    words: [kebocoran data, perundungan siber, keamanan siber]
+  - id: e10
+    type: multiple_choice
+    question: Teman sekelas diejek setiap hari di grup daring. Ini disebut ...
+    options: [autentikasi, pelindungan data, perundungan siber]
+    answer: 2
+    explain:
+      ar_eg: السخرية من حد كل يوم أونلاين = تنمّر إلكتروني.
+      ar: السخرية اليومية من شخص على الإنترنت = تنمّر إلكتروني.
+      en: Daily online mocking = cyberbullying.
+    words: [perundungan siber, autentikasi, pelindungan data, doksing, rekayasa sosial, keamanan siber]
 dialogue:
-  title: Lima bagian, satu kebenaran
   lines:
-    - speaker: Kak Selvi
-      text: Hoaks air beracun itu sudah sampai ke grup ibu-ibu. Ayo buat utas.
-      ar_eg: إشاعة المية المسمومة وصلت لجروبات الستات. يلا نعمل ثريد.
-      ar: بلغت شائعة الماء المسموم مجموعات الأمّهات، فلنكتب سلسلة.
-      en: The poisoned-water hoax has reached the mums' groups. Let's write a thread.
+    - speaker: Kaka Yohana
+      text: Mohamed, ada pesan dari "bank" yang minta kode OTP saya.
+      ar_eg: يا محمد، جتلي رسالة من «البنك» بيطلبوا كود الـ OTP بتاعي.
+      ar: يا محمد، وصلتني رسالة من «المصرف» تطلب رمز OTP.
+      en: Mohamed, there's a message from 'the bank' asking for my OTP code.
     - speaker: Mohamed
-      text: Bagian pertama hoaksnya, lalu fakta dari sumber resmi. Tagarnya apa?
-      ar_eg: أول جزء الإشاعة، وبعدين الحقيقة من المصدر الرسمي. الهاشتاج إيه؟
-      ar: الجزء الأوّل الشائعة، ثمّ الحقيقة من المصدر الرسميّ. وما الوسم؟
-      en: Part one is the hoax, then the facts from the official source. What's the hashtag?
-    - speaker: Kak Selvi
-      text: CekFakta dan nama kotanya, Sorong. Pendek saja.
-      ar_eg: CekFakta واسم المدينة، سورونج. قصيّر وخلاص.
-      ar: CekFakta واسم المدينة سورونغ، باختصار.
-      en: CekFakta and the city name, Sorong. Keep it short.
+      text: Jangan kirim, Kaka! Itu pengelabuan.
+      ar_eg: ما تبعتيش يا كاكا! ده تصيّد.
+      ar: لا ترسليه يا كاكا! هذا تصيّد احتيالي.
+      en: Don't send it, Kaka! That's phishing.
+    - speaker: Kaka Yohana
+      text: Mereka tahu nama lengkap saya. Bagaimana bisa?
+      ar_eg: عارفين اسمي بالكامل. إزاي؟
+      ar: يعرفون اسمي الكامل، فكيف ذلك؟
+      en: They know my full name. How?
     - speaker: Mohamed
-      text: Siap. Bagian terakhir, "Bagikan utas ini, bukan hoaksnya!"
-      ar_eg: 'تمام. آخر جزء: «شيّر الثريد ده، مش الإشاعة!»'
-      ar: 'حسنًا. والجزء الأخير: «شارك هذه السلسلة لا الشائعة!»'
-      en: Got it. The last part, "Share this thread, not the hoax!"
+      text: Mungkin dari kebocoran data. Itu rekayasa sosial supaya Kaka percaya.
+      ar_eg: يمكن من تسريب بيانات. دي هندسة اجتماعية علشان تصدّقي.
+      ar: ربما من تسرّب بيانات، وهذه هندسة اجتماعية لتصدّقيهم.
+      en: Maybe from a data leak. It's social engineering so you'll believe them.
+    - speaker: Kaka Yohana
+      text: Kalau begitu, ini bisa jadi topik siaran kita tentang keamanan siber.
+      ar_eg: يبقى ده ممكن يبقى موضوع حلقتنا عن الأمن السيبراني.
+      ar: إذن قد يصلح هذا موضوعًا لحلقتنا عن الأمن السيبراني.
+      en: Then this could be our show's topic on cybersecurity.
 new_words:
-  - word: utas
+  - word: keamanan siber
     pos: noun
-    ar_eg: ثريد (سلسلة بوستات)
-    ar: سلسلة منشورات
-    en: thread (of posts)
-  - word: tagar
+    ar_eg: الأمن السيبراني
+    ar: الأمن السيبراني
+    en: cybersecurity
+  - word: pengelabuan
     pos: noun
-    ar_eg: هاشتاج
-    ar: وسم (هاشتاغ)
-    en: hashtag
+    ar_eg: تصيّد احتيالي (فيشينج)
+    ar: التصيّد الاحتيالي
+    en: phishing, deception
+  - word: rekayasa sosial
+    pos: noun
+    ar_eg: هندسة اجتماعية (خداع الناس)
+    ar: الهندسة الاجتماعية
+    en: social engineering
+  - word: autentikasi
+    pos: noun
+    ar_eg: تحقّق من الهوية
+    ar: المصادقة
+    en: authentication
+  - word: kebocoran data
+    pos: noun
+    ar_eg: تسريب بيانات
+    ar: تسرّب البيانات
+    en: data leak
+  - word: pelindungan data
+    pos: noun
+    ar_eg: حماية البيانات
+    ar: حماية البيانات
+    en: data protection
+  - word: doksing
+    pos: noun
+    ar_eg: نشر بيانات حد الشخصية علشان يأذوه
+    ar: كشف البيانات الشخصية للإيذاء
+    en: doxxing
+  - word: perundungan siber
+    pos: noun
+    ar_eg: تنمّر إلكتروني
+    ar: التنمّر الإلكتروني
+    en: cyberbullying
 review:
   status: draft
   verified: false

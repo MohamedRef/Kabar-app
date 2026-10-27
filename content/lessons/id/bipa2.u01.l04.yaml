@@ -1,45 +1,42 @@
 schema: kabar.lesson/v1
 id: bipa2.u01.l04
 language: id
-title: Tebal dan tipis
+title: Mencari gendang
 can_do:
-  ar_eg: تقارن الحاجات بالسُمك والعرض والمساحة والملمس والخامة.
-  ar: أن تقارن الأشياء بالسُّمك والعرض والمساحة والملمس والمادة.
-  en: Compare things by thickness, width, space, texture and material.
+  ar_eg: 'تشتري آلة في محل: تقارن العرض والسُّمك والملمس، وتسأل أصلية ولا بلاستيك، أنتيكة ولا فريدة.'
+  ar: 'أن تشتري آلة من متجر: تقارن العرض والسُّمك والملمس، وتسأل أصلية أم بلاستيك، أثرية أم فريدة.'
+  en: 'Buy an instrument in a shop: compare width, thickness and texture, and ask if it''s genuine or plastic, antique or unique.'
 slides:
-  - title: Tebal, lebar, luas
+  - title: Asli atau plastik?
     body:
       ar_eg: |
-        أزواج مفيدة مع lebih … daripada:
-        tebal ↔ tipis: تخين ↔ رفيع (كتاب، قماش).
-        lebar ↔ sempit: عريض ↔ ضيق (شارع، باب).
-        luas = واسع، كبير في المساحة (بيت، أوضة). وkasar = خشن، عكس lembut.
-        الخامات: besi = حديد، plastik = بلاستيك، وإنت عارف kayu وbambu وlogam.
+        lebar = عريض، tebal = تخين، kasar = خشن (عكس lembut).
+        الخامات: besi = حديد، plastik = بلاستيك.
+        asli = أصلي (من «أصل»). antik = أنتيكة: قديم وليه قيمة. unik = فريد ومختلف.
+        ومع lebih … daripada: Gendang ini lebih lebar daripada gendang itu.
       ar: |
-        أزواج مفيدة مع lebih … daripada:
-        tebal ↔ tipis: سميك ↔ رقيق (كتاب، قماش).
-        lebar ↔ sempit: عريض ↔ ضيّق (شارع، باب).
-        luas = واسع المساحة (بيت، غرفة). وkasar = خشن، ضدّ lembut.
-        المواد: besi = حديد، plastik = بلاستيك، وأنت تعرف kayu وbambu وlogam.
+        lebar = عريض، tebal = سميك، kasar = خشن (ضدّ lembut).
+        المواد: besi = حديد، plastik = بلاستيك.
+        asli = أصلي (من «أصل»). antik = أثري: قديم ذو قيمة. unik = فريد.
+        ومع lebih … daripada: Gendang ini lebih lebar daripada gendang itu.
       en: |
-        Useful pairs with lebih … daripada:
-        tebal ↔ tipis: thick ↔ thin (books, cloth).
-        lebar ↔ sempit: wide ↔ narrow (roads, doors).
-        luas = spacious (a house, a room). kasar = rough, the opposite of lembut.
-        Materials: besi = iron, plastik = plastic; you know kayu, bambu and logam.
+        lebar = wide, tebal = thick, kasar = rough (the opposite of lembut).
+        Materials: besi = iron, plastik = plastic.
+        asli = genuine, original (from Arabic أصل). antik = antique. unik = unique.
+        With lebih … daripada: Gendang ini lebih lebar daripada gendang itu.
     examples:
-      - text: Buku ini lebih tebal daripada buku itu.
-        ar_eg: الكتاب ده أتخن من الكتاب ده.
-        ar: هذا الكتاب أسمك من ذاك.
-        en: This book is thicker than that one.
-      - text: Jalan ini sempit, tapi jalan itu lebar.
-        ar_eg: الشارع ده ضيق، بس الشارع ده عريض.
-        ar: هذا الشارع ضيّق، أما ذاك فعريض.
-        en: This road is narrow, but that one is wide.
-      - text: Pintu itu dari besi, jadi berat.
-        ar_eg: الباب ده حديد، عشان كده تقيل.
-        ar: ذلك الباب من حديد، لذا هو ثقيل.
-        en: That door is iron, so it's heavy.
+      - text: Gendang ini lebih lebar daripada gendang itu.
+        ar_eg: الطبلة دي أعرض من الطبلة دي.
+        ar: هذا الطبل أعرض من ذاك.
+        en: This drum is wider than that one.
+      - text: Suling ini asli, bukan plastik.
+        ar_eg: الناي ده أصلي، مش بلاستيك.
+        ar: هذا الناي أصلي، ليس بلاستيكًا.
+        en: This flute is genuine, not plastic.
+      - text: Kursi besi itu antik.
+        ar_eg: الكرسي الحديد ده أنتيكة.
+        ar: ذلك الكرسي الحديدي أثري.
+        en: That iron chair is an antique.
 exercises:
   - id: e01
     type: match_pairs
@@ -48,26 +45,10 @@ exercises:
         ar_eg: تخين
         ar: سميك
         en: thick
-      - text: tipis
-        ar_eg: رفيع
-        ar: رقيق
-        en: thin
       - text: lebar
         ar_eg: عريض
         ar: عريض
         en: wide
-      - text: sempit
-        ar_eg: ضيق
-        ar: ضيّق
-        en: narrow
-    words: [tebal, tipis, lebar, sempit]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: luas
-        ar_eg: واسع
-        ar: واسع
-        en: spacious
       - text: kasar
         ar_eg: خشن
         ar: خشن
@@ -76,88 +57,104 @@ exercises:
         ar_eg: حديد
         ar: حديد
         en: iron
+    words: [tebal, lebar, kasar, besi]
+  - id: e02
+    type: match_pairs
+    pairs:
       - text: plastik
         ar_eg: بلاستيك
         ar: بلاستيك
         en: plastic
-    words: [luas, kasar, besi, plastik]
+      - text: asli
+        ar_eg: أصلي
+        ar: أصلي
+        en: genuine
+      - text: antik
+        ar_eg: أنتيكة
+        ar: أثري
+        en: antique
+      - text: unik
+        ar_eg: فريد
+        ar: فريد
+        en: unique
+    words: [plastik, asli, antik, unik]
   - id: e03
     type: listen
-    text: Suling ini dari plastik, bukan dari bambu.
+    text: Suling ini dari plastik. Harganya murah.
     question:
       ar_eg: الناي ده معمول من إيه؟
       ar: مِمَّ صُنع هذا الناي؟
       en: What is the flute made of?
-    options: [بلاستيك, خشب, حديد]
+    options: [بلاستيك, حديد, أنتيكة]
     answer: 0
     meaning:
-      ar_eg: الناي ده بلاستيك، مش بامبو.
-      ar: هذا الناي من البلاستيك لا من الخيزران.
-      en: This flute is plastic, not bamboo.
+      ar_eg: الناي ده بلاستيك. سعره رخيص.
+      ar: هذا الناي من البلاستيك، وسعره رخيص.
+      en: This flute is plastic. It's cheap.
     words: [plastik]
   - id: e04
     type: fill_blank
-    sentence: Kamus ini lebih ___ daripada buku cerita.
+    sentence: Gendang ini lebih ___ daripada gendang itu. Suaranya lebih keras.
     meaning:
-      ar_eg: القاموس ده ___ من كتاب الحكايات.
-      ar: هذا القاموس ___ من كتاب القصص.
-      en: This dictionary is ___ than the storybook.
-    options: [tebal, sempit, kasar]
-    answers: [tebal]
-    words: [tebal, sempit, kasar]
+      ar_eg: الطبلة دي ___ من الطبلة دي. صوتها أعلى.
+      ar: هذا الطبل ___ من ذاك، وصوته أعلى.
+      en: This drum is ___ than that one. It's louder.
+    options: [lebar, kasar, antik]
+    answers: [lebar]
+    words: [lebar, kasar, antik]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: إيه عكس lebar؟
-      ar: ما ضدّ lebar؟
-      en: What's the opposite of lebar?
-    options: [sempit, luas, tebal]
+      ar_eg: حاجة قديمة من سنة ١٩٠٠ وليها قيمة. هي…؟
+      ar: شيء قديم من عام ١٩٠٠ وذو قيمة. هو…؟
+      en: Something old from 1900 and valuable. It's…?
+    options: [antik, unik, plastik]
     answer: 0
     explain:
-      ar_eg: lebar = عريض، وعكسها sempit = ضيق.
-      ar: lebar عريض وضدّها sempit ضيّق.
-      en: lebar = wide; its opposite is sempit, narrow.
-    words: [sempit, lebar, luas, tebal]
+      ar_eg: antik = أنتيكة. unik فريد، وplastik بلاستيك.
+      ar: antik أثري، أما unik ففريد وplastik بلاستيك.
+      en: antik = antique; unik is unique and plastik plastic.
+    words: [antik, unik, plastik]
   - id: e06
     type: fill_blank
-    sentence: Rumah nenek ___ sekali. Ada lima kamar.
+    sentence: Kain ini ___, tidak lembut.
     meaning:
-      ar_eg: بيت تيتا ___ أوي. فيه خمس أوض.
-      ar: بيت جدّتي ___ جدًا، فيه خمس غرف.
-      en: Grandma's house is very ___. It has five rooms.
-    options: [luas, tipis, besi]
-    answers: [luas]
-    words: [luas, tipis, besi]
+      ar_eg: القماش ده ___، مش ناعم.
+      ar: هذا القماش ___، ليس ناعمًا.
+      en: This cloth is ___, not soft.
+    options: [kasar, asli, tebal]
+    answers: [kasar]
+    words: [kasar, asli, tebal]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: الهدوم دي رقيقة، مش تقيلة.
-      ar: هذه الملابس رقيقة، ليست ثقيلة.
-      en: These clothes are thin, not heavy.
-    answer: Baju ini tipis, tidak berat.
-    distractors: [besi, lebar]
-    words: [tipis]
+      ar_eg: الكرسي ده حديد، عشان كده تقيل.
+      ar: هذا الكرسي من حديد، لذا هو ثقيل.
+      en: This chair is iron, so it's heavy.
+    answer: Kursi ini dari besi, jadi berat.
+    distractors: [plastik, lebar]
+    words: [besi]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Kain ini kasar, tidak lembut.
+    source_text: Batik ini asli dari Solo.
     answers_meaning:
-      ar_eg: [القماش ده خشن، مش ناعم, القماشة دي خشنة مش ناعمة]
-      ar: [هذا القماش خشن، ليس ناعمًا, هذا القماش خشن لا ناعم]
-      en: ['This cloth is rough, not soft', 'This fabric is rough, not soft']
-    words: [kasar]
+      ar_eg: [الباتيك ده أصلي من سولو, دا باتيك أصلي من سولو]
+      ar: [هذا الباتيك أصلي من سولو, هذا باتيك أصلي من سولو]
+      en: ['This batik is genuine, from Solo', This is genuine batik from Solo]
+    words: [asli]
   - id: e09
     type: speaking
-    text: Jalan ini sempit, tapi jalan itu lebar.
+    text: 'Gendang ini unik: lebar dan tebal.'
     meaning:
-      ar_eg: الشارع ده ضيق، بس ده عريض.
-      ar: هذا الشارع ضيّق وذاك عريض.
-      en: This road is narrow, but that one is wide.
-    words: [sempit, lebar]
+      ar_eg: 'الطبلة دي فريدة: عريضة وتخينة.'
+      ar: 'هذا الطبل فريد: عريض وسميك.'
+      en: 'This drum is unique: wide and thick.'
+    words: [unik, lebar, tebal]
   - id: e10
     type: multiple_choice
     question: Pintu itu dari ___, jadi berat sekali.
-    options: [besi, plastik, bambu]
+    options: [besi, plastik, kasar]
     answer: 0
     explain:
       ar_eg: 'الحديد تقيل: besi.'
@@ -167,15 +164,15 @@ exercises:
 dialogue:
   lines:
     - speaker: Mohamed
-      text: Gendang ini lebih besar daripada gendang itu.
-      ar_eg: الطبلة دي أكبر من الطبلة دي.
-      ar: هذا الطبل أكبر من ذاك.
-      en: This drum is bigger than that one.
+      text: Gendang ini lebih lebar daripada gendang itu.
+      ar_eg: الطبلة دي أعرض من الطبلة دي.
+      ar: هذا الطبل أعرض من ذاك.
+      en: This drum is wider than that one.
     - speaker: Penjual
-      text: Ya, Pak. Yang ini dari kayu, tidak dari plastik.
-      ar_eg: أيوه يا أستاذ. دي خشب، مش بلاستيك.
-      ar: نعم يا سيدي، هذا من الخشب لا البلاستيك.
-      en: Yes, sir. This one's wood, not plastic.
+      text: Ya, Pak. Yang ini asli dari Bali, tidak dari plastik.
+      ar_eg: أيوه يا أستاذ. دي أصلية من بالي، مش بلاستيك.
+      ar: نعم يا سيدي، هذا أصلي من بالي، ليس من البلاستيك.
+      en: Yes, sir. This one's genuine, from Bali, not plastic.
     - speaker: Mohamed
       text: Yang plastik lebih murah?
       ar_eg: والبلاستيك أرخص؟
@@ -187,41 +184,26 @@ dialogue:
       ar: أرخص، لكن صوته أقلّ جودة.
       en: Cheaper, but it doesn't sound as good.
     - speaker: Mohamed
-      text: Tokonya luas sekali!
-      ar_eg: المحل واسع أوي!
-      ar: المتجر واسع جدًا!
-      en: The shop is so spacious!
+      text: Dan kursi besi itu? Unik sekali!
+      ar_eg: والكرسي الحديد ده؟ فريد جدًا!
+      ar: وذلك الكرسي الحديدي؟ فريد جدًا!
+      en: And that iron chair? It's so unusual!
     - speaker: Penjual
-      text: Pintunya sempit, tapi di dalam luas!
-      ar_eg: الباب ضيق، بس جوه واسع!
-      ar: بابه ضيّق، لكنه واسع من الداخل!
-      en: The door's narrow, but inside it's roomy!
+      text: Itu antik, Pak. Dari tahun 1930.
+      ar_eg: دا أنتيكة يا أستاذ. من سنة ١٩٣٠.
+      ar: إنه أثري يا سيدي، من عام ١٩٣٠.
+      en: That's an antique, sir. From 1930.
 new_words:
   - word: tebal
     pos: adjective
     ar_eg: تخين
     ar: سميك
     en: thick
-  - word: tipis
-    pos: adjective
-    ar_eg: رفيع، خفيف
-    ar: رقيق
-    en: thin
   - word: lebar
     pos: adjective
     ar_eg: عريض
     ar: عريض
     en: wide
-  - word: sempit
-    pos: adjective
-    ar_eg: ضيق
-    ar: ضيّق
-    en: narrow
-  - word: luas
-    pos: adjective
-    ar_eg: واسع
-    ar: واسع
-    en: spacious, wide (area)
   - word: kasar
     pos: adjective
     ar_eg: خشن
@@ -237,6 +219,22 @@ new_words:
     ar_eg: بلاستيك
     ar: بلاستيك
     en: plastic
+  - word: asli
+    pos: adjective
+    arabic: أصلي
+    ar_eg: أصلي
+    ar: أصلي
+    en: genuine, original
+  - word: antik
+    pos: adjective
+    ar_eg: أنتيكة
+    ar: أثري، عتيق
+    en: antique
+  - word: unik
+    pos: adjective
+    ar_eg: فريد، مختلف
+    ar: فريد
+    en: unique
 review:
   status: draft
   verified: false

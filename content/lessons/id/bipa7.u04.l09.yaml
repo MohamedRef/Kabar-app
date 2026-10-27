@@ -1,172 +1,240 @@
 schema: kabar.lesson/v1
 id: bipa7.u04.l09
 language: id
-title: Tebak logat
+title: Bahasa yang terancam
 can_do:
-  ar_eg: تخمّن المتكلّم منين من كلمة أو اتنين، وتعرف تقول إنك غلطت بلطف.
-  ar: أن تخمّن موطن المتكلّم من كلمة أو اثنتين، وتعترف بالخطأ بلطف.
-  en: Guess where a speaker is from from a word or two, and own a wrong guess gracefully.
+  ar_eg: تتكلّم عن لغات محلية بتموت وعن طرق إحيائها.
+  ar: أن تتحدّث عن لغات محلية تحتضر وعن سبل إحيائها.
+  en: Talk about dying local languages and how to revive them.
 slides:
-  - title: Kedengarannya dari timur
+  - title: Menjaga bahasa daerah
     body:
       ar_eg: |
-        لعبة النهارده: اسمع وخمّن.
-        - Kedengarannya dia dari Ambon. ← شكله (من صوته) من أمبون.
-        - Petunjuknya «beta» dan «seng». ← الدليل «beta» و«seng».
-        ولو غلطت؟ Maaf, saya salah tebak! (آسف، خمّنت غلط!)
-        ملخّص الدلايل:
-        - sa / ko / tra ← بابوا
-        - beta / ale / seng ← أمبون
-        - ngana / torang / nyanda ← مانادو
-        - gue / lu ← جاكرتا
+        إندونيسيا فيها حوالي 718 لغة محلية، وكتير منها terancam punah.
+        السبب غالبًا إن pewarisan (تسليم اللغة من الأهل للعيال) بيقف، والـ generasi muda بيكلّموا الإندونيسي بس.
+        العيلة الـ dwibahasa (بلغتين) بتحمي اللغة: المحلية في البيت والإندونيسي في المدرسة.
+        revitalisasi = إحياء اللغة: دروس وأغاني وقواميس.
+        sosiolinguistik بيدرس اللغة في المجتمع. dialektologi بيدرس اللهجات،
+        وبيرسم isoglos = خط على الخريطة: من هنا الناس بتقول كلمة، ومن هناك بيقولوا تانية.
       ar: |
-        لعبة اليوم: استمع وخمّن.
-        - Kedengarannya dia dari Ambon. ← يبدو من صوته أنّه من أمبون.
-        - Petunjuknya «beta» dan «seng». ← القرينة «beta» و«seng».
-        وإن أخطأت؟ Maaf, saya salah tebak! (عذرًا، أخطأتُ التخمين!)
-        خلاصة القرائن:
-        - sa / ko / tra ← بابوا
-        - beta / ale / seng ← أمبون
-        - ngana / torang / nyanda ← مانادو
-        - gue / lu ← جاكرتا
+        في إندونيسيا نحو 718 لغة محلية، وكثير منها terancam punah.
+        والسبب غالبًا توقّف pewarisan (نقل اللغة من الأهل إلى الأبناء)، فيتكلّم generasi muda الإندونيسية وحدها.
+        والأسرة dwibahasa (ثنائية اللغة) تحمي اللغة: المحلية في البيت والإندونيسية في المدرسة.
+        revitalisasi = إحياء اللغة بالدروس والأغاني والمعاجم.
+        يدرس sosiolinguistik اللغة في المجتمع، ويدرس dialektologi اللهجات،
+        ويرسم isoglos: خطًّا على الخريطة يفصل بين من يقول كلمة ومن يقول أخرى.
       en: |
-        Today's game: listen and guess.
-        - Kedengarannya dia dari Ambon. → He sounds like he's from Ambon.
-        - Petunjuknya «beta» dan «seng». → The clue is «beta» and «seng».
-        Wrong? Maaf, saya salah tebak! (Sorry, wrong guess!)
-        The clues:
-        - sa / ko / tra → Papua
-        - beta / ale / seng → Ambon
-        - ngana / torang / nyanda → Manado
-        - gue / lu → Jakarta
+        Indonesia has about 718 regional languages, and many are terancam punah (endangered).
+        Usually pewarisan (passing the language from parents to children) stops, and the generasi muda speak only Indonesian.
+        A dwibahasa (bilingual) family protects the language: the local one at home, Indonesian at school.
+        revitalisasi = reviving a language with classes, songs and dictionaries.
+        sosiolinguistik studies language in society. dialektologi studies dialects,
+        and draws an isoglos: a line on the map where one word gives way to another.
+    examples:
+      - text: Bahasa itu terancam punah karena penuturnya tinggal sedikit.
+        ar_eg: اللغة دي مهدّدة بالانقراض علشان اللي بيتكلّموها بقوا قليلين.
+        ar: تلك اللغة مهدّدة بالانقراض لقلّة متحدّثيها.
+        en: That language is endangered because few speakers are left.
+      - text: Anak-anak di desa ini dwibahasa sejak kecil.
+        ar_eg: العيال في القرية دي بيتكلّموا لغتين من وهما صغيرين.
+        ar: أطفال هذه القرية ثنائيّو اللغة منذ الصغر.
+        en: Children in this village are bilingual from an early age.
+      - text: Program revitalisasi mengajak generasi muda bernyanyi dalam bahasa ibu.
+        ar_eg: برنامج الإحياء بيخلّي الشباب يغنّوا بلغتهم الأم.
+        ar: يدعو برنامج الإحياء جيل الشباب إلى الغناء بلغتهم الأمّ.
+        en: The revival programme gets young people singing in their mother tongue.
 exercises:
   - id: e01
-    type: listen
-    text: Ngana so makan? Torang mau pigi ke pasar.
-    question:
-      ar_eg: المتكلّم شكله منين؟
-      ar: من أين يبدو المتكلّم؟
-      en: Where does the speaker seem to be from?
-    options:
-      - من بابوا.
-      - من مانادو.
-      - من أمبون.
-    answer: 1
-    words: [ngana, torang, menebak]
+    type: match_pairs
+    pairs:
+      - text: terancam punah
+        ar_eg: مهدّد بالانقراض
+        ar: مهدّد بالانقراض
+        en: endangered
+      - text: revitalisasi
+        ar_eg: إحياء
+        ar: إحياء، إنعاش
+        en: revitalisation
+      - text: pewarisan
+        ar_eg: توريث / تسليم للجيل اللي بعده
+        ar: التوريث، النقل بين الأجيال
+        en: passing down, inheritance
+      - text: generasi muda
+        ar_eg: الجيل الجديد / الشباب
+        ar: جيل الشباب
+        en: the younger generation
+    words: [terancam punah, revitalisasi, pewarisan, generasi muda]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: dwibahasa
+        ar_eg: بيتكلّم لغتين
+        ar: ثنائي اللغة
+        en: bilingual
+      - text: sosiolinguistik
+        ar_eg: علم اللغة الاجتماعي
+        ar: علم اللغة الاجتماعي
+        en: sociolinguistics
+      - text: dialektologi
+        ar_eg: علم اللهجات
+        ar: علم اللهجات
+        en: dialectology
+      - text: isoglos
+        ar_eg: خط على الخريطة بيفصل بين لهجتين
+        ar: خطّ تماثل لغوي
+        en: isogloss
+    words: [dwibahasa, sosiolinguistik, dialektologi, isoglos]
+  - id: e03
+    type: listen
+    text: Garis isoglos ini memisahkan desa yang bilang "sa" dan yang bilang "sy".
+    question:
+      ar_eg: الخط ده بيفصل بين إيه؟
+      ar: بمَ يفصل هذا الخطّ؟
+      en: What does this line separate?
+    options: [خط بين لهجتين, عالم اللهجات, برنامج إحياء]
+    answer: 0
+    meaning:
+      ar_eg: الخط ده بيفصل بين القرى اللي بتقول «سا» واللي بتقول حاجة تانية.
+      ar: يفصل هذا الخطّ بين قرى تقول «sa» وأخرى تقول غيرها.
+      en: This isogloss separates villages that say 'sa' from the others.
+    words: [isoglos]
+  - id: e04
+    type: fill_blank
+    sentence: Tanpa ___ dari orang tua ke anak, bahasa itu akan hilang.
+    meaning:
+      ar_eg: من غير ___ من الأهل للعيال، اللغة دي هتختفي.
+      ar: من دون ___ من الآباء إلى الأبناء ستندثر تلك اللغة.
+      en: Without ___ from parents to children, the language will vanish.
+    options: [pewarisan, isoglos, dialektologi]
+    answers: [pewarisan]
+    words: [pewarisan, isoglos, dialektologi]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: «Kedengarannya dia dari Jakarta» معناها إيه؟
-      ar: ما معنى «Kedengarannya dia dari Jakarta»؟
-      en: What does "Kedengarannya dia dari Jakarta" mean?
-    options:
-      - هو رايح جاكرتا.
-      - هو مش بيسمع كويس.
-      - من صوته شكله من جاكرتا.
-    answer: 2
-    words: [kedengarannya]
-  - id: e03
+      ar_eg: «sosiolinguistik» بيدرس إيه؟
+      ar: ماذا يدرس «sosiolinguistik»؟
+      en: What does 'sosiolinguistik' study?
+    options: [Bunyi binatang., Hubungan bahasa dengan masyarakat., Sejarah kerajaan.]
+    answer: 1
+    explain:
+      ar_eg: علم اللغة الاجتماعي = اللغة جوّه المجتمع.
+      ar: علم اللغة الاجتماعي يدرس اللغة في المجتمع.
+      en: Sociolinguistics = language in society.
+    words: [sosiolinguistik, dialektologi]
+  - id: e06
     type: fill_blank
-    sentence: Maaf, saya ___! Ternyata dia dari Manado, bukan dari Ambon.
+    sentence: Sekarang ___ lebih sering memakai bahasa Indonesia di rumah.
     meaning:
-      ar_eg: آسف، خمّنت غلط! طلع من مانادو، مش من أمبون.
-      ar: عذرًا، أخطأت التخمين! تبيّن أنّه من مانادو لا من أمبون.
-      en: Sorry, wrong guess! Turns out he's from Manado, not Ambon.
-    options: [salah tebak, kedengarannya, petunjuk]
-    answers: [salah tebak]
-    words: [salah tebak]
-  - id: e04
-    type: listen
-    text: Beta seng tahu, ale tanya dia saja.
-    question:
-      ar_eg: إيه الدليل على المنطقة؟
-      ar: ما القرينة على المنطقة؟
-      en: What's the clue to the region?
-    options:
-      - «beta» و«seng»، يبقى أمبون.
-      - «tahu»، يبقى جاكرتا.
-      - «dia»، يبقى بابوا.
-    answer: 0
-    words: [beta, seng, petunjuk]
-  - id: e05
+      ar_eg: دلوقتي ___ بيستعملوا الإندونيسي في البيت أكتر.
+      ar: صار ___ يستعملون الإندونيسية في البيت أكثر.
+      en: Now the ___ use Indonesian at home more often.
+    options: [generasi muda, revitalisasi, terancam punah]
+    answers: [generasi muda]
+    words: [generasi muda, revitalisasi, terancam punah]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: من صوته شكله من بابوا.
-      ar: يبدو من صوته أنّه من بابوا.
-      en: He sounds like he's from Papua.
-    answer: Kedengarannya dia dari Papua.
-    distractors: [salah, tebak]
-    words: [kedengarannya]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: خمّنت غلط تاني مرة!
-      ar: أخطأت التخمين مرّة أخرى!
-      en: I guessed wrong again!
-    answers:
-      - Saya salah tebak lagi!
-      - Aku salah tebak lagi!
-      - Lagi-lagi saya salah tebak!
-    words: [salah tebak]
-  - id: e07
-    type: speaking
-    text: Kedengarannya Ibu dari Manado. Petunjuknya kata "nyanda".
-    meaning:
-      ar_eg: من صوت حضرتك شكلك من مانادو. الدليل كلمة «nyanda».
-      ar: يبدو من صوتك يا سيّدتي أنّك من مانادو، والقرينة كلمة «nyanda».
-      en: You sound like you're from Manado, ma'am. The clue is the word "nyanda".
-    words: [kedengarannya, nyanda, petunjuk]
+      ar_eg: هي بتدرس علم اللهجات في جامعة باتيمورا.
+      ar: تدرس علم اللهجات في جامعة باتيمورا.
+      en: She studies dialectology at Pattimura University.
+    answer: Dia belajar dialektologi di Universitas Pattimura.
+    distractors: [isoglos, pewarisan]
+    words: [dialektologi]
   - id: e08
-    type: dictation
-    text: Tidak apa-apa salah tebak. Logat itu mirip sekali.
-    meaning:
-      ar_eg: مش مشكلة إنك تخمّن غلط. اللهجات دي فعلًا شبه بعض.
-      ar: لا بأس بالخطأ في التخمين، فاللهجتان متشابهتان فعلًا.
-      en: It's fine to guess wrong. Those accents really are alike.
-    words: [salah tebak]
+    type: translate
+    direction: from_target
+    source_text: Keluarga dwibahasa membantu revitalisasi bahasa daerah.
+    answers_meaning:
+      ar_eg: [العيلات اللي بتتكلّم لغتين بتساعد في إحياء اللغات المحلية, الأسر ثنائية اللغة بتساعد تحيي لغة المنطقة]
+      ar: [تساعد الأسر ثنائية اللغة على إحياء اللغات المحلية, تسهم الأسرة الثنائية اللغة في إنعاش اللغة المحلية]
+      en: [Bilingual families help revive regional languages, Bilingual households support the revival of the local language]
+    words: [dwibahasa, revitalisasi]
   - id: e09
     type: speaking
-    text: Dia bilang "sa tra tahu". Kedengarannya dia dari Papua.
+    text: Bahasa nenek saya terancam punah.
     meaning:
-      ar_eg: قال «sa tra tahu». من صوته شكله من بابوا.
-      ar: قال «sa tra tahu»، فيبدو أنّه من بابوا.
-      en: He said "sa tra tahu". He sounds like he's from Papua.
-    words: [kedengarannya, sa, tra]
+      ar_eg: لغة جدّتي مهدّدة بالانقراض.
+      ar: لغة جدّتي مهدّدة بالانقراض.
+      en: My grandmother's language is endangered.
+    words: [terancam punah]
+  - id: e10
+    type: multiple_choice
+    question: Apa yang paling membantu bahasa yang terancam punah?
+    options: [Hanya memakai bahasa asing., Membuang kamus lama., Pewarisan di rumah dan program revitalisasi.]
+    answer: 2
+    explain:
+      ar_eg: اللغة بتعيش لما تتورّث في البيت وتتحيا بالبرامج.
+      ar: تحيا اللغة بالتوريث في البيت وببرامج الإحياء.
+      en: A language survives through home transmission and revival work.
+    words: [pewarisan, revitalisasi, terancam punah, generasi muda, dwibahasa, sosiolinguistik, isoglos]
 dialogue:
-  title: Kuis di atas perahu
   lines:
-    - speaker: Om Nus
-      text: Tebak, Mohamed. Bapak itu bilang, "Torang samua basudara." Dari mana dia?
-      ar_eg: خمّن يا محمد. الراجل ده قال «Torang samua basudara». هو منين؟
-      ar: خمّن يا محمد. قال ذلك الرجل «Torang samua basudara»، فمن أين هو؟
-      en: Guess, Mohamed. That man said, "Torang samua basudara." Where's he from?
+    - speaker: Tante Grace
+      text: Di kampung saya, hanya orang tua yang masih berbahasa daerah.
+      ar_eg: في قريتي، الكبار بس اللي لسه بيتكلّموا اللغة المحلية.
+      ar: في قريتي لا يتكلّم اللغة المحلية إلا الكبار.
+      en: In my village, only the old people still speak the local language.
     - speaker: Mohamed
-      text: Basudara… kedengarannya dari Ambon!
-      ar_eg: basudara… شكله من أمبون!
-      ar: basudara… يبدو أنّه من أمبون!
-      en: Basudara… sounds like Ambon!
-    - speaker: Om Nus
-      text: Salah tebak! Petunjuknya "torang". Orang Ambon bilang "katong".
-      ar_eg: خمّنت غلط! الدليل «torang». أهل أمبون بيقولوا «katong».
-      ar: أخطأت! القرينة «torang»، وأهل أمبون يقولون «katong».
-      en: Wrong guess! The clue is "torang". Ambon people say "katong".
+      text: Berarti bahasanya terancam punah, Tante?
+      ar_eg: يبقى اللغة مهدّدة بالانقراض يا طنط؟
+      ar: أي إنّ اللغة مهدّدة بالانقراض يا خالة؟
+      en: So the language is endangered, Tante?
+    - speaker: Tante Grace
+      text: Ya. Pewarisannya putus. Generasi muda malu memakainya.
+      ar_eg: أيوه. التوريث اتقطع. والشباب مكسوفين يتكلّموها.
+      ar: نعم، انقطع توريثها، والشباب يخجلون من استعمالها.
+      en: Yes. The passing-down has broken. Young people are embarrassed to use it.
     - speaker: Mohamed
-      text: Aduh! Jadi dia dari Manado. Om, satu lagi, ya!
-      ar_eg: يا خبر! يبقى من مانادو. يا عمّو، كمان واحدة!
-      ar: آه! إذن هو من مانادو. يا عمّ، واحدة أخرى!
-      en: Oops! So he's from Manado. Om, one more!
+      text: Di Mesir, banyak anak dwibahasa. Mereka bangga dengan dua bahasa.
+      ar_eg: في مصر، عيال كتير بيتكلّموا لغتين وفخورين بيهم.
+      ar: في مصر أطفال كثيرون ثنائيّو اللغة ويفخرون باللغتين.
+      en: In Egypt many kids are bilingual and proud of both languages.
+    - speaker: Tante Grace
+      text: 'Itu tujuan program revitalisasi kami: bangga, bukan malu.'
+      ar_eg: 'ده هدف برنامج الإحياء بتاعنا: فخر، مش كسوف.'
+      ar: 'هذا هدف برنامج الإحياء لدينا: الفخر لا الخجل.'
+      en: 'That''s our revival programme''s aim: pride, not shame.'
 new_words:
-  - word: kedengarannya
-    pos: adverb
-    ar_eg: من صوته شكله…
-    ar: يبدو من الصوت أنّ…
-    en: it sounds like, by the sound of it
-  - word: salah tebak
-    pos: phrase
-    ar_eg: خمّن غلط
-    ar: أخطأ التخمين
-    en: wrong guess, to guess wrong
+  - word: terancam punah
+    pos: adjective
+    ar_eg: مهدّد بالانقراض
+    ar: مهدّد بالانقراض
+    en: endangered
+  - word: revitalisasi
+    pos: noun
+    ar_eg: إحياء
+    ar: إحياء، إنعاش
+    en: revitalisation
+  - word: pewarisan
+    pos: noun
+    ar_eg: توريث / تسليم للجيل اللي بعده
+    ar: التوريث، النقل بين الأجيال
+    en: passing down, inheritance
+  - word: generasi muda
+    pos: noun
+    ar_eg: الجيل الجديد / الشباب
+    ar: جيل الشباب
+    en: the younger generation
+  - word: dwibahasa
+    pos: adjective
+    ar_eg: بيتكلّم لغتين
+    ar: ثنائي اللغة
+    en: bilingual
+  - word: sosiolinguistik
+    pos: noun
+    ar_eg: علم اللغة الاجتماعي
+    ar: علم اللغة الاجتماعي
+    en: sociolinguistics
+  - word: dialektologi
+    pos: noun
+    ar_eg: علم اللهجات
+    ar: علم اللهجات
+    en: dialectology
+  - word: isoglos
+    pos: noun
+    ar_eg: خط على الخريطة بيفصل بين لهجتين
+    ar: خطّ تماثل لغوي
+    en: isogloss
 review:
   status: draft
   verified: false
