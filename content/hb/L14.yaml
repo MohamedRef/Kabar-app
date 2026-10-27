@@ -1,0 +1,1798 @@
+schema: batna.content/v1
+lecture: hb.L14
+title: Liver in Systemic Disease and Pregnancy
+author: Dr. Mohammed Elshater
+book:
+  chapter: 1
+  pages:
+  - 252
+  - 273
+topics:
+- id: overview
+  title: Abnormal LFTs and systemic disease
+- id: heart
+  title: Heart and liver interactions
+- id: ctd
+  title: Collagen vascular diseases and the liver
+- id: rheum-drugs
+  title: Rheumatologic drugs and the liver
+- id: heme
+  title: Hematolymphoid diseases and EMH
+- id: sepsis
+  title: Sepsis, hypoxic hepatitis and cholestatic dysfunction
+- id: ibd
+  title: Liver in inflammatory bowel disease
+- id: granuloma
+  title: Hepatic granulomas
+- id: preg-general
+  title: 'Pregnancy: classification, labs and imaging'
+- id: preg-unique
+  title: Liver diseases unique to pregnancy
+- id: preg-coincident
+  title: Coincident and pre-existing liver disease in pregnancy
+- id: preg-lt
+  title: Pregnancy after liver transplantation
+items:
+- id: hb.L14.001
+  kind: card
+  topic: overview
+  front: When should abnormal LFTs be blamed on a systemic disease?
+  back: When screening serology and imaging find no liver cause in a patient who has a systemic disease. The systemic
+    disease is then treated primarily.
+  src:
+    page: 252
+  status: unverified
+- id: hb.L14.002
+  kind: enumerate
+  topic: overview
+  prompt: Enumerate the groups of systemic disease that involve the liver (6 in the book).
+  points:
+  - Cardiovascular diseases
+  - Collagen vascular diseases
+  - Hematolymphoid diseases
+  - Systemic infection and sepsis
+  - Chronic inflammatory bowel disease
+  - Granuloma formation
+  pass: 5
+  src:
+    page: 252
+  status: unverified
+- id: hb.L14.003
+  kind: enumerate
+  topic: heart
+  prompt: Outline the 3 ways the heart and liver interact.
+  points:
+  - 'Heart causes liver disease: heart failure → hypoxic hepatopathy, congestive hepatopathy'
+  - 'Liver causes cardiovascular disease: cirrhosis → cirrhotic cardiomyopathy; NAFLD → CVD and ventricular dysfunction'
+  - 'Common conditions affect both: chronic alcoholism, infections (HCV, HIV, CMV, malaria, dengue, amebiasis, sepsis),
+    systemic disease (sarcoidosis, SLE, Graves, hemochromatosis, Wilson, amyloidosis)'
+  pass: 3
+  src:
+    page: 253
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.004
+  kind: card
+  topic: heart
+  front: What are the 2 fundamental mechanisms of cardiac hepatopathy?
+  back: 'Reduced arterial perfusion (forward failure: hypoxic hepatopathy) and passive congestion from raised systemic
+    venous pressure (backward failure: congestive hepatopathy).'
+  src:
+    page: 254
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.005
+  kind: cloze
+  topic: heart
+  text: Arterial hypoperfusion predominates in {{c1::acute}} heart failure (hypoxic hepatopathy); passive congestion
+    prevails in {{c2::chronic}} heart failure (congestive hepatopathy).
+  src:
+    page: 254
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.006
+  kind: card
+  topic: heart
+  front: Clinical features of congestive hepatopathy?
+  back: Often asymptomatic. Sometimes jaundice, ascites, hepatomegaly with hepatojugular reflux, and a pulsatile
+    liver.
+  src:
+    page: 255
+  status: unverified
+- id: hb.L14.007
+  kind: cloze
+  topic: heart
+  text: Congestive hepatopathy gives a mainly {{c1::cholestatic}} pattern (raised GGT, ALP, bilirubin), with transaminases
+    {{c2::normal or moderately raised}} unless a forward component coexists.
+  src:
+    page: 255
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.008
+  kind: card
+  topic: heart
+  front: Define cirrhotic cardiomyopathy.
+  back: A syndrome in cirrhosis of an abnormal, blunted cardiac response to physiological, pathological or drug
+    stress, with normal or increased cardiac output and contractility at rest.
+  src:
+    page: 256
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.009
+  kind: cloze
+  topic: heart
+  text: Up to {{c1::50%}} of cirrhotics undergoing LT show cardiac dysfunction, and {{c2::7–21%}} of deaths after
+    OLT are from overt heart failure.
+  src:
+    page: 256
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L14.010
+  kind: enumerate
+  topic: heart
+  prompt: Mention the criteria of cirrhotic cardiomyopathy.
+  points:
+  - Systolic dysfunction (blunted rise in cardiac output with exercise, volume or drugs) and/or resting LVEF < 55%
+  - Diastolic dysfunction
+  - 'Supportive: electrophysiological abnormalities, abnormal chronotropic response, electromechanical dyssynchrony,
+    prolonged QT, enlarged left atrium, increased myocardial mass, raised BNP and troponins'
+  pass: 3
+  src:
+    page: 256
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.011
+  kind: cloze
+  topic: heart
+  text: In cirrhotic cardiomyopathy, systolic dysfunction includes a resting LVEF {{c1::< 55%}}; a key supportive
+    ECG finding is a {{c2::prolonged QT interval}}.
+  src:
+    page: 256
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L14.012
+  kind: card
+  topic: heart
+  front: Which liver disease, besides cirrhosis, is linked to cardiovascular disease and heart failure?
+  back: Nonalcoholic fatty liver disease (NAFLD).
+  src:
+    page: 255
+  status: unverified
+  update:
+    text: NAFLD is now called MASLD (metabolic dysfunction-associated steatotic liver disease).
+    ref: Multisociety Delphi consensus (AASLD/EASL/ALEH), 2023
+- id: hb.L14.013
+  kind: card
+  topic: ctd
+  front: Liver involvement in connective tissue disease is usually what, and what must be excluded first?
+  back: Common and usually asymptomatic (fulminant cases are reported). Exclude drug toxicity, viral hepatitis and
+    autoimmune liver disease first.
+  src:
+    page: 257
+  status: unverified
+- id: hb.L14.014
+  kind: cloze
+  topic: ctd
+  text: Among collagen diseases, ALT is highest in {{c1::adult-onset Still's disease}}, while ALP and GGT are highest
+    in {{c2::vasculitis}}.
+  src:
+    page: 257
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.015
+  kind: cloze
+  topic: ctd
+  text: In RA, transaminases and bilirubin are usually normal, but ALP is raised in {{c1::18–46%}} and GGT in {{c2::23–77%}},
+    correlating with {{c3::disease activity}}.
+  src:
+    page: 257
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L14.016
+  kind: card
+  topic: ctd
+  front: What are the 2 patterns of liver dysfunction in rheumatic disease?
+  back: Predominantly hepatocellular (raised ALT, AST) and cholestatic (raised ALP, GGT). Enzyme rises are usually
+    mild and track disease activity.
+  src:
+    page: 257
+  status: unverified
+- id: hb.L14.017
+  kind: enumerate
+  topic: ctd
+  prompt: Besides nonspecific changes, what liver lesions may be found in RA and its variants (Still's, Felty's)?
+  points:
+  - Primary biliary cirrhosis
+  - Autoimmune chronic hepatitis
+  - Nodular regenerative hyperplasia
+  - Necrotizing arteritis
+  - Amyloidosis
+  - Rheumatoid nodules in the liver
+  pass: 4
+  src:
+    page: 258
+  status: unverified
+- id: hb.L14.018
+  kind: cloze
+  topic: ctd
+  text: Liver dysfunction occurs in {{c1::8.6–59.7%}} of SLE patients; ALT is raised in {{c2::21%}}.
+  src:
+    page: 258
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L14.019
+  kind: card
+  topic: ctd
+  front: What is lupus hepatitis, and how does it behave?
+  back: SLE-related hypertransaminasemia with ALT fluctuating with SLE activity. Usually subclinical, responds well
+    to moderate-high dose prednisone, and does not progress to end-stage liver disease.
+  src:
+    page: 258
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.020
+  kind: card
+  topic: ctd
+  front: Most common liver histology in SLE?
+  back: Steatosis, which may not be related to corticosteroid therapy.
+  src:
+    page: 258
+  status: unverified
+- id: hb.L14.021
+  kind: card
+  topic: ctd
+  front: Why must AIH/SLE overlap be distinguished from lupus hepatitis?
+  back: AIH can progress to fulminant hepatic failure or cirrhosis, while lupus hepatitis is benign and steroid-responsive.
+    (Concomitant SLE and AIH is uncommon.)
+  src:
+    page: 258
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.022
+  kind: enumerate
+  topic: ctd
+  prompt: Mention the clinical features of reactive hemophagocytic syndrome.
+  points:
+  - High fever
+  - Lymphadenopathy
+  - Hepatosplenomegaly
+  - Pancytopenia
+  - Elevated liver enzymes
+  - Hyperferritinemia
+  - Coagulopathy
+  pass: 5
+  src:
+    page: 259
+  status: unverified
+- id: hb.L14.023
+  kind: card
+  topic: ctd
+  front: Mechanism of reactive hemophagocytic syndrome, and its triggers?
+  back: Sustained macrophage activation driven by cytokines such as IL-6 and TNF-α. Triggered by neoplasms, viral
+    infections and autoimmune disease including SLE.
+  src:
+    page: 259
+  status: unverified
+- id: hb.L14.024
+  kind: cloze
+  topic: ctd
+  text: Polyarteritis nodosa may cause necrotizing arteritis of the liver leading to {{c1::infarction}}; polymyalgia
+    rheumatica-giant cell arteritis may show {{c2::granulomatous arteritis}} in the liver.
+  src:
+    page: 259
+  status: unverified
+- id: hb.L14.025
+  kind: table
+  topic: ctd
+  title: Liver damage in connective tissue disease (selected)
+  columns:
+  - Disease
+  - Markers
+  - Histology
+  rows:
+  - - Antiphospholipid syndrome
+    - aPL, aCL; Budd-Chiari; hepatosplenomegaly; jaundice
+    - Nodular regenerative hyperplasia
+  - - Felty's syndrome
+    - Raised ALT and ALP; hepatomegaly; portal hypertension
+    - Kupffer cell hyperplasia, steatosis, mild portal fibrosis, NRH
+  - - Rheumatoid arthritis
+    - Raised ALP and GGT
+    - Kupffer cell hyperplasia, steatosis
+  - - Sjögren's syndrome
+    - Raised enzymes; jaundice; AMA, anti-Ro/La
+    - PBC, chronic active hepatitis, cryptogenic cirrhosis
+  - - SLE
+    - Anti-dsDNA; hepatomegaly; jaundice; raised ALT
+    - Steatosis, chronic active hepatitis
+  blanks:
+  - - 0
+    - 2
+  - - 2
+    - 1
+  - - 3
+    - 2
+  - - 4
+    - 2
+  src:
+    page: 260
+  status: unverified
+- id: hb.L14.026
+  kind: table
+  topic: rheum-drugs
+  title: Hepatotoxicity of rheumatologic drugs
+  columns:
+  - Hepatotoxic effect
+  - Drugs
+  rows:
+  - - Acute DILI, hepatocellular
+    - NSAIDs (diclofenac, sulindac, ibuprofen, ketoprofen, indomethacin); sulfasalazine, leflunomide
+  - - Acute DILI, cholestatic
+    - NSAIDs (sulindac, ibuprofen, piroxicam, naproxen, celecoxib); sulfasalazine, azathioprine
+  - - Nonalcoholic fatty liver
+    - Methotrexate
+  - - Ductopenic (vanishing bile duct) syndrome
+    - Azathioprine, gold salts
+  - - Nodular regenerative hyperplasia
+    - Azathioprine
+  - - Drug-induced autoimmune hepatitis
+    - Infliximab, diclofenac, indomethacin
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 1
+  - - 2
+    - 1
+  - - 3
+    - 1
+  - - 4
+    - 1
+  - - 5
+    - 1
+  src:
+    page: 259
+  status: unverified
+  tags:
+  - high-yield
+  - book-question
+- id: hb.L14.027
+  kind: card
+  topic: rheum-drugs
+  front: Which rheumatologic drug causes fatty liver (chronic drug-associated liver disease)?
+  back: Methotrexate.
+  src:
+    page: 259
+  status: unverified
+- id: hb.L14.028
+  kind: card
+  topic: rheum-drugs
+  front: Which 3 chronic liver lesions are linked to azathioprine in the book?
+  back: Cholestatic acute DILI, ductopenic (vanishing bile duct) syndrome and nodular regenerative hyperplasia.
+  src:
+    page: 259
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.029
+  kind: cloze
+  topic: rheum-drugs
+  text: 'Drug-induced autoimmune hepatitis from rheumatologic drugs: {{c1::infliximab}}, {{c2::diclofenac}} and
+    {{c3::indomethacin}}.'
+  src:
+    page: 259
+  status: unverified
+- id: hb.L14.030
+  kind: cloze
+  topic: rheum-drugs
+  text: 'Ductopenic (vanishing bile duct) syndrome: {{c1::azathioprine}} and {{c2::gold salts}}.'
+  src:
+    page: 259
+  status: unverified
+- id: hb.L14.031
+  kind: card
+  topic: heme
+  front: In liver disease, what drives bleeding risk and what drives thrombotic risk?
+  back: Bleeding is related to hemodynamic changes (portal pressure, venous congestion); thrombosis stems from changes
+    in the coagulation system.
+  src:
+    page: 260
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.032
+  kind: card
+  topic: heme
+  front: How do hematologic malignancies involve the liver?
+  back: Malignant cells infiltrate, giving abnormal LFTs with hepatosplenomegaly or multiple nodules; this may progress
+    to fulminant hepatic failure.
+  src:
+    page: 261
+  status: unverified
+- id: hb.L14.033
+  kind: enumerate
+  topic: heme
+  prompt: Mention how the treatment of hematologic diseases can harm the liver.
+  points:
+  - Iron overload from regular transfusion (congenital and acquired anemias)
+  - HBV reactivation with chemotherapy or immunosuppression (potentially fatal but preventable)
+  - Veno-occlusive disease (sinusoidal obstruction syndrome) after hematopoietic cell transplantation
+  pass: 3
+  src:
+    page: 261
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.034
+  kind: card
+  topic: heme
+  front: Which 2 enzymes are often raised in malignant hematologic disease with liver involvement?
+  back: ALP and LDH. Imaging (scintigraphy, US, CT, MRI) may still miss the liver involvement.
+  src:
+    page: 261
+  status: unverified
+- id: hb.L14.035
+  kind: card
+  topic: heme
+  front: Why may peritoneoscopy be needed in malignant lymphoma?
+  back: Lymphoma may involve the liver by sinusoidal infiltration, granulomas or nodules that imaging misses.
+  src:
+    page: 261
+  status: unverified
+- id: hb.L14.036
+  kind: card
+  topic: heme
+  front: When is liver involvement assumed in a malignant hematologic disorder?
+  back: An enlarged liver with high serum ALP or LDH plus raised CRP or ESR.
+  src:
+    page: 261
+  status: unverified
+- id: hb.L14.037
+  kind: card
+  topic: heme
+  front: Is hepatic extramedullary hemopoiesis normal?
+  back: Physiological in fetal and neonatal life; pathological in adults.
+  src:
+    page: 262
+  status: unverified
+- id: hb.L14.038
+  kind: enumerate
+  topic: heme
+  prompt: Enumerate the causes of extramedullary hemopoiesis in the adult liver.
+  points:
+  - Aplastic anemia
+  - Myeloproliferative disease
+  - Osteomyelofibrosis
+  - Myelomatosis
+  - Bone marrow carcinomatosis
+  - Osteopetrosis
+  pass: 4
+  src:
+    page: 262
+  status: unverified
+- id: hb.L14.039
+  kind: card
+  topic: heme
+  front: How does EMH cause portal hypertension, and what can worsen it?
+  back: Hepatomegaly and massive splenomegaly with portal hypertension and ascites; nodular regenerative hyperplasia
+    after obstruction of intrahepatic portal branches can add to it.
+  src:
+    page: 262
+  status: unverified
+- id: hb.L14.040
+  kind: enumerate
+  topic: sepsis
+  prompt: How may sepsis affect the liver directly?
+  points:
+  - Infection itself
+  - Injury from circulating toxins and the inflammatory/immune response
+  - Ischemia from septic shock
+  - Combination of these
+  pass: 3
+  src:
+    page: 262
+  status: unverified
+- id: hb.L14.041
+  kind: cloze
+  topic: sepsis
+  text: 'Infective liver lesions in sepsis: abscess, {{c1::cholangitis}}, {{c2::pylephlebitis}}, vasculitis, granulomas
+    and tissue necrosis.'
+  src:
+    page: 262
+  status: unverified
+- id: hb.L14.042
+  kind: card
+  topic: sepsis
+  front: Through which 2 functions does the liver shape the response to critical illness?
+  back: Clearing microbes and toxins from blood, and the acute phase reaction (liver-derived cytokines, mediators
+    and coagulation factors). Impaired clearance with endotoxin spillover can drive multiple organ failure.
+  src:
+    page: 263
+  status: unverified
+- id: hb.L14.043
+  kind: card
+  topic: sepsis
+  front: What are the 2 categories of new liver dysfunction in critical illness?
+  back: Hypoxic (ischemic) hepatitis and cholestatic liver dysfunction.
+  src:
+    page: 263
+  status: unverified
+- id: hb.L14.044
+  kind: enumerate
+  topic: sepsis
+  prompt: Mention the diagnostic triad of hypoxic (ischemic) hepatitis.
+  points:
+  - Setting of cardiac, respiratory or circulatory failure
+  - Abrupt rise in transaminases to at least 20 × ULN
+  - Exclusion of other causes of acute necrosis, especially viral or drug-induced
+  pass: 3
+  src:
+    page: 263
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.045
+  kind: cloze
+  topic: sepsis
+  text: In hypoxic hepatitis, transaminases rise abruptly to at least {{c1::20×}} ULN, for a {{c2::very short}}
+    time, followed by coagulopathy.
+  src:
+    page: 263
+    quote: abrupt increase in serum transaminases reaching at least 20× the upper limit of normal
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L14.046
+  kind: card
+  topic: sepsis
+  front: What is the prognostic meaning of jaundice after hypoxic hepatitis?
+  back: Significant jaundice follows in a minority and carries a higher risk of complications and death.
+  src:
+    page: 263
+  status: unverified
+- id: hb.L14.047
+  kind: cloze
+  topic: sepsis
+  text: Cholestatic liver dysfunction in ICU is accepted with bilirubin > {{c1::2–3 mg/dL}} and ALP and GGT {{c2::2–3
+    times}} normal.
+  src:
+    page: 264
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L14.048
+  kind: card
+  topic: sepsis
+  front: How does cholestatic liver dysfunction of critical illness differ in onset from hypoxic hepatitis?
+  back: It is insidious, appearing days after ICU admission with progressively rising bilirubin, ALP and GGT, from
+    altered hepatobiliary transport.
+  src:
+    page: 263
+  status: unverified
+- id: hb.L14.049
+  kind: enumerate
+  topic: sepsis
+  prompt: Mention the clinical risk factors for cholestatic liver dysfunction in critical illness.
+  points:
+  - Sepsis (endotoxemia and cytokine response)
+  - Parenteral nutrition
+  - Hyperglycemia
+  - Superadded drug-induced cholestasis
+  pass: 3
+  src:
+    page: 264
+  status: unverified
+- id: hb.L14.050
+  kind: card
+  topic: sepsis
+  front: How do cytokines cause cholestasis in sepsis?
+  back: TNF-α, IL-6 and nitric oxide inhibit canalicular excretion of conjugated bilirubin. This happens with gram-negative
+    (E. coli, Klebsiella) and gram-positive (S. aureus) infection alike.
+  src:
+    page: 264
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.051
+  kind: enumerate
+  topic: ibd
+  prompt: Enumerate the hepatobiliary diseases that accompany ulcerative colitis and Crohn's disease.
+  points:
+  - Fatty liver
+  - Primary sclerosing cholangitis
+  - Chronic hepatitis
+  - Cirrhosis
+  - Hepatobiliary disease
+  pass: 4
+  src:
+    page: 264
+  status: unverified
+- id: hb.L14.052
+  kind: cloze
+  topic: ibd
+  text: The most common liver histological abnormality in IBD is {{c1::steatosis}}, in up to {{c2::50%}}.
+  src:
+    page: 264
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L14.053
+  kind: card
+  topic: ibd
+  front: Causes of severe steatosis in IBD, and does colectomy cure it?
+  back: Malnutrition, anemia and toxemia. It may persist after colectomy (and is seen with ileostomy).
+  src:
+    page: 264
+  status: unverified
+- id: hb.L14.054
+  kind: card
+  topic: ibd
+  front: What worsens fatty change in IBD and should be avoided?
+  back: Long-term IV infusion of high-calorie nutrients and a high-fat diet.
+  src:
+    page: 265
+  status: unverified
+- id: hb.L14.055
+  kind: card
+  topic: granuloma
+  front: Most consistently abnormal liver test in hepatic granulomas?
+  back: Raised serum ALP (with liver enlargement).
+  src:
+    page: 265
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.056
+  kind: enumerate
+  topic: granuloma
+  prompt: Enumerate the 5 etiological categories of hepatic granulomas, with examples.
+  points:
+  - 'Immunological: sarcoidosis, PBC, giant cell arteritis, Wegener''s, chronic granulomatous disease, allergic
+    granulomatosis'
+  - 'Infectious: viral (HCV, CMV, EBV, Q fever, syphilis), bacterial (TB, MAI in HIV, brucella, typhoid, Whipple,
+    leprosy, cat-scratch, tularemia), fungal (histoplasma, blastomyces, coccidioides, candida), parasitic (toxoplasma,
+    schistosoma)'
+  - 'Medications: penicillins, phenytoin (diphenylhydantoin), allopurinol'
+  - 'Neoplastic: Hodgkin disease, renal cell carcinoma'
+  - 'Foreign body: beryllium, surgical suture material'
+  pass: 5
+  src:
+    page: 265
+  status: unverified
+  tags:
+  - high-yield
+  - book-question
+- id: hb.L14.057
+  kind: cloze
+  topic: granuloma
+  text: 'Drugs causing hepatic granulomas: {{c1::penicillins}}, {{c2::diphenylhydantoin (phenytoin)}} and {{c3::allopurinol}}.'
+  src:
+    page: 265
+  status: unverified
+- id: hb.L14.058
+  kind: cloze
+  topic: granuloma
+  text: 'Neoplastic causes of hepatic granulomas: {{c1::Hodgkin disease}} and {{c2::renal cell carcinoma}}. Foreign
+    body causes: {{c3::beryllium}} and suture material.'
+  src:
+    page: 266
+  status: unverified
+- id: hb.L14.059
+  kind: cloze
+  topic: granuloma
+  text: 'Parasitic causes of hepatic granulomas: {{c1::toxoplasmosis}} and {{c2::schistosomiasis}}.'
+  src:
+    page: 265
+  status: unverified
+- id: hb.L14.060
+  kind: enumerate
+  topic: preg-general
+  prompt: Classify liver disease in pregnancy.
+  points:
+  - 'Unique to pregnancy (3%): hyperemesis gravidarum, ICP, AFLP, hypertension-related (pre-eclampsia/eclampsia,
+    HELLP, liver infarction/rupture)'
+  - 'Pre-existing: viral, cirrhosis and portal hypertension, post-LT, autoimmune'
+  - 'Coincident with pregnancy: autoimmune, viral, drug-induced, vascular (Budd-Chiari)'
+  pass: 3
+  src:
+    page: 266
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.061
+  kind: card
+  topic: preg-general
+  front: Are palmar erythema and spider angiomata in pregnancy signs of chronic liver disease?
+  back: Not necessarily. They are common normal findings in pregnancy.
+  src:
+    page: 266
+  status: unverified
+- id: hb.L14.062
+  kind: card
+  topic: preg-general
+  front: Which liver test can rise normally in the third trimester, and why? Which rises are always abnormal?
+  back: ALP, from the placenta. Any rise in aminotransferases, bilirubin or PT/INR is abnormal and needs evaluation.
+  src:
+    page: 266
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.063
+  kind: card
+  topic: preg-general
+  front: Imaging of the liver in pregnancy - what is preferred, what is allowed, and what is used with care?
+  back: Ultrasound is safe and preferred (biliary disease). MRI without gadolinium in the 2nd and 3rd trimesters.
+    CT carries a risk of teratogenesis and childhood hematologic malignancy, so only judiciously with low-dose protocols
+    (2–5 rads). Biopsy is rarely needed.
+  src:
+    page: 267
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.064
+  kind: enumerate
+  topic: preg-unique
+  prompt: Enumerate the liver diseases unique to pregnancy.
+  points:
+  - Hyperemesis gravidarum
+  - Intrahepatic cholestasis of pregnancy
+  - Pre-eclampsia and eclampsia
+  - HELLP syndrome
+  - Acute fatty liver of pregnancy
+  - Hepatic infarction, parenchymal hemorrhage and subcapsular hematoma
+  pass: 5
+  src:
+    page: 267
+  status: unverified
+- id: hb.L14.065
+  kind: table
+  topic: preg-unique
+  title: Liver diseases unique to pregnancy (book table)
+  columns:
+  - Disease
+  - Timing
+  - Frequency (%)
+  - Clinical features
+  - Pathogenesis
+  - Biochemistry
+  - Management
+  - Recurrence
+  rows:
+  - - Hyperemesis gravidarum
+    - First trimester through 20 weeks
+    - 0.2–2
+    - Nausea, vomiting, dehydration, thiamine deficiency
+    - Starvation, gastric motility, hormonal factors
+    - Mild rise in AST and ALT
+    - Supportive, hydration
+    - Often
+  - - ICP
+    - Late 2nd and 3rd trimester
+    - 0.2–2
+    - Pruritus, mild jaundice
+    - Hormonal factors
+    - Raised serum bile acids, mild rise in transaminases
+    - UDCA 10–15 mg/kg; early delivery at 37 weeks
+    - High
+  - - Pre-eclampsia/eclampsia
+    - After 20 weeks
+    - '7.5'
+    - High BP, proteinuria, edema, seizures
+    - Capillary thrombi, fibrin deposition, endothelial injury, coagulation activation
+    - AST and ALT rises can be striking
+    - After 36 weeks, deliver severe pre-eclampsia promptly
+    - High
+  - - HELLP
+    - 3rd trimester to first week postpartum
+    - 0.2–0.8
+    - Asymptomatic, or malaise, nausea, edema, high BP, proteinuria, seizures
+    - Capillary thrombi, fibrin deposition, endothelial injury, coagulation activation
+    - AST > 70 IU/L, LDH > 600 IU/L, platelets < 100,000
+    - Delivery after 34 weeks
+    - High
+  - - AFLP
+    - 3rd trimester
+    - '0.01'
+    - Nausea, vomiting, jaundice, encephalopathy, hypoglycemia
+    - Microvesicular fatty infiltration; LCHAD mutation
+    - Severe transaminase rise, high ammonia, raised bilirubin
+    - Prompt delivery; liver transplantation
+    - Higher with the genetic mutation
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 1
+  - - 2
+    - 1
+  - - 3
+    - 1
+  - - 1
+    - 5
+  - - 3
+    - 5
+  - - 4
+    - 4
+  - - 1
+    - 6
+  - - 3
+    - 6
+  - - 4
+    - 6
+  - - 2
+    - 2
+  - - 4
+    - 3
+  src:
+    page: 268
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.066
+  kind: card
+  topic: preg-unique
+  front: Hyperemesis gravidarum - timing, LFTs and management?
+  back: First trimester up to 20 weeks. Mild rise in AST/ALT. Supportive care with hydration (watch thiamine deficiency).
+  src:
+    page: 268
+  status: unverified
+- id: hb.L14.067
+  kind: cloze
+  topic: preg-unique
+  text: Intrahepatic cholestasis of pregnancy presents in the {{c1::late 2nd and 3rd trimester}} with {{c2::pruritus}};
+    the key lab is raised {{c3::serum bile acids}}.
+  src:
+    page: 268
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.068
+  kind: cloze
+  topic: preg-unique
+  text: ICP is treated with {{c1::UDCA 10–15 mg/kg}} and early delivery at {{c2::37 weeks}}.
+  src:
+    page: 268
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L14.069
+  kind: cloze
+  topic: preg-unique
+  text: 'HELLP lab thresholds in the book: AST > {{c1::70 IU/L}}, LDH > {{c2::600 IU/L}}, platelets < {{c3::100,000}}.'
+  src:
+    page: 268
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L14.070
+  kind: card
+  topic: preg-unique
+  front: When does HELLP occur, and how is it managed per the book?
+  back: Third trimester to the first postpartum week. Delivery after 34 weeks.
+  src:
+    page: 268
+  status: unverified
+- id: hb.L14.071
+  kind: card
+  topic: preg-unique
+  front: Shared pathogenesis of pre-eclampsia and HELLP?
+  back: Capillary thrombi, fibrin deposition, endothelial injury and coagulation activation.
+  src:
+    page: 268
+  status: unverified
+- id: hb.L14.072
+  kind: cloze
+  topic: preg-unique
+  text: Pre-eclampsia starts after {{c1::20 weeks}} and affects about {{c2::7.5%}} of pregnancies; after {{c3::36
+    weeks}}, severe pre-eclampsia should be delivered promptly.
+  src:
+    page: 268
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L14.073
+  kind: card
+  topic: preg-unique
+  front: AFLP - pathology and genetic association?
+  back: Microvesicular fatty infiltration of the liver, linked to fetal LCHAD mutation (recurrence is higher with
+    the mutation).
+  src:
+    page: 268
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.074
+  kind: enumerate
+  topic: preg-unique
+  prompt: Mention the clinical and lab features of acute fatty liver of pregnancy.
+  points:
+  - Third trimester; rare (0.01%)
+  - Nausea and vomiting
+  - Jaundice
+  - Encephalopathy
+  - Hypoglycemia
+  - Severe transaminase rise, high ammonia, raised bilirubin
+  pass: 5
+  src:
+    page: 268
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.075
+  kind: card
+  topic: preg-unique
+  front: Management of AFLP?
+  back: Prompt delivery; liver transplantation if needed.
+  src:
+    page: 268
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.076
+  kind: card
+  topic: preg-unique
+  front: Hepatic infarction in pregnancy - association, presentation and diagnosis?
+  back: A rare complication of HELLP. Abdominal pain and fever with HELLP features. Diagnosed by CT or MRI.
+  src:
+    page: 268
+  status: unverified
+- id: hb.L14.077
+  kind: cloze
+  topic: preg-unique
+  text: Abdominal pain, fever and ALT or AST > {{c1::1000 U/L}} in HELLP suggest {{c2::hepatic parenchymal hemorrhage
+    or subcapsular hematoma}}.
+  src:
+    page: 269
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L14.078
+  kind: card
+  topic: preg-unique
+  front: Treatment options for hepatic hemorrhage or subcapsular hematoma in pregnancy?
+  back: Supportive treatment, angiographic embolization, or surgery.
+  src:
+    page: 269
+  status: unverified
+- id: hb.L14.079
+  kind: card
+  topic: preg-coincident
+  front: Which causes should be tested in a pregnant woman with acute hepatitis?
+  back: Viral hepatitis (HAV, HBV, HEV) and herpes simplex virus.
+  src:
+    page: 269
+  status: unverified
+- id: hb.L14.080
+  kind: card
+  topic: preg-coincident
+  front: Pregnant woman with acute hepatitis suspected to be HSV. What do you do?
+  back: Start acyclovir.
+  src:
+    page: 269
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.081
+  kind: card
+  topic: preg-coincident
+  front: Budd-Chiari in pregnancy - risk factors, presentation and diagnostic test?
+  back: Risk factors are trauma, hypercoagulable states, myeloproliferative disorders, OCPs and pregnancy. Presents
+    with abdominal pain, hepatomegaly and ascites. Doppler ultrasound is enough in most cases.
+  src:
+    page: 269
+  status: unverified
+- id: hb.L14.082
+  kind: card
+  topic: preg-coincident
+  front: Main maternal and fetal risks of pregnancy in cirrhosis?
+  back: 'Maternal: decompensation, hepatic encephalopathy, worse portal hypertension. Fetal: spontaneous abortion,
+    premature birth, stillbirth.'
+  src:
+    page: 270
+  status: unverified
+- id: hb.L14.083
+  kind: cloze
+  topic: preg-coincident
+  text: Variceal bleeding occurs in {{c1::18–32%}} of pregnant women with cirrhosis; risk is highest in the {{c2::second
+    trimester}} and at {{c3::delivery}}.
+  src:
+    page: 270
+    quote: Variceal bleeding has been reported in 18–32% of pregnant women with cirrhosis
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L14.084
+  kind: order
+  topic: preg-coincident
+  prompt: Variceal screening for a woman with compensated cirrhosis who wants to get pregnant
+  steps:
+  - Optimize her medically and control portal hypertension before conception
+  - EGD to screen for varices before pregnancy
+  - If no varices, repeat EGD in the second trimester
+  - Band ligation for medium or large varices (pre-pregnancy or 2nd trimester); propranolol if a beta blocker is
+    indicated
+  src:
+    page: 270
+  status: unverified
+- id: hb.L14.085
+  kind: card
+  topic: preg-coincident
+  front: Treatment of choice for medium or large varices found on screening around pregnancy? Preferred beta blocker?
+  back: Endoscopic band ligation. Propranolol is the preferred NSBB in pregnancy. (Data on prophylactic TIPS are
+    lacking.)
+  src:
+    page: 270
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.086
+  kind: card
+  topic: preg-coincident
+  front: How is acute variceal bleeding managed in pregnancy?
+  back: As in non-pregnant patients; band ligation, or TIPS when necessary.
+  src:
+    page: 270
+  status: unverified
+- id: hb.L14.087
+  kind: card
+  topic: preg-coincident
+  front: How is perinatal HBV transmission prevented in all infants of HBV-infected mothers?
+  back: Active-passive immunoprophylaxis, with HBIG plus the HBV vaccine series.
+  src:
+    page: 271
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.088
+  kind: cloze
+  topic: preg-coincident
+  text: HBV-infected mothers with viral load > {{c1::200,000 IU/mL}} should get {{c2::tenofovir}} or telbivudine
+    in the {{c3::third trimester}}.
+  src:
+    page: 271
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+  update:
+    text: Tenofovir disoproxil (TDF) is the recommended drug; telbivudine is no longer used.
+    ref: EASL CPG HBV 2017; AASLD HBV guidance 2018
+- id: hb.L14.089
+  kind: card
+  topic: preg-coincident
+  front: HCV in pregnancy - who is screened, and what is avoided?
+  back: Screen women with HCV risk factors (anti-HCV). Minimize invasive procedures (amniocentesis, invasive fetal
+    monitoring). Do not give HCV therapy in pregnancy.
+  src:
+    page: 271
+  status: unverified
+  update:
+    text: Current guidance is universal anti-HCV screening in every pregnancy, not only those with risk factors.
+    ref: AASLD/IDSA HCV guidance 2020; CDC 2020
+- id: hb.L14.090
+  kind: card
+  topic: preg-coincident
+  front: What happens to AIH, PBC and Wilson treatment in pregnancy?
+  back: 'Continue all of them: AIH on steroids and/or azathioprine; PBC on UDCA; Wilson on penicillamine, trientine
+    or zinc (reduce the dose if possible).'
+  src:
+    page: 271
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.091
+  kind: cloze
+  topic: preg-lt
+  text: Fertility usually returns within {{c1::1 year}} of LT, but pregnancy is not recommended in the first year
+    because of {{c2::acute cellular rejection}}.
+  src:
+    page: 272
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L14.092
+  kind: card
+  topic: preg-lt
+  front: Which preconception factor predicts pregnancy outcome after LT, and what risks rise?
+  back: Preconception renal function. Risks of preterm delivery, low birth weight, hypertension and pre-eclampsia
+    rise, though outcome is generally good.
+  src:
+    page: 272
+  status: unverified
+- id: hb.L14.093
+  kind: card
+  topic: preg-lt
+  front: Ideal immunosuppression in pregnancy after LT? Which drug is avoided?
+  back: Tacrolimus monotherapy if feasible (alternatives cyclosporine, azathioprine, prednisone). Avoid mycophenolate
+    (congenital malformations).
+  src:
+    page: 272
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.094
+  kind: cloze
+  topic: preg-lt
+  text: After LT, graft function and CNI levels are checked every {{c1::4 weeks}} until 32 weeks, every {{c2::2
+    weeks}} until 36 weeks, then {{c3::weekly}} until delivery.
+  src:
+    page: 272
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L14.095
+  kind: mcq
+  topic: heart
+  stem: A 70-year-old man with long-standing ischemic cardiomyopathy has tender hepatomegaly, a positive hepatojugular
+    reflux and mild jaundice. Which lab pattern is most typical?
+  options:
+  - Isolated raised ammonia
+  - Raised GGT, ALP and bilirubin with normal or mildly raised transaminases
+  - Raised serum bile acids only
+  - Raised AFP
+  - ALT 3000 U/L, normal ALP
+  answer: 1
+  why:
+  - Not the described pattern.
+  - Correct. Congestive hepatopathy is mainly cholestatic.
+  - That is ICP.
+  - AFP is not part of congestive hepatopathy.
+  - Massive transaminase rise fits hypoxic (forward-failure) injury, not chronic congestion.
+  src:
+    page: 255
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.096
+  kind: mcq
+  topic: sepsis
+  stem: A 65-year-old in cardiogenic shock after an MI has ALT 4200 U/L on day 2 (normal on admission). Viral serology
+    and drug history are negative. What is the diagnosis?
+  options:
+  - Congestive hepatopathy
+  - Hypoxic (ischemic) hepatitis
+  - Drug-induced liver injury
+  - Cholestatic liver dysfunction of critical illness
+  - Acute viral hepatitis
+  answer: 1
+  why:
+  - Chronic congestion gives a cholestatic pattern with mild transaminase rise.
+  - Correct. Circulatory failure, abrupt transaminase rise ≥ 20 × ULN, and other causes excluded.
+  - Drug history is negative.
+  - CLD is insidious and cholestatic, days after ICU admission.
+  - Serology is negative.
+  src:
+    page: 263
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.097
+  kind: mcq
+  topic: heart
+  stem: Which finding is part of the systolic criterion for cirrhotic cardiomyopathy?
+  options:
+  - Resting LVEF < 55%
+  - Low resting cardiac output
+  - Resting LVEF < 35%
+  - Right bundle branch block
+  - Pericardial effusion
+  answer: 0
+  why:
+  - Correct. Resting LVEF < 55% (or a blunted output response to stress).
+  - Cardiac output is normal or increased at rest.
+  - The book's cut-off is 55%.
+  - Not a listed criterion; prolonged QT is a supportive one.
+  - Not a criterion.
+  src:
+    page: 256
+  status: unverified
+- id: hb.L14.098
+  kind: mcq
+  topic: ctd
+  stem: A 30-year-old woman with active SLE has ALT 140 U/L that rises and falls with her lupus flares. Viral serology
+    is negative and she takes no hepatotoxic drugs. Which statement fits lupus hepatitis?
+  options:
+  - It responds well to moderate-high dose prednisone and does not progress to ESLD
+  - It usually progresses to cirrhosis
+  - Its commonest histology is interface hepatitis with plasma cells
+  - It requires liver transplantation
+  - It is a common overlap with AIH
+  answer: 0
+  why:
+  - Correct.
+  - Progression to cirrhosis suggests AIH, not lupus hepatitis.
+  - The commonest SLE histology is steatosis; interface hepatitis suggests AIH.
+  - It does not progress to end-stage disease.
+  - Concomitant SLE and AIH is uncommon.
+  src:
+    page: 258
+  status: unverified
+- id: hb.L14.099
+  kind: mcq
+  topic: ctd
+  stem: In which connective tissue disease are ALT levels highest, according to the book?
+  options:
+  - Sjögren's syndrome
+  - Scleroderma
+  - Adult-onset Still's disease
+  - Rheumatoid arthritis
+  - Vasculitis syndrome
+  answer: 2
+  why:
+  - Not singled out for ALT.
+  - Not singled out for ALT.
+  - Correct.
+  - In RA, transaminases are usually normal.
+  - Vasculitis has the highest ALP and GGT, not ALT.
+  src:
+    page: 257
+  status: unverified
+- id: hb.L14.100
+  kind: mcq
+  topic: rheum-drugs
+  stem: A 55-year-old woman on long-term azathioprine for RA develops portal hypertension with normal synthetic
+    function. Biopsy shows no cirrhosis. Which lesion is most likely?
+  options:
+  - Steatosis
+  - Nodular regenerative hyperplasia
+  - Hepatocellular acute DILI
+  - Drug-induced autoimmune hepatitis
+  - Hepatic granulomas
+  answer: 1
+  why:
+  - Methotrexate, not azathioprine, causes fatty liver.
+  - Correct. Azathioprine causes NRH, a non-cirrhotic cause of portal hypertension.
+  - Azathioprine's acute DILI is cholestatic.
+  - That is infliximab, diclofenac, indomethacin.
+  - Not linked to azathioprine in the book.
+  src:
+    page: 259
+  status: unverified
+- id: hb.L14.101
+  kind: mcq
+  topic: rheum-drugs
+  stem: Which rheumatologic drug is linked in the book to drug-induced autoimmune hepatitis?
+  options:
+  - Piroxicam
+  - Leflunomide
+  - Gold salts
+  - Methotrexate
+  - Infliximab
+  answer: 4
+  why:
+  - Piroxicam causes cholestatic DILI.
+  - Leflunomide causes hepatocellular DILI.
+  - Gold salts cause ductopenia.
+  - Methotrexate causes fatty liver.
+  - Correct (also diclofenac and indomethacin).
+  src:
+    page: 259
+  status: unverified
+- id: hb.L14.102
+  kind: mcq
+  topic: heme
+  stem: A man with lymphoma has hepatomegaly, ALP and LDH high, and a raised ESR, but CT shows no focal liver lesion.
+    What is true?
+  options:
+  - Liver involvement is likely; imaging may miss it and peritoneoscopy may be needed
+  - This is extramedullary hemopoiesis
+  - Only biopsy of the spleen can tell
+  - Raised ALP excludes infiltration
+  - The liver is not involved because CT is normal
+  answer: 0
+  why:
+  - Correct. Enlarged liver + high ALP/LDH + raised CRP/ESR is taken as involvement.
+  - EMH is linked to marrow replacement and aplastic anemia.
+  - The book suggests peritoneoscopy for the liver.
+  - Raised ALP supports involvement.
+  - Imaging may not reveal involvement.
+  src:
+    page: 261
+  status: unverified
+- id: hb.L14.103
+  kind: mcq
+  topic: sepsis
+  stem: On day 6 of ICU care for pneumonia with sepsis, a patient on parenteral nutrition has bilirubin 4 mg/dL
+    and ALP 3 × ULN, with near-normal ALT. What is the most likely mechanism?
+  options:
+  - Viral hepatitis
+  - Ischemic hepatocyte necrosis
+  - Hemolysis
+  - Cytokine (TNF-α, IL-6) and nitric oxide inhibition of canalicular bilirubin excretion
+  - Biliary obstruction by stones
+  answer: 3
+  why:
+  - Transaminases would be high.
+  - Ischemia gives a sharp transaminase rise.
+  - Hemolysis gives unconjugated bilirubin without raised ALP.
+  - Correct. Cholestatic liver dysfunction of critical illness.
+  - Not suggested; CLD is the typical ICU pattern.
+  src:
+    page: 264
+  status: unverified
+- id: hb.L14.104
+  kind: mcq
+  topic: granuloma
+  stem: Which of the following is NOT a cause of hepatic granulomas listed in the book?
+  options:
+  - Beryllium
+  - Allopurinol
+  - Renal cell carcinoma
+  - Brucellosis
+  - Methotrexate
+  answer: 4
+  why:
+  - A foreign-body cause.
+  - A drug cause.
+  - A neoplastic cause.
+  - A bacterial cause.
+  - Correct. Methotrexate is listed for fatty liver, not granulomas.
+  src:
+    page: 265
+  status: unverified
+- id: hb.L14.105
+  kind: mcq
+  topic: preg-general
+  stem: A 30-year-old woman at 34 weeks has ALP twice the upper limit, with normal ALT, AST, bilirubin and INR.
+    She feels well. What is the best interpretation?
+  options:
+  - Normal placental ALP of the third trimester
+  - Early AFLP
+  - HELLP syndrome
+  - ICP until proven otherwise
+  - Needs liver biopsy
+  answer: 0
+  why:
+  - Correct. ALP rises from the placenta in the third trimester.
+  - AFLP gives jaundice, encephalopathy and hypoglycemia.
+  - HELLP needs hemolysis, high AST and low platelets.
+  - ICP gives pruritus and raised bile acids.
+  - Biopsy is rarely needed and not here.
+  src:
+    page: 266
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.106
+  kind: mcq
+  topic: preg-unique
+  stem: A 29-year-old at 33 weeks has severe itching of the palms and soles, no rash, ALT 90 U/L, and raised fasting
+    bile acids. BP is normal. What is the management in the book?
+  options:
+  - Liver transplantation
+  - Prompt delivery now
+  - Acyclovir
+  - Steroids and plasma exchange
+  - UDCA 10–15 mg/kg and early delivery at 37 weeks
+  answer: 4
+  why:
+  - LT is for severe AFLP.
+  - Prompt delivery is for AFLP.
+  - Acyclovir is for HSV hepatitis.
+  - Not a treatment for ICP.
+  - Correct. This is ICP.
+  src:
+    page: 268
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.107
+  kind: mcq
+  topic: preg-unique
+  stem: A 32-year-old at 35 weeks has nausea, jaundice, confusion and glucose 45 mg/dL. AST is 600 U/L, ammonia
+    is high, BP is normal and platelets are 180,000. What is the most likely diagnosis?
+  options:
+  - Hyperemesis gravidarum
+  - HELLP syndrome
+  - Pre-eclampsia
+  - Intrahepatic cholestasis of pregnancy
+  - Acute fatty liver of pregnancy
+  answer: 4
+  why:
+  - HG occurs before 20 weeks.
+  - Platelets are normal and there is no hypertension.
+  - No hypertension or proteinuria.
+  - ICP gives pruritus with mild LFT changes.
+  - Correct. Third trimester, encephalopathy, hypoglycemia, high ammonia, jaundice.
+  src:
+    page: 268
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.108
+  kind: mcq
+  topic: preg-unique
+  stem: A 26-year-old at 30 weeks has BP 160/105, proteinuria, AST 180 U/L, LDH 900 U/L and platelets 70,000. Which
+    diagnosis do these labs meet?
+  options:
+  - AFLP
+  - Acute viral hepatitis
+  - Hyperemesis gravidarum
+  - HELLP syndrome
+  - ICP
+  answer: 3
+  why:
+  - AFLP has hypoglycemia and high ammonia; platelets are not the key.
+  - Hypertension and low platelets point to HELLP.
+  - HG is before 20 weeks.
+  - Correct. AST > 70, LDH > 600, platelets < 100,000.
+  - ICP has pruritus and bile acids.
+  src:
+    page: 268
+  status: unverified
+- id: hb.L14.109
+  kind: mcq
+  topic: preg-unique
+  stem: A woman with HELLP develops severe right upper quadrant pain, fever and AST 2500 U/L. What should you suspect
+    first?
+  options:
+  - Gallstones
+  - ICP
+  - Hyperemesis gravidarum
+  - Hepatic parenchymal hemorrhage or subcapsular hematoma
+  - Budd-Chiari syndrome
+  answer: 3
+  why:
+  - Gallstones do not explain AST 2500 in HELLP.
+  - ICP gives itching, not pain with AST > 1000.
+  - HG is early in pregnancy.
+  - Correct. Pain, fever and AST/ALT > 1000 suggest hemorrhage or hematoma.
+  - Possible in pregnancy, but in HELLP with this picture hemorrhage comes first.
+  src:
+    page: 269
+  status: unverified
+- id: hb.L14.110
+  kind: mcq
+  topic: preg-coincident
+  stem: A pregnant woman with chronic HBV has HBV DNA 2 × 10^6 IU/mL at 26 weeks. What does the book recommend?
+  options:
+  - Caesarean section only
+  - Entecavir from the first trimester
+  - Tenofovir (or telbivudine) in the third trimester, plus HBIG and vaccine for the baby
+  - No treatment; only HBIG for the baby
+  - Interferon now
+  answer: 2
+  why:
+  - Not in the book's recommendations.
+  - The book names tenofovir or telbivudine in the third trimester.
+  - Correct.
+  - Above 200,000 IU/mL, maternal antiviral therapy is added.
+  - Interferon is not used in pregnancy.
+  src:
+    page: 271
+  status: unverified
+- id: hb.L14.111
+  kind: mcq
+  topic: preg-lt
+  stem: A 28-year-old woman 8 months after LT on tacrolimus and mycophenolate asks about pregnancy. What is the
+    best advice?
+  options:
+  - Switch tacrolimus to mycophenolate monotherapy
+  - Wait until at least 1 year after LT and stop mycophenolate before conception
+  - Conceive now; fertility is restored
+  - Stop all immunosuppression in pregnancy
+  - Pregnancy is contraindicated for life after LT
+  answer: 1
+  why:
+  - Mycophenolate must be avoided.
+  - Correct. Tacrolimus monotherapy is ideal; mycophenolate causes malformations.
+  - Pregnancy in the first year risks acute cellular rejection.
+  - Immunosuppression continues.
+  - Pregnancy is feasible with good outcome.
+  src:
+    page: 272
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L14.112
+  kind: mcq
+  topic: preg-coincident
+  stem: A pregnant woman with compensated cirrhosis had no varices at a pre-pregnancy EGD. What is the next step?
+  options:
+  - Start carvedilol
+  - EGD only if she bleeds
+  - Start prophylactic TIPS
+  - Repeat EGD in the second trimester
+  - No further EGD during pregnancy
+  answer: 3
+  why:
+  - Propranolol is the preferred NSBB when indicated.
+  - Screening is planned, not only after bleeding.
+  - Data on prophylactic TIPS are lacking.
+  - Correct.
+  - The book asks for a repeat in the second trimester.
+  src:
+    page: 270
+  status: unverified
+- id: hb.L14.113
+  kind: case
+  topic: preg-unique
+  stem: A 31-year-old primigravida at 35 weeks has 4 days of nausea, vomiting and malaise, then jaundice. She is
+    mildly confused.
+  steps:
+  - reveal: BP 125/80, no proteinuria. AST 480 U/L, bilirubin 6 mg/dL, glucose 50 mg/dL, ammonia high, platelets
+      160,000.
+    question: What is the most likely diagnosis?
+    options:
+    - Acute fatty liver of pregnancy
+    - ICP
+    - Hyperemesis gravidarum
+    - HELLP syndrome
+    answer: 0
+    why: Third trimester, jaundice, encephalopathy, hypoglycemia and high ammonia fit AFLP; normal BP and platelets
+      argue against HELLP.
+  - question: What is the definitive management?
+    options:
+    - UDCA and delivery at 37 weeks
+    - Acyclovir
+    - Supportive hydration only
+    - Prompt delivery
+    answer: 3
+    why: AFLP needs prompt delivery; liver transplantation if she fails to recover.
+  - reveal: She recovers after delivery. She asks about future pregnancies.
+    question: Which genetic mutation is linked to AFLP, and what does it mean for recurrence?
+    options:
+    - HFE mutation; no recurrence
+    - None; AFLP never recurs
+    - LCHAD mutation; recurrence is higher if present
+    - ATP7B mutation; always recurs
+    answer: 2
+    why: AFLP is linked to LCHAD mutation, and recurrence is higher with the mutation.
+  src:
+    page: 268
+  status: unverified
+- id: hb.L14.114
+  kind: case
+  topic: preg-unique
+  stem: A 27-year-old at 31 weeks has severe generalized itching, worse at night, and no rash.
+  steps:
+  - reveal: ALT 110 U/L, bilirubin 1.4 mg/dL, BP normal, platelets normal.
+    question: Which test confirms the likely diagnosis?
+    options:
+    - Serum ceruloplasmin
+    - Serum ammonia
+    - LDH and blood film
+    - Serum bile acids
+    answer: 3
+    why: ICP shows raised serum bile acids with mild transaminase rise.
+  - reveal: Bile acids are raised.
+    question: Which treatment does the book give?
+    options:
+    - Cholestyramine alone
+    - Prednisone
+    - UDCA 10–15 mg/kg
+    - Prompt delivery at 31 weeks
+    answer: 2
+    why: UDCA 10–15 mg/kg, with early delivery at 37 weeks.
+  - question: What about later pregnancies?
+    options:
+    - It recurs only with LCHAD mutation
+    - Recurrence is high
+    - It turns into AFLP
+    - It never recurs
+    answer: 1
+    why: The book lists ICP recurrence as high.
+  src:
+    page: 268
+  status: unverified
+- id: hb.L14.115
+  kind: case
+  topic: preg-unique
+  stem: A 24-year-old at 33 weeks has epigastric pain, nausea and headache.
+  steps:
+  - reveal: BP 165/110 with 3+ proteinuria.
+    question: Which condition is she at risk of beyond pre-eclampsia?
+    options:
+    - Hyperemesis gravidarum
+    - Wilson disease
+    - HELLP syndrome
+    - ICP
+    answer: 2
+    why: HELLP shares pre-eclampsia's pathogenesis (endothelial injury, fibrin, coagulation activation).
+  - reveal: AST 220 U/L, LDH 850 U/L, platelets 65,000.
+    question: Do these labs meet the book's HELLP thresholds?
+    options:
+    - No, platelets must be < 20,000
+    - No, LDH must exceed 1000
+    - No, AST must exceed 1000
+    - Yes (AST > 70, LDH > 600, platelets < 100,000)
+    answer: 3
+    why: All 3 thresholds are met.
+  - reveal: Next day she has severe RUQ pain, fever and AST 1800 U/L.
+    question: What is the best imaging?
+    options:
+    - None; treat empirically
+    - CT or MRI
+    - Plain abdominal X-ray
+    - HIDA scan
+    answer: 1
+    why: Pain, fever and AST > 1000 suggest hemorrhage or hematoma; cross-sectional imaging is needed.
+  - question: Which treatments are options?
+    options:
+    - Thiamine
+    - Acyclovir
+    - Supportive care, angiographic embolization or surgery
+    - UDCA
+    answer: 2
+    why: These are the book's options for hemorrhage and subcapsular hematoma.
+  src:
+    page: 269
+  status: unverified
+- id: hb.L14.116
+  kind: case
+  topic: preg-coincident
+  stem: A 30-year-old with compensated HBV cirrhosis wants to become pregnant.
+  steps:
+  - question: What must be done before conception?
+    options:
+    - Prophylactic TIPS
+    - Nothing, cirrhosis does not affect pregnancy
+    - Liver biopsy
+    - Optimize medically, control portal hypertension, and do an EGD for varices
+    answer: 3
+    why: Compensated patients are optimized and screened for varices before pregnancy.
+  - reveal: EGD shows large varices.
+    question: What is the treatment of choice?
+    options:
+    - Endoscopic band ligation
+    - No treatment until bleeding
+    - Prophylactic TIPS
+    - Atenolol
+    answer: 0
+    why: Band ligation is the treatment of choice for medium/large varices; propranolol is the preferred NSBB if
+      needed.
+  - reveal: She conceives. HBV DNA is 5 × 10^5 IU/mL.
+    question: What antiviral plan applies?
+    options:
+    - No antiviral; HBIG only
+    - Stop all antivirals
+    - Interferon
+    - Tenofovir in the third trimester, plus HBIG and vaccine for the baby
+    answer: 3
+    why: Viral load > 200,000 IU/mL → tenofovir (or telbivudine) in the 3rd trimester; all infants get HBIG plus
+      vaccine.
+  - question: When is variceal bleeding risk highest?
+    options:
+    - Postpartum month 6
+    - First trimester only
+    - Second trimester and delivery
+    - Never during pregnancy
+    answer: 2
+    why: The book names the second trimester and delivery.
+  src:
+    page: 270
+  status: unverified
+- id: hb.L14.117
+  kind: case
+  topic: sepsis
+  stem: A 60-year-old is admitted to ICU with septic shock from a perforated diverticulum.
+  steps:
+  - reveal: On day 1 his BP was 70/40 for 3 hours. On day 2 ALT is 2900 U/L (normal on admission); viral serology
+      is negative.
+    question: What is this?
+    options:
+    - Lupus hepatitis
+    - Cholestatic liver dysfunction
+    - Granulomatous hepatitis
+    - Hypoxic (ischemic) hepatitis
+    answer: 3
+    why: Circulatory failure, abrupt rise ≥ 20 × ULN, other causes excluded.
+  - reveal: Transaminases fall quickly. By day 8, on parenteral nutrition, bilirubin is 5 mg/dL and ALP and GGT
+      are 3 × ULN.
+    question: What is the new problem?
+    options:
+    - Hepatic granulomas
+    - A second ischemic hit
+    - Cholestatic liver dysfunction of critical illness
+    - Hemolysis
+    answer: 2
+    why: Insidious cholestasis days after ICU admission; sepsis and parenteral nutrition are risk factors.
+  - question: What causes it?
+    options:
+    - Portal vein thrombosis
+    - TNF-α, IL-6 and nitric oxide inhibit canalicular excretion of conjugated bilirubin
+    - Bile duct stones
+    - Right heart failure
+    answer: 1
+    why: Cytokine-driven altered hepatobiliary transport.
+  src:
+    page: 263
+  status: unverified
+- id: hb.L14.118
+  kind: essay
+  topic: heart
+  prompt: What is the interaction between the liver and the heart?
+  outline:
+  - Heart → liver:
+    - Forward failure (acute HF) → hypoxic hepatopathy; backward failure (chronic HF) → congestive hepatopathy
+    - Congestive hepatopathy - jaundice, ascites, hepatomegaly with HJR, pulsatile liver; cholestatic labs
+  - Liver → heart:
+    - Cirrhotic cardiomyopathy - blunted stress response; LVEF < 55%, diastolic dysfunction, prolonged QT, BNP
+    - 50% of LT candidates have cardiac dysfunction; 7–21% of post-LT deaths from HF; NAFLD → CVD and HF
+  - Diseases affecting both:
+    - Alcohol; infections (HCV, HIV, CMV, malaria, dengue, sepsis); sarcoidosis, SLE, Graves, hemochromatosis, Wilson,
+      amyloidosis
+  src:
+    page: 253
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L14.119
+  kind: essay
+  topic: rheum-drugs
+  prompt: Mention the hepatotoxic effect of rheumatological drugs.
+  outline:
+  - Acute DILI:
+    - Hepatocellular - NSAIDs (diclofenac, sulindac, ibuprofen, ketoprofen, indomethacin), sulfasalazine, leflunomide
+    - Cholestatic - NSAIDs (sulindac, ibuprofen, piroxicam, naproxen, celecoxib), sulfasalazine, azathioprine
+  - Chronic:
+    - Fatty liver - methotrexate; ductopenia - azathioprine, gold; NRH - azathioprine
+  - Drug-induced AIH:
+    - Infliximab, diclofenac, indomethacin
+  src:
+    page: 259
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L14.120
+  kind: essay
+  topic: granuloma
+  prompt: What are the causes of granulomatous liver diseases?
+  outline:
+  - Immunological:
+    - Sarcoidosis, PBC, giant cell arteritis, Wegener's, chronic granulomatous disease, allergic granulomatosis
+  - Infectious:
+    - Viral (HCV, CMV, EBV, Q fever, syphilis); bacterial (TB, MAI in HIV, brucella, typhoid, Whipple, leprosy,
+      cat-scratch, tularemia)
+    - Fungal (histoplasma, blastomyces, coccidioides, candida); parasitic (toxoplasma, schistosoma)
+  - Medications:
+    - Penicillins, phenytoin, allopurinol
+  - Neoplastic and foreign body:
+    - Hodgkin disease, renal cell carcinoma; beryllium, suture material
+  - Lab clue:
+    - Raised ALP with hepatomegaly
+  src:
+    page: 265
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L14.121
+  kind: essay
+  topic: preg-unique
+  prompt: Give a short account on acute fatty liver of pregnancy.
+  outline:
+  - Epidemiology and timing:
+    - Third trimester; rare (0.01%)
+  - Pathogenesis:
+    - Microvesicular fatty infiltration; fetal LCHAD mutation
+  - Clinical:
+    - Nausea, vomiting, jaundice, encephalopathy, hypoglycemia
+  - Labs:
+    - Severe transaminase rise, high ammonia, raised bilirubin
+  - Management and recurrence:
+    - Prompt delivery; liver transplantation if needed
+    - Recurrence higher with the genetic mutation
+  src:
+    page: 268
+  status: unverified
+  tags:
+  - book-question

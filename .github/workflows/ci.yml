@@ -35,6 +35,8 @@ jobs:
       - run: cargo test --workspace
       - name: Content checks (schema, ids, pages, approvals)
         run: cargo run -q -p batna-tools -- validate
+      - name: Offline content pack builds and round-trips
+        run: cargo run -q -p batna-tools -- packs build --check
 
   android:
     name: Android arm64 compiles

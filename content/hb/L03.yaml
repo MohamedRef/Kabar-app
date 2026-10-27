@@ -1,0 +1,1242 @@
+schema: batna.content/v1
+lecture: hb.L03
+title: Portal Hypertension
+author: Prof. Mohamed Elhasafi
+book: { chapter: 1, pages: [37, 64] }
+topics:
+  - { id: overview, title: "Goals of treatment and epidemiology of varices" }
+  - { id: classification, title: "Definition and classification" }
+  - { id: pathophysiology, title: "Mechanisms (resistance and flow)" }
+  - { id: csph, title: "CSPH and natural history of varices" }
+  - { id: phg, title: "Portal hypertensive gastropathy" }
+  - { id: primary-prophylaxis, title: "Pre-primary and primary prophylaxis" }
+  - { id: acute-bleeding, title: "Acute variceal bleeding" }
+  - { id: endoscopy, title: "Band ligation, sclerotherapy and gastric varices" }
+  - { id: rescue-tips, title: "Tamponade, stents and TIPS" }
+  - { id: secondary-prophylaxis, title: "Preventing rebleeding" }
+items:
+  # --- Overview (p37) ---
+  - id: hb.L03.001
+    kind: card
+    topic: overview
+    front: Most common complication of cirrhosis, and main driver of hepatic decompensation?
+    back: Portal hypertension.
+    src: { page: 37, quote: "most common complication of cirrhosis and represents the main driver of hepatic decompensation" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.002
+    kind: card
+    topic: overview
+    front: Overarching goal of portal hypertension treatment in compensated cirrhosis?
+    back: To reduce the risk of hepatic decompensation (ascites, variceal bleeding and/or hepatic encephalopathy).
+    src: { page: 37 }
+    status: unverified
+  - id: hb.L03.003
+    kind: enumerate
+    topic: overview
+    prompt: In decompensated cirrhosis, PH-directed therapy aims to avoid further decompensation. Mention the further decompensating events it aims to prevent.
+    points:
+      - Recurrent or refractory ascites
+      - Variceal rebleeding
+      - Recurrent encephalopathy
+      - Spontaneous bacterial peritonitis
+      - Hepatorenal syndrome
+    pass: 4
+    src: { page: 37 }
+    status: unverified
+  - id: hb.L03.004
+    kind: cloze
+    topic: overview
+    text: About {{c1::30%}} of cirrhotics have esophageal varices at diagnosis, rising to {{c2::90%}} after about {{c3::ten years}}.
+    src: { page: 37 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L03.005
+    kind: cloze
+    topic: overview
+    text: "Three findings that predict the presence of varices in cirrhotics: INR {{c1::>1.5}}, portal vein diameter {{c2::>13 mm}}, and {{c3::thrombocytopenia}}."
+    src: { page: 37 }
+    status: unverified
+    tags: [numbers]
+
+  # --- Definition and classification (p38-39) ---
+  - id: hb.L03.006
+    kind: cloze
+    topic: classification
+    text: The book's definition figure shows portal hypertension as a portal-to-hepatic venous pressure gradient (ΔP) {{c1::> 10 mmHg}}.
+    src: { page: 38 }
+    status: unverified
+    tags: [numbers]
+    update:
+      text: Baveno VII defines portal hypertension as HVPG > 5 mmHg (normal 1–5) and clinically significant portal hypertension (CSPH) as HVPG ≥ 10 mmHg. The book's >10 mmHg figure matches CSPH.
+      ref: "Baveno VII consensus, 2021"
+  - id: hb.L03.007
+    kind: table
+    topic: classification
+    title: Classification of portal hypertension
+    columns: [Site, Causes]
+    rows:
+      - [Pre-hepatic, "Portal vein thrombosis; splenic vein thrombosis; massive splenomegaly"]
+      - ["Hepatic, pre-sinusoidal", "Schistosomiasis; congenital hepatic fibrosis"]
+      - ["Hepatic, sinusoidal", "Cirrhosis; alcoholic hepatitis"]
+      - ["Hepatic, post-sinusoidal", "Hepatic sinusoidal obstruction"]
+      - [Post-hepatic, "Budd-Chiari syndrome; IVC webs; cardiac causes (restrictive cardiomyopathy, constrictive pericarditis, severe CHF)"]
+    blanks: [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1]]
+    src: { page: 38 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.008
+    kind: cloze
+    topic: classification
+    text: "Pre-sinusoidal intrahepatic causes of portal hypertension: {{c1::schistosomiasis}} and {{c2::congenital hepatic fibrosis}}."
+    src: { page: 38 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.009
+    kind: card
+    topic: classification
+    front: Three pre-hepatic causes of portal hypertension?
+    back: Portal vein thrombosis, splenic vein thrombosis, massive splenomegaly.
+    src: { page: 38 }
+    status: unverified
+  - id: hb.L03.010
+    kind: enumerate
+    topic: classification
+    prompt: Enumerate the post-hepatic causes of portal hypertension.
+    points:
+      - Budd-Chiari syndrome
+      - Inferior vena caval webs
+      - Restrictive cardiomyopathy
+      - Constrictive pericarditis
+      - Severe congestive heart failure
+    pass: 4
+    src: { page: 39 }
+    status: unverified
+  - id: hb.L03.011
+    kind: card
+    topic: classification
+    front: Where does cirrhosis sit in the classification of portal hypertension?
+    back: Hepatic, sinusoidal (together with alcoholic hepatitis).
+    src: { page: 38 }
+    status: unverified
+
+  # --- Pathophysiology (p39-42) ---
+  - id: hb.L03.012
+    kind: cloze
+    topic: pathophysiology
+    text: "Portal pressure follows Ohm's law: P = {{c1::R × F}} (resistance × flow)."
+    src: { page: 39 }
+    status: unverified
+  - id: hb.L03.013
+    kind: card
+    topic: pathophysiology
+    front: Two haemodynamic factors that combine to cause portal hypertension?
+    back: Increased resistance to portal flow (mechanical and dynamic) and increased portal venous inflow (splanchnic vasodilatation).
+    src: { page: 39 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.014
+    kind: card
+    topic: pathophysiology
+    front: How does the normal liver respond to large changes in portal blood flow?
+    back: It accommodates them without appreciable change in portal pressure.
+    src: { page: 39 }
+    status: unverified
+  - id: hb.L03.015
+    kind: table
+    topic: pathophysiology
+    title: Components of increased intrahepatic resistance in cirrhosis
+    columns: [Component, Mechanism, Share, "Drug-modifiable?"]
+    rows:
+      - ["Architectural (mechanical, fixed)", "Distortion of vascular architecture by fibrosis, scarring, regenerative nodules; thrombosis", "~70%", "No"]
+      - ["Functional (dynamic)", "Active contraction of hepatic stellate cells, portal venule smooth muscle, myofibroblasts", "~30%", "Yes"]
+    blanks: [[0, 2], [1, 1], [1, 2], [1, 3]]
+    src: { page: 40 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L03.016
+    kind: cloze
+    topic: pathophysiology
+    text: Of the increased intrahepatic resistance in cirrhosis, about {{c1::70%}} is fixed (architectural) and about {{c2::30%}} is dynamic (modifiable by drugs).
+    src: { page: 40 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L03.017
+    kind: card
+    topic: pathophysiology
+    front: Which cells actively contract to produce the dynamic component of intrahepatic resistance?
+    back: Hepatic stellate cells, vascular smooth muscle cells of the portal venules, and myofibroblasts.
+    src: { page: 40 }
+    status: unverified
+  - id: hb.L03.018
+    kind: card
+    topic: pathophysiology
+    front: Intrahepatic vasoconstrictors that raise intrahepatic resistance in cirrhosis (book figure)?
+    back: Endothelin, angiotensin, norepinephrine, vasopressin, leukotrienes, thromboxane.
+    src: { page: 40 }
+    status: unverified
+  - id: hb.L03.019
+    kind: card
+    topic: pathophysiology
+    front: Two vasodilators on the dilator side of the book's vasodilator/vasoconstrictor balance figure?
+    back: Nitric oxide (NO) and carbon monoxide (CO). In cirrhosis the balance tips toward the vasoconstrictors, raising intrahepatic resistance.
+    src: { page: 40 }
+    status: unverified
+  - id: hb.L03.020
+    kind: enumerate
+    topic: pathophysiology
+    prompt: Mention the vasodilators increased in the splanchnic circulation in cirrhosis.
+    points:
+      - Glucagon
+      - Endocannabinoids
+      - Nitric oxide
+      - Prostacyclin
+      - Carbon monoxide
+    pass: 4
+    src: { page: 41 }
+    status: unverified
+  - id: hb.L03.021
+    kind: card
+    topic: pathophysiology
+    front: Besides vasodilators, what second process drives splanchnic hyperaemia and new collaterals in cirrhosis?
+    back: Increased angiogenesis (angiogenic factors such as VEGF), forming new vessels that feed varices.
+    src: { page: 41 }
+    status: unverified
+  - id: hb.L03.022
+    kind: card
+    topic: pathophysiology
+    front: What does portal pressure correlate with in chronic hepatitis?
+    back: The severity of fibrosis.
+    src: { page: 41 }
+    status: unverified
+  - id: hb.L03.023
+    kind: order
+    topic: pathophysiology
+    prompt: Put in order the chain from splanchnic vasodilatation to sodium retention and the hyperdynamic state (Garcia-Tsao and Bosch figure).
+    steps:
+      - Decreased splanchnic and systemic arteriolar resistance
+      - Decreased effective arterial blood volume
+      - Activation of neurohumoral systems (RAAS, etc.)
+      - Sodium and water retention
+      - Hyperdynamic circulatory state, which further increases portal inflow
+    src: { page: 42 }
+    status: unverified
+  - id: hb.L03.024
+    kind: enumerate
+    topic: pathophysiology
+    prompt: Mention the three clinical consequences of increased portal pressure shown in the book figure.
+    points:
+      - Varices and variceal hemorrhage
+      - Ascites
+      - Encephalopathy
+    pass: 3
+    src: { page: 42 }
+    status: unverified
+
+  # --- CSPH and natural history (p43-44) ---
+  - id: hb.L03.025
+    kind: cloze
+    topic: csph
+    text: Clinically significant portal hypertension (CSPH) is defined as an HVPG {{c1::> 10 mmHg}}.
+    src: { page: 43, quote: "Defined as an HVPG >10 mmHg" }
+    status: unverified
+    tags: [numbers, high-yield]
+    update:
+      text: Baveno VII defines CSPH as HVPG ≥ 10 mmHg.
+      ref: "Baveno VII consensus, 2021"
+  - id: hb.L03.026
+    kind: card
+    topic: csph
+    front: Three outcomes that CSPH predicts?
+    back: Development of varices, clinical decompensation, and HCC.
+    src: { page: 43 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.027
+    kind: card
+    topic: csph
+    front: Two liver biopsy findings that independently predict CSPH in cirrhosis?
+    back: Thick fibrous septae and small nodule size.
+    src: { page: 43 }
+    status: unverified
+  - id: hb.L03.028
+    kind: cloze
+    topic: csph
+    text: Varices form when HVPG exceeds {{c1::10 mmHg}}; variceal rupture occurs when HVPG exceeds {{c2::12 mmHg}}.
+    src: { page: 43 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L03.029
+    kind: card
+    topic: csph
+    front: When should cirrhotic patients be screened for varices (book)?
+    back: All cirrhotic patients should be screened for varices at diagnosis.
+    src: { page: 44, quote: "All cirrhotic patients should be screened for varices at diagnosis" }
+    status: unverified
+    update:
+      text: Baveno VI/VII allow skipping screening endoscopy when liver stiffness is < 20 kPa and platelets are > 150,000/µL (repeat these tests yearly).
+      ref: "Baveno VII consensus, 2021"
+  - id: hb.L03.030
+    kind: table
+    topic: csph
+    title: Natural history of esophageal varices (book figure)
+    columns: [Stage, Figure]
+    rows:
+      - ["Cirrhotics without varices", "~50%"]
+      - ["New varices form (no varices → varices)", "4–5% per year"]
+      - ["Small → large varices", "12% per year"]
+      - ["Bleeding risk, small varices", "<10% at 2 years"]
+      - ["Bleeding risk, large varices", ">25% at 2 years"]
+      - ["Rebleeding after a first bleed", "63% at 2 years"]
+    blanks: [[1, 1], [2, 1], [3, 1], [4, 1], [5, 1]]
+    src: { page: 44 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L03.031
+    kind: cloze
+    topic: csph
+    text: Without prevention, the risk of variceal rebleeding after a first bleed is about {{c1::63%}} at 2 years.
+    src: { page: 44 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L03.032
+    kind: cloze
+    topic: csph
+    text: Bleeding risk at 2 years is {{c1::<10%}} for small varices and {{c2::>25%}} for large varices.
+    src: { page: 44 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L03.033
+    kind: order
+    topic: csph
+    prompt: Order the stages of the natural history of varices and the matching level of prevention.
+    steps:
+      - "No varices: pre-primary prophylaxis (preventing variceal formation)"
+      - "Small varices: preventing variceal growth"
+      - "Large varices: primary prophylaxis (preventing first bleeding)"
+      - "Variceal bleeding: treating acute bleeding"
+      - "After the bleed: secondary prophylaxis (preventing rebleeding)"
+    src: { page: 44 }
+    status: unverified
+
+  # --- PHG (p44-45) ---
+  - id: hb.L03.034
+    kind: card
+    topic: phg
+    front: How is portal hypertensive gastropathy (PHG) diagnosed?
+    back: Endoscopically.
+    src: { page: 45, quote: "The diagnosis of PHG is made endoscopically" }
+    status: unverified
+
+  # --- Pre-primary and primary prophylaxis (p45-48) ---
+  - id: hb.L03.035
+    kind: enumerate
+    topic: primary-prophylaxis
+    prompt: "Cirrhosis with no varices: what does the book recommend (Conclusion I)?"
+    points:
+      - No specific pre-primary prophylaxis
+      - Treat the underlying liver disease
+      - Follow-up endoscopy after 2–3 years
+    pass: 3
+    src: { page: 45 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.036
+    kind: card
+    topic: primary-prophylaxis
+    front: Can beta-blockers be recommended to prevent the formation of varices?
+    back: No. Beta-blockers cannot be recommended to prevent the formation of varices.
+    src: { page: 46, quote: "Beta-blockers cannot be recommended to prevent the formation of varices." }
+    status: unverified
+    tags: [high-yield]
+    update:
+      text: Baveno VII recommends NSBBs (carvedilol preferred) in compensated cirrhosis with CSPH to prevent decompensation, whether or not varices are present. They are still not given just to stop varices forming in patients without CSPH.
+      ref: "Baveno VII consensus, 2021"
+  - id: hb.L03.037
+    kind: card
+    topic: primary-prophylaxis
+    front: Which patients with small varices could be treated (book)?
+    back: Especially those with red colour signs and/or Child C class.
+    src: { page: 45 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.038
+    kind: card
+    topic: primary-prophylaxis
+    front: First-choice primary prophylaxis for moderate or large varices, and the alternative?
+    back: Beta-blockers. EBL is offered to those with contraindications or intolerance to beta-blockers.
+    src: { page: 45 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.039
+    kind: card
+    topic: primary-prophylaxis
+    front: "Baveno IV (2005): EBL vs non-selective beta-blockers for preventing the first variceal bleed?"
+    back: EBL is more effective at preventing the first bleed but does not improve survival; its long-term benefit is uncertain because follow-up was short.
+    src: { page: 46 }
+    status: unverified
+  - id: hb.L03.040
+    kind: table
+    topic: primary-prophylaxis
+    title: Rational basis for treating portal hypertension (P = R × F)
+    columns: [Target, Drug or procedure]
+    rows:
+      - ["Increased hepatic resistance (mechanical/dynamic)", "Vasodilators (nitrates); TIPS"]
+      - ["Increased splanchnic blood flow", "Vasoconstrictors: beta-blockers, terlipressin, somatostatin"]
+    blanks: [[0, 1], [1, 1]]
+    src: { page: 46 }
+    status: unverified
+  - id: hb.L03.041
+    kind: enumerate
+    topic: primary-prophylaxis
+    prompt: Medium or large varices with contraindications or side-effects of beta-blockers. Mention the options the book lists as assessed.
+    points:
+      - No treatment
+      - Long-acting nitrates
+      - Endoscopic band ligation
+    pass: 2
+    src: { page: 47 }
+    status: unverified
+  - id: hb.L03.042
+    kind: card
+    topic: primary-prophylaxis
+    front: Carvedilol vs propranolol for HVPG reduction?
+    back: Carvedilol lowers HVPG significantly more, and many propranolol non-responders achieve a haemodynamic response on carvedilol.
+    src: { page: 47 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.043
+    kind: card
+    topic: primary-prophylaxis
+    front: What extra property of carvedilol explains its greater HVPG effect?
+    back: Additional α1-adrenergic blockade, which lowers intrahepatic resistance on top of the beta-blocker fall in portal inflow.
+    src: { page: 47 }
+    status: unverified
+  - id: hb.L03.044
+    kind: cloze
+    topic: primary-prophylaxis
+    text: A haemodynamic response to beta-blockers is an HVPG reduction of {{c1::≥ 20%}} or to {{c2::< 12 mmHg}}.
+    src: { page: 47 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L03.045
+    kind: card
+    topic: primary-prophylaxis
+    front: Outcomes improved by achieving a haemodynamic response on carvedilol?
+    back: Fewer variceal bleeds, less hepatic decompensation, and lower mortality.
+    src: { page: 47 }
+    status: unverified
+  - id: hb.L03.046
+    kind: cloze
+    topic: primary-prophylaxis
+    text: The target dose of carvedilol to treat portal hypertension is {{c1::12.5 mg/day}}.
+    src: { page: 48, quote: "The target dose of carvedilol to treat PH should be 12.5 mg/day." }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L03.047
+    kind: card
+    topic: primary-prophylaxis
+    front: Is carvedilol safe in decompensated cirrhosis with ascites?
+    back: Yes, it is not harmful and may improve survival, provided systemic haemodynamics and renal function are not impaired. Maintained arterial blood pressure is the safety surrogate.
+    src: { page: 48 }
+    status: unverified
+
+  # --- Acute variceal bleeding (p48-50) ---
+  - id: hb.L03.048
+    kind: card
+    topic: acute-bleeding
+    front: First measures in acute variceal haemorrhage?
+    back: General resuscitation, by securing the airway and stabilising the circulation.
+    src: { page: 48 }
+    status: unverified
+  - id: hb.L03.049
+    kind: cloze
+    topic: acute-bleeding
+    text: Vasoactive drugs (octreotide or terlipressin) stop variceal bleeding, at least temporarily, in up to {{c1::80%}}; endoscopic sclerotherapy or ligation stops it in up to {{c2::90%}}.
+    src: { page: 48 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L03.050
+    kind: card
+    topic: acute-bleeding
+    front: What kinds of drug are octreotide and terlipressin?
+    back: Octreotide is a synthetic somatostatin analogue; terlipressin is a synthetic vasopressin analogue.
+    src: { page: 48 }
+    status: unverified
+  - id: hb.L03.051
+    kind: card
+    topic: acute-bleeding
+    front: How does somatostatin lower portal pressure, and how does it compare with octreotide?
+    back: It inhibits release of vasodilator hormones, causing splanchnic vasoconstriction and less portal inflow. It may be superior to octreotide; both are safe with very few side effects.
+    src: { page: 48 }
+    status: unverified
+  - id: hb.L03.052
+    kind: cloze
+    topic: acute-bleeding
+    text: Combining octreotide (or terlipressin) for {{c1::3–5 days}} with endoscopic therapy reduces early rebleeding and transfusion needs compared with either alone.
+    src: { page: 48 }
+    status: unverified
+    tags: [numbers, high-yield]
+    update:
+      text: Baveno VII advises continuing the vasoactive drug for 2–5 days. The book's own algorithm on p54 also says 2–5 days.
+      ref: "Baveno VII consensus, 2021"
+  - id: hb.L03.053
+    kind: cloze
+    topic: acute-bleeding
+    text: In acute variceal bleeding, replace volume carefully, aiming for Hb between {{c1::7 and 9 g/dL}}.
+    src: { page: 48 }
+    status: unverified
+    tags: [numbers, high-yield]
+    update:
+      text: Baveno VII uses a restrictive strategy, transfusing at Hb about 7 g/dL with a target of 7–8 g/dL.
+      ref: "Baveno VII consensus, 2021"
+  - id: hb.L03.054
+    kind: card
+    topic: acute-bleeding
+    front: Why avoid over-transfusion in variceal bleeding (rat model evidence)?
+    back: Transfusion raised portal pressure, blood loss and mortality.
+    src: { page: 48 }
+    status: unverified
+  - id: hb.L03.055
+    kind: card
+    topic: acute-bleeding
+    front: Is variceal bleeding caused by haemostatic failure?
+    back: No. It is attributable to portal hypertension and local vascular abnormalities, not haemostatic failure.
+    src: { page: 49 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.056
+    kind: card
+    topic: acute-bleeding
+    front: Effect of FFP transfusion in acute variceal bleeding?
+    back: It is ineffective and harmful, linked to more failure to control bleeding at 5 days and higher mortality at 42 days.
+    src: { page: 49 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.057
+    kind: enumerate
+    topic: acute-bleeding
+    prompt: Mention the adverse events of FFP or platelet transfusion in acute variceal bleeding.
+    points:
+      - Infection
+      - Transfusion-related acute lung injury (TRALI)
+      - Transfusion-associated circulatory overload (TACO)
+    pass: 3
+    src: { page: 49 }
+    status: unverified
+  - id: hb.L03.058
+    kind: card
+    topic: acute-bleeding
+    front: Main complication associated with variceal haemorrhage, and its standard prevention?
+    back: Bacterial infection. Short-term antibiotic prophylaxis lowers infections and increases survival; it is standard of care.
+    src: { page: 49 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.059
+    kind: card
+    topic: acute-bleeding
+    front: Preferred antibiotic in variceal bleeding with advanced liver disease and haemodynamic instability?
+    back: Intravenous ceftriaxone.
+    src: { page: 50 }
+    status: unverified
+  - id: hb.L03.060
+    kind: order
+    topic: acute-bleeding
+    prompt: Put the management of acute variceal bleeding in order (book algorithm).
+    steps:
+      - "General management: airway, antibiotics, careful volume replacement; start a vasoactive drug early (terlipressin, somatostatin, or octreotide/vapreotide)"
+      - Endoscopy with EBL or sclerotherapy, keeping the drug for 2–5 days
+      - "If bleeding is not controlled or recurs early: a second course of endoscopic therapy"
+      - "If that fails or rebleeding recurs: rescue covered TIPS (balloon tamponade or stent as bridge)"
+    src: { page: 54 }
+    status: unverified
+    tags: [high-yield]
+
+  # --- Endoscopic therapy and gastric varices (p50-53) ---
+  - id: hb.L03.061
+    kind: cloze
+    topic: endoscopy
+    text: Endoscopic band ligation should be done within the first {{c1::12 hours}} (preferably the first {{c2::6 hours}}) after stabilising the patient.
+    src: { page: 52 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L03.062
+    kind: cloze
+    topic: endoscopy
+    text: EBL controls bleeding in {{c1::90%}}, with a rebleeding rate of {{c2::15–20%}}.
+    src: { page: 52 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L03.063
+    kind: enumerate
+    topic: endoscopy
+    prompt: Mention the advantages of band ligation over sclerotherapy.
+    points:
+      - Less rebleeding
+      - Lower mortality
+      - Fewer complications
+      - Fewer treatment sessions
+    pass: 3
+    src: { page: 52 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.064
+    kind: card
+    topic: endoscopy
+    front: Common local findings after sclerotherapy?
+    back: Ulcers, erosions and adhesions.
+    src: { page: 50 }
+    status: unverified
+  - id: hb.L03.065
+    kind: card
+    topic: endoscopy
+    front: What is seen at banding sites about seven days after band ligation?
+    back: Ulceration at the banding sites.
+    src: { page: 51 }
+    status: unverified
+  - id: hb.L03.066
+    kind: cloze
+    topic: endoscopy
+    text: Gastric varices are present in {{c1::5–30%}} of cirrhotics and cause {{c2::10–15%}} of variceal bleeding episodes.
+    src: { page: 52 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L03.067
+    kind: card
+    topic: endoscopy
+    front: Risk factors for gastric variceal bleeding?
+    back: Size, Child class, and presence of red spots.
+    src: { page: 52 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.068
+    kind: card
+    topic: endoscopy
+    front: Standard endoscopic therapy for gastric varices?
+    back: Cyanoacrylate injection.
+    src: { page: 52 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.069
+    kind: table
+    topic: endoscopy
+    title: Cyanoacrylate for gastric varices
+    columns: [Pros, Cons]
+    rows:
+      - ["Effective; most studied", "High risk of complications, local and systemic (embolic)"]
+      - ["Standard first line in many centres", "High rebleeding rate"]
+      - ["May avoid further interventions; cost-effective", "Cumbersome; can damage the scope; not approved in the USA and other countries"]
+    blanks: [[0, 1], [1, 1], [2, 1]]
+    src: { page: 53 }
+    status: unverified
+  - id: hb.L03.070
+    kind: card
+    topic: endoscopy
+    front: Serious systemic complication of cyanoacrylate injection?
+    back: Embolism.
+    src: { page: 53 }
+    status: unverified
+  - id: hb.L03.071
+    kind: card
+    topic: endoscopy
+    front: How does thrombin work for gastric varices, and what are its side effects?
+    back: It converts fibrinogen to a fibrin clot. It has no important side effects (human or bovine lyophilised powder, about 5–10 mL per session).
+    src: { page: 53 }
+    status: unverified
+
+  # --- Rescue therapies and TIPS (p54-56) ---
+  - id: hb.L03.072
+    kind: cloze
+    topic: rescue-tips
+    text: About {{c1::10–15%}} of variceal bleeds do not respond to initial therapy.
+    src: { page: 54 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L03.073
+    kind: cloze
+    topic: rescue-tips
+    text: Rebleeding is defined as hematemesis more than {{c1::2 hours}} after therapy, or an Hb drop of more than {{c2::3 g/dL}}.
+    src: { page: 54 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L03.074
+    kind: card
+    topic: rescue-tips
+    front: Role of balloon tamponade in variceal bleeding, and its side-effect rate?
+    back: A bridge in severe bleeding. Side effects in 15–20% (perforation, pneumonia, pain).
+    src: { page: 54 }
+    status: unverified
+  - id: hb.L03.075
+    kind: card
+    topic: rescue-tips
+    front: Why is balloon tamponade use decreasing?
+    back: High risk of rebleeding after deflation and a risk of major complications.
+    src: { page: 54 }
+    status: unverified
+  - id: hb.L03.076
+    kind: enumerate
+    topic: rescue-tips
+    prompt: Mention the features of fully covered expandable metallic stents as an alternative to balloon tamponade.
+    points:
+      - Nitinol or plastic
+      - Can be placed without endoscopy
+      - Haemostasis by direct compression of varices
+      - Seem safe
+      - Oral intake can be offered afterwards
+    pass: 3
+    src: { page: 54 }
+    status: unverified
+    update:
+      text: Baveno VII prefers a self-expanding metal stent over balloon tamponade as a bridge in refractory oesophageal variceal bleeding.
+      ref: "Baveno VII consensus, 2021"
+  - id: hb.L03.077
+    kind: card
+    topic: rescue-tips
+    front: Where does balloon tamponade still have a place, according to the book?
+    back: Where TIPS is not readily available. It stops bleeding at least temporarily and buys time to reach TIPS.
+    src: { page: 55 }
+    status: unverified
+  - id: hb.L03.078
+    kind: card
+    topic: rescue-tips
+    front: What does a TIPS connect, and what kind of shunt is it?
+    back: A metal stent between the intrahepatic portal vein and hepatic vein, creating a nonselective portocaval shunt.
+    src: { page: 55 }
+    status: unverified
+  - id: hb.L03.079
+    kind: cloze
+    topic: rescue-tips
+    text: Early TIPS (within {{c1::24 hours}} of the bleed) improved survival in high-risk patients, defined as HVPG {{c2::> 20 mmHg}}.
+    src: { page: 55 }
+    status: unverified
+    tags: [numbers, high-yield]
+    update:
+      text: Baveno VII advises pre-emptive covered TIPS within 72 hours (ideally within 24 hours) for Child C < 14 points, or Child B > 7 points with active bleeding at endoscopy, or HVPG > 20 mmHg.
+      ref: "Baveno VII consensus, 2021"
+  - id: hb.L03.080
+    kind: card
+    topic: rescue-tips
+    front: Most important medical complication after TIPS, and when does it present?
+    back: Hepatic encephalopathy, usually as acute mental worsening within 2–3 weeks of shunt placement.
+    src: { page: 56 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.081
+    kind: enumerate
+    topic: rescue-tips
+    prompt: Mention the key risk factors for encephalopathy after TIPS.
+    points:
+      - Increasing age
+      - Liver dysfunction
+      - Shunt diameter
+      - Bare (uncovered) stents
+    pass: 3
+    src: { page: 56 }
+    status: unverified
+  - id: hb.L03.082
+    kind: card
+    topic: rescue-tips
+    front: Two TIPS-specific complications seen mainly with bare stents?
+    back: TIPS-associated hemolysis and vegetative infection of the stent (treated with prolonged antibiotics). Both are rare with coated stents.
+    src: { page: 56 }
+    status: unverified
+  - id: hb.L03.083
+    kind: card
+    topic: rescue-tips
+    front: Two uses of TIPS in variceal haemorrhage?
+    back: Salvage therapy for acute bleeding and secondary prophylaxis of rebleeding.
+    src: { page: 56 }
+    status: unverified
+
+  # --- Secondary prophylaxis (p56) ---
+  - id: hb.L03.084
+    kind: card
+    topic: secondary-prophylaxis
+    front: Drug combination the book says is more effective than beta-blockers alone for preventing rebleeding?
+    back: Non-selective beta-blocker plus isosorbide-5-mononitrate (IsMN), which enhances the HVPG fall.
+    src: { page: 56 }
+    status: unverified
+    tags: [high-yield]
+    update:
+      text: Baveno VI and VII make NSBB (propranolol or carvedilol) plus EBL the first-line secondary prophylaxis. Nitrates are no longer recommended.
+      ref: "Baveno VII consensus, 2021"
+  - id: hb.L03.085
+    kind: card
+    topic: secondary-prophylaxis
+    front: EBL vs sclerotherapy for preventing rebleeding?
+    back: EBL is more effective, has fewer side effects and needs fewer sessions to eradicate varices.
+    src: { page: 56 }
+    status: unverified
+
+  # --- Own MCQs (vignettes from the lecture text) ---
+  - id: hb.L03.086
+    kind: mcq
+    topic: acute-bleeding
+    stem: A 50-year-old man with alcoholic cirrhosis presents with hematemesis. BP 90/60, Hb 6.8 g/dL, INR 1.9, platelets 60,000/µL. Octreotide and ceftriaxone are started. Which additional measure is most appropriate before endoscopy?
+    options:
+      - Transfuse packed red cells to an Hb of about 7–9 g/dL
+      - Transfuse packed red cells to an Hb of at least 10 g/dL
+      - Give fresh frozen plasma to correct the INR
+      - Give platelet concentrate to above 100,000/µL
+      - Give large-volume crystalloids to normalise the BP
+    answer: 0
+    why:
+      - Correct. Careful volume replacement to Hb 7–9 g/dL (book p48).
+      - Over-transfusion raises portal pressure and rebleeding.
+      - FFP is ineffective and harmful in variceal bleeding (more failure at 5 days and deaths at 42 days).
+      - Variceal bleeding is not due to haemostatic failure; platelets are likely ineffective and carry transfusion risks.
+      - Aggressive volume expansion raises portal pressure; replacement should be careful.
+    src: { page: 48 }
+    status: unverified
+  - id: hb.L03.087
+    kind: mcq
+    topic: primary-prophylaxis
+    stem: A 58-year-old woman with compensated HCV cirrhosis has large esophageal varices without red signs on screening endoscopy. She has never bled and has no contraindication to beta-blockers. What is the preferred primary prophylaxis according to the lecture?
+    options:
+      - A non-selective beta-blocker such as carvedilol
+      - Isosorbide mononitrate alone
+      - TIPS
+      - Sclerotherapy
+      - No treatment; repeat endoscopy in 2–3 years
+    answer: 0
+    why:
+      - Correct. Beta-blockers are the treatment of choice; carvedilol lowers HVPG more than propranolol (p45, p47).
+      - Long-acting nitrates alone are only an option assessed when beta-blockers cannot be used.
+      - TIPS is salvage therapy for acute bleeding or secondary prophylaxis, not primary prophylaxis.
+      - Sclerotherapy is not used for primary prophylaxis; EBL is the endoscopic option.
+      - Large varices carry >25% bleeding risk at 2 years and need prophylaxis.
+    src: { page: 45 }
+    status: unverified
+  - id: hb.L03.088
+    kind: mcq
+    topic: csph
+    stem: In a patient with cirrhosis, HVPG is measured at 14 mmHg. What does this value imply according to the lecture?
+    options:
+      - CSPH, with a pressure high enough for varices to rupture
+      - Normal portal pressure
+      - Portal hypertension but below the threshold for varices to form
+      - Pre-sinusoidal portal hypertension only
+      - A haemodynamic response to beta-blockers
+    answer: 0
+    why:
+      - Correct. CSPH is HVPG >10 mmHg and rupture occurs above 12 mmHg (p43).
+      - Normal HVPG is far below 10 mmHg.
+      - Varices form once HVPG exceeds 10 mmHg, so 14 is above that threshold.
+      - Pre-sinusoidal disease gives a normal wedged pressure and a normal HVPG; an HVPG of 14 means sinusoidal disease.
+      - A response is an HVPG fall of ≥20% or to <12 mmHg; one value alone cannot show a response.
+    src: { page: 43 }
+    status: unverified
+  - id: hb.L03.089
+    kind: mcq
+    topic: rescue-tips
+    stem: Three weeks after a covered TIPS for refractory variceal bleeding, a 70-year-old man with Child B cirrhosis becomes confused and drowsy. What is the most likely cause?
+    options:
+      - Hepatic encephalopathy from the portosystemic shunt
+      - TIPS-associated hemolysis
+      - Stent infection
+      - Recurrent variceal bleeding
+      - Stent occlusion
+    answer: 0
+    why:
+      - Correct. Encephalopathy is the most important medical complication after TIPS, typically within 2–3 weeks; age and liver dysfunction add risk (p55–56).
+      - Hemolysis is rare with coated stents and causes jaundice and anaemia, not isolated confusion.
+      - Vegetative stent infection was reported mainly with bare stents and presents with fever and bacteraemia.
+      - There is no bleeding in the vignette, and TIPS lowers rebleeding.
+      - Occlusion raises portal pressure again and would reduce, not cause, shunt encephalopathy.
+    src: { page: 56 }
+    status: unverified
+  - id: hb.L03.090
+    kind: mcq
+    topic: acute-bleeding
+    stem: A man with Child C cirrhosis and variceal bleeding is haemodynamically unstable. Which antibiotic does the lecture favour as prophylaxis?
+    options:
+      - Intravenous ceftriaxone
+      - Oral norfloxacin
+      - No antibiotic unless infection is proven
+      - Oral rifaximin
+      - Intravenous vancomycin
+    answer: 0
+    why:
+      - Correct. IV ceftriaxone may be superior in advanced liver disease with haemodynamic instability (p50).
+      - Oral quinolones are less suitable in advanced disease and shock, and oral intake is unsafe while bleeding.
+      - Short-term prophylaxis is standard of care and improves survival (p49).
+      - Rifaximin is for hepatic encephalopathy, not prophylaxis in bleeding.
+      - Vancomycin does not cover the gram-negative gut organisms that cause these infections.
+    src: { page: 50 }
+    status: unverified
+
+  # --- Cases ---
+  - id: hb.L03.091
+    kind: case
+    topic: acute-bleeding
+    stem: A 54-year-old man with known HCV cirrhosis arrives with two episodes of large-volume hematemesis. He is pale and confused, BP 85/50, pulse 120.
+    steps:
+      - reveal: He is still vomiting blood and his airway is at risk.
+        question: What comes first?
+        options: [Secure the airway and stabilise the circulation, Urgent endoscopy before anything else, Balloon tamponade, Start propranolol]
+        answer: 0
+        why: "Initial measures are general resuscitation, airway and circulation (p48). Other options. B: Endoscopy follows stabilisation, within 12 hours. C: Tamponade is a rescue bridge after failed first-line therapy. D: Beta-blockers are for prophylaxis and would worsen shock."
+      - reveal: He is intubated and lines are in. Hb 6.5 g/dL, INR 2.0, platelets 55,000/µL.
+        question: Which drug package should start now, before endoscopy?
+        options: [Vasoactive drug (terlipressin or somatostatin/octreotide) plus IV ceftriaxone, FFP and platelets, Tranexamic acid alone, IV proton pump inhibitor alone]
+        answer: 0
+        why: "Early vasoactive drug plus antibiotic prophylaxis are standard (p48–50, p54 algorithm). Other options. B: FFP is ineffective and harmful; variceal bleeding is not a haemostatic failure. C: The lecture does not support haemostatic drugs; the bleeding is due to portal pressure. D: Acid suppression does not lower portal pressure."
+      - reveal: Endoscopy at 5 hours shows a spurting oesophageal varix.
+        question: Best endoscopic therapy?
+        options: [Band ligation, Sclerotherapy, Cyanoacrylate injection, Argon plasma coagulation]
+        answer: 0
+        why: "EBL has less rebleeding, lower mortality and fewer complications than sclerotherapy (p52). Other options. B: Sclerotherapy works but is inferior to EBL. C: Cyanoacrylate is the standard for gastric, not oesophageal, varices. D: APC is not a variceal therapy."
+      - reveal: Bleeding stops. Six hours later he vomits fresh blood and his Hb drops by 3.5 g/dL despite the drugs.
+        question: The second endoscopic attempt also fails. What next?
+        options: ["Rescue covered TIPS, with balloon tamponade or a stent as a bridge if needed", Stop the vasoactive drug, Third endoscopy in 2 weeks, Transfuse to Hb 12 g/dL]
+        answer: 0
+        why: "Failure after a second endoscopic course goes to rescue covered TIPS (p54–55). Other options. B: The drug should continue 2–5 days. C: Ongoing bleeding needs rescue now. D: Over-transfusion raises portal pressure and bleeding."
+    src: { page: 54 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L03.092
+    kind: case
+    topic: primary-prophylaxis
+    stem: A 60-year-old man with newly diagnosed alcoholic cirrhosis comes to clinic. He has stopped drinking. He has never bled.
+    steps:
+      - reveal: Platelets 90,000/µL, INR 1.6, ultrasound portal vein diameter 14 mm.
+        question: What should be done about varices?
+        options: [Screening endoscopy now, No endoscopy needed, Start beta-blocker without endoscopy, Endoscopy only if he bleeds]
+        answer: 0
+        why: "All cirrhotics should be screened at diagnosis, and his INR >1.5, PV >13 mm and low platelets predict varices (p37, p44). Other options. B: The book recommends screening every cirrhotic. C: Beta-blockers cannot be recommended to prevent the formation of varices, and treatment depends on what endoscopy shows. D: Waiting for a bleed misses primary prophylaxis."
+      - reveal: Endoscopy shows no varices.
+        question: Plan?
+        options: [Treat the underlying liver disease and repeat endoscopy in 2–3 years, Start propranolol, Prophylactic band ligation, Repeat endoscopy in 3 months]
+        answer: 0
+        why: "Conclusion I for no varices (p45). Other options. B: No pre-primary prophylaxis is indicated. C: There is nothing to band. D: Too frequent; varices appear at 4–5% per year."
+      - reveal: Three years later, endoscopy shows large varices. He has asthma and cannot take beta-blockers.
+        question: Best primary prophylaxis?
+        options: [Endoscopic band ligation, Carvedilol, TIPS, Sclerotherapy]
+        answer: 0
+        why: "EBL is offered when beta-blockers are contraindicated (p45). Other options. B: Carvedilol is also a beta-blocker, so asthma contraindicates it. C: TIPS is not used for primary prophylaxis. D: Sclerotherapy has more complications and is not used for primary prophylaxis."
+    src: { page: 45 }
+    status: unverified
+  - id: hb.L03.093
+    kind: case
+    topic: endoscopy
+    stem: A 48-year-old woman with Child B cirrhosis presents with melena and hypotension. After resuscitation, octreotide and ceftriaxone, endoscopy is done.
+    steps:
+      - reveal: Oesophageal varices are small without stigmata. A large fundal varix has a fibrin plug.
+        question: Best endoscopic therapy for the source?
+        options: [Cyanoacrylate injection, Band ligation of the small oesophageal varices, Argon plasma coagulation, Balloon tamponade first]
+        answer: 0
+        why: "Cyanoacrylate is the standard endoscopic therapy for gastric varices (p52). Other options. B: The oesophageal varices are not the source. C: APC treats mucosal lesions, not varices. D: Tamponade is a bridge after failed first-line therapy."
+      - reveal: After injection she develops sudden dyspnoea and hypoxia.
+        question: Most likely cause?
+        options: [Embolism of the glue, Transfusion-related acute lung injury from FFP, Aspiration from tamponade, Hepatopulmonary syndrome]
+        answer: 0
+        why: "Cyanoacrylate carries a systemic embolic risk (p53). Other options. B: She did not receive FFP in the vignette. C: No tamponade was used. D: HPS is chronic, not a sudden event after injection."
+    src: { page: 53 }
+    status: unverified
+
+  # --- Book questions (p57-64). No answer key in the book. ---
+  - id: hb.L03.094
+    kind: mcq
+    topic: classification
+    stem: Which of the following conditions can cause pre-sinusoidal portal hypertension?
+    options:
+      - Right-sided heart failure
+      - Budd-Chiari syndrome
+      - Constrictive pericarditis
+      - Schistosomiasis
+      - Inferior vena cava webs
+    answer: 3
+    why:
+      - Post-hepatic (cardiac) cause.
+      - Post-hepatic (hepatic venous outflow) cause.
+      - Post-hepatic (cardiac) cause.
+      - Correct. Schistosomiasis is the book's pre-sinusoidal intrahepatic cause (p38).
+      - Post-hepatic cause. The book option reads only "Inferior vena cava".
+    src: { page: 57 }
+    status: unverified
+    tags: [book-question, no-key]
+  - id: hb.L03.095
+    kind: mcq
+    topic: endoscopy
+    stem: A 55-year-old man with HCV cirrhosis had small varices that flattened with insufflation a year ago. Surveillance endoscopy now shows a large column of varices. During banding, a little oozing occurs and stops with more bands. What is the next step?
+    options:
+      - Start norfloxacin for SBP prevention
+      - Overnight observation for further bleeding
+      - Endoscopy in 2 weeks
+      - Endoscopy in 3 months
+      - Start ceftriaxone for SBP prevention
+    answer: 2
+    why:
+      - Antibiotic prophylaxis is for acute variceal haemorrhage, not minor oozing during elective banding.
+      - Oozing that stops during banding does not need admission.
+      - Correct. Banding is repeated every few weeks until varices are eradicated. The lecture does not give the interval; this is standard guideline practice (every 2–8 weeks).
+      - Three months is too long between banding sessions before eradication.
+      - Same as A; no acute bleed, so no antibiotic prophylaxis.
+    src: { page: 57 }
+    status: unverified
+    tags: [book-question, no-key]
+  - id: hb.L03.096
+    kind: mcq
+    topic: csph
+    stem: "A 62-year-old man with chronic HCV and newly diagnosed cirrhosis is referred for transplant evaluation. He is stable, with scleral icterus and no ascites. Labs: AST 65, ALT 44, ALP 110, bilirubin 3.6, haematocrit 33%, platelets 56,000/µL, creatinine 0.8, INR 1.6, MELD 16. Which next step does the lecture recommend for this patient?"
+    options:
+      - Upper endoscopy to screen for varices
+      - Start a beta-blocker without endoscopy to prevent varices forming
+      - Repeat assessment in 3 years
+      - Liver biopsy to confirm CSPH before endoscopy
+      - Prophylactic TIPS
+    answer: 0
+    why:
+      - Correct. All cirrhotics should be screened at diagnosis, and his INR >1.5 and thrombocytopenia predict varices (p37, p44).
+      - Beta-blockers cannot be recommended to prevent the formation of varices (p46).
+      - He is newly diagnosed and has never been screened.
+      - Biopsy is not needed; the clinical picture already indicates screening.
+      - TIPS is never primary prophylaxis.
+    src: { page: 57 }
+    status: unverified
+    tags: [book-question, no-key]
+  - id: hb.L03.097
+    kind: mcq
+    topic: classification
+    stem: The same 62-year-old man with HCV cirrhosis has an abdominal MRI for HCC screening, which shows a portal vein thrombus with cavernous transformation and extensive collaterals. What is the most appropriate next step?
+    options:
+      - Referral to surgery for thrombectomy
+      - Admission for intravenous heparin
+      - Start oral anticoagulation with warfarin
+      - Upper endoscopy to screen for varices
+      - Referral for TIPS
+    answer: 3
+    why:
+      - Cavernous transformation means a chronic thrombus; surgery has no role.
+      - Urgent IV heparin is for acute thrombosis, not chronic cavernoma.
+      - Anticoagulation may be considered later, but the bleeding risk must be assessed first.
+      - Correct. Portal vein thrombosis is a pre-hepatic cause of portal hypertension (p38), and varices must be screened and treated before any anticoagulation. Answered from standard practice; the lecture gives no key.
+      - TIPS is not first-line for chronic cavernous PVT without bleeding.
+    src: { page: 58 }
+    status: unverified
+    tags: [book-question, no-key]
+  - id: hb.L03.098
+    kind: mcq
+    topic: endoscopy
+    stem: A 67-year-old woman with end-stage HCV liver disease, listed for transplant, bleeds from large fundal varices extending to the GE junction. MRI shows large ascites, a patent portal system, and a large splenorenal shunt with gastroesophageal varices. Which treatment has the highest potential to worsen her ascites and oesophageal varices?
+    options:
+      - Balloon-occluded retrograde transvenous obliteration (BRTO)
+      - TIPS
+      - Balloon tamponade
+      - Endoscopic cyanoacrylate injection
+      - Surgical portacaval shunt
+    answer: 0
+    why:
+      - Correct. BRTO occludes the spontaneous splenorenal shunt, which raises portal pressure and can worsen ascites and oesophageal varices. Not covered in the lecture text; standard knowledge.
+      - TIPS lowers portal pressure and improves ascites and varices.
+      - Tamponade is a temporary bridge and does not change portal pressure.
+      - Cyanoacrylate treats the gastric varix locally without closing the shunt.
+      - A portacaval shunt decompresses the portal system.
+    src: { page: 59 }
+    status: unverified
+    tags: [book-question, no-key]
+  - id: hb.L03.099
+    kind: mcq
+    topic: classification
+    stem: A 64-year-old woman is assessed for TIPS. Free hepatic venous pressure is 6 mmHg and wedged hepatic venous pressure is 13 mmHg. Which cause of portal hypertension best explains these values?
+    options:
+      - Portal vein thrombosis
+      - Constrictive pericarditis
+      - Sarcoidosis
+      - Alcoholic cirrhosis
+      - Schistosomiasis
+    answer: 3
+    why:
+      - Pre-hepatic; the wedged pressure is normal.
+      - Post-hepatic; both free and wedged pressures rise, so the gradient stays normal.
+      - Sarcoidosis is pre-sinusoidal; the wedged pressure is normal.
+      - Correct. A raised wedged pressure with HVPG 7 mmHg (13 − 6) means sinusoidal portal hypertension, as in cirrhosis (p38). The lecture does not explain HVPG maths; this is standard physiology.
+      - Pre-sinusoidal; the wedged pressure is normal.
+    src: { page: 59 }
+    status: unverified
+    tags: [book-question, no-key]
+  - id: hb.L03.100
+    kind: mcq
+    topic: primary-prophylaxis
+    stem: Which agent is recommended for primary prophylaxis of large oesophageal varices and decreases both portal flow and intrahepatic resistance?
+    options:
+      - Prazosin
+      - Isosorbide mononitrate
+      - Carvedilol
+      - Propranolol
+      - Simvastatin
+    answer: 2
+    why:
+      - A pure alpha-blocker; it lowers resistance but not flow and is not recommended.
+      - A vasodilator that lowers resistance only; not recommended alone.
+      - Correct. A non-selective beta-blocker (less flow) with α1-blockade (less intrahepatic resistance) (p47).
+      - Reduces portal inflow only.
+      - Not a recommended prophylactic agent in the lecture.
+    src: { page: 59 }
+    status: unverified
+    tags: [book-question, no-key, high-yield]
+  - id: hb.L03.101
+    kind: mcq
+    topic: csph
+    stem: A 46-year-old man with Child C HCV cirrhosis and no prior bleeding has three columns of large distal oesophageal varices with red wale signs. Which feature correlates least with his risk of variceal haemorrhage over two years?
+    options:
+      - Number of varices
+      - Size of varices
+      - Presence of red wale (bleeding) stigmata
+      - HVPG > 12 mmHg
+      - Child-Pugh class C
+    answer: 0
+    why:
+      - Correct. The number of columns is not a recognised risk factor.
+      - Size is a major risk factor (>25% vs <10% at 2 years) (p44).
+      - Red colour signs raise risk (p45, p52).
+      - Varices rupture above 12 mmHg (p43).
+      - Child class predicts bleeding (p45, p52).
+    src: { page: 60 }
+    status: unverified
+    tags: [book-question, no-key]
+  - id: hb.L03.102
+    kind: mcq
+    topic: primary-prophylaxis
+    stem: A 79-year-old man with compensated HCV cirrhosis (no bleeding, ascites or encephalopathy), pulse 64, BP 120/70, has two columns of small distal oesophageal varices without red signs. What do you recommend?
+    options:
+      - Nadolol
+      - Endoscopic variceal ligation
+      - TIPS
+      - Repeat endoscopy in 1 year
+      - Repeat endoscopy in 3 years
+    answer: 3
+    why:
+      - Small varices without red signs in a Child A patient are not a clear indication; his slow pulse also argues against it (p45).
+      - Banding is for medium or large varices.
+      - TIPS has no role in primary prophylaxis.
+      - Correct. Small varices without risk features can be followed; with ongoing liver injury, repeat endoscopy yearly. The lecture gives no interval for small varices; the interval is from guidelines.
+      - Three years is the interval for no varices with quiescent disease, too long once varices exist.
+    src: { page: 60 }
+    status: unverified
+    tags: [book-question, no-key]
+  - id: hb.L03.103
+    kind: mcq
+    topic: endoscopy
+    stem: A 42-year-old man with alcoholism has massive hematemesis. Endoscopy shows moderate oesophageal varices without stigmata, old blood in the fundus, and large GOV-2 varices with a fibrin-platelet plug. Which statement about gastric varices is correct?
+    options:
+      - The size of gastric varices is not an important risk factor for bleeding
+      - Primary prophylaxis with TIPS is strongly recommended
+      - TIPS lowering HVPG below 12 mmHg is enough to prevent gastric variceal rebleeding
+      - Fundal varices bleed less often than GE-junction varices
+      - Bleeding risk from gastric varices relates to the severity of the liver disease
+    answer: 4
+    why:
+      - Size is a risk factor (p52).
+      - TIPS is never primary prophylaxis.
+      - Gastric varices can bleed at lower pressures, so HVPG < 12 does not guarantee protection.
+      - Fundal varices bleed more often, not less.
+      - Correct. Child class is a risk factor for gastric variceal bleeding (p52).
+    src: { page: 61 }
+    status: unverified
+    tags: [book-question, no-key]
+  - id: hb.L03.104
+    kind: mcq
+    topic: primary-prophylaxis
+    stem: A 64-year-old woman with insulin-treated diabetes and frequent hypoglycaemia (she skips meals) has Child B cirrhosis. BP 105/69, pulse 60. Screening endoscopy shows several large varices without stigmata. Best primary prophylaxis?
+    options:
+      - Isosorbide mononitrate
+      - Endoscopic variceal ligation
+      - Nadolol
+      - TIPS
+      - Metoprolol
+    answer: 1
+    why:
+      - Nitrates alone are not recommended.
+      - Correct. EBL is offered when beta-blockers are contraindicated or poorly tolerated (p45). Here low BP, bradycardia and hypoglycaemia unawareness argue against them.
+      - A beta-blocker would worsen low BP and bradycardia and mask hypoglycaemia.
+      - TIPS is not primary prophylaxis.
+      - Cardioselective; it does not lower portal pressure.
+    src: { page: 62 }
+    status: unverified
+    tags: [book-question, no-key]
+  - id: hb.L03.105
+    kind: mcq
+    topic: acute-bleeding
+    stem: A 61-year-old woman with Child B alcoholic cirrhosis has massive hematemesis and shock. She is intubated and receiving IV fluids. Which intervention may worsen her outcome?
+    options:
+      - Early vasoactive drug such as octreotide
+      - Antibiotic prophylaxis (oral quinolone or IV ceftriaxone)
+      - Transfusing packed red cells to at least 10 g/dL
+      - Band ligation if oesophageal varices are the source
+      - Early TIPS if active oesophageal variceal bleeding is seen
+    answer: 2
+    why:
+      - Early vasoactive drugs control bleeding in up to 80% (p48).
+      - Antibiotics improve survival and are standard of care (p49).
+      - Correct. The target is Hb 7–9 g/dL; over-transfusion raises portal pressure, blood loss and mortality (p48).
+      - EBL is the endoscopic therapy of choice (p52).
+      - Early TIPS improves survival in high-risk patients (p55).
+    src: { page: 63 }
+    status: unverified
+    tags: [book-question, no-key, high-yield]
+  - id: hb.L03.106
+    kind: mcq
+    topic: phg
+    stem: A 63-year-old woman with chronic HCV has 2–3 days of melena. Hb 10.8 g/dL (11.4 three months ago). Endoscopy shows small oesophageal varices without stigmata and, in the proximal stomach, a mosaic snakeskin mucosa with punctate erythema and diffuse oozing. No gastric varices. First-line treatment?
+    options:
+      - Nadolol and iron supplements
+      - Endoscopic variceal ligation
+      - Liver transplantation
+      - Argon plasma coagulation
+      - TIPS
+    answer: 0
+    why:
+      - Correct. This is portal hypertensive gastropathy (diagnosed endoscopically, p45). First line is a non-selective beta-blocker plus iron. The lecture does not give PHG treatment; this is from guidelines.
+      - The varices are not the source.
+      - Not first line for PHG bleeding.
+      - APC is used for GAVE or focal lesions, not diffuse PHG.
+      - TIPS is reserved for refractory PHG bleeding.
+    src: { page: 63 }
+    status: unverified
+    tags: [book-question, no-key]
+  - id: hb.L03.107
+    kind: mcq
+    topic: phg
+    stem: A 49-year-old woman with HCV cirrhosis has microcytic anaemia (Hb 7.3 g/dL). Endoscopy shows flat red stripes radiating from the pylorus in the antrum with slight oozing. Colonoscopy is normal. Which treatment is least effective for the cause of her anaemia?
+    options:
+      - Endoscopic heater-probe coagulation
+      - Antrectomy
+      - Argon plasma coagulation
+      - Endoscopic radiofrequency ablation
+      - TIPS
+    answer: 4
+    why:
+      - Thermal endoscopic therapy works for GAVE.
+      - Antrectomy is definitive for refractory GAVE.
+      - APC is first-line for GAVE.
+      - RFA is effective for GAVE.
+      - Correct. This is gastric antral vascular ectasia (watermelon stomach), which is not caused by portal pressure, so TIPS does not help. Not covered in the lecture text; standard knowledge.
+    src: { page: 64 }
+    status: unverified
+    tags: [book-question, no-key]
+
+  # --- Essay (exam-style long question) ---
+  - id: hb.L03.108
+    kind: essay
+    topic: acute-bleeding
+    prompt: Discuss the management of acute oesophageal variceal bleeding in a cirrhotic patient.
+    outline:
+      - "Resuscitation": [Secure airway and circulation, "Careful volume replacement, Hb 7–9 g/dL", No FFP or platelets (ineffective and harmful)]
+      - "Drugs": ["Early vasoactive drug: terlipressin, somatostatin, octreotide (up to 80% control)", Continue 2–5 days with endoscopy, "Short-term antibiotics (IV ceftriaxone in advanced disease)"]
+      - "Endoscopy": ["EBL within 12 h (preferably 6 h): 90% control, 15–20% rebleed", EBL better than sclerotherapy, Cyanoacrylate for gastric varices]
+      - "Failure and rescue": ["Rebleed: hematemesis > 2 h after therapy or Hb fall > 3 g/dL", "Second endoscopy, then rescue covered TIPS; tamponade or covered stent as bridge", "Early TIPS (< 24 h) if HVPG > 20 mmHg"]
+      - "Secondary prophylaxis": [NSBB ± isosorbide mononitrate, EBL to eradication]
+    src: { page: 48 }
+    status: unverified
+  - id: hb.L03.109
+    kind: essay
+    topic: pathophysiology
+    prompt: Discuss the pathophysiology of portal hypertension in cirrhosis.
+    outline:
+      - "Principle": [P = R × F, Normal liver absorbs flow changes without a pressure rise]
+      - "Increased intrahepatic resistance": ["Fixed (~70%): fibrosis, nodules, thrombosis", "Dynamic (~30%): HSC, myofibroblast and venular contraction; vasoconstrictor excess, NO deficiency"]
+      - "Increased portal inflow": ["Splanchnic vasodilators: glucagon, endocannabinoids, NO, prostacyclin, CO", Angiogenesis (VEGF) and collaterals]
+      - "Systemic consequences": ["Low effective arterial volume, RAAS activation, sodium retention", Hyperdynamic circulation, "Varices, ascites, encephalopathy"]
+    src: { page: 40 }
+    status: unverified

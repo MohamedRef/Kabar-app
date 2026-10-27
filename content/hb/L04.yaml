@@ -1,0 +1,1477 @@
+schema: batna.content/v1
+lecture: hb.L04
+title: Vascular Diseases of the Liver, Anticoagulation in Liver Disease, and Endoscopy
+author: Dr. Hend Naguib
+book: { chapter: 1, pages: [65, 89] }
+topics:
+  - { id: overview, title: "Vascular liver diseases overview" }
+  - { id: risk-factors, title: "Prothrombotic risk factors in BCS and PVT" }
+  - { id: budd-chiari, title: "Budd-Chiari syndrome" }
+  - { id: acute-pvt, title: "Acute portal vein thrombosis (non-cirrhotic)" }
+  - { id: ehpvo, title: "Extrahepatic portal vein obstruction" }
+  - { id: incph, title: "Idiopathic non-cirrhotic portal hypertension" }
+  - { id: sos, title: "Sinusoidal obstruction syndrome" }
+  - { id: pvt-cirrhosis, title: "PVT in cirrhosis" }
+  - { id: anticoagulation, title: "Anticoagulants in liver disease" }
+  - { id: endoscopy-antithrombotics, title: "Antithrombotics and endoscopy" }
+items:
+  # --- Overview (p66-67) ---
+  - id: hb.L04.001
+    kind: cloze
+    topic: overview
+    text: Vascular liver diseases are a collection of rare conditions, each affecting fewer than {{c1::5 per 10,000}} people.
+    src: { page: 66 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L04.002
+    kind: card
+    topic: overview
+    front: Common characteristic shared by many vascular liver diseases?
+    back: Non-cirrhotic portal hypertension.
+    src: { page: 66 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.003
+    kind: card
+    topic: overview
+    front: Why is adequate management of vascular liver disease so important?
+    back: Patients are usually young, so poor management reduces life expectancy.
+    src: { page: 66 }
+    status: unverified
+  - id: hb.L04.004
+    kind: enumerate
+    topic: overview
+    prompt: Enumerate the vascular liver disorders covered in the lecture.
+    points:
+      - Budd-Chiari syndrome
+      - Acute portal vein thrombosis (non-cirrhotic)
+      - Extrahepatic portal vein obstruction (non-cirrhotic)
+      - Idiopathic non-cirrhotic portal hypertension
+      - Hepatic vascular malformations
+      - Sinusoidal obstruction syndrome
+    pass: 5
+    src: { page: 67 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.005
+    kind: card
+    topic: overview
+    front: Which veins join to form the portal vein (book figure)?
+    back: The splenic vein and the superior mesenteric vein; the inferior mesenteric vein drains into the splenic vein.
+    src: { page: 66 }
+    status: unverified
+
+  # --- Risk factors (p67-69) ---
+  - id: hb.L04.006
+    kind: card
+    topic: risk-factors
+    front: Leading cause of BCS and PVT among the uncommon prothrombotic disorders?
+    back: Myeloproliferative neoplasms.
+    src: { page: 67, quote: "Myeloproliferative neoplasms are the leading cause." }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.007
+    kind: enumerate
+    topic: risk-factors
+    prompt: Mention the risk-factor groups for Budd-Chiari syndrome and portal vein thrombosis (book table).
+    points:
+      - Thrombophilia, inherited or acquired
+      - Myeloproliferative neoplasm (JAK2V617F positive)
+      - Hormonal factors (oral contraceptives, pregnancy)
+      - Paroxysmal nocturnal hemoglobinuria
+      - Other systemic factors
+      - Local factors
+    pass: 5
+    src: { page: 67 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.008
+    kind: card
+    topic: risk-factors
+    front: Mutation typical of myeloproliferative disease in splanchnic vein thrombosis, and why can the blood film mislead?
+    back: JAK2 V617F. Portal hypertension (hypersplenism) can mask the usual peripheral blood features.
+    src: { page: 68 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.009
+    kind: enumerate
+    topic: risk-factors
+    prompt: Mention the acquired prothrombotic diseases associated with BCS, PVT or obliterative portal venopathy.
+    points:
+      - Myeloproliferative disease (JAK2 V617F)
+      - Antiphospholipid syndrome
+      - Paroxysmal nocturnal hemoglobinuria (BCS)
+      - Behcet's disease (BCS)
+      - Inflammatory bowel disease
+      - Celiac disease (BCS)
+      - Sarcoidosis
+    pass: 5
+    src: { page: 68 }
+    status: unverified
+  - id: hb.L04.010
+    kind: cloze
+    topic: risk-factors
+    text: "Acquired diseases linked specifically to Budd-Chiari syndrome in the book: {{c1::paroxysmal nocturnal hemoglobinuria}}, {{c2::Behcet's disease}} and {{c3::celiac disease}}."
+    src: { page: 68 }
+    status: unverified
+  - id: hb.L04.011
+    kind: card
+    topic: risk-factors
+    front: Why interpret anticardiolipin antibodies cautiously in liver disease?
+    back: Non-specific anticardiolipin antibodies are frequent in liver disease.
+    src: { page: 68 }
+    status: unverified
+  - id: hb.L04.012
+    kind: enumerate
+    topic: risk-factors
+    prompt: Mention the inherited thrombophilias associated with BCS and PVT.
+    points:
+      - Protein C deficiency
+      - Protein S deficiency
+      - Antithrombin deficiency
+      - Factor V Leiden
+      - Prothrombin (factor II) G20210A mutation
+    pass: 4
+    src: { page: 68 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.013
+    kind: card
+    topic: risk-factors
+    front: Which thrombophilia markers are hard to interpret in liver dysfunction, and why?
+    back: Protein C, protein S and antithrombin deficiency, and hyperhomocysteinemia. Liver dysfunction can cause secondary changes that are difficult to rule out.
+    src: { page: 68 }
+    status: unverified
+  - id: hb.L04.014
+    kind: enumerate
+    topic: risk-factors
+    prompt: Mention the other (local and general) risk factors for BCS and PVT.
+    points:
+      - Inflammatory or malignant foci in the abdomen (PVT)
+      - Injury to splanchnic veins (surgery or trauma)
+      - Stasis from cirrhosis or another intrahepatic block
+      - Hyperhomocysteinemia
+      - Oral contraceptives
+      - Pregnancy (BCS)
+      - Extreme poverty
+    pass: 5
+    src: { page: 69 }
+    status: unverified
+  - id: hb.L04.015
+    kind: card
+    topic: risk-factors
+    front: If one prothrombotic risk factor is found in BCS or PVT, should the work-up stop?
+    back: No. Finding one risk factor should not stop the search for others.
+    src: { page: 69 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.016
+    kind: card
+    topic: risk-factors
+    front: How should patients with BCS or PVT be tested for a myeloproliferative neoplasm?
+    back: Test for the JAK2 V617F mutation.
+    src: { page: 69 }
+    status: unverified
+  - id: hb.L04.017
+    kind: enumerate
+    topic: risk-factors
+    prompt: Mention what thrombophilia screening in BCS and PVT should include.
+    points:
+      - Protein S level
+      - Protein C level
+      - Antithrombin level
+      - Factor V Leiden mutation
+      - Prothrombin gene variant
+      - Antiphospholipid antibodies
+    pass: 5
+    src: { page: 69 }
+    status: unverified
+  - id: hb.L04.018
+    kind: cloze
+    topic: risk-factors
+    text: A positive antiphospholipid antibody test should be repeated after {{c1::12 weeks}}.
+    src: { page: 69 }
+    status: unverified
+    tags: [numbers]
+
+  # --- Budd-Chiari syndrome (p69-74) ---
+  - id: hb.L04.019
+    kind: card
+    topic: budd-chiari
+    front: Define Budd-Chiari syndrome.
+    back: Obstruction of hepatic venous outflow located anywhere from the small hepatic venules up to the entrance of the IVC into the right atrium.
+    src: { page: 69 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.020
+    kind: card
+    topic: budd-chiari
+    front: Primary vs secondary Budd-Chiari syndrome?
+    back: Primary BCS is caused by thrombosis. Secondary BCS has other causes, such as malignant invasion.
+    src: { page: 70 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.021
+    kind: enumerate
+    topic: budd-chiari
+    prompt: Mention the pathophysiological consequences of hepatic venous outflow obstruction.
+    points:
+      - Sinusoidal congestion
+      - Liver ischaemia
+      - Hepatocellular necrosis
+    pass: 3
+    src: { page: 70 }
+    status: unverified
+  - id: hb.L04.022
+    kind: card
+    topic: budd-chiari
+    front: Classic triad of chronic Budd-Chiari syndrome, and the hepatojugular reflux finding?
+    back: Abdominal pain, hepatomegaly and ascites, with a negative hepatojugular reflux. Liver failure and portal hypertension follow.
+    src: { page: 70 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.023
+    kind: card
+    topic: budd-chiari
+    front: Range of clinical pictures in BCS, and the acute form?
+    back: From asymptomatic to fulminant liver failure. The acute form presents as acute liver failure.
+    src: { page: 70 }
+    status: unverified
+  - id: hb.L04.024
+    kind: cloze
+    topic: budd-chiari
+    text: "{{c1::Doppler ultrasound}} is the first-line investigation for BCS; {{c2::MRI and CT}} confirm the diagnosis."
+    src: { page: 70 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.025
+    kind: order
+    topic: budd-chiari
+    prompt: Put the stepwise therapeutic algorithm for Budd-Chiari syndrome in order.
+    steps:
+      - Medical treatment (anticoagulation, treat the cause, treat portal hypertension)
+      - Angioplasty, stenting or thrombolysis
+      - TIPS
+      - Liver transplantation
+    src: { page: 71 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.026
+    kind: card
+    topic: budd-chiari
+    front: When should anticoagulation start in BCS, and for how long?
+    back: As soon as possible, for an indefinite period.
+    src: { page: 71 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.027
+    kind: cloze
+    topic: budd-chiari
+    text: In BCS, give LMWH for at least {{c1::5–7 days}} together with a VKA, aiming at an INR of {{c2::2–3}}.
+    src: { page: 71 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L04.028
+    kind: card
+    topic: budd-chiari
+    front: Two reasons prompt anticoagulation matters in BCS?
+    back: It reduces the risk of clot extension and of new thrombotic episodes.
+    src: { page: 71 }
+    status: unverified
+  - id: hb.L04.029
+    kind: card
+    topic: budd-chiari
+    front: Are portal hypertension complications a contraindication to anticoagulation in BCS?
+    back: No, provided they are adequately treated.
+    src: { page: 71 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.030
+    kind: card
+    topic: budd-chiari
+    front: What should be done with anticoagulation in BCS before an invasive procedure such as paracentesis?
+    back: Consider a brief interruption.
+    src: { page: 71 }
+    status: unverified
+  - id: hb.L04.031
+    kind: cloze
+    topic: budd-chiari
+    text: Angioplasty/stenting is the definitive treatment for fewer than {{c1::10%}} of Western BCS patients.
+    src: { page: 72 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L04.032
+    kind: card
+    topic: budd-chiari
+    front: In which BCS patients is angioplasty/stenting the first-line decompressive procedure?
+    back: Those with short-length hepatic vein thrombosis or IVC stenosis (partial or segmental obstruction).
+    src: { page: 72 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.033
+    kind: card
+    topic: budd-chiari
+    front: Main problem after angioplasty in BCS, and how is it reduced?
+    back: Frequent re-stenosis, reduced by combining angioplasty with a stent.
+    src: { page: 72 }
+    status: unverified
+  - id: hb.L04.034
+    kind: card
+    topic: budd-chiari
+    front: Advantage of angioplasty/stenting over shunts in BCS?
+    back: It can re-establish physiological drainage of portal and sinusoidal blood.
+    src: { page: 72 }
+    status: unverified
+  - id: hb.L04.035
+    kind: card
+    topic: budd-chiari
+    front: Why is TIPS preferred over surgical shunts in BCS?
+    back: Surgical shunts show no survival advantage, while TIPS has lower morbidity and mortality and is feasible in most patients, even with IVC obstruction or severe stenosis.
+    src: { page: 73 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.036
+    kind: card
+    topic: budd-chiari
+    front: What does TIPS do in BCS, and with what stent?
+    back: It turns the portal system into an outflow tract by connecting a portal vein branch to a hepatic vein, using a PTFE-covered stent.
+    src: { page: 73 }
+    status: unverified
+  - id: hb.L04.037
+    kind: card
+    topic: budd-chiari
+    front: When is surgical shunting discussed in BCS?
+    back: When TIPS is not feasible or fails.
+    src: { page: 73 }
+    status: unverified
+  - id: hb.L04.038
+    kind: enumerate
+    topic: budd-chiari
+    prompt: Mention the key points about liver transplantation in Budd-Chiari syndrome.
+    points:
+      - It is the last therapeutic step
+      - BCS may recur after transplant
+      - Anticoagulation continues after transplant in most patients
+    pass: 3
+    src: { page: 73 }
+    status: unverified
+  - id: hb.L04.039
+    kind: cloze
+    topic: budd-chiari
+    text: Patients with BCS should be screened for HCC, which occurs in about {{c1::4%}}.
+    src: { page: 74 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L04.040
+    kind: card
+    topic: budd-chiari
+    front: Why may BCS patients with liver nodules need referral to a specialised centre?
+    back: Telling benign from malignant nodules in BCS is very difficult.
+    src: { page: 74 }
+    status: unverified
+
+  # --- Acute PVT (p74-75) ---
+  - id: hb.L04.041
+    kind: card
+    topic: acute-pvt
+    front: Define acute portal vein thrombosis.
+    back: Recent thrombus in the portal vein and/or its right or left branches, which may extend into the mesenteric or splenic veins. Guidelines mean PVT without malignancy or cirrhosis.
+    src: { page: 74 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.042
+    kind: card
+    topic: acute-pvt
+    front: In which patients should acute portal vein obstruction be considered?
+    back: Any patient with abdominal pain.
+    src: { page: 74 }
+    status: unverified
+  - id: hb.L04.043
+    kind: cloze
+    topic: acute-pvt
+    text: First-line imaging for acute PVT is {{c1::Doppler ultrasound}}; {{c2::CT (portal phase)}} confirms the diagnosis and shows its extension.
+    src: { page: 74 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.044
+    kind: card
+    topic: acute-pvt
+    front: Which imaging is most sensitive for acute PVT?
+    back: CT. Doppler ultrasound and MR are less sensitive.
+    src: { page: 74 }
+    status: unverified
+  - id: hb.L04.045
+    kind: cloze
+    topic: acute-pvt
+    text: SIRS is present in {{c1::85%}} of acute PVT patients, with mild non-specific symptoms, so the diagnosis is often missed until {{c2::cavernomatous transformation}}.
+    src: { page: 74 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L04.046
+    kind: enumerate
+    topic: acute-pvt
+    prompt: Mention the features in acute PVT that should raise suspicion of intestinal infarction.
+    points:
+      - Persisting severe abdominal pain
+      - Rectal bleeding
+      - Moderate or massive ascites
+      - Multiorgan dysfunction
+    pass: 3
+    src: { page: 74 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.047
+    kind: card
+    topic: acute-pvt
+    front: Two aims of therapy in acute PVT?
+    back: Prevent extension of the thrombus into the mesenteric veins and achieve portal vein recanalization.
+    src: { page: 74 }
+    status: unverified
+  - id: hb.L04.048
+    kind: card
+    topic: acute-pvt
+    front: First anticoagulant in acute non-cirrhotic PVT?
+    back: Immediate LMWH, unless there is a major contraindication.
+    src: { page: 75 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.049
+    kind: cloze
+    topic: acute-pvt
+    text: Screen for HIT if platelets fall suddenly by {{c1::≥ 50%}} or to below {{c2::150 × 10⁹/L}}.
+    src: { page: 75 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L04.050
+    kind: cloze
+    topic: acute-pvt
+    text: Monitor anti-Xa activity in {{c1::overweight patients, pregnancy and poor kidney function}}, targeting {{c2::0.5–0.8 IU/mL}}.
+    src: { page: 75 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L04.051
+    kind: cloze
+    topic: acute-pvt
+    text: In acute PVT, long-term anticoagulation uses {{c1::oral VKA}} (INR 2–3) for at least {{c2::6 months}}.
+    src: { page: 75 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L04.052
+    kind: cloze
+    topic: acute-pvt
+    text: Assess recanalization with CT after {{c1::6–12 months}}. The portal vein recanalizes up to {{c2::6 months}}; mesenteric and splenic veins keep recanalizing up to {{c3::12 months}}.
+    src: { page: 75 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L04.053
+    kind: card
+    topic: acute-pvt
+    front: Which patients with acute PVT should be screened for gastroesophageal varices?
+    back: Those whose portal vein does not recanalize.
+    src: { page: 75 }
+    status: unverified
+
+  # --- EHPVO (p75-77) ---
+  - id: hb.L04.054
+    kind: card
+    topic: ehpvo
+    front: What happens after acute PVT without recanalization?
+    back: The portal lumen obliterates and porto-portal collaterals develop, forming a portal cavernoma (extrahepatic portal vein obstruction).
+    src: { page: 75 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.055
+    kind: card
+    topic: ehpvo
+    front: When should EHPVO be considered?
+    back: In any patient with features of portal hypertension, hypersplenism or abdominal pain.
+    src: { page: 75 }
+    status: unverified
+  - id: hb.L04.056
+    kind: card
+    topic: ehpvo
+    front: Most frequent complication of EHPVO?
+    back: GI bleeding from portal hypertension.
+    src: { page: 76 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.057
+    kind: order
+    topic: ehpvo
+    prompt: "Chronic EHPVO: order the decision on permanent anticoagulation (book flowchart)."
+    steps:
+      - Start prophylaxis for portal hypertension-related bleeding
+      - Ask whether there is a permanent, strong prothrombotic condition; if yes, consider long-term anticoagulation
+      - If not, ask about a past history of intestinal ischaemia; if yes, consider long-term anticoagulation
+      - If neither, monitor
+    src: { page: 77 }
+    status: unverified
+
+  # --- INCPH (p77-79) ---
+  - id: hb.L04.058
+    kind: card
+    topic: incph
+    front: Other names for idiopathic non-cirrhotic portal hypertension (INCPH)?
+    back: Hepatoportal sclerosis, non-cirrhotic portal fibrosis, idiopathic portal hypertension.
+    src: { page: 77 }
+    status: unverified
+  - id: hb.L04.059
+    kind: cloze
+    topic: incph
+    text: A non-invasive clue to INCPH is a low liver stiffness on transient elastography, {{c1::< 12 kPa}}.
+    src: { page: 77 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L04.060
+    kind: card
+    topic: incph
+    front: Which test is needed to diagnose INCPH?
+    back: Liver biopsy (to exclude cirrhosis).
+    src: { page: 77 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.061
+    kind: enumerate
+    topic: incph
+    prompt: Mention the five diagnostic criteria of INCPH (all must be fulfilled).
+    points:
+      - At least 1 clinical sign of portal hypertension
+      - Exclusion of cirrhosis on liver biopsy
+      - Exclusion of chronic liver diseases causing cirrhosis or non-cirrhotic PH
+      - Exclusion of other conditions causing non-cirrhotic PH (congenital hepatic fibrosis, sarcoidosis, schistosomiasis)
+      - Patent portal and hepatic veins
+    pass: 5
+    src: { page: 78 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.062
+    kind: enumerate
+    topic: incph
+    prompt: Mention the clinical signs of portal hypertension accepted for the first INCPH criterion.
+    points:
+      - Splenomegaly or hypersplenism
+      - Oesophageal varices
+      - Non-malignant ascites
+      - Minimally increased HVPG
+      - Portovenous collaterals
+    pass: 4
+    src: { page: 78 }
+    status: unverified
+  - id: hb.L04.063
+    kind: enumerate
+    topic: incph
+    prompt: Mention the chronic liver diseases that must be excluded before diagnosing INCPH.
+    points:
+      - Chronic HCV or HBV
+      - NASH or ASH
+      - Autoimmune hepatitis
+      - Hereditary haemochromatosis
+      - Wilson disease
+      - Primary biliary cirrhosis (cholangitis)
+    pass: 5
+    src: { page: 78 }
+    status: unverified
+  - id: hb.L04.064
+    kind: cloze
+    topic: incph
+    text: Endoscopic therapy controls acute variceal bleeding in {{c1::95%}} of INCPH patients; {{c2::TIPS}} is considered if bleeding is uncontrolled.
+    src: { page: 79 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L04.065
+    kind: card
+    topic: incph
+    front: How is portal hypertension managed in INCPH?
+    back: According to the guidelines for cirrhosis.
+    src: { page: 79 }
+    status: unverified
+  - id: hb.L04.066
+    kind: cloze
+    topic: incph
+    text: Patients with INCPH should be screened for PVT at least every {{c1::6 months}}.
+    src: { page: 79 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L04.067
+    kind: card
+    topic: incph
+    front: Is anticoagulation recommended in INCPH?
+    back: Not generally. Consider it only with a clear underlying prothrombotic condition or if PVT develops.
+    src: { page: 79 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.068
+    kind: card
+    topic: incph
+    front: When is liver transplantation considered in INCPH?
+    back: When liver failure or unmanageable portal hypertension complications develop.
+    src: { page: 79 }
+    status: unverified
+
+  # --- SOS (p79-81) ---
+  - id: hb.L04.069
+    kind: card
+    topic: sos
+    front: Former name and defining lesion of sinusoidal obstruction syndrome?
+    back: Veno-occlusive disease. It is characterised by loss of sinusoidal wall integrity.
+    src: { page: 79 }
+    status: unverified
+  - id: hb.L04.070
+    kind: enumerate
+    topic: sos
+    prompt: Mention the clinical settings in which SOS is a well-established complication.
+    points:
+      - Myeloablative regimens for haematopoietic stem cell transplantation
+      - Cancer chemotherapy
+      - Immunosuppression in solid organ transplantation
+      - Immunosuppression in IBD
+    pass: 3
+    src: { page: 79 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.071
+    kind: enumerate
+    topic: sos
+    prompt: Mention drugs and toxins associated with SOS (any 8).
+    points:
+      - Actinomycin D
+      - Azathioprine
+      - Busulfan
+      - Carmustine
+      - Cytosine arabinoside
+      - Cyclophosphamide
+      - Dacarbazine
+      - Gemtuzumab ozogamicin
+      - Melphalan
+      - 6-Mercaptopurine
+      - Mitomycin
+      - Oxaliplatin
+      - Pyrrolizidine alkaloids
+      - Urethane
+      - Terbinafine
+      - Traditional herbal remedies
+      - 6-Thioguanine
+    pass: 8
+    src: { page: 80 }
+    status: unverified
+  - id: hb.L04.072
+    kind: card
+    topic: sos
+    front: Non-drug causes of SOS listed in the book?
+    back: Post-bone marrow transplant, total-body irradiation, high-dose hepatic irradiation, and platelet transfusion containing ABO-incompatible plasma.
+    src: { page: 80 }
+    status: unverified
+  - id: hb.L04.073
+    kind: card
+    topic: sos
+    front: Herbal toxin classically causing SOS?
+    back: Pyrrolizidine alkaloids (also traditional herbal remedies in general).
+    src: { page: 80 }
+    status: unverified
+  - id: hb.L04.074
+    kind: cloze
+    topic: sos
+    text: "Consider SOS (Seattle or Baltimore criteria) with two or more of: weight gain, ascites, tender hepatomegaly and jaundice within {{c1::20 days}} after {{c2::bone marrow transplant}}."
+    src: { page: 81 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L04.075
+    kind: enumerate
+    topic: sos
+    prompt: Mention the conditions that mimic SOS and must be excluded.
+    points:
+      - Acute liver graft-versus-host disease
+      - Liver infections
+      - Sepsis with cholestasis
+      - Other drug-induced liver disease
+      - Cardiac disease
+      - Other causes of ascites
+      - Renal failure
+    pass: 5
+    src: { page: 81 }
+    status: unverified
+  - id: hb.L04.076
+    kind: card
+    topic: sos
+    front: Which test is used when SOS clinical criteria are not met or other diagnoses must be excluded?
+    back: Transjugular liver biopsy.
+    src: { page: 81 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.077
+    kind: enumerate
+    topic: sos
+    prompt: Mention the risk factors for SOS.
+    points:
+      - Pre-existing liver disease
+      - Previous SOS
+      - Type of regimen
+      - Abnormal pre-operative GGT
+      - Age
+      - Female sex
+      - Number of chemotherapy cycles
+    pass: 5
+    src: { page: 81 }
+    status: unverified
+  - id: hb.L04.078
+    kind: card
+    topic: sos
+    front: Drug used to prevent SOS in patients undergoing HSCT?
+    back: Defibrotide.
+    src: { page: 81, quote: "Use defibrotide to prevent SOS in patients undergoing HSCT" }
+    status: unverified
+    tags: [high-yield]
+
+  # --- PVT in cirrhosis (p82-83) ---
+  - id: hb.L04.079
+    kind: card
+    topic: pvt-cirrhosis
+    front: Most common thrombotic event in cirrhotic patients?
+    back: Portal vein thrombosis.
+    src: { page: 82 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.080
+    kind: enumerate
+    topic: pvt-cirrhosis
+    prompt: Mention the recommendations for evaluating PVT in cirrhosis.
+    points:
+      - Evaluate portal vein patency in all cirrhotics
+      - Always assess PVT extension with CT or MRI
+      - With HCC, rule out neoplastic PVT (contrast US, CT, MRI or thrombus biopsy)
+      - Consider screening for genetic thrombophilia
+    pass: 3
+    src: { page: 82 }
+    status: unverified
+  - id: hb.L04.081
+    kind: cloze
+    topic: pvt-cirrhosis
+    text: In cirrhosis with minimally occlusive PVT ({{c1::< 50%}} of the lumen), consider anticoagulation if the thrombus progresses within {{c2::1–3 months}} or spreads into the {{c3::superior mesenteric vein}}.
+    src: { page: 82 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L04.082
+    kind: cloze
+    topic: pvt-cirrhosis
+    text: Bleeding risk factors before anticoagulating PVT in cirrhosis are {{c1::untreated oesophageal varices}} and severe thrombocytopenia, with platelets {{c2::< 50 × 10⁹/L}}.
+    src: { page: 82 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L04.083
+    kind: card
+    topic: pvt-cirrhosis
+    front: Dose and duration of anticoagulation for PVT in cirrhosis?
+    back: Therapeutic dose for at least 6 months.
+    src: { page: 82 }
+    status: unverified
+  - id: hb.L04.084
+    kind: enumerate
+    topic: pvt-cirrhosis
+    prompt: In cirrhotic PVT, mention the groups in whom lifelong anticoagulation is considered.
+    points:
+      - Superior mesenteric vein thrombosis
+      - Past history suggestive of intestinal ischaemia
+      - Liver transplant candidates
+    pass: 3
+    src: { page: 82 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.085
+    kind: card
+    topic: pvt-cirrhosis
+    front: Liver transplant candidate with progressive PVT despite anticoagulation. Next step?
+    back: Consider referral for TIPS.
+    src: { page: 83 }
+    status: unverified
+
+  # --- Anticoagulants in liver disease (p83-84) ---
+  - id: hb.L04.086
+    kind: card
+    topic: anticoagulation
+    front: Major concern with heparins in advanced cirrhosis?
+    back: Reduced antithrombin, which heparins need in order to work.
+    src: { page: 83 }
+    status: unverified
+  - id: hb.L04.087
+    kind: enumerate
+    topic: anticoagulation
+    prompt: Mention why unfractionated heparin is probably not indicated in cirrhosis.
+    points:
+      - Low antithrombin in advanced disease
+      - Needs APTT monitoring, but baseline APTT is often prolonged, so UFH is probably under-dosed
+      - Risk of HIT
+      - Osteoporosis
+    pass: 3
+    src: { page: 83 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.088
+    kind: card
+    topic: anticoagulation
+    front: Two problems with vitamin K antagonists in cirrhosis?
+    back: A narrow therapeutic window needing strict monitoring (INR 2.0–3.0), and the INR may not reflect the real degree of anticoagulation.
+    src: { page: 83 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.089
+    kind: enumerate
+    topic: anticoagulation
+    prompt: Mention the advantages of DOACs listed in the book.
+    points:
+      - No need for consistent coagulation monitoring
+      - No bridging period with heparin
+      - Rapid onset of action
+      - Lower risk of drug-drug interactions
+    pass: 3
+    src: { page: 83 }
+    status: unverified
+  - id: hb.L04.090
+    kind: card
+    topic: anticoagulation
+    front: Pharmacological drawback of all DOACs in cirrhosis?
+    back: All DOACs undergo hepatic metabolism.
+    src: { page: 83 }
+    status: unverified
+  - id: hb.L04.091
+    kind: card
+    topic: anticoagulation
+    front: In which Child-Pugh classes can DOACs be used?
+    back: Child A and B. Use in Child C is not recommended.
+    src: { page: 84 }
+    status: unverified
+    tags: [high-yield]
+    update:
+      text: Rivaroxaban's label contraindicates it in Child-Pugh B and C. Apixaban, edoxaban and dabigatran may be used with caution in Child B. No DOAC is advised in Child C.
+      ref: "EMA SmPCs; AASLD guidance on coagulation in cirrhosis, 2021"
+  - id: hb.L04.092
+    kind: card
+    topic: anticoagulation
+    front: Least and most favourable DOAC choices in cirrhosis (book)?
+    back: Rivaroxaban is the least reasonable choice (hepatotoxicity). Apixaban is more favourable because its DILI risk is lower.
+    src: { page: 84 }
+    status: unverified
+    tags: [high-yield]
+
+  # --- Antithrombotics and endoscopy (p84-89) ---
+  - id: hb.L04.093
+    kind: enumerate
+    topic: endoscopy-antithrombotics
+    prompt: Mention what the bleeding risk of an endoscopic procedure mainly depends on.
+    points:
+      - Type of procedure
+      - Type of antiplatelet or anticoagulant therapy
+      - Patient's comorbidities
+    pass: 3
+    src: { page: 85 }
+    status: unverified
+  - id: hb.L04.094
+    kind: cloze
+    topic: endoscopy-antithrombotics
+    text: High-risk endoscopic procedures carry a 30-day risk of major bleeding {{c1::> 2%}}; low-risk procedures {{c2::≤ 2%}}.
+    src: { page: 85 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L04.095
+    kind: enumerate
+    topic: endoscopy-antithrombotics
+    prompt: Enumerate the high-risk endoscopic procedures (ASGE/ACG 2022).
+    points:
+      - Polypectomy ≥ 1 cm
+      - ERCP with sphincterotomy
+      - Treatment of varices
+      - EUS with FNA
+      - Endoscopic hemostasis
+      - Tumour ablation including Barrett's
+      - Gastrostomy
+      - Ampullary resection
+      - EMR, ESD, POEM
+    pass: 7
+    src: { page: 85 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.096
+    kind: table
+    topic: endoscopy-antithrombotics
+    title: Bleeding risk of endoscopic procedures (ASGE/ACG 2022)
+    columns: [Risk, Procedures]
+    rows:
+      - ["Low (30-day major bleed ≤ 2%)", "Diagnostic EGD, colonoscopy, flexible sigmoidoscopy ± biopsy; ERCP with stent or balloon dilation without sphincterotomy; capsule endoscopy; EUS without FNA; argon plasma coagulation; clipping; polypectomy < 1 cm"]
+      - ["High (30-day major bleed > 2%)", "Polypectomy ≥ 1 cm; ERCP with sphincterotomy; treatment of varices; EUS with FNA; endoscopic hemostasis; tumour ablation; gastrostomy; ampullary resection; EMR, ESD, POEM"]
+    blanks: [[0, 1], [1, 1]]
+    src: { page: 85 }
+    status: unverified
+  - id: hb.L04.097
+    kind: card
+    topic: endoscopy-antithrombotics
+    front: Is variceal band ligation a low- or high-bleeding-risk endoscopic procedure?
+    back: High risk (treatment of varices), in both ASGE/ACG 2022 and ESGE/BSG 2021.
+    src: { page: 85 }
+    status: unverified
+  - id: hb.L04.098
+    kind: card
+    topic: endoscopy-antithrombotics
+    front: "Polypectomy bleeding: two types, and which is more dangerous?"
+    back: Intra-procedural bleeding (self-limited, controllable) and delayed post-procedure bleeding (0.07–2.2%), which is more dangerous.
+    src: { page: 86 }
+    status: unverified
+  - id: hb.L04.099
+    kind: enumerate
+    topic: endoscopy-antithrombotics
+    prompt: Mention the factors associated with delayed post-polypectomy bleeding.
+    points:
+      - Age ≥ 65 years
+      - Cardiovascular or chronic renal disease
+      - Anticoagulant use
+      - Polyp > 1 cm, pedunculated polyp
+      - Poor bowel preparation
+      - Pure cutting current
+    pass: 4
+    src: { page: 86 }
+    status: unverified
+  - id: hb.L04.100
+    kind: card
+    topic: endoscopy-antithrombotics
+    front: Which antithrombotics raise delayed post-polypectomy bleeding, and which do not much?
+    back: Higher with ticlopidine, clopidogrel, prasugrel, ticagrelor and warfarin; low with aspirin or NSAIDs. None affects immediate bleeding.
+    src: { page: 86 }
+    status: unverified
+  - id: hb.L04.101
+    kind: table
+    topic: endoscopy-antithrombotics
+    title: Thrombotic risk for anticoagulated patients (ASGE/ACG 2022)
+    columns: [Risk, Conditions]
+    rows:
+      - ["Low", "Bileaflet aortic valve without AF or other stroke risk factors; AF with CHA2DS2-VASc 1–4 (CHADS2 < 2); VTE > 12 months ago without other risk factors"]
+      - ["High", "Any mitral or caged-ball/tilting-disc aortic mechanical valve, or valve with CVA/TIA in the last 6 months; AF with CHA2DS2-VASc ≥ 7, CHADS2 5–6, stroke/TIA within 3 months, or rheumatic valve disease; VTE within 3 months; severe thrombophilia (APS, antithrombin III deficiency)"]
+    blanks: [[0, 1], [1, 1]]
+    src: { page: 87 }
+    status: unverified
+  - id: hb.L04.102
+    kind: cloze
+    topic: endoscopy-antithrombotics
+    text: "ESGE/BSG high thrombotic risk on antiplatelets: drug-eluting coronary stent within {{c1::12 months}} or bare-metal stent within {{c2::1 month}} of placement."
+    src: { page: 87 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L04.103
+    kind: card
+    topic: endoscopy-antithrombotics
+    front: ESGE/BSG high thrombotic risk conditions on anticoagulants?
+    back: Prosthetic metal mitral valve; prosthetic valve with AF; AF with mitral stenosis; VTE within 3 months.
+    src: { page: 87 }
+    status: unverified
+  - id: hb.L04.104
+    kind: card
+    topic: endoscopy-antithrombotics
+    front: Do thrombophilia syndromes need heparin bridging around endoscopy (ESGE/BSG)?
+    back: No routine bridging; decide case by case.
+    src: { page: 87 }
+    status: unverified
+  - id: hb.L04.105
+    kind: card
+    topic: endoscopy-antithrombotics
+    front: Aspirin before endoscopy. Continue or stop?
+    back: Continue for all procedures, except ESD, large colonic EMR (> 2 cm), upper GI EMR and ampullectomy, where stopping should be considered.
+    src: { page: 88 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.106
+    kind: table
+    topic: endoscopy-antithrombotics
+    title: P2Y12 inhibitors (clopidogrel, prasugrel, ticagrelor) and endoscopy
+    columns: [Procedure, Thrombotic risk, Action]
+    rows:
+      - ["Low risk", "Any", "Continue treatment"]
+      - ["High risk", "Low-risk condition", "Stop 5 days before"]
+      - ["High risk", "High-risk condition (dual antiplatelet)", "Consider temporary stop of clopidogrel and continue aspirin"]
+    blanks: [[0, 2], [1, 2], [2, 2]]
+    src: { page: 88 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.107
+    kind: cloze
+    topic: endoscopy-antithrombotics
+    text: After endoscopy, antiplatelet therapy should be resumed within {{c1::5 days}} if still indicated.
+    src: { page: 88 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L04.108
+    kind: card
+    topic: endoscopy-antithrombotics
+    front: Warfarin and a low-risk endoscopic procedure. What to do?
+    back: Continue warfarin. Check INR 1 week before; if in range continue the usual dose, if above range but < 5 reduce the dose until back in range.
+    src: { page: 88 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.109
+    kind: cloze
+    topic: endoscopy-antithrombotics
+    text: Before a low-risk endoscopy on warfarin, if the INR is {{c1::> 5}}, defer the endoscopy and consult haematology.
+    src: { page: 88 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L04.110
+    kind: card
+    topic: endoscopy-antithrombotics
+    front: DOAC and a low-risk endoscopic procedure. What to do?
+    back: Omit the DOAC on the morning of the procedure.
+    src: { page: 88 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.111
+    kind: card
+    topic: endoscopy-antithrombotics
+    front: Warfarin, high-risk procedure, low thrombotic risk. Plan?
+    back: Stop warfarin 5 days before, check INR < 1.5 before the procedure, restart the usual dose that evening, and check INR 1 week later.
+    src: { page: 89 }
+    status: unverified
+  - id: hb.L04.112
+    kind: order
+    topic: endoscopy-antithrombotics
+    prompt: Warfarin, high-risk endoscopic procedure, high thrombotic risk (e.g. metal mitral valve). Put the bridging plan in order.
+    steps:
+      - Stop warfarin 5 days before endoscopy
+      - Start LMWH 2 days after stopping warfarin
+      - Omit LMWH on the day of the procedure
+      - Restart warfarin the evening of the procedure at the usual dose
+      - Continue LMWH until the INR is adequate
+    src: { page: 89 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.113
+    kind: cloze
+    topic: endoscopy-antithrombotics
+    text: For a high-risk procedure, take the last DOAC dose {{c1::3 days}} before endoscopy ({{c2::5 days}} for dabigatran with CrCl 30–50 mL/min), and restart {{c3::2–3 days}} after.
+    src: { page: 89 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L04.114
+    kind: cloze
+    topic: endoscopy-antithrombotics
+    text: After interrupting anticoagulants, restart after {{c1::7 days}} if thromboembolic risk is low, or after {{c2::3 days}} with heparin bridging if it is high.
+    src: { page: 89 }
+    status: unverified
+    tags: [numbers]
+
+  # --- MCQs ---
+  - id: hb.L04.115
+    kind: mcq
+    topic: budd-chiari
+    stem: A 28-year-old woman on oral contraceptives has 3 weeks of right upper quadrant pain, tender hepatomegaly and ascites. The JVP is not raised and hepatojugular reflux is negative. What is the first-line investigation?
+    options:
+      - Doppler ultrasound of the hepatic veins
+      - Transjugular liver biopsy
+      - Hepatic venography
+      - Echocardiography
+      - Upper endoscopy
+    answer: 0
+    why:
+      - Correct. Pain, hepatomegaly and ascites with negative hepatojugular reflux suggests BCS; Doppler US is first line (p70).
+      - Biopsy is for SOS when criteria are not met, not first-line for BCS.
+      - Invasive; CT/MRI confirm after Doppler.
+      - Negative hepatojugular reflux and a normal JVP argue against a cardiac cause.
+      - Endoscopy screens for varices later; it does not diagnose the cause.
+    src: { page: 70 }
+    status: unverified
+  - id: hb.L04.116
+    kind: mcq
+    topic: budd-chiari
+    stem: A 32-year-old man with Budd-Chiari syndrome from a JAK2 V617F-positive myeloproliferative neoplasm has been stabilised. Which anticoagulation plan does the lecture recommend?
+    options:
+      - LMWH for at least 5–7 days with a VKA (INR 2–3), continued indefinitely
+      - LMWH for 3 months, then stop
+      - VKA for 6 months only
+      - Aspirin alone
+      - No anticoagulation while he has ascites
+    answer: 0
+    why:
+      - Correct. Anticoagulate as soon as possible, indefinitely, with LMWH then VKA at INR 2–3 (p71).
+      - BCS needs indefinite anticoagulation.
+      - Six months is the minimum for acute PVT, not BCS.
+      - Antiplatelets alone are not the recommended therapy.
+      - Treated portal hypertension complications are not a contraindication.
+    src: { page: 71 }
+    status: unverified
+  - id: hb.L04.117
+    kind: mcq
+    topic: budd-chiari
+    stem: A woman with BCS on anticoagulation still has symptoms. Imaging shows a short segmental stenosis of the right hepatic vein. What is the best next decompressive procedure?
+    options:
+      - Angioplasty with stenting
+      - Surgical portocaval shunt
+      - Liver transplantation
+      - TIPS
+      - Systemic thrombolysis
+    answer: 0
+    why:
+      - Correct. Angioplasty/stenting is first line for short hepatic vein thrombosis or stenosis (p72).
+      - Surgical shunts show no survival benefit and are discussed only when TIPS fails (p73).
+      - Transplant is the last step.
+      - TIPS follows failed or unsuitable angioplasty in the stepwise algorithm.
+      - Thrombolysis experience is limited.
+    src: { page: 72 }
+    status: unverified
+  - id: hb.L04.118
+    kind: mcq
+    topic: acute-pvt
+    stem: A 40-year-old man has 5 days of abdominal pain and low-grade fever. CT shows a recent thrombus in the main portal vein without cirrhosis or malignancy. Bowel looks viable. Which is the most appropriate initial treatment?
+    options:
+      - Immediate LMWH
+      - Observation and repeat CT in 6 months
+      - Aspirin
+      - TIPS
+      - Surgical thrombectomy
+    answer: 0
+    why:
+      - Correct. Start immediate LMWH unless there is a major contraindication (p75).
+      - Waiting risks extension to the mesenteric veins and no recanalization.
+      - Antiplatelets are not the treatment.
+      - TIPS is not first line in acute non-cirrhotic PVT.
+      - Surgery is not part of the recommended management.
+    src: { page: 75 }
+    status: unverified
+  - id: hb.L04.119
+    kind: mcq
+    topic: acute-pvt
+    stem: A patient with acute PVT, on LMWH for 4 days, develops persisting severe abdominal pain, rectal bleeding and rising lactate. What should be suspected?
+    options:
+      - Intestinal infarction from mesenteric extension
+      - Heparin-induced thrombocytopenia
+      - Variceal bleeding
+      - Spontaneous bacterial peritonitis
+      - Peptic ulcer from stress
+    answer: 0
+    why:
+      - Correct. Persisting severe pain, rectal bleeding, ascites or multiorgan dysfunction suggest intestinal infarction (p74).
+      - HIT shows a platelet fall; it does not explain rectal bleeding with ischaemic pain.
+      - Varices are a late feature of non-recanalized PVT, and would cause hematemesis.
+      - No ascites or fever is described.
+      - Rectal bleeding with severe pain fits ischaemia better.
+    src: { page: 74 }
+    status: unverified
+  - id: hb.L04.120
+    kind: mcq
+    topic: incph
+    stem: A 35-year-old man has splenomegaly, thrombocytopenia and oesophageal varices. Liver tests are near normal, viral and autoimmune screens are negative, and portal and hepatic veins are patent. Liver stiffness is 8 kPa. Which test is required to confirm the likely diagnosis?
+    options:
+      - Liver biopsy
+      - Repeat transient elastography
+      - JAK2 V617F mutation
+      - Hepatic venography
+      - CT angiography
+    answer: 0
+    why:
+      - Correct. This suggests INCPH (low stiffness < 12 kPa); diagnosis requires biopsy to exclude cirrhosis (p77–78).
+      - Elastography gives a clue but cannot exclude cirrhosis by itself.
+      - JAK2 is tested in BCS and PVT; his veins are patent.
+      - Patent veins already exclude BCS.
+      - Imaging shows patent vessels but cannot exclude cirrhosis histologically.
+    src: { page: 77 }
+    status: unverified
+  - id: hb.L04.121
+    kind: mcq
+    topic: sos
+    stem: Twelve days after myeloablative conditioning with busulfan and cyclophosphamide for HSCT, a patient gains 4 kg and develops tender hepatomegaly and jaundice. What is the most likely diagnosis?
+    options:
+      - Sinusoidal obstruction syndrome
+      - Budd-Chiari syndrome
+      - Acute portal vein thrombosis
+      - Idiopathic non-cirrhotic portal hypertension
+      - Acute viral hepatitis
+    answer: 0
+    why:
+      - Correct. Two or more of weight gain, ascites, tender hepatomegaly and jaundice within 20 days of BMT (Seattle/Baltimore) suggests SOS; busulfan and cyclophosphamide are culprits (p80–81).
+      - BCS obstructs the large hepatic veins; the HSCT setting and timing point to SOS.
+      - Acute PVT presents with pain and SIRS, not jaundice and weight gain after conditioning.
+      - INCPH is chronic, with normal liver function.
+      - Possible, but the timing after conditioning fits SOS best.
+    src: { page: 81 }
+    status: unverified
+  - id: hb.L04.122
+    kind: mcq
+    topic: sos
+    stem: A haematology team plans HSCT for a patient with pre-existing liver disease and previous SOS. Which drug does the lecture recommend to prevent SOS?
+    options:
+      - Defibrotide
+      - Warfarin
+      - Unfractionated heparin
+      - Rivaroxaban
+      - Prednisolone
+    answer: 0
+    why:
+      - Correct. Use defibrotide to prevent SOS in HSCT (p81).
+      - VKA is not used for SOS prophylaxis.
+      - Not recommended in the lecture.
+      - Not recommended, and hepatotoxic in liver disease.
+      - Not an SOS prophylaxis.
+    src: { page: 81 }
+    status: unverified
+  - id: hb.L04.123
+    kind: mcq
+    topic: pvt-cirrhosis
+    stem: A 55-year-old man with Child A HCV cirrhosis on HCC surveillance has a new thrombus occluding 30% of the portal vein lumen. Three months later it has grown and extends into the superior mesenteric vein. He has large untreated varices and platelets of 90,000/µL. What should be done before starting anticoagulation?
+    options:
+      - Treat the varices first (band ligation or beta-blocker)
+      - Transfuse platelets to above 150,000/µL
+      - Nothing; start warfarin at once
+      - Refer for TIPS immediately
+      - Defer anticoagulation until platelets are above 150,000/µL
+    answer: 0
+    why:
+      - Correct. Untreated varices are a bleeding risk factor and should be treated before anticoagulation; progression and SMV spread are indications (p82).
+      - The bleeding threshold the book names is < 50 × 10⁹/L; 90,000 does not need transfusion.
+      - Varices must be addressed first.
+      - TIPS is for transplant candidates with progressive PVT despite anticoagulation (p83).
+      - Platelets of 90,000 are not severe thrombocytopenia.
+    src: { page: 82 }
+    status: unverified
+  - id: hb.L04.124
+    kind: mcq
+    topic: anticoagulation
+    stem: A patient with Child B cirrhosis needs oral anticoagulation for PVT. Which DOAC does the lecture consider the most favourable?
+    options:
+      - Apixaban
+      - Rivaroxaban
+      - Unfractionated heparin
+      - Dabigatran in Child C
+      - No DOAC is ever allowed in cirrhosis
+    answer: 0
+    why:
+      - Correct. Apixaban has a more favourable profile with lower DILI risk (p84).
+      - Rivaroxaban is the least reasonable choice because of hepatotoxicity.
+      - Not a DOAC, and probably not indicated in cirrhosis (p83).
+      - DOACs are not recommended in Child C.
+      - DOACs can be used in Child A and B.
+    src: { page: 84 }
+    status: unverified
+  - id: hb.L04.125
+    kind: mcq
+    topic: anticoagulation
+    stem: Why is unfractionated heparin likely to be under-dosed in a patient with cirrhosis?
+    options:
+      - The baseline APTT is often already prolonged, so the monitoring target is reached too early
+      - Heparin is metabolised mainly by the liver
+      - Cirrhotic patients have high antithrombin levels
+      - Heparin needs vitamin K to work
+      - Portal hypertension increases heparin clearance
+    answer: 0
+    why:
+      - Correct. A prolonged baseline APTT makes APTT-guided UFH under-dosed (p83).
+      - Not the reason given.
+      - Antithrombin is reduced, not raised, in advanced cirrhosis.
+      - Vitamin K concerns VKAs, not heparin.
+      - Not described in the lecture.
+    src: { page: 83 }
+    status: unverified
+  - id: hb.L04.126
+    kind: mcq
+    topic: endoscopy-antithrombotics
+    stem: A 70-year-old on clopidogrel monotherapy for peripheral vascular disease is scheduled for removal of a 2 cm colonic polyp. What is the best plan for clopidogrel?
+    options:
+      - Stop clopidogrel 5 days before the procedure
+      - Continue clopidogrel without change
+      - Stop clopidogrel 1 day before
+      - Switch to warfarin
+      - Stop clopidogrel and bridge with LMWH
+    answer: 0
+    why:
+      - Correct. High-risk procedure (polypectomy ≥ 1 cm) with a low-risk condition, so stop 5 days before (p88).
+      - Continuing applies to low-risk procedures.
+      - Too short for platelet recovery.
+      - Not indicated.
+      - LMWH bridging is not used for antiplatelets.
+    src: { page: 88 }
+    status: unverified
+  - id: hb.L04.127
+    kind: mcq
+    topic: endoscopy-antithrombotics
+    stem: A patient on warfarin for a mechanical mitral valve needs endoscopic sphincterotomy at ERCP. What is the correct plan?
+    options:
+      - Stop warfarin 5 days before, start LMWH 2 days after stopping, omit LMWH on the procedure day, restart warfarin that evening, continue LMWH until INR adequate
+      - Continue warfarin and check INR 1 week before
+      - Stop warfarin 5 days before without bridging
+      - Omit warfarin only on the morning of the procedure
+      - Stop warfarin 3 days before and restart 7 days after
+    answer: 0
+    why:
+      - Correct. High-risk procedure with a high-risk condition needs LMWH bridging (p89).
+      - Continuing applies to low-risk procedures.
+      - No bridging is for low thrombotic risk, not a mechanical mitral valve.
+      - That is the DOAC plan for low-risk procedures.
+      - Not the book's protocol.
+    src: { page: 89 }
+    status: unverified
+  - id: hb.L04.128
+    kind: mcq
+    topic: endoscopy-antithrombotics
+    stem: A patient on aspirin for secondary prevention is booked for colonoscopy with removal of a 6 mm polyp. What should happen to the aspirin?
+    options:
+      - Continue aspirin
+      - Stop aspirin 5 days before
+      - Stop aspirin 7 days before
+      - Switch to clopidogrel
+      - Bridge with LMWH
+    answer: 0
+    why:
+      - Correct. Continue aspirin for all procedures except ESD, large colonic EMR > 2 cm, upper GI EMR and ampullectomy (p88).
+      - Not needed for this low-risk procedure.
+      - Not needed.
+      - Clopidogrel carries a higher delayed-bleeding risk.
+      - Not used for antiplatelets.
+    src: { page: 88 }
+    status: unverified
+  - id: hb.L04.129
+    kind: mcq
+    topic: risk-factors
+    stem: A 30-year-old woman with Budd-Chiari syndrome is found to be on oral contraceptives. What is the correct next step in her work-up?
+    options:
+      - Continue a full prothrombotic work-up including JAK2 V617F and thrombophilia screen
+      - Stop the work-up, as the cause has been found
+      - Test only for factor V Leiden
+      - Test antiphospholipid antibodies once and stop if negative
+      - Liver biopsy
+    answer: 0
+    why:
+      - Correct. One risk factor should not stop the search for others; test JAK2 V617F and a full thrombophilia panel (p69).
+      - Several factors often coexist.
+      - The panel includes protein C, S, antithrombin, FVL, prothrombin variant and APAs.
+      - A positive result is repeated after 12 weeks; a single test is not the whole work-up.
+      - Not part of the prothrombotic work-up.
+    src: { page: 69 }
+    status: unverified
+
+  # --- Cases ---
+  - id: hb.L04.130
+    kind: case
+    topic: budd-chiari
+    stem: A 26-year-old woman presents with 2 months of abdominal pain, abdominal distension and a large tender liver. She takes oral contraceptives.
+    steps:
+      - reveal: Ascites is present. JVP is normal and hepatojugular reflux is negative.
+        question: Which diagnosis fits best, and what is the first imaging test?
+        options: [Budd-Chiari syndrome; Doppler ultrasound, Constrictive pericarditis; echocardiography, Cirrhosis; endoscopy, Acute PVT; CT angiography]
+        answer: 0
+        why: "The chronic BCS triad with negative hepatojugular reflux; Doppler is first line (p70). Other options. B: A cardiac cause gives positive hepatojugular reflux and raised JVP. C: Nothing suggests chronic liver disease, and endoscopy does not diagnose it. D: Acute PVT does not cause a large tender liver with ascites as the main picture."
+      - reveal: Doppler and MRI confirm hepatic vein thrombosis. JAK2 V617F is positive.
+        question: Immediate treatment?
+        options: [LMWH then VKA (INR 2–3) indefinitely plus treatment of the MPN, Liver transplant, Surgical shunt, Six months of VKA]
+        answer: 0
+        why: "Medical treatment first, anticoagulation indefinitely and treat the cause (p71). Other options. B: Transplant is the last step. C: Surgical shunts are discussed only if TIPS fails. D: BCS needs indefinite anticoagulation."
+      - reveal: She worsens despite anticoagulation. Venography shows long-segment occlusion of all hepatic veins, unsuitable for angioplasty.
+        question: Next step?
+        options: [TIPS with a PTFE-covered stent, Stop anticoagulation, Thrombolysis alone, Surgical portocaval shunt]
+        answer: 0
+        why: "TIPS follows when angioplasty is not suitable; lower morbidity than surgery (p73). Other options. B: Anticoagulation continues. C: Thrombolysis experience is limited. D: Surgery only if TIPS is not feasible or fails."
+      - reveal: Two years later she is stable after TIPS.
+        question: Which surveillance does the book specifically recommend?
+        options: [HCC screening, Annual colonoscopy, Bone densitometry, Thyroid function tests]
+        answer: 0
+        why: "Screen BCS patients for HCC (about 4%) (p74). Other options. B: Not specific to BCS. C: Not mentioned. D: Not mentioned."
+    src: { page: 71 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L04.131
+    kind: case
+    topic: acute-pvt
+    stem: A 45-year-old man presents with 4 days of diffuse abdominal pain and fever. He has no known liver disease.
+    steps:
+      - reveal: Doppler ultrasound suggests portal vein thrombosis.
+        question: How should the diagnosis be confirmed and its extent shown?
+        options: [Portal-phase CT, Repeat ultrasound in 1 week, Liver biopsy, Upper endoscopy]
+        answer: 0
+        why: "CT confirms and shows extension; US and MR are less sensitive (p74). Other options. B: Delays treatment. C: Not indicated. D: Does not image the portal vein."
+      - reveal: CT shows a recent thrombus in the main portal vein extending into the SMV. No bowel ischaemia.
+        question: Treatment?
+        options: [Immediate LMWH then VKA (INR 2–3) for at least 6 months, Aspirin, TIPS, Observation]
+        answer: 0
+        why: "The book's acute PVT regimen (p75). Other options. B: Not recommended. C: Not first line. D: Risks extension and intestinal infarction."
+      - reveal: On day 6 his platelets fall from 240 to 110 × 10⁹/L.
+        question: What must be excluded?
+        options: [Heparin-induced thrombocytopenia, Hypersplenism, Myelofibrosis, Sepsis only]
+        answer: 0
+        why: "Screen for HIT with an unexplained fall ≥ 50% or to < 150 × 10⁹/L (p75). Other options. B: Hypersplenism does not cause a sudden drop within days. C: Possible as a background MPN, but a sudden drop on heparin means HIT first. D: Sepsis can do this, but HIT must be screened for."
+      - reveal: At 9 months CT shows the portal vein has not recanalized and a cavernoma has formed.
+        question: Next step?
+        options: [Screen for gastroesophageal varices, Stop all follow-up, Surgical thrombectomy, Repeat CT in 1 week]
+        answer: 0
+        why: "Screen for varices in unrecanalized patients (p75); GI bleeding is the most frequent EHPVO complication (p76). Other options. B: EHPVO needs follow-up. C: Not recommended. D: Not useful."
+    src: { page: 75 }
+    status: unverified
+  - id: hb.L04.132
+    kind: case
+    topic: endoscopy-antithrombotics
+    stem: A 72-year-old man on apixaban for atrial fibrillation (CHA2DS2-VASc 3) presents with iron-deficiency anaemia.
+    steps:
+      - reveal: A diagnostic gastroscopy and colonoscopy are planned.
+        question: What to do with apixaban?
+        options: [Omit the DOAC on the morning of the procedure, Stop 3 days before, Bridge with LMWH, Switch to warfarin]
+        answer: 0
+        why: "Low-risk procedure, so omit the DOAC on the morning of the procedure (p88). Other options. B: That is for high-risk procedures. C: DOACs need no bridging. D: Not indicated."
+      - reveal: Colonoscopy shows a 2.5 cm sessile polyp that needs EMR on another day.
+        question: Plan for apixaban?
+        options: [Last dose 3 days before and restart 2–3 days after, Omit only on the morning, Continue unchanged, Stop 14 days before]
+        answer: 0
+        why: "High-risk procedure, so take the last dose 3 days before and restart 2–3 days after (p89). Other options. B: That is for low-risk procedures. C: Unsafe for EMR. D: Not the book's protocol."
+    src: { page: 89 }
+    status: unverified
+
+  # --- Book questions (p89) ---
+  - id: hb.L04.133
+    kind: essay
+    topic: budd-chiari
+    prompt: Outline the management of Budd-Chiari syndrome.
+    outline:
+      - "Medical treatment": ["Anticoagulate as soon as possible, indefinitely: LMWH ≥ 5–7 days plus VKA (INR 2–3)", Treat the underlying cause (e.g. MPN), Treat portal hypertension complications as in cirrhosis]
+      - "Angioplasty, stenting, thrombolysis": ["First-line decompression for short hepatic vein thrombosis or IVC stenosis", Stent reduces re-stenosis, Thrombolysis experience limited]
+      - "TIPS": [PTFE-covered stent; lower morbidity than surgery, Surgical shunt only if TIPS not feasible or fails]
+      - "Liver transplantation": [Last step, BCS may recur; continue anticoagulation]
+      - "Follow-up": [Screen for HCC (about 4%)]
+    src: { page: 89 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L04.134
+    kind: essay
+    topic: overview
+    prompt: Enumerate the vascular liver disorders.
+    outline:
+      - "Hepatic venous outflow": [Budd-Chiari syndrome, Sinusoidal obstruction syndrome]
+      - "Portal venous system": [Acute portal vein thrombosis (non-cirrhotic), Extrahepatic portal vein obstruction (non-cirrhotic), PVT in cirrhosis]
+      - "Other": [Idiopathic non-cirrhotic portal hypertension, Hepatic vascular malformations]
+    src: { page: 89 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L04.135
+    kind: essay
+    topic: risk-factors
+    prompt: Mention the risk factors for acute portal vein thrombosis.
+    outline:
+      - "Acquired prothrombotic diseases": ["Myeloproliferative neoplasm (JAK2 V617F), the leading cause", "Antiphospholipid syndrome, PNH", "IBD, sarcoidosis"]
+      - "Inherited thrombophilia": ["Protein C, protein S, antithrombin deficiency", Factor V Leiden, Prothrombin G20210A]
+      - "Local factors": [Abdominal inflammatory or malignant foci, Splanchnic vein injury (surgery or trauma), Stasis from cirrhosis or intrahepatic block]
+      - "Other": ["Hyperhomocysteinemia, oral contraceptives, pregnancy", Extreme poverty]
+    src: { page: 89 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L04.136
+    kind: essay
+    topic: endoscopy-antithrombotics
+    prompt: Enumerate the high-risk endoscopic procedures.
+    outline:
+      - "Definition": [30-day risk of major bleeding > 2%]
+      - "ASGE/ACG 2022": ["Polypectomy ≥ 1 cm, ERCP with sphincterotomy, treatment of varices", "EUS with FNA, endoscopic hemostasis, tumour ablation", "Gastrostomy, ampullary resection, EMR/ESD/POEM"]
+      - "ESGE/BSG 2021 additions": ["Ampullectomy, dilation of strictures, PEG", RFA for mucosal lesions]
+    src: { page: 89 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L04.137
+    kind: essay
+    topic: incph
+    prompt: Mention the criteria for diagnosis of non-cirrhotic portal hypertension.
+    outline:
+      - "1. A clinical sign of portal hypertension": ["Splenomegaly/hypersplenism, varices, non-malignant ascites", "Minimally raised HVPG, portovenous collaterals"]
+      - "2. Cirrhosis excluded on biopsy": ["Clue: liver stiffness < 12 kPa"]
+      - "3. Chronic liver diseases excluded": ["HCV, HBV, NASH/ASH, AIH", "Haemochromatosis, Wilson, PBC"]
+      - "4. Other non-cirrhotic PH causes excluded": ["Congenital hepatic fibrosis, sarcoidosis, schistosomiasis"]
+      - "5. Patent portal and hepatic veins": [All 5 criteria must be met]
+    src: { page: 89 }
+    status: unverified
+    tags: [book-question]
