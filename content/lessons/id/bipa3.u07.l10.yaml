@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa3.u07.l10
+language: id
+title: Ulangan Unit 7
+can_do:
+  ar_eg: تحكي حياة شخص وتنقل بين المعلوم والمجهول.
+  ar: أن تروي حياة شخص منتقلًا بين المبني للمعلوم والمجهول.
+  en: Recount a life, switching between active and passive.
+slides:
+  - title: Tiga cara
+    body:
+      ar_eg: |
+        نفس الحدث بتلات طرق:
+        1) معلوم: Penjajah menangkap pahlawan itu.
+        2) di- (الفاعل هو / هي / اسم): Pahlawan itu ditangkap (oleh) penjajah.
+        3) ضمير + جذر (الفاعل أنا / إحنا / إنت): Buku itu sudah saya baca.
+      ar: |
+        الحدث نفسه بثلاث طرق:
+        1) المبني للمعلوم: Penjajah menangkap pahlawan itu.
+        2) di- (الفاعل غائب أو اسم): Pahlawan itu ditangkap (oleh) penjajah.
+        3) الضمير + الجذر (الفاعل متكلم أو مخاطب): Buku itu sudah saya baca.
+      en: |
+        One event, three ways:
+        1) active: Penjajah menangkap pahlawan itu.
+        2) di- (doer is he / she / a name): Pahlawan itu ditangkap (oleh) penjajah.
+        3) pronoun + root (doer is I / we / you): Buku itu sudah saya baca.
+    grammar: id.voice.active-passive
+    examples:
+      - text: Saya membeli kain ini. → Kain ini saya beli.
+        ar_eg: أنا اشتريت القماش ده. ← القماش ده أنا اشتريته.
+        ar: اشتريتُ هذا القماش. ← هذا القماش اشتريتُه.
+        en: I bought this cloth. → This cloth, I bought.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pahlawan
+        ar_eg: بطل
+        ar: بطل
+        en: hero
+      - text: kemerdekaan
+        ar_eg: استقلال
+        ar: استقلال
+        en: independence
+      - text: wisatawan
+        ar_eg: سايح
+        ar: سائح
+        en: tourist
+      - text: wafat
+        ar_eg: اتوفى
+        ar: تُوفّي
+        en: to pass away
+      - text: oleh-oleh
+        ar_eg: هدية من السفر
+        ar: هدية من السفر
+        en: souvenir gift
+      - text: beliau
+        ar_eg: هو / هي (باحترام)
+        ar: هو / هي (مع التوقير)
+        en: he / she (respectful)
+    words: [pahlawan, kemerdekaan, wisatawan, wafat, oleh-oleh, beliau]
+  - id: e02
+    type: multiple_choice
+    question: Rumah adat itu ___ dari bambu dan kayu.
+    options: [membangun, dibangun, bangun]
+    answer: 1
+    explain:
+      ar_eg: البيت مش هو اللي بيبني؛ البيت اتبنى، فـ di-.
+      ar: البيت لا يبني بل يُبنى، فنستعمل di-.
+      en: The house doesn't build; it is built, so di-.
+    words: [membangun, rumah adat]
+  - id: e03
+    type: multiple_choice
+    question: Buku sejarah itu sudah ___.
+    options: [saya baca, saya membaca, dibaca oleh saya]
+    answer: 0
+    explain:
+      ar_eg: مع saya بنستعمل الجذر من غير meN-، ومش بنقول dibaca oleh saya.
+      ar: مع saya يُستعمل الجذر بلا meN-، ولا يقال dibaca oleh saya.
+      en: With saya use the bare root; dibaca oleh saya isn't used.
+    words: [sejarah]
+  - id: e04
+    type: listen
+    text: Pahlawan itu ditangkap oleh penjajah Belanda.
+    options:
+      - Pahlawan itu menangkap penjajah Belanda.
+      - Pahlawan itu dikunjungi oleh penjajah Belanda.
+      - Pahlawan itu ditangkap oleh penjajah Belanda.
+    answer: 2
+    meaning:
+      ar_eg: البطل ده اتقبض عليه من المستعمر الهولندي.
+      ar: قُبض على ذلك البطل من قِبَل المستعمر الهولندي.
+      en: That hero was captured by the Dutch colonisers.
+    words: [menangkap, penjajah, pahlawan]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة مكتوبة صح؟
+      ar: أيّ جملة مكتوبة بإملاء صحيح؟
+      en: Which sentence is spelled correctly?
+    options:
+      - Kain ini di tenun di Sade.
+      - Kain ini ditenun di Sade.
+      - Kain ini ditenun diSade.
+    answer: 1
+    explain:
+      ar_eg: ditenun فعل فـ di- لازقة، وdi Sade مكان فمنفصلة.
+      ar: ditenun فعل فتتصل di-، وdi Sade مكان فتنفصل.
+      en: ditenun is a verb (joined); di Sade is a place (separate).
+    words: [menenun]
+  - id: e06
+    type: fill_blank
+    sentence: Pesan Anda sudah kami ___.
+    meaning:
+      ar_eg: (اكتب جذر menerima) رسالتك وصلتنا.
+      ar: (اكتب جذر menerima) تسلّمنا رسالتكم.
+      en: (Write the root of menerima.) We have received your message.
+    answers: [terima]
+    words: [menerima]
+  - id: e07
+    type: fill_blank
+    sentence: Kartini ___ di Jepara pada tahun 1879.
+    meaning:
+      ar_eg: كارتيني اتولدت في جيبارا سنة 1879.
+      ar: وُلدت كارتيني في جيبارا عام 1879.
+      en: Kartini was born in Jepara in 1879.
+    options: [wafat, lahir, dibangun]
+    answers: [lahir]
+    words: [lahir]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: الصورة دي أنا صورتها في قرية ساديه.
+      ar: التقطتُ هذه الصورة في قرية سادي.
+      en: I took this photo in Sade village.
+    answer: Foto ini saya ambil di Desa Sade.
+    distractors: [mengambil, diambil]
+    words: [mengambil, desa]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: المدرسة الإسلامية دي أسسها عالم دين.
+      ar: أسّس هذه المدرسةَ الإسلامية عالمُ دين.
+      en: This madrasah was founded by an Islamic scholar.
+    answers:
+      - Madrasah ini didirikan oleh seorang ulama.
+      - Madrasah ini didirikan oleh seorang ulama
+      - Madrasah ini didirikan oleh ulama.
+      - Madrasah ini didirikan oleh ulama
+      - Madrasah ini didirikan seorang ulama.
+      - Madrasah ini didirikan oleh seorang tuan guru.
+      - Seorang ulama mendirikan madrasah ini.
+      - Seorang ulama mendirikan madrasah ini
+    words: [mendirikan, madrasah, ulama]
+  - id: e10
+    type: dictation
+    text: Beliau berjuang untuk kemerdekaan Indonesia.
+    meaning:
+      ar_eg: حضرته كافح عشان استقلال إندونيسيا.
+      ar: كافح من أجل استقلال إندونيسيا.
+      en: He fought for Indonesia's independence.
+    words: [beliau, berjuang, kemerdekaan]
+  - id: e11
+    type: speaking
+    text: Tuan Guru Zainuddin wafat pada tahun 1997.
+    meaning:
+      ar_eg: التوان جورو زين الدين اتوفى سنة 1997.
+      ar: تُوفّي التوان غورو زين الدين عام 1997.
+      en: Tuan Guru Zainuddin passed away in 1997.
+    words: [tuan guru, wafat]
+dialogue:
+  title: Oleh-oleh dari Sade
+  lines:
+    - speaker: Mas Rizal
+      text: Wah, kain tenun! Dibeli di mana?
+      ar_eg: الله، قماش منسوج! اشتريته منين؟
+      ar: رائع، قماش منسوج! من أين اشتريته؟
+      en: Oh, woven cloth! Where did you buy it?
+    - speaker: Mohamed
+      text: Kain ini saya beli di Sade. Kain ini ditenun oleh Inaq Sumi.
+      ar_eg: القماش ده اشتريته من ساديه. نسجته إيناك سومي.
+      ar: اشتريتُ هذا القماش في سادي، ونسجته إيناق سومي.
+      en: I bought this cloth in Sade. It was woven by Inaq Sumi.
+    - speaker: Mas Rizal
+      text: Bagus! Dan buku itu?
+      ar_eg: حلو! والكتاب ده؟
+      ar: جميل! وذلك الكتاب؟
+      en: Lovely! And that book?
+    - speaker: Mohamed
+      text: Buku tentang Tuan Guru Zainuddin. Sudah saya baca setengah.
+      ar_eg: كتاب عن التوان جورو زين الدين. قريت نصه.
+      ar: كتاب عن التوان غورو زين الدين، قرأتُ نصفه.
+      en: A book about Tuan Guru Zainuddin. I've read half of it.
+    - speaker: Mas Rizal
+      text: Beliau pahlawan yang sangat dihormati di Lombok.
+      ar_eg: حضرته بطل محترم جدًا في لومبوك.
+      ar: إنه بطل يحظى باحترام كبير في لومبوك.
+      en: He's a hero who is deeply respected on Lombok.
+souvenir:
+  id: bipa3.u07.souvenir
+  title: Desa Sasak Sade
+  note:
+    ar_eg: في ساديه البيوت سقفها من القش وأرضيتها بتتمسح بروث الجاموس عشان تفضل ناشفة ونضيفة، والبنات بيتعلموا النسيج من صغرهم. ولومبوك ليها بطلها القومي كمان، التوان جورو زين الدين عبد المجيد، اللي اتعلم في مكة ورجع يبني مدارس في جزيرته.
+    ar: في سادي بيوتٌ سقوفها من القش وأرضياتها تُمسح بروث الجاموس لتبقى صلبة نظيفة، وتتعلم البنات النسيج منذ الصغر. وللومبوك بطلها القومي أيضًا، التوان غورو زين الدين عبد المجيد، الذي درس في مكة وعاد يبني المدارس في جزيرته.
+    en: In Sade the houses have thatched roofs and floors polished with buffalo dung to keep them firm and clean, and girls learn to weave from childhood. Lombok has its own national hero too, Tuan Guru Zainuddin Abdul Madjid, who studied in Mecca and came home to build schools on his island.
+review:
+  status: draft
+  verified: false
