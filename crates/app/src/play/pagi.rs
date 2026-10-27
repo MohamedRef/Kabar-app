@@ -39,6 +39,7 @@ fn level_for(profile: Option<&CoachProfile>) -> String {
 /// Today's words and story: the same all day on every device.
 fn todays_story(
     db: &Db,
+    sched: &std::rc::Rc<kabar_core::srs::Scheduler>,
     now_ms: u64,
     events: &[ActivityEvent],
     profile: Option<&CoachProfile>,
@@ -47,7 +48,7 @@ fn todays_story(
     let bank = content::stories().as_ref().ok()?;
     let seed = logic::day_seed(date);
     // Due review words first; before any cards exist, the words met most recently.
-    let mut due = crate::review::due_words(db, now_ms);
+    let mut due = crate::review::due_words(db, sched, now_ms);
     if due.is_empty() {
         due = logic::latest_new_words(events);
     }
@@ -91,7 +92,8 @@ pub fn PagiPlayer() -> Element {
     let coach = use_context::<Coach>();
     let today = coach.today();
     let story = use_hook(|| {
-        todays_story(&db, coach.now(), &coach.events.peek(), coach.profile.peek().as_ref(), today)
+        let sched = crate::schedule::scheduler(&coach, &db.0.borrow());
+        todays_story(&db, &sched, coach.now(), &coach.events.peek(), coach.profile.peek().as_ref(), today)
     });
     let voice = speech::use_voice();
     let speaking = use_signal(|| None::<usize>);

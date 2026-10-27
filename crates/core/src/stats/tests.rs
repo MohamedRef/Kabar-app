@@ -149,6 +149,11 @@ fn retention_splits_mature_and_young() {
     let all = retention(&sched, &log, now, 400);
     assert!(all.mature.total >= 1 && all.young.total >= 2);
     assert_eq!(retention(&sched, &[], now, 30).all().share(), None);
+
+    // One pass gives the same windows and the same card states.
+    let (states, windows) = replay_with_retention(&sched, &log, now, &[7, 30, 400]);
+    assert_eq!(windows, [r7, retention(&sched, &log, now, 30), all]);
+    assert_eq!(states, sched.replay_all(&log));
 }
 
 #[test]
