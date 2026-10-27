@@ -167,15 +167,13 @@ mod tests {
         );
     }
 
+    /// Every unit has its own card; a new unit needs its card drawn
+    /// (`scripts/assets/draw_souvenirs.py`) before it can ship.
     #[test]
-    fn every_unit_has_a_picture() {
+    fn every_unit_has_its_own_card() {
         for unit in unit_ids() {
-            let level = unit.split('.').next().unwrap();
-            assert!(
-                card(&unit, Size::Thumb).is_some()
-                    || map_art::vignette(level, map_art::Size::Small).is_some(),
-                "{unit} has no picture"
-            );
+            assert!(card(&unit, Size::Card).is_some(), "{unit} has no souvenir card");
+            assert!(card(&unit, Size::Thumb).is_some(), "{unit} has no souvenir thumbnail");
         }
         assert_eq!(unit_of("bipa1.u01.souvenir"), "bipa1.u01");
         assert!(card("j6.u01", Size::Card).unwrap().starts_with("data:image/webp;base64,"));
