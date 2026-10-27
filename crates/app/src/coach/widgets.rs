@@ -4,9 +4,9 @@ use dioxus::prelude::*;
 use kabar_protocol::coach::{LocalTime, PlanSize, QuietHours, ReminderStyle};
 
 use super::{labels, logic};
-use crate::Ui;
 use crate::i18n::Msg;
 use crate::icons;
+use crate::{Ui, platform};
 
 /// Kak Nur speaking.
 #[component]
@@ -138,6 +138,10 @@ pub fn TimesEditor(times: Vec<LocalTime>, onchange: EventHandler<Vec<LocalTime>>
 #[component]
 pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) -> Element {
     let ui = use_context::<Ui>();
+    // Re-read after the system prompt, which answers outside the app.
+    let mut asked = use_signal(|| 0u32);
+    let _ = asked();
+    let allowed = platform::notifications_enabled() != Some(false);
     rsx! {
         div { class: "choices", role: "group",
             for style in labels::STYLES {
@@ -145,9 +149,33 @@ pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) ->
                     key: "{style:?}",
                     class: "choice",
                     aria_pressed: if style == value { "true" } else { "false" },
-                    onclick: move |_| onpick.call(style),
+                    onclick: move |_| {
+                        // Android 13+ asks once, right when reminders are chosen.
+                        if style != ReminderStyle::Off {
+                            platform::reminders::request();
+                            asked += 1;
+                        }
+                        onpick.call(style);
+                    },
                     strong { "{ui.t(labels::reminder_style(style).0)}" }
                     span { class: "hint", "{ui.t(labels::reminder_style(style).1)}" }
+                }
+            }
+        }
+        if value != ReminderStyle::Off {
+            if !platform::LOCAL_REMINDERS {
+                p { class: "hint", "{ui.t(Msg::RemindersElsewhere)}" }
+            } else if !allowed {
+                p { class: "hint", "{ui.t(Msg::RemindersBlocked)}" }
+                button {
+                    class: "secondary",
+                    onclick: move |_| {
+                        if let Err(e) = platform::open_app_page(platform::AppPage::Notifications) {
+                            eprintln!("kabar: {e}");
+                        }
+                        asked += 1;
+                    },
+                    "{ui.t(Msg::RemindersAllow)}"
                 }
             }
         }

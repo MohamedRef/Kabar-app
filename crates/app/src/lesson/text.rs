@@ -98,6 +98,9 @@ pub enum L {
     TryAgain,
     PlacementTitle,
     PlacementBody,
+    PlacementUnit,
+    UnitsToRevisit,
+    Revisit,
     GoToJourney,
     InviteTitle,
     InviteBody,
@@ -114,6 +117,10 @@ pub enum L {
     StayInTest,
     LeaveTest,
     BackToToday,
+    ChoiceCorrect,
+    ChoiceYours,
+    ChoiceYoursCorrect,
+    PairMatched,
 }
 
 pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
@@ -418,6 +425,15 @@ pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
         (PlacementBody, Ar) => {
             "سنبدأ من {level}. يمكنك دائمًا العودة إلى محطات سابقة أو التقدّم عبر «سافر بالطائرة»."
         }
+        (PlacementUnit, ArEg) => "وهنبدأ من وحدة {unit}، أول وحدة فيها حاجات جديدة عليك.",
+        (PlacementUnit, Ar) => "وسنبدأ من وحدة {unit}، أول وحدة فيها جديد عليك.",
+        (PlacementUnit, En) => "We'll start at {unit}, the first unit with new things for you.",
+        (UnitsToRevisit, ArEg) => "وحدات تستاهل رجعة",
+        (UnitsToRevisit, Ar) => "وحدات تستحق المراجعة",
+        (UnitsToRevisit, En) => "Units worth a second visit",
+        (Revisit, ArEg) => "راجعها",
+        (Revisit, Ar) => "راجِعها",
+        (Revisit, En) => "Go over it",
         (PlacementBody, En) => {
             "We'll start at {level}. You can always go back to earlier stops, or skip ahead with Take a flight."
         }
@@ -481,5 +497,17 @@ pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
         (BackToToday, ArEg) => "ارجع لخطة النهارده",
         (BackToToday, Ar) => "العودة إلى خطة اليوم",
         (BackToToday, En) => "Back to today's plan",
+        (ChoiceCorrect, ArEg) => "دي الإجابة الصح",
+        (ChoiceCorrect, Ar) => "هذه الإجابة الصحيحة",
+        (ChoiceCorrect, En) => "the right answer",
+        (ChoiceYours, ArEg) => "إجابتك",
+        (ChoiceYours, Ar) => "إجابتك",
+        (ChoiceYours, En) => "your answer",
+        (ChoiceYoursCorrect, ArEg) => "إجابتك، وهي صح",
+        (ChoiceYoursCorrect, Ar) => "إجابتك، وهي صحيحة",
+        (ChoiceYoursCorrect, En) => "your answer, and it's right",
+        (PairMatched, ArEg) => "اتوصّلت صح",
+        (PairMatched, Ar) => "مُطابقة صحيحة",
+        (PairMatched, En) => "matched",
     }
 }
