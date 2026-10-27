@@ -131,14 +131,14 @@ characters:
     home: Yogyakarta
     voice: jv-ID-DimasNeural
     about: A university student in Yogyakarta, the friend who teaches you Javanese; Mbah Putri is his grandmother.
-    in: [chat, lessons, games]
+    in: [sinetron, chat, lessons, games]
     units: [j1.u01, j1.u02, j2.u04, j2.u06, j3.u01, j3.u02, j3.u03, j4.u04, j4.u05, j4.u06, j6.u01, j6.u02, j6.u03, j6.u04, j6.u05, j6.u06]
   - id: bu-siti
     name: Bu Siti
     home: Solo (Pasar Gede)
     voice: jv-ID-SitiNeural
     about: A fruit-and-tempe seller at Pasar Gede in Solo who haggles with you and models polite krama.
-    in: [chat, lessons, games]
+    in: [sinetron, chat, lessons, games]
     units: [bipa2.u04, j1.u07, j2.u03, j3.u01, j3.u02, j3.u03, j3.u05, j3.u06]
 
   # --- Kabar Radio hosts -----------------------------------------------------
@@ -158,48 +158,64 @@ characters:
     about: Kabar Radio co-host, a Bandung office worker married to Laras. Shares a voice with Mas Ardi.
     in: [radio]
     levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7]
+  - id: mbak-sekar
+    name: Mbak Sekar
+    aliases: [Sekar]
+    home: Solo
+    voice: jv-ID-SitiNeural
+    about: Kabar Radio's Javanese host, a Solo teacher living in Surabaya who speaks standard Mataraman Javanese and loves krama. Shares a voice with Bu Siti.
+    in: [radio]
+    levels: [j1, j2, j3, j4, j5, j6]
+  - id: mas-galih
+    name: Mas Galih
+    aliases: [Galih]
+    home: Surabaya
+    voice: jv-ID-DimasNeural
+    about: Kabar Radio's Javanese co-host, a Surabaya DJ who speaks Arek Javanese (rek, koen, gak) and jokes a lot. Shares a voice with Mas Dimas.
+    in: [radio]
+    levels: [j1, j2, j3, j4, j5, j6]
 
   # --- Javanese lessons and games ------------------------------------------
   - id: cak-heru
     name: Cak Heru
     home: Surabaya
     about: Your Surabaya mate in J1; speaks Arek Javanese (rek, koen, gak).
-    in: [lessons]
+    in: [sinetron, lessons]
     units: [j1.u01, j1.u02, j1.u03, j1.u04, j1.u05, j1.u06, j1.u07]
   - id: mas-yudha
     name: Mas Yudha
     aliases: [Yudha]
     home: Surabaya (Gubeng)
     about: A student in Surabaya you meet in J1; later sends you code-mixed voice notes (renamed from Mas Bayu).
-    in: [lessons]
+    in: [sinetron, lessons]
     units: [j1.u02, j1.u07, j5.u04]
   - id: bu-darmi
     name: Bu Darmi
     home: Caruban
     about: Runs the pecel warung in Caruban where you order food in J2.
-    in: [lessons]
+    in: [sinetron, lessons]
     units: [j2.u02]
   - id: pak-harjo
     name: Pak Harjo
     home: Solo
     about: An older gentleman who corrects your krama. Your Javanese teacher in Solo, later the batik maker and tomb keeper you meet on the way to Kotagede.
-    in: [lessons, games]
+    in: [sinetron, lessons, games]
     units: [j3.u03, j3.u06, j5.u02, j6.u05]
     family: [bu-harjo]
   - id: bu-harjo
     name: Bu Harjo
     home: Solo
     about: Pak Harjo's wife.
-    in: [lessons]
+    in: [sinetron, lessons]
     units: [j3.u03]
     family: [pak-harjo]
   - id: mbah-putri
     name: Mbah Putri
     aliases: [Putri]
     home: a village near Yogyakarta
-    about: Mas Dimas's grandmother. You use krama inggil for her; she answers a guest in simple polite krama. J4 chat partner.
-    in: [lessons, games, chat]
-    units: [j3.u01, j3.u02, j4.u01, j4.u02, j4.u03, j4.u04, j4.u05, j4.u06]
+    about: Mas Dimas's grandmother. You use krama inggil for her; she answers a guest in simple polite krama. J3 (u01–u03) and J4 chat partner.
+    in: [sinetron, lessons, games, chat]
+    units: [j3.u01, j3.u02, j3.u03, j4.u01, j4.u02, j4.u03, j4.u04, j4.u05, j4.u06]
   - id: pak-karto
     name: Pak Karto
     home: Solo
@@ -210,27 +226,27 @@ characters:
     name: Pak Harsono
     home: Yogyakarta
     about: Your host father in Yogyakarta; the krama inggil lessons use him and his wife.
-    in: [lessons]
+    in: [sinetron, lessons]
     units: [j4.u01, j4.u03, j4.u06]
     family: [bu-harsono]
   - id: bu-harsono
     name: Bu Harsono
     home: Yogyakarta
     about: Your host mother in Yogyakarta.
-    in: [lessons]
+    in: [sinetron, lessons]
     units: [j4.u01, j4.u02, j4.u03]
     family: [pak-harsono]
   - id: mbak-ayu
     name: Mbak Ayu
     home: Semarang
     about: A Javanese literature student in Semarang who checks your writing and reads news, posts, stories and songs with you. J5 chat partner.
-    in: [lessons, chat]
+    in: [sinetron, lessons, chat]
     units: [j5.u01, j5.u02, j5.u03, j5.u04, j5.u05, j5.u06]
   - id: pak-slamet
     name: Pak Slamet
     home: Kotagede
     about: A Kotagede silversmith who engraves names in aksara Jawa and teaches you the script and Pegon. J6 chat partner.
-    in: [lessons, chat]
+    in: [sinetron, lessons, chat]
     units: [j4.u02, j6.u01, j6.u02, j6.u03, j6.u04, j6.u05, j6.u06]
 
   # --- Sinetron (content/stories/sinetron) ---------------------------------
@@ -276,7 +292,7 @@ characters:
     home: Cairo (comes to Madiun)
     about: Nadia's brother, who travels to Madiun, cooks koshari at the warung and marries Sari.
     in: [sinetron]
-    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7, j1, j2, j3, j4, j5, j6]
     family: [nadia]
   - id: mas-joko
     name: Mas Joko
@@ -284,7 +300,7 @@ characters:
     home: Madiun
     about: Works at Pak Budi's warung; always guessing wrong, always cheerful.
     in: [sinetron]
-    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7]
+    levels: [bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7, j2]
   - id: hagga-fatma
     name: Hagga Fatma
     aliases: [Fatma]

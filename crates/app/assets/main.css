@@ -185,6 +185,16 @@ button {
 button.primary { background: var(--sawah); color: var(--surface); border-color: transparent; }
 button[aria-pressed="true"] { background: var(--indigo); color: var(--surface); border-color: transparent; }
 button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+/* Mouse and trackpad: a quiet hover on everything clickable. The selectors
+   stay at the specificity of `button`, so any screen's own colours (right,
+   wrong, selected) win over the hover. Touch screens never see it. */
+@media (hover: hover) and (pointer: fine) {
+  button:where(:not(:disabled):not(.primary):not([aria-pressed="true"]):not([aria-current="page"]):hover) {
+    background: color-mix(in srgb, var(--surface-2) 75%, var(--surface));
+  }
+  button.primary:where(:not(:disabled):hover) { background: color-mix(in srgb, var(--sawah) 88%, var(--text)); }
+  .nav-item:where(:not([aria-current="page"]):hover) { color: var(--text); }
+}
 
 @media (prefers-reduced-motion: no-preference) {
   button, .card, .nav-item { transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur-fast) var(--ease); }
@@ -215,7 +225,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .welcome .hero .tall { display: none; }
 .app[data-width="compact"] .welcome .hero .wide { display: none; }
 .app[data-width="compact"] .welcome .hero .tall { display: block; block-size: 14rem; object-position: center 40%; }
-.welcome .hero .greeting { font-size: clamp(2.2rem, 8vw, 3.4rem); position: absolute; inset-block-start: 0.75rem; inset-inline: 0; margin: 0; color: #2B3A70; text-shadow: 0 1px 12px rgb(245 239 227 / 0.6); }
+/* The greeting sits on a fixed light sky, so it keeps Paper's indigo in
+   every theme. */
+.welcome .hero { --hero-ink: #2b3a70; }
+.welcome .hero .greeting { font-size: clamp(2.2rem, 8vw, 3.4rem); position: absolute; inset-block-start: 0.75rem; inset-inline: 0; margin: 0; color: var(--hero-ink); text-shadow: 0 1px 12px rgb(245 239 227 / 0.6); }
 .greeting {
   font-family: var(--font-latin);
   font-size: clamp(2.6rem, 9vw, 4.5rem);
@@ -341,6 +354,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .app[data-width="medium"] .nav-label,
 .app[data-nav="slim"] .nav-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-inline-size: 100%; }
 .app[data-width="medium"] .nav-item { min-inline-size: 0; }
+/* The rail is narrow: spend its width on the label, not on button padding,
+   so "Kak Nur" fits instead of becoming "…k Nur". */
+.app[data-width="medium"] .nav-item,
+.app[data-nav="slim"] .nav-item { padding-inline: var(--sp-1); }
 
 /* Settings › Tablet / Mac: the slim rail on wide windows too */
 .app[data-nav="slim"]:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .shell { grid-template-columns: 5.5rem 1fr; }
@@ -367,6 +384,11 @@ html:has(.app[data-text-size="larger"]) { font-size: 125%; }
 .card h2 { margin-block: 0 var(--sp-2); font-size: var(--fs-lg); }
 .muted { color: var(--muted); }
 .pill { display: inline-block; padding-inline: 0.6rem; border-radius: 999px; background: var(--dawn-soft); color: var(--text); font-size: 0.85rem; }
+/* Pill tones (docs/DESIGN.md): the default stays dawn for "new"/levels. */
+.pill.neutral { background: var(--surface-2); color: var(--muted); }
+.pill.info { background: color-mix(in srgb, var(--indigo) 12%, var(--surface)); color: var(--indigo); }
+.pill.gold { background: var(--gold-soft); color: var(--gold); }
+.pill.good { background: color-mix(in srgb, var(--sawah) 14%, var(--surface)); color: var(--sawah); }
 .row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
 .field { margin-block-end: 1.25rem; }
 .field > label, .field > .label { display: block; font-weight: 600; margin-block-end: 0.4rem; }
@@ -398,15 +420,27 @@ code, .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size:
 .small { font-size: 0.85rem; }
 .error { color: var(--dawn); font-weight: 600; }
 button.quiet { background: transparent; border-color: transparent; color: var(--muted); text-decoration: underline; }
-button:disabled { opacity: 0.5; cursor: not-allowed; }
+/* Disabled, one look app-wide: faded and inert. A disabled primary button
+   turns neutral instead of a washed-out green, so it never reads as "go".
+   Say why next to it when the reason isn't obvious (docs/DESIGN.md). */
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+button.primary:disabled { opacity: 1; background: var(--surface-2); color: var(--muted); border-color: var(--line-soft); }
 h3 { font-size: var(--fs-md); margin-block: var(--sp-4) var(--sp-2); }
 
 .coach-grid { display: grid; gap: 0 1rem; align-items: start; }
 .app:not([data-width="compact"]) .coach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-/* Today: one centred column unless there are side cards to fill the second. */
+/* Today: one centred column on phones and tablet portrait. From expanded
+   up, the plan leads and the side cards (recap, placement, Kabar Pagi) sit
+   in a narrower supporting column. */
 .app:not([data-width="compact"]) .today-grid { grid-template-columns: minmax(0, 1fr); max-inline-size: 46rem; margin-inline: auto; }
-.app:not([data-width="compact"]) .today-grid:has(> .today-side .card) { grid-template-columns: repeat(2, minmax(0, 1fr)); max-inline-size: none; }
-.app:not([data-width="compact"]) .today-grid:has(> .today-side .card) .today-side > :first-child { margin-block-start: 0 !important; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .today-grid:has(> .today-side .card) {
+  grid-template-columns: minmax(0, 3fr) minmax(18rem, 2fr); max-inline-size: 72rem; gap: 0 var(--sp-6);
+}
+.today-grid:has(> .today-side .card) .today-side > :first-child { margin-block-start: 0 !important; }
+/* The side cards are quieter than the plan. */
+.today-side .card h2 { font-size: var(--fs-md); }
+/* The recap's four numbers as a steady 2×2, never three and an orphan. */
+.today-side .stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 .nur { display: flex; gap: 0.75rem; align-items: flex-start; margin-block: 0.75rem; }
 .nur-avatar {
@@ -464,6 +498,13 @@ h3 { font-size: var(--fs-md); margin-block: var(--sp-4) var(--sp-2); }
   border-radius: var(--radius);
 }
 .plan-item.done { background: var(--surface-2); }
+/* The next step stands out: a tinted row, a bigger title, the filled button. */
+.plan-item.next {
+  border-color: color-mix(in srgb, var(--sawah) 45%, var(--line));
+  background: color-mix(in srgb, var(--sawah) 7%, var(--surface));
+  padding-block: var(--sp-3);
+}
+.plan-item.next .plan-text strong { font-size: var(--fs-lg); }
 .plan-item.done .plan-text strong { color: var(--muted); }
 .plan-text { flex: 1; min-inline-size: 0; }
 button.check {
@@ -573,7 +614,7 @@ span.time-input select { border: 0; background: transparent; min-block-size: 40p
 .big { font-size: 1.6rem; }
 
 .play-grid { display: grid; gap: 0.75rem; margin-block-end: 1rem; }
-.app:not([data-width="compact"]) .play-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.app:not([data-width="compact"]) .play-grid { grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr)); }
 .app:not([data-width="compact"]) .pagi-layout,
 .app:not([data-width="compact"]) .pasar-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1rem; align-items: start; }
 .app:not([data-width="compact"]) .pasar-layout .transcript { grid-row: span 2; }
@@ -729,7 +770,6 @@ button.icon-button { inline-size: 44px; padding: 0; flex: none; }
   padding-block: 0.55rem; padding-inline: 1rem;
 }
 .button-like:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
-button:disabled { opacity: 0.5; cursor: default; }
 
 .reader-input.dragging { outline: 3px dashed var(--sawah); outline-offset: -6px; }
 .reader-textarea {
@@ -1104,3 +1144,12 @@ button.journal-delete { color: var(--dawn); border-color: var(--dawn); }
 }
 .souvenir-art.place-art img { inline-size: min(9rem, 60%); aspect-ratio: 1; border-radius: 50%; }
 .lp-souvenir .souvenir-art { max-inline-size: 22rem; margin-inline: auto; }
+
+/* Settings → Your data: recent diagnostics (diag.rs). */
+.diag-lines {
+  max-block-size: 18rem;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.8rem;
+}

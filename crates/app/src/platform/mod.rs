@@ -140,7 +140,7 @@ pub fn take_shared_input() -> Option<SharedInput> {
         match android::take_shared_input() {
             Ok(input) => input,
             Err(e) => {
-                eprintln!("kabar: reading the shared item failed: {e}");
+                crate::diag::report!("reading the shared item failed: {e}");
                 None
             }
         }
@@ -186,7 +186,7 @@ pub fn pick_state() -> PickState {
     #[cfg(target_os = "android")]
     {
         android::pick_state().unwrap_or_else(|e| {
-            eprintln!("kabar: image picker state: {e}");
+            crate::diag::report!("image picker state: {e}");
             PickState::Failed
         })
     }
@@ -229,7 +229,7 @@ pub fn save_state() -> SaveState {
     #[cfg(target_os = "android")]
     {
         android::save_state().unwrap_or_else(|e| {
-            eprintln!("kabar: save dialog state: {e}");
+            crate::diag::report!("save dialog state: {e}");
             SaveState::Failed
         })
     }
@@ -308,7 +308,7 @@ pub enum AppPage {
 pub fn notifications_enabled() -> Option<bool> {
     #[cfg(target_os = "android")]
     {
-        android::notifications_enabled().map_err(|e| eprintln!("kabar: notification check: {e}")).ok()
+        android::notifications_enabled().map_err(|e| crate::diag::report!("notification check: {e}")).ok()
     }
     #[cfg(not(target_os = "android"))]
     {
@@ -370,10 +370,10 @@ pub mod track {
     pub use none::*;
 }
 
-/// Kak Nur's reminders reach this device as local notifications (Android).
-/// The Mac's (UNUserNotificationCenter) and push through FCM come next
-/// (issue #127); until then Settings says so.
-pub const LOCAL_REMINDERS: bool = cfg!(target_os = "android");
+/// Kak Nur's reminders reach this device as local notifications: Android,
+/// and the bundled Mac app (UNUserNotificationCenter). Push through FCM is
+/// issue #187.
+pub const LOCAL_REMINDERS: bool = cfg!(any(target_os = "android", target_os = "macos"));
 
 /// Local reminder scheduling; no-ops where [`LOCAL_REMINDERS`] is false.
 pub mod reminders {
@@ -383,10 +383,56 @@ pub mod reminders {
         {
             super::android::schedule_reminders(json)
         }
-        #[cfg(not(target_os = "android"))]
+        #[cfg(target_os = "macos")]
+        {
+            super::macos::reminders::schedule(json)
+        }
+        #[cfg(not(any(target_os = "android", target_os = "macos")))]
         {
             let _ = json;
             Ok(())
+        }
+    }
+
+    /// Whether notifications can work here: Android, or the bundled Mac app
+    /// (not `cargo run`, which has no bundle).
+    pub fn available() -> bool {
+        #[cfg(target_os = "macos")]
+        {
+            super::macos::reminders::bundled()
+        }
+        #[cfg(not(target_os = "macos"))]
+        {
+            super::LOCAL_REMINDERS
+        }
+    }
+
+    /// The reminders shown while the app was closed (unix ms), once each.
+    pub fn take_delivered() -> Vec<u64> {
+        #[cfg(target_os = "android")]
+        {
+            super::android::take_delivered_reminders()
+                .map_err(|e| crate::diag::report!("delivered reminders: {e}"))
+                .unwrap_or_default()
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            Vec::new()
+        }
+    }
+
+    /// `Some(false)` when Android may put Kabar to sleep and stop its
+    /// alarms (Samsung's "sleeping apps"); `None` where that can't happen.
+    pub fn battery_unrestricted() -> Option<bool> {
+        #[cfg(target_os = "android")]
+        {
+            super::android::battery_unrestricted()
+                .map_err(|e| crate::diag::report!("battery check: {e}"))
+                .ok()
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            None
         }
     }
 
@@ -394,8 +440,10 @@ pub mod reminders {
     pub fn request() {
         #[cfg(target_os = "android")]
         if let Err(e) = super::android::request_notifications() {
-            eprintln!("kabar: notification permission: {e}");
+            crate::diag::report!("notification permission: {e}");
         }
+        #[cfg(target_os = "macos")]
+        super::macos::reminders::request();
     }
 }
 

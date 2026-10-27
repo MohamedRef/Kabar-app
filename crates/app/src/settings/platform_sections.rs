@@ -34,7 +34,7 @@ pub fn AndroidSection() -> Element {
         }
     });
     let mut open = move |page: AppPage| {
-        let ok = platform::open_app_page(page).map_err(|e| eprintln!("kabar: {e}")).is_ok();
+        let ok = platform::open_app_page(page).map_err(|e| crate::diag::report!("{e}")).is_ok();
         failed.set(!ok);
     };
     let pen = *prefs.pen_hover.read();
@@ -109,11 +109,14 @@ pub fn MacSection() -> Element {
     let prefs = use_context::<DevicePrefs>();
     let lang = ui.lang();
     let hover = *prefs.mouse_hover.read();
-    let rows: [(S, &[&str]); 5] = [
+    let rows: [(S, &[&str]); 8] = [
         (S::ShortcutSettings, &["⌘", ","]),
         (S::ShortcutScreens, &["⌘1", "…", "⌘7"]),
         (S::ShortcutPick, &["1", "2", "3"]),
         (S::ShortcutCheck, &["Return"]),
+        (S::ShortcutReveal, &["Space"]),
+        (S::ShortcutRate, &["1", "…", "4"]),
+        (S::ShortcutHelp, &["?"]),
         (S::ShortcutClose, &["Esc"]),
     ];
 
@@ -224,6 +227,7 @@ pub fn StorageSection() -> Element {
             span { class: "label", "{st(ui.lang(), S::DataFolder)}" }
             p { code { dir: "ltr", bdi { "{dir}" } } }
         }
+        crate::diag::DiagnosticsCard {}
     }
 }
 

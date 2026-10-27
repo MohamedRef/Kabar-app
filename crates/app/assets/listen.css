@@ -6,6 +6,10 @@
 .small { font-size: 0.85rem; }
 
 .lx-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+/* Wide windows: the episode lists become a feed grid; the player keeps
+   its reading column. */
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .listen:has(.lx-list) { max-inline-size: 72rem; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .lx-list { grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); align-items: start; }
 .lx-list .card { margin: 0; }
 .lx-card { inline-size: 100%; display: grid; gap: 0.25rem; text-align: start; font: inherit; color: var(--text); cursor: pointer; }
 .lx-card.locked { cursor: default; opacity: 0.7; }
@@ -44,3 +48,6 @@
 .app[data-width="compact"] .lx-controls { inset-block-end: calc(4rem + env(safe-area-inset-bottom)); z-index: 11; }
 .lx-controls button[aria-pressed="true"] { background: var(--surface-2); color: var(--indigo); font-weight: 600; }
 @media (prefers-reduced-motion: no-preference) { .lx-cue { transition: border-color 0.2s, box-shadow 0.2s; } }
+.lx-teaser { cursor: default; border-style: dashed; }
+.lx-teaser progress { inline-size: 100%; block-size: 0.5rem; accent-color: var(--sawah); }
+.lx-more { text-align: center; }

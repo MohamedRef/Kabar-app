@@ -10,6 +10,7 @@ mod cloud;
 mod coach;
 mod cost;
 mod data_export;
+mod diag;
 mod embedded;
 mod fonts;
 mod i18n;
@@ -182,7 +183,7 @@ impl Ui {
         let mut new = old.clone();
         f(&mut new);
         if let Err(e) = db.0.borrow_mut().save_settings(&old, &new) {
-            eprintln!("kabar: saving settings failed: {e}");
+            crate::diag::report!("saving settings failed: {e}");
         }
         self.settings.set(new);
     }
@@ -206,6 +207,7 @@ impl Ui {
 }
 
 fn main() {
+    diag::install_panic_hook();
     #[cfg(all(feature = "desktop", not(target_os = "android")))]
     {
         use dioxus::desktop::{Config, LogicalSize, WindowBuilder};
@@ -274,12 +276,19 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     // KABAR_OPEN_LESSON=bipa1.u01.l01 opens the Lesson Player at launch
     // (previews and screenshots on the Mac).
     let open_lesson = use_hook(|| std::env::var("KABAR_OPEN_LESSON").ok());
-    // KABAR_OPEN_SCREEN=stats | level_check | journey | reader opens those screens the same way.
+    // KABAR_OPEN_SCREEN=stats | level_check | journey | reader | review | play | listen | chat
+    // | coach | journal opens those screens the same way (previews and screenshots).
     let open_screen = use_hook(|| match std::env::var("KABAR_OPEN_SCREEN").as_deref() {
         Ok("stats") => Some(Screen::Stats),
         Ok("level_check") => Some(Screen::LevelCheck),
         Ok("journey") => Some(Screen::Journey),
         Ok("reader") => Some(Screen::Reader),
+        Ok("review") => Some(Screen::Review),
+        Ok("play") => Some(Screen::Play),
+        Ok("listen") => Some(Screen::Listen),
+        Ok("chat") => Some(Screen::Chat),
+        Ok("coach") => Some(Screen::Coach),
+        Ok("journal") => Some(Screen::Journal),
         _ => None,
     });
     let ui = use_context_provider(|| Ui {
@@ -312,7 +321,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     coach::use_clock(coach, db.clone());
     schedule::use_optimizer(db.clone(), ui, coach);
     use_learner_profile(&db, coach);
-    coach::notify::use_local_reminders(&db, coach, ui);
+    coach::notify::use_local_reminders(&db, coach, ui, prefs);
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
@@ -409,7 +418,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
         let mut handle = match cloud::start(config, path, device, vault) {
             Ok(h) => h,
             Err(e) => {
-                eprintln!("kabar: sync didn't start: {e}");
+                crate::diag::report!("sync didn't start: {e}");
                 return;
             }
         };

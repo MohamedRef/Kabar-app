@@ -598,7 +598,7 @@ pub(crate) fn speak(text: &str, lang_tag: &str) {
         Err(SpeakError::UseWebView) => {}
         Ok(()) => return,
         Err(e) => {
-            eprintln!("kabar: no reader audio: {e:?}");
+            crate::diag::report!("no reader audio: {e:?}");
             return;
         }
     }

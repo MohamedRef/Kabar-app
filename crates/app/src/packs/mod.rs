@@ -326,7 +326,7 @@ pub fn prefetch_for(lesson_id: &str) {
         let index = refresh_index(store).unwrap_or_else(|_| store.index());
         for id in packs::prefetch(&index, &lesson_id, &store.installed_versions()) {
             if let Err(e) = download(store, &id) {
-                eprintln!("kabar: prefetching {id} failed: {e}");
+                crate::diag::report!("prefetching {id} failed: {e}");
             }
         }
     });
