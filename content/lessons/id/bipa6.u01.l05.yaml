@@ -1,183 +1,206 @@
 schema: kabar.lesson/v1
 id: bipa6.u01.l05
 language: id
-title: Tanggapan sastra
+title: Cerpen koran Minggu
 can_do:
-  ar_eg: تكتب مراجعة قصيرة لقصة، الأسلوب، اللي عجبك، ورأيك بأدب.
-  ar: أن تكتب مراجعة قصيرة لقصّة، أسلوبها وما أعجبك ورأيك بلطف.
-  en: Write a short review of a story, covering style, what moved you and your view.
+  ar_eg: 'تتكلم عن عالم القصة القصيرة في إندونيسيا: الكتّاب والجرايد والمجموعات القصصية.'
+  ar: 'أن تتحدّث عن عالم القصة القصيرة في إندونيسيا: الكتّاب والصحف والمجموعات القصصية.'
+  en: Talk about the Indonesian short-story world, from writers to newspapers and collections.
 slides:
-  - title: Menulis ulasan
-    grammar: id.implicature
+  - title: Sastra di halaman koran
     body:
       ar_eg: |
-        الـ ulasan (المراجعة) بتمشي كده:
-        1. القصة عن إيه، في جملة: Cerpen ini bercerita tentang …
-        2. الأسلوب (gaya bahasa): Gaya bahasanya sederhana tetapi …
-        3. اللي أثّر فيك: Bagian yang paling menyentuh adalah …
-        4. رأيك، ملطّف: Barangkali akhirnya terlalu cepat, tetapi secara umum cerpen ini mengesankan.
+        في إندونيسيا، جرايد كتير بتنشر قصة قصيرة كل يوم حد، وجريدة Kompas بتجمع أحسن قصص السنة في كتاب كل سنة.
+        - pengarang = المؤلف، وcerpenis = كاتب القصص القصيرة (زي Seno Gumira Ajidarma)
+        - redaktur = المحرر اللي بيختار القصص
+        - diterbitkan = اتنشر (من terbit = يطلع)
+        - kumpulan cerpen = مجموعة قصصية
       ar: |
-        تسير الـ ulasan (المراجعة) هكذا:
-        1. موضوع القصّة في جملة: Cerpen ini bercerita tentang …
-        2. الأسلوب (gaya bahasa): Gaya bahasanya sederhana tetapi …
-        3. ما أثّر فيك: Bagian yang paling menyentuh adalah …
-        4. رأيك ملطّفًا: Barangkali akhirnya terlalu cepat, tetapi secara umum cerpen ini mengesankan.
+        تنشر صحف إندونيسية كثيرة قصة قصيرة كلّ يوم أحد، وتجمع صحيفة Kompas أفضل قصص العام في كتاب سنوي.
+        - pengarang = المؤلّف، وcerpenis = كاتب القصة القصيرة (مثل Seno Gumira Ajidarma)
+        - redaktur = المحرّر الذي يختار القصص
+        - diterbitkan = نُشر (من terbit = يصدر)
+        - kumpulan cerpen = مجموعة قصصية
       en: |
-        An ulasan (review) runs like this:
-        1. The story in one line: Cerpen ini bercerita tentang …
-        2. Style (gaya bahasa): Gaya bahasanya sederhana tetapi …
-        3. What moved you: Bagian yang paling menyentuh adalah …
-        4. Your view, hedged: Barangkali akhirnya terlalu cepat, tetapi secara umum cerpen ini mengesankan.
+        Many Indonesian papers print a short story every Sunday, and Kompas gathers the year's best into an annual book.
+        - pengarang = author; cerpenis = short-story writer (such as Seno Gumira Ajidarma)
+        - redaktur = the editor who picks the stories
+        - diterbitkan = published (from terbit = to come out)
+        - kumpulan cerpen = short-story collection
+    examples:
+      - text: Cerpen itu diterbitkan di koran Minggu, lalu masuk kumpulan cerpen terbaik.
+        ar_eg: القصة دي اتنشرت في جرنال الحد، وبعدين دخلت مجموعة أحسن القصص.
+        ar: نُشرت القصة في صحيفة الأحد، ثم دخلت مجموعة أفضل القصص.
+        en: The story was published in a Sunday paper, then made it into a best-of collection.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: ulasan
-        ar_eg: مراجعة / نقد
-        ar: مراجعة
-        en: review
-      - text: gaya bahasa
-        ar_eg: أسلوب
-        ar: أسلوب
-        en: style
-      - text: menyentuh
-        ar_eg: مؤثّر
-        ar: مؤثّر
-        en: moving, touching
-      - text: mengesankan
-        ar_eg: يسيب أثر / جميل جدًا
-        ar: مُبهر
-        en: impressive, memorable
-    words: [ulasan, gaya bahasa, menyentuh, mengesankan]
+      - text: pengarang
+        ar_eg: مؤلف
+        ar: مؤلّف
+        en: author
+      - text: cerpenis
+        ar_eg: كاتب قصص قصيرة
+        ar: قاصّ
+        en: short-story writer
+      - text: kumpulan cerpen
+        ar_eg: مجموعة قصصية
+        ar: مجموعة قصصية
+        en: story collection
+      - text: diterbitkan
+        ar_eg: اتنشر
+        ar: نُشر
+        en: published
+      - text: redaktur
+        ar_eg: محرر
+        ar: محرّر
+        en: editor
+    words: [pengarang, cerpenis, kumpulan cerpen, diterbitkan, redaktur]
   - id: e02
+    type: listen
+    text: Setiap hari Minggu, satu cerpen diterbitkan di koran itu.
+    question:
+      ar_eg: الجرنال بينشر قصة إمتى؟
+      ar: متى تنشر الصحيفة قصة؟
+      en: When does the paper publish a story?
+    options:
+      - كل يوم.
+      - كل يوم حد.
+      - مرة في الشهر.
+    answer: 1
+    words: [diterbitkan]
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة أنسب لنقد مؤدب في مراجعة؟
-      ar: أيّ جملة أنسب لنقد مهذّب في مراجعة؟
-      en: Which sentence suits a polite criticism in a review?
+      ar_eg: «cerpenis» يعني مين؟
+      ar: من «cerpenis»؟
+      en: Who is a "cerpenis"?
     options:
-      - Akhirnya jelek sekali.
-      - Barangkali akhirnya terlalu cepat.
-      - Penulisnya tidak bisa menulis.
-    answer: 1
-    words: [ulasan]
-  - id: e03
-    type: fill_blank
-    sentence: Bagian yang paling ___ adalah ketika ayah menuang teh ke dua cangkir.
-    meaning:
-      ar_eg: أكتر جزء مؤثّر لما الأب صبّ الشاي في فنجانين.
-      ar: أكثر الأجزاء تأثيرًا حين يصبّ الأب الشاي في فنجانين.
-      en: The most moving part is when the father pours tea into two cups.
-    options: [menyentuh, ulasan, gaya bahasa]
-    answers: [menyentuh]
-    words: [menyentuh]
+      - كاتب قصص قصيرة.
+      - بياع جرايد.
+      - ناقد أفلام.
+    answer: 0
+    explain:
+      ar_eg: cerpen + -is، زي pianis وjurnalis.
+      ar: cerpen مع اللاحقة -is، مثل pianis وjurnalis.
+      en: cerpen plus -is, like pianis and jurnalis.
+    words: [cerpenis]
   - id: e04
-    type: listen
-    text: Gaya bahasa cerpen ini sederhana, tetapi sangat kuat.
-    question:
-      ar_eg: أسلوب القصة عامل إزاي؟
-      ar: كيف أسلوب القصّة؟
-      en: What is the story's style like?
-    options:
-      - صعب ومعقّد.
-      - مضحك.
-      - بسيط بس قوي جدًا.
-    answer: 2
-    words: [gaya bahasa]
+    type: fill_blank
+    sentence: Cerpen Bang Togar dikirim ke ___ koran, tetapi belum dibalas.
+    meaning:
+      ar_eg: قصة الأستاذ توجار اتبعتت لمحرر الجرنال، بس لسه مارّدش.
+      ar: أُرسلت قصة توغار إلى محرّر الصحيفة، لكنه لم يردّ بعد.
+      en: Bang Togar's story went to the paper's editor, but there's no reply yet.
+    options: [redaktur, kumpulan cerpen, pencerita]
+    answers: [redaktur]
+    words: [redaktur]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: عمومًا، القصة دي مبهرة.
-      ar: على العموم، هذه القصّة مُبهرة.
-      en: Overall, this story is impressive.
-    answer: Secara umum, cerpen ini mengesankan.
-    distractors: [menyentuh, ulasan]
-    words: [mengesankan]
+      ar_eg: قصص المؤلف ده اتجمعت في كتاب واحد.
+      ar: جُمعت قصص ذلك المؤلّف في كتاب واحد.
+      en: That author's stories were collected in one book.
+    answer: Cerpen-cerpen pengarang itu dikumpulkan dalam satu buku.
+    distractors: [redaktur, diterbitkan]
+    words: [pengarang]
   - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: كتبت مراجعة للقصة دي في المدونة بتاعتي.
-      ar: كتبتُ مراجعة لهذه القصّة في مدوّنتي.
-      en: I wrote a review of this story on my blog.
+      ar_eg: المجموعة القصصية دي اتنشرت سنة ٢٠٢٠.
+      ar: نُشرت هذه المجموعة القصصية عام ٢٠٢٠.
+      en: This story collection was published in 2020.
     answers:
-      - Saya menulis ulasan cerpen ini di blog saya.
-      - Saya sudah menulis ulasan tentang cerpen ini di blog saya.
-      - Saya menulis ulasan tentang cerpen ini di blog saya.
-      - Aku menulis ulasan cerpen ini di blogku.
-    words: [ulasan]
+      - Kumpulan cerpen ini diterbitkan pada tahun 2020.
+      - Kumpulan cerpen ini diterbitkan tahun 2020.
+      - Kumpulan cerpen ini diterbitkan pada 2020.
+    words: [kumpulan cerpen, diterbitkan]
   - id: e07
-    type: speaking
-    text: Gaya bahasanya sederhana, tetapi akhirnya sangat menyentuh.
-    meaning:
-      ar_eg: أسلوبها بسيط، بس نهايتها مؤثّرة جدًا.
-      ar: أسلوبها بسيط، لكنّ خاتمتها مؤثّرة جدًّا.
-      en: The style is simple, but the ending is very moving.
-    words: [gaya bahasa, menyentuh]
-  - id: e08
-    type: dictation
-    text: Ulasan Anda tentang cerpen itu sangat mengesankan.
-    meaning:
-      ar_eg: مراجعتك عن القصة دي جميلة جدًا.
-      ar: مراجعتك لتلك القصّة مُبهرة جدًّا.
-      en: Your review of that story is very impressive.
-    words: [ulasan, mengesankan]
-  - id: e09
     type: multiple_choice
     question_meaning:
-      ar_eg: «Ceritanya lumayan» في مراجعة معناها غالبًا إيه؟
-      ar: ماذا تعني «Ceritanya lumayan» في مراجعة غالبًا؟
-      en: What does "Ceritanya lumayan" in a review usually mean?
-    options:
-      - مش وحشة، بس مش مبهرة.
-      - أحسن قصة في الدنيا.
-      - وحشة جدًا.
-    answer: 0
-    words: [mengesankan]
+      ar_eg: مين اللي بيقرر أنهي قصة تتنشر في الجرنال؟
+      ar: من يقرّر أيّ قصة تُنشر في الصحيفة؟
+      en: Who decides which story the paper publishes?
+    options: [pembaca, pencerita, redaktur]
+    answer: 2
+    words: [redaktur]
+  - id: e08
+    type: speaking
+    text: Seno Gumira Ajidarma adalah cerpenis yang terkenal.
+    meaning:
+      ar_eg: سينو جوميرا أجيدارما كاتب قصص قصيرة مشهور.
+      ar: سينو غوميرا أجيدارما قاصّ مشهور.
+      en: Seno Gumira Ajidarma is a well-known short-story writer.
+    words: [cerpenis]
+  - id: e09
+    type: dictation
+    text: Pengarang muda itu mengirim cerpennya ke koran Minggu.
+    meaning:
+      ar_eg: المؤلف الشاب ده بعت قصته لجرنال الحد.
+      ar: أرسل المؤلّف الشاب قصته إلى صحيفة الأحد.
+      en: The young author sent his story to the Sunday paper.
+    words: [pengarang]
+  - id: e10
+    type: fill_blank
+    sentence: Saya membeli ___ karya cerpenis Medan.
+    meaning:
+      ar_eg: اشتريت مجموعة قصصية لكاتب من ميدان.
+      ar: اشتريت مجموعة قصصية لقاصّ من ميدان.
+      en: I bought a story collection by a Medan writer.
+    options: [kumpulan cerpen, redaktur, kilas balik]
+    answers: [kumpulan cerpen]
+    words: [kumpulan cerpen]
 dialogue:
-  title: Ulasan di blog
+  title: Kabar dari redaktur
   lines:
     - speaker: Kak Mei
-      text: Mohamed, saya baca ulasanmu tentang "Kursi di Teras". Bagus sekali!
-      ar_eg: يا محمد، قريت مراجعتك عن «الكرسي في التراس». حلوة قوي!
-      ar: يا محمد، قرأت مراجعتك لـ«الكرسيّ في الشرفة». رائعة!
-      en: Mohamed, I read your review of "Kursi di Teras". Really good!
+      text: Mohamed, cerpen Bang Togar akan diterbitkan hari Minggu ini!
+      ar_eg: يا محمد، قصة توجار هتتنشر يوم الحد ده!
+      ar: يا محمد، ستُنشر قصة توغار يوم الأحد هذا!
+      en: Mohamed, Bang Togar's story is being published this Sunday!
     - speaker: Mohamed
-      text: Terima kasih, Kak. Saya masih ragu dengan kalimat terakhir saya.
-      ar_eg: شكرًا يا كاك. أنا لسه متردد في آخر جملة كتبتها.
-      ar: شكرًا. ما زلت متردّدًا في جملتي الأخيرة.
-      en: Thanks, Kak. I'm still unsure about my last sentence.
+      text: Hebat! Redakturnya suka cerpen tentang kursi kosong itu?
+      ar_eg: برافو! المحرر عجبته القصة بتاعة الكرسي الفاضي؟
+      ar: رائع! هل أعجبت المحرّرَ قصةُ الكرسي الفارغ؟
+      en: Great! The editor liked the story about the empty chair?
     - speaker: Kak Mei
-      text: Kalimat "akhirnya terlalu cepat"? Itu kritik yang sopan. Tidak apa-apa.
-      ar_eg: «النهاية سريعة زيادة»؟ ده نقد مؤدب. مفيش مشكلة.
-      ar: «النهاية متعجّلة»؟ هذا نقد مهذّب، لا بأس.
-      en: The line "the ending is too quick"? That's polite criticism. It's fine.
+      text: Ya. Katanya, pengarang muda jarang menulis makna tersirat sebaik itu.
+      ar_eg: أيوه. بيقول إن الكتّاب الشباب نادرًا ما بيكتبوا المعنى الضمني حلو كده.
+      ar: نعم، ويقول إنّ الكتّاب الشباب قلّما يكتبون المعنى الضمني بهذه البراعة.
+      en: Yes. He said young authors rarely handle implied meaning that well.
     - speaker: Mohamed
-      text: Syukurlah. Saya ingin jujur, tetapi tidak menyakiti penulisnya.
-      ar_eg: الحمد لله. عايز أبقى صريح، بس من غير ما أجرح الكاتب.
-      ar: الحمد لله. أريد أن أكون صادقًا دون أن أجرح الكاتب.
-      en: Thank goodness. I want to be honest without hurting the writer.
+      text: Semoga suatu hari cerpennya masuk kumpulan cerpen terbaik.
+      ar_eg: يا رب في يوم قصته تدخل مجموعة أحسن القصص.
+      ar: عسى أن تدخل قصته يومًا مجموعة أفضل القصص.
+      en: I hope one day his story makes it into a best-of collection.
 new_words:
-  - word: ulasan
+  - word: pengarang
     pos: noun
-    ar_eg: مراجعة / نقد
-    ar: مراجعة
-    en: review
-  - word: gaya bahasa
+    ar_eg: مؤلف
+    ar: مؤلّف
+    en: author
+  - word: cerpenis
     pos: noun
-    ar_eg: أسلوب
-    ar: أسلوب
-    en: style
-  - word: menyentuh
-    pos: adjective
-    ar_eg: مؤثّر
-    ar: مؤثّر
-    en: moving, touching
-  - word: mengesankan
-    pos: adjective
-    ar_eg: يسيب أثر / جميل جدًا
-    ar: مُبهر
-    en: impressive, memorable
+    ar_eg: كاتب قصص قصيرة
+    ar: قاصّ
+    en: short-story writer
+  - word: kumpulan cerpen
+    pos: noun
+    ar_eg: مجموعة قصصية
+    ar: مجموعة قصصية
+    en: short-story collection
+  - word: diterbitkan
+    pos: verb
+    ar_eg: اتنشر
+    ar: نُشر
+    en: to be published
+  - word: redaktur
+    pos: noun
+    ar_eg: محرر
+    ar: محرّر
+    en: editor
 review:
   status: draft
   verified: false
