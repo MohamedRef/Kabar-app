@@ -20,6 +20,7 @@ mod levels;
 mod packs;
 mod paths;
 mod pron;
+mod readme;
 mod schemas;
 mod text;
 mod wiki;
@@ -68,6 +69,12 @@ enum Command {
         #[arg(long)]
         check: bool,
     },
+    /// Refresh the generated numbers in `README.md` from the content.
+    Readme {
+        /// Fail instead of writing when the README is out of date.
+        #[arg(long)]
+        check: bool,
+    },
     /// Validate all content (schemas, glosses, bridge). Run before committing content.
     Validate,
 }
@@ -86,6 +93,7 @@ fn main() -> Result<()> {
         Command::Bakeoff(cmd) => bakeoff::run(&root, cmd),
         Command::Packs(cmd) => packs::run(&root, cmd),
         Command::Schemas { check } => schemas::run(&root, check),
+        Command::Readme { check } => readme::run(&root, check),
         Command::Validate => {
             schemas::run(&root, true)?;
             gloss::run(&root, gloss::Cmd::Validate { batch: None, lang: None })?;
@@ -99,6 +107,7 @@ fn main() -> Result<()> {
             levels::run(&root, levels::Cmd::Validate)?;
             golden::run(&root, golden::Cmd::Validate)?;
             packs::run(&root, packs::Cmd::Build { check: true })?;
+            readme::run(&root, true)?;
             println!("all content ok");
             Ok(())
         }
