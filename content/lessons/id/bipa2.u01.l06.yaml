@@ -1,0 +1,181 @@
+schema: kabar.lesson/v1
+id: bipa2.u01.l06
+language: id
+title: Ulangan Unit 1
+can_do:
+  ar_eg: توصف الآلات الموسيقية وتقارن بينها.
+  ar: أن تصف الآلات الموسيقية وتقارن بينها.
+  en: Describe and compare instruments.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: gendang
+        ar_eg: طبلة
+        ar: طبل
+        en: drum
+      - text: suling
+        ar_eg: ناي
+        ar: ناي
+        en: bamboo flute
+      - text: biola
+        ar_eg: كمنجة
+        ar: كمان
+        en: violin
+      - text: suara
+        ar_eg: صوت
+        ar: صوت
+        en: sound
+      - text: dunia
+        ar_eg: العالم / الدنيا
+        ar: العالم
+        en: world
+    words: [gendang, suling, biola, suara, dunia]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: lebih besar
+        ar_eg: أكبر
+        ar: أكبر
+        en: bigger
+      - text: terbesar
+        ar_eg: الأكبر
+        ar: الأكبر
+        en: biggest
+      - text: agak besar
+        ar_eg: كبير شوية
+        ar: كبير قليلًا
+        en: a bit big
+      - text: terlalu besar
+        ar_eg: كبير زيادة
+        ar: كبير أكثر من اللازم
+        en: too big
+    words: [lebih, paling, agak, terlalu]
+  - id: e03
+    type: listen
+    text: Mana yang paling ringan?
+    options: ['Mana yang paling ringan?', 'Mana yang lebih ringan?', 'Mana yang paling berat?']
+    answer: 0
+    words: [paling, ringan]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة معناها «الجونج أعلى صوتًا من الطبلة»؟
+      ar: أيّ جملة تعني «صوت الغونغ أعلى من صوت الطبل»؟
+      en: Which sentence means "The gong is louder than the drum"?
+    options: [Gong lebih keras daripada gendang., Gong lebih keras dengan gendang., Gong paling keras daripada gendang.]
+    answer: 0
+    explain:
+      ar_eg: بين حاجتين lebih … daripada. paling للأكتر في المجموعة كلها.
+      ar: بين شيئين lebih … daripada، وpaling للأكثر في المجموعة كلها.
+      en: Between two things it's lebih … daripada; paling is for the most of a group.
+    words: [lebih, daripada, keras]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك عزف على الجيتار وكان مش بطال. تقوله إيه؟
+      ar: عزف صديقك على القيثارة وكان عزفه لا بأس به. ماذا تقول له؟
+      en: Your friend played the guitar and it was not bad. What do you say?
+    options: [Kurang!, Lumayan!, Terlalu bagus!]
+    answer: 1
+    words: [lumayan]
+  - id: e06
+    type: fill_blank
+    sentence: Kopinya ___ manis. Saya mau gula lagi.
+    meaning:
+      ar_eg: القهوة سكرها قليل. عايز سكر تاني.
+      ar: القهوة قليلة الحلاوة. أريد مزيدًا من السكر.
+      en: The coffee isn't sweet enough. I want more sugar.
+    options: [lebih, terlalu, kurang]
+    answers: [kurang]
+    words: [kurang]
+  - id: e07
+    type: fill_blank
+    sentence: Ini warung ___ di Ubud. Makanannya enak dan murah!
+    meaning:
+      ar_eg: (اكتب صيغة ter- من baik) ده أحسن مطعم صغير في أوبود. أكله حلو ورخيص!
+      ar: (اكتب صيغة ter- من baik) هذا أفضل مطعم شعبي في أوبود. طعامه لذيذ ورخيص!
+      en: (Write the ter- form of baik.) This is the best food stall in Ubud. The food is tasty and cheap!
+    answers: [terbaik]
+    words: [terbaik]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: الكمنجة أخف من الجيتار.
+      ar: الكمان أخف من القيثارة.
+      en: The violin is lighter than the guitar.
+    answer: Biola lebih ringan daripada gitar.
+    distractors: [paling, dengan]
+    words: [biola, lebih, ringan, daripada]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: الجاميلان البالي مشهور في العالم.
+      ar: الغاميلان البالي مشهور في العالم.
+      en: Balinese gamelan is famous around the world.
+    answer: Gamelan Bali terkenal di dunia.
+    distractors: [paling, lebih]
+    words: [terkenal, dunia]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الصوت عالي زيادة.
+      ar: الصوت عالٍ أكثر من اللازم.
+      en: The sound is too loud.
+    answers: [Suaranya terlalu keras., Suaranya terlalu keras, Suara ini terlalu keras., Suaranya terlalu kencang.]
+    words: [suara, terlalu, keras]
+  - id: e11
+    type: dictation
+    text: Pura ini paling indah di Ubud.
+    meaning:
+      ar_eg: المعبد ده أجمل معبد في أوبود.
+      ar: هذا المعبد أجمل معبد في أوبود.
+      en: This temple is the most beautiful in Ubud.
+    words: [paling, indah, pura]
+  - id: e12
+    type: speaking
+    text: Suling ini agak kecil, tapi lebih murah daripada biola.
+    meaning:
+      ar_eg: الناي ده صغير شوية، بس أرخص من الكمنجة.
+      ar: هذا الناي صغير قليلًا، لكنه أرخص من الكمان.
+      en: This flute is a bit small, but cheaper than the violin.
+    words: [agak, lebih, daripada]
+dialogue:
+  title: Malam gamelan
+  lines:
+    - speaker: Ni Luh
+      text: Bagaimana gamelannya, Mohamed?
+      ar_eg: إيه رأيك في الجاميلان يا محمد؟
+      ar: ما رأيك في الغاميلان يا محمد؟
+      en: How was the gamelan, Mohamed?
+    - speaker: Mohamed
+      text: Indah sekali! Tapi gongnya agak keras.
+      ar_eg: جميل أوي! بس الجونج صوته عالي شوية.
+      ar: جميل جدًا! لكن الغونغ عالٍ قليلًا.
+      en: Beautiful! But the gong was a bit loud.
+    - speaker: Ni Luh
+      text: Ya, gong paling besar dan paling keras.
+      ar_eg: أيوه، الجونج أكبر واحد وأعلاهم صوتًا.
+      ar: نعم، الغونغ هو الأكبر والأعلى صوتًا.
+      en: Yes, the gong is the biggest and the loudest.
+    - speaker: Mohamed
+      text: Gamelan Bali lebih cepat daripada musik Mesir, ya?
+      ar_eg: الجاميلان البالي أسرع من المزيكا المصرية، صح؟
+      ar: الغاميلان البالي أسرع من الموسيقى المصرية، أليس كذلك؟
+      en: Balinese gamelan is faster than Egyptian music, isn't it?
+    - speaker: Ni Luh
+      text: Mungkin! Tapi musik Mesir juga terkenal di dunia.
+      ar_eg: يمكن! بس المزيكا المصرية كمان مشهورة في العالم.
+      ar: ربما! لكن الموسيقى المصرية مشهورة في العالم أيضًا.
+      en: Maybe! But Egyptian music is famous around the world too.
+souvenir:
+  id: bipa2.u01.souvenir
+  title: Gamelan Bali
+  note:
+    ar_eg: الجاميلان فرقة كاملة من آلات برونز بتتخبط ومعاها جونجات كبيرة. في بالي بيبقى سريع ولامع كأنه بيلمع في ودنك، وفي جاوة هادي وبطيء زي التأمل. لو سمعته في أوبود بالليل هتفهم ليه بالي مشهورة بالفن.
+    ar: الغاميلان فرقة كاملة من آلات برونزية تُقرع ومعها غونغات كبيرة. في بالي يكون سريعًا متلألئًا، وفي جاوة هادئًا بطيئًا كالتأمل. ومن يسمعه ليلًا في أوبود يدرك لماذا اشتهرت بالي بالفن.
+    en: Gamelan is a whole ensemble of bronze metallophones and gongs. In Bali it's fast and shimmering; in Java it's slow and meditative. Hear it on an Ubud evening and you'll see why Bali is famous for its art.
+review:
+  status: draft
+  verified: false
