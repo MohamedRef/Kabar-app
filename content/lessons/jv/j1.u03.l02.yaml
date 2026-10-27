@@ -130,47 +130,51 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
+      - text: ng
+        ar_eg: nang (لـ / في)
+        ar: nang (إلى / في)
+        en: nang (to / at)
+      - text: gk
+        ar_eg: gak (لأ / مش)
+        ar: gak (لا)
+        en: gak (not)
+      - text: sek
+        ar_eg: dhisik (الأول / استنى)
+        ar: dhisik (أولًا / انتظر)
+        en: dhisik (first / wait)
+      - text: rapopo
+        ar_eg: ora apa-apa (عادي)
+        ar: ora apa-apa (لا بأس)
+        en: ora apa-apa (no problem)
+      - text: dicul
+        ar_eg: diculke (يتباع)
+        ar: diculke (يُباع)
+        en: diculke (sold off)
       - text: arp
         ar_eg: arep (هـ / ناوي)
         ar: arep (سوف)
         en: arep (going to)
-      - text: ws
-        ar_eg: wis (خلاص)
-        ar: wis (قد / تمّ)
-        en: wis (already)
-      - text: ng
-        ar_eg: nang / neng (لـ / في)
-        ar: nang / neng (إلى / في)
-        en: nang / neng (to / at)
-      - text: ra
-        ar_eg: ora (لأ / مش)
-        ar: ora (لا)
-        en: ora (not)
-      - text: sek
-        ar_eg: dhisik (الأول / استنى)
-        ar: dhisik (أولًا / انتظر)
-        en: dhisik (first / hold on)
-    words: [arep, wis, nang, ora, sek]
+    words: [nang, gak, sek, ora apa-apa, diculke, arep]
   - id: e02
     type: multiple_choice
-    question: opo
+    question: sek, arp dicul ng pasar
     question_meaning:
-      ar_eg: إيه الكتابة الرسمية للكلمة دي من الشات؟
-      ar: ما الإملاء القياسي لهذه الكلمة من الدردشة؟
-      en: What's the standard spelling of this chat word?
-    options: [ape, opa, apa]
-    answer: 2
+      ar_eg: صاحبك كتب كده في الشات. الكتابة الكاملة إيه؟
+      ar: كتب صديقك هذا في المحادثة. ما الصيغة الكاملة؟
+      en: Your friend wrote this in chat. What's the full form?
+    options: ['Sek, arep diculke nang pasar.', 'Sek, wis diculke nang pasar.', 'Gak, arep diculke nang omah.']
+    answer: 0
     explain:
-      ar_eg: الـ a الأخيرة بتتنطق o، فـ opo = apa.
-      ar: تُنطق a الأخيرة o، فـ opo = apa.
-      en: Final a is said o, so opo = apa.
-    words: [apa]
+      ar_eg: arp = arep، dicul = diculke، ng = nang. يعني «استنى، ناوي أبيعه في السوق».
+      ar: arp = arep، وdicul = diculke، وng = nang، أي «انتظر، سأبيعه في السوق».
+      en: arp = arep, dicul = diculke, ng = nang, so "Hang on, I'm going to sell it at the market."
+    words: [sek, arep, diculke, nang, gak]
   - id: e03
     type: listen
     text: Ora apa-apa.
-    options: [Ora apa-apa., 'Wis apa durung?', 'Arep apa?']
+    options: [Ora apa-apa., Aku gak ngerti., 'Arep nang ngendi?']
     answer: 0
-    words: [ora apa-apa]
+    words: [ora apa-apa, gak, ngerti, nang]
   - id: e04
     type: fill_blank
     sentence: arp dicul piro → ___ diculke pira?
@@ -195,12 +199,12 @@ exercises:
     words: [gak, ngerti, apa-apa]
   - id: e06
     type: speaking
-    text: Ora apa-apa.
+    text: Sek, aku wis ngerti. Ora apa-apa.
     meaning:
-      ar_eg: عادي، مفيش مشكلة.
-      ar: لا بأس.
-      en: It's fine, no problem.
-    words: [ora apa-apa]
+      ar_eg: استنى، أنا فهمت خلاص. عادي، مفيش مشكلة.
+      ar: لحظة، فهمتُ الآن. لا بأس.
+      en: Hang on, I get it now. No problem.
+    words: [sek, wis, ngerti, ora apa-apa]
 dialogue:
   title: Grup WA
   lines:
