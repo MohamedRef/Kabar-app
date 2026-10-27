@@ -6,6 +6,7 @@ mod content;
 pub mod doc;
 pub mod explain;
 pub mod glossary;
+pub mod translate;
 mod web;
 
 use std::collections::{HashMap, HashSet};
@@ -57,19 +58,16 @@ pub fn lexicon() -> &'static [kabar_core::ink::spell::Known] {
 
 pub(crate) use self::card::speak;
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub enum Mode {
-    Inline,
-    Split,
-}
-
-/// A floating peek card anchored to a word.
-#[derive(Clone, Copy, Debug, PartialEq)]
+/// Where a floating card goes next to a word: below or above it, whichever
+/// side of the window has more room (`room` px).
+#[derive(Clone, Copy, Debug, PartialEq, Deserialize)]
 pub struct Peek {
     pub i: usize,
     pub start: f64,
     pub below: bool,
     pub y: f64,
+    #[serde(default)]
+    pub room: f64,
 }
 
 /// What the side panel / bottom sheet shows.
@@ -98,10 +96,15 @@ pub struct ReaderState {
     pub statuses: Signal<HashMap<String, WordStatus>>,
     pub highlights: Signal<Vec<Highlight>>,
     pub voice: Signal<UiLanguage>,
-    pub mode: Signal<Mode>,
     pub peek: Signal<Option<Peek>>,
     pub panel: Signal<Option<Panel>>,
+    /// On phones the word card floats next to the word it was opened from.
+    pub anchor: Signal<Option<Peek>>,
     pub toast: Signal<Option<Msg>>,
+    /// The translation under each line of the open text.
+    pub translated: Signal<translate::Translated>,
+    /// Bumped by "try again" to translate the text afresh.
+    pub retry: Signal<u32>,
 }
 
 impl ReaderState {
@@ -153,10 +156,12 @@ impl ReaderState {
             statuses: Signal::new(HashMap::new()),
             highlights: Signal::new(Vec::new()),
             voice: Signal::new(voice),
-            mode: Signal::new(Mode::Inline),
             peek: Signal::new(None),
             panel: Signal::new(None),
+            anchor: Signal::new(None),
             toast: Signal::new(None),
+            translated: Signal::new(translate::Translated::default()),
+            retry: Signal::new(0),
         }
     }
 
@@ -207,12 +212,19 @@ pub struct Inbox(pub Signal<Option<SharedInput>>);
 #[derive(Deserialize)]
 #[serde(tag = "type", rename_all = "lowercase")]
 enum FromJs {
-    Peek { i: usize, start: f64, below: bool, y: f64 },
+    Peek(Peek),
     Unpeek,
-    Open { i: usize },
-    Phrase { tokens: Vec<usize> },
-    Highlight { tokens: Vec<usize> },
-    Menu { tokens: Vec<usize> },
+    /// The word card, placed next to the word on phones.
+    Open(Peek),
+    Phrase {
+        tokens: Vec<usize>,
+    },
+    Highlight {
+        tokens: Vec<usize>,
+    },
+    Menu {
+        tokens: Vec<usize>,
+    },
     Escape,
 }
 
@@ -236,6 +248,7 @@ pub fn Reader() -> Element {
             }
         }
     });
+    translate::use_translation(st);
     let busy = use_signal(|| None::<Msg>);
     let recent = use_signal(|| db.0.borrow().recent_texts(12).unwrap_or_default());
 
@@ -249,23 +262,26 @@ pub fn Reader() -> Element {
                 let mut eval = document::eval(READER_JS);
                 while let Ok(msg) = eval.recv::<FromJs>().await {
                     match msg {
-                        FromJs::Peek { i, start, below, y } => {
+                        FromJs::Peek(p) => {
                             // The word's card is already open: don't repeat it in a popover.
-                            if *st.panel.peek() != Some(Panel::Word(i)) {
-                                st.peek.set(Some(Peek { i, start, below, y }));
+                            if *st.panel.peek() != Some(Panel::Word(p.i)) {
+                                st.peek.set(Some(p));
                             }
                         }
                         FromJs::Unpeek => st.peek.set(None),
-                        FromJs::Open { i } => {
+                        FromJs::Open(at) => {
                             st.peek.set(None);
-                            st.panel.set(Some(Panel::Word(i)));
+                            st.anchor.set(Some(at));
+                            st.panel.set(Some(Panel::Word(at.i)));
                         }
                         FromJs::Phrase { tokens } => {
                             st.peek.set(None);
+                            st.anchor.set(None);
                             st.panel.set(Some(Panel::Phrase { tokens, save_first: false }));
                         }
                         FromJs::Menu { tokens } => {
                             st.peek.set(None);
+                            st.anchor.set(None);
                             st.panel.set(Some(Panel::Phrase { tokens, save_first: true }));
                         }
                         FromJs::Highlight { tokens } => st.save_phrase(&db, &tokens),
@@ -293,7 +309,11 @@ pub fn Reader() -> Element {
                         open_new(&db, st, &text, TextKind::Shared, source.as_deref(), None, recent);
                     }
                 },
-                SharedInput::Image { path, source, .. } => {
+                SharedInput::Image { path, source, more, .. } => {
+                    if more > 0 {
+                        let mut toast = st.toast;
+                        toast.set(Some(Msg::ShareFirstImageOnly));
+                    }
                     run_ocr(db.clone(), st, busy, recent, std::path::PathBuf::from(path), source);
                 }
             }
@@ -301,7 +321,6 @@ pub fn Reader() -> Element {
     });
 
     let open = st.open.read().clone();
-    let mode = *st.mode.read();
     let voice = *st.voice.read();
 
     rsx! {
@@ -314,19 +333,6 @@ pub fn Reader() -> Element {
                     }
                 }
                 div { class: "row",
-                    div { class: "row", role: "group", aria_label: "{ui.t(Msg::NavReader)}",
-                        for (m , label) in [(Mode::Inline, Msg::ModeInline), (Mode::Split, Msg::ModeSplit)] {
-                            button {
-                                key: "{label:?}",
-                                aria_pressed: if mode == m { "true" } else { "false" },
-                                onclick: move |_| {
-                                    let mut mode = st.mode;
-                                    mode.set(m);
-                                },
-                                "{ui.t(label)}"
-                            }
-                        }
-                    }
                     span { class: "muted", "{ui.t(Msg::Voice)}" }
                     div { class: "row", role: "group", aria_label: "{ui.t(Msg::Voice)}",
                         for v in UiLanguage::ALL {
@@ -354,7 +360,7 @@ pub fn Reader() -> Element {
                     InputCard { busy, recent }
                 },
                 Some(open) => rsx! {
-                    ReadView { open, mode }
+                    ReadView { open }
                 },
             }
 
@@ -752,7 +758,7 @@ fn kind_icon(kind: TextKind) -> &'static str {
 }
 
 #[component]
-fn ReadView(open: Open, mode: Mode) -> Element {
+fn ReadView(open: Open) -> Element {
     let ui = use_context::<Ui>();
     let st = use_context::<ReaderState>();
     let doc = open.doc.clone();
@@ -769,7 +775,6 @@ fn ReadView(open: Open, mode: Mode) -> Element {
         Some(Panel::Explain(_)) | None => HashSet::new(),
     };
     let voice = *st.voice.read();
-    let split = mode == Mode::Split;
     let panel_open = st.panel.read().is_some();
 
     let class_of = |i: usize| -> String {
@@ -870,15 +875,20 @@ fn ReadView(open: Open, mode: Mode) -> Element {
                         span { class: "time", "{time}" }
                     }
                 }
-                if split && !chrome {
-                    div { class: "explain",
-                        for (i , surface , gloss) in gloss_chips {
-                            span { key: "{i}", class: "chip {class_of(i)}", "data-i": "{i}",
-                                bdi { class: "latin", lang: "id", "{surface}" }
-                                " "
-                                span { "{gloss}" }
+                if !chrome {
+                    // English glosses read left to right even in the Arabic UI.
+                    div { class: "under", dir: if voice == UiLanguage::En { "ltr" } else { "rtl" },
+                        if !gloss_chips.is_empty() {
+                            div { class: "explain",
+                                for (i , surface , gloss) in gloss_chips {
+                                    span { key: "{i}", class: "chip {class_of(i)}", "data-i": "{i}",
+                                        bdi { class: "latin", lang: "id", "{surface}" }
+                                        span { class: "chip-gloss", "{gloss}" }
+                                    }
+                                }
                             }
                         }
+                        translate::LineUnder { seg: si }
                     }
                 }
             }
@@ -894,17 +904,12 @@ fn ReadView(open: Open, mode: Mode) -> Element {
                         bdi { "{src}" }
                     }
                 }
-                if split {
-                    div { class: "split-head",
-                        span { "{ui.t(Msg::Original)}" }
-                        span { "{ui.t(Msg::Explanation)}" }
-                    }
+                translate::TranslationStatus {}
+                div { class: "split-head",
+                    span { "{ui.t(Msg::Original)}" }
+                    span { "{ui.t(Msg::Explanation)}" }
                 }
-                div {
-                    id: "reader-doc",
-                    class: if split { "doc split" } else { "doc inline" },
-                    {rows}
-                }
+                div { id: "reader-doc", class: "doc split", {rows} }
                 p { class: "muted small pen-hint", "{ui.t(Msg::PenHint)}" }
             }
             if panel_open {

@@ -465,126 +465,51 @@ Do not commit. List the files when done.
 
 ---
 
-## Prompt 6 — Personas and the Sinetron cast
+## Prompt 6 — Portraits of the cast (6a–6e)
 
-```text
-Create character portraits for "Kabar", an Indonesian + Javanese learning app. These
-are ORIGINAL fictional adult characters: AI conversation partners and the cast of a
-short serialized story. Draw all of them in this one session with the same hand so
-they look like one cast.
+Every recurring character in `content/cast.yaml` (except the learner) gets one portrait, named by its cast `id`: `assets/src/personas/<id>.png`. How each one looks, and which batch draws it, is in `assets/portraits.yaml`. The prompts themselves are generated into [`assets/portrait-prompts.md`](../assets/portrait-prompts.md) by `scripts/assets/portrait_prompts.py`, so they always match the cast. Each batch is self-contained; send them one at a time:
 
-HOW TO GENERATE (strict):
-- Use your image generation tool. Do NOT draw the portraits with code (no SVG,
-  Pillow, Cairo or canvas drawing).
-- Generate EACH image as its own separate request, directly at 1024x1024. Never
-  generate a sheet, grid or collage and split it. Never upscale a smaller image; only
-  crop, never enlarge. No post-processing recolour, hue shift or filter.
+| batch | who | images |
+|---|---|---|
+| 6a | coach, chat partners, Radio hosts (with 4 expressions for the five you talk to) | 27 |
+| 6b | the Sinetron cast | 11 |
+| 6c | Indonesian lessons | 11 |
+| 6d | Javanese lessons and the Unggah-Ungguh game | 11 |
+| 6e | Kabar Pagi | 6 |
 
-STYLE (every portrait):
-- Calm, warm, grown-up illustration. Flat vector-like shapes, soft layered depth,
-  gentle paper grain, warm soft light. Not photorealistic, not anime, not cartoonish,
-  no glossy 3D.
-- Palette led by: Merapi charcoal #22201E, sawah green #4F8A3C, Bromo orange #EE8A5A,
-  Bromo pink #E9A3A0, batik indigo #2B3A70, warm paper #F5EFE3, plus natural skin and
-  hair tones.
-- Head and shoulders, three-quarter view, friendly natural expression, eyes toward the
-  viewer. Face centered with room around it so a circle crop doesn't cut the head.
-- Drawn with dignity and respect: realistic proportions, no caricature, no exaggerated
-  features, no stereotypes. Must not resemble any real person, celebrity or existing
-  character. Do not imitate any named artist.
-- Background: a soft, blurred hint of the setting in the palette.
-
-HARD RULES: no text, letters, numbers, logos, name tags with writing, watermarks or
-signatures. Square 1024x1024 PNG.
-
-CHARACTERS (filename: description):
-- dimas.png (Mas Dimas): a Javanese university student in Yogyakarta, early 20s, short
-  black hair, relaxed batik shirt, canvas backpack strap on one shoulder; background: a
-  campus courtyard with a frangipani tree.
-- siti.png (Bu Siti): a Javanese market seller in Solo, around 50, warm confident
-  smile, neat headscarf, simple kebaya-style blouse; background: baskets of produce in
-  a traditional market.
-- gadis.png (Mbak Gadis): a young professional woman in Jakarta, late 20s, smart
-  casual blazer, lanyard without text, coffee cup in hand; background: a modern office
-  window with city towers.
-- ardi.png (Mas Ardi): a hotel receptionist in Bali, around 30, neat uniform shirt with
-  a small frangipani pin, calm welcoming smile; background: an open-air hotel lobby
-  with carved wood.
-- budi.png (Pak Budi): a Javanese warung (small food stall) owner in Madiun, around 55,
-  kind face, moustache, black peci cap, apron over a short-sleeve shirt; background: a
-  small food stall with a glass display case.
-- sari.png (Sari): Pak Budi's daughter, about 22, a student living in Cairo, headscarf,
-  tote bag of books; background: a Cairo street with mashrabiya windows in warm
-  evening light.
-
-THEN, for each character, 4 extra expressions with the SAME face, hair, clothes,
-framing and background: <name>-listening.png, <name>-laughing.png,
-<name>-thinking.png, <name>-explaining.png (a light hand gesture). Keep identity
-consistent; regenerate any that drift.
-
-SAVE: masters to assets/src/personas/. With a small reproducible script in scripts/assets/ (Pillow or
-ImageMagick, free tools only), export to assets/export/personas/: <file>.webp at
-1024 (intro screen), 256x256 and 96x96 (avatars; the app crops them to a circle in
-CSS, so keep them square). Make assets/src/personas/cast-sheet.png showing all six
-neutral portraits side by side plus each one's expressions, so I can check
-consistency.
-
-Do not commit. List the files when done, and confirm each image was generated
-natively at 1024x1024 with the image tool.
-```
+Codex only saves masters. `scripts/assets/export_personas.py` checks every file name against `assets/portraits.yaml`, then makes the web sizes and the cast sheet. `every_character_has_a_portrait_entry` (crates/content/tests) fails CI if a cast id has no entry, an entry names someone outside the cast, or a portrait file has no entry.
 
 ---
 
-## Prompt 7 — First-launch hero, empty states, celebration, notebook paper
+## Prompt 7 — First-launch hero, empty states, celebration, notebook paper: drawn in code
 
-```text
-Create supporting illustrations for "Kabar", an Indonesian + Javanese learning app
-whose tone is a calm, warm study companion: part travel journal, part market, part
-tutor. Encouraging, never guilt, fear or sadness.
+Never sent to Codex: Mohamed asked (2026-10-27) that Kabar draw in code whatever suits flat geometry. `scripts/assets/draw_misc.py` draws all of them in the souvenir cards' palette; masters are in `assets/src/misc/`, WebP in `assets/export/misc/`, embedded by `crates/app/src/misc_art.rs`. No text is drawn; the app writes every word.
 
-STYLE (every image):
-- Calm, warm, grown-up travel-journal illustration. Flat vector-like shapes, soft
-  layered depth, gentle paper grain, minimal gradients. Never childish or noisy, no
-  glossy 3D, no photorealism.
-- Palette only: Merapi charcoal #22201E, sawah green #4F8A3C, Bromo orange #EE8A5A,
-  Bromo pink #E9A3A0, batik indigo #2B3A70, warm paper #F5EFE3, and Bridge gold
-  #C9A23A only where noted.
-
-HARD RULES: no text, letters, numbers or script anywhere (the app renders all words,
-including the "Apa kabar?" greeting and the Arabic word on top of the hero). No
-logos, watermarks, signatures, brands or existing characters. Do not imitate any named
-artist.
-
-IMAGES:
-1) hero-landscape.png (1536x1024) and hero-portrait.png (1024x1536): a quiet dawn over
-   Javanese rice terraces, a volcano softly in the distance, sky from Bromo pink to
-   Bromo orange, one simple empty speech-bubble shape floating in the sky with a tiny
-   Bridge-gold glint. Leave a calm empty area in the sky (top centre) for a big
-   greeting the app will draw.
-2) Empty states, 1024x1024 transparent background, simple centered scene with lots of
-   empty space, gentle and encouraging, no sad faces:
-   - empty-suitcase.png: an open vintage suitcase waiting to be filled, one flower
-     sticker on it
-   - all-reviewed.png: a cup of tea next to a closed notebook on a small table by a
-     window at sunset (nothing due, rest)
-   - offline.png: a small boat resting by a calm shore under a starry sky
-3) celebrate-gong.png, 1024x1024 transparent: a hanging gamelan gong on a carved frame
-   with soft concentric rings of sound. Static image; the app animates it in CSS.
-4) notebook-paper.png, 1024x1024, must tile seamlessly on all edges (verify by tiling
-   2x2): warm paper #F5EFE3 with faint fibres and very faint dot grid in batik indigo
-   at about 5% opacity.
-
-SAVE: masters to assets/src/misc/. With a small reproducible script in scripts/assets/ (Pillow or
-ImageMagick, free tools only), export to assets/export/misc/: hero images as WebP at
-full size and half size; empty states and the gong as WebP at 640 and 320 px with
-transparency; notebook-paper as WebP at 1024 and 512.
-
-Do not commit. List the files when done.
-```
+| picture | shown in |
+|---|---|
+| `hero-landscape` / `hero-portrait`: dawn over the terraces, a volcano, an empty speech bubble with a Bridge-gold glint | the first-launch Welcome card, with "Apa kabar?" in the empty sky (portrait on phones) |
+| `empty-suitcase` | the Suitcase before the first souvenir |
+| `all-reviewed`: tea and a closed notebook by a sunset window | Review, when nothing is due |
+| `offline`: a boat resting on the shore under the stars | Account, while sync is offline |
+| `celebrate-gong` | the end of every lesson; the gong sways and its ring pulses once (off with reduced motion) |
+| `notebook-paper`: tiles on every edge, 5% indigo dot grid | the journal's pages, light themes only |
 
 ---
 
-## Prompt 8 — Set up the free, openly licensed assets
+## Prompt 8 — Free, openly licensed assets: status (2026-10-27)
+
+Not sent to Codex. This is what Kabar has now. The original prompt is kept below for reference.
+
+| part | status |
+|---|---|
+| Icons | Kabar draws its own stroke icons on the Lucide 24 px grid (`crates/app/src/icons.rs`, `assets/icons/custom/`). No Lucide files are copied. |
+| Fonts | Plus Jakarta Sans, IBM Plex Sans Arabic and Amiri are bundled from Fontsource 5.3.0 (OFL 1.1, licenses checked). Noto Naskh Arabic and Noto Sans Javanese were already in `content/fonts/`. Noto Emoji is not added: the app uses no emoji glyphs that need it. |
+| Geodata | Already done: Natural Earth (public domain) via `kabar-tools --bin journey-map`. |
+| Gong and kendang | Synthesized by `scripts/assets/synth_sounds.py`, three variations each. Variation 1 ships; switch by changing `sounds.rs`. |
+| Kenney UI clicks | Not added. kenney.nl is blocked from the build container, and the app has no button clicks wired yet. Download *Interface Sounds* (CC0) on the Mac if we want clicks. |
+| Freesound gamelan | Skipped, as the prompt allows. |
+
+### Original prompt 8 (reference)
 
 ```text
 Set up the free third-party assets for "Kabar", a private, non-commercial Indonesian +
