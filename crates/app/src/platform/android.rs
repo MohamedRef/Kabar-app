@@ -266,22 +266,61 @@ pub fn open_install_permission() -> Result<(), String> {
 /// `UpdateInstaller.install(...)`: checks the APK (package, signing key,
 /// versionCode) and hands it to PackageInstaller. Returns at once; poll
 /// [`install_state`].
-pub fn install_apk(path: &str, version_code: u64, done_title: &str, done_body: &str) -> Result<(), String> {
+pub fn install_apk(
+    path: &str,
+    version_code: u64,
+    done_title: &str,
+    done_body: &str,
+    ready_title: &str,
+) -> Result<(), String> {
     with_activity(|env, activity| {
         let class = app_class(env, activity, jni_str!("app.kabar.UpdateInstaller"))?;
         let (path, title, body) =
             (env.new_string(path)?, env.new_string(done_title)?, env.new_string(done_body)?);
+        let ready = env.new_string(ready_title)?;
         env.call_static_method(
             &class,
             jni_str!("install"),
-            jni_sig!("(Landroid/app/Activity;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;)V"),
+            jni_sig!(
+                "(Landroid/app/Activity;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+            ),
             &[
                 JValue::Object(activity),
                 JValue::Object(&path),
                 JValue::Long(i64::try_from(version_code).unwrap_or(0)),
                 JValue::Object(&title),
                 JValue::Object(&body),
+                JValue::Object(&ready),
             ],
+        )?;
+        Ok(())
+    })
+}
+
+/// `UpdateInstaller.isMetered(activity)`: mobile data or Data Saver.
+pub fn network_metered() -> Result<bool, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.UpdateInstaller"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("isMetered"),
+            jni_sig!("(Landroid/app/Activity;)Z"),
+            &[JValue::Object(activity)],
+        )?
+        .z()
+    })
+}
+
+/// `UpdateInstaller.showPendingConfirm(activity)`: the confirmation screen
+/// that arrived while Kabar was in the background.
+pub fn show_pending_confirm() -> Result<(), String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.UpdateInstaller"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("showPendingConfirm"),
+            jni_sig!("(Landroid/app/Activity;)V"),
+            &[JValue::Object(activity)],
         )?;
         Ok(())
     })
