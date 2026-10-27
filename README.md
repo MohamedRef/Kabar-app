@@ -23,7 +23,7 @@ the Arabic words Indonesian already borrowed.
 | Placement test, level tests ("Take a flight"), monthly level check | ✓ | ✓ | ✓ |
 | Review (FSRS): classic cards, 1-minute bursts, typed answers | ✓ | ✓ | ✓ |
 | Stats: skill radar, pace and forecast | ✓ | ✓ | ✓ |
-| Kak Nur coach: onboarding, daily plan, recap, weekly report | ✓ | ✓ + reminders (FCM) | ✓ + reminders (FCM) |
+| Kak Nur coach: onboarding, daily plan, recap, weekly report | ✓ (reminders coming soon) | ✓ + local reminders (FCM next) | ✓ + local reminders (FCM next) |
 | Reader with word popovers, Arabic Bridge, speech levels, Arabic-script pronunciation | ✓ | ✓ | ✓ |
 | Screenshot Decoder | ✓ Apple Vision OCR | ✓ ML Kit OCR | ✓ ML Kit OCR |
 | Share-to-Kabar (text, selection, screenshots) | — | ✓ | ✓ |
