@@ -30,12 +30,29 @@ impl Store {
     /// Adds review cards for a finished lesson's new words (synced like any
     /// card). Words the deck already holds are skipped, so finishing the same
     /// lesson again is a no-op. Returns how many cards were added.
-    pub fn add_lesson_cards(&mut self, lesson: &kabar_protocol::lesson::LessonContent) -> Result<usize> {
-        let cards = kabar_core::review::lesson_cards(lesson, &self.cards()?);
+    ///
+    /// `approved`: the learner passed the lesson with a reasonable score, so
+    /// its cards (new, and any from an earlier try) lose the unverified flag.
+    pub fn add_lesson_cards(
+        &mut self,
+        lesson: &kabar_protocol::lesson::LessonContent,
+        approved: bool,
+    ) -> Result<usize> {
+        let existing = self.cards()?;
+        let mut cards = kabar_core::review::lesson_cards(lesson, &existing);
+        let added = cards.len();
+        if approved {
+            let earlier =
+                existing.into_iter().filter(|c| !c.verified && c.source_ref.as_ref() == Some(&lesson.id));
+            cards.extend(earlier);
+            for c in &mut cards {
+                c.verified = true;
+            }
+        }
         if !cards.is_empty() {
             self.upsert_cards(&cards)?;
         }
-        Ok(cards.len())
+        Ok(added)
     }
 
     /// Live cards in the order they were added. A payload this build can't
@@ -176,17 +193,34 @@ mod tests {
                 .unwrap();
         let mut store = Store::open_in_memory().unwrap();
         store.upsert_cards(&seed_bridge_deck()).unwrap();
-        let added = store.add_lesson_cards(&lesson).unwrap();
+        let added = store.add_lesson_cards(&lesson, false).unwrap();
         assert!(added >= 7, "added {added}");
         let cards = store.cards().unwrap();
         assert!(cards.iter().any(|c| c.word == "pagi" && c.source_ref.as_deref() == Some("bipa1.u01.l01")));
-        assert_eq!(store.add_lesson_cards(&lesson).unwrap(), 0, "a replay adds nothing");
+        assert_eq!(store.add_lesson_cards(&lesson, false).unwrap(), 0, "a replay adds nothing");
         assert_eq!(store.cards().unwrap().len(), cards.len());
         // The new cards are queued for sync like any other card write.
         let ops = store.outbox(1000).unwrap();
         assert!(
             ops.iter().any(|op| op.table == "cards" && op.row_id == "lesson.bipa1.u01.l01.pagi.recognition")
         );
+        // Passing it later approves the cards the first try added.
+        assert!(
+            store
+                .cards()
+                .unwrap()
+                .iter()
+                .all(|c| c.source_ref.as_deref() != Some("bipa1.u01.l01") || !c.verified)
+        );
+        assert_eq!(store.add_lesson_cards(&lesson, true).unwrap(), 0);
+        let mine: Vec<_> = store
+            .cards()
+            .unwrap()
+            .into_iter()
+            .filter(|c| c.source_ref.as_deref() == Some("bipa1.u01.l01"))
+            .collect();
+        assert_eq!(mine.len(), added);
+        assert!(mine.iter().all(|c| c.verified));
     }
 
     #[test]
