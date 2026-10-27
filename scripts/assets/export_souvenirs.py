@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Export the souvenir card masters (docs/VISUAL-ASSETS.md, prompt 4b).
+"""Export the souvenir card masters (docs/VISUAL-ASSETS.md, prompts 4b–4e).
 
-Masters: assets/src/souvenirs/<name>.png, generated natively at 1024x1536.
-Writes assets/export/souvenirs/<name>.webp (768x1152, quality 85) and
-<name>-thumb.webp (256x384), plus assets/src/souvenirs/contact-sheet.png to
-check that the cards still look like one set. Cards whose master is not in
-the repo yet are listed and skipped.
+Each card is named by the unit whose souvenir it shows (assets/souvenirs.md
+lists them all): assets/src/souvenirs/<unit id>.png, e.g. bipa4.u03.png,
+generated natively at 1024x1536. Writes assets/export/souvenirs/<unit id>.webp
+(768x1152, quality 85) and <unit id>-thumb.webp (256x384), plus
+assets/src/souvenirs/contact-sheet.png to check that the cards still look like
+one set. The app picks up every exported card by its file name.
 """
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from PIL import Image
@@ -17,21 +19,12 @@ ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "assets" / "src" / "souvenirs"
 OUT = ROOT / "assets" / "export" / "souvenirs"
 
-NAMES = [
-    "batik",
-    "wayang",
-    "gamelan",
-    "rendang",
-    "angklung",
-    "kawung",
-    "becak",
-    "kopi-tubruk",
-    "sate",
-    "tongkonan",
-    "rumah-gadang",
-    "raja-ampat",
-    "kotagede-silver",
-]
+# bipa1.u01 … bipa7.u10, j1.u01 … j6.u07
+UNIT_ID = re.compile(r"^(bipa[1-7]|j[1-6])\.u\d{2}$")
+NAMES = sorted(p.stem for p in SRC.glob("*.png") if p.stem != "contact-sheet")
+for name in NAMES:
+    if not UNIT_ID.match(name):
+        raise SystemExit(f"{name}.png: name a card after its unit id (see assets/souvenirs.md)")
 MASTER_SIZE = (1024, 1536)
 CARD_SIZE = (768, 1152)
 THUMB_SIZE = (256, 384)
@@ -51,6 +44,11 @@ def main() -> None:
         img.resize(CARD_SIZE, Image.LANCZOS).save(OUT / f"{name}.webp", "WEBP", quality=85, method=6)
         img.resize(THUMB_SIZE, Image.LANCZOS).save(OUT / f"{name}-thumb.webp", "WEBP", quality=85, method=6)
         present.append(img)
+
+    # Drop exports whose master is gone, so the app never ships an orphan card.
+    for old in OUT.glob("*.webp"):
+        if old.stem.removesuffix("-thumb") not in NAMES:
+            old.unlink()
 
     cols, pad = 5, 16
     rows = max(1, -(-len(present) // cols))
