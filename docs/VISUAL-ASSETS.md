@@ -474,10 +474,10 @@ Every recurring character in `content/cast.yaml` (except the learner) gets one p
 | 6a | coach, chat partners, Radio hosts (with 4 expressions for the five you talk to) | 27 · **done**, in the app |
 | 6b | the Sinetron cast | 11 · **done**, in the app |
 | 6c | Indonesian lessons | 11 · **done**, in the app |
-| 6d | Javanese lessons and the Unggah-Ungguh game | 11 |
+| 6d | Javanese lessons and the Unggah-Ungguh game | 11 · **done**, in the app |
 | 6e | Kabar Pagi | 6 |
 
-Codex saves PNG masters (it draws them at 1254 px). After review, `python3 scripts/assets/export_personas.py --import <folder>` checks every file name against `assets/portraits.yaml`, stores each master as a 1024 px WebP (a PNG would add about 2 MB per face to the repo), and writes the 256 px app exports and the cast sheet. The original PNGs are kept in the project files (`portraits/codex-6a-originals/`, `-6b-` and `-6c-`).
+Codex saves PNG masters (it draws them at 1254 px). After review, `python3 scripts/assets/export_personas.py --import <folder>` checks every file name against `assets/portraits.yaml`, stores each master as a 1024 px WebP (a PNG would add about 2 MB per face to the repo), and writes the 256 px app exports and the cast sheet. The original PNGs are kept in the project files (`portraits/codex-6a-originals/`, `-6b-`, `-6c-` and `-6d-`).
 
 Where the faces show (`crates/app/src/portraits.rs`; build.rs embeds every export, and a speaker label finds its cast id through `content/cast.yaml`, so later batches need no code):
 
