@@ -1,0 +1,239 @@
+schema: kabar.lesson/v1
+id: bipa2.u04.l08
+language: id
+title: Tomat dan kentang
+can_do:
+  ar_eg: تسمّي الخضار وتسأل إذا كانت طازة.
+  ar: أن تسمّي الخضروات وتسأل إن كانت طازجة.
+  en: Name vegetables and ask whether they're fresh.
+slides:
+  - title: Di pasar sayur
+    body:
+      ar_eg: |
+        tomat = طماطم، kentang = بطاطس، wortel = جزر (من الهولندي)، kubis = كرنب، timun = خيار، terong = باذنجان.
+        kacang = فول سوداني أو أي بقول: kacang tanah، kacang panjang (لوبيا).
+        segar = طازة ومنعشة: Sayurnya segar! وكمان الجو: udaranya segar.
+      ar: |
+        tomat = طماطم، kentang = بطاطس، wortel = جزر (من الهولندية)، kubis = ملفوف، timun = خيار، terong = باذنجان.
+        kacang = فول سوداني أو أي بقول: kacang tanah، وkacang panjang (لوبيا).
+        segar = طازج ومنعش: Sayurnya segar! والهواء أيضًا: udaranya segar.
+      en: |
+        tomat = tomato, kentang = potato, wortel = carrot (from Dutch), kubis = cabbage, timun = cucumber, terong = aubergine.
+        kacang = peanut or any bean: kacang tanah, kacang panjang (long beans).
+        segar = fresh, refreshing: Sayurnya segar! The air too: udaranya segar.
+    examples:
+      - text: Tomat ini segar dan merah.
+        ar_eg: الطماطم دي طازة وحمرا.
+        ar: هذه الطماطم طازجة وحمراء.
+        en: These tomatoes are fresh and red.
+      - text: Ibu membeli kentang dan wortel untuk makan malam.
+        ar_eg: ماما اشترت بطاطس وجزر للعشا.
+        ar: اشترت أمي بطاطس وجزرًا للعشاء.
+        en: Mum bought potatoes and carrots for dinner.
+      - text: Kacang ini enak.
+        ar_eg: الفول السوداني ده حلو.
+        ar: هذا الفول السوداني لذيذ.
+        en: These peanuts are good.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tomat
+        ar_eg: طماطم
+        ar: طماطم
+        en: tomato
+      - text: kentang
+        ar_eg: بطاطس
+        ar: بطاطس
+        en: potato
+      - text: wortel
+        ar_eg: جزر
+        ar: جزر
+        en: carrot
+      - text: kacang
+        ar_eg: فول سوداني
+        ar: فول سوداني
+        en: peanut, bean
+    words: [tomat, kentang, wortel, kacang]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kubis
+        ar_eg: كرنب
+        ar: ملفوف
+        en: cabbage
+      - text: timun
+        ar_eg: خيار
+        ar: خيار
+        en: cucumber
+      - text: terong
+        ar_eg: باذنجان
+        ar: باذنجان
+        en: aubergine
+      - text: segar
+        ar_eg: طازة
+        ar: طازج
+        en: fresh
+    words: [kubis, timun, terong, segar]
+  - id: e03
+    type: listen
+    text: Ibu membeli kentang dan wortel di pasar.
+    question:
+      ar_eg: اشترت إيه؟
+      ar: ماذا اشترت؟
+      en: What did she buy?
+    options: [بطاطس وجزر, طماطم وخيار, كرنب وباذنجان]
+    answer: 0
+    meaning:
+      ar_eg: ماما اشترت بطاطس وجزر من السوق.
+      ar: اشترت أمي بطاطس وجزرًا من السوق.
+      en: Mum bought potatoes and carrots at the market.
+    words: [kentang, wortel]
+  - id: e04
+    type: fill_blank
+    sentence: Tomat ini masih ___. Baru datang pagi ini.
+    meaning:
+      ar_eg: الطماطم دي لسه ___. لسه واصلة الصبح.
+      ar: هذه الطماطم ما زالت ___، وصلت هذا الصباح.
+      en: These tomatoes are still ___. They arrived this morning.
+    options: [segar, kubis, terong]
+    answers: [segar]
+    words: [segar, kubis, terong, tomat]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: خضار بنفسجي غامق وطويل.
+      ar: خضار بنفسجي داكن طويل.
+      en: A long dark-purple vegetable.
+    options: [terong, timun, wortel]
+    answer: 0
+    explain:
+      ar_eg: terong = باذنجان.
+      ar: terong = باذنجان.
+      en: terong = aubergine.
+    words: [terong, timun, wortel]
+  - id: e06
+    type: fill_blank
+    sentence: Saya beli sebungkus ___ untuk teman.
+    meaning:
+      ar_eg: اشتريت كيس ___ لصاحبي.
+      ar: اشتريت كيسًا من ___ لصديقي.
+      en: I bought a packet of ___ for a friend.
+    options: [kacang, kubis, timun]
+    answers: [kacang]
+    words: [kacang, kubis, timun]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الطماطم والخيار دول طازة.
+      ar: هذه الطماطم والخيار طازجة.
+      en: These tomatoes and cucumbers are fresh.
+    answer: Tomat dan timun ini segar.
+    distractors: [kentang, kacang]
+    words: [tomat, timun, segar, kacang]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kubis di pasar ini murah.
+    answers_meaning:
+      ar_eg: [الكرنب في السوق ده رخيص, الكرنب رخيص في السوق ده]
+      ar: [الملفوف في هذا السوق رخيص]
+      en: [Cabbage is cheap at this market, The cabbage at this market is cheap]
+    words: [kubis]
+  - id: e09
+    type: speaking
+    text: Saya mau setengah kilo terong dan sekilo kentang.
+    meaning:
+      ar_eg: عايز نص كيلو باذنجان وكيلو بطاطس.
+      ar: أريد نصف كيلو باذنجان وكيلو بطاطس.
+      en: I'd like half a kilo of aubergines and a kilo of potatoes.
+    words: [terong, kentang]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حاجة برتقاني وطويلة والأرانب بتحبها.
+      ar: شيء برتقالي طويل تحبّه الأرانب.
+      en: Something long and orange that rabbits love.
+    options: [wortel, tomat, kubis]
+    answer: 0
+    explain:
+      ar_eg: wortel = جزر.
+      ar: wortel = جزر.
+      en: wortel = carrot.
+    words: [wortel, tomat, kubis]
+dialogue:
+  lines:
+    - speaker: Bu Yanti
+      text: Mohamed, kita ke pasar, yuk! Saya mau memasak untuk makan malam.
+      ar_eg: يلّا يا محمد نروح السوق! عايزة أطبخ للعشا.
+      ar: هيّا يا محمد إلى السوق! أريد أن أطبخ العشاء.
+      en: Mohamed, let's go to the market! I want to cook dinner.
+    - speaker: Mohamed
+      text: Mau beli apa, Bu?
+      ar_eg: هتشتري إيه يا طنط؟
+      ar: ماذا ستشترين يا سيدتي؟
+      en: What are you going to buy?
+    - speaker: Bu Yanti
+      text: Tomat, kentang, wortel, dan kubis.
+      ar_eg: طماطم وبطاطس وجزر وكرنب.
+      ar: طماطم وبطاطس وجزرًا وملفوفًا.
+      en: Tomatoes, potatoes, carrots and cabbage.
+    - speaker: Penjual
+      text: Semua segar, Bu! Baru datang pagi ini.
+      ar_eg: كله طازة يا ست! لسه جاي الصبح.
+      ar: كلّها طازجة يا سيدتي! وصلت هذا الصباح.
+      en: It's all fresh! It came in this morning.
+    - speaker: Bu Yanti
+      text: Timunnya berapa sekilo?
+      ar_eg: الخيار بكام الكيلو؟
+      ar: بكم كيلو الخيار؟
+      en: How much a kilo are the cucumbers?
+    - speaker: Penjual
+      text: Delapan ribu. Terongnya juga murah!
+      ar_eg: بتمن تلاف. والباذنجان رخيص كمان!
+      ar: بثمانية آلاف، والباذنجان رخيص أيضًا!
+      en: Eight thousand. The aubergines are cheap too!
+new_words:
+  - word: tomat
+    pos: noun
+    ar_eg: طماطم
+    ar: طماطم
+    en: tomato
+  - word: kentang
+    pos: noun
+    ar_eg: بطاطس
+    ar: بطاطس
+    en: potato
+  - word: wortel
+    pos: noun
+    ar_eg: جزر
+    ar: جزر
+    en: carrot
+  - word: kacang
+    pos: noun
+    ar_eg: فول سوداني، بقول
+    ar: فول سوداني، بقول
+    en: peanut, bean
+  - word: kubis
+    pos: noun
+    ar_eg: كرنب
+    ar: ملفوف
+    en: cabbage
+  - word: timun
+    pos: noun
+    ar_eg: خيار
+    ar: خيار
+    en: cucumber
+  - word: terong
+    pos: noun
+    ar_eg: باذنجان
+    ar: باذنجان
+    en: aubergine, eggplant
+  - word: segar
+    pos: adjective
+    ar_eg: طازة، منعش
+    ar: طازج، منعش
+    en: fresh
+review:
+  status: draft
+  verified: false

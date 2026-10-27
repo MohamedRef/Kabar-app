@@ -1,0 +1,236 @@
+schema: kabar.lesson/v1
+id: bipa2.u04.l11
+language: id
+title: Hijau, kuning, ungu
+can_do:
+  ar_eg: 'تقول ألوان أكتر وتختار لون في المحل: فاتح ولا غامق.'
+  ar: 'أن تسمّي ألوانًا أكثر وتختار لونًا في المتجر: فاتح أو داكن.'
+  en: Name more colours and pick one in a shop, light or dark.
+slides:
+  - title: Warna
+    body:
+      ar_eg: |
+        hijau = أخضر، kuning = أصفر، cokelat = بني (وكمان شوكولاتة!)، ungu = بنفسجي، oranye = برتقاني.
+        abu-abu = رمادي (abu = رماد). merah muda = بمبي (حرفيًا «أحمر صغير»).
+        muda مع الألوان = فاتح: biru muda. وgelap = غامق أو ضلمة: hijau gelap.
+      ar: |
+        hijau = أخضر، kuning = أصفر، cokelat = بنّي (وهي الشوكولاتة أيضًا!)، ungu = بنفسجي، oranye = برتقالي.
+        abu-abu = رمادي (abu = رماد). merah muda = وردي (حرفيًا «أحمر فتيّ»).
+        muda مع الألوان = فاتح: biru muda. وgelap = داكن أو مظلم: hijau gelap.
+      en: |
+        hijau = green, kuning = yellow, cokelat = brown (and chocolate!), ungu = purple, oranye = orange.
+        abu-abu = grey (abu = ash). merah muda = pink (literally "young red").
+        muda with colours means light: biru muda. gelap = dark: hijau gelap.
+    examples:
+      - text: Mangga ini hijau, tapi manis.
+        ar_eg: المانجة دي خضرا، بس مسكّرة.
+        ar: هذه المانجو خضراء لكنها حلوة.
+        en: This mango is green, but sweet.
+      - text: Baju batik saya cokelat dan ungu.
+        ar_eg: قميص الباتيك بتاعي بني وبنفسجي.
+        ar: قميص الباتيك خاصّتي بنّي وبنفسجي.
+        en: My batik shirt is brown and purple.
+      - text: Langit malam gelap.
+        ar_eg: سما الليل ضلمة.
+        ar: سماء الليل مظلمة.
+        en: The night sky is dark.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: hijau
+        ar_eg: أخضر
+        ar: أخضر
+        en: green
+      - text: kuning
+        ar_eg: أصفر
+        ar: أصفر
+        en: yellow
+      - text: cokelat
+        ar_eg: بني؛ شوكولاتة
+        ar: بنّي؛ شوكولاتة
+        en: brown; chocolate
+      - text: ungu
+        ar_eg: بنفسجي
+        ar: بنفسجي
+        en: purple
+    words: [hijau, kuning, cokelat, ungu]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: oranye
+        ar_eg: برتقاني
+        ar: برتقالي
+        en: orange
+      - text: abu-abu
+        ar_eg: رمادي
+        ar: رمادي
+        en: grey
+      - text: merah muda
+        ar_eg: بمبي
+        ar: وردي
+        en: pink
+      - text: gelap
+        ar_eg: غامق، ضلمة
+        ar: داكن، مظلم
+        en: dark
+    words: [oranye, abu-abu, merah muda, gelap]
+  - id: e03
+    type: listen
+    text: Saya mau kaos yang hijau, bukan yang kuning.
+    question:
+      ar_eg: عايز أنهي لون؟
+      ar: أيّ لون يريد؟
+      en: Which colour does he want?
+    options: [الأخضر, الأصفر, البني]
+    answer: 0
+    meaning:
+      ar_eg: عايز التي شيرت الأخضر، مش الأصفر.
+      ar: أريد القميص الأخضر لا الأصفر.
+      en: I want the green T-shirt, not the yellow one.
+    words: [hijau, kuning]
+  - id: e04
+    type: fill_blank
+    sentence: Jeruk ini warnanya ___.
+    meaning:
+      ar_eg: البرتقانة دي لونها ___.
+      ar: لون هذه البرتقالة ___.
+      en: This orange is ___.
+    options: [oranye, ungu, abu-abu]
+    answers: [oranye]
+    words: [oranye, ungu, abu-abu]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أحمر + أبيض = ؟
+      ar: أحمر + أبيض = ؟
+      en: Red + white = ?
+    options: [merah muda, cokelat, hijau]
+    answer: 0
+    explain:
+      ar_eg: merah muda = بمبي.
+      ar: merah muda = وردي.
+      en: merah muda = pink.
+    words: [merah muda, cokelat, hijau]
+  - id: e06
+    type: fill_blank
+    sentence: Anggur ini warnanya ___.
+    meaning:
+      ar_eg: العنب ده لونه ___.
+      ar: لون هذا العنب ___.
+      en: These grapes are ___.
+    options: [ungu, kuning, gelap]
+    answers: [ungu]
+    words: [ungu, kuning, gelap]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: السما رمادي. هتمطر بعدين.
+      ar: السماء رمادية، وستمطر لاحقًا.
+      en: The sky is grey. It'll rain later.
+    answer: Langitnya abu-abu. Nanti hujan.
+    distractors: [gelap, hijau]
+    words: [abu-abu, gelap]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kamar ini gelap sekali.
+    answers_meaning:
+      ar_eg: [الأوضة دي ضلمة أوي]
+      ar: [هذه الغرفة مظلمة جدًا]
+      en: [This room is very dark, This room is really dark]
+    words: [gelap]
+  - id: e09
+    type: speaking
+    text: Saya suka cokelat, warna dan makanannya!
+    meaning:
+      ar_eg: بحب البني والشوكولاتة، اللون والأكل!
+      ar: أحبّ cokelat، اللون والحلوى!
+      en: I love cokelat, the colour and the food!
+    words: [cokelat]
+  - id: e10
+    type: multiple_choice
+    question: Pisang ini warnanya ___, sudah manis.
+    options: [kuning, merah muda, oranye]
+    answer: 0
+    explain:
+      ar_eg: 'الموز الأصفر مستوي: kuning.'
+      ar: 'الموز الأصفر ناضج: kuning.'
+      en: 'A yellow banana is ripe: kuning.'
+    words: [kuning, merah muda, oranye]
+dialogue:
+  lines:
+    - speaker: Penjual
+      text: Mau kain warna apa, Mbak?
+      ar_eg: عايزة قماش لونه إيه يا آنسة؟
+      ar: أيّ لون من القماش تريدين يا آنسة؟
+      en: What colour fabric would you like?
+    - speaker: Rina
+      text: Ada yang ungu?
+      ar_eg: فيه بنفسجي؟
+      ar: هل عندك بنفسجي؟
+      en: Do you have purple?
+    - speaker: Penjual
+      text: Ungu tidak ada. Ada merah muda, hijau, dan oranye.
+      ar_eg: البنفسجي مش موجود. فيه بمبي وأخضر وبرتقاني.
+      ar: لا يوجد بنفسجي. لدينا وردي وأخضر وبرتقالي.
+      en: No purple. There's pink, green and orange.
+    - speaker: Rina
+      text: Yang hijau gelap ada?
+      ar_eg: فيه أخضر غامق؟
+      ar: هل يوجد أخضر داكن؟
+      en: Is there dark green?
+    - speaker: Penjual
+      text: Ada! Ini, hijau gelap. Atau cokelat?
+      ar_eg: أيوه! اتفضلي، أخضر غامق. ولا بني؟
+      ar: نعم! تفضّلي، أخضر داكن. أم بنّي؟
+      en: Yes! Here, dark green. Or brown?
+    - speaker: Rina
+      text: Yang hijau gelap. Berapa semeter?
+      ar_eg: الأخضر الغامق. بكام المتر؟
+      ar: الأخضر الداكن. بكم المتر؟
+      en: The dark green. How much per metre?
+new_words:
+  - word: hijau
+    pos: adjective
+    ar_eg: أخضر
+    ar: أخضر
+    en: green
+  - word: kuning
+    pos: adjective
+    ar_eg: أصفر
+    ar: أصفر
+    en: yellow
+  - word: cokelat
+    pos: noun
+    ar_eg: بني؛ شوكولاتة
+    ar: بنّي؛ شوكولاتة
+    en: brown; chocolate
+  - word: ungu
+    pos: adjective
+    ar_eg: بنفسجي
+    ar: بنفسجي
+    en: purple
+  - word: oranye
+    pos: adjective
+    ar_eg: برتقاني
+    ar: برتقالي
+    en: orange (colour)
+  - word: abu-abu
+    pos: adjective
+    ar_eg: رمادي
+    ar: رمادي
+    en: grey
+  - word: merah muda
+    pos: adjective
+    ar_eg: بمبي
+    ar: وردي
+    en: pink
+  - word: gelap
+    pos: adjective
+    ar_eg: غامق، ضلمة
+    ar: داكن، مظلم
+    en: dark
+review:
+  status: draft
+  verified: false
