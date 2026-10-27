@@ -69,12 +69,12 @@ every morning. CI warns when the table below is behind the content.
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | J1 | Malioboro, Yogyakarta | — | 7 | 56 | 519 | 305 | 256 / 250 | ~6 h | 34 |
-| J2 | Madiun | — | 6 | 48 | 461 | 229 | 438 / 500 | ~5 h | 35 |
-| J3 | Pakualaman, Yogyakarta | — | 6 | 61 | 554 | 250 | 646 / 750 | ~6 h | 35 |
-| J4 | Malioboro, Yogyakarta | — | 6 | 69 | 648 | 247 | 870 / 1,000 | ~8 h | 38 |
-| J5 | Kutha Pendekar (Madiun) | — | 6 | 66 | 621 | 250 | 1,071 / 1,250 | ~7 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 80 | 748 | 245 | 1,279 / 1,500 | ~8 h | 37 |
-| **Total** |  | — | 37 | 380 | 3,551 | 1,526 | 1,279 / 1,500 | ~41 h | 218 |
+| J2 | Madiun | — | 6 | 56 | 541 | 293 | 502 / 500 | ~6 h | 35 |
+| J3 | Pakualaman, Yogyakarta | — | 6 | 61 | 554 | 250 | 710 / 750 | ~6 h | 35 |
+| J4 | Malioboro, Yogyakarta | — | 6 | 69 | 648 | 247 | 934 / 1,000 | ~8 h | 38 |
+| J5 | Kutha Pendekar (Madiun) | — | 6 | 66 | 621 | 250 | 1,135 / 1,250 | ~7 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 80 | 748 | 245 | 1,343 / 1,500 | ~8 h | 37 |
+| **Total** |  | — | 37 | 388 | 3,631 | 1,590 | 1,343 / 1,500 | ~42 h | 218 |
 
 **Reference content and stories**
 

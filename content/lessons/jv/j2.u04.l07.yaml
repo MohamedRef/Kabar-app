@@ -1,211 +1,227 @@
 schema: kabar.lesson/v1
 id: j2.u04.l07
 language: jv
-title: Jadwal sepur
+title: Janjian
 can_do:
-  ar_eg: تقرا جدول مواعيد قطر وتختار القطر المناسب.
-  ar: أن تقرأ جدول مواعيد القطارات وتختار القطار المناسب.
-  en: Read a train timetable and pick a train.
+  ar_eg: تحدد ميعاد مع صاحبك.
+  ar: أن تحدد موعدًا مع صديق.
+  en: Make an appointment.
 slides:
-  - title: Neng stasiun Madiun
-    grammar: jv.time.expressions
+  - title: Kapan? Jam pira? Neng ngendi?
     body:
       ar_eg: |
-        في محطة ماديون فيه لوحة مواعيد صغيرة. sepur = قطر (kereta)، وmenyang = رايح لـ (ke).
-        افتكر الساعة:
-        - setengah + الساعة اللي جاية: setengah wolu = ٧:٣٠.
-        - luwih seprapat = وربع، kurang seprapat = إلا ربع.
-        - esuk / awan / sore / bengi بعد الساعة: jam siji awan = ١ الضهر.
+        عشان تحدد ميعاد بالجاوي محتاج اليوم والساعة والمكان:
+        - Ayo ketemu! = يلا نتقابل! · janjian = نتفق على ميعاد
+        - Kapan? = إمتى؟ · Jam pira? = الساعة كام؟ · Ketemu neng ngendi? = نتقابل فين؟
+        - Sesuk Jemuwah jam papat sore, isa? = بكرة الجمعة الساعة أربعة العصر، ينفع؟ (isa = bisa، وفي الشات iso)
+        - Aku ora isa. = مش هقدر. · Jam lima piye? = طب الساعة خمسة إيه رأيك؟
+        - Jumatan = صلاة الجمعة (من «الجمعة»)
+        وفي الشات هتلاقي: sesuk jemuwah jam 4 sore iso? — نفس الجملة بس من غير علامات وبالأرقام.
       ar: |
-        في محطة ماديون لوحة مواعيد صغيرة. sepur = قطار (kereta)، وmenyang = إلى (ke).
-        تذكّر الساعة:
-        - setengah + الساعة التالية: setengah wolu = ٧:٣٠.
-        - luwih seprapat = والربع، وkurang seprapat = إلا ربعًا.
-        - esuk / awan / sore / bengi بعد الساعة: jam siji awan = الواحدة ظهرًا.
+        لتحديد موعد بالجاوية تحتاج اليوم والساعة والمكان:
+        - Ayo ketemu! = هيا نلتقي! · janjian = نتفق على موعد
+        - Kapan? = متى؟ · Jam pira? = في أي ساعة؟ · Ketemu neng ngendi? = أين نلتقي؟
+        - Sesuk Jemuwah jam papat sore, isa? = غدًا الجمعة في الرابعة عصرًا، أيناسبك؟ (isa = bisa، وفي الدردشة iso)
+        - Aku ora isa. = لا أستطيع. · Jam lima piye? = وما رأيك في الخامسة؟
+        - Jumatan = صلاة الجمعة (من «الجمعة»)
+        وفي الدردشة: sesuk jemuwah jam 4 sore iso? — الجملة نفسها بلا علامات وبالأرقام.
       en: |
-        At Madiun station there's a small timetable board. sepur = train (kereta), menyang = to (ke).
-        Remember clock time:
-        - setengah + the NEXT hour: setengah wolu = 7:30.
-        - luwih seprapat = quarter past, kurang seprapat = quarter to.
-        - esuk / awan / sore / bengi after the hour: jam siji awan = 1 p.m.
+        To fix a meeting in Javanese you need the day, the time and the place:
+        - Ayo ketemu! = Let's meet! · janjian = make an appointment
+        - Kapan? = When? · Jam pira? = What time? · Ketemu neng ngendi? = Where shall we meet?
+        - Sesuk Jemuwah jam papat sore, isa? = Tomorrow, Friday, 4 p.m. — can you? (isa = bisa; chat iso)
+        - Aku ora isa. = I can't. · Jam lima piye? = How about five?
+        - Jumatan = Friday prayers (from Arabic «الجمعة»)
+        In chats: sesuk jemuwah jam 4 sore iso? — the same sentence, no accents, digits for numbers.
+    grammar: jv.time.expressions
     examples:
-      - text: Sepur menyang Solo jam setengah wolu esuk lan jam siji awan.
-        ar_eg: قطر سولو الساعة ٧:٣٠ الصبح والساعة ١ الضهر.
-        ar: قطار سولو في السابعة والنصف صباحًا والواحدة ظهرًا.
-        en: Trains to Solo at 7:30 a.m. and 1 p.m.
-      - text: Sepur menyang Suroboyo jam papat luwih seprapat sore.
-        ar_eg: قطر سورابايا الساعة أربعة وربع العصر.
-        ar: قطار سورابايا في الرابعة والربع عصرًا.
-        en: The train to Surabaya is at 4:15 p.m.
-      - text: Dina Minggu ora ana sepur jam siji awan.
-        ar_eg: يوم الحد مفيش قطر الساعة ١ الضهر.
-        ar: يوم الأحد لا يوجد قطار الساعة الواحدة ظهرًا.
-        en: On Sundays there's no 1 p.m. train.
+      - text: Jam papat sore piye?
+        ar_eg: طب الساعة أربعة العصر إيه رأيك؟
+        ar: ما رأيك في الرابعة عصرًا؟
+        en: How about four in the afternoon?
+      - text: Ketemu neng ngarep alun-alun, ya.
+        ar_eg: نتقابل قدام الميدان، ماشي؟
+        ar: نلتقي أمام الساحة، اتفقنا؟
+        en: Let's meet in front of the town square, OK?
 exercises:
   - id: e01
     type: multiple_choice
+    question: Sesuk jam papat sore, isa?
     question_meaning:
-      ar_eg: محمد عايز يروح سولو الصبح. ياخد قطر الساعة كام؟
-      ar: يريد محمد الذهاب إلى سولو صباحًا. أيّ قطار يأخذ؟
-      en: Mohamed wants to go to Solo in the morning. Which train?
-    options: ["Jam setengah wolu esuk.", "Jam siji awan.", "Jam papat luwih seprapat sore."]
+      ar_eg: ديماس بيسألك الجملة دي، وإنت مش فاضي. ترد بإيه؟
+      ar: يسألك ديماس هذا السؤال وأنت مشغول. بماذا تجيب؟
+      en: Dimas asks you this, and you're busy. What do you answer?
+    options: [Aku ora isa., Isa!, Jam papat.]
     answer: 0
-    explain:
-      ar_eg: قطر سولو الصبح الساعة setengah wolu esuk = ٧:٣٠. قطر الساعة ٤:١٥ رايح سورابايا.
-      ar: قطار سولو الصباحي في setengah wolu esuk = ٧:٣٠، أما قطار ٤:١٥ فذاهب إلى سورابايا.
-      en: The morning train to Solo is at setengah wolu esuk = 7:30. The 4:15 train goes to Surabaya.
-    words: [setengah, esuk]
+    words: [isa, ora]
   - id: e02
     type: multiple_choice
-    question: Sepur menyang Suroboyo jam papat luwih seprapat sore.
+    question: sesuk jemuwah jam 4 sore iso?
     question_meaning:
-      ar_eg: قطر سورابايا الساعة كام؟
-      ar: في أيّ ساعة قطار سورابايا؟
-      en: What time is the train to Surabaya?
-    options: ["Jam papat sore.", "Jam lima kurang seprapat sore.", "Jam papat luwih seprapat sore."]
+      ar_eg: رسالة شات من ديماس. أنهي اختيار هو نفس الجملة بالإملا الرسمي؟
+      ar: رسالة دردشة من ديماس. أي خيار هو الجملة نفسها بالإملاء الرسمي؟
+      en: A chat message from Dimas. Which option is the same sentence in standard spelling?
+    options: ['Wingi Jemuwah jam papat sore, isa?', 'Sesuk Jemuwah jam papat esuk, isa?', 'Sesuk Jemuwah jam papat sore, isa?']
     answer: 2
     explain:
-      ar_eg: luwih seprapat = وربع. jam lima kurang seprapat = ٤:٤٥، مش ٤:١٥.
-      ar: luwih seprapat = والربع، أما jam lima kurang seprapat فهي ٤:٤٥ لا ٤:١٥.
-      en: luwih seprapat = quarter past. jam lima kurang seprapat is 4:45, not 4:15.
-    words: [luwih, seprapat, sore]
+      ar_eg: sesuk = sesuk (بكرة)، 4 = papat، sore = sore، iso = isa.
+      ar: sesuk = sesuk (غدًا)، و4 = papat، وsore = sore، وiso = isa.
+      en: sesuk = sesuk (tomorrow), 4 = papat, sore = sore, iso = isa.
+    words: [sesuk, sore, isa]
   - id: e03
-    type: multiple_choice
-    question: Dina Minggu ora ana sepur jam siji awan.
-    question_meaning:
-      ar_eg: النهارده الحد. Sari تقدر تاخد قطر الساعة ١ لسولو؟
-      ar: اليوم الأحد. هل تستطيع Sari أن تأخذ قطار الواحدة إلى سولو؟
-      en: Today is Sunday. Can Sari take the 1 p.m. train to Solo?
-    options: ["Isa, sepure ana.", "Ora isa, sepure ora ana.", "Isa, jam papat sore."]
-    answer: 1
-    explain:
-      ar_eg: يوم الحد (Minggu) مفيش قطر الساعة ١ الضهر، يعني ora isa.
-      ar: يوم الأحد (Minggu) لا يوجد قطار الواحدة ظهرًا، أي ora isa.
-      en: On Sunday (Minggu) there's no 1 p.m. train, so ora isa.
-    words: [isa, dina]
-  - id: e04
-    type: listen
-    text: Sepur menyang Solo jam setengah wolu esuk.
-    options: ["Sepur menyang Solo jam setengah pitu esuk.", "Sepur menyang Solo jam setengah wolu bengi.", "Sepur menyang Solo jam setengah wolu esuk."]
-    answer: 2
-    meaning:
-      ar_eg: قطر سولو الساعة ٧:٣٠ الصبح.
-      ar: قطار سولو في السابعة والنصف صباحًا.
-      en: The train to Solo is at 7:30 a.m.
-    words: [setengah, esuk]
-  - id: e05
-    type: match_pairs
-    pairs:
-      - text: jam setengah wolu
-        ar_eg: ٧:٣٠
-        ar: ٧:٣٠
-        en: "7:30"
-      - text: jam siji awan
-        ar_eg: ١ الضهر
-        ar: الواحدة ظهرًا
-        en: 1 p.m.
-      - text: jam papat luwih seprapat
-        ar_eg: ٤:١٥
-        ar: ٤:١٥
-        en: "4:15"
-      - text: jam lima kurang seprapat
-        ar_eg: ٤:٤٥
-        ar: ٤:٤٥
-        en: "4:45"
-      - text: jam pitu bengi
-        ar_eg: ٧ بالليل
-        ar: السابعة مساءً
-        en: 7 p.m.
-    words: [jam, setengah, luwih, seprapat, bengi]
-  - id: e06
     type: fill_blank
-    sentence: Dina Minggu ora ana sepur jam siji ___.
+    sentence: Janjian neng ___?
     meaning:
-      ar_eg: يوم الحد مفيش قطر الساعة ١ الضهر.
-      ar: يوم الأحد لا يوجد قطار الساعة الواحدة ظهرًا.
-      en: On Sundays there's no 1 p.m. train.
-    options: ["esuk", "awan", "bengi"]
-    answers: ["awan"]
+      ar_eg: نتقابل فين؟
+      ar: أين نلتقي؟
+      en: Where shall we meet?
+    options: [ngendi, pira, kapan]
+    answers: [ngendi]
+    words: [janjian, ngendi]
+  - id: e04
+    type: fill_blank
+    sentence: Jemuwah ___ aku Jumatan.
+    meaning:
+      ar_eg: يوم الجمعة الضهر بصلي الجمعة.
+      ar: يوم الجمعة ظهرًا أصلي الجمعة.
+      en: On Friday at midday I go to Friday prayers.
+    options: [awan, esuk, bengi]
+    answers: [awan]
     explain:
-      ar_eg: ١ الضهر = jam siji awan (awan = الضهر، نص النهار).
-      ar: الواحدة ظهرًا = jam siji awan (awan = الظهيرة).
-      en: 1 p.m. = jam siji awan (awan = midday).
-    words: [awan]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: قطر سولو الساعة كام؟
-      ar: في أيّ ساعة قطار سولو؟
-      en: What time is the train to Solo?
-    answers:
-      - Sepur menyang Solo jam pira?
-      - Sepur menyang Solo jam pira
-      - Sepur menyang Solo jam piro?
-      - Sepur neng Solo jam pira?
-      - Sepur nang Solo jam pira?
-      - Jam pira sepur menyang Solo?
-      - Sepure menyang Solo jam pira?
-      - Sepur sing menyang Solo jam pira?
-    explain:
-      ar_eg: menyang = لـ (ke)، وjam pira? = الساعة كام؟
-      ar: menyang = إلى (ke)، وjam pira? = في أيّ ساعة؟
-      en: menyang = to (ke), jam pira? = what time?
-    words: [menyang, jam, pira]
-  - id: e08
+      ar_eg: صلاة الجمعة وقت الضهر، يعني awan.
+      ar: صلاة الجمعة وقت الظهيرة، أي awan.
+      en: Friday prayers are at midday — awan.
+    words: [awan, Jumatan]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: بكرة الصبح رايح سولو الساعة ٧:٣٠.
-      ar: غدًا صباحًا سأذهب إلى سولو في السابعة والنصف.
-      en: Tomorrow morning I'm going to Solo at half past seven.
-    answer: Sesuk esuk aku menyang Solo jam setengah wolu.
-    distractors: [wingi, mau]
-    explain:
-      ar_eg: sesuk = بكرة. wingi = امبارح، وmau = من شوية؛ الاتنين ماضي.
-      ar: sesuk = غدًا، أما wingi = أمس وmau = قبل قليل، وكلاهما للماضي.
-      en: sesuk = tomorrow. wingi = yesterday and mau = earlier; both are past.
-    words: [sesuk, esuk, menyang, setengah]
-  - id: e09
-    type: speaking
-    text: Sepur menyang Suroboyo jam papat luwih seprapat sore.
+      ar_eg: طب الساعة أربعة العصر إيه رأيك؟
+      ar: ما رأيك في الرابعة عصرًا؟
+      en: How about four in the afternoon?
+    answer: Jam papat sore piye?
+    distractors: [esuk, pira]
+    words: [jam, papat, sore, piye]
+  - id: e06
+    type: match_pairs
+    pairs:
+      - text: janjian
+        ar_eg: يحدد ميعاد
+        ar: يتواعد
+        en: make a date
+      - text: isa
+        ar_eg: يقدر / ينفع
+        ar: يستطيع
+        en: can
+      - text: nonton
+        ar_eg: يتفرج
+        ar: يشاهد
+        en: watch
+      - text: Jumatan
+        ar_eg: صلاة الجمعة
+        ar: صلاة الجمعة
+        en: Friday prayer
+      - text: alun-alun
+        ar_eg: الميدان الكبير
+        ar: الساحة الكبرى
+        en: town square
+      - text: sip
+        ar_eg: تمام!
+        ar: ممتاز!
+        en: great!
+    words: [janjian, isa, nonton, Jumatan, alun-alun, sip]
+  - id: e07
+    type: listen
+    text: Sip! Janjian neng alun-alun, ya.
+    options: ['Sip! Janjian neng alun-alun, ya.', 'Sip! Nonton neng alun-alun, ya.', 'Sip! Janjian neng omah, ya.']
+    answer: 0
     meaning:
-      ar_eg: قطر سورابايا الساعة أربعة وربع العصر.
-      ar: قطار سورابايا في الرابعة والربع عصرًا.
-      en: The train to Surabaya is at 4:15 p.m.
-    words: [luwih, seprapat, sore]
+      ar_eg: تمام! نتقابل في الميدان، ماشي؟
+      ar: ممتاز! نلتقي في الساحة، اتفقنا؟
+      en: Great! Let's meet at the town square, OK?
+    words: [sip, janjian, alun-alun, nonton]
+  - id: e08
+    type: listen
+    text: Aku ora isa, aku Jumatan.
+    options: ['Aku ora isa, aku sinau.', 'Aku ora isa, aku Jumatan.', 'Aku isa, aku Jumatan.']
+    answer: 1
+    words: [isa, Jumatan]
+  - id: e09
+    type: dictation
+    text: Janjian neng ngarep alun-alun.
+    meaning:
+      ar_eg: نتقابل قدام الميدان.
+      ar: نلتقي أمام الساحة.
+      en: Let's meet in front of the town square.
+    words: [janjian, ngarep, alun-alun]
+  - id: e10
+    type: speaking
+    text: Sip! Sesuk nonton reog, janjian jam papat sore.
+    meaning:
+      ar_eg: تمام! بكرة نتفرج على الريوج، ونتقابل الساعة أربعة العصر.
+      ar: ممتاز! غدًا نشاهد الريوغ، ونلتقي الساعة الرابعة عصرًا.
+      en: Great! Tomorrow we watch reog, meeting at four in the afternoon.
+    words: [sip, sesuk, nonton, janjian, sore]
 dialogue:
-  title: Arep menyang Solo
+  title: Chat karo Dimas
   lines:
+    - speaker: Dimas
+      text: Mohamed, ayo nonton Reog!
+      ar_eg: محمد، يلا نتفرج على الريوج!
+      ar: يا محمد، هيا نشاهد الريوغ!
+      en: Mohamed, let's go and watch Reog!
     - speaker: Mohamed
-      text: Sari, sesuk aku arep menyang Solo. Sepure jam pira?
-      ar_eg: يا ساري، بكرة أنا رايح سولو. القطر الساعة كام؟
-      ar: يا ساري، غدًا سأذهب إلى سولو. في أيّ ساعة القطار؟
-      en: Sari, tomorrow I'm going to Solo. What time is the train?
-    - speaker: Sari
-      text: Ana jam setengah wolu esuk lan jam siji awan.
-      ar_eg: فيه الساعة ٧:٣٠ الصبح والساعة ١ الضهر.
-      ar: يوجد في السابعة والنصف صباحًا والواحدة ظهرًا.
-      en: There's one at 7:30 a.m. and one at 1 p.m.
+      text: Ayo! Kapan?
+      ar_eg: يلا! إمتى؟
+      ar: هيا! متى؟
+      en: Sure! When?
+    - speaker: Dimas
+      text: Sesuk Jemuwah, jam setengah siji awan. Isa ra?
+      ar_eg: بكرة الجمعة، الساعة اتناشر ونص الضهر. ينفع؟
+      ar: غدًا الجمعة، في الثانية عشرة والنصف ظهرًا. أيناسبك؟
+      en: Tomorrow, Friday, at half past twelve. Can you?
     - speaker: Mohamed
-      text: Jam siji wae. Esuk aku isih turu!
-      ar_eg: الساعة واحدة أحسن. الصبح أنا لسه نايم!
-      ar: الواحدة إذن. في الصباح أكون نائمًا بعد!
-      en: The one o'clock, then. In the morning I'm still asleep!
-    - speaker: Sari
-      text: Lho, sesuk Minggu. Dina Minggu ra ana sepur jam siji.
-      ar_eg: إيه ده، بكرة الحد. يوم الحد مفيش قطر الساعة واحدة.
-      ar: انتبه، غدًا الأحد. يوم الأحد لا يوجد قطار الساعة الواحدة.
-      en: Oh, tomorrow's Sunday. On Sundays there's no one o'clock train.
+      text: Jam setengah siji aku Jumatan. Jam papat sore piye?
+      ar_eg: الساعة اتناشر ونص بصلي الجمعة. طب أربعة العصر إيه رأيك؟
+      ar: في الثانية عشرة والنصف أصلي الجمعة. ما رأيك في الرابعة عصرًا؟
+      en: At half past twelve I'm at Friday prayers. How about four in the afternoon?
+    - speaker: Dimas
+      text: Isa! Ketemu neng ngendi?
+      ar_eg: ينفع! نتقابل فين؟
+      ar: يناسبني! أين نلتقي؟
+      en: Works for me! Where shall we meet?
     - speaker: Mohamed
-      text: Wah! Ya wis, jam setengah wolu esuk.
-      ar_eg: ياه! خلاص، الساعة ٧:٣٠ الصبح.
-      ar: آه! حسنًا، السابعة والنصف صباحًا.
-      en: Oh no! All right, 7:30 in the morning.
-    - speaker: Sari
-      text: Sip! Mengko bengi cepet turu, ya!
-      ar_eg: تمام! بالليل نام بدري بقى!
-      ar: ممتاز! نَم مبكرًا الليلة إذن!
-      en: Great! Get to bed early tonight, then!
+      text: Neng ngarep alun-alun, ya.
+      ar_eg: قدام الميدان، ماشي؟
+      ar: أمام الساحة، اتفقنا؟
+      en: In front of the town square, OK?
+new_words:
+  - word: janjian
+    pos: verb
+    ar_eg: يحدد ميعاد
+    ar: يتّفق على موعد
+    en: to make an appointment (janjian)
+  - word: nonton
+    pos: verb
+    ar_eg: يتفرج
+    ar: يشاهد
+    en: to watch (a show) (nonton)
+  - word: Jumatan
+    pos: noun
+    ar_eg: صلاة الجمعة
+    ar: صلاة الجمعة
+    en: Friday prayers
+    arabic: الجمعة
+    bridge: jumat
+  - word: alun-alun
+    pos: noun
+    ar_eg: الميدان الكبير في البلد
+    ar: الساحة الكبرى في المدينة
+    en: town square
+  - word: sip
+    pos: interjection
+    ar_eg: تمام!
+    ar: ممتاز!
+    en: great!, OK!
 review:
   status: draft
   verified: false

@@ -1,219 +1,203 @@
 schema: kabar.lesson/v1
 id: j2.u01.l08
 language: jv
-title: Ulangan J2.1
+title: Kulawargaku
 can_do:
-  ar_eg: توصف عيلتك بالنغوكو.
-  ar: أن تصف عائلتك بالنغوكو.
-  en: Describe your family in ngoko.
+  ar_eg: تقرا بوست قصير عن عيلة وتفهم مين قريب مين.
+  ar: أن تقرأ منشورًا قصيرًا عن عائلة وتفهم صلات القرابة فيه.
+  en: Read a short post about a family.
 slides:
-  - title: Kulawarga
+  - title: Statuse Sari
+    grammar: jv.possessive.e-ne
     body:
       ar_eg: |
-        مراجعة كلمات العيلة:
-        - bapak، ibu (simbok)، anak، bojo.
-        - mas (أخ كبير)، mbakyu (أخت كبيرة)، adhi (أصغر).
-        - pakdhe / budhe (أكبر من أبوك أو أمك)، paklik / bulik (أصغر).
-        - mbah kakung، mbah putri، putu، ponakan.
-        والسن هو اللي بيحدد، مش الجهة.
-        - بعد ساكن -e: omahe، jenenge. بعد متحرك -ne: bukune، regane.
-        - «بتاع فلان»: omahe Pak Budi (الحاجة الأول).
-        - -ku / -mu: masku، adhimu. · duweke sapa? = بتاع مين؟
+        Sari نزّلت صورة عيلتها على الواتساب وكتبت تحتها بوست صغير. اقراه واخد بالك من آخر الكلمات:
+        - ‎-ku = بتاعي: bapakku = أبويا، masku = أخويا الكبير.
+        - ‎-e / -ne = بتاعه / بتاع فلان: omahe Bapak = بيت بابا.
+        - manggon = ساكن، duwe = عنده، saiki = دلوقتي.
       ar: |
-        مراجعة ألفاظ العائلة:
-        - bapak وibu (simbok) وanak وbojo.
-        - mas (الأخ الأكبر)، mbakyu (الأخت الكبرى)، adhi (الأصغر).
-        - pakdhe / budhe (أكبر من الوالد)، paklik / bulik (أصغر).
-        - mbah kakung وmbah putri وputu وponakan.
-        والمعيار السن لا الجهة.
-        - بعد الساكن -e: omahe، jenenge، وبعد الصائت -ne: bukune، regane.
-        - الإضافة: omahe Pak Budi (المملوك أولًا).
-        - -ku / -mu: masku، adhimu. · duweke sapa? = لمن؟
+        نشرت Sari صورة عائلتها على واتساب وكتبت تحتها منشورًا قصيرًا. اقرأه وانتبه لأواخر الكلمات:
+        - ‎-ku = ـي: bapakku = أبي، وmasku = أخي الأكبر.
+        - ‎-e / -ne = ـه / الخاص بفلان: omahe Bapak = بيت أبي.
+        - manggon = يسكن، وduwe = يملك، وsaiki = الآن.
       en: |
-        Family words recap:
-        - bapak, ibu (simbok), anak, bojo.
-        - mas (older brother), mbakyu (older sister), adhi (younger sibling).
-        - pakdhe / budhe (older than your parent), paklik / bulik (younger).
-        - mbah kakung, mbah putri, putu, ponakan.
-        Age decides, not which side of the family.
-        - After a consonant -e: omahe, jenenge. After a vowel -ne: bukune, regane.
-        - "X's": omahe Pak Budi (thing first).
-        - -ku / -mu: masku, adhimu. · duweke sapa? = whose?
-    grammar: jv.kinship.terms
+        Sari posted a family photo on WhatsApp with a short caption. Read it and watch the word endings:
+        - -ku = my: bapakku = my father, masku = my older brother.
+        - -e / -ne = his / her / X's: omahe Bapak = Dad's house.
+        - manggon = live, duwe = have, saiki = now.
+    examples:
+      - text: Jenengku Sari, aku saka Madiun. Saiki aku sinau neng Kairo.
+        ar_eg: اسمي ساري، أنا من ماديون. دلوقتي بدرس في القاهرة.
+        ar: اسمي ساري، وأنا من ماديون. أدرس الآن في القاهرة.
+        en: My name is Sari, I'm from Madiun. Now I study in Cairo.
+      - text: Bapak lan ibuku manggon neng Madiun. Bapakku duwe warung.
+        ar_eg: بابا وماما ساكنين في ماديون. بابا عنده وارونج (مطعم صغير).
+        ar: أبي وأمي يسكنان في ماديون. أبي يملك مطعمًا صغيرًا.
+        en: My father and mother live in Madiun. My father has a warung.
+      - text: Mas Agus, Bayu lan Mbah putri manggon neng omahe Bapak.
+        ar_eg: أخويا الكبير أجوس وبايو وتيتة ساكنين في بيت بابا.
+        ar: أخي الأكبر أغوس وبايو وجدّتي يسكنون في بيت أبي.
+        en: My older brother Agus, Bayu and Grandma live in Dad's house.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: pakdhe
-        ar_eg: عم / خال أكبر من بابا أو ماما
-        ar: العم / الخال الأكبر من الوالد
-        en: parent's older brother
-      - text: bulik
-        ar_eg: عمة / خالة أصغر من بابا أو ماما
-        ar: العمة / الخالة الأصغر من الوالد
-        en: parent's younger sister
-      - text: putu
-        ar_eg: حفيد
-        ar: الحفيد
-        en: grandchild
-      - text: mbah kakung
-        ar_eg: جدو
-        ar: الجد
-        en: grandfather
-      - text: ponakan
-        ar_eg: ابن الأخ / الأخت
-        ar: ابن الأخ / الأخت
-        en: niece / nephew
-      - text: mbarep
-        ar_eg: الابن الكبير (البكري)
-        ar: الابن البكر
-        en: eldest child
-    words: [pakdhe, bulik, putu, mbah kakung, ponakan, mbarep]
+    type: multiple_choice
+    question: Saiki aku sinau neng Kairo.
+    question_meaning:
+      ar_eg: Sari بتدرس فين دلوقتي؟
+      ar: أين تدرس Sari الآن؟
+      en: Where does Sari study now?
+    options: ["Neng Madiun.", "Neng Kairo.", "Neng Suroboyo."]
+    answer: 1
+    explain:
+      ar_eg: هي من ماديون (saka Madiun)، لكن saiki (دلوقتي) بتدرس في القاهرة.
+      ar: هي من ماديون (saka Madiun)، لكنها saiki (الآن) تدرس في القاهرة.
+      en: She's from Madiun (saka Madiun), but saiki (now) she studies in Cairo.
+    words: [saiki, sinau]
   - id: e02
     type: multiple_choice
+    question: Bapakku duwe warung.
     question_meaning:
-      ar_eg: أخت بابا، وهي أكبر من بابا. تقولها إيه؟
-      ar: أخت أبيك، وهي أكبر منه. بمَ تناديها؟
-      en: Your father's sister, older than him. What do you call her?
-    options: [mbakyu, budhe, bulik]
-    answer: 1
-    words: [budhe]
+      ar_eg: أبو Sari عنده إيه؟
+      ar: ماذا يملك والد Sari؟
+      en: What does Sari's father have?
+    options: ["Warung.", "Toko buku.", "Omah neng Kairo."]
+    answer: 0
+    explain:
+      ar_eg: duwe = عنده (punya).
+      ar: duwe = يملك (punya).
+      en: duwe = have (punya).
+    words: [duwe]
   - id: e03
     type: multiple_choice
+    question: Mas Agus, Bayu lan Mbah putri manggon neng omahe Bapak.
     question_meaning:
-      ar_eg: إزاي تقول «اسم مراتي»؟ (jeneng + bojo)
-      ar: كيف تقول «اسم زوجتي»؟ (jeneng + bojo)
-      en: How do you say "my wife's name"? (jeneng + bojo)
-    options: [jenenge bojoku, jenengku bojo, bojoku jenenge]
-    answer: 0
-    explain:
-      ar_eg: الحاجة الأول (jenenge) وبعدين صاحبها (bojoku)، زي «اسم مراتي».
-      ar: المملوك أولًا (jenenge) ثم المالك (bojoku) كالإضافة العربية.
-      en: Thing first (jenenge), owner second (bojoku), like «اسم مراتي».
-    words: [jenenge, bojo]
-  - id: e04
-    type: multiple_choice
-    question: rega + -e / -ne
-    question_meaning:
-      ar_eg: أنهي شكل صح؟
-      ar: أيّ صيغة صحيحة؟
-      en: Which form is right?
-    options: [regae, reganya, regane]
+      ar_eg: مين من دول ساكن في بيت أبو Sari؟
+      ar: من يسكن في بيت والد Sari؟
+      en: Who lives in Sari's father's house?
+    options: ["Sari.", "Pakdhe lan budhe.", "Mbah putri."]
     answer: 2
     explain:
-      ar_eg: rega آخرها a (متحرك) ⇐ -ne. وreganya إندونيسي.
-      ar: تنتهي rega بصائت ⇐ -ne، أما reganya فإندونيسية.
-      en: rega ends in a vowel ⇒ -ne. reganya is Indonesian.
-    words: [regane]
-  - id: e05
+      ar_eg: omahe Bapak = بيت بابا، وMbah putri = تيتة ساكنة هناك. Sari نفسها في القاهرة.
+      ar: omahe Bapak = بيت أبي، وMbah putri = الجدّة تسكن هناك، أما Sari ففي القاهرة.
+      en: omahe Bapak = Dad's house, and Mbah putri lives there. Sari herself is in Cairo.
+    words: [manggon, mbah putri]
+  - id: e04
     type: listen
-    text: Iki bojoku, lan iki anakku.
-    options: ['Iki bojoku, lan iki anakku.', 'Iki bojoku, lan iki adhiku.', 'Iki budheku, lan iki anakku.']
-    answer: 0
-    words: [bojo, anak]
+    text: Bapakku duwe warung.
+    options: ["Masku duwe warung.", "Bapakku nyambut gawe neng warung.", "Bapakku duwe warung."]
+    answer: 2
+    meaning:
+      ar_eg: بابا عنده وارونج.
+      ar: أبي يملك مطعمًا صغيرًا.
+      en: My father has a warung.
+    words: [bapak, duwe]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: masku
+        ar_eg: أخويا الكبير
+        ar: أخي الأكبر
+        en: my older brother
+      - text: adhiku
+        ar_eg: أخويا / أختي الصغيرة
+        ar: أخي / أختي الأصغر
+        en: my younger sibling
+      - text: omahe Bapak
+        ar_eg: بيت بابا
+        ar: بيت أبي
+        en: Dad's house
+      - text: mbah putri
+        ar_eg: تيتة
+        ar: الجدّة
+        en: grandmother
+      - text: manggon
+        ar_eg: يسكن
+        ar: يسكن
+        en: live (somewhere)
+    words: [mas, adhi, mbah putri, manggon]
   - id: e06
     type: fill_blank
-    sentence: Iki ___ sapa?
+    sentence: Sari kancaku. Bapak___ duwe warung.
     meaning:
-      ar_eg: ده بتاع مين؟
-      ar: لمن هذا؟
-      en: Whose is this?
-    answers: [duweke]
-    words: [duweke]
+      ar_eg: ساري صاحبتي. أبوها عنده وارونج.
+      ar: ساري صديقتي. أبوها يملك مطعمًا صغيرًا.
+      en: Sari is my friend. Her father has a warung.
+    options: ["ku", "ne", "e"]
+    answers: ["e"]
+    explain:
+      ar_eg: هنا «أبوها» مش «أبويا»، فنقول bapake. وbapak آخرها حرف ساكن، فبناخد ‎-e مش ‎-ne.
+      ar: المقصود «أبوها» لا «أبي»، فنقول bapake. وbapak تنتهي بساكن، فتأخذ ‎-e لا ‎-ne.
+      en: It's "her father", not "my father", so bapake. bapak ends in a consonant, so it takes -e, not -ne.
+    words: [-e / -ne, bapak]
   - id: e07
-    type: fill_blank
-    sentence: Mbah kakung ___ neng kamar.
-    meaning:
-      ar_eg: جدو ___ في الأوضة.
-      ar: الجدّ ___ في الغرفة.
-      en: Grandpa is ___ in the room.
-    options: [lungguh, rabi, lair]
-    answers: [lungguh]
-    words: [lungguh, kamar, mbah kakung]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: محل باك بودي جنب الجامع.
-      ar: مطعم باك بودي بجانب المسجد.
-      en: Pak Budi's warung is next to the mosque.
-    answer: Warunge Pak Budi neng jejere masjid.
-    distractors: [omahe, mburi]
-    words: [warunge, jejere]
-  - id: e09
-    type: translate
-    direction: from_target
-    source_text: Pawone cedhak jeding.
-    answers_meaning:
-      ar_eg: [المطبخ جنب الحمّام, المطبخ قريب من الحمّام]
-      ar: [المطبخ قريب من الحمّام, المطبخ بجوار الحمّام]
-      en: [The kitchen is near the bathroom, The kitchen is next to the bathroom]
-    words: [pawon, jeding, cedhak]
-  - id: e10
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: أخويا الكبير بيشتغل في القاهرة، وأختي الكبيرة ساكنة في الجيزة.
-      ar: أخي الأكبر يعمل في القاهرة، وأختي الكبرى تسكن في الجيزة.
-      en: My older brother works in Cairo, and my older sister lives in Giza.
-    answers: ["Masku nyambut gawe neng Kairo, lan mbakyuku manggon neng Giza.", "Masku nyambut gawe neng Kairo, lan mbakyuku manggon neng Giza", "Masku nyambut gawe neng Kairo lan mbakyuku manggon neng Giza.", Masku nyambut gawe neng Kairo lan mbakyuku manggon neng Giza, "Masku nyambut gawe neng Kairo, mbakyuku manggon neng Giza.", "Masku nyambut gawe neng Kairo, mbakyuku manggon neng Giza", "Masku nyambut gawe neng Kairo mbakyuku manggon neng Giza.", Masku nyambut gawe neng Kairo mbakyuku manggon neng Giza, "Masku nyambut gawe neng Kairo, lan mbakku manggon neng Giza.", "Masku nyambut gawe neng Kairo, lan mbakku manggon neng Giza", "Masku nyambut gawe neng Kairo lan mbakku manggon neng Giza.", Masku nyambut gawe neng Kairo lan mbakku manggon neng Giza, "Masku nyambut gawe nang Kairo, lan mbakyuku manggon nang Giza.", "Masku nyambut gawe nang Kairo, lan mbakyuku manggon nang Giza", "Masku nyambut gawe nang Kairo lan mbakyuku manggon nang Giza.", Masku nyambut gawe nang Kairo lan mbakyuku manggon nang Giza, "Masku nyambut gawe neng Kairo, karo mbakyuku manggon neng Giza.", "Masku nyambut gawe neng Kairo, karo mbakyuku manggon neng Giza", "Masku nyambut gawe neng Kairo karo mbakyuku manggon neng Giza.", Masku nyambut gawe neng Kairo karo mbakyuku manggon neng Giza]
-    words: [mas, mbakyu, nyambut gawe, manggon]
-  - id: e11
-    type: dictation
-    text: Omahe Pak Budi adoh.
-    meaning:
-      ar_eg: بيت باك بودي بعيد.
-      ar: بيت باك بودي بعيد.
-      en: Pak Budi's house is far.
-    words: [omahe, adoh]
-  - id: e12
+      ar_eg: "اكتب بوست زي Sari: «أبويا وأمي ساكنين في القاهرة.»"
+      ar: "اكتب منشورًا مثل Sari: «أبي وأمي يسكنان في القاهرة.»"
+      en: "Write a post like Sari's: \"My father and mother live in Cairo.\""
+    answers:
+      - Bapak lan ibuku manggon neng Kairo.
+      - Bapak lan ibuku manggon neng Kairo
+      - Bapakku lan ibuku manggon neng Kairo.
+      - Bapakku lan ibuku manggon neng Kairo
+      - Bapak karo ibuku manggon neng Kairo.
+      - Bapakku karo ibuku manggon neng Kairo.
+      - Bapak lan ibuku manggon ing Kairo.
+    explain:
+      ar_eg: "زي ما Sari كتبت: Bapak lan ibuku = أبويا وأمي، وmanggon neng = ساكنين في."
+      ar: "كما كتبت Sari: Bapak lan ibuku = أبي وأمي، وmanggon neng = يسكنان في."
+      en: "Just as Sari wrote: Bapak lan ibuku = my father and mother, manggon neng = live in."
+    words: [bapak, ibu, manggon]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: تيتة ساكنة في بيت أخويا الكبير.
+      ar: جدّتي تسكن في بيت أخي الأكبر.
+      en: Grandma lives in my older brother's house.
+    answer: Mbah putri manggon neng omahe masku.
+    distractors: [omahku, bapak]
+    explain:
+      ar_eg: "omahe masku = بيت أخويا: الحاجة الأول، وبعدين صاحبها."
+      ar: "omahe masku = بيت أخي: الشيء أولًا ثم صاحبه."
+      en: "omahe masku = my older brother's house: the thing first, then the owner."
+    words: [mbah putri, manggon, -e / -ne, mas]
+  - id: e09
     type: speaking
-    text: Aku duwe mas siji lan adhi loro.
+    text: Kulawargaku manggon neng Kairo.
     meaning:
-      ar_eg: عندي أخ كبير واحد واتنين إخوات أصغر مني.
-      ar: لي أخ أكبر واحد وأخوان أصغر مني.
-      en: I have one older brother and two younger siblings.
-    words: [mas, adhi]
+      ar_eg: عيلتي ساكنة في القاهرة.
+      ar: عائلتي تسكن في القاهرة.
+      en: My family lives in Cairo.
+    words: [kulawarga, manggon]
 dialogue:
-  title: Kulawargamu piye?
+  title: Statuse Sari
   lines:
-    - speaker: Bayu
-      text: Mas Mohamed duwe adhi ra?
-      ar_eg: يا أستاذ محمد، عندك إخوات أصغر منك؟
-      ar: يا أخي محمد، ألك إخوة أصغر منك؟
-      en: Mohamed, do you have younger siblings?
     - speaker: Mohamed
-      text: Iya, Dhik. Aku duwe adhi loro lan mbakyu siji.
-      ar_eg: أيوه يا صغير. عندي اتنين أصغر مني وأخت واحدة كبيرة.
-      ar: نعم يا صغيري. لي أخوان أصغر مني وأخت كبرى واحدة.
-      en: Yes, Dhik. I have two younger siblings and one older sister.
-    - speaker: Bayu
-      text: Kulawargane Mas Mohamed neng Kairo?
-      ar_eg: عيلتك في القاهرة؟
-      ar: هل عائلتك في القاهرة؟
-      en: Is your family in Cairo?
+      text: Sari, aku wis maca statusmu.
+      ar_eg: يا ساري، قريت الستيتس بتاعك.
+      ar: يا ساري، قرأت حالتك.
+      en: Sari, I've read your status.
+    - speaker: Sari
+      text: Apik ra? Iki kulawargaku.
+      ar_eg: حلو؟ دي عيلتي.
+      ar: هل هو جميل؟ هذه عائلتي.
+      en: Is it nice? This is my family.
     - speaker: Mohamed
-      text: Iya. Bapak lan ibuku neng Kairo. Mbahku neng Aswan.
-      ar_eg: أيوه. بابا وماما في القاهرة. وجدي في أسوان.
-      ar: نعم. أبي وأمي في القاهرة، وجدي في أسوان.
-      en: Yes. My father and mother are in Cairo. My grandparent is in Aswan.
-    - speaker: Pak Budi
-      text: Saiki kowe ya kulawarga neng kene lho, Mohamed!
-      ar_eg: ودلوقتي إنت من العيلة هنا يا محمد!
-      ar: والآن أنت من العائلة هنا يا محمد!
-      en: Now you're family here, Mohamed!
-souvenir:
-  id: j2.u01.souvenir
-  title: Warung Pak Budi
-  note:
-    ar_eg: |
-      هنا في ماديون بتبدأ حكاية الـ Sinetron بتاعة Kabar: Pak Budi بيدير محل أكل صغير (warung) ريحته رز ساخن وشاي، وبنته Sari بتدرس في القاهرة. يعني جاوة ومصر اتقابلوا على ترابيزة واحدة.
-      ودلوقتي إنت تعرف تسلّم على العيلة كلها: pakdhe، budhe، mbah putri، وتقول بيت مين وكتاب مين. أول حلقة مستنياك!
-    ar: |
-      هنا في ماديون تبدأ حكاية مسلسل Kabar: يدير Pak Budi مطعمًا صغيرًا (warung) تفوح منه رائحة الأرز الساخن والشاي، وابنته Sari تدرس في القاهرة، فتلتقي جاوة ومصر على مائدة واحدة.
-      وصرتَ تعرف كيف تحيّي العائلة كلها: pakdhe وbudhe وmbah putri، وتقول بيت من وكتاب من. الحلقة الأولى في انتظارك!
-    en: |
-      Kabar's Sinetron starts here in Madiun: Pak Budi runs a little warung that smells of hot rice and tea, and his daughter Sari studies in Cairo — Java and Egypt at one table.
-      Now you can greet the whole family — pakdhe, budhe, mbah putri — and say whose house and whose book. The first episode is waiting for you!
+      text: Apik! Mbah putri manggon neng omahe bapakmu, to?
+      ar_eg: حلو! تيتة ساكنة في بيت أبوكي، صح؟
+      ar: جميل! جدّتك تسكن في بيت أبيك، أليس كذلك؟
+      en: Lovely! Your grandma lives in your father's house, right?
+    - speaker: Sari
+      text: Iya, karo Mas Agus lan Bayu.
+      ar_eg: أيوه، مع أخويا أجوس وبايو.
+      ar: نعم، مع أخي أغوس وبايو.
+      en: Yes, with Mas Agus and Bayu.
+    - speaker: Mohamed
+      text: Kulawargamu gedhe! Kulawargaku neng Kairo.
+      ar_eg: عيلتك كبيرة! عيلتي في القاهرة.
+      ar: عائلتك كبيرة! عائلتي في القاهرة.
+      en: Your family is big! My family is in Cairo.
 review:
   status: draft
   verified: false

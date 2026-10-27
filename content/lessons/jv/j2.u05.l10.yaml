@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: j2.u05.l10
+language: jv
+title: Ulangan J2.5
+can_do:
+  ar_eg: توصف يومك العادي بالجاوي.
+  ar: أن تصف روتينك اليومي بالجاوية.
+  en: Describe your routine.
+slides:
+  - title: Ringkesan J2.5
+    body:
+      ar_eg: |
+        - الأمر: -a من غير مفعول (Mangana! Adusa!)، -en على الأصل مع مفعول (Panganen! Wacanen!)، -na لأفعال -ake (Tukokna! Jupukna!)، و-i بتفضل (Enteni! Rewangi!).
+        - النهي: aja + الفعل (Aja lali!)، مش ora.
+        - ليّن دايمًا: ya / to في الآخر، tulung في الأول، sik، mbok.
+        - -i / -ni: nyirami، nekani، ngancani، ngenteni، ngresiki، وmateni (= mematikan). ومع tak / di- الأصل: tak kancani، dipateni.
+        - اليوم: tangi، salat Subuh، adus، sarapan، mangkat، kuliah، masak، mulih، turu — saben dina.
+      ar: |
+        - الأمر: -a بلا مفعول (Mangana! Adusa!)، و-en على الجذر مع المفعول (Panganen! Wacanen!)، و-na لأفعال -ake (Tukokna! Jupukna!)، وتبقى -i (Enteni! Rewangi!).
+        - النهي: aja + الفعل (Aja lali!) لا ora.
+        - لطّف دائمًا: ya / to آخرًا، وtulung أولًا، وsik، وmbok.
+        - -i / -ni: nyirami، nekani، ngancani، ngenteni، ngresiki، وmateni (= mematikan)، ومع tak / di- الجذر: tak kancani، dipateni.
+        - اليوم: tangi، salat Subuh، adus، sarapan، mangkat، kuliah، masak، mulih، turu — saben dina.
+      en: |
+        - Commands: -a with no object (Mangana! Adusa!), -en on the base with an object (Panganen! Wacanen!), -na for -ake verbs (Tukokna! Jupukna!), -i stays (Enteni! Rewangi!).
+        - Don't: aja + verb (Aja lali!), never ora.
+        - Always soften: ya / to at the end, tulung at the start, sik, mbok.
+        - -i / -ni: nyirami, nekani, ngancani, ngenteni, ngresiki, and mateni (= mematikan). With tak / di- the base: tak kancani, dipateni.
+        - The day: tangi, salat Subuh, adus, sarapan, mangkat, kuliah, masak, mulih, turu — saben dina.
+    grammar: jv.imperative.ngoko
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tangi
+        ar_eg: يصحى
+        ar: يستيقظ
+        en: wake up
+      - text: sarapan
+        ar_eg: يفطر
+        ar: يفطر
+        en: have breakfast
+      - text: mulih
+        ar_eg: يروّح
+        ar: يعود إلى البيت
+        en: go home
+      - text: ngresiki
+        ar_eg: ينضّف
+        ar: ينظّف
+        en: clean
+      - text: nyetrika
+        ar_eg: يكوي الهدوم
+        ar: يكوي الملابس
+        en: iron clothes
+      - text: keturon
+        ar_eg: نام من غير ما ياخد باله
+        ar: غلبه النوم
+        en: fall asleep by accident
+    words: [tangi, sarapan, mulih, ngresiki, nyetrika, keturon]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «استناني!» أنهي صح؟
+      ar: «انتظرني!» أيّها الصحيح؟
+      en: '"Wait for me!" Which is right?'
+    options: [Enteni aku!, Ngenteni aku!, Aja enteni aku!]
+    answer: 0
+    explain:
+      ar_eg: 'الأمر من غير N-: Enteni! أما ngenteni فللجملة العادية.'
+      ar: 'الأمر بلا N-: Enteni!، أما ngenteni فللخبر.'
+      en: 'The command has no N-: Enteni! ngenteni is for statements.'
+    words: [enteni]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «كُل العيش!» (مع مفعول). أنهي صح؟
+      ar: «كُل الخبز!» (مع مفعول). أيّها الصحيح؟
+      en: '"Eat the bread!" (with an object). Which is right?'
+    options: [Panganen rotine!, Mangana rotine!, Aja mangan rotine!]
+    answer: 0
+    explain:
+      ar_eg: 'مع مفعول: الأصل pangan + -en. وMangana من غير مفعول بس.'
+      ar: 'مع المفعول: الجذر pangan + -en، أما Mangana فبلا مفعول.'
+      en: 'With an object: base pangan + -en; Mangana is only for no object.'
+    words: [panganen]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «ماتشربش شاي بتلج!» أنهي صح؟
+      ar: «لا تشرب شايًا مثلّجًا!» أيّها الصحيح؟
+      en: '"Don''t drink iced tea!" Which is right?'
+    options: [Ora ngombe es teh!, Aja ngombe es teh!, Dudu ngombe es teh!]
+    answer: 1
+    words: [aja, ngombe]
+  - id: e05
+    type: listen
+    text: Tulung tukokna gula, ya.
+    options: ['Tulung jupukna gula, ya.', 'Aja tuku gula, ya.', 'Tulung tukokna gula, ya.']
+    answer: 2
+    words: [tulung, tukokna]
+  - id: e06
+    type: fill_blank
+    sentence: Aku ___ kowe neng ngarep alun-alun.
+    meaning:
+      ar_eg: أنا مستنيك قدام الميدان.
+      ar: أنتظرك أمام الساحة.
+      en: I'm waiting for you in front of the town square.
+    options: [ngenteni, enteni, tukokna]
+    answers: [ngenteni]
+    words: [ngenteni]
+  - id: e07
+    type: fill_blank
+    sentence: Saben esuk aku ___ omah.
+    meaning:
+      ar_eg: كل يوم الصبح بنضّف البيت.
+      ar: أنظّف البيت كل صباح.
+      en: Every morning I clean the house.
+    answers: [ngresiki]
+    explain:
+      ar_eg: resik (نضيف) + N- + -i = ngresiki.
+      ar: resik (نظيف) + N- + -i = ngresiki.
+      en: resik (clean) + N- + -i = ngresiki.
+    words: [ngresiki, saben]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: كل يوم بصحى الساعة خمسة.
+      ar: أستيقظ كل يوم في الخامسة.
+      en: Every day I wake up at five.
+    answer: Saben dina aku tangi jam lima.
+    distractors: [turu, bengi]
+    words: [saben dina, tangi]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: استحمى الأول، ماشي؟
+      ar: اغتسل أولًا، حسنًا؟
+      en: Have a bath first, OK?
+    answers: ['Adusa sik, ya.', 'Adusa sik, ya', Adusa sik ya., Adusa sik ya, 'Adusa dhisik, ya.', 'Adusa dhisik, ya', 'Adus sik, ya.', 'Adus sik, ya']
+    words: [adusa, sik]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Awakku pegel, aku mriyang.
+    answers_meaning:
+      ar_eg: [جسمي متكسّر، أنا سخن, جسمي واجعني وعندي سخونية]
+      ar: [جسمي متعب، وعندي حمّى, جسدي يؤلمني، أنا محموم]
+      en: ['My body aches, I have a fever', 'I''m sore all over and feverish']
+    words: [awak, pegel, mriyang]
+  - id: e11
+    type: dictation
+    text: Ndang ngombe obat.
+    meaning:
+      ar_eg: يلا اشرب الدوا بسرعة.
+      ar: اشرب الدواء بسرعة.
+      en: Hurry up and take your medicine.
+    words: [ndang, ngombe, obat]
+  - id: e12
+    type: speaking
+    text: Saben sore aku nyirami kembang.
+    meaning:
+      ar_eg: كل يوم العصر بسقي الورد.
+      ar: أسقي الزهور كل عصر.
+      en: Every afternoon I water the flowers.
+    words: [saben, nyirami, kembang]
+dialogue:
+  title: Saben dina neng Kairo
+  lines:
+    - speaker: Sari
+      text: Mohamed, neng Kairo saben dina kowe ngapa wae?
+      ar_eg: محمد، في القاهرة بتعمل إيه كل يوم؟
+      ar: يا محمد، ماذا تفعل كل يوم في القاهرة؟
+      en: Mohamed, what do you do every day in Cairo?
+    - speaker: Mohamed
+      text: Aku tangi jam lima, salat Subuh, sarapan.
+      ar_eg: بصحى الساعة خمسة، بصلي الصبح، وبفطر.
+      ar: أستيقظ في الخامسة، وأصلي الفجر، وأفطر.
+      en: I wake up at five, pray the dawn prayer, have breakfast.
+    - speaker: Mohamed
+      text: Jam wolu aku mangkat kuliah.
+      ar_eg: الساعة تمانية بنزل الجامعة.
+      ar: في الثامنة أنطلق إلى الجامعة.
+      en: At eight I set off for university.
+    - speaker: Sari
+      text: Sore?
+      ar_eg: والعصر؟
+      ar: وعصرًا؟
+      en: And in the afternoon?
+    - speaker: Mohamed
+      text: Sore aku sinau basa Jawa!
+      ar_eg: العصر بذاكر جاوي!
+      ar: عصرًا أدرس الجاوية!
+      en: In the afternoon I study Javanese!
+    - speaker: Sari
+      text: Apik! Aja lali turu, ya!
+      ar_eg: برافو! بس ماتنساش تنام!
+      ar: أحسنت! لكن لا تنسَ أن تنام!
+      en: Great! Don't forget to sleep, OK!
+souvenir:
+  id: j2.u05.souvenir
+  title: Telaga Sarangan
+  note:
+    ar_eg: 'بحيرة سارانجان على سفح جبل لاوو فوق ماجيتان، والجو هناك بارد ومنعش. وإنت ماشي حوالين البحيرة هتسمع الأمهات بيقولوا لعيالهم «Mangana sik, ya!» — والـ ya دي مش زيادة: الأمر الجاوي من غيرها بيبان ناشف، وبيها بيبقى حنين. دلوقتي تقدر تحكي يومك وتطلب بلطف، زي أهل البلد بالظبط.'
+    ar: 'تقع بحيرة سارانغان على سفح جبل لاوو فوق ماغيتان، وهواؤها بارد منعش. وحول البحيرة ستسمع الأمهات يقلن لأطفالهن «Mangana sik, ya!»، وليست ya زائدة: فالأمر الجاوي بدونها يبدو جافًّا، وبها يصير حانيًا. صار بوسعك أن تروي يومك وتطلب بلطف كأهل البلد تمامًا.'
+    en: 'Lake Sarangan sits on the slopes of Mount Lawu above Magetan, with cool, fresh air. Walking around it you''ll hear mothers telling their kids "Mangana sik, ya!" — and that ya isn''t extra: without it a Javanese command sounds harsh; with it, it sounds caring. You can now tell your day and ask kindly, just like the locals.'
+review:
+  status: draft
+  verified: false
