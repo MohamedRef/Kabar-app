@@ -56,7 +56,7 @@ pub fn scheduler_at(utc_offset_min: i16, settings: &Settings) -> Rc<Scheduler> {
 /// Review, Stats, the level check, Today and Kabar Pagi all use this.
 pub fn scheduler(coach: &Coach, store: &Store) -> Rc<Scheduler> {
     let settings = store.settings().unwrap_or_else(|e| {
-        eprintln!("kabar: reading settings for the scheduler failed: {e}");
+        crate::diag::report!("reading settings for the scheduler failed: {e}");
         Settings::default()
     });
     scheduler_at(coach.offset(), &settings)
@@ -108,7 +108,9 @@ pub fn use_optimizer(db: Db, ui: Ui, coach: Coach) {
                     };
                     ui.update_settings(&db, |s| s.fsrs = Some(params));
                 }
-                None => eprintln!("kabar: FSRS parameters not fitted (too little history or a fit error)"),
+                None => {
+                    crate::diag::report!("FSRS parameters not fitted (too little history or a fit error)")
+                }
             }
         });
     });

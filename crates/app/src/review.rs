@@ -134,7 +134,7 @@ pub(crate) fn deck(db: &Db, sched: &Rc<Scheduler>) -> Rc<Deck> {
     let stamp = match db.0.borrow().change_stamp() {
         Ok(stamp) => stamp,
         Err(e) => {
-            eprintln!("kabar: reading the store's change stamp failed: {e}");
+            crate::diag::report!("reading the store's change stamp failed: {e}");
             return Rc::new(read_deck(db, sched));
         }
     };
@@ -190,7 +190,7 @@ fn note_evidence_at(
     for (card, rating, evidence) in events {
         match store.record_evidence(&card, rating, now, evidence) {
             Ok(_) => recorded += 1,
-            Err(e) => eprintln!("kabar: recording {evidence:?} for {card} failed: {e}"),
+            Err(e) => crate::diag::report!("recording {evidence:?} for {card} failed: {e}"),
         }
     }
     recorded
