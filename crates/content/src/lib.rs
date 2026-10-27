@@ -8,6 +8,7 @@
 //! every grammar point a lesson teaches exists in the library, ...).
 //! `cargo test -p kabar-content` runs both over the whole repository.
 
+pub mod cast;
 pub mod lessons;
 pub mod model;
 
@@ -162,6 +163,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
         yaml_files(&dir, &mut files)?;
     }
     let mut lesson_values = BTreeMap::new();
+    let mut seen = cast::Appearances::default();
     for file in &files {
         let value = yaml_value(file)?;
         if let Some(v) = &lesson_validator {
@@ -169,6 +171,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
         }
         let lang = file.parent().and_then(Path::file_name).and_then(|s| s.to_str()).unwrap_or("");
         lessons::check_lesson(&file.display().to_string(), stem(file), lang, &value, &index, &mut problems);
+        seen.lesson(&file.display().to_string(), stem(file), &value);
         report.lessons.push(stem(file).to_owned());
         lesson_values.insert(stem(file).to_owned(), value);
     }
@@ -189,6 +192,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
     for file in &files {
         let value = yaml_value(file)?;
         lessons::check_test(&file.display().to_string(), stem(file), &value, &index, &mut problems);
+        seen.test(&file.display().to_string(), &value);
         report.tests.push(stem(file).to_owned());
     }
 
@@ -198,6 +202,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
         ("content/stories", lessons::check_story),
         ("content/radio", lessons::check_radio),
     ];
+    let mut personas = Vec::new();
     for (dir, check) in story_dirs {
         let mut files = Vec::new();
         if root.join(dir).exists() {
@@ -205,10 +210,29 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
         }
         for file in &files {
             let value = yaml_value(file)?;
-            check(&file.display().to_string(), stem(file), &value, &index, &mut problems);
+            let name = file.display().to_string();
+            check(&name, stem(file), &value, &index, &mut problems);
             report.stories.push(stem(file).to_owned());
+            match dir {
+                "content/personas" => {
+                    seen.persona(&name, &value);
+                    personas.push((name, value));
+                }
+                "content/stories" => seen.story(&name, &value),
+                _ => seen.radio(&name, &value),
+            }
         }
     }
+    let games = root.join("content/games/unggah-ungguh.toml");
+    if games.exists() {
+        seen.unggah_ungguh("content/games/unggah-ungguh.toml", &read(&games)?);
+    }
+    let optional = |path: &str| -> Result<Option<serde_json::Value>, LoadError> {
+        let path = root.join(path);
+        if path.exists() { yaml_value(&path).map(Some) } else { Ok(None) }
+    };
+    let (cast_file, pending) = (optional("content/cast.yaml")?, optional("content/pending.yaml")?);
+    cast::check(cast_file.as_ref(), pending.as_ref(), &personas, &seen, &index, &mut problems);
     report.problems.extend(problems);
     Ok(())
 }

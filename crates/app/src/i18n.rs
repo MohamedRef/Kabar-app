@@ -522,6 +522,7 @@ pub enum Msg {
     OcrWorking,
     OcrFailed,
     OcrUnavailable,
+    PickFailed,
     ScreenshotEmpty,
     SharedFrom,
     Close,
@@ -1905,9 +1906,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ReaderIntro, En) => {
             "Paste any Indonesian or Javanese text, or open a screenshot, and every word gets explained."
         }
-        (ReaderPlaceholder, ArEg) => "مثلاً: \u{2068}arp dicul piro\u{2069}",
-        (ReaderPlaceholder, Ar) => "مثال: \u{2068}arp dicul piro\u{2069}",
-        (ReaderPlaceholder, En) => "e.g. arp dicul piro",
+        (ReaderPlaceholder, ArEg) => "مثلاً: \u{2068}Saya sedang membaca buku.\u{2069}",
+        (ReaderPlaceholder, Ar) => "مثال: \u{2068}Saya sedang membaca buku.\u{2069}",
+        (ReaderPlaceholder, En) => "e.g. Saya sedang membaca buku.",
         (ReaderRead, ArEg) => "اقرا",
         (ReaderRead, Ar) => "اقرأ",
         (ReaderRead, En) => "Read",
@@ -2165,6 +2166,11 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (OcrUnavailable, ArEg) => "قراءة الصور لسه مش شغالة على الجهاز ده. الصق الكلام بدلها.",
         (OcrUnavailable, Ar) => "قراءة الصور غير متاحة على هذا الجهاز بعد. الصق النص بدلًا منها.",
         (OcrUnavailable, En) => "Reading images isn't available on this device yet. Paste the text instead.",
+        (PickFailed, ArEg) => "معرفتش أفتح الصورة دي. جرّب تختار سكرين شوت تاني، أو شيّرها لكبر من المعرض.",
+        (PickFailed, Ar) => "تعذّر فتح هذه الصورة. جرّب لقطة شاشة أخرى، أو شاركها مع كبر من المعرض.",
+        (PickFailed, En) => {
+            "Couldn't open that image. Try another screenshot, or share it to Kabar from your gallery."
+        }
         (ScreenshotEmpty, ArEg) => "ملقيتش كلام في الصورة دي.",
         (ScreenshotEmpty, Ar) => "لم أجد نصًا في الصورة.",
         (ScreenshotEmpty, En) => "No text found in that image.",

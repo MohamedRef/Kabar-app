@@ -168,8 +168,9 @@ Then on the device:
 2. **Selection menu:** select text in any app → ⋮ (more) → **Kabar**.
 3. **Screenshot:** take a screenshot → Share → **Kabar**. Kabar opens and reads the text in it (ML Kit, on-device).
 4. Share again while Kabar is already open: it comes to the front with the new item.
+5. **Open a screenshot inside Kabar:** Reader → **Open a screenshot** (افتح سكرين شوت) opens the system photo picker (no permission needed); pick a screenshot and Kabar reads it the same way as a shared one. Dragging an image onto the Reader works on the Mac only.
 
-`adb logcat -s KabarShare` shows why a share was ignored (e.g. an unreadable image).
+`adb logcat -s KabarShare KabarPick` shows why a share or a picked image was ignored (e.g. an unreadable image).
 
 ### Mac
 The Screenshot Decoder uses Apple Vision (built into macOS, nothing to install). It recognizes Indonesian when your macOS supports it and falls back to its general Latin model otherwise; language auto-correction is only on when Indonesian is supported, so Javanese and slang aren't "corrected" into English. Try it with `just run-mac` Reader → "Open a screenshot", or drag an image onto the Reader.

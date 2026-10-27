@@ -110,3 +110,37 @@ fn javanese_lessons_and_story_assets_exist() {
         assert!(report.stories.iter().any(|s| s == id), "missing {id}");
     }
 }
+
+/// The cast checks catch a reused name, an unlisted host and a unit that
+/// lost its episode.
+#[test]
+fn cast_checks_reject_orphans_and_name_clashes() {
+    use kabar_content::cast::{Appearances, check};
+    use kabar_content::lessons::Index;
+    use kabar_content::yaml_value;
+    use serde_json::json;
+
+    let report = check_repo(root()).expect("content files load");
+    let index = Index::new(&report.curricula, report.grammar.iter().map(|g| g.id.as_str()));
+    let cast = yaml_value(&root().join("content/cast.yaml")).expect("cast.yaml");
+    let pending = yaml_value(&root().join("content/pending.yaml")).expect("pending.yaml");
+    let mut seen = Appearances::default();
+    let line = |speaker: &str| json!({"lines": [{"speaker": speaker, "text": "Halo."}]});
+    seen.lesson("a.yaml", "bipa3.u02.l01", &line("Mbak Siti"));
+    seen.lesson("b.yaml", "bipa3.u02.l02", &line("Bu Siti"));
+    seen.radio("c.yaml", &json!({"unit": "bipa2.u06", "hosts": [{"name": "Kak Bima"}]}));
+    seen.story("d.yaml", &json!({"id": "sinetron.e01", "unlock_after": "bipa1.u02", "cast": ["Sari"]}));
+    let mut out = Vec::new();
+    check(Some(&cast), Some(&pending), &[], &seen, &index, &mut out);
+    for expected in [
+        "'Mbak Siti' (a.yaml) shares a name with bu-siti",
+        "'Kak Bima' (radio, c.yaml) must be listed",
+        "bipa2.u06 has its radio episode now",
+        "bipa1.u01 has no radio episode",
+        "bipa1.u01 has no sinetron episode",
+    ] {
+        assert!(out.iter().any(|p| p.contains(expected)), "expected '{expected}' in {out:#?}");
+    }
+    // The real Bu Siti is fine.
+    assert!(!out.iter().any(|p| p.contains("'Bu Siti'")), "{out:#?}");
+}

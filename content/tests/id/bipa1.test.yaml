@@ -44,8 +44,8 @@ sections:
     items:
       - id: t01
         type: listen
-        text: Selamat sore, Bu Sari.
-        options: ["Selamat malam, Bu Sari.", "Selamat sore, Bu Sari.", "Selamat siang, Bu Sari."]
+        text: Selamat sore, Bu Yanti.
+        options: ["Selamat malam, Bu Yanti.", "Selamat sore, Bu Yanti.", "Selamat siang, Bu Yanti."]
         answer: 1
         words: [selamat, sore]
       - id: t02
@@ -74,11 +74,11 @@ sections:
         words: [sebelah, kanan]
       - id: t06
         type: dictation
-        text: Apa kabar, Pak Budi?
+        text: Apa kabar, Pak Irwan?
         meaning:
-          ar_eg: إزيك يا أستاذ بودي؟
-          ar: كيف حالك يا أستاذ بودي؟
-          en: How are you, Pak Budi?
+          ar_eg: إزيك يا أستاذ إروان؟
+          ar: كيف حالك يا أستاذ إروان؟
+          en: How are you, Pak Irwan?
         words: [apa kabar]
       - id: t07
         type: dictation
@@ -103,16 +103,16 @@ sections:
         type: multiple_choice
         question: |
           FORMULIR PENDAFTARAN — Kursus Bahasa Indonesia
-          Nama lengkap: Dimas Pratama
+          Nama lengkap: Raka Pratama
           Kewarganegaraan: Indonesia
           Tanggal lahir: 14 Maret 2001
           Alamat: Jalan Cikini Raya 12, Jakarta
           Pekerjaan: mahasiswa
           Bahasa: Indonesia, Inggris
         question_meaning:
-          ar_eg: Dimas اتولد إمتى؟
-          ar: متى وُلد Dimas؟
-          en: When was Dimas born?
+          ar_eg: Raka اتولد إمتى؟
+          ar: متى وُلد Raka؟
+          en: When was Raka born?
         options: ["14 Maret 2001", "14 Mei 2001", "12 Maret 2001"]
         answer: 0
         words: [tanggal lahir]
@@ -120,16 +120,16 @@ sections:
         type: multiple_choice
         question: |
           FORMULIR PENDAFTARAN — Kursus Bahasa Indonesia
-          Nama lengkap: Dimas Pratama
+          Nama lengkap: Raka Pratama
           Kewarganegaraan: Indonesia
           Tanggal lahir: 14 Maret 2001
           Alamat: Jalan Cikini Raya 12, Jakarta
           Pekerjaan: mahasiswa
           Bahasa: Indonesia, Inggris
         question_meaning:
-          ar_eg: Dimas شغلته إيه؟
-          ar: ما عمل Dimas؟
-          en: What does Dimas do?
+          ar_eg: Raka شغلته إيه؟
+          ar: ما عمل Raka؟
+          en: What does Raka do?
         options: ["guru", "dokter", "mahasiswa"]
         answer: 2
         words: [pekerjaan, mahasiswa]
@@ -210,7 +210,7 @@ sections:
         question: |
           Hai Mohamed! Besok hari Sabtu. Saya dan Rina mau berenang di Ancol.
           Kamu mau ikut? Kita bertemu di depan stasiun jam sembilan pagi, ya.
-          — Dimas
+          — Raka
         question_meaning:
           ar_eg: هيتقابلوا فين؟
           ar: أين سيلتقون؟
@@ -223,11 +223,11 @@ sections:
         question: |
           Hai Mohamed! Besok hari Sabtu. Saya dan Rina mau berenang di Ancol.
           Kamu mau ikut? Kita bertemu di depan stasiun jam sembilan pagi, ya.
-          — Dimas
+          — Raka
         question_meaning:
-          ar_eg: Dimas و Rina عايزين يعملوا إيه يوم السبت؟
-          ar: ماذا يريد Dimas و Rina أن يفعلا يوم السبت؟
-          en: What do Dimas and Rina want to do on Saturday?
+          ar_eg: Raka و Rina عايزين يعملوا إيه يوم السبت؟
+          ar: ماذا يريد Raka و Rina أن يفعلا يوم السبت؟
+          en: What do Raka and Rina want to do on Saturday?
         options: ["membaca buku", "bermain bola", "berenang"]
         answer: 2
         words: [berenang, mau]
@@ -470,16 +470,16 @@ sections:
         type: writing_task
         points: 4
         prompt:
-          ar_eg: اكتب رسالة قصيرة (٤–٦ جمل) لصاحبك Dimas. قوله إنت فين دلوقتي وبتعمل إيه، واعزمه تتقابلوا بكرة (فين والساعة كام).
-          ar: اكتب رسالة قصيرة (٤–٦ جمل) إلى صديقك Dimas. أخبره أين أنت الآن وماذا تفعل، وادعُه إلى لقاء غدًا (أين وفي أيّ ساعة).
-          en: Write a short message (4–6 sentences) to your friend Dimas. Tell him where you are now and what you're doing, and invite him to meet tomorrow (where and at what time).
+          ar_eg: اكتب رسالة قصيرة (٤–٦ جمل) لصاحبك Raka. قوله إنت فين دلوقتي وبتعمل إيه، واعزمه تتقابلوا بكرة (فين والساعة كام).
+          ar: اكتب رسالة قصيرة (٤–٦ جمل) إلى صديقك Raka. أخبره أين أنت الآن وماذا تفعل، وادعُه إلى لقاء غدًا (أين وفي أيّ ساعة).
+          en: Write a short message (4–6 sentences) to your friend Raka. Tell him where you are now and what you're doing, and invite him to meet tomorrow (where and at what time).
         rubric:
-          - Greets Dimas and signs off (e.g. "Hai Dimas! … Salam, Mohamed").
+          - Greets Raka and signs off (e.g. "Hai Raka! … Salam, Mohamed").
           - Says where he is and what he is doing now (di …, sedang + verb).
           - Proposes a place and a time to meet tomorrow (besok, jam …, di depan / di …).
           - Short, clear BIPA 1 sentences with mostly correct word order and spelling; 4–6 sentences.
         sample: |
-          Hai Dimas! Sekarang saya di perpustakaan dekat Monas. Saya sedang membaca buku sejarah Jakarta.
+          Hai Raka! Sekarang saya di perpustakaan dekat Monas. Saya sedang membaca buku sejarah Jakarta.
           Besok saya mau ke Kota Tua. Kamu mau ikut? Kita bertemu di depan stasiun jam sembilan pagi, ya.
           Salam, Mohamed
         words: [sedang, besok, bertemu]
@@ -506,16 +506,16 @@ sections:
         type: speaking_task
         points: 4
         prompt:
-          ar_eg: عرّف بنفسك حوالي ٣ دقايق، كأنك بتقابل Pak Budi لأول مرة. قول اسمك، إنت منين، بتتكلم لغات إيه، بتشتغل إيه، عيلتك، يومك ماشي إزاي، هواياتك، ومكان رحته (أو عمرك ما رحته).
-          ar: عرّف بنفسك نحو ثلاث دقائق، كأنك تقابل Pak Budi أول مرة. اذكر اسمك، ومن أين أنت، واللغات التي تتكلمها، وعملك، وأسرتك، ويومك، وهواياتك، ومكانًا زرته (أو لم تزره قطّ).
-          en: Introduce yourself for about 3 minutes, as if meeting Pak Budi for the first time. Say your name, where you're from, the languages you speak, your job, your family, your day, your hobbies, and a place you have (or have never) visited.
+          ar_eg: عرّف بنفسك حوالي ٣ دقايق، كأنك بتقابل Pak Irwan لأول مرة. قول اسمك، إنت منين، بتتكلم لغات إيه، بتشتغل إيه، عيلتك، يومك ماشي إزاي، هواياتك، ومكان رحته (أو عمرك ما رحته).
+          ar: عرّف بنفسك نحو ثلاث دقائق، كأنك تقابل Pak Irwan أول مرة. اذكر اسمك، ومن أين أنت، واللغات التي تتكلمها، وعملك، وأسرتك، ويومك، وهواياتك، ومكانًا زرته (أو لم تزره قطّ).
+          en: Introduce yourself for about 3 minutes, as if meeting Pak Irwan for the first time. Say your name, where you're from, the languages you speak, your job, your family, your day, your hobbies, and a place you have (or have never) visited.
         rubric:
           - Covers at least five of the topics (name, origin, languages, job, family, routine, hobbies, an experience).
           - Uses BIPA 1 structures (no-copula sentences, possessives, meN- / ber- verbs, sudah / sedang / pernah, tidak / bukan).
           - Speaks in connected sentences that a patient listener understands; pauses and self-corrections are fine.
           - Uses a polite register (saya, Bapak) suitable for a first meeting.
         sample: |
-          Selamat pagi, Pak Budi. Nama saya Mohamed. Saya orang Mesir, dari Kairo. Saya bisa berbahasa Arab dan Inggris, dan sekarang saya belajar bahasa Indonesia.
+          Selamat pagi, Pak Irwan. Nama saya Mohamed. Saya orang Mesir, dari Kairo. Saya bisa berbahasa Arab dan Inggris, dan sekarang saya belajar bahasa Indonesia.
           Saya bekerja di kantor. Saya punya satu kakak dan dua adik. Setiap hari saya bangun jam enam pagi. Sesudah sarapan, saya pergi ke kantor naik bus.
           Saya suka membaca dan bermain sepak bola. Saya belum pernah ke Bali, tetapi saya sudah pernah ke Monas. Monas tinggi sekali! Terima kasih, Pak.
         words: [nama, orang, pernah, suka]
