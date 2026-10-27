@@ -288,6 +288,7 @@ pub fn AboutSection() -> Element {
                 "{ui.t(Msg::SettingsShowWelcome)}"
             }
         }
+        crate::update::view::UpdatesCard {}
     }
 }
 
