@@ -66,7 +66,7 @@ bakeoff-blind run:
 bakeoff-report run *args="":
     {{tools}} bakeoff report {{run}} {{args}}
 
-# Validate every content file (schemas, glosses, Bridge, speech levels, golden sets, pack manifests, README numbers); CI runs the same checks
+# Validate every content file (schemas, glosses, Bridge, speech levels, golden sets, pack manifests); CI runs the same checks
 content-check:
     {{tools}} validate
 
@@ -110,8 +110,10 @@ run-android device="":
 apk:
     rm -rf {{dist}}/android && mkdir -p {{dist}}/android
     cd {{app}} && dx bundle --platform android --release --package-types apk --target aarch64-linux-android --no-default-features --features mobile --out-dir ../../{{dist}}/android/raw
-    scripts/android-check-apk.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)"
-    scripts/android-sign.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)" "{{dist}}/android/kabar.apk" "{{keystore}}" "{{key_alias}}"
+    # dx leaves a debug build; rebuild it as a release (no debuggable, R8, versionCode).
+    apk="$(scripts/android-release-apk.sh)" && \
+      scripts/android-check-apk.sh "$apk" && \
+      scripts/android-sign.sh "$apk" "{{dist}}/android/kabar.apk" "{{keystore}}" "{{key_alias}}"
 
 # A release for your own devices (docs/RELEASE.md, only once everything is
 # done and the learner says go): every check, then

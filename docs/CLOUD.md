@@ -46,6 +46,7 @@ All JSON. Authenticated routes take `Authorization: Bearer <access_token>`. Erro
 | `GET /v1/vault` | which engines are configured (never the keys) |
 | `GET /v1/usage` | cost dashboard: `UsageReport { services: [ServiceUsage { service, unit, used, limit, period, resets_at_ms, enabled, configured }], platform: [PlatformLimit], spend_usd_cents: 0, hard_stops: true, generated_at_ms }` |
 | `POST /v1/ai` | `EngineCall` → `EngineReply` |
+| `POST /v1/ai/reject` | `{ cache_key }` → `204`: the learner gave 👎, so every model's copy of that answer leaves the shared `ai_cache` |
 | `POST /v1/tts` | `{ segments: [{ voice, text, pitch_percent? }], rate_percent }` → `audio/mpeg` |
 | `PUT /v1/blobs/{sha256}` | raw PNG or JPEG ≤ 1 MB whose SHA-256 is the name → `204`; kept 7 days in the account's Durable Object (no R2: it needs a card). `400` for a bad name, type or hash. A `/v1/ai` call with `image_sha256` reads it, `404 blob_missing` once it's gone, and runs on `WORKERS_AI_VISION_MODEL` (provisional until the bake-off), Gemini `inline_data` or a Claude image block |
 

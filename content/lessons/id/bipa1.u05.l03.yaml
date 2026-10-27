@@ -101,14 +101,15 @@ exercises:
     answers: ['Bagaimana liburanmu?', Bagaimana liburanmu, 'Bagaimana liburan kamu?', Bagaimana liburan kamu, 'Bagaimana liburan Anda?', 'Gimana liburanmu?', 'Gimana liburan kamu?']
     words: [bagaimana, liburan]
   - id: e05
-    type: translate
-    direction: from_target
-    source_text: Hari ini cuacanya panas.
-    answers_meaning:
-      ar_eg: [الجو حر النهارده., النهارده الجو حر, الجو النهارده حر]
-      ar: [الطقس حار اليوم., اليوم الطقس حار, الجو حار اليوم]
-      en: [The weather is hot today., It's hot today, Today the weather is hot]
-    words: [cuaca, panas]
+    type: listen
+    text: Pagi cerah, tapi sore hujan.
+    options: ['Pagi cerah, tapi sore hujan.', 'Pagi hujan, tapi sore cerah.', 'Pagi panas, tapi sore hujan.']
+    answer: 0
+    meaning:
+      ar_eg: الصبح صحو، بس العصر بتمطر.
+      ar: الصباح صحو، لكنها تمطر عصرًا.
+      en: The morning is clear, but it rains in the afternoon.
+    words: [cerah, hujan, panas]
   - id: e06
     type: match_pairs
     pairs:
@@ -130,13 +131,32 @@ exercises:
         en: rain
     words: [cuaca, cerah, panas, hujan]
   - id: e07
-    type: dictation
-    text: Bagaimana cuacanya?
+    type: fill_blank
+    sentence: Bagaimana kalau kita ke pantai? Cuacanya ___.
     meaning:
-      ar_eg: الجو عامل إزاي؟
-      ar: كيف الطقس؟
-      en: How's the weather?
-    words: [bagaimana, cuaca]
+      ar_eg: إيه رأيك نروح البحر؟ الجو صحو.
+      ar: ما رأيك أن نذهب إلى الشاطئ؟ الجو صحو.
+      en: How about going to the beach? The weather's clear.
+    options: [cerah, hujan, liburan]
+    answers: [cerah]
+    words: [bagaimana kalau, cuaca, cerah]
+  - id: e08
+    type: speaking
+    text: Gimana kalau kita berenang? Hari ini panas, tidak hujan.
+    meaning:
+      ar_eg: إيه رأيك نعوم؟ النهارده حر، ومفيش مطر.
+      ar: ما رأيك أن نسبح؟ اليوم حار ولا مطر.
+      en: How about a swim? It's hot today, no rain.
+    words: [gimana, panas, hujan]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقترح «إيه رأيك نروح البحر؟»
+      ar: كيف تقترح «ما رأيك أن نذهب إلى الشاطئ؟»
+      en: How do you suggest "How about going to the beach?"
+    options: ['Bagaimana kalau kita ke pantai?', 'Bagaimana liburanmu?', 'Gimana cuacanya?']
+    answer: 0
+    words: [bagaimana kalau, liburan, gimana, cuaca]
 dialogue:
   lines:
     - speaker: Ni Luh

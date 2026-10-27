@@ -12,15 +12,15 @@ slides:
       ar_eg: |
         - من ١١ لـ ١٩: الرقم + belas (زي «عشر» في «اتناشر»): dua belas = 12، tujuh belas = 17.
         - العشرات: الرقم + puluh: dua puluh = 20، dua puluh lima = 25.
-        - «واحد» قبلهم بتبقى se-: sebelas = 11، sepuluh = 10.
+        - «واحد» قبلهم بتبقى se-: sebelas = 11، sepuluh = 10. والصفر = nol.
       ar: |
         - من ١١ إلى ١٩: العدد + belas (كـ«عشر» في «اثنا عشر»): dua belas = 12، tujuh belas = 17.
         - العشرات: العدد + puluh: dua puluh = 20، dua puluh lima = 25.
-        - و«واحد» قبلها يصير se-: sebelas = 11، sepuluh = 10.
+        - و«واحد» قبلها يصير se-: sebelas = 11، sepuluh = 10. والصفر = nol.
       en: |
         - 11–19: number + belas (like Arabic «عشر» in «اثنا عشر»): dua belas = 12, tujuh belas = 17.
         - Tens: number + puluh: dua puluh = 20, dua puluh lima = 25.
-        - "One" before them becomes se-: sebelas = 11, sepuluh = 10.
+        - "One" before them becomes se-: sebelas = 11, sepuluh = 10. Zero is nol.
     grammar: id.number.cardinal
     examples:
       - text: lima belas
@@ -55,10 +55,10 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: lima
-        ar_eg: خمسة
-        ar: خمسة
-        en: five
+      - text: nol
+        ar_eg: صفر
+        ar: صفر
+        en: zero
       - text: sepuluh
         ar_eg: عشرة
         ar: عشرة
@@ -75,7 +75,11 @@ exercises:
         ar_eg: مية
         ar: مئة
         en: one hundred
-    words: [lima, sepuluh, sebelas, puluh, seratus]
+      - text: dua juta
+        ar_eg: اتنين مليون
+        ar: مليونان
+        en: two million
+    words: [nol, sepuluh, sebelas, puluh, seratus, juta]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -106,22 +110,26 @@ exercises:
   - id: e04
     type: multiple_choice
     question_meaning:
-      ar_eg: إزاي تقول ١٠٠؟
-      ar: كيف تقول ١٠٠؟
-      en: How do you say 100?
-    options: [satu ratus, seratus, sepuluh]
+      ar_eg: إزاي تقول مليون (١٬٠٠٠٬٠٠٠)؟
+      ar: كيف تقول مليونًا (١٬٠٠٠٬٠٠٠)؟
+      en: How do you say 1,000,000?
+    options: [satu juta, sejuta, seratus]
     answer: 1
     explain:
-      ar_eg: «واحد» قبل ratus بتبقى se-، يعني seratus. وsepuluh = ١٠.
-      ar: «واحد» قبل ratus يصير se-، فهي seratus، وsepuluh = ١٠.
-      en: '"One" before ratus becomes se-, so seratus; sepuluh is 10.'
-    words: [seratus]
+      ar_eg: «واحد» قبل juta بتبقى se- زي seratus وseribu، يعني sejuta. وseratus = ١٠٠.
+      ar: «واحد» قبل juta يصير se- كما في seratus وseribu، فهي sejuta، وseratus = ١٠٠.
+      en: '"One" before juta becomes se-, as in seratus and seribu, so sejuta; seratus is 100.'
+    words: [juta]
   - id: e05
     type: listen
-    text: tiga puluh lima ribu
-    options: [tiga puluh ribu, tiga puluh lima ribu, tiga ratus lima ribu]
-    answer: 1
-    words: [tiga, puluh, lima, ribu]
+    text: tiga belas ribu rupiah
+    options: [tiga belas ribu rupiah, tiga puluh ribu rupiah, tiga ratus ribu rupiah]
+    answer: 0
+    meaning:
+      ar_eg: ١٣٬٠٠٠ روبية
+      ar: ١٣٬٠٠٠ روبية
+      en: Rp13.000
+    words: [tiga, belas, ribu, rupiah]
   - id: e06
     type: fill_blank
     sentence: Rp15.000 = lima ___ ribu
@@ -134,17 +142,14 @@ exercises:
     words: [belas]
   - id: e07
     type: fill_blank
-    sentence: Rp1.000 = ___ rupiah
+    sentence: Rp2.000.000 = dua ___ rupiah
     meaning:
-      ar_eg: ألف روبية
-      ar: ألف روبية
-      en: one thousand rupiah
-    answers: [seribu]
-    explain:
-      ar_eg: «ألف واحد» = seribu، مش satu ribu.
-      ar: الألف الواحد = seribu لا satu ribu.
-      en: One thousand = seribu, not satu ribu.
-    words: [seribu]
+      ar_eg: اتنين مليون روبية
+      ar: مليونا روبية
+      en: two million rupiah
+    options: [juta, ribu, ratus]
+    answers: [juta]
+    words: [juta, rupiah]
   - id: e08
     type: build_sentence
     source:
@@ -155,22 +160,27 @@ exercises:
     distractors: [belas, ratus]
     words: [puluh, ribu, rupiah]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اكتب بالحروف — ٧٥٬٠٠٠ روبية
-      ar: اكتب بالحروف — ٧٥٬٠٠٠ روبية
-      en: Write in words — Rp75.000
-    answers: [tujuh puluh lima ribu rupiah, Tujuh puluh lima ribu rupiah., tujuh puluh lima ribu, Tujuh puluh lima ribu.]
-    words: [tujuh, puluh, lima, ribu]
+    type: listen
+    text: dua nol lima
+    options: [dua nol lima, dua puluh lima, dua ratus lima ribu]
+    answer: 0
+    meaning:
+      ar_eg: اتنين صفر خمسة (رقم بيتقري رقم رقم، زي رقم أوضة أو تليفون)
+      ar: اثنان صفر خمسة (يُقرأ رقمًا رقمًا، كرقم غرفة أو هاتف)
+      en: two-zero-five (read digit by digit, like a room or phone number)
+    explain:
+      ar_eg: أرقام الأوض والتليفونات بتتقري رقم رقم، والصفر = nol.
+      ar: أرقام الغرف والهواتف تُقرأ رقمًا رقمًا، والصفر = nol.
+      en: Room and phone numbers are read digit by digit, and 0 = nol.
+    words: [nol, puluh, ratus]
   - id: e10
     type: dictation
-    text: dua belas ribu lima ratus
+    text: nol, sepuluh, seratus, seribu
     meaning:
-      ar_eg: ١٢٬٥٠٠
-      ar: ١٢٬٥٠٠
-      en: 12,500
-    words: [belas, ribu, ratus]
+      ar_eg: ٠، ١٠، ١٠٠، ١٠٠٠
+      ar: ٠، ١٠، ١٠٠، ١٠٠٠
+      en: 0, 10, 100, 1,000
+    words: [nol, ratus, ribu]
 dialogue:
   lines:
     - speaker: Kasir

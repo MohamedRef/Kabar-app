@@ -21,6 +21,7 @@ use kabar_protocol::lesson::{
 };
 
 use self::text::{L, lt};
+use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::platform::{self, TtsStatus};
 use crate::pron::Pron;
@@ -552,36 +553,137 @@ fn RichRuns(text: String, target: &'static str, pron: bool) -> Element {
         (s.ui_language, s.eastern_digits)
     };
     let dir = if lang.dir() == kabar_core::locale::Direction::Rtl { "rtl" } else { "ltr" };
-    let run = move |key: String, latin: bool, run: String| {
-        if latin {
-            rsx! {
-                bdi { key: "{key}", lang: target, dir: "ltr", class: "latin", "{run}" }
-                // Slides teach words inside Arabic sentences: say each one right there.
-                if pron && lang != UiLanguage::En && is_target_run(&run) {
-                    Pron { key: "p{key}", text: run.clone(), tag: target, inline: true }
-                }
-            }
-        } else {
-            rsx! { span { key: "{key}", "{localize_digits(&run, lang, eastern)}" } }
-        }
-    };
-    rsx! {
-        for (i, piece) in bracket_groups(latin_runs(&text)).into_iter().enumerate() {
-            match piece {
-                Piece::Run(latin, text) => run(format!("{i}"), latin, text),
-                Piece::Group(runs) => {
-                    let short = runs.iter().map(|(_, r)| r.chars().count()).sum::<usize>() <= 28;
-                    rsx! {
-                        span { key: "{i}", dir, class: if short { "bidi-group nowrap" } else { "bidi-group" },
-                            for (j, (latin, text)) in runs.into_iter().enumerate() {
-                                {run(format!("{i}.{j}"), latin, text)}
+    // Slides teach words inside Arabic sentences: say each one right there.
+    let say = pron && lang != UiLanguage::En;
+    let runs = move |key: String, runs: Vec<(bool, String)>| {
+        rsx! {
+            for (j , unit) in pron_units(runs, target, say).into_iter().enumerate() {
+                match unit {
+                    Unit::Plain(t) => rsx! {
+                        span { key: "{key}.{j}", "{localize_digits(&t, lang, eastern)}" }
+                    },
+                    Unit::Latin { phrases, close, short } => {
+                        let last = phrases.len().saturating_sub(1);
+                        rsx! {
+                            // The phrase, its closing quote and its pronunciation
+                            // stay together; a short one stays on one line.
+                            span { key: "{key}.{j}", class: if short { "pron-unit nowrap" } else { "pron-unit" },
+                                bdi { lang: target, dir: "ltr", class: "latin",
+                                    for (k , ph) in phrases.iter().enumerate() {
+                                        span { key: "{k}",
+                                            "{ph.text}"
+                                            if ph.say && (k < last || close.is_empty()) {
+                                                Pron { text: ph.text.clone(), tag: target, inline: true }
+                                            }
+                                            "{ph.sep}"
+                                        }
+                                    }
+                                }
+                                if !close.is_empty() {
+                                    span { "{close}" }
+                                    if phrases.get(last).is_some_and(|p| p.say) {
+                                        Pron { text: phrases[last].text.clone(), tag: target, inline: true }
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
         }
+    };
+    rsx! {
+        for (i, piece) in bracket_groups(latin_runs(&text)).into_iter().enumerate() {
+            match piece {
+                Piece::Run(latin, text) => runs(format!("{i}"), vec![(latin, text)]),
+                Piece::Group(g) => {
+                    let short = g.iter().map(|(_, r)| r.chars().count()).sum::<usize>() <= 28;
+                    rsx! {
+                        span { key: "{i}", dir, class: if short { "bidi-group nowrap" } else { "bidi-group" },
+                            {runs(format!("{i}"), g)}
+                        }
+                    }
+                }
+            }
+        }
     }
+}
+
+/// One phrase of a Latin run ("Selamat pagi" in "Selamat pagi → Sugeng
+/// enjing"), whether to say it, and the separator after it.
+#[derive(Debug, PartialEq)]
+struct Phrase {
+    text: String,
+    say: bool,
+    sep: String,
+}
+
+/// What a slide line is drawn from: UI-language text, or a Latin run split
+/// into phrases with the closing quote or bracket that ends it.
+#[derive(Debug, PartialEq)]
+enum Unit {
+    Plain(String),
+    Latin { phrases: Vec<Phrase>, close: String, short: bool },
+}
+
+const CLOSERS: &[char] = &['»', '"', '”', ')'];
+const SEPARATORS: &[&str] = &[" → ", " ↔ ", " = ", " / ", " · "];
+
+/// Splits runs into units: each Latin run takes the closing punctuation
+/// straight after it (so «selamat jalan» isn't split by its pronunciation),
+/// and mapping lines ("A → B") get one pronunciation per side. On Javanese
+/// slides the Indonesian side isn't said: the learner knows it from BIPA.
+fn pron_units(runs: Vec<(bool, String)>, target: &str, say: bool) -> Vec<Unit> {
+    let mut out = Vec::new();
+    let mut runs = runs.into_iter().peekable();
+    while let Some((latin, text)) = runs.next() {
+        if !latin {
+            out.push(Unit::Plain(text));
+            continue;
+        }
+        let mut close = String::new();
+        if let Some((false, next)) = runs.peek_mut() {
+            let n: usize = next.chars().take_while(|c| CLOSERS.contains(c)).map(char::len_utf8).sum();
+            close = next[..n].to_string();
+            next.replace_range(..n, "");
+        }
+        let short = text.split_whitespace().count() <= 3;
+        let phrases = split_phrases(&text)
+            .into_iter()
+            .map(|(t, sep)| Phrase {
+                say: say && is_target_run(&t) && !(target == "jv" && is_indonesian(&t)),
+                text: t,
+                sep,
+            })
+            .collect();
+        out.push(Unit::Latin { phrases, close, short });
+        if let Some((false, next)) = runs.peek()
+            && next.is_empty()
+        {
+            runs.next();
+        }
+    }
+    out
+}
+
+/// "Selamat pagi → Sugeng enjing" → [("Selamat pagi", " → "), ("Sugeng enjing", "")].
+fn split_phrases(text: &str) -> Vec<(String, String)> {
+    let mut out = Vec::new();
+    let mut rest = text;
+    while let Some((at, sep)) = SEPARATORS.iter().filter_map(|s| rest.find(s).map(|i| (i, *s))).min() {
+        out.push((rest[..at].to_string(), sep.to_string()));
+        rest = &rest[at + sep.len()..];
+    }
+    out.push((rest.to_string(), String::new()));
+    out
+}
+
+/// Every word of the phrase reads as Indonesian (the engine's guess).
+fn is_indonesian(phrase: &str) -> bool {
+    use kabar_core::lang::Lang;
+    let tokens = crate::reader::doc::engine().analyze(phrase);
+    let mut words = tokens.iter().filter(|t| t.token.is_wordlike()).peekable();
+    words.peek().is_some() && words.all(|t| t.lang.lang == Lang::Indonesian)
 }
 
 /// A run of [`latin_runs`] output, or a bracketed group that mixes the UI
@@ -1163,9 +1265,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                                 },
                                 span { class: "lp-example-icon", {speaker_icon()} }
                                 span { class: "lp-example-text",
-                                    bdi { lang: target, dir: "ltr", class: "latin lp-target", "{ex.text}" }
-                                    Pron { text: ex.text.clone(), tag: target }
-                                    span { class: "muted", Rich { text: pick(&ex.meaning, lang).to_string(), target } }
+                                    Annotated { text: ex.text.clone(), tag: target, meaning: pick(&ex.meaning, lang).to_string(), class: "lp-target" }
                                 }
                             }
                         }
@@ -1201,9 +1301,7 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
                                 move |_| speak_line(&d, i, &l, missing)
                             },
                             span { class: "lp-speaker", bdi { "{line.speaker}" } }
-                            bdi { lang: target, dir: "ltr", class: "latin lp-target", "{line.text}" }
-                            Pron { text: line.text.clone(), tag: target }
-                            span { class: "muted", Rich { text: pick(&line.meaning, lang).to_string(), target } }
+                            Annotated { text: line.text.clone(), tag: target, meaning: pick(&line.meaning, lang).to_string(), class: "lp-target" }
                         }
                     }
                 }
@@ -1258,8 +1356,7 @@ fn SummaryView(
                     ul { class: "lp-words",
                         for w in lesson.new_words.iter() {
                             li { key: "{w.word}", class: if w.arabic.is_some() { "bridge-row" } else { "" },
-                                bdi { lang: target, dir: "ltr", class: if w.arabic.is_some() { "latin bridge-word" } else { "latin" }, "{w.word}" }
-                                Pron { text: w.word.clone(), tag: target }
+                                Annotated { text: w.word.clone(), tag: target, class: if w.arabic.is_some() { "bridge-word" } else { "" } }
                                 span { class: "muted", Rich { text: pick(&w.meaning, lang).to_string(), target } }
                                 if let Some(ar) = &w.arabic {
                                     span { class: "lp-bridge", title: lt(lang, L::FromArabic),
@@ -1376,14 +1473,14 @@ fn Feedback(
                 },
                 Grade::Almost { expected } => rsx! {
                     p { class: "lp-verdict", "{lt(lang, L::Almost)}" }
-                    p { bdi { lang: target, dir: "ltr", class: "lp-answer latin", "{expected}" } }
-                    Pron { text: expected.clone(), tag: target }
+                    p { Annotated { text: expected.clone(), tag: target, class: "lp-answer" } }
                 },
                 Grade::Wrong => rsx! {
                     p { class: "lp-verdict", "{lt(lang, L::NotYet)}" }
-                    p { bdi { lang: answer_tag, dir: if answer_tag == target { "ltr" } else { "auto" }, class: "lp-answer", "{answer}" } }
                     if answer_tag == target {
-                        Pron { text: answer.clone(), tag: target }
+                        p { Annotated { text: answer.clone(), tag: target, class: "lp-answer" } }
+                    } else {
+                        p { bdi { lang: answer_tag, dir: "auto", class: "lp-answer", "{answer}" } }
                     }
                     if !retry {
                         p { class: "muted lp-small", "{lt(lang, L::AgainAtEnd)}" }
@@ -1406,8 +1503,7 @@ fn Feedback(
             if let Some(t) = transcript {
                 p { class: "lp-small",
                     span { class: "muted", "{lt(lang, L::Transcript)} " }
-                    bdi { lang: target, dir: "ltr", class: "latin lp-target", "{t}" }
-                    Pron { text: t.clone(), tag: target }
+                    Annotated { text: t.clone(), tag: target, class: "lp-target" }
                 }
             }
             if let Some(m) = meaning {
@@ -1880,6 +1976,33 @@ mod tests {
         let runs = latin_runs("- Menurut X, … = على حسب X …");
         assert_eq!(runs[1], (true, "Menurut X, …".into()));
         assert_eq!(runs[3], (true, "X …".into()));
+    }
+
+    #[test]
+    fn pronunciation_follows_the_closing_quote() {
+        let units = pron_units(latin_runs("«selamat jalan» لما تمشي"), "id", true);
+        assert_eq!(units[0], Unit::Plain("«".into()));
+        let Unit::Latin { phrases, close, short } = &units[1] else { panic!("{units:?}") };
+        assert_eq!((phrases[0].text.as_str(), close.as_str(), *short), ("selamat jalan", "»", true));
+        assert!(phrases[0].say);
+        assert_eq!(units[2], Unit::Plain(" لما تمشي".into()));
+    }
+
+    #[test]
+    fn mapping_lines_say_each_side_and_skip_indonesian_on_javanese_slides() {
+        let units = pron_units(latin_runs("- Selamat pagi → Sugeng enjing (صباح الخير)"), "jv", true);
+        let latin = units.iter().find_map(|u| match u {
+            Unit::Latin { phrases, .. } => Some(phrases),
+            Unit::Plain(_) => None,
+        });
+        let phrases = latin.unwrap();
+        let said: Vec<(&str, bool)> = phrases.iter().map(|p| (p.text.as_str(), p.say)).collect();
+        assert_eq!(said, [("Selamat pagi", false), ("Sugeng enjing", true)]);
+        assert_eq!(phrases[0].sep, " → ");
+        // On Indonesian slides both sides are said.
+        let units = pron_units(vec![(true, "ora ↔ tidak".into())], "id", true);
+        let Unit::Latin { phrases, .. } = &units[0] else { panic!() };
+        assert!(phrases.iter().all(|p| p.say));
     }
 
     #[test]

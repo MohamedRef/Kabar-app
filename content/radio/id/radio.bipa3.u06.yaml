@@ -1,0 +1,116 @@
+schema: kabar.radio/v1
+id: radio.bipa3.u06
+language: id
+level: bipa3
+unit: bipa3.u06
+title:
+  target: Dengan hormat, AC kamar saya rusak
+  ar_eg: مع الاحترام، التكييف في أوضتي بايظ
+  ar: مع الاحترام، مكيّف غرفتي معطّل
+  en: Dear Sir, my room's air conditioning is broken
+hosts:
+  - name: Kak Tiara
+    voice: id-ID-GadisNeural
+  - name: Kak Reza
+    voice: id-ID-ArdiNeural
+minutes: 5
+segments:
+  - kind: intro
+    title: Panas di Mandalika
+    lines:
+      - {speaker: Kak Tiara, text: "Selamat siang dari Kuta Mandalika, di Lombok selatan! Ini Kabar Radio. Saya Tiara.", ar_eg: "نهارك سعيد من كوتا مانداليكا، في جنوب لومبوك! ده كبار راديو. أنا تيارا.", ar: "طاب يومك من كوتا مانداليكا، في جنوب لومبوك! هذا كبار راديو. أنا تيارا.", en: "Good afternoon from Kuta Mandalika, in south Lombok! This is Kabar Radio. I'm Tiara."}
+      - {speaker: Kak Reza, text: "Saya Reza. Aduh, panas sekali, dan AC di kamar hotel saya rusak.", ar_eg: "أنا رضا. آه، الحر نار، والتكييف في أوضتي في الأوتيل بايظ.", ar: "أنا رضا. آه، الجو حار جدًا، ومكيّف غرفتي في الفندق معطّل.", en: "I'm Reza. Ugh, it's so hot, and the AC in my hotel room is broken."}
+      - {speaker: Kak Tiara, text: "Kasihan! Ayo kita belajar mengeluh dengan sopan.", ar_eg: "يا حرام! يلا نتعلم نشتكي بأدب.", ar: "يا للمسكين! هيا نتعلم كيف نشتكي بأدب.", en: "Poor you! Let's learn to complain politely."}
+      - speaker: Kak Reza
+        text: "Di Indonesia, keluhan selalu sopan. Kita mulai dengan 'mohon maaf sebelumnya'."
+        ar_eg: "في إندونيسيا الشكوى دايمًا مؤدبة. بنبدأ بـ«متآخذنيش مقدمًا»."
+        ar: "في إندونيسيا تبقى الشكوى مهذبة دائمًا. نبدأ بـ«أعتذر مسبقًا»."
+        en: "In Indonesia complaints stay polite. We start with 'sorry in advance'."
+        note:
+          ar_eg: "الشكوى الإندونيسي غير مباشرة. لو زعّقت هتخسر، ولو اتكلمت بأدب هتاخد حقك أسرع."
+          ar: "الشكوى الإندونيسية غير مباشرة؛ الصراخ يضرّك، والأدب يوصلك إلى حقك أسرع."
+          en: "Indonesian complaints are indirect; shouting backfires, politeness gets results faster."
+      - {speaker: Kak Tiara, text: "Mohamed, pernahkah kamu mengeluh di hotel atau di toko?", ar_eg: "يا محمد، اشتكيت قبل كده في أوتيل أو محل؟", ar: "يا محمد، هل اشتكيت يومًا في فندق أو متجر؟", en: "Mohamed, have you ever complained at a hotel or a shop?"}
+  - kind: dialogue
+    title: Di meja resepsionis
+    lines:
+      - speaker: Kak Tiara
+        text: "Saya jadi resepsionisnya. Silakan, Pak."
+        ar_eg: "أنا هبقى موظفة الاستقبال. اتفضل يا أستاذ."
+        ar: "سأكون موظفة الاستقبال. تفضل يا سيدي."
+        en: "I'll be the receptionist. Go ahead, sir."
+        note:
+          ar_eg: "مشهد تمثيلي في استقبال الأوتيل."
+          ar: "مشهد تمثيلي عند مكتب الاستقبال."
+          en: "A role-play at the hotel front desk."
+      - {speaker: Kak Reza, text: "Selamat siang, Mbak. Mohon maaf sebelumnya, saya ingin menyampaikan keluhan.", ar_eg: "نهارك سعيد. متآخذنيش مقدمًا، عايز أقدّم شكوى.", ar: "طاب يومك. أعتذر مسبقًا، أودّ أن أقدّم شكوى.", en: "Good afternoon. Sorry in advance, I'd like to make a complaint."}
+      - {speaker: Kak Tiara, text: "Tentu, Pak. Ada masalah apa?", ar_eg: "طبعًا يا أستاذ. فيه مشكلة إيه؟", ar: "بالطبع يا سيدي. ما المشكلة؟", en: "Of course, sir. What's the problem?"}
+      - {speaker: Kak Reza, text: "AC di kamar 204 tidak dingin sejak semalam. Saya tidak bisa tidur.", ar_eg: "التكييف في أوضة 204 مش بيبرّد من امبارح بالليل. معرفتش أنام.", ar: "مكيّف الغرفة 204 لا يبرّد منذ الليلة الماضية، ولم أستطع النوم.", en: "The AC in room 204 hasn't been cooling since last night. I couldn't sleep."}
+      - {speaker: Kak Tiara, text: "Mohon maaf atas ketidaknyamanannya, Pak. Teknisi kami akan memeriksanya secepatnya.", ar_eg: "آسفين جدًا على الإزعاج يا أستاذ. الفني بتاعنا هيكشف عليه في أسرع وقت.", ar: "نعتذر عن الإزعاج يا سيدي. سيفحصه فنيّنا في أسرع وقت.", en: "We apologise for the inconvenience, sir. Our technician will check it as soon as possible."}
+      - {speaker: Kak Reza, text: "Terima kasih. Selain itu, air panas di kamar mandi juga tidak keluar.", ar_eg: "شكرًا. وكمان المية السخنة في الحمام مش بتنزل.", ar: "شكرًا. إضافة إلى ذلك، لا يخرج الماء الساخن في الحمام.", en: "Thank you. Also, there's no hot water in the bathroom."}
+      - {speaker: Kak Tiara, text: "Baik. Sebaiknya Bapak pindah ke kamar lain. Ada kamar yang sebesar kamar Bapak di lantai tiga.", ar_eg: "تمام. الأحسن تنقل أوضة تانية. فيه أوضة قد أوضتك بالظبط في الدور التالت.", ar: "حسنًا. الأفضل أن تنتقل إلى غرفة أخرى. هناك غرفة بحجم غرفتك في الطابق الثالث.", en: "All right. It's better if you move to another room. There's one as big as yours on the third floor."}
+      - {speaker: Kak Reza, text: "Apakah kamarnya sebersih kamar saya sekarang?", ar_eg: "الأوضة دي نضيفة زي أوضتي دلوقتي؟", ar: "هل هي نظيفة بقدر غرفتي الحالية؟", en: "Is it as clean as my room now?"}
+      - {speaker: Kak Tiara, text: "Lebih bersih, Pak, dan pemandangannya ke laut. Sebagai permintaan maaf, sarapan besok gratis.", ar_eg: "أنضف كمان يا أستاذ، والمنظر على البحر. وعشان نعتذر، فطار بكرة مجانًا.", ar: "أنظف يا سيدي، وتطلّ على البحر. واعتذارًا منّا، فطور الغد مجاني.", en: "Cleaner, sir, with a sea view. As an apology, breakfast tomorrow is free."}
+      - {speaker: Kak Reza, text: "Wah, terima kasih banyak atas bantuannya.", ar_eg: "الله، شكرًا جزيلًا على المساعدة.", ar: "شكرًا جزيلًا على مساعدتكم.", en: "Oh, thank you very much for your help."}
+      - {speaker: Kak Tiara, text: "Kembali, Pak. Kalau ada masalah lagi, silakan hubungi kami.", ar_eg: "العفو يا أستاذ. لو فيه أي مشكلة تانية، كلّمنا.", ar: "عفوًا يا سيدي. إن واجهتك مشكلة أخرى فاتصل بنا.", en: "You're welcome, sir. If there's any other problem, please contact us."}
+      - {speaker: Kak Reza, text: "Kak Tiara, kalau masalahnya besar, saya menulis surat keluhan, kan?", ar_eg: "يا تيارا، لو المشكلة كبيرة، أكتب جواب شكوى، صح؟", ar: "يا تيارا، إن كانت المشكلة كبيرة فأكتب رسالة شكوى، أليس كذلك؟", en: "Tiara, if the problem's big, I write a complaint letter, right?"}
+      - {speaker: Kak Tiara, text: "Betul. Mulai dengan 'Dengan hormat', lalu jelaskan masalahnya, dan akhiri dengan 'Atas perhatiannya, saya ucapkan terima kasih'.", ar_eg: "مظبوط. ابدأ بـ«مع الاحترام»، واشرح المشكلة، واختم بـ«شاكر اهتمامكم».", ar: "صحيح. ابدأ بـ«مع الاحترام»، ثم اشرح المشكلة، واختم بـ«شكرًا على اهتمامكم».", en: "Right. Start with 'Dengan hormat', explain the problem, and end with 'Thank you for your attention'."}
+  - kind: word_spotlight
+    title: Seminggu, setinggi, secepatnya
+    lines:
+      - speaker: Kak Reza
+        text: "Se- berarti satu. Sebuah kamar, seorang teknisi, seminggu, sehari."
+        ar_eg: "se- معناها واحد. أوضة واحدة، فني واحد، أسبوع، يوم."
+        ar: "se- تعني واحد. غرفة واحدة، فني واحد، أسبوع، يوم."
+        en: "Se- means one. A room, a technician, a week, a day."
+      - speaker: Kak Tiara
+        text: "Se- berarti sama. Sebesar, sebersih, setinggi. Kamar ini sebesar kamar Bapak."
+        ar_eg: "se- معناها كمان «قد». قد كده كبير، قد كده نضيف، قد كده عالي. الأوضة دي قد أوضتك."
+        ar: "se- تعني أيضًا «بقدر». بحجم، بنظافة، بارتفاع. هذه الغرفة بحجم غرفتك."
+        en: "Se- also means 'as ... as'. As big, as clean, as tall. This room is as big as yours."
+        note:
+          ar_eg: "se + صفة + الحاجة التانية: Dia setinggi ayahnya = هو طويل قد أبوه."
+          ar: "se + صفة + المقارَن به: Dia setinggi ayahnya = هو بطول أبيه."
+          en: "Se + adjective + thing compared: Dia setinggi ayahnya = he's as tall as his father."
+      - {speaker: Kak Reza, text: "Secepatnya, sebaiknya, sebenarnya. Sebaiknya Bapak pindah kamar.", ar_eg: "في أسرع وقت، الأحسن، في الحقيقة. الأحسن تنقل أوضة.", ar: "في أسرع وقت، الأفضل، في الحقيقة. الأفضل أن تنتقل إلى غرفة أخرى.", en: "As soon as possible, it's best, actually. You'd better change rooms."}
+      - {speaker: Kak Tiara, text: "Mohon maaf atas ketidaknyamanannya. Kalimat ini ada di setiap hotel!", ar_eg: "آسفين على الإزعاج. الجملة دي في كل أوتيل!", ar: "نعتذر عن الإزعاج. هذه الجملة في كل فندق!", en: "We apologise for the inconvenience. Every hotel says this!"}
+      - {speaker: Kak Reza, text: "Keluhan, permintaan maaf, ganti rugi, uang kembali.", ar_eg: "شكوى، اعتذار، تعويض، استرجاع فلوس.", ar: "شكوى، اعتذار، تعويض، استرداد المال.", en: "Complaint, apology, compensation, refund."}
+  - kind: recap
+    title: Ulangi, ya!
+    lines:
+      - speaker: Kak Tiara
+        text: "Mohon maaf sebelumnya, saya ingin menyampaikan keluhan."
+        ar_eg: "متآخذنيش مقدمًا، عايز أقدّم شكوى."
+        ar: "أعتذر مسبقًا، أودّ أن أقدّم شكوى."
+        en: "Sorry in advance, I'd like to make a complaint."
+        note:
+          ar_eg: "كرر ورانا كل جملة."
+          ar: "ردّد كل جملة بعدنا."
+          en: "Repeat each sentence after us."
+      - {speaker: Kak Reza, text: "Mohon maaf sebelumnya, saya ingin menyampaikan keluhan.", ar_eg: "متآخذنيش مقدمًا، عايز أقدّم شكوى.", ar: "أعتذر مسبقًا، أودّ أن أقدّم شكوى.", en: "Sorry in advance, I'd like to make a complaint."}
+      - {speaker: Kak Tiara, text: "AC di kamar saya tidak dingin sejak semalam.", ar_eg: "التكييف في أوضتي مش بيبرّد من امبارح بالليل.", ar: "مكيّف غرفتي لا يبرّد منذ الليلة الماضية.", en: "The AC in my room hasn't been cooling since last night."}
+      - {speaker: Kak Reza, text: "AC di kamar saya tidak dingin sejak semalam.", ar_eg: "التكييف في أوضتي مش بيبرّد من امبارح بالليل.", ar: "مكيّف غرفتي لا يبرّد منذ الليلة الماضية.", en: "The AC in my room hasn't been cooling since last night."}
+      - {speaker: Kak Tiara, text: "Mohon maaf atas ketidaknyamanannya.", ar_eg: "آسفين على الإزعاج.", ar: "نعتذر عن الإزعاج.", en: "We apologise for the inconvenience."}
+      - {speaker: Kak Reza, text: "Mohon maaf atas ketidaknyamanannya.", ar_eg: "آسفين على الإزعاج.", ar: "نعتذر عن الإزعاج.", en: "We apologise for the inconvenience."}
+      - {speaker: Kak Tiara, text: "Kamar ini sebersih kamar saya.", ar_eg: "الأوضة دي نضيفة قد أوضتي.", ar: "هذه الغرفة نظيفة بقدر غرفتي.", en: "This room is as clean as mine."}
+      - {speaker: Kak Reza, text: "Kamar ini sebersih kamar saya.", ar_eg: "الأوضة دي نضيفة قد أوضتي.", ar: "هذه الغرفة نظيفة بقدر غرفتي.", en: "This room is as clean as mine."}
+  - kind: outro
+    title: Keluhan Mohamed
+    lines:
+      - speaker: Kak Tiara
+        text: "Mohamed, pesananmu dari toko daring datang, tapi barangnya rusak. Apa yang kamu katakan kepada penjual?"
+        ar_eg: "يا محمد، طلبك من محل أونلاين وصل، بس الحاجة بايظة. هتقول إيه للبياع؟"
+        ar: "يا محمد، وصل طلبك من متجر إلكتروني لكن السلعة تالفة. ماذا تقول للبائع؟"
+        en: "Mohamed, your online order arrived, but the item is broken. What do you say to the seller?"
+        note:
+          ar_eg: "دورك! ابدأ بالأدب، اشرح المشكلة، واطلب حل."
+          ar: "دورك! ابدأ بلطف، واشرح المشكلة، واطلب حلًّا."
+          en: "Your turn! Open politely, explain the problem, ask for a solution."
+      - {speaker: Kak Reza, text: "Contohnya: Mohon maaf sebelumnya, Kak. Gelas yang saya terima pecah. Apakah saya bisa mendapat uang kembali?", ar_eg: "مثلًا: متآخذنيش مقدمًا. الكوباية اللي وصلتني مكسورة. ممكن أسترجع فلوسي؟", ar: "مثلًا: أعتذر مسبقًا. الكأس الذي وصلني مكسور. هل يمكنني استرداد المال؟", en: "For example: Sorry in advance. The glass I received is broken. Could I get a refund?"}
+      - {speaker: Kak Tiara, text: "Besok, tulis surat keluhan pendek. Mulai dengan 'Dengan hormat'.", ar_eg: "بكرة، اكتب جواب شكوى قصير. ابدأ بـ«مع الاحترام».", ar: "غدًا، اكتب رسالة شكوى قصيرة. ابدأ بـ«مع الاحترام».", en: "Tomorrow, write a short complaint letter. Start with 'Dengan hormat'."}
+      - {speaker: Kak Reza, text: "Terima kasih, Mohamed. Sekarang saya mau tidur di kamar yang dingin!", ar_eg: "شكرًا يا محمد. دلوقتي عايز أنام في أوضة ساقعة!", ar: "شكرًا يا محمد. الآن أريد أن أنام في غرفة باردة!", en: "Thank you, Mohamed. Now I want to sleep in a cool room!"}
+      - {speaker: Kak Tiara, text: "Sampai jumpa besok di Kabar Radio!", ar_eg: "أشوفكم بكرة في كبار راديو!", ar: "إلى اللقاء غدًا في كبار راديو!", en: "See you tomorrow on Kabar Radio!"}
+words: [keluhan, mohon maaf sebelumnya, ketidaknyamanan, dengan hormat, sebuah, seorang, seminggu, sebesar, sebersih, secepatnya, sebaiknya, ganti rugi]
+review:
+  status: draft
+  verified: false

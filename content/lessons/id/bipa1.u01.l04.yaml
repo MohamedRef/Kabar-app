@@ -77,11 +77,15 @@ exercises:
         ar_eg: إنت (مع الصحاب)
         ar: أنت (ودّية)
         en: you (casual)
-      - text: dia
-        ar_eg: هو / هي
-        ar: هو / هي
-        en: he / she
-    words: [saya, aku, kamu]
+      - text: Anda
+        ar_eg: حضرتك (رسمي)
+        ar: حضرتك (رسمية)
+        en: you (formal)
+      - text: hai
+        ar_eg: هاي، أهلًا
+        ar: مرحبًا
+        en: hi
+    words: [saya, aku, kamu, Anda, hai]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -103,18 +107,18 @@ exercises:
     words: [salam kenal]
   - id: e04
     type: fill_blank
-    sentence: Selamat siang, Bu. ___ Mohamed.
+    sentence: Selamat pagi, Pak. ___ Pak Irwan?
     meaning:
-      ar_eg: نهارك سعيد يا مدام. أنا محمد.
-      ar: طاب نهارك يا سيدتي. أنا محمد.
-      en: Good afternoon, ma'am. I'm Mohamed.
-    options: [Saya, Dia, Kamu]
-    answers: [Saya]
+      ar_eg: صباح الخير يا أستاذ. حضرتك الأستاذ إروان؟
+      ar: صباح الخير يا سيدي. هل أنت الأستاذ إروان؟
+      en: Good morning, sir. Are you Pak Irwan?
+    options: [Anda, Aku, Kamu]
+    answers: [Anda]
     explain:
-      ar_eg: بتعرّف نفسك يبقى «أنا»، ومع Bu الأحسن saya.
-      ar: أنت تعرّف بنفسك فتحتاج «أنا»، ومع Bu الأنسب saya.
-      en: You're introducing yourself, so you need "I"; with Bu, saya is the right one.
-    words: [saya]
+      ar_eg: بتكلّم أستاذ مش عارفه، يبقى Anda (حضرتك). kamu للصحاب، وaku معناها «أنا».
+      ar: تخاطب أستاذًا لا تعرفه، فتناسب Anda (حضرتك)؛ kamu للأصدقاء، وaku تعني «أنا».
+      en: You're addressing a teacher you don't know, so Anda (formal "you"); kamu is for friends, and aku means "I".
+    words: [Anda]
   - id: e05
     type: translate
     direction: to_target
@@ -127,20 +131,20 @@ exercises:
   - id: e06
     type: translate
     direction: from_target
-    source_text: Hai, aku Raka!
+    source_text: Hai, aku Raka! Kamu Mohamed?
     answers_meaning:
-      ar_eg: [أهلًا، أنا راكا!, هاي، أنا راكا, أهلًا، أنا Raka]
-      ar: [مرحبًا، أنا راكا!, أهلًا، أنا راكا, مرحبًا، أنا Raka]
-      en: ['Hi, I''m Raka!', 'Hi, I am Raka', 'Hello, I''m Raka']
-    words: [aku]
+      ar_eg: [أهلًا، أنا راكا! إنت محمد؟, هاي، أنا راكا. إنت محمد؟, أهلًا، أنا Raka! إنت Mohamed؟]
+      ar: [مرحبًا، أنا راكا! أأنت محمد؟, أهلًا، أنا راكا. هل أنت محمد؟, مرحبًا، أنا Raka! أنت Mohamed؟]
+      en: ['Hi, I''m Raka! Are you Mohamed?', 'Hi, I am Raka. Are you Mohamed?', 'Hello, I''m Raka! You''re Mohamed?']
+    words: [hai, aku, kamu]
   - id: e07
     type: speaking
-    text: Selamat pagi, Bu. Saya Mohamed. Salam kenal.
+    text: Selamat pagi, Pak. Anda Pak Irwan? Saya Mohamed, salam kenal.
     meaning:
-      ar_eg: صباح الخير يا مدام. أنا محمد. اتشرفنا.
-      ar: صباح الخير يا سيدتي. أنا محمد. تشرّفنا.
-      en: Good morning, ma'am. I'm Mohamed. Nice to meet you.
-    words: [saya, salam kenal]
+      ar_eg: صباح الخير يا أستاذ. حضرتك الأستاذ إروان؟ أنا محمد، اتشرفنا.
+      ar: صباح الخير يا سيدي. هل أنت الأستاذ إروان؟ أنا محمد، تشرّفنا.
+      en: Good morning, sir. Are you Pak Irwan? I'm Mohamed, nice to meet you.
+    words: [Anda, saya, salam kenal]
 dialogue:
   lines:
     - speaker: Raka

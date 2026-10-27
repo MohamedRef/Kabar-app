@@ -116,7 +116,11 @@ exercises:
         ar_eg: دكتور
         ar: طبيب
         en: doctor
-    words: [nama, siapa, mahasiswa, guru, dokter]
+      - text: karyawan
+        ar_eg: موظف
+        ar: موظف
+        en: employee
+    words: [nama, siapa, mahasiswa, guru, dokter, karyawan]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -132,10 +136,14 @@ exercises:
     words: [siapa, nama]
   - id: e03
     type: listen
-    text: Siapa nama Anda?
-    options: ['Apa kabar, Bu?', 'Siapa nama Anda?', Nama saya Rina.]
-    answer: 1
-    words: [siapa, nama]
+    text: Siapa dia? Dia dokter.
+    options: ['Siapa dia? Dia dokter.', 'Siapa dia? Dia mahasiswa.', 'Siapa dia? Dia karyawan.']
+    answer: 0
+    meaning:
+      ar_eg: مين ده؟ ده دكتور.
+      ar: من هذا؟ إنه طبيب.
+      en: Who's that? He's a doctor.
+    words: [siapa, dokter]
   - id: e04
     type: fill_blank
     sentence: ___ nama Anda, Pak?
@@ -147,22 +155,37 @@ exercises:
     answers: [Siapa]
     words: [siapa]
   - id: e05
-    type: translate
-    direction: from_target
-    source_text: Jakarta adalah ibu kota Indonesia.
-    answers_meaning:
-      ar_eg: [جاكرتا هي عاصمة إندونيسيا., جاكرتا عاصمة إندونيسيا]
-      ar: [جاكرتا هي عاصمة إندونيسيا., جاكرتا عاصمة إندونيسيا]
-      en: [Jakarta is the capital of Indonesia., Jakarta is Indonesia's capital]
-    words: [adalah, ibu kota]
+    type: fill_blank
+    sentence: Ibu Sari ___ guru di ibu kota.
+    meaning:
+      ar_eg: مدام ساري مدرّسة في العاصمة.
+      ar: السيدة ساري معلّمة في العاصمة.
+      en: Ms Sari is a teacher in the capital.
+    options: [adalah, dan, juga]
+    answers: [adalah]
+    explain:
+      ar_eg: adalah = «يكون / هو»، بتربط الاسم بوصفه في الجمل الرسمية.
+      ar: adalah = «يكون / هو»، تربط الاسم بوصفه في الأسلوب الرسمي.
+      en: adalah = "is", linking a noun to what it is, in formal sentences.
+    words: [adalah, guru, ibu kota]
   - id: e06
     type: speaking
-    text: Selamat pagi. Nama saya Mohamed. Saya mahasiswa.
+    text: Nama saya Mohamed. Saya mahasiswa. Kairo adalah ibu kota Mesir.
     meaning:
-      ar_eg: صباح الخير. اسمي محمد. أنا طالب.
-      ar: صباح الخير. اسمي محمد. أنا طالب جامعي.
-      en: Good morning. My name is Mohamed. I'm a student.
-    words: [nama, mahasiswa]
+      ar_eg: اسمي محمد. أنا طالب جامعة. القاهرة هي عاصمة مصر.
+      ar: اسمي محمد. أنا طالب جامعي. القاهرة هي عاصمة مصر.
+      en: My name is Mohamed. I'm a university student. Cairo is the capital of Egypt.
+    words: [nama, mahasiswa, adalah, ibu kota]
+  - id: e07
+    type: listen
+    text: Raka adalah karyawan di ibu kota.
+    options: ['Raka adalah karyawan di ibu kota.', 'Raka adalah dokter di ibu kota.', 'Raka adalah guru di ibu kota.']
+    answer: 0
+    meaning:
+      ar_eg: راكا موظف في العاصمة.
+      ar: راكا موظف في العاصمة.
+      en: Raka is an employee in the capital.
+    words: [adalah, karyawan, ibu kota]
 dialogue:
   title: Pagi di Menteng
   lines:

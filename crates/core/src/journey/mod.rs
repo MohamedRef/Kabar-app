@@ -108,6 +108,9 @@ pub struct Lesson {
     pub can_do: String,
     #[serde(default)]
     pub minutes: u32,
+    /// Grammar-library ids this lesson teaches.
+    #[serde(default)]
+    pub grammar: Vec<String>,
 }
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash, Serialize, Deserialize)]
