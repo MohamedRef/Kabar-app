@@ -130,7 +130,7 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | j2.u05 | Magetan | Telaga Sarangan (Lake Sarangan) | `j2.u05.png` |
 | j2.u06 | Ngawi | Benteng Pendem Ngawi (Benteng Pendem Ngawi) | `j2.u06.png` |
 
-## J3 · Yogyakarta
+## J3 · Pakualaman, Yogyakarta
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
