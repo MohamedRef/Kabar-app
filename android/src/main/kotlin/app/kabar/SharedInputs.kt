@@ -45,7 +45,8 @@ internal object SharedInputs {
             .toString()
     }
 
-    private fun image(context: Context, uri: Uri?, type: String, source: String?): String? {
+    /** Copies a picked or shared image into the cache; the JSON of an image `SharedInput`. */
+    fun image(context: Context, uri: Uri?, type: String, source: String?): String? {
         // Only content:// URIs: a file:// URI could point at our own private files.
         if (uri == null || uri.scheme != ContentResolver.SCHEME_CONTENT) return null
         val resolver = context.contentResolver

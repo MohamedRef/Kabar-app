@@ -35,5 +35,14 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
+        <!-- The Reader's "Open a screenshot": shows the system photo picker and
+             hands the image over like a share. Not exported, and no noHistory:
+             it must stay alive under the picker to get the result. -->
+        <activity
+            android:name="app.kabar.ImagePickActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|keyboardHidden"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 </manifest>
