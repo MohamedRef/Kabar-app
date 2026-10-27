@@ -118,15 +118,33 @@ exercises:
     answers: [terima]
     words: [menerima]
   - id: e07
-    type: fill_blank
-    sentence: Kartini ___ di Jepara pada tahun 1879.
-    meaning:
-      ar_eg: كارتيني اتولدت في جيبارا سنة 1879.
-      ar: وُلدت كارتيني في جيبارا عام 1879.
-      en: Kartini was born in Jepara in 1879.
-    options: [wafat, lahir, dibangun]
-    answers: [lahir]
-    words: [lahir]
+    type: match_pairs
+    pairs:
+      - text: perang
+        ar_eg: حرب
+        ar: حرب
+        en: war
+      - text: musuh
+        ar_eg: عدو
+        ar: عدو
+        en: enemy
+      - text: menyerah
+        ar_eg: يستسلم
+        ar: يستسلم
+        en: surrender, give up
+      - text: kemenangan
+        ar_eg: انتصار، فوز
+        ar: نصر، فوز
+        en: victory, win
+      - text: presiden
+        ar_eg: رئيس
+        ar: رئيس
+        en: president
+      - text: partai
+        ar_eg: حزب
+        ar: حزب
+        en: party
+    words: [perang, musuh, menyerah, kemenangan, presiden, partai]
   - id: e08
     type: build_sentence
     source:
@@ -169,6 +187,16 @@ exercises:
       ar: تُوفّي التوان غورو زين الدين عام 1997.
       en: Tuan Guru Zainuddin passed away in 1997.
     words: [tuan guru, wafat]
+  - id: e12
+    type: fill_blank
+    sentence: Soekarno pernah masuk ___ Belanda.
+    meaning:
+      ar_eg: سوكارنو اتحط قبل كده في ___ الهولنديين.
+      ar: دخل سوكارنو ___ الهولنديين من قبل.
+      en: Soekarno was once put in a Dutch ___.
+    options: [penjara, perdamaian, politik]
+    answers: [penjara]
+    words: [penjara, perdamaian, politik]
 dialogue:
   title: Oleh-oleh dari Sade
   lines:

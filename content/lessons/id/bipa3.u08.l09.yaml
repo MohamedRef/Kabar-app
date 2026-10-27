@@ -123,24 +123,33 @@ exercises:
     distractors: [supaya, melainkan]
     words: [meluap, jembatan]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لو البركان ثار، الأهالي لازم يخلوا المكان.
-      ar: إذا ثار البركان وجب على السكان الإخلاء.
-      en: If the volcano erupts, residents must evacuate.
-    answers:
-      - Jika gunung berapi meletus, warga harus mengungsi.
-      - Jika gunung berapi meletus, warga harus mengungsi
-      - Kalau gunung berapi meletus, warga harus mengungsi.
-      - Kalau gunung berapi meletus, warga harus mengungsi
-      - Apabila gunung berapi meletus, warga harus mengungsi.
-      - Jika gunung berapi meletus, maka warga harus mengungsi.
-      - Jika gunung itu meletus, warga harus mengungsi.
-      - Kalau gunung itu meletus, warga harus mengungsi.
-      - Jika gunung meletus, warga harus mengungsi.
-      - Kalau gunung meletus, warga harus mengungsi.
-    words: [gunung berapi, meletus, warga, mengungsi]
+    type: match_pairs
+    pairs:
+      - text: badai
+        ar_eg: عاصفة
+        ar: عاصفة
+        en: storm
+      - text: darurat
+        ar_eg: طوارئ
+        ar: طوارئ
+        en: emergency
+      - text: terjebak
+        ar_eg: اتحبس، اتزنق
+        ar: علِق، حوصِر
+        en: be trapped, be stuck
+      - text: peringatan
+        ar_eg: تحذير، إنذار
+        ar: تحذير، إنذار
+        en: warning
+      - text: terluka
+        ar_eg: اتعوّر، اتصاب
+        ar: أُصيب، جُرح
+        en: be injured, be hurt
+      - text: akibat
+        ar_eg: نتيجة، عاقبة
+        ar: عاقبة، نتيجة
+        en: consequence
+    words: [badai, darurat, terjebak, peringatan, terluka, akibat]
   - id: e10
     type: dictation
     text: Seandainya saya tinggal di Tetebatu, saya akan melihat Rinjani setiap pagi.
@@ -157,6 +166,16 @@ exercises:
       ar: خذ حقيبة الطوارئ لكي تكون مستعدًّا.
       en: Bring the emergency bag so you're ready.
     words: [tas siaga, bencana]
+  - id: e12
+    type: fill_blank
+    sentence: Listrik mati. Rumah kami ___ sekali.
+    meaning:
+      ar_eg: النور قطع. بيتنا ___ خالص.
+      ar: انقطعت الكهرباء. بيتنا ___ جدًا.
+      en: The power's out. Our house is very ___.
+    options: [waspada, gelap, langkah]
+    answers: [gelap]
+    words: [gelap, waspada, langkah]
 dialogue:
   title: Danau di atas gunung
   lines:

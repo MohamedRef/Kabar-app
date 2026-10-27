@@ -60,19 +60,33 @@ exercises:
       en: They say anyone can join this activity.
     words: [katanya, siapa pun, kegiatan]
   - id: e05
-    type: listen
-    text: Pantai ini panjangnya tiga kilometer. Setiap Sabtu, para relawan menjaganya.
-    question:
-      ar_eg: الشط ده طوله قد إيه؟
-      ar: كم طول هذا الشاطئ؟
-      en: How long is this beach?
-    options: ["tiga belas kilometer", "tiga ratus meter", "tiga kilometer"]
-    answer: 2
-    meaning:
-      ar_eg: الشط ده طوله ٣ كيلو. كل سبت المتطوعين بيحافظوا عليه.
-      ar: طول هذا الشاطئ ثلاثة كيلومترات، ويحافظ عليه المتطوعون كل سبت.
-      en: This beach is three kilometres long. Every Saturday the volunteers look after it.
-    words: [relawan, menjaga]
+    type: match_pairs
+    pairs:
+      - text: bumi
+        ar_eg: الأرض
+        ar: الأرض
+        en: the earth
+      - text: membakar
+        ar_eg: يحرق
+        ar: يحرق
+        en: burn
+      - text: komunitas
+        ar_eg: جماعة، مجتمع
+        ar: مجتمع، جماعة
+        en: community
+      - text: generasi
+        ar_eg: جيل
+        ar: جيل
+        en: generation
+      - text: pandangan
+        ar_eg: وجهة نظر
+        ar: وجهة نظر
+        en: view, point of view
+      - text: ragu
+        ar_eg: شاكك، متردد
+        ar: متردد، شاكّ
+        en: doubtful, unsure
+    words: [bumi, membakar, komunitas, generasi, pandangan, ragu]
   - id: e06
     type: fill_blank
     sentence: Saya ___ setuju karena banyak pedagang kecil memakai plastik.
@@ -103,19 +117,15 @@ exercises:
     distractors: [membuang, apakah]
     words: [membuang, tempat sampah]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لازم نحافظ على الشعاب المرجانية.
-      ar: يجب أن نحافظ على الشعاب المرجانية.
-      en: We must protect the coral reef.
-    answers:
-      - Kita harus menjaga terumbu karang.
-      - Kita harus menjaga terumbu karang
-      - Kita harus menjaga terumbu karangnya.
-      - Kami harus menjaga terumbu karang.
-      - Kita wajib menjaga terumbu karang.
-    words: [menjaga, terumbu karang]
+    type: fill_blank
+    sentence: Plastik itu murah, ___ sangat berbahaya untuk laut.
+    meaning:
+      ar_eg: البلاستيك رخيص، ___ هو خطر جدًا على البحر.
+      ar: البلاستيك رخيص، ___ هو خطير جدًا على البحر.
+      en: Plastic is cheap, ___ it's very harmful to the sea.
+    options: [energi, upaya, padahal]
+    answers: [padahal]
+    words: [padahal, energi, upaya]
   - id: e10
     type: translate
     direction: from_target

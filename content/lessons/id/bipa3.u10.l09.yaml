@@ -112,14 +112,33 @@ exercises:
       en: nanti malam = tonight (still to come); tadi is for earlier today.
     words: [nanti]
   - id: e07
-    type: fill_blank
-    sentence: Insya Allah, saya ___ mendaki Rinjani.
-    meaning:
-      ar_eg: (اكتب «ناوي» من niat) إن شاء الله ناوي أطلع رينجاني.
-      ar: (اكتب «أنوي» من niat) إن شاء الله أنوي تسلّق رينجاني.
-      en: (Write "intend", from niat.) God willing, I intend to climb Rinjani.
-    answers: [berniat]
-    words: [berniat, mendaki]
+    type: match_pairs
+    pairs:
+      - text: mendarat
+        ar_eg: تنزل
+        ar: تهبط
+        en: land
+      - text: menyewa
+        ar_eg: يأجّر
+        ar: يستأجر
+        en: rent, hire
+      - text: wisata
+        ar_eg: سياحة
+        ar: سياحة
+        en: tourism, sightseeing
+      - text: Natal
+        ar_eg: الكريسماس
+        ar: عيد الميلاد
+        en: Christmas
+      - text: upacara
+        ar_eg: مراسم، احتفال رسمي
+        ar: مراسم، احتفال رسمي
+        en: ceremony
+      - text: suasana
+        ar_eg: جو، أجواء
+        ar: أجواء
+        en: atmosphere, mood
+    words: [mendarat, menyewa, wisata, Natal, upacara, suasana]
   - id: e08
     type: build_sentence
     source:
@@ -166,6 +185,16 @@ exercises:
       ar: عيد الأضحى عطلة رسمية في إندونيسيا.
       en: Eid al-Adha is a public holiday in Indonesia.
     words: [Iduladha, tanggal merah]
+  - id: e12
+    type: fill_blank
+    sentence: Saya sudah ___ tiket feri ke Sumbawa.
+    meaning:
+      ar_eg: أنا ___ تذكرة العبّارة لسومباوا.
+      ar: ___ تذكرة العبّارة إلى سومباوا.
+      en: I've ___ the ferry ticket to Sumbawa.
+    options: [memesan, semakin, mewah]
+    answers: [memesan]
+    words: [memesan, semakin, mewah]
 dialogue:
   title: Di atas feri
   lines:

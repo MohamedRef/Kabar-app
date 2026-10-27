@@ -52,14 +52,33 @@ exercises:
       en: mendatangi = come to a place; mendatangkan = bring in; datang would need ke.
     words: [mendatangi]
   - id: e04
-    type: listen
-    text: Film ini bercerita tentang seorang penari dari Lombok.
-    options: ["Film ini bercerita tentang seorang penari dari Lombok.", "Film ini bercerita tentang seorang pelukis dari Lombok.", "Film itu bercerita tentang seorang penari dari Bali."]
-    answer: 0
-    meaning:
-      ar_eg: الفيلم ده بيحكي عن راقصة من لومبوك.
-      ar: يحكي هذا الفيلم عن راقصة من لومبوك.
-      en: This film is about a dancer from Lombok.
+    type: match_pairs
+    pairs:
+      - text: aktor
+        ar_eg: ممثل
+        ar: ممثل
+        en: actor
+      - text: adegan
+        ar_eg: مشهد
+        ar: مشهد
+        en: scene
+      - text: detektif
+        ar_eg: محقق
+        ar: محقق
+        en: detective
+      - text: penjahat
+        ar_eg: مجرم، الشرير
+        ar: مجرم، شرير
+        en: criminal, villain
+      - text: sempurna
+        ar_eg: مثالي، كامل
+        ar: مثالي، كامل
+        en: perfect
+      - text: kejutan
+        ar_eg: مفاجأة
+        ar: مفاجأة
+        en: surprise
+    words: [aktor, adegan, detektif, penjahat, sempurna, kejutan]
   - id: e05
     type: listen
     text: Saya menyukai film itu. Alurnya cepat dan akhir ceritanya mengharukan. Empat bintang!
@@ -136,13 +155,15 @@ exercises:
         - I like the setting and the main character very much.
     words: [menyukai, latar, tokoh utama]
   - id: e11
-    type: dictation
-    text: Kami menghadiri pemutaran film di pantai.
+    type: fill_blank
+    sentence: Banyak ___ menunggu aktor itu di depan hotel.
     meaning:
-      ar_eg: حضرنا عرض فيلم على الشط.
-      ar: حضرنا عرض فيلم على الشاطئ.
-      en: We attended a film screening on the beach.
-    words: [menghadiri, pemutaran film]
+      ar_eg: ___ كتير مستنيين الممثل قدام الفندق.
+      ar: ينتظر كثير من ___ الممثل أمام الفندق.
+      en: Lots of ___ are waiting for the actor outside the hotel.
+    options: [misteri, penggemar, klasik]
+    answers: [penggemar]
+    words: [penggemar, misteri, klasik]
   - id: e12
     type: speaking
     text: Kamu wajib menonton film ini. Kisahnya sangat menarik!

@@ -77,14 +77,14 @@ exercises:
     words: [menurut, sejak]
   - id: e06
     type: fill_blank
-    sentence: Saya turut ___ cita, Pak.
+    sentence: Bulan depan istri Mas Rizal akan ___.
     meaning:
-      ar_eg: البقية في حياتك يا أستاذ.
-      ar: أشاطرك الحزن يا سيدي.
-      en: I'm so sorry for your loss, sir.
-    options: [bahagia, berduka, langgeng]
-    answers: [berduka]
-    words: [turut berduka cita]
+      ar_eg: الشهر الجاي مرات مستر رزال هـ ___.
+      ar: في الشهر القادم ___ زوجة رزال.
+      en: Next month Mas Rizal's wife will ___.
+    options: [perayaan, melahirkan, selamanya]
+    answers: [melahirkan]
+    words: [melahirkan, perayaan, selamanya]
   - id: e07
     type: fill_blank
     sentence: Kami mudik ___ hari Kamis.
@@ -109,22 +109,33 @@ exercises:
     distractors: [kepada, tentang]
     words: [bagi, umat, silaturahmi]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ألف مبروك يا راكا! ربنا يخليكم لبعض.
-      ar: مبارك زواجك يا راكا! دام ودّكما.
-      en: Congratulations on your wedding, Raka! May your marriage last.
-    answers:
-      - Selamat menikah, Raka! Semoga langgeng!
-      - Selamat menikah, Raka! Semoga langgeng.
-      - Selamat menikah, Raka! Semoga langgeng
-      - Selamat menikah, Raka. Semoga langgeng.
-      - Selamat menikah, Raka, semoga langgeng!
-      - Selamat menikah ya, Raka! Semoga langgeng!
-      - Raka, selamat menikah! Semoga langgeng!
-      - Selamat menikah, Raka! Mudah-mudahan langgeng!
-    words: [langgeng]
+    type: match_pairs
+    pairs:
+      - text: cincin
+        ar_eg: خاتم، دبلة
+        ar: خاتم
+        en: ring
+      - text: mengundang
+        ar_eg: يعزم
+        ar: يدعو
+        en: invite
+      - text: hamil
+        ar_eg: حامل
+        ar: حامل
+        en: pregnant
+      - text: pensiun
+        ar_eg: يطلع معاش
+        ar: يتقاعد
+        en: retire
+      - text: doa
+        ar_eg: دعاء
+        ar: دعاء
+        en: prayer
+      - text: berjanji
+        ar_eg: يوعد
+        ar: يَعِد
+        en: promise
+    words: [cincin, mengundang, hamil, pensiun, doa, berjanji]
   - id: e10
     type: translate
     direction: from_target

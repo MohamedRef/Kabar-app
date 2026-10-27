@@ -136,23 +136,33 @@ exercises:
     distractors: [sebenarnya, sebuah]
     words: [sebaiknya]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الحمام مش نضيف زي الصورة، والتكييف بايظ.
-      ar: الحمّام ليس بنظافة الصورة، والمكيّف معطّل.
-      en: The bathroom isn't as clean as the photo, and the AC is broken.
-    answers:
-      - Kamar mandinya tidak sebersih foto, dan AC-nya rusak.
-      - Kamar mandinya tidak sebersih foto, dan AC-nya rusak
-      - Kamar mandinya tidak sebersih foto dan AC-nya rusak.
-      - Kamar mandinya tidak sebersih foto dan AC-nya rusak
-      - Kamar mandinya tidak sebersih fotonya, dan AC-nya rusak.
-      - Kamar mandinya tidak sebersih di foto, dan AC-nya rusak.
-      - Kamar mandinya tidak sebersih foto, dan AC rusak.
-      - Kamar mandi tidak sebersih foto, dan AC-nya rusak.
-      - Kamar mandinya tidak sebersih foto, juga AC-nya rusak.
-    words: [bersih, rusak]
+    type: match_pairs
+    pairs:
+      - text: layanan
+        ar_eg: خدمة
+        ar: خدمة
+        en: service
+      - text: tersedia
+        ar_eg: متاح، موجود
+        ar: متوفّر، متاح
+        en: available
+      - text: berfungsi
+        ar_eg: شغال، بيشتغل
+        ar: يعمل، يؤدي وظيفته
+        en: work, function
+      - text: mengganti
+        ar_eg: يغيّر، يبدّل
+        ar: يستبدل، يغيّر
+        en: replace, change
+      - text: sopan
+        ar_eg: مؤدب
+        ar: مهذّب
+        en: polite
+      - text: berantakan
+        ar_eg: متبهدل، مش مترتب
+        ar: غير مرتّب، مبعثر
+        en: messy, untidy
+    words: [layanan, tersedia, berfungsi, mengganti, sopan, berantakan]
   - id: e10
     type: dictation
     text: Mohon maklum, petugas kami akan memperbaikinya secepatnya.
@@ -169,6 +179,16 @@ exercises:
       ar: تحية طيبة وبعد، أودّ تقديم شكوى بشأن غرفتي.
       en: Dear Sir or Madam, I would like to make a complaint about my room.
     words: [hormat, menyampaikan, keluhan]
+  - id: e12
+    type: fill_blank
+    sentence: Saya mau bertemu dengan ___ hotel ini.
+    meaning:
+      ar_eg: عايز أقابل ___ الفندق ده.
+      ar: أريد مقابلة ___ هذا الفندق.
+      en: I'd like to see the hotel ___.
+    options: [sinyal, kualitas, manajer]
+    answers: [manajer]
+    words: [manajer, sinyal, kualitas]
 dialogue:
   title: Di Sirkuit Mandalika
   lines:

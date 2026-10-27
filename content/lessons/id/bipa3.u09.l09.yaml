@@ -123,23 +123,33 @@ exercises:
     distractors: [hiduplah, berhari-hari]
     words: [suatu hari, terjun]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'العبرة من الحدوتة دي: ما تتكبّرش.'
-      ar: 'العبرة من هذه الحكاية: لا تتكبّر.'
-      en: The moral of this story is don't be arrogant.
-    answers:
-      - Amanat cerita ini adalah jangan sombong.
-      - Amanat cerita ini adalah jangan sombong
-      - Amanat dari cerita ini adalah jangan sombong.
-      - Amanat dari cerita ini adalah jangan sombong
-      - "Amanat cerita ini: jangan sombong."
-      - "Amanat cerita ini: jangan sombong"
-      - Amanat cerita ini adalah kita tidak boleh sombong.
-      - Amanat dongeng ini adalah jangan sombong.
-      - Pesan moral cerita ini adalah jangan sombong.
-    words: [amanat, sombong]
+    type: match_pairs
+    pairs:
+      - text: naga
+        ar_eg: تنين
+        ar: تنّين
+        en: dragon
+      - text: harta
+        ar_eg: كنز، ثروة
+        ar: كنز، ثروة
+        en: treasure, wealth
+      - text: legenda
+        ar_eg: أسطورة
+        ar: أسطورة
+        en: legend
+      - text: singa
+        ar_eg: أسد
+        ar: أسد
+        en: lion
+      - text: tikus
+        ar_eg: فار
+        ar: فأر
+        en: mouse, rat
+      - text: mahkota
+        ar_eg: تاج
+        ar: تاج
+        en: crown
+    words: [naga, harta, legenda, singa, tikus, mahkota]
   - id: e10
     type: dictation
     text: Orang-orang menertawakan Juha dan keledainya.
@@ -156,6 +166,16 @@ exercises:
       ar: الكانتشيل صغير لكنه ذكي.
       en: The mouse deer is small, but clever.
     words: [kancil, cerdik]
+  - id: e12
+    type: fill_blank
+    sentence: Dengan ___, penyihir itu membuat pangeran tidur.
+    meaning:
+      ar_eg: بالـ ___، الساحر نيّم الأمير.
+      ar: بـ ___ أنام الساحر الأمير.
+      en: With ___, the sorcerer put the prince to sleep.
+    options: [kandang, nasib, sihir]
+    answers: [sihir]
+    words: [sihir, kandang, nasib]
 dialogue:
   title: Cerita dari Lombok
   lines:

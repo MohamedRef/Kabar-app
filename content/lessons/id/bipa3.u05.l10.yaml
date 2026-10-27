@@ -77,15 +77,33 @@ exercises:
       en: On Friday I took Rina to the station. The next day I ironed my clothes.
     words: [mengantar, keesokan harinya, menyetrika]
   - id: e06
-    type: fill_blank
-    sentence: Mas Rizal memberikan peta ___ saya.
-    meaning:
-      ar_eg: ريزال إدّى الخريطة ليّا.
-      ar: أعطى ريزال الخريطة لي.
-      en: Mas Rizal gave the map to me.
-    options: [kepada, dari, dengan]
-    answers: [kepada]
-    words: [memberikan]
+    type: match_pairs
+    pairs:
+      - text: mampir
+        ar_eg: يعدّي على
+        ar: يمرّ على
+        en: drop in, stop by
+      - text: beristirahat
+        ar_eg: يرتاح
+        ar: يستريح
+        en: rest
+      - text: menghapus
+        ar_eg: يمسح
+        ar: يحذف، يمسح
+        en: delete, erase
+      - text: menelepon
+        ar_eg: يتصل بالتليفون
+        ar: يتصل هاتفيًا
+        en: phone, call
+      - text: berhasil
+        ar_eg: نجح، قدر
+        ar: نجح، تمكّن
+        en: succeed, manage
+      - text: sesuatu
+        ar_eg: حاجة
+        ar: شيء
+        en: something
+    words: [mampir, beristirahat, menghapus, menelepon, berhasil, sesuatu]
   - id: e07
     type: fill_blank
     sentence: ___ di Senaru, kami makan siang.
@@ -123,21 +141,15 @@ exercises:
       - Minggu lalu kami mendaki Gunung Rinjani.
     words: [akhir pekan, mendaki, gunung]
   - id: e10
-    type: translate
-    direction: from_target
-    source_text: Bu Yanti memberi kami bekal nasi dan telur.
-    answers_meaning:
-      ar_eg:
-        - مدام يانتي إدّتنا زوّادة رز وبيض.
-        - مدام يانتي إدّتنا أكل للسكة، رز وبيض.
-      ar:
-        - أعطتنا السيدة يانتي زادًا من الأرز والبيض.
-        - أعطتنا السيدة يانتي طعامًا للطريق من الأرز والبيض.
-      en:
-        - Bu Yanti gave us a packed meal of rice and eggs.
-        - Bu Yanti gave us packed food of rice and eggs.
-        - Bu Yanti gave us rice and eggs to take with us.
-    words: [memberi, bekal]
+    type: fill_blank
+    sentence: Kami ___ sampai di puncak jam lima pagi.
+    meaning:
+      ar_eg: إحنا ___ وصلنا القمة الساعة خمسة الصبح.
+      ar: ___ وصلنا إلى القمة في الخامسة صباحًا.
+      en: We ___ reached the summit at five in the morning.
+    options: [telah, online, persiapan]
+    answers: [telah]
+    words: [telah, online, persiapan]
   - id: e11
     type: dictation
     text: Pengalaman itu sangat berkesan bagi saya.
