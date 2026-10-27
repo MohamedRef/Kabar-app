@@ -1,0 +1,249 @@
+schema: kabar.lesson/v1
+id: j3.u04.l10
+language: jv
+title: Ulangan J3.4
+can_do:
+  ar_eg: تدير سؤال وجواب مؤدب بالكراما.
+  ar: أن تُجري حوارًا مهذبًا من سؤال وجواب بالكراما.
+  en: Run a polite Q&A.
+slides:
+  - title: Pitakon krama, ringkesan
+    body:
+      ar_eg: |
+        مراجعة الوحدة كلها:
+        - ابدأ بـ Nyuwun sewu، وطّي راسك، وشاور بالإبهام.
+        - menapa (apa)، sinten (siapa)، pundi (mana): ing / dhateng / saking pundi.
+        - pinten (berapa)، kados pundi / pripun (bagaimana)، kenging menapa (kenapa)، kapan زي ما هي.
+        - الطريق: mriki، mrika، tebih، celak، lajeng، mlampah، saged، kemawon.
+        - الرد: Inggih / Mboten، وفي الآخر Matur nuwun ← Sami-sami.
+        والقاعدة الذهبية: ماتخلطش. جملة كراما = كل كلماتها الصغيرة كراما.
+      ar: |
+        مراجعة الوحدة كلها:
+        - ابدأ بـ Nyuwun sewu، واخفض رأسك قليلًا، وأشِر بالإبهام.
+        - menapa (apa)، وsinten (siapa)، وpundi (mana): ing / dhateng / saking pundi.
+        - pinten (berapa)، وkados pundi / pripun (bagaimana)، وkenging menapa (kenapa)، وkapan كما هي.
+        - الطريق: mriki، mrika، tebih، celak، lajeng، mlampah، saged، kemawon.
+        - الجواب: Inggih / Mboten، ثم Matur nuwun ← Sami-sami.
+        والقاعدة الذهبية: لا تخلط المستويات في الجملة الواحدة.
+      en: |
+        The whole unit at a glance:
+        - Open with Nyuwun sewu, bow slightly, point with your thumb.
+        - menapa (apa), sinten (siapa), pundi (mana): ing / dhateng / saking pundi.
+        - pinten (berapa), kados pundi / pripun (bagaimana), kenging menapa (kenapa); kapan stays kapan.
+        - Directions: mriki, mrika, tebih, celak, lajeng, mlampah, saged, kemawon.
+        - Answers: Inggih / Mboten; Matur nuwun ← Sami-sami.
+        Golden rule: don't mix. A krama sentence keeps all its small words krama.
+    grammar: jv.krama.questions
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: menapa
+        ar_eg: إيه (apa)
+        ar: ما (apa)
+        en: what (apa)
+      - text: sinten
+        ar_eg: مين (siapa)
+        ar: مَن (siapa)
+        en: who (siapa)
+      - text: pundi
+        ar_eg: فين (mana)
+        ar: أين (mana)
+        en: where (mana)
+      - text: pinten
+        ar_eg: كام (berapa)
+        ar: كم (berapa)
+        en: how much (berapa)
+      - text: kenging menapa
+        ar_eg: ليه (kenapa)
+        ar: لماذا (kenapa)
+        en: why (kenapa)
+    words: [menapa, sinten, pundi, pinten, kenging menapa]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي سؤال فيه غلطة (خلط نغوكو وكراما)؟
+      ar: أي سؤال فيه خطأ (خلط بين النغوكو والكراما)؟
+      en: Which question mixes ngoko and krama?
+    options: ['Reginipun pinten, Bu?', 'Panjenengan saking pundi?', 'Panjenengan badhe tindak ngendi?']
+    answer: 2
+    explain:
+      ar_eg: ngendi نغوكو في نص جملة كراما. الصح Panjenengan badhe tindak pundi?
+      ar: ngendi من النغوكو وسط جملة كراما، والصواب Panjenengan badhe tindak pundi?
+      en: ngendi is ngoko inside a krama sentence; it should be Panjenengan badhe tindak pundi?
+    words: [pundi]
+  - id: e03
+    type: multiple_choice
+    question: Kenging menapa panjenengan sinau basa Jawi?
+    question_meaning:
+      ar_eg: أنهي رد مناسب؟
+      ar: أي جواب يناسب؟
+      en: Which answer fits?
+    options: [Kula remen basa Jawi., Kula saking Mesir., Jam wolu.]
+    answer: 0
+    explain:
+      ar_eg: 'kenging menapa = ليه، فالرد سبب: Kula remen basa Jawi = عشان بحب الجاوي.'
+      ar: 'kenging menapa = لماذا، فالجواب سبب: Kula remen basa Jawi.'
+      en: 'kenging menapa = why, so the answer gives a reason: Kula remen basa Jawi.'
+    words: [kenging menapa, remen]
+  - id: e04
+    type: listen
+    text: Panjenengan badhe tindak pundi?
+    options: ['Panjenengan saking pundi?', 'Pasaripun ing pundi?', 'Panjenengan badhe tindak pundi?']
+    answer: 2
+    words: [pundi]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حد كبير سألك «Tebih menapa celak?». إنت عايز تقول «قريب، ممكن أمشي». تقول إيه؟
+      ar: سألك شخص كبير «Tebih menapa celak?» وتريد أن تقول «قريب، يمكنني المشي». ماذا تقول؟
+      en: An elder asks you "Tebih menapa celak?" You want to say "Close, I can walk." What do you say?
+    options: ['Tebih, kula mlampah.', 'Cedhak, aku isa mlaku.', 'Celak, kula saged mlampah.']
+    answer: 2
+    explain:
+      ar_eg: celak = قريب، saged = يقدر، mlampah = يمشي، كله كراما. أما «Cedhak, aku isa mlaku» فنغوكو.
+      ar: celak = قريب، وsaged = يستطيع، وmlampah = يمشي، وكلها كراما، أما «Cedhak, aku isa mlaku» فنغوكو.
+      en: celak = near, saged = can, mlampah = walk — all krama. "Cedhak, aku isa mlaku" is ngoko.
+    words: [celak, saged, mlampah]
+  - id: e06
+    type: fill_blank
+    sentence: Nyuwun sewu, Bu, stasiun Balapan ___ pundi?
+    meaning:
+      ar_eg: لا مؤاخذة يا حاجة، محطة بالابان فين؟
+      ar: عفوًا يا سيدتي، أين محطة بالابان؟
+      en: Excuse me, ma'am, where is Balapan station?
+    options: [dhateng, saking, ing]
+    answers: [ing]
+    explain:
+      ar_eg: ing pundi = فين (di mana). saking pundi = منين، dhateng pundi = على فين.
+      ar: ing pundi = أين (di mana)، وsaking pundi = من أين، وdhateng pundi = إلى أين.
+      en: ing pundi = where (di mana); saking pundi = where from, dhateng pundi = where to.
+    words: [ing, pundi]
+  - id: e07
+    type: fill_blank
+    sentence: ___ kabaripun, Pak? — Sae, matur nuwun.
+    meaning:
+      ar_eg: أخبار حضرتك إيه يا حاج؟ — كويس، شكرًا.
+      ar: كيف حالكم يا سيدي؟ — بخير، شكرًا.
+      en: How are you, sir? — Fine, thank you.
+    answers: [Pripun, pripun, Kados pundi, kados pundi]
+    explain:
+      ar_eg: pripun (أو kados pundi) = إزاي (piye).
+      ar: pripun (أو kados pundi) = كيف (piye).
+      en: pripun (or kados pundi) = how (piye).
+    words: [pripun, kabar]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: لا مؤاخذة، اسم حضرتك إيه؟
+      ar: عفوًا، ما اسمكم الكريم؟
+      en: Excuse me, what is your name?
+    answer: Nyuwun sewu, asmanipun sinten?
+    distractors: [menapa, jenenge]
+    explain:
+      ar_eg: الاسم بيتسأل عنه بـ sinten (مين)، زي Siapa namanya؟
+      ar: يُسأل عن الاسم بـ sinten (مَن)، كما في Siapa namanya؟
+      en: Names are asked with sinten (who), as in Siapa namanya?
+    words: [nyuwun sewu, sinten]
+  - id: e09
+    type: fill_blank
+    sentence: Nyuwun sewu, Pak, kula ___. Pesawat kula mangkat jam sedasa.
+    meaning:
+      ar_eg: لا مؤاخذة يا عم، أنا ___. طيارتي بتقوم الساعة عشرة.
+      ar: عفوًا يا سيدي، أنا ___. تقلع طائرتي الساعة العاشرة.
+      en: Excuse me, sir, I'm ___. My plane leaves at ten.
+    options: [kesusu, karcis, lepen]
+    answers: [kesusu]
+    words: [kesusu, mangkat, karcis, lepen]
+  - id: e10
+    type: multiple_choice
+    question: Kana (ngoko) → ___ (krama)
+    options: [ngriku, alon-alon, ngrika]
+    answer: 2
+    explain:
+      ar_eg: kana ← ngrika = هناك بعيد. kono ← ngriku.
+      ar: kana ← ngrika = هناك بعيدًا. kono ← ngriku.
+      en: kana → ngrika = over there. kono → ngriku.
+    words: [ngrika, ngriku, alon-alon]
+  - id: e11
+    type: match_pairs
+    pairs:
+      - text: margi
+        ar_eg: طريق (كراما)
+        ar: طريق (كراما)
+        en: road (krama)
+      - text: kitha
+        ar_eg: مدينة (كراما)
+        ar: مدينة (كراما)
+        en: town (krama)
+      - text: mandhap
+        ar_eg: ينزل (كراما)
+        ar: ينزل (كراما)
+        en: get off (krama)
+      - text: minggah
+        ar_eg: يطلع، يركب (كراما)
+        ar: يصعد (كراما)
+        en: get on (krama)
+      - text: sabin
+        ar_eg: غيط رز (كراما)
+        ar: حقل أرز (كراما)
+        en: rice field (krama)
+      - text: jawah
+        ar_eg: مطر (كراما)
+        ar: مطر (كراما)
+        en: rain (krama)
+    words: [margi, kitha, mandhap, minggah, sabin, jawah]
+  - id: e12
+    type: speaking
+    text: Panjenengan badhe tindak pundi, Pak?
+    meaning:
+      ar_eg: حضرتك رايح فين يا حاج؟
+      ar: إلى أين تتوجهون يا سيدي؟
+      en: Where are you going, sir?
+    words: [panjenengan, pundi]
+dialogue:
+  title: Pitakon kanthi alus
+  lines:
+    - speaker: Mohamed
+      text: Nyuwun sewu, Pak Wiryo. Menika menapa?
+      ar_eg: لا مؤاخذة يا عم ويريو. ده إيه؟
+      ar: عفوًا يا سيد ويريو. ما هذا؟
+      en: Excuse me, Pak Wiryo. What is this?
+    - speaker: Pak Wiryo
+      text: Menika pendhapa, Mas. Sae sanget, nggih?
+      ar_eg: دي الـ pendhapa يا ابني. حلوة جدًا، مش كده؟
+      ar: هذه الـ pendhapa يا بني. جميلة جدًا، أليس كذلك؟
+      en: This is the pendhapa. Very beautiful, isn't it?
+    - speaker: Mohamed
+      text: Inggih, Pak. Pasar Triwindu ing pundi?
+      ar_eg: أيوه يا حاج. وسوق تريويندو فين؟
+      ar: نعم يا سيدي. وأين سوق تريويندو؟
+      en: Yes, sir. Where is Pasar Triwindu?
+    - speaker: Pak Wiryo
+      text: Celak kemawon. Saking mriki lurus, lajeng nengen.
+      ar_eg: قريب خالص. من هنا على طول، وبعدين يمين.
+      ar: قريب جدًا. من هنا مستقيمًا، ثم يمينًا.
+      en: Quite close. Straight on from here, then right.
+    - speaker: Mohamed
+      text: Matur nuwun sanget, Pak.
+      ar_eg: شكرًا جزيلًا يا حاج.
+      ar: شكرًا جزيلًا يا سيدي.
+      en: Thank you very much, sir.
+    - speaker: Pak Wiryo
+      text: Sami-sami, Mas Mohamed.
+      ar_eg: العفو يا محمد.
+      ar: عفوًا يا محمد.
+      en: You're welcome, Mohamed.
+souvenir:
+  id: j3.u04.souvenir
+  title: Pura Mangkunegaran
+  note:
+    ar_eg: |
+      Pura Mangkunegaran هو القصر الملكي التاني في سولو، وفيه واحد من أكبر الـ pendhapa في جاوة، بعواميد خشب وسقف مزوّق. هنا الأدب في السؤال جزء من القواعد: Nyuwun sewu في الأول، راس موطّية شوية، وإبهام بيشاور بدل السبابة. شيل الإبهام ده معاك في شنطتك — هيفتحلك قلوب الكبار في كل جاوة.
+    ar: |
+      Pura Mangkunegaran هو القصر الملكي الثاني في سولو، وفيه من أكبر قاعات الـ pendhapa في جاوة بأعمدتها الخشبية وسقفها المزخرف. وأدب السؤال هنا جزء من القواعد: Nyuwun sewu أولًا، ورأس منخفض قليلًا، وإشارة بالإبهام لا بالسبابة. احمل هذه العادة معك، فستفتح لك قلوب الكبار في جاوة كلها.
+    en: |
+      Pura Mangkunegaran is Solo's second royal palace, with one of the largest pendhapa in Java — wooden pillars under a painted ceiling. Here, asking politely is part of the grammar: Nyuwun sewu first, head slightly bowed, thumb pointing instead of the index finger. Pack that thumb in your suitcase — it opens elders' hearts all over Java.
+review:
+  status: draft
+  verified: false
