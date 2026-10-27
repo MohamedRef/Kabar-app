@@ -107,6 +107,8 @@ button { font: inherit; color: inherit; }
   padding-block-end: env(safe-area-inset-bottom, 0px);
   position: sticky;
   bottom: 0;
+  /* Above sticky or positioned content inside screens (main comes later in the DOM). */
+  z-index: 10;
 }
 .nav-item {
   display: flex;

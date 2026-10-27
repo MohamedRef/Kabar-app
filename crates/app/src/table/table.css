@@ -12,6 +12,8 @@
   border-radius: var(--radius);
   background: var(--surface);
   max-inline-size: 100%;
+  /* Keeps the pinned column's z-index inside the box. */
+  isolation: isolate;
 }
 .tb-grid {
   border-collapse: separate;
@@ -28,6 +30,7 @@
   border-block-end: 1px solid var(--line);
   border-inline-end: 1px solid var(--line);
   min-inline-size: 7rem;
+  overflow-wrap: break-word;
 }
 .tb-grid tr > :last-child { border-inline-end: 0; }
 .tb-grid tbody tr:last-child > * { border-block-end: 0; }

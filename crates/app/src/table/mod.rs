@@ -19,6 +19,9 @@ use crate::i18n::table as tx;
 
 const CSS: &str = include_str!("table.css");
 
+/// Cells longer than this are tap-to-reveal even with typing on.
+const TYPABLE_CHARS: usize = 40;
+
 #[derive(Clone, Debug, Default, PartialEq)]
 struct Blank {
     typed: String,
@@ -146,7 +149,8 @@ fn BlankCell(index: usize, answer: String, pinned: bool, typing: bool, state: Si
     rsx! {
         td { class,
             if !b.shown {
-                if typing {
+                // Long cells are revealed and self-marked even in typing mode.
+                if typing && answer.chars().count() <= TYPABLE_CHARS {
                     input {
                         class: "tb-input",
                         r#type: "text",
