@@ -1,0 +1,181 @@
+schema: kabar.lesson/v1
+id: bipa5.u10.l10
+language: id
+title: Presentasi 5 menit
+can_do:
+  ar_eg: تقدّم عرض قصير بالأرقام، وترد على أسئلة الجمهور.
+  ar: أن تقدّم عرضًا قصيرًا بالأرقام، وتجيب عن أسئلة الجمهور.
+  en: Give a short talk with numbers, and take questions from the audience.
+slides:
+  - title: Lima menit, lima langkah
+    grammar: id.nominalization
+    body:
+      ar_eg: |
+        عرض 5 دقايق = 5 خطوات، وكل خطوة جملة أو اتنين:
+        1. Hadirin yang saya hormati, … (التحية)
+        2. Pertama-tama, … (الموضوع)
+        3. Grafik ini menunjukkan kenaikan / penurunan … (البيانات، بالأسماء: kenaikan = الزيادة، penurunan = النقص)
+        4. Oleh karena itu, saya menyimpulkan bahwa … (الخلاصة)
+        5. Apakah ada pertanyaan? (الأسئلة)
+      ar: |
+        عرض خمس دقائق = خمس خطوات، لكلّ منها جملة أو اثنتان:
+        1. Hadirin yang saya hormati, … (التحية)
+        2. Pertama-tama, … (الموضوع)
+        3. Grafik ini menunjukkan kenaikan / penurunan … (البيانات بصيغة الاسم: kenaikan = الزيادة، penurunan = الانخفاض)
+        4. Oleh karena itu, saya menyimpulkan bahwa … (الخلاصة)
+        5. Apakah ada pertanyaan? (الأسئلة)
+      en: |
+        A five-minute talk = five steps, a sentence or two each:
+        1. Hadirin yang saya hormati, … (greeting)
+        2. Pertama-tama, … (topic)
+        3. Grafik ini menunjukkan kenaikan / penurunan … (data, as nouns: kenaikan = rise, penurunan = fall)
+        4. Oleh karena itu, saya menyimpulkan bahwa … (conclusion)
+        5. Apakah ada pertanyaan? (questions)
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kenaikan
+        ar_eg: زيادة
+        ar: ارتفاع
+        en: rise, increase
+      - text: penurunan
+        ar_eg: نقص / هبوط
+        ar: انخفاض
+        en: fall, decrease
+      - text: menyimpulkan
+        ar_eg: يستنتج
+        ar: يستنتج
+        en: to conclude
+      - text: pertanyaan
+        ar_eg: سؤال
+        ar: سؤال
+        en: question
+    words: [kenaikan, penurunan, menyimpulkan, pertanyaan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه الاسم من naik؟
+      ar: ما الاسم من naik؟
+      en: What is the noun from naik?
+    options: [kenaikan, menaikkan, dinaikkan]
+    answer: 0
+    words: [kenaikan]
+  - id: e03
+    type: fill_blank
+    sentence: Grafik ini menunjukkan ___ jumlah wisatawan setelah festival.
+    meaning:
+      ar_eg: الرسم ده بيوضّح نقص عدد السياح بعد المهرجان.
+      ar: يُظهر هذا الرسم انخفاض عدد السيّاح بعد المهرجان.
+      en: This chart shows a fall in tourist numbers after the festival.
+    options: [penurunan, pertanyaan, menyimpulkan]
+    answers: [penurunan]
+    words: [penurunan]
+  - id: e04
+    type: listen
+    text: Terima kasih. Apakah ada pertanyaan dari hadirin?
+    question:
+      ar_eg: المتكلم بيعمل إيه؟
+      ar: ماذا يفعل المتكلّم؟
+      en: What is the speaker doing?
+    options:
+      - بيبدأ العرض.
+      - بيوصف رسم بياني.
+      - بيطلب أسئلة من الجمهور.
+    answer: 2
+    words: [pertanyaan, hadirin]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: وعلشان كده، أنا بستنتج إن المهرجان مهم للتجار.
+      ar: ولذلك أستنتج أنّ المهرجان مهمّ للتجّار.
+      en: Therefore, I conclude that the festival matters to traders.
+    answer: Oleh karena itu, saya menyimpulkan bahwa festival penting bagi pedagang.
+    distractors: [kenaikan, pertanyaan]
+    words: [menyimpulkan, oleh karena itu]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الرسم بيوضّح زيادة حادة في ديسمبر.
+      ar: يُظهر الرسم ارتفاعًا حادًّا في ديسمبر.
+      en: The chart shows a sharp rise in December.
+    answers:
+      - Grafik ini menunjukkan kenaikan tajam pada bulan Desember.
+      - Grafik menunjukkan kenaikan yang tajam pada bulan Desember.
+      - Grafiknya menunjukkan kenaikan tajam di bulan Desember.
+      - Grafik ini menunjukkan kenaikan tajam di bulan Desember.
+    words: [kenaikan, grafik]
+  - id: e07
+    type: speaking
+    text: Hadirin yang saya hormati, pertama-tama saya akan menunjukkan sebuah grafik.
+    meaning:
+      ar_eg: حضراتكم المحترمين، في الأول هوريكم رسم بياني.
+      ar: أيّها الحضور الكرام، سأعرض عليكم أوّلًا رسمًا بيانيًّا.
+      en: Distinguished audience, first of all I'll show you a chart.
+    words: [hadirin, pertama-tama, grafik]
+  - id: e08
+    type: dictation
+    text: Saya menyimpulkan bahwa penurunan harga terjadi setelah musim hujan.
+    meaning:
+      ar_eg: أنا بستنتج إن نزول الأسعار حصل بعد موسم المطر.
+      ar: أستنتج أنّ انخفاض الأسعار حدث بعد موسم الأمطار.
+      en: I conclude that the fall in prices came after the rainy season.
+    words: [menyimpulkan, penurunan]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Pertanyaan Ibu sangat bagus. Saya akan menjawabnya dengan data.
+    answers_meaning:
+      ar_eg:
+        - سؤال حضرتك حلو قوي. هجاوب عليه بالبيانات.
+        - سؤالك ممتاز يا مدام، وهرد عليه بالأرقام.
+      ar:
+        - سؤالك ممتاز يا سيّدتي، وسأجيب عنه بالبيانات.
+        - سؤال حضرتك جيّد جدًّا، وسأجيبه بالأرقام.
+      en:
+        - That's a very good question, ma'am. I'll answer it with data.
+        - Your question is excellent. I'll answer it with numbers.
+    words: [pertanyaan]
+dialogue:
+  title: Sesi tanya jawab
+  lines:
+    - speaker: Mohamed
+      text: Oleh karena itu, saya menyimpulkan bahwa Cap Go Meh membantu ekonomi Singkawang. Apakah ada pertanyaan?
+      ar_eg: وعلشان كده، بستنتج إن كاب جو مِه بيساعد اقتصاد سينجكاوانج. فيه أسئلة؟
+      ar: ولذلك أستنتج أنّ كاب غو مه يدعم اقتصاد سينغكاوانغ. هل من أسئلة؟
+      en: Therefore, I conclude that Cap Go Meh helps Singkawang's economy. Are there any questions?
+    - speaker: Bu Meilin
+      text: Bagaimana dengan penurunan setelah festival?
+      ar_eg: طب والنقص اللي بعد المهرجان؟
+      ar: وماذا عن الانخفاض بعد المهرجان؟
+      en: What about the fall after the festival?
+    - speaker: Mohamed
+      text: Pertanyaan yang bagus, Bu. Tampaknya pedagang perlu acara lain di luar musim festival.
+      ar_eg: سؤال حلو يا مدام. يبان إن التجار محتاجين فعاليات تانية برا موسم المهرجان.
+      ar: سؤال وجيه يا سيّدتي. يبدو أنّ التجّار يحتاجون إلى فعاليات أخرى خارج موسم المهرجان.
+      en: Good question, ma'am. It seems traders need other events outside the festival season.
+    - speaker: Bu Meilin
+      text: Kesimpulan yang berimbang. Terima kasih, Mohamed.
+      ar_eg: خلاصة متوازنة. شكرًا يا محمد.
+      ar: خلاصة متوازنة. شكرًا يا محمد.
+      en: A balanced conclusion. Thank you, Mohamed.
+new_words:
+  - word: penurunan
+    pos: noun
+    ar_eg: نقص / هبوط
+    ar: انخفاض
+    en: fall, decrease
+  - word: menyimpulkan
+    pos: verb
+    ar_eg: يستنتج
+    ar: يستنتج
+    en: to conclude
+  - word: pertanyaan
+    pos: noun
+    ar_eg: سؤال
+    ar: سؤال
+    en: question
+review:
+  status: draft
+  verified: false
