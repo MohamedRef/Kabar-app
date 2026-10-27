@@ -1,0 +1,176 @@
+schema: kabar.lesson/v1
+id: bipa7.u01.l09
+language: id
+title: Membacakan berita
+can_do:
+  ar_eg: تقرا نشرة أخبار قصيرة في الراديو بصوت واضح ونظام صحيح.
+  ar: أن تقرأ نشرة أخبار قصيرة في الإذاعة بصوت واضح وترتيب صحيح.
+  en: Read a short radio news bulletin with a clear voice and the right structure.
+slides:
+  - title: Selamat sore, pendengar
+    body:
+      ar_eg: |
+        النهارده إنت الـ pembawa acara (المذيع) في راديو سورونج، وهتـ membacakan (تقرا بصوت عالي) النشرة.
+        الترتيب:
+        1. تحية: Selamat sore, pendengar setia Radio Sorong.
+        2. أهم خبر الأول: الـ judul وبعدين التفاصيل.
+        3. كلمات الخبر: dilaporkan، diduga، ujarnya
+        4. ختام: Demikian kabar terkini. Sampai jumpa.
+        اقرا ببطء، واسكت ثانية بين كل خبر والتاني.
+      ar: |
+        أنت اليوم الـ pembawa acara (المذيع) في إذاعة سورونغ، وستـ membacakan (تقرأ بصوت عالٍ) النشرة.
+        الترتيب:
+        ١. التحية: Selamat sore, pendengar setia Radio Sorong.
+        ٢. الخبر الأهمّ أوّلًا: الـ judul ثم التفاصيل.
+        ٣. ألفاظ الخبر: dilaporkan وdiduga وujarnya
+        ٤. الختام: Demikian kabar terkini. Sampai jumpa.
+        اقرأ ببطء، وتوقّف لحظة بين الخبر والآخر.
+      en: |
+        Today you're the pembawa acara (presenter) on Radio Sorong, and you'll membacakan (read aloud) the bulletin.
+        The order:
+        1. Greeting: Selamat sore, pendengar setia Radio Sorong.
+        2. Top story first: the judul, then details.
+        3. News words: dilaporkan, diduga, ujarnya
+        4. Close: Demikian kabar terkini. Sampai jumpa.
+        Read slowly, and pause a moment between stories.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الـ pembawa acara بيعمل إيه؟
+      ar: ماذا يفعل الـ pembawa acara؟
+      en: What does a pembawa acara do?
+    options:
+      - بيصلّح الراديو.
+      - بيقدّم البرنامج ويقرا الأخبار.
+      - بيبيع الإعلانات.
+    answer: 1
+    words: [pembawa acara]
+  - id: e02
+    type: listen
+    text: Selamat sore, pendengar. Berikut kabar terkini dari Sorong.
+    question:
+      ar_eg: المذيع بيبدأ بإيه؟
+      ar: بمَ يبدأ المذيع؟
+      en: How does the presenter start?
+    options:
+      - بنكتة.
+      - بالإعلانات.
+      - بتحية للمستمعين وآخر الأخبار.
+    answer: 2
+    words: [pendengar, kabar terkini]
+  - id: e03
+    type: fill_blank
+    sentence: Malam ini Mohamed akan ___ berita di radio.
+    meaning:
+      ar_eg: الليلة محمد هيقرا الأخبار في الراديو.
+      ar: سيقرأ محمد الأخبار الليلة في الإذاعة.
+      en: Tonight Mohamed will read the news on the radio.
+    options: [membacakan, merajut, meresmikan]
+    answers: [membacakan]
+    words: [membacakan]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: ده كان آخر الأخبار. نتقابل بكرة.
+      ar: كانت هذه آخر الأخبار. إلى اللقاء غدًا.
+      en: That was the latest news. See you tomorrow.
+    answer: Demikian kabar terkini. Sampai jumpa besok.
+    distractors: [siaran, reporter]
+    words: [kabar terkini]
+  - id: e05
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: المراسل بتاعنا بيتابع من الملعب.
+      ar: مراسلنا يتابع من الملعب.
+      en: Our reporter is following it from the stadium.
+    answers:
+      - Reporter kami melaporkan dari stadion.
+      - Reporter kami meliput dari stadion.
+      - Reporter kita melaporkan dari stadion.
+      - Reporter kami mengikuti dari stadion.
+    words: [reporter]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: لما تقرا النشرة، تعمل إيه بين كل خبر والتاني؟
+      ar: ماذا تفعل بين خبر وآخر عند قراءة النشرة؟
+      en: What do you do between stories when reading the bulletin?
+    options:
+      - تسكت ثانية.
+      - تسرّع.
+      - تغني.
+    answer: 0
+    words: [membacakan]
+  - id: e07
+    type: speaking
+    text: Saya pembawa acara Anda, Mohamed, dari Radio Sorong.
+    meaning:
+      ar_eg: أنا المذيع بتاعكم، محمد، من راديو سورونج.
+      ar: معكم مذيعكم محمد من إذاعة سورونغ.
+      en: I'm your presenter, Mohamed, from Radio Sorong.
+    words: [pembawa acara]
+  - id: e08
+    type: dictation
+    text: Pembawa acara itu membacakan berita dengan suara yang jelas.
+    meaning:
+      ar_eg: المذيع قرا الأخبار بصوت واضح.
+      ar: قرأ المذيع الأخبار بصوت واضح.
+      en: The presenter read the news in a clear voice.
+    words: [pembawa acara, membacakan]
+  - id: e09
+    type: fill_blank
+    sentence: Dua nelayan ___ hilang setelah badai semalam.
+    meaning:
+      ar_eg: اتبلّغ إن اتنين صيادين اختفوا بعد العاصفة امبارح بالليل.
+      ar: أُفيد بفقدان صيّادَين بعد عاصفة البارحة.
+      en: Two fishermen were reported missing after last night's storm.
+    options: [dilaporkan, meresmikan, membacakan]
+    answers: [dilaporkan]
+    words: [dilaporkan]
+  - id: e10
+    type: speaking
+    text: Atlet Sorong meraih emas di PON. "Ini untuk Papua," ujarnya.
+    meaning:
+      ar_eg: رياضي من سورونج كسب الدهب في الـ PON. «دي علشان بابوا»، قالها.
+      ar: 'فاز رياضيّ من سورونغ بالذهب في PON، وقال: «هذه لبابوا».'
+      en: A Sorong athlete took gold at PON. "This is for Papua," he said.
+    words: [atlet, PON, ujarnya]
+dialogue:
+  title: Lampu merah menyala
+  lines:
+    - speaker: Kaka Yohana
+      text: Mohamed, tiga detik lagi kita siaran. Kamu jadi pembawa acara malam ini.
+      ar_eg: يا محمد، تلات ثواني وندخل الهوا. إنت المذيع الليلة.
+      ar: يا محمد، بعد ثلاث ثوانٍ نبدأ البثّ، وأنت المذيع الليلة.
+      en: Mohamed, three seconds to air. You're the presenter tonight.
+    - speaker: Mohamed
+      text: Selamat malam, pendengar. Saya akan membacakan kabar terkini dari Sorong.
+      ar_eg: مساء الخير يا مستمعين. هقرا لكم آخر الأخبار من سورونج.
+      ar: مساء الخير أيّها المستمعون. سأقرأ عليكم آخر الأخبار من سورونغ.
+      en: Good evening, listeners. I'll read you the latest news from Sorong.
+    - speaker: Kaka Yohana
+      text: Bagus. Pelan sedikit, ya. Lalu kabar PON.
+      ar_eg: حلو. بالراحة شوية. وبعدين خبر الـ PON.
+      ar: جيّد، أبطئ قليلًا، ثم خبر PON.
+      en: Good. A little slower. Then the PON story.
+    - speaker: Mohamed
+      text: Atlet Sorong meraih emas. Demikian kabar terkini. Sampai jumpa besok.
+      ar_eg: رياضي سورونج كسب الدهب. ده كان آخر الأخبار. نتقابل بكرة.
+      ar: رياضيّ سورونغ فاز بالذهب. كانت هذه آخر الأخبار، إلى اللقاء غدًا.
+      en: A Sorong athlete took gold. That's the latest. See you tomorrow.
+new_words:
+  - word: membacakan
+    pos: verb
+    ar_eg: يقرا بصوت عالي لحد
+    ar: يقرأ على الآخرين بصوت عالٍ
+    en: to read aloud (for others)
+  - word: pembawa acara
+    pos: noun
+    ar_eg: مذيع / مقدّم برنامج
+    ar: مقدّم برنامج
+    en: presenter, host
+review:
+  status: draft
+  verified: false
