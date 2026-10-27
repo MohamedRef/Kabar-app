@@ -91,27 +91,6 @@ fn new_id() -> String {
     uuid::Uuid::now_v7().to_string()
 }
 
-/// The level of `id`'s unit (`bipa2.u03` → `bipa2`).
-fn level_of(unit: &str) -> String {
-    unit.split_once('.').map_or(unit, |(l, _)| l).to_string()
-}
-
-/// (Indonesian level, Javanese level once that journey has started).
-fn learner_levels(db: &Db, coach: &Coach) -> (String, Option<String>) {
-    let completed = db.0.borrow().completed_lessons().unwrap_or_default();
-    let start = crate::journey::start_level(db, coach.profile.peek().as_ref());
-    let id = crate::journey::current_unit(&completed, start.as_deref(), false)
-        .map(|u| level_of(&u))
-        .or(start)
-        .unwrap_or_else(|| "bipa1".into());
-    let jv = completed
-        .iter()
-        .any(|l| l.starts_with('j'))
-        .then(|| crate::journey::current_unit(&completed, None, true).map(|u| level_of(&u)))
-        .flatten();
-    (id, jv)
-}
-
 fn save(db: &Db, row: ChatRow) {
     if let Err(e) = db.0.borrow_mut().save_chat_row(&row) {
         eprintln!("kabar: saving the chat failed: {e}");
@@ -159,7 +138,7 @@ pub fn ChatScreen() -> Element {
     let start_db = db.clone();
     let mut start = move |(p, s): (&'static Persona, Scenario)| {
         let db = &start_db;
-        let (id_level, jv_level) = learner_levels(db, &coach);
+        let (id_level, jv_level) = crate::journey::learner_levels(db, coach.profile.peek().as_ref());
         let level = chat_level(p, &id_level, jv_level.as_deref());
         let now = now_ms();
         let id = new_id();

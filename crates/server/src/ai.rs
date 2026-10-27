@@ -3,7 +3,7 @@
 //! renders prompts and validates answers; the server adds the key, enforces
 //! privacy and quotas, and caches. HTTP calls live in `wasm`.
 
-use kabar_protocol::ai::{EngineCall, EngineError, EngineId, Task};
+use kabar_protocol::ai::{CacheKey, EngineCall, EngineError, EngineId, Task};
 use serde_json::{Value, json};
 
 use crate::blobs::Image;
@@ -117,6 +117,13 @@ pub fn route(call: &EngineCall, config: &Config) -> Result<Route, EngineError> {
 /// model never serves the old model's answers.
 pub fn cache_id(call: &EngineCall, model: &str) -> String {
     format!("{}:{model}", call.cache_key.id())
+}
+
+/// Prefix every model's copy of `key`'s answer shares in D1 (see
+/// [`cache_id`]): a 👎 drops all of them, because the model that wrote the
+/// rejected answer may have changed since.
+pub fn cache_prefix(key: &CacheKey) -> String {
+    format!("{}:", key.id())
 }
 
 /// Personal answers stay out of the shared cache; the app keeps them locally.
@@ -262,7 +269,7 @@ pub fn upstream_status_error(service: &str, status: u16, retry_after_s: Option<u
 mod tests {
     use std::collections::HashMap;
 
-    use kabar_protocol::ai::{CacheKey, Task};
+    use kabar_protocol::ai::Task;
 
     use super::*;
 
@@ -274,7 +281,13 @@ mod tests {
 
     fn call(task: Task, engine: EngineId) -> EngineCall {
         EngineCall {
-            cache_key: CacheKey { task, input_hash: "ab12".into(), engine, prompt_version: 1 },
+            cache_key: CacheKey {
+                task,
+                input_hash: "ab12".into(),
+                engine,
+                prompt_version: 1,
+                profile_hash: String::new(),
+            },
             system: "Return JSON.".into(),
             // docs/SPEC.md §24
             user: "Sek tak lapor pusat".into(),
@@ -349,6 +362,12 @@ mod tests {
         let c = call(Task::AnalyzeText, EngineId::WorkersAi);
         assert_eq!(cache_id(&c, "m1"), format!("{}:m1", c.cache_key.id()));
         assert_ne!(cache_id(&c, "m1"), cache_id(&c, "m2"));
+        // A 👎 clears every model's copy and nothing else.
+        let prefix = cache_prefix(&c.cache_key);
+        assert!(cache_id(&c, "m1").starts_with(&prefix) && cache_id(&c, "m2").starts_with(&prefix));
+        let mut other = c.clone();
+        other.cache_key.input_hash = "ab123".into();
+        assert!(!cache_id(&other, "m1").starts_with(&prefix));
         assert!(may_read_cache(&c));
         let repair = EngineCall { is_repair: true, ..c };
         assert!(may_cache(&repair) && !may_read_cache(&repair));
