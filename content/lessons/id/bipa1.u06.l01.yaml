@@ -88,18 +88,19 @@ exercises:
   - id: e03
     type: listen
     text: Saya membaca buku.
-    options: [Saya menulis buku., Saya membaca buku., Saya memakai baju.]
+    options: [Saya menulis surat., Saya membaca buku., Saya memakai baju.]
     answer: 1
-    words: [membaca, buku]
+    words: [membaca, buku, surat]
   - id: e04
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا بقرا كتاب.
-      ar: أقرأ كتابًا.
-      en: I'm reading a book.
-    answers: [Saya membaca buku., Saya membaca buku, Aku membaca buku., Aku membaca buku, Saya baca buku., Aku baca buku.]
-    words: [membaca, buku]
+    type: fill_blank
+    sentence: Rina ___ surat itu.
+    meaning:
+      ar_eg: رينا شافت الجواب ده.
+      ar: رأت رينا تلك الرسالة.
+      en: Rina sees that letter.
+    options: [melihat, memasak, memakai]
+    answers: [melihat]
+    words: [melihat, surat]
   - id: e05
     type: match_pairs
     pairs:
@@ -149,12 +150,35 @@ exercises:
     words: [menulis, surat]
   - id: e08
     type: speaking
-    text: Saya memakai baju batik.
+    text: Nasi Bu Yanti enak sekali!
     meaning:
-      ar_eg: أنا لابس قميص باتيك.
-      ar: أرتدي قميص باتيك.
-      en: I'm wearing a batik shirt.
-    words: [memakai]
+      ar_eg: رز طنط يانتي حلو أوي!
+      ar: أرز السيدة يانتي لذيذ جدًا!
+      en: Bu Yanti's rice is delicious!
+    words: [nasi, enak]
+  - id: e09
+    type: listen
+    text: Bu Yanti memasak nasi. Enak sekali!
+    options: ['Bu Yanti memasak nasi. Enak sekali!', 'Bu Yanti memasak nasi. Bagus sekali!', 'Bu Yanti membaca surat. Bagus sekali!']
+    answer: 0
+    meaning:
+      ar_eg: طنط يانتي بتطبخ رز. حلو أوي!
+      ar: السيدة يانتي تطبخ الأرز. لذيذ جدًا!
+      en: Bu Yanti is cooking rice. Delicious!
+    words: [memasak, nasi, enak, membaca]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «الرز ده طعمه حلو»؟
+      ar: كيف تقول «هذا الأرز لذيذ»؟
+      en: How do you say "This rice is tasty"?
+    options: ['Nasi ini enak.', 'Nasi ini bagus.', 'Saya melihat nasi.']
+    answer: 0
+    explain:
+      ar_eg: enak للأكل والطعم؛ bagus للشكل والحاجة الحلوة عمومًا.
+      ar: enak للطعم، وbagus للمظهر والجودة عمومًا.
+      en: enak is for taste; bagus is for looks and quality in general.
+    words: [nasi, enak, melihat]
 dialogue:
   lines:
     - speaker: Bu Yanti

@@ -83,7 +83,7 @@ exercises:
       en: The cat is under the table.
     options: [bawah, luar, depan, atas]
     answers: [bawah]
-    words: [bawah]
+    words: [bawah, kucing, meja]
   - id: e04
     type: build_sentence
     source:
@@ -94,14 +94,15 @@ exercises:
     distractors: [bawah, ke]
     words: [atas, meja]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: التذكرة فين؟
-      ar: أين التذكرة؟
-      en: Where is the ticket?
-    answers: ['Tiketnya di mana?', Tiketnya di mana, 'Di mana tiketnya?', 'Tiket di mana?', 'Di mana tiket?']
-    words: [tiket]
+    type: fill_blank
+    sentence: Kucingnya di ___ rumah.
+    meaning:
+      ar_eg: القطة جوه البيت.
+      ar: القطة داخل البيت.
+      en: The cat is inside the house.
+    options: [dalam, luar, kursi]
+    answers: [dalam]
+    words: [kucing, dalam]
   - id: e06
     type: speaking
     text: Bukunya di atas meja, dan tasnya di bawah kursi.
@@ -110,6 +111,52 @@ exercises:
       ar: الكتاب على الطاولة، والحقيبة تحت الكرسي.
       en: The book is on the table, and the bag is under the chair.
     words: [atas, bawah, meja, kursi]
+  - id: e07
+    type: listen
+    text: Kucingnya di luar, di bawah kursi.
+    options: ['Kucingnya di luar, di bawah kursi.', 'Kucingnya di dalam, di bawah kursi.', 'Kucingnya di luar, di atas kursi.']
+    answer: 0
+    meaning:
+      ar_eg: القطة برّه، تحت الكرسي.
+      ar: القطة في الخارج، تحت الكرسي.
+      en: The cat is outside, under the chair.
+    words: [kucing, luar, kursi, dalam, atas]
+  - id: e08
+    type: match_pairs
+    pairs:
+      - text: atas
+        ar_eg: فوق
+        ar: فوق
+        en: on top, above
+      - text: bawah
+        ar_eg: تحت
+        ar: تحت
+        en: under, below
+      - text: dalam
+        ar_eg: جوه
+        ar: داخل
+        en: inside
+      - text: luar
+        ar_eg: برّه
+        ar: خارج
+        en: outside
+      - text: kursi
+        ar_eg: كرسي
+        ar: كرسي
+        en: chair
+      - text: kucing
+        ar_eg: قطة
+        ar: قطة
+        en: cat
+    words: [atas, bawah, dalam, luar, kursi, kucing]
+  - id: e09
+    type: speaking
+    text: Saya di luar, kucing saya di dalam.
+    meaning:
+      ar_eg: أنا برّه، وقطتي جوه.
+      ar: أنا في الخارج، وقطتي في الداخل.
+      en: I'm outside; my cat is inside.
+    words: [luar, kucing, dalam]
 dialogue:
   lines:
     - speaker: Bu Yanti

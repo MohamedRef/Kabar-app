@@ -64,18 +64,6 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: suka
-        ar_eg: بيحب
-        ar: يحب
-        en: like
-      - text: mau
-        ar_eg: عايز
-        ar: يريد
-        en: want
-      - text: bisa
-        ar_eg: يقدر / بيعرف
-        ar: يستطيع
-        en: can
       - text: harus
         ar_eg: لازم
         ar: يجب
@@ -84,7 +72,23 @@ exercises:
         ar_eg: محتاج
         ar: يحتاج
         en: need
-    words: [suka, mau, bisa, harus, perlu]
+      - text: tidak usah
+        ar_eg: مش لازم
+        ar: لا داعي
+        en: no need to
+      - text: masuk
+        ar_eg: يدخل
+        ar: يدخل
+        en: enter
+      - text: pulang
+        ar_eg: يروّح
+        ar: يعود إلى البيت
+        en: go home
+      - text: sepatu
+        ar_eg: جزمة
+        ar: حذاء
+        en: shoes
+    words: [harus, perlu, tidak usah, masuk, pulang, sepatu]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -100,24 +104,24 @@ exercises:
     words: [boleh, masuk]
   - id: e03
     type: listen
-    text: Saya bisa berenang.
-    options: [Saya suka berenang., Saya mau berenang., Saya bisa berenang.]
-    answer: 2
-    words: [bisa, berenang]
+    text: Tidak usah pulang sekarang.
+    options: ['Tidak usah pulang sekarang.', 'Kamu harus pulang sekarang.', 'Kamu perlu pulang sekarang.']
+    answer: 0
+    meaning:
+      ar_eg: مش لازم تروّح دلوقتي.
+      ar: لا داعي للعودة إلى البيت الآن.
+      en: No need to go home now.
+    words: [tidak usah, pulang, harus, perlu]
   - id: e04
     type: fill_blank
-    sentence: Maaf, saya tidak ___ datang besok.
+    sentence: Sudah malam. Saya harus ___.
     meaning:
-      ar_eg: معلش، مش هقدر آجي بكرة.
-      ar: عذرًا، لا أستطيع المجيء غدًا.
-      en: Sorry, I can't come tomorrow.
-    options: [bisa, suka, boleh]
-    answers: [bisa]
-    explain:
-      ar_eg: «مقدرش» = tidak bisa. tidak boleh معناها «ممنوع».
-      ar: «لا أستطيع» = tidak bisa، أما tidak boleh فـ «ممنوع».
-      en: '"Can''t" = tidak bisa; tidak boleh means "not allowed".'
-    words: [bisa]
+      ar_eg: الوقت اتأخر. لازم أروّح.
+      ar: حلّ الليل. يجب أن أعود إلى البيت.
+      en: It's late. I have to go home.
+    options: [pulang, masuk, coba]
+    answers: [pulang]
+    words: [harus, pulang]
   - id: e05
     type: fill_blank
     sentence: Di masjid tidak ___ pakai sepatu.
@@ -139,14 +143,15 @@ exercises:
     answers: [harus]
     words: [harus, coba]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بتعرف إندونيسي؟
-      ar: هل تتكلم الإندونيسية؟
-      en: Do you speak Indonesian?
-    answers: ['Bisa bahasa Indonesia?', 'Kamu bisa bahasa Indonesia?', 'Anda bisa bahasa Indonesia?', 'Kamu bisa berbicara bahasa Indonesia?', 'Anda bisa berbicara bahasa Indonesia?', 'Apakah kamu bisa bahasa Indonesia?', 'Apakah Anda bisa berbicara bahasa Indonesia?']
-    words: [bisa]
+    type: listen
+    text: Silakan masuk. Tidak usah buka sepatu.
+    options: ['Silakan masuk. Tidak usah buka sepatu.', 'Silakan masuk. Kamu harus buka sepatu.', 'Silakan pulang. Tidak usah buka sepatu.']
+    answer: 0
+    meaning:
+      ar_eg: اتفضل ادخل. مش لازم تقلع الجزمة.
+      ar: تفضل بالدخول. لا داعي لخلع الحذاء.
+      en: Please come in. No need to take your shoes off.
+    words: [masuk, tidak usah, sepatu, harus, pulang]
   - id: e08
     type: translate
     direction: from_target
@@ -156,6 +161,27 @@ exercises:
       ar: [لا تحتاج إلى المجيء., لا داعي لأن تأتي, ليس عليك أن تأتي]
       en: [You don't need to come., You don't have to come, No need for you to come]
     words: [perlu]
+  - id: e09
+    type: speaking
+    text: Boleh saya coba sepatu ini?
+    meaning:
+      ar_eg: ممكن أجرّب الجزمة دي؟
+      ar: هل يمكنني تجربة هذا الحذاء؟
+      en: May I try these shoes on?
+    words: [coba, sepatu]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «مش لازم تيجي»؟
+      ar: كيف تقول «لا داعي لأن تأتي»؟
+      en: How do you say "No need to come"?
+    options: ['Tidak usah datang.', 'Tidak boleh datang.', 'Coba datang.']
+    answer: 0
+    explain:
+      ar_eg: tidak usah = مش لازم (بلطف). tidak boleh = ممنوع.
+      ar: tidak usah = لا داعي (بلطف)، وtidak boleh = ممنوع.
+      en: tidak usah = no need (gently); tidak boleh = not allowed.
+    words: [tidak usah, coba]
 dialogue:
   lines:
     - speaker: Pak Irwan
