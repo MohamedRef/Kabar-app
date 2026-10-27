@@ -1,0 +1,204 @@
+schema: kabar.lesson/v1
+id: bipa3.u01.l08
+language: id
+title: Kartu Lebaran
+can_do:
+  ar_eg: تكتب كارت تهنئة بالعيد من أوله لآخره.
+  ar: أن تكتب بطاقة تهنئة بالعيد كاملة.
+  en: Write an Eid card.
+slides:
+  - title: Kartu Lebaran, langkah demi langkah
+    grammar: id.preposition.extended
+    body:
+      ar_eg: |
+        كارت العيد بيمشي كده:
+        ١) لمين: Kepada Pak Irwan dan keluarga besar (keluarga besar = العيلة الكبيرة كلها).
+        ٢) التهنئة والسماح: Selamat Idulfitri, mohon maaf lahir dan batin.
+        ٣) دعوة بـ semoga: Semoga kita bisa bersilaturahmi lagi. silaturahmi من العربي «صلة الرحم» = زيارة الأهل والحبايب.
+        ٤) الختام: Salam hangat (سلامات حارة)، واسمك.
+      ar: |
+        تسير بطاقة العيد هكذا:
+        ١) المرسَل إليه: Kepada Pak Irwan dan keluarga besar (keluarga besar = العائلة الممتدة).
+        ٢) التهنئة وطلب المسامحة: Selamat Idulfitri, mohon maaf lahir dan batin.
+        ٣) دعاء بـsemoga: Semoga kita bisa bersilaturahmi lagi. وsilaturahmi من العربية «صلة الرحم» أي زيارة الأقارب والأحبّة.
+        ٤) الختام: Salam hangat (تحيات حارّة) ثم الاسم.
+      en: |
+        An Eid card goes like this:
+        1) Who it's to: Kepada Pak Irwan dan keluarga besar (keluarga besar = the whole extended family).
+        2) Greeting and forgiveness: Selamat Idulfitri, mohon maaf lahir dan batin.
+        3) A wish with semoga: Semoga kita bisa bersilaturahmi lagi. silaturahmi (from Arabic «صلة الرحم») = keeping ties by visiting family and friends.
+        4) Closing: Salam hangat (warm regards) and your name.
+    examples:
+      - text: Kepada Pak Irwan dan keluarga besar.
+        ar_eg: لأستاذ إروان والعيلة الكبيرة كلها.
+        ar: إلى الأستاذ إروان وعائلته الكبيرة.
+        en: To Pak Irwan and the whole family.
+      - text: Semoga kita bisa bersilaturahmi lagi. Salam hangat, Mohamed.
+        ar_eg: يا رب نتزاور تاني. سلامات حارة، محمد.
+        ar: عسى أن نتزاور مرة أخرى. تحياتي الحارّة، محمد.
+        en: I hope we can visit each other again. Warm regards, Mohamed.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: silaturahmi
+        ar_eg: صلة الرحم، زيارة الأهل والحبايب
+        ar: صلة الرحم
+        en: keeping family ties, visiting loved ones
+      - text: keluarga besar
+        ar_eg: العيلة الكبيرة كلها
+        ar: العائلة الممتدة
+        en: extended family
+      - text: salam hangat
+        ar_eg: سلامات حارة
+        ar: تحيات حارّة
+        en: warm regards
+      - text: mohon maaf lahir dan batin
+        ar_eg: سامحني في الظاهر والباطن
+        ar: سامحني ظاهرًا وباطنًا
+        en: forgive my wrongs, outward and inward
+    words: [silaturahmi, keluarga besar, salam hangat, lahir dan batin]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي سطر ينفع يبقى أول الكارت؟
+      ar: أيّ سطر يصلح بدايةً للبطاقة؟
+      en: Which line can open the card?
+    options: ["Tentang Bu Yanti dan keluarga,", "Kepada Bu Yanti dan keluarga,", "Sejak Bu Yanti dan keluarga,"]
+    answer: 1
+    explain:
+      ar_eg: الكارت رايح لناس، فبنبدأ بـ kepada.
+      ar: البطاقة موجّهة إلى أشخاص، فتبدأ بـkepada.
+      en: The card is addressed to people, so it starts with kepada.
+    words: [kepada]
+  - id: e03
+    type: listen
+    text: Selamat Idulfitri untuk Bu Yanti dan keluarga besar. Semoga kita bisa bersilaturahmi lagi.
+    question:
+      ar_eg: الكارت ده لمين؟
+      ar: لمن هذه البطاقة؟
+      en: Who is the card for?
+    options: ["Pak Irwan dan keluarga", "Bu Yanti dan keluarga besar", "Rina dan Raka"]
+    answer: 1
+    meaning:
+      ar_eg: عيد فطر سعيد لمدام يانتي والعيلة كلها. يا رب نتزاور تاني.
+      ar: عيد فطر مبارك للسيدة يانتي وعائلتها الكبيرة، عسى أن نتزاور مرة أخرى.
+      en: Happy Eid al-Fitr to Bu Yanti and the whole family. I hope we can visit each other again.
+    words: [keluarga besar, silaturahmi]
+  - id: e04
+    type: fill_blank
+    sentence: Salam ___ dari Mataram, Mohamed
+    meaning:
+      ar_eg: سلامات حارة من ماتارام، محمد
+      ar: تحيات حارّة من ماتارام، محمد
+      en: Warm regards from Mataram, Mohamed
+    options: [besar, hangat, baru]
+    answers: [hangat]
+    words: [salam hangat]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: العيد وقت لصلة الرحم.
+      ar: العيد وقت لصلة الرحم.
+      en: Eid is a time for visiting family and friends.
+    answer: Lebaran adalah waktu untuk silaturahmi.
+    distractors: [kepada, tentang]
+    words: [silaturahmi, Lebaran]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "لمدام يانتي والعيلة: عيد فطر سعيد، وسامحيني على أي غلط."
+      ar: "إلى السيدة يانتي وعائلتها: عيد فطر مبارك، وسامحيني ظاهرًا وباطنًا."
+      en: 'To Bu Yanti and family: Happy Eid al-Fitr; please forgive my wrongs, outward and inward.'
+    answers:
+      - Kepada Bu Yanti dan keluarga, selamat Idulfitri. Mohon maaf lahir dan batin.
+      - Kepada Bu Yanti dan keluarga, selamat Idulfitri, mohon maaf lahir dan batin.
+      - Kepada Bu Yanti dan keluarga, selamat Idulfitri. Mohon maaf lahir dan batin
+      - Kepada Bu Yanti dan keluarga, selamat Idulfitri, mohon maaf lahir dan batin
+      - Kepada Bu Yanti dan keluarga, selamat Hari Raya Idulfitri. Mohon maaf lahir dan batin.
+      - Kepada Bu Yanti dan keluarga, selamat Lebaran. Mohon maaf lahir dan batin.
+      - Kepada Bu Yanti dan keluarga besar, selamat Idulfitri. Mohon maaf lahir dan batin.
+      - Kepada Bu Yanti sekeluarga, selamat Idulfitri. Mohon maaf lahir dan batin.
+    words: [kepada, Idulfitri, lahir dan batin]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: سلامات حارة من لومبوك.
+      ar: تحيات حارّة من لومبوك.
+      en: Warm regards from Lombok.
+    answers:
+      - Salam hangat dari Lombok.
+      - Salam hangat dari Lombok
+      - Salam hangat dari Lombok!
+    words: [salam hangat]
+  - id: e08
+    type: dictation
+    text: Kami mudik ke rumah keluarga besar.
+    meaning:
+      ar_eg: سافرنا البلد لبيت العيلة الكبيرة.
+      ar: سافرنا إلى بيت العائلة الكبيرة في البلدة.
+      en: We went home to the extended family's house.
+    words: [keluarga besar, mudik]
+  - id: e09
+    type: speaking
+    text: Semoga kita bisa bersilaturahmi lagi tahun depan.
+    meaning:
+      ar_eg: يا رب نتزاور تاني السنة الجاية.
+      ar: عسى أن نتزاور مرة أخرى في العام القادم.
+      en: I hope we can visit each other again next year.
+    words: [silaturahmi]
+dialogue:
+  title: Menulis kartu untuk Pak Irwan
+  lines:
+    - speaker: Mohamed
+      text: Rina, tolong baca kartu Lebaran saya.
+      ar_eg: يا رينا، لو سمحتي اقري كارت العيد بتاعي.
+      ar: يا رينا، اقرئي بطاقة العيد التي كتبتها من فضلك.
+      en: Rina, please read my Eid card.
+    - speaker: Rina
+      text: Boleh. "Kepada Pak Irwan dan keluarga besar." Bagus!
+      ar_eg: ماشي. «لأستاذ إروان والعيلة الكبيرة». حلو!
+      ar: حسنًا. «إلى الأستاذ إروان وعائلته الكبيرة». جميل!
+      en: Sure. "To Pak Irwan and the whole family." Good!
+    - speaker: Mohamed
+      text: Lalu saya tulis, "Selamat Idulfitri, mohon maaf lahir dan batin."
+      ar_eg: "وبعدين كتبت: «عيد فطر سعيد، وسامحني على أي غلط»."
+      ar: "ثم كتبتُ: «عيد فطر مبارك، وسامحني ظاهرًا وباطنًا»."
+      en: Then I wrote, "Happy Eid al-Fitr; please forgive my wrongs, outward and inward."
+    - speaker: Rina
+      text: Tambahkan doa juga, "Semoga kita bisa bersilaturahmi lagi."
+      ar_eg: "زوّد دعوة كمان: «يا رب نتزاور تاني»."
+      ar: "أضف دعاءً أيضًا: «عسى أن نتزاور مرة أخرى»."
+      en: 'Add a wish too: "I hope we can visit each other again."'
+    - speaker: Mohamed
+      text: Oke. Di akhir saya tulis, "Salam hangat dari Mataram."
+      ar_eg: "تمام. وفي الآخر هكتب: «سلامات حارة من ماتارام»."
+      ar: "حسنًا. وفي الختام أكتب: «تحيات حارّة من ماتارام»."
+      en: OK. At the end I'll write, "Warm regards from Mataram."
+    - speaker: Rina
+      text: Bagus sekali! Pak Irwan pasti senang.
+      ar_eg: حلو جدًا! أستاذ إروان أكيد هيفرح.
+      ar: رائع! سيفرح الأستاذ إروان بالتأكيد.
+      en: Excellent! Pak Irwan will surely be happy.
+new_words:
+  - word: silaturahmi
+    pos: noun
+    ar_eg: صلة الرحم، زيارة الأهل والحبايب (bersilaturahmi = يتزاوروا)
+    ar: صلة الرحم (bersilaturahmi = يتزاورون)
+    en: keeping family ties by visiting (bersilaturahmi = to visit each other)
+    arabic: صلة الرحم
+  - word: keluarga besar
+    pos: noun
+    ar_eg: العيلة الكبيرة كلها
+    ar: العائلة الممتدة
+    en: extended family
+  - word: salam hangat
+    pos: phrase
+    ar_eg: سلامات حارة (ختام جواب)
+    ar: تحيات حارّة (ختام رسالة)
+    en: warm regards (letter closing)
+review:
+  status: draft
+  verified: false
