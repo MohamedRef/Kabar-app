@@ -6,7 +6,7 @@
 use std::cell::RefCell;
 use std::rc::Rc;
 
-use kabar_protocol::ai::{EngineCall, EngineError, EngineReply};
+use kabar_protocol::ai::{AiReject, CacheKey, EngineCall, EngineError, EngineReply};
 use kabar_protocol::cloud::{ErrorCode, TtsRequest};
 use tokio::sync::mpsc::UnboundedSender;
 use tokio::sync::oneshot;
@@ -92,6 +92,13 @@ impl CloudLink {
             Ok(reply) => reply,
             Err(why) => Err(EngineError::Unavailable { reason: why.to_string() }),
         }
+    }
+
+    /// Tells Kabar Cloud the learner rejected the answer cached under `key`
+    /// (`POST /v1/ai/reject`).
+    pub async fn ai_reject(&self, key: CacheKey) -> Result<(), Unreachable> {
+        let reject = AiReject { cache_key: key };
+        self.with_token(move |api, token| api.ai_reject(token, &reject)).await
     }
 
     /// MP3 for `req` through `POST /v1/tts`.

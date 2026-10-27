@@ -1,0 +1,145 @@
+# Grammar spotting golden set (kabar_core::grammar::detect, test golden_spots).
+# Spec §24 texts first. Every hit is listed as "grammar id: matched words";
+# affix points (di-, meN-…-kan, -nya) are the word-part layer's, not listed here.
+- text: "Saya sedang membaca buku."
+  lang: id
+  hits:
+    - "id.aspect.markers: sedang"
+    - "id.pronoun.personal: Saya"
+- text: "Rumahnya dibersihkan kemarin."
+  lang: id
+  hits:
+    - "id.time.sequence: kemarin"
+- text: "Anak-anak bermain di taman."
+  lang: id
+  hits:
+    - "id.preposition.di-ke-dari: di"
+- text: "Kesehatan itu penting."
+  lang: id
+  hits:
+    - "id.demonstrative.ini-itu: itu"
+- text: "Apa kabar?"
+  lang: id
+  hits:
+    - "id.question.apa: Apa"
+- text: "iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa"
+  lang: id
+  hits: []
+- text: "Which is, gue literally capek banget."
+  lang: id
+  hits:
+    - "id.intensifier.basic: banget"
+    - "id.register.formal-informal: gue"
+- text: "Sek tak lapor pusat"
+  lang: jv
+  hits:
+    - "jv.particle.basic: Sek"
+    - "jv.proclitic.tak-kok-di: tak"
+- text: "ng prabowo?"
+  lang: jv
+  hits:
+    - "jv.chat.normalize: ng"
+    - "jv.preposition.place: ng"
+- text: "piye dhe"
+  lang: jv
+  hits:
+    - "jv.address.terms: dhe"
+    - "jv.question.words: piye"
+- text: "arp dicul piro"
+  lang: jv
+  hits:
+    - "jv.aspect.wis-durung-lagi-arep: arp"
+    - "jv.chat.normalize: arp"
+    - "jv.chat.normalize: dicul"
+    - "jv.chat.normalize: piro"
+    - "jv.question.words: piro"
+- text: "Kowe wis mangan?"
+  lang: jv
+  hits:
+    - "jv.aspect.wis-durung-lagi-arep: wis"
+    - "jv.pronoun.ngoko: Kowe"
+- text: "Sampeyan sampun nedha?"
+  lang: jv
+  hits:
+    - "jv.krama-inggil.verbs: nedha"
+    - "jv.krama.function-words: sampun"
+    - "jv.pronoun.krama: Sampeyan"
+- text: "Panjenengan sampun dhahar?"
+  lang: jv
+  hits:
+    - "jv.krama-inggil.verbs: dhahar"
+    - "jv.krama.function-words: sampun"
+    - "jv.pronoun.krama: Panjenengan"
+- text: "Koen wis mangan ta, rek?"
+  lang: jv
+  hits:
+    - "jv.address.terms: rek"
+    - "jv.aspect.wis-durung-lagi-arep: wis"
+    - "jv.dialect.arek: Koen"
+    - "jv.particle.basic: ta"
+- text: "Saya belum pernah ke Bali, tetapi teman saya sudah."
+  lang: id
+  hits:
+    - "id.aspect.markers: sudah"
+    - "id.aspect.pernah: belum pernah"
+    - "id.conjunction.basic: tetapi"
+    - "id.preposition.di-ke-dari: ke"
+    - "id.pronoun.personal: Saya"
+    - "id.pronoun.personal: saya"
+- text: "Di kamar ini tidak ada kursi."
+  lang: id
+  hits:
+    - "id.ada: tidak ada"
+    - "id.demonstrative.ini-itu: ini"
+    - "id.preposition.di-ke-dari: Di"
+- text: "Kopi Toraja lebih enak daripada kopi sachet."
+  lang: id
+  hits:
+    - "id.comparison.lebih: lebih … daripada"
+- text: "Bukan hanya murah, tetapi juga enak."
+  lang: id
+  hits:
+    - "id.conjunction.bukan-hanya: Bukan hanya … tetapi juga"
+- text: "Surat itu ditulis oleh Bu Sari."
+  lang: id
+  hits:
+    - "id.address.terms: Bu"
+    - "id.demonstrative.ini-itu: itu"
+    - "id.voice.active-passive: ditulis oleh"
+- text: "Meskipun hujan, kami tetap pergi supaya tidak terlambat."
+  lang: id
+  hits:
+    - "id.conjunction.concessive: Meskipun"
+    - "id.conjunction.purpose-condition: supaya"
+    - "id.negation.tidak-bukan: tidak"
+    - "id.pronoun.personal: kami"
+- text: "Jangan lupa bawa payung, ya!"
+  lang: id
+  hits:
+    - "id.prohibition.jangan: Jangan"
+- text: "Mas Rizal membelikan saya kopi."
+  lang: id
+  hits:
+    - "id.address.terms: Mas"
+    - "id.pronoun.personal: saya"
+- text: "gpp, yg penting udh sampai"
+  lang: id
+  hits:
+    - "id.aspect.markers: udh"
+    - "id.chat.abbreviations: gpp"
+    - "id.chat.abbreviations: udh"
+    - "id.chat.abbreviations: yg"
+    - "id.yang.basic: yg"
+- text: "Bapak sampun rawuh, mangga lenggah."
+  lang: jv
+  hits:
+    - "jv.etiquette.phrases: mangga"
+    - "jv.krama-inggil.verbs: lenggah"
+    - "jv.krama-inggil.verbs: rawuh"
+    - "jv.krama.function-words: sampun"
+- text: "Aku durung tau nang Surabaya."
+  lang: jv
+  hits:
+    - "jv.aspect.wis-durung-lagi-arep: durung"
+    - "jv.preposition.place: nang"
+    - "jv.pronoun.ngoko: Aku"
