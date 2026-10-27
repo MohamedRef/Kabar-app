@@ -1,6 +1,6 @@
 # Souvenir art manifest
 
-Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_art.rs`; do not edit by hand. Every unit earns one souvenir. **art** is its card in `assets/src/souvenirs/`, or *pending*: until the card exists the app shows the level's landmark from `assets/src/map/`. Card files must be named in `CARDS` there; files no unit uses are listed at the end.
+Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_art.rs`; do not edit by hand. Every unit earns one souvenir. **art** is its card in `assets/src/souvenirs/`, or *pending*: until the card exists the app shows the level's landmark from `assets/src/map/`. A card is named by its unit id (`assets/src/souvenirs/<unit>.png`).
 
 ## BIPA 1 · Jakarta
 
@@ -53,7 +53,7 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 |---|---|---|---|
 | bipa4.u01 | Makassar | Kapal Pinisi (Pinisi schooners) | *pending* |
 | bipa4.u02 | Maros | Menara Karst Rammang-Rammang (Karst towers of Rammang-Rammang) | *pending* |
-| bipa4.u03 | Rantepao | Rumah Tongkonan (Toraja tongkonan houses) | `tongkonan` |
+| bipa4.u03 | Rantepao | Rumah Tongkonan (Toraja tongkonan houses) | `bipa4.u03.png` |
 | bipa4.u04 | Parepare | Kota kelahiran B. J. Habibie (B. J. Habibie's hometown) | *pending* |
 | bipa4.u05 | Palopo | Lomba Tujuh Belasan (Agustusan games) | *pending* |
 | bipa4.u06 | Palu | Megalit Lore Lindu (Lore Lindu megaliths) | *pending* |
@@ -83,13 +83,13 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 |---|---|---|---|
 | bipa6.u01 | Medan | Rumah Tjong A Fie (Tjong A Fie mansion) | *pending* |
 | bipa6.u02 | Pekanbaru | Pantun di pesta pernikahan Melayu (Malay pantun at a wedding) | *pending* |
-| bipa6.u03 | Bukittinggi | Rumah Gadang (Rumah gadang) | `rumah-gadang` |
+| bipa6.u03 | Bukittinggi | Rumah Gadang (Rumah gadang) | `bipa6.u03.png` |
 | bipa6.u04 | Palembang | Sriwijaya di Sungai Musi (Sriwijaya on the Musi river) | *pending* |
 | bipa6.u05 | Banda Aceh | Masjid Raya Baiturrahman (Baiturrahman Grand Mosque) | *pending* |
 | bipa6.u06 | Danau Toba | Pulau Samosir (Samosir island) | *pending* |
 | bipa6.u07 | Jambi | Candi Muaro Jambi (Muaro Jambi temples) | *pending* |
 | bipa6.u08 | Bengkulu | Rafflesia arnoldii (Rafflesia arnoldii) | *pending* |
-| bipa6.u09 | Padang | Rendang (Rendang) | `rendang` |
+| bipa6.u09 | Padang | Rendang (Rendang) | `bipa6.u09.png` |
 | bipa6.u10 | Berastagi | Pemandangan Gunung Sinabung (Sinabung volcano view) | *pending* |
 
 ## BIPA 7 · Raja Ampat, Papua
@@ -136,9 +136,9 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 |---|---|---|---|
 | j3.u01 | Solo Balapan | Stasiun Solo Balapan (Solo Balapan station) | *pending* |
 | j3.u02 | Pasar Gede | Pasar Gede (Pasar Gede) | *pending* |
-| j3.u03 | Kauman | Kampung Batik Kauman (Kauman batik village) | `batik` |
+| j3.u03 | Kauman | Kampung Batik Kauman (Kauman batik village) | `j3.u03.png` |
 | j3.u04 | Mangkunegaran | Pura Mangkunegaran (Pura Mangkunegaran) | *pending* |
-| j3.u05 | Pasar Klewer | Batik Klewer (Batik from Klewer) | `kawung` |
+| j3.u05 | Pasar Klewer | Batik Klewer (Batik from Klewer) | `j3.u05.png` |
 | j3.u06 | Laweyan | Rumah saudagar Laweyan (Laweyan merchants' houses) | *pending* |
 
 ## J4 · Yogyakarta
@@ -167,7 +167,7 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
-| j6.u01 | Pasar Kotagedhe | Perak Kotagedhe (Kotagede silver) | `kotagede-silver` |
+| j6.u01 | Pasar Kotagedhe | Perak Kotagedhe (Kotagede silver) | `j6.u01.png` |
 | j6.u02 | Masjid Gedhe Mataram | Masjid Gedhe Mataram (Kotagede Grand Mosque) | *pending* |
 | j6.u03 | Makam Raja Mataram | Makam Raja Mataram (Royal graves of Mataram) | *pending* |
 | j6.u04 | Jagalan | Jalan Rukunan (Jalan Rukunan lanes) | *pending* |
@@ -175,9 +175,3 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | j6.u06 | Plered | Kitab Pegon (Pesantren manuscript) | *pending* |
 
 **6 of 107 units have their own card.**
-
-## Card files no unit uses
-
-- `angklung`: no unit's souvenir is angklung (no West Java stop on either route)
-- `kopi-tubruk`: no unit's souvenir is coffee
-- `sate`: no unit's souvenir is sate
