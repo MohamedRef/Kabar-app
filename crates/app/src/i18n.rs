@@ -77,6 +77,13 @@ pub enum Msg {
     ExportSaving,
     ExportSaved,
     ExportFailed,
+    DiagTitle,
+    DiagBody,
+    DiagEmpty,
+    DiagCount,
+    DiagRefresh,
+    DiagCopy,
+    DiagCopied,
     ExportAndroidHint,
     PenLabIntro,
     PenLabClear,
@@ -854,6 +861,33 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (CostClaudeHowTo, En) => {
             "To switch it on, set CLAUDE_ENABLED = \"true\" in Kabar Cloud's wrangler.toml and run just deploy-cloud. An in-app switch comes with the AI engines screen."
         }
+        (DiagTitle, ArEg) => "اللي حصل مؤخرًا",
+        (DiagTitle, Ar) => "ما حدث مؤخرًا",
+        (DiagTitle, En) => "What happened lately",
+        (DiagBody, ArEg) => {
+            "لو حاجة اشتغلت غلط، انسخ دول وابعتهم. فيهم بس رسايل التطبيق، من غير كلامك ولا مفاتيح الدخول."
+        }
+        (DiagBody, Ar) => {
+            "إن عمل شيء على غير المتوقع، انسخ هذه السطور وأرسلها. فيها رسائل التطبيق فقط، بلا نصوصك ولا مفاتيح الدخول."
+        }
+        (DiagBody, En) => {
+            "If something misbehaved, copy these and send them. They hold only the app's own messages, never your texts or sign-in keys."
+        }
+        (DiagEmpty, ArEg) => "مفيش حاجة غلط من ساعة ما فتحت التطبيق.",
+        (DiagEmpty, Ar) => "لم يحدث أي خطأ منذ فتح التطبيق.",
+        (DiagEmpty, En) => "Nothing has gone wrong since Kabar opened.",
+        (DiagCount, ArEg) => "{n} سطر",
+        (DiagCount, Ar) => "{n} سطر",
+        (DiagCount, En) => "{n} lines",
+        (DiagRefresh, ArEg) => "حدّث",
+        (DiagRefresh, Ar) => "تحديث",
+        (DiagRefresh, En) => "Refresh",
+        (DiagCopy, ArEg) => "انسخ",
+        (DiagCopy, Ar) => "نسخ",
+        (DiagCopy, En) => "Copy",
+        (DiagCopied, ArEg) => "اتنسخ",
+        (DiagCopied, Ar) => "نُسخ",
+        (DiagCopied, En) => "Copied",
         (ExportTitle, ArEg | Ar) => "بياناتك",
         (ExportTitle, En) => "Your data",
         (ExportBody, ArEg) => {

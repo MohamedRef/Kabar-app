@@ -174,7 +174,7 @@ pub fn neural_in(
         match cache.fetch(&req).await {
             Ok(path) => data_url(&path).ok(),
             Err(e) => {
-                eprintln!("kabar: neural voice: {e}");
+                crate::diag::report!("neural voice: {e}");
                 None
             }
         }

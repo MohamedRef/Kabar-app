@@ -130,7 +130,7 @@ pub fn use_local_reminders(db: &Db, coach: Coach, ui: Ui, prefs: DevicePrefs) {
         });
         let json = serde_json::to_string(&items).unwrap_or_else(|_| "[]".into());
         if let Err(e) = platform::reminders::schedule(&json) {
-            eprintln!("kabar: scheduling reminders: {e}");
+            crate::diag::report!("scheduling reminders: {e}");
         }
     });
 }
