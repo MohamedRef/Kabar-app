@@ -145,13 +145,25 @@ exercises:
       en: [Finally we went home. Tired but happy!, 'In the end we went back. Tired, but happy!']
     words: [akhirnya, capek, senang]
   - id: e11
-    type: dictation
-    text: Setelah itu, kami melihat matahari terbit.
-    meaning:
-      ar_eg: بعد كده شفنا الشروق.
-      ar: بعد ذلك شاهدنا شروق الشمس.
-      en: After that, we watched the sunrise.
-    words: [setelah itu, matahari terbit]
+    type: match_pairs
+    pairs:
+      - text: hutan
+        ar_eg: غابة
+        ar: غابة
+        en: forest
+      - text: batu
+        ar_eg: حجر، صخرة
+        ar: حجر، صخرة
+        en: stone, rock
+      - text: gaun
+        ar_eg: فستان سهرة
+        ar: فستان سهرة
+        en: gown, dress
+      - text: jas
+        ar_eg: جاكت بدلة
+        ar: سترة البدلة
+        en: suit jacket
+    words: [hutan, batu, gaun, jas]
   - id: e12
     type: speaking
     text: Wah, liburan di Lovina seru sekali! Pertama, kami naik perahu. Akhirnya, kami melihat lumba-lumba.

@@ -1,236 +1,236 @@
 schema: kabar.lesson/v1
 id: bipa2.u10.l06
 language: id
-title: Alergi dan gatal
+title: Ambulans dan operasi
 can_do:
-  ar_eg: 'تقول للدكتور عندك إيه: جرح، كسر، حساسية، هرش أو برد، وتفهم الحقنة والفيتامين.'
-  ar: 'أن تخبر الطبيب بما لديك: جرح أو كسر أو حساسية أو حكّة أو زكام، وتفهم الحقنة والفيتامين.'
-  en: 'Tell the doctor what''s wrong: a cut, a break, an allergy, an itch or flu, and follow talk of injections and vitamins.'
+  ar_eg: 'تتصرف في طوارئ: حد أغمى عليه أو بيرجّع، تطلب الإسعاف، وتسأل عن حالة مريض بعد عملية.'
+  ar: 'أن تتصرّف في الطوارئ: شخص أُغمي عليه أو يتقيّأ، تطلب الإسعاف، وتسأل عن حال مريض بعد عملية.'
+  en: 'Handle an emergency: someone faints or is sick, call an ambulance, and ask how a patient is after an operation.'
 slides:
-  - title: Di klinik
+  - title: Di rumah sakit
     body:
       ar_eg: |
-        pasien = المريض اللي عند الدكتور. luka = جرح، patah = مكسور: Kaki saya patah.
-        suntik = حقنة. vitamin = فيتامين.
-        alergi = حساسية: Saya alergi kacang. gatal = بيهرش (بياكلني). flu = برد، إنفلونزا.
+        muntah = يرجّع (يتقيأ)، pingsan = يغمى عليه. ambulans = عربية إسعاف.
+        operasi = عملية جراحية. infus = محلول في الوريد، perban = شاش ورباط. termometer = ترمومتر.
+        kondisi = الحالة: Bagaimana kondisinya?
       ar: |
-        pasien = المريض عند الطبيب. luka = جرح، patah = مكسور: Kaki saya patah.
-        suntik = حقنة. vitamin = فيتامين.
-        alergi = حساسية: Saya alergi kacang. gatal = يسبّب حكّة. flu = زكام، إنفلونزا.
+        muntah = يتقيّأ، pingsan = يُغمى عليه. ambulans = سيارة إسعاف.
+        operasi = عملية جراحية. infus = محلول وريدي، perban = ضمادة. termometer = ميزان حرارة.
+        kondisi = الحالة: Bagaimana kondisinya?
       en: |
-        pasien = patient. luka = wound, cut, patah = broken: Kaki saya patah.
-        suntik = injection. vitamin = vitamin.
-        alergi = allergy: Saya alergi kacang. gatal = itchy. flu = flu, a cold.
+        muntah = vomit, pingsan = faint. ambulans = ambulance.
+        operasi = operation, surgery. infus = drip, perban = bandage. termometer = thermometer.
+        kondisi = condition: Bagaimana kondisinya?
     examples:
-      - text: Kaki saya patah waktu main bola.
-        ar_eg: رجلي اتكسرت وأنا بلعب كورة.
-        ar: انكسرت ساقي وأنا ألعب الكرة.
-        en: I broke my leg playing football.
-      - text: Saya alergi kacang. Kulit saya gatal.
-        ar_eg: عندي حساسية من الفول السوداني. جلدي بيهرشني.
-        ar: لديّ حساسية من الفول السوداني. جلدي يحكّني.
-        en: I'm allergic to peanuts. My skin itches.
-      - text: Pasien itu perlu suntik.
-        ar_eg: المريض ده محتاج حقنة.
-        ar: يحتاج ذلك المريض إلى حقنة.
-        en: That patient needs an injection.
+      - text: Ada orang pingsan! Telepon ambulans!
+        ar_eg: فيه حد أغمى عليه! اتصل بالإسعاف!
+        ar: هناك شخص مغمى عليه! اتصل بالإسعاف!
+        en: Someone's fainted! Call an ambulance!
+      - text: Sesudah operasi, kondisinya baik.
+        ar_eg: بعد العملية، حالته كويسة.
+        ar: بعد العملية حاله جيّدة.
+        en: After the operation, his condition is good.
+      - text: Pasien itu pakai infus.
+        ar_eg: المريض ده متعلق له محلول.
+        ar: ذلك المريض على محلول وريدي.
+        en: That patient is on a drip.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: pasien
-        ar_eg: مريض
-        ar: مريض
-        en: patient
-      - text: luka
-        ar_eg: جرح
-        ar: جرح
-        en: wound
-      - text: patah
-        ar_eg: مكسور
-        ar: مكسور
-        en: broken
-      - text: suntik
-        ar_eg: حقنة
-        ar: حقنة
-        en: injection
-    words: [pasien, luka, patah, suntik]
+      - text: muntah
+        ar_eg: يرجّع
+        ar: يتقيّأ
+        en: vomit
+      - text: operasi
+        ar_eg: عملية
+        ar: عملية جراحية
+        en: operation
+      - text: ambulans
+        ar_eg: إسعاف
+        ar: إسعاف
+        en: ambulance
+      - text: kondisi
+        ar_eg: حالة
+        ar: حالة
+        en: condition
+    words: [muntah, operasi, ambulans, kondisi]
   - id: e02
     type: match_pairs
     pairs:
-      - text: vitamin
-        ar_eg: فيتامين
-        ar: فيتامين
-        en: vitamin
-      - text: alergi
-        ar_eg: حساسية
-        ar: حساسية
-        en: allergy
-      - text: gatal
-        ar_eg: بيهرش
-        ar: يحكّ
-        en: itchy
-      - text: flu
-        ar_eg: برد
-        ar: زكام
-        en: flu
-    words: [vitamin, alergi, gatal, flu]
+      - text: pingsan
+        ar_eg: يغمى عليه
+        ar: يُغمى عليه
+        en: faint
+      - text: infus
+        ar_eg: محلول
+        ar: محلول وريدي
+        en: drip
+      - text: perban
+        ar_eg: شاش
+        ar: ضمادة
+        en: bandage
+      - text: termometer
+        ar_eg: ترمومتر
+        ar: ميزان حرارة
+        en: thermometer
+    words: [pingsan, infus, perban, termometer]
   - id: e03
     type: listen
-    text: Saya alergi kacang. Kulit saya gatal sekali.
+    text: Tolong! Ada orang pingsan! Telepon ambulans!
     question:
-      ar_eg: عنده إيه؟
-      ar: ماذا لديه؟
-      en: What's his problem?
-    options: [حساسية من الفول السوداني, برد, رجل مكسورة]
+      ar_eg: إيه اللي حصل؟
+      ar: ماذا حدث؟
+      en: What happened?
+    options: [حد أغمى عليه, حد اتخانق, حريقة]
     answer: 0
     meaning:
-      ar_eg: عندي حساسية من الفول السوداني. جلدي بيهرشني أوي.
-      ar: لديّ حساسية من الفول السوداني، وجلدي يحكّني كثيرًا.
-      en: I'm allergic to peanuts. My skin is really itchy.
-    words: [alergi, gatal]
+      ar_eg: الحقوني! فيه حد أغمى عليه! اتصلوا بالإسعاف!
+      ar: النجدة! شخص مغمى عليه! اتصلوا بالإسعاف!
+      en: Help! Someone's fainted! Call an ambulance!
+    words: [pingsan, ambulans]
   - id: e04
     type: fill_blank
-    sentence: Tangan saya ___ karena jatuh dari sepeda.
+    sentence: Badannya panas? Coba pakai ___.
     meaning:
-      ar_eg: إيدي ___ عشان وقعت من العجلة.
-      ar: يدي ___ لأنني سقطت عن الدراجة.
-      en: My arm is ___ because I fell off my bike.
-    options: [patah, gatal, flu]
-    answers: [patah]
-    words: [patah, gatal, flu]
+      ar_eg: جسمه سخن؟ جرّب الـ ___.
+      ar: هل حرارته مرتفعة؟ جرّب ___.
+      en: Is he hot? Try the ___.
+    options: [termometer, perban, infus]
+    answers: [termometer]
+    words: [termometer, perban, infus]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: اللي بيتعالج عند الدكتور اسمه إيه؟
-      ar: ماذا نسمّي من يعالجه الطبيب؟
-      en: What do you call someone a doctor treats?
-    options: [pasien, vitamin, luka]
+      ar_eg: عربية المستشفى اللي ليها سرينة اسمها إيه؟
+      ar: ما اسم سيارة المستشفى ذات الصفّارة؟
+      en: What's the hospital vehicle with a siren?
+    options: [ambulans, operasi, kondisi]
     answer: 0
     explain:
-      ar_eg: pasien = مريض.
-      ar: pasien = مريض.
-      en: pasien = patient.
-    words: [pasien, vitamin, luka]
+      ar_eg: ambulans = إسعاف.
+      ar: ambulans = إسعاف.
+      en: ambulans = ambulance.
+    words: [ambulans, operasi, kondisi]
   - id: e06
     type: fill_blank
-    sentence: Saya batuk, pilek, dan pusing. Saya ___.
+    sentence: Sesudah ___, pasien harus istirahat seminggu.
     meaning:
-      ar_eg: بكح ومزكّم ودايخ. عندي ___.
-      ar: أسعل وأنا مزكوم وأشعر بالدوار. لديّ ___.
-      en: I'm coughing, sniffly and dizzy. I've got ___.
-    options: [flu, luka, suntik]
-    answers: [flu]
-    words: [flu, luka, suntik]
+      ar_eg: بعد الـ ___، المريض لازم يرتاح أسبوع.
+      ar: بعد ___ يجب أن يرتاح المريض أسبوعًا.
+      en: After the ___, the patient must rest for a week.
+    options: [operasi, muntah, perban]
+    answers: [operasi]
+    words: [operasi, muntah, perban]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: كل يوم الصبح باخد فيتامين.
-      ar: آخذ فيتامينًا كل صباح.
-      en: I take a vitamin every morning.
-    answer: Setiap pagi saya minum vitamin.
-    distractors: [suntik, luka]
-    words: [vitamin]
+      ar_eg: حالته كويسة النهارده.
+      ar: حاله جيّدة اليوم.
+      en: His condition is good today.
+    answer: Kondisinya baik hari ini.
+    distractors: [pingsan, sakit]
+    words: [kondisi]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Ada luka kecil di jari saya.
+    source_text: Anak itu muntah lalu pingsan.
     answers_meaning:
-      ar_eg: [فيه جرح صغير في صباعي, صباعي فيه جرح صغير]
-      ar: [في إصبعي جرح صغير]
-      en: ['There''s a small cut on my finger', I have a little cut on my finger]
-    words: [luka]
+      ar_eg: [الولد ده رجّع وبعدين أغمى عليه, العيل رجّع وبعدها أغمى عليه]
+      ar: [تقيّأ ذلك الطفل ثم أُغمي عليه]
+      en: [That child was sick and then fainted, 'The child vomited, then fainted']
+    words: [muntah, pingsan]
   - id: e09
     type: speaking
-    text: Dokter, saya takut suntik!
+    text: Pasien itu pakai infus dan perban.
     meaning:
-      ar_eg: يا دكتور، أنا بخاف من الحقن!
-      ar: يا دكتور، أخاف من الحقن!
-      en: Doctor, I'm scared of injections!
-    words: [suntik]
+      ar_eg: المريض ده متعلق له محلول وعليه شاش.
+      ar: ذلك المريض على محلول وعليه ضمادة.
+      en: That patient has a drip and a bandage.
+    words: [infus, perban]
   - id: e10
     type: multiple_choice
-    question: Dokter punya banyak ___ hari ini.
-    options: [pasien, alergi, patah]
+    question: Ada luka di tangan. Pakai ___.
+    options: [perban, termometer, ambulans]
     answer: 0
     explain:
-      ar_eg: 'الدكتور عنده عيانين كتير: pasien.'
-      ar: 'لدى الطبيب مرضى كثيرون: pasien.'
-      en: 'The doctor has many patients: pasien.'
-    words: [pasien, alergi, patah]
+      ar_eg: 'الجرح محتاج شاش: perban.'
+      ar: 'الجرح يحتاج ضمادة: perban.'
+      en: 'A cut needs a bandage: perban.'
+    words: [perban, termometer, ambulans]
 dialogue:
   lines:
-    - speaker: Dokter
-      text: Selamat pagi. Sakit apa?
-      ar_eg: صباح الخير. عندك إيه؟
-      ar: صباح الخير. ممّ تشكو؟
-      en: Good morning. What's wrong?
     - speaker: Mohamed
-      text: Kulit saya gatal, Dok. Merah semua.
-      ar_eg: جلدي بيهرشني يا دكتور. كله أحمر.
-      ar: جلدي يحكّني يا دكتور، وكله أحمر.
-      en: My skin itches, doctor. It's all red.
-    - speaker: Dokter
-      text: Kemarin makan apa? Ada alergi?
-      ar_eg: امبارح كلت إيه؟ عندك حساسية؟
-      ar: ماذا أكلت أمس؟ هل لديك حساسية؟
-      en: What did you eat yesterday? Any allergies?
+      text: Bu, bagaimana kondisi teman saya?
+      ar_eg: يا مدام، حالة صاحبي عاملة إيه؟
+      ar: يا سيدتي، كيف حال صديقي؟
+      en: Excuse me, how is my friend doing?
+    - speaker: Perawat
+      text: Sudah lebih baik. Kemarin dia muntah dan pingsan.
+      ar_eg: أحسن دلوقتي. امبارح كان بيرجّع وأغمى عليه.
+      ar: صار أفضل. أمس تقيّأ وأُغمي عليه.
+      en: Better now. Yesterday he vomited and fainted.
     - speaker: Mohamed
-      text: Saya makan sate kacang. Apa saya alergi kacang?
-      ar_eg: كلت ساتيه بالفول السوداني. هو أنا عندي حساسية منه؟
-      ar: أكلت ساتيه بالفول السوداني. هل لديّ حساسية منه؟
-      en: I had satay with peanut sauce. Am I allergic to peanuts?
-    - speaker: Dokter
-      text: Ya, ini alergi. Minum obat ini, tidak perlu suntik.
-      ar_eg: أيوه، دي حساسية. خد الدوا ده، مش محتاج حقنة.
-      ar: نعم، هذه حساسية. تناول هذا الدواء، لا حاجة إلى حقنة.
-      en: Yes, it's an allergy. Take this medicine; no injection needed.
+      text: Perlu operasi?
+      ar_eg: محتاج عملية؟
+      ar: هل يحتاج إلى عملية؟
+      en: Does he need an operation?
+    - speaker: Perawat
+      text: Tidak perlu. Sekarang dia pakai infus saja.
+      ar_eg: لأ. دلوقتي عليه محلول بس.
+      ar: لا. الآن عليه محلول وريدي فقط.
+      en: No. He's just on a drip now.
     - speaker: Mohamed
-      text: Bagus! Saya takut suntik.
-      ar_eg: الحمد لله! أنا بخاف من الحقن.
-      ar: الحمد لله! أخاف من الحقن.
-      en: Phew! I'm scared of injections.
+      text: Baik. Boleh saya masuk?
+      ar_eg: تمام. ممكن أدخل؟
+      ar: حسنًا. هل يمكنني الدخول؟
+      en: OK. May I go in?
+    - speaker: Perawat
+      text: Boleh, tapi jangan lama, ya.
+      ar_eg: ممكن، بس ما تطوّلش.
+      ar: نعم، لكن لا تُطل.
+      en: Yes, but don't stay long.
 new_words:
-  - word: pasien
+  - word: muntah
+    pos: verb
+    ar_eg: يرجّع
+    ar: يتقيّأ
+    en: vomit, be sick
+  - word: operasi
     pos: noun
-    ar_eg: مريض (عند الدكتور)
-    ar: مريض
-    en: patient
-  - word: luka
+    ar_eg: عملية جراحية
+    ar: عملية جراحية
+    en: operation, surgery
+  - word: ambulans
     pos: noun
-    ar_eg: جرح
-    ar: جرح
-    en: wound, cut
-  - word: patah
-    pos: adjective
-    ar_eg: مكسور
-    ar: مكسور
-    en: broken (bone, stick)
-  - word: suntik
+    ar_eg: عربية إسعاف
+    ar: سيارة إسعاف
+    en: ambulance
+  - word: kondisi
     pos: noun
-    ar_eg: حقنة
-    ar: حقنة
-    en: injection
-  - word: vitamin
+    ar_eg: حالة
+    ar: حالة
+    en: condition
+  - word: pingsan
+    pos: verb
+    ar_eg: يغمى عليه
+    ar: يُغمى عليه
+    en: faint
+  - word: infus
     pos: noun
-    ar_eg: فيتامين
-    ar: فيتامين
-    en: vitamin
-  - word: alergi
+    ar_eg: محلول في الوريد
+    ar: محلول وريدي
+    en: drip, IV
+  - word: perban
     pos: noun
-    ar_eg: حساسية
-    ar: حساسية
-    en: allergy
-  - word: gatal
-    pos: adjective
-    ar_eg: بيهرش
-    ar: مسبّب للحكّة
-    en: itchy
-  - word: flu
+    ar_eg: شاش، رباط
+    ar: ضمادة
+    en: bandage
+  - word: termometer
     pos: noun
-    ar_eg: برد، إنفلونزا
-    ar: زكام، إنفلونزا
-    en: flu, cold
+    ar_eg: ترمومتر
+    ar: ميزان حرارة
+    en: thermometer
 review:
   status: draft
   verified: false

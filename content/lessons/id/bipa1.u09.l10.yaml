@@ -1,237 +1,220 @@
 schema: kabar.lesson/v1
 id: bipa1.u09.l10
 language: id
-title: Di kamar saya
+title: Ke Monas
 can_do:
-  ar_eg: 'توصف أوضتك والحمام: السرير واللمبة والمراية والصابون والفوطة.'
-  ar: 'أن تصف غرفتك والحمّام: السرير والمصباح والمرآة والصابون والمنشفة.'
-  en: 'Describe your room and bathroom: bed, lamp, mirror, soap and towel.'
+  ar_eg: تفهم الاتجاهات وتوصفها على خريطة.
+  ar: أن تتبع الاتجاهات وتصفها على خريطة.
+  en: Follow and give directions on a map.
 slides:
-  - title: Kamar dan kamar mandi
+  - title: Bertanya jalan
     body:
-      ar_eg: |
-        tempat tidur = سرير (حرفيًا «مكان النوم»). lampu = لمبة أو نور. cermin = مراية. dinding = حيطة. kotak = علبة أو صندوق.
-        في الحمام: sabun = صابون (من العربي!) وhanduk = فوطة (من الهولندي).
-        rapi = متروّق ومترتّب.
-      ar: |
-        tempat tidur = سرير (حرفيًا «مكان النوم»). lampu = مصباح. cermin = مرآة. dinding = جدار. kotak = علبة، صندوق.
-        في الحمّام: sabun = صابون (من العربية!) وhanduk = منشفة (من الهولندية).
-        rapi = مرتّب.
-      en: |
-        tempat tidur = bed (literally "place to sleep"). lampu = lamp, light. cermin = mirror. dinding = wall. kotak = box.
-        In the bathroom: sabun = soap (from Arabic!) and handuk = towel (from Dutch).
-        rapi = tidy.
+      ar_eg: |-
+        لما تسأل عن الطريق في جاكرتا:
+        1. ابدأ بـ Permisi (لو سمحت).
+        2. اسأل: … di mana, ya? أو Saya mau ke …
+        3. اسمع الخطوات: jalan lurus، belok kiri / kanan، lalu، kemudian.
+        4. كرّر عشان تتأكد: Belok kanan di lampu merah, lalu?
+        5. اختم بـ Terima kasih banyak!
+        الناس هنا بيوصفوا بالعلامات: «عند الجامع»، «بعد الإشارة».
+        على الخريطة (peta) استخدم كلمات المكان: Loketnya di samping pintu masuk = شباك التذاكر جنب المدخل. Halte bus di depan stasiun = محطة الأتوبيس قدّام محطة القطر.
+      ar: |-
+        حين تسأل عن الطريق في جاكرتا:
+        1. ابدأ بـ Permisi (عفوًا).
+        2. اسأل: … di mana, ya؟ أو Saya mau ke …
+        3. استمع للخطوات: jalan lurus، belok kiri / kanan، lalu، kemudian.
+        4. كرّر لتتأكد: Belok kanan di lampu merah, lalu؟
+        5. واختم بـ Terima kasih banyak!
+        ويصف الناس الطريق بالمعالم: «عند المسجد»، «بعد الإشارة».
+        وعلى الخريطة (peta) استعمل ظروف المكان: Loketnya di samping pintu masuk = شباك التذاكر بجانب المدخل. Halte bus di depan stasiun = موقف الحافلات أمام المحطة.
+      en: |-
+        Asking the way in Jakarta:
+        1. Start with Permisi (excuse me).
+        2. Ask: … di mana, ya? or Saya mau ke …
+        3. Listen for the steps: jalan lurus, belok kiri / kanan, lalu, kemudian.
+        4. Repeat to check: Belok kanan di lampu merah, lalu?
+        5. Finish with Terima kasih banyak!
+        People give directions by landmarks: "at the mosque", "after the lights".
+        On a map (peta), use position words. Loketnya di samping pintu masuk = The ticket counter is next to the entrance. Halte bus di depan stasiun = The bus stop is in front of the station.
+    grammar: id.conjunction.basic
     examples:
-      - text: Di kamar mandi ada sabun dan handuk.
-        ar_eg: في الحمام فيه صابون وفوطة.
-        ar: في الحمّام صابون ومنشفة.
-        en: There's soap and a towel in the bathroom.
-      - text: Cermin itu di dinding, di atas meja.
-        ar_eg: المراية على الحيطة، فوق الترابيزة.
-        ar: المرآة على الجدار فوق الطاولة.
-        en: The mirror is on the wall, above the table.
-      - text: Kamar saya kecil, tapi rapi.
-        ar_eg: أوضتي صغيرة بس مترتبة.
-        ar: غرفتي صغيرة لكنها مرتّبة.
-        en: My room is small but tidy.
+      - text: Permisi, Pak. Saya mau ke Monas. Jauh atau dekat?
+        ar_eg: لو سمحت يا عمّ. أنا عايز أروح موناس. بعيد ولا قريب؟
+        ar: عفوًا يا سيدي، أريد الذهاب إلى موناس. أهو بعيد أم قريب؟
+        en: Excuse me, sir. I want to go to Monas. Is it far or close?
+      - text: Monas di antara stasiun dan masjid.
+        ar_eg: موناس بين المحطة والجامع.
+        ar: موناس بين المحطة والمسجد.
+        en: Monas is between the station and the mosque.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: sabun
-        ar_eg: صابون
-        ar: صابون
-        en: soap
-      - text: handuk
-        ar_eg: فوطة
-        ar: منشفة
-        en: towel
-      - text: cermin
-        ar_eg: مراية
-        ar: مرآة
-        en: mirror
-      - text: lampu
-        ar_eg: لمبة
-        ar: مصباح
-        en: lamp
-    words: [sabun, handuk, cermin, lampu]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: kotak
-        ar_eg: علبة
-        ar: صندوق
-        en: box
-      - text: dinding
-        ar_eg: حيطة
-        ar: جدار
-        en: wall
-      - text: tempat tidur
-        ar_eg: سرير
-        ar: سرير
-        en: bed
-      - text: rapi
-        ar_eg: مترتب
-        ar: مرتّب
-        en: tidy
-    words: [kotak, dinding, tempat tidur, rapi]
-  - id: e03
-    type: listen
-    text: Di kamar mandi ada sabun dan handuk.
-    question:
-      ar_eg: إيه اللي في الحمام؟
-      ar: ماذا في الحمّام؟
-      en: What's in the bathroom?
-    options: [صابون وفوطة, سرير ولمبة, مراية وعلبة]
+    type: multiple_choice
+    question: Dari stasiun, jalan lurus, lalu belok kanan di lampu merah. Monas di sebelah kiri.
+    question_meaning:
+      ar_eg: بعد ما تخش يمين عند الإشارة، موناس هيبقى فين؟
+      ar: بعد أن تنعطف يمينًا عند الإشارة، أين يكون موناس؟
+      en: After you turn right at the traffic light, where is Monas?
+    options: [Di sebelah kiri, Di belakang stasiun, Di sebelah kanan]
     answer: 0
+    explain:
+      ar_eg: di sebelah kiri = على الشمال.
+      ar: di sebelah kiri = على اليسار.
+      en: di sebelah kiri = on the left.
+    words: [sebelah, kiri]
+  - id: e02
+    type: listen
+    text: Loketnya di samping pintu masuk.
+    options: [Loketnya di samping pintu masuk., Loketnya di dalam stasiun., Loketnya di belakang pintu masuk.]
+    answer: 0
+    words: [loket, samping, pintu masuk]
+  - id: e03
+    type: fill_blank
+    sentence: Saya ___ peta Jakarta.
     meaning:
-      ar_eg: في الحمام فيه صابون وفوطة.
-      ar: في الحمّام صابون ومنشفة.
-      en: There's soap and a towel in the bathroom.
-    words: [sabun, handuk]
+      ar_eg: أنا معايا خريطة جاكرتا.
+      ar: أحمل خريطة جاكرتا.
+      en: I've brought a map of Jakarta.
+    options: [bawa, satpam, peta]
+    answers: [bawa]
+    words: [bawa, peta]
   - id: e04
     type: fill_blank
-    sentence: Kucing saya tidur di dalam ___.
+    sentence: Belok kanan di lampu merah, ___ jalan lurus.
     meaning:
-      ar_eg: القطة بتاعتي نايمة جوه ___.
-      ar: قطّتي نائمة داخل ___.
-      en: My cat is sleeping inside a ___.
-    options: [kotak, cermin, lampu]
-    answers: [kotak]
-    words: [kotak, cermin, lampu]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أوضتك متروّقة وكل حاجة في مكانها. هي…؟
-      ar: غرفتك مرتّبة وكل شيء في مكانه. هي…؟
-      en: Your room is neat, everything in its place. It's…?
-    options: [rapi, dinding, kotak]
-    answer: 0
+      ar_eg: خش يمين عند الإشارة، وبعدين امشي دغري.
+      ar: انعطف يمينًا عند الإشارة، ثم امشِ مستقيمًا.
+      en: Turn right at the traffic light, then go straight.
+    answers: [lalu, kemudian, terus]
     explain:
-      ar_eg: rapi = مترتّب.
-      ar: rapi = مرتّب.
-      en: rapi = tidy.
-    words: [rapi, dinding, kotak]
-  - id: e06
-    type: fill_blank
-    sentence: Ada foto keluarga di ___.
-    meaning:
-      ar_eg: فيه صورة العيلة على ___.
-      ar: هناك صورة العائلة على ___.
-      en: There's a family photo on the ___.
-    options: [dinding, sabun, handuk]
-    answers: [dinding]
-    words: [dinding, sabun, handuk]
-  - id: e07
+      ar_eg: «وبعدين» = lalu أو kemudian (وفي الكلام terus كمان).
+      ar: «ثم» = lalu أو kemudian (وفي العامية terus).
+      en: '"then" = lalu or kemudian (casually also terus).'
+    words: [lalu, kemudian]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: السرير جنب الباب.
-      ar: السرير بجانب الباب.
-      en: The bed is next to the door.
-    answer: Tempat tidur di samping pintu.
-    distractors: [lampu, rapi]
-    words: [tempat tidur]
+      ar_eg: امشي دغري، وبعدين خش شمال عند الجامع.
+      ar: امشِ مستقيمًا، ثم انعطف يسارًا عند المسجد.
+      en: Go straight, then turn left at the mosque.
+    answer: Jalan lurus, lalu belok kiri di masjid.
+    alternatives: [Jalan lurus lalu belok kiri di masjid.]
+    distractors: [kanan, atau]
+    words: [lurus, lalu, belok, kiri]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: محطة الأتوبيس قدّام محطة القطر.
+      ar: موقف الحافلات أمام محطة القطار.
+      en: The bus stop is in front of the train station.
+    answer: Halte bus di depan stasiun.
+    distractors: [belakang, ke]
+    words: [halte, depan, stasiun]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: peta
+        ar_eg: خريطة
+        ar: خريطة
+        en: map
+      - text: pintu masuk
+        ar_eg: باب الدخول
+        ar: المدخل
+        en: entrance
+      - text: satpam
+        ar_eg: أمن، حارس
+        ar: حارس أمن
+        en: security guard
+      - text: bawa
+        ar_eg: يجيب معاه، يشيل
+        ar: يحمل، يُحضر
+        en: bring, carry
+      - text: loket
+        ar_eg: شباك التذاكر
+        ar: شباك التذاكر
+        en: ticket counter
+      - text: halte
+        ar_eg: محطة أتوبيس
+        ar: موقف حافلات
+        en: bus stop
+    words: [peta, pintu masuk, satpam, bawa, loket, halte]
   - id: e08
-    type: translate
-    direction: from_target
-    source_text: Ada lampu kecil di samping tempat tidur.
-    answers_meaning:
-      ar_eg: [فيه لمبة صغيرة جنب السرير, فيه أباجورة صغيرة جنب السرير]
-      ar: [بجانب السرير مصباح صغير, هناك مصباح صغير بجوار السرير]
-      en: ['There''s a small lamp next to the bed', There is a little lamp beside the bed]
-    words: [lampu, tempat tidur]
+    type: dictation
+    text: Satpam itu di pintu masuk.
+    meaning:
+      ar_eg: الأمن عند باب الدخول.
+      ar: حارس الأمن عند المدخل.
+      en: The security guard is at the entrance.
+    words: [satpam, pintu masuk]
   - id: e09
     type: speaking
-    text: Kamar saya kecil, tapi rapi.
+    text: Dari stasiun, jalan lurus, lalu belok kanan di lampu merah. Monas di sebelah kiri.
     meaning:
-      ar_eg: أوضتي صغيرة بس مترتبة.
-      ar: غرفتي صغيرة لكنها مرتّبة.
-      en: My room is small but tidy.
-    words: [rapi]
+      ar_eg: من المحطة امشي دغري، وبعدين خش يمين عند الإشارة. موناس على الشمال.
+      ar: من المحطة امشِ مستقيمًا، ثم انعطف يمينًا عند الإشارة، وموناس على اليسار.
+      en: From the station, go straight, then turn right at the traffic light. Monas is on the left.
+    words: [dari, lurus, lalu, belok, sebelah]
   - id: e10
-    type: multiple_choice
-    question: Saya melihat wajah saya di ___.
-    options: [cermin, kotak, handuk]
-    answer: 0
-    explain:
-      ar_eg: 'بتشوف وشك في المراية: cermin.'
-      ar: 'ترى وجهك في المرآة: cermin.'
-      en: 'You see your face in a mirror: cermin.'
-    words: [cermin, kotak, handuk]
+    type: speaking
+    text: Permisi, Pak Satpam. Boleh saya bawa peta ini?
+    meaning:
+      ar_eg: لو سمحت يا أستاذ (الأمن). ممكن آخد الخريطة دي معايا؟
+      ar: عذرًا يا حضرة الحارس. هل يمكنني أخذ هذه الخريطة؟
+      en: Excuse me, sir (security). May I take this map?
+    words: [satpam, bawa, peta]
 dialogue:
+  title: Dari Stasiun Gambir ke Monas
   lines:
-    - speaker: Bu Yanti
-      text: Mohamed, ini kamar kamu.
-      ar_eg: يا محمد، دي أوضتك.
-      ar: يا محمد، هذه غرفتك.
-      en: Mohamed, this is your room.
     - speaker: Mohamed
-      text: Terima kasih, Bu! Kamarnya rapi.
-      ar_eg: شكرًا يا طنط! الأوضة مترتبة.
-      ar: شكرًا يا سيدتي! الغرفة مرتّبة.
-      en: Thank you! The room is tidy.
-    - speaker: Bu Yanti
-      text: Ada tempat tidur, meja, dan lampu.
-      ar_eg: فيه سرير وترابيزة ولمبة.
-      ar: فيها سرير وطاولة ومصباح.
-      en: There's a bed, a table and a lamp.
+      text: Permisi, Pak. Saya mau ke Monas. Jauh atau dekat?
+      ar_eg: لو سمحت يا عمّ. أنا عايز أروح موناس. بعيد ولا قريب؟
+      ar: عفوًا يا سيدي، أريد الذهاب إلى موناس. أهو بعيد أم قريب؟
+      en: Excuse me, sir. I want to go to Monas. Is it far or close?
+    - speaker: Satpam
+      text: Dekat sekali, Mas. Dari stasiun, jalan lurus ke depan.
+      ar_eg: قريب جدًا يا ابني. من المحطة امشي دغري لقدّام.
+      ar: قريب جدًا. من المحطة امشِ مستقيمًا إلى الأمام.
+      en: Very close. From the station, go straight ahead.
     - speaker: Mohamed
-      text: Cerminnya di mana, Bu?
-      ar_eg: والمراية فين يا طنط؟
-      ar: وأين المرآة يا سيدتي؟
-      en: Where's the mirror?
-    - speaker: Bu Yanti
-      text: Di kamar mandi, di dinding. Ada sabun dan handuk juga.
-      ar_eg: في الحمام، على الحيطة. وفيه صابون وفوطة كمان.
-      ar: في الحمّام على الجدار، وهناك صابون ومنشفة أيضًا.
-      en: In the bathroom, on the wall. There's soap and a towel too.
+      text: Jalan lurus, lalu?
+      ar_eg: أمشي دغري، وبعدين؟
+      ar: أمشي مستقيمًا، ثم؟
+      en: Go straight, and then?
+    - speaker: Satpam
+      text: Lalu belok kanan di lampu merah. Monas di sebelah kiri.
+      ar_eg: وبعدين خش يمين عند الإشارة. موناس هيبقى على شمالك.
+      ar: ثم انعطف يمينًا عند الإشارة، وموناس على يسارك.
+      en: Then turn right at the traffic light. Monas is on the left.
     - speaker: Mohamed
-      text: Bu, ada kucing di dalam kotak ini!
-      ar_eg: يا طنط، فيه قطة جوه العلبة دي!
-      ar: يا سيدتي، في هذا الصندوق قطّة!
-      en: There's a cat inside this box!
+      text: Terima kasih banyak, Pak!
+      ar_eg: شكرًا جزيلًا يا عمّ!
+      ar: شكرًا جزيلًا يا سيدي!
+      en: Thank you very much, sir!
+    - speaker: Satpam
+      text: Sama-sama, Mas. Selamat jalan!
+      ar_eg: العفو يا ابني. توصل بالسلامة!
+      ar: عفوًا. رافقتك السلامة!
+      en: You're welcome. Have a good trip!
 new_words:
-  - word: sabun
+  - word: peta
     pos: noun
-    arabic: صابون
-    ar_eg: صابون
-    ar: صابون
-    en: soap
-  - word: handuk
+    ar_eg: خريطة
+    ar: خريطة
+    en: map
+  - word: pintu masuk
     pos: noun
-    ar_eg: فوطة
-    ar: منشفة
-    en: towel
-  - word: cermin
+    ar_eg: مدخل
+    ar: مدخل
+    en: entrance
+  - word: satpam
     pos: noun
-    ar_eg: مراية
-    ar: مرآة
-    en: mirror
-  - word: lampu
-    pos: noun
-    ar_eg: لمبة، نور
-    ar: مصباح، ضوء
-    en: lamp, light
-  - word: kotak
-    pos: noun
-    ar_eg: علبة، صندوق
-    ar: صندوق، علبة
-    en: box
-  - word: dinding
-    pos: noun
-    ar_eg: حيطة
-    ar: جدار
-    en: wall
-  - word: tempat tidur
-    pos: noun
-    ar_eg: سرير
-    ar: سرير
-    en: bed
-  - word: rapi
-    pos: adjective
-    ar_eg: مترتب، متروّق
-    ar: مرتّب
-    en: tidy, neat
+    ar_eg: فرد أمن
+    ar: حارس أمن
+    en: security guard
+  - word: bawa
+    pos: verb
+    ar_eg: ياخد معاه، يشيل
+    ar: يحمل، يأخذ معه
+    en: to bring, carry
 review:
   status: draft
   verified: false

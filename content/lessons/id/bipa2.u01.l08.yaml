@@ -58,18 +58,25 @@ exercises:
     answer: 0
     words: [paling, ringan]
   - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة معناها «الجونج أعلى صوتًا من الطبلة»؟
-      ar: أيّ جملة تعني «صوت الغونغ أعلى من صوت الطبل»؟
-      en: Which sentence means "The gong is louder than the drum"?
-    options: [Gong lebih keras daripada gendang., Gong lebih keras dengan gendang., Gong paling keras daripada gendang.]
-    answer: 0
-    explain:
-      ar_eg: بين حاجتين lebih … daripada. paling للأكتر في المجموعة كلها.
-      ar: بين شيئين lebih … daripada، وpaling للأكثر في المجموعة كلها.
-      en: Between two things it's lebih … daripada; paling is for the most of a group.
-    words: [lebih, daripada, keras]
+    type: match_pairs
+    pairs:
+      - text: tebal
+        ar_eg: تخين
+        ar: سميك
+        en: thick
+      - text: tipis
+        ar_eg: رفيع، خفيف
+        ar: رقيق
+        en: thin
+      - text: modern
+        ar_eg: حديث
+        ar: حديث
+        en: modern
+      - text: tradisional
+        ar_eg: تقليدي
+        ar: تقليدي
+        en: traditional
+    words: [tebal, tipis, modern, tradisional]
   - id: e05
     type: multiple_choice
     question_meaning:

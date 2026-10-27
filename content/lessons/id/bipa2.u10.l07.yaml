@@ -1,236 +1,209 @@
 schema: kabar.lesson/v1
 id: bipa2.u10.l07
 language: id
-title: Ambulans dan operasi
+title: Ke dokter
 can_do:
-  ar_eg: 'تتصرف في طوارئ: حد أغمى عليه أو بيرجّع، تطلب الإسعاف، وتسأل عن حالة مريض بعد عملية.'
-  ar: 'أن تتصرّف في الطوارئ: شخص أُغمي عليه أو يتقيّأ، تطلب الإسعاف، وتسأل عن حال مريض بعد عملية.'
-  en: 'Handle an emergency: someone faints or is sick, call an ambulance, and ask how a patient is after an operation.'
+  ar_eg: تروح للدكتور وتشرح له مشكلتك.
+  ar: أن تزور الطبيب وتشرح له مشكلتك.
+  en: See a doctor and explain the problem.
 slides:
-  - title: Di rumah sakit
+  - title: Di klinik
     body:
       ar_eg: |
-        muntah = يرجّع (يتقيأ)، pingsan = يغمى عليه. ambulans = عربية إسعاف.
-        operasi = عملية جراحية. infus = محلول في الوريد، perban = شاش ورباط. termometer = ترمومتر.
-        kondisi = الحالة: Bagaimana kondisinya?
+        عند الدكتور (وبتناديه «Dok»):
+        - هيسألك: Sakit apa? (عندك إيه؟) — Sudah berapa lama? (بقالك قد إيه؟)
+        - ترد: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
+        - هيقولك: Coba buka mulutnya (افتح بقك) — Ini resepnya (دي الروشتة) — Banyak minum air putih dan istirahat (اشرب مية كتير وارتاح).
+        كلمة dokter من الهولندي، بس فيه كلمة قديمة من العربي: tabib ← «طبيب»، بتسمعها للمعالج الشعبي.
       ar: |
-        muntah = يتقيّأ، pingsan = يُغمى عليه. ambulans = سيارة إسعاف.
-        operasi = عملية جراحية. infus = محلول وريدي، perban = ضمادة. termometer = ميزان حرارة.
-        kondisi = الحالة: Bagaimana kondisinya?
+        عند الطبيب (وتناديه «Dok»):
+        - يسألك: Sakit apa؟ (ما بك؟) — Sudah berapa lama؟ (منذ متى؟)
+        - تجيب: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
+        - يقول لك: Coba buka mulutnya (افتح فمك) — Ini resepnya (هذه الوصفة) — Banyak minum air putih dan istirahat (أكثر من شرب الماء واسترح).
+        وكلمة dokter هولندية، أما tabib فمن العربية «طبيب» وتُقال للمعالج الشعبي.
       en: |
-        muntah = vomit, pingsan = faint. ambulans = ambulance.
-        operasi = operation, surgery. infus = drip, perban = bandage. termometer = thermometer.
-        kondisi = condition: Bagaimana kondisinya?
+        At the doctor's (address him as "Dok"):
+        - He asks: Sakit apa? (What's wrong?) — Sudah berapa lama? (How long?)
+        - You answer: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
+        - He says: Coba buka mulutnya (open your mouth) — Ini resepnya (here's the prescription) — Banyak minum air putih dan istirahat (drink plenty of water and rest).
+        dokter is from Dutch; the older tabib comes from Arabic «طبيب» and is used for traditional healers.
+    grammar: id.pattern.sakit
     examples:
-      - text: Ada orang pingsan! Telepon ambulans!
-        ar_eg: فيه حد أغمى عليه! اتصل بالإسعاف!
-        ar: هناك شخص مغمى عليه! اتصل بالإسعاف!
-        en: Someone's fainted! Call an ambulance!
-      - text: Sesudah operasi, kondisinya baik.
-        ar_eg: بعد العملية، حالته كويسة.
-        ar: بعد العملية حاله جيّدة.
-        en: After the operation, his condition is good.
-      - text: Pasien itu pakai infus.
-        ar_eg: المريض ده متعلق له محلول.
-        ar: ذلك المريض على محلول وريدي.
-        en: That patient is on a drip.
+      - text: Dok, saya demam sejak kemarin.
+        ar_eg: يا دكتور، عندي سخونية من امبارح.
+        ar: يا دكتور، عندي حمّى منذ أمس.
+        en: Doctor, I've had a fever since yesterday.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: muntah
-        ar_eg: يرجّع
-        ar: يتقيّأ
-        en: vomit
-      - text: operasi
-        ar_eg: عملية
-        ar: عملية جراحية
-        en: operation
-      - text: ambulans
-        ar_eg: إسعاف
-        ar: إسعاف
-        en: ambulance
-      - text: kondisi
-        ar_eg: حالة
-        ar: حالة
-        en: condition
-    words: [muntah, operasi, ambulans, kondisi]
+    type: multiple_choice
+    question: Selamat pagi, selamat datang di klinik. Sakit apa, Pak?
+    question_meaning:
+      ar_eg: الدكتور بيسألك. أنهي رد أحسن؟
+      ar: يسألك الطبيب. أيّ ردّ أنسب؟
+      en: The doctor asks. Which is the best answer?
+    options: [Saya dari Mesir., Tiga kali sehari., Saya demam dan sakit tenggorokan.]
+    answer: 2
+    words: [klinik, demam, tenggorokan]
   - id: e02
-    type: match_pairs
-    pairs:
-      - text: pingsan
-        ar_eg: يغمى عليه
-        ar: يُغمى عليه
-        en: faint
-      - text: infus
-        ar_eg: محلول
-        ar: محلول وريدي
-        en: drip
-      - text: perban
-        ar_eg: شاش
-        ar: ضمادة
-        en: bandage
-      - text: termometer
-        ar_eg: ترمومتر
-        ar: ميزان حرارة
-        en: thermometer
-    words: [pingsan, infus, perban, termometer]
-  - id: e03
     type: listen
-    text: Tolong! Ada orang pingsan! Telepon ambulans!
-    question:
-      ar_eg: إيه اللي حصل؟
-      ar: ماذا حدث؟
-      en: What happened?
-    options: [حد أغمى عليه, حد اتخانق, حريقة]
+    text: Coba buka mulutnya.
+    options: [Coba buka mulutnya., Coba buka bukunya., Coba buka pintunya.]
     answer: 0
     meaning:
-      ar_eg: الحقوني! فيه حد أغمى عليه! اتصلوا بالإسعاف!
-      ar: النجدة! شخص مغمى عليه! اتصلوا بالإسعاف!
-      en: Help! Someone's fainted! Call an ambulance!
-    words: [pingsan, ambulans]
-  - id: e04
+      ar_eg: افتح بقك.
+      ar: افتح فمك.
+      en: Open your mouth, please.
+    words: [mulut, buka]
+  - id: e03
     type: fill_blank
-    sentence: Badannya panas? Coba pakai ___.
+    sentence: Saya sakit tenggorokan ___ dua hari yang lalu.
     meaning:
-      ar_eg: جسمه سخن؟ جرّب الـ ___.
-      ar: هل حرارته مرتفعة؟ جرّب ___.
-      en: Is he hot? Try the ___.
-    options: [termometer, perban, infus]
-    answers: [termometer]
-    words: [termometer, perban, infus]
-  - id: e05
+      ar_eg: عندي التهاب زور من يومين.
+      ar: عندي التهاب في الحلق منذ يومين.
+      en: I've had a sore throat since two days ago.
+    options: [sejak, sambil, selama]
+    answers: [sejak]
+    explain:
+      ar_eg: sejak = من (نقطة بداية)، ومعاها «dua hari yang lalu» (من يومين). selama = لمدة.
+      ar: sejak = منذ، مع نقطة بداية مثل «dua hari yang lalu»، أما selama فلمدة.
+      en: sejak = since, with a starting point like "dua hari yang lalu"; selama = for (a length).
+    words: [sejak]
+  - id: e04
     type: multiple_choice
     question_meaning:
-      ar_eg: عربية المستشفى اللي ليها سرينة اسمها إيه؟
-      ar: ما اسم سيارة المستشفى ذات الصفّارة؟
-      en: What's the hospital vehicle with a siren?
-    options: [ambulans, operasi, kondisi]
-    answer: 0
+      ar_eg: أنهي كلمة جاية من العربي «طبيب»؟
+      ar: أيّ كلمة أصلها العربية «طبيب»؟
+      en: Which word comes from Arabic «طبيب»?
+    options: [dokter, tabib, klinik]
+    answer: 1
     explain:
-      ar_eg: ambulans = إسعاف.
-      ar: ambulans = إسعاف.
-      en: ambulans = ambulance.
-    words: [ambulans, operasi, kondisi]
-  - id: e06
-    type: fill_blank
-    sentence: Sesudah ___, pasien harus istirahat seminggu.
-    meaning:
-      ar_eg: بعد الـ ___، المريض لازم يرتاح أسبوع.
-      ar: بعد ___ يجب أن يرتاح المريض أسبوعًا.
-      en: After the ___, the patient must rest for a week.
-    options: [operasi, muntah, perban]
-    answers: [operasi]
-    words: [operasi, muntah, perban]
-  - id: e07
+      ar_eg: tabib ← طبيب، بس النهارده معناها المعالج الشعبي. الدكتور اسمه dokter (من الهولندي).
+      ar: tabib من «طبيب»، لكنها اليوم للمعالج الشعبي، أما الطبيب فـdokter (من الهولندية).
+      en: tabib comes from طبيب but now means a traditional healer; a doctor is dokter (from Dutch).
+    words: [tabib, klinik]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: حالته كويسة النهارده.
-      ar: حاله جيّدة اليوم.
-      en: His condition is good today.
-    answer: Kondisinya baik hari ini.
-    distractors: [pingsan, sakit]
-    words: [kondisi]
+      ar_eg: يا دكتور، عندي سخونية من امبارح.
+      ar: يا دكتور، عندي حمّى منذ أمس.
+      en: Doctor, I've had a fever since yesterday.
+    answer: Dok, saya demam sejak kemarin.
+    alternatives: ['Dok, sejak kemarin saya demam.']
+    distractors: [selama, punya]
+    words: [demam, sejak]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: اشرب مية كتير وارتاح.
+      ar: أكثِر من شرب الماء واسترح.
+      en: Drink plenty of water and rest.
+    answer: Banyak minum air putih dan istirahat.
+    distractors: [semoga, sakit]
+    words: [air putih, istirahat]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: klinik
+        ar_eg: عيادة
+        ar: عيادة
+        en: clinic
+      - text: mulut
+        ar_eg: بُق
+        ar: فم
+        en: mouth
+      - text: tabib
+        ar_eg: معالج شعبي
+        ar: معالج شعبي
+        en: traditional healer
+      - text: tenggorokan
+        ar_eg: زور
+        ar: حلق
+        en: throat
+      - text: batuk
+        ar_eg: كحة
+        ar: سعال
+        en: cough
+      - text: demam
+        ar_eg: سخونية
+        ar: حُمّى
+        en: fever
+    words: [klinik, mulut, tabib, tenggorokan, batuk, demam]
   - id: e08
-    type: translate
-    direction: from_target
-    source_text: Anak itu muntah lalu pingsan.
-    answers_meaning:
-      ar_eg: [الولد ده رجّع وبعدين أغمى عليه, العيل رجّع وبعدها أغمى عليه]
-      ar: [تقيّأ ذلك الطفل ثم أُغمي عليه]
-      en: [That child was sick and then fainted, 'The child vomited, then fainted']
-    words: [muntah, pingsan]
-  - id: e09
-    type: speaking
-    text: Pasien itu pakai infus dan perban.
-    meaning:
-      ar_eg: المريض ده متعلق له محلول وعليه شاش.
-      ar: ذلك المريض على محلول وعليه ضمادة.
-      en: That patient has a drip and a bandage.
-    words: [infus, perban]
-  - id: e10
-    type: multiple_choice
-    question: Ada luka di tangan. Pakai ___.
-    options: [perban, termometer, ambulans]
+    type: listen
+    text: Ini klinik, bukan rumah tabib.
+    options: ['Ini klinik, bukan rumah tabib.', 'Ini rumah tabib, bukan klinik.', 'Ini apotek, bukan klinik.']
     answer: 0
-    explain:
-      ar_eg: 'الجرح محتاج شاش: perban.'
-      ar: 'الجرح يحتاج ضمادة: perban.'
-      en: 'A cut needs a bandage: perban.'
-    words: [perban, termometer, ambulans]
+    meaning:
+      ar_eg: دي عيادة، مش بيت معالج شعبي.
+      ar: هذه عيادة، لا بيت معالج شعبي.
+      en: This is a clinic, not a healer's house.
+    words: [klinik, tabib, apotek]
+  - id: e09
+    type: dictation
+    text: Coba buka mulutnya, Pak.
+    meaning:
+      ar_eg: افتح بقك يا أستاذ.
+      ar: افتح فمك يا سيدي.
+      en: Open your mouth, sir.
+    words: [mulut, buka]
+  - id: e10
+    type: speaking
+    text: Selamat pagi, Dok. Saya demam dan sakit tenggorokan sejak dua hari yang lalu.
+    meaning:
+      ar_eg: صباح الخير يا دكتور. عندي سخونية والتهاب زور من يومين.
+      ar: صباح الخير يا دكتور. عندي حمّى والتهاب في الحلق منذ يومين.
+      en: Good morning, doctor. I've had a fever and a sore throat for two days.
+    words: [demam, tenggorokan, sejak]
 dialogue:
+  title: Di klinik Amed
   lines:
+    - speaker: Dokter Made
+      text: Selamat pagi. Silakan duduk. Sakit apa, Pak?
+      ar_eg: صباح الخير. اتفضل اقعد. عندك إيه؟
+      ar: صباح الخير. تفضّل بالجلوس. ما بك يا سيدي؟
+      en: Good morning. Please sit down. What's the matter?
     - speaker: Mohamed
-      text: Bu, bagaimana kondisi teman saya?
-      ar_eg: يا مدام، حالة صاحبي عاملة إيه؟
-      ar: يا سيدتي، كيف حال صديقي؟
-      en: Excuse me, how is my friend doing?
-    - speaker: Perawat
-      text: Sudah lebih baik. Kemarin dia muntah dan pingsan.
-      ar_eg: أحسن دلوقتي. امبارح كان بيرجّع وأغمى عليه.
-      ar: صار أفضل. أمس تقيّأ وأُغمي عليه.
-      en: Better now. Yesterday he vomited and fainted.
+      text: Pagi, Dok. Saya demam dan sakit tenggorokan.
+      ar_eg: صباح النور يا دكتور. عندي سخونية والتهاب زور.
+      ar: صباح النور يا دكتور. عندي حمّى والتهاب في الحلق.
+      en: Morning, doctor. I have a fever and a sore throat.
+    - speaker: Dokter Made
+      text: Sudah berapa lama?
+      ar_eg: بقالك قد إيه كده؟
+      ar: منذ متى؟
+      en: How long has it been?
     - speaker: Mohamed
-      text: Perlu operasi?
-      ar_eg: محتاج عملية؟
-      ar: هل يحتاج إلى عملية؟
-      en: Does he need an operation?
-    - speaker: Perawat
-      text: Tidak perlu. Sekarang dia pakai infus saja.
-      ar_eg: لأ. دلوقتي عليه محلول بس.
-      ar: لا. الآن عليه محلول وريدي فقط.
-      en: No. He's just on a drip now.
+      text: Sejak dua hari yang lalu. Kemarin saya juga batuk.
+      ar_eg: من يومين. وامبارح كمان بقيت أكح.
+      ar: منذ يومين، وأمس بدأت أسعل أيضًا.
+      en: Since two days ago. Yesterday I started coughing too.
+    - speaker: Dokter Made
+      text: Ini resepnya. Obatnya diminum tiga kali sehari sesudah makan. Banyak minum air putih dan istirahat, ya.
+      ar_eg: دي الروشتة. الدوا يتاخد ٣ مرات في اليوم بعد الأكل. واشرب مية كتير وارتاح.
+      ar: هذه الوصفة. يؤخذ الدواء ثلاث مرات يوميًا بعد الطعام. وأكثِر من شرب الماء واسترح.
+      en: Here's the prescription. Take the medicine three times a day after meals. Drink plenty of water and rest.
     - speaker: Mohamed
-      text: Baik. Boleh saya masuk?
-      ar_eg: تمام. ممكن أدخل؟
-      ar: حسنًا. هل يمكنني الدخول؟
-      en: OK. May I go in?
-    - speaker: Perawat
-      text: Boleh, tapi jangan lama, ya.
-      ar_eg: ممكن، بس ما تطوّلش.
-      ar: نعم، لكن لا تُطل.
-      en: Yes, but don't stay long.
+      text: Baik, Dok. Terima kasih.
+      ar_eg: حاضر يا دكتور. شكرًا.
+      ar: حسنًا يا دكتور. شكرًا.
+      en: All right, doctor. Thank you.
 new_words:
-  - word: muntah
-    pos: verb
-    ar_eg: يرجّع
-    ar: يتقيّأ
-    en: vomit, be sick
-  - word: operasi
+  - word: klinik
     pos: noun
-    ar_eg: عملية جراحية
-    ar: عملية جراحية
-    en: operation, surgery
-  - word: ambulans
+    ar_eg: عيادة
+    ar: عيادة
+    en: clinic
+  - word: mulut
     pos: noun
-    ar_eg: عربية إسعاف
-    ar: سيارة إسعاف
-    en: ambulance
-  - word: kondisi
+    ar_eg: بُق
+    ar: فم
+    en: mouth
+  - word: tabib
     pos: noun
-    ar_eg: حالة
-    ar: حالة
-    en: condition
-  - word: pingsan
-    pos: verb
-    ar_eg: يغمى عليه
-    ar: يُغمى عليه
-    en: faint
-  - word: infus
-    pos: noun
-    ar_eg: محلول في الوريد
-    ar: محلول وريدي
-    en: drip, IV
-  - word: perban
-    pos: noun
-    ar_eg: شاش، رباط
-    ar: ضمادة
-    en: bandage
-  - word: termometer
-    pos: noun
-    ar_eg: ترمومتر
-    ar: ميزان حرارة
-    en: thermometer
+    ar_eg: معالج شعبي (كلمة قديمة)
+    ar: طبيب شعبي (كلمة قديمة)
+    en: traditional healer (old word)
+    arabic: طبيب
 review:
   status: draft
   verified: false

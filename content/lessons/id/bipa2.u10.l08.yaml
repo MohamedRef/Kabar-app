@@ -156,13 +156,25 @@ exercises:
     answers: [Saya sakit gigi., Saya sakit gigi, Aku sakit gigi., Aku sakit gigi, Gigi saya sakit., Gigi saya sakit, Gigiku sakit.]
     words: [sakit, gigi]
   - id: e11
-    type: dictation
-    text: Kepala saya pusing dan badan saya lemas.
-    meaning:
-      ar_eg: راسي دايخة وجسمي هبطان.
-      ar: أشعر بالدوار والوهن.
-      en: I feel dizzy and weak.
-    words: [pusing, lemas]
+    type: match_pairs
+    pairs:
+      - text: pasien
+        ar_eg: مريض (عند الدكتور)
+        ar: مريض
+        en: patient
+      - text: luka
+        ar_eg: جرح
+        ar: جرح
+        en: wound, cut
+      - text: muntah
+        ar_eg: يرجّع
+        ar: يتقيّأ
+        en: vomit, be sick
+      - text: operasi
+        ar_eg: عملية جراحية
+        ar: عملية جراحية
+        en: operation, surgery
+    words: [pasien, luka, muntah, operasi]
   - id: e12
     type: speaking
     text: Dok, saya sakit perut sejak tadi malam.

@@ -1,236 +1,204 @@
 schema: kabar.lesson/v1
 id: bipa2.u08.l06
 language: id
-title: Bensin, ban, bengkel
+title: Pesan suara dari Raka
 can_do:
-  ar_eg: 'تتصرف لو العربية أو الموتوسيكل عطل: البنزين والكاوتش والورشة والرخصة والمرور.'
-  ar: 'أن تتصرّف إذا تعطّلت السيارة أو الدراجة النارية: الوقود والإطار والورشة والرخصة والمرور.'
-  en: 'Cope when a car or scooter breaks down: fuel, tyres, the garage, your licence and traffic.'
+  ar_eg: تسمع رسالة صوتية فيها طريق الرحلة وتفهم تركب إيه وبعدين إيه.
+  ar: أن تفهم رسالة صوتية تشرح طريق الرحلة بالترتيب.
+  en: Follow travel directions in a voice message.
 slides:
-  - title: Di jalan
+  - title: Pesan suara dari Raka
     body:
       ar_eg: |
-        kendaraan = عربية أو أي حاجة بتمشي على الطريق. bensin = بنزين، ban = كاوتش (ban bocor = الكاوتش مخرّم).
-        bengkel = ورشة ميكانيكي. mogok = العربية عطلت ووقفت (ومعناها كمان إضراب).
-        jalan tol = طريق سريع بفلوس. lalu lintas = المرور. SIM = رخصة السواقة (Surat Izin Mengemudi).
+        راكا بعتلك رسالة صوتية (pesan suara) عشان تيجي له بِدوجول بكرة. المرة دي اسمع الأول من غير ما تقرا.
+        ركّز على كلمات الترتيب: pertama، lalu، ketika. وفيه كلمتين جداد: dingin (برد) و jaket (جاكت)، عشان بدوجول فوق الجبل وجوّها ساقع.
       ar: |
-        kendaraan = مركبة (كل ما يسير على الطريق). bensin = وقود، ban = إطار (ban bocor = إطار مثقوب).
-        bengkel = ورشة إصلاح. mogok = تعطّلت وتوقّفت (وتعني أيضًا إضرابًا).
-        jalan tol = طريق سريع برسوم. lalu lintas = حركة المرور. SIM = رخصة القيادة (Surat Izin Mengemudi).
+        أرسل لك راكا رسالة صوتية (pesan suara) لتلحق به في بِدوغول غدًا. هذه المرة استمع أولًا دون قراءة.
+        انتبه إلى كلمات الترتيب: pertama، lalu، ketika. وهناك كلمتان جديدتان: dingin (بارد) و jaket (سترة)، لأن بدوغول في الجبال وجوّها بارد.
       en: |
-        kendaraan = vehicle. bensin = petrol, ban = tyre (ban bocor = a flat tyre).
-        bengkel = repair garage. mogok = break down, stall (also: go on strike).
-        jalan tol = toll road. lalu lintas = traffic. SIM = driving licence (Surat Izin Mengemudi).
-    examples:
-      - text: Motor saya mogok di jalan.
-        ar_eg: الموتوسيكل بتاعي عطل في الطريق.
-        ar: تعطّلت دراجتي النارية في الطريق.
-        en: My scooter broke down on the road.
-      - text: Ban mobil ini bocor. Ayo ke bengkel.
-        ar_eg: كاوتش العربية دي مخرّم. يلا على الورشة.
-        ar: إطار هذه السيارة مثقوب. هيّا إلى الورشة.
-        en: This car has a flat tyre. Let's go to the garage.
-      - text: Jalan tol ini bayar, tapi cepat.
-        ar_eg: الطريق السريع ده بفلوس، بس سريع.
-        ar: هذا الطريق برسوم، لكنه سريع.
-        en: This toll road costs money, but it's fast.
+        Raka sent you a voice message (pesan suara) so you can meet him in Bedugul tomorrow. This time, listen first, without reading.
+        Listen for the order words: pertama, lalu, ketika. Two new words: dingin (cold) and jaket (jacket) — Bedugul is up in the mountains and it's cool there.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: kendaraan
-        ar_eg: عربية، مركبة
-        ar: مركبة
-        en: vehicle
-      - text: bensin
-        ar_eg: بنزين
-        ar: وقود
-        en: petrol
-      - text: ban
-        ar_eg: كاوتش
-        ar: إطار
-        en: tyre
-      - text: jalan tol
-        ar_eg: طريق سريع بفلوس
-        ar: طريق برسوم
-        en: toll road
-    words: [kendaraan, bensin, ban, jalan tol]
+    type: listen
+    text: Pertama, kamu naik angkot ke terminal.
+    question:
+      ar_eg: محمد يروح المحطة (terminal) بإيه؟
+      ar: بماذا يذهب محمد إلى المحطة (terminal)؟
+      en: How does Mohamed get to the bus terminal?
+    options: [naik ojek, naik angkot, naik bus]
+    answer: 1
+    meaning:
+      ar_eg: الأول، اركب ميكروباص لحد موقف الأتوبيسات.
+      ar: أولًا، اركب الحافلة الصغيرة إلى محطة الحافلات.
+      en: First, take an angkot to the bus terminal.
+    words: [pertama, angkot, terminal]
   - id: e02
-    type: match_pairs
-    pairs:
-      - text: bengkel
-        ar_eg: ورشة
-        ar: ورشة
-        en: garage
-      - text: mogok
-        ar_eg: عطل
-        ar: تعطّل
-        en: break down
-      - text: SIM
-        ar_eg: رخصة سواقة
-        ar: رخصة قيادة
-        en: driving licence
-      - text: lalu lintas
-        ar_eg: المرور
-        ar: المرور
-        en: traffic
-    words: [bengkel, mogok, SIM, lalu lintas]
+    type: listen
+    text: Lalu, kamu naik bus ke Bedugul. Busnya bolak-balik dari Denpasar ke Bedugul.
+    question:
+      ar_eg: الأتوبيس رايح جاي بين أنهي مكانين؟
+      ar: بين أيّ مكانين تذهب الحافلة وتعود؟
+      en: Between which two places does the bus go back and forth?
+    options: [Denpasar dan Bedugul, Sanur dan Bedugul, Denpasar dan Ubud]
+    answer: 0
+    meaning:
+      ar_eg: بعدين اركب الأتوبيس لبدوجول. الأتوبيس رايح جاي من دنباسار لبدوجول.
+      ar: ثم اركب الحافلة إلى بدوغول. الحافلة تذهب وتعود بين دنباسار وبدوغول.
+      en: Then take the bus to Bedugul. The bus goes back and forth between Denpasar and Bedugul.
+    words: [lalu, bolak-balik]
   - id: e03
     type: listen
-    text: Motornya mogok. Bensinnya kosong!
+    text: Ketika kamu sampai di Bedugul, aku tunggu di dekat danau.
     question:
-      ar_eg: الموتوسيكل ماله؟
-      ar: ما مشكلة الدراجة؟
-      en: What's wrong with the scooter?
-    options: [البنزين خلص, الكاوتش مخرّم, الرخصة ضاعت]
-    answer: 0
+      ar_eg: راكا هيستنّى فين؟
+      ar: أين سينتظر راكا؟
+      en: Where will Raka wait?
+    options: [di terminal, di dekat danau, di hotel]
+    answer: 1
     meaning:
-      ar_eg: الموتوسيكل عطل. مفيش بنزين!
-      ar: تعطّلت الدراجة. لا وقود فيها!
-      en: The scooter's broken down. It's out of petrol!
-    words: [mogok, bensin]
+      ar_eg: لما توصل بدوجول، هستناك جنب البحيرة.
+      ar: عندما تصل إلى بدوغول، سأنتظرك قرب البحيرة.
+      en: When you get to Bedugul, I'll wait near the lake.
+    words: [ketika, danau, tunggu]
   - id: e04
-    type: fill_blank
-    sentence: Ban motor saya bocor. Saya bawa ke ___.
+    type: listen
+    text: Jangan lupa bawa jaket, ya! Di Bedugul dingin.
+    question:
+      ar_eg: محمد لازم ياخد معاه إيه؟
+      ar: ماذا يجب أن يأخذ محمد معه؟
+      en: What should Mohamed bring?
+    options: [payung, helm, jaket]
+    answer: 2
     meaning:
-      ar_eg: كاوتش الموتوسيكل مخرّم. هوديه الـ ___.
-      ar: إطار دراجتي مثقوب. سآخذها إلى ___.
-      en: My scooter has a flat. I'll take it to the ___.
-    options: [bengkel, jalan tol, SIM]
-    answers: [bengkel]
-    words: [bengkel, ban, jalan tol, SIM]
+      ar_eg: ما تنساش تجيب جاكت! بدوجول برد.
+      ar: لا تنسَ أن تحضر سترة! الجو بارد في بدوغول.
+      en: Don't forget to bring a jacket! It's cold in Bedugul.
+    words: [jaket, dingin, jangan, lupa]
   - id: e05
+    type: match_pairs
+    pairs:
+      - text: dingin
+        ar_eg: برد، ساقع
+        ar: بارد
+        en: cold
+      - text: jaket
+        ar_eg: جاكت
+        ar: سترة
+        en: jacket
+      - text: bolak-balik
+        ar_eg: رايح جاي
+        ar: ذهابًا وإيابًا
+        en: back and forth
+      - text: danau
+        ar_eg: بحيرة
+        ar: بحيرة
+        en: lake
+      - text: terminal
+        ar_eg: موقف أتوبيسات
+        ar: محطة حافلات
+        en: bus terminal
+    words: [dingin, jaket, bolak-balik, danau, terminal]
+  - id: e06
     type: multiple_choice
     question_meaning:
-      ar_eg: لازم يكون معاك إيه عشان تسوق؟
-      ar: ماذا يجب أن يكون معك لتقود؟
-      en: What must you carry to drive?
-    options: [SIM, ban, bensin]
+      ar_eg: حسب الرسالة، محمد هيركب إيه بالترتيب؟
+      ar: بحسب الرسالة، ماذا سيركب محمد بالترتيب؟
+      en: According to the message, what will Mohamed take, in order?
+    options:
+      - "Pertama angkot, lalu bus."
+      - "Pertama bus, lalu angkot."
+      - "Pertama ojek, lalu bus."
     answer: 0
-    explain:
-      ar_eg: SIM = رخصة السواقة.
-      ar: SIM = رخصة القيادة.
-      en: SIM = driving licence.
-    words: [SIM, ban, bensin]
-  - id: e06
-    type: fill_blank
-    sentence: Jam lima sore, ___ di Jakarta macet sekali.
-    meaning:
-      ar_eg: الساعة خمسة العصر، ___ في جاكرتا واقف خالص.
-      ar: في الخامسة مساءً تكون ___ في جاكرتا مزدحمة جدًا.
-      en: At five p.m. the ___ in Jakarta is jammed.
-    options: [lalu lintas, bengkel, kendaraan]
-    answers: [lalu lintas]
-    words: [lalu lintas, bengkel, kendaraan]
+    words: [pertama, lalu]
   - id: e07
+    type: fill_blank
+    sentence: Di Bedugul ___ sekali, jadi saya pakai jaket.
+    meaning:
+      ar_eg: في بدوجول برد أوي، فأنا لابس جاكت.
+      ar: الجو بارد جدًا في بدوغول، لذلك ألبس سترة.
+      en: It's very cold in Bedugul, so I'm wearing a jacket.
+    answers: [dingin]
+    words: [dingin, jaket]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: الطريق السريع ده بفلوس، بس سريع.
-      ar: هذا الطريق برسوم لكنه سريع.
-      en: This toll road costs money, but it's fast.
-    answer: Jalan tol ini bayar, tapi cepat.
-    distractors: [ban, lambat]
-    words: [jalan tol]
-  - id: e08
-    type: translate
-    direction: from_target
-    source_text: Banyak kendaraan di jalan raya pagi ini.
-    answers_meaning:
-      ar_eg: [فيه عربيات كتير في الطريق الرئيسي النهارده الصبح, الطريق الرئيسي مليان عربيات الصبح ده]
-      ar: [هناك مركبات كثيرة على الطريق الرئيسي هذا الصباح]
-      en: [There are lots of vehicles on the main road this morning, Many vehicles on the main road this morning]
-    words: [kendaraan]
+      ar_eg: بعدين اركب الأتوبيس لبدوجول.
+      ar: ثم اركب الحافلة إلى بدوغول.
+      en: Then take the bus to Bedugul.
+    answer: Lalu, kamu naik bus ke Bedugul.
+    distractors: [sambil, ketika]
+    words: [lalu]
   - id: e09
-    type: speaking
-    text: Mobil saya mogok di jalan tol.
+    type: dictation
+    text: Busnya bolak-balik dari Denpasar ke Bedugul.
     meaning:
-      ar_eg: عربيتي عطلت على الطريق السريع.
-      ar: تعطّلت سيارتي على الطريق السريع.
-      en: My car broke down on the toll road.
-    words: [mogok, jalan tol]
+      ar_eg: الأتوبيس رايح جاي من دنباسار لبدوجول.
+      ar: الحافلة تذهب وتعود بين دنباسار وبدوغول.
+      en: The bus goes back and forth between Denpasar and Bedugul.
+    words: [bolak-balik]
   - id: e10
-    type: multiple_choice
-    question: Mobil minum ___, bukan air!
-    options: [bensin, ban, lalu lintas]
-    answer: 0
-    explain:
-      ar_eg: العربية بتشرب بنزين!
-      ar: السيارة تشرب الوقود!
-      en: Cars drink petrol!
-    words: [bensin, ban, lalu lintas]
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: ما تنساش تجيب جاكت!
+      ar: لا تنسَ أن تحضر سترة!
+      en: Don't forget to bring a jacket!
+    answers:
+      - Jangan lupa bawa jaket!
+      - Jangan lupa bawa jaket
+      - Jangan lupa bawa jaket.
+      - Jangan lupa bawa jaket, ya!
+      - Jangan lupa bawa jaket, ya.
+      - Jangan lupa membawa jaket!
+      - Jangan lupa membawa jaket
+      - Jangan lupa membawa jaket.
+      - Jangan lupa membawa jaket, ya!
+    words: [jaket, jangan, lupa]
 dialogue:
+  title: Telepon dari terminal
   lines:
     - speaker: Mohamed
-      text: Ni Luh, motor saya mogok di jalan!
-      ar_eg: يا ني لوه، الموتوسيكل عطل مني في الطريق!
-      ar: يا ني لوه، تعطّلت دراجتي في الطريق!
-      en: Ni Luh, my scooter's broken down on the road!
-    - speaker: Ni Luh
-      text: Bensinnya kosong?
-      ar_eg: البنزين خلص؟
-      ar: هل نفد الوقود؟
-      en: Out of petrol?
+      text: Halo, Raka! Saya sudah di terminal.
+      ar_eg: ألو يا راكا! أنا وصلت الموقف.
+      ar: مرحبًا يا راكا! أنا الآن في المحطة.
+      en: Hi, Raka! I'm at the terminal now.
+    - speaker: Raka
+      text: Bagus! Sekarang naik bus ke Bedugul, ya.
+      ar_eg: حلو! دلوقتي اركب الأتوبيس لبدوجول.
+      ar: جيد! الآن اركب الحافلة إلى بدوغول.
+      en: Great! Now take the bus to Bedugul.
     - speaker: Mohamed
-      text: Tidak. Bannya bocor.
-      ar_eg: لأ. الكاوتش مخرّم.
-      ar: لا. الإطار مثقوب.
-      en: No. It's got a flat.
-    - speaker: Ni Luh
-      text: Ada bengkel dekat kantor pos. Bawa ke sana.
-      ar_eg: فيه ورشة جنب البوسطة. وديه هناك.
-      ar: هناك ورشة قرب مكتب البريد. خذها إليها.
-      en: There's a garage near the post office. Take it there.
+      text: Di sini banyak bus. Yang mana?
+      ar_eg: هنا فيه أتوبيسات كتير. أنهي واحد؟
+      ar: هنا حافلات كثيرة. أيّها؟
+      en: There are lots of buses here. Which one?
+    - speaker: Raka
+      text: Yang biru, di sebelah loket.
+      ar_eg: الأزرق، اللي جنب الشباك بتاع التذاكر.
+      ar: الزرقاء، التي بجانب شباك التذاكر.
+      en: The blue one, next to the ticket window.
     - speaker: Mohamed
-      text: Oke. Lalu lintasnya ramai sekali hari ini.
-      ar_eg: ماشي. المرور زحمة أوي النهارده.
-      ar: حسنًا. المرور مزدحم جدًا اليوم.
-      en: OK. The traffic's really heavy today.
-    - speaker: Ni Luh
-      text: Hati-hati, ya! Jangan lupa SIM-mu.
-      ar_eg: خلي بالك! ما تنساش رخصتك.
-      ar: انتبه! ولا تنسَ رخصتك.
-      en: Be careful! Don't forget your licence.
+      text: Oke. Saya juga sudah bawa jaket.
+      ar_eg: تمام. وأنا كمان جبت الجاكت.
+      ar: حسنًا. وقد أحضرت السترة أيضًا.
+      en: OK. And I've brought a jacket too.
+    - speaker: Raka
+      text: Bagus! Di sini dingin sekali. Sampai nanti!
+      ar_eg: حلو! هنا برد أوي. أشوفك بعدين!
+      ar: جيد! الجو هنا بارد جدًا. إلى اللقاء!
+      en: Good! It's really cold here. See you soon!
 new_words:
-  - word: kendaraan
+  - word: dingin
+    pos: adjective
+    ar_eg: برد، ساقع
+    ar: بارد
+    en: cold
+  - word: jaket
     pos: noun
-    ar_eg: عربية، مركبة
-    ar: مركبة
-    en: vehicle
-  - word: bensin
-    pos: noun
-    ar_eg: بنزين
-    ar: وقود (بنزين)
-    en: petrol
-  - word: ban
-    pos: noun
-    ar_eg: كاوتش
-    ar: إطار
-    en: tyre
-  - word: jalan tol
-    pos: noun
-    ar_eg: طريق سريع بفلوس
-    ar: طريق برسوم
-    en: toll road
-  - word: bengkel
-    pos: noun
-    ar_eg: ورشة ميكانيكي
-    ar: ورشة إصلاح
-    en: repair garage, workshop
-  - word: mogok
-    pos: verb
-    ar_eg: يعطل؛ يضرب عن الشغل
-    ar: يتعطّل؛ يُضرب
-    en: break down; go on strike
-  - word: SIM
-    pos: noun
-    ar_eg: رخصة سواقة
-    ar: رخصة قيادة
-    en: driving licence
-  - word: lalu lintas
-    pos: noun
-    ar_eg: المرور
-    ar: حركة المرور
-    en: traffic
+    ar_eg: جاكت
+    ar: سترة
+    en: jacket
 review:
   status: draft
   verified: false
