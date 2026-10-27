@@ -15,7 +15,6 @@ use kabar_core::ai::tasks::RoleplayTurn;
 use kabar_core::chat::{
     Scenario, chat_level, is_javanese, persona_voice, registers, replay, request, scenarios,
 };
-use kabar_core::learn::PersonalDictionary;
 use kabar_core::lesson::pick;
 use kabar_core::locale::UiLanguage;
 use kabar_core::story::parse_persona;
@@ -25,12 +24,11 @@ use kabar_protocol::content::Lang;
 use kabar_protocol::story::Persona;
 
 use self::text::{T, tt};
+use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::lesson::embedded::PERSONAS;
 use crate::lesson::target_tag;
 use crate::listen::player::ProgramPlayer;
-use crate::reader::card::InfoView;
-use crate::reader::doc::{Lexicon, ReadDoc};
 use crate::store::now_ms;
 use crate::studio::pad::{InkAnswer, InkPad};
 use crate::teach::Ai;
@@ -558,7 +556,7 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
                         ChatRole::Persona => rsx! {
                             li { key: "{m.id}", class: "ch-msg them",
                                 div { class: "ch-bubble",
-                                    ChatText { text: m.text.clone(), target }
+                                    Annotated { text: m.text.clone(), tag: target, class: "ch-text" }
                                     div { class: "ch-tools",
                                         ListenButton { text: m.text.clone(), language: p.language.clone(), voice: persona_voice(p) }
                                         if m.unverified {
@@ -675,76 +673,6 @@ fn ListenButton(text: String, language: String, voice: kabar_protocol::cloud::Vo
             aria_label: "{tt(ui.lang(), T::Listen)}",
             onclick: move |_| crate::lesson::speak_in(&text, &language, voice, missing),
             "🔊"
-        }
-    }
-}
-
-/// A reply with every word tappable (and pen-hoverable): the Reader's
-/// tokenizer and glossary, with words the learner taught Kabar on top.
-#[component]
-fn ChatText(text: String, target: &'static str) -> Element {
-    let ui = use_context::<Ui>();
-    let db = use_context::<Db>();
-    let mut open = use_signal(|| None::<usize>);
-    let doc = use_memo(use_reactive!(|text| {
-        let taught = PersonalDictionary::new(db.0.borrow().taught_entries().unwrap_or_default());
-        ReadDoc::from_text(&text, Lexicon { glossary: crate::reader::glossary(), taught: &taught })
-    }));
-    let d = doc.read();
-    let mut pieces = Vec::new();
-    let mut at = 0;
-    for (i, t) in d.tokens.iter().enumerate() {
-        if t.start > at {
-            pieces.push((None, d.text(at, t.start).to_string()));
-        }
-        let info = t.word.as_ref().and_then(|w| w.shown());
-        pieces.push((info.map(|_| i), d.text(t.start, t.end).to_string()));
-        at = t.end;
-    }
-    if at < d.body.len() {
-        pieces.push((None, d.text(at, d.body.len()).to_string()));
-    }
-    let shown = open().and_then(|i| {
-        let t = d.tokens.get(i)?;
-        Some((d.text(t.start, t.end).to_string(), t.word.as_ref()?.shown()?))
-    });
-
-    rsx! {
-        p { class: "ch-text latin", lang: target, dir: "ltr",
-            for (k , (token , s)) in pieces.into_iter().enumerate() {
-                match token {
-                    Some(i) => rsx! {
-                        span {
-                            key: "{k}",
-                            class: if open() == Some(i) { "ch-word on" } else { "ch-word" },
-                            role: "button",
-                            tabindex: "0",
-                            onclick: move |_| open.set(if open() == Some(i) { None } else { Some(i) }),
-                            onkeydown: move |e| {
-                                if e.key() == Key::Enter {
-                                    open.set(Some(i));
-                                }
-                            },
-                            onpointerenter: move |e| {
-                                if e.data().pointer_type() == "pen" {
-                                    open.set(Some(i));
-                                }
-                            },
-                            "{s}"
-                        }
-                    },
-                    None => rsx! { span { key: "{k}", "{s}" } },
-                }
-            }
-        }
-        if let Some((surface, info)) = shown {
-            div { class: "ch-card", role: "dialog", aria_label: "{surface}",
-                div { class: "row ch-card-head",
-                    strong { bdi { class: "latin", lang: target, "{surface}" } }
-                    button { class: "quiet small", onclick: move |_| open.set(None), "{tt(ui.lang(), T::Close)}" }
-                }
-                InfoView { info, voice: ui.lang() }
-            }
         }
     }
 }
