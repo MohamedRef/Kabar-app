@@ -1,0 +1,229 @@
+schema: kabar.lesson/v1
+id: bipa1.u05.l08
+language: id
+title: Di loket Ancol
+can_do:
+  ar_eg: تشتري تذكرة وتسأل أسئلة عند الشباك.
+  ar: أن تشتري تذكرة وتطرح أسئلة عند شبّاك التذاكر.
+  en: Buy a ticket and ask questions at a counter.
+slides:
+  - title: Di loket
+    body:
+      ar_eg: |
+        عند الشباك (loket) هتحتاج كام جملة بس:
+        - Permisi, Mbak. = لو سمحتي (عشان تبدأ بأدب).
+        - Berapa harga tiketnya? = التذكرة بكام؟
+        - Dua tiket, Mbak. = تذكرتين لو سمحتي.
+        - Ada …? = فيه …؟
+        - Boleh saya …? = ممكن …؟
+        - Terima kasih banyak! — Sama-sama.
+      ar: |
+        عند شبّاك التذاكر (loket) تكفيك بضع جمل:
+        - Permisi, Mbak. = من فضلك (لتبدأ بأدب).
+        - Berapa harga tiketnya? = كم ثمن التذكرة؟
+        - Dua tiket, Mbak. = تذكرتان من فضلك.
+        - Ada …? = هل يوجد …؟
+        - Boleh saya …? = هل يمكنني …؟
+        - Terima kasih banyak! — Sama-sama.
+      en: |
+        At the ticket counter (loket) a few lines do it all:
+        - Permisi, Mbak. = Excuse me (a polite opener).
+        - Berapa harga tiketnya? = How much is the ticket?
+        - Dua tiket, Mbak. = Two tickets, please.
+        - Ada …? = Is there …?
+        - Boleh saya …? = May I …?
+        - Terima kasih banyak! — Sama-sama.
+    grammar: id.politeness.phrases
+    examples:
+      - text: Permisi, Mbak. Berapa harga tiket masuk?
+        ar_eg: لو سمحتي، تذكرة الدخول بكام؟
+        ar: من فضلك، كم ثمن تذكرة الدخول؟
+        en: Excuse me, how much is an entrance ticket?
+      - text: Kolam renang buka jam delapan.
+        ar_eg: حمام السباحة بيفتح الساعة ٨.
+        ar: يفتح المسبح في الساعة الثامنة.
+        en: The pool opens at eight.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تسأل التذكرة بكام. تقول إيه؟
+      ar: تريد أن تسأل عن ثمن التذكرة. ماذا تقول؟
+      en: You want to ask how much the ticket costs. What do you say?
+    options: ['Ada apa tiketnya?', 'Bagaimana tiketnya?', 'Berapa harga tiketnya?']
+    answer: 2
+    explain:
+      ar_eg: السعر رقم، يبقى berapa (بكام). bagaimana بتسأل عن الحال.
+      ar: السعر عدد فيُسأل عنه بـ berapa، أما bagaimana فللحال.
+      en: A price is a number, so berapa; bagaimana asks how something is.
+    words: [berapa, harga, tiket]
+  - id: e02
+    type: listen
+    text: Tiga puluh lima ribu rupiah
+    options: [Tiga belas ribu rupiah, Tiga puluh lima ribu rupiah, Lima puluh tiga ribu rupiah]
+    answer: 1
+    words: [ribu, rupiah]
+  - id: e03
+    type: fill_blank
+    sentence: ___, Mbak. Berapa harga tiket masuk?
+    meaning:
+      ar_eg: لو سمحتي، تذكرة الدخول بكام؟
+      ar: من فضلك، كم ثمن تذكرة الدخول؟
+      en: Excuse me, how much is an entrance ticket?
+    options: [Permisi, Sama-sama, Silakan]
+    answers: [Permisi]
+    explain:
+      ar_eg: permisi بتفتح الكلام مع حد غريب.
+      ar: permisi لافتتاح الكلام مع الغرباء.
+      en: permisi opens a conversation with a stranger.
+    words: [permisi]
+  - id: e04
+    type: fill_blank
+    sentence: Tiket masuk di ___ itu.
+    meaning:
+      ar_eg: تذكرة الدخول من الشباك ده.
+      ar: تذكرة الدخول من ذلك الشباك.
+      en: Entry tickets are at that counter.
+    options: [loket, uang, petugas]
+    answers: [loket]
+    words: [tiket masuk, loket]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الموظف موجود عند الشباك.
+      ar: الموظف عند الشباك.
+      en: The attendant is at the counter.
+    answer: Petugas itu ada di loket.
+    distractors: [uang, jadi]
+    words: [petugas, loket]
+  - id: e06
+    type: listen
+    text: Ini uangnya, Mbak. Dua tiket masuk.
+    options: ['Ini uangnya, Mbak. Dua tiket masuk.', 'Ini tiketnya, Mbak. Dua tiket masuk.', 'Ini uangnya, Mbak. Tiga tiket masuk.']
+    answer: 0
+    meaning:
+      ar_eg: اتفضلي الفلوس يا آنسة. تذكرتين دخول.
+      ar: تفضلي المال يا آنسة. تذكرتا دخول.
+      en: Here's the money, miss. Two entry tickets.
+    words: [uang, tiket masuk]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: loket
+        ar_eg: شباك التذاكر
+        ar: شباك التذاكر
+        en: ticket counter
+      - text: tiket masuk
+        ar_eg: تذكرة دخول
+        ar: تذكرة دخول
+        en: entry ticket
+      - text: uang
+        ar_eg: فلوس
+        ar: مال، نقود
+        en: money
+      - text: petugas
+        ar_eg: موظف
+        ar: موظف
+        en: attendant, officer
+      - text: jadi
+        ar_eg: يبقى، يعني
+        ar: إذن، فيكون
+        en: so, that makes
+      - text: harga
+        ar_eg: سعر
+        ar: سعر
+        en: price
+    words: [loket, tiket masuk, uang, petugas, jadi, harga]
+  - id: e08
+    type: multiple_choice
+    question: "Petugas loket: ___ tujuh puluh ribu, Pak."
+    question_meaning:
+      ar_eg: موظف الشباك بيقول «يبقى سبعين ألف يا أستاذ». إيه الكلمة الناقصة؟
+      ar: يقول موظف الشباك «إذن سبعون ألفًا يا سيدي». ما الكلمة الناقصة؟
+      en: The counter clerk says "That makes seventy thousand, sir." Which word is missing?
+    options: [Jadi, Ada, Uang]
+    answer: 0
+    words: [petugas, loket, jadi, uang]
+  - id: e09
+    type: dictation
+    text: Jadi tujuh puluh ribu, Pak.
+    meaning:
+      ar_eg: يبقى سبعين ألف يا أستاذ.
+      ar: إذن سبعون ألفًا يا سيدي.
+      en: So that's seventy thousand, sir.
+    words: [jadi, ribu]
+  - id: e10
+    type: speaking
+    text: Permisi, Mbak. Dua tiket masuk. Jadi berapa?
+    meaning:
+      ar_eg: لو سمحتي يا آنسة. تذكرتين دخول. يبقوا كام؟
+      ar: عذرًا يا آنسة. تذكرتا دخول. فكم يكون المبلغ؟
+      en: Excuse me, miss. Two entry tickets. So how much is that?
+    words: [permisi, tiket masuk, jadi]
+dialogue:
+  title: Di loket Ancol
+  lines:
+    - speaker: Mohamed
+      text: Permisi, Mbak. Berapa harga tiket masuk?
+      ar_eg: لو سمحتي، تذكرة الدخول بكام؟
+      ar: من فضلك، كم ثمن تذكرة الدخول؟
+      en: Excuse me. How much is an entrance ticket?
+    - speaker: Petugas loket
+      text: Tiga puluh lima ribu rupiah, Pak.
+      ar_eg: خمسة وتلاتين ألف روبية يا أستاذ.
+      ar: خمسة وثلاثون ألف روبية يا سيدي.
+      en: Thirty-five thousand rupiah, sir.
+    - speaker: Mohamed
+      text: Dua tiket, Mbak.
+      ar_eg: تذكرتين لو سمحتي.
+      ar: تذكرتان من فضلك.
+      en: Two tickets, please.
+    - speaker: Petugas loket
+      text: Jadi tujuh puluh ribu, Pak.
+      ar_eg: يبقى سبعين ألف يا أستاذ.
+      ar: إذن سبعون ألفًا يا سيدي.
+      en: So that's seventy thousand, sir.
+    - speaker: Mohamed
+      text: Boleh saya foto di pantai?
+      ar_eg: ممكن أصوّر على البحر؟
+      ar: هل يمكنني التصوير على الشاطئ؟
+      en: May I take photos on the beach?
+    - speaker: Petugas loket
+      text: Boleh, Pak. Silakan.
+      ar_eg: ممكن يا أستاذ. اتفضل.
+      ar: نعم يا سيدي. تفضل.
+      en: Yes, sir. Go ahead.
+new_words:
+  - word: loket
+    pos: noun
+    ar_eg: شباك التذاكر
+    ar: شبّاك التذاكر
+    en: ticket counter, window
+  - word: tiket
+    pos: noun
+    ar_eg: تذكرة
+    ar: تذكرة
+    en: ticket
+  - word: tiket masuk
+    pos: noun
+    ar_eg: تذكرة دخول
+    ar: تذكرة دخول
+    en: entrance ticket
+  - word: jadi
+    pos: conjunction
+    ar_eg: يبقى / يعني
+    ar: إذن
+    en: so, that makes
+  - word: uang
+    pos: noun
+    ar_eg: فلوس
+    ar: نقود
+    en: money
+  - word: petugas
+    pos: noun
+    ar_eg: موظف
+    ar: موظف
+    en: staff member, officer
+review:
+  status: draft
+  verified: false

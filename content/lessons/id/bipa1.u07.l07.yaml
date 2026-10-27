@@ -1,215 +1,239 @@
 schema: kabar.lesson/v1
 id: bipa1.u07.l07
 language: id
-title: Ulangan Unit 7
+title: Main bola
 can_do:
-  ar_eg: تتكلم عن هواياتك.
-  ar: أن تتحدث عن هواياتك.
-  en: Talk about your hobbies.
+  ar_eg: 'تتكلم عن الرياضة والماتشات: مين كسب ومين خسر.'
+  ar: 'أن تتحدث عن الرياضة والمباريات: من فاز ومن خسر.'
+  en: 'Talk about sport and matches: who won and who lost.'
 slides:
-  - title: Hobi kami — ringkasan
+  - title: Menang atau kalah?
     body:
       ar_eg: |
-        اللي أخدناه في الوحدة دي:
-        - suka، mau، ingin، bisa، boleh، harus، perlu + فعل على طول (من غير «أن»).
-        - bisa = قدرة، boleh = إذن.
-        - -an بتعمل أسماء: makanan، minuman، tulisan، mainan، pakaian.
-        - sangat + صفة، صفة + sekali، صفة + banget (عامية).
+        main = يلعب (عامية، والرسمي bermain): main bola = يلعب كورة.
+        olahraga = رياضة، permainan = لعبة، klub = نادي.
+        menang = يكسب، وkalah = يخسر.
+        lari = يجري (والرسمي berlari).
       ar: |
-        ما تعلمناه في هذه الوحدة:
-        - suka، mau، ingin، bisa، boleh، harus، perlu + فعل مباشرة (بلا «أن»).
-        - bisa للقدرة، وboleh للإذن.
-        - -an تصوغ أسماء: makanan، minuman، tulisan، mainan، pakaian.
-        - sangat + صفة، صفة + sekali، صفة + banget (عامية).
+        main = يلعب (بالعامية، والفصيح bermain): main bola = يلعب كرة القدم.
+        olahraga = رياضة، permainan = لعبة، klub = نادٍ.
+        menang = يفوز، وkalah = يخسر.
+        lari = يجري (والفصيح berlari).
       en: |
-        What this unit covered:
-        - suka, mau, ingin, bisa, boleh, harus, perlu + verb directly (no "to").
-        - bisa = ability, boleh = permission.
-        - -an makes nouns: makanan, minuman, tulisan, mainan, pakaian.
-        - sangat + adjective, adjective + sekali, adjective + banget (casual).
-    grammar: id.verb.modal
+        main = play (casual; formal bermain): main bola = play football.
+        olahraga = sport, permainan = game, klub = club.
+        menang = win, kalah = lose.
+        lari = run (formal berlari).
     examples:
-      - text: Saya suka makanan Indonesia. Enak sekali!
-        ar_eg: بحب الأكل الإندونيسي. حلو أوي!
-        ar: أحب الطعام الإندونيسي. لذيذ جدًا!
-        en: I like Indonesian food. It's really tasty!
+      - text: Setiap Minggu kami main bola di taman.
+        ar_eg: كل حد بنلعب كورة في الجنينة.
+        ar: كل أحد نلعب الكرة في الحديقة.
+        en: Every Sunday we play football in the park.
+      - text: Klub saya menang!
+        ar_eg: النادي بتاعي كسب!
+        ar: فاز نادِيَّ!
+        en: My club won!
+      - text: Olahraga favorit saya lari.
+        ar_eg: رياضتي المفضلة الجري.
+        ar: رياضتي المفضّلة الجري.
+        en: My favourite sport is running.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: sepak bola
+      - text: main
+        ar_eg: يلعب
+        ar: يلعب
+        en: play
+      - text: bola
         ar_eg: كورة
-        ar: كرة القدم
-        en: football
-      - text: bulu tangkis
-        ar_eg: ريشة
-        ar: الريشة الطائرة
-        en: badminton
-      - text: menari
-        ar_eg: يرقص
-        ar: يرقص
-        en: dance
-      - text: hobi
-        ar_eg: هواية
-        ar: هواية
-        en: hobby
-      - text: nongkrong
-        ar_eg: يقعد مع الصحاب (عامية)
-        ar: يجلس مع الأصحاب (عامية)
-        en: hang out (casual)
-    words: [sepak bola, bulu tangkis, menari, hobi, nongkrong]
+        ar: كرة
+        en: ball
+      - text: olahraga
+        ar_eg: رياضة
+        ar: رياضة
+        en: sport
+      - text: permainan
+        ar_eg: لعبة
+        ar: لعبة
+        en: game
+    words: [main, bola, olahraga, permainan]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: عايز تقول «بعرف أعوم».
-      ar: تريد أن تقول «أستطيع السباحة».
-      en: You want to say "I can swim".
-    options: [Saya boleh berenang., Saya bisa berenang., Saya harus berenang.]
-    answer: 1
-    explain:
-      ar_eg: قدرة = bisa. boleh = مسموح، harus = لازم.
-      ar: القدرة بـ bisa، وboleh للإذن، وharus للوجوب.
-      en: Ability = bisa; boleh = allowed, harus = must.
-    words: [bisa]
+    type: match_pairs
+    pairs:
+      - text: klub
+        ar_eg: نادي
+        ar: نادٍ
+        en: club
+      - text: menang
+        ar_eg: يكسب
+        ar: يفوز
+        en: win
+      - text: kalah
+        ar_eg: يخسر
+        ar: يخسر
+        en: lose
+      - text: lari
+        ar_eg: يجري
+        ar: يجري
+        en: run
+    words: [klub, menang, kalah, lari]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة معناها «مشروب»؟
-      ar: أيّ كلمة تعني «شراب»؟
-      en: Which word means "a drink"?
-    options: [minum, minuman, meminum]
-    answer: 1
-    explain:
-      ar_eg: minum + an = minuman (اسم). minum فعل.
-      ar: minum + an = minuman (اسم)، وminum فعل.
-      en: minum + an = minuman (noun); minum is the verb.
-    words: [minuman]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي واحدة غلط؟
-      ar: أيّها خطأ؟
-      en: Which one is wrong?
-    options: [Indah sekali., Sangat indah., Indah sangat.]
-    answer: 2
-    explain:
-      ar_eg: sangat لازم قبل الصفة. sekali بعدها.
-      ar: sangat تسبق الصفة، وsekali تليها.
-      en: sangat must come before the adjective; sekali comes after.
-    words: [sangat, sekali]
-  - id: e05
     type: listen
-    text: Saya tidak bisa datang besok.
-    options: [Saya tidak bisa datang besok., Saya tidak boleh datang besok., Saya tidak perlu datang besok.]
+    text: Kami main bola di taman setiap Sabtu.
+    question:
+      ar_eg: بيلعبوا إيه؟
+      ar: ماذا يلعبون؟
+      en: What do they play?
+    options: [كورة, بيانو, جري]
     answer: 0
-    words: [bisa]
+    meaning:
+      ar_eg: بنلعب كورة في الجنينة كل سبت.
+      ar: نلعب الكرة في الحديقة كل سبت.
+      en: We play football in the park every Saturday.
+    words: [main, bola]
+  - id: e04
+    type: fill_blank
+    sentence: Klub saya ___! Tiga — nol!
+    meaning:
+      ar_eg: النادي بتاعي ___! تلاتة — صفر!
+      ar: نادِيَّ ___! ثلاثة مقابل لا شيء!
+      en: My club ___! Three — nil!
+    options: [menang, kalah, lari]
+    answers: [menang]
+    words: [klub, menang, kalah, lari]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: 'سباحة، جري، كورة: دول كلهم إيه؟'
+      ar: 'السباحة والجري والكرة: ما هي كلّها؟'
+      en: 'Swimming, running, football: what are they all?'
+    options: [olahraga, permainan, klub]
+    answer: 0
+    explain:
+      ar_eg: olahraga = رياضة. permainan لعبة، وklub نادي.
+      ar: olahraga رياضة، أما permainan فلعبة وklub نادٍ.
+      en: olahraga = sport; permainan is a game, klub a club.
+    words: [olahraga, permainan, klub]
   - id: e06
     type: fill_blank
-    sentence: Saya ___ pulang. Saya capek sekali.
+    sentence: Mesir ___ satu — dua. Tidak apa-apa!
     meaning:
-      ar_eg: عايز أروّح. أنا تعبان أوي.
-      ar: أريد العودة إلى البيت. أنا متعب جدًا.
-      en: I want to go home. I'm really tired.
-    options: [perlu, mau, boleh]
-    answers: [mau]
-    words: [mau, pulang, capek]
+      ar_eg: مصر ___ واحد — اتنين. مش مشكلة!
+      ar: ___ مصر بهدف مقابل هدفين. لا بأس!
+      en: Egypt ___ one — two. Never mind!
+    options: [kalah, menang, main]
+    answers: [kalah]
+    words: [kalah]
   - id: e07
-    type: fill_blank
-    sentence: Anak-anak suka ___ ini.
-    meaning:
-      ar_eg: العيال بيحبوا اللعبة دي.
-      ar: الأطفال يحبون هذه اللعبة.
-      en: The children like this toy.
-    options: [bermain, mainan, main]
-    answers: [mainan]
-    words: [mainan]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: نفسي أتعلم الرقص.
-      ar: أتمنى أن أتعلم الرقص.
-      en: I'd love to learn to dance.
-    answer: Saya ingin belajar menari.
-    distractors: [boleh, harus]
-    words: [ingin, belajar, menari]
+      ar_eg: بجري كل يوم الصبح.
+      ar: أجري كل صباح.
+      en: I run every morning.
+    answer: Saya lari setiap pagi.
+    distractors: [bola, klub]
+    words: [lari]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Ini permainan favorit anak-anak.
+    answers_meaning:
+      ar_eg: [دي اللعبة المفضلة عند العيال, دي لعبة العيال المفضلة]
+      ar: [هذه لعبة الأطفال المفضّلة, هذه اللعبة المفضّلة لدى الأطفال]
+      en: ['This is the kids'' favourite game', 'This is the children''s favourite game']
+    words: [permainan]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بحب الأكل الإندونيسي.
-      ar: أحب الطعام الإندونيسي.
-      en: I like Indonesian food.
-    answers: [Saya suka makanan Indonesia., Saya suka makanan Indonesia, Aku suka makanan Indonesia., Aku suka makanan Indonesia]
-    words: [suka, makanan]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ممكن أقعد هنا؟
-      ar: هل يمكنني الجلوس هنا؟
-      en: May I sit here?
-    answers: ['Boleh saya duduk di sini?', Boleh saya duduk di sini, 'Saya boleh duduk di sini?', 'Boleh duduk di sini?', 'Boleh aku duduk di sini?', 'Permisi, boleh saya duduk di sini?']
-    explain:
-      ar_eg: استئذان = boleh، مش bisa.
-      ar: الاستئذان بـ boleh لا bisa.
-      en: Asking permission = boleh, not bisa.
-    words: [boleh, duduk]
-  - id: e11
-    type: dictation
-    text: Hobi saya bermain bulu tangkis.
-    meaning:
-      ar_eg: هوايتي لعب الريشة.
-      ar: هوايتي لعب الريشة الطائرة.
-      en: My hobby is playing badminton.
-    words: [hobi, bulu tangkis]
-  - id: e12
     type: speaking
-    text: Kopi di sini enak banget!
+    text: Olahraga favorit saya main bola.
     meaning:
-      ar_eg: القهوة هنا حلوة أوي!
-      ar: القهوة هنا لذيذة جدًا!
-      en: The coffee here is so good!
-    words: [enak, banget]
+      ar_eg: رياضتي المفضلة الكورة.
+      ar: رياضتي المفضّلة لعب الكرة.
+      en: My favourite sport is playing football.
+    words: [olahraga, main, bola]
+  - id: e10
+    type: multiple_choice
+    question: Klub Rina menang, klub Raka ___.
+    options: [kalah, lari, main]
+    answer: 0
+    explain:
+      ar_eg: 'لو حد كسب، التاني خسر: kalah.'
+      ar: 'إذا فاز أحدهما خسر الآخر: kalah.'
+      en: 'If one wins, the other loses: kalah.'
+    words: [klub, kalah, menang]
 dialogue:
-  title: Sabtu di Kemang
   lines:
     - speaker: Raka
-      text: Mohamed, kamu suka nongkrong?
-      ar_eg: محمد، بتحب القعدة في الكافيهات؟
-      ar: يا محمد، هل تحب الجلوس في المقاهي مع الأصحاب؟
-      en: Mohamed, do you like hanging out?
+      text: Mohamed, kamu suka olahraga?
+      ar_eg: يا محمد، بتحب الرياضة؟
+      ar: يا محمد، هل تحبّ الرياضة؟
+      en: Mohamed, do you like sport?
     - speaker: Mohamed
-      text: Suka sekali! Di Kemang ada banyak kafe.
-      ar_eg: بحبها أوي! في كيمانج فيه كافيهات كتير.
-      ar: أحبه جدًا! في كيمانغ مقاهٍ كثيرة.
-      en: I love it! There are lots of cafés in Kemang.
+      text: Suka! Saya suka main bola dan lari.
+      ar_eg: بحبها! بحب الكورة والجري.
+      ar: أحبّها! أحبّ الكرة والجري.
+      en: I do! I like football and running.
     - speaker: Raka
-      text: Kamu mau minuman apa? Kopi di sini enak banget.
-      ar_eg: تشرب إيه؟ القهوة هنا حلوة أوي.
-      ar: ماذا تشرب؟ القهوة هنا لذيذة جدًا.
-      en: What would you like to drink? The coffee here is so good.
+      text: 'Malam ini ada sepak bola di tv: Indonesia dan Mesir!'
+      ar_eg: 'الليلة فيه ماتش كورة في التلفزيون: إندونيسيا ومصر!'
+      ar: 'الليلة مباراة كرة على التلفاز: إندونيسيا ومصر!'
+      en: 'There''s football on TV tonight: Indonesia and Egypt!'
     - speaker: Mohamed
-      text: Saya mau teh manis. Tadi saya sudah minum kopi.
-      ar_eg: عايز شاي بسكر. شربت قهوة من شوية.
-      ar: أريد شايًا محلّى. شربت القهوة قبل قليل.
-      en: I'd like sweet tea. I already had coffee earlier.
+      text: Seru! Siapa menang, ya?
+      ar_eg: تحفة! يا ترى مين هيكسب؟
+      ar: مثير! تُرى من سيفوز؟
+      en: Exciting! Who'll win, I wonder?
     - speaker: Raka
-      text: Oke! Sesudah ini, kita main bulu tangkis?
-      ar_eg: ماشي! بعد كده نلعب ريشة؟
-      ar: حسنًا! بعد هذا، هل نلعب الريشة الطائرة؟
-      en: OK! After this, shall we play badminton?
+      text: Indonesia menang, dua — satu!
+      ar_eg: إندونيسيا كسبت، اتنين — واحد!
+      ar: فازت إندونيسيا بهدفين مقابل هدف!
+      en: Indonesia won, two — one!
     - speaker: Mohamed
-      text: Boleh! Tapi saya belum bisa main.
-      ar_eg: ماشي! بس أنا لسه مابعرفش ألعب.
-      ar: موافق! لكني لا أُحسن اللعب بعد.
-      en: Sure! But I can't play yet.
-souvenir:
-  id: bipa1.u07.souvenir
-  title: Kafe-kafe Kemang
-  note:
-    ar_eg: كيمانج حي الكافيهات في جنوب جاكرتا، وهناك الـ nongkrong (القعدة مع الصحاب على كوباية قهوة أو شاي) هواية لوحدها، زي قعدة القهوة عندنا بالظبط. ولو حد عزمك على ماتش ريشة أو كورة، اقبل! دول أكبر رياضتين في إندونيسيا.
-    ar: كيمانغ حيّ المقاهي في جنوب جاكرتا، والـ nongkrong (الجلوس مع الأصحاب على فنجان قهوة أو شاي) هواية قائمة بذاتها، كجلسة المقهى عندنا تمامًا. وإذا دُعيت إلى مباراة ريشة طائرة أو كرة قدم فاقبل؛ فهما أكبر رياضتين في إندونيسيا.
-    en: Kemang is South Jakarta's café quarter, and nongkrong — hanging out with friends over coffee or tea — is a hobby in itself, just like an evening at an Egyptian ahwa. If someone invites you to badminton or football, say yes — they're Indonesia's two big sports.
+      text: Mesir kalah… Tidak apa-apa. Permainannya seru!
+      ar_eg: مصر خسرت… مش مشكلة. الماتش كان حلو!
+      ar: خسرت مصر… لا بأس، كانت مباراة مثيرة!
+      en: Egypt lost… Never mind. It was a great game!
+new_words:
+  - word: main
+    pos: verb
+    ar_eg: يلعب (عامية)
+    ar: يلعب (عامية)
+    en: play (casual)
+  - word: bola
+    pos: noun
+    ar_eg: كورة
+    ar: كرة
+    en: ball; football
+  - word: olahraga
+    pos: noun
+    ar_eg: رياضة
+    ar: رياضة
+    en: sport
+  - word: permainan
+    pos: noun
+    ar_eg: لعبة، ماتش
+    ar: لعبة، مباراة
+    en: game
+  - word: klub
+    pos: noun
+    ar_eg: نادي
+    ar: نادٍ
+    en: club
+  - word: menang
+    pos: verb
+    ar_eg: يكسب
+    ar: يفوز
+    en: win
+  - word: kalah
+    pos: verb
+    ar_eg: يخسر
+    ar: يخسر
+    en: lose
+  - word: lari
+    pos: verb
+    ar_eg: يجري
+    ar: يجري
+    en: run
 review:
   status: draft
   verified: false

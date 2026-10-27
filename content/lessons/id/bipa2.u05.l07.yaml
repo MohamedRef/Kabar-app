@@ -1,0 +1,226 @@
+schema: kabar.lesson/v1
+id: bipa2.u05.l07
+language: id
+title: Resep nasi goreng
+can_do:
+  ar_eg: تكتب وصفة من ٦ خطوات.
+  ar: أن تكتب وصفة من ست خطوات.
+  en: Write a 6-step recipe.
+slides:
+  - title: Enam langkah
+    body:
+      ar_eg: |
+        فكّر نفسك: الوصفة = أوامر ورا بعض. كل خطوة (langkah) بتبدأ بالجذر من غير meN-، وتربطها بـ lalu (وبعدين) وsampai (لحد ما).
+        دي وصفة الرز المقلي في ٦ خطوات، هتحتاجها في الدرس كله:
+        ١. Cuci dan potong bawang dan cabai.
+        ٢. Panaskan minyak di wajan.
+        ٣. Goreng bawang dan cabai sampai harum.
+        ٤. Masukkan telur, lalu aduk.
+        ٥. Masukkan nasi dan kecap manis, lalu aduk rata.
+        ٦. Tambahkan garam, lalu cicipi.
+      ar: |
+        تذكير: الوصفة أوامر متتالية، كل خطوة (langkah) تبدأ بالجذر بلا meN-، وتُربط بـ lalu (ثم) وsampai (حتى).
+        هذه وصفة الأرز المقلي في ست خطوات:
+        ١. Cuci dan potong bawang dan cabai.
+        ٢. Panaskan minyak di wajan.
+        ٣. Goreng bawang dan cabai sampai harum.
+        ٤. Masukkan telur, lalu aduk.
+        ٥. Masukkan nasi dan kecap manis, lalu aduk rata.
+        ٦. Tambahkan garam, lalu cicipi.
+      en: |
+        Reminder: a recipe is a chain of commands. Each step (langkah) starts with the bare root, linked with lalu (then) and sampai (until).
+        Here is fried rice in six steps:
+        1. Cuci dan potong bawang dan cabai.
+        2. Panaskan minyak di wajan.
+        3. Goreng bawang dan cabai sampai harum.
+        4. Masukkan telur, lalu aduk.
+        5. Masukkan nasi dan kecap manis, lalu aduk rata.
+        6. Tambahkan garam, lalu cicipi.
+    grammar: id.imperative.basic
+    examples:
+      - text: Panaskan minyak di wajan.
+        ar_eg: سخّن الزيت في الطاسة.
+        ar: سخّن الزيت في المقلاة.
+        en: Heat the oil in the wok.
+      - text: Masukkan nasi dan kecap manis, lalu aduk rata.
+        ar_eg: حط الرز والصويا الحلوة، وبعدين قلّب كويس.
+        ar: أضف الأرز وصلصة الصويا الحلوة ثم قلّب جيدًا.
+        en: Add the rice and sweet soy sauce, then stir well.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في الوصفة، بتعمل إيه قبل ما تقلي البصل؟
+      ar: في الوصفة، ماذا تفعل قبل قلي البصل؟
+      en: In the recipe, what do you do before frying the onions?
+    options: [Panaskan minyak., Masukkan nasi., Tambahkan garam.]
+    answer: 0
+    explain:
+      ar_eg: لازم الزيت يسخن الأول (خطوة ٢)، وبعدين تقلي البصل (خطوة ٣).
+      ar: يُسخَّن الزيت أولًا (الخطوة ٢) ثم يُقلى البصل (الخطوة ٣).
+      en: The oil is heated first (step 2), then the onions are fried (step 3).
+    words: [panaskan, minyak]
+  - id: e02
+    type: listen
+    text: Panaskan minyak di wajan.
+    options: [Panaskan minyak di wajan., Masukkan minyak di wajan., Panaskan nasi di wajan.]
+    answer: 0
+    words: [panaskan, wajan]
+  - id: e03
+    type: build_sentence
+    source:
+      ar_eg: دي طريقة طبخ الرز المقلي.
+      ar: هذه طريقة طبخ الأرز المقلي.
+      en: This is how to cook fried rice.
+    answer: Ini cara memasak nasi goreng.
+    distractors: [siap, wajan]
+    words: [cara, memasak]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: اقلي البصل والفلفل الحرّاق لحد ما ريحتهم تطلع.
+      ar: اقلِ البصل والفلفل الحار حتى تفوح رائحتهما.
+      en: Fry the onions and chillies until fragrant.
+    answer: Goreng bawang dan cabai sampai harum.
+    distractors: [menggoreng, manis]
+    words: [goreng, cabai, harum]
+  - id: e05
+    type: fill_blank
+    sentence: Nasi goreng ___! Ayo makan.
+    meaning:
+      ar_eg: الرز المقلي جاهز! يلا ناكل.
+      ar: الأرز المقلي جاهز! هيّا نأكل.
+      en: The fried rice is ready! Let's eat.
+    options: [siap, cara, cabai]
+    answers: [siap]
+    words: [siap]
+  - id: e06
+    type: fill_blank
+    sentence: Masukkan nasi dan ___ manis.
+    meaning:
+      ar_eg: حط الرز والصويا الحلوة.
+      ar: ضع الأرز وصلصة الصويا الحلوة.
+      en: Add the rice and sweet soy sauce.
+    options: [kecap, cabai, wajan]
+    answers: [kecap]
+    words: [masukkan, kecap manis]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: cabai
+        ar_eg: فلفل حرّاق
+        ar: فلفل حار
+        en: chilli
+      - text: wajan
+        ar_eg: طاسة عميقة
+        ar: مقلاة عميقة
+        en: wok
+      - text: kecap manis
+        ar_eg: صويا حلوة
+        ar: صويا حلوة
+        en: sweet soy sauce
+      - text: siap
+        ar_eg: جاهز
+        ar: جاهز
+        en: ready
+      - text: cara
+        ar_eg: طريقة
+        ar: طريقة
+        en: way, method
+      - text: panaskan
+        ar_eg: سخّن
+        ar: سخِّن
+        en: heat
+    words: [cabai, wajan, kecap manis, siap, cara, panaskan]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: حط الرز والصويا الحلوة، وبعدين قلّب كويس.
+      ar: أضف الأرز وصلصة الصويا الحلوة ثم قلّب جيدًا.
+      en: Add the rice and sweet soy sauce, then stir well.
+    answers: ['Masukkan nasi dan kecap manis, lalu aduk rata.', 'Masukkan nasi dan kecap manis, lalu aduk rata', Masukkan nasi dan kecap manis lalu aduk rata., 'Masukkan nasi dan kecap manis, kemudian aduk rata.', 'Masukkan nasi dan kecap manis, lalu aduk sampai rata.', 'Masukkan nasi dan kecap manis, lalu aduk sampai rata', 'Tambahkan nasi dan kecap manis, lalu aduk rata.']
+    words: [masukkan, kecap manis, aduk, rata]
+  - id: e09
+    type: dictation
+    text: Potong cabai, lalu masukkan ke wajan.
+    meaning:
+      ar_eg: قطّع الفلفل الحرّاق، وبعدين حطه في الطاسة.
+      ar: قطّع الفلفل الحار ثم ضعه في المقلاة.
+      en: Chop the chillies, then put them in the wok.
+    words: [potong, cabai, masukkan, wajan]
+  - id: e10
+    type: speaking
+    text: "Ini caranya: tambahkan garam, lalu cicipi. Nasi goreng siap!"
+    meaning:
+      ar_eg: "دي الطريقة: زوّد ملح، وبعدين دوق. الرز المقلي جاهز!"
+      ar: "هذه هي الطريقة: أضف الملح ثم تذوّق. الأرز المقلي جاهز!"
+      en: "Here's how: add salt, then taste. The fried rice is ready!"
+    words: [cara, tambahkan, cicipi, siap]
+dialogue:
+  title: Resep dari Mohamed
+  lines:
+    - speaker: Rina
+      text: Mohamed, nasi gorengmu enak sekali! Bagaimana cara membuatnya?
+      ar_eg: يا محمد، الرز المقلي بتاعك حلو قوي! بتعمله إزاي؟
+      ar: يا محمد، أرزك المقلي لذيذ جدًّا! كيف تصنعه؟
+      en: Mohamed, your fried rice is so good! How do you make it?
+    - speaker: Mohamed
+      text: Mudah! Pertama, cuci dan potong bawang dan cabai.
+      ar_eg: سهلة! الأول اغسلي وقطّعي البصل والفلفل الحرّاق.
+      ar: سهل! أولًا اغسلي البصل والفلفل الحار وقطّعيهما.
+      en: Easy! First, wash and cut the onions and chillies.
+    - speaker: Rina
+      text: Cabainya berapa?
+      ar_eg: كام فلفل حرّاق؟
+      ar: كم حبة فلفل حار؟
+      en: How many chillies?
+    - speaker: Mohamed
+      text: Tiga saja. Jangan terlalu pedas! Lalu panaskan minyak di wajan.
+      ar_eg: تلاتة بس. ماتخليهوش حرّاق قوي! وبعدين سخّني الزيت في الطاسة.
+      ar: ثلاث فقط، لا تجعليه حارًّا جدًّا! ثم سخّني الزيت في المقلاة.
+      en: Just three. Not too spicy! Then heat the oil in the wok.
+    - speaker: Rina
+      text: Lalu goreng bawang dan cabainya?
+      ar_eg: وبعدين أقلي البصل والفلفل؟
+      ar: ثم أقلي البصل والفلفل؟
+      en: Then I fry the onions and chillies?
+    - speaker: Mohamed
+      text: Ya, goreng sampai harum. Lalu masukkan telur dan aduk.
+      ar_eg: أيوه، اقليهم لحد ما ريحتهم تطلع. وبعدين حطي البيض وقلّبي.
+      ar: نعم، اقليهما حتى تفوح الرائحة، ثم أضيفي البيض وقلّبي.
+      en: Yes, fry until fragrant. Then add the egg and stir.
+new_words:
+  - word: cabai
+    pos: noun
+    ar_eg: فلفل حرّاق
+    ar: فلفل حار
+    en: chilli
+  - word: panaskan
+    pos: verb
+    ar_eg: سخّن
+    ar: سخِّن
+    en: heat (it)
+  - word: wajan
+    pos: noun
+    ar_eg: طاسة / مقلاية عميقة
+    ar: مقلاة عميقة
+    en: wok
+  - word: kecap manis
+    pos: noun
+    ar_eg: صويا حلوة (صوص الصويا الإندونيسي)
+    ar: صلصة الصويا الحلوة
+    en: sweet soy sauce
+  - word: siap
+    pos: adjective
+    ar_eg: جاهز
+    ar: جاهز
+    en: ready
+  - word: cara
+    pos: noun
+    ar_eg: طريقة
+    ar: طريقة
+    en: way, method
+review:
+  status: draft
+  verified: false

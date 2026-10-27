@@ -43,36 +43,42 @@ sections:
       en: Listen carefully; you can replay as often as you like. Pick exactly what you heard, or write it.
     items:
       - id: t01
+        unit: bipa1.u01
         type: listen
         text: Selamat sore, Bu Yanti.
         options: ["Selamat malam, Bu Yanti.", "Selamat sore, Bu Yanti.", "Selamat siang, Bu Yanti."]
         answer: 1
         words: [selamat, sore]
       - id: t02
+        unit: bipa1.u02
         type: listen
         text: Nama saya Ni Luh. Saya dari Bali.
         options: ["Nama saya Ni Luh. Saya dari Bali.", "Nama saya Ni Luh. Saya di Bali.", "Nama dia Ni Luh. Dia dari Bali."]
         answer: 0
         words: [nama, dari]
       - id: t03
+        unit: bipa1.u04
         type: listen
         text: Harganya dua puluh lima ribu rupiah.
         options: ["Harganya lima puluh dua ribu rupiah.", "Harganya dua puluh lima ribu rupiah.", "Harganya dua puluh ribu rupiah."]
         answer: 1
         words: [harga, ribu]
       - id: t04
+        unit: bipa1.u09
         type: listen
         text: Jalan lurus, lalu belok kiri di masjid.
         options: ["Jalan lurus, lalu belok kanan di masjid.", "Jalan lurus, lalu belok kiri di sekolah.", "Jalan lurus, lalu belok kiri di masjid."]
         answer: 2
         words: [lurus, belok, kiri]
       - id: t05
+        unit: bipa1.u09
         type: listen
         text: Bank itu di sebelah kanan kantor pos.
         options: ["Bank itu di depan kantor pos.", "Bank itu di sebelah kiri kantor pos.", "Bank itu di sebelah kanan kantor pos."]
         answer: 2
         words: [sebelah, kanan]
       - id: t06
+        unit: bipa1.u01
         type: dictation
         text: Apa kabar, Pak Irwan?
         meaning:
@@ -81,6 +87,7 @@ sections:
           en: How are you, Pak Irwan?
         words: [apa kabar]
       - id: t07
+        unit: bipa1.u06
         type: dictation
         text: Saya sedang membaca buku.
         meaning:
@@ -100,6 +107,7 @@ sections:
       en: Read the text (a form, a menu, a timetable, a message) and answer from what it says.
     items:
       - id: t08
+        unit: bipa1.u02
         type: multiple_choice
         question: |
           FORMULIR PENDAFTARAN — Kursus Bahasa Indonesia
@@ -117,6 +125,7 @@ sections:
         answer: 0
         words: [tanggal lahir]
       - id: t09
+        unit: bipa1.u02
         type: multiple_choice
         question: |
           FORMULIR PENDAFTARAN — Kursus Bahasa Indonesia
@@ -134,6 +143,7 @@ sections:
         answer: 2
         words: [pekerjaan, mahasiswa]
       - id: t10
+        unit: bipa1.u07
         type: multiple_choice
         question: |
           WARUNG BU SARI — Blok M
@@ -155,6 +165,7 @@ sections:
           en: 20,000 + 5,000 = 25,000 rupiah (dua puluh lima ribu).
         words: [harga, makanan, minuman]
       - id: t11
+        unit: bipa1.u04
         type: multiple_choice
         question: |
           WARUNG BU SARI — Blok M
@@ -176,6 +187,7 @@ sections:
           en: It closes at 21.00 (9 p.m.), so at 10 p.m. it is already closed.
         words: [buka, tutup, sudah]
       - id: t12
+        unit: bipa1.u04
         type: multiple_choice
         question: |
           JADWAL KAPAL — Marina Ancol ke Pulau Pramuka
@@ -191,6 +203,7 @@ sections:
         answer: 2
         words: [jadwal, tiba, Sabtu]
       - id: t13
+        unit: bipa1.u04
         type: multiple_choice
         question: |
           JADWAL KAPAL — Marina Ancol ke Pulau Pramuka
@@ -206,6 +219,7 @@ sections:
         answer: 2
         words: [Minggu, berangkat]
       - id: t14
+        unit: bipa1.u09
         type: multiple_choice
         question: |
           Hai Mohamed! Besok hari Sabtu. Saya dan Rina mau berenang di Ancol.
@@ -219,6 +233,7 @@ sections:
         answer: 2
         words: [bertemu, depan, stasiun]
       - id: t15
+        unit: bipa1.u05
         type: multiple_choice
         question: |
           Hai Mohamed! Besok hari Sabtu. Saya dan Rina mau berenang di Ancol.
@@ -239,6 +254,7 @@ sections:
       en: Vocabulary
     items:
       - id: t16
+        unit: bipa1.u03
         type: match_pairs
         pairs:
           - text: ayah
@@ -259,6 +275,7 @@ sections:
             en: younger brother or sister
         words: [ayah, ibu, kakak, adik]
       - id: t17
+        unit: bipa1.u04
         type: match_pairs
         pairs:
           - text: Senin
@@ -279,6 +296,7 @@ sections:
             en: Friday
         words: [Senin, Rabu, Kamis, Jumat]
       - id: t18
+        unit: bipa1.u08
         type: multiple_choice
         question: tinggi
         question_meaning:
@@ -289,6 +307,7 @@ sections:
         answer: 1
         words: [tinggi, pendek]
       - id: t19
+        unit: bipa1.u07
         type: fill_blank
         sentence: Teh, kopi, dan jus adalah ___.
         meaning:
@@ -299,6 +318,7 @@ sections:
         answers: [minuman]
         words: [minuman]
       - id: t20
+        unit: bipa1.u05
         type: fill_blank
         sentence: Saya mau berenang. Saya pergi ke ___.
         meaning:
@@ -316,6 +336,7 @@ sections:
       en: Grammar
     items:
       - id: t21
+        unit: bipa1.u08
         type: fill_blank
         sentence: Dia ___ guru. Dia dokter.
         meaning:
@@ -330,6 +351,7 @@ sections:
           en: Before a noun (guru) the negator is bukan, not tidak.
         words: [bukan]
       - id: t22
+        unit: bipa1.u08
         type: fill_blank
         sentence: Kamar saya ___ besar, tetapi bersih.
         meaning:
@@ -344,6 +366,7 @@ sections:
           en: Before an adjective (besar) the negator is tidak.
         words: [tidak]
       - id: t23
+        unit: bipa1.u06
         type: fill_blank
         sentence: Besok saya ___ pergi ke Monas.
         meaning:
@@ -354,6 +377,7 @@ sections:
         answers: [akan]
         words: [akan, besok]
       - id: t24
+        unit: bipa1.u10
         type: multiple_choice
         question: Kamu pernah ke Mesir?
         question_meaning:
@@ -364,6 +388,7 @@ sections:
         answer: 2
         words: [pernah, belum]
       - id: t25
+        unit: bipa1.u03
         type: build_sentence
         source:
           ar_eg: ده بيت أخويا الكبير.
@@ -373,6 +398,7 @@ sections:
         distractors: [itu, adik]
         words: [rumah, kakak]
       - id: t26
+        unit: bipa1.u08
         type: fill_blank
         sentence: "A: Tas Anda yang mana? B: ___ hitam itu."
         meaning:
@@ -383,6 +409,7 @@ sections:
         answers: [Yang]
         words: [yang, hitam]
       - id: t27
+        unit: bipa1.u10
         type: build_sentence
         source:
           ar_eg: امبارح رينا اشترت فاكهة من السوق.
@@ -393,6 +420,7 @@ sections:
         distractors: [ke, beli]
         words: [kemarin, membeli, pasar]
       - id: t28
+        unit: bipa1.u07
         type: fill_blank
         sentence: Maaf, saya tidak ___ datang besok. Saya harus bekerja.
         meaning:
@@ -403,6 +431,7 @@ sections:
         answers: [bisa]
         words: [bisa, harus]
       - id: t29
+        unit: bipa1.u09
         type: fill_blank
         sentence: Buku saya ada di ___ meja.
         meaning:
@@ -413,6 +442,7 @@ sections:
         answers: [atas]
         words: [ada, atas, meja]
       - id: t30
+        unit: bipa1.u05
         type: fill_blank
         sentence: "A: ___ liburanmu di Ancol? B: Bagus sekali!"
         meaning:
@@ -430,6 +460,7 @@ sections:
       en: Writing
     items:
       - id: t31
+        unit: bipa1.u02
         type: translate
         direction: to_target
         source_meaning:
@@ -448,6 +479,7 @@ sections:
           - Namaku Mohamed. Aku orang Mesir dari Kairo.
         words: [nama, orang, Mesir, dari]
       - id: t32
+        unit: bipa1.u10
         type: translate
         direction: to_target
         source_meaning:
@@ -467,6 +499,7 @@ sections:
           - Saya belum pernah pergi ke Bali
         words: [belum, pernah]
       - id: t33
+        unit: bipa1.u06
         type: writing_task
         points: 4
         prompt:
@@ -495,6 +528,7 @@ sections:
       en: Speak calmly and clearly. It doesn't have to be perfect; what matters is getting your meaning across.
     items:
       - id: t34
+        unit: bipa1.u02
         type: speaking
         text: Selamat pagi, Pak. Nama saya Mohamed. Saya dari Mesir.
         meaning:
@@ -503,6 +537,7 @@ sections:
           en: Good morning, sir. My name is Mohamed. I'm from Egypt.
         words: [selamat pagi, nama, dari]
       - id: t35
+        unit: bipa1.u10
         type: speaking_task
         points: 4
         prompt:

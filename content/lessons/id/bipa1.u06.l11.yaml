@@ -1,0 +1,216 @@
+schema: kabar.lesson/v1
+id: bipa1.u06.l11
+language: id
+title: Pensil dan pulpen
+can_do:
+  ar_eg: تتكلم عن أدوات الفصل والاختبار، وتسأل عن معنى حاجة.
+  ar: أن تتحدث عن أدوات الصفّ والاختبار، وتسأل عن معنى شيء.
+  en: Talk about classroom things and quizzes, and ask what something means.
+slides:
+  - title: Di kelas
+    body:
+      ar_eg: |
+        pensil = قلم رصاص، pulpen = قلم جاف، papan tulis = سبورة (papan = لوح).
+        tes = اختبار قصير (أصغر من ujian).
+        arti = معنى. إنت عارف «Apa artinya?»: معناها إيه؟
+        dengar = اسمع. المدرس بيقول: «Dengar, ya!» = اسمعوا كويس! (وفي الكتابة mendengar، اللي اتعلمتها.)
+      ar: |
+        pensil = قلم رصاص، pulpen = قلم حبر جاف، papan tulis = سبّورة (papan = لوح).
+        tes = اختبار قصير (أصغر من ujian).
+        arti = معنى، وأنت تعرف «Apa artinya?»: ما معناه؟
+        dengar = اسمع. يقول المعلّم: «Dengar, ya!» = أنصتوا! (والفعل الكامل mendengar الذي تعلّمته.)
+      en: |
+        pensil = pencil, pulpen = pen, papan tulis = whiteboard (papan = board).
+        tes = a quiz, smaller than ujian.
+        arti = meaning; you know "Apa artinya?": what does it mean?
+        dengar = listen. Teachers say "Dengar, ya!" = Listen up! (The full verb is mendengar, which you've learnt.)
+    examples:
+      - text: Pak guru menulis di papan tulis.
+        ar_eg: الأستاذ بيكتب على السبورة.
+        ar: يكتب الأستاذ على السبّورة.
+        en: The teacher is writing on the whiteboard.
+      - text: Untuk tes, kita memakai pensil.
+        ar_eg: في الاختبار بنستخدم قلم رصاص.
+        ar: في الاختبار نستعمل قلم رصاص.
+        en: For the quiz, we use a pencil.
+      - text: Dengar, ya! Apa artinya?
+        ar_eg: اسمعوا! معناها إيه؟
+        ar: أنصتوا! ما معناه؟
+        en: Listen! What does it mean?
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pensil
+        ar_eg: قلم رصاص
+        ar: قلم رصاص
+        en: pencil
+      - text: pulpen
+        ar_eg: قلم جاف
+        ar: قلم حبر جاف
+        en: pen
+      - text: papan tulis
+        ar_eg: سبورة
+        ar: سبّورة
+        en: whiteboard
+    words: [pensil, pulpen, papan tulis]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: tes
+        ar_eg: اختبار قصير
+        ar: اختبار قصير
+        en: quiz
+      - text: arti
+        ar_eg: معنى
+        ar: معنى
+        en: meaning
+      - text: dengar
+        ar_eg: اسمع
+        ar: اسمع
+        en: listen
+    words: [tes, arti, dengar]
+  - id: e03
+    type: listen
+    text: Dengar, ya! Besok ada tes.
+    question:
+      ar_eg: بكرة فيه إيه؟
+      ar: ماذا هناك غدًا؟
+      en: What's on tomorrow?
+    options: [اختبار قصير, حفلة, إجازة]
+    answer: 0
+    meaning:
+      ar_eg: اسمعوا! بكرة فيه اختبار.
+      ar: أنصتوا! غدًا اختبار.
+      en: Listen! There's a quiz tomorrow.
+    words: [dengar, tes]
+  - id: e04
+    type: fill_blank
+    sentence: Pak guru menulis di ___.
+    meaning:
+      ar_eg: الأستاذ بيكتب على ___.
+      ar: يكتب الأستاذ على ___.
+      en: The teacher writes on the ___.
+    options: [papan tulis, pensil, arti]
+    answers: [papan tulis]
+    words: [papan tulis, pensil, arti]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تكتب حاجة وتقدر تمسحها بالأستيكة. تستخدم…؟
+      ar: تريد أن تكتب شيئًا يمكن محوه بالممحاة. ماذا تستعمل؟
+      en: You want to write something you can rub out. What do you use?
+    options: [pensil, pulpen, papan tulis]
+    answer: 0
+    explain:
+      ar_eg: pensil بيتمسح بالأستيكة، pulpen لأ.
+      ar: يُمحى الـ pensil بالممحاة، أما الـ pulpen فلا.
+      en: A pensil rubs out; a pulpen doesn't.
+    words: [pensil, pulpen, papan tulis]
+  - id: e06
+    type: fill_blank
+    sentence: Apa ___ «kamus»? — Kamus = قاموس.
+    meaning:
+      ar_eg: إيه ___ «kamus»؟ — kamus = قاموس.
+      ar: ما ___ «kamus»؟ — kamus = قاموس.
+      en: What's the ___ of "kamus"? — kamus = dictionary.
+    options: [arti, tes, pulpen]
+    answers: [arti]
+    words: [arti, tes, pulpen]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: عندك قلم جاف؟
+      ar: هل عندك قلم حبر؟
+      en: Do you have a pen?
+    answer: Kamu punya pulpen?
+    distractors: [tes, arti]
+    words: [pulpen]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Untuk tes, kita memakai pensil.
+    answers_meaning:
+      ar_eg: [في الاختبار بنستخدم قلم رصاص, للاختبار بنكتب بالقلم الرصاص]
+      ar: [في الاختبار نستعمل قلم رصاص, نكتب الاختبار بقلم رصاص]
+      en: ['For the quiz, we use a pencil', We use a pencil for the test]
+    words: [tes, pensil]
+  - id: e09
+    type: speaking
+    text: Dengar, ya! Apa artinya?
+    meaning:
+      ar_eg: اسمعوا! معناها إيه؟
+      ar: أنصتوا! ما معناه؟
+      en: Listen! What does it mean?
+    words: [dengar, arti]
+  - id: e10
+    type: multiple_choice
+    question: 'Bu guru: «___, ya! Saya mau membaca.»'
+    options: [Dengar, Papan tulis, Pensil]
+    answer: 0
+    explain:
+      ar_eg: 'المدرسة عايزاهم يسمعوا: Dengar!'
+      ar: 'تريد المعلّمة أن ينصتوا: Dengar!'
+      en: 'The teacher wants them to listen: Dengar!'
+    words: [dengar, papan tulis]
+dialogue:
+  lines:
+    - speaker: Pak Irwan
+      text: Selamat pagi! Dengar, ya. Hari ini ada tes.
+      ar_eg: صباح الخير! اسمعوا. النهارده فيه اختبار.
+      ar: صباح الخير! أنصتوا، اليوم اختبار.
+      en: Good morning! Listen up. There's a quiz today.
+    - speaker: Mohamed
+      text: Tes, Pak? Boleh memakai kamus?
+      ar_eg: اختبار يا أستاذ؟ ينفع نستخدم القاموس؟
+      ar: اختبار يا أستاذ؟ هل نستعمل القاموس؟
+      en: A quiz? Can we use a dictionary?
+    - speaker: Pak Irwan
+      text: Tidak boleh. Kalian memakai pensil, ya.
+      ar_eg: لأ، ممنوع. واكتبوا بالقلم الرصاص.
+      ar: لا، ممنوع. واكتبوا بقلم الرصاص.
+      en: No. And use a pencil, please.
+    - speaker: Rina
+      text: Pak, apa artinya ini, di papan tulis?
+      ar_eg: يا أستاذ، معنى دي إيه، اللي على السبورة؟
+      ar: يا أستاذ، ما معنى هذا على السبّورة؟
+      en: Sir, what does this on the whiteboard mean?
+    - speaker: Pak Irwan
+      text: Artinya «tes». Silakan, sekarang!
+      ar_eg: معناها «اختبار». يلّا، اتفضلوا دلوقتي!
+      ar: معناه «اختبار». تفضّلوا، ابدؤوا الآن!
+      en: It means "quiz". Go ahead, now!
+new_words:
+  - word: pensil
+    pos: noun
+    ar_eg: قلم رصاص
+    ar: قلم رصاص
+    en: pencil
+  - word: pulpen
+    pos: noun
+    ar_eg: قلم جاف
+    ar: قلم حبر جاف
+    en: pen
+  - word: papan tulis
+    pos: noun
+    ar_eg: سبورة
+    ar: سبّورة
+    en: whiteboard, blackboard
+  - word: tes
+    pos: noun
+    ar_eg: اختبار قصير
+    ar: اختبار قصير
+    en: test, quiz
+  - word: arti
+    pos: noun
+    ar_eg: معنى
+    ar: معنى
+    en: meaning
+  - word: dengar
+    pos: verb
+    ar_eg: اسمع (أمر، أو عامية)
+    ar: اسمع (أمرًا أو بالعامية)
+    en: listen, hear (command, casual)
+review:
+  status: draft
+  verified: false

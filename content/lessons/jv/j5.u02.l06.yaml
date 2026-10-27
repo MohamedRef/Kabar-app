@@ -1,197 +1,209 @@
 schema: kabar.lesson/v1
 id: j5.u02.l06
 language: jv
-title: Warta radio
+title: Panjebar Semangat
 can_do:
-  ar_eg: تسمع نشرة أخبار قصيرة بالجاوي وتفهم إيه اللي حصل ومين عمل إيه.
-  ar: أن تستمع إلى نشرة أخبار جاوية قصيرة وتفهم ما حدث ومن فعل ماذا.
-  en: Follow a short Javanese radio news bulletin by ear.
+  ar_eg: تقرا جواب قارئ في مجلة جاوية.
+  ar: أن تقرأ رسالة قارئ في مجلة جاوية.
+  en: Read a reader's letter in a Javanese magazine.
+slides:
+  - title: Layang saka pamaca
+    body:
+      ar_eg: |
+        Panjebar Semangat مجلة أسبوعية بالجاوي من سورابايا، بتطلع من التلاتينات. وفيها صفحة جوابات القرّاء، والجوابات دي غالبًا كراما.
+        في الكراما المكتوبة المجهول dipun- بدل di- (عرفتها في J3): dipunbangun = اتبنى. وأول الجواب دايمًا «Redaksi ingkang kinurmatan» = «السادة المحررين المحترمين». kinurmatan فيها -in- جوه الكلمة: k-in-urmatan، من kurmat (احترام).
+      ar: |
+        Panjebar Semangat مجلة أسبوعية بالجاوية من سورابايا تصدر منذ الثلاثينيات، وفيها صفحة لرسائل القراء، وأغلبها بالكراما.
+        وفي الكراما المكتوبة يأتي المجهول بـ dipun- بدل di- (عرفتها في J3): dipunbangun = بُني. وتبدأ الرسالة عادة بـ «Redaksi ingkang kinurmatan» = «السادة المحررون المحترمون»، وفي kinurmatan -in- داخلية: k-in-urmatan من kurmat (الاحترام).
+      en: |
+        Panjebar Semangat is a Javanese-language weekly from Surabaya, published since the 1930s. It has a readers' letters page, and the letters are usually in krama.
+        Written krama makes the passive with dipun- instead of di- (you met it in J3): dipunbangun = was built. A letter opens with "Redaksi ingkang kinurmatan" = "Dear Editors". kinurmatan hides -in-: k-in-urmatan, from kurmat (respect).
+    grammar: jv.passive.written
+    examples:
+      - text: Redaksi ingkang kinurmatan,
+        ar_eg: السادة المحررين المحترمين،
+        ar: السادة المحررون المحترمون،
+        en: Dear Editors,
+      - text: Masjid enggal ing dhusun kula dipunbangun dening warga.
+        ar_eg: الجامع الجديد في قريتي بناه الأهالي.
+        ar: بنى الأهالي المسجد الجديد في قريتي.
+        en: The new mosque in my village was built by the residents.
+      - text: Kula nyuwun warta menika dipunmuat ing Panjebar Semangat.
+        ar_eg: برجو إن الخبر ده يتنشر في «بانجيبار سيمانغات».
+        ar: أرجو أن يُنشر هذا الخبر في «بانجيبار سيمانغات».
+        en: I kindly ask that this news be printed in Panjebar Semangat.
 exercises:
   - id: e01
-    type: listen
-    text: Warta saka Semarang. Esuk iki, dalan ing Kaligawe kebanjiran rob maneh.
-    question:
-      ar_eg: دي نشرة الراديو الصبح. إيه اللي حصل؟
-      ar: هذه نشرة الإذاعة صباحًا. ماذا حدث؟
-      en: This is the morning radio news. What happened?
-    options:
-      - Dalan ing Kaligawe kebanjiran rob.
-      - Ana pameran ing Lawang Sewu.
-      - Sepur saka Jakarta wis teka.
-    answer: 0
-    meaning:
-      ar_eg: أخبار من سيمارانج. النهارده الصبح، الشارع في كاليجاوي غرق من المد تاني.
-      ar: أخبار من سيمارانج. صباح اليوم غمر المدُّ طريقَ كاليغاوي مرة أخرى.
-      en: News from Semarang. This morning the road in Kaligawe was flooded by the tide again.
-    explain:
-      ar_eg: maneh = تاني (lagi). يعني ده بيحصل كتير هناك، فاكر kerep؟
-      ar: maneh = مرة أخرى (lagi)، أي أن ذلك يتكرر هناك، كما في kerep.
-      en: maneh = again (lagi), so it happens often there; remember kerep?
-    words: [rob, kebanjiran, maneh]
-  - id: e02
-    type: listen
-    text: Dalan kasebut ditutup dening polisi nganti sore.
-    question:
-      ar_eg: مين اللي قفل الشارع؟
-      ar: من أغلق الطريق؟
-      en: Who closed the road?
-    options: [warga, polisi, lurah]
-    answer: 1
-    meaning:
-      ar_eg: الشرطة قفلت الشارع ده لحد العصر.
-      ar: أغلقت الشرطة هذا الطريق حتى المساء.
-      en: The road was closed by the police until the afternoon.
-    explain:
-      ar_eg: ditutup = اتقفل (ditutup). اللي بعد dening = الفاعل.
-      ar: ditutup = أُغلق (ditutup)، ومن يأتي بعد dening هو الفاعل.
-      en: ditutup = was closed (ditutup); whoever follows dening did it.
-    words: [ditutup, dening]
-  - id: e03
-    type: listen
-    text: Sesuk esuk, dalan kasebut bakal diresiki dening warga.
-    question:
-      ar_eg: الشارع هيتنضّف إمتى؟
-      ar: متى سيُنظَّف الطريق؟
-      en: When will the road be cleaned?
-    options: [esuk iki, nganti sore, sesuk esuk]
-    answer: 2
-    meaning:
-      ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
-      ar: صباح الغد سينظّف السكانُ هذا الطريق.
-      en: Tomorrow morning the road will be cleaned by the residents.
-    words: [diresiki, warga, bakal]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: ditutup
-        ar_eg: اتقفل
-        ar: أُغلق
-        en: was closed
-      - text: diresiki
-        ar_eg: اتنضّف
-        ar: نُظّف
-        en: was cleaned
-      - text: kebanjiran
-        ar_eg: غرق / اتغمر بالمية
-        ar: غمرته المياه
-        en: got flooded
-      - text: rob
-        ar_eg: فيضان المد
-        ar: فيضان المدّ
-        en: tidal flood
-      - text: kerep
-        ar_eg: كتير / غالبًا
-        ar: كثيرًا
-        en: often
-    words: [ditutup, diresiki, kebanjiran, rob, kerep]
+      - text: kinurmatan
+        ar_eg: المحترم (= terhormat)
+        ar: المحترم (= terhormat)
+        en: respected, dear (= terhormat)
+      - text: dhusun
+        ar_eg: قرية (كراما، = desa)
+        ar: قرية (كراما، = desa)
+        en: village (krama, = desa)
+      - text: enggal
+        ar_eg: جديد (كراما، = anyar)
+        ar: جديد (كراما، = anyar)
+        en: new (krama, = anyar)
+      - text: redaksi
+        ar_eg: هيئة التحرير
+        ar: هيئة التحرير
+        en: the editors
+      - text: dipunbangun
+        ar_eg: اتبنى (كراما، = dibangun)
+        ar: بُني (كراما، = dibangun)
+        en: was built (krama, = dibangun)
+    words: [kinurmatan, dhusun, enggal, redaksi]
+  - id: e02
+    type: multiple_choice
+    question: Masjid enggal ing dhusun kula dipunbangun dening warga.
+    question_meaning:
+      ar_eg: dipunbangun بالنغوكو تبقى إيه؟
+      ar: ما مقابل dipunbangun في النغوكو؟
+      en: What is dipunbangun in ngoko?
+    options: [dibangun, kapilih, tinulis]
+    answer: 0
+    explain:
+      ar_eg: dipun- هي di- بتاعة الكراما. dipunbangun = dibangun.
+      ar: dipun- هي di- في الكراما، فـ dipunbangun = dibangun.
+      en: dipun- is the krama di-, so dipunbangun = dibangun.
+    words: [enggal, dhusun]
+  - id: e03
+    type: listen
+    text: Masjid enggal ing dhusun kula dipunbangun dening warga.
+    question:
+      ar_eg: مين اللي بنى الجامع؟
+      ar: من بنى المسجد؟
+      en: Who built the mosque?
+    options: [redaksi, lurah, warga]
+    answer: 2
+    meaning:
+      ar_eg: الجامع الجديد في قريتي بناه الأهالي.
+      ar: بنى الأهالي المسجد الجديد في قريتي.
+      en: The new mosque in my village was built by the residents.
+    words: [dening, warga]
+  - id: e04
+    type: fill_blank
+    sentence: Masjid ___ ing dhusun kula dipunbangun dening warga.
+    meaning:
+      ar_eg: الجامع الجديد في قريتي بناه الأهالي.
+      ar: بنى الأهالي المسجد الجديد في قريتي.
+      en: The new mosque in my village was built by the residents.
+    options: [kinurmatan, enggal, redaksi]
+    answers: [enggal]
+    words: [enggal, dhusun]
   - id: e05
     type: fill_blank
-    sentence: Dalan kasebut ___ dening polisi nganti sore.
+    sentence: Redaksi ingkang ___,
     meaning:
-      ar_eg: الشرطة قفلت الشارع ده لحد العصر.
-      ar: أغلقت الشرطة هذا الطريق حتى المساء.
-      en: The road was closed by the police until the afternoon.
-    options: [diresiki, dibangun, ditutup]
-    answers: [ditutup]
-    words: [ditutup]
+      ar_eg: السادة المحررين المحترمين،
+      ar: السادة المحررون المحترمون،
+      en: Dear Editors,
+    options: [kasebut, kinurmatan, enggal]
+    answers: [kinurmatan]
+    words: [kinurmatan]
   - id: e06
-    type: dictation
-    text: Sesuk esuk, dalan kasebut bakal diresiki dening warga.
-    meaning:
-      ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
-      ar: صباح الغد سينظّف السكانُ هذا الطريق.
-      en: Tomorrow morning the road will be cleaned by the residents.
-    words: [diresiki, warga, dening, bakal]
+    type: build_sentence
+    source:
+      ar_eg: (جواب بالكراما) الجامع الجديد في قريتي بناه الأهالي.
+      ar: (رسالة بالكراما) بنى الأهالي المسجد الجديد في قريتي.
+      en: (krama letter) The new mosque in my village was built by the residents.
+    answer: Masjid enggal ing dhusun kula dipunbangun dening warga.
+    distractors: [anyar, aku]
+    words: [enggal, dhusun]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (بأسلوب الأخبار) الشرطة قفلت الشارع.
-      ar: (بأسلوب الأخبار) أغلقت الشرطة الطريق.
-      en: (news style) The road was closed by the police.
+      ar_eg: (أول جواب للمجلة) السادة المحررين المحترمين،
+      ar: (افتتاح رسالة إلى المجلة) السادة المحررون المحترمون،
+      en: (opening a letter to the magazine) Dear Editors,
     answers:
-      - Dalan kasebut ditutup dening polisi.
-      - Dalan iku ditutup dening polisi.
-      - Dalane ditutup dening polisi.
-      - Dalan ditutup dening polisi.
-      - Dalan iki ditutup dening polisi.
-    words: [ditutup, dening]
+      - Redaksi ingkang kinurmatan,
+      - Redaksi ingkang kinurmatan.
+    words: [kinurmatan, redaksi]
   - id: e08
-    type: speaking
-    text: Warta saka Semarang. Dalan ing Kaligawe kebanjiran rob maneh.
-    meaning:
-      ar_eg: أخبار من سيمارانج. الشارع في كاليجاوي غرق من المد تاني.
-      ar: أخبار من سيمارانج. غمر المدُّ طريقَ كاليغاوي مرة أخرى.
-      en: News from Semarang. The road in Kaligawe was flooded by the tide again.
-    words: [kebanjiran, rob, maneh]
+    type: translate
+    direction: from_target
+    source_text: Masjid enggal ing dhusun kula dipunbangun dening warga.
+    answers_meaning:
+      ar_eg:
+        - الجامع الجديد في قريتي بناه الأهالي.
+        - الجامع الجديد اللي في قريتي بناه الأهالي.
+        - الجامع الجديد في قريتي اتبنى على إيد الأهالي.
+        - الأهالي بنوا الجامع الجديد في قريتي.
+        - المسجد الجديد في قريتي بناه الأهالي.
+      ar:
+        - بنى الأهالي المسجد الجديد في قريتي.
+        - المسجد الجديد في قريتي بناه الأهالي.
+        - بُني المسجد الجديد في قريتي على يد الأهالي.
+        - بنى السكان المسجد الجديد في قريتي.
+      en:
+        - The new mosque in my village was built by the residents.
+        - The new mosque in my village was built by the villagers.
+        - The residents built the new mosque in my village.
+        - The villagers built the new mosque in my village.
+    words: [enggal, dhusun]
   - id: e09
-    type: fill_blank
-    sentence: Sesuk dalan iki ___ diresiki.
+    type: speaking
+    text: Redaksi ingkang kinurmatan, kula nyuwun warta menika dipunmuat.
     meaning:
-      ar_eg: بكرة الشارع ده هيتنضّف.
-      ar: سيُنظَّف هذا الشارع غدًا.
-      en: Tomorrow this road will be cleaned.
-    options: [bakal, wis, lagi]
-    answers: [bakal]
-    words: [bakal]
-  - id: e10
-    type: multiple_choice
-    question: Dalan ing Kaligawe kebanjiran rob maneh.
-    question_meaning:
-      ar_eg: معنى الجملة دي إيه؟
-      ar: ما معنى هذه الجملة؟
-      en: What does this sentence mean?
-    options: ['الشارع في كاليجاوي غرق تاني من مية البحر.', 'الشارع في كاليجاوي لسه ماغرقش.', 'الشارع في كاليجاوي عمره ما غرق.']
-    answer: 0
-    explain:
-      ar_eg: maneh = تاني (lagi). بتيجي بعد الفعل.
-      ar: maneh = مرة أخرى (lagi)، وتأتي بعد الفعل.
-      en: maneh = again (lagi); it comes after the verb.
-    words: [maneh, rob]
+      ar_eg: السادة المحررين المحترمين، برجو إن الخبر ده يتنشر.
+      ar: السادة المحررون المحترمون، أرجو أن يُنشر هذا الخبر.
+      en: Dear Editors, I kindly ask that this news be printed.
+    words: [kinurmatan, redaksi]
 dialogue:
-  title: Krungu warta radio
+  title: Kalawarti basa Jawa
   lines:
-    - speaker: Mbak Ayu
-      text: Mohamed, krungu warta radio esuk iki?
-      ar_eg: يا محمد، سمعت نشرة الراديو النهارده الصبح؟
-      ar: يا محمد، هل سمعت نشرة الإذاعة صباح اليوم؟
-      en: Mohamed, did you hear the radio news this morning?
+    - speaker: Pak Harjo
+      text: Mas, iki Panjebar Semangat, kalawarti basa Jawa saka Surabaya.
+      ar_eg: يا ابني، دي «بانجيبار سيمانغات»، مجلة بالجاوي من سورابايا.
+      ar: يا بني، هذه «بانجيبار سيمانغات»، مجلة بالجاوية من سورابايا.
+      en: Young man, this is Panjebar Semangat, a Javanese magazine from Surabaya.
     - speaker: Mohamed
-      text: Krungu. Dalan ing Kaligawe kebanjiran rob maneh.
-      ar_eg: سمعت. الشارع في كاليجاوي غرق من المد تاني.
-      ar: سمعت. غمر المدُّ طريق كاليغاوي مرة أخرى.
-      en: I did. The road in Kaligawe flooded with the tide again.
-    - speaker: Mbak Ayu
-      text: Waduh, aku arep menyang Kaligawe.
-      ar_eg: يا خبر، ده أنا رايحة كاليجاوي.
-      ar: يا للأسف، كنت أنوي الذهاب إلى كاليغاوي.
-      en: Oh no, I'm about to go to Kaligawe.
+      text: Kalawarti menika sampun lami, Pak?
+      ar_eg: المجلة دي قديمة يا عمّو؟
+      ar: هل هذه المجلة قديمة يا سيدي؟
+      en: Has this magazine been around long, sir?
+    - speaker: Pak Harjo
+      text: Wis lawas banget, wiwit jaman Walanda.
+      ar_eg: قديمة أوي، من أيام الهولنديين.
+      ar: قديمة جدًا، منذ عهد الهولنديين.
+      en: A very long time, since the Dutch era.
     - speaker: Mohamed
-      text: Aja saiki! Dalane ditutup dening polisi nganti sore.
-      ar_eg: بلاش دلوقتي! الشرطة قافلة الشارع لحد العصر.
-      ar: لا تذهبي الآن! أغلقت الشرطة الطريق حتى المساء.
-      en: Not now! The road's been closed by the police until the afternoon.
-    - speaker: Mbak Ayu
-      text: Ya wis, sesuk wae.
-      ar_eg: خلاص، بكرة بقى.
-      ar: حسنًا، غدًا إذن.
-      en: All right, tomorrow then.
+      text: Menika layang saking sinten, Pak?
+      ar_eg: والجواب ده من مين يا عمّو؟
+      ar: وممّن هذه الرسالة يا سيدي؟
+      en: Who's this letter from, sir?
+    - speaker: Pak Harjo
+      text: Saka warga dhusun. Ditulis nganggo krama, kaya layang kanggo wong sepuh.
+      ar_eg: من واحد من أهل قرية. مكتوب بالكراما، زي جواب لحد كبير.
+      ar: من أحد أهل القرى، مكتوبة بالكراما كرسالة إلى شخص كبير.
+      en: From a villager. It's written in krama, like a letter to an elder.
 new_words:
-  - word: ditutup
-    pos: verb
-    ar_eg: اتقفل (من tutup = يقفل)
-    ar: أُغلق (من tutup = أغلق)
-    en: was closed (from tutup) = ditutup
-  - word: bakal
-    pos: particle
-    ar_eg: هـ (مستقبل)، حـ
-    ar: سوف، سـ
-    en: will (future) = akan
-  - word: maneh
-    pos: adverb
-    ar_eg: تاني / كمان مرة
-    ar: مرة أخرى
-    en: again = lagi
+  - word: kinurmatan
+    pos: adjective
+    ar_eg: المحترم (في أول الجوابات)
+    ar: المحترم (في افتتاح الرسائل)
+    en: respected, dear (letter opening) = terhormat
+  - word: dhusun
+    pos: noun
+    ar_eg: قرية (كراما)
+    ar: قرية (كراما)
+    en: village (krama; ngoko desa) = desa
+  - word: enggal
+    pos: adjective
+    ar_eg: جديد (كراما)
+    ar: جديد (كراما)
+    en: new (krama; ngoko anyar) = baru
+  - word: redaksi
+    pos: noun
+    ar_eg: هيئة التحرير
+    ar: هيئة التحرير
+    en: the editors = redaksi
 review:
   status: draft
   verified: false

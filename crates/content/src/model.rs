@@ -27,6 +27,10 @@ pub struct Level {
     pub title: Text,
     #[serde(default)]
     pub requires: Vec<String>,
+    /// Distinct words taught by the end of this level, counted from the
+    /// start of the track (docs/PEDAGOGY.md §5.3).
+    #[serde(default)]
+    pub vocab_target: Option<u32>,
     pub units: Vec<Unit>,
     pub level_test: LevelTest,
 }

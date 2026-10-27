@@ -1,0 +1,245 @@
+schema: kabar.lesson/v1
+id: bipa1.u03.l08
+language: id
+title: Pria dan wanita
+can_do:
+  ar_eg: تقرا Pria / Wanita على الأبواب والاستمارات، وتقول شغلانة حد بكلمات بسيطة.
+  ar: أن تقرأ Pria / Wanita على الأبواب والاستمارات، وتذكر عمل شخص بكلمات بسيطة.
+  en: Read Pria / Wanita on doors and forms, and say what someone does in simple words.
+slides:
+  - title: Pria, wanita, gadis
+    body:
+      ar_eg: |
+        pria = راجل، وwanita = ست. دول الكلمتين الرسميين اللي هتلاقيهم على باب التواليت وفي الاستمارات. في الكلام العادي laki-laki وperempuan.
+        gadis = بنت أو صبية.
+        siswa = تلميذ في المدرسة، أما mahasiswa فطالب جامعة.
+        pegawai = موظف، وbos = المدير (كلمة عامية).
+        kerja = شغل. «Kerja di mana?» يعني «بتشتغل فين؟» بالعامية. في الكتابة بتبقى bekerja (هتيجي في الوحدة ٥).
+      ar: |
+        pria = رجل، وwanita = امرأة، وهما الكلمتان الرسميتان على أبواب دورات المياه وفي الاستمارات. أما في الكلام العادي فـ laki-laki وperempuan.
+        gadis = فتاة.
+        siswa = تلميذ المدرسة، أما mahasiswa فطالب الجامعة.
+        pegawai = موظّف، وbos = المدير (كلمة دارجة).
+        kerja = عمل. «Kerja di mana?» = «أين تعمل؟» بالعامية، وفي الكتابة bekerja (في الوحدة الخامسة).
+      en: |
+        pria = man and wanita = woman: the formal words on toilet doors and forms. In everyday talk people say laki-laki and perempuan.
+        gadis = girl, young woman.
+        siswa = school pupil; mahasiswa = university student.
+        pegawai = employee; bos = boss (casual).
+        kerja = work. "Kerja di mana?" is the casual "Where do you work?"; in writing it's bekerja (unit 5).
+    examples:
+      - text: Ayah saya polisi. Dia kerja di Jakarta.
+        ar_eg: بابا ظابط بوليس. بيشتغل في جاكرتا.
+        ar: أبي شرطي، يعمل في جاكرتا.
+        en: My father is a police officer. He works in Jakarta.
+      - text: Gadis itu siswa. Kakaknya mahasiswa.
+        ar_eg: البنت دي تلميذة، وأخوها الكبير طالب جامعة.
+        ar: تلك الفتاة تلميذة، وأخوها الأكبر طالب جامعي.
+        en: That girl is a pupil. Her older brother is a university student.
+      - text: Kak Yoga pegawai baru. Bosnya orang Mesir.
+        ar_eg: يوجا موظف جديد، ومديره مصري.
+        ar: يوجا موظّف جديد، ومديره مصري.
+        en: Yoga is a new employee. His boss is Egyptian.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pria
+        ar_eg: راجل
+        ar: رجل
+        en: man
+      - text: wanita
+        ar_eg: ست
+        ar: امرأة
+        en: woman
+      - text: gadis
+        ar_eg: بنت، صبية
+        ar: فتاة
+        en: girl
+      - text: polisi
+        ar_eg: بوليس
+        ar: شرطي
+        en: police officer
+    words: [pria, wanita, gadis, polisi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: pegawai
+        ar_eg: موظف
+        ar: موظّف
+        en: employee
+      - text: siswa
+        ar_eg: تلميذ
+        ar: تلميذ
+        en: pupil
+      - text: bos
+        ar_eg: مدير
+        ar: مدير
+        en: boss
+      - text: kerja
+        ar_eg: شغل
+        ar: عمل
+        en: work
+    words: [pegawai, siswa, bos, kerja]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: 'قدامك بابين للتواليت: Pria وWanita. إنت راجل. تدخل أنهي باب؟'
+      ar: 'أمامك بابان لدورة المياه: Pria وWanita، وأنت رجل. أيّهما تدخل؟'
+      en: 'Two toilet doors: Pria and Wanita. You''re a man. Which do you go through?'
+    options: [Pria, Wanita, Gadis]
+    answer: 0
+    explain:
+      ar_eg: Pria للرجالة وWanita للستات.
+      ar: Pria للرجال وWanita للنساء.
+      en: Pria is for men, Wanita for women.
+    words: [pria, wanita]
+  - id: e04
+    type: listen
+    text: Saya pegawai. Bos saya orang Mesir.
+    question:
+      ar_eg: مين المصري؟
+      ar: مَن المصري؟
+      en: Who is Egyptian?
+    options: [المدير بتاعه, هو نفسه, أبوه]
+    answer: 0
+    meaning:
+      ar_eg: أنا موظف، ومديري مصري.
+      ar: أنا موظّف، ومديري مصري.
+      en: I'm an employee. My boss is Egyptian.
+    words: [pegawai, bos]
+  - id: e05
+    type: fill_blank
+    sentence: Kakak saya ___. Adik saya siswa.
+    meaning:
+      ar_eg: أخويا الكبير ___، وأخويا الصغير تلميذ.
+      ar: أخي الأكبر ___، وأخي الأصغر تلميذ.
+      en: My older brother is an ___. My younger brother is a pupil.
+    options: [pegawai, gadis, wanita]
+    answers: [pegawai]
+    words: [pegawai, siswa]
+  - id: e06
+    type: fill_blank
+    sentence: Wanita itu ___ saya.
+    meaning:
+      ar_eg: الست دي ___ بتاعتي.
+      ar: تلك المرأة ___ ـتي.
+      en: That woman is my ___.
+    options: [bos, siswa, gadis]
+    answers: [bos]
+    words: [wanita, bos]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: البنت دي بنت الظابط.
+      ar: تلك الفتاة ابنة الشرطي.
+      en: That girl is the police officer's daughter.
+    answer: Gadis itu anak polisi.
+    distractors: [pria, bos]
+    words: [gadis, polisi]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: إنت بتشتغل فين؟ (بالعامية)
+      ar: أين تعمل؟ (بالعامية)
+      en: Where do you work? (casual)
+    answers:
+      - Kamu kerja di mana?
+      - Kerja di mana?
+      - Anda kerja di mana?
+    words: [kerja]
+  - id: e09
+    type: speaking
+    text: Gadis itu siswa, dan pria itu polisi.
+    meaning:
+      ar_eg: البنت دي تلميذة، والراجل دا ظابط.
+      ar: تلك الفتاة تلميذة، وذلك الرجل شرطي.
+      en: That girl is a pupil, and that man is a police officer.
+    words: [gadis, siswa, pria, polisi]
+  - id: e10
+    type: multiple_choice
+    question: Ayah Rina ___ di Jakarta. Dia polisi.
+    options: [kerja, siswa, bos]
+    answer: 0
+    explain:
+      ar_eg: 'kerja = بيشتغل: أبو رينا بيشتغل في جاكرتا.'
+      ar: 'kerja = يعمل: أبو رينا يعمل في جاكرتا.'
+      en: 'kerja = works: Rina''s father works in Jakarta.'
+    words: [kerja, polisi]
+dialogue:
+  lines:
+    - speaker: Petugas
+      text: Selamat pagi. Nama Anda siapa?
+      ar_eg: صباح الخير. اسم حضرتك إيه؟
+      ar: صباح الخير. ما اسمك؟
+      en: Good morning. What's your name?
+    - speaker: Agus
+      text: Nama saya Agus.
+      ar_eg: اسمي أجوس.
+      ar: اسمي أجوس.
+      en: My name is Agus.
+    - speaker: Petugas
+      text: Pekerjaan Anda apa, Mas Agus?
+      ar_eg: بتشتغل إيه يا أستاذ أجوس؟
+      ar: ما عملك يا سيد أجوس؟
+      en: What's your job, Agus?
+    - speaker: Agus
+      text: Saya polisi. Saya kerja di Jakarta.
+      ar_eg: أنا ظابط بوليس. بشتغل في جاكرتا.
+      ar: أنا شرطي، أعمل في جاكرتا.
+      en: I'm a police officer. I work in Jakarta.
+    - speaker: Petugas
+      text: Dan gadis ini? Adik Anda?
+      ar_eg: والبنت دي؟ أختك الصغيرة؟
+      ar: وهذه الفتاة؟ أختك الصغرى؟
+      en: And this girl? Your younger sister?
+    - speaker: Agus
+      text: Ya. Dia siswa. Dia mau daftar kursus bahasa Inggris.
+      ar_eg: أيوه. هي تلميذة، وعايزة تسجّل في كورس إنجليزي.
+      ar: نعم، هي تلميذة وتريد التسجيل في دورة إنجليزية.
+      en: Yes. She's a pupil. She wants to sign up for an English course.
+new_words:
+  - word: pria
+    pos: noun
+    ar_eg: راجل (كلمة رسمية)
+    ar: رجل، ذكر (رسمي)
+    en: man, male (formal)
+  - word: wanita
+    pos: noun
+    ar_eg: ست (كلمة رسمية)
+    ar: امرأة، أنثى (رسمي)
+    en: woman (formal)
+  - word: gadis
+    pos: noun
+    ar_eg: بنت، صبية
+    ar: فتاة
+    en: girl, young woman
+  - word: polisi
+    pos: noun
+    ar_eg: بوليس، ظابط شرطة
+    ar: شرطي، الشرطة
+    en: police, police officer
+  - word: pegawai
+    pos: noun
+    ar_eg: موظف
+    ar: موظّف
+    en: employee, staff member
+  - word: siswa
+    pos: noun
+    ar_eg: تلميذ
+    ar: تلميذ
+    en: school pupil
+  - word: bos
+    pos: noun
+    ar_eg: المدير، الريّس
+    ar: المدير، رئيس العمل
+    en: boss
+  - word: kerja
+    pos: verb
+    ar_eg: شغل؛ يشتغل (عامية)
+    ar: عمل؛ يعمل (عامية)
+    en: work; to work (casual)
+review:
+  status: draft
+  verified: false

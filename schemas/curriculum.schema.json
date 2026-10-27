@@ -89,6 +89,11 @@
         "ukbi_band": { "type": "string" },
         "cefr": { "$ref": "#/$defs/cefr" },
         "requires": { "type": "array", "items": { "$ref": "#/$defs/level_id" } },
+        "vocab_target": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Distinct words the lessons should have taught by the end of this level, counted from the start of the track (docs/PEDAGOGY.md §5.3)."
+        },
         "journey": {
           "type": "object",
           "additionalProperties": false,

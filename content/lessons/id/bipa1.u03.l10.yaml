@@ -1,0 +1,211 @@
+schema: kabar.lesson/v1
+id: bipa1.u03.l10
+language: id
+title: Ulangan Unit 3
+can_do:
+  ar_eg: توصف عيلتك.
+  ar: أن تصف عائلتك.
+  en: Describe your family.
+slides:
+  - title: Unit 3 dalam satu halaman
+    body:
+      ar_eg: |
+        - ini (قريب) / itu (بعيد): buku ini = الكتاب ده، Ini buku = ده كتاب.
+        - الملكية زي الإضافة: rumah saya، buku Rina، و-ku / -mu / -nya. مع الكبار: rumah Ibu مش rumahmu.
+        - الاسم الأول وبعدين الوصف: rumah besar saya، kakak saya yang tinggi. العدد والكمية قبل الاسم: dua anak، banyak orang.
+        - الجمع بالتكرار (anak-anak)، بس مش بعد عدد أو banyak.
+        - العيلة: ayah، ibu، kakak، adik، suami، istri، anak، orang tua — وsudah / belum menikah.
+      ar: |
+        - ini (للقريب) / itu (للبعيد): buku ini = هذا الكتاب، Ini buku = هذا كتاب.
+        - الملكية كالإضافة: rumah saya، buku Rina، واللواحق -ku / -mu / -nya. ومع الكبار: rumah Ibu لا rumahmu.
+        - الاسم ثم ما يصفه: rumah besar saya، kakak saya yang tinggi. والعدد والكمية قبل الاسم: dua anak، banyak orang.
+        - الجمع بالتكرار (anak-anak)، ولا يكون بعد عدد أو banyak.
+        - العائلة: ayah، ibu، kakak، adik، suami، istri، anak، orang tua — وsudah / belum menikah.
+      en: |
+        - ini (near) / itu (far): buku ini = this book, Ini buku = this is a book.
+        - Possession like iḍāfa: rumah saya, buku Rina, plus -ku / -mu / -nya. With elders: rumah Ibu, not rumahmu.
+        - Noun first, then describers: rumah besar saya, kakak saya yang tinggi. Numbers and quantities before: dua anak, banyak orang.
+        - Plural by repetition (anak-anak), but not after a number or banyak.
+        - Family: ayah, ibu, kakak, adik, suami, istri, anak, orang tua — and sudah / belum menikah.
+    grammar: id.possessive
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: suami
+        ar_eg: الجوز
+        ar: الزوج
+        en: husband
+      - text: istri
+        ar_eg: الزوجة
+        ar: الزوجة
+        en: wife
+      - text: orang tua
+        ar_eg: الأهل
+        ar: الوالدان
+        en: parents
+      - text: anak
+        ar_eg: ابن / بنت
+        ar: ابن / ابنة
+        en: child
+      - text: adik
+        ar_eg: أخ / أخت أصغر
+        ar: الأخ / الأخت الأصغر
+        en: younger sibling
+    words: [suami, istri, orang tua, anak, adik]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة معناها «الكتاب ده جديد»؟
+      ar: أيّ جملة تعني «هذا الكتاب جديد»؟
+      en: Which sentence means "This book is new"?
+    options: [Buku ini baru., Ini buku baru., Baru buku ini.]
+    answer: 0
+    explain:
+      ar_eg: buku ini = الكتاب ده. أما «Ini buku baru» فمعناها «ده كتاب جديد».
+      ar: buku ini = هذا الكتاب، أما «Ini buku baru» فتعني «هذا كتاب جديد».
+      en: buku ini = this book; "Ini buku baru" means "This is a new book".
+    words: [ini, buku, baru]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تقول لـBu Yanti «بيت حضرتك كبير».
+      ar: تريد أن تقول لـBu Yanti «بيتكِ كبير يا سيدتي».
+      en: You want to tell Bu Yanti, "Your house is big, ma'am."
+    options: ['Rumahmu besar, Bu.', Rumah Ibu besar., Ibu rumah besar.]
+    answer: 1
+    explain:
+      ar_eg: مع الكبار اللقب مكان -mu. و«Ibu rumah» ترتيبها غلط.
+      ar: مع الكبار يحلّ اللقب محل -mu، و«Ibu rumah» ترتيبها خاطئ.
+      en: With elders the title replaces -mu; "Ibu rumah" has the wrong order.
+    words: [rumah, Ibu, besar]
+  - id: e04
+    type: listen
+    text: Kakak saya yang tinggi itu dokter.
+    options: [Kakak saya yang tinggi itu dokter., Kakak saya tinggi dan dokter., Adik saya yang tinggi itu dokter.]
+    answer: 0
+    words: [kakak, yang, tinggi]
+  - id: e05
+    type: fill_blank
+    sentence: Raka dan adik___ di Cikini.
+    meaning:
+      ar_eg: راكا وأخوه الصغير في تشيكيني.
+      ar: راكا وأخوه الأصغر في تشيكيني.
+      en: Raka and his younger sibling are in Cikini.
+    options: [mu, ku, nya]
+    answers: [nya]
+    words: [-nya, adik]
+  - id: e06
+    type: fill_blank
+    sentence: Adik saya ___ menikah.
+    meaning:
+      ar_eg: أختي الصغيرة لسه ماتجوزتش.
+      ar: أختي الصغرى لم تتزوج بعد.
+      en: My younger sister isn't married yet.
+    options: [sudah, belum, banyak]
+    answers: [belum]
+    words: [belum, menikah]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: دي مراتي، ودول عيالي.
+      ar: هذه زوجتي، وهؤلاء أطفالي.
+      en: This is my wife, and these are my children.
+    answer: Ini istri saya dan ini anak-anak saya.
+    distractors: [itu, suami]
+    words: [istri, anak]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: البيت ده بتاع مين؟
+      ar: لمن ذلك البيت؟
+      en: Whose house is that?
+    answer: Rumah itu punya siapa?
+    alternatives: ['Punya siapa rumah itu?']
+    distractors: [ini, apa]
+    words: [rumah, itu, punya, siapa]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أبويا مدرّس، وأمي دكتورة.
+      ar: أبي معلّم، وأمي طبيبة.
+      en: My father is a teacher, and my mother is a doctor.
+    answers: ['Ayah saya guru, dan ibu saya dokter.', 'Ayah saya guru, ibu saya dokter.', Ayah saya guru dan ibu saya dokter., Ayah saya guru. Ibu saya dokter., 'Bapak saya guru, dan ibu saya dokter.', 'Ayahku guru, dan ibuku dokter.']
+    words: [ayah, ibu, guru, dokter]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عندي تلات إخوات أصغر مني.
+      ar: لديّ ثلاثة إخوة أصغر مني.
+      en: I have three younger siblings.
+    answers: [Saya punya tiga adik., Saya punya tiga adik, Aku punya tiga adik., Saya punya tiga orang adik.]
+    words: [punya, tiga, adik]
+  - id: e11
+    type: match_pairs
+    pairs:
+      - text: nenek
+        ar_eg: جدة (تيتا)
+        ar: جدّة
+        en: grandmother
+      - text: pacar
+        ar_eg: حبيب أو حبيبة (قبل الجواز)
+        ar: حبيب أو حبيبة (قبل الزواج)
+        en: boyfriend, girlfriend
+      - text: pria
+        ar_eg: راجل (كلمة رسمية)
+        ar: رجل، ذكر (رسمي)
+        en: man, male (formal)
+    words: [nenek, pacar, pria]
+  - id: e12
+    type: speaking
+    text: Ini keluarga saya. Kakak saya sudah menikah, adik saya belum.
+    meaning:
+      ar_eg: دي عيلتي. أخويا الكبير متجوز، وأخويا الصغير لسه.
+      ar: هذه عائلتي. أخي الأكبر متزوج، وأخي الأصغر لم يتزوج بعد.
+      en: This is my family. My older sibling is married; my younger one isn't yet.
+    words: [keluarga, sudah, belum]
+dialogue:
+  title: Sore di Taman Ismail Marzuki
+  lines:
+    - speaker: Pak Irwan
+      text: Mohamed! Ini istri saya, Bu Lina.
+      ar_eg: يا محمد! دي مراتي، مدام لينا.
+      ar: يا محمد! هذه زوجتي، السيدة لينا.
+      en: Mohamed! This is my wife, Bu Lina.
+    - speaker: Mohamed
+      text: Selamat sore, Bu. Salam kenal.
+      ar_eg: مساء الخير يا مدام. اتشرفنا.
+      ar: مساء الخير يا سيدتي. تشرّفنا.
+      en: Good afternoon, ma'am. Nice to meet you.
+    - speaker: Bu Lina
+      text: Salam kenal, Mohamed. Ini anak-anak kami.
+      ar_eg: اتشرفنا يا محمد. دول عيالنا.
+      ar: تشرّفنا يا محمد. هؤلاء أطفالنا.
+      en: Nice to meet you, Mohamed. These are our children.
+    - speaker: Mohamed
+      text: Anak-anak Bapak lucu! Yang kecil itu namanya siapa?
+      ar_eg: عيال حضرتك لُطاف! والصغيّرة دي اسمها إيه؟
+      ar: أطفالك لطفاء! وما اسم الصغيرة؟
+      en: Your children are cute! What's the little one's name?
+    - speaker: Pak Irwan
+      text: Namanya Sinta. Dia adik Rafi.
+      ar_eg: اسمها سينتا. هي أخت رافي الصغيرة.
+      ar: اسمها سينتا، وهي أخت رافي الصغرى.
+      en: Her name is Sinta. She's Rafi's little sister.
+    - speaker: Mohamed
+      text: Hai, Dik Sinta!
+      ar_eg: أهلًا يا سينتا!
+      ar: مرحبًا يا سينتا!
+      en: Hi, Sinta!
+souvenir:
+  id: bipa1.u03.souvenir
+  title: Foto keluarga di Taman Ismail Marzuki
+  note:
+    ar_eg: Taman Ismail Marzuki في تشيكيني مركز فنون، والعيلات بتيجي هنا تتفرج وتتصور سوا. الإندونيسيين بيسمّوا الإخوات بالسن مش بالنوع — kakak للأكبر وadik للأصغر. وعشان كده لما تنادي بيّاع «Kak» أو عيل صغير «Dik»، إنت بتعامله كأنه من العيلة، وده بيفرّحهم جدًا.
+    ar: Taman Ismail Marzuki في تشيكيني مركز للفنون، تأتيه العائلات لتشاهد العروض وتلتقط الصور معًا. ويسمّي الإندونيسيون الإخوة بحسب السن لا الجنس، فـ kakak للأكبر وadik للأصغر. ولذلك حين تنادي بائعًا «Kak» أو طفلًا «Dik» فكأنك تعامله فردًا من العائلة، وهذا يُسعدهم كثيرًا.
+    en: Taman Ismail Marzuki in Cikini is an arts centre where families come to watch shows and take photos together. Indonesians name siblings by age, not gender — kakak for older, adik for younger. So when you call a shop assistant "Kak" or a child "Dik", you're treating them like family, and people love it.
+review:
+  status: draft
+  verified: false

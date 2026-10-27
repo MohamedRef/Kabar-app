@@ -1,0 +1,202 @@
+schema: kabar.lesson/v1
+id: bipa1.u09.l11
+language: id
+title: Ulangan Unit 9
+can_do:
+  ar_eg: توصل من مكان لمكان بالسؤال.
+  ar: أن تصل من مكان إلى آخر بالسؤال.
+  en: Get from A to B by asking.
+slides:
+  - title: Ingat!
+    body:
+      ar_eg: |
+        - di (في) للمكان الثابت، ke (لـ) للحركة، dari (من) للبداية.
+        - di + كلمة المكان + الحاجة: di atas meja، di samping masjid، di antara … dan ….
+        - الخطوات: jalan lurus، lalu / kemudian belok kiri / kanan.
+        - dan (و)، atau (أو / ولا)، tetapi (بس)، jadi (فـ).
+      ar: |
+        - di للمكان الثابت، وke للحركة، وdari للابتداء.
+        - di + ظرف المكان + الاسم: di atas meja، di samping masjid، di antara … dan ….
+        - الخطوات: jalan lurus، lalu / kemudian belok kiri / kanan.
+        - dan (و)، atau (أو / أم)، tetapi (لكن)، jadi (لذلك).
+      en: |
+        - di for a fixed place, ke for movement to, dari for from.
+        - di + position word + noun: di atas meja, di samping masjid, di antara … dan ….
+        - Steps: jalan lurus, lalu / kemudian belok kiri / kanan.
+        - dan (and), atau (or), tetapi (but), jadi (so).
+    grammar: id.preposition.di-ke-dari
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: di belakang
+        ar_eg: ورا
+        ar: خلف
+        en: behind
+      - text: di antara
+        ar_eg: بين
+        ar: بين
+        en: between
+      - text: di luar
+        ar_eg: بره
+        ar: خارج
+        en: outside
+      - text: belok kanan
+        ar_eg: خش يمين
+        ar: انعطف يمينًا
+        en: turn right
+      - text: jalan lurus
+        ar_eg: امشي دغري
+        ar: امشِ مستقيمًا
+        en: go straight
+    words: [belakang, antara, luar, belok, lurus]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: sepeda
+        ar_eg: عجلة
+        ar: درّاجة
+        en: bicycle
+      - text: taksi
+        ar_eg: تاكسي
+        ar: سيارة أجرة
+        en: taxi
+      - text: motor
+        ar_eg: موتوسيكل
+        ar: درّاجة نارية
+        en: motorbike
+    words: [sepeda, taksi, motor]
+  - id: e03
+    type: multiple_choice
+    question: Kereta ___ Bandung sudah datang.
+    options: [ke, di, dari]
+    answer: 2
+    explain:
+      ar_eg: القطر جاي من باندونج ووصل، يبقى dari.
+      ar: القطار قادم من باندونغ وقد وصل، فهي dari.
+      en: The train has come from Bandung and arrived → dari.
+    words: [dari, kereta]
+  - id: e04
+    type: listen
+    text: Masjidnya di sebelah kanan.
+    options: [Masjidnya di sebelah kanan., Masjidnya di belakang., Masjidnya di sebelah kiri.]
+    answer: 0
+    words: [sebelah, kanan, masjid]
+  - id: e05
+    type: listen
+    text: Kursinya di antara meja dan pintu.
+    options: [Kursinya di antara meja dan pintu., Kursinya di depan pintu., Kursinya di atas meja.]
+    answer: 0
+    words: [kursi, antara, meja, pintu]
+  - id: e06
+    type: fill_blank
+    sentence: Tiketnya di ___ tas.
+    meaning:
+      ar_eg: التذكرة جوه الشنطة.
+      ar: التذكرة داخل الحقيبة.
+      en: The ticket is inside the bag.
+    options: [dalam, antara, luar]
+    answers: [dalam]
+    words: [dalam, tas]
+  - id: e07
+    type: fill_blank
+    sentence: Monas jauh, ___ kita naik bus.
+    meaning:
+      ar_eg: موناس بعيد، فهنركب أتوبيس.
+      ar: موناس بعيد، لذا سنركب الحافلة.
+      en: Monas is far, so we'll take the bus.
+    options: [atau, jadi, tetapi]
+    answers: [jadi]
+    words: [jadi, jauh]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: خش شمال عند الإشارة، وبعدين امشي دغري.
+      ar: انعطف يسارًا عند الإشارة، ثم امشِ مستقيمًا.
+      en: Turn left at the traffic light, then go straight.
+    answer: Belok kiri di lampu merah, lalu jalan lurus.
+    alternatives: [Belok kiri di lampu merah lalu jalan lurus.]
+    distractors: [kanan, dari]
+    words: [belok, kiri, lampu merah, lalu, lurus]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: الكتاب تحت الكرسي.
+      ar: الكتاب تحت الكرسي.
+      en: The book is under the chair.
+    answer: Bukunya di bawah kursi.
+    distractors: [atas, ke]
+    words: [bawah, kursi]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: لو سمحت، المحطة فين؟
+      ar: عفوًا، أين المحطة؟
+      en: Excuse me, where is the station?
+    answers: ['Permisi, stasiunnya di mana?', 'Permisi, stasiun di mana?', 'Permisi, di mana stasiunnya?', 'Permisi, di mana stasiun?', 'Permisi, stasiunnya di mana, ya?', 'Permisi, stasiunnya di mana']
+    words: [permisi, stasiun]
+  - id: e11
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الجامع جنب البنك.
+      ar: المسجد بجانب المصرف.
+      en: The mosque is next to the bank.
+    answers: [Masjidnya di samping bank., Masjidnya di sebelah bank., Masjid di samping bank., Masjid di sebelah bank., Masjidnya di samping bank, Masjidnya di sebelah bank]
+    explain:
+      ar_eg: «جنب» = di samping أو di sebelah، الاتنين صح.
+      ar: «بجانب» = di samping أو di sebelah، وكلاهما صحيح.
+      en: '"next to" = di samping or di sebelah; both are right.'
+    words: [samping, sebelah, masjid]
+  - id: e12
+    type: speaking
+    text: Permisi, Bu. Saya mau ke Monas. Jalan lurus, lalu belok kanan, ya?
+    meaning:
+      ar_eg: لو سمحتي يا مدام. أنا عايز أروح موناس. أمشي دغري وبعدين أخش يمين، صح؟
+      ar: عفوًا يا سيدتي، أريد الذهاب إلى موناس. أمشي مستقيمًا ثم أنعطف يمينًا، أليس كذلك؟
+      en: Excuse me, ma'am. I want to go to Monas. Straight ahead, then turn right, right?
+    words: [permisi, ke, lurus, lalu, belok]
+dialogue:
+  title: Di depan Monas
+  lines:
+    - speaker: Ni Luh
+      text: Mohamed, kamu di mana?
+      ar_eg: محمد، إنت فين؟
+      ar: يا محمد، أين أنت؟
+      en: Mohamed, where are you?
+    - speaker: Mohamed
+      text: Saya di depan pintu masuk Monas. Kamu?
+      ar_eg: أنا قدّام مدخل موناس. وإنتي؟
+      ar: أنا أمام مدخل موناس. وأنتِ؟
+      en: I'm in front of the Monas entrance. You?
+    - speaker: Ni Luh
+      text: Saya di halte, dekat stasiun. Ke sana jauh atau dekat?
+      ar_eg: أنا في محطة الأتوبيس جنب محطة القطر. المشوار لعندك بعيد ولا قريب؟
+      ar: أنا في موقف الحافلات قرب المحطة. أهو بعيد أم قريب؟
+      en: I'm at the bus stop near the station. Is it far or close to get there?
+    - speaker: Mohamed
+      text: Dekat. Jalan lurus, lalu belok kiri di lampu merah.
+      ar_eg: قريب. امشي دغري، وبعدين خشي شمال عند الإشارة.
+      ar: قريب. امشي مستقيمًا ثم انعطفي يسارًا عند الإشارة.
+      en: Close. Go straight, then turn left at the traffic light.
+    - speaker: Ni Luh
+      text: Oke. Tapi panas sekali, jadi saya beli air dulu.
+      ar_eg: ماشي. بس الجو حر أوي، فهشتري مية الأول.
+      ar: حسنًا. لكن الجو حار جدًا، لذا سأشتري ماءً أولًا.
+      en: Okay. But it's really hot, so I'll buy water first.
+    - speaker: Mohamed
+      text: Baik. Saya di samping loket, ya. Sampai jumpa!
+      ar_eg: تمام. أنا هكون جنب شباك التذاكر. أشوفك!
+      ar: حسنًا. سأكون بجانب شباك التذاكر. إلى اللقاء!
+      en: Fine. I'll be next to the ticket counter. See you!
+souvenir:
+  id: bipa1.u09.souvenir
+  title: Monumen Nasional (Monas)
+  note:
+    ar_eg: 'موناس، النُصُب الوطني، طوله ١٣٢ متر في نص ميدان مرديكا، وفوقه شعلة متغطية دهب ترمز لحرية إندونيسيا. ومن فوق بتشوف جاكرتا كلها، وجنبه على طول جامع الاستقلال والكاتدرائية قصاد بعض. ولو تهت، اسأل وبس: أهل جاكرتا بيوصفوا الطريق بالعلامات («بعد الجامع خش شمال») وساعات بيمشوا معاك نص المسافة كمان.'
+    ar: 'موناس، النصب الوطني، يرتفع ١٣٢ مترًا في قلب ميدان مرديكا، وتعلوه شعلة مكسوّة بالذهب ترمز إلى استقلال إندونيسيا. ومن قمته ترى جاكرتا كلها، وبقربه يتقابل مسجد الاستقلال والكاتدرائية. وإن ضللت الطريق فاسأل: يصف أهل جاكرتا الطريق بالمعالم («بعد المسجد انعطف يسارًا»)، وكثيرًا ما يرافقونك نصف المسافة.'
+    en: Monas, the National Monument, rises 132 metres in the middle of Merdeka Square, topped by a gold-covered flame for Indonesia's independence. From the top you see all of Jakarta, and nearby Istiqlal Mosque and the Cathedral face each other. If you get lost, just ask — Jakartans give directions by landmarks ("after the mosque, turn left") and will often walk you halfway.
+review:
+  status: draft
+  verified: false

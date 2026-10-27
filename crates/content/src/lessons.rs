@@ -158,7 +158,7 @@ impl Check<'_> {
         req.extend_from_slice(required);
         let mut opt = vec!["explain", "words"];
         if in_test {
-            opt.extend_from_slice(&["points", "level", "skill"]);
+            opt.extend_from_slice(&["points", "level", "skill", "unit", "grammar"]);
         }
         opt.extend_from_slice(optional);
         let m = self.fields(at, e, &req, &opt)?;
@@ -902,6 +902,24 @@ pub fn check_test(file: &str, stem: &str, v: &Value, index: &Index, out: &mut Ve
             let level = item.get("level").and_then(Value::as_str).or(section_level);
             if placement && !level.is_some_and(|l| index.levels.contains(l)) {
                 c.push(format_args!("{at}: placement items need a level (on the item or its section)"));
+            }
+            // Results send the learner back to the units behind missed items (#139).
+            let level = if placement { level } else { stem.strip_suffix(".test") };
+            match item.get("unit").and_then(Value::as_str) {
+                None => c.push(format_args!("{at}: needs the unit it tests (unit: <level>.uNN)")),
+                Some(u) if !index.units.contains(u) => {
+                    c.push(format_args!("{at}.unit: {u} is not a curriculum unit"))
+                }
+                Some(u) if level.is_some_and(|l| u.split_once('.').map(|(ul, _)| ul) != Some(l)) => {
+                    c.push(format_args!("{at}.unit: {u} is outside the item's level"))
+                }
+                Some(_) => {}
+            }
+            for g in item.get("grammar").and_then(Value::as_array).into_iter().flatten() {
+                let g = g.as_str().unwrap_or_default();
+                if !index.grammar.contains(g) {
+                    c.push(format_args!("{at}.grammar: {g} is not in the grammar library"));
+                }
             }
         }
     }

@@ -35,36 +35,42 @@ sections:
       en: Listen, replay as you like, then pick exactly what you heard or write it.
     items:
       - id: t01
+        unit: j2.u05
         type: listen
         text: Mbah putri lagi masak.
         options: ["Mbah kakung lagi masak.", "Mbah putri lagi masak.", "Mbah putri lagi turu."]
         answer: 1
         words: [mbah putri, masak]
       - id: t02
+        unit: j2.u03
         type: listen
         text: Kabeh dadi satus seket ewu.
         options: ["Kabeh dadi satus seket ewu.", "Kabeh dadi satus selawe ewu.", "Kabeh dadi seket ewu."]
         answer: 0
         words: [kabeh, dadi, seket]
       - id: t03
+        unit: j2.u04
         type: listen
         text: Saiki jam setengah wolu.
         options: ["Saiki jam wolu.", "Saiki jam setengah pitu.", "Saiki jam setengah wolu."]
         answer: 2
         words: [jam, setengah]
       - id: t04
+        unit: j2.u04
         type: listen
         text: Dina iki Jemuwah Kliwon.
         options: ["Dina iki Jemuwah Legi.", "Dina iki Jemuwah Kliwon.", "Sesuk Jemuwah Kliwon."]
         answer: 1
         words: [dina iki, Jemuwah, Kliwon]
       - id: t05
+        unit: j2.u05
         type: listen
         text: Tulung tukokna gula, ya.
         options: ["Tulung tukokna gula, ya.", "Tulung jupukna gula, ya.", "Aja tuku gula, ya."]
         answer: 0
         words: [tulung, tukokna]
       - id: t06
+        unit: j2.u06
         type: dictation
         text: Bocah-bocah dolanan neng taman.
         meaning:
@@ -84,6 +90,7 @@ sections:
       en: Read the dialogues and the text about Sari's day, and answer from what they say.
     items:
       - id: t07
+        unit: j2.u02
         type: multiple_choice
         question: |
           Bu Darmi: Pesen apa, Mas?
@@ -100,6 +107,7 @@ sections:
         answer: 2
         words: [pedhes, sithik]
       - id: t08
+        unit: j2.u02
         type: multiple_choice
         question: |
           Bu Darmi: Pesen apa, Mas?
@@ -116,6 +124,7 @@ sections:
         answer: 1
         words: [dibungkus, kene]
       - id: t09
+        unit: j2.u03
         type: multiple_choice
         question: |
           Mohamed: Bu, bawang abang sekilo pira?
@@ -135,6 +144,7 @@ sections:
           en: They agree on selawe ewu (25,000) a kilo × 3 = pitung puluh lima ewu (75,000).
         words: [selawe, pitung puluh]
       - id: t10
+        unit: j2.u03
         type: multiple_choice
         question: |
           Mohamed: Bu, bawang abang sekilo pira?
@@ -150,6 +160,7 @@ sections:
         answer: 0
         words: [susuk, selawe]
       - id: t11
+        unit: j2.u05
         type: multiple_choice
         question: |
           Saben dina Sari tangi jam setengah lima, terus salat Subuh. Jam enem Sari ngresiki omah, lan jam pitu sarapan karo Ibu. Awan Sari masak. Sore Sari nyirami kembang. Bengi Sari maca buku, terus turu jam sepuluh.
@@ -161,6 +172,7 @@ sections:
         answer: 2
         words: [sore, nyirami]
       - id: t12
+        unit: j2.u05
         type: multiple_choice
         question: |
           Saben dina Sari tangi jam setengah lima, terus salat Subuh. Jam enem Sari ngresiki omah, lan jam pitu sarapan karo Ibu. Awan Sari masak. Sore Sari nyirami kembang. Bengi Sari maca buku, terus turu jam sepuluh.
@@ -176,6 +188,7 @@ sections:
           en: setengah lima = halfway to five, i.e. 4:30, just as in Indonesian.
         words: [tangi, setengah]
       - id: t13
+        unit: j2.u04
         type: multiple_choice
         question: sesuk jemuwah jam 4 sore iso?
         question_meaning:
@@ -196,6 +209,7 @@ sections:
       en: Vocabulary
     items:
       - id: t14
+        unit: j2.u01
         type: match_pairs
         pairs:
           - text: pakdhe
@@ -220,6 +234,7 @@ sections:
             en: husband / wife
         words: [pakdhe, bulik, mbah kakung, putu, bojo]
       - id: t15
+        unit: j2.u02
         type: match_pairs
         pairs:
           - text: pedhes
@@ -244,6 +259,7 @@ sections:
             en: bitter
         words: [pedhes, legi, asin, kecut, pait]
       - id: t16
+        unit: j2.u03
         type: match_pairs
         pairs:
           - text: rolas
@@ -268,6 +284,7 @@ sections:
             en: sixty (60)
         words: [rolas, selikur, selawe, seket, sewidak]
       - id: t17
+        unit: j2.u02
         type: fill_blank
         sentence: Pecele enak ___!
         meaning:
@@ -278,6 +295,7 @@ sections:
         answers: [tenan]
         words: [tenan]
       - id: t18
+        unit: j2.u04
         type: multiple_choice
         question: Kliwon → ?
         question_meaning:
@@ -299,6 +317,7 @@ sections:
       en: Grammar
     items:
       - id: t19
+        unit: j2.u01
         type: multiple_choice
         question: rega + -e / -ne
         question_meaning:
@@ -313,6 +332,7 @@ sections:
           en: After a vowel (rega) add -ne; after a consonant (omah) add -e.
         words: [-ne, rega]
       - id: t20
+        unit: j2.u02
         type: multiple_choice
         question: N- + sapu → ?
         question_meaning:
@@ -323,6 +343,7 @@ sections:
         answer: 0
         words: [nyapu, N-]
       - id: t21
+        unit: j2.u02
         type: fill_blank
         sentence: Bukune wis tak ___.
         meaning:
@@ -333,6 +354,7 @@ sections:
         answers: [waca]
         words: [tak, waca]
       - id: t22
+        unit: j2.u05
         type: multiple_choice
         question_meaning:
           ar_eg: '"كُل العيش!" (فيه مفعول). أنهي صح؟'
@@ -346,6 +368,7 @@ sections:
           en: No object → mangana; with an object → panganen (pangan + -en).
         words: [panganen, mangana]
       - id: t23
+        unit: j2.u05
         type: fill_blank
         sentence: ___ lali, ya!
         meaning:
@@ -356,6 +379,7 @@ sections:
         answers: [Aja]
         words: [aja, lali]
       - id: t24
+        unit: j2.u05
         type: fill_blank
         sentence: Aku ___ kowe neng stasiun.
         meaning:
@@ -370,6 +394,7 @@ sections:
           en: enteni is the command (Wait for me!); ngenteni is the ordinary N- verb (I'm waiting for).
         words: [ngenteni]
       - id: t25
+        unit: j2.u04
         type: multiple_choice
         question: 8:45 = ?
         question_meaning:
@@ -380,6 +405,7 @@ sections:
         answer: 2
         words: [kurang, seprapat]
       - id: t26
+        unit: j2.u06
         type: fill_blank
         sentence: Ayo ___ neng Benteng Pendem!
         meaning:
@@ -390,6 +416,7 @@ sections:
         answers: [mlaku-mlaku]
         words: [mlaku-mlaku]
       - id: t27
+        unit: j2.u06
         type: fill_blank
         sentence: Panganane enak, ___ rada larang.
         meaning:
@@ -400,6 +427,7 @@ sections:
         answers: [nanging]
         words: [nanging]
       - id: t28
+        unit: j2.u04
         type: fill_blank
         sentence: Wingi Rebo, dina iki ___.
         meaning:
@@ -409,6 +437,7 @@ sections:
         answers: [Kemis, kemis]
         words: [Kemis, wingi]
       - id: t29
+        unit: j2.u05
         type: build_sentence
         source:
           ar_eg: كل يوم بصحى الساعة خمسة.
@@ -430,6 +459,7 @@ sections:
       en: Write in ngoko. Standard or chat spelling, with or without accents, is all fine.
     items:
       - id: t30
+        unit: j2.u04
         type: translate
         direction: to_target
         source_meaning:
@@ -447,6 +477,7 @@ sections:
           - Aku arep neng Ponorogo sesuk
         words: [sesuk, arep]
       - id: t31
+        unit: j2.u01
         type: translate
         direction: to_target
         source_meaning:
@@ -464,6 +495,7 @@ sections:
           - Masku nyambut gawe nang Surabaya
         words: [mas, nyambut gawe]
       - id: t32
+        unit: j2.u05
         type: translate
         direction: from_target
         source_text: Tulung tukokna gula, ya. Aja lali!
@@ -476,6 +508,7 @@ sections:
             - Please buy some sugar for me. Don't forget!
         words: [tulung, tukokna, aja, lali]
       - id: t33
+        unit: j2.u05
         type: writing_task
         points: 4
         prompt:
@@ -507,6 +540,7 @@ sections:
       en: Speak at ease. What matters is that your friend from Madiun understands you.
     items:
       - id: t34
+        unit: j2.u04
         type: speaking
         text: Sesuk Jemuwah jam papat sore, isa?
         meaning:
@@ -515,6 +549,7 @@ sections:
           en: Tomorrow, Friday, at 4 p.m. — can you?
         words: [sesuk, sore, isa]
       - id: t35
+        unit: j2.u06
         type: speaking_task
         points: 4
         prompt:

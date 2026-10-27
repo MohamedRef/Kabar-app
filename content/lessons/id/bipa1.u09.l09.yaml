@@ -1,0 +1,237 @@
+schema: kabar.lesson/v1
+id: bipa1.u09.l09
+language: id
+title: Di kamar saya
+can_do:
+  ar_eg: 'توصف أوضتك والحمام: السرير واللمبة والمراية والصابون والفوطة.'
+  ar: 'أن تصف غرفتك والحمّام: السرير والمصباح والمرآة والصابون والمنشفة.'
+  en: 'Describe your room and bathroom: bed, lamp, mirror, soap and towel.'
+slides:
+  - title: Kamar dan kamar mandi
+    body:
+      ar_eg: |
+        tempat tidur = سرير (حرفيًا «مكان النوم»). lampu = لمبة أو نور. cermin = مراية. dinding = حيطة. kotak = علبة أو صندوق.
+        في الحمام: sabun = صابون (من العربي!) وhanduk = فوطة (من الهولندي).
+        rapi = متروّق ومترتّب.
+      ar: |
+        tempat tidur = سرير (حرفيًا «مكان النوم»). lampu = مصباح. cermin = مرآة. dinding = جدار. kotak = علبة، صندوق.
+        في الحمّام: sabun = صابون (من العربية!) وhanduk = منشفة (من الهولندية).
+        rapi = مرتّب.
+      en: |
+        tempat tidur = bed (literally "place to sleep"). lampu = lamp, light. cermin = mirror. dinding = wall. kotak = box.
+        In the bathroom: sabun = soap (from Arabic!) and handuk = towel (from Dutch).
+        rapi = tidy.
+    examples:
+      - text: Di kamar mandi ada sabun dan handuk.
+        ar_eg: في الحمام فيه صابون وفوطة.
+        ar: في الحمّام صابون ومنشفة.
+        en: There's soap and a towel in the bathroom.
+      - text: Cermin itu di dinding, di atas meja.
+        ar_eg: المراية على الحيطة، فوق الترابيزة.
+        ar: المرآة على الجدار فوق الطاولة.
+        en: The mirror is on the wall, above the table.
+      - text: Kamar saya kecil, tapi rapi.
+        ar_eg: أوضتي صغيرة بس مترتبة.
+        ar: غرفتي صغيرة لكنها مرتّبة.
+        en: My room is small but tidy.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sabun
+        ar_eg: صابون
+        ar: صابون
+        en: soap
+      - text: handuk
+        ar_eg: فوطة
+        ar: منشفة
+        en: towel
+      - text: cermin
+        ar_eg: مراية
+        ar: مرآة
+        en: mirror
+      - text: lampu
+        ar_eg: لمبة
+        ar: مصباح
+        en: lamp
+    words: [sabun, handuk, cermin, lampu]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kotak
+        ar_eg: علبة
+        ar: صندوق
+        en: box
+      - text: dinding
+        ar_eg: حيطة
+        ar: جدار
+        en: wall
+      - text: tempat tidur
+        ar_eg: سرير
+        ar: سرير
+        en: bed
+      - text: rapi
+        ar_eg: مترتب
+        ar: مرتّب
+        en: tidy
+    words: [kotak, dinding, tempat tidur, rapi]
+  - id: e03
+    type: listen
+    text: Di kamar mandi ada sabun dan handuk.
+    question:
+      ar_eg: إيه اللي في الحمام؟
+      ar: ماذا في الحمّام؟
+      en: What's in the bathroom?
+    options: [صابون وفوطة, سرير ولمبة, مراية وعلبة]
+    answer: 0
+    meaning:
+      ar_eg: في الحمام فيه صابون وفوطة.
+      ar: في الحمّام صابون ومنشفة.
+      en: There's soap and a towel in the bathroom.
+    words: [sabun, handuk]
+  - id: e04
+    type: fill_blank
+    sentence: Kucing saya tidur di dalam ___.
+    meaning:
+      ar_eg: القطة بتاعتي نايمة جوه ___.
+      ar: قطّتي نائمة داخل ___.
+      en: My cat is sleeping inside a ___.
+    options: [kotak, cermin, lampu]
+    answers: [kotak]
+    words: [kotak, cermin, lampu]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أوضتك متروّقة وكل حاجة في مكانها. هي…؟
+      ar: غرفتك مرتّبة وكل شيء في مكانه. هي…؟
+      en: Your room is neat, everything in its place. It's…?
+    options: [rapi, dinding, kotak]
+    answer: 0
+    explain:
+      ar_eg: rapi = مترتّب.
+      ar: rapi = مرتّب.
+      en: rapi = tidy.
+    words: [rapi, dinding, kotak]
+  - id: e06
+    type: fill_blank
+    sentence: Ada foto keluarga di ___.
+    meaning:
+      ar_eg: فيه صورة العيلة على ___.
+      ar: هناك صورة العائلة على ___.
+      en: There's a family photo on the ___.
+    options: [dinding, sabun, handuk]
+    answers: [dinding]
+    words: [dinding, sabun, handuk]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: السرير جنب الباب.
+      ar: السرير بجانب الباب.
+      en: The bed is next to the door.
+    answer: Tempat tidur di samping pintu.
+    distractors: [lampu, rapi]
+    words: [tempat tidur]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Ada lampu kecil di samping tempat tidur.
+    answers_meaning:
+      ar_eg: [فيه لمبة صغيرة جنب السرير, فيه أباجورة صغيرة جنب السرير]
+      ar: [بجانب السرير مصباح صغير, هناك مصباح صغير بجوار السرير]
+      en: ['There''s a small lamp next to the bed', There is a little lamp beside the bed]
+    words: [lampu, tempat tidur]
+  - id: e09
+    type: speaking
+    text: Kamar saya kecil, tapi rapi.
+    meaning:
+      ar_eg: أوضتي صغيرة بس مترتبة.
+      ar: غرفتي صغيرة لكنها مرتّبة.
+      en: My room is small but tidy.
+    words: [rapi]
+  - id: e10
+    type: multiple_choice
+    question: Saya melihat wajah saya di ___.
+    options: [cermin, kotak, handuk]
+    answer: 0
+    explain:
+      ar_eg: 'بتشوف وشك في المراية: cermin.'
+      ar: 'ترى وجهك في المرآة: cermin.'
+      en: 'You see your face in a mirror: cermin.'
+    words: [cermin, kotak, handuk]
+dialogue:
+  lines:
+    - speaker: Bu Yanti
+      text: Mohamed, ini kamar kamu.
+      ar_eg: يا محمد، دي أوضتك.
+      ar: يا محمد، هذه غرفتك.
+      en: Mohamed, this is your room.
+    - speaker: Mohamed
+      text: Terima kasih, Bu! Kamarnya rapi.
+      ar_eg: شكرًا يا طنط! الأوضة مترتبة.
+      ar: شكرًا يا سيدتي! الغرفة مرتّبة.
+      en: Thank you! The room is tidy.
+    - speaker: Bu Yanti
+      text: Ada tempat tidur, meja, dan lampu.
+      ar_eg: فيه سرير وترابيزة ولمبة.
+      ar: فيها سرير وطاولة ومصباح.
+      en: There's a bed, a table and a lamp.
+    - speaker: Mohamed
+      text: Cerminnya di mana, Bu?
+      ar_eg: والمراية فين يا طنط؟
+      ar: وأين المرآة يا سيدتي؟
+      en: Where's the mirror?
+    - speaker: Bu Yanti
+      text: Di kamar mandi, di dinding. Ada sabun dan handuk juga.
+      ar_eg: في الحمام، على الحيطة. وفيه صابون وفوطة كمان.
+      ar: في الحمّام على الجدار، وهناك صابون ومنشفة أيضًا.
+      en: In the bathroom, on the wall. There's soap and a towel too.
+    - speaker: Mohamed
+      text: Bu, ada kucing di dalam kotak ini!
+      ar_eg: يا طنط، فيه قطة جوه العلبة دي!
+      ar: يا سيدتي، في هذا الصندوق قطّة!
+      en: There's a cat inside this box!
+new_words:
+  - word: sabun
+    pos: noun
+    arabic: صابون
+    ar_eg: صابون
+    ar: صابون
+    en: soap
+  - word: handuk
+    pos: noun
+    ar_eg: فوطة
+    ar: منشفة
+    en: towel
+  - word: cermin
+    pos: noun
+    ar_eg: مراية
+    ar: مرآة
+    en: mirror
+  - word: lampu
+    pos: noun
+    ar_eg: لمبة، نور
+    ar: مصباح، ضوء
+    en: lamp, light
+  - word: kotak
+    pos: noun
+    ar_eg: علبة، صندوق
+    ar: صندوق، علبة
+    en: box
+  - word: dinding
+    pos: noun
+    ar_eg: حيطة
+    ar: جدار
+    en: wall
+  - word: tempat tidur
+    pos: noun
+    ar_eg: سرير
+    ar: سرير
+    en: bed
+  - word: rapi
+    pos: adjective
+    ar_eg: مترتب، متروّق
+    ar: مرتّب
+    en: tidy, neat
+review:
+  status: draft
+  verified: false

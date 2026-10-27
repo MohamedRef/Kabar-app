@@ -1,0 +1,240 @@
+schema: kabar.lesson/v1
+id: bipa1.u05.l07
+language: id
+title: Monyet di Ubud
+can_do:
+  ar_eg: تسمّي الحيوانات اللي هتشوفها في الإجازة، وتفهم يافطة «خطر».
+  ar: أن تسمّي الحيوانات التي تراها في العطلة، وتفهم لافتة «خطر».
+  en: Name the animals you meet on holiday and understand a danger sign.
+slides:
+  - title: Binatang
+    body:
+      ar_eg: |
+        binatang = حيوان. kuda = حصان (جزيرة سومبا مشهورة بالخيل)، sapi = بقرة، ayam = فرخة (sate ayam!)، monyet = قرد، ular = تعبان.
+        terbang = يطير: burung terbang (الطير بيطير).
+        bahaya = خطر. على اليافطات: «Bahaya!».
+        في أوبود في بالي فيه غابة قرود. القرود هناك عسل، بس بتخطف الشنط والنضارات!
+      ar: |
+        binatang = حيوان. kuda = حصان (وجزيرة سومبا مشهورة بالخيل)، sapi = بقرة، ayam = دجاجة (sate ayam!)، monyet = قرد، ular = أفعى.
+        terbang = يطير: burung terbang (الطائر يطير).
+        bahaya = خطر، وعلى اللافتات: «Bahaya!».
+        في أوبود ببالي غابة قرود؛ قرودها لطيفة لكنها تخطف الحقائب والنظّارات!
+      en: |
+        binatang = animal. kuda = horse (Sumba island is famous for them), sapi = cow, ayam = chicken (sate ayam!), monyet = monkey, ular = snake.
+        terbang = fly: burung terbang (birds fly).
+        bahaya = danger; signs say "Bahaya!".
+        Ubud in Bali has a monkey forest. The monkeys are cute, but they grab bags and glasses!
+    examples:
+      - text: Di Ubud ada banyak monyet.
+        ar_eg: في أوبود فيه قرود كتير.
+        ar: في أوبود قرود كثيرة.
+        en: There are lots of monkeys in Ubud.
+      - text: Burung terbang di langit.
+        ar_eg: العصافير بتطير في السما.
+        ar: الطيور تطير في السماء.
+        en: Birds fly in the sky.
+      - text: Bahaya! Ada ular.
+        ar_eg: خطر! فيه تعابين.
+        ar: خطر! هناك أفعى.
+        en: Danger! There's a snake.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: binatang
+        ar_eg: حيوان
+        ar: حيوان
+        en: animal
+      - text: kuda
+        ar_eg: حصان
+        ar: حصان
+        en: horse
+      - text: ayam
+        ar_eg: فرخة
+        ar: دجاجة
+        en: chicken
+      - text: sapi
+        ar_eg: بقرة
+        ar: بقرة
+        en: cow
+    words: [binatang, kuda, ayam, sapi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: monyet
+        ar_eg: قرد
+        ar: قرد
+        en: monkey
+      - text: ular
+        ar_eg: تعبان
+        ar: أفعى
+        en: snake
+      - text: terbang
+        ar_eg: يطير
+        ar: يطير
+        en: fly
+      - text: bahaya
+        ar_eg: خطر
+        ar: خطر
+        en: danger
+    words: [monyet, ular, terbang, bahaya]
+  - id: e03
+    type: listen
+    text: Di Ubud ada banyak monyet. Monyet binatang yang lucu.
+    question:
+      ar_eg: في أوبود فيه إيه كتير؟
+      ar: ماذا يكثر في أوبود؟
+      en: What is there a lot of in Ubud?
+    options: [قرود, تعابين, خيل]
+    answer: 0
+    meaning:
+      ar_eg: في أوبود فيه قرود كتير. القرد حيوان عسول.
+      ar: في أوبود قرود كثيرة، والقرد حيوان لطيف.
+      en: There are lots of monkeys in Ubud. Monkeys are cute animals.
+    words: [monyet, binatang]
+  - id: e04
+    type: fill_blank
+    sentence: Burung ___ di langit.
+    meaning:
+      ar_eg: العصافير ___ في السما.
+      ar: الطيور ___ في السماء.
+      en: Birds ___ in the sky.
+    options: [terbang, berenang, duduk]
+    answers: [terbang]
+    words: [terbang]
+  - id: e05
+    type: multiple_choice
+    question: Bahaya! Ada ular.
+    question_meaning:
+      ar_eg: على يافطة في الغابة مكتوب كده. معناها إيه؟
+      ar: هذا مكتوب على لافتة في الغابة. ما معناه؟
+      en: This is on a sign in the forest. What does it mean?
+    options: [خطر! فيه تعابين., أهلًا! فيه قرود., ممنوع الأكل.]
+    answer: 0
+    explain:
+      ar_eg: bahaya = خطر، وular = تعبان.
+      ar: bahaya خطر، وular أفعى.
+      en: bahaya = danger, ular = snake.
+    words: [bahaya, ular]
+  - id: e06
+    type: fill_blank
+    sentence: Nenek punya banyak ___ di rumah. Mereka tidak bisa terbang tinggi.
+    meaning:
+      ar_eg: جدتي عندها ___ كتير في البيت. ما بيقدروش يطيروا عالي.
+      ar: لدى جدّتي ___ كثير في البيت، ولا تستطيع الطيران عاليًا.
+      en: Grandma has lots of ___ at home. They can't fly high.
+    options: [ayam, kuda, ular]
+    answers: [ayam]
+    words: [ayam, kuda, ular]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: في سومبا فيه خيل وبقر كتير.
+      ar: في سومبا خيل وأبقار كثيرة.
+      en: In Sumba there are lots of horses and cows.
+    answer: Di Sumba ada banyak kuda dan sapi.
+    distractors: [ayam, terbang]
+    words: [kuda, sapi]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Ada monyet dan ular di pohon itu! Bahaya!
+    answers_meaning:
+      ar_eg: [فيه قرد وتعبان على الشجرة دي! خطر!, فيه قرد وتعبان في الشجرة دي! خطر!]
+      ar: [على تلك الشجرة قرد وأفعى! خطر!, هناك قرد وأفعى على تلك الشجرة! خطر!]
+      en: ['There''s a monkey and a snake in that tree! Danger!', There are monkeys and snakes in that tree! Danger!]
+    words: [monyet, ular, bahaya]
+  - id: e09
+    type: speaking
+    text: Ayam tidak bisa terbang tinggi.
+    meaning:
+      ar_eg: الفراخ ما تقدرش تطير عالي.
+      ar: لا يستطيع الدجاج أن يطير عاليًا.
+      en: Chickens can't fly high.
+    words: [ayam, terbang]
+  - id: e10
+    type: multiple_choice
+    question: Kuda, sapi, dan ayam adalah ___.
+    options: [binatang, bahaya, burung]
+    answer: 0
+    explain:
+      ar_eg: 'الحصان والبقرة والفرخة: حيوانات = binatang.'
+      ar: 'الحصان والبقرة والدجاجة حيوانات: binatang.'
+      en: 'Horses, cows and chickens are animals: binatang.'
+    words: [binatang, kuda, sapi, ayam]
+dialogue:
+  lines:
+    - speaker: Ni Luh
+      text: Selamat datang di Ubud! Ada banyak monyet di Ubud.
+      ar_eg: أهلًا بيك في أوبود! فيه قرود كتير هنا.
+      ar: أهلًا بك في أوبود! فيها قرود كثيرة.
+      en: Welcome to Ubud! There are lots of monkeys in Ubud.
+    - speaker: Mohamed
+      text: Monyetnya lucu! Boleh foto?
+      ar_eg: القرود عسل! ينفع أصوّر؟
+      ar: ما ألطف القرود! هل أستطيع التصوير؟
+      en: The monkeys are cute! Can I take photos?
+    - speaker: Ni Luh
+      text: Boleh. Tapi monyet di Ubud bahaya untuk tas kamu!
+      ar_eg: ينفع. بس قرود أوبود خطر على شنطتك!
+      ar: نعم. لكن قرود أوبود خطر على حقيبتك!
+      en: Sure. But Ubud's monkeys are a danger to your bag!
+    - speaker: Mohamed
+      text: Oh! Tas saya hilang!
+      ar_eg: يا خبر! شنطتي ضاعت!
+      ar: آه! اختفت حقيبتي!
+      en: Oh! My bag's gone!
+    - speaker: Ni Luh
+      text: Di pohon itu! Ada monyet dan tas kamu.
+      ar_eg: على الشجرة دي! فيه قرد ومعاه شنطتك.
+      ar: على تلك الشجرة! هناك قرد ومعه حقيبتك.
+      en: In that tree! There's a monkey with your bag.
+    - speaker: Mohamed
+      text: Monyet itu lucu, tapi bahaya!
+      ar_eg: القرد ده عسول، بس خطر!
+      ar: ذلك القرد لطيف، لكنه خطر!
+      en: That monkey's cute, but dangerous!
+new_words:
+  - word: binatang
+    pos: noun
+    ar_eg: حيوان
+    ar: حيوان
+    en: animal
+  - word: kuda
+    pos: noun
+    ar_eg: حصان
+    ar: حصان
+    en: horse
+  - word: ayam
+    pos: noun
+    ar_eg: فرخة
+    ar: دجاجة
+    en: chicken
+  - word: sapi
+    pos: noun
+    ar_eg: بقرة
+    ar: بقرة
+    en: cow
+  - word: monyet
+    pos: noun
+    ar_eg: قرد
+    ar: قرد
+    en: monkey
+  - word: ular
+    pos: noun
+    ar_eg: تعبان
+    ar: أفعى، ثعبان
+    en: snake
+  - word: terbang
+    pos: verb
+    ar_eg: يطير
+    ar: يطير
+    en: fly
+  - word: bahaya
+    pos: noun
+    ar_eg: خطر
+    ar: خطر
+    en: danger
+review:
+  status: draft
+  verified: false

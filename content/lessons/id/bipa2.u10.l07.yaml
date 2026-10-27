@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa2.u10.l07
+language: id
+title: Ke dokter
+can_do:
+  ar_eg: تروح للدكتور وتشرح له مشكلتك.
+  ar: أن تزور الطبيب وتشرح له مشكلتك.
+  en: See a doctor and explain the problem.
+slides:
+  - title: Di klinik
+    body:
+      ar_eg: |
+        عند الدكتور (وبتناديه «Dok»):
+        - هيسألك: Sakit apa? (عندك إيه؟) — Sudah berapa lama? (بقالك قد إيه؟)
+        - ترد: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
+        - هيقولك: Coba buka mulutnya (افتح بقك) — Ini resepnya (دي الروشتة) — Banyak minum air putih dan istirahat (اشرب مية كتير وارتاح).
+        كلمة dokter من الهولندي، بس فيه كلمة قديمة من العربي: tabib ← «طبيب»، بتسمعها للمعالج الشعبي.
+      ar: |
+        عند الطبيب (وتناديه «Dok»):
+        - يسألك: Sakit apa؟ (ما بك؟) — Sudah berapa lama؟ (منذ متى؟)
+        - تجيب: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
+        - يقول لك: Coba buka mulutnya (افتح فمك) — Ini resepnya (هذه الوصفة) — Banyak minum air putih dan istirahat (أكثر من شرب الماء واسترح).
+        وكلمة dokter هولندية، أما tabib فمن العربية «طبيب» وتُقال للمعالج الشعبي.
+      en: |
+        At the doctor's (address him as "Dok"):
+        - He asks: Sakit apa? (What's wrong?) — Sudah berapa lama? (How long?)
+        - You answer: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
+        - He says: Coba buka mulutnya (open your mouth) — Ini resepnya (here's the prescription) — Banyak minum air putih dan istirahat (drink plenty of water and rest).
+        dokter is from Dutch; the older tabib comes from Arabic «طبيب» and is used for traditional healers.
+    grammar: id.pattern.sakit
+    examples:
+      - text: Dok, saya demam sejak kemarin.
+        ar_eg: يا دكتور، عندي سخونية من امبارح.
+        ar: يا دكتور، عندي حمّى منذ أمس.
+        en: Doctor, I've had a fever since yesterday.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Selamat pagi, selamat datang di klinik. Sakit apa, Pak?
+    question_meaning:
+      ar_eg: الدكتور بيسألك. أنهي رد أحسن؟
+      ar: يسألك الطبيب. أيّ ردّ أنسب؟
+      en: The doctor asks. Which is the best answer?
+    options: [Saya dari Mesir., Tiga kali sehari., Saya demam dan sakit tenggorokan.]
+    answer: 2
+    words: [klinik, demam, tenggorokan]
+  - id: e02
+    type: listen
+    text: Coba buka mulutnya.
+    options: [Coba buka mulutnya., Coba buka bukunya., Coba buka pintunya.]
+    answer: 0
+    meaning:
+      ar_eg: افتح بقك.
+      ar: افتح فمك.
+      en: Open your mouth, please.
+    words: [mulut, buka]
+  - id: e03
+    type: fill_blank
+    sentence: Saya sakit tenggorokan ___ dua hari yang lalu.
+    meaning:
+      ar_eg: عندي التهاب زور من يومين.
+      ar: عندي التهاب في الحلق منذ يومين.
+      en: I've had a sore throat since two days ago.
+    options: [sejak, sambil, selama]
+    answers: [sejak]
+    explain:
+      ar_eg: sejak = من (نقطة بداية)، ومعاها «dua hari yang lalu» (من يومين). selama = لمدة.
+      ar: sejak = منذ، مع نقطة بداية مثل «dua hari yang lalu»، أما selama فلمدة.
+      en: sejak = since, with a starting point like "dua hari yang lalu"; selama = for (a length).
+    words: [sejak]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة جاية من العربي «طبيب»؟
+      ar: أيّ كلمة أصلها العربية «طبيب»؟
+      en: Which word comes from Arabic «طبيب»?
+    options: [dokter, tabib, klinik]
+    answer: 1
+    explain:
+      ar_eg: tabib ← طبيب، بس النهارده معناها المعالج الشعبي. الدكتور اسمه dokter (من الهولندي).
+      ar: tabib من «طبيب»، لكنها اليوم للمعالج الشعبي، أما الطبيب فـdokter (من الهولندية).
+      en: tabib comes from طبيب but now means a traditional healer; a doctor is dokter (from Dutch).
+    words: [tabib, klinik]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: يا دكتور، عندي سخونية من امبارح.
+      ar: يا دكتور، عندي حمّى منذ أمس.
+      en: Doctor, I've had a fever since yesterday.
+    answer: Dok, saya demam sejak kemarin.
+    alternatives: ['Dok, sejak kemarin saya demam.']
+    distractors: [selama, punya]
+    words: [demam, sejak]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: اشرب مية كتير وارتاح.
+      ar: أكثِر من شرب الماء واسترح.
+      en: Drink plenty of water and rest.
+    answer: Banyak minum air putih dan istirahat.
+    distractors: [semoga, sakit]
+    words: [air putih, istirahat]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: klinik
+        ar_eg: عيادة
+        ar: عيادة
+        en: clinic
+      - text: mulut
+        ar_eg: بُق
+        ar: فم
+        en: mouth
+      - text: tabib
+        ar_eg: معالج شعبي
+        ar: معالج شعبي
+        en: traditional healer
+      - text: tenggorokan
+        ar_eg: زور
+        ar: حلق
+        en: throat
+      - text: batuk
+        ar_eg: كحة
+        ar: سعال
+        en: cough
+      - text: demam
+        ar_eg: سخونية
+        ar: حُمّى
+        en: fever
+    words: [klinik, mulut, tabib, tenggorokan, batuk, demam]
+  - id: e08
+    type: listen
+    text: Ini klinik, bukan rumah tabib.
+    options: ['Ini klinik, bukan rumah tabib.', 'Ini rumah tabib, bukan klinik.', 'Ini apotek, bukan klinik.']
+    answer: 0
+    meaning:
+      ar_eg: دي عيادة، مش بيت معالج شعبي.
+      ar: هذه عيادة، لا بيت معالج شعبي.
+      en: This is a clinic, not a healer's house.
+    words: [klinik, tabib, apotek]
+  - id: e09
+    type: dictation
+    text: Coba buka mulutnya, Pak.
+    meaning:
+      ar_eg: افتح بقك يا أستاذ.
+      ar: افتح فمك يا سيدي.
+      en: Open your mouth, sir.
+    words: [mulut, buka]
+  - id: e10
+    type: speaking
+    text: Selamat pagi, Dok. Saya demam dan sakit tenggorokan sejak dua hari yang lalu.
+    meaning:
+      ar_eg: صباح الخير يا دكتور. عندي سخونية والتهاب زور من يومين.
+      ar: صباح الخير يا دكتور. عندي حمّى والتهاب في الحلق منذ يومين.
+      en: Good morning, doctor. I've had a fever and a sore throat for two days.
+    words: [demam, tenggorokan, sejak]
+dialogue:
+  title: Di klinik Amed
+  lines:
+    - speaker: Dokter Made
+      text: Selamat pagi. Silakan duduk. Sakit apa, Pak?
+      ar_eg: صباح الخير. اتفضل اقعد. عندك إيه؟
+      ar: صباح الخير. تفضّل بالجلوس. ما بك يا سيدي؟
+      en: Good morning. Please sit down. What's the matter?
+    - speaker: Mohamed
+      text: Pagi, Dok. Saya demam dan sakit tenggorokan.
+      ar_eg: صباح النور يا دكتور. عندي سخونية والتهاب زور.
+      ar: صباح النور يا دكتور. عندي حمّى والتهاب في الحلق.
+      en: Morning, doctor. I have a fever and a sore throat.
+    - speaker: Dokter Made
+      text: Sudah berapa lama?
+      ar_eg: بقالك قد إيه كده؟
+      ar: منذ متى؟
+      en: How long has it been?
+    - speaker: Mohamed
+      text: Sejak dua hari yang lalu. Kemarin saya juga batuk.
+      ar_eg: من يومين. وامبارح كمان بقيت أكح.
+      ar: منذ يومين، وأمس بدأت أسعل أيضًا.
+      en: Since two days ago. Yesterday I started coughing too.
+    - speaker: Dokter Made
+      text: Ini resepnya. Obatnya diminum tiga kali sehari sesudah makan. Banyak minum air putih dan istirahat, ya.
+      ar_eg: دي الروشتة. الدوا يتاخد ٣ مرات في اليوم بعد الأكل. واشرب مية كتير وارتاح.
+      ar: هذه الوصفة. يؤخذ الدواء ثلاث مرات يوميًا بعد الطعام. وأكثِر من شرب الماء واسترح.
+      en: Here's the prescription. Take the medicine three times a day after meals. Drink plenty of water and rest.
+    - speaker: Mohamed
+      text: Baik, Dok. Terima kasih.
+      ar_eg: حاضر يا دكتور. شكرًا.
+      ar: حسنًا يا دكتور. شكرًا.
+      en: All right, doctor. Thank you.
+new_words:
+  - word: klinik
+    pos: noun
+    ar_eg: عيادة
+    ar: عيادة
+    en: clinic
+  - word: mulut
+    pos: noun
+    ar_eg: بُق
+    ar: فم
+    en: mouth
+  - word: tabib
+    pos: noun
+    ar_eg: معالج شعبي (كلمة قديمة)
+    ar: طبيب شعبي (كلمة قديمة)
+    en: traditional healer (old word)
+    arabic: طبيب
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,218 @@
+schema: kabar.lesson/v1
+id: bipa1.u03.l09
+language: id
+title: Foto keluarga
+can_do:
+  ar_eg: توصف صورة العيلة.
+  ar: أن تصف صورة عائلية.
+  en: Describe a family photo.
+slides:
+  - title: Ini foto keluarga saya
+    body:
+      ar_eg: |
+        عشان توصف صورة، اجمع كل اللي اتعلمته:
+        - ini / itu: Ini ayah saya. — Itu kakak saya.
+        - الملكية: orang tua saya = أهلي (أبويا وأمي)، anak-anaknya = عياله.
+        - الاسم قبل الوصف: adik saya yang kecil.
+        - والسؤال: Yang tinggi itu siapa?
+        في إندونيسيا هتتسأل كتير «Sudah menikah?» (اتجوزت؟) — ده ودّ مش فضول.
+        - sudah menikah = متجوز
+        - belum menikah = لسه ماتجوزش (belum = لسه مش)
+        الرد المؤدب لو مش متجوز: «Belum.» — يعني «لسه»، مش «لأ».
+      ar: |
+        لوصف صورة اجمع كل ما تعلّمته:
+        - ini / itu: Ini ayah saya. — Itu kakak saya.
+        - الملكية: orang tua saya = والداي، anak-anaknya = أطفاله.
+        - الاسم قبل الصفة: adik saya yang kecil.
+        - والسؤال: Yang tinggi itu siapa?
+        ستُسأل كثيرًا في إندونيسيا «Sudah menikah?» (هل تزوجت؟)، وهو من الودّ لا الفضول.
+        - sudah menikah = متزوج
+        - belum menikah = لم يتزوج بعد (belum = لم … بعد)
+        والجواب المهذب لغير المتزوج: «Belum.» أي «ليس بعد».
+      en: |
+        To describe a photo, combine everything so far:
+        - ini / itu: Ini ayah saya. — Itu kakak saya.
+        - possession: orang tua saya = my parents, anak-anaknya = his/her children.
+        - noun before describer: adik saya yang kecil.
+        - and ask: Yang tinggi itu siapa?
+        In Indonesia you'll often be asked "Sudah menikah?" (Are you married?) — it's friendliness, not nosiness.
+        - sudah menikah = married
+        - belum menikah = not married yet (belum = not yet)
+        The polite answer if you're single: "Belum." — "not yet", rather than a flat "no".
+    grammar: id.noun-phrase.order
+    examples:
+      - text: Ini foto keluarga saya di Kairo.
+        ar_eg: دي صورة عيلتي في القاهرة.
+        ar: هذه صورة عائلتي في القاهرة.
+        en: This is a photo of my family in Cairo.
+      - text: Kakak saya sudah menikah. Dia punya tiga anak.
+        ar_eg: أخويا الكبير متجوز. عنده تلات عيال.
+        ar: أخي الأكبر متزوج، ولديه ثلاثة أطفال.
+        en: My older brother is married. He has three children.
+      - text: Adik saya belum menikah.
+        ar_eg: أختي الصغيرة لسه ماتجوزتش.
+        ar: أختي الصغرى لم تتزوج بعد.
+        en: My younger sister isn't married yet.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أخوك الكبير متجوز. تقول إيه؟
+      ar: أخوك الأكبر متزوج. ماذا تقول؟
+      en: Your older brother is married. What do you say?
+    options: [Kakak saya belum menikah., Kakak saya sudah menikah., Adik saya sudah menikah.]
+    answer: 1
+    explain:
+      ar_eg: sudah = خلاص حصل، belum = لسه. وkakak = الأكبر.
+      ar: sudah = قد حصل، وbelum = لم يحصل بعد، وkakak = الأكبر.
+      en: sudah = already, belum = not yet; kakak = older sibling.
+    words: [sudah, menikah, kakak]
+  - id: e02
+    type: listen
+    text: Ini foto keluarga saya.
+    options: ['Itu foto keluarga saya.', 'Ini foto keluarga saya.', 'Ini foto orang tua saya.']
+    answer: 1
+    words: [foto, keluarga]
+  - id: e03
+    type: fill_blank
+    sentence: Kakak saya ___ menikah.
+    meaning:
+      ar_eg: أخويا الكبير اتجوز خلاص.
+      ar: أخي الأكبر متزوج بالفعل.
+      en: My older brother is already married.
+    options: [sudah, belum, banyak]
+    answers: [sudah]
+    words: [sudah, menikah]
+  - id: e04
+    type: fill_blank
+    sentence: Adik saya ___ menikah.
+    meaning:
+      ar_eg: أختي الصغيرة لسه ماتجوزتش.
+      ar: أختي الصغرى لم تتزوج بعد.
+      en: My younger sister isn't married yet.
+    answers: [belum]
+    words: [belum, menikah]
+  - id: e05
+    type: fill_blank
+    sentence: Kakak saya punya tiga ___.
+    meaning:
+      ar_eg: أخويا الكبير عنده تلات عيال.
+      ar: لدى أخي الأكبر ثلاثة أطفال.
+      en: My older brother has three children.
+    answers: [anak]
+    explain:
+      ar_eg: بعد العدد مافيش تكرار، يبقى tiga anak مش tiga anak-anak.
+      ar: لا تكرار بعد العدد، فالصواب tiga anak.
+      en: No repetition after a number, so it's tiga anak.
+    words: [anak, tiga]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: أهلي (أبويا وأمي) ساكنين في القاهرة.
+      ar: والداي يسكنان في القاهرة.
+      en: My parents live in Cairo.
+    answer: Orang tua saya tinggal di Kairo.
+    distractors: [dari, anak]
+    words: [orang tua, tinggal]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: أخويا الكبير اتجوز، بس أخويا الصغير لسه.
+      ar: أخي الأكبر متزوج، لكن أخي الأصغر لم يتزوج بعد.
+      en: My older brother is married, but my younger brother isn't yet.
+    answer: Kakak saya sudah menikah, tapi adik saya belum.
+    distractors: [lucu, foto]
+    words: [sudah, menikah, belum]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الصورة دي تضحّك!
+      ar: هذه الصورة طريفة!
+      en: This photo is funny!
+    answers: ['Foto ini lucu!', 'Foto ini lucu', 'Foto ini lucu sekali!', 'Foto ini lucu banget!', 'Fotonya lucu!']
+    words: [foto, lucu]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: العيال دول دمهم خفيف / لُطاف.
+      ar: أولئك الأطفال لطفاء.
+      en: Those children are cute.
+    answers: [Anak-anak itu lucu., Anak-anak itu lucu, Anak-anak itu lucu sekali., Anak-anak itu lucu banget.]
+    words: [anak, lucu]
+  - id: e10
+    type: speaking
+    text: Ini foto keluarga saya. Ini orang tua saya, dan adik saya lucu!
+    meaning:
+      ar_eg: دي صورة عيلتي. دول أهلي، وأخويا الصغير دمه خفيف!
+      ar: هذه صورة عائلتي. هذان والداي، وأخي الأصغر لطيف!
+      en: This is my family photo. These are my parents, and my little sibling is cute!
+    words: [foto, orang tua, adik, lucu]
+dialogue:
+  title: Foto dari Kairo
+  lines:
+    - speaker: Raka
+      text: Mohamed, itu foto apa?
+      ar_eg: يا محمد، دي صورة إيه؟
+      ar: يا محمد، ما تلك الصورة؟
+      en: Mohamed, what photo is that?
+    - speaker: Mohamed
+      text: Ini foto keluargaku di Kairo.
+      ar_eg: دي صورة عيلتي في القاهرة.
+      ar: هذه صورة عائلتي في القاهرة.
+      en: This is a photo of my family in Cairo.
+    - speaker: Raka
+      text: Yang tinggi itu siapa?
+      ar_eg: والطويل ده مين؟
+      ar: ومَن ذلك الطويل؟
+      en: Who's the tall one?
+    - speaker: Mohamed
+      text: Itu kakakku, Ahmed. Dia dokter.
+      ar_eg: ده أخويا الكبير أحمد. هو دكتور.
+      ar: ذاك أخي الأكبر أحمد، وهو طبيب.
+      en: That's my older brother, Ahmed. He's a doctor.
+    - speaker: Raka
+      text: Kakakmu sudah menikah?
+      ar_eg: أخوك متجوز؟
+      ar: هل أخوك متزوج؟
+      en: Is your brother married?
+    - speaker: Mohamed
+      text: Sudah. Dia punya tiga anak. Anak-anaknya lucu!
+      ar_eg: أيوه. عنده تلات عيال. عياله دمهم خفيف!
+      ar: نعم. لديه ثلاثة أطفال، وأطفاله لطفاء!
+      en: Yes. He has three children. His kids are cute!
+new_words:
+  - word: foto
+    pos: noun
+    ar_eg: صورة
+    ar: صورة
+    en: photo
+  - word: orang tua
+    pos: noun
+    ar_eg: الأهل (الأب والأم)
+    ar: الوالدان
+    en: parents
+  - word: menikah
+    pos: verb
+    ar_eg: يتجوز
+    ar: يتزوج
+    en: to marry, be married
+  - word: sudah
+    pos: adverb
+    ar_eg: خلاص، بالفعل
+    ar: قد، بالفعل
+    en: already
+  - word: belum
+    pos: adverb
+    ar_eg: لسه مش
+    ar: لم … بعد
+    en: not yet
+  - word: lucu
+    pos: adjective
+    ar_eg: دمه خفيف، لطيف
+    ar: لطيف، ظريف
+    en: cute, funny
+review:
+  status: draft
+  verified: false

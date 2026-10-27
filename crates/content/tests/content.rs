@@ -57,8 +57,8 @@ fn grammar_examples_use_spec_test_texts() {
 #[test]
 fn bipa_1_and_2_lessons_and_tests_exist() {
     let report = check_repo(root()).expect("content files load");
-    assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa1.")).count(), 74);
-    assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa2.")).count(), 62);
+    assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa1.")).count(), 98);
+    assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa2.")).count(), 85);
     for test in ["bipa1.test", "bipa2.test", "placement"] {
         assert!(report.tests.iter().any(|t| t == test), "missing content/tests/id/{test}.yaml");
     }
@@ -149,7 +149,7 @@ fn cast_checks_reject_orphans_and_name_clashes() {
 
 /// Every character in the cast has a portrait entry (`assets/portraits.yaml`,
 /// keyed by cast id), no entry names someone outside the cast, and every
-/// portrait file in `assets/src/personas/` belongs to an entry. The learner
+/// portrait master (`assets/src/personas/*.webp`) belongs to an entry. The learner
 /// has no portrait.
 #[test]
 fn every_character_has_a_portrait_entry() {
@@ -192,7 +192,7 @@ fn every_character_has_a_portrait_entry() {
     if let Ok(dir) = std::fs::read_dir(root().join("assets/src/personas")) {
         for file in dir.flatten() {
             let name = file.file_name().to_string_lossy().into_owned();
-            let Some(stem) = name.strip_suffix(".png") else { continue };
+            let Some(stem) = name.strip_suffix(".webp") else { continue };
             if stem == "cast-sheet" {
                 continue;
             }

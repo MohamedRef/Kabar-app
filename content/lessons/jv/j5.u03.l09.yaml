@@ -1,217 +1,190 @@
 schema: kabar.lesson/v1
 id: j5.u03.l09
 language: jv
-title: Ulangan J5.3
+title: Menu warung
 can_do:
-  ar_eg: ترجّع شات للإملا الرسمي.
-  ar: أن تردّ دردشة إلى الإملاء القياسي.
-  en: Normalise a chat into standard spelling.
+  ar_eg: تقرا يافطة منيو عربية أكل مكتوبة على السمع وتطلب بالإملا الصح.
+  ar: أن تقرأ لافتة قائمة طعام مكتوبة كما تُنطق وتطلب بالإملاء القياسي.
+  en: Read a street-stall menu spelled by ear and order in standard spelling.
 slides:
-  - title: Saka chat menyang tulisan baku
+  - title: Warung Bu Sri
     body:
       ar_eg: |
-        تلات خطوات عشان ترجّع أي شات لإملاه الرسمي:
-        1. الـ o اللي آخر الكلمة غالبًا a: piro → pira، sego → sega، ojo → aja. (بس loro = اتنين، kono = هناك: دول o أصلية.)
-        2. رجّع الـ h اللي وقعت: dewe → dhewe.
-        3. wes → wis، nggih → inggih، monggo → mangga، وsego ne → segane.
+        بو سري عندها عربية أكل في سيمبانج ليما، واليافطة بتاعتها مكتوبة على السمع زي الشات. اقراها وافهم الأسعار (RB = ribu = ألف).
+        كلمات جديدة: sega kucing = «رز القطة»، لفّة رز صغيرة بحاجة بسيطة جواها، أكلة شعبية رخيصة. tela = كسافا (ketela، وبتتنطق «تيلو»).
       ar: |
-        ثلاث خطوات لردّ أي دردشة إلى الإملاء القياسي:
-        1. o في آخر الكلمة غالبًا a: piro ← pira، وsego ← sega، وojo ← aja (إلا o الأصلية: loro = اثنان، kono = هناك).
-        2. أعِد h الساقطة: dewe ← dhewe.
-        3. wes ← wis، وnggih ← inggih، وmonggo ← mangga، وsego ne ← segane.
+        لدى بو سري كشك طعام في سيمبانغ ليما، ولافتته مكتوبة كما تُنطق مثل الدردشة. اقرأها وافهم الأسعار (RB = ribu = ألف).
+        كلمات جديدة: sega kucing = «أرز القطة»، لفافة أرز صغيرة بقليل من الإضافات، طعام شعبي رخيص. وtela = الكسافا (ketela، وتُنطق «تيلو»).
       en: |
-        Three steps to bring any chat back to standard spelling:
-        1. A final o is usually an a: piro → pira, sego → sega, ojo → aja. (But loro = two and kono = there have a real o.)
-        2. Restore a dropped h: dewe → dhewe.
-        3. wes → wis, nggih → inggih, monggo → mangga, and sego ne → segane.
+        Bu Sri has a food stall at Simpang Lima, and her sign is spelled by ear, like a chat. Read it and work out the prices (RB = ribu = thousand).
+        New words: sega kucing = "cat rice", a tiny packet of rice with a little topping, cheap street food. tela = cassava (ketela, said "telo").
     grammar: jv.orthography
     examples:
-      - text: Pira regane? Segane wis mateng.
-        ar_eg: "بكام؟ الرز استوى. (في الشات: piro regane? sego ne wes mateng)"
-        ar: "بكم؟ الأرز قد نضج. (في الدردشة: piro regane? sego ne wes mateng)"
-        en: "How much? The rice is cooked. (in a chat: piro regane? sego ne wes mateng)"
-      - text: Aja lali, aku dhewe sing teka.
-        ar_eg: "ماتنساش، أنا بنفسي اللي جاي. (في الشات: ojo lali, aku dewe sing teko)"
-        ar: "لا تنسَ، أنا بنفسي من سيأتي. (في الدردشة: ojo lali, aku dewe sing teko)"
-        en: "Don't forget, I'm the one coming myself. (in a chat: ojo lali, aku dewe sing teko)"
+      - text: SEGO KUCING 3RB · TELO GORENG 2RB
+        ar_eg: رز القطة ٣ آلاف · كسافا محمّرة ألفين. (الإملا الصح sega kucing، tela goreng)
+        ar: أرز القطة ٣ آلاف · كسافا مقلية ألفان. (القياسي sega kucing، tela goreng)
+        en: Cat rice 3,000 · fried cassava 2,000. (standard sega kucing, tela goreng)
+      - text: Monggo pinarak, Mas!
+        ar_eg: اتفضّل استريّح يا أستاذ! (الإملا الصح Mangga pinarak)
+        ar: تفضّل بالجلوس يا سيدي! (القياسي Mangga pinarak)
+        en: Please come in and sit down! (standard Mangga pinarak)
+      - text: Mangan neng kene opo dibungkus?
+        ar_eg: هتاكل هنا ولا تيك أواي؟ (الإملا الصح apa)
+        ar: هل ستأكل هنا أم تأخذه معك؟ (القياسي apa)
+        en: Eat here or take away? (standard apa)
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: opo
-        ar_eg: apa (إيه)
-        ar: apa (ماذا)
-        en: apa (what)
-      - text: sego
-        ar_eg: sega (رز)
-        ar: sega (أرز)
-        en: sega (rice)
-      - text: ojo
-        ar_eg: aja (ماتعملش)
-        ar: aja (لا تفعل)
-        en: aja (don't)
-      - text: lungo
-        ar_eg: lunga (يمشي / يروح)
-        ar: lunga (يذهب)
-        en: lunga (to go)
-      - text: monggo
-        ar_eg: mangga (اتفضل)
-        ar: mangga (تفضّل)
-        en: mangga (please, go ahead)
-      - text: wes
-        ar_eg: wis (خلاص / خلّص)
-        ar: wis (قد / انتهى)
-        en: wis (already)
-    words: [apa, sega, aja, baku]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: رز القطة بكام؟
+      ar: كم سعر أرز القطة؟
+      en: How much is the sega kucing?
+    options: [rong ewu, telung ewu, limang ewu]
+    answer: 1
+    words: [sega kucing]
   - id: e02
     type: multiple_choice
+    question: TELO GORENG
     question_meaning:
-      ar_eg: أنهي كلمة الـ o فيها أصلية وبتتكتب o في الإملا الرسمي؟
-      ar: أي كلمة فيها o أصلية تُكتب o في الإملاء القياسي؟
-      en: Which word has a real o, written o in standard spelling?
-    options: [piro, loro, sego]
-    answer: 1
+      ar_eg: دي تتكتب إزاي بالإملا الصح؟
+      ar: كيف تُكتب بالإملاء القياسي؟
+      en: How is this written in standard spelling?
+    options: [tela goreng, telo goreng, tolo goreng]
+    answer: 0
     explain:
-      ar_eg: loro = اتنين، والـ o فيها أصلية. piro وsego إملا شات لـ pira وsega.
-      ar: loro = اثنان، وo فيها أصلية، أما piro وsego فإملاء دردشة لـ pira وsega.
-      en: loro = two, with a real o; piro and sego are chat spellings of pira and sega.
-    words: [lara]
+      ar_eg: a اللي في آخر الكلمة بتتنطق o، زي sega «سيغو». فالإملا الصح tela.
+      ar: a في آخر الكلمة تُنطق o، كما في sega «سيغو»، فالقياسي tela.
+      en: A final a is said o, like sega "sego", so the standard is tela.
+    words: [tela]
   - id: e03
     type: listen
-    text: Bocah-bocah dolanan wedhi.
-    options: ['Bocah-bocah dolanan wedhi.', 'Bocah-bocah dolanan wedi.']
-    answer: 0
-    meaning:
-      ar_eg: العيال بيلعبوا بالرملة.
-      ar: الأطفال يلعبون بالرمل.
-      en: The children are playing with sand.
-    words: [wedhi]
-  - id: e04
-    type: multiple_choice
-    question: Tulisan baku saka "nggih"?
-    question_meaning:
-      ar_eg: إيه الإملا الرسمي لـ nggih؟
-      ar: ما الإملاء القياسي لـ nggih؟
-      en: What's the standard spelling of nggih?
-    options: [nggih, enggih, inggih]
+    text: Mangan neng kene apa dibungkus?
+    question:
+      ar_eg: بو سري بتسألك على إيه؟
+      ar: عمَّ تسألك بو سري؟
+      en: What is Bu Sri asking you?
+    options: ["Mau minum apa?", "Berapa harganya?", "Makan di sini atau dibungkus?"]
     answer: 2
-    words: [baku]
+    meaning:
+      ar_eg: هتاكل هنا ولا تيك أواي؟
+      ar: هل ستأكل هنا أم تأخذه معك؟
+      en: Eat here or take away?
+    explain:
+      ar_eg: apa بين اختيارين = «ولا» (atau).
+      ar: apa بين خيارين = «أم» (atau).
+      en: apa between two choices = "or" (atau).
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: sega kucing
+        ar_eg: رز القطة (لفّة رز صغيرة)
+        ar: أرز القطة (لفافة أرز صغيرة)
+        en: cat rice (tiny rice packet)
+      - text: tela
+        ar_eg: كسافا
+        ar: كسافا
+        en: cassava
+      - text: dibungkus
+        ar_eg: متغلّف / تيك أواي
+        ar: مغلّف / سفري
+        en: wrapped to take away
+      - text: pinarak
+        ar_eg: يتفضّل يقعد
+        ar: يتفضّل بالجلوس
+        en: come in and sit (polite)
+      - text: regane
+        ar_eg: سعره
+        ar: سعره
+        en: its price
+    words: [sega kucing, tela, dibungkus]
   - id: e05
     type: fill_blank
-    sentence: Tembung sega ___ kaya sego.
+    sentence: ___ pinarak, Mas!
     meaning:
-      ar_eg: كلمة sega بتتنطق زي sego.
-      ar: تُنطق كلمة sega مثل sego.
-      en: The word sega sounds like sego.
-    options: [mateng, kliru, muni]
-    answers: [muni]
-    words: [muni, sega]
+      ar_eg: اتفضّل استريّح يا أستاذ!
+      ar: تفضّل بالجلوس يا سيدي!
+      en: Please come in and sit down!
+    options: [Monggo, Mangga]
+    answers: [Mangga]
+    explain:
+      ar_eg: monggo إملا شات. الصح mangga.
+      ar: monggo إملاء الدردشة، والقياسي mangga.
+      en: monggo is chat spelling; the standard is mangga.
   - id: e06
-    type: fill_blank
-    sentence: Simbah tuku ___ kanggo putune.
+    type: dictation
+    text: Mangan neng kene apa dibungkus?
     meaning:
-      ar_eg: الجدة اشترت puthu (كيكة رز) لحفيدها.
-      ar: اشترت الجدة puthu (كعكة أرز) لحفيدها.
-      en: Grandma bought puthu (rice cake) for her grandchild.
-    options: [putu, puthu]
-    answers: [puthu]
-    words: [puthu]
+      ar_eg: هتاكل هنا ولا تيك أواي؟
+      ar: هل ستأكل هنا أم تأخذه معك؟
+      en: Eat here or take away?
+    words: [dibungkus]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: "اكتبها بالإملا الرسمي: «piro regane? sego ne wes mateng»"
-      ar: "اكتبها بالإملاء القياسي: «piro regane? sego ne wes mateng»"
-      en: "Write it in standard spelling: «piro regane? sego ne wes mateng»"
-    answer: Pira regane? Segane wis mateng.
-    distractors: [piro, wes]
-    words: [pira, sega, mateng]
+      ar_eg: (بالإملا الصح) هشتري اتنين رز قطة وكسافا محمّرة.
+      ar: (بالإملاء القياسي) سأشتري اثنين من أرز القطة وكسافا مقلية.
+      en: (standard spelling) I'll buy two sega kucing and fried cassava.
+    answer: Aku tuku sega kucing loro lan tela goreng.
+    distractors: [sego, telo]
+    explain:
+      ar_eg: sego وtelo إملا شات. وloro هنا «اتنين»، فتفضل loro.
+      ar: sego وtelo إملاء دردشة، وloro هنا «اثنان» فتبقى loro.
+      en: sego and telo are chat spellings; loro here means "two", so it stays loro.
+    words: [sega kucing, tela]
   - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (بالإملا الرسمي) ماتنساش، الجو ساقع.
-      ar: (بالإملاء القياسي) لا تنسَ، الجو بارد.
-      en: (standard spelling) Don't forget, it's cold.
+      ar_eg: (بالإملا الصح) الكسافا المحمّرة بكام؟
+      ar: (بالإملاء القياسي) بكم الكسافا المقلية؟
+      en: (standard spelling) How much is the fried cassava?
     answers:
-      - Aja lali, hawane adhem.
-      - Hawane adhem, aja lali.
-      - Aja lali, hawane adhem banget.
-    words: [aja, hawa, adhem]
-  - id: e09
-    type: translate
-    direction: from_target
-    source_text: Tulisan "monggo" ora kliru ing chat, nanging sing baku "mangga".
-    answers_meaning:
-      ar_eg:
-        - كتابة monggo مش غلط في الشات، بس الرسمي mangga.
-        - monggo مش غلط في الشات، بس الكتابة الرسمية mangga.
-        - كتابة monggo مش غلط في الشات، لكن الرسمي mangga.
-        - في الشات monggo مش غلط، بس الرسمي mangga.
-      ar:
-        - كتابة monggo ليست خطأ في الدردشة، لكن القياسية mangga.
-        - monggo ليست خطأ في الدردشة، لكن الكتابة القياسية mangga.
-        - ليست كتابة monggo خطأ في الدردشة، لكن القياسية mangga.
-      en:
-        - Writing monggo isn't wrong in a chat, but the standard is mangga.
-        - The spelling monggo isn't wrong in a chat, but the standard is mangga.
-        - Monggo isn't wrong in a chat, but the standard spelling is mangga.
-        - Monggo isn't wrong in chats, but the standard is mangga.
-        - The spelling monggo isn't wrong in chats, but the standard one is mangga.
-    words: [kliru, baku]
-  - id: e10
-    type: dictation
-    text: Wedi lan wedhi iku bedha.
-    meaning:
-      ar_eg: wedi وwedhi مختلفين.
-      ar: wedi وwedhi مختلفتان.
-      en: Wedi and wedhi are different.
-    words: [bedha, wedhi]
-  - id: e11
-    type: speaking
-    text: Sesuk aku mesthi teka.
-    meaning:
-      ar_eg: بكرة أكيد هاجي.
-      ar: سآتي غدًا بالتأكيد.
-      en: I'll definitely come tomorrow.
-    words: [mesthi]
+      - Tela goreng regane pira?
+      - Regane tela goreng pira?
+      - Pira regane tela goreng?
+      - Tela gorenge pira?
+      - Tela goreng pira?
+      - Tela goreng pira regane?
+    words: [tela]
 dialogue:
-  title: Janjian ing Simpang Lima
+  title: Tuku ing warung
   lines:
-    - speaker: Mbak Ayu
-      text: Mohamed, sesuk dolan menyang Simpang Lima, ya?
-      ar_eg: يا محمد، بكرة نخرج سيمبانج ليما؟
-      ar: يا محمد، هل نخرج غدًا إلى سيمبانغ ليما؟
-      en: Mohamed, shall we go out to Simpang Lima tomorrow?
+    - speaker: Bu Sri
+      text: Mangga pinarak, Mas!
+      ar_eg: اتفضّل استريّح يا أستاذ!
+      ar: تفضّل بالجلوس يا سيدي!
+      en: Please come in and sit down!
     - speaker: Mohamed
-      text: Ayo! Jam pira?
-      ar_eg: يلا! الساعة كام؟
-      ar: هيا! في أي ساعة؟
-      en: Let's! What time?
-    - speaker: Mbak Ayu
-      text: Jam papat sore. Aja lali, ya!
-      ar_eg: الساعة أربعة العصر. ماتنساش!
-      ar: الساعة الرابعة عصرًا. لا تنسَ!
-      en: Four in the afternoon. Don't forget!
+      text: Sega kucing kalih, Bu, kaliyan tela goreng.
+      ar_eg: اتنين رز قطة يا طنط، وكسافا محمّرة.
+      ar: اثنان من أرز القطة يا سيدتي، وكسافا مقلية.
+      en: Two sega kucing, ma'am, and fried cassava.
+    - speaker: Bu Sri
+      text: Mangan neng kene apa dibungkus?
+      ar_eg: هتاكل هنا ولا تيك أواي؟
+      ar: هل ستأكل هنا أم تأخذه معك؟
+      en: Eat here or take away?
     - speaker: Mohamed
-      text: Ora lali. Aku mesthi teka.
-      ar_eg: مش هنسى. أكيد هاجي.
-      ar: لن أنسى. سآتي بالتأكيد.
-      en: I won't forget. I'll definitely come.
-    - speaker: Mbak Ayu
-      text: Mengko awake dhewe mangan sega lan kenthang goreng.
-      ar_eg: وبعدين ناكل رز وبطاطس محمّرة.
-      ar: ثم نأكل أرزًا وبطاطا مقلية.
-      en: Then we'll eat rice and fried potatoes.
-souvenir:
-  id: j5.u03.souvenir
-  title: Alun-alun Simpang Lima
-  note:
-    ar_eg: |
-      Simpang Lima يعني «التقاطع الخماسي»: ميدان كبير في قلب سيمارانج بيتقابل فيه خمس شوارع، وبالليل بيتملي عربيات أكل وعيلات بتتمشى. ولو بصّيت على لافتات الأكل هتلاقي «sego» و«piro» مكتوبين زي ما بيتنطقوا، بالظبط زي الشات. ودلوقتي إنت عارف ترجّعهم للإملا الرسمي، ولعبة Minimal Pairs مستنياك تتدرّب على dh وth.
-    ar: |
-      Simpang Lima تعني «التقاطع الخماسي»: ساحة كبيرة في قلب سيمارانج تلتقي فيها خمسة شوارع، وتمتلئ ليلًا بعربات الطعام والعائلات المتنزّهة. وعلى لافتات الطعام سترى «sego» و«piro» مكتوبتين كما تُنطقان، تمامًا كالدردشة. وأنت الآن تعرف كيف تردّهما إلى الإملاء القياسي، ولعبة Minimal Pairs تنتظرك لتتدرّب على dh وth.
-    en: |
-      Simpang Lima means "five-way junction": a big square in the heart of Semarang where five roads meet, packed at night with food carts and strolling families. On the food signs you'll see "sego" and "piro" spelled the way they sound, just like in chats. Now you know how to bring them back to standard spelling, and the Minimal Pairs game is waiting to train your dh and th.
+      text: Dibungkus, Bu. Pinten?
+      ar_eg: تيك أواي يا طنط. بكام؟
+      ar: سفري يا سيدتي. بكم؟
+      en: To take away, ma'am. How much?
+    - speaker: Bu Sri
+      text: Wolung ewu, Mas.
+      ar_eg: تمن تلاف يا أستاذ.
+      ar: ثمانية آلاف يا سيدي.
+      en: Eight thousand.
+new_words:
+  - word: sega kucing
+    pos: noun
+    ar_eg: رز القطة، لفّة رز صغيرة رخيصة (بتتنطق «سيغو»)
+    ar: أرز القطة، لفافة أرز صغيرة رخيصة (تُنطق «سيغو»)
+    en: cat rice, a tiny cheap rice packet (said "sego") = nasi kucing
+  - word: tela
+    pos: noun
+    ar_eg: كسافا (بتتنطق «تيلو»)
+    ar: الكسافا (تُنطق «تيلو»)
+    en: cassava (said "telo") = ketela, singkong
 review:
   status: draft
   verified: false

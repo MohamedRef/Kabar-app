@@ -1,196 +1,240 @@
 schema: kabar.lesson/v1
 id: bipa1.u09.l08
 language: id
-title: Ulangan Unit 9
+title: Naik motor atau taksi?
 can_do:
-  ar_eg: توصل من مكان لمكان بالسؤال.
-  ar: أن تصل من مكان إلى آخر بالسؤال.
-  en: Get from A to B by asking.
+  ar_eg: تختار مواصلة وتقول إنها آمنة أو بطيئة، وتقول إنك قربت توصل.
+  ar: أن تختار وسيلة نقل وتقول إنها آمنة أو بطيئة، وأنك أوشكت على الوصول.
+  en: Choose transport, say whether it's safe or slow, and say you're almost there.
 slides:
-  - title: Ingat!
+  - title: Naik apa?
     body:
       ar_eg: |
-        - di (في) للمكان الثابت، ke (لـ) للحركة، dari (من) للبداية.
-        - di + كلمة المكان + الحاجة: di atas meja، di samping masjid، di antara … dan ….
-        - الخطوات: jalan lurus، lalu / kemudian belok kiri / kanan.
-        - dan (و)، atau (أو / ولا)، tetapi (بس)، jadi (فـ).
+        naik + المواصلة: naik sepeda (عجلة)، naik motor (موتوسيكل)، naik taksi. وtruk = عربية نقل.
+        في إندونيسيا الموتوسيكلات في كل حتة، وفيه «أوجيك»: موتوسيكل أجرة.
+        cari = يدوّر على (عامية، والرسمي mencari). aman = آمن. lambat = بطيء.
+        hampir = تقريبًا، قرّب: «Hampir sampai!» = قربنا نوصل!
       ar: |
-        - di للمكان الثابت، وke للحركة، وdari للابتداء.
-        - di + ظرف المكان + الاسم: di atas meja، di samping masjid، di antara … dan ….
-        - الخطوات: jalan lurus، lalu / kemudian belok kiri / kanan.
-        - dan (و)، atau (أو / أم)، tetapi (لكن)، jadi (لذلك).
+        naik + وسيلة النقل: naik sepeda (درّاجة)، naik motor (درّاجة نارية)، naik taksi. وtruk = شاحنة.
+        تملأ الدرّاجات النارية إندونيسيا، ومنها «أوجيك»: درّاجة نارية للأجرة.
+        cari = يبحث عن (بالعامية، والفصيح mencari). aman = آمن. lambat = بطيء.
+        hampir = تقريبًا، كاد: «Hampir sampai!» = أوشكنا على الوصول!
       en: |
-        - di for a fixed place, ke for movement to, dari for from.
-        - di + position word + noun: di atas meja, di samping masjid, di antara … dan ….
-        - Steps: jalan lurus, lalu / kemudian belok kiri / kanan.
-        - dan (and), atau (or), tetapi (but), jadi (so).
-    grammar: id.preposition.di-ke-dari
+        naik + vehicle: naik sepeda (bicycle), naik motor (motorbike), naik taksi. truk = lorry, truck.
+        Motorbikes are everywhere in Indonesia, including ojek, motorbike taxis.
+        cari = look for (casual; formal mencari). aman = safe. lambat = slow.
+        hampir = almost: "Hampir sampai!" = Nearly there!
+    examples:
+      - text: Saya naik motor ke kantor.
+        ar_eg: بروح الشغل بالموتوسيكل.
+        ar: أذهب إلى المكتب بالدرّاجة النارية.
+        en: I ride a motorbike to the office.
+      - text: Taksi itu lambat, jalannya ramai.
+        ar_eg: التاكسي بطيء، الشارع زحمة.
+        ar: سيارة الأجرة بطيئة، فالشارع مزدحم.
+        en: The taxi is slow; the road is busy.
+      - text: Kita hampir sampai!
+        ar_eg: قربنا نوصل!
+        ar: أوشكنا على الوصول!
+        en: We're nearly there!
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: di belakang
-        ar_eg: ورا
-        ar: خلف
-        en: behind
-      - text: di antara
-        ar_eg: بين
-        ar: بين
-        en: between
-      - text: di luar
-        ar_eg: بره
-        ar: خارج
-        en: outside
-      - text: belok kanan
-        ar_eg: خش يمين
-        ar: انعطف يمينًا
-        en: turn right
-      - text: jalan lurus
-        ar_eg: امشي دغري
-        ar: امشِ مستقيمًا
-        en: go straight
-    words: [belakang, antara, luar, belok, lurus]
+      - text: sepeda
+        ar_eg: عجلة
+        ar: درّاجة
+        en: bicycle
+      - text: taksi
+        ar_eg: تاكسي
+        ar: سيارة أجرة
+        en: taxi
+      - text: motor
+        ar_eg: موتوسيكل
+        ar: درّاجة نارية
+        en: motorbike
+      - text: truk
+        ar_eg: عربية نقل
+        ar: شاحنة
+        en: truck
+    words: [sepeda, taksi, motor, truk]
   - id: e02
-    type: multiple_choice
-    question: Besok kami pergi ___ Kepulauan Seribu.
-    options: [di, ke, dari]
-    answer: 1
-    explain:
-      ar_eg: pergi حركة لمكان، يبقى ke.
-      ar: pergi حركة نحو مكان، فهي ke.
-      en: pergi is movement to a place → ke.
-    words: [ke, pergi]
+    type: match_pairs
+    pairs:
+      - text: cari
+        ar_eg: يدوّر على
+        ar: يبحث عن
+        en: look for
+      - text: aman
+        ar_eg: آمن
+        ar: آمن
+        en: safe
+      - text: lambat
+        ar_eg: بطيء
+        ar: بطيء
+        en: slow
+      - text: hampir
+        ar_eg: تقريبًا
+        ar: تقريبًا
+        en: almost
+    words: [cari, aman, lambat, hampir]
   - id: e03
-    type: multiple_choice
-    question: Kereta ___ Bandung sudah datang.
-    options: [ke, di, dari]
-    answer: 2
-    explain:
-      ar_eg: القطر جاي من باندونج ووصل، يبقى dari.
-      ar: القطار قادم من باندونغ وقد وصل، فهي dari.
-      en: The train has come from Bandung and arrived → dari.
-    words: [dari, kereta]
+    type: listen
+    text: Saya cari taksi ke stasiun.
+    question:
+      ar_eg: بيدوّر على إيه؟
+      ar: عمَّ يبحث؟
+      en: What's he looking for?
+    options: [تاكسي, موتوسيكل, عجلة]
+    answer: 0
+    meaning:
+      ar_eg: بدوّر على تاكسي للمحطة.
+      ar: أبحث عن سيارة أجرة إلى المحطة.
+      en: I'm looking for a taxi to the station.
+    words: [cari, taksi]
   - id: e04
-    type: listen
-    text: Masjidnya di sebelah kanan.
-    options: [Masjidnya di sebelah kanan., Masjidnya di belakang., Masjidnya di sebelah kiri.]
-    answer: 0
-    words: [sebelah, kanan, masjid]
+    type: fill_blank
+    sentence: Naik motor, kita ___ sampai!
+    meaning:
+      ar_eg: بالموتوسيكل، ___ نوصل!
+      ar: بالدرّاجة النارية ___ نصل!
+      en: By motorbike, we're ___ there!
+    options: [hampir, aman, lambat]
+    answers: [hampir]
+    words: [motor, hampir, aman, lambat]
   - id: e05
-    type: listen
-    text: Kursinya di antara meja dan pintu.
-    options: [Kursinya di antara meja dan pintu., Kursinya di depan pintu., Kursinya di atas meja.]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عربية كبيرة جدًا بتشيل بضاعة. اسمها؟
+      ar: سيارة كبيرة جدًا تنقل البضائع. ما اسمها؟
+      en: A very big vehicle that carries goods. What is it?
+    options: [truk, sepeda, taksi]
     answer: 0
-    words: [kursi, antara, meja, pintu]
+    explain:
+      ar_eg: truk = عربية نقل.
+      ar: truk = شاحنة.
+      en: truk = truck.
+    words: [truk, sepeda, taksi]
   - id: e06
     type: fill_blank
-    sentence: Tiketnya di ___ tas.
+    sentence: Jalan ini ramai. Busnya ___, kita hampir terlambat.
     meaning:
-      ar_eg: التذكرة جوه الشنطة.
-      ar: التذكرة داخل الحقيبة.
-      en: The ticket is inside the bag.
-    options: [dalam, antara, luar]
-    answers: [dalam]
-    words: [dalam, tas]
+      ar_eg: الشارع ده زحمة. الأتوبيس ___، وهنتأخر.
+      ar: هذا الشارع مزدحم، والحافلة ___، فكدنا نتأخر.
+      en: This road is busy. The bus is ___; we're nearly late.
+    options: [lambat, aman, hampir]
+    answers: [lambat]
+    words: [lambat, hampir]
   - id: e07
-    type: fill_blank
-    sentence: Monas jauh, ___ kita naik bus.
-    meaning:
-      ar_eg: موناس بعيد، فهنركب أتوبيس.
-      ar: موناس بعيد، لذا سنركب الحافلة.
-      en: Monas is far, so we'll take the bus.
-    options: [atau, jadi, tetapi]
-    answers: [jadi]
-    words: [jadi, jauh]
+    type: build_sentence
+    source:
+      ar_eg: ركوب العجلة هنا آمن.
+      ar: ركوب الدرّاجة هنا آمن.
+      en: Cycling here is safe.
+    answer: Naik sepeda di sini aman.
+    distractors: [truk, cari]
+    words: [sepeda, aman]
   - id: e08
-    type: build_sentence
-    source:
-      ar_eg: خش شمال عند الإشارة، وبعدين امشي دغري.
-      ar: انعطف يسارًا عند الإشارة، ثم امشِ مستقيمًا.
-      en: Turn left at the traffic light, then go straight.
-    answer: Belok kiri di lampu merah, lalu jalan lurus.
-    alternatives: [Belok kiri di lampu merah lalu jalan lurus.]
-    distractors: [kanan, dari]
-    words: [belok, kiri, lampu merah, lalu, lurus]
+    type: translate
+    direction: from_target
+    source_text: Saya naik motor ke kampus.
+    answers_meaning:
+      ar_eg: [بروح الجامعة بالموتوسيكل, بركب موتوسيكل للجامعة]
+      ar: [أذهب إلى الجامعة بالدرّاجة النارية, أركب الدرّاجة النارية إلى الجامعة]
+      en: [I ride a motorbike to campus, I go to campus by motorbike]
+    words: [motor]
   - id: e09
-    type: build_sentence
-    source:
-      ar_eg: الكتاب تحت الكرسي.
-      ar: الكتاب تحت الكرسي.
-      en: The book is under the chair.
-    answer: Bukunya di bawah kursi.
-    distractors: [atas, ke]
-    words: [bawah, kursi]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لو سمحت، المحطة فين؟
-      ar: عفوًا، أين المحطة؟
-      en: Excuse me, where is the station?
-    answers: ['Permisi, stasiunnya di mana?', 'Permisi, stasiun di mana?', 'Permisi, di mana stasiunnya?', 'Permisi, di mana stasiun?', 'Permisi, stasiunnya di mana, ya?', 'Permisi, stasiunnya di mana']
-    words: [permisi, stasiun]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الجامع جنب البنك.
-      ar: المسجد بجانب المصرف.
-      en: The mosque is next to the bank.
-    answers: [Masjidnya di samping bank., Masjidnya di sebelah bank., Masjid di samping bank., Masjid di sebelah bank., Masjidnya di samping bank, Masjidnya di sebelah bank]
-    explain:
-      ar_eg: «جنب» = di samping أو di sebelah، الاتنين صح.
-      ar: «بجانب» = di samping أو di sebelah، وكلاهما صحيح.
-      en: '"next to" = di samping or di sebelah; both are right.'
-    words: [samping, sebelah, masjid]
-  - id: e12
     type: speaking
-    text: Permisi, Bu. Saya mau ke Monas. Jalan lurus, lalu belok kanan, ya?
+    text: Truk itu besar dan lambat.
     meaning:
-      ar_eg: لو سمحتي يا مدام. أنا عايز أروح موناس. أمشي دغري وبعدين أخش يمين، صح؟
-      ar: عفوًا يا سيدتي، أريد الذهاب إلى موناس. أمشي مستقيمًا ثم أنعطف يمينًا، أليس كذلك؟
-      en: Excuse me, ma'am. I want to go to Monas. Straight ahead, then turn right, right?
-    words: [permisi, ke, lurus, lalu, belok]
+      ar_eg: عربية النقل دي كبيرة وبطيئة.
+      ar: تلك الشاحنة كبيرة وبطيئة.
+      en: That truck is big and slow.
+    words: [truk, lambat]
+  - id: e10
+    type: multiple_choice
+    question: Dompet saya hilang! Saya ___ dompet saya.
+    options: [cari, naik, turun]
+    answer: 0
+    explain:
+      ar_eg: 'لما حاجة تضيع، بتدوّر عليها: cari.'
+      ar: 'إذا ضاع شيء بحثت عنه: cari.'
+      en: 'When something''s lost, you look for it: cari.'
+    words: [cari]
 dialogue:
-  title: Di depan Monas
   lines:
-    - speaker: Ni Luh
-      text: Mohamed, kamu di mana?
-      ar_eg: محمد، إنت فين؟
-      ar: يا محمد، أين أنت؟
-      en: Mohamed, where are you?
+    - speaker: Raka
+      text: Mohamed, kamu cari apa?
+      ar_eg: يا محمد، بتدوّر على إيه؟
+      ar: يا محمد، عمَّ تبحث؟
+      en: Mohamed, what are you looking for?
     - speaker: Mohamed
-      text: Saya di depan pintu masuk Monas. Kamu?
-      ar_eg: أنا قدّام مدخل موناس. وإنتي؟
-      ar: أنا أمام مدخل موناس. وأنتِ؟
-      en: I'm in front of the Monas entrance. You?
-    - speaker: Ni Luh
-      text: Saya di halte, dekat stasiun. Ke sana jauh atau dekat?
-      ar_eg: أنا في محطة الأتوبيس جنب محطة القطر. المشوار لعندك بعيد ولا قريب؟
-      ar: أنا في موقف الحافلات قرب المحطة. أهو بعيد أم قريب؟
-      en: I'm at the bus stop near the station. Is it far or close to get there?
+      text: Saya cari taksi ke museum.
+      ar_eg: بدوّر على تاكسي للمتحف.
+      ar: أبحث عن سيارة أجرة إلى المتحف.
+      en: I'm looking for a taxi to the museum.
+    - speaker: Raka
+      text: Taksi lambat, jalannya ramai. Kita naik motor saya!
+      ar_eg: التاكسي بطيء والشارع زحمة. تعالى نركب الموتوسيكل بتاعي!
+      ar: سيارة الأجرة بطيئة والشارع مزدحم. لنركب درّاجتي النارية!
+      en: Taxis are slow; the roads are busy. Let's take my motorbike!
     - speaker: Mohamed
-      text: Dekat. Jalan lurus, lalu belok kiri di lampu merah.
-      ar_eg: قريب. امشي دغري، وبعدين خشي شمال عند الإشارة.
-      ar: قريب. امشي مستقيمًا ثم انعطفي يسارًا عند الإشارة.
-      en: Close. Go straight, then turn left at the traffic light.
-    - speaker: Ni Luh
-      text: Oke. Tapi panas sekali, jadi saya beli air dulu.
-      ar_eg: ماشي. بس الجو حر أوي، فهشتري مية الأول.
-      ar: حسنًا. لكن الجو حار جدًا، لذا سأشتري ماءً أولًا.
-      en: Okay. But it's really hot, so I'll buy water first.
+      text: Motor? Aman?
+      ar_eg: موتوسيكل؟ أمان؟
+      ar: درّاجة نارية؟ هل هي آمنة؟
+      en: A motorbike? Is it safe?
+    - speaker: Raka
+      text: Aman! Saya jalan pelan-pelan.
+      ar_eg: أمان! هسوق براحة.
+      ar: آمنة! سأسير ببطء.
+      en: Safe! I'll go slowly.
     - speaker: Mohamed
-      text: Baik. Saya di samping loket, ya. Sampai jumpa!
-      ar_eg: تمام. أنا هكون جنب شباك التذاكر. أشوفك!
-      ar: حسنًا. سأكون بجانب شباك التذاكر. إلى اللقاء!
-      en: Fine. I'll be next to the ticket counter. See you!
-souvenir:
-  id: bipa1.u09.souvenir
-  title: Monumen Nasional (Monas)
-  note:
-    ar_eg: 'موناس، النُصُب الوطني، طوله ١٣٢ متر في نص ميدان مرديكا، وفوقه شعلة متغطية دهب ترمز لحرية إندونيسيا. ومن فوق بتشوف جاكرتا كلها، وجنبه على طول جامع الاستقلال والكاتدرائية قصاد بعض. ولو تهت، اسأل وبس: أهل جاكرتا بيوصفوا الطريق بالعلامات («بعد الجامع خش شمال») وساعات بيمشوا معاك نص المسافة كمان.'
-    ar: 'موناس، النصب الوطني، يرتفع ١٣٢ مترًا في قلب ميدان مرديكا، وتعلوه شعلة مكسوّة بالذهب ترمز إلى استقلال إندونيسيا. ومن قمته ترى جاكرتا كلها، وبقربه يتقابل مسجد الاستقلال والكاتدرائية. وإن ضللت الطريق فاسأل: يصف أهل جاكرتا الطريق بالمعالم («بعد المسجد انعطف يسارًا»)، وكثيرًا ما يرافقونك نصف المسافة.'
-    en: Monas, the National Monument, rises 132 metres in the middle of Merdeka Square, topped by a gold-covered flame for Indonesia's independence. From the top you see all of Jakarta, and nearby Istiqlal Mosque and the Cathedral face each other. If you get lost, just ask — Jakartans give directions by landmarks ("after the mosque, turn left") and will often walk you halfway.
+      text: Kita hampir sampai!
+      ar_eg: قربنا نوصل!
+      ar: أوشكنا على الوصول!
+      en: We're nearly there!
+new_words:
+  - word: sepeda
+    pos: noun
+    ar_eg: عجلة
+    ar: درّاجة
+    en: bicycle
+  - word: taksi
+    pos: noun
+    ar_eg: تاكسي
+    ar: سيارة أجرة
+    en: taxi
+  - word: motor
+    pos: noun
+    ar_eg: موتوسيكل
+    ar: درّاجة نارية
+    en: motorbike
+  - word: truk
+    pos: noun
+    ar_eg: عربية نقل
+    ar: شاحنة
+    en: truck, lorry
+  - word: cari
+    pos: verb
+    ar_eg: يدوّر على (عامية)
+    ar: يبحث عن (عامية)
+    en: look for (casual)
+  - word: aman
+    pos: adjective
+    arabic: أمان
+    ar_eg: آمن، أمان
+    ar: آمن
+    en: safe
+  - word: lambat
+    pos: adjective
+    ar_eg: بطيء
+    ar: بطيء
+    en: slow
+  - word: hampir
+    pos: adverb
+    ar_eg: تقريبًا، قرّب
+    ar: تقريبًا، كاد
+    en: almost, nearly
 review:
   status: draft
   verified: false
