@@ -157,21 +157,6 @@ pub fn Today() -> Element {
                 crate::stats::TodayCards {}
             }
         }
-        // On the phone, Kak Nur, the journal, Watch & listen and
-        // Settings live here instead of the bottom bar (it keeps five items).
-        nav { class: "row compact-only more-links",
-            for screen in [Screen::Coach, Screen::Journal, Screen::Listen, Screen::Chat, Screen::Settings] {
-                button {
-                    key: "{screen:?}",
-                    onclick: move |_| {
-                        let mut s = ui.screen;
-                        s.set(screen);
-                    },
-                    span { class: "nav-icon", aria_hidden: "true", {icons::nav(screen)} }
-                    " {ui.t(screen.label())}"
-                }
-            }
-        }
     }
 }
 

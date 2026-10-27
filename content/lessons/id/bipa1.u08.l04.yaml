@@ -87,23 +87,27 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: yang merah
-        ar_eg: الأحمر
-        ar: الأحمر
-        en: the red one
-      - text: yang besar
-        ar_eg: الكبير
-        ar: الكبير
-        en: the big one
-      - text: yang mana?
-        ar_eg: أنهي واحد؟
-        ar: أيّها؟
-        en: which one?
-      - text: yang pakai kacamata
-        ar_eg: اللي لابس نضارة
-        ar: الذي يلبس نظارة
-        en: the one wearing glasses
-    words: [yang, merah, kacamata]
+      - text: merah
+        ar_eg: أحمر
+        ar: أحمر
+        en: red
+      - text: putih
+        ar_eg: أبيض
+        ar: أبيض
+        en: white
+      - text: lampion
+        ar_eg: فانوس ورق
+        ar: فانوس ورقي
+        en: paper lantern
+      - text: kacamata
+        ar_eg: نضارة
+        ar: نظارة
+        en: glasses
+      - text: pakai
+        ar_eg: يلبس، يستعمل
+        ar: يلبس، يستعمل
+        en: wear, use
+    words: [merah, putih, lampion, kacamata, pakai]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -119,10 +123,14 @@ exercises:
     words: [yang, merah]
   - id: e03
     type: listen
-    text: Kakak saya yang tinggi.
-    options: [Adik saya yang tinggi., Kakak saya tinggi., Kakak saya yang tinggi.]
-    answer: 2
-    words: [yang, tinggi]
+    text: Saya mau lampion yang putih.
+    options: ['Saya mau lampion yang putih.', 'Saya mau lampion yang merah.', 'Saya mau yang putih lampion.']
+    answer: 0
+    meaning:
+      ar_eg: عايز الفانوس الأبيض.
+      ar: أريد الفانوس الأبيض.
+      en: I want the white lantern.
+    words: [lampion, putih, merah]
   - id: e04
     type: fill_blank
     sentence: Lampion yang ___ murah, tapi yang besar mahal.
@@ -140,12 +148,12 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: أخويا الكبير هو الطويل.
-      ar: أخي الأكبر هو الطويل.
-      en: My older brother is the tall one.
-    answer: Kakak saya yang tinggi.
-    distractors: [mana, pendek]
-    words: [yang, tinggi, kakak]
+      ar_eg: أخويا الكبير هو اللي لابس نضارة.
+      ar: أخي الأكبر هو الذي يلبس النظارة.
+      en: My older brother is the one wearing glasses.
+    answer: Kakak saya yang pakai kacamata.
+    distractors: [mana, merah]
+    words: [yang, pakai, kacamata, kakak]
   - id: e06
     type: translate
     direction: to_target
@@ -161,20 +169,20 @@ exercises:
     words: [yang, putih]
   - id: e07
     type: dictation
-    text: Yang besar berapa?
+    text: Dia yang pakai kacamata.
     meaning:
-      ar_eg: الكبير بكام؟
-      ar: بكم الكبير؟
-      en: How much is the big one?
-    words: [yang, berapa]
+      ar_eg: هو اللي لابس نضارة.
+      ar: هو الذي يلبس النظارة.
+      en: He's the one wearing glasses.
+    words: [yang, pakai, kacamata]
   - id: e08
     type: speaking
-    text: Saya mau yang merah.
+    text: Saya mau yang putih, bukan yang merah.
     meaning:
-      ar_eg: عايز الأحمر.
-      ar: أريد الأحمر.
-      en: I want the red one.
-    words: [yang, merah]
+      ar_eg: عايز الأبيض، مش الأحمر.
+      ar: أريد الأبيض، لا الأحمر.
+      en: I want the white one, not the red one.
+    words: [yang, putih, merah]
 dialogue:
   title: Lampion di Glodok
   lines:

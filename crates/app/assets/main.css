@@ -14,6 +14,54 @@
   --font-arabic: "IBM Plex Sans Arabic", "Noto Naskh Arabic", "Noto Sans Arabic", "Geeza Pro", system-ui, sans-serif;
 }
 
+/* ---------- Design tokens (docs/DESIGN.md) ----------
+   Sizes are in rem, so Settings › Text size scales all of them. New rules
+   use these instead of raw numbers. */
+:root {
+  /* Type scale, ratio 1.2 from 1rem. */
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.2rem;
+  --fs-xl: 1.44rem;
+  --fs-2xl: 1.728rem;
+  --fs-3xl: 2.074rem;
+  /* Line heights: UI, Latin reading, Arabic (taller marks and descenders). */
+  --lh-tight: 1.25;
+  --lh-ui: 1.5;
+  --lh-read: 1.65;
+  --lh-arabic: 1.75;
+  /* Reading measure: running text stops at a comfortable line length. */
+  --measure: 68ch;
+  --measure-ar: 60ch;
+  /* Space, on a 4px grid. */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-7: 2rem;
+  --sp-8: 3rem;
+  --radius-sm: 8px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  /* Motion: one easing, three speeds; all of it stops under reduced motion. */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 320ms;
+}
+
+/* Density by window width: the gutter around content, the gap between
+   blocks and the padding inside cards grow with the room. The compact
+   values and the theme-derived tokens sit in the .app rule below, where the
+   theme sets the colours they mix. */
+.app[data-width="medium"] { --gutter: var(--sp-6); --stack: var(--sp-4); --card-pad: var(--sp-5); }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) {
+  --gutter: var(--sp-7); --stack: var(--sp-4); --card-pad: var(--sp-6);
+}
+
 /* Word colours (kabar_core::grammar::word, theme.rs WordColors): one fixed
    colour per kind of word and per piece of a word, the same in the text, the
    breakdown and the grammar notes. The theme stylesheet sets them per theme;
@@ -55,6 +103,12 @@
 .wp-confix { color: var(--wp-confix); }
 .wp-clitic { color: var(--wp-clitic); }
 .wp-root { color: var(--wc, var(--wp-root)); font-weight: 600; }
+/* Settings → word colours off (settings.word_colours_off): plain text
+   everywhere; the parts keep their "+" and labels. */
+.app[data-word-colours="off"] :is(.wc-ink, .wp-prefix, .wp-suffix, .wp-confix, .wp-clitic, .wp-root) { color: inherit; }
+.app[data-word-colours="off"] .wc-line { text-decoration: none; }
+.app[data-word-colours="off"] .class-chip { color: inherit; background: var(--surface-2); border-color: var(--line); }
+.app[data-word-colours="off"] :is(.colour-legend, .annot-legend) { display: none; }
 
 * { box-sizing: border-box; }
 
@@ -67,7 +121,12 @@ html, body {
   font-size: 16px;
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
 }
+/* Follows the root, so Settings › Text size scales everything. */
+body { font-size: 1rem; }
 
 #main { block-size: 100%; }
 
@@ -78,9 +137,34 @@ html, body {
   color: var(--text);
   background-color: var(--bg);
   background-image: var(--batik);
+  /* Design tokens that depend on the theme or the width (see the density
+     rules at the top). */
+  --gutter: var(--sp-4);
+  --stack: var(--sp-3);
+  --card-pad: var(--sp-4);
+  --line-soft: color-mix(in srgb, var(--line) 70%, transparent);
+  /* Warm black: soft on paper, nearly invisible on dark themes, where
+     surface tone does the lifting. */
+  --shadow: 0 1px 2px rgb(35 28 18 / 0.06), 0 6px 20px -8px rgb(35 28 18 / 0.12);
+  --shadow-raised: 0 2px 4px rgb(35 28 18 / 0.08), 0 14px 36px -12px rgb(35 28 18 / 0.22);
+  /* Quiet scrollbars that follow the theme (mouse and trackpad; touch has none). */
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--muted) 40%, transparent) transparent;
 }
 
 .app:lang(ar) { font-family: var(--font-arabic); }
+
+/* Comfortable defaults. :where() keeps them at zero specificity, so any
+   screen's own rule wins. */
+:where(.app) :where(h1, h2, h3) { line-height: var(--lh-tight); text-wrap: balance; }
+:where(.app) :where(h1) { font-size: var(--fs-2xl); }
+:where(.app) :where(p, li, dd, figcaption) { text-wrap: pretty; }
+/* Arabic sits taller than Latin: give its running text more air. */
+:where(.app:lang(ar)) :where(p, li, dd, blockquote, summary) { line-height: var(--lh-arabic); }
+/* Running text stops at a readable line length on wide windows. */
+:where(.card) > :where(p) { max-inline-size: var(--measure); }
+:where(.app:lang(ar) .card) > :where(p) { max-inline-size: var(--measure-ar); }
+::selection { background: color-mix(in srgb, var(--gold) 30%, transparent); }
 bdi, .latin { font-family: var(--font-latin); }
 /* Target-language text is always left-to-right. Some WebViews don't resolve
    dir=auto on an inline <bdi>, which turned "Apa kabar?" into "?Apa kabar"
@@ -103,8 +187,17 @@ button[aria-pressed="true"] { background: var(--indigo); color: var(--surface); 
 button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 @media (prefers-reduced-motion: no-preference) {
-  button, .card, .nav-item { transition: background-color 180ms ease, transform 180ms ease; }
+  button, .card, .nav-item { transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur-fast) var(--ease); }
   button:active { transform: scale(0.98); }
+}
+/* Reduced motion means none: every animation and transition, app-wide. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ---------- Welcome ---------- */
@@ -165,7 +258,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 
 /* ---------- Shell & adaptive navigation ---------- */
 .shell { display: grid; min-block-size: 100dvh; }
-.content { padding: 1rem; padding-block-end: 6rem; max-inline-size: 72rem; inline-size: 100%; margin-inline: auto; }
+/* the phone's top bar keeps its height on short screens */
+.app[data-width="compact"] .shell { align-content: start; }
+.content { padding: var(--gutter); padding-block-end: 6rem; max-inline-size: 76rem; inline-size: 100%; margin-inline: auto; }
+.app:not([data-width="compact"]) .content { padding-block: var(--sp-6) var(--sp-8); }
 
 .nav { display: flex; background: var(--surface); border-color: var(--line); }
 .nav-item {
@@ -207,16 +303,68 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .brand { font-weight: 700; color: var(--indigo); font-size: 1.3rem; padding-block: 0.5rem 1rem; padding-inline: 0.75rem; }
 .app:is([data-width="compact"], [data-width="medium"]) .brand { display: none; }
 
+/* Settings: pinned to the foot of the rail and sidebar; the gear in the phone's top bar */
+.app:not([data-width="compact"]) .nav {
+  position: sticky; inset-block-start: 0; block-size: 100dvh; overflow-y: auto; box-sizing: border-box;
+}
+.app:not([data-width="compact"]) .nav-settings { margin-block-start: auto; }
+.top-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-block: max(0.35rem, env(safe-area-inset-top)) 0.35rem; padding-inline: 1rem 0.5rem;
+  background: var(--surface); border-block-end: 1px solid var(--line);
+}
+.brand-small { font-weight: 700; color: var(--indigo); font-size: 1.1rem; }
+.gear-button { border-color: transparent; background: transparent; display: inline-flex; align-items: center; justify-content: center; block-size: 44px; color: var(--muted); }
+
+/* The phone's More tab and sheet; the top bar's back arrow and title */
+.nav-more { display: none; }
+.app[data-width="compact"] .nav-more { display: flex; }
+.more-backdrop { position: fixed; inset: 0; z-index: 30; background: rgb(0 0 0 / 0.3); }
+.more-sheet {
+  position: fixed; z-index: 31; inset-inline: 0; inset-block-end: 0; max-block-size: 85dvh; overflow-y: auto;
+  background: var(--surface); border-start-start-radius: var(--radius); border-start-end-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 0.75rem 1rem; padding-block-end: max(1rem, env(safe-area-inset-bottom));
+}
+.more-head { display: flex; align-items: center; justify-content: space-between; }
+.more-head h2 { margin: 0; font-size: 1.15rem; }
+.more-list { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+.more-list button {
+  inline-size: 100%; display: grid; grid-template-columns: 1.6rem 1fr; column-gap: 0.75rem; align-items: center;
+  text-align: start; border: 0; border-radius: 12px; background: transparent; padding: 0.7rem 0.5rem;
+}
+.more-list button[aria-current="page"] { background: var(--surface-2); color: var(--indigo); }
+.more-title { font-weight: 600; }
+.more-sub { grid-column: 2; font-size: 0.82rem; color: var(--muted); }
+.top-title { display: flex; align-items: center; gap: 0.25rem; min-inline-size: 0; }
+.top-title h1 { margin: 0; font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Rail labels stay on one line (long ones are shortened or ellipsed). */
+.app[data-width="medium"] .nav-label,
+.app[data-nav="slim"] .nav-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-inline-size: 100%; }
+.app[data-width="medium"] .nav-item { min-inline-size: 0; }
+
+/* Settings › Tablet / Mac: the slim rail on wide windows too */
+.app[data-nav="slim"]:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .shell { grid-template-columns: 5.5rem 1fr; }
+.app[data-nav="slim"]:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .nav { padding: 0.5rem; }
+.app[data-nav="slim"]:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .nav-item {
+  flex-direction: column; justify-content: center; gap: 0.1rem; font-size: 0.72rem;
+}
+.app[data-nav="slim"] .brand { display: none; }
+
+/* Settings › Look: text size, per device */
+html:has(.app[data-text-size="small"]) { font-size: 93.75%; }
+html:has(.app[data-text-size="large"]) { font-size: 112.5%; }
+html:has(.app[data-text-size="larger"]) { font-size: 125%; }
+
 /* ---------- Cards ---------- */
 .card {
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-soft);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 1.25rem;
-  margin-block-end: 1rem;
+  padding: var(--card-pad);
+  margin-block-end: var(--stack);
 }
-.card h2 { margin-block: 0 0.5rem; font-size: 1.25rem; }
+.card h2 { margin-block: 0 var(--sp-2); font-size: var(--fs-lg); }
 .muted { color: var(--muted); }
 .pill { display: inline-block; padding-inline: 0.6rem; border-radius: 999px; background: var(--dawn-soft); color: var(--text); font-size: 0.85rem; }
 .row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
@@ -251,7 +399,7 @@ code, .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size:
 .error { color: var(--dawn); font-weight: 600; }
 button.quiet { background: transparent; border-color: transparent; color: var(--muted); text-decoration: underline; }
 button:disabled { opacity: 0.5; cursor: not-allowed; }
-h3 { font-size: 1rem; margin-block: 1rem 0.4rem; }
+h3 { font-size: var(--fs-md); margin-block: var(--sp-4) var(--sp-2); }
 
 .coach-grid { display: grid; gap: 0 1rem; align-items: start; }
 .app:not([data-width="compact"]) .coach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -330,7 +478,7 @@ button.check {
 button.check[aria-checked="true"] { background: var(--sawah); }
 
 /* numbers */
-.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr)); gap: 0.5rem; margin-block: 0.75rem; }
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(5.5rem, 100%), 1fr)); gap: 0.5rem; margin-block: 0.75rem; }
 .stat { display: flex; flex-direction: column; padding: 0.6rem; border-radius: 10px; background: var(--surface-2); }
 .stat-value { font-size: 1.2rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .stat-label { font-size: 0.8rem; color: var(--muted); }
@@ -450,7 +598,7 @@ button.game-card {
 .game-text { display: flex; flex-direction: column; gap: 0.2rem; min-inline-size: 0; }
 .play-header { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-block-end: 0.75rem; }
 .play-header h2 { margin: 0; font-size: 1.3rem; }
-.play-header .back { padding-inline: 0.5rem; text-decoration: none; }
+.play-header .back { padding-inline: 0.75rem; min-block-size: 44px; text-decoration: none; border-color: var(--line); color: var(--text); }
 .unverified { background: var(--surface-2); color: var(--muted); border: 1px dashed var(--line); }
 .gold-pill, .bonus-pill { background: var(--gold-soft); color: var(--text); align-self: flex-start; }
 .bonus-pill { background: var(--dawn); color: var(--surface); }
@@ -599,6 +747,9 @@ button:disabled { opacity: 0.5; cursor: default; }
 /* the text itself: always Latin, always LTR, generous for reading */
 .doc { position: relative; font-family: var(--font-latin); font-size: 1.25rem; line-height: 2.1; -webkit-user-select: text; user-select: text; }
 .doc .seg { margin-block-end: 0.6rem; }
+/* One column of text: book-like line length. Side-by-side translation and
+   chat bubbles use the full width. */
+.doc:not(.split) .seg:not(.bubble) { max-inline-size: var(--measure); }
 .doc .orig { overflow-wrap: anywhere; }
 canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; pointer-events: none; }
 
@@ -706,6 +857,42 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .word-card { display: grid; gap: 0.75rem; }
 .word-card .field { margin: 0; }
 .word-card .field p { margin-block: 0.15rem; }
+
+/* Word breakdown (reader/morph.rs): pieces in their --wp-* colours with a
+   "+" and the kind under each, so colour is never the only cue. */
+.parts-line { display: inline-flex; flex-wrap: wrap; align-items: flex-start; gap: 0.15rem 0.35rem; }
+.parts-line .piece { display: inline-grid; justify-items: center; font-weight: 600; }
+.parts-line .plus { color: var(--muted); }
+.parts-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.75rem; }
+.say-word { display: inline-flex; align-items: center; gap: 0.35rem; }
+.say-word button.icon { min-block-size: 44px; min-inline-size: 44px; padding: 0; border-radius: 50%; }
+.piece-kind { font-size: 0.7rem; font-weight: 400; color: var(--muted); }
+.class-chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding-inline: 0.55rem;
+  border-radius: 999px;
+  color: var(--wc);
+  background: color-mix(in srgb, var(--wc) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--wc) 45%, transparent);
+  margin-inline-end: 0.25rem;
+}
+.morph-detail { border-block-start: 1px solid var(--line); padding-block-start: 0.5rem; }
+.morph-detail > summary { cursor: pointer; display: flex; gap: 0.5rem; align-items: center; min-block-size: 44px; font-weight: 600; }
+.morph-body { display: grid; gap: 0.6rem; padding-block: 0.25rem 0.5rem; }
+.morph-notes { margin: 0; padding-inline-start: 1.1rem; display: grid; gap: 0.3rem; }
+.morph-notes .piece { font-weight: 700; }
+.morph-notes bdi { white-space: nowrap; }
+.morph-entry > summary { cursor: pointer; min-block-size: 32px; }
+.morph-entry p { margin-block: 0.25rem; color: var(--muted); }
+.colour-legend { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; font-size: 0.75rem; color: var(--muted); }
+.legend-item { display: inline-flex; align-items: center; gap: 0.3rem; }
+.legend-item .dot { inline-size: 0.7rem; block-size: 0.7rem; border-radius: 50%; background: var(--wc, currentColor); }
+.legend-item.wp-prefix .dot { background: var(--wp-prefix); }
+.legend-item.wp-suffix .dot { background: var(--wp-suffix); }
+.legend-item.wp-confix .dot { background: var(--wp-confix); }
+.legend-item.wp-clitic .dot { background: var(--wp-clitic); }
+.legend-item[class*="wp-"] { color: var(--muted); }
 .levels dl { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.75rem; margin: 0; }
 .levels dt { color: var(--muted); }
 .levels dd { margin: 0; font-weight: 600; }
@@ -882,6 +1069,10 @@ button.journal-delete { color: var(--dawn); border-color: var(--dawn); }
   text-align: start;
 }
 .pron.inline { display: inline; font-size: 1.15em; margin-inline: 0.3em; opacity: 0.85; }
+/* A block pronunciation is only as wide as its text, so in an English (LTR)
+   page it sits at the start under its sentence instead of floating. */
+.pron:not(.inline) { inline-size: fit-content; max-inline-size: 100%; justify-self: start; align-self: start; }
+.pron-unit.nowrap { white-space: nowrap; }
 .pron-reveal {
   font-family: var(--font-arabic);
   font-size: 0.8rem;

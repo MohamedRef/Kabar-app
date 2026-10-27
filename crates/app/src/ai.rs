@@ -1,11 +1,23 @@
 //! The app's AI router: the bundled routes and prompts, Kabar Cloud's
 //! engines behind the AI proxy, and a SQLite answer cache.
 
-use kabar_core::ai::{Cache, Engine, EngineFuture, PromptSet, RouteTable, Router};
+use kabar_core::ai::{
+    Cache, Engine, EngineFuture, ForgetFuture, LearnerProfile, PromptSet, RouteTable, Router,
+};
+use kabar_core::coach::plan;
+use kabar_core::review::Deck;
+use kabar_core::srs::Scheduler;
+use kabar_core::stats as core_stats;
 use kabar_protocol::ai::{CacheKey, EngineCall, EngineId};
+use kabar_protocol::coach::{ActivityEvent, CoachProfile, LocalDate, Motivation};
 
 use crate::Db;
 use crate::cloud::link::CloudLink;
+use crate::coach::WEAK_SPOT_WINDOW_DAYS;
+use crate::stats::{Logs, level_label, load_logs};
+
+/// Weak topics the prompts mention, worst first.
+const STRUGGLES_IN_PROMPT: usize = 3;
 
 /// Engines Kabar Cloud's `/v1/ai` proxy runs. Kabar Home (`local`) comes
 /// with its own client.
@@ -17,6 +29,52 @@ pub fn router(db: Db, link: CloudLink) -> Router {
         router = router.with_engine(Box::new(CloudEngine { id, link: link.clone() }));
     }
     router
+}
+
+/// What the prompts say about the learner: levels from the Journey, words
+/// from the review deck, goals from onboarding and struggles from the last
+/// two weeks of practice. Goals and struggles are personal; the router keeps
+/// them away from engines that train on inputs.
+pub fn learner_profile(
+    db: &Db,
+    profile: Option<&CoachProfile>,
+    events: &[ActivityEvent],
+    today: LocalDate,
+) -> LearnerProfile {
+    let (id, jv) = crate::journey::learner_levels(db, profile);
+    let Logs { cards, log, .. } = load_logs(db);
+    let deck = Deck::new(cards, log, &Scheduler::default());
+    let known_words =
+        core_stats::word_counts(deck.cards(), |id| deck.state(id)).iter().map(|w| w.known + w.learning).sum();
+    let mut goals: Vec<String> =
+        profile.map(|p| p.motivations.iter().map(|m| goal(*m).to_string()).collect()).unwrap_or_default();
+    if let Some(note) = profile.and_then(|p| p.why_note.as_deref()).map(str::trim).filter(|n| !n.is_empty()) {
+        goals.push(note.to_string());
+    }
+    let recent_struggles = plan::weak_spots(events, today, WEAK_SPOT_WINDOW_DAYS)
+        .into_iter()
+        .take(STRUGGLES_IN_PROMPT)
+        .map(|f| f.topic)
+        .collect();
+    LearnerProfile {
+        indonesian_level: level_label(&id),
+        javanese_level: jv.map_or_else(|| "not started".into(), |l| level_label(&l)),
+        known_words,
+        goals,
+        recent_struggles,
+        ..LearnerProfile::default()
+    }
+}
+
+fn goal(m: Motivation) -> &'static str {
+    match m {
+        Motivation::Travel => "travel in Indonesia",
+        Motivation::Work => "work",
+        Motivation::FamilyFriends => "talk with family and friends",
+        Motivation::Media => "films, music and social media",
+        Motivation::Faith => "faith: Islam in Indonesia and Java",
+        Motivation::Curiosity => "curiosity",
+    }
 }
 
 /// One engine run by Kabar Cloud. The router decides which may be used (free
@@ -42,6 +100,18 @@ impl Engine for CloudEngine {
         let mut call = call.clone();
         call.cache_key.engine = self.id;
         Box::pin(self.link.ai(call))
+    }
+
+    /// Drops the rejected answer from Cloud's shared cache too, so the
+    /// regenerate (and every other device) gets a fresh one.
+    fn forget<'a>(&'a self, key: &'a CacheKey) -> ForgetFuture<'a> {
+        let mut key = key.clone();
+        key.engine = self.id;
+        Box::pin(async move {
+            if let Err(e) = self.link.ai_reject(key).await {
+                crate::diag::report!("AI reject: {e}");
+            }
+        })
     }
 }
 
@@ -86,6 +156,31 @@ mod tests {
     }
 
     #[test]
+    fn the_profile_follows_onboarding_and_the_journey() {
+        let db = db();
+        let today = LocalDate::from_ymd(2026, 10, 27).unwrap();
+        let fresh = learner_profile(&db, None, &[], today);
+        assert_eq!(fresh, LearnerProfile::default());
+
+        let coach = CoachProfile {
+            motivations: vec![Motivation::Travel, Motivation::Faith],
+            why_note: Some("  To read Kompas every morning  ".into()),
+            start: kabar_protocol::coach::StartingPoint::CanChat,
+            ..CoachProfile::default()
+        };
+        let p = learner_profile(&db, Some(&coach), &[], today);
+        assert_eq!(p.indonesian_level, "BIPA 3", "the onboarding answer places the learner");
+        assert_eq!(p.javanese_level, "not started");
+        assert_eq!(p.known_words, 0);
+        assert_eq!(
+            p.goals,
+            ["travel in Indonesia", "faith: Islam in Indonesia and Java", "To read Kompas every morning"]
+        );
+        assert!(p.recent_struggles.is_empty());
+        assert!(p.render(EngineId::WorkersAi).contains("Indonesian level: BIPA 3."));
+    }
+
+    #[test]
     fn cloud_engines_are_planned_free_first() {
         let router = router(db(), CloudLink::default());
         let plan = router.plan(Task::RoleplayTurn, false).unwrap();
@@ -121,6 +216,7 @@ mod tests {
             input_hash: "abc".into(),
             engine: EngineId::WorkersAi,
             prompt_version: 1,
+            profile_hash: String::new(),
         };
         assert_eq!(cache.get(&key), None);
         cache.put(&key, "{}");

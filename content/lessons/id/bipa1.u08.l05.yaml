@@ -43,20 +43,24 @@ slides:
 exercises:
   - id: e01
     type: multiple_choice
-    question: Dia guru. Orangnya sabar, dan dia pakai kacamata. Siapa dia?
+    question: Tebak! Dia guru. Orangnya sabar, dan dia pakai kacamata. Siapa dia?
     options: [Ni Luh, Pak Irwan, Raka]
     answer: 1
     explain:
       ar_eg: مدرس صبور ولابس نضارة، يبقى الأستاذ إروان.
       ar: 'معلم صبور يلبس نظارة: إنه الأستاذ إروان.'
       en: 'A patient teacher in glasses: Pak Irwan.'
-    words: [sabar, kacamata, guru]
+    words: [tebak, sabar, kacamata, guru]
   - id: e02
     type: listen
-    text: Dia bukan Raka.
-    options: [Dia tidak Raka., Dia bukan Raka., 'Dia Raka, bukan?']
-    answer: 1
-    words: [bukan]
+    text: Salah, dia bukan Raka.
+    options: ['Salah, dia bukan Raka.', 'Salah, dia tidak Raka.', 'Betul, dia Raka.']
+    answer: 0
+    meaning:
+      ar_eg: غلط، ده مش راكا.
+      ar: خطأ، ليس راكا.
+      en: Wrong, he isn't Raka.
+    words: [salah, bukan]
   - id: e03
     type: fill_blank
     sentence: Raka lucu, tapi dia ___ sabar.
@@ -72,17 +76,17 @@ exercises:
     words: [tidak, sabar, lucu]
   - id: e04
     type: fill_blank
-    sentence: Dia ___ guru. Dia dokter.
+    sentence: Salah! Dia ___ guru. Dia dokter.
     meaning:
-      ar_eg: هي مش مدرسة. هي دكتورة.
-      ar: ليست معلمة، إنها طبيبة.
-      en: She isn't a teacher. She's a doctor.
+      ar_eg: غلط! هي مش مدرسة. هي دكتورة.
+      ar: خطأ! ليست معلمة، إنها طبيبة.
+      en: Wrong! She isn't a teacher. She's a doctor.
     answers: [bukan]
     explain:
       ar_eg: guru اسم، يبقى bukan.
       ar: guru اسم، فيُنفى بـ bukan.
       en: guru is a noun → bukan.
-    words: [bukan, guru]
+    words: [salah, bukan, guru]
   - id: e05
     type: build_sentence
     source:
@@ -125,21 +129,23 @@ exercises:
       en: Ni Luh is a noun → bukan; rambut Ni Luh = Ni Luh's hair (owner after the thing).
     words: [bukan, rambut, panjang]
   - id: e09
-    type: dictation
-    text: Dia bukan guru saya.
+    type: fill_blank
+    sentence: Tebak, siapa dia? — Raka? — ___! Dia Pak Irwan.
     meaning:
-      ar_eg: هو مش المدرس بتاعي.
-      ar: ليس معلمي.
-      en: He's not my teacher.
-    words: [bukan, guru]
+      ar_eg: خمّن، مين ده؟ — راكا؟ — غلط! ده الأستاذ إروان.
+      ar: خمّن، من هذا؟ — راكا؟ — خطأ! إنه الأستاذ إروان.
+      en: Guess who he is! — Raka? — Wrong! It's Pak Irwan.
+    options: [Salah, Betul, Tebak]
+    answers: [Salah]
+    words: [tebak, salah]
   - id: e10
     type: speaking
-    text: Dia tinggi, rambutnya pendek, dan orangnya lucu.
+    text: Tebak, siapa dia? Dia tinggi, rambutnya pendek, dan orangnya lucu.
     meaning:
-      ar_eg: هو طويل، شعره قصير، ودمه خفيف.
-      ar: هو طويل، شعره قصير، وظريف.
-      en: He's tall, his hair is short, and he's funny.
-    words: [tinggi, rambut, pendek, lucu]
+      ar_eg: خمّن مين ده؟ هو طويل، شعره قصير، ودمه خفيف.
+      ar: خمّن من هو؟ طويل، شعره قصير، وظريف.
+      en: Guess who? He's tall, his hair is short, and he's funny.
+    words: [tebak, tinggi, rambut, pendek, lucu]
 dialogue:
   title: Tebak-tebakan di Petak Sembilan
   lines:

@@ -108,7 +108,7 @@ mod android {
     }
 }
 
-/// Settings → Your data: what went wrong lately, to copy into a message.
+/// Settings → Offline & storage: what went wrong lately, to copy into a message.
 #[component]
 pub fn DiagnosticsCard() -> Element {
     let ui = use_context::<Ui>();

@@ -112,7 +112,11 @@ exercises:
         ar_eg: مية
         ar: ماء
         en: water
-    words: [ada, tidak ada, masjid, kolam renang, air]
+      - text: restoran
+        ar_eg: مطعم
+        ar: مطعم
+        en: restaurant
+    words: [ada, tidak ada, masjid, kolam renang, air, restoran]
   - id: e02
     type: multiple_choice
     question: Ada kolam renang?
@@ -130,9 +134,9 @@ exercises:
   - id: e03
     type: listen
     text: Di Ancol ada pantai.
-    options: [Di Ancol ada pantai., Di Ancol tidak ada pantai., Di Ancol ada taman.]
+    options: [Di Ancol ada pantai., Di Ancol tidak ada pantai., Di Ancol ada restoran.]
     answer: 0
-    words: [ada, pantai]
+    words: [ada, pantai, restoran]
   - id: e04
     type: fill_blank
     sentence: Di hotel ini ___ kolam renang.
@@ -144,32 +148,50 @@ exercises:
     answers: [ada]
     words: [ada, kolam renang, hotel]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: في أنكول فيه حمام سباحة.
-      ar: في أنكول مسبح.
-      en: There's a swimming pool in Ancol.
-    answer: Di Ancol ada kolam renang.
-    alternatives: [Ada kolam renang di Ancol.]
-    distractors: [tidak, berenang]
-    words: [ada, kolam renang]
+    type: listen
+    text: Di Ancol ada masjid dan restoran.
+    options: ['Di Ancol ada masjid dan restoran.', 'Di Ancol ada masjid, tapi tidak ada restoran.', 'Di Ancol ada toilet dan restoran.']
+    answer: 0
+    meaning:
+      ar_eg: في أنكول فيه جامع ومطعم.
+      ar: في أنكول مسجد ومطعم.
+      en: In Ancol there's a mosque and a restaurant.
+    words: [ada, masjid, restoran, tidak ada, toilet]
   - id: e06
-    type: translate
-    direction: from_target
-    source_text: Ada apa?
-    answers_meaning:
-      ar_eg: [فيه إيه؟, فيه إيه, في إيه؟]
-      ar: [ما الأمر؟, ماذا هناك؟, ما الأمر]
-      en: ['What''s up?', 'What''s wrong?', 'What''s the matter?', 'What''s going on?']
-    words: [ada]
+    type: fill_blank
+    sentence: ___ apa, Rina?
+    meaning:
+      ar_eg: فيه إيه يا رينا؟
+      ar: ما الأمر يا رينا؟
+      en: What's up, Rina?
+    options: [Ada, Air, Tidak]
+    answers: [Ada]
+    words: ['Ada apa?']
   - id: e07
     type: speaking
-    text: Maaf, Bu, ada toilet?
+    text: Maaf, Bu, ada air? Ada toilet?
     meaning:
-      ar_eg: لو سمحتي يا مدام، فيه تواليت؟
-      ar: عذرًا يا سيدتي، هل يوجد حمّام؟
-      en: Excuse me, ma'am, is there a toilet?
-    words: [ada, toilet]
+      ar_eg: لو سمحتي يا مدام، فيه مية؟ فيه حمام؟
+      ar: عذرًا يا سيدتي، هل يوجد ماء؟ هل يوجد حمّام؟
+      en: Excuse me, ma'am, is there water? Is there a toilet?
+    words: [ada, air, toilet]
+  - id: e08
+    type: speaking
+    text: Ada apa? Tidak ada air di toilet!
+    meaning:
+      ar_eg: فيه إيه؟ مفيش مية في الحمام!
+      ar: ما الأمر؟ لا يوجد ماء في الحمّام!
+      en: What's wrong? There's no water in the toilet!
+    words: ['Ada apa?', tidak ada, air, toilet]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حد بيزعّق برّه. تسأل «فيه إيه؟» إزاي؟
+      ar: أحدهم يصيح في الخارج. كيف تسأل «ما الأمر؟»
+      en: Someone's shouting outside. How do you ask "What's going on?"
+    options: ['Ada apa?', 'Ada masjid?', 'Apa kabar?']
+    answer: 0
+    words: ['Ada apa?', masjid]
 dialogue:
   title: Ada apa di Ancol?
   lines:

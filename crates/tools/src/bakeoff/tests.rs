@@ -109,6 +109,7 @@ fn requests_match_what_kabar_cloud_sends() {
             input_hash: "h".into(),
             engine: EngineId::WorkersAi,
             prompt_version: 1,
+            profile_hash: String::new(),
         },
         system: "sys".into(),
         user: "Sek tak lapor pusat".into(),

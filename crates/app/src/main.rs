@@ -2,7 +2,9 @@
 
 mod account;
 mod ai;
+mod annotated;
 mod audio;
+mod back;
 mod chat;
 mod cloud;
 mod coach;
@@ -17,6 +19,7 @@ mod lesson;
 mod listen;
 mod map_art;
 mod misc_art;
+mod more;
 mod packs;
 mod penlab;
 mod platform;
@@ -25,6 +28,7 @@ mod pron;
 mod reader;
 mod review;
 mod screens;
+mod settings;
 mod sounds;
 mod souvenir_art;
 mod stats;
@@ -104,9 +108,9 @@ impl Screen {
     }
 
     /// Hidden from the phone's bottom bar, which keeps five items within
-    /// thumb reach. Kak Nur, the journal, Watch & listen, Chat and Settings are
-    /// linked from Today there (the journal from Kak Nur too); Studio and Pen
-    /// Lab from Settings.
+    /// thumb reach. Kak Nur, the journal, Watch & listen, Chat and Teach
+    /// Kabar are linked from Today there (the journal from Kak Nur too); Settings is the gear
+    /// in the phone's top bar.
     /// Pen tools: shown on a tablet only (`Ui::tablet`).
     pub fn pen_only(self) -> bool {
         matches!(self, Self::Studio | Self::PenLab)
@@ -115,7 +119,8 @@ impl Screen {
     fn secondary(self) -> bool {
         matches!(
             self,
-            Self::Coach
+            Self::Play
+                | Self::Coach
                 | Self::Journal
                 | Self::Settings
                 | Self::Studio
@@ -216,8 +221,14 @@ fn main() {
             .with_title("Kabar")
             .with_inner_size(LogicalSize::new(w, h))
             .with_min_inner_size(LogicalSize::new(360.0, 560.0));
+        // The Mac gets its menu bar (Kabar › Settings… ⌘,); the Linux dev
+        // window stays bare so previews match the Mac's content area.
+        #[cfg(target_os = "macos")]
+        let menu = Some(settings::menu::menu_bar());
+        #[cfg(not(target_os = "macos"))]
+        let menu = None;
         dioxus::LaunchBuilder::desktop()
-            .with_cfg(Config::new().with_window(window).with_menu(None).with_disable_context_menu(true))
+            .with_cfg(Config::new().with_window(window).with_menu(menu).with_disable_context_menu(true))
             .launch(App);
     }
     #[cfg(not(all(feature = "desktop", not(target_os = "android"))))]
@@ -284,6 +295,9 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         lesson_from: Signal::new(Screen::Journey),
     });
     use_context_provider(|| db.clone());
+    let prefs = use_context_provider(|| settings::device::DevicePrefs::load(&db));
+    use_context_provider(settings::SettingsNav::new);
+    use_context_provider(more::MoreNav::new);
     use_context_provider(play::PlayNav::new);
     use_context_provider(|| teach::TeachInbox(Signal::new(None)));
     let link = use_hook(cloud::link::CloudLink::default);
@@ -293,9 +307,11 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_context_provider(|| audio::AudioCache::new(audio_dir, link.clone()));
     let coach = use_context_provider(|| Coach::load(&db));
     use_hook(reader::warm_up);
+    annotated::use_words(&db);
     use_width_tracking(ui.width, ui.tablet);
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
+    use_learner_profile(&db, coach);
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
@@ -318,12 +334,22 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         }
     });
     let onboarded = coach.profile.read().is_some();
+    let text_size = prefs.text_size.read().as_str();
+    let nav_style = prefs.nav_style.read().as_str();
+    let on_off = |on: bool| if on { "on" } else { "off" };
+    let pen_hover = on_off(*prefs.pen_hover.read());
+    let mouse_hover = on_off(*prefs.mouse_hover.read());
+    // One switch for word colours everywhere: main.css neutralizes the
+    // .wc-* / .wp-* colours under data-word-colours="off".
+    let word_colours = on_off(!settings.word_colours_off);
 
     rsx! {
         document::Title { "Kabar" }
         style { {MAIN_CSS} }
         style { {theme_css} }
         style { {pron_font} }
+        style { {annotated::CSS} }
+        style { {reader::grammar::CSS} }
         style { {ui_fonts} }
         style { {misc_art::paper_css()} }
         div {
@@ -332,6 +358,11 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             dir: lang.dir().as_str(),
             "data-theme": theme,
             "data-width": width,
+            "data-text-size": text_size,
+            "data-nav": nav_style,
+            "data-pen-hover": pen_hover,
+            "data-mouse-hover": mouse_hover,
+            "data-word-colours": word_colours,
             style: "{batik}",
             if !settings.welcomed {
                 screens::Welcome {}
@@ -358,6 +389,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
     });
     let db = db.clone();
     let coach = try_use_context::<Coach>();
+    let words = use_context::<annotated::Words>();
     use_hook(move || {
         let Some(config) = cloud::CloudConfig::from_env() else { return };
         let device = kabar_protocol::cloud::DeviceInfo {
@@ -415,6 +447,10 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
                             coach.reminders.set(store.reminder_state().unwrap_or_default());
                             coach.plan_rev += 1;
                         }
+                        if tables.contains("taught_entries") {
+                            drop(store);
+                            words.refresh(&db);
+                        }
                         revision += 1;
                     }
                 }
@@ -430,6 +466,25 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
 
 /// Mirrors the window width into `width`, so layout follows the window,
 /// not the device (split screen, DeX and Mac windows all just work).
+/// Keeps the AI prompts' learner profile current: it follows the activity
+/// log (lessons, reviews, practice) and the onboarding answers. The minute
+/// clock is only peeked, so the deck isn't re-read every minute.
+fn use_learner_profile(db: &Db, coach: Coach) {
+    let ai = use_context::<teach::Ai>();
+    let db = db.clone();
+    use_effect(move || {
+        let events = coach.events.read();
+        let profile = coach.profile.read();
+        let offset = profile
+            .as_ref()
+            .map(|p| p.utc_offset_min)
+            .or(*coach.device_offset.peek())
+            .unwrap_or(kabar_protocol::coach::CoachProfile::default().utc_offset_min);
+        let today = coach::clock::today(*coach.now_ms.peek(), offset);
+        ai.0.set_profile(ai::learner_profile(&db, profile.as_ref(), &events, today));
+    });
+}
+
 fn use_width_tracking(mut width: Signal<WidthClass>, mut tablet: Signal<bool>) {
     use_future(move || async move {
         let mut eval = document::eval(
@@ -488,6 +543,15 @@ fn Shell() -> Element {
         document::eval(r#"window.scrollTo({ top: 0, left: 0, behavior: "instant" });"#);
     }
     let tablet = *ui.tablet.read();
+    let settings_nav = use_context::<settings::SettingsNav>();
+    #[cfg(all(feature = "desktop", not(target_os = "android")))]
+    settings::menu::use_menu_events(ui, settings_nav);
+    let settings_open = *settings_nav.open.read();
+    back::use_back(ui, current, settings_open);
+    // Full-screen players keep the whole screen; everywhere else on the
+    // phone a slim top bar carries the gear.
+    let top_bar =
+        *ui.width.read() == WidthClass::Compact && !matches!(current, Screen::Lesson | Screen::LevelCheck);
     let items = [
         Screen::Today,
         Screen::Journey,
@@ -501,9 +565,10 @@ fn Shell() -> Element {
         Screen::Studio,
         Screen::Teach,
         Screen::PenLab,
-        Screen::Devices,
-        Screen::Settings,
     ];
+    // Re-tapping the tab you're on starts that section over (Games → the
+    // hub, Chat → the list, Review → its home): the screen remounts.
+    let mut generation = use_signal(|| 0u32);
 
     rsx! {
         div { class: "shell",
@@ -514,16 +579,40 @@ fn Shell() -> Element {
                         key: "{item:?}",
                         class: if item.secondary() { "nav-item secondary" } else { "nav-item" },
                         aria_current: if item == current { "page" } else { "false" },
+                        title: "{ui.t(item.label())}",
                         onclick: move |_| {
+                            if item == *ui.screen.peek() {
+                                generation += 1;
+                            }
+                            if item == Screen::Play {
+                                let play::PlayNav(mut nav) = consume_context::<play::PlayNav>();
+                                nav.set(play::Route::Hub);
+                            }
                             let mut screen = ui.screen;
                             screen.set(item);
                         },
                         span { class: "nav-icon", aria_hidden: "true", {icons::nav(item)} }
-                        span { "{ui.t(item.label())}" }
+                        span { class: "nav-label",
+                            "{more::rail_label(ui.lang(), item).unwrap_or(ui.t(item.label()))}"
+                        }
                     }
                 }
+                more::MoreTab { current }
+                // Pinned to the foot of the rail and sidebar (hidden in the
+                // phone's bottom bar, which has the gear up top instead).
+                button {
+                    class: "nav-item secondary nav-settings",
+                    aria_current: if settings_open { "page" } else { "false" },
+                    aria_haspopup: "dialog",
+                    onclick: move |_| settings_nav.show(None),
+                    span { class: "nav-icon", aria_hidden: "true", {icons::gear()} }
+                    span { "{ui.t(Msg::NavSettings)}" }
+                }
             }
-            main { class: "content",
+            if top_bar {
+                more::TopBar { current }
+            }
+            main { class: "content", key: "{current:?}-{generation}",
                 match current {
                     Screen::Today => rsx! { coach::today::Today {} },
                     Screen::Coach => rsx! { coach::coach_screen::CoachScreen {} },
@@ -533,7 +622,8 @@ fn Shell() -> Element {
                     Screen::Reader => rsx! { reader::Reader {} },
                     Screen::Review => rsx! { review::ReviewScreen {} },
                     Screen::Studio => rsx! { studio::StudioScreen {} },
-                    Screen::Settings => rsx! { screens::SettingsScreen {} },
+                    // Settings is a sheet over the current screen, not a screen.
+                    Screen::Settings => rsx! { coach::today::Today {} },
                     Screen::PenLab => rsx! { penlab::PenLab {} },
                     Screen::Devices => rsx! { account::AccountScreen {} },
                     Screen::Teach => rsx! { teach::TeachScreen {} },
@@ -545,6 +635,8 @@ fn Shell() -> Element {
                     Screen::LevelCheck => rsx! { stats::check::LevelCheckScreen {} },
                 }
             }
+            more::MoreSheet {}
+            settings::SettingsSheet {}
         }
     }
 }

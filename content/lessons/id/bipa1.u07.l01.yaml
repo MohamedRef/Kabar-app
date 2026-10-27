@@ -58,16 +58,12 @@ exercises:
   - id: e01
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة صح بمعنى «عايز آكل»؟
-      ar: أيّ جملة صحيحة بمعنى «أريد أن آكل»؟
-      en: Which sentence correctly says "I want to eat"?
-    options: [Saya mau makan., Saya mau untuk makan., Saya makan mau.]
+      ar_eg: إزاي تقول «هوايتي الكورة»؟
+      ar: كيف تقول «هوايتي كرة القدم»؟
+      en: How do you say "My hobby is football"?
+    options: ['Hobi saya sepak bola.', 'Hobi saya bulu tangkis.', 'Saya sepak bola hobi.']
     answer: 0
-    explain:
-      ar_eg: الفعل بييجي بعد mau على طول، زي «عايز آكل».
-      ar: يأتي الفعل بعد mau مباشرة.
-      en: The verb follows mau directly, like «عايز آكل».
-    words: [mau]
+    words: [hobi, sepak bola, bulu tangkis]
   - id: e02
     type: build_sentence
     source:
@@ -136,6 +132,24 @@ exercises:
       ar: أحب شرب الشاي المحلّى.
       en: I like drinking sweet tea.
     words: [suka, manis]
+  - id: e08
+    type: fill_blank
+    sentence: Saya suka teh ___.
+    meaning:
+      ar_eg: أنا بحب الشاي المسكّر.
+      ar: أحب الشاي المحلّى.
+      en: I like sweet tea.
+    options: [manis, hobi, ingin]
+    answers: [manis]
+    words: [manis]
+  - id: e09
+    type: speaking
+    text: Saya ingin minum teh manis.
+    meaning:
+      ar_eg: نفسي أشرب شاي مسكّر.
+      ar: أريد أن أشرب شايًا محلّى.
+      en: I'd like to drink sweet tea.
+    words: [ingin, manis]
 dialogue:
   title: Hobimu apa?
   lines:

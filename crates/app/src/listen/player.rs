@@ -8,6 +8,7 @@ use std::collections::BTreeSet;
 use dioxus::document::Eval;
 use dioxus::prelude::*;
 use kabar_core::lesson::pick;
+use kabar_core::settings::TranslationMode;
 use kabar_core::story::{Heading, Program, cue_at};
 use kabar_protocol::cloud::TtsRequest;
 use kabar_protocol::story::SegmentKind;
@@ -15,6 +16,7 @@ use serde::Deserialize;
 
 use super::text::{T, tt};
 use crate::account::Cloud;
+use crate::annotated::Annotated;
 use crate::audio::{self, AudioCache, Track};
 use crate::cloud::SyncState;
 use crate::cloud::link::Unreachable;
@@ -392,7 +394,8 @@ pub fn ProgramPlayer(
         finished: Signal::new(false),
         missing: Signal::new(false),
     });
-    let mut show_all = use_signal(|| false);
+    // The translation setting decides whether every line starts translated.
+    let mut show_all = use_signal(|| ui.settings.peek().translation == TranslationMode::On);
     let mut revealed = use_signal(BTreeSet::<usize>::new);
     let mut notes = use_signal(BTreeSet::<usize>::new);
     let mut download = use_signal(|| DownloadState::Idle);
@@ -538,7 +541,7 @@ pub fn ProgramPlayer(
                                         aria_current: if i == current && playing { "true" } else { "false" },
                                         onclick: move |_| deck.play(i),
                                         span { class: "lx-speaker", bdi { "{cue.speaker}" } }
-                                        bdi { lang: target, class: "latin lx-text", "{cue.text}" }
+                                        Annotated { text: cue.text.clone(), tag: target, class: "lx-text" }
                                     }
                                     if show_all() || revealed.read().contains(&i) {
                                         p { class: "lx-meaning muted", Rich { text: pick(&cue.meaning, lang).to_string(), target } }

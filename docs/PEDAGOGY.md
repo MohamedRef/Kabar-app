@@ -179,7 +179,15 @@ Where a lesson's theme allows, at least one new word is an Arabic loan with the 
 ### 5.1 Fixed lesson length, growing lesson counts
 Higher levels need more hours (Cervantes 90 → 120 → 150 → 180 h per level [43]; Cambridge's widening cumulative gaps [42]). Kabar keeps the **lesson length fixed (≤ 7 min) and gives each unit more lessons as levels rise.** Illustrative shape [synth]: BIPA 1 about 5 lessons per unit, rising by about one lesson per unit per level to about 10 at BIPA 6–7. Javanese follows the same pattern from J1. The unit structure stays as learn lessons → practice → review (souvenir).
 
-> **Observation on the current `curriculum/*.yaml`:** BIPA 1–2 have 5 lessons per unit at 10 min each. BIPA 3–7 have 4 lessons per unit with *rising* minutes per level. That is the reverse of this standard, and 10 minutes is above the 7-minute cap. The curriculum should be re-cut: more lessons per unit at higher levels, with `minutes` taken from the time model (§6).
+> **Current shape (October 2026):** every lesson is ≤ 7 min, and lessons per unit grow with the level:
+>
+> | Level | BIPA 1 | BIPA 2 | BIPA 3 | BIPA 4 | BIPA 5 | BIPA 6 | BIPA 7 |
+> |---|---|---|---|---|---|---|---|
+> | Lessons per unit | 5–12 (74 in all) | 6–7 | 7 | 8 | 9 | 10 | 10 |
+>
+> | Level | J1 | J2 | J3 | J4 | J5 | J6 |
+> |---|---|---|---|---|---|---|
+> | Lessons per unit | 5–6 | 6 | 7 | 8 | 9 | 10 |
 
 ### 5.2 Weeks per level
 The universities' working figure is **~100–136 contact hours per BIPA level** [45][46]. The table below is plain arithmetic, studying every day [synth]:

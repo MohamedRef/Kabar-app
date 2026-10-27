@@ -15,7 +15,7 @@ use kabar_core::reader::translate::{self, MAX_CHARS, MAX_LINES};
 use kabar_protocol::ai::Task;
 
 use super::ReaderState;
-use super::doc::{ReadDoc, SegKind, Tag};
+use super::doc::{ReadDoc, SegKind};
 use crate::Ui;
 use crate::account::Cloud;
 use crate::i18n::Msg;
@@ -87,9 +87,7 @@ pub fn lines(doc: &ReadDoc) -> Vec<usize> {
 
 /// Javanese when most of the text's tagged words are.
 pub fn text_lang(doc: &ReadDoc) -> Lang {
-    let count =
-        |tag: Tag| doc.tokens.iter().filter(|t| t.word.as_ref().is_some_and(|w| w.tag == tag)).count();
-    if count(Tag::Javanese) > count(Tag::Indonesian) { Lang::Javanese } else { Lang::Indonesian }
+    doc.lang_of(0..doc.tokens.len())
 }
 
 /// The first sense of a gloss, without its hints: "going to, will · to

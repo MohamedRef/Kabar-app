@@ -78,7 +78,7 @@ exercises:
       ar_eg: إزاي تقول «أخويا الكبير اللي طويل»؟
       ar: كيف تقول «أخي الأكبر الطويل»؟
       en: How do you say "my older sibling, the tall one"?
-    options: [kakak saya yang tinggi, kakak yang saya tinggi, tinggi kakak saya]
+    options: [kakak saya yang tinggi, kakak saya yang mana, tinggi kakak saya]
     answer: 0
     explain:
       ar_eg: الاسم، وبعدين صاحبه، وبعدين yang + الوصف.
@@ -107,16 +107,16 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: أخويا الكبير طويل.
-      ar: أخي الأكبر طويل.
-      en: My older sibling is tall.
-    answer: Kakak saya tinggi.
-    distractors: [yang, adik]
+      ar_eg: أخويا الصغير صغيّر.
+      ar: أخي الأصغر صغير.
+      en: My younger brother is small.
+    answer: Adik saya kecil.
+    distractors: [yang, besar]
     explain:
-      ar_eg: دي جملة كاملة (هو طويل)، فمش محتاجين yang.
-      ar: هذه جملة تامة (هو طويل)، فلا حاجة إلى yang.
-      en: This is a full sentence ("is tall"), so no yang is needed.
-    words: [kakak, tinggi]
+      ar_eg: دي جملة كاملة (هو صغير)، فمش محتاجين yang.
+      ar: هذه جملة تامة (هو صغير)، فلا حاجة إلى yang.
+      en: This is a full sentence ("is small"), so no yang is needed.
+    words: [adik, kecil]
   - id: e06
     type: translate
     direction: from_target
@@ -156,6 +156,31 @@ exercises:
       ar: أيّهم أخي الأكبر؟
       en: Which one is my older sibling?
     words: [yang mana]
+  - id: e09
+    type: listen
+    text: Rumah saya kecil, tapi baru.
+    options: ['Rumah saya kecil, tapi baru.', 'Rumah saya besar, tapi baru.', 'Rumah saya kecil dan tinggi.']
+    answer: 0
+    meaning:
+      ar_eg: بيتي صغير، بس جديد.
+      ar: بيتي صغير، لكنه جديد.
+      en: My house is small, but new.
+    words: [kecil, baru]
+  - id: e10
+    type: fill_blank
+    sentence: Rumahmu yang ___?
+    meaning:
+      ar_eg: بيتك أنهي واحد؟
+      ar: أيّها بيتك؟
+      en: Which one is your house?
+    options: [mana, apa, siapa]
+    answers: [mana]
+    explain:
+      ar_eg: yang mana = أنهي واحد، لما تختار من كذا حاجة قدامك.
+      ar: yang mana = أيّها، عند الاختيار بين أشياء أمامك.
+      en: yang mana = which one, when choosing among things in front of you.
+    words: [yang mana]
+
 dialogue:
   lines:
     - speaker: Mohamed

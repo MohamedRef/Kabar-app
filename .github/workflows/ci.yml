@@ -5,8 +5,11 @@ on:
     branches: [main]
   pull_request:
 
+# A new push to a PR cancels that PR's older run. On main every commit runs
+# to the end, so each merged PR gets its own verdict instead of a
+# "cancelled" when the next merge lands a minute later.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.ref }}-${{ github.event_name == 'pull_request' && 'pr' || github.sha }}
   cancel-in-progress: true
 
 # Every job here only reads the repo, on pull requests and on main alike.
@@ -31,8 +34,15 @@ jobs:
       - run: cargo fmt --all --check
       - run: cargo clippy --workspace --all-targets -- -D warnings
       - run: cargo test --workspace
-      - name: Content checks (lessons, tests, glosses, offline pack manifests, README numbers)
+      - name: Content checks (lessons, tests, glosses, offline pack manifests)
         run: cargo run -p kabar-tools -- validate
+      # Advisory only: parallel PRs would race each other on these numbers.
+      # The daily README routine commits the refreshed block.
+      - name: README numbers (advisory, refreshed daily)
+        run: |
+          if ! cargo run -q -p kabar-tools -- readme --check; then
+            echo "::warning file=README.md::README numbers are stale; the daily refresh or just readme updates them"
+          fi
 
   android:
     name: Android arm64 compiles
