@@ -144,7 +144,7 @@ pub fn journey_position(db: &Db) -> Option<(String, f32)> {
     let completed = store.completed_lessons().unwrap_or_default();
     let mut progress = Progress::new(cur, &completed);
     if let Ok(Some(p)) = store.placement() {
-        progress = progress.start_at(cur, &p.start_level);
+        progress = progress.start_at(cur, p.start_unit.as_deref().unwrap_or(&p.start_level));
     }
     lc::journey_level(cur, &progress)
 }

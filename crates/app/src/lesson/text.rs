@@ -98,6 +98,9 @@ pub enum L {
     TryAgain,
     PlacementTitle,
     PlacementBody,
+    PlacementUnit,
+    UnitsToRevisit,
+    Revisit,
     GoToJourney,
     InviteTitle,
     InviteBody,
@@ -418,6 +421,15 @@ pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
         (PlacementBody, Ar) => {
             "سنبدأ من {level}. يمكنك دائمًا العودة إلى محطات سابقة أو التقدّم عبر «سافر بالطائرة»."
         }
+        (PlacementUnit, ArEg) => "وهنبدأ من وحدة {unit}، أول وحدة فيها حاجات جديدة عليك.",
+        (PlacementUnit, Ar) => "وسنبدأ من وحدة {unit}، أول وحدة فيها جديد عليك.",
+        (PlacementUnit, En) => "We'll start at {unit}, the first unit with new things for you.",
+        (UnitsToRevisit, ArEg) => "وحدات تستاهل رجعة",
+        (UnitsToRevisit, Ar) => "وحدات تستحق المراجعة",
+        (UnitsToRevisit, En) => "Units worth a second visit",
+        (Revisit, ArEg) => "راجعها",
+        (Revisit, Ar) => "راجِعها",
+        (Revisit, En) => "Go over it",
         (PlacementBody, En) => {
             "We'll start at {level}. You can always go back to earlier stops, or skip ahead with Take a flight."
         }

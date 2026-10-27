@@ -104,7 +104,7 @@ fn learner_levels(db: &Db, coach: &Coach) -> (String, Option<String>) {
     let start = crate::journey::start_level(db, coach.profile.peek().as_ref());
     let id = crate::journey::current_unit(&completed, start.as_deref(), false)
         .map(|u| level_of(&u))
-        .or(start)
+        .or(start.as_deref().map(level_of))
         .unwrap_or_else(|| "bipa1".into());
     let jv = completed
         .iter()
