@@ -100,6 +100,36 @@ mod tests {
     }
 
     #[test]
+    fn stylesheets_take_colours_from_tokens() {
+        // A raw hex colour in a rule doesn't follow the theme (dark mode
+        // breaks). Hex belongs only in custom-property definitions.
+        let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("assets");
+        let hex = |s: &str| {
+            s.match_indices('#').any(|(i, _)| {
+                let digits = s[i + 1..].chars().take_while(char::is_ascii_hexdigit).count();
+                matches!(digits, 3 | 4 | 6 | 8)
+            })
+        };
+        for entry in std::fs::read_dir(&dir).expect("assets dir") {
+            let path = entry.expect("dir entry").path();
+            if path.extension().is_none_or(|e| e != "css") {
+                continue;
+            }
+            let css = std::fs::read_to_string(&path).expect("readable css");
+            for (n, line) in css.lines().enumerate() {
+                // The declarations after the last `{` (or the whole line).
+                let is_token = line.rsplit('{').next().is_some_and(|d| d.trim_start().starts_with("--"));
+                assert!(
+                    !hex(line) || is_token,
+                    "{}:{}: raw colour outside a token; use a theme variable\n{line}",
+                    path.display(),
+                    n + 1
+                );
+            }
+        }
+    }
+
+    #[test]
     fn every_theme_gets_a_batik_tile() {
         let css = stylesheet();
         for theme in Theme::ALL {

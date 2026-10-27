@@ -215,7 +215,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .welcome .hero .tall { display: none; }
 .app[data-width="compact"] .welcome .hero .wide { display: none; }
 .app[data-width="compact"] .welcome .hero .tall { display: block; block-size: 14rem; object-position: center 40%; }
-.welcome .hero .greeting { font-size: clamp(2.2rem, 8vw, 3.4rem); position: absolute; inset-block-start: 0.75rem; inset-inline: 0; margin: 0; color: #2B3A70; text-shadow: 0 1px 12px rgb(245 239 227 / 0.6); }
+/* The greeting sits on a fixed light sky, so it keeps Paper's indigo in
+   every theme. */
+.welcome .hero { --hero-ink: #2b3a70; }
+.welcome .hero .greeting { font-size: clamp(2.2rem, 8vw, 3.4rem); position: absolute; inset-block-start: 0.75rem; inset-inline: 0; margin: 0; color: var(--hero-ink); text-shadow: 0 1px 12px rgb(245 239 227 / 0.6); }
 .greeting {
   font-family: var(--font-latin);
   font-size: clamp(2.6rem, 9vw, 4.5rem);
