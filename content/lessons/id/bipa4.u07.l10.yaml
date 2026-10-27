@@ -1,0 +1,167 @@
+schema: kabar.lesson/v1
+id: bipa4.u07.l10
+language: id
+title: Brosur puskesmas
+can_do:
+  ar_eg: تقرا بروشور الوحدة الصحية وتعرف المواعيد والخدمات وتاخد معاك إيه.
+  ar: أن تقرأ كتيّب المركز الصحي وتعرف المواعيد والخدمات وما يجب أن تحمله معك.
+  en: Read a health-centre leaflet and find the hours, the services and what to bring.
+slides:
+  - title: Informasi untuk pasien
+    body:
+      ar_eg: |
+        البروشور ده على باب بوسكيسماس في جورونتالو. اقراه زي ما تكون عيّان رايح هناك.
+        لاحظ أسماء peN-…-an: pemeriksaan، pengobatan، pendaftaran.
+      ar: |
+        هذا الكتيّب على باب أحد مراكز بوسكيسماس في غورونتالو. اقرأه كأنك مريض ذاهب إليه.
+        لاحظ أسماء peN-…-an: pemeriksaan، pengobatan، pendaftaran.
+      en: |
+        This leaflet is on the door of a puskesmas in Gorontalo. Read it as if you were a patient going there.
+        Notice the peN-…-an nouns: pemeriksaan, pengobatan, pendaftaran.
+    examples:
+      - text: Puskesmas kami buka hari Senin sampai Sabtu, pukul 08.00 sampai 14.00.
+        ar_eg: الوحدة الصحية بتاعتنا فاتحة من الاتنين للسبت، من ٨ الصبح لحد ٢ الضهر.
+        ar: يفتح مركزنا الصحي من الإثنين إلى السبت، من الثامنة صباحًا حتى الثانية ظهرًا.
+        en: Our puskesmas is open Monday to Saturday, from 8:00 to 14:00.
+      - text: Setiap Kamis ada pemeriksaan tekanan darah gratis dan imunisasi untuk anak-anak.
+        ar_eg: كل خميس فيه كشف ضغط ببلاش وتطعيمات للأطفال.
+        ar: كل خميس هناك فحص مجاني لضغط الدم وتطعيم للأطفال.
+        en: Every Thursday there are free blood-pressure checks and immunisations for children.
+      - text: Jangan lupa membawa kartu BPJS ke loket pendaftaran. Biaya pengobatan ditanggung asuransi.
+        ar_eg: ما تنساش تجيب كارت التأمين (BPJS) لشباك التسجيل. مصاريف العلاج على التأمين.
+        ar: لا تنسَ إحضار بطاقة BPJS إلى شبّاك التسجيل، فتكاليف العلاج يغطيها التأمين.
+        en: Don't forget to bring your BPJS card to the registration desk. Treatment costs are covered by insurance.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: كشف الضغط ببلاش يوم إيه؟
+      ar: في أيّ يوم يكون فحص الضغط مجانيًا؟
+      en: When is the free blood-pressure check?
+    options: [Setiap Senin, Setiap Kamis, Setiap Sabtu]
+    answer: 1
+    words: [pemeriksaan, tekanan darah]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: العيّان لازم يجيب معاه إيه؟
+      ar: ماذا يجب أن يُحضر المريض؟
+      en: What must patients bring?
+    options: [Kartu BPJS, Foto keluarga, Surat dari sekolah]
+    answer: 0
+    words: [asuransi]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الوحدة الصحية فاتحة يوم الحد؟
+      ar: هل يفتح المركز الصحي يوم الأحد؟
+      en: Is the puskesmas open on Sunday?
+    options:
+      - Ya, sampai pukul 14.00.
+      - Ya, hanya untuk imunisasi.
+      - Tidak, hanya Senin sampai Sabtu.
+    answer: 2
+  - id: e04
+    type: listen
+    text: Biaya pengobatan ditanggung asuransi.
+    options:
+      - Biaya pemeriksaan ditanggung asuransi.
+      - Biaya pengobatan ditanggung asuransi.
+      - Biaya pengobatan dibayar sendiri.
+    answer: 1
+    meaning:
+      ar_eg: مصاريف العلاج على التأمين.
+      ar: تكاليف العلاج يغطيها التأمين.
+      en: Treatment costs are covered by insurance.
+    words: [pengobatan, ditanggung, asuransi]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: pendaftaran
+        ar_eg: تسجيل
+        ar: تسجيل
+        en: registration
+      - text: pemeriksaan
+        ar_eg: كشف / فحص
+        ar: فحص
+        en: examination, check-up
+      - text: pengobatan
+        ar_eg: علاج
+        ar: علاج
+        en: treatment
+      - text: imunisasi
+        ar_eg: تطعيم
+        ar: تطعيم
+        en: immunisation
+      - text: ditanggung
+        ar_eg: على حساب (التأمين)
+        ar: مغطّى (بالتأمين)
+        en: covered (paid for)
+    words: [pendaftaran, pemeriksaan, pengobatan, imunisasi, ditanggung]
+  - id: e06
+    type: fill_blank
+    sentence: Setiap Kamis ada ___ tekanan darah gratis.
+    meaning:
+      ar_eg: كل خميس فيه كشف ضغط ببلاش.
+      ar: كل خميس هناك فحص مجاني لضغط الدم.
+      en: Every Thursday there is a free blood-pressure check.
+    options: [pendaftaran, pemeriksaan, pengobatan]
+    answers: [pemeriksaan]
+    words: [pemeriksaan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: ما تنساش تجيب كارت BPJS بتاعك.
+      ar: لا تنسَ إحضار بطاقة BPJS الخاصة بك.
+      en: Don't forget to bring your BPJS card.
+    answer: Jangan lupa membawa kartu BPJS Anda.
+    distractors: [ditanggung, loket]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: تطعيم الأطفال كل يوم خميس.
+      ar: تطعيم الأطفال كل يوم خميس.
+      en: Children's immunisation is every Thursday.
+    answers:
+      - Imunisasi anak setiap hari Kamis.
+      - Imunisasi anak-anak setiap hari Kamis.
+      - Imunisasi anak ada setiap hari Kamis.
+      - Imunisasi untuk anak-anak ada setiap Kamis.
+      - Imunisasi anak setiap Kamis.
+      - Imunisasi anak-anak setiap Kamis.
+      - Imunisasi anak-anak ada setiap Kamis.
+      - Imunisasi untuk anak-anak setiap hari Kamis.
+    words: [imunisasi]
+dialogue:
+  title: Mau periksa
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, kamu mau periksa tekanan darah, kan?
+      ar_eg: يا Mohamed، إنت عايز تكشف على الضغط، صح؟
+      ar: يا Mohamed، تريد فحص ضغط دمك، أليس كذلك؟
+      en: Mohamed, you want to get your blood pressure checked, right?
+    - speaker: Mohamed
+      text: Iya. Menurut brosur ini, pemeriksaannya gratis setiap Kamis.
+      ar_eg: أيوه. البروشور ده بيقول إن الكشف ببلاش كل خميس.
+      ar: نعم. بحسب هذا الكتيّب، الفحص مجاني كل خميس.
+      en: Yes. According to this leaflet, the check is free every Thursday.
+    - speaker: Mas Rizal
+      text: Bagus. Jangan lupa bawa kartu BPJS.
+      ar_eg: حلو. ما تنساش تاخد كارت BPJS.
+      ar: جيد. لا تنسَ إحضار بطاقة BPJS.
+      en: Good. Don't forget your BPJS card.
+    - speaker: Mohamed
+      text: Sudah saya siapkan. Puskesmasnya buka jam berapa?
+      ar_eg: جهّزته خلاص. الوحدة بتفتح الساعة كام؟
+      ar: جهّزتها بالفعل. متى يفتح المركز الصحي؟
+      en: I've got it ready. What time does the puskesmas open?
+    - speaker: Mas Rizal
+      text: Jam delapan. Datang pagi-pagi supaya tidak antre lama.
+      ar_eg: الساعة تمانية. روح بدري عشان ما تقفش في الطابور كتير.
+      ar: في الثامنة. اذهب مبكرًا حتى لا تنتظر في الطابور طويلًا.
+      en: At eight. Go early so you don't queue for long.
+new_words: []
+review:
+  status: draft
+  verified: false
