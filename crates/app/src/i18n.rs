@@ -282,6 +282,10 @@ pub enum Msg {
     RemindersElsewhere,
     RemindersBlocked,
     RemindersAllow,
+    RemindHere,
+    RemindHereHint,
+    RemindersAsleep,
+    RemindersBattery,
     QuietFrom,
     QuietTo,
     ReportWhen,
@@ -1461,10 +1465,14 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (QuietHours, ArEg) => "ساعات الهدوء",
         (QuietHours, Ar) => "ساعات الهدوء",
         (QuietHours, En) => "Quiet hours",
-        (RemindersElsewhere, ArEg) => "التذكيرات بتوصلك على الموبايل والتابلت. على الماك لسه جاية قريب.",
-        (RemindersElsewhere, Ar) => "تصلك التذكيرات على الهاتف والجهاز اللوحي، وعلى الماك قريبًا.",
+        (RemindersElsewhere, ArEg) => {
+            "التذكيرات بتوصلك على الموبايل. هنا بتشتغل في تطبيق \u{2068}Kabar\u{2069} المتسطّب بس."
+        }
+        (RemindersElsewhere, Ar) => {
+            "تصلك التذكيرات على الهاتف، وهنا تعمل في تطبيق \u{2068}Kabar\u{2069} المثبّت فقط."
+        }
         (RemindersElsewhere, En) => {
-            "Reminders reach you on your phone and tablet. On the Mac they're coming soon."
+            "Reminders reach you on your phone. Here they work in the installed Kabar app."
         }
         (RemindersBlocked, ArEg) => {
             "الإشعارات مقفولة لـ\u{2068}Kabar\u{2069} على الجهاز ده، فمش هقدر أفكّرك هنا."
@@ -1478,6 +1486,30 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RemindersAllow, ArEg) => "اسمح بالإشعارات",
         (RemindersAllow, Ar) => "اسمح بالإشعارات",
         (RemindersAllow, En) => "Allow notifications",
+        (RemindHere, ArEg) => "فكّرني على الجهاز ده",
+        (RemindHere, Ar) => "ذكّرني على هذا الجهاز",
+        (RemindHere, En) => "Remind me on this device",
+        (RemindHereHint, ArEg) => {
+            "عادةً الموبايل بس هو اللي بيرنّ، عشان ميرنّش جهازين مع بعض. شغّلها هنا لو عايز الجهاز ده كمان."
+        }
+        (RemindHereHint, Ar) => {
+            "عادةً يرنّ الهاتف وحده كي لا يرنّ جهازان معًا. فعّلها هنا إن أردت هذا الجهاز أيضًا."
+        }
+        (RemindHereHint, En) => {
+            "Usually only your phone rings, so two devices never go off together. Turn this on to hear from me here too."
+        }
+        (RemindersAsleep, ArEg) => {
+            "سامسونج ممكن تنيّم \u{2068}Kabar\u{2069} لو مافتحتهوش كام يوم، وساعتها التذكيرات بتقف. من البطارية اختار «بدون قيود» عشان أفضل أفكّرك."
+        }
+        (RemindersAsleep, Ar) => {
+            "قد يُنيم سامسونج \u{2068}Kabar\u{2069} إن لم تفتحه أيامًا فتتوقف التذكيرات. اختر «غير مقيّد» من إعدادات البطارية لأبقى أذكّرك."
+        }
+        (RemindersAsleep, En) => {
+            "Samsung may put Kabar to sleep after a few days unopened, and reminders stop. Set its battery use to Unrestricted so I can keep reminding you."
+        }
+        (RemindersBattery, ArEg) => "افتح إعدادات البطارية",
+        (RemindersBattery, Ar) => "افتح إعدادات البطارية",
+        (RemindersBattery, En) => "Open battery settings",
         (QuietFrom, ArEg | Ar) => "من",
         (QuietFrom, En) => "From",
         (QuietTo, ArEg) => "لحد",

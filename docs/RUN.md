@@ -130,7 +130,13 @@ On the Mac: `just run-mac`. After the welcome screen, Kak Nur's onboarding asks 
 
 To start onboarding again, delete the database (§2). On the Galaxy devices: `just apk` and `just install <serial>` as in §3.
 
-On the S24 Ultra and Tab S11, reminders are local notifications from Kak Nur: choosing a reminder style asks for Android's notification permission, and the app schedules the next few reminders itself, so they work offline and without Kabar Cloud. Studying, snoozing or changing a setting re-plans them; a goal met on another device silences the rest once this device has synced. If notifications are off, Settings → Kak Nur says so and opens the system setting. Push through FCM (reminders even when the app hasn't been opened for days) and Mac notifications come next (issue #127); the Mac shows reminders as "coming soon".
+Reminders are local notifications from Kak Nur: choosing a reminder style asks for notification permission, and the app schedules the next few reminders itself, so they work offline and without Kabar Cloud.
+- **One device rings.** By default only the phone (S24 Ultra) rings. On the Tab S11 or the Mac, tick "Remind me on this device" under the reminder style to hear from Kak Nur there too. The setting is per device and never syncs.
+- **Re-planning.** Studying, snoozing or changing a setting re-plans the reminders. A reminder that rang counts toward the day's limit on every device once the app is opened again.
+- **Time zones.** Alarms follow the device's time zone, so daylight saving (Egypt's ends this week) keeps 19:00 at 19:00.
+- **Samsung "sleeping apps".** One UI stops the alarms of apps it puts to sleep. If Kabar isn't exempt, the reminder settings say so: tap "Open battery settings" → Battery → **Unrestricted** (or Settings → Battery → Background usage limits → Never sleeping apps → add Kabar).
+- **Mac.** Notifications work in the bundled `Kabar.app` (`just bundle-mac`), not in `just run-mac`.
+- **Still to come.** If you finish today's goal on the tablet while the phone is closed, the phone can still ring once. Only push through Kabar Cloud can stop that, and it's planned in issue #187 (needs Cloud deployed and Firebase).
 
 ### Settings: Cost & limits, and Export everything
 
