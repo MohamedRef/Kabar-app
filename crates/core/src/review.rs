@@ -2,11 +2,13 @@
 //! which cards to show, in what order, the stats on the Review home and the
 //! end-of-session summary. Pure: callers pass the time in.
 
+mod evidence;
 mod from_lesson;
 mod seed;
 
 use std::collections::{BTreeMap, HashSet, VecDeque};
 
+pub use evidence::{Signal, evidence_reviews, lesson_signals};
 pub use from_lesson::{lesson_card_id, lesson_cards};
 use kabar_protocol::srs::{Card, CardKind, Rating, ReviewEvent, ReviewMode};
 pub use seed::{seed_bridge_deck, seed_words};
@@ -45,8 +47,14 @@ pub struct Stats {
 impl Deck {
     /// Builds a deck: card state comes from replaying `log`, never from storage.
     pub fn new(cards: Vec<Card>, log: Vec<ReviewEvent>, scheduler: &Scheduler) -> Self {
-        let index = cards.iter().enumerate().map(|(i, c)| (c.id.clone(), i)).collect();
         let states = scheduler.replay_all(&log);
+        Self::with_states(cards, log, states)
+    }
+
+    /// Builds a deck from states already replayed from `log` (for callers
+    /// that fold the log themselves, like Stats with its retention windows).
+    pub fn with_states(cards: Vec<Card>, log: Vec<ReviewEvent>, states: BTreeMap<String, CardState>) -> Self {
+        let index = cards.iter().enumerate().map(|(i, c)| (c.id.clone(), i)).collect();
         Self { cards, index, states, log }
     }
 
@@ -57,11 +65,19 @@ impl Deck {
     /// Adds an event just written to the log and updates its card.
     pub fn record(&mut self, event: ReviewEvent, scheduler: &Scheduler) {
         let card_id = event.card_id.clone();
-        let in_order = self.log.last().is_none_or(|last| last.hlc <= event.hlc);
-        self.log.push(event);
-        if !in_order {
-            self.log.sort_by(|a, b| a.hlc.cmp(&b.hlc));
+        // Strictly after everything logged: it is the card's latest answer and
+        // cannot be a duplicate (a re-delivered event keeps its HLC), so one
+        // `apply` gives what a replay would. The common case.
+        let after_all = self.log.last().is_none_or(|last| last.hlc < event.hlc);
+        if after_all {
+            let state = self.state(&card_id);
+            let next = scheduler.apply(&state, event.rating, event.at_ms);
+            self.log.push(event);
+            self.states.insert(card_id, next);
+            return;
         }
+        self.log.push(event);
+        self.log.sort_by(|a, b| a.hlc.cmp(&b.hlc));
         self.states.insert(card_id.clone(), scheduler.replay(&card_id, &self.log));
     }
 
@@ -154,14 +170,16 @@ impl Deck {
         let today = scheduler.day.day(now_ms);
         let due = self.due(scheduler, now_ms).len();
         let new_available = self.queue(scheduler, now_ms, |_| true).len() - due;
-        let reviews_today = self.log.iter().filter(|e| scheduler.day.day(e.at_ms) == today).count();
+        let reviews_today =
+            self.log.iter().filter(|e| e.evidence.is_review() && scheduler.day.day(e.at_ms) == today).count();
         let since = now_ms.saturating_sub(RETENTION_WINDOW_DAYS * DAY_MS);
         Stats { due, new_available, reviews_today, retention: retention(&self.log, since) }
     }
 }
 
 /// True retention: among reviews at or after `since_ms` of cards that had
-/// been reviewed before, the share not answered "Again".
+/// been reviewed before, the share not answered "Again". Evidence from
+/// lessons and lookups moves schedules but isn't a review, so it isn't counted.
 pub fn retention(log: &[ReviewEvent], since_ms: u64) -> Option<f32> {
     let mut sorted: Vec<&ReviewEvent> = log.iter().collect();
     sorted.sort_by(|a, b| a.hlc.cmp(&b.hlc));
@@ -170,7 +188,7 @@ pub fn retention(log: &[ReviewEvent], since_ms: u64) -> Option<f32> {
     let (mut total, mut passed) = (0u32, 0u32);
     for e in sorted.into_iter().filter(|e| seen_events.insert(e.id.as_str())) {
         let learned = !seen_cards.insert(e.card_id.as_str());
-        if learned && e.at_ms >= since_ms {
+        if learned && e.evidence.is_review() && e.at_ms >= since_ms {
             total += 1;
             passed += u32::from(e.rating != Rating::Again);
         }
@@ -436,6 +454,7 @@ mod tests {
             rating,
             duration_ms: 2000,
             mode: ReviewMode::Classic,
+            evidence: Default::default(),
         }
     }
 
@@ -491,6 +510,26 @@ mod tests {
         assert_eq!(deck.state("seed.bridge.kabar.recognition").reps, 1);
         assert!(deck.state("seed.bridge.waktu.recognition").is_new());
         assert_eq!(deck.unseen().count(), 21);
+    }
+
+    #[test]
+    fn in_order_answers_apply_without_a_replay() {
+        let s = Scheduler::default();
+        let cards = seed_bridge_deck();
+        let mut deck = Deck::new(cards.clone(), Vec::new(), &s);
+        let ratings = [Rating::Good, Rating::Again, Rating::Hard, Rating::Easy];
+        let events: Vec<ReviewEvent> = (0..40)
+            .map(|i| ev(&format!("e{i}"), &cards[i % 5].id, T0 + i as u64 * DAY_MS / 3, ratings[i % 4]))
+            .collect();
+        crate::srs::ops::take();
+        for e in &events {
+            deck.record(e.clone(), &s);
+        }
+        assert_eq!(crate::srs::ops::take(), 0, "no log scans for answers given in order");
+        let full = Deck::new(cards.clone(), events, &s);
+        for c in &cards {
+            assert_eq!(deck.state(&c.id), full.state(&c.id), "{}", c.id);
+        }
     }
 
     #[test]

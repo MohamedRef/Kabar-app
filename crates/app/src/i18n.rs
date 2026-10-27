@@ -414,6 +414,12 @@ pub enum Msg {
     DetectiveBlurb,
     DetectiveIntro,
     DetectiveAllRules,
+    DetectiveShowAllRules,
+    DetectiveShowFewerRules,
+    SoundVowel,
+    SoundDropped,
+    SoundSukun,
+    SoundWordEnd,
     DetectiveGuessArabic,
     DetectiveGuessIndonesian,
     DetectiveNoRounds,
@@ -606,6 +612,13 @@ pub enum Msg {
     PairsTipTitle,
     PairsTheTwoWords,
     SettingsPron,
+    SettingsRetention,
+    RetentionLight,
+    RetentionBalanced,
+    RetentionFirm,
+    RetentionHint,
+    RetentionTuned,
+    RetentionLearning,
     PronModeOn,
     PronModeTap,
     PronModeOff,
@@ -1852,6 +1865,22 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (DetectiveAllRules, ArEg) => "كل القواعد",
         (DetectiveAllRules, Ar) => "كل القواعد",
         (DetectiveAllRules, En) => "All rules",
+        (DetectiveShowAllRules, ArEg) => "وريني كل القواعد ({n})",
+        (DetectiveShowAllRules, Ar) => "اعرض كل القواعد ({n})",
+        (DetectiveShowAllRules, En) => "Show every rule ({n})",
+        (DetectiveShowFewerRules, ArEg) => "وريني الأشهر بس",
+        (DetectiveShowFewerRules, Ar) => "اعرض الأشهر فقط",
+        (DetectiveShowFewerRules, En) => "Just the common ones",
+        // Placeholders on either side of a sound rule (content/bridge/sound-rules.json).
+        (SoundVowel, ArEg | Ar) => "(حركة)",
+        (SoundVowel, En) => "(vowel)",
+        (SoundDropped, ArEg) => "(بيختفي)",
+        (SoundDropped, Ar) => "(يُحذف)",
+        (SoundDropped, En) => "(dropped)",
+        (SoundSukun, ArEg | Ar) => "(سكون)",
+        (SoundSukun, En) => "(no vowel)",
+        (SoundWordEnd, ArEg | Ar) => "(آخر الكلمة)",
+        (SoundWordEnd, En) => "(end of word)",
         (DetectiveGuessArabic, ArEg) => "إيه الكلمة العربي اللي ورا دي؟",
         (DetectiveGuessArabic, Ar) => "ما الكلمة العربية وراء هذه الكلمة؟",
         (DetectiveGuessArabic, En) => "Which Arabic word is behind it?",
@@ -2503,6 +2532,39 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (SettingsPron, ArEg) => "تعريب النطق (النطق بالحروف العربي)",
         (SettingsPron, Ar) => "النطق بالحروف العربية",
         (SettingsPron, En) => "Pronunciation in Arabic script",
+        (SettingsRetention, ArEg) => "عايز تفتكر الكلمات قد إيه؟",
+        (SettingsRetention, Ar) => "إلى أي حد تريد أن تتذكر الكلمات؟",
+        (SettingsRetention, En) => "How firmly to remember words",
+        (RetentionLight, ArEg) => "خفيف",
+        (RetentionLight, Ar) => "خفيف",
+        (RetentionLight, En) => "Light",
+        (RetentionBalanced, ArEg) => "متوازن",
+        (RetentionBalanced, Ar) => "متوازن",
+        (RetentionBalanced, En) => "Balanced",
+        (RetentionFirm, ArEg) => "ثابت",
+        (RetentionFirm, Ar) => "ثابت",
+        (RetentionFirm, En) => "Firm",
+        (RetentionHint, ArEg) => {
+            "كل كلمة بترجعلك في المعاد اللي هتكون فيه على وشك تنساها. كل ما النسبة تعلى، المراجعات تكتر. المتوازن هو الأنسب لمعظم الناس."
+        }
+        (RetentionHint, Ar) => {
+            "تعود كل كلمة في الوقت الذي تكون فيه على وشك نسيانها. كلما ارتفعت النسبة زادت المراجعات. المتوازن هو الأنسب لمعظم المتعلمين."
+        }
+        (RetentionHint, En) => {
+            "Each word comes back just as you're about to forget it. A higher target means more reviews. Balanced suits most learners."
+        }
+        (RetentionTuned, ArEg) => "المواعيد متظبطة على ذاكرتك انت، من {n} مراجعة.",
+        (RetentionTuned, Ar) => "المواعيد مضبوطة على ذاكرتك أنت، من {n} مراجعة.",
+        (RetentionTuned, En) => "Timing is tuned to your own memory, from {n} reviews.",
+        (RetentionLearning, ArEg) => {
+            "\u{2068}Kabar\u{2069} بيتعلم ذاكرتك: بعد حوالي {n} مراجعة هيظبط المواعيد عليك انت."
+        }
+        (RetentionLearning, Ar) => {
+            "يتعلّم \u{2068}Kabar\u{2069} ذاكرتك: بعد نحو {n} مراجعة سيضبط المواعيد عليك أنت."
+        }
+        (RetentionLearning, En) => {
+            "Kabar is learning your memory: after about {n} reviews it tunes the timing to you."
+        }
         (PronModeOn, ArEg) => "ظاهر على طول",
         (PronModeOn, Ar) => "ظاهر دائمًا",
         (PronModeOn, En) => "Always shown",

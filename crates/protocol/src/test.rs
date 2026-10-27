@@ -193,6 +193,10 @@ impl<'de> Deserialize<'de> for TestItemKind {
 pub struct PlacementResult {
     /// The level to start at, e.g. `bipa2`.
     pub start_level: String,
+    /// The unit inside `start_level` to start at, when the tagged items
+    /// show where the gaps begin (`bipa2.u03`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub start_unit: Option<String>,
     /// Share of points per section taken, in order (0–1).
     #[serde(default)]
     pub sections: Vec<SectionScore>,
