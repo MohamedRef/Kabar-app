@@ -9,6 +9,6 @@ The first content is Chapter 1 (Hepato-Biliary Pancreatic Unit) of the Alexandri
 | Content schema `batna.content/v1` and validator | ✓ |
 | App shell: navigation, RTL theme, phone/tablet layout | ✓ |
 | Study sessions, review (FSRS), question bank, cases, oral mode, stats | in progress |
-| Anki export | interim script; Rust exporter in progress |
+| Anki export | `batna-tools anki`: one `batna.apkg`, a subdeck per lecture ([docs/ANKI.md](docs/ANKI.md)) |
 
 How to run it: [docs/RUN.md](docs/RUN.md). How to write content: [docs/CONTENT.md](docs/CONTENT.md).

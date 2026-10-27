@@ -13,4 +13,4 @@
 A signed release APK will come with the release-prep work. Until then, the debug build is the way to try it.
 
 ## Study in Anki now
-Each lecture's deck is in `/mnt/project-files/medstudy/anki/` (`batna-hb-L01.apkg` and so on). Open it with AnkiDroid on the phone or tablet, or with Anki on the Mac. Re-importing a newer deck updates the cards and keeps your progress.
+One file, `/mnt/project-files/medstudy/anki/batna.apkg`, holds every written lecture as a subdeck of `Batna`. Open it with AnkiDroid on the phone or tablet, or with Anki on the Mac. Importing a newer `batna.apkg` updates the cards in place and keeps your progress. `just anki` builds it into `dist/anki/`; details in [ANKI.md](ANKI.md).
