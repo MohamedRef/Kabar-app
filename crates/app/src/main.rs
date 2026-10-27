@@ -347,6 +347,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         style { {theme_css} }
         style { {pron_font} }
         style { {annotated::CSS} }
+        style { {reader::grammar::CSS} }
         style { {ui_fonts} }
         style { {misc_art::paper_css()} }
         div {

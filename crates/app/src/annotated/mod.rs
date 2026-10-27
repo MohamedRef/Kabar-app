@@ -27,6 +27,7 @@ use crate::reader::card::InfoView;
 use crate::reader::doc::{Lexicon, ReadDoc, Tag, Word};
 use crate::reader::explain::voice_of;
 use crate::reader::glossary::Gloss;
+use crate::reader::grammar::{DocGrammar, GrammarAt, syllabus};
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
 
@@ -353,7 +354,10 @@ pub fn Annotated(
 fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandler) -> Element {
     let ui = use_context::<Ui>();
     let teach = use_context::<TeachInbox>();
+    let db = use_context::<Db>();
     let lang = ui.lang();
+    // Spotted once per text, offline, when a word of it is first opened.
+    let grammar = use_memo(use_reactive!(|doc| Rc::new(DocGrammar::new(&doc, &syllabus(&db)))));
     let Some(t) = doc.tokens.get(i) else { return rsx! {} };
     let Some(w) = t.word.clone() else { return rsx! {} };
     let surface = doc.text(t.start, t.end).to_string();
@@ -404,6 +408,7 @@ fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandl
                     }
                 },
             }
+            GrammarAt { doc: doc.clone(), grammar: grammar(), i, voice: voice_of(lang) }
         }
     }
 }
@@ -489,6 +494,18 @@ mod tests {
         let marked: Vec<&str> = parts.iter().filter(|p| p.marked).map(|p| p.text.as_str()).collect();
         assert_eq!(marked, ["membaca"]);
         assert!(parts.iter().filter(|p| p.word.is_some()).count() >= 4, "every word is tappable");
+    }
+
+    #[test]
+    fn the_word_card_finds_the_rules_a_word_takes_part_in() {
+        let d = doc("Saya sedang membaca buku.");
+        let grammar = DocGrammar::new(&d, &Default::default());
+        let at = |w: &str| {
+            let i = d.tokens.iter().position(|t| d.text(t.start, t.end) == w).unwrap();
+            grammar.at(i).into_iter().map(|(f, _)| f.grammar).collect::<Vec<_>>()
+        };
+        assert_eq!(at("sedang"), ["id.aspect.markers"]);
+        assert!(at("buku").is_empty());
     }
 
     #[test]
