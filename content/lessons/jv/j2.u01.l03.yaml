@@ -132,25 +132,29 @@ exercises:
     pairs:
       - text: omahe
         ar_eg: بيته / البيت (rumahnya)
-        ar: بيته / البيت (rumahnya)
-        en: his house, the house (rumahnya)
-      - text: omahku
-        ar_eg: بيتي (rumahku)
-        ar: بيتي (rumahku)
-        en: my house (rumahku)
-      - text: omahmu
-        ar_eg: بيتك (rumahmu)
-        ar: بيتك (rumahmu)
-        en: your house (rumahmu)
+        ar: بيته (rumahnya)
+        en: his / the house (rumahnya)
       - text: duweke sapa?
         ar_eg: بتاع مين؟ (punya siapa?)
-        ar: لمن؟ (punya siapa?)
-        en: whose? (punya siapa?)
+        ar: لمن هذا؟ (punya siapa?)
+        en: whose is it? (punya siapa?)
       - text: ilang
         ar_eg: ضاع (hilang)
         ar: ضاع (hilang)
         en: lost (hilang)
-    words: [omahe, omahku, omahmu, duweke, ilang]
+      - text: adoh
+        ar_eg: بعيد (jauh)
+        ar: بعيد (jauh)
+        en: far (jauh)
+      - text: saiki
+        ar_eg: دلوقتي (sekarang)
+        ar: الآن (sekarang)
+        en: now (sekarang)
+      - text: buku
+        ar_eg: كتاب
+        ar: كتاب
+        en: book
+    words: [omahe, duweke, ilang, adoh, saiki, buku]
   - id: e02
     type: multiple_choice
     question: buku + -e / -ne
@@ -164,7 +168,7 @@ exercises:
       ar_eg: buku آخرها حرف متحرك (u)، فبتاخد -ne. وbukunya إندونيسي.
       ar: تنتهي buku بصائت فتأخذ -ne، أما bukunya فإندونيسية.
       en: buku ends in a vowel, so it takes -ne. bukunya is Indonesian.
-    words: [bukune]
+    words: [bukune, buku]
   - id: e03
     type: listen
     text: Bukune Sari ilang.
@@ -196,12 +200,25 @@ exercises:
     words: [duweke, sapa]
   - id: e06
     type: speaking
-    text: Warunge Pak Budi neng Madiun.
+    text: Saiki bukuku ilang! Iki duweke sapa?
     meaning:
-      ar_eg: محل باك بودي في ماديون.
-      ar: مطعم باك بودي في ماديون.
-      en: Pak Budi's warung is in Madiun.
-    words: [warunge]
+      ar_eg: دلوقتي كتابي ضاع! ده بتاع مين؟
+      ar: الآن ضاع كتابي! لمن هذا؟
+      en: Now my book's gone! Whose is this?
+    words: [saiki, buku, ilang, duweke]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «دلوقتي»؟
+      ar: أيّ كلمة تعني «الآن»؟
+      en: Which word means "now"?
+    options: [saiki, adoh, ilang]
+    answer: 0
+    explain:
+      ar_eg: saiki = sekarang. adoh = بعيد، ilang = ضاع.
+      ar: saiki = sekarang، وadoh = بعيد، وilang = ضاع.
+      en: saiki = sekarang; adoh = far, ilang = lost.
+    words: [saiki, adoh, ilang]
 dialogue:
   title: Bukune sapa?
   lines:
