@@ -75,13 +75,14 @@ mod tests {
         json["mnemonic"] = "kali + mat".into();
         json["entry"]["audio_hint"] = "ka-LI-mat".into();
         let entry: TaughtEntry = serde_json::from_value(json).unwrap();
-        assert_eq!(entry.extra["mnemonic"], "kali + mat");
+        assert_eq!(entry.kept.get("/mnemonic").unwrap(), "kali + mat");
         store.save_taught(&entry).unwrap();
         let loaded = store.taught_entries().unwrap();
         assert_eq!(loaded, [entry]);
         // Saving it again (say, after an edit here) writes the newer field back.
         let saved = serde_json::to_value(&loaded[0]).unwrap();
         assert_eq!(saved["mnemonic"], "kali + mat");
+        assert_eq!(saved["entry"]["audio_hint"], "ka-LI-mat");
     }
 
     #[test]
