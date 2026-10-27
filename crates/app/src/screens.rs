@@ -14,7 +14,12 @@ pub fn Welcome() -> Element {
     rsx! {
         div { class: "welcome",
             div { class: "card",
-                p { class: "greeting reveal", bdi { lang: "id", dir: "ltr", "Apa kabar?" } }
+                // Dawn over the terraces (prompt 7); the greeting sits in its empty sky.
+                div { class: "hero",
+                    crate::misc_art::Picture { art: crate::misc_art::Art::HeroLandscape, class: "wide" }
+                    crate::misc_art::Picture { art: crate::misc_art::Art::HeroPortrait, class: "tall" }
+                    p { class: "greeting reveal", bdi { lang: "id", dir: "ltr", "Apa kabar?" } }
+                }
                 div { class: "reveal d2",
                     p { class: "muted", crate::review::Isolated { text: ui.t(Msg::WelcomeKabarFrom).to_string() } }
                     div { class: "bridge",

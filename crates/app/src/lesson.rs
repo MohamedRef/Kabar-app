@@ -389,30 +389,9 @@ fn log_episode(coach: Coach, db: &Db, p: &Player) {
     coach.record(db, practice, (summary.duration_ms / 1000) as u32);
 }
 
-/// A soft two-note chime for a right answer (synthesized; no sound files).
-/// Silent when sounds are off in Settings.
+/// The kendang tap for a right answer (silent when sounds are off).
 fn chime(ui: Ui) {
-    if ui.settings.peek().sounds_off {
-        return;
-    }
-    document::eval(
-        r#"
-        try {
-            const C = window.AudioContext || window.webkitAudioContext;
-            const c = new C(), t = c.currentTime;
-            [[659.25, 0], [987.77, 0.08]].forEach(([f, d]) => {
-                const o = c.createOscillator(), g = c.createGain();
-                o.type = "sine"; o.frequency.value = f;
-                g.gain.setValueAtTime(0.0001, t + d);
-                g.gain.exponentialRampToValueAtTime(0.08, t + d + 0.015);
-                g.gain.exponentialRampToValueAtTime(0.0001, t + d + 0.3);
-                o.connect(g).connect(c.destination);
-                o.start(t + d); o.stop(t + d + 0.35);
-            });
-            setTimeout(() => c.close(), 700);
-        } catch (e) {}
-        "#,
-    );
+    crate::sounds::play(ui, crate::sounds::Sound::Kendang);
 }
 
 // ---------------------------------------------------------------------------
@@ -1232,6 +1211,8 @@ fn SummaryView(
 ) -> Element {
     let ui = use_context::<Ui>();
     let nav = use_context::<crate::play::PlayNav>();
+    // The gong rings once when the summary appears.
+    use_hook(move || crate::sounds::play(ui, crate::sounds::Sound::Gong));
     let settings = ui.settings.read().clone();
     let lang = settings.ui_language;
     let eastern = settings.eastern_digits;
@@ -1239,6 +1220,10 @@ fn SummaryView(
     let num = |n: u32| format_number(u64::from(n), lang, eastern);
     rsx! {
         article { class: "lp-summary",
+            div { class: "lp-gong reveal", aria_hidden: "true",
+                span { class: "lp-gong-ring" }
+                crate::misc_art::Picture { art: crate::misc_art::Art::Gong, class: "" }
+            }
             h2 { class: "lp-done reveal", "{lt(lang, L::Done)}" }
             p { class: "lp-lesson-title reveal", bdi { lang: target, dir: "ltr", "{lesson.title}" } }
             if perfect {

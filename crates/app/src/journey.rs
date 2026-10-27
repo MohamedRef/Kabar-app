@@ -851,7 +851,7 @@ fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> 
         section { class: "suitcase", aria_label: "{ui.t(Msg::JourneySuitcase)}",
             if cards.is_empty() {
                 div { class: "card suitcase-empty",
-                    span { class: "suitcase-art", aria_hidden: "true", {icon_suitcase()} }
+                    crate::misc_art::Picture { art: crate::misc_art::Art::EmptySuitcase, class: "empty-art" }
                     p { "{ui.t(Msg::JourneySuitcaseEmpty)}" }
                 }
             }
