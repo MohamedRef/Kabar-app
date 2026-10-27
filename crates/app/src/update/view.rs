@@ -372,10 +372,14 @@ pub fn use_android_install(ui: Ui) {
             let Some(s) = status.peek().clone() else { continue };
             let lang = ui.lang();
             match (&s.phase, hidden) {
-                (Phase::Installing(_), _) =>
-                {
+                (Phase::Installing(_), _) => {
                     #[cfg(target_os = "android")]
                     if let Some(u) = super::get() {
+                        // Back in front: a confirmation that arrived in the
+                        // background (shown as a notification) opens now.
+                        if hidden == Some(false) {
+                            let _ = crate::platform::android::show_pending_confirm();
+                        }
                         u.poll_install();
                     }
                 }

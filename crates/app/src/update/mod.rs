@@ -662,6 +662,7 @@ fn install_build(path: &Path, offer: &Offer, texts: &InstallTexts) -> Phase {
         offer.asset.version_code.unwrap_or(0),
         &texts.done_title,
         &texts.done_body,
+        &texts.ready_title,
     ) {
         Ok(()) => Phase::Installing(offer.clone()),
         Err(e) => Phase::Failed { offer: Some(offer.clone()), why: Failure::Install(e) },
