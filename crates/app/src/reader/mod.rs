@@ -103,6 +103,8 @@ pub struct ReaderState {
     pub peek: Signal<Option<Peek>>,
     pub panel: Signal<Option<Panel>>,
     pub toast: Signal<Option<Msg>>,
+    /// The open text's grammar, worked out once when it opens.
+    pub grammar: Signal<Option<Rc<grammar::DocGrammar>>>,
 }
 
 impl ReaderState {
@@ -158,6 +160,7 @@ impl ReaderState {
             peek: Signal::new(None),
             panel: Signal::new(None),
             toast: Signal::new(None),
+            grammar: Signal::new(None),
         }
     }
 
@@ -172,6 +175,7 @@ impl ReaderState {
         self.statuses.set(store.word_statuses(doc.keys()).unwrap_or_default());
         self.highlights.set(store.highlights(&text.id).unwrap_or_default());
         drop(store);
+        self.grammar.set(Some(Rc::new(grammar::DocGrammar::new(&doc, &grammar::syllabus(db)))));
         self.peek.set(None);
         self.panel.set(None);
         self.open.set(Some(Open { text, doc: Rc::new(doc) }));
@@ -196,6 +200,7 @@ impl ReaderState {
 
     fn close(mut self) {
         self.open.set(None);
+        self.grammar.set(None);
         self.peek.set(None);
         self.panel.set(None);
     }
@@ -306,6 +311,7 @@ pub fn Reader() -> Element {
     let voice = *st.voice.read();
 
     rsx! {
+        style { {grammar::CSS} }
         div { class: "reader",
             div { class: "card reader-bar",
                 div { class: "row",

@@ -10,7 +10,7 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
-use kabar_protocol::grammar::GrammarPoint;
+use kabar_protocol::grammar::{GrammarExample, GrammarPoint, Three, Title};
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 
@@ -526,6 +526,35 @@ pub enum Voice {
     Arz,
     Ar,
     En,
+}
+
+impl Voice {
+    /// This voice's text of a library field.
+    pub fn of(self, t: &Three) -> &str {
+        match self {
+            Voice::Arz => &t.ar_eg,
+            Voice::Ar => &t.ar,
+            Voice::En => &t.en,
+        }
+    }
+
+    /// This voice's name of a library entry.
+    pub fn title(self, t: &Title) -> &str {
+        match self {
+            Voice::Arz => &t.ar_eg,
+            Voice::Ar => &t.ar,
+            Voice::En => &t.en,
+        }
+    }
+
+    /// This voice's translation of a library example.
+    pub fn example(self, e: &GrammarExample) -> &str {
+        match self {
+            Voice::Arz => &e.ar_eg,
+            Voice::Ar => &e.ar,
+            Voice::En => &e.en,
+        }
+    }
 }
 
 /// The `explain_sentence` input, exactly as the golden set shapes it.

@@ -14,7 +14,7 @@ use kabar_core::lang::Lang;
 use kabar_core::lang::analyze::AnalyzedToken;
 use kabar_core::locale::UiLanguage;
 use kabar_protocol::ai::Task;
-use kabar_protocol::grammar::{GrammarExample, GrammarPoint, Three, Title};
+use kabar_protocol::grammar::GrammarPoint;
 
 use super::ReaderState;
 use super::doc::{ReadDoc, Tag};
@@ -70,30 +70,6 @@ pub fn voice_of(l: UiLanguage) -> Voice {
         UiLanguage::ArEg => Voice::Arz,
         UiLanguage::Ar => Voice::Ar,
         UiLanguage::En => Voice::En,
-    }
-}
-
-fn three(t: &Three, v: Voice) -> &str {
-    match v {
-        Voice::Arz => &t.ar_eg,
-        Voice::Ar => &t.ar,
-        Voice::En => &t.en,
-    }
-}
-
-fn title(t: &Title, v: Voice) -> &str {
-    match v {
-        Voice::Arz => &t.ar_eg,
-        Voice::Ar => &t.ar,
-        Voice::En => &t.en,
-    }
-}
-
-fn example(e: &GrammarExample, v: Voice) -> &str {
-    match v {
-        Voice::Arz => &e.ar_eg,
-        Voice::Ar => &e.ar,
-        Voice::En => &e.en,
     }
 }
 
@@ -237,13 +213,13 @@ pub(crate) fn GrammarEntry(point: GrammarPoint, matched: Vec<String>, voice: Voi
         details { class: "grammar-entry",
             summary {
                 bdi { class: "latin", dir: "ltr", lang, "{p.title.target}" }
-                span { " · {title(&p.title, voice)}" }
+                span { " · {voice.title(&p.title)}" }
                 span { class: "chip level", "{p.level}" }
                 if unverified {
                     span { class: "tag unverified", "{ui.t(Msg::Unverified)}" }
                 }
             }
-            p { "{three(&p.summary, voice)}" }
+            p { "{voice.of(&p.summary)}" }
             if !matched.is_empty() {
                 p { class: "muted small",
                     "{ui.t(Msg::FoundBy)} "
@@ -256,12 +232,12 @@ pub(crate) fn GrammarEntry(point: GrammarPoint, matched: Vec<String>, voice: Voi
             if let Some(pat) = p.pattern.first() {
                 p { class: "pattern", dir: "ltr", bdi { class: "latin", "{pat}" } }
             }
-            p { "{three(&p.explanation, voice)}" }
+            p { "{voice.of(&p.explanation)}" }
             if let Some(e) = ex {
                 div { class: "field",
                     span { class: "label", "{ui.t(Msg::Example)}" }
                     p { dir: "ltr", lang, bdi { class: "latin", "{e.text}" } }
-                    p { class: "muted", "{example(&e, voice)}" }
+                    p { class: "muted", "{voice.example(&e)}" }
                 }
             }
             if let Some(m) = mistake {
@@ -272,13 +248,13 @@ pub(crate) fn GrammarEntry(point: GrammarPoint, matched: Vec<String>, voice: Voi
                         " → "
                         bdi { class: "latin", "{m.right}" }
                     }
-                    p { class: "muted", "{three(&m.why, voice)}" }
+                    p { class: "muted", "{voice.of(&m.why)}" }
                 }
             }
             if let Some(b) = &p.arabic_bridge {
                 div { class: "field bridge",
                     span { class: "label", "{ui.t(Msg::RevFromArabic)}" }
-                    p { "{three(b, voice)}" }
+                    p { "{voice.of(b)}" }
                 }
             }
         }
