@@ -1,153 +1,239 @@
 schema: kabar.lesson/v1
 id: j6.u03.l07
 language: jv
-title: Papan jeneng
+title: Lelayu
 can_do:
-  ar_eg: تقرا لوحات الشوارع والأماكن في كوتاغيدي.
-  ar: أن تقرأ لافتات الشوارع والأماكن في كوتاغيدي.
-  en: Read street and place signs in Kotagede.
+  ar_eg: 'تسمع نعي في الجامع وتروح العزا بالكراما: مين اتوفّى، الدفن فين وإمتى، وتقول إيه.'
+  ar: 'أن تفهم نعيًا في المسجد وتقدّم العزاء بالكراما: من توفي، وأين ومتى الدفن، وماذا تقول.'
+  en: 'Understand a death notice from the mosque and pay a condolence call in krama: who died, where and when the burial is, what to say.'
 slides:
-  - title: Papan ing Kotagedhe
+  - title: Wonten lelayu
     body:
       ar_eg: |
-        في يوجياكرتا اللوحات كتير منها مكتوب بالحرفين: لاتيني وتحته جاوي. وإنت دلوقتي تقدر تقرا التاني:
-        - cecak ꦁ = ng، layar ꦂ = r، wignyan ꦃ = h.
-        - pangkon ꧀ لأي حرف ساكن تاني في آخر الكلام.
+        lelayu = نعي، خبر وفاة (بيتعلن من ميكروفون الجامع). sedha = اتوفّى (كراما، باحترام).
+        nglayat = يروح العزا. pasarean = المدافن (كلمة محترمة).
+        kijing = غطا القبر المبني، maesan = الشاهد اللي عند الراس. surup = المغرب، وقت غروب الشمس.
+        pangestu = بركة ودعا الكبار.
       ar: |
-        كثير من لافتات يوجياكرتا مكتوب بالخطين: اللاتيني وتحته الجاوي، وصرت تقرأ الثاني:
-        - cecak ꦁ = ng، وlayar ꦂ = r، وwignyan ꦃ = h.
-        - وpangkon ꧀ لسائر السواكن في آخر الكلام.
+        lelayu = نعي (يُعلَن من مكبّر المسجد). sedha = توفي (بالكراما، احترامًا).
+        nglayat = يقدّم العزاء. pasarean = المقابر (لفظ مهذّب).
+        kijing = غطاء القبر المبني، maesan = شاهد القبر عند الرأس. surup = الغروب.
+        pangestu = بركة الكبار ودعاؤهم.
       en: |
-        In Yogyakarta many signs are written twice: Latin, and aksara Jawa underneath. Now you can read the second line:
-        - cecak ꦁ = ng, layar ꦂ = r, wignyan ꦃ = h.
-        - pangkon ꧀ for any other consonant at the end.
-    grammar: jv.aksara.panyigeg
+        lelayu = death notice (announced from the mosque speaker). sedha = pass away (krama, respectful).
+        nglayat = pay a condolence visit. pasarean = burial ground (polite word).
+        kijing = the built cover of a grave, maesan = headstone. surup = sunset.
+        pangestu = an elder's blessing.
     examples:
-      - text: ꦥꦱꦂꦊꦒꦶ (Pasar Legi)
-        ar_eg: سوق «ليغي» — سوق كوتاغيدي، على اسم يوم السوق Legi
-        ar: سوق «ليغي» — سوق كوتاغيدي المسمى بيوم السوق Legi
-        en: Pasar Legi — Kotagede's market, named after the market day Legi
-      - text: ꦲꦺꦴꦩꦃꦏꦭꦁ (Omah Kalang)
-        ar_eg: بيوت «كالانغ» القديمة
-        ar: بيوت «كالانغ» القديمة
-        en: the old Kalang houses
+      - text: 'Wonten lelayu: Mbah Karto sampun sedha.'
+        ar_eg: 'فيه نعي: جدو كارتو اتوفّى.'
+        ar: 'ثمة نعي: لقد توفي الجد كارتو.'
+        en: 'There''s a death notice: Mbah Karto has passed away.'
+      - text: Kula badhe nglayat dhateng dalemipun.
+        ar_eg: أنا رايح العزا في بيته.
+        ar: سأذهب لتقديم العزاء في بيته.
+        en: I'm going to pay my condolences at his house.
+      - text: Layonipun dipunsarekaken ing pasarean saderengipun surup.
+        ar_eg: هيدفنوه في المدافن قبل المغرب.
+        ar: سيُدفن في المقبرة قبل الغروب.
+        en: He will be buried at the cemetery before sunset.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "اقرا اللوحة: ꦥꦱꦂꦊꦒꦶ"
-      ar: "اقرأ اللافتة: ꦥꦱꦂꦊꦒꦶ"
-      en: "Read the sign: ꦥꦱꦂꦊꦒꦶ"
-    options: [Pasar Legi, Pasar Lagi, Pasang Legi]
-    answer: 0
-    explain:
-      ar_eg: ꦱꦂ فيها layar = sar، وꦊ هو nga lelet = le. وLegi زي يوم السوق في الـ weton!
-      ar: في ꦱꦂ layar = sar، وꦊ هو nga lelet = le، وLegi يوم السوق في الـ weton.
-      en: ꦱꦂ has layar = sar, and ꦊ is nga lelet = le. Legi is the market day from your weton lesson!
-    words: [papan]
+    type: match_pairs
+    pairs:
+      - text: nglayat
+        ar_eg: يروح العزا
+        ar: يقدّم العزاء
+        en: pay condolences
+      - text: lelayu
+        ar_eg: نعي
+        ar: نعي
+        en: death notice
+      - text: sedha
+        ar_eg: اتوفّى
+        ar: توفي
+        en: pass away
+      - text: pasarean
+        ar_eg: مدافن
+        ar: مقبرة
+        en: cemetery
+    words: [nglayat, lelayu, sedha, pasarean]
   - id: e02
-    type: listen
-    text: Omah Kalang
-    question:
-      ar_eg: ديماس قال اسم مكان. أنهي لوحة؟
-      ar: ذكر ديماس اسم مكان. أي لافتة هي؟
-      en: Dimas named a place. Which sign is it?
-    options: ["ꦲꦺꦴꦩꦏꦭꦁ", "ꦲꦺꦴꦩꦃꦏꦭ", "ꦲꦺꦴꦩꦃꦏꦭꦁ"]
-    answer: 2
-    meaning:
-      ar_eg: بيوت «كالانغ»
-      ar: بيوت «كالانغ»
-      en: the Kalang houses
-    words: [papan]
+    type: match_pairs
+    pairs:
+      - text: kijing
+        ar_eg: غطا القبر
+        ar: غطاء القبر
+        en: grave cover
+      - text: maesan
+        ar_eg: شاهد القبر
+        ar: شاهد القبر
+        en: headstone
+      - text: surup
+        ar_eg: المغرب
+        ar: الغروب
+        en: sunset
+      - text: pangestu
+        ar_eg: بركة الكبار
+        ar: بركة، دعاء
+        en: blessing
+    words: [kijing, maesan, surup, pangestu]
   - id: e03
-    type: fill_blank
-    sentence: ꦏꦸꦛꦒꦼꦝꦺ = ___
+    type: listen
+    text: 'Wonten lelayu saking masjid: Pak Karto sampun sedha.'
+    question:
+      ar_eg: الجامع أعلن عن إيه؟
+      ar: بماذا أعلن المسجد؟
+      en: What did the mosque announce?
+    options: ['فيه نعي من الجامع: عم كارتو اتوفّى', فيه فرح في الجامع, عم كارتو راجع من السفر]
+    answer: 0
     meaning:
-      ar_eg: اكتب اللي مكتوب على اللوحة بالحروف اللاتينية. (اسم المدينة)
-      ar: اكتب ما على اللافتة بالحروف اللاتينية. (اسم المدينة)
-      en: Type what the sign says in Latin letters. (The town's name.)
-    answers: [Kutha Gedhe, Kuthagedhe]
-    explain:
-      ar_eg: Kutha Gedhe = «المدينة الكبيرة»، وده الاسم الجاوي لكوتاغيدي (Kotagede).
-      ar: Kutha Gedhe = «المدينة الكبيرة»، الاسم الجاوي لكوتاغيدي.
-      en: Kutha Gedhe = "the big town", the Javanese name of Kotagede.
-    words: [tulisan]
+      ar_eg: 'فيه نعي من الجامع: عم كارتو اتوفّى.'
+      ar: 'ثمة نعي من المسجد: توفي السيد كارتو.'
+      en: 'A death notice from the mosque: Pak Karto has passed away.'
+    words: [lelayu, sedha]
   - id: e04
     type: fill_blank
-    sentence: ꦩꦏꦩ꧀ = ___
+    sentence: Aku arep ___ menyang omahe Pak Karto.
     meaning:
-      ar_eg: اكتب اللي مكتوب على اللوحة بالحروف اللاتينية.
-      ar: اكتب ما على اللافتة بالحروف اللاتينية.
-      en: Type what the sign says in Latin letters.
-    answers: [makam]
-    words: [tulisan]
+      ar_eg: أنا رايح ___ في بيت عم كارتو.
+      ar: سأذهب ___ إلى بيت السيد كارتو.
+      en: I'm going to ___ at Pak Karto's house.
+    options: [nglayat, surup, maesan]
+    answers: [nglayat]
+    words: [nglayat, surup, maesan]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب اللي مكتوب على اللوحة بالحروف اللاتينية: ꦥꦱꦂꦒꦼꦝꦺ"
-      ar: "اكتب ما على اللافتة بالحروف اللاتينية: ꦥꦱꦂꦒꦼꦝꦺ"
-      en: "Write what the sign says in Latin letters: ꦥꦱꦂꦒꦼꦝꦺ"
-    answers: [Pasar Gedhe, Pasargedhe]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الحجر اللي عند راس القبر اسمه …
+      ar: الحجر الذي عند رأس القبر يسمّى …
+      en: The stone at the head of a grave is the …
+    options: [maesan, kijing, lelayu]
+    answer: 0
+    explain:
+      ar_eg: maesan = شاهد القبر. kijing = الغطا المبني، وlelayu = النعي.
+      ar: maesan = شاهد القبر؛ kijing = الغطاء المبني، وlelayu = النعي.
+      en: maesan = headstone; kijing = the built cover, lelayu = death notice.
+    words: [maesan, kijing, lelayu]
   - id: e06
+    type: fill_blank
+    sentence: Jenazah dikubur ing ___ desa.
+    meaning:
+      ar_eg: الجثمان اندفن في ___ القرية.
+      ar: دُفن الجثمان في ___ القرية.
+      en: The body was buried in the village ___.
+    options: [pasarean, pangestu, sedha]
+    answers: [pasarean]
+    words: [pasarean, pangestu, sedha]
+  - id: e07
+    type: multiple_choice
+    question: Wayah ___, srengenge mudhun.
+    options: [surup, kijing, nglayat]
+    answer: 0
+    explain:
+      ar_eg: 'الشمس بتنزل وقت المغرب: surup.'
+      ar: 'تنزل الشمس وقت الغروب: surup.'
+      en: 'The sun goes down at sunset: surup.'
+    words: [surup, kijing, nglayat]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: ابني لوحة «Omah Kalang» مقطع مقطع.
-      ar: ركّب لافتة «Omah Kalang» مقطعًا مقطعًا.
-      en: Build the sign "Omah Kalang", syllable by syllable.
-    answer: ꦲꦺꦴ ꦩꦃ ꦏ ꦭꦁ
-    distractors: ["ꦩ"]
-    words: [papan, tulisan]
-  - id: e07
-    type: dictation
-    text: Papan iku tulisane aksara Jawa.
-    meaning:
-      ar_eg: اللوحة دي مكتوبة بالخط الجاوي.
-      ar: تلك اللافتة مكتوبة بالخط الجاوي.
-      en: That sign is written in aksara Jawa.
-    words: [papan, tulisan]
-  - id: e08
+      ar_eg: يا جدو، ادعيلي.
+      ar: يا جدي، أسألك البركة.
+      en: Grandpa, I ask your blessing.
+    answer: Nyuwun pangestu, Mbah.
+    distractors: [kijing, surup]
+    words: [pangestu]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Kijing lan maesane saka watu.
+    answers_meaning:
+      ar_eg: [غطا القبر والشاهد معمولين من حجر, القبر وشاهده من الحجر]
+      ar: [غطاء القبر وشاهده مصنوعان من الحجر, صُنع غطاء القبر والشاهد من الحجر]
+      en: [The grave cover and headstone are made of stone, The kijing and maesan are stone]
+    words: [kijing, maesan]
+  - id: e10
     type: speaking
-    text: Tulisane Pasar Legi.
+    text: Kula nglayat dhateng pasarean.
     meaning:
-      ar_eg: مكتوب «باسار ليغي».
-      ar: المكتوب «باسار ليغي».
-      en: It says Pasar Legi.
-    words: [tulisan]
+      ar_eg: أنا رايح العزا في المدافن.
+      ar: أذهب للعزاء في المقبرة.
+      en: I'm going to the cemetery to pay my respects.
+    words: [nglayat, pasarean]
 dialogue:
-  title: Mlaku-mlaku ing Kotagedhe
   lines:
-    - speaker: Dimas
-      text: Med, iki papan apa?
-      ar_eg: يا محمد، إيه اللوحة دي؟
-      ar: يا محمد، ما هذه اللافتة؟
-      en: Med, what's this sign?
+    - speaker: Pak Harjo
+      text: Mas Mohamed, wonten lelayu. Mbah Karto sampun sedha enjing menika.
+      ar_eg: يا محمد، فيه نعي. جدو كارتو اتوفّى النهارده الصبح.
+      ar: يا محمد، ثمة نعي. توفي الجد كارتو هذا الصباح.
+      en: Mas Mohamed, there's a death notice. Mbah Karto passed away this morning.
     - speaker: Mohamed
-      text: Tulisane Pasar Legi. Legi kaya ing weton!
-      ar_eg: مكتوب «باسار ليغي». Legi زي اللي في الـ weton!
-      ar: مكتوب «باسار ليغي». وLegi كالتي في الـ weton!
-      en: It says Pasar Legi. Legi, like in the weton!
-    - speaker: Dimas
-      text: Bener! Pasar iki rame saben Legi.
-      ar_eg: صح! السوق ده بيبقى زحمة كل يوم Legi.
-      ar: صحيح! يزدحم هذا السوق كل يوم Legi.
-      en: Right! This market is busy every Legi.
+      text: Innalillahi. Kula badhe nderek nglayat, Pak.
+      ar_eg: إنا لله. أنا عايز آجي العزا يا عم.
+      ar: إنا لله. أودّ أن أرافقك للعزاء يا سيدي.
+      en: Innalillahi. I'd like to come and pay my respects, sir.
+    - speaker: Pak Harjo
+      text: Mangga. Layonipun dipunsarekaken ing pasarean saderengipun surup.
+      ar_eg: اتفضل. هيدفنوه في المدافن قبل المغرب.
+      ar: تفضّل. سيُدفن في المقبرة قبل الغروب.
+      en: Please do. He'll be buried at the cemetery before sunset.
     - speaker: Mohamed
-      text: Lan papan iku Omah Kalang.
-      ar_eg: واللوحة اللي هناك دي «أوماه كالانغ».
-      ar: وتلك اللافتة «أوماه كالانغ».
-      en: And that sign says Omah Kalang.
-    - speaker: Dimas
-      text: Wah, kowe wis isa maca papan jeneng, lho!
-      ar_eg: يا سلام، بقيت تعرف تقرا لوحات الأسماء!
-      ar: رائع، صرت تقرأ لافتات الأسماء!
-      en: Wow, you can read name signs now!
+      text: Kijing kaliyan maesanipun sampun cumawis?
+      ar_eg: غطا القبر والشاهد جاهزين؟
+      ar: هل غطاء القبر والشاهد جاهزان؟
+      en: Are the grave cover and headstone ready?
+    - speaker: Pak Harjo
+      text: Dereng, menika mangke. Sapunika kita dongakaken kemawon.
+      ar_eg: لسه، دول بعدين. دلوقتي ندعيله بس.
+      ar: ليس بعد، ذلك لاحقًا. الآن لندعُ له فقط.
+      en: Not yet, that comes later. For now we just pray for him.
+    - speaker: Mohamed
+      text: Inggih, Pak. Mugi kulawarganipun pinaringan sabar.
+      ar_eg: حاضر يا عم. ربنا يصبّر أهله.
+      ar: نعم يا سيدي. أسأل الله أن يرزق أهله الصبر.
+      en: Yes, sir. May his family be given patience.
 new_words:
-  - word: papan
+  - word: nglayat
+    pos: verb
+    ar_eg: يروح العزا
+    ar: يقدّم العزاء
+    en: pay a condolence visit
+  - word: lelayu
     pos: noun
-    ar_eg: لوحة / يافطة
-    ar: لوحة / لافتة
-    en: board, sign = papan
+    ar_eg: نعي، خبر وفاة
+    ar: نعي
+    en: death notice
+  - word: sedha
+    pos: verb
+    ar_eg: اتوفّى (كراما)
+    ar: توفي (بالكراما)
+    en: pass away (krama)
+  - word: pasarean
+    pos: noun
+    ar_eg: مدافن، مقابر
+    ar: مقبرة
+    en: burial ground, cemetery
+  - word: kijing
+    pos: noun
+    ar_eg: غطا القبر المبني
+    ar: غطاء القبر المبني
+    en: built grave cover
+  - word: maesan
+    pos: noun
+    ar_eg: شاهد القبر
+    ar: شاهد القبر
+    en: headstone
+  - word: surup
+    pos: noun
+    ar_eg: المغرب، غروب الشمس
+    ar: الغروب
+    en: sunset
+  - word: pangestu
+    pos: noun
+    ar_eg: بركة الكبار ودعاهم
+    ar: بركة، دعاء الكبار
+    en: blessing (from an elder)
 review:
   status: draft
   verified: false

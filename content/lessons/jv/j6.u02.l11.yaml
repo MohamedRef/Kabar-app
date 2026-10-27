@@ -1,189 +1,168 @@
 schema: kabar.lesson/v1
 id: j6.u02.l11
 language: jv
-title: Siji nganti sanga
+title: Warung soto
 can_do:
-  ar_eg: تسمع رقم بالجاوي وتلاقيه مكتوب بالخط الجاوي.
-  ar: أن تسمع عددًا بالجاوية فتجده مكتوبًا بالخط الجاوي.
-  en: Hear a Javanese number and find it written in aksara Jawa.
+  ar_eg: تقرا منيو مكتوب بالخط الجاوي وتطلب منه.
+  ar: أن تقرأ قائمة طعام بالخط الجاوي وتطلب منها.
+  en: Read a menu in aksara Jawa and order from it.
 slides:
-  - title: Angka nganggo tembung
+  - title: Menu ing warung
     body:
       ar_eg: |
-        النهارده بتسمع الأول: ديماس هيقول أرقام وإنت تدوّر عليها مكتوبة.
-        الأرقام اللي بتخلص بحرف متحرك تقدر تكتبها دلوقتي: siji · loro · telu · lima · pitu · wolu · sanga.
-        papat وenem بيخلصوا بحرف ساكن، هتكتبهم الوحدة الجاية.
+        جنب الجامع فيه مطعم صغير (warung)، والمنيو على الحيطة مكتوب بالخط الجاوي.
+        ركّز على الحركات: soto فيها taling tarung مرتين، وsega فيها pepet، وsate فيها taling.
       ar: |
-        اليوم تبدأ بالاستماع: يقول ديماس أعدادًا وتبحث عنها مكتوبة.
-        الأعداد المنتهية بصائت تستطيع كتابتها الآن: siji · loro · telu · lima · pitu · wolu · sanga.
-        أما papat وenem فتنتهيان بساكن، وستكتبهما في الوحدة القادمة.
+        قرب المسجد مطعم صغير (warung)، وقائمته على الجدار بالخط الجاوي.
+        انتبه إلى الحركات: في soto علامة taling tarung مرتين، وفي sega علامة pepet، وفي sate علامة taling.
       en: |
-        Today you listen first: Dimas says numbers and you find them written.
-        The numbers that end in a vowel you can already write: siji · loro · telu · lima · pitu · wolu · sanga.
-        papat and enem end in a consonant; you'll write them next unit.
+        Next to the mosque there's a little warung, and its menu on the wall is in aksara Jawa.
+        Watch the vowel marks: soto has taling tarung twice, sega has pepet, sate has taling.
     grammar: jv.aksara.sandhangan-swara
     examples:
-      - text: ꦱꦶꦗꦶ · ꦭꦺꦴꦫꦺꦴ · ꦠꦼꦭꦸ (siji · loro · telu)
-        ar_eg: واحد · اتنين · تلاتة
-        ar: واحد · اثنان · ثلاثة
-        en: one · two · three
-      - text: ꦭꦶꦩ · ꦥꦶꦠꦸ (lima · pitu)
-        ar_eg: خمسة · سبعة
-        ar: خمسة · سبعة
-        en: five · seven
-      - text: ꦮꦺꦴꦭꦸ · ꦱꦔ (wolu · sanga)
-        ar_eg: تمانية · تسعة
-        ar: ثمانية · تسعة
-        en: eight · nine
+      - text: ꦱꦺꦴꦠꦺꦴ · ꦱꦠꦺꦱꦥꦶ (soto · sate sapi)
+        ar_eg: شوربة سوتو · ساتيه لحمة
+        ar: حساء سوتو · ساتيه لحم بقر
+        en: soto soup · beef satay
+      - text: ꦱꦼꦒ · ꦠꦲꦸ (sega · tahu)
+        ar_eg: رز · توفو
+        ar: أرز · توفو
+        en: rice · tofu
+      - text: ꦏꦺꦴꦥꦶ · ꦱꦸꦱꦸ · ꦗꦩꦸ (kopi · susu · jamu)
+        ar_eg: قهوة · لبن · جامو (مشروب أعشاب)
+        ar: قهوة · حليب · جامو (شراب أعشاب)
+        en: coffee · milk · jamu (herbal drink)
 exercises:
   - id: e01
-    type: listen
-    text: pitu
-    question:
-      ar_eg: ديماس قال رقم. أنهي واحد؟
-      ar: قال ديماس عددًا. أيّها؟
-      en: Dimas said a number. Which one?
-    options: ["ꦥꦶꦠꦸ", "ꦥꦶꦠ", "ꦥꦸꦠꦸ"]
-    answer: 0
-    meaning:
-      ar_eg: سبعة
-      ar: سبعة
-      en: seven
-    words: [wulu, suku]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي مشروب موجود في المنيو؟
+      ar: أي مشروب في القائمة؟
+      en: Which drink is on the menu?
+    options: [es teh, kopi, jus]
+    answer: 1
+    words: [taling tarung, wulu]
   - id: e02
-    type: listen
-    text: wolu
-    question:
-      ar_eg: ديماس قال رقم. أنهي واحد؟
-      ar: قال ديماس عددًا. أيّها؟
-      en: Dimas said a number. Which one?
-    options: ["ꦮꦸꦭꦸ", "ꦮꦭꦸ", "ꦮꦺꦴꦭꦸ"]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ديماس عايز أكلة فيها لحمة بقري. يطلب إيه؟
+      ar: يريد ديماس طبقًا فيه لحم بقر. ماذا يطلب؟
+      en: Dimas wants a dish with beef. What should he order?
+    options: [tahu, sega, sate sapi]
     answer: 2
     explain:
-      ar_eg: wo = ꦮ بـ taling tarung (o)، وlu = ꦭ بـ suku.
-      ar: wo = ꦮ بـ taling tarung (o)، وlu = ꦭ بـ suku.
-      en: wo = ꦮ with taling tarung (o), lu = ꦭ with suku.
-    meaning:
-      ar_eg: تمانية
-      ar: ثمانية
-      en: eight
-    words: [taling tarung]
+      ar_eg: ꦱꦠꦺꦱꦥꦶ = sate sapi، وsapi = بقرة.
+      ar: ꦱꦠꦺꦱꦥꦶ = sate sapi، وsapi = بقرة.
+      en: ꦱꦠꦺꦱꦥꦶ = sate sapi; sapi = cow, beef.
+    words: [taling, wulu]
   - id: e03
     type: listen
-    text: telu
+    text: Soto siji, kopi loro.
     question:
-      ar_eg: ديماس قال رقم. أنهي واحد؟
-      ar: قال ديماس عددًا. أيّها؟
-      en: Dimas said a number. Which one?
-    options: ["ꦠꦺꦭꦸ", "ꦠꦼꦭꦸ", "ꦠꦭꦸ"]
+      ar_eg: ديماس طلب إيه؟
+      ar: ماذا طلب ديماس؟
+      en: What did Dimas order?
+    options: ["ꦱꦺꦴꦠꦺꦴꦭꦺꦴꦫꦺꦴꦏꦺꦴꦥꦶꦱꦶꦗꦶ", "ꦱꦺꦴꦠꦺꦴꦱꦶꦗꦶꦏꦺꦴꦥꦶꦭꦺꦴꦫꦺꦴ", "ꦱꦠꦺꦱꦶꦗꦶꦏꦺꦴꦥꦶꦭꦺꦴꦫꦺꦴ"]
     answer: 1
-    explain:
-      ar_eg: الـ e في telu خفيفة (ə)، يعني pepet فوق ꦠ.
-      ar: الـ e في telu مختلسة (ə)، أي pepet فوق ꦠ.
-      en: The e in telu is the light schwa, so it's pepet above ꦠ.
     meaning:
-      ar_eg: تلاتة
-      ar: ثلاثة
-      en: three
-    words: [pepet]
+      ar_eg: واحد سوتو، واتنين قهوة.
+      ar: سوتو واحد وقهوتان.
+      en: One soto, two coffees.
+    words: [taling tarung, wulu]
   - id: e04
     type: match_pairs
     pairs:
-      - text: ꦱꦶꦗꦶ
-        ar_eg: "1 (واحد)"
-        ar: "1 (واحد)"
-        en: "1"
-      - text: ꦭꦶꦩ
-        ar_eg: "5 (خمسة)"
-        ar: "5 (خمسة)"
-        en: "5"
-      - text: ꦥꦶꦠꦸ
-        ar_eg: "7 (سبعة)"
-        ar: "7 (سبعة)"
-        en: "7"
-      - text: ꦱꦔ
-        ar_eg: "9 (تسعة)"
-        ar: "9 (تسعة)"
-        en: "9"
-    words: [wulu, suku]
+      - text: ꦱꦺꦴꦠꦺꦴ
+        ar_eg: soto — شوربة سوتو
+        ar: soto — حساء سوتو
+        en: soto — soto soup
+      - text: ꦱꦸꦱꦸ
+        ar_eg: susu — لبن
+        ar: susu — حليب
+        en: susu — milk
+      - text: ꦗꦩꦸ
+        ar_eg: jamu — مشروب أعشاب
+        ar: jamu — شراب أعشاب
+        en: jamu — herbal drink
+      - text: ꦠꦲꦸ
+        ar_eg: tahu — توفو
+        ar: tahu — توفو
+        en: tahu — tofu
+    words: [taling tarung, suku]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: "ديماس كتب: ꦱꦥꦶꦭꦶꦩ. كام بقرة؟"
-      ar: "كتب ديماس: ꦱꦥꦶꦭꦶꦩ. كم بقرة؟"
-      en: "Dimas wrote ꦱꦥꦶꦭꦶꦩ. How many cows?"
-    options: ["5", "7", "9"]
-    answer: 0
+      ar_eg: sega (رز) مكتوبة إزاي في المنيو؟
+      ar: كيف كُتبت sega (أرز) في القائمة؟
+      en: How is sega (rice) written on the menu?
+    options: ["ꦱꦺꦒ", "ꦱꦒ", "ꦱꦼꦒ"]
+    answer: 2
     explain:
-      ar_eg: ꦱꦥꦶ sapi (بقرة) + ꦭꦶꦩ lima (خمسة).
-      ar: ꦱꦥꦶ sapi (بقرة) + ꦭꦶꦩ lima (خمسة).
-      en: ꦱꦥꦶ sapi (cow) + ꦭꦶꦩ lima (five).
-    words: [wulu]
+      ar_eg: الـ e في sega خفيفة مختلسة، فبتتكتب pepet فوق ꦱ، مش taling.
+      ar: الـ e في sega مختلسة، فتُكتب pepet فوق ꦱ لا taling.
+      en: The e in sega is the light schwa, so it's pepet above ꦱ, not taling.
+    words: [pepet]
   - id: e06
     type: fill_blank
-    sentence: ꦱꦔ = ___
+    sentence: ꦱꦠꦺꦱꦥꦶ = ___
     meaning:
-      ar_eg: اكتب الرقم بالحروف اللاتينية أو بالأرقام.
-      ar: اكتب العدد بالحروف اللاتينية أو بالأرقام.
-      en: Type the number in Latin letters or digits.
-    answers: [sanga, "9"]
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: ساتيه لحمة)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: ساتيه لحم بقر)"
+      en: Type the reading in Latin letters. (It means "beef satay".)
+    answers: [sate sapi, satesapi]
+    words: [taling, wulu]
   - id: e07
-    type: dictation
-    text: Siji, loro, telu, lima.
-    meaning:
-      ar_eg: واحد، اتنين، تلاتة، خمسة.
-      ar: واحد، اثنان، ثلاثة، خمسة.
-      en: One, two, three, five.
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: "اكتب «pitu wolu sanga» (سبعة تمانية تسعة) مقطع مقطع."
-      ar: "اكتب «pitu wolu sanga» (سبعة ثمانية تسعة) مقطعًا مقطعًا."
-      en: Build "pitu wolu sanga" (seven eight nine), syllable by syllable.
-    answer: ꦥꦶ ꦠꦸ ꦮꦺꦴ ꦭꦸ ꦱ ꦔ
-    distractors: ["ꦮꦸ"]
-    words: [wulu, suku, taling tarung]
-  - id: e09
+      ar_eg: "اطلب: «Sate sapi siji.» (واحد ساتيه لحمة)، مقطع مقطع."
+      ar: "اطلب: «Sate sapi siji.» (ساتيه لحم واحد)، مقطعًا مقطعًا."
+      en: "Order «Sate sapi siji.» (one beef satay), syllable by syllable."
+    answer: ꦱ ꦠꦺ ꦱ ꦥꦶ ꦱꦶ ꦗꦶ
+    distractors: ["ꦱꦸ"]
+    words: [taling, wulu]
+  - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦠꦼꦭꦸ"
-      ar: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦠꦼꦭꦸ"
-      en: "Write in Latin letters: ꦧꦸꦏꦸꦠꦼꦭꦸ"
-    answers: [buku telu, bukutelu]
+      ar_eg: "اكتب الطلب ده بالحروف اللاتينية: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
+      ar: "اكتب هذا الطلب بالحروف اللاتينية: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
+      en: "Write this order in Latin letters: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
+    answers: ["sega loro, susu siji", sega loro susu siji]
     explain:
-      ar_eg: bu-ku (suku مرتين) + te-lu (pepet ثم suku) = تلات كتب.
-      ar: bu-ku (suku مرتين) + te-lu (pepet ثم suku) = ثلاثة كتب.
-      en: bu-ku (suku twice) + te-lu (pepet, then suku) = three books.
-    words: [suku, pepet]
+      ar_eg: se-ga lo-ro su-su si-ji = اتنين رز، وواحد لبن.
+      ar: se-ga lo-ro su-su si-ji = أرز لاثنين وحليب واحد.
+      en: se-ga lo-ro su-su si-ji = two rice, one milk.
+    words: [pepet, taling tarung, suku]
+  - id: e09
+    type: speaking
+    text: Soto siji, kopi loro, Bu.
+    meaning:
+      ar_eg: واحد سوتو واتنين قهوة يا مدام.
+      ar: سوتو واحد وقهوتان يا سيدتي.
+      en: One soto and two coffees, please.
 dialogue:
-  title: Dolanan angka
+  title: Ing warung soto
   lines:
-    - speaker: Dimas
-      text: Med, aku nyebut angka, kowe nuduhake tulisane.
-      ar_eg: يا محمد، أنا أقول رقم وإنت تشاور على كتابته.
-      ar: يا محمد، أقول عددًا وتشير أنت إلى كتابته.
-      en: Med, I say a number and you point to how it's written.
+    - speaker: Bu Warung
+      text: Badhe dhahar menapa, Mas?
+      ar_eg: حضرتك تحب تاكل إيه؟
+      ar: ماذا تحبّ أن تأكل يا سيدي؟
+      en: What would you like to eat?
     - speaker: Mohamed
-      text: Oke. Ayo!
-      ar_eg: ماشي. يلا!
-      ar: حسنًا. هيا!
-      en: OK. Go!
-    - speaker: Dimas
-      text: Pitu.
-      ar_eg: سبعة.
-      ar: سبعة.
-      en: Seven.
+      text: Soto setunggal lan kopi kalih, Bu.
+      ar_eg: واحد سوتو واتنين قهوة يا مدام.
+      ar: سوتو واحد وقهوتان يا سيدتي.
+      en: One soto and two coffees, please.
+    - speaker: Bu Warung
+      text: Sate sapi nggih wonten, Mas.
+      ar_eg: فيه كمان ساتيه لحمة.
+      ar: لدينا أيضًا ساتيه لحم بقر.
+      en: There's beef satay too.
     - speaker: Mohamed
-      text: Pa nganggo wulu, ta nganggo suku. Iki!
-      ar_eg: pa عليها wulu، وta تحتها suku. أهي!
-      ar: pa بـ wulu، وta بـ suku. هذه!
-      en: Pa with wulu, ta with suku. This one!
-    - speaker: Dimas
-      text: Pinter! Saiki wolu.
-      ar_eg: شاطر! دلوقتي تمانية.
-      ar: أحسنت! والآن ثمانية.
-      en: Clever! Now eight.
+      text: Mboten, Bu, matur nuwun. Soto kemawon.
+      ar_eg: لا يا مدام، شكرًا. سوتو بس.
+      ar: لا يا سيدتي، شكرًا. سوتو فقط.
+      en: No thanks, ma'am. Just the soto.
 review:
   status: draft
   verified: false
