@@ -26,15 +26,16 @@ use kabar_core::settings::TranslationMode;
 use kabar_core::story::parse_persona;
 use kabar_protocol::ai::Task;
 use kabar_protocol::chat::{ChatCorrection, ChatMessage, ChatRole, ChatRow, Conversation, MAX_MESSAGE_CHARS};
-use kabar_protocol::coach::{ActivityKind, Skill};
+use kabar_protocol::coach::{ActivityKind, LanguageFocus, Skill};
 use kabar_protocol::content::Lang;
 use kabar_protocol::story::Persona;
 
 use self::text::{T, tt};
 use crate::annotated::Annotated;
 use crate::coach::Coach;
+use crate::coach::labels::level_name;
 use crate::embedded::{self, PERSONAS};
-use crate::lesson::target_tag;
+use crate::lesson::{Rich, target_tag};
 use crate::listen::player::ProgramPlayer;
 use crate::reader::translate::in_voice;
 use crate::store::now_ms;
@@ -44,20 +45,20 @@ use crate::{Db, Ui};
 
 const CHAT_CSS: &str = include_str!("../../assets/chat.css");
 
-/// Every persona file, parsed once, in the order the spec lists them; a
-/// broken file stays listed with its error.
+/// Every persona file, parsed once, Indonesian partners first and each
+/// language by level; a broken file stays listed with its error.
 static PERSONA_LIST: LazyLock<Vec<Result<Persona, (String, String)>>> = LazyLock::new(|| {
     const ORDER: [&str; 10] = [
-        "mas-dimas",
-        "bu-siti",
-        "mbah-putri",
-        "mbak-ayu",
-        "pak-slamet",
         "mbak-gadis",
         "mas-ardi",
         "bu-lestari",
         "bang-togar",
         "kaka-yohana",
+        "mas-dimas",
+        "bu-siti",
+        "mbah-putri",
+        "mbak-ayu",
+        "pak-slamet",
     ];
     let mut all: Vec<_> = embedded::all(PERSONAS)
         .map(|(id, yaml)| parse_persona(&yaml).map_err(|e| (id.to_string(), e.to_string())))
@@ -71,6 +72,16 @@ static PERSONA_LIST: LazyLock<Vec<Result<Persona, (String, String)>>> = LazyLock
     });
     all
 });
+
+/// The partners in the learner's focus language first (the list order
+/// when the focus is both), so a learner of one language isn't offered the
+/// other one first.
+fn personas_for(focus: LanguageFocus) -> Vec<&'static Result<Persona, (String, String)>> {
+    let javanese_first = focus == LanguageFocus::Javanese;
+    let mut all: Vec<_> = PERSONA_LIST.iter().collect();
+    all.sort_by_key(|p| p.as_ref().map_or(true, |p| is_javanese(p) != javanese_first));
+    all
+}
 
 fn persona(id: &str) -> Option<&'static Persona> {
     PERSONA_LIST.iter().flatten().find(|p| p.id == id)
@@ -244,18 +255,22 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
         Vec::new()
     });
 
+    let focus = try_use_context::<Coach>()
+        .and_then(|c| c.profile.read().as_ref().map(|p| p.focus))
+        .unwrap_or(LanguageFocus::Both);
+
     rsx! {
         h2 { "{ui.t(crate::i18n::Msg::NavChat)}" }
         p { class: "muted", "{tt(lang, T::Intro)}" }
         ul { class: "ch-personas",
-            for entry in PERSONA_LIST.iter() {
+            for entry in personas_for(focus) {
                 match entry {
                     Ok(p) => {
                         let id = p.id.clone();
                         let jv = is_javanese(p);
                         // The levels the persona is written for, so the
                         // learner can find the partner for their unit.
-                        let bands = p.style.levels.iter().map(|b| b.level.to_uppercase()).collect::<Vec<_>>().join(" · ");
+                        let bands = p.style.levels.iter().map(|b| level_name(&b.level)).collect::<Vec<_>>().join(" · ");
                         rsx! {
                             li { key: "{p.id}",
                                 button { class: "card ch-persona", onclick: move |_| on_persona.call(id.clone()),
@@ -334,8 +349,8 @@ fn Scenes(persona: Persona, on_back: EventHandler, on_pick: EventHandler<Scenari
             Avatar { name: persona.name.clone(), javanese: is_javanese(&persona) }
             h2 { bdi { class: "latin", "{persona.name}" } }
         }
-        p { "{pick(&persona.personality, lang)}" }
-        p { class: "muted small", "{pick(&persona.style.register, lang)}" }
+        p { Rich { text: pick(&persona.personality, lang).to_string(), target } }
+        p { class: "ch-register-line", Rich { text: pick(&persona.style.register, lang).to_string(), target } }
         h3 { "{tt(lang, T::StartWith)}" }
         ul { class: "ch-scenes",
             for s in scenarios(&persona) {
@@ -345,11 +360,11 @@ fn Scenes(persona: Persona, on_back: EventHandler, on_pick: EventHandler<Scenari
                     rsx! {
                         li { key: "{key}",
                             button { class: "card ch-scene", onclick: move |_| on_pick.call(pick_it.clone()),
-                                span { class: "pill small latin", "{s.level.to_uppercase()}" }
+                                span { class: "pill small latin", "{level_name(&s.level)}" }
                                 if s.id.is_none() {
                                     strong { "{tt(lang, T::FreeChat)}" }
                                 } else {
-                                    span { "{pick(&s.situation, lang)}" }
+                                    span { Rich { text: pick(&s.situation, lang).to_string(), target } }
                                 }
                                 bdi { class: "latin muted", lang: target, "“{s.opener}”" }
                             }
@@ -526,7 +541,7 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
                 button { class: "quiet", onclick: move |_| on_back.call(()), "{tt(lang, T::Back)}" }
                 Avatar { name: p.name.clone(), javanese: is_javanese(p) }
                 h2 { bdi { class: "latin", "{p.name}" } }
-                span { class: "pill small latin", "{c.level.to_uppercase()}" }
+                span { class: "pill small latin", "{level_name(&c.level)}" }
                 {
                     let id = c.id.clone();
                     rsx! {
@@ -539,7 +554,7 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
                     }
                 }
             }
-            p { class: "ch-scene-line muted", "{pick(&scene.situation, lang)}" }
+            p { class: "ch-scene-line muted", Rich { text: pick(&scene.situation, lang).to_string(), target } }
             div { class: "ch-register", role: "group", aria_label: "{tt(lang, T::TalkToMe)}",
                 span { class: "muted small", "{tt(lang, T::TalkToMe)}" }
                 for r in registers(p) {
@@ -741,5 +756,24 @@ fn PersonaText(
                 span { class: "pill small ch-unverified", "{tt(lang, T::Unverified)}" }
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn languages(focus: LanguageFocus) -> Vec<bool> {
+        personas_for(focus).into_iter().flatten().map(is_javanese).collect()
+    }
+
+    #[test]
+    fn the_focus_language_leads_the_partner_list() {
+        let id = languages(LanguageFocus::Indonesian);
+        assert!(id.contains(&true) && !id[0], "Indonesian partners first");
+        assert!(id.windows(2).all(|w| w[0] <= w[1]), "then every Javanese one");
+        let jv = languages(LanguageFocus::Javanese);
+        assert!(jv[0] && jv.windows(2).all(|w| w[0] >= w[1]));
+        assert_eq!(languages(LanguageFocus::Both), id);
     }
 }
