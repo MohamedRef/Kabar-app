@@ -7,15 +7,13 @@
 //! (column 0) pinned.
 
 pub mod grade;
-mod grades;
-
-pub use grades::GradeRow;
 
 use batna_core::content::{Body, Item};
 use batna_core::review::Grade;
 use dioxus::prelude::*;
 
 use crate::i18n::table as tx;
+use crate::study::grade::GradeRow;
 
 const CSS: &str = include_str!("table.css");
 
@@ -128,7 +126,7 @@ pub fn TableItem(item: Item, on_grade: EventHandler<Grade>) -> Element {
             }
             if done {
                 p { class: if right == n { "tb-verdict good" } else { "tb-verdict" }, {tx::recalled(right, n)} }
-                GradeRow { suggested: grade::suggest(right, n), on_grade }
+                GradeRow { item_id: item.id.clone(), suggested: Some(grade::suggest(right, n)), on_grade }
             }
         }
     }

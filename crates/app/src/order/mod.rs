@@ -13,7 +13,7 @@ use batna_core::review::Grade;
 use dioxus::prelude::*;
 
 use crate::i18n::order as tx;
-use crate::table::GradeRow;
+use crate::study::grade::GradeRow;
 
 const CSS: &str = include_str!("order.css");
 
@@ -104,7 +104,7 @@ pub fn OrderItem(item: Item, on_grade: EventHandler<Grade>) -> Element {
                         {tx::in_place(n - wrong.len(), n)}
                     }
                 }
-                GradeRow { suggested: grade::suggest(wrong.len()), on_grade }
+                GradeRow { item_id: item.id.clone(), suggested: Some(grade::suggest(wrong.len())), on_grade }
             } else {
                 div { class: "or-actions",
                     button {

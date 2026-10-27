@@ -147,12 +147,6 @@ pub mod table {
     pub const MISSED_IT: &str = "ماعرفتهاش";
     pub const MARK_RIGHT: &str = "اعتبرها صح";
     pub const MARK_WRONG: &str = "اعتبرها غلط";
-    pub const RATE_YOURSELF: &str = "قيّم نفسك";
-    pub const SUGGESTED: &str = "اقتراحنا";
-    pub const AGAIN: &str = "تاني";
-    pub const HARD: &str = "صعبة";
-    pub const GOOD: &str = "تمام";
-    pub const EASY: &str = "سهلة";
 
     pub fn mark_each(left: usize) -> String {
         if left == 1 {
