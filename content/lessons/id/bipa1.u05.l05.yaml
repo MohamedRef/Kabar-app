@@ -79,52 +79,71 @@ exercises:
     words: [permisi]
   - id: e04
     type: fill_blank
-    sentence: Kolam renang ___ jam delapan.
+    sentence: Tiket masuk di ___ itu.
     meaning:
-      ar_eg: حمام السباحة بيفتح الساعة ٨.
-      ar: يفتح المسبح في الساعة الثامنة.
-      en: The pool opens at eight.
-    options: [tutup, buka, ada]
-    answers: [buka]
-    words: [buka]
+      ar_eg: تذكرة الدخول من الشباك ده.
+      ar: تذكرة الدخول من ذلك الشباك.
+      en: Entry tickets are at that counter.
+    options: [loket, uang, petugas]
+    answers: [loket]
+    words: [tiket masuk, loket]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: فيه حمام سباحة في أنكول؟
-      ar: هل يوجد مسبح في أنكول؟
-      en: Is there a swimming pool in Ancol?
-    answer: Ada kolam renang di Ancol?
-    alternatives: ['Di Ancol ada kolam renang?']
-    distractors: [berapa, tiket]
-    words: [ada, kolam renang]
+      ar_eg: الموظف موجود عند الشباك.
+      ar: الموظف عند الشباك.
+      en: The attendant is at the counter.
+    answer: Petugas itu ada di loket.
+    distractors: [uang, jadi]
+    words: [petugas, loket]
   - id: e06
-    type: build_sentence
-    source:
-      ar_eg: ممكن أصوّر على البحر؟
-      ar: هل يمكنني التصوير على الشاطئ؟
-      en: May I take photos on the beach?
-    answer: Boleh saya foto di pantai?
-    alternatives: ['Saya boleh foto di pantai?']
-    distractors: [bagaimana, tutup]
-    words: [boleh, foto, pantai]
+    type: listen
+    text: Ini uangnya, Mbak. Dua tiket masuk.
+    options: ['Ini uangnya, Mbak. Dua tiket masuk.', 'Ini tiketnya, Mbak. Dua tiket masuk.', 'Ini uangnya, Mbak. Tiga tiket masuk.']
+    answer: 0
+    meaning:
+      ar_eg: اتفضلي الفلوس يا آنسة. تذكرتين دخول.
+      ar: تفضلي المال يا آنسة. تذكرتا دخول.
+      en: Here's the money, miss. Two entry tickets.
+    words: [uang, tiket masuk]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'تذكرتين يا آنسة. (قولها لموظفة الشباك: Mbak)'
-      ar: 'تذكرتان يا آنسة. (للموظفة: Mbak)'
-      en: Two tickets, miss. (to the clerk — Mbak)
-    answers: ['Dua tiket, Mbak.', 'Dua tiket, Mbak', 'Dua tiket ya, Mbak.', 'Dua tiket, ya, Mbak.', 'Tiketnya dua, Mbak.', 'Tiket dua, Mbak.', 'Mbak, dua tiket.', 'Saya mau dua tiket, Mbak.']
-    words: [dua, tiket]
+    type: match_pairs
+    pairs:
+      - text: loket
+        ar_eg: شباك التذاكر
+        ar: شباك التذاكر
+        en: ticket counter
+      - text: tiket masuk
+        ar_eg: تذكرة دخول
+        ar: تذكرة دخول
+        en: entry ticket
+      - text: uang
+        ar_eg: فلوس
+        ar: مال، نقود
+        en: money
+      - text: petugas
+        ar_eg: موظف
+        ar: موظف
+        en: attendant, officer
+      - text: jadi
+        ar_eg: يبقى، يعني
+        ar: إذن، فيكون
+        en: so, that makes
+      - text: harga
+        ar_eg: سعر
+        ar: سعر
+        en: price
+    words: [loket, tiket masuk, uang, petugas, jadi, harga]
   - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: التذكرة بكام؟
-      ar: كم ثمن التذكرة؟
-      en: How much is the ticket?
-    answers: ['Berapa harga tiketnya?', Berapa harga tiketnya, 'Berapa harga tiket?', 'Harga tiketnya berapa?', 'Tiketnya berapa?', 'Berapa tiketnya?']
-    words: [berapa, harga, tiket]
+    type: multiple_choice
+    question: "Petugas loket: ___ tujuh puluh ribu, Pak."
+    question_meaning:
+      ar_eg: موظف الشباك بيقول «يبقى سبعين ألف يا أستاذ». إيه الكلمة الناقصة؟
+      ar: يقول موظف الشباك «إذن سبعون ألفًا يا سيدي». ما الكلمة الناقصة؟
+      en: The counter clerk says "That makes seventy thousand, sir." Which word is missing?
+    options: [Jadi, Ada, Uang]
+    answer: 0
+    words: [petugas, loket, jadi, uang]
   - id: e09
     type: dictation
     text: Jadi tujuh puluh ribu, Pak.
@@ -135,12 +154,12 @@ exercises:
     words: [jadi, ribu]
   - id: e10
     type: speaking
-    text: Permisi, Mbak. Berapa harga tiket masuk?
+    text: Permisi, Mbak. Dua tiket masuk. Jadi berapa?
     meaning:
-      ar_eg: لو سمحتي، تذكرة الدخول بكام؟
-      ar: من فضلك، كم ثمن تذكرة الدخول؟
-      en: Excuse me, how much is an entrance ticket?
-    words: [permisi, harga, tiket]
+      ar_eg: لو سمحتي يا آنسة. تذكرتين دخول. يبقوا كام؟
+      ar: عذرًا يا آنسة. تذكرتا دخول. فكم يكون المبلغ؟
+      en: Excuse me, miss. Two entry tickets. So how much is that?
+    words: [permisi, tiket masuk, jadi]
 dialogue:
   title: Di loket Ancol
   lines:

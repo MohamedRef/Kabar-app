@@ -47,35 +47,32 @@ exercises:
   - id: e01
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة تنفع تبدأ بيها الحكاية؟
-      ar: أيّ جملة تصلح بداية للقصة؟
-      en: Which sentence works best to open the story?
-    options: ['Setelah itu, kami berenang.', Tadi pagi saya bangun jam lima., 'Saya capek, tapi senang.']
-    answer: 1
-    explain:
-      ar_eg: الحكاية بتبدأ بكلمة وقت (tadi pagi). setelah itu للنص، وإحساسك للآخر.
-      ar: تبدأ القصة بظرف زمان (tadi pagi)، وsetelah itu للوسط، والشعور للختام.
-      en: A story opens with a time word (tadi pagi); setelah itu is for the middle, feelings for the end.
-    words: [tadi, bangun]
+      ar_eg: إزاي تقول «دي حكايتي»؟
+      ar: كيف تقول «هذه قصتي»؟
+      en: How do you say "This is my story"?
+    options: ['Ini cerita saya.', 'Ini kalimat saya.', 'Ini kapal saya.']
+    answer: 0
+    words: [cerita]
   - id: e02
     type: listen
-    text: Kami naik kapal dari Marina Ancol.
-    options: [Kami naik bus dari Marina Ancol., Kami naik kapal ke Marina Ancol., Kami naik kapal dari Marina Ancol.]
-    answer: 2
-    words: [naik, kapal, dari]
+    text: Setelah itu, kami senang sekali.
+    options: ['Setelah itu, kami senang sekali.', 'Sebelum itu, kami senang sekali.', 'Setelah itu, kami capek sekali.']
+    answer: 0
+    meaning:
+      ar_eg: بعد كده، كنا مبسوطين أوي.
+      ar: بعد ذلك كنا سعداء جدًا.
+      en: After that, we were really happy.
+    words: [setelah itu, senang]
   - id: e03
     type: fill_blank
-    sentence: ___ pagi saya bangun jam lima.
+    sentence: Ini ___ saya di kapal.
     meaning:
-      ar_eg: النهارده الصبح صحيت الساعة خمسة.
-      ar: هذا الصباح استيقظت في الخامسة.
-      en: This morning I got up at five.
-    answers: [Tadi, tadi]
-    explain:
-      ar_eg: الصبح بتاع النهارده وفات = tadi pagi.
-      ar: صباح اليوم وقد مضى = tadi pagi.
-      en: This (past) morning = tadi pagi.
-    words: [tadi]
+      ar_eg: دي حكايتي على المركب.
+      ar: هذه قصتي على السفينة.
+      en: This is my story on the boat.
+    options: [cerita, ikan bakar, senang]
+    answers: [cerita]
+    words: [cerita, kapal]
   - id: e04
     type: fill_blank
     sentence: Saya ___ pernah snorkeling. Ini pertama kali!
@@ -93,12 +90,12 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: ركبنا المركب من مارينا أنكول.
-      ar: ركبنا القارب من مارينا أنكول.
-      en: We took the boat from Marina Ancol.
-    answer: Kami naik kapal dari Marina Ancol.
-    distractors: [ke, bus]
-    words: [naik, kapal]
+      ar_eg: كلنا سمك مشوي في الجزيرة.
+      ar: أكلنا سمكًا مشويًا في الجزيرة.
+      en: We ate grilled fish on the island.
+    answer: Kami makan ikan bakar di pulau.
+    distractors: [kapal, dari]
+    words: [makan, ikan bakar, pulau]
   - id: e06
     type: build_sentence
     source:
@@ -129,20 +126,20 @@ exercises:
     words: [capek, tapi, senang]
   - id: e09
     type: dictation
-    text: Ikannya banyak sekali!
+    text: Ikan bakarnya enak sekali!
     meaning:
-      ar_eg: السمك كتير أوي!
-      ar: الأسماك كثيرة جدًا!
-      en: There were so many fish!
-    words: [ikan, banyak]
+      ar_eg: السمك المشوي حلو أوي!
+      ar: السمك المشوي لذيذ جدًا!
+      en: The grilled fish is delicious!
+    words: [ikan bakar, enak]
   - id: e10
     type: speaking
-    text: Tadi pagi saya naik kapal. Setelah itu, saya berenang. Saya capek, tapi senang.
+    text: Ini cerita saya. Tadi pagi saya naik kapal. Setelah itu, saya berenang. Saya capek, tapi senang.
     meaning:
-      ar_eg: النهارده الصبح ركبت مركب. بعد كده عُمت. أنا تعبان، بس مبسوط.
-      ar: هذا الصباح ركبت قاربًا، وبعد ذلك سبحت. أنا متعب لكني سعيد.
-      en: This morning I took a boat. After that, I swam. I'm tired, but happy.
-    words: [tadi, kapal, setelah itu, capek, senang]
+      ar_eg: دي حكايتي. النهارده الصبح ركبت مركب. بعد كده عُمت. أنا تعبان، بس مبسوط.
+      ar: هذه قصتي. هذا الصباح ركبت قاربًا، وبعد ذلك سبحت. أنا متعب لكني سعيد.
+      en: This is my story. This morning I took a boat. After that, I swam. I'm tired, but happy.
+    words: [cerita, tadi, kapal, setelah itu, capek, senang]
 dialogue:
   title: Pulang dari Pulau Pramuka
   lines:

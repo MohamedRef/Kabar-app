@@ -90,6 +90,10 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
+      - text: kalimat
+        ar_eg: جملة
+        ar: جملة
+        en: sentence
       - text: subjek
         ar_eg: الفاعل (مين؟)
         ar: المسند إليه
@@ -106,7 +110,11 @@ exercises:
         ar_eg: الظرف (فين؟ إمتى؟)
         ar: الظرف
         en: adverbial (place, time)
-    words: [subjek, predikat, objek, keterangan]
+      - text: buat
+        ar_eg: يعمل، يكوّن
+        ar: يصنع، يكوّن
+        en: make
+    words: [kalimat, subjek, predikat, objek, keterangan, buat]
   - id: e02
     type: multiple_choice
     question: Raka membeli tiket di pelabuhan.
@@ -151,34 +159,56 @@ exercises:
     distractors: [ke, yang]
     words: [membeli, tiket, pelabuhan]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: رينا صوّرت البحر على الشط.
-      ar: صوّرت رينا البحر على الشاطئ.
-      en: Rina photographed the sea at the beach.
-    answers: [Rina memotret laut di pantai., 'Di pantai, Rina memotret laut.', Di pantai Rina memotret laut., Rina memotret laut di pantai, Rina memfoto laut di pantai.]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «اعمل جملة»؟
+      ar: كيف تقول «كوّن جملة»؟
+      en: How do you say "Make a sentence"?
+    options: ['Buat kalimat.', 'Buat kata.', 'Kalimat buat.']
+    answer: 0
     explain:
-      ar_eg: S (Rina) + P (memotret) + O (laut) + K (di pantai). والظرف ممكن ييجي الأول.
-      ar: S + P + O + K، ويجوز تقديم الظرف.
-      en: S + P + O + K; the adverbial may come first.
-    words: [memotret, laut, pantai]
+      ar_eg: kalimat = جملة، وkata = كلمة. والفعل قبل المفعول.
+      ar: kalimat = جملة، وkata = كلمة، والفعل قبل المفعول.
+      en: kalimat = sentence, kata = word; the verb comes before the object.
+    words: [buat, kalimat]
   - id: e07
-    type: dictation
-    text: Kami naik kapal kemarin.
+    type: fill_blank
+    sentence: Rina, coba ___ kalimat!
     meaning:
-      ar_eg: ركبنا مركب امبارح.
-      ar: ركبنا قاربًا أمس.
-      en: We took a boat yesterday.
-    words: [naik, kapal, kemarin]
+      ar_eg: يا رينا، جرّبي تعملي جملة!
+      ar: يا رينا، حاولي أن تكوّني جملة!
+      en: Rina, try making a sentence!
+    options: [buat, subjek, kalimat]
+    answers: [buat]
+    words: [buat, kalimat]
   - id: e08
     type: speaking
-    text: Kemarin saya membeli tiket di pelabuhan.
+    text: Kemarin saya memotret kapal di pelabuhan.
     meaning:
-      ar_eg: امبارح اشتريت تذكرة من الميناء.
-      ar: أمس اشتريت تذكرة من الميناء.
-      en: Yesterday I bought a ticket at the harbour.
-    words: [membeli, tiket, pelabuhan]
+      ar_eg: امبارح صوّرت مركب في الميناء.
+      ar: أمس صوّرت سفينة في الميناء.
+      en: Yesterday I photographed a boat at the harbour.
+    words: [memotret, kapal, pelabuhan]
+  - id: e09
+    type: multiple_choice
+    question: Saya memotret kapal di pelabuhan.
+    question_meaning:
+      ar_eg: «di pelabuhan» هنا إيه في الجملة؟
+      ar: ما وظيفة «di pelabuhan» في الجملة؟
+      en: What is "di pelabuhan" in this sentence?
+    options: [keterangan, subjek, objek]
+    answer: 0
+    words: [keterangan, subjek, objek, memotret]
+  - id: e10
+    type: multiple_choice
+    question: Rina memotret laut.
+    question_meaning:
+      ar_eg: «Rina» هنا إيه في الجملة؟
+      ar: ما وظيفة «Rina» في الجملة؟
+      en: What is "Rina" in this sentence?
+    options: [subjek, predikat, keterangan]
+    answer: 0
+    words: [subjek, predikat, keterangan, memotret]
 dialogue:
   title: Kalimat yang benar
   lines:
