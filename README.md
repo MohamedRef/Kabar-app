@@ -70,7 +70,7 @@ every morning. CI warns when the table below is behind the content.
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | J1 | Malioboro, Yogyakarta | — | 7 | 50 | 459 | 261 | 261 / 250 | ~6 h | 34 |
 | J2 | Madiun | — | 6 | 48 | 461 | 240 | 501 / 500 | ~5 h | 35 |
-| J3 | Yogyakarta | — | 6 | 61 | 554 | 250 | 751 / 750 | ~6 h | 35 |
+| J3 | Pakualaman, Yogyakarta | — | 6 | 61 | 554 | 250 | 751 / 750 | ~6 h | 35 |
 | J4 | Malioboro, Yogyakarta | — | 6 | 69 | 648 | 248 | 998 / 1,000 | ~8 h | 38 |
 | J5 | Semarang | — | 6 | 66 | 621 | 253 | 1,251 / 1,250 | ~7 h | 39 |
 | J6 | Kotagede, old Mataram capital | — | 6 | 60 | 542 | 95 | 1,345 / 1,500 | ~6 h | 37 |

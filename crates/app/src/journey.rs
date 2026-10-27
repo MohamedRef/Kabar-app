@@ -1221,7 +1221,7 @@ mod tests {
         assert_eq!(r.id_map.style, RouteStyle::Islands);
         assert_eq!(r.jv_map.style, RouteStyle::Rail);
         assert!(r.jv.unverified());
-        // J5 Semarang rides the branch line.
+        // J5 rides the branch line back to Madiun.
         assert!(r.jv_map.segments.iter().any(|s| s.kind == SegmentKind::Branch));
         // Every level and its test have an id the player can open.
         for c in [&r.id, &r.jv] {
