@@ -1,0 +1,163 @@
+schema: kabar.lesson/v1
+id: j5.u02.l06
+language: jv
+title: Warta radio
+can_do:
+  ar_eg: تسمع نشرة أخبار قصيرة بالجاوي وتفهم إيه اللي حصل ومين عمل إيه.
+  ar: أن تستمع إلى نشرة أخبار جاوية قصيرة وتفهم ما حدث ومن فعل ماذا.
+  en: Follow a short Javanese radio news bulletin by ear.
+exercises:
+  - id: e01
+    type: listen
+    text: Warta saka Semarang. Esuk iki, dalan ing Kaligawe kebanjiran rob maneh.
+    question:
+      ar_eg: دي نشرة الراديو الصبح. إيه اللي حصل؟
+      ar: هذه نشرة الإذاعة صباحًا. ماذا حدث؟
+      en: This is the morning radio news. What happened?
+    options:
+      - Dalan ing Kaligawe kebanjiran rob.
+      - Ana pameran ing Lawang Sewu.
+      - Sepur saka Jakarta wis teka.
+    answer: 0
+    meaning:
+      ar_eg: أخبار من سيمارانج. النهارده الصبح، الشارع في كاليجاوي غرق من المد تاني.
+      ar: أخبار من سيمارانج. صباح اليوم غمر المدُّ طريقَ كاليغاوي مرة أخرى.
+      en: News from Semarang. This morning the road in Kaligawe was flooded by the tide again.
+    explain:
+      ar_eg: maneh = تاني (lagi). يعني ده بيحصل كتير هناك، فاكر kerep؟
+      ar: maneh = مرة أخرى (lagi)، أي أن ذلك يتكرر هناك، كما في kerep.
+      en: maneh = again (lagi), so it happens often there; remember kerep?
+    words: [rob, kebanjiran]
+  - id: e02
+    type: listen
+    text: Dalan kasebut ditutup dening polisi nganti sore.
+    question:
+      ar_eg: مين اللي قفل الشارع؟
+      ar: من أغلق الطريق؟
+      en: Who closed the road?
+    options: [warga, polisi, lurah]
+    answer: 1
+    meaning:
+      ar_eg: الشرطة قفلت الشارع ده لحد العصر.
+      ar: أغلقت الشرطة هذا الطريق حتى المساء.
+      en: The road was closed by the police until the afternoon.
+    explain:
+      ar_eg: ditutup = اتقفل (ditutup). اللي بعد dening = الفاعل.
+      ar: ditutup = أُغلق (ditutup)، ومن يأتي بعد dening هو الفاعل.
+      en: ditutup = was closed (ditutup); whoever follows dening did it.
+    words: [ditutup, dening]
+  - id: e03
+    type: listen
+    text: Sesuk esuk, dalan kasebut bakal diresiki dening warga.
+    question:
+      ar_eg: الشارع هيتنضّف إمتى؟
+      ar: متى سيُنظَّف الطريق؟
+      en: When will the road be cleaned?
+    options: [esuk iki, nganti sore, sesuk esuk]
+    answer: 2
+    meaning:
+      ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
+      ar: صباح الغد سينظّف السكانُ هذا الطريق.
+      en: Tomorrow morning the road will be cleaned by the residents.
+    words: [diresiki, warga]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: ditutup
+        ar_eg: اتقفل
+        ar: أُغلق
+        en: was closed
+      - text: diresiki
+        ar_eg: اتنضّف
+        ar: نُظّف
+        en: was cleaned
+      - text: kebanjiran
+        ar_eg: غرق / اتغمر بالمية
+        ar: غمرته المياه
+        en: got flooded
+      - text: rob
+        ar_eg: فيضان المد
+        ar: فيضان المدّ
+        en: tidal flood
+      - text: kerep
+        ar_eg: كتير / غالبًا
+        ar: كثيرًا
+        en: often
+    words: [ditutup, diresiki, kebanjiran, rob, kerep]
+  - id: e05
+    type: fill_blank
+    sentence: Dalan kasebut ___ dening polisi nganti sore.
+    meaning:
+      ar_eg: الشرطة قفلت الشارع ده لحد العصر.
+      ar: أغلقت الشرطة هذا الطريق حتى المساء.
+      en: The road was closed by the police until the afternoon.
+    options: [diresiki, dibangun, ditutup]
+    answers: [ditutup]
+    words: [ditutup]
+  - id: e06
+    type: dictation
+    text: Sesuk esuk, dalan kasebut bakal diresiki dening warga.
+    meaning:
+      ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
+      ar: صباح الغد سينظّف السكانُ هذا الطريق.
+      en: Tomorrow morning the road will be cleaned by the residents.
+    words: [diresiki, warga, dening]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الأخبار) الشرطة قفلت الشارع.
+      ar: (بأسلوب الأخبار) أغلقت الشرطة الطريق.
+      en: (news style) The road was closed by the police.
+    answers:
+      - Dalan kasebut ditutup dening polisi.
+      - Dalan iku ditutup dening polisi.
+      - Dalane ditutup dening polisi.
+      - Dalan ditutup dening polisi.
+      - Dalan iki ditutup dening polisi.
+    words: [ditutup, dening]
+  - id: e08
+    type: speaking
+    text: Warta saka Semarang. Dalan ing Kaligawe kebanjiran rob maneh.
+    meaning:
+      ar_eg: أخبار من سيمارانج. الشارع في كاليجاوي غرق من المد تاني.
+      ar: أخبار من سيمارانج. غمر المدُّ طريقَ كاليغاوي مرة أخرى.
+      en: News from Semarang. The road in Kaligawe was flooded by the tide again.
+    words: [kebanjiran, rob]
+dialogue:
+  title: Krungu warta radio
+  lines:
+    - speaker: Mbak Ayu
+      text: Mohamed, krungu warta radio esuk iki?
+      ar_eg: يا محمد، سمعت نشرة الراديو النهارده الصبح؟
+      ar: يا محمد، هل سمعت نشرة الإذاعة صباح اليوم؟
+      en: Mohamed, did you hear the radio news this morning?
+    - speaker: Mohamed
+      text: Krungu. Dalan ing Kaligawe kebanjiran rob maneh.
+      ar_eg: سمعت. الشارع في كاليجاوي غرق من المد تاني.
+      ar: سمعت. غمر المدُّ طريق كاليغاوي مرة أخرى.
+      en: I did. The road in Kaligawe flooded with the tide again.
+    - speaker: Mbak Ayu
+      text: Waduh, aku arep menyang Kaligawe.
+      ar_eg: يا خبر، ده أنا رايحة كاليجاوي.
+      ar: يا للأسف، كنت أنوي الذهاب إلى كاليغاوي.
+      en: Oh no, I'm about to go to Kaligawe.
+    - speaker: Mohamed
+      text: Aja saiki! Dalane ditutup dening polisi nganti sore.
+      ar_eg: بلاش دلوقتي! الشرطة قافلة الشارع لحد العصر.
+      ar: لا تذهبي الآن! أغلقت الشرطة الطريق حتى المساء.
+      en: Not now! The road's been closed by the police until the afternoon.
+    - speaker: Mbak Ayu
+      text: Ya wis, sesuk wae.
+      ar_eg: خلاص، بكرة بقى.
+      ar: حسنًا، غدًا إذن.
+      en: All right, tomorrow then.
+new_words:
+  - word: ditutup
+    pos: verb
+    ar_eg: اتقفل (من tutup = يقفل)
+    ar: أُغلق (من tutup = أغلق)
+    en: was closed (from tutup) = ditutup
+review:
+  status: draft
+  verified: false
