@@ -477,7 +477,7 @@ Every recurring character in `content/cast.yaml` (except the learner) gets one p
 | 6d | Javanese lessons and the Unggah-Ungguh game | 11 |
 | 6e | Kabar Pagi | 6 |
 
-Codex only saves masters. `scripts/assets/export_personas.py` checks every file name against `assets/portraits.yaml`, then makes the web sizes and the cast sheet.
+Codex only saves masters. `scripts/assets/export_personas.py` checks every file name against `assets/portraits.yaml`, then makes the web sizes and the cast sheet. `every_character_has_a_portrait_entry` (crates/content/tests) fails CI if a cast id has no entry, an entry names someone outside the cast, or a portrait file has no entry.
 
 ---
 
