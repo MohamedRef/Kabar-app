@@ -1,215 +1,232 @@
 schema: kabar.lesson/v1
 id: bipa3.u08.l05
 language: id
-title: Gempa!
+title: Badai malam ini
 can_do:
-  ar_eg: تشرح لصاحبك يعمل إيه وقت الزلزال، بالأسباب.
-  ar: أن تشرح لصديقك ما يفعله وقت الزلزال مع ذكر الأسباب.
-  en: Explain earthquake safety to a friend, with reasons.
+  ar_eg: 'تفهم تحذير من عاصفة: الضلمة، حالة الطوارئ، الخطر، الناس اللي اتحاصروا والانفجار.'
+  ar: 'أن تفهم تحذيرًا من عاصفة: الظلام وحالة الطوارئ والخطر والمحاصَرين والانفجار.'
+  en: 'Understand a storm warning: darkness, emergencies, threats, people trapped and an explosion.'
 slides:
-  - title: Kalau …, supaya …
+  - title: Cuaca buruk
     body:
       ar_eg: |
-        شرح الأمان = شرط + خطوة + سبب:
-        Kalau ada guncangan (لو الأرض اتهزت)، jangan panik (ما تتخضّش)، berlindung di bawah meja supaya kepalamu terlindung (عشان راسك تبقى في أمان).
-        ولو حصلت نتيجة: Rumahnya retak sehingga kami mengungsi.
+        badai = عاصفة. gelap = ضلمة، مضلّم. darurat = طوارئ (من العربي «ضرورة»): keadaan darurat = حالة طوارئ.
+        ancaman = تهديد، خطر جاي. hancur = اتكسر حتت، اتدمّر. ledakan = انفجار.
+        terjebak = اتحبس، اتزنق (مش قادر يطلع). bertahan = يصمد، يستحمل.
       ar: |
-        شرح السلامة = شرط + خطوة + سبب:
-        Kalau ada guncangan (إذا اهتزت الأرض)، jangan panik (لا تفزع)، berlindung di bawah meja supaya kepalamu terlindung (لكي يبقى رأسك محميًّا).
-        وللنتيجة الواقعة: Rumahnya retak sehingga kami mengungsi.
+        badai = عاصفة. gelap = مظلم. darurat = طوارئ (من العربية «ضرورة»): keadaan darurat = حالة طوارئ.
+        ancaman = تهديد. hancur = تحطّم، دُمّر. ledakan = انفجار.
+        terjebak = عالق، محاصَر. bertahan = يصمد.
       en: |
-        Explaining safety = condition + step + reason:
-        Kalau ada guncangan (if there's shaking), jangan panik (don't panic), berlindung di bawah meja supaya kepalamu terlindung (so your head is protected).
-        For a result that happened: Rumahnya retak sehingga kami mengungsi.
-    grammar: id.conjunction.purpose-condition
+        badai = storm. gelap = dark. darurat = emergency (from Arabic ḍarūra): keadaan darurat = state of emergency.
+        ancaman = threat. hancur = destroyed, smashed. ledakan = explosion.
+        terjebak = trapped, stuck. bertahan = hold out, survive.
     examples:
-      - text: Kalau ada guncangan, jangan panik.
-        ar_eg: لو الأرض اتهزت، ما تتخضّش.
-        ar: إذا اهتزت الأرض فلا تفزع.
-        en: If there's shaking, don't panic.
+      - text: Malam ini ada badai. Jangan keluar rumah!
+        ar_eg: الليلة فيه عاصفة. ما تخرجش من البيت!
+        ar: الليلة عاصفة. لا تخرج من البيت!
+        en: There's a storm tonight. Don't go out!
+      - text: Listrik mati, jadi rumah gelap.
+        ar_eg: النور قطع، فالبيت ضلمة.
+        ar: انقطعت الكهرباء فأظلم البيت.
+        en: The power's out, so the house is dark.
+      - text: Beberapa orang terjebak di dalam mobil.
+        ar_eg: كام واحد اتحبسوا جوه العربية.
+        ar: علق عدد من الناس داخل السيارة.
+        en: Several people are trapped inside a car.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: guncangan
-        ar_eg: هزّة
-        ar: هزّة / اهتزاز
-        en: shaking, tremor
-      - text: panik
-        ar_eg: يتخض / يتلخبط من الخوف
-        ar: يفزع / يرتبك
-        en: to panic
-      - text: retak
-        ar_eg: مشروخ
-        ar: متصدّع
-        en: cracked
-      - text: mengungsi
-        ar_eg: يخلي المكان
-        ar: ينزح / يُخلي المكان
-        en: to evacuate
-      - text: tas siaga
-        ar_eg: شنطة طوارئ
-        ar: حقيبة طوارئ
-        en: emergency bag
-      - text: tsunami
-        ar_eg: تسونامي (موجة بحر عملاقة)
-        ar: تسونامي (موجة بحرية عاتية)
-        en: tsunami
-    words: [guncangan, panik, retak, mengungsi, tas siaga, tsunami]
+      - text: badai
+        ar_eg: عاصفة
+        ar: عاصفة
+        en: storm
+      - text: gelap
+        ar_eg: ضلمة
+        ar: مظلم
+        en: dark
+      - text: darurat
+        ar_eg: طوارئ
+        ar: طوارئ
+        en: emergency
+      - text: ancaman
+        ar_eg: تهديد
+        ar: تهديد
+        en: threat
+    words: [badai, gelap, darurat, ancaman]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: hancur
+        ar_eg: اتدمّر
+        ar: دُمّر
+        en: destroyed
+      - text: terjebak
+        ar_eg: اتحبس
+        ar: عالق
+        en: trapped
+      - text: bertahan
+        ar_eg: يصمد
+        ar: يصمد
+        en: hold out
+      - text: ledakan
+        ar_eg: انفجار
+        ar: انفجار
+        en: explosion
+    words: [hancur, terjebak, bertahan, ledakan]
+  - id: e03
     type: listen
-    text: Kalau ada guncangan, jangan panik.
-    options:
-      - Kalau ada guncangan, jangan panik.
-      - Kalau ada guncangan, jangan pulang.
-      - Kalau ada banjir, jangan panik.
+    text: Ada ledakan di gunung! Semua warga harus mengungsi.
+    question:
+      ar_eg: حصل إيه في الجبل؟
+      ar: ماذا حدث في الجبل؟
+      en: What happened on the mountain?
+    options: [انفجار, حريق, زلزال]
     answer: 0
     meaning:
-      ar_eg: لو الأرض اتهزت، ما تتخضّش.
-      ar: إذا اهتزت الأرض فلا تفزع.
-      en: If there's shaking, don't panic.
-    words: [guncangan, panik]
-  - id: e03
-    type: multiple_choice
-    question: Rumah itu ___ karena gempa, jadi jangan masuk.
-    options: [basah, deras, retak]
-    answer: 2
-    words: [retak]
+      ar_eg: فيه انفجار في الجبل! كل السكان لازم يخلوا المكان.
+      ar: وقع انفجار في الجبل! على جميع السكان الإخلاء.
+      en: There's an explosion on the mountain! Everyone must evacuate.
+    words: [ledakan]
   - id: e04
     type: fill_blank
-    sentence: Hujan deras semalaman ___ sungai meluap.
+    sentence: Rumah itu ___ karena gempa.
     meaning:
-      ar_eg: المطر نزل جامد طول الليل لدرجة إن النهر فاض.
-      ar: هطل المطر بغزارة طوال الليل حتى فاض النهر.
-      en: It rained heavily all night, so the river overflowed.
-    options: [supaya, sehingga, kalau]
-    answers: [sehingga]
-    explain:
-      ar_eg: 'النهر فاض فعلًا: نتيجة، فـ sehingga.'
-      ar: فاض النهر فعلًا، فهي نتيجة والأداة sehingga.
-      en: The river really overflowed, a result, so sehingga.
-    words: [deras, meluap]
+      ar_eg: البيت ده ___ بسبب الزلزال.
+      ar: ___ ذلك البيت بسبب الزلزال.
+      en: That house was ___ by the earthquake.
+    options: [hancur, gelap, ancaman]
+    answers: [hancur]
+    words: [hancur, gelap, ancaman]
   - id: e05
-    type: fill_blank
-    sentence: Siapkan tas siaga ___ kamu siap kalau terjadi gempa atau tsunami.
-    meaning:
-      ar_eg: (اكتب أداة الهدف) جهّز شنطة طوارئ عشان تبقى مستعد لو حصل زلزال أو تسونامي.
-      ar: (اكتب أداة الغاية) جهّز حقيبة طوارئ لكي تكون مستعدًّا إذا وقع زلزال أو تسونامي.
-      en: (Write the purpose word.) Prepare an emergency bag so you're ready if an earthquake or tsunami happens.
-    answers: [supaya, agar]
-    words: [tas siaga, tsunami]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بنتصل بالرقم ده في حالة إيه؟ «Telepon 112 jika ada keadaan ___»
+      ar: متى نتصل بهذا الرقم؟ «Telepon 112 jika ada keadaan ___»
+      en: When do we call this number? 'Telepon 112 jika ada keadaan ___'
+    options: [badai, darurat, terjebak]
+    answer: 1
+    explain:
+      ar_eg: keadaan darurat = حالة طوارئ (من «ضرورة»).
+      ar: keadaan darurat = حالة طوارئ (من «ضرورة»).
+      en: keadaan darurat = emergency (from Arabic ḍarūra).
+    words: [darurat, badai, terjebak]
   - id: e06
+    type: fill_blank
+    sentence: Tiga orang ___ di dalam rumah yang roboh.
+    meaning:
+      ar_eg: تلات أشخاص ___ جوه البيت اللي وقع.
+      ar: ثلاثة أشخاص ___ داخل البيت المنهار.
+      en: Three people are ___ inside the collapsed house.
+    options: [bertahan, terjebak, ledakan]
+    answers: [terjebak]
+    words: [terjebak, bertahan, ledakan]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: ما تتخضّش لو الأرض اتهزت.
-      ar: لا تفزع إذا اهتزت الأرض.
-      en: Don't panic if there's shaking.
-    answer: Jangan panik kalau ada guncangan.
-    distractors: [sehingga, retak]
-    words: [panik, guncangan]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: البيت مشروخ، فلازم نخلي المكان.
-      ar: البيت متصدّع، لذلك علينا أن نُخليه.
-      en: The house is cracked, so we must evacuate.
-    answers:
-      - Rumahnya retak sehingga kami harus mengungsi.
-      - Rumahnya retak sehingga kami harus mengungsi
-      - Rumahnya retak sehingga kita harus mengungsi.
-      - Rumahnya retak sehingga kita harus mengungsi
-      - Rumah itu retak sehingga kami harus mengungsi.
-      - Rumah itu retak sehingga kita harus mengungsi.
-      - Rumahnya retak, jadi kami harus mengungsi.
-      - Rumahnya retak, jadi kita harus mengungsi.
-      - Rumahnya retak, sehingga kami harus mengungsi.
-      - Rumahnya retak, karena itu kami harus mengungsi.
-    words: [retak, mengungsi]
+      ar_eg: العاصفة دي تهديد كبير.
+      ar: هذه العاصفة تهديد كبير.
+      en: This storm is a big threat.
+    answer: Badai ini adalah ancaman besar.
+    distractors: [gelap, hancur]
+    words: [badai, ancaman]
   - id: e08
-    type: dictation
-    text: Baik anak-anak maupun orang tua harus tahu jalur evakuasi.
-    meaning:
-      ar_eg: الصغيرين والكبار، الكل لازم يعرف طريق الإخلاء.
-      ar: يجب على الأطفال والكبار على السواء معرفة طريق الإخلاء.
-      en: Both children and adults need to know the evacuation route.
-    words: [maupun]
+    type: translate
+    direction: from_target
+    source_text: Kami bertahan di masjid sampai pagi.
+    answers_meaning:
+      ar_eg: [فضلنا صامدين في الجامع لحد الصبح, استحملنا في المسجد لحد الصبح]
+      ar: [صمدنا في المسجد حتى الصباح, بقينا في المسجد حتى الصباح]
+      en: [We held out in the mosque until morning, We sheltered in the mosque till morning]
+    words: [bertahan]
   - id: e09
     type: speaking
-    text: Pertama, berlindung di bawah meja. Setelah guncangan berhenti, keluar ke lapangan.
+    text: Di luar gelap sekali. Jangan keluar!
     meaning:
-      ar_eg: الأول، استخبى تحت الترابيزة. بعد ما الهزة تقف، اطلع على الساحة.
-      ar: أولًا، احتمِ تحت الطاولة. وبعد أن تتوقف الهزة، اخرج إلى الساحة.
-      en: First, take shelter under a table. When the shaking stops, go out to the open field.
-    words: [berlindung, guncangan, lapangan]
+      ar_eg: برّه ضلمة أوي. ما تخرجش!
+      ar: الخارج مظلم جدًا. لا تخرج!
+      en: It's very dark outside. Don't go out!
+    words: [gelap]
   - id: e10
     type: multiple_choice
-    question: Setelah gempa besar di laut, bisa terjadi tsunami. Warga pantai harus segera mengungsi.
-    question_meaning:
-      ar_eg: إيه اللي ممكن يحصل بعد زلزال كبير في البحر؟
-      ar: ماذا قد يحدث بعد زلزال كبير في البحر؟
-      en: What can happen after a big earthquake at sea?
-    options: ['Tsunami.', 'Sungai meluap.', 'Gunung berapi meletus.']
-    answer: 0
+    question: 'Petugas: "Ini keadaan ___. Semua orang ke lapangan!"'
+    options: [ledakan, bertahan, darurat]
+    answer: 2
     explain:
-      ar_eg: tsunami = موجة بحر عملاقة بعد زلزال. warga pantai = سكان الشط.
-      ar: tsunami = موجة بحرية عاتية بعد زلزال، وwarga pantai = سكان الساحل.
-      en: A tsunami is a giant sea wave after a quake. warga pantai = people living on the coast.
-    words: [tsunami, mengungsi]
+      ar_eg: keadaan darurat = حالة طوارئ.
+      ar: keadaan darurat = حالة طوارئ.
+      en: keadaan darurat = emergency.
+    words: [darurat, ledakan, bertahan, hancur, badai, terjebak]
 dialogue:
-  title: Raka datang ke Tetebatu
   lines:
-    - speaker: Raka
-      text: Mohamed, ini pertama kali aku ke Lombok. Aku agak khawatir soal gempa.
-      ar_eg: يا محمد، دي أول مرة آجي لومبوك. أنا قلقان شوية من الزلازل.
-      ar: يا محمد، هذه أول مرة أزور فيها لومبوك، وأنا قلق قليلًا بشأن الزلازل.
-      en: Mohamed, it's my first time on Lombok. I'm a bit worried about earthquakes.
+    - speaker: Bu Yanti
+      text: Mohamed, katanya malam ini ada badai besar.
+      ar_eg: يا محمد، بيقولوا فيه عاصفة كبيرة الليلة.
+      ar: يا محمد، يقولون إن عاصفة كبيرة ستهبّ الليلة.
+      en: Mohamed, they say there's a big storm tonight.
     - speaker: Mohamed
-      text: Tenang. Kalau ada guncangan, jangan panik.
-      ar_eg: اهدى. لو الأرض اتهزت، ما تتخضّش.
-      ar: اهدأ. إذا اهتزت الأرض فلا تفزع.
-      en: Relax. If there's shaking, don't panic.
-    - speaker: Raka
-      text: Lalu aku harus bagaimana?
-      ar_eg: طب أعمل إيه؟
-      ar: وماذا أفعل إذن؟
-      en: So what should I do?
+      text: Wah. Apakah ini ancaman untuk rumah kita?
+      ar_eg: ياه. هي خطر على بيتنا؟
+      ar: هل هي تهديد لبيتنا؟
+      en: Oh. Is it a threat to our house?
+    - speaker: Bu Yanti
+      text: Rumah ini kuat, bisa bertahan. Tapi listrik bisa mati.
+      ar_eg: البيت ده متين، هيصمد. بس النور ممكن يقطع.
+      ar: هذا البيت متين وسيصمد. لكن قد تنقطع الكهرباء.
+      en: This house is solid; it'll hold. But the power may go.
     - speaker: Mohamed
-      text: Pertama, berlindung di bawah meja supaya kepalamu terlindung.
-      ar_eg: الأول، استخبى تحت الترابيزة عشان راسك تبقى في أمان.
-      ar: أولًا، احتمِ تحت الطاولة لكي يبقى رأسك محميًّا.
-      en: First, take shelter under a table so your head is protected.
-    - speaker: Raka
-      text: Setelah itu?
-      ar_eg: وبعد كده؟
-      ar: وبعد ذلك؟
-      en: After that?
-    - speaker: Mohamed
-      text: Setelah guncangan berhenti, keluar ke lapangan. Kalau rumahnya retak, jangan masuk lagi.
-      ar_eg: بعد ما الهزة تقف، اطلع على الساحة. ولو البيت اتشرخ، ما تدخلوش تاني.
-      ar: بعد أن تتوقف الهزة اخرج إلى الساحة، وإن تصدّع البيت فلا تدخله ثانية.
-      en: When the shaking stops, go out to the open field. If the house is cracked, don't go back in.
+      text: Saya punya senter. Kalau gelap, kita pakai itu.
+      ar_eg: عندي كشاف. لو الدنيا ضلمت نستخدمه.
+      ar: عندي مصباح يدوي. إن أظلم المكان استخدمناه.
+      en: I've got a torch. If it gets dark, we'll use that.
+    - speaker: Bu Yanti
+      text: Bagus. Simpan juga nomor telepon darurat, ya.
+      ar_eg: كويس. واحفظ كمان رقم الطوارئ.
+      ar: جيد. واحفظ أيضًا رقم الطوارئ.
+      en: Good. Save the emergency number too.
 new_words:
-  - word: guncangan
+  - word: badai
     pos: noun
-    ar_eg: هزّة
-    ar: هزّة / اهتزاز
-    en: shaking, tremor
-  - word: panik
-    pos: verb
-    ar_eg: يتخض / يتلخبط من الخوف
-    ar: يفزع / يرتبك
-    en: to panic
-  - word: retak
+    ar_eg: عاصفة
+    ar: عاصفة
+    en: storm
+  - word: gelap
     pos: adjective
-    ar_eg: مشروخ
-    ar: متصدّع
-    en: cracked
-  - word: tsunami
+    ar_eg: ضلمة، مضلّم
+    ar: مظلم
+    en: dark
+  - word: darurat
     pos: noun
-    ar_eg: تسونامي (موجة بحر عملاقة)
-    ar: تسونامي (موجة بحرية عاتية)
-    en: tsunami
+    arabic: ضرورة
+    ar_eg: طوارئ
+    ar: طوارئ
+    en: emergency
+  - word: ancaman
+    pos: noun
+    ar_eg: تهديد، خطر
+    ar: تهديد
+    en: threat
+  - word: hancur
+    pos: adjective
+    ar_eg: متدمّر، متكسّر حتت
+    ar: مُدمَّر، محطَّم
+    en: destroyed, smashed
+  - word: terjebak
+    pos: verb
+    ar_eg: اتحبس، اتزنق
+    ar: علِق، حوصِر
+    en: be trapped, be stuck
+  - word: bertahan
+    pos: verb
+    ar_eg: يصمد، يستحمل
+    ar: يصمد، يبقى
+    en: hold out, survive
+  - word: ledakan
+    pos: noun
+    ar_eg: انفجار
+    ar: انفجار
+    en: explosion
 review:
   status: draft
   verified: false
