@@ -1,0 +1,245 @@
+schema: kabar.lesson/v1
+id: bipa1.u04.l14
+language: id
+title: Halo! Oh, begitu
+can_do:
+  ar_eg: ترد على التليفون، وتقول «آه، فهمت»، وتسأل لو حد يعرف حد، وتودّع بالعامية.
+  ar: أن تردّ على الهاتف، وتقول «فهمت»، وتسأل إن كان أحد يعرف أحدًا، وتودّع بالعامية.
+  en: Answer the phone, say "oh, I see", ask if someone knows a person, and say a casual goodbye.
+slides:
+  - title: Halo, iya, oh begitu
+    body:
+      ar_eg: |
+        كلام الدردشة اليومية:
+        halo = ألو / هاي، على التليفون وفي الشارع.
+        iya = أيوه، أدفى من ya.
+        oh, begitu = آه، كده! (يعني «فهمت»). وpaham = يفهم: Saya paham. / Saya tidak paham.
+        kenal = يعرف شخص: «Kamu kenal Rina؟». (لمعرفة المعلومات فيه كلمة تانية في الوحدة ٨.)
+        ketemu = يقابل، بالعامية: «Sampai ketemu!» = أشوفك!
+        dadah = باي باي، وإنت بتشاور بإيدك.
+      ar: |
+        كلمات الحديث اليومي:
+        halo = ألو / مرحبًا، في الهاتف وفي الطريق.
+        iya = نعم، أدفأ من ya.
+        oh, begitu = آه، هكذا! (أي «فهمت»). وpaham = يفهم: Saya paham. / Saya tidak paham.
+        kenal = يعرف شخصًا: «Kamu kenal Rina؟». (ولمعرفة المعلومات كلمة أخرى في الوحدة الثامنة.)
+        ketemu = يلتقي، بالعامية: «Sampai ketemu!» = إلى اللقاء!
+        dadah = مع السلامة، مع تلويح اليد.
+      en: |
+        Everyday chat words:
+        halo = hello, on the phone and in person.
+        iya = yes, warmer than ya.
+        oh, begitu = oh, I see! paham = understand: Saya paham. / Saya tidak paham.
+        kenal = know a person: "Kamu kenal Rina?" (Knowing facts uses another word, in unit 8.)
+        ketemu = meet, casual: "Sampai ketemu!" = See you!
+        dadah = bye-bye, with a wave.
+    examples:
+      - text: Halo, Raka! Kamu kenal Rina?
+        ar_eg: هاي يا رَكا! إنت تعرف رينا؟
+        ar: مرحبًا يا راكا! هل تعرف رينا؟
+        en: Hi, Raka! Do you know Rina?
+      - text: Iya, saya kenal dia.
+        ar_eg: أيوه، أعرفها.
+        ar: نعم، أعرفها.
+        en: Yes, I know her.
+      - text: Oh, begitu. Saya paham.
+        ar_eg: آه، كده. فهمت.
+        ar: آه، هكذا. فهمت.
+        en: Oh, I see. I understand.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: halo
+        ar_eg: ألو، هاي
+        ar: مرحبًا، ألو
+        en: hello
+      - text: iya
+        ar_eg: أيوه
+        ar: نعم
+        en: 'yes'
+      - text: kenal
+        ar_eg: يعرف (شخص)
+        ar: يعرف (شخصًا)
+        en: know (a person)
+      - text: ketemu
+        ar_eg: يقابل
+        ar: يلتقي
+        en: meet
+    words: [halo, iya, kenal, ketemu]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: oh
+        ar_eg: آه
+        ar: آه
+        en: oh
+      - text: begitu
+        ar_eg: كده
+        ar: هكذا
+        en: like that, so
+      - text: paham
+        ar_eg: يفهم
+        ar: يفهم
+        en: understand
+      - text: dadah
+        ar_eg: باي باي
+        ar: مع السلامة
+        en: bye-bye
+    words: [oh, begitu, paham, dadah]
+  - id: e03
+    type: listen
+    text: Halo? Iya, ini Rina.
+    question:
+      ar_eg: رينا بتعمل إيه؟
+      ar: ماذا تفعل رينا؟
+      en: What is Rina doing?
+    options: [بترد على التليفون, بتودّع حد, بتشتري حاجة]
+    answer: 0
+    meaning:
+      ar_eg: ألو؟ أيوه، أنا رينا.
+      ar: ألو؟ نعم، أنا رينا.
+      en: Hello? Yes, this is Rina.
+    words: [halo, iya]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حد شرحلك حاجة وفهمتها. تقول إيه؟
+      ar: شرح لك أحدهم شيئًا ففهمته. ماذا تقول؟
+      en: Someone explained something and you got it. What do you say?
+    options: ['Oh, begitu. Saya paham.', Dadah!, Halo!]
+    answer: 0
+    explain:
+      ar_eg: oh, begitu = آه كده، وpaham = فهمت. dadah للوداع وhalo للتحية.
+      ar: oh, begitu تعني «فهمت»، أما dadah فللوداع وhalo للتحية.
+      en: oh, begitu + paham = I see, I understand; dadah is goodbye and halo hello.
+    words: [oh, begitu, paham, dadah, halo]
+  - id: e05
+    type: fill_blank
+    sentence: Kamu ___ Pak Irwan? — Iya, dia guru saya.
+    meaning:
+      ar_eg: إنت ___ أستاذ إروان؟ — أيوه، دا المدرس بتاعي.
+      ar: هل ___ الأستاذ إروان؟ — نعم، إنه معلّمي.
+      en: Do you ___ Mr Irwan? — Yes, he's my teacher.
+    options: [kenal, ketemu, paham]
+    answers: [kenal]
+    words: [kenal, iya]
+  - id: e06
+    type: fill_blank
+    sentence: Kita ___ besok, ya!
+    meaning:
+      ar_eg: نتقابل بكرة، ماشي!
+      ar: نلتقي غدًا، اتفقنا!
+      en: We'll meet tomorrow, OK!
+    options: [ketemu, kenal, paham]
+    answers: [ketemu]
+    words: [ketemu]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: معلش، أنا مش فاهم.
+      ar: عذرًا، لا أفهم.
+      en: Sorry, I don't understand.
+    answer: Maaf, saya tidak paham.
+    distractors: [kenal, dadah]
+    words: [paham]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: باي باي! (للعيال أو للصحاب، وإنت بتشاور بإيدك)
+      ar: مع السلامة! (للأطفال أو الأصدقاء مع تلويح اليد)
+      en: Bye-bye! (to kids or friends, with a wave)
+    answers:
+      - Dadah!
+      - Dadah
+    words: [dadah]
+  - id: e09
+    type: speaking
+    text: Oh, begitu! Kamu kenal dia?
+    meaning:
+      ar_eg: آه، كده! إنت تعرفه؟
+      ar: آه، هكذا! هل تعرفه؟
+      en: Oh, I see! Do you know him?
+    words: [oh, begitu, kenal]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Iya, kita ketemu hari Sabtu.
+    answers_meaning:
+      ar_eg: [أيوه، هنتقابل يوم السبت, أيوه، نتقابل يوم السبت]
+      ar: [نعم، نلتقي يوم السبت, نعم، سنلتقي يوم السبت]
+      en: ['Yes, we''ll meet on Saturday', 'Yes, we meet on Saturday', 'Yeah, we''re meeting on Saturday']
+    words: [iya, ketemu]
+dialogue:
+  lines:
+    - speaker: Rina
+      text: Halo, Mohamed? Ini Rina.
+      ar_eg: ألو، محمد؟ أنا رينا.
+      ar: ألو، محمد؟ أنا رينا.
+      en: Hello, Mohamed? It's Rina.
+    - speaker: Mohamed
+      text: Halo, Rina! Apa kabar?
+      ar_eg: أهلًا يا رينا! إزيك؟
+      ar: مرحبًا يا رينا! كيف حالك؟
+      en: Hi, Rina! How are you?
+    - speaker: Rina
+      text: Baik! Kamu kenal Raka? Dia teman saya.
+      ar_eg: كويسة! تعرف رَكا؟ دا صاحبي.
+      ar: بخير! هل تعرف راكا؟ إنه صديقي.
+      en: Fine! Do you know Raka? He's my friend.
+    - speaker: Mohamed
+      text: Oh, begitu! Iya, saya kenal dia.
+      ar_eg: آه، كده! أيوه، أعرفه.
+      ar: آه، هكذا! نعم، أعرفه.
+      en: Oh, I see! Yes, I know him.
+    - speaker: Rina
+      text: Kita ketemu hari Sabtu, ya? Dadah!
+      ar_eg: نتقابل يوم السبت، ماشي؟ باي باي!
+      ar: نلتقي يوم السبت، اتفقنا؟ مع السلامة!
+      en: We'll meet on Saturday, OK? Bye-bye!
+new_words:
+  - word: halo
+    pos: interjection
+    ar_eg: ألو، هاي
+    ar: مرحبًا، ألو
+    en: hello
+  - word: iya
+    pos: particle
+    ar_eg: أيوه
+    ar: نعم (بودّ)
+    en: yes (warm, casual)
+  - word: oh
+    pos: interjection
+    ar_eg: آه
+    ar: آه
+    en: oh
+  - word: begitu
+    pos: adverb
+    ar_eg: كده (oh, begitu = آه فهمت)
+    ar: هكذا (oh, begitu = فهمت)
+    en: like that, so (oh, begitu = I see)
+  - word: kenal
+    pos: verb
+    ar_eg: يعرف (شخص)
+    ar: يعرف (شخصًا)
+    en: know (a person)
+  - word: ketemu
+    pos: verb
+    ar_eg: يقابل (عامية)
+    ar: يلتقي (عامية)
+    en: meet (casual)
+  - word: paham
+    pos: verb
+    arabic: فهم
+    ar_eg: يفهم
+    ar: يفهم
+    en: understand
+  - word: dadah
+    pos: interjection
+    ar_eg: باي باي
+    ar: مع السلامة (للصغار والأصحاب)
+    en: bye-bye
+review:
+  status: draft
+  verified: false

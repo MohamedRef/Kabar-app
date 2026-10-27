@@ -1,0 +1,241 @@
+schema: kabar.lesson/v1
+id: bipa1.u04.l13
+language: id
+title: Awal dan akhir
+can_do:
+  ar_eg: تقول أول وآخر الشهر والسنة، وتسأل عن السن، وتستخدم «فاكر» و«مثلًا».
+  ar: أن تذكر أول الشهر والسنة وآخرهما، وتسأل عن العمر، وتستعمل «أتذكّر» و«مثال».
+  en: Say the beginning and end of a month or year, ask someone's age, and use "remember" and "example".
+slides:
+  - title: Awal bulan, akhir tahun
+    body:
+      ar_eg: |
+        awal = أول، وakhir = آخر: awal bulan (أول الشهر)، akhir tahun (آخر السنة).
+        setahun = سنة واحدة (se- معناها «واحد»). والسنة بتبقى على kalender (نتيجة).
+        usia = umur بس أرسمي: هتلاقيها في الاستمارات والأخبار.
+        ingat = يفتكر: «Saya ingat!» = أنا فاكر!
+        angka = رقم مكتوب (7)، أما nomor فرقم حاجة (رقم الموبايل). وcontoh = مثال.
+      ar: |
+        awal = أوّل، وakhir = آخِر: awal bulan (أوّل الشهر)، akhir tahun (آخر السنة).
+        setahun = سنة واحدة (فالمقطع se- يعني «واحد»)، والسنة مدوّنة في الـ kalender (التقويم).
+        usia مثل umur لكنها أرسم، وتراها في الاستمارات والأخبار.
+        ingat = يتذكّر: «Saya ingat!» = أتذكّر!
+        angka = الرقم المكتوب (7)، أما nomor فرقم الشيء (رقم الهاتف). وcontoh = مثال.
+      en: |
+        awal = beginning and akhir = end: awal bulan (the start of the month), akhir tahun (the end of the year).
+        setahun = one year (se- means "one"). The year is on the kalender.
+        usia = age, a more formal umur: you'll see it on forms and in the news.
+        ingat = remember: "Saya ingat!" = I remember!
+        angka = a written digit (7), while nomor is the number of something (a phone number). contoh = example.
+    examples:
+      - text: Usia nenek saya delapan puluh tahun.
+        ar_eg: جدتي عندها ٨٠ سنة.
+        ar: عمر جدّتي ثمانون سنة.
+        en: My grandmother is eighty years old.
+      - text: Ulang tahun saya awal bulan Juni, tanggal dua.
+        ar_eg: عيد ميلادي أول شهر يونيو، يوم ٢.
+        ar: عيد ميلادي في أوّل يونيو، يوم الثاني.
+        en: My birthday is at the start of June, on the second.
+      - text: Setahun itu dua belas bulan.
+        ar_eg: السنة ١٢ شهر.
+        ar: السنة اثنا عشر شهرًا.
+        en: A year is twelve months.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: usia
+        ar_eg: سن، عمر
+        ar: عمر
+        en: age
+      - text: awal
+        ar_eg: أول
+        ar: أوّل
+        en: beginning
+      - text: akhir
+        ar_eg: آخر
+        ar: آخِر
+        en: end
+      - text: kalender
+        ar_eg: نتيجة
+        ar: تقويم
+        en: calendar
+    words: [usia, awal, akhir, kalender]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: setahun
+        ar_eg: سنة واحدة
+        ar: سنة واحدة
+        en: one year
+      - text: ingat
+        ar_eg: يفتكر
+        ar: يتذكّر
+        en: remember
+      - text: angka
+        ar_eg: رقم
+        ar: رقم
+        en: digit
+      - text: contoh
+        ar_eg: مثال
+        ar: مثال
+        en: example
+    words: [setahun, ingat, angka, contoh]
+  - id: e03
+    type: listen
+    text: 'Saya ingat: ulang tahun Rina awal bulan Mei.'
+    question:
+      ar_eg: عيد ميلاد رينا إمتى؟
+      ar: متى عيد ميلاد رينا؟
+      en: When is Rina's birthday?
+    options: [أول شهر مايو, آخر شهر مايو, أول السنة]
+    answer: 0
+    meaning:
+      ar_eg: 'أنا فاكر: عيد ميلاد رينا أول شهر مايو.'
+      ar: 'أتذكّر: عيد ميلاد رينا في أوّل مايو.'
+      en: 'I remember: Rina''s birthday is at the start of May.'
+    words: [ingat, awal]
+  - id: e04
+    type: fill_blank
+    sentence: Di kalender, tanggal tiga puluh satu adalah ___ bulan.
+    meaning:
+      ar_eg: في النتيجة، يوم ٣١ هو ___ الشهر.
+      ar: في التقويم، اليوم الحادي والثلاثون هو ___ الشهر.
+      en: On the calendar, the thirty-first is the ___ of the month.
+    options: [akhir, awal, usia]
+    answers: [akhir]
+    words: [akhir, kalender]
+  - id: e05
+    type: multiple_choice
+    question: Usia saya tiga puluh tahun. Angkanya…
+    options: ['30', '13', '300']
+    answer: 0
+    explain:
+      ar_eg: tiga puluh = ٣٠، والرقم المكتوب 30.
+      ar: tiga puluh = ثلاثون، والرقم 30.
+      en: tiga puluh = thirty, the digits 30.
+    words: [usia, angka]
+  - id: e06
+    type: fill_blank
+    sentence: 'Contoh: angka 7 adalah ___.'
+    meaning:
+      ar_eg: 'مثال: الرقم ٧ هو ___.'
+      ar: 'مثال: الرقم 7 هو ___.'
+      en: 'Example: the digit 7 is ___.'
+    options: [tujuh, tiga, sembilan]
+    answers: [tujuh]
+    words: [contoh, angka]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: السنة ١٢ شهر.
+      ar: السنة اثنا عشر شهرًا.
+      en: A year is twelve months.
+    answer: Setahun itu dua belas bulan.
+    distractors: [akhir, angka]
+    words: [setahun]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kamu ingat usia nenek?
+    answers_meaning:
+      ar_eg: [إنت فاكر سن جدتك؟, فاكر جدتك عندها كام سنة؟, إنت فاكر عمر جدتك؟]
+      ar: [هل تتذكّر عمر جدّتك؟, أتذكر عمر الجدّة؟]
+      en: ['Do you remember Grandma''s age?', 'Do you remember how old Grandma is?']
+    words: [ingat, usia]
+  - id: e09
+    type: speaking
+    text: Di kalender saya, setahun itu dua belas bulan.
+    meaning:
+      ar_eg: في النتيجة بتاعتي، السنة ١٢ شهر.
+      ar: في تقويمي، السنة اثنا عشر شهرًا.
+      en: On my calendar, a year is twelve months.
+    words: [kalender, setahun]
+  - id: e10
+    type: multiple_choice
+    question: Tanggal satu Januari adalah ___ tahun.
+    options: [awal, akhir, contoh]
+    answer: 0
+    explain:
+      ar_eg: '١ يناير = أول السنة: awal tahun.'
+      ar: 'الأول من يناير أوّل السنة: awal tahun.'
+      en: 'January 1st is the start of the year: awal tahun.'
+    words: [awal, akhir, contoh]
+dialogue:
+  lines:
+    - speaker: Raka
+      text: Rina, kapan ulang tahun kamu?
+      ar_eg: يا رينا، عيد ميلادك إمتى؟
+      ar: يا رينا، متى عيد ميلادك؟
+      en: Rina, when's your birthday?
+    - speaker: Rina
+      text: Akhir bulan Mei, tanggal tiga puluh.
+      ar_eg: آخر شهر مايو، يوم ٣٠.
+      ar: في آخر مايو، يوم الثلاثين.
+      en: At the end of May, on the thirtieth.
+    - speaker: Raka
+      text: Tanggal tiga puluh Mei. Saya ingat!
+      ar_eg: ٣٠ مايو. أنا فاكر!
+      ar: الثلاثون من مايو. سأتذكّر!
+      en: The thirtieth of May. I'll remember!
+    - speaker: Rina
+      text: Dan ulang tahun kamu?
+      ar_eg: وعيد ميلادك إنت؟
+      ar: وعيد ميلادك أنت؟
+      en: And your birthday?
+    - speaker: Raka
+      text: Awal bulan Juni, tanggal dua.
+      ar_eg: أول شهر يونيو، يوم ٢.
+      ar: في أوّل يونيو، يوم الثاني.
+      en: At the start of June, on the second.
+    - speaker: Rina
+      text: 'Bulan Mei, bulan Juni: dua pesta!'
+      ar_eg: 'شهر مايو وشهر يونيو: حفلتين!'
+      ar: 'مايو ويونيو: حفلتان!'
+      en: 'May and June: two parties!'
+new_words:
+  - word: usia
+    pos: noun
+    ar_eg: سن، عمر (رسمي)
+    ar: عمر، سنّ (رسمي)
+    en: age (formal)
+  - word: awal
+    pos: noun
+    arabic: أوّل
+    ar_eg: أول، بداية
+    ar: أوّل، بداية
+    en: beginning, start
+  - word: akhir
+    pos: noun
+    arabic: آخِر
+    ar_eg: آخر، نهاية
+    ar: آخِر، نهاية
+    en: end
+  - word: kalender
+    pos: noun
+    ar_eg: نتيجة، تقويم
+    ar: تقويم
+    en: calendar
+  - word: setahun
+    pos: noun
+    ar_eg: سنة واحدة
+    ar: سنة واحدة
+    en: one year
+  - word: ingat
+    pos: verb
+    ar_eg: يفتكر
+    ar: يتذكّر
+    en: remember
+  - word: angka
+    pos: noun
+    ar_eg: رقم (مكتوب)
+    ar: رقم (مكتوب)
+    en: digit, figure
+  - word: contoh
+    pos: noun
+    ar_eg: مثال
+    ar: مثال
+    en: example
+review:
+  status: draft
+  verified: false

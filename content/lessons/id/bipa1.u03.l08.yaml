@@ -1,0 +1,242 @@
+schema: kabar.lesson/v1
+id: bipa1.u03.l08
+language: id
+title: Om, Tante, Mama, Papa
+can_do:
+  ar_eg: تنادي قرايبك والكبار زي ما الإندونيسيين بيعملوا، وتتكلم عن حبيب أو توأم.
+  ar: أن تنادي الأقارب والكبار كما يفعل الإندونيسيون، وتتحدث عن الخطيب والتوأم.
+  en: Address relatives and older people the way Indonesians do; talk about partners and twins.
+slides:
+  - title: Om dan Tante
+    body:
+      ar_eg: |
+        في المدن العيال بيقولوا Mama وPapa (زي ما إحنا بنقول ماما وبابا).
+        om = عمو أو خالو، وtante = طنط. وبيتقالوا كمان لأي حد كبير صاحب أهلك، زي عندنا بالظبط.
+        pacar = الحبيب أو الحبيبة قبل الجواز. وsayang = حبيبي، وكمان فعل «يحب»: Papa sayang Mama.
+        kembar = توأم، وremaja = مراهق (من حوالي ١٣ لـ ١٩ سنة).
+      ar: |
+        في المدن يقول الأطفال Mama وPapa.
+        om = العمّ أو الخال، وtante = العمّة أو الخالة، وتُقالان أيضًا لكل كبير من معارف الأهل، كما عندنا.
+        pacar = الحبيب أو الحبيبة قبل الزواج. وsayang = حبيبي، وهي أيضًا فعل «يحبّ»: Papa sayang Mama.
+        kembar = توأم، وremaja = المراهق (من الثالثة عشرة تقريبًا إلى التاسعة عشرة).
+      en: |
+        In cities children say Mama and Papa.
+        om = uncle and tante = aunt, and children use them for any older friend of the family too.
+        pacar = boyfriend or girlfriend. sayang = darling, and also the verb "love": Papa sayang Mama.
+        kembar = twins, and remaja = a teenager.
+    examples:
+      - text: Om Hadi dan Tante Wati adik Mama.
+        ar_eg: عمو هادي وطنط واتي إخوات ماما الصغيرين.
+        ar: العمّ هادي والعمّة ساري أخوا أمّي الأصغران.
+        en: Uncle Hadi and Aunt Wati are Mum's younger siblings.
+      - text: Anak-anak Tante Wati kembar.
+        ar_eg: ولاد طنط واتي توأم.
+        ar: أبناء الخالة واتي توأم.
+        en: Aunt Wati's children are twins.
+      - text: Mama, ini Fajar, pacar saya.
+        ar_eg: يا ماما، دا فجر، حبيبي.
+        ar: يا أمّي، هذا فجر، خطيبي.
+        en: Mum, this is Fajar, my boyfriend.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pacar
+        ar_eg: حبيب / حبيبة
+        ar: حبيب / حبيبة
+        en: boyfriend / girlfriend
+      - text: sayang
+        ar_eg: حبيبي؛ يحب
+        ar: عزيزي؛ يحبّ
+        en: darling; to love
+      - text: mama
+        ar_eg: ماما
+        ar: أمّي
+        en: mum
+      - text: papa
+        ar_eg: بابا
+        ar: أبي
+        en: dad
+    words: [pacar, sayang, mama, papa]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: om
+        ar_eg: عمو / خالو
+        ar: عمّ / خال
+        en: uncle
+      - text: tante
+        ar_eg: طنط
+        ar: عمّة / خالة
+        en: aunt
+      - text: kembar
+        ar_eg: توأم
+        ar: توأم
+        en: twins
+      - text: remaja
+        ar_eg: مراهق
+        ar: مراهق
+        en: teenager
+    words: [om, tante, kembar, remaja]
+  - id: e03
+    type: listen
+    text: Mama, ini Fajar, pacar saya.
+    question:
+      ar_eg: البنت بتعرّف مامتها على مين؟
+      ar: بمن تعرّف الفتاة أمّها؟
+      en: Who is the girl introducing to her mum?
+    options: [حبيبها, ابن عمها, أخوها]
+    answer: 0
+    meaning:
+      ar_eg: يا ماما، دا فجر، حبيبي.
+      ar: يا أمّي، هذا فجر، خطيبي.
+      en: Mum, this is Fajar, my boyfriend.
+    words: [mama, pacar]
+  - id: e04
+    type: fill_blank
+    sentence: Om Hadi adik Papa, dan Tante Wati adik ___.
+    meaning:
+      ar_eg: عمو هادي أخو بابا الصغير، وطنط واتي أخت ___ الصغيرة.
+      ar: العمّ هادي أخو أبي الأصغر، والخالة واتي أخت ___ الصغرى.
+      en: Uncle Hadi is Dad's younger brother, and Aunt Wati is ___'s younger sister.
+    options: [Mama, pacar, remaja]
+    answers: [Mama]
+    words: [om, papa, tante, mama]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ولدين اتولدوا في نفس اليوم لنفس الأم. هم…؟
+      ar: ولدان وُلدا في اليوم نفسه لأمّ واحدة. هما…؟
+      en: Two boys born on the same day to the same mother. They're…?
+    options: [kembar, remaja, sepupu]
+    answer: 0
+    explain:
+      ar_eg: kembar = توأم. remaja = مراهق، وsepupu = ابن عم أو خال.
+      ar: kembar توأم، وremaja مراهق، وsepupu ابن عمّ أو خال.
+      en: kembar = twins; remaja = teenager; sepupu = cousin.
+    words: [kembar, remaja]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ولاد طنط واتي توأم.
+      ar: أبناء الخالة واتي توأم.
+      en: Aunt Wati's children are twins.
+    answer: Anak-anak Tante Wati kembar.
+    distractors: [pacar, Om]
+    words: [tante, kembar]
+  - id: e07
+    type: fill_blank
+    sentence: Fajar ___. Dia belum menikah.
+    meaning:
+      ar_eg: فجر ___. لسه ما اتجوزش.
+      ar: فجر ___، ولم يتزوّج بعد.
+      en: Fajar is a ___. He isn't married yet.
+    options: [remaja, papa, om]
+    answers: [remaja]
+    words: [remaja]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Selamat pagi, sayang!
+    answers_meaning:
+      ar_eg: [صباح الخير يا حبيبي, صباح الخير يا حبيبتي, صباح الخير يا روحي]
+      ar: [صباح الخير يا عزيزي, صباح الخير يا عزيزتي, صباح الخير يا حبيبي, صباح الخير يا حبيبتي]
+      en: ['Good morning, dear', 'Good morning, darling', 'Good morning, sweetheart', 'Good morning, love']
+    words: [sayang]
+  - id: e09
+    type: speaking
+    text: Papa sayang Mama.
+    meaning:
+      ar_eg: بابا بيحب ماما.
+      ar: أبي يحبّ أمّي.
+      en: Dad loves Mum.
+    words: [papa, sayang, mama]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بتكلم أخت مامتك. تناديها إزاي؟
+      ar: تكلّم أخت أمك. كيف تناديها؟
+      en: You're talking to your mum's sister. What do you call her?
+    options: [Tante, Om, Pacar]
+    answer: 0
+    explain:
+      ar_eg: tante للست، وom للراجل، وpacar يعني حبيب.
+      ar: tante للمرأة وom للرجل، أما pacar فالحبيب.
+      en: tante for a woman, om for a man; pacar is a boyfriend or girlfriend.
+    words: [tante, om, pacar]
+dialogue:
+  lines:
+    - speaker: Rina
+      text: Mohamed, ini Tante Wati dan Om Hadi.
+      ar_eg: يا محمد، دي طنط واتي ودا عمو هادي.
+      ar: يا محمد، هذه الخالة واتي وهذا العمّ هادي.
+      en: Mohamed, this is Aunt Wati and Uncle Hadi.
+    - speaker: Mohamed
+      text: Selamat sore, Tante! Selamat sore, Om!
+      ar_eg: مساء الخير يا طنط! مساء الخير يا عمو!
+      ar: مساء الخير يا خالة! مساء الخير يا عمّ!
+      en: Good afternoon, Aunt! Good afternoon, Uncle!
+    - speaker: Tante Wati
+      text: Sore! Kamu dari Mesir, ya?
+      ar_eg: مساء النور! إنت من مصر، صح؟
+      ar: مساء النور! أنت من مصر، أليس كذلك؟
+      en: Afternoon! You're from Egypt, right?
+    - speaker: Mohamed
+      text: Ya, Tante. Ini anak-anak Tante?
+      ar_eg: أيوه يا طنط. دول ولادك؟
+      ar: نعم يا خالة. هؤلاء أولادك؟
+      en: Yes, Aunt. Are these your children?
+    - speaker: Tante Wati
+      text: Ya, ini Dika dan Doni. Mereka kembar.
+      ar_eg: أيوه، دا ديكا ودا دوني. هم توأم.
+      ar: نعم، هذا ديكا وهذا دوني، وهما توأم.
+      en: Yes, this is Dika and Doni. They're twins.
+    - speaker: Om Hadi
+      text: Mereka sudah remaja!
+      ar_eg: بقوا مراهقين خلاص!
+      ar: لقد صارا مراهقَين!
+      en: They're teenagers already!
+new_words:
+  - word: pacar
+    pos: noun
+    ar_eg: حبيب أو حبيبة (قبل الجواز)
+    ar: حبيب أو حبيبة (قبل الزواج)
+    en: boyfriend, girlfriend
+  - word: sayang
+    pos: noun
+    ar_eg: حبيبي، يا روحي؛ ويحب
+    ar: عزيزي، حبيبي؛ يحبّ
+    en: darling, dear; to love
+  - word: mama
+    pos: noun
+    ar_eg: ماما
+    ar: أمّ (ماما)
+    en: mum, mom
+  - word: papa
+    pos: noun
+    ar_eg: بابا
+    ar: أب (بابا)
+    en: dad
+  - word: om
+    pos: noun
+    ar_eg: عمو أو خالو (وأي راجل كبير)
+    ar: عمّ أو خال (ولكل رجل أكبر سنًّا)
+    en: uncle (also any older man)
+  - word: tante
+    pos: noun
+    ar_eg: طنط (وأي ست كبيرة)
+    ar: عمّة أو خالة (ولكل امرأة أكبر سنًّا)
+    en: aunt (also any older woman)
+  - word: kembar
+    pos: adjective
+    ar_eg: توأم
+    ar: توأم
+    en: twin(s)
+  - word: remaja
+    pos: noun
+    ar_eg: مراهق
+    ar: مراهق، يافع
+    en: teenager
+review:
+  status: draft
+  verified: false
