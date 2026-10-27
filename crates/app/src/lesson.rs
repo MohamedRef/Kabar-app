@@ -698,6 +698,8 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
     let mut finished = use_signal(|| false);
     // Listening items skipped because the device has no voice for them.
     let mut voice_skips = use_signal(|| 0u32);
+    // The one step that carries the "no voice" note (see `voice_note_step`).
+    let mut voice_note_at = use_signal(|| None::<Step>);
 
     // Save where we are on open (Lanjut) and play the first exercise's audio.
     use_hook(move || {
@@ -832,15 +834,19 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
         if !*audio_missing.read() {
             return;
         }
-        let skip = {
+        let (skip, from) = {
             let p = player.read();
-            matches!(p.step(), Step::Exercise { .. })
+            let skip = matches!(p.step(), Step::Exercise { .. })
                 && p.pending().is_none()
-                && p.exercise().is_some_and(needs_audio)
+                && p.exercise().is_some_and(needs_audio);
+            (skip, p.step())
         };
         if skip {
             voice_skips += 1;
             commit(&|p| Some(p.skip()));
+            let to = player.peek().step();
+            let next = voice_note_step(*voice_note_at.peek(), from, to);
+            voice_note_at.set(next);
         }
     });
 
@@ -961,7 +967,7 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
             }
             div { class: "lp-body",
                 div { class: "lp-col", key: "{step:?}",
-                    if *voice_skips.read() > 0 {
+                    if show_voice_note(*voice_note_at.read(), *voice_skips.read(), step) {
                         p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
                     }
                     match step {
@@ -1494,12 +1500,14 @@ pub fn ExerciseView(
             let (before, after) = (before.to_string(), after.to_string());
             let chosen = draft.read().choice.and_then(|i| options.get(i).cloned());
             let right = options.iter().position(|o| answers.iter().any(|a| a.eq_ignore_ascii_case(o)));
+            // "Selamat ___, Pak!": the blank hugs the comma, no gap before it.
+            let hug = if blank_hugs_next(&after) { " hug-end" } else { "" };
             rsx! {
                 p { class: "lp-question lp-blank-line", lang: target, dir: "ltr",
                     "{before}"
                     if options.is_empty() {
                         input {
-                            class: "lp-blank-input",
+                            class: "lp-blank-input{hug}",
                             r#type: "text",
                             lang: target,
                             autocomplete: "off",
@@ -1511,7 +1519,7 @@ pub fn ExerciseView(
                             oninput: move |e: FormEvent| draft.write().text = e.value(),
                         }
                     } else {
-                        span { class: if chosen.is_some() { "lp-blank filled" } else { "lp-blank" },
+                        span { class: if chosen.is_some() { "lp-blank filled{hug}" } else { "lp-blank{hug}" },
                             "{chosen.clone().unwrap_or_default()}"
                         }
                     }
@@ -1551,27 +1559,102 @@ fn Choices(
     answer: usize,
     #[props(default)] chips: bool,
 ) -> Element {
+    let ui = use_context::<Ui>();
+    let lang = ui.settings.read().ui_language;
     let chosen = draft.read().choice;
     rsx! {
         div { class: if chips { "lp-choices chips" } else { "lp-choices" }, role: "group",
             for (i, label) in labels.iter().enumerate() {
-                button {
-                    key: "{i}",
-                    class: match (locked, i == answer, chosen == Some(i)) {
-                        (true, true, _) => "lp-choice right",
-                        (true, false, true) => "lp-choice wrong",
-                        _ => "lp-choice",
-                    },
-                    aria_pressed: if chosen == Some(i) { "true" } else { "false" },
-                    disabled: locked,
-                    onclick: move |_| draft.write().choice = Some(i),
-                    if i < 9 {
-                        span { class: "lp-key", aria_hidden: "true", "{i + 1}" }
+                {
+                    let mark = choice_mark(locked, i == answer, chosen == Some(i));
+                    let aria = mark.map(|m| format!("{label} — {}", lt(lang, m.says())));
+                    rsx! {
+                        button {
+                            key: "{i}",
+                            class: match mark {
+                                Some(ChoiceMark::Right | ChoiceMark::YoursRight) => "lp-choice right",
+                                Some(ChoiceMark::YoursWrong) => "lp-choice wrong",
+                                None => "lp-choice",
+                            },
+                            aria_pressed: if chosen == Some(i) { "true" } else { "false" },
+                            aria_label: aria,
+                            disabled: locked,
+                            onclick: move |_| draft.write().choice = Some(i),
+                            if let Some(m) = mark {
+                                span { class: "lp-key lp-mark", aria_hidden: "true", "{m.glyph()}" }
+                            } else if i < 9 {
+                                span { class: "lp-key", aria_hidden: "true", "{i + 1}" }
+                            }
+                            bdi { lang: tag, dir: "auto", "{label}" }
+                        }
                     }
-                    bdi { lang: tag, dir: "auto", "{label}" }
                 }
             }
         }
+    }
+}
+
+/// How a graded choice is marked, so right and wrong never rely on colour
+/// alone (WCAG 1.4.1): a glyph in the key-badge slot plus an aria label.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum ChoiceMark {
+    /// The right answer, which the learner didn't pick.
+    Right,
+    /// The learner's pick, and it's right.
+    YoursRight,
+    /// The learner's pick, and it's wrong.
+    YoursWrong,
+}
+
+impl ChoiceMark {
+    fn glyph(self) -> &'static str {
+        match self {
+            ChoiceMark::Right | ChoiceMark::YoursRight => "✓",
+            ChoiceMark::YoursWrong => "✗",
+        }
+    }
+
+    fn says(self) -> L {
+        match self {
+            ChoiceMark::Right => L::ChoiceCorrect,
+            ChoiceMark::YoursRight => L::ChoiceYoursCorrect,
+            ChoiceMark::YoursWrong => L::ChoiceYours,
+        }
+    }
+}
+
+/// Where the "no voice, listening skipped" note goes after a skip from `from`
+/// to `to`: the first step the learner actually sees after the first skip.
+/// A run of back-to-back skips carries it forward; later skips leave it put,
+/// so the note shows once per lesson instead of on every step.
+fn voice_note_step(note: Option<Step>, from: Step, to: Step) -> Option<Step> {
+    match note {
+        None => Some(to),
+        Some(at) if at == from => Some(to),
+        kept => kept,
+    }
+}
+
+/// Whether the text after a blank starts with punctuation that should sit
+/// right against the filled word.
+fn blank_hugs_next(after: &str) -> bool {
+    after.starts_with([',', '.', '!', '?', ';', ':', ')', '…'])
+}
+
+/// The note shows on its one step, and again in the summary.
+fn show_voice_note(note: Option<Step>, skips: u32, step: Step) -> bool {
+    skips > 0 && (note == Some(step) || step == Step::Summary)
+}
+
+/// The mark for one option. Nothing is marked until the answer is checked;
+/// other options stay unmarked.
+fn choice_mark(locked: bool, is_answer: bool, is_chosen: bool) -> Option<ChoiceMark> {
+    match (locked, is_answer, is_chosen) {
+        (false, _, _) => None,
+        (true, true, true) => Some(ChoiceMark::YoursRight),
+        (true, true, false) => Some(ChoiceMark::Right),
+        (true, false, true) => Some(ChoiceMark::YoursWrong),
+        (true, false, false) => None,
     }
 }
 
@@ -1644,18 +1727,13 @@ fn MatchPairs(
     locked: bool,
     on_matched: EventHandler<Vec<String>>,
 ) -> Element {
+    let ui = use_context::<Ui>();
+    let lang = ui.settings.read().ui_language;
     let d = draft.read().clone();
     let words: Vec<String> = pairs.iter().map(|p| p.0.clone()).collect();
-    let state = |sel: Option<usize>, i: usize, wrong: Option<usize>| {
-        if d.matched.contains(&i) {
-            "lp-pair done"
-        } else if wrong == Some(i) {
-            "lp-pair wrong"
-        } else if sel == Some(i) {
-            "lp-pair selected"
-        } else {
-            "lp-pair"
-        }
+    let state = |sel: Option<usize>, i: usize, wrong: Option<usize>| pair_class(&d.matched, sel, i, wrong);
+    let done_label = |i: usize, text: &str| {
+        d.matched.contains(&i).then(|| format!("{text} — {}", lt(lang, L::PairMatched)))
     };
     rsx! {
         div { class: "lp-pairs",
@@ -1666,6 +1744,7 @@ fn MatchPairs(
                         class: state(d.left, i, d.wrong.map(|w| w.0)),
                         disabled: locked || d.matched.contains(&i),
                         aria_pressed: if d.left == Some(i) { "true" } else { "false" },
+                        aria_label: done_label(i, word),
                         onclick: {
                             let words = words.clone();
                             move |_| {
@@ -1673,6 +1752,9 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
+                        if d.matched.contains(&i) {
+                            span { class: "lp-pair-tick", aria_hidden: "true", "✓" }
+                        }
                         bdi { lang: target, dir: "ltr", class: "latin", "{word}" }
                     }
                 }
@@ -1684,6 +1766,7 @@ fn MatchPairs(
                         class: state(d.right, i, d.wrong.map(|w| w.1)),
                         disabled: locked || d.matched.contains(&i),
                         aria_pressed: if d.right == Some(i) { "true" } else { "false" },
+                        aria_label: done_label(i, &pairs[i].1),
                         onclick: {
                             let words = words.clone();
                             move |_| {
@@ -1691,11 +1774,29 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
+                        if d.matched.contains(&i) {
+                            span { class: "lp-pair-tick", aria_hidden: "true", "✓" }
+                        }
                         Rich { text: pairs[i].1.clone(), target }
                     }
                 }
             }
         }
+    }
+}
+
+/// The class of one pair button. A matched couple reads as done, not
+/// disabled: both halves share one of four tints (by the order they were
+/// matched), so the learner can see which word went with which meaning.
+fn pair_class(matched: &[usize], sel: Option<usize>, i: usize, wrong: Option<usize>) -> String {
+    if let Some(k) = matched.iter().position(|&m| m == i) {
+        format!("lp-pair done couple-{}", k % 4)
+    } else if wrong == Some(i) {
+        "lp-pair wrong".into()
+    } else if sel == Some(i) {
+        "lp-pair selected".into()
+    } else {
+        "lp-pair".into()
     }
 }
 
@@ -1735,6 +1836,67 @@ mod tests {
     const FIXTURE: &str = include_str!("../../../fixtures/lessons/bipa1.u01.l01.yaml");
 
     use kabar_core::lesson::level_test::{SelfGrade, TestRunner, TestStep, parse_test, validate_test};
+
+    /// Graded choices carry a glyph and a spoken label, not just a colour (#149).
+    #[test]
+    fn graded_choices_are_marked_beyond_colour() {
+        assert_eq!(choice_mark(false, true, true), None);
+        assert_eq!(choice_mark(true, false, false), None);
+        assert_eq!(choice_mark(true, true, false), Some(ChoiceMark::Right));
+        assert_eq!(choice_mark(true, true, true), Some(ChoiceMark::YoursRight));
+        assert_eq!(choice_mark(true, false, true), Some(ChoiceMark::YoursWrong));
+        assert_eq!(ChoiceMark::Right.glyph(), "✓");
+        assert_eq!(ChoiceMark::YoursWrong.glyph(), "✗");
+        for lang in [UiLanguage::ArEg, UiLanguage::Ar, UiLanguage::En] {
+            for m in [ChoiceMark::Right, ChoiceMark::YoursRight, ChoiceMark::YoursWrong] {
+                assert!(!lt(lang, m.says()).is_empty());
+            }
+        }
+    }
+
+    /// The "no voice" note shows once: on the first step after the first run
+    /// of skipped listening items, and in the summary (#156).
+    #[test]
+    fn the_no_voice_note_shows_once_per_lesson() {
+        let ex = |index| Step::Exercise { index, retry: false };
+        // e2 is skipped, landing on e3: the note goes on e3.
+        let note = voice_note_step(None, ex(2), ex(3));
+        assert_eq!(note, Some(ex(3)));
+        // e3 is a listening item too: the note moves on with the skip.
+        let note = voice_note_step(note, ex(3), ex(4));
+        assert_eq!(note, Some(ex(4)));
+        // A later skip (e7 -> e8) leaves it where the learner saw it.
+        let note = voice_note_step(note, ex(7), ex(8));
+        assert_eq!(note, Some(ex(4)));
+        assert!(show_voice_note(note, 3, ex(4)));
+        assert!(!show_voice_note(note, 3, ex(5)));
+        assert!(!show_voice_note(note, 3, ex(8)));
+        assert!(show_voice_note(note, 3, Step::Summary));
+        assert!(!show_voice_note(None, 0, Step::Summary));
+    }
+
+    /// A filled blank sits right against the punctuation after it (#156).
+    #[test]
+    fn a_blank_hugs_following_punctuation() {
+        let sentence = "Selamat ___, Pak!";
+        let (_, after) = sentence.split_once("___").unwrap();
+        assert!(blank_hugs_next(after));
+        assert!(blank_hugs_next("."));
+        assert!(!blank_hugs_next(" pagi."));
+        assert!(!blank_hugs_next(""));
+    }
+
+    /// Both halves of a matched couple share a tint; unmatched ones keep their state.
+    #[test]
+    fn matched_pairs_share_a_couple_tint() {
+        let matched = [2, 0, 4, 1, 3];
+        assert_eq!(pair_class(&matched, None, 2, None), "lp-pair done couple-0");
+        assert_eq!(pair_class(&matched, None, 0, None), "lp-pair done couple-1");
+        assert_eq!(pair_class(&matched, None, 3, None), "lp-pair done couple-0");
+        assert_eq!(pair_class(&[], Some(1), 1, None), "lp-pair selected");
+        assert_eq!(pair_class(&[], Some(1), 1, Some(1)), "lp-pair wrong");
+        assert_eq!(pair_class(&[], None, 1, None), "lp-pair");
+    }
 
     /// The reference answer for a closed exercise.
     fn right_answer(ex: &Exercise) -> Answer {
