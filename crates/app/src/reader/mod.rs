@@ -1,5 +1,16 @@
 //! Reader & Screenshot Decoder (SPEC §11): paste, share, drop or open a
 //! screenshot; every word is colored by status and explained from local data.
+//!
+//! The Reader renders its words itself rather than through
+//! `crate::annotated::Annotated`, on purpose: a Reader text is a whole page
+//! (chat bubbles, speakers, timestamps, chrome lines), its words carry
+//! learning status (new / learning / known, from Arabic, false friend),
+//! support drag-selection, highlights and one delegated tap handler over
+//! `data-i`, and the line translation is fetched for the whole text at once.
+//! What both share lives in one place: `ReadDoc` for the analysis,
+//! `annotated::parts` for word parts and colours, `card::InfoView` and
+//! `grammar::GrammarAt` for the word card, and the same Settings
+//! (translation On/Tap/Off, word colours, grammar hints).
 
 pub(crate) mod card;
 mod content;

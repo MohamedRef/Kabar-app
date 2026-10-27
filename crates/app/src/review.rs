@@ -857,7 +857,7 @@ fn Back(card: Card) -> Element {
             if let Some(a) = &card.arabic {
                 div { class: if a.shift == MeaningShift::FalseFriend { "rev-bridge alarm" } else { "rev-bridge" },
                     div { class: "bridge-line",
-                        bdi { class: "latin", lang: card.language.tag(), dir: "ltr", "{card.word}" }
+                        bdi { class: "latin bridge-word", lang: card.language.tag(), dir: "ltr", "{card.word}" }
                         span { aria_hidden: "true", "{arrow}" }
                         span { class: "ar", lang: "ar", "{a.word}" }
                         if let Some(root) = &a.root {
