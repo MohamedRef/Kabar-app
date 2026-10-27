@@ -125,6 +125,15 @@ pub fn PagiPlayer() -> Element {
         div { class: "pagi-layout",
             div { class: "card",
                 h2 { class: "story-title", lang: "id", bdi { "{story.title}" } }
+                // Who's in today's story, by the names the sentences use.
+                ul { class: "pagi-cast",
+                    for (name, src) in crate::portraits::mentioned("pagi", &texts.join(" ")) {
+                        li { key: "{name}",
+                            crate::portraits::Face { src, class: "pagi-face" }
+                            bdi { class: "latin small", "{name}" }
+                        }
+                    }
+                }
                 div { class: "words", lang: "id",
                     for w in targets.iter() {
                         bdi {
