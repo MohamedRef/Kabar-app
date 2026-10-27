@@ -20,6 +20,7 @@ use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::lesson::{
     Dialogue, Direction, Exercise, ExerciseKind, LessonContent, LessonPosition, LessonStep, Localized,
 };
+use kabar_protocol::srs::StudyLanguage;
 
 use self::text::{L, lt};
 use crate::annotated::Annotated;
@@ -869,6 +870,11 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                         crate::diag::report!("clearing the lesson position failed: {e}");
                     }
                 }
+                // First tries on words already in the deck move their reviews.
+                let language =
+                    if p.lesson().language == "jv" { StudyLanguage::Jv } else { StudyLanguage::Id };
+                let signals = kabar_core::review::lesson_signals(p.lesson(), &p.completed().results);
+                crate::review::note_evidence(&db, &coach, language, &signals);
                 if episode { log_episode(coach, &db, &p) } else { log_activity(coach, &db, &p) }
             }
         } else if !episode {
