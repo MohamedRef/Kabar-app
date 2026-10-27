@@ -74,23 +74,23 @@ exercises:
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: إنت وRaka سوا في كوتا توا. عايز تقوله «إحنا في كوتا توا!» (إنت وهو).
-      ar: أنت وRaka معًا في كوتا توا، وتريد أن تقول له «نحن في كوتا توا!» (أنت وهو).
-      en: You and Raka are both in Kota Tua. You tell him "We're in Kota Tua!" (you and him).
-    options: [Kita di Kota Tua!, Dia di Kota Tua!, Kami di Kota Tua!]
+      ar_eg: إنت وRaka سوا في جاكرتا. عايز تقوله «إحنا في جاكرتا!» (إنت وهو).
+      ar: أنت وRaka معًا في جاكرتا، وتريد أن تقول له «نحن في جاكرتا!» (أنت وهو).
+      en: You and Raka are both in Jakarta. You tell him "We're in Jakarta!" (you and him).
+    options: [Kita di Jakarta!, Dia di Jakarta!, Kami di Jakarta!]
     answer: 0
     explain:
       ar_eg: Raka معاك، يبقى kita. kami معناها «إحنا من غيرك».
       ar: Raka داخل في «نحن»، فتلزم kita، أما kami فتخرجه.
       en: Raka is included, so it's kita; kami would leave him out.
-    words: [kita, kami]
+    words: [kita, kami, di]
   - id: e03
     type: multiple_choice
     question_meaning:
       ar_eg: خبطت في حد من غير قصد في السوق. تقول إيه؟
       ar: اصطدمت بأحدهم دون قصد في السوق. ماذا تقول؟
       en: You bump into someone by accident at the market. What do you say?
-    options: [Selamat datang!, Maaf!, Sama-sama!]
+    options: [Selamat pagi!, Maaf!, Sama-sama!]
     answer: 1
     explain:
       ar_eg: maaf = آسف، وجاية من العربي «مُعافى»، زي «العفو».
@@ -176,22 +176,22 @@ exercises:
     words: [kalian]
   - id: e09
     type: speaking
-    text: Hai! Kami di Kota Tua. Kalian juga?
+    text: Hai! Kami di Jakarta. Kalian juga?
     meaning:
-      ar_eg: أهلًا! إحنا في كوتا توا. وإنتو كمان؟
-      ar: مرحبًا! نحن في كوتا توا. وأنتم أيضًا؟
-      en: Hi! We're in Kota Tua. You too?
-    words: [kami, kalian]
+      ar_eg: أهلًا! إحنا في جاكرتا. وإنتو كمان؟
+      ar: مرحبًا! نحن في جاكرتا. وأنتم أيضًا؟
+      en: Hi! We're in Jakarta. You too?
+    words: [kami, di, kalian]
   - id: e10
     type: listen
-    text: Maaf, mereka di Kota Tua.
-    options: ['Maaf, mereka di Kota Tua.', 'Maaf, kami di Kota Tua.', 'Maaf, kita di Kota Tua.']
+    text: Maaf, mereka di Jakarta.
+    options: ['Maaf, mereka di Jakarta.', 'Maaf, kami di Jakarta.', 'Maaf, kita di Jakarta.']
     answer: 0
     meaning:
-      ar_eg: لا مؤاخذة، هما في كوتا توا.
-      ar: عفوًا، هم في كوتا توا.
-      en: Sorry, they're in Kota Tua.
-    words: [maaf, mereka]
+      ar_eg: لا مؤاخذة، هما في جاكرتا.
+      ar: عفوًا، هم في جاكرتا.
+      en: Sorry, they're in Jakarta.
+    words: [maaf, mereka, di]
 
 dialogue:
   title: Di depan museum
@@ -263,6 +263,11 @@ new_words:
     ar_eg: إنتو
     ar: أنتم
     en: you (plural)
+  - word: di
+    pos: preposition
+    ar_eg: في (للمكان)
+    ar: في (للمكان)
+    en: in, at (a place)
 review:
   status: draft
   verified: false

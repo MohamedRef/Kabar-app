@@ -60,7 +60,7 @@ exercises:
       ar_eg: من ٣ لحد المغرب ده sore. وselamat tinggal للوداع مش للتحية.
       ar: من الثالثة إلى المغرب هو الـ sore، وselamat tinggal للوداع لا للتحية.
       en: 3 p.m. to sunset is sore; selamat tinggal is a goodbye, not a greeting.
-    words: [selamat, sore]
+    words: [selamat, sore, selamat tinggal]
   - id: e02
     type: listen
     text: Waalaikumsalam
@@ -69,13 +69,13 @@ exercises:
     words: [waalaikumsalam]
   - id: e03
     type: fill_blank
-    sentence: Sore, Rina! Apa ___?
+    sentence: Selamat datang, Rina! Apa ___?
     meaning:
-      ar_eg: مساء الخير يا رينا! إزيك؟
-      ar: مساء الخير يا رينا! كيف حالكِ؟
-      en: Afternoon, Rina! How are you?
+      ar_eg: أهلًا بيكي يا رينا! إزيك؟
+      ar: أهلًا وسهلًا يا رينا! كيف حالكِ؟
+      en: Welcome, Rina! How are you?
     answers: [kabar]
-    words: [kabar]
+    words: [kabar, selamat datang]
   - id: e04
     type: fill_blank
     sentence: Kabar baik, terima kasih. ___ kamu?
@@ -95,14 +95,18 @@ exercises:
     distractors: [pagi, aku]
     words: [asalamualaikum, apa, kabar]
   - id: e06
-    type: build_sentence
-    source:
-      ar_eg: وأنا كمان كويس، شكرًا.
-      ar: بخير أيضًا، شكرًا.
-      en: Fine too, thank you.
-    answer: Baik juga, terima kasih.
-    distractors: [sama-sama, dan]
-    words: [baik, juga, terima kasih]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Raka لسه واصل كوتا توا وإنت مستنيه. تقوله إيه؟
+      ar: وصل Raka للتو إلى كوتا توا وأنت تنتظره. ماذا تقول له؟
+      en: Raka has just arrived at Kota Tua and you're waiting for him. What do you say?
+    options: ['Selamat datang, Raka!', 'Selamat tinggal, Raka!', 'Selamat jalan, Raka!']
+    answer: 0
+    explain:
+      ar_eg: selamat datang = أهلًا بيك للي لسه جاي. selamat tinggal وselamat jalan للوداع.
+      ar: selamat datang ترحيب بالقادم، أما selamat tinggal وselamat jalan فللوداع.
+      en: selamat datang welcomes someone arriving; selamat tinggal and selamat jalan are goodbyes.
+    words: [selamat datang, selamat tinggal]
   - id: e07
     type: translate
     direction: to_target
@@ -120,11 +124,11 @@ exercises:
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: أشوفك بكرة يا رينا!
-      ar: إلى اللقاء غدًا يا رينا!
-      en: See you tomorrow, Rina!
-    answers: ['Sampai jumpa besok, Rina!', 'Sampai jumpa besok, Rina', Sampai jumpa besok Rina, 'Rina, sampai jumpa besok!', 'Rina, sampai jumpa besok']
-    words: [sampai jumpa, besok]
+      ar_eg: (إنت ماشي) مع السلامة يا رينا! أشوفك بكرة.
+      ar: (وأنت مغادر) مع السلامة يا رينا! إلى اللقاء غدًا.
+      en: (you're the one leaving) Goodbye, Rina! See you tomorrow.
+    answers: ['Selamat tinggal, Rina! Sampai jumpa besok.', 'Selamat tinggal, Rina! Sampai jumpa besok', 'Selamat tinggal, Rina. Sampai jumpa besok.', 'Selamat tinggal, Rina. Sampai jumpa besok', Selamat tinggal Rina sampai jumpa besok, 'Selamat tinggal, Rina, sampai jumpa besok!', 'Selamat tinggal, Rina, sampai jumpa besok']
+    words: [selamat tinggal, sampai jumpa, besok]
   - id: e09
     type: dictation
     text: Asalamualaikum, Rina!
@@ -135,12 +139,12 @@ exercises:
     words: [asalamualaikum]
   - id: e10
     type: speaking
-    text: Waalaikumsalam! Apa kabar, Raka?
+    text: Waalaikumsalam! Selamat datang, Raka. Apa kabar?
     meaning:
-      ar_eg: وعليكم السلام! إزيك يا راكا؟
-      ar: وعليكم السلام! كيف حالك يا راكا؟
-      en: And peace be upon you! How are you, Raka?
-    words: [waalaikumsalam, apa, kabar]
+      ar_eg: وعليكم السلام! أهلًا بيك يا راكا. إزيك؟
+      ar: وعليكم السلام! أهلًا بك يا راكا. كيف حالك؟
+      en: And peace be upon you! Welcome, Raka. How are you?
+    words: [waalaikumsalam, selamat datang, apa, kabar]
 dialogue:
   title: Sore di Taman Fatahillah
   lines:
@@ -187,6 +191,16 @@ new_words:
     ar: وعليكم السلام
     en: and upon you peace (reply)
     arabic: وعليكم السلام
+  - word: selamat datang
+    pos: phrase
+    ar_eg: أهلًا بيك / نوّرت
+    ar: أهلًا وسهلًا
+    en: welcome
+  - word: selamat tinggal
+    pos: phrase
+    ar_eg: مع السلامة (بيقولها اللي ماشي)
+    ar: مع السلامة (يقولها الراحل)
+    en: goodbye (said by the one leaving)
 review:
   status: draft
   verified: false

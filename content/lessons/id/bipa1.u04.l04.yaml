@@ -39,13 +39,13 @@ exercises:
     words: [jam, tiga, sore]
   - id: e02
     type: fill_blank
-    sentence: Sekarang jam ___? — Jam empat.
+    sentence: Sekarang jam ___? — Maaf, saya tidak punya jam.
     meaning:
-      ar_eg: الساعة كام دلوقتي؟ — أربعة.
-      ar: كم الساعة الآن؟ — الرابعة.
-      en: What time is it now? — Four o'clock.
+      ar_eg: الساعة كام دلوقتي؟ — معلش، أنا معييش ساعة.
+      ar: كم الساعة الآن؟ — عذرًا، ليست معي ساعة.
+      en: What time is it now? — Sorry, I don't have a watch.
     answers: [berapa]
-    words: [berapa, sekarang]
+    words: [berapa, sekarang, tidak]
   - id: e03
     type: dictation
     text: Jam berapa sekarang?
@@ -81,19 +81,19 @@ exercises:
       ar_eg: الساعة دلوقتي تسعة.
       ar: الساعة الآن التاسعة.
       en: It's nine o'clock now.
-    answer: Sekarang jam sembilan.
-    alternatives: [Jam sembilan sekarang.]
-    distractors: [berapa, pukul]
-    words: [sekarang, jam]
+    answer: Sekarang pukul sembilan.
+    alternatives: [Pukul sembilan sekarang.]
+    distractors: [berapa, jam]
+    words: [sekarang, pukul]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: الساعة تلاتة.
-      ar: الساعة الثالثة.
-      en: It's three o'clock.
-    answers: [Jam tiga., Jam tiga, Sekarang jam tiga., Pukul tiga.]
-    words: [jam]
+      ar_eg: معلش، أنا معييش ساعة.
+      ar: عذرًا، ليست معي ساعة.
+      en: Sorry, I don't have a watch.
+    answers: ['Maaf, saya tidak punya jam.', 'Maaf, saya tidak punya jam', 'Maaf saya tidak punya jam.', Saya tidak punya jam., Saya tidak punya jam, 'Maaf, aku tidak punya jam.']
+    words: [tidak, punya, jam]
   - id: e08
     type: fill_blank
     sentence: "WIB = ___ Indonesia Barat"
@@ -121,7 +121,7 @@ exercises:
       ar_eg: آسف، معنديش وقت دلوقتي.
       ar: آسف، ليس لدي وقت الآن.
       en: Sorry, I don't have time now.
-    words: [waktu, sekarang]
+    words: [waktu, sekarang, tidak]
 dialogue:
   lines:
     - speaker: Mohamed
@@ -171,6 +171,11 @@ new_words:
     ar: وقت
     en: time
     arabic: وقت
+  - word: tidak
+    pos: particle
+    ar_eg: مش / ما…ش (مع الأفعال والصفات)
+    ar: لا / ليس (للفعل والصفة)
+    en: not (verbs, adjectives); no
 review:
   status: draft
   verified: false
