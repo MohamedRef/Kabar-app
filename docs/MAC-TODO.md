@@ -54,6 +54,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just run-mac`: the welcome screen appears and the sidebar works.
 - [ ] In the Mac app, Cmd+V pastes into the Reader, Cmd+C/A/Z work in text fields, Cmd+, opens Settings, and Cmd+Q quits.
 - [ ] `just run-phone-preview`: the compact layout shows the bottom bar.
+- [ ] Arabic with tashkeel (#227): on onboarding, Kak Nur's "أهلاً" and "قولّي" and the level card's "أصلاً" sit on the line at the same size as the words around them, on the Mac and on the S24. (Linux WebKitGTK drew them small and raised with the bundled Plex font, so the Linux build uses the system Arabic font.)
 - [ ] Build the app icon once: `cd assets/export/macos && iconutil -c icns Kabar.iconset -o Kabar.icns && cd -`.
 - [ ] `just bundle-mac` → `dist/mac/Kabar.app`. Open it from Finder and check the icon in the Dock and Finder.
 - [ ] Kak Nur (M7, [RUN.md §7](RUN.md)): go through onboarding, tick a plan item, open the recap and the Kak Nur screen. Tell me anything that reads wrong or feels off.
