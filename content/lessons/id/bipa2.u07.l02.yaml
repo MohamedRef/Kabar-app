@@ -64,27 +64,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: bersepeda
-        ar_eg: يركب عجلة
-        ar: يركب الدراجة
-        en: cycle
-      - text: berselancar
-        ar_eg: يركب الأمواج
-        ar: يركب الأمواج
-        en: surf
-      - text: berkacamata
-        ar_eg: لابس نضارة
-        ar: يلبس نظارة
-        en: wearing glasses
-      - text: bersedih
-        ar_eg: زعلان
-        ar: حزين
-        en: be sad
-      - text: berdua
-        ar_eg: الاتنين مع بعض
-        ar: اثنان معًا
-        en: the two of … together
-    words: [bersepeda, berselancar, berkacamata, bersedih, berdua]
+      - text: topi
+        ar_eg: كاب، برنيطة
+        ar: قبعة
+        en: cap, hat
+      - text: bertopi
+        ar_eg: لابس كاب
+        ar: يلبس قبعة
+        en: wearing a cap
+      - text: berbaju
+        ar_eg: لابس (هدوم)
+        ar: يلبس ثوبًا
+        en: wearing (clothes)
+      - text: bersuara
+        ar_eg: يطلّع صوت
+        ar: يُصدر صوتًا
+        en: make a sound
+      - text: bertelur
+        ar_eg: تبيض
+        ar: تبيض
+        en: lay eggs
+      - text: bergembira
+        ar_eg: فرحان
+        ar: يفرح
+        en: be happy
+    words: [topi, bertopi, berbaju, bersuara, bertelur, bergembira]
   - id: e02
     type: multiple_choice
     question: Raka dan Rina pergi ke pantai ___.
@@ -101,9 +105,9 @@ exercises:
       ar_eg: أنهي كلمة معناها «لابس كاب»؟
       ar: أيّ كلمة تعني «يلبس قبعة»؟
       en: Which word means "wearing a cap"?
-    options: [bersuara, bertopi, berkacamata]
+    options: [bersuara, bertopi, berkacamata, bergembira]
     answer: 1
-    words: [bertopi]
+    words: [bertopi, bersuara, berkacamata, bergembira]
   - id: e04
     type: fill_blank
     sentence: Orang yang ___ itu pelatih kami.
@@ -148,22 +152,33 @@ exercises:
     distractors: [bertopi, naik]
     words: [berbaju, berselancar]
   - id: e08
-    type: translate
-    direction: from_target
-    source_text: Anak-anak bergembira di pantai.
-    answers_meaning:
-      ar_eg: [العيال فرحانين على البحر., الأطفال مبسوطين على الشط]
-      ar: [الأطفال فرحون على الشاطئ., يفرح الأطفال على الشاطئ]
-      en: [The children are happy on the beach., The children are having fun on the beach, Children are happy at the beach]
-    words: [bergembira]
+    type: listen
+    text: Anak yang berbaju biru itu bergembira.
+    options: [Anak yang berbaju biru itu bergembira., Anak yang berbaju biru itu bersedih., Anak yang berkacamata itu bergembira.]
+    answer: 0
+    meaning:
+      ar_eg: الولد اللي لابس أزرق ده فرحان.
+      ar: ذلك الطفل الذي يلبس الأزرق فرحان.
+      en: The child in blue is happy.
+    words: [berbaju, bergembira, bersedih, berkacamata]
   - id: e09
     type: dictation
-    text: Pelatih kami berkacamata dan bertopi.
+    text: Pelatih kami bertopi. Topinya merah.
     meaning:
-      ar_eg: المدرّب بتاعنا لابس نضارة وكاب.
-      ar: مدرّبنا يلبس نظارة وقبعة.
-      en: Our coach wears glasses and a cap.
-    words: [pelatih, berkacamata, bertopi]
+      ar_eg: المدرّب بتاعنا لابس كاب. الكاب بتاعه أحمر.
+      ar: مدرّبنا يلبس قبعة. قبعته حمراء.
+      en: Our coach wears a cap. His cap is red.
+    words: [pelatih, bertopi, topi]
+  - id: e10
+    type: fill_blank
+    sentence: Ssst, jangan ___! Ayam itu sedang bertelur di topi saya.
+    meaning:
+      ar_eg: هسس، ماتعملش صوت! الفرخة دي بتبيض في الكاب بتاعي.
+      ar: صه، لا تُصدر صوتًا! تلك الدجاجة تبيض في قبعتي.
+      en: Shh, don't make a sound! That hen is laying an egg in my cap.
+    options: [bersuara, bersedih, berbaju]
+    answers: [bersuara]
+    words: [bersuara, bertelur, topi]
 dialogue:
   title: Pantai Kuta
   lines:

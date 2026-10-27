@@ -10,6 +10,7 @@ mod cloud;
 mod coach;
 mod cost;
 mod data_export;
+mod embedded;
 mod fonts;
 mod i18n;
 mod icons;
@@ -310,12 +311,12 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let audio_dir = path.parent().map(|d| d.join("audio")).unwrap_or_else(|| "audio".into());
     use_context_provider(|| audio::AudioCache::new(audio_dir, link.clone()));
     let coach = use_context_provider(|| Coach::load(&db));
-    use_hook(reader::warm_up);
     annotated::use_words(&db);
     use_width_tracking(ui.width, ui.tablet);
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
     use_learner_profile(&db, coach);
+    coach::notify::use_local_reminders(&db, coach, ui);
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
@@ -512,20 +513,30 @@ fn use_width_tracking(mut width: Signal<WidthClass>, mut tablet: Signal<bool>) {
     });
 }
 
-/// Checks for text or images shared to Kabar (Android share sheet) at start
-/// and whenever the window comes back to the front, and opens the Reader.
+/// Follows the window to the back and front: sync sleeps in the background,
+/// and text or images shared to Kabar (Android share sheet) open the Reader
+/// at start and whenever the window comes back.
 fn use_share_inbox(ui: Ui, inbox: reader::Inbox) {
+    let cloud = use_context::<Cloud>();
     use_future(move || async move {
         let mut eval = document::eval(
             r#"
-            const send = () => { if (!document.hidden) dioxus.send(true); };
+            const send = () => dioxus.send(!document.hidden);
             document.addEventListener("visibilitychange", send);
             window.addEventListener("focus", send);
             send();
             await new Promise(() => {});
             "#,
         );
-        while eval.recv::<bool>().await.is_ok() {
+        let mut shown = true;
+        while let Ok(visible) = eval.recv::<bool>().await {
+            if visible != shown {
+                shown = visible;
+                cloud.send(Command::Background(!visible));
+            }
+            if !visible {
+                continue;
+            }
             if let Some(input) = platform::take_shared_input() {
                 let (mut slot, mut screen) = (inbox.0, ui.screen);
                 slot.set(Some(input));

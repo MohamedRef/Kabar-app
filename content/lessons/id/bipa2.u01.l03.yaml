@@ -109,14 +109,10 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: agak
-        ar_eg: شوية
-        ar: قليلًا، نوعًا ما
-        en: a bit, rather
       - text: cukup
-        ar_eg: إلى حد كبير / كفاية
-        ar: إلى حد ما / بما يكفي
-        en: quite; enough
+        ar_eg: كفاية، لحد ما
+        ar: كافٍ، إلى حدّ ما
+        en: enough, fairly
       - text: terlalu
         ar_eg: زيادة عن اللزوم
         ar: أكثر من اللازم
@@ -124,31 +120,43 @@ exercises:
       - text: lumayan
         ar_eg: مش بطال
         ar: لا بأس به
-        en: not bad
+        en: not bad, fairly
       - text: pelan
-        ar_eg: واطي (صوت) / بالراحة
-        ar: منخفض (صوت) / ببطء
-        en: quiet; slow
-    words: [agak, cukup, terlalu, lumayan, pelan]
+        ar_eg: واطي، بطيء
+        ar: منخفض، بطيء
+        en: soft, slow
+      - text: biola
+        ar_eg: كمان
+        ar: كمان
+        en: violin
+      - text: garam
+        ar_eg: ملح
+        ar: ملح
+        en: salt
+    words: [cukup, terlalu, lumayan, pelan, biola, garam]
   - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: البياع قال السعر وإنت مش هتقدر تدفع كده أبدًا. تقول إيه؟
       ar: ذكر البائع ثمنًا لا تستطيع دفعه أبدًا. ماذا تقول؟
       en: The seller names a price you simply can't pay. What do you say?
-    options: [Kurang mahal., 'Mahal sekali, bagus!', Terlalu mahal!]
+    options: [Lumayan mahal., 'Mahal sekali, bagus!', Terlalu mahal!]
     answer: 2
     explain:
       ar_eg: terlalu = زيادة عن اللزوم، يعني مش هتشتري.
       ar: terlalu تعني الإفراط، أي أنك لن تشتري.
       en: terlalu = too much, so it's a problem.
-    words: [terlalu, mahal]
+    words: [terlalu, mahal, lumayan]
   - id: e03
     type: listen
-    text: Suaranya terlalu keras.
-    options: [Suaranya kurang keras., Suaranya terlalu keras., Suaranya cukup keras.]
-    answer: 1
-    words: [terlalu, keras]
+    text: Suara biolanya terlalu pelan.
+    options: ['Suara biolanya terlalu pelan.', 'Suara biolanya terlalu keras.', 'Suara biolanya cukup keras.']
+    answer: 0
+    meaning:
+      ar_eg: صوت الكمان واطي بزيادة.
+      ar: صوت الكمان منخفض أكثر من اللازم.
+      en: The violin is far too quiet.
+    words: [biola, pelan, terlalu, cukup]
   - id: e04
     type: fill_blank
     sentence: Sayurnya ___ garam.
@@ -160,22 +168,32 @@ exercises:
     answers: [kurang]
     words: [kurang, garam]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: الكمنجة دي غالية شوية، بس حلوة.
-      ar: هذا الكمان غالٍ نسبيًا، لكنه جيد.
-      en: This violin is fairly expensive, but good.
-    answer: Biola ini cukup mahal, tapi bagus.
-    distractors: [terlalu, sekali]
-    words: [biola, cukup, mahal]
+    type: fill_blank
+    sentence: Suaranya terlalu ___. Saya tidak bisa mendengar.
+    meaning:
+      ar_eg: الصوت واطي أوي. مش قادر أسمع.
+      ar: الصوت منخفض جدًا. لا أستطيع أن أسمع.
+      en: It's too quiet. I can't hear.
+    options: [pelan, garam, biola]
+    answers: [pelan]
+    words: [pelan, terlalu]
   - id: e06
     type: speaking
-    text: Harganya cukup mahal, tapi suaranya indah.
+    text: Biola ini lumayan, tapi suaranya terlalu pelan.
     meaning:
-      ar_eg: سعرها غالي شوية، بس صوتها جميل.
-      ar: ثمنها مرتفع نسبيًا، لكن صوتها جميل.
-      en: It's fairly expensive, but it sounds beautiful.
-    words: [cukup, mahal, indah]
+      ar_eg: الكمان ده مش بطال، بس صوته واطي بزيادة.
+      ar: هذا الكمان لا بأس به، لكن صوته منخفض جدًا.
+      en: This violin isn't bad, but it's too quiet.
+    words: [biola, lumayan, pelan, terlalu]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «السمك ناقصه ملح»؟
+      ar: كيف تقول «السمك ينقصه الملح»؟
+      en: How do you say "The fish needs more salt"?
+    options: ['Ikannya kurang garam.', 'Ikannya cukup garam.', 'Ikannya garam kurang.']
+    answer: 0
+    words: [garam, cukup]
 dialogue:
   title: Biola tua Ni Luh
   lines:

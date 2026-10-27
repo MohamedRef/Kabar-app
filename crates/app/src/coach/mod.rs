@@ -8,6 +8,7 @@ pub mod coach_screen;
 pub mod journal;
 pub mod labels;
 pub mod logic;
+pub mod notify;
 pub mod onboarding;
 pub mod settings;
 pub mod today;
@@ -209,8 +210,10 @@ pub fn use_clock(coach: Coach, db: Db) {
         async move {
             let mut eval = document::eval(
                 r#"
-                const send = () => dioxus.send(new Date().getTimezoneOffset());
+                // Once a minute while Kabar is on screen, and right as it comes back.
+                const send = () => { if (!document.hidden) dioxus.send(new Date().getTimezoneOffset()); };
                 setInterval(send, 60000);
+                document.addEventListener("visibilitychange", send);
                 send();
                 await new Promise(() => {});
                 "#,

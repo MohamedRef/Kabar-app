@@ -69,12 +69,12 @@ exercises:
   - id: e03
     type: build_sentence
     source:
-      ar_eg: اغسل وقطّع البصل الأحمر.
-      ar: اغسل البصل الأحمر وقطّعه.
-      en: Wash and cut the shallots.
-    answer: Cuci dan potong bawang merah.
-    distractors: [mencuci, rebus]
-    words: [cuci, potong, bawang merah]
+      ar_eg: دي طريقة طبخ الرز المقلي.
+      ar: هذه طريقة طبخ الأرز المقلي.
+      en: This is how to cook fried rice.
+    answer: Ini cara memasak nasi goreng.
+    distractors: [siap, wajan]
+    words: [cara, memasak]
   - id: e04
     type: build_sentence
     source:
@@ -86,36 +86,52 @@ exercises:
     words: [goreng, cabai, harum]
   - id: e05
     type: fill_blank
-    sentence: Masukkan telur, lalu ___.
+    sentence: Nasi goreng ___! Ayo makan.
     meaning:
-      ar_eg: حط البيض، وبعدين قلّب.
-      ar: أضف البيض ثم قلّب.
-      en: Add the egg, then stir.
-    options: [aduk, berlarian, mengaduk]
-    answers: [aduk]
-    words: [aduk, masukkan]
+      ar_eg: الرز المقلي جاهز! يلا ناكل.
+      ar: الأرز المقلي جاهز! هيّا نأكل.
+      en: The fried rice is ready! Let's eat.
+    options: [siap, cara, cabai]
+    answers: [siap]
+    words: [siap]
   - id: e06
     type: fill_blank
-    sentence: ___ minyak di wajan.
+    sentence: Masukkan nasi dan ___ manis.
     meaning:
-      ar_eg: سخّن الزيت في الطاسة.
-      ar: سخّن الزيت في المقلاة.
-      en: Heat the oil in the wok.
-    answers: [Panaskan, panaskan]
-    explain:
-      ar_eg: panas = سخن، وpanaskan = سخّنه (أمر بـ -kan زي masukkan وtambahkan).
-      ar: panas = ساخن، وpanaskan = سخّنه (أمر بـ -kan).
-      en: panas = hot; panaskan = heat it (a -kan command like masukkan).
-    words: [panaskan]
+      ar_eg: حط الرز والصويا الحلوة.
+      ar: ضع الأرز وصلصة الصويا الحلوة.
+      en: Add the rice and sweet soy sauce.
+    options: [kecap, cabai, wajan]
+    answers: [kecap]
+    words: [masukkan, kecap manis]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اغسل وقطّع التوم.
-      ar: اغسل الثوم وقطّعه.
-      en: Wash and cut the garlic.
-    answers: [Cuci dan potong bawang putih., Cuci dan potong bawang putih, Cuci dan potong bawang putihnya., Cuci dan potong bawang putihnya, 'Cuci bawang putih, lalu potong.', 'Cuci bawang putihnya, lalu potong.']
-    words: [cuci, potong, bawang putih]
+    type: match_pairs
+    pairs:
+      - text: cabai
+        ar_eg: فلفل حرّاق
+        ar: فلفل حار
+        en: chilli
+      - text: wajan
+        ar_eg: طاسة عميقة
+        ar: مقلاة عميقة
+        en: wok
+      - text: kecap manis
+        ar_eg: صويا حلوة
+        ar: صويا حلوة
+        en: sweet soy sauce
+      - text: siap
+        ar_eg: جاهز
+        ar: جاهز
+        en: ready
+      - text: cara
+        ar_eg: طريقة
+        ar: طريقة
+        en: way, method
+      - text: panaskan
+        ar_eg: سخّن
+        ar: سخِّن
+        en: heat
+    words: [cabai, wajan, kecap manis, siap, cara, panaskan]
   - id: e08
     type: translate
     direction: to_target
@@ -127,20 +143,20 @@ exercises:
     words: [masukkan, kecap manis, aduk, rata]
   - id: e09
     type: dictation
-    text: Goreng telur, lalu masukkan nasi.
+    text: Potong cabai, lalu masukkan ke wajan.
     meaning:
-      ar_eg: اقلي البيض، وبعدين حط الرز.
-      ar: اقلِ البيض ثم أضف الأرز.
-      en: Fry the egg, then add the rice.
-    words: [goreng, masukkan]
+      ar_eg: قطّع الفلفل الحرّاق، وبعدين حطه في الطاسة.
+      ar: قطّع الفلفل الحار ثم ضعه في المقلاة.
+      en: Chop the chillies, then put them in the wok.
+    words: [potong, cabai, masukkan, wajan]
   - id: e10
     type: speaking
-    text: Tambahkan garam, lalu cicipi. Nasi goreng siap!
+    text: "Ini caranya: tambahkan garam, lalu cicipi. Nasi goreng siap!"
     meaning:
-      ar_eg: زوّد ملح، وبعدين دوق. الرز المقلي جاهز!
-      ar: أضف الملح ثم تذوّق. الأرز المقلي جاهز!
-      en: Add salt, then taste. The fried rice is ready!
-    words: [tambahkan, cicipi, siap]
+      ar_eg: "دي الطريقة: زوّد ملح، وبعدين دوق. الرز المقلي جاهز!"
+      ar: "هذه هي الطريقة: أضف الملح ثم تذوّق. الأرز المقلي جاهز!"
+      en: "Here's how: add salt, then taste. The fried rice is ready!"
+    words: [cara, tambahkan, cicipi, siap]
 dialogue:
   title: Resep dari Mohamed
   lines:

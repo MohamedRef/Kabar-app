@@ -366,7 +366,7 @@ mod tests {
 
     fn lesson() -> LessonContent {
         let yaml = crate::lesson::lesson_content("bipa1.u01.l01").expect("bipa1.u01.l01 ships");
-        kabar_core::lesson::parse_lesson(yaml).unwrap()
+        kabar_core::lesson::parse_lesson(&yaml).unwrap()
     }
 
     fn tar_of(m: &PackManifest, clips: &[Vec<u8>]) -> Vec<u8> {

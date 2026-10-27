@@ -801,3 +801,42 @@ fn say(engine: &JObject<'static>, u: &Utterance) -> Result<(), SpeakError> {
         Err(_) => Err(SpeakError::Unsupported),
     }
 }
+
+// ------------------------------------------------------------ reminders
+//
+// Kak Nur's local reminders live in `ReminderBridge` (android/…/Reminders.kt):
+// Rust sends the next few as JSON and Android's AlarmManager posts them.
+
+fn reminders<T>(f: impl FnOnce(&mut Env, &JClass, &JObject) -> jni::errors::Result<T>) -> Result<T, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.ReminderBridge"))?;
+        f(env, &class, activity)
+    })
+}
+
+/// Replaces the scheduled reminders with `json` (`[{at, title, text}]`).
+pub fn schedule_reminders(json: &str) -> Result<(), String> {
+    reminders(|env, class, activity| {
+        let json = env.new_string(json)?;
+        env.call_static_method(
+            class,
+            jni_str!("schedule"),
+            jni_sig!("(Landroid/content/Context;Ljava/lang/String;)V"),
+            &[JValue::Object(activity), JValue::Object(&json)],
+        )
+        .map(drop)
+    })
+}
+
+/// Shows Android 13+'s notification prompt if Kabar hasn't been allowed yet.
+pub fn request_notifications() -> Result<(), String> {
+    reminders(|env, class, activity| {
+        env.call_static_method(
+            class,
+            jni_str!("requestPermission"),
+            jni_sig!("(Landroid/app/Activity;)V"),
+            &[JValue::Object(activity)],
+        )
+        .map(drop)
+    })
+}
