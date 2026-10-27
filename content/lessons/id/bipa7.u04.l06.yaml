@@ -1,162 +1,211 @@
 schema: kabar.lesson/v1
 id: bipa7.u04.l06
 language: id
-title: Ulangan Unit 4
+title: Bahasa isyarat
 can_do:
-  ar_eg: تعرف المتكلم من أنهي منطقة وتكتب عن لهجته.
-  ar: أن تعرف منطقة المتكلّم وتكتب عن لهجته.
-  en: Identify a speaker's region and write about their dialect.
+  ar_eg: تتكلّم باحترام عن لغة الإشارة الإندونيسية ومجتمع الصمّ.
+  ar: أن تتحدّث باحترام عن لغة الإشارة الإندونيسية ومجتمع الصمّ.
+  en: Talk respectfully about Indonesian Sign Language and the Deaf community.
+slides:
+  - title: Bahasa dengan tangan
+    body:
+      ar_eg: |
+        مش كل اللهجات بتتسمع: فيه لهجات بتتشاف! الـ bahasa isyarat (لغة الإشارة) لغة كاملة بالإيدين والوش.
+        - BISINDO = Bahasa Isyarat Indonesia: اللغة اللي مجتمع الـ Tuli (الصمّ) نفسه طلّعها، وفيها لهجات من منطقة لمنطقة كمان.
+        - مجتمع الصمّ بيفضّل كلمة Tuli بحرف كبير (هوية وثقافة)، أكتر من الكلمة الطبية «tunarungu».
+        - abjad jari = الحروف بالصوابع: في BISINDO أغلبها بالإيدين الاتنين.
+        - juru bahasa isyarat = مترجم لغة الإشارة: بتشوفه في ركن الشاشة في نشرة الأخبار.
+        ٢٣ سبتمبر هو اليوم العالمي للغات الإشارة.
+      ar: |
+        ليست كلّ اللهجات مسموعة، فبعضها يُرى! الـ bahasa isyarat (لغة الإشارة) لغة تامّة باليدين والوجه.
+        - BISINDO = Bahasa Isyarat Indonesia: لغة نشأت في مجتمع الـ Tuli (الصمّ) نفسه، ولها لهجات تختلف من منطقة إلى أخرى.
+        - ويفضّل مجتمع الصمّ كلمة Tuli بحرف كبير (هويةً وثقافةً) على اللفظ الطبّيّ «tunarungu».
+        - abjad jari = التهجئة بالأصابع، وأكثرها في BISINDO باليدين معًا.
+        - juru bahasa isyarat = مترجم لغة الإشارة، تراه في ركن الشاشة في نشرة الأخبار.
+        و٢٣ سبتمبر هو اليوم الدوليّ للغات الإشارة.
+      en: |
+        Not every dialect is heard; some are seen! Bahasa isyarat (sign language) is a full language of hands and face.
+        - BISINDO = Bahasa Isyarat Indonesia: the language that grew within the Tuli (Deaf) community itself, with its own regional dialects.
+        - The Deaf community prefers Tuli with a capital T (identity and culture) over the medical word "tunarungu".
+        - abjad jari = fingerspelling; in BISINDO most letters use both hands.
+        - juru bahasa isyarat = sign language interpreter, the one you see in the corner of the TV news.
+        23 September is the International Day of Sign Languages.
+    examples:
+      - text: Teman saya Tuli. Kami mengobrol dengan BISINDO.
+        ar_eg: صاحبي أصمّ. بنتكلّم مع بعض بالـ BISINDO.
+        ar: صديقي أصمّ، ونتحادث بلغة BISINDO.
+        en: My friend is Deaf. We chat in BISINDO.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kitong
-        ar_eg: إحنا (بابوا)
-        ar: نحن (ملايو بابوا)
-        en: we (Papuan Malay)
-      - text: dialek
-        ar_eg: لهجة
-        ar: لهجة
-        en: dialect
-      - text: intonasi
-        ar_eg: تنغيم
-        ar: تنغيم
-        en: intonation
-      - text: penanda
-        ar_eg: علامة
-        ar: علامة
-        en: marker
-      - text: petunjuk
-        ar_eg: دليل / قرينة
-        ar: قرينة
-        en: clue, hint
-    words: [kitong, dialek, intonasi, penanda, petunjuk]
+      - text: bahasa isyarat
+        ar_eg: لغة الإشارة
+        ar: لغة الإشارة
+        en: sign language
+      - text: Tuli
+        ar_eg: أصمّ (هوية)
+        ar: أصمّ
+        en: Deaf
+      - text: juru bahasa isyarat
+        ar_eg: مترجم إشارة
+        ar: مترجم لغة الإشارة
+        en: sign language interpreter
+      - text: abjad jari
+        ar_eg: الحروف بالصوابع
+        ar: التهجئة بالأصابع
+        en: fingerspelling
+      - text: BISINDO
+        ar_eg: لغة الإشارة الإندونيسية
+        ar: لغة الإشارة الإندونيسية
+        en: Indonesian Sign Language
+    words: [bahasa isyarat, Tuli, juru bahasa isyarat, abjad jari, BISINDO]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: «Gue nggak tahu, lu tahu?» المتكلم غالبًا منين؟
-      ar: «Gue nggak tahu, lu tahu?» من أين المتكلّم غالبًا؟
-      en: '"Gue nggak tahu, lu tahu?" Where is the speaker probably from?'
-    options: [Papua, Jakarta, Medan]
-    answer: 1
-    words: [gue, menebak]
-  - id: e03
-    type: fill_blank
-    sentence: Sa ___ pi pasar tadi pagi.
-    meaning:
-      ar_eg: أنا رحت السوق خلاص الصبح.
-      ar: ذهبتُ إلى السوق صباح اليوم.
-      en: I already went to the market this morning.
-    options: [su, bah, tra]
-    answers: [su]
-    words: [su, pi, sa, bah, tra]
-  - id: e04
-    type: listen
-    text: Dari aksennya, saya menebak daerah asalnya Sumatra Utara.
-    question:
-      ar_eg: المتكلم خمّن إيه؟
-      ar: ماذا خمّن المتحدّث؟
-      en: What did the speaker guess?
+      ar_eg: مجتمع الصمّ في إندونيسيا بيفضّل يتسمّى إزاي؟
+      ar: بأيّ اسم يفضّل مجتمع الصمّ في إندونيسيا أن يُسمّى؟
+      en: What does Indonesia's Deaf community prefer to be called?
     options:
-      - إن الشخص أصله من شمال سومطرة.
-      - إن الشخص من بابوا.
-      - إن الشخص مالوش لكنة.
-    answer: 0
-    words: [aksen, daerah asal]
+      - tunarungu
+      - Tuli
+      - bisu
+    answer: 1
+    explain:
+      ar_eg: Tuli بحرف كبير بتعبّر عن هوية وثقافة ولغة، مش عن «عيب» طبي.
+      ar: تعبّر Tuli بالحرف الكبير عن هوية وثقافة ولغة، لا عن «علّة» طبّية.
+      en: Capital-T Tuli speaks of identity, culture and language, not a medical "defect".
+    words: [Tuli]
+  - id: e03
+    type: listen
+    text: Di pojok layar ada juru bahasa isyarat yang menerjemahkan berita.
+    question:
+      ar_eg: مين اللي في ركن الشاشة؟
+      ar: من في ركن الشاشة؟
+      en: Who is in the corner of the screen?
+    options:
+      - المذيع الأساسي.
+      - مراسل في الشارع.
+      - مترجم لغة الإشارة.
+    answer: 2
+    words: [juru bahasa isyarat]
+  - id: e04
+    type: fill_blank
+    sentence: Saya belajar ___ supaya bisa mengeja nama saya dengan tangan.
+    meaning:
+      ar_eg: بتعلّم الحروف بالصوابع علشان أقدر أتهجّى اسمي بإيديّا.
+      ar: أتعلّم التهجئة بالأصابع لأتمكّن من تهجئة اسمي بيديّ.
+      en: I'm learning fingerspelling so I can spell my name with my hands.
+    options: [abjad jari, BISINDO, Tuli]
+    answers: [abjad jari]
+    words: [abjad jari]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: إنت رايح فين؟ (بلهجة بابوا)
-      ar: إلى أين تذهب؟ (بملايو بابوا)
-      en: Where are you going? (Papuan Malay)
-    answer: Ko mau pi mana?
-    distractors: [gue, bah]
-    words: [ko, pi]
-  - id: e06
     type: multiple_choice
     question_meaning:
-      ar_eg: في تقرير لهجة، جزء «sebaran» بيتكلم عن إيه؟
-      ar: عمَّ يتحدّث جزء «sebaran» في تقرير اللهجة؟
-      en: In a dialect report, what does the "sebaran" part cover?
+      ar_eg: BISINDO مين اللي طلّعها؟
+      ar: من الذي أنشأ BISINDO؟
+      en: Who created BISINDO?
     options:
-      - الضماير.
-      - النغمة.
-      - الأماكن اللي اللهجة منتشرة فيها.
-    answer: 2
-    words: [sebaran, kata ganti]
+      - مجتمع الصمّ نفسه.
+      - وزارة التعليم في مصر.
+      - شركة تليفونات.
+    answer: 0
+    words: [BISINDO, Tuli]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: لغة الإشارة فيها لهجات كمان.
+      ar: للغة الإشارة لهجات أيضًا.
+      en: Sign language has dialects too.
+    answer: Bahasa isyarat juga punya dialek.
+    distractors: [abjad, jari]
+    words: [bahasa isyarat, dialek]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: كل منطقة ليها شكل من اللغة بسمة مميزة.
-      ar: لكلّ منطقة ضرب من اللغة له سمته المميّزة.
-      en: Every region has a variety with its own distinctive feature.
+      ar_eg: عايز أتعلّم لغة الإشارة الإندونيسية.
+      ar: أريد أن أتعلّم لغة الإشارة الإندونيسية.
+      en: I want to learn Indonesian Sign Language.
     answers:
-      - Setiap wilayah punya ragam bahasa dengan ciri khasnya sendiri.
-      - Setiap wilayah memiliki ragam bahasa dengan ciri khasnya sendiri.
-      - Tiap wilayah punya ragam bahasa dengan ciri khas sendiri.
-    words: [wilayah, ragam, ciri khas]
+      - Saya ingin belajar BISINDO.
+      - Saya mau belajar BISINDO.
+      - Saya ingin belajar bahasa isyarat Indonesia.
+      - Saya mau belajar Bahasa Isyarat Indonesia.
+    words: [BISINDO, bahasa isyarat]
   - id: e08
     type: speaking
-    text: Saya bisa membedakan variasi dialek, tetapi saya tetap berbicara netral.
+    text: Juru bahasa isyarat itu membantu teman-teman Tuli mengikuti seminar.
     meaning:
-      ar_eg: أقدر أفرّق بين تنوّع اللهجات، بس بفضل أتكلم محايد.
-      ar: أستطيع التمييز بين تنوّع اللهجات، لكنّني أتكلّم بلغة محايدة.
-      en: I can tell dialect variations apart, but I still speak neutrally.
-    words: [membedakan, variasi, netral]
+      ar_eg: مترجم الإشارة ده بيساعد الصحاب الصمّ يتابعوا الندوة.
+      ar: يساعد مترجم الإشارة الأصدقاءَ الصمّ على متابعة الندوة.
+      en: The interpreter helps Deaf friends follow the seminar.
+    words: [juru bahasa isyarat, Tuli]
   - id: e09
     type: dictation
-    text: Bah, kitong su sampai di puncak!
+    text: Dalam BISINDO, abjad jari memakai dua tangan.
     meaning:
-      ar_eg: ياه، إحنا وصلنا القمّة خلاص!
-      ar: يا للعجب، وصلنا إلى القمّة!
-      en: Wow, we've made it to the top!
-    words: [bah, kitong, su]
+      ar_eg: في الـ BISINDO، الحروف بالصوابع بتستعمل الإيدين الاتنين.
+      ar: في BISINDO تُستعمل اليدان في التهجئة بالأصابع.
+      en: In BISINDO, fingerspelling uses two hands.
+    words: [BISINDO, abjad jari]
   - id: e10
-    type: translate
-    direction: from_target
-    source_text: Kata ganti dan intonasi adalah penanda dialek yang paling mudah didengar.
-    answers_meaning:
-      ar_eg:
-        - الضماير والتنغيم هما أسهل علامات اللهجة اللي تتسمع.
-        - أسهل حاجة تسمعها في اللهجة هي الضماير والنغمة.
-      ar:
-        - الضمائر والتنغيم أسهل علامات اللهجة سماعًا.
-        - أيسر ما يُسمع من علامات اللهجة ضمائرها وتنغيمها.
-      en:
-        - Pronouns and intonation are the easiest dialect markers to hear.
-        - The easiest dialect markers to pick up are pronouns and intonation.
-    words: [kata ganti, intonasi, penanda]
+    type: speaking
+    text: Bahasa isyarat bukan bahasa tubuh biasa. Bahasa isyarat punya tata bahasa sendiri.
+    meaning:
+      ar_eg: لغة الإشارة مش مجرّد حركات جسم. ليها قواعدها الخاصة.
+      ar: ليست لغة الإشارة مجرّد إيماءات، بل لها نحوها الخاصّ.
+      en: Sign language isn't just body language. It has its own grammar.
+    words: [bahasa isyarat, abjad jari]
 dialogue:
-  title: Turun dari Piaynemo
+  title: Tetangga Om Nus
   lines:
     - speaker: Om Nus
-      text: Ko su pintar, e. Sekarang ko bisa tebak orang dari mana saja.
-      ar_eg: إنت بقيت شاطر أهو. دلوقتي تقدر تخمّن الناس منين بالظبط.
-      ar: صرت ماهرًا، تستطيع الآن تخمين منشأ أيّ أحد.
-      en: You've got clever, eh. Now you can guess where anyone's from.
+      text: Mohamed, ini Lince, tetangga saya. Dia Tuli. Coba sapa dia dengan abjad jari.
+      ar_eg: يا محمد، دي لينسي جارتي. هي صمّا. جرّب تسلّم عليها بالحروف بالصوابع.
+      ar: يا محمد، هذه لينسي جارتي، وهي صمّاء. جرّب أن تحيّيها بالتهجئة بالأصابع.
+      en: Mohamed, this is Lince, my neighbour. She's Deaf. Try greeting her with fingerspelling.
     - speaker: Mohamed
-      text: Belum semua, Om. Tapi sa tra takut lagi dengar logat yang beda.
-      ar_eg: لسه مش كله يا عمّ. بس أنا مابقتش أخاف أسمع لهجة مختلفة.
-      ar: ليس كلّهم بعد يا عمّ، لكنّني لم أعد أخشى سماع لهجة مختلفة.
-      en: Not everyone yet, Om. But I'm not scared of hearing different accents any more.
+      text: Saya baru tahu dua huruf, Om. Bagaimana kalau saya salah?
+      ar_eg: أنا لسه عارف حرفين بس يا عمّو. ولو غلطت؟
+      ar: لا أعرف إلا حرفين يا عمّ، فماذا لو أخطأت؟
+      en: I only know two letters, Om. What if I get it wrong?
     - speaker: Om Nus
-      text: Hahaha, ko pakai "sa" dan "tra"! Besok ko ke Wayag?
-      ar_eg: هههه، إنت قلت «sa» و«tra»! بكرة رايح وايّاج؟
-      ar: هاها، استعملتَ «sa» و«tra»! هل تذهب غدًا إلى وايّاغ؟
-      en: Ha, you used "sa" and "tra"! Off to Wayag tomorrow?
+      text: Tidak apa-apa. Lince bilang, dia senang ada orang yang mau belajar BISINDO.
+      ar_eg: ولا يهمّك. لينسي بتقول إنها مبسوطة إن فيه حد عايز يتعلّم BISINDO.
+      ar: لا بأس، تقول لينسي إنّها تسعد بمن يريد تعلّم BISINDO.
+      en: It's fine. Lince says she's happy someone wants to learn BISINDO.
     - speaker: Mohamed
-      text: Iya, Om. Di sana saya mau belajar sejarah Indonesia.
-      ar_eg: أيوه يا عمّ. هناك عايز أتعلّم تاريخ إندونيسيا.
-      ar: نعم يا عمّ، أريد هناك أن أتعلّم تاريخ إندونيسيا.
-      en: Yes, Om. There I want to learn Indonesian history.
-souvenir:
-  id: bipa7.u04.souvenir
-  title: Melayu Papua
-  note:
-    ar_eg: ملايو بابوا هي اللغة اللي بيتفاهم بيها الناس في بابوا بين الشعوب المختلفة. بيقولوا sa بدل saya، وko بدل kamu، وkitong يعني إحنا، وdong يعني هم، وtra يعني مش، وsu يعني خلاص، وpi يعني يروح. وفي جاكرتا هتسمع gue وlu، وفي ميدان bah وkali، وعند الجاويين kok وto. افهمهم كلهم، واتكلم إنت بالإندونيسي المحايد، إلا لو أهل المكان نفسهم عزموك تتكلم زيهم.
-    ar: ملايو بابوا لغة التفاهم بين شعوب بابوا المختلفة. يقولون sa بدل saya، وko بدل kamu، وkitong بمعنى نحن، وdong بمعنى هم، وtra بمعنى لا، وsu بمعنى قد، وpi بمعنى يذهب. وفي جاكرتا تسمع gue وlu، وفي ميدان bah وkali، وعند الجاويين kok وto. افهمها كلّها، وتكلّم أنت بالإندونيسية المحايدة، إلّا إن دعاك أهل المكان أنفسهم إلى مجاراتهم.
-    en: Papuan Malay is the language Papua's many peoples use to talk to one another. People say sa for saya, ko for kamu, kitong for "we", dong for "they", tra for "not", su for "already" and pi for "go". In Jakarta you'll hear gue and lu, in Medan bah and kali, and among Javanese speakers kok and to. Understand them all, and speak neutral Indonesian yourself, unless the locals themselves invite you to talk like them.
+      text: Kalau begitu, besok saya ikut kelas bahasa isyarat bersama Lince.
+      ar_eg: يبقى بكرة هحضر حصة لغة إشارة مع لينسي.
+      ar: إذن سأحضر غدًا درسًا في لغة الإشارة مع لينسي.
+      en: Then tomorrow I'll join a sign language class with Lince.
+new_words:
+  - word: bahasa isyarat
+    pos: noun
+    ar_eg: لغة الإشارة
+    ar: لغة الإشارة
+    en: sign language
+  - word: Tuli
+    pos: adjective
+    ar_eg: أصمّ (كهوية ومجتمع)
+    ar: أصمّ (هويةً)
+    en: Deaf (as identity)
+  - word: juru bahasa isyarat
+    pos: noun
+    ar_eg: مترجم لغة الإشارة
+    ar: مترجم لغة الإشارة
+    en: sign language interpreter
+  - word: abjad jari
+    pos: noun
+    ar_eg: الحروف بالصوابع
+    ar: التهجئة بالأصابع
+    en: fingerspelling, manual alphabet
+  - word: BISINDO
+    pos: noun
+    ar_eg: لغة الإشارة الإندونيسية
+    ar: لغة الإشارة الإندونيسية
+    en: BISINDO (Indonesian Sign Language)
 review:
   status: draft
   verified: false

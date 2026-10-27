@@ -1,0 +1,193 @@
+schema: kabar.lesson/v1
+id: bipa5.u02.l09
+language: id
+title: Ulangan Unit 2
+can_do:
+  ar_eg: تناقش نقل العاصمة، فتعترف وترد وتربط حججك وتستنتج.
+  ar: أن تناقش نقل العاصمة، فتُقرّ وتعترض وتربط حججك وتستنتج.
+  en: Argue about the new capital, conceding, countering, linking and concluding.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: meskipun
+        ar_eg: مع إن
+        ar: مع أنّ
+        en: although
+      - text: selain itu
+        ar_eg: علاوة على كده
+        ar: علاوة على ذلك
+        en: moreover
+      - text: kebijakan
+        ar_eg: سياسة
+        ar: سياسة
+        en: policy
+      - text: anggaran
+        ar_eg: ميزانية
+        ar: ميزانية
+        en: budget
+      - text: pendapat
+        ar_eg: رأي
+        ar: رأي
+        en: opinion
+    words: [selain itu, kebijakan, anggaran, pendapat]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ جملة صحيحة؟
+      en: Which sentence is correct?
+    options:
+      - Walaupun mahal, tetapi proyek itu berjalan.
+      - Walaupun mahal, proyek itu tetap berjalan.
+      - Walaupun proyek itu, mahal tetap berjalan.
+    answer: 1
+    explain:
+      ar_eg: بعد walaupun مفيش tetapi، بنستخدم tetap.
+      ar: لا تأتي tetapi بعد walaupun، بل tetap.
+      en: No tetapi after walaupun; use tetap.
+  - id: e03
+    type: fill_blank
+    sentence: Biayanya terus naik, ___ anggaran negara terbatas.
+    meaning:
+      ar_eg: التكلفة بتزيد على طول، مع إن ميزانية الدولة محدودة.
+      ar: تواصل التكلفة الارتفاع، مع أنّ ميزانية الدولة محدودة.
+      en: The cost keeps rising, even though the state budget is limited.
+    options: [padahal, selain itu, dengan demikian]
+    answers: [padahal]
+    words: [anggaran, biaya]
+  - id: e04
+    type: listen
+    text: Di satu sisi, kota baru itu modern. Di sisi lain, hutannya terancam.
+    question:
+      ar_eg: المتكلم بيقارن بين إيه؟
+      ar: بين أيّ أمرين يوازن المتكلّم؟
+      en: What is the speaker weighing up?
+    options:
+      - إن المدينة حديثة، بس الغابة في خطر.
+      - إن المدينة قديمة والغابة آمنة.
+      - إن الغابة أحدث من المدينة.
+    answer: 0
+    words: [di sisi lain]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الحكومة قررت تنقل العاصمة، ومع كده النقاد لسه قلقانين.
+      ar: قرّرت الحكومة نقل العاصمة، ومع ذلك ما زال النقّاد قلقين.
+      en: The government decided to move the capital; even so, critics are still worried.
+    answer: Pemerintah memutuskan memindahkan ibu kota. Meskipun begitu, para kritikus masih khawatir.
+    distractors: [tetapi, padat]
+    words: [memutuskan, meskipun begitu, kritikus, khawatir]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: جاكرتا زحمة قوي. وبالتالي، نقل العاصمة منطقي.
+      ar: جاكرتا مكتظّة جدًّا، وبالتالي فنقل العاصمة منطقي.
+      en: Jakarta is very crowded. Thus, moving the capital makes sense.
+    answers:
+      - Jakarta sangat padat. Dengan demikian, pemindahan ibu kota masuk akal.
+      - Jakarta sangat padat. Oleh karena itu, pemindahan ibu kota masuk akal.
+      - Jakarta sudah sangat padat. Dengan demikian, pemindahan ibu kota masuk akal.
+      - Jakarta padat sekali. Dengan demikian, pemindahan ibu kota masuk akal.
+    words: [padat, dengan demikian, pemindahan]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Maaf, saya kurang setuju dengan kebijakan itu.
+    answers_meaning:
+      ar_eg:
+        - آسف، أنا مش موافق قوي على السياسة دي.
+        - معلش، أنا مش موافق أوي على السياسة دي.
+      ar:
+        - عذرًا، لا أوافق تمامًا على تلك السياسة.
+        - آسف، لا أوافق كثيرًا على تلك السياسة.
+      en:
+        - Sorry, I don't quite agree with that policy.
+        - Sorry, I'm not really in favour of that policy.
+    words: [kurang setuju, kebijakan]
+  - id: e08
+    type: dictation
+    text: Menurut penulis, alasan utamanya adalah banjir.
+    meaning:
+      ar_eg: في رأي الكاتب، السبب الأساسي هو الفيضانات.
+      ar: في رأي الكاتب، السبب الرئيسي هو الفيضانات.
+      en: In the writer's view, the main reason is flooding.
+    words: [penulis, alasan]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في المقال، Pertama وKedua مكانهم فين؟
+      ar: أين موضع Pertama وKedua في المقالة؟
+      en: Where in the essay do Pertama and Kedua go?
+    options: [pendahuluan, penutup, isi]
+    answer: 2
+    words: [pendahuluan, penutup]
+  - id: e10
+    type: speaking
+    text: Saya mengerti pendapat Anda, tetapi biayanya terlalu besar.
+    meaning:
+      ar_eg: فاهم رأي حضرتك، بس التكلفة كبيرة زيادة.
+      ar: أفهم رأيك، لكنّ التكلفة كبيرة جدًّا.
+      en: I understand your view, but the cost is too high.
+    words: [pendapat, biaya]
+  - id: e11
+    type: multiple_choice
+    question_meaning:
+      ar_eg: المؤيدين بيقولوا IKN هتجيب «pemerataan pembangunan». قصدهم إيه؟
+      ar: يقول المؤيّدون إنّ IKN ستحقّق «pemerataan pembangunan». ماذا يقصدون؟
+      en: Supporters say IKN will bring "pemerataan pembangunan". What do they mean?
+    options:
+      - تنمية موزعة على الجزر كلها، مش جاوة بس.
+      - طرد أهل المنطقة من أرضهم.
+      - زحمة أقل في كاليمانتان.
+    answer: 0
+    words: [pemerataan]
+  - id: e12
+    type: fill_blank
+    sentence: Menurut tata ruang IKN, hutan di sekitar kota menjadi ___.
+    meaning:
+      ar_eg: حسب تخطيط العاصمة الجديدة، الغابة اللي حوالين المدينة هتبقى مساحة خضرا.
+      ar: بحسب تخطيط العاصمة الجديدة، تصبح الغابة المحيطة بالمدينة مساحة خضراء.
+      en: Under IKN's spatial plan, the forest around the city becomes green space.
+    options: [ruang terbuka hijau, permukiman, kemacetan]
+    answers: [ruang terbuka hijau]
+    words: [ruang terbuka hijau, tata ruang]
+dialogue:
+  title: Di lokasi Nusantara
+  lines:
+    - speaker: Mas Rizal
+      text: Nah, Mohamed, ini lokasi ibu kota baru. Bagaimana pendapatmu sekarang?
+      ar_eg: أهو يا محمد، ده مكان العاصمة الجديدة. رأيك إيه دلوقتي؟
+      ar: ها هو يا محمد موقع العاصمة الجديدة. ما رأيك الآن؟
+      en: So, Mohamed, this is the new capital's site. What do you think now?
+    - speaker: Mohamed
+      text: Di satu sisi, kotanya rapi dan modern. Di sisi lain, hutannya banyak yang hilang.
+      ar_eg: من ناحية، المدينة منظمة وحديثة. ومن ناحية تانية، حتت كتير من الغابة راحت.
+      ar: من ناحية، المدينة مرتّبة وحديثة، ومن ناحية أخرى، اختفى كثير من الغابة.
+      en: On the one hand, the city is neat and modern. On the other, a lot of forest is gone.
+    - speaker: Mas Rizal
+      text: Betul. Meskipun begitu, banyak warga Kalimantan senang ada pembangunan.
+      ar_eg: مظبوط. ومع كده، ناس كتير من كاليمانتان مبسوطين إن فيه تنمية.
+      ar: صحيح. ومع ذلك، يسرّ كثيرًا من سكّان كاليمانتان أن تصلهم التنمية.
+      en: True. Even so, many Kalimantan residents are glad of the development.
+    - speaker: Mohamed
+      text: Selain itu, Jakarta bisa sedikit bernapas.
+      ar_eg: وكمان جاكرتا تقدر تتنفس شوية.
+      ar: وعلاوة على ذلك، تستطيع جاكرتا أن تتنفّس قليلًا.
+      en: Besides, Jakarta can breathe a little.
+    - speaker: Mas Rizal
+      text: Dengan demikian, kamu sudah bisa ikut debat IKN!
+      ar_eg: يبقى كده إنت تقدر تدخل نقاش العاصمة الجديدة!
+      ar: وبهذا صرت قادرًا على المشاركة في نقاش العاصمة الجديدة!
+      en: So now you're ready to join the IKN debate!
+souvenir:
+  id: bipa5.u02.souvenir
+  title: Nusantara, ibu kota baru
+  note:
+    ar_eg: إندونيسيا بتنقل عاصمتها من جاكرتا لنوسانتارا (IKN) في شرق كاليمانتان، وده من أسخن المواضيع في الجرايد والتلفزيون. ناس شايفة إنه عدل للجزر اللي برا جاوة، وناس قلقانة على الغابة والميزانية. لو قعدت مع إندونيسيين، اسأل «Bagaimana pendapat Anda tentang IKN?» وهتلاقي نقاش طويل ومؤدب.
+    ar: تنقل إندونيسيا عاصمتها من جاكرتا إلى نوسانتارا (IKN) في شرق كاليمانتان، وهو من أكثر الموضوعات سخونة في الصحف والتلفاز. يراه بعضهم إنصافًا للجزر خارج جاوة، ويقلق آخرون على الغابة والميزانية. وإذا جلست مع إندونيسيين فاسأل «Bagaimana pendapat Anda tentang IKN?» وستجد نقاشًا طويلًا مهذّبًا.
+    en: Indonesia is moving its capital from Jakarta to Nusantara (IKN) in East Kalimantan, one of the hottest topics in the papers and on TV. Some see it as fairness for the islands beyond Java; others worry about the forest and the budget. Sit with Indonesians and ask "Bagaimana pendapat Anda tentang IKN?", and you'll get a long, polite debate.
+review:
+  status: draft
+  verified: false

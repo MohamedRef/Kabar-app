@@ -1,194 +1,184 @@
 schema: kabar.lesson/v1
 id: bipa3.u05.l06
 language: id
-title: Ulangan Unit 5
+title: Blog Ni Luh
 can_do:
-  ar_eg: تحكي أسبوعك بالترتيب وبجمل صح.
-  ar: أن تسرد أحداث أسبوعك مرتّبة بجمل صحيحة.
-  en: Recount a week.
+  ar_eg: تقرا بوست في بلوج عن رحلة طلوع جبل وتفهم مين عمل إيه وإمتى.
+  ar: أن تقرأ تدوينة عن رحلة صعود جبل وتفهم من فعل ماذا ومتى.
+  en: Read a blog recount of a hike and follow who did what, and when.
+slides:
+  - title: '"Tiga hari di Rinjani"'
+    grammar: id.verb.transitive
+    body:
+      ar_eg: |
+        نيلوه كتبت بوست في البلوج بتاعها عن طلوع جبل رينجاني. ده نص «recount»: بيحكي اللي حصل بالترتيب.
+        دوّر على: مين شال الخيمة؟ مين إدّاهم الأكل؟ وشافوا إيه فوق القمة؟
+        وخد بالك من الأفعال اللي ليها مفعول: membawa tenda، memberi kami bekal.
+      ar: |
+        كتبت نيلوه تدوينة عن صعود جبل رينجاني. هذا نصّ «recount» يروي ما حدث بالترتيب.
+        ابحث عن: من حمل الخيمة؟ من أعطاهم الطعام؟ وماذا رأوا من القمة؟
+        ولاحظ الأفعال المتعدّية: membawa tenda وmemberi kami bekal.
+      en: |
+        Ni Luh wrote a blog post about climbing Mount Rinjani. It's a recount: it tells what happened, in order.
+        Look for: who carried the tent? Who gave them food? What did they see from the top?
+        Notice the verbs with objects: membawa tenda, memberi kami bekal.
+    examples:
+      - text: Akhir pekan lalu, saya dan dua teman mendaki Gunung Rinjani dari Senaru.
+        ar_eg: الويك إند اللي فات، أنا واتنين صحابي طلعنا جبل رينجاني من سينارو.
+        ar: في عطلة نهاية الأسبوع الماضية صعدتُ مع صديقين جبل رينجاني من سينارو.
+        en: Last weekend, two friends and I climbed Mount Rinjani from Senaru.
+      - text: Pak Sahdan, porter kami, membawa tenda. Istrinya memberi kami bekal nasi dan telur.
+        ar_eg: عم سهدان، الشيّال بتاعنا، شال الخيمة. ومراته إدّتنا زوّادة رز وبيض.
+        ar: حمل السيد سهدان، حمّالنا، الخيمة، وأعطتنا زوجته زادًا من الأرز والبيض.
+        en: Pak Sahdan, our porter, carried the tent. His wife gave us packed rice and eggs.
+      - text: Pada hari ketiga, sesampainya di puncak, kami melihat matahari terbit. Pengalaman itu sangat berkesan!
+        ar_eg: في اليوم التالت، أول ما وصلنا القمة، شفنا الشمس وهي بتطلع. التجربة دي ما تتنسيش!
+        ar: في اليوم الثالث، حين وصلنا إلى القمة، رأينا شروق الشمس. كانت تجربة لا تُنسى!
+        en: On the third day, on reaching the summit, we saw the sunrise. It was a memorable experience!
 exercises:
   - id: e01
+    type: listen
+    text: Akhir pekan lalu, saya dan dua teman mendaki Gunung Rinjani dari Senaru.
+    question:
+      ar_eg: نيلوه طلعت الجبل إمتى؟
+      ar: متى صعدت نيلوه الجبل؟
+      en: When did Ni Luh climb the mountain?
+    options: ["Minggu depan.", "Akhir pekan lalu.", "Tahun lalu."]
+    answer: 1
+    meaning:
+      ar_eg: الويك إند اللي فات، أنا واتنين صحابي طلعنا جبل رينجاني من سينارو.
+      ar: في عطلة نهاية الأسبوع الماضية صعدتُ مع صديقين جبل رينجاني من سينارو.
+      en: Last weekend, two friends and I climbed Mount Rinjani from Senaru.
+    words: [akhir pekan, mendaki]
+  - id: e02
+    type: listen
+    text: Istrinya memberi kami bekal nasi dan telur.
+    options:
+      - Istrinya memberi kami bekal nasi dan telur.
+      - Istrinya membawa kami ke rumah.
+      - Istrinya memberi kami peta dan senter.
+    answer: 0
+    meaning:
+      ar_eg: ومراته إدّتنا زوّادة رز وبيض.
+      ar: وأعطتنا زوجته زادًا من الأرز والبيض.
+      en: His wife gave us packed rice and eggs.
+    words: [memberi, bekal]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين اللي شال الخيمة؟
+      ar: مَن حمل الخيمة؟
+      en: Who carried the tent?
+    options: ["Ni Luh.", "Istri Pak Sahdan.", "Pak Sahdan."]
+    answer: 2
+    words: [membawa, tenda]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: وصلوا القمة في أنهي يوم؟
+      ar: في أيّ يوم وصلوا إلى القمة؟
+      en: On which day did they reach the summit?
+    options: ["Hari pertama.", "Hari kedua.", "Hari ketiga."]
+    answer: 2
+    words: [puncak]
+  - id: e05
     type: match_pairs
     pairs:
       - text: mendaki
         ar_eg: يطلع (جبل)
-        ar: يتسلّق
+        ar: يصعد (جبلًا)
         en: to climb
-      - text: menjemur
-        ar_eg: ينشر (الغسيل)
-        ar: ينشر (الغسيل)
-        en: to hang out to dry
-      - text: meminjam
-        ar_eg: يستلف
-        ar: يستعير
-        en: to borrow
-      - text: tagihan
-        ar_eg: فاتورة
-        ar: فاتورة
-        en: bill
-      - text: keesokan harinya
-        ar_eg: تاني يوم
-        ar: في اليوم التالي
-        en: the next day
-    words: [mendaki, menjemur, meminjam, tagihan, keesokan harinya]
-  - id: e02
-    type: multiple_choice
-    question: Kami ___ air terjun Sendang Gile.
-    options: [pergi, mengunjungi, mengunjungi ke]
-    answer: 1
-    explain:
-      ar_eg: mengunjungi متعدي، مش محتاج ke. و pergi محتاجة ke.
-      ar: mengunjungi متعدٍّ لا يحتاج إلى ke، أما pergi فتحتاج إليها.
-      en: mengunjungi is transitive and needs no ke; pergi would need ke.
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ جملة صحيحة؟
-      en: Which sentence is correct?
-    options: ["Saya bertemu Pak Sahdan dengan kemarin.", "Saya menemui dengan Pak Sahdan kemarin.", "Kemarin saya bertemu dengan Pak Sahdan."]
-    answer: 2
-    explain:
-      ar_eg: bertemu لازم وبياخد dengan؛ menemui متعدي من غير dengan.
-      ar: bertemu لازم يتعدى بـdengan، أما menemui فمتعدٍّ بلا dengan.
-      en: bertemu is intransitive and takes dengan; menemui is transitive, with no dengan.
-  - id: e04
-    type: listen
-    text: Para porter membawa tenda ke puncak.
-    options: ["Para porter membawa tenda ke puncak.", "Para porter membawa senter ke puncak.", "Para pemandu membawa tenda ke pantai."]
-    answer: 0
-    meaning:
-      ar_eg: الشيّالين بيشيلوا الخيم للقمّة.
-      ar: يحمل الحمّالون الخيام إلى القمّة.
-      en: The porters carry the tents to the summit.
-    words: [porter, tenda, puncak]
-  - id: e05
-    type: listen
-    text: Hari Jumat saya mengantar Rina ke stasiun. Keesokan harinya saya menyetrika baju.
-    question:
-      ar_eg: عمل إيه يوم السبت؟
-      ar: ماذا فعل يوم السبت؟
-      en: What did he do on Saturday?
-    options: ["mengantar Rina", "membayar tagihan", "menyetrika baju"]
-    answer: 2
-    meaning:
-      ar_eg: يوم الجمعة وصّلت رينا المحطة. وتاني يوم كويت الهدوم.
-      ar: يوم الجمعة أوصلتُ رينا إلى المحطة، وفي اليوم التالي كويتُ الثياب.
-      en: On Friday I took Rina to the station. The next day I ironed my clothes.
-    words: [mengantar, keesokan harinya, menyetrika]
+      - text: bekal
+        ar_eg: زوّادة، أكل للسكة
+        ar: زاد الطريق
+        en: packed food
+      - text: sesampainya
+        ar_eg: أول ما وصل
+        ar: عند الوصول
+        en: on arriving
+      - text: berkesan
+        ar_eg: ما يتنسيش
+        ar: لا يُنسى
+        en: memorable
+      - text: puncak
+        ar_eg: قمة
+        ar: قمّة
+        en: summit
+    words: [mendaki, bekal, sesampainya, berkesan, puncak]
   - id: e06
-    type: fill_blank
-    sentence: Mas Rizal memberikan peta ___ saya.
+    type: dictation
+    text: Pengalaman itu sangat berkesan!
     meaning:
-      ar_eg: ريزال إدّى الخريطة ليّا.
-      ar: أعطى ريزال الخريطة لي.
-      en: Mas Rizal gave the map to me.
-    options: [kepada, dari, dengan]
-    answers: [kepada]
-    words: [memberikan]
+      ar_eg: التجربة دي ما تتنسيش!
+      ar: كانت تجربة لا تُنسى!
+      en: That experience was very memorable!
+    words: [pengalaman, berkesan]
   - id: e07
     type: fill_blank
-    sentence: ___ di Senaru, kami makan siang.
+    sentence: ___ di puncak, kami melihat matahari terbit.
     meaning:
-      ar_eg: أول ما وصلنا سنارو، اتغدّينا.
-      ar: حين وصلنا إلى سنارو تناولنا الغداء.
-      en: When we got to Senaru, we had lunch.
+      ar_eg: أول ما وصلنا القمة، شفنا الشمس وهي بتطلع.
+      ar: حين وصلنا إلى القمة، رأينا شروق الشمس.
+      en: On reaching the summit, we saw the sunrise.
     options: [Sesampainya, Keesokan harinya, Akhir pekan]
     answers: [Sesampainya]
     words: [sesampainya]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: إمبارح دفعت فاتورة الكهربا.
-      ar: أمس دفعتُ فاتورة الكهرباء.
-      en: Yesterday I paid the electricity bill.
-    answer: Kemarin saya membayar tagihan listrik.
-    alternatives: ["Saya membayar tagihan listrik kemarin."]
-    distractors: [di, dengan]
-    words: [membayar, tagihan]
+      ar_eg: الشيّال شال الخيمة لحد القمة.
+      ar: حمل الحمّال الخيمة إلى القمة.
+      en: The porter carried the tent to the summit.
+    answer: Porter itu membawa tenda ke puncak.
+    distractors: [memberi, di]
+    words: [membawa, tenda, puncak]
   - id: e09
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: آخر الأسبوع اللي فات طلعنا جبل رينجاني.
-      ar: في عطلة نهاية الأسبوع الماضية صعدنا جبل رينجاني.
-      en: Last weekend we climbed Mount Rinjani.
+      ar_eg: مرات عم سهدان إدّتنا زوّادة.
+      ar: أعطتنا زوجة السيد سهدان زادًا.
+      en: Pak Sahdan's wife gave us packed food.
     answers:
-      - Akhir pekan lalu kami mendaki Gunung Rinjani.
-      - Akhir pekan lalu kami mendaki Gunung Rinjani
-      - Akhir pekan lalu, kami mendaki Gunung Rinjani.
-      - Kami mendaki Gunung Rinjani akhir pekan lalu.
-      - Akhir pekan lalu kita mendaki Gunung Rinjani.
-      - Akhir pekan lalu kami mendaki Rinjani.
-      - Minggu lalu kami mendaki Gunung Rinjani.
-    words: [akhir pekan, mendaki, gunung]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Bu Sari memberi kami bekal nasi dan telur.
-    answers_meaning:
-      ar_eg:
-        - مدام ساري إدّتنا زوّادة رز وبيض.
-        - مدام ساري إدّتنا أكل للسكة، رز وبيض.
-      ar:
-        - أعطتنا السيدة ساري زادًا من الأرز والبيض.
-        - أعطتنا السيدة ساري طعامًا للطريق من الأرز والبيض.
-      en:
-        - Bu Sari gave us a packed meal of rice and eggs.
-        - Bu Sari gave us packed food of rice and eggs.
-        - Bu Sari gave us rice and eggs to take with us.
+      - Istri Pak Sahdan memberi kami bekal.
+      - Istri Pak Sahdan memberi kami bekal
+      - Istri Pak Sahdan memberikan bekal kepada kami.
+      - Istri Pak Sahdan memberikan bekal kepada kami
+      - Istri Pak Sahdan memberi kita bekal.
+      - Istri Pak Sahdan memberikan bekal kepada kita.
+    explain:
+      ar_eg: memberi + الشخص + الحاجة (memberi kami bekal)، أو memberikan + الحاجة + kepada + الشخص.
+      ar: memberi + الشخص + الشيء (memberi kami bekal)، أو memberikan + الشيء + kepada + الشخص.
+      en: memberi + person + thing (memberi kami bekal), or memberikan + thing + kepada + person.
     words: [memberi, bekal]
-  - id: e11
-    type: dictation
-    text: Pengalaman itu sangat berkesan bagi saya.
-    meaning:
-      ar_eg: التجربة دي فضلت في بالي جدًا.
-      ar: كانت تلك التجربة مؤثّرة جدًا بالنسبة إليّ.
-      en: That experience really stayed with me.
-    words: [pengalaman, berkesan]
-  - id: e12
-    type: speaking
-    text: Boleh saya meminjam senter? Besok pagi kami mendaki gunung.
-    meaning:
-      ar_eg: ممكن أستلف كشّاف؟ بكرة الصبح هنطلع الجبل.
-      ar: هل يمكنني أن أستعير مصباحًا؟ سنصعد الجبل صباح الغد.
-      en: May I borrow a torch? Tomorrow morning we're climbing the mountain.
-    words: [meminjam, senter, mendaki]
 dialogue:
-  title: Di air terjun Sendang Gile
+  title: Komentar di blog
   lines:
-    - speaker: Mas Rizal
-      text: Inilah air terjun Sendang Gile! Bagaimana minggumu, Mohamed?
-      ar_eg: أهو شلال سندانج جيلي! أسبوعك كان عامل إزاي يا محمد؟
-      ar: ها هو شلال سندانغ غيلي! كيف كان أسبوعك يا محمد؟
-      en: Here's Sendang Gile waterfall! How was your week, Mohamed?
     - speaker: Mohamed
-      text: Luar biasa! Hari Selasa kami mendaki Rinjani dengan Pak Sahdan.
-      ar_eg: تحفة! يوم التلات طلعنا رينجاني مع عم سهدان.
-      ar: رائع! صعدنا رينجاني يوم الثلاثاء مع السيد سهدان.
-      en: Amazing! On Tuesday we climbed Rinjani with Pak Sahdan.
-    - speaker: Mas Rizal
-      text: Pak Sahdan porter terbaik di Senaru. Dia membawa tenda kita, kan?
-      ar_eg: عم سهدان أحسن شيّال في سنارو. هو اللي شال خيمتنا، صح؟
-      ar: السيد سهدان أفضل حمّال في سنارو، وهو من حمل خيمتنا، أليس كذلك؟
-      en: Pak Sahdan is the best porter in Senaru. He carried our tent, didn't he?
+      text: Ni Luh, saya membaca blogmu tentang Rinjani. Bagus sekali!
+      ar_eg: نيلوه، قريت البلوج بتاعك عن رينجاني. حلو جدًا!
+      ar: يا نيلوه، قرأت مدوّنتكِ عن رينجاني. رائعة جدًا!
+      en: Ni Luh, I read your blog about Rinjani. Really good!
+    - speaker: Ni Luh
+      text: Terima kasih! Kamu juga mendaki dengan Pak Sahdan, kan?
+      ar_eg: شكرًا! إنت كمان طلعت مع عم سهدان، مش كده؟
+      ar: شكرًا! أنت أيضًا صعدت مع السيد سهدان، أليس كذلك؟
+      en: Thanks! You climbed with Pak Sahdan too, didn't you?
     - speaker: Mohamed
-      text: Ya. Keesokan harinya, saya melihat matahari terbit dari puncak.
-      ar_eg: أيوه. وتاني يوم شفت الشروق من القمّة.
-      ar: نعم. وفي اليوم التالي رأيتُ شروق الشمس من القمّة.
-      en: Yes. The next day I saw the sunrise from the summit.
-    - speaker: Mas Rizal
-      text: Pengalaman yang berkesan! Sekarang, ayo kita berenang!
-      ar_eg: تجربة متتنسيش! يلا دلوقتي نعوم!
-      ar: تجربة لا تُنسى! والآن هيا نسبح!
-      en: A memorable experience! Now, let's go for a swim!
-souvenir:
-  id: bipa3.u05.souvenir
-  title: Air Terjun Sendang Gile
-  note:
-    ar_eg: سنارو قرية صغيرة على سفح رينجاني، ومنها بيبدأ طريق الطلوع للجبل. كتير من رجالة الساساك هناك شغالين شيّالين ومرشدين، بيشيلوا الخيم والأكل على كتافهم في طرق صعبة جدًا. وبعد الطلعة، أحسن مكافأة هي مية شلال سندانج جيلي الساقعة في وسط الغابة!
-    ar: سنارو قرية صغيرة على سفح رينجاني، ومنها يبدأ مسار الصعود إلى الجبل. يعمل كثير من رجال الساساك فيها حمّالين ومرشدين، يحملون الخيام والطعام على أكتافهم في مسالك وعرة. وبعد الرحلة، خير مكافأة ماء شلال سندانغ غيلي البارد وسط الغابة!
-    en: Senaru is a small village on Rinjani's slopes and the starting point of the climb. Many Sasak men there work as porters and guides, carrying tents and food on their shoulders up steep trails. And after the trek, the best reward is the cool water of Sendang Gile waterfall in the middle of the forest!
+      text: Ya! Dia membawa tenda kami, dan istrinya memberi kami bekal juga.
+      ar_eg: أيوه! هو شال خيمتنا، ومراته إدّتنا زوّادة برضه.
+      ar: نعم! حمل خيمتنا، وأعطتنا زوجته زادًا أيضًا.
+      en: Yes! He carried our tent, and his wife gave us packed food too.
+    - speaker: Ni Luh
+      text: Kamu melihat matahari terbit dari puncak?
+      ar_eg: شفت الشروق من فوق القمة؟
+      ar: هل رأيت شروق الشمس من القمة؟
+      en: Did you see the sunrise from the summit?
+    - speaker: Mohamed
+      text: Ya. Sesampainya di puncak, saya diam saja. Pengalaman itu sangat berkesan.
+      ar_eg: أيوه. أول ما وصلت القمة سكتّ خالص. تجربة ما تتنسيش.
+      ar: نعم. حين وصلت إلى القمة صمتُّ تمامًا. كانت تجربة لا تُنسى.
+      en: Yes. When I reached the top, I just went quiet. It was a memorable experience.
 review:
   status: draft
   verified: false

@@ -1,0 +1,194 @@
+schema: kabar.lesson/v1
+id: bipa4.u03.l08
+language: id
+title: Ulangan Unit 3
+can_do:
+  ar_eg: تقدّم مكان تاريخي بوصف حي وتاريخ مختصر.
+  ar: أن تقدّم موقعًا تاريخيًا بوصف حيّ وتاريخ موجز.
+  en: Present a historic site.
+slides:
+  - title: -kan dan majas
+    body:
+      ar_eg: |
+        مراجعة سريعة:
+        -kan لحد: membelikan saya kopi (الشخص الأول وبعدين الحاجة).
+        -kan للموضوع: menceritakan sejarah، membicarakan adat (من غير tentang).
+        تشبيه: seperti / bagaikan. مبالغة: selangit، seribu kali، tak terhitung.
+      ar: |
+        مراجعة سريعة:
+        -kan للإفادة: membelikan saya kopi (المستفيد ثم الشيء).
+        -kan للموضوع: menceritakan sejarah، membicarakan adat (بلا tentang).
+        التشبيه: seperti / bagaikan، والمبالغة: selangit، seribu kali، tak terhitung.
+      en: |
+        Quick review:
+        -kan for someone: membelikan saya kopi (person first, then the thing).
+        -kan for a topic: menceritakan sejarah, membicarakan adat (no tentang).
+        Simile: seperti / bagaikan. Hyperbole: selangit, seribu kali, tak terhitung.
+    grammar: id.confix.men-kan
+    examples:
+      - text: Pemandu menceritakan sejarah tongkonan kepada kami.
+        ar_eg: المرشد حكالنا تاريخ التونجكونان.
+        ar: روى لنا المرشد تاريخ التونغكونان.
+        en: The guide told us the history of the tongkonan.
+      - text: Atapnya melengkung bagaikan perahu.
+        ar_eg: سقفه معووج كأنه مركب.
+        ar: ينحني سقفه كأنه قارب.
+        en: Its roof curves like a boat.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: membelikan
+        ar_eg: يشتري لـ
+        ar: يشتري لـ
+        en: buy for
+      - text: menceritakan
+        ar_eg: يحكي
+        ar: يروي
+        en: tell (about)
+      - text: warisan
+        ar_eg: ميراث / تراث
+        ar: إرث
+        en: heritage
+      - text: atap
+        ar_eg: سقف
+        ar: سقف
+        en: roof
+      - text: makam
+        ar_eg: قبر / ضريح
+        ar: قبر
+        en: grave, tomb
+      - text: selangit
+        ar_eg: في السما (غالي جدًا)
+        ar: باهظ جدًا
+        en: sky-high
+    words: [membelikan, menceritakan, warisan, atap, makam, selangit]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ جملة صحيحة؟
+      en: Which sentence is correct?
+    options: ["Kami membicarakan tentang sejarah Toraja.", "Saya membelikan buku adik saya.", "Mas Rizal menceritakan sejarah Londa."]
+    answer: 2
+    explain:
+      ar_eg: membicarakan من غير tentang، ومع membelikan الشخص الأول (membelikan adik saya buku).
+      ar: membicarakan بلا tentang، ومع membelikan يتقدّم المستفيد (membelikan adik saya buku).
+      en: membicarakan takes no tentang, and with membelikan the person comes first (membelikan adik saya buku).
+    words: [menceritakan, membicarakan, membelikan]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة فيها تشبيه (مش مبالغة)؟
+      ar: أيّ جملة فيها تشبيه لا مبالغة؟
+      en: Which sentence is a simile (not hyperbole)?
+    options: ["Atapnya melengkung seperti perahu.", "Harganya selangit.", "Sudah seribu kali saya bilang."]
+    answer: 0
+    words: [melengkung, perahu, selangit]
+  - id: e04
+    type: listen
+    text: Tolong sampaikan salam saya kepada Pak Yohanis.
+    options: ["Tolong ceritakan salam saya kepada Pak Yohanis.", "Tolong sampaikan salam saya kepada Pak Yohanis.", "Tolong sampaikan surat saya kepada Pak Yohanis."]
+    answer: 1
+    meaning:
+      ar_eg: من فضلك سلّملي على الأستاذ يوهانس.
+      ar: أرجو أن تبلّغ تحياتي للسيد يوهانس.
+      en: Please give my regards to Pak Yohanis.
+    words: [menyampaikan]
+  - id: e05
+    type: fill_blank
+    sentence: Pengrajin itu ___ saya ukiran kecil.
+    meaning:
+      ar_eg: الحِرَفي ده عملّي نحتة صغيرة.
+      ar: صنع لي ذلك الحرفي نقشًا صغيرًا.
+      en: That craftsman made me a small carving.
+    options: [membuatkan, membuat, dibuat]
+    answers: [membuatkan]
+    words: [membuatkan, ukiran, pengrajin]
+  - id: e06
+    type: fill_blank
+    sentence: Tongkonan adalah ___ leluhur orang Toraja.
+    meaning:
+      ar_eg: (اكتب الكلمة) التونجكونان ميراث من أجداد أهل توراجا.
+      ar: (اكتب الكلمة) التونغكونان إرث من أسلاف أهل توراجا.
+      en: (Type the word.) The tongkonan is a heritage from the Toraja ancestors.
+    answers: [warisan]
+    words: [warisan, leluhur]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: تماثيل التاو تاو واقفة على الجرف زي الحراس.
+      ar: تقف تماثيل تاو تاو على الجرف كالحرّاس.
+      en: The tau-tau statues stand on the cliff like guards.
+    answer: Patung tau-tau berdiri di tebing seperti penjaga.
+    distractors: [adalah, selangit]
+    words: [patung, tebing]
+  - id: e08
+    type: dictation
+    text: Kami membicarakan adat dan sejarah Toraja.
+    meaning:
+      ar_eg: اتناقشنا في عادات وتاريخ توراجا.
+      ar: ناقشنا عادات توراجا وتاريخها.
+      en: We discussed Toraja's customs and history.
+    words: [membicarakan, adat]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: مَس رزال اشترالي قماشة منسوجة.
+      ar: اشترى لي ماس رزال قماشًا منسوجًا.
+      en: Mas Rizal bought me a woven cloth.
+    answers:
+      - Mas Rizal membelikan saya kain tenun.
+      - Mas Rizal membelikan saya kain tenun
+      - Mas Rizal membelikanku kain tenun.
+      - Mas Rizal membelikan aku kain tenun.
+      - Mas Rizal membeli kain tenun untuk saya.
+      - Mas Rizal membeli kain tenun untukku.
+    words: [membelikan, kain tenun]
+  - id: e10
+    type: speaking
+    text: Tongkonan adalah warisan leluhur yang megah. Atapnya melengkung bagaikan perahu.
+    meaning:
+      ar_eg: التونجكونان تراث فخم من الأجداد. سقفه معووج كأنه مركب.
+      ar: التونغكونان إرث فخم من الأسلاف، وسقفه ينحني كأنه قارب.
+      en: The tongkonan is a magnificent ancestral heritage. Its roof curves like a boat.
+    words: [warisan, megah, bagaikan]
+dialogue:
+  title: Telepon dari Toraja
+  lines:
+    - speaker: Rina
+      text: Mohamed, bagaimana Toraja? Ceritakan, dong!
+      ar_eg: يا محمد، توراجا عاملة إيه؟ احكيلي بقى!
+      ar: يا محمد، كيف توراجا؟ احكِ لي!
+      en: Mohamed, how's Toraja? Tell me all about it!
+    - speaker: Mohamed
+      text: Luar biasa! Rumah tongkonan megah sekali, atapnya melengkung bagaikan perahu.
+      ar_eg: خرافية! بيوت التونجكونان فخمة جدًا، وسقفها معووج كأنه مركب.
+      ar: مدهشة! بيوت التونغكونان فخمة جدًا، وسقوفها تنحني كأنها قوارب.
+      en: Amazing! The tongkonan houses are magnificent, with roofs that curve like boats.
+    - speaker: Rina
+      text: Kamu sudah ke Londa?
+      ar_eg: رحت لوندا؟
+      ar: هل زرت لوندا؟
+      en: Have you been to Londa?
+    - speaker: Mohamed
+      text: Sudah. Makam leluhur ada di tebing batu, dan patung tau-tau seperti menjaga mereka.
+      ar_eg: أيوه. قبور الأجداد في جرف صخري، وتماثيل التاو تاو كأنها بتحرسهم.
+      ar: نعم. قبور الأسلاف في جرف صخري، وتماثيل تاو تاو كأنها تحرسهم.
+      en: Yes. The ancestors' graves are in a rock cliff, and the tau-tau statues seem to guard them.
+    - speaker: Rina
+      text: Wah! Jangan lupa membelikan saya kopi Toraja, ya!
+      ar_eg: يا سلام! ما تنساش تشتريلي قهوة توراجا!
+      ar: رائع! لا تنسَ أن تشتري لي قهوة توراجا!
+      en: Wow! Don't forget to buy me some Toraja coffee!
+souvenir:
+  id: bipa4.u03.souvenir
+  title: Rumah Tongkonan
+  note:
+    ar_eg: "التونجكونان بيت العيلة الكبيرة عند أهل توراجا، وسقفه المعووج زي المركب بيفكّرهم بأجدادهم اللي يقال إنهم جم من البحر. وأكبر حدث في حياة المجتمع مش الفرح، لكن الجنازة: «رامبو سولو» ممكن تستمر أيام، والقرية كلها بتيجي وتساعد. حاجة تفكرك إن الاحترام للأجداد عندنا وعندهم ليه أشكال كتير."
+    ar: "التونغكونان بيت العائلة الكبيرة عند أهل توراجا، وسقفه المقوّس كالقارب يذكّرهم بأسلافهم الذين يقال إنهم جاؤوا من البحر. وأعظم حدث في حياة المجتمع ليس العرس بل الجنازة: فمراسم «رامبو سولو» قد تمتد أيامًا، وتشارك فيها القرية كلها. وفي ذلك تذكير بأن لإكرام الأجداد صورًا كثيرة بين الشعوب."
+    en: The tongkonan is the Toraja extended family's ancestral house; its boat-shaped roof recalls ancestors said to have come from the sea. The community's biggest event isn't a wedding but a funeral — Rambu Solo' can last for days, and the whole village comes to help. A reminder that honouring one's ancestors takes many beautiful forms.
+review:
+  status: draft
+  verified: false

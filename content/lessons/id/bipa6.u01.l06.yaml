@@ -1,166 +1,212 @@
 schema: kabar.lesson/v1
 id: bipa6.u01.l06
 language: id
-title: Ulangan Unit 1
+title: Dialog dalam cerpen
 can_do:
-  ar_eg: تقرا قصة وتطلّع اللي ماتقالش فيها، وتتكلم عن شخصياتها وموضوعها.
-  ar: أن تقرأ قصّة وتستخرج ما لم يُقل فيها، وتتحدّث عن شخصياتها وموضوعها.
-  en: Read a story, infer what it leaves unsaid, and discuss its characters and theme.
+  ar_eg: تقرا الحوار في القصة وتفهم الشخصية بتتكلم إزاي من الفعل اللي قبل الكلام.
+  ar: أن تقرأ الحوار في القصة وتفهم نبرة الشخصية من الفعل الذي يسبق كلامها.
+  en: Read dialogue in a story and tell how a character speaks from the verb around it.
+slides:
+  - title: Bukan hanya "kata"
+    body:
+      ar_eg: |
+        في الـ cerpen، الكاتب مش بيقول «kata Pak Lubis» وبس. الفعل بيورّيك نبرة الصوت:
+        - berbisik = يوشوش، يتكلم بصوت واطي
+        - membentak = يزعق في حد بعصبية
+        - bergumam = يبرطم، يتكلم مع نفسه بصوت مش واضح
+        - menyahut = يرد على حد نده عليه أو كلمه
+        - tanda petik = علامات التنصيص "…" حوالين الكلام
+      ar: |
+        لا يكتفي كاتب الـ cerpen بقول «kata Pak Lubis»، فالفعل يكشف نبرة الصوت:
+        - berbisik = يهمس
+        - membentak = ينهر، يصرخ في أحد غاضبًا
+        - bergumam = يتمتم، يكلّم نفسه بصوت غير واضح
+        - menyahut = يردّ على من ناداه أو كلّمه
+        - tanda petik = علامات التنصيص "…" حول الكلام
+      en: |
+        A cerpen writer doesn't stop at «kata Pak Lubis». The verb tells you the tone:
+        - berbisik = to whisper
+        - membentak = to snap at someone angrily
+        - bergumam = to mutter to yourself
+        - menyahut = to answer someone who called or spoke to you
+        - tanda petik = quotation marks "…" around speech
+    examples:
+      - text: '"Jangan bangunkan Nenek," bisik Bang Togar.'
+        ar_eg: «ماتصحّيش جدتك»، وشوش توجار.
+        ar: «لا توقظ الجدّة»، همس توغار.
+        en: '"Don''t wake Grandma," Bang Togar whispered.'
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: tersirat
-        ar_eg: ضمني / بين السطور
-        ar: ضمني
-        en: implied
-      - text: alur
-        ar_eg: حبكة
-        ar: حبكة
-        en: plot
-      - text: tokoh
-        ar_eg: شخصية
-        ar: شخصيّة
-        en: character
-      - text: amanat
-        ar_eg: عبرة / رسالة
-        ar: عبرة
-        en: moral, message
-      - text: ulasan
-        ar_eg: مراجعة / نقد
-        ar: مراجعة
-        en: review
-    words: [tersirat, alur, tokoh, amanat, ulasan]
+      - text: berbisik
+        ar_eg: يوشوش
+        ar: يهمس
+        en: to whisper
+      - text: membentak
+        ar_eg: يزعق بعصبية
+        ar: ينهر
+        en: to snap at
+      - text: bergumam
+        ar_eg: يبرطم
+        ar: يتمتم
+        en: to mutter
+      - text: menyahut
+        ar_eg: يرد
+        ar: يردّ
+        en: to answer back
+      - text: tanda petik
+        ar_eg: علامات تنصيص
+        ar: علامات تنصيص
+        en: quotation marks
+    words: [berbisik, membentak, bergumam, menyahut, tanda petik]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: مضيفك قال «Nanti saya kabari, ya.» على عرضك. ده معناه غالبًا إيه؟
-      ar: قال مضيفك «Nanti saya kabari, ya.» ردًّا على عرضك. ماذا يعني غالبًا؟
-      en: Your host says "Nanti saya kabari, ya." to your offer. What does it usually mean?
-    options:
-      - موافق حالًا.
-      - لأ، بأدب.
-      - هيتصل بكرة أكيد.
+      ar_eg: الشخصية زعلانة جدًا وبتزعق في ابنها. أنهي فعل؟
+      ar: الشخصية غاضبة جدًا وتصرخ في ابنها. أيّ فعل يناسب؟
+      en: The character is furious and shouts at her son. Which verb fits?
+    options: [berbisik, membentak, bergumam]
     answer: 1
-    words: [tersirat]
+    words: [membentak]
   - id: e03
-    type: fill_blank
-    sentence: ___ cerpen ini adalah sebuah rumah tua di Medan.
-    meaning:
-      ar_eg: مكان القصة دي بيت قديم في ميدان.
-      ar: مكان هذه القصّة بيت قديم في ميدان.
-      en: This story's setting is an old house in Medan.
-    options: [Latar, Watak, Tema]
-    answers: [Latar]
-    words: [latar]
-  - id: e04
     type: listen
-    text: Anak itu merantau karena ada konflik dengan ayahnya.
+    text: Pak Lubis bergumam sendiri di teras, tetapi tidak ada yang mendengar.
     question:
-      ar_eg: الابن سافر ليه؟
-      ar: لماذا اغترب الابن؟
-      en: Why did the son leave home?
+      ar_eg: الأستاذ لوبيس كان بيعمل إيه؟
+      ar: ماذا كان الأستاذ لوبيس يفعل؟
+      en: What was Pak Lubis doing?
     options:
-      - علشان كان فيه خلاف بينه وبين أبوه.
-      - علشان كسب جايزة.
-      - علشان بيدرس طب.
-    answer: 0
-    words: [merantau, konflik]
+      - بيغني بصوت عالي.
+      - بيزعق في جاره.
+      - بيبرطم مع نفسه.
+    answer: 2
+    words: [bergumam]
+  - id: e04
+    type: fill_blank
+    sentence: Di perpustakaan, kami harus ___ supaya tidak mengganggu orang lain.
+    meaning:
+      ar_eg: في المكتبة لازم نوشوش عشان مانضايقش حد.
+      ar: في المكتبة علينا أن نهمس كي لا نزعج أحدًا.
+      en: In the library we have to whisper so we don't bother anyone.
+    options: [berbisik, membentak, menyahut]
+    answers: [berbisik]
+    words: [berbisik]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: '«"Ya, Bu!" sahut anak itu dari dapur.» الولد بيعمل إيه؟'
+      ar: '«"Ya, Bu!" sahut anak itu dari dapur.» ماذا يفعل الولد؟'
+      en: '«"Ya, Bu!" sahut anak itu dari dapur.» What is the boy doing?'
+    options:
+      - بيرد على أمه.
+      - بيوشوش لأخوه.
+      - بيكتب جواب.
+    answer: 0
+    explain:
+      ar_eg: sahut هي menyahut من غير me-، زي ما بنقول bisik بدل berbisik بعد الكلام المنقول.
+      ar: sahut هي menyahut بلا me-، كما تأتي bisik بدل berbisik بعد الكلام المنقول.
+      en: sahut is menyahut without me-, just as bisik replaces berbisik after quoted speech.
+    words: [menyahut]
+  - id: e06
     type: build_sentence
     source:
-      ar_eg: الأب مرسوم كراجل ساكت بس قلبه طيب.
-      ar: يُصوَّر الأب رجلًا صامتًا لكنّه طيّب القلب.
-      en: The father is portrayed as quiet but kind-hearted.
-    answer: Ayah digambarkan sebagai orang yang pendiam tetapi baik hati.
-    distractors: [simbol, latar]
-    words: [digambarkan]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الكرسي الفاضي رمز للشوق.
-      ar: الكرسيّ الفارغ رمز للشوق.
-      en: The empty chair is a symbol of longing.
-    answers:
-      - Kursi kosong itu simbol rindu.
-      - Kursi kosong itu adalah simbol kerinduan.
-      - Kursi yang kosong itu simbol kerinduan.
-      - Kursi kosong adalah simbol rindu.
-    words: [simbol, rindu]
+      ar_eg: الكاتب حط كلام الشخصية بين علامات تنصيص.
+      ar: وضع الكاتب كلام الشخصية بين علامتي تنصيص.
+      en: The writer put the character's words in quotation marks.
+    answer: Pengarang menulis kata-kata tokoh di antara tanda petik.
+    distractors: [bergumam, berbisik]
+    words: [tanda petik]
   - id: e07
     type: translate
     direction: from_target
-    source_text: Cerpen ini punya akhir terbuka, jadi setiap pembaca menafsirkannya sendiri.
+    source_text: '"Pergi!" bentak lelaki tua itu, lalu dia menutup pintu.'
     answers_meaning:
       ar_eg:
-        - القصة دي نهايتها مفتوحة، فكل قارئ بيفسّرها على مزاجه.
-        - نهاية القصة مفتوحة، وكل واحد بيقراها يفهمها بطريقته.
+        - «امشي!» زعق الراجل العجوز، وبعدين قفل الباب.
+        - الراجل الكبير زعق «امشي!» وقفل الباب.
       ar:
-        - لهذه القصّة نهاية مفتوحة، فيفسّرها كلّ قارئ بنفسه.
-        - نهاية القصّة مفتوحة، ولكلّ قارئ تفسيره.
+        - «اذهب!» صرخ الرجل العجوز، ثم أغلق الباب.
+        - نهره الشيخ قائلًا «اذهب!» ثم أغلق الباب.
       en:
-        - This story has an open ending, so every reader interprets it for themselves.
-        - The ending is open, so each reader makes their own reading.
-    words: [akhir terbuka, menafsirkan]
+        - '"Go away!" the old man snapped, then he shut the door.'
+        - The old man barked "Go away!" and closed the door.
+    words: [membentak]
   - id: e08
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Gaya bahasanya menyentuh» معناها إيه؟
-      ar: ما معنى «Gaya bahasanya menyentuh»؟
-      en: What does "Gaya bahasanya menyentuh" mean?
-    options:
-      - أسلوبها ممل.
-      - أسلوبها صعب.
-      - أسلوبها مؤثّر.
-    answer: 2
-    words: [gaya bahasa, menyentuh]
+    type: speaking
+    text: Dia tidak menyahut ketika ibunya memanggil. Dia hanya berbisik kepada adiknya.
+    meaning:
+      ar_eg: هو مارّدش لما أمه ندهت عليه. هو بس وشوش أخوه الصغير.
+      ar: لم يردّ حين نادته أمّه، بل همس لأخيه الصغير فقط.
+      en: He didn't answer when his mother called. He only whispered to his little brother.
+    words: [menyahut, berbisik]
   - id: e09
     type: dictation
-    text: Tema cerpen itu rindu, tetapi penulis tidak pernah menulis kata itu.
+    text: Nenek bergumam pelan sambil menjahit baju.
     meaning:
-      ar_eg: موضوع القصة دي الشوق، بس الكاتب عمره ما كتب الكلمة دي.
-      ar: موضوع تلك القصّة الشوق، لكنّ الكاتب لم يكتب الكلمة قط.
-      en: That story's theme is longing, but the writer never writes the word.
-    words: [tema, rindu]
+      ar_eg: الجدة كانت بتبرطم بالراحة وهي بتخيط الهدوم.
+      ar: كانت الجدّة تتمتم بهدوء وهي تخيط الثوب.
+      en: Grandma muttered softly as she sewed.
+    words: [bergumam]
   - id: e10
-    type: speaking
-    text: Dia tidak menyindir secara tersurat, tetapi isyaratnya jelas.
+    type: fill_blank
+    sentence: Dalam cerpen, ucapan tokoh biasanya ditulis dengan ___.
     meaning:
-      ar_eg: هو مالقّحش صريح، بس الإشارة واضحة.
-      ar: لم يعرّض صراحة، لكنّ إشارته واضحة.
-      en: He didn't make the dig openly, but the hint was clear.
-    words: [menyindir, tersurat, isyarat]
+      ar_eg: في القصة، كلام الشخصيات عادةً بيتكتب بين علامات تنصيص.
+      ar: يُكتب كلام الشخصيات في القصة عادةً بين علامات التنصيص.
+      en: In a story, characters' speech is usually written in quotation marks.
+    options: [tanda petik, kilas balik, monolog batin]
+    answers: [tanda petik]
+    words: [tanda petik]
 dialogue:
-  title: Di rumah Tjong A Fie
+  title: Suara-suara di teras
   lines:
-    - speaker: Kak Mei
-      text: Rumah ini dibangun oleh Tjong A Fie, saudagar Hakka yang kaya.
-      ar_eg: البيت ده بناه تجونج أ في، تاجر هاكّا غني.
-      ar: بنى هذا البيتَ تجونغ آ في، التاجر الهاكّاوي الثري.
-      en: This house was built by Tjong A Fie, a wealthy Hakka merchant.
+    - speaker: Bang Togar
+      text: Dengar kalimat ini, Mohamed. "Dia pasti pulang," bisik Pak Lubis.
+      ar_eg: اسمع الجملة دي يا محمد. «أكيد هيرجع»، وشوش الأستاذ لوبيس.
+      ar: 'اسمع هذه الجملة يا محمد: «سيعود حتمًا»، همس الأستاذ لوبيس.'
+      en: Listen to this line, Mohamed. "He'll come home," Pak Lubis whispered.
     - speaker: Mohamed
-      text: Gayanya campuran, ya. Ada Tionghoa, Melayu, dan Eropa.
-      ar_eg: طرازه خليط، صح؟ فيه صيني وملايو وأوروبي.
-      ar: طرازه مزيج، صيني وملايوي وأوروبي.
-      en: The style is a mix, isn't it. Chinese, Malay and European.
-    - speaker: Kak Mei
-      text: Betul. Dia juga membantu membangun masjid dan kelenteng. Seperti cerpen, rumah ini punya makna tersirat.
-      ar_eg: مظبوط. وكمان ساعد في بناء جوامع ومعابد. زي القصة، البيت ده ليه معنى بين السطور.
-      ar: صحيح. وأسهم أيضًا في بناء مساجد ومعابد. وللبيت، كالقصّة، معنى ضمني.
-      en: Right. He also helped build mosques and temples. Like a short story, this house has an implied meaning.
+      text: Kalau dia berbisik, berarti dia tidak yakin. Dia hanya berharap.
+      ar_eg: لو بيوشوش، يبقى هو مش متأكد. هو بس بيتمنى.
+      ar: إن كان يهمس فهو غير واثق، بل يتمنّى فحسب.
+      en: If he whispers, he isn't sure. He's only hoping.
+    - speaker: Bang Togar
+      text: Betul. Kalau pengarang menulis "bentak", maknanya lain sekali.
+      ar_eg: مظبوط. لو الكاتب كتب «زعق»، المعنى يبقى مختلف خالص.
+      ar: صحيح، ولو كتب الكاتب «صرخ» لاختلف المعنى تمامًا.
+      en: Right. If the author wrote "snapped", it would mean something else entirely.
     - speaker: Mohamed
-      text: Amanatnya, Medan adalah rumah bagi semua orang.
-      ar_eg: والعبرة إن ميدان بيت لكل الناس.
-      ar: وعبرته أنّ ميدان بيت للجميع.
-      en: Its message is that Medan is home to everyone.
-souvenir:
-  id: bipa6.u01.souvenir
-  title: Rumah Tjong A Fie
-  note:
-    ar_eg: في ميدان، بيت تجونج أ في اتبنى في آخر القرن التسعتاشر لتاجر صيني من الهاكّا. الطراز فيه صيني وملايو وأوروبي مع بعض، وصاحبه ساعد في بناء جوامع ومعابد وكنايس. ميدان نفسها خليط من باتاك وملايو وصينيين وهنود وجاويين، وكتّاب القصة القصيرة فيها بيحكوا الخليط ده.
-    ar: في ميدان، بُني بيت تجونغ آ في أواخر القرن التاسع عشر لتاجر صيني من الهاكّا، يمزج طرازه الصيني بالملايوي والأوروبي، وقد أسهم صاحبه في بناء مساجد ومعابد وكنائس. وميدان نفسها مزيج من الباتاك والملايو والصينيين والهنود والجاويين، ويروي كتّاب القصّة القصيرة فيها هذا المزيج.
-    en: In Medan, the Tjong A Fie Mansion was built in the late 19th century for a Hakka Chinese merchant. Its style blends Chinese, Malay and European, and its owner helped fund mosques, temples and churches. Medan itself is a mix of Batak, Malay, Chinese, Indian and Javanese people, and its short-story writers capture that mix.
+      text: Jadi kata kerja di luar tanda petik juga bercerita.
+      ar_eg: يعني الفعل اللي برّه علامات التنصيص هو كمان بيحكي.
+      ar: إذن فالفعل خارج علامات التنصيص يروي هو أيضًا.
+      en: So the verb outside the quotation marks tells a story too.
+new_words:
+  - word: berbisik
+    pos: verb
+    ar_eg: يوشوش
+    ar: يهمس
+    en: to whisper
+  - word: membentak
+    pos: verb
+    ar_eg: يزعق بعصبية
+    ar: ينهر، يصرخ في أحد
+    en: to snap at, to bark at
+  - word: bergumam
+    pos: verb
+    ar_eg: يبرطم
+    ar: يتمتم
+    en: to mutter
+  - word: menyahut
+    pos: verb
+    ar_eg: يرد
+    ar: يردّ، يجيب
+    en: to answer back, to reply
+  - word: tanda petik
+    pos: noun
+    ar_eg: علامات تنصيص
+    ar: علامات التنصيص
+    en: quotation marks
 review:
   status: draft
   verified: false

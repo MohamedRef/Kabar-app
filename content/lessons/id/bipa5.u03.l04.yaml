@@ -1,191 +1,219 @@
 schema: kabar.lesson/v1
 id: bipa5.u03.l04
 language: id
-title: Presentasi teknologi
+title: Belanja daring
 can_do:
-  ar_eg: تقدّم شرح قصير عن تكنولوجيا وأثرها قدام ناس.
-  ar: أن تقدّم عرضًا قصيرًا عن تقنية وأثرها.
-  en: Give a short presentation explaining a technology and its effects.
+  ar_eg: تشتري وتطلب أونلاين بالإندونيسي وتاخد بالك من النصب.
+  ar: أن تشتري وتطلب عبر الإنترنت بالإندونيسية وتحذر من الاحتيال.
+  en: Shop and order online in Indonesian, and spot a scam.
 slides:
-  - title: Membuka dan menutup presentasi
-    grammar: id.nominalization
+  - title: Dari siaran langsung sampai ojek daring
     body:
       ar_eg: |
-        العرض الرسمي بيبدأ وبيخلص بجمل ثابتة، وبيستخدم أسماء (nominalisasi) كتير:
-        - Pada kesempatan ini, saya akan membahas … = في الفرصة دي، هتكلم عن …
-        - Pertama-tama, … = في الأول خالص …
-        - Sebagai penutup, … = وفي الختام …
-        - Terima kasih atas perhatian Anda. = شكرًا على اهتمامكم.
-        مثلًا: saya akan membahas penggunaan dompet digital (مش bagaimana orang menggunakan …).
+        إندونيسيا من أكبر أسواق البيع بالموبايل في العالم:
+        - siaran langsung (live) = بث مباشر: البياعين بيعرضوا الحاجة لايف بالليل والناس بتطلب في الكومنتات
+        - ongkos kirim (ongkir) = مصاريف الشحن
+        - bayar di tempat (COD) = تدفع للمندوب لما الحاجة توصل
+        - ojek daring = موتوسيكل أجرة بتطلبه من أبلكيشن، وبيوصل أكل وطرود كمان
+        - penipuan = نصب واحتيال: عمر ما بياع حقيقي هيطلب منك kata sandi أو كود OTP.
       ar: |
-        يبدأ العرض الرسمي وينتهي بعبارات ثابتة، ويكثر فيه الاسم (nominalisasi):
-        - Pada kesempatan ini, saya akan membahas … = في هذه المناسبة سأتناول …
-        - Pertama-tama, … = بادئ ذي بدء …
-        - Sebagai penutup, … = وختامًا …
-        - Terima kasih atas perhatian Anda. = شكرًا على حسن إصغائكم.
-        مثلًا: saya akan membahas penggunaan dompet digital.
+        إندونيسيا من أكبر أسواق البيع عبر الهاتف في العالم:
+        - siaran langsung (live) = بثّ مباشر يعرض فيه الباعة سلعهم ليلًا ويطلب الناس في التعليقات
+        - ongkos kirim (ongkir) = رسوم الشحن
+        - bayar di tempat (COD) = الدفع للمندوب عند الاستلام
+        - ojek daring = درّاجة نارية أجرة تُطلب من تطبيق، وتوصّل الطعام والطرود أيضًا
+        - penipuan = احتيال: لن يطلب منك بائع حقيقي kata sandi أو رمز OTP.
       en: |
-        A formal talk opens and closes with set phrases, and uses plenty of nouns (nominalisasi):
-        - Pada kesempatan ini, saya akan membahas … = Today I will discuss …
-        - Pertama-tama, … = First of all, …
-        - Sebagai penutup, … = To close, …
-        - Terima kasih atas perhatian Anda. = Thank you for your attention.
-        For example: saya akan membahas penggunaan dompet digital.
+        Indonesia is one of the world's biggest mobile-shopping markets:
+        - siaran langsung (live) = live stream: sellers show goods live at night and people order in the comments
+        - ongkos kirim (ongkir) = shipping cost
+        - bayar di tempat (COD) = cash on delivery
+        - ojek daring = app-booked motorbike taxi, which also delivers food and parcels
+        - penipuan = fraud: a real seller never asks for your kata sandi or OTP code.
     examples:
-      - text: Pada kesempatan ini, saya akan membahas perkembangan ojek daring.
-        ar_eg: في الفرصة دي، هتكلم عن تطوّر الأوجيك الأونلاين.
-        ar: في هذه المناسبة سأتناول تطوّر الدراجات الأجرة عبر التطبيقات.
-        en: Today I will discuss the development of app-based motorbike taxis.
+      - text: Ongkirnya gratis kalau bayar di tempat?
+        ar_eg: الشحن ببلاش لو دفعت عند الاستلام؟
+        ar: هل الشحن مجاني عند الدفع عند الاستلام؟
+        en: Is shipping free with cash on delivery?
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: membahas
-        ar_eg: يناقش / يتكلم عن
-        ar: يتناول، يناقش
-        en: to discuss
-      - text: perkembangan
-        ar_eg: تطوّر
-        ar: تطوّر
-        en: development
-      - text: sebagai penutup
-        ar_eg: وفي الختام
-        ar: وختامًا
-        en: to close
-      - text: perhatian
-        ar_eg: اهتمام / انتباه
-        ar: انتباه، اهتمام
-        en: attention
-    words: [membahas, perkembangan, sebagai penutup, perhatian]
+      - text: siaran langsung
+        ar_eg: بث مباشر
+        ar: بثّ مباشر
+        en: live stream
+      - text: ongkos kirim
+        ar_eg: مصاريف الشحن
+        ar: رسوم الشحن
+        en: shipping cost
+      - text: bayar di tempat
+        ar_eg: الدفع عند الاستلام
+        ar: الدفع عند الاستلام
+        en: cash on delivery
+      - text: ojek daring
+        ar_eg: موتوسيكل أجرة من أبلكيشن
+        ar: درّاجة أجرة عبر تطبيق
+        en: app motorbike taxi
+      - text: penipuan
+        ar_eg: نصب
+        ar: احتيال
+        en: fraud, scam
+    words: [siaran langsung, ongkos kirim, bayar di tempat, ojek daring, penipuan]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة تفتح بيها العرض؟
-      ar: بأيّ جملة تفتتح العرض؟
-      en: Which sentence opens the presentation?
+    type: listen
+    text: Penjual itu berjualan lewat siaran langsung setiap malam.
+    question:
+      ar_eg: البياعة دي بتبيع إزاي؟
+      ar: كيف تبيع هذه البائعة؟
+      en: How does that seller sell?
     options:
-      - Terima kasih atas perhatian Anda.
-      - Sebagai penutup, teknologi itu penting.
-      - Pada kesempatan ini, saya akan membahas ekonomi digital.
-    answer: 2
-    words: [membahas]
+      - في محل في السوق.
+      - في بث مباشر على النت.
+      - من بيت لبيت.
+    answer: 1
+    words: [siaran langsung]
   - id: e03
     type: fill_blank
-    sentence: ___, saya ingin mengatakan bahwa teknologi harus aman.
+    sentence: Barangnya murah, tetapi ___ ke Samarinda mahal sekali.
     meaning:
-      ar_eg: وفي الختام، حابب أقول إن التكنولوجيا لازم تكون آمنة.
-      ar: وختامًا، أودّ القول إنّ التقنية يجب أن تكون آمنة.
-      en: To close, I'd like to say that technology must be safe.
-    options: [Sebagai penutup, Pertama-tama, Pada kesempatan ini]
-    answers: [Sebagai penutup]
-    words: [sebagai penutup]
+      ar_eg: الحاجة رخيصة، بس الشحن لساماريندا غالي جدًا.
+      ar: السلعة رخيصة، لكنّ الشحن إلى ساماريندا غالٍ جدًا.
+      en: The item is cheap, but shipping to Samarinda is very expensive.
+    options: [ongkos kirim, siaran langsung, penipuan]
+    answers: [ongkos kirim]
+    words: [ongkos kirim]
   - id: e04
-    type: listen
-    text: Terima kasih atas perhatian Bapak dan Ibu sekalian.
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «bayar di tempat» يعني إيه؟
+      ar: ما معنى «bayar di tempat»؟
+      en: What does "bayar di tempat" mean?
     options:
-      - Terima kasih atas perhatian Bapak dan Ibu sekalian.
-      - Terima kasih atas perkembangan Bapak dan Ibu sekalian.
-      - Terima kasih, Bapak dan Ibu, sampai jumpa.
-    answer: 0
-    words: [perhatian]
+      - تدفع قبل ما الحاجة تتشحن.
+      - تدفع في البنك.
+      - تدفع للمندوب لما الحاجة توصلك.
+    answer: 2
+    explain:
+      ar_eg: bayar = يدفع، di tempat = في المكان، يعني عند الاستلام.
+      ar: bayar = يدفع، وdi tempat = في المكان، أي عند الاستلام.
+      en: bayar = pay, di tempat = on the spot, i.e. on delivery.
+    words: [bayar di tempat]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: هتكلم عن تطوّر الدفع الرقمي.
-      ar: سأتناول تطوّر الدفع الرقمي.
-      en: I will discuss the development of digital payment.
-    answer: Saya akan membahas perkembangan pembayaran digital.
-    distractors: [penutup, dari]
-    words: [membahas, perkembangan]
+      ar_eg: طلبت أكل بأوجيك من الأبلكيشن عشان كانت بتمطر.
+      ar: طلبت طعامًا عبر درّاجة أجرة من التطبيق لأنّ المطر كان يهطل.
+      en: I ordered food through an app ojek because it was raining.
+    answer: Saya memesan makanan lewat ojek daring karena hujan.
+    distractors: [ongkos, siaran]
+    words: [ojek daring]
   - id: e06
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: تطوّر التكنولوجيا في إندونيسيا سريع قوي.
-      ar: تطوّر التقنية في إندونيسيا سريع جدًّا.
-      en: The development of technology in Indonesia is very fast.
-    answers:
-      - Perkembangan teknologi di Indonesia sangat cepat.
-      - Perkembangan teknologi di Indonesia sangat pesat.
-      - Perkembangan teknologi di Indonesia cepat sekali.
-      - Perkembangan teknologi di Indonesia pesat sekali.
-    words: [perkembangan]
+    direction: from_target
+    source_text: Hati-hati, banyak penipuan di siaran langsung.
+    answers_meaning:
+      ar_eg:
+        - خلي بالك، فيه نصب كتير في البث المباشر.
+        - احترس، النصب كتير في اللايفات.
+      ar:
+        - احذر، فالاحتيال كثير في البثّ المباشر.
+        - انتبه، هناك عمليات احتيال كثيرة في البثّ المباشر.
+      en:
+        - Careful, there's a lot of fraud on live streams.
+        - Watch out, live streams have many scams.
+    words: [penipuan, siaran langsung]
   - id: e07
-    type: dictation
-    text: Sebagai penutup, terima kasih atas perhatian Anda.
-    meaning:
-      ar_eg: وفي الختام، شكرًا على اهتمامكم.
-      ar: وختامًا، شكرًا على حسن إصغائكم.
-      en: To close, thank you for your attention.
-    words: [sebagai penutup, perhatian]
-  - id: e08
-    type: speaking
-    text: Pada kesempatan ini, saya akan membahas keamanan data.
-    meaning:
-      ar_eg: في الفرصة دي، هتكلم عن أمان البيانات.
-      ar: في هذه المناسبة سأتناول أمن البيانات.
-      en: Today I will discuss data security.
-    words: [membahas]
-  - id: e09
     type: multiple_choice
     question_meaning:
-      ar_eg: في العرض الرسمي، أنهي أحسن؟
-      ar: أيّها أفضل في عرض رسمي؟
-      en: Which is better in a formal talk?
+      ar_eg: أنهي علامة نصب؟
+      ar: أيّها علامة احتيال؟
+      en: Which one is a sign of fraud?
     options:
-      - Saya mau ngomongin aplikasi.
-      - Saya akan membahas penggunaan aplikasi.
-      - Gue mau cerita soal aplikasi.
-    answer: 1
-    words: [membahas]
+      - Penjual meminta kata sandi Anda.
+      - Penjual memberi nomor resi.
+      - Ongkos kirimnya gratis.
+    answer: 0
+    explain:
+      ar_eg: nomor resi = رقم الشحنة، ده طبيعي. لكن kata sandi عمرك ما تديها لحد.
+      ar: nomor resi = رقم تتبّع الشحنة، وهو أمر عادي، أمّا kata sandi فلا تعطها لأحد.
+      en: nomor resi is a tracking number, which is normal; never give anyone your kata sandi.
+    words: [penipuan, kata sandi]
+  - id: e08
+    type: speaking
+    text: Saya lebih suka bayar di tempat supaya aman.
+    meaning:
+      ar_eg: أنا بفضل أدفع عند الاستلام عشان أبقى في الأمان.
+      ar: أفضّل الدفع عند الاستلام لأكون في أمان.
+      en: I prefer cash on delivery to be safe.
+    words: [bayar di tempat]
+  - id: e09
+    type: dictation
+    text: Ongkos kirim gratis untuk pembelian di atas seratus ribu.
+    meaning:
+      ar_eg: الشحن ببلاش لو اشتريت بأكتر من مية ألف.
+      ar: الشحن مجاني للمشتريات التي تزيد على مئة ألف.
+      en: Free shipping on orders over a hundred thousand.
+    words: [ongkos kirim]
+  - id: e10
+    type: fill_blank
+    sentence: Pengemudi ___ itu mengantar paket saya dalam satu jam.
+    meaning:
+      ar_eg: سواق الأوجيك وصّل الطرد بتاعي في ساعة.
+      ar: أوصل سائق الدرّاجة الأجرة طردي خلال ساعة.
+      en: The ojek driver delivered my parcel within an hour.
+    options: [ojek daring, penipuan, ongkos kirim]
+    answers: [ojek daring]
+    words: [ojek daring]
 dialogue:
-  title: Latihan presentasi
+  title: Belanja tengah malam
   lines:
+    - speaker: Rina
+      text: Mohamed, lihat! Siaran langsung ini menjual batik Samarinda murah sekali.
+      ar_eg: يا محمد، بص! اللايف ده بيبيع باتيك ساماريندا رخيص أوي.
+      ar: يا محمد، انظر! هذا البثّ المباشر يبيع باتيك ساماريندا بسعر زهيد جدًا.
+      en: Mohamed, look! This live stream is selling Samarinda batik really cheap.
     - speaker: Mohamed
-      text: Selamat pagi. Pada kesempatan ini, saya akan membahas perkembangan dompet digital.
-      ar_eg: صباح الخير. في الفرصة دي، هتكلم عن تطوّر المحافظ الإلكترونية.
-      ar: صباح الخير. في هذه المناسبة سأتناول تطوّر المحافظ الرقمية.
-      en: Good morning. Today I will discuss the development of e-wallets.
-    - speaker: Bu Lestari
-      text: Bagus. Pembukaannya jelas. Lanjutkan.
-      ar_eg: حلو. الافتتاحية واضحة. كمّل.
-      ar: جيّد، الافتتاحية واضحة. تابع.
-      en: Good. A clear opening. Go on.
+      text: Ongkos kirimnya berapa? Dan bisa bayar di tempat?
+      ar_eg: الشحن بكام؟ وينفع ندفع عند الاستلام؟
+      ar: كم رسوم الشحن؟ وهل يمكن الدفع عند الاستلام؟
+      en: How much is shipping? And can we pay on delivery?
+    - speaker: Rina
+      text: Bisa. Tapi penjualnya minta kode OTP saya dulu.
+      ar_eg: ينفع. بس البياع عايز كود الـ OTP بتاعي الأول.
+      ar: يمكن. لكنّ البائع يطلب رمز OTP الخاص بي أولًا.
+      en: Yes. But the seller wants my OTP code first.
     - speaker: Mohamed
-      text: Pertama-tama, penggunaan dompet digital naik pesat sejak 2020.
-      ar_eg: في الأول خالص، استخدام المحافظ الإلكترونية زاد بسرعة من 2020.
-      ar: بادئ ذي بدء، ارتفع استخدام المحافظ الرقمية بسرعة منذ 2020.
-      en: First of all, e-wallet use has risen rapidly since 2020.
-    - speaker: Mohamed
-      text: Sebagai penutup, teknologi ini mudah, tetapi keamanannya harus dijaga. Terima kasih atas perhatian Anda.
-      ar_eg: وفي الختام، التكنولوجيا دي سهلة، بس لازم نحافظ على أمانها. شكرًا على اهتمامكم.
-      ar: وختامًا، هذه التقنية سهلة لكن يجب صون أمنها. شكرًا على حسن إصغائكم.
-      en: To close, this technology is easy, but its security must be protected. Thank you for your attention.
-    - speaker: Bu Lestari
-      text: Rapi sekali, Mohamed. Penutupnya juga sopan.
-      ar_eg: منظم جدًا يا محمد. والختام كمان مؤدب.
-      ar: منظّم جدًّا يا محمد، والخاتمة مهذّبة أيضًا.
-      en: Very neat, Mohamed. A polite close too.
+      text: Jangan! Itu pasti penipuan. Penjual asli tidak pernah minta kode itu.
+      ar_eg: لأ أوعي! ده نصب أكيد. البياع الحقيقي عمره ما يطلب الكود ده.
+      ar: لا تفعلي! هذا احتيال حتمًا، فالبائع الحقيقي لا يطلب هذا الرمز أبدًا.
+      en: Don't! That's definitely a scam. A real seller never asks for that code.
 new_words:
-  - word: membahas
-    pos: verb
-    ar_eg: يناقش / يتكلم عن
-    ar: يتناول، يناقش
-    en: to discuss
-  - word: perkembangan
+  - word: siaran langsung
     pos: noun
-    ar_eg: تطوّر
-    ar: تطوّر
-    en: development
-  - word: sebagai penutup
-    ar_eg: وفي الختام
-    ar: وختامًا
-    en: to close, in conclusion
-  - word: perhatian
+    ar_eg: بث مباشر (لايف)
+    ar: بثّ مباشر
+    en: live broadcast, live stream
+  - word: ongkos kirim
     pos: noun
-    ar_eg: اهتمام / انتباه
-    ar: انتباه، اهتمام
-    en: attention
+    ar_eg: مصاريف الشحن
+    ar: رسوم الشحن
+    en: shipping cost
+  - word: bayar di tempat
+    pos: phrase
+    ar_eg: الدفع عند الاستلام
+    ar: الدفع عند الاستلام
+    en: cash on delivery
+  - word: ojek daring
+    pos: noun
+    ar_eg: موتوسيكل أجرة من أبلكيشن
+    ar: درّاجة نارية أجرة عبر تطبيق
+    en: app-based motorbike taxi
+  - word: penipuan
+    pos: noun
+    ar_eg: نصب واحتيال
+    ar: احتيال
+    en: fraud, scam
 review:
   status: draft
   verified: false

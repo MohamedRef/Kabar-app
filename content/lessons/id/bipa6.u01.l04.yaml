@@ -1,188 +1,212 @@
 schema: kabar.lesson/v1
 id: bipa6.u01.l04
 language: id
-title: Diskusi sastra
+title: Pencerita
 can_do:
-  ar_eg: تتناقش في موضوع قصة وتقول تفسيرك وتسمع تفسير غيرك.
-  ar: أن تناقش موضوع قصّة فتعرض تفسيرك وتصغي إلى تفسير غيرك.
-  en: Discuss a story's theme, giving your reading and hearing other readings.
+  ar_eg: تعرف مين اللي بيحكي القصة، ومن أنهي زاوية، وإمتى بيرجع للماضي.
+  ar: أن تعرف من يروي القصة ومن أيّ زاوية، ومتى يعود إلى الماضي.
+  en: Tell who narrates a story, from which point of view, and when it flashes back.
 slides:
-  - title: Tafsiran saya
-    grammar: id.implicature
+  - title: Siapa yang bercerita?
     body:
       ar_eg: |
-        القصة الحلوة ليها أكتر من تفسير. اتكلم كده:
-        - Saya menafsirkan … sebagai … = أنا بفسّر … على إنه …
-        - … adalah simbol … = … رمز لـ …
-        - Amanat cerpen ini adalah … = رسالة / عبرة القصة …
-        - Cerpen ini punya akhir terbuka. = النهاية مفتوحة، والقارئ يكمّل.
-        ولما حد يختلف معاك: Tafsiran Anda menarik, tetapi …
+        في أي cerpen اسأل: مين الـ pencerita (الراوي)؟
+        - orang pertama = الراوي بيقول «aku»: Aku membuka pintu pelan-pelan.
+        - orang ketiga = الراوي بيقول «dia» أو اسم الشخصية: Pak Lubis membuka pintu.
+        - kilas balik = فلاش باك، رجوع لأحداث فاتت
+        - monolog batin = الكلام اللي جوه دماغ الشخصية، اللي محدش سامعه
+        الراوي بضمير المتكلم مايعرفش اللي في قلوب الباقيين، وده بيخلي القارئ يخمّن.
       ar: |
-        للقصّة الجيّدة أكثر من تفسير. قل:
-        - Saya menafsirkan … sebagai … = أفسّر … على أنّه …
-        - … adalah simbol … = … رمز لـ …
-        - Amanat cerpen ini adalah … = عبرة القصّة …
-        - Cerpen ini punya akhir terbuka. = نهايتها مفتوحة، يكملها القارئ.
-        وإذا خالفك أحد: Tafsiran Anda menarik, tetapi …
+        اسأل في كلّ cerpen: من الـ pencerita (الراوي)؟
+        - orang pertama = الراوي يقول «aku»: Aku membuka pintu pelan-pelan.
+        - orang ketiga = الراوي يقول «dia» أو اسم الشخصية: Pak Lubis membuka pintu.
+        - kilas balik = الارتجاع، العودة إلى أحداث ماضية
+        - monolog batin = المونولوج الداخلي، ما يدور في ذهن الشخصية دون أن يُسمع
+        والراوي بضمير المتكلّم لا يعرف ما في قلوب الآخرين، فيدع القارئ يخمّن.
       en: |
-        A good story has more than one reading. Say:
-        - Saya menafsirkan … sebagai … = I read … as …
-        - … adalah simbol … = … is a symbol of …
-        - Amanat cerpen ini adalah … = The story's message is …
-        - Cerpen ini punya akhir terbuka. = It has an open ending; the reader finishes it.
-        When someone disagrees: Tafsiran Anda menarik, tetapi …
+        For any cerpen, ask: who is the pencerita (narrator)?
+        - orang pertama = first person, the narrator says «aku»: Aku membuka pintu pelan-pelan.
+        - orang ketiga = third person, «dia» or the character's name: Pak Lubis membuka pintu.
+        - kilas balik = flashback
+        - monolog batin = interior monologue, what goes on in a character's head unheard
+        A first-person narrator can't see into others' hearts, which leaves the reader guessing.
+    examples:
+      - text: Cerpen ini dimulai dengan kilas balik ke masa kecil Pak Lubis.
+        ar_eg: القصة دي بتبدأ بفلاش باك لطفولة الأستاذ لوبيس.
+        ar: تبدأ هذه القصة بارتجاع إلى طفولة الأستاذ لوبيس.
+        en: This story opens with a flashback to Pak Lubis's childhood.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: menafsirkan
-        ar_eg: يفسّر
-        ar: يفسّر
-        en: to interpret
-      - text: simbol
-        ar_eg: رمز
-        ar: رمز
-        en: symbol
-      - text: amanat
-        ar_eg: عبرة / رسالة
-        ar: عبرة
-        en: moral, message
-      - text: akhir terbuka
-        ar_eg: نهاية مفتوحة
-        ar: نهاية مفتوحة
-        en: open ending
-    words: [menafsirkan, simbol, amanat, akhir terbuka]
+      - text: pencerita
+        ar_eg: الراوي
+        ar: الراوي
+        en: narrator
+      - text: orang pertama
+        ar_eg: ضمير المتكلم
+        ar: ضمير المتكلّم
+        en: first person
+      - text: orang ketiga
+        ar_eg: ضمير الغايب
+        ar: ضمير الغائب
+        en: third person
+      - text: kilas balik
+        ar_eg: فلاش باك
+        ar: ارتجاع
+        en: flashback
+      - text: monolog batin
+        ar_eg: كلام جوه الدماغ
+        ar: مونولوج داخلي
+        en: interior monologue
+    words: [pencerita, orang pertama, orang ketiga, kilas balik, monolog batin]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: في «Kursi di Teras»، الكرسي الفاضي رمز لإيه؟
-      ar: في «Kursi di Teras»، رمزُ ماذا الكرسيّ الفارغ؟
-      en: In "Kursi di Teras", what is the empty chair a symbol of?
-    options:
-      - الفقر.
-      - غياب الابن والشوق ليه.
-      - الأثاث القديم.
+      ar_eg: «Aku membuka pintu pelan-pelan.» الراوي هنا إيه؟
+      ar: «Aku membuka pintu pelan-pelan.» ما نوع الراوي هنا؟
+      en: '"Aku membuka pintu pelan-pelan." What kind of narrator is this?'
+    options: [orang ketiga, orang pertama, tanpa pencerita]
     answer: 1
-    words: [simbol]
+    explain:
+      ar_eg: «aku» يعني الراوي بيتكلم عن نفسه، يبقى orang pertama.
+      ar: «aku» تعني أنّ الراوي يتحدّث عن نفسه، فهو orang pertama.
+      en: «aku» means the narrator speaks about himself, so orang pertama.
+    words: [orang pertama]
   - id: e03
-    type: fill_blank
-    sentence: Saya ___ dua cangkir teh itu sebagai tanda maaf.
-    meaning:
-      ar_eg: أنا بفسّر فنجانين الشاي دول على إنهم علامة سماح.
-      ar: أفسّر فنجاني الشاي علامةً على الصفح.
-      en: I read those two cups of tea as a sign of forgiveness.
-    options: [menafsirkan, amanat, simbol]
-    answers: [menafsirkan]
-    words: [menafsirkan]
-  - id: e04
     type: listen
-    text: Amanat cerpen ini adalah bahwa keluarga selalu menunggu kita pulang.
+    text: Cerpen ini dimulai dengan kilas balik ke masa kecil Pak Lubis.
     question:
-      ar_eg: إيه عبرة القصة؟
-      ar: ما عبرة القصّة؟
-      en: What is the story's message?
+      ar_eg: القصة بتبدأ بإيه؟
+      ar: بمَ تبدأ القصة؟
+      en: How does the story begin?
     options:
-      - إن العيلة دايمًا مستنيانا نرجع.
-      - إن السفر وحش.
-      - إن الشاي لازم يتشرب سخن.
-    answer: 0
-    words: [amanat]
+      - بنهاية القصة.
+      - بحوار في القطر.
+      - برجوع لطفولة الأستاذ لوبيس.
+    answer: 2
+    words: [kilas balik]
+  - id: e04
+    type: fill_blank
+    sentence: Kalau pencerita memakai kata "dia", cerpen itu memakai sudut pandang ___.
+    meaning:
+      ar_eg: لو الراوي بيستخدم «dia»، تبقى القصة من زاوية ضمير الغايب.
+      ar: إذا استعمل الراوي «dia» فالقصة من منظور ضمير الغائب.
+      en: If the narrator uses «dia», the story is told in the third person.
+    options: [orang ketiga, orang pertama, monolog batin]
+    answers: [orang ketiga]
+    words: [orang ketiga, pencerita]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: النهاية المفتوحة بتخلّي القارئ يفكّر.
-      ar: النهاية المفتوحة تجعل القارئ يفكّر.
-      en: An open ending makes the reader think.
-    answer: Akhir terbuka membuat pembaca berpikir.
-    distractors: [simbol, amanat]
-    words: [akhir terbuka]
+      ar_eg: الراوي بيحكي أفكار الشخصية في مونولوج داخلي.
+      ar: يروي الراوي أفكار الشخصية في مونولوج داخلي.
+      en: The narrator tells the character's thoughts in an interior monologue.
+    answer: Pencerita menceritakan pikiran tokoh dalam monolog batin.
+    distractors: [kilas, ketiga]
+    words: [pencerita, monolog batin]
   - id: e06
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: تفسيرك حلو، بس أنا شايفه بشكل تاني.
-      ar: تفسيرك جميل، لكنّي أراه على نحو آخر.
-      en: Your reading is interesting, but I see it differently.
-    answers:
-      - Tafsiran Anda menarik, tetapi saya melihatnya secara berbeda.
-      - Tafsiranmu menarik, tetapi saya melihatnya dengan cara lain.
-      - Tafsiran Anda menarik, tapi saya menafsirkannya secara berbeda.
-      - Tafsiranmu bagus, tetapi saya melihatnya berbeda.
-    words: [menafsirkan]
+    direction: from_target
+    source_text: Dalam monolog batinnya, Pak Lubis bertanya apakah anaknya akan pulang.
+    answers_meaning:
+      ar_eg:
+        - في المونولوج اللي جواه، الأستاذ لوبيس بيسأل نفسه هل ابنه هيرجع.
+        - جوه دماغه، الأستاذ لوبيس بيسأل إذا كان ابنه هيرجع.
+      ar:
+        - في مونولوجه الداخلي، يتساءل الأستاذ لوبيس هل سيعود ابنه.
+        - يسأل الأستاذ لوبيس نفسه في سرّه إن كان ابنه سيعود.
+      en:
+        - In his interior monologue, Pak Lubis wonders whether his son will come home.
+        - Inside his head, Pak Lubis asks whether his son will return.
+    words: [monolog batin]
   - id: e07
-    type: speaking
-    text: Hujan dalam cerpen itu adalah simbol kesedihan, menurut saya.
-    meaning:
-      ar_eg: المطر في القصة دي رمز للحزن، في رأيي.
-      ar: المطر في تلك القصّة رمز للحزن، في رأيي.
-      en: The rain in that story is a symbol of sadness, in my view.
-    words: [simbol]
-  - id: e08
     type: multiple_choice
     question_meaning:
-      ar_eg: قصة من غير نهاية واضحة اسمها إيه؟
-      ar: ماذا تسمّى قصّة بلا خاتمة واضحة؟
-      en: What do you call a story with no clear ending?
+      ar_eg: «kilas balik» معناها إيه؟
+      ar: ما معنى «kilas balik»؟
+      en: What does "kilas balik" mean?
     options:
-      - cerpen tanpa tokoh
-      - cerpen tanpa latar
-      - cerpen dengan akhir terbuka
-    answer: 2
-    words: [akhir terbuka, amanat]
+      - رجوع لأحداث فاتت.
+      - نهاية مفتوحة.
+      - وصف المكان.
+    answer: 0
+    words: [kilas balik]
+  - id: e08
+    type: speaking
+    text: Cerpen ini diceritakan dari sudut pandang orang pertama.
+    meaning:
+      ar_eg: القصة دي متحكية بضمير المتكلم.
+      ar: تُروى هذه القصة بضمير المتكلّم.
+      en: This story is told in the first person.
+    words: [orang pertama]
   - id: e09
     type: dictation
-    text: Setiap pembaca bisa menafsirkan cerpen itu secara berbeda.
+    text: Pencerita orang ketiga tidak selalu tahu isi hati tokoh.
     meaning:
-      ar_eg: كل قارئ ممكن يفسّر القصة دي بشكل مختلف.
-      ar: يمكن لكلّ قارئ أن يفسّر تلك القصّة تفسيرًا مختلفًا.
-      en: Every reader can interpret that story differently.
-    words: [menafsirkan]
+      ar_eg: الراوي بضمير الغايب مش دايمًا عارف اللي في قلب الشخصية.
+      ar: الراوي بضمير الغائب لا يعرف دائمًا ما في قلب الشخصية.
+      en: A third-person narrator doesn't always know what a character feels.
+    words: [pencerita, orang ketiga]
+  - id: e10
+    type: fill_blank
+    sentence: Pengarang memakai ___ untuk menunjukkan masa lalu tokoh.
+    meaning:
+      ar_eg: الكاتب بيستخدم الفلاش باك عشان يورّي ماضي الشخصية.
+      ar: يستعمل الكاتب الارتجاع ليُظهر ماضي الشخصية.
+      en: The author uses a flashback to show the character's past.
+    options: [kilas balik, orang pertama, monolog batin]
+    answers: [kilas balik]
+    words: [kilas balik]
 dialogue:
-  title: Dua tafsiran
+  title: Siapa "aku" itu?
   lines:
     - speaker: Bang Togar
-      text: Saya menafsirkan hujan itu sebagai simbol kesedihan ayah.
-      ar_eg: أنا بفسّر المطر ده كرمز لحزن الأب.
-      ar: أفسّر ذلك المطر رمزًا لحزن الأب.
-      en: I read the rain as a symbol of the father's sadness.
+      text: Mohamed, cerpen baru ini memakai "aku". Siapa pencerita sebenarnya?
+      ar_eg: يا محمد، القصة الجديدة دي بتستخدم «aku». مين الراوي فعلًا؟
+      ar: يا محمد، هذه القصة الجديدة تستعمل «aku». فمن الراوي حقًا؟
+      en: Mohamed, this new story uses "aku". Who is the narrator really?
     - speaker: Mohamed
-      text: Tafsiranmu menarik, Bang. Tetapi bagi saya, hujan itu membersihkan, seperti awal yang baru.
-      ar_eg: تفسيرك حلو يا بانج. بس بالنسبة لي، المطر بيغسل، زي بداية جديدة.
-      ar: تفسيرك جميل، لكنّ المطر عندي يطهّر، كبداية جديدة.
-      en: Your reading is interesting, Bang. But for me, the rain cleans, like a new beginning.
-    - speaker: Kak Mei
-      text: Dua-duanya bisa benar. Akhirnya kan terbuka.
-      ar_eg: الاتنين ممكن يبقوا صح. ما النهاية مفتوحة.
-      ar: قد يصحّ التفسيران، فالنهاية مفتوحة.
-      en: Both could be right. The ending is open, after all.
+      text: Anak Pak Lubis. Jadi kita hanya tahu pikirannya, bukan pikiran ayahnya.
+      ar_eg: ابن الأستاذ لوبيس. فإحنا عارفين أفكاره هو بس، مش أفكار أبوه.
+      ar: ابن الأستاذ لوبيس، فنحن لا نعرف إلا أفكاره، لا أفكار أبيه.
+      en: Pak Lubis's son. So we only know his thoughts, not his father's.
+    - speaker: Bang Togar
+      text: Betul. Lalu di tengah cerita ada kilas balik ke Danau Toba.
+      ar_eg: مظبوط. وفي نص القصة فيه فلاش باك لبحيرة توبا.
+      ar: صحيح، وفي منتصف القصة ارتجاع إلى بحيرة توبا.
+      en: Right. And halfway through there's a flashback to Lake Toba.
     - speaker: Mohamed
-      text: Setuju. Amanatnya tetap sama, keluarga selalu menunggu.
-      ar_eg: موافق. والعبرة زي ما هي، العيلة دايمًا مستنية.
-      ar: أوافق. والعبرة واحدة، فالأسرة تنتظر دائمًا.
-      en: Agreed. The message stays the same; family always waits.
+      text: Dan monolog batinnya penuh rindu. Pengarangnya pintar sekali.
+      ar_eg: والمونولوج اللي جواه مليان حنين. الكاتب شاطر جدًا.
+      ar: ومونولوجه الداخلي مفعم بالحنين، والكاتب بارع حقًا.
+      en: And his interior monologue is full of longing. The author is very clever.
 new_words:
-  - word: menafsirkan
-    pos: verb
-    arabic: تفسير
-    ar_eg: يفسّر
-    ar: يفسّر
-    en: to interpret
-  - word: simbol
+  - word: pencerita
     pos: noun
-    ar_eg: رمز
-    ar: رمز
-    en: symbol
-  - word: amanat
+    ar_eg: الراوي
+    ar: الراوي
+    en: narrator
+  - word: orang pertama
     pos: noun
-    arabic: أمانة
-    ar_eg: عبرة / رسالة
-    ar: عبرة
-    en: moral, message (of a story)
-  - word: akhir terbuka
+    ar_eg: ضمير المتكلم
+    ar: ضمير المتكلّم
+    en: first person
+  - word: orang ketiga
     pos: noun
-    ar_eg: نهاية مفتوحة
-    ar: نهاية مفتوحة
-    en: open ending
+    ar_eg: ضمير الغايب
+    ar: ضمير الغائب
+    en: third person
+  - word: kilas balik
+    pos: noun
+    ar_eg: فلاش باك
+    ar: ارتجاع (فلاش باك)
+    en: flashback
+  - word: monolog batin
+    pos: noun
+    ar_eg: كلام جوه دماغ الشخصية
+    ar: مونولوج داخلي
+    en: interior monologue
 review:
   status: draft
   verified: false

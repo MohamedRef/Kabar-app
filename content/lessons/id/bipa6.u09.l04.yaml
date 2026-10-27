@@ -1,203 +1,213 @@
 schema: kabar.lesson/v1
 id: bipa6.u09.l04
 language: id
-title: Negosiasi
+title: Waralaba rumah makan
 can_do:
-  ar_eg: تفاوض على سعر بهدوء لحد ما توصلوا لاتفاق.
-  ar: أن تفاوض على سعر بهدوء حتّى تبلغا اتّفاقًا.
-  en: Negotiate a price calmly until you reach a deal.
+  ar_eg: تتكلم عن الفرانشايز والفروع وتسأل عن شروط فتح فرع جديد.
+  ar: أن تتحدّث عن الامتياز التجاري والفروع وتسأل عن شروط افتتاح فرع جديد.
+  en: Talk about franchises and branches and ask what it takes to open a new outlet.
 slides:
-  - title: Jalan tengah
-    grammar: id.hedging
+  - title: Satu resep, ratusan cabang
     body:
       ar_eg: |
-        التفاوض على طريقة المينانج: العلاقة الأول، والسعر بعدين.
-        1. ابدأ بدردشة (basa-basi) قبل الأرقام.
-        2. اقترح بهدوء: Bagaimana kalau …? (إيه رأيك لو …؟)
-        3. اطلب خصم بأدب: Apakah ada potongan harga untuk pesanan besar?
-        4. اتقابلوا في النص: Kita ambil jalan tengah saja.
-        5. اقفل: Jadi, kita sepakat? وبعدين اكتب الـ kesepakatan (الاتفاق).
+        مطاعم بادانج مشهورة زي Sederhana عندها مئات الفروع في إندونيسيا، وفيه منها فروع waralaba.
+        - waralaba = فرانشايز، امتياز تجاري
+        - cabang = فرع
+        - merek = ماركة / علامة تجارية
+        - mitra = شريك: صاحب الفرع بيبقى mitra للشركة
+        - seragam = موحّد / زي رسمي: الطعم والديكور والهدوم لازم يبقوا seragam في كل الفروع
       ar: |
-        التفاوض على طريقة المينانغ: العلاقة أوّلًا ثمّ السعر.
-        1. ابدأ بحديث ودّي (basa-basi) قبل الأرقام.
-        2. اقترح بهدوء: Bagaimana kalau …? (ما رأيك لو …؟)
-        3. اطلب خصمًا بأدب: Apakah ada potongan harga untuk pesanan besar?
-        4. التقيا في المنتصف: Kita ambil jalan tengah saja.
-        5. اختم: Jadi, kita sepakat? ثمّ دوّن الـ kesepakatan (الاتّفاق).
+        لمطاعم بادانغ الشهيرة مثل Sederhana مئات الفروع في إندونيسيا، وبعضها فروع waralaba.
+        - waralaba = امتياز تجاري (فرانشايز)
+        - cabang = فرع
+        - merek = علامة تجارية
+        - mitra = شريك: صاحب الفرع شريك للشركة
+        - seragam = موحّد، زيّ موحّد: يجب أن يتوحّد الطعم والديكور واللباس في الفروع كلّها
       en: |
-        Negotiating the Minang way: relationship first, price second.
-        1. Open with small talk (basa-basi) before any numbers.
-        2. Suggest gently: Bagaimana kalau …? (How about …?)
-        3. Ask for a discount politely: Apakah ada potongan harga untuk pesanan besar?
-        4. Meet halfway: Kita ambil jalan tengah saja.
-        5. Close: Jadi, kita sepakat? Then write down the kesepakatan (agreement).
+        Famous Padang restaurants like Sederhana have hundreds of branches across Indonesia, some of them waralaba outlets.
+        - waralaba = franchise
+        - cabang = branch
+        - merek = brand
+        - mitra = partner: a branch owner becomes the company's mitra
+        - seragam = uniform: taste, décor and staff clothes must be seragam in every branch
+    examples:
+      - text: Mitra waralaba harus memakai merek, resep, dan seragam yang sama.
+        ar_eg: شريك الفرانشايز لازم يستخدم نفس الماركة والوصفة والزي.
+        ar: على شريك الامتياز استعمال العلامة والوصفة والزيّ نفسها.
+        en: A franchise partner must use the same brand, recipe and uniform.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: potongan harga
-        ar_eg: خصم
-        ar: خصم
-        en: discount
-      - text: kesepakatan
-        ar_eg: اتفاق
-        ar: اتّفاق
-        en: agreement, deal
-      - text: menawarkan
-        ar_eg: يعرض
-        ar: يعرض
-        en: to offer
-      - text: pemasok
-        ar_eg: مورّد
-        ar: مورّد
-        en: supplier
-    words: [potongan harga, kesepakatan, menawarkan, pemasok]
+      - text: waralaba
+        ar_eg: فرانشايز
+        ar: امتياز تجاري
+        en: franchise
+      - text: cabang
+        ar_eg: فرع
+        ar: فرع
+        en: branch
+      - text: merek
+        ar_eg: ماركة
+        ar: علامة تجارية
+        en: brand
+      - text: mitra
+        ar_eg: شريك
+        ar: شريك
+        en: partner
+      - text: seragam
+        ar_eg: موحّد / زي رسمي
+        ar: موحّد، زيّ موحّد
+        en: uniform
+    words: [waralaba, cabang, merek, mitra, seragam]
   - id: e02
+    type: listen
+    text: Rumah makan kami sudah punya dua puluh cabang di Sumatra Barat.
+    question:
+      ar_eg: المطعم عنده كام فرع؟
+      ar: كم فرعًا للمطعم؟
+      en: How many branches does the restaurant have?
+    options:
+      - فرعين.
+      - عشرين فرع.
+      - مية فرع.
+    answer: 1
+    words: [cabang]
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي طريقة أحسن تطلب بيها خصم؟
-      ar: ما أفضل طريقة لطلب خصم؟
-      en: What's the best way to ask for a discount?
+      ar_eg: إيه اللي لازم يبقى seragam في كل فروع الفرانشايز؟
+      ar: ما الذي يجب أن يكون seragam في كلّ فروع الامتياز؟
+      en: What has to be seragam across all franchise branches?
     options:
-      - Kasih diskon dong!
-      - Apakah ada potongan harga untuk pesanan besar?
-      - Harga ini gila!
-    answer: 1
-    words: [potongan harga]
-  - id: e03
-    type: fill_blank
-    sentence: Kami ___ harga khusus untuk pelanggan setia.
-    meaning:
-      ar_eg: إحنا بنعرض سعر خاص للزباين الدايمين.
-      ar: نعرض سعرًا خاصًّا للزبائن الأوفياء.
-      en: We offer a special price to loyal customers.
-    options: [menawarkan, pemasok, kesepakatan]
-    answers: [menawarkan]
-    words: [menawarkan]
+      - أسامي الموظفين.
+      - مواعيد نوم المدير.
+      - الطعم والديكور والزي.
+    answer: 2
+    words: [seragam, waralaba]
   - id: e04
-    type: listen
-    text: Akhirnya kedua pihak mencapai kesepakatan setelah dua jam.
-    question:
-      ar_eg: إيه اللي حصل؟
-      ar: ماذا حدث؟
-      en: What happened?
-    options:
-      - الطرفين اتفقوا بعد ساعتين.
-      - اتخانقوا ومشيوا.
-      - أجّلوا الكلام.
-    answer: 0
-    words: [kesepakatan]
+    type: fill_blank
+    sentence: Kami mencari ___ yang mau membuka cabang di Bandung.
+    meaning:
+      ar_eg: بندوّر على شريك عايز يفتح فرع في باندونج.
+      ar: نبحث عن شريك يرغب في افتتاح فرع في باندونغ.
+      en: We're looking for a partner who wants to open a branch in Bandung.
+    options: [mitra, merek, seragam]
+    answers: [mitra]
+    words: [mitra, cabang]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «waralaba» جاية من إيه؟
+      ar: ممّ تتكوّن «waralaba»؟
+      en: What is "waralaba" made from?
+    options:
+      - wara (مميّز) + laba (مكسب)
+      - warung + lama
+      - warna + labu
+    answer: 0
+    explain:
+      ar_eg: 'كلمة اتعملت مخصوص عشان تترجم franchise: مكسب مميّز.'
+      ar: 'كلمة صيغت خصّيصًا لترجمة franchise: ربح مميّز.'
+      en: 'A word coined to translate "franchise": a special profit.'
+    words: [waralaba]
+  - id: e06
     type: build_sentence
     source:
-      ar_eg: إيه رأيك لو نتقابل في النص؟
-      ar: ما رأيك لو التقينا في المنتصف؟
-      en: How about we meet halfway?
-    answer: Bagaimana kalau kita ambil jalan tengah saja?
-    distractors: [pemasok, potongan]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Kita ambil jalan tengah» معناها إيه في التفاوض؟
-      ar: ما معنى «Kita ambil jalan tengah» في التفاوض؟
-      en: In a negotiation, what does "Kita ambil jalan tengah" mean?
-    options:
-      - يلا نمشي من نص الشارع.
-      - يلا نوقّف الكلام.
-      - يلا نتقابل في النص.
-    answer: 2
+      ar_eg: الماركة دي معروفة في كل إندونيسيا.
+      ar: هذه العلامة التجارية معروفة في أنحاء إندونيسيا.
+      en: This brand is known all over Indonesia.
+    answer: Merek ini terkenal di seluruh Indonesia.
+    distractors: [cabang, mitra]
+    words: [merek]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: المورّد ده عرض خصم عشرة في المية.
-      ar: عرض ذلك المورّد خصمًا بعشرة في المئة.
-      en: That supplier offered a ten per cent discount.
+      ar_eg: عايز أفتح فرع فرانشايز في جاكرتا.
+      ar: أريد افتتاح فرع امتياز في جاكرتا.
+      en: I want to open a franchise branch in Jakarta.
     answers:
-      - Pemasok itu menawarkan potongan harga sepuluh persen.
-      - Pemasok itu menawarkan potongan harga 10 persen.
-      - Pemasok itu menawarkan potongan harga sebesar sepuluh persen.
-    words: [pemasok, menawarkan, potongan harga]
+      - Saya ingin membuka cabang waralaba di Jakarta.
+      - Saya mau membuka cabang waralaba di Jakarta.
+      - Saya ingin membuka waralaba di Jakarta.
+      - Saya mau membuka waralaba di Jakarta.
+    words: [waralaba, cabang]
   - id: e08
     type: speaking
-    text: Kalau kesepakatannya bagus, kami akan memesan lagi.
+    text: Apa syarat untuk menjadi mitra waralaba Anda?
     meaning:
-      ar_eg: لو الاتفاق كويس، هنطلب تاني.
-      ar: إن كان الاتّفاق جيّدًا فسنطلب مجدّدًا.
-      en: If the deal is good, we'll order again.
-    words: [kesepakatan]
+      ar_eg: إيه الشروط عشان أبقى شريك في الفرانشايز بتاعكم؟
+      ar: ما شروط أن أصبح شريكًا في امتيازكم؟
+      en: What does it take to become your franchise partner?
+    words: [mitra, waralaba]
   - id: e09
     type: dictation
-    text: Pemasok kurma dari Mesir memberi potongan harga.
+    text: Semua karyawan di setiap cabang memakai seragam merah.
     meaning:
-      ar_eg: مورّد البلح من مصر عمل خصم.
-      ar: منح مورّد التمر من مصر خصمًا.
-      en: The date supplier from Egypt gave a discount.
-    words: [pemasok, potongan harga]
+      ar_eg: كل الموظفين في كل فرع لابسين زي أحمر.
+      ar: يرتدي الموظّفون في كلّ فرع زيًّا أحمر موحّدًا.
+      en: All staff in every branch wear a red uniform.
+    words: [seragam, cabang]
   - id: e10
-    type: translate
-    direction: from_target
-    source_text: Kesepakatan ini baik untuk pemasok dan pembeli.
-    answers_meaning:
-      ar_eg:
-        - الاتفاق ده كويس للمورّد والمشتري.
-        - الاتفاق ده في صالح المورّد والمشتري.
-      ar:
-        - هذا الاتّفاق جيّد للمورّد والمشتري.
-        - في هذا الاتّفاق خير للمورّد والمشتري.
-      en:
-        - This deal is good for the supplier and the buyer.
-        - This agreement works for both supplier and buyer.
-    words: [kesepakatan, pemasok]
+    type: fill_blank
+    sentence: Logo dan nama ___ itu tidak boleh diubah oleh mitra.
+    meaning:
+      ar_eg: لوجو واسم الماركة مايتغيروش من الشريك.
+      ar: لا يجوز للشريك تغيير شعار العلامة التجارية واسمها.
+      en: The brand's logo and name may not be changed by the partner.
+    options: [merek, cabang, seragam]
+    answers: [merek]
+    words: [merek]
 dialogue:
-  title: Tawar-menawar kurma
+  title: Cabang di Kairo?
   lines:
-    - speaker: Uda Fadli
-      text: Harga per kilonya masih agak tinggi untuk kami.
-      ar_eg: سعر الكيلو لسه عالي شوية بالنسبة لنا.
-      ar: سعر الكيلو ما زال مرتفعًا قليلًا بالنسبة إلينا.
-      en: The price per kilo is still a bit high for us.
     - speaker: Mohamed
-      text: Bagaimana kalau pemasok kami menawarkan potongan harga lima persen untuk pesanan pertama?
-      ar_eg: إيه رأيك لو المورّد بتاعنا عرض خصم خمسة في المية على أول طلبية؟
-      ar: ما رأيك لو عرض مورّدنا خصمًا بخمسة في المئة على الطلبية الأولى؟
-      en: How about our supplier offers a five per cent discount on the first order?
+      text: Uda, bagaimana kalau rumah makan Uda membuka cabang di Kairo?
+      ar_eg: يا أودا، إيه رأيك مطعمك يفتح فرع في القاهرة؟
+      ar: يا أودا، ما رأيك أن يفتح مطعمك فرعًا في القاهرة؟
+      en: Uda, how about your restaurant opening a branch in Cairo?
     - speaker: Uda Fadli
-      text: Sepuluh persen, barangkali?
-      ar_eg: عشرة في المية يمكن؟
-      ar: عشرة في المئة ربّما؟
-      en: Ten per cent, perhaps?
+      text: Menarik! Tapi kami perlu mitra yang paham pasar Mesir.
+      ar_eg: فكرة حلوة! بس محتاجين شريك فاهم السوق المصري.
+      ar: فكرة مثيرة! لكننا نحتاج إلى شريك يفهم السوق المصرية.
+      en: Interesting! But we'd need a partner who knows the Egyptian market.
     - speaker: Mohamed
-      text: Kita ambil jalan tengah saja, Uda. Tujuh persen?
-      ar_eg: نتقابل في النص يا أودا. سبعة في المية؟
-      ar: لنلتقِ في المنتصف يا أودا. سبعة في المئة؟
-      en: Let's meet halfway, Uda. Seven per cent?
+      text: Saya bisa menjadi mitra waralaba. Apa syaratnya?
+      ar_eg: أنا ممكن أبقى شريك الفرانشايز. إيه الشروط؟
+      ar: يمكنني أن أكون شريك الامتياز. ما الشروط؟
+      en: I could be the franchise partner. What are the conditions?
     - speaker: Uda Fadli
-      text: Baik, kita sepakat!
-      ar_eg: تمام، اتفقنا!
-      ar: حسنًا، اتّفقنا!
-      en: All right, it's a deal!
+      text: Merek, resep, dan seragam harus sama. Rendang di Kairo harus seenak di Padang!
+      ar_eg: الماركة والوصفة والزي لازم يبقوا زي ما هما. الرندانج في القاهرة لازم يبقى حلو زي بادانج!
+      ar: يجب أن تبقى العلامة والوصفة والزيّ كما هي، وأن يكون الرندانغ في القاهرة لذيذًا كما في بادانغ!
+      en: Brand, recipe and uniform must be the same. Rendang in Cairo has to taste as good as in Padang!
 new_words:
-  - word: potongan harga
+  - word: waralaba
     pos: noun
-    ar_eg: خصم
-    ar: خصم
-    en: discount
-  - word: kesepakatan
+    ar_eg: فرانشايز
+    ar: امتياز تجاري
+    en: franchise
+  - word: cabang
     pos: noun
-    ar_eg: اتفاق
-    ar: اتّفاق
-    en: agreement, deal
-  - word: menawarkan
-    pos: verb
-    ar_eg: يعرض
-    ar: يعرض
-    en: to offer
-  - word: pemasok
+    ar_eg: فرع
+    ar: فرع
+    en: branch
+  - word: merek
     pos: noun
-    ar_eg: مورّد
-    ar: مورّد
-    en: supplier
+    ar_eg: ماركة
+    ar: علامة تجارية
+    en: brand
+  - word: mitra
+    pos: noun
+    ar_eg: شريك
+    ar: شريك
+    en: partner
+  - word: seragam
+    pos: noun
+    ar_eg: زي رسمي / موحّد
+    ar: زيّ موحّد؛ موحّد
+    en: uniform
 review:
   status: draft
   verified: false

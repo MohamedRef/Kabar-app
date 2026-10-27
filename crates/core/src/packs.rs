@@ -85,16 +85,21 @@ enum Gender {
 }
 
 const FEMALE_TITLES: &[&str] =
-    &["bu", "ibu", "mbak", "mba", "ning", "ni", "bude", "budhe", "tante", "nenek", "kak", "neng", "jeng"];
+    &["bu", "ibu", "mbak", "mba", "ning", "ni", "bude", "budhe", "tante", "nenek", "mama", "neng", "jeng"];
+/// Kak (and Papuan Kaka) is said to an older sibling of either sex, so the
+/// name decides; an unknown name after Kak keeps the female voice.
+const NEUTRAL_TITLES: &[&str] = &["kak", "kaka"];
 const MALE_TITLES: &[&str] =
     &["pak", "bapak", "pakdhe", "pakde", "mas", "cak", "bli", "kang", "om", "kakek", "satpam"];
 const FEMALE_NAMES: &[&str] = &[
     "rina", "sari", "darmi", "ani", "siti", "gadis", "dewi", "wulan", "tari", "rara", "sinta", "lia", "yani",
-    "lina", "ratna", "rahayu", "nur", "putri", "ayu", "luh",
+    "lina", "ratna", "rahayu", "nur", "putri", "ayu", "luh", "yohana", "ruth", "ester", "debora", "frida",
+    "grace", "selvi", "lince",
 ];
 const MALE_NAMES: &[&str] = &[
     "mohamed", "muhammad", "dimas", "ardi", "bayu", "agus", "bagus", "budi", "joko", "andi", "heru", "harjo",
-    "wiryo", "hasan", "yudi", "fikri", "darmo", "anton", "man", "mat",
+    "wiryo", "hasan", "yudi", "fikri", "darmo", "anton", "man", "mat", "yosua", "steven", "benny", "elias",
+    "yance",
 ];
 
 /// Guesses a speaker's voice from Indonesian/Javanese titles (Bu, Mbak, Pak,
@@ -102,6 +107,17 @@ const MALE_NAMES: &[&str] = &[
 fn gender_of(speaker: &str) -> Option<Gender> {
     let words: Vec<String> = speaker.split_whitespace().map(str::to_lowercase).collect();
     let first = words.first()?;
+    let by_name = || {
+        words.iter().rev().find_map(|w| {
+            if FEMALE_NAMES.contains(&w.as_str()) {
+                Some(Gender::Female)
+            } else if MALE_NAMES.contains(&w.as_str()) {
+                Some(Gender::Male)
+            } else {
+                None
+            }
+        })
+    };
     if words.len() > 1 && words[0] == "mbah" {
         // Mbah Putri / Mbah Kakung, else the name decides.
         match words[1].as_str() {
@@ -109,20 +125,14 @@ fn gender_of(speaker: &str) -> Option<Gender> {
             "kakung" => return Some(Gender::Male),
             _ => {}
         }
+    } else if NEUTRAL_TITLES.contains(&first.as_str()) {
+        return by_name().or((first == "kak").then_some(Gender::Female));
     } else if FEMALE_TITLES.contains(&first.as_str()) {
         return Some(Gender::Female);
     } else if MALE_TITLES.contains(&first.as_str()) {
         return Some(Gender::Male);
     }
-    words.iter().rev().find_map(|w| {
-        if FEMALE_NAMES.contains(&w.as_str()) {
-            Some(Gender::Female)
-        } else if MALE_NAMES.contains(&w.as_str()) {
-            Some(Gender::Male)
-        } else {
-            None
-        }
-    })
+    by_name()
 }
 
 /// The voice of `speaker` in `dialogue`: female speakers get Gadis/Siti,
@@ -536,6 +546,12 @@ mod tests {
         assert_eq!(speaker_voice("jv", &d, "Mbah Putri"), Voice::JvSiti);
         assert_eq!(speaker_voice("jv", &d, "Mbah Darmi"), Voice::JvSiti);
         assert_eq!(speaker_voice("id", &d, "Rina"), Voice::IdGadis);
+        assert_eq!(speaker_voice("id", &d, "Kak Dewi"), Voice::IdGadis);
+        assert_eq!(speaker_voice("id", &d, "Kak Mei"), Voice::IdGadis);
+        assert_eq!(speaker_voice("id", &d, "Kak Yosua"), Voice::IdArdi);
+        assert_eq!(speaker_voice("id", &d, "Kaka Benny"), Voice::IdArdi);
+        assert_eq!(speaker_voice("id", &d, "Kaka Yohana"), Voice::IdGadis);
+        assert_eq!(speaker_voice("id", &d, "Mama Ruth"), Voice::IdGadis);
         // Unknown: the voice the others don't use (Mohamed is first and male).
         assert_eq!(speaker_voice("id", &d, "Penjual"), Voice::IdGadis);
         let two = Dialogue { title: None, lines: vec![line("Petugas", "a"), line("Pengumuman", "b")] };
