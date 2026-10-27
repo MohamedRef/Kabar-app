@@ -596,19 +596,16 @@ fn Shell() -> Element {
     // phone a slim top bar carries the gear.
     let top_bar =
         *ui.width.read() == WidthClass::Compact && !matches!(current, Screen::Lesson | Screen::LevelCheck);
-    let items = [
-        Screen::Today,
-        Screen::Journey,
-        Screen::Reader,
-        Screen::Review,
-        Screen::Play,
-        Screen::Listen,
-        Screen::Chat,
-        Screen::Coach,
-        Screen::Journal,
-        Screen::Studio,
-        Screen::Teach,
-        Screen::PenLab,
+    // Grouped like a Mac sidebar (Apple HIG, Material 3): what you learn,
+    // where you practise, and your own corner. On the phone the groups melt
+    // into the bottom bar; on the rail they are small gaps.
+    let groups = [
+        (Msg::NavGroupLearn, &[Screen::Today, Screen::Journey, Screen::Reader, Screen::Review][..]),
+        (
+            Msg::NavGroupPractise,
+            &[Screen::Play, Screen::Listen, Screen::Chat, Screen::Teach, Screen::Studio, Screen::PenLab][..],
+        ),
+        (Msg::NavGroupMe, &[Screen::Coach, Screen::Journal][..]),
     ];
     // Re-tapping the tab you're on starts that section over (Games → the
     // hub, Chat → the list, Review → its home): the screen remounts.
@@ -618,7 +615,10 @@ fn Shell() -> Element {
         div { class: "shell",
             nav { class: "nav", aria_label: "Kabar",
                 div { class: "brand latin", "Kabar" }
-                for item in items.into_iter().filter(|s| tablet || !s.pen_only()) {
+                for (g, (title, screens)) in groups.into_iter().enumerate() {
+                    div { key: "{g}", class: "nav-group", role: "group", aria_labelledby: "nav-group-{g}",
+                        p { id: "nav-group-{g}", class: "nav-heading", "{ui.t(title)}" }
+                        for item in screens.iter().copied().filter(|s| tablet || !s.pen_only()) {
                     button {
                         key: "{item:?}",
                         class: if item.secondary() { "nav-item secondary" } else { "nav-item" },
@@ -638,6 +638,8 @@ fn Shell() -> Element {
                         span { class: "nav-icon", aria_hidden: "true", {icons::nav(item)} }
                         span { class: "nav-label",
                             "{more::rail_label(ui.lang(), item).unwrap_or(ui.t(item.label()))}"
+                        }
+                    }
                         }
                     }
                 }

@@ -90,7 +90,6 @@
   font-variant-numeric: tabular-nums;
   font-size: 0.9rem;
 }
-button:disabled { opacity: 0.5; cursor: default; }
 
 /* ---------- Session chrome ---------- */
 .rev-session { outline: none; display: grid; gap: 0.75rem; max-inline-size: 42rem; inline-size: 100%; margin-inline: auto; }
@@ -98,7 +97,8 @@ button:disabled { opacity: 0.5; cursor: default; }
 .progress { flex: 1; block-size: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
 .progress-fill { display: block; block-size: 100%; background: var(--sawah); border-radius: 999px; }
 .rev-foot { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
-.app[data-width="compact"] .kbd-hint { display: none; }
+/* Key hints are for keyboards: touch screens never see them. */
+@media (hover: none), (pointer: coarse) { .kbd-hint { display: none; } }
 
 /* ---------- Classic card ---------- */
 .rev-card { margin: 0; text-align: center; min-block-size: 14rem; display: flex; flex-direction: column; justify-content: center; gap: 0.25rem; }
@@ -203,6 +203,64 @@ button:disabled { opacity: 0.5; cursor: default; }
 .rate.easy { border-color: var(--indigo); color: var(--indigo); }
 .rate.suggested { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px currentColor; }
 .reveal-btn { min-block-size: 56px; font-weight: 600; }
+
+/* The answer buttons stay in one place so the hand learns them (Anki):
+   the card keeps a steady height, and on tablets and the Mac the row
+   sticks to the window's bottom edge when a long back pushes it down. */
+.app:not([data-width="compact"]) .rev-card { min-block-size: 20rem; }
+.app:not([data-width="compact"]) .rev-session .rate-row {
+  position: sticky;
+  inset-block-end: 0;
+  background: var(--bg);
+  padding-block: var(--sp-2);
+  z-index: 2;
+}
+
+/* Tablet portrait: the card fills the screen and the answers sit at the
+   bottom, in thumb reach, like on the phone. */
+.app[data-width="medium"] .rev-session {
+  min-block-size: calc(100vh - 2 * var(--gutter));
+  grid-template-rows: auto 1fr;
+}
+
+/* Expanded+: the session's progress and recent words in a side pane. */
+.rev-session.with-pane {
+  max-inline-size: 66rem;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 20rem);
+  column-gap: var(--stack);
+  align-items: start;
+}
+.rev-session.with-pane > :not(.rev-pane) { grid-column: 1; }
+.rev-session.with-pane .rev-undo { display: none; }
+.rev-pane {
+  grid-column: 2;
+  grid-row: 1 / span 4;
+  position: sticky;
+  inset-block-start: var(--sp-4);
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--card-pad);
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+}
+.rev-pane-title { margin: 0; font-size: var(--fs-md); color: var(--muted); font-weight: 600; }
+.rev-pane-counts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); }
+.rev-pane-big { display: grid; padding: var(--sp-2) var(--sp-3); border-radius: var(--radius-sm); background: var(--surface-2); }
+.rev-pane-ratings { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-1); list-style: none; padding: 0; margin: 0; }
+.rev-pane-ratings li { display: grid; justify-items: center; font-size: var(--fs-xs); font-weight: 600; text-align: center; }
+.rev-pane-n { font-size: var(--fs-lg); font-variant-numeric: tabular-nums; }
+.rev-pane-ratings .again, .rev-recent .pill.again { color: var(--dawn); }
+.rev-pane-ratings .hard, .rev-recent .pill.hard { color: var(--gold); }
+.rev-pane-ratings .good, .rev-recent .pill.good { color: var(--sawah); }
+.rev-pane-ratings .easy, .rev-recent .pill.easy { color: var(--indigo); }
+.rev-pane .rev-h3 { margin: 0; font-size: var(--fs-sm); color: var(--muted); }
+.rev-recent { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--sp-1); }
+.rev-recent li { display: flex; align-items: center; gap: var(--sp-2); min-block-size: 36px; }
+.rev-recent li + li { border-block-start: 1px solid var(--line-soft); }
+.rev-recent-word { flex: 1; min-inline-size: 0; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rev-recent .pill { background: var(--surface-2); font-size: var(--fs-xs); }
+.rev-recent-undo { min-block-size: 36px; min-inline-size: 36px; padding: 0; }
 
 /* Phone: answers sit in thumb reach, above the bottom bar. */
 .app[data-width="compact"] .rev-session .rate-row,
