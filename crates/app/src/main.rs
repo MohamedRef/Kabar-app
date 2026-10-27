@@ -307,6 +307,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
     use_learner_profile(&db, coach);
+    coach::notify::use_local_reminders(&db, coach, ui);
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);

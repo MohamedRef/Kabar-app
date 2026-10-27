@@ -146,7 +146,7 @@ Counters are in D1 `quota_usage`; a call that would cross a limit is refused bef
 ## 7. Known gaps (phased, not dropped)
 
 - **Android sign-in** uses the same browser + loopback flow as the Mac for now. The one-tap Credential Manager sheet needs the Kotlin bridge in `android/`; the server already accepts its tokens (Web client id).
-- **Push tokens**: the app doesn't send its FCM token yet; that arrives with the Android notification code (M7).
+- **Push tokens**: the app doesn't send its FCM token yet. Android reminders are local notifications for now (`android/…/Reminders.kt`, `crates/app/src/coach/notify.rs`); FCM is phase 2 of issue #127, and the app will stop scheduling locally once its token is registered so a reminder never arrives twice.
 - On Linux (development and CI only) the session is kept in memory, so you sign in on every launch. The Mac uses the Keychain and Android the Keystore.
 
 - Vision tasks (`read_handwriting`, `guess_sketch`, `check_strokes`) need an image (`image_sha256`, see `/v1/blobs`). `structure_screenshot` also works from the on-device OCR text alone (no image attached); it is personal (other people's chats), so it never goes to `gemini_free` or the shared cache.
