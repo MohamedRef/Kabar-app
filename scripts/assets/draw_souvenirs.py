@@ -1483,6 +1483,368 @@ def cap_go_meh():
     return "".join(z)
 
 
+# ---------------------------------------------------------------- BIPA 6 · Sumatra
+
+BRICK = "#B5654A"
+
+
+@scene("bipa6.u01")
+def tjong_a_fie():
+    """The Tjong A Fie mansion in Medan: a two-storey house behind a Chinese gate."""
+    z = [sky(sun=(760, 260), r=70)]
+    z.append(rect(X0, 800, W, 172, S))
+    z.append(rect(200, 420, 624, 380, "#8DB58A", 4, C, 7))
+    z.append(path("M180 420 L844 420 L800 360 L224 360Z", G, C, 6))
+    z.append(windows(240, 460, 6, 2, 50, 90, 46, 50, P, arch=True, shutter=True))
+    z.append(rect(180, 740, 664, 60, P, 4, C, 6))
+    # the gate: a curved roof with upswept ends
+    z.append(rect(390, 640, 40, 200, R, 3, C, 5) + rect(594, 640, 40, 200, R, 3, C, 5))
+    z.append(path("M340 650 Q360 620 380 625 L644 625 Q664 620 684 650 Q680 590 640 590 L384 590 Q344 590 340 650Z", G, C, 6))
+    z.append(path("M330 640 Q300 600 320 580 M694 640 Q724 600 704 580", stroke=C, sw=6))
+    z.append(rect(430, 660, 164, 180, C, 4) + lantern(470, 700, 0.8) + lantern(554, 700, 0.8))
+    return "".join(z)
+
+
+@scene("bipa6.u02")
+def pantun_melayu():
+    """A Malay wedding: the couple on the dais, palm-flower poles, pantun said aloud."""
+    z = [rect(X0, Y0, W, H, "#7A3A4A")]
+    for k in range(9):
+        z.append(path(f"M{126 + k * 96} 122 Q{174 + k * 96} 260 {222 + k * 96} 122", O, C, 3, 0.85))
+    z.append(rect(X0, 800, W, 172, R))
+    z.append(rect(220, 760, 584, 50, O, 6, C, 6))
+    z.append(path("M300 760 L300 420 Q512 320 724 420 L724 760Z", O, C, 7) + path("M340 760 L340 450 Q512 370 684 450 L684 760Z", "#7A3A4A", C, 5))
+    z.append(rect(370, 640, 280, 70, R, 10, C, 5))
+    z.append(person(450, 700, 1.05, O, head=C) + person(574, 700, 1.05, O, scarf=P))
+    for x in (200, 824):
+        z.append(line(x, 900, x, 420, C, 6))
+        for k in range(10):
+            a = math.radians(-90 + (k - 4.5) * 18)
+            z.append(path(f"M{x} 440 Q{x + math.cos(a) * 50} {440 + math.sin(a) * 40} {x + math.cos(a) * 90} {470 + math.sin(a) * 80 + 40}", stroke=(O, P)[k % 2], sw=6))
+    z.append(group(path("M0 0 Q30 -20 60 0 Q30 14 0 0Z", P, C, 3), 470, 880, 1) + group(path("M0 0 Q30 -20 60 0 Q30 14 0 0Z", P, C, 3), 520, 900, -1))
+    return "".join(z)
+
+
+def sriwijaya_ship(x, y, s=1.0):
+    b = path("M-200 -20 Q0 40 220 -30 L190 10 Q0 50 -180 10Z", D, C, 6)
+    b += line(-240, 20, 240, 20, C, 5) + line(-140, -4, -140, 20, C, 4) + line(140, -4, 140, 20, C, 4)
+    for mx, h in ((-60, 220), (70, 200)):
+        b += line(mx, 0, mx, -h, C, 7)
+        b += path(f"M{mx - 70} {-h * 0.95} L{mx + 80} {-h + 10} L{mx + 60} {-20} L{mx - 90} {-30}Z", "#C9A97A", C, 5)
+        b += "".join(line(mx - 80 + k * 4, -h * 0.95 + k * h * 0.22, mx + 70 + k * 2, -h + 10 + k * h * 0.22, C, 2, 0.4) for k in range(1, 4))
+    return group(b, x, y, s)
+
+
+@scene("bipa6.u04")
+def musi():
+    """The Musi river at Palembang: Ampera bridge, and a Sriwijaya ship of old."""
+    z = [sky(sun=(250, 300), r=80)]
+    z.append(city_far(560, 0.3))
+    z.append(rect(X0, 560, W, 412, "#7C8E7A"))
+    for k in range(5):
+        z.append(path(f"M{170 + k * 150} {640 + k * 60} q30 -10 60 0", stroke=P, sw=5, op=0.4))
+    # Ampera bridge: two red towers, a deck and lifting cables
+    z.append(rect(X0, 520, W, 26, R, 0, C, 5))
+    for tx in (380, 680):
+        z.append(rect(tx - 24, 300, 48, 300, R, 4, C, 6) + rect(tx - 40, 290, 80, 20, R, 3, C, 5))
+    z.append(line(380, 330, 680, 330, C, 6) + line(380, 360, 680, 360, C, 4))
+    for tx, side in ((380, -1), (680, 1)):
+        for k in range(5):
+            z.append(line(tx, 320, tx + side * (60 + k * 50), 520, C, 3))
+    for k in range(10):
+        z.append(line(126 + k * 86, 546, 126 + k * 86, 600, C, 8))
+    z.append(sriwijaya_ship(520, 850, 1.0))
+    return "".join(z)
+
+
+@scene("bipa6.u05")
+def baiturrahman():
+    """Baiturrahman Grand Mosque: white walls, black domes, the long pool."""
+    z = [sky(sun=(780, 240), r=60)]
+    z.append(rect(X0, 640, W, 332, S))
+    z.append(rect(200, 470, 624, 170, P, 4, C, 7))
+    z.append(windows(230, 520, 9, 1, 40, 90, 24, 0, I, arch=True))
+    for cx, r in ((512, 110), (300, 70), (724, 70)):
+        z.append(path(f"M{cx - r} 470 Q{cx - r} {470 - r * 1.6} {cx} {470 - r * 1.8} Q{cx + r} {470 - r * 1.6} {cx + r} 470Z", C, C, 5) + line(cx, 470 - r * 1.8, cx, 440 - r * 1.8, C, 4) + circle(cx, 436 - r * 1.8, 6, O))
+    for mx in (160, 864):
+        z.append(rect(mx - 18, 300, 36, 340, P, 3, C, 5) + path(f"M{mx - 22} 300 Q{mx} 250 {mx + 22} 300Z", C, C, 4))
+    z.append(path("M380 660 L644 660 L760 972 L264 972Z", T1, C, 5))
+    z.append(path("M480 700 L544 700 L580 900 L444 900Z", P, op=0.35))
+    for x in (230, 800):
+        z.append(line(x, 920, x, 780, C, 5) + path(f"M{x - 60} 790 Q{x} 730 {x + 60} 790Z", P, C, 4))
+    z.append(palm(170, 960, 200, 10, 0.7) + palm(860, 960, 200, -10, 0.7))
+    return "".join(z)
+
+
+def rumah_bolon(cx, y, s=1.0):
+    b = rect(-120, -110, 240, 90, D, 4, C, 6)
+    for k in range(4):
+        b += rect(-120 + k * 62, -110, 52, 90, "none", 2, C, 2, op=0.5)
+    b += path("M-100 -20 L-100 40 M-40 -20 L-40 40 M40 -20 L40 40 M100 -20 L100 40", stroke=C, sw=10)
+    b += path("M-130 -110 L130 -110 L200 -280 Q0 -200 -200 -280Z", "#6E5A50", C, 7)
+    b += path("M-110 -120 L110 -120 L0 -200Z", P, C, 4) + path("M-60 -130 L0 -170 L60 -130", stroke=R, sw=6)
+    b += path("M-80 -80 l20 -16 l20 16 l20 -16 l20 16 l20 -16 l20 16 l20 -16 l20 16", stroke=P, sw=4)
+    return group(b, cx, y, s)
+
+
+@scene("bipa6.u06")
+def samosir():
+    """Samosir in Lake Toba: a Batak house with its saddle roof by the water."""
+    z = [sky(sun=(700, 260), r=70)]
+    z.append(path("M126 520 Q300 420 520 500 Q700 410 898 480 L898 600 L126 600Z", "#6E7FA8"))
+    z.append(sea(560, (T2, T3, I)))
+    z.append(path("M126 760 Q400 700 898 760 L898 972 L126 972Z", G))
+    z.append(rumah_bolon(420, 880, 1.25))
+    z.append(group(path("M-80 -10 Q0 20 90 -14 L70 10 Q0 30 -70 10Z", D, C, 4), 760, 700, 1))
+    z.append(tree(780, 900, 0.7))
+    return "".join(z)
+
+
+@scene("bipa6.u07")
+def muaro_jambi():
+    """The brick temples of Muaro Jambi among the trees."""
+    z = [sky(sun=(250, 270), r=70)]
+    z.append(rainforest(640, 0.55))
+    z.append(rect(X0, 760, W, 212, G))
+    for k, (w, h) in enumerate(((520, 90), (420, 80), (320, 80), (220, 70))):
+        y = 760 - sum(hh for _, hh in ((520, 90), (420, 80), (320, 80), (220, 70))[:k + 1])
+        z.append(rect(512 - w / 2, y, w, h, BRICK, 4, C, 6))
+        for c in range(int(w // 40)):
+            z.append(line(512 - w / 2 + c * 40, y + h / 2, 512 - w / 2 + c * 40 + 20, y + h / 2, C, 2, 0.35))
+    z.append(path("M432 440 Q512 340 592 440Z", BRICK, C, 6))
+    z.append(rect(472, 680, 80, 80, C, 6))
+    z.append(path("M462 760 L562 760 L600 972 L424 972Z", S))
+    z.append(tree(190, 860, 0.8) + tree(840, 860, 0.8) + banyan(780, 760, 0.5))
+    return "".join(z)
+
+
+@scene("bipa6.u08")
+def rafflesia():
+    """Rafflesia arnoldii: the giant five-petalled flower on the forest floor."""
+    z = [rect(X0, Y0, W, H, "#2F5E2A")]
+    z.append(rainforest(500, 0.6))
+    z.append(rect(X0, 620, W, 352, "#5A4632"))
+    for k in range(12):
+        z.append(leaf(140 + k * 70, 980, 0.9, -40 + (k % 5) * 20, G))
+    cx, cy = 512, 700
+    for k in range(5):
+        a = math.radians(-90 + k * 72)
+        px, py = cx + math.cos(a) * 140, cy + math.sin(a) * 105
+        z.append(ellipse(px, py, 120, 92, "#B23A2E", C, 7, extra=f'transform="rotate({k * 72} {px} {py})"'))
+        r = random.Random(k)
+        for _ in range(9):
+            z.append(circle(px + r.uniform(-60, 60), py + r.uniform(-40, 40), r.uniform(8, 14), "#F2D8C9", op=0.9))
+    z.append(ellipse(cx, cy, 110, 80, "#7A2A22", C, 7) + ellipse(cx, cy - 6, 76, 50, "#3A1A16", C, 4))
+    for k in range(7):
+        z.append(circle(cx - 45 + k * 15, cy - 10 + (k % 2) * 10, 6, "#F2D8C9"))
+    return "".join(z)
+
+
+@scene("bipa6.u10")
+def sinabung():
+    """Mount Sinabung over the Karo highlands, with orange groves at Berastagi."""
+    z = [sky(sun=(250, 260), r=70)]
+    z.append(path("M480 420 q-40 -60 10 -110 q20 -60 80 -50 q60 -30 100 20 q60 0 60 60 q-30 40 -90 30Z", "#C9C2BA", C, 4, 0.9))
+    z.append(path("M260 700 L470 430 Q512 410 554 430 L800 700Z", "#6E6A80", C, 6))
+    z.append(path("M470 430 L440 520 L500 480 L530 540 L554 430", "#B8B4C8", op=0.7))
+    z.append(path("M126 700 Q512 660 898 700 L898 972 L126 972Z", "#7FA65A"))
+    for row in range(4):
+        y = 740 + row * 60
+        z.append(path(f"M126 {y} Q512 {y - 20} 898 {y}", stroke=G, sw=22))
+    for k in range(5):
+        x = 190 + k * 160
+        z.append(ellipse(x, 900, 60, 50, G, C, 5) + line(x, 950, x, 972, C, 8))
+        for j in range(4):
+            z.append(circle(x - 30 + j * 20, 890 + (j % 2) * 16, 9, O, C, 2))
+    return "".join(z)
+
+
+# ---------------------------------------------------------------- BIPA 7 · Papua and Raja Ampat
+
+
+def karst_islet(x, y, w, h, color=G):
+    return path(f"M{x - w / 2} {y} Q{x - w * 0.62} {y - h * 0.7} {x - w * 0.25} {y - h} Q{x + w * 0.1} {y - h * 1.1} {x + w * 0.4} {y - h * 0.8} Q{x + w * 0.62} {y - h * 0.4} {x + w / 2} {y}Z", color, C, 6) + path(f"M{x - w / 2} {y} Q{x} {y - h * 0.12} {x + w / 2} {y}", stroke=C, sw=4, op=0.4)
+
+
+def canoe(x, y, s=1.0, rowers=2, color=D):
+    z = [path(f"M{x - 160 * s} {y - 24 * s} Q{x} {y + 24 * s} {x + 170 * s} {y - 30 * s} L{x + 140 * s} {y + 4 * s} Q{x} {y + 26 * s} {x - 130 * s} {y + 4 * s}Z", color, C, 5)]
+    z.append(path(f"M{x + 160 * s} {y - 28 * s} q20 -40 50 -40 q-10 20 -30 46", color, C, 4))  # carved prow
+    for k in range(rowers):
+        px = x - 70 * s + k * 90 * s
+        z.append(person(px, y - 4 * s, 0.6 * s, (O, R, I)[k % 3]))
+        z.append(line(px + 14 * s, y - 50 * s, px - 30 * s, y + 30 * s, C, 4))
+    return "".join(z)
+
+
+@scene("bipa7.u01")
+def sorong():
+    """Sorong harbour: a passenger ship, cranes and stacked containers."""
+    z = [sky(sun=(250, 260), r=70), sea(700)]
+    z.append(rect(X0, 600, W, 100, "#9C9488"))
+    for k, col in enumerate((R, I, G, O, I, R, G)):
+        z.append(rect(150 + (k % 4) * 90, 520 - (k // 4) * 50, 86, 48, col, 2, C, 4))
+    for cx in (640, 800):
+        z.append(line(cx, 600, cx, 300, C, 10) + line(cx, 310, cx - 160, 360, C, 8) + line(cx - 140, 352, cx - 140, 460, C, 3) + rect(cx - 160, 460, 40, 24, O, 2, C, 3))
+    z.append(ferry(512, 830, 1.05))
+    z.append(canoe(230, 930, 0.6, 1))
+    return "".join(z)
+
+
+def manta(x, y, s=1.0, rot=0):
+    b = path("M0 -30 Q-80 -40 -200 30 Q-80 10 0 50 Q80 10 200 30 Q80 -40 0 -30Z", "#34405E", C, 5)
+    b += path("M-20 -30 q-10 -26 -26 -30 M20 -30 q10 -26 26 -30", stroke=C, sw=6) + path("M0 50 L0 140", stroke=C, sw=4)
+    b += path("M-60 0 Q0 30 60 0", P, op=0.4)
+    return group(b, x, y, s, rot)
+
+
+@scene("bipa7.u02")
+def raja_ampat_reef():
+    """The reefs of Raja Ampat: soft corals, a manta and a swirl of small fish."""
+    z = [underwater()]
+    z.append(manta(560, 330, 1.0, -8))
+    r = random.Random(3)
+    for k in range(16):
+        a = k * 0.5
+        z.append(fish(300 + math.cos(a) * (60 + k * 6), 560 + math.sin(a) * (40 + k * 4), 0.55, (O, P, "#F2C94C")[k % 3], math.degrees(a) + 90))
+    z.append(path("M126 820 Q300 760 512 800 Q720 750 898 810 L898 972 L126 972Z", S))
+    for k, col in enumerate((K, O, "#9D6CC2", R, K, O)):
+        z.append(coral(170 + k * 130, 880 + (k % 2) * 30, 1.0, col))
+    for k in range(5):
+        x = 200 + k * 150
+        z.append(ellipse(x, 940, 50, 26, (G, "#9D6CC2", O)[k % 3], C, 4))
+    return "".join(z)
+
+
+@scene("bipa7.u03")
+def origin_myth():
+    """A Papuan origin myth: the morning star rising over the sea and a carved canoe."""
+    z = [rect(X0, Y0, W, H, I)]
+    z.append(path("M126 600 Q512 520 898 600 L898 640 L126 640Z", O, op=0.5))
+    r = random.Random(5)
+    for _ in range(40):
+        z.append(circle(r.uniform(140, 880), r.uniform(140, 520), r.uniform(1.5, 3.5), P, op=0.8))
+    sx, sy = 640, 300
+    z.append(path(" ".join(f"{'M' if k == 0 else 'L'}{sx + math.cos(math.radians(k * 45 - 90)) * (70 if k % 2 == 0 else 22)} {sy + math.sin(math.radians(k * 45 - 90)) * (70 if k % 2 == 0 else 22)}" for k in range(8)) + "Z", P, C, 4))
+    z.append(circle(sx, sy, 110, P, op=0.12))
+    z.append(sea(640, (T3, I, "#22305A")))
+    z.append(path(f"M{sx - 30} 650 L{sx + 30} 650 L{sx + 10} 900 L{sx - 10} 900Z", P, op=0.2))
+    z.append(canoe(420, 820, 1.2, 1))
+    return "".join(z)
+
+
+@scene("bipa7.u04")
+def piaynemo():
+    """Piaynemo lookout: two friends chatting above the karst islets."""
+    z = [sky(sun=(780, 240), r=60)]
+    z.append(rect(X0, 460, W, 512, T1))
+    for x, y, w, h in ((220, 560, 160, 90), (420, 520, 140, 70), (640, 600, 220, 120), (300, 700, 220, 130), (780, 740, 200, 120), (520, 820, 240, 140)):
+        z.append(karst_islet(x, y, w, h))
+    z.append(path("M126 972 L126 820 Q260 800 340 880 L420 972Z", "#6E5A50", C, 6))
+    for k in range(5):
+        z.append(line(150 + k * 50, 970, 170 + k * 50, 830 + k * 14, D, 8))
+    z.append(person(200, 880, 0.9, O, scarf=None) + person(300, 920, 0.9, R))
+    for bx, by in ((160, 700), (330, 740)):
+        z.append(path(f"M{bx} {by} q0 -50 60 -50 q60 0 60 50 q0 50 -60 50 q-20 0 -36 -6 l-24 14 l8 -24 q-8 -14 -8 -34Z", P, C, 4))
+        z.append(circle(bx + 36, by, 6, C) + circle(bx + 60, by, 6, C) + circle(bx + 84, by, 6, C))
+    return "".join(z)
+
+
+@scene("bipa7.u06")
+def misool():
+    """Misool: ochre hand stencils on a karst cliff above clear water."""
+    z = [sky(sun=(250, 230), r=60)]
+    z.append(path("M380 122 L898 122 L898 760 L420 760 Q400 600 460 520 Q380 420 420 300Z", "#B8A48A", C, 6))
+    r = random.Random(9)
+    for k in range(7):
+        x, y = 520 + (k % 4) * 90 + r.uniform(-10, 10), 320 + (k // 4) * 140 + r.uniform(-10, 10)
+        hand = path("M0 40 Q-30 30 -30 0 L-34 -40 M-14 2 L-16 -56 M0 0 L2 -62 M14 2 L18 -54 M26 10 L44 -20", stroke="#B8582E", sw=14, op=0.85) + ellipse(0, 20, 30, 30, "#B8582E", op=0.85)
+        z.append(group(hand, x, y, 0.8, r.uniform(-20, 20)))
+    z.append(path("M640 520 L700 470 L740 540 M600 600 Q650 560 700 600", stroke="#B8582E", sw=8, op=0.7))
+    z.append(rect(X0, 740, W, 232, T1) + path("M126 820 Q512 790 898 830 L898 972 L126 972Z", T2))
+    z.append(karst_islet(220, 760, 200, 220) + karst_islet(340, 780, 120, 120, "#3F7A33"))
+    z.append(group(path("M-60 -10 Q0 14 70 -14 L56 6 Q0 24 -50 6Z", D, C, 4), 560, 880, 1.2))
+    return "".join(z)
+
+
+@scene("bipa7.u07")
+def mansinam():
+    """Mansinam island off Manokwari: a green island, a small white church, a boat."""
+    z = [sky(sun=(700, 270), r=80), sea(640)]
+    z.append(path("M180 660 Q300 480 520 500 Q760 520 840 660Z", G, C, 6))
+    z.append(path("M180 660 Q512 690 840 660", S, C, 4))
+    z.append(rect(450, 560, 110, 80, P, 3, C, 5) + path("M440 560 L505 500 L570 560Z", R, C, 5) + line(505, 500, 505, 456, C, 5) + line(488, 474, 522, 474, C, 5) + rect(490, 600, 30, 40, C, 3))
+    for x in (280, 360, 650, 740):
+        z.append(palm(x, 640, 110, 6, 0.5))
+    z.append(path("M126 880 Q300 840 420 860 L420 972 L126 972Z", S))
+    z.append(boat(640, 860, 0.9, D, None, True))
+    return "".join(z)
+
+
+@scene("bipa7.u08")
+def teluk_jayapura():
+    """Jayapura bay: the red arch of the Youtefa bridge between green hills."""
+    z = [sky(sun=(512, 260), r=70)]
+    z.append(path("M126 640 Q200 420 360 560 L360 680 L126 680Z", G, C, 5) + path("M898 620 Q800 400 660 560 L660 680 L898 680Z", G, C, 5))
+    for k in range(8):
+        z.append(rect(150 + k * 26, 590 - (k % 3) * 18, 18, 18, P, 2, C, 2) + rect(700 + k * 24, 580 - (k % 3) * 18, 18, 18, P, 2, C, 2))
+    z.append(sea(660))
+    z.append(path("M126 680 L898 680", stroke=C, sw=10) + path("M126 680 L898 680", stroke=P, sw=4))
+    for cx, w, h in ((380, 260, 200), (650, 260, 200)):
+        z.append(path(f"M{cx - w / 2} 680 Q{cx} {680 - h * 2} {cx + w / 2} 680", stroke=R, sw=14) + path(f"M{cx - w / 2} 680 Q{cx} {680 - h * 2} {cx + w / 2} 680", stroke=C, sw=2, op=0.5))
+        for k in range(1, 8):
+            t = k / 8
+            xx = cx - w / 2 + w * t
+            yy = 680 - 4 * h * t * (1 - t)
+            z.append(line(xx, yy, xx, 680, C, 3))
+    for x in (250, 515, 780):
+        z.append(rect(x - 10, 686, 20, 70, "#9C9488", 2, C, 4))
+    z.append(boat(260, 880, 0.7, D, None, True))
+    return "".join(z)
+
+
+@scene("bipa7.u09")
+def sentani():
+    """Lake Sentani festival: dancers on joined canoes among the lake's islands."""
+    z = [sky(sun=(250, 270), r=70)]
+    z.append(path("M126 560 Q300 420 512 520 Q700 400 898 520 L898 600 L126 600Z", "#6E7FA8"))
+    z.append(sea(580, (T2, T3, I)))
+    z.append(island(760, 640, 90, 40, 0, False) + island(260, 620, 70, 28, 0, False))
+    for k in range(4):
+        z.append(rect(560 + k * 40, 600, 30, 40, D, 2, C, 3) + path(f"M{555 + k * 40} 600 L{575 + k * 40} 580 L{595 + k * 40} 600Z", "#6E5A50", C, 3))
+    # two canoes lashed together with a platform of dancers
+    z.append(canoe(460, 880, 1.3, 0) + canoe(560, 830, 1.1, 0))
+    z.append(rect(300, 780, 420, 20, D, 3, C, 4))
+    for k, x in enumerate((360, 450, 540, 630)):
+        z.append(person(x, 780, 0.9, (R, I, O, R)[k]))
+        for j in range(3):
+            z.append(line(x, 680, x - 20 + j * 20, 640, (C, P, C)[j], 5))
+    return "".join(z)
+
+
+def honai(cx, y, s=1.0):
+    b = rect(-70, -100, 140, 100, D, 4, C, 5) + rect(-20, -60, 40, 60, C, 4)
+    b += path("M-100 -90 Q-100 -230 0 -240 Q100 -230 100 -90Z", "#8C7A5A", C, 6)
+    b += "".join(path(f"M{-90 + k * 30} -96 Q{-60 + k * 20} -180 0 -236", stroke=C, sw=2, op=0.35) for k in range(7))
+    return group(b, cx, y, s)
+
+
+@scene("bipa7.u10")
+def baliem():
+    """The Baliem valley festival: honai huts, high peaks and dancers with plumes."""
+    z = [sky(sun=(700, 250), r=60)]
+    z.append(path("M126 560 L260 340 L360 460 L500 280 L640 450 L760 330 L898 520 L898 640 L126 640Z", "#6E7FA8", C, 5))
+    z.append(path("M480 310 L500 280 L520 310Z M245 365 L260 340 L275 365Z", P))
+    z.append(path("M126 640 Q512 600 898 650 L898 972 L126 972Z", "#7FA65A"))
+    z.append(honai(220, 760, 0.9) + honai(360, 720, 0.7) + honai(800, 740, 0.8))
+    for k, x in enumerate((420, 520, 620, 720)):
+        y = 920 - (k % 2) * 20
+        z.append(person(x, y, 1.0, C, head=C))
+        z.append(path(f"M{x - 8} {y - 126} L{x - 30} {y - 200} M{x} {y - 126} L{x} {y - 210} M{x + 8} {y - 126} L{x + 30} {y - 200}", stroke=(P, C, P, C)[k], sw=8))
+        z.append(line(x + 30, y - 10, x + 50, y - 240, D, 6))
+        z.append(rect(x - 16, y - 80, 32, 8, O, 2))
+    return "".join(z)
+
+
 # ---------------------------------------------------------------- frame
 
 
