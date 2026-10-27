@@ -638,69 +638,69 @@ levels:
       pass_mark: 0.75
       covers: ["krama inggil vs andhap", "honorific nouns", "etiquette phrases", "ngoko alus", "five Respect Meter situations"]
 
-  # ───────────────────────────── J5 · Semarang (branch line) ─────────────────────────────
+  # ───────────────────────────── J5 · Madiun, Kutha Pendekar (branch line) ─────────────────────────────
   - id: j5
     code: J5
     vocab_target: 1250
-    title: { target: "Semarang", en: "Reading real Javanese texts", ar: "قراءة نصوص جاوية حقيقية" }
+    title: { target: "Kutha Pendekar", en: "Reading real Javanese texts", ar: "قراءة نصوص جاوية حقيقية" }
     requires: [j4]
-    journey: { place: Semarang, kind: branch_line, note: "A branch line north to the coast: Semarang, Kudus, Demak." }
+    journey: { place: "Kutha Pendekar (Madiun)", kind: branch_line, note: "Back east to Madiun, the Kutha Pendekar, with day trips north to the Walisongo towns of Kudus and Demak." }
     capability:
       en: Read real Javanese — Wikipedia articles, news, social posts and short stories — with help from the Reader, and understand their register.
     units:
       - id: j5.u01
         title: { target: "Wikipedia basa Jawa", en: "Javanese Wikipedia", ar: "ويكيبيديا الجاوية" }
-        stop: Semarang Tawang
+        stop: Stasiun Madiun
         can_do:
           - Read an encyclopedic article in standard written ngoko
           - Recognise written connectors (ing, saka, dening, iku, kang)
         grammar: [jv.reading.written-style]
         vocabulary: ["encyclopedic vocabulary"]
-        culture: { souvenir: Kota Lama Semarang, note: "Javanese Wikipedia is written mostly in ngoko with formal connectors; it is a free, real corpus for practice." }
+        culture: { souvenir: Jalan Pahlawan Madiun, note: "Javanese Wikipedia is written mostly in ngoko with formal connectors; it is a free, real corpus for practice." }
         lessons:
           - { id: j5.u01.l01, kind: learn, title: "Iku lan yaiku", can_do: "Read the definition that opens an encyclopedia article.", grammar: [jv.reading.written-style], minutes: 7 }
           - { id: j5.u01.l02, kind: learn, title: "Ing lan kang", can_do: "Read where things are and which ones, in written style.", grammar: [jv.reading.written-style], minutes: 7 }
           - { id: j5.u01.l03, kind: learn, title: "Minangka lan kalebu", can_do: "Read 'as', 'among' and 'one of' in an article.", grammar: [jv.reading.written-style], minutes: 7 }
           - { id: j5.u01.l04, kind: learn, title: "Tebing lan pegunungan", can_do: "Read how a geography article describes a place: mountains, cliffs, borders, trees and wildlife.", minutes: 7 }
           - { id: j5.u01.l05, kind: learn, title: "Abad lan riwayat", can_do: "Read the history part of an article: centuries, ancient sites, monuments and big numbers.", minutes: 7 }
-          - { id: j5.u01.l06, kind: practice, title: "Artikel Semarang", can_do: "Read an article about Semarang.", minutes: 6 }
+          - { id: j5.u01.l06, kind: practice, title: "Artikel Madiun", can_do: "Read an article about Madiun.", minutes: 6 }
           - { id: j5.u01.l07, kind: practice, title: "Ringkesan", can_do: "Summarise an article in Indonesian or Arabic.", minutes: 6 }
-          - { id: j5.u01.l08, kind: practice, title: "Artikel Stasiun Tawang", can_do: "Read a short article about Tawang Station.", minutes: 6 }
+          - { id: j5.u01.l08, kind: practice, title: "Artikel Stasiun Madiun", can_do: "Read a short article about Madiun Station.", minutes: 6 }
           - { id: j5.u01.l09, kind: practice, title: "Kairo ing Wikipedia", can_do: "Follow a Wikipedia article about Cairo by ear.", minutes: 5 }
-          - { id: j5.u01.l10, kind: practice, title: "Lumpia Semarang", can_do: "Read a short article about a famous food.", minutes: 6 }
+          - { id: j5.u01.l10, kind: practice, title: "Brem Madiun", can_do: "Read a short article about a famous food.", minutes: 6 }
           - { id: j5.u01.l11, kind: review, title: "Ulangan J5.1", can_do: "Read a new article.", minutes: 7 }
 
       - id: j5.u02
         title: { target: "Warta", en: "News", ar: "الأخبار" }
-        stop: Lawang Sewu
+        stop: INKA
         can_do:
           - Read short news items in Javanese
           - Understand written passives with dening
         grammar: [jv.passive.written]
         vocabulary: ["news vocabulary"]
-        culture: { souvenir: Lawang Sewu, note: "Regional TV and magazines (Panjebar Semangat, Jaya Baya) have published in Javanese for decades." }
+        culture: { souvenir: Gerbong INKA, note: "Javanese weeklies like Djaka Lodang (Yogyakarta, since 1971) have published local news and readers' letters for decades." }
         lessons:
           - { id: j5.u02.l01, kind: learn, title: "Di-… dening…", can_do: "Read written passives with dening.", grammar: [jv.passive.written], minutes: 7 }
           - { id: j5.u02.l02, kind: learn, title: "Kapilih lan tinulis", can_do: "Recognise the formal ka- and -in- passives.", grammar: [jv.passive.written], minutes: 7 }
           - { id: j5.u02.l03, kind: learn, title: "Musibah ing dalan", can_do: "Follow a news item about an accident: what happened, who helped and what the police said.", minutes: 7 }
           - { id: j5.u02.l04, kind: learn, title: "Pejabat lan warga", can_do: "Read local news about officials, the council, elections and what residents decided.", minutes: 7 }
           - { id: j5.u02.l05, kind: practice, title: "Warta cekak", can_do: "Read a short news item.", minutes: 7 }
-          - { id: j5.u02.l06, kind: practice, title: "Panjebar Semangat", can_do: "Read a reader's letter in a Javanese magazine.", minutes: 7 }
-          - { id: j5.u02.l07, kind: practice, title: "Pameran ing Lawang Sewu", can_do: "Read a news item about an exhibition.", minutes: 6 }
+          - { id: j5.u02.l06, kind: practice, title: "Djaka Lodang", can_do: "Read a reader's letter in a Javanese magazine.", minutes: 7 }
+          - { id: j5.u02.l07, kind: practice, title: "Pameran ing stasiun", can_do: "Read a news item about an exhibition.", minutes: 6 }
           - { id: j5.u02.l08, kind: practice, title: "Warta radio", can_do: "Follow a short radio news bulletin by ear.", minutes: 6 }
           - { id: j5.u02.l09, kind: practice, title: "Pengumuman kerja bakti", can_do: "Read a neighbourhood notice.", minutes: 6 }
-          - { id: j5.u02.l10, kind: practice, title: "Sejarah Lawang Sewu", can_do: "Read a magazine paragraph on a building's history.", minutes: 7 }
+          - { id: j5.u02.l10, kind: practice, title: "Sejarah Benteng Pendem", can_do: "Read a magazine paragraph on a fort's history and its name.", minutes: 7 }
           - { id: j5.u02.l11, kind: review, title: "Ulangan J5.2", can_do: "Retell a news item.", minutes: 7 }
 
       - id: j5.u03
         title: { target: "Ejaan", en: "Spelling", ar: "الإملاء" }
-        stop: Simpang Lima
+        stop: Alun-alun Madiun
         can_do:
           - Read standard spelling vs spoken / chat spelling (pira / piro, apa / opo)
           - Hear and write dh / d and th / t
         grammar: [jv.orthography]
         vocabulary: ["minimal pairs (dhadha / dada)", "a vs å"]
-        culture: { souvenir: Simpang Lima square, note: "Standard spelling writes 'a' where speakers say 'o' at word end (pira, sega); chats spell by ear. Minimal Pairs game trains dh / d and th / t." }
+        culture: { souvenir: Alun-alun Madiun, note: "Standard spelling writes 'a' where speakers say 'o' at word end (pira, sega); chats spell by ear. Minimal Pairs game trains dh / d and th / t." }
         lessons:
           - { id: j5.u03.l01, kind: learn, title: "Pira utawa piro?", can_do: "Map the spoken o back to the standard a.", grammar: [jv.orthography], minutes: 7 }
           - { id: j5.u03.l02, kind: learn, title: "Loro utawa lara?", can_do: "Tell a real o from a written a, and normalise chat spellings.", grammar: [jv.orthography], minutes: 7 }
