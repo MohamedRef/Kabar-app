@@ -1,0 +1,202 @@
+schema: kabar.lesson/v1
+id: bipa3.u04.l10
+language: id
+title: Ulangan Unit 4
+can_do:
+  ar_eg: تعرّف حاجة وتشرح فايدتها للصحة.
+  ar: أن تعرّف شيئًا وتشرح فائدته للصحة.
+  en: Define and explain.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: gizi
+        ar_eg: تغذية، قيمة غذائية
+        ar: تغذية
+        en: nutrition
+      - text: serat
+        ar_eg: ألياف
+        ar: ألياف
+        en: fibre
+      - text: makanan pokok
+        ar_eg: الأكل الأساسي
+        ar: الغذاء الأساسي
+        en: staple food
+      - text: tekanan darah
+        ar_eg: ضغط الدم
+        ar: ضغط الدم
+        en: blood pressure
+      - text: manfaat
+        ar_eg: فايدة
+        ar: فائدة
+        en: benefit
+    words: [gizi, serat, makanan pokok, tekanan darah, manfaat]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ جملة صحيحة؟
+      en: Which sentence is correct?
+    options: ["Sayur ini adalah segar.", "Sayur ini segar.", "Sayur ini merupakan segar."]
+    answer: 1
+    explain:
+      ar_eg: segar صفة، ومفيش adalah ولا merupakan قبل الصفة.
+      ar: segar صفة، ولا تسبق الصفةَ adalah ولا merupakan.
+      en: segar is an adjective; neither adalah nor merupakan goes before an adjective.
+  - id: e03
+    type: listen
+    text: Sembalun merupakan daerah sayur dan stroberi.
+    options: ["Sembalun adalah daerah sayur dan stroberi.", "Sembalun merupakan daerah sayur dan stroberi.", "Sembalun merupakan daerah jagung dan stroberi."]
+    answer: 1
+    meaning:
+      ar_eg: سمبالون منطقة خضار وفراولة.
+      ar: سمبالون منطقة لزراعة الخضار والفراولة.
+      en: Sembalun is an area of vegetables and strawberries.
+  - id: e04
+    type: listen
+    text: Bu Rohani punya dua kebun, yaitu kebun sayur dan kebun stroberi.
+    question:
+      ar_eg: مدام روحاني عندها أنهي جناين؟
+      ar: ما البساتين التي تملكها السيدة روحاني؟
+      en: What gardens does Bu Rohani have?
+    options: ["kebun jagung dan kebun ubi", "kebun kopi dan kebun teh", "kebun sayur dan kebun stroberi"]
+    answer: 2
+    meaning:
+      ar_eg: "مدام روحاني عندها جنينتين: جنينة خضار وجنينة فراولة."
+      ar: للسيدة روحاني بستانان، وهما بستان خضار وبستان فراولة.
+      en: Bu Rohani has two gardens, namely a vegetable garden and a strawberry garden.
+    words: [kebun, yaitu]
+  - id: e05
+    type: fill_blank
+    sentence: Bu Yanti ___ sayur sebelum memasaknya.
+    meaning:
+      ar_eg: مدام يانتي بتنضّف الخضار قبل ما تطبخه.
+      ar: تنظّف السيدة يانتي الخضار قبل طبخها.
+      en: Bu Yanti cleans the vegetables before cooking them.
+    options: [bersih, membersih, membersihkan]
+    answers: [membersihkan]
+    words: [membersihkan]
+  - id: e06
+    type: fill_blank
+    sentence: Jalan kaki setiap pagi bisa ___ tekanan darah.
+    meaning:
+      ar_eg: المشي كل يوم الصبح ممكن ينزّل الضغط.
+      ar: المشي كل صباح قد يخفّض ضغط الدم.
+      en: Walking every morning can lower blood pressure.
+    options: [mematikan, menurunkan, menaikkan]
+    answers: [menurunkan]
+    words: [menurunkan, tekanan darah]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: "فيه هنا أكلتين أساسيتين: الرز والدرة."
+      ar: هنا غذاءان أساسيان، وهما الأرز والذرة.
+      en: There are two staple foods here, namely rice and corn.
+    answer: Ada dua makanan pokok di sini, yaitu nasi dan jagung.
+    distractors: [adalah, bukan]
+    words: [makanan pokok, yaitu, jagung]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اللبن بيقوّي العضم.
+      ar: الحليب يقوّي العظام.
+      en: Milk strengthens the bones.
+    answers:
+      - Susu menguatkan tulang.
+      - Susu menguatkan tulang
+      - Susu bisa menguatkan tulang.
+      - Susu menguatkan tulang-tulang.
+    words: [menguatkan, tulang]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: penyakit
+        ar_eg: مرض
+        ar: مرض
+        en: illness, disease
+      - text: rokok
+        ar_eg: سيجارة، سجاير
+        ar: سيجارة
+        en: cigarette
+      - text: racun
+        ar_eg: سم
+        ar: سمّ
+        en: poison
+      - text: murni
+        ar_eg: صافي، خالص
+        ar: نقيّ، خالص
+        en: pure
+      - text: teknologi
+        ar_eg: تكنولوجيا
+        ar: تقنية، تكنولوجيا
+        en: technology
+      - text: keuntungan
+        ar_eg: مكسب
+        ar: ربح
+        en: profit
+    words: [penyakit, rokok, racun, murni, teknologi, keuntungan]
+  - id: e10
+    type: dictation
+    text: Makanan yang sama setiap hari membosankan.
+    meaning:
+      ar_eg: نفس الأكل كل يوم بيزهّق.
+      ar: الطعام نفسه كل يوم مملّ.
+      en: The same food every day is boring.
+    words: [membosankan]
+  - id: e11
+    type: speaking
+    text: Stroberi merupakan buah yang kaya vitamin C dan menyehatkan tubuh.
+    meaning:
+      ar_eg: الفراولة فاكهة غنية بفيتامين سي وبتخلّي الجسم صحي.
+      ar: الفراولة فاكهة غنية بفيتامين C وتقوّي صحة الجسم.
+      en: Strawberries are a fruit rich in vitamin C, and they keep the body healthy.
+    words: [kaya, menyehatkan, tubuh]
+  - id: e12
+    type: fill_blank
+    sentence: Sayur dari kebun ini tidak memakai bahan ___.
+    meaning:
+      ar_eg: خضار الجنينة دي مش بيستخدم مواد ___.
+      ar: خضار هذا البستان لا تُستخدم فيها مواد ___.
+      en: The vegetables from this farm don't use ___ products.
+    options: [stres, pertanian, kimia]
+    answers: [kimia]
+    words: [kimia, stres, pertanian]
+dialogue:
+  title: Oleh-oleh dari Sembalun
+  lines:
+    - speaker: Bu Rohani
+      text: Mohamed, ini stroberi dari kebun saya. Oleh-oleh untuk Bu Yanti.
+      ar_eg: يا محمد، دي فراولة من جنينتي. هدية لمدام يانتي.
+      ar: يا محمد، هذه فراولة من بستاني، هدية للسيدة يانتي.
+      en: Mohamed, here are strawberries from my garden. A gift for Bu Yanti.
+    - speaker: Mohamed
+      text: Terima kasih banyak, Bu! Stroberi Sembalun manis dan bergizi.
+      ar_eg: متشكر أوي يا حاجة! فراولة سمبالون مسكّرة ومغذّية.
+      ar: شكرًا جزيلًا يا سيدتي! فراولة سمبالون حلوة ومغذّية.
+      en: Thank you so much, Bu! Sembalun strawberries are sweet and nutritious.
+    - speaker: Bu Rohani
+      text: Ya. Jangan lupa, makanan yang seimbang menyehatkan tubuh.
+      ar_eg: أيوه. وماتنساش، الأكل المتوازن بيخلّي الجسم صحي.
+      ar: نعم. ولا تنسَ أن الطعام المتوازن يقوّي صحة الجسم.
+      en: Yes. And don't forget, a balanced diet keeps the body healthy.
+    - speaker: Mohamed
+      text: Siap, Bu! Di Mataram, saya mau mengurangi makanan goreng.
+      ar_eg: حاضر يا حاجة! في ماتارام هقلّل الأكل المقلي.
+      ar: حاضر يا سيدتي! سأقلّل الطعام المقلي في ماتارام.
+      en: Will do, Bu! In Mataram I'm going to cut down on fried food.
+    - speaker: Bu Rohani
+      text: Bagus! Semoga sehat selalu, ya.
+      ar_eg: حلو! ربنا يديك الصحة على طول.
+      ar: أحسنت! دمتَ بصحة وعافية.
+      en: Good! Stay healthy always.
+souvenir:
+  id: bipa3.u04.souvenir
+  title: Kebun stroberi Sembalun
+  note:
+    ar_eg: وادي سمبالون تحت جبل رينجاني، والجو فيه ساقع ومنعش طول السنة. الفلاحين هناك بيزرعوا خضار وفراولة بتتباع في أسواق الجزيرة كلها، والناس بتيجي مخصوص تقطف الفراولة بإيديها. لو عديت من هناك، جرّب فراولة طازة من الغيط على طول!
+    ar: يقع وادي سمبالون عند سفح جبل رينجاني، وهواؤه بارد منعش طوال العام. يزرع فلاحوه الخضار والفراولة التي تُباع في أسواق الجزيرة كلها، ويأتي الزوار خصيصًا ليقطفوا الفراولة بأيديهم. فإن مررتَ به، فتذوّق فراولة طازجة من البستان مباشرة!
+    en: Sembalun valley lies at the foot of Mount Rinjani, cool and fresh all year round. Its farmers grow vegetables and strawberries sold in markets across the island, and visitors come especially to pick strawberries by hand. If you pass through, taste one straight from the field!
+review:
+  status: draft
+  verified: false
