@@ -21,6 +21,7 @@ use crate::audio::{self, AudioCache, Track};
 use crate::cloud::SyncState;
 use crate::cloud::link::Unreachable;
 use crate::lesson::{Rich, target_tag};
+use crate::portraits::{self, Face, Mood};
 use crate::{Ui, platform};
 
 /// One `<audio>` element for the whole player, driven by messages. Every
@@ -540,7 +541,12 @@ pub fn ProgramPlayer(
                                         class: "lx-line",
                                         aria_current: if i == current && playing { "true" } else { "false" },
                                         onclick: move |_| deck.play(i),
-                                        span { class: "lx-speaker", bdi { "{cue.speaker}" } }
+                                        span { class: "lx-speaker",
+                                            if let Some(src) = portraits::of(&cue.speaker, Mood::Neutral) {
+                                                Face { src, class: "lx-face" }
+                                            }
+                                            bdi { "{cue.speaker}" }
+                                        }
                                         Annotated { text: cue.text.clone(), tag: target, class: "lx-text" }
                                     }
                                     if show_all() || revealed.read().contains(&i) {

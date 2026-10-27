@@ -37,6 +37,7 @@ use crate::coach::labels::level_name;
 use crate::embedded::{self, PERSONAS};
 use crate::lesson::{Rich, target_tag};
 use crate::listen::player::ProgramPlayer;
+use crate::portraits::{self, Face, Mood};
 use crate::reader::translate::in_voice;
 use crate::store::now_ms;
 use crate::studio::pad::{InkAnswer, InkPad};
@@ -235,11 +236,31 @@ pub fn ChatScreen() -> Element {
     }
 }
 
+/// The partner's portrait (`assets/portraits.yaml`), or their initial until
+/// Codex has drawn them.
 #[component]
-fn Avatar(name: String, javanese: bool) -> Element {
+fn Avatar(name: String, javanese: bool, #[props(default)] mood: Mood) -> Element {
+    let class = if javanese { "ch-avatar jv" } else { "ch-avatar" };
+    if let Some(src) = portraits::of(&name, mood) {
+        return rsx! { Face { src, class } };
+    }
     let initial: String = name.split_whitespace().last().and_then(|w| w.chars().next()).into_iter().collect();
     rsx! {
-        span { class: if javanese { "ch-avatar jv" } else { "ch-avatar" }, aria_hidden: "true", "{initial}" }
+        span { class, aria_hidden: "true", "{initial}" }
+    }
+}
+
+/// How the partner looks at you: thinking while they write, explaining when
+/// your last message got a fix, pleased when it didn't, listening otherwise.
+fn mood_of(busy: bool, all: &[ChatMessage]) -> Mood {
+    if busy {
+        return Mood::Thinking;
+    }
+    let mine = all.iter().rev().find(|m| m.role == ChatRole::Learner);
+    match (all.last().map(|m| m.role), mine) {
+        (Some(ChatRole::Persona), Some(m)) if !m.corrections.is_empty() => Mood::Explaining,
+        (Some(ChatRole::Persona), Some(_)) => Mood::Laughing,
+        _ => Mood::Listening,
     }
 }
 
@@ -539,7 +560,7 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
         div { class: "ch-chat",
             header { class: "ch-head",
                 button { class: "quiet", onclick: move |_| on_back.call(()), "{tt(lang, T::Back)}" }
-                Avatar { name: p.name.clone(), javanese: is_javanese(p) }
+                Avatar { name: p.name.clone(), javanese: is_javanese(p), mood: mood_of(busy, &all) }
                 h2 { bdi { class: "latin", "{p.name}" } }
                 span { class: "pill small latin", "{level_name(&c.level)}" }
                 {

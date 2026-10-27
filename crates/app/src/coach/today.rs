@@ -15,6 +15,7 @@ use kabar_protocol::coach::{
 use super::widgets::{Nur, Progress, SizePicker, Stat};
 use super::{Coach, build_plan, labels, logic, plan_for, say};
 use crate::i18n::Msg;
+use crate::portraits::Mood;
 use crate::{Db, Screen, Ui, icons};
 
 /// Where a plan item's "start" button goes.
@@ -404,7 +405,7 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     rsx! {
         div { class: "card recap",
             h2 { "{ui.t(Msg::RecapTitle)}" }
-            Nur { text: headline }
+            Nur { mood: Mood::Laughing, text: headline }
             div { class: "stats-row",
                 Stat { value: labels::minutes(&ui, r.minutes), label: Msg::StatTime }
                 Stat { value: ui.num(steps.max(r.items_done)), label: Msg::StatSteps }
