@@ -309,7 +309,11 @@ pub fn Reader() -> Element {
                         open_new(&db, st, &text, TextKind::Shared, source.as_deref(), None, recent);
                     }
                 },
-                SharedInput::Image { path, source, .. } => {
+                SharedInput::Image { path, source, more, .. } => {
+                    if more > 0 {
+                        let mut toast = st.toast;
+                        toast.set(Some(Msg::ShareFirstImageOnly));
+                    }
                     run_ocr(db.clone(), st, busy, recent, std::path::PathBuf::from(path), source);
                 }
             }
