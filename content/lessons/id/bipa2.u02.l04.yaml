@@ -106,10 +106,6 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kantor
-        ar_eg: مكتب، شركة
-        ar: مكتب
-        en: office
       - text: rapat
         ar_eg: اجتماع
         ar: اجتماع
@@ -126,7 +122,15 @@ exercises:
         ar_eg: زميل في الشغل
         ar: زميل عمل
         en: colleague
-    words: [kantor, rapat, istirahat, lembur, rekan kerja]
+      - text: pulang kerja
+        ar_eg: يروّح من الشغل
+        ar: يعود من العمل
+        en: go home from work
+      - text: lelah
+        ar_eg: تعبان
+        ar: متعب
+        en: tired
+    words: [rapat, istirahat, lembur, rekan kerja, pulang kerja, lelah]
   - id: e02
     type: listen
     text: Saya masuk kerja jam delapan pagi.
@@ -141,7 +145,7 @@ exercises:
       en: It's 5 p.m. and work is over. What are you doing?
     options: [Saya pulang kerja., Saya rapat., Saya masuk kerja.]
     answer: 0
-    words: [pulang kerja]
+    words: [pulang kerja, rapat, masuk kerja]
   - id: e04
     type: fill_blank
     sentence: Hari ini saya lembur, jadi saya ___.
@@ -155,20 +159,30 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: مكتبي جنب السوق.
-      ar: مكتبي قريب من السوق.
-      en: My office is near the market.
-    answer: Kantor saya dekat pasar.
-    distractors: [jauh, rapat]
-    words: [kantor, dekat]
+      ar_eg: زميلي اشتغل أوفر تايم، فهو تعبان.
+      ar: زميلي عمل وقتًا إضافيًا، لذلك هو متعب.
+      en: My colleague worked overtime, so he's tired.
+    answer: Rekan kerja saya lembur, jadi dia lelah.
+    distractors: [rapat, kantor]
+    words: [rekan kerja, lembur, lelah]
   - id: e06
     type: speaking
-    text: Saya masuk kerja jam delapan dan pulang jam lima.
+    text: Saya masuk kerja jam delapan. Jam dua belas saya dan rekan kerja saya istirahat.
     meaning:
-      ar_eg: ببدأ الشغل الساعة تمانية وبروّح الساعة خمسة.
-      ar: أبدأ العمل في الثامنة وأعود في الخامسة.
-      en: I start work at eight and go home at five.
-    words: [masuk kerja, pulang]
+      ar_eg: ببدأ الشغل الساعة تمانية. الساعة اتناشر أنا وزميلي بناخد بريك.
+      ar: أبدأ العمل في الثامنة. وفي الثانية عشرة أستريح أنا وزميلي.
+      en: I start work at eight. At twelve my colleague and I take a break.
+    words: [masuk kerja, rekan kerja, istirahat]
+  - id: e07
+    type: listen
+    text: Sesudah rapat, kami istirahat.
+    options: ['Sesudah rapat, kami istirahat.', 'Sesudah rapat, kami lembur.', 'Sebelum rapat, kami istirahat.']
+    answer: 0
+    meaning:
+      ar_eg: بعد الاجتماع بناخد بريك.
+      ar: بعد الاجتماع نستريح.
+      en: After the meeting, we take a break.
+    words: [rapat, istirahat, lembur]
 dialogue:
   title: Hari kerja Ni Luh
   lines:
