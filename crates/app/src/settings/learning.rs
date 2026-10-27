@@ -2,7 +2,7 @@
 //! These sync to every device.
 
 use dioxus::prelude::*;
-use kabar_core::settings::{PronMode, TranslationMode};
+use kabar_core::settings::{PronMode, RetentionPct, TranslationMode};
 
 use super::text::{S, st};
 use crate::i18n::Msg;
@@ -14,6 +14,12 @@ pub fn LearningSection() -> Element {
     let db = use_context::<Db>();
     let settings = ui.settings.read().clone();
     let lang = ui.lang();
+    let tuning = match &settings.fsrs {
+        Some(p) => ui.t(Msg::RetentionTuned).replace("{n}", &ui.num(u64::from(p.reviews))),
+        None => ui
+            .t(Msg::RetentionLearning)
+            .replace("{n}", &ui.num(kabar_core::srs::MIN_REVIEWS_TO_OPTIMIZE as u64)),
+    };
 
     rsx! {
         div { class: "card",
@@ -70,6 +76,25 @@ pub fn LearningSection() -> Element {
                     }
                     " {st(lang, S::WordColours)}"
                 }
+            }
+
+            div { class: "field",
+                span { class: "label", "{ui.t(Msg::SettingsRetention)}" }
+                div { class: "row", role: "group",
+                    for (pct, label) in [(85u8, Msg::RetentionLight), (90, Msg::RetentionBalanced), (95, Msg::RetentionFirm)] {
+                        button {
+                            key: "{pct}",
+                            aria_pressed: if settings.desired_retention.0 == pct { "true" } else { "false" },
+                            onclick: {
+                                let db = db.clone();
+                                move |_| ui.update_settings(&db, |s| s.desired_retention = RetentionPct(pct))
+                            },
+                            "{ui.t(label)} · {ui.num(u64::from(pct))}%"
+                        }
+                    }
+                }
+                p { class: "muted small", "{ui.t(Msg::RetentionHint)}" }
+                p { class: "muted small", "{tuning}" }
             }
 
             div { class: "field",

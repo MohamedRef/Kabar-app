@@ -237,18 +237,25 @@ impl Progress {
     }
 
     /// Applies a placement result: when the current lesson sits before
-    /// `level_id` on the route, Lanjut moves to the first unfinished lesson
-    /// from that level on. Nothing is marked done, and earlier lessons stay
-    /// open. Unknown levels (e.g. the other route's) change nothing.
-    pub fn start_at(mut self, curriculum: &Curriculum, level_id: &str) -> Self {
-        let Some(start) = curriculum.levels.iter().position(|l| l.id == level_id) else { return self };
-        let level_of = |id: &str| curriculum.levels.iter().position(|l| l.lessons().any(|x| x.id == id));
-        if self.current.as_deref().and_then(level_of).is_some_and(|at| at < start) {
-            self.current = curriculum.levels[start..]
-                .iter()
-                .flat_map(Level::lessons)
-                .find(|l| !self.done.contains(&l.id))
-                .map(|l| l.id.clone());
+    /// `start` on the route, Lanjut moves to the first unfinished lesson from
+    /// there on. `start` is a level (`bipa2`) or, when the test could tell, a
+    /// unit inside it (`bipa2.u03`). Nothing is marked done, and earlier
+    /// lessons stay open. Unknown ids (e.g. the other route's) change nothing.
+    pub fn start_at(mut self, curriculum: &Curriculum, start: &str) -> Self {
+        let lessons: Vec<&Lesson> = curriculum.lessons().collect();
+        let first =
+            curriculum.levels.iter().find(|l| l.id == start).and_then(|l| l.lessons().next()).or_else(|| {
+                curriculum
+                    .levels
+                    .iter()
+                    .flat_map(|l| &l.units)
+                    .find(|u| u.id == start)
+                    .and_then(|u| u.lessons.first())
+            });
+        let Some(from) = first.and_then(|f| lessons.iter().position(|l| l.id == f.id)) else { return self };
+        let at = |id: &str| lessons.iter().position(|l| l.id == id);
+        if self.current.as_deref().and_then(at).is_some_and(|i| i < from) {
+            self.current = lessons[from..].iter().find(|l| !self.done.contains(&l.id)).map(|l| l.id.clone());
         }
         self
     }
