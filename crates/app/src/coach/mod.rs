@@ -187,7 +187,9 @@ pub fn plan_for(db: &Db, profile: &CoachProfile, events: &[ActivityEvent], date:
     if let Ok(Some(plan)) = db.0.borrow().plan_for(date) {
         return plan;
     }
-    let due = crate::review::due_words(db, crate::store::now_ms()).len() as u32;
+    let settings = db.0.borrow().settings().unwrap_or_default();
+    let sched = crate::schedule::scheduler_at(profile.utc_offset_min, &settings);
+    let due = crate::review::due_words(db, &sched, crate::store::now_ms()).len() as u32;
     let plan = build_plan(db, due, profile, events, date, profile.daily_size, false);
     if let Err(e) = db.0.borrow_mut().save_plan(&plan) {
         eprintln!("kabar: saving today's plan failed: {e}");

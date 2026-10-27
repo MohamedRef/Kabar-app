@@ -383,6 +383,14 @@ impl Store {
         Ok(Self { conn, device, clock })
     }
 
+    /// Changes whenever anything in the database may have changed: rows this
+    /// connection wrote, or a commit from another one (the sync engine). For
+    /// caching data derived from the store, like the review deck.
+    pub fn change_stamp(&self) -> Result<(u64, i64)> {
+        let others: i64 = self.conn.query_row("PRAGMA data_version", [], |r| r.get(0))?;
+        Ok((self.conn.total_changes(), others))
+    }
+
     pub fn device_id(&self) -> &DeviceId {
         &self.device
     }

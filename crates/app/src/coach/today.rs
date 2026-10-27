@@ -49,7 +49,8 @@ fn start_item(ui: Ui, db: &Db, coach: Coach, kind: &PlanItemKind) {
 /// Rebuilds and saves today's plan at the size the learner just picked.
 fn pick_size(db: &Db, coach: Coach, profile: &CoachProfile, today: LocalDate, size: PlanSize) {
     let events = coach.events.peek().clone();
-    let due = crate::review::due_words(db, coach.now()).len() as u32;
+    let sched = crate::schedule::scheduler(&coach, &db.0.borrow());
+    let due = crate::review::due_words(db, &sched, coach.now()).len() as u32;
     let fresh = build_plan(db, due, profile, &events, today, size, true);
     if let Err(e) = db.0.borrow_mut().save_plan(&fresh) {
         eprintln!("kabar: saving today's plan failed: {e}");
@@ -371,7 +372,8 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     let db = use_context::<Db>();
     let events = coach.events.read().clone();
     // Cards due by tomorrow morning size tomorrow's first step.
-    let due = crate::review::due_words(&db, coach.now() + 86_400_000).len() as u32;
+    let sched = crate::schedule::scheduler(&coach, &db.0.borrow());
+    let due = crate::review::due_words(&db, &sched, coach.now() + 86_400_000).len() as u32;
     let tomorrow = build_plan(&db, due, &profile, &events, today.add_days(1), profile.daily_size, false);
     let tomorrow_first = tomorrow.items.first().map(|i| i.kind.clone());
     let r = recap::day_recap(&events, today, plan.size.minutes(), plan.items.len(), tomorrow_first);

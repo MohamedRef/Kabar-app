@@ -21,7 +21,7 @@
 pub mod level_check;
 pub mod pace;
 
-use std::collections::{BTreeMap, HashMap, HashSet};
+use std::collections::{BTreeMap, HashSet};
 
 use kabar_protocol::coach::{ActivityEvent, LocalDate};
 use kabar_protocol::srs::{Card, Rating, ReviewEvent, StudyLanguage};
@@ -239,29 +239,41 @@ impl Retention {
 /// True retention of the reviews in the last `days` days, split into mature
 /// and young by the interval the card was scheduled at before the answer.
 pub fn retention(scheduler: &Scheduler, log: &[ReviewEvent], now_ms: u64, days: u64) -> Retention {
-    let since = now_ms.saturating_sub(days * DAY_MS);
-    let mut sorted: Vec<&ReviewEvent> = log.iter().collect();
-    sorted.sort_by(|a, b| a.hlc.cmp(&b.hlc));
-    let mut seen = HashSet::new();
-    let mut states: HashMap<&str, CardState> = HashMap::new();
-    let mut out = Retention::default();
-    for e in sorted.into_iter().filter(|e| seen.insert(e.id.as_str())) {
-        let state = states.entry(e.card_id.as_str()).or_insert_with(|| CardState::new(e.card_id.as_str()));
-        if !state.is_new() && e.at_ms >= since {
-            let interval_days = match (state.last_review_ms, state.due_ms) {
-                (Some(last), Some(due)) => due.saturating_sub(last) as f32 / DAY_MS as f32,
-                _ => 0.0,
-            };
-            let passed = e.rating != Rating::Again;
+    replay_with_retention(scheduler, log, now_ms, &[days]).1[0]
+}
+
+/// One pass over the log for everything Stats needs from it: every card's
+/// state (as [`Scheduler::replay_all`]) and [`retention`] for each window in
+/// `windows_days`, in that order.
+pub fn replay_with_retention(
+    scheduler: &Scheduler,
+    log: &[ReviewEvent],
+    now_ms: u64,
+    windows_days: &[u64],
+) -> (BTreeMap<String, CardState>, Vec<Retention>) {
+    let since: Vec<u64> = windows_days.iter().map(|d| now_ms.saturating_sub(d * DAY_MS)).collect();
+    let mut out = vec![Retention::default(); windows_days.len()];
+    let states = scheduler.fold_log(log, |e, state| {
+        if state.is_new() {
+            return;
+        }
+        let interval_days = match (state.last_review_ms, state.due_ms) {
+            (Some(last), Some(due)) => due.saturating_sub(last) as f32 / DAY_MS as f32,
+            _ => 0.0,
+        };
+        let passed = e.rating != Rating::Again;
+        for (r, &since) in out.iter_mut().zip(&since) {
+            if e.at_ms < since {
+                continue;
+            }
             if interval_days >= MATURE_INTERVAL_DAYS {
-                out.mature.add(passed);
+                r.mature.add(passed);
             } else {
-                out.young.add(passed);
+                r.young.add(passed);
             }
         }
-        *state = scheduler.apply(state, e.rating, e.at_ms);
-    }
-    out
+    });
+    (states.into_iter().map(|(id, s)| (id.to_string(), s)).collect(), out)
 }
 
 /// The review forecast's headline numbers.
