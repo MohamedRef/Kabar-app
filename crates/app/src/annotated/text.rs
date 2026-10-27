@@ -10,6 +10,8 @@ pub enum T {
     Breakdown,
     NotInDictionary,
     TeachIt,
+    Legend,
+    Unverified,
 }
 
 pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
@@ -31,5 +33,11 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (TeachIt, ArEg) => "علّم Kabar الكلمة دي",
         (TeachIt, Ar) => "علِّم Kabar هذه الكلمة",
         (TeachIt, En) => "Teach Kabar this word",
+        (Legend, ArEg) => "الألوان معناها إيه؟",
+        (Legend, Ar) => "ماذا تعني الألوان؟",
+        (Legend, En) => "What the colours mean",
+        (Unverified, ArEg) => "لسه متراجعش",
+        (Unverified, Ar) => "لم يُراجَع بعد",
+        (Unverified, En) => "not reviewed yet",
     }
 }

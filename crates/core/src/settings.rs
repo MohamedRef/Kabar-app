@@ -88,6 +88,8 @@ pub struct Settings {
     pub pronunciation: PronMode,
     /// Translation under target-language text.
     pub translation: TranslationMode,
+    /// Word-class and word-part colours are off (on by default).
+    pub word_colours_off: bool,
 }
 
 /// Keys as stored in the `settings` table.
@@ -99,6 +101,7 @@ pub mod keys {
     pub const SOUNDS_OFF: &str = "sounds_off";
     pub const PRONUNCIATION: &str = "pronunciation";
     pub const TRANSLATION: &str = "translation";
+    pub const WORD_COLOURS_OFF: &str = "word_colours_off";
 }
 
 impl Settings {
@@ -115,6 +118,9 @@ impl Settings {
                 keys::SOUNDS_OFF => s.sounds_off = serde_json::from_str(value).unwrap_or_default(),
                 keys::PRONUNCIATION => s.pronunciation = serde_json::from_str(value).unwrap_or_default(),
                 keys::TRANSLATION => s.translation = serde_json::from_str(value).unwrap_or_default(),
+                keys::WORD_COLOURS_OFF => {
+                    s.word_colours_off = serde_json::from_str(value).unwrap_or_default()
+                }
                 _ => {}
             }
         }
@@ -136,6 +142,11 @@ impl Settings {
         push(self.sounds_off != other.sounds_off, keys::SOUNDS_OFF, json(&other.sounds_off));
         push(self.pronunciation != other.pronunciation, keys::PRONUNCIATION, json(&other.pronunciation));
         push(self.translation != other.translation, keys::TRANSLATION, json(&other.translation));
+        push(
+            self.word_colours_off != other.word_colours_off,
+            keys::WORD_COLOURS_OFF,
+            json(&other.word_colours_off),
+        );
         out
     }
 }

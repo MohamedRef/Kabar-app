@@ -11,6 +11,8 @@ mod text;
 use std::rc::Rc;
 
 use dioxus::prelude::*;
+use kabar_core::grammar::word::{self, Mark, PartKind, WordClass};
+use kabar_core::lang::Lang as CoreLang;
 use kabar_core::lang::analyze::Morph;
 use kabar_core::learn::PersonalDictionary;
 use kabar_core::settings::TranslationMode;
@@ -21,6 +23,8 @@ use crate::lesson::Rich;
 use crate::pron::Pron;
 use crate::reader::card::InfoView;
 use crate::reader::doc::{Lexicon, ReadDoc, Tag, Word};
+use crate::reader::explain::voice_of;
+use crate::reader::glossary::Gloss;
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
 
@@ -77,13 +81,42 @@ pub fn use_words(db: &Db) -> Words {
     })
 }
 
-/// One run of the sentence: text between words, or a word (token index).
-#[derive(Clone, Debug, PartialEq)]
+/// One run of the sentence: text between words, or a word (token index)
+/// with its colours and short meaning.
+#[derive(Clone, Debug, Default, PartialEq)]
 struct Piece {
     text: String,
     word: Option<usize>,
     bridge: bool,
     marked: bool,
+    /// The word class's CSS class (`wc-verb`, …).
+    class: Option<&'static str>,
+    /// The word as written, cut into prefix / root / suffix runs.
+    spans: Vec<(String, &'static str)>,
+    /// What goes under the word in the side-by-side view.
+    gloss: Option<Gloss>,
+}
+
+impl Piece {
+    /// The word's classes: always `annot-w`, then each layer that is on.
+    fn classes(&self, open: bool, colours: bool, glosses: bool) -> String {
+        let mut c = String::from("annot-w");
+        let mut add = |on: bool, name: &str| {
+            if on {
+                c.push(' ');
+                c.push_str(name);
+            }
+        };
+        add(open, "on");
+        add(self.bridge, "bridge-word");
+        add(self.marked, "target");
+        add(glosses, "glossed");
+        if let Some(class) = self.class.filter(|_| colours) {
+            add(true, "wc-line");
+            add(true, class);
+        }
+        c
+    }
 }
 
 /// The word is one of `marked` (a story's target words) or a form of one.
@@ -101,35 +134,60 @@ fn is_marked(w: &Word, surface: &str, marked: &[String]) -> bool {
     })
 }
 
-fn pieces(doc: &ReadDoc, marked: &[String]) -> Vec<Piece> {
+/// The language a word is coloured in: its dictionary entry's, else the text's.
+fn word_lang(w: &Word, text_lang: CoreLang) -> CoreLang {
+    match w.tag {
+        Tag::Javanese => CoreLang::Javanese,
+        Tag::Indonesian => CoreLang::Indonesian,
+        _ => text_lang,
+    }
+}
+
+/// The first sense, short enough to sit under a word: "going to, will ·
+/// to want" → "going to".
+fn short(gloss: &str) -> &str {
+    let first =
+        gloss.split([';', '·', ',', '،', '؛', '(']).map(str::trim).find(|s| !s.is_empty()).unwrap_or("");
+    if first.chars().count() > 22 { "" } else { first }
+}
+
+fn pieces(doc: &ReadDoc, marked: &[String], text_lang: CoreLang) -> Vec<Piece> {
+    let plain = |text: &str| Piece { text: text.to_string(), ..Piece::default() };
     let mut out = Vec::new();
     let mut at = 0;
     for (i, t) in doc.tokens.iter().enumerate() {
         if t.start > at {
-            out.push(Piece {
-                text: doc.text(at, t.start).to_string(),
-                word: None,
-                bridge: false,
-                marked: false,
-            });
+            out.push(plain(doc.text(at, t.start)));
         }
-        let word = t.word.as_ref().filter(|w| w.key.is_some() || w.has_gloss());
         let text = doc.text(t.start, t.end).to_string();
+        let Some(w) = t.word.as_ref().filter(|w| w.key.is_some() || w.has_gloss()) else {
+            out.push(plain(&text));
+            at = t.end;
+            continue;
+        };
+        let info = w.shown();
+        let class = word::class_in(
+            &w.analyzed,
+            word_lang(w, text_lang),
+            info.as_ref().and_then(|i| i.pos.as_deref()),
+        );
+        let spans = word::surface_spans(&text, &w.analyzed)
+            .into_iter()
+            .filter_map(|(r, kind)| Some((text.get(r)?.to_string(), kind.css())))
+            .collect();
         out.push(Piece {
-            word: word.map(|_| i),
-            bridge: word.is_some_and(|w| w.is_bridge()),
-            marked: !marked.is_empty() && t.word.as_ref().is_some_and(|w| is_marked(w, &text, marked)),
+            word: Some(i),
+            bridge: w.is_bridge(),
+            marked: !marked.is_empty() && is_marked(w, &text, marked),
+            class: class.map(WordClass::css),
+            spans,
+            gloss: info.map(|i| i.gloss),
             text,
         });
         at = t.end;
     }
     if at < doc.body.len() {
-        out.push(Piece {
-            text: doc.text(at, doc.body.len()).to_string(),
-            word: None,
-            bridge: false,
-            marked: false,
-        });
+        out.push(plain(doc.text(at, doc.body.len())));
     }
     out
 }
@@ -137,10 +195,20 @@ fn pieces(doc: &ReadDoc, marked: &[String]) -> Vec<Piece> {
 /// Analyzes `text` with the Reader's engine and glossary, words the learner
 /// taught Kabar on top, and splits it into runs. Once per text: callers
 /// memoize it.
-fn analyze(text: &str, taught: &PersonalDictionary, marked: &[String]) -> (Rc<ReadDoc>, Rc<Vec<Piece>>) {
+fn analyze(
+    text: &str,
+    lang: CoreLang,
+    taught: &PersonalDictionary,
+    marked: &[String],
+) -> (Rc<ReadDoc>, Rc<Vec<Piece>>) {
     let doc = ReadDoc::from_text(text, Lexicon { glossary: crate::reader::glossary(), taught });
-    let parts = pieces(&doc, marked);
+    let parts = pieces(&doc, marked, lang);
     (Rc::new(doc), Rc::new(parts))
+}
+
+/// The language a `tag` ("id", "jv") names.
+fn text_lang(tag: &str) -> CoreLang {
+    if tag == "jv" { CoreLang::Javanese } else { CoreLang::Indonesian }
 }
 
 /// A target-language sentence (or word) with its layers.
@@ -175,7 +243,7 @@ pub fn Annotated(
     });
     let analyzed = use_memo(use_reactive!(|text, marked| {
         let ready = !plain && *words.ready.read();
-        ready.then(|| analyze(&text, &words.taught.read(), &marked))
+        ready.then(|| analyze(&text, text_lang(tag), &words.taught.read(), &marked))
     }));
 
     if plain {
@@ -191,8 +259,12 @@ pub fn Annotated(
     // plain text; everything else already shows.
     let (doc, parts) = match analyzed() {
         Some((doc, parts)) => (Some(doc), parts),
-        None => (None, Rc::new(vec![Piece { text: text.clone(), word: None, bridge: false, marked: false }])),
+        None => (None, Rc::new(vec![Piece { text: text.clone(), ..Piece::default() }])),
     };
+    let colours = !ui.settings.read().word_colours_off;
+    // Side by side: each word's meaning under it, as in the Reader.
+    let glosses = !inline && translation == TranslationMode::On;
+    let voice = ui.lang();
 
     rsx! {
         span { class: "{kind} {lang_class}",
@@ -202,10 +274,7 @@ pub fn Annotated(
                         Some(i) => rsx! {
                             span {
                                 key: "{k}",
-                                class: "annot-w",
-                                class: if open() == Some(i) { "on" },
-                                class: if p.bridge { "bridge-word" },
-                                class: if p.marked { "target" },
+                                class: p.classes(open() == Some(i), colours, glosses),
                                 role: "button",
                                 tabindex: "0",
                                 // Annotated text often sits inside a button (examples, dialogue lines).
@@ -224,7 +293,20 @@ pub fn Annotated(
                                         open.set(Some(i));
                                     }
                                 },
-                                "{p.text}"
+                                span { class: "annot-word",
+                                    if colours && p.class.is_some() && !p.spans.is_empty() {
+                                        for (j , (run , css)) in p.spans.iter().enumerate() {
+                                            span { key: "{j}", class: *css, "{run}" }
+                                        }
+                                    } else {
+                                        "{p.text}"
+                                    }
+                                }
+                                if glosses {
+                                    span { class: "annot-g", lang: voice.tag(), dir: voice.dir().as_str(),
+                                        {p.gloss.as_ref().map(|g| short(g.get(voice))).unwrap_or("")}
+                                    }
+                                }
                             }
                         },
                         None => rsx! { span { key: "{k}", "{p.text}" } },
@@ -299,12 +381,7 @@ fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandl
                 Pron { text: surface.clone(), tag: word_tag }
                 button { class: "quiet small", onclick: move |_| on_close.call(()), "{tt(lang, T::Close)}" }
             }
-            if let Some(b) = w.breakdown() {
-                span { class: "field annot-parts",
-                    span { class: "label", "{tt(lang, T::Breakdown)}" }
-                    bdi { class: "latin", lang: word_tag, dir: "ltr", "{b}" }
-                }
-            }
+            Breakdown { word: w.clone(), tag }
             match w.shown() {
                 Some(info) => rsx! {
                     InfoView { info, voice: lang }
@@ -329,6 +406,87 @@ fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandl
     }
 }
 
+/// What kind of word it is and how it is built, in the same colours as the
+/// sentence: `peng·alam·an`, with a line on what each affix does.
+#[component]
+fn Breakdown(word: Word, tag: &'static str) -> Element {
+    let ui = use_context::<Ui>();
+    let lang = ui.lang();
+    let voice = voice_of(lang);
+    let colours = !ui.settings.read().word_colours_off;
+    let core = word_lang(&word, text_lang(tag));
+    let info = word.shown();
+    let class = word::class_in(&word.analyzed, core, info.as_ref().and_then(|i| i.pos.as_deref()));
+    let parts = word::parts_of_token(&word.analyzed);
+    let notes: Vec<(&'static str, String, word::AffixNote)> = parts
+        .iter()
+        .filter(|p| p.kind != PartKind::Root)
+        .filter_map(|p| Some((p.kind.css(), p.label.clone(), word::affix_note(core, &p.label)?)))
+        .fold(Vec::new(), |mut out, n| {
+            // A confix (ke-an) is two pieces with one note.
+            if !out.iter().any(|(_, l, _)| *l == n.1) {
+                out.push(n);
+            }
+            out
+        });
+    let redup = word.analyzed.token.redup.as_ref().map(|(kind, _)| word::redup_note(*kind, class).get(voice));
+    let word_tag = if core == CoreLang::Javanese { "jv" } else { "id" };
+    if class.is_none() && parts.len() < 2 && redup.is_none() {
+        return rsx! {};
+    }
+    let ink = |css: &'static str| if colours { css } else { "" };
+    rsx! {
+        span { class: "field annot-parts",
+            span { class: "label",
+                "{tt(lang, T::Breakdown)}"
+                if let Some(c) = class {
+                    " · "
+                    span { class: "wc-ink {ink(c.css())}", "{Mark::Class(c).label().get(voice)}" }
+                }
+            }
+            if parts.len() > 1 {
+                // The class sets the root's colour (.wp-root reads --wc).
+                bdi { class: "latin annot-pieces {ink(class.map_or(\"\", WordClass::css))}", lang: word_tag, dir: "ltr",
+                    for (i , p) in parts.iter().enumerate() {
+                        span { key: "{i}",
+                            if i > 0 {
+                                span { class: "muted", " + " }
+                            }
+                            span { class: ink(p.kind.css()), "{p.form}" }
+                        }
+                    }
+                }
+            }
+            for (css , label , note) in notes {
+                span { key: "{label}", class: "annot-note",
+                    bdi { class: "latin {ink(css)}", lang: word_tag, dir: "ltr", "{label}" }
+                    // Core notes isolate their Latin with U+2068/2069, which
+                    // WebKitGTK ignores; Rich isolates it with markup instead.
+                    Rich { text: note.meaning.get(voice).replace(['\u{2060}', '\u{2068}', '\u{2069}'], ""), target: word_tag }
+                    if !note.verified {
+                        span { class: "pill small", " {tt(lang, T::Unverified)}" }
+                    }
+                }
+            }
+            if let Some(r) = redup {
+                span { class: "annot-note",
+                    Rich { text: r.replace(['\u{2060}', '\u{2068}', '\u{2069}'], ""), target: word_tag }
+                }
+            }
+            if colours {
+                details { class: "annot-legend",
+                    summary { "{tt(lang, T::Legend)}" }
+                    span { class: "annot-legend-row",
+                        for m in word::LEGEND {
+                            span { key: "{m.css()}", class: "wc-ink {m.css()}", "{m.label().get(voice)}" }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -341,7 +499,7 @@ mod tests {
     #[test]
     fn pieces_keep_the_text_and_mark_story_words() {
         let text = "Saya sedang membaca buku.";
-        let parts = pieces(&doc(text), &["baca".to_string()]);
+        let parts = pieces(&doc(text), &["baca".to_string()], CoreLang::Indonesian);
         assert_eq!(parts.iter().map(|p| p.text.as_str()).collect::<String>(), text);
         let marked: Vec<&str> = parts.iter().filter(|p| p.marked).map(|p| p.text.as_str()).collect();
         assert_eq!(marked, ["membaca"]);
@@ -349,8 +507,22 @@ mod tests {
     }
 
     #[test]
+    fn words_carry_their_class_parts_and_short_meaning() {
+        let parts = pieces(&doc("Rumahnya dibersihkan."), &[], CoreLang::Indonesian);
+        let word = |w: &str| parts.iter().find(|p| p.text == w).unwrap();
+        let cleaned = word("dibersihkan");
+        assert_eq!(cleaned.class, Some("wc-verb"));
+        let runs: Vec<(&str, &str)> = cleaned.spans.iter().map(|(t, c)| (t.as_str(), *c)).collect();
+        assert_eq!(runs, [("di", "wp-prefix"), ("bersih", "wp-root"), ("kan", "wp-suffix")]);
+        assert_eq!(word("Rumahnya").class, Some("wc-noun"));
+        assert!(word("Rumahnya").gloss.is_some());
+        assert_eq!(short("going to, will · to want"), "going to");
+        assert_eq!(short("ده، دي، دول"), "ده");
+    }
+
+    #[test]
     fn bridge_words_are_gold() {
-        let parts = pieces(&doc("Selamat pagi!"), &[]);
+        let parts = pieces(&doc("Selamat pagi!"), &[], CoreLang::Indonesian);
         let selamat = parts.iter().find(|p| p.text == "Selamat").unwrap();
         assert!(selamat.bridge);
         assert!(!parts.iter().find(|p| p.text == "pagi").unwrap().bridge);
