@@ -168,8 +168,9 @@ Then on the device:
 2. **Selection menu:** select text in any app → ⋮ (more) → **Kabar**.
 3. **Screenshot:** take a screenshot → Share → **Kabar**. Kabar opens and reads the text in it (ML Kit, on-device).
 4. Share again while Kabar is already open: it comes to the front with the new item.
+5. **Open a screenshot inside Kabar:** Reader → **Open a screenshot** (افتح سكرين شوت) opens the system photo picker (no permission needed); pick a screenshot and Kabar reads it the same way as a shared one. Dragging an image onto the Reader works on the Mac only.
 
-`adb logcat -s KabarShare` shows why a share was ignored (e.g. an unreadable image).
+`adb logcat -s KabarShare KabarPick` shows why a share or a picked image was ignored (e.g. an unreadable image).
 
 ### Mac
 The Screenshot Decoder uses Apple Vision (built into macOS, nothing to install). It recognizes Indonesian when your macOS supports it and falls back to its general Latin model otherwise; language auto-correction is only on when Indonesian is supported, so Javanese and slang aren't "corrected" into English. Try it with `just run-mac` Reader → "Open a screenshot", or drag an image onto the Reader.
@@ -255,7 +256,25 @@ Open **Watch & listen** (اتفرج واسمع): in the sidebar on the Mac and t
   - AI-written Javanese shows **Not checked yet**. Chats sync to your other devices. Replies need Kabar Cloud (Workers AI first). What you type is sent as learning text, with e-mail addresses and phone numbers removed first.
 - **Screen off** (S24 Ultra, Tab S11): a *downloaded* episode plays in Android's media player, so it keeps going with the screen off or in another app, with play/pause on the lock screen and in the notification shade. Leaving the episode stops it. Episodes that aren't downloaded play inside the app and pause when the screen goes off. Daily Radio episodes "from my words" are waiting on the `radio_script` bake-off on the Mac.
 
-## 15. Troubleshooting
+## 15. Art and sounds (to do on the Mac)
+
+The art and the lesson sounds are drawn and synthesized in code, so nothing needs downloading for them. Re-run these after editing a scene or a sound:
+
+```sh
+pip3 install cairosvg Pillow numpy PyYAML      # once; ffmpeg comes from `brew install ffmpeg`
+python3 scripts/assets/draw_souvenirs.py bipa3.u06   # one card (or no argument for all)
+python3 scripts/assets/export_souvenirs.py
+python3 scripts/assets/draw_misc.py                  # hero, empty states, gong, notebook paper
+python3 scripts/assets/synth_sounds.py               # gong and kendang, 3 variations each
+```
+
+**Kenney UI clicks.** kenney.nl is blocked from the cloud container, so this one is a Mac step:
+1. Open <https://kenney.nl/assets/interface-sounds> and download the pack. It is free, and the license is CC0.
+2. Unzip it and pick 2 or 3 soft sounds: a click, a toggle and a page turn.
+3. Copy them, as `.ogg`, to `assets/sounds/ui/`, together with the pack's `License.txt`.
+4. Tell Claude which files you picked. Claude then wires them in (buttons and page turns, off with the sounds switch) and adds the row to `ATTRIBUTION.md`.
+
+## 16. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.

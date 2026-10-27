@@ -25,6 +25,7 @@ Goal: for each runtime AI task (`docs/SPEC.md` §19), find the cheapest **free**
 |---|---|---|
 | analyze_text | meaning in context, normalization, root/affix | alignment spans, language tag |
 | explain_sentence | picks the right grammar entries | register/culture note accuracy, Egyptian Arabic naturalness |
+| translate_text | one entry per line, all three voices filled | Egyptian Arabic naturalness, meaning in context (chat spellings, traps), tone kept |
 | grade_answer | right verdict (accept paraphrases, reject errors) | feedback is specific and kind |
 | roleplay_turn | level-appropriate, correct register | stays in persona, inline corrections |
 | structure_screenshot | speakers, bubbles, timestamps right | keeps original text exactly |

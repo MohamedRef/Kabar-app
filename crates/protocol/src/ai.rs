@@ -65,10 +65,12 @@ pub enum Task {
     MindMap,
     /// Teach Kabar (spec §26): turn what the learner found into a gloss.
     LearnEntry,
+    /// The Reader's translation under each line (spec §11).
+    TranslateText,
 }
 
 impl Task {
-    pub const ALL: [Task; 18] = [
+    pub const ALL: [Task; 19] = [
         Self::AnalyzeText,
         Self::ExplainSentence,
         Self::GradeAnswer,
@@ -87,6 +89,7 @@ impl Task {
         Self::CheckStrokes,
         Self::MindMap,
         Self::LearnEntry,
+        Self::TranslateText,
     ];
 
     pub fn as_str(self) -> &'static str {
@@ -109,6 +112,7 @@ impl Task {
             Self::CheckStrokes => "check_strokes",
             Self::MindMap => "mind_map",
             Self::LearnEntry => "learn_entry",
+            Self::TranslateText => "translate_text",
         }
     }
 
