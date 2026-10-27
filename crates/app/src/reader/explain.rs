@@ -9,7 +9,7 @@ use std::sync::OnceLock;
 use dioxus::prelude::*;
 use kabar_core::ai::tasks::{ExplainSentence, Register};
 use kabar_core::ai::{AiRequest, FriendlyReason};
-use kabar_core::grammar::{self, ByVoice, Candidate, Library, MAX_CANDIDATES, Voice};
+use kabar_core::grammar::{self, Candidate, Library, MAX_CANDIDATES, Voice};
 use kabar_core::lang::Lang;
 use kabar_core::lang::analyze::AnalyzedToken;
 use kabar_core::locale::UiLanguage;

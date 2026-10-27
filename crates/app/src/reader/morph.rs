@@ -2,11 +2,11 @@
 //! is, its pieces in their colours, what each affix does, the root's
 //! meaning, the time words around a verb and the grammar entries. All of it
 //! comes from `kabar_core::grammar::word`; this file only draws it.
-//! `PartsLine`, `ClassChip` and `Legend` take the voice as a prop, so any
-//! screen can use them.
+//! The shared pieces (`PartsLine`, `ClassChip`, `Legend`, `SayWord`) live in
+//! `crate::annotated::parts`.
 
 use dioxus::prelude::*;
-use kabar_core::grammar::word::{self, LEGEND, Part, PartKind, WordClass, WordDetail};
+use kabar_core::grammar::word::{self, Part, PartKind, WordClass, WordDetail};
 use kabar_core::lang::Lang;
 use kabar_core::locale::UiLanguage;
 
@@ -15,9 +15,9 @@ use super::doc::{Tag, Word};
 use super::explain::{library, voice_of};
 use super::glossary::WordLang;
 use crate::Ui;
+use crate::annotated::parts::{ClassChip, Legend, PartsLine, SayWord};
 use crate::i18n::Msg;
 use crate::lesson::Rich;
-use crate::pron::Pron;
 
 /// The language Kabar treats the word as: its tag, else its dictionary entry.
 fn lang_of(w: &Word) -> Option<Lang> {
@@ -31,75 +31,6 @@ fn lang_of(w: &Word) -> Option<Lang> {
 /// The dictionary's part of speech for the word (or the root it was found by).
 fn pos_of(w: &Word) -> Option<&str> {
     w.info.as_ref().and_then(|i| i.pos.as_deref())
-}
-
-fn piece_text(p: &Part) -> String {
-    match p.kind {
-        PartKind::Prefix => format!("{}-", p.form),
-        PartKind::Suffix | PartKind::Clitic => format!("-{}", p.form),
-        PartKind::Confix if p.label.starts_with(&format!("{}-", p.form)) => format!("{}-", p.form),
-        PartKind::Confix => format!("-{}", p.form),
-        PartKind::Root => p.form.clone(),
-    }
-}
-
-/// The pieces in their colours, with a "+" between them and the kind of
-/// each piece under it, so the colour is never the only cue.
-#[component]
-pub fn PartsLine(parts: Vec<Part>, class: Option<WordClass>, labels: bool, voice: UiLanguage) -> Element {
-    let voice = voice_of(voice);
-    let class_css = class.map_or("", WordClass::css);
-    let n = parts.len();
-    rsx! {
-        span { class: "parts-line {class_css}", dir: "ltr",
-            for (j, p) in parts.into_iter().enumerate() {
-                span { key: "{j}", class: "piece {p.kind.css()}",
-                    bdi { class: "latin", lang: "id", "{piece_text(&p)}" }
-                    if labels {
-                        small { class: "piece-kind", "{p.kind.label().get(voice)}" }
-                    }
-                }
-                if j + 1 < n {
-                    span { class: "plus", aria_hidden: "true", "+" }
-                }
-            }
-        }
-    }
-}
-
-/// The whole word aloud (🔊) and in Arabic letters, beside its pieces.
-/// `tag` is "id" or "jv"; `letters: false` where a headline shows them already.
-#[component]
-pub fn SayWord(text: String, tag: String, #[props(default = true)] letters: bool) -> Element {
-    let ui = use_context::<Ui>();
-    let voice_tag = if tag == "jv" { "jv-ID" } else { "id-ID" };
-    let spoken = text.clone();
-    rsx! {
-        span { class: "say-word",
-            button {
-                class: "ghost icon",
-                title: "{ui.t(Msg::Listen)}",
-                aria_label: "{ui.t(Msg::Listen)}",
-                onclick: move |e| {
-                    e.stop_propagation();
-                    super::speak(&spoken, voice_tag);
-                },
-                "🔊"
-            }
-            if letters {
-                Pron { text, tag, inline: true }
-            }
-        }
-    }
-}
-
-/// A coloured chip naming the word's class.
-#[component]
-pub fn ClassChip(class: WordClass, voice: UiLanguage) -> Element {
-    let voice = voice_of(voice);
-    rsx! {
-        span { class: "class-chip {class.css()}", "{class.label().get(voice)}" }
-    }
 }
 
 /// Everything the open breakdown shows, worked out once per word and voice.
@@ -284,23 +215,6 @@ pub fn MorphDetail(i: usize) -> Element {
                         }
                     }
                     Legend { voice: ui_voice }
-                }
-            }
-        }
-    }
-}
-
-/// Every colour with its name.
-#[component]
-pub fn Legend(voice: UiLanguage) -> Element {
-    let ui = use_context::<Ui>();
-    let voice = voice_of(voice);
-    rsx! {
-        div { class: "colour-legend", aria_label: "{ui.t(Msg::MorphColours)}",
-            for (j, m) in LEGEND.into_iter().enumerate() {
-                span { key: "{j}", class: "legend-item {m.css()}",
-                    span { class: "dot", aria_hidden: "true" }
-                    "{m.label().get(voice)}"
                 }
             }
         }

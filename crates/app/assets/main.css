@@ -60,7 +60,7 @@
 .app[data-word-colours="off"] :is(.wc-ink, .wp-prefix, .wp-suffix, .wp-confix, .wp-clitic, .wp-root) { color: inherit; }
 .app[data-word-colours="off"] .wc-line { text-decoration: none; }
 .app[data-word-colours="off"] .class-chip { color: inherit; background: var(--surface-2); border-color: var(--line); }
-.app[data-word-colours="off"] .colour-legend { display: none; }
+.app[data-word-colours="off"] :is(.colour-legend, .annot-legend) { display: none; }
 
 * { box-sizing: border-box; }
 
