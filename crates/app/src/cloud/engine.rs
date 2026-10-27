@@ -42,6 +42,10 @@ pub struct Engine {
     retry_at: Instant,
     /// Set after `Revoked`, `Outdated` or sign-out: no reconnects until sign-in.
     stopped: bool,
+    /// The app is in the background: no socket until it's back.
+    background: bool,
+    /// The last status sent, so an unchanged one isn't sent again.
+    last_status: Option<CloudStatus>,
     force_refresh: bool,
     problem: Option<Problem>,
     events: UnboundedSender<Event>,
@@ -73,6 +77,8 @@ impl Engine {
             backoff: Backoff::default(),
             retry_at: Instant::now(),
             stopped: false,
+            background: false,
+            last_status: None,
             force_refresh: false,
             problem: None,
             events,
@@ -100,8 +106,9 @@ impl Engine {
                 },
                 frame = next_frame(&mut self.ws) => self.frame(frame).await,
                 _ = tokio::time::sleep_until(wait_until) => {}
-                _ = outbox.tick() => self.pump().await,
-                _ = ping.tick() => {
+                // Both timers only run while a socket is open.
+                _ = outbox.tick(), if self.ws.is_some() => self.pump().await,
+                _ = ping.tick(), if self.ws.is_some() => {
                     if let Some(ws) = &mut self.ws
                         && ws.send(Message::Ping(Vec::new().into())).await.is_err()
                     {
@@ -117,7 +124,7 @@ impl Engine {
     }
 
     fn wants_socket(&self) -> bool {
-        self.auth.is_some() && !self.stopped
+        self.auth.is_some() && !self.stopped && !self.background
     }
 
     // --- commands --------------------------------------------------------
@@ -165,6 +172,20 @@ impl Engine {
                 self.load_devices().await;
             }
             Command::Kick => self.pump().await,
+            Command::Background(true) if !self.background => {
+                self.pump().await;
+                self.background = true;
+                if let Some(mut ws) = self.ws.take() {
+                    let _ = ws.close(None).await;
+                    self.client.on_close();
+                }
+            }
+            Command::Background(false) if self.background => {
+                self.background = false;
+                self.backoff.reset();
+                self.retry_at = Instant::now();
+            }
+            Command::Background(_) => {}
             Command::Access { force, reply } => {
                 let access = self.access(force).await;
                 reply.send(access.map(|token| (self.api.clone(), token))).ok();
@@ -449,7 +470,7 @@ impl Engine {
         let _ = self.store.set_meta("last_sync_ms", Some(&now_ms().to_string()));
     }
 
-    fn emit_status(&self) {
+    fn emit_status(&mut self) {
         let sync = match (&self.auth, self.client.phase(), &self.ws) {
             (None, _, _) => SyncState::SignedOut,
             (Some(_), _, _) if self.stopped => SyncState::Stopped,
@@ -467,7 +488,10 @@ impl Engine {
             last_sync_ms: self.store.meta("last_sync_ms").ok().flatten().and_then(|v| v.parse().ok()),
             problem: self.problem,
         };
-        self.events.send(Event::Status(status)).ok();
+        if self.last_status.as_ref() != Some(&status) {
+            self.last_status = Some(status.clone());
+            self.events.send(Event::Status(status)).ok();
+        }
     }
 }
 

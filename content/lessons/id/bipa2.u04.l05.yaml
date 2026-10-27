@@ -103,18 +103,10 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: setinggi
-        ar_eg: طوله قد
-        ar: بطول
-        en: as tall as
       - text: semahal
         ar_eg: غالي قد
         ar: غالٍ بقدر
         en: as expensive as
-      - text: sama dengan
-        ar_eg: زي / نفس
-        ar: مثل
-        en: the same as
       - text: sama saja
         ar_eg: كله واحد
         ar: سيّان
@@ -123,7 +115,19 @@ exercises:
         ar_eg: مقاس
         ar: مقاس
         en: size
-    words: [setinggi, semahal, sama, sama saja, ukuran]
+      - text: warna
+        ar_eg: لون
+        ar: لون
+        en: colour
+      - text: dua-duanya
+        ar_eg: الاتنين
+        ar: كلاهما
+        en: both
+      - text: biru
+        ar_eg: أزرق
+        ar: أزرق
+        en: blue
+    words: [semahal, sama saja, ukuran, warna, dua-duanya, biru]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -145,31 +149,42 @@ exercises:
     words: [setinggi]
   - id: e04
     type: fill_blank
-    sentence: Kain ini sama bagusnya ___ kain itu.
+    sentence: Ukuran dua-duanya sama, tapi warnanya ___.
     meaning:
-      ar_eg: القماشة دي حلوة زي دي بالظبط.
-      ar: هذا القماش جميل كذاك القماش.
-      en: This cloth is just as nice as that one.
-    options: [daripada, seperti, dengan]
-    answers: [dengan]
-    words: [sama, dengan, kain]
+      ar_eg: مقاس الاتنين واحد، بس اللون أزرق.
+      ar: مقاس الاثنين واحد، لكن لونه أزرق.
+      en: Both are the same size, but this one is blue.
+    options: [biru, sama saja, ukuran]
+    answers: [biru]
+    words: [ukuran, dua-duanya, warna, biru]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لونها نفس لون الشنطة بتاعتي.
-      ar: لونها مثل لون حقيبتي.
-      en: The colour is the same as my bag.
-    answers: [Warnanya sama dengan tas saya., Warnanya sama dengan tas saya, Warnanya sama dengan warna tas saya., Warnanya sama dengan tasku.]
-    words: [warna, sama]
+    type: listen
+    text: Tas biru ini semahal tas merah itu.
+    options: ['Tas biru ini semahal tas merah itu.', 'Tas biru ini setinggi tas merah itu.', 'Tas biru ini sama saja.']
+    answer: 0
+    meaning:
+      ar_eg: الشنطة الزرقا دي غالية قد الشنطة الحمرا دي.
+      ar: هذه الحقيبة الزرقاء غالية بقدر تلك الحمراء.
+      en: This blue bag is as expensive as that red one.
+    words: [biru, semahal, setinggi, sama saja]
   - id: e06
     type: speaking
-    text: Kain ini sama bagusnya dengan kain itu, tapi lebih murah.
+    text: Ukurannya sama, warnanya sama, dan dua-duanya semahal ini. Sama saja!
     meaning:
-      ar_eg: القماشة دي حلوة زي دي بالظبط، بس أرخص.
-      ar: هذا القماش جميل كذاك تمامًا، لكنه أرخص.
-      en: This cloth is just as nice as that one, but cheaper.
-    words: [sama, dengan, lebih]
+      ar_eg: المقاس واحد، واللون واحد، والاتنين بنفس الغلو ده. كله واحد!
+      ar: المقاس واحد واللون واحد، وكلاهما بهذا الغلاء. سيّان!
+      en: Same size, same colour, and both are this pricey. It's all the same!
+    words: [ukuran, warna, dua-duanya, semahal, sama saja]
+  - id: e07
+    type: multiple_choice
+    question: Mau yang biru atau yang merah?
+    question_meaning:
+      ar_eg: «عايز الأزرق ولا الأحمر؟» — إنت عايز الاتنين. تقول إيه؟
+      ar: «تريد الأزرق أم الأحمر؟» — تريدهما معًا. ماذا تقول؟
+      en: '"Do you want the blue or the red?" — you want both. What do you say?'
+    options: ['Dua-duanya!', 'Sama saja!', 'Setinggi!']
+    answer: 0
+    words: [dua-duanya, sama saja, setinggi, biru]
 dialogue:
   title: Dua kain batik
   lines:
