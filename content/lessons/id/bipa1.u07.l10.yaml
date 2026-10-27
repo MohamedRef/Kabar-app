@@ -1,0 +1,215 @@
+schema: kabar.lesson/v1
+id: bipa1.u07.l10
+language: id
+title: Ulangan Unit 7
+can_do:
+  ar_eg: تتكلم عن هواياتك.
+  ar: أن تتحدث عن هواياتك.
+  en: Talk about your hobbies.
+slides:
+  - title: Hobi kami — ringkasan
+    body:
+      ar_eg: |
+        اللي أخدناه في الوحدة دي:
+        - suka، mau، ingin، bisa، boleh، harus، perlu + فعل على طول (من غير «أن»).
+        - bisa = قدرة، boleh = إذن.
+        - -an بتعمل أسماء: makanan، minuman، tulisan، mainan، pakaian.
+        - sangat + صفة، صفة + sekali، صفة + banget (عامية).
+      ar: |
+        ما تعلمناه في هذه الوحدة:
+        - suka، mau، ingin، bisa، boleh، harus، perlu + فعل مباشرة (بلا «أن»).
+        - bisa للقدرة، وboleh للإذن.
+        - -an تصوغ أسماء: makanan، minuman، tulisan، mainan، pakaian.
+        - sangat + صفة، صفة + sekali، صفة + banget (عامية).
+      en: |
+        What this unit covered:
+        - suka, mau, ingin, bisa, boleh, harus, perlu + verb directly (no "to").
+        - bisa = ability, boleh = permission.
+        - -an makes nouns: makanan, minuman, tulisan, mainan, pakaian.
+        - sangat + adjective, adjective + sekali, adjective + banget (casual).
+    grammar: id.verb.modal
+    examples:
+      - text: Saya suka makanan Indonesia. Enak sekali!
+        ar_eg: بحب الأكل الإندونيسي. حلو أوي!
+        ar: أحب الطعام الإندونيسي. لذيذ جدًا!
+        en: I like Indonesian food. It's really tasty!
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sepak bola
+        ar_eg: كورة
+        ar: كرة القدم
+        en: football
+      - text: bulu tangkis
+        ar_eg: ريشة
+        ar: الريشة الطائرة
+        en: badminton
+      - text: menari
+        ar_eg: يرقص
+        ar: يرقص
+        en: dance
+      - text: hobi
+        ar_eg: هواية
+        ar: هواية
+        en: hobby
+      - text: nongkrong
+        ar_eg: يقعد مع الصحاب (عامية)
+        ar: يجلس مع الأصحاب (عامية)
+        en: hang out (casual)
+    words: [sepak bola, bulu tangkis, menari, hobi, nongkrong]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تقول «بعرف أعوم».
+      ar: تريد أن تقول «أستطيع السباحة».
+      en: You want to say "I can swim".
+    options: [Saya boleh berenang., Saya bisa berenang., Saya harus berenang.]
+    answer: 1
+    explain:
+      ar_eg: قدرة = bisa. boleh = مسموح، harus = لازم.
+      ar: القدرة بـ bisa، وboleh للإذن، وharus للوجوب.
+      en: Ability = bisa; boleh = allowed, harus = must.
+    words: [bisa]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «مشروب»؟
+      ar: أيّ كلمة تعني «شراب»؟
+      en: Which word means "a drink"?
+    options: [minum, minuman, meminum]
+    answer: 1
+    explain:
+      ar_eg: minum + an = minuman (اسم). minum فعل.
+      ar: minum + an = minuman (اسم)، وminum فعل.
+      en: minum + an = minuman (noun); minum is the verb.
+    words: [minuman]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحدة غلط؟
+      ar: أيّها خطأ؟
+      en: Which one is wrong?
+    options: [Indah sekali., Sangat indah., Indah sangat.]
+    answer: 2
+    explain:
+      ar_eg: sangat لازم قبل الصفة. sekali بعدها.
+      ar: sangat تسبق الصفة، وsekali تليها.
+      en: sangat must come before the adjective; sekali comes after.
+    words: [sangat, sekali]
+  - id: e05
+    type: listen
+    text: Saya tidak bisa datang besok.
+    options: [Saya tidak bisa datang besok., Saya tidak boleh datang besok., Saya tidak perlu datang besok.]
+    answer: 0
+    words: [bisa]
+  - id: e06
+    type: fill_blank
+    sentence: Saya ___ pulang. Saya capek sekali.
+    meaning:
+      ar_eg: عايز أروّح. أنا تعبان أوي.
+      ar: أريد العودة إلى البيت. أنا متعب جدًا.
+      en: I want to go home. I'm really tired.
+    options: [perlu, mau, boleh]
+    answers: [mau]
+    words: [mau, pulang, capek]
+  - id: e07
+    type: fill_blank
+    sentence: Anak-anak suka ___ ini.
+    meaning:
+      ar_eg: العيال بيحبوا اللعبة دي.
+      ar: الأطفال يحبون هذه اللعبة.
+      en: The children like this toy.
+    options: [bermain, mainan, main]
+    answers: [mainan]
+    words: [mainan]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: نفسي أتعلم الرقص.
+      ar: أتمنى أن أتعلم الرقص.
+      en: I'd love to learn to dance.
+    answer: Saya ingin belajar menari.
+    distractors: [boleh, harus]
+    words: [ingin, belajar, menari]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بحب الأكل الإندونيسي.
+      ar: أحب الطعام الإندونيسي.
+      en: I like Indonesian food.
+    answers: [Saya suka makanan Indonesia., Saya suka makanan Indonesia, Aku suka makanan Indonesia., Aku suka makanan Indonesia]
+    words: [suka, makanan]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: ممكن أقعد هنا؟
+      ar: هل يمكنني الجلوس هنا؟
+      en: May I sit here?
+    answers: ['Boleh saya duduk di sini?', Boleh saya duduk di sini, 'Saya boleh duduk di sini?', 'Boleh duduk di sini?', 'Boleh aku duduk di sini?', 'Permisi, boleh saya duduk di sini?']
+    explain:
+      ar_eg: استئذان = boleh، مش bisa.
+      ar: الاستئذان بـ boleh لا bisa.
+      en: Asking permission = boleh, not bisa.
+    words: [boleh, duduk]
+  - id: e11
+    type: dictation
+    text: Hobi saya bermain bulu tangkis.
+    meaning:
+      ar_eg: هوايتي لعب الريشة.
+      ar: هوايتي لعب الريشة الطائرة.
+      en: My hobby is playing badminton.
+    words: [hobi, bulu tangkis]
+  - id: e12
+    type: speaking
+    text: Kopi di sini enak banget!
+    meaning:
+      ar_eg: القهوة هنا حلوة أوي!
+      ar: القهوة هنا لذيذة جدًا!
+      en: The coffee here is so good!
+    words: [enak, banget]
+dialogue:
+  title: Sabtu di Kemang
+  lines:
+    - speaker: Raka
+      text: Mohamed, kamu suka nongkrong?
+      ar_eg: محمد، بتحب القعدة في الكافيهات؟
+      ar: يا محمد، هل تحب الجلوس في المقاهي مع الأصحاب؟
+      en: Mohamed, do you like hanging out?
+    - speaker: Mohamed
+      text: Suka sekali! Di Kemang ada banyak kafe.
+      ar_eg: بحبها أوي! في كيمانج فيه كافيهات كتير.
+      ar: أحبه جدًا! في كيمانغ مقاهٍ كثيرة.
+      en: I love it! There are lots of cafés in Kemang.
+    - speaker: Raka
+      text: Kamu mau minuman apa? Kopi di sini enak banget.
+      ar_eg: تشرب إيه؟ القهوة هنا حلوة أوي.
+      ar: ماذا تشرب؟ القهوة هنا لذيذة جدًا.
+      en: What would you like to drink? The coffee here is so good.
+    - speaker: Mohamed
+      text: Saya mau teh manis. Tadi saya sudah minum kopi.
+      ar_eg: عايز شاي بسكر. شربت قهوة من شوية.
+      ar: أريد شايًا محلّى. شربت القهوة قبل قليل.
+      en: I'd like sweet tea. I already had coffee earlier.
+    - speaker: Raka
+      text: Oke! Sesudah ini, kita main bulu tangkis?
+      ar_eg: ماشي! بعد كده نلعب ريشة؟
+      ar: حسنًا! بعد هذا، هل نلعب الريشة الطائرة؟
+      en: OK! After this, shall we play badminton?
+    - speaker: Mohamed
+      text: Boleh! Tapi saya belum bisa main.
+      ar_eg: ماشي! بس أنا لسه مابعرفش ألعب.
+      ar: موافق! لكني لا أُحسن اللعب بعد.
+      en: Sure! But I can't play yet.
+souvenir:
+  id: bipa1.u07.souvenir
+  title: Kafe-kafe Kemang
+  note:
+    ar_eg: كيمانج حي الكافيهات في جنوب جاكرتا، وهناك الـ nongkrong (القعدة مع الصحاب على كوباية قهوة أو شاي) هواية لوحدها، زي قعدة القهوة عندنا بالظبط. ولو حد عزمك على ماتش ريشة أو كورة، اقبل! دول أكبر رياضتين في إندونيسيا.
+    ar: كيمانغ حيّ المقاهي في جنوب جاكرتا، والـ nongkrong (الجلوس مع الأصحاب على فنجان قهوة أو شاي) هواية قائمة بذاتها، كجلسة المقهى عندنا تمامًا. وإذا دُعيت إلى مباراة ريشة طائرة أو كرة قدم فاقبل؛ فهما أكبر رياضتين في إندونيسيا.
+    en: Kemang is South Jakarta's café quarter, and nongkrong — hanging out with friends over coffee or tea — is a hobby in itself, just like an evening at an Egyptian ahwa. If someone invites you to badminton or football, say yes — they're Indonesia's two big sports.
+review:
+  status: draft
+  verified: false

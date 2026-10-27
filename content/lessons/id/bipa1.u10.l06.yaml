@@ -1,0 +1,230 @@
+schema: kabar.lesson/v1
+id: bipa1.u10.l06
+language: id
+title: Kenangan di laut
+can_do:
+  ar_eg: 'تحكي عن تجربة: إمتى وصلت، وكنت جريء ولا محظوظ، والذكرى اللي فضلت معاك.'
+  ar: 'أن تروي تجربة: متى وصلت، وهل كنت جريئًا أو محظوظًا، والذكرى التي بقيت.'
+  en: 'Tell an experience: when you arrived, whether you were brave or lucky, and the memory it left.'
+slides:
+  - title: Pengalaman di laut
+    body:
+      ar_eg: |
+        tiba = يوصل (أرسمي من datang وsampai): «Kapal tiba di pelabuhan.»
+        berani = جريء أو يجرؤ: «Kamu berani?» = تقدر تعملها؟
+        beruntung = محظوظ (untung = حظ). ide = فكرة: «Ide bagus!»
+        kenangan = ذكرى، من kenang (يفتكر بحنين). dewasa = كبير، بالغ. nyata = حقيقي: «Ini mimpi atau nyata?»
+      ar: |
+        tiba = يصل (أرسم من datang وsampai): «Kapal tiba di pelabuhan.»
+        berani = جريء أو يجرؤ: «Kamu berani?» = أتجرؤ؟
+        beruntung = محظوظ (untung = حظ). ide = فكرة: «Ide bagus!»
+        kenangan = ذكرى، من kenang (يتذكّر بحنين). dewasa = راشد، بالغ. nyata = حقيقي: «Ini mimpi atau nyata?»
+      en: |
+        tiba = arrive (more formal than datang or sampai): "Kapal tiba di pelabuhan."
+        berani = brave, dare: "Kamu berani?" = Do you dare?
+        beruntung = lucky (untung = luck). ide = idea: "Ide bagus!"
+        kenangan = memory, from kenang (remember fondly). dewasa = adult, grown-up. nyata = real: "Ini mimpi atau nyata?"
+    examples:
+      - text: Kapal kami tiba di pelabuhan jam tujuh pagi.
+        ar_eg: المركب بتاعنا وصل المينا الساعة ٧ الصبح.
+        ar: وصلت سفينتنا إلى الميناء في السابعة صباحًا.
+        en: Our boat arrived at the harbour at seven in the morning.
+      - text: Kamu berani snorkeling? — Berani!
+        ar_eg: تقدر تعمل سنوركلينج؟ — أقدر!
+        ar: أتجرؤ على الغطس السطحي؟ — نعم!
+        en: Dare to go snorkelling? — I dare!
+      - text: Foto ini kenangan liburan saya.
+        ar_eg: الصورة دي ذكرى من إجازتي.
+        ar: هذه الصورة ذكرى من عطلتي.
+        en: This photo is a memory of my holiday.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tiba
+        ar_eg: يوصل
+        ar: يصل
+        en: arrive
+      - text: berani
+        ar_eg: جريء
+        ar: جريء
+        en: brave
+      - text: beruntung
+        ar_eg: محظوظ
+        ar: محظوظ
+        en: lucky
+      - text: ide
+        ar_eg: فكرة
+        ar: فكرة
+        en: idea
+    words: [tiba, berani, beruntung, ide]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kenangan
+        ar_eg: ذكرى
+        ar: ذكرى
+        en: memory
+      - text: dewasa
+        ar_eg: كبير، بالغ
+        ar: راشد
+        en: adult
+      - text: nyata
+        ar_eg: حقيقي
+        ar: حقيقي
+        en: real
+    words: [kenangan, dewasa, nyata]
+  - id: e03
+    type: listen
+    text: Kapal kami tiba di pelabuhan jam tujuh pagi.
+    question:
+      ar_eg: المركب وصل إمتى؟
+      ar: متى وصلت السفينة؟
+      en: When did the boat arrive?
+    options: [الساعة ٧ الصبح, الساعة ٧ بالليل, الساعة ١٠]
+    answer: 0
+    meaning:
+      ar_eg: المركب بتاعنا وصل المينا الساعة ٧ الصبح.
+      ar: وصلت سفينتنا إلى الميناء في السابعة صباحًا.
+      en: Our boat arrived at the harbour at seven in the morning.
+    words: [tiba]
+  - id: e04
+    type: fill_blank
+    sentence: Snorkeling di laut? Saya ___!
+    meaning:
+      ar_eg: سنوركلينج في البحر؟ أنا ___!
+      ar: الغطس في البحر؟ أنا ___!
+      en: Snorkelling in the sea? I ___!
+    options: [berani, dewasa, ide]
+    answers: [berani]
+    words: [berani, dewasa, ide]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: كسبت تذكرة ببلاش لجزيرة حلوة. إنت…؟
+      ar: ربحت تذكرة مجانية إلى جزيرة جميلة. أنت…؟
+      en: You won a free ticket to a beautiful island. You're…?
+    options: [beruntung, berani, nyata]
+    answer: 0
+    explain:
+      ar_eg: beruntung = محظوظ.
+      ar: beruntung = محظوظ.
+      en: beruntung = lucky.
+    words: [beruntung, berani, nyata]
+  - id: e06
+    type: fill_blank
+    sentence: Foto ini ___ liburan saya di Bali.
+    meaning:
+      ar_eg: الصورة دي ___ من إجازتي في بالي.
+      ar: هذه الصورة ___ من عطلتي في بالي.
+      en: This photo is a ___ of my holiday in Bali.
+    options: [kenangan, ide, tiba]
+    answers: [kenangan]
+    words: [kenangan, ide, tiba]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: دي فكرة حلوة!
+      ar: هذه فكرة جميلة!
+      en: That's a good idea!
+    answer: Itu ide yang bagus!
+    distractors: [nyata, tiba]
+    words: [ide]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Ini mimpi atau nyata?
+    answers_meaning:
+      ar_eg: [ده حلم ولا حقيقة؟, أنا بحلم ولا ده بجد؟]
+      ar: [أهذا حلم أم حقيقة؟, هل هذا حلم أم واقع؟]
+      en: ['Is this a dream or real?', 'Is this a dream or reality?']
+    words: [nyata]
+  - id: e09
+    type: speaking
+    text: Saya beruntung, saya punya banyak kenangan indah.
+    meaning:
+      ar_eg: أنا محظوظ، عندي ذكريات حلوة كتير.
+      ar: أنا محظوظ، فلديّ ذكريات جميلة كثيرة.
+      en: 'I''m lucky: I have lots of beautiful memories.'
+    words: [beruntung, kenangan]
+  - id: e10
+    type: multiple_choice
+    question: Dia bukan anak-anak lagi. Dia sudah ___.
+    options: [dewasa, beruntung, tiba]
+    answer: 0
+    explain:
+      ar_eg: 'مبقاش عيل، بقى كبير: dewasa.'
+      ar: 'لم يعد طفلًا، صار راشدًا: dewasa.'
+      en: 'No longer a child, he''s grown up: dewasa.'
+    words: [dewasa, beruntung, tiba]
+dialogue:
+  lines:
+    - speaker: Mohamed
+      text: Kapal kita tiba jam berapa?
+      ar_eg: مركبنا هيوصل الساعة كام؟
+      ar: متى تصل سفينتنا؟
+      en: What time does our boat arrive?
+    - speaker: Raka
+      text: Jam sepuluh. Setelah itu kita snorkeling! Kamu berani?
+      ar_eg: الساعة عشرة. وبعدين نعمل سنوركلينج! تقدر؟
+      ar: في العاشرة، وبعدها نغطس! أتجرؤ؟
+      en: At ten. After that we go snorkelling! Do you dare?
+    - speaker: Mohamed
+      text: Berani! Ini pertama kali saya snorkeling.
+      ar_eg: أقدر! دي أول مرة أعمل سنوركلينج.
+      ar: نعم! هذه أوّل مرة أغطس فيها.
+      en: I dare! It's my first time snorkelling.
+    - speaker: Raka
+      text: 'Ide bagus: kita memotret ikan di laut!'
+      ar_eg: 'فكرة حلوة: نصوّر السمك في البحر!'
+      ar: 'فكرة جميلة: نصوّر السمك في البحر!'
+      en: 'Good idea: we''ll photograph fish in the sea!'
+    - speaker: Mohamed
+      text: Lautnya indah sekali. Ini mimpi atau nyata?
+      ar_eg: البحر جميل أوي. أنا بحلم ولا ده بجد؟
+      ar: البحر جميل جدًا. أهذا حلم أم حقيقة؟
+      en: The sea is so beautiful. Is this a dream or real?
+    - speaker: Raka
+      text: Nyata! Kita beruntung. Ini kenangan yang indah.
+      ar_eg: بجد! إحنا محظوظين. دي ذكرى حلوة.
+      ar: حقيقة! نحن محظوظون، وهذه ذكرى جميلة.
+      en: Real! We're lucky. This is a beautiful memory.
+new_words:
+  - word: tiba
+    pos: verb
+    ar_eg: يوصل (رسمي)
+    ar: يصل
+    en: arrive
+  - word: berani
+    pos: adjective
+    ar_eg: جريء؛ يجرؤ
+    ar: جريء؛ يجرؤ
+    en: brave; dare
+  - word: beruntung
+    pos: adjective
+    ar_eg: محظوظ
+    ar: محظوظ
+    en: lucky
+  - word: ide
+    pos: noun
+    ar_eg: فكرة
+    ar: فكرة
+    en: idea
+  - word: kenangan
+    pos: noun
+    ar_eg: ذكرى
+    ar: ذكرى
+    en: memory, keepsake
+  - word: dewasa
+    pos: adjective
+    ar_eg: كبير، بالغ
+    ar: راشد، بالغ
+    en: adult, grown-up
+  - word: nyata
+    pos: adjective
+    ar_eg: حقيقي
+    ar: حقيقي، واقعي
+    en: real
+review:
+  status: draft
+  verified: false

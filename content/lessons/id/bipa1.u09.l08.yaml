@@ -1,196 +1,236 @@
 schema: kabar.lesson/v1
 id: bipa1.u09.l08
 language: id
-title: Ulangan Unit 9
+title: Bank, warung, gereja
 can_do:
-  ar_eg: توصل من مكان لمكان بالسؤال.
-  ar: أن تصل من مكان إلى آخر بالسؤال.
-  en: Get from A to B by asking.
+  ar_eg: تسأل عن أماكن في المدينة وتفهم المسافة بالمتر وطلوع ونزول السلم.
+  ar: أن تسأل عن أماكن في المدينة وتفهم المسافة بالأمتار وصعود الدرج ونزوله.
+  en: Ask for places in town and understand distances in metres and going up or down stairs.
 slides:
-  - title: Ingat!
+  - title: Di kota
     body:
       ar_eg: |
-        - di (في) للمكان الثابت، ke (لـ) للحركة، dari (من) للبداية.
-        - di + كلمة المكان + الحاجة: di atas meja، di samping masjid، di antara … dan ….
-        - الخطوات: jalan lurus، lalu / kemudian belok kiri / kanan.
-        - dan (و)، atau (أو / ولا)، tetapi (بس)، jadi (فـ).
+        gedung = مبنى، bank = بنك، warung = مطعم أو دكان صغير شعبي، gereja = كنيسة (وmasjid انت عارفها).
+        tangga = سلم: naik tangga (يطلع السلم)، turun tangga (ينزل السلم). وturun كمان «ينزل» من الأتوبيس.
+        jarak = مسافة: Jaraknya dua ratus meter. (meter = متر.)
       ar: |
-        - di للمكان الثابت، وke للحركة، وdari للابتداء.
-        - di + ظرف المكان + الاسم: di atas meja، di samping masjid، di antara … dan ….
-        - الخطوات: jalan lurus، lalu / kemudian belok kiri / kanan.
-        - dan (و)، atau (أو / أم)، tetapi (لكن)، jadi (لذلك).
+        gedung = مبنى، bank = مصرف، warung = مطعم أو دكّان شعبي صغير، gereja = كنيسة (وmasjid تعرفها).
+        tangga = درج: naik tangga (يصعد الدرج)، turun tangga (ينزل الدرج). وturun أيضًا «ينزل» من الحافلة.
+        jarak = مسافة: Jaraknya dua ratus meter. (meter = متر.)
       en: |
-        - di for a fixed place, ke for movement to, dari for from.
-        - di + position word + noun: di atas meja, di samping masjid, di antara … dan ….
-        - Steps: jalan lurus, lalu / kemudian belok kiri / kanan.
-        - dan (and), atau (or), tetapi (but), jadi (so).
-    grammar: id.preposition.di-ke-dari
+        gedung = building, bank = bank, warung = a small local eatery or shop, gereja = church (you know masjid).
+        tangga = stairs: naik tangga (go upstairs), turun tangga (go downstairs). turun also means get off a bus.
+        jarak = distance: Jaraknya dua ratus meter. (meter = metre.)
+    examples:
+      - text: Bank itu di sebelah kiri gedung besar.
+        ar_eg: البنك على شمال المبنى الكبير.
+        ar: المصرف على يسار المبنى الكبير.
+        en: The bank is to the left of the big building.
+      - text: Jaraknya dua ratus meter dari sini.
+        ar_eg: المسافة ٢٠٠ متر من هنا.
+        ar: المسافة مئتا متر من هنا.
+        en: It's two hundred metres from here.
+      - text: Turun dari bus di halte Monas.
+        ar_eg: انزل من الأتوبيس عند محطة موناس.
+        ar: انزل من الحافلة عند محطة موناس.
+        en: Get off the bus at the Monas stop.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: di belakang
-        ar_eg: ورا
-        ar: خلف
-        en: behind
-      - text: di antara
-        ar_eg: بين
-        ar: بين
-        en: between
-      - text: di luar
-        ar_eg: بره
-        ar: خارج
-        en: outside
-      - text: belok kanan
-        ar_eg: خش يمين
-        ar: انعطف يمينًا
-        en: turn right
-      - text: jalan lurus
-        ar_eg: امشي دغري
-        ar: امشِ مستقيمًا
-        en: go straight
-    words: [belakang, antara, luar, belok, lurus]
+      - text: gedung
+        ar_eg: مبنى
+        ar: مبنى
+        en: building
+      - text: bank
+        ar_eg: بنك
+        ar: مصرف
+        en: bank
+      - text: warung
+        ar_eg: مطعم صغير
+        ar: مطعم شعبي
+        en: small eatery
+      - text: gereja
+        ar_eg: كنيسة
+        ar: كنيسة
+        en: church
+    words: [gedung, bank, warung, gereja]
   - id: e02
-    type: multiple_choice
-    question: Besok kami pergi ___ Kepulauan Seribu.
-    options: [di, ke, dari]
-    answer: 1
-    explain:
-      ar_eg: pergi حركة لمكان، يبقى ke.
-      ar: pergi حركة نحو مكان، فهي ke.
-      en: pergi is movement to a place → ke.
-    words: [ke, pergi]
+    type: match_pairs
+    pairs:
+      - text: tangga
+        ar_eg: سلم
+        ar: درج
+        en: stairs
+      - text: turun
+        ar_eg: ينزل
+        ar: ينزل
+        en: go down
+      - text: jarak
+        ar_eg: مسافة
+        ar: مسافة
+        en: distance
+      - text: meter
+        ar_eg: متر
+        ar: متر
+        en: metre
+    words: [tangga, turun, jarak, meter]
   - id: e03
-    type: multiple_choice
-    question: Kereta ___ Bandung sudah datang.
-    options: [ke, di, dari]
-    answer: 2
-    explain:
-      ar_eg: القطر جاي من باندونج ووصل، يبقى dari.
-      ar: القطار قادم من باندونغ وقد وصل، فهي dari.
-      en: The train has come from Bandung and arrived → dari.
-    words: [dari, kereta]
+    type: listen
+    text: Warung itu di depan gereja.
+    question:
+      ar_eg: المطعم الصغير فين؟
+      ar: أين المطعم الشعبي؟
+      en: Where's the warung?
+    options: [قدام الكنيسة, ورا البنك, جنب المحطة]
+    answer: 0
+    meaning:
+      ar_eg: المطعم الصغير ده قدام الكنيسة.
+      ar: ذلك المطعم الشعبي أمام الكنيسة.
+      en: That warung is in front of the church.
+    words: [warung, gereja]
   - id: e04
-    type: listen
-    text: Masjidnya di sebelah kanan.
-    options: [Masjidnya di sebelah kanan., Masjidnya di belakang., Masjidnya di sebelah kiri.]
-    answer: 0
-    words: [sebelah, kanan, masjid]
+    type: fill_blank
+    sentence: Jaraknya lima ratus ___.
+    meaning:
+      ar_eg: المسافة خمسمية ___.
+      ar: المسافة خمسمئة ___.
+      en: It's five hundred ___ away.
+    options: [meter, tangga, gedung]
+    answers: [meter]
+    words: [jarak, meter, tangga, gedung]
   - id: e05
-    type: listen
-    text: Kursinya di antara meja dan pintu.
-    options: [Kursinya di antara meja dan pintu., Kursinya di depan pintu., Kursinya di atas meja.]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تسحب فلوس. تروح فين؟
+      ar: تريد سحب نقود. إلى أين تذهب؟
+      en: You want to withdraw money. Where do you go?
+    options: [bank, gereja, warung]
     answer: 0
-    words: [kursi, antara, meja, pintu]
+    explain:
+      ar_eg: bank. gereja كنيسة، وwarung مطعم صغير.
+      ar: bank، أما gereja فكنيسة وwarung مطعم شعبي.
+      en: bank; gereja is a church and warung a small eatery.
+    words: [bank, gereja, warung]
   - id: e06
     type: fill_blank
-    sentence: Tiketnya di ___ tas.
+    sentence: Kantor saya di lantai tiga. Saya naik ___.
     meaning:
-      ar_eg: التذكرة جوه الشنطة.
-      ar: التذكرة داخل الحقيبة.
-      en: The ticket is inside the bag.
-    options: [dalam, antara, luar]
-    answers: [dalam]
-    words: [dalam, tas]
+      ar_eg: مكتبي في الدور التالت. بطلع على ___.
+      ar: مكتبي في الطابق الثالث، فأصعد ___.
+      en: My office is on the third floor. I take the ___.
+    options: [tangga, jarak, bank]
+    answers: [tangga]
+    words: [tangga, jarak, bank]
   - id: e07
-    type: fill_blank
-    sentence: Monas jauh, ___ kita naik bus.
-    meaning:
-      ar_eg: موناس بعيد، فهنركب أتوبيس.
-      ar: موناس بعيد، لذا سنركب الحافلة.
-      en: Monas is far, so we'll take the bus.
-    options: [atau, jadi, tetapi]
-    answers: [jadi]
-    words: [jadi, jauh]
+    type: build_sentence
+    source:
+      ar_eg: انزل من الأتوبيس عند المحطة.
+      ar: انزل من الحافلة عند المحطة.
+      en: Get off the bus at the stop.
+    answer: Turun dari bus di halte.
+    distractors: [naik, meter]
+    words: [turun]
   - id: e08
-    type: build_sentence
-    source:
-      ar_eg: خش شمال عند الإشارة، وبعدين امشي دغري.
-      ar: انعطف يسارًا عند الإشارة، ثم امشِ مستقيمًا.
-      en: Turn left at the traffic light, then go straight.
-    answer: Belok kiri di lampu merah, lalu jalan lurus.
-    alternatives: [Belok kiri di lampu merah lalu jalan lurus.]
-    distractors: [kanan, dari]
-    words: [belok, kiri, lampu merah, lalu, lurus]
+    type: translate
+    direction: from_target
+    source_text: Gedung itu tinggi sekali.
+    answers_meaning:
+      ar_eg: [المبنى ده عالي أوي, العمارة دي عالية جدًا]
+      ar: [ذلك المبنى عالٍ جدًا, ذلك المبنى شاهق]
+      en: [That building is very tall, That building is really tall]
+    words: [gedung]
   - id: e09
-    type: build_sentence
-    source:
-      ar_eg: الكتاب تحت الكرسي.
-      ar: الكتاب تحت الكرسي.
-      en: The book is under the chair.
-    answer: Bukunya di bawah kursi.
-    distractors: [atas, ke]
-    words: [bawah, kursi]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لو سمحت، المحطة فين؟
-      ar: عفوًا، أين المحطة؟
-      en: Excuse me, where is the station?
-    answers: ['Permisi, stasiunnya di mana?', 'Permisi, stasiun di mana?', 'Permisi, di mana stasiunnya?', 'Permisi, di mana stasiun?', 'Permisi, stasiunnya di mana, ya?', 'Permisi, stasiunnya di mana']
-    words: [permisi, stasiun]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الجامع جنب البنك.
-      ar: المسجد بجانب المصرف.
-      en: The mosque is next to the bank.
-    answers: [Masjidnya di samping bank., Masjidnya di sebelah bank., Masjid di samping bank., Masjid di sebelah bank., Masjidnya di samping bank, Masjidnya di sebelah bank]
-    explain:
-      ar_eg: «جنب» = di samping أو di sebelah، الاتنين صح.
-      ar: «بجانب» = di samping أو di sebelah، وكلاهما صحيح.
-      en: '"next to" = di samping or di sebelah; both are right.'
-    words: [samping, sebelah, masjid]
-  - id: e12
     type: speaking
-    text: Permisi, Bu. Saya mau ke Monas. Jalan lurus, lalu belok kanan, ya?
+    text: Jarak dari stasiun ke museum dua ratus meter.
     meaning:
-      ar_eg: لو سمحتي يا مدام. أنا عايز أروح موناس. أمشي دغري وبعدين أخش يمين، صح؟
-      ar: عفوًا يا سيدتي، أريد الذهاب إلى موناس. أمشي مستقيمًا ثم أنعطف يمينًا، أليس كذلك؟
-      en: Excuse me, ma'am. I want to go to Monas. Straight ahead, then turn right, right?
-    words: [permisi, ke, lurus, lalu, belok]
+      ar_eg: المسافة من المحطة للمتحف ٢٠٠ متر.
+      ar: المسافة من المحطة إلى المتحف مئتا متر.
+      en: It's two hundred metres from the station to the museum.
+    words: [jarak, meter]
+  - id: e10
+    type: multiple_choice
+    question: Dari lantai dua ke lantai satu, kita ___.
+    options: [turun, naik, jarak]
+    answer: 0
+    explain:
+      ar_eg: من فوق لتحت = turun. naik العكس.
+      ar: من الأعلى إلى الأسفل turun، وnaik عكسها.
+      en: Going down is turun; naik is going up.
+    words: [turun]
 dialogue:
-  title: Di depan Monas
   lines:
-    - speaker: Ni Luh
-      text: Mohamed, kamu di mana?
-      ar_eg: محمد، إنت فين؟
-      ar: يا محمد، أين أنت؟
-      en: Mohamed, where are you?
     - speaker: Mohamed
-      text: Saya di depan pintu masuk Monas. Kamu?
-      ar_eg: أنا قدّام مدخل موناس. وإنتي؟
-      ar: أنا أمام مدخل موناس. وأنتِ؟
-      en: I'm in front of the Monas entrance. You?
-    - speaker: Ni Luh
-      text: Saya di halte, dekat stasiun. Ke sana jauh atau dekat?
-      ar_eg: أنا في محطة الأتوبيس جنب محطة القطر. المشوار لعندك بعيد ولا قريب؟
-      ar: أنا في موقف الحافلات قرب المحطة. أهو بعيد أم قريب؟
-      en: I'm at the bus stop near the station. Is it far or close to get there?
+      text: Permisi, Pak. Bank di mana?
+      ar_eg: لو سمحت يا أستاذ، البنك فين؟
+      ar: عفوًا يا سيدي، أين المصرف؟
+      en: Excuse me, sir. Where's the bank?
+    - speaker: Satpam
+      text: Banknya di gedung itu, di sebelah gereja.
+      ar_eg: البنك في المبنى ده، جنب الكنيسة.
+      ar: المصرف في ذلك المبنى بجوار الكنيسة.
+      en: The bank's in that building, next to the church.
     - speaker: Mohamed
-      text: Dekat. Jalan lurus, lalu belok kiri di lampu merah.
-      ar_eg: قريب. امشي دغري، وبعدين خشي شمال عند الإشارة.
-      ar: قريب. امشي مستقيمًا ثم انعطفي يسارًا عند الإشارة.
-      en: Close. Go straight, then turn left at the traffic light.
-    - speaker: Ni Luh
-      text: Oke. Tapi panas sekali, jadi saya beli air dulu.
-      ar_eg: ماشي. بس الجو حر أوي، فهشتري مية الأول.
-      ar: حسنًا. لكن الجو حار جدًا، لذا سأشتري ماءً أولًا.
-      en: Okay. But it's really hot, so I'll buy water first.
+      text: Jauh, Pak?
+      ar_eg: بعيد يا أستاذ؟
+      ar: هل هو بعيد يا سيدي؟
+      en: Is it far?
+    - speaker: Satpam
+      text: Tidak. Jaraknya seratus meter. Jalan lurus, lalu belok kanan.
+      ar_eg: لأ. المسافة ١٠٠ متر. امشي على طول، وبعدين حوّد يمين.
+      ar: لا، المسافة مئة متر. امشِ مستقيمًا ثم انعطف يمينًا.
+      en: No. It's a hundred metres. Go straight, then turn right.
     - speaker: Mohamed
-      text: Baik. Saya di samping loket, ya. Sampai jumpa!
-      ar_eg: تمام. أنا هكون جنب شباك التذاكر. أشوفك!
-      ar: حسنًا. سأكون بجانب شباك التذاكر. إلى اللقاء!
-      en: Fine. I'll be next to the ticket counter. See you!
-souvenir:
-  id: bipa1.u09.souvenir
-  title: Monumen Nasional (Monas)
-  note:
-    ar_eg: 'موناس، النُصُب الوطني، طوله ١٣٢ متر في نص ميدان مرديكا، وفوقه شعلة متغطية دهب ترمز لحرية إندونيسيا. ومن فوق بتشوف جاكرتا كلها، وجنبه على طول جامع الاستقلال والكاتدرائية قصاد بعض. ولو تهت، اسأل وبس: أهل جاكرتا بيوصفوا الطريق بالعلامات («بعد الجامع خش شمال») وساعات بيمشوا معاك نص المسافة كمان.'
-    ar: 'موناس، النصب الوطني، يرتفع ١٣٢ مترًا في قلب ميدان مرديكا، وتعلوه شعلة مكسوّة بالذهب ترمز إلى استقلال إندونيسيا. ومن قمته ترى جاكرتا كلها، وبقربه يتقابل مسجد الاستقلال والكاتدرائية. وإن ضللت الطريق فاسأل: يصف أهل جاكرتا الطريق بالمعالم («بعد المسجد انعطف يسارًا»)، وكثيرًا ما يرافقونك نصف المسافة.'
-    en: Monas, the National Monument, rises 132 metres in the middle of Merdeka Square, topped by a gold-covered flame for Indonesia's independence. From the top you see all of Jakarta, and nearby Istiqlal Mosque and the Cathedral face each other. If you get lost, just ask — Jakartans give directions by landmarks ("after the mosque, turn left") and will often walk you halfway.
+      text: Ada warung di dekat bank?
+      ar_eg: فيه مطعم صغير جنب البنك؟
+      ar: هل هناك مطعم شعبي قرب المصرف؟
+      en: Is there a warung near the bank?
+    - speaker: Satpam
+      text: Ada, di bawah, dekat tangga.
+      ar_eg: أيوه، تحت، جنب السلم.
+      ar: نعم، في الأسفل قرب الدرج.
+      en: Yes, downstairs, near the stairs.
+new_words:
+  - word: gedung
+    pos: noun
+    ar_eg: مبنى، عمارة
+    ar: مبنى
+    en: building
+  - word: bank
+    pos: noun
+    ar_eg: بنك
+    ar: مصرف، بنك
+    en: bank
+  - word: warung
+    pos: noun
+    ar_eg: مطعم أو دكان صغير
+    ar: مطعم أو دكّان شعبي صغير
+    en: small eatery, stall
+  - word: gereja
+    pos: noun
+    ar_eg: كنيسة
+    ar: كنيسة
+    en: church
+  - word: tangga
+    pos: noun
+    ar_eg: سلم
+    ar: درج، سلّم
+    en: stairs, ladder
+  - word: turun
+    pos: verb
+    ar_eg: ينزل
+    ar: ينزل
+    en: go down, get off
+  - word: jarak
+    pos: noun
+    ar_eg: مسافة
+    ar: مسافة
+    en: distance
+  - word: meter
+    pos: noun
+    ar_eg: متر
+    ar: متر
+    en: metre
 review:
   status: draft
   verified: false

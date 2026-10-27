@@ -1,0 +1,213 @@
+schema: kabar.lesson/v1
+id: bipa1.u08.l09
+language: id
+title: Ulangan Unit 8
+can_do:
+  ar_eg: توصف صاحب ليك.
+  ar: أن تصف صديقًا لك.
+  en: Describe a friend.
+slides:
+  - title: Ingat!
+    body:
+      ar_eg: |
+        افتكر تلات حاجات:
+        - الصفة بعد الشخص على طول: Dia ramah. Rambutnya panjang.
+        - tidak قبل الفعل والصفة، bukan قبل الاسم: Dia tidak malas. Dia bukan guru.
+        - yang = «اللي»: teman yang lucu، Saya mau yang merah، Yang mana?
+      ar: |
+        تذكّر ثلاثة أمور:
+        - الصفة بعد الشخص مباشرة: Dia ramah. Rambutnya panjang.
+        - tidak قبل الفعل والصفة، وbukan قبل الاسم: Dia tidak malas. Dia bukan guru.
+        - yang = «الذي»: teman yang lucu، Saya mau yang merah، Yang mana؟
+      en: |
+        Remember three things:
+        - Adjective right after the person: Dia ramah. Rambutnya panjang.
+        - tidak before verbs and adjectives, bukan before nouns: Dia tidak malas. Dia bukan guru.
+        - yang = «اللي»: teman yang lucu, Saya mau yang merah, Yang mana?
+    grammar: id.yang.basic
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: rajin
+        ar_eg: مجتهد
+        ar: مجتهد
+        en: hard-working
+      - text: pendiam
+        ar_eg: هادي، قليل الكلام
+        ar: قليل الكلام
+        en: quiet
+      - text: sabar
+        ar_eg: صبور
+        ar: صبور
+        en: patient
+      - text: pintar
+        ar_eg: شاطر
+        ar: ذكي
+        en: smart
+      - text: ganteng
+        ar_eg: وسيم
+        ar: وسيم
+        en: handsome
+    words: [rajin, pendiam, sabar, pintar, ganteng]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: tinggi
+        ar_eg: طويل (القامة)
+        ar: طويل القامة
+        en: tall
+      - text: pendek
+        ar_eg: قصير
+        ar: قصير
+        en: short
+      - text: malas
+        ar_eg: كسلان
+        ar: كسول
+        en: lazy
+      - text: ramah
+        ar_eg: بشوش ولطيف
+        ar: ودود
+        en: friendly
+    explain:
+      ar_eg: tinggi ↔ pendek وrajin ↔ malas وramah ↔ pendiam أزواج عكس بعض.
+      ar: tinggi ↔ pendek وrajin ↔ malas وramah ↔ pendiam أضداد.
+      en: tinggi ↔ pendek, rajin ↔ malas and ramah ↔ pendiam are opposite pairs.
+    words: [tinggi, pendek, malas, ramah]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه عكس tinggi؟
+      ar: ما ضدّ tinggi؟
+      en: What is the opposite of tinggi?
+    options: [pendek, panjang, cantik]
+    answer: 0
+    explain:
+      ar_eg: tinggi (طويل القامة) عكسها pendek. panjang للحاجات زي الشعر.
+      ar: ضد tinggi هو pendek، أما panjang فللأشياء كالشعر.
+      en: The opposite of tinggi is pendek; panjang is "long" for things like hair.
+    words: [tinggi, pendek]
+  - id: e04
+    type: multiple_choice
+    question: Itu ___ teh, tapi kopi.
+    options: [tidak, bukan]
+    answer: 1
+    explain:
+      ar_eg: teh اسم، وكمان النمط bukan …، tapi … = «مش …، …».
+      ar: teh اسم، والنمط bukan …، tapi … للاستدراك.
+      en: teh is a noun, and the pattern is bukan …, tapi … (not X but Y).
+    words: [bukan, tapi]
+  - id: e05
+    type: listen
+    text: Teman saya yang pakai kacamata.
+    options: ['Teman saya yang mana?', Teman saya yang pakai kacamata., Teman saya pakai kacamata.]
+    answer: 1
+    words: [yang, kacamata]
+  - id: e06
+    type: listen
+    text: Dia bukan orang Malaysia.
+    options: ['Dia orang Malaysia, bukan?', Dia tidak suka Malaysia., Dia bukan orang Malaysia.]
+    answer: 2
+    words: [bukan]
+  - id: e07
+    type: fill_blank
+    sentence: Saya mau yang ___. Yang putih tidak ada.
+    meaning:
+      ar_eg: عايز الأحمر. الأبيض مش موجود.
+      ar: أريد الأحمر، فالأبيض غير موجود.
+      en: I want the red one. There's no white one.
+    options: [mana, merah, putih]
+    answers: [merah]
+    explain:
+      ar_eg: الأبيض مش موجود، يبقى عايز الأحمر.
+      ar: الأبيض غير موجود، فالمطلوب الأحمر.
+      en: There's no white one, so it's the red one.
+    words: [yang, merah, putih]
+  - id: e08
+    type: fill_blank
+    sentence: Orang ___ tinggal di Glodok ramah sekali.
+    meaning:
+      ar_eg: الناس اللي ساكنين في جلودوك لطاف جدًا.
+      ar: الناس الذين يسكنون في غلودوك ودودون جدًا.
+      en: The people who live in Glodok are very friendly.
+    answers: [yang, yg]
+    words: [yang]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: صاحبي اللي من جاكرتا مجتهد جدًا.
+      ar: صديقي الذي من جاكرتا مجتهد جدًا.
+      en: My friend from Jakarta is very hard-working.
+    answer: Teman saya yang dari Jakarta sangat rajin.
+    distractors: [tidak, malas]
+    words: [yang, rajin]
+  - id: e10
+    type: build_sentence
+    source:
+      ar_eg: هو مش كسلان، بس هادي شوية.
+      ar: ليس كسولًا، لكنه هادئ قليلًا.
+      en: He isn't lazy, but he's a bit quiet.
+    answer: Dia tidak malas, tapi agak pendiam.
+    alternatives: [Dia tidak malas tapi agak pendiam.]
+    distractors: [bukan, sangat]
+    words: [tidak, malas, agak, pendiam]
+  - id: e11
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: هي مش مدرسة. هي دكتورة.
+      ar: ليست معلمة، إنها طبيبة.
+      en: She's not a teacher. She's a doctor.
+    answers: [Dia bukan guru. Dia dokter., 'Dia bukan guru, dia dokter.', Dia bukan guru. Dia dokter, 'Dia bukan guru, dia dokter', 'Dia bukan guru, tapi dokter.', 'Dia bukan guru, tetapi dokter.']
+    words: [bukan, guru, dokter]
+  - id: e12
+    type: speaking
+    text: Teman saya yang dari Bali cantik, ramah, dan pintar.
+    meaning:
+      ar_eg: صاحبتي اللي من بالي حلوة ولطيفة وشاطرة.
+      ar: صديقتي التي من بالي جميلة وودودة وذكية.
+      en: My friend from Bali is pretty, friendly and smart.
+    words: [yang, cantik, ramah, pintar]
+dialogue:
+  title: Teman Mohamed
+  lines:
+    - speaker: Bu Yanti
+      text: Mohamed, temanmu yang mana?
+      ar_eg: يا محمد، أنهي واحد صاحبك؟
+      ar: يا محمد، أيّهم صديقك؟
+      en: Mohamed, which one is your friend?
+    - speaker: Mohamed
+      text: Yang tinggi itu, Bu. Namanya Raka.
+      ar_eg: الطويل ده يا طنط. اسمه راكا.
+      ar: ذلك الطويل يا سيدتي، اسمه راكا.
+      en: That tall one, ma'am. His name is Raka.
+    - speaker: Bu Yanti
+      text: Orangnya bagaimana?
+      ar_eg: هو عامل إزاي كإنسان؟
+      ar: كيف هو شخصيًّا؟
+      en: What's he like?
+    - speaker: Mohamed
+      text: Dia lucu dan ramah, tapi agak malas.
+      ar_eg: دمه خفيف ولطيف، بس كسلان شوية.
+      ar: ظريف وودود، لكنه كسول قليلًا.
+      en: He's funny and friendly, but a bit lazy.
+    - speaker: Bu Yanti
+      text: Dia mahasiswa, bukan?
+      ar_eg: هو طالب جامعة، مش كده؟
+      ar: هو طالب جامعي، أليس كذلك؟
+      en: He's a university student, isn't he?
+    - speaker: Mohamed
+      text: Bukan, Bu. Dia bukan mahasiswa. Dia sudah bekerja.
+      ar_eg: لأ يا طنط. هو مش طالب. هو بيشتغل خلاص.
+      ar: لا يا سيدتي، ليس طالبًا، فهو يعمل الآن.
+      en: No, ma'am. He's not a student. He already works.
+souvenir:
+  id: bipa1.u08.souvenir
+  title: Kelenteng di Pecinan Glodok
+  note:
+    ar_eg: 'جلودوك هي الحي الصيني في جاكرتا (Pecinan)، وفيها معابد قديمة (kelenteng) ريحة البخور فيها مالية المكان والفوانيس الحمرا متعلقة في كل حتة؛ منها Vihara Dharma Bhakti اللي بقاله أكتر من ٣٥٠ سنة. التنوّع ده هو إندونيسيا: صينيين وجاويين وعرب وبتاويين عايشين جنب بعض. ولما الإندونيسيين بيوصفوا بعض بيبقوا مؤدبين وبيلطّفوا الكلام بـ agak، وده بالظبط اللي اتعلمته في الوحدة دي.'
+    ar: 'غلودوك هو الحي الصيني في جاكرتا (Pecinan)، وفيه معابد قديمة (kelenteng) يملؤها عبق البخور وتزيّنها الفوانيس الحمراء، ومنها Vihara Dharma Bhakti الذي يزيد عمره على ثلاثمئة وخمسين عامًا. وهذا التنوع هو إندونيسيا: صينيون وجاويون وعرب وبتاويون جيرانٌ متجاورون. وحين يصف الإندونيسيون بعضهم يتحرّون اللطف ويخففون الوصف بـ agak، وهو ما تعلمته في هذه الوحدة.'
+    en: Glodok is Jakarta's Chinatown (Pecinan), where old temples (kelenteng) smell of incense and red lanterns hang everywhere; Vihara Dharma Bhakti there is more than 350 years old. That mix is Indonesia — Chinese, Javanese, Arab and Betawi families living side by side. And when Indonesians describe each other they do it kindly, softening with agak, exactly as you learned in this unit.
+review:
+  status: draft
+  verified: false

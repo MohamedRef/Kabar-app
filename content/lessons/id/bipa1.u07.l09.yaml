@@ -1,0 +1,224 @@
+schema: kabar.lesson/v1
+id: bipa1.u07.l09
+language: id
+title: Hobi di rumah
+can_do:
+  ar_eg: 'تتكلم عن هوايات هادية: صيد السمك والزراعة والخياطة والرسم.'
+  ar: 'أن تتحدث عن هوايات هادئة: صيد السمك والزراعة والخياطة والرسم.'
+  en: 'Talk about quiet hobbies: fishing, gardening, sewing and pictures.'
+slides:
+  - title: Memancing dan berkebun
+    body:
+      ar_eg: |
+        memancing = يصطاد سمك بالسنارة، وberkebun = يزرع في الجنينة (kebun = جنينة، هتيجي بعدين).
+        tanaman = نبات أو زرعة. menjahit = يخيّط.
+        gambar = صورة أو رسمة، ومنها menggambar (يرسم).
+        emas = دهب. وikan emas = سمكة زينة دهبي.
+      ar: |
+        memancing = يصطاد السمك بالصنّارة، وberkebun = يزرع في البستان (kebun = بستان، ستأتي لاحقًا).
+        tanaman = نبات. menjahit = يخيط.
+        gambar = صورة أو رسم، ومنها menggambar (يرسم).
+        emas = ذهب، وikan emas = السمكة الذهبية.
+      en: |
+        memancing = go fishing; berkebun = do gardening (kebun = garden, coming later).
+        tanaman = plant. menjahit = sew.
+        gambar = picture, drawing, the root of menggambar (draw).
+        emas = gold, and ikan emas = goldfish.
+    examples:
+      - text: Kakek suka memancing di sungai.
+        ar_eg: جدو بيحب يصطاد سمك في النهر.
+        ar: يحبّ جدّي صيد السمك في النهر.
+        en: Grandpa likes fishing in the river.
+      - text: Nenek suka berkebun. Tanamannya banyak.
+        ar_eg: تيتا بتحب الزراعة. عندها زرع كتير.
+        ar: تحبّ جدّتي الزراعة، ونباتاتها كثيرة.
+        en: Grandma likes gardening. She has lots of plants.
+      - text: Ini gambar ikan emas.
+        ar_eg: دي رسمة سمكة دهبي.
+        ar: هذه صورة سمكة ذهبية.
+        en: This is a picture of a goldfish.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: memancing
+        ar_eg: يصطاد سمك
+        ar: يصطاد السمك
+        en: go fishing
+      - text: berkebun
+        ar_eg: يزرع الجنينة
+        ar: يزرع البستان
+        en: garden
+      - text: tanaman
+        ar_eg: زرعة، نبات
+        ar: نبات
+        en: plant
+    words: [memancing, berkebun, tanaman]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: gambar
+        ar_eg: صورة، رسمة
+        ar: صورة، رسم
+        en: picture
+      - text: menjahit
+        ar_eg: يخيّط
+        ar: يخيط
+        en: sew
+      - text: emas
+        ar_eg: دهب
+        ar: ذهب
+        en: gold
+    words: [gambar, menjahit, emas]
+  - id: e03
+    type: listen
+    text: Kakek suka memancing di sungai.
+    question:
+      ar_eg: جدو بيحب يعمل إيه؟
+      ar: ماذا يحبّ الجدّ أن يفعل؟
+      en: What does Grandpa like doing?
+    options: [يصطاد سمك, يخيّط, يرسم]
+    answer: 0
+    meaning:
+      ar_eg: جدو بيحب يصطاد سمك في النهر.
+      ar: يحبّ جدّي صيد السمك في النهر.
+      en: Grandpa likes fishing in the river.
+    words: [memancing]
+  - id: e04
+    type: fill_blank
+    sentence: Nenek suka ___. Tanamannya banyak.
+    meaning:
+      ar_eg: تيتا بتحب ___. عندها زرع كتير.
+      ar: تحبّ جدّتي ___، ونباتاتها كثيرة.
+      en: Grandma likes ___. She has lots of plants.
+    options: [berkebun, menjahit, memancing]
+    answers: [berkebun]
+    words: [berkebun, tanaman, menjahit, memancing]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بتحب تعمل هدومك بإيدك بالإبرة والخيط. هوايتك…؟
+      ar: تحبّ أن تصنع ملابسك بالإبرة والخيط. هوايتك…؟
+      en: You like making your own clothes with needle and thread. Your hobby is…?
+    options: [menjahit, memancing, berkebun]
+    answer: 0
+    explain:
+      ar_eg: menjahit = يخيّط. memancing صيد، وberkebun زراعة.
+      ar: menjahit الخياطة، أما memancing فالصيد وberkebun الزراعة.
+      en: menjahit = sewing; memancing is fishing and berkebun gardening.
+    words: [menjahit, memancing, berkebun]
+  - id: e06
+    type: fill_blank
+    sentence: Ini ___ ikan emas. Adik saya menggambar.
+    meaning:
+      ar_eg: دي ___ سمكة دهبي. أخويا الصغير رسمها.
+      ar: هذه ___ سمكة ذهبية، رسمها أخي الصغير.
+      en: This is a ___ of a goldfish. My little brother drew it.
+    options: [gambar, tanaman, emas]
+    answers: [gambar]
+    words: [gambar, emas, tanaman]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: مامتي بتخيّط هدوم.
+      ar: أمّي تخيط ملابس.
+      en: My mother sews clothes.
+    answer: Ibu saya menjahit pakaian.
+    distractors: [emas, gambar]
+    words: [menjahit]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Saya punya ikan emas di rumah.
+    answers_meaning:
+      ar_eg: [عندي سمكة دهبي في البيت, عندي سمك زينة دهبي في البيت]
+      ar: [لديّ سمكة ذهبية في البيت, عندي سمكة ذهبية في المنزل]
+      en: [I have a goldfish at home, 'I''ve got a goldfish at home']
+    words: [emas]
+  - id: e09
+    type: speaking
+    text: Hobi saya berkebun dan memancing.
+    meaning:
+      ar_eg: هوايتي الزراعة وصيد السمك.
+      ar: هوايتي الزراعة وصيد السمك.
+      en: My hobbies are gardening and fishing.
+    words: [berkebun, memancing]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: معدن غالي لونه أصفر. اسمه إيه؟
+      ar: معدن ثمين لونه أصفر. ما اسمه؟
+      en: A precious yellow metal. What is it?
+    options: [emas, tanaman, gambar]
+    answer: 0
+    explain:
+      ar_eg: emas = دهب.
+      ar: emas = ذهب.
+      en: emas = gold.
+    words: [emas, tanaman, gambar]
+dialogue:
+  lines:
+    - speaker: Mohamed
+      text: Ni Luh, kamu punya hobi?
+      ar_eg: يا ني لوه، عندك هواية؟
+      ar: يا ني لوه، هل لديك هواية؟
+      en: Ni Luh, do you have a hobby?
+    - speaker: Ni Luh
+      text: Ya. Saya suka menjahit dan menggambar.
+      ar_eg: أيوه. بحب الخياطة والرسم.
+      ar: نعم، أحبّ الخياطة والرسم.
+      en: Yes. I like sewing and drawing.
+    - speaker: Mohamed
+      text: Hebat! Teman saya Raka suka memancing.
+      ar_eg: جامد! وصاحبي رَكا بيحب صيد السمك.
+      ar: رائع! وصديقي راكا يحبّ صيد السمك.
+      en: Great! My friend Raka likes fishing.
+    - speaker: Ni Luh
+      text: Ayah saya suka berkebun. Di rumah kami ada banyak tanaman.
+      ar_eg: بابا بيحب الزراعة. عندنا زرع كتير في البيت.
+      ar: أبي يحبّ الزراعة، وفي بيتنا نباتات كثيرة.
+      en: My dad likes gardening. We have lots of plants at home.
+    - speaker: Mohamed
+      text: Ada ikan emas juga?
+      ar_eg: وعندكم سمك دهبي كمان؟
+      ar: وهل عندكم سمك ذهبي أيضًا؟
+      en: Do you have goldfish too?
+    - speaker: Ni Luh
+      text: Ada! Lima ikan emas.
+      ar_eg: أيوه! خمس سمكات دهبي.
+      ar: نعم! خمس سمكات ذهبية.
+      en: Yes! Five goldfish.
+new_words:
+  - word: memancing
+    pos: verb
+    ar_eg: يصطاد سمك
+    ar: يصطاد السمك
+    en: go fishing
+  - word: berkebun
+    pos: verb
+    ar_eg: يزرع الجنينة
+    ar: يزرع البستان
+    en: do gardening
+  - word: tanaman
+    pos: noun
+    ar_eg: زرعة، نبات
+    ar: نبات
+    en: plant
+  - word: gambar
+    pos: noun
+    ar_eg: صورة، رسمة
+    ar: صورة، رسم
+    en: picture, drawing
+  - word: menjahit
+    pos: verb
+    ar_eg: يخيّط
+    ar: يخيط
+    en: sew
+  - word: emas
+    pos: noun
+    ar_eg: دهب
+    ar: ذهب
+    en: gold
+review:
+  status: draft
+  verified: false
