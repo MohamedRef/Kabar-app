@@ -88,15 +88,6 @@ exercises:
     distractors: [yg, gk]
     words: [bawa, makanan]
   - id: e06
-    type: build_sentence
-    source:
-      ar_eg: (شات) خلّوا بالكم يا جماعة!
-      ar: (محادثة) انتبهوا جميعًا!
-      en: (chat) Take care, everyone!
-    answer: hati2 ya semua
-    distractors: [udh, bgt]
-    words: [hati-hati, semua]
-  - id: e07
     type: translate
     direction: from_target
     source_text: hah jam 4?? aduh, ngantuk bgt wkwk
@@ -105,24 +96,45 @@ exercises:
       ar: [ماذا؟ الساعة الرابعة؟! يا للهول، أنا نعسان جدًا هههه, الرابعة؟! آه، أنا نعسان جدًا]
       en: ['What, 4 o''clock?? Oh no, I''m so sleepy haha', '4 a.m.?! Ugh, I''m so sleepy lol']
     words: [aduh, ngantuk, banget]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: gaes
+        ar_eg: يا جماعة
+        ar: يا جماعة
+        en: guys
+      - text: ngantuk
+        ar_eg: نعسان
+        ar: نعسان
+        en: sleepy
+      - text: nyetir
+        ar_eg: يسوق (عامية)
+        ar: يقود (عامية)
+        en: drive (casual)
+      - text: setuju
+        ar_eg: موافق
+        ar: موافق
+        en: agree
+      - text: otw
+        ar_eg: في السكة
+        ar: في الطريق
+        en: on the way
+      - text: wkwk
+        ar_eg: هههه
+        ar: هههه
+        en: haha
+    words: [gaes, ngantuk, nyetir, setuju, otw, wkwk]
   - id: e08
-    type: translate
-    direction: from_target
-    source_text: gk papa Rina, nanti tidur di mobil aja
-    answers_meaning:
-      ar_eg: [ولا يهمك يا رينا، ابقي نامي في العربية., مفيش مشكلة يا رينا، نامي في العربية وخلاص]
-      ar: [لا بأس يا رينا، نامي في السيارة لاحقًا., لا مشكلة يا رينا، يمكنك النوم في السيارة]
-      en: ['No problem, Rina, just sleep in the car.', 'It''s fine Rina, you can sleep in the car later.']
-    words: [nggak, saja]
-  - id: e09
-    type: dictation
-    text: Hati-hati di jalan, ya!
+    type: listen
+    text: Gaes, aku ngantuk banget. Kamu aja yang nyetir, ya?
+    options: ['Gaes, aku ngantuk banget. Kamu aja yang nyetir, ya?', 'Gaes, aku ngantuk banget. Aku aja yang nyetir, ya?', 'Gaes, aku setuju. Kamu aja yang nyetir, ya?']
+    answer: 0
     meaning:
-      ar_eg: خلي بالك في الطريق!
-      ar: انتبه في الطريق!
-      en: Take care on the road!
-    words: [hati-hati]
-  - id: e10
+      ar_eg: يا جماعة، أنا نعسان أوي. إنت اللي سوق، ماشي؟
+      ar: يا جماعة، أنا نعسان جدًا. قُد أنت، اتفقنا؟
+      en: Guys, I'm so sleepy. You drive, OK?
+    words: [gaes, ngantuk, nyetir, setuju]
+  - id: e09
     type: speaking
     text: Oke, aku bawa makanan, ya. Sampai besok!
     meaning:
@@ -130,6 +142,20 @@ exercises:
       ar: حسنًا، سأحضر الطعام. إلى اللقاء غدًا!
       en: OK, I'll bring food. See you tomorrow!
     words: [bawa, sampai besok]
+  - id: e10
+    type: multiple_choice
+    question: gaes, setuju gk?
+    question_meaning:
+      ar_eg: راكا بيسأل الجروب إيه؟ اختار الكتابة الكاملة.
+      ar: ماذا يسأل راكا المجموعة؟ اختر الصيغة الكاملة.
+      en: What is Raka asking the group? Pick the full form.
+    options: ['Teman-teman, kalian setuju?', 'Teman-teman, kalian ngantuk?', 'Teman-teman, kalian sudah sampai?']
+    answer: 0
+    explain:
+      ar_eg: gaes = guys (يا جماعة)، وsetuju = موافق.
+      ar: gaes = يا جماعة، وsetuju = موافق.
+      en: gaes = guys, setuju = agree.
+    words: [gaes, setuju, ngantuk]
 dialogue:
   title: Grup "Liburan Lovina"
   lines:

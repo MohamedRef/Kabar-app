@@ -109,23 +109,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: Semoga cepat sembuh
-        ar_eg: ألف سلامة
-        ar: شفاك الله سريعًا
-        en: get well soon
-      - text: Semoga sukses
-        ar_eg: بالتوفيق
-        ar: بالتوفيق
-        en: good luck
+      - text: mudah-mudahan
+        ar_eg: يا رب / ياريت
+        ar: عسى
+        en: hopefully
       - text: insya Allah
         ar_eg: إن شاء الله
         ar: إن شاء الله
         en: God willing
+      - text: amin
+        ar_eg: آمين
+        ar: آمين
+        en: amen
       - text: alhamdulillah
         ar_eg: الحمد لله
         ar: الحمد لله
-        en: praise be to God
-    words: [semoga, sembuh, insya Allah, alhamdulillah]
+        en: praise God
+      - text: lancar
+        ar_eg: ماشي كويس، من غير مشاكل
+        ar: بسلاسة
+        en: smooth(ly)
+      - text: jamu
+        ar_eg: جامو (مشروب أعشاب)
+        ar: جامو (شراب أعشاب)
+        en: jamu (herbal tonic)
+    words: [mudah-mudahan, insya Allah, amin, alhamdulillah, lancar, jamu]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -138,9 +146,9 @@ exercises:
   - id: e03
     type: listen
     text: Mudah-mudahan besok tidak hujan.
-    options: [Mudah-mudahan besok hujan., Mudah-mudahan besok tidak panas., Mudah-mudahan besok tidak hujan.]
+    options: [Mudah-mudahan besok hujan., 'Alhamdulillah, besok tidak hujan.', Mudah-mudahan besok tidak hujan.]
     answer: 2
-    words: [mudah-mudahan]
+    words: [mudah-mudahan, alhamdulillah]
   - id: e04
     type: fill_blank
     sentence: Minum jamu, ___!
@@ -152,22 +160,37 @@ exercises:
     answers: [yuk]
     words: [yuk, jamu]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: يلا ارتاح شوية عشان تخف بسرعة.
-      ar: هيّا استرح قليلًا لتشفى سريعًا.
-      en: Come on, get some rest so you get well soon.
-    answer: Ayo, istirahat dulu supaya cepat sembuh.
-    distractors: [semoga, sambil]
-    words: [ayo, istirahat, sembuh]
+    type: listen
+    text: Alhamdulillah, perjalanannya lancar.
+    options: ['Alhamdulillah, perjalanannya lancar.', 'Insya Allah, perjalanannya lancar.', 'Amin, perjalanannya lancar.']
+    answer: 0
+    meaning:
+      ar_eg: الحمد لله، الرحلة عدّت على خير.
+      ar: الحمد لله، مرّت الرحلة بسلاسة.
+      en: Thank God, the trip went smoothly.
+    words: [alhamdulillah, perjalanan, lancar, insya Allah, amin]
   - id: e06
     type: speaking
-    text: Ayo, istirahat dulu. Semoga cepat sembuh!
+    text: Ayo, minum jamu dulu. Semoga cepat sembuh!
     meaning:
-      ar_eg: يلا ارتاح شوية. ألف سلامة!
-      ar: هيّا استرح قليلًا. شفاك الله سريعًا!
-      en: Come on, get some rest. Get well soon!
-    words: [ayo, istirahat, semoga]
+      ar_eg: يلا اشرب جامو الأول. ألف سلامة!
+      ar: هيّا اشرب الجامو أولًا. أتمنى لك الشفاء العاجل!
+      en: Come on, drink some jamu first. Get well soon!
+    words: [ayo, jamu, semoga, sembuh]
+  - id: e07
+    type: multiple_choice
+    question: Semoga cepat sembuh, ya!
+    question_meaning:
+      ar_eg: صاحبك قالك كده وإنت عيان. ترد بإيه؟
+      ar: قال لك صديقك هذا وأنت مريض. بماذا تردّ؟
+      en: Your friend says this while you're ill. How do you reply?
+    options: ['Amin, terima kasih.', 'Mudah-mudahan lancar.', 'Insya Allah, sama-sama.']
+    answer: 0
+    explain:
+      ar_eg: زي عندنا بالظبط، على الدعوة بترد «آمين».
+      ar: كما عندنا تمامًا، يُردّ على الدعاء بـ«آمين».
+      en: Just like in Arabic, you answer a good wish with "amin".
+    words: [semoga, sembuh, amin, mudah-mudahan, lancar, insya Allah]
 dialogue:
   title: Jamu dari Ni Luh
   lines:

@@ -85,27 +85,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: selalu
-        ar_eg: دايمًا
-        ar: دائمًا
-        en: always
-      - text: sering
-        ar_eg: كتير
-        ar: كثيرًا
-        en: often
-      - text: jarang
-        ar_eg: نادرًا
-        ar: نادرًا
-        en: rarely
-      - text: terlambat
-        ar_eg: متأخر
-        ar: متأخر
-        en: late
       - text: tepat waktu
         ar_eg: في المعاد
         ar: في الموعد
         en: on time
-    words: [selalu, sering, jarang, terlambat, tepat waktu]
+      - text: terlambat
+        ar_eg: متأخر
+        ar: متأخر
+        en: late
+      - text: jadwal
+        ar_eg: جدول مواعيد
+        ar: جدول مواعيد
+        en: timetable
+      - text: penerbangan
+        ar_eg: رحلة طيران
+        ar: رحلة جوية
+        en: flight
+      - text: tujuan
+        ar_eg: وجهة، متجهة لـ
+        ar: وجهة
+        en: destination
+      - text: keterlambatan
+        ar_eg: تأخير
+        ar: تأخير
+        en: delay
+    words: [tepat waktu, terlambat, jadwal, penerbangan, tujuan, keterlambatan]
   - id: e02
     type: listen
     text: Penerbangan ke Jakarta terlambat tiga puluh menit.
@@ -145,14 +149,15 @@ exercises:
     distractors: [selalu, waktu]
     words: [sering, terlambat]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: نادرًا لما بتأخر.
-      ar: نادرًا ما أتأخر.
-      en: I'm rarely late.
-    answers: [Saya jarang terlambat., Saya jarang terlambat, Aku jarang terlambat.]
-    words: [jarang, terlambat]
+    type: listen
+    text: Jadwal penerbangan tujuan Kairo ada di sana.
+    options: ['Jadwal penerbangan tujuan Kairo ada di sana.', 'Jadwal penerbangan tujuan Jakarta ada di sana.', 'Jadwal kereta tujuan Kairo ada di sana.']
+    answer: 0
+    meaning:
+      ar_eg: جدول رحلات القاهرة هناك.
+      ar: جدول الرحلات المتجهة إلى القاهرة هناك.
+      en: The schedule for flights to Cairo is over there.
+    words: [jadwal, penerbangan, tujuan]
   - id: e07
     type: dictation
     text: Jadwal pesawat ada di sana.
@@ -163,12 +168,22 @@ exercises:
     words: [jadwal]
   - id: e08
     type: speaking
-    text: Mohon perhatian. Penerbangan ke Jakarta terlambat tiga puluh menit.
+    text: Mohon perhatian. Penerbangan tujuan Jakarta terlambat tiga puluh menit.
     meaning:
       ar_eg: انتباه من فضلكم. رحلة جاكرتا متأخرة تلاتين دقيقة.
       ar: انتباه من فضلكم. رحلة جاكرتا متأخرة ثلاثين دقيقة.
       en: Attention please. The flight to Jakarta is thirty minutes late.
-    words: [penerbangan, terlambat]
+    words: [penerbangan, tujuan, terlambat]
+  - id: e09
+    type: fill_blank
+    sentence: Mohon maaf atas ___ ini.
+    meaning:
+      ar_eg: نعتذر عن التأخير ده.
+      ar: نعتذر عن هذا التأخير.
+      en: We apologise for this delay.
+    options: [keterlambatan, jadwal, tujuan]
+    answers: [keterlambatan]
+    words: [keterlambatan]
 dialogue:
   title: Di ruang tunggu
   lines:
