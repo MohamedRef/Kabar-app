@@ -1,0 +1,158 @@
+schema: kabar.lesson/v1
+id: j5.u05.l07
+language: jv
+title: Critane Bu Nur
+can_do:
+  ar_eg: تسمع حكاية قصيرة عن الطفولة وتتابع «لما» و«بعد» من غير ما تشوف النص.
+  ar: أن تستمع إلى حكاية قصيرة عن الطفولة وتتابع «حين» و«بعد» دون رؤية النص.
+  en: Follow a short childhood story by ear, with its "when" and "after".
+exercises:
+  - id: e01
+    type: listen
+    text: Nalika isih cilik, aku manggon ing cedhak Menara Kudus.
+    question:
+      ar_eg: بو نور بتحكيلك عن طفولتها. كانت ساكنة فين وهي صغيرة؟
+      ar: تحكي لك بو نور عن طفولتها. أين كانت تسكن وهي صغيرة؟
+      en: Bu Nur is telling you about her childhood. Where did she live as a child?
+    options: [ing Semarang, ing cedhak Menara Kudus, ing Demak]
+    answer: 1
+    meaning:
+      ar_eg: لما كنت صغيرة، كنت ساكنة جنب منارة قدس.
+      ar: حين كنت صغيرة، كنت أسكن قرب منارة قدس.
+      en: When I was little, I lived near the Menara Kudus.
+    words: [nalika, menara]
+  - id: e02
+    type: listen
+    text: Saben sore, aku dolanan ing ngarep menara karo kanca-kanca.
+    question:
+      ar_eg: كانت بتلعب إمتى؟
+      ar: متى كانت تلعب؟
+      en: When did she play?
+    options: [saben esuk, saben bengi, saben sore]
+    answer: 2
+    meaning:
+      ar_eg: كل يوم العصر، كنت بلعب قدّام المنارة مع صحابي.
+      ar: كل مساء كنت ألعب أمام المنارة مع أصدقائي.
+      en: Every afternoon I played in front of the minaret with my friends.
+    words: [menara]
+  - id: e03
+    type: listen
+    text: Sawise maghrib, simbah crita babagan Sunan Kudus.
+    question:
+      ar_eg: جدّتها كانت بتحكي عن إيه؟
+      ar: عمَّ كانت جدتها تحكي؟
+      en: What did her grandmother tell stories about?
+    options: [babagan Sunan Kudus, babagan kancil, babagan sepur]
+    answer: 0
+    meaning:
+      ar_eg: بعد المغرب، جدّتي كانت بتحكي عن سونان قدس.
+      ar: بعد المغرب كانت جدتي تحكي عن سونان قدس.
+      en: After maghrib, Grandma told stories about Sunan Kudus.
+    explain:
+      ar_eg: maghrib = المغرب، من العربي. babagan = عن (tentang).
+      ar: maghrib = المغرب، من العربية، وbabagan = عن (tentang).
+      en: maghrib = the sunset prayer, from Arabic; babagan = about (tentang).
+    words: [sawise, maghrib, babagan]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: nalika
+        ar_eg: لما (في الماضي)
+        ar: حين (في الماضي)
+        en: when (past)
+      - text: sawise
+        ar_eg: بعد
+        ar: بعد
+        en: after
+      - text: maghrib
+        ar_eg: المغرب
+        ar: المغرب
+        en: sunset prayer
+      - text: babagan
+        ar_eg: عن
+        ar: عن / حول
+        en: about
+      - text: saben
+        ar_eg: كل
+        ar: كل
+        en: every
+    words: [nalika, sawise, maghrib, babagan]
+  - id: e05
+    type: fill_blank
+    sentence: ___ isih cilik, aku manggon ing cedhak Menara Kudus.
+    meaning:
+      ar_eg: لما كنت صغيرة، كنت ساكنة جنب منارة قدس.
+      ar: حين كنت صغيرة، كنت أسكن قرب منارة قدس.
+      en: When I was little, I lived near the Menara Kudus.
+    options: [Sawise, Dumadakan, Nalika]
+    answers: [Nalika]
+    words: [nalika]
+  - id: e06
+    type: dictation
+    text: Sawise maghrib, simbah crita babagan Sunan Kudus.
+    meaning:
+      ar_eg: بعد المغرب، جدّتي كانت بتحكي عن سونان قدس.
+      ar: بعد المغرب كانت جدتي تحكي عن سونان قدس.
+      en: After maghrib, Grandma told stories about Sunan Kudus.
+    words: [sawise, maghrib, babagan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الحكاية) بعد المغرب، جدّي كان بيحكي عن المنارة.
+      ar: (بأسلوب الحكاية) بعد المغرب كان جدي يحكي عن المنارة.
+      en: (story style) After maghrib, Grandpa told stories about the minaret.
+    answers:
+      - Sawise maghrib, simbah crita babagan menara.
+      - Sawise maghrib simbah crita babagan menara.
+      - Sawise maghrib, simbah crita babagan menarane.
+      - Sawise maghrib, simbah crita babagan Menara Kudus.
+      - Sawise salat maghrib, simbah crita babagan menara.
+      - Sawise maghrib, simbah banjur crita babagan menara.
+    words: [sawise, maghrib, babagan]
+  - id: e08
+    type: speaking
+    text: Nalika isih cilik, aku manggon ing Kairo.
+    meaning:
+      ar_eg: لما كنت صغير، كنت ساكن في القاهرة.
+      ar: حين كنت صغيرًا، كنت أسكن في القاهرة.
+      en: When I was little, I lived in Cairo.
+    words: [nalika]
+dialogue:
+  title: Babagan Sunan Kudus
+  lines:
+    - speaker: Mohamed
+      text: Bu, Sunan Kudus menika sinten?
+      ar_eg: يا مدام، سونان قدس ده مين؟
+      ar: يا سيدتي، من سونان قدس؟
+      en: Ma'am, who was Sunan Kudus?
+    - speaker: Bu Nur
+      text: Sunan Kudus iku sawijining Wali Sanga. Dheweke sing mbangun masjid ing cedhak menara.
+      ar_eg: سونان قدس واحد من الأولياء التسعة. هو اللي بنى الجامع اللي جنب المنارة.
+      ar: سونان قدس أحد الأولياء التسعة، وهو من بنى المسجد المجاور للمنارة.
+      en: Sunan Kudus was one of the Wali Sanga. He's the one who built the mosque by the minaret.
+    - speaker: Mohamed
+      text: Lan jeneng Kudus saking Al-Quds, nggih?
+      ar_eg: واسم قدس جاي من «القدس»، صح؟
+      ar: واسم قدس مأخوذ من «القدس»، أليس كذلك؟
+      en: And the name Kudus comes from Al-Quds, right?
+    - speaker: Bu Nur
+      text: Bener, Mas. Simbahku crita kaya ngono saben sawise maghrib.
+      ar_eg: صح يا محمد. جدّتي كانت بتحكي كده كل يوم بعد المغرب.
+      ar: صحيح يا محمد. كانت جدتي تحكي ذلك كل يوم بعد المغرب.
+      en: Right. My grandmother told it like that every evening after maghrib.
+new_words:
+  - word: maghrib
+    pos: noun
+    ar_eg: المغرب (الصلاة ووقتها)
+    ar: المغرب (الصلاة ووقتها)
+    en: sunset prayer, dusk = magrib
+    arabic: مغرب
+  - word: babagan
+    pos: preposition
+    ar_eg: عن
+    ar: عن / حول
+    en: about = tentang
+review:
+  status: draft
+  verified: false

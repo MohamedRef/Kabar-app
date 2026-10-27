@@ -1,0 +1,179 @@
+schema: kabar.lesson/v1
+id: j5.u02.l07
+language: jv
+title: Pengumuman kerja bakti
+can_do:
+  ar_eg: تقرا إعلان الحي وتعرف إيه اللي هيتعمل وإمتى ومين هيعمله.
+  ar: أن تقرأ إعلان الحي وتعرف ما سيُعمل ومتى ومن سيقوم به.
+  en: Read a neighbourhood notice and find what will be done, when and by whom.
+slides:
+  - title: Pengumuman saka Pak RT
+    body:
+      ar_eg: |
+        ده إعلان متعلّق في حي جنب لاوانج سيوو، كاتبه Pak RT (رئيس الحتة). الإعلانات بتحب المبني للمجهول زي الأخبار.
+        كلمات جديدة: kerja bakti = يوم شغل تطوّعي لأهل الحي (تنضيف وتصليح، زي الإندونيسي)، disiapake = اتجهّز (disiapkan، من siap + -ake). وbareng-bareng = مع بعض. وbakal = هـ (المستقبل، akan).
+      ar: |
+        هذا إعلان معلّق في حيّ قرب لاوانغ سيوو، كتبه Pak RT (رئيس الحي). والإعلانات تحب المبني للمجهول كالأخبار.
+        كلمات جديدة: kerja bakti = يوم عمل تطوعي لأهل الحي (تنظيف وإصلاح، كالإندونيسية)، وdisiapake = جُهّز (disiapkan، من siap + -ake). وbareng-bareng = معًا، وbakal = سوف (akan).
+      en: |
+        A notice on a board near Lawang Sewu, from Pak RT (the neighbourhood head). Notices love the passive, just like news.
+        New words: kerja bakti = a community work day (cleaning and repairs, as in Indonesian), disiapake = was prepared (disiapkan, from siap + -ake). bareng-bareng = together, and bakal = will (akan).
+    grammar: jv.passive.written
+    examples:
+      - text: Kerja bakti bakal dianakake ing dina Minggu esuk, jam pitu.
+        ar_eg: يوم الشغل التطوعي هيتعمل يوم الحد الصبح، الساعة سبعة.
+        ar: سيُقام يوم العمل التطوعي صباح الأحد في الساعة السابعة.
+        en: The community work day will be held on Sunday morning at seven.
+      - text: Kali lan dalan ing kampung bakal diresiki bareng-bareng.
+        ar_eg: النهر والشوارع في الحي هيتنضّفوا مع بعض.
+        ar: سيُنظَّف النهر والطرق في الحي معًا.
+        en: The river and the roads in the neighbourhood will be cleaned together.
+      - text: Panganan disiapake dening ibu-ibu.
+        ar_eg: الأكل هتجهّزه الستات.
+        ar: تُعِدّ السيداتُ الطعام.
+        en: The food is prepared by the women.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: يوم الشغل التطوعي إمتى؟
+      ar: متى يوم العمل التطوعي؟
+      en: When is the community work day?
+    options: [Setu sore, Minggu esuk, Minggu sore]
+    answer: 1
+    words: [kerja bakti]
+  - id: e02
+    type: listen
+    text: Kali lan dalan ing kampung bakal diresiki bareng-bareng.
+    question:
+      ar_eg: إيه اللي هيتنضّف؟
+      ar: ما الذي سيُنظَّف؟
+      en: What will be cleaned?
+    options: [masjid lan pasar, stasiun, kali lan dalan]
+    answer: 2
+    meaning:
+      ar_eg: النهر والشوارع في الحي هيتنضّفوا مع بعض.
+      ar: سيُنظَّف النهر والطرق في الحي معًا.
+      en: The river and the roads in the neighbourhood will be cleaned together.
+    words: [diresiki, kali]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين اللي هيجهّز الأكل؟
+      ar: من سيُعِدّ الطعام؟
+      en: Who prepares the food?
+    options: [ibu-ibu, Pak RT, bocah-bocah]
+    answer: 0
+    explain:
+      ar_eg: '«disiapake dening ibu-ibu»: اللي بعد dening هم اللي بيجهّزوا.'
+      ar: '«disiapake dening ibu-ibu»: من يأتي بعد dening هو من يُعِدّ.'
+      en: '"disiapake dening ibu-ibu": the ones after dening do the preparing.'
+    words: [disiapake, dening]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: kerja bakti
+        ar_eg: يوم شغل تطوعي للحي
+        ar: يوم عمل تطوعي للحي
+        en: community work day
+      - text: disiapake
+        ar_eg: اتجهّز
+        ar: جُهّز
+        en: was prepared
+      - text: dianakake
+        ar_eg: اتعمل / اتنظّم
+        ar: أُقيم
+        en: was held
+      - text: diresiki
+        ar_eg: اتنضّف
+        ar: نُظّف
+        en: was cleaned
+      - text: bareng-bareng
+        ar_eg: مع بعض
+        ar: معًا
+        en: together
+    words: [kerja bakti, disiapake, dianakake, diresiki]
+  - id: e05
+    type: fill_blank
+    sentence: Panganan disiapake ___ ibu-ibu.
+    meaning:
+      ar_eg: الأكل هتجهّزه الستات.
+      ar: تُعِدّ السيداتُ الطعام.
+      en: The food is prepared by the women.
+    options: [saka, dening, ing]
+    answers: [dening]
+    words: [disiapake, dening]
+  - id: e06
+    type: dictation
+    text: Kerja bakti bakal dianakake ing dina Minggu esuk.
+    meaning:
+      ar_eg: يوم الشغل التطوعي هيتعمل يوم الحد الصبح.
+      ar: سيُقام يوم العمل التطوعي صباح الأحد.
+      en: The community work day will be held on Sunday morning.
+    words: [kerja bakti, dianakake]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: (بأسلوب الإعلان) الأكل هتجهّزه الستات.
+      ar: (بأسلوب الإعلان) تُعِدّ السيدات الطعام.
+      en: (notice style) The food is prepared by the women.
+    answer: Panganan disiapake dening ibu-ibu.
+    distractors: [dianakake, saka]
+    words: [disiapake]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الإعلان) النهر هيتنضّف مع بعض.
+      ar: (بأسلوب الإعلان) سيُنظَّف النهر معًا.
+      en: (notice style) The river will be cleaned together.
+    answers:
+      - Kali bakal diresiki bareng-bareng.
+      - Kaline bakal diresiki bareng-bareng.
+      - Kali kasebut bakal diresiki bareng-bareng.
+      - Kali iku bakal diresiki bareng-bareng.
+      - Kali bakal diresiki bebarengan.
+      - Kaline bakal diresiki bebarengan.
+    words: [diresiki, kali]
+dialogue:
+  title: Minggu esuk
+  lines:
+    - speaker: Pak Harjo
+      text: Mas, wis maca pengumuman? Minggu esuk ana kerja bakti.
+      ar_eg: يا محمد، قريت الإعلان؟ يوم الحد الصبح فيه يوم شغل تطوعي.
+      ar: يا محمد، هل قرأت الإعلان؟ صباح الأحد يوم عمل تطوعي.
+      en: Mohamed, have you read the notice? There's a community work day on Sunday morning.
+    - speaker: Mohamed
+      text: Sampun, Pak. Kula badhe dhateng.
+      ar_eg: قريته يا عمّو. أنا هاجي.
+      ar: قرأته يا سيدي. سآتي.
+      en: I have, sir. I'll come.
+    - speaker: Pak Harjo
+      text: Apik! Kali lan dalan ing kampung iki bakal diresiki bareng-bareng.
+      ar_eg: حلو! النهر والشوارع في الحي ده هيتنضّفوا مع بعض.
+      ar: جميل! سيُنظَّف النهر والطرق في هذا الحي معًا.
+      en: Great! The river and the roads in this neighbourhood will be cleaned together.
+    - speaker: Mohamed
+      text: Jam pinten, Pak?
+      ar_eg: الساعة كام يا عمّو؟
+      ar: في أي ساعة يا سيدي؟
+      en: What time, sir?
+    - speaker: Pak Harjo
+      text: Jam pitu. Sarapan disiapake dening ibu-ibu.
+      ar_eg: الساعة سبعة. والفطار الستات هيجهّزوه.
+      ar: في السابعة. والفطور تُعِدّه السيدات.
+      en: At seven. Breakfast is prepared by the women.
+new_words:
+  - word: kerja bakti
+    pos: noun
+    ar_eg: يوم شغل تطوعي لأهل الحي
+    ar: يوم عمل تطوعي لأهل الحي
+    en: community work day = kerja bakti
+  - word: disiapake
+    pos: verb
+    ar_eg: اتجهّز (من siap + -ake)
+    ar: جُهّز (من siap + -ake)
+    en: was prepared (from siap + -ake) = disiapkan
+review:
+  status: draft
+  verified: false
