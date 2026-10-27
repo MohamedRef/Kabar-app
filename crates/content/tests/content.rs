@@ -123,7 +123,9 @@ fn cast_checks_reject_orphans_and_name_clashes() {
     let report = check_repo(root()).expect("content files load");
     let index = Index::new(&report.curricula, report.grammar.iter().map(|g| g.id.as_str()));
     let cast = yaml_value(&root().join("content/cast.yaml")).expect("cast.yaml");
-    let pending = yaml_value(&root().join("content/pending.yaml")).expect("pending.yaml");
+    // Only bipa2.u06 is pending, and the fake radio episode below covers it.
+    let pending =
+        json!({"schema": "kabar.pending/v1", "radio": ["bipa2.u06"], "sinetron": [], "personas": []});
     let mut seen = Appearances::default();
     let line = |speaker: &str| json!({"lines": [{"speaker": speaker, "text": "Halo."}]});
     seen.lesson("a.yaml", "bipa3.u02.l01", &line("Mbak Siti"));

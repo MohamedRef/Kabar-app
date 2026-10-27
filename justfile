@@ -110,8 +110,10 @@ run-android device="":
 apk:
     rm -rf {{dist}}/android && mkdir -p {{dist}}/android
     cd {{app}} && dx bundle --platform android --release --package-types apk --target aarch64-linux-android --no-default-features --features mobile --out-dir ../../{{dist}}/android/raw
-    scripts/android-check-apk.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)"
-    scripts/android-sign.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)" "{{dist}}/android/kabar.apk" "{{keystore}}" "{{key_alias}}"
+    # dx leaves a debug build; rebuild it as a release (no debuggable, R8, versionCode).
+    apk="$(scripts/android-release-apk.sh)" && \
+      scripts/android-check-apk.sh "$apk" && \
+      scripts/android-sign.sh "$apk" "{{dist}}/android/kabar.apk" "{{keystore}}" "{{key_alias}}"
 
 # A release for your own devices (docs/RELEASE.md, only once everything is
 # done and the learner says go): every check, then

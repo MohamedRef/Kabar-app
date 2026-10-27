@@ -474,6 +474,11 @@ pub enum Msg {
     EnglishInChat,
     InThisSentence,
     Breakdown,
+    MorphMore,
+    MorphSoundChange,
+    MorphTimeWords,
+    MorphGrammar,
+    MorphColours,
     Normalized,
     BridgeTitle,
     ShiftSame,
@@ -1012,12 +1017,10 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JourneyRoute, En) => "Route",
         (JourneyMap, ArEg | Ar) => "الخريطة",
         (JourneyMap, En) => "Map",
-        (JourneyMapHint, ArEg) => {
-            "دوس على أي محطة عشان تشوف دروسها. اسحب الخريطة أو قرّبها بصباعين أو بالقلم."
-        }
-        (JourneyMapHint, Ar) => "اضغط على أي محطة لترى دروسها. اسحب الخريطة أو كبّرها بإصبعين أو بالقلم.",
+        (JourneyMapHint, ArEg) => "دوس على أي محطة عشان تشوف دروسها. اسحب الخريطة أو قرّبها بصباعين.",
+        (JourneyMapHint, Ar) => "اضغط على أي محطة لترى دروسها. اسحب الخريطة أو كبّرها بإصبعين.",
         (JourneyMapHint, En) => {
-            "Tap any stop to see its lessons. Drag the map, or zoom with two fingers, the pen or the trackpad."
+            "Tap any stop to see its lessons. Drag the map, or zoom with two fingers or the trackpad."
         }
         (JourneyMapOfIndonesia, ArEg | Ar) => "خريطة إندونيسيا",
         (JourneyMapOfIndonesia, En) => "Map of Indonesia",
@@ -2086,6 +2089,21 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (InThisSentence, En) => "In this sentence",
         (Breakdown, ArEg | Ar) => "التركيب",
         (Breakdown, En) => "Built from",
+        (MorphMore, ArEg) => "تفصيل الكلمة",
+        (MorphMore, Ar) => "تفصيل الكلمة",
+        (MorphMore, En) => "Word breakdown",
+        (MorphSoundChange, ArEg) => "أول حرف في الأصل بيتغيّر لما السابقة تلزق فيه",
+        (MorphSoundChange, Ar) => "يتغيّر أول حرف في الجذر عند اتصال السابقة به",
+        (MorphSoundChange, En) => "the root's first sound changes when the prefix joins it",
+        (MorphTimeWords, ArEg) => "الزمن في الجملة",
+        (MorphTimeWords, Ar) => "الزمن في الجملة",
+        (MorphTimeWords, En) => "Time in this sentence",
+        (MorphGrammar, ArEg) => "القاعدة",
+        (MorphGrammar, Ar) => "القاعدة",
+        (MorphGrammar, En) => "Grammar",
+        (MorphColours, ArEg) => "معنى الألوان",
+        (MorphColours, Ar) => "دلالة الألوان",
+        (MorphColours, En) => "What the colours mean",
         (Normalized, ArEg) => "الكلمة كاملة",
         (Normalized, Ar) => "الصيغة الكاملة",
         (Normalized, En) => "Full form",
