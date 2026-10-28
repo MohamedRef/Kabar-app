@@ -1,12 +1,15 @@
 //! Settings › About › Updates, the gentle "new Kabar is ready" card on
-//! Today, and the hooks that follow the updater from the UI.
+//! Today, and the hooks that follow the updater from the UI (installs on
+//! Android, and what the "new version" notification needs and opens).
 
 use dioxus::prelude::*;
 use kabar_core::locale::{UiLanguage, eastern_arabic_digits};
 use kabar_protocol::update::{Channel, UpdateNotes};
 
 use super::text::{U, ut};
-use super::{Failure, InstallTexts, Mode, Off, Offer, Phase, Status, Updater};
+use super::{Failure, InstallTexts, Mode, NoticeContext, Off, Offer, Phase, Status, Updater};
+use crate::coach::Coach;
+use crate::settings::{Section, SettingsNav};
 use crate::{Screen, Ui};
 
 const UPDATE_CSS: &str = r#"
@@ -43,6 +46,7 @@ pub fn use_update_status() -> Signal<Option<Status>> {
 
 fn texts(lang: UiLanguage) -> InstallTexts {
     InstallTexts {
+        lang,
         done_title: ut(lang, U::DoneTitle).into(),
         done_body: ut(lang, U::DoneBody).into(),
         ready_title: ut(lang, U::ReadyTitle).into(),
@@ -57,14 +61,7 @@ fn work(f: impl FnOnce(&'static Updater) + Send + 'static) {
 }
 
 fn notes(lang: UiLanguage, n: &UpdateNotes) -> String {
-    let pick = |a: &str, b: &str, c: &str| {
-        [a, b, c].into_iter().find(|s| !s.trim().is_empty()).unwrap_or("").to_owned()
-    };
-    match lang {
-        UiLanguage::ArEg => pick(&n.ar_eg, &n.ar, &n.en),
-        UiLanguage::Ar => pick(&n.ar, &n.ar_eg, &n.en),
-        UiLanguage::En => pick(&n.en, &n.ar_eg, &n.ar),
-    }
+    super::notes_in(lang, n)
 }
 
 fn megabytes(ui: &Ui, bytes: u64) -> String {
@@ -176,6 +173,24 @@ pub fn UpdatesCard() -> Element {
                                 }
                             }
                         }
+                    }
+                }
+                if s.prefs.mode != Mode::Off {
+                    div { class: "field",
+                        label {
+                            input {
+                                r#type: "checkbox",
+                                checked: s.prefs.notify,
+                                onchange: move |e: FormEvent| {
+                                    if let Some(u) = super::get() {
+                                        u.set_notify(e.checked());
+                                    }
+                                },
+                            }
+                            " {ut(lang, U::NotifyToggle)}"
+                            crate::settings::Scope { device_only: true }
+                        }
+                        p { class: "muted settings-hint", "{ut(lang, U::NotifyToggleHint)}" }
                     }
                 }
                 div { class: "field",
@@ -421,4 +436,53 @@ fn install_quietly() -> bool {
     {
         false
     }
+}
+
+/// Keeps the updater's copy of the language and quiet hours current (the
+/// background job words its notification with them), and follows a tap on
+/// the notification: Settings › About opens on the Updates card, and the
+/// notification's button starts the download or the install. Mounted once
+/// in the shell.
+pub fn use_update_notices(ui: Ui, nav: SettingsNav) {
+    let coach = try_use_context::<Coach>();
+    use_effect(move || {
+        let lang = ui.lang();
+        let (quiet, offset) = match coach {
+            Some(c) => {
+                let quiet = c.profile.read().as_ref().map(|p| p.quiet_hours);
+                let offset = (*c.device_offset.read()).unwrap_or_else(|| c.offset());
+                (quiet, offset)
+            }
+            None => (None, 0),
+        };
+        if let Some(u) = super::get() {
+            u.set_notice_context(NoticeContext { lang, quiet, utc_offset_min: offset });
+        }
+    });
+    use_future(move || async move {
+        if !cfg!(target_os = "android") || super::get().is_none() {
+            return;
+        }
+        let mut eval = document::eval(
+            r#"
+            const send = () => { if (!document.hidden) dioxus.send(true); };
+            document.addEventListener("visibilitychange", send);
+            send();
+            await new Promise(() => {});
+            "#,
+        );
+        while eval.recv::<bool>().await.is_ok() {
+            let Some(tap) = crate::platform::update_notice::take_tap() else { continue };
+            nav.show(Some(Section::About));
+            let lang = ui.lang();
+            match tap.as_str() {
+                "download" => work(Updater::download),
+                "install" => {
+                    let t = texts(lang);
+                    work(move |u| u.install(t));
+                }
+                _ => {}
+            }
+        }
+    });
 }
