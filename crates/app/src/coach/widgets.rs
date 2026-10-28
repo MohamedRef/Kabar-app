@@ -8,7 +8,7 @@ use crate::i18n::Msg;
 use crate::icons;
 use crate::portraits::{self, Face, Mood};
 use crate::settings::device::DevicePrefs;
-use crate::{Db, Ui, platform};
+use crate::{Db, Screen, Ui, platform};
 
 /// Kak Nur speaking, with her portrait once Codex has drawn it.
 #[component]
@@ -237,12 +237,22 @@ pub fn QuietHoursEditor(value: QuietHours, onchange: EventHandler<QuietHours>) -
     }
 }
 
-/// One number with its label.
+/// One number with its label. It opens where the number comes from: Stats
+/// unless `to` names another screen (Review for reviews).
 #[component]
-pub fn Stat(value: String, label: Msg) -> Element {
+pub fn Stat(value: String, label: Msg, #[props(default = Screen::Stats)] to: Screen) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
-        div { class: "stat",
+        button {
+            class: "stat tap",
+            onclick: move |_| {
+                if to == Screen::Stats {
+                    crate::stats::open(ui, to);
+                } else {
+                    let mut screen = ui.screen;
+                    screen.set(to);
+                }
+            },
             span { class: "stat-value", "{value}" }
             span { class: "stat-label", "{ui.t(label)}" }
         }

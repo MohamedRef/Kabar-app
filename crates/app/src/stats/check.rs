@@ -674,8 +674,9 @@ fn Outcome(
                 p { class: "reveal d2", "{b}" }
             }
             if let Some(score) = result.score {
+                // The score opens Stats, where every check sits on the radar.
                 div { class: "stats-row",
-                    div { class: "stat",
+                    button { class: "stat tap", onclick: move |_| super::open(ui, Screen::Stats),
                         span { class: "stat-value", bdi { "{pct(&ui, score)}" } }
                         span { class: "stat-label", "{st(lang, S::CheckScore)}" }
                     }
