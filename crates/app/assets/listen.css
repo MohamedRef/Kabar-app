@@ -21,6 +21,10 @@
 .lx-player { display: grid; gap: 0.5rem; padding-block-end: 5rem; }
 .lx-head { display: flex; align-items: center; gap: 0.5rem; }
 .lx-head h2 { margin: 0; font-size: 1.3rem; }
+/* On the phone the top bar already names the screen and has the back
+   arrow (which closes the episode through data-back): one of each (#434). */
+.app[data-width="compact"] .listen > h2,
+.app[data-width="compact"] .lx-back { display: none; }
 .lx-download { min-block-size: 2.25rem; }
 .lx-notice { background: var(--dawn-soft); border-radius: var(--radius); padding: 0.5rem 0.75rem; margin: 0; }
 .lx-lines, .lx-cues { list-style: none; padding: 0; margin: 0; }
