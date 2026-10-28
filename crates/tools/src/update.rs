@@ -155,7 +155,7 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                     changes: found,
                 });
             }
-            let history = changes::history(previous.as_ref(), entry);
+            let history = changes::history(previous.as_ref(), entry, &changes::retro(root.path())?);
             let m = write_manifest(
                 &args.out,
                 args.channel,
