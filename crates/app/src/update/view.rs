@@ -127,11 +127,17 @@ pub fn UpdatesCard() -> Element {
             h2 { id: "updates-title", "{ut(lang, U::Title)}" }
             div { class: "field",
                 span { class: "label", "{ut(lang, U::ThisBuild)}" }
-                code { dir: "ltr",
-                    bdi {
-                        "{version}"
-                        if build > 0 { " · {ut(lang, U::Build)} {build}" }
-                        if let Some(c) = commit { " · {c}" }
+                // Each Latin piece isolated on its own: inside one LTR run the
+                // Arabic word "build" pulled the numbers around it out of order.
+                span {
+                    code { dir: "ltr", bdi { "{version}" } }
+                    if build > 0 {
+                        " · {ut(lang, U::Build)} "
+                        code { dir: "ltr", bdi { "{build}" } }
+                    }
+                    if let Some(c) = commit {
+                        " · "
+                        code { dir: "ltr", bdi { "{c}" } }
                     }
                 }
             }
