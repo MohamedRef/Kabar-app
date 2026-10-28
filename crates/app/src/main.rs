@@ -10,6 +10,7 @@ mod cloud;
 mod coach;
 mod cost;
 mod data_export;
+mod dead_ends;
 mod diag;
 mod embedded;
 mod fonts;

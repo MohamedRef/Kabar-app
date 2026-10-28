@@ -239,8 +239,14 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                                 let unit_title = unit
                                     .map(|u| crate::journey::local(lang, &u.title).to_string())
                                     .unwrap_or_else(|| s.unlock_after.clone());
+                                // A locked episode opens the next lesson of the unit
+                                // that unlocks it: the way to get there.
+                                let next = crate::journey::next_lesson_in(&s.unlock_after, &completed);
                                 rsx! {
-                                    li { key: "{s.id}", class: "card lx-card lx-teaser",
+                                    li { key: "{s.id}",
+                                    button {
+                                        class: "card lx-card lx-teaser tap",
+                                        onclick: move |_| if let Some(id) = &next { ui.open_lesson(id.clone()) },
                                         span { class: "muted small", "🔒 {tt(lang, T::Episode)} {ui.num(s.episode)}" }
                                         strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
                                         span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
@@ -249,6 +255,7 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                                             progress { max: "{total}", value: "{done}" }
                                             span { class: "small", "{lessons_left(&ui, total - done)}" }
                                         }
+                                    }
                                     }
                                 }
                             }

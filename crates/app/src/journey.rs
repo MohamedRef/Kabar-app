@@ -367,7 +367,15 @@ fn level_head(
     let art = map_art::vignette(&level.id, size);
     rsx! {
         header { class: "level-head", "data-done": if finished { "true" } else { "false" },
-            div { class: "level-title",
+            // The level's name opens its next lesson (its first once it's done).
+            button {
+                class: "level-title tap tap-plain",
+                onclick: {
+                    let next = level.lessons().find(|l| progress.lesson_state(&l.id) != LessonState::Done)
+                        .or_else(|| level.lessons().next())
+                        .map(|l| l.id.clone());
+                    move |_| if let Some(id) = &next { ui.open_lesson(id.clone()) }
+                },
                 if let Some(src) = art {
                     img { class: "level-art", src: "{src}", alt: "", aria_hidden: "true", draggable: "false" }
                 } else {
@@ -393,6 +401,7 @@ fn level_head(
                         }
                     }
                 }
+                span { class: "chev", aria_hidden: "true" }
             }
             div { class: "level-progress",
                 div {
@@ -455,10 +464,20 @@ fn unit_stops(ui: &Ui, j: &Journey, level: &Level, progress: &Progress, mark_cur
                         span { class: "stop-node" }
                     }
                     div { class: "stop-body",
+                        // The stop's name opens the unit's next lesson.
                         h3 {
-                            bdi { lang: tl, dir: "ltr", "{unit.stop}" }
-                            span { class: "stop-unit muted",
-                                " · {local(lang, &unit.title)}"
+                            button {
+                                class: "stop-head tap tap-plain",
+                                onclick: {
+                                    let next = unit.lessons.iter().find(|l| progress.lesson_state(&l.id) != LessonState::Done)
+                                        .or(unit.lessons.first())
+                                        .map(|l| l.id.clone());
+                                    move |_| if let Some(id) = &next { ui.open_lesson(id.clone()) }
+                                },
+                                bdi { lang: tl, dir: "ltr", "{unit.stop}" }
+                                span { class: "stop-unit muted",
+                                    " · {local(lang, &unit.title)}"
+                                }
                             }
                         }
                         {lessons(&ui, tl, unit, progress, mark_current)}
@@ -909,6 +928,22 @@ fn local_souvenir(unit_id: &str, lang: UiLanguage) -> Option<(String, String)> {
     s.as_ref().map(|s| (s.title.clone(), kabar_core::lesson::pick(&s.note, lang).to_string()))
 }
 
+/// The lesson that hands out a unit's souvenir: the last one carrying it,
+/// else the unit's last lesson.
+fn souvenir_lesson(unit_id: &str) -> Option<String> {
+    let unit = find_unit(unit_id)?;
+    unit.lessons
+        .iter()
+        .rev()
+        .find(|l| {
+            crate::lesson::lesson_content(&l.id)
+                .and_then(|c| kabar_core::lesson::parse_lesson(&c).ok())
+                .is_some_and(|p| p.souvenir.is_some())
+        })
+        .or(unit.lessons.last())
+        .map(|l| l.id.clone())
+}
+
 #[component]
 fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> Element {
     let ui = use_context::<Ui>();
@@ -931,8 +966,15 @@ fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> 
                 }
             }
             ul { class: "souvenirs",
+                // A souvenir opens the lesson that gave it.
                 for (s, tl) in cards {
-                    li { key: "{s.unit_id}", class: "souvenir card",
+                    li { key: "{s.unit_id}",
+                    button {
+                        class: "souvenir card tap",
+                        onclick: {
+                            let lesson = souvenir_lesson(&s.unit_id);
+                            move |_| if let Some(id) = &lesson { ui.open_lesson(id.clone()) }
+                        },
                         crate::souvenir_art::SouvenirArt { unit_id: s.unit_id.clone(), size: crate::souvenir_art::Size::Thumb }
                         div { class: "souvenir-stamp", aria_hidden: "true", bdi { "{s.level_code}" } }
                         h3 { bdi { lang: tl, dir: "ltr", "{local_souvenir(&s.unit_id, lang).map(|(t, _)| t).unwrap_or(s.name.clone())}" } }
@@ -948,6 +990,7 @@ fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> 
                         } else {
                             p { class: "souvenir-note", lang: "en", dir: "ltr", "{s.note}" }
                         }
+                    }
                     }
                 }
             }

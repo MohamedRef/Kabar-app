@@ -164,12 +164,13 @@ pub fn RupiahReader() -> Element {
                 correct: s.correct,
                 total,
                 onagain: move |_| session.set(None),
+                // This round's result: nothing further to open, so not a tile.
                 div { class: "stats-row",
-                    div { class: "stat",
+                    div { class: "stat-static",
                         span { class: "stat-value", "{ui.num(f.score)}" }
                         span { class: "stat-label", "{ui.t(Msg::RupiahScore)}" }
                     }
-                    div { class: "stat",
+                    div { class: "stat-static",
                         span { class: "stat-value", "{ui.num(f.millis / 1000)}" }
                         span { class: "stat-label", "{ui.t(Msg::RupiahSeconds)}" }
                     }

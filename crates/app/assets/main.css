@@ -577,6 +577,29 @@ img.face.nur-avatar { inline-size: 3.25rem; block-size: 3.25rem; box-shadow: 0 0
 .nur-bubble p { margin: 0; }
 .nur-name { display: block; font-size: 0.8rem; font-weight: 700; color: var(--indigo); }
 
+/* ---------- Tappable cards, tiles and rows ----------
+   Anything that shows a thing opens it (a count its screen, a stop its next
+   lesson, a souvenir the lesson that gave it). Such an element is a real
+   <button> with .tap: it drops the pill look of a plain button and keeps the
+   look of the class next to it, with the shared press, hover and focus. */
+button.tap {
+  inline-size: 100%;
+  min-block-size: 0;
+  text-align: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+button.tap.stat { border-color: transparent; }
+button.tap-plain { border-color: transparent; background: transparent; border-radius: var(--radius-sm); padding: 0; }
+@media (hover: hover) and (pointer: fine) {
+  button.tap:where(:not(:disabled):hover) { border-color: var(--sawah); }
+  button.tap-plain:where(:not(:disabled):hover) { background: color-mix(in srgb, var(--surface-2) 75%, transparent); }
+}
+/* A forward chevron at the end of a row (points left in Arabic). */
+.chev { flex: none; display: inline-block; inline-size: 0.5rem; block-size: 0.5rem; border-block-start: 2px solid var(--muted); border-inline-end: 2px solid var(--muted); transform: rotate(45deg); opacity: 0.7; }
+[dir="rtl"] .chev { transform: rotate(-45deg); }
+/* A heading that opens what it names: the text, then a chevron. */
+button.tap-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; font-weight: 700; }
+
 /* Pelita + Koin */
 .rewards-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-block-end: 1rem; }
 .reward {
@@ -594,6 +617,7 @@ img.face.nur-avatar { inline-size: 3.25rem; block-size: 3.25rem; box-shadow: 0 0
 .reward.lit { background: var(--gold-soft); border-color: transparent; }
 .reward.lit .reward-icon { color: var(--dawn); }
 .reward-icon { display: inline-flex; }
+button.reward { min-block-size: 0; font-weight: inherit; inline-size: auto; }
 
 /* progress */
 .progress { block-size: 0.6rem; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin-block-start: 1rem; }
@@ -633,7 +657,7 @@ button.check[aria-checked="true"] { background: var(--sawah); }
 
 /* numbers */
 .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(5.5rem, 100%), 1fr)); gap: 0.5rem; margin-block: 0.75rem; }
-.stat { display: flex; flex-direction: column; padding: 0.6rem; border-radius: 10px; background: var(--surface-2); }
+.stat, .stat-static { display: flex; flex-direction: column; padding: 0.6rem; border-radius: 10px; background: var(--surface-2); }
 .stat-value { font-size: 1.2rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .stat-label { font-size: 0.8rem; color: var(--muted); }
 .words { display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -1230,6 +1254,8 @@ button.welcome-back-start { display: block; inline-size: 100%; min-block-size: v
 .journal-day-sum { margin: 0; font-variant-numeric: tabular-nums; }
 .journal-entries { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; gap: 0.35rem; }
 .journal-entries li { display: flex; align-items: baseline; gap: 0.5rem; min-inline-size: 0; }
+button.journal-entry { display: flex; align-items: baseline; gap: 0.5rem; padding-block: 0.25rem; }
+button.journal-entry .chev { margin-inline-start: auto; align-self: center; }
 .journal-time { flex: none; min-inline-size: 3rem; font-variant-numeric: tabular-nums; }
 .journal-what { min-inline-size: 0; overflow-wrap: anywhere; }
 .journal-note {
