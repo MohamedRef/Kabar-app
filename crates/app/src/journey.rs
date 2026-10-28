@@ -17,13 +17,14 @@ use kabar_core::journey::{
 use kabar_core::layout::WidthClass;
 use kabar_core::locale::UiLanguage;
 
+use crate::embedded::{Css, css};
 use crate::i18n::Msg;
 use crate::map_art::{self, Size as ArtSize};
 use crate::{Db, Ui};
 use kabar_protocol::coach::CoachProfile;
 use kabar_protocol::lesson::Souvenir;
 
-const JOURNEY_CSS: &str = include_str!("../assets/journey.css");
+const JOURNEY_CSS: Css = css!("assets/journey.css");
 const PAN_ZOOM_JS: &str = include_str!("../assets/journey.js");
 const INDONESIA_SVG: &str = include_str!("../assets/journey/indonesia.svg");
 const JAVA_SVG: &str = include_str!("../assets/journey/java.svg");
@@ -36,9 +37,9 @@ struct Routes {
 }
 
 static ROUTES: LazyLock<Result<Routes, String>> = LazyLock::new(|| {
-    use crate::embedded::{CURRICULUM_ID, CURRICULUM_JV, unpack};
-    let id = parse_curriculum(&unpack(CURRICULUM_ID)).map_err(|e| e.to_string())?;
-    let jv = parse_curriculum(&unpack(CURRICULUM_JV)).map_err(|e| e.to_string())?;
+    use crate::embedded::{CURRICULUM_ID, CURRICULUM_JV, text};
+    let id = parse_curriculum(&text(CURRICULUM_ID)).map_err(|e| e.to_string())?;
+    let jv = parse_curriculum(&text(CURRICULUM_JV)).map_err(|e| e.to_string())?;
     let (mut id_map, mut jv_map) = (MapLayout::new(&id), MapLayout::new(&jv));
     for map in [&mut id_map, &mut jv_map] {
         map.spread_pins(PIN_GAP * pin_scale(map));
@@ -202,7 +203,7 @@ pub fn JourneyScreen() -> Element {
         Ok(r) => r,
         Err(e) => {
             return rsx! {
-                style { {JOURNEY_CSS} }
+                style { {JOURNEY_CSS.text()} }
                 div { class: "card",
                     h2 { "{ui.t(Msg::NavJourney)}" }
                     p { "{ui.t(Msg::JourneyLoadError)}" }
@@ -225,7 +226,7 @@ pub fn JourneyScreen() -> Element {
     let picked = move || if route() == Route::Indonesian { pick_id } else { pick_jv };
 
     rsx! {
-        style { {JOURNEY_CSS} }
+        style { {JOURNEY_CSS.text()} }
         style { {crate::map_art::paper_css()} }
         div { class: "journey",
             header { class: "journey-bar",

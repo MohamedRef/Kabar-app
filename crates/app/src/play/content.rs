@@ -11,7 +11,7 @@ use kabar_core::pagi::StoryBank;
 
 use super::logic;
 
-use crate::embedded::{BRIDGE_ID, FREQ_ID, SPEECH_LEVELS, unpack};
+use crate::embedded::{BRIDGE_ID, FREQ_ID, SPEECH_LEVELS, text};
 
 const SOUND_RULES_JSON: &str = include_str!("../../../../content/bridge/sound-rules.json");
 const PASAR_TOML: &str = include_str!("../../../../content/games/pasar.toml");
@@ -38,7 +38,7 @@ pub fn bridge() -> &'static Loaded<BridgeData> {
     static DATA: OnceLock<Loaded<BridgeData>> = OnceLock::new();
     DATA.get_or_init(|| {
         guarded("content/bridge", || {
-            BridgeData::parse(&unpack(BRIDGE_ID), SOUND_RULES_JSON, Some(&unpack(FREQ_ID)))
+            BridgeData::parse(&text(BRIDGE_ID), SOUND_RULES_JSON, Some(&text(FREQ_ID)))
         })
     })
 }
@@ -51,7 +51,7 @@ pub fn pasar() -> &'static Loaded<PasarData> {
 pub fn unggah() -> &'static Loaded<UnggahData> {
     static DATA: OnceLock<Loaded<UnggahData>> = OnceLock::new();
     DATA.get_or_init(|| {
-        guarded("content/games/unggah-ungguh.toml", || UnggahData::parse(UNGGAH_TOML, &unpack(SPEECH_LEVELS)))
+        guarded("content/games/unggah-ungguh.toml", || UnggahData::parse(UNGGAH_TOML, &text(SPEECH_LEVELS)))
     })
 }
 
@@ -68,7 +68,7 @@ pub fn stories() -> &'static Loaded<StoryBank> {
 /// The most frequent Indonesian words, most useful first.
 pub fn frequent_words() -> &'static [String] {
     static DATA: OnceLock<Vec<String>> = OnceLock::new();
-    DATA.get_or_init(|| logic::top_words(&unpack(FREQ_ID), NEW_POOL))
+    DATA.get_or_init(|| logic::top_words(&text(FREQ_ID), NEW_POOL))
 }
 
 #[cfg(test)]
@@ -85,7 +85,7 @@ mod tests {
 
     #[test]
     fn the_shipped_files_are_present() {
-        assert!(unpack(BRIDGE_ID).lines().count() > 100);
+        assert!(text(BRIDGE_ID).lines().count() > 100);
         assert!(SOUND_RULES_JSON.contains("fa_p"));
         assert_eq!(frequent_words().len(), NEW_POOL);
     }

@@ -10,7 +10,9 @@ use base64::Engine as _;
 use base64::engine::general_purpose::STANDARD as B64;
 pub use ed25519_dalek::VerifyingKey;
 use ed25519_dalek::{Signature, Verifier};
-use kabar_protocol::update::{Channel, UPDATE_FORMAT, UpdateAsset, UpdateManifest, UpdatePlatform};
+use kabar_protocol::update::{
+    Channel, ContentFile, UPDATE_FORMAT, UpdateAsset, UpdateManifest, UpdatePlatform,
+};
 
 /// A workspace version: `1.0.0`, `1.0.0-alpha.2`, `1.0.0-beta.1`, `1.0.0-rc.1`.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -194,6 +196,11 @@ pub fn verify_manifest(json: &[u8], sig: &str, key: &VerifyingKey) -> Result<Upd
     if Version::parse(&m.version).is_none() {
         return Err(UpdateError::BadManifest(format!("version {:?}", m.version)));
     }
+    if let Some(c) = &m.content
+        && !is_plain_file_name(&c.file)
+    {
+        return Err(UpdateError::BadFileName(c.file.clone()));
+    }
     for a in &m.assets {
         if !is_plain_file_name(&a.file) {
             return Err(UpdateError::BadFileName(a.file.clone()));
@@ -229,13 +236,33 @@ pub fn decide(me: &Installed, m: &UpdateManifest, platform: UpdatePlatform) -> R
         return Err(UpdateError::WrongChannel { asked: me.channel, got: m.channel });
     }
     let version = Version::parse(&m.version).ok_or_else(|| UpdateError::BadManifest(m.version.clone()))?;
-    if (version, m.build) <= (me.version, me.build) {
+    let asset = m.asset(platform);
+    if (version, asset.map_or(m.build, |a| m.build_of(a))) <= (me.version, me.build) {
         return Ok(Decision::UpToDate);
     }
-    Ok(match m.asset(platform) {
+    Ok(match asset {
         Some(a) => Decision::Available(a.clone()),
         None => Decision::NotForThisPlatform,
     })
+}
+
+/// The feed's content bundle when it should replace the one in use
+/// (`current`: the `(version, build)` of the feed that delivered it, or None
+/// for the content built in). It must come from this build or a later one,
+/// since an older build's content may lack what this one has, and be newer
+/// than the bundle in use.
+pub fn content_update<'m>(
+    me: &Installed,
+    m: &'m UpdateManifest,
+    current: Option<(Version, u64)>,
+) -> Result<Option<&'m ContentFile>, UpdateError> {
+    if m.channel != me.channel {
+        return Err(UpdateError::WrongChannel { asked: me.channel, got: m.channel });
+    }
+    let version = Version::parse(&m.version).ok_or_else(|| UpdateError::BadManifest(m.version.clone()))?;
+    let feed = (version, m.build);
+    let fresh = feed >= (me.version, me.build) && current.is_none_or(|c| feed > c);
+    Ok(m.content.as_ref().filter(|_| fresh))
 }
 
 /// Checks a finished download against its signed manifest row.
@@ -290,9 +317,32 @@ mod tests {
                 size: 3,
                 sha256: "ab".repeat(32),
                 version_code: Some(v(version).version_code()),
+                build: None,
             }],
             history: Vec::new(),
+            content: Some(ContentFile {
+                file: format!("kabar-content-{version}.bundle"),
+                size: 3,
+                sha256: "cd".repeat(32),
+                ui_build: build,
+            }),
         }
+    }
+
+    #[test]
+    fn a_content_only_feed_never_offers_the_app_again() {
+        let me = Installed { version: v("0.3.0"), build: 40, channel: Channel::Preview };
+        let mut m = manifest(Channel::Preview, "0.3.0", 45);
+        m.assets[0].build = Some(40);
+        let android = UpdatePlatform::AndroidArm64;
+        assert_eq!(decide(&me, &m, android), Ok(Decision::UpToDate), "the app it carries is the one running");
+        assert!(content_update(&me, &m, None).unwrap().is_some(), "the new bundle still comes");
+        assert!(content_update(&me, &m, Some((v("0.3.0"), 45))).unwrap().is_none(), "once");
+        assert!(content_update(&me, &m, Some((v("0.3.0"), 44))).unwrap().is_some());
+        let newer_app = Installed { build: 46, ..me };
+        assert!(content_update(&newer_app, &m, None).unwrap().is_none(), "an older feed's content never");
+        let older = Installed { build: 38, ..me };
+        assert!(matches!(decide(&older, &m, android), Ok(Decision::Available(_))));
     }
 
     #[test]

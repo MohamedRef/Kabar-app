@@ -159,6 +159,9 @@ pub fn UpdatesCard() -> Element {
                 }
             } else {
                 PhaseView { phase: s.phase.clone(), auto: s.prefs.mode == Mode::Auto }
+                if s.content_waiting {
+                    p { class: "muted small", role: "status", "{ut(lang, U::ContentWaiting)}" }
+                }
                 div { class: "row update-check",
                     button {
                         disabled: busy,

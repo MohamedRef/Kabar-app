@@ -53,10 +53,11 @@ use kabar_core::settings::Settings;
 use crate::account::Cloud;
 use crate::cloud::{CloudStatus, Command, Event};
 use crate::coach::Coach;
+use crate::embedded::{Css, css};
 use crate::i18n::{Msg, t};
 use crate::store::Store;
 
-const MAIN_CSS: &str = include_str!("../assets/main.css");
+const MAIN_CSS: Css = css!("assets/main.css");
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Screen {
@@ -265,6 +266,9 @@ fn open_store() -> Result<(Store, std::path::PathBuf), String> {
     let dir = platform::data_dir()?;
     std::fs::create_dir_all(&dir).map_err(|e| format!("{}: {e}", dir.display()))?;
     let path = dir.join("kabar.db");
+    // A content bundle from the update feed replaces the built-in content
+    // before anything reads it (update/content.rs).
+    update::content::use_installed(&dir);
     packs::init(&dir);
     update::init(&dir);
     Ok((Store::open(&path).map_err(|e| e.to_string())?, path))
@@ -277,7 +281,7 @@ fn App() -> Element {
         Ok((db, path)) => rsx! { Loaded { db, path } },
         Err(e) => rsx! {
             div { class: "app", dir: "ltr",
-                style { {MAIN_CSS} }
+                style { {MAIN_CSS.text()} }
                 div { class: "content",
                     div { class: "card",
                         h2 { "Kabar couldn't open its local database" }
@@ -389,11 +393,11 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
 
     rsx! {
         document::Title { "Kabar" }
-        style { {MAIN_CSS} }
+        style { {MAIN_CSS.text()} }
         style { {theme_css} }
         style { {pron_font} }
-        style { {annotated::CSS} }
-        style { {reader::grammar::CSS} }
+        style { {annotated::CSS.text()} }
+        style { {reader::grammar::CSS.text()} }
         style { {ui_fonts} }
         style { {misc_art::paper_css()} }
         div {

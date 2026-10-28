@@ -40,6 +40,8 @@ ureq = { version = "3", default-features = false, features = ["rustls"] }
 # App update feeds: signing key and signatures (`update` subcommand).
 ed25519-dalek = "2"
 getrandom = "0.3"
+# The content bundle packs each file exactly as crates/app/build.rs does.
+miniz_oxide = "0.8"
 
 [dev-dependencies]
 tempfile = "3"

@@ -162,6 +162,7 @@ mod tests {
                     },
                 })
                 .collect(),
+            content_only: false,
         }
     }
 

@@ -12,6 +12,12 @@
 //! - `update verify` runs the app's checks on a feed folder.
 //! - `update changes` shows what the next build's "what's new" would say
 //!   (`crate::changes`).
+//! - `update bundle` packs the app's content and stylesheets into the
+//!   content bundle (`kabar_protocol::bundle`) that `manifest --content`
+//!   publishes, so content changes reach devices with no install.
+//! - `manifest --carry PLATFORM` keeps that platform's file from
+//!   `--previous` as it is: a content-only feed carries the app over, and
+//!   its history entry is marked `content_only`.
 
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -24,8 +30,8 @@ use ed25519_dalek::{Signer, SigningKey};
 use kabar_core::packs::sha256_hex;
 use kabar_core::update::{Version, check_download, key_line, parse_public_key, verify_manifest};
 use kabar_protocol::update::{
-    BuildChanges, Channel, MANIFEST_FILE, SIGNATURE_FILE, UPDATE_FORMAT, UpdateAsset, UpdateManifest,
-    UpdateNotes, UpdatePlatform,
+    BuildChanges, Channel, ContentFile, MANIFEST_FILE, SIGNATURE_FILE, UPDATE_FORMAT, UpdateAsset,
+    UpdateManifest, UpdateNotes, UpdatePlatform,
 };
 
 use crate::changes;
@@ -48,7 +54,7 @@ pub enum Cmd {
         force: bool,
     },
     /// Hash the builds and write `update.json` (plus copies of the builds) into `--out`.
-    Manifest(ManifestArgs),
+    Manifest(Box<ManifestArgs>),
     /// Sign `<dir>/update.json` with `KABAR_UPDATE_SECRET` (base64) into `update.json.sig`.
     Sign {
         /// The feed folder.
@@ -68,6 +74,11 @@ pub enum Cmd {
         #[arg(long)]
         since: Option<String>,
     },
+    /// Pack the content and stylesheets the app builds in into `<out>/kabar-content.bundle`.
+    Bundle {
+        #[arg(long, default_value = "dist/bundle")]
+        out: PathBuf,
+    },
 }
 
 #[derive(Args)]
@@ -83,8 +94,14 @@ pub struct ManifestArgs {
     #[arg(long)]
     commit: Option<String>,
     /// `<platform>=<path>`, e.g. `android-arm64=dist/android/kabar.apk`. Repeat per build.
-    #[arg(long = "asset", value_parser = parse_asset, required = true)]
+    #[arg(long = "asset", value_parser = parse_asset)]
     assets: Vec<(UpdatePlatform, PathBuf)>,
+    /// Keep this platform's file from `--previous` as it is (a content-only feed).
+    #[arg(long = "carry", value_parser = parse_platform)]
+    carry: Vec<UpdatePlatform>,
+    /// The content bundle from `update bundle`.
+    #[arg(long)]
+    content: Option<PathBuf>,
     #[arg(long, default_value = "")]
     notes_en: String,
     #[arg(long, default_value = "")]
@@ -109,6 +126,10 @@ fn parse_channel(s: &str) -> Result<Channel, String> {
     Channel::parse(s).ok_or_else(|| format!("unknown channel {s:?} (preview, alpha, beta, stable)"))
 }
 
+fn parse_platform(s: &str) -> Result<UpdatePlatform, String> {
+    UpdatePlatform::parse(s).ok_or_else(|| format!("unknown platform {s:?}"))
+}
+
 fn parse_asset(s: &str) -> Result<(UpdatePlatform, PathBuf), String> {
     let (p, path) = s.split_once('=').ok_or("expected <platform>=<path>")?;
     let platform = UpdatePlatform::parse(p).ok_or_else(|| format!("unknown platform {p:?}"))?;
@@ -126,6 +147,7 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
             Ok(())
         }
         Cmd::Manifest(args) => {
+            let args = *args;
             let version = match args.version {
                 Some(v) => v,
                 None => workspace_version(root)?,
@@ -139,6 +161,26 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                 }
                 _ => None,
             };
+            ensure!(
+                !args.assets.is_empty() || !args.carry.is_empty(),
+                "give at least one --asset or --carry"
+            );
+            let carried = args
+                .carry
+                .iter()
+                .map(|p| {
+                    let m = previous.as_ref().context("--carry needs a --previous feed")?;
+                    ensure!(
+                        m.version == version,
+                        "--carry: the previous feed is {}, not {version}",
+                        m.version
+                    );
+                    let a = m
+                        .asset(*p)
+                        .with_context(|| format!("--carry: no {} in the previous feed", p.as_str()))?;
+                    Ok(UpdateAsset { build: Some(m.build_of(a)), ..a.clone() })
+                })
+                .collect::<Result<Vec<_>>>()?;
             let mut notes = UpdateNotes { en: args.notes_en, ar_eg: args.notes_ar_eg, ar: args.notes_ar };
             let mut entry = None;
             if args.changes {
@@ -153,6 +195,7 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                     build: args.build,
                     published_at: now_rfc3339(),
                     changes: found,
+                    content_only: !carried.is_empty(),
                 });
             }
             let history = changes::history(previous.as_ref(), entry, &changes::retro(root.path())?);
@@ -162,7 +205,7 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                 &version,
                 args.build,
                 args.commit,
-                &args.assets,
+                Files { given: &args.assets, carried: &carried, content: args.content.as_deref() },
                 WhatsNew { notes, history },
             )?;
             eprintln!(
@@ -194,6 +237,11 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                 m.build,
                 m.assets.len()
             );
+            Ok(())
+        }
+        Cmd::Bundle { out } => {
+            let (path, n) = bundle(root.path(), &out)?;
+            eprintln!("{n} file(s) → {} ({} KB)", path.display(), fs::metadata(&path)?.len() / 1024);
             Ok(())
         }
         Cmd::Changes { since } => {
@@ -239,6 +287,52 @@ pub fn keygen(public_out: &Path, force: bool) -> Result<(String, String)> {
     Ok((public, B64.encode(seed)))
 }
 
+/// Packs every file the app builds in (`kabar_protocol::bundle::SOURCES`)
+/// and every stylesheet under `crates/app` into `<out>/kabar-content.bundle`.
+/// Each file must be UTF-8, as build.rs requires. Returns the path and the
+/// number of files.
+pub fn bundle(root: &Path, out: &Path) -> Result<(PathBuf, usize)> {
+    use kabar_protocol::bundle::{CSS_PREFIX, SOURCES, encode, source_files};
+    let mut files = Vec::new();
+    for source in SOURCES {
+        files.extend(source_files(root, *source));
+    }
+    let app = root.join("crates/app");
+    let mut dirs = vec![app.join("src"), app.join("assets")];
+    while let Some(dir) = dirs.pop() {
+        for entry in fs::read_dir(&dir).with_context(|| dir.display().to_string())? {
+            let path = entry?.path();
+            if path.is_dir() {
+                dirs.push(path);
+            } else if path.extension().is_some_and(|e| e == "css") {
+                let rel = path.strip_prefix(&app)?.to_string_lossy().replace('\\', "/");
+                files.push((format!("{CSS_PREFIX}{rel}"), path));
+            }
+        }
+    }
+    let mut entries = Vec::new();
+    for (key, path) in files {
+        let raw = fs::read(&path).with_context(|| path.display().to_string())?;
+        ensure!(std::str::from_utf8(&raw).is_ok(), "{} isn't UTF-8", path.display());
+        entries.push((key, miniz_oxide::deflate::compress_to_vec(&raw, 10)));
+    }
+    entries.sort();
+    fs::create_dir_all(out)?;
+    let path = out.join("kabar-content.bundle");
+    fs::write(&path, encode(&entries))?;
+    Ok((path, entries.len()))
+}
+
+/// The files a manifest names.
+pub struct Files<'a> {
+    /// Builds to hash and copy, by platform.
+    pub given: &'a [(UpdatePlatform, PathBuf)],
+    /// Rows kept from the previous feed as they are (`--carry`).
+    pub carried: &'a [UpdateAsset],
+    /// The content bundle.
+    pub content: Option<&'a Path>,
+}
+
 /// The manifest's notes and history (`crate::changes`).
 #[derive(Default)]
 pub struct WhatsNew {
@@ -252,7 +346,7 @@ pub fn write_manifest(
     version: &str,
     build: u64,
     commit: Option<String>,
-    files: &[(UpdatePlatform, PathBuf)],
+    files: Files,
     whats_new: WhatsNew,
 ) -> Result<UpdateManifest> {
     let WhatsNew { notes, history } = whats_new;
@@ -269,7 +363,7 @@ pub fn write_manifest(
     }
     fs::create_dir_all(out)?;
     let mut assets = Vec::new();
-    for (platform, path) in files {
+    for (platform, path) in files.given {
         ensure!(
             !assets.iter().any(|a: &UpdateAsset| a.platform == *platform),
             "two builds for {}",
@@ -294,8 +388,33 @@ pub fn write_manifest(
             size: bytes.len() as u64,
             sha256: sha256_hex(&bytes),
             version_code: (*platform == UpdatePlatform::AndroidArm64).then(|| parsed.version_code()),
+            build: None,
         });
     }
+    for a in files.carried {
+        ensure!(
+            !assets.iter().any(|b: &UpdateAsset| b.platform == a.platform),
+            "{} is both carried and given",
+            a.platform.as_str()
+        );
+        assets.push(a.clone());
+    }
+    let content = match files.content {
+        None => None,
+        Some(path) => {
+            let bytes = fs::read(path).with_context(|| path.display().to_string())?;
+            kabar_protocol::bundle::decode(&bytes).map_err(|e| anyhow::anyhow!("{}: {e}", path.display()))?;
+            let file = match channel {
+                Channel::Preview => format!("kabar-content-{version}-b{build}.bundle"),
+                _ => format!("kabar-content-{version}.bundle"),
+            };
+            fs::write(out.join(&file), &bytes)?;
+            // Its stylesheets fit the app this feed carries (older than the
+            // feed when carried over).
+            let ui_build = assets.iter().map(|a| a.build.unwrap_or(build)).min().unwrap_or(build);
+            Some(ContentFile { file, size: bytes.len() as u64, sha256: sha256_hex(&bytes), ui_build })
+        }
+    };
     let m = UpdateManifest {
         format: UPDATE_FORMAT,
         channel,
@@ -306,6 +425,7 @@ pub fn write_manifest(
         notes,
         assets,
         history,
+        content,
     };
     fs::write(out.join(MANIFEST_FILE), serde_json::to_vec_pretty(&m)?)?;
     Ok(m)
@@ -342,6 +462,14 @@ pub fn verify(dir: &Path, public: &str) -> Result<UpdateManifest> {
         check_download(a, bytes.len() as u64, &sha256_hex(&bytes))
             .map_err(|e| anyhow::anyhow!("{}: {e}", a.file))?;
     }
+    if let Some(c) = &m.content {
+        let bytes = fs::read(dir.join(&c.file)).with_context(|| c.file.clone())?;
+        ensure!(
+            bytes.len() as u64 == c.size && sha256_hex(&bytes).eq_ignore_ascii_case(&c.sha256),
+            "{}: the download doesn't match the signed manifest",
+            c.file
+        );
+    }
     Ok(m)
 }
 
@@ -372,6 +500,83 @@ mod tests {
     /// Seed of the test key behind `fixtures/update/` (never a real key).
     const FIXTURE_SEED: [u8; 32] = [0x4b; 32];
 
+    fn files(given: &[(UpdatePlatform, PathBuf)]) -> Files<'_> {
+        Files { given, carried: &[], content: None }
+    }
+
+    #[test]
+    fn a_content_only_feed_carries_the_app_and_a_new_bundle() {
+        let dir = tempfile::tempdir().unwrap();
+        let apk = dir.path().join("kabar.apk");
+        fs::write(&apk, b"apk").unwrap();
+        let bundle = dir.path().join("kabar-content.bundle");
+        fs::write(&bundle, kabar_protocol::bundle::encode(&[("CAST".into(), vec![1])])).unwrap();
+        let given = [(UpdatePlatform::AndroidArm64, apk)];
+        let content = Files { given: &given, carried: &[], content: Some(&bundle) };
+        let first = write_manifest(
+            &dir.path().join("a"),
+            Channel::Preview,
+            "0.3.0",
+            40,
+            None,
+            content,
+            WhatsNew::default(),
+        )
+        .unwrap();
+        assert_eq!(first.content.as_ref().unwrap().ui_build, 40);
+
+        let carried = [UpdateAsset { build: Some(40), ..first.assets[0].clone() }];
+        let content = Files { given: &[], carried: &carried, content: Some(&bundle) };
+        let next = write_manifest(
+            &dir.path().join("b"),
+            Channel::Preview,
+            "0.3.0",
+            45,
+            None,
+            content,
+            WhatsNew::default(),
+        )
+        .unwrap();
+        let app = next.asset(UpdatePlatform::AndroidArm64).unwrap();
+        assert_eq!((app.file.as_str(), next.build_of(app)), ("kabar-0.3.0-b40-android-arm64.apk", 40));
+        let c = next.content.unwrap();
+        assert_eq!(
+            (c.file.as_str(), c.ui_build),
+            ("kabar-content-0.3.0-b45.bundle", 40),
+            "the look fits the app it carries"
+        );
+        assert!(dir.path().join("b").join(&c.file).exists());
+
+        let junk = dir.path().join("junk.bundle");
+        fs::write(&junk, b"nope").unwrap();
+        let content = Files { given: &given, carried: &[], content: Some(&junk) };
+        assert!(
+            write_manifest(
+                &dir.path().join("c"),
+                Channel::Preview,
+                "0.3.0",
+                46,
+                None,
+                content,
+                WhatsNew::default()
+            )
+            .is_err()
+        );
+    }
+
+    #[test]
+    fn the_repo_bundles() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+        let out = tempfile::tempdir().unwrap();
+        let (path, n) = bundle(&root, out.path()).unwrap();
+        let entries = kabar_protocol::bundle::decode(&fs::read(path).unwrap()).unwrap();
+        assert_eq!(entries.len(), n);
+        let keys: Vec<&str> = entries.iter().map(|(k, _)| k.as_str()).collect();
+        for key in ["LESSONS/bipa1.u01.l01", "CURRICULUM_ID", "css/assets/main.css"] {
+            assert!(keys.contains(&key), "{key}");
+        }
+    }
+
     #[test]
     fn keygen_manifest_sign_verify_round_trip() {
         let dir = tempfile::tempdir().unwrap();
@@ -389,7 +594,7 @@ mod tests {
             "1.0.0-alpha.2",
             0,
             Some("abc1234".into()),
-            &[(UpdatePlatform::AndroidArm64, apk)],
+            Files { given: &[(UpdatePlatform::AndroidArm64, apk)], carried: &[], content: None },
             WhatsNew::default(),
         )
         .unwrap();
@@ -417,11 +622,23 @@ mod tests {
         let assets = [(UpdatePlatform::MacosArm64, f)];
         let out = dir.path().join("feed");
         assert!(
-            write_manifest(&out, Channel::Stable, "1.0.0-alpha.1", 0, None, &assets, WhatsNew::default())
-                .is_err()
+            write_manifest(
+                &out,
+                Channel::Stable,
+                "1.0.0-alpha.1",
+                0,
+                None,
+                files(&assets),
+                WhatsNew::default()
+            )
+            .is_err()
         );
-        assert!(write_manifest(&out, Channel::Beta, "1.0.0", 0, None, &assets, WhatsNew::default()).is_ok());
-        let preview = write_manifest(&out, Channel::Preview, "0.1.0", 7, None, &assets, WhatsNew::default());
+        assert!(
+            write_manifest(&out, Channel::Beta, "1.0.0", 0, None, files(&assets), WhatsNew::default())
+                .is_ok()
+        );
+        let preview =
+            write_manifest(&out, Channel::Preview, "0.1.0", 7, None, files(&assets), WhatsNew::default());
         assert_eq!(
             preview.unwrap().assets[0].file,
             "kabar-0.1.0-b7-macos-arm64.app.zip",
@@ -473,6 +690,7 @@ mod tests {
                     size: apk.len() as u64,
                     sha256: sha256_hex(&apk),
                     version_code: Some(10_000_102),
+                    build: None,
                 },
                 UpdateAsset {
                     platform: UpdatePlatform::MacosArm64,
@@ -480,6 +698,7 @@ mod tests {
                     size: 4,
                     sha256: sha256_hex(b"zip!"),
                     version_code: None,
+                    build: None,
                 },
             ],
             history: vec![
@@ -493,14 +712,17 @@ mod tests {
                          - kind: fixed\n  ar_eg: الصوت مبقاش بيقطع في الدرس\n  en: Lesson audio no longer cuts out\n",
                     )
                     .unwrap(),
+                    content_only: false,
                 },
                 BuildChanges {
                     version: "1.0.0-alpha.1".into(),
                     build: 0,
                     published_at: "2026-10-20T08:00:00Z".into(),
                     changes: changes::parse("- kind: new\n  ar_eg: أول نسخة ألفا\n  en: The first alpha\n").unwrap(),
+                    content_only: false,
                 },
             ],
+            content: None,
         };
         let json = serde_json::to_vec_pretty(&m).unwrap();
         fs::write(root.join(MANIFEST_FILE), &json).unwrap();

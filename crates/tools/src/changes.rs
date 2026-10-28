@@ -321,6 +321,7 @@ mod tests {
             build,
             published_at: "2026-10-28T10:00:00Z".into(),
             changes: vec![from_title(&format!("Better thing {build}")).unwrap()],
+            content_only: false,
         }
     }
 

@@ -17,7 +17,7 @@ use super::glossary::{
 
 // `GLOSS_BATCHES` (Indonesian) and `GLOSS_BATCHES_JV`: every
 // `content/glosses/<lang>/*.jsonl`, listed by build.rs.
-use crate::embedded::{BRIDGE_ID, GLOSS_BATCHES, GLOSS_BATCHES_JV, SPEECH_LEVELS, unpack};
+use crate::embedded::{BRIDGE_ID, GLOSS_BATCHES, GLOSS_BATCHES_JV, SPEECH_LEVELS, rows, text, unpack};
 
 /// `prepare` applied to every gloss entry, Indonesian batches first, in file
 /// order. The batches are unpacked, parsed and prepared on all cores: the
@@ -25,7 +25,8 @@ use crate::embedded::{BRIDGE_ID, GLOSS_BATCHES, GLOSS_BATCHES_JV, SPEECH_LEVELS,
 fn gloss_entries<T: Send>(
     prepare: impl Fn(GlossEntry) -> T + Sync,
 ) -> impl Iterator<Item = Result<T, serde_json::Error>> {
-    let batches: Vec<&[u8]> = GLOSS_BATCHES.iter().chain(GLOSS_BATCHES_JV).copied().collect();
+    let batches: Vec<&[u8]> =
+        rows(GLOSS_BATCHES).into_iter().chain(rows(GLOSS_BATCHES_JV)).map(|(_, b)| b).collect();
     let cores = std::thread::available_parallelism().map_or(1, |n| n.get()).min(8);
     let prepare = &prepare;
     let parts: Vec<Vec<_>> = std::thread::scope(|s| {
@@ -176,7 +177,7 @@ impl LocalGlossary {
             g.upsert(k.to_string(), v);
         }
 
-        let bridges: HashMap<String, BridgeEntry> = jsonl::<BridgeEntry>(&unpack(BRIDGE_ID))
+        let bridges: HashMap<String, BridgeEntry> = jsonl::<BridgeEntry>(&text(BRIDGE_ID))
             .filter_map(|r| r.map_err(|e| crate::diag::report!("bad bridge entry: {e}")).ok())
             .map(|b| (b.word.to_lowercase(), b))
             .collect();
@@ -277,7 +278,7 @@ impl LocalGlossary {
     /// points at the whole row.
     fn add_speech_levels(&mut self) {
         let mut done: HashSet<String> = HashSet::new();
-        for row in jsonl::<SpeechLevelEntry>(&unpack(SPEECH_LEVELS)) {
+        for row in jsonl::<SpeechLevelEntry>(&text(SPEECH_LEVELS)) {
             let row = match row {
                 Ok(r) => r,
                 Err(err) => {
@@ -388,7 +389,7 @@ mod tests {
                 .unwrap()
                 .filter(|e| e.as_ref().unwrap().file_name().to_string_lossy().ends_with(".jsonl"))
                 .count();
-            assert_eq!(on_disk, embedded.len(), "build.rs missed a {lang} gloss batch");
+            assert_eq!(on_disk, embedded.rows.len(), "build.rs missed a {lang} gloss batch");
         }
     }
 
@@ -419,10 +420,10 @@ mod tests {
         for r in gloss_entries(|e| e) {
             r.unwrap();
         }
-        for r in jsonl::<BridgeEntry>(&unpack(BRIDGE_ID)) {
+        for r in jsonl::<BridgeEntry>(&text(BRIDGE_ID)) {
             r.unwrap();
         }
-        for r in jsonl::<SpeechLevelEntry>(&unpack(SPEECH_LEVELS)) {
+        for r in jsonl::<SpeechLevelEntry>(&text(SPEECH_LEVELS)) {
             r.unwrap();
         }
     }

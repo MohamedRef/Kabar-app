@@ -35,6 +35,7 @@ use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::coach::labels::level_name;
 use crate::embedded::{self, PERSONAS};
+use crate::embedded::{Css, css};
 use crate::lesson::{Rich, target_tag};
 use crate::listen::player::ProgramPlayer;
 use crate::portraits::{self, Face, Mood};
@@ -44,7 +45,7 @@ use crate::studio::pad::{InkAnswer, InkPad};
 use crate::teach::Ai;
 use crate::{Db, Ui};
 
-const CHAT_CSS: &str = include_str!("../../assets/chat.css");
+const CHAT_CSS: Css = css!("assets/chat.css");
 
 /// Every persona file, parsed once, Indonesian partners first and each
 /// language by level; a broken file stays listed with its error.
@@ -230,8 +231,8 @@ pub fn ChatScreen() -> Element {
     };
 
     rsx! {
-        style { {CHAT_CSS} }
-        style { {crate::listen::LISTEN_CSS} }
+        style { {CHAT_CSS.text()} }
+        style { {crate::listen::LISTEN_CSS.text()} }
         div { class: "chat", {body} }
     }
 }

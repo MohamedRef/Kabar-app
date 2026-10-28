@@ -85,6 +85,8 @@ pub enum U {
     BadgeLatest,
     BadgeInstalled,
     BadgeNew,
+    BadgeContent,
+    ContentWaiting,
     Today,
     Yesterday,
     TwoDaysAgo,
@@ -379,6 +381,14 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (BadgeInstalled, En) => "Installed",
         (BadgeNew, ArEg | Ar) => "جديد عليك",
         (BadgeNew, En) => "Not installed yet",
+        (BadgeContent, ArEg) => "تحديث محتوى",
+        (BadgeContent, Ar) => "تحديث محتوى",
+        (BadgeContent, En) => "Content update",
+        (ContentWaiting, ArEg) => "دروس ومحتوى جديد نزلوا، وهيظهروا أول ما تفتح كبر تاني، من غير تثبيت.",
+        (ContentWaiting, Ar) => "نُزِّل محتوى جديد، وسيظهر عند فتح كبر في المرة القادمة، دون تثبيت.",
+        (ContentWaiting, En) => {
+            "New lessons and content are in; they show the next time Kabar opens, with nothing to install."
+        }
         (Today, ArEg) => "النهارده",
         (Today, Ar) => "اليوم",
         (Today, En) => "Today",

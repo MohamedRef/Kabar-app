@@ -21,13 +21,14 @@ use serde::Deserialize;
 use crate::Screen;
 use crate::annotated::Annotated;
 use crate::coach::Coach;
+use crate::embedded::{Css, css};
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
 use crate::pron::Pron;
 use crate::store::Store;
 use crate::{Db, Ui};
 
-const REVIEW_CSS: &str = include_str!("../assets/review.css");
+const REVIEW_CSS: Css = css!("assets/review.css");
 const WALL_JS: &str = include_str!("../assets/wall.js");
 
 /// Classic-review keys, from anywhere on the page: Space reveals, 1–4 rate,
@@ -549,7 +550,7 @@ pub fn ReviewScreen() -> Element {
     let error = *engine.error.read();
 
     rsx! {
-        style { {REVIEW_CSS} }
+        style { {REVIEW_CSS.text()} }
         div { class: "review",
             if let Some(msg) = error {
                 p { class: "review-error", role: "alert", "{ui.t(msg)}" }

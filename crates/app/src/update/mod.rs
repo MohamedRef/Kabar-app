@@ -12,6 +12,7 @@
 //! <data>/updates/staged.json   the verified download waiting to install
 //! <data>/updates/history.json  what each build changed (changelog.rs)
 //! <data>/updates/<file>        that download (one at a time)
+//! <data>/content/…             the content bundle in use (content.rs)
 //! ```
 //!
 //! The work runs on its own thread; the UI follows [`Status`] through a
@@ -24,6 +25,7 @@
 
 pub mod bundle;
 pub mod changelog;
+pub mod content;
 pub mod sheet;
 mod text;
 pub mod view;
@@ -294,7 +296,9 @@ pub struct Offer {
 
 impl Offer {
     fn from_manifest(m: &UpdateManifest, asset: UpdateAsset, me: &Installed) -> Self {
-        let to = changelog::order(&m.version, m.build);
+        // A content-only feed carries an older app; offer that build.
+        let build = m.build_of(&asset);
+        let to = changelog::order(&m.version, build);
         let changes = match to {
             Some(to) => changelog::between(&m.history, Some((me.version, me.build)), to)
                 .into_iter()
@@ -304,7 +308,7 @@ impl Offer {
         };
         Self {
             version: m.version.clone(),
-            build: m.build,
+            build,
             commit: m.commit.clone(),
             notes: m.notes.clone(),
             asset,
@@ -376,6 +380,11 @@ pub struct Status {
     /// This build: version and build number.
     pub version: String,
     pub build: u64,
+    /// The feed build whose content bundle is in use, when newer than this
+    /// build (a content-only update), else 0.
+    pub content_build: u64,
+    /// A newer content bundle is downloaded; it is used from the next launch.
+    pub content_waiting: bool,
     /// Every build's changes seen so far, newest first (changelog.rs).
     pub history: Vec<BuildChanges>,
 }
@@ -383,7 +392,13 @@ pub struct Status {
 impl Status {
     /// This build's place among the history's builds.
     pub fn current(&self) -> Option<(Version, u64)> {
-        changelog::order(&self.version, self.build)
+        changelog::order(&self.version, self.shown_build())
+    }
+
+    /// The build number the learner is on: this build, or the content-only
+    /// update on top of it.
+    pub fn shown_build(&self) -> u64 {
+        self.build.max(self.content_build)
     }
 
     /// "What's new" to open by itself after an update: the builds after the
@@ -582,7 +597,8 @@ impl Updater {
             None
         });
         let mut prefs = prefs;
-        let this = format!("{}+{}", info.version, info.build);
+        let content_build = dir.parent().and_then(|d| content::in_use(d, &info)).map_or(0, |c| c.build);
+        let this = format!("{}+{}", info.version, info.build.max(content_build));
         if off.is_none() && prefs.last_run.as_deref() != Some(this.as_str()) {
             // Updated (not a first install): say what's new once.
             if let Some(prev) = prefs.last_run.take() {
@@ -611,6 +627,8 @@ impl Updater {
             prefs,
             version: info.version.to_string(),
             build: info.build,
+            content_build,
+            content_waiting: false,
             history,
         };
         let (tx, _) = watch::channel(status);
@@ -683,7 +701,8 @@ impl Updater {
         // up to every merge on the preview channel); the offer still shows.
         let auto = s.prefs.mode == Mode::Auto && !metered;
         if due {
-            self.check(auto);
+            // Content bundles (~8 MB) wait for Wi-Fi too.
+            self.check_with(auto, !metered);
         } else if auto && let Phase::Available(_) = s.phase {
             self.download();
         }
@@ -744,6 +763,11 @@ impl Updater {
 
     /// Looks at the feed; with `download`, fetches a newer build right away.
     pub fn check(&'static self, download: bool) {
+        self.check_with(download, true);
+    }
+
+    /// [`Self::check`]; with `content`, a newer content bundle is fetched too.
+    fn check_with(&'static self, download: bool, content: bool) {
         let Ok(_job) = self.job.try_lock() else { return };
         if self.status().off.is_some() {
             return;
@@ -754,7 +778,7 @@ impl Updater {
             _ => None,
         };
         self.set_phase(Phase::Checking);
-        let result = self.fetch_offer();
+        let result = self.fetch_offer(content);
         self.update_prefs(|p| p.last_check_ms = Some(now_ms()));
         match result {
             Ok(Some(offer)) => {
@@ -776,7 +800,7 @@ impl Updater {
     }
 
     /// `Ok(None)` after setting UpToDate / NotForThisDevice.
-    fn fetch_offer(&self) -> Result<Option<Offer>, Failure> {
+    fn fetch_offer(&self, content: bool) -> Result<Option<Offer>, Failure> {
         let key = self.info.key.ok_or(Failure::Verify("no key".into()))?;
         let base = self.feed_url();
         let fetch = || -> Result<_, Failure> {
@@ -800,6 +824,12 @@ impl Updater {
             other => update_failure(other),
         })?;
         self.remember_history(&m.history);
+        if content
+            && let Some(data) = self.dir.parent()
+            && content::refresh(data, &self.installed(), &self.info, &m, &self.feed_url())
+        {
+            self.tx.send_modify(|s| s.content_waiting = true);
+        }
         let platform = self.platform.ok_or(Failure::Verify("no platform".into()))?;
         match decide(&self.installed(), &m, platform).map_err(update_failure)? {
             Decision::UpToDate => {
@@ -1176,6 +1206,7 @@ mod tests {
                 size: 1,
                 sha256: "00".repeat(32),
                 version_code: None,
+                build: None,
             },
             changes: Vec::new(),
         }
@@ -1190,6 +1221,8 @@ mod tests {
             preview: false,
             version: "1.0.0-alpha.1".into(),
             build: 0,
+            content_build: 0,
+            content_waiting: false,
             history: Vec::new(),
         }
     }
@@ -1354,6 +1387,53 @@ mod tests {
         assert!(u.status().whats_new().is_empty());
         let u = updater_in(data.path(), &url, "1.0.0-alpha.2");
         assert!(u.status().whats_new().is_empty(), "seen stays seen");
+    }
+
+    #[test]
+    fn a_content_bundle_comes_without_an_install() {
+        use base64::Engine as _;
+        use ed25519_dalek::Signer as _;
+        let packed = miniz_oxide::deflate::compress_to_vec(b"cast: []\n", 10);
+        let bundle = kabar_protocol::bundle::encode(&[("CAST".into(), packed)]);
+        let feed = tempfile::tempdir().unwrap();
+        let m = UpdateManifest {
+            format: kabar_protocol::update::UPDATE_FORMAT,
+            channel: Channel::Alpha,
+            version: "1.0.0-alpha.1".into(),
+            build: 0,
+            commit: None,
+            published_at: "2026-10-28T08:00:00Z".into(),
+            notes: UpdateNotes::default(),
+            assets: Vec::new(),
+            history: Vec::new(),
+            content: Some(kabar_protocol::update::ContentFile {
+                file: "kabar-content.bundle".into(),
+                size: bundle.len() as u64,
+                sha256: kabar_core::packs::sha256_hex(&bundle),
+                ui_build: 0,
+            }),
+        };
+        let json = serde_json::to_vec(&m).unwrap();
+        let key = ed25519_dalek::SigningKey::from_bytes(&[0x4b; 32]);
+        let sig = base64::engine::general_purpose::STANDARD.encode(key.sign(&json).to_bytes());
+        fs::write(feed.path().join(MANIFEST_FILE), &json).unwrap();
+        fs::write(feed.path().join(SIGNATURE_FILE), sig).unwrap();
+        fs::write(feed.path().join("kabar-content.bundle"), &bundle).unwrap();
+        let url = serve(feed.path().to_path_buf());
+
+        let (u, data) = updater(&url, "1.0.0-alpha.1");
+        u.check(false);
+        assert_eq!(u.status().phase, Phase::UpToDate, "the same build: nothing to install");
+        assert!(u.status().content_waiting);
+        let (entries, look) = content::load(data.path(), &u.info).unwrap();
+        assert_eq!((entries.len(), look), (1, true), "the look fits the build it was made with");
+        // Taken once; a newer app drops it.
+        let again = updater_in(data.path(), &url, "1.0.0-alpha.1");
+        again.check(false);
+        assert!(!again.status().content_waiting);
+        let newer = BuildInfo { version: Version::parse("1.0.0-alpha.2").unwrap(), ..u.info.clone() };
+        assert!(content::load(data.path(), &newer).is_none());
+        assert!(content::load(data.path(), &u.info).is_none(), "and it is gone");
     }
 
     #[test]

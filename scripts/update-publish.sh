@@ -29,6 +29,11 @@ esac
 rm -f "$rel/Kabar.app.zip"
 ditto -c -k --keepParent "$rel/Kabar.app" "$rel/Kabar.app.zip"
 
+# The content bundle rides along (docs/RELEASE.md §5), so later content-only
+# updates have a bundle to replace.
+$tools validate
+$tools update bundle --out dist/bundle
+
 published=0
 for channel in alpha beta stable; do
   out="dist/update/$channel"
@@ -40,7 +45,8 @@ for channel in alpha beta stable; do
   # The tool refuses a version that doesn't belong on a channel (an alpha on stable).
   if ! $tools update manifest --channel "$channel" --version "$v" --commit "$(git rev-parse --short HEAD)" \
       --notes-en "$notes_en" --notes-ar-eg "$notes_ar_eg" --previous "$previous" --changes \
-      --asset "android-arm64=$rel/kabar-$v.apk" --asset "$mac=$rel/Kabar.app.zip" --out "$out" 2>/dev/null; then
+      --asset "android-arm64=$rel/kabar-$v.apk" --asset "$mac=$rel/Kabar.app.zip" \
+      --content dist/bundle/kabar-content.bundle --out "$out" 2>/dev/null; then
     continue
   fi
   KABAR_UPDATE_SECRET="$secret" $tools update sign "$out"

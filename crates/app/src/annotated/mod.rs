@@ -22,6 +22,7 @@ use kabar_protocol::content::Lang;
 
 use self::parts::{ClassChip, Legend, PartsLine, SayWord};
 use self::text::{T, tt};
+use crate::embedded::{Css, css};
 use crate::lesson::Rich;
 use crate::pron::Pron;
 use crate::reader::card::InfoView;
@@ -32,7 +33,7 @@ use crate::reader::grammar::{DocGrammar, GrammarAt, syllabus};
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
 
-pub const CSS: &str = include_str!("../../assets/annotated.css");
+pub const CSS: Css = css!("assets/annotated.css");
 
 /// What every annotated sentence shares: whether the glossary is parsed yet
 /// (~100 ms of work, done off the UI thread the first time a sentence needs
