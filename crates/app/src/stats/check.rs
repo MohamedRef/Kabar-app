@@ -31,8 +31,8 @@ use crate::annotated::Annotated;
 use crate::coach::{Coach, labels, say, widgets::Nur};
 use crate::lesson::text::{L, lt};
 use crate::lesson::{
-    Draft, ExerciseView, MAX_STEP_MS, Rich, TextAnswer, autoplay_text, draft_answer, instruction,
-    item_prompt, needs_audio, now_ms, option_count, speak, target_tag,
+    Draft, ExerciseView, MAX_STEP_MS, NoSoundBanner, Rich, TextAnswer, autoplay_text, draft_answer,
+    instruction, item_prompt, needs_audio, no_audio_msg, now_ms, option_count, speak, target_tag,
 };
 use crate::portraits::Mood;
 use crate::{Db, Screen, Ui};
@@ -220,12 +220,12 @@ pub fn LevelCheckScreen() -> Element {
         div { class: "st st-check",
             div { class: "st-head",
                 button {
-                    class: "st-back",
+                    class: "st-back round-back",
                     "data-back": "true",
                     aria_label: st(lang, S::CheckClose),
                     title: st(lang, S::CheckClose),
                     onclick: move |_| super::back(ui),
-                    "{st(lang, S::Back)}"
+                    span { aria_hidden: "true", {super::back_arrow(lang)} }
                 }
                 h2 { "{st(lang, S::CheckTitle)}" }
             }
@@ -297,6 +297,8 @@ fn Runner(runner: Signal<Option<TestRunner>>, on_done: EventHandler<()>) -> Elem
     // No sound for Indonesian: listening items are skipped the "can't
     // listen now" way (unscored), with a note, as in the other tests.
     let mut voice_skips = use_signal(|| 0u32);
+    // The note below says it once; the prompts don't repeat it (#447).
+    use_context_provider(|| NoSoundBanner);
     use_effect(move || {
         if !*missing.read() {
             return;
@@ -462,8 +464,12 @@ fn Runner(runner: Signal<Option<TestRunner>>, on_done: EventHandler<()>) -> Elem
                 div { class: "lp-bar", style: "inline-size: {pct_done}%" }
             }
             div { class: "lp-col", key: "{step:?}",
-                if *voice_skips.read() > 0 && matches!(step, TestStep::Item { .. }) {
-                    p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
+                if matches!(step, TestStep::Item { .. }) {
+                    if *voice_skips.read() > 0 {
+                        p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
+                    } else if *missing.read() {
+                        p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, no_audio_msg())}" }
+                    }
                 }
                 if let (TestStep::Item { .. }, Some(it)) = (step, item.clone()) {
                     if let Some(sec) = &section {

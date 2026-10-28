@@ -1303,6 +1303,12 @@ fn save(db: CopyValue<Db>, pos: &LessonPosition) {
     }
 }
 
+/// Given by a player that already says "no sound on this device" once at
+/// the top (the test player, #447): small play buttons then drop out when
+/// the sound is missing instead of repeating it beside every prompt.
+#[derive(Clone, Copy)]
+pub struct NoSoundBanner;
+
 /// A play button for target-language audio, with a slow option.
 #[component]
 fn PlayButton(
@@ -1315,6 +1321,10 @@ fn PlayButton(
     let ui = use_context::<Ui>();
     let lang = ui.settings.read().ui_language;
     let (t1, l1, a1) = (text.clone(), language.clone(), audio.clone());
+    let banner = try_use_context::<NoSoundBanner>().is_some();
+    if banner && !big && *missing.read() {
+        return rsx! {};
+    }
     rsx! {
         div { class: "row lp-play",
             button {
@@ -1342,7 +1352,7 @@ fn PlayButton(
 }
 
 /// Why there's no sound: a missing Indonesian voice gets an install hint.
-fn no_audio_msg() -> L {
+pub(crate) fn no_audio_msg() -> L {
     match platform::tts_status() {
         TtsStatus::MissingVoice | TtsStatus::Unsupported => L::NoVoiceData,
         _ => L::NoAudio,

@@ -147,7 +147,10 @@ button.rev-stat { border-color: transparent; }
 
 .rev-back { border-block-start: 1px dashed var(--line); margin-block-start: 1rem; padding-block-start: 1rem; display: grid; gap: 0.35rem; justify-items: center; }
 .rev-note { margin: 0; font-size: 0.95rem; }
-.rev-example { margin-block: 0.25rem; }
+.rev-example { margin-block: 0.25rem; text-align: center; }
+/* The answer side is centred; the pronunciation and the example follow the
+   word instead of hugging the start edge (#448). */
+.rev-back .pron:not(.inline), .rev-back .rev-example { justify-self: center; }
 .rev-example p { margin: 0; }
 .ex-text { font-family: var(--font-latin); font-size: 1.1rem; font-style: italic; }
 

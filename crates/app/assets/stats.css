@@ -5,7 +5,7 @@
 .st { display: grid; gap: 1rem; }
 .st-head { display: flex; align-items: center; gap: 0.75rem; }
 .st-head h2 { margin: 0; }
-.st-back { padding-inline: 0.8rem; }
+.app[data-width="compact"] .st-back-page { display: none; }
 .st-grid { display: grid; gap: 1rem; align-items: start; }
 /* Tablet portrait: one roomy column (two were too narrow for the numbers). */
 .app[data-width="medium"] .st { max-inline-size: 46rem; margin-inline: auto; }

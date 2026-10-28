@@ -31,13 +31,25 @@
   padding-inline: 1rem;
 }
 .lp-close {
-  inline-size: var(--tap);
+  /* The round 40dp button of the app header (#442), so leaving a lesson
+     or a test looks like going back anywhere else (#447). */
+  flex: none;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  min-inline-size: 0;
+  min-block-size: 0;
   padding: 0;
-  font-size: 1.6rem;
+  display: inline-grid;
+  place-items: center;
+  font-size: 1.5rem;
   line-height: 1;
-  border-color: transparent;
-  background: transparent;
-  color: var(--muted);
+  border: 1px solid var(--line-soft);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--text) 7%, transparent);
+  color: var(--text);
+}
+@media (hover: hover) and (pointer: fine) {
+  .lp-close:where(:hover) { background: var(--surface-2); color: var(--indigo); }
 }
 .lp-progress { flex: 1; block-size: 12px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
 .lp-bar { block-size: 100%; border-radius: 999px; background: var(--sawah); }
@@ -80,6 +92,8 @@
 .lp-question { font-family: var(--font-latin); font-size: 1.5rem; font-weight: 600; margin: 0; }
 .lp-question.big { font-size: clamp(1.8rem, 7vw, 2.4rem); color: var(--indigo); }
 .lp-question-meaning { font-size: 1.2rem; margin-block: 0 1rem; }
+/* The question under its spoken prompt gets breathing room (#447). */
+.lp-prompt > .row + .lp-question-meaning { margin-block-start: 0.6rem; }
 .lp-play { gap: 0.5rem; }
 .lp-sound { inline-size: var(--tap-lg); block-size: var(--tap-lg); padding: 0; display: inline-grid; place-items: center; color: var(--indigo); }
 .lp-sound.big { inline-size: 88px; block-size: 88px; background: var(--indigo); color: var(--surface); border-color: transparent; }
