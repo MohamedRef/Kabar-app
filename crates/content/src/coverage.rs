@@ -9,7 +9,8 @@
 //! A word counts as known when a `new_words` entry at or before the item's
 //! position teaches it (a taught phrase covers its words; a suffixed or
 //! reduplicated form is covered by its root; a street form such as "nggak" by
-//! its formal twin in `content/freq/id.street.tsv`), when the note of that line
+//! its formal twin in `content/freq/id.street.tsv`, a se- measure such as
+//! "seratus" by its root, a chat spelling such as "tdk" by its full form), when the note of that line
 //! or an earlier line of the same item explains it (the learner met the gloss), or when it is not vocabulary at all: a name (capitalised and
 //! either a cast name or absent from the frequency list), a number, or an
 //! entry in `content/freq/<lang>.core-exclude.tsv`.
@@ -17,7 +18,7 @@
 use std::collections::{BTreeMap, BTreeSet};
 use std::path::Path;
 
-use kabar_core::lang::{Lang, street};
+use kabar_core::lang::{Lang, normalize, street};
 use serde_json::Value;
 
 use crate::core_words::{mask, suffixes, tokens, word_list};
@@ -121,10 +122,21 @@ impl Track {
             if street(w) {
                 return true;
             }
+            // se- + a taught measure or number root: seratus, sekilo, sebotol.
+            if w.strip_prefix("se").is_some_and(|r| r.len() > 2 && at(r)) {
+                return true;
+            }
             let root = w.strip_prefix("di").filter(|r| r.len() > 4).unwrap_or(w);
             if w.len() > 5 && root.strip_suffix("in").is_some_and(|r| r.len() > 2 && street(r)) {
                 return true;
             }
+        }
+        // A chat spelling ("tp", "udh") is known once its full form is: the
+        // reader shows the expansion.
+        if normalize::lookup(w)
+            .is_some_and(|n| n.lang == Lang::English || n.full.starts_with('(') || n.full.split(' ').all(at))
+        {
+            return true;
         }
         if let Some((a, b)) = w.split_once('-')
             && a == b
@@ -462,5 +474,16 @@ mod tests {
         assert!(u.is_empty(), "{u:?}");
         let (_, u) = measure(&track(), &names, 0, "Saya bacain.", &ex(""));
         assert_eq!(u, vec!["bacain".to_owned()]);
+    }
+
+    #[test]
+    fn se_measures_and_chat_spellings_follow_their_roots() {
+        let mut t = track();
+        t.taught.insert("ratus".into(), 0);
+        let names = BTreeSet::new();
+        let (_, u) = measure(&t, &names, 0, "Seratus, tdk, thx, sebentar.", &ex(""));
+        assert_eq!(u, vec!["tdk".to_owned(), "sebentar".to_owned()]);
+        let (_, u) = measure(&t, &names, 1, "Seratus, tdk, wkwk.", &ex(""));
+        assert!(u.is_empty(), "{u:?}");
     }
 }
