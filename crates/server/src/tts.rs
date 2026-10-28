@@ -30,9 +30,10 @@ fn escape_xml(s: &str) -> String {
     out
 }
 
-/// Billable characters (Azure counts the spoken text, not the SSML tags).
+/// Billable characters: Azure counts the SSML body (prosody tags and XML
+/// escapes too), all but the `<speak>` and `<voice>` tags.
 pub fn billable_chars(req: &TtsRequest) -> u64 {
-    req.segments.iter().map(|s| s.text.chars().count() as u64).sum()
+    kabar_core::packs::ssml_billable_chars(&ssml(req))
 }
 
 #[derive(Debug, PartialEq, Eq, thiserror::Error)]
@@ -159,6 +160,19 @@ mod tests {
         // Old clients send no pitch; the JSON shape stays the same for them.
         let json = serde_json::to_value(req(&[(Voice::IdGadis, "Halo")], 0)).unwrap();
         assert!(json["segments"][0].get("pitch_percent").is_none());
+    }
+
+    #[test]
+    fn billing_counts_prosody_and_escapes() {
+        // A pitched Radio cue: Azure bills the prosody tag around it too.
+        let mut r = req(&[(Voice::IdArdi, "Jum'at ini kita ngobrol soal pasar.")], 0);
+        r.segments[0].pitch_percent = 10;
+        let text = "Jum&apos;at ini kita ngobrol soal pasar.".chars().count() as u64;
+        let tag = r#"<prosody pitch="+10%"></prosody>"#.len() as u64;
+        assert_eq!(billable_chars(&r), text + tag);
+        // Speak and voice tags are free, however many segments there are.
+        let two = req(&[(Voice::IdGadis, "Halo"), (Voice::IdArdi, "Halo juga")], 0);
+        assert_eq!(billable_chars(&two), 13);
     }
 
     #[test]
