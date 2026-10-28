@@ -101,6 +101,34 @@ exercises:
       ar: ستة، سبعة، ثمانية، تسعة، عشرة.
       en: Six, seven, eight, nine, ten.
     words: [enem, pitu, wolu, sanga, sepuluh]
+  - id: e07
+    type: listen
+    text: Omahku nomer pitu.
+    options: ['Omahku nomer pitu.', 'Omahku nomer wolu.', 'Omahku nomer sanga.']
+    answer: 0
+    meaning:
+      ar_eg: بيتي رقم سبعة.
+      ar: بيتي رقم سبعة.
+      en: My house is number seven.
+    words: [nomer, pitu, wolu, sanga]
+  - id: e08
+    type: fill_blank
+    sentence: Omahmu ___ pira?
+    meaning:
+      ar_eg: بيتك رقم كام؟
+      ar: ما رقم بيتك؟
+      en: What number is your house?
+    options: [nomer, pitu, sepuluh]
+    answers: [nomer]
+    words: [nomer]
+  - id: e09
+    type: speaking
+    text: Omahku nomer sepuluh.
+    meaning:
+      ar_eg: بيتي رقم عشرة.
+      ar: بيتي رقم عشرة.
+      en: My house is number ten.
+    words: [nomer, sepuluh]
 dialogue:
   lines:
     - speaker: Mohamed
@@ -149,6 +177,11 @@ new_words:
     ar_eg: عشرة (sepuluh)
     ar: عشرة (sepuluh)
     en: ten (sepuluh)
+  - word: nomer
+    pos: noun
+    ar_eg: رقم (nomor)
+    ar: رقم (nomor)
+    en: 'number (nomor): omah nomer pitu = house number seven'
 review:
   status: draft
   verified: false

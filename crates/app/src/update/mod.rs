@@ -7,15 +7,24 @@
 //! Device-local, never synced:
 //!
 //! ```text
-//! <data>/updates/prefs.json    automatic / notify / off, channel, last check
+//! <data>/updates/prefs.json    automatic / notify / off, channel, last check,
+//!                              the last "new version" notification sent
 //! <data>/updates/staged.json   the verified download waiting to install
+//! <data>/updates/history.json  what each build changed (changelog.rs)
 //! <data>/updates/<file>        that download (one at a time)
 //! ```
 //!
 //! The work runs on its own thread; the UI follows [`Status`] through a
 //! `tokio::sync::watch` channel.
+//!
+//! A new version is also announced with a system notification ([`Notice`]):
+//! by the running app's own checks on the Mac and Android, and on Android by
+//! a periodic background job (`app.kabar.UpdateCheckJob`) that runs
+//! [`background_check`] even while Kabar is closed.
 
 pub mod bundle;
+pub mod changelog;
+pub mod sheet;
 mod text;
 pub mod view;
 
@@ -25,12 +34,15 @@ use std::path::{Path, PathBuf};
 use std::sync::{Mutex, OnceLock};
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
+use kabar_core::locale::UiLanguage;
 use kabar_core::update::{
     Decision, Installed, UpdateError, VerifyingKey, Version, check_download, decide, parse_public_key,
     this_platform, verify_manifest,
 };
+use kabar_protocol::coach::{LocalTime, QuietHours};
 use kabar_protocol::update::{
-    Channel, MANIFEST_FILE, SIGNATURE_FILE, UpdateAsset, UpdateManifest, UpdateNotes, UpdatePlatform,
+    BuildChanges, Channel, MANIFEST_FILE, SIGNATURE_FILE, UpdateAsset, UpdateManifest, UpdateNotes,
+    UpdatePlatform,
 };
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
@@ -45,6 +57,10 @@ const RELEASE_KEY: &str = include_str!("../../update-key.pub");
 const CHECK_EVERY: Duration = Duration::from_secs(6 * 3600);
 /// First automatic check after launch: late enough not to slow the start.
 const FIRST_CHECK_AFTER: Duration = Duration::from_secs(20);
+/// Android's background job runs about every four hours
+/// (`UpdateCheckJob.PERIOD_MS`); it looks at the feed when the last look,
+/// its own or the app's, is at least this old.
+const BACKGROUND_EVERY: Duration = Duration::from_secs(3 * 3600);
 /// `update.json` and its signature are small; anything bigger is refused.
 const MAX_FEED_BYTES: u64 = 256 * 1024;
 /// Largest build accepted (the APK is about 60 MB, Kabar.app less).
@@ -69,7 +85,7 @@ impl Mode {
     pub const ALL: [Self; 3] = [Self::Auto, Self::Notify, Self::Off];
 }
 
-#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Prefs {
     #[serde(default)]
     pub mode: Mode,
@@ -84,6 +100,168 @@ pub struct Prefs {
     /// An automatic install of this download failed once; wait for a tap.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub auto_failed: Option<String>,
+    /// Announce a new version with a system notification (on by default).
+    #[serde(default = "yes")]
+    pub notify: bool,
+    /// The last notification sent (`version+build:stage`), so each goes out once.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub notified: Option<String>,
+    /// What a notification needs when no UI is running (Android's
+    /// background job): the app writes it whenever it changes.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub notice: Option<NoticeContext>,
+    /// The build (`version+build`) that ran last, to notice an update.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub last_run: Option<String>,
+    /// Set at the first launch after an update to the build that ran
+    /// before: "What's new" opens once for what came since, then clears it.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub whats_new_from: Option<String>,
+}
+
+fn yes() -> bool {
+    true
+}
+
+impl Default for Prefs {
+    fn default() -> Self {
+        Self {
+            mode: Mode::default(),
+            channel: None,
+            last_check_ms: None,
+            dismissed: None,
+            auto_failed: None,
+            notify: true,
+            notified: None,
+            notice: None,
+            last_run: None,
+            whats_new_from: None,
+        }
+    }
+}
+
+/// The learner's language and quiet hours, copied from the app's settings
+/// and coach profile into the device-local update prefs.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct NoticeContext {
+    pub lang: UiLanguage,
+    /// Kak Nur's quiet hours, if a coach profile exists: no notification
+    /// goes out inside them (the next check after they end sends it).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub quiet: Option<QuietHours>,
+    /// The device's offset from UTC, for the quiet hours where the
+    /// platform doesn't pass the local time in.
+    #[serde(default)]
+    pub utc_offset_min: i16,
+}
+
+/// The "new version" notification, as `app.kabar.UpdateNotice.show` and the
+/// Mac read it (JSON).
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+pub struct Notice {
+    /// `version+build:stage`: remembered once sent.
+    pub key: String,
+    pub title: String,
+    pub body: String,
+    /// What the notification's button does in the app: `download` or
+    /// `install`; empty for no button.
+    pub action: &'static str,
+    pub button: String,
+    /// The Android notification channel's name, in the learner's language.
+    pub channel: String,
+}
+
+/// Which step a notification announces.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum NoticeStage {
+    /// Out, not downloaded yet (Tell me first, or waiting for Wi-Fi).
+    Available,
+    /// Downloaded and verified; one tap installs it.
+    Ready,
+    /// Mac: swapped in; it starts at the next launch.
+    Installed,
+}
+
+impl NoticeStage {
+    fn as_str(self) -> &'static str {
+        match self {
+            Self::Available => "available",
+            Self::Ready => "ready",
+            Self::Installed => "installed",
+        }
+    }
+}
+
+/// What's new in `lang`, falling back to the other languages the feed has.
+pub(crate) fn notes_in(lang: UiLanguage, n: &UpdateNotes) -> String {
+    let pick = |a: &str, b: &str, c: &str| {
+        [a, b, c].into_iter().find(|s| !s.trim().is_empty()).unwrap_or("").trim().to_owned()
+    };
+    match lang {
+        UiLanguage::ArEg => pick(&n.ar_eg, &n.ar, &n.en),
+        UiLanguage::Ar => pick(&n.ar, &n.ar_eg, &n.en),
+        UiLanguage::En => pick(&n.en, &n.ar_eg, &n.ar),
+    }
+}
+
+/// The notification due for `s`, if any: one per offer and step, never for
+/// an offer whose banner was closed, never inside quiet hours. `local` is the
+/// device's wall clock when the platform knows it (Android's job passes it).
+pub fn notice(s: &Status, local: Option<LocalTime>, now_ms: u64) -> Option<Notice> {
+    use text::{U, ut};
+    if s.off.is_some() || s.prefs.mode == Mode::Off || !s.prefs.notify {
+        return None;
+    }
+    let (offer, stage) = match &s.phase {
+        Phase::Available(o) => (o, NoticeStage::Available),
+        Phase::Ready(o) | Phase::NeedsPermission(o) => (o, NoticeStage::Ready),
+        Phase::Installed(o) => (o, NoticeStage::Installed),
+        _ => return None,
+    };
+    if s.prefs.dismissed.as_deref() == Some(offer.key().as_str()) {
+        return None;
+    }
+    let key = format!("{}:{}", offer.key(), stage.as_str());
+    if s.prefs.notified.as_deref() == Some(key.as_str()) {
+        return None;
+    }
+    let ctx = s.prefs.notice.unwrap_or_default();
+    let local = local.unwrap_or_else(|| LocalTime::from_unix_ms(now_ms, ctx.utc_offset_min));
+    if ctx.quiet.is_some_and(|q| q.contains(local)) {
+        return None;
+    }
+    let lang = ctx.lang;
+    let (headline, hint, action, button) = match stage {
+        NoticeStage::Available => (U::NoticeAvailable, U::NoticeTapAvailable, "download", U::Download),
+        NoticeStage::Ready => (U::NoticeReady, U::NoticeTapReady, "install", U::InstallNow),
+        NoticeStage::Installed => (U::NoticeInstalled, U::NoticeTapInstalled, "", U::RestartNow),
+    };
+    // A Mac install starts with "Install and restart"; Android's button is
+    // "Install now" (the system may still ask to confirm).
+    let button = if action.is_empty() { String::new() } else { ut(lang, button).to_owned() };
+    let mut whats_new = if offer.changes.is_empty() {
+        notes_in(lang, &offer.notes)
+    } else {
+        changelog::notice_lines(lang, &offer.changes, ut(lang, U::NoticeMore))
+    };
+    if whats_new.chars().count() > 300 {
+        whats_new = whats_new.chars().take(299).collect::<String>() + "…";
+    }
+    let body = if whats_new.is_empty() {
+        ut(lang, hint).to_owned()
+    } else if offer.changes.is_empty() {
+        format!("{}: {whats_new}\n{}", ut(lang, U::WhatsNew), ut(lang, hint))
+    } else {
+        format!("{whats_new}\n{}", ut(lang, hint))
+    };
+    Some(Notice {
+        key,
+        title: format!("{} · {}", ut(lang, headline), offer.label()),
+        body,
+        action,
+        button,
+        channel: ut(lang, U::NoticeChannel).to_owned(),
+    })
 }
 
 /// Why this build doesn't update itself.
@@ -109,16 +287,28 @@ pub struct Offer {
     #[serde(default)]
     pub notes: UpdateNotes,
     pub asset: UpdateAsset,
+    /// What it brings: the feed's builds after the installed one, newest first.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub changes: Vec<BuildChanges>,
 }
 
 impl Offer {
-    fn from_manifest(m: &UpdateManifest, asset: UpdateAsset) -> Self {
+    fn from_manifest(m: &UpdateManifest, asset: UpdateAsset, me: &Installed) -> Self {
+        let to = changelog::order(&m.version, m.build);
+        let changes = match to {
+            Some(to) => changelog::between(&m.history, Some((me.version, me.build)), to)
+                .into_iter()
+                .cloned()
+                .collect(),
+            None => Vec::new(),
+        };
         Self {
             version: m.version.clone(),
             build: m.build,
             commit: m.commit.clone(),
             notes: m.notes.clone(),
             asset,
+            changes,
         }
     }
 
@@ -183,9 +373,32 @@ pub struct Status {
     pub channel: Channel,
     /// A preview build: the channel is fixed.
     pub preview: bool,
+    /// This build: version and build number.
+    pub version: String,
+    pub build: u64,
+    /// Every build's changes seen so far, newest first (changelog.rs).
+    pub history: Vec<BuildChanges>,
 }
 
 impl Status {
+    /// This build's place among the history's builds.
+    pub fn current(&self) -> Option<(Version, u64)> {
+        changelog::order(&self.version, self.build)
+    }
+
+    /// "What's new" to open by itself after an update: the builds after the
+    /// one that ran before, up to this one. Empty once seen.
+    pub fn whats_new(&self) -> Vec<BuildChanges> {
+        let (Some(from), Some(to)) = (self.prefs.whats_new_from.as_deref(), self.current()) else {
+            return Vec::new();
+        };
+        let from = from.split_once('+').and_then(|(v, b)| changelog::order(v, b.parse().ok()?));
+        if from.is_none() {
+            return Vec::new();
+        }
+        changelog::between(&self.history, from, to).into_iter().cloned().collect()
+    }
+
     /// The offer the banner should mention, unless closed for it.
     pub fn banner(&self) -> Option<&Offer> {
         let offer = match &self.phase {
@@ -286,7 +499,12 @@ pub fn init(data_dir: &Path) {
     };
     let updater = Updater::new(data_dir.join("updates"), BuildInfo::from_env(), platform, feed_override, off);
     let start = updater.status().off.is_none();
-    if UPDATER.set(updater).is_err() || !start {
+    let background = updater.background_checks();
+    if UPDATER.set(updater).is_err() {
+        return;
+    }
+    crate::platform::update_notice::schedule(background);
+    if !start {
         return;
     }
     let _ = std::thread::Builder::new().name("kabar-update".into()).spawn(|| {
@@ -302,6 +520,41 @@ pub fn init(data_dir: &Path) {
 
 pub fn get() -> Option<&'static Updater> {
     UPDATER.get()
+}
+
+/// The updater Android's background job (`UpdateCheckJob`) works with, in a
+/// process that may have no UI: the app's own if it's running here, else
+/// one opened for the job.
+#[cfg_attr(not(target_os = "android"), allow(dead_code))]
+fn job_updater(data_dir: &Path) -> &'static Updater {
+    static HEADLESS: OnceLock<Updater> = OnceLock::new();
+    match UPDATER.get() {
+        Some(u) => u,
+        None => HEADLESS.get_or_init(|| {
+            let off = (cfg!(debug_assertions) && dev_override("KABAR_UPDATE_URL").is_none())
+                .then_some(Off::DevBuild);
+            Updater::new(data_dir.join("updates"), BuildInfo::from_env(), this_platform(), None, off)
+        }),
+    }
+}
+
+/// Android's background job: checks when due and returns the notification
+/// to post, if any. Not marked as sent yet: the job calls
+/// [`background_shown`] once Android has shown it.
+#[cfg_attr(not(target_os = "android"), allow(dead_code))]
+pub fn background_check(
+    data_dir: &Path,
+    metered: bool,
+    can_notify: bool,
+    local: LocalTime,
+) -> Option<Notice> {
+    job_updater(data_dir).background(metered, can_notify, local)
+}
+
+/// The job's notification `key` is up: it doesn't go out again.
+#[cfg_attr(not(target_os = "android"), allow(dead_code))]
+pub fn background_shown(data_dir: &Path, key: &str) {
+    job_updater(data_dir).shown(key);
 }
 
 fn now_ms() -> u64 {
@@ -328,6 +581,19 @@ impl Updater {
         } else {
             None
         });
+        let mut prefs = prefs;
+        let this = format!("{}+{}", info.version, info.build);
+        if off.is_none() && prefs.last_run.as_deref() != Some(this.as_str()) {
+            // Updated (not a first install): say what's new once.
+            if let Some(prev) = prefs.last_run.take() {
+                prefs.whats_new_from = Some(prev);
+            }
+            prefs.last_run = Some(this);
+            if let Err(e) = save_prefs(&dir, &prefs) {
+                crate::diag::report!("update prefs: {e}");
+            }
+        }
+        let history = changelog::load(&dir);
         let installed = info.installed(prefs.channel);
         let mut phase = Phase::Idle;
         if off.is_none()
@@ -337,7 +603,16 @@ impl Updater {
         {
             phase = Phase::Ready(offer);
         }
-        let status = Status { off, phase, channel: installed.channel, preview: info.preview, prefs };
+        let status = Status {
+            off,
+            phase,
+            channel: installed.channel,
+            preview: info.preview,
+            prefs,
+            version: info.version.to_string(),
+            build: info.build,
+            history,
+        };
         let (tx, _) = watch::channel(status);
         Self {
             dir,
@@ -387,24 +662,83 @@ impl Updater {
     }
 
     /// The background loop's step: check when due, then refresh outdated
-    /// offline packs.
+    /// offline packs, then announce what it found.
     fn tick(&'static self) {
+        if self.step(CHECK_EVERY, crate::platform::metered_network()) {
+            crate::packs::update_installed();
+        }
+        self.send_notice(None, crate::platform::update_notice::post);
+    }
+
+    /// Checks when the last check is `every` old (true if it did), or starts
+    /// the download an earlier check left waiting for Wi-Fi.
+    fn step(&'static self, every: Duration, metered: bool) -> bool {
         let s = self.status();
         if s.off.is_some() || s.prefs.mode == Mode::Off {
-            return;
+            return false;
         }
-        let due = s
-            .prefs
-            .last_check_ms
-            .is_none_or(|t| now_ms().saturating_sub(t) >= CHECK_EVERY.as_millis() as u64);
+        let due =
+            s.prefs.last_check_ms.is_none_or(|t| now_ms().saturating_sub(t) >= every.as_millis() as u64);
         // Automatic downloads wait for Wi-Fi (a ~45 MB APK on mobile data,
         // up to every merge on the preview channel); the offer still shows.
-        let auto = s.prefs.mode == Mode::Auto && !crate::platform::metered_network();
+        let auto = s.prefs.mode == Mode::Auto && !metered;
         if due {
             self.check(auto);
-            crate::packs::update_installed();
         } else if auto && let Phase::Available(_) = s.phase {
             self.download();
+        }
+        due
+    }
+
+    /// Sends the notification due now through `post` (false: not shown, try
+    /// again at the next check) and remembers it once shown.
+    fn send_notice(&self, local: Option<LocalTime>, post: impl FnOnce(&Notice) -> bool) -> Option<Notice> {
+        let n = notice(&self.status(), local, now_ms())?;
+        if !post(&n) {
+            return None;
+        }
+        self.update_prefs(|p| p.notified = Some(n.key.clone()));
+        Some(n)
+    }
+
+    /// Android's background job: the same step as the app's loop, then the
+    /// notification to post, if `can_notify` (notifications allowed, Kabar
+    /// not in front). Not marked as sent: one Android doesn't show is tried
+    /// again at the next run ([`Self::shown`] marks it).
+    fn background(&'static self, metered: bool, can_notify: bool, local: LocalTime) -> Option<Notice> {
+        self.step(BACKGROUND_EVERY, metered);
+        if !can_notify {
+            return None;
+        }
+        notice(&self.status(), Some(local), now_ms())
+    }
+
+    /// The notification `key` was shown.
+    fn shown(&self, key: &str) {
+        if self.status().prefs.notified.as_deref() != Some(key) {
+            self.update_prefs(|p| p.notified = Some(key.to_owned()));
+        }
+    }
+
+    /// Whether Android's background job should run: updates work here and
+    /// aren't switched off.
+    pub fn background_checks(&self) -> bool {
+        let s = self.status();
+        s.off.is_none() && s.prefs.mode != Mode::Off
+    }
+
+    /// Keeps the language and quiet hours the background job words and
+    /// times its notification by.
+    pub fn set_notice_context(&self, ctx: NoticeContext) {
+        if self.status().prefs.notice != Some(ctx) {
+            self.update_prefs(|p| p.notice = Some(ctx));
+        }
+    }
+
+    pub fn set_notify(&self, on: bool) {
+        self.update_prefs(|p| p.notify = on);
+        if !on {
+            crate::platform::update_notice::clear();
         }
     }
 
@@ -465,6 +799,7 @@ impl Updater {
             UpdateError::NotSigned if self.info.preview => Failure::KeyChanged,
             other => update_failure(other),
         })?;
+        self.remember_history(&m.history);
         let platform = self.platform.ok_or(Failure::Verify("no platform".into()))?;
         match decide(&self.installed(), &m, platform).map_err(update_failure)? {
             Decision::UpToDate => {
@@ -480,8 +815,31 @@ impl Updater {
                 if asset.size > MAX_BUILD_BYTES {
                     return Err(Failure::Verify("build too large".into()));
                 }
-                Ok(Some(Offer::from_manifest(&m, asset)))
+                Ok(Some(Offer::from_manifest(&m, asset, &self.installed())))
             }
+        }
+    }
+
+    /// Keeps a verified feed's history, and lets a pending "What's new" go
+    /// when the feed has nothing to say about this build.
+    fn remember_history(&self, fresh: &[BuildChanges]) {
+        let known = self.status().history;
+        if let Some(all) = changelog::merge(&known, fresh) {
+            if let Err(e) = write_json(&self.dir, changelog::FILE, &all) {
+                crate::diag::report!("update history: {e}");
+            }
+            self.tx.send_modify(|s| s.history = all);
+        }
+        let s = self.status();
+        if s.prefs.whats_new_from.is_some() && s.whats_new().is_empty() {
+            self.update_prefs(|p| p.whats_new_from = None);
+        }
+    }
+
+    /// "What's new" was seen (closed).
+    pub fn close_whats_new(&self) {
+        if self.status().prefs.whats_new_from.is_some() {
+            self.update_prefs(|p| p.whats_new_from = None);
         }
     }
 
@@ -579,6 +937,12 @@ impl Updater {
             }
         };
         self.set_phase(Phase::Installing(offer.clone()));
+        // "Kabar was updated" says what's new when the feed says it.
+        let mut texts = texts;
+        let whats_new = notes_in(texts.lang, &offer.notes);
+        if !whats_new.is_empty() {
+            texts.done_body = whats_new;
+        }
         let next = install_build(&path, &offer, &texts);
         if let Phase::Installed(_) = next {
             self.clear_downloads(None);
@@ -588,6 +952,7 @@ impl Updater {
 
     pub fn set_mode(&self, mode: Mode) {
         self.update_prefs(|p| p.mode = mode);
+        crate::platform::update_notice::schedule(self.background_checks());
     }
 
     /// Switches release channel and looks again.
@@ -605,6 +970,7 @@ impl Updater {
     pub fn dismiss(&self) {
         let key = self.status().banner().map(Offer::key);
         self.update_prefs(|p| p.dismissed = key);
+        crate::platform::update_notice::clear();
     }
 
     /// Android: polls PackageInstaller after an install started.
@@ -628,7 +994,7 @@ impl Updater {
         let Ok(entries) = fs::read_dir(&self.dir) else { return };
         for e in entries.flatten() {
             let name = e.file_name().to_string_lossy().into_owned();
-            if name == "prefs.json" || Some(name.as_str()) == keep {
+            if name == "prefs.json" || name == changelog::FILE || Some(name.as_str()) == keep {
                 continue;
             }
             if name == "staged.json" && keep.is_some() {
@@ -643,6 +1009,7 @@ impl Updater {
 #[derive(Clone, Debug, Default)]
 #[cfg_attr(not(target_os = "android"), allow(dead_code))]
 pub struct InstallTexts {
+    pub lang: UiLanguage,
     pub done_title: String,
     pub done_body: String,
     /// "Kabar's update is ready: tap to install", if Android must ask
@@ -810,6 +1177,7 @@ mod tests {
                 sha256: "00".repeat(32),
                 version_code: None,
             },
+            changes: Vec::new(),
         }
     }
 
@@ -820,6 +1188,9 @@ mod tests {
             prefs: Prefs { mode, ..Prefs::default() },
             channel: Channel::Alpha,
             preview: false,
+            version: "1.0.0-alpha.1".into(),
+            build: 0,
+            history: Vec::new(),
         }
     }
 
@@ -932,6 +1303,10 @@ mod tests {
 
     fn updater(feed: &str, version: &str) -> (&'static Updater, tempfile::TempDir) {
         let data = tempfile::tempdir().unwrap();
+        (updater_in(data.path(), feed, version), data)
+    }
+
+    fn updater_in(data: &Path, feed: &str, version: &str) -> &'static Updater {
         let key = include_str!("../../../../fixtures/update/test-key.pub");
         let info = BuildInfo {
             version: Version::parse(version).unwrap(),
@@ -940,14 +1315,45 @@ mod tests {
             key: Some(parse_public_key(key).unwrap()),
         };
         let mut u = Updater::new(
-            data.path().join("updates"),
+            data.join("updates"),
             info,
             Some(UpdatePlatform::AndroidArm64),
             Some(feed.to_owned()),
             None,
         );
         u.retry_after = Duration::from_millis(10);
-        (Box::leak(Box::new(u)), data)
+        Box::leak(Box::new(u))
+    }
+
+    #[test]
+    fn whats_new_before_and_after_an_update() {
+        let feed = fixture_feed();
+        let url = serve(feed.path().to_path_buf());
+        let data = tempfile::tempdir().unwrap();
+
+        // A first install says nothing about what's new.
+        let u = updater_in(data.path(), &url, "1.0.0-alpha.1");
+        assert!(u.status().whats_new().is_empty());
+        assert_eq!(u.status().prefs.last_run.as_deref(), Some("1.0.0-alpha.1+0"));
+
+        // Before installing: the offer brings the builds after this one.
+        u.check(false);
+        let Phase::Available(o) = u.status().phase else { panic!("{:?}", u.status().phase) };
+        assert_eq!(o.changes.iter().map(BuildChanges::key).collect::<Vec<_>>(), ["1.0.0-alpha.2+0"]);
+        assert_eq!(u.status().history.len(), 2, "the whole feed history is kept");
+        let ctx = NoticeContext { lang: UiLanguage::ArEg, ..NoticeContext::default() };
+        u.set_notice_context(ctx);
+        let n = notice(&u.status(), None, 0).unwrap();
+        assert!(n.body.starts_with("• حلقات راديو جديدة\n• القارئ بقى أسرع\n• الصوت"), "{}", n.body);
+
+        // The first launch of the new build opens "What's new" once.
+        let u = updater_in(data.path(), &url, "1.0.0-alpha.2");
+        let w = u.status().whats_new();
+        assert_eq!(w.iter().map(BuildChanges::key).collect::<Vec<_>>(), ["1.0.0-alpha.2+0"]);
+        u.close_whats_new();
+        assert!(u.status().whats_new().is_empty());
+        let u = updater_in(data.path(), &url, "1.0.0-alpha.2");
+        assert!(u.status().whats_new().is_empty(), "seen stays seen");
     }
 
     #[test]
@@ -976,6 +1382,99 @@ mod tests {
     }
 
     #[test]
+    fn a_notice_goes_out_once_per_offer_and_step() {
+        let noon = Some(LocalTime::hm(12, 0));
+        let mut o = offer("1.0.0-alpha.2", 0);
+        o.notes = UpdateNotes { en: "Javanese Sinetron, episode 12".into(), ..UpdateNotes::default() };
+        let mut s = status(Phase::Available(o.clone()), Mode::Notify);
+        s.prefs.notice = Some(NoticeContext { lang: UiLanguage::En, ..NoticeContext::default() });
+        let n = notice(&s, noon, 0).expect("a new version is announced");
+        assert_eq!(n.title, "A new Kabar is out · 1.0.0-alpha.2");
+        assert!(n.body.starts_with("What's new: Javanese Sinetron, episode 12\n"), "{}", n.body);
+        assert_eq!((n.action, n.button.as_str()), ("download", "Download"));
+        // Sent once: the same offer at the same step stays quiet.
+        s.prefs.notified = Some(n.key.clone());
+        assert!(notice(&s, noon, 0).is_none());
+        // Downloaded since: "ready to install" is a new step.
+        s.phase = Phase::Ready(o.clone());
+        let ready = notice(&s, noon, 0).unwrap();
+        assert_eq!(ready.action, "install");
+        assert_ne!(ready.key, n.key);
+        // A closed banner, the switch, or updates off: nothing.
+        let mut closed = s.clone();
+        closed.prefs.dismissed = Some(o.key());
+        assert!(notice(&closed, noon, 0).is_none());
+        let mut quiet = s.clone();
+        quiet.prefs.notify = false;
+        assert!(notice(&quiet, noon, 0).is_none());
+        let mut off = s.clone();
+        off.prefs.mode = Mode::Off;
+        assert!(notice(&off, noon, 0).is_none());
+        // Nothing to say while checking or up to date.
+        assert!(notice(&status(Phase::UpToDate, Mode::Auto), noon, 0).is_none());
+    }
+
+    #[test]
+    fn notices_keep_quiet_hours_and_speak_the_learners_language() {
+        let mut s = status(Phase::Ready(offer("0.1.0", 141)), Mode::Auto);
+        let quiet = QuietHours { start: LocalTime::hm(22, 30), end: LocalTime::hm(8, 0) };
+        s.prefs.notice =
+            Some(NoticeContext { lang: UiLanguage::ArEg, quiet: Some(quiet), utc_offset_min: 120 });
+        assert!(notice(&s, Some(LocalTime::hm(23, 15)), 0).is_none(), "inside quiet hours");
+        assert!(notice(&s, Some(LocalTime::hm(7, 59)), 0).is_none());
+        let n = notice(&s, Some(LocalTime::hm(8, 0)), 0).expect("quiet hours are over");
+        assert!(n.title.starts_with("نسخة Kabar الجديدة جاهزة"), "{}", n.title);
+        assert!(n.title.ends_with("0.1.0 (141)"));
+        // No notes: the tap hint alone.
+        assert_eq!(n.body, text::ut(UiLanguage::ArEg, text::U::NoticeTapReady));
+        // Without a local time, the stored offset decides: 21:00 UTC is 23:00 in Cairo.
+        assert!(notice(&s, None, 21 * 3600 * 1000).is_none());
+        assert!(notice(&s, None, 12 * 3600 * 1000).is_some());
+        // The prefs file keeps all of it, and old files default the switch on.
+        let dir = tempfile::tempdir().unwrap();
+        save_prefs(dir.path(), &s.prefs).unwrap();
+        assert_eq!(load_prefs(dir.path()), s.prefs);
+        fs::write(dir.path().join("prefs.json"), r#"{"mode":"notify"}"#).unwrap();
+        assert!(load_prefs(dir.path()).notify);
+    }
+
+    #[test]
+    fn the_background_check_downloads_on_wifi_and_announces_once() {
+        let feed = fixture_feed();
+        let url = serve(feed.path().to_path_buf());
+        let noon = LocalTime::hm(12, 0);
+
+        // Automatic mode on Wi-Fi: downloaded, then "ready to install".
+        let (u, _data) = updater(&url, "1.0.0-alpha.1");
+        let n = u.background(false, true, noon).expect("announced");
+        assert_eq!(n.action, "install");
+        assert!(matches!(u.status().phase, Phase::Ready(_)));
+        // Not shown (Android said no): offered again at the next run.
+        assert_eq!(u.status().prefs.notified, None, "marked only once shown");
+        assert_eq!(u.background(false, true, noon).as_ref(), Some(&n));
+        u.shown(&n.key);
+        assert_eq!(u.status().prefs.notified.as_deref(), Some(n.key.as_str()));
+        assert!(u.background(false, true, noon).is_none(), "once shown, never again");
+        assert!(serde_json::to_string(&n).unwrap().contains(&format!("\"key\":\"{}\"", n.key)));
+
+        // On mobile data: announced, not downloaded.
+        let (u, _data) = updater(&url, "1.0.0-alpha.1");
+        let n = u.background(true, true, noon).unwrap();
+        assert_eq!(n.action, "download");
+        assert!(matches!(u.status().phase, Phase::Available(_)));
+
+        // Kabar in front (or notifications off): checked, kept for later.
+        let (u, _data) = updater(&url, "1.0.0-alpha.1");
+        assert!(u.background(true, false, noon).is_none());
+        assert!(u.status().prefs.notified.is_none());
+        assert!(u.background(true, true, noon).is_some(), "the next run sends it");
+
+        // Up to date: nothing.
+        let (u, _data) = updater(&url, "1.0.0-alpha.2");
+        assert!(u.background(false, true, noon).is_none());
+    }
+
+    #[test]
     fn a_swapped_build_or_manifest_is_never_offered() {
         // The build on the server isn't the one the manifest signed.
         let feed = fixture_feed();
@@ -988,9 +1487,11 @@ mod tests {
             "{:?}",
             u.status().phase
         );
-        let left: Vec<_> =
+        let mut left: Vec<_> =
             fs::read_dir(data.path().join("updates")).unwrap().flatten().map(|e| e.file_name()).collect();
-        assert_eq!(left, ["prefs.json"], "nothing unverified stays on disk");
+        left.sort();
+        // The signed manifest's history is kept; the build it didn't sign isn't.
+        assert_eq!(left, ["history.json", "prefs.json"], "nothing unverified stays on disk");
 
         // The manifest changed after signing.
         let feed = fixture_feed();

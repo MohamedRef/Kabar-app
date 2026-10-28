@@ -205,6 +205,37 @@ pub mod reminders {
         Ok(())
     }
 
+    /// The "new version" notification's id: a newer one replaces it.
+    const UPDATE_ID: &str = "kabar.update";
+
+    /// Shows the "new version" notification now. macOS asks for permission
+    /// the first time (only then); while Kabar is the active app it keeps
+    /// the notification out of sight, and the in-app banner says it.
+    pub fn post_update(n: &crate::update::Notice) -> bool {
+        if !bundled() {
+            return false;
+        }
+        request();
+        let content = UNMutableNotificationContent::new();
+        content.setTitle(&NSString::from_str(&n.title));
+        content.setBody(&NSString::from_str(&n.body));
+        let id = NSString::from_str(UPDATE_ID);
+        let request = UNNotificationRequest::requestWithIdentifier_content_trigger(&id, &content, None);
+        UNUserNotificationCenter::currentNotificationCenter()
+            .addNotificationRequest_withCompletionHandler(&request, None);
+        true
+    }
+
+    /// Takes the "new version" notification out of Notification Centre.
+    pub fn clear_update() {
+        if !bundled() {
+            return;
+        }
+        let ids = objc2_foundation::NSArray::from_retained_slice(&[NSString::from_str(UPDATE_ID)]);
+        UNUserNotificationCenter::currentNotificationCenter()
+            .removeDeliveredNotificationsWithIdentifiers(&ids);
+    }
+
     fn ymd(s: &str) -> Option<(isize, isize, isize)> {
         let mut parts = s.split('-').map(|p| p.parse().ok());
         Some((parts.next()??, parts.next()??, parts.next()??))

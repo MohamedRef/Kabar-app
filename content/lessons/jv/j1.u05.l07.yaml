@@ -54,7 +54,15 @@ exercises:
         ar_eg: قريب
         ar: قريب
         en: near
-    words: [adoh, rada, paling, cedhak]
+      - text: tenan
+        ar_eg: بجد / أوي
+        ar: حقًا / جدًا
+        en: really
+      - text: sithik
+        ar_eg: شوية
+        ar: قليلًا
+        en: a little
+    words: [adoh, rada, paling, cedhak, tenan, sithik]
   - id: e02
     type: listen
     text: Parangtritis adoh saka Jogja.
@@ -119,6 +127,34 @@ exercises:
       ar: بيتي بعيد قليلًا يا أخي.
       en: My place is a bit far, Mas.
     words: [rada, adoh]
+  - id: e08
+    type: listen
+    text: Adoh tenan, Mas!
+    options: ['Adoh tenan, Mas!', 'Rada adoh, Mas!', 'Cedhak tenan, Mas!']
+    answer: 0
+    meaning:
+      ar_eg: بعيد أوي يا ماس!
+      ar: بعيد حقًا يا ماس!
+      en: It's really far, Mas!
+    words: [tenan, adoh, rada, cedhak]
+  - id: e09
+    type: fill_blank
+    sentence: Sega ___ wae, Mbak.
+    meaning:
+      ar_eg: رز شوية بس يا مبا.
+      ar: قليل من الأرز فقط يا آنسة.
+      en: Just a little rice, Mbak.
+    options: [sithik, tenan, adoh]
+    answers: [sithik]
+    words: [sithik, tenan]
+  - id: e10
+    type: speaking
+    text: Sithik wae, Mas. Enak tenan!
+    meaning:
+      ar_eg: شوية بس يا ماس. حلو أوي!
+      ar: قليلًا فقط يا ماس. لذيذ جدًا!
+      en: Just a little, Mas. It's really good!
+    words: [sithik, tenan]
 dialogue:
   lines:
     - speaker: Mohamed
@@ -132,7 +168,7 @@ dialogue:
       ar: بعيدة قليلًا، نذهب بالدراجة النارية.
       en: A bit far; we go by motorbike.
     - speaker: Mohamed
-      text: Ombake gedhe banget!
+      text: Ombake gedhe tenan!
       ar_eg: الموج كبير جدًا!
       ar: الموج كبير جدًا!
       en: The waves are huge!
@@ -157,6 +193,16 @@ new_words:
     ar_eg: 'الأكتر (paling): paling apik = الأحسن'
     ar: 'الأكثر (paling): paling apik = الأفضل'
     en: 'most (paling): paling apik = the best'
+  - word: tenan
+    pos: adverb
+    ar_eg: 'بجد / أوي (sungguh): apik tenan = حلو أوي'
+    ar: 'حقًا / جدًا (sungguh): apik tenan = جميل حقًا'
+    en: 'really (sungguh): apik tenan = really nice'
+  - word: sithik
+    pos: adverb
+    ar_eg: شوية (sedikit)
+    ar: قليلًا (sedikit)
+    en: a little (sedikit)
 review:
   status: draft
   verified: false

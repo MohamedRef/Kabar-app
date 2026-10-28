@@ -348,15 +348,19 @@ fn Summary(profile: CoachProfile, today: LocalDate) -> Element {
                 dd { "{why}" }
             }
             dt { "{ui.t(Msg::OnbFocus)}" }
-            dd { bdi { "{focus}" } }
+            // The Both note rides in the focus value: a lone `dd` would
+            // shift every later label into the value column (#303).
+            dd {
+                bdi { "{focus}" }
+                if profile.focus == LanguageFocus::Both {
+                    span { class: "summary-note muted", "{ui.t(Msg::OnbBothOrder)}" }
+                }
+            }
             dt { "{ui.t(Msg::DailySize)}" }
             dd { {labels::minutes(&ui, u32::from(profile.daily_size.minutes()))} }
             if let Some(target) = target {
                 dt { "{ui.t(Msg::OnbTarget)}" }
                 dd { "{target}" }
-            }
-            if profile.focus == LanguageFocus::Both {
-                dd { class: "muted", "{ui.t(Msg::OnbBothOrder)}" }
             }
             dt { "{ui.t(Msg::StudyTimes)}" }
             dd { "{times}" }

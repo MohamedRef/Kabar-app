@@ -31,7 +31,7 @@
   padding-inline: 1rem;
 }
 .lp-close {
-  inline-size: 44px;
+  inline-size: var(--tap);
   padding: 0;
   font-size: 1.6rem;
   line-height: 1;
@@ -81,7 +81,7 @@
 .lp-question.big { font-size: clamp(1.8rem, 7vw, 2.4rem); color: var(--indigo); }
 .lp-question-meaning { font-size: 1.2rem; margin-block: 0 1rem; }
 .lp-play { gap: 0.5rem; }
-.lp-sound { inline-size: 48px; block-size: 48px; padding: 0; display: inline-grid; place-items: center; color: var(--indigo); }
+.lp-sound { inline-size: var(--tap-lg); block-size: var(--tap-lg); padding: 0; display: inline-grid; place-items: center; color: var(--indigo); }
 .lp-sound.big { inline-size: 88px; block-size: 88px; background: var(--indigo); color: var(--surface); border-color: transparent; }
 .lp-sound.big svg { inline-size: 40px; block-size: 40px; }
 .lp-sound.slow { inline-size: auto; padding-inline: 1rem; gap: 0.4rem; display: inline-flex; align-items: center; }
@@ -342,7 +342,7 @@
 .ln-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-2); }
 .ln-kicker { margin: 0; font-size: var(--fs-xs); color: var(--muted); font-weight: 600; letter-spacing: 0.02em; }
 .ln-title { margin: 0; font-family: var(--font-latin); font-size: var(--fs-xl); color: var(--indigo); }
-.ln-hide { color: var(--muted); font-size: 1.4rem; line-height: 1; padding: 0; inline-size: 44px; }
+.ln-hide { color: var(--muted); font-size: 1.4rem; line-height: 1; padding: 0; inline-size: var(--tap); }
 .ln-cando { margin: 0; font-size: var(--fs-sm); }
 
 .ln-outline { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-1); }

@@ -118,6 +118,12 @@ pub struct UpdateManifest {
     #[serde(default)]
     pub notes: UpdateNotes,
     pub assets: Vec<UpdateAsset>,
+    /// What each recent build changed, newest first (this build, when it
+    /// changed anything visible, then up to [`HISTORY_BUILDS`] before it), so
+    /// the app can say what's new before installing and keep a history.
+    /// Older apps ignore it.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub history: Vec<BuildChanges>,
 }
 
 impl UpdateManifest {
@@ -136,6 +142,52 @@ pub struct UpdateNotes {
     /// Modern Standard Arabic.
     #[serde(default, skip_serializing_if = "String::is_empty")]
     pub ar: String,
+}
+
+/// How many builds [`UpdateManifest::history`] keeps.
+pub const HISTORY_BUILDS: usize = 40;
+
+/// One build's changes, as the learner reads them: written per pull request
+/// in `changes/*.yaml` (`docs/RELEASE.md` §5) and gathered by CI.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct BuildChanges {
+    pub version: String,
+    #[serde(default)]
+    pub build: u64,
+    /// RFC 3339, when the build was published.
+    pub published_at: String,
+    pub changes: Vec<Change>,
+}
+
+impl BuildChanges {
+    /// `version+build`, the same key the app uses for an offer.
+    pub fn key(&self) -> String {
+        format!("{}+{}", self.version, self.build)
+    }
+}
+
+/// One line of "what's new".
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct Change {
+    pub kind: ChangeKind,
+    /// The line itself; Egyptian Arabic is required, the others fall back to it.
+    #[serde(flatten)]
+    pub text: UpdateNotes,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum ChangeKind {
+    /// Something the learner couldn't do before.
+    New,
+    /// Something that works better or looks better.
+    Improved,
+    /// Something that was broken.
+    Fixed,
+}
+
+impl ChangeKind {
+    pub const ALL: [Self; 3] = [Self::New, Self::Improved, Self::Fixed];
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -177,5 +229,19 @@ mod tests {
         assert_eq!(m.channel, Channel::Alpha);
         assert_eq!(m.asset(UpdatePlatform::AndroidArm64).unwrap().version_code, Some(10_000_102));
         assert!(m.asset(UpdatePlatform::MacosX86_64).is_none());
+        let h = &m.history[0];
+        assert_eq!((h.key().as_str(), h.changes[0].kind), ("1.0.0-alpha.2+0", ChangeKind::New));
+        assert!(!h.changes[0].text.ar_eg.is_empty());
+    }
+
+    #[test]
+    fn a_manifest_without_history_still_parses() {
+        let mut v: serde_json::Value =
+            serde_json::from_str(include_str!("../../../fixtures/update/update.json")).unwrap();
+        v.as_object_mut().unwrap().remove("history");
+        let m: UpdateManifest = serde_json::from_value(v).unwrap();
+        assert!(m.history.is_empty());
+        // and none is written back
+        assert!(!serde_json::to_string(&m).unwrap().contains("history"));
     }
 }

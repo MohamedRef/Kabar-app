@@ -1,15 +1,19 @@
 //! Settings › About › Updates, the gentle "new Kabar is ready" card on
-//! Today, and the hooks that follow the updater from the UI.
+//! Today, and the hooks that follow the updater from the UI (installs on
+//! Android, and what the "new version" notification needs and opens).
 
 use dioxus::prelude::*;
 use kabar_core::locale::{UiLanguage, eastern_arabic_digits};
 use kabar_protocol::update::{Channel, UpdateNotes};
 
+use super::sheet::{SheetMode, UpdateSheetNav};
 use super::text::{U, ut};
-use super::{Failure, InstallTexts, Mode, Off, Offer, Phase, Status, Updater};
+use super::{Failure, InstallTexts, Mode, NoticeContext, Off, Offer, Phase, Status, Updater};
+use crate::coach::Coach;
+use crate::settings::{Section, SettingsNav};
 use crate::{Screen, Ui};
 
-const UPDATE_CSS: &str = r#"
+pub(super) const UPDATE_CSS: &str = r#"
 .update-state { display: grid; gap: 0.4rem; padding-block: 0.6rem; padding-inline: 0.75rem;
   border-radius: 12px; background: var(--surface-2); margin-block: 0.5rem; }
 .update-state p { margin: 0; }
@@ -41,8 +45,9 @@ pub fn use_update_status() -> Signal<Option<Status>> {
     status
 }
 
-fn texts(lang: UiLanguage) -> InstallTexts {
+pub(super) fn texts(lang: UiLanguage) -> InstallTexts {
     InstallTexts {
+        lang,
         done_title: ut(lang, U::DoneTitle).into(),
         done_body: ut(lang, U::DoneBody).into(),
         ready_title: ut(lang, U::ReadyTitle).into(),
@@ -50,24 +55,17 @@ fn texts(lang: UiLanguage) -> InstallTexts {
 }
 
 /// Runs a blocking updater call off the UI thread.
-fn work(f: impl FnOnce(&'static Updater) + Send + 'static) {
+pub(super) fn work(f: impl FnOnce(&'static Updater) + Send + 'static) {
     if let Some(u) = super::get() {
         let _ = std::thread::Builder::new().name("kabar-update".into()).spawn(move || f(u));
     }
 }
 
 fn notes(lang: UiLanguage, n: &UpdateNotes) -> String {
-    let pick = |a: &str, b: &str, c: &str| {
-        [a, b, c].into_iter().find(|s| !s.trim().is_empty()).unwrap_or("").to_owned()
-    };
-    match lang {
-        UiLanguage::ArEg => pick(&n.ar_eg, &n.ar, &n.en),
-        UiLanguage::Ar => pick(&n.ar, &n.ar_eg, &n.en),
-        UiLanguage::En => pick(&n.en, &n.ar_eg, &n.ar),
-    }
+    super::notes_in(lang, n)
 }
 
-fn megabytes(ui: &Ui, bytes: u64) -> String {
+pub(super) fn megabytes(ui: &Ui, bytes: u64) -> String {
     let s = format!("{:.1} MB", bytes as f64 / (1024.0 * 1024.0));
     if ui.eastern() { eastern_arabic_digits(&s) } else { s }
 }
@@ -82,7 +80,7 @@ fn channel_label(c: Channel) -> U {
 }
 
 /// The button that moves an offer forward, for the card and the banner.
-fn primary_action(lang: UiLanguage, phase: &Phase) -> Option<(U, fn(UiLanguage))> {
+pub(super) fn primary_action(lang: UiLanguage, phase: &Phase) -> Option<(U, fn(UiLanguage))> {
     fn download(_: UiLanguage) {
         work(Updater::download);
     }
@@ -120,6 +118,15 @@ pub fn UpdatesCard() -> Element {
     let build = super::get().map_or(0, |u| u.info.build);
     let commit = super::commit();
     let busy = matches!(s.phase, Phase::Checking | Phase::Downloading { .. } | Phase::Installing(_));
+    let has_offer = matches!(
+        s.phase,
+        Phase::Available(_)
+            | Phase::Downloading { .. }
+            | Phase::Ready(_)
+            | Phase::NeedsPermission(_)
+            | Phase::Installed(_)
+    );
+    let sheet = try_use_context::<UpdateSheetNav>();
 
     rsx! {
         style { {UPDATE_CSS} }
@@ -158,6 +165,12 @@ pub fn UpdatesCard() -> Element {
                         onclick: move |_| work(|u| u.check(false)),
                         "{ut(lang, U::CheckNow)}"
                     }
+                    if let Some(sheet) = sheet {
+                        if has_offer {
+                            button { onclick: move |_| sheet.open(SheetMode::Offer), "{ut(lang, U::WhatsNewAsk)}" }
+                        }
+                        button { onclick: move |_| sheet.open(SheetMode::History), "{ut(lang, U::History)}" }
+                    }
                 }
                 div { class: "field",
                     span { class: "label", "{ut(lang, U::Mode)}" crate::settings::Scope { device_only: true } }
@@ -182,6 +195,24 @@ pub fn UpdatesCard() -> Element {
                                 }
                             }
                         }
+                    }
+                }
+                if s.prefs.mode != Mode::Off {
+                    div { class: "field",
+                        label {
+                            input {
+                                r#type: "checkbox",
+                                checked: s.prefs.notify,
+                                onchange: move |e: FormEvent| {
+                                    if let Some(u) = super::get() {
+                                        u.set_notify(e.checked());
+                                    }
+                                },
+                            }
+                            " {ut(lang, U::NotifyToggle)}"
+                            crate::settings::Scope { device_only: true }
+                        }
+                        p { class: "muted settings-hint", "{ut(lang, U::NotifyToggleHint)}" }
                     }
                 }
                 div { class: "field",
@@ -252,7 +283,16 @@ fn PhaseView(phase: Phase, auto: bool) -> Element {
         Phase::Downloading { offer, done } => Some((*done, offer.asset.size.max(1))),
         _ => None,
     };
-    let what_new = offer.as_ref().map(|o| notes(lang, &o.notes)).filter(|n| !n.is_empty());
+    let what_new = offer
+        .as_ref()
+        .map(|o| {
+            if o.changes.is_empty() {
+                notes(lang, &o.notes)
+            } else {
+                super::changelog::notice_lines(lang, &o.changes, ut(lang, U::NoticeMore))
+            }
+        })
+        .filter(|n| !n.is_empty());
     rsx! {
         div { class: "update-state", role: "status", aria_live: "polite",
             p {
@@ -327,7 +367,13 @@ pub fn UpdateBanner() -> Element {
         Phase::NeedsPermission(_) => U::NeedsPermission,
         _ => U::Ready,
     };
-    let what_new = notes(lang, &offer.notes);
+    // The banner stays short: two lines, the sheet has the rest.
+    let what_new = if offer.changes.is_empty() {
+        notes(lang, &offer.notes)
+    } else {
+        super::changelog::lines_upto(lang, &offer.changes, ut(lang, U::NoticeMore), 2)
+    };
+    let sheet = try_use_context::<UpdateSheetNav>();
     rsx! {
         style { {UPDATE_CSS} }
         section { class: "card update-banner", role: "status",
@@ -343,6 +389,9 @@ pub fn UpdateBanner() -> Element {
             }
             div { class: "row",
                 button { class: "primary", onclick: move |_| run(lang), "{ut(lang, label)}" }
+                if let Some(sheet) = sheet {
+                    button { onclick: move |_| sheet.open(SheetMode::Offer), "{ut(lang, U::WhatsNewAsk)}" }
+                }
                 button {
                     onclick: move |_| {
                         if let Some(u) = super::get() {
@@ -427,4 +476,63 @@ fn install_quietly() -> bool {
     {
         false
     }
+}
+
+/// Keeps the updater's copy of the language and quiet hours current (the
+/// background job words its notification with them), and follows a tap on
+/// the notification: the "what's new" sheet opens, and the notification's
+/// button starts the download or the install. Mounted once in the shell.
+pub fn use_update_notices(ui: Ui, nav: SettingsNav) {
+    let coach = try_use_context::<Coach>();
+    let sheet = try_use_context::<UpdateSheetNav>();
+    use_effect(move || {
+        let lang = ui.lang();
+        let (quiet, offset) = match coach {
+            Some(c) => {
+                let quiet = c.profile.read().as_ref().map(|p| p.quiet_hours);
+                let offset = (*c.device_offset.read()).unwrap_or_else(|| c.offset());
+                (quiet, offset)
+            }
+            None => (None, 0),
+        };
+        if let Some(u) = super::get() {
+            u.set_notice_context(NoticeContext { lang, quiet, utc_offset_min: offset });
+        }
+    });
+    use_future(move || async move {
+        if !cfg!(target_os = "android") || super::get().is_none() {
+            return;
+        }
+        let mut eval = document::eval(
+            r#"
+            // The tap's activity is translucent: a tap while Kabar is open
+            // may never hide the page, so look on focus and every 2 s too.
+            const send = () => { if (!document.hidden) dioxus.send(true); };
+            document.addEventListener("visibilitychange", send);
+            window.addEventListener("focus", send);
+            window.addEventListener("pageshow", send);
+            setInterval(send, 2000);
+            send();
+            await new Promise(() => {});
+            "#,
+        );
+        while eval.recv::<bool>().await.is_ok() {
+            let Some(tap) = crate::platform::update_notice::take_tap() else { continue };
+            // The sheet says what's new and holds the button; without it
+            // (never in the shell), the Updates card does.
+            match sheet {
+                Some(sheet) => sheet.open_offer(),
+                None => nav.show(Some(Section::About)),
+            }
+            let lang = ui.lang();
+            match tap.as_str() {
+                "download" => work(Updater::download),
+                "install" => {
+                    let t = texts(lang);
+                    work(move |u| u.install(t));
+                }
+                _ => {}
+            }
+        }
+    });
 }
