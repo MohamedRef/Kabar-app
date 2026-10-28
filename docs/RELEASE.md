@@ -122,8 +122,8 @@ tap left over a minute is dropped, and the job marks a notification as sent
 only after Android showed it (`UpdateCheckJob.shown`), so one Android refused
 goes out at the next run.
 
-**What's new.** Every pull request the learner would notice adds
-`changes/<topic>.yaml`, one line per change, in Egyptian Arabic and English
+**What's new.** Every pull request adds or extends
+`changes/<topic>.yaml` (CI fails one that doesn't), one line per change, in Egyptian Arabic and English
 (`ar` optional), each `new`, `improved` or `fixed`:
 
 ```yaml
@@ -136,12 +136,15 @@ A file holding `[]` says there's nothing to tell (CI, refactors, docs).
 When a feed is built (CI for `preview`, `just publish-update` for releases),
 `kabar-tools update manifest --previous <current update.json> --changes`
 gathers the files added since the commit the feed carries now, one pull
-request at a time; a merged pull request with no file falls back to its
-title (English), and titles starting with CI, docs, refactor, test and the
-like are skipped. That build's entry goes on top of the feed's `history`
+request at a time, plus the lines a pull request appended to an existing
+file. A commit with no file (pushed straight to main, or merged before the
+check) is looked up by title in `changes/retro/titles.yaml`, which also
+rewrites the English-only lines older feeds carry; failing that it falls
+back to its title in English, and titles starting with CI, docs, refactor,
+test and the like are skipped. That build's entry goes on top of the feed's `history`
 (40 builds, inside the signed `update.json`, so nothing extra to download or
-trust), and the notes older apps read are its first three lines. CI warns
-on an app pull request with no changes file; `kabar-tools update changes
+trust), and the notes older apps read are its first three lines.
+`kabar-tools update changes
 [--since <commit>]` previews what the next build will say.
 
 The app keeps every history it verifies (`updates/history.json`) and shows

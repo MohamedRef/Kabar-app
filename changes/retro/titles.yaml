@@ -1,0 +1,43 @@
+# What pull requests merged without a changes/ line should have said, keyed
+# by their title as the feed shows it (no trailing "(#123)"). The feed
+# builder uses it for commits with no file and rewrites the English lines
+# older feeds carry (crates/tools/src/changes.rs). `[]`: nothing the
+# learner would notice. CI now requires a changes/<topic>.yaml in every
+# pull request, so this list only grows for commits pushed straight to main.
+
+"Mac CI: run on PRs that touch Mac code, finish started runs on main, report failed nightlies": []
+"content: answer explanations for all J1 and J2 closed items":
+  - kind: new
+    ar_eg: كل تمرين مقفول في J1 وJ2 بقى بيشرحلك ليه الإجابة دي الصح
+    en: Every closed J1 and J2 exercise now explains its answer
+"Android bars take the theme colour on Android 15 too":
+  - kind: fixed
+    ar_eg: شريط أندرويد فوق وتحت بقى بلون الثيم على أندرويد 15 كمان
+    en: Android's top and bottom bars take the theme colour on Android 15 too
+"BIPA 6: answer explanations for every closed item":
+  - kind: new
+    ar_eg: كل تمرين مقفول في BIPA 6 بقى بيشرحلك ليه الإجابة دي الصح
+    en: Every closed BIPA 6 exercise now explains its answer
+"BIPA 1: explain every closed exercise item (#140); Kartini counts as a name":
+  - kind: new
+    ar_eg: كل تمرين مقفول في BIPA 1 بقى بيشرحلك ليه الإجابة دي الصح
+    en: Every closed BIPA 1 exercise now explains its answer
+  - kind: fixed
+    ar_eg: «Kartini» بقت بتتحسب اسم مش كلمة جديدة
+    en: "\"Kartini\" counts as a name, not a new word"
+"J3: answer explanations for all 147 closed items":
+  - kind: new
+    ar_eg: كل تمرين مقفول في J3 بقى بيشرحلك ليه الإجابة دي الصح
+    en: Every closed J3 exercise now explains its answer
+"Phone bar floats as a pill; More sheet rows grouped":
+  - kind: improved
+    ar_eg: شريط التنقل في الموبايل بقى عايم على شكل كبسولة، وقايمة «المزيد» متقسّمة مجموعات
+    en: The phone's navigation bar floats as a pill, and the More sheet's rows are grouped
+"BIPA 6 dialogues within the coverage limit":
+  - kind: improved
+    ar_eg: حوارات BIPA 6 بقى فيها كلمات جديدة عليك أقل
+    en: BIPA 6 dialogues have fewer words you haven't met yet
+"BIPA 3 Radio u04 under the raw unknown-word cap":
+  - kind: improved
+    ar_eg: حلقة راديو BIPA 3 في الوحدة 4 بقى فيها كلمات جديدة عليك أقل
+    en: The BIPA 3 Radio episode in unit 4 has fewer words you haven't met yet
