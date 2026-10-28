@@ -1,4 +1,7 @@
 /* Test player (level tests, placement): builds on lesson.css (.lp-*). */
+/* The test player has no notes pane, so no .lp-main column (#194): .lp
+   itself stacks top bar, body and actions, like .lp-main does for lessons. */
+.lp.lt:not(.st-runner) { flex-direction: column; }
 .lt-section { margin-block-end: 1rem; }
 .lt-section strong { margin-inline-start: 0.35rem; }
 .lt-section p { margin-block: 0.35rem 0; }

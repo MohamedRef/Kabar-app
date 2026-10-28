@@ -280,7 +280,9 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 /* A word Indonesian took from Arabic: the one gold mark for annotated text,
    word lists, review backs and games. The Reader's .w.from-arabic repeats it
    after its status rules so it wins over .w.no-gloss. */
-.bridge-word { text-decoration: underline 3px var(--gold); text-underline-offset: 6px; }
+/* The word an Arabic bridge leads to: a gold marker stroke, not an
+   underline, so it never reads as a link (no dead links, 2026-10-28). */
+.bridge-word { background: linear-gradient(transparent 62%, var(--gold-soft) 62%); padding-inline: 2px; border-radius: 2px; }
 
 /* Theme picker swatches: each shows that theme's surface, accent and gold. */
 .theme-swatch {
@@ -891,7 +893,7 @@ button.pairs-hear { font-size: 1.15rem; padding-inline: 1.25rem; margin-block-en
 .pairs-word { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.6rem; padding-block: 0.3rem; padding-inline: 0.6rem; border-radius: var(--radius); border: 1px solid var(--line); }
 .pairs-word.target { border-color: var(--indigo); }
 .pair-word { font-size: 1.3rem; font-weight: 600; }
-mark.pair-mark { background: var(--gold-soft); color: inherit; border-radius: 4px; padding-inline: 0.1rem; text-decoration: underline 2px var(--gold); text-underline-offset: 4px; }
+mark.pair-mark { background: var(--gold-soft); color: inherit; border-radius: 4px; padding-inline: 0.1rem; box-shadow: inset 0 -2px 0 var(--gold); }
 .pairs-meaning { flex: 1 1 10rem; min-inline-size: 0; }
 
 /* Kabar Pagi */

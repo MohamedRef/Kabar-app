@@ -16,8 +16,10 @@
 .gr-hits { margin-block: 0.25rem; }
 /* A hit: its word-class colour (the .wc-* classes set --wc) plus a dotted
    underline, so colour is never the only cue. A phrase gets a double line. */
-.gr-hit { color: var(--wc, var(--indigo)); text-decoration: underline dotted; text-underline-offset: 0.2em; }
-.gr-hit.wc-phrase { --wc: var(--wc-func); text-decoration-style: double; }
+/* A hit chip names a match; its colour is the word class. No underline: it
+   isn't a link (no dead links, 2026-10-28). A phrase gets a double edge. */
+.gr-hit { color: var(--wc, var(--indigo)); border-color: color-mix(in srgb, var(--wc, var(--indigo)) 40%, var(--line)); }
+.gr-hit.wc-phrase { --wc: var(--wc-func); border-style: double; border-width: 3px; }
 .gr-note { margin-block: 0.25rem; }
 .gr-place { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin-block: 0.25rem; }
 .gr-more > summary { cursor: pointer; color: var(--indigo); font-size: 0.9em; }
