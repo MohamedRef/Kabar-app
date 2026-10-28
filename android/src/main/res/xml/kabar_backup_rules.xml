@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Auto Backup on Android 9–11 (#370): the same cloud-backup list as
+  kabar_data_extraction_rules.xml, which explains each entry.
+-->
+<full-backup-content>
+    <include domain="file" path="kabar.db" />
+    <include domain="file" path="packs/prefs.json" />
+    <include domain="file" path="updates/prefs.json" />
+    <include domain="sharedpref" path="kabar_reminders.xml" />
+</full-backup-content>
