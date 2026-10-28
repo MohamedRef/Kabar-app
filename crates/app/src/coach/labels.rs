@@ -160,6 +160,16 @@ pub fn month(ui: &Ui, m: u32) -> &'static str {
     names[(m.clamp(1, 12) - 1) as usize]
 }
 
+/// A month label for chart axes: "Jul" / "يوليو". Never "1/7", which reads
+/// as a date (#434).
+pub fn month_short(ui: &Ui, m: u32) -> &'static str {
+    let name = month(ui, m);
+    match ui.settings.read().ui_language {
+        UiLanguage::En => &name[..3],
+        UiLanguage::ArEg | UiLanguage::Ar => name,
+    }
+}
+
 /// "1 مارس 2028" / "1 March 2028": a month name, never an ambiguous
 /// "1/3/2028", for dates the learner plans around (targets).
 pub fn long_date(ui: &Ui, d: LocalDate) -> String {

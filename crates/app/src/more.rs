@@ -72,6 +72,8 @@ pub fn rail_label(lang: UiLanguage, screen: Screen) -> Option<&'static str> {
         (Screen::Listen, ArEg) => "اسمع",
         (Screen::Listen, Ar) => "استمع",
         (Screen::Listen, En) => "Listen",
+        (Screen::Teach, ArEg | Ar) => "علّم",
+        (Screen::Teach, En) => "Teach",
         _ => return None,
     })
 }

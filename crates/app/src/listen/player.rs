@@ -479,7 +479,8 @@ pub fn ProgramPlayer(
     rsx! {
         div { class: "lx-player",
             header { class: "lx-head",
-                button { class: "quiet", onclick: move |_| on_back.call(()), "{tt(lang, T::Back)}" }
+                // System Back and the phone's top-bar arrow close the episode too.
+                button { class: "quiet lx-back", "data-back": "true", onclick: move |_| on_back.call(()), "{tt(lang, T::Back)}" }
                 h2 { bdi { lang: target, class: "latin", "{title}" } }
             }
             div { class: "row lx-download", display: if downloadable { "" } else { "none" },

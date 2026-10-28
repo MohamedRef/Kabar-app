@@ -6,7 +6,7 @@
 pub(crate) mod player;
 mod text;
 
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 use std::sync::LazyLock;
 
 use dioxus::prelude::*;
@@ -202,7 +202,7 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                 ol { class: "lx-list",
                     for row in rows {
                         match row {
-                            Row::Open(s) => {
+                            Row::Open(s, n) => {
                                 let target = target_tag(&s.language);
                                 let id = s.id.clone();
                                 rsx! {
@@ -210,7 +210,7 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                                         button {
                                             class: "card lx-card",
                                             onclick: move |_| on_open.call(Open::Sinetron(id.clone())),
-                                            span { class: "muted small", "{tt(lang, T::Episode)} {ui.num(s.episode)}" }
+                                            span { class: "muted small", "{episode_label(&ui, s, n)}" }
                                             strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
                                             span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
                                             span { class: "muted small", Rich { text: pick(&s.summary, lang).to_string(), target } }
@@ -226,7 +226,7 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                                     }
                                 }
                             }
-                            Row::Next(s) => {
+                            Row::Next(s, n) => {
                                 // The next locked episode: what's inside, and how close it is.
                                 let target = target_tag(&s.language);
                                 let curriculum = crate::journey::curriculum(&s.language);
@@ -247,7 +247,7 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                                     button {
                                         class: "card lx-card lx-teaser tap",
                                         onclick: move |_| if let Some(id) = &next { ui.open_lesson(id.clone()) },
-                                        span { class: "muted small", "🔒 {tt(lang, T::Episode)} {ui.num(s.episode)}" }
+                                        span { class: "muted small", "🔒 {episode_label(&ui, s, n)}" }
                                         strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
                                         span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
                                         span { class: "muted small", "{tt(lang, T::OpensAfter)}: " Rich { text: unit_title, target } }
@@ -325,10 +325,12 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
 }
 
 /// One entry of the Sinetron list.
+/// The number is the episode's place in its own series (Javanese starts at
+/// 1 again); `Story::episode` is the global order and stays internal (#434).
 enum Row<'a> {
-    Open(&'a Story),
+    Open(&'a Story, u32),
     /// The first locked episode of its language, shown as a teaser.
-    Next(&'a Story),
+    Next(&'a Story, u32),
     Broken(&'a String, &'a String),
 }
 
@@ -340,16 +342,32 @@ fn sinetron_rows<'a>(
 ) -> (Vec<Row<'a>>, usize) {
     let mut rows = Vec::new();
     let mut teased = BTreeSet::new();
+    let mut numbers: BTreeMap<&str, u32> = BTreeMap::new();
     let mut hidden = 0;
     for entry in shows {
+        let n = match entry {
+            Ok(s) => {
+                let n = numbers.entry(s.language.as_str()).or_default();
+                *n += 1;
+                *n
+            }
+            Err(_) => 0,
+        };
         match entry {
-            Ok(s) if open(s) => rows.push(Row::Open(s)),
-            Ok(s) if teased.insert(s.language.as_str()) => rows.push(Row::Next(s)),
+            Ok(s) if open(s) => rows.push(Row::Open(s, n)),
+            Ok(s) if teased.insert(s.language.as_str()) => rows.push(Row::Next(s, n)),
             Ok(_) => hidden += 1,
             Err((id, e)) => rows.push(Row::Broken(id, e)),
         }
     }
     (rows, hidden)
+}
+
+/// "الحلقة 1 · جاوي": the number within the episode's own series.
+fn episode_label(ui: &Ui, s: &Story, n: u32) -> String {
+    let lang = ui.lang();
+    let series = if s.language == "jv" { T::Javanese } else { T::Indonesian };
+    format!("{} {} · {}", tt(lang, T::Episode), ui.num(n), tt(lang, series))
 }
 
 fn lessons_left(ui: &Ui, n: usize) -> String {
@@ -490,12 +508,13 @@ mod tests {
         let kinds: Vec<String> = rows
             .iter()
             .map(|r| match r {
-                Row::Open(s) => format!("open {}", s.episode),
-                Row::Next(s) => format!("next {}", s.episode),
+                Row::Open(s, n) => format!("open {} #{n}", s.episode),
+                Row::Next(s, n) => format!("next {} #{n}", s.episode),
                 Row::Broken(id, _) => format!("broken {id}"),
             })
             .collect();
-        assert_eq!(kinds, ["open 1", "next 2", "next 4"]);
+        // Javanese counts from 1 again.
+        assert_eq!(kinds, ["open 1 #1", "next 2 #2", "next 4 #1"]);
         assert_eq!(hidden, 2);
     }
 }

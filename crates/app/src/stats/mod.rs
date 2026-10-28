@@ -389,7 +389,7 @@ fn HeatCard(heat: core_stats::Heatmap, today: LocalDate) -> Element {
                 )
             }
         },
-        |m| labels::date(&ui, m, today),
+        |m| labels::month_short(&ui, m.ymd().1).to_string(),
     );
     rsx! {
         section { class: "card st-card st-wide",
