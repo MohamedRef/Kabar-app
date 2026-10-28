@@ -351,24 +351,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
-    // System themes follow the device's dark mode. Android's WebView can't
-    // be trusted for it (it reports light under a light activity theme), so
-    // there the platform is asked directly and re-asked every few seconds,
-    // and `data-theme` names the concrete side. Elsewhere `device_dark` is
-    // None and `prefers-color-scheme` does the job.
-    let mut device_dark = use_signal(platform::device_dark);
-    use_future(move || async move {
-        if device_dark.peek().is_none() {
-            return;
-        }
-        loop {
-            tokio::time::sleep(std::time::Duration::from_secs(2)).await;
-            let now = platform::device_dark();
-            if now.is_some() && now != *device_dark.peek() {
-                device_dark.set(now);
-            }
-        }
-    });
+    let device_dark = use_device_dark(ui);
     // Android's status and navigation bars take the theme's background, so
     // True black keeps the whole OLED screen dark.
     use_effect(move || {
@@ -567,6 +550,51 @@ fn use_width_tracking(mut width: Signal<WidthClass>, mut tablet: Signal<bool>) {
             }
         }
     });
+}
+
+/// System themes follow the device's dark mode. Android's WebView can't be
+/// trusted for it (it reports light under a light activity theme), so there
+/// the platform is asked directly and `data-theme` names the concrete side.
+/// It's asked again only while a System theme is on and the app is on
+/// screen: when it comes back, gains focus, the WebView sees a scheme
+/// change, or every few seconds (a quick-settings toggle fires none of
+/// those). Elsewhere it stays None and `prefers-color-scheme` does the job.
+fn use_device_dark(ui: Ui) -> Signal<Option<bool>> {
+    let device_dark = use_signal(platform::device_dark);
+    use_future(move || async move {
+        if !cfg!(target_os = "android") {
+            return;
+        }
+        let mut eval = document::eval(
+            r#"
+            const ask = () => { if (!document.hidden) dioxus.send(true); };
+            document.addEventListener("visibilitychange", ask);
+            window.addEventListener("focus", ask);
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ask);
+            setInterval(ask, 5000);
+            await new Promise(() => {});
+            "#,
+        );
+        while eval.recv::<bool>().await.is_ok() {
+            refresh(ui, device_dark);
+        }
+    });
+    // Picking a System theme asks at once instead of on the next tick.
+    use_effect(move || {
+        ui.settings.read();
+        refresh(ui, device_dark);
+    });
+    device_dark
+}
+
+fn refresh(ui: Ui, mut device_dark: Signal<Option<bool>>) {
+    if !cfg!(target_os = "android") || ui.settings.peek().theme.follows_os().is_none() {
+        return;
+    }
+    let now = platform::device_dark();
+    if now.is_some() && now != *device_dark.peek() {
+        device_dark.set(now);
+    }
 }
 
 /// Follows the window to the back and front: sync sleeps in the background,
