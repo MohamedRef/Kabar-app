@@ -5,7 +5,6 @@
 
 use std::sync::LazyLock;
 
-use kabar_core::settings::Theme;
 use kabar_core::theme::{self as palette, Palette, Scheme};
 
 macro_rules! art {
@@ -65,20 +64,16 @@ pub fn paper_css() -> &'static str {
             data_url(PAPER_LIGHT),
             data_url(PAPER_DARK)
         );
+        // True black keeps its sea black: the paper grain would light pixels.
         let rule = |id: &str, p: &Palette| {
-            let scheme = if p.scheme == Scheme::Dark { "dark" } else { "light" };
-            format!(".app[data-theme=\"{id}\"] {{ --map-paper: var(--map-paper-{scheme}); }}\n")
+            let paper = match p.scheme {
+                _ if p.is_true_black() => "none",
+                Scheme::Dark => "var(--map-paper-dark)",
+                Scheme::Light => "var(--map-paper-light)",
+            };
+            format!(".app[data-theme=\"{id}\"] {{ --map-paper: {paper}; }}\n")
         };
-        css.push_str(&rule("system", &palette::LIGHT));
-        css.push_str(&format!(
-            "@media (prefers-color-scheme: dark) {{ {}}}\n",
-            rule("system", &palette::DARK)
-        ));
-        for theme in Theme::ALL {
-            if let Some(p) = theme.palette() {
-                css.push_str(&rule(theme.as_str(), p));
-            }
-        }
+        css.push_str(&palette::rules_for_all(rule));
         css
     });
     &CSS
@@ -87,6 +82,7 @@ pub fn paper_css() -> &'static str {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use kabar_core::settings::Theme;
 
     #[test]
     fn every_level_of_both_routes_has_a_vignette() {
@@ -108,12 +104,18 @@ mod tests {
         assert_eq!(css.matches(&data_url(PAPER_DARK)).count(), 1);
         for theme in Theme::ALL {
             let Some(p) = theme.palette() else { continue };
-            let want = if p.scheme == Scheme::Dark { "dark" } else { "light" };
-            assert!(css.contains(&format!(
-                ".app[data-theme=\"{}\"] {{ --map-paper: var(--map-paper-{want}); }}",
+            let want = match p.scheme {
+                _ if p.is_true_black() => "none".to_string(),
+                Scheme::Dark => "var(--map-paper-dark)".to_string(),
+                Scheme::Light => "var(--map-paper-light)".to_string(),
+            };
+            assert!(
+                css.contains(&format!(".app[data-theme=\"{}\"] {{ --map-paper: {want}; }}", theme.as_str())),
+                "{}",
                 theme.as_str()
-            )));
+            );
         }
         assert!(css.contains("@media (prefers-color-scheme: dark)"));
+        assert!(css.contains(".app[data-theme=\"black\"] { --map-paper: none; }"));
     }
 }

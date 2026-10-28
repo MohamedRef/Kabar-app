@@ -509,6 +509,42 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
     out
 }
 
+fn is_arabic_letter(c: char) -> bool {
+    matches!(c, '\u{0600}'..='\u{06FF}' | '\u{0750}'..='\u{077F}' | '\u{08A0}'..='\u{08FF}' | '\u{FB50}'..='\u{FDFF}' | '\u{FE70}'..='\u{FEFF}')
+}
+
+/// Splits UI-language text of an English line into (is_arabic, run): an
+/// Arabic run spans Arabic words and the spaces between them, never the
+/// guillemets, brackets or commas around it, which stay with the English.
+pub fn arabic_runs(s: &str) -> Vec<(bool, String)> {
+    let chars: Vec<char> = s.chars().collect();
+    let arabic = |i: usize| chars.get(i).is_some_and(|&c| is_arabic_letter(c));
+    let mut out: Vec<(bool, String)> = Vec::new();
+    let mut i = 0;
+    while i < chars.len() {
+        let start = i;
+        if arabic(i) {
+            let mut end = i;
+            while i < chars.len() {
+                if arabic(i) || chars[i] == '\u{200C}' {
+                    end = i + 1;
+                } else if chars[i] != ' ' {
+                    break;
+                }
+                i += 1;
+            }
+            out.push((true, chars[start..end].iter().collect()));
+            i = end;
+        } else {
+            while i < chars.len() && !arabic(i) {
+                i += 1;
+            }
+            out.push((false, chars[start..i].iter().collect()));
+        }
+    }
+    out
+}
+
 /// A run that already holds a sentence break (". " before a capital) is
 /// itself made of sentences, so its final full stop belongs to it too.
 fn run_has_sentence_break(run: &[char]) -> bool {
@@ -565,6 +601,20 @@ fn RichRuns(text: String, target: &'static str, pron: bool) -> Element {
         rsx! {
             for (j , unit) in pron_units(runs, target, say).into_iter().enumerate() {
                 match unit {
+                    Unit::Plain(t) if dir == "ltr" => rsx! {
+                        // Arabic in an English line («إنت») gets its own
+                        // right-to-left isolate, the mirror of Latin above, so
+                        // it can't pull the quotes and commas around it in.
+                        span { key: "{key}.{j}",
+                            for (k , (arabic, part)) in arabic_runs(&t).into_iter().enumerate() {
+                                if arabic {
+                                    bdi { key: "{k}", lang: "ar", dir: "rtl", "{part}" }
+                                } else {
+                                    span { key: "{k}", "{localize_digits(&part, lang, eastern)}" }
+                                }
+                            }
+                        }
+                    },
                     Unit::Plain(t) => rsx! {
                         span { key: "{key}.{j}", "{localize_digits(&in_direction(&t, dir == \"rtl\"), lang, eastern)}" }
                     },
@@ -1320,6 +1370,38 @@ fn speaker_icon() -> Element {
 // Slides, dialogue, summary
 // ---------------------------------------------------------------------------
 
+/// The language of a table column: an "Indonesia" column in a Javanese
+/// lesson holds Indonesian words; every other column the lesson's own.
+fn column_tag(head: Option<&str>, target: &'static str) -> &'static str {
+    let indonesian = head.is_some_and(|h| {
+        let h = h.trim().to_lowercase();
+        h == "indonesia" || h == "indonesian" || h == "bahasa indonesia"
+    });
+    if indonesian { "id" } else { target }
+}
+
+/// One table cell. A cell that is a word or phrase always shows how it's
+/// said, in its column's language, so a table follows one rule (#381):
+/// Javanese "awan" is said even though Indonesian spells it the same.
+#[component]
+fn TableCell(text: String, tag: &'static str) -> Element {
+    let ui = use_context::<Ui>();
+    let say = ui.settings.read().ui_language != UiLanguage::En;
+    let word = latin_runs(&text).len() == 1 && is_target_run(&text) && !text.contains("**");
+    if !word {
+        return rsx! { Rich { text, target: tag, pron: true } };
+    }
+    rsx! {
+        // Word over its pronunciation, so a four-column table fits a phone.
+        span { class: "lp-cell-word",
+            bdi { lang: tag, dir: "ltr", class: "latin", "{text}" }
+            if say {
+                Pron { text: text.clone(), tag, inline: true }
+            }
+        }
+    }
+}
+
 #[component]
 fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Element {
     let ui = use_context::<Ui>();
@@ -1360,7 +1442,12 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                             for (i, row) in table.rows.iter().enumerate() {
                                 tr { key: "{i}",
                                     for (j, cell) in row.cells.iter().enumerate() {
-                                        td { key: "{j}", lang: target, Rich { text: cell.clone(), target, pron: true } }
+                                        {
+                                            let tag = column_tag(table.head.get(j).map(String::as_str), target);
+                                            rsx! {
+                                                td { key: "{j}", lang: tag, TableCell { text: cell.clone(), tag } }
+                                            }
+                                        }
                                     }
                                     td { class: "muted", "{pick(&row.meaning, lang)}" }
                                 }
@@ -2251,6 +2338,29 @@ mod tests {
         assert_eq!(bold_parts("**Aku**"), vec![(true, "Aku".into())]);
         assert_eq!(bold_parts("no markup"), vec![(false, "no markup".into())]);
         assert_eq!(bold_parts("a ** b"), vec![(false, "a ".into()), (false, "** b".into())]);
+    }
+
+    #[test]
+    fn arabic_in_an_english_line_gets_its_own_isolate() {
+        // #403: j1.u01.l01, English UI.
+        let text = "ngoko between friends (like «إنت»), krama when being polite (like «حضرتك»).";
+        let plain: Vec<String> = pron_units(latin_runs(text), "jv", false)
+            .into_iter()
+            .filter_map(|u| if let Unit::Plain(t) = u { Some(t) } else { None })
+            .collect();
+        let arabic: Vec<String> =
+            plain.iter().flat_map(|t| arabic_runs(t)).filter(|(a, _)| *a).map(|(_, r)| r).collect();
+        assert_eq!(arabic, ["إنت", "حضرتك"]);
+        // Every character survives the split, quotes and commas outside.
+        for t in &plain {
+            assert_eq!(arabic_runs(t).into_iter().map(|(_, r)| r).collect::<String>(), *t);
+        }
+        assert_eq!(
+            arabic_runs("«إنت»), "),
+            [(false, "«".to_string()), (true, "إنت".to_string()), (false, "»), ".to_string())]
+        );
+        assert_eq!(arabic_runs("like «مع السلامة» here")[1], (true, "مع السلامة".to_string()));
+        assert_eq!(arabic_runs("only English"), [(false, "only English".to_string())]);
     }
 
     #[test]

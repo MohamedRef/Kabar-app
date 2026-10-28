@@ -59,6 +59,8 @@
 .lp-table { border-collapse: collapse; inline-size: 100%; font-size: 0.95rem; }
 .lp-table th, .lp-table td { padding-block: 0.4rem; padding-inline: 0.6rem; text-align: start; border-block-end: 1px solid var(--line); }
 .lp-table th { font-weight: 600; color: var(--muted); }
+/* A word with its pronunciation under it: both stay in their cell (#381). */
+.lp-cell-word { display: inline-flex; flex-direction: column; align-items: start; gap: 0.1rem; line-height: 1.3; }
 .lp-examples { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
 .lp-example {
   inline-size: 100%;
