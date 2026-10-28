@@ -1,167 +1,217 @@
 schema: kabar.lesson/v1
 id: bipa4.u07.l10
 language: id
-title: Brosur puskesmas
+title: Esai olahraga
 can_do:
-  ar_eg: تقرا بروشور الوحدة الصحية وتعرف المواعيد والخدمات وتاخد معاك إيه.
-  ar: أن تقرأ كتيّب المركز الصحي وتعرف المواعيد والخدمات وما يجب أن تحمله معك.
-  en: Read a health-centre leaflet and find the hours, the services and what to bring.
+  ar_eg: تكتب مقال قصير عن فوايد الرياضة باستعمال أسماء peN-…-an.
+  ar: أن تكتب مقالًا قصيرًا عن فوائد الرياضة مستخدمًا أسماء peN-…-an.
+  en: Write a short essay on the benefits of exercise using peN-…-an nouns.
 slides:
-  - title: Informasi untuk pasien
+  - title: Esai kesehatan
     body:
       ar_eg: |
-        البروشور ده على باب بوسكيسماس في جورونتالو. اقراه زي ما تكون عيّان رايح هناك.
-        لاحظ أسماء peN-…-an: pemeriksaan، pengobatan، pendaftaran.
+        المقال الصحي بيحب أسماء peN-…-an: pencegahan، pemeriksaan، penggunaan، penguatan (تقوية، من menguatkan).
+        رتّب مقالك: Saya berpendapat bahwa … ← Pertama, … Kedua, … ← Dengan demikian, …
+        وsecara teratur = بانتظام (من atur = يرتّب).
       ar: |
-        هذا الكتيّب على باب أحد مراكز بوسكيسماس في غورونتالو. اقرأه كأنك مريض ذاهب إليه.
-        لاحظ أسماء peN-…-an: pemeriksaan، pengobatan، pendaftaran.
+        يكثر المقال الصحي من أسماء peN-…-an: pencegahan، pemeriksaan، penggunaan، penguatan (تقوية، من menguatkan).
+        رتّب مقالك: Saya berpendapat bahwa … ← Pertama, … Kedua, … ← Dengan demikian, …
+        وsecara teratur = بانتظام (من atur = يرتّب).
       en: |
-        This leaflet is on the door of a puskesmas in Gorontalo. Read it as if you were a patient going there.
-        Notice the peN-…-an nouns: pemeriksaan, pengobatan, pendaftaran.
+        Health essays love peN-…-an nouns: pencegahan, pemeriksaan, penggunaan, penguatan (strengthening, from menguatkan).
+        Order your essay: Saya berpendapat bahwa … → Pertama, … Kedua, … → Dengan demikian, …
+        secara teratur = regularly (from atur, "arrange").
+    grammar: id.confix.peng-an
     examples:
-      - text: Puskesmas kami buka hari Senin sampai Sabtu, pukul 08.00 sampai 14.00.
-        ar_eg: الوحدة الصحية بتاعتنا فاتحة من الاتنين للسبت، من ٨ الصبح لحد ٢ الضهر.
-        ar: يفتح مركزنا الصحي من الإثنين إلى السبت، من الثامنة صباحًا حتى الثانية ظهرًا.
-        en: Our puskesmas is open Monday to Saturday, from 8:00 to 14:00.
-      - text: Setiap Kamis ada pemeriksaan tekanan darah gratis dan imunisasi untuk anak-anak.
-        ar_eg: كل خميس فيه كشف ضغط ببلاش وتطعيمات للأطفال.
-        ar: كل خميس هناك فحص مجاني لضغط الدم وتطعيم للأطفال.
-        en: Every Thursday there are free blood-pressure checks and immunisations for children.
-      - text: Jangan lupa membawa kartu BPJS ke loket pendaftaran. Biaya pengobatan ditanggung asuransi.
-        ar_eg: ما تنساش تجيب كارت التأمين (BPJS) لشباك التسجيل. مصاريف العلاج على التأمين.
-        ar: لا تنسَ إحضار بطاقة BPJS إلى شبّاك التسجيل، فتكاليف العلاج يغطيها التأمين.
-        en: Don't forget to bring your BPJS card to the registration desk. Treatment costs are covered by insurance.
+      - text: Olahraga teratur menguatkan otot dan jantung.
+        ar_eg: الرياضة المنتظمة بتقوّي العضلات والقلب.
+        ar: الرياضة المنتظمة تقوّي العضلات والقلب.
+        en: Regular exercise strengthens the muscles and the heart.
+      - text: Dengan demikian, olahraga adalah bagian penting dari pencegahan penyakit.
+        ar_eg: وبكده، الرياضة جزء مهم من الوقاية من الأمراض.
+        ar: وبذلك، فالرياضة جزء مهم من الوقاية من الأمراض.
+        en: Thus, exercise is an important part of preventing illness.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: كشف الضغط ببلاش يوم إيه؟
-      ar: في أيّ يوم يكون فحص الضغط مجانيًا؟
-      en: When is the free blood-pressure check?
-    options: [Setiap Senin, Setiap Kamis, Setiap Sabtu]
+    type: listen
+    text: Olahraga teratur menjaga kesehatan jantung.
+    options: ["Olahraga teratur menjaga kesehatan otot.", "Olahraga teratur menjaga kesehatan jantung.", "Olahraga rutin menjaga kesehatan anak."]
     answer: 1
-    words: [pemeriksaan, tekanan darah]
+    meaning:
+      ar_eg: الرياضة المنتظمة بتحافظ على صحة القلب.
+      ar: الرياضة المنتظمة تحافظ على صحة القلب.
+      en: Regular exercise keeps the heart healthy.
+    words: [teratur, jantung]
   - id: e02
     type: multiple_choice
+    question: Latihan ini baik untuk ___ otot kaki.
     question_meaning:
-      ar_eg: العيّان لازم يجيب معاه إيه؟
-      ar: ماذا يجب أن يُحضر المريض؟
-      en: What must patients bring?
-    options: [Kartu BPJS, Foto keluarga, Surat dari sekolah]
+      ar_eg: التمرين ده كويس لتقوية عضلات الرجل. اختار الاسم الصح.
+      ar: هذا التمرين جيد لتقوية عضلات الساق. اختر الاسم الصحيح.
+      en: This workout is good for strengthening the leg muscles. Pick the right noun.
+    options: [penguatan, pengkuatan, pekuatan]
     answer: 0
-    words: [asuransi]
+    explain:
+      ar_eg: menguatkan (من kuat) → الـ k بتقع بعد ng، يبقى penguatan.
+      ar: menguatkan (من kuat) تسقط فيها k بعد ng، فيكون الاسم penguatan.
+      en: menguatkan (from kuat) drops the k after ng, so the noun is penguatan.
+    words: [otot]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الوحدة الصحية فاتحة يوم الحد؟
-      ar: هل يفتح المركز الصحي يوم الأحد؟
-      en: Is the puskesmas open on Sunday?
-    options:
-      - Ya, sampai pukul 14.00.
-      - Ya, hanya untuk imunisasi.
-      - Tidak, hanya Senin sampai Sabtu.
-    answer: 2
-  - id: e04
-    type: listen
-    text: Biaya pengobatan ditanggung asuransi.
-    options:
-      - Biaya pemeriksaan ditanggung asuransi.
-      - Biaya pengobatan ditanggung asuransi.
-      - Biaya pengobatan dibayar sendiri.
-    answer: 1
-    meaning:
-      ar_eg: مصاريف العلاج على التأمين.
-      ar: تكاليف العلاج يغطيها التأمين.
-      en: Treatment costs are covered by insurance.
-    words: [pengobatan, ditanggung, asuransi]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: pendaftaran
-        ar_eg: تسجيل
-        ar: تسجيل
-        en: registration
-      - text: pemeriksaan
-        ar_eg: كشف / فحص
-        ar: فحص
-        en: examination, check-up
-      - text: pengobatan
-        ar_eg: علاج
-        ar: علاج
-        en: treatment
-      - text: imunisasi
-        ar_eg: تطعيم
-        ar: تطعيم
-        en: immunisation
-      - text: ditanggung
-        ar_eg: على حساب (التأمين)
-        ar: مغطّى (بالتأمين)
-        en: covered (paid for)
-    words: [pendaftaran, pemeriksaan, pengobatan, imunisasi, ditanggung]
-  - id: e06
+      - text: jantung
+        ar_eg: القلب
+        ar: القلب
+        en: heart
+      - text: otot
+        ar_eg: عضلة
+        ar: عضلة
+        en: muscle
+      - text: secara teratur
+        ar_eg: بانتظام
+        ar: بانتظام
+        en: regularly
+      - text: kebiasaan
+        ar_eg: عادة
+        ar: عادة
+        en: habit
+      - text: daya tahan tubuh
+        ar_eg: مناعة الجسم
+        ar: مناعة الجسم
+        en: immunity
+    words: [jantung, otot, teratur, kebiasaan, daya tahan tubuh]
+  - id: e04
     type: fill_blank
-    sentence: Setiap Kamis ada ___ tekanan darah gratis.
+    sentence: Jalan kaki tiga puluh menit setiap hari baik untuk ___.
     meaning:
-      ar_eg: كل خميس فيه كشف ضغط ببلاش.
-      ar: كل خميس هناك فحص مجاني لضغط الدم.
-      en: Every Thursday there is a free blood-pressure check.
-    options: [pendaftaran, pemeriksaan, pengobatan]
-    answers: [pemeriksaan]
-    words: [pemeriksaan]
-  - id: e07
+      ar_eg: المشي نص ساعة كل يوم كويس للقلب.
+      ar: المشي ثلاثين دقيقة يوميًا مفيد للقلب.
+      en: Walking for thirty minutes every day is good for the heart.
+    options: [gejala, jantung, penderita]
+    answers: [jantung]
+    words: [jantung]
+    explain:
+      ar_eg: jantung = قلب، والمشي مفيد للقلب. gejala = أعراض، وpenderita = مريض.
+      ar: jantung = القلب، والمشي مفيد له. أما gejala فالأعراض، وpenderita المريض.
+      en: jantung is the heart, which walking is good for. gejala are symptoms, and penderita is a patient.
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: ما تنساش تجيب كارت BPJS بتاعك.
-      ar: لا تنسَ إحضار بطاقة BPJS الخاصة بك.
-      en: Don't forget to bring your BPJS card.
-    answer: Jangan lupa membawa kartu BPJS Anda.
-    distractors: [ditanggung, loket]
-  - id: e08
+      ar_eg: الرياضة المنتظمة بتقوّي العضلات والقلب.
+      ar: الرياضة المنتظمة تقوّي العضلات والقلب.
+      en: Regular exercise strengthens the muscles and the heart.
+    answer: Olahraga teratur menguatkan otot dan jantung.
+    alternatives: ["Olahraga teratur menguatkan jantung dan otot."]
+    distractors: [penguatan, gejala]
+    words: [teratur, otot, jantung]
+    explain:
+      ar_eg: menguatkan = يقوّي (فعل). penguatan = تقوية (اسم)، وgejala = أعراض.
+      ar: menguatkan = يقوّي (فعل). أما penguatan فاسم (التقوية)، وgejala الأعراض.
+      en: menguatkan means strengthen (a verb). penguatan is the noun, and gejala are symptoms.
+  - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: تطعيم الأطفال كل يوم خميس.
-      ar: تطعيم الأطفال كل يوم خميس.
-      en: Children's immunisation is every Thursday.
+      ar_eg: وبكده، لازم نعمل رياضة بانتظام.
+      ar: وبذلك، يجب أن نمارس الرياضة بانتظام.
+      en: Thus, we must exercise regularly.
     answers:
-      - Imunisasi anak setiap hari Kamis.
-      - Imunisasi anak-anak setiap hari Kamis.
-      - Imunisasi anak ada setiap hari Kamis.
-      - Imunisasi untuk anak-anak ada setiap Kamis.
-      - Imunisasi anak setiap Kamis.
-      - Imunisasi anak-anak setiap Kamis.
-      - Imunisasi anak-anak ada setiap Kamis.
-      - Imunisasi untuk anak-anak setiap hari Kamis.
-    words: [imunisasi]
+      - Dengan demikian, kita harus berolahraga secara teratur.
+      - Dengan demikian, kita harus berolahraga secara teratur
+      - Dengan demikian kita harus berolahraga secara teratur.
+      - Dengan demikian, kita harus berolahraga dengan teratur.
+      - Dengan demikian, kita harus olahraga secara teratur.
+      - Dengan demikian, kita harus berolahraga teratur.
+      - Oleh karena itu, kita harus berolahraga secara teratur.
+    words: [teratur, dengan demikian]
+  - id: e07
+    type: dictation
+    text: Pemeriksaan jantung sebaiknya dilakukan secara rutin.
+    meaning:
+      ar_eg: الأحسن كشف القلب يتعمل بشكل دوري.
+      ar: يُستحسن إجراء فحص القلب بانتظام.
+      en: Heart check-ups should be done regularly.
+    words: [jantung, pemeriksaan]
+  - id: e08
+    type: speaking
+    text: Saya berpendapat bahwa olahraga teratur adalah pencegahan terbaik.
+    meaning:
+      ar_eg: رأيي إن الرياضة المنتظمة هي أحسن وقاية.
+      ar: أرى أنّ الرياضة المنتظمة هي أفضل وقاية.
+      en: I believe regular exercise is the best prevention.
+    words: [teratur, pencegahan]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: suster
+        ar_eg: ممرّضة
+        ar: ممرّضة
+        en: nurse
+      - text: saraf
+        ar_eg: أعصاب
+        ar: أعصاب
+        en: nerve
+      - text: vaksin
+        ar_eg: تطعيم
+        ar: لقاح
+        en: vaccine
+      - text: wabah
+        ar_eg: وباء
+        ar: وباء
+        en: outbreak
+      - text: protein
+        ar_eg: بروتين
+        ar: بروتين
+        en: protein
+      - text: kelelahan
+        ar_eg: تعب جامد
+        ar: إرهاق
+        en: exhaustion
+    words: [suster, saraf, vaksin, wabah, protein, kelelahan]
 dialogue:
-  title: Mau periksa
+  title: Tangga Benteng Otanaha
   lines:
     - speaker: Mas Rizal
-      text: Mohamed, kamu mau periksa tekanan darah, kan?
-      ar_eg: يا Mohamed، إنت عايز تكشف على الضغط، صح؟
-      ar: يا Mohamed، تريد فحص ضغط دمك، أليس كذلك؟
-      en: Mohamed, you want to get your blood pressure checked, right?
+      text: Ayo naik tangga ke Benteng Otanaha! Bagus buat jantung.
+      ar_eg: يلا نطلع السلم لقلعة أوتاناها! كويس للقلب.
+      ar: هيا نصعد الدرج إلى قلعة أوتاناها! هذا مفيد للقلب.
+      en: Come on, let's climb the steps to Otanaha Fort! Good for the heart.
     - speaker: Mohamed
-      text: Iya. Menurut brosur ini, pemeriksaannya gratis setiap Kamis.
-      ar_eg: أيوه. البروشور ده بيقول إن الكشف ببلاش كل خميس.
-      ar: نعم. بحسب هذا الكتيّب، الفحص مجاني كل خميس.
-      en: Yes. According to this leaflet, the check is free every Thursday.
+      text: Wah, otot kakiku sakit, Mas!
+      ar_eg: ياه، عضلات رجلي بتوجعني يا رزال!
+      ar: آه، عضلات ساقي تؤلمني يا رزال!
+      en: Ouch, my leg muscles hurt, Rizal!
     - speaker: Mas Rizal
-      text: Bagus. Jangan lupa bawa kartu BPJS.
-      ar_eg: حلو. ما تنساش تاخد كارت BPJS.
-      ar: جيد. لا تنسَ إحضار بطاقة BPJS.
-      en: Good. Don't forget your BPJS card.
+      text: Itu karena kamu nggak olahraga secara teratur.
+      ar_eg: ده عشان إنت مش بتعمل رياضة بانتظام.
+      ar: هذا لأنك لا تمارس الرياضة بانتظام.
+      en: That's because you don't exercise regularly.
     - speaker: Mohamed
-      text: Udah aku siapin. Puskesmasnya buka jam berapa?
-      ar_eg: جهّزته خلاص. الوحدة بتفتح الساعة كام؟
-      ar: جهّزتها بالفعل. متى يفتح المركز الصحي؟
-      en: I've got it ready. What time does the puskesmas open?
+      text: Bener. Nanti aku nulis esai tentang manfaat olahraga teratur.
+      ar_eg: صح. بعدين هكتب مقال عن فوايد الرياضة المنتظمة.
+      ar: صحيح. سأكتب لاحقًا مقالًا عن فوائد الرياضة المنتظمة.
+      en: True. Later I'll write an essay on the benefits of regular exercise.
     - speaker: Mas Rizal
-      text: Jam delapan. Datang pagi-pagi biar nggak antre lama.
-      ar_eg: الساعة تمانية. روح بدري عشان ما تقفش في الطابور كتير.
-      ar: في الثامنة. اذهب مبكرًا حتى لا تنتظر في الطابور طويلًا.
-      en: At eight. Go early so you don't queue for long.
-new_words: []
+      text: Ide bagus! Tapi naik dulu, baru nulis.
+      ar_eg: فكرة حلوة! بس اطلع الأول، وبعدين اكتب.
+      ar: فكرة جيدة! لكن اصعد أولًا ثم اكتب.
+      en: Good idea! But climb first, then write.
+new_words:
+  - word: jantung
+    pos: noun
+    ar_eg: القلب (العضو)
+    ar: القلب (العضو)
+    en: heart (the organ)
+  - word: otot
+    pos: noun
+    ar_eg: عضلة
+    ar: عضلة
+    en: muscle
+  - word: teratur
+    pos: adjective
+    ar_eg: منتظم (secara teratur = بانتظام)
+    ar: منتظم (secara teratur = بانتظام)
+    en: regular (secara teratur = regularly)
 review:
   status: draft
   verified: false

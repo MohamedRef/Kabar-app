@@ -526,6 +526,71 @@ pub mod reminders {
     }
 }
 
+/// The "new version" notification ([`crate::update::Notice`]) and, on
+/// Android, the periodic background check that sends it while Kabar is
+/// closed (`app.kabar.UpdateCheckJob`). No-ops elsewhere.
+pub mod update_notice {
+    use crate::update::Notice;
+
+    /// Shows `n` now; true once it's shown. Android skips it while Kabar
+    /// is in front (the banner says it) or notifications are off; the Mac
+    /// app shows it only when bundled, and macOS keeps it quiet while Kabar
+    /// is the active app.
+    pub fn post(n: &Notice) -> bool {
+        #[cfg(target_os = "android")]
+        {
+            super::android::post_update_notice(n)
+                .map_err(|e| crate::diag::report!("update notification: {e}"))
+                .unwrap_or(false)
+        }
+        #[cfg(target_os = "macos")]
+        {
+            super::macos::reminders::post_update(n)
+        }
+        #[cfg(not(any(target_os = "android", target_os = "macos")))]
+        {
+            let _ = n;
+            false
+        }
+    }
+
+    /// Removes a shown notification (the offer was closed or installed).
+    pub fn clear() {
+        #[cfg(target_os = "android")]
+        if let Err(e) = super::android::clear_update_notice() {
+            crate::diag::report!("update notification: {e}");
+        }
+        #[cfg(target_os = "macos")]
+        super::macos::reminders::clear_update();
+    }
+
+    /// Android: starts (or, with `false`, stops) the background check.
+    pub fn schedule(on: bool) {
+        #[cfg(target_os = "android")]
+        if let Err(e) = super::android::schedule_update_checks(on) {
+            crate::diag::report!("background update check: {e}");
+        }
+        #[cfg(not(target_os = "android"))]
+        let _ = on;
+    }
+
+    /// What a tap on the notification asked for, once: `open`, `download`
+    /// or `install`.
+    pub fn take_tap() -> Option<String> {
+        #[cfg(target_os = "android")]
+        {
+            super::android::take_update_tap()
+                .map_err(|e| crate::diag::report!("update notification: {e}"))
+                .ok()
+                .flatten()
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            None
+        }
+    }
+}
+
 #[cfg(all(test, not(target_os = "android")))]
 mod tests {
     use super::*;

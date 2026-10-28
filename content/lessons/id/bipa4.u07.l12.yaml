@@ -1,203 +1,187 @@
 schema: kabar.lesson/v1
 id: bipa4.u07.l12
 language: id
-title: Ulangan Unit 7
+title: Tips sehat di radio
 can_do:
-  ar_eg: تدّي نصايح صحية وتتكلم عن الوقاية والعلاج والخدمات الصحية.
-  ar: أن تقدّم نصائح صحية وتتحدث عن الوقاية والعلاج والخدمات الصحية.
-  en: Give health advice and talk about prevention, treatment and health services.
+  ar_eg: تفهم نصايح صحية من دكتورة في الراديو وتلخّصها في جملة.
+  ar: أن تفهم نصائح صحية من طبيبة في الإذاعة وتلخّصها في جملة.
+  en: Follow a doctor's health tips on the radio and sum them up in a sentence.
 slides:
-  - title: Keluarga peN-…-an
+  - title: Dokter Fitri di radio
     body:
       ar_eg: |
-        افتكر: فعل meN- ← اسم peN-…-an بنفس الأنف:
-        memeriksa → pemeriksaan، mengobati → pengobatan، mencegah → pencegahan، menggunakan → penggunaan.
-        me- لوحدها ← pe-…-an: melayani → pelayanan، merawat → perawatan.
-        والشخص بـ peN- بس: penderita، pengguna.
+        Dokter Fitri بتتكلم في راديو جورونتالو الصبح. اسمعها الأول، وبعدين اقرا.
+        هي بترتّب كلامها: Pertama، Kedua، Ketiga.
       ar: |
-        تذكّر: فعل meN- ← اسم peN-…-an بالصوت الأنفي نفسه:
-        memeriksa → pemeriksaan، mengobati → pengobatan، mencegah → pencegahan، menggunakan → penggunaan.
-        me- وحدها ← pe-…-an: melayani → pelayanan، merawat → perawatan.
-        والشخص بـ peN- فقط: penderita، pengguna.
+        تتحدّث Dokter Fitri صباحًا في إذاعة غورونتالو. استمع إليها أولًا ثم اقرأ.
+        وهي ترتّب كلامها: Pertama، Kedua، Ketiga.
       en: |
-        Remember: meN- verb → peN-…-an noun with the same nasal:
-        memeriksa → pemeriksaan, mengobati → pengobatan, mencegah → pencegahan, menggunakan → penggunaan.
-        Plain me- → pe-…-an: melayani → pelayanan, merawat → perawatan.
-        The person takes peN- alone: penderita, pengguna.
-    grammar: id.confix.peng-an
+        Dokter Fitri is speaking on Gorontalo radio in the morning. Listen first, then read.
+        She orders her points: Pertama, Kedua, Ketiga.
     examples:
-      - text: Pemeriksaan rutin penting bagi penderita darah tinggi.
-        ar_eg: الكشف الدوري مهم لعيانين الضغط.
-        ar: الفحص الدوري مهم لمرضى ارتفاع الضغط.
-        en: Routine check-ups are important for people with high blood pressure.
-      - text: Penggunaan garam harus dikurangi.
-        ar_eg: استعمال الملح لازم يقل.
-        ar: يجب تقليل استخدام الملح.
-        en: Salt use should be reduced.
+      - text: Halo, pendengar! Hari ini saya membagikan tiga tips sehat.
+        ar_eg: أهلًا يا مستمعين! النهارده هقولكم تلات نصايح صحية.
+        ar: مرحبًا أيها المستمعون! أقدّم لكم اليوم ثلاث نصائح صحية.
+        en: Hello, listeners! Today I'm sharing three health tips.
+      - text: Pertama, kurangi penggunaan garam dan gula. Kedua, berolahraga secara teratur, minimal tiga puluh menit sehari.
+        ar_eg: أولًا، قلّلوا الملح والسكر. تانيًا، اتمرّنوا بانتظام، على الأقل نص ساعة في اليوم.
+        ar: أولًا، قلّلوا استهلاك الملح والسكر. ثانيًا، مارسوا الرياضة بانتظام، ثلاثين دقيقة يوميًا على الأقل.
+        en: First, cut down on salt and sugar. Second, exercise regularly, at least thirty minutes a day.
+      - text: Ketiga, lakukan pemeriksaan rutin, karena gejala darah tinggi sering tidak terasa.
+        ar_eg: تالتًا، اكشفوا بانتظام، عشان أعراض الضغط العالي كتير مابتبانش.
+        ar: ثالثًا، أجروا فحوصًا دورية، لأن أعراض ارتفاع ضغط الدم كثيرًا ما لا يُشعر بها.
+        en: Third, have regular check-ups, because the symptoms of high blood pressure often go unnoticed.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: pemeriksaan
-        ar_eg: فحص / كشف
-        ar: فحص
-        en: examination, check-up
-      - text: pengobatan
-        ar_eg: علاج
-        ar: علاج
-        en: treatment
-      - text: pelayanan
-        ar_eg: خدمة
-        ar: خدمة
-        en: service
-      - text: perawatan
-        ar_eg: رعاية / تمريض
-        ar: رعاية
-        en: care
-      - text: pendaftaran
-        ar_eg: تسجيل
-        ar: تسجيل
-        en: registration
-    words: [pemeriksaan, pengobatan, pelayanan, perawatan, pendaftaran]
-  - id: e02
-    type: fill_blank
-    sentence: Setelah operasi, keadaannya makin ___.
-    meaning:
-      ar_eg: بعد العملية، حالته بقت ___.
-      ar: بعد العملية صارت حالته ___.
-      en: After the operation, his condition is getting ___.
-    options: [membaik, nyenyak, bakteri]
-    answers: [membaik]
-    words: [membaik, nyenyak, bakteri]
-  - id: e03
     type: listen
-    text: Penyakit ini menular, jadi anak-anak perlu imunisasi.
-    options: ["Penyakit ini menular, jadi anak-anak perlu imunisasi.", "Penyakit ini tidak menular, jadi anak-anak tidak perlu imunisasi.", "Penyakit ini menular, jadi orang tua perlu imunisasi."]
+    text: Hari ini saya membagikan tiga tips sehat.
+    question:
+      ar_eg: الدكتورة هتقول كام نصيحة؟
+      ar: كم نصيحة ستقدّم الطبيبة؟
+      en: How many tips will the doctor give?
+    options: [Dua, Tiga, Lima]
+    answer: 1
+    meaning:
+      ar_eg: النهارده هقولكم تلات نصايح صحية.
+      ar: أقدّم لكم اليوم ثلاث نصائح صحية.
+      en: Today I'm sharing three health tips.
+  - id: e02
+    type: listen
+    text: Pertama, kurangi penggunaan garam dan gula.
+    question:
+      ar_eg: لازم نقلّل إيه؟
+      ar: ماذا يجب أن نقلّل؟
+      en: What should we cut down on?
+    options: [Garam dan gula, Sayur dan buah, Air putih]
     answer: 0
     meaning:
-      ar_eg: المرض ده معدي، عشان كده الأطفال محتاجين تطعيم.
-      ar: هذا المرض معدٍ، لذلك يحتاج الأطفال إلى التطعيم.
-      en: This disease is contagious, so children need immunisation.
-    words: [menular, imunisasi]
+      ar_eg: أولًا، قلّلوا الملح والسكر.
+      ar: أولًا، قلّلوا استهلاك الملح والسكر.
+      en: First, cut down on salt and sugar.
+    words: [penggunaan]
+  - id: e03
+    type: listen
+    text: Kedua, berolahraga secara teratur, minimal tiga puluh menit sehari.
+    question:
+      ar_eg: أقل وقت للرياضة في اليوم قد إيه؟
+      ar: ما أقل مدة للرياضة يوميًا؟
+      en: What is the minimum exercise time per day?
+    options: [Sepuluh menit, Satu jam, Tiga puluh menit]
+    answer: 2
+    meaning:
+      ar_eg: تانيًا، اتمرّنوا بانتظام، على الأقل نص ساعة في اليوم.
+      ar: ثانيًا، مارسوا الرياضة بانتظام، ثلاثين دقيقة يوميًا على الأقل.
+      en: Second, exercise regularly, at least thirty minutes a day.
+    words: [teratur]
   - id: e04
     type: multiple_choice
     question_meaning:
-      ar_eg: صاحبك عنده كحة وسخونية بس خايف من المصاريف. تنصحه بإيه؟
-      ar: صديقك مصاب بسعال وحمّى لكنه يخشى التكاليف. بماذا تنصحه؟
-      en: Your friend has a cough and fever but is worried about the cost. What do you advise?
-    options: ["Periksa ke pasar saja. Biayanya ditanggung BPJS.", "Jangan ke puskesmas. Pengobatan itu menular.", "Periksa ke puskesmas saja. Biayanya ditanggung BPJS."]
-    answer: 2
-    words: [puskesmas, ditanggung]
-  - id: e05
-    type: listen
-    text: Intinya, olahraga teratur menurunkan risiko penyakit jantung.
-    options: ["Intinya, olahraga teratur meningkatkan risiko penyakit jantung.", "Intinya, olahraga teratur menurunkan risiko penyakit jantung.", "Intinya, makanan teratur menurunkan risiko penyakit jantung."]
+      ar_eg: ليه الدكتورة بتنصح بالكشف الدوري؟
+      ar: لماذا تنصح الطبيبة بالفحص الدوري؟
+      en: Why does the doctor recommend regular check-ups?
+    options:
+      - Karena puskesmas buka setiap hari.
+      - Karena gejala darah tinggi sering tidak terasa.
+      - Karena olahraga itu berbahaya.
     answer: 1
-    meaning:
-      ar_eg: الخلاصة، الرياضة المنتظمة بتقلّل خطر أمراض القلب.
-      ar: خلاصة القول، الرياضة المنتظمة تقلّل خطر أمراض القلب.
-      en: The main point is that regular exercise lowers the risk of heart disease.
-    words: [intinya, teratur, risiko, jantung]
-  - id: e06
-    type: fill_blank
-    sentence: ___ lebih baik daripada pengobatan.
-    meaning:
-      ar_eg: (اكتب الكلمة) الوقاية أحسن من العلاج.
-      ar: (اكتب الكلمة) الوقاية خير من العلاج.
-      en: (Type the word.) Prevention is better than cure.
-    answers: [Pencegahan, pencegahan]
-    words: [pencegahan, pengobatan]
-  - id: e07
-    type: fill_blank
-    sentence: Banyak ___ darah tinggi tidak merasakan gejala.
-    meaning:
-      ar_eg: عيانين ضغط كتير مش بيحسوا بأعراض.
-      ar: كثير من مرضى ارتفاع الضغط لا يشعرون بأعراض.
-      en: Many people with high blood pressure feel no symptoms.
-    options: [penderitaan, menderita, penderita]
-    answers: [penderita]
-    words: [penderita, darah tinggi, gejala]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: الأحسن تعمل كشف طبي بشكل دوري.
-      ar: يُستحسن أن تُجري فحصًا طبيًا بانتظام.
-      en: You should have a health check-up regularly.
-    answer: Sebaiknya Anda melakukan pemeriksaan kesehatan secara rutin.
-    alternatives: ["Anda sebaiknya melakukan pemeriksaan kesehatan secara rutin."]
-    distractors: [pemeriksa, gejala]
-    words: [pemeriksaan, kesehatan, rutin]
-  - id: e09
+    words: [gejala, darah tinggi]
+    explain:
+      ar_eg: النصيحة بالكشف عشان أعراض الضغط غالبًا مش بتبان. الكلام ماقالش إن الرياضة خطر، ومواعيد البوسكسماس مش السبب.
+      ar: النصيحة بالفحص لأن أعراض الضغط كثيرًا ما لا تظهر، لا لأن الرياضة خطرة، ولا بسبب مواعيد المركز.
+      en: The doctor recommends check-ups because high blood pressure often has no symptoms. Exercise isn't dangerous, and opening hours aren't the reason.
+  - id: e05
     type: match_pairs
     pairs:
-      - text: cedera
-        ar_eg: إصابة
-        ar: إصابة
-        en: injury
-      - text: pulih
-        ar_eg: خف
-        ar: تعافى
-        en: to recover
-      - text: masker
-        ar_eg: كمامة
-        ar: كمامة
-        en: face mask
-      - text: beracun
-        ar_eg: سام
-        ar: سامّ
-        en: poisonous
-      - text: gelisah
-        ar_eg: قلقان
-        ar: قلِق
-        en: restless
-      - text: terapi
-        ar_eg: علاج
-        ar: علاج
-        en: therapy
-    words: [cedera, pulih, masker, beracun, gelisah, terapi]
-  - id: e10
-    type: speaking
-    text: Kalau gejalanya parah, segera periksa ke puskesmas.
+      - text: penggunaan
+        ar_eg: استعمال / استهلاك
+        ar: استعمال / استهلاك
+        en: use, consumption
+      - text: teratur
+        ar_eg: منتظم
+        ar: منتظم
+        en: regular
+      - text: gejala
+        ar_eg: عَرَض
+        ar: عَرَض
+        en: symptom
+      - text: darah tinggi
+        ar_eg: الضغط العالي
+        ar: ارتفاع ضغط الدم
+        en: high blood pressure
+      - text: pencegahan
+        ar_eg: وقاية
+        ar: وقاية
+        en: prevention
+    words: [penggunaan, teratur, gejala, darah tinggi, pencegahan]
+  - id: e06
+    type: dictation
+    text: Kurangi penggunaan garam dan gula.
     meaning:
-      ar_eg: لو الأعراض جامدة، روح البوسكسماس على طول.
-      ar: إن كانت الأعراض شديدة، فاذهب فورًا إلى المركز الصحي.
-      en: If the symptoms are severe, get checked at the puskesmas right away.
-    words: [gejala, parah, puskesmas]
+      ar_eg: قلّلوا الملح والسكر.
+      ar: قلّلوا استهلاك الملح والسكر.
+      en: Cut down on salt and sugar.
+    words: [penggunaan]
+  - id: e07
+    type: fill_blank
+    sentence: Berolahraga secara ___ menguatkan jantung.
+    meaning:
+      ar_eg: الرياضة بانتظام بتقوّي القلب.
+      ar: ممارسة الرياضة بانتظام تقوّي القلب.
+      en: Regular exercise strengthens the heart.
+    options: [menular, teratur, parah]
+    answers: [teratur]
+    words: [teratur]
+    explain:
+      ar_eg: secara teratur = بانتظام. menular = معدي، وparah = جامد، ومش بيوصفوا الرياضة.
+      ar: secara teratur = بانتظام. أما menular فمُعدٍ، وparah شديد، ولا يصفان الرياضة.
+      en: secara teratur means regularly. menular (contagious) and parah (severe) don't describe exercise.
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اعمل كشف دوري، حتى لو مش حاسس إنك تعبان.
+      ar: أجرِ فحصًا دوريًا حتى لو لم تشعر بالمرض.
+      en: Have regular check-ups, even if you don't feel ill.
+    answers:
+      - Lakukan pemeriksaan rutin, walaupun Anda tidak merasa sakit.
+      - Lakukan pemeriksaan rutin, meskipun Anda tidak merasa sakit.
+      - Lakukan pemeriksaan rutin, walaupun kamu tidak merasa sakit.
+      - Lakukan pemeriksaan rutin, meskipun kamu tidak merasa sakit.
+      - Lakukan pemeriksaan rutin walaupun tidak merasa sakit.
+      - Lakukan pemeriksaan rutin meskipun tidak merasa sakit.
+      - Lakukanlah pemeriksaan rutin, walaupun Anda tidak merasa sakit.
+      - Lakukan pemeriksaan rutin, walaupun Anda nggak merasa sakit.
+      - Lakukan pemeriksaan rutin, meskipun Anda nggak merasa sakit.
+    words: [pemeriksaan, rutin]
 dialogue:
-  title: Saran untuk Mas Rizal
+  title: Setelah siaran
   lines:
     - speaker: Mas Rizal
-      text: Akhir-akhir ini aku sering pusing.
-      ar_eg: اليومين دول بيجيلي صداع ودوخة كتير.
-      ar: أشعر بالدوار كثيرًا في الآونة الأخيرة.
-      en: I've been getting dizzy a lot lately.
+      text: Tadi pagi kamu dengar Dokter Fitri di radio?
+      ar_eg: سمعت Dokter Fitri في الراديو الصبح؟
+      ar: هل سمعت Dokter Fitri في الإذاعة صباح اليوم؟
+      en: Did you hear Dokter Fitri on the radio this morning?
     - speaker: Mohamed
-      text: Mungkin tekanan darahmu tinggi. Mending kamu periksa ke puskesmas.
-      ar_eg: يمكن ضغطك عالي. الأحسن تروح تكشف في البوسكسماس.
-      ar: ربما ضغطك مرتفع. يُستحسن أن تفحص نفسك في المركز الصحي.
-      en: Maybe your blood pressure is high. You should get checked at the puskesmas.
+      text: Dengar. Intinya, kurangi garam, olahraga teratur, dan periksa rutin.
+      ar_eg: "سمعتها. الخلاصة: قلّل الملح، واتمرّن بانتظام، واكشف بشكل دوري."
+      ar: "سمعتها. الخلاصة: قلّل الملح، ومارس الرياضة بانتظام، وافحص دوريًا."
+      en: I did. Basically, less salt, regular exercise and regular check-ups.
     - speaker: Mas Rizal
-      text: Periksanya mahal nggak?
-      ar_eg: هو الكشف غالي؟
-      ar: هل الفحص مكلف؟
-      en: Is the check-up expensive?
+      text: Wah, ringkasanmu bagus banget!
+      ar_eg: الله، تلخيصك حلو جدًا!
+      ar: رائع، تلخيصك ممتاز!
+      en: Wow, great summary!
     - speaker: Mohamed
-      text: Nggak. Pakai kartu BPJS, biayanya ditanggung.
-      ar_eg: لأ. بكارت الـ BPJS المصاريف متغطية.
-      ar: لا. ببطاقة BPJS تكون التكاليف مغطاة.
-      en: No. With a BPJS card, the cost is covered.
+      text: Aku mulai besok, tiga puluh menit jalan kaki tiap pagi.
+      ar_eg: هبدأ من بكرة، نص ساعة مشي كل يوم الصبح.
+      ar: سأبدأ غدًا، ثلاثين دقيقة من المشي كل صباح.
+      en: I'm starting tomorrow - thirty minutes' walk every morning.
     - speaker: Mas Rizal
-      text: Oke, besok aku ke sana. Makasih sarannya.
-      ar_eg: تمام، بكرة هروح. شكرًا على النصيحة.
-      ar: حسنًا، سأذهب غدًا. شكرًا على النصيحة.
-      en: OK, I'll go tomorrow. Thanks for the advice.
-souvenir:
-  id: bipa4.u07.souvenir
-  title: Hiu paus Botubarani
-  note:
-    ar_eg: في قرية بوتوباراني جنب جورونتالو، أسماك القرش الحوتي (hiu paus) بتقرّب من الشط، وبتيجي على بقايا الجمبري من مصنع قريب. ممكن تشوفها من مركب صغير وانت ساكت ومن غير ما تلمسها. ولو تعبت في رحلتك، هتلاقي في كل منطقة puskesmas، والتأمين الصحي الحكومي BPJS بيغطي أغلب الناس في إندونيسيا.
-    ar: في قرية بوتوباراني قرب غورونتالو تقترب أسماك القرش الحوتي (hiu paus) من الشاطئ، تجذبها بقايا الروبيان من مصنع قريب، فيمكن مشاهدتها من قارب صغير بهدوء ودون لمسها. وإن مرضت في رحلتك فستجد في كل منطقة مركزًا صحيًا (puskesmas)، ويغطي التأمين الصحي الوطني BPJS معظم سكان إندونيسيا.
-    en: At Botubarani village near Gorontalo, whale sharks (hiu paus) come close to the shore, drawn by shrimp scraps from a nearby factory. You can watch them quietly from a small boat, without touching them. And if you fall ill on your travels, every area has a puskesmas, and the national BPJS health insurance covers most of Indonesia's population.
+      text: Aku ikut! Kita jalan bareng di taman kota.
+      ar_eg: أنا جاي معاك! نتمشّى سوا في جنينة البلد.
+      ar: سأنضمّ إليك! لنمشِ معًا في حديقة المدينة.
+      en: I'll join you! Let's walk together in the city park.
+new_words: []
 review:
   status: draft
   verified: false

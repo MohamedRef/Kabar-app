@@ -1,4 +1,5 @@
-//! Updates' own strings (Settings › About › Updates and the Today banner).
+//! Updates' own strings (Settings › About › Updates, the banner and the
+//! "new version" notification).
 
 use kabar_core::locale::UiLanguage;
 
@@ -60,6 +61,16 @@ pub enum U {
     DoneTitle,
     DoneBody,
     ReadyTitle,
+    // the "new version" notification (Android, Mac) and its switch
+    NoticeAvailable,
+    NoticeReady,
+    NoticeInstalled,
+    NoticeTapAvailable,
+    NoticeTapReady,
+    NoticeTapInstalled,
+    NoticeChannel,
+    NotifyToggle,
+    NotifyToggleHint,
 }
 
 pub fn ut(lang: UiLanguage, u: U) -> &'static str {
@@ -273,5 +284,39 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (ReadyTitle, ArEg) => "تحديث Kabar جاهز: دوس عشان تثبّته",
         (ReadyTitle, Ar) => "تحديث Kabar جاهز: المس للتثبيت",
         (ReadyTitle, En) => "Kabar's update is ready: tap to install",
+
+        (NoticeAvailable, ArEg) => "نزلت نسخة جديدة من Kabar",
+        (NoticeAvailable, Ar) => "صدر إصدار جديد من Kabar",
+        (NoticeAvailable, En) => "A new Kabar is out",
+        (NoticeReady, ArEg) => "نسخة Kabar الجديدة جاهزة تتثبّت",
+        (NoticeReady, Ar) => "إصدار Kabar الجديد جاهز للتثبيت",
+        (NoticeReady, En) => "The new Kabar is ready to install",
+        (NoticeInstalled, ArEg) => "نسخة Kabar الجديدة اتحطّت",
+        (NoticeInstalled, Ar) => "ثُبّت إصدار Kabar الجديد",
+        (NoticeInstalled, En) => "The new Kabar is in place",
+        (NoticeTapAvailable, ArEg) => "دوس تشوف الجديد وتنزّلها.",
+        (NoticeTapAvailable, Ar) => "المس لترى الجديد وتنزّله.",
+        (NoticeTapAvailable, En) => "Tap to see what's new and download it.",
+        (NoticeTapReady, ArEg) => "اتنزّلت واتأكدنا منها. دوس عشان تثبّتها.",
+        (NoticeTapReady, Ar) => "نُزّل وتُحقّق منه. المس للتثبيت.",
+        (NoticeTapReady, En) => "Downloaded and checked. Tap to install it.",
+        (NoticeTapInstalled, ArEg) => "هتشتغل أول ما تفتح Kabar تاني.",
+        (NoticeTapInstalled, Ar) => "سيعمل عند فتح Kabar مرة أخرى.",
+        (NoticeTapInstalled, En) => "It starts the next time you open Kabar.",
+        (NoticeChannel, ArEg) => "نسخ Kabar الجديدة",
+        (NoticeChannel, Ar) => "إصدارات Kabar الجديدة",
+        (NoticeChannel, En) => "New Kabar versions",
+        (NotifyToggle, ArEg) => "ابعتلي إشعار أول ما تنزل نسخة جديدة",
+        (NotifyToggle, Ar) => "أرسل إشعارًا عند صدور إصدار جديد",
+        (NotifyToggle, En) => "Send a notification when a new version is out",
+        (NotifyToggleHint, ArEg) => {
+            "على أندرويد حتى لو Kabar مقفول (بيبص كل كام ساعة)، وعلى الماك وهو مفتوح، ومعاه الجديد في سطرين. مش بيرنّ في ساعات الهدوء، ومفتاح الإشعارات في الجهاز له الكلمة الأخيرة."
+        }
+        (NotifyToggleHint, Ar) => {
+            "على أندرويد حتى لو كان Kabar مغلقًا (يتحقق كل بضع ساعات)، وعلى الماك وهو مفتوح، ومعه الجديد في سطرين. لا يرنّ في ساعات الهدوء، ومفتاح الإشعارات في الجهاز له الكلمة الأخيرة."
+        }
+        (NotifyToggleHint, En) => {
+            "On Android even while Kabar is closed (it looks every few hours), on the Mac while it's open, with what's new in a line or two. Never during your quiet hours, and the device's own notification switch has the last word."
+        }
     }
 }
