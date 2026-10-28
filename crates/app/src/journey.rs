@@ -155,6 +155,8 @@ fn kind_label(kind: LessonKind) -> Msg {
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum Pane {
     Route,
+    /// The map on a phone, which otherwise shows the route as a list (#380).
+    Map,
     Suitcase,
 }
 
@@ -220,10 +222,13 @@ pub fn JourneyScreen() -> Element {
                     for (r, label) in [(Route::Indonesian, Msg::JourneyIndonesian), (Route::Javanese, Msg::JourneyJavanese)] {
                         button {
                             key: "{r:?}",
-                            aria_pressed: if route() == r && pane() == Pane::Route { "true" } else { "false" },
+                            aria_pressed: if route() == r && pane() != Pane::Suitcase { "true" } else { "false" },
                             onclick: move |_| {
                                 route.set(r);
-                                pane.set(Pane::Route);
+                                // A phone on the map stays on the map.
+                                if pane() == Pane::Suitcase {
+                                    pane.set(Pane::Route);
+                                }
                             },
                             span { class: "seg-icon", aria_hidden: "true",
                                 if r == Route::Indonesian { {icon_plane()} } else { {icon_train()} }
@@ -232,18 +237,40 @@ pub fn JourneyScreen() -> Element {
                         }
                     }
                 }
-                button {
-                    class: "suitcase-toggle",
-                    aria_pressed: if pane() == Pane::Suitcase { "true" } else { "false" },
-                    onclick: move |_| pane.set(if pane() == Pane::Suitcase { Pane::Route } else { Pane::Suitcase }),
-                    span { class: "seg-icon", aria_hidden: "true", {icon_suitcase()} }
-                    "{ui.t(Msg::JourneySuitcase)} "
-                    span { class: "count", "{ui.num(suitcase_count as u64)}" }
+                div { class: "journey-tools",
+                    if compact {
+                        button {
+                            class: "map-toggle",
+                            title: "{ui.t(Msg::JourneyMap)}",
+                            aria_pressed: if pane() == Pane::Map { "true" } else { "false" },
+                            onclick: move |_| {
+                                let open = pane() != Pane::Map;
+                                pane.set(if open { Pane::Map } else { Pane::Route });
+                                if open {
+                                    // The list may have scrolled far down: bring the map up.
+                                    document::eval(
+                                        "requestAnimationFrame(() => document.querySelector('.journey')?.scrollIntoView({ block: 'start' }));",
+                                    );
+                                }
+                            },
+                            span { class: "seg-icon", aria_hidden: "true", {icon_map()} }
+                            span { class: "tool-label", "{ui.t(Msg::JourneyMap)}" }
+                        }
+                    }
+                    button {
+                        class: "suitcase-toggle",
+                        title: "{ui.t(Msg::JourneySuitcase)}",
+                        aria_pressed: if pane() == Pane::Suitcase { "true" } else { "false" },
+                        onclick: move |_| pane.set(if pane() == Pane::Suitcase { Pane::Route } else { Pane::Suitcase }),
+                        span { class: "seg-icon", aria_hidden: "true", {icon_suitcase()} }
+                        span { class: "tool-label", "{ui.t(Msg::JourneySuitcase)} " }
+                        span { class: "count", "{ui.num(suitcase_count as u64)}" }
+                    }
                 }
             }
             if pane() == Pane::Suitcase {
                 Suitcase { completed: completed.clone(), approved: approved.clone() }
-            } else if compact {
+            } else if compact && pane() == Pane::Route {
                 RouteList { key: "{j.route:?}", j: j.clone(), picked: picked() }
             } else {
                 MapView { key: "{j.route:?}", j: j.clone(), picked: picked() }
@@ -958,6 +985,9 @@ fn icon_island() -> Element {
     stroke_icon(
         "M3 18c3-2 6-2 9 0s6 2 9 0M7 16c1-4 4-6 8-6M14 10c-1-3 0-5 2-6M14 10c2-1 4 0 5 2M14 10c-2-2-5-2-6 0",
     )
+}
+fn icon_map() -> Element {
+    stroke_icon("M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2zM9 4v14M15 6v14")
 }
 fn icon_suitcase() -> Element {
     stroke_icon("M4 8h16v11H4zM9 8V5h6v3M4 13h16M9 13v2M15 13v2")
