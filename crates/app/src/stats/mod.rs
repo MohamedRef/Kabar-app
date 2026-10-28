@@ -261,9 +261,11 @@ pub fn TodayCards() -> Element {
                 }
             }
         }
-        div { class: "card st-link", style: "margin-block-start: 1rem",
+        // The whole card opens Stats; the button's click bubbles up to it.
+        div { class: "card card-action st-link", style: "margin-block-start: 1rem",
+            onclick: move |_| open(ui, Screen::Stats),
             p { class: "muted", "{st(lang, S::OpenStatsHint)}" }
-            button { onclick: move |_| open(ui, Screen::Stats), "{st(lang, S::OpenStats)}" }
+            button { "{st(lang, S::OpenStats)}" }
         }
     }
 }
