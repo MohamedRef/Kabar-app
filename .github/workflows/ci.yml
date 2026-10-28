@@ -62,13 +62,19 @@ jobs:
       # changes/<topic>.yaml (docs/RELEASE.md §5, "What's new"): new lines in
       # a new or existing file, or a new file holding [] when there is
       # nothing to tell. Without one the update showed the PR's English
-      # title under the wrong kind. The files must parse.
+      # title under the wrong kind. The files must parse. A PR that only
+      # touches README.md (the daily refresh) has nothing to tell and skips
+      # the file check.
       - name: What's new file
         if: github.event_name == 'pull_request'
         env:
           BASE: ${{ github.base_ref }}
         run: |
           git fetch -q --depth=1 origin "$BASE"
+          if [ "$(git diff --name-only FETCH_HEAD HEAD)" = "README.md" ]; then
+            echo "README.md only: no changes/<topic>.yaml needed."
+            exit 0
+          fi
           files="$(git diff --name-only --diff-filter=AM FETCH_HEAD HEAD -- 'changes/*.yaml')"
           if ! grep -qE '^changes/[^/]+\.yaml$' <<<"$files"; then
             echo "::error::No changes/<topic>.yaml in this pull request. Add one line per change the learner can see (kind new/improved/fixed, ar_eg in Egyptian Arabic, en), or a file holding [] when there is nothing to tell. See docs/RELEASE.md §5."
