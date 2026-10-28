@@ -330,6 +330,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_context_provider(|| db.clone());
     let prefs = use_context_provider(|| settings::device::DevicePrefs::load(&db));
     use_context_provider(settings::SettingsNav::new);
+    use_context_provider(update::sheet::UpdateSheetNav::new);
     use_context_provider(more::MoreNav::new);
     use_context_provider(play::PlayNav::new);
     use_context_provider(|| teach::TeachInbox(Signal::new(None)));
@@ -708,6 +709,7 @@ fn Shell() -> Element {
             }
             more::MoreSheet {}
             settings::SettingsSheet {}
+            update::sheet::UpdateSheet {}
         }
     }
 }
