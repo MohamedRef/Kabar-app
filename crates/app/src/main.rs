@@ -330,6 +330,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_context_provider(|| db.clone());
     let prefs = use_context_provider(|| settings::device::DevicePrefs::load(&db));
     use_context_provider(settings::SettingsNav::new);
+    use_context_provider(update::sheet::UpdateSheetNav::new);
     use_context_provider(more::MoreNav::new);
     use_context_provider(play::PlayNav::new);
     use_context_provider(|| teach::TeachInbox(Signal::new(None)));
@@ -350,8 +351,20 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
     // Android's status and navigation bars take the theme's background, so
-    // True black keeps the whole OLED screen dark.
+    // True black keeps the whole OLED screen dark. A System theme also
+    // repaints them when the device switches dark mode while Kabar is open.
+    let mut os_scheme = use_signal(|| 0u32);
+    use_future(move || async move {
+        let mut eval = document::eval(
+            r#"matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => dioxus.send(1));
+            await new Promise(() => {});"#,
+        );
+        while eval.recv::<u32>().await.is_ok() {
+            os_scheme += 1;
+        }
+    });
     use_effect(move || {
+        os_scheme.read();
         let (day, night) = ui.settings.read().theme.day_and_night();
         platform::system_bars(day.bg, night.bg);
     });
@@ -696,6 +709,7 @@ fn Shell() -> Element {
             }
             more::MoreSheet {}
             settings::SettingsSheet {}
+            update::sheet::UpdateSheet {}
         }
     }
 }

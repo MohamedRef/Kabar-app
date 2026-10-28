@@ -171,9 +171,11 @@ impl Track {
         {
             return true;
         }
+        // Reduplication ("napa-napa") once the single word is known, street
+        // forms included.
         if let Some((a, b)) = w.split_once('-')
             && a == b
-            && at(a)
+            && self.known(a, pos)
         {
             return true;
         }
@@ -593,6 +595,15 @@ mod tests {
         assert_eq!(u.len(), 4, "{u:?}");
         let (_, u) = measure(&t, &names, 1, line, &ex(""));
         assert_eq!(u, vec!["dipunserat".to_owned()]);
+    }
+
+    #[test]
+    fn a_reduplicated_street_form_counts_once_its_twin_is_taught() {
+        let mut t = track();
+        t.lang = "jv".into();
+        t.taught = [("menapa".to_owned(), 0)].into_iter().collect();
+        let (_, u) = measure(&t, &BTreeSet::new(), 0, "napa-napa menapa-menapa", &ex(""));
+        assert!(u.is_empty(), "{u:?}");
     }
 
     #[test]

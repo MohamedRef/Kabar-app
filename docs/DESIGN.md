@@ -45,6 +45,8 @@ CSS custom property. Sizes are rem so Settings › Text size scales them.
 | Measure | `--measure` 68ch (Latin running text) · `--measure-ar` 60ch |
 | Space | `--sp-1` … `--sp-8`: 0.25 · 0.5 · 0.75 · 1 · 1.25 · 1.5 · 2 · 3 rem |
 | Density (on `.app`, per width) | `--gutter` (screen padding), `--stack` (gap between blocks), `--card-pad` |
+| Control heights | `--tap` (buttons, 44px; 40px compact), `--tap-lg` (main actions), `--row` (big answer rows); in rem so Text size scales them |
+| Compact notch | Under 600dp the type scale, `--lh-read`/`--lh-arabic`, density and control heights each step down one notch (`.app[data-width="compact"]`) |
 | Radius | `--radius-sm` 8px · `--radius` 14px · `--radius-lg` 20px · `--radius-pill` |
 | Surface | `--line-soft` (default card border), `--shadow`, `--shadow-raised` (sheets, popovers) |
 | Motion | `--ease`, `--dur-fast` 120ms · `--dur` 200ms · `--dur-slow` 320ms |
