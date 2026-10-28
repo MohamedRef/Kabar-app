@@ -1,5 +1,6 @@
-//! No dead ends (Mohamed, 2026-10-28): a card, tile or row that shows a
-//! thing opens it. Adapted from Batna-app main: crates/app/src/dead_ends.rs. This test reads the screens' source and fails when a
+//! No dead ends (Mohamed, 2026-10-28): a card, tile, row, chip or link
+//! that shows a thing opens it. The last test reads the CSS: anything drawn
+//! as a link (pointer, underline) must be pressable. Adapted from Batna-app main: crates/app/src/dead_ends.rs. This test reads the screens' source and fails when a
 //! class that looks tappable sits on an element that can't be pressed.
 //!
 //! The rule for new UI: put such a class on a `button` (with `.tap`, see
@@ -346,4 +347,144 @@ fn the_scanner_sees_built_classes() {
     assert_eq!(classes(1), "reward lit reward big");
     assert_eq!(classes(2), "lesson");
     assert_eq!(found[3].element, "Picture");
+}
+
+/// Elements a pointer or an underline may sit on: real controls, and a
+/// `label` (it toggles its checkbox).
+const LINKISH_OK: &[&str] = &["button", "summary", "a", "label", "input", "select", "textarea"];
+
+/// Class sets the CSS draws as a link or a control: a rule with
+/// `cursor: pointer` or an underline whose selector is just those classes
+/// (`.chip.toggle` → both), on no element or on one that can't be pressed.
+fn linkish_classes(css: &str) -> Vec<(String, Vec<String>)> {
+    let mut out = Vec::new();
+    let css = strip_comments(css);
+    for rule in css.split('}') {
+        let Some((selectors, decls)) = rule.rsplit_once('{') else { continue };
+        let decls = decls.replace(' ', "");
+        if !(decls.contains("cursor:pointer") || decls.contains("text-decoration:underline")) {
+            continue;
+        }
+        for sel in selectors.split(',') {
+            // Only a rule on the element itself: `.row .name { cursor }` is
+            // about a name inside a row, which the row's own check covers.
+            let sel = sel.trim();
+            if sel.contains([' ', '>', '+', '~']) {
+                continue;
+            }
+            // The subject, before any pseudo-class.
+            let subject = sel;
+            let subject = subject.split(':').next().unwrap_or("");
+            let element: String = subject.chars().take_while(|c| c.is_ascii_alphanumeric()).collect();
+            if LINKISH_OK.contains(&element.as_str()) {
+                continue;
+            }
+            let set: Vec<String> = subject
+                .split('.')
+                .skip(1)
+                .map(|c| {
+                    c.chars()
+                        .take_while(|c| c.is_alphanumeric() || *c == '-' || *c == '_')
+                        .collect::<String>()
+                })
+                .filter(|c| !c.is_empty())
+                .collect();
+            // `mark.target` is about a mark only; `.row` about any element.
+            let entry = (element, set);
+            if !entry.1.is_empty() && !out.contains(&entry) {
+                out.push(entry);
+            }
+        }
+    }
+    out
+}
+
+fn strip_comments(css: &str) -> String {
+    let mut out = String::new();
+    let mut rest = css;
+    while let Some(at) = rest.find("/*") {
+        out.push_str(&rest[..at]);
+        rest = rest[at..].find("*/").map_or("", |e| &rest[at + e + 2..]);
+    }
+    out.push_str(rest);
+    out
+}
+
+#[test]
+fn link_looks_are_pressable() {
+    let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+    let mut css = String::new();
+    for dir in ["assets", "src"] {
+        let mut files = Vec::new();
+        css_files(&root.join(dir), &mut files);
+        for f in files {
+            css.push_str(&std::fs::read_to_string(f).unwrap());
+            css.push('\n');
+        }
+    }
+    let linkish = linkish_classes(&css);
+    let mut files = Vec::new();
+    sources(&root.join("src"), &mut files);
+    let mut dead = Vec::new();
+    for (path, src) in &files {
+        if path.ends_with("dead_ends.rs") {
+            continue;
+        }
+        let lines: Vec<&str> = src.lines().collect();
+        for f in elements(src) {
+            if LINKISH_OK.contains(&f.element.as_str())
+                || !f.element.chars().next().is_some_and(|c| c.is_ascii_lowercase())
+                || has_onclick(&lines, f.line)
+            {
+                continue;
+            }
+            for (element, set) in &linkish {
+                let on = element.is_empty() || *element == f.element;
+                let allowed = set.iter().any(|c| ALLOWED.contains(&(f.element.as_str(), c.as_str())));
+                if on && !allowed && set.iter().all(|c| f.classes.contains(c)) {
+                    dead.push(format!(
+                        "{path}:{}: `{}.{}` looks like a link or control (CSS: pointer or underline) but can't be pressed",
+                        f.line,
+                        f.element,
+                        set.join(".")
+                    ));
+                }
+            }
+        }
+    }
+    dead.sort();
+    dead.dedup();
+    assert!(dead.is_empty(), "link-looking text that opens nothing:\n{}", dead.join("\n"));
+}
+
+/// Whether the element starting on `line` has its own `onclick` (before
+/// its first child element).
+fn has_onclick(lines: &[&str], line: usize) -> bool {
+    lines[line - 1..]
+        .iter()
+        .take(12)
+        .enumerate()
+        .take_while(|(i, l)| *i == 0 || !l.trim_end().ends_with('{') || l.contains("onclick"))
+        .any(|(_, l)| l.contains("onclick"))
+}
+
+fn css_files(dir: &Path, out: &mut Vec<std::path::PathBuf>) {
+    for entry in std::fs::read_dir(dir).unwrap().flatten() {
+        let path = entry.path();
+        if path.is_dir() {
+            css_files(&path, out);
+        } else if path.extension().is_some_and(|e| e == "css") {
+            out.push(path);
+        }
+    }
+}
+
+#[test]
+fn the_css_check_reads_link_looks() {
+    let css = "/* .note { cursor: pointer } */\n.topic-link { text-decoration: underline dotted; }\nbutton.tap-chip { cursor: pointer; }\n.row:hover { cursor: pointer }\n.list .name { cursor: pointer }\nlabel.check { cursor: pointer }\nmark.hit { text-decoration: underline }\n.plain { color: red }";
+    let want: Vec<(String, Vec<String>)> =
+        vec![(String::new(), vec!["topic-link".into()]), (String::new(), vec!["row".into()])];
+    let mut want = want;
+    want.push(("mark".into(), vec!["hit".into()]));
+    assert_eq!(linkish_classes(css), want);
 }
