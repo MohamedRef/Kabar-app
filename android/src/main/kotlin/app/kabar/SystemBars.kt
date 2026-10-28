@@ -5,6 +5,8 @@ import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.view.WindowInsetsController
 
 /**
@@ -14,8 +16,8 @@ import android.view.WindowInsetsController
  *
  * Rust passes a day and a night colour; a fixed theme sends the same one
  * twice, and System themes pick by the phone's own dark mode here. Where the
- * app draws edge to edge (Android 15), the bar colours are ignored and only
- * the icon colours matter.
+ * app draws edge to edge (target SDK 35 on Android 15), the bar colours are
+ * ignored and only the icon colours matter.
  */
 object SystemBars {
     @JvmStatic
@@ -26,12 +28,10 @@ object SystemBars {
             val colour = if (night) nightArgb else dayArgb
             val lightBars = isLight(colour)
             val window = activity.window
-            @Suppress("DEPRECATION")
-            // 35 = Android 15 (VANILLA_ICE_CREAM; the compile SDK may predate the name).
-            if (Build.VERSION.SDK_INT < 35) {
-                window.statusBarColor = colour
-                window.navigationBarColor = colour
-            }
+            // Always set: Android 15 ignores these only when the app is
+            // edge to edge, which depends on the target SDK, not the device.
+            // An app targeting SDK 34 still takes them on an Android 15 phone.
+            paintBars(window, colour)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 val mask = WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS or
                     WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
@@ -46,6 +46,15 @@ object SystemBars {
                 window.decorView.systemUiVisibility = flags
             }
         }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun paintBars(window: Window, colour: Int) {
+        // Translucent bars ignore the colour; the window must draw them.
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS or WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = colour
+        window.navigationBarColor = colour
     }
 
     /** Light background: wants dark icons. */
