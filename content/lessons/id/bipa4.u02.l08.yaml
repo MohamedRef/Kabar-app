@@ -1,209 +1,243 @@
 schema: kabar.lesson/v1
 id: bipa4.u02.l08
 language: id
-title: Jalan rusak
+title: Barang dan keputusan
 can_do:
-  ar_eg: تكتب رسالة قرّاء عن مشكلة في حتتك وتطلب حل.
-  ar: أن تكتب رسالة إلى بريد القرّاء عن مشكلة محلية وتطلب حلًا.
-  en: Write a letter about a local problem.
+  ar_eg: 'تشتكي من حاجة اشتريتها: البياع، الرد، والقرار.'
+  ar: 'أن تشكو من سلعة اشتريتها: البائع والرد والقرار.'
+  en: 'Complain about something you bought: the seller, the answer and the decision.'
 slides:
-  - title: Masalah, akibat, permohonan
+  - title: Barangnya tidak cocok
     body:
       ar_eg: |
-        في نص الرسالة رتّب كلامك كده:
-        1) المشكلة: Jalan di depan sekolah berlubang.
-        2) نتيجتها: membahayakan pengendara، ada kecelakaan.
-        3) الطلب: Kami mohon … secepat-cepatnya / sebaik-baiknya.
-        والتكرار اللي اتعلمته بيدي الوصف حياة: truk bolak-balik، warga tolong-menolong.
+        barang = حاجة، سلعة (barang elektronik). menjual = يبيع (jual = بيع)، menjawab = يرد على (jawab = رد).
+        mengganggu = يزعج أو يعطّل. cocok = مناسب، ماشي مع (cocok untuk = مناسب لـ).
+        sistem = نظام، keputusan = قرار (membuat keputusan = ياخد قرار)، informasi = معلومات.
       ar: |
-        رتّب مضمون الرسالة هكذا:
-        1) المشكلة: Jalan di depan sekolah berlubang.
-        2) أثرها: membahayakan pengendara، ada kecelakaan.
-        3) الطلب: Kami mohon … secepat-cepatnya / sebaik-baiknya.
-        والتكرار الذي تعلمته يُحيي الوصف: truk bolak-balik، warga tolong-menolong.
+        barang = الشيء أو السلعة (barang elektronik). menjual = يبيع (jual = بيع)، menjawab = يجيب (jawab = جواب).
+        mengganggu = يزعج أو يعطّل. cocok = مناسب (cocok untuk = مناسب لـ).
+        sistem = النظام، keputusan = القرار (membuat keputusan = يتخذ قرارًا)، informasi = المعلومات.
       en: |
-        Order the body of your letter like this:
-        1) The problem: Jalan di depan sekolah berlubang.
-        2) Its effect: membahayakan pengendara, ada kecelakaan.
-        3) The request: Kami mohon … secepat-cepatnya / sebaik-baiknya.
-        The doubles you've learned bring it to life: truk bolak-balik, warga tolong-menolong.
-    grammar: id.reduplication.advanced
+        barang = thing, goods (barang elektronik). menjual = to sell (jual = sell), menjawab = to answer (jawab = answer).
+        mengganggu = to disturb, disrupt. cocok = suitable, a good fit (cocok untuk = suitable for).
+        sistem = system, keputusan = decision (membuat keputusan = make a decision), informasi = information.
     examples:
-      - text: Jalan di depan sekolah berlubang dan membahayakan pengendara.
-        ar_eg: الطريق اللي قدام المدرسة مليان حفر وبيعرّض السواقين للخطر.
-        ar: الطريق أمام المدرسة مليء بالحفر ويعرّض السائقين للخطر.
-        en: The road in front of the school is full of potholes and endangers drivers.
-      - text: Kami mohon jalan ini diperbaiki secepat-cepatnya.
-        ar_eg: بنطلب إن الطريق ده يتصلح بأسرع ما يمكن.
-        ar: نرجو إصلاح هذا الطريق بأسرع ما يمكن.
-        en: We ask for this road to be repaired as quickly as possible.
+      - text: Toko itu menjual barang elektronik.
+        ar_eg: المحل ده بيبيع أجهزة كهربائية.
+        ar: يبيع ذلك المتجر أجهزة إلكترونية.
+        en: That shop sells electronic goods.
+      - text: Ukurannya tidak cocok untuk saya.
+        ar_eg: المقاس مش مناسب ليّا.
+        ar: المقاس لا يناسبني.
+        en: The size doesn't suit me.
+      - text: Kami menunggu keputusan dari toko.
+        ar_eg: إحنا مستنيين قرار المحل.
+        ar: ننتظر قرار المتجر.
+        en: We're waiting for the shop's decision.
 exercises:
   - id: e01
-    type: listen
-    text: Jalan di depan sekolah berlubang.
-    options: ["Jalan di depan sekolah bolak-balik.", "Jalan di depan sekolah berlubang.", "Jalan di depan pasar berlubang."]
-    answer: 1
-    meaning:
-      ar_eg: الطريق اللي قدام المدرسة فيه حفر.
-      ar: الطريق أمام المدرسة مليء بالحفر.
-      en: The road in front of the school has potholes.
-    words: [berlubang]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة تنفع لجزء «الطلب» في الرسالة؟
-      ar: أيّ جملة تصلح لجزء «الطلب» في الرسالة؟
-      en: Which sentence belongs in the "request" part of the letter?
-    options: ["Hormat saya, Mohamed.", "Yth. Redaksi Kabar Sulawesi", "Kami mohon jalan ini diperbaiki secepat-cepatnya."]
-    answer: 2
-    words: [secepat-cepatnya]
-    explain:
-      ar_eg: جزء الطلب فيه kami mohon = بنطلب. Yth. للبداية، وHormat saya للختام.
-      ar: جزء الطلب يبدأ بـ kami mohon = نرجو. أما Yth. فللافتتاح، وHormat saya للختام.
-      en: The request part uses kami mohon, "we ask". Yth. opens the letter, and Hormat saya closes it.
-  - id: e03
     type: match_pairs
     pairs:
-      - text: berlubang
-        ar_eg: فيه حفر
-        ar: مليء بالحفر
-        en: potholed
-      - text: kecelakaan
-        ar_eg: حادثة
-        ar: حادث
-        en: accident
-      - text: pengendara
-        ar_eg: سواق (موتوسيكل / عربية)
-        ar: سائق / راكب دراجة
-        en: rider, driver
-      - text: membahayakan
-        ar_eg: يعرّض للخطر
-        ar: يعرّض للخطر
-        en: endanger
-      - text: bolak-balik
-        ar_eg: رايح جاي
-        ar: ذهابًا وإيابًا
-        en: back and forth
-    words: [berlubang, kecelakaan, pengendara, membahayakan, bolak-balik]
+      - text: barang
+        ar_eg: حاجة، سلعة
+        ar: سلعة
+        en: goods, thing
+      - text: menjual
+        ar_eg: يبيع
+        ar: يبيع
+        en: to sell
+      - text: menjawab
+        ar_eg: يرد
+        ar: يجيب
+        en: to answer
+      - text: mengganggu
+        ar_eg: يزعج
+        ar: يزعج
+        en: to disturb
+    words: [barang, menjual, menjawab, mengganggu]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: cocok
+        ar_eg: مناسب
+        ar: مناسب
+        en: suitable
+      - text: sistem
+        ar_eg: نظام
+        ar: نظام
+        en: system
+      - text: keputusan
+        ar_eg: قرار
+        ar: قرار
+        en: decision
+      - text: informasi
+        ar_eg: معلومات
+        ar: معلومات
+        en: information
+    words: [cocok, sistem, keputusan, informasi]
+  - id: e03
+    type: listen
+    text: Maaf, sistem kami sedang rusak.
+    question:
+      ar_eg: إيه المشكلة؟
+      ar: ما المشكلة؟
+      en: What's the problem?
+    options: [النظام بايظ, المحل مقفول, مفيش بضاعة]
+    answer: 0
+    meaning:
+      ar_eg: آسفين، النظام عندنا بايظ دلوقتي.
+      ar: عذرًا، نظامنا معطّل حاليًا.
+      en: Sorry, our system is down at the moment.
+    words: [sistem]
   - id: e04
     type: fill_blank
-    sentence: Bulan lalu ada tiga ___ di jalan itu.
+    sentence: Toko online itu ___ jaket dan sepatu.
     meaning:
-      ar_eg: الشهر اللي فات حصل تلات حوادث في الطريق ده.
-      ar: وقعت ثلاثة حوادث في ذلك الطريق الشهر الماضي.
-      en: Last month there were three accidents on that road.
-    options: [kecelakaan, pengendara, berlubang]
-    answers: [kecelakaan]
-    words: [kecelakaan]
+      ar_eg: المحل الأونلاين ده ___ جواكت وجزم.
+      ar: ذلك المتجر الإلكتروني ___ السترات والأحذية.
+      en: That online shop ___ jackets and shoes.
+    options: [menjual, menjawab, mengganggu]
+    answers: [menjual]
+    words: [menjual, menjawab, mengganggu, barang]
     explain:
-      ar_eg: kecelakaan = حوادث، وبتتعدّ (tiga). pengendara = سوّاقين، وberlubang = مليان حفر.
-      ar: kecelakaan = حوادث، وتُعدّ (tiga). أما pengendara فالسائقون، وberlubang مليء بالحفر.
-      en: kecelakaan are accidents, which can be counted (tiga). pengendara are riders, and berlubang means full of holes.
+      ar_eg: menjual = يبيع، والمحل بيبيع جواكت وجزم. menjawab = يرد، وmengganggu = يزعج.
+      ar: menjual = يبيع، فالمتجر يبيع السترات والأحذية. أما menjawab فيجيب، وmengganggu يزعج.
+      en: "menjual is to sell: the shop sells jackets and shoes. menjawab is to answer and mengganggu is to disturb."
   - id: e05
-    type: fill_blank
-    sentence: Lubang besar itu ___ pengendara motor.
-    meaning:
-      ar_eg: (اكتب الفعل) الحفرة الكبيرة دي بتعرّض سواقين الموتوسيكلات للخطر.
-      ar: (اكتب الفعل) تلك الحفرة الكبيرة تعرّض راكبي الدراجات النارية للخطر.
-      en: (Type the verb.) That big hole endangers motorbike riders.
-    answers: [membahayakan]
-    words: [membahayakan, pengendara]
+    type: multiple_choice
+    question: Saya sudah kirim email tiga kali, tapi tokonya belum ___.
+    options: [menjual, menjawab, cocok]
+    answer: 1
     explain:
-      ar_eg: membahayakan = يعرّض للخطر، من bahaya + meN-…-kan.
-      ar: membahayakan = يعرّض للخطر، من bahaya مع meN-…-kan.
-      en: membahayakan means endanger, from bahaya with meN-…-kan.
+      ar_eg: menjawab = يرد، والمحل مارد على الإيميلات. menjual = يبيع، وcocok = مناسب.
+      ar: menjawab = يردّ، فالمتجر لم يرد على الرسائل. أما menjual فيبيع، وcocok مناسب.
+      en: 'menjawab means answer: the shop hasn''t replied. menjual is sell, and cocok is suitable.'
+    words: [menjawab, menjual, cocok]
   - id: e06
+    type: fill_blank
+    sentence: Suara truk itu ___ tidur saya.
+    meaning:
+      ar_eg: صوت التراك ده ___ نومي.
+      ar: صوت تلك الشاحنة ___ نومي.
+      en: The noise of that truck ___ my sleep.
+    options: [mengganggu, menjawab, cocok]
+    answers: [mengganggu]
+    words: [mengganggu, menjawab, cocok]
+    explain:
+      ar_eg: mengganggu tidur = يزعج النوم. menjawab = يرد، وcocok = مناسب.
+      ar: mengganggu tidur = يُقلق النوم. أما menjawab فيجيب، وcocok مناسب.
+      en: mengganggu tidur means disturbs sleep. menjawab is to answer and cocok is suitable.
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تعرف تفاصيل المنتج. بتطلب إيه؟
+      ar: تريد معرفة تفاصيل المنتج. ماذا تطلب؟
+      en: You want the product details. What do you ask for?
+    options: [keputusan, informasi, sistem]
+    answer: 1
+    explain:
+      ar_eg: informasi = معلومات، ودي اللي بتطلبها. keputusan = قرار، وsistem = نظام.
+      ar: informasi = المعلومات، وهي ما تطلبه. أما keputusan فالقرار، وsistem النظام.
+      en: informasi is information, what you ask for. keputusan is a decision, and sistem is a system.
+    words: [informasi, keputusan, sistem]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: عربيات الرمل رايحة جاية، فالطريق ده بقى مليان حفر.
-      ar: تذهب شاحنات الرمل وتجيء، فامتلأ هذا الطريق بالحفر.
-      en: Sand trucks go back and forth, so this road is full of potholes.
-    answer: Truk pasir bolak-balik sehingga jalan ini berlubang.
-    distractors: [lubang-lubang, kecelakaan]
-    words: [bolak-balik, berlubang]
+      ar_eg: الجاكيت ده مش مناسب ليّا.
+      ar: هذه السترة لا تناسبني.
+      en: This jacket doesn't suit me.
+    answer: Jaket ini tidak cocok untuk saya.
+    distractors: [barang, sistem]
+    words: [cocok, barang, sistem]
     explain:
-      ar_eg: sehingga = لدرجة إن، وberlubang = مليان حفر. lubang-lubang = حفر (جمع) ومش صفة، وkecelakaan = حادثة.
-      ar: sehingga = حتى إن، وberlubang = مليء بالحفر. أما lubang-lubang فجمع حفرة لا صفة، وkecelakaan حادث.
-      en: sehingga means "so that", and berlubang is "full of potholes". lubang-lubang is the plural noun "holes", not an adjective, and kecelakaan is an accident.
-  - id: e07
-    type: dictation
-    text: Jalan rusak itu membahayakan pengendara dan anak-anak sekolah.
-    meaning:
-      ar_eg: الطريق البايظ ده بيعرّض السواقين وعيال المدارس للخطر.
-      ar: يعرّض ذلك الطريق المتضرر السائقين وتلاميذ المدارس للخطر.
-      en: That broken road endangers drivers and schoolchildren.
-    words: [membahayakan, pengendara]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: امبارح حصلت حادثة قدام السوق.
-      ar: وقع حادث أمام السوق أمس.
-      en: There was an accident in front of the market yesterday.
-    answers:
-      - Kemarin ada kecelakaan di depan pasar.
-      - Kemarin ada kecelakaan di depan pasar
-      - Ada kecelakaan di depan pasar kemarin.
-      - Kemarin terjadi kecelakaan di depan pasar.
-      - Terjadi kecelakaan di depan pasar kemarin.
-    words: [kecelakaan]
+      ar_eg: tidak cocok untuk saya = مش مناسب ليّا. barang = حاجة، وsistem = نظام، ومالهمش مكان هنا.
+      ar: tidak cocok untuk saya = لا يناسبني. أما barang فسلعة، وsistem نظام، ولا مكان لهما هنا.
+      en: tidak cocok untuk saya means doesn't suit me. barang is goods and sistem is a system; they don't belong here.
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: 'Toko itu membuat keputusan: barangnya dikembalikan.'
+    answers_meaning:
+      ar_eg: ['المحل خد قرار: الحاجة هترجع', المحل قرّر إن البضاعة ترجع]
+      ar: ['اتخذ المتجر قرارًا: تُعاد السلعة', قرّر المتجر إعادة السلعة]
+      en: ['The shop made a decision: the item will be returned', The shop decided the goods would be taken back]
+    words: [keputusan, barang]
+  - id: e10
     type: speaking
-    text: Kami mohon pemerintah daerah memperbaiki jalan ini sebaik-baiknya.
+    text: Tolong beri saya informasi tentang barang ini.
     meaning:
-      ar_eg: بنطلب من الحكومة المحلية تصلح الطريق ده على أحسن وجه.
-      ar: نرجو من الحكومة المحلية أن تُصلح هذا الطريق على أحسن وجه.
-      en: We ask the local government to repair this road as well as possible.
-    words: [pemerintah daerah, sebaik-baiknya]
+      ar_eg: لو سمحت إدّيني معلومات عن الحاجة دي.
+      ar: من فضلك أعطني معلومات عن هذه السلعة.
+      en: Please give me information about this item.
+    words: [informasi, barang, keputusan]
 dialogue:
-  title: Draf surat pembaca
   lines:
-    - speaker: Mohamed
-      text: Bu Hasnah, ini draf surat saya. Boleh saya baca?
-      ar_eg: يا طنط حسنة، دي مسودة جوابي. ممكن أقراهولك؟
-      ar: يا سيدة حسنة، هذه مسودة رسالتي. هل أقرؤها؟
-      en: Bu Hasnah, here's my draft letter. May I read it?
     - speaker: Bu Hasnah
-      text: Silakan, Nak.
-      ar_eg: اتفضل يا ابني.
-      ar: تفضّل يا بني.
-      en: Go ahead, dear.
+      text: Mohamed, tokonya sudah menjawab emailmu?
+      ar_eg: يا محمد، المحل رد على الإيميل بتاعك؟
+      ar: يا محمد، هل ردّ المتجر على رسالتك؟
+      en: Mohamed, has the shop answered your email?
     - speaker: Mohamed
-      text: 'Jalan desa kami berlubang dan membahayakan pengendara. Bulan lalu ada dua kecelakaan.'
-      ar_eg: طريق قريتنا مليان حفر وبيعرّض السواقين للخطر. الشهر اللي فات حصلت حادثتين.
-      ar: طريق قريتنا مليء بالحفر ويعرّض السائقين للخطر، ووقع فيه حادثان الشهر الماضي.
-      en: Our village road is full of potholes and endangers drivers. Last month there were two accidents.
+      text: Sudah, Bu. Katanya sistem mereka rusak minggu lalu.
+      ar_eg: أيوه يا طنط. بيقولوا النظام عندهم كان بايظ الأسبوع اللي فات.
+      ar: نعم. يقولون إن نظامهم تعطّل الأسبوع الماضي.
+      en: Yes. They say their system broke down last week.
     - speaker: Bu Hasnah
-      text: Bagus, jelas banget. Tulis juga kalau truk tambang bolak-balik tiap hari.
-      ar_eg: حلو، واضح جدًا. واكتب كمان إن عربيات المحجر رايحة جاية كل يوم.
-      ar: جيد وواضح جدًا. واكتب أيضًا أن شاحنات المحجر تذهب وتجيء كل يوم.
-      en: Good, very clear. Also write that the quarry trucks go back and forth every day.
+      text: Terus, keputusannya apa?
+      ar_eg: وبعدين، القرار إيه؟
+      ar: وما القرار؟
+      en: So what's the decision?
     - speaker: Mohamed
-      text: Oke, Bu. Di akhir saya minta jalan ini diperbaiki secepat-cepatnya.
-      ar_eg: ماشي. وفي الآخر هطلب إن الطريق يتصلح بأسرع ما يمكن.
-      ar: حسنًا. وفي الختام أطلب إصلاح الطريق بأسرع ما يمكن.
-      en: OK. At the end I'll ask for the road to be repaired as quickly as possible.
+      text: Barangnya boleh dikembalikan. Ukurannya memang tidak cocok.
+      ar_eg: الحاجة ينفع ترجع. المقاس فعلًا مش مناسب.
+      ar: يمكن إعادة السلعة، فالمقاس لا يناسب فعلًا.
+      en: I can send the item back. The size really doesn't fit.
+    - speaker: Bu Hasnah
+      text: Bagus. Lain kali, baca informasi ukurannya dulu, ya.
+      ar_eg: كويس. المرة الجاية اقرا معلومات المقاس الأول.
+      ar: جيد. في المرة القادمة اقرأ معلومات المقاس أولًا.
+      en: Good. Next time, read the size information first.
 new_words:
-  - word: berlubang
-    pos: adjective
-    ar_eg: فيه حفر / مخرّم
-    ar: مليء بالحفر
-    en: potholed, full of holes
-  - word: kecelakaan
+  - word: barang
     pos: noun
-    ar_eg: حادثة
-    ar: حادث
-    en: accident
-  - word: pengendara
-    pos: noun
-    ar_eg: سواق (موتوسيكل / عربية)
-    ar: سائق / راكب
-    en: rider, driver
-  - word: membahayakan
+    ar_eg: حاجة، سلعة
+    ar: سلعة، شيء
+    en: goods, thing
+  - word: menjual / jual
     pos: verb
-    ar_eg: يعرّض للخطر
-    ar: يعرّض للخطر
-    en: endanger
+    ar_eg: يبيع
+    ar: يبيع
+    en: to sell
+  - word: menjawab / jawab
+    pos: verb
+    ar_eg: يرد، يجاوب
+    ar: يجيب، يردّ
+    en: to answer
+  - word: mengganggu
+    pos: verb
+    ar_eg: يزعج، يعطّل
+    ar: يزعج، يعطّل
+    en: to disturb
+  - word: cocok
+    pos: adj
+    ar_eg: مناسب (cocok untuk)
+    ar: مناسب (cocok untuk)
+    en: suitable, a good fit
+  - word: sistem
+    pos: noun
+    ar_eg: نظام
+    ar: نظام
+    en: system
+  - word: keputusan
+    pos: noun
+    ar_eg: قرار
+    ar: قرار
+    en: decision
+  - word: informasi
+    pos: noun
+    ar_eg: معلومات
+    ar: معلومات
+    en: information
 review:
   status: draft
   verified: false
