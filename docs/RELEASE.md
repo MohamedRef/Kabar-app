@@ -33,7 +33,7 @@ A release is cut only when every gate in this table is green.
 |---|---|
 | fmt, clippy `-D warnings`, workspace tests, content `validate`, golden sets | CI (`fmt, clippy, tests`) |
 | Android arm64 compiles; a preview APK builds | CI (`Android arm64 compiles`, `Android preview APK`) |
-| The Mac app compiles, its tests pass and Kabar.app bundles | CI (`Mac app compiles`) |
+| The Mac app compiles, its tests pass and Kabar.app bundles | The Mac workflow (`Mac app compiles`, on main, nightly and by hand) |
 | core and protocol build for wasm32; Kabar Cloud end-to-end on local workerd | CI |
 | Desktop QA pass at phone width and tablet width: the core loop, tone, bidi, no horizontal scroll | in the cloud, Xvfb (reports in the project's `qa/` folder) |
 | `ATTRIBUTION.md` covers every dataset, corpus, font and sound | review before tagging |

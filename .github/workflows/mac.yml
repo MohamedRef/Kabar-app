@@ -1,0 +1,66 @@
+name: Mac
+
+# Runs on every push to main, nightly and by hand, never on pull requests:
+# hosted macOS runners are sometimes unavailable for most of an hour and then
+# fail with "job was not acquired", which marked good PRs red. A real Mac
+# break still shows up here on main within a day. Not a required check.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "47 2 * * *"
+  workflow_dispatch:
+
+# One run at a time; a newer push to main replaces a queued or running one.
+concurrency:
+  group: mac-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  macos:
+    # The Mac-only code (Apple Vision OCR, Keychain, the PKCE sign-in opener)
+    # never compiles on Linux. Free on a public repo. It also bundles
+    # Kabar.app the way `just bundle-mac` does, so the Mac session has no
+    # build surprises; the bundle isn't uploaded.
+    timeout-minutes: 45
+    name: Mac app compiles
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          # dx strips the release binary with rust-objcopy, which needs
+          # libLLVM from llvm-tools.
+          components: clippy, llvm-tools
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: macos
+      - run: cargo clippy -p kabar-app --all-targets -- -D warnings
+      - run: cargo test -p kabar-app
+      # Built from source like scripts/setup-mac.sh does: the prebuilt macOS dx
+      # links Homebrew's OpenSSL at the Intel path (/usr/local/opt), which
+      # Apple-silicon runners don't have. ~/.cargo/bin is cached afterwards.
+      - name: Install dx 0.7.10
+        run: |
+          if ! dx --version 2>/dev/null | grep -q '0.7.10'; then
+            cargo install dioxus-cli --version 0.7.10 --locked
+          fi
+      - name: Bundle Kabar.app
+        run: |
+          cd crates/app
+          # On failure, the tail of dx's output becomes annotations, readable
+          # from the API without the raw log.
+          if ! dx bundle --platform macos --release --package-types macos --out-dir ../../dist/mac > ../../dx-bundle.log 2>&1; then
+            # GitHub keeps 10 annotations per step: send the error lines.
+            grep -iE 'error|failed|panick|not found|no such' ../../dx-bundle.log | grep -v ' INFO Compiled' | tail -n 9 | sed 's/^/::error::/'
+            exit 1
+          fi
+          tail -n 5 ../../dx-bundle.log
+          find ../../dist/mac -maxdepth 3 -name '*.app'
+          test -n "$(find ../../dist/mac -maxdepth 3 -name '*.app')"
