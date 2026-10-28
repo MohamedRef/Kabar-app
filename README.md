@@ -39,6 +39,7 @@ the Arabic words Indonesian already borrowed.
 | Sync through Kabar Cloud, Google sign-in, Devices screen | ✓ | ✓ | ✓ |
 | Updates over the air: signed feed, automatic / tell me first / off, alpha·beta·stable (preview for CI builds) | ✓ swaps Kabar.app | ✓ PackageInstaller | ✓ PackageInstaller |
 | "A new Kabar is out" notification with what's new (keeps quiet hours) | ✓ while open | ✓ even when closed, Download / Install button | ✓ even when closed, Download / Install button |
+| What's new: a sheet before installing, once after each update, and a full changelog in Settings (from `changes/*.yaml`) | ✓ | ✓ | ✓ |
 | Pen **writing** (Notebook, Gambar!, handwritten answers, Card Wall, aksara calligraphy) | paused | paused | paused |
 | Home-screen widgets | — | parked | parked |
 

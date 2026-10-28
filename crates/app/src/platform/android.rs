@@ -1047,3 +1047,23 @@ pub extern "system" fn Java_app_kabar_UpdateCheckJob_check<'caller>(
         })
         .resolve::<jni::errors::LogErrorAndDefault>()
 }
+
+/// `UpdateCheckJob.shown(dataDir, key)`: Android showed the notification
+/// `check` returned, so it isn't sent again (one that failed to show is
+/// tried again at the next run).
+#[unsafe(no_mangle)]
+pub extern "system" fn Java_app_kabar_UpdateCheckJob_shown<'caller>(
+    mut unowned_env: jni::EnvUnowned<'caller>,
+    _this: JObject<'caller>,
+    data_dir: JString<'caller>,
+    key: JString<'caller>,
+) {
+    unowned_env
+        .with_env(|env| -> jni::errors::Result<()> {
+            let dir = data_dir.mutf8_chars(env)?.to_string();
+            let key = key.mutf8_chars(env)?.to_string();
+            crate::update::background_shown(Path::new(&dir), &key);
+            Ok(())
+        })
+        .resolve::<jni::errors::LogErrorAndDefault>()
+}

@@ -79,7 +79,9 @@ if command -v readelf >/dev/null; then
   unzip -q -o "$APK" 'lib/arm64-v8a/*.so' -d "$libdir"
   syms="$(for so in "$libdir"/lib/arm64-v8a/*.so; do readelf --dyn-syms -W "$so"; done)"
   rm -rf "$libdir"
-  grep -q 'Java_app_kabar_UpdateCheckJob_check' <<<"$syms" \
-    || fail "The native library doesn't export Java_app_kabar_UpdateCheckJob_check: the background update check can't reach Rust."
-  echo "Native export for the background update check present"
+  for export in Java_app_kabar_UpdateCheckJob_check Java_app_kabar_UpdateCheckJob_shown; do
+    grep -q "$export" <<<"$syms" \
+      || fail "The native library doesn't export $export: the background update check can't reach Rust."
+  done
+  echo "Native exports for the background update check present"
 fi

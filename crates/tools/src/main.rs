@@ -12,6 +12,7 @@ use clap::{Parser, Subcommand};
 
 mod bakeoff;
 mod bridge;
+mod changes;
 mod coverage;
 mod dialect;
 mod explains;

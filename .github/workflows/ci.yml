@@ -58,6 +58,21 @@ jobs:
       # Advisory until the Jogja/Madiun relocation lands: Javanese is Jogja + Madiun only.
       - name: Javanese dialect (advisory)
         run: cargo run -q -p kabar-tools -- dialect --warn
+      # Advisory: a pull request the learner will notice says so in
+      # changes/<topic>.yaml (docs/RELEASE.md §5, "What's new"); without one
+      # the update shows its title, in English.
+      - name: What's new file (advisory)
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.base_ref }}
+        run: |
+          git fetch -q --depth=1 origin "$BASE"
+          files="$(git diff --name-only --diff-filter=AM FETCH_HEAD HEAD)"
+          if grep -qE '^(crates/(app|core)/|android/|content/)' <<<"$files" \
+            && ! grep -qE '^changes/.+\.yaml$' <<<"$files"; then
+            echo "::warning::No changes/*.yaml: the app will show this PR's title (English) as what's new. Add one line per visible change, or a file holding [] when there is nothing to tell."
+          fi
+          cargo run -q -p kabar-tools -- update changes >/dev/null
 
   android:
     name: Android arm64 compiles
