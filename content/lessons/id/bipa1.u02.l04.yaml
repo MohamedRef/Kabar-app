@@ -119,6 +119,38 @@ exercises:
       ar: هل تريدين قهوة يا سيدتي؟
       en: Would you like coffee, ma'am?
     words: [Ibu, mau, kopi]
+  - id: e07
+    type: fill_blank
+    sentence: Ibu mau kopi? — ___, saya mau kopi.
+    meaning:
+      ar_eg: حضرتك عايزة قهوة؟ — أوكيه، عايزة قهوة.
+      ar: هل تريدين قهوة؟ — حسنًا، أريد قهوة.
+      en: Would you like coffee? — OK, I'd like coffee.
+    options: [Oke, Kamu, Dia]
+    answers: [Oke]
+    explain:
+      ar_eg: oke = أوكيه/ماشي، زي ما بنقولها بالظبط. kamu = إنت، وdia = هو.
+      ar: oke = حسنًا (موافقة)، أما kamu فـ«أنت» وdia «هو».
+      en: oke = OK, just like in English. kamu is "you", dia "he".
+    words: [oke, kopi]
+  - id: e08
+    type: listen
+    text: Oke, Bu. Saya mau kopi.
+    options: ['Oke, Pak. Saya mau kopi.', 'Oke, Bu. Saya mau kopi.', 'Ya, Bu. Saya mau kopi.']
+    answer: 1
+    meaning:
+      ar_eg: ماشي يا مدام. أنا عايز قهوة.
+      ar: حسنًا يا سيدتي. أريد قهوة.
+      en: OK, ma'am. I'd like coffee.
+    words: [oke, mau]
+  - id: e09
+    type: speaking
+    text: Oke, Pak. Saya juga mau kopi.
+    meaning:
+      ar_eg: ماشي يا أستاذ. أنا كمان عايز قهوة.
+      ar: حسنًا يا سيدي. أريد قهوة أيضًا.
+      en: OK, sir. I'd like a coffee too.
+    words: [oke, mau, kopi]
 dialogue:
   lines:
     - speaker: Pak Irwan
@@ -162,6 +194,11 @@ new_words:
     ar_eg: قهوة
     ar: قهوة
     en: coffee
+  - word: oke
+    pos: interjection
+    ar_eg: أوكيه، ماشي
+    ar: حسنًا
+    en: OK
 review:
   status: draft
   verified: false
