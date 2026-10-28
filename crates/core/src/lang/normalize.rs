@@ -35,6 +35,7 @@ static SEED: &[Norm] = &[
     n("arp", "arep", Jv),
     n("bgt", "banget", Id),
     n("blm", "belum", Id),
+    n("brp", "berapa", Id),
     n("bs", "bisa", Id),
     n("bsk", "besok", Id),
     n("cod", "cash on delivery", En),

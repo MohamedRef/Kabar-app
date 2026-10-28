@@ -1,0 +1,240 @@
+schema: kabar.lesson/v1
+id: j1.u01.l09
+language: jv
+title: Ngenteni ing dalan
+can_do:
+  ar_eg: تقول إنك استنيت كتير في الشارع، وإن المكان قريب، وتطلب واحد أو اتنين.
+  ar: أن تقول إنك انتظرت طويلًا في الشارع، وإن المكان قريب، وتطلب واحدًا أو اثنين.
+  en: Say you waited a long time on the street and the place is close, and order one or two.
+slides:
+  - title: Malioboro bengi
+    body:
+      ar_eg: |
+        كلمات هتسمعها في الراديو والمسلسل من أول وحدة:
+        - **ngenteni** = يستنى (menunggu) · **suwe** = مدة طويلة (lama): Aku ngenteni suwe = استنيت كتير.
+        - **ing** = في (di)، أرسمي شوية من neng · **dalan** = شارع / طريق (jalan)
+        - **cedhak** = قريب (dekat) · **luwih** = أكتر (lebih): luwih apik = أحسن
+        - **siji** = واحد · **loro** = اتنين: kopi siji, teh loro.
+      ar: |
+        كلمات ستسمعها في الراديو والمسلسل من الوحدة الأولى:
+        - **ngenteni** = ينتظر (menunggu) · **suwe** = مدة طويلة (lama): Aku ngenteni suwe = انتظرت طويلًا.
+        - **ing** = في (di)، أرسمى قليلًا من neng · **dalan** = شارع / طريق (jalan)
+        - **cedhak** = قريب (dekat) · **luwih** = أكثر (lebih): luwih apik = أفضل
+        - **siji** = واحد · **loro** = اثنان: kopi siji، teh loro.
+      en: |
+        Words you'll hear on the radio and in the Sinetron from the first unit:
+        - **ngenteni** = wait (menunggu) · **suwe** = a long time (lama): Aku ngenteni suwe = I waited ages.
+        - **ing** = in, at (di), a bit more formal than neng · **dalan** = street, road (jalan)
+        - **cedhak** = near (dekat) · **luwih** = more (lebih): luwih apik = better
+        - **siji** = one · **loro** = two: kopi siji, teh loro.
+    examples:
+      - text: Aku ngenteni suwe, Mas!
+        ar_eg: استنيت كتير يا ماس!
+        ar: انتظرت طويلًا يا أخي!
+        en: I waited ages, Mas!
+      - text: Aku ngenteni kowe ing dalan Malioboro.
+        ar_eg: أنا مستنيك في شارع ماليوبورو.
+        ar: أنا أنتظرك في شارع ماليوبورو.
+        en: I'm waiting for you on Malioboro street.
+      - text: Kopi siji lan kopi joss loro, Mas.
+        ar_eg: قهوة واحدة واتنين كوبي جوس يا ماس.
+        ar: قهوة واحدة واثنتان kopi joss يا أخي.
+        en: One coffee and two kopi joss, Mas.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: suwe
+        ar_eg: مدة طويلة
+        ar: مدة طويلة
+        en: a long time
+      - text: ngenteni
+        ar_eg: يستنى
+        ar: ينتظر
+        en: wait
+      - text: siji
+        ar_eg: واحد
+        ar: واحد
+        en: one
+      - text: loro
+        ar_eg: اتنين
+        ar: اثنان
+        en: two
+    words: [suwe, ngenteni, siji, loro]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: luwih
+        ar_eg: أكتر
+        ar: أكثر
+        en: more
+      - text: ing
+        ar_eg: في
+        ar: في
+        en: in, at
+      - text: dalan
+        ar_eg: شارع
+        ar: شارع
+        en: street
+      - text: cedhak
+        ar_eg: قريب
+        ar: قريب
+        en: near
+    words: [luwih, ing, dalan, cedhak]
+  - id: e03
+    type: listen
+    text: Aku ngenteni suwe, Mas!
+    question:
+      ar_eg: بيقول إيه؟
+      ar: ماذا يقول؟
+      en: What is he saying?
+    options: [استنيت كتير يا ماس, لسه واصل يا ماس, مش هستنى يا ماس]
+    answer: 0
+    meaning:
+      ar_eg: استنيت كتير يا ماس!
+      ar: انتظرت طويلًا يا أخي!
+      en: I waited ages, Mas!
+    words: [ngenteni, suwe]
+  - id: e04
+    type: fill_blank
+    sentence: Aku ___ kowe ing dalan.
+    meaning:
+      ar_eg: أنا ___ك في الشارع.
+      ar: أنا ___ك في الشارع.
+      en: I'm ___ for you on the street.
+    options: [ngenteni, cedhak, luwih]
+    answers: [ngenteni]
+    words: [ngenteni, cedhak, luwih, ing, dalan]
+  - id: e05
+    type: fill_blank
+    sentence: Kopi ___, Mas!
+    meaning:
+      ar_eg: قهوة ___ يا ماس!
+      ar: قهوة ___ يا أخي!
+      en: ___ coffee, Mas!
+    options: [siji, suwe, dalan]
+    answers: [siji]
+    words: [siji, suwe, dalan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «قريب»؟
+      ar: أيّ كلمة تعني «قريب»؟
+      en: Which word means "near"?
+    options: [cedhak, dalan, loro]
+    answer: 0
+    explain:
+      ar_eg: cedhak = قريب. dalan = شارع، وloro = اتنين.
+      ar: cedhak = قريب، أما dalan فشارع وloro اثنان.
+      en: cedhak = near. dalan = street, loro = two.
+    words: [cedhak, dalan, loro]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «اتنين»؟
+      ar: أيّ كلمة تعني «اثنان»؟
+      en: Which word means "two"?
+    options: [loro, siji, ing]
+    answer: 0
+    explain:
+      ar_eg: loro = اتنين. siji = واحد، وing = في.
+      ar: loro = اثنان، أما siji فواحد وing في.
+      en: loro = two. siji = one, ing = in.
+    words: [loro, siji, ing]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: الأنجكرينجان قريبة من الشارع.
+      ar: الأنجكرينجان قريبة من الشارع.
+      en: The angkringan is near the road.
+    answer: Angkringane cedhak dalan.
+    distractors: [suwe, loro]
+    words: [cedhak, dalan]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Kopi joss luwih apik, Mas.
+    answers_meaning:
+      ar_eg: [الكوبي جوس أحسن يا ماس, الكوبي جوس أحلى يا ماس]
+      ar: [الـ kopi joss أفضل يا أخي, kopi joss أفضل يا أخي]
+      en: ['Kopi joss is better, Mas', 'The kopi joss is better, Mas']
+    words: [luwih]
+  - id: e10
+    type: speaking
+    text: Aku ngenteni ing dalan Malioboro.
+    meaning:
+      ar_eg: أنا مستني في شارع ماليوبورو.
+      ar: أنا أنتظر في شارع ماليوبورو.
+      en: I'm waiting on Malioboro street.
+    words: [ngenteni, ing, dalan]
+dialogue:
+  lines:
+    - speaker: Mas Heru
+      text: Mohamed! Sori, kowe ngenteni suwe?
+      ar_eg: يا محمد! معلش، استنيت كتير؟
+      ar: يا محمد! عذرًا، هل انتظرت طويلًا؟
+      en: Mohamed! Sorry, have you been waiting long?
+    - speaker: Mohamed
+      text: Lumayan suwe, Mas. Aku ngenteni ing dalan Malioboro.
+      ar_eg: شوية كتير يا ماس. كنت مستني في شارع ماليوبورو.
+      ar: مدة لا بأس بها يا أخي. كنت أنتظر في شارع ماليوبورو.
+      en: A fair while, Mas. I was waiting on Malioboro street.
+    - speaker: Mas Heru
+      text: Sori! Angkringane cedhak, ayo!
+      ar_eg: معلش! الأنجكرينجان قريبة، يلا!
+      ar: عذرًا! الأنجكرينجان قريبة، هيا!
+      en: Sorry! The angkringan's close, let's go!
+    - speaker: Mohamed
+      text: Ayo! Kopi joss loro, nggih?
+      ar_eg: يلا! اتنين كوبي جوس، ماشي؟
+      ar: هيا! اثنتان kopi joss، حسنًا؟
+      en: Let's go! Two kopi joss, OK?
+    - speaker: Mas Heru
+      text: Nggih, loro. Kopi joss iki luwih apik!
+      ar_eg: ماشي، اتنين. الكوبي جوس دي أحسن!
+      ar: حسنًا، اثنتان. هذه الـ kopi joss أفضل!
+      en: Sure, two. This kopi joss is better!
+new_words:
+  - word: ngenteni
+    pos: verb
+    ar_eg: يستنى (menunggu)
+    ar: ينتظر (menunggu)
+    en: wait for (menunggu)
+  - word: suwe
+    pos: adjective
+    ar_eg: مدة طويلة / كتير (lama)
+    ar: مدة طويلة (lama)
+    en: a long time (lama)
+  - word: ing
+    pos: preposition
+    ar_eg: في (di)؛ أرسمي من neng
+    ar: في (di)؛ أرسمى من neng
+    en: in, at (di); more formal than neng
+  - word: dalan
+    pos: noun
+    ar_eg: شارع / طريق (jalan)
+    ar: شارع / طريق (jalan)
+    en: street, road (jalan)
+  - word: cedhak
+    pos: adjective
+    ar_eg: قريب (dekat)
+    ar: قريب (dekat)
+    en: near (dekat)
+  - word: luwih
+    pos: adverb
+    ar_eg: أكتر (lebih)
+    ar: أكثر (lebih)
+    en: more (lebih)
+  - word: siji
+    pos: number
+    ar_eg: واحد (satu)
+    ar: واحد (satu)
+    en: one (satu)
+  - word: loro
+    pos: number
+    ar_eg: اتنين (dua)
+    ar: اثنان (dua)
+    en: two (dua)
+review:
+  status: draft
+  verified: false

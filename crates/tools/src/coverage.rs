@@ -1,6 +1,14 @@
 //! `kabar-tools coverage`: unknown-word share of every Sinetron episode,
 //! Radio script and lesson dialogue at the point the learner meets it (#138).
 //! The measuring lives in `kabar_content::coverage`.
+//!
+//! Lesson dialogues ratchet (#371): `content/freq/dialogue-over.tsv` lists the
+//! dialogues already over a limit. `--warn` flags any other dialogue that goes
+//! over, and any listed one that is now under (drop its row); `--baseline`
+//! rewrites the list.
+
+use std::collections::BTreeSet;
+use std::fmt::Write as _;
 
 use anyhow::Result;
 use clap::Args as ClapArgs;
@@ -11,7 +19,8 @@ use crate::paths::Root;
 #[derive(ClapArgs)]
 pub struct Args {
     /// Print a GitHub Actions warning for every Sinetron episode and Radio
-    /// script over either limit (never fails).
+    /// script over either limit, and for every lesson dialogue whose state
+    /// differs from content/freq/dialogue-over.tsv (never fails).
     #[arg(long)]
     pub warn: bool,
     /// List every item, not only those over a limit.
@@ -20,6 +29,24 @@ pub struct Args {
     /// List every unknown word of each item shown, not only the six most frequent.
     #[arg(long)]
     pub words: bool,
+    /// Rewrite content/freq/dialogue-over.tsv from the dialogues over a limit now.
+    #[arg(long)]
+    pub baseline: bool,
+}
+
+const BASELINE: &str = "content/freq/dialogue-over.tsv";
+
+fn warning(i: &Item, extra: &str) -> String {
+    format!(
+        "::warning title=Reading coverage::{} has {:.1}% words not taught by {} (limit {}%), {:.1}% before glosses (limit {}%): {}{extra}",
+        i.id,
+        i.percent(),
+        i.after,
+        i.limit(),
+        i.raw_percent(),
+        i.raw_limit(),
+        i.top(6).into_iter().map(|(w, _)| w).collect::<Vec<_>>().join(", ")
+    )
 }
 
 fn median(mut v: Vec<f64>) -> f64 {
@@ -67,19 +94,46 @@ pub fn run(root: &Root, args: Args) -> Result<()> {
     for i in &shown {
         println!("{}", line(i, if args.words { usize::MAX } else { 6 }));
     }
+    let over_dialogues: Vec<&Item> =
+        items.iter().filter(|i| i.kind == "dialogue" && (i.over() || i.raw_over())).collect();
+    let path = root.path().join(BASELINE);
+    if args.baseline {
+        let mut out = String::from(
+            "# Lesson dialogues over the reading-coverage limit (#371). id<TAB>glossed%<TAB>raw%.\n\
+             # Teach or reword to drop a row; `kabar-tools coverage --baseline` rewrites this list.\n",
+        );
+        for i in &over_dialogues {
+            writeln!(out, "{}\t{:.1}\t{:.1}", i.id, i.percent(), i.raw_percent())?;
+        }
+        std::fs::write(&path, out)?;
+        println!("wrote {} rows to {BASELINE}", over_dialogues.len());
+    }
     if args.warn {
         for i in items.iter().filter(|i| (i.over() || i.raw_over()) && i.kind != "dialogue") {
+            println!("{}", warning(i, ""));
+        }
+        let known: BTreeSet<String> = std::fs::read_to_string(&path)
+            .unwrap_or_default()
+            .lines()
+            .filter(|l| !l.starts_with('#'))
+            .filter_map(|l| l.split('\t').next())
+            .filter(|id| !id.is_empty())
+            .map(str::to_owned)
+            .collect();
+        for i in over_dialogues.iter().filter(|i| !known.contains(&i.id)) {
+            println!("{}", warning(i, &format!(" (new: not in {BASELINE})")));
+        }
+        let now: BTreeSet<&str> = over_dialogues.iter().map(|i| i.id.as_str()).collect();
+        for id in known.iter().filter(|id| !now.contains(id.as_str())) {
             println!(
-                "::warning title=Reading coverage::{} has {:.1}% words not taught by {} (limit {}%), {:.1}% before glosses (limit {}%): {}",
-                i.id,
-                i.percent(),
-                i.after,
-                i.limit(),
-                i.raw_percent(),
-                i.raw_limit(),
-                i.top(6).into_iter().map(|(w, _)| w).collect::<Vec<_>>().join(", ")
+                "::warning title=Reading coverage::{id} is now within the limit; drop its row from {BASELINE}"
             );
         }
+        println!(
+            "{} lesson dialogues over a limit ({} listed in {BASELINE})",
+            over_dialogues.len(),
+            known.len()
+        );
     }
     Ok(())
 }
