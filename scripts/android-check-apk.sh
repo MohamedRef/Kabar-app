@@ -48,6 +48,8 @@ if command -v aapt2 >/dev/null; then
   fi
   grep -q "TTS_SERVICE" <<<"$manifest" || fail "The manifest lost its text-to-speech <queries> block."
   grep -q "REQUEST_INSTALL_PACKAGES" <<<"$manifest" || fail "The manifest lost REQUEST_INSTALL_PACKAGES (self-updates)."
+  grep -q "dataExtractionRules" <<<"$manifest" && grep -q "fullBackupContent" <<<"$manifest" \
+    || fail "The manifest lost its backup rules: Auto Backup would copy the update APK and audio, go over 25 MB and skip kabar.db (#370)."
   grep -q "windowSoftInputMode" <<<"$manifest" || fail "MainActivity lost windowSoftInputMode=adjustResize: the keyboard would cover the Check button."
   # A debuggable APK runs slower and lets anyone with USB read Kabar's data.
   if grep -q "^application-debuggable" <<<"$badging"; then
@@ -56,7 +58,7 @@ if command -v aapt2 >/dev/null; then
   if grep -q "versionCode='1'" <<<"$badging"; then
     fail "The APK's versionCode is still dx's 1."
   fi
-  echo "Launcher icon: Kabar's; TTS queries present; release build ($(grep -o "versionCode='[0-9]*'" <<<"$badging"))"
+  echo "Launcher icon: Kabar's; TTS queries and backup rules present; release build ($(grep -o "versionCode='[0-9]*'" <<<"$badging"))"
 fi
 
 # Native libraries: arm64 only, stored uncompressed, because the manifest asks

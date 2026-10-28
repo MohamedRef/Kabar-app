@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  What Android 12+ copies off the device (#370). Only what's listed is kept;
+  everything else under the app's data is left out:
+
+  - kabar.db holds progress, reviews, the journal, settings and Kak Nur's
+    memory. Until Kabar Cloud is deployed this is the only off-device copy.
+  - The small preference files: reminder times, pack and update choices.
+  - Not the keyring's prefs (the Cloud token, encrypted with an Android
+    Keystore key that never leaves the device: on a new phone the learner
+    simply signs in again), the downloaded update APK, the Reader inbox or
+    any cache.
+
+  Cloud backup is capped at 25 MB, and Android skips the whole backup when an
+  app is over it, so audio stays out there: packs re-download on their own.
+  A phone-to-phone transfer (Smart Switch) has no cap, so it brings the
+  downloaded audio along and the new phone works offline straight away.
+
+  Android 9–11 read kabar_backup_rules.xml instead; keep the two in step.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="file" path="kabar.db" />
+        <include domain="file" path="packs/prefs.json" />
+        <include domain="file" path="updates/prefs.json" />
+        <include domain="sharedpref" path="kabar_reminders.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="file" path="kabar.db" />
+        <include domain="file" path="packs/" />
+        <include domain="file" path="audio/" />
+        <include domain="file" path="updates/prefs.json" />
+        <include domain="sharedpref" path="kabar_reminders.xml" />
+    </device-transfer>
+</data-extraction-rules>
