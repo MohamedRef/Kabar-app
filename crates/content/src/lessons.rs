@@ -354,6 +354,14 @@ impl Check<'_> {
         if !speakers.contains(speaker) {
             self.push(format_args!("{at}.speaker '{speaker}' must be one of {speakers:?}"));
         }
+        // Sinetron and Radio `text` is read aloud by TTS, so script belongs in
+        // the note. Persona chats (with corrections) show aksara on purpose.
+        let text = v.get("text").and_then(Value::as_str).unwrap_or_default();
+        if !corrections
+            && text.chars().any(|c| matches!(c, '\u{0600}'..='\u{06FF}' | '\u{A980}'..='\u{A9DF}'))
+        {
+            self.push(format_args!("{at}.text is read aloud: put Javanese or Arabic script in the note"));
+        }
         if v.get("note").is_some() {
             self.localized(&format!("{at}.note"), v.get("note"), &[], &[]);
         }
