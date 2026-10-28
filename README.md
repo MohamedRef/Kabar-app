@@ -71,11 +71,11 @@ every morning. CI warns when the table below is behind the content.
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | J1 | Malioboro, Yogyakarta | — | 7 | 58 | 537 | 313 | 264 / 250 | ~7 h | 34 |
 | J2 | Madiun | — | 6 | 57 | 551 | 293 | 509 / 500 | ~6 h | 35 |
-| J3 | Pakualaman, Yogyakarta | — | 6 | 67 | 615 | 297 | 764 / 750 | ~7 h | 35 |
-| J4 | Kraton, Yogyakarta | — | 6 | 73 | 687 | 273 | 1,014 / 1,000 | ~8 h | 38 |
-| J5 | Kutha Pendekar (Madiun) | — | 6 | 72 | 683 | 295 | 1,260 / 1,250 | ~8 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 86 | 808 | 292 | 1,515 / 1,500 | ~9 h | 37 |
-| **Total** |  | — | 37 | 413 | 3,881 | 1,763 | 1,515 / 1,500 | ~45 h | 218 |
+| J3 | Pakualaman, Yogyakarta | — | 6 | 70 | 645 | 302 | 769 / 750 | ~8 h | 35 |
+| J4 | Kraton, Yogyakarta | — | 6 | 73 | 687 | 271 | 1,017 / 1,000 | ~8 h | 38 |
+| J5 | Kutha Pendekar (Madiun) | — | 6 | 72 | 683 | 295 | 1,263 / 1,250 | ~8 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 86 | 808 | 292 | 1,518 / 1,500 | ~9 h | 37 |
+| **Total** |  | — | 37 | 416 | 3,911 | 1,766 | 1,518 / 1,500 | ~46 h | 218 |
 
 **Reference content and stories**
 

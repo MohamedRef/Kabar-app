@@ -103,7 +103,7 @@ fn lesson_checks_reject_broken_lessons() {
 #[test]
 fn javanese_lessons_and_story_assets_exist() {
     let report = check_repo(root()).expect("content files load");
-    for (level, n) in [("j1.", 58), ("j2.", 57), ("j3.", 67)] {
+    for (level, n) in [("j1.", 58), ("j2.", 57), ("j3.", 70)] {
         assert_eq!(report.lessons.iter().filter(|l| l.starts_with(level)).count(), n, "{level} lessons");
     }
     for id in ["mas-dimas", "bu-siti", "mbak-gadis", "mas-ardi", "sinetron.e01", "radio.bipa1.u01"] {
