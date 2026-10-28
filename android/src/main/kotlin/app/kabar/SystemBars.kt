@@ -27,7 +27,8 @@ object SystemBars {
             val lightBars = isLight(colour)
             val window = activity.window
             @Suppress("DEPRECATION")
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            // 35 = Android 15 (VANILLA_ICE_CREAM; the compile SDK may predate the name).
+            if (Build.VERSION.SDK_INT < 35) {
                 window.statusBarColor = colour
                 window.navigationBarColor = colour
             }
