@@ -890,7 +890,20 @@ impl Updater {
         self.clear_downloads(Some(&offer.asset.file));
         let path = self.dir.join(&offer.asset.file);
         self.set_phase(Phase::Downloading { offer: offer.clone(), done: 0 });
-        match self.fetch_build(&format!("{base}/{}", offer.asset.file), &offer, &path) {
+        let url = format!("{base}/{}", offer.asset.file);
+        let mut result = self.fetch_build(&url, &offer, &path);
+        // A connection that dropped mid-file is picked up again where it
+        // stopped, a few times, before giving up until the next try.
+        for wait in DOWNLOAD_RETRIES {
+            match &result {
+                Err(Fetch { why: Failure::Network, progressed: true }) => {
+                    std::thread::sleep(self.retry_after * wait);
+                    result = self.fetch_build(&url, &offer, &path);
+                }
+                _ => break,
+            }
+        }
+        match result.map_err(|f| f.why) {
             Ok(()) => {
                 if let Err(e) = save_staged(&self.dir, &offer) {
                     crate::diag::report!("update staged.json: {e}");
@@ -905,39 +918,92 @@ impl Updater {
     }
 
     /// Streams the build to `<file>.part` while hashing it, checks size and
-    /// SHA-256 against the signed manifest, then renames it into place.
-    fn fetch_build(&self, url: &str, offer: &Offer, path: &Path) -> Result<(), Failure> {
-        let mut res = agent(Duration::from_secs(30 * 60)).get(url).call().map_err(|_| Failure::Network)?;
-        if res.status().as_u16() != 200 {
-            return Err(Failure::Network);
+    /// SHA-256 against the signed manifest, then renames it into place. A
+    /// part left by an interrupted try of the same build is continued with
+    /// an HTTP Range request instead of starting over; the hash still covers
+    /// every byte, old and new.
+    fn fetch_build(&self, url: &str, offer: &Offer, path: &Path) -> Result<(), Fetch> {
+        let (part, meta) = part_paths(path);
+        let want = PartMeta { size: offer.asset.size, sha256: offer.asset.sha256.clone() };
+        let on_disk = fs::metadata(&part).map_or(0, |m| m.len());
+        let mut have = match read_part_meta(&meta) {
+            Some(m) if m == want && on_disk < want.size => on_disk,
+            _ => 0,
+        };
+        if have == 0 {
+            let _ = fs::remove_file(&part);
+            let json = serde_json::to_vec(&want).unwrap_or_default();
+            fs::write(&meta, json).map_err(|e| Fetch::stopped(Failure::Install(e.to_string())))?;
         }
-        let part = path.with_extension("part");
-        let mut file = fs::File::create(&part).map_err(|e| Failure::Install(e.to_string()))?;
-        let mut reader = res.body_mut().as_reader().take(offer.asset.size + 1);
+        let mut req = agent(Duration::from_secs(30 * 60)).get(url);
+        if have > 0 {
+            req = req.header("Range", format!("bytes={have}-"));
+        }
+        let mut res = req.call().map_err(|_| Fetch::stopped(Failure::Network))?;
+        match res.status().as_u16() {
+            206 if have > 0 && range_start(&res) == Some(have) => {}
+            // The server sent the whole file (or ignored the range): start over.
+            200 => have = 0,
+            // The range no longer fits this file: drop the part, next try starts fresh.
+            416 => {
+                let _ = fs::remove_file(&part);
+                return Err(Fetch::stopped(Failure::Network));
+            }
+            _ => return Err(Fetch::stopped(Failure::Network)),
+        }
         let mut hash = Sha256::new();
-        let (mut done, mut shown) = (0u64, 0u64);
+        let mut file = if have > 0 {
+            let mut old =
+                fs::File::open(&part).map_err(|e| Fetch::stopped(Failure::Install(e.to_string())))?;
+            let read = std::io::copy(&mut (&mut old).take(have), &mut hash)
+                .map_err(|e| Fetch::stopped(Failure::Install(e.to_string())))?;
+            if read != have {
+                let _ = fs::remove_file(&part);
+                return Err(Fetch::stopped(Failure::Network));
+            }
+            fs::OpenOptions::new().append(true).open(&part)
+        } else {
+            fs::File::create(&part)
+        }
+        .map_err(|e| Fetch::stopped(Failure::Install(e.to_string())))?;
+        let mut reader = res.body_mut().as_reader().take(offer.asset.size - have + 1);
+        let (mut done, mut shown) = (have, have);
+        self.set_phase(Phase::Downloading { offer: offer.clone(), done });
         let mut buf = vec![0u8; 64 * 1024];
         loop {
-            let n = reader.read(&mut buf).map_err(|_| Failure::Network)?;
+            let progressed = done > have;
+            let n = reader.read(&mut buf).map_err(|_| Fetch { why: Failure::Network, progressed })?;
             if n == 0 {
                 break;
             }
             hash.update(&buf[..n]);
-            file.write_all(&buf[..n]).map_err(|e| Failure::Install(e.to_string()))?;
+            file.write_all(&buf[..n]).map_err(|e| Fetch::stopped(Failure::Install(e.to_string())))?;
             done += n as u64;
             if done - shown > offer.asset.size / 100 {
                 shown = done;
                 self.set_phase(Phase::Downloading { offer: offer.clone(), done });
             }
         }
-        file.sync_all().map_err(|e| Failure::Install(e.to_string()))?;
+        file.sync_all().map_err(|e| Fetch::stopped(Failure::Install(e.to_string())))?;
         drop(file);
+        if done < offer.asset.size {
+            // The body ended early: keep what came, the next try continues it.
+            return Err(Fetch { why: Failure::Network, progressed: done > have });
+        }
         let hex: String = hash.finalize().iter().map(|b| format!("{b:02x}")).collect();
         if let Err(e) = check_download(&offer.asset, done, &hex) {
             let _ = fs::remove_file(&part);
-            return Err(update_failure(e));
+            let _ = fs::remove_file(&meta);
+            if have > 0 {
+                // The kept part was likely damaged: fetch it whole once more
+                // (a retry from zero) before calling the build bad.
+                return Err(Fetch { why: Failure::Network, progressed: true });
+            }
+            return Err(Fetch::stopped(update_failure(e)));
         }
-        fs::rename(&part, path).map_err(|e| Failure::Install(e.to_string()))
+        fs::rename(&part, path).map_err(|e| Fetch::stopped(Failure::Install(e.to_string())))?;
+        let _ = fs::remove_file(&meta);
+        Ok(())
     }
 
     /// Re-hashes the staged file: whatever sat on disk since the download
@@ -1029,6 +1095,13 @@ impl Updater {
             let name = e.file_name().to_string_lossy().into_owned();
             if name == "prefs.json" || name == changelog::FILE || Some(name.as_str()) == keep {
                 continue;
+            }
+            // The unfinished download of the kept build, to resume.
+            if let Some(k) = keep {
+                let (part, meta) = part_paths(Path::new(k));
+                if Path::new(&name) == part || Path::new(&name) == meta {
+                    continue;
+                }
             }
             if name == "staged.json" && keep.is_some() {
                 continue;
@@ -1146,6 +1219,47 @@ fn update_failure(e: UpdateError) -> Failure {
         UpdateError::TooNew => Failure::TooNew,
         other => Failure::Verify(other.to_string()),
     }
+}
+
+/// Waits (in units of `retry_after`) before each retry of a download whose
+/// connection dropped mid-file: 20 s, 1 min, 3 min in a real build.
+const DOWNLOAD_RETRIES: [u32; 3] = [1, 3, 9];
+
+/// A failed download try, and whether it got any new bytes (worth retrying
+/// right away: the connection dropped rather than never opened).
+#[derive(Debug)]
+struct Fetch {
+    why: Failure,
+    progressed: bool,
+}
+
+impl Fetch {
+    fn stopped(why: Failure) -> Self {
+        Self { why, progressed: false }
+    }
+}
+
+/// Which build a `.part` file belongs to, so only the same build resumes.
+#[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]
+struct PartMeta {
+    size: u64,
+    sha256: String,
+}
+
+/// `<file>.part` and the `<file>.part.json` that says whose part it is.
+fn part_paths(path: &Path) -> (PathBuf, PathBuf) {
+    let name = path.file_name().map(|n| n.to_string_lossy().into_owned()).unwrap_or_default();
+    (path.with_file_name(format!("{name}.part")), path.with_file_name(format!("{name}.part.json")))
+}
+
+fn read_part_meta(path: &Path) -> Option<PartMeta> {
+    serde_json::from_slice(&fs::read(path).ok()?).ok()
+}
+
+/// The first byte of a 206 answer (`Content-Range: bytes 600-999/1000`).
+fn range_start<B>(res: &ureq::http::Response<B>) -> Option<u64> {
+    let v = res.headers().get("content-range")?.to_str().ok()?;
+    v.strip_prefix("bytes ")?.split('-').next()?.trim().parse().ok()
 }
 
 fn agent(timeout: Duration) -> ureq::Agent {
@@ -1291,7 +1405,20 @@ mod tests {
 
     /// Serves `dir` over plain HTTP on localhost, one request per connection.
     fn serve(dir: PathBuf) -> String {
+        serve_logged(dir).0
+    }
+
+    /// A tiny feed server: answers `Range: bytes=N-` with 206, and when
+    /// `<file>.cut` holds a number, sends only that many bytes of each answer
+    /// before hanging up (a dropped connection). Logs each request's path
+    /// and range start.
+    /// Each request's path and the byte its range starts at.
+    type RequestLog = std::sync::Arc<Mutex<Vec<(String, u64)>>>;
+
+    fn serve_logged(dir: PathBuf) -> (String, RequestLog) {
         use std::io::{BufRead as _, BufReader};
+        let log = RequestLog::default();
+        let seen = log.clone();
         let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
         let url = format!("http://{}", listener.local_addr().unwrap());
         std::thread::spawn(move || {
@@ -1302,20 +1429,40 @@ mod tests {
                     continue;
                 }
                 let path = line.split_whitespace().nth(1).unwrap_or("/").trim_start_matches('/').to_owned();
+                let mut from = 0u64;
                 loop {
                     let mut h = String::new();
                     if reader.read_line(&mut h).is_err() || h.trim().is_empty() {
                         break;
                     }
+                    let lower = h.to_ascii_lowercase();
+                    if let Some(r) = lower.strip_prefix("range: bytes=") {
+                        from = r.trim().trim_end_matches('-').parse().unwrap_or(0);
+                    }
                 }
+                seen.lock().unwrap().push((path.clone(), from));
                 let mut stream = reader.into_inner();
+                let cut: Option<usize> = fs::read_to_string(dir.join(format!("{path}.cut")))
+                    .ok()
+                    .and_then(|c| c.trim().parse().ok());
                 let _ = match fs::read(dir.join(&path)) {
+                    Ok(body) if from as usize >= body.len() && from > 0 => stream.write_all(
+                        b"HTTP/1.1 416 Range Not Satisfiable\r\nContent-Length: 0\r\nConnection: close\r\n\r\n",
+                    ),
                     Ok(body) => {
-                        let head = format!(
-                            "HTTP/1.1 200 OK\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
-                            body.len()
-                        );
-                        stream.write_all(head.as_bytes()).and_then(|()| stream.write_all(&body))
+                        let total = body.len();
+                        let rest = &body[from as usize..];
+                        let head = if from > 0 {
+                            format!(
+                                "HTTP/1.1 206 Partial Content\r\nContent-Range: bytes {from}-{}/{total}\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
+                                total - 1,
+                                rest.len()
+                            )
+                        } else {
+                            format!("HTTP/1.1 200 OK\r\nContent-Length: {total}\r\nConnection: close\r\n\r\n")
+                        };
+                        let sent = &rest[..cut.unwrap_or(rest.len()).min(rest.len())];
+                        stream.write_all(head.as_bytes()).and_then(|()| stream.write_all(sent))
                     }
                     Err(_) => stream.write_all(
                         b"HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\nConnection: close\r\n\r\n",
@@ -1323,7 +1470,7 @@ mod tests {
                 };
             }
         });
-        url
+        (url, log)
     }
 
     fn fixture_feed() -> tempfile::TempDir {
@@ -1571,6 +1718,73 @@ mod tests {
         // Up to date: nothing.
         let (u, _data) = updater(&url, "1.0.0-alpha.2");
         assert!(u.background(false, true, noon).is_none());
+    }
+
+    #[test]
+    fn a_dropped_download_picks_up_where_it_stopped() {
+        let apk = "kabar-1.0.0-alpha.2-android-arm64.apk";
+        let feed = fixture_feed();
+        let cut = feed.path().join(format!("{apk}.cut"));
+        let (url, log) = serve_logged(feed.path().to_path_buf());
+        let ranges = || -> Vec<u64> {
+            let mut log = log.lock().unwrap();
+            let r = log.iter().filter(|(p, _)| p == apk).map(|(_, from)| *from).collect();
+            log.clear();
+            r
+        };
+
+        // Every answer stops after 6 bytes: the 17-byte build comes in three
+        // pieces, each try asking for the rest, and the whole is verified.
+        fs::write(&cut, "6").unwrap();
+        let (u, data) = updater(&url, "1.0.0-alpha.1");
+        u.check(false);
+        u.download();
+        assert!(matches!(u.status().phase, Phase::Ready(_)), "{:?}", u.status().phase);
+        assert_eq!(ranges(), [0, 6, 12]);
+        let dir = data.path().join("updates");
+        assert_eq!(fs::read(dir.join(apk)).unwrap(), b"fixture apk bytes");
+        assert!(!dir.join(format!("{apk}.part")).exists());
+        assert!(!dir.join(format!("{apk}.part.json")).exists());
+
+        // Out of quick retries (2 bytes a try): the part stays, and the next
+        // try, a tap or the next check later, continues it.
+        fs::write(&cut, "2").unwrap();
+        let (u, data) = updater(&url, "1.0.0-alpha.1");
+        u.check(false);
+        u.download();
+        assert!(matches!(u.status().phase, Phase::Failed { why: Failure::Network, .. }));
+        assert_eq!(ranges(), [0, 2, 4, 6]);
+        let part = data.path().join("updates").join(format!("{apk}.part"));
+        assert_eq!(fs::read(&part).unwrap(), b"fixture ");
+        fs::remove_file(&cut).unwrap();
+        u.download();
+        assert!(matches!(u.status().phase, Phase::Ready(_)), "{:?}", u.status().phase);
+        assert_eq!(ranges(), [8]);
+
+        // A damaged part of this build: the resumed file fails the hash, so
+        // it's fetched whole once more.
+        let (u, data) = updater(&url, "1.0.0-alpha.1");
+        u.check(false);
+        let Phase::Available(o) = u.status().phase else { panic!() };
+        let dir = data.path().join("updates");
+        fs::create_dir_all(&dir).unwrap();
+        fs::write(dir.join(format!("{apk}.part")), b"FIXTURE ").unwrap();
+        let meta = PartMeta { size: o.asset.size, sha256: o.asset.sha256.clone() };
+        fs::write(dir.join(format!("{apk}.part.json")), serde_json::to_vec(&meta).unwrap()).unwrap();
+        u.download();
+        assert!(matches!(u.status().phase, Phase::Ready(_)), "{:?}", u.status().phase);
+        assert_eq!(ranges(), [8, 0]);
+
+        // A part left by another build is never continued: it starts over.
+        let (u, data) = updater(&url, "1.0.0-alpha.1");
+        let dir = data.path().join("updates");
+        fs::create_dir_all(&dir).unwrap();
+        fs::write(dir.join(format!("{apk}.part")), b"old buil").unwrap();
+        fs::write(dir.join(format!("{apk}.part.json")), r#"{"size":17,"sha256":"00"}"#).unwrap();
+        u.check(false);
+        u.download();
+        assert!(matches!(u.status().phase, Phase::Ready(_)), "{:?}", u.status().phase);
+        assert_eq!(ranges(), [0]);
     }
 
     #[test]

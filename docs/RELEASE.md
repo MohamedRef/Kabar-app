@@ -194,7 +194,12 @@ manifest is for the channel it asked for and newer than what's installed
 (version, then build number), and that file names are plain names next to
 the manifest (no URLs or paths). (3) The download's size and SHA-256 against
 the signed manifest, streamed while downloading and again right before
-installing. (4) Android: the APK's package, signing certificate and
+installing. A download that stops midway keeps its `<file>.part` (with a
+`<file>.part.json` naming the build it belongs to) and continues with an
+HTTP `Range` request: by itself up to three times (after 20 s, 1 min and
+3 min) when the connection dropped mid-file, otherwise at the next check or
+tap. The hash still covers every byte, old and new; a resumed file that fails
+it is fetched whole once more. (4) Android: the APK's package, signing certificate and
 `versionCode` against the installed Kabar, then Android's own checks.
 Mac: once Kabar.app is signed with the free "Kabar Code Signing"
 certificate (`just mac-codesign-cert`, once), a new bundle must pass
