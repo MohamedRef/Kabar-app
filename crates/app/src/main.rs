@@ -349,6 +349,12 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
+    // Android's status and navigation bars take the theme's background, so
+    // True black keeps the whole OLED screen dark.
+    use_effect(move || {
+        let (day, night) = ui.settings.read().theme.day_and_night();
+        platform::system_bars(day.bg, night.bg);
+    });
 
     let settings = ui.settings.read();
     let lang = settings.ui_language;
