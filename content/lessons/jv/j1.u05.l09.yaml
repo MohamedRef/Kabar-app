@@ -1,0 +1,184 @@
+schema: kabar.lesson/v1
+id: j1.u05.l09
+language: jv
+title: Warung neng Parangtritis
+can_do:
+  ar_eg: تقرا لوحة وارونج على الشط بالجاوي وتطلب.
+  ar: أن تقرأ لوحة مطعم شعبي على الشاطئ بالجاوية وتطلب.
+  en: Read a beach warung's sign in Javanese and order.
+slides:
+  - title: Papan warung
+    body:
+      ar_eg: |
+        على الرملة، لوحة خشب مكتوبة بخط اليد:
+        WARUNG MBAK SRI
+        - Iwak bakar … 25rb
+        - Jagung bakar … 10rb
+        - Degan … 12rb
+        - Banyu putih … 5rb
+        «Ora ana wifi, ngobrola wae!» = مفيش واي فاي، اتكلموا مع بعض وخلاص!
+        rb = ribu (ألف روبية). وفي الكلام هتسمع: «Degane pira, Mbak?».
+      ar: |
+        على الرمل لوحة خشبية بخط اليد:
+        WARUNG MBAK SRI
+        - Iwak bakar … 25rb
+        - Jagung bakar … 10rb
+        - Degan … 12rb
+        - Banyu putih … 5rb
+        «Ora ana wifi, ngobrola wae!» = لا يوجد واي فاي، تحادثوا فحسب!
+        rb = ribu (ألف روبية). وفي الكلام: «Degane pira, Mbak?».
+      en: |
+        On the sand, a hand-painted wooden board:
+        WARUNG MBAK SRI
+        - Iwak bakar … 25rb
+        - Jagung bakar … 10rb
+        - Degan … 12rb
+        - Banyu putih … 5rb
+        "Ora ana wifi, ngobrola wae!" = No wifi, just talk to each other!
+        rb = ribu (thousand rupiah). Out loud: "Degane pira, Mbak?".
+    grammar: jv.particle.basic
+    examples:
+      - text: Ora ana wifi, ngobrola wae!
+        ar_eg: مفيش واي فاي، اتكلموا مع بعض وخلاص!
+        ar: لا يوجد واي فاي، تحادثوا فحسب!
+        en: No wifi, just talk!
+      - text: Degane pira, Mbak?
+        ar_eg: جوز الهند بكام يا آنسة؟
+        ar: بكم جوز الهند يا آنسة؟
+        en: How much is the coconut?
+      - text: Iwak bakare panas, ati-ati.
+        ar_eg: السمك المشوي سخن، خلي بالك.
+        ar: السمك المشوي ساخن، انتبه.
+        en: The grilled fish is hot, careful.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللوحة) جوز الهند بكام؟
+      ar: (من اللوحة) بكم جوز الهند؟
+      en: (From the sign) How much is a coconut?
+    options: [12rb, 25rb, 5rb]
+    answer: 0
+    explain:
+      ar_eg: Degan … 12rb = اتناشر ألف روبية.
+      ar: Degan … 12rb = اثنا عشر ألف روبية.
+      en: Degan … 12rb = twelve thousand rupiah.
+    words: [degan]
+  - id: e02
+    type: multiple_choice
+    question: Ora ana wifi, ngobrola wae!
+    question_meaning:
+      ar_eg: اللوحة بتقول إيه؟
+      ar: ماذا تقول اللوحة؟
+      en: What does the sign say?
+    options: [مفيش واي فاي، اتكلموا مع بعض, الواي فاي ببلاش, الواي فاي بعدين]
+    answer: 0
+    explain:
+      ar_eg: ora ana = مفيش، وwae = بس / وخلاص.
+      ar: ora ana = لا يوجد، وwae = فحسب.
+      en: ora ana = there isn't; wae = just.
+    words: [ora ana, wae]
+  - id: e03
+    type: listen
+    text: Iwak bakar karo banyu putih, Mbak.
+    question:
+      ar_eg: طلب إيه؟
+      ar: ماذا طلب؟
+      en: What did he order?
+    options: [سمك مشوي وميه, درة وجوز هند, سمك بس]
+    answer: 0
+    meaning:
+      ar_eg: سمك مشوي وميه سادة يا آنسة.
+      ar: سمك مشوي وماء عادي يا آنسة.
+      en: Grilled fish and plain water, please.
+    words: [iwak, banyu]
+  - id: e04
+    type: fill_blank
+    sentence: Degane ___, Mbak?
+    meaning:
+      ar_eg: جوز الهند بكام يا آنسة؟
+      ar: بكم جوز الهند يا آنسة؟
+      en: How much is the coconut?
+    options: [pira, sapa, ngendi]
+    answers: [pira]
+    words: [degan, pira]
+  - id: e05
+    type: fill_blank
+    sentence: Iwak bakare ___, ati-ati!
+    meaning:
+      ar_eg: السمك المشوي سخن، خلي بالك!
+      ar: السمك المشوي ساخن، انتبه!
+      en: The grilled fish is hot, careful!
+    options: [panas, adem, sumuk]
+    answers: [panas]
+    words: [iwak, panas, adem, sumuk]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: أنا عايز درة مشوية بس.
+      ar: أريد ذرة مشوية فقط.
+      en: I only want grilled corn.
+    answer: Aku mung arep jagung bakar.
+    distractors: [degan, kakehan]
+    words: [mung, jagung bakar]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Neng warung iki ora ana wifi, mung ombak lan layangan.
+    answers_meaning:
+      ar_eg: [في الوارونج ده مفيش واي فاي، فيه بس موج وطيارات ورق, الوارونج ده مفيهوش واي فاي، بس موج وطيارات]
+      ar: [لا يوجد في هذا المطعم واي فاي، فقط موج وطائرات ورقية, ليس في هذا المطعم واي فاي، بل موج وطائرات ورقية فحسب]
+      en: ['This warung has no wifi, only waves and kites', 'No wifi at this warung, just waves and kites']
+    words: [ora ana, mung, ombak, layangan]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الشاي طعمه سكر زيادة. تقول لمبك سري إيه بلطف؟
+      ar: الشاي فيه سكر كثير. ماذا تقول لمبك سري بلطف؟
+      en: The tea has too much sugar. What do you tell Mbak Sri, kindly?
+    options: ['Ngapura, Mbak, gulane kakehan.', 'Gulane adem, Mbak.', 'Gulane ora ana, Mbak.']
+    answer: 0
+    explain:
+      ar_eg: kakehan = زيادة عن اللزوم، وngapura بيليّن الكلام.
+      ar: kakehan = أكثر من اللازم، وngapura يلطّف العبارة.
+      en: kakehan = too much; ngapura softens it.
+    words: [ngapura, kakehan, adem]
+  - id: e09
+    type: speaking
+    text: Mbak, iwak bakar karo degan. Ora kakehan gula, ya.
+    meaning:
+      ar_eg: يا آنسة، سمك مشوي وجوز هند. ومن غير سكر كتير، ماشي؟
+      ar: يا آنسة، سمك مشوي وجوز هند، دون سكر كثير، حسنًا؟
+      en: Grilled fish and a coconut, please. Not too much sugar, OK?
+    words: [iwak, degan, kakehan]
+dialogue:
+  title: Warung Mbak Sri
+  lines:
+    - speaker: Mbak Sri
+      text: Mangga, Mas. Arep apa?
+      ar_eg: اتفضل يا كابتن. تحب إيه؟
+      ar: تفضل يا أخي. ماذا تريد؟
+      en: Welcome. What would you like?
+    - speaker: Mohamed
+      text: Degane pira, Mbak?
+      ar_eg: جوز الهند بكام يا آنسة؟
+      ar: بكم جوز الهند يا آنسة؟
+      en: How much is a coconut?
+    - speaker: Mbak Sri
+      text: Rolas ewu. Iwak bakare ya enak lho.
+      ar_eg: اتناشر ألف. والسمك المشوي حلو على فكرة.
+      ar: اثنا عشر ألفًا. والسمك المشوي لذيذ أيضًا.
+      en: Twelve thousand. The grilled fish is good too, you know.
+    - speaker: Mohamed
+      text: Iwak bakar karo degan, ora kakehan gula, ya.
+      ar_eg: سمك مشوي وجوز هند، ومن غير سكر كتير.
+      ar: سمك مشوي وجوز هند، دون سكر كثير.
+      en: Grilled fish and a coconut, not too sweet.
+    - speaker: Mbak Sri
+      text: Siap. Iwake panas, ati-ati!
+      ar_eg: حاضر. السمك سخن، خلي بالك!
+      ar: حسنًا. السمك ساخن، انتبه!
+      en: Coming up. The fish is hot, careful!
+review:
+  status: draft
+  verified: false

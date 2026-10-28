@@ -1,184 +1,162 @@
 schema: kabar.lesson/v1
 id: j1.u05.l07
 language: jv
-title: Warung neng Parangtritis
+title: Rada adoh
 can_do:
-  ar_eg: تقرا لوحة وارونج على الشط بالجاوي وتطلب.
-  ar: أن تقرأ لوحة مطعم شعبي على الشاطئ بالجاوية وتطلب.
-  en: Read a beach warung's sign in Javanese and order.
+  ar_eg: تقول إن المكان بعيد شوية، وإن حاجة هي الأحسن.
+  ar: أن تقول إن المكان بعيد قليلًا، وإن شيئًا هو الأفضل.
+  en: Say a place is a bit far, and that something is the best.
 slides:
-  - title: Papan warung
+  - title: Menyang Parangtritis
     body:
       ar_eg: |
-        على الرملة، لوحة خشب مكتوبة بخط اليد:
-        WARUNG MBAK SRI
-        - Iwak bakar … 25rb
-        - Jagung bakar … 10rb
-        - Degan … 12rb
-        - Banyu putih … 5rb
-        «Ora ana wifi, ngobrola wae!» = مفيش واي فاي، اتكلموا مع بعض وخلاص!
-        rb = ribu (ألف روبية). وفي الكلام هتسمع: «Degane pira, Mbak?».
+        - **adoh** = بعيد (jauh)، وعكسها cedhak = قريب.
+        - **rada** = شوية (agak): rada adoh = بعيد شوية.
+        - **paling** = الأكتر (paling): paling apik = الأحسن.
       ar: |
-        على الرمل لوحة خشبية بخط اليد:
-        WARUNG MBAK SRI
-        - Iwak bakar … 25rb
-        - Jagung bakar … 10rb
-        - Degan … 12rb
-        - Banyu putih … 5rb
-        «Ora ana wifi, ngobrola wae!» = لا يوجد واي فاي، تحادثوا فحسب!
-        rb = ribu (ألف روبية). وفي الكلام: «Degane pira, Mbak?».
+        - **adoh** = بعيد (jauh)، وعكسها cedhak = قريب.
+        - **rada** = قليلًا (agak): rada adoh = بعيد قليلًا.
+        - **paling** = الأكثر (paling): paling apik = الأفضل.
       en: |
-        On the sand, a hand-painted wooden board:
-        WARUNG MBAK SRI
-        - Iwak bakar … 25rb
-        - Jagung bakar … 10rb
-        - Degan … 12rb
-        - Banyu putih … 5rb
-        "Ora ana wifi, ngobrola wae!" = No wifi, just talk to each other!
-        rb = ribu (thousand rupiah). Out loud: "Degane pira, Mbak?".
-    grammar: jv.particle.basic
+        - **adoh** = far (jauh); its opposite is cedhak = near.
+        - **rada** = rather, a bit (agak): rada adoh = a bit far.
+        - **paling** = most (paling): paling apik = the best.
     examples:
-      - text: Ora ana wifi, ngobrola wae!
-        ar_eg: مفيش واي فاي، اتكلموا مع بعض وخلاص!
-        ar: لا يوجد واي فاي، تحادثوا فحسب!
-        en: No wifi, just talk!
-      - text: Degane pira, Mbak?
-        ar_eg: جوز الهند بكام يا آنسة؟
-        ar: بكم جوز الهند يا آنسة؟
-        en: How much is the coconut?
-      - text: Iwak bakare panas, ati-ati.
-        ar_eg: السمك المشوي سخن، خلي بالك.
-        ar: السمك المشوي ساخن، انتبه.
-        en: The grilled fish is hot, careful.
+      - text: Parangtritis adoh saka Jogja.
+        ar_eg: باراجتريتيس بعيدة عن يوجيا.
+        ar: باراجتريتيس بعيدة عن يوجياكرتا.
+        en: Parangtritis is far from Jogja.
+      - text: Ombake rada gedhe.
+        ar_eg: الموج كبير شوية.
+        ar: الموج كبير قليلًا.
+        en: The waves are rather big.
+      - text: Pantai iki paling apik!
+        ar_eg: الشط ده أحلى شط!
+        ar: هذا الشاطئ هو الأجمل!
+        en: This beach is the best!
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من اللوحة) جوز الهند بكام؟
-      ar: (من اللوحة) بكم جوز الهند؟
-      en: (From the sign) How much is a coconut?
-    options: [12rb, 25rb, 5rb]
-    answer: 0
-    explain:
-      ar_eg: Degan … 12rb = اتناشر ألف روبية.
-      ar: Degan … 12rb = اثنا عشر ألف روبية.
-      en: Degan … 12rb = twelve thousand rupiah.
-    words: [degan]
+    type: match_pairs
+    pairs:
+      - text: adoh
+        ar_eg: بعيد
+        ar: بعيد
+        en: far
+      - text: rada
+        ar_eg: شوية
+        ar: قليلًا
+        en: rather, a bit
+      - text: paling
+        ar_eg: الأكتر
+        ar: الأكثر
+        en: most
+      - text: cedhak
+        ar_eg: قريب
+        ar: قريب
+        en: near
+    words: [adoh, rada, paling, cedhak]
   - id: e02
-    type: multiple_choice
-    question: Ora ana wifi, ngobrola wae!
-    question_meaning:
-      ar_eg: اللوحة بتقول إيه؟
-      ar: ماذا تقول اللوحة؟
-      en: What does the sign say?
-    options: [مفيش واي فاي، اتكلموا مع بعض, الواي فاي ببلاش, الواي فاي بعدين]
-    answer: 0
-    explain:
-      ar_eg: ora ana = مفيش، وwae = بس / وخلاص.
-      ar: ora ana = لا يوجد، وwae = فحسب.
-      en: ora ana = there isn't; wae = just.
-    words: [ora ana, wae]
-  - id: e03
     type: listen
-    text: Iwak bakar karo banyu putih, Mbak.
+    text: Parangtritis adoh saka Jogja.
     question:
-      ar_eg: طلب إيه؟
-      ar: ماذا طلب؟
-      en: What did he order?
-    options: [سمك مشوي وميه, درة وجوز هند, سمك بس]
+      ar_eg: بيقول إيه عن باراجتريتيس؟
+      ar: ماذا يقول عن باراجتريتيس؟
+      en: What does he say about Parangtritis?
+    options: [باراجتريتيس بعيدة عن يوجيا, باراجتريتيس قريبة من يوجيا, باراجتريتيس جوه يوجيا]
     answer: 0
     meaning:
-      ar_eg: سمك مشوي وميه سادة يا آنسة.
-      ar: سمك مشوي وماء عادي يا آنسة.
-      en: Grilled fish and plain water, please.
-    words: [iwak, banyu]
+      ar_eg: باراجتريتيس بعيدة عن يوجيا.
+      ar: باراجتريتيس بعيدة عن يوجياكرتا.
+      en: Parangtritis is far from Jogja.
+    words: [adoh]
+  - id: e03
+    type: fill_blank
+    sentence: Ombake ___ gedhe, ati-ati!
+    meaning:
+      ar_eg: الموج كبير ___، خلي بالك!
+      ar: الموج كبير ___، انتبه!
+      en: The waves are ___ big, careful!
+    options: [rada, adoh, paling]
+    answers: [rada]
+    words: [rada, adoh, paling]
   - id: e04
     type: fill_blank
-    sentence: Degane ___, Mbak?
+    sentence: Pantai iki ___ apik!
     meaning:
-      ar_eg: جوز الهند بكام يا آنسة؟
-      ar: بكم جوز الهند يا آنسة؟
-      en: How much is the coconut?
-    options: [pira, sapa, ngendi]
-    answers: [pira]
-    words: [degan, pira]
+      ar_eg: الشط ده ___ حلو!
+      ar: هذا الشاطئ ___ جميل!
+      en: This beach is the ___!
+    options: [paling, rada, adoh]
+    answers: [paling]
+    words: [paling, rada, adoh]
   - id: e05
-    type: fill_blank
-    sentence: Iwak bakare ___, ati-ati!
-    meaning:
-      ar_eg: السمك المشوي سخن، خلي بالك!
-      ar: السمك المشوي ساخن، انتبه!
-      en: The grilled fish is hot, careful!
-    options: [panas, adem, sumuk]
-    answers: [panas]
-    words: [iwak, panas, adem, sumuk]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة عكس cedhak (قريب)؟
+      ar: أيّ كلمة عكس cedhak (قريب)؟
+      en: Which word is the opposite of cedhak (near)?
+    options: [adoh, rada, paling]
+    answer: 0
+    explain:
+      ar_eg: adoh = بعيد. rada = شوية، وpaling = الأكتر.
+      ar: adoh = بعيد، أما rada فقليلًا وpaling الأكثر.
+      en: adoh = far. rada = a bit, paling = most.
+    words: [adoh, rada, paling]
   - id: e06
     type: build_sentence
     source:
-      ar_eg: أنا عايز درة مشوية بس.
-      ar: أريد ذرة مشوية فقط.
-      en: I only want grilled corn.
-    answer: Aku mung arep jagung bakar.
-    distractors: [degan, kakehan]
-    words: [mung, jagung bakar]
+      ar_eg: الشط ده أحلى حاجة!
+      ar: هذا الشاطئ هو الأجمل!
+      en: This beach is the best!
+    answer: Pantai iki paling apik.
+    distractors: [adoh, rada]
+    words: [paling]
   - id: e07
-    type: translate
-    direction: from_target
-    source_text: Neng warung iki ora ana wifi, mung ombak lan layangan.
-    answers_meaning:
-      ar_eg: [في الوارونج ده مفيش واي فاي، فيه بس موج وطيارات ورق, الوارونج ده مفيهوش واي فاي، بس موج وطيارات]
-      ar: [لا يوجد في هذا المطعم واي فاي، فقط موج وطائرات ورقية, ليس في هذا المطعم واي فاي، بل موج وطائرات ورقية فحسب]
-      en: ['This warung has no wifi, only waves and kites', 'No wifi at this warung, just waves and kites']
-    words: [ora ana, mung, ombak, layangan]
-  - id: e08
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الشاي طعمه سكر زيادة. تقول لمبك سري إيه بلطف؟
-      ar: الشاي فيه سكر كثير. ماذا تقول لمبك سري بلطف؟
-      en: The tea has too much sugar. What do you tell Mbak Sri, kindly?
-    options: ['Ngapura, Mbak, gulane kakehan.', 'Gulane adem, Mbak.', 'Gulane ora ana, Mbak.']
-    answer: 0
-    explain:
-      ar_eg: kakehan = زيادة عن اللزوم، وngapura بيليّن الكلام.
-      ar: kakehan = أكثر من اللازم، وngapura يلطّف العبارة.
-      en: kakehan = too much; ngapura softens it.
-    words: [ngapura, kakehan, adem]
-  - id: e09
     type: speaking
-    text: Mbak, iwak bakar karo degan. Ora kakehan gula, ya.
+    text: Omahku rada adoh, Mas.
     meaning:
-      ar_eg: يا آنسة، سمك مشوي وجوز هند. ومن غير سكر كتير، ماشي؟
-      ar: يا آنسة، سمك مشوي وجوز هند، دون سكر كثير، حسنًا؟
-      en: Grilled fish and a coconut, please. Not too much sugar, OK?
-    words: [iwak, degan, kakehan]
+      ar_eg: بيتي بعيد شوية يا ماس.
+      ar: بيتي بعيد قليلًا يا أخي.
+      en: My place is a bit far, Mas.
+    words: [rada, adoh]
 dialogue:
-  title: Warung Mbak Sri
   lines:
-    - speaker: Mbak Sri
-      text: Mangga, Mas. Arep apa?
-      ar_eg: اتفضل يا كابتن. تحب إيه؟
-      ar: تفضل يا أخي. ماذا تريد؟
-      en: Welcome. What would you like?
     - speaker: Mohamed
-      text: Degane pira, Mbak?
-      ar_eg: جوز الهند بكام يا آنسة؟
-      ar: بكم جوز الهند يا آنسة؟
-      en: How much is a coconut?
-    - speaker: Mbak Sri
-      text: Rolas ewu. Iwak bakare ya enak lho.
-      ar_eg: اتناشر ألف. والسمك المشوي حلو على فكرة.
-      ar: اثنا عشر ألفًا. والسمك المشوي لذيذ أيضًا.
-      en: Twelve thousand. The grilled fish is good too, you know.
+      text: Mas, Parangtritis adoh saka Jogja?
+      ar_eg: يا ماس، باراجتريتيس بعيدة عن يوجيا؟
+      ar: يا أخي، هل باراجتريتيس بعيدة عن يوجياكرتا؟
+      en: Mas, is Parangtritis far from Jogja?
+    - speaker: Mas Yudha
+      text: Rada adoh, numpak motor.
+      ar_eg: بعيدة شوية، بنروح بالموتوسيكل.
+      ar: بعيدة قليلًا، نذهب بالدراجة النارية.
+      en: A bit far; we go by motorbike.
     - speaker: Mohamed
-      text: Iwak bakar karo degan, ora kakehan gula, ya.
-      ar_eg: سمك مشوي وجوز هند، ومن غير سكر كتير.
-      ar: سمك مشوي وجوز هند، دون سكر كثير.
-      en: Grilled fish and a coconut, not too sweet.
-    - speaker: Mbak Sri
-      text: Siap. Iwake panas, ati-ati!
-      ar_eg: حاضر. السمك سخن، خلي بالك!
-      ar: حسنًا. السمك ساخن، انتبه!
-      en: Coming up. The fish is hot, careful!
+      text: Ombake gedhe banget!
+      ar_eg: الموج كبير جدًا!
+      ar: الموج كبير جدًا!
+      en: The waves are huge!
+    - speaker: Mas Yudha
+      text: Iya, ombake paling gedhe neng Jogja. Ati-ati!
+      ar_eg: آه، أكبر موج في يوجيا. خلي بالك!
+      ar: نعم، أكبر موج في يوجياكرتا. انتبه!
+      en: Yep, the biggest waves in Jogja. Careful!
+new_words:
+  - word: adoh
+    pos: adjective
+    ar_eg: بعيد (jauh)
+    ar: بعيد (jauh)
+    en: far (jauh)
+  - word: rada
+    pos: adverb
+    ar_eg: شوية (agak)
+    ar: قليلًا (agak)
+    en: rather, a bit (agak)
+  - word: paling
+    pos: adverb
+    ar_eg: 'الأكتر (paling): paling apik = الأحسن'
+    ar: 'الأكثر (paling): paling apik = الأفضل'
+    en: 'most (paling): paling apik = the best'
 review:
   status: draft
   verified: false
