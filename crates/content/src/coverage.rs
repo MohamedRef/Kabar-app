@@ -289,6 +289,14 @@ fn tracks(root: &Path) -> Result<Vec<Track>, LoadError> {
                             if bare != f && !bare.is_empty() {
                                 t.taught.entry(bare).or_insert(pos);
                             }
+                            // A phrase card ("matur nuwun", "sugeng rawuh")
+                            // drills each of its words, so "nuwun" or
+                            // "sugeng" on its own is not new either.
+                            if f.contains(' ') {
+                                for part in tokens(&f) {
+                                    t.taught.entry(part.to_lowercase()).or_insert(pos);
+                                }
+                            }
                             t.taught.entry(f).or_insert(pos);
                         }
                     }
