@@ -63,9 +63,9 @@ every morning. CI warns when the table below is behind the content.
 | BIPA 3 | Lombok | B1 | 10 | 97 | 936 | 506 | 1,634 / 1,600 | ~11 h | 39 |
 | BIPA 4 | Sulawesi | B2 | 10 | 126 | 1,182 | 599 | 2,233 / 2,100 | ~14 h | 37 |
 | BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,236 | 600 | 2,832 / 2,700 | ~13 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 606 | 3,438 / 3,300 | ~13 h | 38 |
-| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 704 | 4,142 / 4,000 | ~15 h | 38 |
-| **Total** |  | — | 70 | 801 | 7,791 | 4,144 | 4,142 / 4,000 | ~87 h | 260 |
+| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 607 | 3,439 / 3,300 | ~13 h | 38 |
+| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 704 | 4,143 / 4,000 | ~15 h | 38 |
+| **Total** |  | — | 70 | 801 | 7,791 | 4,145 | 4,143 / 4,000 | ~87 h | 260 |
 
 **Javanese (J1–J6)**
 
