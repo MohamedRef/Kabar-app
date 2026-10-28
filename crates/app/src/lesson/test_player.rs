@@ -73,10 +73,10 @@ pub fn PlacementInvite() -> Element {
         return rsx! {};
     }
     rsx! {
-        div { class: "card placement-invite", style: "margin-block-start: 1rem",
+        div { class: "card placement-invite whole-card", style: "margin-block-start: 1rem",
             h3 { "{lt(lang, L::InviteTitle)}" }
             p { class: "muted", "{localize_digits(lt(lang, L::InviteBody), lang, eastern)}" }
-            button { class: "primary", onclick: move |_| ui.open_lesson("placement"), "{lt(lang, L::InviteButton)}" }
+            button { class: "primary stretch", onclick: move |_| ui.open_lesson("placement"), "{lt(lang, L::InviteButton)}" }
         }
     }
 }

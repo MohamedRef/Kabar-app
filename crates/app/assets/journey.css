@@ -253,3 +253,5 @@ button.level-title .chev { margin-inline-start: auto; align-self: center; }
 button.stop-head { font-size: inherit; font-weight: inherit; inline-size: auto; }
 .souvenirs > li { display: grid; }
 button.souvenir { display: block; inline-size: 100%; text-align: start; }
+/* The souvenir a journal line opened (#433): ringed so the eye lands on it. */
+.souvenir.focused { box-shadow: 0 0 0 3px var(--gold), var(--shadow); }

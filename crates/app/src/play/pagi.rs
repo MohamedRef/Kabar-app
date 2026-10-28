@@ -73,10 +73,10 @@ pub fn PagiTodayCard() -> Element {
         return rsx! {};
     }
     rsx! {
-        div { class: "card pagi-card reveal",
+        div { class: "card pagi-card whole-card reveal",
             h2 { lang: "id", bdi { "Kabar Pagi" } }
             p { class: "muted", "{ui.t(Msg::PagiBlurb)}" }
-            button { class: "primary", onclick: move |_| super::open(ui, nav, Route::Pagi), "{ui.t(Msg::PagiListen)}" }
+            button { class: "primary stretch", onclick: move |_| super::open(ui, nav, Route::Pagi), "{ui.t(Msg::PagiListen)}" }
         }
     }
 }

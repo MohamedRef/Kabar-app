@@ -594,6 +594,18 @@ button.tap-plain { border-color: transparent; background: transparent; border-ra
   button.tap:where(:not(:disabled):hover) { border-color: var(--sawah); }
   button.tap-plain:where(:not(:disabled):hover) { background: color-mix(in srgb, var(--surface-2) 75%, transparent); }
 }
+/* A card with one action (Kabar Pagi, placement, the Stats teaser): the
+   whole card presses its one button (#433). The button stays the real target
+   for keys and screen readers; its ::after covers the card for a finger or
+   a mouse. The press shows on the card, since a scaled button would shrink
+   the cover under the pointer mid-click. */
+.whole-card { position: relative; cursor: pointer; }
+.whole-card button.stretch::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+.whole-card button.stretch:active { transform: none; }
+.whole-card:has(button.stretch:active) { transform: scale(0.99); }
+@media (hover: hover) and (pointer: fine) {
+  .whole-card:has(button.stretch:hover) { border-color: var(--sawah); }
+}
 /* A forward chevron at the end of a row (points left in Arabic). */
 .chev { flex: none; display: inline-block; inline-size: 0.5rem; block-size: 0.5rem; border-block-start: 2px solid var(--muted); border-inline-end: 2px solid var(--muted); transform: rotate(45deg); opacity: 0.7; }
 [dir="rtl"] .chev { transform: rotate(-45deg); }

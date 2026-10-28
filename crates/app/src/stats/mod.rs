@@ -261,9 +261,9 @@ pub fn TodayCards() -> Element {
                 }
             }
         }
-        div { class: "card st-link", style: "margin-block-start: 1rem",
+        div { class: "card st-link whole-card", style: "margin-block-start: 1rem",
             p { class: "muted", "{st(lang, S::OpenStatsHint)}" }
-            button { onclick: move |_| open(ui, Screen::Stats), "{st(lang, S::OpenStats)}" }
+            button { class: "stretch", onclick: move |_| open(ui, Screen::Stats), "{st(lang, S::OpenStats)}" }
         }
     }
 }

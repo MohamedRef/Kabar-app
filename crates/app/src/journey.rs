@@ -160,6 +160,17 @@ enum Pane {
     Suitcase,
 }
 
+/// The souvenir to show when Journey opens next (a journal line about it,
+/// #433): Journey opens on the suitcase with that card in view.
+static SUITCASE_FOCUS: GlobalSignal<Option<String>> = Signal::global(|| None);
+
+/// Open Journey's suitcase on the souvenir `unit_id` gave.
+pub fn open_souvenir(ui: Ui, unit_id: &str) {
+    *SUITCASE_FOCUS.write() = Some(unit_id.to_string());
+    let mut screen = ui.screen;
+    screen.set(crate::Screen::Journey);
+}
+
 #[component]
 pub fn JourneyScreen() -> Element {
     let ui = use_context::<Ui>();
@@ -180,7 +191,7 @@ pub fn JourneyScreen() -> Element {
     let coach = use_context::<crate::coach::Coach>();
     let start = use_hook(|| start_level(&db, coach.profile.peek().as_ref()));
     let mut route = use_signal(|| Route::Indonesian);
-    let mut pane = use_signal(|| Pane::Route);
+    let mut pane = use_signal(|| if SUITCASE_FOCUS.peek().is_some() { Pane::Suitcase } else { Pane::Route });
     // The stop picked on each route lives here, above the phone list and the
     // map, so it survives a window resize or a trip to the suitcase
     // (list-detail rule, docs/DESIGN.md). `None` = not picked yet.
@@ -949,6 +960,19 @@ fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> 
     let ui = use_context::<Ui>();
     let lang = ui.lang();
     let routes = ROUTES.as_ref().expect("checked by JourneyScreen");
+    // A journal line sent us here for one souvenir: bring it into view, once.
+    let focus = use_hook(|| SUITCASE_FOCUS.write().take());
+    use_effect({
+        let focus = focus.clone();
+        move || {
+            if let Some(unit) = &focus {
+                document::eval(&format!(
+                    r#"requestAnimationFrame(() => document.getElementById({:?})?.scrollIntoView({{ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }}));"#,
+                    format!("souvenir-{unit}")
+                ));
+            }
+        }
+    });
     let cards: Vec<_> = [(&routes.id, "id"), (&routes.jv, "jv")]
         .into_iter()
         .flat_map(|(c, tl)| {
@@ -968,9 +992,9 @@ fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> 
             ul { class: "souvenirs",
                 // A souvenir opens the lesson that gave it.
                 for (s, tl) in cards {
-                    li { key: "{s.unit_id}",
+                    li { key: "{s.unit_id}", id: "souvenir-{s.unit_id}",
                     button {
-                        class: "souvenir card tap",
+                        class: if focus.as_deref() == Some(s.unit_id.as_str()) { "souvenir card tap focused" } else { "souvenir card tap" },
                         onclick: {
                             let lesson = souvenir_lesson(&s.unit_id);
                             move |_| if let Some(id) = &lesson { ui.open_lesson(id.clone()) }

@@ -573,16 +573,36 @@ fn ReviewHome() -> Element {
     let engine = use_context::<Engine>();
     let now = now_ms();
     let empty = engine.deck.read().is_empty();
+    // The starter word whose bridge card is open under the pills (#433).
+    let mut peek = use_signal(|| None::<&'static str>);
 
     if empty {
         let count = ui.num(seed_words().count() as u64);
+        let open = peek();
+        let peek_card = open
+            .and_then(|w| seed_bridge_deck().into_iter().find(|c| c.kind == CardKind::Bridge && c.word == w));
         return rsx! {
             div { class: "card review-seed",
                 h2 { "{ui.t(Msg::RevSeedTitle)}" }
                 p { {ui.t(Msg::RevSeedBody).replace("{n}", &count)} }
+                // Each word opens its bridge card: «kabar ← خبر», the
+                // meaning, and the warning on the tricky ones.
                 ul { class: "seed-words", lang: "id",
                     for w in seed_words() {
-                        li { key: "{w}", bdi { "{w}" } }
+                        li { key: "{w}",
+                            button {
+                                class: "seed-word",
+                                aria_pressed: if open == Some(w) { "true" } else { "false" },
+                                aria_controls: "seed-peek",
+                                onclick: move |_| peek.set(if peek() == Some(w) { None } else { Some(w) }),
+                                bdi { "{w}" }
+                            }
+                        }
+                    }
+                }
+                if let Some(card) = peek_card {
+                    div { id: "seed-peek", class: "seed-peek reveal", key: "{card.word}",
+                        Back { card }
                     }
                 }
                 button { class: "primary", onclick: move |_| engine.seed(), "{ui.t(Msg::RevSeedButton)}" }
