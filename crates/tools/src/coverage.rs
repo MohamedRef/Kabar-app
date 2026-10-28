@@ -58,8 +58,10 @@ fn median(mut v: Vec<f64>) -> f64 {
 }
 
 fn line(i: &Item, words: usize) -> String {
-    let top: Vec<String> =
-        i.top(words).into_iter().map(|(w, c)| if c > 1 { format!("{w}×{c}") } else { w }).collect();
+    // An item over only the raw cap is fixed by teaching or rewording, so
+    // show the words its notes gloss as well.
+    let top = if i.raw_over() && !i.over() { i.top_raw(words) } else { i.top(words) };
+    let top: Vec<String> = top.into_iter().map(|(w, c)| if c > 1 { format!("{w}×{c}") } else { w }).collect();
     format!(
         "{:<20} {:<9} {:<14} {:>5.1}% / {:>2}%  raw {:>5.1}% / {:>2}%  {}",
         i.id,
