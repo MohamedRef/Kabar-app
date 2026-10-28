@@ -46,7 +46,7 @@ pub struct Item {
     /// Unknown tokens, with repeats.
     pub unknown: Vec<String>,
     /// Unknown tokens when note glosses are ignored (raw coverage).
-    pub raw: usize,
+    pub raw: Vec<String>,
 }
 
 impl Item {
@@ -68,7 +68,7 @@ impl Item {
     /// Unknown share when note glosses are ignored: what the script asks of
     /// the learner before any help.
     pub fn raw_percent(&self) -> f64 {
-        if self.tokens == 0 { 0.0 } else { 100.0 * self.raw as f64 / self.tokens as f64 }
+        if self.tokens == 0 { 0.0 } else { 100.0 * self.raw.len() as f64 / self.tokens as f64 }
     }
 
     /// The highest acceptable raw share: 15% in the first two levels, 18% later.
@@ -83,15 +83,24 @@ impl Item {
 
     /// The most frequent unknown words, most frequent first.
     pub fn top(&self, n: usize) -> Vec<(String, usize)> {
-        let mut counts: BTreeMap<&str, usize> = BTreeMap::new();
-        for w in &self.unknown {
-            *counts.entry(w).or_default() += 1;
-        }
-        let mut v: Vec<(String, usize)> = counts.into_iter().map(|(w, c)| (w.to_owned(), c)).collect();
-        v.sort_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(&b.0)));
-        v.truncate(n);
-        v
+        top(&self.unknown, n)
     }
+
+    /// Like [`Item::top`], for the raw unknowns (notes ignored).
+    pub fn top_raw(&self, n: usize) -> Vec<(String, usize)> {
+        top(&self.raw, n)
+    }
+}
+
+fn top(words: &[String], n: usize) -> Vec<(String, usize)> {
+    let mut counts: BTreeMap<&str, usize> = BTreeMap::new();
+    for w in words {
+        *counts.entry(w).or_default() += 1;
+    }
+    let mut v: Vec<(String, usize)> = counts.into_iter().map(|(w, c)| (w.to_owned(), c)).collect();
+    v.sort_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(&b.0)));
+    v.truncate(n);
+    v
 }
 
 /// What a track has taught, lesson by lesson.
@@ -162,9 +171,11 @@ impl Track {
         {
             return true;
         }
+        // Reduplication ("napa-napa") once the single word is known, street
+        // forms included.
         if let Some((a, b)) = w.split_once('-')
             && a == b
-            && at(a)
+            && self.known(a, pos)
         {
             return true;
         }
@@ -325,6 +336,20 @@ fn tracks(root: &Path) -> Result<Vec<Track>, LoadError> {
                     let words = v.get("new_words").and_then(Value::as_array).into_iter().flatten();
                     for w in words.filter_map(|w| str_field(w, "word")) {
                         for f in forms(w) {
+                            // An affix card ("dipun-", "-aken") also covers
+                            // talk about the affix itself ("Dipun-, -aken.").
+                            let bare = f.trim_matches('-').to_owned();
+                            if bare != f && !bare.is_empty() {
+                                t.taught.entry(bare).or_insert(pos);
+                            }
+                            // A phrase card ("matur nuwun", "sugeng rawuh")
+                            // drills each of its words, so "nuwun" or
+                            // "sugeng" on its own is not new either.
+                            if f.contains(' ') {
+                                for part in tokens(&f) {
+                                    t.taught.entry(part.to_lowercase()).or_insert(pos);
+                                }
+                            }
                             t.taught.entry(f).or_insert(pos);
                         }
                     }
@@ -410,7 +435,7 @@ fn item(
 ) -> Item {
     let mut ls = Vec::new();
     lines(doc, &mut ls);
-    let (mut tokens, mut unknown, mut raw) = (0, Vec::new(), 0);
+    let (mut tokens, mut unknown, mut raw) = (0, Vec::new(), Vec::new());
     // A word glossed in a note stays known for the rest of the item.
     let mut explained = BTreeSet::new();
     for (text, note) in ls {
@@ -418,7 +443,7 @@ fn item(
         let (n, u) = measure(track, names, pos, text, &explained);
         tokens += n;
         unknown.extend(u);
-        raw += measure(track, names, pos, text, &BTreeSet::new()).1.len();
+        raw.extend(measure(track, names, pos, text, &BTreeSet::new()).1);
     }
     Item { id, kind, after, level, tokens, unknown, raw }
 }
@@ -498,7 +523,7 @@ mod tests {
         ]});
         let i = item(&track(), &BTreeSet::new(), "x".into(), "radio", "u".into(), (0, 0), &doc);
         assert_eq!(i.unknown, vec!["enak".to_owned()]);
-        assert_eq!(i.raw, 3);
+        assert_eq!(i.raw.len(), 3);
     }
 
     #[test]
@@ -570,6 +595,15 @@ mod tests {
         assert_eq!(u.len(), 4, "{u:?}");
         let (_, u) = measure(&t, &names, 1, line, &ex(""));
         assert_eq!(u, vec!["dipunserat".to_owned()]);
+    }
+
+    #[test]
+    fn a_reduplicated_street_form_counts_once_its_twin_is_taught() {
+        let mut t = track();
+        t.lang = "jv".into();
+        t.taught = [("menapa".to_owned(), 0)].into_iter().collect();
+        let (_, u) = measure(&t, &BTreeSet::new(), 0, "napa-napa menapa-menapa", &ex(""));
+        assert!(u.is_empty(), "{u:?}");
     }
 
     #[test]

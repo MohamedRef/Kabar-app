@@ -1,169 +1,243 @@
 schema: kabar.lesson/v1
 id: bipa4.u08.l08
 language: id
-title: Dongeng dari Mesir
+title: Si bodoh dan si penjaga
 can_do:
-  ar_eg: تحكي حدوتة مصرية (جحا وحماره) بالإندونيسي.
-  ar: أن تروي حكاية مصرية (جحا وحماره) بالإندونيسية.
-  en: Retell an Egyptian folk tale (Juha and his donkey) in Indonesian.
+  ar_eg: 'توصف شخصيات الحواديت: الغبي، المجنون، الساكت، واللي بيحرس.'
+  ar: 'أن تصف شخصيات الحكايات: الأحمق والمجنون والصامت والحارس.'
+  en: 'Describe folk-tale characters: the fool, the madman, the silent one and the guard.'
 slides:
-  - title: Juha dan keledainya
+  - title: Tokoh dalam dongeng
     body:
       ar_eg: |
-        وقت تحكي حدوتتك! استعمل اللي اتعلمته:
-        البداية: Pada zaman dahulu, hiduplah …
-        عبارات طويلة: seorang lelaki lucu dari Mesir، keledai tua milik Juha.
-        وفي الآخر قول الـ amanat.
+        bodoh = غبي، gila = مجنون، diam = ساكت أو ثابت (diam saja = فضل ساكت).
+        benci = يكره (عكس suka)، membunuh = يقتل (bunuh = قتل).
+        muncul = يظهر فجأة، tampak = يبان، شكله (tampak sedih = باين عليه زعلان)، menjaga = يحرس أو ياخد باله (jaga = حراسة).
       ar: |
-        حان وقت حكايتك! استعمل ما تعلمته:
-        البداية: Pada zaman dahulu, hiduplah …
-        عبارات طويلة: seorang lelaki lucu dari Mesir، keledai tua milik Juha.
-        وفي النهاية اذكر الـ amanat.
+        bodoh = أحمق، gila = مجنون، diam = صامت أو ساكن (diam saja = ظلّ صامتًا).
+        benci = يكره (عكس suka)، membunuh = يقتل (bunuh = قتل).
+        muncul = يظهر فجأة، tampak = يبدو (tampak sedih = يبدو حزينًا)، menjaga = يحرس أو يرعى (jaga = حراسة).
       en: |
-        Time to tell your own tale! Use what you've learned:
-        Opening: Pada zaman dahulu, hiduplah …
-        Long phrases: seorang lelaki lucu dari Mesir, keledai tua milik Juha.
-        End with the amanat.
-    grammar: id.phrase.complex
+        bodoh = stupid, foolish, gila = crazy, diam = silent, still (diam saja = just stayed quiet).
+        benci = to hate (opposite of suka), membunuh = to kill (bunuh = kill).
+        muncul = to appear, tampak = to look, seem (tampak sedih = looks sad), menjaga = to guard, look after (jaga = guard).
     examples:
-      - text: Pada zaman dahulu, hiduplah seorang lelaki lucu bernama Juha.
-        ar_eg: كان يا ما كان، كان فيه راجل دمه خفيف اسمه جحا.
-        ar: كان يا ما كان، عاش رجل طريف اسمه جحا.
-        en: Once upon a time there lived a funny man called Juha.
-      - text: Juha dan anaknya menuntun keledai tua mereka ke pasar.
-        ar_eg: جحا وابنه شدّوا حمارهم العجوز ومشيوا بيه للسوق.
-        ar: قاد جحا وابنه حمارهما العجوز إلى السوق.
-        en: Juha and his son led their old donkey to the market.
+      - text: Tiba-tiba seekor harimau muncul dari hutan.
+        ar_eg: فجأة نمر ظهر من الغابة.
+        ar: فجأة ظهر نمر من الغابة.
+        en: Suddenly a tiger appeared from the forest.
+      - text: Raja itu tampak marah, tapi dia diam saja.
+        ar_eg: الملك باين عليه زعلان، بس فضل ساكت.
+        ar: بدا الملك غاضبًا، لكنه ظلّ صامتًا.
+        en: The king looked angry, but he just stayed silent.
+      - text: Anjing itu menjaga rumah petani setiap malam.
+        ar_eg: الكلب ده بيحرس بيت الفلاح كل ليلة.
+        ar: يحرس ذلك الكلب بيت المزارع كل ليلة.
+        en: That dog guards the farmer's house every night.
 exercises:
   - id: e01
-    type: listen
-    text: Juha dan anaknya pergi ke pasar dengan seekor keledai.
-    options: ["Juha dan istrinya pergi ke pasar dengan seekor keledai.", "Juha dan anaknya pergi ke pasar dengan seekor kuda.", "Juha dan anaknya pergi ke pasar dengan seekor keledai."]
-    answer: 2
-    meaning:
-      ar_eg: جحا وابنه راحوا السوق ومعاهم حمار.
-      ar: ذهب جحا وابنه إلى السوق ومعهما حمار.
-      en: Juha and his son went to the market with a donkey.
-    words: [keledai]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في الآخر جحا وابنه مشيوا جنب الحمار. الناس عملت إيه؟
-      ar: في النهاية مشى جحا وابنه بجانب الحمار. ماذا فعل الناس؟
-      en: In the end Juha and his son walk beside the donkey. What do people do?
-    options: ["Orang-orang menertawakan mereka.", "Orang-orang menuntun mereka.", "Orang-orang menjual mereka."]
-    answer: 0
-    words: [menertawakan]
-  - id: e03
     type: match_pairs
     pairs:
-      - text: keledai
-        ar_eg: حمار
-        ar: حمار
-        en: donkey
-      - text: menuntun
-        ar_eg: يشد / يقود (بالإيد أو بالحبل)
-        ar: يقود (باليد أو بالحبل)
-        en: to lead (by the hand or a rope)
-      - text: menertawakan
-        ar_eg: يضحك على
-        ar: يضحك على، يسخر من
-        en: to laugh at
-      - text: amanat
-        ar_eg: عبرة
-        ar: عبرة
-        en: moral message
-      - text: watak
-        ar_eg: طبع
-        ar: طبع
-        en: personality
-    words: [keledai, menuntun, menertawakan, amanat, watak]
+      - text: bodoh
+        ar_eg: غبي
+        ar: أحمق
+        en: foolish
+      - text: gila
+        ar_eg: مجنون
+        ar: مجنون
+        en: crazy
+      - text: diam
+        ar_eg: ساكت
+        ar: صامت
+        en: silent, still
+      - text: benci
+        ar_eg: يكره
+        ar: يكره
+        en: to hate
+    words: [bodoh, gila, diam, benci]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: membunuh
+        ar_eg: يقتل
+        ar: يقتل
+        en: to kill
+      - text: muncul
+        ar_eg: يظهر
+        ar: يظهر
+        en: to appear
+      - text: tampak
+        ar_eg: يبان
+        ar: يبدو
+        en: to look, seem
+      - text: menjaga
+        ar_eg: يحرس
+        ar: يحرس
+        en: to guard
+    words: [membunuh, muncul, tampak, menjaga]
+  - id: e03
+    type: listen
+    text: Pemuda itu tampak sedih sekali.
+    question:
+      ar_eg: الشاب شكله عامل إزاي؟
+      ar: كيف يبدو الشاب؟
+      en: How does the young man look?
+    options: [زعلان, مبسوط, خايف]
+    answer: 0
+    meaning:
+      ar_eg: الشاب ده باين عليه زعلان جدًا.
+      ar: يبدو ذلك الشاب حزينًا جدًا.
+      en: That young man looks very sad.
+    words: [tampak]
   - id: e04
     type: fill_blank
-    sentence: Juha ___ keledainya, dan anaknya naik di atasnya.
+    sentence: Buaya itu ___ karena percaya kata-kata kancil.
     meaning:
-      ar_eg: جحا بيشد حماره، وابنه راكب عليه.
-      ar: يقود جحا حماره، وابنه راكب عليه.
-      en: Juha leads his donkey, and his son rides on it.
-    options: [menertawakan, menuntun, melanggar]
-    answers: [menuntun]
-    words: [menuntun, keledai]
+      ar_eg: التمساح ده ___ عشان صدّق كلام الكانتشيل.
+      ar: ذلك التمساح ___ لأنه صدّق كلام الكانتشيل.
+      en: That crocodile is ___ because it believed the mouse-deer.
+    options: [bodoh, benci, muncul]
+    answers: [bodoh]
+    words: [bodoh, benci, muncul]
+    explain:
+      ar_eg: اللي يصدّق الكانتشيل يبقى bodoh (غبي). benci = يكره، وmuncul = يظهر، ومايوصفوش التمساح هنا.
+      ar: من يصدّق الكانتشيل bodoh (أحمق). أما benci فيكره، وmuncul يظهر، ولا يصفان التمساح هنا.
+      en: Anyone who believes the mouse-deer is bodoh (foolish). benci is to hate and muncul is to appear; neither describes the crocodile.
   - id: e05
+    type: multiple_choice
+    question: Waktu ditanya, anak itu ___ saja. Dia takut.
+    options: [diam, gila, membunuh]
+    answer: 0
+    explain:
+      ar_eg: diam saja = فضل ساكت، وده بيحصل لما حد يخاف. gila = مجنون، وmembunuh = يقتل.
+      ar: diam saja = ظلّ صامتًا، وهذا ما يفعله الخائف. أما gila فمجنون، وmembunuh يقتل.
+      en: diam saja means just stayed quiet, as a scared child does. gila is crazy, and membunuh is to kill.
+    words: [diam, gila, membunuh]
+  - id: e06
+    type: fill_blank
+    sentence: Pemburu itu tidak mau ___ rusa kecil itu.
+    meaning:
+      ar_eg: الصياد ده مش عايز ___ الغزال الصغير.
+      ar: لا يريد ذلك الصياد ___ الغزال الصغير.
+      en: The hunter doesn't want to ___ the little deer.
+    options: [membunuh, menjaga, tampak]
+    answers: [membunuh]
+    words: [membunuh, menjaga, tampak]
+    explain:
+      ar_eg: membunuh rusa = يقتل الغزال، وده اللي الصياد مش عايزه. menjaga = يحرس، وtampak = يبان.
+      ar: membunuh rusa = يقتل الغزال، وهذا ما لا يريده الصياد. أما menjaga فيحرس، وtampak يبدو.
+      en: membunuh rusa is to kill the deer, which the hunter won't do. menjaga is to guard and tampak is to seem.
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: 'الأم بتقول لابنها: «خلّي بالك من أختك».'
+      ar: 'تقول الأم لابنها: «اعتنِ بأختك».'
+      en: A mother tells her son, "Look after your sister."
+    options: ['Jaga adikmu, ya.', 'Bunuh adikmu, ya.', 'Benci adikmu, ya.']
+    answer: 0
+    explain:
+      ar_eg: jaga = خلّي بالك أو احرس. bunuh = اقتل، وbenci = اكره.
+      ar: jaga = اعتنِ أو احرس. أما bunuh فاقتل، وbenci اكره.
+      en: jaga means look after. bunuh is kill, and benci is hate.
+    words: [menjaga, membunuh, benci]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: الناس ضحكوا على جحا وابنه.
-      ar: ضحك الناس على جحا وابنه.
-      en: People laughed at Juha and his son.
-    answer: Orang-orang menertawakan Juha dan anaknya.
-    distractors: [menuntun, keledai]
-    words: [menertawakan]
-  - id: e06
+      ar_eg: الجنية ظهرت فجأة قدام الصياد.
+      ar: ظهرت الجنية فجأة أمام الصياد.
+      en: The fairy suddenly appeared in front of the fisherman.
+    answer: Peri itu tiba-tiba muncul di depan nelayan.
+    distractors: [tampak, gila]
+    words: [muncul, tampak, gila]
+    explain:
+      ar_eg: tiba-tiba muncul = ظهر فجأة. tampak = يبان، وgila = مجنون، ومالهمش مكان هنا.
+      ar: tiba-tiba muncul = ظهر فجأة. أما tampak فيبدو، وgila مجنون، ولا مكان لهما هنا.
+      en: tiba-tiba muncul means suddenly appeared. tampak is to seem and gila is crazy; they don't belong here.
+  - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عبرة الحكاية دي إننا مانقدرش نرضّي كل الناس.
-      ar: عبرة هذه الحكاية أننا لا نستطيع إرضاء جميع الناس.
-      en: The moral of this story is that we can't please everyone.
-    answers:
-      - Amanat cerita ini adalah kita tidak bisa menyenangkan semua orang.
-      - Amanat cerita ini adalah kita tidak bisa menyenangkan semua orang
-      - Amanat cerita ini adalah bahwa kita tidak bisa menyenangkan semua orang.
-      - Amanat cerita ini adalah kita tidak dapat menyenangkan semua orang.
-      - Amanat dongeng ini adalah kita tidak bisa menyenangkan semua orang.
-      - "Amanat cerita ini: kita tidak bisa menyenangkan semua orang."
-      - Amanatnya, kita tidak bisa menyenangkan semua orang.
-      - Amanat cerita ini adalah kita nggak bisa menyenangkan semua orang.
-      - Amanat cerita ini adalah kita nggak bisa menyenangkan semua orang
-    words: [amanat]
-  - id: e07
-    type: dictation
-    text: Seorang lelaki tua menuntun keledainya ke pasar.
-    meaning:
-      ar_eg: راجل عجوز بيشد حماره للسوق.
-      ar: يقود رجل عجوز حماره إلى السوق.
-      en: An old man leads his donkey to the market.
-    words: [menuntun, keledai]
-  - id: e08
+    direction: from_target
+    source_text: Orang-orang bilang pemuda itu gila, tapi dia sebenarnya pintar.
+    answers_meaning:
+      ar_eg: [الناس قالوا إن الشاب ده مجنون، بس هو في الحقيقة ذكي, الناس افتكروه مجنون، بس هو شاطر فعلًا]
+      ar: [قال الناس إن ذلك الشاب مجنون، لكنه ذكي في الحقيقة, ظنّ الناس الشاب مجنونًا، وهو في الحقيقة ذكي]
+      en: ['People said that young man was crazy, but he''s actually clever', 'People called him mad, but he is really smart']
+    words: [gila]
+  - id: e10
     type: speaking
-    text: Semua orang menertawakan Juha, tetapi dia masih tersenyum.
+    text: Penyihir itu benci pada sang putri.
     meaning:
-      ar_eg: كل الناس ضحكت على جحا، بس هو فضل مبتسم.
-      ar: ضحك الجميع على جحا، لكنه ظل مبتسمًا.
-      en: Everyone laughed at Juha, but he kept smiling.
-    words: [menertawakan]
+      ar_eg: الساحرة دي بتكره الأميرة.
+      ar: تكره تلك الساحرة الأميرة.
+      en: The witch hated the princess.
+    words: [benci, bodoh, diam]
 dialogue:
-  title: Dongeng Juha
   lines:
-    - speaker: Mohamed
-      text: Di Mesir ada dongeng terkenal tentang Juha dan keledainya.
-      ar_eg: في مصر فيه حدوتة مشهورة عن جحا وحماره.
-      ar: في مصر حكاية مشهورة عن جحا وحماره.
-      en: In Egypt there's a famous tale about Juha and his donkey.
     - speaker: Mas Rizal
-      text: Ceritakan, dong!
-      ar_eg: احكيها بقى!
-      ar: احكِها لي!
-      en: Go on, tell it!
+      text: Di cerita Opa Jemmy, siapa yang menjaga pohon ajaib itu?
+      ar_eg: في حكاية أوبا جيمي، مين اللي بيحرس الشجرة السحرية؟
+      ar: في حكاية أوبا جيمي، من يحرس الشجرة السحرية؟
+      en: In Opa Jemmy's story, who guards the magic tree?
     - speaker: Mohamed
-      text: Juha naik keledai, anaknya jalan kaki. Orang-orang bilang Juha nggak kasihan sama anaknya.
-      ar_eg: جحا ركب الحمار وابنه ماشي. الناس قالت إن جحا ماعندوش رحمة بابنه.
-      ar: ركب جحا الحمار ومشى ابنه، فقال الناس إن جحا لا يرحم ابنه.
-      en: Juha rides the donkey and his son walks. People say Juha has no pity for his son.
+      text: Seekor naga. Dia muncul setiap malam.
+      ar_eg: تنّين. بيظهر كل ليلة.
+      ar: تنّين يظهر كل ليلة.
+      en: A dragon. It appears every night.
     - speaker: Mas Rizal
-      text: Terus?
-      ar_eg: وبعدين؟
-      ar: ثم ماذا؟
-      en: And then?
+      text: Terus, pemuda bodoh itu mau membunuh naganya?
+      ar_eg: وبعدين، الشاب الغبي ده عايز يقتل التنين؟
+      ar: وهل أراد ذلك الشاب الأحمق قتل التنين؟
+      en: And then the foolish young man wants to kill the dragon?
     - speaker: Mohamed
-      text: Akhirnya mereka berdua menuntun keledai itu, dan semua orang menertawakan mereka!
-      ar_eg: في الآخر الاتنين شدّوا الحمار ومشيوا، والناس كلها ضحكت عليهم!
-      ar: وفي النهاية قاد الاثنان الحمار مشيًا، فضحك عليهما الجميع!
-      en: In the end they both lead the donkey on foot, and everyone laughs at them!
+      text: Iya! Orang-orang bilang dia gila. Tapi naganya tampak sedih, jadi dia diam saja.
+      ar_eg: أيوه! الناس قالوا عليه مجنون. بس التنين كان باين عليه زعلان، ففضل ساكت.
+      ar: نعم! قال الناس إنه مجنون، لكن التنين بدا حزينًا، فظلّ صامتًا.
+      en: Yes! People said he was crazy. But the dragon looked sad, so he just stayed quiet.
     - speaker: Mas Rizal
-      text: Ha ha! Jadi amanatnya, kita nggak bisa nyenengin semua orang.
-      ar_eg: ها ها! يعني العبرة إننا مانقدرش نرضّي كل الناس.
-      ar: ها ها! إذن العبرة أننا لا نستطيع إرضاء الجميع.
-      en: Ha ha! So the moral is, we can't please everyone.
+      text: Ha ha, ternyata dia tidak bodoh. Dia tidak benci pada naga itu.
+      ar_eg: ها ها، طلع مش غبي. هو مش بيكره التنين.
+      ar: تبيّن أنه ليس أحمق، فهو لا يكره التنين.
+      en: Ha ha, so he isn't foolish after all. He doesn't hate the dragon.
+new_words:
+  - word: bodoh
+    pos: adj
+    ar_eg: غبي
+    ar: أحمق، غبي
+    en: stupid, foolish
+  - word: gila
+    pos: adj
+    ar_eg: مجنون
+    ar: مجنون
+    en: crazy, mad
+  - word: diam
+    pos: adj
+    ar_eg: ساكت، ثابت (diam saja)
+    ar: صامت، ساكن (diam saja)
+    en: silent, still
+  - word: benci
+    pos: verb
+    ar_eg: يكره (benci pada)
+    ar: يكره (benci pada)
+    en: to hate
+  - word: membunuh / bunuh
+    pos: verb
+    ar_eg: يقتل
+    ar: يقتل
+    en: to kill
+  - word: muncul
+    pos: verb
+    ar_eg: يظهر
+    ar: يظهر
+    en: to appear
+  - word: tampak
+    pos: verb
+    ar_eg: يبان، شكله (tampak sedih)
+    ar: يبدو (tampak sedih)
+    en: to look, seem
+  - word: menjaga / jaga
+    pos: verb
+    ar_eg: يحرس، ياخد باله من
+    ar: يحرس، يعتني بـ
+    en: to guard, look after
 review:
   status: draft
   verified: false

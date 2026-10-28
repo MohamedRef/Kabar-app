@@ -338,6 +338,17 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   position: sticky; inset-block-start: 0; block-size: 100dvh; overflow-y: auto; box-sizing: border-box;
 }
 .app:not([data-width="compact"]) .nav-settings { margin-block-start: auto; }
+/* Short landscape windows (the Tab S11 is about 1205 × 680dp in landscape
+   with the system bars): tighter sidebar rows and group headings, so every
+   destination and Settings fit without scrolling the bar. */
+@media (max-height: 760px) {
+  .app:not([data-width="compact"]) .nav { padding-block: var(--sp-2); gap: 2px; }
+  .app:not([data-width="compact"]) .nav-group { gap: 2px; }
+  .app:not([data-width="compact"]) .nav-group + .nav-group { margin-block-start: var(--sp-1); padding-block-start: var(--sp-1); }
+  .app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]):not([data-nav="slim"]) .nav-item { min-block-size: 34px; padding-block: 0; }
+  .app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]):not([data-nav="slim"]) .nav-heading { padding-block: 2px 0; }
+  .brand { padding-block: 0.25rem 0.5rem; font-size: 1.15rem; }
+}
 .top-bar {
   display: flex; align-items: center; justify-content: space-between;
   padding-block: max(0.35rem, env(safe-area-inset-top)) 0.35rem; padding-inline: 1rem 0.5rem;
@@ -565,6 +576,7 @@ button.check[aria-checked="true"] { background: var(--sawah); }
 .summary { display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 1rem; margin: 0.5rem 0; }
 .summary dt { color: var(--muted); }
 .summary dd { margin: 0; }
+.summary-note { display: block; font-size: var(--fs-sm); }
 .focus-list { margin: 0; padding-inline-start: 1.25rem; }
 .league { border-block-start: 1px solid var(--line); margin-block-start: 1rem; }
 

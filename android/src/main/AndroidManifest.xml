@@ -72,6 +72,21 @@
             android:excludeFromRecents="true"
             android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|keyboardHidden"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- "A new Kabar is out" (UpdateNotice.kt): the periodic background
+             check, kept across reboots by RECEIVE_BOOT_COMPLETED (declared in
+             crates/app/AndroidManifest.xml), and the invisible activity a tap
+             on its notification goes through. -->
+        <service
+            android:name="app.kabar.UpdateCheckJob"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <activity
+            android:name="app.kabar.UpdateTapActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!-- Settings › About › Updates: the installer's verdict on a self-update
              (explicit PendingIntent), and "Kabar was updated" afterwards. -->
         <receiver
