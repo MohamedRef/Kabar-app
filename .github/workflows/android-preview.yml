@@ -157,7 +157,16 @@ jobs:
           COMMIT_SUBJECT: ${{ github.event.head_commit.message || github.event.pull_request.title || 'Preview build' }}
         run: |
           VERSION="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
-          NOTES="$(printf '%s' "$COMMIT_SUBJECT" | head -1 | cut -c1-200)"
+          # What's new = the commit's subject; for a merge commit, the pull
+          # request's title (its first line after the subject). It shows in
+          # the app's banner and its "new version" notification.
+          NOTES="$(printf '%s\n' "$COMMIT_SUBJECT" | head -1)"
+          case "$NOTES" in
+            "Merge pull request"*|"Merge branch"*)
+              TITLE="$(printf '%s\n' "$COMMIT_SUBJECT" | sed -n '2,$p' | grep -m1 -v '^[[:space:]]*$' || true)"
+              [ -n "$TITLE" ] && NOTES="$TITLE" ;;
+          esac
+          NOTES="$(printf '%s' "$NOTES" | cut -c1-200)"
           cargo run -q -p kabar-tools -- update manifest --channel preview --version "$VERSION" \
             --build "$KABAR_BUILD" --commit "$KABAR_COMMIT" --notes-en "$NOTES" \
             --asset android-arm64=dist/android/kabar-preview.apk --out dist/update
