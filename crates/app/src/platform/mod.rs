@@ -110,6 +110,26 @@ pub fn can_vibrate() -> bool {
     }
 }
 
+/// Whether the device is in dark mode, where the platform can tell
+/// (Android: the system uiMode, which the WebView may misreport); `None`
+/// elsewhere, where CSS `prefers-color-scheme` is right.
+pub fn device_dark() -> Option<bool> {
+    #[cfg(target_os = "android")]
+    {
+        match android::is_night() {
+            Ok(dark) => Some(dark),
+            Err(e) => {
+                crate::diag::report!("night mode check failed: {e}");
+                None
+            }
+        }
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        None
+    }
+}
+
 /// Paints Android's status and navigation bars in the theme's background,
 /// with icons that read on it; `day` and `night` are `#rrggbb` (the same for
 /// a fixed theme). Does nothing elsewhere: the Mac keeps its own title bar.
