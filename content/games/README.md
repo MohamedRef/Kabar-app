@@ -152,7 +152,7 @@ why.arz = "…"                # shown after every pick
 
 `uu.grandmother` opens with "Have you eaten?" at three levels
 (*Kowe wis mangan? / Sampeyan sampun nedha? / Panjenengan sampun dhahar?*),
-the same sentence as lesson `j3.u01.l08` (Respect Meter).
+the same sentence as lesson `j3.u01.l10` (Respect Meter).
 
 ### Tone
 
