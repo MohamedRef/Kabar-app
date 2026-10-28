@@ -1,184 +1,234 @@
 schema: kabar.lesson/v1
 id: j3.u01.l07
 language: jv
-title: Respect Meter
+title: Eyang lan rayi
 can_do:
-  ar_eg: تختار المستوى المناسب في خمس مواقف (محاكي الأدب، نسخة خفيفة).
-  ar: أن تختار المستوى المناسب في خمسة مواقف (محاكي الأدب، نسخة مبسطة).
-  en: Pick a level for five situations (Unggah-Ungguh Simulator, lite).
+  ar_eg: 'تقابل جدّة صاحبك وأخته الصغيرة: تقول إنك مبسوط وفهمت، وتحكي إنك مستغرب، وتعرف تقول مكسوف.'
+  ar: 'أن تقابل جدّة صديقك وأخته الصغرى: تقول إنك سعيد وفهمت، وتعبّر عن دهشتك، وتعرف كلمة الخجل.'
+  en: 'Meet a friend''s grandmother and little sister: say you''re glad and you understand, show surprise, and say shy.'
 slides:
-  - title: Respect Meter
+  - title: Ngoko → krama ing kulawarga
     body:
       ar_eg: |
-        النهارده هتلف في يوجيا وتقابل خمس ناس. قبل ما تتكلم، بص على «عدّاد الاحترام»:
-        - صاحبك أو حد أصغر منك ← ngoko: Kowe wis mangan?
-        - بياع أو حد غريب ← krama: Sampeyan sampun nedha?
-        - جدة صاحبك أو المدرس ← krama inggil: Panjenengan sampun dhahar?
-        وعن نفسك دايمًا krama عادية: Kula sampun nedha.
+        eyang = جدّ أو جدّة، أشيك واحترم من mbah. في جوجا كتير بيقولوا «Eyang» للكبار في العيلة.
+        adhik = أخ أو أخت أصغر (نغوكو). ← بالكراما: rayi. «rayi kula» = أخويا/أختي الصغيرة.
+        crita ← cariyos = حكاية، يحكي. seneng ← bingah = مبسوط، فرحان.
+        isin ← lingsem = مكسوف. ngerti ← mangertos = فاهم، يفهم.
+        gumun = مستغرب ومنبهر: «Aku gumun!» = أنا مش مصدّق!
       ar: |
-        ستتجول اليوم في يوجيا وتلقى خمسة أشخاص. قبل الكلام انظر إلى «مقياس الاحترام»:
-        - الصديق أو الأصغر ← ngoko: Kowe wis mangan?
-        - البائع أو الغريب ← krama: Sampeyan sampun nedha?
-        - جدة الصديق أو المعلم ← krama inggil: Panjenengan sampun dhahar?
-        وعن نفسك دائمًا krama عادية: Kula sampun nedha.
+        eyang = جدّ أو جدّة، وهي أرقى وأكثر احترامًا من mbah. في جوكجاكرتا يقولون «Eyang» لكبار العائلة كثيرًا.
+        adhik = أخ أو أخت أصغر (نغوكو). ← بالكراما: rayi. «rayi kula» = أخي أو أختي الصغرى.
+        crita ← cariyos = قصة، يحكي. seneng ← bingah = سعيد، فرِح.
+        isin ← lingsem = خجلان. ngerti ← mangertos = يفهم.
+        gumun = مندهش ومعجب: «Aku gumun!» = لا أصدّق!
       en: |
-        Today you walk around Jogja and meet five people. Before you speak, check the Respect Meter:
-        - a friend or someone younger → ngoko: Kowe wis mangan?
-        - a seller or a stranger → krama: Sampeyan sampun nedha?
-        - a friend's grandmother or a teacher → krama inggil: Panjenengan sampun dhahar?
-        About yourself, always plain krama: Kula sampun nedha.
-    grammar: jv.speechlevel.overview
+        eyang = grandparent, more respectful than mbah. In Jogja people often say "Eyang" for the elders of the family.
+        adhik = younger brother or sister (ngoko) → in krama: rayi. "rayi kula" = my younger sibling.
+        crita → cariyos = story, tell. seneng → bingah = glad, happy.
+        isin → lingsem = shy, embarrassed. ngerti → mangertos = understand.
+        gumun = amazed, can't believe it: "Aku gumun!" = wow, I can't believe it!
+    examples:
+      - text: Eyang, menika rayi kula.
+        ar_eg: يا جدّتي، دي أختي الصغيرة.
+        ar: يا جدّتي، هذه أختي الصغرى.
+        en: Grandma, this is my little sister.
+      - text: Kula bingah sanget, Eyang.
+        ar_eg: أنا مبسوط أوي يا جدّتي.
+        ar: أنا سعيد جدًا يا جدّتي.
+        en: I'm so glad, Grandma.
+      - text: Aku gumun, Mas!
+        ar_eg: مش مصدّق يا عم!
+        ar: أنا مندهش يا أخي!
+        en: Wow, I can't believe it!
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: 'الموقف ١: صاحبك Mas Dimas مستنيك في المحطة. تسأله «كلت؟» إزاي؟'
-      ar: 'الموقف ١: صديقك Mas Dimas ينتظرك في المحطة. كيف تسأله «هل أكلت؟»'
-      en: 'Situation 1: your friend Mas Dimas is waiting at the station. How do you ask "Have you eaten?"'
-    options: ['Sampeyan sampun nedha, Mas?', 'Panjenengan sampun dhahar, Mas?', 'Kowe wis mangan, Mas?']
-    answer: 2
-    explain:
-      ar_eg: 'Dimas صاحبك: ngoko. الكراما مع صاحبك هتبان بعيدة وباردة.'
-      ar: Dimas صديقك فتكلمه بالـ ngoko، والكراما مع الصديق تبدو جافة بعيدة.
-      en: Dimas is your friend, so ngoko. Krama with a friend sounds distant.
-    words: [kowe, wis, mangan]
+    type: match_pairs
+    pairs:
+      - text: eyang
+        ar_eg: جدّ، جدّة (باحترام)
+        ar: جدّ، جدّة (باحترام)
+        en: grandparent (respectful)
+      - text: rayi
+        ar_eg: أخ/أخت أصغر (كراما)
+        ar: أخ/أخت أصغر (كراما)
+        en: younger sibling (krama)
+      - text: adhik
+        ar_eg: أخ/أخت أصغر (نغوكو)
+        ar: أخ/أخت أصغر (نغوكو)
+        en: younger sibling (ngoko)
+      - text: mangertos
+        ar_eg: فاهم، يفهم (كراما)
+        ar: يفهم (كراما)
+        en: understand (krama)
+    words: [eyang, rayi, adhik, mangertos]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: 'الموقف ٢: Bu Siti، بياعة في كشك جنب المحطة. أنهي مستوى؟'
-      ar: 'الموقف ٢: Bu Siti، بائعة في كشك قرب المحطة. أيّ مستوى؟'
-      en: 'Situation 2: Bu Siti, a seller at a stall by the station. Which level?'
-    options: [krama, ngoko, krama andhap]
-    answer: 0
-    explain:
-      ar_eg: 'البياع ياخد krama: sampeyan، sampun، nedha.'
-      ar: 'البائع يُخاطب بالـ krama: sampeyan وsampun وnedha.'
-      en: A seller gets krama — sampeyan, sampun, nedha.
-    words: [krama]
+    type: match_pairs
+    pairs:
+      - text: cariyos
+        ar_eg: حكاية، يحكي (كراما)
+        ar: قصة، يحكي (كراما)
+        en: story, tell (krama)
+      - text: gumun
+        ar_eg: مستغرب، منبهر
+        ar: مندهش، معجب
+        en: amazed
+      - text: bingah
+        ar_eg: مبسوط (كراما)
+        ar: سعيد (كراما)
+        en: glad, happy (krama)
+      - text: lingsem
+        ar_eg: مكسوف (كراما)
+        ar: خجلان (كراما)
+        en: shy, embarrassed (krama)
+    words: [cariyos, gumun, bingah, lingsem]
   - id: e03
+    type: listen
+    text: Kula bingah sanget, Eyang.
+    question:
+      ar_eg: محمد حاسس بإيه؟
+      ar: بماذا يشعر محمد؟
+      en: How does Mohamed feel?
+    options: [أنا مبسوط أوي يا جدّتي, أنا تعبان أوي يا جدّتي, أنا مكسوف أوي يا جدّتي]
+    answer: 0
+    meaning:
+      ar_eg: أنا مبسوط أوي يا جدّتي.
+      ar: أنا سعيد جدًا يا جدّتي.
+      en: I'm so glad, Grandma.
+    words: [bingah, eyang, lingsem]
+  - id: e04
+    type: fill_blank
+    sentence: Rayinipun Mas Dimas taksih ___, mlebet kamar terus.
+    meaning:
+      ar_eg: أخت ديماس الصغيرة لسه ___، دخلت الأوضة على طول.
+      ar: أخت ديماس الصغرى ما زالت ___، دخلت الغرفة فورًا.
+      en: Mas Dimas's little sister is still ___, she went straight into her room.
+    options: [lingsem, bingah, gumun]
+    answers: [lingsem]
+    words: [lingsem, rayi, bingah, gumun]
+  - id: e05
     type: multiple_choice
-    question_meaning:
-      ar_eg: 'الموقف ٣: جدة Dimas فتحتلك باب البيت. أنهي مستوى؟'
-      ar: 'الموقف ٣: جدة Dimas فتحت لك باب البيت. أيّ مستوى؟'
-      en: 'Situation 3: Dimas''s grandmother opens the door for you. Which level?'
-    options: [krama inggil, ngoko, krama]
+    question: adhik (ngoko) → ___ (krama)
+    options: [rayi, eyang, cariyos]
     answer: 0
     explain:
-      ar_eg: 'جدة صاحبك: krama + krama inggil (panjenengan، dhahar).'
-      ar: 'جدة الصديق: krama مع krama inggil (panjenengan وdhahar).'
-      en: A friend's grandmother gets krama plus krama inggil (panjenengan, dhahar).
-    words: [krama inggil]
-  - id: e04
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: حضرتك كلتي يا مدام؟ (لـ Bu Siti البياعة)
-      ar: هل أكلتِ يا سيدتي؟ (لـ Bu Siti البائعة)
-      en: Have you eaten, ma'am? (to Bu Siti, the seller)
-    answers: ["Sampeyan sampun nedha, Bu?", "Sampeyan sampun nedha, Bu", "Bu, sampeyan sampun nedha?", "Bu, sampeyan sampun nedha", "Sampeyan sampun nedha, Bu Siti?", "Sampeyan sampun nedha, Bu Siti", "Bu Siti, sampeyan sampun nedha?", "Bu Siti, sampeyan sampun nedha", "Sampeyan sampun nedha?", Sampeyan sampun nedha, "Panjenengan sampun dhahar, Bu?", "Panjenengan sampun dhahar, Bu", "Bu, panjenengan sampun dhahar?", "Bu, panjenengan sampun dhahar"]
-    explain:
-      ar_eg: 'للبياعة krama: Sampeyan sampun nedha. ولو قلت panjenengan + dhahar ده أدب زيادة ومقبول برضه.'
-      ar: 'للبائعة krama: Sampeyan sampun nedha، والـ panjenengan مع dhahar أدب زائد مقبول.'
-      en: For a seller, krama — Sampeyan sampun nedha. Panjenengan + dhahar is extra polite and also fine.
-    words: [sampeyan, sampun, nedha]
-  - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: حضرتك كلتي يا أبلة؟ (لمُدرّستك Bu Guru)
-      ar: هل أكلتِ يا أستاذة؟ (لمعلمتك Bu Guru)
-      en: Have you eaten, ma'am? (to your teacher, Bu Guru)
-    answers: ['Panjenengan sampun dhahar, Bu?', 'Panjenengan sampun dhahar, Bu', 'Bu, panjenengan sampun dhahar?', 'Bu, panjenengan sampun dhahar', 'Panjenengan sampun dhahar, Bu Guru?', 'Panjenengan sampun dhahar, Bu Guru', 'Bu Guru, panjenengan sampun dhahar?', 'Bu Guru, panjenengan sampun dhahar', 'Panjenengan sampun dhahar?', Panjenengan sampun dhahar]
-    explain:
-      ar_eg: المدرس بياخد panjenengan + dhahar.
-      ar: المعلم يُخاطب بـ panjenengan مع dhahar.
-      en: A teacher gets panjenengan + dhahar.
-    words: [panjenengan, sampun, dhahar]
+      ar_eg: 'adhik بالنغوكو، rayi بالكراما: الاتنين يعني أخ أو أخت أصغر.'
+      ar: adhik بالنغوكو وrayi بالكراما، وكلاهما يعني الأخ أو الأخت الأصغر.
+      en: 'adhik is ngoko and rayi is krama: both mean younger sibling.'
+    words: [rayi, adhik, eyang, cariyos]
   - id: e06
+    type: fill_blank
+    sentence: Nggih, Eyang, kula ___.
+    meaning:
+      ar_eg: أيوه يا جدّتي، أنا ___.
+      ar: نعم يا جدّتي، أنا ___.
+      en: Yes, Grandma, I ___.
+    options: [mangertos, lingsem, gumun]
+    answers: [mangertos]
+    words: [mangertos, gumun]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: كلت يا حبيبي؟ (لأخو Dimas الصغير)
-      ar: هل أكلت يا صغيري؟ (لأخي Dimas الصغير)
-      en: Have you eaten, little one? (to Dimas's little brother)
-    answer: Kowe wis mangan, Dhik?
-    distractors: [sampun, nedha]
-    words: [kowe, wis, mangan, dhik]
-  - id: e07
-    type: fill_blank
-    sentence: Inggih, kula sampun ___, Mbah.
-    meaning:
-      ar_eg: أيوه يا تيتة، أنا كلت.
-      ar: نعم يا جدتي، قد أكلتُ.
-      en: Yes, Grandma, I've eaten.
-    answers: [nedha]
-    explain:
-      ar_eg: إنت بتتكلم عن نفسك، يبقى nedha مش dhahar.
-      ar: تتكلم عن نفسك فتقول nedha لا dhahar.
-      en: You're talking about yourself, so nedha, not dhahar.
-    words: [nedha]
+      ar_eg: جدّتي حكت لي حكاية.
+      ar: حكت لي جدّتي قصة.
+      en: Grandma told me a story.
+    answer: Eyang cariyos dhateng kula
+    distractors: [adhik, gumun]
+    words: [eyang, cariyos]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Mbah, panjenengan sampun dhahar?
+    source_text: Kula gumun, Eyang mangertos basa Arab.
     answers_meaning:
-      ar_eg: [يا تيتة، حضرتك أكلتي؟, يا تيتة، أكلتي؟, يا جدو، حضرتك أكلت؟, يا جدو، أكلت؟]
-      ar: [يا جدتي، هل تفضلتِ بالأكل؟, يا جدتي، هل أكلتِ؟, يا جدي، هل أكلت؟]
-      en: ['Grandma, have you eaten?', 'Grandpa, have you eaten?', 'Have you eaten, Grandma?', 'Have you eaten, Grandpa?']
-    explain:
-      ar_eg: Mbah ممكن تبقى جد أو جدة، فالترجمتين صح.
-      ar: Mbah تصلح للجد والجدة، فالترجمتان صحيحتان.
-      en: Mbah can be a grandmother or a grandfather, so both translations work.
-    words: [mbah, panjenengan, dhahar]
+      ar_eg: [أنا مستغرب إن جدّتي فاهمة عربي, أنا منبهر، جدّتي بتفهم عربي]
+      ar: [أنا مندهش، جدّتي تفهم العربية, أدهشني أن جدّتي تفهم العربية]
+      en: ['I''m amazed, Grandma understands Arabic', 'I''m amazed that Grandma understands Arabic']
+    words: [gumun, mangertos, eyang]
   - id: e09
-    type: dictation
-    text: Sampun, Mbah.
-    meaning:
-      ar_eg: آه يا تيتة، خلاص (كلت).
-      ar: نعم يا جدتي، قد فعلت.
-      en: Yes, Grandma, I have.
-    words: [sampun]
-  - id: e10
     type: speaking
-    text: Sampeyan sampun nedha, Bu?
+    text: Adhikku isih lingsem.
     meaning:
-      ar_eg: حضرتك كلتي يا مدام؟
-      ar: هل أكلتِ يا سيدتي؟
-      en: Have you eaten, ma'am?
-    words: [sampeyan, sampun, nedha]
+      ar_eg: أختي الصغيرة لسه مكسوفة.
+      ar: أختي الصغرى ما زالت خجلانة.
+      en: My little sister is still shy.
+    words: [adhik, lingsem]
+  - id: e10
+    type: multiple_choice
+    question: isin (ngoko) → ___ (krama)
+    options: [bingah, lingsem, cariyos]
+    answer: 1
+    explain:
+      ar_eg: 'isin بالنغوكو، lingsem بالكراما: مكسوف. bingah = مبسوط، cariyos = حكاية.'
+      ar: 'isin بالنغوكو وlingsem بالكراما: خجلان. bingah = سعيد، cariyos = قصة.'
+      en: 'isin is ngoko, lingsem is krama: shy. bingah = glad, cariyos = story.'
+    words: [lingsem, bingah, cariyos, gumun]
 dialogue:
-  title: Saka stasiun neng omahe Mbah
   lines:
-    - speaker: Mas Dimas
-      text: Ayo, Mohamed, neng omahe mbahku!
-      ar_eg: يلا يا محمد، على بيت جدتي!
-      ar: هيا يا محمد، إلى بيت جدتي!
-      en: Come on, Mohamed, to my grandma's house!
-    - speaker: Bu Siti
-      text: Mas, mangga, soto!
-      ar_eg: اتفضل يا أستاذ، شوربة سوتو!
-      ar: تفضّل يا أخي، حساء سوتو!
-      en: Please, young man — soto!
-    - speaker: Mohamed
-      text: Sampun, Bu. Matur nuwun.
-      ar_eg: كلت خلاص يا مدام. شكرًا.
-      ar: قد أكلتُ يا سيدتي. شكرًا.
-      en: I've already eaten, ma'am. Thank you.
     - speaker: Mbah Putri
-      text: "Le, Dimas! Wis mangan durung?"
-      ar_eg: "يا ديماس يا حبيبي! كلت ولا لسه؟"
-      ar: "يا ديماس يا بنيّ! هل أكلت؟"
-      en: "Dimas, my boy! Eaten yet?"
-    - speaker: Mas Dimas
-      text: Sampun, Mbah. Panjenengan sampun dhahar?
-      ar_eg: آه يا تيتة. وحضرتك أكلتي؟
-      ar: نعم يا جدتي. وهل تفضلتِ أنتِ بالأكل؟
-      en: Yes, Grandma. Have you eaten?
+      text: Nak Mohamed, Dimas sampun cariyos bab sampeyan.
+      ar_eg: يا ابني محمد، ديماس حكى لي عنك.
+      ar: يا بنيّ محمد، حدّثني ديماس عنك.
+      en: Mohamed, dear, Dimas has told me about you.
     - speaker: Mohamed
-      text: Sugeng enjing, Mbah.
-      ar_eg: صباح الخير يا تيتة.
-      ar: صباح الخير يا جدتي.
-      en: Good morning, Grandma.
-game: uu.grandmother
+      text: Nggih, Eyang. Kula bingah sanget saged pinanggih.
+      ar_eg: أيوه يا جدّتي. أنا مبسوط أوي إني قابلتك.
+      ar: نعم يا جدّتي. أنا سعيد جدًا بلقائك.
+      en: Yes, Grandma. I'm so glad to meet you.
+    - speaker: Mbah Putri
+      text: Niki rayinipun Dimas. Kok namung mesem, Nduk?
+      ar_eg: ودي أخت ديماس الصغيرة. بتبتسمي وبس ليه يا بنتي؟
+      ar: وهذه أخت ديماس الصغرى. لماذا تكتفين بالابتسام يا ابنتي؟
+      en: This is Dimas's little sister. Why are you only smiling, love?
+    - speaker: Mas Dimas
+      text: Adhikku isih lingsem, Med. Ora apa-apa.
+      ar_eg: أختي لسه مكسوفة يا مِد. عادي.
+      ar: أختي ما زالت خجلانة يا مِد. لا بأس.
+      en: My little sister's still shy, Med. It's fine.
+    - speaker: Mohamed
+      text: Kula gumun, Eyang taksih mangertos basa Arab sekedhik!
+      ar_eg: أنا مستغرب إن حضرتك لسه فاهمة شوية عربي يا جدّتي!
+      ar: أنا مندهش أنك ما زلت تفهمين قليلًا من العربية يا جدّتي!
+      en: I'm amazed, Grandma, you still understand a little Arabic!
+new_words:
+  - word: eyang
+    pos: noun
+    ar_eg: جدّ أو جدّة (باحترام)
+    ar: جدّ أو جدّة (باحترام)
+    en: grandparent, respectful (= kakek/nenek; ngoko also mbah)
+  - word: rayi
+    pos: noun
+    ar_eg: أخ أو أخت أصغر (كراما)
+    ar: أخ أو أخت أصغر (كراما)
+    en: younger sibling, krama (ngoko adhik, Indonesian adik)
+  - word: adhik
+    pos: noun
+    ar_eg: أخ أو أخت أصغر (نغوكو)
+    ar: أخ أو أخت أصغر (نغوكو)
+    en: younger sibling, ngoko (krama rayi, Indonesian adik)
+  - word: mangertos
+    pos: verb
+    ar_eg: يفهم (كراما من ngerti)
+    ar: يفهم (كراما من ngerti)
+    en: understand, krama (ngoko ngerti, Indonesian mengerti)
+  - word: cariyos
+    pos: noun
+    ar_eg: حكاية؛ يحكي (كراما من crita)
+    ar: قصة؛ يحكي (كراما من crita)
+    en: story; tell, krama (ngoko crita, Indonesian cerita)
+  - word: gumun
+    pos: adjective
+    ar_eg: مستغرب ومنبهر
+    ar: مندهش ومعجب
+    en: amazed, astonished (= heran, kagum)
+  - word: bingah
+    pos: adjective
+    ar_eg: مبسوط، فرحان (كراما من seneng)
+    ar: سعيد (كراما من seneng)
+    en: glad, happy, krama (ngoko seneng, Indonesian senang)
+  - word: lingsem
+    pos: adjective
+    ar_eg: مكسوف (كراما من isin)
+    ar: خجلان (كراما من isin)
+    en: shy, embarrassed, krama (ngoko isin, Indonesian malu)
 review:
   status: draft
   verified: false
