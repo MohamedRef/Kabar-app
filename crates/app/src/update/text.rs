@@ -33,6 +33,7 @@ pub enum U {
     RestartNow,
     NextLaunch,
     FailedNetwork,
+    FailedDownload,
     FailedVerify,
     FailedInstall,
     TooNew,
@@ -71,7 +72,6 @@ pub enum U {
     NoticeChannel,
     NotifyToggle,
     NotifyToggleHint,
-    NoticeMore,
     // the "what's new" sheet (sheet.rs)
     WhatsNewAsk,
     History,
@@ -206,6 +206,9 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (FailedNetwork, ArEg) => "ماعرفناش نوصل لمكان التحديثات. Kabar هيجرّب تاني بعدين لوحده.",
         (FailedNetwork, Ar) => "تعذّر الوصول إلى مصدر التحديثات. سيحاول Kabar مجددًا لاحقًا.",
         (FailedNetwork, En) => "Couldn't reach the update server. Kabar will try again later by itself.",
+        (FailedDownload, ArEg) => "التنزيل ماكملش. النسخة اللي معاك سليمة، جرّب تاني بعد شوية.",
+        (FailedDownload, Ar) => "لم يكتمل التنزيل. نسختك الحالية سليمة، حاول مجددًا بعد قليل.",
+        (FailedDownload, En) => "The download didn't finish. Your current Kabar is fine; try again in a bit.",
         (FailedVerify, ArEg) => "التحديث ده ماعدّاش فحص الأمان (التوقيع أو البصمة)، فـKabar ماثبّتوش.",
         (FailedVerify, Ar) => "لم يجتز هذا التحديث فحص الأمان (التوقيع أو البصمة)، فلم يثبّته Kabar.",
         (FailedVerify, En) => {
@@ -345,9 +348,6 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (NotifyToggleHint, En) => {
             "On Android even while Kabar is closed (it looks every few hours), on the Mac while it's open, with what's new in a line or two. Never during your quiet hours, and the device's own notification switch has the last word."
         }
-        (NoticeMore, ArEg) => "و{n} حاجات كمان",
-        (NoticeMore, Ar) => "و{n} تغييرات أخرى",
-        (NoticeMore, En) => "and {n} more",
 
         (WhatsNewAsk, ArEg) => "إيه الجديد؟",
         (WhatsNewAsk, Ar) => "ما الجديد؟",
@@ -422,5 +422,37 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (NoDetails, ArEg) => "النسخة دي مفيهاش تفاصيل مكتوبة.",
         (NoDetails, Ar) => "لا توجد تفاصيل مكتوبة لهذا الإصدار.",
         (NoDetails, En) => "This build came without details.",
+    }
+}
+
+/// "and 3 more" after a short list of changes, with Arabic's dual and plural.
+pub fn more_changes(lang: UiLanguage, n: usize) -> String {
+    match lang {
+        UiLanguage::ArEg => match n {
+            1 => "وحاجة كمان".to_owned(),
+            2 => "وحاجتين كمان".to_owned(),
+            3..=10 => format!("و{n} حاجات كمان"),
+            _ => format!("و{n} حاجة كمان"),
+        },
+        UiLanguage::Ar => match n {
+            1 => "وتغيير آخر".to_owned(),
+            2 => "وتغييران آخران".to_owned(),
+            3..=10 => format!("و{n} تغييرات أخرى"),
+            _ => format!("و{n} تغييرًا آخر"),
+        },
+        UiLanguage::En => format!("and {n} more"),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn more_changes_counts_like_arabic_does() {
+        let eg: Vec<String> = [1, 2, 3, 11].map(|n| more_changes(UiLanguage::ArEg, n)).into();
+        assert_eq!(eg, ["وحاجة كمان", "وحاجتين كمان", "و3 حاجات كمان", "و11 حاجة كمان"]);
+        assert_eq!(more_changes(UiLanguage::Ar, 2), "وتغييران آخران");
+        assert_eq!(more_changes(UiLanguage::En, 1), "and 1 more");
     }
 }

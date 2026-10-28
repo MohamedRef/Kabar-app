@@ -210,7 +210,7 @@ pub(crate) fn notes_in(lang: UiLanguage, n: &UpdateNotes) -> String {
 /// an offer whose banner was closed, never inside quiet hours. `local` is the
 /// device's wall clock when the platform knows it (Android's job passes it).
 pub fn notice(s: &Status, local: Option<LocalTime>, now_ms: u64) -> Option<Notice> {
-    use text::{U, ut};
+    use text::{U, more_changes, ut};
     if s.off.is_some() || s.prefs.mode == Mode::Off || !s.prefs.notify {
         return None;
     }
@@ -244,7 +244,7 @@ pub fn notice(s: &Status, local: Option<LocalTime>, now_ms: u64) -> Option<Notic
     let mut whats_new = if offer.changes.is_empty() {
         notes_in(lang, &offer.notes)
     } else {
-        changelog::notice_lines(lang, &offer.changes, ut(lang, U::NoticeMore))
+        changelog::notice_lines(lang, &offer.changes, |n| more_changes(lang, n))
     };
     if whats_new.chars().count() > 300 {
         whats_new = whats_new.chars().take(299).collect::<String>() + "…";
@@ -497,39 +497,51 @@ pub struct Updater {
     job: Mutex<()>,
 }
 
+/// The one updater in this process, whichever opens it first: the app's
+/// start ([`init`]) or Android's background job ([`job_updater`]), which can
+/// run before any UI. Two would share `updates/` with separate locks and
+/// prefs: racing on one `.part` download and overwriting each other's
+/// `prefs.json` (a lost "notified" mark sends the notification twice).
 static UPDATER: OnceLock<Updater> = OnceLock::new();
 
-/// Opens the updater under the app's data directory and starts the
-/// background checks. Called once at start.
+/// [`UPDATER`], opened under `data_dir` if nothing has opened it yet.
+fn shared<'a>(cell: &'a OnceLock<Updater>, data_dir: &Path) -> &'a Updater {
+    cell.get_or_init(|| {
+        let feed_override = dev_override("KABAR_UPDATE_URL");
+        let platform = dev_override("KABAR_UPDATE_PLATFORM")
+            .and_then(|p| UpdatePlatform::parse(&p))
+            .or_else(this_platform);
+        let off = if cfg!(debug_assertions) && feed_override.is_none() {
+            Some(Off::DevBuild)
+        } else if cfg!(target_os = "macos") && bundle::running_bundle().is_none() && feed_override.is_none() {
+            Some(Off::NotInBundle)
+        } else {
+            None
+        };
+        Updater::new(data_dir.join("updates"), BuildInfo::from_env(), platform, feed_override, off)
+    })
+}
+
+/// Opens the updater under the app's data directory (or takes the one the
+/// background job already opened) and starts the background checks.
+/// Called once at start.
 pub fn init(data_dir: &Path) {
-    let feed_override = dev_override("KABAR_UPDATE_URL");
-    let platform =
-        dev_override("KABAR_UPDATE_PLATFORM").and_then(|p| UpdatePlatform::parse(&p)).or_else(this_platform);
-    let off = if cfg!(debug_assertions) && feed_override.is_none() {
-        Some(Off::DevBuild)
-    } else if cfg!(target_os = "macos") && bundle::running_bundle().is_none() && feed_override.is_none() {
-        Some(Off::NotInBundle)
-    } else {
-        None
-    };
-    let updater = Updater::new(data_dir.join("updates"), BuildInfo::from_env(), platform, feed_override, off);
-    let start = updater.status().off.is_none();
-    let background = updater.background_checks();
-    if UPDATER.set(updater).is_err() {
-        return;
-    }
-    crate::platform::update_notice::schedule(background);
-    if !start {
-        return;
-    }
-    let _ = std::thread::Builder::new().name("kabar-update".into()).spawn(|| {
-        std::thread::sleep(FIRST_CHECK_AFTER);
-        loop {
-            if let Some(u) = UPDATER.get() {
-                u.tick();
-            }
-            std::thread::sleep(Duration::from_secs(30 * 60));
+    static STARTED: std::sync::Once = std::sync::Once::new();
+    let updater = shared(&UPDATER, data_dir);
+    STARTED.call_once(|| {
+        crate::platform::update_notice::schedule(updater.background_checks());
+        if updater.status().off.is_some() {
+            return;
         }
+        let _ = std::thread::Builder::new().name("kabar-update".into()).spawn(|| {
+            std::thread::sleep(FIRST_CHECK_AFTER);
+            loop {
+                if let Some(u) = UPDATER.get() {
+                    u.tick();
+                }
+                std::thread::sleep(Duration::from_secs(30 * 60));
+            }
+        });
     });
 }
 
@@ -538,19 +550,10 @@ pub fn get() -> Option<&'static Updater> {
 }
 
 /// The updater Android's background job (`UpdateCheckJob`) works with, in a
-/// process that may have no UI: the app's own if it's running here, else
-/// one opened for the job.
+/// process that may have no UI yet: the same one the app uses.
 #[cfg_attr(not(target_os = "android"), allow(dead_code))]
 fn job_updater(data_dir: &Path) -> &'static Updater {
-    static HEADLESS: OnceLock<Updater> = OnceLock::new();
-    match UPDATER.get() {
-        Some(u) => u,
-        None => HEADLESS.get_or_init(|| {
-            let off = (cfg!(debug_assertions) && dev_override("KABAR_UPDATE_URL").is_none())
-                .then_some(Off::DevBuild);
-            Updater::new(data_dir.join("updates"), BuildInfo::from_env(), this_platform(), None, off)
-        }),
-    }
+    shared(&UPDATER, data_dir)
 }
 
 /// Android's background job: checks when due and returns the notification
@@ -1356,6 +1359,22 @@ mod tests {
         );
         u.retry_after = Duration::from_millis(10);
         Box::leak(Box::new(u))
+    }
+
+    /// Android's job can start the process before any UI (#429): the app's
+    /// start then takes the job's updater instead of opening a second one.
+    /// The only test that touches the process-wide updater.
+    #[test]
+    fn the_job_and_the_app_share_one_updater() {
+        let data = tempfile::tempdir().unwrap();
+        let job = job_updater(data.path());
+        assert!(get().is_some_and(|u| std::ptr::eq(u, job)), "the job's updater is the app's");
+        init(data.path());
+        init(data.path());
+        assert!(std::ptr::eq(get().unwrap(), job), "init reuses it");
+        assert!(std::ptr::eq(job_updater(data.path()), job));
+        let local = OnceLock::new();
+        assert!(std::ptr::eq(shared(&local, data.path()), shared(&local, data.path())));
     }
 
     #[test]

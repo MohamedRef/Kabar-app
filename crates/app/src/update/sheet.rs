@@ -75,6 +75,9 @@ const SHEET_CSS: &str = r#"
 .us-summary progress { inline-size: 100%; accent-color: var(--us-new); }
 .us-summary .us-mb { margin: 0; font-size: 0.8125rem; color: var(--muted); }
 /* The timeline: a rail on the start side, a node per build on it. */
+/* The Settings sheet's own buttons hide under this one: one ✕ at a time. */
+.app:has(.us-sheet) .settings-head > .icon-button { visibility: hidden; }
+.us-failed { margin: 0; font-size: var(--fs-sm); color: var(--text); }
 .us-timeline { list-style: none; margin: 0; padding: 0; }
 .us-release { position: relative; padding-inline-start: 2rem; padding-block-end: 0.5rem; }
 .us-release::before { content: ""; position: absolute; inset-inline-start: calc(0.625rem - 1px);
@@ -692,6 +695,11 @@ pub fn UpdateSheet() -> Element {
                 }
             }
             div { class: "us-foot",
+                if let (SheetMode::Offer, Phase::Failed { why, offer }) = (m, &s.phase) {
+                    p { class: "us-failed", role: "alert",
+                        "{ut(lang, super::view::failure_text(why, offer.as_ref()))}"
+                    }
+                }
                 button {
                     class: "us-btn",
                     onclick: move |_| {

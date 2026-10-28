@@ -7,7 +7,7 @@ use kabar_core::locale::{UiLanguage, eastern_arabic_digits};
 use kabar_protocol::update::{Channel, UpdateNotes};
 
 use super::sheet::{SheetMode, UpdateSheetNav};
-use super::text::{U, ut};
+use super::text::{U, more_changes, ut};
 use super::{Failure, InstallTexts, Mode, NoticeContext, Off, Offer, Phase, Status, Updater};
 use crate::coach::Coach;
 use crate::settings::{Section, SettingsNav};
@@ -19,6 +19,7 @@ pub(super) const UPDATE_CSS: &str = r#"
 .update-state p { margin: 0; }
 .update-state progress { inline-size: 100%; accent-color: var(--sawah); }
 .update-notes { white-space: pre-line; }
+.update-notes-label { display: block; }
 .update-check { margin-block-end: 0.75rem; }
 .update-modes { display: grid; gap: 0.35rem; }
 .update-modes label { display: grid; grid-template-columns: auto 1fr; column-gap: 0.5rem; align-items: start; }
@@ -68,6 +69,19 @@ fn notes(lang: UiLanguage, n: &UpdateNotes) -> String {
 pub(super) fn megabytes(ui: &Ui, bytes: u64) -> String {
     let s = format!("{:.1} MB", bytes as f64 / (1024.0 * 1024.0));
     if ui.eastern() { eastern_arabic_digits(&s) } else { s }
+}
+
+/// What went wrong, in one line (the card's headline, the sheet's note).
+/// A network failure with an offer in hand broke the download, not the check.
+pub(super) fn failure_text(why: &Failure, offer: Option<&Offer>) -> U {
+    match why {
+        Failure::Network if offer.is_some() => U::FailedDownload,
+        Failure::Network => U::FailedNetwork,
+        Failure::Verify(_) => U::FailedVerify,
+        Failure::Install(_) => U::FailedInstall,
+        Failure::TooNew => U::TooNew,
+        Failure::KeyChanged => U::KeyChanged,
+    }
 }
 
 fn channel_label(c: Channel) -> U {
@@ -271,11 +285,7 @@ fn PhaseView(phase: Phase, auto: bool) -> Element {
         Phase::Installing(_) => Some(U::Installing),
         Phase::NeedsPermission(_) => Some(U::NeedsPermission),
         Phase::Installed(_) => Some(U::Installed),
-        Phase::Failed { why: Failure::Network, .. } => Some(U::FailedNetwork),
-        Phase::Failed { why: Failure::Verify(_), .. } => Some(U::FailedVerify),
-        Phase::Failed { why: Failure::Install(_), .. } => Some(U::FailedInstall),
-        Phase::Failed { why: Failure::TooNew, .. } => Some(U::TooNew),
-        Phase::Failed { why: Failure::KeyChanged, .. } => Some(U::KeyChanged),
+        Phase::Failed { why, offer } => Some(failure_text(why, offer.as_ref())),
     };
     let Some(headline) = headline else { return rsx! {} };
     let detail = match &phase {
@@ -292,7 +302,7 @@ fn PhaseView(phase: Phase, auto: bool) -> Element {
             if o.changes.is_empty() {
                 notes(lang, &o.notes)
             } else {
-                super::changelog::notice_lines(lang, &o.changes, ut(lang, U::NoticeMore))
+                super::changelog::notice_lines(lang, &o.changes, |n| more_changes(lang, n))
             }
         })
         .filter(|n| !n.is_empty());
@@ -307,7 +317,10 @@ fn PhaseView(phase: Phase, auto: bool) -> Element {
                     " "
                     bdi { dir: "ltr", class: "latin", "{o.label()}" }
                     if matches!(phase, Phase::Available(_)) {
-                        span { class: "muted", " · {megabytes(&ui, o.asset.size)}" }
+                        span { class: "muted",
+                            " · "
+                            bdi { dir: "ltr", "{megabytes(&ui, o.asset.size)}" }
+                        }
                     }
                 }
             }
@@ -326,7 +339,7 @@ fn PhaseView(phase: Phase, auto: bool) -> Element {
             if let Some(n) = what_new {
                 if !matches!(phase, Phase::Failed { .. }) {
                     p { class: "update-notes",
-                        span { class: "muted", "{ut(lang, U::WhatsNew)}: " }
+                        span { class: "muted update-notes-label", "{ut(lang, U::WhatsNew)}" }
                         "{n}"
                     }
                 }
@@ -374,7 +387,7 @@ pub fn UpdateBanner() -> Element {
     let what_new = if offer.changes.is_empty() {
         notes(lang, &offer.notes)
     } else {
-        super::changelog::lines_upto(lang, &offer.changes, ut(lang, U::NoticeMore), 2)
+        super::changelog::lines_upto(lang, &offer.changes, |n| more_changes(lang, n), 2)
     };
     let sheet = try_use_context::<UpdateSheetNav>();
     rsx! {
