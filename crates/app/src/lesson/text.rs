@@ -71,6 +71,7 @@ pub enum L {
     CloseTest,
     TestStart,
     TestMinutes,
+    TestRoute,
     TestNoFeedback,
     PlacementNoFeedback,
     TestPart,
@@ -332,11 +333,11 @@ pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
         (TestNoFeedback, ArEg) => "مش هنقولك صح ولا غلط وإنت بتحل؛ هتشوف كل حاجة في الآخر.",
         (TestNoFeedback, Ar) => "لن نقول صحيح أو خطأ أثناء الحل؛ سترى كل شيء في النهاية.",
         (TestNoFeedback, En) => "No right-or-wrong during the test; you'll see everything at the end.",
-        (PlacementNoFeedback, ArEg) => "لو سؤال صعب عليك، عادي خالص — اختار أقرب حاجة وكمّل.",
-        (PlacementNoFeedback, Ar) => "إن صعب عليك سؤال فلا بأس — اختر الأقرب وتابع.",
-        (PlacementNoFeedback, En) => {
-            "If a question feels hard, that's completely fine — pick your best guess and carry on."
-        }
+        (PlacementNoFeedback, ArEg) => "لو سؤال صعب عليك، اختار أقرب حاجة وكمّل.",
+        (PlacementNoFeedback, Ar) => "إن صعب عليك سؤال فاختر الأقرب وتابع.",
+        (PlacementNoFeedback, En) => "If a question feels hard, pick your best guess and carry on.",
+        (TestRoute, ArEg | Ar) => "أجزاء الاختبار بالترتيب",
+        (TestRoute, En) => "The test's parts, in order",
         (TestPart, ArEg) => "الجزء {i} من {n}",
         (TestPart, Ar) => "الجزء {i} من {n}",
         (TestPart, En) => "Part {i} of {n}",

@@ -17,8 +17,8 @@ use kabar_protocol::test::{TestContent, TestItem, TestItemKind, TestKind, TestSk
 
 use super::text::{L, lt};
 use super::{
-    Draft, ExerciseView, MAX_STEP_MS, Notice, Rich, TextAnswer, autoplay_text, back_label, draft_answer,
-    instruction, needs_audio, now_ms, option_count, speak, target_tag,
+    Draft, ExerciseView, MAX_STEP_MS, NoSoundBanner, Notice, Rich, TextAnswer, autoplay_text, back_label,
+    draft_answer, instruction, needs_audio, no_audio_msg, now_ms, option_count, speak, target_tag,
 };
 use crate::annotated::Annotated;
 use crate::coach::Coach;
@@ -89,6 +89,15 @@ pub fn level_label(level: &str) -> String {
     match level.strip_prefix("bipa") {
         Some(n) => format!("BIPA {n}"),
         None => level.to_uppercase(),
+    }
+}
+
+/// A section's own name: «الخطوة ١ — جاكرتا» → «جاكرتا», since the part
+/// label beside it already counts. Titles without a number stay whole.
+fn section_name(title: &str) -> &str {
+    match title.split_once(" — ") {
+        Some((head, name)) if head.chars().any(|c| c.is_numeric()) => name.trim(),
+        _ => title,
     }
 }
 
@@ -239,6 +248,8 @@ fn TestView(test: TestContent) -> Element {
     let draft = use_signal(Draft::default);
     let last = use_signal(now_ms);
     let audio_missing = use_signal(|| false);
+    // The banner below says it once; the prompts don't repeat it.
+    use_context_provider(|| NoSoundBanner);
     let mut recorded = use_signal(|| false);
     // Listening items skipped because the device has no voice for them.
     let mut voice_skips = use_signal(|| 0u32);
@@ -454,17 +465,21 @@ fn TestView(test: TestContent) -> Element {
             }
             div { class: "lp-body",
                 div { class: "lp-col", key: "{step:?}",
-                    if *voice_skips.read() > 0 && matches!(step, TestStep::Item { .. }) {
-                        p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
+                    if matches!(step, TestStep::Item { .. }) {
+                        if *voice_skips.read() > 0 {
+                            p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
+                        } else if *audio_missing.read() {
+                            p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, no_audio_msg())}" }
+                        }
                     }
                     match step {
                         TestStep::Intro => rsx! { Intro { test: t.clone() } },
                         TestStep::Item { section: si, .. } => rsx! {
                             if let Some(s) = &section {
+                                // «1 من 4 · جاكرتا»: the part and its name once (#447).
                                 header { class: "lt-section",
                                     span { class: "pill", "{part_label(&ui, si, n_sections)}" }
-                                    " "
-                                    strong { Rich { text: pick(&s.title, lang).to_string(), target } }
+                                    strong { Rich { text: section_name(pick(&s.title, lang)).to_string(), target } }
                                     if let Some(ins) = &s.instructions {
                                         p { class: "muted lp-small", Rich { text: pick(ins, lang).to_string(), target } }
                                     }
@@ -554,11 +569,14 @@ fn Intro(test: TestContent) -> Element {
             if let Some(intro) = &test.intro {
                 p { class: "lp-slide-body pre", Rich { text: pick(intro, lang).trim().to_string(), target } }
             }
-            p { class: "muted", "{minutes_line}" }
-            p { class: "muted", "{lt(lang, note)}" }
-            ol { class: if ui.eastern() { "lt-parts eastern" } else { "lt-parts" },
+            p { class: "muted", "{minutes_line} {lt(lang, note)}" }
+            // The parts in order, as a small route: Jakarta → Bali → …
+            ol { class: "lt-route", aria_label: "{lt(lang, L::TestRoute)}",
                 for s in test.sections.iter() {
-                    li { key: "{s.id}", Rich { text: pick(&s.title, lang).to_string(), target } }
+                    li { key: "{s.id}",
+                        span { class: "lt-pin", aria_hidden: "true" }
+                        Rich { text: section_name(pick(&s.title, lang)).to_string(), target }
+                    }
                 }
             }
         }

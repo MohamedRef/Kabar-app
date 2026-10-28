@@ -271,6 +271,11 @@ pub fn TodayCards() -> Element {
     }
 }
 
+/// The back arrow, pointing the way the page reads.
+pub(crate) fn back_arrow(lang: UiLanguage) -> &'static str {
+    if lang.dir() == Direction::Rtl { "→" } else { "←" }
+}
+
 /// A card's title that opens where its numbers come from (the journal's
 /// days, or the words in Review).
 #[component]
@@ -346,7 +351,15 @@ pub fn StatsScreen() -> Element {
         style { {STATS_CSS.text()} }
         div { class: "st",
             div { class: "st-head",
-                button { class: "st-back", onclick: move |_| back(ui), "{st(lang, S::Back)}" }
+                // The header's round arrow (#442, #448); a phone's top bar
+                // already has one, so it shows from the rail up.
+                button {
+                    class: "st-back st-back-page round-back",
+                    aria_label: st(lang, S::Back),
+                    title: st(lang, S::Back),
+                    onclick: move |_| back(ui),
+                    span { aria_hidden: "true", {back_arrow(lang)} }
+                }
                 h2 { "{st(lang, S::Title)}" }
             }
             div { class: "st-grid",

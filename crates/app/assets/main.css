@@ -429,14 +429,18 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   border-block-end-color: transparent;
 }
 .top-bar .brand-small { font-size: 1.25rem; line-height: 1.25; }
-.top-bar .gear-button {
+.top-bar .gear-button, .round-back {
   inline-size: 2.5rem; block-size: 2.5rem; min-inline-size: 0; min-block-size: 0; padding: 0; flex: none;
   border: 1px solid var(--line-soft); border-radius: 50%;
   background: color-mix(in srgb, var(--text) 7%, transparent);
   color: var(--text);
 }
 .top-bar .gear-button svg { inline-size: 1.375rem; block-size: 1.375rem; }
-.top-bar .gear-button:hover, .top-bar .gear-button:active { background: var(--surface-2); color: var(--indigo); }
+.top-bar .gear-button:hover, .top-bar .gear-button:active,
+.round-back:hover, .round-back:active { background: var(--surface-2); color: var(--indigo); }
+/* An in-page back arrow (Stats on a rail or sidebar, #448): the header's
+   round button, centred on the title's row. */
+.round-back { display: inline-grid; place-items: center; font-size: 1.2rem; line-height: 1; }
 .top-bar .top-title { gap: var(--sp-2); }
 
 /* The phone's More tab and sheet; the top bar's back arrow and title */
