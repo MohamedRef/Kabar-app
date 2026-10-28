@@ -38,6 +38,7 @@ the Arabic words Indonesian already borrowed.
 | Offline packs (audio per unit) | ✓ | ✓ | ✓ |
 | Sync through Kabar Cloud, Google sign-in, Devices screen | ✓ | ✓ | ✓ |
 | Updates over the air: signed feed, automatic / tell me first / off, alpha·beta·stable (preview for CI builds) | ✓ swaps Kabar.app | ✓ PackageInstaller | ✓ PackageInstaller |
+| "A new Kabar is out" notification with what's new (keeps quiet hours) | ✓ while open | ✓ even when closed, Download / Install button | ✓ even when closed, Download / Install button |
 | Pen **writing** (Notebook, Gambar!, handwritten answers, Card Wall, aksara calligraphy) | paused | paused | paused |
 | Home-screen widgets | — | parked | parked |
 
@@ -57,13 +58,13 @@ every morning. CI warns when the table below is behind the content.
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | BIPA 1 | Jakarta | A1 | 10 | 98 | 940 | 613 | 612 / 600 | ~11 h | 35 |
-| BIPA 2 | Bali | A2 | 10 | 85 | 800 | 508 | 1,120 / 1,100 | ~10 h | 35 |
-| BIPA 3 | Lombok | B1 | 10 | 97 | 936 | 506 | 1,626 / 1,600 | ~11 h | 39 |
-| BIPA 4 | Sulawesi | B2 | 10 | 114 | 1,062 | 503 | 2,129 / 2,100 | ~12 h | 37 |
-| BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,236 | 601 | 2,729 / 2,700 | ~13 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 606 | 3,335 / 3,300 | ~13 h | 38 |
-| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 704 | 4,039 / 4,000 | ~15 h | 38 |
-| **Total** |  | — | 70 | 788 | 7,661 | 4,041 | 4,039 / 4,000 | ~86 h | 260 |
+| BIPA 2 | Bali | A2 | 10 | 86 | 810 | 516 | 1,128 / 1,100 | ~10 h | 35 |
+| BIPA 3 | Lombok | B1 | 10 | 97 | 936 | 506 | 1,634 / 1,600 | ~11 h | 39 |
+| BIPA 4 | Sulawesi | B2 | 10 | 114 | 1,062 | 503 | 2,137 / 2,100 | ~12 h | 37 |
+| BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,236 | 600 | 2,736 / 2,700 | ~13 h | 38 |
+| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 606 | 3,342 / 3,300 | ~13 h | 38 |
+| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 704 | 4,046 / 4,000 | ~15 h | 38 |
+| **Total** |  | — | 70 | 789 | 7,671 | 4,048 | 4,046 / 4,000 | ~86 h | 260 |
 
 **Javanese (J1–J6)**
 
