@@ -2,6 +2,7 @@ package app.kabar
 
 import android.app.Activity
 import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.Color
 import android.os.Build
 import android.view.View
@@ -23,8 +24,7 @@ object SystemBars {
     @JvmStatic
     fun apply(activity: Activity, dayArgb: Int, nightArgb: Int) {
         activity.runOnUiThread {
-            val night = (activity.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
-                Configuration.UI_MODE_NIGHT_YES
+            val night = isNight(activity)
             val colour = if (night) nightArgb else dayArgb
             val lightBars = isLight(colour)
             val window = activity.window
@@ -47,6 +47,16 @@ object SystemBars {
             }
         }
     }
+
+    /**
+     * The phone's own dark mode. Read from the system resources, which follow
+     * Settings › Display even when this activity's theme is light (the
+     * WebView then reports `prefers-color-scheme: light`).
+     */
+    @JvmStatic
+    fun isNight(@Suppress("UNUSED_PARAMETER") activity: Activity): Boolean =
+        (Resources.getSystem().configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
+            Configuration.UI_MODE_NIGHT_YES
 
     @Suppress("DEPRECATION")
     private fun paintBars(window: Window, colour: Int) {

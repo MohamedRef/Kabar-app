@@ -343,6 +343,29 @@ impl Theme {
         }
     }
 
+    /// The concrete theme to show when the platform knows the device's dark
+    /// mode (`Some`): a System theme takes its day or night side. With
+    /// `None` it stays as is and CSS `prefers-color-scheme` decides.
+    pub fn resolved(self, device_dark: Option<bool>) -> Theme {
+        match (self, device_dark) {
+            (Self::System, Some(dark)) => {
+                if dark {
+                    Self::Dark
+                } else {
+                    Self::Light
+                }
+            }
+            (Self::SystemBlack, Some(dark)) => {
+                if dark {
+                    Self::Black
+                } else {
+                    Self::Light
+                }
+            }
+            _ => self,
+        }
+    }
+
     /// The palettes shown by day and by night: the same one for a fixed theme.
     pub fn day_and_night(self) -> (&'static Palette, &'static Palette) {
         match (self.palette(), self.follows_os()) {
@@ -623,6 +646,22 @@ mod tests {
         assert_eq!(Theme::Black.palette(), Some(&BLACK));
         assert_eq!(Theme::SystemBlack.follows_os(), Some((&LIGHT, &BLACK)));
         assert_eq!(Theme::Black.day_and_night(), (&BLACK, &BLACK));
+    }
+
+    #[test]
+    fn os_themes_resolve_to_their_side_when_the_device_says() {
+        assert_eq!(Theme::System.resolved(Some(true)), Theme::Dark);
+        assert_eq!(Theme::SystemBlack.resolved(Some(true)), Theme::Black);
+        assert_eq!(Theme::SystemBlack.resolved(Some(false)), Theme::Light);
+        assert_eq!(Theme::System.resolved(None), Theme::System);
+        assert_eq!(Theme::Night.resolved(Some(false)), Theme::Night);
+        for theme in Theme::ALL {
+            for dark in [true, false] {
+                let (day, night) = theme.day_and_night();
+                let want = if dark { night } else { day };
+                assert_eq!(theme.resolved(Some(dark)).palette(), Some(want), "{}", theme.as_str());
+            }
+        }
     }
 
     #[test]

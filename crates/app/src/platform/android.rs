@@ -311,6 +311,20 @@ pub fn network_metered() -> Result<bool, String> {
     })
 }
 
+/// `SystemBars.isNight(activity)`: the phone's own dark mode.
+pub fn is_night() -> Result<bool, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.SystemBars"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("isNight"),
+            jni_sig!("(Landroid/app/Activity;)Z"),
+            &[JValue::Object(activity)],
+        )?
+        .z()
+    })
+}
+
 /// `SystemBars.apply(activity, day, night)`: bar colours as ARGB ints.
 pub fn system_bars(day: i32, night: i32) -> Result<(), String> {
     with_activity(|env, activity| {
