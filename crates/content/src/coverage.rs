@@ -181,13 +181,18 @@ impl Track {
         suffixes(&self.lang).iter().any(|s| w.len() > s.len() + 2 && w.strip_suffix(s).is_some_and(at))
     }
 
-    /// Taught phrases at `pos`, longest first.
-    fn phrases(&self, pos: usize) -> Vec<&str> {
-        let mut p: Vec<&str> = self
+    /// Taught phrases at `pos`, longest first, each also with a clitic on
+    /// its last word ("rumusan masalahnya", "sesi tanya jawabnya").
+    fn phrases(&self, pos: usize) -> Vec<String> {
+        let clitics: &[&str] =
+            if self.lang == "id" { &["nya", "ku", "mu"] } else { &["e", "ne", "ku", "mu"] };
+        let mut p: Vec<String> = self
             .taught
             .iter()
             .filter(|(w, p)| w.contains(' ') && **p <= pos)
-            .map(|(w, _)| w.as_str())
+            .flat_map(|(w, _)| {
+                std::iter::once(w.clone()).chain(clitics.iter().map(move |c| format!("{w}{c}")))
+            })
             .collect();
         p.sort_by_key(|p| std::cmp::Reverse(p.len()));
         p
@@ -565,5 +570,12 @@ mod tests {
         assert_eq!(u.len(), 4, "{u:?}");
         let (_, u) = measure(&t, &names, 1, line, &ex(""));
         assert_eq!(u, vec!["dipunserat".to_owned()]);
+    }
+
+    #[test]
+    fn a_taught_phrase_with_a_clitic_is_still_the_phrase() {
+        let names = BTreeSet::new();
+        let (_, u) = measure(&track(), &names, 0, "Saya di rumah sakitnya.", &ex(""));
+        assert_eq!(u, vec!["di".to_owned()]);
     }
 }
