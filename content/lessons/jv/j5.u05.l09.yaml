@@ -1,158 +1,199 @@
 schema: kabar.lesson/v1
 id: j5.u05.l09
 language: jv
-title: Critane Bu Retno
+title: Kancil lan timun
 can_do:
-  ar_eg: تسمع حكاية قصيرة عن الطفولة وتتابع «لما» و«بعد» من غير ما تشوف النص.
-  ar: أن تستمع إلى حكاية قصيرة عن الطفولة وتتابع «حين» و«بعد» دون رؤية النص.
-  en: Follow a short childhood story by ear, with its "when" and "after".
+  ar_eg: تقرا بداية حدوتة الكانشيل وتتابع البداية والـ «وبعدين» والمفاجأة.
+  ar: أن تقرأ بداية حكاية الكانشيل وتتابع الافتتاح و«ثم» والمفاجأة.
+  en: Read the opening of the kancil fable and follow its opening, its "then" and its twist.
+slides:
+  - title: Dongeng kancil
+    body:
+      ar_eg: |
+        كل طفل في جاوة عارف حدوتة الكانشيل، الغزال القزم الشاطر، زي جحا عندنا. ده أول الحدوتة اللي بيسرق فيها الخيار.
+        دوّر على أدوات الحكي اللي اتعلمتها: Biyen ana … (كان يا ما كان)، Ing sawijining dina (في يوم من الأيام)، banjur (وبعدين)، dumadakan (فجأة).
+        كلمات جديدة: kancil = الغزال القزم (kancil)، timun = خيار (timun)، mlayu = يجري (lari). وPak Tani = الفلاح.
+      ar: |
+        كل طفل في جاوة يعرف حكاية الكانشيل، الغزال القزم الذكي، كجحا عندنا. هذه بداية الحكاية التي يسرق فيها الخيار.
+        ابحث عن أدوات السرد التي تعلمتها: Biyen ana … (كان يا ما كان)، وIng sawijining dina (في يوم من الأيام)، وbanjur (ثم)، وdumadakan (فجأة).
+        كلمات جديدة: kancil = الغزال القزم (kancil)، وtimun = خيار (timun)، وmlayu = يجري (lari). وPak Tani = الفلاح.
+      en: |
+        Every child in Java knows the kancil, the clever mouse-deer, a bit like our Goha. Here's the start of the story where he steals cucumbers.
+        Look for the story connectors you know: Biyen ana … (once upon a time), Ing sawijining dina (one day), banjur (then), dumadakan (suddenly).
+        New words: kancil = mouse-deer (kancil), timun = cucumber (timun), mlayu = run (lari). Pak Tani = the farmer.
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Biyen ana kancil kang pinter banget.
+        ar_eg: كان يا ما كان، كان فيه كانشيل شاطر أوي.
+        ar: كان يا ما كان، كان هناك كانشيل ذكي جدًا.
+        en: Once upon a time there was a very clever mouse-deer.
+      - text: Ing sawijining dina, kancil menyang kebon timune Pak Tani, banjur mangan timun akeh banget.
+        ar_eg: في يوم من الأيام، الكانشيل راح غيط الخيار بتاع الفلاح، وبعدين كل خيار كتير أوي.
+        ar: في يوم من الأيام ذهب الكانشيل إلى حقل خيار الفلاح، ثم أكل خيارًا كثيرًا جدًا.
+        en: One day the mouse-deer went to the farmer's cucumber field, then ate a great many cucumbers.
+      - text: Dumadakan Pak Tani teka, nanging kancil wis mlayu adoh.
+        ar_eg: فجأة الفلاح جه، بس الكانشيل كان جري بعيد خلاص.
+        ar: فجأة جاء الفلاح، لكن الكانشيل كان قد جرى بعيدًا.
+        en: Suddenly the farmer came, but the mouse-deer had already run far away.
 exercises:
   - id: e01
     type: listen
-    text: Nalika isih cilik, aku manggon ing cedhak Menara Kudus.
+    text: Biyen ana kancil kang pinter banget.
     question:
-      ar_eg: بو ريتنو بتحكيلك عن طفولتها. كانت ساكنة فين وهي صغيرة؟
-      ar: تحكي لك بو ريتنو عن طفولتها. أين كانت تسكن وهي صغيرة؟
-      en: Bu Retno is telling you about her childhood. Where did she live as a child?
-    options: [ing Semarang, ing cedhak Menara Kudus, ing Demak]
+      ar_eg: الكانشيل كان عامل إزاي؟
+      ar: كيف كان الكانشيل؟
+      en: What was the mouse-deer like?
+    options: [lara, pinter banget, cilik banget]
     answer: 1
     meaning:
-      ar_eg: لما كنت صغيرة، كنت ساكنة جنب منارة قدس.
-      ar: حين كنت صغيرة، كنت أسكن قرب منارة قدس.
-      en: When I was little, I lived near the Menara Kudus.
-    words: [nalika, menara]
+      ar_eg: كان يا ما كان، كان فيه كانشيل شاطر أوي.
+      ar: كان يا ما كان، كان هناك كانشيل ذكي جدًا.
+      en: Once upon a time there was a very clever mouse-deer.
+    words: [kancil, biyen]
   - id: e02
-    type: listen
-    text: Saben sore, aku dolanan ing ngarep menara karo kanca-kanca.
-    question:
-      ar_eg: كانت بتلعب إمتى؟
-      ar: متى كانت تلعب؟
-      en: When did she play?
-    options: [saben esuk, saben bengi, saben sore]
-    answer: 2
-    meaning:
-      ar_eg: كل يوم العصر، كنت بلعب قدّام المنارة مع صحابي.
-      ar: كل مساء كنت ألعب أمام المنارة مع أصدقائي.
-      en: Every afternoon I played in front of the minaret with my friends.
-    words: [menara]
-  - id: e03
-    type: listen
-    text: Sawise maghrib, simbah crita babagan Sunan Kudus.
-    question:
-      ar_eg: جدّتها كانت بتحكي عن إيه؟
-      ar: عمَّ كانت جدتها تحكي؟
-      en: What did her grandmother tell stories about?
-    options: [babagan Sunan Kudus, babagan kancil, babagan sepur]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الكانشيل كل إيه؟
+      ar: ماذا أكل الكانشيل؟
+      en: What did the mouse-deer eat?
+    options: [timun, jenang, sega]
     answer: 0
-    meaning:
-      ar_eg: بعد المغرب، جدّتي كانت بتحكي عن سونان قدس.
-      ar: بعد المغرب كانت جدتي تحكي عن سونان قدس.
-      en: After maghrib, Grandma told stories about Sunan Kudus.
+    words: [timun]
     explain:
-      ar_eg: maghrib = المغرب، من العربي. babagan = عن (tentang).
-      ar: maghrib = المغرب، من العربية، وbabagan = عن (tentang).
-      en: maghrib = the sunset prayer, from Arabic; babagan = about (tentang).
-    words: [sawise, maghrib, babagan]
+      ar_eg: الكانشيل دخل غيط الخيار وكل timun. jenang وsega مش في الحكاية.
+      ar: دخل الكانشيل حقل الخيار وأكل timun؛ ولا ذكر لـ jenang ولا sega.
+      en: The mouse-deer went into the cucumber field and ate timun. jenang and sega aren't in the story.
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: لما الفلاح جه، الكانشيل كان فين؟
+      ar: حين جاء الفلاح، أين كان الكانشيل؟
+      en: When the farmer came, where was the mouse-deer?
+    options: [isih ing kebon, turu ing omah, wis mlayu adoh]
+    answer: 2
+    explain:
+      ar_eg: «kancil wis mlayu adoh» = كان جري بعيد خلاص قبل ما الفلاح يوصل.
+      ar: «kancil wis mlayu adoh» = كان قد جرى بعيدًا قبل وصول الفلاح.
+      en: '"kancil wis mlayu adoh" = he had already run far away before the farmer arrived.'
+    words: [mlayu, dumadakan]
   - id: e04
     type: match_pairs
     pairs:
-      - text: nalika
-        ar_eg: لما (في الماضي)
-        ar: حين (في الماضي)
-        en: when (past)
-      - text: sawise
-        ar_eg: بعد
-        ar: بعد
-        en: after
-      - text: maghrib
-        ar_eg: المغرب
-        ar: المغرب
-        en: sunset prayer
-      - text: babagan
-        ar_eg: عن
-        ar: عن / حول
-        en: about
-      - text: saben
-        ar_eg: كل
-        ar: كل
-        en: every
-    words: [nalika, sawise, maghrib, babagan]
+      - text: kancil
+        ar_eg: غزال قزم
+        ar: غزال قزم
+        en: mouse-deer
+      - text: timun
+        ar_eg: خيار
+        ar: خيار
+        en: cucumber
+      - text: mlayu
+        ar_eg: يجري
+        ar: يجري
+        en: run
+      - text: kebon
+        ar_eg: غيط / جنينة
+        ar: حقل / بستان
+        en: field, garden
+      - text: dumadakan
+        ar_eg: فجأة
+        ar: فجأة
+        en: suddenly
+    words: [kancil, timun, mlayu, dumadakan]
   - id: e05
     type: fill_blank
-    sentence: ___ isih cilik, aku manggon ing cedhak Menara Kudus.
+    sentence: Kancil menyang kebon timune Pak Tani, ___ mangan timun akeh banget.
     meaning:
-      ar_eg: لما كنت صغيرة، كنت ساكنة جنب منارة قدس.
-      ar: حين كنت صغيرة، كنت أسكن قرب منارة قدس.
-      en: When I was little, I lived near the Menara Kudus.
-    options: [Sawise, Dumadakan, Nalika]
-    answers: [Nalika]
-    words: [nalika]
+      ar_eg: الكانشيل راح غيط الخيار بتاع الفلاح، وبعدين كل خيار كتير أوي.
+      ar: ذهب الكانشيل إلى حقل خيار الفلاح، ثم أكل خيارًا كثيرًا جدًا.
+      en: The mouse-deer went to the farmer's cucumber field, then ate a great many cucumbers.
+    options: [biyen, banjur, sadurunge]
+    answers: [banjur]
+    words: [banjur, timun]
+    explain:
+      ar_eg: banjur = وبعدين، بيوصل الحدث التاني. biyen = زمان وsadurunge = قبل.
+      ar: banjur تعني ثم، تصل الحدث الثاني. أما biyen فقديمًا وsadurunge قبل.
+      en: banjur means "then", linking the next event. biyen is "long ago" and sadurunge is "before".
   - id: e06
     type: dictation
-    text: Sawise maghrib, simbah crita babagan Sunan Kudus.
+    text: Dumadakan Pak Tani teka, nanging kancil wis mlayu adoh.
     meaning:
-      ar_eg: بعد المغرب، جدّتي كانت بتحكي عن سونان قدس.
-      ar: بعد المغرب كانت جدتي تحكي عن سونان قدس.
-      en: After maghrib, Grandma told stories about Sunan Kudus.
-    words: [sawise, maghrib, babagan]
+      ar_eg: فجأة الفلاح جه، بس الكانشيل كان جري بعيد خلاص.
+      ar: فجأة جاء الفلاح، لكن الكانشيل كان قد جرى بعيدًا.
+      en: Suddenly the farmer came, but the mouse-deer had already run far away.
+    words: [dumadakan, mlayu, kancil]
   - id: e07
+    type: build_sentence
+    source:
+      ar_eg: (بأسلوب الحكاية) كان يا ما كان، كان فيه كانشيل شاطر.
+      ar: (بأسلوب الحكاية) كان يا ما كان، كان هناك كانشيل ذكي.
+      en: (story style) Once upon a time there was a clever mouse-deer.
+    answer: Biyen ana kancil kang pinter.
+    distractors: [dumadakan, timun]
+    words: [kancil, biyen]
+    explain:
+      ar_eg: biyen ana = كان يا ما كان. dumadakan = فجأة وtimun = خيار، ومش في المعنى.
+      ar: biyen ana تعني كان يا ما كان. أما dumadakan (فجأة) وtimun (خيار) فليستا في المعنى.
+      en: biyen ana is "once upon a time there was". dumadakan (suddenly) and timun (cucumber) aren't in the meaning.
+  - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (بأسلوب الحكاية) بعد المغرب، جدّي كان بيحكي عن المنارة.
-      ar: (بأسلوب الحكاية) بعد المغرب كان جدي يحكي عن المنارة.
-      en: (story style) After maghrib, Grandpa told stories about the minaret.
+      ar_eg: (بأسلوب الحكاية) فجأة الفلاح جه، والكانشيل جري.
+      ar: (بأسلوب الحكاية) فجأة جاء الفلاح، فجرى الكانشيل.
+      en: (story style) Suddenly the farmer came, and the mouse-deer ran.
     answers:
-      - Sawise maghrib, simbah crita babagan menara.
-      - Sawise maghrib simbah crita babagan menara.
-      - Sawise maghrib, simbah crita babagan menarane.
-      - Sawise maghrib, simbah crita babagan Menara Kudus.
-      - Sawise salat maghrib, simbah crita babagan menara.
-      - Sawise maghrib, simbah banjur crita babagan menara.
-    words: [sawise, maghrib, babagan]
-  - id: e08
-    type: speaking
-    text: Nalika isih cilik, aku manggon ing Kairo.
-    meaning:
-      ar_eg: لما كنت صغير، كنت ساكن في القاهرة.
-      ar: حين كنت صغيرًا، كنت أسكن في القاهرة.
-      en: When I was little, I lived in Cairo.
-    words: [nalika]
+      - Dumadakan Pak Tani teka, lan kancil mlayu.
+      - Dumadakan Pak Tani teka, kancil banjur mlayu.
+      - Dumadakan Pak Tani teka, banjur kancil mlayu.
+      - Dumadakan Pak Tani teka, kancil mlayu.
+      - Dumadakan Pak Tani teka, nuli kancil mlayu.
+      - Dumadakan Pak Tani teka, kancil nuli mlayu.
+    words: [dumadakan, mlayu]
 dialogue:
-  title: Babagan Sunan Kudus
+  title: Crita kancil
   lines:
-    - speaker: Mohamed
-      text: Bu, Sunan Kudus menika sinten?
-      ar_eg: يا مدام، سونان قدس ده مين؟
-      ar: يا سيدتي، من سونان قدس؟
-      en: Ma'am, who was Sunan Kudus?
     - speaker: Bu Retno
-      text: Sunan Kudus iku sawijining Wali Sanga. Dheweke sing mbangun masjid ing cedhak menara.
-      ar_eg: سونان قدس واحد من الأولياء التسعة. هو اللي بنى الجامع اللي جنب المنارة.
-      ar: سونان قدس أحد الأولياء التسعة، وهو من بنى المسجد المجاور للمنارة.
-      en: Sunan Kudus was one of the Wali Sanga. He's the one who built the mosque by the minaret.
+      text: Mas, sampeyan wis tau krungu crita kancil?
+      ar_eg: يا محمد، سمعت قبل كده حدوتة الكانشيل؟
+      ar: يا محمد، هل سمعت من قبل حكاية الكانشيل؟
+      en: Mohamed, have you ever heard the kancil story?
     - speaker: Mohamed
-      text: Lan nami Kudus saking Al-Quds, nggih?
-      ar_eg: واسم قدس جاي من «القدس»، صح؟
-      ar: واسم قدس مأخوذ من «القدس»، أليس كذلك؟
-      en: And the name Kudus comes from Al-Quds, right?
+      text: Dereng, Bu. Kancil menika menapa?
+      ar_eg: لسه يا مدام. الكانشيل ده إيه؟
+      ar: ليس بعد يا سيدتي. ما الكانشيل؟
+      en: Not yet, ma'am. What's a kancil?
     - speaker: Bu Retno
-      text: Bener, Mas. Simbahku crita kaya ngono saben sawise maghrib.
-      ar_eg: صح يا محمد. جدّتي كانت بتحكي كده كل يوم بعد المغرب.
-      ar: صحيح يا محمد. كانت جدتي تحكي ذلك كل يوم بعد المغرب.
-      en: Right. My grandmother told it like that every evening after maghrib.
+      text: Kancil iku kaya kidang cilik, pinter banget. Saben bocah Jawa ngerti critane.
+      ar_eg: الكانشيل زي غزال صغير، شاطر أوي. كل عيل جاوي عارف حدوتته.
+      ar: الكانشيل كغزال صغير، ذكي جدًا. كل طفل جاوي يعرف حكايته.
+      en: A kancil is like a little deer, very clever. Every Javanese child knows its stories.
+    - speaker: Mohamed
+      text: Ing Mesir ugi wonten crita ingkang pinter, Bu. Juha!
+      ar_eg: في مصر برضه فيه حواديت الشاطر يا مدام. جحا!
+      ar: 'وفي مصر أيضًا حكايات عن الذكي يا سيدتي: جحا!'
+      en: In Egypt there are stories about a clever one too, ma'am. Goha!
+    - speaker: Bu Retno
+      text: Wah, mengko critakna, lho!
+      ar_eg: الله، ابقى احكيهالي بعدين!
+      ar: رائع، احكها لي لاحقًا!
+      en: Oh, tell me later!
 new_words:
-  - word: maghrib
+  - word: kancil
     pos: noun
-    ar_eg: المغرب (الصلاة ووقتها)
-    ar: المغرب (الصلاة ووقتها)
-    en: sunset prayer, dusk = magrib
-    arabic: مغرب
-  - word: babagan
-    pos: preposition
-    ar_eg: عن
-    ar: عن / حول
-    en: about = tentang
+    ar_eg: غزال قزم (بطل حواديت الأطفال)
+    ar: غزال قزم (بطل حكايات الأطفال)
+    en: mouse-deer, hero of folk tales = kancil
+  - word: timun
+    pos: noun
+    ar_eg: خيار
+    ar: خيار
+    en: cucumber = timun, mentimun
+  - word: mlayu
+    pos: verb
+    ar_eg: يجري
+    ar: يجري
+    en: run = lari
 review:
   status: draft
   verified: false

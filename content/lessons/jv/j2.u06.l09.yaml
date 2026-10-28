@@ -1,0 +1,219 @@
+schema: kabar.lesson/v1
+id: j2.u06.l09
+language: jv
+title: Ulangan J2.6
+can_do:
+  ar_eg: تحكي عن فسحة آخر الأسبوع.
+  ar: أن تروي قصة نزهة نهاية الأسبوع.
+  en: Tell a weekend story.
+slides:
+  - title: Ringkesan J2.6
+    body:
+      ar_eg: |
+        - التكرار: bocah-bocah (جمع، ومن غير تكرار مع رقم أو akeh)، mlaku-mlaku / dolan-dolan (للفسحة)، bola-bali (رايح جاي)، lelungan (سفرية).
+        - التقوية: banget / tenan / pol بعد الصفة، rada / kurang قبلها، والأكتر: … dhewe أو sing paling …، وفي شرق جاوة uenak / puanas.
+        - المشاعر: seneng، sedhih، kesel (تعبان!)، wedi، bosen.
+        - الربط: lan / karo، utawa / apa، nanging / ning، terus / banjur، merga / amarga، mula، nek / yen.
+      ar: |
+        - التكرار: bocah-bocah (للجمع، ولا يُكرَّر مع العدد أو akeh)، mlaku-mlaku / dolan-dolan (للنزهة)، bola-bali (ذهابًا وإيابًا)، lelungan (رحلة).
+        - التقوية: banget / tenan / pol بعد الصفة، وrada / kurang قبلها، والتفضيل: … dhewe أو sing paling …، وفي شرق جاوة uenak / puanas.
+        - المشاعر: seneng، sedhih، kesel (متعب!)، wedi، bosen.
+        - الربط: lan / karo، utawa / apa، nanging / ning، terus / banjur، merga / amarga، mula، nek / yen.
+      en: |
+        - Doubling: bocah-bocah (plural; no doubling with a number or akeh), mlaku-mlaku / dolan-dolan (for fun), bola-bali (back and forth), lelungan (a trip).
+        - Intensifiers: banget / tenan / pol after the adjective, rada / kurang before it; the most: … dhewe or sing paling …; East Java uenak / puanas.
+        - Feelings: seneng, sedhih, kesel (tired!), wedi, bosen.
+        - Linking: lan / karo, utawa / apa, nanging / ning, terus / banjur, merga / amarga, mula, nek / yen.
+    grammar: jv.conjunction.basic
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dolan-dolan
+        ar_eg: يخرج يتفسح
+        ar: يخرج للنزهة
+        en: hang out
+      - text: lelungan
+        ar_eg: سفرية
+        ar: رحلة
+        en: a trip
+      - text: sedhih
+        ar_eg: زعلان
+        ar: حزين
+        en: sad
+      - text: bosen
+        ar_eg: زهقان
+        ar: ضَجِر
+        en: bored
+      - text: utawa
+        ar_eg: أو
+        ar: أو
+        en: or
+      - text: mancing
+        ar_eg: يصطاد سمك بالسنارة
+        ar: يصطاد بالصنارة
+        en: go fishing
+    words: [dolan-dolan, lelungan, sedhih, bosen, utawa, mancing]
+  - id: e02
+    type: fill_blank
+    sentence: Aku seneng, ___ rada kesel.
+    meaning:
+      ar_eg: أنا مبسوط، بس تعبان شوية.
+      ar: أنا سعيد، لكني متعب قليلًا.
+      en: I'm happy, but a bit tired.
+    options: [nanging, utawa, merga]
+    answers: [nanging]
+    words: [nanging, kesel]
+    explain:
+      ar_eg: "nanging = بس / لكن: مبسوط بس تعبان شوية. utawa = أو، وmerga = عشان."
+      ar: "nanging = لكن: سعيد لكني متعب قليلًا؛ أما utawa فأو، وmerga لأن."
+      en: "nanging = but: happy but a bit tired. utawa = or, merga = because."
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «عيال كتير». أنهي صح؟
+      ar: «أطفال كثيرون». أيّها الصحيح؟
+      en: '"Lots of kids." Which is right?'
+    options: [akeh bocah, bocah-bocah telu, akeh bocah-bocah]
+    answer: 0
+    explain:
+      ar_eg: akeh بتوضح الجمع، فمش محتاج تكرار.
+      ar: akeh تدل على الجمع فلا حاجة للتكرار.
+      en: akeh already shows plural, so no doubling.
+    words: [akeh, bocah]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «عشان كده» (makanya)؟
+      ar: أي كلمة تعني «لذلك» (makanya)؟
+      en: Which word means "that's why" (makanya)?
+    options: [mula, nek, merga]
+    answer: 0
+    explain:
+      ar_eg: merga = عشان (السبب)، nek = لو، mula = عشان كده (النتيجة).
+      ar: merga = لأن (السبب)، وnek = إذا، وmula = لذلك (النتيجة).
+      en: merga = because (cause), nek = if, mula = that's why (result).
+    words: [mula]
+  - id: e05
+    type: listen
+    text: Wingi aku dolan-dolan neng Ngawi karo Dimas.
+    options: [Sesuk aku dolan-dolan neng Ngawi karo Dimas., Wingi aku dolan-dolan neng Ngawi karo Dimas., Wingi aku bola-bali neng Ngawi karo Dimas.]
+    answer: 1
+    words: [wingi, dolan-dolan, karo]
+  - id: e06
+    type: fill_blank
+    sentence: Es dawet iki enak ___!
+    meaning:
+      ar_eg: الدَّوِت ده طعمه جامد جدًا!
+      ar: مشروب الداوت هذا لذيذ للغاية!
+      en: This es dawet is insanely good!
+    options: [pol, lan, rada]
+    answers: [pol]
+    words: [pol]
+    explain:
+      ar_eg: pol بعد الصفة = جدًا / على الآخر. lan = و، وrada = شوية وبتيجي قبل الصفة.
+      ar: pol بعد الصفة = للغاية؛ أما lan فو، وrada قليلًا وتأتي قبل الصفة.
+      en: pol after an adjective = super. lan = and, rada = a bit, and it goes before the adjective.
+  - id: e07
+    type: fill_blank
+    sentence: Ayo ___ neng taman!
+    meaning:
+      ar_eg: يلا نتمشى في الجنينة!
+      ar: هيا نتنزّه في الحديقة!
+      en: Let's take a stroll in the park!
+    answers: [mlaku-mlaku]
+    words: [mlaku-mlaku, taman]
+    explain:
+      ar_eg: mlaku-mlaku = نتمشى / نتفسّح، وayo = يلا.
+      ar: mlaku-mlaku = نتنزّه، وayo = هيا.
+      en: mlaku-mlaku = take a stroll, ayo = let's.
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: نفسي أبات في نغاوي.
+      ar: أودّ أن أبيت في نغاوي.
+      en: I'd love to stay the night in Ngawi.
+    answer: Aku kepingin nginep neng Ngawi.
+    distractors: [budal, nesu]
+    words: [kepingin, nginep, budal, nesu]
+    explain:
+      ar_eg: kepingin = نفسي، وnginep neng Ngawi = أبات في نغاوي. budal = يطلع، وnesu = زعلان، ومش في المعنى.
+      ar: kepingin = أتمنى، وnginep neng Ngawi = أبيت في نغاوي؛ أما budal فينطلق، وnesu غاضب، وليسا في المعنى.
+      en: kepingin = I'd love to, nginep neng Ngawi = stay the night in Ngawi. budal (set off) and nesu (angry) aren't in the meaning.
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: القلعة حلوة بجد، بس الجو حر أوي.
+      ar: القلعة جميلة حقًا، لكن الجو حارّ جدًا.
+      en: The fort is really beautiful, but it's very hot.
+    answers: ["Bentenge apik tenan, nanging panas banget.", "Bentenge apik tenan, nanging panas banget", "Bentenge apik tenan, ning panas banget.", "Bentenge apik tenan, ning panas banget", "Bentenge apik tenan, tapi panas banget.", "Bentenge apik tenan, tapi panas banget", "Bentenge apik banget, nanging panas banget.", "Bentenge apik banget, nanging panas banget", "Bentenge apik tenan, nanging puanas.", "Bentenge apik tenan, nanging puanas"]
+    words: [tenan, nanging, banget]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Bal-balan wingi kalah, Bayu nesu.
+    answers_meaning:
+      ar_eg: [خسرنا الماتش امبارح، وبايو زعلان, ماتش الكورة امبارح خسر، وبايو متعصّب]
+      ar: [خسرنا مباراة الكرة أمس، فغضب بايو, خُسرت مباراة الأمس، وبايو غاضب]
+      en: ['The football match yesterday was lost, Bayu is cross', We lost the football yesterday and Bayu is angry]
+    words: [bal-balan, kalah, nesu, wingi]
+  - id: e11
+    type: dictation
+    text: Bocah-bocah dolanan neng taman.
+    meaning:
+      ar_eg: العيال بيلعبوا في الجنينة.
+      ar: الأطفال يلعبون في الحديقة.
+      en: The children are playing in the park.
+    words: [bocah, dolanan, taman]
+  - id: e12
+    type: speaking
+    text: Wingi aku dolan-dolan neng Ngawi karo Dimas. Seneng banget!
+    meaning:
+      ar_eg: امبارح خرجت أتفسح في نغاوي مع ديماس. مبسوط أوي!
+      ar: خرجتُ أمس للنزهة في نغاوي مع ديماس. سعيد جدًا!
+      en: Yesterday I went out in Ngawi with Dimas. So much fun!
+    words: [dolan-dolan, karo, seneng, banget]
+dialogue:
+  title: Critane Mohamed
+  lines:
+    - speaker: Sari
+      text: Mohamed, Minggu kowe neng ngendi?
+      ar_eg: محمد، كنت فين يوم الحد؟
+      ar: يا محمد، أين كنت يوم الأحد؟
+      en: Mohamed, where were you on Sunday?
+    - speaker: Mohamed
+      text: Aku karo Dimas dolan-dolan neng Ngawi.
+      ar_eg: أنا وديماس خرجنا نتفسح في نغاوي.
+      ar: خرجتُ أنا وديماس للنزهة في نغاوي.
+      en: Dimas and I went out to Ngawi.
+    - speaker: Mohamed
+      text: Mlaku-mlaku neng Benteng Pendem, terus ngombe es dawet.
+      ar_eg: اتمشينا عند قلعة بنتنج بندم، وبعدين شربنا دَوِت بتلج.
+      ar: تنزّهنا عند قلعة بنتنغ بندم، ثم شربنا الداوت المثلّج.
+      en: We strolled around Benteng Pendem, then had es dawet.
+    - speaker: Sari
+      text: Apik ora?
+      ar_eg: حلوة؟
+      ar: هل كانت جميلة؟
+      en: Was it nice?
+    - speaker: Mohamed
+      text: Apik tenan, ning puanas!
+      ar_eg: حلوة بجد، بس حررر!
+      ar: جميلة حقًا، لكن الجو كان حارًّا جدًا!
+      en: Really beautiful, but sooo hot!
+    - speaker: Sari
+      text: Wah, kowe wis isa ngomong «puanas»!
+      ar_eg: ياه، إنت بقيت بتعرف تقول «puanas» كمان!
+      ar: رائع، صرت تقول «puanas» أيضًا!
+      en: Wow, you can already say "puanas"!
+souvenir:
+  id: j2.u06.souvenir
+  title: Benteng Pendem Ngawi
+  note:
+    ar_eg: بنتنج بندم قلعة هولندية من القرن التسعتاشر عند ملتقى نهر سولو ونهر ماديون، واسمها معناه «القلعة المدفونة» عشان كانت واطية ومستخبية ورا السواتر الترابية. النهارده أهل نغاوي بييجوا هنا «dolan-dolan» آخر الأسبوع، يتمشوا ويتصوروا. وبكده خلّصت خط ماتارامان كله، وبقيت تحكي حكاية كاملة بالجاوي — مبروك بجد!
+    ar: بنتنغ بندم قلعة هولندية من القرن التاسع عشر عند ملتقى نهر سولو ونهر ماديون، ويعني اسمها «القلعة المدفونة» لأنها كانت منخفضة مخفية خلف سواتر ترابية. واليوم يقصدها أهل نغاوي في نهاية الأسبوع «dolan-dolan» للتنزه والتصوير. وبهذا أتممتَ خط ماتارامان كله، وصرتَ تروي قصة كاملة بالجاوية، فمبارك حقًا!
+    en: Benteng Pendem is a 19th-century Dutch fort where the Solo and Madiun rivers meet; its name means "the buried fort" because it sat low, hidden behind earth banks. Today people from Ngawi come here at weekends to go "dolan-dolan" — strolling and taking photos. With this you've finished the whole Mataraman line and can tell a full story in Javanese — truly well done!
+review:
+  status: draft
+  verified: false

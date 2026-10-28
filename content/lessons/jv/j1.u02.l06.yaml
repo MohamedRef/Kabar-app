@@ -1,0 +1,245 @@
+schema: kabar.lesson/v1
+id: j1.u02.l06
+language: jv
+title: Tembung lan pitakon
+can_do:
+  ar_eg: 'تستعمل كلام الفصل بالجاوي: كلمة، جملة، سؤال، إجابة، مثال.'
+  ar: 'أن تستخدم لغة الصفّ بالجاوية: كلمة، جملة، سؤال، جواب، مثال.'
+  en: 'Use classroom Javanese: word, sentence, question, answer, example.'
+slides:
+  - title: Tembung, ukara, pitakon
+    body:
+      ar_eg: |
+        tembung = كلمة، ukara = جملة، pitakon = سؤال، wangsulan = إجابة.
+        conto = مثال: Conto ukara: «Aku luwe.»
+        nyoba = يجرّب، krungu = يسمع، eling = فاكر (ويتقال كمان iling).
+        الكلمات دي هتسمعها كتير من مذيعين راديو كبار.
+      ar: |
+        tembung = كلمة، ukara = جملة، pitakon = سؤال، wangsulan = جواب.
+        conto = مثال: Conto ukara: «Aku luwe.»
+        nyoba = يجرّب، krungu = يسمع، eling = يتذكّر (وتُنطق أيضًا iling).
+        ستسمع هذه الكلمات كثيرًا من مذيعي راديو كبار.
+      en: |
+        tembung = word, ukara = sentence, pitakon = question, wangsulan = answer.
+        conto = example: Conto ukara: "Aku luwe."
+        nyoba = try, krungu = hear, eling = remember (also said iling).
+        You'll hear these a lot from the Kabar Radio hosts.
+    examples:
+      - text: Pitakone apa, Mas?
+        ar_eg: السؤال إيه يا ماس؟
+        ar: ما السؤال يا أخي؟
+        en: What's the question, Mas?
+      - text: Aku krungu ukara Jawa.
+        ar_eg: سمعت جملة جاوي.
+        ar: سمعت جملة جاوية.
+        en: I heard a Javanese sentence.
+      - text: Aku eling jenengmu, Mbak.
+        ar_eg: أنا فاكر اسمك يا أبلة.
+        ar: أتذكّر اسمك يا أختي.
+        en: I remember your name, Mbak.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tembung
+        ar_eg: كلمة
+        ar: كلمة
+        en: word
+      - text: ukara
+        ar_eg: جملة
+        ar: جملة
+        en: sentence
+      - text: pitakon
+        ar_eg: سؤال
+        ar: سؤال
+        en: question
+      - text: wangsulan
+        ar_eg: إجابة
+        ar: جواب
+        en: answer
+    words: [tembung, ukara, pitakon, wangsulan]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: conto
+        ar_eg: مثال
+        ar: مثال
+        en: example
+      - text: nyoba
+        ar_eg: يجرّب
+        ar: يجرّب
+        en: try
+      - text: krungu
+        ar_eg: يسمع
+        ar: يسمع
+        en: hear
+      - text: eling
+        ar_eg: فاكر
+        ar: يتذكّر
+        en: remember
+    words: [conto, nyoba, krungu, eling]
+  - id: e03
+    type: listen
+    text: Pitakone apa, Mas?
+    options: ['Pitakone apa, Mas?', 'Wangsulane apa, Mas?', 'Tembunge apa, Mas?']
+    answer: 0
+    meaning:
+      ar_eg: السؤال إيه يا ماس؟
+      ar: ما السؤال يا أخي؟
+      en: What's the question, Mas?
+    words: [pitakon, wangsulan, tembung]
+  - id: e04
+    type: fill_blank
+    sentence: 'Pitakon: «Piye kabare?» ___: «Apik.»'
+    meaning:
+      ar_eg: 'السؤال: «أخبارك إيه؟» ___: «كويس.»'
+      ar: 'السؤال: «كيف حالك؟» ___: «بخير.»'
+      en: 'Question: "How are you?" ___: "Good."'
+    options: [Wangsulan, Tembung, Conto]
+    answers: [Wangsulan]
+    words: [wangsulan, tembung, conto, pitakon]
+    explain:
+      ar_eg: الرد على pitakon (سؤال) هو wangsulan (إجابة). tembung = كلمة، وconto = مثال.
+      ar: جواب pitakon (السؤال) هو wangsulan (الإجابة)؛ أما tembung فكلمة، وconto مثال.
+      en: The partner of pitakon (question) is wangsulan (answer). tembung = word, conto = example.
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «أنا فاكر اسمك» بالجاوي؟
+      ar: كيف تقول «أتذكّر اسمك» بالجاوية؟
+      en: '"I remember your name" in Javanese?'
+    options: [Aku eling jenengmu., Aku krungu jenengmu., Aku nyoba jenengmu.]
+    answer: 0
+    explain:
+      ar_eg: eling = فاكر. krungu = سمع، nyoba = جرّب.
+      ar: eling = يتذكّر. أمّا krungu فيسمع، وnyoba فيجرّب.
+      en: eling = remember. krungu = hear, nyoba = try.
+    words: [eling, krungu, nyoba]
+  - id: e06
+    type: fill_blank
+    sentence: Aku ___ basa Jawa, Mas. Apik?
+    meaning:
+      ar_eg: أنا ___ الجاوي يا ماس. كويس؟
+      ar: أنا ___ الجاوية يا ماس. هل هي جيّدة؟
+      en: I'm ___ Javanese, Mas. Is it good?
+    options: [nyoba, krungu, eling]
+    answers: [nyoba]
+    words: [nyoba, krungu, eling]
+    explain:
+      ar_eg: "nyoba = بجرّب: بجرّب أتكلم جاوي. krungu = يسمع، وeling = يفتكر."
+      ar: "nyoba = أجرّب: أجرّب الجاوية؛ أما krungu فيسمع، وeling يتذكّر."
+      en: "nyoba = try: I'm trying out Javanese. krungu = hear, eling = remember."
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «جملة» بالجاوي؟
+      ar: ما معنى «جملة» بالجاوية؟
+      en: '"Sentence" in Javanese?'
+    options: [tembung, ukara, pitakon]
+    answer: 1
+    explain:
+      ar_eg: ukara = جملة. tembung = كلمة، pitakon = سؤال.
+      ar: ukara = جملة. أمّا tembung فكلمة، وpitakon فسؤال.
+      en: ukara = sentence. tembung = word, pitakon = question.
+    words: [ukara, tembung, pitakon]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: سمعت جملة جاوي يا ماس.
+      ar: سمعت جملة جاوية يا أخي.
+      en: I heard a Javanese sentence, Mas.
+    answer: Aku krungu ukara Jawa, Mas.
+    distractors: [eling, tembung]
+    words: [krungu, ukara]
+    explain:
+      ar_eg: krungu = سمعت، وukara = جملة. eling = يفتكر، وtembung = كلمة (مش جملة).
+      ar: krungu = سمعت، وukara = جملة؛ أما eling فيتذكّر، وtembung كلمة لا جملة.
+      en: krungu = heard, ukara = sentence. eling = remember, and tembung is a word, not a sentence.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Kowe eling tembung «luwe»?
+    answers_meaning:
+      ar_eg: [إنت فاكر كلمة «luwe»؟, فاكر كلمة luwe؟]
+      ar: [هل تتذكّر كلمة «luwe»؟, أتتذكّر كلمة luwe؟]
+      en: ['Do you remember the word "luwe"?', 'Do you remember the word luwe?']
+    words: [eling, tembung]
+  - id: e10
+    type: speaking
+    text: 'Conto ukara: Aku luwe banget.'
+    meaning:
+      ar_eg: 'مثال جملة: أنا جعان أوي.'
+      ar: 'مثال على جملة: أنا جائع جدًّا.'
+      en: 'Example sentence: I''m really hungry.'
+    words: [conto, ukara]
+dialogue:
+  lines:
+    - speaker: Mas Dimas
+      text: Mohamed, aku duwe pitakon. Tembung «isin» apa?
+      ar_eg: يا محمد، عندي سؤال. كلمة «isin» يعني إيه؟
+      ar: محمد، لديّ سؤال. ما معنى كلمة «isin»؟
+      en: Mohamed, I've got a question. What does "isin" mean?
+    - speaker: Mohamed
+      text: Hmm... aku eling! Isin iku malu.
+      ar_eg: همم... افتكرت! isin يعني malu.
+      ar: همم... تذكّرت! isin تعني malu.
+      en: Hmm... I remember! Isin means malu.
+    - speaker: Mas Dimas
+      text: Wangsulanmu bener. Saiki conto ukara?
+      ar_eg: إجابتك صح. طب مثال جملة؟
+      ar: جوابك صحيح. والآن مثال جملة؟
+      en: Your answer's right. Now an example sentence?
+    - speaker: Mohamed
+      text: 'Aku nyoba: «Aku isin ngomong Jawa.»'
+      ar_eg: 'هجرّب: «أنا مكسوف أتكلم جاوي.»'
+      ar: 'سأجرّب: «أخجل من التكلّم بالجاوية.»'
+      en: 'Let me try: "I''m shy to speak Javanese."'
+    - speaker: Mas Dimas
+      text: Apik! Aku krungu, ukaramu bener.
+      ar_eg: حلو! سمعتك، جملتك صح.
+      ar: رائع! سمعتك، جملتك صحيحة.
+      en: Great! I heard you, your sentence is right.
+new_words:
+  - word: tembung
+    pos: noun
+    ar_eg: كلمة
+    ar: كلمة
+    en: word
+  - word: ukara
+    pos: noun
+    ar_eg: جملة
+    ar: جملة
+    en: sentence
+  - word: pitakon
+    pos: noun
+    ar_eg: سؤال
+    ar: سؤال
+    en: question
+  - word: wangsulan
+    pos: noun
+    ar_eg: إجابة
+    ar: جواب
+    en: answer
+  - word: conto
+    pos: noun
+    ar_eg: مثال
+    ar: مثال
+    en: example
+  - word: nyoba
+    pos: verb
+    ar_eg: يجرّب
+    ar: يجرّب، يحاول
+    en: try
+  - word: krungu
+    pos: verb
+    ar_eg: يسمع
+    ar: يسمع
+    en: hear
+  - word: eling / iling
+    pos: verb
+    ar_eg: فاكر، يفتكر
+    ar: يتذكّر
+    en: remember
+review:
+  status: draft
+  verified: false

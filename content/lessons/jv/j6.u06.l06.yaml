@@ -1,181 +1,248 @@
 schema: kabar.lesson/v1
 id: j6.u06.l06
 language: jv
-title: Utawi ... iku
+title: Mondhok ing Plered
 can_do:
-  ar_eg: تتابع المعنى المعلّق (makna gandul) لجملتين اسميتين عربيتين.
-  ar: أن تتابع المعنى المعلّق (makna gandul) لجملتين اسميتين عربيتين.
-  en: Follow the makna gandul of two Arabic nominal sentences.
+  ar_eg: 'تتكلم مع طالب في معهد عن حياته: الحفظ والتسميع، الأحلام، والفلوس اللي بتيجي من البيت والديون.'
+  ar: 'أن تتحدث مع طالب في معهد عن حياته: الحفظ والتسميع والأحلام والنقود التي تصله من البيت والديون.'
+  en: 'Talk with a pesantren student about his life: memorising and reciting, dreams, money from home and debts.'
 slides:
-  - title: Mubtada lan khabar
+  - title: Urip ing pondok
     body:
       ar_eg: |
-        Gus Hanif كتب على السبورة جملتين اسميتين، وتحت كل كلمة المعنى بالجاوي.
-        القاعدة اللي إنت عارفها: تحت المبتدأ بيكتبوا اوتاوي (utawi)، وقبل الخبر ايكو (iku).
-        كلمتين جداد: cahya = نور، وnasehat = نصيحة (من العربي).
+        mondhok = يعيش ويدرس في معهد (بوندوك). lalaran = يسمّعوا الدرس بصوت عالي مع بعض عشان يحفظوه.
+        apal = حافظ (apal Quran = حافظ القرآن). tansah = دايمًا. ngimpi = يحلم.
+        kiriman = الحاجة (أو الفلوس) اللي بتتبعت من البيت. ngutang = يستلف، ياخد بالشكك. nyaur = يسدّ الدين.
       ar: |
-        كتب Gus Hanif على السبورة جملتين اسميتين، وتحت كل كلمة معناها بالجاوية.
-        والقاعدة التي تعرفها: يُكتب تحت المبتدأ اوتاوي (utawi)، وقبل الخبر ايكو (iku).
-        كلمتان جديدتان: cahya = نور، وnasehat = نصيحة (من العربية).
+        mondhok = يقيم ويدرس في معهد داخلي. lalaran = ترديد الدرس جماعيًا بصوت عالٍ للحفظ.
+        apal = حافظ. tansah = دائمًا. ngimpi = يحلم.
+        kiriman = ما يُرسَل (من مال أو غيره) من البيت. ngutang = يستدين. nyaur = يسدّد الدين.
       en: |
-        Gus Hanif wrote two Arabic nominal sentences on the board, with the Javanese meaning under each word.
-        The rule you know: under the mubtada they write اوتاوي (utawi), and before the khabar ايكو (iku).
-        Two new words: cahya = light, nasehat = advice (from Arabic نصيحة).
-    grammar: jv.pegon.basics
+        mondhok = live and study at a pesantren. lalaran = recite a lesson aloud together to memorise it.
+        apal = know by heart. tansah = always. ngimpi = dream.
+        kiriman = something (often money) sent from home. ngutang = borrow, buy on credit. nyaur = pay back a debt.
     examples:
-      - text: العلم نور — اوتاوي ilmu ايكو cahya
-        ar_eg: "«العلم نور»: أمّا العلم فهو نور."
-        ar: "«العلم نور»: أمّا العلم فهو نور."
-        en: "«العلم نور»: as for knowledge, it is light."
-      - text: الدين النصيحة — اوتاوي agama ايكو nasehat
-        ar_eg: "«الدين النصيحة»: أمّا الدين فهو النصيحة."
-        ar: "«الدين النصيحة»: أمّا الدين فهو النصيحة."
-        en: "«الدين النصيحة»: as for religion, it is sincere advice."
+      - text: Ali mondhok ing Plered wiwit SMP.
+        ar_eg: علي بيدرس في معهد في بليريد من أيام الإعدادي.
+        ar: يقيم علي في معهد ببليريد منذ المرحلة الإعدادية.
+        en: Ali has boarded at a pesantren in Plered since junior high.
+      - text: Saben bengi para santri lalaran nganti apal.
+        ar_eg: كل ليلة الطلبة بيسمّعوا مع بعض لحد ما يحفظوا.
+        ar: كل ليلة يردّد الطلاب الدرس معًا حتى يحفظوه.
+        en: Every night the students recite together until they know it by heart.
+      - text: Yen kiriman durung teka, Ali ngutang ing warung, banjur nyaur.
+        ar_eg: لو الفلوس من البيت لسه ماوصلتش، علي بياخد بالشكك من الدكان، وبعدين يسدّ.
+        ar: إن لم تصل النقود من البيت، يستدين علي من الدكان ثم يسدّد.
+        en: If the money from home hasn't come, Ali buys on credit at the stall, then pays it back.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في «العلم نور»، أنهي كلمة تحتها utawi؟
-      ar: في «العلم نور»، تحت أي كلمة تُكتب utawi؟
-      en: In «العلم نور», which word gets utawi under it?
-    options: [نور, العلم]
-    answer: 1
-    explain:
-      ar_eg: العلم هو المبتدأ، والمبتدأ بياخد utawi. نور الخبر، فقبله iku.
-      ar: العلم هو المبتدأ فيأخذ utawi، ونور هو الخبر فيسبقه iku.
-      en: العلم is the mubtada, so it takes utawi. نور is the khabar, so iku comes before it.
-    words: [utawi, makna gandul]
-  - id: e02
-    type: listen
-    text: Utawi ilmu iku cahya.
-    question:
-      ar_eg: ده المعنى المعلّق لأنهي جملة عربي؟
-      ar: هذا المعنى المعلّق لأي جملة عربية؟
-      en: This is the makna gandul of which Arabic sentence?
-    options: [الدين النصيحة, الحمد لله, العلم نور]
-    answer: 2
-    meaning:
-      ar_eg: أمّا العلم فهو نور.
-      ar: أمّا العلم فهو نور.
-      en: As for knowledge, it is light.
-    words: [cahya, utawi]
-  - id: e03
     type: match_pairs
     pairs:
-      - text: العلم
-        ar_eg: ilmu (بالجاوي)
-        ar: ilmu (بالجاوية)
-        en: ilmu (knowledge)
-      - text: نور
-        ar_eg: cahya (بالجاوي)
-        ar: cahya (بالجاوية)
-        en: cahya (light)
-      - text: الدين
-        ar_eg: agama (بالجاوي)
-        ar: agama (بالجاوية)
-        en: agama (religion)
-      - text: النصيحة
-        ar_eg: nasehat (بالجاوي)
-        ar: nasehat (بالجاوية)
-        en: nasehat (advice)
-    words: [cahya, nasehat]
+      - text: mondhok
+        ar_eg: يعيش في معهد
+        ar: يقيم في معهد
+        en: board at a pesantren
+      - text: lalaran
+        ar_eg: تسميع جماعي
+        ar: ترديد جماعي
+        en: group recitation
+      - text: apal
+        ar_eg: حافظ
+        ar: حافظ
+        en: know by heart
+      - text: tansah
+        ar_eg: دايمًا
+        ar: دائمًا
+        en: always
+    words: [mondhok, lalaran, apal, tansah]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: ngimpi
+        ar_eg: يحلم
+        ar: يحلم
+        en: dream
+      - text: kiriman
+        ar_eg: اللي بيتبعت من البيت
+        ar: ما يُرسَل من البيت
+        en: money sent from home
+      - text: nyaur
+        ar_eg: يسدّ دين
+        ar: يسدّد الدين
+        en: pay back
+      - text: ngutang
+        ar_eg: يستلف
+        ar: يستدين
+        en: borrow, owe
+    words: [ngimpi, kiriman, nyaur, ngutang]
+  - id: e03
+    type: listen
+    text: Kirimane wis teka, Ali arep nyaur utange.
+    question:
+      ar_eg: علي هيعمل إيه؟
+      ar: ماذا سيفعل علي؟
+      en: What will Ali do?
+    options: [الفلوس اللي اتبعتت وصلت، وعلي هيسدّ دينه, علي ضاع منه الفلوس, علي عايز يستلف تاني]
+    answer: 0
+    meaning:
+      ar_eg: الفلوس اللي اتبعتت وصلت، وعلي هيسدّ دينه.
+      ar: وصلت النقود المرسلة، وسيسدّد علي دينه.
+      en: The money from home has arrived, so Ali will pay off his debt.
+    words: [kiriman, nyaur]
   - id: e04
+    type: fill_blank
+    sentence: Santri ___ ing pondok, ora mulih saben dina.
+    meaning:
+      ar_eg: الطالب ___ في المعهد، ومش بيروّح كل يوم.
+      ar: الطالب ___ في المعهد ولا يعود إلى بيته يوميًا.
+      en: Students ___ at the pesantren; they don't go home every day.
+    options: [mondhok, ngimpi, nyaur]
+    answers: [mondhok]
+    words: [mondhok, ngimpi, nyaur]
+    explain:
+      ar_eg: mondhok = ساكن في المعهد. ngimpi = بيحلم وnyaur = يرد / يسدّد.
+      ar: mondhok تعني يقيم في المعهد. أما ngimpi فيحلم وnyaur يسدّد.
+      en: mondhok is boarding at the pesantren. ngimpi is "dream" and nyaur is "pay back / answer".
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: "اقرا: ايكو"
-      ar: "اقرأ: ايكو"
-      en: "Read: ايكو"
-    options: [iku, ika, aku]
+      ar_eg: لما الطلبة بيرددوا الدرس بصوت عالي مع بعض عشان يحفظوه، ده اسمه …
+      ar: حين يردّد الطلاب الدرس جماعيًا بصوت عالٍ ليحفظوه، يسمّى ذلك …
+      en: When students recite a lesson aloud together to memorise it, that's …
+    options: [lalaran, kiriman, ngutang]
     answer: 0
     explain:
-      ar_eg: ا شايلة الـ i في الأول، وبعدين ي (i)، ك، و (u) = iku.
-      ar: تحمل ا الصائت في البداية، ثم ي (i)، ك، و (u) = iku.
-      en: ا carries the opening vowel, then ي (i), ك, و (u) = iku.
-  - id: e05
-    type: fill_blank
-    sentence: Utawi agama ___ nasehat.
-    meaning:
-      ar_eg: أمّا الدين فهو النصيحة. (علامة الخبر ناقصة)
-      ar: أمّا الدين فهو النصيحة. (علامة الخبر ناقصة)
-      en: As for religion, it is sincere advice. (The khabar marker is missing.)
-    options: [utawi, iku, ing]
-    answers: [iku]
-    words: [nasehat, makna gandul, agama]
+      ar_eg: lalaran = التسميع الجماعي. kiriman = اللي بيتبعت من البيت، وngutang = يستلف.
+      ar: lalaran = الترديد الجماعي؛ kiriman = ما يُرسل من البيت، وngutang = يستدين.
+      en: lalaran = group recitation; kiriman = money from home, ngutang = borrow.
+    words: [lalaran, kiriman, ngutang]
   - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: cahya معناها إيه؟
-      ar: ما معنى cahya؟
-      en: What does cahya mean?
-    options: [نور, علم, نصيحة]
-    answer: 0
-    words: [cahya]
+    type: fill_blank
+    sentence: Aku wis ___ surat Al-Fatihah.
+    meaning:
+      ar_eg: أنا ___ سورة الفاتحة.
+      ar: أنا ___ سورة الفاتحة.
+      en: I know Surat Al-Fatihah ___.
+    options: [apal, tansah, mondhok]
+    answers: [apal]
+    words: [apal, tansah, mondhok]
+    explain:
+      ar_eg: apal = حافظ. tansah = دايمًا وmondhok = ساكن في المعهد.
+      ar: apal تعني حافظ. أما tansah فدائمًا وmondhok يقيم في المعهد.
+      en: apal means "know by heart". tansah is "always" and mondhok is "board".
   - id: e07
+    type: multiple_choice
+    question: Wingi bengi aku ___ ketemu ibu ing Mesir.
+    options: [ngutang, ngimpi, apal]
+    answer: 1
+    explain:
+      ar_eg: 'اللي بيحصل في النوم حلم: ngimpi = يحلم.'
+      ar: 'ما يحدث في النوم حلم: ngimpi = يحلم.'
+      en: 'What happens in your sleep is a dream: ngimpi = dream.'
+    words: [ngutang, ngimpi, apal]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: "اكتب المعنى المعلّق لـ «العلم نور»."
-      ar: "اكتب المعنى المعلّق لـ «العلم نور»."
-      en: "Build the makna gandul of «العلم نور»."
-    answer: Utawi ilmu iku cahya.
-    distractors: [ing]
-    words: [cahya, utawi]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب المعنى المعلّق بالحروف اللاتينية: «الدين النصيحة»"
-      ar: "اكتب المعنى المعلّق بالحروف اللاتينية: «الدين النصيحة»"
-      en: "Write the makna gandul in Latin letters: «الدين النصيحة»"
-    answers: ["Utawi agama iku nasehat.", utawi agama iku nasehat]
-    words: [nasehat, utawi, agama]
+      ar_eg: كل ليلة الطلبة بيسمّعوا مع بعض.
+      ar: كل ليلة يردّد الطلاب معًا.
+      en: Every night the students recite together.
+    answer: Saben bengi santri lalaran bareng.
+    distractors: [kiriman, apal]
+    words: [lalaran]
+    explain:
+      ar_eg: lalaran = يسمّعوا مع بعض. kiriman = طرد وapal = حافظ، ومش في المعنى.
+      ar: lalaran ترديد جماعي للمحفوظ. أما kiriman (طرد) وapal (حافظ) فليستا في المعنى.
+      en: lalaran is reciting together. kiriman (parcel) and apal (by heart) aren't in the meaning.
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Aja ngutang yen ora bisa nyaur.
+    answers_meaning:
+      ar_eg: [ماتستلفش لو مش هتقدر تسدّ, ماتاخدش دين لو مش قادر ترجّعه]
+      ar: [لا تستدن إن لم تستطع السداد, لا تقترض إذا لم تقدر على الوفاء]
+      en: ['Don''t borrow if you can''t pay it back', 'Don''t go into debt if you can''t repay it']
+    words: [ngutang, nyaur]
+  - id: e10
     type: speaking
-    text: Utawi ilmu iku cahya. Utawi agama iku nasehat.
+    text: Aku tansah ngimpi mondhok ing Jawa.
     meaning:
-      ar_eg: أمّا العلم فهو نور. أمّا الدين فهو النصيحة.
-      ar: أمّا العلم فهو نور، وأمّا الدين فهو النصيحة.
-      en: As for knowledge, it is light. As for religion, it is sincere advice.
-    words: [cahya, nasehat, agama]
+      ar_eg: أنا دايمًا بحلم أدرس في معهد في جاوة.
+      ar: أحلم دائمًا بالإقامة في معهد في جاوة.
+      en: I always dream of studying at a pesantren in Java.
+    words: [tansah, ngimpi, mondhok]
 dialogue:
-  title: Ing kelas Gus Hanif
   lines:
-    - speaker: Gus Hanif
-      text: Mas Mohamed, «al-ilmu nur», maknanipun menapa?
-      ar_eg: يا محمد، «العلم نور» معناها إيه؟
-      ar: يا محمد، ما معنى «العلم نور»؟
-      en: Mohamed, what's the meaning of «al-ilmu nur»?
     - speaker: Mohamed
-      text: Utawi ilmu, iku cahya.
-      ar_eg: أمّا العلم فهو نور.
-      ar: أمّا العلم فهو نور.
-      en: As for knowledge, it is light.
-    - speaker: Gus Hanif
-      text: Leres! Utawi kangge mubtada, iku kangge khabar.
-      ar_eg: صح! utawi للمبتدأ وiku للخبر.
-      ar: صحيح! utawi للمبتدأ وiku للخبر.
-      en: Right! Utawi for the mubtada, iku for the khabar.
+      text: Ali, kowe wis suwe mondhok ing kene?
+      ar_eg: يا علي، بقالك كتير في المعهد هنا؟
+      ar: يا علي، هل أنت هنا في المعهد منذ زمن؟
+      en: Ali, have you been at this pesantren long?
+    - speaker: Ali
+      text: Wis telung taun, Mas. Saben bengi lalaran nganti apal.
+      ar_eg: تلات سنين يا ماس. كل ليلة بنسمّع لحد ما نحفظ.
+      ar: ثلاث سنوات يا ماس. كل ليلة نردّد حتى نحفظ.
+      en: Three years, Mas. Every night we recite until we know it by heart.
     - speaker: Mohamed
-      text: Nahwu ing Mesir, makna ing Jawa. Kula remen!
-      ar_eg: النحو من مصر والمعنى بالجاوي. عاجبني قوي!
-      ar: النحو من مصر والمعنى بالجاوية. يعجبني ذلك!
-      en: The grammar from Egypt, the meaning in Javanese. I love it!
+      text: Abot ora? Kowe kangen omah ta?
+      ar_eg: صعب؟ وحشك البيت؟
+      ar: هل هو صعب؟ أتشتاق إلى البيت؟
+      en: Is it hard? Do you miss home?
+    - speaker: Ali
+      text: Kangen, lho. Kadhang aku ngimpi mulih. Nanging ibu tansah ngirim donga.
+      ar_eg: وحشني أوي. ساعات بحلم إني روّحت. بس ماما دايمًا بتبعتلي دعا.
+      ar: أشتاق كثيرًا. أحيانًا أحلم بالعودة. لكن أمي تبعث بدعائها دائمًا.
+      en: I do. Sometimes I dream of going home. But Mum always sends her prayers.
+    - speaker: Mohamed
+      text: Yen kiriman telat, piye?
+      ar_eg: ولو الفلوس من البيت اتأخرت؟
+      ar: وإن تأخرت النقود من البيت؟
+      en: And if the money from home is late?
+    - speaker: Ali
+      text: Ngutang sik ing warung, mengko nyaur. Bu warunge apikan kok.
+      ar_eg: باخد بالشكك من الدكان، وبعدين أسدّ. صاحبة الدكان طيبة.
+      ar: أستدين من الدكان أولًا ثم أسدّد. صاحبة الدكان طيبة.
+      en: I buy on credit at the stall first and pay later. The lady who runs it is kind.
 new_words:
-  - word: cahya
+  - word: mondhok
+    pos: verb
+    ar_eg: يعيش ويدرس في معهد
+    ar: يقيم ويدرس في معهد
+    en: board and study at a pesantren
+  - word: lalaran
     pos: noun
-    ar_eg: نور
-    ar: نور
-    en: light = cahaya
-  - word: nasehat
+    ar_eg: تسميع جماعي بصوت عالي
+    ar: ترديد جماعي للحفظ
+    en: group recitation
+  - word: apal
+    pos: adjective
+    ar_eg: حافظ
+    ar: حافظ
+    en: know by heart
+  - word: tansah
+    pos: adverb
+    ar_eg: دايمًا
+    ar: دائمًا
+    en: always
+  - word: ngimpi
+    pos: verb
+    ar_eg: يحلم
+    ar: يحلم
+    en: dream
+  - word: kiriman
     pos: noun
-    arabic: نصيحة
-    ar_eg: نصيحة
-    ar: نصيحة
-    en: advice = nasihat
-  - word: agama
-    pos: noun
-    ar_eg: دين
-    ar: دين
-    en: religion = agama
+    ar_eg: اللي بيتبعت من البيت (فلوس أو حاجات)
+    ar: ما يُرسَل من البيت
+    en: something sent from home
+  - word: nyaur
+    pos: verb
+    ar_eg: يسدّ الدين
+    ar: يسدّد الدين
+    en: pay back a debt
+  - word: ngutang
+    pos: verb
+    ar_eg: يستلف، ياخد بالشكك
+    ar: يستدين
+    en: borrow, buy on credit
 review:
   status: draft
   verified: false

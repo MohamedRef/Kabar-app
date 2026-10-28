@@ -1,0 +1,234 @@
+schema: kabar.lesson/v1
+id: bipa3.u03.l08
+language: id
+title: Rekomendasi film
+can_do:
+  ar_eg: ترشّح فيلم لصاحبك وتقول ليه يستاهل.
+  ar: أن ترشّح فيلمًا لصديقك وتذكر أسباب ذلك.
+  en: Recommend a film with reasons.
+slides:
+  - title: "sih, dong, deh: rasa dalam opini"
+    body:
+      ar_eg: |
+        الكلمات الصغيرة دي مالهاش مقابل رسمي، بس بتدّي الجملة إحساس:
+        sih = بتلطّف أو بتعمل «بس…»: Bagus sih, tapi… (حلو آه، بس…).
+        dong = بتطلب أو بتأكد: Ayo dong! (يلا بقى!).
+        deh = بتقنع أو بتقرر: Nonton komedi aja deh. (خلاص نتفرج على كوميدي).
+        في المراجعة المكتوبة (ulasan) شيلهم.
+      ar: |
+        هذه الأدوات الصغيرة لا مقابل فصيحًا لها، لكنها تعطي الجملة إحساسًا:
+        sih = تلطّف أو تمهّد لاستدراك: Bagus sih, tapi… (جيد، لكن…).
+        dong = للطلب أو التأكيد: Ayo dong! (هيا إذن!).
+        deh = للإقناع أو الحسم: Nonton komedi aja deh. (فلنشاهد كوميديا إذن).
+        احذفها في المراجعة المكتوبة (ulasan).
+      en: |
+        These little particles have no standard twin; they add feeling:
+        sih softens or sets up a "but": Bagus sih, tapi… (It's good, but…).
+        dong pushes a request: Ayo dong! (Come on!).
+        deh settles or persuades: Nonton komedi aja deh. (Let's just watch a comedy.)
+        Leave them out of a written review (ulasan).
+    examples:
+      - text: "Filmnya bagus sih, tapi panjang banget."
+        ar_eg: "الفيلم حلو آه، بس طويل أوي."
+        ar: "الفيلم جيد، لكنه طويل جدًا."
+        en: "The film's good, but it's really long."
+      - text: "Temenin aku nonton, dong!"
+        ar_eg: "تعالى اتفرج معايا بقى!"
+        ar: "رافقني لمشاهدة الفيلم من فضلك!"
+        en: "Come and watch it with me!"
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ulasan
+        ar_eg: ريفيو، مراجعة
+        ar: مراجعة نقدية
+        en: review
+      - text: bintang
+        ar_eg: نجمة
+        ar: نجمة
+        en: star
+      - text: wajib
+        ar_eg: لازم، واجب
+        ar: واجب
+        en: must, obligatory
+      - text: mengharukan
+        ar_eg: مؤثّر
+        ar: مؤثّر
+        en: touching
+    words: [ulasan, bintang, wajib, mengharukan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: راكا بيسألك ترشّحله فيلم. أنهي رد فيه ترشيح وسبب؟
+      ar: يطلب منك راكا ترشيح فيلم. أيّ ردّ فيه ترشيح وسبب؟
+      en: Raka asks you to recommend a film. Which answer gives a recommendation and a reason?
+    options: ["Saya kurang setuju dengan filmnya.", "Kamu wajib menonton film ini karena alurnya menarik.", "Selamat menonton, mohon maaf lahir dan batin."]
+    answer: 1
+    words: [wajib, menarik]
+    explain:
+      ar_eg: التانية فيها ترشيح (Kamu wajib menonton…) وسبب (karena alurnya menarik). الأولى اعتراض، والتالتة تهنئة بالعيد.
+      ar: الثانية فيها ترشيح (Kamu wajib menonton…) وسبب (karena alurnya menarik). أما الأولى فاعتراض، والثالثة تهنئة بالعيد.
+      en: The second recommends (Kamu wajib menonton…) and gives a reason (karena alurnya menarik). The first disagrees; the third is an Eid greeting.
+  - id: e03
+    type: listen
+    text: Dari saya, film ini dapat empat bintang. Ceritanya mengharukan, tetapi alurnya agak pelan.
+    question:
+      ar_eg: الفيلم خد كام نجمة؟
+      ar: كم نجمة نال الفيلم؟
+      en: How many stars does the film get?
+    options: ["tiga bintang", "lima bintang", "empat bintang"]
+    answer: 2
+    meaning:
+      ar_eg: مني أنا، الفيلم ده ياخد أربع نجوم. القصة مؤثّرة، بس الأحداث بطيئة شوية.
+      ar: من جهتي ينال هذا الفيلم أربع نجوم؛ قصته مؤثّرة، لكنّ حبكته بطيئة قليلًا.
+      en: From me, this film gets four stars. The story is touching, but the plot is a bit slow.
+    words: [bintang, mengharukan, dapat]
+  - id: e04
+    type: fill_blank
+    sentence: Saya membaca ___ film itu di internet.
+    meaning:
+      ar_eg: قريت ريفيو الفيلم ده على النت.
+      ar: قرأتُ مراجعة ذلك الفيلم على الإنترنت.
+      en: I read a review of that film online.
+    options: [bintang, layar, ulasan]
+    answers: [ulasan]
+    words: [ulasan]
+    explain:
+      ar_eg: الريفيو اللي بتقراه = ulasan. bintang = نجمة (تقييم)، وlayar = شاشة.
+      ar: المراجعة التي تُقرأ ulasan. أما bintang فنجمة (تقييم)، وlayar شاشة.
+      en: A review you read is an ulasan. bintang is a star (rating) and layar a screen.
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: لازم تتفرج على الفيلم ده!
+      ar: يجب أن تشاهد هذا الفيلم!
+      en: You must watch this film!
+    answer: Kamu wajib menonton film ini!
+    distractors: [menghadiri, bintang]
+    words: [wajib]
+    explain:
+      ar_eg: «لازم تتفرج» = Kamu wajib menonton film ini! menghadiri = يحضر مناسبة، وbintang = نجمة.
+      ar: «يجب أن تشاهد» Kamu wajib menonton film ini! أما menghadiri فـ«يحضر مناسبة»، وbintang «نجمة».
+      en: "\"You must watch\" is Kamu wajib menonton film ini! menghadiri means to attend, bintang a star."
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اتفرج على الفيلم ده (أمر مؤدب بـ -lah)! القصة مشوّقة جدًا.
+      ar: شاهد هذا الفيلم (أمر مهذّب بـ-lah)! قصته مشوّقة جدًا.
+      en: Watch this film (polite command with -lah)! The story is really interesting.
+    answers:
+      - Tontonlah film ini! Ceritanya sangat menarik.
+      - Tontonlah film ini! Ceritanya sangat menarik
+      - Tontonlah film ini! Kisahnya sangat menarik.
+      - Tontonlah film ini! Ceritanya menarik sekali.
+      - Tontonlah film ini! Kisahnya menarik sekali.
+      - Tontonlah film ini, ceritanya sangat menarik!
+      - "Tontonlah film ini! Ceritanya menarik banget."
+      - "Tontonlah film ini! Kisahnya menarik banget."
+    words: [menarik]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: على حسب الريفيوهات، الفيلم ده واخد خمس نجوم.
+      ar: بحسب المراجعات، نال هذا الفيلم خمس نجوم.
+      en: According to the reviews, this film gets five stars.
+    answers:
+      - Menurut ulasan, film ini dapat lima bintang.
+      - Menurut ulasan, film ini dapat lima bintang
+      - Menurut ulasan, film ini mendapat lima bintang.
+      - Menurut ulasan, film ini mendapatkan lima bintang.
+      - Menurut ulasan-ulasan, film ini dapat lima bintang.
+      - Menurut ulasannya, film ini dapat lima bintang.
+      - Menurut ulasannya, film ini mendapat lima bintang.
+    words: [ulasan, bintang, dapat]
+  - id: e08
+    type: dictation
+    text: Kamu wajib membaca ulasannya dulu.
+    meaning:
+      ar_eg: لازم تقرا الريفيو الأول.
+      ar: يجب أن تقرأ المراجعة أولًا.
+      en: You must read the review first.
+    words: [wajib, ulasan]
+  - id: e09
+    type: speaking
+    text: Dari saya, lima bintang! Akhir ceritanya sangat mengharukan.
+    meaning:
+      ar_eg: مني أنا، خمس نجوم! نهاية القصة مؤثّرة جدًا.
+      ar: خمس نجوم من جهتي! نهاية القصة مؤثّرة جدًا.
+      en: Five stars from me! The ending is really touching.
+    words: [bintang, mengharukan]
+  - id: e10
+    type: multiple_choice
+    question: Film ini dapat lima bintang dari saya!
+    question_meaning:
+      ar_eg: رأيه إيه في الفيلم؟
+      ar: ما رأيه في الفيلم؟
+      en: What does he think of the film?
+    options: ['Filmnya sangat bagus.', 'Filmnya kurang bagus.', 'Dia belum menonton filmnya.']
+    answer: 0
+    explain:
+      ar_eg: dapat lima bintang = خد خمس نجوم، يعني الفيلم حلو جدًا.
+      ar: dapat lima bintang = نال خمس نجوم، أي أنّ الفيلم ممتاز.
+      en: dapat lima bintang = it gets five stars, so the film is great.
+    words: [dapat, bintang]
+dialogue:
+  title: Film apa yang bagus?
+  lines:
+    - speaker: Raka
+      text: Mohamed, ada rekomendasi film Indonesia nggak?
+      ar_eg: يا محمد، عندك فيلم إندونيسي ترشّحه؟
+      ar: يا محمد، أعندك فيلم إندونيسي ترشّحه؟
+      en: Mohamed, any Indonesian film to recommend?
+    - speaker: Mohamed
+      text: Ada! Kamu wajib nonton film nelayan Gili itu.
+      ar_eg: أيوه! لازم تتفرج على فيلم صياد جيلي ده.
+      ar: نعم! يجب أن تشاهد فيلم صيّاد جيلي ذاك.
+      en: Yes! You must watch that film about the Gili fisherman.
+    - speaker: Raka
+      text: Kenapa? Film horor, ya?
+      ar_eg: ليه؟ فيلم رعب؟
+      ar: لماذا؟ أهو فيلم رعب؟
+      en: Why? Is it a horror film?
+    - speaker: Mohamed
+      text: Bukan, film keluarga. Ceritanya mengharukan, latarnya indah.
+      ar_eg: لأ، فيلم عيلة. القصة مؤثّرة والمكان حلو.
+      ar: لا، فيلم عائلي، قصته مؤثّرة ومكانه جميل.
+      en: No, a family film. The story is touching and the setting is beautiful.
+    - speaker: Raka
+      text: Ulasannya gimana?
+      ar_eg: والريفيوهات بتقول إيه؟
+      ar: وما رأي المراجعات؟
+      en: What do the reviews say?
+    - speaker: Mohamed
+      text: Katanya, di internet film ini dapat empat bintang. Yuk, kita tonton!
+      ar_eg: بيقولوا إنه على النت واخد أربع نجوم. يلا نتفرج عليه!
+      ar: يقولون إنه نال أربع نجوم على الإنترنت. هيا نشاهده!
+      en: They say it gets four stars online. Come on, let's watch it!
+new_words:
+  - word: ulasan
+    pos: noun
+    ar_eg: ريفيو، مراجعة
+    ar: مراجعة نقدية
+    en: review
+  - word: bintang
+    pos: noun
+    ar_eg: نجمة، نجم
+    ar: نجمة، نجم
+    en: star
+  - word: wajib
+    pos: adjective
+    ar_eg: لازم، واجب
+    ar: واجب
+    en: must, obligatory
+    arabic: واجب
+  - word: dapat
+    pos: verb
+    ar_eg: ياخد / يحصل على (dapat lima bintang = خد خمس نجوم)؛ وكمان «يقدر»
+    ar: يحصل على؛ ويأتي بمعنى «يستطيع»
+    en: 'to get, receive; also: can'
+review:
+  status: draft
+  verified: false

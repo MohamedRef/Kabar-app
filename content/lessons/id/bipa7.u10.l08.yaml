@@ -1,201 +1,255 @@
 schema: kabar.lesson/v1
 id: bipa7.u10.l08
 language: id
-title: Tanya jawab seminar
+title: Membaca data survei
 can_do:
-  ar_eg: تجاوب على أسئلة الجمهور بعد العرض بهدوء وأمانة.
-  ar: أن تجيب عن أسئلة الحضور بعد العرض بهدوء وأمانة.
-  en: Answer audience questions after a talk, calmly and honestly.
+  ar_eg: تقرا أرقام استبيان صح وما تخلطش بين الارتباط والسببية.
+  ar: أن تقرأ أرقام استبيان قراءة صحيحة ولا تخلط بين الارتباط والسببية.
+  en: Read survey numbers correctly without confusing correlation and causation.
 slides:
-  - title: Menjawab dengan tenang
-    grammar: id.register.academic
+  - title: Angka yang jujur
     body:
       ar_eg: |
-        خطوات الرد على penanya (السائل)، والأمثلة متألّفة للدرس:
-        1. اشكره: Terima kasih atas pertanyaannya, Bu.
-        2. اطلب klarifikasi (توضيح) لو السؤال مش واضح: Mohon klarifikasi, yang Ibu maksud distrik yang mana?
-        3. جاوب من البيانات: Berdasarkan data kami, …
-        4. اعترف بـ keterbatasan (حدود) البحث: Penelitian ini memiliki keterbatasan, yaitu jumlah partisipan yang kecil.
-        5. لو السؤال مش relevan (له علاقة) بالموضوع، ارجع بأدب: Pertanyaan yang menarik, tetapi kurang relevan dengan makalah ini.
+        استبيان (متألّف للدرس) لـ 200 صياد في سورونج عن الدخل الشهري:
+        rerata (المتوسّط) = 3,1 مليون. median (الوسيط) = 2,4 مليون.
+        ليه الفرق؟ فيه pencilan (قيمة شاذّة): صاحب مركب كبير بيكسب 40 مليون، وده بيشدّ المتوسّط لفوق.
+        korelasi (ارتباط): اللي عندهم موبايل دخلهم أعلى. بس ده مش kausalitas (سببية)!
+        ما تعملش generalisasi (تعميم) على بابوا كلها من 200 واحد.
+        anomali = حاجة غريبة في البيانات. empiris = مبني على بيانات وملاحظة مش على الرأي.
+        - في الكلام: tapi = tetapi.
       ar: |
-        خطوات الردّ على الـ penanya (السائل)، والأمثلة مؤلَّفة للدرس:
-        1. اشكره: Terima kasih atas pertanyaannya, Bu.
-        2. اطلب klarifikasi (توضيحًا) إن كان السؤال غامضًا: Mohon klarifikasi, yang Ibu maksud distrik yang mana?
-        3. أجب من البيانات: Berdasarkan data kami, …
-        4. اعترف بـ keterbatasan (حدود) البحث: Penelitian ini memiliki keterbatasan, yaitu jumlah partisipan yang kecil.
-        5. وإن لم يكن السؤال relevan (ذا صلة) بالموضوع، فعُد إليه بلطف: Pertanyaan yang menarik, tetapi kurang relevan dengan makalah ini.
+        استبيان (مؤلَّف للدرس) لـ200 صيّاد في سورونغ عن الدخل الشهري:
+        rerata (المتوسّط) = 3,1 مليون، وmedian (الوسيط) = 2,4 مليون.
+        لماذا الفرق؟ هناك pencilan (قيمة متطرّفة): صاحب قارب كبير يكسب 40 مليونًا فيرفع المتوسّط.
+        korelasi (ارتباط): أصحاب الهواتف دخلهم أعلى، لكنّ ذلك ليس kausalitas (سببية)!
+        ولا تقم بـ generalisasi (تعميم) على بابوا كلّها من 200 شخص.
+        anomali = شذوذ في البيانات. empiris = قائم على البيانات والملاحظة لا على الرأي.
+        - في الكلام اليومي: tapi = tetapi.
       en: |
-        Steps for answering a penanya (questioner), with examples invented for the lesson:
-        1. Thank them: Terima kasih atas pertanyaannya, Bu.
-        2. Ask for klarifikasi (clarification) if it's unclear: Mohon klarifikasi, yang Ibu maksud distrik yang mana?
-        3. Answer from the data: Berdasarkan data kami, …
-        4. Admit the keterbatasan (limitations) of the study: Penelitian ini memiliki keterbatasan, yaitu jumlah partisipan yang kecil.
-        5. If it isn't relevan (relevant), steer back politely: Pertanyaan yang menarik, tetapi kurang relevan dengan makalah ini.
+        A survey (invented for the lesson) of 200 Sorong fishermen's monthly income:
+        rerata (mean) = 3.1 million. median = 2.4 million.
+        Why the gap? A pencilan (outlier): one big-boat owner earns 40 million and pulls the mean up.
+        korelasi: those with phones earn more. But that's not kausalitas!
+        Don't make a generalisasi about all Papua from 200 people.
+        anomali = something odd in the data. empiris = based on data and observation, not opinion.
+        - In speech: tapi = tetapi.
+    examples:
+      - text: Median lebih tepat daripada rerata jika ada pencilan.
+        ar_eg: الوسيط أدقّ من المتوسّط لو فيه قيمة شاذّة.
+        ar: الوسيط أدقّ من المتوسّط إذا وُجدت قيمة متطرّفة.
+        en: The median is more accurate than the mean when there's an outlier.
+      - text: Korelasi tidak sama dengan kausalitas.
+        ar_eg: الارتباط مش هو السببية.
+        ar: الارتباط ليس السببية.
+        en: Correlation is not causation.
+      - text: Kesimpulan itu harus didukung bukti empiris.
+        ar_eg: الاستنتاج ده لازم يكون عليه دليل تجريبي.
+        ar: يجب أن تدعم الاستنتاجَ أدلّةٌ تجريبية.
+        en: That conclusion must be backed by empirical evidence.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: penanya
-        ar_eg: السائل
-        ar: السائل
-        en: questioner
-      - text: klarifikasi
-        ar_eg: توضيح
-        ar: توضيح
-        en: clarification
-      - text: keterbatasan
-        ar_eg: حدود / قصور
-        ar: حدود البحث
-        en: limitation
-      - text: relevan
-        ar_eg: ليه علاقة
-        ar: ذو صلة
-        en: relevant
-    words: [penanya, klarifikasi, keterbatasan, relevan]
+      - text: rerata
+        ar_eg: المتوسّط
+        ar: المتوسّط الحسابي
+        en: mean, average
+      - text: median
+        ar_eg: الوسيط (الرقم اللي في النص)
+        ar: الوسيط
+        en: median
+      - text: pencilan
+        ar_eg: قيمة شاذّة بعيدة عن الباقي
+        ar: قيمة متطرّفة
+        en: outlier
+      - text: korelasi
+        ar_eg: ارتباط
+        ar: ارتباط
+        en: correlation
+    words: [rerata, median, pencilan, korelasi]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: kausalitas
+        ar_eg: سببية
+        ar: السببية
+        en: causality
+      - text: generalisasi
+        ar_eg: تعميم
+        ar: تعميم
+        en: generalisation
+      - text: anomali
+        ar_eg: شذوذ / حاجة غريبة عن المعتاد
+        ar: شذوذ عن المألوف
+        en: anomaly
+      - text: empiris
+        ar_eg: تجريبي / مبني على الملاحظة
+        ar: تجريبي
+        en: empirical
+    words: [kausalitas, generalisasi, anomali, empiris]
+  - id: e03
+    type: listen
+    text: 'Ada anomali pada data bulan Maret: penjualan naik sepuluh kali lipat.'
+    question:
+      ar_eg: إيه اللي في بيانات مارس؟
+      ar: ماذا في بيانات مارس؟
+      en: What's in the March data?
+    options: [شذوذ, متوسّط, تعميم]
+    answer: 0
+    meaning:
+      ar_eg: 'فيه حاجة شاذّة في بيانات مارس: المبيعات زادت عشر أضعاف.'
+      ar: 'في بيانات مارس شذوذ: تضاعفت المبيعات عشر مرّات.'
+      en: 'There''s an anomaly in March''s data: sales rose tenfold.'
+    words: [anomali]
+  - id: e04
+    type: fill_blank
+    sentence: Nilai tengah dari data yang diurutkan disebut ___.
+    meaning:
+      ar_eg: القيمة اللي في النص بعد ترتيب البيانات اسمها ___.
+      ar: تُسمّى القيمة الوسطى في البيانات المرتّبة ___.
+      en: The middle value of ordered data is the ___.
+    options: [median, rerata, korelasi]
+    answers: [median]
+    words: [median, rerata, korelasi]
+    explain:
+      ar_eg: القيمة اللي في النص بعد الترتيب = median (الوسيط). rerata = المتوسط وkorelasi = ارتباط.
+      ar: القيمة الوسطى بعد الترتيب median. rerata المتوسط الحسابي.
+      en: The middle of ordered data is the median; rerata is the mean.
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: السؤال مش واضح. تقول إيه؟
-      ar: السؤال غير واضح، فماذا تقول؟
-      en: The question isn't clear. What do you say?
-    options:
-      - Pertanyaan Ibu salah.
-      - Mohon klarifikasi, yang Ibu maksud yang mana?
-      - Saya tidak mau menjawab.
-    answer: 1
-    words: [klarifikasi]
-  - id: e03
-    type: fill_blank
-    sentence: Jumlah partisipan yang kecil adalah salah satu ___ penelitian ini.
-    meaning:
-      ar_eg: إن عدد المشاركين قليل ده من حدود البحث ده.
-      ar: قلّة عدد المشاركين من حدود هذا البحث.
-      en: The small number of participants is one of this study's limitations.
-    options: [keterbatasan, klarifikasi, penanya]
-    answers: [keterbatasan]
-    words: [keterbatasan]
-  - id: e04
-    type: listen
-    text: Penanya kedua bertanya tentang harga ubi di pasar Jibama.
-    question:
-      ar_eg: السائل التاني سأل عن إيه؟
-      ar: عمَّ سأل السائل الثاني؟
-      en: What did the second questioner ask about?
-    options:
-      - سعر البطاطا في سوق جيباما.
-      - عدد البيوت.
-      - تاريخ الوادي.
+      ar_eg: ليه «generalisasi» من 200 صياد غلط؟
+      ar: لماذا يُعدّ «generalisasi» من 200 صيّاد خطأً؟
+      en: Why is a 'generalisasi' from 200 fishermen wrong?
+    options: ['Karena sampelnya hanya dari satu kota, bukan seluruh Papua.', Karena 200 terlalu banyak., Karena nelayan tidak punya telepon.]
     answer: 0
-    words: [penanya]
-  - id: e05
+    explain:
+      ar_eg: العيّنة من مدينة واحدة، ما تنفعش لبابوا كلها.
+      ar: العيّنة من مدينة واحدة فلا تمثّل بابوا كلّها.
+      en: The sample is from one city, not all Papua.
+    words: [generalisasi]
+  - id: e06
+    type: fill_blank
+    sentence: Satu kapal besar menjadi ___ yang menaikkan rerata.
+    meaning:
+      ar_eg: مركب كبير واحد بقى ___ رفع المتوسّط.
+      ar: صار قارب كبير واحد ___ رفع المتوسّط.
+      en: One big boat became an ___ that raised the mean.
+    options: [pencilan, kausalitas, empiris]
+    answers: [pencilan]
+    words: [pencilan, kausalitas, empiris, rerata]
+    explain:
+      ar_eg: قيمة شاذة بترفع المتوسط = pencilan (قيمة متطرفة). kausalitas = سببية وempiris = تجريبي.
+      ar: القيمة الشاذة pencilan ترفع المتوسط. kausalitas سببية.
+      en: One extreme value is a pencilan (outlier).
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: السؤال ده ليه علاقة قوية بالبحث بتاعنا.
-      ar: هذا السؤال وثيق الصلة ببحثنا.
-      en: This question is highly relevant to our research.
-    answer: Pertanyaan ini sangat relevan dengan penelitian kami.
-    distractors: [klarifikasi, penanya]
-    words: [relevan]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: ليه الباحث الأمين بيعترف بحدود بحثه؟
-      ar: لماذا يعترف الباحث الأمين بحدود بحثه؟
-      en: Why does an honest researcher admit their study's limits?
-    options:
-      - علشان الجمهور يسكت.
-      - علشان الوقت يخلص.
-      - علشان القارئ يعرف النتايج تنفع لحدّ فين.
-    answer: 2
-    words: [keterbatasan]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: شكرًا على السؤال. ممكن توضيح؟
-      ar: شكرًا على السؤال. هل من توضيح؟
-      en: Thank you for the question. Could you clarify?
-    answers:
-      - Terima kasih atas pertanyaannya. Mohon klarifikasi.
-      - Terima kasih atas pertanyaannya. Boleh minta klarifikasi?
-      - Terima kasih atas pertanyaan Anda. Mohon klarifikasi.
-      - Terima kasih atas pertanyaannya. Bisa minta klarifikasi?
-    words: [klarifikasi]
+      ar_eg: مفيش ارتباط بين المتغيّرين دول.
+      ar: لا ارتباط بين هذين المتغيّرين.
+      en: There's no correlation between these two variables.
+    answer: Tidak ada korelasi antara kedua variabel itu.
+    distractors: [pencilan, median]
+    words: [korelasi]
+    explain:
+      ar_eg: Tidak ada korelasi (مفيش ارتباط) + antara kedua variabel itu. pencilan وmedian زيادة.
+      ar: Tidak ada korelasi antara kedua variabel itu. pencilan وmedian زائدتان.
+      en: Tidak ada korelasi + antara kedua variabel itu. pencilan and median are extra.
   - id: e08
-    type: speaking
-    text: Pertanyaan Bapak menarik, tetapi kurang relevan dengan makalah ini.
-    meaning:
-      ar_eg: سؤال حضرتك حلو، بس مالوش علاقة أوي بالورقة دي.
-      ar: سؤالك مثير يا سيّدي، لكنّه قليل الصلة بهذه الورقة.
-      en: Your question is interesting, sir, but not very relevant to this paper.
-    words: [relevan]
-  - id: e09
-    type: dictation
-    text: Setiap penanya mendapat waktu dua menit.
-    meaning:
-      ar_eg: كل سائل ليه دقيقتين.
-      ar: لكلّ سائل دقيقتان.
-      en: Each questioner gets two minutes.
-    words: [penanya]
-  - id: e10
     type: translate
     direction: from_target
-    source_text: Peneliti itu mengakui keterbatasan datanya dan mengucapkan terima kasih kepada penanya.
+    source_text: Untuk membuktikan kausalitas, kita butuh eksperimen.
     answers_meaning:
-      ar_eg:
-        - الباحث اعترف بحدود بياناته وشكر السائل.
-        - الباحث قال إن بياناته ليها حدود، وشكر اللي سأل.
-      ar:
-        - اعترف الباحث بحدود بياناته وشكر السائل.
-        - أقرّ الباحث بقصور بياناته وشكر صاحب السؤال.
-      en:
-        - The researcher admitted the limits of his data and thanked the questioner.
-        - The researcher acknowledged his data's limitations and thanked the person who asked.
-    words: [keterbatasan, penanya]
+      ar_eg: [علشان نثبت السببية، محتاجين تجربة, لو عايزين نثبت إن ده سبب ده، لازم تجربة]
+      ar: [لإثبات السببية نحتاج إلى تجربة, يتطلّب إثبات السببية إجراء تجربة]
+      en: ['To prove causality, we need an experiment', Proving causation requires an experiment]
+    words: [kausalitas]
+  - id: e09
+    type: speaking
+    text: Median dan data empiris mencegah generalisasi yang keliru.
+    meaning:
+      ar_eg: الوسيط والبيانات التجريبية بيمنعوا التعميم الغلط.
+      ar: يمنع الوسيط والبيانات التجريبية التعميم الخاطئ.
+      en: The median and empirical data prevent false generalisations.
+    words: [median, empiris, generalisasi]
+  - id: e10
+    type: multiple_choice
+    question: '"Orang yang punya telepon lebih kaya, jadi telepon membuat orang kaya." Apa kesalahannya?'
+    options: [Rerata naik karena pencilan., Tidak ada anomali., Menganggap korelasi sebagai kausalitas.]
+    answer: 2
+    explain:
+      ar_eg: ده خلط بين الارتباط والسببية.
+      ar: هذا خلط بين الارتباط والسببية.
+      en: That mistakes correlation for causation.
+    words: [korelasi, kausalitas, rerata, anomali, pencilan]
 dialogue:
-  title: Pertanyaan dari barisan belakang
   lines:
     - speaker: Pak Elias
-      text: Kita buka sesi tanya jawab. Silakan, Ibu di belakang.
-      ar_eg: نفتح جلسة الأسئلة. اتفضّلي يا مدام اللي ورا.
-      ar: نفتتح جلسة الأسئلة. تفضّلي يا سيّدتي في الخلف.
-      en: Let's open the Q&A. Go ahead, the lady at the back.
-    - speaker: Penanya
-      text: Apakah temuan ini berlaku untuk seluruh Papua?
-      ar_eg: النتايج دي تنفع على بابوا كلها؟
-      ar: هل تصحّ هذه النتائج على بابوا كلّها؟
-      en: Do these findings hold for all of Papua?
+      text: Lihat tabelmu. Rerata pendapatan nelayan tiga koma satu juta.
+      ar_eg: بص على الجدول بتاعك. متوسّط دخل الصيادين تلاتة وواحد من عشرة مليون.
+      ar: 'انظر إلى جدولك: متوسّط دخل الصيّادين ثلاثة فاصل واحد مليون.'
+      en: Look at your table. The fishermen's mean income is 3.1 million.
     - speaker: Mohamed
-      text: Terima kasih atas pertanyaannya. Belum, Bu. Itulah keterbatasan penelitian kami.
-      ar_eg: شكرًا على السؤال. لسّه لأ يا مدام. ودي حدود بحثنا.
-      ar: شكرًا على السؤال. ليس بعدُ يا سيّدتي، وهذا من حدود بحثنا.
-      en: Thank you for the question. Not yet, Bu. That's our study's limitation.
+      text: Tapi kebanyakan nelayan bilang mereka dapat jauh lebih sedikit.
+      ar_eg: بس معظم الصيادين بيقولوا إنهم بياخدوا أقل من كده بكتير.
+      ar: لكنّ معظم الصيّادين يقولون إنهم يكسبون أقلّ بكثير.
+      en: But most fishermen say they earn much less.
+    - speaker: Pak Elias
+      text: Karena ada pencilan. Coba lihat median-nya.
+      ar_eg: علشان فيه قيمة شاذّة. بص على الوسيط.
+      ar: لوجود قيمة متطرّفة. انظر إلى الوسيط.
+      en: Because there's an outlier. Look at the median.
     - speaker: Mohamed
-      text: Data kami hanya dari tiga distrik. Penelitian lanjutan sangat relevan untuk itu.
-      ar_eg: بياناتنا من تلات مناطق بس. وبحث تاني بعد كده هيبقى مهمّ جدًّا للنقطة دي.
-      ar: بياناتنا من ثلاث مناطق فقط، والبحث اللاحق وثيق الصلة بهذه المسألة.
-      en: Our data comes from only three districts. Follow-up research would be very relevant to that.
+      text: Dua koma empat juta. Itu lebih jujur.
+      ar_eg: اتنين وأربعة من عشرة مليون. ده أصدق.
+      ar: اثنان فاصل أربعة مليون، وهذا أصدق.
+      en: 2.4 million. That's more honest.
+    - speaker: Pak Elias
+      text: Bagus. Dan jangan buat generalisasi untuk seluruh Papua.
+      ar_eg: حلو. وما تعمّمش على بابوا كلها.
+      ar: جيّد، ولا تعمّم على بابوا كلّها.
+      en: Good. And don't generalise to all of Papua.
 new_words:
-  - word: penanya
+  - word: rerata
     pos: noun
-    ar_eg: السائل
-    ar: السائل
-    en: questioner
-  - word: klarifikasi
+    ar_eg: المتوسّط
+    ar: المتوسّط الحسابي
+    en: mean, average
+  - word: median
     pos: noun
-    ar_eg: توضيح
-    ar: توضيح
-    en: clarification
-  - word: keterbatasan
+    ar_eg: الوسيط (الرقم اللي في النص)
+    ar: الوسيط
+    en: median
+  - word: pencilan
     pos: noun
-    ar_eg: حدود / قصور
-    ar: حدود البحث
-    en: limitation
-  - word: relevan
+    ar_eg: قيمة شاذّة بعيدة عن الباقي
+    ar: قيمة متطرّفة
+    en: outlier
+  - word: korelasi
+    pos: noun
+    ar_eg: ارتباط
+    ar: ارتباط
+    en: correlation
+  - word: kausalitas
+    pos: noun
+    ar_eg: سببية
+    ar: السببية
+    en: causality
+  - word: generalisasi
+    pos: noun
+    ar_eg: تعميم
+    ar: تعميم
+    en: generalisation
+  - word: anomali
+    pos: noun
+    ar_eg: شذوذ / حاجة غريبة عن المعتاد
+    ar: شذوذ عن المألوف
+    en: anomaly
+  - word: empiris
     pos: adjective
-    ar_eg: ليه علاقة
-    ar: ذو صلة
-    en: relevant
+    ar_eg: تجريبي / مبني على الملاحظة
+    ar: تجريبي
+    en: empirical
 review:
   status: draft
   verified: false

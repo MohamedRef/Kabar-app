@@ -1,211 +1,253 @@
 schema: kabar.lesson/v1
 id: j2.u04.l05
 language: jv
-title: Jadwal sepur
+title: Mendhung lan payung
 can_do:
-  ar_eg: تقرا جدول مواعيد قطر وتختار القطر المناسب.
-  ar: أن تقرأ جدول مواعيد القطارات وتختار القطار المناسب.
-  en: Read a train timetable and pick a train.
+  ar_eg: 'تتكلم عن الجو: مغيّمة وهوا وفيضان، تاخد الشمسية، وتروّح قبل الضلمة.'
+  ar: 'أن تتحدّث عن الطقس: غائم ورياح وفيضان، وتأخذ المظلّة، وتعود قبل الظلام.'
+  en: 'Talk about the weather: cloudy, windy, flooded, take an umbrella and get home before dark.'
 slides:
-  - title: Neng stasiun Madiun
-    grammar: jv.time.expressions
+  - title: Hawane piye?
     body:
       ar_eg: |
-        في محطة ماديون فيه لوحة مواعيد صغيرة. sepur = قطر (kereta)، وmenyang = رايح لـ (ke).
-        افتكر الساعة:
-        - setengah + الساعة اللي جاية: setengah wolu = ٧:٣٠.
-        - luwih seprapat = وربع، kurang seprapat = إلا ربع.
-        - esuk / awan / sore / bengi بعد الساعة: jam siji awan = ١ الضهر.
+        mendhung = مغيّمة (قبل المطر)، angin = هوا، ريح، srengenge = شمس.
+        banjir = فيضان، الشوارع تغرق. teles = مبلول: Klambiku teles.
+        payung = شمسية، مظلة: Payungmu ngendi?
+        peteng = ضلمة: Wis peteng, ayo mulih.
+        gunung = جبل: Gunung Lawu قريب من ماديون.
       ar: |
-        في محطة ماديون لوحة مواعيد صغيرة. sepur = قطار (kereta)، وmenyang = إلى (ke).
-        تذكّر الساعة:
-        - setengah + الساعة التالية: setengah wolu = ٧:٣٠.
-        - luwih seprapat = والربع، وkurang seprapat = إلا ربعًا.
-        - esuk / awan / sore / bengi بعد الساعة: jam siji awan = الواحدة ظهرًا.
+        mendhung = غائم (قبل المطر)، angin = ريح، srengenge = شمس.
+        banjir = فيضان. teles = مبلّل: Klambiku teles.
+        payung = مظلّة: Payungmu ngendi?
+        peteng = مظلم: Wis peteng, ayo mulih.
+        gunung = جبل: جبل Lawu قريب من ماديون.
       en: |
-        At Madiun station there's a small timetable board. sepur = train (kereta), menyang = to (ke).
-        Remember clock time:
-        - setengah + the NEXT hour: setengah wolu = 7:30.
-        - luwih seprapat = quarter past, kurang seprapat = quarter to.
-        - esuk / awan / sore / bengi after the hour: jam siji awan = 1 p.m.
+        mendhung = cloudy, overcast, angin = wind, srengenge = sun.
+        banjir = flood. teles = wet: Klambiku teles.
+        payung = umbrella: Payungmu ngendi?
+        peteng = dark: Wis peteng, ayo mulih.
+        gunung = mountain: Mount Lawu is near Madiun.
     examples:
-      - text: Sepur menyang Solo jam setengah wolu esuk lan jam siji awan.
-        ar_eg: قطر سولو الساعة ٧:٣٠ الصبح والساعة ١ الضهر.
-        ar: قطار سولو في السابعة والنصف صباحًا والواحدة ظهرًا.
-        en: Trains to Solo at 7:30 a.m. and 1 p.m.
-      - text: Sepur menyang Suroboyo jam papat luwih seprapat sore.
-        ar_eg: قطر سورابايا الساعة أربعة وربع العصر.
-        ar: قطار سورابايا في الرابعة والربع عصرًا.
-        en: The train to Surabaya is at 4:15 p.m.
-      - text: Dina Minggu ora ana sepur jam siji awan.
-        ar_eg: يوم الحد مفيش قطر الساعة ١ الضهر.
-        ar: يوم الأحد لا يوجد قطار الساعة الواحدة ظهرًا.
-        en: On Sundays there's no 1 p.m. train.
+      - text: Mendhung. Payungmu ngendi?
+        ar_eg: الدنيا مغيّمة. فين الشمسية بتاعتك؟
+        ar: السماء غائمة. أين مظلّتك؟
+        en: It's cloudy. Where's your umbrella?
+      - text: Klambiku teles kabeh.
+        ar_eg: هدومي مبلولة خالص.
+        ar: ثيابي مبلّلة كلّها.
+        en: My clothes are soaked.
+      - text: Wis peteng, ayo mulih.
+        ar_eg: الدنيا ضلمت، يلا نروّح.
+        ar: حلّ الظلام، هيّا نعود.
+        en: It's dark now, let's go home.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: محمد عايز يروح سولو الصبح. ياخد قطر الساعة كام؟
-      ar: يريد محمد الذهاب إلى سولو صباحًا. أيّ قطار يأخذ؟
-      en: Mohamed wants to go to Solo in the morning. Which train?
-    options: ["Jam setengah wolu esuk.", "Jam siji awan.", "Jam papat luwih seprapat sore."]
-    answer: 0
-    explain:
-      ar_eg: قطر سولو الصبح الساعة setengah wolu esuk = ٧:٣٠. قطر الساعة ٤:١٥ رايح سورابايا.
-      ar: قطار سولو الصباحي في setengah wolu esuk = ٧:٣٠، أما قطار ٤:١٥ فذاهب إلى سورابايا.
-      en: The morning train to Solo is at setengah wolu esuk = 7:30. The 4:15 train goes to Surabaya.
-    words: [setengah, esuk]
-  - id: e02
-    type: multiple_choice
-    question: Sepur menyang Suroboyo jam papat luwih seprapat sore.
-    question_meaning:
-      ar_eg: قطر سورابايا الساعة كام؟
-      ar: في أيّ ساعة قطار سورابايا؟
-      en: What time is the train to Surabaya?
-    options: ["Jam papat sore.", "Jam lima kurang seprapat sore.", "Jam papat luwih seprapat sore."]
-    answer: 2
-    explain:
-      ar_eg: luwih seprapat = وربع. jam lima kurang seprapat = ٤:٤٥، مش ٤:١٥.
-      ar: luwih seprapat = والربع، أما jam lima kurang seprapat فهي ٤:٤٥ لا ٤:١٥.
-      en: luwih seprapat = quarter past. jam lima kurang seprapat is 4:45, not 4:15.
-    words: [luwih, seprapat, sore]
-  - id: e03
-    type: multiple_choice
-    question: Dina Minggu ora ana sepur jam siji awan.
-    question_meaning:
-      ar_eg: النهارده الحد. Sari تقدر تاخد قطر الساعة ١ لسولو؟
-      ar: اليوم الأحد. هل تستطيع Sari أن تأخذ قطار الواحدة إلى سولو؟
-      en: Today is Sunday. Can Sari take the 1 p.m. train to Solo?
-    options: ["Isa, sepure ana.", "Ora isa, sepure ora ana.", "Isa, jam papat sore."]
-    answer: 1
-    explain:
-      ar_eg: يوم الحد (Minggu) مفيش قطر الساعة ١ الضهر، يعني ora isa.
-      ar: يوم الأحد (Minggu) لا يوجد قطار الواحدة ظهرًا، أي ora isa.
-      en: On Sunday (Minggu) there's no 1 p.m. train, so ora isa.
-    words: [isa, dina]
-  - id: e04
-    type: listen
-    text: Sepur menyang Solo jam setengah wolu esuk.
-    options: ["Sepur menyang Solo jam setengah pitu esuk.", "Sepur menyang Solo jam setengah wolu bengi.", "Sepur menyang Solo jam setengah wolu esuk."]
-    answer: 2
-    meaning:
-      ar_eg: قطر سولو الساعة ٧:٣٠ الصبح.
-      ar: قطار سولو في السابعة والنصف صباحًا.
-      en: The train to Solo is at 7:30 a.m.
-    words: [setengah, esuk]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: jam setengah wolu
-        ar_eg: ٧:٣٠
-        ar: ٧:٣٠
-        en: "7:30"
-      - text: jam siji awan
-        ar_eg: ١ الضهر
-        ar: الواحدة ظهرًا
-        en: 1 p.m.
-      - text: jam papat luwih seprapat
-        ar_eg: ٤:١٥
-        ar: ٤:١٥
-        en: "4:15"
-      - text: jam lima kurang seprapat
-        ar_eg: ٤:٤٥
-        ar: ٤:٤٥
-        en: "4:45"
-      - text: jam pitu bengi
-        ar_eg: ٧ بالليل
-        ar: السابعة مساءً
-        en: 7 p.m.
-    words: [jam, setengah, luwih, seprapat, bengi]
+      - text: angin
+        ar_eg: هوا، ريح
+        ar: ريح
+        en: wind
+      - text: banjir
+        ar_eg: فيضان
+        ar: فيضان
+        en: flood
+      - text: mendhung
+        ar_eg: مغيّمة
+        ar: غائم
+        en: cloudy
+      - text: teles
+        ar_eg: مبلول
+        ar: مبلّل
+        en: wet
+    words: [angin, banjir, mendhung, teles]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: peteng
+        ar_eg: ضلمة
+        ar: مظلم
+        en: dark
+      - text: payung
+        ar_eg: شمسية
+        ar: مظلّة
+        en: umbrella
+      - text: gunung
+        ar_eg: جبل
+        ar: جبل
+        en: mountain
+      - text: srengenge
+        ar_eg: شمس
+        ar: شمس
+        en: sun
+    words: [peteng, payung, gunung, srengenge]
+  - id: e03
+    type: listen
+    text: Mendhung. Payungmu ngendi?
+    question:
+      ar_eg: الجو عامل إزاي؟
+      ar: كيف الطقس؟
+      en: What's the weather like?
+    options: [الدنيا مغيّمة، فين الشمسية؟, الشمس طالعة، فين الشمسية؟, الدنيا ضلمة، فين البيت؟]
+    answer: 0
+    meaning:
+      ar_eg: الدنيا مغيّمة. فين الشمسية بتاعتك؟
+      ar: السماء غائمة. أين مظلّتك؟
+      en: It's cloudy. Where's your umbrella?
+    words: [mendhung, payung, srengenge, peteng]
+  - id: e04
+    type: fill_blank
+    sentence: Klambiku ___ kabeh, aku ora nggawa payung.
+    meaning:
+      ar_eg: هدومي ___ خالص، ما خدتش شمسية.
+      ar: ثيابي ___ كلّها، لم آخذ مظلّة.
+      en: My clothes are all ___, I didn't bring an umbrella.
+    options: [teles, peteng, gunung]
+    answers: [teles]
+    words: [teles, payung, peteng, gunung]
+    explain:
+      ar_eg: teles = مبلول، عشان مفيش شمسية. peteng = ضلمة، وgunung = جبل.
+      ar: teles = مبلّل، لعدم وجود مظلة؛ أما peteng فمظلم، وgunung جبل.
+      en: teles = soaked, because no umbrella. peteng = dark, gunung = mountain.
+  - id: e05
+    type: multiple_choice
+    question: Kuthane banjir.
+    question_meaning:
+      ar_eg: حصل إيه؟
+      ar: ماذا حدث؟
+      en: What happened?
+    options: [الشوارع غرقت مية, فيه هوا جامد, الدنيا ضلمت]
+    answer: 0
+    explain:
+      ar_eg: banjir = فيضان. الهوا = angin، الضلمة = peteng.
+      ar: banjir = فيضان. أمّا الريح فـangin، والظلام فـpeteng.
+      en: banjir = flood. Wind is angin, dark is peteng.
+    words: [banjir, angin, peteng]
   - id: e06
     type: fill_blank
-    sentence: Dina Minggu ora ana sepur jam siji ___.
+    sentence: Wis ___, ayo mulih.
     meaning:
-      ar_eg: يوم الحد مفيش قطر الساعة ١ الضهر.
-      ar: يوم الأحد لا يوجد قطار الساعة الواحدة ظهرًا.
-      en: On Sundays there's no 1 p.m. train.
-    options: ["esuk", "awan", "bengi"]
-    answers: ["awan"]
+      ar_eg: الدنيا ___، يلا نروّح.
+      ar: صار ___، هيّا نعود.
+      en: It's ___ now, let's go home.
+    options: [peteng, srengenge, banjir]
+    answers: [peteng]
+    words: [peteng, srengenge, banjir]
     explain:
-      ar_eg: ١ الضهر = jam siji awan (awan = الضهر، نص النهار).
-      ar: الواحدة ظهرًا = jam siji awan (awan = الظهيرة).
-      en: 1 p.m. = jam siji awan (awan = midday).
-    words: [awan]
+      ar_eg: wis peteng = الدنيا ضلمت، فيلا نروّح. srengenge = شمس، وbanjir = فيضان.
+      ar: wis peteng = حلّ الظلام، فهيا نعود؛ أما srengenge فالشمس، وbanjir فيضان.
+      en: wis peteng = it's dark, so let's go home. srengenge = sun, banjir = flood.
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: قطر سولو الساعة كام؟
-      ar: في أيّ ساعة قطار سولو؟
-      en: What time is the train to Solo?
-    answers:
-      - Sepur menyang Solo jam pira?
-      - Sepur menyang Solo jam pira
-      - Sepur menyang Solo jam piro?
-      - Sepur neng Solo jam pira?
-      - Sepur nang Solo jam pira?
-      - Jam pira sepur menyang Solo?
-      - Sepure menyang Solo jam pira?
-      - Sepur sing menyang Solo jam pira?
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «الهوا ساقع فوق الجبل» بالجاوي؟
+      ar: كيف تقول «الريح باردة على الجبل» بالجاوية؟
+      en: '"The wind is cool on the mountain" in Javanese?'
+    options: [Angine adem ing gunung., Srengengene adem ing gunung., Banjire adem ing gunung.]
+    answer: 0
     explain:
-      ar_eg: menyang = لـ (ke)، وjam pira? = الساعة كام؟
-      ar: menyang = إلى (ke)، وjam pira? = في أيّ ساعة؟
-      en: menyang = to (ke), jam pira? = what time?
-    words: [menyang, jam, pira]
+      ar_eg: angin = هوا، gunung = جبل.
+      ar: angin = ريح، gunung = جبل.
+      en: angin = wind, gunung = mountain.
+    words: [angin, gunung, srengenge, banjir]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: بكرة الصبح رايح سولو الساعة ٧:٣٠.
-      ar: غدًا صباحًا سأذهب إلى سولو في السابعة والنصف.
-      en: Tomorrow morning I'm going to Solo at half past seven.
-    answer: Sesuk esuk aku menyang Solo jam setengah wolu.
-    distractors: [wingi, mau]
+      ar_eg: الشمس سخنة النهارده.
+      ar: الشمس حارّة اليوم.
+      en: The sun is hot today.
+    answer: Srengengene panas dina iki.
+    distractors: [mendhung, teles]
+    words: [srengenge, mendhung, teles]
     explain:
-      ar_eg: sesuk = بكرة. wingi = امبارح، وmau = من شوية؛ الاتنين ماضي.
-      ar: sesuk = غدًا، أما wingi = أمس وmau = قبل قليل، وكلاهما للماضي.
-      en: sesuk = tomorrow. wingi = yesterday and mau = earlier; both are past.
-    words: [sesuk, esuk, menyang, setengah]
+      ar_eg: srengengene = الشمس، وpanas = سخنة. mendhung = مغيّم، وteles = مبلول، ومش في المعنى.
+      ar: srengengene = الشمس، وpanas = حارّة؛ أما mendhung فغائم، وteles مبلّل، وليسا في المعنى.
+      en: srengengene = the sun, panas = hot. mendhung (cloudy) and teles (wet) aren't in the meaning.
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Gunung Lawu cedhak Madiun.
+    answers_meaning:
+      ar_eg: [جبل لاوو قريب من ماديون, جبل لاوو جنب ماديون]
+      ar: [جبل لاوو قريب من ماديون, يقع جبل لاوو قرب ماديون]
+      en: [Mount Lawu is near Madiun, Mount Lawu is close to Madiun]
+    words: [gunung]
+  - id: e10
     type: speaking
-    text: Sepur menyang Suroboyo jam papat luwih seprapat sore.
+    text: Mendhung lan angin, aku nggawa payung.
     meaning:
-      ar_eg: قطر سورابايا الساعة أربعة وربع العصر.
-      ar: قطار سورابايا في الرابعة والربع عصرًا.
-      en: The train to Surabaya is at 4:15 p.m.
-    words: [luwih, seprapat, sore]
+      ar_eg: مغيّمة وفيه هوا، هاخد الشمسية.
+      ar: الجوّ غائم وعاصف، سآخذ المظلّة.
+      en: Cloudy and windy, I'm taking an umbrella.
+    words: [mendhung, angin, payung]
 dialogue:
-  title: Arep menyang Solo
   lines:
+    - speaker: Bu Rahayu
+      text: Mas, arep neng ngendi? Mendhung lho.
+      ar_eg: يا ماس، رايح فين؟ الدنيا مغيّمة على فكرة.
+      ar: إلى أين يا أخي؟ السماء غائمة.
+      en: Where are you off to, Mas? It's cloudy, you know.
     - speaker: Mohamed
-      text: Sari, sesuk aku arep menyang Solo. Sepure jam pira?
-      ar_eg: يا ساري، بكرة أنا رايح سولو. القطر الساعة كام؟
-      ar: يا ساري، غدًا سأذهب إلى سولو. في أيّ ساعة القطار؟
-      en: Sari, tomorrow I'm going to Solo. What time is the train?
-    - speaker: Sari
-      text: Ana jam setengah wolu esuk lan jam siji awan.
-      ar_eg: فيه الساعة ٧:٣٠ الصبح والساعة ١ الضهر.
-      ar: يوجد في السابعة والنصف صباحًا والواحدة ظهرًا.
-      en: There's one at 7:30 a.m. and one at 1 p.m.
+      text: Neng kutha, Bu. Srengengene isih ana kok.
+      ar_eg: للبلد يا حاجة. الشمس لسه طالعة.
+      ar: إلى المدينة يا سيدتي. الشمس ما زالت مشرقة.
+      en: Into town, Bu. The sun's still out.
+    - speaker: Bu Rahayu
+      text: Angine gedhe. Sore iki mesthi udan. Iki payunge.
+      ar_eg: الهوا شديد. أكيد هتمطر العصر. خد الشمسية.
+      ar: الريح شديدة. ستمطر عصرًا بالتأكيد. هذه المظلة.
+      en: The wind's strong. It'll rain this afternoon for sure. Here's an umbrella.
     - speaker: Mohamed
-      text: Jam siji wae. Esuk aku isih turu!
-      ar_eg: الساعة واحدة أحسن. الصبح أنا لسه نايم!
-      ar: الواحدة إذن. في الصباح أكون نائمًا بعد!
-      en: The one o'clock, then. In the morning I'm still asleep!
-    - speaker: Sari
-      text: Lho, sesuk Minggu. Dina Minggu ora ana sepur jam siji.
-      ar_eg: إيه ده، بكرة الحد. يوم الحد مفيش قطر الساعة واحدة.
-      ar: انتبه، غدًا الأحد. يوم الأحد لا يوجد قطار الساعة الواحدة.
-      en: Oh, tomorrow's Sunday. On Sundays there's no one o'clock train.
-    - speaker: Mohamed
-      text: Wah! Ya wis, jam setengah wolu esuk.
-      ar_eg: ياه! خلاص، الساعة ٧:٣٠ الصبح.
-      ar: آه! حسنًا، السابعة والنصف صباحًا.
-      en: Oh no! All right, 7:30 in the morning.
-    - speaker: Sari
-      text: Sip! Mengko bengi cepet turu, ya!
-      ar_eg: تمام! بالليل نام بدري بقى!
-      ar: ممتاز! نَم مبكرًا الليلة إذن!
-      en: Great! Get to bed early tonight, then!
+      text: Matur nuwun, Bu. Wingi aku teles kabeh!
+      ar_eg: شكرًا يا طنط. امبارح اتبلّيت خالص!
+      ar: شكرًا يا سيّدتي. تبلّلت تمامًا أمس!
+      en: Thanks, Bu. Yesterday I got soaked!
+    - speaker: Bu Rahayu
+      text: Ojo mulih peteng, ya. Dalane kadang banjir.
+      ar_eg: ما ترجعش بالليل في الضلمة. الشارع ساعات بيغرق.
+      ar: لا تعد في الظلام. الطريق يغرق أحيانًا.
+      en: Don't come back after dark. The road sometimes floods.
+new_words:
+  - word: angin
+    pos: noun
+    ar_eg: هوا، ريح
+    ar: ريح
+    en: wind
+  - word: banjir
+    pos: noun
+    ar_eg: فيضان
+    ar: فيضان
+    en: flood
+  - word: mendhung
+    pos: adjective
+    ar_eg: مغيّمة
+    ar: غائم
+    en: cloudy, overcast
+  - word: teles
+    pos: adjective
+    ar_eg: مبلول
+    ar: مبلّل
+    en: wet
+  - word: peteng
+    pos: adjective
+    ar_eg: ضلمة
+    ar: مظلم
+    en: dark
+  - word: payung
+    pos: noun
+    ar_eg: شمسية، مظلة
+    ar: مظلّة
+    en: umbrella
+  - word: gunung
+    pos: noun
+    ar_eg: جبل
+    ar: جبل
+    en: mountain
+  - word: srengenge
+    pos: noun
+    ar_eg: شمس
+    ar: شمس
+    en: sun
 review:
   status: draft
   verified: false

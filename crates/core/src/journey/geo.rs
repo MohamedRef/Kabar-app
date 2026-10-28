@@ -95,17 +95,23 @@ pub const PLACES: &[Place] = &[
     // Bukittinggi, West Sumatra (Minangkabau country).
     place("bipa6", "Sumatra", 100.37, -0.31),
     place("bipa7", "Raja Ampat", 130.62, -0.45),
-    // Javanese: the train line, west from Surabaya.
-    place("j1", "Surabaya", 112.75, -7.25),
+    // Javanese: Yogyakarta and Madiun only (Mataraman Javanese), there and
+    // back along the Jogja–Madiun line. Jogja's four levels sit within a few
+    // km of each other, so the map draws them as a schematic around the
+    // Kraton, far enough apart that the whole line fits on one screen with
+    // every pin, name and landmark clear (#308): Malioboro north, Pakualaman
+    // west, Kotagede south-east.
+    Place { level: "j1", name: "Malioboro", lon: 110.365, lat: -7.79, map_lon: 110.36, map_lat: -7.50 },
     place("j2", "Madiun", 111.52, -7.63),
-    place("j3", "Solo", 110.82, -7.57),
-    place("j4", "Yogyakarta", 110.37, -7.80),
-    place("j5", "Semarang", 110.42, -6.97),
-    Place { level: "j6", name: "Kotagede", lon: 110.40, lat: -7.83, map_lon: 110.52, map_lat: -7.98 },
+    Place { level: "j3", name: "Pakualaman", lon: 110.375, lat: -7.80, map_lon: 110.04, map_lat: -7.76 },
+    place("j4", "Kraton", 110.364, -7.805),
+    // Madiun again, back for the advanced level: drawn south-east of J2's pin.
+    Place { level: "j5", name: "Kutha Pendekar", lon: 111.52, lat: -7.63, map_lon: 111.62, map_lat: -7.78 },
+    Place { level: "j6", name: "Kotagede", lon: 110.40, lat: -7.83, map_lon: 110.66, map_lat: -7.96 },
 ];
 
 /// The place for a level: by level id, else by the start of its place name
-/// ("Solo (Surakarta)", "Raja Ampat, Papua").
+/// ("Malioboro, Yogyakarta", "Raja Ampat, Papua").
 pub fn place_for(level_id: &str, place_name: &str) -> Option<&'static Place> {
     PLACES.iter().find(|p| p.level == level_id).or_else(|| {
         let name = place_name.to_lowercase();

@@ -1,0 +1,202 @@
+schema: kabar.lesson/v1
+id: j1.u05.l06
+language: jv
+title: Seneng kabeh!
+can_do:
+  ar_eg: تقول إنك مبسوط وإن كله حلو، وتقول «جديد» و«زي».
+  ar: أن تقول إنك سعيد وإن كل شيء جميل، وتقول «جديد» و«مثل».
+  en: Say you're happy and everything's great, and say "new" and "like".
+slides:
+  - title: Neng Parangtritis
+    body:
+      ar_eg: |
+        - **seneng** = مبسوط / بيحب (senang, suka): Aku seneng neng pantai = مبسوط على البحر.
+        - **kabeh** = كله / كلهم (semua): kancaku kabeh = صحابي كلهم.
+        - **anyar** = جديد (baru): motor anyar = موتوسيكل جديد.
+        - **kaya** = زي (seperti)، وفي الشات بتتكتب koyo: kaya wong Jogja = زي أهل يوجيا.
+      ar: |
+        - **seneng** = سعيد / يحب (senang, suka): Aku seneng neng pantai = أنا سعيد على الشاطئ.
+        - **kabeh** = الكل / جميعًا (semua): kancaku kabeh = أصدقائي كلهم.
+        - **anyar** = جديد (baru): motor anyar = دراجة نارية جديدة.
+        - **kaya** = مثل (seperti)، وفي الدردشة تُكتب koyo: kaya wong Jogja = مثل أهل يوجياكرتا.
+      en: |
+        - **seneng** = happy, to like (senang, suka): Aku seneng neng pantai = I love it at the beach.
+        - **kabeh** = all, everyone (semua): kancaku kabeh = all my friends.
+        - **anyar** = new (baru): motor anyar = a new motorbike.
+        - **kaya** = like, as (seperti); chats write koyo: kaya wong Jogja = like a Jogja local.
+    examples:
+      - text: Aku seneng neng pantai.
+        ar_eg: أنا مبسوط على البحر.
+        ar: أنا سعيد على الشاطئ.
+        en: I love it at the beach.
+      - text: Kabeh kancaku seneng degan.
+        ar_eg: صحابي كلهم بيحبوا جوز الهند الأخضر.
+        ar: كل أصدقائي يحبون جوز الهند الأخضر.
+        en: All my friends love young coconut.
+      - text: Kowe ngomong kaya wong Jogja!
+        ar_eg: إنت بتتكلم زي أهل يوجيا!
+        ar: أنت تتكلم مثل أهل يوجياكرتا!
+        en: You talk like a Jogja local!
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kaya
+        ar_eg: زي
+        ar: مثل
+        en: like, as
+      - text: anyar
+        ar_eg: جديد
+        ar: جديد
+        en: new
+      - text: seneng
+        ar_eg: مبسوط / بيحب
+        ar: سعيد / يحب
+        en: happy, like
+      - text: kabeh
+        ar_eg: كله / كلهم
+        ar: الكل
+        en: all
+    words: [kaya, anyar, seneng, kabeh]
+  - id: e02
+    type: listen
+    text: Aku seneng neng pantai.
+    question:
+      ar_eg: هو حاسس بإيه؟
+      ar: بماذا يشعر؟
+      en: How does he feel?
+    options: [مبسوط على البحر, زهقان من البحر, جعان على البحر]
+    answer: 0
+    meaning:
+      ar_eg: أنا مبسوط على البحر.
+      ar: أنا سعيد على الشاطئ.
+      en: I love it at the beach.
+    words: [seneng]
+  - id: e03
+    type: fill_blank
+    sentence: Motorku ___, Mas!
+    meaning:
+      ar_eg: الموتوسيكل بتاعي ___ يا ماس!
+      ar: دراجتي ___ يا أخي!
+      en: My motorbike is ___, Mas!
+    options: [anyar, kaya, kabeh]
+    answers: [anyar]
+    words: [anyar, kaya, kabeh]
+    explain:
+      ar_eg: "anyar = جديد: motorku anyar = موتوسيكلي جديد. kaya = زي، وkabeh = كله."
+      ar: "anyar = جديد: motorku anyar = دراجتي جديدة؛ أما kaya فمثل، وkabeh كل."
+      en: anyar = new. kaya = like, kabeh = all.
+  - id: e04
+    type: fill_blank
+    sentence: Kowe ngomong ___ wong Jogja.
+    meaning:
+      ar_eg: إنت بتتكلم ___ أهل يوجيا.
+      ar: أنت تتكلم ___ أهل يوجياكرتا.
+      en: You talk ___ a Jogja local.
+    options: [kaya, seneng, anyar]
+    answers: [kaya]
+    words: [kaya, seneng, anyar]
+    explain:
+      ar_eg: "kaya = زي: بتتكلم زي ابن يوجيا (مش «غني» زي الإندونيسي). seneng = مبسوط، وanyar = جديد."
+      ar: "kaya = مثل: تتكلم مثل ابن يوجياكرتا (لا «غني» كما في الإندونيسية)؛ أما seneng فسعيد، وanyar جديد."
+      en: kaya = like (not Indonesian "rich"). seneng = happy, anyar = new.
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «كله / كلهم»؟
+      ar: أيّ كلمة تعني «الكل»؟
+      en: Which word means "all"?
+    options: [kabeh, kaya, anyar]
+    answer: 0
+    explain:
+      ar_eg: kabeh = كله. kaya = زي، وanyar = جديد.
+      ar: kabeh = الكل، أما kaya فمثل وanyar جديد.
+      en: kabeh = all. kaya = like, anyar = new.
+    words: [kabeh, kaya, anyar]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: صحابي كلهم مبسوطين.
+      ar: أصدقائي كلهم سعداء.
+      en: All my friends are happy.
+    answer: Kancaku kabeh seneng.
+    distractors: [anyar, kaya]
+    words: [kabeh, seneng]
+    explain:
+      ar_eg: kancaku kabeh = كل صحابي، وseneng = مبسوطين. anyar = جديد، وkaya = زي، ومش في المعنى.
+      ar: kancaku kabeh = كل أصدقائي، وseneng = سعداء؛ أما anyar فجديد، وkaya مثل، وليسا في المعنى.
+      en: kancaku kabeh = all my friends, seneng = happy. anyar (new) and kaya (like) aren't in the meaning.
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Ombake gedhe kaya omah!
+    answers_meaning:
+      ar_eg: [الموج كبير زي البيت, الموج قد البيت]
+      ar: [الموج كبير مثل البيت, الأمواج بحجم البيت]
+      en: [The waves are as big as a house, The waves are big like a house]
+    words: [kaya]
+  - id: e08
+    type: speaking
+    text: Seneng banget, kabeh apik!
+    meaning:
+      ar_eg: مبسوط جدًا، كله حلو!
+      ar: سعيد جدًا، كل شيء جميل!
+      en: So happy, everything's great!
+    words: [seneng, kabeh]
+dialogue:
+  lines:
+    - speaker: Mas Yudha
+      text: Mohamed, seneng neng pantai?
+      ar_eg: يا محمد، مبسوط على البحر؟
+      ar: يا محمد، هل أنت سعيد على الشاطئ؟
+      en: Mohamed, enjoying the beach?
+    - speaker: Mohamed
+      text: 'Seneng banget, Mas! Kabeh apik: pasir, ombak, layangan.'
+      ar_eg: 'مبسوط جدًا يا ماس! كله حلو: الرملة والموج والطيارات الورق.'
+      ar: 'سعيد جدًا يا أخي! كل شيء جميل: الرمل والموج والطائرات الورقية.'
+      en: 'Loving it, Mas! Everything''s great: the sand, the waves, the kites.'
+    - speaker: Mas Yudha
+      text: Motormu anyar, ta?
+      ar_eg: الموتوسيكل بتاعك جديد، مش كده؟
+      ar: دراجتك جديدة، أليس كذلك؟
+      en: Your motorbike's new, isn't it?
+    - speaker: Mohamed
+      text: Ora, Mas. Iku motore kancaku.
+      ar_eg: لا يا ماس. ده موتوسيكل صاحبي.
+      ar: لا يا أخي. تلك دراجة صديقي.
+      en: No, Mas. That's my friend's bike.
+    - speaker: Mas Yudha
+      text: Wah, kowe ngomong kaya wong Jogja!
+      ar_eg: واو، إنت بتتكلم زي أهل يوجيا!
+      ar: رائع، أنت تتكلم مثل أهل يوجياكرتا!
+      en: Wow, you talk like a Jogja local!
+    - speaker: Mohamed
+      text: Hehe, matur nuwun, Mas!
+      ar_eg: هههه، شكرًا يا ماس!
+      ar: هه، شكرًا يا أخي!
+      en: Hehe, thanks, Mas!
+new_words:
+  - word: seneng
+    pos: adjective
+    ar_eg: مبسوط / بيحب (senang, suka)
+    ar: سعيد / يحب (senang, suka)
+    en: happy, to like (senang, suka)
+  - word: kabeh
+    pos: pronoun
+    ar_eg: كله / كلهم (semua)
+    ar: الكل / جميعًا (semua)
+    en: all, everyone (semua)
+  - word: anyar
+    pos: adjective
+    ar_eg: جديد (baru)
+    ar: جديد (baru)
+    en: new (baru)
+  - word: kaya
+    pos: preposition
+    ar_eg: زي (seperti)؛ في الشات koyo (≠ إندونيسي kaya = غني)
+    ar: مثل (seperti)؛ وفي الدردشة koyo (≠ الإندونيسية kaya = غني)
+    en: like, as (seperti); chat koyo (≠ Indonesian kaya "rich")
+    false_friend: kaya
+review:
+  status: draft
+  verified: false

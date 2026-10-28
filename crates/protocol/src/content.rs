@@ -3,14 +3,34 @@
 //!
 //! These types are the source of truth for `schemas/*.schema.json`, which
 //! `kabar-tools schemas` regenerates (with the `schema` feature). Content
-//! files are parsed with `deny_unknown_fields`, so a typo in generated
-//! content fails validation instead of being silently dropped.
+//! files are parsed with [`from_json_strict`] and checked against schemas
+//! that forbid unknown fields, so a typo in generated content fails
+//! validation instead of being silently dropped.
+//!
+//! The gloss types ([`GlossEntry`] and what it holds) don't use serde's
+//! `deny_unknown_fields` themselves: they are embedded in synced Teach rows
+//! (`learn::TaughtEntry`), which must read fields from a newer build.
 
+use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 
 /// Bumped whenever a content type changes incompatibly. Readers refuse packs
 /// with a newer major version instead of misreading them.
 pub const CONTENT_SCHEMA_VERSION: u32 = 1;
+
+/// Parses one content record, failing on any field the type doesn't know
+/// (at any depth), the way `deny_unknown_fields` would.
+pub fn from_json_strict<T: DeserializeOwned>(json: &str) -> Result<T, serde_json::Error> {
+    use serde::de::Error;
+    let mut unknown = Vec::new();
+    let mut de = serde_json::Deserializer::from_str(json);
+    let value: T = serde_ignored::deserialize(&mut de, |path| unknown.push(path.to_string()))?;
+    de.end()?;
+    match unknown.first() {
+        None => Ok(value),
+        Some(path) => Err(serde_json::Error::custom(format!("unknown field `{path}`"))),
+    }
+}
 
 /// Learning language of an entry.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
@@ -47,8 +67,7 @@ pub enum ReviewStatus {
 
 /// The same text in the three explanation voices (§11).
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-#[serde(deny_unknown_fields)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema), schemars(deny_unknown_fields))]
 pub struct Trilingual {
     /// Egyptian colloquial Arabic (بالمصري).
     pub arz: String,
@@ -114,8 +133,7 @@ pub enum SpeechLevel {
 
 /// Who produced a piece of content, so a better pass can replace it later.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-#[serde(deny_unknown_fields)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema), schemars(deny_unknown_fields))]
 pub struct Provenance {
     /// `claude-code`, `wiktionary`, `user`, …
     pub generator: String,
@@ -128,8 +146,7 @@ pub struct Provenance {
 
 /// One meaning of a word.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-#[serde(deny_unknown_fields)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema), schemars(deny_unknown_fields))]
 pub struct Sense {
     pub pos: Pos,
     /// Short gloss in each voice (a few words, not a definition essay).
@@ -140,8 +157,7 @@ pub struct Sense {
 
 /// An example sentence with its translations.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-#[serde(deny_unknown_fields)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema), schemars(deny_unknown_fields))]
 pub struct Example {
     /// The sentence in the learning language. Contains the word (or a form of it).
     pub text: String,
@@ -155,8 +171,7 @@ pub struct Example {
 /// popover and used by lessons. Keyed by surface form, because that is what
 /// the Reader looks up; `lemma`/`root`/`affixes` give the breakdown.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-#[serde(deny_unknown_fields)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema), schemars(deny_unknown_fields))]
 pub struct GlossEntry {
     pub lang: Lang,
     /// Surface form, lowercase, as in the frequency list.

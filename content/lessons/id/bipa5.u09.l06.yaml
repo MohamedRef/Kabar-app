@@ -1,188 +1,254 @@
 schema: kabar.lesson/v1
 id: bipa5.u09.l06
 language: id
-title: Jembatan Arab
+title: Chat dengan anak muda
 can_do:
-  ar_eg: تشرح بالإندونيسي إزاي الكلمات العربي اتغيّرت لما دخلت الإندونيسي.
-  ar: أن تشرح بالإندونيسية كيف تغيّرت الكلمات العربية حين دخلت الإندونيسية.
-  en: Explain in Indonesian how Arabic words changed on their way into Indonesian.
+  ar_eg: 'تفهم شات شباب جاكرتا العامي: elo وtemen وngerti وgini وkayaknya وcuman وlagian وsob، وتعرف مقابلها الفصيح.'
+  ar: 'أن تفهم محادثة شبابية عامية: elo وtemen وngerti وgini وkayaknya وcuman وlagian وsob، وتعرف مقابلها المعياري.'
+  en: 'Understand young people''s slang chat: elo, temen, ngerti, gini, kayaknya, cuman, lagian, sob, and their standard forms.'
 slides:
-  - title: Bunyi yang berubah
-    grammar: id.register.formal-informal
+  - title: Gaul dan baku
     body:
       ar_eg: |
-        إنت عارف الجسر العربي، دلوقتي اشرحه بالإندونيسي:
-        - Bunyi "f" berubah menjadi "p". = فكر → pikir
-        - Bunyi "q" berubah menjadi "k". = وقت → waktu، قلب → kalbu
-        - Bunyi "ض" berubah menjadi "d" atau "l". = رضا → rida / rela
-        - Bunyi "ع" sering hilang atau menjadi "k". = علم → ilmu، معنى → makna
-        وخد بالك من الأصحاب المزيّفين: ahli = خبير (مش أهل)، kalimat = جملة (مش كلمة).
+        الكلام العامي (bahasa gaul) في الشات وبين الصحاب بس، مش في الشغل الرسمي:
+        elo / lo = إنت (kamu)، temen = صاحب (teman)، ngerti = فاهم (mengerti).
+        gini = كده (begini)، kayaknya = شكله، باين (sepertinya)، cuman = بس (hanya).
+        lagian = وبعدين، أصلًا (lagi pula)، sob = يا صاحبي (من sobat).
+        وفي الحوار هتسمع كلام الشارع، وجنبه الرسمي: ngerti = mengerti، nggak = tidak، temen = teman، terus = lalu، gini = begini، aja = saja، kayaknya = sepertinya، tetep = tetap.
       ar: |
-        تعرف الجسر العربي، فاشرحه الآن بالإندونيسية:
-        - Bunyi "f" berubah menjadi "p". = فكر → pikir
-        - Bunyi "q" berubah menjadi "k". = وقت → waktu، قلب → kalbu
-        - Bunyi "ض" berubah menjadi "d" atau "l". = رضا → rida / rela
-        - Bunyi "ع" sering hilang atau menjadi "k". = علم → ilmu، معنى → makna
-        واحذر الأصدقاء المزيّفين: ahli = خبير (لا أهل)، kalimat = جملة (لا كلمة).
+        العامية (bahasa gaul) للمحادثات بين الأصدقاء فقط، لا للعمل الرسمي:
+        elo / lo = أنت (kamu)، temen = صديق (teman)، ngerti = يفهم (mengerti).
+        gini = هكذا (begini)، kayaknya = يبدو (sepertinya)، cuman = فقط (hanya).
+        lagian = ثم إنّ، علاوة على ذلك (lagi pula)، sob = يا صاحبي (من sobat).
+        وفي الحوار لغة الشارع، وبجانبها الصيغة الرسمية: ngerti = mengerti، nggak = tidak، temen = teman، terus = lalu، gini = begini، aja = saja، kayaknya = sepertinya، tetep = tetap.
       en: |
-        You know the Arabic Bridge; now explain it in Indonesian:
-        - Bunyi "f" berubah menjadi "p". = fikr → pikir
-        - Bunyi "q" berubah menjadi "k". = waqt → waktu, qalb → kalbu
-        - Bunyi "ḍ" berubah menjadi "d" atau "l". = riḍā → rida / rela
-        - Bunyi "ʿ" sering hilang atau menjadi "k". = ʿilm → ilmu, maʿnā → makna
-        Watch the false friends: ahli = expert (not "family"), kalimat = sentence (not "word").
+        Slang (bahasa gaul) is for chats among friends, not formal work:
+        elo / lo = you (kamu), temen = friend (teman), ngerti = to understand (mengerti).
+        gini = like this (begini), kayaknya = looks like, seems (sepertinya), cuman = only, just (hanya).
+        lagian = besides, anyway (lagi pula), sob = mate, bro (from sobat).
+        The dialogue uses street forms; the formal ones are beside them: ngerti = mengerti, nggak = tidak, temen = teman, terus = lalu, gini = begini, aja = saja, kayaknya = sepertinya, tetep = tetap.
+    examples:
+      - text: Elo ngerti nggak maksud gue?
+        ar_eg: إنت فاهم قصدي ولا لأ؟
+        ar: هل تفهم ما أعنيه؟
+        en: Do you get what I mean?
+      - text: Kayaknya temen gue telat lagi.
+        ar_eg: شكل صاحبي هيتأخر تاني.
+        ar: يبدو أن صديقي سيتأخر مجددًا.
+        en: Looks like my friend's late again.
+      - text: 'Gini aja, sob: kita ketemu jam tujuh.'
+        ar_eg: 'خليها كده يا صاحبي: نتقابل الساعة سبعة.'
+        ar: 'لنفعل هكذا يا صاحبي: نلتقي في السابعة.'
+        en: 'Let''s do this, mate: we meet at seven.'
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: bunyi
-        ar_eg: صوت
-        ar: صوت
-        en: sound
-      - text: berubah
-        ar_eg: يتغيّر
-        ar: يتغيّر
-        en: to change
-      - text: mirip
-        ar_eg: شبه
-        ar: يشبه
-        en: similar
-      - text: lafal
-        ar_eg: نطق
-        ar: لفظ
-        en: pronunciation
-      - text: ahli
-        ar_eg: خبير
-        ar: خبير
-        en: expert
-    words: [bunyi, berubah, mirip, lafal, ahli]
+      - text: elo
+        ar_eg: إنت (kamu)
+        ar: أنت (kamu)
+        en: you (kamu)
+      - text: temen
+        ar_eg: صاحب (teman)
+        ar: صديق (teman)
+        en: friend (teman)
+      - text: ngerti
+        ar_eg: فاهم (mengerti)
+        ar: يفهم (mengerti)
+        en: understand (mengerti)
+      - text: gini
+        ar_eg: كده (begini)
+        ar: هكذا (begini)
+        en: like this (begini)
+    words: [elo, temen, ngerti, gini]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «فكر» بقت إيه في الإندونيسي؟
-      ar: ماذا صارت «فكر» في الإندونيسية؟
-      en: What did Arabic "fikr" become in Indonesian?
-    options: [pikir, fikir, bikir]
-    answer: 0
-    words: [bunyi, berubah]
+    type: match_pairs
+    pairs:
+      - text: kayaknya
+        ar_eg: شكله (sepertinya)
+        ar: يبدو (sepertinya)
+        en: seems (sepertinya)
+      - text: cuman
+        ar_eg: بس (hanya)
+        ar: فقط (hanya)
+        en: only (hanya)
+      - text: lagian
+        ar_eg: وبعدين، أصلًا
+        ar: علاوة على ذلك
+        en: besides
+      - text: sob
+        ar_eg: يا صاحبي
+        ar: يا صاحبي
+        en: mate, bro
+    words: [kayaknya, cuman, lagian, sob]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Dia ahli sejarah» معناها إيه؟
-      ar: ما معنى «Dia ahli sejarah»؟
-      en: What does "Dia ahli sejarah" mean?
-    options:
-      - هو من أهل التاريخ القديم.
-      - هو خبير في التاريخ.
-      - هو بيكره التاريخ.
-    answer: 1
-    words: [ahli]
+    type: listen
+    text: Kayaknya hujan, sob. Kita naik ojek aja.
+    question:
+      ar_eg: الجو عامل إزاي؟
+      ar: كيف الجو؟
+      en: What's the weather doing?
+    options: [شكلها هتمطر, الجو حر, الطريق فاضي]
+    answer: 0
+    meaning:
+      ar_eg: شكلها هتمطر يا صاحبي. نركب أوجيك أحسن.
+      ar: يبدو أنها ستمطر يا صاحبي. لنركب دراجة أجرة.
+      en: Looks like rain, mate. Let's just take an ojek.
+    words: [kayaknya, sob]
   - id: e04
     type: fill_blank
-    sentence: Kata "waktu" sangat ___ dengan kata Arab "وقت".
+    sentence: Gue ___ punya lima ribu. Pinjem dong!
     meaning:
-      ar_eg: كلمة waktu شبه قوي الكلمة العربي «وقت».
-      ar: كلمة waktu شديدة الشبه بالكلمة العربية «وقت».
-      en: The word "waktu" is very similar to the Arabic word "waqt".
-    options: [mirip, ahli, lafal]
-    answers: [mirip]
-    words: [mirip]
+      ar_eg: أنا معايا خمستلاف ___. سلفني!
+      ar: معي خمسة آلاف ___. أقرضني!
+      en: I've ___ got five thousand. Lend me some!
+    options: [cuman, gini, temen]
+    answers: [cuman]
+    words: [cuman, gini, temen]
+    explain:
+      ar_eg: cuman = بس (عامية جاكرتا لـ cuma/hanya). gini = كده، وtemen = صاحب، مش «بس».
+      ar: cuman = «فقط» بعامّية جاكرتا. أما gini فـ«هكذا»، وtemen «صديق».
+      en: cuman is Jakarta slang for "only". gini ("like this") and temen ("friend") don't fit.
   - id: e05
-    type: listen
-    text: Lafal orang Mesir dan orang Indonesia berbeda, tetapi katanya mirip.
-    question:
-      ar_eg: إيه اللي مختلف؟
-      ar: ما المختلف؟
-      en: What is different?
-    options:
-      - الكلمات.
-      - المعنى.
-      - النطق.
-    answer: 2
-    words: [lafal, mirip]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: 'بالفصيح: Saya tidak mengerti. وبالعامي؟'
+      ar: 'بالمعيارية: Saya tidak mengerti. وبالعامية؟'
+      en: 'Standard: Saya tidak mengerti. Slang?'
+    options: [Gue nggak gini., Gue nggak ngerti., Gue nggak cuman.]
+    answer: 1
+    explain:
+      ar_eg: mengerti → ngerti في العامية.
+      ar: mengerti ← ngerti في العامية.
+      en: mengerti → ngerti in slang.
+    words: [gini, ngerti, cuman]
   - id: e06
+    type: fill_blank
+    sentence: Jangan pergi sekarang. ___ di luar macet banget.
+    meaning:
+      ar_eg: ما تمشيش دلوقتي. ___ الدنيا زحمة أوي بره.
+      ar: لا تذهب الآن. ___ الزحام شديد في الخارج.
+      en: Don't go now. ___, the traffic outside is awful.
+    options: [Lagian, Elo, Sob]
+    answers: [Lagian]
+    words: [lagian, elo, sob]
+    explain:
+      ar_eg: Lagian = «وبعدين كمان/أصلًا» لسبب زيادة. Elo = إنت وSob = يا صاحبي، مش أدوات ربط.
+      ar: Lagian = «ثم إنّ» لسبب إضافي. أما Elo فـ«أنت»، وSob «يا صاحبي».
+      en: Lagian adds a reason ("besides"). Elo ("you") and Sob ("mate") aren't linkers.
+  - id: e07
+    type: multiple_choice
+    question: ___ mau ikut nonton nggak?
+    options: [Gini, Kayaknya, Elo]
+    answer: 2
+    explain:
+      ar_eg: elo = إنت بالعامي (kamu).
+      ar: elo = أنت بالعامية (kamu).
+      en: elo = you in slang (kamu).
+    words: [gini, kayaknya, elo]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: صوت «ق» اتغيّر وبقى «k».
-      ar: تغيّر صوت «ق» فصار «k».
-      en: The sound "q" changed into "k".
-    answer: Bunyi "q" berubah menjadi "k".
-    distractors: [mirip, lafal]
-    words: [bunyi, berubah]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: نطقي لسه بيتغيّر كل يوم.
-      ar: ما زال نطقي يتغيّر كلّ يوم.
-      en: My pronunciation is still changing every day.
-    answers:
-      - Lafal saya masih berubah setiap hari.
-      - Lafal saya masih terus berubah setiap hari.
-      - Setiap hari lafal saya masih berubah.
-      - Lafalku masih berubah setiap hari.
-    words: [lafal, berubah]
-  - id: e08
-    type: speaking
-    text: Kata "kalimat" mirip dengan bahasa Arab, tetapi maknanya berbeda.
-    meaning:
-      ar_eg: كلمة kalimat شبه العربي، بس معناها مختلف.
-      ar: كلمة kalimat تشبه العربية، لكنّ معناها مختلف.
-      en: The word "kalimat" looks like Arabic, but its meaning is different.
-    words: [mirip]
+      ar_eg: صاحبي فاهم الموضوع.
+      ar: صديقي يفهم الأمر.
+      en: My friend gets it.
+    answer: Temen gue ngerti kok.
+    distractors: [cuman, gini]
+    words: [temen, ngerti]
+    explain:
+      ar_eg: «صاحبي» = Temen gue، و«فاهم» = ngerti. cuman = بس وgini = كده، مش في الجملة.
+      ar: «صديقي» = Temen gue و«يفهم» = ngerti. أما cuman فـ«فقط»، وgini «هكذا».
+      en: "\"My friend\" is temen gue and \"gets it\" ngerti. cuman and gini aren't in it."
   - id: e09
-    type: dictation
-    text: Ahli bahasa itu menjelaskan bunyi bahasa Arab.
+    type: translate
+    direction: from_target
+    source_text: 'Gini aja, sob: kita ketemu besok.'
+    answers_meaning:
+      ar_eg: ['خليها كده يا صاحبي: نتقابل بكرة', بص يا صاحبي، نتقابل بكرة]
+      ar: ['لنفعل هكذا يا صاحبي: نلتقي غدًا', إذن يا صاحبي، نلتقي غدًا]
+      en: ['Let''s do this, mate: we''ll meet tomorrow', 'Okay bro, let''s meet tomorrow']
+    words: [gini, sob]
+  - id: e10
+    type: speaking
+    text: Kayaknya elo cuman capek. Lagian ini udah malam.
     meaning:
-      ar_eg: خبير اللغة ده شرح أصوات العربي.
-      ar: شرح ذلك الخبير اللغوي أصوات العربية.
-      en: That language expert explained the sounds of Arabic.
-    words: [ahli, bunyi]
+      ar_eg: شكلك تعبان وبس. وبعدين إحنا بالليل أصلًا.
+      ar: يبدو أنك متعب فقط. ثم إن الوقت متأخر.
+      en: Looks like you're just tired. Besides, it's late.
+    words: [kayaknya, elo, cuman, lagian]
 dialogue:
-  title: Presentasi di kelas Mas Rizal
   lines:
-    - speaker: Mas Rizal
-      text: Mohamed, silakan jelaskan Jembatan Arab kepada teman-teman.
-      ar_eg: يا محمد، اتفضل اشرح الجسر العربي لزمايلك.
-      ar: يا محمد، تفضّل اشرح الجسر العربي للزملاء.
-      en: Mohamed, please explain the Arabic Bridge to everyone.
-    - speaker: Mohamed
-      text: Banyak kata Indonesia mirip bahasa Arab, tetapi bunyinya berubah. Misalnya, "fikr" menjadi "pikir".
-      ar_eg: كلمات إندونيسي كتير شبه العربي، بس صوتها اتغيّر. مثلًا «فكر» بقت pikir.
-      ar: كثير من الكلمات الإندونيسية يشبه العربية، لكنّ أصواتها تغيّرت؛ فـ«فكر» صارت pikir.
-      en: Many Indonesian words resemble Arabic, but the sounds changed. For example, "fikr" became "pikir".
     - speaker: Rina
-      text: Jadi kamu cepat belajar karena sudah kenal kosakatanya?
-      ar_eg: يعني إنت بتتعلم بسرعة علشان المفردات مألوفة ليك؟
-      ar: إذن تتعلّم بسرعة لأنّ المفردات مألوفة لك؟
-      en: So you learn fast because the vocabulary is familiar?
+      text: Mohamed, ini chat adikku. Kamu ngerti nggak?
+      ar_eg: يا محمد، ده شات أختي الصغيرة. فاهم حاجة؟
+      ar: يا محمد، هذه محادثة أختي الصغرى. هل تفهمها؟
+      en: Mohamed, this is my little sister's chat. Do you get it?
     - speaker: Mohamed
-      text: Betul, tetapi hati-hati! "Ahli" di sini bukan keluarga, melainkan orang yang pandai.
-      ar_eg: مظبوط، بس خلّي بالك! ahli هنا مش العيلة، دي معناها الشاطر الخبير.
-      ar: صحيح، لكن انتبهوا! ahli هنا لا تعني الأهل، بل الخبير الحاذق.
-      en: Right, but careful! "Ahli" here isn't family; it means someone skilled.
+      text: '"Elo di mana, sob? Gue cuman nunggu sepuluh menit lagi." Hmm, lumayan ngerti.'
+      ar_eg: '"إنت فين يا صاحبي؟ أنا هستنى عشر دقايق بس." أممم، فاهم نص نص.'
+      ar: '"أين أنت يا صاحبي؟ سأنتظر عشر دقائق فقط." حسنًا، أفهمها إلى حدّ ما.'
+      en: '"Where are you, mate? I''ll only wait ten more minutes." Hmm, I mostly get it.'
+    - speaker: Rina
+      text: Bagus! Elo = kamu, cuman = hanya. Temennya selalu telat.
+      ar_eg: برافو! elo يعني kamu، وcuman يعني hanya. وصاحبتها دايمًا بتتأخر.
+      ar: أحسنت! elo تعني kamu، وcuman تعني hanya. وصديقتها تتأخر دائمًا.
+      en: Nice! Elo = kamu, cuman = hanya. Her friend is always late.
+    - speaker: Mohamed
+      text: Terus "gini aja" sama "lagian"?
+      ar_eg: وطب "gini aja" و"lagian"؟
+      ar: وماذا عن "gini aja" و"lagian"؟
+      en: And "gini aja" and "lagian"?
+    - speaker: Rina
+      text: '"Begini saja" dan "lagi pula". Kayaknya kamu siap jadi anak Jakarta!'
+      ar_eg: يعني "begini saja" و"lagi pula". شكلك جاهز تبقى ابن جاكرتا!
+      ar: أي "begini saja" و"lagi pula". يبدو أنك مستعد لتصبح من أبناء جاكرتا!
+      en: '"Begini saja" and "lagi pula". Looks like you''re ready to be a Jakarta kid!'
+    - speaker: Mohamed
+      text: Tapi di kantor tetep bahasa baku, ya.
+      ar_eg: بس في الشغل برضه الفصيح.
+      ar: لكن في العمل تبقى اللغة المعيارية.
+      en: But at the office it's still standard Indonesian.
 new_words:
-  - word: bunyi
+  - word: elo
+    pos: pronoun
+    ar_eg: إنت (عامي، = kamu)
+    ar: أنت (عامية، = kamu)
+    en: you (slang for kamu)
+  - word: temen
     pos: noun
-    ar_eg: صوت
-    ar: صوت
-    en: sound
-  - word: berubah
+    ar_eg: صاحب (عامي، = teman)
+    ar: صديق (عامية، = teman)
+    en: friend (slang for teman)
+  - word: ngerti
     pos: verb
-    ar_eg: يتغيّر
-    ar: يتغيّر
-    en: to change
-  - word: mirip
-    pos: adjective
-    ar_eg: شبه
-    ar: يشبه
-    en: similar
-  - word: lafal
-    pos: noun
-    arabic: لفظ
-    ar_eg: نطق
-    ar: لفظ
-    en: pronunciation
+    ar_eg: فاهم (عامي، = mengerti)
+    ar: يفهم (عامية، = mengerti)
+    en: to understand (slang for mengerti)
+  - word: gini
+    pos: adverb
+    ar_eg: كده (عامي، = begini)
+    ar: هكذا (عامية، = begini)
+    en: like this (slang for begini)
+  - word: kayaknya
+    pos: adverb
+    ar_eg: شكله، باين (= sepertinya)
+    ar: يبدو (= sepertinya)
+    en: looks like, seems (slang for sepertinya)
+  - word: cuman
+    pos: adverb
+    ar_eg: بس (عامي، = hanya)
+    ar: فقط (عامية، = hanya)
+    en: only, just (slang for hanya)
+  - word: lagian
+    pos: conjunction
+    ar_eg: وبعدين، أصلًا (= lagi pula)
+    ar: علاوة على ذلك (= lagi pula)
+    en: besides, anyway (slang for lagi pula)
+  - word: sob
+    pos: interjection
+    ar_eg: يا صاحبي (من sobat)
+    ar: يا صاحبي (من sobat)
+    en: mate, bro (from sobat)
 review:
   status: draft
   verified: false

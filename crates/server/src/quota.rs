@@ -70,7 +70,7 @@ mod tests {
         assert_eq!(Service::Gemini.period(NOW), "2026-10-26");
         assert_eq!(Service::Tts.period(NOW), "2026-10");
         let limits = Limits::default();
-        assert_eq!(Service::Tts.limit(&limits), 450_000);
+        assert_eq!(Service::Tts.limit(&limits), 190_000);
         assert!(allows(449_990, 10, 450_000));
         assert!(!allows(449_990, 11, 450_000));
         assert!(!allows(u64::MAX, 1, u64::MAX - 1));

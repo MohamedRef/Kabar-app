@@ -145,14 +145,14 @@ why.arz = "…"                # shown after every pick
 | id | Level | Partner | Fits |
 |---|---|---|---|
 | `uu.friend` | J1 | Dimas, a friend your age | ngoko |
-| `uu.market` | J2 | Bu Siti, the older fruit seller at Pasar Gede | polite market speech (light krama with madya words) |
+| `uu.market` | J2 | Bu Siti, the older fruit seller at Pasar Beringharjo | polite market speech (light krama with madya words) |
 | `uu.grandmother` | J3 | Mbah Putri, Dimas's grandmother | krama; krama inggil for her, krama/andhap for you |
 | `uu.teacher` | J3 | Pak Harjo, your teacher | krama; krama inggil for him |
 | `uu.elder` | J3 | Pak Karto, an elderly neighbour | krama; krama inggil for him |
 
 `uu.grandmother` opens with "Have you eaten?" at three levels
 (*Kowe wis mangan? / Sampeyan sampun nedha? / Panjenengan sampun dhahar?*),
-the same sentence as lesson `j3.u01.l04` (Respect Meter).
+the same sentence as lesson `j3.u01.l11` (Respect Meter).
 
 ### Tone
 

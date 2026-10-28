@@ -1,195 +1,186 @@
 schema: kabar.lesson/v1
 id: bipa4.u09.l08
 language: id
-title: Ulangan Unit 9
+title: Eksposisi lingkungan
 can_do:
-  ar_eg: تناقش قانون بيئي وتدافع عن رأيك بالأسباب والنتايج.
-  ar: أن تناقش قانونًا بيئيًا وتدافع عن رأيك بالأسباب والنتائج.
-  en: Debate an environmental rule, backing your view with causes and effects.
+  ar_eg: تكتب مقال إكسبوزيسي قصير عن قانون بيئي بأسباب ونتايج وحل.
+  ar: أن تكتب نصًا عرضيًا قصيرًا عن قانون بيئي يتضمن أسبابًا ونتائج وحلًا.
+  en: Write a short exposition on an environmental rule, with causes, effects and a solution.
 slides:
-  - title: Meng-…-kan dan sebab-akibat
+  - title: Tesis, sebab-akibat, solusi
     body:
       ar_eg: |
-        افتكر:
-        meN-…-kan: الموضوع مفعول من غير tentang (membicarakan kebijakan)، والسببية (menyelamatkan، membersihkan)، والحاجة اللي بتتنقل (mengumpulkan dana).
-        السبب والنتيجة: karena، sehingga، Akibatnya, …، Oleh karena itu, …، berkat (حلو) / akibat (وحش).
+        مقالك عن البيئة يمشي كده:
+        الرأي: Saya berpendapat bahwa … wajib … (wajib = واجب، من العربي «واجب»).
+        الحجج بروابط السبب والنتيجة: karena، sehingga، Akibatnya, …
+        الحل: Solusinya, … / Oleh karena itu, kesadaran warga harus ditingkatkan (kesadaran = الوعي).
       ar: |
-        تذكّر:
-        meN-…-kan: الموضوع مفعول بلا tentang (membicarakan kebijakan)، والسببية (menyelamatkan، membersihkan)، والشيء المنقول (mengumpulkan dana).
-        السبب والنتيجة: karena، sehingga، Akibatnya, …، Oleh karena itu, …، berkat (جيد) / akibat (سيئ).
+        يسير مقالك عن البيئة هكذا:
+        الرأي: Saya berpendapat bahwa … wajib … (wajib = واجب، من العربية «واجب»).
+        الحجج بروابط السبب والنتيجة: karena، sehingga، Akibatnya, …
+        الحل: Solusinya, … / Oleh karena itu, kesadaran warga harus ditingkatkan (kesadaran = الوعي).
       en: |
-        Remember:
-        meN-…-kan: the topic as object, no tentang (membicarakan kebijakan); causative (menyelamatkan, membersihkan); the thing moved (mengumpulkan dana).
-        Cause and effect: karena, sehingga, Akibatnya, …, Oleh karena itu, …, berkat (good) / akibat (bad).
-    grammar: id.confix.men-kan
+        Your environmental essay runs like this:
+        Thesis: Saya berpendapat bahwa … wajib … (wajib = compulsory, from Arabic «واجب»).
+        Arguments with cause-effect links: karena, sehingga, Akibatnya, …
+        Solution: Solusinya, … / Oleh karena itu, kesadaran warga harus ditingkatkan (kesadaran = awareness).
+    grammar: id.conjunction.cause-effect
     examples:
-      - text: Kami membicarakan kebijakan baru tentang sampah.
-        ar_eg: إحنا اتناقشنا في السياسة الجديدة بتاعة الزبالة.
-        ar: ناقشنا السياسة الجديدة بشأن النفايات.
-        en: We discussed the new policy on rubbish.
-      - text: Akibat perubahan iklim, banyak karang memutih.
-        ar_eg: بسبب تغيّر المناخ، مرجان كتير ابيضّ.
-        ar: نتيجةً لتغيّر المناخ ابيضّ كثير من المرجان.
-        en: As a result of climate change, a lot of coral has turned white.
+      - text: Saya berpendapat bahwa larangan kantong plastik wajib diterapkan di semua kota.
+        ar_eg: رأيي إن منع الأكياس البلاستيك لازم يتطبّق في كل المدن.
+        ar: أرى أنّ حظر الأكياس البلاستيكية يجب أن يُطبَّق في كل المدن.
+        en: I believe the plastic-bag ban must be applied in every city.
+      - text: Oleh karena itu, kesadaran warga harus ditingkatkan.
+        ar_eg: عشان كده، لازم وعي الناس يزيد.
+        ar: لذلك يجب رفع وعي السكان.
+        en: Therefore, residents' awareness must be raised.
 exercises:
   - id: e01
+    type: listen
+    text: Kesadaran warga tentang sampah plastik masih rendah.
+    options: ["Kesadaran warga tentang sampah plastik sudah tinggi.", "Kesadaran warga tentang sampah plastik masih rendah.", "Kesadaran wisatawan tentang sampah plastik masih rendah."]
+    answer: 1
+    meaning:
+      ar_eg: وعي الناس بزبالة البلاستيك لسه قليل.
+      ar: ما زال وعي السكان بنفايات البلاستيك منخفضًا.
+      en: Residents' awareness of plastic waste is still low.
+    words: [kesadaran]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تنفع حل في آخر المقال؟
+      ar: أيّ جملة تصلح حلًا في آخر المقال؟
+      en: Which sentence works as the solution at the end of the essay?
+    options: ["Solusinya, kita membawa tas belanja sendiri.", "Solusinya, kita membeli lebih banyak kantong plastik.", "Solusinya, kita membuang sampah ke laut."]
+    answer: 0
+    words: [solusi]
+    explain:
+      ar_eg: "الحل المنطقي: نجيب شنط التسوّق بتاعتنا. شراء أكياس أكتر أو رمي الزبالة في البحر بيزوّدوا المشكلة."
+      ar: "الحل المعقول: نحمل أكياس التسوق الخاصة بنا، أما شراء أكياس أكثر أو رمي القمامة في البحر فيزيد المشكلة."
+      en: The sensible solution is bringing our own shopping bags. Buying more bags or dumping rubbish at sea makes it worse.
+  - id: e03
     type: match_pairs
     pairs:
-      - text: larangan
-        ar_eg: منع
-        ar: حظر
-        en: ban
+      - text: kesadaran
+        ar_eg: وعي
+        ar: وعي
+        en: awareness
+      - text: wajib
+        ar_eg: واجب / إجباري
+        ar: واجب، إلزامي
+        en: compulsory
+      - text: solusi
+        ar_eg: حل
+        ar: حل
+        en: solution
       - text: kebijakan
         ar_eg: سياسة
         ar: سياسة
         en: policy
-      - text: iklim
-        ar_eg: مناخ
-        ar: مناخ
-        en: climate
-      - text: mata pencaharian
-        ar_eg: مصدر الرزق
-        ar: مصدر الرزق
-        en: livelihood
-      - text: penyelam
-        ar_eg: غطّاس
-        ar: غوّاص
-        en: diver
-    words: [larangan, kebijakan, iklim, mata pencaharian, penyelam]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ جملة صحيحة؟
-      en: Which sentence is correct?
-    options: ["Kami membicarakan kebijakan itu.", "Kami membicarakan tentang kebijakan itu.", "Kami berbicara kebijakan itu."]
-    answer: 0
-    explain:
-      ar_eg: membicarakan بياخد المفعول على طول، من غير tentang.
-      ar: membicarakan يأخذ المفعول مباشرة بلا tentang.
-      en: membicarakan takes its object directly, without tentang.
-    words: [kebijakan]
-  - id: e03
-    type: multiple_choice
-    question: ___ perubahan iklim, banyak karang memutih.
-    question_meaning:
-      ar_eg: بسبب تغيّر المناخ، مرجان كتير ابيضّ. أنهي كلمة؟
-      ar: نتيجةً لتغيّر المناخ ابيضّ كثير من المرجان. أيّ كلمة تناسب؟
-      en: As a result of climate change, a lot of coral has turned white. Which word fits?
-    options: [Berkat, Akibat, Sehingga]
-    answer: 1
-    explain:
-      ar_eg: النتيجة وحشة، يبقى akibat مش berkat. وsehingga مابتجيش في أول الجملة.
-      ar: النتيجة سيئة فنستعمل akibat لا berkat، وsehingga لا تأتي في أول الجملة.
-      en: The result is bad, so akibat, not berkat; sehingga can't open a sentence.
-    words: [iklim]
+      - text: menerapkan
+        ar_eg: يطبّق
+        ar: يطبّق
+        en: to implement
+    words: [kesadaran, wajib, solusi, kebijakan, menerapkan]
   - id: e04
-    type: listen
-    text: Taman laut ini mengumpulkan dana untuk menyelamatkan terumbu karang.
-    options: ["Taman laut ini mengumpulkan sampah untuk menyelamatkan terumbu karang.", "Taman laut ini membutuhkan dana untuk menyelamatkan terumbu karang.", "Taman laut ini mengumpulkan dana untuk menyelamatkan terumbu karang."]
-    answer: 2
+    type: fill_blank
+    sentence: Setiap toko ___ menerapkan larangan ini.
     meaning:
-      ar_eg: المحمية البحرية دي بتجمع فلوس عشان تنقذ الشعاب المرجانية.
-      ar: تجمع هذه المحمية البحرية الأموال لإنقاذ الشعاب المرجانية.
-      en: This marine park raises funds to save the coral reefs.
-    words: [taman laut, mengumpulkan, dana, menyelamatkan]
+      ar_eg: كل محل لازم يطبّق المنع ده.
+      ar: يجب على كل متجر أن يطبّق هذا الحظر.
+      en: Every shop must apply this ban.
+    options: [solusi, wajib, kesadaran]
+    answers: [wajib]
+    words: [wajib, menerapkan]
+    explain:
+      ar_eg: wajib = لازم أو مفروض، وقبل الفعل menerapkan. solusi = حل، وkesadaran = وعي، ودول أسماء.
+      ar: wajib = واجب، وتأتي قبل الفعل menerapkan. أما solusi فالحل، وkesadaran الوعي، وهما اسمان.
+      en: wajib means must, before the verb menerapkan. solusi (solution) and kesadaran (awareness) are nouns.
   - id: e05
-    type: listen
-    text: Plastik sekali pakai sulit didaur ulang sehingga banyak yang masuk ke laut.
-    options: ["Plastik sekali pakai sulit didaur ulang sehingga banyak yang masuk ke laut.", "Plastik sekali pakai mudah didaur ulang sehingga sedikit yang masuk ke laut.", "Plastik sekali pakai sulit didaur ulang karena banyak yang masuk ke laut."]
-    answer: 0
-    meaning:
-      ar_eg: البلاستيك اللي بيتستعمل مرة واحدة صعب يتعاد تدويره، فكتير منه بيوصل للبحر.
-      ar: يصعب إعادة تدوير البلاستيك أحادي الاستخدام، فيصل كثير منه إلى البحر.
-      en: Single-use plastic is hard to recycle, so a lot of it ends up in the sea.
-    words: [sekali pakai, mendaur ulang]
-  - id: e06
-    type: fill_blank
-    sentence: Pemerintah kota sudah ___ larangan kantong plastik.
-    meaning:
-      ar_eg: حكومة المدينة طبّقت خلاص منع الأكياس البلاستيك.
-      ar: طبّقت حكومة المدينة حظر الأكياس البلاستيكية.
-      en: The city government has already brought in a plastic-bag ban.
-    options: [mengumpulkan, menerapkan, menyelamatkan]
-    answers: [menerapkan]
-    words: [menerapkan, larangan, kantong plastik]
-  - id: e07
-    type: fill_blank
-    sentence: Suhu laut naik. ___, karang di Bunaken memutih.
-    meaning:
-      ar_eg: (اكتب رابط) حرارة البحر علت. والنتيجة إن المرجان في بوناكين ابيضّ.
-      ar: (اكتب رابطًا) ارتفعت حرارة البحر، ونتيجة لذلك ابيضّ المرجان في بوناكن.
-      en: (Type a connector.) The sea temperature rose. As a result, the coral at Bunaken turned white.
-    answers: [Akibatnya, Oleh karena itu, Karena itu, Oleh sebab itu, Dampaknya]
-    words: [suhu]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: لازم نوزن المكسب والخسارة بتاعة السياسة دي.
-      ar: يجب أن نزن مكاسب هذه السياسة وخسائرها.
-      en: We must weigh the pros and cons of this policy.
-    answer: Kita harus menimbang untung-rugi kebijakan ini.
-    distractors: [tentang, berkat]
-    words: [untung-rugi, kebijakan]
-  - id: e09
+      ar_eg: عشان كده، لازم وعي الناس يزيد.
+      ar: لذلك يجب رفع وعي السكان.
+      en: Therefore, residents' awareness must be raised.
+    answer: Oleh karena itu, kesadaran warga harus ditingkatkan.
+    distractors: [berkat, meningkatkan]
+    words: [kesadaran]
+    explain:
+      ar_eg: oleh karena itu = عشان كده، وditingkatkan = يتزوّد (مجهول). berkat = بفضل، وmeningkatkan معلوم مش مجهول.
+      ar: oleh karena itu = لذلك، وditingkatkan = يُرفع (مجهول). أما berkat فبفضل، وmeningkatkan معلوم لا مجهول.
+      en: oleh karena itu means "therefore", and ditingkatkan is passive, "be raised". berkat is "thanks to", and meningkatkan is active.
+  - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: بفضل المنع ده، البحر بقى أنضف.
-      ar: بفضل ذلك الحظر صار البحر أنظف.
-      en: Thanks to the ban, the sea is cleaner.
+      ar_eg: أحسن حل إننا نقلّل البلاستيك اللي بيتستعمل مرة واحدة.
+      ar: أفضل حل هو تقليل البلاستيك أحادي الاستخدام.
+      en: The best solution is to reduce single-use plastic.
     answers:
-      - Berkat larangan itu, laut lebih bersih.
-      - Berkat larangan itu, laut lebih bersih
-      - Berkat larangan itu, laut menjadi lebih bersih.
-      - Berkat larangan ini, laut menjadi lebih bersih.
-      - Berkat larangan itu, lautnya lebih bersih.
-      - Berkat larangan tersebut, laut lebih bersih.
-      - Berkat larangan itu, laut sudah lebih bersih.
-    words: [larangan]
-  - id: e10
-    type: speaking
-    text: Saya berpendapat bahwa kebijakan ini wajib diterapkan, karena kesadaran warga masih rendah.
+      - Solusi terbaik adalah mengurangi plastik sekali pakai.
+      - Solusi terbaik adalah mengurangi plastik sekali pakai
+      - Solusi yang terbaik adalah mengurangi plastik sekali pakai.
+      - Solusi terbaik ialah mengurangi plastik sekali pakai.
+      - Solusi terbaik adalah mengurangi penggunaan plastik sekali pakai.
+      - Solusi paling baik adalah mengurangi plastik sekali pakai.
+      - Solusi terbaik adalah mengurangi plastik banget pakai.
+      - Solusi terbaik adalah mengurangi plastik banget pakai
+    words: [solusi, sekali pakai]
+  - id: e07
+    type: dictation
+    text: Larangan ini wajib diterapkan di semua kota.
     meaning:
-      ar_eg: رأيي إن السياسة دي لازم تتطبّق، عشان وعي الناس لسه قليل.
-      ar: أرى أنّ هذه السياسة يجب أن تُطبَّق، لأن وعي السكان ما زال منخفضًا.
-      en: I believe this policy must be applied, because residents' awareness is still low.
-    words: [wajib, kesadaran, kebijakan]
+      ar_eg: المنع ده لازم يتطبّق في كل المدن.
+      ar: يجب تطبيق هذا الحظر في كل المدن.
+      en: This ban must be applied in every city.
+    words: [wajib, larangan]
+  - id: e08
+    type: speaking
+    text: Saya berpendapat bahwa kesadaran warga adalah solusi terbaik.
+    meaning:
+      ar_eg: رأيي إن وعي الناس هو أحسن حل.
+      ar: أرى أنّ وعي السكان هو أفضل حل.
+      en: I believe residents' awareness is the best solution.
+    words: [kesadaran, solusi]
 dialogue:
-  title: Debat di dermaga Bunaken
+  title: Esai untuk Bu Grace
   lines:
-    - speaker: Pak Johan
-      text: Larangan memancing di kawasan ini merugikan nelayan.
-      ar_eg: منع الصيد في المنطقة دي بيضرّ الصيادين.
-      ar: حظر الصيد في هذه المنطقة يضرّ الصيادين.
-      en: The fishing ban in this area hurts fishermen.
+    - speaker: Bu Grace
+      text: Apa tesismu, Mohamed?
+      ar_eg: إيه رأيك الأساسي يا محمد؟
+      ar: ما أطروحتك يا محمد؟
+      en: What's your thesis, Mohamed?
     - speaker: Mohamed
-      text: Saya mengerti, Pak. Tetapi berkat larangan itu, ikan di Bunaken bertambah banyak.
-      ar_eg: فاهم يا عم. بس بفضل المنع ده، السمك في بوناكين زاد.
-      ar: أفهم يا سيدي، لكن بفضل ذلك الحظر ازداد السمك في بوناكن.
-      en: I understand, sir. But thanks to that ban, there are more fish at Bunaken.
-    - speaker: Pak Johan
-      text: Lalu, bagaimana dengan mata pencaharian kami?
-      ar_eg: طب وأكل عيشنا؟
-      ar: وماذا عن مصدر رزقنا؟
-      en: Then what about our livelihood?
+      text: Saya berpendapat bahwa larangan kantong plastik wajib ada di Manado.
+      ar_eg: رأيي إن منع الأكياس البلاستيك لازم يبقى موجود في مانادو.
+      ar: أرى أن منع الأكياس البلاستيكية واجب في مانادو.
+      en: I believe Manado must have a plastic-bag ban.
+    - speaker: Bu Grace
+      text: Apa argumenmu?
+      ar_eg: وإيه حجتك؟
+      ar: وما حجتك؟
+      en: What's your argument?
     - speaker: Mohamed
-      text: Dana dari penyelam bisa digunakan untuk membuka lapangan kerja baru bagi nelayan.
-      ar_eg: الفلوس اللي جاية من الغطاسين ممكن تتصرف على فرص شغل جديدة للصيادين.
-      ar: يمكن استخدام أموال الغواصين لتوفير فرص عمل جديدة للصيادين.
-      en: The divers' fees can be used to create new jobs for fishermen.
-    - speaker: Pak Johan
-      text: Hmm, itu solusi yang masuk akal.
-      ar_eg: همم، ده حل معقول.
-      ar: همم، هذا حل معقول.
-      en: Hmm, that's a sensible solution.
-souvenir:
-  id: bipa4.u09.souvenir
-  title: Dinding karang Bunaken
-  note:
-    ar_eg: في بوناكين، قدام مانادو، الشعاب المرجانية نازلة زي الحيطة في عمق البحر، مليانة سمك ملوّن وسلاحف. المحمية بتصرف على نفسها جزئيًا من رسوم دخول الغطاسين، يعني كل غطّاس بيساهم في حمايتها. وفي إندونيسيا، منع الأكياس البلاستيك بيتنشر مدينة ورا مدينة، ومع كل شنطة قماش بتشيلها إنت كمان بتساعد.
-    ar: في بوناكن، قبالة مانادو، تنحدر الشعاب المرجانية كالجدران نحو أعماق البحر، عامرة بالأسماك الملونة والسلاحف. وتموّل المحمية نفسها جزئيًا من رسوم دخول الغواصين، فكل غوّاص يسهم في حمايتها. وفي إندونيسيا ينتشر حظر الأكياس البلاستيكية مدينةً بعد مدينة، وكل حقيبة قماش تحملها تساعد أنت أيضًا.
-    en: At Bunaken, off Manado, coral walls drop steeply into the deep, full of colourful fish and turtles. The park pays its way partly through divers' entrance fees, so every diver helps protect it. Across Indonesia, plastic-bag bans are spreading city by city, and every cloth bag you carry helps too.
+      text: Plastik merusak terumbu karang. Akibatnya, ikan dan wisatawan jadi sedikit.
+      ar_eg: البلاستيك بيبوّظ الشعاب المرجانية. والنتيجة إن السمك والسياح بيقلّوا.
+      ar: البلاستيك يدمّر الشعاب المرجانية، فيقلّ السمك والسياح.
+      en: Plastic damages the coral reefs. As a result, there are fewer fish and fewer tourists.
+    - speaker: Bu Grace
+      text: Bagus. Dan solusinya?
+      ar_eg: حلو. والحل؟
+      ar: جيد. وما الحل؟
+      en: Good. And the solution?
+    - speaker: Mohamed
+      text: Kita harus meningkatkan kesadaran warga dan membawa tas belanja sendiri.
+      ar_eg: لازم نزوّد وعي الناس ونجيب شنط التسوّق بتاعتنا معانا.
+      ar: يجب أن نرفع وعي السكان وأن نحمل أكياس التسوّق الخاصة بنا.
+      en: We need to raise residents' awareness and bring our own shopping bags.
+new_words:
+  - word: kesadaran
+    pos: noun
+    ar_eg: وعي
+    ar: وعي
+    en: awareness
 review:
   status: draft
   verified: false

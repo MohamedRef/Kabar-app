@@ -1,0 +1,268 @@
+schema: kabar.lesson/v1
+id: j1.u07.l07
+language: jv
+title: Rong ewu, telung atus
+can_do:
+  ar_eg: تقول الأسعار صح (rong ewu، telung atus، limang puluh)، وتشتري بنطلون قديم بالمصروف اللي فاضل.
+  ar: أن تقول الأسعار صحيحة (rong ewu، telung atus، limang puluh)، وتشتري بنطالًا مستعملًا بما بقي من مصروفك.
+  en: Say prices the right way (rong ewu, telung atus, limang puluh) and buy second-hand trousers with the pocket money you have left.
+slides:
+  - title: Loro → rong
+    body:
+      ar_eg: |
+        قبل ewu وatus وpuluh وkilo، الرقم بياخد -ng:
+        - loro → **rong**: rong ewu = ٢٠٠٠ · telu → **telung**: telung atus = ٣٠٠
+        - papat → **patang**: patang puluh = ٤٠ · lima → **limang**: limang kilo = ٥ كيلو
+        وبرضه: nem، pitung، wolung، sangang (هتسمعهم في السوق).
+      ar: |
+        قبل ewu وatus وpuluh وkilo يأخذ العدد -ng:
+        - loro → **rong**: rong ewu = ٢٠٠٠ · telu → **telung**: telung atus = ٣٠٠
+        - papat → **patang**: patang puluh = ٤٠ · lima → **limang**: limang kilo = ٥ كيلو
+        وكذلك: nem وpitung وwolung وsangang (ستسمعها في السوق).
+      en: |
+        Before ewu, atus, puluh and kilo, numbers take -ng:
+        - loro → **rong**: rong ewu = 2,000 · telu → **telung**: telung atus = 300
+        - papat → **patang**: patang puluh = 40 · lima → **limang**: limang kilo = 5 kg
+        Also: nem, pitung, wolung, sangang (you'll hear them at the market).
+    examples:
+      - text: Rong ewu, Mas.
+        ar_eg: ألفين يا ماس.
+        ar: ألفان يا أخي.
+        en: Two thousand, Mas.
+      - text: Telung atus ewu? Larang!
+        ar_eg: تلتميت ألف؟ غالي!
+        ar: ثلاثمئة ألف؟ غالٍ!
+        en: Three hundred thousand? Pricey!
+  - title: Neng Klithikan
+    body:
+      ar_eg: |
+        - **lawas** = قديم / مستعمل، للحاجات (lama / bekas): klambi lawas.
+        - **kathok** = بنطلون (celana).
+        - **sangu** = مصروف (uang saku).
+        - **kari** = فاضل / باقي (tinggal): Dhuwitku kari rong ewu = فاضل معايا ألفين.
+      ar: |
+        - **lawas** = قديم / مستعمل، للأشياء (lama / bekas): klambi lawas.
+        - **kathok** = بنطال (celana).
+        - **sangu** = مصروف الجيب (uang saku).
+        - **kari** = باقٍ (tinggal): Dhuwitku kari rong ewu = بقي معي ألفان.
+      en: |
+        - **lawas** = old, second-hand, of things (lama / bekas): klambi lawas.
+        - **kathok** = trousers (celana).
+        - **sangu** = pocket money (uang saku).
+        - **kari** = left, remaining (tinggal): Dhuwitku kari rong ewu = I've only got two thousand left.
+    examples:
+      - text: Kathok lawas iki isih apik.
+        ar_eg: البنطلون القديم ده لسه كويس.
+        ar: هذا البنطال المستعمل ما زال جيدًا.
+        en: These old trousers are still good.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: rong ewu
+        ar_eg: ٢٠٠٠
+        ar: ٢٠٠٠
+        en: 2,000
+      - text: telung atus
+        ar_eg: ٣٠٠
+        ar: ٣٠٠
+        en: '300'
+      - text: patang puluh
+        ar_eg: ٤٠
+        ar: ٤٠
+        en: '40'
+      - text: limang kilo
+        ar_eg: ٥ كيلو
+        ar: ٥ كيلوغرامات
+        en: 5 kg
+    words: [rong, telung, patang, limang]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kathok
+        ar_eg: بنطلون
+        ar: بنطال
+        en: trousers
+      - text: lawas
+        ar_eg: قديم / مستعمل
+        ar: قديم / مستعمل
+        en: old, second-hand
+      - text: sangu
+        ar_eg: مصروف
+        ar: مصروف الجيب
+        en: pocket money
+      - text: kari
+        ar_eg: فاضل
+        ar: باقٍ
+        en: left, remaining
+    words: [kathok, lawas, sangu, kari]
+  - id: e03
+    type: listen
+    text: Kathok lawas iki rong puluh ewu.
+    question:
+      ar_eg: البنطلون بكام؟
+      ar: بكم البنطال؟
+      en: How much are the trousers?
+    options: [البنطلون القديم ده بعشرين ألف, البنطلون الجديد ده بعشرين ألف, البنطلون ده بألفين]
+    answer: 0
+    meaning:
+      ar_eg: البنطلون القديم ده بعشرين ألف.
+      ar: هذا البنطال المستعمل بعشرين ألفًا.
+      en: These old trousers are twenty thousand.
+    words: [kathok, lawas, rong]
+  - id: e04
+    type: fill_blank
+    sentence: Dhuwitku ___ telung ewu.
+    meaning:
+      ar_eg: فلوسي ___ تلات آلاف.
+      ar: مالي ___ ثلاثة آلاف.
+      en: I've ___ three thousand.
+    options: [kari, sangu, lawas]
+    answers: [kari]
+    words: [kari, sangu, lawas, telung]
+    explain:
+      ar_eg: "kari = فاضل: فاضل معايا تلات تلاف. sangu = مصروف، وlawas = قديم."
+      ar: "kari = بقي: بقي معي ثلاثة آلاف؛ أما sangu فمصروف، وlawas قديم."
+      en: "kari = left: I've got three thousand left. sangu = pocket money, lawas = old."
+  - id: e05
+    type: fill_blank
+    sentence: Tas iki regane ___ puluh ewu.
+    meaning:
+      ar_eg: الشنطة دي بـ ___ ين ألف.
+      ar: هذه الحقيبة بـ ___ ين ألفًا.
+      en: This bag costs ___ thousand.
+    options: [patang, papat, telu]
+    answers: [patang]
+    words: [patang, telung]
+    explain:
+      ar_eg: قبل puluh بنستعمل الصيغة الموصولة patang (من papat). papat لوحدها مينفعش قبل puluh، وtelu = تلاتة (هتبقى telung).
+      ar: قبل puluh تُستعمل صيغة الوصل patang (من papat)؛ أما papat فلا تأتي وحدها قبل puluh، وtelu تصير telung.
+      en: Before puluh use the linking form patang (from papat). Plain papat can't go before puluh, and telu would be telung.
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «خمس آلاف» بالجاوي؟
+      ar: كيف تقول «خمسة آلاف» بالجاوية؟
+      en: '"Five thousand" in Javanese?'
+    options: [limang ewu, lima ewu, limang atus]
+    answer: 0
+    explain:
+      ar_eg: قبل ewu الرقم lima بيبقى limang. وlimang atus = خمسمية.
+      ar: قبل ewu يصير lima إلى limang، أما limang atus فخمسمئة.
+      en: Before ewu, lima becomes limang. limang atus = 500.
+    words: [limang]
+  - id: e07
+    type: multiple_choice
+    question: Sanguku kari sewu.
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [مصروفي فاضل منه ألف, مصروفي ألف كل يوم, معايا ألف زيادة]
+    answer: 0
+    explain:
+      ar_eg: sangu = مصروف، وkari = فاضل.
+      ar: sangu = مصروف الجيب، وkari = باقٍ.
+      en: sangu = pocket money, kari = left.
+    words: [sangu, kari]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: البنطلون القديم ده بتلاتين ألف.
+      ar: هذا البنطال المستعمل بثلاثين ألفًا.
+      en: These old trousers are thirty thousand.
+    answer: Kathok lawas iki telung puluh ewu.
+    distractors: [rong, kari]
+    words: [kathok, lawas, telung]
+    explain:
+      ar_eg: telung puluh = تلاتين، وkathok lawas = بنطلون قديم. rong = اتنين (الصيغة الموصولة)، وkari = فاضل، ومش في المعنى.
+      ar: telung puluh = ثلاثون، وkathok lawas = بنطال قديم؛ أما rong فصيغة وصل لاثنين، وkari بقي، وليسا في المعنى.
+      en: telung puluh = thirty, kathok lawas = old trousers. rong (two, linking form) and kari (left) aren't in the meaning.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Rong kathok limang puluh ewu, piye?
+    answers_meaning:
+      ar_eg: [بنطلونين بخمسين ألف، ينفع؟, اتنين بنطلون بخمسين ألف، ماشي؟]
+      ar: [بنطالان بخمسين ألفًا، هل يجوز؟, بنطالان بخمسين ألفًا، موافق؟]
+      en: ['Two pairs of trousers for fifty thousand, OK?', 'Two trousers for fifty thousand, all right?']
+    words: [rong, kathok, limang]
+  - id: e10
+    type: speaking
+    text: Sanguku kari patang ewu.
+    meaning:
+      ar_eg: مصروفي فاضل منه أربع آلاف.
+      ar: بقي من مصروفي أربعة آلاف.
+      en: I've only got four thousand pocket money left.
+    words: [sangu, kari, patang]
+dialogue:
+  lines:
+    - speaker: Bakul
+      text: Monggo, Mas! Kathok lawas, isih apik.
+      ar_eg: اتفضل يا ماس! بناطيل قديمة، لسه كويسة.
+      ar: تفضّل يا أخي! بناطيل مستعملة، ما زالت جيدة.
+      en: Come and look, Mas! Second-hand trousers, still good.
+    - speaker: Mohamed
+      text: Pira, Pak?
+      ar_eg: بكام يا عم؟
+      ar: بكم يا عم؟
+      en: How much, sir?
+    - speaker: Bakul
+      text: Sing iki telung puluh ewu, sing kuwi patang puluh.
+      ar_eg: ده بتلاتين ألف، وده بأربعين.
+      ar: هذا بثلاثين ألفًا، وذاك بأربعين.
+      en: This one's thirty thousand, that one forty.
+    - speaker: Mohamed
+      text: Waduh, sanguku kari limang puluh ewu. Rong kathok limang puluh, piye?
+      ar_eg: يا ساتر، مصروفي فاضل منه خمسين ألف. بنطلونين بخمسين، إيه رأيك؟
+      ar: يا إلهي، بقي من مصروفي خمسون ألفًا. بنطالان بخمسين، ما رأيك؟
+      en: Ouch, I've only got fifty thousand left. Two pairs for fifty, how about it?
+    - speaker: Bakul
+      text: Ya wis. Laris, laris!
+      ar_eg: خلاص. ربنا يرزق!
+      ar: حسنًا. بارك الله في البيع!
+      en: All right. Business is good!
+new_words:
+  - word: rong
+    pos: number
+    ar_eg: اتنين قبل ewu / atus / puluh (من loro)
+    ar: اثنان قبل ewu / atus / puluh (من loro)
+    en: two before ewu / atus / puluh (from loro)
+  - word: telung
+    pos: number
+    ar_eg: تلاتة قبل ewu / atus / puluh (من telu)
+    ar: ثلاثة قبل ewu / atus / puluh (من telu)
+    en: three before ewu / atus / puluh (from telu)
+  - word: patang
+    pos: number
+    ar_eg: أربعة قبل ewu / atus / puluh (من papat)
+    ar: أربعة قبل ewu / atus / puluh (من papat)
+    en: four before ewu / atus / puluh (from papat)
+  - word: limang
+    pos: number
+    ar_eg: خمسة قبل ewu / atus / puluh (من lima)
+    ar: خمسة قبل ewu / atus / puluh (من lima)
+    en: five before ewu / atus / puluh (from lima)
+  - word: kathok
+    pos: noun
+    ar_eg: بنطلون (celana)
+    ar: بنطال (celana)
+    en: trousers (celana)
+  - word: lawas
+    pos: adjective
+    ar_eg: قديم / مستعمل، للحاجات (lama, bekas)
+    ar: قديم / مستعمل، للأشياء (lama, bekas)
+    en: old, second-hand, of things (lama, bekas)
+  - word: sangu
+    pos: noun
+    ar_eg: مصروف (uang saku)
+    ar: مصروف الجيب (uang saku)
+    en: pocket money (uang saku)
+  - word: kari
+    pos: verb
+    ar_eg: فاضل / باقي (tinggal)
+    ar: باقٍ (tinggal)
+    en: left, remaining (tinggal)
+review:
+  status: draft
+  verified: false

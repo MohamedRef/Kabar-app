@@ -1,160 +1,260 @@
 schema: kabar.lesson/v1
 id: bipa7.u03.l09
 language: id
-title: Mendongeng untuk anak
+title: Watak tokoh
 can_do:
-  ar_eg: تحكي حكاية لأطفال بصوت الشخصيات وتخلّيهم متشوّقين للآخر.
-  ar: أن تحكي حكاية للأطفال بأصوات الشخصيات وتُبقيهم متشوّقين حتى النهاية.
-  en: Tell a story to children in the characters' voices and keep them hooked to the end.
+  ar_eg: 'تحلّل شخصيات حكاية: مين البطل ومين الشرير وإيه العبرة.'
+  ar: 'أن تحلّل شخصيات حكاية: من البطل ومن الخصم وما العبرة.'
+  en: 'Analyse a tale''s characters: who is the hero, who the villain, and what the lesson is.'
 slides:
-  - title: Suara buaya, suara kancil
+  - title: Menganalisis cerita rakyat
     body:
       ar_eg: |
-        علشان العيال يفضلوا penasaran (عايزين يعرفوا اللي جاي):
-        1. menirukan (قلّد) صوت كل شخصية: التمساح صوته تخين وبطيء، والكانشيل سريع ورفيع.
-        2. اسأل: Menurut kalian, apa yang terjadi selanjutnya? (تفتكروا إيه اللي هيحصل؟)
-        3. اسكت ثانية قبل الـ klimaks.
-        4. في الآخر: Apa pesan moralnya, anak-anak?
+        protagonis = البطل الطيب. antagonis = الشخصية اللي بتعاديه.
+        الأنتاجونيست غالبًا tamak (طمّاع) أو dengki (حسود وحقود).
+        perangai = الطبع، اللي بيبان في التصرّفات (perangainya kasar).
+        balas budi = يردّ الجميل، وفي حكايات كتير حيوان بيردّ الجميل لحد أنقذه.
+        budi pekerti = الأخلاق الحلوة، والمدارس بتدرّسها.
+        hikmah = الحكمة أو العبرة، وكلمة عربية الأصل: Apa hikmah cerita ini?
+        - في الكلام: terus = lalu، buat = untuk.
       ar: |
-        ليبقى الأطفال penasaran (متشوّقين لما سيأتي):
-        ١. menirukan (قلِّد) صوت كلّ شخصية: التمساح غليظ الصوت بطيء، والكانشيل سريع رفيع الصوت.
-        ٢. اسأل: Menurut kalian, apa yang terjadi selanjutnya? (ماذا تظنّون سيحدث؟)
-        ٣. توقّف لحظة قبل الـ klimaks.
-        ٤. وفي الختام: Apa pesan moralnya, anak-anak?
+        protagonis = البطل الخيّر. antagonis = الشخصية المعادية له.
+        وكثيرًا ما يكون الخصم tamak (طمّاعًا) أو dengki (حسودًا حاقدًا).
+        perangai = الطبع الظاهر في السلوك (perangainya kasar).
+        balas budi = ردّ الجميل، وفي حكايات كثيرة يردّ حيوان الجميل لمن أنقذه.
+        budi pekerti = حسن الخلق، وتعلّمه المدارس.
+        hikmah = الحكمة أو العبرة، وهي عربية الأصل: Apa hikmah cerita ini?
+        - في الكلام اليومي: terus = lalu، buat = untuk.
       en: |
-        To keep children penasaran (curious, eager to know what's next):
-        1. Menirukan (imitate) each character's voice: the crocodile deep and slow, Kancil quick and high.
-        2. Ask: Menurut kalian, apa yang terjadi selanjutnya? (What do you think happens next?)
-        3. Pause a moment before the klimaks.
-        4. At the end: Apa pesan moralnya, anak-anak?
+        protagonis = the good main character. antagonis = the character who opposes them.
+        The antagonist is often tamak (greedy) or dengki (spiteful, envious).
+        perangai = temperament, the way someone behaves (perangainya kasar).
+        balas budi = to repay a kindness; in many tales an animal repays the person who saved it.
+        budi pekerti = good character, taught in schools.
+        hikmah = wisdom or the lesson to take away, from Arabic: Apa hikmah cerita ini?
+        - In speech: terus = lalu, buat = untuk.
+    examples:
+      - text: Bawang Putih adalah protagonis yang sabar.
+        ar_eg: باوانج بوتيه هي البطلة الصبورة.
+        ar: باوانغ بوتيه هي البطلة الصبورة.
+        en: Bawang Putih is the patient protagonist.
+      - text: Ibu tiri yang dengki menjadi antagonis.
+        ar_eg: مرات الأب الحقودة هي الشريرة.
+        ar: زوجة الأب الحاسدة هي الخصم.
+        en: The spiteful stepmother is the antagonist.
+      - text: Burung itu datang untuk balas budi.
+        ar_eg: العصفور ده جه يردّ الجميل.
+        ar: جاء ذلك الطائر ليردّ الجميل.
+        en: The bird came to repay the kindness.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: لو الأطفال «penasaran»، يبقى حاسّين بإيه؟
-      ar: إن كان الأطفال «penasaran»، فبمَ يشعرون؟
-      en: If the children are "penasaran", how do they feel?
-    options:
-      - زهقانين.
-      - عايزين يعرفوا اللي هيحصل.
-      - خايفين ينامو.
-    answer: 1
-    words: [penasaran]
+    type: match_pairs
+    pairs:
+      - text: protagonis
+        ar_eg: البطل (الشخصية الطيبة)
+        ar: الشخصية الرئيسية، البطل
+        en: protagonist
+      - text: antagonis
+        ar_eg: الشرير (الشخصية المعادية)
+        ar: الشخصية المعادية
+        en: antagonist
+      - text: tamak
+        ar_eg: طمّاع
+        ar: طمّاع
+        en: greedy
+      - text: dengki
+        ar_eg: حقود / حسود
+        ar: حسود، حاقد
+        en: spiteful, envious
+    words: [protagonis, antagonis, tamak, dengki]
   - id: e02
-    type: listen
-    text: Mama Ruth menirukan suara buaya yang berat dan pelan.
-    question:
-      ar_eg: ماما روث بتعمل إيه؟
-      ar: ماذا تفعل ماما روث؟
-      en: What is Mama Ruth doing?
-    options:
-      - بتقلّد صوت التمساح التخين والبطيء.
-      - بتغنّي أغنية.
-      - بتنادي على التمساح.
-    answer: 0
-    words: [menirukan]
+    type: match_pairs
+    pairs:
+      - text: perangai
+        ar_eg: طبع / أخلاق
+        ar: طبع، سلوك
+        en: temperament, behaviour
+      - text: balas budi
+        ar_eg: يردّ الجميل
+        ar: يردّ الجميل
+        en: to repay a kindness
+      - text: budi pekerti
+        ar_eg: أخلاق وأدب
+        ar: حُسن الخلق
+        en: good character, morals
+      - text: hikmah
+        ar_eg: حكمة / عبرة
+        ar: حكمة، عِبرة
+        en: wisdom, lesson to draw
+    words: [perangai, balas budi, budi pekerti, hikmah]
   - id: e03
-    type: fill_blank
-    sentence: Anak-anak sangat ___ dan terus bertanya, "Lalu bagaimana?"
+    type: listen
+    text: 'Hikmah cerita ini: orang yang tamak akan rugi sendiri.'
+    question:
+      ar_eg: إيه عبرة الحكاية؟
+      ar: ما عبرة الحكاية؟
+      en: What's the lesson?
+    options: [الطمّاع بيخسر, الحسود بيكسب, الكبار بيزعلوا]
+    answer: 0
     meaning:
-      ar_eg: 'العيال كانوا متشوّقين جدًا وفضلوا يسألوا: «وبعدين؟»'
-      ar: 'كان الأطفال متشوّقين جدًّا وظلّوا يسألون: «ثمّ ماذا؟»'
-      en: The children were really curious and kept asking, "Then what?"
-    options: [penasaran, ringkas, lestari]
-    answers: [penasaran]
-    words: [penasaran]
+      ar_eg: 'عبرة الحكاية دي: الطمّاع بيخسر في الآخر.'
+      ar: عبرة هذه الحكاية أنّ الطمّاع يخسر في النهاية.
+      en: 'The lesson of this story: the greedy lose out in the end.'
+    words: [hikmah, tamak]
   - id: e04
-    type: build_sentence
-    source:
-      ar_eg: محمد قلّد صوت الكانشيل.
-      ar: قلّد محمد صوت الكانشيل.
-      en: Mohamed imitated Kancil's voice.
-    answer: Mohamed menirukan suara Kancil.
-    distractors: [mendongeng, penasaran]
-    words: [menirukan]
+    type: fill_blank
+    sentence: Kakaknya ___ karena adiknya lebih disayang.
+    meaning:
+      ar_eg: أخوها الكبير ___ علشان أخته الصغيرة متدلّعة أكتر.
+      ar: كان أخوها الأكبر ___ لأنّ الأصغر محبوبة أكثر.
+      en: Her older brother was ___ because the younger one was loved more.
+    options: [dengki, budi pekerti, hikmah]
+    answers: [dengki]
+    words: [dengki, budi pekerti, hikmah]
+    explain:
+      ar_eg: dengki = غيران وحاقد. budi pekerti = أخلاق، وhikmah = حكمة/عبرة.
+      ar: dengki = حاسد. أما budi pekerti فأخلاق وhikmah حكمة.
+      en: dengki = envious. budi pekerti is good character, hikmah wisdom.
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: تعمل إيه قبل الـ klimaks على طول؟
-      ar: ماذا تفعل قبيل الـ klimaks؟
-      en: What do you do right before the klimaks?
-    options:
-      - تخلّص الحكاية بسرعة.
-      - تقول الرسالة الأخلاقية.
-      - تسكت ثانية علشان التوتر يزيد.
-    answer: 2
-    words: [klimaks, ketegangan]
+      ar_eg: مين الـ «antagonis» في حكاية السندريلا؟
+      ar: مَن الخصم في حكاية سندريلا؟
+      en: Who is the 'antagonis' in Cinderella?
+    options: [Ibu tiri yang jahat., Cinderella yang sabar., Sepatu kaca.]
+    answer: 0
+    explain:
+      ar_eg: مرات الأب هي اللي بتعادي البطلة.
+      ar: زوجة الأب هي من تعادي البطلة.
+      en: The stepmother opposes the heroine.
+    words: [antagonis, protagonis]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لما بحكي، بقلّد صوت كل الحيوانات.
-      ar: حين أحكي أقلّد أصوات الحيوانات كلّها.
-      en: When I tell stories, I imitate all the animals' voices.
-    answers:
-      - Saat mendongeng, saya menirukan suara semua hewan.
-      - Kalau mendongeng, saya menirukan suara semua hewan.
-      - Ketika mendongeng, saya menirukan suara semua binatang.
-      - Waktu mendongeng, saya menirukan suara semua hewan.
-    words: [mendongeng, menirukan]
+    type: fill_blank
+    sentence: Sekolah itu mengajarkan ___ sejak kelas satu.
+    meaning:
+      ar_eg: المدرسة دي بتعلّم ___ من سنة أولى.
+      ar: تعلّم تلك المدرسة ___ منذ الصفّ الأول.
+      en: That school teaches ___ from year one.
+    options: [budi pekerti, perangai, tamak]
+    answers: [budi pekerti]
+    words: [budi pekerti, perangai, tamak]
+    explain:
+      ar_eg: budi pekerti = الأخلاق الحميدة، والمدرسة بتعلّمها. perangai = طبع، وtamak = طمّاع.
+      ar: budi pekerti = الأخلاق الحسنة. أما perangai فطبع وtamak طمّاع.
+      en: Schools teach budi pekerti (good character). perangai is temper, tamak greedy.
   - id: e07
-    type: speaking
-    text: Menurut kalian, apa yang terjadi selanjutnya? Kancil takut atau tidak?
-    meaning:
-      ar_eg: تفتكروا إيه اللي هيحصل بعد كده؟ الكانشيل خاف ولا لأ؟
-      ar: ماذا تظنّون سيحدث بعد ذلك؟ أخاف الكانشيل أم لا؟
-      en: What do you think happens next? Was Kancil scared or not?
-    words: [penasaran]
+    type: build_sentence
+    source:
+      ar_eg: طبعه اتغيّر بعد ما بقى غني.
+      ar: تغيّر طبعه بعد أن صار غنيًّا.
+      en: His behaviour changed after he got rich.
+    answer: Perangainya berubah setelah ia kaya.
+    distractors: [dengki, hikmah]
+    words: [perangai]
+    explain:
+      ar_eg: Perangainya berubah = طبعه اتغير. dengki وhikmah مش في الجملة.
+      ar: Perangainya berubah = تغيّر طبعه.
+      en: Perangainya berubah = his behaviour changed.
   - id: e08
-    type: dictation
-    text: Anak-anak penasaran sampai akhir dongeng.
-    meaning:
-      ar_eg: العيال فضلوا متشوّقين لحد آخر الحكاية.
-      ar: ظلّ الأطفال متشوّقين حتى آخر الحكاية.
-      en: The children stayed curious until the end of the tale.
-    words: [penasaran, dongeng]
+    type: translate
+    direction: from_target
+    source_text: Kura-kura itu ingin balas budi kepada nelayan yang menolongnya.
+    answers_meaning:
+      ar_eg: [السلحفة كانت عايزة تردّ الجميل للصياد اللي ساعدها, السلحفاة عايزة تردّ جميل الصياد اللي أنقذها]
+      ar: [أرادت السلحفاة أن تردّ الجميل للصيّاد الذي أنقذها, رغبت السلحفاة في ردّ جميل الصيّاد الذي ساعدها]
+      en: [The turtle wanted to repay the fisherman who helped it, 'The turtle wished to return the fisherman''s kindness']
+    words: [balas budi]
   - id: e09
     type: speaking
-    text: Alkisah, Kancil ingin menyeberang sungai. Tetapi sungai itu penuh buaya!
+    text: Protagonisnya miskin, tetapi budi pekertinya baik.
     meaning:
-      ar_eg: كان يا ما كان، الكانشيل عايز يعدّي النهر. بس النهر مليان تماسيح!
-      ar: يُحكى أنّ الكانشيل أراد عبور النهر، لكنّ النهر كان مليئًا بالتماسيح!
-      en: Once upon a time, Kancil wanted to cross a river. But the river was full of crocodiles!
-    words: [alkisah]
+      ar_eg: البطل فقير، بس أخلاقه حلوة.
+      ar: البطل فقير لكنّه حسن الخلق.
+      en: The protagonist is poor, but of good character.
+    words: [protagonis, budi pekerti]
+  - id: e10
+    type: multiple_choice
+    question: Tokoh yang ingin memiliki semua emas biasanya bersifat ...
+    options: [sabar, jujur, tamak]
+    answer: 2
+    explain:
+      ar_eg: tamak = طمّاع، عايز كل حاجة لنفسه.
+      ar: tamak = طمّاع يريد كلّ شيء لنفسه.
+      en: tamak = greedy, wants everything for himself.
+    words: [tamak, dengki, perangai, antagonis, protagonis, balas budi]
 dialogue:
-  title: Malam dongeng di Arborek
   lines:
-    - speaker: Mama Ruth
-      text: Mohamed, malam ini kamu yang mendongeng Kancil untuk anak-anak.
-      ar_eg: يا محمد، الليلة إنت اللي هتحكي حكاية الكانشيل للعيال.
-      ar: يا محمد، ستحكي الليلة حكاية الكانشيل للأطفال.
-      en: Mohamed, tonight you tell the Kancil story to the kids.
+    - speaker: Kaka Yohana
+      text: Buat siaran anak, kita bahas cerita Bawang Merah dan Bawang Putih.
+      ar_eg: لبرنامج الأطفال، هنتكلّم عن حكاية باوانج ميراه وباوانج بوتيه.
+      ar: في برنامج الأطفال سنناقش حكاية باوانغ ميراه وباوانغ بوتيه.
+      en: For the kids' show, we'll discuss Bawang Merah and Bawang Putih.
     - speaker: Mohamed
-      text: Baik, Mama. "Raja ingin menghitung kalian!" Begitu suara Kancil?
-      ar_eg: حاضر يا ماما. «الملك عايز يعدّكم!» كده صوت الكانشيل؟
-      ar: حسنًا يا ماما. «يريد الملك أن يعدّكم!» أهكذا صوت الكانشيل؟
-      en: Okay, Mama. "The king wants to count you!" Is that Kancil's voice?
-    - speaker: Mama Ruth
-      text: Bagus! Sekarang menirukan buaya. Lebih berat, lebih pelan.
-      ar_eg: حلو! دلوقتي قلّد التمساح. أتقل وأبطأ.
-      ar: أحسنت! والآن قلّد التمساح، أغلظ وأبطأ.
-      en: Great! Now imitate the crocodile. Deeper, slower.
+      text: Protagonisnya Bawang Putih. Perangainya lembut dan sabar.
+      ar_eg: البطلة باوانج بوتيه. طبعها هادي وصبورة.
+      ar: البطلة باوانغ بوتيه، طبعها ليّن وصبور.
+      en: The protagonist is Bawang Putih. She's gentle and patient.
+    - speaker: Kaka Yohana
+      text: Terus antagonisnya?
+      ar_eg: والشريرة؟
+      ar: والخصم؟
+      en: And the antagonist?
     - speaker: Mohamed
-      text: '"Hmm… baik… kami… berbaris." Lihat, Mama, anak-anak sudah penasaran!'
-      ar_eg: «همم… ماشي… هـ…نصطفّ.» بصي يا ماما، العيال متشوّقين خلاص!
-      ar: «همم… حسنًا… سـ…نصطفّ.» انظري يا ماما، صار الأطفال متشوّقين!
-      en: '"Hmm… okay… we''ll… line up." Look, Mama, the kids are hooked already!'
+      text: Bawang Merah dan ibunya. Mereka dengki dan tamak.
+      ar_eg: باوانج ميراه وأمّها. حقودين وطمّاعين.
+      ar: باوانغ ميراه وأمّها، حاسدتان طمّاعتان.
+      en: Bawang Merah and her mother. They're spiteful and greedy.
+    - speaker: Kaka Yohana
+      text: Terus apa hikmahnya buat pendengar kecil kita?
+      ar_eg: طب إيه العبرة لمستمعينا الصغيّرين؟
+      ar: فما العبرة لمستمعينا الصغار؟
+      en: So what's the lesson for our young listeners?
+    - speaker: Mohamed
+      text: Budi pekerti yang baik akan dibalas dengan kebaikan.
+      ar_eg: الأخلاق الحلوة بتترد بالخير.
+      ar: حسن الخلق يُجزى بالخير.
+      en: Good character is repaid with good.
 new_words:
-  - word: menirukan
-    pos: verb
-    ar_eg: يقلّد
-    ar: يقلّد، يحاكي
-    en: to imitate
-  - word: penasaran
+  - word: protagonis
+    pos: noun
+    ar_eg: البطل (الشخصية الطيبة)
+    ar: الشخصية الرئيسية، البطل
+    en: protagonist
+  - word: antagonis
+    pos: noun
+    ar_eg: الشرير (الشخصية المعادية)
+    ar: الشخصية المعادية
+    en: antagonist
+  - word: tamak
     pos: adjective
-    ar_eg: متشوّق يعرف / فضولي
-    ar: متشوّق، فضوليّ
-    en: curious, eager to know
+    ar_eg: طمّاع
+    ar: طمّاع
+    en: greedy
+  - word: dengki
+    pos: adjective
+    ar_eg: حقود / حسود
+    ar: حسود، حاقد
+    en: spiteful, envious
+  - word: perangai
+    pos: noun
+    ar_eg: طبع / أخلاق
+    ar: طبع، سلوك
+    en: temperament, behaviour
+  - word: balas budi
+    pos: verb
+    ar_eg: يردّ الجميل
+    ar: يردّ الجميل
+    en: to repay a kindness
+  - word: budi pekerti
+    pos: noun
+    ar_eg: أخلاق وأدب
+    ar: حُسن الخلق
+    en: good character, morals
+  - word: hikmah
+    pos: noun
+    ar_eg: حكمة / عبرة
+    ar: حكمة، عِبرة
+    en: wisdom, lesson to draw
 review:
   status: draft
   verified: false

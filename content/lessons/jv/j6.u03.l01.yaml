@@ -82,6 +82,10 @@ exercises:
     options: [pasa, pasar, pasang]
     answer: 1
     words: [layar]
+    explain:
+      ar_eg: ꦂ (layar) فوق الحرف بتقفل المقطع بـ r، فـ ꦥꦱꦂ = pasar. pasa من غيرها، وpasang بالـ cecak ꦁ.
+      ar: ꦂ (layar) تُغلق المقطع بـ r، فـ ꦥꦱꦂ = pasar. أما pasa فبلا علامة وpasang بالـ cecak ꦁ.
+      en: ꦂ (layar) closes the syllable with r, so ꦥꦱꦂ is pasar. pasa has no mark and pasang takes cecak ꦁ.
   - id: e03
     type: multiple_choice
     question_meaning:
@@ -91,6 +95,10 @@ exercises:
     options: ["ꦮꦪ", "ꦮꦪꦂ", "ꦮꦪꦁ"]
     answer: 2
     words: [cecak]
+    explain:
+      ar_eg: "ng في الآخر بتتكتب cecak ꦁ: ꦮꦪꦁ. ꦮꦪ = waya وꦮꦪꦂ = wayar."
+      ar: "الـ ng الأخيرة تُكتب cecak ꦁ: ꦮꦪꦁ. أما ꦮꦪ فـ waya وꦮꦪꦂ فـ wayar."
+      en: "Final ng is cecak ꦁ: ꦮꦪꦁ. ꦮꦪ is waya and ꦮꦪꦂ is wayar."
   - id: e04
     type: listen
     text: seneng
@@ -114,6 +122,10 @@ exercises:
     options: [cecak, layar, wulu]
     answer: 1
     words: [layar, panyigeg]
+    explain:
+      ar_eg: r في الآخر بتتكتب layar ꦂ. cecak لـ ng وwulu لـ i.
+      ar: الـ r الأخيرة تُكتب layar ꦂ. أما cecak فلـ ng وwulu للكسرة.
+      en: Final r is layar ꦂ. cecak is for ng and wulu is for i.
   - id: e06
     type: fill_blank
     sentence: ꦩꦠꦸꦂ = ___
@@ -123,6 +135,10 @@ exercises:
       en: Type the reading in Latin letters. (It means "speak to an elder".)
     answers: [matur]
     words: [layar]
+    explain:
+      ar_eg: بالترتيب ꦩ ma + ꦠꦸꦂ tur (suku + layar) = matur.
+      ar: ꦩ ma + ꦠꦸꦂ tur (suku مع layar) = matur.
+      en: ꦩ ma + ꦠꦸꦂ tur (suku plus layar) = matur.
   - id: e07
     type: build_sentence
     source:
@@ -132,6 +148,10 @@ exercises:
     answer: ꦲ ꦏꦸ ꦱꦼ ꦤꦼꦁ ꦮ ꦪꦁ
     distractors: ["ꦤꦼꦂ"]
     words: [cecak, panyigeg]
+    explain:
+      ar_eg: seneng آخرها ng، فـ ꦤꦼꦁ بالـ cecak. ꦤꦼꦂ بالـ layar = ner.
+      ar: seneng تنتهي بـ ng فتُكتب ꦤꦼꦁ بالـ cecak؛ أما ꦤꦼꦂ بالـ layar فـ ner.
+      en: seneng ends in ng, so ꦤꦼꦁ with cecak. ꦤꦼꦂ (layar) reads ner.
   - id: e08
     type: translate
     direction: to_target
@@ -159,7 +179,7 @@ dialogue:
       ar: هذا يسعدني! ماذا ألبس؟
       en: Great! What should I wear?
     - speaker: Dimas
-      text: Klambi Jawa. Ana ing pasar.
+      text: Klambi Jawa wae. Ana ing pasar.
       ar_eg: لبس جاوي. فيه في السوق.
       ar: لباسًا جاويًا، تجده في السوق.
       en: Javanese dress. They have it at the market.
@@ -181,9 +201,10 @@ new_words:
     en: the closing ng mark, above the letter
   - word: layar
     pos: noun
-    ar_eg: علامة r في آخر المقطع، فوق الحرف
-    ar: علامة r في آخر المقطع، فوق الحرف
-    en: the closing r mark, above the letter
+    ar_eg: علامة r في آخر المقطع، فوق الحرف (≠ إندونيسي layar = شاشة؛ شراع)
+    ar: علامة r في آخر المقطع، فوق الحرف (≠ الإندونيسية layar = شاشة؛ شراع)
+    en: the closing r mark, above the letter (≠ Indonesian layar "screen; sail")
+    false_friend: layar
 review:
   status: draft
   verified: false

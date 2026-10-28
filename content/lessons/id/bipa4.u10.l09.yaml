@@ -1,0 +1,243 @@
+schema: kabar.lesson/v1
+id: bipa4.u10.l09
+language: id
+title: Begini maksudnya
+can_do:
+  ar_eg: 'تشرح معنى تعبير: «المعنى كده»، «على حد علمي»، «على الأقل».'
+  ar: 'أن تشرح معنى تعبير: «المعنى هكذا»، «على حدّ علمي»، «على الأقل».'
+  en: 'Explain what an expression means: "it''s like this", "as far as I know", "at least".'
+slides:
+  - title: Menjelaskan ungkapan
+    body:
+      ar_eg: |
+        begini = كده (begini maksudnya = المعنى كده)، semacam = نوع من (semacam ungkapan = نوع من التعبيرات)، mengenai = بخصوص، عن.
+        sejauh = على قد (sejauh saya tahu = على حد علمي)، setidaknya = على الأقل.
+        menunjukkan = يوري، يبيّن (tunjuk = شاور)، tiap = كل (tiap hari = كل يوم، زي setiap)، detik = ثانية.
+      ar: |
+        begini = هكذا (begini maksudnya = المعنى هكذا)، semacam = نوع من (semacam ungkapan = نوع من التعابير)، mengenai = بشأن، عن.
+        sejauh = بقدر (sejauh saya tahu = على حدّ علمي)، setidaknya = على الأقل.
+        menunjukkan = يُظهر، يبيّن (tunjuk = أشار)، tiap = كل (tiap hari = كل يوم، مثل setiap)، detik = ثانية.
+      en: |
+        begini = like this (begini maksudnya = it means this), semacam = a kind of (semacam ungkapan = a kind of expression), mengenai = about, concerning.
+        sejauh = as far as (sejauh saya tahu = as far as I know), setidaknya = at least.
+        menunjukkan = to show (tunjuk = point), tiap = each, every (tiap hari = every day, like setiap), detik = second.
+    examples:
+      - text: 'Begini maksudnya: orang itu sudah banyak pengalaman.'
+        ar_eg: 'المعنى كده: الشخص ده عنده خبرة كتير.'
+        ar: 'المعنى هكذا: لدى ذلك الشخص خبرة كبيرة.'
+        en: 'It means this: that person has a lot of experience.'
+      - text: Sejauh saya tahu, ungkapan itu sudah sangat tua.
+        ar_eg: على حد علمي، التعبير ده قديم جدًا.
+        ar: على حدّ علمي، هذا التعبير قديم جدًا.
+        en: As far as I know, that expression is very old.
+      - text: Tiap hari saya belajar setidaknya lima ungkapan.
+        ar_eg: كل يوم بتعلم خمس تعبيرات على الأقل.
+        ar: أتعلم كل يوم خمسة تعابير على الأقل.
+        en: Every day I learn at least five expressions.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: setidaknya
+        ar_eg: على الأقل
+        ar: على الأقل
+        en: at least
+      - text: semacam
+        ar_eg: نوع من
+        ar: نوع من
+        en: a kind of
+      - text: begini
+        ar_eg: كده
+        ar: هكذا
+        en: like this
+      - text: sejauh
+        ar_eg: على قد
+        ar: بقدر
+        en: as far as
+    words: [setidaknya, semacam, begini, sejauh]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: detik
+        ar_eg: ثانية
+        ar: ثانية
+        en: second
+      - text: menunjukkan
+        ar_eg: يوري
+        ar: يُظهر
+        en: to show
+      - text: mengenai
+        ar_eg: بخصوص
+        ar: بشأن
+        en: about, concerning
+      - text: tiap
+        ar_eg: كل
+        ar: كل
+        en: each, every
+    words: [detik, menunjukkan, mengenai, tiap]
+  - id: e03
+    type: listen
+    text: Tiap pagi saya membaca koran setidaknya sepuluh menit.
+    question:
+      ar_eg: بيقرا الجرنال قد إيه على الأقل؟
+      ar: كم يقرأ الجريدة على الأقل؟
+      en: How long does the speaker read the paper for, at least?
+    options: [عشر دقايق, ساعة, خمس ثواني]
+    answer: 0
+    meaning:
+      ar_eg: كل يوم الصبح بقرا الجرنال عشر دقايق على الأقل.
+      ar: أقرأ الجريدة كل صباح عشر دقائق على الأقل.
+      en: Every morning I read the paper for at least ten minutes.
+    words: [tiap, setidaknya]
+  - id: e04
+    type: fill_blank
+    sentence: Tunggu sebentar, tiga puluh ___ saja.
+    meaning:
+      ar_eg: استنى شوية، تلاتين ___ بس.
+      ar: انتظر قليلًا، ثلاثين ___ فقط.
+      en: Wait a moment, just thirty ___.
+    options: [detik, tiap, semacam]
+    answers: [detik]
+    words: [detik, tiap, semacam]
+    explain:
+      ar_eg: tiga puluh detik = تلاتين ثانية، وده «شوية». tiap = كل، وsemacam = نوع من.
+      ar: tiga puluh detik = ثلاثون ثانية، أي «قليلًا». أما tiap فكل، وsemacam نوع من.
+      en: tiga puluh detik is thirty seconds, a short wait. tiap is each and semacam is a kind of.
+  - id: e05
+    type: multiple_choice
+    question: '"Kambing hitam" itu ___ ungkapan. Artinya orang yang disalahkan.'
+    options: [semacam, sejauh, mengenai]
+    answer: 0
+    explain:
+      ar_eg: semacam ungkapan = نوع من التعبيرات. sejauh = على قد، وmengenai = بخصوص.
+      ar: semacam ungkapan = نوع من التعابير. أما sejauh فبقدر، وmengenai بشأن.
+      en: semacam ungkapan means a kind of expression. sejauh is as far as, and mengenai is about.
+    words: [semacam, sejauh, mengenai]
+  - id: e06
+    type: fill_blank
+    sentence: Buku ini bercerita ___ sejarah Minahasa.
+    meaning:
+      ar_eg: الكتاب ده بيحكي ___ تاريخ ميناهاسا.
+      ar: يتحدث هذا الكتاب ___ تاريخ ميناهاسا.
+      en: This book tells ___ the history of Minahasa.
+    options: [mengenai, begini, setidaknya]
+    answers: [mengenai]
+    words: [mengenai, begini, setidaknya]
+    explain:
+      ar_eg: bercerita mengenai = بيحكي عن. begini = كده، وsetidaknya = على الأقل، ومايجوش قبل sejarah.
+      ar: bercerita mengenai = يتحدث عن. أما begini فهكذا، وsetidaknya على الأقل، ولا يسبقان sejarah.
+      en: bercerita mengenai means tells about. begini is like this and setidaknya is at least; neither goes before sejarah.
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك بيسألك إزاي تعمل الشاي، وانت هتشرحله.
+      ar: يسألك صديقك كيف تُعدّ الشاي، وستشرح له.
+      en: A friend asks how you make tea, and you're about to explain.
+    options: [Begini caranya., Sejauh caranya., Tiap caranya.]
+    answer: 0
+    explain:
+      ar_eg: begini caranya = الطريقة كده. sejauh = على قد، وtiap = كل، ومايمشوش هنا.
+      ar: begini caranya = الطريقة هكذا. أما sejauh فبقدر، وtiap كل، ولا يناسبان هنا.
+      en: begini caranya means here's how. sejauh is as far as and tiap is each; neither fits here.
+    words: [begini, sejauh, tiap]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: على حد علمي، التعبير ده قديم.
+      ar: على حدّ علمي، هذا التعبير قديم.
+      en: As far as I know, that expression is old.
+    answer: Sejauh saya tahu, ungkapan itu sudah lama.
+    distractors: [detik, semacam]
+    words: [sejauh, detik, semacam]
+    explain:
+      ar_eg: sejauh saya tahu = على حد علمي. detik = ثانية، وsemacam = نوع من، ومالهمش مكان هنا.
+      ar: sejauh saya tahu = على حدّ علمي. أما detik فثانية، وsemacam نوع من، ولا مكان لهما هنا.
+      en: sejauh saya tahu means as far as I know. detik is a second and semacam is a kind of; they don't belong here.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Peta ini menunjukkan jalan ke Tondano.
+    answers_meaning:
+      ar_eg: [الخريطة دي بتوري الطريق لتوندانو, الخريطة دي بتبيّن السكة لتوندانو]
+      ar: [تُظهر هذه الخريطة الطريق إلى توندانو, تبيّن هذه الخريطة الطريق إلى توندانو]
+      en: [This map shows the way to Tondano, This map shows the road to Tondano]
+    words: [menunjukkan]
+  - id: e10
+    type: speaking
+    text: Guru menunjukkan setidaknya tiga contoh mengenai ungkapan itu.
+    meaning:
+      ar_eg: المدرس ورّانا تلات أمثلة على الأقل عن التعبير ده.
+      ar: عرض المعلّم ثلاثة أمثلة على الأقل عن ذلك التعبير.
+      en: The teacher showed at least three examples of that expression.
+    words: [menunjukkan, setidaknya, mengenai]
+dialogue:
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, kamu tahu ungkapan "buah tangan"?
+      ar_eg: يا محمد، تعرف تعبير «buah tangan»؟
+      ar: يا محمد، أتعرف تعبير «buah tangan»؟
+      en: Mohamed, do you know the expression "buah tangan"?
+    - speaker: Mohamed
+      text: Belum. Itu semacam buah, ya?
+      ar_eg: لأ. ده نوع من الفاكهة؟
+      ar: لا. أهو نوع من الفاكهة؟
+      en: Not yet. Is it a kind of fruit?
+    - speaker: Mas Rizal
+      text: 'Bukan. Begini maksudnya: oleh-oleh untuk teman.'
+      ar_eg: 'لأ. المعنى كده: هدية للصحاب.'
+      ar: 'لا. المعنى هكذا: هدية للأصدقاء.'
+      en: 'No. It means this: a gift for friends.'
+    - speaker: Mohamed
+      text: Oh! Sejauh saya tahu, di Mesir juga ada ungkapan mengenai hadiah.
+      ar_eg: آه! على حد علمي، في مصر برضه فيه تعبيرات عن الهدايا.
+      ar: آه! على حدّ علمي، في مصر أيضًا تعابير عن الهدايا.
+      en: Oh! As far as I know, Egypt has expressions about gifts too.
+    - speaker: Mas Rizal
+      text: Bagus. Tiap minggu tunjukkan padaku setidaknya satu ungkapan Mesir, ya.
+      ar_eg: حلو. كل أسبوع وريني تعبير مصري واحد على الأقل، ماشي؟
+      ar: جميل. أرِني كل أسبوع تعبيرًا مصريًا واحدًا على الأقل.
+      en: Great. Every week, show me at least one Egyptian expression, okay?
+new_words:
+  - word: setidaknya
+    pos: adv
+    ar_eg: على الأقل
+    ar: على الأقل
+    en: at least
+  - word: semacam
+    pos: det
+    ar_eg: نوع من
+    ar: نوع من
+    en: a kind of
+  - word: begini
+    pos: adv
+    ar_eg: كده (begini maksudnya)
+    ar: هكذا (begini maksudnya)
+    en: like this
+  - word: sejauh
+    pos: conj
+    ar_eg: على قد (sejauh saya tahu)
+    ar: بقدر (sejauh saya tahu)
+    en: as far as
+  - word: detik
+    pos: noun
+    ar_eg: ثانية
+    ar: ثانية
+    en: second
+  - word: menunjukkan / tunjuk
+    pos: verb
+    ar_eg: يوري، يبيّن (tunjuk = شاور)
+    ar: يُظهر، يبيّن (tunjuk = أشار)
+    en: to show
+  - word: mengenai
+    pos: prep
+    ar_eg: بخصوص، عن
+    ar: بشأن، عن
+    en: about, concerning
+  - word: tiap
+    pos: det
+    ar_eg: كل (tiap hari)
+    ar: كل (tiap hari)
+    en: each, every
+review:
+  status: draft
+  verified: false

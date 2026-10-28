@@ -1,220 +1,248 @@
 schema: kabar.lesson/v1
 id: j3.u02.l07
 language: jv
-title: Ulangan J3.2
+title: Ngajeng lan wingking
 can_do:
-  ar_eg: تبدّل الضماير حسب الموقف.
-  ar: أن تبدّل الضمائر بحسب الموقف.
-  en: Swap pronouns by situation.
+  ar_eg: 'تلفّ في بيت كبير في السن: هنا وهناك، جوّه وبرّه، قدّام وورا، وتقول إن المكان هادي وإنك كسلان.'
+  ar: 'أن تتجوّل في بيت شخص مسنّ: هنا وهناك، داخل وخارج، أمام وخلف، وتقول إن المكان هادئ وإنك كسول.'
+  en: 'Find your way round an elder''s house: here and there, inside and outside, front and back, and say it''s quiet or you''re lazy.'
 slides:
-  - title: Tabel tembung ganti
+  - title: Ing griya Mbah
     body:
       ar_eg: |
-        كل الضماير في جدول واحد (ngoko ← krama ← krama inggil):
-        - أنا: aku ← kula (chat kulo)، وdalem للتواضع الشديد و«أفندم؟»
-        - إنت: kowe ← sampeyan ← panjenengan
-        - هو / هي: dheweke ← piyambakipun ← panjenenganipun
-        - بتاعي: -ku ← اسم + kula (nami kula، griya kula)
-        وعمرك ما تستخدم panjenengan أو dhahar أو asma عن نفسك.
+        ngene/kene ← ngriki = هنا. mrana ← mrika = لهناك (رايح لهناك).
+        njero ← lebet = جوّه. njaba ← jawi = برّه. (Jawi كمان يعني «جاوة» بالكراما: tiyang Jawi = جاوي.)
+        ngarep ← ngajeng = قدّام. mburi ← wingking = ورا: الحمّام والمطبخ دايمًا «ing wingking».
+        sepi ← sepen = هادي، فاضي من الناس. kesed = كسلان (نغوكو).
       ar: |
-        الضمائر كلها في جدول واحد (ngoko ← krama ← krama inggil):
-        - أنا: aku ← kula (وفي الدردشة kulo)، وdalem للتواضع الشديد ولجواب النداء
-        - أنت: kowe ← sampeyan ← panjenengan
-        - هو / هي: dheweke ← piyambakipun ← panjenenganipun
-        - الملكية: -ku ← الاسم + kula (nami kula، griya kula)
-        ولا تستعمل panjenengan ولا dhahar ولا asma عن نفسك.
+        kene ← ngriki = هنا. mrana ← mrika = إلى هناك.
+        njero ← lebet = داخل. njaba ← jawi = خارج. (Jawi تعني أيضًا «جاوة» بالكراما: tiyang Jawi = جاويّ.)
+        ngarep ← ngajeng = أمام. mburi ← wingking = خلف: الحمّام والمطبخ دائمًا «ing wingking».
+        sepi ← sepen = هادئ، خالٍ من الناس. kesed = كسول (نغوكو).
       en: |
-        All the pronouns in one table (ngoko → krama → krama inggil):
-        - I: aku → kula (chat kulo); dalem for deep humility and "yes?" when called
-        - you: kowe → sampeyan → panjenengan
-        - he / she: dheweke → piyambakipun → panjenenganipun
-        - my: -ku → noun + kula (nami kula, griya kula)
-        Never use panjenengan, dhahar or asma about yourself.
-    grammar: jv.pronoun.krama
+        kene → ngriki = here. mrana → mrika = (to) over there.
+        njero → lebet = inside. njaba → jawi = outside. (Jawi is also krama for Java: tiyang Jawi = a Javanese person.)
+        ngarep → ngajeng = front. mburi → wingking = back: the bathroom and kitchen are always "ing wingking".
+        sepi → sepen = quiet, empty of people. kesed = lazy (ngoko).
+    examples:
+      - text: Mangga mlebet, ing lebet langkung kepenak.
+        ar_eg: اتفضل ادخل، جوّه أريح.
+        ar: تفضّل بالدخول، في الداخل أريح.
+        en: Please come in, it's more comfortable inside.
+      - text: Kamar mandi ing wingking, Nak.
+        ar_eg: الحمّام ورا يا ابني.
+        ar: الحمّام في الخلف يا بنيّ.
+        en: The bathroom is at the back, dear.
+      - text: Aku kesed adus, Mas.
+        ar_eg: أنا كسلان أستحمّى يا عم.
+        ar: أنا كسول عن الاستحمام يا أخي.
+        en: I can't be bothered to shower, mate.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: aku
-        ar_eg: بالكراما kula
-        ar: بالكراما kula
-        en: in krama → kula
-      - text: kowe
-        ar_eg: بالكراما sampeyan
-        ar: بالكراما sampeyan
-        en: in krama → sampeyan
-      - text: dheweke
-        ar_eg: بالكراما piyambakipun
-        ar: بالكراما piyambakipun
-        en: in krama → piyambakipun
-      - text: jenengku
-        ar_eg: بالكراما nami kula
-        ar: بالكراما nami kula
-        en: in krama → nami kula
-      - text: omahku
-        ar_eg: بالكراما griya kula
-        ar: بالكراما griya kula
-        en: in krama → griya kula
-    words: [kula, sampeyan, piyambakipun, nami, griya]
+      - text: ngriki
+        ar_eg: هنا (كراما)
+        ar: هنا (كراما)
+        en: here (krama)
+      - text: mrika
+        ar_eg: لهناك (كراما)
+        ar: إلى هناك (كراما)
+        en: (to) over there (krama)
+      - text: lebet
+        ar_eg: جوّه (كراما)
+        ar: داخل (كراما)
+        en: inside (krama)
+      - text: jawi
+        ar_eg: برّه (كراما)
+        ar: خارج (كراما)
+        en: outside (krama)
+    words: [ngriki, mrika, lebet, jawi]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: ngajeng
+        ar_eg: قدّام (كراما)
+        ar: أمام (كراما)
+        en: front (krama)
+      - text: wingking
+        ar_eg: ورا (كراما)
+        ar: خلف (كراما)
+        en: back, behind (krama)
+      - text: sepen
+        ar_eg: هادي، مفيش ناس (كراما)
+        ar: هادئ، خالٍ (كراما)
+        en: quiet, deserted (krama)
+      - text: kesed
+        ar_eg: كسلان
+        ar: كسول
+        en: lazy
+    words: [ngajeng, wingking, sepen, kesed]
+  - id: e03
+    type: listen
+    text: Sandalipun dipunpasang ing jawi, Nak.
+    question:
+      ar_eg: الشبشب يتحط فين؟
+      ar: أين يوضع الشبشب؟
+      en: Where do the sandals go?
+    options: [الشبشب يتحط برّه, الشبشب يتحط جوّه, الشبشب يتحط ورا]
+    answer: 0
+    meaning:
+      ar_eg: الشبشب يتحط برّه يا ابني.
+      ar: يُترك الشبشب في الخارج يا بنيّ.
+      en: Leave your sandals outside, dear.
+    words: [jawi, lebet, wingking]
+  - id: e04
+    type: fill_blank
+    sentence: Pawon ing ___, celak kamar mandi.
+    meaning:
+      ar_eg: المطبخ ___، جنب الحمّام.
+      ar: المطبخ في ___، قرب الحمّام.
+      en: The kitchen is at the ___, near the bathroom.
+    options: [wingking, ngajeng, ngriki]
+    answers: [wingking]
+    words: [wingking, ngajeng, ngriki]
+    explain:
+      ar_eg: wingking = ورا (كراما)، جنب الحمّام. ngajeng = قدّام، وngriki = هنا.
+      ar: wingking تعني الخلف (كراما)، قرب الحمّام. أما ngajeng فالأمام، وngriki هنا.
+      en: wingking is "the back" (krama), by the bathroom. ngajeng is "the front", and ngriki is "here".
+  - id: e05
     type: multiple_choice
-    question_meaning:
-      ar_eg: صاحبك Dimas. «إنت» = ؟
-      ar: صديقك Dimas. «أنت» = ؟
-      en: Your friend Dimas. "You" = ?
-    options: [panjenengan, kowe, sampeyan]
+    question: njero (ngoko) → ___ (krama)
+    options: [jawi, lebet, sepen]
     answer: 1
     explain:
-      ar_eg: 'صاحبك: kowe.'
-      ar: 'الصديق: kowe.'
-      en: A friend — kowe.
-    words: [kowe]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: Bu Siti البياعة في Pasar Gede. «إنتي» = ؟
-      ar: Bu Siti البائعة في Pasar Gede. «أنتِ» = ؟
-      en: Bu Siti, the seller at Pasar Gede. "You" = ?
-    options: [sampeyan, dheweke, kowe]
-    answer: 0
-    explain:
-      ar_eg: 'البياعة: sampeyan (مؤدبة ويومية).'
-      ar: 'البائعة: sampeyan (مهذبة يومية).'
-      en: A seller — sampeyan (polite, everyday).
-    words: [sampeyan]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: جدة Dimas. «حضرتك» = ؟
-      ar: جدة Dimas. «حضرتكِ» = ؟
-      en: Dimas's grandmother. "You" = ?
-    options: [panjenengan, piyambakipun, sampeyan]
-    answer: 0
-    explain:
-      ar_eg: 'الجدة: panjenengan. piyambakipun = «هي» مش «إنتي».'
-      ar: 'الجدة: panjenengan، أما piyambakipun فمعناها «هي».'
-      en: Grandma — panjenengan. Piyambakipun means "she", not "you".
-    words: [panjenengan]
-  - id: e05
-    type: listen
-    text: Dalem, Mbah?
-    options: ['Dalem, Mbah?', 'Dereng, Mbah.', 'Inggih, Mbak.']
-    answer: 0
-    words: [dalem]
+      ar_eg: 'njero بالنغوكو، lebet بالكراما: جوّه. jawi = برّه.'
+      ar: 'njero بالنغوكو وlebet بالكراما: داخل. jawi = خارج.'
+      en: 'njero is ngoko, lebet is krama: inside. jawi = outside.'
+    words: [lebet, jawi, sepen]
   - id: e06
     type: fill_blank
-    sentence: Nami ___ Mohamed, Bu.
+    sentence: Griyanipun Mbah ___ sanget, namung Mbah lan kucing.
     meaning:
-      ar_eg: اسمي محمد يا مدام.
-      ar: اسمي محمد يا سيدتي.
-      en: My name is Mohamed, ma'am.
-    answers: [kula, kulo]
+      ar_eg: بيت جدّتي ___ أوي، جدّتي والقطة بس.
+      ar: بيت الجدّة ___ جدًا، لا يوجد إلا الجدّة والقطّة.
+      en: Grandma's house is very ___, just her and the cat.
+    options: [sepen, kesed, mrika]
+    answers: [sepen]
+    words: [sepen, kesed, mrika]
     explain:
-      ar_eg: '«اسمي» بالكراما: nami kula.'
-      ar: '«اسمي» بالكراما: nami kula.'
-      en: '"My name" in krama: nami kula.'
-    words: [nami, kula]
+      ar_eg: sepen = هادي ومفيش ناس، جدّتي والقطة بس. kesed = كسلان، وmrika = هناك.
+      ar: sepen تعني هادئ خالٍ، لا أحد إلا الجدّة والقطّة. أما kesed فكسول، وmrika هناك.
+      en: "sepen is \"quiet, empty\": just Grandma and the cat. kesed is \"lazy\", and mrika is \"there\"."
   - id: e07
-    type: fill_blank
-    sentence: Menika griya ___, Mbah?
-    meaning:
-      ar_eg: ده بيت حضرتك يا تيتة؟
-      ar: أهذا بيتك يا جدتي؟
-      en: Is this your house, Grandma?
-    options: [kula, kowe, panjenengan]
-    answers: [panjenengan]
-    explain:
-      ar_eg: '«بيتك» للجدة: griya panjenengan. griya kula = بيتي.'
-      ar: '«بيتكِ» للجدة: griya panjenengan، أما griya kula فـ«بيتي».'
-      en: '"Your house" to Grandma: griya panjenengan. Griya kula = my house.'
-    words: [griya, panjenengan]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: حضرتك كلت يا أستاذ؟ (لراجل غريب في سنك)
-      ar: هل أكلتَ يا أخي؟ (لرجل غريب في مثل سنك)
-      en: Have you eaten? (to a stranger your age, Mas)
-    answer: Sampeyan sampun nedha, Mas?
-    distractors: [kowe, wis]
-    words: [sampeyan, sampun, nedha]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اسمي محمد، من مصر. (بالكراما)
-      ar: اسمي محمد، من مصر. (بالكراما)
-      en: My name is Mohamed, from Egypt. (krama)
-    answers: ['Nami kula Mohamed, saking Mesir.', 'Nami kulo Mohamed, saking Mesir.', 'Nami kula Mohamed, saking Mesir', 'Nami kulo Mohamed, saking Mesir', Nami kula Mohamed. Kula saking Mesir., Nami kulo Mohamed. Kulo saking Mesir., Nami kula Mohamed. Kula saking Mesir, Nami kulo Mohamed. Kulo saking Mesir, 'Nami kula Mohamed, kula saking Mesir.', 'Nami kulo Mohamed, kulo saking Mesir.', 'Nami kula Mohamed, kula saking Mesir', 'Nami kulo Mohamed, kulo saking Mesir']
-    words: [nami, kula, saking]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: هي كلت خلاص. (بتتكلم بأدب عن Bu Siti)
-      ar: قد أكلَتْ. (تتحدث بأدب عن Bu Siti)
-      en: She has eaten. (speaking politely about Bu Siti)
-    answers: [Piyambakipun sampun nedha., Piyambakipun sampun nedha, Bu Siti sampun nedha., Bu Siti sampun nedha]
+      ar_eg: اتفضل هنا يا ابني.
+      ar: تفضّل هنا يا بنيّ.
+      en: Please, over here, dear.
+    answer: Mangga ing ngriki, Nak
+    distractors: [mrika, jawi]
+    words: [ngriki, mrika]
     explain:
-      ar_eg: هي بالكراما piyambakipun، والفعل nedha (krama عادية).
-      ar: «هي» بالكراما piyambakipun، والفعل nedha.
-      en: '"She" in krama is piyambakipun, with nedha.'
-    words: [piyambakipun, sampun, nedha]
-  - id: e11
-    type: dictation
-    text: Piyambakipun saking Yogya.
-    meaning:
-      ar_eg: هو من يوجيا.
-      ar: هو من يوغياكرتا.
-      en: He's from Yogya.
-    words: [piyambakipun, saking]
-  - id: e12
+      ar_eg: ing ngriki = هنا. mrika = هناك، العكس، وjawi = برّه.
+      ar: ing ngriki تعني هنا. أما mrika فهناك، وهي العكس، وjawi الخارج.
+      en: ing ngriki is "here". mrika is "there", the opposite, and jawi is "outside".
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Mohamed kesed, dereng adus.
+    answers_meaning:
+      ar_eg: [محمد كسلان، لسه ما استحمّاش, محمد كسلان ولسه ما خدش دش]
+      ar: [محمد كسول، لم يستحمّ بعد]
+      en: ['Mohamed is lazy, he hasn''t showered yet', 'Mohamed is being lazy and hasn''t showered yet']
+    words: [kesed]
+  - id: e09
     type: speaking
-    text: Dalem, Mbah? Inggih, kula sampun nedha.
+    text: Mangga mrika, ing ngajeng langkung padhang.
     meaning:
-      ar_eg: أفندم يا تيتة؟ أيوه، أنا كلت.
-      ar: نعم يا جدتي؟ نعم، قد أكلتُ.
-      en: Yes, Grandma? Yes, I've eaten.
-    words: [dalem, inggih, kula]
+      ar_eg: اتفضل لهناك، قدّام أنوَر.
+      ar: تفضّل إلى هناك، في الأمام أكثر إضاءة.
+      en: Go on over there, it's brighter at the front.
+    words: [mrika, ngajeng]
+  - id: e10
+    type: multiple_choice
+    question: mburi (ngoko) → ___ (krama)
+    options: [ngajeng, wingking, ngriki]
+    answer: 1
+    explain:
+      ar_eg: 'mburi بالنغوكو، wingking بالكراما: ورا. ngajeng = قدّام.'
+      ar: 'mburi بالنغوكو وwingking بالكراما: خلف. ngajeng = أمام.'
+      en: 'mburi is ngoko, wingking is krama: back. ngajeng = front.'
+    words: [wingking, ngajeng, ngriki, kesed]
 dialogue:
-  title: Pamit saka Pasar Gede
   lines:
-    - speaker: Bu Siti
-      text: Mas Mohamed, Mas Dimas saking Yogya?
-      ar_eg: يا أستاذ محمد، Dimas من يوجيا؟
-      ar: يا محمد، هل Dimas من يوغياكرتا؟
-      en: Mohamed, is Dimas from Yogya?
+    - speaker: Mbah Putri
+      text: Mangga, Nak, ing ngriki mawon. Ing lebet langkung kepenak.
+      ar_eg: اتفضل يا ابني، هنا أحسن. جوّه أريح.
+      ar: تفضّل يا بنيّ، هنا أفضل. في الداخل أريح.
+      en: Come, dear, right here. It's more comfortable inside.
     - speaker: Mohamed
-      text: Inggih, Bu. Piyambakipun saking Yogya.
-      ar_eg: أيوه يا مدام. هو من يوجيا.
-      ar: نعم يا سيدتي، هو من يوغياكرتا.
-      en: Yes, ma'am. He's from Yogya.
-    - speaker: Bu Siti
-      text: Oh, inggih. Sampeyan sampun nedha?
-      ar_eg: آه، ماشي. وحضرتك كلت؟
-      ar: آه، حسنًا. وهل أكلتَ أنت؟
-      en: Oh, I see. Have you eaten?
-    - speaker: Mohamed
-      text: Sampun, Bu. Matur nuwun.
-      ar_eg: آه يا مدام. شكرًا.
-      ar: نعم يا سيدتي. شكرًا.
-      en: Yes, ma'am. Thank you.
+      text: Matur nuwun, Mbah. Sandal kula ing jawi, nggih?
+      ar_eg: متشكر يا جدّتي. الشبشب بتاعي برّه، صح؟
+      ar: شكرًا يا جدّتي. شبشبي في الخارج، أليس كذلك؟
+      en: Thank you, Grandma. My sandals stay outside, right?
+    - speaker: Mbah Putri
+      text: Nggih. Kamar mandi lan pawon ing wingking.
+      ar_eg: أيوه. الحمّام ورا، والمطبخ كمان.
+      ar: نعم. الحمّام في الخلف، والمطبخ أيضًا.
+      en: Yes. The bathroom's at the back, and so is the kitchen.
     - speaker: Mas Dimas
-      text: Mohamed, ayo mulih!
-      ar_eg: يلا يا محمد نروّح!
-      ar: هيا يا محمد نعود إلى البيت!
-      en: Mohamed, let's go home!
+      text: Med, adus dhisik kana. Aja kesed!
+      ar_eg: يا مِد، روح استحمّى الأول. ما تكسلش!
+      ar: يا مِد، اذهب واستحمّ أولًا. لا تتكاسل!
+      en: Med, go and shower first. Don't be lazy!
     - speaker: Mohamed
-      text: Ayo, Mas!
-      ar_eg: يلا يا دِيماس!
-      ar: هيا يا ديماس!
-      en: Let's go, Dimas!
-souvenir:
-  id: j3.u02.souvenir
-  title: Pasar Gede
-  note:
-    ar_eg: 'Pasar Gede من أكبر وأقدم الأسواق في سولو، ببوابته الكبيرة ودوشة البياعين من الفجر. هنا هتسمع «sampeyan» في كل حتة: مؤدبة بس دافية، زي «حضرتك» بتاعة السوق. ولما تقابل حد كبير، panjenengan بتفتحلك القلوب.'
-    ar: Pasar Gede من أكبر أسواق سولو وأعرقها، ببوابته الكبيرة وصخب الباعة منذ الفجر. وفيه تسمع «sampeyan» في كل مكان، مهذبة دافئة كـ«حضرتك» في الأسواق. أما مع الكبار فتفتح لك panjenengan القلوب.
-    en: Pasar Gede is Solo's great old market, with its grand gateway and sellers busy from dawn. Here you'll hear "sampeyan" everywhere — polite but warm, the market's «حضرتك». And with elders, panjenengan opens every heart.
+      text: Iya, iya. Griyanipun Mbah sepen nggih, kepenak.
+      ar_eg: حاضر، حاضر. بيت جدّتك هادي، مريح.
+      ar: حسنًا، حسنًا. بيت جدّتك هادئ ومريح.
+      en: OK, OK. Grandma's house is quiet, isn't it? So nice.
+    - speaker: Mbah Putri
+      text: Mangga mrika, Nak. Teh angetipun ing ngajeng.
+      ar_eg: اتفضل لهناك يا ابني. قدّام فيه شاي سخن.
+      ar: تفضّل إلى هناك يا بنيّ. في الأمام شاي ساخن.
+      en: Go on over, dear. There's warm tea at the front.
+new_words:
+  - word: ngriki
+    pos: adverb
+    ar_eg: هنا (كراما من kene)
+    ar: هنا (كراما من kene)
+    en: here, krama (ngoko kene, Indonesian sini)
+  - word: mrika
+    pos: adverb
+    ar_eg: لهناك (كراما من mrana)
+    ar: إلى هناك (كراما من mrana)
+    en: (to) over there, krama (ngoko mrana, Indonesian ke sana)
+  - word: lebet
+    pos: noun
+    ar_eg: جوّه (كراما من njero)
+    ar: داخل (كراما من njero)
+    en: inside, krama (ngoko njero, Indonesian dalam)
+  - word: jawi
+    pos: noun
+    ar_eg: 'برّه (كراما من njaba)؛ كمان: جاوة'
+    ar: 'خارج (كراما من njaba)؛ وأيضًا: جاوة'
+    en: outside, krama (ngoko njaba, Indonesian luar); also krama for Java
+  - word: ngajeng
+    pos: noun
+    ar_eg: قدّام (كراما من ngarep)
+    ar: أمام (كراما من ngarep)
+    en: front, krama (ngoko ngarep, Indonesian depan)
+  - word: wingking
+    pos: noun
+    ar_eg: ورا (كراما من mburi)
+    ar: خلف (كراما من mburi)
+    en: back, behind, krama (ngoko mburi, Indonesian belakang)
+  - word: sepen
+    pos: adjective
+    ar_eg: هادي، مفيش ناس (كراما من sepi)
+    ar: هادئ، خالٍ (كراما من sepi)
+    en: quiet, deserted, krama (ngoko sepi)
+  - word: kesed
+    pos: adjective
+    ar_eg: كسلان
+    ar: كسول
+    en: lazy (= malas)
 review:
   status: draft
   verified: false

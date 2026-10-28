@@ -1,0 +1,179 @@
+schema: kabar.lesson/v1
+id: j6.u05.l13
+language: jv
+title: Kertu pos saka Imogiri
+can_do:
+  ar_eg: تقرا كارت بوستال فيه murda وrekan وأرقام جاوية.
+  ar: أن تقرأ بطاقة بريدية فيها murda وrekan وأرقام جاوية.
+  en: Read a postcard with murda, rekan and Javanese numerals.
+slides:
+  - title: Kertu pos
+    body:
+      ar_eg: |
+        محمد كتب كارت بوستال لديماس من فوق تل Imogiri، بالخط الجاوي والنغوكو.
+        هتلاقي الوحدة كلها: رقم بين ꧇، وSultan بحرف murda ꦯ، وdzikir بحرف rekan ꦢ꦳.
+        فاكر undhakan؟ سلّمة، من undhak-undhakan (سلالم).
+      ar: |
+        كتب محمد بطاقة بريدية لديماس من أعلى تلّ Imogiri، بالخط الجاوي وبالنغوكو.
+        ستجد الوحدة كلها: عددًا بين ꧇، وSultan بحرف murda ꦯ، وdzikir بحرف rekan ꦢ꦳.
+        أتذكر undhakan؟ درجة سُلَّم، من undhak-undhakan (الدرجات).
+      en: |
+        Mohamed wrote Dimas a postcard from the top of Imogiri hill, in aksara Jawa and ngoko.
+        The whole unit is here: a number between ꧇, Sultan with murda ꦯ, and dzikir with rekan ꦢ꦳.
+        Remember undhakan? A step, from undhak-undhakan (steps).
+    grammar: jv.aksara.murda-rekan
+    examples:
+      - text: ꦩꦱ꧀ꦢꦶꦩꦱ꧀꧈ꦲꦏꦸꦮꦶꦱ꧀ꦩꦸꦁꦒꦃ꧇꧔꧐꧙꧇ꦲꦸꦤ꧀ꦝꦏꦤ꧀꧉ (Mas Dimas, aku wis munggah 409 undhakan.)
+        ar_eg: يا ديماس، أنا طلعت 409 سلّمة.
+        ar: يا ديماس، صعدتُ 409 درجات.
+        en: Dimas, I've climbed 409 steps.
+      - text: ꦲꦶꦁꦝꦸꦮꦸꦂꦲꦤꦩꦏꦩꦺꦯꦸꦭ꧀ꦠꦤ꧀꧉ (Ing dhuwur ana makame Sultan.)
+        ar_eg: فوق فيه مقبرة السلطان.
+        ar: في الأعلى قبر السلطان.
+        en: At the top is the Sultan's tomb.
+      - text: ꦲꦏꦸꦢ꦳ꦶꦏꦶꦂꦲꦶꦁꦏꦤ꧉ꦩꦺꦴꦲꦩꦺꦢ꧀ (Aku dzikir ing kana. Mohamed)
+        ar_eg: عملت ذكر هناك. محمد
+        ar: ذكرتُ الله هناك. محمد
+        en: I did dhikr there. Mohamed
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: محمد طلع كام سلّمة؟
+      ar: كم درجة صعد محمد؟
+      en: How many steps did Mohamed climb?
+    options: ["490", "409", "49"]
+    answer: 1
+    explain:
+      ar_eg: ꧇꧔꧐꧙꧇ = 4 0 9، يعني 409 سلّمة.
+      ar: ꧇꧔꧐꧙꧇ = 4 0 9، أي 409 درجات.
+      en: ꧇꧔꧐꧙꧇ = 4 0 9.
+    words: [angka]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه اللي فوق التل؟
+      ar: ما الذي في أعلى التل؟
+      en: What is at the top?
+    options: [makame Sultan, masjid gedhe, pasar]
+    answer: 0
+    words: [aksara murda]
+    explain:
+      ar_eg: "الورقة: Ing dhuwur ana makame Sultan، يعني فوق قبر السلطان."
+      ar: في الورقة Ing dhuwur ana makame Sultan، أي في الأعلى قبر السلطان.
+      en: "The note says Ing dhuwur ana makame Sultan: the Sultan's tomb is at the top."
+  - id: e03
+    type: listen
+    text: Aku dzikir ing kana.
+    question:
+      ar_eg: محمد عمل إيه فوق؟
+      ar: ماذا فعل محمد في الأعلى؟
+      en: What did Mohamed do up there?
+    options: ["ꦗ꦳ꦏꦠ꧀", "ꦢ꦳ꦶꦏꦶꦂ", "ꦥ꦳ꦗꦂ"]
+    answer: 1
+    meaning:
+      ar_eg: عملت ذكر هناك.
+      ar: ذكرتُ الله هناك.
+      en: I did dhikr there.
+    words: [dzikir, aksara rekan]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: ꦯꦸꦭ꧀ꦠꦤ꧀
+        ar_eg: Sultan — بحرف murda
+        ar: Sultan — بحرف murda
+        en: Sultan — with a murda letter
+      - text: ꦢ꦳ꦶꦏꦶꦂ
+        ar_eg: dzikir — بحرف rekan
+        ar: dzikir — بحرف rekan
+        en: dzikir — with a rekan letter
+      - text: ꧇꧔꧐꧙꧇
+        ar_eg: 409 — بين علامتين pada pangkat
+        ar: 409 — بين علامتي pada pangkat
+        en: 409 — between two pada pangkat
+      - text: ꦲꦸꦤ꧀ꦝꦏꦤ꧀
+        ar_eg: undhakan — سلّمة
+        ar: undhakan — درجة
+        en: undhakan — a step
+    words: [aksara murda, aksara rekan, pada pangkat]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "في ꦲꦶꦁꦝꦸꦮꦸꦂꦲꦤꦩꦏꦩꦺꦯꦸꦭ꧀ꦠꦤ꧀꧉، أنهي كلمة فيها murda؟"
+      ar: "في ꦲꦶꦁꦝꦸꦮꦸꦂꦲꦤꦩꦏꦩꦺꦯꦸꦭ꧀ꦠꦤ꧀꧉، أي كلمة فيها murda؟"
+      en: "In ꦲꦶꦁꦝꦸꦮꦸꦂꦲꦤꦩꦏꦩꦺꦯꦸꦭ꧀ꦠꦤ꧀꧉, which word has a murda letter?"
+    options: [dhuwur, makame, Sultan]
+    answer: 2
+    words: [aksara murda]
+    explain:
+      ar_eg: ꦯꦸꦭ꧀ꦠꦤ꧀ (Sultan) بالـ sa murda ꦯ. dhuwur وmakame حروفهم عادية.
+      ar: ꦯꦸꦭ꧀ꦠꦤ꧀ (Sultan) بالـ sa murda ꦯ؛ أما dhuwur وmakame فحروفهما عادية.
+      en: ꦯꦸꦭ꧀ꦠꦤ꧀ (Sultan) has sa murda ꦯ. dhuwur and makame use plain letters.
+  - id: e06
+    type: fill_blank
+    sentence: Aku wis munggah ___ undhakan.
+    meaning:
+      ar_eg: طلعت 409 سلّمة. (اكتب الرقم بالأرقام العادية)
+      ar: صعدتُ 409 درجات. (اكتب العدد بالأرقام العادية)
+      en: I've climbed 409 steps. (Type the number in digits.)
+    answers: ["409", patang atus sanga]
+    words: [angka]
+    explain:
+      ar_eg: الورقة فيها ꧇꧔꧐꧙꧇ = 409 درجة.
+      ar: في الورقة ꧇꧔꧐꧙꧇ أي 409 درجات.
+      en: "The note has ꧇꧔꧐꧙꧇: 409 steps."
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦲꦶꦁꦝꦸꦮꦸꦂꦲꦤꦩꦏꦩꦺꦯꦸꦭ꧀ꦠꦤ꧀꧉"
+      ar: "اكتب بالحروف اللاتينية: ꦲꦶꦁꦝꦸꦮꦸꦂꦲꦤꦩꦏꦩꦺꦯꦸꦭ꧀ꦠꦤ꧀꧉"
+      en: "Write in Latin letters: ꦲꦶꦁꦝꦸꦮꦸꦂꦲꦤꦩꦏꦩꦺꦯꦸꦭ꧀ꦠꦤ꧀꧉"
+    answers: ["Ing dhuwur ana makame Sultan.", ing dhuwur ana makame sultan]
+    words: [aksara murda]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: يا ديماس، أنا طلعت 409 سلّمة.
+      ar: يا ديماس، صعدتُ 409 درجات.
+      en: Dimas, I've climbed 409 steps.
+    answer: Mas Dimas, aku wis munggah 409 undhakan.
+    distractors: [mudhun]
+    words: [angka]
+    explain:
+      ar_eg: munggah = طلع. mudhun = نزل، عكس المعنى.
+      ar: munggah تعني صعد؛ أما mudhun فنزل، عكس المعنى.
+      en: munggah is "climbed". mudhun is "went down", the opposite.
+  - id: e09
+    type: speaking
+    text: Aku wis munggah patang atus sanga undhakan!
+    meaning:
+      ar_eg: أنا طلعت 409 سلّمة!
+      ar: صعدتُ 409 درجات!
+      en: I've climbed four hundred and nine steps!
+dialogue:
+  title: Kertu pos tekan
+  lines:
+    - speaker: Dimas
+      text: Med, layangmu wis tekan!
+      ar_eg: يا محمد، جوابك وصل!
+      ar: يا محمد، وصلت رسالتك!
+      en: Med, your letter has arrived!
+    - speaker: Mohamed
+      text: Isa maca? Aku nulis nganggo aksara Jawa kabeh.
+      ar_eg: عرفت تقراه؟ أنا كاتبه كله بالخط الجاوي.
+      ar: هل قرأتها؟ كتبتها كلها بالخط الجاوي.
+      en: Could you read it? I wrote it all in aksara Jawa.
+    - speaker: Dimas
+      text: Isa, kok. Sultan nganggo murda, dzikir nganggo rekan. Apik tenan!
+      ar_eg: أيوه. Sultan بـ murda، وdzikir بـ rekan. حلو قوي!
+      ar: نعم. Sultan بـ murda، وdzikir بـ rekan. رائع حقًّا!
+      en: Yes. Sultan with murda, dzikir with rekan. Really good!
+    - speaker: Mohamed
+      text: Alhamdulillah. Sikilku isih kesel, ha ha!
+      ar_eg: الحمد لله. بس رجلي لسه تعبانة، ها ها!
+      ar: الحمد لله. لكن قدماي ما زالتا متعبتين، ها ها!
+      en: Alhamdulillah. My legs are still tired, ha ha!
+review:
+  status: draft
+  verified: false

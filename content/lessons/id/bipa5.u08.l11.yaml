@@ -1,0 +1,216 @@
+schema: kabar.lesson/v1
+id: bipa5.u08.l11
+language: id
+title: Kolom opini
+can_do:
+  ar_eg: 'تكتب عمود رأي قصير: موقف واضح، ودليل، وكلام متحفظ ومؤدب.'
+  ar: 'أن تكتب عمود رأي قصيرًا: موقف واضح ودليل وعبارات متحفّظة لبقة.'
+  en: Write a short opinion column with a clear stance, evidence and polite hedging.
+slides:
+  - title: Menulis kolom
+    grammar: id.hedging
+    body:
+      ar_eg: |
+        العمود (kolom) مقال رأي قصير بيكتبه kolumnis (كاتب عمود). رتّبه كده:
+        ١. الموقف: Menurut saya, … / Saya cenderung berpendapat bahwa …
+        ٢. الدليل: Hasil jajak pendapat menunjukkan …
+        ٣. اعترف بالرأي التاني بأدب: Memang, … barangkali …
+        ٤. الخلاصة: Oleh karena itu, …
+        والتحفّظ (tampaknya، barangkali، cenderung) مش ضعف، ده أدب الكتابة الإندونيسية.
+      ar: |
+        العمود (kolom) مقال رأي قصير يكتبه kolumnis (كاتب عمود). رتّبه هكذا:
+        ١. الموقف: Menurut saya, … / Saya cenderung berpendapat bahwa …
+        ٢. الدليل: Hasil jajak pendapat menunjukkan …
+        ٣. الإقرار بالرأي الآخر بلباقة: Memang, … barangkali …
+        ٤. الخلاصة: Oleh karena itu, …
+        والتحفّظ (tampaknya وbarangkali وcenderung) ليس ضعفًا، بل أدب الكتابة الإندونيسية.
+      en: |
+        A column (kolom) is a short opinion piece by a kolumnis (columnist). Order it like this:
+        1. Stance: Menurut saya, … / Saya cenderung berpendapat bahwa …
+        2. Evidence: Hasil jajak pendapat menunjukkan …
+        3. Grant the other view politely: Memang, … barangkali …
+        4. Conclusion: Oleh karena itu, …
+        Hedging (tampaknya, barangkali, cenderung) isn't weakness; it's Indonesian writing manners.
+exercises:
+  - id: e01
+    type: listen
+    text: Kolumnis itu menulis kolom setiap hari Senin di koran lokal.
+    question:
+      ar_eg: الكاتب بيكتب عموده إمتى؟
+      ar: متى يكتب الكاتب عموده؟
+      en: When does the columnist write his column?
+    options:
+      - كل يوم.
+      - كل يوم اتنين.
+      - مرة في الشهر.
+    answer: 1
+    words: [kolumnis, kolom]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي بداية مناسبة لعمود رأي إندونيسي؟
+      ar: أيّ بداية تناسب عمود رأي إندونيسيًّا؟
+      en: Which opening suits an Indonesian opinion column?
+    options:
+      - Semua orang yang tidak setuju dengan saya bodoh.
+      - Pokoknya pemerintah salah total!
+      - Saya cenderung berpendapat bahwa pasar tradisional perlu dilindungi.
+    answer: 2
+    explain:
+      ar_eg: موقف واضح بس متحفظ (cenderung). أما الشتيمة وpokoknya فبتخسّر القارئ.
+      ar: موقف واضح متحفّظ (cenderung)، أمّا الشتم وpokoknya فيُنفّران القارئ.
+      en: A clear but hedged stance (cenderung); insults and pokoknya lose the reader.
+    words: [cenderung, kolom]
+  - id: e03
+    type: fill_blank
+    sentence: Setiap minggu, ___ itu menulis tentang ekonomi warga.
+    meaning:
+      ar_eg: كل أسبوع، كاتب العمود ده بيكتب عن اقتصاد الناس.
+      ar: كلّ أسبوع يكتب كاتب العمود ذاك عن اقتصاد السكّان.
+      en: Every week, that columnist writes about people's economy.
+    options: [kolumnis, responden, sampel]
+    answers: [kolumnis]
+    words: [kolumnis]
+    explain:
+      ar_eg: اللي بيكتب كل أسبوع kolumnis (كاتب عمود). responden = مشارك في استطلاع وsampel = عينة.
+      ar: الذي يكتب كلّ أسبوع kolumnis (كاتب عمود). أما responden فالمستجيب، وsampel العيّنة.
+      en: Someone writing weekly is a kolumnis. responden and sampel aren't writers.
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: نتيجة الاستطلاع بتوضح إن أغلب الناس مش راضيين.
+      ar: تُظهر نتيجة الاستطلاع أنّ أغلب السكّان غير راضين.
+      en: The poll result shows that most residents are dissatisfied.
+    answer: Hasil jajak pendapat menunjukkan bahwa mayoritas warga tidak puas.
+    distractors: [kolom, sinis]
+    words: [jajak pendapat, mayoritas, hasil]
+    explain:
+      ar_eg: «نتيجة الاستطلاع» = Hasil jajak pendapat و«أغلب الناس» = mayoritas warga. kolom = عمود وsinis = ساخر.
+      ar: «نتيجة الاستطلاع» = Hasil jajak pendapat و«أغلب السكّان» = mayoritas warga. أما kolom فالعمود، وsinis «ساخر».
+      en: "\"Poll result\" is hasil jajak pendapat and \"most residents\" mayoritas warga. kolom and sinis aren't in it."
+  - id: e05
+    type: translate
+    direction: from_target
+    source_text: Benar, harga intan naik. Namun, barangkali penambang kecil tidak ikut untung.
+    answers_meaning:
+      ar_eg:
+        - صحيح إن سعر الألماظ زاد. بس يمكن عمال المناجم الصغيرين مش بيكسبوا.
+        - فعلًا الألماظ غلي، بس غالبًا صغار المعدّنين مابيستفيدوش.
+      ar:
+        - صحيح أنّ سعر الألماس ارتفع، لكن ربما لا يربح صغار المعدّنين.
+        - حقًا ارتفع سعر الألماس، غير أنّ صغار المنقّبين قد لا يستفيدون.
+      en:
+        - True, diamond prices have risen. But perhaps small miners don't share the profit.
+        - Diamond prices are up, admittedly; yet small miners may not gain from it.
+    words: [barangkali]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «kolom» في الجرنال يعني إيه؟
+      ar: ما «kolom» في الصحيفة؟
+      en: What is a "kolom" in a newspaper?
+    options:
+      - مقال رأي قصير ثابت لكاتب معين.
+      - إعلان وظايف.
+      - صفحة الوفيات.
+    answer: 0
+    words: [kolom]
+    explain:
+      ar_eg: kolom = مقال رأي قصير ثابت لكاتب معين. مش إعلانات وظايف ولا صفحة الوفيات.
+      ar: kolom مقالة رأي قصيرة ثابتة لكاتب معيّن، لا إعلانات وظائف ولا صفحة وفيات.
+      en: A kolom is a regular short opinion piece by one writer, not job ads or obituaries.
+  - id: e07
+    type: speaking
+    text: Oleh karena itu, saya mengusulkan agar pasar intan dikelola lebih adil.
+    meaning:
+      ar_eg: وعشان كده، بقترح إن سوق الألماظ يتدار بعدل أكتر.
+      ar: لذلك أقترح أن يُدار سوق الألماس بعدل أكبر.
+      en: Therefore, I propose that the diamond market be run more fairly.
+  - id: e08
+    type: dictation
+    text: Kolumnis yang baik bersikap kritis tetapi tidak sinis.
+    meaning:
+      ar_eg: كاتب العمود الشاطر بيبقى ناقد بس مش ساخر.
+      ar: كاتب العمود الجيّد ناقد لكنه غير ساخر.
+      en: A good columnist is critical but not cynical.
+    words: [kolumnis, kritis, sinis]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: tampaknya
+        ar_eg: الظاهر إن
+        ar: يبدو أنّ
+        en: it seems
+      - text: klaim
+        ar_eg: ادعاء
+        ar: ادّعاء
+        en: claim
+      - text: berimbang
+        ar_eg: متوازن
+        ar: متوازن
+        en: balanced
+      - text: margin kesalahan
+        ar_eg: هامش الخطأ
+        ar: هامش الخطأ
+        en: margin of error
+      - text: sikap
+        ar_eg: موقف
+        ar: موقف
+        en: stance
+    words: [tampaknya, klaim, berimbang, margin kesalahan, sikap]
+  - id: e10
+    type: fill_blank
+    sentence: Pak Hendra membaca ___ opini itu setiap pagi sambil minum kopi.
+    meaning:
+      ar_eg: الأستاذ هندرا بيقرا عمود الرأي ده كل صبح وهو بيشرب قهوة.
+      ar: يقرأ الأستاذ هندرا عمود الرأي ذاك كلّ صباح مع قهوته.
+      en: Pak Hendra reads that opinion column every morning over coffee.
+    options: [kolom, kolumnis, sampel]
+    answers: [kolom]
+    words: [kolom]
+    explain:
+      ar_eg: اللي بيتقري هو kolom opini (عمود الرأي). kolumnis = الكاتب نفسه، وsampel = عينة.
+      ar: ما يُقرأ هو kolom opini. أما kolumnis فالكاتب نفسه، وsampel العيّنة.
+      en: He reads the kolom opini. kolumnis is the writer himself, and sampel a sample.
+dialogue:
+  title: Kolom pertama Mohamed
+  lines:
+    - speaker: Pak Hendra
+      text: Pak Mohamed, koran lokal mencari kolumnis tamu. Anda mau menulis?
+      ar_eg: يا أستاذ محمد، الجرنال المحلي بيدور على كاتب عمود ضيف. تحب تكتب؟
+      ar: يا أستاذ محمد، تبحث الصحيفة المحلية عن كاتب عمود ضيف. أتودّ الكتابة؟
+      en: Pak Mohamed, the local paper is looking for a guest columnist. Would you write?
+    - speaker: Mohamed
+      text: Mau, Pak! Saya ingin menulis kolom tentang pasar intan.
+      ar_eg: أكيد يا أستاذ! عايز أكتب عمود عن سوق الألماظ.
+      ar: بكلّ سرور يا أستاذ! أودّ كتابة عمود عن سوق الألماس.
+      en: Yes, sir! I'd like to write a column about the diamond market.
+    - speaker: Pak Hendra
+      text: Bagus. Ingat, sikap Anda harus jelas, tetapi bahasanya santun.
+      ar_eg: كويس. افتكر إن موقفك لازم يبقى واضح، بس كلامك مؤدب.
+      ar: جيّد. تذكّر أنّ موقفك يجب أن يكون واضحًا، ولغتك مهذّبة.
+      en: Good. Remember, your stance must be clear, but the language polite.
+    - speaker: Mohamed
+      text: Baik. Saya akan memakai data jajak pendapat dan kata "barangkali" seperlunya.
+      ar_eg: ماشي. هستخدم أرقام الاستطلاع وكلمة «barangkali» على قد الحاجة.
+      ar: حسنًا. سأستعمل بيانات الاستطلاع وكلمة «barangkali» بقدر الحاجة.
+      en: OK. I'll use the poll data and the word "barangkali" where needed.
+    - speaker: Pak Hendra
+      text: Itu baru kolumnis yang baik!
+      ar_eg: أهو ده كاتب العمود الشاطر!
+      ar: هكذا يكون كاتب العمود الجيّد!
+      en: Now that's a good columnist!
+new_words:
+  - word: kolom
+    pos: noun
+    ar_eg: عمود رأي
+    ar: عمود صحفي
+    en: (newspaper) column
+  - word: kolumnis
+    pos: noun
+    ar_eg: كاتب عمود
+    ar: كاتب عمود
+    en: columnist
+review:
+  status: draft
+  verified: false

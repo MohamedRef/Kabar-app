@@ -1,0 +1,252 @@
+schema: kabar.lesson/v1
+id: j1.u01.l07
+language: jv
+title: Sesuk ketemu maneh
+can_do:
+  ar_eg: تقول «نتقابل تاني بكرة»، وتطلب كوبي جوس في الأنجكرينجان، وترد بأدب بـ nggih.
+  ar: أن تقول «نلتقي غدًا مرة أخرى»، وتطلب kopi joss في الأنجكرينجان، وتجيب بأدب بـ nggih.
+  en: Say "see you again tomorrow", order kopi joss at an angkringan, and answer politely with nggih.
+slides:
+  - title: Neng angkringan
+    body:
+      ar_eg: |
+        الـ **angkringan** = عربية أكل شعبي بتفتح بالليل، والناس بتقعد حواليها على الحصير. وأشهر مشروب هناك **kopi joss**: قهوة بيحطوا فيها فحمة مولعة (أنجكرينجان جنب محطة Tugu).
+        - **iki** = ده / دي (ini): Kopi iki apik!
+        - **saiki** = دلوقتي (sekarang) · **sesuk** = بكرة (besok) · **maneh** = تاني (lagi)
+        - **isa** = يقدر (bisa)، وفي الشات iso: Sesuk isa? = بكرة ينفع؟
+        - **nggih** = أيوه، بس بأدب (كراما). بتقولها للكبير وللبياع اللي بتحترمه، ومع صحابك iya.
+      ar: |
+        **angkringan** = عربة طعام شعبي تفتح ليلًا، ويجلس الناس حولها على الحصير. وأشهر مشروباتها **kopi joss**: قهوة تُلقى فيها جمرة فحم مشتعلة (في أنجكرينجان قرب محطة Tugu).
+        - **iki** = هذا / هذه (ini): Kopi iki apik!
+        - **saiki** = الآن (sekarang) · **sesuk** = غدًا (besok) · **maneh** = مرة أخرى (lagi)
+        - **isa** = يستطيع (bisa)، وفي الدردشة iso: Sesuk isa? = هل يناسبك غدًا؟
+        - **nggih** = نعم بأدب (كراما)، تقولها للكبير وللبائع الذي تحترمه، ومع أصدقائك iya.
+      en: |
+        An **angkringan** is a street-food cart that opens at night; people sit around it on mats. Its famous drink is **kopi joss**: coffee with a glowing piece of charcoal dropped in (the angkringan near Tugu station).
+        - **iki** = this (ini): Kopi iki apik!
+        - **saiki** = now (sekarang) · **sesuk** = tomorrow (besok) · **maneh** = again (lagi)
+        - **isa** = can (bisa); chats write iso: Sesuk isa? = Does tomorrow work?
+        - **nggih** = yes, politely (krama). Say it to elders and to sellers you respect; with friends it's iya.
+    examples:
+      - text: Sesuk ketemu maneh, Mas!
+        ar_eg: نتقابل تاني بكرة يا ماس!
+        ar: نلتقي غدًا مرة أخرى يا أخي!
+        en: See you again tomorrow, Mas!
+      - text: Saiki aku luwe.
+        ar_eg: أنا جعان دلوقتي.
+        ar: أنا جائع الآن.
+        en: I'm hungry now.
+      - text: Nggih, Bu. Matur nuwun.
+        ar_eg: حاضر يا حاجة. شكرًا.
+        ar: نعم يا سيدتي. شكرًا.
+        en: Yes, ma'am. Thank you.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: saiki
+        ar_eg: دلوقتي
+        ar: الآن
+        en: now
+      - text: sesuk
+        ar_eg: بكرة
+        ar: غدًا
+        en: tomorrow
+      - text: maneh
+        ar_eg: تاني
+        ar: مرة أخرى
+        en: again
+      - text: isa / iso
+        ar_eg: يقدر
+        ar: يستطيع
+        en: can
+    words: [saiki, sesuk, maneh, isa / iso]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: nggih
+        ar_eg: أيوه (بأدب)
+        ar: نعم (بأدب)
+        en: yes (polite)
+      - text: angkringan
+        ar_eg: عربية أكل بالليل
+        ar: عربة طعام ليلية
+        en: night food cart
+      - text: kopi joss
+        ar_eg: قهوة بالفحمة
+        ar: قهوة بالجمرة
+        en: charcoal coffee
+      - text: iki
+        ar_eg: ده / دي
+        ar: هذا / هذه
+        en: this
+    words: [nggih, angkringan, kopi joss, iki]
+  - id: e03
+    type: listen
+    text: Sesuk ketemu maneh, Mas.
+    question:
+      ar_eg: بيقول إيه؟
+      ar: ماذا يقول؟
+      en: What is he saying?
+    options: [نتقابل تاني بكرة, نتقابل النهارده, مش هنتقابل]
+    answer: 0
+    meaning:
+      ar_eg: نتقابل تاني بكرة يا ماس.
+      ar: نلتقي غدًا مرة أخرى يا أخي.
+      en: See you again tomorrow, Mas.
+    words: [sesuk, maneh]
+  - id: e04
+    type: fill_blank
+    sentence: ___ aku ngantuk.
+    meaning:
+      ar_eg: ___ أنا نعسان.
+      ar: ___ أنا نعسان.
+      en: ___ I'm sleepy.
+    options: [Saiki, Sesuk, Maneh]
+    answers: [Saiki]
+    words: [saiki, sesuk, maneh]
+    explain:
+      ar_eg: saiki = دلوقتي، وده اللي يمشي مع «أنا نعسان». sesuk = بكرة، وmaneh = تاني.
+      ar: saiki = الآن، وهي ما يناسب «أنا نعسان»؛ أما sesuk فغدًا، وmaneh مرة أخرى.
+      en: saiki = now, which fits "I'm sleepy". sesuk = tomorrow, maneh = again.
+  - id: e05
+    type: fill_blank
+    sentence: Kopi joss ___ apik, Mas!
+    meaning:
+      ar_eg: الكوبي جوس ___ حلوة يا ماس!
+      ar: kopi joss ___ رائعة يا أخي!
+      en: ___ kopi joss is great, Mas!
+    options: [iki, isa, nggih]
+    answers: [iki]
+    words: [kopi joss, iki, isa / iso]
+    explain:
+      ar_eg: "iki = ده / دي، وبتيجي بعد الاسم: kopi joss iki = الكوبي جوس دي. isa = يقدر، وnggih = أيوه بأدب."
+      ar: "iki = هذا، وتأتي بعد الاسم: kopi joss iki = هذه الكوبي جوس. أما isa فيستطيع، وnggih نعم بأدب."
+      en: "iki = this, and it comes after the noun: kopi joss iki. isa = can, nggih = a polite yes."
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «أيوه» بأدب، للكبير أو للبياع؟
+      ar: أيّ كلمة تعني «نعم» بأدب، للكبير أو للبائع؟
+      en: Which word is a polite "yes" for elders or sellers?
+    options: [nggih, angkringan, sesuk]
+    answer: 0
+    explain:
+      ar_eg: nggih = أيوه بالكراما. angkringan = عربية الأكل، وsesuk = بكرة.
+      ar: nggih = نعم بالكراما، أما angkringan فعربة الطعام وsesuk غدًا.
+      en: nggih = a krama yes. angkringan = the food cart, sesuk = tomorrow.
+    words: [nggih, angkringan, sesuk]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بتشرب kopi joss فين في يوجيا؟
+      ar: أين تشرب kopi joss في يوجياكرتا؟
+      en: Where do you drink kopi joss in Jogja?
+    options: [angkringan, kanca, salam]
+    answer: 0
+    explain:
+      ar_eg: في الـ angkringan، عربية الأكل اللي بالليل.
+      ar: في angkringan، عربة الطعام الليلية.
+      en: At an angkringan, the night food cart.
+    words: [angkringan, kopi joss]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: هقابلك تاني بكرة.
+      ar: سألقاك غدًا مرة أخرى.
+      en: I'll see you again tomorrow.
+    answer: Sesuk aku ketemu kowe maneh.
+    distractors: [saiki, iki]
+    words: [sesuk, maneh]
+    explain:
+      ar_eg: sesuk = بكرة، ketemu = أقابل، وmaneh = تاني. saiki = دلوقتي، وiki = ده، ومش في المعنى.
+      ar: sesuk = غدًا، وketemu = ألقى، وmaneh = مرة أخرى؛ أما saiki فالآن وiki هذا، وليسا في المعنى.
+      en: sesuk = tomorrow, ketemu = meet, maneh = again. saiki (now) and iki (this) aren't in the meaning.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Saiki aku isa ketemu.
+    answers_meaning:
+      ar_eg: [دلوقتي أقدر أقابلك, دلوقتي ينفع نتقابل]
+      ar: [الآن أستطيع أن ألقاك, الآن يمكنني اللقاء]
+      en: [I can meet now, 'Now I''m able to meet']
+    words: [saiki, isa / iso]
+  - id: e10
+    type: speaking
+    text: Nggih, Mas. Kopi joss iki apik.
+    meaning:
+      ar_eg: أيوه يا ماس. الكوبي جوس دي حلوة.
+      ar: نعم يا أخي. هذه الـ kopi joss رائعة.
+      en: Yes, Mas. This kopi joss is great.
+    words: [nggih, kopi joss, iki]
+dialogue:
+  lines:
+    - speaker: Mas Heru
+      text: Sugeng dalu, Mas! Kopi?
+      ar_eg: مسا الخير يا ماس! قهوة؟
+      ar: مساء الخير يا ماس! قهوة؟
+      en: Good evening, Mas! Coffee?
+    - speaker: Mohamed
+      text: Kopi joss, Mas. Angkringan iki rame banget.
+      ar_eg: كوبي جوس يا ماس. الأنجكرينجان دي زحمة أوي.
+      ar: كوبي جوس يا ماس. هذه الأنجكرينجان مزدحمة جدًا.
+      en: Kopi joss, Mas. This angkringan is really busy.
+    - speaker: Mas Heru
+      text: Iya, bengi iki rame. Sesuk maneh, to?
+      ar_eg: آه، الليلة زحمة. بكرة تاني، صح؟
+      ar: نعم، الليلة مزدحمة. وغدًا مرة أخرى، صحيح؟
+      en: Yeah, it's busy tonight. Again tomorrow, right?
+    - speaker: Mohamed
+      text: Nggih, Mas, sesuk aku isa. Matur nuwun!
+      ar_eg: أيوه يا ماس، بكرة أقدر. شكرًا!
+      ar: نعم يا أخي، أستطيع غدًا. شكرًا!
+      en: Yes, Mas, tomorrow works. Thanks!
+    - speaker: Mas Heru
+      text: Sami-sami. Sesuk ketemu maneh, ati-ati!
+      ar_eg: العفو. نتقابل تاني بكرة، خلي بالك من نفسك!
+      ar: عفوًا. نلتقي غدًا، انتبه لنفسك!
+      en: You're welcome. See you tomorrow, take care!
+new_words:
+  - word: saiki
+    pos: adverb
+    ar_eg: دلوقتي (sekarang)
+    ar: الآن (sekarang)
+    en: now (sekarang)
+  - word: sesuk
+    pos: adverb
+    ar_eg: بكرة (besok)
+    ar: غدًا (besok)
+    en: tomorrow (besok)
+  - word: maneh
+    pos: adverb
+    ar_eg: تاني / كمان مرة (lagi)
+    ar: مرة أخرى (lagi)
+    en: again (lagi)
+  - word: isa / iso
+    pos: verb
+    ar_eg: يقدر / ينفع (bisa)؛ في الشات iso
+    ar: يستطيع (bisa)؛ وفي الدردشة iso
+    en: can, be able (bisa); chat iso
+  - word: nggih
+    pos: particle
+    ar_eg: أيوه بأدب (كراما)؛ مع الصحاب iya
+    ar: نعم بأدب (كراما)؛ ومع الأصدقاء iya
+    en: yes, politely (krama); with friends iya
+  - word: iki
+    pos: pronoun
+    ar_eg: ده / دي (= ini)
+    ar: هذا / هذه (= ini)
+    en: this (= ini)
+  - word: angkringan
+    pos: noun
+    ar_eg: عربية أكل شعبي بالليل (يوجيا)
+    ar: عربة طعام شعبي ليلية (يوجياكرتا)
+    en: night-time street food cart (Jogja)
+  - word: kopi joss
+    pos: noun
+    ar_eg: قهوة بفحمة مولعة، من أنجكرينجان يوجيا
+    ar: قهوة تُلقى فيها جمرة فحم، من أنجكرينجان يوجياكرتا
+    en: coffee with a live charcoal ember (Jogja angkringan)
+review:
+  status: draft
+  verified: false

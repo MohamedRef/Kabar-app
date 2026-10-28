@@ -35,6 +35,7 @@ static SEED: &[Norm] = &[
     n("arp", "arep", Jv),
     n("bgt", "banget", Id),
     n("blm", "belum", Id),
+    n("brp", "berapa", Id),
     n("bs", "bisa", Id),
     n("bsk", "besok", Id),
     n("cod", "cash on delivery", En),
@@ -97,6 +98,31 @@ static SEED: &[Norm] = &[
     n("yg", "yang", Id),
 ];
 
+/// Street forms whose formal twin is too loose to grade by: "terus" also
+/// means "keep on", not only "lalu".
+const NOT_FOR_GRADING: &[&str] = &["terus"];
+
+/// The formal twin of a lowercase word for grading, in `lang`'s street list
+/// ([`super::street`]): Indonesian "udah" → "sudah"; Javanese once its list
+/// lands (#297). Indonesian also folds its one-word chat forms ("tp" → "tapi"
+/// → "tetapi"). One word maps to one word; `None` for a word that is already
+/// formal, or a language without a list.
+pub fn formal_twin(lang: Lang, word: &str) -> Option<&'static str> {
+    let street = |w: &str| {
+        super::street::formal(lang, w).filter(|f| !f.contains(' ') && !NOT_FOR_GRADING.contains(&w))
+    };
+    if let Some(twin) = street(word) {
+        return Some(twin);
+    }
+    if lang != Lang::Indonesian {
+        return None;
+    }
+    // "g" alone is too ambiguous (see `normalize`).
+    let chat =
+        lookup(word).filter(|n| n.lang == Lang::Indonesian && n.form != "g" && !n.full.contains(' '))?;
+    Some(street(chat.full).unwrap_or(chat.full))
+}
+
 /// Looks up a lowercase form in the seed list.
 pub fn lookup(form: &str) -> Option<&'static Norm> {
     SEED.binary_search_by(|e| e.form.cmp(form)).ok().map(|i| &SEED[i])
@@ -123,6 +149,23 @@ pub fn normalize(form: &str, prev: Option<&str>, next: Option<&str>) -> Option<&
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn formal_twins_for_grading() {
+        assert_eq!(formal_twin(Id, "nggak"), Some("tidak"));
+        assert_eq!(formal_twin(Id, "ngga"), Some("tidak"));
+        assert_eq!(formal_twin(Id, "udh"), Some("sudah"));
+        assert_eq!(formal_twin(Id, "tp"), Some("tetapi"), "chat form → street form → formal");
+        assert_eq!(formal_twin(Id, "makasih"), None, "two words: not a one-word twin");
+        assert_eq!(formal_twin(Id, "terus"), None, "too loose to grade by");
+        assert_eq!(formal_twin(Id, "gpp"), None);
+        assert_eq!(formal_twin(Id, "ra"), None, "Javanese");
+        assert_eq!(formal_twin(Jv, "aja"), None, "Javanese aja is \"don't\", not saja");
+        assert_eq!(formal_twin(Id, "makan"), None);
+        for w in ["tidak", "sudah", "tetapi", "saja", "bagaimana"] {
+            assert_eq!(formal_twin(Id, w), None, "{w} is already formal");
+        }
+    }
 
     #[test]
     fn seed_is_sorted_and_unique() {

@@ -1,0 +1,218 @@
+schema: kabar.lesson/v1
+id: bipa3.u01.l10
+language: id
+title: Ulangan Unit 1
+can_do:
+  ar_eg: "ترد صح في خمس مناسبات: جواز، تخرّج، مولود، عيد، وعزا."
+  ar: "أن تستجيب على نحو مناسب لخمس مناسبات: زواج، وتخرّج، ومولود، وعيد، وعزاء."
+  en: Respond to five life events.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: Selamat wisuda!
+        ar_eg: (صاحبتك اتخرّجت)
+        ar: (تخرّجت صديقتك)
+        en: (your friend graduated)
+      - text: Semoga langgeng!
+        ar_eg: (اتنين اتجوزوا)
+        ar: (تزوّج اثنان)
+        en: (a couple just married)
+      - text: Semoga membawa berkah.
+        ar_eg: (حد نقل بيت جديد)
+        ar: (انتقل أحدهم إلى بيت جديد)
+        en: (someone moved into a new house)
+      - text: Mohon maaf lahir dan batin.
+        ar_eg: (صباح العيد)
+        ar: (صباح العيد)
+        en: (Eid morning)
+      - text: Saya turut berduka cita.
+        ar_eg: (حد من عيلة صاحبك توفّى)
+        ar: (تُوفّي أحد أقارب صديقك)
+        en: (someone in your friend's family passed away)
+    words: [wisuda, langgeng, berkah, lahir dan batin, turut berduka cita]
+  - id: e02
+    type: multiple_choice
+    question: Kartu ini ___ Bu Yanti. Ini hadiah dari kami.
+    options: [untuk, tentang, menurut]
+    answer: 0
+    explain:
+      ar_eg: هدية معمولة عشان حد = untuk.
+      ar: "الهدية لأجل شخص: untuk."
+      en: A gift made for someone takes untuk.
+    words: [untuk]
+  - id: e03
+    type: multiple_choice
+    question: ___ saya, Mataram tempat yang sangat indah.
+    options: [Kepada, Bagi, Pada]
+    answer: 1
+    explain:
+      ar_eg: Bagi saya = بالنسبة لي. kepada للحاجة الرايحة لحد، و pada للوقت.
+      ar: Bagi saya = بالنسبة إليّ؛ وkepada للتوجّه إلى شخص، وpada للزمن.
+      en: Bagi saya = for me; kepada is "to (someone)" and pada is for time.
+    words: [bagi]
+  - id: e04
+    type: listen
+    text: Selamat atas kelahiran anak Ibu. Semoga membawa berkah.
+    options: ["Selamat atas wisuda anak Ibu. Semoga membawa berkah.", "Selamat atas kelahiran anak Ibu. Semoga bahagia selalu.", "Selamat atas kelahiran anak Ibu. Semoga membawa berkah."]
+    answer: 2
+    meaning:
+      ar_eg: مبروك المولود يا مدام. ربنا يجعله بركة.
+      ar: مبارك المولود يا سيدتي، جعله الله بركة.
+      en: Congratulations on the birth of your child. May the baby bring blessings.
+    words: [kelahiran, berkah]
+  - id: e05
+    type: listen
+    text: Menurut Pak Hamdi, ayahnya sakit sejak bulan Maret.
+    question:
+      ar_eg: والد الأستاذ حمدي كان عيان من إمتى؟
+      ar: منذ متى كان والد السيد حمدي مريضًا؟
+      en: Since when had Pak Hamdi's father been ill?
+    options: ["pada hari Jumat", "sejak bulan Maret", "sejak tahun lalu"]
+    answer: 1
+    meaning:
+      ar_eg: على حسب كلام الأستاذ حمدي، أبوه كان عيان من شهر مارس.
+      ar: بحسب السيد حمدي، كان والده مريضًا منذ شهر مارس.
+      en: According to Pak Hamdi, his father had been ill since March.
+    words: [menurut, sejak]
+  - id: e06
+    type: fill_blank
+    sentence: Bulan depan istri Mas Rizal akan ___.
+    meaning:
+      ar_eg: الشهر الجاي مرات مستر رزال هـ ___.
+      ar: في الشهر القادم ___ زوجة رزال.
+      en: Next month Mas Rizal's wife will ___.
+    options: [perayaan, melahirkan, selamanya]
+    answers: [melahirkan]
+    words: [melahirkan, perayaan, selamanya]
+    explain:
+      ar_eg: "بعد الحمل بتيجي الولادة: akan melahirkan. perayaan = احتفال، وselamanya = للأبد، ومش أفعال."
+      ar: "بعد الحمل تأتي الولادة: akan melahirkan. أما perayaan فاحتفال، وselamanya «إلى الأبد»، وليسا فعلين."
+      en: "After pregnancy comes the birth: akan melahirkan. perayaan is a celebration and selamanya means forever; neither is a verb."
+  - id: e07
+    type: fill_blank
+    sentence: Kami mudik ___ hari Kamis.
+    meaning:
+      ar_eg: هنسافر البلد يوم الخميس.
+      ar: سنسافر إلى البلدة يوم الخميس.
+      en: We're going home for Eid on Thursday.
+    options: [kepada, pada, tentang]
+    answers: [pada]
+    explain:
+      ar_eg: الوقت في الكلام الرسمي بياخد pada.
+      ar: يأخذ الزمن pada في الأسلوب الرسمي.
+      en: Time takes pada in formal Indonesian.
+    words: [pada, mudik]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: بالنسبة للمسلمين، العيد وقت لصلة الرحم.
+      ar: العيد عند المسلمين وقت لصلة الرحم.
+      en: For Muslims, Eid is a time for visiting family and friends.
+    answer: Bagi umat Islam, Lebaran adalah waktu untuk silaturahmi.
+    distractors: [kepada, tentang]
+    words: [bagi, umat, silaturahmi]
+    explain:
+      ar_eg: Bagi umat Islam = بالنسبة للمسلمين، وLebaran adalah waktu untuk silaturahmi. kepada وtentang مش مكانهم هنا.
+      ar: Bagi umat Islam = «بالنسبة إلى المسلمين»، ثم Lebaran adalah waktu untuk silaturahmi. ولا موضع لـkepada أو tentang.
+      en: Bagi umat Islam means for Muslims, then Lebaran adalah waktu untuk silaturahmi. kepada and tentang don't fit.
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: cincin
+        ar_eg: خاتم، دبلة
+        ar: خاتم
+        en: ring
+      - text: mengundang
+        ar_eg: يعزم
+        ar: يدعو
+        en: invite
+      - text: hamil
+        ar_eg: حامل
+        ar: حامل
+        en: pregnant
+      - text: berumur
+        ar_eg: عمره
+        ar: يبلغ من العمر
+        en: be aged, be … years old
+      - text: doa
+        ar_eg: دعاء
+        ar: دعاء
+        en: prayer
+      - text: berjanji
+        ar_eg: يوعد
+        ar: يَعِد
+        en: promise
+    words: [cincin, mengundang, hamil, berumur, doa, berjanji]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Saya mengucapkan selamat Idulfitri kepada keluarga Pak Irwan.
+    answers_meaning:
+      ar_eg:
+        - بقول عيد فطر سعيد لعيلة أستاذ إروان.
+        - بهنّي عيلة أستاذ إروان بعيد الفطر.
+        - بقول كل سنة وانتم طيبين لعيلة أستاذ إروان.
+      ar:
+        - أهنّئ أسرة الأستاذ إروان بعيد الفطر.
+        - أقدّم التهنئة بعيد الفطر إلى أسرة الأستاذ إروان.
+      en:
+        - I wish Pak Irwan's family a happy Eid al-Fitr.
+        - I wish Pak Irwan's family a happy Eid.
+        - I say happy Eid al-Fitr to Pak Irwan's family.
+        - I congratulate Pak Irwan's family on Eid al-Fitr.
+    words: [mengucapkan, kepada, Idulfitri]
+  - id: e11
+    type: dictation
+    text: Saya turut berduka cita. Semoga Bapak tabah.
+    meaning:
+      ar_eg: البقية في حياتك. ربنا يصبّرك يا أستاذ.
+      ar: أشاطرك الحزن، ألهمك الله الصبر يا سيدي.
+      en: I'm so sorry for your loss. May you be strong, sir.
+    words: [turut berduka cita, tabah]
+  - id: e12
+    type: speaking
+    text: Selamat wisuda, Rina! Semoga sukses dan bahagia selalu.
+    meaning:
+      ar_eg: مبروك التخرّج يا رينا! بالتوفيق وربنا يسعدك على طول.
+      ar: مبارك تخرّجك يا رينا! وفّقك الله ودمتِ سعيدة.
+      en: Congratulations on graduating, Rina! Wishing you success and happiness always.
+    words: [wisuda, bahagia]
+dialogue:
+  title: Minggu yang penuh acara
+  lines:
+    - speaker: Rina
+      text: Minggu ini acaranya banyak banget, ya, Mohamed!
+      ar_eg: الأسبوع ده كان فيه مناسبات كتير أوي يا محمد!
+      ar: كان في هذا الأسبوع مناسبات كثيرة جدًا يا محمد!
+      en: So many events this week, Mohamed!
+    - speaker: Mohamed
+      text: "Iya! Hari Sabtu Raka nikah. Aku bilang, \"Semoga langgeng!\""
+      ar_eg: "صح! يوم السبت راكا اتجوز. قلتله: «ربنا يخليكم لبعض!»"
+      ar: "صحيح! تزوّج راكا يوم السبت، فقلت له: «دام ودّكما!»"
+      en: True! On Saturday Raka got married. I said, "May your marriage last!"
+    - speaker: Rina
+      text: Terus hari Minggu kita ke rumah Pak Hamdi. Semoga keluarganya tabah.
+      ar_eg: وبعدين يوم الحد رحنا بيت الأستاذ حمدي. ربنا يصبّر عيلته.
+      ar: ثم ذهبنا يوم الأحد إلى بيت السيد حمدي. ألهم الله أسرته الصبر.
+      en: Then on Sunday we went to Pak Hamdi's house. May his family be strong.
+    - speaker: Mohamed
+      text: Amin. Menurutku, orang Lombok selalu datang buat keluarga dan teman.
+      ar_eg: آمين. بالنسبة لي، أهل لومبوك دايمًا بييجوا جنب أهلهم وصحابهم.
+      ar: آمين. أرى أن أهل لومبوك يقفون دائمًا إلى جانب الأهل والأصدقاء.
+      en: Amen. For me, people in Lombok always show up for family and friends.
+    - speaker: Rina
+      text: Itu namanya silaturahmi! Minggu depan ada Lebaran Topat. Ikut, yuk!
+      ar_eg: ده اسمه صلة الرحم! الأسبوع الجاي فيه «ليباران توبات» (عيد الكتوبات). تعالى معانا!
+      ar: هذه هي صلة الرحم! وفي الأسبوع القادم «ليباران توبات» (عيد الكتوبات)، فتعالَ معنا!
+      en: That's silaturahmi! Next week is Lebaran Topat (the ketupat feast). Come along!
+souvenir:
+  id: bipa3.u01.souvenir
+  title: Ketupat Lebaran
+  note:
+    ar_eg: "في العيد كل الناس بتطلب السماح من بعض وتقول «Mohon maaf lahir dan batin»، وعلى كل سفرة لازم تلاقي الكتوبات، رز متطبوخ في سبت صغير من ورق جوز الهند. لومبوك اسمها «جزيرة الألف مسجد»، وبعد العيد بأسبوع أهلها بيعملوا «ليباران توبات»: عيد تاني صغير للكتوبات على البحر ومع العيلة. كل سنة وانت طيب يا محمد!"
+    ar: في العيد يطلب الناس المسامحة بعضهم من بعض قائلين «Mohon maaf lahir dan batin»، ولا تخلو مائدة من الكتوبات، وهو أرز يُطهى في سلة صغيرة من سعف جوز الهند. وتُلقَّب لومبوك بـ«جزيرة الألف مسجد»، وبعد العيد بأسبوع يحتفل أهلها بـ«ليباران توبات»، عيد صغير للكتوبات على الشاطئ مع الأهل. كل عام وأنت بخير يا محمد!
+    en: At Eid everyone asks each other's forgiveness with "Mohon maaf lahir dan batin", and every table has ketupat, rice cooked in little woven coconut-leaf pouches. Lombok is called the Island of a Thousand Mosques, and a week after Eid its people hold Lebaran Topat, a second, smaller ketupat feast by the sea with family. Happy Eid, Mohamed!
+review:
+  status: draft
+  verified: false

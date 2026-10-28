@@ -1,0 +1,208 @@
+schema: kabar.lesson/v1
+id: bipa5.u05.l12
+language: id
+title: Laporan lapangan
+can_do:
+  ar_eg: تحكي بعد زيارة ميدانية إيه اللي شفته وسجلته، بجمل رسمية مترابطة.
+  ar: أن تروي بعد زيارة ميدانية ما رأيته وسجّلته، بجمل رسمية مترابطة.
+  en: Report what you saw and noted on a field visit, in connected formal sentences.
+slides:
+  - title: Apa yang saya lihat
+    grammar: id.passive.ter-ke-an
+    body:
+      ar_eg: |
+        التقرير الميداني بيوصف حالات، فهتحتاج ter- وke-…-an:
+        - terbakar، terancam، kebanjiran، kehilangan
+        وكلمة جديدة وكلمة تعرفها:
+        - kunjungan lapangan = زيارة ميدانية (kunjungan = زيارة، lapangan = ميدان)
+        - mencatat = يسجّل / ياخد نوت، وcatatan = ملاحظات
+        وابدأ بـ: Dalam kunjungan ke …, saya mencatat bahwa …
+      ar: |
+        يصف التقرير الميداني أحوالًا، فتحتاج إلى ter- وke-…-an:
+        - terbakar وterancam وkebanjiran وkehilangan
+        وكلمة جديدة وأخرى تعرفها:
+        - kunjungan lapangan = زيارة ميدانية (kunjungan = زيارة، وlapangan = ميدان)
+        - mencatat = يدوّن، وcatatan = ملاحظات
+        وابدأ بـ: Dalam kunjungan ke …, saya mencatat bahwa …
+      en: |
+        A field report describes states, so you need ter- and ke-…-an:
+        - terbakar, terancam, kebanjiran, kehilangan
+        One new word and one you know:
+        - kunjungan lapangan = field visit (kunjungan = visit, lapangan = field)
+        - mencatat = to note down; catatan = notes
+        Open with: Dalam kunjungan ke …, saya mencatat bahwa …
+exercises:
+  - id: e01
+    type: listen
+    text: Dalam kunjungan lapangan ke Camp Leakey, kami melihat tujuh orangutan.
+    question:
+      ar_eg: شافوا كام أورانجوتان؟
+      ar: كم إنسان غاب رأوا؟
+      en: How many orangutans did they see?
+    options:
+      - تلاتة.
+      - سبعة.
+      - سبعتاشر.
+    answer: 1
+    words: [kunjungan lapangan]
+  - id: e02
+    type: fill_blank
+    sentence: Saya ___ semua yang saya lihat di buku kecil.
+    meaning:
+      ar_eg: أنا بسجل كل اللي بشوفه في نوتة صغيرة.
+      ar: أدوّن كلّ ما أراه في دفتر صغير.
+      en: I note down everything I see in a small notebook.
+    options: [mencatat, berladang, kebanjiran]
+    answers: [mencatat]
+    words: [mencatat]
+    explain:
+      ar_eg: «بسجل في نوتة» = mencatat. berladang = يزرع وkebanjiran = غرق، مايتعملوش في نوتة.
+      ar: «أدوّن في دفتر» = mencatat. أما berladang فـ«يزرع»، وkebanjiran «غمره الفيضان».
+      en: "\"Note down\" is mencatat. berladang (farm) and kebanjiran (flooded) don't happen in a notebook."
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Hutan itu ___ tahun lalu.» (الغابة دي اتحرقت السنة اللي فاتت) تحط إيه؟
+      ar: ماذا تضع في «Hutan itu ___ tahun lalu.» (احترقت تلك الغابة العام الماضي)؟
+      en: Which fits "Hutan itu ___ tahun lalu." (That forest burned last year)?
+    options: [terbakar, membakar, pembakaran]
+    answer: 0
+    explain:
+      ar_eg: ter- بتوصف حاجة حصلت من غير فاعل واضح. membakar = يحرق (فيه فاعل)، وpembakaran اسم.
+      ar: ter- تصف ما وقع دون فاعل ظاهر، أمّا membakar فـ«يحرق» بفاعل، وpembakaran اسم.
+      en: ter- describes something that happened with no clear agent; membakar has an agent; pembakaran is a noun.
+    words: [terbakar]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: في الزيارة، سجلت أثر الدخان.
+      ar: خلال الزيارة، دوّنت أثر ضباب الدخان.
+      en: During the visit, I noted the effects of the haze.
+    answer: Selama kunjungan lapangan, saya mencatat dampak kabut asap.
+    distractors: [terbakar, rumah]
+    words: [kunjungan lapangan, mencatat, kabut asap]
+    explain:
+      ar_eg: «سجلت» = mencatat و«أثر الدخان» = dampak kabut asap. terbakar = ولّع وrumah = بيت، مش في الجملة.
+      ar: «دوّنت» = mencatat و«أثر ضباب الدخان» = dampak kabut asap. أما terbakar فـ«احترق»، وrumah البيت.
+      en: "\"Noted\" is mencatat and \"effects of the haze\" dampak kabut asap. terbakar and rumah aren't in it."
+  - id: e05
+    type: translate
+    direction: from_target
+    source_text: Desa itu kebanjiran dua kali tahun ini.
+    answers_meaning:
+      ar_eg:
+        - القرية دي غرقت مرتين السنة دي.
+        - الفيضان غرّق القرية دي مرتين السنة دي.
+      ar:
+        - غمرت الفيضانات تلك القرية مرّتين هذا العام.
+        - أصاب الفيضان تلك القرية مرّتين هذا العام.
+      en:
+        - That village flooded twice this year.
+        - The village was hit by floods twice this year.
+    words: [kebanjiran]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Orangutan terancam punah karena hutannya hilang.» معناها إيه؟
+      ar: ما معنى «Orangutan terancam punah karena hutannya hilang.»؟
+      en: What does "Orangutan terancam punah karena hutannya hilang." mean?
+    options:
+      - الأورانجوتان بيزيد عشان الغابة كبيرة.
+      - الأورانجوتان بيهاجر لغابة تانية.
+      - الأورانجوتان مهدد بالانقراض عشان غابته بتختفي.
+    answer: 2
+    words: [terancam, punah]
+    explain:
+      ar_eg: terancam punah = مهدد بالانقراض، وhilang = بتختفي. مش بيزيد ولا بيهاجر.
+      ar: terancam punah = مهدَّد بالانقراض، وhilang = يختفي؛ فلا يزداد ولا يهاجر.
+      en: terancam punah means threatened with extinction as the forest vanishes; not growing or migrating.
+  - id: e07
+    type: speaking
+    text: Menurut catatan saya, sebagian besar lahan gambut di sini pernah terbakar.
+    meaning:
+      ar_eg: حسب ملاحظاتي، معظم أرض الخث هنا ولعت قبل كده.
+      ar: بحسب ملاحظاتي، احترق معظم أراضي الخثّ هنا من قبل.
+      en: According to my notes, most of the peatland here has burned before.
+    words: [sebagian besar, terbakar]
+  - id: e08
+    type: dictation
+    text: Kunjungan lapangan kami ditutup dengan diskusi bersama tetua adat.
+    meaning:
+      ar_eg: زيارتنا خلصت بنقاش مع كبير القوم.
+      ar: اختُتمت زيارتنا بنقاش مع شيخ القوم.
+      en: Our visit ended with a discussion with the elder.
+    words: [kunjungan lapangan, tetua adat]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: kabut asap
+        ar_eg: ضباب الدخان
+        ar: ضباب الدخان
+        en: haze
+      - text: hak ulayat
+        ar_eg: حق عرفي في الأرض
+        ar: حقّ عرفي في الأرض
+        en: customary land right
+      - text: sekat kanal
+        ar_eg: سد في القناة
+        ar: سدّ القناة
+        en: canal block
+      - text: melestarikan
+        ar_eg: يحافظ على
+        ar: يصون
+        en: to conserve
+      - text: sawit
+        ar_eg: نخل الزيت
+        ar: نخيل الزيت
+        en: oil palm
+    words: [kabut asap, hak ulayat, sekat kanal, melestarikan, sawit]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: سجلت شرح كبير القوم عن الغابة.
+      ar: دوّنت شرح شيخ القوم عن الغابة.
+      en: I noted down the elder's explanation about the forest.
+    answers:
+      - Saya mencatat penjelasan tetua adat tentang hutan.
+      - Saya mencatat penjelasan tetua adat mengenai hutan.
+      - Saya sudah mencatat penjelasan tetua adat tentang hutan.
+      - Saya udah mencatat penjelasan tetua adat tentang hutan.
+    words: [mencatat, tetua adat]
+dialogue:
+  title: Melapor kepada Bu Lestari
+  lines:
+    - speaker: Bu Lestari
+      text: Bagaimana kunjungan lapangan Anda ke Tanjung Puting, Pak Mohamed?
+      ar_eg: إيه أخبار زيارتك الميدانية لتانجونج بوتينج يا أستاذ محمد؟
+      ar: كيف كانت زيارتك الميدانية إلى تانجونغ بوتينغ يا أستاذ محمد؟
+      en: How was your field visit to Tanjung Puting, Pak Mohamed?
+    - speaker: Mohamed
+      text: Sangat menarik, Bu. Saya mencatat banyak hal. Sebagian lahan gambut di sana pernah terbakar.
+      ar_eg: ممتعة جدًا يا أستاذة. سجلت حاجات كتير. جزء من أرض الخث هناك ولع قبل كده.
+      ar: ممتعة جدًا يا سيدتي، ودوّنت أشياء كثيرة. فبعض أراضي الخثّ هناك احترق من قبل.
+      en: Very interesting, ma'am. I noted a lot. Some of the peatland there has burned before.
+    - speaker: Bu Lestari
+      text: Apakah orangutannya masih terancam?
+      ar_eg: والأورانجوتان لسه في خطر؟
+      ar: وهل ما زال إنسان الغاب مهدّدًا؟
+      en: Are the orangutans still under threat?
+    - speaker: Mohamed
+      text: Ya, tetapi warga membangun sekat kanal, dan tetua adat melarang pembakaran.
+      ar_eg: أيوه، بس الأهالي بيبنوا سدود في القنوات، وكبير القوم بيمنع الحرق.
+      ar: نعم، لكنّ الأهالي يبنون سدودًا في القنوات، وشيخ القوم يمنع الحرق.
+      en: Yes, but villagers are building canal blocks, and the elder forbids burning.
+    - speaker: Bu Lestari
+      text: Bagus. Tolong tulis laporan dari catatan Anda sebelum hari Jumat.
+      ar_eg: كويس. من فضلك اكتب تقرير من ملاحظاتك قبل يوم الجمعة.
+      ar: حسنًا. أرجو أن تكتب تقريرًا من ملاحظاتك قبل يوم الجمعة.
+      en: Good. Please write a report from your notes before Friday.
+new_words:
+  - word: kunjungan lapangan
+    pos: noun
+    ar_eg: زيارة ميدانية
+    ar: زيارة ميدانية
+    en: field visit
+review:
+  status: draft
+  verified: false

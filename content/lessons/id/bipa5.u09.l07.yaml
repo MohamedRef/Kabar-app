@@ -1,184 +1,250 @@
 schema: kabar.lesson/v1
 id: bipa5.u09.l07
 language: id
-title: Salah kaprah
+title: Menerjemahkan ungkapan
 can_do:
-  ar_eg: تصلّح الأغلاط المنتشرة في الإندونيسي الفصيح، والعربي يساعدك.
-  ar: أن تصحّح الأخطاء الشائعة في الإندونيسية الفصحى، مستعينًا بالعربية.
-  en: Fix common mistakes in standard Indonesian, with Arabic as your helper.
+  ar_eg: 'تترجم تعبيرات اصطلاحية: الحرفي والمعنى، الوصف والحوار والإنشا، وإيه اللي متطابق وإيه الخصائص والمستويات.'
+  ar: 'أن تترجم تعابير اصطلاحية: الحرفي والمعنى، والوصف والحوار والإنشاء، والمتطابق والخصائص والمستويات.'
+  en: 'Translate idioms: literal versus meaning, description, dialogue and composition, identical forms, features and levels.'
 slides:
-  - title: Salah, tetapi sudah biasa
-    grammar: id.register.formal-informal
+  - title: Arti harfiah dan arti kiasan
     body:
       ar_eg: |
-        salah kaprah = غلطة منتشرة لدرجة إن الناس فاكراها صح. في الرسمي اكتب الـ ejaan (الإملا) الصح:
-        - merubah ✗ → mengubah ✓ (الأصل ubah)
-        - silahkan ✗ → silakan ✓
-        - dimana ✗ → di mana ✓ (di حرف جر، بينفصل)
-        والعربي بيساعدك هنا: ijin ✗ → izin ✓ (إذن)، jaman ✗ → zaman ✓ (زمان)، nasehat ✗ → nasihat ✓ (نصيحة).
+        ungkapan = تعبير اصطلاحي: panjang tangan = حرامي (حرفيًا: إيده طويلة!).
+        harfiah = حرفي ← حرف (terjemahan harfiah = ترجمة حرفية)، identik = متطابق.
+        deskripsi = وصف، dialog = حوار، karangan = إنشا، موضوع تعبير.
+        karakteristik = خصائص، سمات، tingkatan = مستوى، درجة (tingkatan bahasa = مستويات اللغة).
+        وفي الحوار هتسمع كلام الشارع، وجنبه الرسمي: aku = saya، nerjemahin = menerjemahkan، nggak = tidak، tiap = setiap، nulis = menulis.
       ar: |
-        salah kaprah = خطأ شاع حتى ظنّه الناس صوابًا. واكتب في المقام الرسمي بالـ ejaan (الإملاء) الصحيح:
-        - merubah ✗ → mengubah ✓ (الأصل ubah)
-        - silahkan ✗ → silakan ✓
-        - dimana ✗ → di mana ✓ (di حرف جرّ منفصل)
-        والعربية تعينك: ijin ✗ → izin ✓ (إذن)، وjaman ✗ → zaman ✓ (زمان)، وnasehat ✗ → nasihat ✓ (نصيحة).
+        ungkapan = تعبير اصطلاحي: panjang tangan = لصّ (حرفيًا: طويل اليد!).
+        harfiah = حرفي ← حرف (terjemahan harfiah = ترجمة حرفية)، identik = متطابق.
+        deskripsi = وصف، dialog = حوار، karangan = إنشاء، موضوع تعبير.
+        karakteristik = خصائص، سمات، tingkatan = مستوى، درجة (tingkatan bahasa = مستويات اللغة).
+        وفي الحوار لغة الشارع، وبجانبها الصيغة الرسمية: aku = saya، nerjemahin = menerjemahkan، nggak = tidak، tiap = setiap، nulis = menulis.
       en: |
-        salah kaprah = a mistake so common people think it's right. In formal writing use the correct ejaan (spelling):
-        - merubah ✗ → mengubah ✓ (root ubah)
-        - silahkan ✗ → silakan ✓
-        - dimana ✗ → di mana ✓ (di is a preposition, written apart)
-        Arabic helps here: ijin ✗ → izin ✓ (idhn), jaman ✗ → zaman ✓ (zamān), nasehat ✗ → nasihat ✓ (naṣīḥa).
+        ungkapan = idiom, expression: panjang tangan = thief (literally "long hand"!).
+        harfiah = literal ← Arabic حرف (terjemahan harfiah = literal translation), identik = identical.
+        deskripsi = description, dialog = dialogue, karangan = composition, essay.
+        karakteristik = characteristics, features, tingkatan = level, grade (tingkatan bahasa = speech levels).
+        The dialogue uses street forms; the formal ones are beside them: aku = saya, nerjemahin = menerjemahkan, nggak = tidak, tiap = setiap, nulis = menulis.
+    examples:
+      - text: Ungkapan "panjang tangan" tidak boleh diterjemahkan secara harfiah.
+        ar_eg: التعبير "panjang tangan" ما ينفعش يتترجم حرفي.
+        ar: لا يجوز ترجمة تعبير "panjang tangan" ترجمة حرفية.
+        en: The idiom "panjang tangan" mustn't be translated literally.
+      - text: Bahasa Jawa punya tingkatan; bahasa Indonesia tidak.
+        ar_eg: الجاوي فيه مستويات؛ الإندونيسي لأ.
+        ar: للجاوية مستويات؛ وليست للإندونيسية.
+        en: Javanese has speech levels; Indonesian doesn't.
+      - text: Karangannya berisi deskripsi pasar dan dialog dengan penjual.
+        ar_eg: الإنشا بتاعه فيه وصف للسوق وحوار مع بياع.
+        ar: يتضمّن إنشاؤه وصفًا للسوق وحوارًا مع بائع.
+        en: His essay has a description of the market and a dialogue with a seller.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: salah kaprah
-        ar_eg: غلطة منتشرة
-        ar: خطأ شائع
-        en: common mistake
-      - text: ejaan
-        ar_eg: إملا
-        ar: إملاء
-        en: spelling
-      - text: kesalahan
-        ar_eg: غلطة
-        ar: خطأ
-        en: mistake, error
-      - text: mengubah
-        ar_eg: يغيّر
-        ar: يغيّر
-        en: to change (something)
-      - text: izin
-        ar_eg: إذن
-        ar: إذن
-        en: permission
-    words: [salah kaprah, ejaan, kesalahan, mengubah, izin]
+      - text: ungkapan
+        ar_eg: تعبير اصطلاحي
+        ar: تعبير اصطلاحي
+        en: idiom
+      - text: harfiah
+        ar_eg: حرفي
+        ar: حرفي
+        en: literal
+      - text: deskripsi
+        ar_eg: وصف
+        ar: وصف
+        en: description
+      - text: dialog
+        ar_eg: حوار
+        ar: حوار
+        en: dialogue
+    words: [ungkapan, harfiah, deskripsi, dialog]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي إملا صح؟
-      ar: أيّ إملاء صحيح؟
-      en: Which spelling is correct?
-    options: [idzin, ijin, izin]
-    answer: 2
-    words: [izin, ejaan]
+    type: match_pairs
+    pairs:
+      - text: karangan
+        ar_eg: إنشا
+        ar: إنشاء
+        en: composition
+      - text: identik
+        ar_eg: متطابق
+        ar: متطابق
+        en: identical
+      - text: karakteristik
+        ar_eg: خصائص
+        ar: خصائص
+        en: characteristics
+      - text: tingkatan
+        ar_eg: مستوى
+        ar: مستوى
+        en: level
+    words: [karangan, identik, karakteristik, tingkatan]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة إملاها صح؟
-      ar: أيّ جملة إملاؤها صحيح؟
-      en: Which sentence is spelled correctly?
-    options:
-      - Kita harus merubah jadwal.
-      - Kita harus mengubah jadwal.
-      - Kita harus mengrubah jadwal.
-    answer: 1
-    words: [mengubah, salah kaprah]
+    type: listen
+    text: Terjemahan harfiahnya lucu sekali.
+    question:
+      ar_eg: إيه اللي بيضحك؟
+      ar: ما المضحك؟
+      en: What is funny?
+    options: [الترجمة الحرفية, الصورة, الأغنية]
+    answer: 0
+    meaning:
+      ar_eg: الترجمة الحرفية بتاعته تضحك أوي.
+      ar: ترجمته الحرفية مضحكة جدًا.
+      en: The literal translation is hilarious.
+    words: [harfiah]
   - id: e04
     type: fill_blank
-    sentence: Guru itu melihat tiga ___ ejaan dalam surat saya.
+    sentence: '"Buah tangan" adalah ___ yang artinya oleh-oleh.'
     meaning:
-      ar_eg: المدرّس لقى 3 غلطات إملا في جوابي.
-      ar: وجد المعلّم ثلاثة أخطاء إملائية في رسالتي.
-      en: The teacher found three spelling mistakes in my letter.
-    options: [kesalahan, izin, salah kaprah]
-    answers: [kesalahan]
-    words: [kesalahan, ejaan]
+      ar_eg: '"Buah tangan" ___ معناه هدية السفر.'
+      ar: '"Buah tangan" ___ يعني هدية العائد من السفر.'
+      en: '"Buah tangan" is an ___ meaning a souvenir gift.'
+    options: [ungkapan, tingkatan, dialog]
+    answers: [ungkapan]
+    words: [ungkapan, tingkatan, dialog]
+    explain:
+      ar_eg: buah tangan تعبير = ungkapan. tingkatan = مستوى وdialog = حوار، مش «تعبير معناه».
+      ar: buah tangan تعبير = ungkapan. أما tingkatan فالمستوى، وdialog الحوار.
+      en: buah tangan is an ungkapan (expression). tingkatan (level) and dialog aren't.
   - id: e05
-    type: listen
-    text: Saya minta izin pulang lebih awal hari ini.
-    question:
-      ar_eg: المتكلم عايز إيه؟
-      ar: ماذا يطلب المتكلّم؟
-      en: What does the speaker want?
-    options:
-      - إذن يروّح بدري.
-      - إجازة أسبوع.
-      - مكتب جديد.
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حاجتين شكلهم واحد بالظبط ومافيش أي فرق. هما إيه؟
+      ar: شيئان متماثلان تمامًا بلا أي فرق. ما صفتهما؟
+      en: Two things exactly alike with no difference. What are they?
+    options: [identik, harfiah, deskripsi]
     answer: 0
-    words: [izin]
+    explain:
+      ar_eg: identik = متطابق.
+      ar: identik = متطابق.
+      en: identik = identical.
+    words: [identik, harfiah, deskripsi]
   - id: e06
+    type: fill_blank
+    sentence: Tulislah ___ tentang liburanmu, minimal dua ratus kata.
+    meaning:
+      ar_eg: اكتب ___ عن إجازتك، ميتين كلمة على الأقل.
+      ar: اكتب ___ عن عطلتك، مئتي كلمة على الأقل.
+      en: Write a ___ about your holiday, at least two hundred words.
+    options: [karangan, identik, karakteristik]
+    answers: [karangan]
+    words: [karangan, identik, karakteristik]
+    explain:
+      ar_eg: «اكتب موضوع إنشا» = karangan. identik = متطابق وkarakteristik = خصائص، مايتكتبوش ٢٠٠ كلمة.
+      ar: «اكتب إنشاءً» = karangan. أما identik فـ«مطابق»، وkarakteristik الخصائص.
+      en: "\"Write a composition\" is karangan. identik and karakteristik aren't things you write."
+  - id: e07
+    type: multiple_choice
+    question: Salah satu ___ bahasa Melayu Pontianak adalah bunyi "e" di akhir kata.
+    options: [dialog, ungkapan, karakteristik]
+    answer: 2
+    explain:
+      ar_eg: karakteristik = خاصية، سمة.
+      ar: karakteristik = خاصية، سمة.
+      en: karakteristik = characteristic, feature.
+    words: [dialog, ungkapan, karakteristik]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: الغلطة المنتشرة دي صعب تتغيّر.
-      ar: يصعب تغيير هذا الخطأ الشائع.
-      en: This common mistake is hard to change.
-    answer: Salah kaprah ini sulit diubah.
-    distractors: [izin, ejaan]
-    words: [salah kaprah, mengubah]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: العربي بيساعدني أكتب الإملا الصح.
-      ar: تساعدني العربية على كتابة الإملاء الصحيح.
-      en: Arabic helps me write the correct spelling.
-    answers:
-      - Bahasa Arab membantu saya menulis ejaan yang benar.
-      - Bahasa Arab membantu saya menulis dengan ejaan yang benar.
-      - Bahasa Arab menolong saya menulis ejaan yang benar.
-      - Bahasa Arab membantuku menulis ejaan yang benar.
-    words: [ejaan]
-  - id: e08
-    type: speaking
-    text: Maaf, boleh saya mengubah kesalahan kecil di surat ini?
-    meaning:
-      ar_eg: لا مؤاخذة، ممكن أغيّر غلطة صغيرة في الجواب ده؟
-      ar: عذرًا، هل يمكنني تغيير خطأ صغير في هذه الرسالة؟
-      en: Excuse me, may I change a small mistake in this letter?
-    words: [mengubah, kesalahan]
+      ar_eg: الجاوي فيه تلات مستويات كلام.
+      ar: للجاوية ثلاثة مستويات كلام.
+      en: Javanese has three speech levels.
+    answer: Bahasa Jawa punya tiga tingkatan bahasa.
+    distractors: [deskripsi, karangan]
+    words: [tingkatan]
+    explain:
+      ar_eg: «مستويات كلام» = tingkatan bahasa. deskripsi = وصف وkarangan = إنشا، مش في الجملة.
+      ar: «مستويات الكلام» = tingkatan bahasa. أما deskripsi فالوصف، وkarangan الإنشاء.
+      en: "\"Speech levels\" is tingkatan bahasa. deskripsi and karangan aren't in it."
   - id: e09
-    type: dictation
-    text: Pada zaman dulu, nasihat orang tua sangat dihormati.
+    type: translate
+    direction: from_target
+    source_text: Karangannya berisi deskripsi pasar dan dialog dengan penjual.
+    answers_meaning:
+      ar_eg: [الإنشا بتاعه فيه وصف للسوق وحوار مع بياع, موضوع التعبير فيه وصف السوق وحوار مع البياع]
+      ar: [يتضمّن إنشاؤه وصفًا للسوق وحوارًا مع بائع, في إنشائها وصف للسوق وحوار مع البائع]
+      en: [His essay has a description of the market and a dialogue with a seller, Her composition describes the market and includes a dialogue with a vendor]
+    words: [karangan, deskripsi, dialog]
+  - id: e10
+    type: speaking
+    text: Dua kata ini hampir identik, tapi tingkatannya berbeda.
     meaning:
-      ar_eg: زمان، نصيحة الكبار كان ليها احترام كبير.
-      ar: كانت نصيحة الكبار في الزمن الماضي محترمة جدًّا.
-      en: In the old days, elders' advice was greatly respected.
-    words: [ejaan]
+      ar_eg: الكلمتين دول تقريبًا متطابقين، بس مستواهم مختلف.
+      ar: هاتان الكلمتان شبه متطابقتين، لكن مستواهما مختلف.
+      en: These two words are almost identical, but their level differs.
+    words: [identik, tingkatan]
 dialogue:
-  title: Surat untuk kantor imigrasi
   lines:
     - speaker: Mohamed
-      text: Mas Rizal, bisa cek surat saya? Saya minta izin tinggal lebih lama.
-      ar_eg: يا ريزال، ممكن تراجع جوابي؟ بطلب إذن أقعد مدة أطول.
-      ar: هل تراجع رسالتي؟ أطلب إذنًا بالإقامة مدّة أطول.
-      en: Mas Rizal, could you check my letter? I'm asking for permission to stay longer.
+      text: Mas, aku nerjemahin "panjang tangan" jadi "إيده طويلة". Salah, ya?
+      ar_eg: يا ماس، أنا ترجمت "panjang tangan" إيده طويلة. غلط؟
+      ar: يا أخي، ترجمت "panjang tangan" بطويل اليد. هل أخطأت؟
+      en: I translated "panjang tangan" as "long-handed". Wrong?
     - speaker: Mas Rizal
-      text: Bagus sekali. Hanya ada satu kesalahan, "silahkan" seharusnya "silakan".
-      ar_eg: حلو جدًا. فيه غلطة واحدة بس، silahkan المفروض تبقى silakan.
-      ar: ممتازة. فيها خطأ واحد فقط، silahkan صوابها silakan.
-      en: Very good. There's just one mistake; "silahkan" should be "silakan".
+      text: Itu terjemahan harfiah. Ungkapan itu artinya pencuri, lho.
+      ar_eg: دي ترجمة حرفية. التعبير ده معناه حرامي.
+      ar: تلك ترجمة حرفية. معنى التعبير لص.
+      en: That's a literal translation. The idiom means thief.
     - speaker: Mohamed
-      text: Wah, saya kira itu benar. Banyak orang menulis begitu!
-      ar_eg: يا خبر، أنا كنت فاكرها صح. ناس كتير بتكتبها كده!
-      ar: عجبًا، ظننتها صحيحة، فكثيرون يكتبونها هكذا!
-      en: Oh, I thought that was right. Lots of people write it that way!
+      text: Lucu! Di bahasa Arab Mesir juga ada ungkapan yang mirip.
+      ar_eg: حلوة! في المصري برضه فيه تعبير شبهه.
+      ar: طريف! في العامية المصرية تعبير مشابه أيضًا.
+      en: Funny! Egyptian Arabic has a similar expression too.
     - speaker: Mas Rizal
-      text: Itulah salah kaprah. Tetapi "izin" dan "zaman" kamu sudah sempurna.
-      ar_eg: هي دي الغلطة المنتشرة. بس izin وzaman عندك مظبوطين تمامًا.
-      ar: هذا هو الخطأ الشائع. لكنّ izin وzaman عندك صحيحتان تمامًا.
-      en: That's a salah kaprah. But your "izin" and "zaman" are perfect.
+      text: Mirip, tapi nggak identik. Tiap bahasa punya karakteristik sendiri.
+      ar_eg: شبهه، بس مش متطابق. كل لغة ليها خصائصها.
+      ar: مشابه، لكنه ليس متطابقًا. لكل لغة خصائصها.
+      en: Similar, but not identical. Every language has its own features.
+    - speaker: Mohamed
+      text: "Aku mau nulis karangan soal ini: deskripsi ungkapan sama dialog contohnya."
+      ar_eg: 'هكتب إنشا عن الموضوع ده: وصف للتعبيرات وحوار كمثال.'
+      ar: 'سأكتب إنشاءً عن هذا: وصف التعابير وحوار مثالي.'
+      en: 'I''ll write an essay on it: describing idioms with an example dialogue.'
 new_words:
-  - word: salah kaprah
+  - word: ungkapan
     pos: noun
-    ar_eg: غلطة منتشرة
-    ar: خطأ شائع
-    en: common mistake
-  - word: ejaan
+    ar_eg: تعبير اصطلاحي
+    ar: تعبير اصطلاحي
+    en: idiom, expression
+  - word: harfiah
+    pos: adjective
+    arabic: حرفي
+    ar_eg: حرفي
+    ar: حرفي
+    en: literal
+  - word: deskripsi
     pos: noun
-    ar_eg: إملا
-    ar: إملاء
-    en: spelling
-  - word: kesalahan
+    ar_eg: وصف
+    ar: وصف
+    en: description
+  - word: dialog
     pos: noun
-    ar_eg: غلطة
-    ar: خطأ
-    en: mistake, error
-  - word: mengubah
-    pos: verb
-    ar_eg: يغيّر
-    ar: يغيّر
-    en: to change (something)
+    ar_eg: حوار
+    ar: حوار
+    en: dialogue
+  - word: karangan
+    pos: noun
+    ar_eg: إنشا، موضوع تعبير
+    ar: إنشاء
+    en: composition, essay
+  - word: identik
+    pos: adjective
+    ar_eg: متطابق
+    ar: متطابق
+    en: identical
+  - word: karakteristik
+    pos: noun
+    ar_eg: خصائص، سمات
+    ar: خصائص، سمات
+    en: characteristics
+  - word: tingkatan
+    pos: noun
+    ar_eg: مستوى، درجة
+    ar: مستوى، درجة
+    en: level, grade
 review:
   status: draft
   verified: false

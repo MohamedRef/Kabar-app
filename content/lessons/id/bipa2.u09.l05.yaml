@@ -1,26 +1,38 @@
 schema: kabar.lesson/v1
 id: bipa2.u09.l05
 language: id
-title: Kemeja, dasi, perak
+title: Pesta di Ubud
 can_do:
-  ar_eg: تختار لبس لفرح أو حفلة، وتتكلم عن الحرير والفضة والإزاز.
-  ar: أن تختار ملابس لحفل أو عرس، وتتحدث عن الحرير والفضة والزجاج.
-  en: Choose clothes for a party or wedding and talk about silk, silver and glass.
+  ar_eg: تختار لبس لحفلة، وتتكلم عن الحرير والفضة والإزاز والحجر.
+  ar: أن تختار ملابس لحفل، وتتحدث عن الحرير والفضة والزجاج والحجر.
+  en: Choose clothes for a party and talk about silk, silver, glass and stone.
 slides:
   - title: Ke pesta
     body:
       ar_eg: |
-        gaun = فستان سهرة، jas = جاكت بدلة، kemeja = قميص بزراير، dasi = كرافتة، sandal = صندل.
-        sutra = حرير، perak = فضة (Celuk في بالي = قرية الفضة).
+        gaun = فستان سهرة، jas = جاكت بدلة، kemeja = قميص بزراير، dasi = كرافتة.
+        sutra = حرير، perak = فضة (Celuk في بالي = قرية الفضة)، batu = حجر: perak dengan batu biru.
         kaca = إزاز، وفاكر kacamata؟ = نضارة («إزاز العين»).
+        في الشارع بيقولوا:
+        - nggak = tidak (مش، لأ)
+        - aja = saja (بس، وخلاص)
+        - aku و-ku = saya (أنا، ـي) مع الأصحاب واللي في سنك؛ مع الكبار والغُرب saya
       ar: |
-        gaun = فستان سهرة، jas = سترة البدلة، kemeja = قميص بأزرار، dasi = ربطة عنق، sandal = صندل.
-        sutra = حرير، perak = فضّة (قرية Celuk في بالي مشهورة بالفضّة).
+        gaun = فستان سهرة، jas = سترة البدلة، kemeja = قميص بأزرار، dasi = ربطة عنق.
+        sutra = حرير، perak = فضّة (قرية Celuk في بالي مشهورة بالفضّة)، batu = حجر: perak dengan batu biru.
         kaca = زجاج، وتذكّر kacamata = نظارة («زجاج العين»).
+        في كلام الشارع:
+        - nggak = tidak (لا، ليس)
+        - aja = saja (فقط)
+        - aku و-ku = saya (أنا، ـي) مع الأصدقاء والأقران؛ ومع الكبار والغرباء saya
       en: |
-        gaun = gown, dress, jas = suit jacket, kemeja = shirt (with buttons), dasi = tie, sandal = sandals.
-        sutra = silk, perak = silver (Celuk in Bali is the silver village).
+        gaun = gown, dress, jas = suit jacket, kemeja = shirt (with buttons), dasi = tie.
+        sutra = silk, perak = silver (Celuk in Bali is the silver village), batu = stone: perak dengan batu biru.
         kaca = glass; remember kacamata = glasses ("eye glass").
+        On the street:
+        - nggak = tidak (not, no)
+        - aja = saja (just, only)
+        - aku / -ku = saya (I, my) with friends and people your age; saya with elders and strangers
     examples:
       - text: Ke pesta, saya pakai kemeja putih dan dasi.
         ar_eg: في الحفلة هلبس قميص أبيض وكرافتة.
@@ -58,10 +70,10 @@ exercises:
   - id: e02
     type: match_pairs
     pairs:
-      - text: sandal
-        ar_eg: صندل
-        ar: صندل
-        en: sandals
+      - text: batu
+        ar_eg: حجر
+        ar: حجر
+        en: stone
       - text: sutra
         ar_eg: حرير
         ar: حرير
@@ -74,7 +86,7 @@ exercises:
         ar_eg: فضة
         ar: فضّة
         en: silver
-    words: [sandal, sutra, kaca, perak]
+    words: [batu, sutra, kaca, perak]
   - id: e03
     type: listen
     text: Di Celuk ada banyak toko perak.
@@ -91,14 +103,18 @@ exercises:
     words: [perak]
   - id: e04
     type: fill_blank
-    sentence: Ke pantai, pakai ___ saja.
+    sentence: Rumah itu dari ___, bukan kayu.
     meaning:
-      ar_eg: على البحر، البس ___ وخلاص.
-      ar: إلى الشاطئ، البس ___ فقط.
-      en: For the beach, just wear ___.
-    options: [sandal, jas, dasi]
-    answers: [sandal]
-    words: [sandal, jas, dasi]
+      ar_eg: البيت ده من ___، مش خشب.
+      ar: ذلك البيت من ___ لا من الخشب.
+      en: That house is made of ___, not wood.
+    options: [batu, sutra, jas]
+    answers: [batu]
+    words: [batu, sutra, jas]
+    explain:
+      ar_eg: batu = حجر، عكس kayu في الجملة. sutra = حرير، وjas = جاكتة بدلة.
+      ar: batu = حجر، مقابل kayu. أما sutra فحرير وjas سترة.
+      en: batu = stone, set against kayu. sutra is silk, jas a jacket.
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -122,15 +138,23 @@ exercises:
     options: [kaca, sutra, perak]
     answers: [kaca]
     words: [kaca, sutra, perak]
+    explain:
+      ar_eg: الشبابيك من kaca (إزاز). sutra = حرير، وperak = فضة.
+      ar: النوافذ من kaca (زجاج). أما sutra فحرير وperak فضة.
+      en: Windows are made of kaca (glass). sutra is silk, perak silver.
   - id: e07
     type: build_sentence
     source:
-      ar_eg: هلبس قميص أبيض وجاكت أسود.
-      ar: سألبس قميصًا أبيض وسترة سوداء.
-      en: I'll wear a white shirt and a black jacket.
-    answer: Saya pakai kemeja putih dan jas hitam.
-    distractors: [gaun, sandal]
+      ar_eg: هلبس قميص أبيض وجاكت أزرق.
+      ar: سألبس قميصًا أبيض وسترة زرقاء.
+      en: I'll wear a white shirt and a blue jacket.
+    answer: Saya pakai kemeja putih dan jas biru.
+    distractors: [gaun, batu]
     words: [kemeja, jas]
+    explain:
+      ar_eg: kemeja = قميص، وjas = جاكتة بدلة. gaun = فستان، وbatu = حجر.
+      ar: kemeja = قميص، وjas = سترة. أما gaun ففستان وbatu حجر.
+      en: kemeja = shirt, jas = jacket. gaun is a dress, batu a stone.
   - id: e08
     type: translate
     direction: from_target
@@ -151,27 +175,27 @@ exercises:
   - id: e10
     type: multiple_choice
     question: Kain ini dari ___, jadi mahal.
-    options: [sutra, kaca, sandal]
+    options: [sutra, kaca, batu]
     answer: 0
     explain:
       ar_eg: القماش الحرير غالي.
       ar: قماش الحرير غالٍ.
       en: Silk cloth is expensive.
-    words: [sutra, kaca, sandal]
+    words: [sutra, kaca, batu]
 dialogue:
   lines:
     - speaker: Rina
-      text: Mohamed, Sabtu ini ada pesta teman saya di Ubud.
+      text: Mohamed, Sabtu ini ada pesta temanku di Ubud.
       ar_eg: يا محمد، السبت ده فيه حفلة لصاحبتي في أوبود.
       ar: يا محمد، يوم السبت حفل لصديقتي في أوبود.
       en: Mohamed, my friend's having a party in Ubud this Saturday.
     - speaker: Mohamed
-      text: Saya pakai apa? Jas dan dasi?
+      text: Aku pakai apa? Jas dan dasi?
       ar_eg: ألبس إيه؟ بدلة وكرافتة؟
       ar: ماذا ألبس؟ سترة وربطة عنق؟
       en: What should I wear? Jacket and tie?
     - speaker: Rina
-      text: Kemeja batik saja. Di Bali tidak perlu jas.
+      text: Kemeja batik aja. Di Bali nggak perlu jas.
       ar_eg: قميص باتيك وخلاص. في بالي مش محتاج جاكت.
       ar: قميص باتيك يكفي. لا حاجة للسترة في بالي.
       en: Just a batik shirt. You don't need a jacket in Bali.
@@ -181,15 +205,15 @@ dialogue:
       ar: وأنتِ، ستلبسين فستانًا؟
       en: Are you wearing a dress?
     - speaker: Rina
-      text: Ya, gaun sutra dari ibu saya.
+      text: Ya, gaun sutra dari ibuku.
       ar_eg: أيوه، فستان حرير من ماما.
       ar: نعم، فستان حرير من أمي.
       en: Yes, a silk dress from my mum.
     - speaker: Mohamed
-      text: Bagus! Saya mau beli perak di Celuk untuk mereka.
-      ar_eg: حلو! أنا عايز أشتري لهم فضة من تشيلوك.
-      ar: جميل! أريد شراء فضّة لهم من تشيلوك.
-      en: Lovely! I want to buy them some silver in Celuk.
+      text: Bagus! Aku mau beli perak dengan batu biru di Celuk untuk mereka.
+      ar_eg: حلو! أنا عايز أشتري لهم فضة بحجر أزرق من تشيلوك.
+      ar: جميل! أريد شراء فضّة بحجر أزرق لهم من تشيلوك.
+      en: Lovely! I want to buy them some silver with a blue stone in Celuk.
 new_words:
   - word: gaun
     pos: noun
@@ -211,11 +235,11 @@ new_words:
     ar_eg: كرافتة
     ar: ربطة عنق
     en: tie
-  - word: sandal
+  - word: batu
     pos: noun
-    ar_eg: صندل
-    ar: صندل
-    en: sandals
+    ar_eg: حجر، صخرة
+    ar: حجر، صخرة
+    en: stone, rock
   - word: sutra
     pos: noun
     ar_eg: حرير

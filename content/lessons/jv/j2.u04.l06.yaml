@@ -1,208 +1,250 @@
 schema: kabar.lesson/v1
 id: j2.u04.l06
 language: jv
-title: Ulangan J2.4
+title: Udan deres
 can_do:
-  ar_eg: ترتب أسبوعك بالجاوي.
-  ar: أن تخطط لأسبوعك بالجاوية.
-  en: Plan a week.
+  ar_eg: 'تتكلم عن مواسم جاوة: موسم المطر والجفاف، والرعد والبرق والرذاذ، والقمر والنجوم.'
+  ar: 'أن تتحدث عن مواسم جاوة: موسم المطر والجفاف، والرعد والبرق والرذاذ، والقمر والنجوم.'
+  en: 'Talk about Java''s seasons: rainy and dry, thunder, lightning and drizzle, the moon and stars.'
 slides:
-  - title: Ringkesan J2.4
+  - title: Rendheng lan ketiga
     body:
       ar_eg: |
-        - Saiki jam pira? → Jam telu. · setengah + الساعة الجاية: setengah wolu = 7:30.
-        - luwih seprapat = وربع، kurang seprapat = إلا ربع: jam lima kurang seprapat = 4:45.
-        - esuk، awan، sore، bengi بعد الساعة: jam pitu bengi.
-        - wingi، saiki، sesuk، mengko، dina iki — وmau = «من شوية» (tadi)، مش «عايز»!
-        - الأيام (عربي): Senen، Selasa، Rebo، Kemis، Jemuwah، Setu، Minggu / Ahad.
-        - pasaran: Legi → Pahing → Pon → Wage → Kliwon، وweton = يومك بالاسمين.
-        - الميعاد: Ketemu kapan? · Jam pira? · Neng ngendi? · isa / ora isa.
+        جاوة فيها موسمين بس: **rendheng** = موسم المطر (تقريبًا من نوفمبر لأبريل)، و**ketiga** = موسم الجفاف.
+        - **gludhug** = رعد · **bledheg** = صاعقة / برق بيضرب · **grimis** = رذاذ، مطر خفيف (gerimis)
+        - **lerep** = المطر وقف / هدي (reda)
+        - **rembulan** = قمر (bulan) · **lintang** = نجمة (bintang)
       ar: |
-        - Saiki jam pira? ← Jam telu. · setengah + الساعة التالية: setengah wolu = 7:30.
-        - luwih seprapat = والربع، kurang seprapat = إلا ربعًا: jam lima kurang seprapat = 4:45.
-        - esuk وawan وsore وbengi بعد الساعة: jam pitu bengi.
-        - wingi، saiki، sesuk، mengko، dina iki، وmau = «قبل قليل» (tadi) لا «يريد»!
-        - الأيام (عربية): Senen، Selasa، Rebo، Kemis، Jemuwah، Setu، Minggu / Ahad.
-        - pasaran: Legi → Pahing → Pon → Wage → Kliwon، وweton = يومك باسميه.
-        - الموعد: Ketemu kapan? · Jam pira? · Neng ngendi? · isa / ora isa.
+        في جاوة موسمان فقط: **rendheng** = موسم المطر (من نوفمبر إلى أبريل تقريبًا)، و**ketiga** = موسم الجفاف.
+        - **gludhug** = رعد · **bledheg** = صاعقة · **grimis** = رذاذ، مطر خفيف (gerimis)
+        - **lerep** = توقّف المطر / هدأ (reda)
+        - **rembulan** = القمر (bulan) · **lintang** = نجمة (bintang)
       en: |
-        - Saiki jam pira? → Jam telu. · setengah + next hour: setengah wolu = 7:30.
-        - luwih seprapat = quarter past, kurang seprapat = quarter to: jam lima kurang seprapat = 4:45.
-        - esuk, awan, sore, bengi after the hour: jam pitu bengi.
-        - wingi, saiki, sesuk, mengko, dina iki — and mau = "earlier" (tadi), not "want"!
-        - Days (Arabic): Senen, Selasa, Rebo, Kemis, Jemuwah, Setu, Minggu / Ahad.
-        - pasaran: Legi → Pahing → Pon → Wage → Kliwon; weton = your day with both names.
-        - Meeting: Ketemu kapan? · Jam pira? · Neng ngendi? · isa / ora isa.
-    grammar: jv.time.expressions
+        Java has just two seasons: **rendheng** = the rainy season (roughly November to April) and **ketiga** = the dry season.
+        - **gludhug** = thunder · **bledheg** = lightning strike · **grimis** = drizzle (gerimis)
+        - **lerep** = (rain) stops, eases off (reda)
+        - **rembulan** = moon (bulan) · **lintang** = star (bintang)
+    examples:
+      - text: Krungu gludhug? Mengko udan deres.
+        ar_eg: سامع الرعد؟ هتمطر جامد.
+        ar: أتسمع الرعد؟ ستمطر بغزارة.
+        en: Hear the thunder? It'll pour later.
+      - text: Udane wis lerep, ayo mulih.
+        ar_eg: المطر وقف، يلا نروّح.
+        ar: توقّف المطر، هيّا نعود.
+        en: The rain's stopped, let's head home.
+      - text: Bengi iki akeh lintang.
+        ar_eg: الليلة فيه نجوم كتير.
+        ar: الليلة نجوم كثيرة.
+        en: Lots of stars tonight.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: Selasa
-        ar_eg: التلات
-        ar: الثلاثاء
-        en: Tuesday
-      - text: Minggu
-        ar_eg: الحد
-        ar: الأحد
-        en: Sunday
-      - text: mengko
-        ar_eg: بعدين
-        ar: لاحقًا
-        en: later
-      - text: setengah
-        ar_eg: نص
-        ar: نصف
-        en: half
-      - text: Wage
-        ar_eg: يوم واجيه (من أيام السوق)
-        ar: يوم واغيه (من أيام السوق)
-        en: Wage (a pasaran day)
-    words: [Selasa, Minggu, mengko, setengah, Wage]
+      - text: rendheng
+        ar_eg: موسم المطر
+        ar: موسم المطر
+        en: rainy season
+      - text: ketiga
+        ar_eg: موسم الجفاف
+        ar: موسم الجفاف
+        en: dry season
+      - text: gludhug
+        ar_eg: رعد
+        ar: رعد
+        en: thunder
+      - text: bledheg
+        ar_eg: صاعقة
+        ar: صاعقة
+        en: lightning strike
+    words: [rendheng, ketiga, gludhug, bledheg]
   - id: e02
-    type: multiple_choice
-    question: 8:45 = ?
-    question_meaning:
-      ar_eg: إزاي تقول تسعة إلا ربع؟
-      ar: كيف تقول التاسعة إلا ربعًا؟
-      en: How do you say 8:45?
-    options: [setengah sanga, jam sanga kurang seprapat, jam wolu luwih seprapat]
-    answer: 1
-    explain:
-      ar_eg: jam wolu luwih seprapat = 8:15، وsetengah sanga = 8:30.
-      ar: jam wolu luwih seprapat = 8:15، وsetengah sanga = 8:30.
-      en: jam wolu luwih seprapat = 8:15; setengah sanga = 8:30.
-    words: [kurang, seprapat, sanga]
+    type: match_pairs
+    pairs:
+      - text: grimis
+        ar_eg: رذاذ
+        ar: رذاذ
+        en: drizzle
+      - text: lerep
+        ar_eg: المطر وقف
+        ar: توقّف المطر
+        en: rain stops
+      - text: rembulan
+        ar_eg: قمر
+        ar: قمر
+        en: moon
+      - text: lintang
+        ar_eg: نجمة
+        ar: نجمة
+        en: star
+    words: [grimis, lerep, rembulan, lintang]
   - id: e03
-    type: multiple_choice
-    question: Selasa Pahing → ?
-    question_meaning:
-      ar_eg: النهارده تلات باهينج. بكرة إيه؟
-      ar: اليوم ثلاثاء باهينغ. فما الغد؟
-      en: Today is Tuesday Pahing. What's tomorrow?
-    options: [Rebo Pon, Senen Pon, Rebo Legi]
-    answer: 0
-    explain:
-      ar_eg: 'الأسبوعين بيتحركوا مع بعض: Selasa → Rebo، وPahing → Pon.'
-      ar: 'يتقدم الأسبوعان معًا: Selasa → Rebo، وPahing → Pon.'
-      en: 'Both weeks move on together: Selasa → Rebo, Pahing → Pon.'
-    words: [Rebo, Pon]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة معناها «من شوية» (tadi)؟
-      ar: أي كلمة تعني «قبل قليل» (tadi)؟
-      en: Which word means "earlier, just now" (tadi)?
-    options: [mau, mengko, sesuk]
-    answer: 0
-    words: [mau]
-  - id: e05
     type: listen
-    text: Sesuk Setu jam sanga esuk.
-    options: [Wingi Setu jam sanga esuk., Sesuk Setu jam sanga bengi., Sesuk Setu jam sanga esuk.]
-    answer: 2
-    words: [sesuk, Setu, esuk]
-  - id: e06
-    type: fill_blank
-    sentence: Jam setengah ___.
+    text: Krungu gludhug? Mengko udan deres.
+    question:
+      ar_eg: بيقول إيه عن الجو؟
+      ar: ماذا يقول عن الطقس؟
+      en: What does he say about the weather?
+    options: [سامع الرعد؟ هتمطر جامد, سامع العصافير؟, الجو صحو]
+    answer: 0
     meaning:
-      ar_eg: اتنين ونص.
-      ar: الثانية والنصف.
-      en: Half past two.
-    answers: [telu]
+      ar_eg: سامع الرعد؟ هتمطر جامد.
+      ar: أتسمع الرعد؟ ستمطر بغزارة.
+      en: Hear the thunder? It'll pour later.
+    words: [gludhug]
+  - id: e04
+    type: fill_blank
+    sentence: Udane wis ___, ayo mulih.
+    meaning:
+      ar_eg: المطر ___، يلا نروّح.
+      ar: المطر ___، هيّا نعود.
+      en: The rain has ___, let's go home.
+    options: [lerep, grimis, lintang]
+    answers: [lerep]
+    words: [lerep, grimis, lintang]
     explain:
-      ar_eg: 'setengah بتتحسب للساعة الجاية: «نص تلاتة» = اتنين ونص.'
-      ar: يُضاف setengah إلى الساعة التالية.
-      en: 'setengah counts toward the next hour: "half three" = 2:30.'
-    words: [setengah, telu]
-  - id: e07
+      ar_eg: lerep = المطر وقف، فيلا نروّح. grimis = رذاذ، وlintang = نجمة.
+      ar: lerep = توقّف المطر، فهيا نعود؛ أما grimis فرذاذ، وlintang نجمة.
+      en: lerep = the rain has stopped. grimis = drizzle, lintang = star.
+  - id: e05
     type: fill_blank
-    sentence: ___ Jemuwah, dina iki Setu.
+    sentence: Januari isih ___, saben dina udan.
     meaning:
-      ar_eg: امبارح كان الجمعة، والنهارده السبت.
-      ar: أمس كان الجمعة، واليوم السبت.
-      en: Yesterday was Friday; today is Saturday.
-    options: [Mengko, Wingi, Sesuk]
-    answers: [Wingi]
-    words: [wingi, dina iki]
+      ar_eg: يناير لسه ___، كل يوم بتمطر.
+      ar: يناير ما زال ___، تمطر كل يوم.
+      en: January is still ___; it rains every day.
+    options: [rendheng, ketiga, rembulan]
+    answers: [rendheng]
+    words: [rendheng, ketiga, rembulan]
+    explain:
+      ar_eg: يناير مطر كل يوم = rendheng (موسم المطر). ketiga = موسم الجفاف، وrembulan = القمر.
+      ar: يناير يمطر كل يوم = rendheng (موسم المطر)؛ أما ketiga فموسم الجفاف، وrembulan القمر.
+      en: Rain every day in January = rendheng (rainy season). ketiga = dry season, rembulan = moon.
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «قمر» بالجاوي؟
+      ar: كيف تقول «القمر» بالجاوية؟
+      en: '"Moon" in Javanese?'
+    options: [rembulan, lintang, bledheg]
+    answer: 0
+    explain:
+      ar_eg: rembulan = قمر. lintang = نجمة، وbledheg = صاعقة.
+      ar: rembulan = القمر، أما lintang فنجمة وbledheg صاعقة.
+      en: rembulan = moon. lintang = star, bledheg = lightning.
+    words: [rembulan, lintang, bledheg]
+  - id: e07
+    type: multiple_choice
+    question: Aja neng sawah, akeh bledheg.
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [ماتروحش الغيط، فيه صواعق كتير, روح الغيط، الجو حلو, الغيط مليان مية]
+    answer: 0
+    explain:
+      ar_eg: bledheg = صاعقة. في الغيط المفتوح الصواعق خطر.
+      ar: bledheg = صاعقة، وهي خطرة في الحقول المكشوفة.
+      en: bledheg = lightning; it's dangerous in open fields.
+    words: [bledheg]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: نتقابل بكرة الساعة أربعة العصر.
-      ar: نلتقي غدًا في الرابعة عصرًا.
-      en: Let's meet tomorrow at four in the afternoon.
-    answer: Janjian sesuk jam papat sore.
-    distractors: [esuk, wingi]
-    words: [janjian, sesuk, sore]
+      ar_eg: ده رذاذ بس، يلا نتفرج!
+      ar: إنه رذاذ فقط، هيّا نشاهد!
+      en: It's only drizzling, let's go and watch!
+    answer: Mung grimis, ayo nonton!
+    distractors: [gludhug, lerep]
+    words: [grimis, lerep]
+    explain:
+      ar_eg: mung grimis = رذاذ بس، وayo nonton = يلا نتفرّج. gludhug = رعد، وlerep = وقف، ومش في المعنى.
+      ar: mung grimis = رذاذ فقط، وayo nonton = هيا نشاهد؛ أما gludhug فرعد، وlerep توقّف، وليسا في المعنى.
+      en: mung grimis = only drizzle, ayo nonton = let's watch. gludhug and lerep aren't in the meaning.
   - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الساعة كام دلوقتي؟
-      ar: كم الساعة الآن؟
-      en: What time is it now?
-    answers: ['Saiki jam pira?', Saiki jam pira, 'Saiki jam piro?', Saiki jam piro, 'Jam pira saiki?', Jam pira saiki, 'Jam pira?', Jam pira]
-    words: [saiki, jam, pira]
+    direction: from_target
+    source_text: Bengi iki ora mendhung, akeh lintang.
+    answers_meaning:
+      ar_eg: [الليلة مفيش غيم، فيه نجوم كتير, الليلة صافية والنجوم كتير]
+      ar: [الليلة غير غائمة، والنجوم كثيرة]
+      en: ['It isn''t cloudy tonight; there are lots of stars', 'Clear night, lots of stars']
+    words: [lintang]
   - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: النهارده اتنين ليجي.
-      ar: اليوم الاثنين ليغي.
-      en: Today is Monday Legi.
-    answers: [Dina iki Senen Legi., Dina iki Senen Legi, Dina iki dina Senen Legi., Dina iki dina Senen Legi, Saiki Senen Legi., Saiki Senen Legi]
-    words: [dina iki, Senen, Legi]
-  - id: e11
-    type: dictation
-    text: Senen, Selasa, Rebo, Kemis
-    meaning:
-      ar_eg: الاتنين، التلات، الأربع، الخميس
-      ar: الاثنين، الثلاثاء، الأربعاء، الخميس
-      en: Monday, Tuesday, Wednesday, Thursday
-    words: [Senen, Selasa, Rebo, Kemis]
-  - id: e12
     type: speaking
-    text: Jam pira? — Jam setengah wolu.
+    text: Yen rendheng akeh gludhug, yen ketiga ora.
     meaning:
-      ar_eg: الساعة كام؟ — سبعة ونص.
-      ar: كم الساعة؟ — السابعة والنصف.
-      en: What time is it? — Half past seven.
-    words: [jam, pira, setengah]
+      ar_eg: في موسم المطر الرعد كتير، وفي الجفاف لأ.
+      ar: في موسم المطر رعد كثير، وفي الجفاف لا.
+      en: In the rainy season there's lots of thunder; in the dry season, none.
+    words: [rendheng, ketiga, gludhug]
 dialogue:
-  title: Reog dina Setu
   lines:
-    - speaker: Mohamed
-      text: Sari, Setu ana Reog?
-      ar_eg: ساري، فيه ريوج يوم السبت؟
-      ar: يا ساري، هل هناك عرض ريوغ يوم السبت؟
-      en: Sari, is there Reog on Saturday?
     - speaker: Sari
-      text: Ana! Setu Pon, jam wolu bengi, neng alun-alun.
-      ar_eg: فيه! سبت بون، الساعة تمانية بالليل، في الميدان.
-      ar: نعم! السبت بون، في الثامنة ليلًا، في الساحة.
-      en: Yes! Saturday Pon, eight p.m., at the town square.
+      text: Mohamed, krungu gludhug? Saiki wis mlebu rendheng.
+      ar_eg: يا محمد، سامع الرعد؟ دخلنا موسم المطر خلاص.
+      ar: يا محمد، أتسمع الرعد؟ دخلنا موسم المطر.
+      en: Mohamed, hear the thunder? The rainy season's started.
     - speaker: Mohamed
-      text: Jemuwah aku ora isa, Setu isa. Ketemu jam pira?
-      ar_eg: الجمعة مقدرش، السبت ينفع. نتقابل الساعة كام؟
-      ar: لا أستطيع الجمعة، والسبت يناسبني. في أي ساعة نلتقي؟
-      en: I can't on Friday, Saturday works. What time shall we meet?
+      text: Neng Kairo jarang udan, hehe.
+      ar_eg: في القاهرة نادرًا لما بتمطر، هههه.
+      ar: في القاهرة نادرًا ما تمطر، هه.
+      en: In Cairo it rarely rains, hehe.
     - speaker: Sari
-      text: Jam setengah wolu, neng ngarep alun-alun.
-      ar_eg: سبعة ونص، قدام الميدان.
-      ar: في السابعة والنصف، أمام الساحة.
-      en: Half past seven, in front of the town square.
+      text: Neng kene ana rendheng karo ketiga. Saiki sore mesthi udan.
+      ar_eg: هنا فيه موسم مطر وموسم جفاف. دلوقتي كل عصر بتمطر.
+      ar: هنا موسم مطر وموسم جفاف. والآن تمطر كل عصر.
+      en: Here we have a rainy season and a dry one. Now it always rains in the afternoon.
     - speaker: Mohamed
-      text: Sip! Setu ya.
-      ar_eg: تمام! أشوفك السبت.
-      ar: ممتاز! إلى السبت.
-      en: Great! See you Saturday.
-souvenir:
-  id: j2.u04.souvenir
-  title: Reog Ponorogo
-  note:
-    ar_eg: 'الريوج فخر بونوروجو: راقص واحد شايل قناع راس نمر عليه ريش طاووس ضخم، ممكن يوزن حوالي خمسين كيلو، وشايله بسنانه! وحوالين العرض ده التقويم الجاوي عايش لحد النهارده، الأسبوع العادي ماشي جنب أسبوع السوق، و«Jemuwah Kliwon» ليلة الكل عارفها. دلوقتي تقدر تسأل عن الساعة واليوم وتحدد ميعادك بالجاوي، فمتتأخرش على العرض!'
-    ar: 'الريوغ فخر بونوروغو: راقص واحد يحمل قناع رأس نمر يعلوه ريش طاووس هائل قد يقارب وزنه خمسين كيلوغرامًا، ويحمله بأسنانه! وحول هذا العرض يعيش التقويم الجاوي إلى اليوم، فيسير الأسبوع العادي إلى جانب أسبوع السوق، وليلة «Jemuwah Kliwon» يعرفها الجميع. صرت تسأل عن الساعة واليوم وتحدد موعدك بالجاوية، فلا تتأخر عن العرض!'
-    en: Reog is Ponorogo's pride — a single dancer carries a tiger-head mask crowned with huge peacock feathers, which can weigh around fifty kilos, and holds it with his teeth! Around it the Javanese calendar is still alive, the seven-day week running beside the market week, and everyone knows "Jemuwah Kliwon". You can now ask the time and day and fix a meeting in Javanese — so don't be late for the show!
+      text: Lho, saiki mung grimis. Ayo metu!
+      ar_eg: إيه ده، دلوقتي رذاذ بس. يلا نخرج!
+      ar: انظر، الآن رذاذ فقط. هيا نخرج!
+      en: Hey, it's only drizzling now. Let's go out!
+    - speaker: Sari
+      text: Sik, ngenteni lerep. Mengko bengi akeh lintang.
+      ar_eg: استنى لما تقف. بالليل هيبقى فيه نجوم كتير.
+      ar: انتظر حتى يتوقف. الليلة ستكون النجوم كثيرة.
+      en: Hang on, let's wait for it to stop. Tonight there'll be lots of stars.
+new_words:
+  - word: rendheng
+    pos: noun
+    ar_eg: موسم المطر
+    ar: موسم المطر
+    en: rainy season
+  - word: ketiga
+    pos: noun
+    ar_eg: موسم الجفاف
+    ar: موسم الجفاف
+    en: dry season
+  - word: gludhug
+    pos: noun
+    ar_eg: رعد (guntur)
+    ar: رعد (guntur)
+    en: thunder (guntur)
+  - word: bledheg
+    pos: noun
+    ar_eg: صاعقة، برق بيضرب (petir)
+    ar: صاعقة (petir)
+    en: lightning strike (petir)
+  - word: grimis
+    pos: noun
+    ar_eg: رذاذ، مطر خفيف (gerimis)
+    ar: رذاذ (gerimis)
+    en: drizzle (gerimis)
+  - word: lerep
+    pos: verb
+    ar_eg: المطر وقف / هدي (reda)
+    ar: توقّف المطر / هدأ (reda)
+    en: (rain) to stop, ease off (reda)
+  - word: rembulan
+    pos: noun
+    ar_eg: قمر (bulan)
+    ar: القمر (bulan)
+    en: moon (bulan)
+  - word: lintang
+    pos: noun
+    ar_eg: نجمة (bintang)
+    ar: نجمة (bintang)
+    en: star (bintang)
 review:
   status: draft
   verified: false

@@ -1,0 +1,266 @@
+schema: kabar.lesson/v1
+id: j4.u01.l12
+language: jv
+title: Ulangan J4.1
+can_do:
+  ar_eg: تكرّم التاني من غير ما تكرّم نفسك.
+  ar: أن توقّر غيرك دون أن توقّر نفسك.
+  en: Honour without self-honouring.
+slides:
+  - title: Kangge panjenengan, kangge kula
+    body:
+      ar_eg: |
+        الوحدة كلها في جدول واحد. الكبير ← إنت:
+        dhahar ← nedha · ngunjuk ← nginum · kersa ← purun · tindak ← kesah · sare ← tilem · kondur ← wangsul · rawuh ← dhateng · lenggah ← linggih · ngendika ← sanjang · mirsani ← ningali.
+        وsiram للكبير، وإنت adus.
+        حتى الكبير لما يتكلم عن نفسه بيقول kesah وnedha. krama inggil دايمًا للتاني.
+      ar: |
+        الوحدة كلها في جدول واحد، الكبير ← أنت:
+        dhahar ← nedha · ngunjuk ← nginum · kersa ← purun · tindak ← kesah · sare ← tilem · kondur ← wangsul · rawuh ← dhateng · lenggah ← linggih · ngendika ← sanjang · mirsani ← ningali.
+        وsiram للكبير وadus لك.
+        وحتى الكبير يقول عن نفسه kesah وnedha؛ فـ krama inggil للآخر دائمًا.
+      en: |
+        The whole unit in one table, elder ← you:
+        dhahar ← nedha · ngunjuk ← nginum · kersa ← purun · tindak ← kesah · sare ← tilem · kondur ← wangsul · rawuh ← dhateng · lenggah ← linggih · ngendika ← sanjang · mirsani ← ningali.
+        siram for the elder, adus for you.
+        Even the elder says kesah and nedha about himself: krama inggil is always for the other person.
+    grammar: jv.krama-inggil.verbs
+    examples:
+      - text: Kula sampun nedha. Panjenengan sampun dhahar, Pak?
+        ar_eg: أنا أكلت. وحضرتك أكلت يا أستاذ؟
+        ar: لقد أكلتُ. وهل تفضّلتَ بالأكل يا سيدي؟
+        en: I've eaten. Have you eaten, sir?
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dhahar
+        ar_eg: nedha بتاعة الكبير (ياكل)
+        ar: nedha للكبير (يأكل)
+        en: the elder's nedha (eat)
+      - text: kondur
+        ar_eg: wangsul بتاعة الكبير (يرجع البيت)
+        ar: wangsul للكبير (يعود)
+        en: the elder's wangsul (go home)
+      - text: sare
+        ar_eg: tilem بتاعة الكبير (ينام)
+        ar: tilem للكبير (ينام)
+        en: the elder's tilem (sleep)
+      - text: mirsani
+        ar_eg: ningali بتاعة الكبير (يشوف)
+        ar: ningali للكبير (يرى)
+        en: the elder's ningali (see)
+    words: [dhahar, kondur, sare, mirsani]
+  - id: e02
+    type: listen
+    text: Bapak ngendika, Simbah sampun dhahar.
+    options: ['Bapak ngendika, Simbah sampun dhahar.', 'Bapak sanjang, Simbah sampun nedha.', 'Bapak ngendika, Simbah saweg sare.']
+    answer: 0
+    meaning:
+      ar_eg: بابا قال إن تيتة أكلت.
+      ar: قال الوالد إن الجدة قد أكلت.
+      en: Father said Grandma has eaten.
+    words: [ngendika, dhahar]
+  - id: e03
+    type: listen
+    text: Panjenengan kersa ngunjuk kopi, Pak?
+    options: ['Panjenengan purun nginum kopi, Pak?', 'Panjenengan kersa ngunjuk kopi, Pak?', 'Panjenengan kersa dhahar, Pak?']
+    answer: 1
+    meaning:
+      ar_eg: حضرتك تحب تشرب قهوة يا أستاذ؟
+      ar: هل تودّ شرب القهوة يا سيدي؟
+      en: Would you like some coffee, sir?
+    words: [kersa, ngunjuk]
+  - id: e04
+    type: fill_blank
+    sentence: Kula sampun ___, Bu. Matur nuwun.
+    meaning:
+      ar_eg: أنا أكلت يا هانم. شكرًا.
+      ar: لقد أكلتُ يا سيدتي. شكرًا.
+      en: I've eaten, ma'am. Thank you.
+    options: [dhahar, nedha, mangan]
+    answers: [nedha]
+    words: [nedha]
+    explain:
+      ar_eg: "عن نفسك مع الكبيرة: nedha. dhahar للكبير بس، وmangan نغوكو."
+      ar: "عن نفسك أمام الكبيرة: nedha، أما dhahar فللكبير وحده، وmangan نغوكو."
+      en: "About yourself to an elder: nedha. dhahar is only for elders, mangan is ngoko."
+  - id: e05
+    type: fill_blank
+    sentence: Simbah ___, Mas Dimas sampun wangsul?
+    meaning:
+      ar_eg: "تيتة بتسأل: دِيماس رجع؟"
+      ar: "سألت الجدة: هل عاد ديماس؟"
+      en: Grandma is asking whether Dimas is back.
+    options: [taken, ndangu, sanjang]
+    answers: [ndangu]
+    explain:
+      ar_eg: السؤال سؤال تيتة، يبقى ndangu. ودِيماس أصغر منها، فهي بتقول عنه wangsul عادي.
+      ar: السؤال سؤال الجدة فيكون ndangu، وديماس أصغر منها فتقول عنه wangsul.
+      en: It's Grandma asking, so ndangu. Dimas is younger than her, so she says plain wangsul about him.
+    words: [ndangu, wangsul]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: بابا بيتفرج على التلفزيون.
+      ar: الوالد يشاهد التلفاز.
+      en: Father is watching TV.
+    answer: Bapak saweg mirsani TV.
+    distractors: [ningali, lagi]
+    words: [saweg, mirsani]
+    explain:
+      ar_eg: الكبير بيتفرج = mirsani، وsaweg = بيعمل دلوقتي. ningali لنفسك، وlagi نغوكو.
+      ar: الكبير يشاهد = mirsani، وsaweg = يفعل الآن، أما ningali فلنفسك، وlagi نغوكو.
+      en: An elder watching is mirsani, and saweg = "is doing". ningali is for yourself, lagi is ngoko.
+  - id: e07
+    type: speaking
+    text: Kula badhe wangsul rumiyin. Sugeng tindak, Pak.
+    meaning:
+      ar_eg: أنا هروّح بقى. توصل بالسلامة يا أستاذ.
+      ar: سأعود إلى البيت الآن. في أمان الله يا سيدي.
+      en: I'll head home now. Safe journey, sir.
+    words: [wangsul, sugeng tindak]
+  - id: e08
+    type: match_pairs
+    pairs:
+      - text: nimbali
+        ar_eg: ينادي (للكبير)
+        ar: ينادي (للكبير)
+        en: call for (elder)
+      - text: midhanget
+        ar_eg: يسمع (للكبير)
+        ar: يستمع (للكبير)
+        en: listen (elder)
+      - text: jumeneng
+        ar_eg: يقف (للكبير)
+        ar: يقف (للكبير)
+        en: stand (elder)
+      - text: nitih
+        ar_eg: يركب (للكبير)
+        ar: يركب (للكبير)
+        en: ride (elder)
+      - text: kesupen
+        ar_eg: ينسى (للكبير)
+        ar: ينسى (للكبير)
+        en: forget (elder)
+      - text: miyos
+        ar_eg: يتولد (للكبير)
+        ar: يولد (للكبير)
+        en: be born (elder)
+    words: [nimbali, midhanget, jumeneng, nitih, kesupen, miyos]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: ngrantos
+        ar_eg: يستنّى
+        ar: ينتظر
+        en: wait
+      - text: wedang
+        ar_eg: مشروب سخن
+        ar: شراب ساخن
+        en: hot drink
+      - text: andhong
+        ar_eg: حنطور
+        ar: عربة خيل
+        en: horse carriage
+      - text: ngampil
+        ar_eg: يستلف (للكبير)
+        ar: يستعير (للكبير)
+        en: borrow (elder)
+      - text: serat
+        ar_eg: جواب، رسالة
+        ar: رسالة
+        en: letter
+      - text: tembung
+        ar_eg: كلمة
+        ar: كلمة
+        en: word
+    words: [ngrantos, wedang, andhong, ngampil, serat, tembung]
+  - id: e10
+    type: fill_blank
+    sentence: Simbah ___ wedang jahe.
+    meaning:
+      ar_eg: تيتة ___ جنزبيل سخن.
+      ar: الجدّة ___ شراب الزنجبيل.
+      en: Grandma ___ a hot ginger drink.
+    options: [ngersakaken, kepengin, ngrungokake]
+    answers: [ngersakaken]
+    words: [ngersakaken, kepengin, ngrungokake, wedang, jahe]
+    explain:
+      ar_eg: تيتة عايزة = ngersakaken (krama inggil). kepengin نغوكو، وngrungokake يعني يسمع.
+      ar: الجدّة تريد = ngersakaken (krama inggil)، أما kepengin فنغوكو، وngrungokake معناه يستمع.
+      en: Grandma wanting is ngersakaken (krama inggil). kepengin is ngoko, ngrungokake means "listen".
+  - id: e11
+    type: multiple_choice
+    question: Nyuwun pangapunten, Pak, kula ___ nami panjenengan.
+    question_meaning:
+      ar_eg: متأسف يا أستاذ، أنا ___ اسم حضرتك.
+      ar: أعتذر يا سيدي، لقد ___ اسمك.
+      en: I'm sorry, sir, I've ___ your name.
+    options: [kesupen, supe, eling]
+    answer: 1
+    explain:
+      ar_eg: عن نفسك supe، وkesupen للكبير بس.
+      ar: عن نفسك supe، أما kesupen فللكبير فقط.
+      en: 'About yourself: supe. kesupen is only for the elder.'
+    words: [supe, kesupen, eling]
+  - id: e12
+    type: fill_blank
+    sentence: Bapak ___ koran wonten pendhapa.
+    meaning:
+      ar_eg: الأستاذ بي___ الجرنال في البندوبو.
+      ar: الوالد ___ الجريدة في البندوبو.
+      en: Father is ___ the newspaper in the pendhapa.
+    options: [maos, nyerat, ndhawuhi]
+    answers: [maos]
+    words: [maos, nyerat, ndhawuhi]
+    explain:
+      ar_eg: الأب بيقرا الجرنال = maos. nyerat يعني يكتب، وndhawuhi يعني يأمر.
+      ar: الوالد يقرأ الجريدة = maos، أما nyerat فمعناه يكتب، وndhawuhi يأمر.
+      en: Father reading the paper is maos. nyerat means "write", ndhawuhi "tell to".
+dialogue:
+  title: Dalu-dalu dhateng Tugu
+  lines:
+    - speaker: Mohamed
+      text: Pak, panjenengan badhe tindak pundi?
+      ar_eg: يا أستاذ، حضرتك رايح فين؟
+      ar: يا سيدي، إلى أين تذهب؟
+      en: Sir, where are you going?
+    - speaker: Pak Harsono
+      text: Kula badhe kesah dhateng Tugu, Mas.
+      ar_eg: أنا رايح التوغو يا ابني.
+      ar: أنا ذاهب إلى التوغو يا بني.
+      en: I'm going to the Tugu.
+    - speaker: Mohamed
+      text: Kula ugi, Pak. Simbah kersa tindak ugi?
+      ar_eg: وأنا كمان يا أستاذ. وتيتة تحب تيجي هي كمان؟
+      ar: وأنا أيضًا يا سيدي. هل تودّ الجدة أن تذهب أيضًا؟
+      en: Me too, sir. Would Grandma like to come too?
+    - speaker: Pak Harsono
+      text: Mboten, Mas. Simbah saweg sare.
+      ar_eg: لا يا ابني. تيتة نايمة.
+      ar: لا يا بني. الجدة نائمة.
+      en: No. Grandma's asleep.
+    - speaker: Mohamed
+      text: Inggih. Mangga, Pak, panjenengan rumiyin.
+      ar_eg: ماشي. اتفضل يا أستاذ، حضرتك الأول.
+      ar: حسنًا. تفضّل يا سيدي، أنت أولًا.
+      en: All right. After you, sir.
+    - speaker: Pak Harsono
+      text: Matur nuwun, Mas.
+      ar_eg: شكرًا يا ابني.
+      ar: شكرًا يا بني.
+      en: Thank you.
+souvenir:
+  id: j4.u01.souvenir
+  title: Tugu Pal Putih
+  note:
+    ar_eg: |
+      التوغو هو العمود الأبيض في نص تقاطع يوجياكارتا، وبيتقال إنه واقف على خط وهمي واحد بيربط جبل ميرابي بقصر السلطان وبالبحر الجنوبي. والخط ده («المحور الكوني» ليوجيا) دخل قايمة التراث العالمي لليونسكو سنة ٢٠٢٣. وإنت واقف قدامه افتكر درس الوحدة: «Bapak tindak» آه، «kula tindak» لأ — التكريم دايمًا للتاني.
+    ar: |
+      التوغو عمود أبيض في وسط تقاطع يوغياكارتا، ويقال إنه يقع على خط متخيَّل واحد يصل جبل ميرابي بقصر السلطان وبالبحر الجنوبي. وقد أُدرج هذا المحور («المحور الكوني» ليوغياكارتا) في قائمة التراث العالمي لليونسكو سنة ٢٠٢٣. وأنت أمامه تذكّر درس الوحدة: «Bapak tindak» نعم، و«kula tindak» لا؛ فالتوقير للآخر دائمًا.
+    en: |
+      The Tugu is the white pillar in the middle of Yogyakarta's crossroads, said to stand on one imaginary line linking Mount Merapi, the Sultan's palace and the southern sea. That line, Yogyakarta's "Cosmological Axis", became a UNESCO World Heritage Site in 2023. Standing in front of it, remember the unit's lesson: "Bapak tindak", yes; "kula tindak", no. Honour always goes to the other person.
+review:
+  status: draft
+  verified: false

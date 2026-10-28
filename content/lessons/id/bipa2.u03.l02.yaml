@@ -41,6 +41,10 @@ exercises:
     options: [Harap tenang., Dilarang tenang., Awas tenang.]
     answer: 0
     words: [harap, tenang]
+    explain:
+      ar_eg: "Harap + فعل = «برجاء»: Harap tenang = برجاء الهدوء. Dilarang = ممنوع، وAwas = احترس، وما ينفعوش مع tenang."
+      ar: "Harap + فعل = «يُرجى»: Harap tenang. أما Dilarang فـ«ممنوع» وAwas «احذر»، ولا تناسبان tenang."
+      en: "Harap + verb = \"please\": Harap tenang. Dilarang is \"forbidden\", Awas is \"watch out\"; neither fits tenang."
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -84,12 +88,12 @@ exercises:
     words: [harap, tenang]
   - id: e06
     type: speaking
-    text: Mohon perhatian. Harap antre di sini.
+    text: Bahasanya resmi. Mohon perhatian, harap antre di sini.
     meaning:
-      ar_eg: انتباه من فضلكم. برجاء الوقوف في الطابور هنا.
-      ar: انتباه من فضلكم. يُرجى الوقوف في الصف هنا.
-      en: Attention please. Please queue here.
-    words: [mohon, perhatian, harap, antre]
+      ar_eg: (بلغة رسمية) انتباه من فضلكم، برجاء الوقوف في الطابور هنا.
+      ar: (بلغة رسمية) انتباه من فضلكم، يُرجى الوقوف في الصف هنا.
+      en: (In formal language) Attention please, please queue here.
+    words: [resmi, mohon, perhatian, harap, antre]
   - id: e07
     type: listen
     text: Mohon lepas alas kaki di sini.
@@ -110,6 +114,38 @@ exercises:
     options: [lepas, antre, tenang]
     answers: [lepas]
     words: [lepas, alas kaki, harap]
+    explain:
+      ar_eg: "lepas = يقلع: lepas alas kaki = اقلع الجزمة، زي اللي في المساجد والمعابد. antre = يقف في طابور، وtenang = هادي."
+      ar: "lepas = يخلع: lepas alas kaki. أما antre فالوقوف في الطابور وtenang الهدوء."
+      en: "lepas = take off: lepas alas kaki, as at mosques and temples. antre is to queue, tenang is quiet."
+  - id: e09
+    type: fill_blank
+    sentence: «Harap tenang» itu bahasa ___.
+    meaning:
+      ar_eg: «Harap tenang» دي لغة رسمية.
+      ar: «Harap tenang» لغة رسمية.
+      en: «Harap tenang» is formal language.
+    options: [resmi, tenang, lepas]
+    answers: [resmi]
+    explain:
+      ar_eg: resmi = رسمي. اللافتات والإعلانات بتتكتب بالرسمي (harap، mohon)، والصحاب بيقولوا لبعض «Sst, tenang!».
+      ar: resmi = رسمي. تُكتب اللافتات والإعلانات بالفصيح (harap، mohon)، ويقول الأصدقاء «Sst, tenang!».
+      en: resmi = official, formal. Signs and announcements use it (harap, mohon); friends just say «Sst, tenang!».
+    words: [resmi, tenang]
+  - id: e10
+    type: multiple_choice
+    question: Mana yang bahasa resmi?
+    question_meaning:
+      ar_eg: أنهي واحدة بالرسمي؟
+      ar: أيّها باللغة الرسمية؟
+      en: Which one is formal language?
+    options: [Harap tenang., 'Tenang, ya!', 'Sst, tenang!']
+    answer: 0
+    explain:
+      ar_eg: Harap + فعل هي لغة اللافتات الرسمية. التانيين كلام صحاب.
+      ar: Harap + فعل لغة اللافتات الرسمية، والأخريان كلام بين الأصدقاء.
+      en: Harap + verb is the language of official signs; the other two are how friends talk.
+    words: [resmi, harap, tenang]
 dialogue:
   lines:
     - speaker: Mohamed
@@ -168,6 +204,11 @@ new_words:
     ar_eg: جزمة / صندل (أي حاجة في الرجل)
     ar: الحذاء أو النعل
     en: footwear
+  - word: resmi
+    pos: adjective
+    ar_eg: رسمي (bahasa resmi = اللغة الرسمية، لغة اللافتات والإعلانات)
+    ar: رسمي (bahasa resmi = اللغة الرسمية)
+    en: official, formal (bahasa resmi = formal language, as on signs and announcements)
 review:
   status: draft
   verified: false

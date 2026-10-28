@@ -18,6 +18,7 @@ slides:
         - TNI = الجيش الإندونيسي (Tentara Nasional Indonesia)
         - lembaga negara = مؤسسة من مؤسسات الدولة، زي DPR والمحكمة الدستورية
         خد بالك: في الأخبار، sementara itu = «في الوقت نفسه»، بتنقل لخبر تاني.
+        - في الكلام: udah = sudah، habis = sesudah.
       ar: |
         نشرة أخبار مؤلَّفة للدرس:
         Pembawa berita: "Selamat malam. DPR hari ini mengesahkan undang-undang baru tentang perlindungan laut. Sementara itu, TNI membantu warga yang terkena banjir di Manokwari."
@@ -27,6 +28,7 @@ slides:
         - TNI = الجيش الإندونيسي (Tentara Nasional Indonesia)
         - lembaga negara = مؤسسة من مؤسسات الدولة، كالبرلمان والمحكمة الدستورية
         لاحظ أنّ sementara itu في الأخبار تعني «في الأثناء»، وتنقل إلى خبر آخر.
+        - في الكلام اليومي: udah = sudah، habis = sesudah.
       en: |
         A news bulletin invented for the lesson:
         Pembawa berita: "Selamat malam. DPR hari ini mengesahkan undang-undang baru tentang perlindungan laut. Sementara itu, TNI membantu warga yang terkena banjir di Manokwari."
@@ -36,6 +38,7 @@ slides:
         - TNI = the Indonesian armed forces (Tentara Nasional Indonesia)
         - lembaga negara = a state institution, like the DPR or the Constitutional Court
         Note that in the news, sementara itu ("meanwhile") moves on to the next story.
+        - In speech: udah = sudah, habis = sesudah.
 exercises:
   - id: e01
     type: match_pairs
@@ -74,6 +77,10 @@ exercises:
     options: [TNI, DPR, pembawa berita]
     answer: 1
     words: [DPR, mengesahkan]
+    explain:
+      ar_eg: DPR (البرلمان) هو اللي بيعمل القوانين مع الحكومة. TNI = الجيش، وpembawa berita = مذيع.
+      ar: DPR (مجلس النواب) يسنّ القوانين مع الحكومة. TNI الجيش وpembawa berita مذيع.
+      en: The DPR passes laws with the government. TNI is the army.
   - id: e03
     type: fill_blank
     sentence: DPR akhirnya ___ undang-undang itu setelah rapat panjang.
@@ -84,6 +91,10 @@ exercises:
     options: [mengesahkan, menyesuaikan, menyebarkan]
     answers: [mengesahkan]
     words: [mengesahkan, undang-undang]
+    explain:
+      ar_eg: mengesahkan undang-undang = يصدّق على قانون. menyesuaikan = يظبط وmenyebarkan = ينشر.
+      ar: mengesahkan = يُقرّ القانون. menyesuaikan يكيّف وmenyebarkan ينشر.
+      en: mengesahkan undang-undang = pass a law.
   - id: e04
     type: listen
     text: Sementara itu, TNI mengirim kapal untuk membantu korban banjir.
@@ -106,6 +117,10 @@ exercises:
     answer: Pembawa berita membaca berita dengan tenang.
     distractors: [DPR, TNI]
     words: [pembawa berita]
+    explain:
+      ar_eg: Pembawa berita (المذيع) + membaca berita + dengan tenang (بهدوء). DPR وTNI زيادة.
+      ar: Pembawa berita membaca berita dengan tenang. DPR وTNI زائدتان.
+      en: Pembawa berita + membaca berita + dengan tenang. DPR and TNI are extra.
   - id: e06
     type: multiple_choice
     question_meaning:
@@ -118,6 +133,10 @@ exercises:
       - Toko roti di pasar
     answer: 2
     words: [lembaga negara]
+    explain:
+      ar_eg: lembaga negara = مؤسسة من مؤسسات الدولة، زي DPR والمحكمة الدستورية. محل العيش مش منهم.
+      ar: lembaga negara = مؤسسة دولة كمجلس النواب والمحكمة الدستورية، لا المخبز.
+      en: A bakery is not a state institution.
   - id: e07
     type: translate
     direction: to_target
@@ -170,12 +189,12 @@ dialogue:
       ar: بقيت ثلاث دقائق على البثّ. الخبر الأول عن البرلمان.
       en: Three minutes to air. First story's about the DPR.
     - speaker: Mohamed
-      text: Undang-undang perlindungan laut sudah disahkan, ya, Bu?
+      text: Undang-undang perlindungan laut udah disahkan, ya, Bu?
       ar_eg: قانون حماية البحر اتقرّ خلاص، صح يا مدام؟
       ar: أُقرّ قانون حماية البحر، أليس كذلك يا سيّدتي؟
       en: The marine protection law has been passed, right, Bu?
     - speaker: Bu Debora
-      text: Betul, tadi siang. Sesudah itu berita TNI dan banjir.
+      text: Betul, tadi siang. Habis itu berita TNI dan banjir.
       ar_eg: صح، الضهر. وبعده خبر الجيش والفيضان.
       ar: صحيح، ظهر اليوم. وبعده خبر الجيش والفيضان.
       en: Yes, this afternoon. After that, the TNI and the flood.
@@ -208,6 +227,7 @@ new_words:
   - word: mengesahkan
     pos: verb
     arabic: صحّ
+    bridge: sah
     ar_eg: يقرّ / يصدّق على
     ar: يُقرّ
     en: to pass, ratify

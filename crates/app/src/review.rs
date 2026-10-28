@@ -18,6 +18,7 @@ use kabar_protocol::lesson::Localized;
 use kabar_protocol::srs::{Card, CardKind, MeaningShift, Rating, ReviewMode, StudyLanguage};
 use serde::Deserialize;
 
+use crate::Screen;
 use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::i18n::Msg;
@@ -619,9 +620,20 @@ fn ReviewHome() -> Element {
     rsx! {
         div { class: "card",
             h2 { "{ui.t(Msg::NavReview)}" }
+            // Due and new start a classic round; the rest open Stats.
             div { class: "rev-stats",
-                Stat { label: Msg::RevDue, value: ui.num(stats.due as u64), accent: true }
-                Stat { label: Msg::RevNew, value: ui.num(stats.new_available as u64), accent: false }
+                Stat {
+                    label: Msg::RevDue,
+                    value: ui.num(stats.due as u64),
+                    accent: true,
+                    start: stats.due > 0,
+                }
+                Stat {
+                    label: Msg::RevNew,
+                    value: ui.num(stats.new_available as u64),
+                    accent: false,
+                    start: stats.new_available > 0,
+                }
                 Stat { label: Msg::RevReviewedToday, value: ui.num(stats.reviews_today as u64), accent: false }
                 Stat {
                     label: Msg::RevRetention,
@@ -639,6 +651,11 @@ fn ReviewHome() -> Element {
         }
         div { class: "card",
             h3 { class: "rev-h3", "{ui.t(Msg::RevForecast)}" }
+            // The week's bars open Stats, where the forecast runs further.
+            button {
+                class: "tap tap-plain forecast-tap",
+                aria_label: "{ui.t(Msg::RevForecast)}",
+                onclick: move |_| crate::stats::open(ui, Screen::Stats),
             ol { class: "forecast",
                 for (i, n) in forecast.iter().copied().enumerate() {
                     li {
@@ -658,6 +675,7 @@ fn ReviewHome() -> Element {
                         }
                     }
                 }
+            }
             }
             crate::stats::StatsButton {}
         }
@@ -694,11 +712,22 @@ fn ReviewHome() -> Element {
     }
 }
 
+/// A number that opens what it counts: a classic round when `start` is
+/// given, else Stats.
 #[component]
-fn Stat(label: Msg, value: String, accent: bool) -> Element {
+fn Stat(label: Msg, value: String, accent: bool, #[props(default)] start: bool) -> Element {
     let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
     rsx! {
-        div { class: if accent { "rev-stat accent" } else { "rev-stat" },
+        button {
+            class: if accent { "rev-stat accent tap" } else { "rev-stat tap" },
+            onclick: move |_| {
+                if start {
+                    engine.start(ReviewMode::Classic);
+                } else {
+                    crate::stats::open(ui, Screen::Stats);
+                }
+            },
             span { class: "rev-stat-value", "{value}" }
             span { class: "rev-stat-label", "{ui.t(label)}" }
         }
@@ -762,6 +791,45 @@ fn Badges(card: Card) -> Element {
                     span { class: "badge warn", "{ui.t(Msg::RevUnverified)}" }
                 }
             }
+        }
+    }
+}
+
+/// Javanese words spelled like an Indonesian word with another meaning
+/// (awan "midday" ≠ Indonesian awan "cloud"), from the lessons'
+/// `new_words[].false_friend` (#293): lowercase word → the Indonesian twin.
+/// Read once, the first time a card asks.
+static JV_TWINS: std::sync::LazyLock<std::collections::HashMap<String, String>> =
+    std::sync::LazyLock::new(|| {
+        crate::embedded::all(crate::embedded::LESSONS)
+            .filter(|(id, text)| id.starts_with('j') && text.contains("false_friend:"))
+            .filter_map(|(id, text)| match kabar_core::lesson::parse_lesson(&text) {
+                Ok(l) => Some(l),
+                Err(e) => {
+                    crate::diag::report!("reading {id} for false friends failed: {e}");
+                    None
+                }
+            })
+            .flat_map(|l| l.new_words)
+            .filter_map(|w| Some((w.word.to_lowercase(), w.false_friend?)))
+            .collect()
+    });
+
+/// The Indonesian word a Javanese card's word is a false friend of (#379).
+fn indonesian_twin(card: &Card) -> Option<&'static str> {
+    (card.language == StudyLanguage::Jv)
+        .then(|| JV_TWINS.get(&card.word.trim().to_lowercase()).map(String::as_str))
+        .flatten()
+}
+
+/// «≠ not like Indonesian awan»: the meaning memory will offer is the wrong one.
+#[component]
+fn TwinWarning(twin: &'static str) -> Element {
+    let ui = use_context::<Ui>();
+    rsx! {
+        span { class: "badge twin",
+            span { "≠ {ui.t(Msg::RevNotIndonesian)} " }
+            bdi { lang: "id", dir: "ltr", class: "latin", "{twin}" }
         }
     }
 }
@@ -835,6 +903,9 @@ fn Back(card: Card) -> Element {
             // Only on the answer side: on the front it would hint the answer.
             Pron { text: card.word.clone(), tag: card.language.tag() }
             p { class: "rev-meaning", "{localized(&ui, &card.meaning)}" }
+            if let Some(twin) = indonesian_twin(&card) {
+                TwinWarning { twin }
+            }
             if let Some(note) = &card.note {
                 p { class: "muted rev-note", Isolated { text: localized(&ui, note).to_string() } }
             }
@@ -1369,6 +1440,9 @@ fn WallCard(card: Card, flipped: bool, sort: Callback<(String, Pile)>) -> Elemen
                 if false_friend {
                     span { class: "badge alarm", "{ui.t(Msg::RevFalseFriend)}" }
                 }
+                if let Some(twin) = indonesian_twin(&card) {
+                    TwinWarning { twin }
+                }
                 if card.language == StudyLanguage::Jv && !card.verified {
                     span { class: "badge warn", "{ui.t(Msg::RevUnverified)}" }
                 }
@@ -1608,6 +1682,30 @@ mod tests {
         // Nor does a deck built with another scheduler.
         let travel = crate::schedule::scheduler_at(420, &Default::default());
         assert!(!Rc::ptr_eq(&deck(&db, &sched), &deck(&db, &travel)));
+    }
+
+    #[test]
+    fn javanese_false_friends_reach_review_cards() {
+        let card = |word: &str, language| Card {
+            v: 1,
+            id: format!("{word}#r"),
+            word: word.into(),
+            language,
+            kind: CardKind::Recognition,
+            meaning: Default::default(),
+            note: None,
+            example: None,
+            arabic: None,
+            source: Default::default(),
+            source_ref: None,
+            verified: false,
+        };
+        assert_eq!(indonesian_twin(&card("awan", StudyLanguage::Jv)), Some("awan"));
+        assert_eq!(indonesian_twin(&card("Mau", StudyLanguage::Jv)), Some("mau"));
+        // Indonesian awan is just a cloud; ordinary Javanese words carry nothing.
+        assert_eq!(indonesian_twin(&card("awan", StudyLanguage::Id)), None);
+        assert_eq!(indonesian_twin(&card("enjing", StudyLanguage::Jv)), None);
+        assert!(JV_TWINS.len() >= 10, "{:?}", JV_TWINS.keys());
     }
 
     #[test]

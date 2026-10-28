@@ -1,197 +1,243 @@
 schema: kabar.lesson/v1
 id: bipa4.u04.l04
 language: id
-title: Pro dan kontra
+title: Koran cetak atau digital?
 can_do:
-  ar_eg: توزن مميزات وعيوب قرار وتقول رأيك.
-  ar: أن تزن مزايا قرار وعيوبه وتبدي رأيك.
-  en: Weigh the pros and cons of a policy.
+  ar_eg: 'تقارن الجرنان الورق بالأخبار الديجيتال: العدد، الموضوع، ودقة المعلومة.'
+  ar: 'أن تقارن الصحيفة الورقية بالأخبار الرقمية: العدد والموضوع ودقّة المعلومة.'
+  en: 'Compare print newspapers with digital news: editions, topics and accuracy.'
 slides:
-  - title: Di satu sisi, di sisi lain
+  - title: Membaca berita setiap hari
     body:
       ar_eg: |
-        عشان توزن قرار (kebijakan):
-        Di satu sisi, … (من ناحية) → kelebihan (الميزة)
-        Di sisi lain, … (ومن ناحية تانية) → kekurangan (العيب) — ke-…-an تاني!
-        وبعدين رأيك بأداة نتيجة: Oleh karena itu, saya mendukung / menolak …
+        cetak = مطبوع (koran cetak = جرنان ورق)، digital = ديجيتال، harian = يومي (koran harian).
+        edisi = عدد أو طبعة (edisi Minggu = عدد الحد)، pers = الصحافة (kebebasan pers).
+        topik = موضوع، isu = قضية مطروحة، akurat = دقيق.
       ar: |
-        لموازنة قرار (kebijakan):
-        Di satu sisi, … (من جهة) → kelebihan (الميزة)
-        Di sisi lain, … (ومن جهة أخرى) → kekurangan (العيب)، وهي من ke-…-an أيضًا.
-        ثم رأيك بأداة نتيجة: Oleh karena itu, saya mendukung / menolak …
+        cetak = مطبوع (koran cetak = صحيفة ورقية)، digital = رقمي، harian = يومي (koran harian).
+        edisi = عدد أو طبعة (edisi Minggu = عدد الأحد)، pers = الصحافة (kebebasan pers).
+        topik = موضوع، isu = قضية مطروحة، akurat = دقيق.
       en: |
-        To weigh a policy (kebijakan):
-        Di satu sisi, … (on the one hand) → kelebihan (advantage)
-        Di sisi lain, … (on the other hand) → kekurangan (drawback) — ke-…-an again!
-        Then your view with a result connector: Oleh karena itu, saya mendukung / menolak … (support / reject)
-    grammar: id.conjunction.cause-effect
+        cetak = printed (koran cetak = print newspaper), digital = digital, harian = daily (koran harian).
+        edisi = edition, issue (edisi Minggu = Sunday edition); pers = the press (kebebasan pers).
+        topik = topic, isu = issue (in public debate), akurat = accurate.
     examples:
-      - text: Di satu sisi, siswa lebih fokus. Di sisi lain, orang tua sulit menghubungi anaknya.
-        ar_eg: من ناحية، التلاميذ بيركزوا أكتر. ومن ناحية تانية، الأهل صعب يكلموا ولادهم.
-        ar: من جهة يزداد تركيز الطلاب، ومن جهة أخرى يصعب على الأهل الاتصال بأبنائهم.
-        en: On the one hand, students focus more. On the other, parents find it hard to reach their children.
-      - text: Oleh karena itu, saya mendukung kebijakan ini.
-        ar_eg: عشان كده، أنا مؤيد القرار ده.
-        ar: لذلك أؤيد هذه السياسة.
-        en: Therefore, I support this policy.
+      - text: Ayah saya masih membaca koran cetak setiap pagi.
+        ar_eg: أبويا لسه بيقرا الجرنان الورق كل يوم الصبح.
+        ar: ما زال أبي يقرأ الصحيفة الورقية كل صباح.
+        en: My father still reads a print newspaper every morning.
+      - text: Edisi Minggu punya banyak artikel budaya.
+        ar_eg: عدد الحد فيه مقالات ثقافية كتير.
+        ar: في عدد الأحد مقالات ثقافية كثيرة.
+        en: The Sunday edition has lots of culture articles.
+      - text: Berita yang baik harus akurat.
+        ar_eg: الخبر الكويس لازم يكون دقيق.
+        ar: يجب أن يكون الخبر الجيد دقيقًا.
+        en: Good news reporting must be accurate.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة معناها إنك ضد القرار؟
-      ar: أيّ جملة تعني أنك ضد القرار؟
-      en: Which sentence says you're against the policy?
-    options: ["Saya mendukung kebijakan itu.", "Kebijakan itu punya kelebihan.", "Saya menolak kebijakan itu."]
-    answer: 2
-    words: [menolak, mendukung]
-  - id: e02
-    type: listen
-    text: Kebijakan ini punya kelebihan dan kekurangan.
-    options: ["Kebijakan ini punya kelebihan dan kekurangan.", "Kebijakan ini punya kelebihan dan dampak.", "Kebijakan ini tidak punya kekurangan."]
-    answer: 0
-    meaning:
-      ar_eg: القرار ده ليه مميزات وعيوب.
-      ar: لهذه السياسة مزايا وعيوب.
-      en: This policy has advantages and drawbacks.
-    words: [kelebihan, kekurangan]
-  - id: e03
     type: match_pairs
     pairs:
-      - text: kelebihan
-        ar_eg: ميزة
-        ar: ميزة
-        en: advantage
-      - text: kekurangan
-        ar_eg: عيب / نقص
-        ar: عيب
-        en: drawback
-      - text: dampak
-        ar_eg: أثر / تأثير
-        ar: أثر
-        en: impact
-      - text: mendukung
-        ar_eg: يأيّد / يدعم
-        ar: يؤيّد
-        en: support
-      - text: menolak
-        ar_eg: يرفض
-        ar: يرفض
-        en: reject, oppose
-    words: [kelebihan, kekurangan, dampak, mendukung, menolak]
+      - text: cetak
+        ar_eg: مطبوع
+        ar: مطبوع
+        en: printed
+      - text: digital
+        ar_eg: ديجيتال
+        ar: رقمي
+        en: digital
+      - text: harian
+        ar_eg: يومي
+        ar: يومي
+        en: daily
+      - text: edisi
+        ar_eg: عدد، طبعة
+        ar: عدد، طبعة
+        en: edition
+    words: [cetak, digital, harian, edisi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: pers
+        ar_eg: الصحافة
+        ar: الصحافة
+        en: the press
+      - text: topik
+        ar_eg: موضوع
+        ar: موضوع
+        en: topic
+      - text: isu
+        ar_eg: قضية
+        ar: قضية
+        en: issue
+      - text: akurat
+        ar_eg: دقيق
+        ar: دقيق
+        en: accurate
+    words: [pers, topik, isu, akurat]
+  - id: e03
+    type: listen
+    text: Koran harian ini juga punya edisi digital.
+    question:
+      ar_eg: الجرنان عنده إيه كمان؟
+      ar: ماذا لدى الصحيفة أيضًا؟
+      en: What else does the paper have?
+    options: [نسخة ديجيتال, عدد الحد, جرنان ورق بس]
+    answer: 0
+    meaning:
+      ar_eg: الجرنان اليومي ده كمان عنده نسخة ديجيتال.
+      ar: لهذه الصحيفة اليومية نسخة رقمية أيضًا.
+      en: This daily paper also has a digital edition.
+    words: [harian, edisi, digital]
   - id: e04
     type: fill_blank
-    sentence: Saya ___ kebijakan itu karena siswa jadi lebih fokus.
+    sentence: Wartawan harus menulis berita yang ___.
     meaning:
-      ar_eg: أنا مؤيد القرار ده عشان التلاميذ بقوا مركزين أكتر.
-      ar: أؤيد تلك السياسة لأن الطلاب صاروا أكثر تركيزًا.
-      en: I support that policy because students focus more.
-    options: [mendukung, menolak, dampak]
-    answers: [mendukung]
-    words: [mendukung]
+      ar_eg: الصحفي لازم يكتب أخبار ___.
+      ar: يجب أن يكتب الصحفي أخبارًا ___.
+      en: Journalists must write ___ news.
+    options: [akurat, cetak, harian]
+    answers: [akurat]
+    words: [akurat, cetak, harian]
+    explain:
+      ar_eg: akurat = دقيق، وده اللي الخبر لازم يكون. cetak = مطبوع، وharian = يومي، ودول نوع الجرنال مش جودة الخبر.
+      ar: akurat = دقيق، وهكذا يجب أن يكون الخبر. أما cetak فمطبوع، وharian يومي، وهما نوع الصحيفة لا جودة الخبر.
+      en: akurat means accurate, which news must be. cetak (print) and harian (daily) describe the paper, not the news quality.
   - id: e05
-    type: fill_blank
-    sentence: Salah satu ___ kebijakan ini, orang tua sulit menghubungi anaknya.
-    meaning:
-      ar_eg: من عيوب القرار ده إن الأهل صعب يكلموا ولادهم.
-      ar: من عيوب هذه السياسة صعوبة اتصال الأهل بأبنائهم.
-      en: One drawback of this policy is that parents find it hard to reach their children.
-    options: [kekurangan, kelebihan, berkat]
-    answers: [kekurangan]
-    words: [kekurangan]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عدد الحد من الجرنان، بالإندونيسي؟
+      ar: عدد الأحد من الصحيفة، بالإندونيسية؟
+      en: The paper's Sunday edition, in Indonesian?
+    options: [isu Minggu, edisi Minggu, topik Minggu]
+    answer: 1
+    explain:
+      ar_eg: edisi = عدد أو طبعة.
+      ar: edisi = عدد أو طبعة.
+      en: edisi = edition.
+    words: [isu, edisi, topik]
   - id: e06
+    type: fill_blank
+    sentence: Hari ini ___ utama di semua koran adalah harga gula.
+    meaning:
+      ar_eg: النهارده ___ الرئيسي في كل الجرانين هو سعر السكر.
+      ar: ___ الرئيسي اليوم في كل الصحف هو سعر السكر.
+      en: Today the main ___ in every paper is the price of sugar.
+    options: [topik, pers, digital]
+    answers: [topik]
+    words: [topik, pers, digital]
+    explain:
+      ar_eg: topik utama = الموضوع الرئيسي. pers = الصحافة، وdigital = رقمي.
+      ar: topik utama = الموضوع الرئيسي. أما pers فالصحافة، وdigital رقمي.
+      en: topik utama means the main topic. pers is the press, and digital is digital.
+  - id: e07
+    type: multiple_choice
+    question: Kebebasan ___ penting untuk semua orang.
+    options: [edisi, akurat, pers]
+    answer: 2
+    explain:
+      ar_eg: kebebasan pers = حرية الصحافة.
+      ar: kebebasan pers = حرية الصحافة.
+      en: kebebasan pers = press freedom.
+    words: [edisi, akurat, pers]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: أثر القرار ده كبير جدًا.
-      ar: أثر هذه السياسة كبير جدًا.
-      en: The impact of this policy is very big.
-    answer: Dampak kebijakan ini sangat besar.
-    distractors: [berkat, kelebihan]
-    words: [dampak]
-  - id: e07
-    type: dictation
-    text: Banyak orang tua menolak kebijakan itu.
-    meaning:
-      ar_eg: أهالي كتير رافضين القرار ده.
-      ar: يرفض كثير من الأهالي تلك السياسة.
-      en: Many parents oppose that policy.
-    words: [menolak]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بفضل القرار ده، التلاميذ بيذاكروا أكتر. عشان كده، أنا مؤيده.
-      ar: بفضل هذه السياسة يدرس الطلاب أكثر، لذلك أؤيدها.
-      en: Thanks to this policy, students study more. Therefore, I support it.
-    answers:
-      - Berkat kebijakan ini, siswa lebih banyak belajar. Oleh karena itu, saya mendukungnya.
-      - Berkat kebijakan ini, siswa belajar lebih banyak. Oleh karena itu, saya mendukungnya.
-      - Berkat kebijakan ini, siswa lebih banyak belajar. Oleh karena itu, saya mendukung kebijakan ini.
-      - Berkat kebijakan ini, para siswa lebih banyak belajar. Oleh karena itu, saya mendukungnya.
-      - Berkat kebijakan ini, siswa lebih rajin belajar. Oleh karena itu, saya mendukungnya.
-      - Berkat kebijakan ini, siswa lebih banyak belajar. Karena itu, saya mendukungnya.
-    words: [mendukung]
+      ar_eg: قضية الميّه النضيفة بقت موضوع كبير.
+      ar: صارت قضية المياه النظيفة موضوعًا كبيرًا.
+      en: The clean water issue has become a big topic.
+    answer: Isu air bersih menjadi topik besar.
+    distractors: [pers, cetak]
+    words: [isu, topik, pers, cetak]
+    explain:
+      ar_eg: isu = قضية، وtopik besar = موضوع كبير. pers = الصحافة، وcetak = مطبوع، ومش في الجملة.
+      ar: isu = القضية، وtopik besar = موضوع كبير. أما pers فالصحافة، وcetak مطبوع، وليسا في الجملة.
+      en: isu is an issue, and topik besar a big topic. pers (press) and cetak (print) aren't in the sentence.
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Koran cetak makin sedikit, berita digital makin banyak.
+    answers_meaning:
+      ar_eg: [الجرانين الورق بتقل، والأخبار الديجيتال بتكتر, الجرايد المطبوعة بقت أقل والأخبار الديجيتال أكتر]
+      ar: [الصحف الورقية تقلّ والأخبار الرقمية تكثر, تتناقص الصحف المطبوعة وتتزايد الأخبار الرقمية]
+      en: [Print papers are fewer and digital news is growing, There are fewer printed newspapers and more digital news]
+    words: [cetak, digital]
+  - id: e10
     type: speaking
-    text: Di satu sisi, kebijakan ini punya kelebihan. Di sisi lain, dampaknya bagi orang tua cukup besar.
+    text: Saya membaca koran harian edisi digital.
     meaning:
-      ar_eg: من ناحية، القرار ده ليه مميزات. ومن ناحية تانية، أثره على الأهالي كبير شوية.
-      ar: من جهة لهذه السياسة مزايا، ومن جهة أخرى أثرها على الأهالي كبير نسبيًا.
-      en: On the one hand, this policy has advantages. On the other, its impact on parents is quite big.
-    words: [kelebihan, dampak]
+      ar_eg: أنا بقرا النسخة الديجيتال من الجرنان اليومي.
+      ar: أقرأ النسخة الرقمية من الصحيفة اليومية.
+      en: I read the digital edition of the daily paper.
+    words: [harian, edisi, digital, isu, akurat]
 dialogue:
-  title: Debat di kelas
   lines:
     - speaker: Kak Nirmala
-      text: Sekolah di Parepare melarang siswa membawa HP. Bagaimana pendapat kalian?
-      ar_eg: مدارس باريباريه منعت التلاميذ يجيبوا موبايلات. إيه رأيكم؟
-      ar: منعت مدارس باريباري الطلاب من إحضار الهواتف. ما رأيكم؟
-      en: Schools in Parepare have banned students from bringing phones. What do you think?
-    - speaker: Andi
-      text: Saya mendukung. Berkat kebijakan itu, siswa lebih fokus belajar.
-      ar_eg: أنا مؤيد. بفضل القرار ده، التلاميذ بقوا مركزين أكتر في المذاكرة.
-      ar: أنا أؤيدها، فبفضلها صار الطلاب أكثر تركيزًا في الدراسة.
-      en: I support it. Thanks to that policy, students focus more on studying.
+      text: Mohamed, kamu masih beli koran cetak?
+      ar_eg: يا محمد، لسه بتشتري الجرنان الورق؟
+      ar: يا محمد، هل ما زلت تشتري الصحيفة الورقية؟
+      en: Mohamed, do you still buy print newspapers?
     - speaker: Mohamed
-      text: Itu kelebihannya. Tapi ada juga kekurangannya.
-      ar_eg: دي ميزته. بس ليه عيوب كمان.
-      ar: هذه ميزتها، لكن لها عيوبًا أيضًا.
-      en: That's the advantage. But there's a drawback, too.
-    - speaker: Andi
-      text: Apa kekurangannya?
-      ar_eg: إيه عيوبه؟
-      ar: وما عيوبها؟
-      en: What's the drawback?
+      text: Cuma edisi Minggu. Tiap hari aku baca koran harian digital.
+      ar_eg: عدد الحد بس. كل يوم بقرا جرنان يومي ديجيتال.
+      ar: عدد الأحد فقط. وأقرأ كل يوم صحيفة يومية رقمية.
+      en: Only the Sunday edition. Every day I read a digital daily.
+    - speaker: Kak Nirmala
+      text: Topik apa yang paling kamu suka?
+      ar_eg: أكتر موضوع بتحبه إيه؟
+      ar: ما الموضوع الذي تفضّله أكثر؟
+      en: Which topic do you like most?
     - speaker: Mohamed
-      text: Orang tua sulit menghubungi anaknya. Akibatnya, ada yang menolak. Oleh karena itu, dampaknya perlu dipikirkan.
-      ar_eg: الأهالي صعب يكلموا ولادهم. ونتيجة لكده، فيه ناس رافضة. عشان كده، لازم نفكر في أثره.
-      ar: يصعب على الأهالي الاتصال بأبنائهم، ونتيجةً لذلك يرفضها بعضهم، لذا ينبغي التفكير في أثرها.
-      en: Parents find it hard to reach their children. As a result, some oppose it. So its impact needs some thought.
+      text: Isu lingkungan sama pendidikan. Tapi beritanya harus akurat.
+      ar_eg: قضايا البيئة والتعليم. بس الأخبار لازم تكون دقيقة.
+      ar: قضايا البيئة والتعليم، لكن يجب أن تكون الأخبار دقيقة.
+      en: Environment and education issues. But the news has to be accurate.
+    - speaker: Kak Nirmala
+      text: Setuju. Pers yang baik selalu menghubungi narasumber.
+      ar_eg: موافقة. الصحافة الكويسة دايمًا بتكلّم المصادر.
+      ar: أوافق. الصحافة الجيدة تتواصل مع المصادر دائمًا.
+      en: Agreed. Good press always contacts its sources.
 new_words:
-  - word: kelebihan
+  - word: cetak
+    pos: adj
+    ar_eg: مطبوع، ورق
+    ar: مطبوع
+    en: printed, print
+  - word: digital
+    pos: adj
+    ar_eg: ديجيتال
+    ar: رقمي
+    en: digital
+  - word: harian
+    pos: adj
+    ar_eg: يومي (koran harian)
+    ar: يومي
+    en: daily
+  - word: edisi
     pos: noun
-    ar_eg: ميزة
-    ar: ميزة
-    en: advantage, strength
-  - word: kekurangan
+    ar_eg: عدد، طبعة
+    ar: عدد، طبعة
+    en: edition, issue
+  - word: pers
     pos: noun
-    ar_eg: عيب / نقص
-    ar: عيب / نقص
-    en: drawback, weakness
-  - word: dampak
+    ar_eg: الصحافة
+    ar: الصحافة
+    en: the press
+  - word: topik
     pos: noun
-    ar_eg: أثر / تأثير
-    ar: أثر
-    en: impact
-  - word: mendukung
-    pos: verb
-    ar_eg: يأيّد / يدعم
-    ar: يؤيّد
-    en: support
-  - word: menolak
-    pos: verb
-    ar_eg: يرفض
-    ar: يرفض
-    en: reject, oppose
+    ar_eg: موضوع
+    ar: موضوع
+    en: topic
+  - word: isu
+    pos: noun
+    ar_eg: قضية مطروحة
+    ar: قضية
+    en: issue (public)
+  - word: akurat
+    pos: adj
+    ar_eg: دقيق
+    ar: دقيق
+    en: accurate
 review:
   status: draft
   verified: false

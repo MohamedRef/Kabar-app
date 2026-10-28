@@ -1,0 +1,189 @@
+schema: kabar.lesson/v1
+id: bipa4.u03.l11
+language: id
+title: Cerita pemandu di Londa
+can_do:
+  ar_eg: تفهم شرح مرشد سياحي في مكان تاريخي وتحكيه بكلامك.
+  ar: أن تفهم شرح مرشد سياحي في موقع تاريخي وتعيد روايته بكلماتك.
+  en: Follow a tour guide's talk at a historic site and retell it.
+slides:
+  - title: Suara pemandu
+    body:
+      ar_eg: |
+        في لوندا، المرشد بيشرح للسياح قدام الجبل الصخري. اسمع الأول.
+        كلمة جديدة: gua = كهف / مغارة.
+      ar: |
+        في لوندا يشرح المرشد للسياح أمام الجرف الصخري. استمع أولًا.
+        كلمة جديدة: gua = كهف / مغارة.
+      en: |
+        At Londa, a guide talks to tourists in front of the rock cliff. Listen first.
+        New word: gua = cave.
+    examples:
+      - text: Selamat datang di Londa. Di tebing batu ini ada gua, tempat makam para leluhur Toraja.
+        ar_eg: أهلًا بيكم في لوندا. في الجبل الصخري ده فيه كهف، فيه مقابر أجداد التوراجا.
+        ar: مرحبًا بكم في لوندا. في هذا الجرف الصخري كهف، هو موضع قبور أسلاف توراجا.
+        en: Welcome to Londa. In this rock cliff there is a cave, where the Toraja ancestors' graves are.
+      - text: Patung-patung kayu ini disebut tau-tau. Wajahnya dibuat seperti wajah orang yang sudah meninggal.
+        ar_eg: التماثيل الخشب دي اسمها تاو تاو. وشها معمول شبه وش الناس اللي ماتوا.
+        ar: تُسمّى هذه التماثيل الخشبية تاو تاو، وتُصنع وجوهها على هيئة وجوه الموتى.
+        en: These wooden statues are called tau-tau. Their faces are made to look like the people who have died.
+      - text: Masuklah ke gua ini pelan-pelan. Di dalamnya gelap seperti malam.
+        ar_eg: ادخلوا الكهف ده بالراحة. جوّاه ضلمة زي الليل.
+        ar: ادخلوا هذا الكهف بتمهّل، ففي داخله ظلام كالليل.
+        en: Go into this cave slowly. Inside it's as dark as night.
+exercises:
+  - id: e01
+    type: listen
+    text: Di tebing batu ini ada gua, tempat makam para leluhur Toraja.
+    question:
+      ar_eg: إيه اللي جوّه الكهف؟
+      ar: ماذا يوجد في الكهف؟
+      en: What is in the cave?
+    options: [Makam para leluhur, Rumah tongkonan, Pasar kerbau]
+    answer: 0
+    meaning:
+      ar_eg: في الجبل الصخري ده فيه كهف، فيه مقابر أجداد التوراجا.
+      ar: في هذا الجرف الصخري كهف، هو موضع قبور أسلاف توراجا.
+      en: In this rock cliff there is a cave, where the Toraja ancestors' graves are.
+    words: [gua, makam, tebing]
+  - id: e02
+    type: listen
+    text: Patung-patung kayu ini disebut tau-tau.
+    question:
+      ar_eg: التاو تاو معمولة من إيه؟
+      ar: مِمّ تُصنع تماثيل تاو تاو؟
+      en: What are the tau-tau made of?
+    options: [Batu, Kayu, Kain tenun]
+    answer: 1
+    meaning:
+      ar_eg: التماثيل الخشب دي اسمها تاو تاو.
+      ar: تُسمّى هذه التماثيل الخشبية تاو تاو.
+      en: These wooden statues are called tau-tau.
+    words: [patung]
+  - id: e03
+    type: listen
+    text: Di dalamnya gelap seperti malam.
+    question:
+      ar_eg: جوّه الكهف عامل إزاي؟
+      ar: كيف يبدو داخل الكهف؟
+      en: What is it like inside the cave?
+    options: [Terang seperti siang, Ramai seperti pasar, Gelap seperti malam]
+    answer: 2
+    meaning:
+      ar_eg: جوّاه ضلمة زي الليل.
+      ar: في داخله ظلام كالليل.
+      en: Inside it's as dark as night.
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: وشوش التاو تاو شبه مين؟
+      ar: وجوه تاو تاو تشبه وجوه مَن؟
+      en: Whose faces do the tau-tau look like?
+    options:
+      - Wajah orang yang sudah meninggal
+      - Wajah para pemandu
+      - Wajah para wisatawan
+    answer: 0
+    words: [patung, leluhur]
+    explain:
+      ar_eg: التاو تاو بتشبه وشوش الناس اللي ماتوا، مش المرشدين ولا السيّاح.
+      ar: تشبه التاو تاو وجوه الموتى، لا المرشدين ولا السيّاح.
+      en: Tau-tau look like the faces of the dead, not the guides or the tourists.
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: gua
+        ar_eg: كهف
+        ar: كهف
+        en: cave
+      - text: tebing
+        ar_eg: جرف / جبل صخري
+        ar: جُرف
+        en: cliff
+      - text: makam
+        ar_eg: مقبرة
+        ar: قبر / ضريح
+        en: grave, tomb
+      - text: patung
+        ar_eg: تمثال
+        ar: تمثال
+        en: statue
+      - text: leluhur
+        ar_eg: الأجداد
+        ar: الأسلاف
+        en: ancestors
+    words: [gua, tebing, makam, patung, leluhur]
+  - id: e06
+    type: dictation
+    text: Patung-patung kayu ini disebut tau-tau.
+    meaning:
+      ar_eg: التماثيل الخشب دي اسمها تاو تاو.
+      ar: تُسمّى هذه التماثيل الخشبية تاو تاو.
+      en: These wooden statues are called tau-tau.
+    words: [patung]
+  - id: e07
+    type: fill_blank
+    sentence: Masuklah ke ___ ini pelan-pelan.
+    meaning:
+      ar_eg: ادخلوا الكهف ده بالراحة.
+      ar: ادخلوا هذا الكهف بتمهّل.
+      en: Go into this cave slowly.
+    options: [atap, gua, tanduk]
+    answers: [gua]
+    words: [gua]
+    explain:
+      ar_eg: gua = كهف، وبتدخله بالراحة. atap = سقف، وtanduk = قرن، ومش بيدخلوا فيهم.
+      ar: gua = الكهف، وتدخله ببطء. أما atap فالسقف، وtanduk القرن، ولا يُدخل فيهما.
+      en: gua is a cave, which you go into slowly. atap is a roof and tanduk a horn; you can't go into those.
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الكهف ده ضلمة زي الليل.
+      ar: هذا الكهف مظلم كالليل.
+      en: This cave is as dark as night.
+    answers:
+      - Gua ini gelap seperti malam.
+      - Gua ini gelap bagaikan malam.
+      - Gua itu gelap seperti malam.
+      - Gua ini segelap malam.
+      - Di dalam gua ini gelap seperti malam.
+      - Gua ini gelap kayak malam.
+    words: [gua]
+dialogue:
+  title: Setelah keluar dari gua
+  lines:
+    - speaker: Mohamed
+      text: Mas, suara pemandu tadi nggak terlalu jelas. Tau-tau itu apa?
+      ar_eg: يا Mas، صوت المرشد ماكانش واضح أوي. التاو تاو دي إيه؟
+      ar: يا Mas، لم يكن صوت المرشد واضحًا جدًا. ما تاو تاو؟
+      en: Mas, the guide wasn't very clear. What are tau-tau?
+    - speaker: Mas Rizal
+      text: Patung kayu. Wajahnya seperti wajah leluhur yang sudah meninggal.
+      ar_eg: تماثيل خشب. وشها شبه وش الأجداد اللي ماتوا.
+      ar: تماثيل خشبية، وجوهها تشبه وجوه الأسلاف الراحلين.
+      en: Wooden statues. Their faces look like the ancestors who have died.
+    - speaker: Mohamed
+      text: Terus makamnya di dalam gua?
+      ar_eg: والمقابر جوّه الكهف؟
+      ar: وهل القبور داخل الكهف؟
+      en: And the graves are inside the cave?
+    - speaker: Mas Rizal
+      text: Iya, di gua di tebing batu itu. Di dalam gelap banget.
+      ar_eg: أيوه، في الكهف اللي في الجبل الصخري ده. جوّه ضلمة جدًا.
+      ar: نعم، في الكهف الذي في ذلك الجرف الصخري. الداخل مظلم جدًا.
+      en: Yes, in the cave in that rock cliff. It's very dark inside.
+    - speaker: Mohamed
+      text: Kayak malam, kata pemandu. Aku masuk pelan-pelan aja.
+      ar_eg: زي الليل، على رأي المرشد. أنا هدخل بالراحة.
+      ar: كالليل، كما قال المرشد. سأدخل بتمهّل.
+      en: Like night, the guide said. I'll go in slowly.
+new_words:
+  - word: gua
+    pos: noun
+    ar_eg: كهف / مغارة
+    ar: كهف / مغارة
+    en: cave
+review:
+  status: draft
+  verified: false

@@ -1,182 +1,207 @@
 schema: kabar.lesson/v1
 id: bipa5.u09.l09
 language: id
-title: Ulangan Unit 9
+title: Jembatan Arab
 can_do:
-  ar_eg: تشرح إزاي الإندونيسي بيتغيّر من مكان لمكان ومن موقف لموقف.
-  ar: أن تشرح تنوّع الإندونيسية بين الأماكن والمقامات.
-  en: Explain how Indonesian varies from place to place and situation to situation.
+  ar_eg: تشرح بالإندونيسي إزاي الكلمات العربي اتغيّرت لما دخلت الإندونيسي.
+  ar: أن تشرح بالإندونيسية كيف تغيّرت الكلمات العربية حين دخلت الإندونيسية.
+  en: Explain in Indonesian how Arabic words changed on their way into Indonesian.
+slides:
+  - title: Bunyi yang berubah
+    grammar: id.register.formal-informal
+    body:
+      ar_eg: |
+        إنت عارف الجسر العربي، دلوقتي اشرحه بالإندونيسي:
+        - Bunyi "f" berubah menjadi "p". = فكر → pikir
+        - Bunyi "q" berubah menjadi "k". = وقت → waktu، قلب → kalbu
+        - Bunyi "ض" berubah menjadi "d" atau "l". = رضا → rida / rela
+        - Bunyi "ع" sering hilang atau menjadi "k". = علم → ilmu، معنى → makna
+        وخد بالك من الأصحاب المزيّفين: ahli = خبير (مش أهل)، kalimat = جملة (مش كلمة).
+        وفي الحوار هتسمع كلام الشارع، وجنبه الرسمي: jelasin = menjelaskan، temen-temen = teman-teman، cepet = cepat، soalnya = karena، udah = sudah، pinter = pintar.
+      ar: |
+        تعرف الجسر العربي، فاشرحه الآن بالإندونيسية:
+        - Bunyi "f" berubah menjadi "p". = فكر → pikir
+        - Bunyi "q" berubah menjadi "k". = وقت → waktu، قلب → kalbu
+        - Bunyi "ض" berubah menjadi "d" atau "l". = رضا → rida / rela
+        - Bunyi "ع" sering hilang atau menjadi "k". = علم → ilmu، معنى → makna
+        واحذر الأصدقاء المزيّفين: ahli = خبير (لا أهل)، kalimat = جملة (لا كلمة).
+        وفي الحوار لغة الشارع، وبجانبها الصيغة الرسمية: jelasin = menjelaskan، temen-temen = teman-teman، cepet = cepat، soalnya = karena، udah = sudah، pinter = pintar.
+      en: |
+        You know the Arabic Bridge; now explain it in Indonesian:
+        - Bunyi "f" berubah menjadi "p". = fikr → pikir
+        - Bunyi "q" berubah menjadi "k". = waqt → waktu, qalb → kalbu
+        - Bunyi "ḍ" berubah menjadi "d" atau "l". = riḍā → rida / rela
+        - Bunyi "ʿ" sering hilang atau menjadi "k". = ʿilm → ilmu, maʿnā → makna
+        Watch the false friends: ahli = expert (not "family"), kalimat = sentence (not "word").
+        The dialogue uses street forms; the formal ones are beside them: jelasin = menjelaskan, temen-temen = teman-teman, cepet = cepat, soalnya = karena, udah = sudah, pinter = pintar.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kata serapan
-        ar_eg: كلمة دخيلة
-        ar: كلمة دخيلة
-        en: loanword
-      - text: bahasa baku
-        ar_eg: الفصيح
-        ar: اللغة الفصحى
-        en: standard language
-      - text: logat
-        ar_eg: لهجة / نطق
-        ar: لكنة
-        en: accent
-      - text: ejaan
-        ar_eg: إملا
-        ar: إملاء
-        en: spelling
+      - text: bunyi
+        ar_eg: صوت
+        ar: صوت
+        en: sound
+      - text: berubah
+        ar_eg: يتغيّر
+        ar: يتغيّر
+        en: to change
       - text: mirip
         ar_eg: شبه
         ar: يشبه
         en: similar
-    words: [kata serapan, bahasa baku, logat, ejaan, mirip]
+      - text: lafal
+        ar_eg: نطق
+        ar: لفظ
+        en: pronunciation
+      - text: ahli
+        ar_eg: خبير
+        ar: خبير
+        en: expert
+    words: [bunyi, berubah, mirip, lafal, ahli]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي كلمة أصلها برتغالي؟
-      ar: أيّ كلمة أصلها برتغالي؟
-      en: Which word comes from Portuguese?
-    options: [ilmu, sepatu, agama]
-    answer: 1
-    words: [berasal dari, kata serapan]
-  - id: e03
-    type: fill_blank
-    sentence: Di Indonesia ada lebih dari 700 bahasa ___.
-    meaning:
-      ar_eg: في إندونيسيا أكتر من 700 لغة محلية.
-      ar: في إندونيسيا أكثر من 700 لغة محلّية.
-      en: Indonesia has over 700 regional languages.
-    options: [daerah, baku, gaul]
-    answers: [daerah]
-    words: [bahasa daerah]
-  - id: e04
-    type: listen
-    text: Bunyi "f" dalam bahasa Arab sering berubah menjadi "p".
-    question:
-      ar_eg: صوت «ف» بيبقى إيه؟
-      ar: إلامَ يتحوّل صوت «ف»؟
-      en: What does the "f" sound become?
-    options:
-      - «b».
-      - «k».
-      - «p».
-    answer: 2
+      ar_eg: «فكر» بقت إيه في الإندونيسي؟
+      ar: ماذا صارت «فكر» في الإندونيسية؟
+      en: What did Arabic "fikr" become in Indonesian?
+    options: [pikir, fikir, bikir]
+    answer: 0
     words: [bunyi, berubah]
-  - id: e05
+    explain:
+      ar_eg: «ف» بقت p، فـ «فكر» = pikir. fikir بتتكتب بالمعنى القديم بس مش القياسي، وbikir مش كلمة.
+      ar: صارت «ف» p، فأصبحت «فكر» pikir. أما fikir فليست الصيغة القياسية، وbikir ليست كلمة.
+      en: Arabic f became p, so fikr is pikir. fikir isn't the standard form, and bikir isn't a word.
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: هتستخدم أنهي كلمة في تقديم على شغل؟
-      ar: أيّ كلمة تستعملها في طلب عمل؟
-      en: Which word would you use in a job application?
-    options: [nggak, tidak, gak]
+      ar_eg: «Dia ahli sejarah» معناها إيه؟
+      ar: ما معنى «Dia ahli sejarah»؟
+      en: What does "Dia ahli sejarah" mean?
+    options:
+      - هو من أهل التاريخ القديم.
+      - هو خبير في التاريخ.
+      - هو بيكره التاريخ.
     answer: 1
-    words: [bahasa baku, bahasa gaul]
+    words: [ahli]
+    explain:
+      ar_eg: ahli = خبير (من «أهل» بمعنى أهل الاختصاص). مش «أهل التاريخ القديم»، ومش بيكره.
+      ar: ahli = خبير (من «أهل» بمعنى أهل الاختصاص)، لا «أهل الزمن القديم» ولا كارهٌ.
+      en: ahli means expert (from Arabic ahl, as in specialists), not "people of old times".
+  - id: e04
+    type: fill_blank
+    sentence: Kata "waktu" sangat ___ dengan kata Arab "وقت".
+    meaning:
+      ar_eg: كلمة waktu شبه قوي الكلمة العربي «وقت».
+      ar: كلمة waktu شديدة الشبه بالكلمة العربية «وقت».
+      en: The word "waktu" is very similar to the Arabic word "waqt".
+    options: [mirip, ahli, lafal]
+    answers: [mirip]
+    words: [mirip]
+    explain:
+      ar_eg: «شبه» = mirip dengan. ahli = خبير وlafal = نطق، مايجوش قبل dengan هنا.
+      ar: «يشبه» = mirip dengan. أما ahli فالخبير، وlafal النطق.
+      en: "\"Similar to\" is mirip dengan. ahli (expert) and lafal (pronunciation) don't fit."
+  - id: e05
+    type: listen
+    text: Lafal orang Mesir dan orang Indonesia berbeda, tetapi katanya mirip.
+    question:
+      ar_eg: إيه اللي مختلف؟
+      ar: ما المختلف؟
+      en: What is different?
+    options:
+      - الكلمات.
+      - المعنى.
+      - النطق.
+    answer: 2
+    words: [lafal, mirip]
   - id: e06
     type: build_sentence
     source:
-      ar_eg: لغة أمي عربي، بس مفرداتي الإندونيسي بتزيد.
-      ar: لغتي الأمّ العربية، لكنّ مفرداتي الإندونيسية تزداد.
-      en: My mother tongue is Arabic, but my Indonesian vocabulary is growing.
-    answer: Bahasa ibu saya bahasa Arab, tetapi kosakata Indonesia saya bertambah.
-    distractors: [logat, kepo]
-    words: [bahasa ibu, kosakata]
+      ar_eg: صوت «ق» اتغيّر وبقى «k».
+      ar: تغيّر صوت «ق» فصار «k».
+      en: The sound "q" changed into "k".
+    answer: Bunyi "q" berubah menjadi "k".
+    distractors: [mirip, lafal]
+    words: [bunyi, berubah]
+    explain:
+      ar_eg: «اتغيّر وبقى» = berubah menjadi. mirip = شبه وlafal = نطق، مش في الجملة.
+      ar: «تغيّر فصار» = berubah menjadi. أما mirip فـ«يشبه»، وlafal النطق.
+      en: "\"Changed into\" is berubah menjadi. mirip and lafal aren't in it."
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: الكلمة دي غلطة منتشرة، الإملا الصح هو izin.
-      ar: هذه الكلمة خطأ شائع، والإملاء الصحيح izin.
-      en: That word is a common mistake; the correct spelling is izin.
+      ar_eg: نطقي لسه بيتغيّر كل يوم.
+      ar: ما زال نطقي يتغيّر كلّ يوم.
+      en: My pronunciation is still changing every day.
     answers:
-      - Kata itu salah kaprah, ejaan yang benar adalah izin.
-      - Kata itu salah kaprah. Ejaan yang benar izin.
-      - Itu salah kaprah, ejaan yang benar adalah izin.
-      - Kata itu salah kaprah, ejaan yang betul adalah izin.
-    words: [salah kaprah, ejaan, izin]
+      - Lafal saya masih berubah setiap hari.
+      - Lafal saya masih terus berubah setiap hari.
+      - Setiap hari lafal saya masih berubah.
+      - Lafalku masih berubah setiap hari.
+    words: [lafal, berubah]
   - id: e08
-    type: translate
-    direction: from_target
-    source_text: Penutur bahasa Melayu Pontianak memakai "kamek" untuk "saya".
-    answers_meaning:
-      ar_eg:
-        - اللي بيتكلموا ملايو بونتياناك بيقولوا kamek بدل saya.
-        - أهل ملايو بونتياناك بيستخدموا kamek يعني «أنا».
-      ar:
-        - يستعمل الناطقون بملايوية بونتياناك kamek بمعنى saya.
-        - يقول الناطقون بملايوية بونتياناك kamek بدل «أنا».
-      en:
-        - Pontianak Malay speakers use "kamek" for "saya".
-        - Speakers of Pontianak Malay say "kamek" to mean "I".
-    words: [penutur]
+    type: speaking
+    text: Kata "kalimat" mirip dengan bahasa Arab, tetapi maknanya berbeda.
+    meaning:
+      ar_eg: كلمة kalimat شبه العربي، بس معناها مختلف.
+      ar: كلمة kalimat تشبه العربية، لكنّ معناها مختلف.
+      en: The word "kalimat" looks like Arabic, but its meaning is different.
+    words: [mirip]
   - id: e09
     type: dictation
-    text: Bahasa Indonesia sangat beragam dan tidak takut pada kata asing.
+    text: Ahli bahasa itu menjelaskan bunyi bahasa Arab.
     meaning:
-      ar_eg: الإندونيسي متنوّع قوي ومش خايف من الكلمات الأجنبية.
-      ar: الإندونيسية متنوّعة جدًّا ولا تخشى الكلمات الأجنبية.
-      en: Indonesian is very diverse and isn't afraid of foreign words.
-    words: [beragam, asing]
-  - id: e10
-    type: speaking
-    text: Dengan teman saya santai, tetapi dengan ahli bahasa saya memakai bahasa baku.
-    meaning:
-      ar_eg: مع صحابي برتاح، بس مع خبير اللغة بتكلم فصيح.
-      ar: أكون على راحتي مع أصدقائي، لكنّي أتكلّم الفصحى مع خبير اللغة.
-      en: With friends I'm relaxed, but with a language expert I use standard Indonesian.
-    words: [santai, ahli, bahasa baku]
-  - id: e11
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Bahasa Melayu menyebar lewat perdagangan, lalu menjadi bahasa resmi Indonesia.» معناها إيه؟
-      ar: ما معنى «Bahasa Melayu menyebar lewat perdagangan, lalu menjadi bahasa resmi Indonesia.»؟
-      en: What does "Bahasa Melayu menyebar lewat perdagangan, lalu menjadi bahasa resmi Indonesia." mean?
-    options:
-      - الملايو انتشرت بالتجارة، وبعدين بقت اللغة الرسمية لإندونيسيا.
-      - الملايو اختفت بسبب التجارة.
-      - الملايو هي لغة جاوة الرسمية.
-    answer: 0
-    words: [bahasa Melayu, menyebar, bahasa resmi]
-  - id: e12
-    type: fill_blank
-    sentence: Dia suka ___ kata bahasa Inggris supaya terdengar keren.
-    meaning:
-      ar_eg: بيحب يدخّل كلام إنجليزي عشان يبان روش.
-      ar: يحبّ أن يُقحم كلمات إنجليزية ليبدو أنيقًا.
-      en: He likes to slip in English words to sound cool.
-    options: [menyelipkan, melestarikan, menyebar]
-    answers: [menyelipkan]
-    words: [menyelipkan, terdengar]
+      ar_eg: خبير اللغة ده شرح أصوات العربي.
+      ar: شرح ذلك الخبير اللغوي أصوات العربية.
+      en: That language expert explained the sounds of Arabic.
+    words: [ahli, bunyi]
 dialogue:
-  title: Di Tugu Khatulistiwa
+  title: Presentasi di kelas Mas Rizal
   lines:
     - speaker: Mas Rizal
-      text: Mohamed, sekarang kamu berdiri tepat di garis khatulistiwa!
-      ar_eg: يا محمد، إنت دلوقتي واقف بالظبط على خط الاستوا!
-      ar: يا محمد، أنت الآن واقف تمامًا على خطّ الاستواء!
-      en: Mohamed, you're now standing right on the equator!
+      text: Mohamed, coba jelasin Jembatan Arab ke temen-temen.
+      ar_eg: يا محمد، اتفضل اشرح الجسر العربي لزمايلك.
+      ar: يا محمد، تفضّل اشرح الجسر العربي للزملاء.
+      en: Mohamed, please explain the Arabic Bridge to everyone.
     - speaker: Mohamed
-      text: Khatulistiwa, itu kata serapan dari bahasa Arab, kan? Khaṭṭ al-istiwā'.
-      ar_eg: khatulistiwa، دي كلمة دخيلة من العربي، صح؟ خط الاستوا.
-      ar: khatulistiwa كلمة دخيلة من العربية، أليس كذلك؟ خطّ الاستواء.
-      en: Khatulistiwa, that's a loanword from Arabic, right? Khaṭṭ al-istiwā'.
-    - speaker: Mas Rizal
-      text: Betul! Bunyinya berubah, tetapi maknanya sama.
-      ar_eg: مظبوط! صوتها اتغيّر، بس معناها زي ما هو.
-      ar: صحيح! تغيّر لفظها وبقي معناها.
-      en: Right! The sound changed, but the meaning is the same.
+      text: Banyak kata Indonesia mirip bahasa Arab, tapi bunyinya berubah. Misalnya, "fikr" jadi "pikir".
+      ar_eg: كلمات إندونيسي كتير شبه العربي، بس صوتها اتغيّر. مثلًا «فكر» بقت pikir.
+      ar: كثير من الكلمات الإندونيسية يشبه العربية، لكنّ أصواتها تغيّرت؛ فـ«فكر» صارت pikir.
+      en: Many Indonesian words resemble Arabic, but the sounds changed. For example, "fikr" became "pikir".
+    - speaker: Rina
+      text: Jadi kamu cepet belajar soalnya udah kenal kosakatanya?
+      ar_eg: يعني إنت بتتعلم بسرعة علشان المفردات مألوفة ليك؟
+      ar: إذن تتعلّم بسرعة لأنّ المفردات مألوفة لك؟
+      en: So you learn fast because the vocabulary is familiar?
     - speaker: Mohamed
-      text: Bahasa Indonesia memang jembatan antara Mesir dan Pontianak.
-      ar_eg: الإندونيسي فعلًا جسر بين مصر وبونتياناك.
-      ar: الإندونيسية حقًّا جسر بين مصر وبونتياناك.
-      en: Indonesian really is a bridge between Egypt and Pontianak.
-souvenir:
-  id: bipa5.u09.souvenir
-  title: Tugu Khatulistiwa
-  note:
-    ar_eg: في بونتياناك فيه نصب بيعلّم خط الاستوا، واسمه khatulistiwa من العربي «خط الاستوا». مرتين في السنة، حوالين 21 مارس و23 سبتمبر، الشمس بتبقى فوق الراس بالظبط وقت الضهر، وضل العمود بيختفي لحظات. والإندونيسي نفسه طالع من الملايو، لغة التجارة القديمة في الموانئ، وعشان كده فيه كلمات من العربي والسنسكريتي والبرتغالي والهولندي والصيني.
-    ar: في بونتياناك نُصب يحدّد خطّ الاستواء، واسمه khatulistiwa من العربية «خطّ الاستواء». ومرّتين في العام، نحو 21 مارس و23 سبتمبر، تتعامد الشمس ظهرًا فيختفي ظلّ العمود لحظات. والإندونيسية نفسها من الملايوية، لغة التجارة القديمة في الموانئ، ولذلك تحمل كلمات من العربية والسنسكريتية والبرتغالية والهولندية والصينية.
-    en: Pontianak has a monument marking the equator, called khatulistiwa from the Arabic khaṭṭ al-istiwā'. Twice a year, around 21 March and 23 September, the sun stands directly overhead at noon and the pillar's shadow vanishes for a few moments. Indonesian itself grew from Malay, the old trade language of the ports, which is why it carries words from Arabic, Sanskrit, Portuguese, Dutch and Chinese.
+      text: Iya, tapi hati-hati! "Ahli" di sini bukan keluarga, tapi orang yang pinter.
+      ar_eg: مظبوط، بس خلّي بالك! ahli هنا مش العيلة، دي معناها الشاطر الخبير.
+      ar: صحيح، لكن انتبهوا! ahli هنا لا تعني الأهل، بل الخبير الحاذق.
+      en: Right, but careful! "Ahli" here isn't family; it means someone skilled.
+new_words:
+  - word: bunyi
+    pos: noun
+    ar_eg: صوت
+    ar: صوت
+    en: sound
+  - word: berubah
+    pos: verb
+    ar_eg: يتغيّر
+    ar: يتغيّر
+    en: to change
+  - word: mirip
+    pos: adjective
+    ar_eg: شبه
+    ar: يشبه
+    en: similar
+  - word: lafal
+    pos: noun
+    arabic: لفظ
+    ar_eg: نطق
+    ar: لفظ
+    en: pronunciation
 review:
   status: draft
   verified: false

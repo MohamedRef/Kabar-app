@@ -88,6 +88,10 @@ exercises:
     alternatives: [Saya biasanya bangun jam lima.]
     distractors: [selalu, tidur]
     words: [biasanya, bangun]
+    explain:
+      ar_eg: Biasanya (عادةً) + saya bangun (بصحى) + jam lima. selalu وtidur زيادة.
+      ar: Biasanya saya bangun jam lima. selalu وtidur زائدتان.
+      en: Biasanya + saya bangun + jam lima. selalu and tidur are extra.
   - id: e05
     type: translate
     direction: to_target
@@ -107,6 +111,10 @@ exercises:
     options: [jarang, selalu, tidak pernah]
     answers: [selalu]
     words: [selalu, setiap, sarapan]
+    explain:
+      ar_eg: كل يوم = selalu (دايمًا). jarang = نادرًا، وtidak pernah = أبدًا.
+      ar: كل يوم = selalu أي دائمًا. jarang نادرًا.
+      en: "\"Every day\" means selalu (always)."
   - id: e07
     type: speaking
     text: Saya kadang-kadang minum kopi.
@@ -135,6 +143,10 @@ exercises:
     options: [Setiap, Jarang, Selalu]
     answers: [Setiap]
     words: [setiap]
+    explain:
+      ar_eg: Setiap hari = كل يوم. Jarang وSelalu مابيجوش قبل hari بالشكل ده.
+      ar: Setiap hari = كل يوم.
+      en: Setiap hari = every day.
   - id: e10
     type: multiple_choice
     question_meaning:
@@ -144,6 +156,10 @@ exercises:
     options: ['Saya tidak pernah minum kopi.', 'Saya biasanya minum kopi.', 'Saya setiap minum kopi.']
     answer: 0
     words: [tidak pernah, biasanya, setiap]
+    explain:
+      ar_eg: «أبدًا» = tidak pernah. biasanya = عادةً، وsetiap محتاجة hari بعدها.
+      ar: tidak pernah = أبدًا.
+      en: Never = tidak pernah.
 dialogue:
   lines:
     - speaker: Raka
@@ -157,12 +173,12 @@ dialogue:
       ar: نعم، كل يوم! وأنت؟
       en: Yes, every day! You?
     - speaker: Raka
-      text: Saya jarang minum kopi. Biasanya saya minum teh.
+      text: Aku jarang minum kopi. Biasanya aku minum teh.
       ar_eg: أنا نادرًا ما بشرب قهوة. عادةً بشرب شاي.
       ar: نادرًا ما أشرب القهوة. عادةً أشرب الشاي.
       en: I rarely drink coffee. I usually drink tea.
     - speaker: Mohamed
-      text: Saya tidak pernah minum teh!
+      text: Aku nggak pernah minum teh!
       ar_eg: أنا عمري ما بشرب شاي!
       ar: لا أشرب الشاي أبدًا!
       en: I never drink tea!
@@ -184,9 +200,9 @@ new_words:
     en: often
   - word: kadang-kadang
     pos: adverb
-    ar_eg: ساعات
-    ar: أحيانًا
-    en: sometimes
+    ar_eg: ساعات؛ في الكلام kadang بس
+    ar: أحيانًا؛ وفي الكلام kadang وحدها
+    en: sometimes; in speech often just kadang
   - word: jarang
     pos: adverb
     ar_eg: نادرًا

@@ -1,199 +1,257 @@
 schema: kabar.lesson/v1
 id: bipa5.u10.l07
 language: id
-title: Menulis laporan
+title: Membaca grafik penjualan
 can_do:
-  ar_eg: تكتب تقرير قصير بالبيانات وفيه وجهة نظرك.
-  ar: أن تكتب تقريرًا قصيرًا بالبيانات يحمل وجهة نظرك.
-  en: Write a short report with data and your own point of view.
+  ar_eg: 'توصف رسم بياني: الحجم والمقارنة، الأكتر والأقل، الاتجاه العام، ومتناسب مع، ونطاق، وبتستند لمصدر.'
+  ar: 'أن تصف رسمًا بيانيًا: الحجم والمقارنة، والأكثر والأدنى، والاتجاه العام، والتناسب، والنطاق، والإحالة إلى المصادر.'
+  en: 'Describe a chart: volume and comparison, the most and the lowest, the overall trend, proportionality, radius, and citing sources.'
 slides:
-  - title: Data dulu, pendapat kemudian
-    grammar: id.argument.connectors
+  - title: Bahasa data
     body:
       ar_eg: |
-        التقرير الكويس بيعرض (menyajikan) البيانات الأول، وبعدين رأيك:
-        - Berdasarkan data, … = بناءً على البيانات، …
-        - Selain itu, … = غير كده، …
-        - Dengan demikian, … = وبكده، …
-        - Menurut saya, … = في رأيي، … (رأيك في الآخر، ولطّفه بـ tampaknya)
-        وموضوعنا: keberagaman (التنوّع) وtoleransi (التسامح) في سينجكاوانج، وإزاي الناس rukun (عايشين في وفاق).
+        volume = حجم، كمية (volume penjualan = حجم المبيعات)، perbandingan = مقارنة، نسبة.
+        terbanyak = الأكتر، terendah = الأقل، الأوطى.
+        kecenderungan = اتجاه عام، ميل: kecenderungannya naik = الاتجاه طالع.
+        sebanding = متناسب، يستاهل (sebanding dengan = متناسب مع)، radius = نطاق، نصف قطر (radius 5 km).
+        mengacu pada = بيستند لـ، بيشير لـ: Data ini mengacu pada laporan BPS.
+        وفي الحوار هتسمع كلام الشارع، وجنبه الرسمي: gara-gara = karena، tetep = tetap، gitu = begitu.
       ar: |
-        يعرض (menyajikan) التقرير الجيّد البيانات أوّلًا ثمّ الرأي:
-        - Berdasarkan data, … = بناءً على البيانات، …
-        - Selain itu, … = إضافةً إلى ذلك، …
-        - Dengan demikian, … = وبذلك، …
-        - Menurut saya, … = في رأيي، … (الرأي في الآخر، ملطّفًا بـ tampaknya)
-        وموضوعنا: keberagaman (التنوّع) وtoleransi (التسامح) في سينغكاوانغ، وكيف يعيش الناس rukun (في وئام).
+        volume = حجم، كمية (volume penjualan = حجم المبيعات)، perbandingan = مقارنة، نسبة.
+        terbanyak = الأكثر، terendah = الأدنى.
+        kecenderungan = اتجاه عام، ميل: kecenderungannya naik = الاتجاه صاعد.
+        sebanding = متناسب، يوازي (sebanding dengan = متناسب مع)، radius = نطاق، نصف قطر (radius 5 km).
+        mengacu pada = يستند إلى، يشير إلى: Data ini mengacu pada laporan BPS.
+        وفي الحوار لغة الشارع، وبجانبها الصيغة الرسمية: gara-gara = karena، tetep = tetap، gitu = begitu.
       en: |
-        A good report presents (menyajikan) the data first, then your view:
-        - Berdasarkan data, … = Based on the data, …
-        - Selain itu, … = Besides, …
-        - Dengan demikian, … = Thus, …
-        - Menurut saya, … = In my view, … (opinion last, softened with tampaknya)
-        Our topic: keberagaman (diversity) and toleransi (tolerance) in Singkawang, and how people live rukun (in harmony).
+        volume = volume (volume penjualan = sales volume), perbandingan = comparison, ratio.
+        terbanyak = the most, terendah = the lowest.
+        kecenderungan = tendency, trend: kecenderungannya naik = the trend is upward.
+        sebanding = proportional, worth it (sebanding dengan = in proportion to), radius = radius (radius 5 km).
+        mengacu pada = to refer to, be based on: Data ini mengacu pada laporan BPS.
+        The dialogue uses street forms; the formal ones are beside them: gara-gara = karena, tetep = tetap, gitu = begitu.
+    examples:
+      - text: Volume penjualan terbanyak terjadi pada bulan Desember.
+        ar_eg: أكبر حجم مبيعات كان في شهر ديسمبر.
+        ar: سُجّل أعلى حجم مبيعات في شهر ديسمبر.
+        en: The highest sales volume was in December.
+      - text: Kecenderungan harga naik sejak awal tahun.
+        ar_eg: الأسعار ماشية في اتجاه طالع من أول السنة.
+        ar: يتّجه السعر إلى الارتفاع منذ بداية العام.
+        en: Prices have trended upward since the start of the year.
+      - text: Angka ini mengacu pada survei di radius lima kilometer.
+        ar_eg: الرقم ده مبني على استطلاع في نطاق خمسة كيلو.
+        ar: يستند هذا الرقم إلى مسح في نطاق خمسة كيلومترات.
+        en: This figure is based on a survey within a five-kilometre radius.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: menyajikan
-        ar_eg: يعرض / يقدّم
-        ar: يعرض
-        en: to present
-      - text: keberagaman
-        ar_eg: تنوّع
-        ar: تنوّع
-        en: diversity
-      - text: toleransi
-        ar_eg: تسامح
-        ar: تسامح
-        en: tolerance
-      - text: rukun
-        ar_eg: عايشين في وفاق
-        ar: في وئام
-        en: in harmony
-    words: [menyajikan, keberagaman, toleransi, rukun]
+      - text: volume
+        ar_eg: حجم، كمية
+        ar: حجم
+        en: volume
+      - text: perbandingan
+        ar_eg: مقارنة
+        ar: مقارنة
+        en: comparison
+      - text: terbanyak
+        ar_eg: الأكتر
+        ar: الأكثر
+        en: the most
+      - text: terendah
+        ar_eg: الأقل
+        ar: الأدنى
+        en: the lowest
+    words: [volume, perbandingan, terbanyak, terendah]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: kecenderungan
+        ar_eg: اتجاه عام
+        ar: اتجاه عام
+        en: trend
+      - text: sebanding
+        ar_eg: متناسب
+        ar: متناسب
+        en: proportional
+      - text: radius
+        ar_eg: نطاق
+        ar: نطاق، نصف قطر
+        en: radius
+      - text: mengacu
+        ar_eg: بيستند لـ
+        ar: يستند إلى
+        en: to refer to
+    words: [kecenderungan, sebanding, radius, mengacu]
+  - id: e03
+    type: listen
+    text: Penjualan terendah terjadi pada bulan Februari.
+    question:
+      ar_eg: أقل مبيعات كانت إمتى؟
+      ar: متى كانت أدنى المبيعات؟
+      en: When were sales lowest?
+    options: [فبراير, ديسمبر, مايو]
+    answer: 0
+    meaning:
+      ar_eg: أقل مبيعات كانت في شهر فبراير.
+      ar: سُجّلت أدنى المبيعات في فبراير.
+      en: The lowest sales were in February.
+    words: [terendah]
+  - id: e04
+    type: fill_blank
+    sentence: Data dalam laporan ini ___ pada sensus tahun 2020.
+    meaning:
+      ar_eg: الداتا في التقرير ده ___ على تعداد سنة ألفين وعشرين.
+      ar: تـ___ بيانات هذا التقرير إلى تعداد عام 2020.
+      en: The data in this report ___ to the 2020 census.
+    options: [mengacu, sebanding, volume]
+    answers: [mengacu]
+    words: [mengacu, sebanding, volume]
+    explain:
+      ar_eg: «بترجع لـ/بتعتمد على» = mengacu pada. sebanding = متناسب وvolume = حجم، مايجوش مع pada sensus.
+      ar: «تستند إلى» = mengacu pada. أما sebanding فـ«متناسب»، وvolume الحجم.
+      en: "\"Refers to\" is mengacu pada. sebanding (proportionate) and volume don't fit."
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: رأيك الشخصي يتحط فين في التقرير؟
-      ar: أين يوضع رأيك الشخصي في التقرير؟
-      en: Where does your own opinion go in the report?
-    options:
-      - في أول جملة.
-      - في الآخر، بعد البيانات.
-      - مايتحطش خالص.
+      ar_eg: الخط في الجراف بيطلع من سنين. ده اسمه إيه؟
+      ar: الخط في الرسم البياني يصعد منذ سنوات. ماذا نسمّي ذلك؟
+      en: The line on the chart has been rising for years. What is that called?
+    options: [radius, kecenderungan, terbanyak]
     answer: 1
-    words: [menyajikan]
-  - id: e03
+    explain:
+      ar_eg: kecenderungan naik = اتجاه طالع.
+      ar: kecenderungan naik = اتجاه صاعد.
+      en: kecenderungan naik = upward trend.
+    words: [radius, kecenderungan, terbanyak]
+  - id: e06
     type: fill_blank
-    sentence: Warga Tionghoa, Dayak dan Melayu di Singkawang hidup ___.
+    sentence: Gajinya tidak ___ dengan kerja kerasnya.
     meaning:
-      ar_eg: الصينيين والداياك والملايو في سينجكاوانج عايشين في وفاق.
-      ar: يعيش الصينيون والداياك والملايو في سينغكاوانغ في وئام.
-      en: Chinese, Dayak and Malay residents of Singkawang live in harmony.
-    options: [rukun, toleransi, menyajikan]
-    answers: [rukun]
-    words: [rukun]
-  - id: e04
-    type: listen
-    text: Laporan ini menyajikan data tentang keberagaman agama di Singkawang.
-    question:
-      ar_eg: التقرير بيعرض بيانات عن إيه؟
-      ar: عمَّ يعرض التقرير بيانات؟
-      en: What does the report present data on?
-    options:
-      - تنوّع الأديان.
-      - أسعار الأكل.
-      - المطر.
-    answer: 0
-    words: [menyajikan, keberagaman]
-  - id: e05
+      ar_eg: مرتبه مش ___ مع تعبه.
+      ar: راتبه لا يـ___ مع جهده.
+      en: His pay isn't ___ to how hard he works.
+    options: [sebanding, terendah, perbandingan]
+    answers: [sebanding]
+    words: [sebanding, terendah, perbandingan]
+    explain:
+      ar_eg: «مش متناسب مع» = tidak sebanding dengan. terendah = الأقل، وperbandingan = مقارنة (اسم).
+      ar: «لا يتناسب مع» = tidak sebanding dengan. أما terendah فـ«الأدنى»، وperbandingan اسم «المقارنة».
+      en: "\"Not in proportion to\" is tidak sebanding dengan. terendah (lowest) and perbandingan (comparison) don't fit."
+  - id: e07
+    type: multiple_choice
+    question: Ojek ini hanya melayani pesanan dalam ___ tiga kilometer.
+    options: [volume, perbandingan, radius]
+    answer: 2
+    explain:
+      ar_eg: radius = نطاق.
+      ar: radius = نطاق، نصف قطر.
+      en: radius = radius.
+    words: [volume, perbandingan, radius]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: بناءً على البيانات، التسامح هنا قوي جدًا.
-      ar: بناءً على البيانات، التسامح هنا قويّ جدًّا.
-      en: Based on the data, tolerance here is very strong.
-    answer: Berdasarkan data, toleransi di sini sangat kuat.
-    distractors: [rukun, menyajikan]
-    words: [toleransi, berdasarkan]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: التنوّع ده قوة للمدينة.
-      ar: هذا التنوّع قوّة للمدينة.
-      en: This diversity is a strength for the city.
-    answers:
-      - Keberagaman ini adalah kekuatan bagi kota.
-      - Keberagaman ini merupakan kekuatan kota.
-      - Keberagaman ini kekuatan bagi kota ini.
-      - Keberagaman ini menjadi kekuatan kota.
-    words: [keberagaman]
-  - id: e07
+      ar_eg: المقارنة دي بتوري فرق كبير.
+      ar: تُظهر هذه المقارنة فرقًا كبيرًا.
+      en: This comparison shows a big difference.
+    answer: Perbandingan ini menunjukkan perbedaan besar.
+    distractors: [volume, radius]
+    words: [perbandingan]
+    explain:
+      ar_eg: «المقارنة» = Perbandingan. volume = حجم وradius = نصف قطر، مش في الجملة.
+      ar: «المقارنة» = Perbandingan. أما volume فالحجم، وradius نصف القطر.
+      en: "\"Comparison\" is perbandingan. volume and radius aren't in it."
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Dengan demikian, toleransi membuat warga hidup rukun.
+    source_text: Volume penjualan terbanyak terjadi pada bulan Desember.
     answers_meaning:
-      ar_eg:
-        - وبكده، التسامح بيخلّي الناس عايشين في وفاق.
-        - يبقى التسامح هو اللي مخلّي الناس متفقين وعايشين مع بعض.
-      ar:
-        - وبذلك يجعل التسامح السكّان يعيشون في وئام.
-        - إذن، التسامح يجعل الناس يعيشون في وفاق.
-      en:
-        - Thus, tolerance lets residents live in harmony.
-        - So tolerance keeps people living in harmony.
-    words: [toleransi, rukun]
-  - id: e08
-    type: speaking
-    text: Menurut saya, Singkawang adalah contoh toleransi yang indah.
-    meaning:
-      ar_eg: في رأيي، سينجكاوانج مثال حلو للتسامح.
-      ar: في رأيي، سينغكاوانغ مثال جميل على التسامح.
-      en: In my view, Singkawang is a beautiful example of tolerance.
-    words: [toleransi]
-  - id: e09
-    type: dictation
-    text: Kami menyajikan data dari tiga kelurahan.
-    meaning:
-      ar_eg: إحنا بنعرض بيانات من 3 أحياء.
-      ar: نعرض بيانات من ثلاثة أحياء.
-      en: We present data from three neighbourhoods.
-    words: [menyajikan]
+      ar_eg: [أكبر حجم مبيعات كان في ديسمبر, أكتر مبيعات كانت في شهر ديسمبر]
+      ar: [سُجّل أعلى حجم مبيعات في ديسمبر, كان أكبر حجم للمبيعات في شهر ديسمبر]
+      en: [The highest sales volume was in December, Sales volume peaked in December]
+    words: [volume, terbanyak]
   - id: e10
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «keberagaman» جاية من أنهي كلمة؟
-      ar: من أيّ كلمة جاءت «keberagaman»؟
-      en: Which word does "keberagaman" come from?
-    options: [ragam, rukun, berat]
-    answer: 0
-    words: [keberagaman]
+    type: speaking
+    text: Kecenderungannya naik, dan datanya mengacu pada survei toko.
+    meaning:
+      ar_eg: الاتجاه طالع، والداتا مبنية على استطلاع للمحلات.
+      ar: الاتجاه صاعد، والبيانات تستند إلى مسح للمتاجر.
+      en: The trend is upward, and the data is based on a shop survey.
+    words: [kecenderungan, mengacu]
 dialogue:
-  title: Draf laporan
   lines:
+    - speaker: Rina
+      text: Nih, grafik penjualan kopi kita selama setahun.
+      ar_eg: الجراف ده بيوري مبيعات القهوة بتاعتنا على مدار سنة.
+      ar: يُظهر هذا الرسم البياني مبيعات قهوتنا خلال عام.
+      en: This chart shows our coffee sales over a year.
     - speaker: Mohamed
-      text: Mas, ini draf laporan saya. Saya menyajikan data dulu, lalu pendapat saya.
-      ar_eg: يا ريزال، ده مسودة تقريري. عرضت البيانات الأول، وبعدين رأيي.
-      ar: هذه مسوّدة تقريري. عرضت البيانات أوّلًا ثمّ رأيي.
-      en: Mas, here's my report draft. I present the data first, then my opinion.
-    - speaker: Mas Rizal
-      text: Bagus. Bagian tentang keberagaman sangat menarik.
-      ar_eg: حلو. الجزء بتاع التنوّع حلو قوي.
-      ar: جميل. الجزء الخاصّ بالتنوّع شائق جدًّا.
-      en: Good. The part on diversity is really interesting.
+      text: Volume terbanyak di bulan Desember, ya? Mungkin gara-gara liburan.
+      ar_eg: أكبر حجم في ديسمبر؟ يمكن عشان الإجازات.
+      ar: أعلى حجم في ديسمبر، صحيح؟ ربما بسبب العطلات.
+      en: The highest volume is in December, right? Maybe because of the holidays.
+    - speaker: Rina
+      text: Iya. Yang terendah bulan puasa. Tapi kecenderungannya tetep naik.
+      ar_eg: مظبوط. والأقل في رمضان. بس الاتجاه العام برضه طالع.
+      ar: صحيح. والأدنى في رمضان، لكن الاتجاه العام يبقى صاعدًا.
+      en: Right. The lowest is Ramadan. But the overall trend is still upward.
     - speaker: Mohamed
-      text: Di Singkawang ada vihara, masjid dan gereja yang berdekatan. Warganya hidup rukun.
-      ar_eg: في سينجكاوانج فيه معابد وجوامع وكنايس جنب بعض. والناس عايشين في وفاق.
-      ar: في سينغكاوانغ معابد ومساجد وكنائس متجاورة، ويعيش أهلها في وئام.
-      en: In Singkawang there are temples, mosques and churches close together. People live in harmony.
-    - speaker: Mas Rizal
-      text: Dengan demikian, kesimpulanmu jelas. Toleransi bukan sekadar kata di sana.
-      ar_eg: وبكده، خلاصتك واضحة. التسامح هناك مش مجرد كلمة.
-      ar: وبذلك تكون خلاصتك واضحة، فالتسامح هناك ليس مجرّد كلمة.
-      en: Thus, your conclusion is clear. Tolerance there is more than a word.
+      text: Data pelanggannya mengacu ke survei apa?
+      ar_eg: داتا العملا دي مبنية على أنهي استطلاع؟
+      ar: إلى أي مسح تستند بيانات العملاء؟
+      en: Which survey is the customer data based on?
+    - speaker: Rina
+      text: Survei toko dalam radius sepuluh kilo dari kantor.
+      ar_eg: استطلاع للمحلات في نطاق عشرة كيلو من المكتب.
+      ar: مسح للمتاجر في نطاق عشرة كيلومترات من المكتب.
+      en: A survey of shops within ten kilometres of the office.
+    - speaker: Mohamed
+      text: Kalau gitu, perbandingan sama kota lain belum adil, dong.
+      ar_eg: يبقى المقارنة مع مدن تانية لسه مش عادلة.
+      ar: إذن ليست المقارنة مع المدن الأخرى عادلة بعد.
+      en: Then comparing with other cities isn't fair yet.
 new_words:
-  - word: menyajikan
-    pos: verb
-    ar_eg: يعرض / يقدّم
-    ar: يعرض
-    en: to present
-  - word: keberagaman
+  - word: volume
     pos: noun
-    ar_eg: تنوّع
-    ar: تنوّع
-    en: diversity
-  - word: toleransi
+    ar_eg: حجم، كمية
+    ar: حجم، كمية
+    en: volume
+  - word: perbandingan
     pos: noun
-    ar_eg: تسامح
-    ar: تسامح
-    en: tolerance
-  - word: rukun
+    ar_eg: مقارنة، نسبة
+    ar: مقارنة، نسبة
+    en: comparison, ratio
+  - word: terbanyak
     pos: adjective
-    arabic: ركن
-    ar_eg: عايشين في وفاق
-    ar: في وئام
-    en: in harmony
+    ar_eg: الأكتر
+    ar: الأكثر
+    en: the most
+  - word: terendah
+    pos: adjective
+    ar_eg: الأقل، الأوطى
+    ar: الأدنى
+    en: the lowest
+  - word: kecenderungan
+    pos: noun
+    ar_eg: اتجاه عام، ميل
+    ar: اتجاه عام، ميل
+    en: tendency, trend
+  - word: sebanding
+    pos: adjective
+    ar_eg: متناسب، يستاهل
+    ar: متناسب
+    en: proportional, commensurate
+  - word: radius
+    pos: noun
+    ar_eg: نطاق، نصف قطر
+    ar: نطاق، نصف قطر
+    en: radius
+  - word: mengacu
+    pos: verb
+    ar_eg: بيستند لـ (mengacu pada)
+    ar: يستند إلى (mengacu pada)
+    en: to refer to, be based on (mengacu pada)
 review:
   status: draft
   verified: false

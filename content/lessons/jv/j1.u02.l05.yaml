@@ -1,215 +1,245 @@
 schema: kabar.lesson/v1
 id: j1.u02.l05
 language: jv
-title: Ulangan J1.2
+title: Guru, dokter, penerjemah
 can_do:
-  ar_eg: تعرّف بنفسك وترجّع السؤال للتاني.
-  ar: أن تعرّف بنفسك وتسأل محدّثك بالمثل.
-  en: Introduce yourself and ask back.
+  ar_eg: 'تقول شغلتك وتوصف الناس: كبير ولا صغير، شاطر، وأصله منين.'
+  ar: 'أن تذكر مهنتك وتصف الناس: كبير أم صغير، ماهر، ومن أين أصله.'
+  en: 'Say what you do and describe people: old or young, clever, and where they''re really from.'
 slides:
-  - title: Takon lan njawab
+  - title: Aku penerjemah
     body:
       ar_eg: |
-        مراجعة الوحدة:
-        - أدوات السؤال: apa (opo)، sapa (sopo)، ngendi / endi، kapan، piye، pira (piro)، ngapa. وفي Arek: yok opo، lapo.
-        - السؤال في الآخر زي المصري: Jenengmu sapa? · Omahmu ngendi? · Regane pira?
-        - التعريف: Jenengku … · Aku wong Mesir · Aku saka Kairo · Aku guru / mahasiswa · Aku sinau basa Jawa.
-        - وترجّع السؤال: «Kowe?» أو «Jenengmu sapa?» أو مع حد أكبر «Mas / Mbak?».
+        guru = مدرّس، dokter = دكتور، penerjemah = مترجم: Aku penerjemah.
+        pinter = شاطر. tuwa = كبير في السن، enom = صغير، شاب.
+        bocah = عيل، واد (ومنها cah!): bocah Jogja = واد من يوجيا.
+        asli = أصلي: Aku wong Mesir asli = أنا مصري أصلي.
       ar: |
-        مراجعة الوحدة:
-        - أدوات الاستفهام: apa (opo)، sapa (sopo)، ngendi / endi، kapan، piye، pira (piro)، ngapa، وفي Arek: yok opo وlapo.
-        - الأداة في آخر الجملة كالعامية: Jenengmu sapa? · Omahmu ngendi? · Regane pira?
-        - التعريف بالنفس: Jenengku … · Aku wong Mesir · Aku saka Kairo · Aku guru / mahasiswa · Aku sinau basa Jawa.
-        - وردّ السؤال: «Kowe?» أو «Jenengmu sapa?» أو مع الأكبر «Mas / Mbak?».
+        guru = مدرّس، dokter = طبيب، penerjemah = مترجم: Aku penerjemah.
+        pinter = ماهر، ذكي. tuwa = مسنّ، enom = شابّ.
+        bocah = ولد، فتى (ومنها cah!): bocah Jogja = فتى من يوجيا.
+        asli = أصيل، أصلي: Aku wong Mesir asli = أنا مصري أصيل.
       en: |
-        Unit review:
-        - Question words: apa (opo), sapa (sopo), ngendi / endi, kapan, piye, pira (piro), ngapa; Arek yok opo, lapo.
-        - Question word last, as in Egyptian: Jenengmu sapa? · Omahmu ngendi? · Regane pira?
-        - Introducing yourself: Jenengku … · Aku wong Mesir · Aku saka Kairo · Aku guru / mahasiswa · Aku sinau basa Jawa.
-        - Ask back: "Kowe?", "Jenengmu sapa?", or to someone older "Mas / Mbak?".
-    grammar: jv.sentence.basic
+        guru = teacher, dokter = doctor, penerjemah = translator: Aku penerjemah.
+        pinter = clever. tuwa = old, enom = young.
+        bocah = kid, lad (that's where cah! comes from): bocah Jogja = a Jogja lad.
+        asli = original, born and bred: Aku wong Mesir asli = I'm Egyptian born and bred.
     examples:
-      - text: Jenengku Mohamed. Jenengmu sapa?
-        ar_eg: اسمي محمد. وإنت اسمك إيه؟
-        ar: اسمي محمد. وما اسمك؟
-        en: My name is Mohamed. What's yours?
+      - text: Aku penerjemah saka Mesir.
+        ar_eg: أنا مترجم من مصر.
+        ar: أنا مترجم من مصر.
+        en: I'm a translator from Egypt.
+      - text: Dheweke guru basa Jawa.
+        ar_eg: هو مدرّس لغة جاوية.
+        ar: هو مدرّس للغة الجاوية.
+        en: He's a Javanese teacher.
+      - text: Mas Heru bocah Jogja asli.
+        ar_eg: ماس هيرو ابن يوجيا أصلي.
+        ar: ماس هيرو ابن يوجيا الأصيل.
+        en: Mas Heru is a true Jogja lad.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: sapa
-        ar_eg: مين
-        ar: مَن
-        en: who
-      - text: ngendi
-        ar_eg: فين
-        ar: أين
-        en: where
-      - text: kapan
-        ar_eg: إمتى
-        ar: متى
-        en: when
-      - text: piye
-        ar_eg: إزاي
-        ar: كيف
-        en: how
-      - text: pira
-        ar_eg: كام / بكام
-        ar: كم / بكم
-        en: how much
-    words: [sapa, ngendi, kapan, piye, pira]
+      - text: guru
+        ar_eg: مدرّس
+        ar: مدرّس
+        en: teacher
+      - text: dokter
+        ar_eg: دكتور
+        ar: طبيب
+        en: doctor
+      - text: penerjemah
+        ar_eg: مترجم
+        ar: مترجم
+        en: translator
+      - text: pinter
+        ar_eg: شاطر
+        ar: ماهر
+        en: clever
+    words: [guru, dokter, penerjemah, pinter]
   - id: e02
     type: match_pairs
     pairs:
-      - text: opo
-        ar_eg: إيه = apa (شات)
-        ar: apa (دردشة)
-        en: apa (chat)
-      - text: sopo
-        ar_eg: مين = sapa (شات)
-        ar: sapa (دردشة)
-        en: sapa (chat)
-      - text: piro
-        ar_eg: كام = pira (شات)
-        ar: pira (دردشة)
-        en: pira (chat)
-      - text: yok opo
-        ar_eg: إزاي = piye (Arek)
-        ar: كيف = piye (Arek)
-        en: piye (Arek)
-      - text: lapo
-        ar_eg: ليه = ngapa (Arek)
-        ar: لماذا = ngapa (Arek)
-        en: ngapa (Arek)
-    words: [apa, sapa, pira, yok opo, lapo]
+      - text: tuwa
+        ar_eg: كبير في السن
+        ar: مسنّ
+        en: old
+      - text: enom
+        ar_eg: شاب، صغير
+        ar: شابّ
+        en: young
+      - text: asli
+        ar_eg: أصلي
+        ar: أصيل
+        en: original, true
+      - text: bocah
+        ar_eg: واد، ابن البلد
+        ar: فتى، ابن البلد
+        en: kid, lad
+    words: [tuwa, enom, asli, bocah]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: عايز تسأل البيّاع عن السعر. تقول إيه؟
-      ar: تريد أن تسأل البائع عن الثمن. ماذا تقول؟
-      en: You want to ask the seller the price. What do you say?
-    options: ['Regane pira?', 'Regane ngendi?', 'Regane sapa?']
+    type: listen
+    text: Aku penerjemah saka Mesir.
+    options: [Aku penerjemah saka Mesir., Aku guru saka Mesir., Aku dokter saka Mesir.]
     answer: 0
-    words: [rega, pira]
+    meaning:
+      ar_eg: أنا مترجم من مصر.
+      ar: أنا مترجم من مصر.
+      en: I'm a translator from Egypt.
+    words: [penerjemah, guru, dokter]
   - id: e04
+    type: fill_blank
+    sentence: Mas Heru bocah Jogja ___.
+    meaning:
+      ar_eg: ماس هيرو ابن يوجيا ___.
+      ar: ماس هيرو ابن يوجيا ___.
+      en: Mas Heru is a ___ Jogja lad.
+    options: [asli, tuwa, pinter]
+    answers: [asli]
+    words: [asli, tuwa, pinter, bocah]
+    explain:
+      ar_eg: "asli = أصلي / من البلد نفسها: bocah Jogja asli = ابن يوجيا أصلي. tuwa = كبير في السن، وpinter = شاطر."
+      ar: "asli = أصيل: bocah Jogja asli = ابن يوجياكرتا الأصيل؛ أما tuwa فمسنّ، وpinter ذكي."
+      en: "asli = native: bocah Jogja asli = a born-and-bred Jogja lad. tuwa = old, pinter = clever."
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة جاوي من غير غلط؟
-      ar: أيّ جملة جاوية بلا خطأ؟
-      en: Which Javanese sentence has no mistake?
-    options: [Saya wong Mesir., Aku wong Mesir., Aku saka wong Mesir.]
+      ar_eg: اللي بيعالج العيانين اسمه إيه؟
+      ar: ما اسم من يعالج المرضى؟
+      en: Who treats sick people?
+    options: [guru, dokter, bakul]
     answer: 1
     explain:
-      ar_eg: saya إندونيسي، وsaka يعني «من» ومالهاش لازمة هنا. الصح Aku wong Mesir.
-      ar: saya إندونيسية، وsaka تعني «من» ولا مكان لها هنا، والصواب Aku wong Mesir.
-      en: saya is Indonesian, and saka (from) has no place here. Correct = Aku wong Mesir.
-    words: [aku, wong]
-  - id: e05
-    type: listen
-    text: Mas wong ngendi?
-    options: ['Mas sinau apa?', 'Omahmu ngendi?', 'Mas wong ngendi?']
-    answer: 2
-    words: [wong, ngendi]
+      ar_eg: dokter = دكتور. guru = مدرّس، bakul = بيّاع.
+      ar: dokter = طبيب. أمّا guru فمدرّس، وbakul فبائع.
+      en: dokter = doctor. guru = teacher, bakul = seller.
+    words: [dokter, guru]
   - id: e06
-    type: listen
-    text: Aku sinau basa Jawa.
-    options: [Aku saka Jawa., Aku sinau basa Jawa., Aku guru basa Jawa.]
-    answer: 1
-    words: [sinau, basa]
+    type: fill_blank
+    sentence: Wong ___ lan bocah enom.
+    meaning:
+      ar_eg: ناس ___ وولاد صغيرين.
+      ar: كبار ___ وفتيان شبّان.
+      en: ___ people and young lads.
+    options: [tuwa, asli, guru]
+    answers: [tuwa]
+    words: [tuwa, enom, bocah, asli]
+    explain:
+      ar_eg: wong tuwa = ناس كبار، عكس bocah enom (شباب صغيرين). asli = أصلي، وguru = مدرس.
+      ar: wong tuwa = كبار السن، في مقابل bocah enom (الشباب)؛ أما asli فأصيل، وguru معلّم.
+      en: wong tuwa = old people, the opposite of bocah enom (young lads). asli = native, guru = teacher.
   - id: e07
-    type: fill_blank
-    sentence: Kowe saka ___?
-    meaning:
-      ar_eg: إنت منين؟
-      ar: من أين أنت؟
-      en: Where are you from?
-    options: [sapa, kapan, ngendi]
-    answers: [ngendi]
-    words: [saka, ngendi]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «إنت شاطر يا جدع!» بالجاوي؟
+      ar: كيف تقول «أنت ماهر يا صاحبي!» بالجاوية؟
+      en: '"You''re clever, mate!" in Javanese?'
+    options: ['Kowe pinter, cah!', 'Kowe tuwa, cah!', 'Kowe asli, cah!']
+    answer: 0
+    explain:
+      ar_eg: pinter = شاطر. tuwa = كبير في السن، asli = أصلي.
+      ar: pinter = ماهر. أمّا tuwa فمسنّ، وasli فأصيل.
+      en: pinter = clever. tuwa = old, asli = original.
+    words: [pinter, tuwa, asli]
   - id: e08
-    type: fill_blank
-    sentence: Omah___ gedhe.
-    meaning:
-      ar_eg: بيتي كبير.
-      ar: بيتي كبير.
-      en: My house is big.
-    options: [ku, mu]
-    answers: [ku]
-    words: [omah, gedhe]
-  - id: e09
     type: build_sentence
     source:
-      ar_eg: اسمي محمد. اسمك إيه؟
-      ar: اسمي محمد. ما اسمك؟
-      en: My name is Mohamed. What's your name?
-    answer: Jenengku Mohamed. Jenengmu sapa?
-    distractors: [pira, saya]
-    words: [jeneng, sapa]
-  - id: e10
+      ar_eg: هو مدرّس لغة جاوية.
+      ar: هو مدرّس للغة الجاوية.
+      en: He's a Javanese teacher.
+    answer: Dheweke guru basa Jawa.
+    distractors: [dokter, enom]
+    words: [guru]
+    explain:
+      ar_eg: guru basa Jawa = مدرس جاوي. dokter = دكتور، وenom = صغير في السن، ومش في المعنى.
+      ar: guru basa Jawa = معلّم الجاوية؛ أما dokter فطبيب، وenom شاب، وليسا في المعنى.
+      en: guru basa Jawa = Javanese teacher. dokter (doctor) and enom (young) aren't in the meaning.
+  - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا مصري. وإنت؟
-      ar: أنا مصري. وأنت؟
-      en: I'm Egyptian. And you?
-    answers: ["Aku wong Mesir. Kowe?", "Aku wong Mesir, kowe?", "Aku wong Mesir. Kowe piye?", "Aku wong Mesir. Kowe wong ngendi?", "Aku wong Mesir. Koen?"]
-    words: [wong, kowe]
-  - id: e11
-    type: dictation
-    text: Jenengmu sapa?
-    meaning:
-      ar_eg: اسمك إيه؟
-      ar: ما اسمك؟
-      en: What's your name?
-    words: [jeneng, sapa]
-  - id: e12
+    direction: from_target
+    source_text: Mas Yudha bocah enom saka Jogja.
+    answers_meaning:
+      ar_eg: [ماس يودا واد صغير من يوجيا, ماس يودا شاب من يوجيا]
+      ar: [ماس يودا شابّ من يوجيا, ماس يودا فتى شابّ من يوجيا]
+      en: [Mas Yudha is a young lad from Jogja, Mas Yudha is a young guy from Jogja]
+    words: [bocah, enom]
+  - id: e10
     type: speaking
-    text: Jenengku Mohamed. Aku saka Kairo. Kowe saka ngendi?
+    text: Aku penerjemah, aku sinau basa Jawa.
     meaning:
-      ar_eg: اسمي محمد. أنا من القاهرة. وإنت منين؟
-      ar: اسمي محمد. أنا من القاهرة. ومن أين أنت؟
-      en: My name is Mohamed. I'm from Cairo. Where are you from?
-    words: [jeneng, saka, ngendi]
+      ar_eg: أنا مترجم، وبتعلّم جاوي.
+      ar: أنا مترجم، وأتعلّم الجاوية.
+      en: I'm a translator, I'm learning Javanese.
+    words: [penerjemah]
 dialogue:
-  title: Nunggu sepur
   lines:
-    - speaker: Mbak Sinta
-      text: Mas, sugeng enjing.
-      ar_eg: صباح الخير يا أستاذ.
-      ar: صباح الخير يا أخي.
-      en: Good morning.
+    - speaker: Mas Yudha
+      text: Mas, kowe saka ngendi? Kowe guru?
+      ar_eg: يا ماس، إنت منين؟ إنت مدرّس؟
+      ar: من أين أنت يا أخي؟ هل أنت مدرّس؟
+      en: Where are you from, Mas? Are you a teacher?
     - speaker: Mohamed
-      text: Sugeng enjing, Mbak. Jenengku Mohamed. Jenengmu sapa?
-      ar_eg: صباح النور يا آنسة. اسمي محمد. اسمك إيه؟
-      ar: صباح النور يا آنسة. اسمي محمد. ما اسمك؟
-      en: Good morning. My name is Mohamed. What's your name?
-    - speaker: Mbak Sinta
-      text: Sinta. Mas wong ngendi?
-      ar_eg: سينتا. وحضرتك منين؟
-      ar: سينتا. ومن أين أنت؟
-      en: Sinta. Where are you from?
+      text: Dudu, aku penerjemah saka Mesir.
+      ar_eg: لأ، أنا مترجم من مصر.
+      ar: لا، أنا مترجم من مصر.
+      en: No, I'm a translator from Egypt.
+    - speaker: Mas Yudha
+      text: Wah, pinter! Aku mahasiswa, bocah Jogja asli.
+      ar_eg: واو، شاطر! أنا طالب جامعة، ابن يوجيا أصلي.
+      ar: رائع، أنت ماهر! أنا طالب جامعي، ابن يوجيا الأصيل.
+      en: Wow, clever! I'm a student, a true Jogja lad.
     - speaker: Mohamed
-      text: Aku wong Mesir. Mbak wong Suroboyo?
-      ar_eg: أنا مصري. وإنتِ من سورابايا؟
-      ar: أنا مصري. وهل أنتِ من سورابايا؟
-      en: I'm Egyptian. Are you from Surabaya?
-    - speaker: Mbak Sinta
-      text: Ora, aku saka Malang. Aku mahasiswa.
-      ar_eg: لأ، أنا من مالانج. أنا طالبة.
-      ar: لا، أنا من مالانغ. وأنا طالبة جامعية.
-      en: No, I'm from Malang. I'm a student.
-    - speaker: Mohamed
-      text: Apik! Aku sinau basa Jawa.
-      ar_eg: حلو! أنا بتعلم جاوي.
-      ar: جميل! أنا أتعلّم الجاوية.
-      en: Nice! I'm learning Javanese.
-souvenir:
-  id: j1.u02.souvenir
-  title: Stasiun Gubeng
-  note:
-    ar_eg: 'محطة Gubeng من أكبر محطات القطر في سورابايا، ومنها القطارات بتطلع لباقي جاوة — وده بالظبط خط رحلتك في Kabar. وإنت مستني القطر، الجاوي بيبدأ الكلام بأداة سؤال: «Piye kabare?»، و«Regane pira?» عند الكشك. لو حفظت piye وpira، تقدر تفتح أي دردشة على الرصيف.'
-    ar: 'محطة Gubeng من أكبر محطات القطار في سورابايا، ومنها تنطلق القطارات إلى سائر جاوة، وهو خط رحلتك في Kabar. وعلى الرصيف يبدأ الجاوي الحديث بأداة استفهام: «Piye kabare?» و«Regane pira?» عند الكشك. فإذا حفظت piye وpira فتحت أي حديث على الرصيف.'
-    en: 'Gubeng is one of Surabaya''s big train stations, where trains leave for the rest of Java — exactly the line your Kabar journey follows. While you wait on the platform, Javanese small talk opens with a question word: "Piye kabare?", and "Regane pira?" at the snack kiosk. Learn piye and pira and you can start a chat with anyone on the platform.'
+      text: Bapakmu dokter, ya?
+      ar_eg: أبوك دكتور، صح؟
+      ar: أبوك طبيب، أليس كذلك؟
+      en: Your dad's a doctor, right?
+    - speaker: Mas Yudha
+      text: Iya. Bapakku tuwa, nanging isih nyambut gawe.
+      ar_eg: أيوه. أبويا كبر في السن، بس لسه بيشتغل.
+      ar: نعم. أبي مسنّ، لكنّه ما زال يعمل.
+      en: Yes. My dad's old now, but he still works.
+new_words:
+  - word: guru
+    pos: noun
+    ar_eg: مدرّس
+    ar: مدرّس
+    en: teacher
+  - word: dokter
+    pos: noun
+    ar_eg: دكتور
+    ar: طبيب
+    en: doctor
+  - word: penerjemah
+    pos: noun
+    ar_eg: مترجم
+    ar: مترجم
+    en: translator
+  - word: pinter
+    pos: adjective
+    ar_eg: شاطر
+    ar: ماهر، ذكي
+    en: clever, smart
+  - word: tuwa
+    pos: adjective
+    ar_eg: كبير في السن
+    ar: مسنّ، عجوز
+    en: old (of people)
+  - word: enom
+    pos: adjective
+    ar_eg: شاب، صغير
+    ar: شابّ، صغير السن
+    en: young
+  - word: asli
+    pos: adjective
+    ar_eg: أصلي
+    ar: أصيل، أصلي
+    en: original, born and bred
+  - word: bocah
+    pos: noun
+    ar_eg: عيل، واد
+    ar: ولد، فتى
+    en: kid, lad (= anak)
 review:
   status: draft
   verified: false

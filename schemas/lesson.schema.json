@@ -59,7 +59,32 @@
         "title": { "type": "string" },
         "body": { "$ref": "#/$defs/localized" },
         "examples": { "type": "array", "maxItems": 3, "items": { "$ref": "#/$defs/with_meaning", "unevaluatedProperties": false } },
-        "grammar": { "type": "string", "description": "Grammar-library id, e.g. id.greeting.selamat." }
+        "grammar": { "type": "string", "description": "Grammar-library id, e.g. id.greeting.selamat." },
+        "table": {
+          "description": "A small comparison table shown under the body: target-language columns plus the row's meaning.",
+          "type": "object",
+          "required": ["head", "rows"],
+          "properties": {
+            "head": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "$ref": "#/$defs/text" } },
+            "rows": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "required": ["cells", "ar_eg", "ar", "en"],
+                "properties": {
+                  "cells": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "$ref": "#/$defs/text" } },
+                  "ar_eg": { "$ref": "#/$defs/text" },
+                  "ar": { "$ref": "#/$defs/text" },
+                  "en": { "$ref": "#/$defs/text" }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
       },
       "additionalProperties": false
     },
@@ -199,6 +224,9 @@
         "word": { "$ref": "#/$defs/text" },
         "pos": { "type": "string" },
         "arabic": { "type": "string", "description": "Arabic origin when it's an Arabic loan (Bridge gold), e.g. خبر." },
+        "bridge": { "type": "string", "description": "The Bridge card a derived or Javanese loan shares when its own spelling has none, e.g. salam for bersalaman." },
+        "false_friend": { "type": "string", "description": "Javanese only: the same-spelled Indonesian word with a different meaning (mau 'a moment ago' vs Indonesian mau 'want'). The word card shows a badge." },
+        "same_as_id": { "type": "boolean", "description": "Javanese only: spelled like an Indonesian new word and means the same, though the glosses differ in wording." },
         "ar_eg": { "$ref": "#/$defs/text" },
         "ar": { "$ref": "#/$defs/text" },
         "en": { "$ref": "#/$defs/text" }

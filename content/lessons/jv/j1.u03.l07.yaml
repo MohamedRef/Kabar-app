@@ -1,0 +1,186 @@
+schema: kabar.lesson/v1
+id: j1.u03.l07
+language: jv
+title: Oke, cukup!
+can_do:
+  ar_eg: ترد في الشات بـ «ماشي» و«كفاية»، وتفهم ألف ومليون.
+  ar: أن تردّ في الدردشة بـ «حسنًا» و«يكفي»، وتفهم ألفًا ومليونًا.
+  en: Answer a chat with "OK" and "that's enough", and understand a thousand and a million.
+slides:
+  - title: Chat karo Mas Heru
+    body:
+      ar_eg: |
+        - **oke** = ماشي (oke)، بتتكتب كمان ok في الشات.
+        - **cukup** = كفاية (cukup): Wis cukup = كده كفاية.
+        - **sewu** = ألف (seribu) · **sejuta** = مليون (sejuta)
+      ar: |
+        - **oke** = حسنًا (oke)، وتُكتب أيضًا ok في الدردشة.
+        - **cukup** = يكفي (cukup): Wis cukup = هذا يكفي.
+        - **sewu** = ألف (seribu) · **sejuta** = مليون (sejuta)
+      en: |
+        - **oke** = OK (oke); chats also write ok.
+        - **cukup** = enough (cukup): Wis cukup = that's enough.
+        - **sewu** = a thousand (seribu) · **sejuta** = a million (sejuta)
+    examples:
+      - text: Oke, Mas, sesuk ketemu!
+        ar_eg: ماشي يا ماس، نتقابل بكرة!
+        ar: حسنًا يا أخي، نلتقي غدًا!
+        en: OK, Mas, see you tomorrow!
+      - text: Wis cukup, matur nuwun.
+        ar_eg: كده كفاية، شكرًا.
+        ar: هذا يكفي، شكرًا.
+        en: That's enough, thanks.
+      - text: Gorengane sewu, Mas.
+        ar_eg: المقليات بألف يا ماس.
+        ar: المقليات بألف يا أخي.
+        en: The fritters are a thousand each, Mas.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: oke
+        ar_eg: ماشي
+        ar: حسنًا
+        en: OK
+      - text: cukup
+        ar_eg: كفاية
+        ar: يكفي
+        en: enough
+      - text: sewu
+        ar_eg: ألف
+        ar: ألف
+        en: a thousand
+      - text: sejuta
+        ar_eg: مليون
+        ar: مليون
+        en: a million
+    words: [oke, cukup, sewu, sejuta]
+  - id: e02
+    type: listen
+    text: Oke, Mas, sesuk ketemu!
+    question:
+      ar_eg: بيقول إيه؟
+      ar: ماذا يقول؟
+      en: What is he saying?
+    options: [ماشي يا ماس، نتقابل بكرة, لا يا ماس، مش هقدر, استناني يا ماس]
+    answer: 0
+    meaning:
+      ar_eg: ماشي يا ماس، نتقابل بكرة!
+      ar: حسنًا يا أخي، نلتقي غدًا!
+      en: OK, Mas, see you tomorrow!
+    words: [oke]
+  - id: e03
+    type: fill_blank
+    sentence: Wis ___, matur nuwun.
+    meaning:
+      ar_eg: كده ___، شكرًا.
+      ar: هذا ___، شكرًا.
+      en: That's ___, thanks.
+    options: [cukup, sewu, oke]
+    answers: [cukup]
+    words: [cukup, sewu, oke]
+    explain:
+      ar_eg: wis cukup = كفاية كده. sewu = ألف، وoke = ماشي، ومش بيكمّلوا wis ___.
+      ar: wis cukup = يكفي؛ أما sewu فألف، وoke حسنًا، ولا يُكمِلان wis ___.
+      en: wis cukup = that's enough. sewu (a thousand) and oke (OK) don't complete wis ___.
+  - id: e04
+    type: fill_blank
+    sentence: Gorengane ___, Mas.
+    meaning:
+      ar_eg: المقليات بـ ___ يا ماس.
+      ar: المقليات بـ ___ يا أخي.
+      en: The fritters are ___ each, Mas.
+    options: [sewu, cukup, oke]
+    answers: [sewu]
+    words: [sewu, cukup, oke]
+    explain:
+      ar_eg: "السعر: sewu = ألف (لكل واحدة). cukup = كفاية، وoke = ماشي."
+      ar: "السعر: sewu = ألف للقطعة؛ أما cukup فكافٍ، وoke حسنًا."
+      en: "It's a price: sewu = a thousand each. cukup = enough, oke = OK."
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي رقم معناه «مليون»؟
+      ar: أيّ عدد يعني «مليون»؟
+      en: Which number means "a million"?
+    options: [sejuta, sewu, siji]
+    answer: 0
+    explain:
+      ar_eg: sejuta = مليون. sewu = ألف، وsiji = واحد.
+      ar: sejuta = مليون، أما sewu فألف وsiji واحد.
+      en: sejuta = a million. sewu = a thousand, siji = one.
+    words: [sejuta, sewu, siji]
+  - id: e06
+    type: multiple_choice
+    question: Ora sejuta, cah!
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [مش مليون يا جدع!, مش ألف يا جدع!, مش واحد يا جدع!]
+    answer: 0
+    explain:
+      ar_eg: sejuta = مليون.
+      ar: sejuta = مليون.
+      en: sejuta = a million.
+    words: [sejuta]
+  - id: e07
+    type: speaking
+    text: Oke, cukup, matur nuwun!
+    meaning:
+      ar_eg: ماشي، كفاية، شكرًا!
+      ar: حسنًا، يكفي، شكرًا!
+      en: OK, that's enough, thanks!
+    words: [oke, cukup]
+dialogue:
+  lines:
+    - speaker: Mas Heru
+      text: Cah, sesuk ngopi?
+      ar_eg: يا جدع، نشرب قهوة بكرة؟
+      ar: يا صاحبي، نشرب القهوة غدًا؟
+      en: Mate, coffee tomorrow?
+    - speaker: Mohamed
+      text: Oke, Mas! Neng ngendi?
+      ar_eg: ماشي يا ماس! فين؟
+      ar: حسنًا يا أخي! أين؟
+      en: OK, Mas! Where?
+    - speaker: Mas Heru
+      text: Neng angkringan cedhak Tugu. Gorengane sewu.
+      ar_eg: في الأنجكرينجان اللي جنب توجو. المقليات بألف.
+      ar: في الأنجكرينجان قرب توجو. المقليات بألف.
+      en: At the angkringan near Tugu. Fritters are a thousand each.
+    - speaker: Mohamed
+      text: Wah, apik! Cukup kanggo aku, hehe.
+      ar_eg: حلو! كفاية عليا، هههه.
+      ar: رائع! هذا يكفيني، هه.
+      en: Great! That's enough for me, hehe.
+    - speaker: Mas Heru
+      text: Hehe, ora sejuta, cah!
+      ar_eg: هههه، مش مليون يا جدع!
+      ar: هه، ليس مليونًا يا صاحبي!
+      en: Hehe, it's not a million, mate!
+new_words:
+  - word: oke
+    pos: particle
+    ar_eg: ماشي (oke)؛ في الشات ok
+    ar: حسنًا (oke)؛ وفي الدردشة ok
+    en: OK (oke); chat ok
+    same_as_id: true
+  - word: cukup
+    pos: adjective
+    ar_eg: كفاية (cukup)
+    ar: يكفي (cukup)
+    en: enough (cukup)
+  - word: sewu
+    pos: number
+    ar_eg: ألف (seribu)
+    ar: ألف (seribu)
+    en: a thousand (seribu)
+  - word: sejuta
+    pos: number
+    ar_eg: مليون (sejuta)
+    ar: مليون (sejuta)
+    en: a million (sejuta)
+review:
+  status: draft
+  verified: false

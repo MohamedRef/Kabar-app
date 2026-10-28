@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: j3.u02.l09
+language: jv
+title: Sugeng rawuh, Mas Mohamed
+can_do:
+  ar_eg: تقرا ورقة ترحيب بالكراما من صاحبة البيت وترد عليها بأدب.
+  ar: أن تقرأ ورقة ترحيب بالكراما من صاحبة البيت وتردّ عليها بأدب.
+  en: Read a host's krama welcome note and answer it politely.
+slides:
+  - title: Layang ing meja
+    body:
+      ar_eg: |
+        محمد نزل في بيت قريب من Pasar Kranggan. على الترابيزة لقى ورقة صغيرة من صاحبة البيت. اقراها:
+        خد بالك إزاي بتقول «بيتي» بالكراما: griya kula (مش omahku).
+      ar: |
+        نزل محمد في بيت قريب من Pasar Kranggan، فوجد على الطاولة ورقة صغيرة من صاحبة البيت. اقرأها:
+        لاحظ كيف تقول «بيتي» بالكراما: griya kula لا omahku.
+      en: |
+        Mohamed is staying in a house near Pasar Kranggan. On the table he finds a little note from his host. Read it:
+        notice how she says "my house" in krama: griya kula (not omahku).
+    examples:
+      - text: Sugeng rawuh, Mas Mohamed!
+        ar_eg: أهلًا وسهلًا يا أستاذ محمد!
+        ar: أهلًا وسهلًا يا أخي محمد!
+        en: Welcome, Mohamed!
+      - text: Nami kula Bu Siti. Menika griya kula.
+        ar_eg: اسمي Bu Siti. ده بيتي.
+        ar: اسمي Bu Siti. هذا بيتي.
+        en: My name is Bu Siti. This is my house.
+      - text: Kula ing Pasar Kranggan, Mas. Mangga!
+        ar_eg: أنا في Pasar Kranggan يا أستاذ. اتفضل (البيت بيتك)!
+        ar: أنا في Pasar Kranggan يا أخي. تفضّل (البيت بيتك)!
+        en: I'm at Pasar Kranggan. Make yourself at home!
+    grammar: jv.pronoun.krama
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من الورقة) البيت ده بيت مين؟
+      ar: (من الورقة) بيت من هذا؟
+      en: (from the note) Whose house is it?
+    options: [griya Bu Siti, griya Mas Dimas, griya Mbah Putri]
+    answer: 0
+    words: [griya]
+    explain:
+      ar_eg: Bu Siti كاتبة «Menika griya kula» = ده بيتي. يبقى البيت بيتها، مش بيت Dimas ولا تيتة.
+      ar: كتبت Bu Siti «Menika griya kula» أي هذا بيتي. فالبيت بيتها، لا بيت Dimas ولا الجدّة.
+      en: Bu Siti writes "Menika griya kula", "this is my house". So it's hers, not Dimas's or Grandma's.
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من الورقة) Bu Siti فين دلوقتي؟
+      ar: (من الورقة) أين Bu Siti الآن؟
+      en: (from the note) Where is Bu Siti now?
+    options: [ing griya, ing stasiun, ing Pasar Kranggan]
+    answer: 2
+    words: [ing, Pasar Kranggan]
+    explain:
+      ar_eg: «Kula ing Pasar Kranggan» = أنا في سوق كرانغان. مش في البيت ولا في المحطة.
+      ar: «Kula ing Pasar Kranggan» أي أنا في سوق كرانغان، لا في البيت ولا في المحطة.
+      en: "\"Kula ing Pasar Kranggan\": she's at Kranggan market, not at home or the station."
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في «Menika griya kula»، أنهي كلمة معناها «بتاعي / ـي»؟
+      ar: في «Menika griya kula»، أيّ كلمة تعني «ـي» (الملكية)؟
+      en: In "Menika griya kula", which word means "my"?
+    options: [menika, griya, kula]
+    answer: 2
+    explain:
+      ar_eg: 'بالكراما مفيش -ku: بتحط kula بعد الاسم. griya kula = بيتي، nami kula = اسمي.'
+      ar: 'لا -ku في الكراما، بل kula بعد الاسم: griya kula = بيتي، nami kula = اسمي.'
+      en: 'Krama has no -ku: put kula after the noun. griya kula = my house, nami kula = my name.'
+    words: [kula, menika]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: Sugeng rawuh
+        ar_eg: أهلًا وسهلًا
+        ar: أهلًا وسهلًا
+        en: Welcome
+      - text: Nami kula
+        ar_eg: اسمي
+        ar: اسمي
+        en: My name is
+      - text: Menika griya kula
+        ar_eg: ده بيتي
+        ar: هذا بيتي
+        en: This is my house
+      - text: Mangga
+        ar_eg: اتفضل
+        ar: تفضّل
+        en: Please, go ahead
+    words: [sugeng rawuh, nami, griya, mangga]
+  - id: e05
+    type: listen
+    text: Sugeng rawuh, Mas Mohamed!
+    options: ['Sugeng enjing, Mas Mohamed!', 'Sugeng rawuh, Mas Mohamed!', 'Sugeng dalu, Mas Mohamed!']
+    answer: 1
+    meaning:
+      ar_eg: أهلًا وسهلًا يا أستاذ محمد!
+      ar: أهلًا وسهلًا يا أخي محمد!
+      en: Welcome, Mohamed!
+    words: [sugeng rawuh]
+  - id: e06
+    type: fill_blank
+    sentence: Menika griya ___, Bu?
+    meaning:
+      ar_eg: ده بيت حضرتك يا مدام؟ (لـ Bu Siti)
+      ar: هل هذا بيتك يا سيدتي؟ (لـ Bu Siti)
+      en: Is this your house, ma'am? (to Bu Siti)
+    answers: [sampeyan, panjenengan]
+    explain:
+      ar_eg: '«بيتك» بالكراما = griya + sampeyan (أو panjenengan لو عايز أدب أكتر). مش omahmu.'
+      ar: '«بيتك» بالكراما griya sampeyan، أو griya panjenengan للأدب الأكثر، لا omahmu.'
+      en: '"Your house" in krama is griya sampeyan (or griya panjenengan, more polite) — not omahmu.'
+    words: [griya, sampeyan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'اكتب رد لـ Bu Siti: شكرًا يا مدام. اسمي محمد، من مصر.'
+      ar: 'اكتب ردًا لـ Bu Siti: شكرًا يا سيدتي. اسمي محمد، من مصر.'
+      en: "Write back to Bu Siti: Thank you, ma'am. My name is Mohamed, from Egypt."
+    answers: ["Matur nuwun, Bu. Nami kula Mohamed, saking Mesir.", "Matur nuwun, Bu. Nami kulo Mohamed, saking Mesir.", "Matur nuwun, Bu. Nami kula Mohamed. Kula saking Mesir.", "Matur nuwun, Bu. Nami kulo Mohamed. Kulo saking Mesir.", "Matur nuwun, Bu. Kula Mohamed, saking Mesir.", "Matur nuwun, Bu Siti. Nami kula Mohamed, saking Mesir.", "Matur nuwun, Bu Siti. Nami kula Mohamed. Kula saking Mesir."]
+    explain:
+      ar_eg: 'كله krama: nami kula (اسمي)، saking (من).'
+      ar: 'كلها krama: nami kula (اسمي) وsaking (من).'
+      en: 'All krama: nami kula (my name), saking (from).'
+    words: [nami, kula, saking]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: أهلًا بيك في بيتي.
+      ar: مرحبًا بك في بيتي.
+      en: Welcome to my house.
+    answer: Sugeng rawuh ing griya kula.
+    distractors: [omah, aku]
+    explain:
+      ar_eg: 'griya kula = بيتي بالكراما؛ omah وaku نغوكو.'
+      ar: 'griya kula = بيتي بالكراما، وomah وaku من الـ ngoko.'
+      en: griya kula = my house in krama; omah and aku are ngoko.
+    words: [sugeng rawuh, griya, kula]
+  - id: e09
+    type: multiple_choice
+    question: Kula badhe dhateng Pasar Kranggan.
+    question_meaning:
+      ar_eg: Mas Mohamed رايح فين؟
+      ar: إلى أين يذهب Mas Mohamed؟
+      en: Where is Mas Mohamed going?
+    options: [Ke pasar di Jogja., Ke stasiun., Ke rumah Bu Siti.]
+    answer: 0
+    explain:
+      ar_eg: Pasar Kranggan = سوق شعبي قديم في يوجيا، قريب من Tugu.
+      ar: Pasar Kranggan = سوق شعبي قديم في يوجيا قرب Tugu.
+      en: Pasar Kranggan = an old everyday market in Jogja, near the Tugu.
+    words: [Pasar Kranggan]
+  - id: e10
+    type: listen
+    text: Kula lan Mas Dimas ing Pasar Kranggan.
+    options: ['Kula lan Mas Dimas ing Pasar Kranggan.', 'Kula lan Mas Dimas ing stasiun.', 'Kula lan Mas Dimas ing griya.']
+    answer: 0
+    meaning:
+      ar_eg: أنا وMas Dimas في Pasar Kranggan.
+      ar: أنا وMas Dimas في Pasar Kranggan.
+      en: Mas Dimas and I are at Pasar Kranggan.
+    words: [kula, Pasar Kranggan]
+dialogue:
+  title: Bu Siti mulih
+  lines:
+    - speaker: Bu Siti
+      text: Mas Mohamed! Sugeng rawuh.
+      ar_eg: أستاذ محمد! أهلًا وسهلًا.
+      ar: أخي محمد! أهلًا وسهلًا.
+      en: Mohamed! Welcome.
+    - speaker: Mohamed
+      text: Matur nuwun, Bu. Menika griya sampeyan?
+      ar_eg: شكرًا يا مدام. ده بيت حضرتك؟
+      ar: شكرًا يا سيدتي. أهذا بيتك؟
+      en: Thank you, ma'am. Is this your house?
+    - speaker: Bu Siti
+      text: Inggih, Mas. Menika griya kula.
+      ar_eg: أيوه يا أستاذ. ده بيتي.
+      ar: نعم يا أخي. هذا بيتي.
+      en: Yes. This is my house.
+    - speaker: Bu Siti
+      text: "Mase sampun nedha?"
+      ar_eg: "كلت يا أستاذ؟"
+      ar: "هل أكلتَ؟"
+      en: "Eaten yet?"
+    - speaker: Mohamed
+      text: Dereng, Bu.
+      ar_eg: لسه يا مدام.
+      ar: ليس بعد يا سيدتي.
+      en: Not yet, ma'am.
+    - speaker: Bu Siti
+      text: "Mangga, Mas, mangga!"
+      ar_eg: "اتفضل يا أستاذ، اتفضل!"
+      ar: "تفضّل، تفضّل!"
+      en: "Come on, help yourself!"
+new_words:
+  - word: Pasar Kranggan
+    pos: noun
+    ar_eg: سوق شعبي قديم في يوجيا، قرب Tugu
+    ar: سوق شعبي قديم في يوجيا، قرب Tugu
+    en: an old everyday market in Jogja, near the Tugu
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,228 @@
+schema: kabar.lesson/v1
+id: bipa3.u03.l10
+language: id
+title: Ulangan Unit 3
+can_do:
+  ar_eg: تكتب ملخّص فيلم وتقول رأيك فيه.
+  ar: أن تكتب ملخّص فيلم وتعبّر عن رأيك فيه.
+  en: Write a synopsis.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: mendatangi
+        ar_eg: يروح لـ (مكان)
+        ar: يقصد (مكانًا)
+        en: to come to (a place)
+      - text: menghadiri
+        ar_eg: يحضر
+        ar: يحضر
+        en: to attend
+      - text: menghormati
+        ar_eg: يحترم
+        ar: يحترم
+        en: to respect
+      - text: sutradara
+        ar_eg: مخرج
+        ar: مخرج
+        en: film director
+      - text: alur
+        ar_eg: الأحداث، الحبكة
+        ar: الحبكة
+        en: plot
+    words: [mendatangi, menghadiri, menghormati, sutradara, alur]
+  - id: e02
+    type: multiple_choice
+    question: Kami ___ pemutaran film itu.
+    options: [hadir, menghadiri ke, menghadiri]
+    answer: 2
+    explain:
+      ar_eg: menghadiri بياخد المفعول على طول. hadir محتاجة di.
+      ar: يأخذ menghadiri المفعول مباشرة، أما hadir فتحتاج إلى di.
+      en: menghadiri takes its object directly; hadir would need di.
+    words: [menghadiri, pemutaran film]
+  - id: e03
+    type: multiple_choice
+    question: Banyak turis ___ Gili setiap tahun.
+    options: [mendatangkan, mendatangi, datang]
+    answer: 1
+    explain:
+      ar_eg: mendatangi = يروح لمكان. mendatangkan = يجيب حاجة، و datang محتاجة ke.
+      ar: mendatangi = يقصد المكان، وmendatangkan = يجلب، وdatang تحتاج إلى ke.
+      en: mendatangi = come to a place; mendatangkan = bring in; datang would need ke.
+    words: [mendatangi]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: memainkan
+        ar_eg: يلعب
+        ar: يؤدّي، يعزف
+        en: play
+      - text: adegan
+        ar_eg: مشهد
+        ar: مشهد
+        en: scene
+      - text: detektif
+        ar_eg: محقق
+        ar: محقق
+        en: detective
+      - text: penjahat
+        ar_eg: مجرم، الشرير
+        ar: مجرم، شرير
+        en: criminal, villain
+      - text: menyedihkan
+        ar_eg: يزعّل، محزن
+        ar: محزن
+        en: sad, saddening
+      - text: kejutan
+        ar_eg: مفاجأة
+        ar: مفاجأة
+        en: surprise
+    words: [memainkan, adegan, detektif, penjahat, menyedihkan, kejutan]
+  - id: e05
+    type: listen
+    text: Saya menyukai film itu. Alurnya cepat dan akhir ceritanya mengharukan. Empat bintang!
+    question:
+      ar_eg: نهاية الفيلم كانت عاملة إزاي؟
+      ar: كيف كانت نهاية الفيلم؟
+      en: What was the film's ending like?
+    options: [seram, mengharukan, lucu]
+    answer: 1
+    meaning:
+      ar_eg: حبيت الفيلم ده. الأحداث سريعة ونهاية القصة مؤثّرة. أربع نجوم!
+      ar: أحببتُ ذلك الفيلم؛ حبكته سريعة ونهايته مؤثّرة. أربع نجوم!
+      en: I liked that film. The plot is fast and the ending is touching. Four stars!
+    words: [menyukai, alur, mengharukan, bintang]
+  - id: e06
+    type: fill_blank
+    sentence: Hantu itu ___ anak-anak di desa.
+    meaning:
+      ar_eg: العفريت ده بيخوّف العيال في القرية.
+      ar: يخيف ذلك الشبحُ الأطفالَ في القرية.
+      en: That ghost frightens the children in the village.
+    options: [mencintai, menghadiri, menakuti]
+    answers: [menakuti]
+    words: [menakuti, hantu]
+    explain:
+      ar_eg: «بيخوّف» = menakuti (takut + -i). mencintai = يحب، وmenghadiri = يحضر.
+      ar: «يخيف» menakuti (takut مع -i). أما mencintai فـ«يحبّ»، وmenghadiri «يحضر».
+      en: To frighten is menakuti (takut + -i). mencintai means to love, menghadiri to attend.
+  - id: e07
+    type: fill_blank
+    sentence: Sutradara ___ filmnya dengan sebuah lagu.
+    meaning:
+      ar_eg: (اكتب فعل -i من akhir) المخرج خلّص فيلمه بأغنية.
+      ar: (اكتب فعل -i من akhir) أنهى المخرج فيلمه بأغنية.
+      en: (Write the -i verb from akhir.) The director ends his film with a song.
+    answers: [mengakhiri]
+    words: [mengakhiri, sutradara]
+    explain:
+      ar_eg: «يخلّص حاجة» = me- + akhir + -i = mengakhiri، وبعدها المفعول على طول (filmnya). berakhir = «بيخلص» من غير مفعول.
+      ar: «يُنهي شيئًا» me- + akhir + -i = mengakhiri، ويليه المفعول مباشرة (filmnya). أما berakhir فـ«ينتهي» بلا مفعول.
+      en: Ending something is me- + akhir + -i = mengakhiri, followed directly by its object (filmnya). berakhir means to end, with no object.
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: وفي الآخر، بيروح يقابل أبوه في لومبوك.
+      ar: وفي النهاية يذهب لمقابلة أبيه في لومبوك.
+      en: In the end, he goes to meet his father in Lombok.
+    answer: Pada akhirnya, dia menemui ayahnya di Lombok.
+    distractors: [dengan, berakhir]
+    words: [menemui]
+    explain:
+      ar_eg: «وفي الآخر» = Pada akhirnya، و«يقابل» = menemui من غير حرف جر. dengan زيادة، وberakhir = «بيخلص».
+      ar: «وفي النهاية» Pada akhirnya، و«يقابل» menemui بلا حرف جر. أما dengan فزائدة، وberakhir «ينتهي».
+      en: "\"In the end\" is Pada akhirnya, and menemui takes no preposition. dengan is extra, and berakhir means to end."
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الفيلم ده بيحكي عن عيلة في لومبوك.
+      ar: يحكي هذا الفيلم عن عائلة في لومبوك.
+      en: This film is about a family in Lombok.
+    answers:
+      - Film ini bercerita tentang sebuah keluarga di Lombok.
+      - Film ini bercerita tentang sebuah keluarga di Lombok
+      - Film ini bercerita tentang keluarga di Lombok.
+      - Film ini bercerita tentang satu keluarga di Lombok.
+      - Film ini tentang sebuah keluarga di Lombok.
+      - Film ini tentang keluarga di Lombok.
+      - Film ini menceritakan sebuah keluarga di Lombok.
+    words: [tentang]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Saya sangat menyukai latar dan tokoh utamanya.
+    answers_meaning:
+      ar_eg:
+        - أنا بحب المكان والبطل جدًا.
+        - عاجبني أوي المكان والبطل.
+        - بحب جدًا مكان الأحداث والشخصية الرئيسية.
+      ar:
+        - أحبّ كثيرًا المكان والشخصية الرئيسية.
+        - أعجبني كثيرًا مكان الأحداث وشخصيته الرئيسية.
+      en:
+        - I really like the setting and the main character.
+        - I really like its setting and its main character.
+        - I like the setting and the main character very much.
+    words: [menyukai, latar, tokoh utama]
+  - id: e11
+    type: fill_blank
+    sentence: Banyak ___ menunggu aktor itu di depan hotel.
+    meaning:
+      ar_eg: ___ كتير مستنيين الممثل قدام الفندق.
+      ar: ينتظر كثير من ___ الممثل أمام الفندق.
+      en: Lots of ___ are waiting for the actor outside the hotel.
+    options: [misteri, penggemar, klasik]
+    answers: [penggemar]
+    words: [penggemar, misteri, klasik]
+    explain:
+      ar_eg: اللي مستنيين الممثل = penggemar (المعجبين). misteri = غموض، وklasik = كلاسيكي.
+      ar: المنتظرون للممثل penggemar (المعجبون). أما misteri فغموض، وklasik «كلاسيكي».
+      en: The people waiting for the actor are penggemar, fans. misteri means mystery and klasik classic.
+  - id: e12
+    type: speaking
+    text: Kamu wajib menonton film ini. Kisahnya sangat menarik!
+    meaning:
+      ar_eg: لازم تتفرج على الفيلم ده. القصة مشوّقة جدًا!
+      ar: يجب أن تشاهد هذا الفيلم؛ قصته مشوّقة جدًا!
+      en: You must watch this film. The story is really interesting!
+    words: [wajib, kisah, menarik]
+dialogue:
+  title: Malam terakhir di Gili
+  lines:
+    - speaker: Ni Luh
+      text: Besok kamu pulang ke Mataram, ya? Mau menonton film lagi malam ini?
+      ar_eg: بكرة راجع ماتارام، صح؟ تحب نتفرج على فيلم تاني النهارده؟
+      ar: ستعود غدًا إلى ماتارام، أليس كذلك؟ أتريد مشاهدة فيلم آخر الليلة؟
+      en: You're going back to Mataram tomorrow, right? Want to watch another film tonight?
+    - speaker: Mohamed
+      text: Mau! Film apa?
+      ar_eg: أيوه! فيلم إيه؟
+      ar: نعم! أيّ فيلم؟
+      en: Yes! Which film?
+    - speaker: Ni Luh
+      text: Komedi keluarga. Katanya alurnya lucu, terus akhir ceritanya mengharukan.
+      ar_eg: كوميدي عائلي. بيقولوا إن الأحداث بتضحّك والنهاية مؤثّرة.
+      ar: كوميديا عائلية. يقولون إنّ حبكتها مضحكة ونهايتها مؤثّرة.
+      en: A family comedy. They say the plot is funny and the ending is touching.
+    - speaker: Mohamed
+      text: Asyik. Di Mataram, Bu Yanti nonton sinetron setiap malam, lho!
+      ar_eg: حلو. في ماتارام مدام يانتي بتتفرج على مسلسلات كل ليلة!
+      ar: جميل. في ماتارام تشاهد السيدة يانتي المسلسلات كل ليلة!
+      en: Great. In Mataram, Bu Yanti watches sinetron every night!
+    - speaker: Ni Luh
+      text: Banyak orang Indonesia cinta sinetron. Ibuku juga!
+      ar_eg: إندونيسيين كتير بيعشقوا المسلسلات. وأمي كمان!
+      ar: كثير من الإندونيسيين يعشقون المسلسلات، وأمي كذلك!
+      en: Lots of Indonesians love sinetron. My mum too!
+souvenir:
+  id: bipa3.u03.souvenir
+  title: Layar tancap di pantai
+  note:
+    ar_eg: «لاير تانچاپ» يعني سينما في الهوا الطلق، شاشة متشدّة والناس قاعدة على الأرض، وفي جيلي تراوانجان تقدر تتفرج على أفلام بالشكل ده على الشط تحت النجوم. السينما الإندونيسية دلوقتي شغّالة جامد، وأفلام الرعب وأفلام العيلة هي اللي بتكسّر شباك التذاكر. وبالليل في البيوت؟ الـ«سينيترون» (المسلسلات) عادة قومية، زي مسلسلات رمضان عندنا بالظبط!
+    ar: "«لايار تانتشاب» سينما في الهواء الطلق: شاشة مشدودة والناس جلوس على الأرض، وفي جيلي تراوانغان يمكنك أن تشاهد الأفلام هكذا على الشاطئ تحت النجوم. والسينما الإندونيسية مزدهرة اليوم، وأفلام الرعب والأفلام العائلية تتصدّر شباك التذاكر. أما في البيوت ليلًا فالـ«سينيترون» (المسلسلات) عادة وطنية، كمسلسلات رمضان عندنا تمامًا!"
+    en: Layar tancap means open-air cinema, a screen stretched up and everyone sitting on the ground; on Gili Trawangan you can watch films like this on the beach, under the stars. Indonesian cinema is booming, and horror films and family dramas top the box office. And at home in the evening? Sinetron (TV soaps) are a national habit, much like Ramadan series back in Egypt!
+review:
+  status: draft
+  verified: false

@@ -239,7 +239,7 @@ Ink syncs like every other row (`notebooks`, `ink_documents`, `ink_strokes`, `no
 
 Each unit has a pack of pre-generated Azure neural audio (Gadis/Ardi for Indonesian, Siti/Dimas for Javanese; dialogue lines in the speaker's voice) so its lessons sound natural with no network. Manifests are committed under `content/packs/`; the audio lives on the `packs` GitHub release of this repository (free), never in git.
 
-**Budget.** BIPA 1–2 and J1–J3 need about 83,000 characters in total (BIPA 1 ≈ 24.6k, BIPA 2 ≈ 29.2k, J1–J3 ≈ 29k), far under Azure F0's 500,000 a month. The tool refuses to spend more than `--budget` per calendar month (default 300,000, leaving the rest for Kabar Cloud's TTS proxy) and keeps its own count in `~/.kabar/audio/usage.json`. F0 never bills: past the quota Azure just says no until the next month.
+**Budget.** Every unit of every level is about 580,000 characters (`cargo run -p kabar-tools -- packs stats`; BIPA 1–2 and J1–J3 alone are about 83,000), more than Azure F0's 500,000 a month, so the first full run spreads over three months. The tool never spends more than `--budget` per calendar month (default 280,000; Kabar Cloud's TTS proxy stops at 190,000, so the two stay 30,000 inside the free tier on one key; both count the way Azure bills, escapes and prosody tags included) and keeps its own count in `~/.kabar/audio/usage.json`. `just packs-audio` takes whole units in order until the month's budget is used; run it again next month for the rest. Clips are cached by a hash of their text and voice, so after a lesson edit only the changed lines cost characters. F0 never bills: past the quota Azure just says no until the next month.
 
 On the Mac, with `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` in `.env` (git-ignored; same F0 resource as Kabar Cloud):
 
@@ -285,7 +285,7 @@ pip3 install cairosvg Pillow numpy PyYAML      # once; ffmpeg comes from `brew i
 python3 scripts/assets/draw_souvenirs.py bipa3.u06   # one card (or no argument for all)
 python3 scripts/assets/export_souvenirs.py
 python3 scripts/assets/draw_misc.py                  # hero, empty states, gong, notebook paper
-python3 scripts/assets/synth_sounds.py               # gong and kendang, 3 variations each
+python3 scripts/assets/synth_sounds.py               # gong, ding and kendang, 3 variations each
 ```
 
 **Kenney UI clicks.** kenney.nl is blocked from the cloud container, so this one is a Mac step:
@@ -312,6 +312,8 @@ Kabar updates itself on every device (design: `docs/RELEASE.md` §5). Settings �
 - **Preview key renewed.** If the CI cache expired (7 days with no build), previews get a new key; Settings says to install the newest `kabar-preview.apk` by hand once.
 - **Mac.** In Automatic mode the new Kabar.app goes in the next time Kabar opens; **Update and restart** does it now. Keep Kabar.app in Applications (a copy run from Downloads can't replace itself).
 - **Offline packs** you downloaded update during the same check.
+- **What's new.** Today's card has **What's new?**: a sheet with the jump from your build to the new one, a count of new / improved / fixed, and a timeline of every build in between (the newest open). Download and install from the same sheet. After an update it opens once by itself. Settings → About → Updates → **Changelog** lists every build so far. The lines come from `changes/*.yaml` in each pull request (`docs/RELEASE.md` §5); `cargo run -p kabar-tools -- update changes --since <commit>` shows what the next build will say.
+- **"A new Kabar is out" notification.** On by default (Settings → About → Updates → *Send a notification when a new version is out*). On the phone and tablet a background check runs about every 4 hours even while Kabar is closed, and the notification carries what's new plus a **Download** or **Install now** button; tapping it opens the "what's new" sheet. On the Mac it comes from the app's own checks while Kabar is open (the first one asks macOS for permission). It stays silent during quiet hours (Coach settings) and when Android's or macOS's notification switch for Kabar is off. Samsung's "sleeping apps" can delay the background check, as it does Kak Nur's reminders (Coach shows a hint when Kabar is asleep).
 
 **Try it locally** (a development build, no GitHub): serve a feed folder and point the app at it. These variables work in debug builds only.
 
@@ -323,4 +325,4 @@ KABAR_UPDATE_KEY="$(grep -v '^#' fixtures/update/test-key.pub)" \
 KABAR_UPDATE_PLATFORM=android-arm64 KABAR_OPEN_SETTINGS=about cargo run -p kabar-app
 ```
 
-About 20 seconds after start (or on **Check for updates**) it finds 1.0.0-alpha.2, downloads it, checks the signature and SHA-256, and shows it ready. Installing needs a real phone or Mac.
+About 20 seconds after start (or on **Check for updates**) it finds 1.0.0-alpha.2, downloads it, checks the signature and SHA-256, and shows it ready, with its what's new (two builds of history in the fixture). Add `KABAR_BUILD=<n>` to pretend to be another build: starting once with a lower number and then with a higher one opens the "after the update" sheet. Installing needs a real phone or Mac.

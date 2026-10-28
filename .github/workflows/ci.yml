@@ -45,6 +45,34 @@ jobs:
           if ! cargo run -q -p kabar-tools -- readme --check; then
             echo "::warning file=README.md::README numbers are stale; the daily refresh or just readme updates them"
           fi
+      # Advisory (#138): share of words in each Sinetron episode, Radio script
+      # and lesson dialogue that the curriculum hasn't taught by that point.
+      # Dialogues ratchet against content/freq/dialogue-over.tsv (#371).
+      - name: Reading coverage (advisory)
+        run: |
+          { echo '```'; cargo run -q -p kabar-tools -- coverage --warn; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+      # Advisory (#140): closed exercises that don't say why the answer is right.
+      - name: Answer explanations (advisory)
+        run: |
+          { echo '```'; cargo run -q -p kabar-tools -- explains --warn; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+      # Advisory until the Jogja/Madiun relocation lands: Javanese is Jogja + Madiun only.
+      - name: Javanese dialect (advisory)
+        run: cargo run -q -p kabar-tools -- dialect --warn
+      # Advisory: a pull request the learner will notice says so in
+      # changes/<topic>.yaml (docs/RELEASE.md §5, "What's new"); without one
+      # the update shows its title, in English.
+      - name: What's new file (advisory)
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.base_ref }}
+        run: |
+          git fetch -q --depth=1 origin "$BASE"
+          files="$(git diff --name-only --diff-filter=AM FETCH_HEAD HEAD)"
+          if grep -qE '^(crates/(app|core)/|android/|content/)' <<<"$files" \
+            && ! grep -qE '^changes/.+\.yaml$' <<<"$files"; then
+            echo "::warning::No changes/*.yaml: the app will show this PR's title (English) as what's new. Add one line per visible change, or a file holding [] when there is nothing to tell."
+          fi
+          cargo run -q -p kabar-tools -- update changes >/dev/null
 
   android:
     name: Android arm64 compiles
@@ -63,47 +91,6 @@ jobs:
           export AR_aarch64_linux_android="$BIN/llvm-ar"
           export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$BIN/aarch64-linux-android28-clang"
           cargo clippy -p kabar-app --target aarch64-linux-android --no-default-features --features mobile -- -D warnings
-
-  macos:
-    # The Mac-only code (Apple Vision OCR, Keychain, the PKCE sign-in opener)
-    # never compiles on Linux. Free on a public repo. It also bundles
-    # Kabar.app the way `just bundle-mac` does, so the Mac session has no
-    # build surprises; the bundle isn't uploaded.
-    name: Mac app compiles
-    runs-on: macos-15
-    steps:
-      - uses: actions/checkout@v5
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          # dx strips the release binary with rust-objcopy, which needs
-          # libLLVM from llvm-tools.
-          components: clippy, llvm-tools
-      - uses: Swatinem/rust-cache@v2
-        with:
-          key: macos
-      - run: cargo clippy -p kabar-app --all-targets -- -D warnings
-      - run: cargo test -p kabar-app
-      # Built from source like scripts/setup-mac.sh does: the prebuilt macOS dx
-      # links Homebrew's OpenSSL at the Intel path (/usr/local/opt), which
-      # Apple-silicon runners don't have. ~/.cargo/bin is cached afterwards.
-      - name: Install dx 0.7.10
-        run: |
-          if ! dx --version 2>/dev/null | grep -q '0.7.10'; then
-            cargo install dioxus-cli --version 0.7.10 --locked
-          fi
-      - name: Bundle Kabar.app
-        run: |
-          cd crates/app
-          # On failure, the tail of dx's output becomes annotations, readable
-          # from the API without the raw log.
-          if ! dx bundle --platform macos --release --package-types macos --out-dir ../../dist/mac > ../../dx-bundle.log 2>&1; then
-            # GitHub keeps 10 annotations per step: send the error lines.
-            grep -iE 'error|failed|panick|not found|no such' ../../dx-bundle.log | grep -v ' INFO Compiled' | tail -n 9 | sed 's/^/::error::/'
-            exit 1
-          fi
-          tail -n 5 ../../dx-bundle.log
-          find ../../dist/mac -maxdepth 3 -name '*.app'
-          test -n "$(find ../../dist/mac -maxdepth 3 -name '*.app')"
 
   wasm:
     name: core and protocol build for wasm32

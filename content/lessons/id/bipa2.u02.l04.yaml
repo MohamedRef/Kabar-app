@@ -13,14 +13,32 @@ slides:
         أماكن الشغل: kantor (مكتب / شركة)، hotel، rumah sakit (مستشفى)، sekolah، toko، pasar.
         Saya bekerja di … = بشتغل في …
         وزميلك في الشغل = rekan kerja.
+        في الشارع بيقولوا:
+        - banget = sekali (أوي)، وبتيجي بعد الصفة زيها
+        - aku و-ku = saya (أنا، ـي) مع الأصحاب واللي في سنك؛ مع الكبار والغُرب saya
+        - terus = lalu (وبعدين)
+        - sama = dengan (مع)، وكمان بمعنى dan (و)
+        - في الكلام الفعل بييجي من غير me- كتير: baca = membaca
       ar: |
         أماكن العمل: kantor (مكتب)، hotel (فندق)، rumah sakit (مستشفى)، sekolah، toko، pasar.
         Saya bekerja di … = أعمل في …
         وزميل العمل = rekan kerja.
+        في كلام الشارع:
+        - banget = sekali (جدًّا)، وتأتي بعد الصفة مثلها
+        - aku و-ku = saya (أنا، ـي) مع الأصدقاء والأقران؛ ومع الكبار والغرباء saya
+        - terus = lalu (ثم)
+        - sama = dengan (مع)، وتأتي أيضًا بمعنى dan (و)
+        - في الكلام يُحذف me- كثيرًا: baca = membaca
       en: |
         Workplaces: kantor (office), hotel, rumah sakit (hospital), sekolah, toko, pasar.
         Saya bekerja di … = I work at …
         A colleague = rekan kerja.
+        On the street:
+        - banget = sekali (very), after the adjective just like sekali
+        - aku / -ku = saya (I, my) with friends and people your age; saya with elders and strangers
+        - terus = lalu (then)
+        - sama = dengan (with), and also dan (and)
+        - In speech verbs often drop me-: baca = membaca
     examples:
       - text: Ni Luh bekerja di hotel di Denpasar.
         ar_eg: ني لوه بتشتغل في فندق في دنباسار.
@@ -146,6 +164,10 @@ exercises:
     options: [Saya pulang kerja., Saya rapat., Saya masuk kerja.]
     answer: 0
     words: [pulang kerja, rapat, masuk kerja]
+    explain:
+      ar_eg: الشغل خلص = pulang kerja (روّحت من الشغل). rapat = اجتماع، وmasuk kerja = أبدأ الشغل الصبح.
+      ar: انتهاء العمل = pulang kerja. أما rapat فاجتماع، وmasuk kerja بدء الدوام.
+      en: Work's over = pulang kerja (going home from work). rapat is a meeting, masuk kerja is starting work.
   - id: e04
     type: fill_blank
     sentence: Hari ini saya lembur, jadi saya ___.
@@ -156,6 +178,10 @@ exercises:
     options: [lelah, senang, libur]
     answers: [lelah]
     words: [lelah, lembur]
+    explain:
+      ar_eg: lembur = أوفر تايم، والنتيجة lelah (تعبان). libur = أجازة، وsenang = مبسوط، وده مش منطقي بعد jadi هنا.
+      ar: lembur = عمل إضافي، ونتيجته lelah (متعب). أما libur فعطلة وsenang سعيد.
+      en: lembur (overtime) leads to lelah (tired). libur is a day off, senang is happy.
   - id: e05
     type: build_sentence
     source:
@@ -165,6 +191,10 @@ exercises:
     answer: Rekan kerja saya lembur, jadi dia lelah.
     distractors: [rapat, kantor]
     words: [rekan kerja, lembur, lelah]
+    explain:
+      ar_eg: Rekan kerja = زميل. rapat (اجتماع) وkantor (مكتب) مش في الجملة دي.
+      ar: rekan kerja = زميل. ولا مكان لـ rapat (اجتماع) ولا kantor (مكتب) هنا.
+      en: rekan kerja = colleague. rapat (meeting) and kantor (office) aren't in this sentence.
   - id: e06
     type: speaking
     text: Saya masuk kerja jam delapan. Jam dua belas saya dan rekan kerja saya istirahat.
@@ -192,17 +222,17 @@ dialogue:
       ar: يا ني لوه، أين تعملين؟
       en: Ni Luh, where do you work?
     - speaker: Ni Luh
-      text: Di hotel di Denpasar. Saya masuk kerja jam tujuh pagi.
+      text: Di hotel di Denpasar. Aku masuk kerja jam tujuh pagi.
       ar_eg: في فندق في دنباسار. ببدأ الشغل الساعة سبعة الصبح.
       ar: في فندق في دنباسار، وأبدأ العمل في السابعة صباحًا.
       en: At a hotel in Denpasar. I start work at seven in the morning.
     - speaker: Mohamed
-      text: Pagi sekali! Setelah itu?
+      text: Pagi banget! Setelah itu?
       ar_eg: بدري أوي! وبعد كده؟
       ar: مبكر جدًا! وبعد ذلك؟
       en: That's early! And after that?
     - speaker: Ni Luh
-      text: Pertama saya membaca email, lalu rapat dengan rekan kerja.
+      text: Pertama aku baca email, terus rapat dengan rekan kerja.
       ar_eg: الأول بقرا الإيميلات، وبعدين اجتماع مع زمايلي.
       ar: أولًا أقرأ البريد، ثم أجتمع مع زملائي.
       en: First I read my emails, then a meeting with my colleagues.
@@ -212,7 +242,7 @@ dialogue:
       ar: متى تعودين إلى البيت؟
       en: What time do you go home?
     - speaker: Ni Luh
-      text: Biasanya jam empat. Tapi hari ini saya lembur, jadi saya lelah sekali.
+      text: Biasanya jam empat. Tapi hari ini aku lembur, jadi aku lelah banget.
       ar_eg: عادةً الساعة أربعة. بس النهارده قعدت أوفر تايم، فأنا تعبانة أوي.
       ar: عادةً في الرابعة، لكنني عملت ساعات إضافية اليوم، لذا أنا متعبة جدًا.
       en: Usually at four. But I worked overtime today, so I'm really tired.

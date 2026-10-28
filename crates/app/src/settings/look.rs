@@ -4,7 +4,6 @@
 use dioxus::prelude::*;
 use kabar_core::locale::format_number;
 use kabar_core::settings::Theme;
-use kabar_core::theme as palette;
 
 use super::Scope;
 use super::device::{DevicePrefs, TextSize};
@@ -45,6 +44,9 @@ pub fn LookSection() -> Element {
                             "{ui.t(theme_label(th))}"
                         }
                     }
+                }
+                if matches!(settings.theme, Theme::Black | Theme::SystemBlack) {
+                    p { class: "muted", "{st(lang, S::BlackHint)}" }
                 }
             }
 
@@ -92,8 +94,10 @@ pub fn LookSection() -> Element {
 fn theme_label(th: Theme) -> Msg {
     match th {
         Theme::System => Msg::ThemeSystem,
+        Theme::SystemBlack => Msg::ThemeSystemBlack,
         Theme::Light => Msg::ThemeLight,
         Theme::Dark => Msg::ThemeDark,
+        Theme::Black => Msg::ThemeBlack,
         Theme::Night => Msg::ThemeNight,
         Theme::Batik => Msg::ThemeBatik,
         Theme::Sawah => Msg::ThemeSawah,
@@ -101,18 +105,18 @@ fn theme_label(th: Theme) -> Msg {
 }
 
 /// A swatch previews the theme itself, not the current one: its surface,
-/// accent and Bridge gold. System shows Paper and Merapi side by side.
+/// accent and Bridge gold. A theme that follows the OS shows its day and
+/// night surfaces side by side.
 fn swatch(th: Theme) -> String {
-    match th.palette() {
-        Some(p) => format!(
+    match (th.palette(), th.follows_os()) {
+        (Some(p), _) => format!(
             "background: linear-gradient(135deg, {} 50%, {} 50%); border-color: {}",
             p.surface, p.indigo, p.gold
         ),
-        None => format!(
-            "background: linear-gradient(135deg, {} 50%, {} 50%)",
-            palette::LIGHT.surface,
-            palette::DARK.surface
-        ),
+        (None, Some((day, night))) => {
+            format!("background: linear-gradient(135deg, {} 50%, {} 50%)", day.surface, night.surface)
+        }
+        (None, None) => String::new(),
     }
 }
 

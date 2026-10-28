@@ -17,7 +17,26 @@
 .seg button { border: 0; background: transparent; display: inline-flex; align-items: center; gap: 0.4rem; }
 .seg button[aria-pressed="true"] { background: var(--indigo); color: var(--surface); }
 .seg-icon { display: inline-flex; }
-.suitcase-toggle { display: inline-flex; align-items: center; gap: 0.4rem; }
+.suitcase-toggle, .map-toggle { display: inline-flex; align-items: center; gap: 0.4rem; }
+.journey-tools { display: flex; gap: 0.4rem; margin-inline-start: auto; }
+/* On a phone the route is a long list: the bar stays in reach at the top so
+   the map and the suitcase are always one tap away. */
+.app[data-width="compact"] .journey-bar {
+  position: sticky; inset-block-start: 0; z-index: 6;
+  margin-block: -0.5rem; padding-block: 0.5rem;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+/* On a phone the tools keep their icon (and the souvenir count); their
+   names move to the tooltip and the screen reader. The route switch keeps
+   its words, and where they're long (English on a 360 px phone) the tools
+   wrap under it rather than push the screen sideways (#402). */
+.app[data-width="compact"] .seg { min-inline-size: 0; }
+.app[data-width="compact"] .seg button { padding-inline: 0.6rem; gap: 0.3rem; }
+.app[data-width="compact"] .journey-tools button { padding-inline: 0.6rem; }
+.app[data-width="compact"] .journey-tools .tool-label {
+  position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
 .suitcase-toggle .count {
   min-inline-size: 1.6rem; padding-inline: 0.4rem; border-radius: 999px;
   background: var(--gold-soft); color: var(--gold); font-weight: 600; text-align: center;
@@ -166,7 +185,7 @@
 /* Under the map, never over its art (#152). */
 .jm-controls { display: flex; gap: 0.4rem; justify-content: flex-end; margin-block-start: -0.25rem; }
 .jm-controls button {
-  inline-size: 44px; block-size: 44px; padding: 0; display: grid; place-items: center;
+  inline-size: var(--tap); block-size: var(--tap); padding: 0; display: grid; place-items: center;
   font-size: 1.3rem; line-height: 1;
 }
 .jm-hint { margin: 0; font-size: 0.85rem; }
@@ -185,7 +204,7 @@
   max-block-size: calc(100dvh - 2rem); overflow-y: auto; position: sticky; inset-block-start: 1rem;
 }
 .jm-panel-close { display: flex; justify-content: flex-end; margin-block-end: -2.5rem; }
-.jm-panel-close button { inline-size: 44px; padding: 0; font-size: 1.3rem; }
+.jm-panel-close button { inline-size: var(--tap); padding: 0; font-size: 1.3rem; }
 .jm-panel .level-title { padding-inline-end: 3rem; }
 
 /* ---------- suitcase ---------- */
@@ -226,3 +245,11 @@
 .app:not([data-width="compact"]) .level-art { inline-size: 6rem; block-size: 6rem; }
 .jm-sticker .sticker-leader { stroke: var(--indigo); stroke-opacity: 0.5; stroke-width: 0.5; stroke-dasharray: 1 1; stroke-linecap: round; }
 .jm-sticker[data-selected="true"] .sticker-leader { stroke: var(--dawn); stroke-opacity: 0.9; }
+
+/* Taps (main.css .tap): a level's name and a stop's name open the next
+   lesson there; a souvenir opens the lesson that gave it. */
+button.level-title { font-weight: inherit; }
+button.level-title .chev { margin-inline-start: auto; align-self: center; }
+button.stop-head { font-size: inherit; font-weight: inherit; inline-size: auto; }
+.souvenirs > li { display: grid; }
+button.souvenir { display: block; inline-size: 100%; text-align: start; }

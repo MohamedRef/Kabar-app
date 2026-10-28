@@ -1,176 +1,246 @@
 schema: kabar.lesson/v1
 id: bipa6.u08.l09
 language: id
-title: Siniar sains
+title: Badak dan evolusi
 can_do:
-  ar_eg: تقدّم حلقة بودكاست علمي قصيرة وتشرح ظاهرة طبيعية بكلام سهل.
-  ar: أن تقدّم حلقة قصيرة من بودكاست علمي وتشرح ظاهرة طبيعية بلغة سهلة.
-  en: Host a short science podcast episode and explain a natural phenomenon in plain words.
+  ar_eg: تقرا مقالة علمية مبسطة عن الانقراض والهجرة والتطور والوراثة.
+  ar: أن تقرأ مقالة علمية مبسطة عن الانقراض والهجرة والتطور والوراثة.
+  en: Read a popular-science piece on extinction, migration, evolution and genetics.
 slides:
-  - title: Halo, pendengar!
+  - title: Sains populer
     body:
       ar_eg: |
-        الـ siniar = بودكاست (الكلمة الرسمية في القاموس، من siaran + internet).
-        - episode = حلقة: Di episode kali ini, kita membahas …
-        خطوات الحلقة:
-        1. افتح بسؤال: Pernahkah Anda bertanya-tanya kenapa …?
-        2. اشرح بـ perumpamaan (تشبيه): Lempeng tektonik itu seperti kerupuk yang retak.
-        3. لخّص: Pada dasarnya, …
-        4. اختم: Sampai jumpa di episode berikutnya!
+        مقالة (مكتوبة للدرس) عن حيوانات سومطرة والبحر:
+        mamalia = ثدييات. badak = خرتيت، وحيد القرن (badak Sumatra). sirip = زعنفة. gurita = أخطبوط.
+        kepunahan = انقراض (من punah). migrasi = هجرة (الحيوانات والطيور).
+        berevolusi = يتطوّر بالتطور الأحيائي (من evolusi). genetika = علم الوراثة؛ الجينات.
       ar: |
-        الـ siniar = بودكاست (الكلمة المعجمية، من siaran + internet).
-        - episode = حلقة: Di episode kali ini, kita membahas …
-        خطوات الحلقة:
-        ١. افتتح بسؤال: Pernahkah Anda bertanya-tanya kenapa …?
-        ٢. اشرح بـ perumpamaan (تشبيه): Lempeng tektonik itu seperti kerupuk yang retak.
-        ٣. لخّص: Pada dasarnya, …
-        ٤. اختم: Sampai jumpa di episode berikutnya!
+        مقالة (مكتوبة للدرس) عن حيوانات سومطرة والبحر:
+        mamalia = ثدييات. badak = وحيد القرن (badak Sumatra). sirip = زعنفة. gurita = أخطبوط.
+        kepunahan = انقراض (من punah). migrasi = هجرة (الحيوانات والطيور).
+        berevolusi = يتطوّر (تطوّرًا أحيائيًا، من evolusi). genetika = علم الوراثة.
       en: |
-        siniar = podcast (the dictionary word, from siaran + internet).
-        - episode = episode: Di episode kali ini, kita membahas …
-        Steps:
-        1. Open with a question: Pernahkah Anda bertanya-tanya kenapa …?
-        2. Explain with a perumpamaan (comparison): Lempeng tektonik itu seperti kerupuk yang retak.
-        3. Sum up: Pada dasarnya, …
-        4. Sign off: Sampai jumpa di episode berikutnya!
+        An article (written for the lesson) on the animals of Sumatra and the sea:
+        mamalia = mammals. badak = rhinoceros (badak Sumatra). sirip = fin. gurita = octopus.
+        kepunahan = extinction (from punah). migrasi = migration.
+        berevolusi = to evolve (from evolusi). genetika = genetics.
+    examples:
+      - text: Badak Sumatra terancam kepunahan.
+        ar_eg: خرتيت سومطرة مهدد بالانقراض.
+        ar: وحيد القرن السومطري مهدد بالانقراض.
+        en: The Sumatran rhino is threatened with extinction.
+      - text: Paus bukan ikan; ia mamalia, walaupun punya sirip.
+        ar_eg: الحوت مش سمكة؛ ده من الثدييات، مع إن عنده زعانف.
+        ar: الحوت ليس سمكة؛ إنه من الثدييات وإن كانت له زعانف.
+        en: A whale isn't a fish; it's a mammal, even though it has fins.
+      - text: Gurita punya tiga jantung.
+        ar_eg: الأخطبوط عنده تلات قلوب.
+        ar: للأخطبوط ثلاثة قلوب.
+        en: An octopus has three hearts.
 exercises:
   - id: e01
+    type: match_pairs
+    pairs:
+      - text: mamalia
+        ar_eg: ثدييات
+        ar: ثدييات
+        en: mammals
+      - text: badak
+        ar_eg: خرتيت
+        ar: وحيد القرن
+        en: rhinoceros
+      - text: sirip
+        ar_eg: زعنفة
+        ar: زعنفة
+        en: fin
+      - text: gurita
+        ar_eg: أخطبوط
+        ar: أخطبوط
+        en: octopus
+    words: [mamalia, badak, sirip, gurita]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kepunahan
+        ar_eg: انقراض
+        ar: انقراض
+        en: extinction
+      - text: migrasi
+        ar_eg: هجرة
+        ar: هجرة
+        en: migration
+      - text: berevolusi
+        ar_eg: يتطور
+        ar: يتطوّر
+        en: to evolve
+      - text: genetika
+        ar_eg: علم الوراثة
+        ar: علم الوراثة
+        en: genetics
+    words: [kepunahan, migrasi, berevolusi, genetika]
+  - id: e03
+    type: listen
+    text: Setiap tahun, burung-burung melakukan migrasi ke selatan.
+    question:
+      ar_eg: الطيور بتعمل إيه كل سنة؟
+      ar: ماذا تفعل الطيور كل عام؟
+      en: What do the birds do every year?
+    options: [هجرة, انقراض, صيد]
+    answer: 0
+    meaning:
+      ar_eg: كل سنة، الطيور بتهاجر ناحية الجنوب.
+      ar: تهاجر الطيور كل عام نحو الجنوب.
+      en: Every year, birds migrate south.
+    words: [migrasi]
+  - id: e04
+    type: fill_blank
+    sentence: Ikan paus dan manusia sama-sama ___.
+    meaning:
+      ar_eg: الحوت والإنسان الاتنين ___.
+      ar: الحوت والإنسان كلاهما من ___.
+      en: Whales and humans are both ___.
+    options: [mamalia, gurita, genetika]
+    answers: [mamalia]
+    words: [mamalia, gurita, genetika]
+    explain:
+      ar_eg: الحوت والإنسان التنين ثدييات mamalia. gurita = أخطبوط، وgenetika = علم الوراثة.
+      ar: الحوت والإنسان من الثدييات mamalia؛ أمّا gurita فأخطبوط، وgenetika علم الوراثة.
+      en: Whales and humans are mammals, mamalia. gurita is an octopus, and genetika genetics.
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: «siniar» يعني إيه؟
-      ar: ما «siniar»؟
-      en: What is a "siniar"?
-    options:
-      - برنامج تلفزيون.
-      - بودكاست.
-      - جرنال.
+      ar_eg: الحيوان اللي عنده تمن دراعات في البحر؟
+      ar: ما الحيوان البحري ذو الأذرع الثماني؟
+      en: Which sea animal has eight arms?
+    options: [badak, gurita, sirip]
     answer: 1
-    words: [siniar]
-  - id: e02
-    type: listen
-    text: Di episode kali ini, kita membahas kenapa penyu selalu kembali ke pantai yang sama.
-    question:
-      ar_eg: الحلقة دي عن إيه؟
-      ar: عمّ تتحدّث هذه الحلقة؟
-      en: What is this episode about?
-    options:
-      - عن البراكين.
-      - عن الفول الأخضر.
-      - عن رجوع السلاحف لنفس الشط.
-    answer: 2
-    words: [episode]
-  - id: e03
+    explain:
+      ar_eg: gurita = أخطبوط.
+      ar: gurita = أخطبوط.
+      en: gurita = octopus.
+    words: [gurita, badak, sirip]
+  - id: e06
     type: fill_blank
-    sentence: Terima kasih sudah mendengarkan. Sampai jumpa di ___ berikutnya!
+    sentence: Darwin menjelaskan bagaimana makhluk hidup ___ selama jutaan tahun.
     meaning:
-      ar_eg: شكرًا إنكم سمعتونا. نشوفكم في الحلقة الجاية!
-      ar: شكرًا على الاستماع، إلى اللقاء في الحلقة القادمة!
-      en: Thanks for listening. See you in the next episode!
-    options: [episode, siniar, sarang]
-    answers: [episode]
-    words: [episode]
-  - id: e04
+      ar_eg: داروين شرح إزاي الكائنات الحية ___ على مدى ملايين السنين.
+      ar: شرح داروين كيف ___ الكائنات الحية عبر ملايين السنين.
+      en: Darwin explained how living things ___ over millions of years.
+    options: [berevolusi, migrasi, kepunahan]
+    answers: [berevolusi]
+    words: [berevolusi, migrasi, kepunahan]
+    explain:
+      ar_eg: "بعد bagaimana + فاعل محتاجين فعل: berevolusi (تطوّروا). migrasi وkepunahan أسماء."
+      ar: بعد bagaimana والفاعل نحتاج فعلًا berevolusi (تطوّرت)؛ أمّا migrasi وkepunahan فاسمان.
+      en: "After bagaimana + subject we need a verb: berevolusi. migrasi and kepunahan are nouns."
+  - id: e07
+    type: multiple_choice
+    question: Warna mata kita ditentukan oleh ___.
+    options: [mamalia, badak, genetika]
+    answer: 2
+    explain:
+      ar_eg: 'لون العين بيتحدد بالجينات: genetika.'
+      ar: 'يحدّد لونَ العين الوراثةُ: genetika.'
+      en: 'Eye colour is set by genetics: genetika.'
+    words: [genetika, mamalia, badak]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: الصفايح دي زي البسكوت المكسور.
-      ar: هذه الصفائح كالبسكويت المكسور.
-      en: These plates are like a cracked cracker.
-    answer: Lempeng itu seperti kerupuk yang retak.
-    distractors: [episode, siniar]
-    words: [perumpamaan, lempeng tektonik]
-  - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: البودكاست بتاعي بيتكلم عن العلوم بطريقة بسيطة.
-      ar: يتناول البودكاست الخاصّ بي العلوم بأسلوب بسيط.
-      en: My podcast talks about science in a simple way.
-    answers:
-      - Siniar saya membahas sains dengan cara yang sederhana.
-      - Siniar saya membahas sains dengan cara sederhana.
-      - Siniar saya berbicara tentang sains dengan cara yang sederhana.
-      - Siniar saya membahas ilmu pengetahuan dengan cara yang sederhana.
-    words: [siniar, sederhana]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي بداية أحسن لحلقة بودكاست؟
-      ar: أيّ افتتاحية أفضل لحلقة بودكاست؟
-      en: Which is the best opening for a podcast episode?
-    options:
-      - Pernahkah Anda bertanya-tanya kenapa gunung bisa meletus?
-      - Bab tiga, halaman empat puluh dua.
-      - Dengan hormat, bersama surat ini …
-    answer: 0
-    words: [episode]
-  - id: e07
-    type: speaking
-    text: Halo, pendengar! Selamat datang di siniar Sains Santai.
-    meaning:
-      ar_eg: أهلًا يا مستمعين! أهلًا بيكم في بودكاست «علوم على راحتنا».
-      ar: مرحبًا أيّها المستمعون! أهلًا بكم في بودكاست «علوم بهدوء».
-      en: Hello, listeners! Welcome to the Relaxed Science podcast.
-    words: [siniar]
-  - id: e08
-    type: dictation
-    text: Episode tentang gempa susulan didengarkan oleh ribuan orang.
-    meaning:
-      ar_eg: حلقة الهزات الارتدادية سمعها آلاف الناس.
-      ar: استمع آلاف الناس إلى الحلقة عن الهزّات الارتدادية.
-      en: The episode about aftershocks was heard by thousands.
-    words: [episode, gempa susulan]
+      ar_eg: الخرتيت السومطري مهدد بالانقراض.
+      ar: وحيد القرن السومطري مهدد بالانقراض.
+      en: The Sumatran rhino faces extinction.
+    answer: Badak Sumatra terancam kepunahan.
+    distractors: [genetika, migrasi]
+    words: [badak, kepunahan]
+    explain:
+      ar_eg: «مهدد بالانقراض» = terancam kepunahan. genetika وmigrasi مش في المعنى.
+      ar: «مهدّد بالانقراض» terancam kepunahan؛ أمّا genetika وmigrasi فليستا في المعنى.
+      en: "\"Faces extinction\" is terancam kepunahan. genetika and migrasi aren't in the meaning."
   - id: e09
-    type: fill_blank
-    sentence: Pada dasarnya, ___ adalah cara bertanya, mencoba, dan mengulang.
-    meaning:
-      ar_eg: في الأساس، المنهج العلمي هو إنك تسأل وتجرّب وتعيد.
-      ar: في الأساس، المنهج العلمي طريقة للسؤال والتجربة والتكرار.
-      en: Basically, the scientific method is a way of asking, trying and repeating.
-    options: [metode ilmiah, siniar, konservasi]
-    answers: [metode ilmiah]
-    words: [pada dasarnya, metode ilmiah]
+    type: translate
+    direction: from_target
+    source_text: Paus bernapas dengan paru-paru, tetapi punya sirip seperti ikan.
+    answers_meaning:
+      ar_eg: [الحوت بيتنفس برئة، بس عنده زعانف زي السمك, الحوت بيتنفس بالرئة وعنده زعانف زي السمك]
+      ar: [يتنفّس الحوت برئتين، لكن له زعانف كالسمك]
+      en: ['Whales breathe with lungs, but have fins like fish', A whale breathes through lungs but has fins like a fish]
+    words: [sirip]
   - id: e10
     type: speaking
-    text: Di episode kali ini, kita belajar tentang tukik dan konservasi penyu.
+    text: Makhluk hidup terus berevolusi, dan kepunahan adalah bagian dari alam.
     meaning:
-      ar_eg: في الحلقة دي، هنتعلم عن السلاحف الصغيرة والحفاظ على السلاحف.
-      ar: نتعلّم في هذه الحلقة عن صغار السلاحف وصون السلاحف البحرية.
-      en: In this episode, we learn about hatchlings and turtle conservation.
-    words: [episode, tukik, konservasi]
+      ar_eg: الكائنات الحية بتتطور على طول، والانقراض جزء من الطبيعة.
+      ar: تتطوّر الكائنات الحية باستمرار، والانقراض جزء من الطبيعة.
+      en: Living things keep evolving, and extinction is part of nature.
+    words: [berevolusi, kepunahan]
 dialogue:
-  title: Rekaman pertama
   lines:
     - speaker: Bu Laila
-      text: Mohamed, mikrofonnya sudah siap. Kamu mau membahas apa di episode pertama?
-      ar_eg: يا محمد، الميكروفون جاهز. عايز تتكلم عن إيه في أول حلقة؟
-      ar: يا محمد، الميكروفون جاهز. عمّ تريد أن تتحدّث في الحلقة الأولى؟
-      en: Mohamed, the mic's ready. What do you want to cover in the first episode?
+      text: Tahukah kamu? Badak Sumatra tinggal kurang dari seratus ekor.
+      ar_eg: تعرف؟ خرتيت سومطرة فاضل منه أقل من مية.
+      ar: أتعلم؟ بقي من وحيد القرن السومطري أقل من مئة.
+      en: Did you know? Fewer than a hundred Sumatran rhinos remain.
     - speaker: Mohamed
-      text: Kenapa Indonesia sering gempa. Saya pakai perumpamaan kerupuk yang retak.
-      ar_eg: ليه إندونيسيا فيها زلازل كتير. هستخدم تشبيه البسكوت المكسور.
-      ar: لماذا تكثر الزلازل في إندونيسيا، وسأستعمل تشبيه البسكويت المتشقّق.
-      en: Why Indonesia has so many earthquakes. I'll use the cracked-cracker comparison.
-    - speaker: Aisyah
-      text: Aku boleh jadi pendengar pertama?
-      ar_eg: ممكن أبقى أول مستمعة؟
-      ar: أيمكنني أن أكون أوّل مستمعة؟
-      en: Can I be the first listener?
+      text: Sedikit sekali! Apakah kepunahan bisa dicegah?
+      ar_eg: قليل أوي! ينفع نمنع الانقراض؟
+      ar: قليل جدًا! هل يمكن منع الانقراض؟
+      en: So few! Can extinction be prevented?
+    - speaker: Bu Laila
+      text: Para ilmuwan memakai genetika untuk membantu perkembangbiakannya.
+      ar_eg: العلما بيستخدموا علم الوراثة عشان يساعدوه يتكاثر.
+      ar: يستخدم العلماء علم الوراثة لمساعدته على التكاثر.
+      en: Scientists use genetics to help it breed.
     - speaker: Mohamed
-      text: Tentu! Kalau kamu paham, berarti siniar kita sudah cukup sederhana.
-      ar_eg: أكيد! لو إنتي فهمتي، يبقى البودكاست بتاعنا بسيط كفاية.
-      ar: طبعًا! إن فهمتِ فبودكاستنا بسيط بما يكفي.
-      en: Of course! If you understand it, our podcast is simple enough.
+      text: Di Laut Merah, saya pernah melihat penyu yang bermigrasi jauh.
+      ar_eg: في البحر الأحمر، شفت سلاحف بحرية بتهاجر مسافات بعيدة.
+      ar: في البحر الأحمر رأيت سلاحف بحرية تهاجر بعيدًا.
+      en: In the Red Sea, I once saw sea turtles that migrate far.
+    - speaker: Bu Laila
+      text: Ya, migrasi penyu bisa ribuan kilometer. Alam selalu berevolusi.
+      ar_eg: أيوه، هجرة السلاحف ممكن تبقى آلاف الكيلومترات. الطبيعة دايمًا بتتطور.
+      ar: نعم، قد تمتد هجرة السلاحف آلاف الكيلومترات. الطبيعة في تطوّر دائم.
+      en: Yes, turtle migrations can span thousands of kilometres. Nature is always evolving.
 new_words:
-  - word: siniar
+  - word: mamalia
     pos: noun
-    ar_eg: بودكاست
-    ar: بودكاست
-    en: podcast
-  - word: episode
+    ar_eg: ثدييات
+    ar: ثدييات
+    en: mammal
+  - word: badak
     pos: noun
-    ar_eg: حلقة
-    ar: حلقة
-    en: episode
+    ar_eg: خرتيت
+    ar: وحيد القرن
+    en: rhinoceros
+  - word: sirip
+    pos: noun
+    ar_eg: زعنفة
+    ar: زعنفة
+    en: fin
+  - word: gurita
+    pos: noun
+    ar_eg: أخطبوط
+    ar: أخطبوط
+    en: octopus
+  - word: kepunahan
+    pos: noun
+    ar_eg: انقراض
+    ar: انقراض
+    en: extinction
+  - word: migrasi
+    pos: noun
+    ar_eg: هجرة
+    ar: هجرة
+    en: migration
+  - word: berevolusi
+    pos: verb
+    ar_eg: يتطور
+    ar: يتطوّر
+    en: to evolve
+  - word: genetika
+    pos: noun
+    ar_eg: علم الوراثة
+    ar: علم الوراثة
+    en: genetics
 review:
   status: draft
   verified: false

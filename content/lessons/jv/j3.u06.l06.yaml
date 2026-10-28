@@ -1,157 +1,254 @@
 schema: kabar.lesson/v1
 id: j3.u06.l06
 language: jv
-title: Pesen swara saka Laweyan
+title: Padamelan ing bathikan
 can_do:
-  ar_eg: تفهم رسالة صوتية بالكراما فيها dipun- و-ipun و-aken وترد عليها.
-  ar: أن تفهم رسالة صوتية بالكراما فيها dipun- و-ipun و-aken وتردّ عليها.
-  en: Understand a krama voice message with dipun-, -ipun and -aken, and reply to it.
+  ar_eg: 'تسأل في ورشة باتيك في جيريلويو مين بيعمل إيه: الستات والرجالة، الشغل والعرق، أحيانًا، وتقول إنت حاسس بإيه.'
+  ar: 'أن تسأل في ورشة باتيك في جيريلويو من يعمل ماذا: النساء والرجال، العمل والعرق، أحيانًا، وتقول بماذا تشعر.'
+  en: 'Ask who does what in a Giriloyo batik workshop: women and men, work and sweat, sometimes, and say how you feel.'
 slides:
-  - title: Rungokna Pak Harjo
+  - title: Sinten ingkang mbatik?
     body:
       ar_eg: |
-        بعد الورشة، Pak Harjo بعت لمحمد رسالة صوتية عن الباتيك اللي محمد عمله. اسمعها من غير ما تقرا.
-        dipuncelup = اتصبغ (اتغطس في الصبغة)، damelaken = يعمل لحد (زي «أعملّك»).
+        mbatik = يرسم باتيك بالشمع (من batik). nglorod = يغلي القماش عشان الشمع يطلع (lorodan).
+        gawean ← padamelan = شغل، وظيفة.
+        wedok ← estri = ست، أنثى. lanang ← jaler = راجل، ذكر.
+        kringet = عرق: نار nglorod سخنة، الكرينجيت بينزل!
+        kadhang = أحيانًا (kadhang-kadhang).
+        rumangsa ← ngraos = يحس: «Kula ngraos bingah» = حاسس إني مبسوط.
       ar: |
-        بعد الورشة أرسل Pak Harjo إلى محمد رسالة صوتية عن الباتيك الذي صنعه محمد. استمع إليها دون قراءة.
-        dipuncelup = صُبغ (غُمس في الصبغة)، وdamelaken = يصنع لأجل أحد.
+        mbatik = يرسم الباتيك بالشمع (من batik). nglorod = يغلي القماش لإزالة الشمع (lorodan).
+        gawean ← padamelan = عمل، وظيفة.
+        wedok ← estri = امرأة، أنثى. lanang ← jaler = رجل، ذكر.
+        kringet = عرق: نار nglorod حارّة، والعرق يسيل!
+        kadhang = أحيانًا (kadhang-kadhang).
+        rumangsa ← ngraos = يشعر: «Kula ngraos bingah» = أشعر بالسعادة.
       en: |
-        After the class, Pak Harjo sends Mohamed a voice message about the batik Mohamed made. Listen without reading.
-        dipuncelup = has been dyed (dipped), damelaken = make for someone.
-    grammar: jv.krama.affixes
+        mbatik = draw batik with wax (from batik). nglorod = boil the cloth to take the wax off (lorodan).
+        gawean → padamelan = work, job.
+        wedok → estri = woman, female. lanang → jaler = man, male.
+        kringet = sweat: the nglorod fire is hot, the sweat pours!
+        kadhang = sometimes (kadhang-kadhang).
+        rumangsa → ngraos = feel: "Kula ngraos bingah" = I feel happy.
+    examples:
+      - text: Ingkang mbatik kathah-kathahipun estri.
+        ar_eg: اللي بيرسموا باتيك أغلبهم ستات.
+        ar: معظم من يرسمون الباتيك نساء.
+        en: Most of the people drawing batik are women.
+      - text: Ingkang jaler nglorod kain ing wingking.
+        ar_eg: الرجالة بيغلوا القماش ورا.
+        ar: الرجال يغلون القماش في الخلف.
+        en: The men boil the cloth at the back.
+      - text: Kadhang kula mbatik ngantos sonten.
+        ar_eg: أحيانًا برسم باتيك لحد العصر.
+        ar: أحيانًا أرسم الباتيك حتى العصر.
+        en: Sometimes I do batik until the afternoon.
 exercises:
   - id: e01
-    type: listen
-    text: Mas Mohamed, batik sampeyan sampun dipuncelup.
-    question:
-      ar_eg: إيه اللي حصل لباتيك محمد؟
-      ar: ماذا حدث لباتيك محمد؟
-      en: What has happened to Mohamed's batik?
-    options: [sampun dipuncelup, dereng dipundamel, sampun dipuntumbas]
-    answer: 0
-    meaning:
-      ar_eg: يا أستاذ محمد، الباتيك بتاعك اتصبغ خلاص.
-      ar: يا أخي محمد، قد صُبغ الباتيك الخاص بك.
-      en: Mohamed, your batik has been dyed.
-    words: [sampun, celup]
-  - id: e02
-    type: listen
-    text: Batikipun sae sanget, Mas.
-    question:
-      ar_eg: Pak Harjo شايف الباتيك إزاي؟
-      ar: ما رأي Pak Harjo في الباتيك؟
-      en: What does Pak Harjo think of the batik?
-    options: [awis sanget, sae sanget, ageng sanget]
-    answer: 1
-    meaning:
-      ar_eg: الباتيك حلو أوي يا أستاذ.
-      ar: الباتيك جميل جدًا يا أخي.
-      en: The batik is very nice.
-    words: [batik, sae, sanget]
-  - id: e03
-    type: listen
-    text: Mangga dhateng griya kula. Kula damelaken teh.
-    question:
-      ar_eg: Pak Harjo هيعمل إيه لمحمد؟
-      ar: ماذا سيصنع Pak Harjo لمحمد؟
-      en: What will Pak Harjo make for Mohamed?
-    options: [batik, canthing, teh]
-    answer: 2
-    meaning:
-      ar_eg: اتفضل تعالى بيتي. هعملّك شاي.
-      ar: تفضّل إلى بيتي. سأصنع لك شايًا.
-      en: Please come to my house. I'll make you some tea.
-    words: [damelaken, teh]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة معناها «الباتيك بتاعك اتصبغ»؟
-      ar: أيّ جملة تعني «قد صُبغ الباتيك الخاص بك»؟
-      en: Which sentence means "Your batik has been dyed"?
-    options: ['Batik sampeyan dereng dipuncelup.', 'Batik sampeyan badhe dipuncelup.', 'Batik sampeyan sampun dipuncelup.']
-    answer: 2
-    explain:
-      ar_eg: 'sampun = خلاص، dereng = لسه، badhe = هيحصل.'
-      ar: 'sampun = قد تمّ، وdereng = ليس بعد، وbadhe = سوف.'
-      en: 'sampun = already, dereng = not yet, badhe = going to.'
-    words: [sampun, celup]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: dipuncelup
-        ar_eg: اتصبغ (اتغطس في الصبغة)
-        ar: صُبغ (غُمس في الصبغة)
-        en: was dyed (dipped)
-      - text: dipundamel
-        ar_eg: اتعمل
-        ar: صُنع
-        en: was made
-      - text: dipunwaos
-        ar_eg: اتقرا
-        ar: قُرئ
-        en: was read
-      - text: damelaken
-        ar_eg: يعمل لحد
-        ar: يصنع لأجل أحد
-        en: make for someone
-    words: [celup, damel, waos, damelaken]
-  - id: e06
-    type: dictation
-    text: Batikipun sae sanget.
+      - text: padamelan
+        ar_eg: شغل (كراما)
+        ar: عمل (كراما)
+        en: work, job (krama)
+      - text: kringet
+        ar_eg: عرق
+        ar: عرق
+        en: sweat
+      - text: mbatik
+        ar_eg: يرسم باتيك
+        ar: يرسم الباتيك
+        en: do batik
+      - text: nglorod
+        ar_eg: يغلي القماش ويشيل الشمع
+        ar: يغلي القماش لإزالة الشمع
+        en: boil off the wax
+    words: [padamelan, kringet, mbatik, nglorod]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: estri
+        ar_eg: ست (كراما)
+        ar: امرأة (كراما)
+        en: woman (krama)
+      - text: jaler
+        ar_eg: راجل (كراما)
+        ar: رجل (كراما)
+        en: man (krama)
+      - text: kadhang
+        ar_eg: أحيانًا
+        ar: أحيانًا
+        en: sometimes
+      - text: ngraos
+        ar_eg: يحس (كراما)
+        ar: يشعر (كراما)
+        en: feel (krama)
+    words: [estri, jaler, kadhang, ngraos]
+  - id: e03
+    type: listen
+    text: Ingkang jaler nglorod kain ing wingking.
+    question:
+      ar_eg: الرجالة بيعملوا إيه؟
+      ar: ماذا يفعل الرجال؟
+      en: What do the men do?
+    options: [الرجالة بيغلوا القماش ورا, الستات بيرسموا قدّام, الرجالة بيرسموا جوّه]
+    answer: 0
     meaning:
-      ar_eg: الباتيك حلو أوي.
-      ar: الباتيك جميل جدًا.
-      en: The batik is very nice.
-    words: [batik, sae, sanget]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'رد على Pak Harjo: شكرًا جدًا يا حاج. أنا جاي Laweyan.'
-      ar: 'ردّ على Pak Harjo: شكرًا جزيلًا يا سيدي. سآتي إلى Laweyan.'
-      en: "Reply to Pak Harjo: Thank you very much, sir. I'm coming to Laweyan."
-    answers: ["Matur nuwun sanget, Pak. Kula badhe dhateng Laweyan.", "Matur nuwun sanget, Pak. Kulo badhe dhateng Laweyan.", "Matur nuwun sanget, Pak Harjo. Kula badhe dhateng Laweyan.", "Matur nuwun sanget, Pak. Kula badhe teng Laweyan.", "Matur nuwun sanget, Pak. Kula dhateng Laweyan."]
+      ar_eg: الرجالة بيغلوا القماش ورا.
+      ar: الرجال يغلون القماش في الخلف.
+      en: The men boil the cloth at the back.
+    words: [jaler, nglorod, estri]
+  - id: e04
+    type: fill_blank
+    sentence: Ibu-ibu ing Giriloyo ___ saben dinten.
+    meaning:
+      ar_eg: الستات في جيريلويو ___ كل يوم.
+      ar: نساء جيريلويو ___ كل يوم.
+      en: The women in Giriloyo ___ every day.
+    options: [mbatik, nglorod, kringet]
+    answers: [mbatik]
+    words: [mbatik, nglorod, kringet]
     explain:
-      ar_eg: 'badhe = arep، dhateng = nang (في الكلام teng).'
-      ar: 'badhe = arep، وdhateng = nang (وفي الكلام teng).'
-      en: 'badhe = arep, dhateng = nang (spoken teng).'
-    words: [sanget, badhe, dhateng]
-  - id: e08
-    type: speaking
-    text: Batikipun sae sanget! Matur nuwun, Pak.
+      ar_eg: mbatik = يرسموا باتيك، شغلهم كل يوم. nglorod = يغلي القماش يشيل الشمع، خطوة واحدة بس، وkringet = عرق.
+      ar: mbatik تعني يرسمون الباتيك، عملهم اليومي. أما nglorod فغلي القماش لإزالة الشمع، خطوة واحدة فقط، وkringet عرق.
+      en: mbatik is "do batik", their daily work. nglorod is boiling off the wax, just one step, and kringet is "sweat".
+  - id: e05
+    type: multiple_choice
+    question: gawean (ngoko) → ___ (krama)
+    options: [padamelan, kadhang, estri]
+    answer: 0
+    explain:
+      ar_eg: 'gawean بالنغوكو، padamelan بالكراما: شغل. kadhang = أحيانًا، estri = ست.'
+      ar: 'gawean بالنغوكو وpadamelan بالكراما: عمل. kadhang = أحيانًا، estri = امرأة.'
+      en: 'gawean is ngoko, padamelan is krama: work. kadhang = sometimes, estri = woman.'
+    words: [padamelan, kadhang, estri]
+  - id: e06
+    type: fill_blank
+    sentence: Geninipun panas sanget, ___ kula kathah.
     meaning:
-      ar_eg: الباتيك حلو أوي! شكرًا يا حاج.
-      ar: الباتيك جميل جدًا! شكرًا يا سيدي.
-      en: The batik is lovely! Thank you, sir.
-    words: [batik, sae, sanget]
+      ar_eg: النار سخنة أوي، ___ي كتير.
+      ar: النار حارّة جدًا، و___ي كثير.
+      en: The fire is very hot, I'm dripping with ___.
+    options: [kringet, padamelan, ngraos]
+    answers: [kringet]
+    words: [kringet, padamelan, ngraos]
+    explain:
+      ar_eg: kringet = عرق، من حر النار. padamelan = شغل، وngraos = يحس.
+      ar: kringet تعني العرق من حرّ النار. أما padamelan فعمل، وngraos يشعر.
+      en: kringet is "sweat", from the heat of the fire. padamelan is "work", and ngraos is "feel".
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: أحيانًا برسم باتيك لحد العصر.
+      ar: أحيانًا أرسم الباتيك حتى العصر.
+      en: Sometimes I do batik until the afternoon.
+    answer: Kadhang kula mbatik ngantos sonten
+    distractors: [jaler, nglorod]
+    words: [kadhang, mbatik, jaler, nglorod]
+    explain:
+      ar_eg: kadhang = أحيانًا، وngantos sonten = لحد العصر. jaler = راجل، وnglorod = يشيل الشمع.
+      ar: kadhang تعني أحيانًا، وngantos sonten حتى العصر. أما jaler فرجل، وnglorod إزالة الشمع.
+      en: kadhang is "sometimes", ngantos sonten "until the afternoon". jaler is "man", and nglorod is removing the wax.
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Padamelan menika awrat, ananging kula ngraos bingah.
+    answers_meaning:
+      ar_eg: [الشغل ده تقيل، بس أنا حاسس إني مبسوط, الشغلانة دي صعبة بس أنا مبسوط]
+      ar: [هذا العمل شاق، لكنّي أشعر بالسعادة]
+      en: ['This work is hard, but I feel happy', 'The work is heavy, but I feel glad']
+    words: [padamelan, ngraos]
+  - id: e09
+    type: speaking
+    text: Ingkang mbatik kathah-kathahipun estri.
+    meaning:
+      ar_eg: اللي بيرسموا باتيك أغلبهم ستات.
+      ar: معظم من يرسمون الباتيك نساء.
+      en: Most of the people drawing batik are women.
+    words: [mbatik, estri]
+  - id: e10
+    type: multiple_choice
+    question: rumangsa (ngoko) → ___ (krama)
+    options: [jaler, kadhang, ngraos]
+    answer: 2
+    explain:
+      ar_eg: 'rumangsa بالنغوكو، ngraos بالكراما: يحس. jaler = راجل، kadhang = أحيانًا.'
+      ar: 'rumangsa بالنغوكو وngraos بالكراما: يشعر. jaler = رجل، kadhang = أحيانًا.'
+      en: 'rumangsa is ngoko, ngraos is krama: feel. jaler = man, kadhang = sometimes.'
+    words: [ngraos, jaler, kadhang, estri]
 dialogue:
-  title: Ing griya Pak Harjo
   lines:
-    - speaker: Pak Harjo
-      text: Mas Mohamed, mangga! Menika batik sampeyan.
-      ar_eg: اتفضل يا أستاذ محمد! ده الباتيك بتاعك.
-      ar: تفضّل يا أخي محمد! هذا الباتيك الخاص بك.
-      en: Come in, Mohamed! Here's your batik.
     - speaker: Mohamed
-      text: Wah, sampun dipuncelup! Sae sanget, Pak.
-      ar_eg: الله، اتصبغ خلاص! حلو أوي يا حاج.
-      ar: ما شاء الله، قد صُبغ! جميل جدًا يا سيدي.
-      en: Wow, it's been dyed! It's lovely, sir.
+      text: Pak Harjo, ingkang mbatik ing ngriki estri sedaya?
+      ar_eg: يا أستاذ هارجو، اللي بيرسموا باتيك هنا كلهم ستات؟
+      ar: يا سيد هارجو، هل كل من يرسم الباتيك هنا نساء؟
+      en: Pak Harjo, is everyone drawing batik here a woman?
     - speaker: Pak Harjo
-      text: Inggih. Kula damelaken teh, nggih?
-      ar_eg: أيوه. أعملّك شاي، ماشي؟
-      ar: نعم. أصنع لك شايًا، حسنًا؟
-      en: Yes. Shall I make you some tea?
+      text: Kathah-kathahipun estri. Ingkang jaler nglorod kain ing wingking.
+      ar_eg: أغلبهم ستات. الرجالة بيغلوا القماش ورا.
+      ar: معظمهم نساء. والرجال يغلون القماش في الخلف.
+      en: Mostly women. The men boil the cloth at the back.
     - speaker: Mohamed
-      text: Inggih, matur nuwun, Pak.
-      ar_eg: ياريت، شكرًا يا حاج.
-      ar: نعم، شكرًا يا سيدي.
-      en: Yes please, thank you, sir.
+      text: Nglorod niku panas, nggih? Kringetipun kathah sanget!
+      ar_eg: الغلي ده سخن، صح؟ العرق كتير أوي!
+      ar: الغلي حارّ، أليس كذلك؟ العرق كثير جدًا!
+      en: Boiling the wax off is hot, right? They're dripping with sweat!
     - speaker: Pak Harjo
-      text: Mangga, Mas, mangga.
-      ar_eg: اتفضل يا أستاذ، اتفضل.
-      ar: تفضّل يا أخي، تفضّل.
-      en: Please, sit down.
+      text: Nggih. Padamelan menika awrat, ananging kula remen.
+      ar_eg: أيوه. الشغل ده تقيل، بس أنا بحبه.
+      ar: نعم. هذا العمل شاق، لكنّي أحبّه.
+      en: Yes. It's hard work, but I love it.
+    - speaker: Mohamed
+      text: Kula ngraos bingah ing ngriki, Pak.
+      ar_eg: أنا حاسس إني مبسوط هنا يا أستاذ.
+      ar: أشعر بالسعادة هنا يا أستاذ.
+      en: I feel happy here, sir.
+    - speaker: Pak Harjo
+      text: Kadhang kula ugi mbatik ngantos sonten, mboten krasa.
+      ar_eg: أحيانًا أنا كمان برسم لحد العصر ومش بحس بالوقت.
+      ar: أحيانًا أرسم أنا أيضًا حتى العصر دون أن أشعر بالوقت.
+      en: Sometimes I do batik until the afternoon too, without noticing.
+new_words:
+  - word: padamelan
+    pos: noun
+    ar_eg: شغل، وظيفة (كراما من gawean)
+    ar: عمل، وظيفة (كراما من gawean)
+    en: work, job, krama (ngoko gawean, Indonesian pekerjaan)
+  - word: kringet
+    pos: noun
+    ar_eg: عرق
+    ar: عرق
+    en: sweat (= keringat)
+  - word: mbatik
+    pos: verb
+    ar_eg: يرسم باتيك بالشمع
+    ar: يرسم الباتيك بالشمع
+    en: do batik, draw with wax (= membatik)
+  - word: nglorod
+    pos: verb
+    ar_eg: يغلي القماش عشان يشيل الشمع
+    ar: يغلي القماش لإزالة الشمع
+    en: boil batik cloth to remove the wax (= melorod)
+  - word: estri
+    pos: noun
+    ar_eg: ست، أنثى (كراما من wedok)
+    ar: امرأة، أنثى (كراما من wedok)
+    en: woman, female, krama (ngoko wedok, Indonesian perempuan)
+  - word: jaler
+    pos: noun
+    ar_eg: راجل، ذكر (كراما من lanang)
+    ar: رجل، ذكر (كراما من lanang)
+    en: man, male, krama (ngoko lanang, Indonesian laki-laki)
+  - word: kadhang
+    pos: adverb
+    ar_eg: أحيانًا
+    ar: أحيانًا
+    en: sometimes (= kadang-kadang)
+  - word: ngraos
+    pos: verb
+    ar_eg: يحس (كراما من rumangsa/krasa)
+    ar: يشعر (كراما من rumangsa)
+    en: feel, krama (ngoko rumangsa/krasa, Indonesian merasa)
 review:
   status: draft
   verified: false

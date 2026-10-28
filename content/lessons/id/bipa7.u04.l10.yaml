@@ -1,202 +1,252 @@
 schema: kabar.lesson/v1
 id: bipa7.u04.l10
 language: id
-title: Ulangan Unit 4
+title: Sapaan dan cengkok
 can_do:
-  ar_eg: تعرف المتكلم من أنهي منطقة وتكتب عن لهجته.
-  ar: أن تعرف منطقة المتكلّم وتكتب عن لهجته.
-  en: Identify a speaker's region and write about their dialect.
+  ar_eg: تختار طريقة المناداة المناسبة وتوصف نطق ولحن اللهجات.
+  ar: أن تختار صيغة النداء المناسبة وتصف نطق اللهجات ونبرتها.
+  en: Choose the right form of address and describe how dialects sound.
+slides:
+  - title: Cara memanggil, cara berbunyi
+    body:
+      ar_eg: |
+        sapaan = اللقب اللي بتنادي بيه: Bapak, Ibu, Kakak, Om, Tante، وفي بابوا Kaka وMama.
+        فيه ألقاب honorifik (للتبجيل) زي Yang Mulia. اللغات اللي ليها tingkat tutur (مستويات كلام) زي الجاوي، الكلمة نفسها بتتغيّر حسب اللي بتكلّمه.
+        kesantunan = الأدب في الكلام.
+        وفي النطق: كل لهجة ليها cengkok (لحن مميّز). صوت sengau = خنّاف. pelafalan = طريقة النطق.
+        prokem = عامية شباب جاكرتا في السبعينات والتمانينات: bokap (أبويا)، nyokap (أمّي).
+        - في الكلام: gimana = bagaimana.
+      ar: |
+        sapaan = لقب المخاطبة: Bapak وIbu وKakak وOm وTante، وفي بابوا Kaka وMama.
+        وهناك ألقاب honorifik (تشريفية) مثل Yang Mulia. وفي اللغات ذات tingkat tutur (مستويات الخطاب) كالجاوية تتبدّل الكلمة نفسها بحسب المخاطَب.
+        kesantunan = التأدّب في الكلام.
+        وفي النطق: لكلّ لهجة cengkok (نبرة لحنية). صوت sengau = أغنّ. pelafalan = طريقة النطق.
+        prokem = عامية شباب جاكرتا في السبعينيات والثمانينيات: bokap (أبي)، nyokap (أمّي).
+        - في الكلام اليومي: gimana = bagaimana.
+      en: |
+        sapaan = a form of address: Bapak, Ibu, Kakak, Om, Tante; in Papua also Kaka and Mama.
+        Some titles are honorifik, like Yang Mulia. In languages with tingkat tutur (speech levels) such as Javanese, the word itself changes with the listener.
+        kesantunan = politeness in speech.
+        And sound: every dialect has its cengkok (lilt). A sengau voice is nasal. pelafalan = pronunciation.
+        prokem = Jakarta youth slang of the 1970s–80s: bokap (my dad), nyokap (my mum).
+        - In speech: gimana = bagaimana.
+    examples:
+      - text: Di Papua, sapaan "Mama" dipakai untuk perempuan yang lebih tua.
+        ar_eg: في بابوا، كلمة «ماما» بتتقال لأي ست أكبر منك.
+        ar: في بابوا تُستعمل صيغة «Mama» لمخاطبة المرأة الأكبر سنًّا.
+        en: In Papua, 'Mama' is used to address older women.
+      - text: Cengkok orang Makassar mudah dikenali.
+        ar_eg: لحن كلام أهل ماكاسار سهل تعرفه.
+        ar: نبرة أهل ماكاسار سهلة التمييز.
+        en: The Makassar lilt is easy to recognise.
+      - text: '"Bokap" adalah kata prokem untuk ayah.'
+        ar_eg: «بوكاب» كلمة عامية قديمة معناها أبويا.
+        ar: «bokap» كلمة عامية قديمة تعني الأب.
+        en: '''Bokap'' is prokem slang for father.'
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kitong
-        ar_eg: إحنا (بابوا)
-        ar: نحن (ملايو بابوا)
-        en: we (Papuan Malay)
-      - text: dialek
-        ar_eg: لهجة
-        ar: لهجة
-        en: dialect
-      - text: intonasi
-        ar_eg: تنغيم
-        ar: تنغيم
-        en: intonation
-      - text: penanda
-        ar_eg: علامة
-        ar: علامة
-        en: marker
-      - text: petunjuk
-        ar_eg: دليل / قرينة
-        ar: قرينة
-        en: clue, hint
-    words: [kitong, dialek, intonasi, penanda, petunjuk]
+      - text: sapaan
+        ar_eg: طريقة المناداة / اللقب اللي بتنادي بيه
+        ar: صيغة النداء، لقب المخاطبة
+        en: form of address
+      - text: honorifik
+        ar_eg: تشريفي / للتبجيل
+        ar: تشريفيّ
+        en: honorific
+      - text: tingkat tutur
+        ar_eg: مستوى الكلام (رسمي أو عادي)
+        ar: مستوى الخطاب
+        en: speech level
+      - text: kesantunan
+        ar_eg: أدب في الكلام
+        ar: اللباقة، التأدّب
+        en: politeness
+    words: [sapaan, honorifik, tingkat tutur, kesantunan]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Gue nggak tahu, lu tahu?» المتكلم غالبًا منين؟
-      ar: «Gue nggak tahu, lu tahu?» من أين المتكلّم غالبًا؟
-      en: '"Gue nggak tahu, lu tahu?" Where is the speaker probably from?'
-    options: [Papua, Jakarta, Medan]
-    answer: 1
-    words: [gue, menebak]
-  - id: e03
-    type: fill_blank
-    sentence: Sa ___ pi pasar tadi pagi.
-    meaning:
-      ar_eg: أنا رحت السوق خلاص الصبح.
-      ar: ذهبتُ إلى السوق صباح اليوم.
-      en: I already went to the market this morning.
-    options: [su, bah, tra]
-    answers: [su]
-    words: [su, pi, sa, bah, tra]
-  - id: e04
-    type: listen
-    text: Dari aksennya, saya menebak daerah asalnya Sumatra Utara.
-    question:
-      ar_eg: المتكلم خمّن إيه؟
-      ar: ماذا خمّن المتحدّث؟
-      en: What did the speaker guess?
-    options:
-      - إن الشخص أصله من شمال سومطرة.
-      - إن الشخص من بابوا.
-      - إن الشخص مالوش لكنة.
-    answer: 0
-    words: [aksen, daerah asal]
-  - id: e05
-    type: build_sentence
-    source:
-      ar_eg: إنت رايح فين؟ (بلهجة بابوا)
-      ar: إلى أين تذهب؟ (بملايو بابوا)
-      en: Where are you going? (Papuan Malay)
-    answer: Ko mau pi mana?
-    distractors: [gue, bah]
-    words: [ko, pi]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في تقرير لهجة، جزء «sebaran» بيتكلم عن إيه؟
-      ar: عمَّ يتحدّث جزء «sebaran» في تقرير اللهجة؟
-      en: In a dialect report, what does the "sebaran" part cover?
-    options:
-      - الضماير.
-      - النغمة.
-      - الأماكن اللي اللهجة منتشرة فيها.
-    answer: 2
-    words: [sebaran, kata ganti]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: كل منطقة ليها شكل من اللغة بسمة مميزة.
-      ar: لكلّ منطقة ضرب من اللغة له سمته المميّزة.
-      en: Every region has a variety with its own distinctive feature.
-    answers:
-      - Setiap wilayah punya ragam bahasa dengan ciri khasnya sendiri.
-      - Setiap wilayah memiliki ragam bahasa dengan ciri khasnya sendiri.
-      - Tiap wilayah punya ragam bahasa dengan ciri khas sendiri.
-    words: [wilayah, ragam, ciri khas]
-  - id: e08
-    type: speaking
-    text: Saya bisa membedakan variasi dialek, tetapi saya tetap berbicara netral.
-    meaning:
-      ar_eg: أقدر أفرّق بين تنوّع اللهجات، بس بفضل أتكلم محايد.
-      ar: أستطيع التمييز بين تنوّع اللهجات، لكنّني أتكلّم بلغة محايدة.
-      en: I can tell dialect variations apart, but I still speak neutrally.
-    words: [membedakan, variasi, netral]
-  - id: e09
-    type: dictation
-    text: Bah, kitong su sampai di puncak!
-    meaning:
-      ar_eg: ياه، إحنا وصلنا القمّة خلاص!
-      ar: يا للعجب، وصلنا إلى القمّة!
-      en: Wow, we've made it to the top!
-    words: [bah, kitong, su]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Kata ganti dan intonasi adalah penanda dialek yang paling mudah didengar.
-    answers_meaning:
-      ar_eg:
-        - الضماير والتنغيم هما أسهل علامات اللهجة اللي تتسمع.
-        - أسهل حاجة تسمعها في اللهجة هي الضماير والنغمة.
-      ar:
-        - الضمائر والتنغيم أسهل علامات اللهجة سماعًا.
-        - أيسر ما يُسمع من علامات اللهجة ضمائرها وتنغيمها.
-      en:
-        - Pronouns and intonation are the easiest dialect markers to hear.
-        - The easiest dialect markers to pick up are pronouns and intonation.
-    words: [kata ganti, intonasi, penanda]
-  - id: e11
     type: match_pairs
     pairs:
-      - text: beta
-        ar_eg: أنا (أمبون)
-        ar: أنا (أمبون)
-        en: I (Ambon)
-      - text: ngana
-        ar_eg: إنت (مانادو)
-        ar: أنت (مانادو)
-        en: you (Manado)
-      - text: dorang
-        ar_eg: هم (مانادو)
-        ar: هم (مانادو)
-        en: they (Manado)
-      - text: abjad jari
-        ar_eg: الحروف بالصوابع
-        ar: التهجئة بالأصابع
-        en: fingerspelling
-      - text: kedengarannya
-        ar_eg: من صوته شكله
-        ar: يبدو من الصوت
-        en: it sounds like
-    words: [beta, ngana, dorang, abjad jari, kedengarannya]
-  - id: e12
+      - text: cengkok
+        ar_eg: لحن الكلام / النغمة المميّزة
+        ar: نبرة مميّزة، تلوين صوتي
+        en: lilt, melodic accent
+      - text: sengau
+        ar_eg: خنّاف / من مناخيره
+        ar: أغنّ، أخنّ
+        en: nasal (of a voice)
+      - text: pelafalan
+        ar_eg: طريقة النطق
+        ar: النطق، اللفظ
+        en: pronunciation
+      - text: prokem
+        ar_eg: عامية شباب جاكرتا القديمة
+        ar: عامية شباب جاكرتا القديمة
+        en: old Jakarta youth slang
+    words: [cengkok, sengau, pelafalan, prokem]
+  - id: e03
+    type: listen
+    text: Suaranya agak sengau karena ia sedang pilek.
+    question:
+      ar_eg: صوته عامل إزاي؟
+      ar: كيف صوته؟
+      en: What's his voice like?
+    options: [خنّاف, عالي, مبحوح]
+    answer: 0
+    meaning:
+      ar_eg: صوته خنّاف شوية علشان عنده برد.
+      ar: صوته أغنّ قليلًا لأنه مصاب بالزكام.
+      en: His voice is a bit nasal because he has a cold.
+    words: [sengau]
+  - id: e04
+    type: fill_blank
+    sentence: Dalam bahasa Jawa, ___ krama dipakai kepada orang tua.
+    meaning:
+      ar_eg: في الجاوي، ___ الكراما بيتقال للكبار.
+      ar: في الجاوية يُستعمل ___ «كراما» مع الكبار.
+      en: In Javanese, the krama ___ is used with elders.
+    options: [tingkat tutur, prokem, cengkok]
+    answers: [tingkat tutur]
+    words: [tingkat tutur, prokem, cengkok]
+    explain:
+      ar_eg: tingkat tutur = مستوى الكلام (ngoko/krama). prokem = عامية شبابية، وcengkok = طريقة النغم.
+      ar: tingkat tutur = مستوى الكلام كالـ krama. أما prokem فعامية شبابية وcengkok نغمة الأداء.
+      en: tingkat tutur = speech level, like krama.
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: '«Katong seng pi.» المتكلّم منين، والجملة معناها إيه؟'
-      ar: '«Katong seng pi.» من أين المتكلّم، وما معنى الجملة؟'
-      en: '«Katong seng pi.» Where is the speaker from, and what does it mean?'
-    options:
-      - مانادو، «هم مش جايين».
-      - أمبون، «إحنا مش رايحين».
-      - جاكرتا، «أنا رايح».
+      ar_eg: «Yang Mulia» نوعه إيه؟
+      ar: ما نوع «Yang Mulia»؟
+      en: What kind of term is 'Yang Mulia'?
+    options: [Kata prokem., Sapaan honorifik untuk raja atau hakim., Pelafalan yang salah.]
     answer: 1
     explain:
-      ar_eg: katong (إحنا) وseng (مش) دلايل أمبون.
-      ar: katong (نحن) وseng (لا) من قرائن أمبون.
-      en: katong (we) and seng (not) are Ambon clues.
-    words: [katong, seng, petunjuk]
+      ar_eg: Yang Mulia لقب تبجيل للملك أو القاضي.
+      ar: Yang Mulia لقب تشريفي للملك أو القاضي.
+      en: Yang Mulia is an honorific for a king or judge.
+    words: [honorifik, sapaan, prokem]
+  - id: e06
+    type: fill_blank
+    sentence: Guru itu memperbaiki ___ huruf "r" saya.
+    meaning:
+      ar_eg: المدرّس صحّح ___ حرف الـ «ر» عندي.
+      ar: صحّح المعلّم ___ حرف «r» عندي.
+      en: The teacher corrected my ___ of the letter 'r'.
+    options: [pelafalan, kesantunan, sengau]
+    answers: [pelafalan]
+    words: [pelafalan, kesantunan, sengau]
+    explain:
+      ar_eg: pelafalan = نطق. kesantunan = أدب/لباقة، وsengau = خنّة.
+      ar: pelafalan = النطق. أما kesantunan فلباقة وsengau غنّة.
+      en: pelafalan = pronunciation. kesantunan is politeness, sengau nasal.
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الأدب في الكلام مهم في كل الثقافات.
+      ar: التأدّب في الكلام مهمّ في كلّ الثقافات.
+      en: Politeness matters in every culture.
+    answer: Kesantunan berbahasa penting di semua budaya.
+    distractors: [cengkok, honorifik]
+    words: [kesantunan]
+    explain:
+      ar_eg: Kesantunan berbahasa = أدب الكلام. cengkok وhonorifik مش داخلين.
+      ar: Kesantunan berbahasa = آداب الكلام.
+      en: Kesantunan berbahasa = politeness in speech.
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Sapaan yang salah bisa terdengar tidak sopan.
+    answers_meaning:
+      ar_eg: [لو ناديت حد غلط ممكن يبان إنك قليل الأدب, اللقب الغلط ممكن يبان قلّة ذوق]
+      ar: [قد تبدو صيغة النداء الخاطئة غير مهذّبة, يمكن أن يُفهم لقب المخاطبة الخاطئ على أنه قلّة أدب]
+      en: [The wrong form of address can sound rude, Addressing someone wrongly can come across as impolite]
+    words: [sapaan]
+  - id: e09
+    type: speaking
+    text: Cengkok dan pelafalannya khas Manado.
+    meaning:
+      ar_eg: لحن كلامه ونطقه منادوي أصلي.
+      ar: نبرته ونطقه من خصائص مانادو.
+      en: His lilt and pronunciation are typical of Manado.
+    words: [cengkok, pelafalan]
+  - id: e10
+    type: multiple_choice
+    question: Kata "nyokap" berasal dari ragam apa?
+    options: [Bahasa prokem Jakarta., Tingkat tutur krama., Sapaan honorifik.]
+    answer: 0
+    explain:
+      ar_eg: nyokap كلمة من عامية جاكرتا القديمة.
+      ar: nyokap من عامية جاكرتا القديمة.
+      en: nyokap comes from old Jakarta slang.
+    words: [prokem, tingkat tutur, honorifik, kesantunan, sengau]
 dialogue:
-  title: Turun dari Piaynemo
   lines:
-    - speaker: Om Nus
-      text: Ko su pintar, e. Sekarang ko bisa tebak orang dari mana saja.
-      ar_eg: إنت بقيت شاطر أهو. دلوقتي تقدر تخمّن الناس منين بالظبط.
-      ar: صرت ماهرًا، تستطيع الآن تخمين منشأ أيّ أحد.
-      en: You've got clever, eh. Now you can guess where anyone's from.
+    - speaker: Kaka Yohana
+      text: Mohamed, di radio kau panggil pendengar tua dengan "Mama" atau "Bapa", ya.
+      ar_eg: يا محمد، في الراديو نادي المستمعين الكبار «ماما» أو «بابا».
+      ar: يا محمد، نادِ المستمعين الكبار في الإذاعة بـ«Mama» أو «Bapa».
+      en: Mohamed, on air call older listeners 'Mama' or 'Bapa'.
     - speaker: Mohamed
-      text: Belum semua, Om. Tapi sa tra takut lagi dengar logat yang beda.
-      ar_eg: لسه مش كله يا عمّ. بس أنا مابقتش أخاف أسمع لهجة مختلفة.
-      ar: ليس كلّهم بعد يا عمّ، لكنّني لم أعد أخشى سماع لهجة مختلفة.
-      en: Not everyone yet, Om. But I'm not scared of hearing different accents any more.
-    - speaker: Om Nus
-      text: Hahaha, ko pakai "sa" dan "tra"! Besok ko ke Wayag?
-      ar_eg: هههه، إنت قلت «sa» و«tra»! بكرة رايح وايّاج؟
-      ar: هاها، استعملتَ «sa» و«tra»! هل تذهب غدًا إلى وايّاغ؟
-      en: Ha, you used "sa" and "tra"! Off to Wayag tomorrow?
+      text: Baik, Kaka. Sapaan itu terdengar hangat.
+      ar_eg: حاضر يا كاكا. الألقاب دي دافية.
+      ar: حسنًا يا كاكا، هذه الصيغة دافئة.
+      en: OK, Kaka. Those forms of address sound warm.
+    - speaker: Kaka Yohana
+      text: Dan jangan pakai prokem Jakarta. Pendengar kita bisa bingung.
+      ar_eg: وما تستعملش عامية جاكرتا. مستمعينا ممكن يتلخبطوا.
+      ar: ولا تستعمل عامية جاكرتا، فقد يرتبك مستمعونا.
+      en: And don't use Jakarta slang. Our listeners might get confused.
     - speaker: Mohamed
-      text: Iya, Om. Di sana saya mau belajar sejarah Indonesia.
-      ar_eg: أيوه يا عمّ. هناك عايز أتعلّم تاريخ إندونيسيا.
-      ar: نعم يا عمّ، أريد هناك أن أتعلّم تاريخ إندونيسيا.
-      en: Yes, Om. There I want to learn Indonesian history.
-souvenir:
-  id: bipa7.u04.souvenir
-  title: Melayu Papua
-  note:
-    ar_eg: ملايو بابوا هي اللغة اللي بيتفاهم بيها الناس في بابوا بين الشعوب المختلفة. بيقولوا sa بدل saya، وko بدل kamu، وkitong يعني إحنا، وdong يعني هم، وtra يعني مش، وsu يعني خلاص، وpi يعني يروح. وفي جاكرتا هتسمع gue وlu، وفي ميدان bah وkali، وعند الجاويين kok وto. افهمهم كلهم، واتكلم إنت بالإندونيسي المحايد، إلا لو أهل المكان نفسهم عزموك تتكلم زيهم.
-    ar: ملايو بابوا لغة التفاهم بين شعوب بابوا المختلفة. يقولون sa بدل saya، وko بدل kamu، وkitong بمعنى نحن، وdong بمعنى هم، وtra بمعنى لا، وsu بمعنى قد، وpi بمعنى يذهب. وفي جاكرتا تسمع gue وlu، وفي ميدان bah وkali، وعند الجاويين kok وto. افهمها كلّها، وتكلّم أنت بالإندونيسية المحايدة، إلّا إن دعاك أهل المكان أنفسهم إلى مجاراتهم.
-    en: Papuan Malay is the language Papua's many peoples use to talk to one another. People say sa for saya, ko for kamu, kitong for "we", dong for "they", tra for "not", su for "already" and pi for "go". In Jakarta you'll hear gue and lu, in Medan bah and kali, and among Javanese speakers kok and to. Understand them all, and speak neutral Indonesian yourself, unless the locals themselves invite you to talk like them.
+      text: Gimana dengan pelafalan saya? Masih ada cengkok Arab?
+      ar_eg: طب ونطقي؟ لسه فيه لحن عربي؟
+      ar: وماذا عن نطقي؟ أما زالت فيه نبرة عربية؟
+      en: What about my pronunciation? Still an Arabic lilt?
+    - speaker: Kaka Yohana
+      text: Sedikit, tapi justru enak didengar. Yang penting kesantunannya.
+      ar_eg: شوية، بس بالعكس حلو في الودن. المهم الأدب.
+      ar: قليلًا، لكنها مستحبّة على السمع، والمهمّ التأدّب.
+      en: A little, but it's actually nice to hear. Politeness is what matters.
+new_words:
+  - word: sapaan
+    pos: noun
+    ar_eg: طريقة المناداة / اللقب اللي بتنادي بيه
+    ar: صيغة النداء، لقب المخاطبة
+    en: form of address
+  - word: honorifik
+    pos: adjective
+    ar_eg: تشريفي / للتبجيل
+    ar: تشريفيّ
+    en: honorific
+  - word: tingkat tutur
+    pos: noun
+    ar_eg: مستوى الكلام (رسمي أو عادي)
+    ar: مستوى الخطاب
+    en: speech level
+  - word: kesantunan
+    pos: noun
+    ar_eg: أدب في الكلام
+    ar: اللباقة، التأدّب
+    en: politeness
+  - word: cengkok
+    pos: noun
+    ar_eg: لحن الكلام / النغمة المميّزة
+    ar: نبرة مميّزة، تلوين صوتي
+    en: lilt, melodic accent
+  - word: sengau
+    pos: adjective
+    ar_eg: خنّاف / من مناخيره
+    ar: أغنّ، أخنّ
+    en: nasal (of a voice)
+  - word: pelafalan
+    pos: noun
+    ar_eg: طريقة النطق
+    ar: النطق، اللفظ
+    en: pronunciation
+  - word: prokem
+    pos: noun
+    ar_eg: عامية شباب جاكرتا القديمة
+    ar: عامية شباب جاكرتا القديمة
+    en: old Jakarta youth slang
 review:
   status: draft
   verified: false

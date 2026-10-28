@@ -1,0 +1,251 @@
+schema: kabar.lesson/v1
+id: j3.u01.l08
+language: jv
+title: Ing griya Mbah
+can_do:
+  ar_eg: 'تقعد عند تيتة صاحبك: تقبل الكرسي بأدب، وتقول إنك تعبان، وتعلّق بـ«يا خسارة».'
+  ar: 'أن تجلس عند جدة صديقك: تقبل الكرسي بأدب، وتقول إنك متعب، وتعلّق بـ«يا للأسف».'
+  en: 'Sit with a friend''s grandmother: accept a seat politely, say you''re tired, and say what a pity.'
+slides:
+  - title: Linggih, mesem, ngguyu
+    body:
+      ar_eg: |
+        lungguh = يقعد في الـ ngoko، وفي الكراما linggih: «Mangga linggih» = اتفضل اقعد. kursi = كرسي. tamu = ضيف.
+        kesel ← sayah = تعبان (كراما).
+        mesem = يبتسم، ngguyu = يضحك (من guyu = ضحكة).
+        eman = يا خسارة! (حاجة حلوة راحت على الفاضي). becik = طيب، كويس (أعمق من apik: Mbah tiyang becik = تيتة ست طيبة).
+      ar: |
+        lungguh = يجلس في الـ ngoko، وفي الكراما linggih: «Mangga linggih» = تفضّل اجلس. kursi = كرسي. tamu = ضيف.
+        kesel ← sayah = متعب (كراما).
+        mesem = يبتسم، ngguyu = يضحك (من guyu = ضحكة).
+        eman = يا للأسف! (شيء جميل ضاع سدى). becik = طيّب، حسن (أعمق من apik: Mbah tiyang becik = الجدة امرأة طيبة).
+      en: |
+        lungguh = sit in ngoko; krama linggih: "Mangga linggih" = please sit down. kursi = chair. tamu = guest.
+        kesel → sayah = tired (krama).
+        mesem = smile, ngguyu = laugh (from guyu = a laugh).
+        eman = what a pity! (something good gone to waste). becik = good, kind (deeper than apik: Mbah tiyang becik = Grandma is a kind person).
+    examples:
+      - text: Mangga linggih ing kursi, Nak.
+        ar_eg: اتفضل اقعد على الكرسي يا ابني.
+        ar: تفضّل اجلس على الكرسي يا بنيّ.
+        en: Please sit on the chair, dear.
+      - text: Mbah mesem, lare-lare ngguyu.
+        ar_eg: تيتة بتبتسم، والعيال بيضحكوا.
+        ar: الجدة تبتسم والأطفال يضحكون.
+        en: Grandma smiles, the children laugh.
+      - text: Eman, Mas Dimas mboten saged dhateng.
+        ar_eg: يا خسارة، ديماس مش هيقدر ييجي.
+        ar: يا للأسف، لا يستطيع ديماس الحضور.
+        en: What a pity, Dimas can't come.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tamu
+        ar_eg: ضيف
+        ar: ضيف
+        en: guest
+      - text: linggih
+        ar_eg: يقعد (كراما)
+        ar: يجلس (كراما)
+        en: sit (krama)
+      - text: kursi
+        ar_eg: كرسي
+        ar: كرسي
+        en: chair
+      - text: sayah
+        ar_eg: تعبان (كراما)
+        ar: متعب (كراما)
+        en: tired (krama)
+    words: [tamu, linggih, kursi, sayah]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: mesem
+        ar_eg: يبتسم
+        ar: يبتسم
+        en: smile
+      - text: ngguyu
+        ar_eg: يضحك
+        ar: يضحك
+        en: laugh
+      - text: eman
+        ar_eg: يا خسارة
+        ar: يا للأسف
+        en: what a pity
+      - text: becik
+        ar_eg: طيب، كويس
+        ar: طيّب، حسن
+        en: good, kind
+    words: [mesem, ngguyu, eman, becik]
+  - id: e03
+    type: listen
+    text: Eman sanget, Mas Dimas mboten saged dhateng.
+    question:
+      ar_eg: بيقول إيه في الأول؟
+      ar: ماذا يقول في البداية؟
+      en: What does he say first?
+    options: [حلو أوي, يا خسارة, تعبان أوي]
+    answer: 1
+    meaning:
+      ar_eg: يا خسارة، ديماس مش هيقدر ييجي.
+      ar: يا للأسف، لا يستطيع ديماس الحضور.
+      en: What a pity, Dimas can't come.
+    words: [eman]
+  - id: e04
+    type: fill_blank
+    sentence: Kula ___ sanget, mlampah dhateng peken.
+    meaning:
+      ar_eg: أنا ___ أوي، رحت السوق ماشي.
+      ar: أنا ___ جدًا، ذهبت إلى السوق ماشيًا.
+      en: 'I''m very ___: I walked to the market.'
+    options: [sayah, becik, eman]
+    answers: [sayah]
+    words: [sayah, becik, eman]
+    explain:
+      ar_eg: sayah = تعبان (كراما)، بعد مشي طويل. becik = طيب، وeman = يا خسارة.
+      ar: sayah تعني متعب (كراما)، بعد مشي طويل. أما becik فطيّب، وeman يا للخسارة.
+      en: sayah is "tired" (krama), after a long walk. becik is "kind", and eman is "what a pity".
+  - id: e05
+    type: multiple_choice
+    question: Aku lungguh ing kursi. → Kula ___ ing kursi.
+    options: [ngguyu, linggih, mesem]
+    answer: 1
+    explain:
+      ar_eg: lungguh ← linggih بالكراما.
+      ar: lungguh ← linggih بالكراما.
+      en: lungguh → linggih in krama.
+    words: [lungguh, linggih, kursi, ngguyu, mesem]
+  - id: e06
+    type: fill_blank
+    sentence: Mbah Putri tiyang ___ sanget.
+    meaning:
+      ar_eg: تيتة بوتري ست ___ أوي.
+      ar: الجدة بوتري امرأة ___ جدًا.
+      en: Mbah Putri is a very ___ person.
+    options: [becik, sayah, tamu]
+    answers: [becik]
+    words: [becik, sayah, tamu]
+    explain:
+      ar_eg: becik = طيبة، صفة للشخص. sayah = تعبان مش صفة دايمة، وtamu = ضيف.
+      ar: becik تعني طيّبة، صفة للشخص. أما sayah فمتعب وليست صفة دائمة، وtamu ضيف.
+      en: becik is "kind", describing a person. sayah (tired) isn't a lasting trait, and tamu is "guest".
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: العيال بيضحكوا وتيتة بتبتسم.
+      ar: الأطفال يضحكون والجدة تبتسم.
+      en: The children laugh and Grandma smiles.
+    answer: Lare-lare ngguyu, Mbah mesem.
+    distractors: [linggih, eman]
+    words: [ngguyu, mesem]
+    explain:
+      ar_eg: ngguyu = يضحك وmesem = يبتسم. linggih = يقعد، وeman = يا خسارة.
+      ar: ngguyu تعني يضحك وmesem يبتسم. أما linggih فيجلس، وeman يا للخسارة.
+      en: ngguyu is "laugh" and mesem is "smile". linggih is "sit", and eman is "what a pity".
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Mangga linggih ing kursi menika.
+    answers_meaning:
+      ar_eg: [اتفضل اقعد على الكرسي ده, اتفضلي اقعدي على الكرسي ده]
+      ar: [تفضّل اجلس على هذا الكرسي, تفضّلي اجلسي على هذا الكرسي]
+      en: [Please sit on this chair, Please have a seat on this chair]
+    words: [linggih, kursi]
+  - id: e09
+    type: speaking
+    text: Mas Mohamed tamu kula.
+    meaning:
+      ar_eg: محمد ضيفي.
+      ar: محمد ضيفي.
+      en: Mohamed is my guest.
+    words: [tamu]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بتقول إيه لما حاجة حلوة تضيع على الفاضي؟
+      ar: ماذا تقول حين يضيع شيء جميل سدى؟
+      en: What do you say when something good goes to waste?
+    options: [Becik!, Eman!, Mesem!]
+    answer: 1
+    explain:
+      ar_eg: Eman = يا خسارة.
+      ar: Eman = يا للأسف.
+      en: Eman = what a pity, what a waste.
+    words: [becik, eman, mesem]
+dialogue:
+  lines:
+    - speaker: Mbah Putri
+      text: "Mangga, Nak, linggih kene."
+      ar_eg: "اتفضل يا ابني، اقعد هنا."
+      ar: "تفضّل يا بنيّ، اجلس هنا."
+      en: "Come, dear, sit here."
+    - speaker: Mohamed
+      text: Matur nuwun, Mbah. Kula sayah sanget.
+      ar_eg: متشكر يا تيتة. أنا تعبان أوي.
+      ar: شكرًا يا جدة. أنا متعب جدًا.
+      en: Thank you, Mbah. I'm very tired.
+    - speaker: Mbah Putri
+      text: "Saka ngendi, Nak?"
+      ar_eg: "جاي منين يا ابني؟"
+      ar: "من أين جئت يا بنيّ؟"
+      en: "Where've you come from, dear?"
+    - speaker: Mohamed
+      text: Peken Kranggan, Mbah, mlampah. Mas Dimas mboten saged dhateng.
+      ar_eg: من سوق كرانجان يا تيتة، ماشي. وديماس مش هيقدر ييجي.
+      ar: من سوق كرانغان يا جدّة، ماشيًا. وديماس لا يستطيع الحضور.
+      en: Pasar Kranggan, Mbah, on foot. Dimas can't come.
+    - speaker: Mbah Putri
+      text: "Eman tenan! Nanging Mbah bungah kowe teka, lho."
+      ar_eg: "يا خسارة! بس تيتة مبسوطة إنك جيت."
+      ar: "يا للأسف! لكن الجدة سعيدة بمجيئك."
+      en: "What a shame! But I'm glad you came, really."
+    - speaker: Mohamed
+      text: Mbah tiyang becik sanget.
+      ar_eg: حضرتك ست طيبة أوي يا تيتة.
+      ar: أنتِ امرأة طيبة جدًا يا جدة.
+      en: You're a very kind person, Mbah.
+new_words:
+  - word: mesem
+    pos: verb
+    ar_eg: يبتسم
+    ar: يبتسم
+    en: smile (= tersenyum)
+  - word: guyu / ngguyu
+    pos: verb
+    ar_eg: ضحكة / يضحك
+    ar: ضحكة / يضحك
+    en: a laugh / to laugh (= tertawa)
+  - word: eman
+    pos: interjection
+    ar_eg: يا خسارة! (خسارة إنها تضيع)
+    ar: يا للأسف! (خسارة أن يضيع)
+    en: what a pity; too good to waste (= sayang)
+  - word: becik
+    pos: adjective
+    ar_eg: طيب، كويس
+    ar: طيّب، حسن
+    en: good, kind (= baik)
+  - word: sayah
+    pos: adjective
+    ar_eg: تعبان (kesel ← sayah)، كراما
+    ar: متعب (kesel ← sayah)، كراما
+    en: tired (ngoko kesel, Indonesian capek), krama
+  - word: linggih
+    pos: verb
+    ar_eg: يقعد (lungguh ← linggih)، كراما
+    ar: يجلس (lungguh ← linggih)، كراما
+    en: sit (ngoko lungguh, Indonesian duduk), krama
+  - word: tamu
+    pos: noun
+    ar_eg: ضيف
+    ar: ضيف
+    en: guest (= tamu)
+  - word: kursi
+    pos: noun
+    ar_eg: كرسي
+    ar: كرسي
+    en: chair (= kursi)
+review:
+  status: draft
+  verified: false

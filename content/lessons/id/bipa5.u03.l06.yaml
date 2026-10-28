@@ -1,186 +1,249 @@
 schema: kabar.lesson/v1
 id: bipa5.u03.l06
 language: id
-title: Presentasi teknologi
+title: Akun kantor dibobol
 can_do:
-  ar_eg: تقدّم شرح قصير عن تكنولوجيا وأثرها قدام ناس.
-  ar: أن تقدّم عرضًا قصيرًا عن تقنية وأثرها.
-  en: Give a short presentation explaining a technology and its effects.
+  ar_eg: 'تحكي عن اختراق حساب في الشغل: الهاكر والباسورد والأدمن وتسريب البيانات والتحديث، وتفكر بمنطق.'
+  ar: 'أن تروي اختراق حساب في العمل: المخترق وكلمة المرور والمسؤول وتسريب البيانات والتحديث، وتفكّر بمنطق.'
+  en: 'Describe a hacked work account: the hacker, password, admin, data leak and update, and reason it through.'
 slides:
-  - title: Membuka dan menutup presentasi
-    grammar: id.nominalization
+  - title: Keamanan digital
     body:
       ar_eg: |
-        العرض الرسمي بيبدأ وبيخلص بجمل ثابتة، وبيستخدم أسماء (nominalisasi) كتير:
-        - Pada kesempatan ini, saya akan membahas … = في الفرصة دي، هتكلم عن …
-        - Pertama-tama, … = في الأول خالص …
-        - Sebagai penutup, … = وفي الختام …
-        - Terima kasih atas perhatian Anda. = شكرًا على اهتمامكم.
-        مثلًا: saya akan membahas penggunaan dompet digital (مش bagaimana orang menggunakan …).
+        hacker = هاكر، password = باسورد (بالإندونيسي الرسمي kata sandi)، admin = أدمن، المسؤول عن النظام.
+        software = برنامج (بالرسمي perangkat lunak)، update = تحديث: update software-nya dulu!
+        kebocoran = تسريب (kebocoran data = تسريب بيانات، وأصلها bocor = بيخر).
+        logis = منطقي، asumsi = افتراض: Itu baru asumsi = ده لسه افتراض.
+        وفي الحوار هتسمع كلام الشارع، وجنبه الرسمي: ngirim = mengirim، kayaknya = sepertinya، cuma = hanya، aja = saja.
       ar: |
-        يبدأ العرض الرسمي وينتهي بعبارات ثابتة، ويكثر فيه الاسم (nominalisasi):
-        - Pada kesempatan ini, saya akan membahas … = في هذه المناسبة سأتناول …
-        - Pertama-tama, … = بادئ ذي بدء …
-        - Sebagai penutup, … = وختامًا …
-        - Terima kasih atas perhatian Anda. = شكرًا على حسن إصغائكم.
-        مثلًا: saya akan membahas penggunaan dompet digital.
+        hacker = مخترق، password = كلمة المرور (الرسمية: kata sandi)، admin = المسؤول عن النظام.
+        software = برمجيات (الرسمية: perangkat lunak)، update = تحديث: update software-nya dulu!
+        kebocoran = تسرّب (kebocoran data = تسريب البيانات، من bocor = يتسرّب).
+        logis = منطقي، asumsi = افتراض: Itu baru asumsi = ما زال ذلك افتراضًا.
+        وفي الحوار لغة الشارع، وبجانبها الصيغة الرسمية: ngirim = mengirim، kayaknya = sepertinya، cuma = hanya، aja = saja.
       en: |
-        A formal talk opens and closes with set phrases, and uses plenty of nouns (nominalisasi):
-        - Pada kesempatan ini, saya akan membahas … = Today I will discuss …
-        - Pertama-tama, … = First of all, …
-        - Sebagai penutup, … = To close, …
-        - Terima kasih atas perhatian Anda. = Thank you for your attention.
-        For example: saya akan membahas penggunaan dompet digital.
+        hacker = hacker, password = password (formal: kata sandi), admin = admin, system administrator.
+        software = software (formal: perangkat lunak), update = update: update software-nya dulu!
+        kebocoran = leak (kebocoran data = data leak, from bocor = to leak).
+        logis = logical, asumsi = assumption: Itu baru asumsi = that's only an assumption.
+        The dialogue uses street forms; the formal ones are beside them: ngirim = mengirim, kayaknya = sepertinya, cuma = hanya, aja = saja.
     examples:
-      - text: Pada kesempatan ini, saya akan membahas perkembangan ojek daring.
-        ar_eg: في الفرصة دي، هتكلم عن تطوّر الأوجيك الأونلاين.
-        ar: في هذه المناسبة سأتناول تطوّر الدراجات الأجرة عبر التطبيقات.
-        en: Today I will discuss the development of app-based motorbike taxis.
+      - text: Hacker itu mencuri password dua puluh karyawan.
+        ar_eg: الهاكر ده سرق باسوردات عشرين موظف.
+        ar: سرق ذلك المخترق كلمات مرور عشرين موظفًا.
+        en: That hacker stole twenty employees' passwords.
+      - text: Admin meminta semua orang meng-update software.
+        ar_eg: الأدمن طلب من الكل يعملوا أبديت للبرامج.
+        ar: طلب المسؤول من الجميع تحديث البرمجيات.
+        en: The admin asked everyone to update their software.
+      - text: Kebocoran data ini bukan asumsi, tetapi fakta.
+        ar_eg: تسريب الداتا ده مش افتراض، ده حقيقة.
+        ar: ليس تسريب البيانات هذا افتراضًا بل حقيقة.
+        en: This data leak isn't an assumption; it's a fact.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: membahas
-        ar_eg: يناقش / يتكلم عن
-        ar: يتناول، يناقش
-        en: to discuss
-      - text: perkembangan
-        ar_eg: تطوّر
-        ar: تطوّر
-        en: development
-      - text: sebagai penutup
-        ar_eg: وفي الختام
-        ar: وختامًا
-        en: to close
-      - text: perhatian
-        ar_eg: اهتمام / انتباه
-        ar: انتباه، اهتمام
-        en: attention
-    words: [membahas, perkembangan, sebagai penutup, perhatian]
+      - text: hacker
+        ar_eg: هاكر
+        ar: مخترق
+        en: hacker
+      - text: password
+        ar_eg: باسورد
+        ar: كلمة مرور
+        en: password
+      - text: admin
+        ar_eg: أدمن
+        ar: مسؤول النظام
+        en: admin
+      - text: kebocoran
+        ar_eg: تسريب
+        ar: تسرّب
+        en: leak
+    words: [hacker, password, admin, kebocoran]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: software
+        ar_eg: برنامج
+        ar: برمجيات
+        en: software
+      - text: update
+        ar_eg: تحديث
+        ar: تحديث
+        en: update
+      - text: logis
+        ar_eg: منطقي
+        ar: منطقي
+        en: logical
+      - text: asumsi
+        ar_eg: افتراض
+        ar: افتراض
+        en: assumption
+    words: [software, update, logis, asumsi]
+  - id: e03
+    type: listen
+    text: Ganti password Anda sekarang juga.
+    question:
+      ar_eg: المطلوب إيه؟
+      ar: ما المطلوب؟
+      en: What is he told to do?
+    options: [يغيّر الباسورد, يقفل الموبايل, يكلم الأدمن]
+    answer: 0
+    meaning:
+      ar_eg: غيّر الباسورد بتاعك دلوقتي حالًا.
+      ar: غيّر كلمة مرورك الآن فورًا.
+      en: Change your password right now.
+    words: [password]
+  - id: e04
+    type: fill_blank
+    sentence: Laptop saya lambat karena ___ terbaru belum dipasang.
+    meaning:
+      ar_eg: اللابتوب بتاعي بطيء عشان آخر ___ لسه ما اتنزلش.
+      ar: حاسوبي بطيء لأن آخر ___ لم يُثبَّت بعد.
+      en: My laptop is slow because the latest ___ isn't installed yet.
+    options: [update, asumsi, hacker]
+    answers: [update]
+    words: [update, asumsi, hacker]
+    explain:
+      ar_eg: اللي «بيتنزّل» على اللابتوب update. asumsi = افتراض وhacker = هاكر، ومايتنزلوش.
+      ar: ما «يُثبَّت» على الحاسوب هو update. أما asumsi فالافتراض، وhacker المخترق.
+      en: What gets installed is an update. asumsi (assumption) and hacker aren't installed.
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة تفتح بيها العرض؟
-      ar: بأيّ جملة تفتتح العرض؟
-      en: Which sentence opens the presentation?
-    options:
-      - Terima kasih atas perhatian Anda.
-      - Sebagai penutup, teknologi itu penting.
-      - Pada kesempatan ini, saya akan membahas ekonomi digital.
-    answer: 2
-    words: [membahas]
-  - id: e03
+      ar_eg: مين اللي بيدير نظام الكمبيوتر في الشركة؟
+      ar: من يدير نظام الحاسوب في الشركة؟
+      en: Who runs the company's computer system?
+    options: [kebocoran, admin, logis]
+    answer: 1
+    explain:
+      ar_eg: admin = مسؤول النظام.
+      ar: admin = مسؤول النظام.
+      en: admin = system administrator.
+    words: [kebocoran, admin, logis]
+  - id: e06
     type: fill_blank
-    sentence: ___, saya ingin menyampaikan bahwa teknologi harus aman.
+    sentence: Penjelasanmu masuk akal dan ___.
     meaning:
-      ar_eg: وفي الختام، حابب أقول إن التكنولوجيا لازم تكون آمنة.
-      ar: وختامًا، أودّ القول إنّ التقنية يجب أن تكون آمنة.
-      en: To close, I'd like to say that technology must be safe.
-    options: [Sebagai penutup, Pertama-tama, Pada kesempatan ini]
-    answers: [Sebagai penutup]
-    words: [sebagai penutup]
-  - id: e04
-    type: listen
-    text: Terima kasih atas perhatian Bapak dan Ibu sekalian.
-    options:
-      - Terima kasih atas perhatian Bapak dan Ibu sekalian.
-      - Terima kasih atas perkembangan Bapak dan Ibu sekalian.
-      - Terima kasih, Bapak dan Ibu, sampai jumpa.
-    answer: 0
-    words: [perhatian]
-  - id: e05
+      ar_eg: شرحك معقول و___.
+      ar: شرحك معقول و___.
+      en: Your explanation makes sense and is ___.
+    options: [logis, software, password]
+    answers: [logis]
+    words: [logis, software, password]
+    explain:
+      ar_eg: "صفة للشرح: logis = منطقي. software = برنامج وpassword = باسورد، وهما أسماء."
+      ar: "المطلوب صفة للشرح: logis = منطقي. أما software وpassword فاسمان."
+      en: "We need an adjective for an explanation: logis, logical. software and password are nouns."
+  - id: e07
+    type: multiple_choice
+    question: Jangan dulu menuduh orang. Itu baru ___.
+    options: [update, kebocoran, asumsi]
+    answer: 2
+    explain:
+      ar_eg: asumsi = افتراض، لسه مش متأكدين.
+      ar: asumsi = افتراض، لم يتأكّد بعد.
+      en: asumsi = an assumption, not proven yet.
+    words: [update, kebocoran, asumsi]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: هتكلم عن تطوّر الدفع الرقمي.
-      ar: سأتناول تطوّر الدفع الرقمي.
-      en: I will discuss the development of digital payment.
-    answer: Saya akan membahas perkembangan pembayaran digital.
-    distractors: [penutup, dari]
-    words: [membahas, perkembangan]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: تطوّر التكنولوجيا في إندونيسيا سريع قوي.
-      ar: تطوّر التقنية في إندونيسيا سريع جدًّا.
-      en: The development of technology in Indonesia is very fast.
-    answers:
-      - Perkembangan teknologi di Indonesia sangat cepat.
-      - Perkembangan teknologi di Indonesia sangat pesat.
-      - Perkembangan teknologi di Indonesia cepat sekali.
-      - Perkembangan teknologi di Indonesia pesat sekali.
-    words: [perkembangan]
-  - id: e07
-    type: dictation
-    text: Sebagai penutup, terima kasih atas perhatian Anda.
-    meaning:
-      ar_eg: وفي الختام، شكرًا على اهتمامكم.
-      ar: وختامًا، شكرًا على حسن إصغائكم.
-      en: To close, thank you for your attention.
-    words: [sebagai penutup, perhatian]
-  - id: e08
-    type: speaking
-    text: Pada kesempatan ini, saya akan membahas keamanan data.
-    meaning:
-      ar_eg: في الفرصة دي، هتكلم عن أمان البيانات.
-      ar: في هذه المناسبة سأتناول أمن البيانات.
-      en: Today I will discuss data security.
-    words: [membahas]
+      ar_eg: الهاكر دخل من برنامج قديم.
+      ar: دخل المخترق عبر برمجيات قديمة.
+      en: The hacker got in through old software.
+    answer: Hacker itu masuk lewat software lama.
+    distractors: [admin, update]
+    words: [hacker, software]
+    explain:
+      ar_eg: «الهاكر» = Hacker و«برنامج قديم» = software lama. admin = مسؤول النظام وupdate = تحديث، مش في الجملة.
+      ar: «المخترق» = Hacker و«برمجيات قديمة» = software lama. أما admin فمسؤول النظام، وupdate التحديث.
+      en: "\"The hacker\" is Hacker and \"old software\" software lama. admin and update aren't in the sentence."
   - id: e09
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في العرض الرسمي، أنهي أحسن؟
-      ar: أيّها أفضل في عرض رسمي؟
-      en: Which is better in a formal talk?
-    options:
-      - Saya mau ngomongin aplikasi.
-      - Saya akan membahas penggunaan aplikasi.
-      - Gue mau cerita tentang aplikasi.
-    answer: 1
-    words: [membahas]
+    type: translate
+    direction: from_target
+    source_text: Kebocoran data itu sudah dilaporkan ke polisi.
+    answers_meaning:
+      ar_eg: [تسريب الداتا ده اتبلغ عنه البوليس, بلّغوا البوليس عن تسريب البيانات]
+      ar: [أُبلغت الشرطة بتسريب البيانات, تم الإبلاغ عن تسريب البيانات للشرطة]
+      en: [The data leak has been reported to the police, The data leak was reported to the police]
+    words: [kebocoran]
+  - id: e10
+    type: speaking
+    text: Menurut admin, hacker itu tidak tahu password baru kita.
+    meaning:
+      ar_eg: الأدمن بيقول الهاكر ما يعرفش الباسورد الجديد بتاعنا.
+      ar: يقول المسؤول إن المخترق لا يعرف كلمة مرورنا الجديدة.
+      en: The admin says the hacker doesn't know our new password.
+    words: [admin, hacker, password]
 dialogue:
-  title: Latihan presentasi
   lines:
+    - speaker: Rina
+      text: Mohamed, email kantorku ngirim pesan aneh ke semua klien!
+      ar_eg: يا محمد، إيميل الشغل بتاعي بعت رسايل غريبة لكل العملا!
+      ar: يا محمد، بريد عملي أرسل رسائل غريبة إلى كل العملاء!
+      en: Mohamed, my work email sent strange messages to all our clients!
     - speaker: Mohamed
-      text: Selamat pagi. Pada kesempatan ini, saya akan membahas perkembangan dompet digital.
-      ar_eg: صباح الخير. في الفرصة دي، هتكلم عن تطوّر المحافظ الإلكترونية.
-      ar: صباح الخير. في هذه المناسبة سأتناول تطوّر المحافظ الرقمية.
-      en: Good morning. Today I will discuss the development of e-wallets.
-    - speaker: Bu Lestari
-      text: Bagus. Pembukaannya jelas. Lanjutkan.
-      ar_eg: حلو. الافتتاحية واضحة. كمّل.
-      ar: جيّد، الافتتاحية واضحة. تابع.
-      en: Good. A clear opening. Go on.
+      text: Kayaknya akunmu dibobol hacker. Passwordmu apa? Jangan bilang tanggal lahir, ya.
+      ar_eg: يمكن حسابك اتهكر. الباسورد بتاعك إيه؟ ما تقوليش تاريخ ميلادك.
+      ar: ربما اخترق أحدهم حسابك. ما كلمة مرورك؟ لا تقولي إنها تاريخ ميلادك.
+      en: Maybe a hacker got into your account. What's your password? Don't say your birthday.
+    - speaker: Rina
+      text: Iya... tanggal lahir. Tapi itu cuma asumsi, kan?
+      ar_eg: أيوه... تاريخ ميلادي. بس ده مجرد افتراض، صح؟
+      ar: نعم... تاريخ ميلادي. لكن هذا مجرد افتراض، أليس كذلك؟
+      en: Yes... my birthday. But that's just an assumption, right?
     - speaker: Mohamed
-      text: Pertama-tama, penggunaan dompet digital naik pesat sejak 2020.
-      ar_eg: في الأول خالص، استخدام المحافظ الإلكترونية زاد بسرعة من 2020.
-      ar: بادئ ذي بدء، ارتفع استخدام المحافظ الرقمية بسرعة منذ 2020.
-      en: First of all, e-wallet use has risen rapidly since 2020.
-    - speaker: Mohamed
-      text: Sebagai penutup, teknologi ini mudah, tetapi keamanannya harus dijaga. Terima kasih atas perhatian Anda.
-      ar_eg: وفي الختام، التكنولوجيا دي سهلة، بس لازم نحافظ على أمانها. شكرًا على اهتمامكم.
-      ar: وختامًا، هذه التقنية سهلة لكن يجب صون أمنها. شكرًا على حسن إصغائكم.
-      en: To close, this technology is easy, but its security must be protected. Thank you for your attention.
-    - speaker: Bu Lestari
-      text: Rapi sekali, Mohamed. Penutupnya juga sopan.
-      ar_eg: منظم جدًا يا محمد. والختام كمان مؤدب.
-      ar: منظّم جدًّا يا محمد، والخاتمة مهذّبة أيضًا.
-      en: Very neat, Mohamed. A polite close too.
+      text: Asumsi yang logis, sih. Kita lapor ke admin sekarang aja.
+      ar_eg: افتراض منطقي. يلا نبلّغ الأدمن دلوقتي.
+      ar: افتراض منطقي. لنبلّغ المسؤول الآن.
+      en: A logical one. Let's report it to the admin now.
+    - speaker: Pak Hendra
+      text: Ada kebocoran data? Semua harus update software dan ganti password hari ini.
+      ar_eg: فيه تسريب داتا؟ الكل لازم يحدّث البرامج ويغيّر الباسورد النهارده.
+      ar: هل هناك تسريب بيانات؟ على الجميع تحديث البرمجيات وتغيير كلمات المرور اليوم.
+      en: A data leak? Everyone must update their software and change passwords today.
 new_words:
-  - word: membahas
-    pos: verb
-    ar_eg: يناقش / يتكلم عن
-    ar: يتناول، يناقش
-    en: to discuss
-  - word: perkembangan
+  - word: hacker
     pos: noun
-    ar_eg: تطوّر
-    ar: تطوّر
-    en: development
-  - word: sebagai penutup
-    ar_eg: وفي الختام
-    ar: وختامًا
-    en: to close, in conclusion
+    ar_eg: هاكر
+    ar: مخترق
+    en: hacker
+  - word: password
+    pos: noun
+    ar_eg: باسورد
+    ar: كلمة مرور
+    en: password
+  - word: admin
+    pos: noun
+    ar_eg: أدمن
+    ar: مسؤول النظام
+    en: admin
+  - word: kebocoran
+    pos: noun
+    ar_eg: تسريب، خرّ
+    ar: تسرّب، تسريب
+    en: leak
+  - word: software
+    pos: noun
+    ar_eg: برنامج، سوفت وير
+    ar: برمجيات
+    en: software
+  - word: update
+    pos: noun
+    ar_eg: تحديث، أبديت
+    ar: تحديث
+    en: update
+  - word: logis
+    pos: adjective
+    ar_eg: منطقي
+    ar: منطقي
+    en: logical
+  - word: asumsi
+    pos: noun
+    ar_eg: افتراض
+    ar: افتراض
+    en: assumption
 review:
   status: draft
   verified: false

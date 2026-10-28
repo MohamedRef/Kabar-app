@@ -1,196 +1,170 @@
 schema: kabar.lesson/v1
 id: j4.u03.l08
 language: jv
-title: Ulangan J4.3
+title: Ngaturi rawuh
 can_do:
-  ar_eg: تحط فعل التواضع جنب فعل التبجيل اللي يقابله.
-  ar: أن تقرن فعل التواضع بفعل التبجيل المقابل له.
-  en: Pair andhap with inggil.
+  ar_eg: تعزم حد كبير على مناسبة.
+  ar: أن تدعو الكبير إلى مناسبة.
+  en: Invite an elder to an event.
 slides:
-  - title: Bapak ngendika, kula matur
+  - title: Kula ngaturi, Bapak rawuh
     body:
       ar_eg: |
-        كل فعل للكبير (krama inggil) ليه فعل يقابله ليك (krama andhap):
-        ngendika / dhawuh ↔ matur · rawuh ↔ sowan · ndangu ↔ nyuwun pirsa · mundhut ↔ nyuwun · maringi ↔ ngaturaken · tindak ↔ ndherek (لو ماشي معاه).
-        وإنت ماشي: nyuwun pamit. وإنت بتعزم: ngaturi … rawuh.
+        خلّصت كورس الجاوي، وعامل syukuran (عزومة شكر) يوم السبت. syukuran جاية من العربي «شكر».
+        العزومة الجاوية فيها الاتنين مع بعض: إنت بتنزّل نفسك (matur، ngaturi)، والكبير بيترفع (rawuh، dalem).
+        والكبير لما يرد عن نفسه بيقول الكلام العادي: «Kula badhe dhateng» (هاجي)، مش «rawuh».
       ar: |
-        لكل فعل للكبير (krama inggil) فعل يقابله لك (krama andhap):
-        ngendika / dhawuh ↔ matur · rawuh ↔ sowan · ndangu ↔ nyuwun pirsa · mundhut ↔ nyuwun · maringi ↔ ngaturaken · tindak ↔ ndherek (في المرافقة).
-        وعند الانصراف nyuwun pamit، وعند الدعوة ngaturi … rawuh.
+        أنهيت دورة الجاوية، وتقيم syukuran (وليمة شكر) يوم السبت، وsyukuran من العربية «شكر».
+        والدعوة الجاوية تجمع الأمرين: تخفض نفسك (matur، ngaturi) وترفع الكبير (rawuh، dalem).
+        والكبير إذا أجاب عن نفسه قال الكلام العادي: «Kula badhe dhateng» لا «rawuh».
       en: |
-        Every verb for the elder (krama inggil) has a partner for you (krama andhap):
-        ngendika / dhawuh ↔ matur · rawuh ↔ sowan · ndangu ↔ nyuwun pirsa · mundhut ↔ nyuwun · maringi ↔ ngaturaken · tindak ↔ ndherek (going along with them).
-        Leaving: nyuwun pamit. Inviting: ngaturi … rawuh.
+        You've finished your Javanese course and you're holding a syukuran (a thanksgiving get-together) on Saturday. syukuran comes from Arabic «شكر».
+        A Javanese invitation uses both directions at once: you lower yourself (matur, ngaturi) and raise the elder (rawuh, dalem).
+        When the elder answers about himself, he uses the plain word: "Kula badhe dhateng" (I'll come), not rawuh.
     grammar: jv.krama-andhap
     examples:
-      - text: Simbah maringi kula arta, kula ngaturaken jeruk.
-        ar_eg: تيتة إدّتني فلوس، وأنا قدّمت لها برتقان.
-        ar: أعطتني الجدة مالًا، وقدّمتُ لها برتقالًا.
-        en: Grandma gave me money, and I offered her oranges.
+      - text: Kula ngaturi Bapak rawuh wonten syukuran kula.
+        ar_eg: يشرّفني إن حضرتك تيجي عزومة الشكر بتاعتي.
+        ar: يشرّفني حضوركم وليمة الشكر التي أقيمها.
+        en: I'd be honoured if you came to my syukuran, sir.
+      - text: Inggih, kula badhe dhateng.
+        ar_eg: حاضر، هاجي.
+        ar: نعم، سآتي.
+        en: Yes, I'll come.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: matur
-        ar_eg: كلامك إنت للكبير (هو ngendika)
-        ar: كلامك للكبير (وهو ngendika)
-        en: you speaking to the elder (he ngendika)
-      - text: sowan
-        ar_eg: زيارتك إنت للكبير (هو rawuh)
-        ar: زيارتك للكبير (وهو rawuh)
-        en: your visit to the elder (he rawuh)
-      - text: ngaturaken
-        ar_eg: تقديمك إنت للكبير (هو maringi)
-        ar: تقديمك للكبير (وهو maringi)
-        en: your giving to the elder (he maringi)
-      - text: nyuwun pirsa
-        ar_eg: سؤالك إنت للكبير (هو ndangu)
-        ar: سؤالك للكبير (وهو ndangu)
-        en: your question to the elder (he ndangu)
-    words: [matur, sowan, ngaturaken, nyuwun pirsa]
-  - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أي جملة صحيحة؟
-      en: Which sentence is right?
-    options: ['Simbah ngaturaken arta dhateng kula.', 'Simbah maringi kula arta.', 'Kula maringi Simbah oleh-oleh.']
-    answer: 1
-    explain:
-      ar_eg: "الكبير بيدّي: maringi. إنت بتقدّم: ngaturaken. التانيين بيعكسوا الاتجاه."
-      ar: عطاء الكبير maringi، وتقديمك ngaturaken، والجملتان الأخريان عكستا الاتجاه.
-      en: "The elder gives: maringi. You offer: ngaturaken. The other two reverse the direction."
-    words: [maringi, ngaturaken]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أي جملة صحيحة؟
-      en: Which sentence is right?
-    options: ['Mangga sowan dhateng griya kula, Pak.', 'Kula badhe ngendika, Pak.', 'Kula badhe sowan dhateng dalemipun Bapak.']
-    answer: 2
-    explain:
-      ar_eg: الأولى بتطلب من الكبير sowan (لازم rawuh)، والتانية بتستخدم ngendika لنفسك (لازم matur).
-      ar: الأولى تطلب من الكبير sowan (والصواب rawuh)، والثانية تستعمل ngendika للنفس (والصواب matur).
-      en: The first asks the elder to sowan (should be rawuh); the second uses ngendika for yourself (should be matur).
-    words: [sowan, matur, ngendika]
-  - id: e04
-    type: listen
-    text: Sultan dhawuh, abdi dalem matur.
-    options: ['Sultan dhawuh, abdi dalem matur.', 'Sultan matur, abdi dalem dhawuh.', 'Sultan rawuh, abdi dalem sowan.']
+      ar_eg: تعزم Pak Harsono على الـ syukuran بتاعتك. تقول إيه؟
+      ar: تدعو Pak Harsono إلى وليمة الشكر. ماذا تقول؟
+      en: You invite Pak Harsono to your syukuran. What do you say?
+    options: ['Kula ngaturi Bapak rawuh wonten syukuran kula.', 'Mangga Bapak sowan dhateng syukuran kula.', 'Kula ngaturaken Bapak dhateng syukuran.']
     answer: 0
-    meaning:
-      ar_eg: السلطان بيأمر، وخدّام القصر بيعرضوا بتواضع.
-      ar: السلطان يأمر، وخدم القصر يعرضون بتواضع.
-      en: The Sultan instructs; the courtiers speak humbly.
-    words: [dhawuh, abdi dalem]
-  - id: e05
+    explain:
+      ar_eg: ngaturi (أعزم بتواضع) + rawuh (هو ييجي). sowan مينفعش تطلبها منه، وngaturaken لتقديم حاجة.
+      ar: ngaturi (أدعو بتواضع) + rawuh (مجيئه)، ولا تُطلب منه sowan، وngaturaken لتقديم الأشياء.
+      en: ngaturi (I invite humbly) + rawuh (he comes). You can't ask him to sowan; ngaturaken is for offering things.
+    words: [ngaturi, rawuh, syukuran]
+  - id: e02
     type: listen
-    text: Kula ngaturi Ibu rawuh.
-    options: ['Kula ngaturaken Ibu rawuh.', 'Kula ngaturi Ibu rawuh.', 'Kula ngaturi Ibu sowan.']
-    answer: 1
+    text: Setu sonten kula damel syukuran.
+    options: ['Setu enjing kula damel syukuran.', 'Setu sonten kula sowan Simbah.', 'Setu sonten kula damel syukuran.']
+    answer: 2
     meaning:
-      ar_eg: يشرّفني إن حضرتك تيجي يا هانم.
-      ar: يشرّفني حضورك يا سيدتي.
-      en: I'd be honoured if you came, ma'am.
+      ar_eg: يوم السبت العصر عامل عزومة شكر.
+      ar: سأقيم وليمة شكر مساء السبت.
+      en: On Saturday afternoon I'm holding a syukuran.
+    words: [syukuran]
+  - id: e03
+    type: fill_blank
+    sentence: Kula ___ Bapak rawuh.
+    meaning:
+      ar_eg: يشرّفني إن حضرتك تيجي.
+      ar: يشرّفني حضوركم.
+      en: I'd be honoured if you came, sir.
+    answers: [ngaturi]
     words: [ngaturi]
-  - id: e06
+    explain:
+      ar_eg: تعزم الكبير = ngaturi. ngaturaken تقدّم حاجة، وsowan تزور.
+      ar: دعوة الكبير = ngaturi، أما ngaturaken فتقديم شيء، وsowan زيارة.
+      en: Inviting an elder is ngaturi. ngaturaken is presenting something, sowan is calling on.
+  - id: e04
     type: fill_blank
-    sentence: Pak Harsono badhe tindak dhateng Kraton. Kula ___.
+    sentence: Inggih, Mas, kula badhe ___.
     meaning:
-      ar_eg: Pak Harsono رايح الكراتون. وأنا جاي معاه.
-      ar: Pak Harsono ذاهب إلى الكراتون، وأنا أرافقه.
-      en: Pak Harsono is going to the Kraton. I'm going with him.
-    options: [ndherek, tindak, rawuh]
-    answers: [ndherek]
-    words: [ndherek]
-  - id: e07
-    type: fill_blank
-    sentence: ___, Pak, Taman Sari wonten pundi?
-    meaning:
-      ar_eg: بعد إذنك يا أستاذ، تامان ساري فين؟
-      ar: لو سمحت يا سيدي، أين تامان ساري؟
-      en: Excuse me, sir, may I ask where Taman Sari is?
-    options: [Nyuwun pirsa, Ndangu, Nyuwun pamit]
-    answers: [Nyuwun pirsa]
-    words: [nyuwun pirsa]
-  - id: e08
+      ar_eg: (Pak Sastro بيرد) حاضر يا ابني، هاجي.
+      ar: (يجيب Pak Sastro) نعم يا بني، سآتي.
+      en: (Pak Sastro answers) Yes, I'll come.
+    options: [rawuh, dhateng, sowan]
+    answers: [dhateng]
+    explain:
+      ar_eg: Pak Sastro بيتكلم عن نفسه، فمش هيقول rawuh. وsowan للزيارة بتواضع لحد أكبر منه. يبقى dhateng.
+      ar: يتحدث Pak Sastro عن نفسه فلا يقول rawuh، وsowan لزيارة من هو أكبر؛ فتكون dhateng.
+      en: "Pak Sastro is talking about himself, so not rawuh; sowan is visiting someone above you. So: dhateng."
+    words: [dhateng, rawuh]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: أستأذن أنا يا هانم.
-      ar: أستأذنكِ في الانصراف يا سيدتي.
-      en: Please excuse me, I'll be going, ma'am.
-    answer: Kula nyuwun pamit rumiyin, Bu.
-    distractors: [kondur, ngaturi]
-    words: [nyuwun pamit]
-  - id: e09
+      ar_eg: يا تيتة، يشرّفني إنك تيجي عزومة الشكر بتاعتي.
+      ar: يا جدتي، يشرّفني حضورك وليمة الشكر التي أقيمها.
+      en: Grandma, I'd be honoured if you came to my syukuran.
+    answer: Mbah, kula ngaturi Simbah rawuh wonten syukuran kula.
+    distractors: [sowan, ngaturaken]
+    words: [ngaturi, rawuh, syukuran]
+    explain:
+      ar_eg: "دعوة للكبيرة: ngaturi ... rawuh. sowan لما إنت اللي بتزور، وngaturaken تقدّم حاجة."
+      ar: "دعوة للكبيرة: ngaturi ... rawuh، أما sowan فحين تزور أنت، وngaturaken تقديم شيء."
+      en: "Inviting an elder: ngaturi ... rawuh. sowan is you visiting, ngaturaken presenting something."
+  - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (لـ Pak Harsono) عايز أقول لحضرتك حاجة يا أستاذ.
-      ar: (إلى Pak Harsono) أودّ أن أقول لكم شيئًا يا سيدي.
-      en: (to Pak Harsono) I'd like to tell you something, sir.
-    answers: ['Kula badhe matur, Pak.', 'Pak, kula badhe matur.', 'Nyuwun sewu, Pak, kula badhe matur.', 'Kula badhe matur dhateng Bapak.']
-    words: [matur]
-  - id: e10
+      ar_eg: (لـ Pak Sastro) بعد إذنك يا أستاذ، تقدر تيجي السبت العصر؟
+      ar: (إلى Pak Sastro) لو سمحت يا سيدي، هل تستطيع الحضور مساء السبت؟
+      en: (to Pak Sastro) May I ask, sir, can you come on Saturday afternoon?
+    answers: ['Nyuwun pirsa, Pak, Setu sonten saged rawuh?', 'Nyuwun pirsa, Pak, Bapak saged rawuh Setu sonten?', 'Nyuwun pirsa, Pak, panjenengan saged rawuh Setu sonten?', 'Nyuwun pirsa, Pak, Setu sonten Bapak saged rawuh?', 'Nyuwun pirsa, Pak, Setu sonten panjenengan saged rawuh?', 'Nyuwun pirsa, Bapak saged rawuh Setu sonten?']
+    explain:
+      ar_eg: nyuwun pirsa (بداية السؤال المتواضعة) + saged (يقدر) + rawuh (ييجي، للكبير).
+      ar: nyuwun pirsa (مفتتح السؤال) + saged (يستطيع) + rawuh (للكبير).
+      en: nyuwun pirsa (humble opener) + saged (can) + rawuh (come, for the elder).
+    words: [nyuwun pirsa, rawuh]
+  - id: e07
     type: dictation
-    text: Kula ngaturaken oleh-oleh menika.
+    text: Kula nyuwun pamit rumiyin, Pak.
     meaning:
-      ar_eg: اتفضل الهدية البسيطة دي مني.
-      ar: تفضّلوا بقبول هذه الهدية مني.
-      en: Please accept this little gift from me.
-    words: [ngaturaken]
-  - id: e11
+      ar_eg: أستأذن أنا يا أستاذ.
+      ar: أستأذنكم في الانصراف يا سيدي.
+      en: Please excuse me, I'll be going, sir.
+    words: [nyuwun pamit]
+  - id: e08
     type: speaking
-    text: Nyuwun sewu, Bu. Kula badhe sowan dhateng dalemipun Simbah.
+    text: Matur nuwun sampun rawuh wonten syukuran kula.
     meaning:
-      ar_eg: لا مؤاخذة يا هانم. هزور تيتة في بيتها.
-      ar: عفوًا يا سيدتي. سأزور الجدة في بيتها.
-      en: Excuse me, ma'am. I'm going to call on Grandma at her home.
-    words: [sowan, dalem]
+      ar_eg: شكرًا إنكم شرّفتوا عزومة الشكر بتاعتي.
+      ar: شكرًا لتشريفكم وليمة الشكر.
+      en: Thank you for coming to my syukuran.
+    words: [rawuh, syukuran]
 dialogue:
-  title: Syukuran
+  title: Ngaturi Pak Sastro
   lines:
     - speaker: Mohamed
-      text: Sugeng rawuh, Pak Sastro. Mangga lenggah.
-      ar_eg: أهلًا وسهلًا يا أستاذ ساسترو. اتفضل اقعد.
-      ar: أهلًا وسهلًا يا سيد ساسترو. تفضّل بالجلوس.
-      en: Welcome, Pak Sastro. Please have a seat.
+      text: Nyuwun sewu, Pak, kula badhe matur.
+      ar_eg: لا مؤاخذة يا أستاذ، عايز أقول لحضرتك حاجة.
+      ar: عفوًا يا سيدي، أودّ أن أقول لكم شيئًا.
+      en: Excuse me, sir, I'd like to tell you something.
     - speaker: Pak Sastro
-      text: Matur nuwun, Mas. Menika kangge Mas Mohamed.
-      ar_eg: شكرًا يا ابني. ودي عشانك يا محمد.
-      ar: شكرًا يا بني. وهذا لك يا محمد.
-      en: Thank you. This is for you, Mohamed.
+      text: Inggih, Mas. Wonten menapa?
+      ar_eg: اتفضل يا ابني. فيه إيه؟
+      ar: تفضّل يا بني. ما الأمر؟
+      en: Yes? What is it?
     - speaker: Mohamed
-      text: Wah, matur nuwun sanget, Pak.
-      ar_eg: الله، متشكر أوي يا أستاذ.
-      ar: شكرًا جزيلًا يا سيدي.
-      en: Oh, thank you so much, sir.
-    - speaker: Mohamed
-      text: Pak, kula badhe matur. Kula sampun saged basa krama.
-      ar_eg: "يا أستاذ، حابب أقول لحضرتك: أنا بقيت أعرف أتكلم كراما."
-      ar: "يا سيدي، أودّ أن أقول لكم: صرتُ أحسن الكلام بالكراما."
-      en: "Sir, I'd like to tell you: I can speak krama now."
+      text: Setu sonten kula damel syukuran. Kula ngaturi Bapak rawuh.
+      ar_eg: السبت العصر عامل عزومة شكر، ويشرّفني إن حضرتك تيجي.
+      ar: سأقيم وليمة شكر مساء السبت، ويشرّفني حضوركم.
+      en: On Saturday afternoon I'm holding a syukuran. I'd be honoured if you came.
     - speaker: Pak Sastro
-      text: Leres, Mas. Krama sampeyan sae sanget.
-      ar_eg: صحيح يا ابني. الكراما بتاعتك حلوة أوي.
-      ar: صحيح يا بني. كراماك جميلة جدًا.
-      en: That's true. Your krama is very good.
+      text: Wah, matur nuwun. Jam pinten, Mas?
+      ar_eg: الله، متشكر. الساعة كام يا ابني؟
+      ar: شكرًا لك. في أي ساعة يا بني؟
+      en: Oh, thank you. What time?
     - speaker: Mohamed
-      text: Inggih, Pak. Matur nuwun.
-      ar_eg: ربنا يخليك يا أستاذ. شكرًا.
-      ar: نعم يا سيدي. شكرًا.
-      en: Thank you, sir.
-souvenir:
-  id: j4.u03.souvenir
-  title: Kraton Ngayogyakarta Hadiningrat
-  note:
-    ar_eg: |
-      قصر سلطان يوجيا اتبنى بعد معاهدة جيانتي سنة ١٧٥٥، ولحد النهارده السلطان عايش فيه، وهو كمان حاكم إقليم يوجياكارتا. خدّام القصر، الـ abdi dalem، بيخدموا بمرتبات رمزية جدًا عشان دي شرف وبركة عندهم، وبيكلّموا السلطان بأرقى جاوي: matur، sowan، nyuwun. يعني اللي اتعلمته في الوحدة دي هي لغة القصر نفسها.
-    ar: |
-      بُني قصر سلطان يوغيا بعد معاهدة جيانتي سنة ١٧٥٥، وما زال السلطان يقيم فيه، وهو حاكم إقليم يوغياكارتا أيضًا. ويخدم الـ abdi dalem بأجور رمزية لأنهم يرونها شرفًا وبركة، ويخاطبون السلطان بأرقى الجاوية: matur وsowan وnyuwun. فما تعلّمته في هذه الوحدة هو لغة القصر نفسها.
-    en: |
-      The Yogyakarta Sultan's palace was built after the Treaty of Giyanti in 1755, and the Sultan still lives there; he is also the governor of the Yogyakarta region. The abdi dalem serve for a tiny, symbolic wage because they see it as an honour and a blessing, and they address the Sultan in the most refined Javanese: matur, sowan, nyuwun. What you learned in this unit is the palace's own language.
+      text: Jam pitu, wonten dalemipun Pak Harsono.
+      ar_eg: الساعة سبعة، في بيت الأستاذ هارسونو.
+      ar: في السابعة، في بيت الأستاذ هارسونو.
+      en: At seven, at Pak Harsono's house.
+    - speaker: Pak Sastro
+      text: Inggih, Mas, kula badhe dhateng.
+      ar_eg: حاضر يا ابني، هاجي.
+      ar: حسنًا يا بني، سآتي.
+      en: All right, I'll come.
+new_words:
+  - word: syukuran
+    pos: noun
+    ar_eg: عزومة / تجمّع شكر لله على حاجة حلوة
+    ar: وليمة أو اجتماع شكرًا لله على نعمة
+    en: thanksgiving get-together (for good news, a new house, a finished course) = syukuran
+    arabic: شكر
+    bridge: syukur
 review:
   status: draft
   verified: false

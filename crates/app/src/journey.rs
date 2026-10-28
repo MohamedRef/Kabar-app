@@ -155,6 +155,8 @@ fn kind_label(kind: LessonKind) -> Msg {
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum Pane {
     Route,
+    /// The map on a phone, which otherwise shows the route as a list (#380).
+    Map,
     Suitcase,
 }
 
@@ -220,10 +222,13 @@ pub fn JourneyScreen() -> Element {
                     for (r, label) in [(Route::Indonesian, Msg::JourneyIndonesian), (Route::Javanese, Msg::JourneyJavanese)] {
                         button {
                             key: "{r:?}",
-                            aria_pressed: if route() == r && pane() == Pane::Route { "true" } else { "false" },
+                            aria_pressed: if route() == r && pane() != Pane::Suitcase { "true" } else { "false" },
                             onclick: move |_| {
                                 route.set(r);
-                                pane.set(Pane::Route);
+                                // A phone on the map stays on the map.
+                                if pane() == Pane::Suitcase {
+                                    pane.set(Pane::Route);
+                                }
                             },
                             span { class: "seg-icon", aria_hidden: "true",
                                 if r == Route::Indonesian { {icon_plane()} } else { {icon_train()} }
@@ -232,18 +237,40 @@ pub fn JourneyScreen() -> Element {
                         }
                     }
                 }
-                button {
-                    class: "suitcase-toggle",
-                    aria_pressed: if pane() == Pane::Suitcase { "true" } else { "false" },
-                    onclick: move |_| pane.set(if pane() == Pane::Suitcase { Pane::Route } else { Pane::Suitcase }),
-                    span { class: "seg-icon", aria_hidden: "true", {icon_suitcase()} }
-                    "{ui.t(Msg::JourneySuitcase)} "
-                    span { class: "count", "{ui.num(suitcase_count as u64)}" }
+                div { class: "journey-tools",
+                    if compact {
+                        button {
+                            class: "map-toggle",
+                            title: "{ui.t(Msg::JourneyMap)}",
+                            aria_pressed: if pane() == Pane::Map { "true" } else { "false" },
+                            onclick: move |_| {
+                                let open = pane() != Pane::Map;
+                                pane.set(if open { Pane::Map } else { Pane::Route });
+                                if open {
+                                    // The list may have scrolled far down: bring the map up.
+                                    document::eval(
+                                        "requestAnimationFrame(() => document.querySelector('.journey')?.scrollIntoView({ block: 'start' }));",
+                                    );
+                                }
+                            },
+                            span { class: "seg-icon", aria_hidden: "true", {icon_map()} }
+                            span { class: "tool-label", "{ui.t(Msg::JourneyMap)}" }
+                        }
+                    }
+                    button {
+                        class: "suitcase-toggle",
+                        title: "{ui.t(Msg::JourneySuitcase)}",
+                        aria_pressed: if pane() == Pane::Suitcase { "true" } else { "false" },
+                        onclick: move |_| pane.set(if pane() == Pane::Suitcase { Pane::Route } else { Pane::Suitcase }),
+                        span { class: "seg-icon", aria_hidden: "true", {icon_suitcase()} }
+                        span { class: "tool-label", "{ui.t(Msg::JourneySuitcase)} " }
+                        span { class: "count", "{ui.num(suitcase_count as u64)}" }
+                    }
                 }
             }
             if pane() == Pane::Suitcase {
                 Suitcase { completed: completed.clone(), approved: approved.clone() }
-            } else if compact {
+            } else if compact && pane() == Pane::Route {
                 RouteList { key: "{j.route:?}", j: j.clone(), picked: picked() }
             } else {
                 MapView { key: "{j.route:?}", j: j.clone(), picked: picked() }
@@ -340,7 +367,15 @@ fn level_head(
     let art = map_art::vignette(&level.id, size);
     rsx! {
         header { class: "level-head", "data-done": if finished { "true" } else { "false" },
-            div { class: "level-title",
+            // The level's name opens its next lesson (its first once it's done).
+            button {
+                class: "level-title tap tap-plain",
+                onclick: {
+                    let next = level.lessons().find(|l| progress.lesson_state(&l.id) != LessonState::Done)
+                        .or_else(|| level.lessons().next())
+                        .map(|l| l.id.clone());
+                    move |_| if let Some(id) = &next { ui.open_lesson(id.clone()) }
+                },
                 if let Some(src) = art {
                     img { class: "level-art", src: "{src}", alt: "", aria_hidden: "true", draggable: "false" }
                 } else {
@@ -366,6 +401,7 @@ fn level_head(
                         }
                     }
                 }
+                span { class: "chev", aria_hidden: "true" }
             }
             div { class: "level-progress",
                 div {
@@ -428,10 +464,20 @@ fn unit_stops(ui: &Ui, j: &Journey, level: &Level, progress: &Progress, mark_cur
                         span { class: "stop-node" }
                     }
                     div { class: "stop-body",
+                        // The stop's name opens the unit's next lesson.
                         h3 {
-                            bdi { lang: tl, dir: "ltr", "{unit.stop}" }
-                            span { class: "stop-unit muted",
-                                " · {local(lang, &unit.title)}"
+                            button {
+                                class: "stop-head tap tap-plain",
+                                onclick: {
+                                    let next = unit.lessons.iter().find(|l| progress.lesson_state(&l.id) != LessonState::Done)
+                                        .or(unit.lessons.first())
+                                        .map(|l| l.id.clone());
+                                    move |_| if let Some(id) = &next { ui.open_lesson(id.clone()) }
+                                },
+                                bdi { lang: tl, dir: "ltr", "{unit.stop}" }
+                                span { class: "stop-unit muted",
+                                    " · {local(lang, &unit.title)}"
+                                }
                             }
                         }
                         {lessons(&ui, tl, unit, progress, mark_current)}
@@ -520,13 +566,13 @@ fn MapView(j: Journey, picked: Signal<Option<Option<String>>>) -> Element {
     let mut picked = picked;
     let chosen = picked.read().clone().unwrap_or_else(|| initial.clone());
     let stage_id = format!("jm-stage-{}", j.route.target_lang());
-    // Start centred on the place the learner is at.
-    let focus = chosen
-        .as_deref()
-        .or(initial.as_deref())
-        .and_then(|id| map.pin(id))
-        .map_or((map.view.x + map.view.w / 2.0, map.view.y + map.view.h / 2.0), |p| (p.x, p.y));
-    let script = format!("{PAN_ZOOM_JS}({stage_id:?}, {:.2}, {:.2});", focus.0, focus.1);
+    // Open on the whole journey, every stop in view (#307, #308); Reset
+    // comes back to the same view.
+    let (x0, y0, x1, y1) =
+        stops_box(map).unwrap_or((map.view.x, map.view.y, map.view.x + map.view.w, map.view.y + map.view.h));
+    let script = format!(
+        "{PAN_ZOOM_JS}({stage_id:?}, [{x0:.3}, {y0:.3}, {x1:.3}, {y1:.3}], {HOME_PAD}, {HOME_MAX_ZOOM});"
+    );
     let zoom = {
         let stage_id = stage_id.clone();
         move |how: &str| {
@@ -882,6 +928,22 @@ fn local_souvenir(unit_id: &str, lang: UiLanguage) -> Option<(String, String)> {
     s.as_ref().map(|s| (s.title.clone(), kabar_core::lesson::pick(&s.note, lang).to_string()))
 }
 
+/// The lesson that hands out a unit's souvenir: the last one carrying it,
+/// else the unit's last lesson.
+fn souvenir_lesson(unit_id: &str) -> Option<String> {
+    let unit = find_unit(unit_id)?;
+    unit.lessons
+        .iter()
+        .rev()
+        .find(|l| {
+            crate::lesson::lesson_content(&l.id)
+                .and_then(|c| kabar_core::lesson::parse_lesson(&c).ok())
+                .is_some_and(|p| p.souvenir.is_some())
+        })
+        .or(unit.lessons.last())
+        .map(|l| l.id.clone())
+}
+
 #[component]
 fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> Element {
     let ui = use_context::<Ui>();
@@ -904,8 +966,15 @@ fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> 
                 }
             }
             ul { class: "souvenirs",
+                // A souvenir opens the lesson that gave it.
                 for (s, tl) in cards {
-                    li { key: "{s.unit_id}", class: "souvenir card",
+                    li { key: "{s.unit_id}",
+                    button {
+                        class: "souvenir card tap",
+                        onclick: {
+                            let lesson = souvenir_lesson(&s.unit_id);
+                            move |_| if let Some(id) = &lesson { ui.open_lesson(id.clone()) }
+                        },
                         crate::souvenir_art::SouvenirArt { unit_id: s.unit_id.clone(), size: crate::souvenir_art::Size::Thumb }
                         div { class: "souvenir-stamp", aria_hidden: "true", bdi { "{s.level_code}" } }
                         h3 { bdi { lang: tl, dir: "ltr", "{local_souvenir(&s.unit_id, lang).map(|(t, _)| t).unwrap_or(s.name.clone())}" } }
@@ -921,6 +990,7 @@ fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> 
                         } else {
                             p { class: "souvenir-note", lang: "en", dir: "ltr", "{s.note}" }
                         }
+                    }
                     }
                 }
             }
@@ -958,6 +1028,9 @@ fn icon_island() -> Element {
     stroke_icon(
         "M3 18c3-2 6-2 9 0s6 2 9 0M7 16c1-4 4-6 8-6M14 10c-1-3 0-5 2-6M14 10c2-1 4 0 5 2M14 10c-2-2-5-2-6 0",
     )
+}
+fn icon_map() -> Element {
+    stroke_icon("M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2zM9 4v14M15 6v14")
 }
 fn icon_suitcase() -> Element {
     stroke_icon("M4 8h16v11H4zM9 8V5h6v3M4 13h16M9 13v2M15 13v2")
@@ -1054,9 +1127,11 @@ fn overlaps(a: (f64, f64, f64, f64), b: (f64, f64, f64, f64)) -> bool {
     a.0 < b.2 && b.0 < a.2 && a.1 < b.3 && b.1 < a.3
 }
 
-/// Every pin as (x, y, label length) in pin design units.
+/// Every pin as (x, y, label length) in pin design units. Laid out at the
+/// default zoom, the most crowded the stops get on a map-shaped stage:
+/// zooming in only spreads the places under the pins.
 fn design_pins(cur: &Curriculum, map: &MapLayout) -> Vec<(f64, f64, usize)> {
-    let k = map.view.w / 200.0;
+    let k = pin_scale(map);
     cur.levels
         .iter()
         .zip(map.pins.iter())
@@ -1070,9 +1145,24 @@ fn design_pins(cur: &Curriculum, map: &MapLayout) -> Vec<(f64, f64, usize)> {
 
 /// The map's view box (x0, y0, x1, y1) in pin design units.
 fn map_bounds(map: &MapLayout) -> (f64, f64, f64, f64) {
-    let k = map.view.w / 200.0;
+    let k = pin_scale(map);
     let v = &map.view;
     (v.x / k, v.y / k, (v.x + v.w) / k, (v.y + v.h) / k)
+}
+
+/// The view a map opens at, and Reset returns to, fits every stop with this
+/// much room around them (pin design units: a landmark sticker's reach and a
+/// name), zoomed in no further than `HOME_MAX_ZOOM` (journey.js `home`).
+const HOME_PAD: f64 = HALO + STICKER + 6.0;
+const HOME_MAX_ZOOM: f64 = 4.0;
+
+/// The box (x0, y0, x1, y1) in map units around every pin and unit stop.
+fn stops_box(map: &MapLayout) -> Option<(f64, f64, f64, f64)> {
+    let points = map.pins.iter().flat_map(|p| std::iter::once((p.x, p.y)).chain(p.units.iter().copied()));
+    points.fold(None, |b, (x, y)| {
+        let (x0, y0, x1, y1) = b.unwrap_or((x, y, x, y));
+        Some((x0.min(x), y0.min(y), x1.max(x), y1.max(y)))
+    })
 }
 
 /// Diameter of a landmark sticker, in pin design units.
@@ -1221,7 +1311,7 @@ mod tests {
         assert_eq!(r.id_map.style, RouteStyle::Islands);
         assert_eq!(r.jv_map.style, RouteStyle::Rail);
         assert!(r.jv.unverified());
-        // J5 Semarang rides the branch line.
+        // J5 rides the branch line back to Madiun.
         assert!(r.jv_map.segments.iter().any(|s| s.kind == SegmentKind::Branch));
         // Every level and its test have an id the player can open.
         for c in [&r.id, &r.jv] {
@@ -1268,21 +1358,12 @@ mod tests {
         // At the west edge the name goes east; in the north-east corner, west.
         assert_eq!(spots, [LabelSpot::East, LabelSpot::West]);
 
-        // The real maps, as drawn at the default zoom.
+        // The real maps, as drawn in their home view.
         let r = ROUTES.as_ref().unwrap();
         for (cur, map) in [(&r.id, &r.id_map), (&r.jv, &r.jv_map)] {
             let k = pin_scale(map);
-            let v = map.view;
-            let bounds = (v.x / k, v.y / k, (v.x + v.w) / k, (v.y + v.h) / k);
-            let pins: Vec<_> = cur
-                .levels
-                .iter()
-                .zip(map.pins.iter())
-                .map(|(l, p)| {
-                    let (x, y) = p.drawn_at(1.0);
-                    (x / k, y / k, short_place(l.place()).chars().count())
-                })
-                .collect();
+            let bounds = map_bounds(map);
+            let pins = design_pins(cur, map);
             let spots = map_label_spots(cur, map);
             let rects: Vec<_> = pins.iter().zip(&spots).map(|(&(x, y, n), s)| s.rect(x, y, n)).collect();
             for (i, a) in rects.iter().enumerate() {
@@ -1326,6 +1407,26 @@ mod tests {
         assert_eq!(bali.drawn_at(3.0), (bali.x, bali.y));
         assert!(nudge_style(bali).contains("--fade"));
         assert_eq!(nudge_style(r.id_map.pin("bipa1").unwrap()), "");
+    }
+
+    #[test]
+    fn home_view_holds_every_stop() {
+        let r = ROUTES.as_ref().unwrap();
+        for map in [&r.id_map, &r.jv_map] {
+            let (x0, y0, x1, y1) = stops_box(map).unwrap();
+            for p in &map.pins {
+                for (x, y) in std::iter::once((p.x, p.y)).chain(p.units.iter().copied()) {
+                    assert!(x >= x0 && x <= x1 && y >= y0 && y <= y1, "{} outside the home box", p.level_id);
+                }
+            }
+        }
+        // The Javanese line runs Jogja to Madiun only, so its home view is
+        // a close-up of Central Java, not the whole map frame.
+        let (x0, _, x1, _) = stops_box(&r.jv_map).unwrap();
+        assert!((x1 - x0) < r.jv_map.view.w / 1.5);
+        // No place name is drawn twice.
+        let names: BTreeSet<String> = r.jv.levels.iter().map(|l| short_place(l.place())).collect();
+        assert_eq!(names.len(), r.jv.levels.len(), "{names:?}");
     }
 
     #[test]

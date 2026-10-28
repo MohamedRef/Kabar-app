@@ -122,6 +122,10 @@ exercises:
     options: ["izin", "atasan", "kesiangan"]
     answer: 0
     words: [izin, atasan]
+    explain:
+      ar_eg: izin = إذن، وده اللي بتطلبه عشان تمشي بدري. atasan = المدير، وkesiangan = صحيت متأخر.
+      ar: izin = إذن، وهو ما تطلبه للانصراف مبكرًا. أما atasan فالرئيس، وkesiangan تأخر في الاستيقاظ.
+      en: izin means permission, which is what you ask for to leave early. atasan is your boss, and kesiangan is oversleeping.
   - id: e05
     type: fill_blank
     sentence: Saya bangun ___, jadi terlambat ke kantor.
@@ -132,6 +136,10 @@ exercises:
     options: [kesiangan, kehujanan, kecopetan]
     answers: [kesiangan]
     words: [kesiangan]
+    explain:
+      ar_eg: bangun kesiangan = صحيت متأخر، وده سبب التأخير. kehujanan = المطر نزل عليك، وkecopetan = اتنشلت.
+      ar: bangun kesiangan = استيقظ متأخرًا، وهذا سبب التأخر. أما kehujanan فأصابه المطر، وkecopetan نُشل.
+      en: bangun kesiangan means overslept, which is why you were late. kehujanan is getting caught in the rain, and kecopetan is being pickpocketed.
   - id: e06
     type: fill_blank
     sentence: Karena macet, saya ___ pesawat ke Jakarta.
@@ -142,6 +150,10 @@ exercises:
     options: [ketinggalan, kehujanan, kesiangan]
     answers: [ketinggalan]
     words: [ketinggalan]
+    explain:
+      ar_eg: ketinggalan pesawat = الطيارة فاتتك. kehujanan = المطر نزل عليك، وkesiangan = صحيت متأخر، ومش بيتقالوا مع pesawat.
+      ar: ketinggalan pesawat = فاتته الطائرة. أما kehujanan فأصابه المطر، وkesiangan تأخر في الاستيقاظ، ولا يقترنان بـ pesawat.
+      en: ketinggalan pesawat means you missed the plane. kehujanan is getting rained on and kesiangan is oversleeping; neither takes pesawat.
   - id: e07
     type: build_sentence
     source:
@@ -152,6 +164,10 @@ exercises:
     alternatives: ["Karena kecopetan, saya minta izin kepada atasan."]
     distractors: [ketinggalan, kehujanan]
     words: [izin, atasan, kecopetan]
+    explain:
+      ar_eg: «اتنشلت» = kecopetan، وminta izin kepada atasan = استأذنت من المدير. ketinggalan = فاتك أو نسيت حاجة، وkehujanan = المطر نزل عليك.
+      ar: «نُشلت» = kecopetan، وminta izin kepada atasan = استأذن رئيسه. أما ketinggalan ففاته شيء، وkehujanan أصابه المطر.
+      en: "\"Got pickpocketed\" is kecopetan, and minta izin kepada atasan is \"asked the boss for permission\". ketinggalan is missing or leaving something, and kehujanan is getting rained on."
   - id: e08
     type: translate
     direction: to_target
@@ -181,12 +197,12 @@ dialogue:
   title: Hari yang sial
   lines:
     - speaker: Mohamed
-      text: Mas Rizal, akhirnya datang! Ada apa?
+      text: Mas Rizal, akhirnya datang juga! Kenapa, Mas?
       ar_eg: يا مَس رزال، أخيرًا جيت! حصل إيه؟
       ar: يا ماس رزال، وصلتَ أخيرًا! ماذا حدث؟
       en: Mas Rizal, you're finally here! What happened?
     - speaker: Mas Rizal
-      text: Maaf, saya bangun kesiangan, lalu ketinggalan pete-pete.
+      text: Maaf, aku bangun kesiangan, terus ketinggalan pete-pete.
       ar_eg: آسف، صحيت متأخر، وبعدين الميكروباص فاتني.
       ar: آسف، تأخرت في النوم ثم فاتتني الحافلة.
       en: Sorry, I overslept, and then I missed the minibus.
@@ -196,17 +212,17 @@ dialogue:
       ar: ثيابك مبللة! هل أصابك المطر أيضًا؟
       en: Wow, your clothes are wet. Caught in the rain too?
     - speaker: Mas Rizal
-      text: Iya! Untung saya sudah minta izin kepada atasan.
+      text: Iya! Untung aku udah minta izin ke atasan.
       ar_eg: أيوه! الحمد لله إني استأذنت من المدير.
       ar: نعم! ولحسن الحظ استأذنتُ رئيسي.
       en: Yes! Luckily I'd already asked my boss for permission.
     - speaker: Mohamed
-      text: Yang penting kamu tidak kecopetan, Mas!
+      text: Untung kamu nggak kecopetan, Mas!
       ar_eg: المهم إنك ما اتنشلتش!
       ar: المهم أنك لم تتعرض للنشل!
       en: The main thing is you didn't get pickpocketed!
     - speaker: Mas Rizal
-      text: Betul. Dompet saya masih aman.
+      text: Bener. Dompetku masih aman kok.
       ar_eg: صح. المحفظة لسه في أمان.
       ar: صحيح. محفظتي ما زالت في أمان.
       en: True. My wallet is still safe.

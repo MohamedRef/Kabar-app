@@ -13,10 +13,15 @@ pub enum Theme {
     /// Follows the OS: [`Theme::Light`] by day, [`Theme::Dark`] by night.
     #[default]
     System,
+    /// Follows the OS: [`Theme::Light`] by day, [`Theme::Black`] by night.
+    #[serde(rename = "system-black")]
+    SystemBlack,
     /// Paper: warm off-white.
     Light,
     /// Merapi: black volcanic sand.
     Dark,
+    /// Gerhana (eclipse): true black, so OLED pixels switch off.
+    Black,
     /// Malam: very dark and warm, low blue light, for studying at night.
     Night,
     /// Batik: deep indigo.
@@ -26,14 +31,25 @@ pub enum Theme {
 }
 
 impl Theme {
-    pub const ALL: [Self; 6] = [Self::System, Self::Light, Self::Dark, Self::Night, Self::Batik, Self::Sawah];
+    pub const ALL: [Self; 8] = [
+        Self::System,
+        Self::SystemBlack,
+        Self::Light,
+        Self::Dark,
+        Self::Black,
+        Self::Night,
+        Self::Batik,
+        Self::Sawah,
+    ];
 
     /// Stable id: stored in settings, synced, and used as `data-theme`.
     pub fn as_str(self) -> &'static str {
         match self {
             Self::System => "system",
+            Self::SystemBlack => "system-black",
             Self::Light => "light",
             Self::Dark => "dark",
+            Self::Black => "black",
             Self::Night => "night",
             Self::Batik => "batik",
             Self::Sawah => "sawah",
@@ -56,6 +72,76 @@ pub enum PronMode {
 
 impl PronMode {
     pub const ALL: [Self; 3] = [Self::On, Self::Tap, Self::Off];
+}
+
+/// The sound for a right answer. Each is a synthesized file,
+/// `assets/sounds/<id>.wav` (`scripts/assets/synth_sounds.py`).
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub enum CorrectSound {
+    /// Two soft rising notes (picked by ear, 2026-10-27).
+    #[default]
+    #[serde(rename = "ding-1")]
+    Ding1,
+    /// A bright bell, a fifth up.
+    #[serde(rename = "ding-2")]
+    Ding2,
+    /// Three quick saron notes.
+    #[serde(rename = "ding-3")]
+    Ding3,
+    /// A round kendang "dhung".
+    #[serde(rename = "kendang-1")]
+    Kendang1,
+    /// A lower kendang with more bend.
+    #[serde(rename = "kendang-2")]
+    Kendang2,
+    /// A tight kendang "tak".
+    #[serde(rename = "kendang-3")]
+    Kendang3,
+}
+
+impl CorrectSound {
+    pub const ALL: [Self; 6] =
+        [Self::Ding1, Self::Ding2, Self::Ding3, Self::Kendang1, Self::Kendang2, Self::Kendang3];
+
+    /// The sound file's stem, also its stored value.
+    pub fn id(self) -> &'static str {
+        match self {
+            Self::Ding1 => "ding-1",
+            Self::Ding2 => "ding-2",
+            Self::Ding3 => "ding-3",
+            Self::Kendang1 => "kendang-1",
+            Self::Kendang2 => "kendang-2",
+            Self::Kendang3 => "kendang-3",
+        }
+    }
+}
+
+/// The gong when a lesson ends (`assets/sounds/<id>.wav`).
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub enum EndSound {
+    /// Warm, the classic.
+    #[serde(rename = "gong-1")]
+    Gong1,
+    /// Deeper and darker.
+    #[serde(rename = "gong-2")]
+    Gong2,
+    /// Smaller and brighter (picked by ear, 2026-10-27).
+    #[default]
+    #[serde(rename = "gong-3")]
+    Gong3,
+}
+
+impl EndSound {
+    pub const ALL: [Self; 3] = [Self::Gong1, Self::Gong2, Self::Gong3];
+
+    /// The sound file's stem, also its stored value.
+    pub fn id(self) -> &'static str {
+        match self {
+            Self::Gong1 => "gong-1",
+            Self::Gong2 => "gong-2",
+            Self::Gong3 => "gong-3",
+        }
+    }
 }
 
 /// The share of reviews FSRS aims to have remembered, in percent.
@@ -107,6 +193,13 @@ pub struct Settings {
     pub welcomed: bool,
     /// Lesson and review sounds are off (SPEC §9: toggleable, on by default).
     pub sounds_off: bool,
+    /// The sound for a right answer.
+    pub correct_sound: CorrectSound,
+    /// The gong when a lesson ends.
+    pub end_sound: EndSound,
+    /// A light vibration on answers and at the end of a lesson is off
+    /// (phones and tablets that have a motor; on by default).
+    pub haptics_off: bool,
     /// Arabic-script pronunciation next to target-language text.
     pub pronunciation: PronMode,
     /// FSRS desired retention (Settings → "How firmly to remember words"; 90%).
@@ -129,6 +222,9 @@ pub mod keys {
     pub const EASTERN_DIGITS: &str = "eastern_digits";
     pub const WELCOMED: &str = "welcomed";
     pub const SOUNDS_OFF: &str = "sounds_off";
+    pub const CORRECT_SOUND: &str = "correct_sound";
+    pub const END_SOUND: &str = "end_sound";
+    pub const HAPTICS_OFF: &str = "haptics_off";
     pub const PRONUNCIATION: &str = "pronunciation";
     pub const DESIRED_RETENTION: &str = "desired_retention";
     pub const FSRS_PARAMS: &str = "fsrs_params";
@@ -149,6 +245,9 @@ impl Settings {
                 keys::EASTERN_DIGITS => s.eastern_digits = serde_json::from_str(value).unwrap_or_default(),
                 keys::WELCOMED => s.welcomed = serde_json::from_str(value).unwrap_or_default(),
                 keys::SOUNDS_OFF => s.sounds_off = serde_json::from_str(value).unwrap_or_default(),
+                keys::CORRECT_SOUND => s.correct_sound = serde_json::from_str(value).unwrap_or_default(),
+                keys::END_SOUND => s.end_sound = serde_json::from_str(value).unwrap_or_default(),
+                keys::HAPTICS_OFF => s.haptics_off = serde_json::from_str(value).unwrap_or_default(),
                 keys::PRONUNCIATION => s.pronunciation = serde_json::from_str(value).unwrap_or_default(),
                 keys::DESIRED_RETENTION => {
                     s.desired_retention = serde_json::from_str(value).unwrap_or_default()
@@ -180,6 +279,9 @@ impl Settings {
         push(self.eastern_digits != other.eastern_digits, keys::EASTERN_DIGITS, json(&other.eastern_digits));
         push(self.welcomed != other.welcomed, keys::WELCOMED, json(&other.welcomed));
         push(self.sounds_off != other.sounds_off, keys::SOUNDS_OFF, json(&other.sounds_off));
+        push(self.correct_sound != other.correct_sound, keys::CORRECT_SOUND, json(&other.correct_sound));
+        push(self.end_sound != other.end_sound, keys::END_SOUND, json(&other.end_sound));
+        push(self.haptics_off != other.haptics_off, keys::HAPTICS_OFF, json(&other.haptics_off));
         push(self.pronunciation != other.pronunciation, keys::PRONUNCIATION, json(&other.pronunciation));
         push(
             self.desired_retention != other.desired_retention,
@@ -273,6 +375,28 @@ mod tests {
         let pairs = Settings::default().changed_pairs(&new);
         assert_eq!(pairs, vec![("grammar_hints_off", "true".to_string())]);
         assert_eq!(Settings::from_pairs(pairs.iter().map(|(k, v)| (*k, v.as_str()))), new);
+    }
+
+    #[test]
+    fn sound_choices_store_their_file_names() {
+        let s = Settings::default();
+        assert_eq!(
+            (s.correct_sound, s.end_sound, s.haptics_off),
+            (CorrectSound::Ding1, EndSound::Gong3, false)
+        );
+        let new = Settings { correct_sound: CorrectSound::Kendang2, end_sound: EndSound::Gong1, ..s.clone() };
+        let pairs = s.changed_pairs(&new);
+        assert_eq!(
+            pairs,
+            vec![("correct_sound", "\"kendang-2\"".to_string()), ("end_sound", "\"gong-1\"".to_string())]
+        );
+        assert_eq!(Settings::from_pairs(pairs.iter().map(|(k, v)| (*k, v.as_str()))), new);
+        for c in CorrectSound::ALL {
+            assert_eq!(json(&c), format!("\"{}\"", c.id()));
+        }
+        for e in EndSound::ALL {
+            assert_eq!(json(&e), format!("\"{}\"", e.id()));
+        }
     }
 
     #[test]

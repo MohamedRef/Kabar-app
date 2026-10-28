@@ -1,0 +1,172 @@
+schema: kabar.lesson/v1
+id: j3.u04.l08
+language: jv
+title: Papan ing Pura
+can_do:
+  ar_eg: تقرا لافتة بالكراما في القصر وتسأل الحارس عن الطريق بأدب.
+  ar: أن تقرأ لافتة بالكراما في القصر وتسأل الحارس عن الطريق بأدب.
+  en: Read a krama sign at the palace and ask the guard the way politely.
+slides:
+  - title: Papan ing lawang Pura
+    body:
+      ar_eg: |
+        على باب Pura Pakualaman فيه لافتة للزوار. اقراها:
+        lurus kemawon = امشي على طول، lajeng = بعد كده، mboten kepareng = ممنوع (مش مسموح).
+      ar: |
+        على باب Pura Pakualaman لافتة للزوار. اقرأها:
+        lurus kemawon = امشِ مستقيمًا، وlajeng = ثم، وmboten kepareng = ممنوع (غير مسموح).
+      en: |
+        At the gate of Pura Pakualaman there is a sign for visitors. Read it:
+        lurus kemawon = just go straight, lajeng = then, mboten kepareng = not allowed.
+    examples:
+      - text: Sugeng rawuh ing Pura Pakualaman.
+        ar_eg: أهلًا وسهلًا في قصر Pakualaman.
+        ar: مرحبًا بكم في قصر Pakualaman.
+        en: Welcome to Pura Pakualaman.
+      - text: "Pendhapa: saking mriki lurus kemawon, lajeng nengen."
+        ar_eg: "الـ Pendhapa: من هنا على طول، وبعدين يمين."
+        ar: "الـ Pendhapa: من هنا مستقيمًا، ثم يمينًا."
+        en: "Pendhapa: from here just go straight, then turn right."
+      - text: Nyuwun sewu, mboten kepareng nedha ing pendhapa.
+        ar_eg: لا مؤاخذة، ممنوع الأكل في الـ pendhapa.
+        ar: عفوًا، لا يُسمح بالأكل في الـ pendhapa.
+        en: Sorry, no eating in the pendhapa.
+    grammar: jv.krama.questions
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) إزاي توصل للـ pendhapa؟
+      ar: (من اللافتة) كيف تصل إلى الـ pendhapa؟
+      en: (from the sign) How do you get to the pendhapa?
+    options: ["lurus, lajeng ngiwa", "nengen, lajeng lurus", "lurus, lajeng nengen"]
+    answer: 2
+    words: [lajeng, mriki]
+    explain:
+      ar_eg: اللافتة بتقول «lurus kemawon, lajeng nengen» = على طول وبعدين يمين. ngiwa = شمال، ومش هي.
+      ar: تقول اللافتة «lurus kemawon, lajeng nengen» أي مباشرة ثم يمينًا. أما ngiwa فيسارًا، وليست هي.
+      en: "The sign says \"lurus kemawon, lajeng nengen\": straight on, then right. ngiwa is \"left\", which isn't it."
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) إيه الممنوع في الـ pendhapa؟
+      ar: (من اللافتة) ما الممنوع في الـ pendhapa؟
+      en: (from the sign) What can't you do in the pendhapa?
+    options: [mlampah, nedha, taken]
+    answer: 1
+    words: [kepareng, nedha, pendhapa]
+    explain:
+      ar_eg: «mboten kepareng nedha» = ممنوع الأكل. المشي (mlampah) والسؤال (taken) مسموحين.
+      ar: «mboten kepareng nedha» أي ممنوع الأكل. أما المشي (mlampah) والسؤال (taken) فمسموحان.
+      en: "\"mboten kepareng nedha\": no eating. Walking (mlampah) and asking (taken) are fine."
+  - id: e03
+    type: listen
+    text: Nyuwun sewu, Mas, mboten kepareng nedha ing pendhapa.
+    question:
+      ar_eg: الحارس قال لمحمد إيه؟ محمد يقدر ياكل في الـ pendhapa؟
+      ar: ماذا قال الحارس لمحمد؟ هل يستطيع الأكل في الـ pendhapa؟
+      en: What did the guard tell Mohamed? Can he eat in the pendhapa?
+    options: [Kepareng, Mboten kepareng]
+    answer: 1
+    meaning:
+      ar_eg: لا مؤاخذة يا أستاذ، ممنوع الأكل في الـ pendhapa.
+      ar: عفوًا يا أخي، لا يُسمح بالأكل في الـ pendhapa.
+      en: Sorry, you can't eat in the pendhapa.
+    words: [mboten, kepareng]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: Sugeng rawuh
+        ar_eg: أهلًا وسهلًا
+        ar: مرحبًا بكم
+        en: Welcome
+      - text: lurus kemawon
+        ar_eg: على طول بس
+        ar: مستقيمًا فقط
+        en: just straight on
+      - text: lajeng nengen
+        ar_eg: وبعدين يمين
+        ar: ثم يمينًا
+        en: then turn right
+      - text: mboten kepareng
+        ar_eg: ممنوع / مش مسموح
+        ar: غير مسموح
+        en: not allowed
+    words: [kemawon, lajeng, kepareng]
+  - id: e05
+    type: fill_blank
+    sentence: Saking mriki lurus ___, lajeng nengen.
+    meaning:
+      ar_eg: من هنا على طول، وبعدين يمين.
+      ar: من هنا مستقيمًا، ثم يمينًا.
+      en: From here just go straight, then turn right.
+    options: [wae, sanget, kemawon]
+    answers: [kemawon]
+    explain:
+      ar_eg: '«بس / وخلاص» بالكراما kemawon (في الكلام mawon). wae نغوكو، وsanget معناها «جدًا».'
+      ar: '«فقط» بالكراما kemawon (وفي الكلام mawon)؛ wae من الـ ngoko، وsanget تعني «جدًا».'
+      en: '"Just" in krama is kemawon (spoken mawon). wae is ngoko; sanget means "very".'
+    words: [kemawon]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'اسأل الحارس: لا مؤاخذة يا حاج، الـ pendhapa فين؟'
+      ar: 'اسأل الحارس: عفوًا يا سيدي، أين الـ pendhapa؟'
+      en: "Ask the guard: Excuse me, sir, where is the pendhapa?"
+    answers: ["Nyuwun sewu, Pak, pendhapa ing pundi?", "Nyuwun sewu, Pak, pendhapanipun ing pundi?", "Nyuwun sewu, pendhapa ing pundi, Pak?", "Nyuwun sewu, Pak, pendhapa wonten pundi?", "Nyuwun sewu, Pak, pendhapa wonten ing pundi?"]
+    explain:
+      ar_eg: 'فين = ing pundi (ngendi بالنغوكو). وابدأ دايمًا بـ Nyuwun sewu.'
+      ar: 'أين = ing pundi (وبالنغوكو ngendi)، وابدأ دائمًا بـ Nyuwun sewu.'
+      en: 'Where = ing pundi (ngoko ngendi). Always open with Nyuwun sewu.'
+    words: [nyuwun sewu, pundi, pendhapa]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: أقدر أمشي لحد الـ pendhapa.
+      ar: أستطيع المشي إلى الـ pendhapa.
+      en: I can walk to the pendhapa.
+    answer: Kula saged mlampah dhateng pendhapa.
+    distractors: [isa, neng]
+    explain:
+      ar_eg: 'saged = isa (يقدر)، mlampah = mlaku (يمشي)، dhateng = neng.'
+      ar: 'saged = isa (يستطيع)، وmlampah = mlaku (يمشي)، وdhateng = neng.'
+      en: 'saged = isa (can), mlampah = mlaku (walk), dhateng = neng.'
+    words: [saged, mlampah, dhateng]
+dialogue:
+  title: Ing lawang Pura
+  lines:
+    - speaker: Mohamed
+      text: Nyuwun sewu, Pak Wiryo. Pendhapa ing pundi?
+      ar_eg: لا مؤاخذة يا Pak Wiryo. الـ pendhapa فين؟
+      ar: عفوًا يا Pak Wiryo. أين الـ pendhapa؟
+      en: Excuse me, Pak Wiryo. Where is the pendhapa?
+    - speaker: Pak Wiryo
+      text: "Saking mriki lurus mawon, mangke nengen, Mas."
+      ar_eg: "من هنا على طول، وبعدين يمين يا أستاذ."
+      ar: "من هنا امشِ مستقيمًا، ثم يمينًا."
+      en: "From here just go straight, then right."
+    - speaker: Mohamed
+      text: Tebih, Pak?
+      ar_eg: بعيد يا حاج؟
+      ar: هل هو بعيد يا سيدي؟
+      en: Is it far, sir?
+    - speaker: Pak Wiryo
+      text: Mboten, celak kemawon. Nanging mboten kepareng nedha ing pendhapa, nggih.
+      ar_eg: لأ، قريب. بس ممنوع الأكل في الـ pendhapa، ماشي؟
+      ar: لا، قريب. لكن لا يُسمح بالأكل في الـ pendhapa، حسنًا؟
+      en: No, it's close. But no eating in the pendhapa, all right?
+    - speaker: Mohamed
+      text: Inggih, Pak. Matur nuwun sanget.
+      ar_eg: حاضر يا حاج. شكرًا جدًا.
+      ar: حاضر يا سيدي. شكرًا جزيلًا.
+      en: Of course, sir. Thank you very much.
+new_words:
+  - word: kepareng
+    pos: verb
+    ar_eg: 'مسموح (oleh ← boleh)، كراما إنغيل. على اللافتات: mboten kepareng = ممنوع'
+    ar: 'مسموح (oleh ← boleh)، كراما إنغيل. على اللافتات: mboten kepareng = ممنوع'
+    en: 'allowed, may (ngoko oleh, Indonesian boleh), krama inggil. On signs, mboten kepareng = not allowed'
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,199 @@
+schema: kabar.lesson/v1
+id: bipa3.u06.l09
+language: id
+title: Balasan dari hotel
+can_do:
+  ar_eg: تقرا رد الفندق الرسمي على شكوتك وتفهم هيعملوا إيه.
+  ar: أن تقرأ ردّ الفندق الرسمي على شكواك وتفهم ما سيفعلونه.
+  en: Read a hotel's formal reply to your complaint and see what they'll do.
+slides:
+  - title: Email dari Hotel Mandalika Indah
+    grammar: id.prefix.se
+    body:
+      ar_eg: |
+        محمد وصله رد على إيميل الشكوى. اقراه زي ما بتقرا جواب رسمي:
+        مين كاتب؟ المشكلة بقالها قد إيه؟ اتصلحت إمتى؟ والفندق هيعمل إيه عشان يصالحه؟
+        جديد صغير: الشركة بتمضي «Hormat kami» (احترامنا) بدل «Hormat saya».
+      ar: |
+        وصل محمدًا ردٌّ على بريد الشكوى. اقرأه كما تقرأ رسالة رسمية:
+        من الكاتب؟ منذ متى المشكلة؟ متى أُصلحت؟ وماذا سيفعل الفندق لإرضائه؟
+        ملاحظة صغيرة: المؤسسة توقّع «Hormat kami» (مع احترامنا) بدل «Hormat saya».
+      en: |
+        Mohamed got a reply to his complaint email. Read it like a formal letter:
+        who wrote it? How long was the problem there? When was it fixed? What will the hotel do to make up for it?
+        One small new thing: a company signs off "Hormat kami" (yours faithfully, from us) instead of "Hormat saya".
+    examples:
+      - text: Yth. Bapak Mohamed, terima kasih atas email Bapak tentang kamar 12. Mohon maaf atas masalah ini.
+        ar_eg: الأستاذ محمد المحترم، شكرًا على إيميل حضرتك عن أوضة ١٢. بنعتذر عن المشكلة دي.
+        ar: السيد محمد المحترم، شكرًا على بريدك بشأن الغرفة ١٢، ونعتذر عن هذه المشكلة.
+        en: Dear Mr Mohamed, thank you for your email about room 12. We apologise for this problem.
+      - text: Sebenarnya, AC di kamar itu rusak sejak hari Senin. Petugas kami sudah memperbaikinya kemarin.
+        ar_eg: الحقيقة، التكييف في الأوضة دي كان بايظ من يوم الاتنين. الفني بتاعنا صلّحه امبارح.
+        ar: في الحقيقة، كان المكيّف في تلك الغرفة معطّلًا منذ يوم الإثنين، وقد أصلحه موظّفنا أمس.
+        en: In fact, the AC in that room had been broken since Monday. Our staff fixed it yesterday.
+      - text: Pihak hotel akan mengembalikan uang Bapak untuk satu malam. Hormat kami, Wulan, Manajer Hotel Mandalika Indah.
+        ar_eg: الفندق هيرجّع لحضرتك فلوس ليلة واحدة. مع احترامنا، وولان، مديرة فندق ماندليكا إنداه.
+        ar: سيُعيد الفندق إليك ثمن ليلة واحدة. مع احترامنا، وولان، مديرة فندق ماندليكا إنداه.
+        en: The hotel will refund you for one night. Yours faithfully, Wulan, Manager, Hotel Mandalika Indah.
+exercises:
+  - id: e01
+    type: listen
+    text: Mohon maaf atas masalah ini.
+    options: ["Mohon maaf atas masalah ini.", "Mohon maklum atas masalah ini.", "Mohon maaf sebelumnya."]
+    answer: 0
+    meaning:
+      ar_eg: بنعتذر عن المشكلة دي.
+      ar: نعتذر عن هذه المشكلة.
+      en: We apologise for this problem.
+    words: [masalah]
+  - id: e02
+    type: listen
+    text: Sebenarnya, AC di kamar itu rusak sejak hari Senin.
+    question:
+      ar_eg: التكييف بايظ من إمتى؟
+      ar: منذ متى المكيّف معطّل؟
+      en: Since when has the AC been broken?
+    options: ["Sejak kemarin.", "Sejak hari Senin.", "Sejak seminggu yang lalu."]
+    answer: 1
+    meaning:
+      ar_eg: الحقيقة، التكييف في الأوضة دي كان بايظ من يوم الاتنين.
+      ar: في الحقيقة، كان المكيّف في تلك الغرفة معطّلًا منذ يوم الإثنين.
+      en: In fact, the AC in that room had been broken since Monday.
+    words: [sebenarnya, rusak]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الفندق هيعمل إيه عشان محمد؟
+      ar: ماذا سيفعل الفندق من أجل محمد؟
+      en: What will the hotel do for Mohamed?
+    options: ["Memberi dia kamar baru.", "Memindahkan dia ke hotel lain.", "Mengembalikan uangnya untuk satu malam."]
+    answer: 2
+    words: [mengembalikan]
+    explain:
+      ar_eg: "الجواب بيقول mengembalikan uang Bapak untuk satu malam: هيرجّعوا فلوس ليلة. مفيش أوضة جديدة ولا نقل لفندق تاني."
+      ar: "تقول الرسالة mengembalikan uang Bapak untuk satu malam: سيردّون ثمن ليلة. ولا ذكر لغرفة جديدة أو نقل إلى فندق آخر."
+      en: "The letter says mengembalikan uang Bapak untuk satu malam: a refund for one night. No new room or other hotel is offered."
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين اللي كتب الرد؟
+      ar: مَن كتب الردّ؟
+      en: Who wrote the reply?
+    options: ["Seorang petugas AC.", "Manajer hotel.", "Seorang tamu di kamar 12."]
+    answer: 1
+    explain:
+      ar_eg: آخر سطر «Hormat kami, Wulan, Manajer Hotel Mandalika Indah».
+      ar: في السطر الأخير «Hormat kami, Wulan, Manajer Hotel Mandalika Indah».
+      en: 'The last line says "Hormat kami, Wulan, Manajer Hotel Mandalika Indah".'
+    words: [hormat]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: sebenarnya
+        ar_eg: الحقيقة
+        ar: في الحقيقة
+        en: actually, in fact
+      - text: memperbaiki
+        ar_eg: يصلّح
+        ar: يُصلح
+        en: to repair
+      - text: mengembalikan
+        ar_eg: يرجّع
+        ar: يُعيد
+        en: to give back
+      - text: pihak hotel
+        ar_eg: إدارة الفندق
+        ar: إدارة الفندق
+        en: the hotel (management)
+      - text: Hormat kami
+        ar_eg: مع احترامنا (توقيع شركة)
+        ar: مع احترامنا (توقيع مؤسسة)
+        en: yours faithfully (from a company)
+    words: [sebenarnya, memperbaiki, mengembalikan, pihak, hormat]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: التكييف اتصلّح إمتى؟
+      ar: متى أُصلح المكيّف؟
+      en: When was the AC fixed?
+    options: ["Hari Senin.", "Kemarin.", "Besok."]
+    answer: 1
+    words: [memperbaiki]
+    explain:
+      ar_eg: الجواب بيقول Petugas kami sudah memperbaikinya kemarin. يوم الاتنين ده لما باظ، وbesok = بكرة.
+      ar: تقول الرسالة Petugas kami sudah memperbaikinya kemarin. أما يوم الإثنين فبداية العطل، وbesok «غدًا».
+      en: The letter says Petugas kami sudah memperbaikinya kemarin. Monday is when it broke, and besok means tomorrow.
+  - id: e07
+    type: fill_blank
+    sentence: Petugas kami sudah ___ AC-nya kemarin.
+    meaning:
+      ar_eg: الفني بتاعنا صلّح التكييف امبارح.
+      ar: أصلح موظّفنا المكيّف أمس.
+      en: Our staff fixed the AC yesterday.
+    options: [memperbaiki, mengembalikan, menyampaikan]
+    answers: [memperbaiki]
+    words: [memperbaiki]
+    explain:
+      ar_eg: «صلّح» = memperbaiki. mengembalikan = يرجّع، وmenyampaikan = يوصّل كلام أو شكوى.
+      ar: «أصلح» memperbaiki. أما mengembalikan فـ«يُعيد»، وmenyampaikan «يبلّغ كلامًا أو شكوى».
+      en: Fixed is memperbaiki. mengembalikan means to give back and menyampaikan to pass on a message or complaint.
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: شكرًا على إيميل حضرتك عن أوضة ١٢.
+      ar: شكرًا على بريدك بشأن الغرفة ١٢.
+      en: Thank you for your email about room 12.
+    answer: Terima kasih atas email Bapak tentang kamar 12.
+    distractors: [kepada, dengan]
+    words: [atas, tentang]
+    explain:
+      ar_eg: «شكرًا على» = Terima kasih atas، وبعدها email Bapak tentang kamar 12. kepada للشخص، وdengan مالهاش مكان.
+      ar: «شكرًا على» Terima kasih atas، ثم email Bapak tentang kamar 12. أما kepada فللشخص، ولا موضع لـdengan.
+      en: "\"Thanks for\" is Terima kasih atas, then email Bapak tentang kamar 12. kepada is for a person and dengan doesn't fit."
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الفندق هيرجّع فلوسي لليلة واحدة.
+      ar: سيُعيد الفندق إليّ مالي عن ليلة واحدة.
+      en: The hotel will give my money back for one night.
+    answers:
+      - Pihak hotel akan mengembalikan uang saya untuk satu malam.
+      - Pihak hotel akan mengembalikan uang saya untuk satu malam
+      - Hotel akan mengembalikan uang saya untuk satu malam.
+      - Hotel akan mengembalikan uang saya untuk satu malam
+      - Pihak hotel akan mengembalikan uang saya untuk semalam.
+      - Hotel akan mengembalikan uang saya untuk semalam.
+      - Hotel itu akan mengembalikan uang saya untuk satu malam.
+    words: [pihak, mengembalikan]
+dialogue:
+  title: Di lobi hotel
+  lines:
+    - speaker: Mohamed
+      text: Mbak, saya sudah membaca email dari Bu Wulan. Terima kasih.
+      ar_eg: يا آنسة، قريت الإيميل من مدام وولان. شكرًا.
+      ar: يا آنسة، قرأت البريد من السيدة وولان. شكرًا.
+      en: Miss, I've read the email from Bu Wulan. Thank you.
+    - speaker: Resepsionis
+      text: Sama-sama, Pak. Sebenarnya, AC-nya sudah rusak sejak hari Senin. Mohon maaf, ya.
+      ar_eg: العفو يا فندم. الحقيقة التكييف كان بايظ من يوم الاتنين. معلش بقى.
+      ar: عفوًا يا سيدي. في الحقيقة كان المكيّف معطّلًا منذ الإثنين. نعتذر.
+      en: You're welcome, sir. Actually, the AC had been broken since Monday. We're sorry.
+    - speaker: Mohamed
+      text: Tidak apa-apa. Sekarang kamarnya sejuk sekali.
+      ar_eg: ولا يهمك. دلوقتي الأوضة ساقعة وحلوة جدًا.
+      ar: لا بأس. الغرفة الآن باردة ولطيفة جدًا.
+      en: No problem. The room is nice and cool now.
+    - speaker: Resepsionis
+      text: Syukurlah. Pihak hotel juga sudah mengembalikan uang Bapak untuk satu malam.
+      ar_eg: الحمد لله. والفندق كمان رجّع لحضرتك فلوس ليلة.
+      ar: الحمد لله. وقد أعاد الفندق إليك أيضًا ثمن ليلة واحدة.
+      en: Thank goodness. The hotel has also given you back the money for one night.
+    - speaker: Mohamed
+      text: Terima kasih banyak. Sekarang kamar saya sesuai dengan foto di internet!
+      ar_eg: متشكر جدًا. دلوقتي أوضتي بقت زي الصور اللي على النت بالظبط!
+      ar: شكرًا جزيلًا. الآن صارت غرفتي مطابقة للصور على الإنترنت!
+      en: Thank you very much. Now my room matches the photos online!
+review:
+  status: draft
+  verified: false

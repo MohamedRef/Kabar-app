@@ -13,14 +13,23 @@ slides:
         - أفعال ber- بتفضل زي ما هي: Berdiri! = قوم اقف! Berhenti! = اقف (بطّل)! Berlari di tempat! = اجري في مكانك!
         - الكلمات اللي من غير بادئة كمان: Duduk! = اقعد! Lompat! = نُط!
         وفي التمارين بيعدّوا: Lompat tiga kali! = نُط تلات مرات!
+        في الشارع بيقولوا:
+        - kayak gini = seperti ini (كده، زي كده)
+        - aku و-ku = saya (أنا، ـي) مع الأصحاب واللي في سنك؛ مع الكبار والغُرب saya
       ar: |
         - أفعال ber- تبقى كما هي: Berdiri! = قِف! Berhenti! = توقّف! Berlari di tempat! = اركض في مكانك!
         - والأفعال المجردة أيضًا: Duduk! = اجلس! Lompat! = اقفز!
         ويكثر العدّ في التمارين: Lompat tiga kali! = اقفز ثلاث مرات!
+        في كلام الشارع:
+        - kayak gini = seperti ini (هكذا، مثل هذا)
+        - aku و-ku = saya (أنا، ـي) مع الأصدقاء والأقران؛ ومع الكبار والغرباء saya
       en: |
         - ber- verbs keep ber-: Berdiri! = Stand up! Berhenti! = Stop! Berlari di tempat! = Run on the spot!
         - Bare roots stay too: Duduk! = Sit! Lompat! = Jump!
         Workouts count a lot: Lompat tiga kali! = Jump three times!
+        On the street:
+        - kayak gini = seperti ini (like this)
+        - aku / -ku = saya (I, my) with friends and people your age; saya with elders and strangers
     grammar: id.imperative.basic
     examples:
       - text: Berdiri, lalu lompat tiga kali.
@@ -75,6 +84,10 @@ exercises:
     options: [Berangkat, Mengangkat, Angkat]
     answers: [Angkat]
     words: [angkat, turunkan]
+    explain:
+      ar_eg: "الأمر بالجذر: Angkat. Mengangkat وصف، وBerangkat = يمشي/يسافر، كلمة تانية خالص."
+      ar: "الأمر بالجذر: Angkat. أما Mengangkat فوصف، وBerangkat «يغادر» كلمة أخرى."
+      en: "The command is the root: Angkat. Mengangkat describes; Berangkat (set off) is another word."
   - id: e03
     type: fill_blank
     sentence: Jangan takut. Sekarang ___ dan berlari di tempat.
@@ -85,6 +98,10 @@ exercises:
     options: [mendiri, berdiri, duduk]
     answers: [berdiri]
     words: [berdiri, takut, tempat]
+    explain:
+      ar_eg: berdiri = يقف، والفعل ده جذره diri ودايمًا بـ ber-. «mendiri» مش كلمة، وduduk = يقعد.
+      ar: berdiri = يقف، دائمًا بـ ber-. و«mendiri» ليست كلمة، أما duduk فـ«يجلس».
+      en: berdiri (stand) always takes ber-. "mendiri" isn't a word; duduk means sit.
   - id: e04
     type: build_sentence
     source:
@@ -94,6 +111,10 @@ exercises:
     answer: Berdiri, lalu lompat di tempat tiga kali.
     distractors: [duduk, melompat]
     words: [berdiri, lompat, tempat]
+    explain:
+      ar_eg: Berdiri وlompat أوامر، وبينهم lalu. duduk = اقعد، وmelompat مش صيغة أمر.
+      ar: Berdiri وlompat أمران بينهما lalu. أما duduk فـ«اجلس» وmelompat ليست صيغة أمر.
+      en: Berdiri and lompat are commands joined by lalu. duduk is sit; melompat isn't the command form.
   - id: e05
     type: translate
     direction: to_target
@@ -114,31 +135,36 @@ exercises:
     words: [putar, bahu]
   - id: e07
     type: speaking
-    text: Lihat ke depan, lalu lompat di tempat. Jangan takut!
+    text: Lihat ke depan, lalu lompat di tempat kayak gini. Jangan takut!
     meaning:
-      ar_eg: بُص قدامك، وبعدين نُط في مكانك. ماتخافش!
-      ar: انظر إلى الأمام، ثم اقفز في مكانك. لا تخف!
-      en: Look ahead, then jump on the spot. Don't be afraid!
-    words: [lihat, lompat, tempat, takut]
+      ar_eg: بُص قدامك، وبعدين نُط في مكانك كده. ماتخافش!
+      ar: انظر إلى الأمام، ثم اقفز في مكانك هكذا. لا تخف!
+      en: Look ahead, then jump on the spot like this. Don't be afraid!
+    words: [lihat, lompat, tempat, kayak, takut]
   - id: e08
     type: listen
-    text: Putar kepala, lalu lompat.
-    options: ['Putar kepala, lalu lompat.', 'Lihat kepala, lalu lompat.', 'Putar kepala, lalu berdiri.']
+    text: Putar kepala kayak gini, lalu lompat.
+    options: ['Putar kepala kayak gini, lalu lompat.', 'Lihat kepala kayak gini, lalu lompat.', 'Putar kepala kayak gini, lalu berdiri.']
     answer: 0
     meaning:
-      ar_eg: لِف راسك، وبعدين نُط.
-      ar: أدِر رأسك، ثم اقفز.
-      en: Turn your head, then jump.
-    words: [putar, lompat, lihat, berdiri]
+      ar_eg: لِف راسك كده، وبعدين نُط.
+      ar: أدِر رأسك هكذا، ثم اقفز.
+      en: Turn your head like this, then jump.
+    words: [putar, kayak, lompat, lihat, berdiri]
   - id: e09
     type: multiple_choice
+    question: ___ gini, Mas?
     question_meaning:
-      ar_eg: أنهي كلمة معناها «نُط»؟
-      ar: أيّ كلمة تعني «اقفز»؟
-      en: Which word means "jump"?
-    options: [putar, turunkan, lompat]
-    answer: 2
-    words: [lompat, putar, turunkan]
+      ar_eg: "محمد بيعمل الحركة ويسأل المدرّب: «كده يا كابتن؟»"
+      ar: "يؤدي محمد الحركة ويسأل المدرّب: «هكذا يا أستاذ؟»"
+      en: Mohamed does the move and asks the coach, "Like this, Mas?"
+    options: [Kayak, Putar, Turunkan]
+    answer: 0
+    words: [kayak, putar, turunkan]
+    explain:
+      ar_eg: kayak gini = seperti ini (كده، زي كده). putar = لفّ، وturunkan = نزّل.
+      ar: kayak gini = seperti ini (هكذا). أما putar فـ«لُفّ» وturunkan «أنزِل».
+      en: kayak gini = seperti ini (like this). putar is turn, turunkan is lower.
   - id: e10
     type: fill_blank
     sentence: Jangan ___! Kamu bisa!
@@ -149,6 +175,10 @@ exercises:
     options: [takut, lompat, lihat]
     answers: [takut]
     words: [takut]
+    explain:
+      ar_eg: Jangan takut = ماتخافش، وبعدها «Kamu bisa!». lompat = نُط، وlihat = بص.
+      ar: Jangan takut = لا تخف، ثم «Kamu bisa!». أما lompat فاقفز وlihat انظر.
+      en: Jangan takut = don't be afraid, then "Kamu bisa!". lompat is jump, lihat look.
 dialogue:
   title: Senam pagi di Kuta
   lines:
@@ -158,7 +188,7 @@ dialogue:
       ar: صباح الخير جميعًا! هيّا قِفوا. ارفعوا أيديكم اليمنى ثم خذوا نفسًا.
       en: Good morning, everyone! Come on, stand up. Raise your right hand, then breathe in.
     - speaker: Mohamed
-      text: Seperti ini, Mas?
+      text: Kayak gini, Mas?
       ar_eg: كده يا ماس؟
       ar: هكذا يا ماس؟
       en: Like this, Mas?
@@ -168,10 +198,10 @@ dialogue:
       ar: نعم، أحسنت! الآن أنزِل يدك وأخرِج النفس.
       en: Yes, good! Now lower your arm and breathe out.
     - speaker: Rina
-      text: Mas, lutut saya sakit.
-      ar_eg: يا ماس، ركبتي بتوجعني.
-      ar: يا ماس، ركبتي تؤلمني.
-      en: Mas, my knee hurts.
+      text: Mas, aku capek.
+      ar_eg: يا ماس، أنا تعبت.
+      ar: يا ماس، أنا متعبة.
+      en: Mas, I'm tired.
     - speaker: Mas Rizal
       text: Oh, berhenti dulu, Rina. Duduklah dan minum air.
       ar_eg: أوه، بطّلي شوية يا رينا. اتفضلي اقعدي واشربي مية.
@@ -218,6 +248,11 @@ new_words:
     ar_eg: خايف (jangan takut = ماتخافش)
     ar: خائف (jangan takut = لا تخف)
     en: afraid (jangan takut = don't be afraid)
+  - word: kayak
+    pos: preposition
+    ar_eg: زي (في الكلام؛ الرسمي seperti)؛ kayak gini = كده
+    ar: مثل (في الكلام؛ والفصيح seperti)؛ kayak gini = هكذا
+    en: like (spoken; formal seperti); kayak gini = like this
 review:
   status: draft
   verified: false

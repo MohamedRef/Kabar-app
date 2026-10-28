@@ -1,182 +1,252 @@
 schema: kabar.lesson/v1
 id: bipa6.u01.l07
 language: id
-title: Diskusi sastra
+title: Surat dari rantau
 can_do:
-  ar_eg: تتناقش في موضوع قصة وتقول تفسيرك وتسمع تفسير غيرك.
-  ar: أن تناقش موضوع قصّة فتعرض تفسيرك وتصغي إلى تفسير غيرك.
-  en: Discuss a story's theme, giving your reading and hearing other readings.
+  ar_eg: تقرا مشهد جواب من الغربة وتفهم الحنين والرحيل اللي ورا الكلام.
+  ar: أن تقرأ مشهد رسالة من الغربة وتفهم الحنين والرحيل وراء الكلمات.
+  en: Read a scene about a letter from abroad and catch the longing and departure behind it.
 slides:
-  - title: Tafsiran saya
-    grammar: id.implicature
+  - title: Surat dari rantau
     body:
       ar_eg: |
-        القصة الحلوة ليها أكتر من تفسير. اتكلم كده:
-        - Saya menafsirkan … sebagai … = أنا بفسّر … على إنه …
-        - … adalah simbol … = … رمز لـ …
-        - Amanat cerpen ini adalah … = رسالة / عبرة القصة …
-        - Cerpen ini punya akhir terbuka. = النهاية مفتوحة، والقارئ يكمّل.
-        ولما حد يختلف معاك: Tafsiran Anda menarik, tetapi …
+        مشهد: أم في سيبولجا بتقرا جواب من ابنها اللي مسافر بقاله سنين.
+        kepergian = رحيل (من pergi). kerinduan = حنين، شوق (من rindu). berkelana = يلف البلاد من غير وجهة.
+        gemetar = بيترعش. menghela napas = يتنهد. tangisan = عياط (من tangis).
+        hampa = فاضي من جوه. haru = متأثر لحد الدموع.
+        الكاتب مش هيقول "كانت حزينة": هيوريك إيدها اللي بتترعش.
+        - في الشارع: banget = sekali (أوي)، nangis = menangis (يعيّط)، nggak = tidak (لأ / مش)، aja = saja (بس / وخلاص)، kerasa = terasa (محسوس)، udah = sudah (خلاص / بالفعل).
       ar: |
-        للقصّة الجيّدة أكثر من تفسير. قل:
-        - Saya menafsirkan … sebagai … = أفسّر … على أنّه …
-        - … adalah simbol … = … رمز لـ …
-        - Amanat cerpen ini adalah … = عبرة القصّة …
-        - Cerpen ini punya akhir terbuka. = نهايتها مفتوحة، يكملها القارئ.
-        وإذا خالفك أحد: Tafsiran Anda menarik, tetapi …
+        مشهد: أمّ في سيبولغا تقرأ رسالة من ابنها المغترب منذ سنين.
+        kepergian = رحيل (من pergi). kerinduan = حنين وشوق (من rindu). berkelana = يجوب البلاد بلا وجهة.
+        gemetar = يرتجف. menghela napas = يتنهّد. tangisan = بكاء (من tangis).
+        hampa = خاوٍ من الداخل. haru = متأثر حتى الدموع.
+        لن يقول الكاتب "كانت حزينة"، بل سيريك يدها المرتجفة.
+        - في كلام الشارع: banget = sekali (جدًّا)، nangis = menangis (يبكي)، nggak = tidak (لا / ليس)، aja = saja (فقط)، kerasa = terasa (محسوس)، udah = sudah (قد / بالفعل).
       en: |
-        A good story has more than one reading. Say:
-        - Saya menafsirkan … sebagai … = I read … as …
-        - … adalah simbol … = … is a symbol of …
-        - Amanat cerpen ini adalah … = The story's message is …
-        - Cerpen ini punya akhir terbuka. = It has an open ending; the reader finishes it.
-        When someone disagrees: Tafsiran Anda menarik, tetapi …
+        Scene: a mother in Sibolga reads a letter from her son, away for years.
+        kepergian = departure (from pergi). kerinduan = longing (from rindu). berkelana = to wander far.
+        gemetar = to tremble. menghela napas = to sigh. tangisan = crying (from tangis).
+        hampa = empty inside, hollow. haru = moved to tears.
+        The writer won't say "she was sad"; he shows her trembling hand.
+        - On the street: banget = sekali (very), nangis = menangis (to cry), nggak = tidak (no, not), aja = saja (just, only), kerasa = terasa (felt), udah = sudah (already).
+    examples:
+      - text: Tangannya gemetar ketika membuka surat itu.
+        ar_eg: إيدها كانت بتترعش وهي بتفتح الجواب.
+        ar: ارتجفت يدها وهي تفتح الرسالة.
+        en: Her hand trembled as she opened the letter.
+      - text: Sejak kepergian anaknya, rumah itu terasa hampa.
+        ar_eg: من ساعة رحيل ابنها، البيت بقى فاضي من جوه.
+        ar: منذ رحيل ابنها صار البيت خاويًا.
+        en: Since her son left, the house has felt empty.
+      - text: Dia menghela napas, penuh kerinduan.
+        ar_eg: اتنهدت، مليانة حنين.
+        ar: تنهّدت مليئةً بالحنين.
+        en: She sighed, full of longing.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: menafsirkan
-        ar_eg: يفسّر
-        ar: يفسّر
-        en: to interpret
-      - text: simbol
-        ar_eg: رمز
-        ar: رمز
-        en: symbol
-      - text: amanat
-        ar_eg: عبرة / رسالة
-        ar: عبرة
-        en: moral, message
-      - text: akhir terbuka
-        ar_eg: نهاية مفتوحة
-        ar: نهاية مفتوحة
-        en: open ending
-    words: [menafsirkan, simbol, amanat, akhir terbuka]
+      - text: kepergian
+        ar_eg: رحيل
+        ar: رحيل
+        en: departure
+      - text: kerinduan
+        ar_eg: حنين
+        ar: حنين، شوق
+        en: longing
+      - text: berkelana
+        ar_eg: يلف البلاد
+        ar: يجوب البلاد
+        en: to wander far
+      - text: gemetar
+        ar_eg: بيترعش
+        ar: يرتجف
+        en: to tremble
+    words: [kepergian, kerinduan, berkelana, gemetar]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: menghela
+        ar_eg: يتنهد (menghela napas)
+        ar: يتنهّد (menghela napas)
+        en: to heave (a sigh)
+      - text: tangisan
+        ar_eg: عياط
+        ar: بكاء
+        en: crying
+      - text: hampa
+        ar_eg: فاضي من جوه
+        ar: خاوٍ
+        en: empty, hollow
+      - text: haru
+        ar_eg: متأثر
+        ar: متأثر
+        en: moved
+    words: [menghela, tangisan, hampa, haru]
+  - id: e03
+    type: listen
+    text: Dari kamar sebelah terdengar tangisan seorang ibu.
+    question:
+      ar_eg: سامعين إيه من الأوضة اللي جنب؟
+      ar: ماذا يُسمع من الغرفة المجاورة؟
+      en: What can be heard from the next room?
+    options: [عياط, ضحك, غُنا]
+    answer: 0
+    meaning:
+      ar_eg: من الأوضة اللي جنبنا كان فيه صوت عياط ست.
+      ar: سُمع من الغرفة المجاورة بكاء أمّ.
+      en: From the next room came a mother's crying.
+    words: [tangisan]
+  - id: e04
+    type: fill_blank
+    sentence: Sejak muda dia ___ dari kota ke kota tanpa tujuan.
+    meaning:
+      ar_eg: من وهو صغير بيـ ___ من بلد لبلد من غير هدف.
+      ar: منذ شبابه وهو ___ من مدينة إلى مدينة بلا غاية.
+      en: Since his youth he has ___ from town to town without aim.
+    options: [berkelana, gemetar, menghela]
+    answers: [berkelana]
+    words: [berkelana, gemetar, menghela]
+    explain:
+      ar_eg: berkelana = يلف من مكان لمكان من غير هدف، وده معنى الجملة. gemetar = يترعش وmenghela (napas) = ياخد نفس.
+      ar: berkelana تعني التجوال بلا غاية، وهو معنى الجملة؛ أمّا gemetar فيرتجف، وmenghela (napas) يتنهّد.
+      en: berkelana is to wander with no aim, which is the sentence's meaning. gemetar is to tremble, and menghela (napas) is to sigh.
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: في «Kursi di Teras»، الكرسي الفاضي رمز لإيه؟
-      ar: في «Kursi di Teras»، رمزُ ماذا الكرسيّ الفارغ؟
-      en: In "Kursi di Teras", what is the empty chair a symbol of?
-    options:
-      - الفقر.
-      - غياب الابن والشوق ليه.
-      - الأثاث القديم.
+      ar_eg: الكلمة اللي معناها الشوق لحد أو لمكان بعيد؟
+      ar: ما الكلمة التي تعني الشوق إلى شخص أو مكان بعيد؟
+      en: Which word means longing for a distant person or place?
+    options: [kepergian, kerinduan, tangisan]
     answer: 1
-    words: [simbol]
-  - id: e03
+    explain:
+      ar_eg: kerinduan = حنين، من rindu.
+      ar: kerinduan = حنين، من rindu.
+      en: kerinduan = longing, from rindu.
+    words: [kerinduan, kepergian, tangisan]
+  - id: e06
     type: fill_blank
-    sentence: Saya ___ dua cangkir teh itu sebagai tanda maaf.
+    sentence: Air matanya jatuh; dia ___ mendengar suara anaknya di telepon.
     meaning:
-      ar_eg: أنا بفسّر فنجانين الشاي دول على إنهم علامة سماح.
-      ar: أفسّر فنجاني الشاي علامةً على الصفح.
-      en: I read those two cups of tea as a sign of forgiveness.
-    options: [menafsirkan, amanat, simbol]
-    answers: [menafsirkan]
-    words: [menafsirkan]
-  - id: e04
-    type: listen
-    text: Amanat cerpen ini adalah bahwa keluarga selalu menunggu kita pulang.
-    question:
-      ar_eg: إيه عبرة القصة؟
-      ar: ما عبرة القصّة؟
-      en: What is the story's message?
-    options:
-      - إن العيلة دايمًا مستنيانا نرجع.
-      - إن السفر وحش.
-      - إن الشاي لازم يتشرب سخن.
-    answer: 0
-    words: [amanat]
-  - id: e05
+      ar_eg: دموعها نزلت؛ ___ لما سمعت صوت ابنها في التليفون.
+      ar: سالت دموعها؛ ___ حين سمعت صوت ابنها في الهاتف.
+      en: Her tears fell; she was ___ to hear her son's voice on the phone.
+    options: [haru, hampa, gemetar]
+    answers: [haru]
+    words: [haru, hampa, gemetar]
+    explain:
+      ar_eg: الدموع من الفرحة بصوت ابنها = haru (متأثرة). hampa = فاضية من جوّه وgemetar = بتترعش.
+      ar: دموع التأثّر لسماع صوت ابنها هي haru؛ أمّا hampa فالخواء، وgemetar الارتجاف.
+      en: Tears at her son's voice show she's moved, haru. hampa is empty inside, and gemetar is trembling.
+  - id: e07
+    type: multiple_choice
+    question: Rumah besar itu sepi; hidupnya terasa ___.
+    options: [haru, berkelana, hampa]
+    answer: 2
+    explain:
+      ar_eg: بيت كبير فاضي وحياة من غير معنى = hampa.
+      ar: بيت كبير خالٍ وحياة بلا معنى = hampa.
+      en: A big empty house, a life without meaning = hampa.
+    words: [hampa, haru, berkelana]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: النهاية المفتوحة بتخلّي القارئ يفكّر.
-      ar: النهاية المفتوحة تجعل القارئ يفكّر.
-      en: An open ending makes the reader think.
-    answer: Akhir terbuka membuat pembaca berpikir.
-    distractors: [simbol, amanat]
-    words: [akhir terbuka]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: تفسيرك حلو، بس أنا شايفه بشكل تاني.
-      ar: تفسيرك جميل، لكنّي أراه على نحو آخر.
-      en: Your reading is interesting, but I see it differently.
-    answers:
-      - Tafsiran Anda menarik, tetapi saya melihatnya secara berbeda.
-      - Tafsiranmu menarik, tetapi saya melihatnya dengan cara lain.
-      - Tafsiran Anda menarik, tapi saya menafsirkannya secara berbeda.
-      - Tafsiranmu bagus, tetapi saya melihatnya berbeda.
-    words: [menafsirkan]
-  - id: e07
-    type: speaking
-    text: Hujan dalam cerpen itu adalah simbol kesedihan, menurut saya.
-    meaning:
-      ar_eg: المطر في القصة دي رمز للحزن، في رأيي.
-      ar: المطر في تلك القصّة رمز للحزن، في رأيي.
-      en: The rain in that story is a symbol of sadness, in my view.
-    words: [simbol]
-  - id: e08
-    type: multiple_choice
-    question_meaning:
-      ar_eg: قصة من غير نهاية واضحة اسمها إيه؟
-      ar: ماذا تسمّى قصّة بلا خاتمة واضحة؟
-      en: What do you call a story with no clear ending?
-    options:
-      - cerpen tanpa tokoh
-      - cerpen tanpa latar
-      - cerpen dengan akhir terbuka
-    answer: 2
-    words: [akhir terbuka, amanat]
+      ar_eg: اتنهدت تنهيدة طويلة وقريت الجواب تاني.
+      ar: تنهّدت طويلًا وقرأت الرسالة مرة أخرى.
+      en: She sighed deeply and read the letter again.
+    answer: Dia menghela napas panjang dan membaca surat itu lagi.
+    distractors: [gemetar, tangisan]
+    words: [menghela]
+    explain:
+      ar_eg: «اتنهدت» = menghela napas panjang. gemetar = اترعشت وtangisan = بكا، ومش في المعنى.
+      ar: «تنهّدت» هي menghela napas panjang؛ أمّا gemetar (ارتجف) وtangisan (بكاء) فليسا في المعنى.
+      en: "\"Sighed deeply\" is menghela napas panjang. gemetar (tremble) and tangisan (crying) aren't in the meaning."
   - id: e09
-    type: dictation
-    text: Setiap pembaca bisa menafsirkan cerpen itu secara berbeda.
+    type: translate
+    direction: from_target
+    source_text: Kepergian anaknya meninggalkan kerinduan yang panjang.
+    answers_meaning:
+      ar_eg: [رحيل ابنها ساب حنين طويل, رحيل ابنها خلّاها مشتاقة لمدة طويلة]
+      ar: [ترك رحيل ابنها حنينًا طويلًا, خلّف رحيل ابنها شوقًا طويلًا]
+      en: ['Her son''s departure left a long longing', 'Her son''s leaving left her longing for a long time']
+    words: [kepergian, kerinduan]
+  - id: e10
+    type: speaking
+    text: Tangannya gemetar, lalu dia menghela napas.
     meaning:
-      ar_eg: كل قارئ ممكن يفسّر القصة دي بشكل مختلف.
-      ar: يمكن لكلّ قارئ أن يفسّر تلك القصّة تفسيرًا مختلفًا.
-      en: Every reader can interpret that story differently.
-    words: [menafsirkan]
+      ar_eg: إيدها اترعشت، وبعدين اتنهدت.
+      ar: ارتجفت يدها ثم تنهّدت.
+      en: Her hand trembled, then she sighed.
+    words: [gemetar, menghela]
 dialogue:
-  title: Dua tafsiran
   lines:
     - speaker: Bang Togar
-      text: Saya menafsirkan hujan itu sebagai simbol kesedihan ayah.
-      ar_eg: أنا بفسّر المطر ده كرمز لحزن الأب.
-      ar: أفسّر ذلك المطر رمزًا لحزن الأب.
-      en: I read the rain as a symbol of the father's sadness.
+      text: Cerpen ini pendek banget, tapi aku hampir nangis.
+      ar_eg: القصة دي قصيرة أوي، بس أنا كنت هعيط.
+      ar: هذه القصة قصيرة جدًا، لكنني كدت أبكي.
+      en: This story is so short, but I almost cried.
     - speaker: Mohamed
-      text: Tafsiranmu menarik, Bang. Tetapi bagi saya, hujan itu membersihkan, seperti awal yang baru.
-      ar_eg: تفسيرك حلو يا بانج. بس بالنسبة لي، المطر بيغسل، زي بداية جديدة.
-      ar: تفسيرك جميل، لكنّ المطر عندي يطهّر، كبداية جديدة.
-      en: Your reading is interesting, Bang. But for me, the rain cleans, like a new beginning.
-    - speaker: Kak Mei
-      text: Dua-duanya bisa benar. Akhirnya kan terbuka.
-      ar_eg: الاتنين ممكن يبقوا صح. ما النهاية مفتوحة.
-      ar: قد يصحّ التفسيران، فالنهاية مفتوحة.
-      en: Both could be right. The ending is open, after all.
+      text: Ibunya nggak pernah bilang kalau dia sedih. Tangannya aja yang gemetar.
+      ar_eg: أمه عمرها ما قالت إنها زعلانة. إيدها بس اللي بتترعش.
+      ar: لم تقل الأم قط إنها حزينة. يدها فقط ترتجف.
+      en: The mother never says she's sad. Only her hand trembles.
+    - speaker: Bang Togar
+      text: Dan tiap malam dia menghela napas di depan jendela.
+      ar_eg: وكل ليلة بتتنهد قدام الشباك.
+      ar: وكل ليلة تتنهّد أمام النافذة.
+      en: And every night she sighs at the window.
     - speaker: Mohamed
-      text: Setuju. Amanatnya tetap sama, keluarga selalu menunggu.
-      ar_eg: موافق. والعبرة زي ما هي، العيلة دايمًا مستنية.
-      ar: أوافق. والعبرة واحدة، فالأسرة تنتظر دائمًا.
-      en: Agreed. The message stays the same; family always waits.
+      text: Anaknya berkelana sepuluh tahun. Kerinduannya kerasa di setiap kalimat.
+      ar_eg: ابنها بيلف البلاد بقاله عشر سنين. الحنين باين في كل جملة.
+      ar: يجوب ابنها البلاد منذ عشر سنين. الحنين محسوس في كل جملة.
+      en: Her son has wandered for ten years. The longing is in every sentence.
+    - speaker: Bang Togar
+      text: 'Itulah orang Batak: kepergian udah biasa, tapi tetap berat.'
+      ar_eg: 'هو ده الباتاك: الرحيل عادي عندنا، بس برضه تقيل.'
+      ar: 'هكذا الباتاك: الرحيل مألوف، لكنه يبقى ثقيلًا.'
+      en: 'That''s us Batak: leaving is normal, but it''s still heavy.'
 new_words:
-  - word: menafsirkan
+  - word: kepergian
+    pos: noun
+    ar_eg: رحيل
+    ar: رحيل، ذهاب
+    en: departure, leaving
+  - word: kerinduan
+    pos: noun
+    ar_eg: حنين، شوق
+    ar: حنين، شوق
+    en: longing
+  - word: berkelana
     pos: verb
-    arabic: تفسير
-    ar_eg: يفسّر
-    ar: يفسّر
-    en: to interpret
-  - word: simbol
+    ar_eg: يلف البلاد
+    ar: يجوب البلاد، يتجوّل
+    en: to wander, roam
+  - word: gemetar
+    pos: verb
+    ar_eg: يترعش
+    ar: يرتجف
+    en: to tremble
+  - word: menghela
+    pos: verb
+    ar_eg: يتنهد (menghela napas)
+    ar: يتنهّد (menghela napas)
+    en: 'to heave (a sigh: menghela napas)'
+  - word: tangisan
     pos: noun
-    ar_eg: رمز
-    ar: رمز
-    en: symbol
-  - word: akhir terbuka
-    pos: noun
-    ar_eg: نهاية مفتوحة
-    ar: نهاية مفتوحة
-    en: open ending
+    ar_eg: عياط
+    ar: بكاء، نحيب
+    en: crying, sobbing
+  - word: hampa
+    pos: adjective
+    ar_eg: فاضي من جوه
+    ar: فارغ، خاوٍ
+    en: empty, hollow
+  - word: haru
+    pos: adjective
+    ar_eg: متأثر لحد الدموع
+    ar: متأثر
+    en: moved, touched
 review:
   status: draft
   verified: false

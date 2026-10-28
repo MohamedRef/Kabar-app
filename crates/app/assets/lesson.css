@@ -31,7 +31,7 @@
   padding-inline: 1rem;
 }
 .lp-close {
-  inline-size: 44px;
+  inline-size: var(--tap);
   padding: 0;
   font-size: 1.6rem;
   line-height: 1;
@@ -55,6 +55,12 @@
 
 .lp-slide-title { font-family: var(--font-latin); font-size: clamp(1.6rem, 6vw, 2.2rem); color: var(--indigo); margin-block: 0.5rem; }
 .lp-slide-body { font-size: 1.08rem; }
+.lp-table-wrap { overflow-x: auto; margin-block: 0.75rem; }
+.lp-table { border-collapse: collapse; inline-size: 100%; font-size: 0.95rem; }
+.lp-table th, .lp-table td { padding-block: 0.4rem; padding-inline: 0.6rem; text-align: start; border-block-end: 1px solid var(--line); }
+.lp-table th { font-weight: 600; color: var(--muted); }
+/* A word with its pronunciation under it: both stay in their cell (#381). */
+.lp-cell-word { display: inline-flex; flex-direction: column; align-items: start; gap: 0.1rem; line-height: 1.3; }
 .lp-examples { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
 .lp-example {
   inline-size: 100%;
@@ -75,7 +81,7 @@
 .lp-question.big { font-size: clamp(1.8rem, 7vw, 2.4rem); color: var(--indigo); }
 .lp-question-meaning { font-size: 1.2rem; margin-block: 0 1rem; }
 .lp-play { gap: 0.5rem; }
-.lp-sound { inline-size: 48px; block-size: 48px; padding: 0; display: inline-grid; place-items: center; color: var(--indigo); }
+.lp-sound { inline-size: var(--tap-lg); block-size: var(--tap-lg); padding: 0; display: inline-grid; place-items: center; color: var(--indigo); }
 .lp-sound.big { inline-size: 88px; block-size: 88px; background: var(--indigo); color: var(--surface); border-color: transparent; }
 .lp-sound.big svg { inline-size: 40px; block-size: 40px; }
 .lp-sound.slow { inline-size: auto; padding-inline: 1rem; gap: 0.4rem; display: inline-flex; align-items: center; }
@@ -176,7 +182,9 @@
 .lp-pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 .lp-pair-col { display: grid; gap: 0.6rem; align-content: start; }
 .lp-pair { border-radius: var(--radius); border-width: 2px; min-block-size: 52px; font-size: 1.05rem; }
-.lp-pair.selected { border-color: var(--indigo); background: var(--lp-review); }
+/* Selected tiles set aria-pressed, whose base rule paints text in --surface for
+   an indigo fill; on this light tint the text must go back to --text (#228). */
+.lp-pair.selected { border-color: var(--indigo); background: var(--lp-review); color: var(--text); }
 /* A matched couple reads as done, not disabled: full-strength text, a tick and
    one shared tint per couple so the pairing stays visible (#149). */
 .lp-pair.done {
@@ -191,10 +199,15 @@
   color: var(--text);
 }
 .lp-pair.done:disabled { opacity: 1; cursor: default; }
-.lp-pair.couple-1 { --couple: var(--wc-adj); }
+/* Six tints for up to six couples, from tokens already contrast-checked on
+   surface-2 in every theme; the shared number on both halves means colour is
+   never the only cue (#311). Red stays reserved for a wrong pick. */
+.lp-pair.couple-1 { --couple: var(--wc-noun); }
 .lp-pair.couple-2 { --couple: var(--gold); }
-.lp-pair.couple-3 { --couple: var(--wp-suffix); }
-.lp-pair-tick { font-weight: 700; color: var(--couple); font-family: var(--font-latin); }
+.lp-pair.couple-3 { --couple: var(--wc-adj); }
+.lp-pair.couple-4 { --couple: var(--wp-prefix); }
+.lp-pair.couple-5 { --couple: var(--wp-suffix); }
+.lp-pair-tick { font-weight: 700; color: var(--couple); font-family: var(--font-latin); white-space: nowrap; }
 .lp-pair.wrong { border-color: var(--dawn); background: var(--lp-miss); }
 
 /* dialogue */
@@ -237,6 +250,17 @@
   font-size: 0.85rem;
 }
 .lp-bridge .ar { font-family: var(--font-arabic); font-size: 1.1rem; }
+/* A Javanese word spelled like an Indonesian one with another meaning (#290). */
+.lp-false-friend {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: baseline;
+  padding-inline: 0.6rem;
+  border-radius: 999px;
+  border: 1px dashed currentColor;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
 .lp-souvenir { border-color: var(--gold); background: linear-gradient(135deg, var(--surface), var(--gold-soft)); }
 .lp-souvenir h3 { color: var(--gold); font-size: 1.4rem; margin-block: 0.25rem; }
 
@@ -318,7 +342,7 @@
 .ln-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-2); }
 .ln-kicker { margin: 0; font-size: var(--fs-xs); color: var(--muted); font-weight: 600; letter-spacing: 0.02em; }
 .ln-title { margin: 0; font-family: var(--font-latin); font-size: var(--fs-xl); color: var(--indigo); }
-.ln-hide { color: var(--muted); font-size: 1.4rem; line-height: 1; padding: 0; inline-size: 44px; }
+.ln-hide { color: var(--muted); font-size: 1.4rem; line-height: 1; padding: 0; inline-size: var(--tap); }
 .ln-cando { margin: 0; font-size: var(--fs-sm); }
 
 .ln-outline { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-1); }

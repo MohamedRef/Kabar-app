@@ -18,10 +18,18 @@ segments:
   - kind: intro
     title: Malam di Manado
     lines:
-      - {speaker: Kak Tiara, text: "Selamat malam dari Manado, Sulawesi Utara! Ini Kabar Radio. Saya Tiara.", ar_eg: "مساء الخير من مانادو، في شمال سولاويسي! ده كبار راديو. أنا تيارا.", ar: "مساء الخير من مانادو، في شمال سولاويسي! هذا كبار راديو. أنا تيارا.", en: "Good evening from Manado, North Sulawesi! This is Kabar Radio. I'm Tiara."}
-      - {speaker: Kak Reza, text: "Saya Reza. Malam ini kita mendengarkan cerita rakyat Minahasa, lalu kita menganalisisnya.", ar_eg: "أنا رضا. الليلة هنسمع حكاية شعبية من ميناهاسا، وبعدين نحللها.", ar: "أنا رضا. الليلة نستمع إلى حكاية شعبية من ميناهاسا، ثم نحللها.", en: "I'm Reza. Tonight we hear a Minahasa folk story, then analyse it."}
+      - {speaker: Kak Tiara, text: "Selamat malam dari Manado, Sulawesi Utara! Ini Kabar Radio. Aku Tiara.", ar_eg: "مساء الخير من مانادو، في شمال سولاويسي! ده كبار راديو. أنا تيارا.", ar: "مساء الخير من مانادو، في شمال سولاويسي! هذا كبار راديو. أنا تيارا.", en: "Good evening from Manado, North Sulawesi! This is Kabar Radio. I'm Tiara."}
+      - speaker: Kak Reza
+        text: "Aku Reza. Malam ini kita dengerin cerita rakyat Minahasa, terus kita bedah bareng."
+        ar_eg: "أنا رضا. الليلة هنسمع حكاية شعبية من ميناهاسا، وبعدين نحللها."
+        ar: "أنا رضا. الليلة نستمع إلى حكاية شعبية من ميناهاسا، ثم نحللها."
+        en: "I'm Reza. Tonight we hear a Minahasa folk story, then analyse it."
+        note:
+          ar_eg: "كلمات: bareng = مع بعض."
+          ar: "مفردات: bareng = معًا."
+          en: "Words: bareng = together."
       - speaker: Kak Tiara
-        text: "Orang Minahasa percaya, nenek moyang mereka adalah Lumimuut dan anaknya, Toar."
+        text: "Orang Minahasa percaya, nenek moyang mereka Lumimuut sama anaknya, Toar."
         ar_eg: "شعب ميناهاسا بيصدّق إن أجدادهم هم لوميموت وابنها تُوار."
         ar: "يعتقد أهل ميناهاسا أن أجدادهم هم لوميموت وابنها توار."
         en: "The Minahasa believe their ancestors are Lumimuut and her son Toar."
@@ -29,28 +37,108 @@ segments:
           ar_eg: "الحكايات الشعبية بيختلف تفاصيلها من راوي للتاني. هنا هنحكي نسخة بسيطة."
           ar: "تختلف تفاصيل الحكايات الشعبية من راوٍ لآخر، وهنا نروي صيغة مبسّطة."
           en: "Folk tales differ from teller to teller; here's a simple version."
-      - {speaker: Kak Reza, text: "Kita belajar unsur cerita: tokoh, latar, alur, dan amanat.", ar_eg: "هنتعلم عناصر الحكاية: الشخصيات، والمكان والزمان، والأحداث، والعبرة.", ar: "نتعلم عناصر القصة: الشخصيات، والزمان والمكان، والحبكة، والمغزى.", en: "We learn the elements of a story: characters, setting, plot and moral."}
-      - {speaker: Kak Tiara, text: "Mohamed, siapkan telingamu. Nanti kamu menceritakan kembali!", ar_eg: "يا محمد، جهز ودانك. بعد شوية إنت هتحكيها تاني!", ar: "يا محمد، أعِرنا سمعك، فستعيد روايتها بعد قليل!", en: "Mohamed, get your ears ready. You'll retell it later!"}
+      - {speaker: Kak Reza, text: "Kita belajar unsur cerita: tokoh, latar, alur, sama amanat.", ar_eg: "هنتعلم عناصر الحكاية: الشخصيات، والمكان والزمان، والأحداث، والعبرة.", ar: "نتعلم عناصر القصة: الشخصيات، والزمان والمكان، والحبكة، والمغزى.", en: "We learn the elements of a story: characters, setting, plot and moral."}
+      - {speaker: Kak Tiara, text: "Mohamed, siapin telinga, ya. Nanti kamu yang cerita ulang!", ar_eg: "يا محمد، جهز ودانك. بعد شوية إنت هتحكيها تاني!", ar: "يا محمد، أعِرنا سمعك، فستعيد روايتها بعد قليل!", en: "Mohamed, get your ears ready. You'll retell it later!", note: {ar_eg: "الحدوتة نفسها بلغة الحكي الرسمية. siapin = siapkan.", ar: "الحكاية نفسها بلغة السرد الرسمية. siapin = siapkan.", en: "The tale itself is in storytelling style. siapin = siapkan."}}
   - kind: dialogue
     title: Cerita Lumimuut dan Toar
     lines:
-      - {speaker: Kak Reza, text: "Pada zaman dahulu, di tanah Minahasa, ada sebuah batu besar di tepi pantai.", ar_eg: "كان يا ما كان، في أرض ميناهاسا، كانت فيه صخرة كبيرة على الشط.", ar: "في قديم الزمان، في أرض ميناهاسا، كانت صخرة كبيرة على شاطئ البحر.", en: "Long ago, in the land of Minahasa, there was a great rock on the shore."}
-      - {speaker: Kak Tiara, text: "Panas matahari menyinari batu itu setiap hari. Suatu hari, batu itu terbelah, dan dari dalamnya keluar seorang perempuan.", ar_eg: "حر الشمس كان بينزل على الصخرة كل يوم. وفي يوم، الصخرة اتشقت، وطلعت منها ست.", ar: "كانت الشمس تسطع على الصخرة كل يوم، وذات يوم انشقت وخرجت منها امرأة.", en: "The sun shone on that rock every day. One day it split, and out came a woman."}
-      - {speaker: Kak Reza, text: "Perempuan itu bernama Lumimuut. Dia hidup sendirian dan merasa sangat kesepian.", ar_eg: "الست دي اسمها لوميموت. عاشت لوحدها وكانت حاسة بوحدة جامدة.", ar: "اسم تلك المرأة لوميموت، عاشت وحيدة وشعرت بوحشة شديدة.", en: "The woman was called Lumimuut. She lived alone and felt very lonely."}
-      - {speaker: Kak Tiara, text: "Dia berdoa kepada angin barat. Tidak lama kemudian, dia melahirkan seorang anak laki-laki. Namanya Toar.", ar_eg: "دعت ريح الغرب. وبعد شوية، ولدت ولد. اسمه تُوار.", ar: "دعت ريح الغرب، وبعد قليل أنجبت ولدًا اسمه توار.", en: "She prayed to the west wind. Soon after, she gave birth to a boy named Toar."}
-      - {speaker: Kak Reza, text: "Toar tumbuh menjadi pemuda yang kuat. Suatu hari, dia harus pergi untuk mencari tanah baru.", ar_eg: "تُوار كبر وبقى شاب قوي. وفي يوم، كان لازم يمشي يدور على أرض جديدة.", ar: "كبر توار وصار شابًا قويًا، وذات يوم كان عليه أن يرحل بحثًا عن أرض جديدة.", en: "Toar grew into a strong young man. One day he had to leave to find new land."}
-      - {speaker: Kak Tiara, text: "Lumimuut memberinya sebatang tongkat. Ibunya juga membawa tongkat yang sama panjangnya.", ar_eg: "لوميموت ادته عصاية. وأمه كمان خدت عصاية بنفس الطول.", ar: "أعطته لوميموت عصا، وحملت الأم عصا بالطول نفسه.", en: "Lumimuut gave him a staff. She kept a staff of exactly the same length."}
-      - {speaker: Kak Reza, text: "Bertahun-tahun mereka berpisah. Toar berjalan ke utara, Lumimuut ke selatan.", ar_eg: "سنين واتفرقوا. تُوار مشي ناحية الشمال، ولوميموت ناحية الجنوب.", ar: "افترقا سنوات؛ سار توار شمالًا ولوميموت جنوبًا.", en: "For years they were apart. Toar walked north, Lumimuut south."}
-      - {speaker: Kak Tiara, text: "Akhirnya mereka bertemu lagi, tetapi mereka tidak saling mengenal. Wajah mereka sudah berubah.", ar_eg: "وفي الآخر اتقابلوا تاني، بس معرفوش بعض. وشوشهم كانت اتغيرت.", ar: "وأخيرًا التقيا، لكن لم يعرف أحدهما الآخر، فقد تغيرت وجوههما.", en: "At last they met again, but didn't recognise each other. Their faces had changed."}
-      - {speaker: Kak Reza, text: "Mereka membandingkan tongkat. Tongkat Toar sudah tumbuh lebih panjang, jadi mereka mengira mereka orang asing.", ar_eg: "قارنوا العصيان. عصاية تُوار كانت طولت، فافتكروا إنهم غرب عن بعض.", ar: "قارنا العصوين، وكانت عصا توار قد طالت، فظنّا أنهما غريبان.", en: "They compared staffs. Toar's had grown longer, so they thought they were strangers."}
-      - {speaker: Kak Tiara, text: "Menurut cerita, dari keluarga merekalah orang Minahasa berasal.", ar_eg: "وعلى حسب الحكاية، من نسلهم جه شعب ميناهاسا.", ar: "وبحسب الحكاية، من نسلهما انحدر أهل ميناهاسا.", en: "According to the story, the Minahasa people descend from them."}
       - speaker: Kak Reza
-        text: "Sekarang kita analisis. Siapa tokohnya? Di mana latarnya?"
+        text: "Pada zaman dahulu, di tanah Minahasa, ada sebuah batu besar di tepi pantai."
+        ar_eg: "كان يا ما كان، في أرض ميناهاسا، كانت فيه صخرة كبيرة على الشط."
+        ar: "في قديم الزمان، في أرض ميناهاسا، كانت صخرة كبيرة على شاطئ البحر."
+        en: "Long ago, in the land of Minahasa, there was a great rock on the shore."
+        note:
+          ar_eg: "كلمات: dahulu = زمان، قبل كده؛ tanah = أرض، تراب."
+          ar: "مفردات: dahulu = سابقًا، قديمًا؛ tanah = أرض، تربة."
+          en: "Words: dahulu = formerly, in the past; tanah = ground, soil."
+      - {speaker: Kak Tiara, text: "Panas matahari menyinari batu itu setiap hari. Suatu hari, batu itu terbelah, dan dari dalamnya keluar seorang perempuan.", ar_eg: "حر الشمس كان بينزل على الصخرة كل يوم. وفي يوم، الصخرة اتشقت، وطلعت منها ست.", ar: "كانت الشمس تسطع على الصخرة كل يوم، وذات يوم انشقت وخرجت منها امرأة.", en: "The sun shone on that rock every day. One day it split, and out came a woman."}
+      - speaker: Kak Reza
+        text: "Perempuan itu bernama Lumimuut. Dia hidup sendirian dan merasa sangat kesepian."
+        ar_eg: "الست دي اسمها لوميموت. عاشت لوحدها وكانت حاسة بوحدة جامدة."
+        ar: "اسم تلك المرأة لوميموت، عاشت وحيدة وشعرت بوحشة شديدة."
+        en: "The woman was called Lumimuut. She lived alone and felt very lonely."
+        note:
+          ar_eg: "كلمات: bernama = اسمه."
+          ar: "مفردات: bernama = يُدعى، اسمه."
+          en: "Words: bernama = named, called."
+      - speaker: Kak Tiara
+        text: "Dia berdoa kepada angin barat. Tidak lama kemudian, dia melahirkan seorang anak laki-laki. Namanya Toar."
+        ar_eg: "دعت ريح الغرب. وبعد شوية، ولدت ولد. اسمه تُوار."
+        ar: "دعت ريح الغرب، وبعد قليل أنجبت ولدًا اسمه توار."
+        en: "She prayed to the west wind. Soon after, she gave birth to a boy named Toar."
+        note:
+          ar_eg: "كلمات: barat = غرب."
+          ar: "مفردات: barat = غرب."
+          en: "Words: barat = west."
+      - speaker: Kak Reza
+        text: "Toar tumbuh menjadi pemuda yang kuat. Suatu hari, dia harus pergi untuk mencari tanah baru."
+        ar_eg: "تُوار كبر وبقى شاب قوي. وفي يوم، كان لازم يمشي يدور على أرض جديدة."
+        ar: "كبر توار وصار شابًا قويًا، وذات يوم كان عليه أن يرحل بحثًا عن أرض جديدة."
+        en: "Toar grew into a strong young man. One day he had to leave to find new land."
+        note:
+          ar_eg: "كلمات: pemuda = شاب، شباب."
+          ar: "مفردات: pemuda = شاب، الشباب."
+          en: "Words: pemuda = young man, youth."
+      - speaker: Kak Tiara
+        text: "Lumimuut memberinya sebatang tongkat. Ibunya juga membawa tongkat yang sama panjangnya."
+        ar_eg: "لوميموت ادته عصاية. وأمه كمان خدت عصاية بنفس الطول."
+        ar: "أعطته لوميموت عصا، وحملت الأم عصا بالطول نفسه."
+        en: "Lumimuut gave him a staff. She kept a staff of exactly the same length."
+        note:
+          ar_eg: "كلمات: tongkat = عصاية، عكاز."
+          ar: "مفردات: tongkat = عصا، عكّاز."
+          en: "Words: tongkat = stick, cane."
+      - speaker: Kak Reza
+        text: "Bertahun-tahun mereka berpisah. Toar berjalan ke utara, Lumimuut ke selatan."
+        ar_eg: "سنين واتفرقوا. تُوار مشي ناحية الشمال، ولوميموت ناحية الجنوب."
+        ar: "افترقا سنوات؛ سار توار شمالًا ولوميموت جنوبًا."
+        en: "For years they were apart. Toar walked north, Lumimuut south."
+        note:
+          ar_eg: "كلمات: berpisah = يفترق، يسيبوا بعض."
+          ar: "مفردات: berpisah = يفترق."
+          en: "Words: berpisah = to part, separate."
+      - speaker: Kak Tiara
+        text: "Akhirnya mereka bertemu lagi, tetapi mereka tidak saling mengenal. Wajah mereka sudah berubah."
+        ar_eg: "وفي الآخر اتقابلوا تاني، بس معرفوش بعض. وشوشهم كانت اتغيرت."
+        ar: "وأخيرًا التقيا، لكن لم يعرف أحدهما الآخر، فقد تغيرت وجوههما."
+        en: "At last they met again, but didn't recognise each other. Their faces had changed."
+        note:
+          ar_eg: "كلمات: mengenal = يعرف، يتعرف على؛ saling = بعض؛ berubah = يتغيّر."
+          ar: "مفردات: mengenal = يعرف، يتعرّف على؛ saling = بعضهم بعضًا، متبادَل؛ berubah = يتغيّر."
+          en: "Words: mengenal = to know, to get to know; saling = each other, mutually; berubah = to change."
+      - speaker: Kak Reza
+        text: "Mereka membandingkan tongkat. Tongkat Toar sudah tumbuh lebih panjang, jadi mereka mengira mereka orang asing."
+        ar_eg: "قارنوا العصيان. عصاية تُوار كانت طولت، فافتكروا إنهم غرب عن بعض."
+        ar: "قارنا العصوين، وكانت عصا توار قد طالت، فظنّا أنهما غريبان."
+        en: "They compared staffs. Toar's had grown longer, so they thought they were strangers."
+        note:
+          ar_eg: "كلمات: asing = أجنبي."
+          ar: "مفردات: asing = أجنبي."
+          en: "Words: asing = foreign."
+      - speaker: Kak Tiara
+        text: "Menurut cerita, dari keluarga merekalah orang Minahasa berasal."
+        ar_eg: "وعلى حسب الحكاية، من نسلهم جه شعب ميناهاسا."
+        ar: "وبحسب الحكاية، من نسلهما انحدر أهل ميناهاسا."
+        en: "According to the story, the Minahasa people descend from them."
+        note:
+          ar_eg: "كلمات: berasal = أصله من، جاي من."
+          ar: "مفردات: berasal = ينحدر من، أصله من."
+          en: "Words: berasal = to come from, originate."
+      - speaker: Kak Reza
+        text: "Sekarang kita bedah. Tokohnya siapa? Latarnya di mana?"
         ar_eg: "دلوقتي نحلل. مين الشخصيات؟ وفين المكان؟"
         ar: "والآن نحلل. من الشخصيات؟ وأين المكان؟"
         en: "Now let's analyse. Who are the characters? Where's the setting?"
-      - {speaker: Kak Tiara, text: "Tokohnya Lumimuut dan Toar. Latarnya tanah Minahasa pada zaman dahulu. Alurnya maju: lahir, berpisah, bertemu.", ar_eg: "الشخصيات لوميموت وتُوار. والمكان أرض ميناهاسا زمان. والأحداث ماشية لقدام: ولادة، فراق، لقاء.", ar: "الشخصيات لوميموت وتوار، والمكان أرض ميناهاسا قديمًا، والحبكة متصاعدة: ولادة، فراق، لقاء.", en: "The characters are Lumimuut and Toar. The setting is ancient Minahasa. The plot moves forward: birth, parting, meeting."}
-      - {speaker: Kak Reza, text: "Amanatnya, menurut saya: waktu mengubah segalanya, juga cara kita melihat orang lain.", ar_eg: "والعبرة في رأيي: الوقت بيغير كل حاجة، حتى نظرتنا للناس.", ar: "والمغزى في رأيي: الزمن يغيّر كل شيء، حتى نظرتنا إلى الآخرين.", en: "The moral, in my view: time changes everything, including how we see others."}
+      - speaker: Kak Tiara
+        text: "Tokohnya Lumimuut dan Toar. Latarnya tanah Minahasa pada zaman dahulu. Alurnya maju: lahir, berpisah, bertemu."
+        ar_eg: "الشخصيات لوميموت وتُوار. والمكان أرض ميناهاسا زمان. والأحداث ماشية لقدام: ولادة، فراق، لقاء."
+        ar: "الشخصيات لوميموت وتوار، والمكان أرض ميناهاسا قديمًا، والحبكة متصاعدة: ولادة، فراق، لقاء."
+        en: "The characters are Lumimuut and Toar. The setting is ancient Minahasa. The plot moves forward: birth, parting, meeting."
+        note:
+          ar_eg: "كلمات: maju = يتقدم لقدام."
+          ar: "مفردات: maju = يتقدّم."
+          en: "Words: maju = to move forward."
+      - {speaker: Kak Reza, text: "Amanatnya, menurutku: waktu ngubah semuanya, termasuk cara kita lihat orang lain.", ar_eg: "والعبرة في رأيي: الوقت بيغير كل حاجة، حتى نظرتنا للناس.", ar: "والمغزى في رأيي: الزمن يغيّر كل شيء، حتى نظرتنا إلى الآخرين.", en: "The moral, in my view: time changes everything, including how we see others."}
   - kind: word_spotlight
     title: Tokoh, latar, alur, amanat
     lines:
@@ -61,6 +149,10 @@ segments:
         ar_eg: "أحداث ماشية لقدام، راجعة لورا (فلاش باك)، أو خليط. والعبرة هي الرسالة الأخلاقية للحكاية."
         ar: "حبكة متصاعدة، أو استرجاعية، أو مختلطة. والمغزى هو الرسالة الأخلاقية للقصة."
         en: "Forward plot, flashback plot, mixed plot. The moral is the story's message."
+        note:
+          ar_eg: "كلمات: campuran = خليط، مزيج."
+          ar: "مفردات: campuran = خليط، مزيج."
+          en: "Words: campuran = mixture, mix."
       - speaker: Kak Reza
         text: "Frasa panjang: sebuah batu besar di tepi pantai, seorang pemuda yang kuat."
         ar_eg: "عبارات طويلة: صخرة كبيرة على الشط، شاب قوي."
@@ -71,6 +163,15 @@ segments:
           ar: "الترتيب: عدد/مصنّف + اسم + صفة + yang + وصف + مكان: sebuah batu besar yang hitam di tepi pantai."
           en: "Order: classifier + noun + adjective + yang + description + place: sebuah batu besar yang hitam di tepi pantai."
       - {speaker: Kak Tiara, text: "Terbelah, melahirkan, berpisah, saling mengenal, berasal dari.", ar_eg: "اتشق، ولد، اتفرقوا، عرفوا بعض، أصله من.", ar: "انشقّ، أنجب، افترقا، تعارفا، ينحدر من.", en: "Split open, give birth, part, know each other, come from."}
+      - speaker: Kak Reza
+        text: "Kalau cerita ke teman: Jadi gini, ada batu gede di pantai. Terus batunya kebelah, keluar cewek!"
+        ar_eg: "لو بتحكي لصاحبك: بص بقى، كان فيه صخرة كبيرة على الشط. وبعدين اتشقت، وطلعت منها بنت!"
+        ar: "إن كنت تحكي لصديق: اسمع، كانت هناك صخرة كبيرة على الشاطئ. ثم انشقت وخرجت منها فتاة!"
+        en: "Telling a friend: So, there's this big rock on the beach. Then it splits, and out comes a girl!"
+        note:
+          ar_eg: "في الحكي العادي: gede = besar، kebelah = terbelah، cewek = perempuan. كلمات: gini = كده."
+          ar: "في الحكي اليومي: gede = besar، kebelah = terbelah، cewek = perempuan. مفردات: gini = هكذا."
+          en: "Casual storytelling: gede = besar, kebelah = terbelah, cewek = perempuan. Words: gini = like this."
   - kind: recap
     title: Ulangi, ya!
     lines:
@@ -88,7 +189,15 @@ segments:
       - {speaker: Kak Reza, text: "Toar tumbuh menjadi pemuda yang kuat.", ar_eg: "تُوار كبر وبقى شاب قوي.", ar: "كبر توار وصار شابًا قويًا.", en: "Toar grew into a strong young man."}
       - {speaker: Kak Tiara, text: "Mereka tidak saling mengenal.", ar_eg: "معرفوش بعض.", ar: "لم يعرف أحدهما الآخر.", en: "They didn't recognise each other."}
       - {speaker: Kak Reza, text: "Mereka tidak saling mengenal.", ar_eg: "معرفوش بعض.", ar: "لم يعرف أحدهما الآخر.", en: "They didn't recognise each other."}
-      - {speaker: Kak Tiara, text: "Amanatnya: waktu mengubah segalanya.", ar_eg: "العبرة: الوقت بيغير كل حاجة.", ar: "المغزى: الزمن يغيّر كل شيء.", en: "The moral: time changes everything."}
+      - speaker: Kak Tiara
+        text: "Amanatnya: waktu mengubah segalanya."
+        ar_eg: "العبرة: الوقت بيغير كل حاجة."
+        ar: "المغزى: الزمن يغيّر كل شيء."
+        en: "The moral: time changes everything."
+        note:
+          ar_eg: "كلمات: mengubah = يغيّر؛ segalanya = كل حاجة."
+          ar: "مفردات: mengubah = يغيّر؛ segalanya = كل شيء."
+          en: "Words: mengubah = to change; segalanya = everything."
       - {speaker: Kak Reza, text: "Amanatnya: waktu mengubah segalanya.", ar_eg: "العبرة: الوقت بيغير كل حاجة.", ar: "المغزى: الزمن يغيّر كل شيء.", en: "The moral: time changes everything."}
   - kind: outro
     title: Giliran Mohamed
@@ -99,14 +208,22 @@ segments:
         ar: "يا محمد، أعد رواية حكاية لوميموت في أربع جمل، ثم اذكر الشخصيات والمكان والمغزى."
         en: "Mohamed, retell Lumimuut's story in four sentences. Then name the characters, setting and moral."
         note:
-          ar_eg: "دورك! بالراحة، مفيش استعجال."
-          ar: "دورك! على مهلك."
-          en: "Your turn! Take your time."
-      - {speaker: Kak Reza, text: "Atau ceritakan dongeng dari Mesir yang punya amanat yang sama!", ar_eg: "أو احكي حدوتة مصرية ليها نفس العبرة!", ar: "أو احكِ حكاية مصرية لها المغزى نفسه!", en: "Or tell an Egyptian tale with the same moral!"}
-      - {speaker: Kak Tiara, text: "Besok, tulis narasi pendek tentang seorang nelayan tua dan ikan ajaib.", ar_eg: "بكرة، اكتب قصة قصيرة عن صياد عجوز وسمكة سحرية.", ar: "غدًا، اكتب سردًا قصيرًا عن صياد عجوز وسمكة سحرية.", en: "Tomorrow, write a short narrative about an old fisherman and a magic fish."}
-      - {speaker: Kak Reza, text: "Terima kasih, Mohamed. Selamat malam!", ar_eg: "شكرًا يا محمد. تصبح على خير!", ar: "شكرًا يا محمد. تصبح على خير!", en: "Thank you, Mohamed. Good night!"}
-      - {speaker: Kak Tiara, text: "Sampai jumpa besok di Kabar Radio!", ar_eg: "أشوفكم بكرة في كبار راديو!", ar: "إلى اللقاء غدًا في كبار راديو!", en: "See you tomorrow on Kabar Radio!"}
-words: [tokoh utama, latar, alur, amanat, ajaib, tokoh]
+          ar_eg: "دورك! بالراحة، مفيش استعجال. كلمات: ceritakan = احكي، يحكي عن."
+          ar: "دورك! على مهلك. مفردات: ceritakan = احكِ، يحكي."
+          en: "Your turn! Take your time. Words: ceritakan = tell, to narrate."
+      - speaker: Kak Reza
+        text: "Atau ceritain dongeng Mesir yang amanatnya mirip!"
+        ar_eg: "أو احكي حدوتة مصرية ليها نفس العبرة!"
+        ar: "أو احكِ حكاية مصرية لها المغزى نفسه!"
+        en: "Or tell an Egyptian tale with the same moral!"
+        note:
+          ar_eg: "كلمات: dongeng = حدّوتة."
+          ar: "مفردات: dongeng = حكاية."
+          en: "Words: dongeng = folk tale, fairy tale."
+      - {speaker: Kak Tiara, text: "Besok, tulis narasi pendek soal nelayan tua sama ikan ajaib.", ar_eg: "بكرة، اكتب قصة قصيرة عن صياد عجوز وسمكة سحرية.", ar: "غدًا، اكتب سردًا قصيرًا عن صياد عجوز وسمكة سحرية.", en: "Tomorrow, write a short narrative about an old fisherman and a magic fish."}
+      - {speaker: Kak Reza, text: "Makasih, Mohamed. Selamat malam!", ar_eg: "شكرًا يا محمد. تصبح على خير!", ar: "شكرًا يا محمد. تصبح على خير!", en: "Thank you, Mohamed. Good night!"}
+      - {speaker: Kak Tiara, text: "Sampai besok di Kabar Radio!", ar_eg: "أشوفكم بكرة في كبار راديو!", ar: "إلى اللقاء غدًا في كبار راديو!", en: "See you tomorrow on Kabar Radio!"}
+words: [tokoh utama, latar, alur, amanat, ajaib, tokoh, melahirkan]
 review:
   status: draft
   verified: false

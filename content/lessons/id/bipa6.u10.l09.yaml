@@ -1,170 +1,250 @@
 schema: kabar.lesson/v1
 id: bipa6.u10.l09
 language: id
-title: Umpan balik teman
+title: Diskusi filsafat
 can_do:
-  ar_eg: تدي زميلك رأي مفيد ولطيف في مقاله، وتاخد رأيه في مقالك.
-  ar: أن تقدّم لزميلك ملاحظات مفيدة لطيفة على مقاله، وتتلقّى ملاحظاته على مقالك.
-  en: Give a classmate useful, kind feedback on their essay, and take theirs on yours.
+  ar_eg: تشارك في نقاش فلسفي عن الإدراك والتحيز والأيديولوجيا وتفكر بدقة.
+  ar: أن تشارك في نقاش فلسفي عن الإدراك والتحيّز والأيديولوجيا وتفكّر بدقة.
+  en: Join a philosophy discussion on perception, bias and ideology, and think carefully.
 slides:
-  - title: Roti lapis
+  - title: Berpikir kritis
     body:
       ar_eg: |
-        الـ umpan balik (الفيدباك) الكويس زي الساندوتش:
-        1. حاجة حلوة: Tesismu jelas sekali.
-        2. masukan (اقتراح للتحسين): Mungkin paragraf ketiga bisa lebih pendek.
-        3. تشجيع: Secara keseluruhan, esaimu meyakinkan.
-        ولما تاخد فيدباك: قول Terima kasih atas masukannya. ماتدافعش على طول.
+        نقاش في كافيه جنب الجامعة في ميدان:
+        filsafat = فلسفة (من فلسفة). persepsi = إدراك، طريقة الشوف. wawasan = سعة الأفق، معرفة واسعة.
+        bias = تحيز. ideologi = أيديولوجيا. konvensional = تقليدي، متعارف عليه.
+        mendasar = جوهري، أساسي (من dasar). cermat = دقيق، واخد باله من التفاصيل.
+        - في الشارع: nggak = tidak (لأ / مش)، susah = sulit (صعب)، sama = dengan / oleh (مع / من)، terus = lalu (وبعدين).
       ar: |
-        الـ umpan balik (التغذية الراجعة) الجيّدة كالشطيرة:
-        ١. أمر حسن: Tesismu jelas sekali.
-        ٢. masukan (اقتراح للتحسين): Mungkin paragraf ketiga bisa lebih pendek.
-        ٣. تشجيع: Secara keseluruhan, esaimu meyakinkan.
-        وحين تتلقّاها قل: Terima kasih atas masukannya. ولا تسارع إلى الدفاع.
+        نقاش في مقهى قرب الجامعة في ميدان:
+        filsafat = فلسفة. persepsi = إدراك، تصوّر. wawasan = سعة الأفق، اطّلاع.
+        bias = تحيّز. ideologi = أيديولوجيا. konvensional = تقليدي.
+        mendasar = جوهري (من dasar). cermat = دقيق، متأنٍّ.
+        - في كلام الشارع: nggak = tidak (لا / ليس)، susah = sulit (صعب)، sama = dengan / oleh (مع / مِن قِبَل)، terus = lalu (ثمّ).
       en: |
-        Good umpan balik (feedback) is like a sandwich:
-        1. Something good: Tesismu jelas sekali.
-        2. A masukan (suggestion): Mungkin paragraf ketiga bisa lebih pendek.
-        3. Encouragement: Secara keseluruhan, esaimu meyakinkan.
-        When you receive it, say: Terima kasih atas masukannya. Don't rush to defend yourself.
+        A discussion in a café near the university in Medan:
+        filsafat = philosophy (from Arabic فلسفة). persepsi = perception. wawasan = insight, broad knowledge.
+        bias = bias. ideologi = ideology. konvensional = conventional.
+        mendasar = fundamental (from dasar). cermat = careful, meticulous.
+        - On the street: nggak = tidak (no, not), susah = sulit (hard), sama = dengan / oleh (with, by), terus = lalu (then).
+    examples:
+      - text: Filsafat mengajukan pertanyaan yang mendasar.
+        ar_eg: الفلسفة بتسأل أسئلة جوهرية.
+        ar: تطرح الفلسفة أسئلة جوهرية.
+        en: Philosophy asks fundamental questions.
+      - text: Persepsi kita bisa dipengaruhi bias.
+        ar_eg: إدراكنا ممكن يتأثر بالتحيز.
+        ar: قد يتأثّر إدراكنا بالتحيّز.
+        en: Our perception can be shaped by bias.
+      - text: Membaca dengan cermat menambah wawasan.
+        ar_eg: القراية بدقة بتوسّع الأفق.
+        ar: القراءة المتأنّية توسّع الأفق.
+        en: Reading carefully broadens your horizons.
 exercises:
   - id: e01
+    type: match_pairs
+    pairs:
+      - text: filsafat
+        ar_eg: فلسفة
+        ar: فلسفة
+        en: philosophy
+      - text: persepsi
+        ar_eg: إدراك
+        ar: إدراك
+        en: perception
+      - text: wawasan
+        ar_eg: سعة الأفق
+        ar: اطّلاع، بصيرة
+        en: insight, breadth of knowledge
+      - text: bias
+        ar_eg: تحيز
+        ar: تحيّز
+        en: bias
+    words: [filsafat, persepsi, wawasan, bias]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: ideologi
+        ar_eg: أيديولوجيا
+        ar: أيديولوجيا
+        en: ideology
+      - text: konvensional
+        ar_eg: تقليدي
+        ar: تقليدي
+        en: conventional
+      - text: mendasar
+        ar_eg: جوهري
+        ar: جوهري
+        en: fundamental
+      - text: cermat
+        ar_eg: دقيق
+        ar: دقيق، متأنٍّ
+        en: careful
+    words: [ideologi, konvensional, mendasar, cermat]
+  - id: e03
+    type: listen
+    text: Bacalah pertanyaan ini dengan cermat sebelum menjawab.
+    question:
+      ar_eg: نقرا السؤال إزاي؟
+      ar: كيف نقرأ السؤال؟
+      en: How should we read the question?
+    options: [بدقة, بسرعة, بصوت عالي]
+    answer: 0
+    meaning:
+      ar_eg: اقرا السؤال ده بدقة قبل ما تجاوب.
+      ar: اقرأ هذا السؤال بتأنٍّ قبل أن تجيب.
+      en: Read this question carefully before answering.
+    words: [cermat]
+  - id: e04
+    type: fill_blank
+    sentence: Pancasila adalah ___ negara Indonesia.
+    meaning:
+      ar_eg: البانتشاسيلا هي ___ الدولة الإندونيسية.
+      ar: البانتشاسيلا ___ الدولة الإندونيسية.
+      en: Pancasila is the Indonesian state's ___.
+    options: [ideologi, persepsi, wawasan]
+    answers: [ideologi]
+    words: [ideologi, persepsi, wawasan]
+    explain:
+      ar_eg: "البانشاسيلا أيديولوجيا الدولة: ideologi. persepsi = إدراك وwawasan = أفق/معرفة."
+      ar: البانتشاسيلا أيديولوجيا الدولة ideologi؛ أمّا persepsi فإدراك، وwawasan سعة اطّلاع.
+      en: Pancasila is the state ideologi. persepsi is perception, and wawasan broad knowledge.
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة masukan لطيفة؟
-      ar: أيّ جملة masukan لطيفة؟
-      en: Which sentence is a kind masukan?
-    options:
-      - Esaimu jelek.
-      - Mungkin kalimat ini bisa lebih pendek.
-      - Saya tidak mau membacanya.
+      ar_eg: الباحث اللي بيختار البيانات اللي تعجبه بس، عنده إيه؟
+      ar: الباحث الذي ينتقي البيانات التي تعجبه فقط لديه…
+      en: A researcher who picks only the data he likes has…
+    options: [filsafat, bias, cermat]
     answer: 1
-    words: [masukan]
-  - id: e02
-    type: listen
-    text: Terima kasih atas umpan baliknya. Saya akan merevisi paragraf kedua.
-    question:
-      ar_eg: هيعمل إيه بعد الفيدباك؟
-      ar: ماذا سيفعل بعد الملاحظات؟
-      en: What will he do after the feedback?
-    options:
-      - هيمسح المقال.
-      - هيزعل من صاحبه.
-      - هيعدّل الفقرة التانية.
-    answer: 2
-    words: [umpan balik, revisi]
-  - id: e03
+    explain:
+      ar_eg: bias = تحيز.
+      ar: bias = تحيّز.
+      en: bias = bias.
+    words: [bias, filsafat, cermat]
+  - id: e06
     type: fill_blank
-    sentence: Dosen memberi ___ tertulis di setiap draf.
+    sentence: Bank ___ berbeda dengan bank syariah.
     meaning:
-      ar_eg: الدكتور بيدي فيدباك مكتوب على كل مسودة.
-      ar: يقدّم الأستاذ ملاحظات مكتوبة على كلّ مسوّدة.
-      en: The lecturer gives written feedback on every draft.
-    options: [umpan balik, salah ketik, kerangka]
-    answers: [umpan balik]
-    words: [umpan balik, draf]
-  - id: e04
+      ar_eg: البنك ___ غير البنك الإسلامي.
+      ar: يختلف البنك ___ عن البنك الإسلامي.
+      en: A ___ bank differs from an Islamic bank.
+    options: [konvensional, mendasar, bias]
+    answers: [konvensional]
+    words: [konvensional, mendasar, bias]
+    explain:
+      ar_eg: البنك العادي بيتقال له konvensional قصاد الإسلامي. mendasar = أساسي وbias = تحيّز.
+      ar: البنك التقليدي konvensional مقابل الإسلامي؛ أمّا mendasar فجوهري، وbias تحيّز.
+      en: A conventional bank, konvensional, versus an Islamic one. mendasar is fundamental, and bias bias.
+  - id: e07
+    type: multiple_choice
+    question: Perbedaan antara keduanya sangat ___, bukan kecil.
+    options: [persepsi, ideologi, mendasar]
+    answer: 2
+    explain:
+      ar_eg: mendasar = جوهري، من dasar (أساس).
+      ar: mendasar = جوهري، من dasar (أساس).
+      en: mendasar = fundamental, from dasar (basis).
+    words: [mendasar, persepsi, ideologi]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: شكرًا على اقتراحك.
-      ar: شكرًا على اقتراحك.
-      en: Thank you for your suggestion.
-    answer: Terima kasih atas masukannya.
-    distractors: [umpan, balik]
-    words: [masukan]
-  - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الأطروحة بتاعتك واضحة جدًا، بس المصدر ده مش موثوق.
-      ar: أطروحتك واضحة جدًّا، لكنّ هذا المصدر غير موثوق.
-      en: Your thesis is very clear, but this source isn't trustworthy.
-    answers:
-      - Tesismu jelas sekali, tetapi sumber ini tidak terpercaya.
-      - Tesismu sangat jelas, tetapi sumber ini tidak terpercaya.
-      - Tesismu jelas sekali, tapi sumber ini tidak terpercaya.
-      - Tesis kamu sangat jelas, tetapi sumber ini tidak terpercaya.
-    words: [tesis, terpercaya]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الفيدباك «الساندوتش» بيبدأ بإيه؟
-      ar: بمَ تبدأ ملاحظات «الشطيرة»؟
-      en: How does "sandwich" feedback start?
-    options:
-      - بحاجة حلوة في المقال.
-      - بأكبر غلطة.
-      - بالدرجة.
-    answer: 0
-    words: [umpan balik]
-  - id: e07
-    type: speaking
-    text: Secara keseluruhan, esaimu meyakinkan. Masukan saya hanya satu.
-    meaning:
-      ar_eg: في المجمل، مقالك مقنع. عندي اقتراح واحد بس.
-      ar: إجمالًا، مقالك مقنع، ولديّ اقتراح واحد فقط.
-      en: Overall, your essay is convincing. I have just one suggestion.
-    words: [masukan, meyakinkan]
-  - id: e08
-    type: dictation
-    text: Umpan balik dari teman membantu saya menemukan kelemahan esai.
-    meaning:
-      ar_eg: فيدباك صحابي ساعدني ألاقي نقط الضعف في المقال.
-      ar: ساعدتني ملاحظات زملائي في اكتشاف مواطن ضعف المقال.
-      en: Feedback from friends helped me find the essay's weaknesses.
-    words: [umpan balik, kelemahan]
+      ar_eg: السفر بيوسّع أفقنا.
+      ar: السفر يوسّع أفقنا.
+      en: Travel broadens our horizons.
+    answer: Perjalanan menambah wawasan kita.
+    distractors: [bias, cermat]
+    words: [wawasan]
+    explain:
+      ar_eg: «بيوسّع أفقنا» = menambah wawasan kita. bias وcermat مش في المعنى.
+      ar: «يوسّع آفاقنا» menambah wawasan kita؛ أمّا bias وcermat فليستا في المعنى.
+      en: "\"Broadens our horizons\" is menambah wawasan kita. bias and cermat aren't in the meaning."
   - id: e09
-    type: fill_blank
-    sentence: Jangan langsung membela diri. Dengarkan dulu ___ teman-temanmu.
-    meaning:
-      ar_eg: ماتدافعش عن نفسك على طول. اسمع اقتراحات صحابك الأول.
-      ar: لا تسارع إلى الدفاع عن نفسك، واستمع أوّلًا إلى اقتراحات زملائك.
-      en: Don't get defensive right away. Listen to your friends' suggestions first.
-    options: [masukan, plagiarisme, situs]
-    answers: [masukan]
-    words: [masukan]
+    type: translate
+    direction: from_target
+    source_text: Ibnu Rusyd menulis tentang filsafat dan agama.
+    answers_meaning:
+      ar_eg: [ابن رشد كتب عن الفلسفة والدين, ابن رشد ألّف في الفلسفة والدين]
+      ar: [كتب ابن رشد عن الفلسفة والدين]
+      en: [Ibn Rushd wrote about philosophy and religion, Averroes wrote on philosophy and religion]
+    words: [filsafat]
   - id: e10
     type: speaking
-    text: Kerangkamu bagus. Mungkin urutan butir kedua dan ketiga bisa ditukar.
+    text: Cara berpikir yang konvensional sering penuh bias.
     meaning:
-      ar_eg: الهيكل بتاعك حلو. يمكن ترتيب النقطة التانية والتالتة يتبدّل.
-      ar: هيكلك جيّد، وربّما يمكن تبديل ترتيب النقطتين الثانية والثالثة.
-      en: Your outline is good. Maybe points two and three could swap places.
-    words: [kerangka, urutan, butir]
+      ar_eg: طريقة التفكير التقليدية كتير بتبقى مليانة تحيز.
+      ar: كثيرًا ما تمتلئ طريقة التفكير التقليدية بالتحيّز.
+      en: Conventional thinking is often full of bias.
+    words: [konvensional, bias]
 dialogue:
-  title: Tukar esai
   lines:
     - speaker: Rani
-      text: Mohamed, kita tukar esai, ya. Kamu baca punyaku, aku baca punyamu.
-      ar_eg: يا محمد، يلا نبدّل المقالات. إنت تقرا بتاعي، وأنا أقرا بتاعك.
-      ar: 'يا محمد، لنتبادل المقالات: تقرأ مقالي وأقرأ مقالك.'
-      en: Mohamed, let's swap essays. You read mine, I'll read yours.
+      text: 'Pertanyaan malam ini mendasar: bisa nggak kita berpikir tanpa bias?'
+      ar_eg: 'سؤال الليلة جوهري: هل نقدر نفكر من غير تحيز؟'
+      ar: 'سؤال الليلة جوهري: هل يمكننا التفكير بلا تحيّز؟'
+      en: 'Tonight''s question is fundamental: can we think without bias?'
     - speaker: Mohamed
-      text: Baik. Tesismu jelas sekali. Masukan saya, paragraf ketiga terlalu panjang.
-      ar_eg: تمام. أطروحتك واضحة جدًا. اقتراحي إن الفقرة التالتة طويلة أوي.
-      ar: حسنًا. أطروحتك واضحة جدًّا، واقتراحي أنّ الفقرة الثالثة طويلة جدًّا.
-      en: 'Okay. Your thesis is very clear. My suggestion: the third paragraph is too long.'
+      text: Sulit. Persepsi kita dibentuk sama keluarga, agama, dan ideologi.
+      ar_eg: صعب. إدراكنا بيتشكّل من العيلة والدين والأيديولوجيا.
+      ar: صعب. يتشكّل إدراكنا بالأسرة والدين والأيديولوجيا.
+      en: Hard. Our perception is shaped by family, religion and ideology.
     - speaker: Rani
-      text: Terima kasih atas masukannya. Esaimu meyakinkan, tetapi satu sumbernya anonim.
-      ar_eg: شكرًا على الاقتراح. مقالك مقنع، بس فيه مصدر من غير اسم.
-      ar: شكرًا على اقتراحك. مقالك مقنع، لكنّ أحد مصادره مجهول.
-      en: Thanks for the suggestion. Your essay's convincing, but one source is anonymous.
+      text: Terus kita bisa apa?
+      ar_eg: طب نعمل إيه؟
+      ar: فماذا نستطيع أن نفعل؟
+      en: So what can we do?
     - speaker: Mohamed
-      text: Benar. Saya ganti dengan jurnal ilmiah. Umpan balikmu sangat membantu.
-      ar_eg: صح. هبدّله بمجلة علمية. الفيدباك بتاعك مفيد جدًا.
-      ar: صحيح، سأستبدله بمجلّة علمية. ملاحظاتك مفيدة جدًّا.
-      en: True. I'll swap it for a journal article. Your feedback really helps.
+      text: Membaca dengan cermat dan menambah wawasan. Ibnu Rusyd juga bilang begitu.
+      ar_eg: نقرا بدقة ونوسّع أفقنا. ابن رشد قال كده برضه.
+      ar: أن نقرأ بتأنٍّ ونوسّع أفقنا. وهذا ما قاله ابن رشد أيضًا.
+      en: Read carefully and broaden our horizons. Ibn Rushd said as much.
+    - speaker: Rani
+      text: Wah, filsafat Arab di kafe Medan! Ini tidak konvensional.
+      ar_eg: الله، فلسفة عربي في كافيه في ميدان! ده مش تقليدي خالص.
+      ar: يا للروعة، فلسفة عربية في مقهى في ميدان! هذا غير تقليدي.
+      en: Wow, Arab philosophy in a Medan café! That's unconventional.
 new_words:
-  - word: umpan balik
+  - word: filsafat
     pos: noun
-    ar_eg: فيدباك / رأي
-    ar: تغذية راجعة، ملاحظات
-    en: feedback
-  - word: masukan
+    arabic: فلسفة
+    ar_eg: فلسفة
+    ar: فلسفة
+    en: philosophy
+  - word: persepsi
     pos: noun
-    ar_eg: اقتراح للتحسين
-    ar: اقتراح، ملاحظة
-    en: input, suggestion
+    ar_eg: إدراك، طريقة الشوف
+    ar: إدراك، تصوّر
+    en: perception
+  - word: wawasan
+    pos: noun
+    ar_eg: سعة الأفق، معرفة
+    ar: اطّلاع، سعة أفق
+    en: insight, breadth of knowledge
+  - word: bias
+    pos: noun
+    ar_eg: تحيز
+    ar: تحيّز
+    en: bias
+  - word: ideologi
+    pos: noun
+    ar_eg: أيديولوجيا
+    ar: أيديولوجيا
+    en: ideology
+  - word: konvensional
+    pos: adjective
+    ar_eg: تقليدي
+    ar: تقليدي
+    en: conventional
+  - word: mendasar
+    pos: adjective
+    ar_eg: جوهري، أساسي
+    ar: جوهري
+    en: fundamental
+  - word: cermat
+    pos: adjective
+    ar_eg: دقيق، واخد باله
+    ar: دقيق، متأنٍّ
+    en: careful, meticulous
 review:
   status: draft
   verified: false

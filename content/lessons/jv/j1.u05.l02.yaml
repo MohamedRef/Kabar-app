@@ -1,279 +1,258 @@
 schema: kabar.lesson/v1
 id: j1.u05.l02
 language: jv
-title: Koen lan awakmu
+title: Mau, mengko, nganti
 can_do:
-  ar_eg: تتعرّف على كلمات لهجة سورابايا (Arek).
-  ar: أن تتعرّف على ألفاظ لهجة سورابايا (Arek).
-  en: Recognise Arek forms.
+  ar_eg: 'تتفق مع صحابك على مشوار للبحر: إمتى نطلع، ولحد إمتى نقعد.'
+  ar: 'أن تتفق مع أصدقائك على رحلة إلى البحر: متى تنطلقون وإلى متى تبقون.'
+  en: 'Plan a beach trip with friends: when you leave and how long you stay.'
 slides:
-  - title: Arek Suroboyo
+  - title: Mengko neng pantai
     body:
       ar_eg: |
-        سورابايا بتتكلم جاوي شرق جاوة اسمه **Arek** (من arek = ولد / ابن البلد؛ Arek Suroboyo = ولاد سورابايا). كلام سريع، مباشر، ومن غير كلفة.
-        زي الفرق بين لهجة إسكندرية أو الصعيد ولهجة القاهرة: نفس اللغة، بس كام كلمة مختلفة.
-        أول كلمة: **koen** (في الشات kon) أو **awakmu** = kowe (إنت) = kamu.
-        وجملة الـ SPEC المشهورة: «Koen wis mangan ta, rek?» = كلت ولا إيه يا صاحبي؟ وبالنغوكو العادي: «Kowe wis mangan to?»
+        كلام الوقت اللي هتسمعه كل يوم في يوجيا:
+        - mau = من شوية (مش «عايز»!): Mau aku wis mangan = كلت من شوية.
+        - mengko = بعدين / كمان شوية: Mengko bengi = بالليل كده.
+        - nganti = لحد: nganti bengi = لحد بالليل.
+        - yen = لو / لما: Yen ombake gedhe, ora usah adus = لو الموج عالي، بلاش نستحمى.
+        ومعاهم: pantai = شط، ombak = موج، motor = موتوسيكل، nongkrong = نقعد نرغي مع الصحاب.
       ar: |
-        تتكلم سورابايا جاوية شرق جاوة المسماة **Arek** (من arek = الولد / ابن البلد؛ Arek Suroboyo = أبناء سورابايا)، وهي سريعة مباشرة بلا تكلّف.
-        كالفرق بين لهجة الإسكندرية أو الصعيد ولهجة القاهرة: لغة واحدة وبعض الألفاظ مختلفة.
-        أولها **koen** (في الدردشة kon) أو **awakmu** = kowe (أنت) = kamu.
-        والجملة المشهورة: «Koen wis mangan ta, rek?» = هل أكلتَ يا صاح؟ وبالنغوكو القياسي: «Kowe wis mangan to?»
+        ألفاظ الوقت اليومية في يوجيا:
+        - mau = منذ قليل (لا «يريد»!): Mau aku wis mangan = أكلت قبل قليل.
+        - mengko = لاحقًا / بعد قليل: Mengko bengi = الليلة.
+        - nganti = حتى: nganti bengi = حتى الليل.
+        - yen = إذا / عندما: Yen ombake gedhe, ora usah adus = إن كان الموج عاليًا فلا تسبح.
+        ومعها: pantai = شاطئ، ombak = موج، motor = دراجة نارية، nongkrong = الجلوس والسمر مع الأصحاب.
       en: |
-        Surabaya speaks East Javanese called **Arek** (from arek = kid / local guy; Arek Suroboyo = Surabaya folks). Fast, direct, no fuss.
-        Think Alexandrian or Saidi versus Cairene Arabic: same language, a handful of different words.
-        First word: **koen** (chat: kon) or **awakmu** = kowe (you) = kamu.
-        The famous line: "Koen wis mangan ta, rek?" = You've eaten, right, mate? In standard ngoko: "Kowe wis mangan to?"
-    grammar: jv.dialect.arek
+        Time words you'll hear every day in Jogja:
+        - mau = a moment ago (not "want"!): Mau aku wis mangan = I ate just now.
+        - mengko = later, in a bit: Mengko bengi = tonight.
+        - nganti = until: nganti bengi = until night.
+        - yen = if, when: Yen ombake gedhe, ora usah adus = If the waves are big, don't swim.
+        Plus: pantai = beach, ombak = wave, motor = motorbike, nongkrong = hang out and chat.
+    grammar: jv.time.expressions
     examples:
-      - text: Koen wis mangan ta, rek?
-        ar_eg: كلت ولا إيه يا صاحبي؟ (Arek)
-        ar: هل أكلتَ يا صاح؟ (Arek)
-        en: You've eaten, right, mate? (Arek)
-      - text: Kowe wis mangan to?
-        ar_eg: إنت كلت، مش كده؟ (النغوكو العادي)
-        ar: لقد أكلت، أليس كذلك؟ (النغوكو القياسي)
-        en: You've eaten, right? (standard ngoko)
-  - title: gak, onok, kate, wes
-    body:
-      ar_eg: |
-        كل كلمة Arek ليها «توأم» في النغوكو العادي (ماتارامان: سولو ويوجيا):
-        - gak = ora (مش) — من الدرس اللي فات.
-        - **onok** = ana (فيه) = ada. gak onok = ora ana = مفيش.
-        - **kate** = arep (هـ / ناوي) = mau / akan. Kate nang endi? = رايح فين؟
-        - wes = wis (خلاص) = sudah.
-        - **teko** = saka (من) = dari: Aku teko Mesir = أنا من مصر. (teko معناها كمان «جه»، والسياق بيفرّق.)
-      ar: |
-        لكل لفظ Arek نظير في النغوكو القياسي (ماتارامان: سولو ويوجيا):
-        - gak = ora (لا / ليس)، من الدرس السابق.
-        - **onok** = ana (يوجد) = ada، وgak onok = ora ana = لا يوجد.
-        - **kate** = arep (سوف / ينوي) = mau / akan: Kate nang endi? = إلى أين؟
-        - wes = wis (قد / انتهى) = sudah.
-        - **teko** = saka (من) = dari: Aku teko Mesir = أنا من مصر. (وتأتي teko أيضًا بمعنى «جاء»، والسياق يفرّق.)
-      en: |
-        Every Arek word has a standard ngoko twin (Mataraman: Solo, Yogya):
-        - gak = ora (not), from last lesson.
-        - **onok** = ana (there is) = ada. gak onok = ora ana = there isn't.
-        - **kate** = arep (going to) = mau / akan. Kate nang endi? = Where are you off to?
-        - wes = wis (already) = sudah.
-        - **teko** = saka (from) = dari: Aku teko Mesir = I'm from Egypt. (teko also means "come"; context decides.)
-    grammar: jv.dialect.arek
-    examples:
-      - text: Gak onok, rek.
-        ar_eg: 'مفيش يا جماعة. (Arek) — العادي: Ora ana.'
-        ar: 'لا يوجد يا جماعة. (Arek) — القياسي: Ora ana.'
-        en: 'There isn''t any, guys. (Arek) — standard: Ora ana.'
-      - text: Kate nang endi, Cak?
-        ar_eg: 'رايح فين يا معلم؟ (Arek) — العادي: Arep neng ngendi, Mas?'
-        ar: 'إلى أين يا أخي؟ (Arek) — القياسي: Arep neng ngendi, Mas?'
-        en: 'Where are you off to, brother? (Arek) — standard: Arep neng ngendi, Mas?'
-  - title: Yok opo? Lapo?
-    body:
-      ar_eg: |
-        كلمتين سؤال بتوع سورابايا:
-        - **yok opo** (في الشات yaopo) = piye = bagaimana = إزاي. Yok opo kabare? = أخبارك إيه؟
-        - **lapo** = ngapa = kenapa / ngapain = ليه / بتعمل إيه. Lapo koen? = مالك؟ / بتعمل إيه؟
-        وافتكر إن Arek بتنطق a في آخر الكلمة o وبتكتبها كده: opo = apa، sopo = sapa، piro = pira.
-      ar: |
-        أداتا استفهام من سورابايا:
-        - **yok opo** (في الدردشة yaopo) = piye = bagaimana = كيف: Yok opo kabare? = كيف حالك؟
-        - **lapo** = ngapa = kenapa / ngapain = لماذا / ماذا تفعل: Lapo koen? = ما بك؟ / ماذا تفعل؟
-        وتذكّر أن الألف الأخيرة تُنطق o وتُكتب كذلك: opo = apa، sopo = sapa، piro = pira.
-      en: |
-        Two Surabaya question words:
-        - **yok opo** (chat: yaopo) = piye = bagaimana = how. Yok opo kabare? = How are you?
-        - **lapo** = ngapa = kenapa / ngapain = why / what are you doing. Lapo koen? = What's up with you? / What are you doing?
-        Remember final a is said and typed o: opo = apa, sopo = sapa, piro = pira.
-    grammar: jv.dialect.arek
-    examples:
-      - text: Yok opo kabare?
-        ar_eg: 'أخبارك إيه؟ (Arek) — العادي: Piye kabare?'
-        ar: 'كيف حالك؟ (Arek) — القياسي: Piye kabare?'
-        en: 'How are you? (Arek) — standard: Piye kabare?'
-      - text: Lapo koen gak mangan?
-        ar_eg: 'مابتاكلش ليه؟ (Arek) — العادي: Ngapa kowe ora mangan?'
-        ar: 'لماذا لا تأكل؟ (Arek) — القياسي: Ngapa kowe ora mangan?'
-        en: 'Why aren''t you eating? (Arek) — standard: Ngapa kowe ora mangan?'
-  - title: ae, ta, rek, cak, ning · Koen, kowe, sampeyan
-    body:
-      ar_eg: |
-        والبهارات اللي بتعرّفك إن اللي قدامك من سورابايا:
-        - **ae** = wae = saja = بس: Teh ae = شاي بس.
-        - **ta** = to = kan? = مش كده؟ (في آخر الجملة).
-        - **rek** = يا جماعة / يا صاحبي، **cak** = mas، **ning** = mbak.
-        علامة سريعة: ta وae ⇐ سورابايا. to وwae ⇐ وسط جاوة.
-        koen للصحاب بس، زي «إنت» مع واحد من سنك. مع حد أكبر منك، حتى في سورابايا، بيقولوا **sampeyan** (حضرتك العادية) أو Pak / Bu.
-        والجاوي بيغيّر كلمات كاملة، مش الضمير بس. بص «إنت كلت؟» بتلات مستويات:
-        - ngoko (≈ إنت): Kowe wis mangan?
-        - krama (≈ حضرتك): Sampeyan sampun nedha?
-        - krama inggil (≈ سيادتك): Panjenengan sampun dhahar?
-        مش مطلوب تحفظ الاتنين التانيين دلوقتي؛ هنتعلمهم في سولو (J3). المهم تعرف إن koen مش لأي حد.
-      ar: |
-        وهذه «توابل» تكشف أن المتكلم من سورابايا:
-        - **ae** = wae = saja = فقط: Teh ae = شاي فقط.
-        - **ta** = to = kan? = أليس كذلك؟ في آخر الجملة.
-        - **rek** = يا جماعة / يا صاح، و**cak** = mas، و**ning** = mbak.
-        علامة سريعة: ta وae ⇐ سورابايا، وto وwae ⇐ وسط جاوة.
-        koen للأقران فقط، كـ«أنت» مع من في سنك. ومع الأكبر يقال حتى في سورابايا **sampeyan** (حضرتك) أو Pak / Bu.
-        والجاوية تبدّل ألفاظًا كاملة لا الضمير وحده. انظر «هل أكلت؟» في ثلاثة مستويات:
-        - ngoko (≈ أنت): Kowe wis mangan?
-        - krama (≈ حضرتك): Sampeyan sampun nedha?
-        - krama inggil (≈ سيادتك): Panjenengan sampun dhahar?
-        لا يلزم حفظ الأخيرتين الآن، فسنتعلمهما في سولو (J3)؛ المهم أن koen ليست لكل أحد.
-      en: |
-        And the spices that tell you someone is from Surabaya:
-        - **ae** = wae = saja = just: Teh ae = Just tea.
-        - **ta** = to = kan? = right? (at the end).
-        - **rek** = guys / mate, **cak** = mas, **ning** = mbak.
-        Quick tell: ta and ae ⇒ Surabaya; to and wae ⇒ Central Java.
-        koen is for friends only, like a casual "you" with people your age. With anyone older, even in Surabaya, people say **sampeyan** (polite everyday you) or Pak / Bu.
-        Javanese swaps whole words, not just the pronoun. Here's "Have you eaten?" at three levels:
-        - ngoko (≈ إنت): Kowe wis mangan?
-        - krama (≈ حضرتك): Sampeyan sampun nedha?
-        - krama inggil (≈ سيادتك): Panjenengan sampun dhahar?
-        No need to learn the last two yet; they come in Solo (J3). Just know koen isn't for everyone.
-    grammar: jv.dialect.arek
-    examples:
-      - text: Ayo, rek!
-        ar_eg: يلا يا جماعة!
-        ar: هيا يا جماعة!
-        en: Come on, guys!
-      - text: Kopi ae, Ning.
-        ar_eg: قهوة بس يا آنسة. (Arek)
-        ar: قهوة فقط يا آنسة. (Arek)
-        en: Just coffee, Ning. (Arek)
-      - text: Sampeyan wis mangan, Pak?
-        ar_eg: حضرتك كلت يا حاج؟ (سورابايا، مؤدب في الكلام اليومي)
-        ar: هل أكلتَ يا سيدي؟ (سورابايا، مهذب يومي)
-        en: Have you eaten, sir? (Surabaya, everyday polite)
+      - text: Mengko awan ayo neng pantai numpak motor!
+        ar_eg: كمان شوية الضهر يلا على الشط بالموتوسيكل!
+        ar: لاحقًا ظهرًا هيا إلى الشاطئ بالدراجة النارية!
+        en: Later at noon let's ride to the beach!
+      - text: Mau aku wis tuku bensin.
+        ar_eg: أنا جبت بنزين من شوية.
+        ar: اشتريت الوقود قبل قليل.
+        en: I already got petrol just now.
+      - text: Yen ora udan, nongkrong nganti bengi.
+        ar_eg: لو مافيش مطر، نقعد نرغي لحد بالليل.
+        ar: إن لم تمطر نسهر حتى الليل.
+        en: If it doesn't rain, we'll hang out till night.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: awakmu
-        ar_eg: إنت (= kowe)
-        ar: أنت (= kowe)
-        en: you (= kowe)
-      - text: onok
-        ar_eg: فيه (= ana)
-        ar: يوجد (= ana)
-        en: there is (= ana)
-      - text: kate
-        ar_eg: هـ / ناوي (= arep)
-        ar: سوف (= arep)
-        en: going to (= arep)
-      - text: teko
-        ar_eg: من (= saka)
-        ar: مِن (= saka)
-        en: from (= saka)
-      - text: koen
-        ar_eg: إنت (= kowe)
-        ar: أنت (= kowe)
-        en: you (= kowe)
-      - text: gak
-        ar_eg: مش (= ora)
-        ar: لا (= ora)
-        en: not (= ora)
-    words: [awakmu, onok, kate, teko, koen, gak]
+      - text: mau
+        ar_eg: من شوية
+        ar: قبل قليل
+        en: a moment ago
+      - text: mengko
+        ar_eg: بعدين
+        ar: لاحقًا
+        en: later
+      - text: nganti
+        ar_eg: لحد
+        ar: حتى
+        en: until
+      - text: yen
+        ar_eg: لو / لما
+        ar: إذا
+        en: if, when
+    words: [mau, mengko, nganti, yen]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: قابلت جد صاحبك في سورابايا. تقوله «إنت» إزاي؟
-      ar: قابلت جدّ صديقك في سورابايا. بأيّ لفظ تخاطبه؟
-      en: You meet your friend's grandfather in Surabaya. Which "you" fits?
-    options: [koen, sampeyan, awakmu]
-    answer: 1
-    explain:
-      ar_eg: koen وawakmu للصحاب بس. للكبير sampeyan (أو Pak / Mbah).
-      ar: koen وawakmu للأقران، وللكبير sampeyan.
-      en: koen and awakmu are for friends; an older person gets sampeyan.
-    words: [sampeyan, koen, awakmu]
+    type: match_pairs
+    pairs:
+      - text: pantai
+        ar_eg: شط
+        ar: شاطئ
+        en: beach
+      - text: ombak
+        ar_eg: موج
+        ar: موج
+        en: waves
+      - text: motor
+        ar_eg: موتوسيكل
+        ar: دراجة نارية
+        en: motorbike
+      - text: nongkrong
+        ar_eg: يقعد يرغي
+        ar: يسمر مع الأصحاب
+        en: hang out
+    words: [pantai, ombak, motor, nongkrong]
   - id: e03
     type: listen
-    text: Yok opo kabare?
-    options: ['Yok opo kabare?', 'Onok opo, rek?', 'Awakmu teko endi?']
+    text: Mengko neng pantai numpak motor, ya.
+    question:
+      ar_eg: هيروحوا فين وإزاي؟
+      ar: إلى أين سيذهبون وكيف؟
+      en: Where are they going, and how?
+    options: [على الشط بالموتوسيكل بعدين, على البيت بالقطر, على السوق دلوقتي]
     answer: 0
-    words: [yok opo, kabar, onok, awakmu, teko]
+    meaning:
+      ar_eg: بعدين نروح الشط بالموتوسيكل، ماشي؟
+      ar: لاحقًا نذهب إلى الشاطئ بالدراجة النارية، حسنًا؟
+      en: Later we'll ride to the beach, OK?
+    words: [mengko, pantai, motor]
   - id: e04
     type: fill_blank
-    sentence: Awakmu ___ endi?
+    sentence: Aku neng pantai ___ bengi.
     meaning:
-      ar_eg: إنت منين؟ (Arek)
-      ar: من أين أنت؟ (Arek)
-      en: Where are you from? (Arek)
-    options: [teko, kate, onok]
-    answers: [teko]
+      ar_eg: أنا في الشط لحد بالليل.
+      ar: أنا على الشاطئ حتى الليل.
+      en: I'm at the beach until night.
+    options: [nganti, mau, yen]
+    answers: [nganti]
+    words: [nganti, mau, yen, pantai]
     explain:
-      ar_eg: teko = saka (من). kate = هـ، onok = فيه.
-      ar: teko = saka (مِن)، وkate = سوف، وonok = يوجد.
-      en: teko = saka (from); kate = going to, onok = there is.
-    words: [awakmu, teko]
+      ar_eg: nganti bengi = لحد بالليل. mau = من شوية، وyen = لو.
+      ar: nganti bengi = حتى الليل؛ أما mau فقبل قليل، وyen إذا.
+      en: nganti bengi = until night. mau = a while ago, yen = if.
   - id: e05
+    type: multiple_choice
+    question: Mau aku wis mangan.
+    question_meaning:
+      ar_eg: 'Tembung kembar: صاحبك قالك كده. يقصد إيه؟'
+      ar: 'Tembung kembar: قالها صديقك. ماذا يقصد؟'
+      en: 'Tembung kembar: your friend says this. What does he mean?'
+    options: [كلت من شوية, عايز آكل, هاكل بعدين]
+    answer: 0
+    explain:
+      ar_eg: mau هنا = من شوية (tadi)، مش «عايز». و«عايز» = arep / pengin.
+      ar: mau هنا = منذ قليل (tadi) لا «يريد»، والإرادة arep / pengin.
+      en: mau here = a moment ago (tadi), not Indonesian mau "want"; in Javanese "want" is arep or pengin.
+    words: [mau, mengko]
+  - id: e06
+    type: fill_blank
+    sentence: ___ ombake gedhe, ora usah adus.
+    meaning:
+      ar_eg: لو الموج عالي، ماتستحماش.
+      ar: إن كان الموج عاليًا فلا تسبح.
+      en: If the waves are big, don't swim.
+    options: [Yen, Mau, Nganti]
+    answers: [Yen]
+    words: [yen, ombak, nganti]
+    explain:
+      ar_eg: "yen = لو، بتبدأ الشرط: لو الموج عالي متنزلش. mau = من شوية، وnganti = لحد."
+      ar: "yen = إذا، تبدأ الشرط: إذا كان الموج عاليًا فلا تسبح؛ أما mau فقبل قليل، وnganti حتى."
+      en: yen = if, opening the condition. mau = a while ago, nganti = until.
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: رايح فين يا معلم؟ (Arek)
-      ar: إلى أين يا أخي؟ (Arek)
-      en: Where are you off to, brother? (Arek)
-    answer: Kate nang endi, Cak?
-    distractors: [sapa, onok]
-    words: [kate, nang, endi, cak]
-  - id: e06
+      ar_eg: يلا نقعد نرغي على الشط.
+      ar: هيا نسمر على الشاطئ.
+      en: Let's hang out at the beach.
+    answer: Ayo nongkrong neng pantai.
+    distractors: [motor, mau]
+    words: [nongkrong, pantai]
+    explain:
+      ar_eg: ayo nongkrong = يلا نقعد / نروّق، وneng pantai = على البحر. motor = موتوسيكل، وmau = من شوية، ومش في المعنى.
+      ar: ayo nongkrong = هيا نجلس ونستمتع، وneng pantai = على الشاطئ؛ أما motor فدراجة نارية، وmau قبل قليل، وليسا في المعنى.
+      en: ayo nongkrong = let's hang out, neng pantai = at the beach. motor and mau aren't in the meaning.
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Yen ombake gedhe, nongkrong wae neng pasir.
+    answers_meaning:
+      ar_eg: [لو الموج عالي، نقعد نرغي على الرملة وخلاص, لما الموج يبقى عالي، نقعد على الرمل وبس]
+      ar: [إن كان الموج عاليًا فلنجلس على الرمل فحسب, إذا علا الموج نجلس على الرمل لا غير]
+      en: ['If the waves are big, we''ll just hang out on the sand', 'When the waves are high, just sit on the sand']
+    words: [yen, ombak, nongkrong]
+  - id: e09
     type: speaking
-    text: Onok kopi, rek? Aku kate tuku.
+    text: Mengko aku neng pantai numpak motor.
     meaning:
-      ar_eg: فيه قهوة يا جماعة؟ أنا عايز أشتري.
-      ar: هل توجد قهوة يا رفاق؟ أريد أن أشتري.
-      en: Is there coffee, guys? I'm going to buy some.
-    words: [onok, kopi, rek, kate, tuku]
+      ar_eg: بعدين هروح الشط بالموتوسيكل.
+      ar: لاحقًا أذهب إلى الشاطئ بالدراجة النارية.
+      en: Later I'm riding to the beach.
+    words: [mengko, pantai, motor]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «موج»؟
+      ar: أيّ كلمة تعني «موج»؟
+      en: Which word means "waves"?
+    options: [ombak, motor, pantai]
+    answer: 0
+    explain:
+      ar_eg: ombak = موج، وombake gedhe = الموج عالي.
+      ar: ombak = موج، وombake gedhe = الموج عالٍ.
+      en: ombak = waves; ombake gedhe = the waves are big.
+    words: [ombak, motor, pantai]
 dialogue:
-  title: Nang Kenjeran
   lines:
-    - speaker: Cak Heru
-      text: Yok opo kabare, Mohamed?
-      ar_eg: أخبارك إيه يا محمد؟
-      ar: كيف حالك يا محمد؟
-      en: How are you, Mohamed?
+    - speaker: Mas Heru
+      text: Cah, mengko awan neng Parangtritis, piye?
+      ar_eg: يا جماعة، بعدين الضهر نروح باراندجتريتيس، إيه رأيكم؟
+      ar: يا رفاق، ما رأيكم أن نذهب ظهرًا إلى باراندجتريتيس؟
+      en: Guys, how about Parangtritis this afternoon?
     - speaker: Mohamed
-      text: Apik, Cak. Koen kate nang endi?
-      ar_eg: كويس يا معلم. إنت رايح فين؟
-      ar: بخير يا أخي. إلى أين أنت ذاهب؟
-      en: Good, Cak. Where are you off to?
-    - speaker: Cak Heru
-      text: Nang warung. Koen wis mangan ta, rek?
-      ar_eg: على المحل. إنت كلت ولا إيه يا صاحبي؟
-      ar: إلى المطعم الصغير. هل أكلتَ يا صاح؟
-      en: To the warung. You've eaten, right, mate?
+      text: Ayo! Numpak motor?
+      ar_eg: يلا! بالموتوسيكل؟
+      ar: هيا! بالدراجة النارية؟
+      en: Let's go! By motorbike?
+    - speaker: Mas Heru
+      text: Iya. Mau aku wis tuku bensin.
+      ar_eg: أيوه. أنا جبت بنزين من شوية.
+      ar: نعم. اشتريت الوقود قبل قليل.
+      en: Yes. I got petrol just now.
     - speaker: Mohamed
-      text: Durung, Cak.
-      ar_eg: لسه يا معلم.
-      ar: ليس بعد يا أخي.
-      en: Not yet, Cak.
-    - speaker: Cak Heru
-      text: Lho, lapo durung? Ayo, rek!
-      ar_eg: إيه ده، لسه ليه؟ يلا يا صاحبي!
-      ar: ماذا؟ لماذا لم تأكل بعد؟ هيا يا صاح!
-      en: What? Why not yet? Come on, mate!
+      text: Apik. Neng pantai nganti bengi?
+      ar_eg: حلو. هنقعد على الشط لحد بالليل؟
+      ar: جميل. نبقى على الشاطئ حتى الليل؟
+      en: Great. At the beach till night?
+    - speaker: Mas Heru
+      text: Yen ora udan, nongkrong nganti bengi!
+      ar_eg: لو مانزلتش مطر، نقعد نرغي لحد بالليل!
+      ar: إن لم تمطر نسهر حتى الليل!
+      en: If it doesn't rain, we hang out till night!
 new_words:
-  - word: awakmu
-    pos: pronoun
-    ar_eg: إنت (Arek، = kowe)
-    ar: أنت (Arek، = kowe)
-    en: you (Arek, = kowe)
-  - word: onok
-    pos: verb
-    ar_eg: فيه (Arek، = ana / ada)
-    ar: يوجد (Arek، = ana / ada)
-    en: there is (Arek, = ana / ada)
-  - word: kate
+  - word: mau
     pos: adverb
-    ar_eg: هـ / ناوي (Arek، = arep)
-    ar: سوف / ينوي (Arek، = arep)
-    en: going to (Arek, = arep)
-  - word: teko
-    pos: preposition
-    ar_eg: من (Arek، = saka / dari)؛ وكمان «جه»
-    ar: من (Arek، = saka / dari)؛ وتأتي بمعنى «جاء» أيضًا
-    en: from (Arek, = saka / dari); also "come"
+    ar_eg: من شوية (= tadi) (≠ إندونيسي mau = عايز)
+    ar: قبل قليل (= tadi) (≠ الإندونيسية mau = يريد)
+    en: a moment ago (= tadi) (≠ Indonesian mau "want")
+    false_friend: mau
+  - word: mengko
+    pos: adverb
+    ar_eg: بعدين، كمان شوية (= nanti)
+    ar: لاحقًا (= nanti)
+    en: later (= nanti)
+  - word: nganti
+    pos: conjunction
+    ar_eg: لحد (= sampai)
+    ar: حتى (= sampai)
+    en: until (= sampai)
+  - word: yen
+    pos: conjunction
+    ar_eg: لو، لما (= kalau)
+    ar: إذا (= kalau)
+    en: if, when (= kalau)
+  - word: pantai
+    pos: noun
+    ar_eg: شط، بلاج
+    ar: شاطئ
+    en: beach
+  - word: ombak
+    pos: noun
+    ar_eg: موج
+    ar: موج
+    en: wave(s)
+  - word: motor
+    pos: noun
+    ar_eg: موتوسيكل
+    ar: دراجة نارية
+    en: motorbike
+  - word: nongkrong
+    pos: verb
+    ar_eg: يقعد يرغي مع الصحاب
+    ar: يسمر مع الأصحاب
+    en: to hang out
 review:
   status: draft
   verified: false

@@ -241,6 +241,8 @@ object UpdateInstaller {
         prefs.edit().clear().apply()
         val nm = context.getSystemService(NotificationManager::class.java) ?: return
         nm.cancel(CONFIRM_NOTIFICATION_ID)
+        // "A new Kabar is out" is done with once it's in.
+        UpdateNotice.clear(context)
         if (!nm.areNotificationsEnabled()) return
         ensureChannel(nm)
         val launch = context.packageManager.getLaunchIntentForPackage(context.packageName) ?: return
@@ -265,7 +267,10 @@ object UpdateInstaller {
 class UpdateInstallReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
-            Intent.ACTION_MY_PACKAGE_REPLACED -> UpdateInstaller.notifyUpdated(context)
+            Intent.ACTION_MY_PACKAGE_REPLACED -> {
+                UpdateInstaller.notifyUpdated(context)
+                UpdateNotice.rescheduleIfOn(context)
+            }
             UpdateInstaller.ACTION_STATUS -> status(context, intent)
         }
     }

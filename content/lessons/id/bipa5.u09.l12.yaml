@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: bipa5.u09.l12
+language: id
+title: Ulangan Unit 9
+can_do:
+  ar_eg: تشرح إزاي الإندونيسي بيتغيّر من مكان لمكان ومن موقف لموقف.
+  ar: أن تشرح تنوّع الإندونيسية بين الأماكن والمقامات.
+  en: Explain how Indonesian varies from place to place and situation to situation.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kata serapan
+        ar_eg: كلمة دخيلة
+        ar: كلمة دخيلة
+        en: loanword
+      - text: bahasa baku
+        ar_eg: الفصيح
+        ar: اللغة الفصحى
+        en: standard language
+      - text: logat
+        ar_eg: لهجة / نطق
+        ar: لكنة
+        en: accent
+      - text: ejaan
+        ar_eg: إملا
+        ar: إملاء
+        en: spelling
+      - text: mirip
+        ar_eg: شبه
+        ar: يشبه
+        en: similar
+    words: [kata serapan, bahasa baku, logat, ejaan, mirip]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة أصلها برتغالي؟
+      ar: أيّ كلمة أصلها برتغالي؟
+      en: Which word comes from Portuguese?
+    options: [ilmu, sepatu, agama]
+    answer: 1
+    words: [berasal dari, kata serapan]
+    explain:
+      ar_eg: sepatu من البرتغالي sapato. ilmu عربي (علم)، وagama سنسكريتي.
+      ar: sepatu من البرتغالية sapato. أما ilmu فعربية (علم)، وagama سنسكريتية.
+      en: sepatu comes from Portuguese sapato. ilmu is Arabic and agama Sanskrit.
+  - id: e03
+    type: fill_blank
+    sentence: Di Indonesia ada lebih dari 700 bahasa ___.
+    meaning:
+      ar_eg: في إندونيسيا أكتر من 700 لغة محلية.
+      ar: في إندونيسيا أكثر من 700 لغة محلّية.
+      en: Indonesia has over 700 regional languages.
+    options: [daerah, baku, gaul]
+    answers: [daerah]
+    words: [bahasa daerah]
+    explain:
+      ar_eg: «لغة محلية» = bahasa daerah. baku = فصحى وgaul = عامية، وده مش ٧٠٠ لغة.
+      ar: «لغة محلّية» = bahasa daerah. أما baku فالفصحى، وgaul العامّية، وليستا سبعمئة لغة.
+      en: "\"Regional language\" is bahasa daerah. baku (standard) and gaul (slang) aren't 700 languages."
+  - id: e04
+    type: listen
+    text: Bunyi "f" dalam bahasa Arab sering berubah menjadi "p".
+    question:
+      ar_eg: صوت «ف» بيبقى إيه؟
+      ar: إلامَ يتحوّل صوت «ف»؟
+      en: What does the "f" sound become?
+    options:
+      - «b».
+      - «k».
+      - «p».
+    answer: 2
+    words: [bunyi, berubah]
+  - id: e05
+    type: listen
+    text: Terjemahan harfiah ungkapan itu tidak identik dengan artinya.
+    question:
+      ar_eg: الترجمة الحرفية عاملة إزاي؟
+      ar: كيف هي الترجمة الحرفية؟
+      en: How does the literal translation compare?
+    options: [مش زي معناه, صح تمامًا, أقصر]
+    answer: 0
+    meaning:
+      ar_eg: الترجمة الحرفية للتعبير ده مش زي معناه.
+      ar: الترجمة الحرفية لذلك التعبير لا تطابق معناه.
+      en: That idiom's literal translation isn't identical to its meaning.
+    words: [harfiah, ungkapan, identik]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: لغة أمي عربي، بس مفرداتي الإندونيسي بتزيد.
+      ar: لغتي الأمّ العربية، لكنّ مفرداتي الإندونيسية تزداد.
+      en: My mother tongue is Arabic, but my Indonesian vocabulary is growing.
+    answer: Bahasa ibu saya bahasa Arab, tetapi kosakata Indonesia saya bertambah.
+    distractors: [logat, kepo]
+    words: [bahasa ibu, kosakata]
+    explain:
+      ar_eg: «لغة أمي» = Bahasa ibu saya و«مفرداتي» = kosakata saya. logat = لهجة وkepo = فضولي، مش في الجملة.
+      ar: «لغتي الأمّ» = Bahasa ibu saya و«مفرداتي» = kosakata saya. أما logat فاللكنة، وkepo «فضولي».
+      en: "\"My mother tongue\" is bahasa ibu saya and \"vocabulary\" kosakata. logat and kepo aren't in it."
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الكلمة دي غلطة منتشرة، الإملا الصح هو izin.
+      ar: هذه الكلمة خطأ شائع، والإملاء الصحيح izin.
+      en: That word is a common mistake; the correct spelling is izin.
+    answers:
+      - Kata itu salah kaprah, ejaan yang benar adalah izin.
+      - Kata itu salah kaprah. Ejaan yang benar izin.
+      - Itu salah kaprah, ejaan yang benar adalah izin.
+      - Kata itu salah kaprah, ejaan yang betul adalah izin.
+    words: [salah kaprah, ejaan, izin]
+  - id: e08
+    type: match_pairs
+    pairs:
+      - text: ngerti
+        ar_eg: فاهم (mengerti)
+        ar: يفهم
+        en: to understand
+      - text: ungkapan
+        ar_eg: تعبير اصطلاحي
+        ar: تعبير اصطلاحي
+        en: idiom
+      - text: karangan
+        ar_eg: إنشا
+        ar: إنشاء
+        en: composition
+      - text: persaudaraan
+        ar_eg: أخوة
+        ar: أخوّة
+        en: brotherhood
+      - text: temen
+        ar_eg: صاحب (teman)
+        ar: صديق
+        en: friend
+    words: [ngerti, ungkapan, karangan, persaudaraan, temen]
+  - id: e09
+    type: dictation
+    text: Bahasa Indonesia sangat beragam dan tidak takut pada kata asing.
+    meaning:
+      ar_eg: الإندونيسي متنوّع قوي ومش خايف من الكلمات الأجنبية.
+      ar: الإندونيسية متنوّعة جدًّا ولا تخشى الكلمات الأجنبية.
+      en: Indonesian is very diverse and isn't afraid of foreign words.
+    words: [beragam, asing]
+  - id: e10
+    type: speaking
+    text: Dengan teman saya santai, tetapi dengan ahli bahasa saya memakai bahasa baku.
+    meaning:
+      ar_eg: مع صحابي برتاح، بس مع خبير اللغة بتكلم فصيح.
+      ar: أكون على راحتي مع أصدقائي، لكنّي أتكلّم الفصحى مع خبير اللغة.
+      en: With friends I'm relaxed, but with a language expert I use standard Indonesian.
+    words: [santai, ahli, bahasa baku]
+  - id: e11
+    type: multiple_choice
+    question: Dalam chat yang penuh campur kode, "cuman" adalah bentuk gaul dari ___.
+    options: [hanya, begini, sepertinya]
+    answer: 0
+    explain:
+      ar_eg: cuman = hanya (بس).
+      ar: cuman = hanya (فقط).
+      en: cuman = hanya (only).
+    words: [cuman, gini, kayaknya, campur kode]
+  - id: e12
+    type: fill_blank
+    sentence: Di Pontianak, bahasa Melayu ___, tapi ada banyak bahasa lain.
+    meaning:
+      ar_eg: في بونتياناك الملايو ___، بس فيه لغات تانية كتير.
+      ar: في بونتياناك تكون الملايوية ___، لكن هناك لغات أخرى كثيرة.
+      en: In Pontianak Malay is ___, but there are many other languages.
+    options: [dominan, manusiawi, elo]
+    answers: [dominan]
+    words: [dominan, manusiawi, elo]
+    explain:
+      ar_eg: «الغالبة» = dominan. manusiawi = إنساني، وelo = إنت (عامية).
+      ar: «الغالبة» = dominan. أما manusiawi فـ«إنسانيّ»، وelo «أنت» بالعامّية.
+      en: "\"Dominant\" is dominan. manusiawi (humane) and elo (\"you\") don't fit."
+dialogue:
+  title: Di Tugu Khatulistiwa
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, sekarang kamu berdiri tepat di garis khatulistiwa!
+      ar_eg: يا محمد، إنت دلوقتي واقف بالظبط على خط الاستوا!
+      ar: يا محمد، أنت الآن واقف تمامًا على خطّ الاستواء!
+      en: Mohamed, you're now standing right on the equator!
+    - speaker: Mohamed
+      text: Itu kata serapan dari bahasa Arab, kan? Khaṭṭ al-istiwā'.
+      ar_eg: دي كلمة دخيلة من العربي، صح؟ خط الاستوا.
+      ar: إنها كلمة دخيلة من العربية، أليس كذلك؟ خطّ الاستواء.
+      en: That's a loanword from Arabic, right? Khaṭṭ al-istiwā'.
+    - speaker: Mas Rizal
+      text: Bener! Bunyinya berubah, tapi maknanya sama.
+      ar_eg: مظبوط! صوتها اتغيّر، بس معناها زي ما هو.
+      ar: صحيح! تغيّر لفظها وبقي معناها.
+      en: Right! The sound changed, but the meaning is the same.
+    - speaker: Mohamed
+      text: Bahasa Indonesia emang jembatan antara Mesir sama Pontianak, ya.
+      ar_eg: الإندونيسي فعلًا جسر بين مصر وبونتياناك.
+      ar: الإندونيسية حقًّا جسر بين مصر وبونتياناك.
+      en: Indonesian really is a bridge between Egypt and Pontianak.
+souvenir:
+  id: bipa5.u09.souvenir
+  title: Tugu Khatulistiwa
+  note:
+    ar_eg: في بونتياناك فيه نصب بيعلّم خط الاستوا، واسمه khatulistiwa من العربي «خط الاستوا». مرتين في السنة، حوالين 21 مارس و23 سبتمبر، الشمس بتبقى فوق الراس بالظبط وقت الضهر، وضل العمود بيختفي لحظات. والإندونيسي نفسه طالع من الملايو، لغة التجارة القديمة في الموانئ، وعشان كده فيه كلمات من العربي والسنسكريتي والبرتغالي والهولندي والصيني.
+    ar: في بونتياناك نُصب يحدّد خطّ الاستواء، واسمه khatulistiwa من العربية «خطّ الاستواء». ومرّتين في العام، نحو 21 مارس و23 سبتمبر، تتعامد الشمس ظهرًا فيختفي ظلّ العمود لحظات. والإندونيسية نفسها من الملايوية، لغة التجارة القديمة في الموانئ، ولذلك تحمل كلمات من العربية والسنسكريتية والبرتغالية والهولندية والصينية.
+    en: Pontianak has a monument marking the equator, called khatulistiwa from the Arabic khaṭṭ al-istiwā'. Twice a year, around 21 March and 23 September, the sun stands directly overhead at noon and the pillar's shadow vanishes for a few moments. Indonesian itself grew from Malay, the old trade language of the ports, which is why it carries words from Arabic, Sanskrit, Portuguese, Dutch and Chinese.
+review:
+  status: draft
+  verified: false

@@ -1,44 +1,64 @@
 schema: kabar.lesson/v1
 id: bipa1.u06.l09
 language: id
-title: Tugas sudah selesai
+title: Tugas di kantor
 can_do:
-  ar_eg: 'تتكلم عن يوم الشغل: المهام والتليفون والإيميل والكمبيوتر والنت.'
-  ar: 'أن تتحدث عن يوم العمل: المهام والهاتف والبريد الإلكتروني والحاسوب والإنترنت.'
-  en: 'Talk about a working day: tasks, phone, email, computer and internet.'
+  ar_eg: 'تتكلم عن يوم شغل: المهام والتليفون والكمبيوتر والنت، والغدا على المكتب.'
+  ar: 'أن تتحدث عن يوم عمل: المهامّ والهاتف والحاسوب والإنترنت، والغداء على المكتب.'
+  en: 'Talk about a working day: tasks, phone, computer and internet, and lunch at your desk.'
 slides:
-  - title: Di kantor
+  - title: Hari kerja
     body:
       ar_eg: |
-        في المكتب: komputer، internet، email، ponsel (الموبايل، والناس بتقول HP أكتر)، telepon (تليفون أو مكالمة).
-        tugas = مهمة أو واجب: tugas kantor، tugas sekolah.
-        selesai = خلص: «Sudah selesai?» — «Selesai!».
-        koran = جرنال. وبرضه كتير بيقروا الأخبار على الموبايل دلوقتي.
+        tugas = مهمة أو واجب. telepon = تليفون أو مكالمة: Ada telepon untuk Anda.
+        komputer = كمبيوتر، internet = نت.
+        وفي الغدا: piring = طبق، garpu = شوكة، pisau = سكينة. الإندونيسيين بياكلوا بالمعلقة والشوكة، والسكينة قليلة على السفرة.
+        es = تلج: es teh = شاي بالتلج، مشروب كل يوم.
       ar: |
-        في المكتب: komputer وinternet وemail وponsel (الهاتف المحمول، ويقول الناس HP أكثر) وtelepon (هاتف أو مكالمة).
-        tugas = مهمّة أو واجب: tugas kantor، tugas sekolah.
-        selesai = انتهى: «Sudah selesai?» — «Selesai!».
-        koran = جريدة، وإن كان كثيرون اليوم يقرؤون الأخبار على الهاتف.
+        tugas = مهمّة أو واجب. telepon = هاتف أو مكالمة: Ada telepon untuk Anda.
+        komputer = حاسوب، internet = إنترنت.
+        وعلى الغداء: piring = طبق، garpu = شوكة، pisau = سكين. يأكل الإندونيسيون بالملعقة والشوكة، ونادرًا ما يظهر السكين على المائدة.
+        es = ثلج: es teh = شاي مثلّج، مشروب يومي.
       en: |
-        At the office: komputer, internet, email, ponsel (mobile phone; people say HP more) and telepon (phone, call).
-        tugas = task or homework: tugas kantor, tugas sekolah.
-        selesai = finished: "Sudah selesai?" — "Selesai!".
-        koran = newspaper, though many now read the news on their phone.
+        tugas = task, assignment. telepon = phone, phone call: Ada telepon untuk Anda.
+        komputer = computer, internet = internet.
+        At lunch: piring = plate, garpu = fork, pisau = knife. Indonesians eat with spoon and fork; knives rarely come to the table.
+        es = ice: es teh = iced tea, an everyday drink.
     examples:
-      - text: Ayah membaca koran setiap pagi.
-        ar_eg: بابا بيقرا الجرنال كل يوم الصبح.
-        ar: يقرأ أبي الجريدة كل صباح.
-        en: Dad reads the newspaper every morning.
-      - text: Tugas saya sudah selesai!
-        ar_eg: المهمة بتاعتي خلصت!
-        ar: أنهيت مهمّتي!
-        en: My task is finished!
-      - text: Di kantor ada komputer dan internet.
-        ar_eg: في المكتب فيه كمبيوتر ونت.
-        ar: في المكتب حاسوب وإنترنت.
-        en: There's a computer and internet at the office.
+      - text: Tugas saya banyak hari ini.
+        ar_eg: عندي شغل كتير النهارده.
+        ar: لديّ مهامّ كثيرة اليوم.
+        en: I've got lots of tasks today.
+      - text: Komputer ada, tapi internet tidak ada.
+        ar_eg: فيه كمبيوتر، بس مفيش نت.
+        ar: يوجد حاسوب، لكن لا إنترنت.
+        en: There's a computer, but no internet.
+      - text: Mau es teh?
+        ar_eg: تشرب شاي بالتلج؟
+        ar: أتريد شايًا مثلّجًا؟
+        en: Want some iced tea?
 exercises:
   - id: e01
+    type: match_pairs
+    pairs:
+      - text: piring
+        ar_eg: طبق
+        ar: طبق
+        en: plate
+      - text: garpu
+        ar_eg: شوكة
+        ar: شوكة
+        en: fork
+      - text: pisau
+        ar_eg: سكينة
+        ar: سكين
+        en: knife
+      - text: es
+        ar_eg: تلج
+        ar: ثلج
+        en: ice
+    words: [piring, garpu, pisau, es]
+  - id: e02
     type: match_pairs
     pairs:
       - text: tugas
@@ -49,18 +69,6 @@ exercises:
         ar_eg: تليفون
         ar: هاتف
         en: phone
-      - text: ponsel
-        ar_eg: موبايل
-        ar: هاتف محمول
-        en: mobile phone
-      - text: email
-        ar_eg: إيميل
-        ar: بريد إلكتروني
-        en: email
-    words: [tugas, telepon, ponsel, email]
-  - id: e02
-    type: match_pairs
-    pairs:
       - text: komputer
         ar_eg: كمبيوتر
         ar: حاسوب
@@ -69,130 +77,134 @@ exercises:
         ar_eg: نت
         ar: إنترنت
         en: internet
-      - text: koran
-        ar_eg: جرنال
-        ar: جريدة
-        en: newspaper
-      - text: selesai
-        ar_eg: خلص
-        ar: انتهى
-        en: finished
-    words: [komputer, internet, koran, selesai]
+    words: [tugas, telepon, komputer, internet]
   - id: e03
     type: listen
-    text: Tugas saya sudah selesai. Saya mau makan siang.
+    text: Komputer ada, tapi internet tidak ada.
     question:
-      ar_eg: إيه اللي خلص؟
-      ar: ما الذي انتهى؟
-      en: What's finished?
-    options: [الشغل بتاعه, الأكل, الجرنال]
+      ar_eg: إيه اللي مش موجود؟
+      ar: ما الذي لا يوجد؟
+      en: What's missing?
+    options: [مفيش نت, مفيش كمبيوتر, مفيش تليفون]
     answer: 0
     meaning:
-      ar_eg: المهمة بتاعتي خلصت. عايز أتغدى.
-      ar: أنهيت مهمّتي، وأريد الغداء.
-      en: My task is done. I want to have lunch.
-    words: [tugas, selesai]
+      ar_eg: فيه كمبيوتر، بس مفيش نت.
+      ar: يوجد حاسوب لكن لا إنترنت.
+      en: There's a computer, but no internet.
+    words: [komputer, internet]
   - id: e04
     type: fill_blank
-    sentence: Saya mengirim ___ ke bos saya.
+    sentence: Sendok dan ___ untuk makan nasi.
     meaning:
-      ar_eg: ببعت ___ للمدير بتاعي.
-      ar: أرسل ___ إلى مديري.
-      en: I'm sending an ___ to my boss.
-    options: [email, koran, internet]
-    answers: [email]
-    words: [email, koran, internet]
+      ar_eg: المعلقة والـ ___ عشان أكل الرز.
+      ar: الملعقة و___ لأكل الأرز.
+      en: A spoon and a ___ for eating rice.
+    options: [garpu, pisau, piring]
+    answers: [garpu]
+    words: [garpu, pisau, piring]
+    explain:
+      ar_eg: "المعلقة والشوكة: sendok dan garpu. pisau = سكينة، وpiring = طبق."
+      ar: sendok dan garpu = ملعقة وشوكة.
+      en: Spoon and garpu (fork) for rice.
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: الـ HP اسمه الرسمي إيه؟
-      ar: ما الاسم الرسمي للـ HP؟
-      en: What's the formal word for HP?
-    options: [ponsel, komputer, telepon]
+      ar_eg: بتقطع اللحمة بإيه؟
+      ar: بمَ تقطع اللحم؟
+      en: What do you cut meat with?
+    options: [pisau, garpu, es]
     answer: 0
     explain:
-      ar_eg: ponsel = موبايل. telepon ممكن يبقى تليفون البيت أو مكالمة.
-      ar: ponsel الهاتف المحمول، أما telepon فالهاتف أو المكالمة.
-      en: ponsel = mobile phone; telepon is a phone or a call.
-    words: [ponsel, komputer, telepon]
+      ar_eg: pisau = سكينة.
+      ar: pisau = سكين.
+      en: pisau = knife.
+    words: [pisau, garpu, es]
   - id: e06
     type: fill_blank
-    sentence: Ayah membaca ___ setiap pagi.
+    sentence: Saya membaca email di ___.
     meaning:
-      ar_eg: بابا بيقرا ___ كل يوم الصبح.
-      ar: يقرأ أبي ___ كل صباح.
-      en: Dad reads the ___ every morning.
-    options: [koran, tugas, ponsel]
-    answers: [koran]
-    words: [koran]
+      ar_eg: بقرا الإيميل على الـ ___.
+      ar: أقرأ البريد على ___.
+      en: I read email on the ___.
+    options: [komputer, piring, es]
+    answers: [komputer]
+    words: [komputer, piring, es]
+    explain:
+      ar_eg: الإيميل بيتقري على komputer. piring = طبق، وes = تلج.
+      ar: يُقرأ البريد على komputer.
+      en: Email is read on a komputer.
   - id: e07
     type: build_sentence
     source:
-      ar_eg: مفيش نت، فمش هقدر أبعت إيميل.
-      ar: لا إنترنت، فلا أستطيع إرسال بريد.
-      en: There's no internet, so I can't send an email.
-    answer: Tidak ada internet, jadi saya tidak bisa mengirim email.
-    distractors: [koran, ponsel]
-    words: [internet, email]
+      ar_eg: عايز شاي بالتلج لو سمحت.
+      ar: أريد شايًا مثلّجًا من فضلك.
+      en: An iced tea, please.
+    answer: Saya mau es teh, ya.
+    distractors: [piring, garpu]
+    words: [es]
+    explain:
+      ar_eg: Saya mau (عايز) + es teh (شاي بتلج) + ya. piring وgarpu زيادة.
+      ar: Saya mau es teh، ya. piring وgarpu زائدتان.
+      en: Saya mau + es teh, + ya. piring and garpu are extra.
   - id: e08
     type: translate
     direction: from_target
-    source_text: Ada telepon untuk Bapak!
+    source_text: Ada telepon untuk Anda, Pak.
     answers_meaning:
-      ar_eg: [فيه تليفون لحضرتك!, فيه مكالمة لحضرتك!, تليفون لحضرتك!]
-      ar: [هناك مكالمة لك يا سيدي!, مكالمة لك يا سيدي!]
-      en: ['There''s a phone call for you, sir!', 'Phone for you, sir!', 'There''s a call for you!']
+      ar_eg: [فيه تليفون لحضرتك يا أستاذ, فيه مكالمة لحضرتك يا أستاذ]
+      ar: [هناك مكالمة لك يا سيدي, لديك مكالمة يا سيدي]
+      en: ['There''s a phone call for you, sir', 'There''s a call for you, sir']
     words: [telepon]
   - id: e09
     type: speaking
-    text: Saya kerja memakai komputer dan ponsel.
+    text: Tugas saya sudah selesai. Saya mau telepon ibu saya.
     meaning:
-      ar_eg: بشتغل على الكمبيوتر والموبايل.
-      ar: أعمل بالحاسوب والهاتف المحمول.
-      en: I work on a computer and a mobile phone.
-    words: [komputer, ponsel]
+      ar_eg: خلصت شغلي. عايز أكلّم ماما.
+      ar: أنهيت مهامّي، وأريد أن أتصل بأمي.
+      en: My tasks are done. I want to call my mum.
+    words: [tugas, telepon]
   - id: e10
     type: multiple_choice
-    question: Tugasnya sudah ___? — Sudah!
-    options: [selesai, telepon, koran]
+    question: Nasi dan ayam ada di ___.
+    options: [piring, internet, tugas]
     answer: 0
     explain:
-      ar_eg: Sudah selesai? = خلصت؟
-      ar: Sudah selesai? = هل انتهيت؟
-      en: Sudah selesai? = Is it finished?
-    words: [selesai, tugas, telepon]
+      ar_eg: 'الرز والفراخ في الطبق: piring.'
+      ar: 'الأرز والدجاج في الطبق: piring.'
+      en: 'Rice and chicken go on a plate: piring.'
+    words: [piring, internet, tugas]
 dialogue:
   lines:
-    - speaker: Bu Melati
-      text: Mas Eko, tugasnya sudah selesai?
-      ar_eg: يا إيكو، المهمة خلصت؟
-      ar: يا إيكو، هل أنهيت المهمّة؟
-      en: Eko, is the task finished?
-    - speaker: Mas Eko
-      text: Belum, Bu. Tidak ada internet hari ini.
-      ar_eg: لسه يا مدام. مفيش نت النهارده.
-      ar: ليس بعد يا سيدتي، فلا إنترنت اليوم.
-      en: Not yet. There's no internet today.
-    - speaker: Bu Melati
-      text: Oh, begitu. Mengirim email dari ponsel, bisa?
-      ar_eg: آه، كده. تقدر تبعت الإيميل من الموبايل؟
-      ar: آه، فهمت. أتستطيع إرسال البريد من الهاتف؟
-      en: Oh, I see. Can you send the email from your phone?
-    - speaker: Mas Eko
-      text: Bisa, Bu. Nanti saya mengirim emailnya.
-      ar_eg: أقدر يا مدام. شوية وأبعت الإيميل.
-      ar: نعم يا سيدتي، سأرسل البريد بعد قليل.
-      en: Yes. I'll send the email later.
-    - speaker: Bu Melati
-      text: Terima kasih. Dan ada telepon untuk kamu.
-      ar_eg: شكرًا. وفيه تليفون عشانك.
-      ar: شكرًا. وهناك مكالمة لك.
-      en: Thanks. And there's a phone call for you.
-    - speaker: Mas Eko
-      text: Baik, Bu!
-      ar_eg: حاضر يا مدام!
-      ar: حسنًا يا سيدتي!
-      en: OK!
+    - speaker: Rina
+      text: Mohamed, kamu makan di mana?
+      ar_eg: يا محمد، هتاكل فين؟
+      ar: يا محمد، أين ستأكل؟
+      en: Mohamed, where are you eating?
+    - speaker: Mohamed
+      text: Di sini aja. Tugasku banyak.
+      ar_eg: هنا وخلاص. عندي شغل كتير.
+      ar: هنا. لديّ مهامّ كثيرة.
+      en: Right here. I've got lots to do.
+    - speaker: Rina
+      text: Ini nasi untuk kamu. Ada piring dan garpu?
+      ar_eg: ده رز ليك. معاك طبق وشوكة؟
+      ar: هذا أرز لك. هل معك طبق وشوكة؟
+      en: Here's some rice for you. Got a plate and fork?
+    - speaker: Mohamed
+      text: Ada. Makasih! Mau es teh juga?
+      ar_eg: معايا. شكرًا! تشربي شاي بالتلج كمان؟
+      ar: نعم، شكرًا! أتريدين شايًا مثلّجًا أيضًا؟
+      en: Yes. Thanks! Want an iced tea too?
+    - speaker: Rina
+      text: Mau! Eh, internetnya nggak ada?
+      ar_eg: آه! إيه ده، النت مش شغال؟
+      ar: نعم! هل الإنترنت مقطوع؟
+      en: Yes please! Hey, is the internet down?
+    - speaker: Mohamed
+      text: Nggak ada. Tugasku nggak bisa selesai!
+      ar_eg: مفيش. شغلي مش هيخلص!
+      ar: مقطوع. لن أنهي مهامّي!
+      en: It's down. I can't finish my work!
 new_words:
   - word: tugas
     pos: noun
@@ -204,16 +216,6 @@ new_words:
     ar_eg: تليفون، مكالمة
     ar: هاتف، مكالمة
     en: telephone, phone call
-  - word: ponsel
-    pos: noun
-    ar_eg: موبايل
-    ar: هاتف محمول
-    en: mobile phone
-  - word: email
-    pos: noun
-    ar_eg: إيميل
-    ar: بريد إلكتروني
-    en: email
   - word: komputer
     pos: noun
     ar_eg: كمبيوتر
@@ -224,16 +226,26 @@ new_words:
     ar_eg: نت
     ar: إنترنت
     en: internet
-  - word: koran
+  - word: piring
     pos: noun
-    ar_eg: جرنال
-    ar: جريدة
-    en: newspaper
-  - word: selesai
-    pos: verb
-    ar_eg: خلص
-    ar: انتهى
-    en: finished, done
+    ar_eg: طبق
+    ar: طبق
+    en: plate
+  - word: garpu
+    pos: noun
+    ar_eg: شوكة
+    ar: شوكة
+    en: fork
+  - word: pisau
+    pos: noun
+    ar_eg: سكينة
+    ar: سكين
+    en: knife
+  - word: es
+    pos: noun
+    ar_eg: تلج
+    ar: ثلج
+    en: ice
 review:
   status: draft
   verified: false

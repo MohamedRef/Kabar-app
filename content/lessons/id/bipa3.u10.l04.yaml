@@ -1,205 +1,243 @@
 schema: kabar.lesson/v1
 id: bipa3.u10.l04
 language: id
-title: Pesan tiket feri
+title: Mendarat di Lombok
 can_do:
-  ar_eg: تحجز تذكرة عبّارة لميعاد جاي.
-  ar: أن تحجز تذكرة عبّارة لموعد قادم.
-  en: Book a ferry ticket for a future date.
+  ar_eg: 'تخطط لرحلة: تحجز، تأجر عربية، تختار الطريق والمكان، وتستمتع بالأماكن السياحية.'
+  ar: 'أن تخطط لرحلة: تحجز وتستأجر سيارة وتختار الطريق والموقع، وتستمتع بالأماكن السياحية.'
+  en: 'Plan a trip: book, rent a car, pick a route and a location, and enjoy the sights.'
 slides:
-  - title: Di loket pelabuhan
+  - title: Di bandara
     body:
       ar_eg: |
-        عند الشبّاك هتحتاج: tiket sekali jalan (ذهاب بس) ولا pulang-pergi (ذهاب وعودة)، وميعاد keberangkatan (القيام).
-        ولو العبّارة penuh (مليانة)، اسأل عن اللي بعدها.
-        ومع الخطط: akan / mau + lusa / minggu depan.
+        internasional = دولي (bandara internasional = مطار دولي). lokasi = مكان، موقع.
+        rute = طريق، خط سير. memesan = يحجز، يطلب. menyewa = يأجّر (ياخد بالإيجار).
+        wisata = سياحة (tempat wisata = مكان سياحي). menikmati = يستمتع بـ. khusus = مخصوص، خاص.
       ar: |
-        عند شبّاك التذاكر تحتاج: tiket sekali jalan (ذهاب فقط) أو pulang-pergi (ذهاب وإياب)، وموعد keberangkatan (المغادرة).
-        وإن كانت العبّارة penuh (ممتلئة) فاسأل عن التالية.
-        ومع الخطط: akan / mau + lusa / minggu depan.
+        internasional = دولي (bandara internasional = مطار دولي). lokasi = موقع، مكان.
+        rute = طريق، مسار. memesan = يحجز، يطلب. menyewa = يستأجر.
+        wisata = سياحة (tempat wisata = مكان سياحي). menikmati = يستمتع بـ. khusus = خاص، مخصّص.
       en: |
-        At the ticket window you'll need: a sekali jalan (one-way) or pulang-pergi (return) ticket, and the keberangkatan (departure) time.
-        If the ferry is penuh (full), ask about the next one.
-        For the plan itself: akan / mau + lusa / minggu depan.
-    grammar: id.time.future-plans
+        internasional = international (bandara internasional = international airport). lokasi = location.
+        rute = route. memesan = book, order. menyewa = rent, hire.
+        wisata = tourism, sightseeing (tempat wisata = tourist spot). menikmati = enjoy. khusus = special, specific.
     examples:
-      - text: Saya mau pesan tiket pulang-pergi untuk lusa.
-        ar_eg: عايز أحجز تذكرة ذهاب وعودة لبعد بكرة.
-        ar: أريد حجز تذكرة ذهاب وإياب لبعد غد.
-        en: I'd like to book a return ticket for the day after tomorrow.
+      - text: Pesawat kami mendarat di Bandara Internasional Lombok.
+        ar_eg: طيارتنا نزلت في مطار لومبوك الدولي.
+        ar: هبطت طائرتنا في مطار لومبوك الدولي.
+        en: Our plane landed at Lombok International Airport.
+      - text: Saya sudah memesan kamar dan menyewa motor.
+        ar_eg: أنا حجزت أوضة وأجّرت موتوسيكل.
+        ar: حجزت غرفة واستأجرت دراجة نارية.
+        en: I've booked a room and rented a motorbike.
+      - text: Kami menikmati matahari terbenam di pantai.
+        ar_eg: استمتعنا بالغروب على الشط.
+        ar: استمتعنا بغروب الشمس على الشاطئ.
+        en: We enjoyed the sunset on the beach.
 exercises:
   - id: e01
-    type: multiple_choice
-    question: Saya mau tiket ___. Saya kembali ke Lombok hari Minggu.
-    options: [sekali jalan, pulang-pergi, penuh]
-    answer: 1
-    explain:
-      ar_eg: 'هترجع لومبوك، يعني محتاج ذهاب وعودة: pulang-pergi.'
-      ar: 'ستعود إلى لومبوك، فتحتاج تذكرة ذهاب وإياب: pulang-pergi.'
-      en: 'You''re coming back to Lombok, so you need a return: pulang-pergi.'
-    words: [pulang-pergi, kembali]
-  - id: e02
-    type: listen
-    text: Maaf, feri jam sepuluh sudah penuh.
-    options:
-      - Maaf, feri jam sepuluh sudah penuh.
-      - Maaf, feri jam sepuluh sudah berangkat.
-      - Maaf, feri jam dua sudah penuh.
-    answer: 0
-    meaning:
-      ar_eg: آسف، عبّارة الساعة عشرة اتملت خلاص.
-      ar: عذرًا، عبّارة الساعة العاشرة ممتلئة.
-      en: Sorry, the ten o'clock ferry is already full.
-    words: [penuh, feri]
-  - id: e03
     type: match_pairs
     pairs:
-      - text: pulang-pergi
-        ar_eg: ذهاب وعودة
-        ar: ذهاب وإياب
-        en: return (ticket)
-      - text: sekali jalan
-        ar_eg: ذهاب بس
-        ar: ذهاب فقط
-        en: one-way
-      - text: penuh
-        ar_eg: مليان / كامل العدد
-        ar: ممتلئ
-        en: full
-      - text: keberangkatan
-        ar_eg: القيام / ميعاد الطلوع
-        ar: المغادرة
-        en: departure
-      - text: berangkat
-        ar_eg: يمشي / يطلع
-        ar: يغادر
-        en: to depart
-    words: [pulang-pergi, sekali jalan, penuh, keberangkatan, berangkat]
+      - text: internasional
+        ar_eg: دولي
+        ar: دولي
+        en: international
+      - text: lokasi
+        ar_eg: مكان، موقع
+        ar: موقع
+        en: location
+      - text: rute
+        ar_eg: طريق، خط سير
+        ar: مسار
+        en: route
+      - text: khusus
+        ar_eg: مخصوص
+        ar: خاص
+        en: special
+    words: [internasional, lokasi, rute, khusus]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: memesan
+        ar_eg: يحجز
+        ar: يحجز
+        en: book
+      - text: menyewa
+        ar_eg: يأجّر
+        ar: يستأجر
+        en: rent
+      - text: wisata
+        ar_eg: سياحة
+        ar: سياحة
+        en: tourism
+      - text: menikmati
+        ar_eg: يستمتع بـ
+        ar: يستمتع بـ
+        en: enjoy
+    words: [memesan, menyewa, wisata, menikmati]
+  - id: e03
+    type: listen
+    text: Lokasi hotelnya bagus, dekat pantai dan pasar.
+    question:
+      ar_eg: الفندق فين؟
+      ar: أين الفندق؟
+      en: Where is the hotel?
+    options: [بعيد عن كل حاجة, قريب من البحر والسوق, جنب المطار]
+    answer: 1
+    meaning:
+      ar_eg: مكان الفندق حلو، قريب من البحر والسوق.
+      ar: موقع الفندق جيد، قريب من الشاطئ والسوق.
+      en: The hotel's location is good, near the beach and the market.
+    words: [lokasi]
   - id: e04
     type: fill_blank
-    sentence: Jadwal ___ feri ke Sumbawa ada di loket.
+    sentence: Kami mau ___ mobil untuk tiga hari.
     meaning:
-      ar_eg: جدول مواعيد قيام العبّارة لسومباوا عند الشبّاك.
-      ar: جدول مغادرة العبّارة إلى سومباوا عند الشبّاك.
-      en: The ferry departure schedule to Sumbawa is at the ticket window.
-    options: [berangkat, keberangkatan, sekali jalan]
-    answers: [keberangkatan]
+      ar_eg: عايزين ___ عربية تلات أيام.
+      ar: نريد أن ___ سيارة لثلاثة أيام.
+      en: We want to ___ a car for three days.
+    options: [menyewa, internasional, khusus]
+    answers: [menyewa]
+    words: [menyewa, internasional, khusus]
     explain:
-      ar_eg: 'بعد jadwal محتاج اسم: keberangkatan (القيام)، مش الفعل berangkat.'
-      ar: 'بعد jadwal يلزم اسم: keberangkatan، لا الفعل berangkat.'
-      en: After jadwal you need a noun, keberangkatan, not the verb berangkat.
-    words: [keberangkatan]
+      ar_eg: «نأجّر عربية» = menyewa mobil. internasional = دولي، وkhusus = مخصوص، ودول صفات مش أفعال.
+      ar: «نستأجر سيارة» menyewa mobil. أما internasional فـ«دولي»، وkhusus «خاص»، وهما صفتان.
+      en: Renting a car is menyewa mobil. internasional and khusus (special) are adjectives, not verbs.
   - id: e05
-    type: fill_blank
-    sentence: Saya tidak kembali ke Lombok. Tolong tiket ___ saja.
-    meaning:
-      ar_eg: أنا مش راجع لومبوك. لو سمحت تذكرة ذهاب بس.
-      ar: لن أعود إلى لومبوك. تذكرة ذهاب فقط من فضلك.
-      en: I'm not coming back to Lombok. Just a one-way ticket, please.
-    options: [pulang-pergi, penuh, sekali jalan]
-    answers: [sekali jalan]
-    words: [sekali jalan, kembali]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الطيارات اللي جاية من بلاد تانية بتنزل في مطار …؟
+      ar: الطائرات القادمة من دول أخرى تهبط في مطار …؟
+      en: Planes from other countries land at an … airport?
+    options: [internasional, rute, wisata]
+    answer: 0
+    explain:
+      ar_eg: bandara internasional = مطار دولي.
+      ar: bandara internasional = مطار دولي.
+      en: bandara internasional = international airport.
+    words: [internasional, rute, wisata]
   - id: e06
+    type: fill_blank
+    sentence: 'Lombok punya banyak tempat ___: pantai, gunung, dan air terjun.'
+    meaning:
+      ar_eg: 'لومبوك فيها أماكن ___ كتير: شطوط وجبال وشلالات.'
+      ar: 'في لومبوك أماكن ___ كثيرة: شواطئ وجبال وشلالات.'
+      en: 'Lombok has lots of ___ spots: beaches, mountains and waterfalls.'
+    options: [lokasi, wisata, memesan]
+    answers: [wisata]
+    words: [wisata, lokasi, memesan]
+    explain:
+      ar_eg: "شطوط وجبال وشلالات دي أماكن سياحية: tempat wisata. lokasi = مكان، وmemesan = يحجز."
+      ar: الشواطئ والجبال والشلالات أماكن سياحية tempat wisata. أما lokasi فموقع، وmemesan «يحجز».
+      en: Beaches, mountains and waterfalls are tempat wisata, tourist spots. lokasi is a location and memesan to book.
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: عايز أحجز تذكرة ذهاب بس لبعد بكرة.
-      ar: أريد حجز تذكرة ذهاب فقط لبعد غد.
-      en: I'd like to book a one-way ticket for the day after tomorrow.
-    answer: Saya mau pesan tiket sekali jalan untuk lusa.
-    distractors: [pulang-pergi, tadi]
-    words: [sekali jalan, lusa]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عبّارة الساعة عشرة اتملت خلاص.
-      ar: عبّارة الساعة العاشرة ممتلئة.
-      en: The ten o'clock ferry is already full.
-    answers:
-      - Feri jam sepuluh sudah penuh.
-      - Feri jam sepuluh sudah penuh
-      - Kapal feri jam sepuluh sudah penuh.
-      - Kapal feri jam sepuluh sudah penuh
-      - Feri pukul sepuluh sudah penuh.
-      - Feri pukul 10 sudah penuh.
-      - Feri jam 10 sudah penuh.
-      - Feri yang jam sepuluh sudah penuh.
-    words: [penuh, feri]
+      ar_eg: حجزت تذكرة طيارة لجاكرتا.
+      ar: حجزت تذكرة طائرة إلى جاكرتا.
+      en: I booked a plane ticket to Jakarta.
+    answer: Saya memesan tiket pesawat ke Jakarta.
+    distractors: [menyewa, rute]
+    words: [memesan]
+    explain:
+      ar_eg: "«حجزت» = memesan: Saya memesan tiket pesawat ke Jakarta. menyewa = يأجّر، وrute = خط سير."
+      ar: «حجزتُ» memesan. أما menyewa فـ«يستأجر»، وrute «مسار».
+      en: Booked is memesan. menyewa means to rent and rute a route.
   - id: e08
-    type: dictation
-    text: Keberangkatan feri selanjutnya jam dua belas siang.
-    meaning:
-      ar_eg: العبّارة اللي بعدها بتطلع الساعة اتناشر الضهر.
-      ar: تغادر العبّارة التالية في الثانية عشرة ظهرًا.
-      en: The next ferry departure is at twelve noon.
-    words: [keberangkatan, feri]
+    type: translate
+    direction: from_target
+    source_text: Rute ini lebih cepat ke Senggigi.
+    answers_meaning:
+      ar_eg: [الطريق ده أسرع لسنجيجي, الخط ده أسرع لحد سنجيجي]
+      ar: [هذا الطريق أسرع إلى سنغيغي, هذا المسار أسرع إلى سنغيغي]
+      en: [This route is quicker to Senggigi, This is the faster route to Senggigi]
+    words: [rute]
   - id: e09
     type: speaking
-    text: Satu tiket pulang-pergi ke Sumbawa. Saya kembali minggu depan.
+    text: 'Saya menikmati makanan khusus Lombok: ayam taliwang!'
     meaning:
-      ar_eg: تذكرة ذهاب وعودة واحدة لسومباوا. هرجع الأسبوع الجاي.
-      ar: تذكرة ذهاب وإياب واحدة إلى سومباوا. سأعود الأسبوع القادم.
-      en: One return ticket to Sumbawa. I'm coming back next week.
-    words: [pulang-pergi, minggu depan, kembali]
+      ar_eg: 'استمتعت بأكلة لومبوك المخصوصة: فراخ تاليوانج!'
+      ar: 'استمتعت بطبق لومبوك الخاص: دجاج تاليوانغ!'
+      en: 'I enjoyed Lombok''s special dish: ayam taliwang!'
+    words: [menikmati, khusus]
+  - id: e10
+    type: multiple_choice
+    question: Kami menyewa kamar di hotel ini. Hotel ini punya kolam renang ___ untuk anak-anak.
+    options: [lokasi, menikmati, khusus]
+    answer: 2
+    explain:
+      ar_eg: khusus = مخصوص، خاص.
+      ar: khusus = خاص، مخصّص.
+      en: khusus = special, just for.
+    words: [khusus, lokasi, menikmati, menyewa]
 dialogue:
-  title: Di loket Pelabuhan Kayangan
   lines:
-    - speaker: Petugas
-      text: Selamat pagi. Mau ke mana, Pak?
-      ar_eg: صباح الخير. رايح فين يا فندم؟
-      ar: صباح الخير. إلى أين يا سيدي؟
-      en: Good morning. Where are you going, sir?
+    - speaker: Rina
+      text: Mohamed, kamu udah di Lombok?
+      ar_eg: يا محمد، إنت وصلت لومبوك؟
+      ar: يا محمد، هل وصلت إلى لومبوك؟
+      en: Mohamed, are you in Lombok yet?
     - speaker: Mohamed
-      text: Ke Pototano, Sumbawa. Saya mau pesan tiket untuk lusa.
-      ar_eg: بوتوتانو في سومباوا. عايز أحجز تذكرة لبعد بكرة.
-      ar: إلى بوتوتانو في سومباوا. أريد حجز تذكرة لبعد غد.
-      en: To Pototano, Sumbawa. I'd like to book a ticket for the day after tomorrow.
-    - speaker: Petugas
-      text: Sekali jalan atau pulang-pergi?
-      ar_eg: ذهاب بس ولا ذهاب وعودة؟
-      ar: ذهاب فقط أم ذهاب وإياب؟
-      en: One-way or return?
+      text: Udah! Pesawatnya baru mendarat di bandara internasional.
+      ar_eg: أيوه! الطيارة لسه نازلة في المطار الدولي.
+      ar: نعم! هبطت الطائرة للتو في المطار الدولي.
+      en: Yes! The plane's just landed at the international airport.
+    - speaker: Rina
+      text: Sip. Kamu mau menyewa mobil di bandara?
+      ar_eg: حلو. هتأجّر عربية من المطار؟
+      ar: جميل. هل ستستأجر سيارة في المطار؟
+      en: Great. Are you renting a car at the airport?
     - speaker: Mohamed
-      text: Pulang-pergi. Saya akan kembali hari Minggu. Feri jam sepuluh masih ada?
-      ar_eg: ذهاب وعودة. هرجع يوم الحد. عبّارة الساعة عشرة لسه فيها مكان؟
-      ar: ذهاب وإياب، فسأعود يوم الأحد. هل ما زال في عبّارة العاشرة مكان؟
-      en: Return. I'll be back on Sunday. Is there still room on the ten o'clock ferry?
-    - speaker: Petugas
-      text: Maaf, feri jam sepuluh sudah penuh. Keberangkatan selanjutnya jam dua belas.
-      ar_eg: آسف، عبّارة عشرة اتملت. اللي بعدها الساعة اتناشر.
-      ar: عذرًا، عبّارة العاشرة ممتلئة. المغادرة التالية في الثانية عشرة.
-      en: Sorry, the ten o'clock is full. The next departure is at twelve.
-    - speaker: Mohamed
-      text: Baik, jam dua belas saja.
-      ar_eg: تمام، الساعة اتناشر خلاص.
-      ar: حسنًا، الثانية عشرة إذن.
-      en: All right, twelve o'clock, then.
+      text: Nggak, aku udah memesan taksi. Lokasi hotelnya dekat pantai.
+      ar_eg: لأ، أنا حاجز تاكسي. الفندق مكانه قريب من البحر.
+      ar: لا، حجزت سيارة أجرة. موقع الفندق قريب من الشاطئ.
+      en: No, I've booked a taxi. The hotel's right by the beach.
+    - speaker: Rina
+      text: Besok kita jalan-jalan. Aku punya rute wisata khusus buat kamu!
+      ar_eg: بكرة نتفسّح. عندي خط سير سياحي مخصوص ليك!
+      ar: غدًا نتجوّل. لديّ مسار سياحي خاص لك!
+      en: Tomorrow we'll go sightseeing. I've got a special tourist route for you!
 new_words:
-  - word: pulang-pergi
+  - word: internasional
     pos: adjective
-    ar_eg: ذهاب وعودة
-    ar: ذهاب وإياب
-    en: return (ticket), round trip
-  - word: sekali jalan
-    pos: adjective
-    ar_eg: ذهاب بس
-    ar: ذهاب فقط
-    en: one-way
-  - word: penuh
-    pos: adjective
-    ar_eg: مليان / كامل العدد
-    ar: ممتلئ
-    en: full
-  - word: keberangkatan
+    ar_eg: دولي
+    ar: دولي
+    en: international
+  - word: lokasi
     pos: noun
-    ar_eg: القيام / ميعاد الطلوع
-    ar: المغادرة
-    en: departure
-  - word: kembali
+    ar_eg: مكان، موقع
+    ar: موقع
+    en: location
+  - word: rute
+    pos: noun
+    ar_eg: طريق، خط سير
+    ar: طريق، مسار
+    en: route
+  - word: khusus
+    pos: adjective
+    ar_eg: مخصوص، خاص
+    ar: خاص، مخصّص
+    en: special, specific
+  - word: memesan
     pos: verb
-    ar_eg: يرجع
-    ar: يعود
-    en: to return, come back
+    ar_eg: يحجز، يطلب
+    ar: يحجز، يطلب
+    en: book, order
+  - word: menyewa
+    pos: verb
+    ar_eg: يأجّر
+    ar: يستأجر
+    en: rent, hire
+  - word: wisata
+    pos: noun
+    ar_eg: سياحة
+    ar: سياحة
+    en: tourism, sightseeing
+  - word: menikmati
+    pos: verb
+    ar_eg: يستمتع بـ
+    ar: يستمتع بـ
+    en: enjoy
 review:
   status: draft
   verified: false

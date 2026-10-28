@@ -1,169 +1,151 @@
 schema: kabar.lesson/v1
 id: j6.u02.l09
 language: jv
-title: Wati lunga ngaji
+title: Maca tembung
 can_do:
-  ar_eg: تسمع قصة قصيرة وتتابعها مكتوبة بالخط الجاوي.
-  ar: أن تسمع قصة قصيرة وتتابعها مكتوبة بالخط الجاوي.
-  en: Follow a short story by ear and in aksara Jawa.
+  ar_eg: تقرا كلمات قصيرة بكل الحركات.
+  ar: أن تقرأ كلمات قصيرة بكل الصوائت.
+  en: Read short words with every vowel.
 slides:
-  - title: Crita cekak
+  - title: Ka, ki, ku, ke, ke, ko
     body:
       ar_eg: |
-        ديماس هيقرا لك حكاية صغيرة من كتاب عيال، وإنت تسمع الأول وبعدين تدوّر على الجمل مكتوبة.
-        كلمة مهمة: gawa = يشيل / يجيب معاه. وbukune = الكتاب بتاعها (‑ne زي ‑nya في الإندونيسي).
+        كل الحركات على حرف واحد:
+        ꦏ ka · ꦏꦶ ki (wulu) · ꦏꦸ ku (suku) · ꦏꦺ ke (taling) · ꦏꦼ ke بالـ pepet · ꦏꦺꦴ ko (taling tarung).
+        النهارده ديماس هيختبرك: هو يكتب، وإنت تقرا.
       ar: |
-        سيقرأ لك ديماس حكاية صغيرة من كتاب أطفال؛ استمع أولًا ثم ابحث عن الجمل مكتوبة.
-        كلمة مهمة: gawa = يحمل / يُحضر معه. وbukune = كتابها (‑ne مثل ‑nya في الإندونيسية).
+        الصوائت كلها على حرف واحد:
+        ꦏ ka · ꦏꦶ ki (wulu) · ꦏꦸ ku (suku) · ꦏꦺ ke (taling) · ꦏꦼ ke بالـ pepet · ꦏꦺꦴ ko (taling tarung).
+        واليوم يختبرك ديماس: يكتب وأنت تقرأ.
       en: |
-        Dimas reads you a little story from a children's book. Listen first, then find the sentences in writing.
-        Key word: gawa = carry, bring along. And bukune = her book (‑ne is like Indonesian ‑nya).
+        Every vowel on one letter:
+        ꦏ ka · ꦏꦶ ki (wulu) · ꦏꦸ ku (suku) · ꦏꦺ ke (taling) · ꦏꦼ ke with pepet · ꦏꦺꦴ ko (taling tarung).
+        Today Dimas tests you: he writes, you read.
     grammar: jv.aksara.sandhangan-swara
     examples:
-      - text: ꦮꦠꦶꦭꦸꦔꦔꦗꦶꦱꦺꦴꦫꦺ (Wati lunga ngaji sore.)
-        ar_eg: واتي راحت حلقة القرآن العصر.
-        ar: ذهبت واتي إلى حلقة القرآن عصرًا.
-        en: Wati goes to Qur'an class in the afternoon.
-      - text: ꦮꦠꦶꦒꦮꦧꦸꦏꦸ (Wati gawa buku.)
-        ar_eg: واتي واخدة معاها كتاب.
-        ar: تحمل واتي كتابًا.
-        en: Wati takes a book with her.
-      - text: ꦧꦸꦏꦸꦤꦺꦒꦼꦝꦺ (Bukune gedhe.)
-        ar_eg: الكتاب بتاعها كبير.
-        ar: كتابها كبير.
-        en: Her book is big.
+      - text: ꦱꦺꦴꦫꦺꦏꦺꦤꦺ (sore kene)
+        ar_eg: العصر هنا
+        ar: العصر هنا
+        en: this afternoon, here
 exercises:
   - id: e01
-    type: listen
-    text: Wati lunga ngaji sore.
-    question:
-      ar_eg: واتي راحت فين؟
-      ar: إلى أين ذهبت واتي؟
-      en: Where does Wati go?
-    options: [ngaji, pasar, sekolah]
-    answer: 0
-    meaning:
-      ar_eg: واتي راحت حلقة القرآن العصر.
-      ar: ذهبت واتي إلى حلقة القرآن عصرًا.
-      en: Wati goes to Qur'an class in the afternoon.
-    words: [wulu]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ꦱꦥꦶ"
+      ar: "اقرأ: ꦱꦥꦶ"
+      en: "Read: ꦱꦥꦶ"
+    options: [sapu, sapi, supi]
+    answer: 1
+    explain:
+      ar_eg: ꦱ = sa، وꦥꦶ = pi بالـ wulu، فـ ꦱꦥꦶ = sapi. sapu وsupi محتاجين suku.
+      ar: ꦱ = sa وꦥꦶ = pi بالـ wulu، فـ ꦱꦥꦶ = sapi. أما sapu وsupi فتحتاجان suku.
+      en: ꦱ is sa and ꦥꦶ is pi (wulu), so ꦱꦥꦶ is sapi. sapu and supi would need suku.
   - id: e02
     type: listen
-    text: Wati gawa buku.
+    text: kowe
     question:
-      ar_eg: واتي واخدة معاها إيه؟
-      ar: ماذا تحمل واتي؟
-      en: What does Wati take with her?
-    options: ["ꦱꦼꦒ", "ꦏꦺꦴꦥꦶ", "ꦧꦸꦏꦸ"]
+      ar_eg: سمعت أنهي كلمة؟
+      ar: أي كلمة سمعت؟
+      en: Which word did you hear?
+    options: ["ꦏꦮꦺ", "ꦏꦺꦮꦺꦴ", "ꦏꦺꦴꦮꦺ"]
     answer: 2
     meaning:
-      ar_eg: واتي واخدة معاها كتاب.
-      ar: تحمل واتي كتابًا.
-      en: Wati takes a book with her.
-    words: [suku]
+      ar_eg: إنت (نغوكو)
+      ar: أنت (نغوكو)
+      en: you (ngoko)
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الكتاب عامل إزاي؟
-      ar: كيف الكتاب؟
-      en: What is the book like?
-    options: [cilik, gedhe, lemu]
-    answer: 1
-    explain:
-      ar_eg: ꦧꦸꦏꦸꦤꦺꦒꦼꦝꦺ = Bukune gedhe (كتابها كبير).
-      ar: ꦧꦸꦏꦸꦤꦺꦒꦼꦝꦺ = Bukune gedhe (كتابها كبير).
-      en: ꦧꦸꦏꦸꦤꦺꦒꦼꦝꦺ = Bukune gedhe (her book is big).
-    words: [pepet, taling]
-  - id: e04
-    type: match_pairs
-    pairs:
-      - text: ꦒꦮ
-        ar_eg: gawa — يشيل / يجيب معاه
-        ar: gawa — يحمل / يُحضر
-        en: gawa — carry, bring along
-      - text: ꦧꦸꦏꦸ
-        ar_eg: buku — كتاب
-        ar: buku — كتاب
-        en: buku — book
-      - text: ꦒꦼꦝꦺ
-        ar_eg: gedhe — كبير
-        ar: gedhe — كبير
-        en: gedhe — big
-      - text: ꦱꦺꦴꦫꦺ
-        ar_eg: sore — العصر
-        ar: sore — العصر
-        en: sore — afternoon
-    words: [suku, pepet, taling]
-  - id: e05
     type: fill_blank
-    sentence: Wati ___ buku.
+    sentence: ꦱꦶꦗꦶ = ___
     meaning:
-      ar_eg: واتي واخدة معاها كتاب.
-      ar: تحمل واتي كتابًا.
-      en: Wati takes a book with her.
-    options: [gawa, tuku, maca]
-    answers: [gawa]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "في ꦧꦸꦏꦸꦤꦺꦒꦼꦝꦺ، أنهي علامة على ꦤ في bukune؟"
-      ar: "في ꦧꦸꦏꦸꦤꦺꦒꦼꦝꦺ، ما العلامة التي على ꦤ في bukune؟"
-      en: "In ꦧꦸꦏꦸꦤꦺꦒꦼꦝꦺ, which mark is on ꦤ in bukune?"
-    options: [pepet, taling, suku]
-    answer: 1
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: واحد)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: واحد)"
+      en: Type the reading in Latin letters. (It means "one".)
+    answers: [siji]
     explain:
-      ar_eg: ‑ne في bukune بتتنطق é، فبتتكتب taling قبل ꦤ.
-      ar: ‑ne في bukune تُنطق é، فتُكتب taling قبل ꦤ.
-      en: The ‑ne of bukune is said é, so it's taling before ꦤ.
-    words: [taling]
-  - id: e07
-    type: dictation
-    text: Wati gawa buku.
+      ar_eg: ꦱꦶ = si وꦗꦶ = ji بالـ wulu، فـ ꦱꦶꦗꦶ = siji.
+      ar: ꦱꦶ = si وꦗꦶ = ji بالـ wulu، فـ ꦱꦶꦗꦶ = siji.
+      en: ꦱꦶ is si and ꦗꦶ is ji (wulu), so ꦱꦶꦗꦶ is siji.
+  - id: e04
+    type: fill_blank
+    sentence: ꦠꦼꦭꦸ = ___
     meaning:
-      ar_eg: واتي واخدة معاها كتاب.
-      ar: تحمل واتي كتابًا.
-      en: Wati takes a book with her.
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: "اكتب «Bukune gedhe» (كتابها كبير) مقطع مقطع."
-      ar: "اكتب «Bukune gedhe» (كتابها كبير) مقطعًا مقطعًا."
-      en: Build "Bukune gedhe" (her book is big), syllable by syllable.
-    answer: ꦧꦸ ꦏꦸ ꦤꦺ ꦒꦼ ꦝꦺ
-    distractors: ["ꦒꦺ"]
-    words: [pepet, taling]
-  - id: e09
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: تلاتة)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: ثلاثة)"
+      en: Type the reading in Latin letters. (It means "three".)
+    answers: [telu]
+    explain:
+      ar_eg: ꦠꦼ = te بالـ pepet وꦭꦸ = lu بالـ suku، فـ ꦠꦼꦭꦸ = telu.
+      ar: ꦠꦼ = te بالـ pepet وꦭꦸ = lu بالـ suku، فـ ꦠꦼꦭꦸ = telu.
+      en: ꦠꦼ is te (pepet) and ꦭꦸ is lu (suku), so ꦠꦼꦭꦸ is telu.
+  - id: e05
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ꦮꦠꦶꦭꦸꦔꦔꦗꦶꦱꦺꦴꦫꦺ"
-      ar: "اكتب بالحروف اللاتينية: ꦮꦠꦶꦭꦸꦔꦔꦗꦶꦱꦺꦴꦫꦺ"
-      en: "Write in Latin letters: ꦮꦠꦶꦭꦸꦔꦔꦗꦶꦱꦺꦴꦫꦺ"
-    answers: ["Wati lunga ngaji sore.", siti lunga ngaji sore, sitilungangajisore]
-    words: [wulu, suku, taling tarung]
+      ar_eg: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦭꦺꦴꦫꦺꦴ"
+      ar: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦭꦺꦴꦫꦺꦴ"
+      en: "Write in Latin letters: ꦧꦸꦏꦸꦭꦺꦴꦫꦺꦴ"
+    answers: [buku loro, bukuloro]
+    explain:
+      ar_eg: bu-ku (suku) + lo-ro (taling tarung) = buku loro، يعني كتابين.
+      ar: bu-ku (suku) + lo-ro (taling tarung) = buku loro، أي كتابان.
+      en: bu-ku (suku) + lo-ro (taling tarung) = buku loro, two books.
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ابني «sega telu» (تلات أطباق رز) مقطع مقطع.
+      ar: ركّب «sega telu» (ثلاثة أطباق أرز) مقطعًا مقطعًا.
+      en: Build "sega telu" (three plates of rice), syllable by syllable.
+    answer: ꦱꦼ ꦒ ꦠꦼ ꦭꦸ
+    distractors: ["ꦱꦺ", "ꦠꦺ"]
+    explain:
+      ar_eg: "sega telu: ꦱꦼ وꦠꦼ بالـ pepet. ꦱꦺ وꦠꦺ بالـ taling بيتقروا sé وté."
+      ar: "sega telu: ꦱꦼ وꦠꦼ بالـ pepet. أما ꦱꦺ وꦠꦺ بالـ taling فتُقرآن sé وté."
+      en: "sega telu: ꦱꦼ and ꦠꦼ take pepet. ꦱꦺ and ꦠꦺ (taling) read sé and té."
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦏꦺꦴꦮꦺꦠꦼꦏ"
+      ar: "اكتب بالحروف اللاتينية: ꦏꦺꦴꦮꦺꦠꦼꦏ"
+      en: "Write in Latin letters: ꦏꦺꦴꦮꦺꦠꦼꦏ"
+    answers: [kowe teka, koweteka, "Kowe teka?"]
+  - id: e08
+    type: dictation
+    text: Sega telu, Mas.
+    meaning:
+      ar_eg: تلات أطباق رز يا أستاذ.
+      ar: ثلاثة أطباق أرز يا أخي.
+      en: Three plates of rice, please.
+  - id: e09
+    type: speaking
+    text: Siji, loro, telu.
+    meaning:
+      ar_eg: واحد، اتنين، تلاتة.
+      ar: واحد، اثنان، ثلاثة.
+      en: One, two, three.
 dialogue:
-  title: Crita Wati
+  title: Dolanan maca
   lines:
     - speaker: Dimas
-      text: Piye, Med? Kowe ngerti critane?
-      ar_eg: إيه رأيك يا محمد؟ فهمت الحكاية؟
-      ar: ما رأيك يا محمد؟ أفهمت الحكاية؟
-      en: Well, Med? Did you follow the story?
+      text: Med, ayo dolanan. Aku nulis, kowe maca.
+      ar_eg: يا محمد، يلا نلعب. أنا أكتب وإنت تقرا.
+      ar: "يا محمد، هيا نلعب: أكتب وأنت تقرأ."
+      en: Med, let's play. I write, you read.
     - speaker: Mohamed
-      text: Ngerti. Wati lunga ngaji, gawa buku gedhe.
-      ar_eg: فهمت. واتي راحت الحلقة وواخدة كتاب كبير.
-      ar: فهمت. ذهبت واتي إلى الحلقة تحمل كتابًا كبيرًا.
-      en: Yes. Wati goes to Qur'an class with a big book.
+      text: Oke. Iki sore, lan iki kowe.
+      ar_eg: ماشي. دي sore، ودي kowe.
+      ar: حسنًا. هذه sore، وهذه kowe.
+      en: OK. This is sore, and this is kowe.
     - speaker: Dimas
-      text: Bener. Kowe isa maca tulisane uga?
-      ar_eg: صح. وتقدر تقرا الكتابة كمان؟
-      ar: صحيح. وهل تستطيع قراءة الكتابة أيضًا؟
-      en: Right. Can you read the writing too?
+      text: Bener kabeh! Saiki iki?
+      ar_eg: كله صح! طب ودي؟
+      ar: كلها صحيحة! وهذه؟
+      en: All correct! Now this one?
     - speaker: Mohamed
-      text: Isa! Si, ti, lu, nga... Wati lunga ngaji sore.
-      ar_eg: أيوه! سي، تي، لو، نغا... Wati lunga ngaji sore.
-      ar: نعم! سي، تي، لو، نغا... Wati lunga ngaji sore.
-      en: I can! Si, ti, lu, nga... Wati lunga ngaji sore.
+      text: Sega telu! Ayo mangan wae, Mas.
+      ar_eg: sega telu (تلات أطباق رز)! يلا ناكل يا ديماس.
+      ar: sega telu (ثلاثة أطباق أرز)! هيا نأكل يا ديماس.
+      en: Sega telu! Let's eat, Mas.
 review:
   status: draft
   verified: false

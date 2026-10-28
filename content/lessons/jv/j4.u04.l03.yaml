@@ -14,16 +14,19 @@ slides:
         - الإيد اليمين (tangan tengen) دايمًا: تدّي وتاخد وتسلّم (salaman) بيها. الشمال (kiwa) لأ.
         - لو بتشاور على حاجة أو مكان: اقفل إيدك وشاور بالصباع الكبير (الإبهام، jempol)، مش بالسبابة. السبابة قليلة ذوق عندهم.
         tengen وkiwa عرفت أصلهم من nengen وngiwa في J1. وsalaman من العربي «سلام»، وngangge = nganggo (يستخدم) بالكراما.
+        - lho وto كلمات صغيرة بتدّي الجملة إحساس، ومن غيرها الجملة صح برضه.
       ar: |
         الأدب الجاوي قول وفعل، وكثير منه كآدابنا:
         - اليد اليمنى (tangan tengen) دائمًا: للعطاء والأخذ والمصافحة (salaman)، لا اليسرى (kiwa).
         - وإذا أشرتَ إلى شيء أو مكان فاقبض يدك وأشر بالإبهام (jempol) لا بالسبابة؛ فالإشارة بالسبابة غير مهذبة عندهم.
         وقد عرفتَ أصل tengen وkiwa من nengen وngiwa في J1. وsalaman من العربية «سلام»، وngangge = nganggo (يستعمل) بالكراما.
+        - lho وto أدوات صغيرة تلوّن الجملة، والجملة صحيحة بدونها.
       en: |
         Javanese courtesy is words plus gestures, and much of it matches Egyptian manners:
         - Always the right hand (tangan tengen): give, take and shake hands (salaman) with it. Not the left (kiwa).
         - Pointing at a thing or a place: close your hand and point with your thumb (jempol), not your index finger, which is rude there.
         You know tengen and kiwa from nengen and ngiwa in J1. salaman comes from Arabic «سلام», and ngangge is the krama of nganggo (use).
+        - lho and to are small particles that add feeling; the sentence is correct without them.
     grammar: jv.etiquette.phrases
     examples:
       - text: Salaman ngangge tangan tengen.
@@ -121,6 +124,10 @@ exercises:
     options: [kiwa, tengen, salaman]
     answers: [kiwa]
     words: [kiwa]
+    explain:
+      ar_eg: "Sampun = ما تعملش، والإيد اللي مش مؤدّبة هي الشمال: kiwa. tengen اليمين المؤدّبة، وsalaman السلام بالإيد."
+      ar: "Sampun = لا تفعل، واليد غير المهذّبة هي اليسرى: kiwa، أما tengen فاليمنى المهذّبة، وsalaman المصافحة."
+      en: "Sampun = don't, and the impolite hand is the left: kiwa. tengen is the polite right, salaman a handshake."
   - id: e06
     type: fill_blank
     sentence: Nuwun sewu, ndherek ___.
@@ -131,6 +138,10 @@ exercises:
     options: [langkung, rawuh, sowan]
     answers: [langkung]
     words: [ndherek langkung]
+    explain:
+      ar_eg: ndherek langkung = بعد إذنك أعدّي. rawuh لوصول الكبير، وsowan للزيارة.
+      ar: ndherek langkung = بعد إذنك أمرّ، أما rawuh فلقدوم الكبير، وsowan للزيارة.
+      en: ndherek langkung = may I pass. rawuh is an elder arriving, sowan a visit.
   - id: e07
     type: build_sentence
     source:
@@ -140,6 +151,10 @@ exercises:
     answer: Salaman ngangge tangan tengen.
     distractors: [kiwa, mlebet]
     words: [salaman, tengen]
+    explain:
+      ar_eg: "السلام بالإيد اليمين: tengen. kiwa الشمال، وmlebet يعني يدخل."
+      ar: "المصافحة باليمنى: tengen، أما kiwa فاليسرى، وmlebet معناه يدخل."
+      en: "Shake with the right hand: tengen. kiwa is left, mlebet means \"enter\"."
   - id: e08
     type: translate
     direction: to_target
@@ -176,15 +191,15 @@ dialogue:
       ar: أحسنت يا محمد! صرت تعرف آداب الكلام.
       en: Nice one, Mohamed! You've got the etiquette down.
     - speaker: Mohamed
-      text: Iya, Mas. Salaman uga nganggo tangan tengen, ta?
+      text: Iya, Mas. Salaman uga nganggo sing tengen, to?
       ar_eg: آه يا دِيماس. والسلام بالإيد كمان باليمين، صح؟
       ar: نعم يا ديماس. والمصافحة أيضًا باليمنى، أليس كذلك؟
-      en: Yes. And handshakes are with the right hand too, right?
+      en: Yes. And handshakes are with the right one too, right?
     - speaker: Mas Dimas
-      text: Bener! Aja tangan kiwa.
+      text: Bener! Aja sing kiwa, lho.
       ar_eg: مظبوط! مش بالشمال.
       ar: صحيح! لا باليسرى.
-      en: Right! Never the left hand.
+      en: Right! Never the left.
 new_words:
   - word: ndherek langkung
     pos: phrase
@@ -207,6 +222,7 @@ new_words:
     ar: يصافح
     en: shake hands = bersalaman
     arabic: سلام
+    bridge: salam
 review:
   status: draft
   verified: false

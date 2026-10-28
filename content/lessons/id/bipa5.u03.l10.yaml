@@ -1,0 +1,205 @@
+schema: kabar.lesson/v1
+id: bipa5.u03.l10
+language: id
+title: Presentasi teknologi
+can_do:
+  ar_eg: تقدّم شرح قصير عن تكنولوجيا وأثرها قدام ناس.
+  ar: أن تقدّم عرضًا قصيرًا عن تقنية وأثرها.
+  en: Give a short presentation explaining a technology and its effects.
+slides:
+  - title: Membuka dan menutup presentasi
+    grammar: id.nominalization
+    body:
+      ar_eg: |
+        العرض الرسمي بيبدأ وبيخلص بجمل ثابتة، وبيستخدم أسماء (nominalisasi) كتير:
+        - Pada kesempatan ini, saya akan membahas … = في الفرصة دي، هتكلم عن …
+        - Pertama-tama, … = في الأول خالص …
+        - Sebagai penutup, … = وفي الختام …
+        - Terima kasih atas perhatian Anda. = شكرًا على اهتمامكم.
+        مثلًا: saya akan membahas penggunaan dompet digital (مش bagaimana orang menggunakan …).
+        وفي الحوار هتسمع كلام الشارع، وجنبه الرسمي: kasih = beri.
+      ar: |
+        يبدأ العرض الرسمي وينتهي بعبارات ثابتة، ويكثر فيه الاسم (nominalisasi):
+        - Pada kesempatan ini, saya akan membahas … = في هذه المناسبة سأتناول …
+        - Pertama-tama, … = بادئ ذي بدء …
+        - Sebagai penutup, … = وختامًا …
+        - Terima kasih atas perhatian Anda. = شكرًا على حسن إصغائكم.
+        مثلًا: saya akan membahas penggunaan dompet digital.
+        وفي الحوار لغة الشارع، وبجانبها الصيغة الرسمية: kasih = beri.
+      en: |
+        A formal talk opens and closes with set phrases, and uses plenty of nouns (nominalisasi):
+        - Pada kesempatan ini, saya akan membahas … = Today I will discuss …
+        - Pertama-tama, … = First of all, …
+        - Sebagai penutup, … = To close, …
+        - Terima kasih atas perhatian Anda. = Thank you for your attention.
+        For example: saya akan membahas penggunaan dompet digital.
+        The dialogue uses street forms; the formal ones are beside them: kasih = beri.
+    examples:
+      - text: Pada kesempatan ini, saya akan membahas perkembangan ojek daring.
+        ar_eg: في الفرصة دي، هتكلم عن تطوّر الأوجيك الأونلاين.
+        ar: في هذه المناسبة سأتناول تطوّر الدراجات الأجرة عبر التطبيقات.
+        en: Today I will discuss the development of app-based motorbike taxis.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: membahas
+        ar_eg: يناقش / يتكلم عن
+        ar: يتناول، يناقش
+        en: to discuss
+      - text: perkembangan
+        ar_eg: تطوّر
+        ar: تطوّر
+        en: development
+      - text: sebagai penutup
+        ar_eg: وفي الختام
+        ar: وختامًا
+        en: to close
+      - text: perhatian
+        ar_eg: اهتمام / انتباه
+        ar: انتباه، اهتمام
+        en: attention
+    words: [membahas, perkembangan, sebagai penutup, perhatian]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تفتح بيها العرض؟
+      ar: بأيّ جملة تفتتح العرض؟
+      en: Which sentence opens the presentation?
+    options:
+      - Terima kasih atas perhatian Anda.
+      - Sebagai penutup, teknologi itu penting.
+      - Pada kesempatan ini, saya akan membahas ekonomi digital.
+    answer: 2
+    words: [membahas]
+    explain:
+      ar_eg: «Pada kesempatan ini, saya akan membahas…» افتتاحية. «Terima kasih atas perhatian Anda» و«Sebagai penutup» للختام.
+      ar: «Pada kesempatan ini, saya akan membahas…» افتتاحية، أما «Terima kasih atas perhatian Anda» و«Sebagai penutup» فللختام.
+      en: "\"Pada kesempatan ini, saya akan membahas…\" opens a talk. The other two are closing lines."
+  - id: e03
+    type: fill_blank
+    sentence: ___, saya ingin menyampaikan bahwa teknologi harus aman.
+    meaning:
+      ar_eg: وفي الختام، حابب أقول إن التكنولوجيا لازم تكون آمنة.
+      ar: وختامًا، أودّ القول إنّ التقنية يجب أن تكون آمنة.
+      en: To close, I'd like to say that technology must be safe.
+    options: [Sebagai penutup, Pertama-tama, Pada kesempatan ini]
+    answers: [Sebagai penutup]
+    words: [sebagai penutup]
+    explain:
+      ar_eg: «وفي الختام» = Sebagai penutup. Pertama-tama = أولًا، وPada kesempatan ini للافتتاح.
+      ar: «وختامًا» = Sebagai penutup. أما Pertama-tama فـ«أولًا»، وPada kesempatan ini للافتتاح.
+      en: "\"To close\" is Sebagai penutup. Pertama-tama means \"first of all\", and Pada kesempatan ini opens a talk."
+  - id: e04
+    type: listen
+    text: Terima kasih atas perhatian Bapak dan Ibu sekalian.
+    options:
+      - Terima kasih atas perhatian Bapak dan Ibu sekalian.
+      - Terima kasih atas perkembangan Bapak dan Ibu sekalian.
+      - Terima kasih, Bapak dan Ibu, sampai jumpa.
+    answer: 0
+    words: [perhatian]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: هتكلم عن تطوّر الدفع الرقمي.
+      ar: سأتناول تطوّر الدفع الرقمي.
+      en: I will discuss the development of digital payment.
+    answer: Saya akan membahas perkembangan pembayaran digital.
+    distractors: [penutup, dari]
+    words: [membahas, perkembangan]
+    explain:
+      ar_eg: «هتكلم عن» رسمي = akan membahas، و«تطوّر» = perkembangan بعده الاسم على طول. penutup = خاتمة، وdari زيادة.
+      ar: «سأتناول» = akan membahas، و«تطوّر» = perkembangan يليه الاسم مباشرة. أما penutup فالخاتمة، وdari زائدة.
+      en: "\"I will discuss\" is akan membahas, and perkembangan takes its noun directly. penutup is \"conclusion\", and dari is extra."
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: تطوّر التكنولوجيا في إندونيسيا سريع قوي.
+      ar: تطوّر التقنية في إندونيسيا سريع جدًّا.
+      en: The development of technology in Indonesia is very fast.
+    answers:
+      - Perkembangan teknologi di Indonesia sangat cepat.
+      - Perkembangan teknologi di Indonesia sangat pesat.
+      - Perkembangan teknologi di Indonesia cepat sekali.
+      - Perkembangan teknologi di Indonesia pesat sekali.
+    words: [perkembangan]
+  - id: e07
+    type: dictation
+    text: Sebagai penutup, terima kasih atas perhatian Anda.
+    meaning:
+      ar_eg: وفي الختام، شكرًا على اهتمامكم.
+      ar: وختامًا، شكرًا على حسن إصغائكم.
+      en: To close, thank you for your attention.
+    words: [sebagai penutup, perhatian]
+  - id: e08
+    type: speaking
+    text: Pada kesempatan ini, saya akan membahas keamanan data.
+    meaning:
+      ar_eg: في الفرصة دي، هتكلم عن أمان البيانات.
+      ar: في هذه المناسبة سأتناول أمن البيانات.
+      en: Today I will discuss data security.
+    words: [membahas]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في العرض الرسمي، أنهي أحسن؟
+      ar: أيّها أفضل في عرض رسمي؟
+      en: Which is better in a formal talk?
+    options:
+      - Saya mau ngomongin aplikasi.
+      - Saya akan membahas penggunaan aplikasi.
+      - Gue mau cerita tentang aplikasi.
+    answer: 1
+    words: [membahas]
+    explain:
+      ar_eg: "في العرض الرسمي: Saya akan membahas. ngomongin وGue كلام شارع مايمشيش في عرض رسمي."
+      ar: في العرض الرسمي نقول Saya akan membahas. أما ngomongin وGue فعامّيتان لا تناسبان العرض الرسمي.
+      en: In a formal talk you say Saya akan membahas. ngomongin and Gue are street forms.
+dialogue:
+  title: Latihan presentasi
+  lines:
+    - speaker: Mohamed
+      text: Selamat pagi. Pada kesempatan ini, saya akan membahas perkembangan dompet digital.
+      ar_eg: صباح الخير. في الفرصة دي، هتكلم عن تطوّر المحافظ الإلكترونية.
+      ar: صباح الخير. في هذه المناسبة سأتناول تطوّر المحافظ الرقمية.
+      en: Good morning. Today I will discuss the development of e-wallets.
+    - speaker: Bu Lestari
+      text: Bagus. Bagian awalnya jelas. Silakan terus.
+      ar_eg: حلو. الجزء الأولاني واضح. كمّل.
+      ar: جيّد، الجزء الأول واضح. تابع.
+      en: Good. The first part is clear. Go on.
+    - speaker: Mohamed
+      text: Pertama-tama, penggunaan dompet digital naik pesat sejak 2020.
+      ar_eg: في الأول خالص، استخدام المحافظ الإلكترونية زاد بسرعة من 2020.
+      ar: بادئ ذي بدء، ارتفع استخدام المحافظ الرقمية بسرعة منذ 2020.
+      en: First of all, e-wallet use has risen rapidly since 2020.
+    - speaker: Mohamed
+      text: Sebagai penutup, teknologi ini mudah, tetapi keamanannya harus dijaga. Terima kasih atas perhatian Anda.
+      ar_eg: وفي الختام، التكنولوجيا دي سهلة، بس لازم نحافظ على أمانها. شكرًا على اهتمامكم.
+      ar: وختامًا، هذه التقنية سهلة لكن يجب صون أمنها. شكرًا على حسن إصغائكم.
+      en: To close, this technology is easy, but its security must be protected. Thank you for your attention.
+    - speaker: Bu Lestari
+      text: Rapi sekali, Mohamed. Penutupnya juga sopan.
+      ar_eg: منظم جدًا يا محمد. والختام كمان مؤدب.
+      ar: منظّم جدًّا يا محمد، والخاتمة مهذّبة أيضًا.
+      en: Very neat, Mohamed. A polite close too.
+new_words:
+  - word: membahas
+    pos: verb
+    ar_eg: يناقش / يتكلم عن
+    ar: يتناول، يناقش
+    en: to discuss
+  - word: perkembangan
+    pos: noun
+    ar_eg: تطوّر
+    ar: تطوّر
+    en: development
+  - word: sebagai penutup
+    ar_eg: وفي الختام
+    ar: وختامًا
+    en: to close, in conclusion
+review:
+  status: draft
+  verified: false

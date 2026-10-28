@@ -1,0 +1,246 @@
+schema: kabar.lesson/v1
+id: j2.u05.l07
+language: jv
+title: Keturon!
+can_do:
+  ar_eg: تحكي إنك نمت من غير ما تاخد بالك وصحيت متأخر ونسيت، وتطلب حد يفكّرك، وتفتح وتقفل وتولّع.
+  ar: أن تحكي أنك غفوت واستيقظت متأخرًا ونسيت، وتطلب من أحد أن يذكّرك، وتفتح وتغلق وتُشعل.
+  en: Say you dozed off, overslept and forgot, ask someone to remind you, and open, close and light things.
+slides:
+  - title: Kawanen!
+    body:
+      ar_eg: |
+        - **keturon** = نام من غير ما ياخد باله (ketiduran) · **kawanen** = صحي متأخر (kesiangan)
+        - **kelalen** = نسي من غير قصد (kelupaan)، وlali = ينسى · **ngelingi** = يفكّر حد (mengingatkan)
+        - **mbukak** = يفتح (membuka) · **nutup** = يقفل (menutup)
+        - **nyumet** = يولّع، بوتاجاز أو ناموسية (menyalakan) · **mutung** = يزعل ويقمص ويسيب الحاجة (ngambek)
+      ar: |
+        - **keturon** = غفا دون قصد (ketiduran) · **kawanen** = استيقظ متأخرًا (kesiangan)
+        - **kelalen** = نسي دون قصد (kelupaan)، وlali = ينسى · **ngelingi** = يذكّر غيره (mengingatkan)
+        - **mbukak** = يفتح (membuka) · **nutup** = يغلق (menutup)
+        - **nyumet** = يُشعل الموقد أو طارد البعوض (menyalakan) · **mutung** = يغضب ويترك الأمر (ngambek)
+      en: |
+        - **keturon** = doze off without meaning to (ketiduran) · **kawanen** = oversleep, wake late (kesiangan)
+        - **kelalen** = forget by accident (kelupaan); lali = to forget · **ngelingi** = remind (mengingatkan)
+        - **mbukak** = open (membuka) · **nutup** = close (menutup)
+        - **nyumet** = light (a stove, a mosquito coil) (menyalakan) · **mutung** = sulk and give up (ngambek)
+    examples:
+      - text: Aku kawanen, wis jam wolu!
+        ar_eg: صحيت متأخر، الساعة تمانية!
+        ar: استيقظت متأخرًا، إنها الثامنة!
+        en: I overslept, it's eight already!
+      - text: Aku kelalen nutup toko.
+        ar_eg: نسيت أقفل المحل.
+        ar: نسيت إغلاق المتجر.
+        en: I forgot to close the shop.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: keturon
+        ar_eg: نام من غير ما ياخد باله
+        ar: غفا دون قصد
+        en: doze off
+      - text: kawanen
+        ar_eg: صحي متأخر
+        ar: استيقظ متأخرًا
+        en: oversleep
+      - text: kelalen
+        ar_eg: نسي
+        ar: نسي
+        en: forget (by accident)
+      - text: ngelingi
+        ar_eg: يفكّر حد
+        ar: يذكّر
+        en: remind
+    words: [keturon, kawanen, kelalen, ngelingi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: mbukak
+        ar_eg: يفتح
+        ar: يفتح
+        en: open
+      - text: nutup
+        ar_eg: يقفل
+        ar: يغلق
+        en: close
+      - text: nyumet
+        ar_eg: يولّع
+        ar: يُشعل
+        en: light
+      - text: mutung
+        ar_eg: يزعل ويقمص
+        ar: يغضب ويترك
+        en: sulk
+    words: [mbukak, nutup, nyumet, mutung]
+  - id: e03
+    type: listen
+    text: Aku kawanen, wis jam wolu!
+    question:
+      ar_eg: حصل إيه؟
+      ar: ماذا حدث؟
+      en: What happened?
+    options: [صحيت متأخر، الساعة تمانية!, صحيت بدري, لسه نايم]
+    answer: 0
+    meaning:
+      ar_eg: صحيت متأخر، الساعة تمانية!
+      ar: استيقظت متأخرًا، إنها الثامنة!
+      en: I overslept, it's eight already!
+    words: [kawanen]
+  - id: e04
+    type: fill_blank
+    sentence: Bu Darmi ___ warunge jam pitu esuk.
+    meaning:
+      ar_eg: بو دارمي بـ ___ المحل الساعة سبعة الصبح.
+      ar: بو دارمي ___ المطعم في السابعة صباحًا.
+      en: Bu Darmi ___ her stall at seven in the morning.
+    options: [mbukak, nutup, nyumet]
+    answers: [mbukak]
+    words: [mbukak, nutup, nyumet]
+    explain:
+      ar_eg: mbukak = تفتح، والساعة سبعة الصبح وقت الفتح. nutup = تقفل (العكس)، وnyumet = يولّع.
+      ar: mbukak = تفتح، والسابعة صباحًا وقت الفتح؛ أما nutup فتُغلق (العكس)، وnyumet يُشعل.
+      en: mbukak = open, and seven a.m. is opening time. nutup = close (the opposite), nyumet = light (a fire).
+  - id: e05
+    type: fill_blank
+    sentence: Aku ___ neng klasa, wis bengi.
+    meaning:
+      ar_eg: أنا ___ على الحصيرة، والدنيا ليلت.
+      ar: ___ على الحصيرة، وقد حلّ الليل.
+      en: I ___ on the mat; it was already night.
+    options: [keturon, kelalen, ngelingi]
+    answers: [keturon]
+    words: [keturon, kelalen, ngelingi]
+    explain:
+      ar_eg: keturon = نام من غير ما يقصد، وكان بالليل. kelalen = نسي، وngelingi = يفتكر.
+      ar: keturon = غلبه النوم، وكان الوقت ليلًا؛ أما kelalen فنسي، وngelingi يتذكّر.
+      en: keturon = fell asleep without meaning to; it was night. kelalen = forgot, ngelingi = remember.
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «فكّرني بكرة لو سمحت» بالجاوي؟
+      ar: كيف تقول «ذكّرني غدًا من فضلك» بالجاوية؟
+      en: '"Please remind me tomorrow" in Javanese?'
+    options: [Tulung ngelingi aku sesuk., Tulung nyumet aku sesuk., Tulung nutup aku sesuk.]
+    answer: 0
+    explain:
+      ar_eg: ngelingi = يفكّر. nyumet = يولّع، وnutup = يقفل.
+      ar: ngelingi = يذكّر، أما nyumet فيُشعل وnutup يغلق.
+      en: ngelingi = remind. nyumet = light, nutup = close.
+    words: [ngelingi, nyumet, nutup]
+  - id: e07
+    type: multiple_choice
+    question: Bayu mutung, ora mangan.
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [بايو قامص ومش راضي ياكل, بايو جعان أوي, بايو نايم]
+    answer: 0
+    explain:
+      ar_eg: mutung = يزعل ويقمص (ngambek).
+      ar: mutung = يغضب ويعاند (ngambek).
+      en: mutung = sulks (ngambek).
+    words: [mutung]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: نسيت أقفل المحل.
+      ar: نسيت إغلاق المتجر.
+      en: I forgot to close the shop.
+    answer: Aku kelalen nutup toko.
+    distractors: [mbukak, nyumet]
+    words: [kelalen, nutup, mbukak]
+    explain:
+      ar_eg: kelalen = نسيت، وnutup toko = أقفل المحل. mbukak = يفتح (العكس)، وnyumet = يولّع، ومش في المعنى.
+      ar: kelalen = نسيت، وnutup toko = إغلاق المحل؛ أما mbukak فيفتح (العكس)، وnyumet يُشعل، وليسا في المعنى.
+      en: kelalen = forgot, nutup toko = close the shop. mbukak (open) and nyumet (light) aren't in the meaning.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Ibu nyumet kompor, banjur masak.
+    answers_meaning:
+      ar_eg: [ماما ولّعت البوتاجاز وبعدين طبخت, الأم شغّلت البوتاجاز وطبخت]
+      ar: [أشعلت الأم الموقد ثم طبخت]
+      en: ['Mum lit the stove, then cooked', Mother turned on the stove and cooked]
+    words: [nyumet]
+  - id: e10
+    type: speaking
+    text: Aja mutung, aku keturon, dadi kawanen.
+    meaning:
+      ar_eg: ماتزعلش، أنا نمت من غير ما آخد بالي، فصحيت متأخر.
+      ar: لا تغضب، غفوت فاستيقظت متأخرًا.
+      en: Don't sulk, I dozed off, so I overslept.
+    words: [mutung, keturon, kawanen]
+dialogue:
+  lines:
+    - speaker: Sari
+      text: Mohamed! Wis jam setengah wolu. Kowe kawanen, ya?
+      ar_eg: يا محمد! الساعة سبعة ونص. صحيت متأخر، صح؟
+      ar: يا محمد! إنها السابعة والنصف. استيقظت متأخرًا، أليس كذلك؟
+      en: Mohamed! It's half past seven. You overslept, didn't you?
+    - speaker: Mohamed
+      text: Waduh, aku keturon neng klasa! Kelalen kabeh.
+      ar_eg: يا نهار! نمت على الحصيرة! نسيت كل حاجة.
+      ar: يا ويلي، غفوت على الحصيرة! نسيت كل شيء.
+      en: Oh no, I dozed off on the mat! I forgot everything.
+    - speaker: Sari
+      text: Mau esuk aku wis ngelingi lho. Mangkat jam wolu!
+      ar_eg: أنا فكرتك الصبح على فكرة. هنمشي الساعة تمانية!
+      ar: ذكّرتك هذا الصباح. سننطلق في الثامنة!
+      en: I reminded you this morning, you know. We leave at eight!
+    - speaker: Mohamed
+      text: Ngapura, aja mutung. Aku mangkat saiki!
+      ar_eg: آسف، ماتزعليش. أنا نازل دلوقتي!
+      ar: آسف، لا تغضبي. سأنطلق الآن!
+      en: Sorry, don't be cross. I'm leaving now!
+    - speaker: Sari
+      text: Hehe, ora. Aja lali nutup kamarmu, ya.
+      ar_eg: هههه، لأ. ماتنساش تقفل أوضتك.
+      ar: هه، لا. لا تنسَ أن تغلق غرفتك.
+      en: Hehe, I'm not. Don't forget to shut your room.
+new_words:
+  - word: keturon
+    pos: verb
+    ar_eg: نام من غير ما ياخد باله (ketiduran)
+    ar: غفا دون قصد (ketiduran)
+    en: to doze off without meaning to (ketiduran)
+  - word: kawanen
+    pos: verb
+    ar_eg: صحي متأخر (kesiangan)
+    ar: استيقظ متأخرًا (kesiangan)
+    en: to oversleep, wake late (kesiangan)
+  - word: kelalen
+    pos: verb
+    ar_eg: نسي من غير قصد (kelupaan)
+    ar: نسي دون قصد (kelupaan)
+    en: to forget by accident (kelupaan)
+  - word: ngelingi
+    pos: verb
+    ar_eg: يفكّر حد (mengingatkan)
+    ar: يذكّر غيره (mengingatkan)
+    en: to remind (mengingatkan)
+  - word: mbukak
+    pos: verb
+    ar_eg: يفتح (membuka)
+    ar: يفتح (membuka)
+    en: to open (membuka)
+  - word: nutup
+    pos: verb
+    ar_eg: يقفل (menutup)
+    ar: يغلق (menutup)
+    en: to close (menutup)
+  - word: nyumet
+    pos: verb
+    ar_eg: يولّع (menyalakan)
+    ar: يُشعل (menyalakan)
+    en: to light, switch on a flame (menyalakan)
+  - word: mutung
+    pos: verb
+    ar_eg: يزعل ويقمص ويسيب الحاجة (ngambek)
+    ar: يغضب ويترك الأمر (ngambek)
+    en: to sulk and give up (ngambek)
+review:
+  status: draft
+  verified: false

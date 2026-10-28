@@ -1,0 +1,218 @@
+schema: kabar.lesson/v1
+id: bipa5.u10.l12
+language: id
+title: Laporan perjalanan
+can_do:
+  ar_eg: تحكي رحلتك في كاليمانتان كتقرير مترابط فيه رأيك.
+  ar: أن تروي رحلتك في كاليمانتان تقريرًا مترابطًا يحمل رأيك.
+  en: Tell your Kalimantan journey as a connected report with your own view.
+slides:
+  - title: Merangkum perjalanan
+    grammar: id.argument.connectors
+    body:
+      ar_eg: |
+        التقرير عن رحلة محتاج ترتيب وروابط:
+        - Pertama-tama … Selain itu … Di sisi lain … Sebagai penutup …
+        كلمتين جداد:
+        - menyaksikan = يشهد / يشوف بعينه: menyaksikan sendiri = شاف بنفسه
+        - tak terlupakan = مايتنسيش (tak = tidak، terlupakan = ممكن يتنسي)
+        وفي الحوار هتسمع كلام الشارع، وجنبه الرسمي: udah = sudah، inget = ingat، terus = lalu، aku = saya، ngerayain = merayakan، bareng = bersama، nggak = tidak، bakal = akan.
+      ar: |
+        يحتاج تقرير الرحلة إلى ترتيب وروابط:
+        - Pertama-tama … Selain itu … Di sisi lain … Sebagai penutup …
+        وكلمتان جديدتان:
+        - menyaksikan = يشهد، يرى بعينه: menyaksikan sendiri = رأى بنفسه
+        - tak terlupakan = لا يُنسى (tak = tidak، وterlupakan = يمكن أن يُنسى)
+        وفي الحوار لغة الشارع، وبجانبها الصيغة الرسمية: udah = sudah، inget = ingat، terus = lalu، aku = saya، ngerayain = merayakan، bareng = bersama، nggak = tidak، bakal = akan.
+      en: |
+        A journey report needs order and connectors:
+        - Pertama-tama … Selain itu … Di sisi lain … Sebagai penutup …
+        Two new words:
+        - menyaksikan = to witness: menyaksikan sendiri = to see for yourself
+        - tak terlupakan = unforgettable (tak = tidak, terlupakan = forgettable)
+        The dialogue uses street forms; the formal ones are beside them: udah = sudah, inget = ingat, terus = lalu, aku = saya, ngerayain = merayakan, bareng = bersama, nggak = tidak, bakal = akan.
+exercises:
+  - id: e01
+    type: listen
+    text: Selama perjalanan di Kalimantan, saya menyaksikan Cap Go Meh di Singkawang.
+    question:
+      ar_eg: شاف إيه في سينجكاوانج؟
+      ar: ماذا شاهد في سينغكاوانغ؟
+      en: What did he see in Singkawang?
+    options:
+      - سوق عايم.
+      - احتفال كاب جو مي.
+      - رقصة أبو قرن.
+    answer: 1
+    words: [menyaksikan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «tak terlupakan» معناها إيه؟
+      ar: ما معنى «tak terlupakan»؟
+      en: What does "tak terlupakan" mean?
+    options:
+      - مايتنسيش.
+      - مش مهم.
+      - اتنسى بسرعة.
+    answer: 0
+    words: [tak terlupakan]
+    explain:
+      ar_eg: tak terlupakan = مايتنسيش. lupa = نسي، وtak = مش، فمعناها العكس من «اتنسى بسرعة».
+      ar: tak terlupakan = لا يُنسى؛ فـ tak نفي وlupa النسيان، وهي عكس «يُنسى سريعًا».
+      en: "tak terlupakan means unforgettable: tak negates \"forgotten\". It isn't \"unimportant\"."
+  - id: e03
+    type: fill_blank
+    sentence: Pasar terapung di Banjarmasin adalah pengalaman yang ___.
+    meaning:
+      ar_eg: السوق العايم في بنجرماسين تجربة ماتتنسيش.
+      ar: السوق العائمة في بنجرماسين تجربة لا تُنسى.
+      en: The floating market in Banjarmasin is an unforgettable experience.
+    options: [tak terlupakan, mencolok, gugup]
+    answers: [tak terlupakan]
+    words: [tak terlupakan, terapung]
+    explain:
+      ar_eg: «تجربة ماتتنسيش» = pengalaman yang tak terlupakan. mencolok = لافت وgugup = متوتر، مش وصف لتجربة.
+      ar: «تجربة لا تُنسى» = pengalaman yang tak terlupakan. أما mencolok فـ«لافت»، وgugup «متوتّر».
+      en: "\"Unforgettable experience\" is tak terlupakan. mencolok and gugup don't describe experiences."
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: أولًا، زرت باليكبابان.
+      ar: أوّلًا، زرتُ باليكبابان.
+      en: First of all, I visited Balikpapan.
+    answer: Pertama-tama, saya mengunjungi Balikpapan.
+    distractors: [menyaksikan, jeda]
+    words: [pertama-tama]
+    explain:
+      ar_eg: «أولًا» = Pertama-tama و«زرت» = mengunjungi. menyaksikan = شاف/شهد وjeda = وقفة، مش في الجملة.
+      ar: «أوّلًا» = Pertama-tama و«زرتُ» = mengunjungi. أما menyaksikan فـ«شهد»، وjeda الوقفة.
+      en: "\"First of all\" is Pertama-tama and \"visited\" mengunjungi. menyaksikan and jeda aren't in it."
+  - id: e05
+    type: translate
+    direction: from_target
+    source_text: Saya menyaksikan sendiri dampak kabut asap di Tanjung Puting.
+    answers_meaning:
+      ar_eg:
+        - شفت بعيني أثر الدخان في تانجونج بوتينج.
+        - أنا بنفسي شفت الدخان عمل إيه في تانجونج بوتينج.
+      ar:
+        - شهدتُ بنفسي أثر ضباب الدخان في تانجونغ بوتينغ.
+        - رأيت بعيني آثار الدخان في تانجونغ بوتينغ.
+      en:
+        - I saw the effects of the haze in Tanjung Puting for myself.
+        - I witnessed the haze's impact in Tanjung Puting with my own eyes.
+    words: [menyaksikan, kabut asap]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Saya melihat orangutan. ___, saya belajar tentang hak ulayat.» تحط إيه؟
+      ar: ماذا تضع في «Saya melihat orangutan. ___, saya belajar tentang hak ulayat.»؟
+      en: Which fits "Saya melihat orangutan. ___, saya belajar tentang hak ulayat."?
+    options: [Meskipun, Karena, Selain itu]
+    answer: 2
+    explain:
+      ar_eg: بتضيف حاجة تانية حصلت، يبقى Selain itu (وكمان).
+      ar: تضيف أمرًا آخر، فالمناسب Selain itu (فضلًا عن ذلك).
+      en: You're adding another thing, so Selain itu (besides that).
+    words: [selain itu, hak ulayat]
+  - id: e07
+    type: speaking
+    text: Perjalanan ini tak terlupakan karena saya bertemu banyak orang baik.
+    meaning:
+      ar_eg: الرحلة دي ماتتنسيش عشان قابلت ناس طيبين كتير.
+      ar: هذه الرحلة لا تُنسى لأنّي التقيت أناسًا طيّبين كثيرين.
+      en: This journey is unforgettable because I met so many kind people.
+    words: [tak terlupakan]
+  - id: e08
+    type: dictation
+    text: Sebagai penutup, Kalimantan mengajarkan saya arti toleransi.
+    meaning:
+      ar_eg: وفي الختام، كاليمانتان علمتني معنى التسامح.
+      ar: وختامًا، علّمتني كاليمانتان معنى التسامح.
+      en: To close, Kalimantan taught me what tolerance means.
+    words: [sebagai penutup, toleransi]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: merdu
+        ar_eg: صوته حلو
+        ar: عذب الصوت
+        en: melodious
+      - text: rumah panjang
+        ar_eg: البيت الطويل
+        ar: البيت الطويل
+        en: longhouse
+      - text: pemerataan
+        ar_eg: توزيع بالعدل
+        ar: توزيع عادل
+        en: fair distribution
+      - text: gengsi
+        ar_eg: برستيج
+        ar: وجاهة
+        en: prestige
+      - text: kenaikan
+        ar_eg: زيادة
+        ar: ارتفاع
+        en: rise, increase
+    words: [merdu, rumah panjang, pemerataan, gengsi, kenaikan]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: شفت بعيني ناس من ديانات مختلفة عايشين مع بعض في سلام.
+      ar: شهدتُ أناسًا من أديان مختلفة يعيشون معًا في وئام.
+      en: I witnessed people of different religions living together in harmony.
+    answers:
+      - Saya menyaksikan orang dari agama yang berbeda hidup rukun.
+      - Saya menyaksikan orang-orang dari agama berbeda hidup rukun.
+      - Saya menyaksikan orang dari berbagai agama hidup rukun.
+      - Saya menyaksikan orang dari agama yang berbeda hidup bersama dengan rukun.
+    words: [menyaksikan, rukun]
+dialogue:
+  title: Malam terakhir di Singkawang
+  lines:
+    - speaker: Rina
+      text: Mohamed, perjalanan kita di Kalimantan udah mau selesai. Yang paling kamu inget apa?
+      ar_eg: يا محمد، رحلتنا في كاليمانتان قربت تخلص. إيه أكتر حاجة فاكرها؟
+      ar: يا محمد، أوشكت رحلتنا في كاليمانتان على الانتهاء. ما أكثر ما تتذكّره؟
+      en: Mohamed, our Kalimantan trip is almost over. What do you remember most?
+    - speaker: Mohamed
+      text: Pertama-tama, rumah panjang Pak Lawing sama suara sapenya yang merdu.
+      ar_eg: أولًا، البيت الطويل بتاع الأستاذ لاوينج وصوت السابي الحلو بتاعه.
+      ar: أوّلًا، البيت الطويل للأستاذ لاوينغ وصوت سابيه العذب.
+      en: First of all, Pak Lawing's longhouse and the sweet sound of his sape.
+    - speaker: Mas Rizal
+      text: Terus yang susah apa?
+      ar_eg: وإيه الحاجات الصعبة؟
+      ar: وماذا عن الأمور الصعبة؟
+      en: What about the hard parts?
+    - speaker: Mohamed
+      text: Aku lihat sendiri kabut asap sama warga yang digusur. Itu juga bagian dari cerita.
+      ar_eg: شفت بعيني الدخان والناس اللي اتطردت من أرضها. ودي كمان جزء من الحكاية.
+      ar: شهدتُ بنفسي ضباب الدخان وأناسًا أُخلوا من أراضيهم، وهذا أيضًا جزء من الحكاية.
+      en: I saw the haze and evicted residents for myself. That's part of the story too.
+    - speaker: Rina
+      text: Terus malam ini, Cap Go Meh. Tionghoa, Dayak, sama Melayu ngerayain bareng.
+      ar_eg: والليلة، كاب جو مي. الصينيين والداياك والملايو بيحتفلوا مع بعض.
+      ar: والليلة كاب غو مي، يحتفل فيها الصينيون والدّاياك والملايو معًا.
+      en: And tonight, Cap Go Meh. Chinese, Dayak and Malay people celebrating together.
+    - speaker: Mohamed
+      text: Sebagai penutup laporan saya... eh, kok jadi resmi! Pokoknya Kalimantan nggak bakal terlupakan.
+      ar_eg: وفي ختام تقريري... إيه ده، بقيت رسمي! المهم، كاليمانتان مش هتتنسي.
+      ar: وختامًا لتقريري... عجبًا، صرتُ رسميًّا! المهم أن كاليمانتان لا تُنسى.
+      en: To close my report... oops, too formal! Anyway, Kalimantan is unforgettable.
+new_words:
+  - word: menyaksikan
+    pos: verb
+    ar_eg: يشهد / يشوف بعينه
+    ar: يشهد
+    en: to witness
+  - word: tak terlupakan
+    pos: adjective
+    ar_eg: مايتنسيش
+    ar: لا يُنسى
+    en: unforgettable
+review:
+  status: draft
+  verified: false

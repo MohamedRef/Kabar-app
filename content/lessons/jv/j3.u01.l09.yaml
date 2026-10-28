@@ -1,0 +1,248 @@
+schema: kabar.lesson/v1
+id: j3.u01.l09
+language: jv
+title: Dados manten
+can_do:
+  ar_eg: 'تتكلم عن فرح قريب: العزومة والهدية والدعاء، وتقول «فاكر» بالـ ngoko والكراما.'
+  ar: 'أن تتحدث عن عرس قريب: الدعوة والهدية والدعاء، وتقول «أتذكّر» بالـ ngoko والكراما.'
+  en: 'Talk about a relative''s wedding: the invitation, the gift and good wishes, and say "remember" in ngoko and krama.'
+slides:
+  - title: Manten, kado, donga
+    body:
+      ar_eg: |
+        manten = عريس أو عروسة (والفرح mantenan). dados manten = يتجوز.
+        ngundang = يعزم (على مناسبة). kado = هدية. donga = دعاء، وndonga = يدعي.
+        slamet = سليم، بالسلامة. sedulur (وبالعامية dulur) = قريب، وبالكراما sedherek.
+        kelingan = فاكر (ngoko)، وبالكراما kengetan.
+      ar: |
+        manten = العريس أو العروس (والعرس mantenan). dados manten = يتزوج.
+        ngundang = يدعو (إلى مناسبة). kado = هدية. donga = دعاء، وndonga = يدعو الله.
+        slamet = سالم، بخير. sedulur (وبالعامية dulur) = قريب، وبالكراما sedherek.
+        kelingan = يتذكّر (ngoko)، وبالكراما kengetan.
+      en: |
+        manten = bride or groom (the wedding is mantenan). dados manten = get married.
+        ngundang = invite (to an event). kado = gift. donga = prayer, good wishes; ndonga = to pray.
+        slamet = safe, well. sedulur (casually dulur) = relative; krama sedherek.
+        kelingan = remember (ngoko); krama kengetan.
+    examples:
+      - text: Sedherek kula ngundang kula dhateng mantenan.
+        ar_eg: قريبي عزمني على الفرح.
+        ar: دعاني قريبي إلى العرس.
+        en: My relative invited me to the wedding.
+      - text: Kula tumbas kado kangge manten.
+        ar_eg: اشتريت هدية للعرسان.
+        ar: اشتريت هدية للعروسين.
+        en: I bought a gift for the bride and groom.
+      - text: Kula taksih kengetan mantenan menika.
+        ar_eg: أنا لسه فاكر الفرح ده.
+        ar: ما زلت أتذكّر ذلك العرس.
+        en: I still remember that wedding.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: manten
+        ar_eg: عريس، عروسة
+        ar: عريس، عروس
+        en: bride, groom
+      - text: ngundang
+        ar_eg: يعزم
+        ar: يدعو
+        en: invite
+      - text: kado
+        ar_eg: هدية
+        ar: هدية
+        en: gift
+      - text: donga
+        ar_eg: دعاء
+        ar: دعاء
+        en: prayer, good wishes
+    words: [manten, ngundang, kado, donga]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: slamet
+        ar_eg: بالسلامة
+        ar: سالم
+        en: safe, well
+      - text: dulur
+        ar_eg: قريب (ngoko)
+        ar: قريب (ngoko)
+        en: relative (ngoko)
+      - text: kelingan
+        ar_eg: فاكر (ngoko)
+        ar: يتذكّر (ngoko)
+        en: remember (ngoko)
+      - text: kengetan
+        ar_eg: فاكر (كراما)
+        ar: يتذكّر (كراما)
+        en: remember (krama)
+    words: [slamet, dulur, kelingan, kengetan]
+  - id: e03
+    type: listen
+    text: Dulurku arep dadi manten.
+    question:
+      ar_eg: إيه الخبر؟
+      ar: ما الخبر؟
+      en: What's the news?
+    options: [جاري عيان, صاحبي مسافر, قريبي هيتجوز]
+    answer: 2
+    meaning:
+      ar_eg: قريبي هيتجوز.
+      ar: قريبي سيتزوج.
+      en: My cousin is getting married.
+    words: [dulur, manten]
+  - id: e04
+    type: fill_blank
+    sentence: Sedherek kula ___ kula dhateng mantenan.
+    meaning:
+      ar_eg: قريبي ___ني على الفرح.
+      ar: قريبي ___ني إلى العرس.
+      en: My relative ___ me to the wedding.
+    options: [ngundang, kelingan, slamet]
+    answers: [ngundang]
+    words: [ngundang, kelingan, slamet]
+    explain:
+      ar_eg: ngundang = يعزم. kelingan = فاكر، وslamet = بالسلامة.
+      ar: ngundang تعني يدعو. أما kelingan ففاكر، وslamet سالم.
+      en: ngundang is "invite". kelingan is "remember", and slamet is "safe".
+  - id: e05
+    type: multiple_choice
+    question: Kula tumbas ___ kangge manten.
+    options: [donga, kado, dulur]
+    answer: 1
+    explain:
+      ar_eg: kado = هدية.
+      ar: kado = هدية.
+      en: kado = gift.
+    words: [donga, kado, dulur, manten]
+  - id: e06
+    type: fill_blank
+    sentence: Aku isih ___ mantenan kuwi.
+    meaning:
+      ar_eg: أنا لسه ___ الفرح ده.
+      ar: ما زلت ___ ذلك العرس.
+      en: I still ___ that wedding.
+    options: [kelingan, kengetan, ngundang]
+    answers: [kelingan]
+    words: [kelingan, kengetan, ngundang]
+    explain:
+      ar_eg: الجملة نغوكو (Aku isih)، يبقى kelingan = فاكر. kengetan نفس المعنى بس كراما، وngundang = يعزم.
+      ar: الجملة نغوكو (Aku isih)، فالصحيح kelingan أي يتذكر. أما kengetan فبالمعنى نفسه لكن كراما، وngundang يدعو.
+      en: The sentence is ngoko (Aku isih), so it's kelingan, "remember". kengetan means the same in krama, and ngundang is "invite".
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: دعواتي للعرسان.
+      ar: دعائي للعروسين.
+      en: My good wishes to the newlyweds.
+    answer: Donga kula kangge manten.
+    distractors: [kado, dulur]
+    words: [donga, manten]
+    explain:
+      ar_eg: "donga = دعاء وkangge = لـ: دعواتي للعرسان. kado = هدية، وdulur = قريب بالنغوكو."
+      ar: "donga تعني دعاء وkangge لأجل: دعائي للعروسين. أما kado فهدية، وdulur قريب بالنغوكو."
+      en: donga is "prayer, good wish", kangge "for". kado is "gift", and dulur is "relative" in ngoko.
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kula taksih kengetan mantenan sedherek kula.
+    answers_meaning:
+      ar_eg: [لسه فاكر فرح قريبي, أنا لسه فاكر فرح قريبي]
+      ar: [ما زلت أتذكّر عرس قريبي]
+      en: ['I still remember my relative''s wedding', 'I still remember my cousin''s wedding']
+    words: [kengetan, manten]
+  - id: e09
+    type: speaking
+    text: Dulurku slamet tekan Jogja.
+    meaning:
+      ar_eg: قريبي وصل يوجيا بالسلامة.
+      ar: وصل قريبي إلى يوجيا سالمًا.
+      en: My cousin got to Jogja safely.
+    words: [dulur, slamet]
+  - id: e10
+    type: multiple_choice
+    question: Aku kelingan. → Kula ___.
+    options: [kengetan, kado, slamet]
+    answer: 0
+    explain:
+      ar_eg: kelingan ← kengetan بالكراما (فاكر).
+      ar: kelingan ← kengetan بالكراما (يتذكّر).
+      en: kelingan → kengetan in krama (remember).
+    words: [kelingan, kengetan, kado, slamet]
+dialogue:
+  lines:
+    - speaker: Mas Dimas
+      text: "Mohamed, Setu iki dulurku mantenan. Kowe tak undang, ya!"
+      ar_eg: "يا محمد، السبت ده قريبي بيتجوز. وإنت معزوم!"
+      ar: "يا محمد، يتزوّج قريبي هذا السبت. وأنت مدعوّ!"
+      en: "Mohamed, my cousin's getting married this Saturday. You're invited!"
+    - speaker: Mohamed
+      text: "Wah, suwun! Aku tuku kado apa, ya?"
+      ar_eg: "الله، شكرًا! أجيب هدية إيه؟"
+      ar: "شكرًا! أيّ هدية أشتري؟"
+      en: "Oh, thanks! What gift should I get?"
+    - speaker: Mas Dimas
+      text: "Ra usah, donga wae."
+      ar_eg: "مالوش لزوم، دعواتك بس."
+      ar: "لا داعي، دعواتك فقط."
+      en: "No need, just your good wishes."
+    - speaker: Mohamed
+      text: "Mbah Putri teka ora? Nek teka, aku nganggo krama, ya."
+      ar_eg: "تيتة بوتري جاية؟ لو جاية، هتكلم كراما."
+      ar: "هل ستأتي الجدة بوتري؟ إن أتت فسأتكلم بالكراما."
+      en: "Is Mbah Putri coming? If she is, I'll use krama."
+    - speaker: Mas Dimas
+      text: "Teka. Mbah isih kelingan kowe, lho!"
+      ar_eg: "جاية. وتيتة لسه فاكراك على فكرة!"
+      ar: "نعم. وما زالت الجدة تذكرك!"
+      en: "She is. And Mbah still remembers you, you know!"
+    - speaker: Mohamed
+      text: "Aku ya kelingan. Mbah becik banget, je."
+      ar_eg: "وأنا كمان فاكرها. تيتة طيبة أوي."
+      ar: "وأنا أيضًا أذكرها. الجدة طيبة جدًا."
+      en: "I remember her too. Mbah is so kind."
+new_words:
+  - word: manten
+    pos: noun
+    ar_eg: عريس أو عروسة (mantenan = فرح)
+    ar: عريس أو عروس (mantenan = عرس)
+    en: bride or groom (mantenan = wedding) = pengantin
+  - word: ngundang
+    pos: verb
+    ar_eg: يعزم (على مناسبة)
+    ar: يدعو (إلى مناسبة)
+    en: invite (= mengundang)
+  - word: kado
+    pos: noun
+    ar_eg: هدية
+    ar: هدية
+    en: gift, present (= kado)
+  - word: donga
+    pos: noun
+    ar_eg: دعاء (ndonga = يدعي)
+    ar: دعاء (ndonga = يدعو)
+    en: prayer, good wishes (ndonga = to pray) = doa
+  - word: slamet
+    pos: adjective
+    ar_eg: سليم، بالسلامة
+    ar: سالم، بخير
+    en: safe, well (= selamat)
+  - word: sedulur / dulur
+    pos: noun
+    ar_eg: قريب (ngoko؛ بالكراما sedherek)
+    ar: قريب (ngoko؛ بالكراما sedherek)
+    en: relative, cousin (ngoko; krama sedherek) = saudara
+  - word: kelingan
+    pos: verb
+    ar_eg: فاكر (ngoko)
+    ar: يتذكّر (ngoko)
+    en: remember (= ingat), ngoko
+  - word: kengetan
+    pos: verb
+    ar_eg: فاكر (kelingan ← kengetan)، كراما
+    ar: يتذكّر (kelingan ← kengetan)، كراما
+    en: remember (ngoko kelingan, Indonesian ingat), krama
+review:
+  status: draft
+  verified: false

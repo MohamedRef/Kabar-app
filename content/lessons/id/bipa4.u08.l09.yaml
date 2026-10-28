@@ -1,0 +1,243 @@
+schema: kabar.lesson/v1
+id: bipa4.u08.l09
+language: id
+title: Kira-kira apa yang terjadi?
+can_do:
+  ar_eg: 'تخمّن وتفكر بصوت عالي وانت بتحكي حدوتة: أظن، يمكن، بالعكس.'
+  ar: 'أن تخمّن وتفكّر بصوت عالٍ وأنت تروي حكاية: أظن، لا أدري، بل.'
+  en: 'Guess and think aloud while telling a tale: I think, who knows, instead.'
+slides:
+  - title: Berpikir dan menebak
+    body:
+      ar_eg: |
+        kira = يظن (kira-kira = تقريبًا، أو «تفتكر؟»)، berpikir = يفكّر (pikir = فكر)، pikiran = فكرة، عقل.
+        mengalami = يمرّ بتجربة أو يعاني (mengalami kesulitan = يواجه صعوبة)، sendirian = لوحده.
+        entah = مش عارف، الله أعلم (entah ke mana = مش عارف راح فين)، malah = بالعكس، بدل ما (لحاجة غير متوقعة).
+        pantas = يستاهل أو مناسب (pantas mendapat hadiah = يستاهل جايزة).
+      ar: |
+        kira = يظن (kira-kira = تقريبًا، أو «أتظن؟»)، berpikir = يفكّر (pikir = فكر)، pikiran = الفكر والعقل.
+        mengalami = يمرّ بـ أو يعاني (mengalami kesulitan = يواجه صعوبة)، sendirian = وحيدًا.
+        entah = لا أدري (entah ke mana = لا يُدرى إلى أين)، malah = بل، على العكس (لأمر غير متوقع).
+        pantas = يستحق أو لائق (pantas mendapat hadiah = يستحق جائزة).
+      en: |
+        kira = to think, suppose (kira-kira = roughly, or "do you think?"), berpikir = to think (pikir = thought), pikiran = mind, thoughts.
+        mengalami = to experience, go through (mengalami kesulitan = have difficulties), sendirian = alone.
+        entah = who knows (entah ke mana = who knows where), malah = instead, on the contrary (for something unexpected).
+        pantas = to deserve, be fitting (pantas mendapat hadiah = deserves a prize).
+    examples:
+      - text: Saya kira nelayan itu akan kaya.
+        ar_eg: أنا افتكرت إن الصياد ده هيبقى غني.
+        ar: ظننت أن ذلك الصياد سيصبح غنيًا.
+        en: I thought that fisherman would get rich.
+      - text: Dia malah jatuh miskin karena berpikir dia paling pintar.
+        ar_eg: بالعكس، افتقر عشان افتكر نفسه أذكى واحد.
+        ar: بل افتقر لأنه ظنّ نفسه الأذكى.
+        en: Instead he became poor because he thought he was the cleverest.
+      - text: Anak itu tinggal sendirian di hutan, entah berapa tahun.
+        ar_eg: الولد ده عاش لوحده في الغابة، الله أعلم كام سنة.
+        ar: عاش ذلك الولد وحيدًا في الغابة، لا يُدرى كم سنة.
+        en: The boy lived alone in the forest for who knows how many years.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kira
+        ar_eg: يظن
+        ar: يظن
+        en: to suppose
+      - text: berpikir
+        ar_eg: يفكّر
+        ar: يفكّر
+        en: to think
+      - text: pikiran
+        ar_eg: فكرة، عقل
+        ar: فكر، عقل
+        en: mind, thoughts
+      - text: mengalami
+        ar_eg: يمرّ بـ
+        ar: يمرّ بـ
+        en: to experience
+    words: [kira, berpikir, pikiran, mengalami]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: sendirian
+        ar_eg: لوحده
+        ar: وحيدًا
+        en: alone
+      - text: entah
+        ar_eg: الله أعلم
+        ar: لا أدري
+        en: who knows
+      - text: malah
+        ar_eg: بالعكس
+        ar: بل
+        en: instead
+      - text: pantas
+        ar_eg: يستاهل
+        ar: يستحق
+        en: to deserve
+    words: [sendirian, entah, malah, pantas]
+  - id: e03
+    type: listen
+    text: Kancil tinggal sendirian di tepi sungai.
+    question:
+      ar_eg: الكانتشيل عايش مع مين؟
+      ar: مع من يعيش الكانتشيل؟
+      en: Who does the mouse-deer live with?
+    options: [لوحده, مع أهله, مع التماسيح]
+    answer: 0
+    meaning:
+      ar_eg: الكانتشيل عايش لوحده على شط النهر.
+      ar: يعيش الكانتشيل وحيدًا على ضفة النهر.
+      en: The mouse-deer lives alone on the riverbank.
+    words: [sendirian]
+  - id: e04
+    type: fill_blank
+    sentence: Saya ___ dia sudah pulang, ternyata dia masih di kantor.
+    meaning:
+      ar_eg: أنا ___ إنه روّح، طلع لسه في المكتب.
+      ar: ___ أنه عاد إلى البيت، فإذا هو ما زال في المكتب.
+      en: I ___ they'd gone home, but they were still at the office.
+    options: [kira, entah, pantas]
+    answers: [kira]
+    words: [kira, entah, pantas]
+    explain:
+      ar_eg: saya kira = كنت فاكر، وternyata بتقول إن الظن طلع غلط. entah = مش عارف، وpantas = يليق.
+      ar: saya kira = ظننت، وternyata تبيّن أن الظن خطأ. أما entah فلا أدري، وpantas لائق.
+      en: saya kira means I thought, and ternyata shows it was wrong. entah is who knows and pantas is fitting.
+  - id: e05
+    type: multiple_choice
+    question: Dia disuruh belajar, tapi dia ___ tidur.
+    options: [malah, entah, kira]
+    answer: 0
+    explain:
+      ar_eg: malah = بالعكس، عمل حاجة غير المتوقعة. entah = الله أعلم، وkira = يظن.
+      ar: malah = بل على العكس، ففعل غير المتوقع. أما entah فلا أدري، وkira يظن.
+      en: malah means instead, doing the unexpected thing. entah is who knows, and kira is suppose.
+    words: [malah, entah, kira]
+  - id: e06
+    type: fill_blank
+    sentence: Nelayan itu ___ banyak kesulitan di laut.
+    meaning:
+      ar_eg: الصياد ده ___ صعوبات كتير في البحر.
+      ar: ___ ذلك الصياد صعوبات كثيرة في البحر.
+      en: That fisherman ___ many hardships at sea.
+    options: [mengalami, berpikir, sendirian]
+    answers: [mengalami]
+    words: [mengalami, berpikir, sendirian]
+    explain:
+      ar_eg: mengalami kesulitan = مرّ بصعوبات. berpikir = يفكر، وsendirian = لوحده، ومايجوش قبل kesulitan.
+      ar: mengalami kesulitan = عانى صعوبات. أما berpikir فيفكّر، وsendirian وحيدًا، ولا يسبقان kesulitan.
+      en: mengalami kesulitan means went through hardships. berpikir is to think and sendirian is alone; neither goes before kesulitan.
+  - id: e07
+    type: multiple_choice
+    question: Pemuda pemberani itu ___ mendapat hadiah dari raja.
+    options: [pantas, malah, entah]
+    answer: 0
+    explain:
+      ar_eg: pantas mendapat = يستاهل ياخد. malah = بالعكس، وentah = الله أعلم.
+      ar: pantas mendapat = يستحق أن ينال. أما malah فبل، وentah لا أدري.
+      en: pantas mendapat means deserves to get. malah is instead, and entah is who knows.
+    words: [pantas, malah, entah]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: لازم نفكّر قبل ما نتكلم.
+      ar: يجب أن نفكّر قبل أن نتكلم.
+      en: We must think before we speak.
+    answer: Kita harus berpikir dulu sebelum berbicara.
+    distractors: [pikiran, kira]
+    words: [berpikir, pikiran, kira]
+    explain:
+      ar_eg: harus berpikir dulu = لازم نفكر الأول. pikiran = فكرة (اسم)، وkira = يظن، ومالهمش مكان هنا.
+      ar: harus berpikir dulu = يجب أن نفكّر أولًا. أما pikiran فاسم (فكرة)، وkira يظن، ولا مكان لهما هنا.
+      en: harus berpikir dulu means we must think first. pikiran is the noun thought and kira is to guess; they don't belong here.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Entah ke mana kalung mutiara itu hilang.
+    answers_meaning:
+      ar_eg: [الله أعلم العقد اللولي ده راح فين, محدش عارف العقد اللولي اختفى فين]
+      ar: [لا يُدرى أين اختفت قلادة اللؤلؤ, لا أحد يدري أين ضاعت قلادة اللؤلؤ]
+      en: [Who knows where the pearl necklace went, Nobody knows where that pearl necklace disappeared to]
+    words: [entah]
+  - id: e10
+    type: speaking
+    text: Pikiran saya penuh dengan cerita Opa Jemmy.
+    meaning:
+      ar_eg: دماغي مليانة بحكايات أوبا جيمي.
+      ar: عقلي مليء بحكايات أوبا جيمي.
+      en: My mind is full of Opa Jemmy's stories.
+    words: [pikiran, mengalami, sendirian]
+dialogue:
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, kira-kira apa yang terjadi pada nelayan tua itu?
+      ar_eg: يا محمد، تفتكر إيه اللي حصل للصياد العجوز ده؟
+      ar: يا محمد، ماذا تظن أنه حدث لذلك الصياد العجوز؟
+      en: Mohamed, what do you think happened to the old fisherman?
+    - speaker: Mohamed
+      text: Saya kira dia jadi kaya karena ikan ajaib itu.
+      ar_eg: أنا أظن إنه بقى غني بسبب السمكة السحرية.
+      ar: أظن أنه صار غنيًا بفضل السمكة السحرية.
+      en: I think he got rich because of the magic fish.
+    - speaker: Mas Rizal
+      text: Salah! Dia malah tinggal sendirian di gua.
+      ar_eg: غلط! بالعكس، عاش لوحده في كهف.
+      ar: خطأ! بل عاش وحيدًا في كهف.
+      en: Wrong! Instead he lived alone in a cave.
+    - speaker: Mohamed
+      text: Kasihan. Dia mengalami banyak kesulitan, ya?
+      ar_eg: يا حرام. شاف صعوبات كتير، صح؟
+      ar: مسكين. مرّ بصعوبات كثيرة، أليس كذلك؟
+      en: Poor man. He went through a lot of hardship, didn't he?
+    - speaker: Mas Rizal
+      text: Iya. Tapi dia pantas mendapat itu, karena dia melanggar janjinya.
+      ar_eg: أيوه. بس هو يستاهل، عشان خلف وعده.
+      ar: نعم، لكنه استحق ذلك لأنه نقض وعده.
+      en: Yes. But he deserved it, because he broke his promise.
+new_words:
+  - word: kira
+    pos: verb
+    ar_eg: يظن (kira-kira = تقريبًا)
+    ar: يظن (kira-kira = تقريبًا)
+    en: to think, suppose
+  - word: berpikir / pikir
+    pos: verb
+    ar_eg: يفكّر
+    ar: يفكّر
+    en: to think
+  - word: pikiran
+    pos: noun
+    ar_eg: فكرة، عقل، دماغ
+    ar: فكر، عقل
+    en: mind, thoughts
+  - word: mengalami
+    pos: verb
+    ar_eg: يمرّ بـ، يعاني
+    ar: يمرّ بـ، يعاني
+    en: to experience, go through
+  - word: sendirian
+    pos: adv
+    ar_eg: لوحده
+    ar: وحيدًا، بمفرده
+    en: alone
+  - word: entah
+    pos: adv
+    ar_eg: الله أعلم، مش عارف
+    ar: لا أدري
+    en: who knows
+  - word: malah
+    pos: adv
+    ar_eg: بالعكس، بدل كده
+    ar: بل، على العكس
+    en: instead, on the contrary
+  - word: pantas
+    pos: adj
+    ar_eg: يستاهل، مناسب
+    ar: يستحق، لائق
+    en: deserving, fitting
+review:
+  status: draft
+  verified: false

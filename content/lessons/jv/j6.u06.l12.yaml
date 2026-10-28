@@ -1,0 +1,185 @@
+schema: kabar.lesson/v1
+id: j6.u06.l12
+language: jv
+title: Cathetan blanja
+can_do:
+  ar_eg: تقرا لستة مشتريات مكتوبة بالبيجون.
+  ar: أن تقرأ قائمة مشتريات مكتوبة بالبيجون.
+  en: Read a shopping list written in Pegon.
+slides:
+  - title: Cathetan santri
+    body:
+      ar_eg: |
+        Ali ادّى لمحمد لستة حاجات يجيبها من الدكان، مكتوبة بالبيجون.
+        دوّر على الحروف الزيادة: ڮ = g في gula، وڤ = p في kopi.
+        كلمة جديدة: uyah = ملح. شوف إزاي اتكتبت: او (u) + يا + ه = اوياه.
+      ar: |
+        أعطى علي لمحمد قائمة أشياء يشتريها من الدكان، مكتوبة بالبيجون.
+        ابحث عن الحروف الإضافية: ڮ = g في gula، وڤ = p في kopi.
+        كلمة جديدة: uyah = ملح، ولاحظ كتابتها: او (u) + يا + ه = اوياه.
+      en: |
+        Ali gave Mohamed a list of things to buy at the shop, written in Pegon.
+        Look for the extra letters: ڮ = g in gula, ڤ = p in kopi.
+        New word: uyah = salt. See how it's spelled: او (u) + يا + ه = اوياه.
+    grammar: jv.pegon.basics
+    examples:
+      - text: ڮولا · كوڤي (gula · kopi)
+        ar_eg: سكر · قهوة
+        ar: سكّر · قهوة
+        en: sugar · coffee
+      - text: اوياه · روتي (uyah · roti)
+        ar_eg: ملح · عيش فينو
+        ar: ملح · خبز
+        en: salt · bread
+      - text: تاهو · سوسو (tahu · susu)
+        ar_eg: توفو · لبن
+        ar: توفو · حليب
+        en: tofu · milk
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة في اللستة معناها «ملح»؟
+      ar: أي كلمة في القائمة تعني «ملح»؟
+      en: Which word on the list means "salt"?
+    options: [روتي, اوياه, سوسو]
+    answer: 1
+    words: [uyah]
+    explain:
+      ar_eg: اوياه = uyah = ملح. روتي = roti (عيش) وسوسو = susu (لبن).
+      ar: اوياه = uyah أي ملح. أما روتي فـ roti (خبز) وسوسو فـ susu (حليب).
+      en: اوياه is uyah, salt. روتي is roti (bread) and سوسو is susu (milk).
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: هل فيه شاي في اللستة؟ أنهي مشروب موجود؟
+      ar: هل في القائمة شاي؟ أي مشروب فيها؟
+      en: Is there tea on the list? Which drink is on it?
+    options: [teh, jus, kopi]
+    answer: 2
+    explain:
+      ar_eg: كوڤي = kopi. ڤ هنا p، مش f.
+      ar: كوڤي = kopi، وڤ هنا p لا f.
+      en: كوڤي = kopi. ڤ is p here, not f.
+    words: [ڤ]
+  - id: e03
+    type: listen
+    text: gula
+    question:
+      ar_eg: Ali قال حاجة من اللستة. أنهي واحدة؟
+      ar: ذكر علي شيئًا من القائمة. أيّه؟
+      en: Ali named something on the list. Which one?
+    options: [كولا, ڮولا, جولا]
+    answer: 1
+    meaning:
+      ar_eg: سكر
+      ar: سكّر
+      en: sugar
+    words: [ڮ]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: ڮولا
+        ar_eg: gula — سكر
+        ar: gula — سكّر
+        en: gula — sugar
+      - text: اوياه
+        ar_eg: uyah — ملح
+        ar: uyah — ملح
+        en: uyah — salt
+      - text: روتي
+        ar_eg: roti — عيش فينو
+        ar: roti — خبز
+        en: roti — bread
+      - text: تاهو
+        ar_eg: tahu — توفو
+        ar: tahu — توفو
+        en: tahu — tofu
+    words: [uyah, ڮ]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "ليه kopi مكتوبة كوڤي مش كوفي؟"
+      ar: "لماذا كُتبت kopi كوڤي لا كوفي؟"
+      en: "Why is kopi written كوڤي, not كوفي?"
+    options: ["Swarane p, dudu f.", "Iku tembung Arab.", "Iku jeneng."]
+    answer: 0
+    explain:
+      ar_eg: الجاوي بيقول kopi بالـ p، والـ p في البيجون = ڤ.
+      ar: يقول الجاويون kopi بالـ p، والـ p في البيجون = ڤ.
+      en: Javanese says kopi with a p, and p in Pegon is ڤ.
+    words: [ڤ]
+  - id: e06
+    type: fill_blank
+    sentence: اوياه = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: ملح)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: ملح)"
+      en: Type the reading in Latin letters. (It means "salt".)
+    answers: [uyah]
+    words: [uyah]
+    explain:
+      ar_eg: او = u، يا = ya، ه = h، فـ اوياه = uyah.
+      ar: او = u ويا = ya وه = h، فـ اوياه = uyah.
+      en: او is u, يا is ya and ه is h, so اوياه is uyah.
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ڮولا لان كوڤي"
+      ar: "اكتب بالحروف اللاتينية: ڮولا لان كوڤي"
+      en: "Write in Latin letters: ڮولا لان كوڤي"
+    answers: [gula lan kopi]
+    words: [ڮ, ڤ]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: هشتري سكر وملح.
+      ar: سأشتري سكّرًا وملحًا.
+      en: I'll buy sugar and salt.
+    answer: Aku tuku gula lan uyah.
+    distractors: [roti]
+    words: [uyah]
+    explain:
+      ar_eg: gula lan uyah = سكر وملح. roti = عيش، ومش في الجملة.
+      ar: gula lan uyah = سكر وملح. أما roti (خبز) فليست في الجملة.
+      en: gula lan uyah is "sugar and salt". roti (bread) isn't in the sentence.
+  - id: e09
+    type: speaking
+    text: Gula, kopi, uyah, roti, tahu lan susu.
+    meaning:
+      ar_eg: سكر، قهوة، ملح، عيش، توفو، ولبن.
+      ar: سكّر، قهوة، ملح، خبز، توفو، وحليب.
+      en: Sugar, coffee, salt, bread, tofu and milk.
+dialogue:
+  title: Ing toko
+  lines:
+    - speaker: Bakul
+      text: Pados menapa, Mas?
+      ar_eg: بتدوّر على إيه يا أستاذ؟
+      ar: عمّ تبحث يا سيدي؟
+      en: What are you looking for?
+    - speaker: Mohamed
+      text: Gula, kopi, uyah, roti, tahu kaliyan susu, Bu.
+      ar_eg: سكر وقهوة وملح وعيش وتوفو ولبن يا مدام.
+      ar: سكّر وقهوة وملح وخبز وتوفو وحليب يا سيدتي.
+      en: Sugar, coffee, salt, bread, tofu and milk, ma'am.
+    - speaker: Bakul
+      text: Wah, cathetanipun ngangge Pegon, nggih?
+      ar_eg: يا سلام، اللستة مكتوبة بالبيجون؟
+      ar: رائع، القائمة مكتوبة بالبيجون؟
+      en: Oh, your list is in Pegon?
+    - speaker: Mohamed
+      text: Inggih, saking kanca santri. Kula saged maos!
+      ar_eg: أيوه، من صاحبي اللي في البيسانترين. وأنا بعرف أقراها!
+      ar: نعم، من صديقي طالب البيسانترين، وأستطيع قراءتها!
+      en: Yes, from a santri friend. I can read it!
+new_words:
+  - word: uyah
+    pos: noun
+    ar_eg: ملح
+    ar: ملح
+    en: salt = garam
+review:
+  status: draft
+  verified: false

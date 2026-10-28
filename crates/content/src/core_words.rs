@@ -2,7 +2,9 @@
 //! [`CORE_RANK`] of `content/freq/<lang>.tsv` that a lesson's exercises use
 //! must already be a `new_words` entry in that lesson or an earlier one (in
 //! curriculum order). Review cards come only from `new_words`, so a core word
-//! that is never taught never reaches the review deck.
+//! that is never taught never reaches the review deck. Dialogue lines count
+//! too (#297); there a street form (`bilang`, `nggih`) is covered by its
+//! taught formal twin from `content/freq/<lang>.street.tsv`.
 //!
 //! A taught phrase (`rumah sakit`) does not teach its parts, but its parts
 //! don't count as uses inside it either. A suffixed (`rumahnya`, `omahe`) or
@@ -17,6 +19,7 @@
 use std::collections::{BTreeMap, BTreeSet};
 use std::path::Path;
 
+use kabar_core::lang::{Lang, street};
 use serde_json::Value;
 
 use crate::model::Curriculum;
@@ -101,6 +104,11 @@ pub fn check(
 ) {
     for c in curricula {
         let lang = c.language.as_str();
+        let street_lang = match lang {
+            "id" => Some(Lang::Indonesian),
+            "jv" => Some(Lang::Javanese),
+            _ => None,
+        };
         let freq = root.join(format!("content/freq/{lang}.tsv"));
         if !freq.exists() {
             continue;
@@ -143,6 +151,8 @@ pub fn check(
                 }
                 suffixes(lang).iter().any(|s| w.len() > s.len() + 2 && w.strip_suffix(s).is_some_and(at))
             };
+            // (where, words used): each exercise, then the dialogue lines.
+            let mut uses: Vec<(String, BTreeSet<String>)> = Vec::new();
             for e in lesson.get("exercises").and_then(Value::as_array).into_iter().flatten() {
                 let ex = e.get("id").and_then(Value::as_str).unwrap_or("?");
                 let text = phrases.iter().fold(target_text(e, false), |t, p| mask(&t, p));
@@ -150,6 +160,27 @@ pub fn check(
                     e.get("words").and_then(Value::as_array).into_iter().flatten().filter_map(Value::as_str);
                 let mut used: BTreeSet<String> = tokens(&text).into_iter().collect();
                 used.extend(tags.map(str::to_lowercase).filter(|t| !t.contains(' ')));
+                uses.push((ex.to_owned(), used));
+            }
+            let lines = lesson.pointer("/dialogue/lines").and_then(Value::as_array).into_iter().flatten();
+            // Street forms read as their formal twins first, so "makasih" and
+            // "nggak pernah" meet the taught phrases "terima kasih" and
+            // "tidak pernah".
+            let mut spoken = BTreeSet::new();
+            for line in lines.filter_map(|l| l.get("text").and_then(Value::as_str)) {
+                let words = tokens(&line.to_lowercase());
+                let formal: Vec<&str> = words
+                    .iter()
+                    .map(|w| match street_lang.and_then(|l| street::formal(l, w)) {
+                        Some(f) if !covered(w) => f,
+                        _ => w,
+                    })
+                    .collect();
+                let text = phrases.iter().fold(formal.join(" "), |t, p| mask(&t, p));
+                spoken.extend(tokens(&text));
+            }
+            uses.push(("dialogue".to_owned(), spoken));
+            for (at, used) in uses {
                 for w in used {
                     let Some(&rank) = core.get(&w) else { continue };
                     if exclude.contains(&w) || covered(&w) {
@@ -160,7 +191,7 @@ pub fn check(
                         continue;
                     }
                     problems.push(format!(
-                        "{id} {ex}: uses core word '{w}' (frequency rank {rank}) before any lesson teaches it; \
+                        "{id} {at}: uses core word '{w}' (frequency rank {rank}) before any lesson teaches it; \
                          add it to new_words here or in an earlier lesson"
                     ));
                 }

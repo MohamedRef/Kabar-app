@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: bipa7.u01.l11
+language: id
+title: Menulis berita
+can_do:
+  ar_eg: تكتب خبر قصير بالهرم المقلوب، مين عمل إيه وفين وإمتى.
+  ar: أن تكتب خبرًا قصيرًا على نمط الهرم المقلوب.
+  en: Write a short news story as an inverted pyramid.
+slides:
+  - title: Lead dulu, detail kemudian
+    grammar: id.news.expressions
+    body:
+      ar_eg: |
+        أول جملة (lead) فيها الأهم: siapa، apa، di mana، kapan.
+        Sanggar tari remaja asal Sorong menjuarai lomba tari tradisional di Kuala Lumpur, Minggu (25/10).
+        بعدها التفاصيل، وبعدها الاقتباس، وفي الآخر الخلفية.
+        وتعبيرات الإنجاز: mengharumkan nama bangsa (يرفع اسم البلد)، di kancah internasional (على الساحة الدولية).
+        والـ liputan = تغطية صحفية. (الخبر متألّف للدرس.)
+        - في الكلام: terus = lalu، kebalik = terbalik.
+      ar: |
+        تحمل الجملة الأولى (lead) الأهمّ: siapa، apa، di mana، kapan.
+        Sanggar tari remaja asal Sorong menjuarai lomba tari tradisional di Kuala Lumpur, Minggu (25/10).
+        ثمّ التفاصيل، فالاقتباس، فالخلفية في الختام.
+        ومن عبارات الإنجاز: mengharumkan nama bangsa (يرفع اسم الوطن)، وdi kancah internasional (على الساحة الدولية).
+        والـ liputan = التغطية الصحفية. (الخبر مؤلَّف للدرس.)
+        - في الكلام اليومي: terus = lalu، kebalik = terbalik.
+      en: |
+        The first sentence (lead) holds what matters most: siapa, apa, di mana, kapan.
+        Sanggar tari remaja asal Sorong menjuarai lomba tari tradisional di Kuala Lumpur, Minggu (25/10).
+        Then details, then a quote, and background last.
+        Achievement phrases: mengharumkan nama bangsa (to bring honour to the nation), di kancah internasional (on the international stage).
+        liputan = news coverage. (The story is invented for the lesson.)
+        - In speech: terus = lalu, kebalik = terbalik.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: liputan
+        ar_eg: تغطية صحفية
+        ar: تغطية صحفية
+        en: news coverage
+      - text: lomba
+        ar_eg: مسابقة
+        ar: مسابقة
+        en: competition, contest
+      - text: mengharumkan
+        ar_eg: يرفع اسم / يشرّف
+        ar: يُعلي اسم / يشرّف
+        en: to bring honour to
+      - text: kancah
+        ar_eg: ساحة / ميدان
+        ar: ساحة
+        en: arena, stage
+    words: [liputan, lomba, mengharumkan, kancah]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تنفع lead لخبر؟
+      ar: أيّ جملة تصلح مقدّمةً لخبر؟
+      en: Which sentence works as a news lead?
+    options:
+      - Pada suatu hari yang indah, ada sebuah sanggar tari.
+      - Sanggar tari asal Sorong menjuarai lomba tari di Kuala Lumpur, Minggu (25/10).
+      - Tari itu sangat bagus dan saya suka.
+    answer: 1
+    words: [lomba]
+    explain:
+      ar_eg: الـ lead بيقول مين عمل إيه وفين وإمتى في جملة واحدة. الأولى بداية حدوتة، والتالتة رأي شخصي.
+      ar: المقدمة الإخبارية تجمع من وماذا وأين ومتى في جملة واحدة. الأولى بداية حكاية والثالثة رأي شخصي.
+      en: A lead says who, what, where and when in one sentence. The first is a story opening, the third an opinion.
+  - id: e03
+    type: fill_blank
+    sentence: Para penari muda itu ___ nama bangsa di kancah internasional.
+    meaning:
+      ar_eg: الراقصين الشباب دول رفعوا اسم البلد على الساحة الدولية.
+      ar: أعلى الراقصون الشباب اسم الوطن على الساحة الدولية.
+      en: The young dancers brought honour to the nation on the international stage.
+    options: [mengharumkan, liputan, lomba]
+    answers: [mengharumkan]
+    words: [mengharumkan, kancah]
+    explain:
+      ar_eg: "mengharumkan nama bangsa = رفعوا اسم البلد (حرفيًا: عطّروه). liputan = تغطية صحفية، وlomba = مسابقة، ودول أسماء."
+      ar: mengharumkan nama bangsa = رفعوا اسم الوطن. أما liputan فتغطية صحفية وlomba مسابقة، وهما اسمان.
+      en: mengharumkan nama bangsa = brought honour to the nation. liputan and lomba are nouns.
+  - id: e04
+    type: listen
+    text: Liputan lengkap tentang lomba itu bisa Anda dengar pukul tujuh malam.
+    question:
+      ar_eg: هنسمع إيه الساعة سبعة؟
+      ar: ماذا سنسمع في السابعة؟
+      en: What can we hear at seven?
+    options:
+      - التغطية الكاملة للمسابقة.
+      - نشرة الطقس.
+      - حفلة رقص على الهوا.
+    answer: 0
+    words: [liputan, lomba]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: فرقتنا أخيرًا وصلت للساحة الدولية.
+      ar: بلغت فرقتنا أخيرًا الساحة الدولية.
+      en: Our group has finally reached the international stage.
+    answer: Sanggar kami akhirnya tampil di kancah internasional.
+    distractors: [liputan, lomba]
+    words: [kancah]
+    explain:
+      ar_eg: tampil di kancah internasional = ظهرت على الساحة الدولية. liputan وlomba مش جزء من الجملة دي.
+      ar: tampil di kancah internasional = ظهرت على الساحة الدولية، ولا مكان لـ liputan ولا lomba.
+      en: tampil di kancah internasional = appeared on the international stage. liputan and lomba don't fit.
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في الهرم المقلوب، الخلفية والتاريخ بيبقوا فين؟
+      ar: أين تأتي الخلفية في الهرم المقلوب؟
+      en: In the inverted pyramid, where does the background go?
+    options:
+      - في العنوان.
+      - في أول جملة.
+      - في الآخر.
+    answer: 2
+    explain:
+      ar_eg: في الهرم المقلوب الأهم الأول، والخلفية بتيجي في الآخر. العنوان وأول جملة للمعلومة الأساسية.
+      ar: في الهرم المقلوب يأتي الأهم أولًا، والخلفية في الآخر. العنوان والجملة الأولى للمعلومة الأساسية.
+      en: In the inverted pyramid the key facts come first and background last.
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الفريق ده شرّف اسم بابوا.
+      ar: شرّف هذا الفريق اسم بابوا.
+      en: This team brought honour to Papua's name.
+    answers:
+      - Tim ini mengharumkan nama Papua.
+      - Tim itu mengharumkan nama Papua.
+      - Tim tersebut mengharumkan nama Papua.
+    words: [mengharumkan]
+  - id: e08
+    type: speaking
+    text: Ini liputan khusus dari Sorong tentang lomba tari remaja.
+    meaning:
+      ar_eg: دي تغطية خاصة من سورونج عن مسابقة رقص الشباب.
+      ar: هذه تغطية خاصّة من سورونغ عن مسابقة رقص اليافعين.
+      en: This is special coverage from Sorong on the youth dance competition.
+    words: [liputan, lomba]
+  - id: e09
+    type: dictation
+    text: Mereka bersaing dengan dua puluh negara di kancah internasional.
+    meaning:
+      ar_eg: اتنافسوا مع عشرين دولة على الساحة الدولية.
+      ar: تنافسوا مع عشرين دولة على الساحة الدولية.
+      en: They competed with twenty countries on the international stage.
+    words: [kancah]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Kemenangan dalam lomba itu mengharumkan nama sekolah mereka.
+    answers_meaning:
+      ar_eg:
+        - الفوز في المسابقة دي رفع اسم مدرستهم.
+        - المكسب في المسابقة شرّف مدرستهم.
+      ar:
+        - أعلى الفوز في تلك المسابقة اسم مدرستهم.
+        - شرّف الفوز بالمسابقة مدرستهم.
+      en:
+        - Winning that competition brought honour to their school.
+        - The win in that contest made their school proud.
+    words: [lomba, mengharumkan]
+dialogue:
+  title: Draf pertama
+  lines:
+    - speaker: Mohamed
+      text: Aku mulai dari sejarah sanggar itu, sejak tahun 2010.
+      ar_eg: أنا بدأت بتاريخ الفرقة، من سنة 2010.
+      ar: بدأت بتاريخ الفرقة منذ عام 2010.
+      en: I've started with the dance group's history, from 2010.
+    - speaker: Kaka Yohana
+      text: Kebalik, Mohamed. Pendengar mau tahu dulu siapa menang lomba apa, di mana, kapan.
+      ar_eg: بالعكس يا محمد. المستمع عايز يعرف الأول مين كسب أنهي مسابقة، فين، وإمتى.
+      ar: بالعكس يا محمد. يريد المستمع أن يعرف أوّلًا من فاز بأيّ مسابقة وأين ومتى.
+      en: Other way round, Mohamed. Listeners first want to know who won what contest, where and when.
+    - speaker: Mohamed
+      text: Jadi sejarahnya di akhir. Terus kutipan dari pelatihnya di tengah?
+      ar_eg: يعني التاريخ في الآخر. والاقتباس من المدرّب في النص؟
+      ar: إذن التاريخ في الختام، واقتباس المدرّب في الوسط؟
+      en: So the history goes at the end. And the coach's quote in the middle?
+    - speaker: Kaka Yohana
+      text: Tepat. Itu liputan yang rapi.
+      ar_eg: بالظبط. كده التغطية مترتّبة.
+      ar: تمامًا. هكذا تكون التغطية مرتّبة.
+      en: Exactly. That's tidy coverage.
+new_words:
+  - word: liputan
+    pos: noun
+    ar_eg: تغطية صحفية
+    ar: تغطية صحفية
+    en: news coverage
+  - word: mengharumkan
+    pos: verb
+    ar_eg: يرفع اسم / يشرّف
+    ar: يُعلي اسم / يشرّف
+    en: to bring honour to
+  - word: kancah
+    pos: noun
+    ar_eg: ساحة / ميدان
+    ar: ساحة
+    en: arena, stage
+review:
+  status: draft
+  verified: false

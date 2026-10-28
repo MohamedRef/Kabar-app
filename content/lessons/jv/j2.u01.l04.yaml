@@ -1,174 +1,251 @@
 schema: kabar.lesson/v1
 id: j2.u01.l04
 language: jv
-title: Kulawargane Pak Budi
+title: Mbarep lan ragil
 can_do:
-  ar_eg: توصف عيلة.
-  ar: أن تصف عائلة.
-  en: Describe a family.
+  ar_eg: 'تتكلم عن العيلة الكبيرة: الكبير وآخر العنقود، القرايب، الجيران، والبيبي الجديد.'
+  ar: 'أن تتحدّث عن العائلة الممتدّة: البكر وآخر العنقود، والأقارب، والجيران، والمولود الجديد.'
+  en: 'Talk about the wider family: eldest and youngest, relatives, neighbours and the new baby.'
 slides:
-  - title: Iki sapa?
+  - title: Kulawarga gedhe
     body:
       ar_eg: |
-        على حيطة محل Pak Budi فيه صورة كبيرة للعيلة. عشان توصفها محتاج:
-        - Iki / Kuwi sapa? = مين ده؟ · Sing iki sapa? = واللي ده مين؟
-        - كلمات العيلة: bapak، ibu، mas، mbakyu، adhi، pakdhe، budhe، mbah putri…
-        - -e / -ne عشان «بتاع فلان»: mase Sari = أخو ساري الكبير، omahe = بيته.
-        - -ku للي بتاعك: bojoku = مراتي، anakku = ابني / بنتي.
+        mbarep = الابن الكبير (البكري)، ragil = آخر العنقود: Sari anak mbarep, Bayu anak ragil.
+        sedulur = قريب من العيلة (وكمان أخ أو أخت). ponakan = ابن أو بنت الأخ أو الأخت.
+        tangga = جار (مش «سلّم» زي الإندونيسي!).
+        rabi = يتجوز، متجوز: Mbakyuku wis rabi. bayi = بيبي، lair = يتولد.
       ar: |
-        على جدار مطعم Pak Budi صورة كبيرة للعائلة، ولوصفها تحتاج:
-        - Iki / Kuwi sapa? = من هذا؟ · Sing iki sapa? = ومن هذا؟
-        - ألفاظ العائلة: bapak وibu وmas وmbakyu وadhi وpakdhe وbudhe وmbah putri…
-        - -e / -ne للإضافة: mase Sari = أخو ساري الأكبر، omahe = بيته.
-        - -ku للمتكلم: bojoku = زوجتي، anakku = ولدي.
+        mbarep = الابن البكر، ragil = آخر العنقود: Sari anak mbarep, Bayu anak ragil.
+        sedulur = قريب (وأيضًا أخ أو أخت). ponakan = ابن الأخ أو الأخت أو بنتهما.
+        tangga = جار (لا «سُلّم» كما في الإندونيسية!).
+        rabi = يتزوّج، متزوّج: Mbakyuku wis rabi. bayi = رضيع، lair = يولد.
       en: |
-        On the wall of Pak Budi's warung hangs a big family photo. To describe it you need:
-        - Iki / Kuwi sapa? = Who's this? · Sing iki sapa? = And who's this one?
-        - Family words: bapak, ibu, mas, mbakyu, adhi, pakdhe, budhe, mbah putri…
-        - -e / -ne for "X's": mase Sari = Sari's older brother, omahe = his house.
-        - -ku for "my": bojoku = my wife, anakku = my child.
-    grammar: jv.kinship.terms
+        mbarep = eldest child, ragil = youngest child: Sari anak mbarep, Bayu anak ragil.
+        sedulur = relative (also brother or sister). ponakan = niece or nephew.
+        tangga = neighbour (not "stairs" as in Indonesian!).
+        rabi = marry, married: Mbakyuku wis rabi. bayi = baby, lair = be born.
     examples:
-      - text: Kuwi Agus, mase Sari.
-        ar_eg: ده أجوس، أخو ساري الكبير.
-        ar: ذاك أغوس، أخو ساري الأكبر.
-        en: That's Agus, Sari's older brother.
+      - text: Sari anak mbarep, Bayu anak ragil.
+        ar_eg: ساري الكبيرة، وبايو آخر العنقود.
+        ar: ساري هي البكر، وبايو آخر العنقود.
+        en: Sari is the eldest, Bayu the youngest.
+      - text: Ponakanku isih bayi.
+        ar_eg: ابن أختي لسه بيبي.
+        ar: ابن أختي ما زال رضيعًا.
+        en: My nephew is still a baby.
+      - text: Mbakyuku wis rabi.
+        ar_eg: أختي الكبيرة اتجوزت.
+        ar: تزوّجت أختي الكبرى.
+        en: My big sister is married.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الحوار) الـ budhe بتاعة ساري ساكنة فين؟
-      ar: (من الحوار) أين تسكن budhe ساري؟
-      en: (From the dialogue) Where does Sari's budhe live?
-    options: [Neng Madiun, Neng Kairo, Neng Ponorogo]
-    answer: 2
-    words: [budhe, manggon]
+    type: match_pairs
+    pairs:
+      - text: sedulur
+        ar_eg: قريب من العيلة
+        ar: قريب
+        en: relative
+      - text: ponakan
+        ar_eg: ابن الأخ أو الأخت
+        ar: ابن الأخ أو الأخت
+        en: niece, nephew
+      - text: mbarep
+        ar_eg: الابن الكبير
+        ar: البكر
+        en: eldest child
+      - text: ragil
+        ar_eg: آخر العنقود
+        ar: آخر العنقود
+        en: youngest child
+    words: [sedulur, ponakan, mbarep, ragil]
   - id: e02
-    type: multiple_choice
-    question: Kuwi mbakyuku, budhene Sari.
-    question_meaning:
-      ar_eg: Pak Budi بيقول كده. الست دي إيه بالنسبة له؟
-      ar: يقول Pak Budi هذا. ما صلة هذه السيدة به؟
-      en: Pak Budi says this. Who is this woman to him?
-    options: [Bojone Pak Budi, Adhine Pak Budi, Mbakyune Pak Budi]
-    answer: 2
-    explain:
-      ar_eg: mbakyuku = أختي الكبيرة. وعشان هي أكبر من أبو ساري، تبقى budhe لساري.
-      ar: mbakyuku = أختي الكبرى، ولأنها أكبر من والد ساري فهي budhe لساري.
-      en: mbakyuku = my older sister. Being older than Sari's father, she's Sari's budhe.
-    words: [mbakyu, budhe]
+    type: match_pairs
+    pairs:
+      - text: tangga
+        ar_eg: جار
+        ar: جار
+        en: neighbour
+      - text: rabi
+        ar_eg: يتجوز
+        ar: يتزوّج
+        en: marry
+      - text: bayi
+        ar_eg: بيبي
+        ar: رضيع
+        en: baby
+      - text: lair
+        ar_eg: يتولد
+        ar: يولد
+        en: be born
+    words: [tangga, rabi, bayi, lair]
   - id: e03
     type: listen
-    text: Mbah putri manggon neng kene.
-    options: [Mbah putri manggon neng kana., Mbah kakung manggon neng kene., Mbah putri manggon neng kene.]
-    answer: 2
-    words: [mbah putri, manggon, kene]
-  - id: e04
-    type: fill_blank
-    sentence: Sing neng foto ___ sapa, Pak?
-    meaning:
-      ar_eg: واللي في الصورة دي مين يا عمو؟ (بتشاور على حد في الصورة اللي في إيدك)
-      ar: ومن هذا الذي في الصورة يا عم؟ (تشير إلى شخص في الصورة التي بيدك)
-      en: And who's this in the photo, sir? (pointing at the photo in your hand)
-    answers: [iki]
-    words: [sing, foto, iki]
-  - id: e05
-    type: fill_blank
-    sentence: Omah___ neng Ponorogo.
-    meaning:
-      ar_eg: بيتها في بونوروجو.
-      ar: بيتها في بونوروغو.
-      en: Her house is in Ponorogo.
-    answers: [e]
-    explain:
-      ar_eg: omah آخرها ساكن (h) ⇐ omahe.
-      ar: تنتهي omah بساكن ⇐ omahe.
-      en: omah ends in a consonant ⇒ omahe.
-    words: [omahe]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ده أجوس، أخو ساري الكبير.
-      ar: هذا أغوس، أخو ساري الأكبر.
-      en: This is Agus, Sari's older brother.
-    answers: ["Iki Agus, mase Sari.", "Iki Agus, mase Sari", "Iki Agus mase Sari.", Iki Agus mase Sari, "Kuwi Agus, mase Sari.", "Kuwi Agus, mase Sari", "Kuwi Agus mase Sari.", Kuwi Agus mase Sari]
-    words: [mas]
-  - id: e07
-    type: listen
-    text: Iki fotone kulawargaku.
-    options: [Iki fotone kulawargaku., Iki omahe kulawargaku., Iki fotone mbakyuku.]
+    text: Sari anak mbarep, Bayu anak ragil.
+    question:
+      ar_eg: مين الكبير؟
+      ar: من الأكبر؟
+      en: Who is the eldest?
+    options: [ساري الكبيرة وبايو الصغير, بايو الكبير وساري الصغيرة, ساري وبايو توأم]
     answer: 0
     meaning:
-      ar_eg: دي صورة عيلتي.
-      ar: هذه صورة عائلتي.
-      en: This is a photo of my family.
-    words: [foto, kulawarga, omahe, mbakyu]
+      ar_eg: ساري الكبيرة، وبايو آخر العنقود.
+      ar: ساري هي البكر، وبايو آخر العنقود.
+      en: Sari is the eldest, Bayu the youngest.
+    words: [mbarep, ragil]
+  - id: e04
+    type: fill_blank
+    sentence: Mbakyuku wis ___, bojone wong Solo.
+    meaning:
+      ar_eg: أختي الكبيرة ___، وجوزها من سولو.
+      ar: أختي الكبرى ___، وزوجها من سولو.
+      en: My big sister is ___, her husband is from Solo.
+    options: [rabi, lair, tangga]
+    answers: [rabi]
+    words: [rabi, lair, tangga]
+    explain:
+      ar_eg: rabi = اتجوزت، وعشان كده ليها جوز. lair = اتولد، وtangga = جار.
+      ar: rabi = تزوّجت، ولذلك لها زوج؛ أما lair فوُلد، وtangga جار.
+      en: rabi = married, hence the husband. lair = born, tangga = neighbour.
+  - id: e05
+    type: multiple_choice
+    question: Ponakanku isih bayi.
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [ابن أختي لسه بيبي, جاري لسه صغير, حفيدي لسه بيبي]
+    answer: 0
+    explain:
+      ar_eg: ponakan = ابن الأخ أو الأخت، والحفيد = putu، والجار = tangga.
+      ar: ponakan = ابن الأخ أو الأخت، أمّا الحفيد فـputu، والجار فـtangga.
+      en: ponakan = niece or nephew; grandchild is putu, neighbour is tangga.
+    words: [ponakan, bayi, tangga]
+  - id: e06
+    type: fill_blank
+    sentence: Bayu ___ ing Madiun.
+    meaning:
+      ar_eg: بايو ___ في ماديون.
+      ar: بايو ___ في ماديون.
+      en: Bayu was ___ in Madiun.
+    options: [lair, rabi, sedulur]
+    answers: [lair]
+    words: [lair, rabi, sedulur]
+    explain:
+      ar_eg: "lair = اتولد: lair ing Madiun = اتولد في ماديون. rabi = اتجوز، وsedulur = قريب."
+      ar: "lair = وُلد: lair ing Madiun = وُلد في ماديون؛ أما rabi فتزوّج، وsedulur قريب."
+      en: lair = born. rabi = married, sedulur = relative.
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «جاري» بالجاوي؟
+      ar: كيف تقول «جاري» بالجاوية؟
+      en: '"My neighbour" in Javanese?'
+    options: [tanggaku, sedulurku, ponakanku]
+    answer: 0
+    explain:
+      ar_eg: tangga = جار. sedulur = قريب، ponakan = ابن الأخ.
+      ar: tangga = جار. أمّا sedulur فقريب، وponakan فابن الأخ.
+      en: tangga = neighbour. sedulur = relative, ponakan = nephew.
+    words: [tangga, sedulur, ponakan]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: عمي وطنط ساكنين في بونوروجو.
-      ar: عمي وعمتي يسكنان في بونوروغو.
-      en: My uncle and aunt live in Ponorogo.
-    answer: Pakdhe karo budhe manggon neng Ponorogo.
-    alternatives: [Budhe karo pakdhe manggon neng Ponorogo.]
-    distractors: [saka, adhi]
-    words: [pakdhe, budhe, manggon]
+      ar_eg: أنا الابن الكبير، وأخويا الصغير آخر العنقود.
+      ar: أنا البكر، وأخي الأصغر آخر العنقود.
+      en: I'm the eldest, my little brother is the youngest.
+    answer: Aku anak mbarep, adhiku ragil.
+    distractors: [bayi, tangga]
+    words: [mbarep, ragil, bayi, tangga]
+    explain:
+      ar_eg: anak mbarep = الابن الكبير، وragil = الصغير. bayi = بيبي، وtangga = جار، ومش في المعنى.
+      ar: anak mbarep = الابن البكر، وragil = الأصغر؛ أما bayi فرضيع، وtangga جار، وليسا في المعنى.
+      en: anak mbarep = the eldest, ragil = the youngest. bayi (baby) and tangga (neighbour) aren't in the meaning.
   - id: e09
-    type: dictation
-    text: Pakdhe karo budhe manggon neng Ponorogo.
-    meaning:
-      ar_eg: عمي وطنط ساكنين في بونوروجو.
-      ar: عمي وعمتي يسكنان في بونوروغو.
-      en: My uncle and aunt live in Ponorogo.
-    words: [pakdhe, budhe]
+    type: translate
+    direction: from_target
+    source_text: Sedulurku manggon ing Madiun.
+    answers_meaning:
+      ar_eg: [قرايبي ساكنين في ماديون, قريبي ساكن في ماديون]
+      ar: [أقاربي يسكنون في ماديون, قريبي يسكن في ماديون]
+      en: [My relatives live in Madiun, My relative lives in Madiun]
+    words: [sedulur]
   - id: e10
     type: speaking
-    text: Fotone apik! Kulawargane Pak Budi gedhe!
+    text: Ponakanku lair ing Kairo.
     meaning:
-      ar_eg: الصورة حلوة! عيلة باك بودي كبيرة!
-      ar: الصورة جميلة! عائلة باك بودي كبيرة!
-      en: Nice photo! Pak Budi's family is big!
-    words: [foto, kulawarga]
+      ar_eg: ابن أختي اتولد في القاهرة.
+      ar: وُلد ابن أختي في القاهرة.
+      en: My nephew was born in Cairo.
+    words: [ponakan, lair]
 dialogue:
-  title: Foto kulawarga
   lines:
+    - speaker: Bu Rahayu
+      text: Mas Mohamed, iki foto kulawargaku. Sari anak mbarep.
+      ar_eg: يا ماس محمد، دي صورة عيلتي. ساري بنتي الكبيرة.
+      ar: يا ماس محمد، هذه صورة عائلتي. ساري ابنتي البكر.
+      en: Mas Mohamed, here's my family photo. Sari is the eldest.
     - speaker: Mohamed
-      text: Pak, iki fotone kulawargane Pak Budi?
-      ar_eg: يا عمو، دي صورة عيلة حضرتك؟
-      ar: يا عم، أهذه صورة عائلتك يا Pak Budi؟
-      en: Pak, is this a photo of your family?
-    - speaker: Pak Budi
-      text: Iya. Iki aku, iki bojoku.
-      ar_eg: أيوه. ده أنا، ودي مراتي.
-      ar: نعم. هذا أنا، وهذه زوجتي.
-      en: Yes. This is me, and this is my wife.
+      text: Bayu ragil, Bu?
+      ar_eg: وبايو آخر العنقود يا طنط؟
+      ar: وبايو آخر العنقود يا سيّدتي؟
+      en: And Bayu's the youngest, Bu?
+    - speaker: Bu Rahayu
+      text: Iya. Lha iki ponakanku, isih bayi. Lair neng Solo.
+      ar_eg: أيوه. ودي بنت أختي، لسه بيبي. اتولدت في سولو.
+      ar: نعم. وهذه ابنة أختي، ما زالت رضيعة. وُلدت في سولو.
+      en: Yes. And this is my niece, still a baby. Born in Solo.
     - speaker: Mohamed
-      text: Sing iki sapa, Pak?
-      ar_eg: واللي ده مين يا عمو؟
-      ar: ومن هذا يا عم؟
-      en: And who's this one, Pak?
-    - speaker: Pak Budi
-      text: Kuwi Agus, mase Sari. Lan kuwi Bayu, adhine.
-      ar_eg: ده أجوس، أخو ساري الكبير. وده بايو، أخوها الصغير.
-      ar: ذاك أغوس، أخو ساري الأكبر. وذاك بايو، أخوها الأصغر.
-      en: That's Agus, Sari's older brother. And that's Bayu, her younger brother.
-    - speaker: Mohamed
-      text: Lan sing iki?
-      ar_eg: واللي دي؟
-      ar: وهذه؟
-      en: And this one?
-    - speaker: Pak Budi
-      text: Kuwi mbakyuku, budhene Sari. Omahe neng Ponorogo. Mbah putri manggon neng kene, karo aku.
-      ar_eg: دي أختي الكبيرة، طنط ساري. بيتها في بونوروجو. وتيتة ساكنة هنا معايا.
-      ar: تلك أختي الكبرى، عمّة ساري. بيتها في بونوروغو. والجدة تسكن هنا معي.
-      en: That's my older sister, Sari's budhe. Her house is in Ponorogo. Grandma lives here, with me.
+      text: Mbakyune Ibu rabi karo wong Solo?
+      ar_eg: أخت حضرتك الكبيرة متجوزة واحد من سولو؟
+      ar: هل أختك الكبرى متزوّجة من رجل من سولو؟
+      en: Your big sister married someone from Solo?
+    - speaker: Bu Rahayu
+      text: Iya. Sedulurku akeh neng Solo, tanggane ya sedulur, hehe.
+      ar_eg: أيوه. قرايبي كتير في سولو، وجيرانهم كمان قرايب، هههه.
+      ar: نعم. لي أقارب كثيرون في سولو، وحتى جيرانهم أقارب، هههه.
+      en: Yes. I've lots of relatives in Solo, even the neighbours are family, hehe.
 new_words:
-  - word: foto
+  - word: sedulur
     pos: noun
-    ar_eg: صورة (زي الإندونيسي)
-    ar: صورة (كالإندونيسية)
-    en: photo (as in Indonesian)
+    ar_eg: قريب من العيلة؛ أخ أو أخت
+    ar: قريب؛ أخ أو أخت
+    en: relative; sibling
+  - word: ponakan
+    pos: noun
+    ar_eg: ابن أو بنت الأخ أو الأخت
+    ar: ابن الأخ أو الأخت أو ابنتهما
+    en: niece, nephew
+  - word: mbarep
+    pos: noun
+    ar_eg: الابن الكبير (البكري)
+    ar: الابن البكر
+    en: eldest child
+  - word: ragil
+    pos: noun
+    ar_eg: آخر العنقود
+    ar: آخر العنقود، أصغر الأبناء
+    en: youngest child
+  - word: tangga
+    pos: noun
+    ar_eg: جار (≠ إندونيسي tangga = سلّم)
+    ar: جار (≠ الإندونيسية tangga = سُلّم)
+    en: neighbour (≠ Indonesian tangga "stairs")
+    false_friend: tangga
+  - word: rabi
+    pos: verb
+    ar_eg: يتجوز، متجوز
+    ar: يتزوّج، متزوّج
+    en: marry, be married
+  - word: bayi
+    pos: noun
+    ar_eg: بيبي، رضيع
+    ar: رضيع
+    en: baby
+  - word: lair
+    pos: verb
+    ar_eg: يتولد
+    ar: يولد
+    en: be born
 review:
   status: draft
   verified: false

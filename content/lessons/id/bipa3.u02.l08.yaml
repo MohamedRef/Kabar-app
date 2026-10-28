@@ -1,0 +1,246 @@
+schema: kabar.lesson/v1
+id: bipa3.u02.l08
+language: id
+title: Justru, padahal
+can_do:
+  ar_eg: 'تناقش بقوة: «بالعكس»، «مع إن»، «في حين إن»، وتقول إنك شاكك أو إن الموضوع جد.'
+  ar: 'أن تناقش بحجج: «بل»، «مع أن»، «في حين»، وتعبّر عن الشك أو الجدية.'
+  en: 'Argue a point: ''actually'', ''even though'', ''whereas'', and say you''re doubtful or that it''s serious.'
+slides:
+  - title: Kata untuk berdiskusi
+    body:
+      ar_eg: |
+        padahal = مع إن (والحقيقة عكس كده): Plastik murah, padahal berbahaya.
+        sedangkan = في حين إن، أما: Saya suka laut, sedangkan Rina suka gunung.
+        justru = بالعكس، بالذات: Ini bukan kecil. Justru ini serius!
+        jelas = واضح، serius = جد، خطير. ragu = متردد، شاكك. pandangan = وجهة نظر. tentunya = طبعًا، أكيد.
+      ar: |
+        padahal = مع أنّ (والواقع خلاف ذلك): Plastik murah, padahal berbahaya.
+        sedangkan = في حين أنّ، أمّا: Saya suka laut, sedangkan Rina suka gunung.
+        justru = بل، على العكس: Ini bukan kecil. Justru ini serius!
+        jelas = واضح، serius = جادّ، خطير. ragu = متردد، شاكّ. pandangan = وجهة نظر. tentunya = بالطبع.
+      en: |
+        padahal = even though, when in fact: Plastik murah, padahal berbahaya.
+        sedangkan = whereas, while: Saya suka laut, sedangkan Rina suka gunung.
+        justru = on the contrary, precisely: Ini bukan kecil. Justru ini serius!
+        jelas = clear, serius = serious. ragu = doubtful, unsure. pandangan = view, point of view. tentunya = of course.
+    examples:
+      - text: Plastik itu murah, padahal sangat berbahaya.
+        ar_eg: البلاستيك رخيص، مع إنه خطر جدًا.
+        ar: البلاستيك رخيص مع أنه خطير جدًا.
+        en: Plastic is cheap, even though it's very harmful.
+      - text: Saya suka laut, sedangkan Rina suka gunung.
+        ar_eg: أنا بحب البحر، في حين إن رينا بتحب الجبل.
+        ar: أحبّ البحر، أمّا رينا فتحبّ الجبل.
+        en: I like the sea, whereas Rina likes the mountains.
+      - text: Menurut pandangan saya, ini sangat serius.
+        ar_eg: من وجهة نظري، دي حاجة جد جدًا.
+        ar: من وجهة نظري، هذا أمر جادّ جدًا.
+        en: In my view, this is very serious.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: jelas
+        ar_eg: واضح
+        ar: واضح
+        en: clear
+      - text: serius
+        ar_eg: جد، خطير
+        ar: جادّ، خطير
+        en: serious
+      - text: ragu
+        ar_eg: شاكك
+        ar: متردد
+        en: unsure
+      - text: pandangan
+        ar_eg: وجهة نظر
+        ar: وجهة نظر
+        en: point of view
+    words: [jelas, serius, ragu, pandangan]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: justru
+        ar_eg: بالعكس
+        ar: بل
+        en: on the contrary
+      - text: padahal
+        ar_eg: مع إن
+        ar: مع أنّ
+        en: even though
+      - text: sedangkan
+        ar_eg: في حين إن
+        ar: في حين
+        en: whereas
+      - text: tentunya
+        ar_eg: طبعًا
+        ar: بالطبع
+        en: of course
+    words: [justru, padahal, sedangkan, tentunya]
+  - id: e03
+    type: listen
+    text: Saya masih ragu. Apa sedotan kertas lebih baik?
+    question:
+      ar_eg: هو حاسس بإيه؟
+      ar: بماذا يشعر؟
+      en: How does he feel?
+    options: [متأكد, شاكك, زعلان]
+    answer: 1
+    meaning:
+      ar_eg: أنا لسه شاكك. هي الشفاطة الورق أحسن؟
+      ar: ما زلت مترددًا. هل الشفاطة الورقية أفضل؟
+      en: I'm still not sure. Are paper straws better?
+    words: [ragu]
+  - id: e04
+    type: fill_blank
+    sentence: Menurut dia, plastik tidak berbahaya, ___ sangat berbahaya.
+    meaning:
+      ar_eg: هو بيقول البلاستيك مش خطر، ___ هو خطر جدًا.
+      ar: يقول إن البلاستيك غير خطير، ___ هو خطير جدًا.
+      en: He says plastic isn't harmful, ___ it's very harmful.
+    options: [padahal, tentunya, jelas]
+    answers: [padahal]
+    words: [padahal, tentunya, jelas]
+    explain:
+      ar_eg: padahal = «مع إن الحقيقة»، بتعارض اللي اتقال قبلها. tentunya = طبعًا، وjelas = واضح.
+      ar: padahal = «والحقيقة أنّ»، تعارض ما قبلها. أما tentunya فـ«بالطبع»، وjelas «واضح».
+      en: padahal means "when in fact", contradicting what came before. tentunya means of course, jelas clear.
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: 'كلمة بتقارن بين حاجتين: «أنا كده، ___ هو كده»؟'
+      ar: 'أي كلمة تقابل بين أمرين: «أنا هكذا، ___ هو كذلك»؟'
+      en: 'Which word contrasts two things: ''I''m like this, ___ he''s like that''?'
+    options: [sedangkan, serius, ragu]
+    answer: 0
+    explain:
+      ar_eg: sedangkan = في حين إن، أما.
+      ar: sedangkan = في حين أنّ، أمّا.
+      en: sedangkan = whereas.
+    words: [sedangkan, serius, ragu]
+  - id: e06
+    type: fill_blank
+    sentence: Ini tidak kecil. ___ ini sangat serius!
+    meaning:
+      ar_eg: ده مش صغير. ___ ده جد جدًا!
+      ar: هذا ليس صغيرًا. ___ هو جادّ جدًا!
+      en: This isn't small. ___, it's very serious!
+    options: [Pandangan, Justru, Sedangkan]
+    answers: [Justru]
+    words: [justru, pandangan, sedangkan]
+    explain:
+      ar_eg: Justru = بالعكس، بتقلب الفكرة اللي قبلها. Pandangan = وجهة نظر، وSedangkan = في حين إن.
+      ar: Justru = «بل على العكس»، تقلب الفكرة السابقة. أما Pandangan فوجهة نظر، وSedangkan «في حين أنّ».
+      en: Justru means "on the contrary", flipping the idea before it. Pandangan is a view, Sedangkan means whereas.
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: طبعًا لازم نقلل البلاستيك.
+      ar: بالطبع علينا أن نقلل البلاستيك.
+      en: Of course we have to cut down on plastic.
+    answer: Tentunya kita harus mengurangi plastik.
+    distractors: [ragu, padahal]
+    words: [tentunya]
+    explain:
+      ar_eg: «طبعًا» = Tentunya في أول الجملة، وبعدها kita harus mengurangi plastik. ragu = متردد، وpadahal = مع إن.
+      ar: «بالطبع» Tentunya في أولها، ثم kita harus mengurangi plastik. أما ragu فمتردد، وpadahal «مع أنّ».
+      en: "\"Of course\" is Tentunya up front, then kita harus mengurangi plastik. ragu means unsure, padahal \"when in fact\"."
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Pandangan kamu jelas sekali.
+    answers_meaning:
+      ar_eg: [وجهة نظرك واضحة جدًا, رأيك واضح أوي]
+      ar: [وجهة نظرك واضحة جدًا, رأيك واضح جدًا]
+      en: [Your point of view is very clear, Your view is very clear]
+    words: [pandangan, jelas]
+  - id: e09
+    type: speaking
+    text: Sampah plastik itu serius, padahal banyak orang tidak peduli.
+    meaning:
+      ar_eg: زبالة البلاستيك حاجة جد، مع إن ناس كتير مش مهتمة.
+      ar: نفايات البلاستيك أمر جادّ، مع أن كثيرين لا يهتمون.
+      en: Plastic waste is serious, even though many people don't care.
+    words: [serius, padahal]
+  - id: e10
+    type: multiple_choice
+    question: Apakah kamu setuju? — ___ saya setuju!
+    options: [Ragu, Padahal, Tentunya]
+    answer: 2
+    explain:
+      ar_eg: tentunya = طبعًا.
+      ar: tentunya = بالطبع.
+      en: tentunya = of course.
+    words: [tentunya, ragu, padahal, justru, jelas]
+dialogue:
+  lines:
+    - speaker: Rina
+      text: Menurut pandanganku, kantong plastik harus dilarang.
+      ar_eg: من وجهة نظري، أكياس البلاستيك لازم تتمنع.
+      ar: من وجهة نظري، يجب منع الأكياس البلاستيكية.
+      en: In my view, plastic bags should be banned.
+    - speaker: Mohamed
+      text: Aku masih ragu. Plastik kan murah dan praktis.
+      ar_eg: أنا لسه شاكك. البلاستيك رخيص وعملي.
+      ar: ما زلت مترددًا. البلاستيك رخيص وعملي.
+      en: I'm not sure yet. Plastic is cheap and handy.
+    - speaker: Rina
+      text: Murah sih, padahal sampahnya ada di laut sampai ratusan tahun!
+      ar_eg: رخيص، مع إن زبالته بتفضل في البحر مئات السنين!
+      ar: رخيص، مع أن نفاياته تبقى في البحر مئات السنين!
+      en: Cheap, even though the waste stays in the sea for hundreds of years!
+    - speaker: Mohamed
+      text: Hmm, itu serius. Jadi plastik justru mahal buat alam.
+      ar_eg: همم، دي حاجة جد. يعني البلاستيك بالعكس غالي على الطبيعة.
+      ar: هذا خطير. إذن البلاستيك في الحقيقة مكلف للطبيعة.
+      en: Hmm, that's serious. So plastic is actually expensive for nature.
+    - speaker: Rina
+      text: Nah! Jelas, kan?
+      ar_eg: بالظبط! واضحة، صح؟
+      ar: بالضبط! واضح، أليس كذلك؟
+      en: Exactly! Clear, isn't it?
+new_words:
+  - word: jelas
+    pos: adjective
+    ar_eg: واضح
+    ar: واضح
+    en: clear
+  - word: serius
+    pos: adjective
+    ar_eg: جد، خطير
+    ar: جادّ، خطير
+    en: serious
+  - word: ragu
+    pos: adjective
+    ar_eg: شاكك، متردد
+    ar: متردد، شاكّ
+    en: doubtful, unsure
+  - word: pandangan
+    pos: noun
+    ar_eg: وجهة نظر
+    ar: وجهة نظر
+    en: view, point of view
+  - word: justru
+    pos: adverb
+    ar_eg: بالعكس، بالذات
+    ar: بل، على العكس
+    en: on the contrary, precisely
+  - word: padahal
+    pos: conjunction
+    ar_eg: مع إن (والحقيقة غير كده)
+    ar: مع أنّ، والحال أنّ
+    en: even though, when in fact
+  - word: sedangkan
+    pos: conjunction
+    ar_eg: في حين إن، أما
+    ar: في حين أنّ، أمّا
+    en: whereas, while
+  - word: tentunya
+    pos: adverb
+    ar_eg: طبعًا، أكيد
+    ar: بالطبع، طبعًا
+    en: of course
+review:
+  status: draft
+  verified: false

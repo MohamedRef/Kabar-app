@@ -1,185 +1,248 @@
 schema: kabar.lesson/v1
 id: j6.u05.l07
 language: jv
-title: Absen murid
+title: Desa ing Imogiri
 can_do:
-  ar_eg: تسمع أسامي عربية وتلاقيها مكتوبة بحروف rekan.
-  ar: أن تسمع أسماء عربية فتجدها مكتوبة بحروف rekan.
-  en: Hear Arabic names and find them written with rekan letters.
+  ar_eg: تتكلم مع فلاح في إيموجيري عن أرضه وبهايمه، وعن الغنى والفقر، بجمل فيها «مع إن».
+  ar: أن تتحدث مع فلاح في إيموغيري عن أرضه وماشيته، وعن الغنى والفقر، بجمل فيها «رغم أن».
+  en: Chat with an Imogiri farmer about his land and animals, wealth and poverty, using 'even though'.
 slides:
-  - title: Jeneng Arab
+  - title: Sawah lan dalan
     body:
       ar_eg: |
-        في مدرسة قرآن صغيرة جنب Imogiri، المدرّسة بتنده أسامي العيال من كشف مكتوب بالخط الجاوي. اسمع الأول.
-        أسامي كتير جاية من العربي، فبتتكتب بحروف rekan: ꦥ꦳ = ف، ꦗ꦳ = ز، ꦏ꦳ = خ.
-        أسامي الناس العاديين مابتاخدش murda؛ الـ murda للتكريم بس.
+        kebo = جاموسة، wedhus = معزة (أو خروف). amba = واسع، ciyut = ضيق.
+        sugih = غني، mlarat = فقير. sawetara = شوية، كام واحد (sawetara menit = كام دقيقة).
+        senajan = مع إن، رغم إن (senajan mlarat, ... = مع إنه فقير ...).
       ar: |
-        في مدرسة قرآن صغيرة قرب Imogiri تنادي المعلّمة أسماء الأطفال من كشف بالخط الجاوي. استمع أولًا.
-        أسماء كثيرة أصلها عربي، فتُكتب بحروف rekan: ꦥ꦳ = ف، ꦗ꦳ = ز، ꦏ꦳ = خ.
-        ولا تأخذ أسماء عامة الناس murda، فالـ murda للتكريم فقط.
+        kebo = جاموس، wedhus = ماعز (أو خروف). amba = واسع، ciyut = ضيّق.
+        sugih = غني، mlarat = فقير. sawetara = بعض، قليل من (sawetara menit = بضع دقائق).
+        senajan = رغم أنّ (senajan mlarat, ... = رغم فقره ...).
       en: |
-        At a small Qur'an school near Imogiri, the teacher calls the roll from a list in aksara Jawa. Listen first.
-        Many names come from Arabic, so they're written with rekan letters: ꦥ꦳ = f, ꦗ꦳ = z, ꦏ꦳ = kh.
-        Ordinary people's names don't take murda; murda is only for honour.
-    grammar: jv.aksara.murda-rekan
+        kebo = water buffalo, wedhus = goat (or sheep). amba = wide, ciyut = narrow.
+        sugih = rich, mlarat = poor. sawetara = some, a few (sawetara menit = a few minutes).
+        senajan = even though (senajan mlarat, ... = even though he's poor, ...).
     examples:
-      - text: ꦥ꦳ꦗꦂ · ꦗ꦳ꦏꦶ (Fajar · Zaki)
-        ar_eg: فجر · زكي
-        ar: فجر · زكي
-        en: Fajar · Zaki
-      - text: ꦗ꦳ꦃꦫ · ꦥ꦳ꦠꦶꦩꦃ (Zahra · Fatimah)
-        ar_eg: زهرة · فاطمة
-        ar: زهرة · فاطمة
-        en: Zahra · Fatimah
-      - text: ꦏ꦳ꦢꦶꦗꦃ (Khadijah)
-        ar_eg: خديجة
-        ar: خديجة
-        en: Khadijah
+      - text: Jaman kuna, wong sugih duwe kebo lan sawah amba.
+        ar_eg: زمان، الغني كان عنده جاموس وأرض واسعة.
+        ar: قديمًا كان الغني يملك جواميس وحقولًا واسعة.
+        en: In the old days, rich people owned buffalo and wide rice fields.
+      - text: Senajan mlarat, warga desa iki rukun.
+        ar_eg: مع إنهم فقرا، أهل القرية دي عايشين في وفاق.
+        ar: رغم فقرهم، يعيش أهل هذه القرية في وئام.
+        en: Even though they're poor, the people of this village live in harmony.
+      - text: Dalane ciyut, mung cukup kanggo wedhus sawetara.
+        ar_eg: الطريق ضيق، يادوب يكفي كام معزة.
+        ar: الطريق ضيّق، يكفي بالكاد لبضع عنزات.
+        en: The path is narrow, just wide enough for a few goats.
 exercises:
   - id: e01
-    type: listen
-    text: Fajar
-    question:
-      ar_eg: المدرّسة ندهت اسم. أنهي واحد في الكشف؟
-      ar: نادت المعلّمة اسمًا. أيّه في الكشف؟
-      en: The teacher called a name. Which one on the list?
-    options: ["ꦥꦗꦂ", "ꦥ꦳ꦗꦂ", "ꦗ꦳ꦃꦫ"]
-    answer: 1
-    meaning:
-      ar_eg: فجر
-      ar: فجر
-      en: Fajar
-    words: [aksara rekan]
-  - id: e02
-    type: listen
-    text: Khadijah
-    question:
-      ar_eg: المدرّسة ندهت اسم. أنهي واحد في الكشف؟
-      ar: نادت المعلّمة اسمًا. أيّه في الكشف؟
-      en: The teacher called a name. Which one on the list?
-    options: ["ꦏꦢꦶꦗꦃ", "ꦥ꦳ꦠꦶꦩꦃ", "ꦏ꦳ꦢꦶꦗꦃ"]
-    answer: 2
-    explain:
-      ar_eg: خ = ꦏ + تلات نقط. من غير النقط تبقى kadijah.
-      ar: خ = ꦏ + ثلاث نقاط، وبدون النقاط تصير kadijah.
-      en: kh = ꦏ + three dots. Without the dots it reads kadijah.
-    meaning:
-      ar_eg: خديجة
-      ar: خديجة
-      en: Khadijah
-    words: [aksara rekan]
-  - id: e03
-    type: listen
-    text: Zaki
-    question:
-      ar_eg: المدرّسة ندهت اسم. أنهي واحد في الكشف؟
-      ar: نادت المعلّمة اسمًا. أيّه في الكشف؟
-      en: The teacher called a name. Which one on the list?
-    options: ["ꦗ꦳ꦏꦶ", "ꦗꦏꦶ", "ꦱꦏꦶ"]
-    answer: 0
-    meaning:
-      ar_eg: زكي
-      ar: زكي
-      en: Zaki
-    words: [aksara rekan]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: ꦥ꦳ꦗꦂ
-        ar_eg: فجر
-        ar: فجر
-        en: Fajar (فجر)
-      - text: ꦗ꦳ꦃꦫ
-        ar_eg: زهرة
-        ar: زهرة
-        en: Zahra (زهرة)
-      - text: ꦏ꦳ꦢꦶꦗꦃ
-        ar_eg: خديجة
-        ar: خديجة
-        en: Khadijah (خديجة)
-      - text: ꦥ꦳ꦠꦶꦩꦃ
-        ar_eg: فاطمة
-        ar: فاطمة
-        en: Fatimah (فاطمة)
-    words: [aksara rekan]
+      - text: kebo
+        ar_eg: جاموسة
+        ar: جاموس
+        en: water buffalo
+      - text: wedhus
+        ar_eg: معزة
+        ar: ماعز
+        en: goat
+      - text: amba
+        ar_eg: واسع
+        ar: واسع
+        en: wide
+      - text: ciyut
+        ar_eg: ضيق
+        ar: ضيّق
+        en: narrow
+    words: [kebo, wedhus, amba, ciyut]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: sugih
+        ar_eg: غني
+        ar: غني
+        en: rich
+      - text: mlarat
+        ar_eg: فقير
+        ar: فقير
+        en: poor
+      - text: sawetara
+        ar_eg: شوية، كام
+        ar: بعض، بضعة
+        en: some, a few
+      - text: senajan
+        ar_eg: مع إن
+        ar: رغم أن
+        en: even though
+    words: [sugih, mlarat, sawetara, senajan]
+  - id: e03
+    type: listen
+    text: Senajan mlarat, Pak Tani seneng nulung.
+    question:
+      ar_eg: الفلاح عامل إزاي؟
+      ar: كيف هو الفلاح؟
+      en: What is the farmer like?
+    options: [مع إنه فقير، الفلاح بيحب يساعد, الفلاح غني أوي, الفلاح مش بيساعد حد]
+    answer: 0
+    meaning:
+      ar_eg: مع إن الفلاح فقير، بيحب يساعد الناس.
+      ar: رغم فقره يحب الفلاح مساعدة الناس.
+      en: Even though he's poor, the farmer likes to help.
+    words: [senajan, mlarat]
+  - id: e04
+    type: fill_blank
+    sentence: Sawahe ___ banget, ana kebo lima.
+    meaning:
+      ar_eg: الغيط ___ أوي، فيه خمس جواميس.
+      ar: الحقل ___ جدًا، وفيه خمسة جواميس.
+      en: The field is very ___; there are five buffalo.
+    options: [amba, ciyut, sugih]
+    answers: [amba]
+    words: [amba, ciyut, sugih]
+    explain:
+      ar_eg: amba = واسع، فيه مكان لخمس جواميس. ciyut = ضيّق وsugih = غني.
+      ar: amba واسع يتّسع لخمسة جواميس. أما ciyut فضيّق وsugih غني.
+      en: amba is wide, room for five buffalo. ciyut is narrow and sugih is rich.
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: "في ꦗ꦳ꦃꦫ، الـ h مكتوبة بإيه؟"
-      ar: "في ꦗ꦳ꦃꦫ، بماذا كُتبت الـ h؟"
-      en: "In ꦗ꦳ꦃꦫ, how is the h written?"
-    options: [wignyan, pasangan ha, layar]
-    answer: 0
+      ar_eg: حيوان كبير بيحرت الأرض في الغيط …
+      ar: حيوان كبير يحرث الحقل …
+      en: A big animal that ploughs the rice field …
+    options: [wedhus, kebo, sawetara]
+    answer: 1
     explain:
-      ar_eg: "h بتقفل المقطع zah، فبتتكتب wignyan، ومفيش pasangan بعدها: ra بتتكتب عادي."
-      ar: الـ h تُغلق المقطع zah فتُكتب wignyan، ولا pasangan بعدها، فتُكتب ra عادية.
-      en: "The h closes the syllable zah, so it's wignyan, and no pasangan follows: ra is written normally."
-    words: [aksara rekan]
+      ar_eg: kebo = الجاموسة اللي بتحرت. wedhus = معزة، وsawetara = كام.
+      ar: kebo = الجاموس الذي يحرث؛ wedhus = ماعز، وsawetara = بعض.
+      en: kebo = buffalo, the ploughing animal; wedhus = goat, sawetara = some.
+    words: [wedhus, kebo, sawetara]
   - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: ليه الأسامي دي من غير murda؟
-      ar: لماذا لا murda في هذه الأسماء؟
-      en: Why do these names have no murda letters?
-    options: ["Iku jeneng bocah, dudu sesebutan kanggo ngurmati.", "Iku basa Arab.", "Iku angka."]
-    answer: 0
-    explain:
-      ar_eg: الـ murda للألقاب والأسامي اللي بنكرّمها (Gusti، Sultan). أسامي العيال بتتكتب بحروف عادية (مع rekan للأصوات العربية).
-      ar: الـ murda للألقاب والأسماء المكرَّمة (Gusti، Sultan)، أما أسماء الأطفال فبحروف عادية (مع rekan للأصوات العربية).
-      en: Murda is for honoured titles and names (Gusti, Sultan). Children's names use ordinary letters (with rekan for Arabic sounds).
-    words: [aksara murda]
-  - id: e07
     type: fill_blank
-    sentence: ꦥ꦳ꦠꦶꦩꦃ = ___
+    sentence: Dalan menyang pasarean iku ___, montor ora bisa liwat.
     meaning:
-      ar_eg: اكتب الاسم بالحروف اللاتينية.
-      ar: اكتب الاسم بالحروف اللاتينية.
-      en: Type the name in Latin letters.
-    answers: [Fatimah]
-    words: [aksara rekan]
+      ar_eg: الطريق للمدافن ___، والعربيات مش بتعدّي.
+      ar: الطريق إلى المقبرة ___، فلا تمر السيارات.
+      en: The road to the cemetery is ___; cars can't get through.
+    options: [ciyut, amba, mlarat]
+    answers: [ciyut]
+    words: [ciyut, amba, mlarat]
+    explain:
+      ar_eg: ciyut = ضيّق، والعربيات مش بتعدّي. amba = واسع وmlarat = فقير.
+      ar: ciyut ضيّق فلا تمرّ السيارات. أما amba فواسع وmlarat فقير.
+      en: ciyut is narrow, so cars can't pass. amba is wide and mlarat is poor.
+  - id: e07
+    type: multiple_choice
+    question: Dheweke ora duwe dhuwit, dheweke ___.
+    options: [sugih, mlarat, senajan]
+    answer: 1
+    explain:
+      ar_eg: 'اللي مامعهوش فلوس فقير: mlarat. sugih عكسها.'
+      ar: 'من لا مال له فقير: mlarat، وsugih عكسها.'
+      en: 'No money means poor: mlarat. sugih is the opposite.'
+    words: [sugih, mlarat, senajan]
   - id: e08
-    type: dictation
-    text: Fajar karo Zaki teka.
-    meaning:
-      ar_eg: فجر وزكي جم.
-      ar: جاء فجر وزكي.
-      en: Fajar and Zaki are here.
+    type: build_sentence
+    source:
+      ar_eg: أنا هستنى كام دقيقة.
+      ar: سأنتظر بضع دقائق.
+      en: I'll wait a few minutes.
+    answer: Aku ngenteni sawetara menit.
+    distractors: [kebo, amba]
+    words: [sawetara]
+    explain:
+      ar_eg: sawetara menit = كام دقيقة. kebo = جاموسة وamba = واسع، ومش في المعنى.
+      ar: sawetara menit بضع دقائق. أما kebo (جاموس) وamba (واسع) فليستا في المعنى.
+      en: sawetara menit is "a few minutes". kebo (buffalo) and amba (wide) aren't in the meaning.
   - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ꦥ꦳ꦗꦂꦏꦫꦺꦴꦗ꦳ꦏꦶ"
-      ar: "اكتب بالحروف اللاتينية: ꦥ꦳ꦗꦂꦏꦫꦺꦴꦗ꦳ꦏꦶ"
-      en: "Write in Latin letters: ꦥ꦳ꦗꦂꦏꦫꦺꦴꦗ꦳ꦏꦶ"
-    answers: [Fajar karo Zaki, fajarkarozaki]
-    explain:
-      ar_eg: Fajar بتخلص بـ layar، فـ ka بتتكتب عادي. karo = مع / و.
-      ar: تنتهي Fajar بـ layar فتُكتب ka عادية. karo = مع / و.
-      en: Fajar ends with layar, so ka is written normally. karo = with, and.
-    words: [aksara rekan]
+    direction: from_target
+    source_text: Wong sugih iku duwe wedhus lan kebo.
+    answers_meaning:
+      ar_eg: [الراجل الغني ده عنده معيز وجاموس, الغني ده عنده معزة وجاموسة]
+      ar: [ذلك الغني يملك ماعزًا وجواميس, يملك ذلك الرجل الغني ماعزًا وجاموسًا]
+      en: [That rich man has goats and buffalo, The rich man owns a goat and a buffalo]
+    words: [sugih, wedhus, kebo]
+  - id: e10
+    type: speaking
+    text: Senajan ciyut, omahku ayem.
+    meaning:
+      ar_eg: مع إن بيتي ضيق، بس مريح.
+      ar: رغم ضيق بيتي، فهو مريح.
+      en: Even though it's small, my house is peaceful.
+    words: [senajan, ciyut]
 dialogue:
-  title: Absen
   lines:
-    - speaker: Bu Guru
-      text: Fajar? Zahra? Khadijah?
-      ar_eg: فجر؟ زهرة؟ خديجة؟
-      ar: فجر؟ زهرة؟ خديجة؟
-      en: Fajar? Zahra? Khadijah?
-    - speaker: Bocah-bocah
-      text: Wonten, Bu!
-      ar_eg: موجودين يا أبلة!
-      ar: حاضرون يا معلّمة!
-      en: Here, miss!
+    - speaker: Petani
+      text: Mas, sawahku iki amba, nanging dalane ciyut.
+      ar_eg: يا ابني، أرضي واسعة، بس الطريق ليها ضيق.
+      ar: يا بني، حقلي واسع، لكن طريقه ضيّق.
+      en: Young man, my field is wide, but the path to it is narrow.
     - speaker: Mohamed
-      text: Bu, jeneng-jenenge kaya ing Mesir!
-      ar_eg: يا أبلة، الأسامي زي اللي عندنا في مصر!
-      ar: يا معلّمة، الأسماء مثل أسمائنا في مصر!
-      en: Miss, the names are just like in Egypt!
-    - speaker: Bu Guru
-      text: Inggih, Mas. Mula ditulis nganggo aksara rekan.
-      ar_eg: أيوه. عشان كده بتتكتب بحروف rekan.
-      ar: نعم، ولهذا تُكتب بحروف rekan.
-      en: Yes. That's why they're written with aksara rekan.
+      text: Kebo panjenengan pinten, Pak?
+      ar_eg: عندك كام جاموسة يا عم؟
+      ar: كم جاموسًا عندك يا عم؟
+      en: How many buffalo do you have, sir?
+    - speaker: Petani
+      text: Kebo loro, wedhus sawetara. Aku dudu wong sugih, lho.
+      ar_eg: جاموستين وكام معزة. أنا مش غني يا ابني.
+      ar: جاموسان وبعض الماعز. لست غنيًا يا بني.
+      en: Two buffalo and a few goats. I'm no rich man.
+    - speaker: Mohamed
+      text: Nanging panjenengan katingal ayem, Pak.
+      ar_eg: بس باين عليك مرتاح البال يا عم.
+      ar: لكنك تبدو مطمئنًا يا عم.
+      en: But you look at peace, sir.
+    - speaker: Petani
+      text: Iya. Senajan mlarat, sing penting ayem lan rukun.
+      ar_eg: أيوه. مع إننا فقرا، المهم راحة البال والوفاق.
+      ar: نعم. رغم الفقر، المهم الطمأنينة والوئام.
+      en: Yes. Even though we're poor, what matters is peace and getting along.
+    - speaker: Mohamed
+      text: Leres, Pak.
+      ar_eg: عندك حق يا عم.
+      ar: صدقت يا عم.
+      en: That's true, sir.
+new_words:
+  - word: kebo
+    pos: noun
+    ar_eg: جاموسة
+    ar: جاموس
+    en: water buffalo
+  - word: wedhus
+    pos: noun
+    ar_eg: معزة؛ خروف
+    ar: ماعز؛ خروف
+    en: goat; sheep
+  - word: amba
+    pos: adjective
+    ar_eg: واسع
+    ar: واسع
+    en: wide, broad
+  - word: ciyut
+    pos: adjective
+    ar_eg: ضيق
+    ar: ضيّق
+    en: narrow
+  - word: sugih
+    pos: adjective
+    ar_eg: غني
+    ar: غني
+    en: rich
+  - word: mlarat
+    pos: adjective
+    ar_eg: فقير
+    ar: فقير
+    en: poor
+  - word: sawetara
+    pos: determiner
+    ar_eg: شوية، كام
+    ar: بعض، بضعة
+    en: some, a few
+  - word: senajan
+    pos: conjunction
+    ar_eg: مع إن
+    ar: رغم أنّ
+    en: even though
 review:
   status: draft
   verified: false

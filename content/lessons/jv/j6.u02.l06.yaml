@@ -1,168 +1,233 @@
 schema: kabar.lesson/v1
 id: j6.u02.l06
 language: jv
-title: Warung soto
+title: Layang krama
 can_do:
-  ar_eg: تقرا منيو مكتوب بالخط الجاوي وتطلب منه.
-  ar: أن تقرأ قائمة طعام بالخط الجاوي وتطلب منها.
-  en: Read a menu in aksara Jawa and order from it.
+  ar_eg: 'تقرا وترد على جواب بالكراما: قريت، هكتب الرد، لوحدي، نتقابل لما يبقى فيه وقت.'
+  ar: 'أن تقرأ رسالة بالكراما وتردّ عليها: قرأتُ، سأكتب الرد، بنفسي، نلتقي حين يتسع الوقت.'
+  en: 'Read and answer a krama letter: I''ve read it, I''ll write back, by myself, let''s meet when there''s time.'
 slides:
-  - title: Menu ing warung
+  - title: Tembung krama ing layang
     body:
       ar_eg: |
-        جنب الجامع فيه مطعم صغير (warung)، والمنيو على الحيطة مكتوب بالخط الجاوي.
-        ركّز على الحركات: soto فيها taling tarung مرتين، وsega فيها pepet، وsate فيها taling.
+        في الجوابات المؤدبة بنستعمل كراما: maos = يقرا، nyerat = يكتب، kintun = يبعت.
+        seratan = جواب أو كتابة (tulisan)، piyambak = بنفسه أو لوحده (dhewe)، mugi = يا رب / إن شاء الله (muga).
+        pangapunten = سماح: Nyuwun pangapunten = لا مؤاخذة. وmekaten = «كده»: Mekaten rumiyin = ده كل اللي عندي دلوقتي. وهتقابل كمان wekdal وpinanggih من J3.
       ar: |
-        قرب المسجد مطعم صغير (warung)، وقائمته على الجدار بالخط الجاوي.
-        انتبه إلى الحركات: في soto علامة taling tarung مرتين، وفي sega علامة pepet، وفي sate علامة taling.
+        في الرسائل المهذّبة نستعمل الكراما: maos = يقرأ، nyerat = يكتب، kintun = يرسل.
+        seratan = رسالة أو كتابة (tulisan)، وpiyambak = بنفسه أو وحده (dhewe)، وmugi = عسى / أرجو (muga).
+        وpangapunten = عفو: Nyuwun pangapunten = المعذرة. وmekaten = «هكذا»: Mekaten rumiyin = هذا ما لديّ الآن. وستلقى أيضًا wekdal وpinanggih من J3.
       en: |
-        Next to the mosque there's a little warung, and its menu on the wall is in aksara Jawa.
-        Watch the vowel marks: soto has taling tarung twice, sega has pepet, sate has taling.
-    grammar: jv.aksara.sandhangan-swara
+        Polite letters use krama: maos = read, nyerat = write, kintun = send.
+        seratan = letter, writing (tulisan), piyambak = oneself, alone (dhewe), mugi = may, hopefully (muga).
+        pangapunten = forgiveness: Nyuwun pangapunten = I'm sorry, excuse me. mekaten = thus, like this: Mekaten rumiyin = that's all for now. You'll also meet wekdal and pinanggih again from J3.
     examples:
-      - text: ꦱꦺꦴꦠꦺꦴ · ꦱꦠꦺꦱꦥꦶ (soto · sate sapi)
-        ar_eg: شوربة سوتو · ساتيه لحمة
-        ar: حساء سوتو · ساتيه لحم بقر
-        en: soto soup · beef satay
-      - text: ꦱꦼꦒ · ꦠꦲꦸ (sega · tahu)
-        ar_eg: رز · توفو
-        ar: أرز · توفو
-        en: rice · tofu
-      - text: ꦏꦺꦴꦥꦶ · ꦱꦸꦱꦸ · ꦗꦩꦸ (kopi · susu · jamu)
-        ar_eg: قهوة · لبن · جامو (مشروب أعشاب)
-        ar: قهوة · حليب · جامو (شراب أعشاب)
-        en: coffee · milk · jamu (herbal drink)
+      - text: Kula sampun maos pesen panjenengan.
+        ar_eg: قريت رسالتك.
+        ar: قرأتُ رسالتك.
+        en: I've read your message.
+      - text: Kula badhe nyerat wangsulan.
+        ar_eg: هكتب الرد.
+        ar: سأكتب الرد.
+        en: I'll write a reply.
+      - text: Menawi wonten wekdal, kula badhe pinanggih panjenengan.
+        ar_eg: لو فيه وقت، هقابل حضرتك.
+        ar: إن اتسع الوقت سألتقي بك.
+        en: If there's time, I'll come and meet you.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي مشروب موجود في المنيو؟
-      ar: أي مشروب في القائمة؟
-      en: Which drink is on the menu?
-    options: [es teh, kopi, jus]
-    answer: 1
-    words: [taling tarung, wulu]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: ديماس عايز أكلة فيها لحمة بقري. يطلب إيه؟
-      ar: يريد ديماس طبقًا فيه لحم بقر. ماذا يطلب؟
-      en: Dimas wants a dish with beef. What should he order?
-    options: [tahu, sega, sate sapi]
-    answer: 2
-    explain:
-      ar_eg: ꦱꦠꦺꦱꦥꦶ = sate sapi، وsapi = بقرة.
-      ar: ꦱꦠꦺꦱꦥꦶ = sate sapi، وsapi = بقرة.
-      en: ꦱꦠꦺꦱꦥꦶ = sate sapi; sapi = cow, beef.
-    words: [taling, wulu]
-  - id: e03
-    type: listen
-    text: Soto siji, kopi loro.
-    question:
-      ar_eg: ديماس طلب إيه؟
-      ar: ماذا طلب ديماس؟
-      en: What did Dimas order?
-    options: ["ꦱꦺꦴꦠꦺꦴꦭꦺꦴꦫꦺꦴꦏꦺꦴꦥꦶꦱꦶꦗꦶ", "ꦱꦺꦴꦠꦺꦴꦱꦶꦗꦶꦏꦺꦴꦥꦶꦭꦺꦴꦫꦺꦴ", "ꦱꦠꦺꦱꦶꦗꦶꦏꦺꦴꦥꦶꦭꦺꦴꦫꦺꦴ"]
-    answer: 1
-    meaning:
-      ar_eg: واحد سوتو، واتنين قهوة.
-      ar: سوتو واحد وقهوتان.
-      en: One soto, two coffees.
-    words: [taling tarung, wulu]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: ꦱꦺꦴꦠꦺꦴ
-        ar_eg: soto — شوربة سوتو
-        ar: soto — حساء سوتو
-        en: soto — soto soup
-      - text: ꦱꦸꦱꦸ
-        ar_eg: susu — لبن
-        ar: susu — حليب
-        en: susu — milk
-      - text: ꦗꦩꦸ
-        ar_eg: jamu — مشروب أعشاب
-        ar: jamu — شراب أعشاب
-        en: jamu — herbal drink
-      - text: ꦠꦲꦸ
-        ar_eg: tahu — توفو
-        ar: tahu — توفو
-        en: tahu — tofu
-    words: [taling tarung, suku]
+      - text: maos
+        ar_eg: يقرا (كراما)
+        ar: يقرأ (كراما)
+        en: read (krama)
+      - text: nyerat
+        ar_eg: يكتب (كراما)
+        ar: يكتب (كراما)
+        en: write (krama)
+      - text: kintun
+        ar_eg: يبعت (كراما)
+        ar: يرسل (كراما)
+        en: send (krama)
+      - text: mekaten
+        ar_eg: كده
+        ar: هكذا
+        en: thus, like this
+    words: [maos, nyerat, kintun, mekaten]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: piyambak
+        ar_eg: لوحده، بنفسه
+        ar: بنفسه، وحده
+        en: oneself, alone
+      - text: mugi
+        ar_eg: يا رب / إن شاء الله
+        ar: عسى، أرجو
+        en: may, hopefully
+      - text: seratan
+        ar_eg: جواب، كتابة
+        ar: رسالة، كتابة
+        en: letter, writing
+      - text: pangapunten
+        ar_eg: سماح
+        ar: عفو
+        en: forgiveness, pardon
+    words: [piyambak, mugi, seratan, pangapunten]
+  - id: e03
+    type: listen
+    text: Kula sampun maos pesen panjenengan.
+    question:
+      ar_eg: قال إيه؟
+      ar: ماذا قال؟
+      en: What did he say?
+    options: [قريت رسالتك, كتبت رسالة, سمعت صوتك]
+    answer: 0
+    meaning:
+      ar_eg: قريت رسالة حضرتك.
+      ar: قرأتُ رسالتك.
+      en: I've read your message.
+    words: [maos]
+  - id: e04
+    type: fill_blank
+    sentence: Kula badhe ___ wangsulan dhateng Pak Harjo.
+    meaning:
+      ar_eg: هـ___ رد لعم هارجو.
+      ar: سأ___ ردًا إلى السيد هارجو.
+      en: I'll ___ a reply to Pak Harjo.
+    options: [nyerat, mugi, seratan]
+    answers: [nyerat]
+    words: [nyerat, mugi, seratan]
+    explain:
+      ar_eg: nyerat = يكتب (كراما). mugi = يا ريت وseratan = جواب (اسم مش فعل).
+      ar: nyerat تعني يكتب بالكراما. أما mugi فعسى وseratan رسالة، اسم لا فعل.
+      en: nyerat is krama for "write". mugi is "may" and seratan is a letter, a noun.
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: sega (رز) مكتوبة إزاي في المنيو؟
-      ar: كيف كُتبت sega (أرز) في القائمة؟
-      en: How is sega (rice) written on the menu?
-    options: ["ꦱꦺꦒ", "ꦱꦒ", "ꦱꦼꦒ"]
-    answer: 2
+      ar_eg: إزاي تقول «لا مؤاخذة» بأدب في جواب كراما؟ Nyuwun ___.
+      ar: كيف تقول «المعذرة» بأدب في رسالة بالكراما؟ Nyuwun ___.
+      en: How do you say "I'm sorry" politely in a krama letter? Nyuwun ___.
+    options: [mekaten, pangapunten, kintun]
+    answer: 1
     explain:
-      ar_eg: الـ e في sega خفيفة مختلسة، فبتتكتب pepet فوق ꦱ، مش taling.
-      ar: الـ e في sega مختلسة، فتُكتب pepet فوق ꦱ لا taling.
-      en: The e in sega is the light schwa, so it's pepet above ꦱ, not taling.
-    words: [pepet]
+      ar_eg: Nyuwun pangapunten = بطلب السماح، يعني لا مؤاخذة.
+      ar: Nyuwun pangapunten = أطلب العفو، أي المعذرة.
+      en: Nyuwun pangapunten = I ask forgiveness, i.e. I'm sorry.
+    words: [mekaten, pangapunten, kintun]
   - id: e06
     type: fill_blank
-    sentence: ꦱꦠꦺꦱꦥꦶ = ___
+    sentence: Panjenengan rawuh ___ menapa kaliyan rencang?
     meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: ساتيه لحمة)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: ساتيه لحم بقر)"
-      en: Type the reading in Latin letters. (It means "beef satay".)
-    answers: [sate sapi, satesapi]
-    words: [taling, wulu]
+      ar_eg: حضرتك جاي ___ ولا مع صحابك؟
+      ar: هل أتيتَ ___ أم مع أصدقائك؟
+      en: Did you come ___ or with friends?
+    options: [piyambak, mugi, maos]
+    answers: [piyambak]
+    words: [piyambak, mugi, maos]
+    explain:
+      ar_eg: piyambak = لوحدك (كراما). mugi = يا ريت وmaos = يقرا.
+      ar: piyambak تعني وحدك بالكراما. أما mugi فعسى وmaos يقرأ.
+      en: piyambak is krama for "alone". mugi is "may" and maos is "read".
   - id: e07
+    type: multiple_choice
+    question: Kula remen sanget saged ___ kaliyan panjenengan.
+    options: [nyerat, seratan, pinanggih]
+    answer: 2
+    explain:
+      ar_eg: 'pinanggih (من J3) = نتقابل: مبسوط إني قابلتك. seratan = جواب، مش فعل.'
+      ar: 'pinanggih (من J3) = نلتقي: سعيد بلقائك. وseratan = رسالة، لا فعل.'
+      en: 'pinanggih (from J3) = meet: glad to meet you. seratan is a letter, not a verb.'
+    words: [nyerat, seratan]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: "اطلب: «Sate sapi siji.» (واحد ساتيه لحمة)، مقطع مقطع."
-      ar: "اطلب: «Sate sapi siji.» (ساتيه لحم واحد)، مقطعًا مقطعًا."
-      en: "Order «Sate sapi siji.» (one beef satay), syllable by syllable."
-    answer: ꦱ ꦠꦺ ꦱ ꦥꦶ ꦱꦶ ꦗꦶ
-    distractors: ["ꦱꦸ"]
-    words: [taling, wulu]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب الطلب ده بالحروف اللاتينية: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
-      ar: "اكتب هذا الطلب بالحروف اللاتينية: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
-      en: "Write this order in Latin letters: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
-    answers: ["sega loro, susu siji", sega loro susu siji]
+      ar_eg: لا مؤاخذة، ده كل اللي عندي دلوقتي.
+      ar: المعذرة، هذا ما لديّ الآن.
+      en: Sorry, that's all from me for now.
+    answer: Nyuwun pangapunten, mekaten rumiyin saking kula.
+    distractors: [maos, mugi]
+    words: [mekaten, pangapunten]
     explain:
-      ar_eg: se-ga lo-ro su-su si-ji = اتنين رز، وواحد لبن.
-      ar: se-ga lo-ro su-su si-ji = أرز لاثنين وحليب واحد.
-      en: se-ga lo-ro su-su si-ji = two rice, one milk.
-    words: [pepet, taling tarung, suku]
+      ar_eg: mekaten rumiyin = كده بس دلوقتي، ختام الجواب. maos = يقرا وmugi = يا ريت، ومش في المعنى.
+      ar: "mekaten rumiyin ختام الرسالة: هذا كل شيء الآن. أما maos (يقرأ) وmugi (عسى) فليستا في المعنى."
+      en: "mekaten rumiyin closes a letter: \"that's all for now\". maos (read) and mugi (may) aren't in the meaning."
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Kula badhe kintun seratan menika piyambak.
+    answers_meaning:
+      ar_eg: [هبعت الجواب ده بنفسي, أنا هبعت الجواب ده بنفسي]
+      ar: [سأرسل هذه الرسالة بنفسي, سأبعث هذه الرسالة بنفسي]
+      en: ['I''ll send this letter myself', I will send this letter on my own]
+    words: [kintun, piyambak, seratan]
+  - id: e10
     type: speaking
-    text: Soto siji, kopi loro, Bu.
+    text: Mugi kita saged pinanggih malih.
     meaning:
-      ar_eg: واحد سوتو واتنين قهوة يا مدام.
-      ar: سوتو واحد وقهوتان يا سيدتي.
-      en: One soto and two coffees, please.
+      ar_eg: يا رب نتقابل تاني.
+      ar: عسى أن نلتقي مرة أخرى.
+      en: I hope we can meet again.
+    words: [mugi]
 dialogue:
-  title: Ing warung soto
   lines:
-    - speaker: Bu Warung
-      text: Badhe dhahar menapa, Mas?
-      ar_eg: حضرتك تحب تاكل إيه؟
-      ar: ماذا تحبّ أن تأكل يا سيدي؟
-      en: What would you like to eat?
     - speaker: Mohamed
-      text: Soto setunggal lan kopi kalih, Bu.
-      ar_eg: واحد سوتو واتنين قهوة يا مدام.
-      ar: سوتو واحد وقهوتان يا سيدتي.
-      en: One soto and two coffees, please.
-    - speaker: Bu Warung
-      text: Sate sapi nggih wonten, Mas.
-      ar_eg: فيه كمان ساتيه لحمة.
-      ar: لدينا أيضًا ساتيه لحم بقر.
-      en: There's beef satay too.
+      text: Pak Slamet, kula sampun maos layang saking Pak Harjo.
+      ar_eg: يا عم سلامت، قريت جواب عم هارجو.
+      ar: يا سيد سلامت، قرأتُ رسالة السيد هارجو.
+      en: Pak Slamet, I've read Pak Harjo's letter.
+    - speaker: Pak Slamet
+      text: Sae. Panjenengan badhe nyerat wangsulan?
+      ar_eg: كويس. هتكتب الرد؟
+      ar: حسن. أستكتب الرد؟
+      en: Good. Will you write a reply?
     - speaker: Mohamed
-      text: Mboten, Bu, matur nuwun. Soto kemawon.
-      ar_eg: لا يا مدام، شكرًا. سوتو بس.
-      ar: لا يا سيدتي، شكرًا. سوتو فقط.
-      en: No thanks, ma'am. Just the soto.
+      text: Inggih, nanging kula dereng lancar nyerat krama.
+      ar_eg: أيوه، بس لسه مش بكتب كراما كويس.
+      ar: نعم، لكنني لا أكتب الكراما بطلاقة بعد.
+      en: Yes, but I can't write krama fluently yet.
+    - speaker: Pak Slamet
+      text: Mboten menapa. Nyerat piyambak rumiyin, mangke kula maos.
+      ar_eg: مافيش مشكلة. اكتب لوحدك الأول، وبعدين أقراه أنا.
+      ar: لا بأس. اكتب بنفسك أولًا، ثم أقرؤه أنا.
+      en: No problem. Write it yourself first, then I'll read it.
+    - speaker: Mohamed
+      text: Matur nuwun. Kula kepengin pinanggih Pak Harjo malih.
+      ar_eg: شكرًا. نفسي أقابل عم هارجو تاني.
+      ar: شكرًا. أودّ أن ألتقي بالسيد هارجو مرة أخرى.
+      en: Thank you. I'd love to meet Pak Harjo again.
+    - speaker: Pak Slamet
+      text: Menawi wonten wekdal, sowan mawon.
+      ar_eg: لو فيه وقت، روح زوره.
+      ar: إن اتسع الوقت فزُره.
+      en: If there's time, just go and visit him.
+new_words:
+  - word: kintun
+    pos: verb
+    ar_eg: يبعت (كراما)
+    ar: يرسل (كراما)
+    en: send (krama)
+  - word: mekaten
+    pos: adverb
+    ar_eg: كده (كراما)
+    ar: هكذا (كراما)
+    en: thus, like this (krama)
+  - word: piyambak
+    pos: pronoun
+    ar_eg: بنفسه، لوحده (كراما)
+    ar: بنفسه، وحده (كراما)
+    en: oneself, alone (krama)
+  - word: seratan
+    pos: noun
+    ar_eg: جواب، كتابة (كراما)
+    ar: رسالة، كتابة (كراما)
+    en: letter, writing (krama of tulisan) = tulisan
+  - word: pangapunten
+    pos: noun
+    ar_eg: سماح (Nyuwun pangapunten = لا مؤاخذة)
+    ar: عفو (Nyuwun pangapunten = المعذرة)
+    en: forgiveness (Nyuwun pangapunten = I'm sorry) = maaf
 review:
   status: draft
   verified: false

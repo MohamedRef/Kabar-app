@@ -48,6 +48,8 @@
 .rev-stat-value { font-size: 1.6rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.2; }
 .rev-stat-label { color: var(--muted); font-size: 0.85rem; }
 .rev-stat.accent .rev-stat-value { color: var(--indigo); }
+button.rev-stat { border-color: transparent; }
+.forecast-tap { display: block; }
 .rev-calm { margin-block: 1rem 0.25rem; font-weight: 600; color: var(--sawah); }
 
 .forecast {
@@ -98,7 +100,10 @@
 .progress-fill { display: block; block-size: 100%; background: var(--sawah); border-radius: 999px; }
 .rev-foot { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
 /* Key hints are for keyboards: touch screens never see them. */
+/* Keyboard shortcuts: only where a keyboard is likely. Touch screens hide them,
+   and so does phone width, whatever the pointer (#381). */
 @media (hover: none), (pointer: coarse) { .kbd-hint { display: none; } }
+.app[data-width="compact"] .kbd-hint { display: none; }
 
 /* ---------- Classic card ---------- */
 .rev-card { margin: 0; text-align: center; min-block-size: 14rem; display: flex; flex-direction: column; justify-content: center; gap: 0.25rem; }
@@ -107,8 +112,8 @@
 .rev-word { font-family: var(--font-latin); font-size: 1.6rem; font-weight: 700; color: var(--indigo); }
 .rev-word.big { font-size: clamp(2.2rem, 7vw, 3.2rem); }
 .icon-btn {
-  inline-size: 44px;
-  block-size: 44px;
+  inline-size: var(--tap);
+  block-size: var(--tap);
   padding: 0;
   display: inline-grid;
   place-items: center;
@@ -161,6 +166,9 @@
 .badge.gold { background: var(--gold-soft); color: var(--gold); }
 .badge.warn { background: var(--surface-2); color: var(--muted); border: 1px dashed var(--line); }
 .badge.alarm { background: var(--dawn-soft); color: var(--dawn); }
+/* A Javanese word that means something else in Indonesian (#379): its own
+   look, so it never reads as the Arabic-loan false friend above. */
+.badge.twin { background: var(--surface-2); color: var(--indigo); border: 1px solid var(--indigo); justify-self: center; }
 
 .rev-answer { display: flex; gap: 0.5rem; margin-block-start: 0.75rem; justify-content: center; flex-wrap: wrap; }
 .rev-answer input {
@@ -192,7 +200,7 @@
   gap: 0.05rem;
   border-radius: 14px;
   padding-inline: 0.4rem;
-  min-block-size: 56px;
+  min-block-size: var(--row);
   border-width: 2px;
 }
 .rate-label { font-weight: 700; }
@@ -202,7 +210,7 @@
 .rate.good { border-color: var(--sawah); color: var(--sawah); }
 .rate.easy { border-color: var(--indigo); color: var(--indigo); }
 .rate.suggested { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px currentColor; }
-.reveal-btn { min-block-size: 56px; font-weight: 600; }
+.reveal-btn { min-block-size: var(--row); font-weight: 600; }
 
 /* The answer buttons stay in one place so the hand learns them (Anki):
    the card keeps a steady height, and on tablets and the Mac the row

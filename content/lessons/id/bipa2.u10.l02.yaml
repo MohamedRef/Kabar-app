@@ -13,14 +13,23 @@ slides:
         merasa = حاسس: Saya merasa pusing = حاسس بدوخة، mual = نفسي غامّة، lemas = جسمي هبطان.
         أمراض شائعة: demam = سخونية، batuk = كحة، pilek = رشح، masuk angin = برد (حرفيًا «دخل فيه هوا»، فكرة شعبية إندونيسية).
         ومن غير merasa كمان صح: Saya demam = أنا سخن.
+        في الشارع بيقولوا:
+        - nggak = tidak (مش، لأ)
+        - aku و-ku = saya (أنا، ـي) مع الأصحاب واللي في سنك؛ مع الكبار والغُرب saya
       ar: |
         merasa = يشعر: Saya merasa pusing = أشعر بدوار، mual = غثيان، lemas = وهن.
         أمراض شائعة: demam = حمّى، batuk = سعال، pilek = زكام، masuk angin = نزلة برد (حرفيًا «دخلته الريح»، مفهوم شعبي).
         ويصح بلا merasa: Saya demam = عندي حمّى.
+        في كلام الشارع:
+        - nggak = tidak (لا، ليس)
+        - aku و-ku = saya (أنا، ـي) مع الأصدقاء والأقران؛ ومع الكبار والغرباء saya
       en: |
         merasa = feel: Saya merasa pusing (dizzy), mual (nauseous), lemas (weak).
         Common ailments: demam (fever), batuk (cough), pilek (runny nose), masuk angin (a chill — literally "wind got in", a folk notion).
         Without merasa is fine too: Saya demam = I have a fever.
+        On the street:
+        - nggak = tidak (not, no)
+        - aku / -ku = saya (I, my) with friends and people your age; saya with elders and strangers
     grammar: id.pattern.sakit
     examples:
       - text: Kepala saya pusing dan badan saya lemas.
@@ -93,6 +102,10 @@ exercises:
     options: [mual, lemas, pusing]
     answers: [pusing]
     words: [merasa, pusing]
+    explain:
+      ar_eg: pusing = دايخ أو راسي بتلف. mual = نفسي غامّة، وlemas = مهدود.
+      ar: pusing = دوار. أما mual فغثيان وlemas وهن.
+      en: pusing = dizzy. mual is nauseous, lemas weak.
   - id: e03
     type: multiple_choice
     question: Sakit apa, Pak?
@@ -103,6 +116,10 @@ exercises:
     options: [Sejak kemarin., Saya demam dan batuk., Saya dari Mesir.]
     answer: 1
     words: [demam, batuk]
+    explain:
+      ar_eg: "Sakit apa? = عندك إيه؟ فالرد بالأعراض: demam dan batuk. Sejak kemarin رد على «بقالك قد إيه؟»."
+      ar: Sakit apa? يُجاب بالأعراض. أما Sejak kemarin فجواب «منذ متى؟».
+      en: Sakit apa? is answered with symptoms. Sejak kemarin answers "how long?".
   - id: e04
     type: multiple_choice
     question: Sudah berapa lama?
@@ -113,6 +130,10 @@ exercises:
     options: ['Kepala saya, Dok.', 'Sejak kemarin, Dok.', 'Saya sehat, Dok.']
     answer: 1
     words: [sejak]
+    explain:
+      ar_eg: "Sudah berapa lama? = بقالك قد إيه؟ فالرد بالمدة: Sejak kemarin = من امبارح."
+      ar: "Sudah berapa lama? يُجاب بالمدة: Sejak kemarin."
+      en: "Sudah berapa lama? needs a time: Sejak kemarin."
   - id: e05
     type: listen
     text: Saya merasa mual dan lemas.
@@ -131,7 +152,7 @@ exercises:
       ar_eg: [راسي دايخة وجسمي هبطان., أنا دايخ وجسمي تعبان, حاسس بدوخة وهبوط]
       ar: [أشعر بالدوار والوهن., رأسي يدور وجسمي واهن]
       en: [I feel dizzy and weak., My head is spinning and my body feels weak.]
-    words: [pusing, badan, lemas]
+    words: [pusing, lemas]
   - id: e07
     type: speaking
     text: Dok, saya demam dan sakit kepala sejak kemarin.
@@ -163,6 +184,10 @@ exercises:
     options: [merasa, batuk, sakit]
     answers: [merasa]
     words: [merasa, mual]
+    explain:
+      ar_eg: "merasa + الإحساس = حاسس بـ: merasa mual. batuk = كحة، وsakit mual مش تركيب صح."
+      ar: "merasa + الشعور: merasa mual. أما batuk فسعال، و«sakit mual» تركيب خاطئ."
+      en: "merasa + feeling: merasa mual. batuk is a cough; \"sakit mual\" isn't a phrase."
 dialogue:
   title: Setelah berenang di Amed
   lines:
@@ -172,7 +197,7 @@ dialogue:
       ar: يا محمد، ما بك؟ هل أنت مريض؟
       en: Mohamed, what's wrong? Are you ill?
     - speaker: Mohamed
-      text: Iya. Kepala saya sakit dan saya merasa pusing.
+      text: Iya. Kepalaku sakit dan aku merasa pusing.
       ar_eg: أيوه. راسي بتوجعني وحاسس بدوخة.
       ar: نعم. رأسي يؤلمني وأشعر بالدوار.
       en: Yes. My head hurts and I feel dizzy.
@@ -182,20 +207,20 @@ dialogue:
       ar: يا للأسف! منذ متى؟
       en: Oh no! Since when?
     - speaker: Mohamed
-      text: Sejak tadi pagi. Mungkin saya terlalu lama berenang di laut.
-      ar_eg: من الصبح. يمكن عشان عمت في البحر وقت طويل أوي.
-      ar: منذ الصباح. ربما سبحت في البحر وقتًا طويلًا جدًا.
-      en: Since this morning. Maybe I swam in the sea too long.
+      text: Sejak tadi pagi. Aku terlalu lama berenang di laut.
+      ar_eg: من الصبح. عمت في البحر وقت طويل أوي.
+      ar: منذ الصباح. سبحت في البحر وقتًا طويلًا جدًا.
+      en: Since this morning. I swam in the sea too long.
     - speaker: Ni Luh
       text: Kamu demam?
       ar_eg: عندك سخونية؟
       ar: هل عندك حمّى؟
       en: Do you have a fever?
     - speaker: Mohamed
-      text: Tidak, cuma lemas. Mungkin masuk angin.
-      ar_eg: لأ، جسمي هبطان بس. يمكن واخد برد.
-      ar: لا، أشعر بالوهن فقط. ربما هي نزلة برد.
-      en: No, just weak. Maybe it's a chill.
+      text: Nggak, cuma lemas. Aku masuk angin.
+      ar_eg: لأ، جسمي هبطان بس. أنا واخد برد.
+      ar: لا، أشعر بالوهن فقط. أصابني البرد.
+      en: No, just weak. I've caught a chill.
 new_words:
   - word: merasa
     pos: verb

@@ -1,0 +1,214 @@
+schema: kabar.lesson/v1
+id: bipa7.u02.l11
+language: id
+title: Presentasi fenomena
+can_do:
+  ar_eg: تعرض ظاهرة طبيعية قدّام جمهور وتوصف رسم بياني.
+  ar: أن تعرض ظاهرة طبيعية أمام جمهور وتصف رسمًا بيانيًّا.
+  en: Present a natural phenomenon to an audience and describe a chart.
+slides:
+  - title: Membaca grafik dengan suara
+    grammar: id.presentation.expressions
+    body:
+      ar_eg: |
+        رسم بياني (الأرقام متألّفة للدرس): نسبة المرجان الحي في خليج واحد، 2015–2024.
+        - Seperti yang terlihat pada grafik ini, persentase karang hidup relatif stabil (ثابتة تقريبًا) dari 2015 sampai 2019.
+        - Pada 2020, angkanya menurun drastis (نزلت بشكل حاد) karena pemutihan.
+        - Sejak 2022, persentasenya meningkat tajam (طلعت بسرعة) berkat kawasan konservasi.
+        الـ persentase = النسبة المئوية.
+      ar: |
+        رسم بياني (الأرقام مؤلَّفة للدرس): نسبة المرجان الحيّ في خليج واحد، 2015–2024.
+        - Seperti yang terlihat pada grafik ini, persentase karang hidup relatif stabil (مستقرّة نسبيًّا) dari 2015 sampai 2019.
+        - Pada 2020, angkanya menurun drastis (انخفضت بشدّة) karena pemutihan.
+        - Sejak 2022, persentasenya meningkat tajam (ارتفعت بحدّة) berkat kawasan konservasi.
+        والـ persentase = النسبة المئوية.
+      en: |
+        A chart (figures invented for the lesson): live coral cover in one bay, 2015–2024.
+        - Seperti yang terlihat pada grafik ini, persentase karang hidup relatif stabil (fairly stable) dari 2015 sampai 2019.
+        - Pada 2020, angkanya menurun drastis (fell sharply) karena pemutihan.
+        - Sejak 2022, persentasenya meningkat tajam (rose steeply) berkat kawasan konservasi.
+        persentase = percentage.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: meningkat tajam
+        ar_eg: طلع بسرعة / زاد بشكل حاد
+        ar: ارتفع بحدّة
+        en: to rise steeply
+      - text: menurun drastis
+        ar_eg: نزل بشكل حاد
+        ar: انخفض بشدّة
+        en: to fall sharply
+      - text: relatif stabil
+        ar_eg: ثابت تقريبًا
+        ar: مستقرّ نسبيًّا
+        en: fairly stable
+      - text: persentase
+        ar_eg: نسبة مئوية
+        ar: نسبة مئوية
+        en: percentage
+    words: [meningkat tajam, menurun drastis, relatif stabil, persentase]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الخط في الرسم نازل جامد سنة 2020. تقول إيه؟
+      ar: ينحدر الخطّ بشدّة عام 2020. ماذا تقول؟
+      en: The line plunges in 2020. What do you say?
+    options:
+      - Pada 2020, angkanya relatif stabil.
+      - Pada 2020, angkanya meningkat tajam.
+      - Pada 2020, angkanya menurun drastis.
+    answer: 2
+    words: [menurun drastis, relatif stabil, meningkat tajam]
+    explain:
+      ar_eg: الخط بيقع جامد = menurun drastis. relatif stabil = ثابت تقريبًا، وmeningkat tajam = طلع جامد.
+      ar: الهبوط الحاد = menurun drastis. أما relatif stabil فثابت نسبيًا وmeningkat tajam صعود حاد.
+      en: A plunge is menurun drastis.
+  - id: e03
+    type: fill_blank
+    sentence: ___ karang hidup naik dari 20 menjadi 45 persen.
+    meaning:
+      ar_eg: نسبة المرجان الحي طلعت من 20 لـ 45 في المية.
+      ar: ارتفعت نسبة المرجان الحيّ من 20 إلى 45 في المئة.
+      en: The percentage of live coral rose from 20 to 45 per cent.
+    options: [Persentase, Relatif stabil, Menurun drastis]
+    answers: [Persentase]
+    words: [persentase]
+    explain:
+      ar_eg: Persentase karang hidup = نسبة المرجان الحي، وده الاسم اللي يطلع وينزل. التانيين وصف للحركة مش اسم.
+      ar: Persentase = النسبة المئوية، وهي التي ترتفع. أما الخياران الآخران فوصف للحركة.
+      en: Persentase (percentage) is the noun that rises.
+  - id: e04
+    type: listen
+    text: Sejak tahun 2022, jumlah ikan di teluk ini meningkat tajam.
+    question:
+      ar_eg: عدد السمك عمل إيه من 2022؟
+      ar: ماذا حدث لعدد الأسماك منذ 2022؟
+      en: What has the number of fish done since 2022?
+    options:
+      - فضل زي ما هو.
+      - زاد بسرعة.
+      - قلّ شوية.
+    answer: 1
+    words: [meningkat tajam]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: درجة حرارة المية كانت ثابتة تقريبًا.
+      ar: كانت حرارة المياه مستقرّة نسبيًّا.
+      en: The water temperature was fairly stable.
+    answer: Suhu air relatif stabil.
+    distractors: [tajam, drastis]
+    words: [relatif stabil]
+    explain:
+      ar_eg: relatif stabil = ثابت نسبيًا. tajam وdrastis للتغيّر الكبير، فمايمشوش مع stabil.
+      ar: relatif stabil = ثابت نسبيًا. أما tajam وdrastis فللتغير الحاد.
+      en: relatif stabil = fairly stable; tajam and drastis describe sharp change.
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تنقلك من الرسم للجزء اللي بعده؟
+      ar: أيّ جملة تنقلك من الرسم إلى الجزء التالي؟
+      en: Which sentence takes you from the chart to the next part?
+    options:
+      - Selanjutnya, mari kita beralih ke penyebabnya.
+      - Grafik ini jelek.
+      - Sekian dan terima kasih.
+    answer: 0
+    words: [beralih]
+    explain:
+      ar_eg: Selanjutnya, mari kita beralih ke ... = جملة انتقال للجزء الجاي. التانية رأي، والتالتة ختام.
+      ar: Selanjutnya, mari kita beralih ke = عبارة انتقال. الثانية رأي والثالثة ختام.
+      en: Selanjutnya, mari kita beralih ke … moves to the next part.
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عدد السيّاح نزل بشكل حاد سنة 2020.
+      ar: انخفض عدد السيّاح بشدّة عام 2020.
+      en: The number of tourists fell sharply in 2020.
+    answers:
+      - Jumlah wisatawan menurun drastis pada tahun 2020.
+      - Jumlah wisatawan menurun drastis pada 2020.
+      - Pada tahun 2020, jumlah wisatawan menurun drastis.
+      - Jumlah turis menurun drastis pada tahun 2020.
+    words: [menurun drastis]
+  - id: e08
+    type: speaking
+    text: Seperti yang terlihat pada grafik ini, persentase karang hidup meningkat tajam.
+    meaning:
+      ar_eg: زي ما باين في الرسم ده، نسبة المرجان الحي طلعت بسرعة.
+      ar: كما يظهر في هذا الرسم، ارتفعت نسبة المرجان الحيّ بحدّة.
+      en: As this chart shows, the percentage of live coral rose steeply.
+    words: [persentase, meningkat tajam]
+  - id: e09
+    type: dictation
+    text: Persentase karang hidup relatif stabil selama lima tahun.
+    meaning:
+      ar_eg: نسبة المرجان الحي فضلت ثابتة تقريبًا خمس سنين.
+      ar: ظلّت نسبة المرجان الحيّ مستقرّة نسبيًّا خمس سنوات.
+      en: The percentage of live coral stayed fairly stable for five years.
+    words: [persentase, relatif stabil]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Setelah menurun drastis, jumlah karang hidup kini meningkat tajam.
+    answers_meaning:
+      ar_eg:
+        - بعد ما نزل بشكل حاد، عدد المرجان الحي دلوقتي بيزيد بسرعة.
+        - المرجان الحي بعد ما قلّ جامد، رجع يزيد بسرعة.
+      ar:
+        - بعد انخفاض حادّ، يرتفع عدد المرجان الحيّ الآن بسرعة.
+        - عاد المرجان الحيّ إلى الازدياد السريع بعد تراجعه الشديد.
+      en:
+        - After falling sharply, live coral is now rising steeply.
+        - Having dropped sharply, the amount of live coral is now climbing fast.
+    words: [menurun drastis, meningkat tajam]
+dialogue:
+  title: Gladi resik
+  lines:
+    - speaker: Mohamed
+      text: Seperti yang terlihat pada grafik ini, angkanya turun banyak sekali.
+      ar_eg: زي ما باين في الرسم، الرقم نزل كتير قوي.
+      ar: كما يظهر في هذا الرسم، هبط الرقم كثيرًا جدًّا.
+      en: As this chart shows, the number went down a whole lot.
+    - speaker: Pak Yance
+      text: Terlalu santai. Pakai "menurun drastis". Dan sebutkan persentasenya.
+      ar_eg: عامّي زيادة. قول «menurun drastis». واذكر النسبة.
+      ar: هذا عامّي أكثر من اللازم. قل «menurun drastis» واذكر النسبة.
+      en: Too casual. Say "menurun drastis". And give the percentage.
+    - speaker: Mohamed
+      text: Pada 2020, persentase karang hidup menurun drastis dari 40 menjadi 15 persen.
+      ar_eg: سنة 2020، نسبة المرجان الحي نزلت بشكل حاد من 40 لـ 15 في المية.
+      ar: في 2020 انخفضت نسبة المرجان الحيّ بشدّة من 40 إلى 15 في المئة.
+      en: In 2020, live coral cover fell sharply from 40 to 15 per cent.
+    - speaker: Pak Yance
+      text: Nah, itu baru presentasi ilmiah.
+      ar_eg: أيوه كده، ده العرض العلمي بجد.
+      ar: هكذا يكون العرض العلمي.
+      en: Now that's a scientific presentation.
+new_words:
+  - word: meningkat tajam
+    pos: phrase
+    ar_eg: طلع بسرعة / زاد بشكل حاد
+    ar: ارتفع بحدّة
+    en: to rise steeply
+  - word: menurun drastis
+    pos: phrase
+    ar_eg: نزل بشكل حاد
+    ar: انخفض بشدّة
+    en: to fall sharply
+  - word: relatif stabil
+    pos: phrase
+    ar_eg: ثابت تقريبًا
+    ar: مستقرّ نسبيًّا
+    en: fairly stable
+  - word: persentase
+    pos: noun
+    ar_eg: نسبة مئوية
+    ar: نسبة مئوية
+    en: percentage
+review:
+  status: draft
+  verified: false

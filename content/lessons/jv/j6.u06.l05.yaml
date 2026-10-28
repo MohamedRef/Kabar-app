@@ -1,177 +1,247 @@
 schema: kabar.lesson/v1
 id: j6.u06.l05
 language: jv
-title: Jadwal pesantren
+title: Pamit saka Kutha Gedhe
 can_do:
-  ar_eg: تقرا جدول البيسانترين مكتوب بالبيجون.
-  ar: أن تقرأ جدول البيسانترين مكتوبًا بالبيجون.
-  en: Read a pesantren timetable written in Pegon.
+  ar_eg: تودّع صاحبك الصايغ بلغة كراما راقية، وتشكره على الهدية، وتتكلم عن الحفاظ على التراث.
+  ar: أن تودّع صديقك الصائغ بلغة كراما رفيعة، وتشكره على الهدية، وتتحدث عن صون التراث.
+  en: Take leave of a silversmith friend in refined krama, thank him for a keepsake, and talk about keeping heritage alive.
 slides:
-  - title: Papan ing pesantren
+  - title: Pamitan
     body:
       ar_eg: |
-        على باب البيسانترين في Plered فيه لوحة بالبيجون. افتكر: a = ا، وi أو é = ي، وu أو o = و.
-        sore = سوري (o بـ و، وé بـ ي) · guru = ڮورو (ڮ = g) · kanggo = كاڠڮو (ڠ = ng).
-        كلمة جديدة: santri = طالب في البيسانترين.
+        pamit = يستأذن ويودّع قبل ما يمشي. kenang-kenangan = تذكار، pisungsung = هدية (كلمة أدبية راقية).
+        nguri-uri = يحافظ على التراث ويحييه، lestari = يفضل موجود ومحفوظ: «Mugi lestari!» = يا رب يدوم!
+        pepeling = نصيحة أو تذكرة من الكبار، sumbangsih = مساهمة.
+        kamulyan = مجد وعزّ، sumunar = بيلمع ويشعّ.
       ar: |
-        على باب البيسانترين في Plered لوح بالبيجون. تذكّر: a = ا، وi أو é = ي، وu أو o = و.
-        sore = سوري (o بـ و، وé بـ ي) · guru = ڮورو (ڮ = g) · kanggo = كاڠڮو (ڠ = ng).
-        كلمة جديدة: santri = طالب في البيسانترين.
+        pamit = يستأذن ويودّع قبل الرحيل. kenang-kenangan = تذكار، pisungsung = هدية (لفظ أدبي).
+        nguri-uri = يصون التراث ويحييه، lestari = باقٍ محفوظ: «Mugi lestari!» = عساه يدوم!
+        pepeling = موعظة أو تذكرة من الكبار، sumbangsih = مساهمة.
+        kamulyan = مجد وعزّ، sumunar = متلألئ مشعّ.
       en: |
-        On the pesantren door in Plered there's a board in Pegon. Remember: a = ا, i or é = ي, u or o = و.
-        sore = سوري (o with و, é with ي) · guru = ڮورو (ڮ = g) · kanggo = كاڠڮو (ڠ = ng).
-        New word: santri = a pesantren student.
-    grammar: jv.pegon.basics
+        pamit = to take one's leave politely. kenang-kenangan = keepsake, pisungsung = gift (literary).
+        nguri-uri = to keep a tradition alive, lestari = preserved, enduring: "Mugi lestari!" = may it endure!
+        pepeling = a reminder or piece of advice from an elder, sumbangsih = contribution.
+        kamulyan = glory, honour; sumunar = shining, radiant.
     examples:
-      - text: "ڠاجي كتاب: سوري (ngaji kitab: sore)"
-        ar_eg: "دراسة الكتب: العصر"
-        ar: "دراسة الكتب: عصرًا"
-        en: "Kitab study: afternoons"
-      - text: "ڮورو: ڮوس حنيف (guru: Gus Hanif)"
-        ar_eg: "المدرّس: Gus Hanif"
-        ar: "المعلّم: Gus Hanif"
-        en: "Teacher: Gus Hanif"
-      - text: كاڠڮو ساكابيهي سانتري (kanggo sakabehe santri)
-        ar_eg: لكل الطلبة
-        ar: لجميع الطلاب
-        en: for all students
+      - text: Sadurunge mulih, aku pamit marang Pak Slamet.
+        ar_eg: قبل ما أروّح، ودّعت عم سلامت.
+        ar: قبل العودة ودّعت العم سلامت.
+        en: Before going home, I took my leave of Pak Slamet.
+      - text: Ali-ali perak iki kenang-kenangan saka Kutha Gedhe.
+        ar_eg: الخاتم الفضة ده تذكار من كوتاجيدي.
+        ar: هذا الخاتم الفضي تذكار من كوتاغيدي.
+        en: This silver ring is a keepsake from Kotagede.
+      - text: Ayo nguri-uri kabudayan Jawa supados lestari.
+        ar_eg: يلا نحافظ على الثقافة الجاوية عشان تدوم.
+        ar: لنصن الثقافة الجاوية كي تدوم.
+        en: Let's keep Javanese culture alive so it endures.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: اللوحة عن أنهي نشاط؟
-      ar: عن أي نشاط يتحدث اللوح؟
-      en: Which activity is the board about?
-    options: [ngaji kitab, kerja bakti, pengajian ing pasar]
-    answer: 0
-    words: [ڠ]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الدرس إمتى؟
-      ar: متى الدرس؟
-      en: When is the class?
-    options: [esuk, sore, bengi]
-    answer: 1
-    explain:
-      ar_eg: "سوري = sore: س + و (o) + ر + ي (é)."
-      ar: "سوري = sore: س + و (o) + ر + ي (é)."
-      en: "سوري = sore: س + و (o) + ر + ي (é)."
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: مين المدرّس؟
-      ar: من المعلّم؟
-      en: Who teaches?
-    options: [Pak Harjo, Gus Hanif, Bu Dewi]
-    answer: 1
-    explain:
-      ar_eg: ڮوس حنيف = Gus Hanif. الاسم العربي حنيف بيفضل بكتابته العربية.
-      ar: ڮوس حنيف = Gus Hanif، ويبقى الاسم العربي حنيف بكتابته العربية.
-      en: ڮوس حنيف = Gus Hanif. The Arabic name حنيف keeps its Arabic spelling.
-    words: [ڮ]
-  - id: e04
-    type: listen
-    text: Kanggo sakabehe santri.
-    question:
-      ar_eg: الدرس لمين؟
-      ar: لمن الدرس؟
-      en: Who is the class for?
-    options: [كاڠڮو ساكابيهي سانتري, كاڠڮو ڮورو, كاڠڮو بوچاه]
-    answer: 0
-    meaning:
-      ar_eg: لكل الطلبة.
-      ar: لجميع الطلاب.
-      en: For all students.
-    words: [santri]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: سوري
-        ar_eg: sore — العصر
-        ar: sore — العصر
-        en: sore — afternoon
-      - text: ڮورو
-        ar_eg: guru — مدرّس
-        ar: guru — معلّم
-        en: guru — teacher
-      - text: سانتري
-        ar_eg: santri — طالب بيسانترين
-        ar: santri — طالب البيسانترين
-        en: santri — pesantren student
-      - text: كاڠڮو
-        ar_eg: kanggo — لـ / عشان
-        ar: kanggo — لِـ / من أجل
-        en: kanggo — for
-    words: [santri, ڮ, ڠ]
+      - text: pisungsung
+        ar_eg: هدية
+        ar: هدية
+        en: gift
+      - text: kenang-kenangan
+        ar_eg: تذكار
+        ar: تذكار
+        en: keepsake
+      - text: nguri-uri
+        ar_eg: يحافظ على التراث
+        ar: يصون التراث
+        en: keep a tradition alive
+      - text: lestari
+        ar_eg: يدوم
+        ar: باقٍ محفوظ
+        en: enduring
+    words: [pisungsung, kenang-kenangan, nguri-uri, lestari]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: pepeling
+        ar_eg: نصيحة من الكبار
+        ar: موعظة
+        en: reminder, advice
+      - text: sumbangsih
+        ar_eg: مساهمة
+        ar: مساهمة
+        en: contribution
+      - text: kamulyan
+        ar_eg: مجد
+        ar: مجد
+        en: glory
+      - text: sumunar
+        ar_eg: بيلمع
+        ar: متلألئ
+        en: shining
+    words: [pepeling, sumbangsih, kamulyan, sumunar]
+  - id: e03
+    type: listen
+    text: Pak Slamet menehi ali-ali perak kanggo kenang-kenangan.
+    question:
+      ar_eg: عم سلامت عمل إيه؟
+      ar: ماذا فعل العم سلامت؟
+      en: What did Pak Slamet do?
+    options: [عم سلامت إدّى خاتم تذكار, عم سلامت باع إسورة, عم سلامت اشترى عقد]
+    answer: 0
+    meaning:
+      ar_eg: عم سلامت إدّى خاتم فضة كتذكار.
+      ar: أعطى العم سلامت خاتمًا فضيًا تذكارًا.
+      en: Pak Slamet gave a silver ring as a keepsake.
+    words: [kenang-kenangan]
+  - id: e04
+    type: fill_blank
+    sentence: Ali-ali iki ___ saka Pak Slamet.
+    meaning:
+      ar_eg: الخاتم ده ___ من عم سلامت.
+      ar: هذا الخاتم ___ من العم سلامت.
+      en: This ring is a ___ from Pak Slamet.
+    options: [pisungsung, sumunar, lestari]
+    answers: [pisungsung]
+    words: [pisungsung, sumunar, lestari]
+    explain:
+      ar_eg: pisungsung = هدية. sumunar = بيلمع وlestari = باقي / محفوظ.
+      ar: pisungsung هدية. أما sumunar فيتلألأ وlestari باقٍ.
+      en: pisungsung is a gift. sumunar is "shines" and lestari is "preserved".
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «يحافظ على التقاليد ويحييها»؟
+      ar: أي كلمة تعني «يصون التقاليد ويحييها»؟
+      en: Which word means 'to keep a tradition alive'?
+    options: [kamulyan, nguri-uri, pepeling]
+    answer: 1
+    explain:
+      ar_eg: nguri-uri = يحافظ على التراث.
+      ar: nguri-uri = يصون التراث.
+      en: nguri-uri = keep a tradition alive.
+    words: [kamulyan, nguri-uri, pepeling]
   - id: e06
     type: fill_blank
-    sentence: ڮورو = ___
+    sentence: Ali-ali perak iki ___ kaya lintang.
     meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: مدرّس)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: معلّم)"
-      en: Type the reading in Latin letters. (It means "teacher".)
-    answers: [guru]
-    words: [ڮ]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: كاڠڮو ساكابيهي سانتري"
-      ar: "اكتب بالحروف اللاتينية: كاڠڮو ساكابيهي سانتري"
-      en: "Write in Latin letters: كاڠڮو ساكابيهي سانتري"
-    answers: [kanggo sakabehe santri]
+      ar_eg: الخاتم الفضة ده ___ زي النجمة.
+      ar: هذا الخاتم الفضي ___ كالنجم.
+      en: This silver ring ___ like a star.
+    options: [sumunar, sumbangsih, kenang-kenangan]
+    answers: [sumunar]
+    words: [sumunar, sumbangsih, kenang-kenangan]
     explain:
-      ar_eg: كاڠڮو = kanggo (ڠ ثم ڮ)، ساكابيهي = sakabehe (é بـ ي)، سانتري = santri.
-      ar: كاڠڮو = kanggo (ڠ ثم ڮ)، ساكابيهي = sakabehe (é بـ ي)، سانتري = santri.
-      en: كاڠڮو = kanggo (ڠ then ڮ), ساكابيهي = sakabehe (é as ي), سانتري = santri.
-    words: [santri, ڠ, ڮ]
+      ar_eg: sumunar = بيلمع. sumbangsih = مساهمة وkenang-kenangan = تذكار، ومش أفعال.
+      ar: sumunar تعني يتلألأ. أما sumbangsih فإسهام وkenang-kenangan تذكار، وليستا فعلين.
+      en: sumunar means shines. sumbangsih is a contribution and kenang-kenangan a keepsake; neither is a verb.
+  - id: e07
+    type: multiple_choice
+    question: 'Simbah ngendika: ''Eling marang Gusti.'' Iku ___.'
+    options: [pisungsung, pepeling, sumbangsih]
+    answer: 1
+    explain:
+      ar_eg: pepeling = تذكرة ونصيحة من الكبار.
+      ar: pepeling = موعظة من الكبار.
+      en: pepeling = a reminder from an elder.
+    words: [pisungsung, pepeling, sumbangsih]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: "اكتب بالبيجون: ngaji kitab sore"
-      ar: "اكتب بالبيجون: ngaji kitab sore"
-      en: "Build in Pegon: ngaji kitab sore"
-    answer: ڠاجي كتاب سوري
-    distractors: [ساڤا]
-    words: [ڠ, kitab]
+      ar_eg: مجد ماتارام لسه بيلمع.
+      ar: ما زال مجد ماتارام متلألئًا.
+      en: The glory of Mataram still shines.
+    answer: Kamulyane Mataram isih sumunar.
+    distractors: [pisungsung, lestari]
+    words: [kamulyan, sumunar]
+    explain:
+      ar_eg: kamulyane … isih sumunar = مجده لسه بيلمع. pisungsung = هدية وlestari = محفوظ، ومش في المعنى.
+      ar: kamulyane … isih sumunar = مجده ما زال يتلألأ. أما pisungsung (هدية) وlestari (باقٍ) فليستا في المعنى.
+      en: kamulyane … isih sumunar is "its glory still shines". pisungsung (gift) and lestari (preserved) aren't in the meaning.
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Matur nuwun kanggo sumbangsih panjenengan.
+    answers_meaning:
+      ar_eg: [شكرًا على مساهمتك, متشكر على مساهمة حضرتك]
+      ar: [شكرًا على مساهمتك, شكرًا لمساهمتكم]
+      en: [Thank you for your contribution, Thanks for your contribution]
+    words: [sumbangsih]
+  - id: e10
     type: speaking
-    text: Saben sore santri-santri ngaji kitab.
+    text: Ayo nguri-uri kabudayan Jawa supados lestari.
     meaning:
-      ar_eg: كل يوم العصر الطلبة بيدرسوا الكتب.
-      ar: كل عصر يدرس الطلاب الكتب.
-      en: Every afternoon the students study the kitab.
-    words: [santri]
+      ar_eg: يلا نحافظ على الثقافة الجاوية عشان تدوم.
+      ar: لنصن الثقافة الجاوية كي تدوم.
+      en: Let's keep Javanese culture alive so it endures.
+    words: [nguri-uri, lestari]
 dialogue:
-  title: Ing lawang pesantren
   lines:
-    - speaker: Gus Hanif
-      text: Mas Mohamed, sampun maos papan menika?
-      ar_eg: يا محمد، قريت اللوحة دي؟
-      ar: يا محمد، هل قرأت هذا اللوح؟
-      en: Mohamed, have you read this board?
     - speaker: Mohamed
-      text: Sampun, Gus. Ngaji kitab saben sore, kangge sedaya santri.
-      ar_eg: قريتها يا Gus. درس الكتب كل يوم العصر، لكل الطلبة.
-      ar: نعم يا Gus. دراسة الكتب كل عصر، لجميع الطلاب.
-      en: Yes, Gus. Kitab study every afternoon, for all the students.
-    - speaker: Gus Hanif
-      text: Leres. Panjenengan kersa tumut?
-      ar_eg: مظبوط. تحب تحضر معانا؟
-      ar: صحيح. أتحب أن تشاركنا؟
-      en: Right. Would you like to join?
+      text: Pak Slamet, kula badhe pamit. Benjing enjing kula wangsul.
+      ar_eg: يا عم سلامت، جاي أودّعك. بكرة الصبح راجع.
+      ar: يا عم سلامت، جئت أستأذن. أعود غدًا صباحًا.
+      en: Pak Slamet, I've come to say goodbye. I go home tomorrow morning.
+    - speaker: Pak Slamet
+      text: Mas, menika ali-ali perak kangge kenang-kenangan.
+      ar_eg: يا ابني، ده خاتم فضة تذكار.
+      ar: هذا خاتم فضي تذكارًا لك.
+      en: Here's a silver ring as a keepsake.
     - speaker: Mohamed
-      text: Kersa sanget, Gus!
-      ar_eg: أحب جدًا يا Gus!
-      ar: أحبّ ذلك كثيرًا يا Gus!
-      en: I'd love to, Gus!
+      text: Masya Allah, sumunar sanget! Matur nuwun, Pak.
+      ar_eg: ما شاء الله، بيلمع أوي! متشكر يا عم.
+      ar: ما شاء الله، يتلألأ! شكرًا يا عم.
+      en: Masha'Allah, it really shines! Thank you, sir.
+    - speaker: Pak Slamet
+      text: 'Pepeling kula: nguri-uri kabudayan menika kewajiban kita sedaya.'
+      ar_eg: 'نصيحتي: الحفاظ على الثقافة واجب علينا كلنا.'
+      ar: 'وصيّتي: صون الثقافة واجب علينا جميعًا.'
+      en: 'My advice: keeping culture alive is a duty for all of us.'
+    - speaker: Mohamed
+      text: Kula badhe nyariosaken Kutha Gedhe ing Mesir.
+      ar_eg: هحكي عن كوتاجيدي في مصر.
+      ar: سأحكي عن كوتاغيدي في مصر.
+      en: I'll tell people about Kotagede in Egypt.
+    - speaker: Pak Slamet
+      text: Menika sumbangsih panjenengan. Mugi lestari!
+      ar_eg: ودي مساهمتك. ربنا يديمها!
+      ar: هذه مساهمتك. عساها تدوم!
+      en: That's your contribution. May it endure!
 new_words:
-  - word: santri
+  - word: pisungsung
     pos: noun
-    ar_eg: طالب في البيسانترين
-    ar: طالب البيسانترين
-    en: pesantren student = santri
+    ar_eg: هدية (أدبية)
+    ar: هدية (لفظ أدبي)
+    en: gift, offering (literary)
+  - word: nguri-uri
+    pos: verb
+    ar_eg: يحافظ على التراث ويحييه
+    ar: يصون التراث ويحييه
+    en: keep (a tradition) alive
+  - word: lestari
+    pos: adjective
+    ar_eg: باقي ومحفوظ
+    ar: باقٍ محفوظ
+    en: preserved, enduring
+    same_as_id: true
+  - word: pepeling
+    pos: noun
+    ar_eg: نصيحة أو تذكرة من الكبار
+    ar: موعظة، تذكرة
+    en: reminder, admonition
+  - word: sumbangsih
+    pos: noun
+    ar_eg: مساهمة
+    ar: مساهمة
+    en: contribution
+  - word: kamulyan
+    pos: noun
+    ar_eg: مجد، عزّ
+    ar: مجد، عزّ
+    en: glory, honour
+  - word: sumunar
+    pos: adjective
+    ar_eg: بيلمع، بيشعّ
+    ar: متلألئ، مشعّ
+    en: shining, radiant
 review:
   status: draft
   verified: false

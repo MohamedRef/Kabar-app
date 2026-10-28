@@ -1,0 +1,253 @@
+schema: kabar.lesson/v1
+id: j2.u02.l07
+language: jv
+title: Masak neng pawon
+can_do:
+  ar_eg: 'تتكلم في المطبخ: تسلق وتقلي، تشم الريحة، تغسل، وتعرف السبانخ وجوز الهند والجيتوك.'
+  ar: 'أن تتحدث في المطبخ: تسلق وتقلي وتشمّ الرائحة وتغسل، وتعرف السبانخ وجوز الهند والجيتوك.'
+  en: 'Talk in the kitchen: boil and fry, smell the cooking, wash up, and name spinach, coconut and gethuk.'
+slides:
+  - title: Neng pawon
+    body:
+      ar_eg: |
+        - **nggodhog** = يسلق (merebus): nggodhog endhog · **nggoreng** = يقلي (menggoreng)، وgoreng = مقلي.
+        - **ambu** = ريحة (bau): ambune enak = ريحته حلوة.
+        - **bayem** = سبانخ (bayam) · **krambil** = جوز هند (kelapa) · **gethuk** = حلويات كسافا بجوز الهند.
+        - **ngumbah** = يغسل هدوم أو مواعين (mencuci) · **penak** = مريح / حلو (enak, nyaman): Kasure penak.
+        ملحوظة: **jangan** في الجاوي = شوربة خضار (jangan bayem)، مش «ماتعملش» زي الإندونيسي!
+      ar: |
+        - **nggodhog** = يسلق (merebus): nggodhog endhog · **nggoreng** = يقلي (menggoreng)، وgoreng = مقليّ.
+        - **ambu** = رائحة (bau): ambune enak = رائحته طيبة.
+        - **bayem** = سبانخ (bayam) · **krambil** = جوز الهند (kelapa) · **gethuk** = حلوى الكسافا بجوز الهند.
+        - **ngumbah** = يغسل الثياب أو الأواني (mencuci) · **penak** = مريح / طيب (enak, nyaman): Kasure penak.
+        تنبيه: **jangan** بالجاوية = حساء خضار (jangan bayem)، لا «لا تفعل» كما في الإندونيسية!
+      en: |
+        - **nggodhog** = boil (merebus): nggodhog endhog · **nggoreng** = fry (menggoreng); goreng = fried.
+        - **ambu** = smell (bau): ambune enak = it smells good.
+        - **bayem** = spinach (bayam) · **krambil** = coconut (kelapa) · **gethuk** = cassava sweet with coconut.
+        - **ngumbah** = wash clothes or dishes (mencuci) · **penak** = comfortable, nice (enak, nyaman): Kasure penak.
+        Note: Javanese **jangan** = vegetable soup (jangan bayem), not "don't" as in Indonesian!
+    examples:
+      - text: Ibu nggodhog bayem neng pawon.
+        ar_eg: ماما بتسلق سبانخ في المطبخ.
+        ar: الأم تسلق السبانخ في المطبخ.
+        en: Mum is boiling spinach in the kitchen.
+      - text: Ambune enak, Bu!
+        ar_eg: الريحة حلوة يا ماما!
+        ar: الرائحة طيبة يا أمي!
+        en: That smells good, Mum!
+      - text: Gethuk iki ana krambile.
+        ar_eg: الجيتوك ده فيه جوز هند.
+        ar: في هذا الجيتوك جوز هند.
+        en: This gethuk has coconut on it.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: nggodhog
+        ar_eg: يسلق
+        ar: يسلق
+        en: boil
+      - text: nggoreng
+        ar_eg: يقلي
+        ar: يقلي
+        en: fry
+      - text: ambu
+        ar_eg: ريحة
+        ar: رائحة
+        en: smell
+      - text: bayem
+        ar_eg: سبانخ
+        ar: سبانخ
+        en: spinach
+    words: [nggodhog, nggoreng, ambu, bayem]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: gethuk
+        ar_eg: جيتوك (حلو كسافا)
+        ar: جيتوك (حلوى الكسافا)
+        en: gethuk (cassava sweet)
+      - text: penak
+        ar_eg: مريح / حلو
+        ar: مريح / طيب
+        en: comfortable, nice
+      - text: ngumbah
+        ar_eg: يغسل
+        ar: يغسل
+        en: wash
+      - text: krambil
+        ar_eg: جوز هند
+        ar: جوز الهند
+        en: coconut
+    words: [gethuk, penak, ngumbah, krambil]
+  - id: e03
+    type: listen
+    text: Ambune enak, Bu masak bayem?
+    question:
+      ar_eg: بيقول إيه عن الريحة؟
+      ar: ماذا يقول عن الرائحة؟
+      en: What does he say about the smell?
+    options: [الريحة حلوة، بتطبخي سبانخ؟, الريحة وحشة, الأكل بايظ]
+    answer: 0
+    meaning:
+      ar_eg: الريحة حلوة، بتطبخي سبانخ يا ماما؟
+      ar: الرائحة طيبة، هل تطبخين السبانخ؟
+      en: Smells good, are you cooking spinach?
+    words: [ambu, bayem]
+  - id: e04
+    type: fill_blank
+    sentence: Aku ___ endhog sepuluh menit.
+    meaning:
+      ar_eg: بـ ___ البيض عشر دقايق.
+      ar: ___ البيض عشر دقائق.
+      en: I ___ the eggs for ten minutes.
+    options: [nggodhog, ngumbah, krambil]
+    answers: [nggodhog]
+    words: [nggodhog, ngumbah, krambil]
+    explain:
+      ar_eg: nggodhog = بيسلق، والبيض بيتسلق عشر دقايق. ngumbah = يغسل، وkrambil = جوز هند (مش فعل).
+      ar: nggodhog = يسلق، والبيض يُسلق عشر دقائق؛ أما ngumbah فيغسل، وkrambil جوز هند لا فعل.
+      en: nggodhog = boil. ngumbah = wash, krambil is a coconut, not a verb.
+  - id: e05
+    type: fill_blank
+    sentence: Mbak Sari ___ klambi neng mburi.
+    meaning:
+      ar_eg: ساري بـ ___ الهدوم ورا.
+      ar: ساري ___ الثياب في الخلف.
+      en: Sari is ___ clothes out the back.
+    options: [ngumbah, nggoreng, penak]
+    answers: [ngumbah]
+    words: [ngumbah, nggoreng, penak]
+    explain:
+      ar_eg: ngumbah klambi = بتغسل هدوم. nggoreng = يقلي، وpenak = مريح، ومينفعوش مع klambi.
+      ar: ngumbah klambi = تغسل الملابس؛ أما nggoreng فيقلي، وpenak مريح، ولا يناسبان klambi.
+      en: ngumbah klambi = washing clothes. nggoreng (fry) and penak (comfy) don't fit klambi.
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «بيقلي فراخ» بالجاوي؟
+      ar: كيف تقول «يقلي الدجاج» بالجاوية؟
+      en: '"Frying chicken" in Javanese?'
+    options: [nggoreng pitik, nggodhog pitik, ngumbah pitik]
+    answer: 0
+    explain:
+      ar_eg: nggoreng = يقلي. nggodhog = يسلق، وngumbah = يغسل.
+      ar: nggoreng = يقلي، أما nggodhog فيسلق وngumbah يغسل.
+      en: nggoreng = fry. nggodhog = boil, ngumbah = wash.
+    words: [nggoreng, nggodhog]
+  - id: e07
+    type: multiple_choice
+    question: Gethuk iki legi, ana krambile.
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [الجيتوك ده مسكّر وفيه جوز هند, الجيتوك ده مالح, الجيتوك ده بايت]
+    answer: 0
+    explain:
+      ar_eg: legi = مسكّر، وkrambil = جوز هند.
+      ar: legi = حلو، وkrambil = جوز الهند.
+      en: legi = sweet, krambil = coconut.
+    words: [gethuk, krambil]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: ماما بتسلق سبانخ في المطبخ.
+      ar: الأم تسلق السبانخ في المطبخ.
+      en: Mum is boiling spinach in the kitchen.
+    answer: Ibu nggodhog bayem neng pawon.
+    distractors: [nggoreng, ambu]
+    words: [nggodhog, bayem]
+    explain:
+      ar_eg: nggodhog bayem = بتسلق سبانخ، وneng pawon = في المطبخ. nggoreng = يقلي، وambu = ريحة، ومش في المعنى.
+      ar: nggodhog bayem = تسلق السبانخ، وneng pawon = في المطبخ؛ أما nggoreng فيقلي، وambu رائحة، وليسا في المعنى.
+      en: nggodhog bayem = boiling spinach, neng pawon = in the kitchen. nggoreng and ambu aren't in the meaning.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Kasure penak, aku ngantuk.
+    answers_meaning:
+      ar_eg: [المرتبة مريحة، أنا نعسان, السرير مريح، جالي نوم]
+      ar: [الفراش مريح، وأنا نعسان]
+      en: ['The mattress is comfy, I''m sleepy', 'The bed''s comfortable, I''m getting sleepy']
+    words: [penak]
+  - id: e10
+    type: speaking
+    text: Ambune gethuk penak tenan!
+    meaning:
+      ar_eg: ريحة الجيتوك حلوة بجد!
+      ar: رائحة الجيتوك طيبة حقًا!
+      en: The gethuk smells really nice!
+    words: [ambu, gethuk, penak]
+dialogue:
+  lines:
+    - speaker: Mohamed
+      text: Bu, ambune enak. Nggoreng apa?
+      ar_eg: يا حاجة، الريحة حلوة. بتقلي إيه؟
+      ar: يا سيدتي، الرائحة طيبة. ماذا تقلين؟
+      en: Bu, that smells good. What are you frying?
+    - speaker: Bu Rahayu
+      text: Nggodhog bayem karo nggoreng endhog. Lengane wis panas.
+      ar_eg: بسلق سبانخ وبقلي بيض. الزيت سخن خلاص.
+      ar: أسلق السبانخ وأقلي البيض. الزيت ساخن.
+      en: Boiling spinach and frying eggs. The oil's hot already.
+    - speaker: Mohamed
+      text: Aku isa nggoreng endhoge, Bu?
+      ar_eg: ممكن أقلي البيض أنا يا حاجة؟
+      ar: هل أقلي البيض يا سيدتي؟
+      en: Can I fry the eggs, Bu?
+    - speaker: Bu Rahayu
+      text: Ora usah. Ngumbah sendhok wae, hehe.
+      ar_eg: مالوش لزوم. اغسل المعالق بس، هههه.
+      ar: لا داعي. اغسل الملاعق فقط، هه.
+      en: No need. Just wash the spoons, hehe.
+    - speaker: Mohamed
+      text: Oke, Bu! Mengko aku nyicipi gethuke, nggih.
+      ar_eg: حاضر يا حاجة! وبعدين أدوق الجيتوك.
+      ar: حسنًا يا سيدتي! وبعدها أتذوّق الجيتوك.
+      en: OK, Bu! And later I'll taste the gethuk.
+new_words:
+  - word: nggodhog
+    pos: verb
+    ar_eg: يسلق (merebus)
+    ar: يسلق (merebus)
+    en: to boil (merebus)
+  - word: nggoreng
+    pos: verb
+    ar_eg: يقلي (menggoreng)
+    ar: يقلي (menggoreng)
+    en: to fry (menggoreng)
+  - word: ambu
+    pos: noun
+    ar_eg: ريحة (bau)؛ ambune enak = ريحته حلوة
+    ar: رائحة (bau)؛ ambune enak = رائحته طيبة
+    en: smell (bau); ambune enak = smells good
+  - word: bayem
+    pos: noun
+    ar_eg: سبانخ (bayam)
+    ar: سبانخ (bayam)
+    en: spinach (bayam)
+  - word: gethuk
+    pos: noun
+    ar_eg: 'جيتوك: حلويات كسافا بجوز الهند'
+    ar: 'جيتوك: حلوى الكسافا بجوز الهند'
+    en: 'gethuk: cassava sweet with coconut'
+  - word: penak
+    pos: adjective
+    ar_eg: مريح / حلو (enak, nyaman)
+    ar: مريح / طيب (enak, nyaman)
+    en: comfortable, nice (enak, nyaman)
+  - word: ngumbah
+    pos: verb
+    ar_eg: يغسل هدوم أو مواعين (mencuci)
+    ar: يغسل الثياب أو الأواني (mencuci)
+    en: to wash clothes or dishes (mencuci)
+  - word: krambil
+    pos: noun
+    ar_eg: جوز هند (kelapa)
+    ar: جوز الهند (kelapa)
+    en: coconut (kelapa)
+review:
+  status: draft
+  verified: false

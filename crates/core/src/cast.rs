@@ -62,6 +62,12 @@ impl Cast {
             .collect()
     }
 
+    /// Every word of every name and alias as written ("Mbak Gadis" gives
+    /// "Mbak" and "Gadis"), honorifics included.
+    pub fn name_words(&self) -> impl Iterator<Item = &str> {
+        self.people.iter().flat_map(|(_, _, written)| written.iter()).flat_map(|n| n.split_whitespace())
+    }
+
     /// The registry name of a cast id ("bu-murni" → "Bu Murni").
     pub fn name_of(&self, id: &str) -> Option<&str> {
         self.people
@@ -93,6 +99,8 @@ mod tests {
         assert!(cast.mentioned("pagi", "Omari dan Murni.").is_empty());
         assert!(cast.mentioned("sinetron", text).is_empty());
         assert_eq!(cast.name_of("bu-murni"), Some("Bu Murni"));
+        let words: Vec<&str> = cast.name_words().collect();
+        assert_eq!(words, ["Kak", "Tiara", "Mbak", "Gadis", "Gadis", "Omar", "Bu", "Murni"]);
     }
 
     #[test]

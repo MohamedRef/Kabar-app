@@ -1,42 +1,39 @@
 schema: kabar.lesson/v1
 id: bipa1.u03.l06
 language: id
-title: Nenek, kakek, sepupu
+title: Foto di rumah Nenek
 can_do:
-  ar_eg: 'تتكلم عن عيلتك الكبيرة: الجد والجدة والعم والخال وولادهم.'
-  ar: 'أن تتحدث عن عائلتك الكبيرة: الجدّين والأعمام والأخوال وأبنائهم.'
-  en: 'Talk about your extended family: grandparents, uncles, aunts and cousins.'
+  ar_eg: 'توصف صورة عيلة: الجد والجدة والأحفاد، ومين الراجل ومين الست في الصورة.'
+  ar: 'أن تصف صورة عائلية: الجدّين والأحفاد، ومَن الرجل ومَن المرأة في الصورة.'
+  en: 'Describe a family photo: grandparents, grandchildren, and who''s who in it.'
 slides:
-  - title: Keluarga besar
+  - title: Foto keluarga
     body:
       ar_eg: |
-        nenek = جدة، kakek = جد. وولاد ولادهم: cucu (حفيد أو حفيدة).
-        paman = عم أو خال، bibi = عمة أو خالة. الإندونيسي مش بيفرّق بين ناحية الأب وناحية الأم: الاتنين paman والاتنين bibi.
-        ولادهم كلهم sepupu (ابن أو بنت عم أو خال)، من غير فرق برضه.
-        saudara = أخ أو أخت (ومرات قريب بشكل عام). وbayi = بيبي لسه صغير.
+        nenek = جدة، kakek = جد، وولاد ولادهم cucu (حفيد أو حفيدة).
+        bayi = بيبي، gadis = بنت أو صبية، siswa = تلميذ في المدرسة (mahasiswa = طالب جامعة).
+        pria = راجل، wanita = ست: كلمتين رسميين، هتلاقيهم تحت الصور وعلى باب التواليت وفي الاستمارات. في الكلام العادي laki-laki وperempuan.
       ar: |
-        nenek = جدّة، وkakek = جدّ، وأولاد أولادهما: cucu (حفيد أو حفيدة).
-        paman = عمّ أو خال، وbibi = عمّة أو خالة. لا تفرّق الإندونيسية بين جهة الأب وجهة الأم، فكلاهما paman وكلتاهما bibi.
-        وأبناؤهم جميعًا sepupu (ابن العم أو الخال وأمثاله) دون تفريق كذلك.
-        saudara = أخ أو أخت (وقد تعني القريب عمومًا)، وbayi = الرضيع.
+        nenek = جدّة، kakek = جدّ، وأولاد أولادهما cucu (حفيد أو حفيدة).
+        bayi = رضيع، gadis = فتاة، siswa = تلميذ المدرسة (mahasiswa = طالب الجامعة).
+        pria = رجل، wanita = امرأة: كلمتان رسميتان تجدهما تحت الصور وعلى أبواب دورات المياه وفي الاستمارات، أما في الكلام العادي فـ laki-laki وperempuan.
       en: |
         nenek = grandmother, kakek = grandfather, and their grandchildren are cucu.
-        paman = uncle and bibi = aunt, on either side: Indonesian doesn't split the father's side from the mother's.
-        Their children are all sepupu (cousins), again with no split.
-        saudara = brother or sister (sometimes any relative), and bayi = a baby.
+        bayi = baby, gadis = girl, siswa = school pupil (mahasiswa = university student).
+        pria = man and wanita = woman: formal words you'll see under photos, on toilet doors and on forms. Everyday speech uses laki-laki and perempuan.
     examples:
       - text: Ini nenek dan kakek saya.
         ar_eg: دي جدتي ودا جدي.
         ar: هذه جدّتي وهذا جدّي.
         en: These are my grandmother and grandfather.
-      - text: Paman saya punya tiga anak. Mereka sepupu saya.
-        ar_eg: عمي عنده ٣ عيال. دول ولاد عمي.
-        ar: لعمّي ثلاثة أبناء، هم أبناء عمّي.
-        en: My uncle has three children. They're my cousins.
-      - text: Bayi itu cucu Bu Yanti.
-        ar_eg: البيبي ده حفيد مدام يانتي.
-        ar: ذلك الرضيع حفيد السيدة يانتي.
-        en: That baby is Mrs Yanti's grandchild.
+      - text: Pria di foto ini kakek saya.
+        ar_eg: الراجل اللي في الصورة دي جدي.
+        ar: الرجل في هذه الصورة جدّي.
+        en: The man in this photo is my grandfather.
+      - text: Gadis ini cucu Nenek. Dia siswa.
+        ar_eg: البنت دي حفيدة تيتا. هي تلميذة.
+        ar: هذه الفتاة حفيدة الجدّة، وهي تلميذة.
+        en: This girl is Grandma's granddaughter. She's a pupil.
 exercises:
   - id: e01
     type: match_pairs
@@ -49,22 +46,6 @@ exercises:
         ar_eg: جد
         ar: جدّ
         en: grandfather
-      - text: paman
-        ar_eg: عم / خال
-        ar: عمّ / خال
-        en: uncle
-      - text: bibi
-        ar_eg: عمة / خالة
-        ar: عمّة / خالة
-        en: aunt
-    words: [nenek, kakek, paman, bibi]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: sepupu
-        ar_eg: ابن العم / الخال
-        ar: ابن العم / الخال
-        en: cousin
       - text: cucu
         ar_eg: حفيد
         ar: حفيد
@@ -73,126 +54,157 @@ exercises:
         ar_eg: بيبي
         ar: رضيع
         en: baby
-      - text: saudara
-        ar_eg: أخ / أخت
-        ar: أخ / أخت
-        en: sibling
-    words: [sepupu, cucu, bayi, saudara]
+    words: [nenek, kakek, cucu, bayi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: gadis
+        ar_eg: بنت، صبية
+        ar: فتاة
+        en: girl
+      - text: siswa
+        ar_eg: تلميذ
+        ar: تلميذ
+        en: pupil
+      - text: pria
+        ar_eg: راجل
+        ar: رجل
+        en: man
+      - text: wanita
+        ar_eg: ست
+        ar: امرأة
+        en: woman
+    words: [gadis, siswa, pria, wanita]
   - id: e03
     type: multiple_choice
     question_meaning:
       ar_eg: أبو مامتك تقوله إيه بالإندونيسي؟
       ar: بماذا تسمّي أبا أمك بالإندونيسية؟
       en: What do you call your mother's father in Indonesian?
-    options: [kakek, paman, cucu]
+    options: [kakek, cucu, gadis]
     answer: 0
     explain:
-      ar_eg: kakek = الجد من أي ناحية. paman = عم أو خال، وcucu = حفيد.
-      ar: kakek هو الجدّ من أي جهة، وpaman عمّ أو خال، وcucu حفيد.
-      en: kakek is a grandfather on either side; paman is an uncle and cucu a grandchild.
-    words: [kakek, paman, cucu]
+      ar_eg: kakek = الجد من أي ناحية. cucu = حفيد، وgadis = بنت.
+      ar: kakek هو الجدّ من أي جهة، وcucu حفيد، وgadis فتاة.
+      en: kakek is a grandfather on either side; cucu is a grandchild and gadis a girl.
+    words: [kakek, cucu, gadis]
   - id: e04
     type: listen
-    text: Bibi saya punya bayi kecil.
+    text: Nenek saya punya tiga cucu.
     question:
-      ar_eg: مين اللي عندها بيبي؟
-      ar: مَن عندها رضيع؟
-      en: Who has a baby?
-    options: [خالتي (أو عمتي), جدتي, بنت عمي]
+      ar_eg: الجدة عندها إيه؟
+      ar: ماذا لدى الجدّة؟
+      en: What does Grandma have?
+    options: [٣ أحفاد, ٣ عيال صغيرين, ٣ تلاميذ]
     answer: 0
-    meaning:
-      ar_eg: خالتي (أو عمتي) عندها بيبي صغير.
-      ar: لخالتي (أو عمّتي) رضيع صغير.
-      en: My aunt has a little baby.
-    words: [bibi, bayi]
-  - id: e05
-    type: fill_blank
-    sentence: Anak paman saya adalah ___ saya.
-    meaning:
-      ar_eg: ابن عمي يبقى ___ بتاعي.
-      ar: ابن عمّي هو ___ ـي.
-      en: My uncle's child is my ___.
-    options: [sepupu, cucu, kakek]
-    answers: [sepupu]
-    words: [paman, sepupu]
-  - id: e06
-    type: fill_blank
-    sentence: Nenek saya punya tiga ___.
     meaning:
       ar_eg: جدتي عندها ٣ أحفاد.
       ar: لجدّتي ثلاثة أحفاد.
       en: My grandmother has three grandchildren.
-    options: [cucu, kakek, bibi]
-    answers: [cucu]
     words: [nenek, cucu]
+  - id: e05
+    type: fill_blank
+    sentence: Adik saya ___. Kakak saya mahasiswa.
+    meaning:
+      ar_eg: أخويا الصغير ___، وأخويا الكبير طالب جامعة.
+      ar: أخي الأصغر ___، وأخي الأكبر طالب جامعي.
+      en: My younger brother is a ___. My older brother is a university student.
+    options: [siswa, bayi, kakek]
+    answers: [siswa]
+    words: [siswa, bayi, kakek]
+    explain:
+      ar_eg: الأخ الكبير في الجامعة، والصغير siswa = تلميذ في المدرسة. bayi = رضيع، وkakek = جد.
+      ar: الأصغر siswa أي تلميذ مدرسة. bayi رضيع وkakek جد.
+      en: A younger brother at school is a siswa.
+  - id: e06
+    type: fill_blank
+    sentence: ___ itu kecil dan lucu.
+    meaning:
+      ar_eg: الـ ___ ده صغير وعسول.
+      ar: ذلك ___ صغير ولطيف.
+      en: That ___ is small and cute.
+    options: [Bayi, Wanita, Pria]
+    answers: [Bayi]
+    words: [bayi, wanita, pria]
+    explain:
+      ar_eg: صغير ولطيف = Bayi (بيبي). wanita = ست، وpria = راجل.
+      ar: الصغير اللطيف Bayi أي رضيع. wanita امرأة وpria رجل.
+      en: "Small and cute: a bayi (baby)."
   - id: e07
     type: build_sentence
     source:
-      ar_eg: جدي وجدتي ساكنين في جاكرتا.
-      ar: يسكن جدّي وجدّتي في جاكرتا.
-      en: My grandfather and grandmother live in Jakarta.
-    answer: Kakek dan nenek saya tinggal di Jakarta.
-    distractors: [paman, bayi]
-    words: [kakek, nenek]
+      ar_eg: الراجل اللي في الصورة دي جدي.
+      ar: الرجل في هذه الصورة جدّي.
+      en: The man in this photo is my grandfather.
+    answer: Pria di foto ini kakek saya.
+    distractors: [nenek, cucu]
+    words: [pria, kakek]
+    explain:
+      ar_eg: Pria (الراجل) + di foto ini + kakek saya (جدي). nenek وcucu زيادة.
+      ar: Pria di foto ini kakek saya. nenek وcucu زائدتان.
+      en: Pria + di foto ini + kakek saya. nenek and cucu are extra.
   - id: e08
     type: translate
     direction: from_target
-    source_text: Tono dan Tuti saudara.
+    source_text: Wanita itu nenek saya.
     answers_meaning:
-      ar_eg: [تونو وتوتي إخوات, تونو وتوتي أخ وأخت]
-      ar: [تونو وتوتي أخوان, تونو وتوتي أخ وأخت, تونو وتوتي شقيقان]
-      en: [Tono and Tuti are siblings, Tono and Tuti are brother and sister]
-    words: [saudara]
+      ar_eg: [الست دي جدتي, الست ديه تيتا]
+      ar: [تلك المرأة جدّتي]
+      en: [That woman is my grandmother, That lady is my grandma]
+    words: [wanita, nenek]
   - id: e09
     type: speaking
-    text: Dewi bayi bibi saya. Dia sepupu saya.
+    text: Gadis ini cucu Bu Yanti. Dia siswa.
     meaning:
-      ar_eg: ديوي بيبي خالتي. هي بنت خالتي.
-      ar: ديوي رضيعة خالتي، فهي ابنة خالتي.
-      en: Dewi is my aunt's baby. She's my cousin.
-    words: [bayi, bibi, sepupu]
+      ar_eg: البنت دي حفيدة مدام يانتي. هي تلميذة.
+      ar: هذه الفتاة حفيدة السيدة يانتي، وهي تلميذة.
+      en: This girl is Mrs Yanti's granddaughter. She's a pupil.
+    words: [gadis, cucu, siswa]
   - id: e10
     type: multiple_choice
-    question: Ayah Tono adalah ayah Tuti juga. Tono dan Tuti …
-    options: [saudara, sepupu, cucu]
+    question_meaning:
+      ar_eg: 'على باب التواليت مكتوب كلمتين. إنتي ست: تدخلي أنهي باب؟'
+      ar: 'على بابَي دورة المياه كلمتان، وأنتِ امرأة: أيّ باب تدخلين؟'
+      en: 'Two words on the toilet doors. You''re a woman: which door is yours?'
+    options: [Wanita, Pria, Bayi]
     answer: 0
     explain:
-      ar_eg: 'ليهم نفس الأب، يبقوا إخوات: saudara.'
-      ar: 'لهما الأب نفسه، فهما أخوان: saudara.'
-      en: 'Same father, so they''re siblings: saudara.'
-    words: [saudara, sepupu, cucu]
+      ar_eg: Wanita للستات وPria للرجالة.
+      ar: Wanita للنساء وPria للرجال.
+      en: Wanita is for women, Pria for men.
+    words: [wanita, pria, bayi]
 dialogue:
   lines:
     - speaker: Rina
-      text: Ini foto keluarga saya.
-      ar_eg: دي صورة عيلتي.
-      ar: هذه صورة عائلتي.
-      en: This is my family photo.
+      text: Mohamed, ini foto di rumah nenekku.
+      ar_eg: يا محمد، دي صورة في بيت جدتي.
+      ar: يا محمد، هذه صورة في بيت جدّتي.
+      en: Mohamed, this is a photo at my grandmother's house.
     - speaker: Mohamed
-      text: Siapa ini, Rina? Nenek kamu?
-      ar_eg: مين دي يا رينا؟ جدتك؟
-      ar: من هذه يا رينا؟ جدّتك؟
-      en: Who's this, Rina? Your grandmother?
+      text: Pria ini siapa? Kakek kamu?
+      ar_eg: مين الراجل ده؟ جدك؟
+      ar: من هذا الرجل؟ جدّك؟
+      en: Who's this man? Your grandfather?
     - speaker: Rina
-      text: Ya, ini nenek dan kakek saya.
-      ar_eg: أيوه، دي جدتي ودا جدي.
-      ar: نعم، هذه جدّتي وهذا جدّي.
-      en: Yes, these are my grandmother and grandfather.
+      text: Ya. Dan wanita ini nenekku.
+      ar_eg: أيوه. والست دي جدتي.
+      ar: نعم، وهذه المرأة جدّتي.
+      en: Yes. And this woman is my grandmother.
     - speaker: Mohamed
-      text: Dan bayi kecil ini siapa?
+      text: Bayi kecil ini siapa?
       ar_eg: والبيبي الصغير ده مين؟
       ar: ومن هذا الرضيع الصغير؟
-      en: And who's this little baby?
+      en: Who's this little baby?
     - speaker: Rina
-      text: Itu anak paman saya. Dia sepupu saya.
-      ar_eg: ده ابن عمي (sepupu).
-      ar: ذاك ابن عمّي.
-      en: That's my uncle's child. He's my cousin.
+      text: Itu aku! Aku bayi di foto ini.
+      ar_eg: دي أنا! أنا البيبي اللي في الصورة.
+      ar: هذه أنا! أنا الرضيعة في هذه الصورة.
+      en: That's me! I'm the baby in this photo.
     - speaker: Mohamed
-      text: Lucu! Nenek kamu punya banyak cucu, ya?
-      ar_eg: عسول! جدتك عندها أحفاد كتير، صح؟
-      ar: ما ألطفه! لجدّتك أحفاد كثيرون، أليس كذلك؟
-      en: Cute! Your grandmother has lots of grandchildren, right?
+      text: Wah! Nenek kamu punya banyak cucu?
+      ar_eg: يا سلام! جدتك عندها أحفاد كتير؟
+      ar: ما شاء الله! هل لجدتك أحفاد كثيرون؟
+      en: Aww! Does your grandma have lots of grandchildren?
 new_words:
   - word: nenek
     pos: noun
@@ -204,21 +216,6 @@ new_words:
     ar_eg: جد (جدو)
     ar: جدّ
     en: grandfather
-  - word: paman
-    pos: noun
-    ar_eg: عم أو خال
-    ar: عمّ أو خال
-    en: uncle
-  - word: bibi
-    pos: noun
-    ar_eg: عمة أو خالة
-    ar: عمّة أو خالة
-    en: aunt
-  - word: sepupu
-    pos: noun
-    ar_eg: ابن أو بنت العم أو الخال
-    ar: ابن العمّ أو الخال وأمثاله
-    en: cousin
   - word: cucu
     pos: noun
     ar_eg: حفيد أو حفيدة
@@ -229,11 +226,26 @@ new_words:
     ar_eg: بيبي
     ar: رضيع
     en: baby
-  - word: saudara
+  - word: gadis
     pos: noun
-    ar_eg: أخ أو أخت (ومرات قريب)
-    ar: أخ أو أخت (وقد تعني القريب)
-    en: sibling; relative
+    ar_eg: بنت، صبية
+    ar: فتاة
+    en: girl, young woman
+  - word: siswa
+    pos: noun
+    ar_eg: تلميذ
+    ar: تلميذ
+    en: school pupil
+  - word: pria
+    pos: noun
+    ar_eg: راجل (كلمة رسمية)
+    ar: رجل، ذكر (رسمي)
+    en: man, male (formal)
+  - word: wanita
+    pos: noun
+    ar_eg: ست (كلمة رسمية)
+    ar: امرأة، أنثى (رسمي)
+    en: woman (formal)
 review:
   status: draft
   verified: false

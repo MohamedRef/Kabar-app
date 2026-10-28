@@ -1,0 +1,178 @@
+schema: kabar.lesson/v1
+id: j3.u03.l10
+language: jv
+title: Ngoko dadi krama
+can_do:
+  ar_eg: تقرا رسالة ngoko من صاحبك وتنقلها بالكراما لراجل كبير.
+  ar: أن تقرأ رسالة ngoko من صديقك وتنقلها بالكراما إلى رجل كبير.
+  en: Read a friend's ngoko message and pass it on in krama to an older man.
+slides:
+  - title: Saka Dimas, kanggo Pak Harjo
+    body:
+      ar_eg: |
+        Dimas بعت لمحمد رسالة ngoko. Pak Harjo سأل محمد عن Dimas، فمحمد نقل له نفس الكلام بالكراما. قارن:
+        durung ← dereng، arep ← badhe، neng ← dhateng، karo ← kaliyan، pasar ← peken، uga ← ugi.
+        وعن Dimas بيقول piyambakipun (هو، بأدب).
+      ar: |
+        أرسل Dimas إلى محمد رسالة بالـ ngoko، ثم سأل Pak Harjo محمدًا عن Dimas فنقل له الكلام نفسه بالكراما. قارن:
+        durung ← dereng، وarep ← badhe، وneng ← dhateng، وkaro ← kaliyan، وpasar ← peken، وuga ← ugi.
+        ويقول عن Dimas piyambakipun (هو، بأدب).
+      en: |
+        Dimas sent Mohamed an ngoko message. When Pak Harjo asks about Dimas, Mohamed passes the same news on in krama. Compare:
+        durung → dereng, arep → badhe, neng → dhateng, karo → kaliyan, pasar → peken, uga → ugi.
+        And for Dimas he says piyambakipun (he, politely).
+    examples:
+      - text: "Dimas (ngoko): Aku durung mangan. Aku arep neng pasar karo Mohamed."
+        ar_eg: "Dimas: أنا لسه ماكلتش. أنا رايح السوق مع محمد."
+        ar: "Dimas: لم آكل بعد. سأذهب إلى السوق مع محمد."
+        en: "Dimas: I haven't eaten yet. I'm going to the market with Mohamed."
+      - text: "Mohamed (krama): Mas Dimas dereng nedha. Piyambakipun badhe dhateng peken kaliyan kula."
+        ar_eg: "محمد: Dimas لسه ماكلش. هو رايح السوق معايا."
+        ar: "محمد: لم يأكل Dimas بعد. سيذهب إلى السوق معي."
+        en: "Mohamed: Dimas hasn't eaten yet. He's going to the market with me."
+      - text: Kula ugi dereng nedha, Pak.
+        ar_eg: وأنا كمان لسه ماكلتش يا حاج.
+        ar: وأنا أيضًا لم آكل بعد يا سيدي.
+        en: I haven't eaten yet either, sir.
+    grammar: jv.krama.function-words
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pasar
+        ar_eg: بالكراما peken (سوق)
+        ar: بالكراما peken (سوق)
+        en: in krama → peken (market)
+      - text: mangan
+        ar_eg: بالكراما nedha (ياكل)
+        ar: بالكراما nedha (يأكل)
+        en: in krama → nedha (eat)
+      - text: aku
+        ar_eg: بالكراما kula (أنا)
+        ar: بالكراما kula (أنا)
+        en: in krama → kula (I)
+      - text: uga
+        ar_eg: بالكراما ugi (كمان)
+        ar: بالكراما ugi (أيضًا)
+        en: in krama → ugi (also)
+    words: [peken, nedha, kula, ugi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من الرسالتين) Dimas كل؟
+      ar: (من الرسالتين) هل أكل Dimas؟
+      en: (from the messages) Has Dimas eaten?
+    options: [Sampun, Dereng]
+    answer: 1
+    words: [dereng]
+    explain:
+      ar_eg: Dimas كاتب «Aku durung mangan» = لسه ماكلتش، يبقى Dereng. Sampun = خلاص كل.
+      ar: كتب Dimas «Aku durung mangan» أي لم آكل بعد، فالجواب Dereng. أما Sampun فقد أكل.
+      en: Dimas writes "Aku durung mangan", "I haven't eaten", so Dereng. Sampun would mean he has.
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من الرسالتين) Dimas ومحمد رايحين فين؟
+      ar: (من الرسالتين) إلى أين سيذهب Dimas ومحمد؟
+      en: (from the messages) Where are Dimas and Mohamed going?
+    options: [dhateng masjid, dhateng peken, dhateng Kauman]
+    answer: 1
+    words: [dhateng, peken]
+    explain:
+      ar_eg: «arep neng pasar» = رايح السوق، وpeken = سوق بالكراما. مش الجامع ولا كاومان.
+      ar: «arep neng pasar» أي ذاهب إلى السوق، وpeken السوق بالكراما. لا المسجد ولا كاومان.
+      en: "\"arep neng pasar\": going to the market, peken in krama. Not the mosque or Kauman."
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في نسخة محمد بالكراما، أنهي كلمة خدت مكان karo؟
+      ar: في نسخة محمد بالكراما، أيّ كلمة حلّت محل karo؟
+      en: In Mohamed's krama version, which word replaced karo?
+    options: [kaliyan, kula, ugi]
+    answer: 0
+    words: [kaliyan]
+    explain:
+      ar_eg: karo = مع، والكراما بتاعتها kaliyan. kula = أنا، وugi = كمان.
+      ar: karo تعني مع، ونظيرها في الكراما kaliyan. أما kula فأنا، وugi أيضًا.
+      en: karo is "with", and its krama is kaliyan. kula is "I", and ugi is "also".
+  - id: e05
+    type: listen
+    text: Piyambakipun badhe dhateng peken kaliyan kula.
+    options: ['Piyambakipun badhe dhateng masjid kaliyan kula.', 'Piyambakipun badhe dhateng peken kaliyan kula.', 'Piyambakipun sampun dhateng peken kaliyan kula.']
+    answer: 1
+    meaning:
+      ar_eg: هو رايح السوق معايا.
+      ar: سيذهب إلى السوق معي.
+      en: He's going to the market with me.
+    words: [piyambakipun, badhe, dhateng, peken, kaliyan]
+  - id: e06
+    type: fill_blank
+    sentence: Mas Dimas ___ nedha, Pak.
+    meaning:
+      ar_eg: Dimas لسه ماكلش يا حاج.
+      ar: لم يأكل Dimas بعد يا سيدي.
+      en: Dimas hasn't eaten yet, sir.
+    options: [durung, mboten, dereng]
+    answers: [dereng]
+    explain:
+      ar_eg: '«لسه» بالكراما dereng. durung نغوكو، وmboten يعني «لأ / مش».'
+      ar: '«ليس بعد» بالكراما dereng؛ durung من الـ ngoko، وmboten نفي عام.'
+      en: '"Not yet" in krama is dereng. durung is ngoko; mboten is plain "not".'
+    words: [dereng, nedha]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'حوّلها لكراما: Dimas uga durung mangan.'
+      ar: 'حوّلها إلى الكراما: Dimas uga durung mangan.'
+      en: 'Make it krama: Dimas uga durung mangan.'
+    answers: ["Mas Dimas ugi dereng nedha.", "Dimas ugi dereng nedha.", "Piyambakipun ugi dereng nedha."]
+    explain:
+      ar_eg: 'uga ← ugi، durung ← dereng، mangan ← nedha.'
+      ar: 'uga ← ugi، وdurung ← dereng، وmangan ← nedha.'
+      en: 'uga → ugi, durung → dereng, mangan → nedha.'
+    words: [ugi, dereng, nedha]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: وأنا كمان لسه ماكلتش يا حاج.
+      ar: وأنا أيضًا لم آكل بعد يا سيدي.
+      en: I haven't eaten yet either, sir.
+    answer: Kula ugi dereng nedha, Pak.
+    distractors: [uga, durung]
+    words: [kula, ugi, dereng, nedha]
+    explain:
+      ar_eg: "بالكراما: ugi = كمان، وdereng = لسه لأ. uga وdurung نفس الكلام بس نغوكو."
+      ar: "بالكراما: ugi أي أيضًا، وdereng ليس بعد. أما uga وdurung فبالمعنى نفسه نغوكو."
+      en: "In krama: ugi is \"also\", dereng \"not yet\". uga and durung are the same in ngoko."
+dialogue:
+  title: Pak Harjo takon
+  lines:
+    - speaker: Pak Harjo
+      text: "Mas Mohamed, sampun nedha?"
+      ar_eg: "يا أستاذ محمد، كلت؟"
+      ar: "يا محمد، هل أكلتَ؟"
+      en: "Mohamed, eaten yet?"
+    - speaker: Mohamed
+      text: Dereng, Pak. Mas Dimas ugi dereng.
+      ar_eg: لسه يا حاج. وDimas كمان لسه.
+      ar: ليس بعد يا سيدي. وDimas أيضًا لم يأكل.
+      en: Not yet, sir. Dimas hasn't either.
+    - speaker: Pak Harjo
+      text: "Badhe teng peken?"
+      ar_eg: "رايح السوق؟"
+      ar: "هل ستذهب إلى السوق؟"
+      en: "Off to the market?"
+    - speaker: Mohamed
+      text: Inggih, Pak, kaliyan Mas Dimas.
+      ar_eg: أيوه يا حاج، مع Dimas.
+      ar: نعم يا سيدي، مع Dimas.
+      en: Yes, sir, with Dimas.
+    - speaker: Pak Harjo
+      text: "Sae. Mangga, Mas."
+      ar_eg: "حلو. اتفضل يا أستاذ."
+      ar: "جيد. تفضّل."
+      en: "Good. Off you go, then."
+review:
+  status: draft
+  verified: false

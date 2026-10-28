@@ -15,18 +15,21 @@ slides:
         = الـ adat (العادة، من العربي «عادة») bersendi (قايمة على) الـ syarak (الشرع)، والشرع قايم على كتاب الله.
         - زمان، الولاد كانوا بيناموا في الـ surau (الزاوية) يتعلّموا القرآن والأدب.
         - والقرارات بتتاخد بالـ mufakat (التوافق، من «موافقة») بعد مشاورة.
+        - في الشارع: aku / -ku = saya (أنا)، kayak = seperti (زي)، tapi = tetapi (بس / لكن)، gimana = bagaimana (إزاي)، sama = dengan / oleh (مع / من).
       ar: |
         يقول المينانغ بلغتهم: Adat basandi syarak, syarak basandi Kitabullah.
         وبالإندونيسية: Adat bersendi syarak, syarak bersendi Kitabullah.
         = الـ adat (العادة) bersendi (قائمة على) الـ syarak (الشرع)، والشرع قائم على كتاب الله.
         - كان الصبيان قديمًا يبيتون في الـ surau (الزاوية) يتعلّمون القرآن والأدب.
         - وتُتّخذ القرارات بالـ mufakat (التوافق، من «موافقة») بعد التشاور.
+        - في كلام الشارع: aku / -ku = saya (أنا)، kayak = seperti (مثل)، tapi = tetapi (لكن)، gimana = bagaimana (كيف)، sama = dengan / oleh (مع / مِن قِبَل).
       en: |
         The Minang say in their language: Adat basandi syarak, syarak basandi Kitabullah.
         In Indonesian: Adat bersendi syarak, syarak bersendi Kitabullah.
         = adat (custom, from Arabic ʿāda) bersendi (rests on) syarak (sharia), and sharia rests on the Book of God.
         - Boys used to sleep at the surau (prayer house) to learn the Quran and manners.
         - Decisions are made by mufakat (consensus, from Arabic muwāfaqa) after deliberation.
+        - On the street: aku / -ku = saya (I), kayak = seperti (like), tapi = tetapi (but), gimana = bagaimana (how), sama = dengan / oleh (with, by).
 exercises:
   - id: e01
     type: match_pairs
@@ -64,6 +67,10 @@ exercises:
       - على رأي الأغلبية.
     answer: 1
     words: [adat, bersendi, syarak]
+    explain:
+      ar_eg: "المثل بيقول adat bersendi syarak: العادة قايمة على الشرع، مش على الفلوس ولا رأي الأغلبية."
+      ar: "يقول المثل adat bersendi syarak: العرف قائم على الشرع، لا على المال ولا رأي الأغلبية."
+      en: "The saying is adat bersendi syarak: custom rests on sharia, not money or majority opinion."
   - id: e03
     type: fill_blank
     sentence: Dulu, anak laki-laki Minang tidur di ___ dan belajar mengaji.
@@ -74,6 +81,10 @@ exercises:
     options: [surau, adat, mufakat]
     answers: [surau]
     words: [surau]
+    explain:
+      ar_eg: الولاد كانوا بيناموا ويتعلّموا القرآن في الـ surau (الزاوية). adat = عادة وmufakat = توافق، ومش أماكن.
+      ar: كان الصبيان يبيتون ويتعلّمون القرآن في surau (الزاوية)؛ أمّا adat (عرف) وmufakat (توافق) فليسا أمكنة.
+      en: Boys slept and learned the Quran at the surau. adat (custom) and mufakat (consensus) aren't places.
   - id: e04
     type: listen
     text: Keputusan itu diambil secara mufakat setelah musyawarah.
@@ -96,6 +107,10 @@ exercises:
     answer: Adat Minang bersendi syarak.
     distractors: [surau, mufakat]
     words: [adat, bersendi, syarak]
+    explain:
+      ar_eg: «قايمة على الشرع» = bersendi syarak. surau وmufakat مش في الجملة.
+      ar: «قائم على الشرع» bersendi syarak؛ أمّا surau وmufakat فليستا في الجملة.
+      en: "\"Rests on Islamic law\" is bersendi syarak. surau and mufakat aren't used."
   - id: e06
     type: translate
     direction: from_target
@@ -136,26 +151,30 @@ exercises:
     options: [مفتاح, مفاجأة, موافقة]
     answer: 2
     words: [mufakat, surau]
+    explain:
+      ar_eg: mufakat من «موافقة» (اتفاق). مفتاح ومفاجأة شبهها في الصوت بس.
+      ar: mufakat من «موافقة»، أمّا مفتاح ومفاجأة فتشبهانها صوتًا فقط.
+      en: mufakat comes from موافقة, agreement. مفتاح and مفاجأة only sound similar.
 dialogue:
   title: Di surau tua
   lines:
     - speaker: Uda Rafi
-      text: Dulu saya tidur di surau ini. Kami belajar mengaji, silat, dan adat.
+      text: Dulu aku tidur di surau ini. Kami belajar mengaji, silat, dan adat.
       ar_eg: زمان كنت بنام في الزاوية دي. كنا بنتعلّم القرآن والسيلات والعادات.
       ar: كنت أبيت قديمًا في هذه الزاوية، نتعلّم القرآن وفنّ السيلات والأعراف.
       en: I used to sleep in this surau. We learned Quran recitation, silat and custom.
     - speaker: Mohamed
-      text: Seperti kuttab di Mesir! Tetapi bagaimana adat matrilineal cocok dengan syarak?
-      ar_eg: زي الكتّاب في مصر! بس إزاي العادات الأمومية بتمشي مع الشرع؟
-      ar: كالكتّاب في مصر! لكن كيف يتّفق العرف الأمومي مع الشرع؟
-      en: Like the kuttab in Egypt! But how does matrilineal custom fit with sharia?
+      text: Kayak kuttab di Mesir! Tapi gimana adat Minang bisa sejalan sama syarak?
+      ar_eg: زي الكتّاب في مصر! بس إزاي عادات المينانج بتمشي مع الشرع؟
+      ar: كالكتّاب في مصر! لكن كيف يتّفق عرف المينانغ مع الشرع؟
+      en: Like the kuttab in Egypt! But how does Minang custom go along with sharia?
     - speaker: Uda Rafi
-      text: Pertanyaan bagus. Pusaka ikut adat, tetapi warisan pribadi ikut syarak. Itu hasil mufakat para ulama dan pemuka adat.
+      text: Pertanyaan bagus. Pusaka ikut adat, tapi warisan pribadi ikut syarak. Itu hasil mufakat para ulama dan pemuka adat.
       ar_eg: سؤال حلو. إرث العيلة ماشي على العادة، والميراث الشخصي على الشرع. ده نتيجة توافق العلما وكبار العرف.
       ar: سؤال وجيه. الإرث العائلي يتبع العرف، والميراث الشخصي يتبع الشرع، وذلك ثمرة توافق العلماء ووجهاء العرف.
       en: Good question. Pusaka follows custom, but personal inheritance follows sharia. That came from a consensus of scholars and customary leaders.
     - speaker: Mohamed
-      text: Jadi adat dan syarak saling menjaga.
+      text: Jadi adat dan syarak menjaga satu sama lain.
       ar_eg: يعني العادة والشرع بيحموا بعض.
       ar: إذن يحرس العرف والشرع أحدهما الآخر.
       en: So custom and sharia look after each other.

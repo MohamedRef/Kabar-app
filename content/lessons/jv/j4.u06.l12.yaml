@@ -1,0 +1,266 @@
+schema: kabar.lesson/v1
+id: j4.u06.l12
+language: jv
+title: Ulangan J4.6
+can_do:
+  ar_eg: تحدد مستوى كل سطر.
+  ar: أن تحدد مستوى كل سطر.
+  en: Tag each line's level.
+slides:
+  - title: Sapa matur marang sapa?
+    body:
+      ar_eg: |
+        في الوايانغ المستوى بيقولك مين بيكلّم مين:
+        - punakawan مع بعض، أو الملك للخدّام: ngoko.
+        - الخدّام للملك: كراما + krama andhap لفعله (matur، sowan) + krama inggil لفعل الملك (tindak، dhahar).
+        - الرد على أي أمر: «Sendika dhawuh, Gusti.»
+      ar: |
+        في الوايانغ يخبرك المستوى من يكلّم من:
+        - الـ punakawan فيما بينهم، أو الملك للخادم: ngoko.
+        - الخادم للملك: كراما مع krama andhap لفعله (matur، sowan) وkrama inggil لفعل الملك (tindak، dhahar).
+        - وجواب كل أمر: «Sendika dhawuh, Gusti.»
+      en: |
+        In wayang, the level tells you who is talking to whom:
+        - punakawan among themselves, or a king to a servant: ngoko.
+        - servant to king: krama + krama andhap for his own actions (matur, sowan) + krama inggil for the king's (tindak, dhahar).
+        - the answer to any order: "Sendika dhawuh, Gusti."
+    grammar: jv.krama-andhap
+    examples:
+      - text: Reng, ayo guyon!
+        ar_eg: يلا نهزّر يا غارينغ! (ngoko)
+        ar: هيا نمزح يا غارينغ! (ngoko)
+        en: Come on, Reng, let's joke! (ngoko)
+      - text: Gusti, kula badhe matur.
+        ar_eg: يا مولاي، عايز أعرض على سيادتك حاجة. (krama andhap)
+        ar: يا مولاي، أودّ أن أعرض عليكم أمرًا. (krama andhap)
+        en: My lord, I wish to tell you something. (krama andhap)
+      - text: Gusti badhe tindak dhateng pundi?
+        ar_eg: مولاي رايح على فين؟ (krama inggil)
+        ar: إلى أين يتوجّه مولاي؟ (krama inggil)
+        en: Where is my lord going? (krama inggil)
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: Reng, kowe wis mangan?
+        ar_eg: ngoko (بين الـ punakawan)
+        ar: ngoko (بين الـ punakawan)
+        en: ngoko (between punakawan)
+      - text: Gusti sampun dhahar?
+        ar_eg: krama inggil (بيرفع الملك)
+        ar: krama inggil (ترفع الملك)
+        en: krama inggil (raises the king)
+      - text: Kula badhe sowan, Gusti.
+        ar_eg: krama andhap (الخدّام بينزّل نفسه)
+        ar: krama andhap (يخفض الخادم نفسه)
+        en: krama andhap (the servant lowers himself)
+      - text: Sendika dhawuh, Gusti.
+        ar_eg: الرد الثابت على أمر الملك
+        ar: الجواب الثابت لأمر الملك
+        en: the fixed reply to a royal order
+    words: [punakawan, gusti, sendika dhawuh]
+  - id: e02
+    type: listen
+    text: Sendika dhawuh, Gusti.
+    options: ['Kula badhe matur, Gusti.', 'Sendika dhawuh, Gusti.', 'Nyuwun pamit, Gusti.']
+    answer: 1
+    meaning:
+      ar_eg: أمرك يا مولاي.
+      ar: سمعًا وطاعة يا مولاي.
+      en: At your command, my lord.
+    words: [sendika dhawuh]
+  - id: e03
+    type: match_pairs
+    pairs:
+      - text: niyaga
+        ar_eg: عازف جاميلان
+        ar: عازف غاميلان
+        en: gamelan player
+      - text: gladhen
+        ar_eg: بروفة، تمرين
+        ar: بروفة، تمرين
+        en: rehearsal, practice
+      - text: kenong
+        ar_eg: كينونج، جونجات نايمة صوتها عالي
+        ar: الكينونغ، صنوج مستلقية صوتها عالٍ
+        en: kenong, horizontal kettle gongs
+    words: [niyaga, gladhen, kenong]
+  - id: e04
+    type: fill_blank
+    sentence: Gusti, kula badhe ___.
+    meaning:
+      ar_eg: يا مولاي، عايز أعرض على سيادتك حاجة.
+      ar: يا مولاي، أودّ أن أعرض عليكم أمرًا.
+      en: My lord, I wish to tell you something.
+    options: [ngendika, matur, sanjang]
+    answers: [matur]
+    explain:
+      ar_eg: إنت اللي بتتكلم مع الملك، يبقى matur (krama andhap).
+      ar: أنت المتكلم إلى الملك فتقول matur (krama andhap).
+      en: You're the one speaking to the king, so matur (krama andhap).
+    words: [gusti, abdi]
+  - id: e05
+    type: fill_blank
+    sentence: Rahwana ___ Sinta.
+    meaning:
+      ar_eg: رهوانا خطف سينتا.
+      ar: اختطف رهوانا سينتا.
+      en: Rahwana kidnaps Sinta.
+    options: [maringi, sowan, nyulik]
+    answers: [nyulik]
+    words: [nyulik, crita]
+    explain:
+      ar_eg: رهوانا خطف سينتا = nyulik. maringi يدّي، وsowan يزور.
+      ar: خطف رهوانا سينتا = nyulik، أما maringi فيعطي، وsowan يزور.
+      en: Rahwana kidnapping Sinta is nyulik. maringi means "give", sowan "call on".
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: أمرك يا مولاي. أستأذن أنا.
+      ar: سمعًا وطاعة يا مولاي. أستأذن في الانصراف.
+      en: At your command, my lord. I ask leave to go.
+    answer: Sendika dhawuh, Gusti. Kula nyuwun pamit.
+    distractors: [aku, tindak]
+    words: [sendika dhawuh, gusti]
+    explain:
+      ar_eg: "الخدّام للملك: Sendika dhawuh وkula nyuwun pamit. aku نغوكو، وtindak لمشي الكبير مش الخدّام."
+      ar: "الخادم للملك: Sendika dhawuh وkula nyuwun pamit، أما aku فنغوكو، وtindak لذهاب الكبير لا الخادم."
+      en: "A servant to the king: Sendika dhawuh, kula nyuwun pamit. aku is ngoko, tindak is for the elder going, not the servant."
+  - id: e07
+    type: speaking
+    text: Punakawan guyon nganggo ngoko, nanging karo ratu nganggo krama.
+    meaning:
+      ar_eg: الـ punakawan بيهزّروا بالنغوكو، بس مع الملك بيتكلموا كراما.
+      ar: يمزح الـ punakawan بالنغوكو، لكنهم يكلّمون الملك بالكراما.
+      en: The punakawan joke in ngoko, but with the king they use krama.
+    words: [punakawan, guyon, ratu]
+  - id: e08
+    type: match_pairs
+    pairs:
+      - text: kelir
+        ar_eg: ستارة الوايانج
+        ar: ستارة الوايانغ
+        en: wayang screen
+      - text: blencong
+        ar_eg: قنديل الوايانج
+        ar: قنديل الوايانغ
+        en: wayang lamp
+      - text: gunungan
+        ar_eg: جونونجان
+        ar: غونونغان
+        en: gunungan
+      - text: satriya
+        ar_eg: فارس نبيل
+        ar: فارس نبيل
+        en: noble knight
+      - text: buta
+        ar_eg: عملاق وحش
+        ar: عملاق شرّير
+        en: ogre
+      - text: cempala
+        ar_eg: مطرقة الدالانج
+        ar: مطرقة الدالانغ
+        en: dhalang's knocker
+    words: [kelir, blencong, gunungan, satriya, buta, cempala]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: rebab
+        ar_eg: ربابة
+        ar: ربابة
+        en: bowed fiddle
+      - text: suling
+        ar_eg: ناي
+        ar: ناي
+        en: flute
+      - text: bonang
+        ar_eg: بونانج
+        ar: بونانغ
+        en: bonang
+      - text: Pandhawa
+        ar_eg: البانداوا
+        ar: البانداوا
+        en: the Pandhawa
+      - text: Kurawa
+        ar_eg: الكوراوا
+        ar: الكوراوا
+        en: the Kurawa
+      - text: keris
+        ar_eg: كريس
+        ar: كريس
+        en: keris
+    words: [rebab, suling, bonang, Pandhawa, Kurawa, keris]
+  - id: e10
+    type: fill_blank
+    sentence: Mas Dimas ___ gender.
+    meaning:
+      ar_eg: ماس ديماس بي___ على الجندير.
+      ar: ماس ديماس ___ على الجندير.
+      en: Mas Dimas is ___ the gender.
+    options: [nabuh, sekti, trenyuh]
+    answers: [nabuh]
+    words: [nabuh, sekti, trenyuh, gender]
+    explain:
+      ar_eg: يعزف على آلة = nabuh. sekti قوي، وtrenyuh متأثّر، ودول صفات.
+      ar: العزف على آلة = nabuh، أما sekti فقويّ، وtrenyuh متأثّر، وهما صفتان.
+      en: Playing an instrument is nabuh. sekti "powerful" and trenyuh "moved" are adjectives.
+  - id: e11
+    type: multiple_choice
+    question: Gendhing menika ___, dudu slendro.
+    question_meaning:
+      ar_eg: المقطوعة دي ___، مش سليندرو.
+      ar: هذه المقطوعة ___، لا سليندرو.
+      en: This piece is in ___, not slendro.
+    options: [pelog, grana, Bratayuda]
+    answer: 0
+    explain:
+      ar_eg: pelog وslendro سلّمين الغاميلان.
+      ar: pelog وslendro سلّما الغاميلان.
+      en: pelog and slendro are gamelan's two scales.
+    words: [pelog, grana, Bratayuda, slendro]
+dialogue:
+  title: Ing Prambanan
+  lines:
+    - speaker: Pak Harsono
+      text: Pripun, Mas Mohamed? Sae?
+      ar_eg: إيه رأيك يا محمد؟ حلو؟
+      ar: ما رأيك يا محمد؟ أعجبك؟
+      en: Well, Mohamed? Did you like it?
+    - speaker: Mohamed
+      text: Sae sanget, Pak! Kula remen Hanoman.
+      ar_eg: حلو قوي يا عمّو! أنا حبيت هانومان.
+      ar: رائع جدًا يا سيدي! أعجبني هانومان.
+      en: Wonderful, sir! I loved Hanoman.
+    - speaker: Pak Harsono
+      text: Inggih. Hanoman menika abdinipun Rama.
+      ar_eg: آه. هانومان ده خدّام راما.
+      ar: نعم. هانومان خادم راما.
+      en: Yes. Hanoman is Rama's servant.
+    - speaker: Mohamed
+      text: Inggih, Pak. Hanoman matur dhateng Rama ngangge krama.
+      ar_eg: أيوه يا عمّو. هانومان بيعرض على راما بالكراما.
+      ar: نعم يا سيدي. يعرض هانومان على راما بالكراما.
+      en: Yes, sir. Hanoman speaks to Rama in krama.
+    - speaker: Pak Harsono
+      text: Leres. Sampun dalu, Mas. Mangga wangsul.
+      ar_eg: صح. الدنيا ليّلت يا ابني. يلا نروّح.
+      ar: صحيح. تأخر الليل يا بني. هيا نعود.
+      en: Right. It's late, Mohamed. Let's head home.
+    - speaker: Mohamed
+      text: Mangga, Pak. Matur nuwun sanget.
+      ar_eg: يلا يا عمّو. متشكر قوي.
+      ar: هيا يا سيدي. شكرًا جزيلًا.
+      en: Let's go, sir. Thank you so much.
+souvenir:
+  id: j4.u06.souvenir
+  title: Sendratari Ramayana Prambanan
+  note:
+    ar_eg: |
+      معبد برامبانان الهندوسي من القرن التاسع، تراث عالمي من اليونسكو، وعلى حيطانه منحوتات بتحكي الرامايانا. وفي ليالي كتير على المسرح المكشوف قدامه بيتعرض باليه الرامايانا (sendratari) من الستينات: رقص وجاميلان وsindhen من غير ولا كلمة حوار، والمعبد منوّر ورا الراقصين. راما وسينتا ورهوانا وهانومان — والقصة بقيت تعرفها.
+    ar: |
+      معبد برامبانان الهندوسي من القرن التاسع، من مواقع التراث العالمي لليونسكو، وعلى جدرانه نقوش تروي الرامايانا. وفي ليالٍ كثيرة يُعرض على المسرح المكشوف أمامه باليه الرامايانا (sendratari) منذ الستينيات: رقص وغاميلان وsindhen بلا حوار، والمعبد مضاء خلف الراقصين. راما وسينتا ورهوانا وهانومان، وقد صرت تعرف القصة.
+    en: |
+      Prambanan, a 9th-century Hindu temple and UNESCO World Heritage Site, has the Ramayana carved in relief on its walls. On many evenings, on the open-air stage in front of it, the Ramayana ballet (sendratari) has been performed since the 1960s: dance, gamelan and sindhen, with no spoken dialogue, and the temple lit up behind the dancers. Rama, Sinta, Rahwana and Hanoman — and now you know the story.
+review:
+  status: draft
+  verified: false

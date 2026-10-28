@@ -288,3 +288,29 @@ fn untagged_tests_have_no_weak_units() {
     assert!(res.weak_units.is_empty());
     assert_eq!(res.start_unit, None);
 }
+
+#[test]
+fn street_forms_fold_only_in_indonesian_tests() {
+    // t03 as a typed translation; the learner writes the other word for its first word.
+    let run = |language: &str, reference: &str, given: &str| {
+        let yaml = LEVEL
+            .replace("language: id", &format!("language: {language}"))
+            .replace(
+                "type: dictation\n        text: Apa kabar?",
+                &format!(
+                    "type: translate\n        direction: to_target\n        answers: [\"{reference}\"]\n        source_meaning: {{ar_eg: x, ar: x, en: x}}"
+                ),
+            );
+        let mut r = TestRunner::new(parse_test(&yaml).unwrap());
+        r.start();
+        r.answer(&Answer::Choice(0), EG);
+        r.answer(&Answer::Choice(1), EG);
+        r.answer(&text(given), EG);
+        r.records().iter().find(|rec| rec.id == "t03").map(|rec| rec.scored.clone())
+    };
+    // Indonesian: "udah" is "sudah".
+    assert_eq!(run("id", "Saya sudah makan.", "saya udah makan"), Some(Scored::Earned(1.0)));
+    // Javanese: "aja" means "don't", so "saja" is not the same word.
+    assert_ne!(run("jv", "Aja mangan.", "saja mangan"), Some(Scored::Earned(1.0)));
+    assert_eq!(run("jv", "Aja mangan.", "aja mangan"), Some(Scored::Earned(1.0)));
+}

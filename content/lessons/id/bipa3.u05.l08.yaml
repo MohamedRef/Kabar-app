@@ -1,0 +1,207 @@
+schema: kabar.lesson/v1
+id: bipa3.u05.l08
+language: id
+title: Jurnal mingguan
+can_do:
+  ar_eg: تكتب يومياتك عن أسبوعك، بالترتيب والأفعال المتعدية صح.
+  ar: أن تكتب يوميات أسبوعك مرتّبة، مستعملًا الأفعال المتعدية استعمالًا صحيحًا.
+  en: Write a weekly journal entry.
+slides:
+  - title: "Udah, belum, lagi: santai di jalan"
+    body:
+      ar_eg: |
+        في الكلام اليومي:
+        udah = sudah، lagi = sedang (Aku lagi makan = أنا باكل دلوقتي)، belum تفضل زي ما هي.
+        والفعل كتير بيتقال من غير me-: Aku bawa tenda (= Saya membawa tenda)، nyapu = menyapu.
+        وفي الجورنال أو الرسالة المكتوبة ارجع للرسمي.
+      ar: |
+        في الكلام اليومي:
+        udah = sudah، lagi = sedang (Aku lagi makan = آكل الآن)، وbelum كما هي.
+        وكثيرًا ما يُقال الفعل دون me-: Aku bawa tenda (= Saya membawa tenda)، nyapu = menyapu.
+        وفي اليوميات أو الرسائل المكتوبة عُد إلى الفصحى.
+      en: |
+        In everyday speech:
+        udah = sudah, lagi = sedang (Aku lagi makan = I'm eating right now), and belum stays the same.
+        Verbs often drop me-: Aku bawa tenda (= Saya membawa tenda), nyapu = menyapu.
+        In a journal or a written message, go back to the standard forms.
+    examples:
+      - text: "Udah siap? Belum, aku lagi pakai sepatu."
+        ar_eg: "جاهز؟ لسه، بلبس الجزمة."
+        ar: "هل أنت جاهز؟ ليس بعد، ألبس حذائي."
+        en: "Ready? Not yet, I'm putting my shoes on."
+      - text: "Siapa yang bawa tenda?"
+        ar_eg: "مين اللي شايل الخيمة؟ (رسمي: Siapa yang membawa tenda?)"
+        ar: "من يحمل الخيمة؟ (بالفصحى: Siapa yang membawa tenda?)"
+        en: "Who's carrying the tent? (standard: Siapa yang membawa tenda?)"
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: jurnal
+        ar_eg: يوميات (مذكّرات)
+        ar: يوميات
+        en: journal, diary
+      - text: mencatat
+        ar_eg: يدوّن، يكتب ملاحظة
+        ar: يدوّن
+        en: to note down
+      - text: sesampainya
+        ar_eg: أول ما وصل
+        ar: حين وصل
+        en: on arriving
+      - text: keesokan harinya
+        ar_eg: تاني يوم
+        ar: في اليوم التالي
+        en: the next day
+    words: [jurnal, mencatat, sesampainya, keesokan harinya]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة ترتيبها صح في اليوميات؟
+      ar: أيّ جملة ترتيبها صحيح في اليوميات؟
+      en: Which journal sentence has the right word order?
+    options: ["Hari Selasa saya mengirim surat ke Kairo.", "Saya mengirim hari Selasa surat ke Kairo.", "Saya hari Selasa surat mengirim ke Kairo."]
+    answer: 0
+    explain:
+      ar_eg: الفعل والمفعول (mengirim surat) لازقين؛ الوقت في الأول أو الآخر.
+      ar: الفعل ومفعوله (mengirim surat) متلازمان، والزمان أولًا أو آخرًا.
+      en: Verb and object (mengirim surat) stay together; time goes first or last.
+  - id: e03
+    type: listen
+    text: Senin pagi saya menyapu kamar. Siangnya saya membayar tagihan listrik. Malamnya saya mencatat semuanya di jurnal.
+    question:
+      ar_eg: عمل إيه يوم الاتنين الضهر؟
+      ar: ماذا فعل ظهر يوم الاثنين؟
+      en: What did he do on Monday at midday?
+    options: ["menyapu kamar", "membayar tagihan listrik", "menjemur cucian"]
+    answer: 1
+    meaning:
+      ar_eg: يوم الاتنين الصبح كنست الأوضة. الضهر دفعت فاتورة الكهربا. وبالليل كتبت كل ده في اليوميات.
+      ar: صباح الاثنين كنستُ الغرفة، وظهرًا دفعتُ فاتورة الكهرباء، ومساءً دوّنتُ ذلك كله في يومياتي.
+      en: On Monday morning I swept my room. At midday I paid the electricity bill. In the evening I noted it all in my journal.
+    words: [jurnal, mencatat, membayar, tagihan]
+  - id: e04
+    type: fill_blank
+    sentence: Setiap malam saya ___ kegiatan saya di jurnal.
+    meaning:
+      ar_eg: كل ليلة بدوّن أنشطتي في اليوميات.
+      ar: أدوّن أنشطتي في يومياتي كل ليلة.
+      en: Every evening I note down my activities in my journal.
+    options: [membayar, mendaki, mencatat]
+    answers: [mencatat]
+    words: [mencatat]
+    explain:
+      ar_eg: «بدوّن» = mencatat. membayar = يدفع، وmendaki = يطلع جبل.
+      ar: «أدوّن» mencatat. أما membayar فـ«يدفع»، وmendaki «يصعد الجبل».
+      en: Noting down is mencatat. membayar means to pay and mendaki to climb.
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: يوم الأربع كويت هدومي.
+      ar: يوم الأربعاء كويتُ ثيابي.
+      en: On Wednesday I ironed my clothes.
+    answer: Hari Rabu saya menyetrika baju.
+    alternatives: ["Saya menyetrika baju hari Rabu."]
+    distractors: [di, kemarin]
+    words: [menyetrika]
+    explain:
+      ar_eg: "Hari Rabu saya menyetrika baju: اليوم في الأول من غير di. di زيادة، وkemarin = إمبارح ومش في الجملة."
+      ar: "Hari Rabu saya menyetrika baju: اليوم في البداية بلا di. أما di فزائدة، وkemarin «أمس» وليست في الجملة."
+      en: "Hari Rabu saya menyetrika baju: the day goes first, no di needed. kemarin (yesterday) isn't in the sentence."
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: يوم الخميس عم سهدان إدّاني خريطة.
+      ar: يوم الخميس أعطاني السيد سهدان خريطة.
+      en: On Thursday Pak Sahdan gave me a map.
+    answers:
+      - Hari Kamis Pak Sahdan memberi saya peta.
+      - Hari Kamis Pak Sahdan memberi saya peta
+      - Hari Kamis, Pak Sahdan memberi saya peta.
+      - Pak Sahdan memberi saya peta hari Kamis.
+      - Hari Kamis Pak Sahdan memberikan peta kepada saya.
+      - Pak Sahdan memberikan peta kepada saya hari Kamis.
+      - Pada hari Kamis Pak Sahdan memberi saya peta.
+      - Pada hari Kamis, Pak Sahdan memberikan peta kepada saya.
+      - Hari Kamis Pak Sahdan memberi aku peta.
+    words: [memberi, memberikan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كل ليلة بكتب يومياتي.
+      ar: أكتب يومياتي كل ليلة.
+      en: Every evening I write my journal.
+    answers:
+      - Setiap malam saya menulis jurnal.
+      - Setiap malam saya menulis jurnal
+      - Setiap malam saya menulis jurnal saya.
+      - Saya menulis jurnal setiap malam.
+      - Tiap malam saya menulis jurnal.
+      - Setiap malam aku menulis jurnal.
+      - Setiap malam saya menulis di jurnal.
+    words: [jurnal]
+  - id: e08
+    type: dictation
+    text: Keesokan harinya, saya mengantar Rina ke bandara.
+    meaning:
+      ar_eg: تاني يوم، وصّلت رينا المطار.
+      ar: في اليوم التالي أوصلتُ رينا إلى المطار.
+      en: The next day, I took Rina to the airport.
+    words: [keesokan harinya, mengantar]
+  - id: e09
+    type: speaking
+    text: Minggu ini sangat berkesan. Saya mencatat semuanya di jurnal.
+    meaning:
+      ar_eg: الأسبوع ده فضل في بالي جدًا. كتبت كل حاجة في اليوميات.
+      ar: كان هذا الأسبوع لا يُنسى، ودوّنتُ كل شيء في يومياتي.
+      en: This week was really memorable. I noted everything down in my journal.
+    words: [mencatat, jurnal]
+dialogue:
+  title: Jurnal Mohamed
+  lines:
+    - speaker: Bu Yanti
+      text: Mohamed, kamu nulis apa?
+      ar_eg: يا محمد، بتكتب إيه؟
+      ar: يا محمد، ماذا تكتب؟
+      en: Mohamed, what are you writing?
+    - speaker: Mohamed
+      text: Jurnal mingguan, Bu. Saya mencatat kegiatan saya tiap hari.
+      ar_eg: يوميات الأسبوع يا حاجة. بدوّن اللي بعمله كل يوم.
+      ar: يوميات الأسبوع يا سيدتي؛ أدوّن أنشطتي كل يوم.
+      en: My weekly journal, Bu. I note down what I do every day.
+    - speaker: Bu Yanti
+      text: Bagus! Coba bacain satu hari.
+      ar_eg: حلو! اقرالي يوم واحد.
+      ar: جميل! اقرأ لي يومًا واحدًا.
+      en: Lovely! Read me one day.
+    - speaker: Mohamed
+      text: '"Hari Selasa saya mendaki Rinjani. Para porter membawa tenda dan bekal."'
+      ar_eg: «يوم التلات طلعت رينجاني. الشيّالين شالوا الخيم والزوّادة».
+      ar: «يوم الثلاثاء صعدتُ رينجاني، وحمل الحمّالون الخيام والزاد».
+      en: '"On Tuesday I climbed Rinjani. The porters carried the tents and the food."'
+    - speaker: Bu Yanti
+      text: Terus?
+      ar_eg: وبعدين؟
+      ar: ثم؟
+      en: And then?
+    - speaker: Mohamed
+      text: '"Keesokan harinya, saya melihat matahari terbit dari puncak."'
+      ar_eg: «تاني يوم شفت الشروق من القمّة».
+      ar: «في اليوم التالي رأيتُ شروق الشمس من القمّة».
+      en: '"The next day, I saw the sunrise from the summit."'
+new_words:
+  - word: jurnal
+    pos: noun
+    ar_eg: يوميات، مذكّرات
+    ar: يوميات
+    en: journal, diary
+  - word: mencatat
+    pos: verb
+    ar_eg: يدوّن، يكتب ملاحظة
+    ar: يدوّن
+    en: to note down
+review:
+  status: draft
+  verified: false

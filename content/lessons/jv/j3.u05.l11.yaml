@@ -1,0 +1,169 @@
+schema: kabar.lesson/v1
+id: j3.u05.l11
+language: jv
+title: Tumbasan Mohamed
+can_do:
+  ar_eg: تسمع البياعة بتحسب الحساب بالكراما وتفهم المجموع والباقي.
+  ar: أن تسمع البائعة تحسب الحساب بالكراما وتفهم المجموع والباقي.
+  en: Follow a seller adding up your bill in krama, and catch the total and the change.
+slides:
+  - title: Bu Siti ngetung
+    body:
+      ar_eg: |
+        محمد اشترى من Bu Siti، وهي بتحسب بصوت عالي. اسمع الأرقام بالكراما.
+        كلمة جديدة: dados = dadi (= jadi)، يعني «يبقى المجموع»: Dados … ewu = الحساب … ألف.
+      ar: |
+        اشترى محمد من Bu Siti، وهي تحسب بصوت مسموع. استمع إلى الأعداد بالكراما.
+        كلمة جديدة: dados = dadi (= jadi)، أي «فيصير المجموع»: Dados … ewu = المجموع … ألف.
+      en: |
+        Mohamed has bought from Bu Siti, and she adds it up out loud. Listen to the krama numbers.
+        New word: dados = dadi (= jadi), "that comes to": Dados … ewu = that's … thousand.
+    grammar: jv.krama.numbers
+exercises:
+  - id: e01
+    type: listen
+    text: Batik tulis setunggal, kalih atus ewu.
+    question:
+      ar_eg: الباتيك المرسوم باليد بكام؟
+      ar: بكم الباتيك المرسوم باليد؟
+      en: How much is the hand-drawn batik?
+    options: [satus ewu, kalih atus ewu, tigang atus ewu]
+    answer: 1
+    meaning:
+      ar_eg: باتيك مرسوم باليد واحد، بميتين ألف.
+      ar: قطعة باتيك مرسوم باليد، بمئتي ألف.
+      en: One hand-drawn batik, two hundred thousand.
+    words: [batik tulis, setunggal, kalih, atus]
+  - id: e02
+    type: listen
+    text: Batik cap kalih, satus ewu.
+    question:
+      ar_eg: محمد اشترى كام باتيك بالختم؟
+      ar: كم قطعة باتيك مختوم اشترى محمد؟
+      en: How many stamped batiks did Mohamed buy?
+    options: [setunggal, tiga, kalih]
+    answer: 2
+    meaning:
+      ar_eg: اتنين باتيك بالختم، بمية ألف.
+      ar: قطعتا باتيك مختوم، بمئة ألف.
+      en: Two stamped batiks, a hundred thousand.
+    words: [batik cap, kalih]
+  - id: e03
+    type: listen
+    text: Dados tigang atus ewu, Mas.
+    question:
+      ar_eg: الحساب كله كام؟
+      ar: كم المجموع كله؟
+      en: What's the total?
+    options: [tigang atus ewu, kalih atus ewu, sekawan atus ewu]
+    answer: 0
+    meaning:
+      ar_eg: يبقى الحساب تلتمية ألف يا أستاذ.
+      ar: فيصير المجموع ثلاثمئة ألف يا أخي.
+      en: That comes to three hundred thousand.
+    words: [dados, tiga, atus, ewu]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: محمد ادّى Bu Siti «sekawan atus ewu». هياخد باقي كام؟
+      ar: أعطى محمد Bu Siti «sekawan atus ewu». كم الباقي له؟
+      en: Mohamed gives Bu Siti "sekawan atus ewu". How much change does he get?
+    options: [seket ewu, satus ewu, kalih atus ewu]
+    answer: 1
+    explain:
+      ar_eg: '400,000 − 300,000 = 100,000، يعني satus ewu.'
+      ar: '400,000 − 300,000 = 100,000، أي satus ewu.'
+      en: 400,000 − 300,000 = 100,000 = satus ewu.
+    words: [sekawan, atus]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: kalih atus ewu
+        ar_eg: ٢٠٠٬٠٠٠
+        ar: ٢٠٠٬٠٠٠
+        en: 200,000
+      - text: tigang atus ewu
+        ar_eg: ٣٠٠٬٠٠٠
+        ar: ٣٠٠٬٠٠٠
+        en: 300,000
+      - text: sekawan atus ewu
+        ar_eg: ٤٠٠٬٠٠٠
+        ar: ٤٠٠٬٠٠٠
+        en: 400,000
+      - text: gangsal atus ewu
+        ar_eg: ٥٠٠٬٠٠٠
+        ar: ٥٠٠٬٠٠٠
+        en: 500,000
+    words: [kalih, sekawan, gangsal, atus]
+  - id: e06
+    type: dictation
+    text: Dados tigang atus ewu.
+    meaning:
+      ar_eg: يبقى الحساب تلتمية ألف.
+      ar: فيصير المجموع ثلاثمئة ألف.
+      en: That comes to three hundred thousand.
+    words: [dados, tiga, atus]
+  - id: e07
+    type: fill_blank
+    sentence: ___ tigang atus ewu, Mas.
+    meaning:
+      ar_eg: يبقى الحساب تلتمية ألف يا أستاذ.
+      ar: فيصير المجموع ثلاثمئة ألف يا أخي.
+      en: That comes to three hundred thousand.
+    options: [Dadi, Regi, Dados]
+    answers: [Dados]
+    explain:
+      ar_eg: 'في كلام كراما، dadi بتبقى dados. وregi معناها «السعر» مش «يبقى المجموع».'
+      ar: 'في الكراما تصير dadi dados، أما regi فتعني «السعر».'
+      en: In krama, dadi becomes dados. regi means "price", not "comes to".
+    words: [dados]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'بالكراما: يعني الحساب تلتمية ألف؟ اتفضلي الفلوس يا حاجة.'
+      ar: 'بالكراما: إذن المجموع ثلاثمئة ألف؟ تفضّلي المال يا سيدتي.'
+      en: "(in krama) So that comes to three hundred thousand? Here's the money, ma'am."
+    answers: ["Dados tigang atus ewu? Menika artanipun, Bu.", "Dados tigang atus ewu, Bu? Menika artanipun.", "Dados tigang atus ewu? Niki artanipun, Bu.", "Dados tigang atus ewu, Bu? Niki artanipun.", "Dados tigang atus ewu? Menika arta, Bu."]
+    explain:
+      ar_eg: 'dados للمجموع، tigang قبل atus، وartanipun = الفلوس (arta + -nipun).'
+      ar: 'dados للمجموع، وtigang قبل atus، وartanipun = المال (arta + -nipun).'
+      en: 'dados for the total, tigang before atus, and artanipun = the money (arta + -nipun).'
+    words: [dados, tiga, arta]
+dialogue:
+  title: Mbayar ing Beringharjo
+  lines:
+    - speaker: Bu Siti
+      text: "Batik tulis setunggal, batik cap kalih. Sedaya kalih atus ewu, Mas."
+      ar_eg: "باتيك يدوي واحد، واتنين باتيك ختم. الكل ميتين ألف يا أستاذ."
+      ar: "باتيك يدوي واحد، واثنان من باتيك الختم. المجموع مئتا ألف يا أخي."
+      en: "One hand-drawn batik, two stamped. Two hundred thousand altogether, mate."
+    - speaker: Mohamed
+      text: Inggih, Bu. Menika sekawan atus ewu.
+      ar_eg: حاضر يا حاجة. اتفضلي أربعمية ألف.
+      ar: حسنًا يا سيدتي. تفضّلي أربعمئة ألف.
+      en: All right, ma'am. Here's four hundred thousand.
+    - speaker: Bu Siti
+      text: "Niki, Mas, susuke kalih atus."
+      ar_eg: "اتفضل يا أستاذ، الباقي ميتين."
+      ar: "تفضّل يا أخي، الباقي مئتان."
+      en: "Here you go: your change, two hundred."
+    - speaker: Mohamed
+      text: Matur nuwun sanget, Bu.
+      ar_eg: شكرًا جدًا يا حاجة.
+      ar: شكرًا جزيلًا يا سيدتي.
+      en: Thank you very much, ma'am.
+    - speaker: Bu Siti
+      text: "Sami-sami, Mas. Mangga!"
+      ar_eg: "العفو يا أستاذ. مع السلامة!"
+      ar: "عفوًا. مع السلامة!"
+      en: "You're welcome. Take care!"
+new_words:
+  - word: dados
+    pos: verb
+    ar_eg: يبقى / يطلع (المجموع) — krama لـ dadi
+    ar: يصير / يبلغ (المجموع) — krama لـ dadi
+    en: to come to, become (ngoko dadi, Indonesian jadi), krama
+review:
+  status: draft
+  verified: false

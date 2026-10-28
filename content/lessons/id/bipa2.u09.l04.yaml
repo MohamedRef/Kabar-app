@@ -10,17 +10,26 @@ slides:
   - title: Ke alam
     body:
       ar_eg: |
-        hutan = غابة، air terjun = شلال (حرفيًا «مية واقعة»)، batu = حجر أو صخرة، karang = شعاب مرجانية.
-        kompas = بوصلة، ransel = شنطة ضهر.
+        hutan = غابة، air terjun = شلال (حرفيًا «مية واقعة»)، karang = شعاب مرجانية.
+        kompas = بوصلة، ransel = شنطة ضهر، sandal = صندل (أحسن من الجزمة للشلال!).
         penginapan = مكان تبات فيه (من inap = يبات)، vila = فيلا.
+        في الشارع بيقولوا:
+        - aja = saja (بس، وخلاص)
+        - aku و-ku = saya (أنا، ـي) مع الأصحاب واللي في سنك؛ مع الكبار والغُرب saya
       ar: |
-        hutan = غابة، air terjun = شلال (حرفيًا «ماء ساقط»)، batu = حجر أو صخرة، karang = شعاب مرجانية.
-        kompas = بوصلة، ransel = حقيبة ظهر.
+        hutan = غابة، air terjun = شلال (حرفيًا «ماء ساقط»)، karang = شعاب مرجانية.
+        kompas = بوصلة، ransel = حقيبة ظهر، sandal = صندل (أفضل من الحذاء عند الشلال!).
         penginapan = مكان المبيت (من inap = يبيت)، vila = فيلا.
+        في كلام الشارع:
+        - aja = saja (فقط)
+        - aku و-ku = saya (أنا، ـي) مع الأصدقاء والأقران؛ ومع الكبار والغرباء saya
       en: |
-        hutan = forest, air terjun = waterfall (literally "falling water"), batu = stone, rock, karang = coral reef.
-        kompas = compass, ransel = backpack.
+        hutan = forest, air terjun = waterfall (literally "falling water"), karang = coral reef.
+        kompas = compass, ransel = backpack, sandal = sandals (better than shoes at a waterfall!).
         penginapan = lodging, guesthouse (inap = stay overnight), vila = villa.
+        On the street:
+        - aja = saja (just, only)
+        - aku / -ku = saya (I, my) with friends and people your age; saya with elders and strangers
     examples:
       - text: Di Bali ada air terjun yang indah.
         ar_eg: في بالي فيه شلال جميل.
@@ -46,15 +55,15 @@ exercises:
         ar_eg: شلال
         ar: شلال
         en: waterfall
-      - text: batu
-        ar_eg: حجر، صخرة
-        ar: حجر، صخرة
-        en: stone
+      - text: sandal
+        ar_eg: صندل
+        ar: صندل
+        en: sandals
       - text: karang
         ar_eg: شعاب مرجانية
         ar: شعاب مرجانية
         en: coral
-    words: [hutan, air terjun, batu, karang]
+    words: [hutan, air terjun, sandal, karang]
   - id: e02
     type: match_pairs
     pairs:
@@ -99,19 +108,23 @@ exercises:
     options: [karang, kompas, ransel]
     answers: [karang]
     words: [karang, kompas, ransel]
+    explain:
+      ar_eg: karang = شعاب مرجانية، اللي تحت البحر مع السمك. kompas = بوصلة، وransel = شنطة ضهر.
+      ar: karang = شعاب مرجانية. أما kompas فبوصلة وransel حقيبة ظهر.
+      en: karang = coral, under the sea. kompas is a compass, ransel a backpack.
   - id: e05
     type: multiple_choice
     question_meaning:
       ar_eg: بتعرف الشمال فين بإيه؟
       ar: بمَ تعرف اتجاه الشمال؟
       en: What shows you which way is north?
-    options: [kompas, batu, vila]
+    options: [kompas, sandal, vila]
     answer: 0
     explain:
       ar_eg: kompas = بوصلة.
       ar: kompas = بوصلة.
       en: kompas = compass.
-    words: [kompas, batu, vila]
+    words: [kompas, sandal, vila]
   - id: e06
     type: fill_blank
     sentence: Di ___ ada banyak pohon dan monyet.
@@ -122,6 +135,10 @@ exercises:
     options: [hutan, penginapan, ransel]
     answers: [hutan]
     words: [hutan, penginapan, ransel]
+    explain:
+      ar_eg: الشجر والقرود في hutan (غابة). penginapan = مكان مبيت، وransel = شنطة ضهر.
+      ar: الأشجار والقرود في hutan. أما penginapan فنُزل وransel حقيبة ظهر.
+      en: Trees and monkeys live in the hutan (forest). penginapan is lodging, ransel a backpack.
   - id: e07
     type: build_sentence
     source:
@@ -129,8 +146,12 @@ exercises:
       ar: نقيم في فيلا قرب الشاطئ.
       en: We're staying in a villa near the beach.
     answer: Kami tinggal di vila dekat pantai.
-    distractors: [hutan, batu]
+    distractors: [hutan, sandal]
     words: [vila]
+    explain:
+      ar_eg: tinggal di vila = قاعدين في فيلا، وdekat pantai = جنب البحر. hutan وsandal زيادة.
+      ar: tinggal di vila = نقيم في فيلا، وdekat pantai = قرب الشاطئ. أما hutan وsandal فزائدتان.
+      en: tinggal di vila = staying in a villa, dekat pantai = near the beach. hutan and sandal don't fit.
   - id: e08
     type: translate
     direction: from_target
@@ -150,14 +171,14 @@ exercises:
     words: [ransel, kompas, hutan]
   - id: e10
     type: multiple_choice
-    question: Rumah itu dari ___, bukan kayu.
-    options: [batu, karang, air terjun]
+    question: Ke air terjun, pakai ___ saja.
+    options: [sandal, karang, air terjun]
     answer: 0
     explain:
-      ar_eg: 'البيت من حجر: batu.'
-      ar: 'البيت من حجر: batu.'
-      en: 'The house is stone: batu.'
-    words: [batu, karang, air terjun]
+      ar_eg: 'للمشي في المية البس صندل: sandal.'
+      ar: 'للمشي في الماء البس صندلًا: sandal.'
+      en: 'For walking in water, wear sandals: sandal.'
+    words: [sandal, karang, air terjun]
 dialogue:
   lines:
     - speaker: Ni Luh
@@ -176,17 +197,17 @@ dialogue:
       ar: قليلًا. سنمشي عبر الغابة.
       en: Fairly. We walk through the forest.
     - speaker: Mohamed
-      text: Saya bawa ransel dan air.
-      ar_eg: هاخد شنطة الضهر ومية.
-      ar: سآخذ حقيبة الظهر والماء.
-      en: I'll bring my backpack and water.
+      text: Aku bawa ransel, air, dan sandal.
+      ar_eg: هاخد شنطة الضهر ومية وصندل.
+      ar: سآخذ حقيبة الظهر والماء والصندل.
+      en: I'll bring my backpack, water and sandals.
     - speaker: Ni Luh
       text: Bagus. Malamnya kita tidur di penginapan dekat sana.
       ar_eg: حلو. بالليل ننام في مكان قريب من هناك.
       ar: جيّد. وفي الليل ننام في نُزُل قريب.
       en: Good. At night we'll sleep in a guesthouse nearby.
     - speaker: Mohamed
-      text: Vila mahal, ya? Penginapan saja!
+      text: Vila mahal, ya? Penginapan aja!
       ar_eg: الفيلا غالية، صح؟ خلّينا في اللوكاندة!
       ar: الفيلا غالية، أليس كذلك؟ النُّزُل يكفي!
       en: Villas are pricey, right? A guesthouse is fine!
@@ -201,11 +222,11 @@ new_words:
     ar_eg: شلال
     ar: شلال
     en: waterfall
-  - word: batu
+  - word: sandal
     pos: noun
-    ar_eg: حجر، صخرة
-    ar: حجر، صخرة
-    en: stone, rock
+    ar_eg: صندل
+    ar: صندل
+    en: sandals
   - word: karang
     pos: noun
     ar_eg: شعاب مرجانية

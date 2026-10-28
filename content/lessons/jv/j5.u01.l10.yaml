@@ -1,185 +1,166 @@
 schema: kabar.lesson/v1
 id: j5.u01.l10
 language: jv
-title: Lumpia Semarang
+title: Kairo ing Wikipedia
 can_do:
-  ar_eg: تقرا مقالة قصيرة عن أكلة مشهورة وتعرف أصلها وحشوها.
-  ar: أن تقرأ مقالة قصيرة عن طعام مشهور وتعرف أصله وحشوه.
-  en: Read a short article about a famous food and find its origin and filling.
-slides:
-  - title: Artikel panganan
-    body:
-      ar_eg: |
-        سيمارانج اسمها «مدينة اللومبيا»، ودي مقالة صغيرة عن اللومبيا. نفس الهيكل: iku وkang وsawijining.
-        كلمات جديدة: Tionghoa = صيني (زي الإندونيسي)، isi = حشو، وisine = حشوها، rebung = براعم البامبو (rebung). وudang = جمبري، زي الإندونيسي بالظبط.
-      ar: |
-        تُلقّب سيمارانج بـ«مدينة اللومبيا»، وهذه مقالة صغيرة عنها. الهيكل نفسه: iku وkang وsawijining.
-        كلمات جديدة: Tionghoa = صيني (كالإندونيسية)، وisi = حشوة، وisine = حشوتها، وrebung = براعم الخيزران (rebung). وudang = روبيان، كالإندونيسية تمامًا.
-      en: |
-        Semarang is called the City of Lumpia, and here is a small article about lumpia. Same skeleton: iku, kang, sawijining.
-        New words: Tionghoa = Chinese (as in Indonesian), isi = filling, isine = its filling, rebung = bamboo shoots (rebung). And udang = shrimp, exactly as in Indonesian.
-    grammar: jv.reading.written-style
-    examples:
-      - text: Lumpia iku panganan kang misuwur saka Semarang.
-        ar_eg: اللومبيا أكلة مشهورة من سيمارانج.
-        ar: اللومبيا طعام مشهور من سيمارانج.
-        en: Lumpia is a famous food from Semarang.
-      - text: Lumpia iku sawijining panganan Tionghoa kang wis dadi panganan Jawa.
-        ar_eg: اللومبيا أكلة صيني بقت أكلة جاوية.
-        ar: اللومبيا طعام صيني صار طعامًا جاويًا.
-        en: Lumpia is a Chinese food that has become a Javanese food.
-      - text: Isine rebung, endhog lan udang.
-        ar_eg: حشوها براعم بامبو وبيض وجمبري.
-        ar: حشوتها براعم الخيزران والبيض والروبيان.
-        en: Its filling is bamboo shoots, egg and shrimp.
+  ar_eg: تسمع مقالة ويكيبيديا جاوية عن القاهرة وتفهمها من غير ما تشوفها.
+  ar: أن تستمع إلى مقالة ويكيبيديا جاوية عن القاهرة وتفهمها دون أن تراها.
+  en: Follow a Javanese Wikipedia article about Cairo by ear.
 exercises:
   - id: e01
     type: listen
-    text: Lumpia iku panganan kang misuwur saka Semarang.
-    options:
-      - Lumpia iku panganan kang murah saka Semarang.
-      - Lumpia iku panganan kang misuwur saka Kudus.
-      - Lumpia iku panganan kang misuwur saka Semarang.
+    text: Kairo iku ibukutha Mesir lan kutha kang paling gedhe ing Mesir.
+    question:
+      ar_eg: دي مقالة عن مدينتك! المقالة بتقول إن القاهرة إيه؟
+      ar: هذه مقالة عن مدينتك! ماذا تقول المقالة عن القاهرة؟
+      en: This article is about your city! What does it say Cairo is?
+    options: [ibukutha Mesir, pulo ing Mesir, provinsi ing Mesir]
+    answer: 0
+    meaning:
+      ar_eg: القاهرة هي عاصمة مصر وأكبر مدينة في مصر.
+      ar: القاهرة عاصمة مصر وأكبر مدنها.
+      en: Cairo is the capital of Egypt and the biggest city in Egypt.
+    explain:
+      ar_eg: kang paling gedhe = اللي هي الأكبر (yang paling besar).
+      ar: kang paling gedhe = الأكبر (yang paling besar).
+      en: kang paling gedhe = the biggest (yang paling besar).
+    words: [ibukutha]
+  - id: e02
+    type: listen
+    text: Kutha iki ana ing pinggir kali Nil.
+    question:
+      ar_eg: القاهرة فين؟
+      ar: أين تقع القاهرة؟
+      en: Where is Cairo?
+    options: [ing pinggir segara, ing pinggir kali Nil, ing pesisir kidul]
+    answer: 1
+    meaning:
+      ar_eg: المدينة دي على ضفة نهر النيل.
+      ar: تقع هذه المدينة على ضفة نهر النيل.
+      en: This city lies on the bank of the Nile.
+    explain:
+      ar_eg: kali = نهر، زي kali في الإندونيسي (sungai). pinggir = جنب / ضفة.
+      ar: kali = نهر، كـ kali في الإندونيسية (sungai)، وpinggir = حافة / ضفة.
+      en: kali = river, as in Indonesian kali (sungai); pinggir = edge, bank.
+    words: [kali]
+  - id: e03
+    type: listen
+    text: Ing Kairo ana masjid kang lawas banget, yaiku Masjid Al-Azhar.
+    question:
+      ar_eg: المقالة ذكرت أنهي مكان؟
+      ar: أي مكان تذكره المقالة؟
+      en: Which place does the article name?
+    options: [Benteng Pendem, Menara Kudus, Masjid Al-Azhar]
     answer: 2
     meaning:
-      ar_eg: اللومبيا أكلة مشهورة من سيمارانج.
-      ar: اللومبيا طعام مشهور من سيمارانج.
-      en: Lumpia is a famous food from Semarang.
-    words: [misuwur]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: حسب المقالة، اللومبيا أصلها أكلة إيه؟
-      ar: بحسب المقالة، أصل اللومبيا طعامُ أيّ قوم؟
-      en: According to the article, lumpia was originally whose food?
-    options: [Walanda, Tionghoa, Arab]
-    answer: 1
-    explain:
-      ar_eg: «sawijining panganan Tionghoa kang wis dadi panganan Jawa» = أكلة صيني بقت جاوية.
-      ar: «sawijining panganan Tionghoa kang wis dadi panganan Jawa» = طعام صيني صار جاويًا.
-      en: '"sawijining panganan Tionghoa kang wis dadi panganan Jawa" = a Chinese food that became Javanese.'
-    words: [Tionghoa]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي حاجة من دول في حشو اللومبيا؟
-      ar: أيّ هذه في حشوة اللومبيا؟
-      en: Which of these is in the lumpia filling?
-    options: [rebung, kenthang, tempe]
-    answer: 0
-    words: [isi, rebung]
+      ar_eg: في القاهرة جامع قديم جدًا، هو الجامع الأزهر.
+      ar: في القاهرة مسجد قديم جدًا، هو الجامع الأزهر.
+      en: In Cairo there is a very old mosque, namely Al-Azhar Mosque.
+    words: [yaiku, lawas]
   - id: e04
     type: match_pairs
     pairs:
-      - text: isi
-        ar_eg: حشو
-        ar: حشوة
-        en: filling
-      - text: rebung
-        ar_eg: براعم البامبو
-        ar: براعم الخيزران
-        en: bamboo shoots
-      - text: Tionghoa
-        ar_eg: صيني
-        ar: صيني
-        en: Chinese
-      - text: panganan
-        ar_eg: أكل
-        ar: طعام
-        en: food
-      - text: endhog
-        ar_eg: بيض
-        ar: بيض
-        en: egg
-    words: [isi, rebung, Tionghoa, panganan, endhog]
+      - text: kali
+        ar_eg: نهر
+        ar: نهر
+        en: river
+      - text: segara
+        ar_eg: بحر
+        ar: بحر
+        en: sea
+      - text: pulo
+        ar_eg: جزيرة
+        ar: جزيرة
+        en: island
+      - text: ibukutha
+        ar_eg: عاصمة
+        ar: عاصمة
+        en: capital city
+      - text: paling gedhe
+        ar_eg: الأكبر
+        ar: الأكبر
+        en: the biggest
+    words: [kali, segara, pulo, ibukutha]
   - id: e05
     type: fill_blank
-    sentence: ___ rebung, endhog lan udang.
+    sentence: Ing Kairo ana masjid kang lawas banget, ___ Masjid Al-Azhar.
     meaning:
-      ar_eg: حشوها براعم بامبو وبيض وجمبري.
-      ar: حشوتها براعم الخيزران والبيض والروبيان.
-      en: Its filling is bamboo shoots, egg and shrimp.
-    options: [Regane, Isine, Jenenge]
-    answers: [Isine]
-    words: [isi]
+      ar_eg: في القاهرة جامع قديم جدًا، هو الجامع الأزهر.
+      ar: في القاهرة مسجد قديم جدًا، هو الجامع الأزهر.
+      en: In Cairo there is a very old mosque, namely Al-Azhar Mosque.
+    options: [minangka, yaiku, kalebu]
+    answers: [yaiku]
+    explain:
+      ar_eg: yaiku بتسمّي الحاجة اللي اتكلمنا عنها بشكل عام («جامع قديم» ← الأزهر).
+      ar: yaiku تسمّي ما ذُكر بشكل عام («مسجد قديم» ← الأزهر).
+      en: yaiku names the thing just mentioned in general terms ("an old mosque" → Al-Azhar).
+    words: [yaiku]
   - id: e06
     type: dictation
-    text: Lumpia iku panganan kang misuwur saka Semarang.
+    text: Kutha iki ana ing pinggir kali Nil.
     meaning:
-      ar_eg: اللومبيا أكلة مشهورة من سيمارانج.
-      ar: اللومبيا طعام مشهور من سيمارانج.
-      en: Lumpia is a famous food from Semarang.
-    words: [misuwur, panganan]
+      ar_eg: المدينة دي على ضفة نهر النيل.
+      ar: تقع هذه المدينة على ضفة نهر النيل.
+      en: This city lies on the bank of the Nile.
+    words: [kali]
   - id: e07
-    type: build_sentence
-    source:
-      ar_eg: (بأسلوب المقالة) اللومبيا أكلة صيني بقت أكلة جاوية.
-      ar: (بأسلوب المقالة) اللومبيا طعام صيني صار طعامًا جاويًا.
-      en: (article style) Lumpia is a Chinese food that has become a Javanese food.
-    answer: Lumpia iku sawijining panganan Tionghoa kang wis dadi panganan Jawa.
-    distractors: [Walanda, saka]
-    words: [Tionghoa, sawijining, kang]
-  - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: حشو اللومبيا براعم بامبو وبيض وجمبري.
-      ar: حشوة اللومبيا براعم الخيزران والبيض والروبيان.
-      en: The lumpia filling is bamboo shoots, egg and shrimp.
+      ar_eg: (بأسلوب المقالة) القاهرة هي عاصمة مصر، وهي على ضفة نهر النيل.
+      ar: (بأسلوب المقالة) القاهرة عاصمة مصر، وتقع على ضفة نهر النيل.
+      en: (article style) Cairo is the capital of Egypt and lies on the bank of the Nile.
     answers:
-      - Isine lumpia rebung, endhog lan udang.
-      - Isine lumpia iku rebung, endhog lan udang.
-      - Isi lumpia iku rebung, endhog lan udang.
-      - Isi lumpia rebung, endhog lan udang.
-      - Lumpia isine rebung, endhog lan udang.
-      - Isine rebung, endhog lan udang.
-      - Isine lumpia yaiku rebung, endhog lan udang.
-      - Isi lumpia yaiku rebung, endhog lan udang.
-    words: [isi, rebung]
+      - Kairo iku ibukutha Mesir lan ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir, ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir lan kutha iki ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir. Kutha iki ana ing pinggir kali Nil.
+      - Kairo ibukutha Mesir lan ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir lan ana ing pinggire kali Nil.
+    words: [kali, ibukutha]
+  - id: e08
+    type: speaking
+    text: Aku saka Kairo, ibukutha Mesir, ing pinggir kali Nil.
+    meaning:
+      ar_eg: أنا من القاهرة، عاصمة مصر، على ضفة النيل.
+      ar: أنا من القاهرة، عاصمة مصر، على ضفة النيل.
+      en: I'm from Cairo, the capital of Egypt, on the bank of the Nile.
+    words: [kali, ibukutha]
 dialogue:
-  title: Ing warung lumpia
+  title: Artikel Kairo
   lines:
-    - speaker: Mohamed
-      text: Mbak, lumpia iki isine apa?
-      ar_eg: يا آيو، اللومبيا دي حشوها إيه؟
-      ar: يا آيو، ما حشوة هذه اللومبيا؟
-      en: Ayu, what's the filling of this lumpia?
     - speaker: Mbak Ayu
-      text: Rebung, endhog lan udang, kaya ing artikel.
-      ar_eg: براعم بامبو وبيض وجمبري، زي ما في المقالة.
-      ar: براعم الخيزران والبيض والروبيان، كما في المقالة.
-      en: Bamboo shoots, egg and shrimp, like in the article.
+      text: Mohamed, aku maca artikel Kairo ing Wikipedia basa Jawa.
+      ar_eg: يا محمد، أنا قريت مقالة القاهرة في ويكيبيديا الجاوية.
+      ar: يا محمد، قرأت مقالة القاهرة في ويكيبيديا الجاوية.
+      en: Mohamed, I read the Cairo article on Javanese Wikipedia.
     - speaker: Mohamed
-      text: Rebung? Ing basa Indonesia uga rebung, ta?
-      ar_eg: rebung؟ في الإندونيسي برضه rebung، مش كده؟
-      ar: rebung؟ وفي الإندونيسية أيضًا rebung، أليس كذلك؟
-      en: Rebung? It's rebung in Indonesian too, isn't it?
+      text: Tenan? Artikele ngomong apa?
+      ar_eg: بجد؟ المقالة بتقول إيه؟
+      ar: حقًا؟ ماذا تقول المقالة؟
+      en: Really? What does the article say?
     - speaker: Mbak Ayu
-      text: Iya, padha. Ayo mangan!
-      ar_eg: آه، زي بعض. يلا ناكل!
-      ar: نعم، هي نفسها. هيا نأكل!
-      en: Yes, the same. Let's eat!
+      text: Kairo iku kutha kang paling gedhe ing Mesir, ing pinggir kali Nil.
+      ar_eg: القاهرة أكبر مدينة في مصر، على النيل.
+      ar: القاهرة أكبر مدينة في مصر، على ضفة النيل.
+      en: Cairo is the biggest city in Egypt, on the Nile.
     - speaker: Mohamed
-      text: Enak banget! Aku seneng panganan Tionghoa-Jawa iki.
-      ar_eg: حلوة أوي! أنا بحب الأكلة الصيني الجاوي دي.
-      ar: لذيذة جدًا! أحب هذا الطعام الصيني الجاوي.
-      en: Really tasty! I love this Chinese-Javanese food.
+      text: Bener, lho. Omahku ora adoh saka kali Nil.
+      ar_eg: صح. بيتي مش بعيد عن النيل.
+      ar: صحيح. بيتي ليس بعيدًا عن النيل.
+      en: Right. My home isn't far from the Nile.
+    - speaker: Mbak Ayu
+      text: Wah, aku uga arep dolan menyang Kairo!
+      ar_eg: الله، أنا كمان عايزة أزور القاهرة!
+      ar: رائع، أنا أيضًا أريد زيارة القاهرة!
+      en: Wow, I want to visit Cairo too!
 new_words:
-  - word: Tionghoa
-    pos: adjective
-    ar_eg: صيني
-    ar: صيني
-    en: Chinese = Tionghoa
-  - word: isi
+  - word: kali
     pos: noun
-    ar_eg: حشو (isine = حشوه)
-    ar: حشوة (isine = حشوته)
-    en: filling, contents (isine = its filling) = isi
-  - word: rebung
-    pos: noun
-    ar_eg: براعم البامبو
-    ar: براعم الخيزران
-    en: bamboo shoots = rebung
+    ar_eg: نهر (≠ إندونيسي kali = مرة (dua kali = مرتين))
+    ar: نهر (≠ الإندونيسية kali = مرة (dua kali = مرتين))
+    en: river = sungai, kali (≠ Indonesian kali "time(s), as in dua kali")
+    false_friend: kali
 review:
   status: draft
   verified: false

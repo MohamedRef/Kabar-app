@@ -1,205 +1,250 @@
 schema: kabar.lesson/v1
 id: j2.u05.l06
 language: jv
-title: Ulangan J2.5
+title: Resik-resik omah
 can_do:
-  ar_eg: توصف يومك العادي بالجاوي.
-  ar: أن تصف روتينك اليومي بالجاوية.
-  en: Describe your routine.
+  ar_eg: 'تشارك في تنضيف البيت يوم الحد: الأرضية والحصيرة، تنشر الهدوم وتكويها، وتغسل إيدك وسنانك.'
+  ar: 'أن تشارك في تنظيف البيت يوم الأحد: الأرضية والحصيرة، ونشر الثياب وكيّها، وغسل اليدين والأسنان.'
+  en: 'Join the Sunday house clean: floor and mat, hang out and iron the washing, wash hands and brush teeth.'
 slides:
-  - title: Ringkesan J2.5
+  - title: Minggu esuk
     body:
       ar_eg: |
-        - الأمر: -a من غير مفعول (Mangana! Adusa!)، -en على الأصل مع مفعول (Panganen! Wacanen!)، -na لأفعال -ake (Tukokna! Jupukna!)، و-i بتفضل (Enteni! Rewangi!).
-        - النهي: aja + الفعل (Aja lali!)، مش ora.
-        - ليّن دايمًا: ya / to في الآخر، tulung في الأول، sik، mbok.
-        - -i / -ni: nyirami، nekani، ngancani، ngenteni، ngresiki، وmateni (= mematikan). ومع tak / di- الأصل: tak kancani، dipateni.
-        - اليوم: tangi، salat Subuh، adus، sarapan، mangkat، kuliah، masak، mulih، turu — saben dina.
+        - **jogan** = الأرضية جوه البيت (lantai) · **klasa** = حصيرة (tikar) · **suket** = حشيش، عشب (rumput)
+        - **mepe** = ينشر في الشمس (menjemur): mepe klambi · **nyetrika** = يكوي (menyetrika)
+        - **wisuh** = يغسل إيديه أو رجليه (cuci tangan) · **untu** = سنان (gigi): gosok untu = يغسل سنانه
+        - **turon** = يتمدد ويرتاح (rebahan): Aja turon wae! = ماتفضلش ممدد كده!
       ar: |
-        - الأمر: -a بلا مفعول (Mangana! Adusa!)، و-en على الجذر مع المفعول (Panganen! Wacanen!)، و-na لأفعال -ake (Tukokna! Jupukna!)، وتبقى -i (Enteni! Rewangi!).
-        - النهي: aja + الفعل (Aja lali!) لا ora.
-        - لطّف دائمًا: ya / to آخرًا، وtulung أولًا، وsik، وmbok.
-        - -i / -ni: nyirami، nekani، ngancani، ngenteni، ngresiki، وmateni (= mematikan)، ومع tak / di- الجذر: tak kancani، dipateni.
-        - اليوم: tangi، salat Subuh، adus، sarapan، mangkat، kuliah، masak، mulih، turu — saben dina.
+        - **jogan** = أرضية البيت (lantai) · **klasa** = حصيرة (tikar) · **suket** = عشب (rumput)
+        - **mepe** = ينشر في الشمس (menjemur): mepe klambi · **nyetrika** = يكوي (menyetrika)
+        - **wisuh** = يغسل يديه أو قدميه (cuci tangan) · **untu** = أسنان (gigi): gosok untu = ينظّف أسنانه
+        - **turon** = يستلقي ويتكاسل (rebahan): Aja turon wae! = لا تبقَ مستلقيًا!
       en: |
-        - Commands: -a with no object (Mangana! Adusa!), -en on the base with an object (Panganen! Wacanen!), -na for -ake verbs (Tukokna! Jupukna!), -i stays (Enteni! Rewangi!).
-        - Don't: aja + verb (Aja lali!), never ora.
-        - Always soften: ya / to at the end, tulung at the start, sik, mbok.
-        - -i / -ni: nyirami, nekani, ngancani, ngenteni, ngresiki, and mateni (= mematikan). With tak / di- the base: tak kancani, dipateni.
-        - The day: tangi, salat Subuh, adus, sarapan, mangkat, kuliah, masak, mulih, turu — saben dina.
-    grammar: jv.imperative.ngoko
+        - **jogan** = floor inside the house (lantai) · **klasa** = mat (tikar) · **suket** = grass (rumput)
+        - **mepe** = dry in the sun (menjemur): mepe klambi · **nyetrika** = iron (menyetrika)
+        - **wisuh** = wash your hands or feet (cuci tangan) · **untu** = teeth (gigi): gosok untu = brush your teeth
+        - **turon** = lie around (rebahan): Aja turon wae! = Don't just lie there!
+    examples:
+      - text: Wisuh sik, banjur mangan!
+        ar_eg: اغسل إيدك الأول، وبعدين كُل!
+        ar: اغسل يديك أولًا، ثم كُل!
+        en: Wash your hands first, then eat!
+      - text: Srengengene panas, ayo mepe klambi.
+        ar_eg: الشمس سخنة، يلا ننشر الهدوم.
+        ar: الشمس حارّة، هيّا ننشر الثياب.
+        en: The sun's hot, let's hang the washing out.
+      - text: Jogane reged, akeh suket.
+        ar_eg: الأرضية وسخة، فيها حشيش كتير.
+        ar: الأرضية متسخة، فيها عشب كثير.
+        en: The floor's dirty, lots of grass on it.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: tangi
-        ar_eg: يصحى
-        ar: يستيقظ
-        en: wake up
-      - text: sarapan
-        ar_eg: يفطر
-        ar: يفطر
-        en: have breakfast
-      - text: mulih
-        ar_eg: يروّح
-        ar: يعود إلى البيت
-        en: go home
-      - text: ngresiki
-        ar_eg: ينضّف
-        ar: ينظّف
-        en: clean
-      - text: lali
-        ar_eg: ينسى
-        ar: ينسى
-        en: forget
-    words: [tangi, sarapan, mulih, ngresiki, lali]
+      - text: jogan
+        ar_eg: أرضية
+        ar: أرضية
+        en: floor
+      - text: klasa
+        ar_eg: حصيرة
+        ar: حصيرة
+        en: mat
+      - text: mepe
+        ar_eg: ينشر في الشمس
+        ar: ينشر في الشمس
+        en: dry in the sun
+      - text: nyetrika
+        ar_eg: يكوي
+        ar: يكوي
+        en: iron
+    words: [jogan, klasa, mepe, nyetrika]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «استناني!» أنهي صح؟
-      ar: «انتظرني!» أيّها الصحيح؟
-      en: '"Wait for me!" Which is right?'
-    options: [Enteni aku!, Ngenteni aku!, Aja enteni aku!]
-    answer: 0
-    explain:
-      ar_eg: 'الأمر من غير N-: Enteni! أما ngenteni فللجملة العادية.'
-      ar: 'الأمر بلا N-: Enteni!، أما ngenteni فللخبر.'
-      en: 'The command has no N-: Enteni! ngenteni is for statements.'
-    words: [enteni]
+    type: match_pairs
+    pairs:
+      - text: wisuh
+        ar_eg: يغسل إيديه
+        ar: يغسل يديه
+        en: wash hands
+      - text: untu
+        ar_eg: سنان
+        ar: أسنان
+        en: teeth
+      - text: turon
+        ar_eg: يتمدد
+        ar: يستلقي
+        en: lie around
+      - text: suket
+        ar_eg: حشيش
+        ar: عشب
+        en: grass
+    words: [wisuh, untu, turon, suket]
   - id: e03
+    type: listen
+    text: Wisuh sik, banjur mangan!
+    question:
+      ar_eg: ماما بتقول إيه؟
+      ar: ماذا تقول الأم؟
+      en: What does Mum say?
+    options: [اغسل إيدك الأول وبعدين كُل, كُل الأول, نام شوية]
+    answer: 0
+    meaning:
+      ar_eg: اغسل إيدك الأول، وبعدين كُل!
+      ar: اغسل يديك أولًا، ثم كُل!
+      en: Wash your hands first, then eat!
+    words: [wisuh]
+  - id: e04
+    type: fill_blank
+    sentence: Srengengene panas, ayo ___ klambi.
+    meaning:
+      ar_eg: الشمس سخنة، يلا ___ الهدوم.
+      ar: الشمس حارّة، هيّا ___ الثياب.
+      en: The sun's hot, let's ___ the clothes.
+    options: [mepe, turon, wisuh]
+    answers: [mepe]
+    words: [mepe, turon, wisuh]
+    explain:
+      ar_eg: mepe = ينشر في الشمس، والشمس حامية. turon = يتمدد / يكسل، وwisuh = يغسل إيده.
+      ar: mepe = ينشر في الشمس، والشمس حارة؛ أما turon فيستلقي، وwisuh يغسل يديه.
+      en: mepe = dry in the sun, and it's sunny. turon = lie around, wisuh = wash your hands.
+  - id: e05
+    type: fill_blank
+    sentence: Aja ___ wae neng klasa, ayo nyapu!
+    meaning:
+      ar_eg: ماتفضلش ___ على الحصيرة، يلا اكنس!
+      ar: لا تبقَ ___ على الحصيرة، هيّا اكنس!
+      en: Don't just ___ on the mat, come and sweep!
+    options: [turon, nyetrika, suket]
+    answers: [turon]
+    words: [turon, klasa, nyetrika, suket]
+    explain:
+      ar_eg: "turon = يتمدد كسلان، وwae = بس: متتمددش وخلاص. nyetrika = يكوي، وsuket = حشيش (اسم مش فعل)."
+      ar: "turon = يستلقي كسلًا، وwae = فقط: لا تكتفِ بالاستلقاء؛ أما nyetrika فيكوي، وsuket عشب (اسم لا فعل)."
+      en: turon = lie around, wae = just. nyetrika = iron, suket = grass (a noun, not a verb).
+  - id: e06
     type: multiple_choice
     question_meaning:
-      ar_eg: «كُل العيش!» (مع مفعول). أنهي صح؟
-      ar: «كُل الخبز!» (مع مفعول). أيّها الصحيح؟
-      en: '"Eat the bread!" (with an object). Which is right?'
-    options: [Panganen rotine!, Mangana rotine!, Aja mangan rotine!]
+      ar_eg: «سنان» بالجاوي؟
+      ar: كيف تقول «أسنان» بالجاوية؟
+      en: '"Teeth" in Javanese?'
+    options: [untu, suket, jogan]
     answer: 0
     explain:
-      ar_eg: 'مع مفعول: الأصل pangan + -en. وMangana من غير مفعول بس.'
-      ar: 'مع المفعول: الجذر pangan + -en، أما Mangana فبلا مفعول.'
-      en: 'With an object: base pangan + -en; Mangana is only for no object.'
-    words: [panganen]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «ماتشربش شاي بتلج!» أنهي صح؟
-      ar: «لا تشرب شايًا مثلّجًا!» أيّها الصحيح؟
-      en: '"Don''t drink iced tea!" Which is right?'
-    options: [Ora ngombe es teh!, Aja ngombe es teh!, Dudu ngombe es teh!]
-    answer: 1
-    words: [aja, ngombe]
-  - id: e05
-    type: listen
-    text: Tulung tukokna gula, ya.
-    options: ['Tulung jupukna gula, ya.', 'Aja tuku gula, ya.', 'Tulung tukokna gula, ya.']
-    answer: 2
-    words: [tulung, tukokna]
-  - id: e06
-    type: fill_blank
-    sentence: Aku ___ kowe neng ngarep alun-alun.
-    meaning:
-      ar_eg: أنا مستنيك قدام الميدان.
-      ar: أنتظرك أمام الساحة.
-      en: I'm waiting for you in front of the town square.
-    options: [ngenteni, enteni, tukokna]
-    answers: [ngenteni]
-    words: [ngenteni]
+      ar_eg: untu = gigi (سنان). suket = حشيش، وjogan = أرضية.
+      ar: untu = gigi (أسنان)، أما suket فعشب وjogan أرضية.
+      en: untu = gigi (teeth). suket = grass, jogan = floor.
+    words: [untu, suket, jogan]
   - id: e07
-    type: fill_blank
-    sentence: Saben esuk aku ___ omah.
-    meaning:
-      ar_eg: كل يوم الصبح بنضّف البيت.
-      ar: أنظّف البيت كل صباح.
-      en: Every morning I clean the house.
-    answers: [ngresiki]
+    type: multiple_choice
+    question: Jogane reged, akeh suket.
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [الأرضية وسخة، فيها حشيش كتير, الأرضية نضيفة, الحصيرة جديدة]
+    answer: 0
     explain:
-      ar_eg: resik (نضيف) + N- + -i = ngresiki.
-      ar: resik (نظيف) + N- + -i = ngresiki.
-      en: resik (clean) + N- + -i = ngresiki.
-    words: [ngresiki, saben]
+      ar_eg: jogan = أرضية، وreged = وسخ، وsuket = حشيش.
+      ar: jogan = أرضية، وreged = متسخ، وsuket = عشب.
+      en: jogan = floor, reged = dirty, suket = grass.
+    words: [jogan, suket]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: كل يوم بصحى الساعة خمسة.
-      ar: أستيقظ كل يوم في الخامسة.
-      en: Every day I wake up at five.
-    answer: Saben dina aku tangi jam lima.
-    distractors: [turu, bengi]
-    words: [saben dina, tangi]
+      ar_eg: إنت غسلت سنانك؟
+      ar: هل نظّفت أسنانك؟
+      en: Have you brushed your teeth?
+    answer: Kowe wis gosok untu?
+    distractors: [klasa, mepe]
+    words: [untu]
+    explain:
+      ar_eg: gosok untu = يغسل سنانه، وwis = خلاص. klasa = حصيرة، وmepe = ينشر في الشمس، ومش في المعنى.
+      ar: gosok untu = ينظّف أسنانه، وwis = قد؛ أما klasa فحصير، وmepe ينشر في الشمس، وليسا في المعنى.
+      en: gosok untu = brush your teeth, wis = already. klasa (mat) and mepe (sun-dry) aren't in the meaning.
   - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: استحمى الأول، ماشي؟
-      ar: اغتسل أولًا، حسنًا؟
-      en: Have a bath first, OK?
-    answers: ['Adusa sik, ya.', 'Adusa sik, ya', Adusa sik ya., Adusa sik ya, 'Adusa dhisik, ya.', 'Adusa dhisik, ya', 'Adus sik, ya.', 'Adus sik, ya']
-    words: [adusa, sik]
+    direction: from_target
+    source_text: Klambine wis tak setrika.
+    answers_meaning:
+      ar_eg: [الهدوم كويتها خلاص, أنا كويت الهدوم]
+      ar: [كويتُ الثياب, لقد كويت الملابس]
+      en: ['I''ve ironed the clothes', The clothes are ironed]
+    words: [nyetrika]
   - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ماتنساش، ماشي!
-      ar: لا تنسَ!
-      en: Don't forget, OK!
-    answers: ['Aja lali, ya!', 'Aja lali, ya', Aja lali ya!, Aja lali ya, 'Ojo lali, ya!', 'Ojo lali, ya', Aja lali!, Aja lali]
-    words: [aja, lali]
-  - id: e11
-    type: dictation
-    text: Tulung tukokna gula, ya.
-    meaning:
-      ar_eg: والنبي هاتلي سكر.
-      ar: من فضلك اشترِ لي سكرًا.
-      en: Could you buy me some sugar?
-    words: [tulung, tukokna, gula]
-  - id: e12
     type: speaking
-    text: Saben sore aku nyirami kembang.
+    text: Klasane tak pepe, jogane tak sapu.
     meaning:
-      ar_eg: كل يوم العصر بسقي الورد.
-      ar: أسقي الزهور كل عصر.
-      en: Every afternoon I water the flowers.
-    words: [saben, nyirami, kembang]
+      ar_eg: هنشر الحصيرة في الشمس، وهكنس الأرضية.
+      ar: سأنشر الحصيرة وأكنس الأرضية.
+      en: I'll put the mat out in the sun and sweep the floor.
+    words: [klasa, mepe, jogan]
 dialogue:
-  title: Saben dina neng Kairo
   lines:
+    - speaker: Bu Rahayu
+      text: Minggu esuk kabeh nyambut gawe neng omah, ya! Aja turon wae.
+      ar_eg: الحد الصبح كلنا هنشتغل في البيت! بلاش رقدة.
+      ar: صباح الأحد سنعمل جميعًا في البيت! لا استلقاء.
+      en: Sunday morning everyone works around the house! No lying around.
     - speaker: Sari
-      text: Mohamed, neng Kairo saben dina kowe ngapa wae?
-      ar_eg: محمد، في القاهرة بتعمل إيه كل يوم؟
-      ar: يا محمد، ماذا تفعل كل يوم في القاهرة؟
-      en: Mohamed, what do you do every day in Cairo?
+      text: Nggih, Bu. Aku nyapu jogan, Mohamed mepe klasa.
+      ar_eg: حاضر يا ماما. أنا هكنس الأرضية، ومحمد ينشر الحصيرة.
+      ar: حاضر يا أمي. أكنس الأرضية، ومحمد ينشر الحصيرة.
+      en: Yes, Mum. I'll sweep the floor, Mohamed puts the mat out.
     - speaker: Mohamed
-      text: Aku tangi jam lima, salat Subuh, sarapan.
-      ar_eg: بصحى الساعة خمسة، بصلي الصبح، وبفطر.
-      ar: أستيقظ في الخامسة، وأصلي الفجر، وأفطر.
-      en: I wake up at five, pray the dawn prayer, have breakfast.
-    - speaker: Mohamed
-      text: Jam wolu aku mangkat kuliah.
-      ar_eg: الساعة تمانية بنزل الجامعة.
-      ar: في الثامنة أنطلق إلى الجامعة.
-      en: At eight I set off for university.
-    - speaker: Sari
-      text: Sore?
-      ar_eg: والعصر؟
-      ar: وعصرًا؟
-      en: And in the afternoon?
-    - speaker: Mohamed
-      text: Sore aku sinau basa Jawa!
-      ar_eg: العصر بذاكر جاوي!
-      ar: عصرًا أدرس الجاوية!
-      en: In the afternoon I study Javanese!
-    - speaker: Sari
-      text: Apik! Aja lali turu, ya!
-      ar_eg: برافو! بس ماتنساش تنام!
-      ar: أحسنت! لكن لا تنسَ أن تنام!
-      en: Great! Don't forget to sleep, OK!
-souvenir:
-  id: j2.u05.souvenir
-  title: Telaga Sarangan
-  note:
-    ar_eg: 'بحيرة سارانجان على سفح جبل لاوو فوق ماجيتان، والجو هناك بارد ومنعش. وإنت ماشي حوالين البحيرة هتسمع الأمهات بيقولوا لعيالهم «Mangana sik, ya!» — والـ ya دي مش زيادة: الأمر الجاوي من غيرها بيبان ناشف، وبيها بيبقى حنين. دلوقتي تقدر تحكي يومك وتطلب بلطف، زي أهل البلد بالظبط.'
-    ar: 'تقع بحيرة سارانغان على سفح جبل لاوو فوق ماغيتان، وهواؤها بارد منعش. وحول البحيرة ستسمع الأمهات يقلن لأطفالهن «Mangana sik, ya!»، وليست ya زائدة: فالأمر الجاوي بدونها يبدو جافًّا، وبها يصير حانيًا. صار بوسعك أن تروي يومك وتطلب بلطف كأهل البلد تمامًا.'
-    en: 'Lake Sarangan sits on the slopes of Mount Lawu above Magetan, with cool, fresh air. Walking around it you''ll hear mothers telling their kids "Mangana sik, ya!" — and that ya isn''t extra: without it a Javanese command sounds harsh; with it, it sounds caring. You can now tell your day and ask kindly, just like the locals.'
+      text: Oke! Aku mepe klambiku sisan.
+      ar_eg: ماشي! وهنشر هدومي كمان.
+      ar: حسنًا! وسأنشر ملابسي أيضًا.
+      en: On it! I'll hang my clothes out too.
+    - speaker: Bu Rahayu
+      text: Bayu, wis adus durung? Wisuh sik, banjur sarapan.
+      ar_eg: يا بايو، استحميت ولا لسه؟ اغسل إيدك الأول وبعدين افطر.
+      ar: يا بايو، هل استحممت؟ اغسل يديك أولًا ثم افطر.
+      en: Bayu, have you showered? Wash your hands, then breakfast.
+    - speaker: Bayu
+      text: Sik, Bu… aku isih ngantuk.
+      ar_eg: استني يا ماما… لسه نعسان.
+      ar: لحظة يا أمي… ما زلت نعسان.
+      en: Wait, Mum… I'm still sleepy.
+new_words:
+  - word: jogan
+    pos: noun
+    ar_eg: الأرضية جوه البيت (lantai)
+    ar: أرضية البيت (lantai)
+    en: floor inside the house (lantai)
+  - word: klasa
+    pos: noun
+    ar_eg: حصيرة (tikar)
+    ar: حصيرة (tikar)
+    en: mat (tikar)
+  - word: mepe
+    pos: verb
+    ar_eg: ينشر في الشمس (menjemur)
+    ar: ينشر في الشمس (menjemur)
+    en: to dry in the sun (menjemur)
+  - word: nyetrika
+    pos: verb
+    ar_eg: يكوي (menyetrika)
+    ar: يكوي (menyetrika)
+    en: to iron (menyetrika)
+  - word: wisuh
+    pos: verb
+    ar_eg: يغسل إيديه أو رجليه (cuci tangan)
+    ar: يغسل يديه أو قدميه (cuci tangan)
+    en: to wash hands or feet (cuci tangan)
+  - word: untu
+    pos: noun
+    ar_eg: سنان (gigi)
+    ar: أسنان (gigi)
+    en: teeth (gigi)
+  - word: turon
+    pos: verb
+    ar_eg: يتمدد ويرتاح (rebahan)
+    ar: يستلقي ويتكاسل (rebahan)
+    en: to lie around (rebahan)
+  - word: suket
+    pos: noun
+    ar_eg: حشيش، عشب (rumput)
+    ar: عشب (rumput)
+    en: grass (rumput)
 review:
   status: draft
   verified: false

@@ -1,172 +1,243 @@
 schema: kabar.lesson/v1
 id: bipa4.u09.l04
 language: id
-title: Eksposisi lingkungan
+title: Kebun organik di Tomohon
 can_do:
-  ar_eg: تكتب مقال إكسبوزيسي قصير عن قانون بيئي بأسباب ونتايج وحل.
-  ar: أن تكتب نصًا عرضيًا قصيرًا عن قانون بيئي يتضمن أسبابًا ونتائج وحلًا.
-  en: Write a short exposition on an environmental rule, with causes, effects and a solution.
+  ar_eg: 'توصف مزرعة عضوية: التربة والجذور والدود والنحل من غير كيماويات.'
+  ar: 'أن تصف مزرعة عضوية: التربة والجذور والديدان والنحل بلا مواد كيميائية.'
+  en: 'Describe an organic farm: soil, roots, worms and bees, without chemicals.'
 slides:
-  - title: Tesis, sebab-akibat, solusi
+  - title: Bertani tanpa racun
     body:
       ar_eg: |
-        مقالك عن البيئة يمشي كده:
-        الرأي: Saya berpendapat bahwa … wajib … (wajib = واجب، من العربي «واجب»).
-        الحجج بروابط السبب والنتيجة: karena، sehingga، Akibatnya, …
-        الحل: Solusinya, … / Oleh karena itu, kesadaran warga harus ditingkatkan (kesadaran = الوعي).
+        organik = عضوي (sayur organik)، ladang = غيط، أرض زراعية، tumbuhan = نبات.
+        akar = جذر، lumpur = طين، jamur = عيش الغراب، فطر.
+        cacing = دودة، lebah = نحلة (madu dari lebah).
       ar: |
-        يسير مقالك عن البيئة هكذا:
-        الرأي: Saya berpendapat bahwa … wajib … (wajib = واجب، من العربية «واجب»).
-        الحجج بروابط السبب والنتيجة: karena، sehingga، Akibatnya, …
-        الحل: Solusinya, … / Oleh karena itu, kesadaran warga harus ditingkatkan (kesadaran = الوعي).
+        organik = عضوي (sayur organik)، ladang = حقل، tumbuhan = نبات.
+        akar = جذر، lumpur = طين، jamur = فطر.
+        cacing = دودة، lebah = نحلة (madu dari lebah).
       en: |
-        Your environmental essay runs like this:
-        Thesis: Saya berpendapat bahwa … wajib … (wajib = compulsory, from Arabic «واجب»).
-        Arguments with cause-effect links: karena, sehingga, Akibatnya, …
-        Solution: Solusinya, … / Oleh karena itu, kesadaran warga harus ditingkatkan (kesadaran = awareness).
-    grammar: id.conjunction.cause-effect
+        organik = organic (sayur organik), ladang = field, farmland; tumbuhan = plant.
+        akar = root, lumpur = mud, jamur = mushroom, fungus.
+        cacing = worm, lebah = bee (madu dari lebah).
     examples:
-      - text: Saya berpendapat bahwa larangan kantong plastik wajib diterapkan di semua kota.
-        ar_eg: رأيي إن منع الأكياس البلاستيك لازم يتطبّق في كل المدن.
-        ar: أرى أنّ حظر الأكياس البلاستيكية يجب أن يُطبَّق في كل المدن.
-        en: I believe the plastic-bag ban must be applied in every city.
-      - text: Oleh karena itu, kesadaran warga harus ditingkatkan.
-        ar_eg: عشان كده، لازم وعي الناس يزيد.
-        ar: لذلك يجب رفع وعي السكان.
-        en: Therefore, residents' awareness must be raised.
+      - text: Pak Ferry punya sayur organik di ladangnya.
+        ar_eg: أستاذ فيري عنده خضار عضوي في غيطه.
+        ar: لدى السيد فيري خضار عضوية في حقله.
+        en: Pak Ferry has organic vegetables in his field.
+      - text: Cacing membuat tanah subur.
+        ar_eg: الدود بيخلّي الأرض خصبة.
+        ar: تجعل الديدان التربة خصبة.
+        en: Worms make the soil fertile.
+      - text: Akar pohon itu sangat panjang.
+        ar_eg: جذور الشجرة دي طويلة أوي.
+        ar: جذور تلك الشجرة طويلة جدًا.
+        en: That tree's roots are very long.
 exercises:
   - id: e01
-    type: listen
-    text: Kesadaran warga tentang sampah plastik masih rendah.
-    options: ["Kesadaran warga tentang sampah plastik sudah tinggi.", "Kesadaran warga tentang sampah plastik masih rendah.", "Kesadaran wisatawan tentang sampah plastik masih rendah."]
-    answer: 1
-    meaning:
-      ar_eg: وعي الناس بزبالة البلاستيك لسه قليل.
-      ar: ما زال وعي السكان بنفايات البلاستيك منخفضًا.
-      en: Residents' awareness of plastic waste is still low.
-    words: [kesadaran]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة تنفع حل في آخر المقال؟
-      ar: أيّ جملة تصلح حلًا في آخر المقال؟
-      en: Which sentence works as the solution at the end of the essay?
-    options: ["Solusinya, kita membawa tas belanja sendiri.", "Solusinya, kita membeli lebih banyak kantong plastik.", "Solusinya, kita membuang sampah ke laut."]
-    answer: 0
-    words: [solusi]
-  - id: e03
     type: match_pairs
     pairs:
-      - text: kesadaran
-        ar_eg: وعي
-        ar: وعي
-        en: awareness
-      - text: wajib
-        ar_eg: واجب / إجباري
-        ar: واجب، إلزامي
-        en: compulsory
-      - text: solusi
-        ar_eg: حل
-        ar: حل
-        en: solution
-      - text: kebijakan
-        ar_eg: سياسة
-        ar: سياسة
-        en: policy
-      - text: menerapkan
-        ar_eg: يطبّق
-        ar: يطبّق
-        en: to implement
-    words: [kesadaran, wajib, solusi, kebijakan, menerapkan]
+      - text: organik
+        ar_eg: عضوي
+        ar: عضوي
+        en: organic
+      - text: ladang
+        ar_eg: غيط
+        ar: حقل
+        en: field
+      - text: tumbuhan
+        ar_eg: نبات
+        ar: نبات
+        en: plant
+      - text: akar
+        ar_eg: جذر
+        ar: جذر
+        en: root
+    words: [organik, ladang, tumbuhan, akar]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: lumpur
+        ar_eg: طين
+        ar: طين
+        en: mud
+      - text: jamur
+        ar_eg: عيش الغراب
+        ar: فطر
+        en: mushroom
+      - text: cacing
+        ar_eg: دودة
+        ar: دودة
+        en: worm
+      - text: lebah
+        ar_eg: نحلة
+        ar: نحلة
+        en: bee
+    words: [lumpur, jamur, cacing, lebah]
+  - id: e03
+    type: listen
+    text: Setelah hujan, jalan ke ladang penuh lumpur.
+    question:
+      ar_eg: الطريق مليان إيه؟
+      ar: بماذا يمتلئ الطريق؟
+      en: What is the path full of?
+    options: [طين, رمل, تراب ناشف]
+    answer: 0
+    meaning:
+      ar_eg: بعد المطر، الطريق للغيط مليان طين.
+      ar: بعد المطر يمتلئ طريق الحقل بالطين.
+      en: After the rain, the path to the field is full of mud.
+    words: [lumpur, ladang]
   - id: e04
     type: fill_blank
-    sentence: Setiap toko ___ menerapkan larangan ini.
+    sentence: Madu ini dibuat oleh ___ di kebun bunga.
     meaning:
-      ar_eg: كل محل لازم يطبّق المنع ده.
-      ar: يجب على كل متجر أن يطبّق هذا الحظر.
-      en: Every shop must apply this ban.
-    options: [solusi, wajib, kesadaran]
-    answers: [wajib]
-    words: [wajib, menerapkan]
+      ar_eg: العسل ده عملته ___ في جنينة الورد.
+      ar: صنعت هذا العسلَ ___ في حديقة الزهور.
+      en: This honey was made by ___ in the flower garden.
+    options: [lebah, cacing, jamur]
+    answers: [lebah]
+    words: [lebah, cacing, jamur]
+    explain:
+      ar_eg: lebah = نحل، وهو اللي بيعمل العسل. cacing = دود، وjamur = عيش غراب.
+      ar: lebah = النحل، وهو صانع العسل. أما cacing فالدود، وjamur الفطر.
+      en: lebah are bees, which make honey. cacing are worms, and jamur are mushrooms.
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: خضار من غير سماد كيماوي ولا مبيدات. بالإندونيسي؟
+      ar: خضار بلا سماد كيميائي ولا مبيدات. بالإندونيسية؟
+      en: Vegetables without chemical fertiliser or pesticide. In Indonesian?
+    options: [sayur lumpur, sayur organik, sayur akar]
+    answer: 1
+    explain:
+      ar_eg: organik = عضوي.
+      ar: organik = عضوي.
+      en: organik = organic.
+    words: [lumpur, organik, akar]
+  - id: e06
+    type: fill_blank
+    sentence: Air masuk ke tanaman lewat ___.
+    meaning:
+      ar_eg: الميّه بتدخل النبات عن طريق ___.
+      ar: يدخل الماء إلى النبات عبر ___.
+      en: Water enters a plant through its ___.
+    options: [akar, ladang, organik]
+    answers: [akar]
+    words: [akar, ladang, organik, tumbuhan]
+    explain:
+      ar_eg: akar = جذر، والمية بتدخل النبات منه. ladang = غيط، وorganik = عضوي.
+      ar: akar = الجذر، ومنه يدخل الماء النبات. أما ladang فالحقل، وorganik عضوي.
+      en: akar are roots, where water enters a plant. ladang is a field, and organik is organic.
+  - id: e07
+    type: multiple_choice
+    question: Sup ini enak karena ada ___ segar dari hutan.
+    options: [cacing, lumpur, jamur]
+    answer: 2
+    explain:
+      ar_eg: jamur = عيش الغراب، فطر.
+      ar: jamur = فطر.
+      en: jamur = mushroom.
+    words: [cacing, lumpur, jamur]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: عشان كده، لازم وعي الناس يزيد.
-      ar: لذلك يجب رفع وعي السكان.
-      en: Therefore, residents' awareness must be raised.
-    answer: Oleh karena itu, kesadaran warga harus ditingkatkan.
-    distractors: [berkat, meningkatkan]
-    words: [kesadaran]
-  - id: e06
+      ar_eg: الدود والنحل مهمين للنبات.
+      ar: الديدان والنحل مهمّة للنباتات.
+      en: Worms and bees are important for plants.
+    answer: Cacing dan lebah penting untuk tumbuhan.
+    distractors: [jamur, ladang]
+    words: [cacing, lebah, tumbuhan, jamur, ladang]
+    explain:
+      ar_eg: cacing = دود، وlebah = نحل، والاتنين مهمين للنبات. jamur = عيش غراب، وladang = غيط، ومش في الجملة.
+      ar: cacing = الدود، وlebah = النحل، وكلاهما مهم للنبات. أما jamur فالفطر، وladang الحقل، وليسا في الجملة.
+      en: cacing (worms) and lebah (bees) both matter to plants. jamur (mushrooms) and ladang (field) aren't in the sentence.
+  - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أحسن حل إننا نقلّل البلاستيك اللي بيتستعمل مرة واحدة.
-      ar: أفضل حل هو تقليل البلاستيك أحادي الاستخدام.
-      en: The best solution is to reduce single-use plastic.
-    answers:
-      - Solusi terbaik adalah mengurangi plastik sekali pakai.
-      - Solusi terbaik adalah mengurangi plastik sekali pakai
-      - Solusi yang terbaik adalah mengurangi plastik sekali pakai.
-      - Solusi terbaik ialah mengurangi plastik sekali pakai.
-      - Solusi terbaik adalah mengurangi penggunaan plastik sekali pakai.
-      - Solusi paling baik adalah mengurangi plastik sekali pakai.
-    words: [solusi, sekali pakai]
-  - id: e07
-    type: dictation
-    text: Larangan ini wajib diterapkan di semua kota.
-    meaning:
-      ar_eg: المنع ده لازم يتطبّق في كل المدن.
-      ar: يجب تطبيق هذا الحظر في كل المدن.
-      en: This ban must be applied in every city.
-    words: [wajib, larangan]
-  - id: e08
+    direction: from_target
+    source_text: Tumbuhan di ladang organik itu tumbuh tanpa racun.
+    answers_meaning:
+      ar_eg: [النبات في الغيط العضوي ده بيطلع من غير سموم, الزرع في الغيط العضوي بيكبر من غير كيماويات سامة]
+      ar: [تنمو النباتات في ذلك الحقل العضوي بلا سموم, النباتات في الحقل العضوي تنمو من غير مواد سامّة]
+      en: [The plants in that organic field grow without poison, Plants grow without poisons in that organic field]
+    words: [tumbuhan, ladang, organik]
+  - id: e10
     type: speaking
-    text: Saya berpendapat bahwa kesadaran warga adalah solusi terbaik.
+    text: Di ladang organik ada cacing, lebah, dan jamur.
     meaning:
-      ar_eg: رأيي إن وعي الناس هو أحسن حل.
-      ar: أرى أنّ وعي السكان هو أفضل حل.
-      en: I believe residents' awareness is the best solution.
-    words: [kesadaran, solusi]
+      ar_eg: في الغيط العضوي فيه دود ونحل وعيش غراب.
+      ar: في الحقل العضوي ديدان ونحل وفطر.
+      en: In an organic field there are worms, bees and mushrooms.
+    words: [ladang, organik, cacing, lebah, jamur, lumpur, akar]
 dialogue:
-  title: Esai untuk Bu Grace
   lines:
     - speaker: Bu Grace
-      text: Apa tesis eksposisimu, Mohamed?
-      ar_eg: إيه رأيك الأساسي في المقال يا محمد؟
-      ar: ما أطروحة نصك العرضي يا محمد؟
-      en: What's the thesis of your exposition, Mohamed?
+      text: Mohamed, ini kebun keluarga saya di Tomohon. Semuanya organik.
+      ar_eg: يا محمد، دي جنينة عيلتي في توموهون. كلها عضوي.
+      ar: يا محمد، هذه مزرعة عائلتي في توموهون، وكل ما فيها عضوي.
+      en: Mohamed, this is my family's farm in Tomohon. Everything's organic.
     - speaker: Mohamed
-      text: Saya berpendapat bahwa larangan kantong plastik wajib diterapkan di Manado.
-      ar_eg: رأيي إن منع الأكياس البلاستيك لازم يتطبّق في مانادو.
-      ar: أرى أنّ حظر الأكياس البلاستيكية يجب أن يُطبَّق في مانادو.
-      en: I believe the plastic-bag ban must be applied in Manado.
+      text: Tanpa pupuk kimia? Kok tumbuhannya bisa subur?
+      ar_eg: من غير سماد كيماوي؟ إزاي النبات بيطلع حلو كده؟
+      ar: بلا سماد كيميائي؟ كيف تنمو النباتات بهذه الخصوبة؟
+      en: No chemical fertiliser? How do the plants grow so well?
     - speaker: Bu Grace
-      text: Apa argumenmu?
-      ar_eg: وإيه حجتك؟
-      ar: وما حجتك؟
-      en: What's your argument?
+      text: Kami pakai kompos. Cacing membuat tanah bagus untuk akar.
+      ar_eg: بنستخدم سماد طبيعي. والدود بيخلّي الأرض كويسة للجذور.
+      ar: نستخدم السماد العضوي، والديدان تجعل التربة جيدة للجذور.
+      en: We use compost. Worms make the soil good for the roots.
     - speaker: Mohamed
-      text: Plastik merusak terumbu karang. Akibatnya, ikan dan wisatawan berkurang.
-      ar_eg: البلاستيك بيبوّظ الشعاب المرجانية. والنتيجة إن السمك والسياح بيقلّوا.
-      ar: البلاستيك يضرّ الشعاب المرجانية، ونتيجة لذلك يقلّ السمك والسياح.
-      en: Plastic damages the coral reefs. As a result, there are fewer fish and fewer tourists.
+      text: Itu ada kotak kayu. Buat apa, Bu?
+      ar_eg: فيه صندوق خشب هناك. ده لإيه؟
+      ar: هناك صندوق خشبي. ما فائدته؟
+      en: There's a wooden box there. What's it for?
     - speaker: Bu Grace
-      text: Bagus. Dan solusinya?
-      ar_eg: حلو. والحل؟
-      ar: جيد. وما الحل؟
-      en: Good. And the solution?
-    - speaker: Mohamed
-      text: Kita harus meningkatkan kesadaran warga dan membawa tas belanja sendiri.
-      ar_eg: لازم نزوّد وعي الناس ونجيب شنط التسوّق بتاعتنا معانا.
-      ar: يجب أن نرفع وعي السكان وأن نحمل أكياس التسوّق الخاصة بنا.
-      en: We need to raise residents' awareness and bring our own shopping bags.
+      text: Rumah lebah! Madu kami dari ladang ini juga.
+      ar_eg: بيت النحل! والعسل بتاعنا من الغيط ده برضه.
+      ar: إنه خلية نحل! وعسلنا أيضًا من هذا الحقل.
+      en: A beehive! Our honey comes from this field too.
 new_words:
-  - word: kesadaran
+  - word: organik
+    pos: adj
+    ar_eg: عضوي
+    ar: عضوي
+    en: organic
+  - word: ladang
     pos: noun
-    ar_eg: وعي
-    ar: وعي
-    en: awareness
+    ar_eg: غيط، أرض زراعية
+    ar: حقل
+    en: field, farmland
+  - word: tumbuhan
+    pos: noun
+    ar_eg: نبات
+    ar: نبات
+    en: plant
+  - word: akar
+    pos: noun
+    ar_eg: جذر
+    ar: جذر
+    en: root
+  - word: lumpur
+    pos: noun
+    ar_eg: طين
+    ar: طين
+    en: mud
+  - word: jamur
+    pos: noun
+    ar_eg: عيش الغراب، فطر
+    ar: فطر
+    en: mushroom, fungus
+  - word: cacing
+    pos: noun
+    ar_eg: دودة
+    ar: دودة
+    en: worm
+  - word: lebah
+    pos: noun
+    ar_eg: نحلة
+    ar: نحلة
+    en: bee
 review:
   status: draft
   verified: false

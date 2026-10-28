@@ -1,188 +1,246 @@
 schema: kabar.lesson/v1
 id: bipa3.u02.l07
 language: id
-title: Ulangan Unit 2
+title: Relawan penyu
 can_do:
-  ar_eg: "تدافع عن الطبيعة: تقول رأيك، تسأل، وتوافق أو تعترض بأدب."
-  ar: "أن تدافع عن الطبيعة: تعبّر عن رأيك وتسأل وتوافق أو تعترض بأدب."
-  en: Argue for protecting nature.
+  ar_eg: تتكلم عن مجموعة متطوعين بتحمي السلاحف والحيوانات البرية للجيل الجاي.
+  ar: أن تتحدث عن مجموعة متطوعين تحمي السلاحف والحيوانات البرية للجيل القادم.
+  en: Talk about a volunteer group protecting turtles and wildlife for the next generation.
+slides:
+  - title: Komunitas di Gili
+    body:
+      ar_eg: |
+        peduli = يهتم بـ (peduli lingkungan = مهتم بالبيئة). komunitas = جماعة، مجتمع صغير.
+        sekelompok = مجموعة من (sekelompok anak muda = شوية شباب). upaya = مجهود، محاولة.
+        perlindungan = حماية (من lindung). generasi = جيل (generasi muda = الجيل الجديد).
+        mempertahankan = يحافظ على حاجة عشان تفضل. liar = بري (hewan liar = حيوانات برية).
+      ar: |
+        peduli = يهتم بـ (peduli lingkungan = مهتم بالبيئة). komunitas = مجتمع، جماعة.
+        sekelompok = مجموعة من (sekelompok anak muda = مجموعة من الشباب). upaya = جهد، مسعى.
+        perlindungan = حماية (من lindung). generasi = جيل (generasi muda = جيل الشباب).
+        mempertahankan = يحافظ على الشيء ويُبقيه. liar = بري (hewan liar = حيوانات برية).
+      en: |
+        peduli = care (about) (peduli lingkungan = environmentally minded). komunitas = community.
+        sekelompok = a group of (sekelompok anak muda = a group of young people). upaya = effort.
+        perlindungan = protection (from lindung). generasi = generation (generasi muda = the young generation).
+        mempertahankan = preserve, keep. liar = wild (hewan liar = wild animals).
+    examples:
+      - text: Sekelompok anak muda peduli pada penyu.
+        ar_eg: شوية شباب مهتمين بالسلاحف.
+        ar: مجموعة من الشباب تهتم بالسلاحف.
+        en: A group of young people care about turtles.
+      - text: Upaya komunitas ini sangat bagus.
+        ar_eg: مجهود الجماعة دي حلو جدًا.
+        ar: جهود هذا المجتمع رائعة.
+        en: This community's efforts are great.
+      - text: Kita harus mempertahankan alam untuk generasi muda.
+        ar_eg: لازم نحافظ على الطبيعة للجيل الجديد.
+        ar: علينا أن نحافظ على الطبيعة لجيل الشباب.
+        en: We must preserve nature for the young generation.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: alam
-        ar_eg: الطبيعة
-        ar: الطبيعة
-        en: nature
-      - text: terumbu karang
-        ar_eg: شعاب مرجانية
-        ar: شعاب مرجانية
-        en: coral reef
-      - text: nelayan
-        ar_eg: صياد سمك
-        ar: صيّاد سمك
-        en: fisherman
-      - text: relawan
-        ar_eg: متطوّع
-        ar: متطوّع
-        en: volunteer
-      - text: denda
-        ar_eg: غرامة
-        ar: غرامة
-        en: fine (penalty)
-    words: [alam, terumbu karang, nelayan, relawan, denda]
+      - text: peduli
+        ar_eg: يهتم بـ
+        ar: يهتم بـ
+        en: care about
+      - text: komunitas
+        ar_eg: جماعة
+        ar: مجتمع
+        en: community
+      - text: sekelompok
+        ar_eg: مجموعة من
+        ar: مجموعة من
+        en: a group of
+      - text: upaya
+        ar_eg: مجهود
+        ar: جهد
+        en: effort
+    words: [peduli, komunitas, sekelompok, upaya]
   - id: e02
-    type: multiple_choice
-    question: Ni Luh membeli kopi. ___ enak sekali.
-    options: [Kopinya, Kopiku, Kopi-nya]
-    answer: 0
-    explain:
-      ar_eg: القهوة اللي اتكلمنا عنها = kopinya (الـ)، لازقة من غير شَرطة.
-      ar: القهوة المذكورة = kopinya (للتعريف)، متصلة بلا شرطة.
-      en: The coffee just mentioned = kopinya ("the"), joined with no hyphen.
+    type: match_pairs
+    pairs:
+      - text: perlindungan
+        ar_eg: حماية
+        ar: حماية
+        en: protection
+      - text: generasi
+        ar_eg: جيل
+        ar: جيل
+        en: generation
+      - text: mempertahankan
+        ar_eg: يحافظ على
+        ar: يحافظ على
+        en: preserve
+      - text: liar
+        ar_eg: بري
+        ar: بري
+        en: wild
+    words: [perlindungan, generasi, mempertahankan, liar]
   - id: e03
+    type: listen
+    text: Sekelompok anak muda membuka tempat perlindungan penyu.
+    question:
+      ar_eg: الشباب فتحوا إيه؟
+      ar: ماذا افتتح الشباب؟
+      en: What did the young people open?
+    options: [مطعم, مكان لحماية السلاحف, مدرسة]
+    answer: 1
+    meaning:
+      ar_eg: شوية شباب فتحوا مكان لحماية السلاحف.
+      ar: افتتحت مجموعة من الشباب مكانًا لحماية السلاحف.
+      en: A group of young people opened a turtle sanctuary.
+    words: [sekelompok, perlindungan]
+  - id: e04
+    type: fill_blank
+    sentence: Rina sangat ___ pada lingkungan. Dia tidak pakai plastik.
+    meaning:
+      ar_eg: رينا ___ جدًا بالبيئة. مش بتستخدم بلاستيك.
+      ar: رينا ___ جدًا بالبيئة. لا تستخدم البلاستيك.
+      en: Rina really ___ about the environment. She doesn't use plastic.
+    options: [peduli, liar, generasi]
+    answers: [peduli]
+    words: [peduli, liar, generasi]
+    explain:
+      ar_eg: peduli pada = مهتم بـ. liar = برّي، وgenerasi = جيل، ومش بيمشوا مع pada lingkungan.
+      ar: peduli pada = يهتمّ بـ. أما liar فبرّيّ، وgenerasi جيل، ولا يصحّان مع pada lingkungan.
+      en: peduli pada means care about. liar means wild, generasi a generation; neither fits pada lingkungan.
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: "عايز تسأل وانت مستني «أيوه»: «مش البلاستيك خطر؟»"
-      ar: "تريد أن تسأل وأنت تنتظر «نعم»: «أليس البلاستيك خطرًا؟»"
-      en: 'You ask, expecting "yes": "Isn''t plastic dangerous?"'
-    options: ["Apakah plastik berbahaya?", "Bukankah plastik berbahaya?", "Plastik itu berbahaya."]
-    answer: 1
-    words: [bukankah, berbahaya]
-  - id: e04
-    type: listen
-    text: Katanya, siapa pun boleh ikut kegiatan ini.
-    options: ["Katanya, siapa pun boleh ikut kegiatan ini.", "Sebaiknya siapa pun ikut kegiatan ini.", "Rupanya, siapa pun boleh ikut kegiatan ini."]
-    answer: 0
-    meaning:
-      ar_eg: بيقولوا إن أي حد ممكن يشارك في النشاط ده.
-      ar: يقولون إن أيّ أحد يمكنه المشاركة في هذا النشاط.
-      en: They say anyone can join this activity.
-    words: [katanya, siapa pun, kegiatan]
-  - id: e05
-    type: listen
-    text: Pantai ini panjangnya tiga kilometer. Setiap Sabtu, para relawan menjaganya.
-    question:
-      ar_eg: الشط ده طوله قد إيه؟
-      ar: كم طول هذا الشاطئ؟
-      en: How long is this beach?
-    options: ["tiga belas kilometer", "tiga ratus meter", "tiga kilometer"]
+      ar_eg: حيوان عايش في الغابة مش في البيت، اسمه hewan …؟
+      ar: الحيوان الذي يعيش في الغابة لا في البيت هو hewan …؟
+      en: An animal that lives in the wild, not at home, is hewan …?
+    options: [komunitas, upaya, liar]
     answer: 2
-    meaning:
-      ar_eg: الشط ده طوله ٣ كيلو. كل سبت المتطوعين بيحافظوا عليه.
-      ar: طول هذا الشاطئ ثلاثة كيلومترات، ويحافظ عليه المتطوعون كل سبت.
-      en: This beach is three kilometres long. Every Saturday the volunteers look after it.
-    words: [relawan, menjaga]
+    explain:
+      ar_eg: hewan liar = حيوان بري.
+      ar: hewan liar = حيوان بري.
+      en: hewan liar = wild animal.
+    words: [liar, komunitas, upaya]
   - id: e06
     type: fill_blank
-    sentence: Saya ___ setuju karena banyak pedagang kecil memakai plastik.
+    sentence: ___ anak muda membersihkan pantai setiap Minggu.
     meaning:
-      ar_eg: أنا مش موافق أوي عشان تجار صغيرين كتير بيستعملوا البلاستيك.
-      ar: لا أوافق تمامًا لأنّ كثيرًا من صغار التجار يستعملون البلاستيك.
-      en: I don't quite agree, because many small traders use plastic.
-    options: [lebih, kurang, paling]
-    answers: [kurang]
-    words: [kurang setuju]
+      ar_eg: ___ شباب بينضفوا الشط كل أحد.
+      ar: ___ الشباب تنظف الشاطئ كل أحد.
+      en: ___ young people clean the beach every Sunday.
+    options: [Sekelompok, Perlindungan, Upaya]
+    answers: [Sekelompok]
+    words: [sekelompok, perlindungan, upaya]
+    explain:
+      ar_eg: «مجموعة شباب» = Sekelompok anak muda. Perlindungan = حماية، وUpaya = مجهود.
+      ar: «مجموعة من الشباب» Sekelompok anak muda. أما Perlindungan فحماية، وUpaya جهد.
+      en: "\"A group of young people\" is Sekelompok anak muda. Perlindungan means protection, Upaya effort."
   - id: e07
-    type: fill_blank
-    sentence: ___ hujan, Rina ikut bersih pantai.
-    meaning:
-      ar_eg: مع إنها كانت بتمطر، رينا شاركت في تنضيف الشط.
-      ar: مع أنها كانت تمطر، شاركت رينا في تنظيف الشاطئ.
-      en: Although it was raining, Rina joined the beach clean-up.
-    options: [Apakah, Inilah, Walaupun]
-    answers: [Walaupun]
-    words: [walaupun]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: ارمي الزبالة في صندوق الزبالة (أمر مؤدب).
-      ar: ضع النفايات في سلة المهملات (أمر مهذّب).
-      en: Put the rubbish in the bin (a polite command).
-    answer: Buanglah sampah di tempat sampah.
-    distractors: [membuang, apakah]
-    words: [membuang, tempat sampah]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لازم نحافظ على الشعاب المرجانية.
-      ar: يجب أن نحافظ على الشعاب المرجانية.
-      en: We must protect the coral reef.
-    answers:
-      - Kita harus menjaga terumbu karang.
-      - Kita harus menjaga terumbu karang
-      - Kita harus menjaga terumbu karangnya.
-      - Kami harus menjaga terumbu karang.
-      - Kita wajib menjaga terumbu karang.
-    words: [menjaga, terumbu karang]
-  - id: e10
+      ar_eg: لازم نحافظ على الشعاب المرجانية دي.
+      ar: علينا أن نحافظ على هذه الشعاب المرجانية.
+      en: We must preserve this coral reef.
+    answer: Kita harus mempertahankan terumbu karang ini.
+    distractors: [liar, generasi]
+    words: [mempertahankan]
+    explain:
+      ar_eg: "نحافظ على حاجة تفضل = mempertahankan: Kita harus mempertahankan terumbu karang ini. liar = برّي، وgenerasi = جيل."
+      ar: "«نحافظ على بقائه» mempertahankan: Kita harus mempertahankan terumbu karang ini. أما liar فبرّيّ، وgenerasi جيل."
+      en: "\"Preserve\" is mempertahankan: Kita harus mempertahankan terumbu karang ini. liar means wild, generasi a generation."
+  - id: e08
     type: translate
     direction: from_target
-    source_text: Sebaiknya kita mengurangi sampah plastik.
+    source_text: Upaya ini untuk generasi muda.
     answers_meaning:
-      ar_eg:
-        - الأحسن نقلّل الزبالة البلاستيك.
-        - الأحسن نقلّل البلاستيك.
-      ar:
-        - الأفضل أن نقلّل النفايات البلاستيكية.
-        - من الأفضل أن نقلّل النفايات البلاستيكية.
-      en:
-        - We'd better reduce plastic waste.
-        - It's best to reduce plastic waste.
-        - We should reduce plastic waste.
-        - We had better reduce plastic rubbish.
-    words: [sebaiknya, mengurangi]
-  - id: e11
-    type: dictation
-    text: Bagaimana pendapat Anda tentang denda itu?
-    meaning:
-      ar_eg: إيه رأي حضرتك في الغرامة دي؟
-      ar: ما رأيك في تلك الغرامة؟
-      en: What's your opinion of that fine?
-    words: [pendapat, denda]
-  - id: e12
+      ar_eg: [المجهود ده عشان الجيل الجديد, المجهود ده علشان الشباب]
+      ar: [هذا الجهد من أجل جيل الشباب, هذه الجهود لأجل الجيل الجديد]
+      en: [This effort is for the young generation, These efforts are for the younger generation]
+    words: [upaya, generasi]
+  - id: e09
     type: speaking
-    text: Inilah Gili Trawangan. Di sini tidak ada mobil!
+    text: Komunitas kami peduli pada hewan liar.
     meaning:
-      ar_eg: أهي جيلي تراوانجان. هنا مفيش عربيات!
-      ar: ها هي جيلي تراوانغان، ولا سيارات هنا!
-      en: Here's Gili Trawangan. There are no cars here!
+      ar_eg: جماعتنا مهتمة بالحيوانات البرية.
+      ar: مجتمعنا يهتم بالحيوانات البرية.
+      en: Our community cares about wild animals.
+    words: [komunitas, peduli, liar]
+  - id: e10
+    type: multiple_choice
+    question: Penyu perlu ___ dari kita.
+    options: [generasi, perlindungan, mempertahankan]
+    answer: 1
+    explain:
+      ar_eg: perlindungan = حماية، من lindung.
+      ar: perlindungan = حماية، من lindung.
+      en: perlindungan = protection, from lindung.
+    words: [perlindungan, generasi, mempertahankan]
 dialogue:
-  title: Penangkaran penyu
   lines:
-    - speaker: Mas Rizal
-      text: Inilah tempat penangkaran penyu di Gili Trawangan.
-      ar_eg: أهو ده مكان تربية السلاحف في جيلي تراوانجان.
-      ar: ها هو مكان تفقيس السلاحف في جيلي تراوانغان.
-      en: Here's the turtle hatchery on Gili Trawangan.
+    - speaker: Relawan
+      text: Selamat datang di tempat perlindungan penyu!
+      ar_eg: أهلًا بيك في مكان حماية السلاحف!
+      ar: أهلًا بك في محمية السلاحف!
+      en: Welcome to the turtle sanctuary!
     - speaker: Mohamed
-      text: Wah, penyunya kecil sekali! Berapa umurnya?
-      ar_eg: واو، السلاحف صغيرة أوي! عندها كام يوم؟
-      ar: يا للعجب، السلاحف صغيرة جدًا! كم عمرها؟
-      en: Wow, the turtles are tiny! How old are they?
-    - speaker: Mas Rizal
-      text: Baru dua minggu. Para relawan menjaganya sampai cukup besar.
-      ar_eg: أسبوعين بس. المتطوعين بيرعوها لحد ما تكبر كفاية.
-      ar: أسبوعان فقط، ويرعاها المتطوعون حتى تكبر بما يكفي.
-      en: Just two weeks. The volunteers look after them until they're big enough.
+      text: Terima kasih. Siapa yang bekerja di sini?
+      ar_eg: شكرًا. مين اللي بيشتغل هنا؟
+      ar: شكرًا. من يعمل هنا؟
+      en: Thanks. Who works here?
+    - speaker: Relawan
+      text: Sekelompok anak muda dari desa. Kami semua relawan.
+      ar_eg: شوية شباب من القرية. كلنا متطوعين.
+      ar: مجموعة من شباب القرية. كلنا متطوعون.
+      en: A group of young people from the village. We're all volunteers.
     - speaker: Mohamed
-      text: Bukankah di laut banyak plastik? Apakah mereka akan baik-baik saja?
-      ar_eg: مش البحر فيه بلاستيك كتير؟ هي هتبقى كويسة؟
-      ar: أليس في البحر بلاستيك كثير؟ هل ستكون بخير؟
-      en: Isn't there a lot of plastic in the sea? Will they be all right?
-    - speaker: Mas Rizal
-      text: Karena itu kita harus mengurangi sampah. Siapa pun bisa membantu!
-      ar_eg: عشان كده لازم نقلّل الزبالة. أي حد يقدر يساعد!
-      ar: لذلك يجب أن نقلّل النفايات، ويستطيع أيّ أحد أن يساعد!
-      en: That's why we must reduce waste. Anyone can help!
-souvenir:
-  id: bipa3.u02.souvenir
-  title: Penyu-penyu Gili
-  note:
-    ar_eg: جزر جيلي التلاتة ممنوع فيها العربيات والموتوسيكلات؛ الناس بتتنقل بالعجل أو بالـ«تشيدومو»، العربية الصغيرة اللي بيجرّها حصان. أهل الجزر عاملين أماكن لتربية السلاحف لحد ما تكبر وترجع البحر، وبيعملوا حملات لتنضيف الشعاب المرجانية. لو عُمت هناك وشُفت سلحفاة، افتكر إن ناس كتير حافظوا عليها!
-    ar: تمنع جزر جيلي الثلاث السيارات والدراجات النارية، فيتنقّل الناس بالدراجات أو بالـ«تشيدومو»، وهي عربة صغيرة يجرّها حصان. وقد أقام أهل الجزر أماكن لتفقيس السلاحف ورعايتها حتى تعود إلى البحر، وينظّمون حملات لتنظيف الشعاب المرجانية. فإذا سبحتَ هناك ورأيت سلحفاة، فتذكّر أن كثيرين حافظوا عليها!
-    en: The three Gili islands ban cars and motorbikes; people get around by bicycle or cidomo, a little horse-drawn cart. Islanders run turtle hatcheries that raise the young until they can return to the sea, and they organise reef clean-ups. If you snorkel there and meet a turtle, remember how many people looked after it!
+      text: Upaya kalian luar biasa! Kenapa sih kalian peduli sama penyu?
+      ar_eg: مجهودكم جامد! ليه مهتمين بالسلاحف؟
+      ar: جهودكم رائعة! لماذا تهتمون بالسلاحف؟
+      en: Your work is amazing! Why do you care about turtles?
+    - speaker: Relawan
+      text: Kami mau mempertahankan alam kami untuk generasi berikut.
+      ar_eg: عايزين نحافظ على طبيعتنا للجيل الجاي.
+      ar: نريد أن نحافظ على طبيعتنا للجيل القادم.
+      en: We want to preserve our nature for the next generation.
+new_words:
+  - word: peduli
+    pos: verb
+    ar_eg: يهتم بـ
+    ar: يهتم بـ
+    en: care (about)
+  - word: komunitas
+    pos: noun
+    ar_eg: جماعة، مجتمع
+    ar: مجتمع، جماعة
+    en: community
+  - word: sekelompok
+    pos: noun
+    ar_eg: مجموعة من
+    ar: مجموعة من
+    en: a group of
+  - word: upaya
+    pos: noun
+    ar_eg: مجهود، محاولة
+    ar: جهد، مسعى
+    en: effort
+  - word: perlindungan
+    pos: noun
+    ar_eg: حماية
+    ar: حماية
+    en: protection
+  - word: generasi
+    pos: noun
+    ar_eg: جيل
+    ar: جيل
+    en: generation
+  - word: mempertahankan
+    pos: verb
+    ar_eg: يحافظ على، يفضّل
+    ar: يحافظ على، يُبقي
+    en: preserve, keep, defend
+  - word: liar
+    pos: adjective
+    ar_eg: بري
+    ar: بري
+    en: wild
 review:
   status: draft
   verified: false

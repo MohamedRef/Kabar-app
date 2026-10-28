@@ -1,0 +1,226 @@
+schema: kabar.lesson/v1
+id: bipa7.u07.l12
+language: id
+title: Surat pembaca
+can_do:
+  ar_eg: تكتب رسالة للجرنال تشتكي فيها من خدمة عامة بأدب ووضوح.
+  ar: أن تكتب رسالة إلى الصحيفة تشكو فيها خدمة عامة بأدب ووضوح.
+  en: Write a letter to the editor complaining about a public service, politely and clearly.
+slides:
+  - title: Suara warga di koran
+    grammar: id.register.audience
+    body:
+      ar_eg: |
+        رسالة قارئ متألّفة للدرس:
+        «Yth. Redaksi, saya ingin menyampaikan aspirasi warga Sanggeng. Sudah tiga bulan pengaduan kami tentang lampu jalan tidak dijawab. Kami berharap wakil rakyat memperhatikan pelayanan publik di daerah kami.»
+        - aspirasi = مطالب الناس وتطلّعاتهم
+        - pengaduan = شكوى رسمية
+        - wakil rakyat = نايب الشعب، عضو البرلمان
+        - pelayanan publik = الخدمات العامة
+        الرسالة دي القارئ المستهدف فيها الجرنال والمسؤولين، فخلّيها santun: الحقيقة الأول، وبعدين الطلب.
+        - في الكلام: nggak = tidak، udah = sudah.
+      ar: |
+        رسالة قارئ مؤلَّفة للدرس:
+        «Yth. Redaksi, saya ingin menyampaikan aspirasi warga Sanggeng. Sudah tiga bulan pengaduan kami tentang lampu jalan tidak dijawab. Kami berharap wakil rakyat memperhatikan pelayanan publik di daerah kami.»
+        - aspirasi = مطالب الناس وتطلّعاتهم
+        - pengaduan = شكوى رسمية
+        - wakil rakyat = نائب الشعب، عضو البرلمان
+        - pelayanan publik = الخدمات العامة
+        القارئ المستهدف هنا الصحيفة والمسؤولون، فاجعلها santun، الوقائع أوّلًا ثمّ الطلب.
+        - في الكلام اليومي: nggak = tidak، udah = sudah.
+      en: |
+        A reader's letter invented for the lesson:
+        «Yth. Redaksi, saya ingin menyampaikan aspirasi warga Sanggeng. Sudah tiga bulan pengaduan kami tentang lampu jalan tidak dijawab. Kami berharap wakil rakyat memperhatikan pelayanan publik di daerah kami.»
+        - aspirasi = people's wishes and demands
+        - pengaduan = a formal complaint
+        - wakil rakyat = people's representative, member of parliament
+        - pelayanan publik = public services
+        The target readers here are the paper and officials, so keep it santun, facts first, then the request.
+        - In speech: nggak = tidak, udah = sudah.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: aspirasi
+        ar_eg: مطالب الناس
+        ar: تطلّعات الناس ومطالبهم
+        en: aspirations, demands
+      - text: pengaduan
+        ar_eg: شكوى رسمية
+        ar: شكوى رسمية
+        en: formal complaint
+      - text: wakil rakyat
+        ar_eg: نايب الشعب
+        ar: نائب الشعب
+        en: people's representative
+      - text: pelayanan publik
+        ar_eg: الخدمات العامة
+        ar: الخدمات العامة
+        en: public services
+    words: [aspirasi, pengaduan, wakil rakyat, pelayanan publik]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة أنسب لرسالة قارئ للجرنال؟
+      ar: أيّ جملة أنسب لرسالة قارئ إلى الصحيفة؟
+      en: Which sentence best fits a letter to the editor?
+    options:
+      - Pejabatnya malas semua!
+      - Kami berharap pengaduan kami segera ditanggapi.
+      - Lampu jalannya jelek banget, sumpah.
+    answer: 1
+    words: [pengaduan]
+    explain:
+      ar_eg: "رسالة للمحرر بتكون مؤدبة وواضحة: Kami berharap... segera ditanggapi. الشتيمة وsumpah عامية."
+      ar: "رسالة إلى المحرر تكون مهذبة: Kami berharap pengaduan kami segera ditanggapi."
+      en: A letter to the editor stays polite and clear.
+  - id: e03
+    type: fill_blank
+    sentence: Anggota DPR adalah ___ yang dipilih dalam pemilu.
+    meaning:
+      ar_eg: أعضاء البرلمان هم نوّاب الشعب اللي بيتنتخبوا في الانتخابات.
+      ar: أعضاء البرلمان هم نوّاب الشعب المنتخبون في الانتخابات.
+      en: DPR members are people's representatives chosen in elections.
+    options: [wakil rakyat, pelayanan publik, aspirasi]
+    answers: [wakil rakyat]
+    words: [wakil rakyat]
+    explain:
+      ar_eg: wakil rakyat = نايب الشعب، وده اللي بيتنتخب. pelayanan publik = خدمة عامة وaspirasi = مطالب.
+      ar: wakil rakyat = ممثل الشعب المنتخب. pelayanan publik خدمة عامة وaspirasi تطلعات.
+      en: People chosen in elections are wakil rakyat.
+  - id: e04
+    type: listen
+    text: Warga datang ke kantor DPRD untuk menyampaikan aspirasi mereka.
+    question:
+      ar_eg: الناس راحوا مجلس المحافظة ليه؟
+      ar: لماذا ذهب الأهالي إلى مجلس الإقليم؟
+      en: Why did residents go to the regional council?
+    options:
+      - علشان يقولوا مطالبهم.
+      - علشان يصوّتوا.
+      - علشان يشتغلوا هناك.
+    answer: 0
+    words: [aspirasi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الخدمات العامة في القرية دي لسّه بطيئة.
+      ar: ما زالت الخدمات العامة في هذه القرية بطيئة.
+      en: Public services in this village are still slow.
+    answer: Pelayanan publik di desa ini masih lambat.
+    distractors: [aspirasi, wakil]
+    words: [pelayanan publik]
+    explain:
+      ar_eg: Pelayanan publik (الخدمة العامة) + di desa ini + masih lambat (لسه بطيئة). aspirasi وwakil زيادة.
+      ar: Pelayanan publik di desa ini masih lambat. aspirasi وwakil زائدتان.
+      en: Pelayanan publik + di desa ini + masih lambat. aspirasi and wakil are extra.
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في رسالة القارئ، تحطّ الطلب فين؟
+      ar: أين تضع الطلب في رسالة القارئ؟
+      en: Where does the request go in a letter to the editor?
+    options:
+      - في أول كلمة، قبل الحقايق.
+      - في العنوان بس.
+      - بعد ما تشرح الحقايق.
+    answer: 2
+    words: [pengaduan, aspirasi]
+    explain:
+      ar_eg: في الرسالة الطلب بييجي بعد ما تشرح الحقايق، علشان يبقى مقنع.
+      ar: يأتي الطلب بعد عرض الوقائع ليكون مقنعًا.
+      en: The request comes after the facts.
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: قدّمنا شكوى رسمية من شهرين.
+      ar: قدّمنا شكوى رسمية قبل شهرين.
+      en: We filed a formal complaint two months ago.
+    answers:
+      - Kami sudah mengajukan pengaduan dua bulan yang lalu.
+      - Kami mengajukan pengaduan dua bulan lalu.
+      - Dua bulan yang lalu kami sudah membuat pengaduan.
+      - Kami sudah menyampaikan pengaduan dua bulan yang lalu.
+      - Kami udah mengajukan pengaduan dua bulan yang lalu.
+      - Dua bulan yang lalu kami udah bikin pengaduan.
+      - Kami udah menyampaikan pengaduan dua bulan yang lalu.
+    words: [pengaduan]
+  - id: e08
+    type: speaking
+    text: Wakil rakyat harus mendengar aspirasi warga.
+    meaning:
+      ar_eg: نوّاب الشعب لازم يسمعوا مطالب الناس.
+      ar: على نوّاب الشعب أن يستمعوا إلى مطالب المواطنين.
+      en: Representatives must listen to citizens' demands.
+    words: [wakil rakyat, aspirasi]
+  - id: e09
+    type: dictation
+    text: Pelayanan publik yang baik adalah hak setiap warga.
+    meaning:
+      ar_eg: الخدمة العامة الكويسة حقّ كل مواطن.
+      ar: الخدمة العامة الجيّدة حقّ لكلّ مواطن.
+      en: Good public services are every citizen's right.
+    words: [pelayanan publik]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Setelah surat pembaca itu terbit, wakil rakyat menanggapi pengaduan warga.
+    answers_meaning:
+      ar_eg:
+        - بعد ما رسالة القارئ اتنشرت، نوّاب الشعب ردّوا على شكوى الناس.
+        - الرسالة اتنشرت في الجرنال، والنوّاب ردّوا على شكوى الأهالي.
+      ar:
+        - بعد نشر رسالة القارئ، ردّ نوّاب الشعب على شكوى الأهالي.
+        - لمّا نُشرت الرسالة استجاب النوّاب لشكوى المواطنين.
+      en:
+        - After the letter to the editor appeared, the representatives responded to residents' complaint.
+        - Once the letter was published, the representatives answered the residents' complaint.
+    words: [wakil rakyat, pengaduan]
+dialogue:
+  title: Lampu jalan Sanggeng
+  lines:
+    - speaker: Bu Debora
+      text: Hari ini banyak surat pembaca tentang lampu jalan di Sanggeng.
+      ar_eg: النهارده جالنا رسايل قرّاء كتير عن نور الشارع في سانجينج.
+      ar: وصلتنا اليوم رسائل قرّاء كثيرة عن إنارة الطريق في سانغنغ.
+      en: Lots of letters today about the street lights in Sanggeng.
+    - speaker: Mohamed
+      text: Kata warga, pengaduan mereka udah tiga bulan nggak dijawab.
+      ar_eg: الأهالي بيقولوا إن شكوتهم بقالها تلات شهور من غير ردّ.
+      ar: يقول الأهالي إنّ شكواهم بلا ردّ منذ ثلاثة أشهر.
+      en: Residents say their complaint has gone unanswered for three months.
+    - speaker: Bu Debora
+      text: Pilih satu yang paling santun dan jelas, lalu kita muat besok.
+      ar_eg: اختار أكتر واحدة مؤدّبة وواضحة، وننشرها بكرة.
+      ar: اختر أكثرها تهذيبًا ووضوحًا، وننشرها غدًا.
+      en: Pick the most courteous, clearest one, and we'll run it tomorrow.
+    - speaker: Mohamed
+      text: Baik, Bu. Saya juga kirim salinannya ke wakil rakyat dari daerah itu.
+      ar_eg: حاضر. وهبعت نسخة كمان لنايب المنطقة دي.
+      ar: حسنًا، وسأرسل نسخة إلى نائب تلك المنطقة أيضًا.
+      en: Right. I'll also send a copy to that area's representative.
+new_words:
+  - word: aspirasi
+    pos: noun
+    ar_eg: مطالب الناس
+    ar: تطلّعات الناس ومطالبهم
+    en: aspirations, demands
+  - word: pengaduan
+    pos: noun
+    ar_eg: شكوى رسمية
+    ar: شكوى رسمية
+    en: formal complaint
+  - word: wakil rakyat
+    pos: noun
+    ar_eg: نايب الشعب
+    ar: نائب الشعب
+    en: people's representative
+  - word: pelayanan publik
+    pos: noun
+    ar_eg: الخدمات العامة
+    ar: الخدمات العامة
+    en: public services
+review:
+  status: draft
+  verified: false

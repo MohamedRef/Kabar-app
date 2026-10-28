@@ -1,186 +1,248 @@
 schema: kabar.lesson/v1
 id: j5.u05.l06
 language: jv
-title: Cerkak
+title: Kethek lan baya
 can_do:
-  ar_eg: تقرا قصة قصيرة.
-  ar: أن تقرأ قصة قصيرة.
-  en: Read a short story.
+  ar_eg: 'تحكي حكاية القرد والتمساح: مين الشخصيات، مين ضحك على مين، والحكاية خلصت إزاي.'
+  ar: 'أن تحكي قصة القرد والتمساح: الشخصيات، ومن خدع من، وكيف انتهت.'
+  en: 'Retell the monkey and the crocodile: the characters, who tricked whom and how it ends.'
 slides:
-  - title: Bima ing Menara Kudus
+  - title: Dongeng sato
     body:
       ar_eg: |
-        قصة بو ريتنو القصيرة. قبل ما تقرا بالتفصيل، علّم على أدوات الحكي: ing sawijining dina (البداية)، sawise وdumadakan (المفاجأة)، pungkasane (النهاية).
-        كلمات جديدة: menara = منارة / مئذنة (من العربي)، nemokake = لقى (menemukan)، jenang = حلاوة كودوس المشهورة من دقيق الرز وجوز الهند والسكر.
+        paraga = شخصية في الحكاية. kethek = قرد، baya = تمساح، kodhok = ضفدعة.
+        mbujuk = يقنع حد بالحيلة، يغريه. ndhelik = يستخبّى.
+        cilaka = يقع في مصيبة، اتنكب. wekasan = النهاية (ing wekasane = في الآخر).
       ar: |
-        قصة السيدة ريتنو القصيرة. قبل القراءة المفصّلة ظلّل أدوات السرد: ing sawijining dina (البداية)، وsawise وdumadakan (المفاجأة)، وpungkasane (الخاتمة).
-        كلمات جديدة: menara = منارة / مئذنة (من العربية)، وnemokake = وجد (menemukan)، وjenang = حلوى كودوس الشهيرة من دقيق الأرز وجوز الهند والسكر.
+        paraga = شخصية في القصة. kethek = قرد، baya = تمساح، kodhok = ضفدع.
+        mbujuk = يستدرج بالحيلة، يغري. ndhelik = يختبئ.
+        cilaka = يقع في مصيبة. wekasan = النهاية (ing wekasane = في النهاية).
       en: |
-        Bu Retno's short story. Before reading closely, mark the story connectors: ing sawijining dina (opening), sawise and dumadakan (the twist), pungkasane (ending).
-        New words: menara = minaret, tower (from Arabic «منارة»), nemokake = found (menemukan), jenang = Kudus's famous sweet of rice flour, coconut milk and palm sugar.
-    grammar: jv.narrative.connectors
+        paraga = character in a story. kethek = monkey, baya = crocodile, kodhok = frog.
+        mbujuk = coax, lure. ndhelik = hide.
+        cilaka = come to grief, be in trouble. wekasan = end (ing wekasane = in the end).
     examples:
-      - text: Ing sawijining dina, Bima lan simbahe lunga menyang Menara Kudus.
-        ar_eg: في يوم من الأيام، بيما وجدّه راحوا منارة كودوس.
-        ar: في يوم من الأيام ذهب بيما وجدّه إلى منارة كودوس.
-        en: One day, Bima and his grandfather went to the Menara Kudus.
-      - text: Sawise salat, dumadakan Bima ora ana.
-        ar_eg: بعد الصلاة، فجأة بيما مكانش موجود.
-        ar: بعد الصلاة لم يكن بيما موجودًا فجأة.
-        en: After the prayer, suddenly Bima was gone.
-      - text: Pungkasane, simbah nemokake Bima ing ngarep menara, lagi mangan jenang.
-        ar_eg: وفي الآخر، الجدّ لقى بيما قدّام المنارة بياكل jenang.
-        ar: وفي النهاية وجد الجدّ بيما أمام المنارة يأكل jenang.
-        en: In the end, grandpa found Bima in front of the minaret, eating jenang.
+      - text: Paraga ing crita iki yaiku kethek lan baya.
+        ar_eg: شخصيات الحكاية دي القرد والتمساح.
+        ar: شخصيتا هذه القصة هما القرد والتمساح.
+        en: The characters in this story are the monkey and the crocodile.
+      - text: Baya mbujuk kethek numpak gegere.
+        ar_eg: التمساح ضحك على القرد عشان يركب على ضهره.
+        ar: استدرج التمساح القرد ليركب على ظهره.
+        en: The crocodile coaxed the monkey into riding on its back.
+      - text: Kodhok ndhelik ing mburi watu.
+        ar_eg: الضفدعة استخبّت ورا حجر.
+        ar: اختبأ الضفدع خلف حجر.
+        en: The frog hid behind a stone.
 exercises:
   - id: e01
+    type: match_pairs
+    pairs:
+      - text: baya
+        ar_eg: تمساح
+        ar: تمساح
+        en: crocodile
+      - text: kethek
+        ar_eg: قرد
+        ar: قرد
+        en: monkey
+      - text: kodhok
+        ar_eg: ضفدعة
+        ar: ضفدع
+        en: frog
+      - text: ndhelik
+        ar_eg: يستخبّى
+        ar: يختبئ
+        en: hide
+    words: [baya, kethek, kodhok, ndhelik]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: mbujuk
+        ar_eg: يضحك على بالحيلة
+        ar: يستدرج
+        en: coax, lure
+      - text: cilaka
+        ar_eg: يقع في مصيبة
+        ar: يقع في مصيبة
+        en: come to grief
+      - text: wekasan
+        ar_eg: النهاية
+        ar: النهاية
+        en: end
+      - text: paraga
+        ar_eg: شخصية
+        ar: شخصية
+        en: character
+    words: [mbujuk, cilaka, wekasan, paraga]
+  - id: e03
     type: listen
-    text: Ing sawijining dina, Bima lan simbahe lunga menyang Menara Kudus.
+    text: Baya mbujuk kethek numpak gegere.
     question:
-      ar_eg: مين راح منارة كودوس؟
-      ar: من ذهب إلى منارة كودوس؟
-      en: Who went to the Menara Kudus?
-    options: [Bima lan simbahe, Bima lan Bu Retno, Mohamed lan Bima]
+      ar_eg: التمساح عمل إيه؟
+      ar: ماذا فعل التمساح؟
+      en: What did the crocodile do?
+    options: [التمساح ضحك على القرد عشان يركب على ضهره, القرد ركب عربية, التمساح هرب من القرد]
     answer: 0
     meaning:
-      ar_eg: في يوم من الأيام، بيما وجدّه راحوا منارة كودوس.
-      ar: في يوم من الأيام ذهب بيما وجدّه إلى منارة كودوس.
-      en: One day, Bima and his grandfather went to the Menara Kudus.
-    words: [menara]
-  - id: e02
-    type: multiple_choice
-    question: Pungkasane, simbah nemokake Bima ing ngarep menara, lagi mangan jenang.
-    question_meaning:
-      ar_eg: الجدّ لقى بيما فين؟
-      ar: أين وجد الجدُّ بيما؟
-      en: Where did grandpa find Bima?
-    options: [ing omah, ing ngarep menara, ing pasar]
-    answer: 1
-    words: [nemokake, menara]
-  - id: e03
-    type: fill_blank
-    sentence: Simbah ___ Bima ing ngarep menara.
-    meaning:
-      ar_eg: الجدّ لقى بيما قدّام المنارة.
-      ar: وجد الجدّ بيما أمام المنارة.
-      en: Grandpa found Bima in front of the minaret.
-    options: [nyulik, nemokake, tekan]
-    answers: [nemokake]
-    words: [nemokake]
+      ar_eg: التمساح ضحك على القرد عشان يركب على ضهره.
+      ar: استدرج التمساح القرد ليركب على ظهره.
+      en: The crocodile coaxed the monkey into riding on its back.
+    words: [baya, kethek, mbujuk]
   - id: e04
     type: fill_blank
-    sentence: Bima lagi mangan ___.
+    sentence: Kodhok ___ ing mburi watu, baya ora weruh.
     meaning:
-      ar_eg: بيما كان بياكل حلاوة كودوس.
-      ar: كان بيما يأكل حلوى كودوس.
-      en: Bima was eating the Kudus sweet.
-    options: [payung, menara, jenang]
-    answers: [jenang]
-    words: [jenang]
+      ar_eg: الضفدعة ___ ورا الحجر، والتمساح ماشافهاش.
+      ar: ___ الضفدع خلف الحجر، فلم يره التمساح.
+      en: The frog ___ behind the stone; the crocodile didn't see it.
+    options: [ndhelik, mbujuk, cilaka]
+    answers: [ndhelik]
+    words: [ndhelik, mbujuk, cilaka, kodhok]
+    explain:
+      ar_eg: ndhelik = استخبّى. mbujuk = ضحك عليه بالكلام وcilaka = مصيبة.
+      ar: ndhelik تعني اختبأ. أما mbujuk فخدع بالكلام وcilaka مصيبة.
+      en: ndhelik means "hid". mbujuk is "coax/trick" and cilaka is "come to harm".
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «شخصية في حكاية»؟
+      ar: أي كلمة تعني «شخصية في قصة»؟
+      en: Which word means 'a character in a story'?
+    options: [wekasan, paraga, baya]
+    answer: 1
+    explain:
+      ar_eg: paraga = شخصية. wekasan = النهاية، وbaya = تمساح.
+      ar: paraga = شخصية؛ wekasan = النهاية، وbaya = تمساح.
+      en: paraga = character; wekasan = end, baya = crocodile.
+    words: [wekasan, paraga, baya]
+  - id: e06
+    type: fill_blank
+    sentence: Yen ora ati-ati, mengko ___!
+    meaning:
+      ar_eg: لو مخدتش بالك، هتقع في ___!
+      ar: إن لم تحترس، ستقع في ___!
+      en: If you're not careful, you'll come to ___!
+    options: [cilaka, kethek, paraga]
+    answers: [cilaka]
+    words: [cilaka, kethek, paraga]
+    explain:
+      ar_eg: cilaka = هتتأذى / هتقع في مصيبة. kethek = قرد وparaga = شخصية في الحكاية.
+      ar: cilaka تعني ستتأذّى. أما kethek فقرد وparaga شخصية في القصة.
+      en: cilaka is "come to harm". kethek is a monkey and paraga is a story character.
+  - id: e07
+    type: multiple_choice
+    question: Ing ___ crita, kethek slamet.
+    options: [paraga, wekasan, kodhok]
+    answer: 1
+    explain:
+      ar_eg: ing wekasane = في آخر الحكاية، والقرد نجي.
+      ar: ing wekasane = في نهاية القصة، فقد نجا القرد.
+      en: ing wekasan = at the end of the story; the monkey is safe.
+    words: [paraga, wekasan, kodhok]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: وفي الآخر، الجدّ لقى بيما قدّام المنارة.
-      ar: وفي النهاية وجد الجدّ بيما أمام المنارة.
-      en: In the end, grandpa found Bima in front of the minaret.
-    answer: Pungkasane, simbah nemokake Bima ing ngarep menara.
-    distractors: [dumadakan, bareng]
-    words: [nemokake, menara]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بأسلوب الحكاية) فجأة بيما مكانش موجود.
-      ar: (بأسلوب الحكاية) فجأة لم يكن بيما موجودًا.
-      en: (story style) Suddenly Bima was gone.
-    answers:
-      - Dumadakan Bima ora ana.
-      - Dumadakan Bima ilang.
-      - Bima dumadakan ora ana.
-      - Bima dumadakan ilang.
-    words: [dumadakan]
-  - id: e07
+      ar_eg: القرد ضحك على التمساح هو كمان.
+      ar: خدع القرد التمساح بدوره.
+      en: The monkey coaxed the crocodile in turn.
+    answer: Kethek gantian mbujuk baya.
+    distractors: [kodhok, wekasan]
+    words: [kethek, mbujuk, baya]
+    explain:
+      ar_eg: gantian mbujuk = هو كمان ضحك عليه. kodhok = ضفدع وwekasan = في الآخر، ومش في المعنى.
+      ar: gantian mbujuk تعني خدعه بدوره. أما kodhok (ضفدع) وwekasan (أخيرًا) فليستا في المعنى.
+      en: gantian mbujuk is "coaxed in turn". kodhok (frog) and wekasan (finally) aren't in the meaning.
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Ing sawijining dina, Bima lan simbahe lunga menyang Menara Kudus.
+    source_text: Ing wekasane, baya ora oleh apa-apa.
     answers_meaning:
-      ar_eg:
-        - في يوم من الأيام، بيما وجدّه راحوا منارة كودوس.
-        - في يوم من الأيام، بيما وجدّه راحوا لمنارة كودوس.
-        - في يوم من الأيام، بيما وجدته راحوا منارة كودوس.
-        - في يوم من الأيام بيما راح مع جدّه منارة كودوس.
-      ar:
-        - في يوم من الأيام ذهب بيما وجدّه إلى منارة كودوس.
-        - في يوم من الأيام ذهب بيما مع جدّه إلى منارة كودوس.
-        - في يوم من الأيام ذهب بيما وجدّته إلى منارة كودوس.
-      en:
-        - One day, Bima and his grandfather went to the Menara Kudus.
-        - One day, Bima and his grandpa went to the Menara Kudus.
-        - One day, Bima and his grandmother went to the Menara Kudus.
-        - One day Bima and his grandfather went to the Kudus minaret.
-        - One day, Bima went to the Menara Kudus with his grandfather.
-    words: [menara]
-  - id: e08
-    type: dictation
-    text: Bima lagi mangan jenang ing ngarep menara.
-    meaning:
-      ar_eg: بيما بياكل jenang قدّام المنارة.
-      ar: بيما يأكل jenang أمام المنارة.
-      en: Bima is eating jenang in front of the minaret.
-    words: [jenang, menara]
-  - id: e09
+      ar_eg: [في الآخر، التمساح ماخدش حاجة, في الآخر التمساح طلع إيد ورا وإيد قدام]
+      ar: [في النهاية لم يحصل التمساح على شيء, وفي الختام لم ينل التمساح شيئًا]
+      en: ['In the end, the crocodile got nothing', In the end the crocodile was left with nothing]
+    words: [wekasan, baya]
+  - id: e10
     type: speaking
-    text: Aku seneng jenang Kudus.
+    text: Kodhok ndhelik saka baya.
     meaning:
-      ar_eg: أنا بحب حلاوة jenang بتاعة كودوس.
-      ar: أحب حلوى jenang من كودوس.
-      en: I love Kudus jenang.
-    words: [jenang]
+      ar_eg: الضفدعة استخبّت من التمساح.
+      ar: اختبأ الضفدع من التمساح.
+      en: The frog hid from the crocodile.
+    words: [kodhok, ndhelik, baya]
 dialogue:
-  title: Ing ngarep Menara Kudus
   lines:
-    - speaker: Bu Retno
-      text: Mas, iki Menara Kudus, kaya ing cerkakku.
-      ar_eg: يا محمد، دي منارة كودوس، زي اللي في قصتي.
-      ar: يا محمد، هذه منارة كودوس، كما في قصتي.
-      en: Mohamed, this is the Menara Kudus, like in my story.
+    - speaker: Mbak Ayu
+      text: Mohamed, kowe ngerti crita kethek lan baya?
+      ar_eg: يا محمد، تعرف حكاية القرد والتمساح؟
+      ar: يا محمد، أتعرف قصة القرد والتمساح؟
+      en: Mohamed, do you know the story of the monkey and the crocodile?
     - speaker: Mohamed
-      text: Menara! Ing basa Arab "manara". Sami, nggih, Bu?
-      ar_eg: menara! بالعربي «منارة». نفس الكلمة، صح يا أبلة؟
-      ar: menara! وبالعربية «منارة». الكلمة نفسها، أليس كذلك يا سيدتي؟
-      en: Menara! In Arabic it's «منارة». The same word, isn't it, ma'am?
-    - speaker: Bu Retno
-      text: Iya. Lan jeneng Kudus uga saka basa Arab, Al-Quds.
-      ar_eg: آه. واسم كودوس كمان من العربي، «القدس».
-      ar: نعم. واسم كودوس أيضًا من العربية، «القدس».
-      en: Yes. And the name Kudus comes from Arabic too, al-Quds.
+      text: Durung. Paragane sapa wae ta?
+      ar_eg: لأ. شخصياتها مين؟
+      ar: لا. من شخصياتها؟
+      en: No. Who are the characters?
+    - speaker: Mbak Ayu
+      text: Kethek sing pinter lan baya sing luwe. Baya mbujuk kethek numpak gegere nyabrang kali.
+      ar_eg: قرد شاطر وتمساح جعان. التمساح ضحك على القرد يركب على ضهره ويعدّي النهر.
+      ar: قرد ذكي وتمساح جائع. استدرج التمساح القرد ليركب ظهره ويعبر النهر.
+      en: A clever monkey and a hungry crocodile. The crocodile coaxes the monkey onto its back to cross the river.
     - speaker: Mohamed
-      text: Leres, Bu. Al-Quds menika Yerusalem.
-      ar_eg: مظبوط يا أبلة. القدس هي أورشليم.
-      ar: صحيح يا سيدتي. القدس هي أورشليم.
-      en: That's right, ma'am. Al-Quds is Jerusalem.
-    - speaker: Bu Retno
-      text: Ayo, saiki mangan jenang kaya Bima!
-      ar_eg: يلا، دلوقتي ناكل jenang زي بيما!
-      ar: هيا، لنأكل الآن jenang مثل بيما!
-      en: Come on, now let's eat jenang like Bima!
+      text: Waduh, kethek mesthi cilaka!
+      ar_eg: يا خبر، القرد أكيد هيروح في داهية!
+      ar: يا للهول، سيقع القرد في مصيبة حتمًا!
+      en: Uh-oh, the monkey's in trouble for sure!
+    - speaker: Mbak Ayu
+      text: 'Ora, lho! Kethek ngapusi baya: ''Atiku keri ing wit.'''
+      ar_eg: 'لأ خالص! القرد ضحك على التمساح: «قلبي نسيته على الشجرة».'
+      ar: 'كلا! خدع القرد التمساح: «تركتُ قلبي على الشجرة».'
+      en: 'Not at all! The monkey fools the crocodile: ''I left my heart up in the tree.'''
+    - speaker: Mohamed
+      text: Hahaha. Wekasane apik tenan.
+      ar_eg: هههه. النهاية حلوة أوي.
+      ar: ههه. نهايتها رائعة.
+      en: Ha! What a great ending.
 new_words:
-  - word: menara
+  - word: baya
     pos: noun
-    ar_eg: منارة / مئذنة
-    ar: منارة / مئذنة
-    en: minaret, tower = menara
-    arabic: منارة
-  - word: nemokake
+    ar_eg: تمساح
+    ar: تمساح
+    en: crocodile
+  - word: kethek
+    pos: noun
+    ar_eg: قرد
+    ar: قرد
+    en: monkey
+  - word: kodhok
+    pos: noun
+    ar_eg: ضفدعة
+    ar: ضفدع
+    en: frog
+  - word: ndhelik
     pos: verb
-    ar_eg: لقى
-    ar: وجد
-    en: find, found = menemukan
-  - word: jenang
+    ar_eg: يستخبّى
+    ar: يختبئ
+    en: hide
+  - word: mbujuk
+    pos: verb
+    ar_eg: يضحك على حد بالحيلة، يغريه
+    ar: يستدرج، يغري
+    en: coax, lure
+  - word: cilaka
+    pos: verb
+    ar_eg: يقع في مصيبة
+    ar: يقع في مصيبة
+    en: come to grief, be in trouble
+  - word: wekasan
     pos: noun
-    ar_eg: حلاوة كودوس من دقيق الرز وجوز الهند والسكر
-    ar: حلوى من دقيق الأرز وجوز الهند والسكر، تشتهر بها كودوس
-    en: a sweet of rice flour, coconut milk and palm sugar, famous in Kudus = dodol
+    ar_eg: النهاية
+    ar: النهاية
+    en: end, ending
+  - word: paraga
+    pos: noun
+    ar_eg: شخصية (في حكاية)
+    ar: شخصية (في قصة)
+    en: character (in a story)
 review:
   status: draft
   verified: false

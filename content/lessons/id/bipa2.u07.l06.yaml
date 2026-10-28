@@ -3,24 +3,30 @@ id: bipa2.u07.l06
 language: id
 title: Gol! Skornya berapa?
 can_do:
-  ar_eg: تتفرج على ماتش وتتكلم عن الجول والحكم والنتيجة والكاس، وعن الباسكت والفولي.
-  ar: أن تشاهد مباراة وتتحدث عن الهدف والحكم والنتيجة والكأس، وعن السلة والطائرة.
-  en: Watch a match and talk about goals, the referee, the score and the cup, plus basketball and volleyball.
+  ar_eg: 'تتفرج على ماتش: الجول والحكم والنتيجة والكاس، واللاعب اللي بيعرق وبياخد نفسه وعليه دم.'
+  ar: 'أن تشاهد مباراة: الهدف والحكم والنتيجة والكأس، واللاعب الذي يتعرّق ويلتقط أنفاسه وعليه دم.'
+  en: 'Watch a match: goals, the referee, the score and the cup, and a player who''s sweating, catching his breath and bleeding.'
 slides:
   - title: Nonton bola
     body:
       ar_eg: |
         gol = جول، wasit = حكم، skor = النتيجة: Skornya dua-satu. piala = كاس (البطولة).
-        basket = باسكت، voli = فولي (voli pantai = فولي شاطئ).
-        kaos kaki = شراب (حرفيًا «تيشيرت رجل»!)، celana pendek = شورت.
+        dada = صدر: Gol dengan dada!
+        napas = نفَس: Tarik napas! = خد نفس! keringat = عرق، darah = دم.
+        في الشارع بيقولوا:
+        - nggak = tidak (مش، لأ)
       ar: |
         gol = هدف، wasit = حكم، skor = النتيجة: Skornya dua-satu. piala = كأس البطولة.
-        basket = كرة السلة، voli = الكرة الطائرة (voli pantai = الطائرة الشاطئية).
-        kaos kaki = جوارب (حرفيًا «قميص القدم»!)، celana pendek = سروال قصير.
+        dada = صدر: Gol dengan dada!
+        napas = نفَس: Tarik napas! = خذ نفَسًا! keringat = عرق، darah = دم.
+        في كلام الشارع:
+        - nggak = tidak (لا، ليس)
       en: |
         gol = goal, wasit = referee, skor = score: Skornya dua-satu. piala = cup, trophy.
-        basket = basketball, voli = volleyball (voli pantai = beach volleyball).
-        kaos kaki = socks (literally "foot T-shirt"!), celana pendek = shorts.
+        dada = chest: Gol dengan dada!
+        napas = breath: Tarik napas! = breathe in! keringat = sweat, darah = blood.
+        On the street:
+        - nggak = tidak (not, no)
     examples:
       - text: Gol! Skornya dua-satu!
         ar_eg: جوووول! النتيجة ٢–١!
@@ -30,10 +36,10 @@ slides:
         ar_eg: الحكم ده ظالم!
         ar: ذلك الحكم غير عادل!
         en: That referee isn't fair!
-      - text: Kami main voli pantai di Kuta.
-        ar_eg: بنلعب فولي شاطئ في كوتا.
-        ar: نلعب الكرة الطائرة الشاطئية في كوتا.
-        en: We play beach volleyball in Kuta.
+      - text: Ada darah di kakinya.
+        ar_eg: فيه دم على رجله.
+        ar: هناك دم على ساقه.
+        en: There's blood on his leg.
 exercises:
   - id: e01
     type: match_pairs
@@ -58,23 +64,23 @@ exercises:
   - id: e02
     type: match_pairs
     pairs:
-      - text: basket
-        ar_eg: باسكت
-        ar: كرة السلة
-        en: basketball
-      - text: voli
-        ar_eg: فولي
-        ar: الكرة الطائرة
-        en: volleyball
-      - text: kaos kaki
-        ar_eg: شراب
-        ar: جوارب
-        en: socks
-      - text: celana pendek
-        ar_eg: شورت
-        ar: سروال قصير
-        en: shorts
-    words: [basket, voli, kaos kaki, celana pendek]
+      - text: dada
+        ar_eg: صدر
+        ar: صدر
+        en: chest
+      - text: darah
+        ar_eg: دم
+        ar: دم
+        en: blood
+      - text: napas
+        ar_eg: نفَس
+        ar: نفَس
+        en: breath
+      - text: keringat
+        ar_eg: عرق
+        ar: عرق
+        en: sweat
+    words: [dada, darah, napas, keringat]
   - id: e03
     type: listen
     text: Gol! Skornya sekarang dua-dua!
@@ -96,9 +102,13 @@ exercises:
       ar_eg: إندونيسيا كسبت! رفعوا الـ ___.
       ar: فازت إندونيسيا! رفعوا ___.
       en: Indonesia won! They lift the ___.
-    options: [piala, wasit, kaos kaki]
+    options: [piala, wasit, darah]
     answers: [piala]
-    words: [piala, wasit, kaos kaki]
+    words: [piala, wasit, darah]
+    explain:
+      ar_eg: الكسبانين بيرفعوا piala (الكاس). wasit = حكم، وdarah = دم.
+      ar: يرفع الفائزون piala (الكأس). أما wasit فحكم وdarah دم.
+      en: Winners lift the piala (cup). wasit is the referee, darah blood.
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -114,50 +124,61 @@ exercises:
     words: [wasit, piala, skor]
   - id: e06
     type: fill_blank
-    sentence: Untuk main bola, pakai ___ dan sepatu.
+    sentence: Ada ___ di kakinya. Warnanya merah.
     meaning:
-      ar_eg: عشان تلعب كورة، البس ___ وجزمة.
-      ar: لتلعب الكرة، البس ___ وحذاءً.
-      en: To play football, wear ___ and shoes.
-    options: [kaos kaki, piala, gol]
-    answers: [kaos kaki]
-    words: [kaos kaki, piala, gol]
+      ar_eg: فيه ___ على رجله. لونه أحمر.
+      ar: هناك ___ على ساقه، لونه أحمر.
+      en: There's ___ on his leg. It's red.
+    options: [darah, keringat, napas]
+    answers: [darah]
+    words: [darah, keringat, napas]
+    explain:
+      ar_eg: darah = دم، ولونه أحمر. keringat = عرق، وnapas = نفس.
+      ar: darah = دم أحمر. أما keringat فعرق وnapas نفَس.
+      en: darah = blood, red. keringat is sweat, napas breath.
   - id: e07
     type: build_sentence
     source:
-      ar_eg: بنلعب فولي على الشاطئ.
-      ar: نلعب الكرة الطائرة على الشاطئ.
-      en: We play volleyball on the beach.
-    answer: Kami main voli di pantai.
-    distractors: [basket, skor]
-    words: [voli, basket]
+      ar_eg: خد نفس، وبعدين اجري تاني.
+      ar: خذ نفَسًا، ثم اجرِ مرة أخرى.
+      en: Take a breath, then run again.
+    answer: Tarik napas, lalu lari lagi.
+    distractors: [dada, gol]
+    words: [napas]
+    explain:
+      ar_eg: Tarik napas = خد نفس، وlari lagi = اجري تاني. dada (صدر) وgol زيادة.
+      ar: Tarik napas = خذ نفسًا، وlari lagi = اجرِ مجددًا. أما dada وgol فزائدتان.
+      en: Tarik napas = take a breath, lari lagi = run again. dada and gol don't fit.
   - id: e08
     type: translate
     direction: from_target
-    source_text: Panas sekali. Saya pakai celana pendek.
+    source_text: Sesudah main bola, saya banyak keringat.
     answers_meaning:
-      ar_eg: [الجو حر أوي. أنا لابس شورت, حر جدًا. هلبس شورت]
-      ar: [الجو حارّ جدًا. ألبس سروالًا قصيرًا]
-      en: ['It''s very hot. I''m wearing shorts', 'It''s so hot. I''ll wear shorts']
-    words: [celana pendek]
+      ar_eg: [بعد الكورة عرقت كتير, بعد ما لعبت كورة عرقان أوي]
+      ar: [بعد لعب الكرة تعرّقت كثيرًا]
+      en: ['After playing football I''m very sweaty', After football I sweat a lot]
+    words: [keringat]
   - id: e09
     type: speaking
-    text: Saya suka main basket pakai celana pendek.
+    text: Gol dengan dada! Skornya satu-nol!
     meaning:
-      ar_eg: بحب ألعب باسكت بالشورت.
-      ar: أحبّ لعب السلة بسروال قصير.
-      en: I like playing basketball in shorts.
-    words: [basket, celana pendek]
+      ar_eg: جول بالصدر! النتيجة ١–٠!
+      ar: هدف بالصدر! النتيجة ١–٠!
+      en: A goal off the chest! One-nil!
+    words: [gol, dada, skor]
   - id: e10
     type: multiple_choice
-    question: Di pantai Kuta, orang main ___ pantai.
-    options: [voli, basket, piala]
+    question_meaning:
+      ar_eg: القلب جوّه أنهي جزء من الجسم؟
+      ar: في أيّ جزء من الجسم يقع القلب؟
+      en: Which part of the body is the heart in?
+    options: [dada, kaki, kepala]
     answer: 0
     explain:
-      ar_eg: voli pantai = فولي شاطئ.
-      ar: voli pantai = الطائرة الشاطئية.
-      en: voli pantai = beach volleyball.
-    words: [voli, basket, piala]
+      ar_eg: 'في الصدر: dada.'
+      ar: 'في الصدر: dada.'
+      en: 'In the chest: dada.'
+    words: [dada]
 dialogue:
   lines:
     - speaker: Raka
@@ -171,20 +192,20 @@ dialogue:
       ar: كم النتيجة؟
       en: What's the score?
     - speaker: Raka
-      text: Masih nol-nol... Gol! Satu-nol!
-      ar_eg: لسه صفر صفر... جول! واحد صفر!
-      ar: ما زالت صفر–صفر... هدف! واحد–صفر!
-      en: Still nil-nil... Goal! One-nil!
+      text: Masih nol-nol... Gol! Satu-nol! Dengan dada!
+      ar_eg: لسه صفر صفر... جول! واحد صفر! بالصدر!
+      ar: ما زالت صفر–صفر... هدف! واحد–صفر! بالصدر!
+      en: Still nil-nil... Goal! One-nil! Off his chest!
     - speaker: Mohamed
-      text: Wah! Tapi wasit bilang apa?
-      ar_eg: الله! بس الحكم قال إيه؟
-      ar: رائع! لكن ماذا قال الحكم؟
-      en: Wow! But what did the referee say?
+      text: Tapi lihat, ada darah di kakinya!
+      ar_eg: بس بص، فيه دم على رجله!
+      ar: لكن انظر، هناك دم على ساقه!
+      en: But look, there's blood on his leg!
     - speaker: Raka
-      text: Golnya bagus! Indonesia menang!
-      ar_eg: الجول صح! إندونيسيا كسبت!
-      ar: الهدف صحيح! إندونيسيا فازت!
-      en: It's a good goal! Indonesia wins!
+      text: Nggak apa-apa. Dia tarik napas, dia banyak keringat.
+      ar_eg: مفيش حاجة. بياخد نفسه، وعرقان أوي.
+      ar: لا بأس، يلتقط أنفاسه وهو يتصبّب عرقًا.
+      en: He's OK. He's catching his breath; he's very sweaty.
     - speaker: Mohamed
       text: Ayo, Indonesia! Ambil pialanya!
       ar_eg: يلا يا إندونيسيا! هاتوا الكاس!
@@ -211,26 +232,26 @@ new_words:
     ar_eg: النتيجة
     ar: النتيجة
     en: score
-  - word: basket
+  - word: dada
     pos: noun
-    ar_eg: باسكت
-    ar: كرة السلة
-    en: basketball
-  - word: voli
+    ar_eg: صدر
+    ar: صدر
+    en: chest
+  - word: darah
     pos: noun
-    ar_eg: فولي
-    ar: الكرة الطائرة
-    en: volleyball
-  - word: kaos kaki
+    ar_eg: دم
+    ar: دم
+    en: blood
+  - word: napas
     pos: noun
-    ar_eg: شراب
-    ar: جوارب
-    en: socks
-  - word: celana pendek
+    ar_eg: نفَس
+    ar: نفَس
+    en: breath
+  - word: keringat
     pos: noun
-    ar_eg: شورت
-    ar: سروال قصير
-    en: shorts
+    ar_eg: عرق
+    ar: عرق
+    en: sweat
 review:
   status: draft
   verified: false

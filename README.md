@@ -19,7 +19,7 @@ the Arabic words Indonesian already borrowed.
 
 | Feature | Mac | S24 Ultra (phone) | Tab S11 (tablet) |
 |---|---|---|---|
-| Journey Map (Jakarta → Raja Ampat, Surabaya → Yogyakarta), Lesson Player, Lanjut handoff | ✓ | ✓ vertical route | ✓ full map, pinch and pan |
+| Journey Map (Jakarta → Raja Ampat, Yogyakarta ↔ Madiun), Lesson Player, Lanjut handoff | ✓ zoom out to the whole journey | ✓ vertical route | ✓ full map, pinch and pan, zoom out to the whole journey |
 | Placement test, level tests ("Take a flight"), monthly level check | ✓ | ✓ | ✓ |
 | Review (FSRS): classic cards, 1-minute bursts, typed answers | ✓ | ✓ | ✓ |
 | Stats: skill radar, pace and forecast | ✓ | ✓ | ✓ |
@@ -34,9 +34,12 @@ the Arabic words Indonesian already borrowed.
 | Watch & listen: Sinetron, Kabar Radio, offline download, background playback | ✓ | ✓ background audio | ✓ background audio |
 | Persona chats: a chat partner for every level (10 personas) | ✓ | ✓ | ✓ |
 | Studio: AI mind maps, Study Desk panes | ✓ | — | ✓ |
+| Lesson sounds (pick them in Settings) and a light vibration | ✓ sounds | ✓ vibration follows the phone's touch setting | ✓ vibration follows the tablet's touch setting |
 | Offline packs (audio per unit) | ✓ | ✓ | ✓ |
 | Sync through Kabar Cloud, Google sign-in, Devices screen | ✓ | ✓ | ✓ |
 | Updates over the air: signed feed, automatic / tell me first / off, alpha·beta·stable (preview for CI builds) | ✓ swaps Kabar.app | ✓ PackageInstaller | ✓ PackageInstaller |
+| "A new Kabar is out" notification with what's new (keeps quiet hours) | ✓ while open | ✓ even when closed, Download / Install button | ✓ even when closed, Download / Install button |
+| What's new: a sheet before installing, once after each update, and a full changelog in Settings (from `changes/*.yaml`) | ✓ | ✓ | ✓ |
 | Pen **writing** (Notebook, Gambar!, handwritten answers, Card Wall, aksara calligraphy) | paused | paused | paused |
 | Home-screen widgets | — | parked | parked |
 
@@ -55,26 +58,26 @@ every morning. CI warns when the table below is behind the content.
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
-| BIPA 1 | Jakarta | A1 | 10 | 98 | 934 | 606 | 605 / 600 | ~11 h | 35 |
-| BIPA 2 | Bali | A2 | 10 | 85 | 791 | 497 | 1,102 / 1,100 | ~10 h | 35 |
-| BIPA 3 | Lombok | B1 | 10 | 70 | 660 | 289 | 1,391 / 1,600 | ~8 h | 39 |
-| BIPA 4 | Sulawesi | B2 | 10 | 80 | 709 | 230 | 1,621 / 2,100 | ~8 h | 37 |
-| BIPA 5 | Kalimantan | C1 | 10 | 90 | 865 | 306 | 1,926 / 2,700 | ~9 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 100 | 990 | 391 | 2,317 / 3,300 | ~10 h | 38 |
-| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 100 | 1,009 | 385 | 2,702 / 4,000 | ~10 h | 38 |
-| **Total** |  | — | 70 | 623 | 5,958 | 2,704 | 2,702 / 4,000 | ~66 h | 260 |
+| BIPA 1 | Jakarta | A1 | 10 | 98 | 940 | 613 | 612 / 600 | ~11 h | 35 |
+| BIPA 2 | Bali | A2 | 10 | 86 | 810 | 516 | 1,128 / 1,100 | ~10 h | 35 |
+| BIPA 3 | Lombok | B1 | 10 | 97 | 936 | 506 | 1,634 / 1,600 | ~11 h | 39 |
+| BIPA 4 | Sulawesi | B2 | 10 | 126 | 1,182 | 599 | 2,233 / 2,100 | ~14 h | 37 |
+| BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,236 | 606 | 2,838 / 2,700 | ~13 h | 38 |
+| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 606 | 3,444 / 3,300 | ~13 h | 38 |
+| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 704 | 4,148 / 4,000 | ~15 h | 38 |
+| **Total** |  | — | 70 | 801 | 7,791 | 4,150 | 4,148 / 4,000 | ~87 h | 260 |
 
 **Javanese (J1–J6)**
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
-| J1 | Surabaya | — | 7 | 36 | 312 | 146 | 146 / 250 | ~4 h | 34 |
-| J2 | Madiun | — | 6 | 36 | 341 | 149 | 295 / 500 | ~4 h | 35 |
-| J3 | Solo (Surakarta) | — | 6 | 42 | 364 | 98 | 393 / 750 | ~4 h | 35 |
-| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 482 / 1,000 | ~5 h | 38 |
-| J5 | Semarang | — | 6 | 66 | 621 | 255 | 737 / 1,250 | ~7 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 542 | 95 | 831 / 1,500 | ~6 h | 37 |
-| **Total** |  | — | 37 | 288 | 2,615 | 833 | 831 / 1,500 | ~31 h | 218 |
+| J1 | Malioboro, Yogyakarta | — | 7 | 62 | 580 | 332 | 277 / 250 | ~7 h | 34 |
+| J2 | Madiun | — | 6 | 57 | 551 | 284 | 511 / 500 | ~6 h | 35 |
+| J3 | Pakualaman, Yogyakarta | — | 6 | 71 | 655 | 305 | 773 / 750 | ~8 h | 35 |
+| J4 | Kraton, Yogyakarta | — | 6 | 73 | 687 | 270 | 1,018 / 1,000 | ~8 h | 38 |
+| J5 | Kutha Pendekar (Madiun) | — | 6 | 72 | 683 | 293 | 1,256 / 1,250 | ~8 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 86 | 810 | 292 | 1,511 / 1,500 | ~9 h | 37 |
+| **Total** |  | — | 37 | 421 | 3,966 | 1,776 | 1,511 / 1,500 | ~46 h | 218 |
 
 **Reference content and stories**
 
@@ -84,7 +87,7 @@ every morning. CI warns when the table below is behind the content.
 | Grammar points | 160 | 113 Indonesian, 47 Javanese |
 | Indonesian glosses | 10,000 | 10,000 awaiting your review |
 | Javanese glosses | 3,000 | 3,000 awaiting your review |
-| Arabic Bridge entries | 628 | Arabic loans, shifts and false friends |
+| Arabic Bridge entries | 633 | Arabic loans, shifts and false friends |
 | Javanese speech-level rows | 365 | ngoko / krama / krama inggil |
 | Pronunciation lexicon | 18,309 | plus 30 hand overrides |
 | Sinetron episodes | 107 | each unlocks after its unit |
@@ -177,6 +180,8 @@ Jump straight into a lesson or test: `KABAR_OPEN_LESSON=bipa1.u01.l01 just run-m
 | [RELEASE.md](docs/RELEASE.md) | Release checklist (no release yet) |
 | [CONTENT.md](docs/CONTENT.md) | Content pipeline |
 | [PEDAGOGY.md](docs/PEDAGOGY.md) | Lesson pacing and evidence |
+| [DESIGN.md](docs/DESIGN.md) | Design system: how screens look and adapt |
+| [CAST.md](docs/CAST.md) | Who is who, and which units each character belongs to |
 | [RESEARCH.md](docs/RESEARCH.md) | Services and free-tier verification |
 | [BAKEOFF.md](docs/BAKEOFF.md) | Engine bake-off |
 | [VISUAL-ASSETS.md](docs/VISUAL-ASSETS.md) | Art pipeline |

@@ -1,0 +1,175 @@
+schema: kabar.lesson/v1
+id: j3.u06.l08
+language: jv
+title: Papan ing griya saudagar
+can_do:
+  ar_eg: تقرا لافتة متحف قصيرة فيها dipun- و-ipun وتفهمها.
+  ar: أن تقرأ لافتة متحف قصيرة فيها dipun- و-ipun وتفهمها.
+  en: Read a short museum sign with dipun- and -ipun, and understand it.
+slides:
+  - title: Papan ing Giriloyo
+    body:
+      ar_eg: |
+        في Giriloyo، محمد دخل بيت قديم من بيوت تجار الباتيك، ولقى لافتة عند الباب. اقراها:
+        griyanipun = بيت (الـ…)، batikipun = الباتيك، dipundamel = اتعمل، dipuntumbas = يتشترى.
+      ar: |
+        دخل محمد في Giriloyo بيتًا قديمًا من بيوت تجار الباتيك، فوجد لافتة عند الباب. اقرأها:
+        griyanipun = بيتُ (فلان)، وbatikipun = الباتيك، وdipundamel = صُنع، وdipuntumbas = يُشترى.
+      en: |
+        In Giriloyo, Mohamed visits an old batik merchant's house and finds a sign by the door. Read it:
+        griyanipun = the house (of…), batikipun = the batik, dipundamel = was made, dipuntumbas = be bought.
+    examples:
+      - text: Griya menika griyanipun saudagar batik.
+        ar_eg: البيت ده بيت تاجر باتيك.
+        ar: هذا البيت بيت تاجر باتيك.
+        en: This house is a batik merchant's house.
+      - text: Batikipun dipundamel wonten griya menika.
+        ar_eg: الباتيك كان بيتعمل في البيت ده.
+        ar: كان الباتيك يُصنع في هذا البيت.
+        en: The batik was made in this house.
+      - text: Nyuwun sewu, batik mboten saged dipuntumbas wonten mriki.
+        ar_eg: لا مؤاخذة، الباتيك مش للبيع هنا.
+        ar: عفوًا، لا يُباع الباتيك هنا.
+        en: Sorry, batik can't be bought here.
+    grammar: jv.krama.affixes
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) البيت ده كان بيت مين؟
+      ar: (من اللافتة) بيت من كان هذا البيت؟
+      en: (from the sign) Whose house was this?
+    options: [saudagar batik, Pak Wiryo, Bu Siti]
+    answer: 0
+    words: [saudagar, griya]
+    explain:
+      ar_eg: اللافتة بتقول «griyanipun saudagar batik» = بيت تاجر الباتيك. مش بيت Pak Wiryo ولا Bu Siti.
+      ar: تقول اللافتة «griyanipun saudagar batik» أي بيت تاجر الباتيك، لا بيت Pak Wiryo ولا Bu Siti.
+      en: "The sign says \"griyanipun saudagar batik\": a batik merchant's house, not Pak Wiryo's or Bu Siti's."
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) الباتيك كان بيتعمل فين؟
+      ar: (من اللافتة) أين كان يُصنع الباتيك؟
+      en: (from the sign) Where was the batik made?
+    options: [wonten Kauman, wonten griya menika, wonten Pasar Beringharjo]
+    answer: 1
+    words: [damel]
+    explain:
+      ar_eg: «Batikipun dipundamel wonten griya menika» = الباتيك كان بيتعمل في البيت ده نفسه.
+      ar: «Batikipun dipundamel wonten griya menika» أي كان الباتيك يُصنع في هذا البيت نفسه.
+      en: "\"Batikipun dipundamel wonten griya menika\": the batik was made in this very house."
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) محمد يقدر يشتري باتيك هنا؟
+      ar: (من اللافتة) هل يستطيع محمد شراء الباتيك هنا؟
+      en: (from the sign) Can Mohamed buy batik here?
+    options: [Saged, Mboten saged]
+    answer: 1
+    explain:
+      ar_eg: mboten saged dipuntumbas = مينفعش يتشترى.
+      ar: mboten saged dipuntumbas = لا يمكن أن يُشترى.
+      en: mboten saged dipuntumbas = can't be bought.
+    words: [tumbas, saged]
+  - id: e04
+    type: listen
+    text: Batikipun dipundamel wonten griya menika.
+    options: ['Batikipun dipuntumbas wonten griya menika.', 'Batikipun dipundamel wonten Giriloyo.', 'Batikipun dipundamel wonten griya menika.']
+    answer: 2
+    meaning:
+      ar_eg: الباتيك كان بيتعمل في البيت ده.
+      ar: كان الباتيك يُصنع في هذا البيت.
+      en: The batik was made in this house.
+    words: [batik, damel, griya]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: griyanipun
+        ar_eg: بيت (فلان) / البيت
+        ar: بيتُ (فلان)
+        en: the house (of)
+      - text: batikipun
+        ar_eg: الباتيك (بتاعه)
+        ar: الباتيك
+        en: the batik
+      - text: dipundamel
+        ar_eg: اتعمل
+        ar: صُنع
+        en: was made
+      - text: dipuntumbas
+        ar_eg: يتشترى
+        ar: يُشترى
+        en: be bought
+    words: [griya, batik, damel, tumbas]
+  - id: e06
+    type: fill_blank
+    sentence: Griya menika griya___ saudagar batik.
+    meaning:
+      ar_eg: البيت ده بيت تاجر باتيك.
+      ar: هذا البيت بيت تاجر باتيك.
+      en: This house is a batik merchant's house.
+    options: [ipun, ne, nipun]
+    answers: [nipun]
+    explain:
+      ar_eg: 'griya بتخلص بحرف متحرك (a)، يبقى -nipun. -ipun بعد الساكن (batikipun)، و-ne نغوكو.'
+      ar: 'تنتهي griya بحرف علة فتأخذ -nipun، و-ipun بعد الساكن (batikipun)، و-ne من الـ ngoko.'
+      en: griya ends in a vowel, so -nipun. -ipun follows a consonant (batikipun); -ne is ngoko.
+    words: [griya]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Batik menika mboten saged dipuntumbas.
+    answers_meaning:
+      ar_eg: ["الباتيك ده مينفعش يتشترى.", "الباتيك ده مش للبيع.", "مينفعش تشتري الباتيك ده."]
+      ar: ["لا يمكن شراء هذا الباتيك.", "هذا الباتيك ليس للبيع.", "هذا الباتيك لا يُشترى."]
+      en: ["This batik can't be bought.", "This batik is not for sale.", "You can't buy this batik."]
+    explain:
+      ar_eg: 'dipun- + tumbas = يتشترى (مبني للمجهول)، وmboten saged = مينفعش.'
+      ar: 'dipun- + tumbas = يُشترى (مبني للمجهول)، وmboten saged = لا يمكن.'
+      en: 'dipun- + tumbas = be bought (passive); mboten saged = can''t.'
+    words: [tumbas, saged]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: البيت ده كبير أوي يا حاج.
+      ar: هذا البيت كبير جدًا يا سيدي.
+      en: This house is very big, sir.
+    answer: Griya menika ageng sanget, Pak.
+    distractors: [gedhe, iki]
+    explain:
+      ar_eg: 'ageng = gedhe بالكراما، menika = iki.'
+      ar: 'ageng = gedhe بالكراما، وmenika = iki.'
+      en: 'ageng = gedhe in krama; menika = iki.'
+    words: [griya, ageng, sanget]
+dialogue:
+  title: Ing griya saudagar
+  lines:
+    - speaker: Mohamed
+      text: Pak Harjo, griya menika griyanipun sinten?
+      ar_eg: يا Pak Harjo، البيت ده بيت مين؟
+      ar: يا Pak Harjo، بيت من هذا البيت؟
+      en: Pak Harjo, whose house is this?
+    - speaker: Pak Harjo
+      text: "Griyane saudagar batik, Mas."
+      ar_eg: "بيت تاجر باتيك يا أستاذ."
+      ar: "بيت تاجر باتيك."
+      en: "A batik merchant's house."
+    - speaker: Mohamed
+      text: Batikipun dipundamel wonten mriki?
+      ar_eg: الباتيك كان بيتعمل هنا؟
+      ar: هل كان الباتيك يُصنع هنا؟
+      en: Was the batik made here?
+    - speaker: Pak Harjo
+      text: Inggih, leres. Nanging batik mboten saged dipuntumbas wonten mriki.
+      ar_eg: أيوه، صح. بس الباتيك مش للبيع هنا.
+      ar: نعم، صحيح. لكن الباتيك لا يُباع هنا.
+      en: Yes, that's right. But you can't buy batik here.
+    - speaker: Mohamed
+      text: Oh, inggih. Matur nuwun, Pak.
+      ar_eg: آه، ماشي. شكرًا يا حاج.
+      ar: آه، حسنًا. شكرًا يا سيدي.
+      en: Oh, I see. Thank you, sir.
+review:
+  status: draft
+  verified: false

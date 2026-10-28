@@ -10,6 +10,8 @@
 //! - `update sign` signs `update.json` with the secret from
 //!   `KABAR_UPDATE_SECRET` and checks the result against the public key.
 //! - `update verify` runs the app's checks on a feed folder.
+//! - `update changes` shows what the next build's "what's new" would say
+//!   (`crate::changes`).
 
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -22,9 +24,11 @@ use ed25519_dalek::{Signer, SigningKey};
 use kabar_core::packs::sha256_hex;
 use kabar_core::update::{Version, check_download, key_line, parse_public_key, verify_manifest};
 use kabar_protocol::update::{
-    Channel, MANIFEST_FILE, SIGNATURE_FILE, UPDATE_FORMAT, UpdateAsset, UpdateManifest, UpdateNotes,
-    UpdatePlatform,
+    BuildChanges, Channel, MANIFEST_FILE, SIGNATURE_FILE, UPDATE_FORMAT, UpdateAsset, UpdateManifest,
+    UpdateNotes, UpdatePlatform,
 };
+
+use crate::changes;
 
 use crate::paths::Root;
 
@@ -59,6 +63,11 @@ pub enum Cmd {
         #[arg(long)]
         public_key: Option<PathBuf>,
     },
+    /// Print what `changes/` adds after `--since` (default: only HEAD), and check every file there.
+    Changes {
+        #[arg(long)]
+        since: Option<String>,
+    },
 }
 
 #[derive(Args)]
@@ -82,6 +91,15 @@ pub struct ManifestArgs {
     notes_ar_eg: String,
     #[arg(long, default_value = "")]
     notes_ar: String,
+    /// The channel's current `update.json` (a missing file is fine): its
+    /// history is kept, and with `--changes` its commit is where the new
+    /// changes start.
+    #[arg(long)]
+    previous: Option<PathBuf>,
+    /// Gather `changes/` since the previous feed's commit into this build's
+    /// history entry (and the notes, when none are given).
+    #[arg(long)]
+    changes: bool,
     /// Feed folder to write (emptied first).
     #[arg(long, default_value = "dist/update")]
     out: PathBuf,
@@ -112,6 +130,32 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                 Some(v) => v,
                 None => workspace_version(root)?,
             };
+            let previous: Option<UpdateManifest> = match &args.previous {
+                Some(p) if p.exists() => {
+                    let m: UpdateManifest = serde_json::from_slice(&fs::read(p)?)
+                        .with_context(|| format!("previous feed {}", p.display()))?;
+                    ensure!(m.channel == args.channel, "the previous feed is for {}", m.channel.as_str());
+                    Some(m)
+                }
+                _ => None,
+            };
+            let mut notes = UpdateNotes { en: args.notes_en, ar_eg: args.notes_ar_eg, ar: args.notes_ar };
+            let mut entry = None;
+            if args.changes {
+                let since = previous.as_ref().and_then(|m| m.commit.as_deref());
+                let found = changes::collect(root.path(), since)?;
+                eprintln!("{} change(s) since {}", found.len(), since.unwrap_or("HEAD^"));
+                if notes == UpdateNotes::default() {
+                    notes = changes::notes_from(&found);
+                }
+                entry = (!found.is_empty()).then(|| BuildChanges {
+                    version: version.clone(),
+                    build: args.build,
+                    published_at: now_rfc3339(),
+                    changes: found,
+                });
+            }
+            let history = changes::history(previous.as_ref(), entry);
             let m = write_manifest(
                 &args.out,
                 args.channel,
@@ -119,7 +163,7 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                 args.build,
                 args.commit,
                 &args.assets,
-                UpdateNotes { en: args.notes_en, ar_eg: args.notes_ar_eg, ar: args.notes_ar },
+                WhatsNew { notes, history },
             )?;
             eprintln!(
                 "{} {} build {} → {} ({} file(s))",
@@ -150,6 +194,14 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                 m.build,
                 m.assets.len()
             );
+            Ok(())
+        }
+        Cmd::Changes { since } => {
+            let n = changes::check_all(root.path())?;
+            eprintln!("{n} file(s) in {}/ check out", changes::DIR);
+            for c in changes::collect(root.path(), since.as_deref())? {
+                println!("{:?}\t{}\t{}", c.kind, c.text.ar_eg, c.text.en);
+            }
             Ok(())
         }
     }
@@ -187,6 +239,13 @@ pub fn keygen(public_out: &Path, force: bool) -> Result<(String, String)> {
     Ok((public, B64.encode(seed)))
 }
 
+/// The manifest's notes and history (`crate::changes`).
+#[derive(Default)]
+pub struct WhatsNew {
+    pub notes: UpdateNotes,
+    pub history: Vec<BuildChanges>,
+}
+
 pub fn write_manifest(
     out: &Path,
     channel: Channel,
@@ -194,8 +253,9 @@ pub fn write_manifest(
     build: u64,
     commit: Option<String>,
     files: &[(UpdatePlatform, PathBuf)],
-    notes: UpdateNotes,
+    whats_new: WhatsNew,
 ) -> Result<UpdateManifest> {
+    let WhatsNew { notes, history } = whats_new;
     let parsed = Version::parse(version).with_context(|| format!("version {version:?}"))?;
     if channel != Channel::Preview {
         ensure!(
@@ -220,7 +280,13 @@ pub fn write_manifest(
             UpdatePlatform::AndroidArm64 => "apk",
             UpdatePlatform::MacosArm64 | UpdatePlatform::MacosX86_64 => "app.zip",
         };
-        let file = format!("kabar-{version}-{}.{ext}", platform.as_str());
+        // Preview builds all share one version, so the build number keeps
+        // each file name unique: replacing a live file mid-upload would hand
+        // devices still holding the old feed a 404 or a hash mismatch (#295).
+        let file = match channel {
+            Channel::Preview => format!("kabar-{version}-b{build}-{}.{ext}", platform.as_str()),
+            _ => format!("kabar-{version}-{}.{ext}", platform.as_str()),
+        };
         fs::write(out.join(&file), &bytes)?;
         assets.push(UpdateAsset {
             platform: *platform,
@@ -239,6 +305,7 @@ pub fn write_manifest(
         published_at: now_rfc3339(),
         notes,
         assets,
+        history,
     };
     fs::write(out.join(MANIFEST_FILE), serde_json::to_vec_pretty(&m)?)?;
     Ok(m)
@@ -323,7 +390,7 @@ mod tests {
             0,
             Some("abc1234".into()),
             &[(UpdatePlatform::AndroidArm64, apk)],
-            UpdateNotes::default(),
+            WhatsNew::default(),
         )
         .unwrap();
         assert_eq!(m.assets[0].file, "kabar-1.0.0-alpha.2-android-arm64.apk");
@@ -350,14 +417,15 @@ mod tests {
         let assets = [(UpdatePlatform::MacosArm64, f)];
         let out = dir.path().join("feed");
         assert!(
-            write_manifest(&out, Channel::Stable, "1.0.0-alpha.1", 0, None, &assets, UpdateNotes::default())
+            write_manifest(&out, Channel::Stable, "1.0.0-alpha.1", 0, None, &assets, WhatsNew::default())
                 .is_err()
         );
-        assert!(
-            write_manifest(&out, Channel::Beta, "1.0.0", 0, None, &assets, UpdateNotes::default()).is_ok()
-        );
-        assert!(
-            write_manifest(&out, Channel::Preview, "0.1.0", 7, None, &assets, UpdateNotes::default()).is_ok()
+        assert!(write_manifest(&out, Channel::Beta, "1.0.0", 0, None, &assets, WhatsNew::default()).is_ok());
+        let preview = write_manifest(&out, Channel::Preview, "0.1.0", 7, None, &assets, WhatsNew::default());
+        assert_eq!(
+            preview.unwrap().assets[0].file,
+            "kabar-0.1.0-b7-macos-arm64.app.zip",
+            "preview names carry the build"
         );
     }
 
@@ -412,6 +480,25 @@ mod tests {
                     size: 4,
                     sha256: sha256_hex(b"zip!"),
                     version_code: None,
+                },
+            ],
+            history: vec![
+                BuildChanges {
+                    version: "1.0.0-alpha.2".into(),
+                    build: 0,
+                    published_at: "2026-10-27T08:00:00Z".into(),
+                    changes: changes::parse(
+                        "- kind: new\n  ar_eg: حلقات راديو جديدة\n  en: New Radio episodes\n\
+                         - kind: improved\n  ar_eg: القارئ بقى أسرع\n  en: The Reader is faster\n\
+                         - kind: fixed\n  ar_eg: الصوت مبقاش بيقطع في الدرس\n  en: Lesson audio no longer cuts out\n",
+                    )
+                    .unwrap(),
+                },
+                BuildChanges {
+                    version: "1.0.0-alpha.1".into(),
+                    build: 0,
+                    published_at: "2026-10-20T08:00:00Z".into(),
+                    changes: changes::parse("- kind: new\n  ar_eg: أول نسخة ألفا\n  en: The first alpha\n").unwrap(),
                 },
             ],
         };

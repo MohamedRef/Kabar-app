@@ -51,6 +51,8 @@ jobs:
       - uses: actions/checkout@v5
         with:
           persist-credentials: false
+          # "What's new" reads the changes/ files merged since the build on the feed.
+          fetch-depth: 0
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-linux-android
@@ -153,13 +155,18 @@ jobs:
           ls -lh dist/android/kabar-preview.apk
 
       - name: Signed update feed (update.json + signature)
-        env:
-          COMMIT_SUBJECT: ${{ github.event.head_commit.message || github.event.pull_request.title || 'Preview build' }}
         run: |
           VERSION="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
-          NOTES="$(printf '%s' "$COMMIT_SUBJECT" | head -1 | cut -c1-200)"
+          # What's new: the changes/*.yaml files (or, without one, the pull
+          # request titles) merged since the build the feed carries now, on
+          # top of that feed's history. The app shows them before installing,
+          # in the "new version" notification, and once after the update.
+          curl -fsSL --retry 3 -o /tmp/previous-update.json \
+            "https://github.com/$GITHUB_REPOSITORY/releases/download/preview/update.json" \
+            || rm -f /tmp/previous-update.json
           cargo run -q -p kabar-tools -- update manifest --channel preview --version "$VERSION" \
-            --build "$KABAR_BUILD" --commit "$KABAR_COMMIT" --notes-en "$NOTES" \
+            --build "$KABAR_BUILD" --commit "$KABAR_COMMIT" \
+            --previous /tmp/previous-update.json --changes \
             --asset android-arm64=dist/android/kabar-preview.apk --out dist/update
           KABAR_UPDATE_SECRET="$(cat ~/.kabar-preview-update/secret)" \
             cargo run -q -p kabar-tools -- update sign dist/update --public-key ~/.kabar-preview-update/key.pub
@@ -192,12 +199,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          # A newer commit on main means a newer run will publish; don't roll
-          # the release back to this one.
-          head="$(gh api "repos/$GH_REPO/commits/${GITHUB_REF_NAME}" --jq .sha)"
-          if [ "$head" != "$GITHUB_SHA" ]; then
-            echo "main has moved on to ${head::7}; its own run publishes."
-            exit 0
+          # Publish whenever this commit is newer than the one the release
+          # carries, so a run that finishes after a newer one never rolls the
+          # release back, and a busy stretch of merges still publishes.
+          published="$(gh api "repos/$GH_REPO/git/refs/tags/preview" --jq .object.sha 2>/dev/null || true)"
+          if [ -n "$published" ]; then
+            status="$(gh api "repos/$GH_REPO/compare/$published...$GITHUB_SHA" --jq .status)"
+            if [ "$status" != "ahead" ]; then
+              echo "The release already carries ${published::7} ($status); nothing to publish."
+              exit 0
+            fi
           fi
           NOTES="Preview build of ${GITHUB_SHA::7}, signed with a CI preview key (not the release key). Install: download kabar-preview.apk on the phone and allow installs from your browser."
           # The release stays in place and only its tag and files change, so
@@ -219,3 +230,13 @@ jobs:
           done
           gh release upload preview dist/android/kabar-preview.apk "${builds[@]}" --clobber
           gh release upload preview dist/update/update.json.sig dist/update/update.json --clobber
+          # Feed builds are named by build number (#295), so nothing a live
+          # update.json names is ever overwritten. Keep this build and the one
+          # before it (a device may have just read the previous feed) and
+          # drop older ones so the release doesn't grow without end. Feed
+          # files from before #295 (no build number) count as build 0.
+          gh api "repos/$GH_REPO/releases/tags/preview" \
+            --jq '.assets[] | select(.name | test("^kabar-[0-9]")) | "\((.name | capture("-b(?<b>[0-9]+)-").b) // "0") \(.id)"' \
+            | sort -rn | tail -n +3 | while read -r _ id; do
+                gh api -X DELETE "repos/$GH_REPO/releases/assets/$id"
+              done

@@ -1,0 +1,246 @@
+schema: kabar.lesson/v1
+id: bipa4.u07.l09
+language: id
+title: Badan dan keadaan
+can_do:
+  ar_eg: 'توصف حالتك الصحية: جسمك، ضعف، ريحة، وعي، وحركة.'
+  ar: 'أن تصف حالتك الصحية: الجسم والضعف والرائحة والوعي والحركة.'
+  en: 'Describe your health: your body, weakness, smell, consciousness and movement.'
+slides:
+  - title: Bagaimana keadaanmu?
+    body:
+      ar_eg: |
+        badan = جسم (badan saya sakit = جسمي واجعني)، keadaan = حالة، وضع (keadaan pasien = حالة المريض).
+        lemah = ضعيف (عكس kuat)، bau = ريحة، وكمان «ريحته وحشة».
+        sadar = واعي، فايق (tidak sadar = مغمى عليه)، bergerak = يتحرك (gerak = حركة).
+        normal = طبيعي، kadang-kadang أو kadang = ساعات، أحيانًا.
+      ar: |
+        badan = الجسم (badan saya sakit = جسمي يؤلمني)، keadaan = الحالة أو الوضع (keadaan pasien = حالة المريض).
+        lemah = ضعيف (عكس kuat)، bau = الرائحة، وتعني أيضًا «كريه الرائحة».
+        sadar = واعٍ (tidak sadar = فاقد الوعي)، bergerak = يتحرك (gerak = الحركة).
+        normal = طبيعي، kadang-kadang أو kadang = أحيانًا.
+      en: |
+        badan = body (badan saya sakit = my body aches), keadaan = condition, state (keadaan pasien = the patient's condition).
+        lemah = weak (opposite of kuat), bau = smell, also "smelly".
+        sadar = conscious, aware (tidak sadar = unconscious), bergerak = to move (gerak = movement).
+        normal = normal, kadang-kadang or kadang = sometimes.
+    examples:
+      - text: Badan saya lemah setelah demam.
+        ar_eg: جسمي ضعيف بعد السخونية.
+        ar: جسمي ضعيف بعد الحمّى.
+        en: My body is weak after the fever.
+      - text: Pasien itu sudah sadar dan bisa bergerak.
+        ar_eg: المريض ده فاق وبيقدر يتحرك.
+        ar: استعاد ذلك المريض وعيه ويستطيع الحركة.
+        en: That patient is conscious again and can move.
+      - text: Tekanan darah Anda normal.
+        ar_eg: ضغطك طبيعي.
+        ar: ضغط دمك طبيعي.
+        en: Your blood pressure is normal.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: badan
+        ar_eg: جسم
+        ar: جسم
+        en: body
+      - text: keadaan
+        ar_eg: حالة
+        ar: حالة
+        en: condition
+      - text: lemah
+        ar_eg: ضعيف
+        ar: ضعيف
+        en: weak
+      - text: bau
+        ar_eg: ريحة
+        ar: رائحة
+        en: smell
+    words: [badan, keadaan, lemah, bau]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: sadar
+        ar_eg: واعي، فايق
+        ar: واعٍ
+        en: conscious
+      - text: bergerak
+        ar_eg: يتحرك
+        ar: يتحرك
+        en: to move
+      - text: normal
+        ar_eg: طبيعي
+        ar: طبيعي
+        en: normal
+      - text: kadang
+        ar_eg: ساعات
+        ar: أحيانًا
+        en: sometimes
+    words: [sadar, bergerak, normal, kadang]
+  - id: e03
+    type: listen
+    text: Keadaan pasien itu sudah membaik.
+    question:
+      ar_eg: حالة المريض عاملة إزاي؟
+      ar: كيف حال المريض؟
+      en: How is the patient's condition?
+    options: [اتحسّنت, وحشت, زي ما هي]
+    answer: 0
+    meaning:
+      ar_eg: حالة المريض ده اتحسّنت.
+      ar: تحسّنت حالة ذلك المريض.
+      en: That patient's condition has improved.
+    words: [keadaan]
+  - id: e04
+    type: fill_blank
+    sentence: Setelah sakit seminggu, badannya masih ___.
+    meaning:
+      ar_eg: بعد ما عيي أسبوع، جسمه لسه ___.
+      ar: بعد مرض دام أسبوعًا ما زال جسمه ___.
+      en: After a week of illness, their body is still ___.
+    options: [lemah, normal, sadar]
+    answers: [lemah]
+    words: [lemah, badan, normal, sadar]
+    explain:
+      ar_eg: بعد أسبوع عيا الجسم لسه lemah (ضعيف). normal = طبيعي، وsadar = واعي، ومايمشوش مع masih هنا.
+      ar: بعد أسبوع من المرض ما زال الجسم lemah (ضعيفًا). أما normal فطبيعي، وsadar واعٍ، ولا يناسبان هنا.
+      en: After a week ill, the body is still lemah (weak). normal is normal and sadar is conscious; neither fits here.
+  - id: e05
+    type: multiple_choice
+    question: Jangan makan ikan itu. ___nya tidak enak.
+    options: [Bau, Badan, Gerak]
+    answer: 0
+    explain:
+      ar_eg: bau = ريحة، والسمك ريحته وحشة. badan = جسم، وgerak = حركة.
+      ar: bau = الرائحة، ورائحة السمك كريهة. أما badan فالجسم، وgerak الحركة.
+      en: 'bau is smell: the fish smells bad. badan is body, and gerak is movement.'
+    words: [bau, badan, bergerak]
+  - id: e06
+    type: fill_blank
+    sentence: Dia jatuh dan tidak ___ selama lima menit.
+    meaning:
+      ar_eg: وقع وفضل مش ___ خمس دقايق.
+      ar: سقط وظلّ غير ___ خمس دقائق.
+      en: They fell and were not ___ for five minutes.
+    options: [sadar, lemah, kadang]
+    answers: [sadar]
+    words: [sadar, lemah, kadang]
+    explain:
+      ar_eg: tidak sadar = فاقد الوعي، بعد الوقعة. lemah = ضعيف، وkadang = ساعات، ومايمشوش هنا.
+      ar: tidak sadar = فاقد الوعي، بعد السقوط. أما lemah فضعيف، وkadang أحيانًا، ولا يناسبان هنا.
+      en: tidak sadar means unconscious, after the fall. lemah is weak and kadang is sometimes; neither fits here.
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بتقول للدكتور إن الصداع مش كل يوم، ساعات بس.
+      ar: تقول للطبيب إن الصداع ليس يوميًا، بل أحيانًا.
+      en: You tell the doctor the headache isn't daily, only sometimes.
+    options: [Kepala saya kadang sakit., Kepala saya normal sakit., Kepala saya sadar sakit.]
+    answer: 0
+    explain:
+      ar_eg: kadang = ساعات. normal = طبيعي، وsadar = واعي، ومايوصفوش مرات الوجع.
+      ar: kadang = أحيانًا. أما normal فطبيعي، وsadar واعٍ، ولا يصفان تكرار الألم.
+      en: kadang means sometimes. normal and sadar (conscious) don't say how often it hurts.
+    words: [kadang, normal, sadar]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: بعد العملية، رجله بتتحرك طبيعي.
+      ar: بعد العملية تتحرك ساقه بشكل طبيعي.
+      en: After the operation, their leg moves normally.
+    answer: Setelah operasi, kakinya bergerak normal.
+    distractors: [lemah, bau]
+    words: [bergerak, normal, lemah, bau]
+    explain:
+      ar_eg: bergerak normal = بيتحرك بشكل طبيعي. lemah = ضعيف، وbau = ريحة، ومالهمش مكان بعد العملية الناجحة.
+      ar: bergerak normal = يتحرك بشكل طبيعي. أما lemah فضعيف، وbau رائحة، ولا مكان لهما هنا.
+      en: bergerak normal means moves normally. lemah is weak and bau is a smell; they don't belong here.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Kadang badan saya lemah di pagi hari.
+    answers_meaning:
+      ar_eg: [ساعات جسمي بيبقى ضعيف الصبح, أحيانًا بحس جسمي ضعيف الصبح]
+      ar: [أحيانًا يكون جسمي ضعيفًا في الصباح, أشعر أحيانًا بضعف جسمي صباحًا]
+      en: [Sometimes my body feels weak in the morning, My body is sometimes weak in the mornings]
+    words: [kadang, badan, lemah]
+  - id: e10
+    type: speaking
+    text: Dokter bilang keadaan saya normal.
+    meaning:
+      ar_eg: الدكتور قال إن حالتي طبيعية.
+      ar: قال الطبيب إن حالتي طبيعية.
+      en: The doctor said my condition is normal.
+    words: [keadaan, normal, sadar, badan]
+dialogue:
+  lines:
+    - speaker: Dokter Fitri
+      text: Bagaimana keadaanmu hari ini, Mohamed?
+      ar_eg: حالتك النهارده عاملة إيه يا محمد؟
+      ar: كيف حالك اليوم يا محمد؟
+      en: How are you feeling today, Mohamed?
+    - speaker: Mohamed
+      text: Badan saya masih lemah, Dok. Kadang kepala saya pusing.
+      ar_eg: جسمي لسه ضعيف يا دكتورة. وساعات بدوخ.
+      ar: جسمي ما زال ضعيفًا يا دكتورة، وأشعر بالدوار أحيانًا.
+      en: My body is still weak, doctor. Sometimes I feel dizzy.
+    - speaker: Dokter Fitri
+      text: Coba bergerak sedikit. Kakimu sakit?
+      ar_eg: جرّب تتحرك شوية. رجلك بتوجعك؟
+      ar: حاول أن تتحرك قليلًا. هل تؤلمك ساقك؟
+      en: Try to move a little. Does your leg hurt?
+    - speaker: Mohamed
+      text: Tidak. Tapi kemarin saya hampir tidak sadar karena panas sekali.
+      ar_eg: لأ. بس امبارح كنت هيغمى عليّ من الحر.
+      ar: لا، لكنني كدت أفقد الوعي أمس من شدة الحر.
+      en: No. But yesterday I nearly passed out because it was so hot.
+    - speaker: Dokter Fitri
+      text: Tekanan darahmu normal. Minum air yang banyak dan istirahat, ya.
+      ar_eg: ضغطك طبيعي. اشرب مية كتير وارتاح.
+      ar: ضغط دمك طبيعي. اشرب الكثير من الماء واسترح.
+      en: Your blood pressure is normal. Drink plenty of water and rest.
+new_words:
+  - word: badan
+    pos: noun
+    ar_eg: جسم
+    ar: جسم، بدن
+    en: body
+  - word: keadaan
+    pos: noun
+    ar_eg: حالة، وضع
+    ar: حالة، وضع
+    en: condition, state
+  - word: lemah
+    pos: adj
+    ar_eg: ضعيف
+    ar: ضعيف
+    en: weak
+  - word: bau
+    pos: noun
+    ar_eg: ريحة؛ ريحته وحشة
+    ar: رائحة؛ كريه الرائحة
+    en: smell; smelly
+  - word: sadar
+    pos: adj
+    ar_eg: واعي، فايق (tidak sadar)
+    ar: واعٍ (tidak sadar)
+    en: conscious, aware
+  - word: bergerak
+    pos: verb
+    ar_eg: يتحرك (gerak = حركة)
+    ar: يتحرك (gerak = حركة)
+    en: to move
+  - word: normal
+    pos: adj
+    ar_eg: طبيعي
+    ar: طبيعي
+    en: normal
+  - word: kadang
+    pos: adv
+    ar_eg: ساعات، أحيانًا (kadang-kadang)
+    ar: أحيانًا (kadang-kadang)
+    en: sometimes
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,237 @@
+schema: kabar.lesson/v1
+id: bipa7.u01.l14
+language: id
+title: Ulangan Unit 1
+can_do:
+  ar_eg: تكتب خبر عن إنجاز وتقراه بصوت عالي زي المذيع.
+  ar: أن تكتب خبرًا عن إنجاز وتلقيه كما يفعل المذيع.
+  en: Write a news story about an achievement and read it out like a newsreader.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: meraih
+        ar_eg: يحقّق / يكسب
+        ar: يحرز
+        en: to win, to achieve
+      - text: persatuan
+        ar_eg: وحدة
+        ar: وحدة
+        en: unity
+      - text: prestasi
+        ar_eg: إنجاز
+        ar: إنجاز
+        en: achievement
+      - text: lomba
+        ar_eg: مسابقة
+        ar: مسابقة
+        en: competition, contest
+      - text: pendengar
+        ar_eg: مستمع
+        ar: مستمع
+        en: listener
+    words: [meraih, persatuan, prestasi, lomba, pendengar]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: podium
+        ar_eg: منصّة التتويج
+        ar: منصّة التتويج
+        en: (winners') podium
+      - text: ulet
+        ar_eg: نَفَسه طويل / ما بيستسلمش
+        ar: صبور عنيد لا يستسلم
+        en: tenacious, resilient
+      - text: purwarupa
+        ar_eg: نموذج أولي / بروتوتايب
+        ar: نموذج أوّلي
+        en: prototype
+      - text: almamater
+        ar_eg: الجامعة أو المدرسة اللي اتخرّجت منها
+        ar: الجامعة الأمّ (التي تخرّج فيها المرء)
+        en: alma mater
+    words: [podium, ulet, purwarupa, almamater]
+  - id: e03
+    type: fill_blank
+    sentence: Pada tahun 1928, para pemuda membacakan ___ di Batavia.
+    meaning:
+      ar_eg: سنة 1928، الشباب قروا اليمين في باتافيا.
+      ar: في عام 1928 تلا الشباب القسم في باتافيا.
+      en: In 1928, the young people read out the pledge in Batavia.
+    options: [sumpah, siaran, liputan]
+    answers: [sumpah]
+    words: [sumpah, siaran, liputan]
+    explain:
+      ar_eg: membacakan sumpah = قروا القسم (قسم الشباب 1928). siaran = بث، وliputan = تغطية.
+      ar: membacakan sumpah = تلوا القسم (قسم الشباب 1928). أما siaran فبث وliputan تغطية.
+      en: They read out the sumpah (the 1928 pledge). siaran is a broadcast, liputan coverage.
+  - id: e04
+    type: listen
+    text: Wirausaha muda itu menerima penghargaan karena inovasinya yang menginspirasi.
+    question:
+      ar_eg: رائدة الأعمال خدت الجايزة ليه؟
+      ar: لماذا نالت رائدة الأعمال الجائزة؟
+      en: Why did the young entrepreneur get the award?
+    options:
+      - علشان ابتكارها اللي بيلهم الناس.
+      - علشان عندها فلوس كتير.
+      - علشان كسبت مسابقة رقص.
+    answer: 0
+    words: [wirausaha, penghargaan, inovasi, menginspirasi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: مراسلنا بيدّينا آخر الأخبار من المؤتمر.
+      ar: ينقل إلينا مراسلنا آخر أخبار المؤتمر.
+      en: Our reporter brings us the latest from the congress.
+    answer: Reporter kami membawa kabar terkini dari kongres.
+    distractors: [pendengar, medali]
+    words: [reporter, kabar terkini, kongres]
+    explain:
+      ar_eg: Reporter kami membawa kabar terkini = مراسلنا جايب آخر الأخبار. pendengar وmedali مش داخلين.
+      ar: Reporter kami membawa kabar terkini = يحمل مراسلنا آخر الأخبار، ولا مكان لـ pendengar ولا medali.
+      en: Our reporter brings the latest news. pendengar and medali don't fit.
+  - id: e06
+    type: match_pairs
+    pairs:
+      - text: kontingen
+        ar_eg: بعثة / وفد رياضي
+        ar: بعثة، وفد مشارك
+        en: contingent, team delegation
+      - text: panutan
+        ar_eg: قدوة
+        ar: قدوة
+        en: role model
+      - text: penggagas
+        ar_eg: صاحب الفكرة / المبادر
+        ar: صاحب الفكرة، المبادِر
+        en: initiator, originator of an idea
+      - text: difabel
+        ar_eg: من ذوي الهمم
+        ar: من ذوي القدرات المختلفة
+        en: person with a disability (differently abled)
+    words: [kontingen, panutan, penggagas, difabel]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: «الميدالية دي للوطن»، قالت.
+      ar: «هذه الميدالية للوطن»، قالت.
+      en: '"This medal is for the homeland," she said.'
+    answers:
+      - '"Medali ini untuk tanah air," ujarnya.'
+      - '"Medali ini untuk tanah air," katanya.'
+      - '"Medali ini untuk tanah air," tuturnya.'
+      - '"Medali ini buat tanah air," ujarnya.'
+      - '"Medali ini buat tanah air," katanya.'
+      - '"Medali ini buat tanah air," tuturnya.'
+    words: [medali, ujarnya, tanah air]
+  - id: e08
+    type: speaking
+    text: Kita berbangsa satu dan bangga tampil di kancah internasional.
+    meaning:
+      ar_eg: إحنا أمّة واحدة وفخورين إننا بنظهر على الساحة الدولية.
+      ar: نحن أمّة واحدة، ونفخر بالحضور على الساحة الدولية.
+      en: We are one nation and proud to appear on the international stage.
+    words: [berbangsa, kancah]
+  - id: e09
+    type: fill_blank
+    sentence: Atlet itu ___ dan tidak pernah berhenti berlatih.
+    meaning:
+      ar_eg: الرياضي ده ___ وعمره ما بطّل تمرين.
+      ar: ذلك الرياضي ___ لم يتوقّف عن التدريب قطّ.
+      en: That athlete is ___ and never stops training.
+    options: [tekun, bergengsi, rintisan]
+    answers: [tekun]
+    words: [tekun, bergengsi, rintisan]
+    explain:
+      ar_eg: tekun = مجتهد ومثابر، وده يمشي مع «مابيبطلش تمرين». bergengsi = مرموق، وrintisan = ناشئ/شركة ناشئة.
+      ar: tekun = مثابر، ويناسب «لا يتوقف عن التدريب». أما bergengsi فمرموق وrintisan ناشئة.
+      en: tekun (diligent) fits "never stops training". bergengsi is prestigious, rintisan a startup.
+  - id: e10
+    type: fill_blank
+    sentence: Pelajar Sorong ___ tiga medali emas di Jakarta.
+    meaning:
+      ar_eg: طلبة سورونج ___ تلات ميداليات دهب في جاكرتا.
+      ar: ___ طلّاب سورونغ ثلاث ميداليات ذهبية في جاكرتا.
+      en: Sorong students ___ three gold medals in Jakarta.
+    options: [menyabet, regenerasi, hak cipta]
+    answers: [menyabet]
+    words: [menyabet, regenerasi, hak cipta]
+    explain:
+      ar_eg: menyabet tiga medali emas = حصدوا تلات ميداليات دهب. regenerasi وhak cipta أسماء مش أفعال.
+      ar: menyabet = حصدوا الميداليات. أما regenerasi وhak cipta فاسمان لا فعلان.
+      en: menyabet = snatched (the medals). regenerasi and hak cipta are nouns, not verbs.
+  - id: e11
+    type: match_pairs
+    pairs:
+      - text: tuan rumah
+        ar_eg: المضيف
+        ar: المضيف
+        en: host
+      - text: judul berita
+        ar_eg: عنوان الخبر
+        ar: عنوان الخبر
+        en: headline
+      - text: noken
+        ar_eg: شنطة بابوا
+        ar: حقيبة بابوا
+        en: Papuan bag
+      - text: pembawa acara
+        ar_eg: مذيع
+        ar: مقدّم برنامج
+        en: presenter
+      - text: anyaman
+        ar_eg: شغل مضفّر
+        ar: مشغول مضفور
+        en: woven work
+    words: [tuan rumah, judul berita, noken, pembawa acara, anyaman]
+  - id: e12
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي judul berita مكتوب صح عن الـ PON؟
+      ar: أيّ judul berita مكتوب صحيحًا عن PON؟
+      en: Which judul berita about PON is written correctly?
+    options:
+      - Papua jadi tuan rumah PON untuk pertama kalinya.
+      - Papua sudah menjadi tuan rumah PON.
+      - Papua Jadi Tuan Rumah PON
+    answer: 2
+    explain:
+      ar_eg: مختصر، حرف كبير في أول كل كلمة، ومن غير نقطة.
+      ar: موجز، وحرف كبير في أوّل كلّ كلمة، وبلا نقطة.
+      en: Concise, a capital on every word, no full stop.
+    words: [judul berita, huruf kapital, tuan rumah, PON]
+dialogue:
+  title: Siaran pertama Mohamed
+  lines:
+    - speaker: Kaka Yohana
+      text: Siaranmu tadi bagus banget. Banyak pendengar kirim pesan.
+      ar_eg: نشرتك من شوية كانت حلوة قوي. مستمعين كتير بعتوا رسايل.
+      ar: كانت نشرتك قبل قليل رائعة، وأرسل كثير من المستمعين رسائل.
+      en: Your broadcast just now was great. Lots of listeners sent messages.
+    - speaker: Mohamed
+      text: Makasih, Kaka. Aku hampir lupa bilang "ujarnya" habis kutipan.
+      ar_eg: شكرًا يا كاكا. كنت هنسى أقول «ujarnya» بعد الاقتباس.
+      ar: شكرًا يا كاكا. كدت أنسى «ujarnya» بعد الاقتباس.
+      en: Thanks, Kaka. I nearly forgot to say "ujarnya" after the quote.
+    - speaker: Kaka Yohana
+      text: Besok kamu naik kapal cepat ke Waisai, kan? Dua jam aja.
+      ar_eg: بكرة هتركب المركب السريع لوايساي، صح؟ ساعتين بس.
+      ar: ستركب غدًا القارب السريع إلى وايساي، أليس كذلك؟ ساعتان فقط.
+      en: Tomorrow you're taking the fast boat to Waisai, right? Only two hours.
+    - speaker: Mohamed
+      text: Iya. Aku mau lihat terumbu karang Raja Ampat.
+      ar_eg: صح. عايز أشوف الشعاب المرجانية في راجا أمبات.
+      ar: صحيح. أريد أن أرى الشعاب المرجانية في راجا أمبات.
+      en: That's right. I want to see the coral reefs of Raja Ampat.
+souvenir:
+  id: bipa7.u01.souvenir
+  title: Pelabuhan Sorong
+  note:
+    ar_eg: سورونج هي بوّابة راجا أمبات، ومن مينائها المراكب السريعة بتوصل وايساي في حوالي ساعتين. اسمها «مدينة البترول» (Kota Minyak) علشان الهولنديين بدأوا يدوّروا على البترول هناك في التلاتينات، ومن 2022 بقت عاصمة مقاطعة بابوا الجنوبية الغربية. وبمناسبة الوحدة دي، يوم 28 أكتوبر هو Hari Sumpah Pemuda، اليوم اللي شباب من مناطق كتير حلفوا فيه سنة 1928 على وطن واحد وأمّة واحدة ولغة وحدة واحدة.
+    ar: سورونغ بوّابة راجا أمبات، ومن مينائها تبلغ القوارب السريعة وايساي في نحو ساعتين. تُلقَّب «مدينة النفط» (Kota Minyak) لأنّ الهولنديّين بدأوا التنقيب عن النفط فيها في ثلاثينيات القرن العشرين، وصارت منذ 2022 عاصمة مقاطعة بابوا الجنوبية الغربية. ويوم 28 أكتوبر هو Hari Sumpah Pemuda، ذكرى قسم شباب من مناطق شتّى عام 1928 على وطن واحد وأمّة واحدة ولغة وحدة.
+    en: Sorong is the gateway to Raja Ampat; fast boats from its harbour reach Waisai in about two hours. It is nicknamed Kota Minyak (Oil City) because the Dutch began drilling for oil there in the 1930s, and since 2022 it has been the capital of Southwest Papua province. And 28 October is Hari Sumpah Pemuda, marking the day in 1928 when young people from many regions pledged one homeland, one nation and one language of unity.
+review:
+  status: draft
+  verified: false

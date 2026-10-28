@@ -1,173 +1,167 @@
 schema: kabar.lesson/v1
 id: j6.u06.l08
 language: jv
-title: Cathetan blanja
+title: Telung aksara
 can_do:
-  ar_eg: تقرا لستة مشتريات مكتوبة بالبيجون.
-  ar: أن تقرأ قائمة مشتريات مكتوبة بالبيجون.
-  en: Read a shopping list written in Pegon.
+  ar_eg: تقرا نفس الكلمة بالخطوط التلاتة.
+  ar: أن تقرأ الكلمة نفسها بالخطوط الثلاثة.
+  en: Read the same word in all three scripts.
 slides:
-  - title: Cathetan santri
+  - title: Siji tembung, telung aksara
     body:
       ar_eg: |
-        Ali ادّى لمحمد لستة حاجات يجيبها من الدكان، مكتوبة بالبيجون.
-        دوّر على الحروف الزيادة: ڮ = g في gula، وڤ = p في kopi.
-        كلمة جديدة: uyah = ملح. شوف إزاي اتكتبت: او (u) + يا + ه = اوياه.
+        دلوقتي بقيت تقرا الجاوي بتلات خطوط: اللاتيني، والـ aksara Jawa، والبيجون. نفس الكلمة، تلات أشكال:
+        - في الـ aksara Jawa الحرف شايل a، والحركات علامات حواليه.
+        - في البيجون كل حركة بتتكتب حرف (ا ي و).
       ar: |
-        أعطى علي لمحمد قائمة أشياء يشتريها من الدكان، مكتوبة بالبيجون.
-        ابحث عن الحروف الإضافية: ڮ = g في gula، وڤ = p في kopi.
-        كلمة جديدة: uyah = ملح، ولاحظ كتابتها: او (u) + يا + ه = اوياه.
+        صرت تقرأ الجاوية بثلاثة خطوط: اللاتيني والـ aksara Jawa والبيجون؛ كلمة واحدة بثلاث صور:
+        - في الـ aksara Jawa يحمل الحرف a، والصوائت علامات حوله.
+        - وفي البيجون يُكتب كل صائت حرفًا (ا ي و).
       en: |
-        Ali gave Mohamed a list of things to buy at the shop, written in Pegon.
-        Look for the extra letters: ڮ = g in gula, ڤ = p in kopi.
-        New word: uyah = salt. See how it's spelled: او (u) + يا + ه = اوياه.
+        You can now read Javanese in three scripts: Latin, aksara Jawa and Pegon. One word, three shapes:
+        - In aksara Jawa each letter carries a, and vowels are signs around it.
+        - In Pegon every vowel is written as a letter (ا ي و).
     grammar: jv.pegon.basics
     examples:
-      - text: ڮولا · كوڤي (gula · kopi)
-        ar_eg: سكر · قهوة
-        ar: سكّر · قهوة
-        en: sugar · coffee
-      - text: اوياه · روتي (uyah · roti)
-        ar_eg: ملح · عيش فينو
-        ar: ملح · خبز
-        en: salt · bread
-      - text: تاهو · سوسو (tahu · susu)
-        ar_eg: توفو · لبن
-        ar: توفو · حليب
-        en: tofu · milk
+      - text: sapa · ꦱꦥ · ساڤا
+        ar_eg: مين؟
+        ar: من؟
+        en: who?
+      - text: gula · ꦒꦸꦭ · ڮولا
+        ar_eg: سكر
+        ar: سكر
+        en: sugar
+      - text: omah · ꦲꦺꦴꦩꦃ · اوماه
+        ar_eg: بيت
+        ar: بيت
+        en: house
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة في اللستة معناها «ملح»؟
-      ar: أي كلمة في القائمة تعني «ملح»؟
-      en: Which word on the list means "salt"?
-    options: [روتي, اوياه, سوسو]
-    answer: 1
-    words: [uyah]
+    type: match_pairs
+    pairs:
+      - text: ꦱꦥ
+        ar_eg: sapa — مين؟
+        ar: sapa — من؟
+        en: sapa — who?
+      - text: ڮولا
+        ar_eg: gula — سكر
+        ar: gula — سكر
+        en: gula — sugar
+      - text: ꦲꦏꦸ
+        ar_eg: aku — أنا
+        ar: aku — أنا
+        en: aku — I
+      - text: چارا
+        ar_eg: cara — طريقة
+        ar: cara — طريقة
+        en: cara — way
+      - text: ꦲꦺꦴꦩꦃ
+        ar_eg: omah — بيت
+        ar: omah — بيت
+        en: omah — house
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: هل فيه شاي في اللستة؟ أنهي مشروب موجود؟
-      ar: هل في القائمة شاي؟ أي مشروب فيها؟
-      en: Is there tea on the list? Which drink is on it?
-    options: [teh, jus, kopi]
-    answer: 2
-    explain:
-      ar_eg: كوڤي = kopi. ڤ هنا p، مش f.
-      ar: كوڤي = kopi، وڤ هنا p لا f.
-      en: كوڤي = kopi. ڤ is p here, not f.
-    words: [ڤ]
-  - id: e03
-    type: listen
-    text: gula
-    question:
-      ar_eg: Ali قال حاجة من اللستة. أنهي واحدة؟
-      ar: ذكر علي شيئًا من القائمة. أيّه؟
-      en: Ali named something on the list. Which one?
-    options: [كولا, ڮولا, جولا]
+      ar_eg: "ꦱꦥ بالبيجون تبقى إيه؟"
+      ar: "ما ꦱꦥ بالبيجون؟"
+      en: "What is ꦱꦥ in Pegon?"
+    options: ["كاڤا", "ساڤا", "ساما"]
     answer: 1
-    meaning:
-      ar_eg: سكر
-      ar: سكّر
-      en: sugar
-    words: [ڮ]
-  - id: e04
-    type: match_pairs
-    pairs:
-      - text: ڮولا
-        ar_eg: gula — سكر
-        ar: gula — سكّر
-        en: gula — sugar
-      - text: اوياه
-        ar_eg: uyah — ملح
-        ar: uyah — ملح
-        en: uyah — salt
-      - text: روتي
-        ar_eg: roti — عيش فينو
-        ar: roti — خبز
-        en: roti — bread
-      - text: تاهو
-        ar_eg: tahu — توفو
-        ar: tahu — توفو
-        en: tahu — tofu
-    words: [uyah, ڮ]
-  - id: e05
+    explain:
+      ar_eg: sapa = س + ا + ڤ + ا = ساڤا. p بتتكتب ڤ. كاڤا = kapa وساما = sama.
+      ar: sapa = ساڤا، والـ p تُكتب ڤ. أما كاڤا فـ kapa وساما فـ sama.
+      en: sapa is ساڤا; p is written ڤ. كاڤا is kapa and ساما is sama.
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: "ليه kopi مكتوبة كوڤي مش كوفي؟"
-      ar: "لماذا كُتبت kopi كوڤي لا كوفي؟"
-      en: "Why is kopi written كوڤي, not كوفي?"
-    options: ["Swarane p, dudu f.", "Iku tembung Arab.", "Iku jeneng."]
+      ar_eg: "ڠاجي بالـ aksara Jawa تبقى إيه؟"
+      ar: "ما ڠاجي بالـ aksara Jawa؟"
+      en: "What is ڠاجي in aksara Jawa?"
+    options: ["ꦔꦗꦶ", "ꦤꦗꦶ", "ꦔꦗ"]
     answer: 0
     explain:
-      ar_eg: الجاوي بيقول kopi بالـ p، والـ p في البيجون = ڤ.
-      ar: يقول الجاويون kopi بالـ p، والـ p في البيجون = ڤ.
-      en: Javanese says kopi with a p, and p in Pegon is ڤ.
-    words: [ڤ]
-  - id: e06
-    type: fill_blank
-    sentence: اوياه = ___
+      ar_eg: ngaji = ꦔ nga + ꦗꦶ ji. ꦤꦗꦶ = naji وꦔꦗ = ngaja.
+      ar: ngaji = ꦔ nga + ꦗꦶ ji. أما ꦤꦗꦶ فـ naji وꦔꦗ فـ ngaja.
+      en: ngaji is ꦔ nga + ꦗꦶ ji. ꦤꦗꦶ is naji and ꦔꦗ is ngaja.
+  - id: e04
+    type: listen
+    text: dhadha
+    question:
+      ar_eg: سمعت dhadha (صدر). بتتكتب إزاي بالـ aksara Jawa؟
+      ar: سمعت dhadha (صدر). كيف تُكتب بالـ aksara Jawa؟
+      en: You heard dhadha (chest). How is it written in aksara Jawa?
+    options: ["ꦢꦢ", "ꦝꦢ", "ꦝꦝ"]
+    answer: 2
     meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: ملح)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: ملح)"
-      en: Type the reading in Latin letters. (It means "salt".)
-    answers: [uyah]
-    words: [uyah]
-  - id: e07
+      ar_eg: صدر
+      ar: صدر
+      en: chest
+  - id: e05
+    type: fill_blank
+    sentence: ꦲꦺꦴꦩꦃ = اوماه = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: بيت)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: بيت)"
+      en: Type the reading in Latin letters. (It means "house".)
+    answers: [omah]
+    explain:
+      ar_eg: "الخطين بيقولوا نفس الكلمة: ꦲꦺꦴꦩꦃ = اوماه = omah."
+      ar: "الخطّان يكتبان الكلمة نفسها: ꦲꦺꦴꦩꦃ = اوماه = omah."
+      en: "Both scripts spell the same word: ꦲꦺꦴꦩꦃ = اوماه = omah."
+  - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ڮولا لان كوڤي"
-      ar: "اكتب بالحروف اللاتينية: ڮولا لان كوڤي"
-      en: "Write in Latin letters: ڮولا لان كوڤي"
-    answers: [gula lan kopi]
-    words: [ڮ, ڤ]
-  - id: e08
+      ar_eg: "اكتب بالحروف اللاتينية: اكو اورا ڠاجي"
+      ar: "اكتب بالحروف اللاتينية: اكو اورا ڠاجي"
+      en: "Write in Latin letters: اكو اورا ڠاجي"
+    answers: ["Aku ora ngaji.", aku ora ngaji]
+    explain:
+      ar_eg: اكو = aku، اورا = ora (الألف شايلة الـ o)، ڠاجي = ngaji. يعني «أنا مش بقرا».
+      ar: "اكو = aku، واورا = ora (الألف تحمل o)، وڠاجي = ngaji: «لا أقرأ»."
+      en: "اكو = aku, اورا = ora (alif carries the o), ڠاجي = ngaji: \"I'm not reciting.\""
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: هشتري سكر وملح.
-      ar: سأشتري سكّرًا وملحًا.
-      en: I'll buy sugar and salt.
-    answer: Aku tuku gula lan uyah.
-    distractors: [roti]
-    words: [uyah]
-  - id: e09
-    type: speaking
-    text: Gula, kopi, uyah, roti, tahu lan susu.
+      ar_eg: "ابني بالبيجون: aku ora ngaji (أنا مش بقرا)"
+      ar: "ركّب بالبيجون: aku ora ngaji (لا أقرأ)"
+      en: "Build in Pegon: aku ora ngaji (I'm not reciting)"
+    answer: اكو اورا ڠاجي
+    distractors: ["ايكي"]
+    explain:
+      ar_eg: aku ora ngaji = اكو اورا ڠاجي. ايكي = iki، ومش في الجملة.
+      ar: aku ora ngaji = اكو اورا ڠاجي. أما ايكي فـ iki، وليست في الجملة.
+      en: aku ora ngaji is اكو اورا ڠاجي. ايكي is iki, not in the sentence.
+  - id: e08
+    type: dictation
+    text: Aku ora ngaji.
     meaning:
-      ar_eg: سكر، قهوة، ملح، عيش، توفو، ولبن.
-      ar: سكّر، قهوة، ملح، خبز، توفو، وحليب.
-      en: Sugar, coffee, salt, bread, tofu and milk.
+      ar_eg: أنا مش بقرا.
+      ar: لا أقرأ.
+      en: I'm not reciting.
 dialogue:
-  title: Ing toko
+  title: Jeneng ing telung aksara
   lines:
-    - speaker: Bakul
-      text: Pados menapa, Mas?
-      ar_eg: بتدوّر على إيه يا أستاذ؟
-      ar: عمّ تبحث يا سيدي؟
-      en: What are you looking for?
+    - speaker: Dimas
+      text: Med, jenengmu tulisen nganggo aksara Jawa.
+      ar_eg: يا محمد، اكتب اسمك بالـ aksara Jawa.
+      ar: يا محمد، اكتب اسمك بالـ aksara Jawa.
+      en: Med, write your name in aksara Jawa.
     - speaker: Mohamed
-      text: Gula, kopi, uyah, roti, tahu kaliyan susu, Bu.
-      ar_eg: سكر وقهوة وملح وعيش وتوفو ولبن يا مدام.
-      ar: سكّر وقهوة وملح وخبز وتوفو وحليب يا سيدتي.
-      en: Sugar, coffee, salt, bread, tofu and milk, ma'am.
-    - speaker: Bakul
-      text: Wah, cathetanipun ngangge Pegon, nggih?
-      ar_eg: يا سلام، اللستة مكتوبة بالبيجون؟
-      ar: رائع، القائمة مكتوبة بالبيجون؟
-      en: Oh, your list is in Pegon?
+      text: Wis. Saiki nganggo Pegon uga!
+      ar_eg: خلصت. ودلوقتي بالبيجون كمان!
+      ar: انتهيت. والآن بالبيجون أيضًا!
+      en: Done. And now in Pegon too!
+    - speaker: Dimas
+      text: Wah, telung aksara! Latin, Jawa, Pegon.
+      ar_eg: يا سلام، تلات خطوط! لاتيني، جاوي، بيجون.
+      ar: رائع، ثلاثة خطوط! لاتيني وجاوي وبيجون.
+      en: Wow, three scripts! Latin, Javanese, Pegon.
     - speaker: Mohamed
-      text: Inggih, saking kanca santri. Kula saged maos!
-      ar_eg: أيوه، من صاحبي اللي في البيسانترين. وأنا بعرف أقراها!
-      ar: نعم، من صديقي طالب البيسانترين، وأستطيع قراءتها!
-      en: Yes, from a santri friend. I can read it!
-new_words:
-  - word: uyah
-    pos: noun
-    ar_eg: ملح
-    ar: ملح
-    en: salt = garam
+      text: Lan aksara Arab, aksaraku dhewe, ta!
+      ar_eg: والحروف العربية، حروفي أنا!
+      ar: والحرف العربي، حرفي أنا!
+      en: And Arabic script, my very own!
 review:
   status: draft
   verified: false

@@ -1,0 +1,184 @@
+schema: kabar.lesson/v1
+id: j4.u06.l10
+language: jv
+title: Petruk lan Gareng
+can_do:
+  ar_eg: تسمع مشهد بونكاوان وتعرف من المستوى مين بيكلّم مين.
+  ar: أن تستمع إلى مشهد للبوناكاوان وتعرف من المستوى من يخاطب من.
+  en: Listen to a punakawan scene and tell from the level who is talking to whom.
+slides:
+  - title: Saka mburi kelir
+    body:
+      ar_eg: |
+        ده مشهد قصير زي ما بتسمعه من الدالانغ ورا الستارة. اسمع الأول من غير ما تبص.
+        Petruk وGareng إخوات، بيتكلموا نغوكو ويهزّروا (Reng = Gareng، Truk = Petruk). وبعدين Petruk بيكلّم سيده Raden Arjuna بالكراما ألوس، وArjuna بيرد عليه نغوكو.
+        - في الشارع: kuwi = iku (ده / دي).
+        - to كلمة صغيرة بتدّي الجملة إحساس، ومن غيرها الجملة صح برضه.
+      ar: |
+        هذا مشهد قصير كما تسمعه من الدالانغ خلف الستارة. استمع أولًا دون أن تنظر.
+        Petruk وGareng أخوان يتحدثان بالنغوكو ويمزحان (Reng = Gareng، Truk = Petruk). ثم يخاطب Petruk سيّده Raden Arjuna بالكراما ألوس، ويجيبه Arjuna بالنغوكو.
+        - في كلام الشارع: kuwi = iku (ذلك).
+        - to أداة صغيرة تلوّن الجملة، والجملة صحيحة بدونها.
+      en: |
+        A short scene as you'd hear it from the dhalang behind the screen. Listen first without looking.
+        Petruk and Gareng are brothers; they speak ngoko and joke (Reng = Gareng, Truk = Petruk). Then Petruk speaks to his master, Raden Arjuna, in krama alus, and Arjuna answers him in ngoko.
+        - On the street: kuwi = iku (that).
+        - to is a small particle that adds feeling; the sentence is correct without it.
+    grammar: jv.speechlevel.overview
+    examples:
+      - text: Reng, kowe arep menyang ngendi?
+        ar_eg: (Petruk) يا Reng، رايح فين؟
+        ar: (Petruk) يا Reng، إلى أين أنت ذاهب؟
+        en: (Petruk) Reng, where are you off to?
+      - text: Aku arep nonton gamelan, Truk.
+        ar_eg: (Gareng) رايح أتفرج على الجاميلان يا Truk.
+        ar: (Gareng) سأذهب لمشاهدة الغاميلان يا Truk.
+        en: (Gareng) I'm going to watch the gamelan, Truk.
+      - text: Raden, panjenengan sampun dhahar?
+        ar_eg: (Petruk لـ Arjuna) يا سيدي، حضرتك أكلت؟
+        ar: (Petruk إلى Arjuna) يا سيدي، هل تفضّلتَ بالأكل؟
+        en: (Petruk to Arjuna) My lord, have you eaten?
+exercises:
+  - id: e01
+    type: listen
+    text: Reng, kowe arep menyang ngendi?
+    question:
+      ar_eg: ده أنهي مستوى؟
+      ar: ما المستوى هنا؟
+      en: Which level is this?
+    options: [ngoko, krama alus]
+    answer: 0
+    meaning:
+      ar_eg: يا Reng، رايح فين؟
+      ar: يا Reng، إلى أين أنت ذاهب؟
+      en: Reng, where are you off to?
+    words: [punakawan]
+  - id: e02
+    type: listen
+    text: Raden, panjenengan sampun dhahar?
+    question:
+      ar_eg: Petruk بيكلّم مين هنا؟
+      ar: من يخاطب Petruk هنا؟
+      en: Who is Petruk talking to here?
+    options: [Gareng, Raden Arjuna, Bagong]
+    answer: 1
+    meaning:
+      ar_eg: يا سيدي، حضرتك أكلت؟
+      ar: يا سيدي، هل تفضّلتَ بالأكل؟
+      en: My lord, have you eaten?
+    words: [dhahar]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Gareng رايح فين؟
+      ar: إلى أين يذهب Gareng؟
+      en: Where is Gareng going?
+    options: [mangan, turu, nonton gamelan]
+    answer: 2
+    explain:
+      ar_eg: «Aku arep nonton gamelan» = رايح أتفرج على الجاميلان.
+      ar: «Aku arep nonton gamelan» = سأذهب لمشاهدة الغاميلان.
+      en: '"Aku arep nonton gamelan" = I''m going to watch the gamelan.'
+    words: [gamelan]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Arjuna بيرد على Petruk إنه لسه ماكلش. يقول إيه؟
+      ar: يجيب Arjuna خادمه Petruk بأنه لم يأكل بعد. ماذا يقول؟
+      en: Arjuna tells Petruk he hasn't eaten yet. What does he say?
+    options: ['Durung, Truk.', 'Dereng, Truk.', 'Dereng, Gusti.']
+    answer: 0
+    explain:
+      ar_eg: الفارس بيكلّم خدّامه نغوكو - durung. dereng كراما، وGusti بيقولها الخدّام للسيد.
+      ar: يخاطب الفارس خادمه بالنغوكو - durung، أما dereng فكراما، وGusti يقولها الخادم لسيّده.
+      en: The knight speaks ngoko to his servant, so durung. dereng is krama; Gusti is what a servant calls his lord.
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: punakawan
+        ar_eg: الخدّام المهرّجين في الوايانغ
+        ar: الخَدَم المهرّجون في الوايانغ
+        en: the clown-servants of wayang
+      - text: guyon
+        ar_eg: هزار
+        ar: مزاح
+        en: joking
+      - text: Raden
+        ar_eg: لقب نبيل (زي «سيدي»)
+        ar: لقب نبيل (مثل «سيدي»)
+        en: a noble title (like "my lord")
+      - text: dhalang
+        ar_eg: محرّك العرايس وراوي الحكاية
+        ar: محرّك الدمى وراوي القصة
+        en: puppet master, storyteller
+    words: [punakawan, guyon, dhalang]
+  - id: e06
+    type: dictation
+    text: Aku arep nonton gamelan, Truk.
+    meaning:
+      ar_eg: رايح أتفرج على الجاميلان يا Truk.
+      ar: سأذهب لمشاهدة الغاميلان يا Truk.
+      en: I'm going to watch the gamelan, Truk.
+    words: [gamelan]
+  - id: e07
+    type: fill_blank
+    sentence: Raden, panjenengan sampun ___?
+    meaning:
+      ar_eg: يا سيدي، حضرتك أكلت؟
+      ar: يا سيدي، هل تفضّلتَ بالأكل؟
+      en: My lord, have you eaten?
+    options: [mangan, nedha, dhahar]
+    answers: [dhahar]
+    explain:
+      ar_eg: الخدّام بيكرّم سيده، يبقى dhahar (krama inggil).
+      ar: يكرّم الخادم سيّده فيقول dhahar (krama inggil).
+      en: The servant honours his master, so dhahar (krama inggil).
+    words: [dhahar]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (Gareng لـ Petruk، نغوكو) يا Truk، رايح فين؟
+      ar: (Gareng إلى Petruk، بالنغوكو) يا Truk، إلى أين أنت ذاهب؟
+      en: (Gareng to Petruk, ngoko) Truk, where are you off to?
+    answers:
+      - Truk, kowe arep menyang ngendi?
+      - Truk, kowe arep lunga menyang ngendi?
+      - Truk, kowe arep nang ngendi?
+      - Truk, kowe arep neng ngendi?
+      - Kowe arep menyang ngendi, Truk?
+    explain:
+      ar_eg: 'إخوات بيهزّروا - نغوكو لوغو: kowe، arep، menyang، ngendi.'
+      ar: 'أخوان يمزحان - نغوكو لوغو: kowe، arep، menyang، ngendi.'
+      en: 'Brothers joking: ngoko lugu - kowe, arep, menyang, ngendi.'
+dialogue:
+  title: Nonton wayang
+  lines:
+    - speaker: Mohamed
+      text: Mas, kuwi Petruk karo Gareng, to?
+      ar_eg: يا Dimas، دول Petruk وGareng؟
+      ar: يا Dimas، أهذان Petruk وGareng؟
+      en: Dimas, is that Petruk and Gareng?
+    - speaker: Mas Dimas
+      text: Iya. Punakawan guyon nganggo ngoko.
+      ar_eg: أيوه. البونكاوان بيهزّروا بالنغوكو.
+      ar: نعم. البوناكاوان يمزحون بالنغوكو.
+      en: Yes. The punakawan joke in ngoko.
+    - speaker: Mohamed
+      text: Saiki Petruk nganggo krama!
+      ar_eg: دلوقتي Petruk بيتكلم كراما!
+      ar: الآن يتكلم Petruk بالكراما!
+      en: Now Petruk is using krama!
+    - speaker: Mas Dimas
+      text: Merga Petruk matur Raden Arjuna.
+      ar_eg: علشان Petruk بيكلّم سيده Raden Arjuna.
+      ar: لأن Petruk يخاطب سيّده Raden Arjuna.
+      en: Because Petruk is speaking to Raden Arjuna.
+    - speaker: Mohamed
+      text: Oh, Petruk iku abdi.
+      ar_eg: آه، Petruk خدّام.
+      ar: آه، Petruk خادم.
+      en: Oh, Petruk is a servant.
+review:
+  status: draft
+  verified: false

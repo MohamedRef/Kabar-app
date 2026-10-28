@@ -12,12 +12,21 @@ slides:
       ar_eg: |
         رينا كتبت بوست قصير عن أجازتها في لوفينا، بالإندونيسي العادي مش بلغة الشات. اقراه ودوّر على: wah و aduh، وكلمات الترتيب pertama و lalu.
         كلمتين جداد: pasir (رملة) و hitam (أسود). شط لوفينا رملته سودا عشان هي رملة بركانية.
+        في الشارع بيقولوا:
+        - udah = sudah (خلاص، بقى)
+        - banget = sekali (أوي)، وبتيجي بعد الصفة زيها
       ar: |
         كتبت رينا منشورًا قصيرًا عن عطلتها في لوفينا، بالإندونيسية العادية لا بلغة المحادثة. اقرأه وابحث عن: wah و aduh، وكلمتي الترتيب pertama و lalu.
         كلمتان جديدتان: pasir (رمل) و hitam (أسود). رمل شاطئ لوفينا أسود لأنه رمل بركاني.
+        في كلام الشارع:
+        - udah = sudah (قد، بالفعل)
+        - banget = sekali (جدًّا)، وتأتي بعد الصفة مثلها
       en: |
         Rina wrote a short post about her holiday in Lovina, in normal Indonesian, not chat spelling. Read it and spot wah and aduh, and the order words pertama and lalu.
         Two new words: pasir (sand) and hitam (black). Lovina's beach has black volcanic sand.
+        On the street:
+        - udah = sudah (already)
+        - banget = sekali (very), after the adjective just like sekali
     examples:
       - text: Wah, liburan di Lovina menyenangkan sekali! Pasir pantainya hitam, dan lautnya tenang.
         ar_eg: ياه، الأجازة في لوفينا كانت حلوة أوي! رملة الشط سودا، والبحر هادي.
@@ -58,6 +67,7 @@ exercises:
     words: [pasir, hitam, perahu, tenang, ketinggalan]
   - id: e02
     type: multiple_choice
+    question: Soal pantai Lovina, bagaimana pasir dan lautnya?
     question_meaning:
       ar_eg: حسب البوست، شط لوفينا شكله إيه؟
       ar: بحسب المنشور، كيف يبدو شاطئ لوفينا؟
@@ -67,19 +77,28 @@ exercises:
       - Pasirnya hitam dan lautnya tenang.
       - Pasirnya hitam dan lautnya ramai.
     answer: 1
-    words: [pasir, hitam, tenang]
+    words: [soal, pasir, hitam, tenang]
+    explain:
+      ar_eg: "البوست بيقول «Pasir pantainya hitam, dan lautnya tenang»: الرملة سودا (بركانية) والبحر هادي."
+      ar: "يقول المنشور «Pasir pantainya hitam, dan lautnya tenang»: رمل أسود بركاني وبحر هادئ."
+      en: "The post says \"Pasir pantainya hitam, dan lautnya tenang\": black volcanic sand, calm sea."
   - id: e03
     type: multiple_choice
+    question: Soal perahu, jam berapa mereka naik perahu?
     question_meaning:
-      ar_eg: ركبوا المركب إمتى؟
-      ar: متى ركبوا القارب؟
-      en: When did they take the boat?
+      ar_eg: بالنسبة للمركب، ركبوه الساعة كام؟
+      ar: بشأن القارب، في أي ساعة ركبوه؟
+      en: About the boat, what time did they get on it?
     options: [jam enam pagi, jam empat pagi, jam enam sore]
     answer: 0
-    words: [perahu]
+    words: [soal, perahu]
+    explain:
+      ar_eg: البوست بيقول «kami naik perahu jam enam pagi».
+      ar: يقول المنشور «kami naik perahu jam enam pagi».
+      en: The post says "kami naik perahu jam enam pagi".
   - id: e04
     type: listen
-    text: Aduh, kamera saya ketinggalan di hotel! Jadi, saya memotret pakai HP.
+    text: Aduh, kamera saya ketinggalan di hotel! Berarti saya memotret pakai HP.
     question:
       ar_eg: رينا صوّرت بإيه؟
       ar: بماذا صوّرت رينا؟
@@ -87,10 +106,10 @@ exercises:
     options: [pakai kamera, pakai HP Raka, pakai HP-nya]
     answer: 2
     meaning:
-      ar_eg: يا خبر، الكاميرا بتاعتي اتنسيت في الفندق! فصوّرت بالموبايل.
-      ar: آه، نسيت الكاميرا في الفندق! فصوّرت بالهاتف.
-      en: Oh no, I left my camera at the hotel! So I took photos with my phone.
-    words: [aduh, ketinggalan]
+      ar_eg: يا خبر، الكاميرا بتاعتي اتنسيت في الفندق! يعني هصوّر بالموبايل.
+      ar: آه، نسيت الكاميرا في الفندق! إذن سأصوّر بالهاتف.
+      en: Oh no, I left my camera at the hotel! That means I'll take photos with my phone.
+    words: [aduh, ketinggalan, berarti]
   - id: e05
     type: listen
     text: Pasir pantainya hitam, dan lautnya tenang.
@@ -106,13 +125,17 @@ exercises:
     words: [pasir, hitam]
   - id: e06
     type: fill_blank
-    sentence: Kucing saya ___, bukan putih.
+    sentence: Pasirnya ___, bukan putih. Berarti fotonya bagus!
     meaning:
-      ar_eg: القطة بتاعتي سودا، مش بيضا.
-      ar: قطتي سوداء، لا بيضاء.
-      en: My cat is black, not white.
+      ar_eg: الرملة سودا، مش بيضا. يعني الصور هتطلع حلوة!
+      ar: الرمل أسود، لا أبيض. إذن ستكون الصور جميلة!
+      en: The sand is black, not white. That means great photos!
     answers: [hitam]
-    words: [hitam]
+    words: [hitam, pasir, berarti]
+    explain:
+      ar_eg: hitam = أسود، عكس putih (أبيض).
+      ar: hitam = أسود، عكس putih.
+      en: hitam = black, the opposite of putih.
   - id: e07
     type: build_sentence
     source:
@@ -122,6 +145,10 @@ exercises:
     answer: Pertama, kami naik perahu jam enam pagi.
     distractors: [akhirnya, sambil]
     words: [pertama, perahu]
+    explain:
+      ar_eg: Pertama = الأول، وjam enam pagi = الساعة ستة الصبح. akhirnya للآخر، وsambil = وأنا بـ….
+      ar: Pertama = أولًا. أما akhirnya فللنهاية وsambil «في أثناء».
+      en: Pertama = first. akhirnya is for the end, sambil "while".
   - id: e08
     type: translate
     direction: to_target
@@ -143,17 +170,31 @@ exercises:
     words: [pasir, hitam]
   - id: e09
     type: speaking
-    text: Wah, liburan di Lovina menyenangkan sekali!
+    text: Wah, tulisan Rina soal Lovina bagus sekali!
     meaning:
-      ar_eg: ياه، الأجازة في لوفينا كانت حلوة أوي!
-      ar: يا للروعة، كانت العطلة في لوفينا ممتعة جدًا!
-      en: Wow, the holiday in Lovina was so much fun!
-    words: [wah, menyenangkan]
+      ar_eg: الله، كلام رينا عن لوفينا حلو أوي!
+      ar: رائع، ما كتبته رينا عن لوفينا جميل جدًا!
+      en: Wow, Rina's piece about Lovina is really good!
+    words: [wah, soal]
+  - id: e10
+    type: fill_blank
+    sentence: Kameranya ketinggalan? ___ Rina memotret pakai HP.
+    meaning:
+      ar_eg: الكاميرا اتنسيت؟ يعني رينا صوّرت بالموبايل.
+      ar: نُسيت الكاميرا؟ إذن صوّرت رينا بالهاتف.
+      en: The camera got left behind? That means Rina took photos with her phone.
+    options: [Berarti, Soal, Pertama]
+    answers: [Berarti]
+    explain:
+      ar_eg: berarti = يعني / معنى كده (نتيجة). soal = بخصوص، وpertama = أولًا.
+      ar: berarti = إذن / هذا يعني. أما soal فـ«بشأن» وpertama «أولًا».
+      en: berarti = that means, so. soal is "about", pertama "first".
+    words: [berarti, ketinggalan]
 dialogue:
   title: Di kos Bu Yanti, setelah liburan
   lines:
     - speaker: Bu Yanti
-      text: Rina, Ibu sudah membaca tulisanmu tentang Lovina. Seru sekali!
+      text: Rina, Ibu udah membaca tulisanmu soal Lovina. Seru banget!
       ar_eg: يا رينا، أنا قريت البوست بتاعك عن لوفينا. يجنن!
       ar: يا رينا، قرأتُ ما كتبتِه عن لوفينا. مثير جدًا!
       en: Rina, I read your post about Lovina. So exciting!
@@ -178,7 +219,7 @@ dialogue:
       ar: يا أستاذ محمد، هل رأيت دلافين؟
       en: Mohamed, did you see dolphins?
     - speaker: Mohamed
-      text: Banyak sekali, Bu! Pertama kami naik perahu, lalu lumba-lumbanya datang.
+      text: Banyak banget, Bu! Pertama kami naik perahu, lalu lumba-lumbanya datang.
       ar_eg: كتير أوي يا طنط! الأول ركبنا مركب، وبعدين الدلافين جت.
       ar: كثيرة جدًا يا سيدتي! أولًا ركبنا القارب، ثم جاءت الدلافين.
       en: Loads! First we took a boat, then the dolphins came.
@@ -193,6 +234,16 @@ new_words:
     ar_eg: أسود
     ar: أسود
     en: black
+  - word: soal
+    pos: preposition
+    ar_eg: بخصوص، عن (في الكلام؛ زي tentang)؛ وكمان سؤال امتحان
+    ar: بشأن، عن (في الكلام؛ مثل tentang)؛ وأيضًا سؤال امتحان
+    en: about, regarding (spoken, like tentang); also an exam question
+  - word: berarti
+    pos: verb
+    ar_eg: يعني، معنى كده (من arti)
+    ar: يعني، إذن (من arti)
+    en: means; so, that means (from arti)
 review:
   status: draft
   verified: false

@@ -52,6 +52,29 @@ slides:
         ar_eg: الشاب الشجاع ده ساعد الصياد العجوز اللي كان عيان.
         ar: ساعد ذلك الشاب الشجاع الصيادَ العجوز المريض.
         en: The brave young man helped the old fisherman who was ill.
+  - title: Mendongeng dan ngobrol
+    body:
+      ar_eg: |
+        الحدوتة بتتحكي رسمي: Pada zaman dahulu, hiduplah …
+        لكن اللي بيسمع بيرد عامي: Terus? Masa sih? Kok bisa?
+        وفي الكلام meN- بتتشال كتير: nyuruh = menyuruh، ngitung = menghitung، nolong = menolong، nyimpen = menyimpan
+      ar: |
+        تُروى الحكاية بالفصحى: Pada zaman dahulu, hiduplah …
+        لكن السامع يردّ بالعامية: Terus؟ Masa sih؟ Kok bisa؟
+        وفي الكلام تسقط meN- كثيرًا: nyuruh = menyuruh، ngitung = menghitung، nolong = menolong، nyimpen = menyimpan
+      en: |
+        A tale is told in standard Indonesian: Pada zaman dahulu, hiduplah …
+        The listener answers casually: Terus? Masa sih? Kok bisa?
+        In speech meN- often shrinks: nyuruh = menyuruh, ngitung = menghitung, nolong = menolong, nyimpen = menyimpan
+    examples:
+      - text: Terus?
+        ar_eg: 'وبعدين؟ (بالرسمي: Lalu?)'
+        ar: 'ثم ماذا؟ (بالفصحى: Lalu?)'
+        en: 'And then? (Standard: Lalu?)'
+      - text: Dia bilang raja nyuruh dia ngitung buaya.
+        ar_eg: 'قال إن الملك أمره يعدّ التماسيح. (بالرسمي: Dia berkata raja menyuruhnya menghitung buaya.)'
+        ar: 'قال إن الملك أمره بعدّ التماسيح. (بالفصحى: Dia berkata raja menyuruhnya menghitung buaya.)'
+        en: 'He said the king told him to count the crocodiles. (Standard: Dia berkata raja menyuruhnya menghitung buaya.)'
 exercises:
   - id: e01
     type: match_pairs
@@ -113,6 +136,10 @@ exercises:
     options: [sebuah perahu kecil di pinggir pantai, sebuah kecil perahu di pinggir pantai, perahu sebuah kecil di pantai pinggir]
     answer: 0
     words: [perahu, pinggir]
+    explain:
+      ar_eg: "الترتيب: sebuah + الاسم + الصفة، يعني sebuah perahu kecil. الصفة بتيجي بعد الاسم، والمكان pinggir pantai مش pantai pinggir."
+      ar: "الترتيب: sebuah ثم الاسم ثم الصفة: sebuah perahu kecil. فالصفة بعد الاسم، والمكان pinggir pantai لا pantai pinggir."
+      en: "The order is sebuah + noun + adjective: sebuah perahu kecil. Adjectives follow the noun, and it's pinggir pantai, not pantai pinggir."
   - id: e05
     type: fill_blank
     sentence: Pemuda ___ itu menolong nelayan tua.
@@ -123,6 +150,10 @@ exercises:
     options: [milik, pemberani, pinggir]
     answers: [pemberani]
     words: [pemberani, nelayan]
+    explain:
+      ar_eg: pemberani = شجاع، وبيوصف الشاب. milik = ملك فلان، وpinggir = طرف أو حافة.
+      ar: pemberani = شجاع، ويصف الشاب. أما milik فملك فلان، وpinggir الطرف.
+      en: pemberani means brave, describing the young man. milik means "belonging to", and pinggir is an edge.
   - id: e06
     type: build_sentence
     source:
@@ -132,6 +163,10 @@ exercises:
     answer: Rumah kayu tua milik kepala desa itu sangat besar.
     distractors: [perahu, seorang]
     words: [milik, kepala desa]
+    explain:
+      ar_eg: "الترتيب: rumah kayu tua milik kepala desa = البيت الخشب القديم بتاع العمدة. perahu = مركب، وseorang للناس مش للبيوت."
+      ar: "الترتيب: rumah kayu tua milik kepala desa = بيت رئيس القرية الخشبي القديم. أما perahu فالقارب، وseorang للأشخاص لا البيوت."
+      en: "rumah kayu tua milik kepala desa: the village head's old wooden house. perahu is a boat, and seorang is for people, not houses."
   - id: e07
     type: translate
     direction: to_target
@@ -165,7 +200,7 @@ dialogue:
       ar: أتحب أن تسمع حكاية؟ كان يا ما كان، عاش صياد عجوز على حافة الشاطئ.
       en: Want to hear a folk tale? Once upon a time, an old fisherman lived at the edge of the beach.
     - speaker: Mohamed
-      text: Apakah dia punya perahu?
+      text: Dia punya perahu nggak?
       ar_eg: هو كان عنده قارب؟
       ar: هل كان لديه قارب؟
       en: Did he have a boat?
@@ -175,7 +210,7 @@ dialogue:
       ar: نعم، قارب صغير كان ملكًا لأبيه.
       en: Yes, a little boat that had belonged to his father.
     - speaker: Mohamed
-      text: Lalu, siapa pemuda pemberani di cerita itu?
+      text: Terus, siapa pemuda pemberani di cerita itu?
       ar_eg: وبعدين، مين الشاب الشجاع في الحكاية؟
       ar: ثم من هو الشاب الشجاع في تلك القصة؟
       en: And who is the brave young man in the story?

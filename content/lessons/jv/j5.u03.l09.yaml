@@ -1,190 +1,175 @@
 schema: kabar.lesson/v1
 id: j5.u03.l09
 language: jv
-title: Menu warung
+title: Rungokna Mbak Ayu
 can_do:
-  ar_eg: تقرا يافطة منيو عربية أكل مكتوبة على السمع وتطلب بالإملا الصح.
-  ar: أن تقرأ لافتة قائمة طعام مكتوبة كما تُنطق وتطلب بالإملاء القياسي.
-  en: Read a street-stall menu spelled by ear and order in standard spelling.
-slides:
-  - title: Warung Bu Sri
-    body:
-      ar_eg: |
-        بو سري عندها عربية أكل في سيمبانج ليما، واليافطة بتاعتها مكتوبة على السمع زي الشات. اقراها وافهم الأسعار (RB = ribu = ألف).
-        كلمات جديدة: sega kucing = «رز القطة»، لفّة رز صغيرة بحاجة بسيطة جواها، أكلة شعبية رخيصة. tela = كسافا (ketela، وبتتنطق «تيلو»).
-      ar: |
-        لدى بو سري كشك طعام في سيمبانغ ليما، ولافتته مكتوبة كما تُنطق مثل الدردشة. اقرأها وافهم الأسعار (RB = ribu = ألف).
-        كلمات جديدة: sega kucing = «أرز القطة»، لفافة أرز صغيرة بقليل من الإضافات، طعام شعبي رخيص. وtela = الكسافا (ketela، وتُنطق «تيلو»).
-      en: |
-        Bu Sri has a food stall at Simpang Lima, and her sign is spelled by ear, like a chat. Read it and work out the prices (RB = ribu = thousand).
-        New words: sega kucing = "cat rice", a tiny packet of rice with a little topping, cheap street food. tela = cassava (ketela, said "telo").
-    grammar: jv.orthography
-    examples:
-      - text: SEGO KUCING 3RB · TELO GORENG 2RB
-        ar_eg: رز القطة ٣ آلاف · كسافا محمّرة ألفين. (الإملا الصح sega kucing، tela goreng)
-        ar: أرز القطة ٣ آلاف · كسافا مقلية ألفان. (القياسي sega kucing، tela goreng)
-        en: Cat rice 3,000 · fried cassava 2,000. (standard sega kucing, tela goreng)
-      - text: Monggo pinarak, Mas!
-        ar_eg: اتفضّل استريّح يا أستاذ! (الإملا الصح Mangga pinarak)
-        ar: تفضّل بالجلوس يا سيدي! (القياسي Mangga pinarak)
-        en: Please come in and sit down! (standard Mangga pinarak)
-      - text: Mangan neng kene opo dibungkus?
-        ar_eg: هتاكل هنا ولا تيك أواي؟ (الإملا الصح apa)
-        ar: هل ستأكل هنا أم تأخذه معك؟ (القياسي apa)
-        en: Eat here or take away? (standard apa)
+  ar_eg: تسمع رسالة صوتية وتكتبها بالإملا الصح، بالـ dh والـ th والـ a.
+  ar: أن تستمع إلى رسالة صوتية وتكتبها بالإملاء القياسي، بـ dh وth وa.
+  en: Follow a voice message and write it in standard spelling, with dh, th and a.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: رز القطة بكام؟
-      ar: كم سعر أرز القطة؟
-      en: How much is the sega kucing?
-    options: [rong ewu, telung ewu, limang ewu]
-    answer: 1
-    words: [sega kucing]
-  - id: e02
-    type: multiple_choice
-    question: TELO GORENG
-    question_meaning:
-      ar_eg: دي تتكتب إزاي بالإملا الصح؟
-      ar: كيف تُكتب بالإملاء القياسي؟
-      en: How is this written in standard spelling?
-    options: [tela goreng, telo goreng, tolo goreng]
-    answer: 0
-    explain:
-      ar_eg: a اللي في آخر الكلمة بتتنطق o، زي sega «سيغو». فالإملا الصح tela.
-      ar: a في آخر الكلمة تُنطق o، كما في sega «سيغو»، فالقياسي tela.
-      en: A final a is said o, like sega "sego", so the standard is tela.
-    words: [tela]
-  - id: e03
     type: listen
-    text: Mangan neng kene apa dibungkus?
+    text: Mohamed, aku wis ana ing Alun-alun, ing ngarep masjid.
     question:
-      ar_eg: بو سري بتسألك على إيه؟
-      ar: عمَّ تسألك بو سري؟
-      en: What is Bu Sri asking you?
-    options: ["Mau minum apa?", "Berapa harganya?", "Makan di sini atau dibungkus?"]
+      ar_eg: آيو خفّت وبعتتلك فويس. هي فين دلوقتي؟
+      ar: شُفيت آيو وأرسلت إليك رسالة صوتية. أين هي الآن؟
+      en: Ayu is better and has sent you a voice note. Where is she now?
+    options: [ing Alun-alun, ing Stasiun Madiun, ing omah]
+    answer: 0
+    meaning:
+      ar_eg: يا محمد، أنا وصلت الميدان، قدّام الجامع.
+      ar: يا محمد، أنا الآن في الميدان، أمام المسجد.
+      en: Mohamed, I'm at the Alun-alun now, in front of the mosque.
+    words: [ngarep]
+  - id: e02
+    type: listen
+    text: Ing kene ana puthu lan kenthang goreng.
+    options:
+      - Ing kene ana putu lan kentang goreng.
+      - Ing kene ana puthu lan kentang goreng.
+      - Ing kene ana puthu lan kenthang goreng.
     answer: 2
     meaning:
-      ar_eg: هتاكل هنا ولا تيك أواي؟
-      ar: هل ستأكل هنا أم تأخذه معك؟
-      en: Eat here or take away?
+      ar_eg: هنا فيه بوتو وبطاطس محمّرة.
+      ar: هنا بوتو وبطاطس مقلية.
+      en: There's puthu and fried potatoes here.
     explain:
-      ar_eg: apa بين اختيارين = «ولا» (atau).
-      ar: apa بين خيارين = «أم» (atau).
-      en: apa between two choices = "or" (atau).
+      ar_eg: 'الاتنين بـ th: puthu وkenthang. اللسان بيترجع لورا.'
+      ar: 'كلتاهما بـ th: puthu وkenthang، واللسان يرتد إلى الخلف.'
+      en: 'Both have th: puthu and kenthang, with the tongue curled back.'
+    words: [puthu, kenthang]
+  - id: e03
+    type: listen
+    text: Aja suwe ya, hawane adhem banget.
+    question:
+      ar_eg: آيو بتطلب منك إيه؟
+      ar: ماذا تطلب منك آيو؟
+      en: What does Ayu ask you?
+    options: [Aja lali, Aja suwe, Aja teka]
+    answer: 1
+    meaning:
+      ar_eg: ما تتأخرش، الجو برد أوي.
+      ar: لا تتأخر، الجو بارد جدًا.
+      en: Don't be long, the weather's really cold.
+    explain:
+      ar_eg: suwe = وقت طويل (lama). aja suwe = ما تتأخرش.
+      ar: suwe = مدة طويلة (lama)، وaja suwe = لا تتأخر.
+      en: suwe = a long time (lama); aja suwe = don't be long.
+    words: [adhem, hawa, suwe]
   - id: e04
     type: match_pairs
     pairs:
-      - text: sega kucing
-        ar_eg: رز القطة (لفّة رز صغيرة)
-        ar: أرز القطة (لفافة أرز صغيرة)
-        en: cat rice (tiny rice packet)
-      - text: tela
-        ar_eg: كسافا
-        ar: كسافا
-        en: cassava
-      - text: dibungkus
-        ar_eg: متغلّف / تيك أواي
-        ar: مغلّف / سفري
-        en: wrapped to take away
-      - text: pinarak
-        ar_eg: يتفضّل يقعد
-        ar: يتفضّل بالجلوس
-        en: come in and sit (polite)
-      - text: regane
-        ar_eg: سعره
-        ar: سعره
-        en: its price
-    words: [sega kucing, tela, dibungkus]
+      - text: suwe
+        ar_eg: وقت طويل
+        ar: مدة طويلة
+        en: long (time)
+      - text: adhem
+        ar_eg: برد
+        ar: بارد
+        en: cold
+      - text: kenthang
+        ar_eg: بطاطس
+        ar: بطاطس
+        en: potato
+      - text: puthu
+        ar_eg: كيكة رز صغيرة بالسكر الأحمر
+        ar: كعكة أرز صغيرة بسكر النخيل
+        en: small steamed rice cake
+      - text: ngarep
+        ar_eg: قدّام
+        ar: أمام
+        en: in front
+    words: [adhem, kenthang, puthu, suwe]
   - id: e05
-    type: fill_blank
-    sentence: ___ pinarak, Mas!
-    meaning:
-      ar_eg: اتفضّل استريّح يا أستاذ!
-      ar: تفضّل بالجلوس يا سيدي!
-      en: Please come in and sit down!
-    options: [Monggo, Mangga]
-    answers: [Mangga]
+    type: multiple_choice
+    question: Aja suwe ya, hawane adhem banget.
+    question_meaning:
+      ar_eg: في الشات، آيو غالبًا هتكتب aja إزاي؟
+      ar: في الدردشة، كيف ستكتب آيو aja على الأرجح؟
+      en: In a chat, how would Ayu most likely type aja?
+    options: [oja, ojo, aje]
+    answer: 1
     explain:
-      ar_eg: monggo إملا شات. الصح mangga.
-      ar: monggo إملاء الدردشة، والقياسي mangga.
-      en: monggo is chat spelling; the standard is mangga.
+      ar_eg: الاتنين a في آخر الكلمة بيتنطقوا o، فالشات بيكتب ojo. الإملا الصح aja.
+      ar: حرفا a في آخر الكلمة يُنطقان o، فتكتبها الدردشة ojo، والقياسي aja.
+      en: Both a's at the end are said o, so chats type ojo; the standard is aja.
+    words: [suwe]
   - id: e06
-    type: dictation
-    text: Mangan neng kene apa dibungkus?
+    type: fill_blank
+    sentence: Ing kene ana puthu lan ___ goreng.
     meaning:
-      ar_eg: هتاكل هنا ولا تيك أواي؟
-      ar: هل ستأكل هنا أم تأخذه معك؟
-      en: Eat here or take away?
-    words: [dibungkus]
-  - id: e07
-    type: build_sentence
-    source:
-      ar_eg: (بالإملا الصح) هشتري اتنين رز قطة وكسافا محمّرة.
-      ar: (بالإملاء القياسي) سأشتري اثنين من أرز القطة وكسافا مقلية.
-      en: (standard spelling) I'll buy two sega kucing and fried cassava.
-    answer: Aku tuku sega kucing loro lan tela goreng.
-    distractors: [sego, telo]
+      ar_eg: هنا فيه بوتو وبطاطس محمّرة.
+      ar: هنا بوتو وبطاطس مقلية.
+      en: There's puthu and fried potatoes here.
+    options: [kentang, kenthang]
+    answers: [kenthang]
+    words: [kenthang]
     explain:
-      ar_eg: sego وtelo إملا شات. وloro هنا «اتنين»، فتفضل loro.
-      ar: sego وtelo إملاء دردشة، وloro هنا «اثنان» فتبقى loro.
-      en: sego and telo are chat spellings; loro here means "two", so it stays loro.
-    words: [sega kucing, tela]
+      ar_eg: البطاطس = kenthang، بـ th. kentang الكتابة الإندونيسية.
+      ar: البطاطس kenthang بـ th؛ أما kentang فإملاء إندونيسي.
+      en: Potato is kenthang, with th. kentang is the Indonesian spelling.
+  - id: e07
+    type: dictation
+    text: Aja suwe ya, hawane adhem banget.
+    meaning:
+      ar_eg: ما تتأخرش، الجو برد أوي.
+      ar: لا تتأخر، الجو بارد جدًا.
+      en: Don't be long, the weather's really cold.
+    explain:
+      ar_eg: 'اكتب الإملا الصح: aja (مش ojo) وadhem بـ dh.'
+      ar: 'اكتب بالإملاء القياسي: aja (لا ojo) وadhem بـ dh.'
+      en: 'Write the standard spelling: aja (not ojo) and adhem with dh.'
+    words: [adhem, suwe]
   - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (بالإملا الصح) الكسافا المحمّرة بكام؟
-      ar: (بالإملاء القياسي) بكم الكسافا المقلية؟
-      en: (standard spelling) How much is the fried cassava?
+      ar_eg: (بالإملا الصح) أنا دلوقتي في الميدان.
+      ar: (بالإملاء القياسي) أنا الآن في الميدان.
+      en: (standard spelling) I'm at the Alun-alun now.
     answers:
-      - Tela goreng regane pira?
-      - Regane tela goreng pira?
-      - Pira regane tela goreng?
-      - Tela gorenge pira?
-      - Tela goreng pira?
-      - Tela goreng pira regane?
-    words: [tela]
+      - Aku wis ana ing Alun-alun.
+      - Aku saiki ana ing Alun-alun.
+      - Aku wis ing Alun-alun.
+      - Aku wis neng Alun-alun.
+      - Aku saiki neng Alun-alun.
+      - Aku saiki ing Alun-alun.
+  - id: e09
+    type: speaking
+    text: Aku teka saiki, Mbak!
+    meaning:
+      ar_eg: أنا جاي دلوقتي يا آيو!
+      ar: أنا قادم الآن يا آيو!
+      en: I'm coming now, Ayu!
 dialogue:
-  title: Tuku ing warung
+  title: Ing Alun-alun
   lines:
-    - speaker: Bu Sri
-      text: Mangga pinarak, Mas!
-      ar_eg: اتفضّل استريّح يا أستاذ!
-      ar: تفضّل بالجلوس يا سيدي!
-      en: Please come in and sit down!
     - speaker: Mohamed
-      text: Sega kucing kalih, Bu, kaliyan tela goreng.
-      ar_eg: اتنين رز قطة يا طنط، وكسافا محمّرة.
-      ar: اثنان من أرز القطة يا سيدتي، وكسافا مقلية.
-      en: Two sega kucing, ma'am, and fried cassava.
-    - speaker: Bu Sri
-      text: Mangan neng kene apa dibungkus?
-      ar_eg: هتاكل هنا ولا تيك أواي؟
-      ar: هل ستأكل هنا أم تأخذه معك؟
-      en: Eat here or take away?
+      text: Mbak! Aku wis krungu. Kowe wis mari?
+      ar_eg: يا آيو! سمعت الفويس. خفّيتي خلاص؟
+      ar: يا آيو! سمعتُ. هل شُفيتِ؟
+      en: Ayu! I heard you. Are you better?
+    - speaker: Mbak Ayu
+      text: Wis. Ayo tuku puthu, isih anget.
+      ar_eg: آه خلاص. يلا نشتري بوتو، لسه سخن.
+      ar: نعم. هيا نشتري البوتو، ما زال دافئًا.
+      en: Yes. Let's buy puthu, it's still warm.
     - speaker: Mohamed
-      text: Dibungkus, Bu. Pinten?
-      ar_eg: تيك أواي يا طنط. بكام؟
-      ar: سفري يا سيدتي. بكم؟
-      en: To take away, ma'am. How much?
-    - speaker: Bu Sri
-      text: Wolung ewu, Mas.
-      ar_eg: تمن تلاف يا أستاذ.
-      ar: ثمانية آلاف يا سيدي.
-      en: Eight thousand.
-new_words:
-  - word: sega kucing
-    pos: noun
-    ar_eg: رز القطة، لفّة رز صغيرة رخيصة (بتتنطق «سيغو»)
-    ar: أرز القطة، لفافة أرز صغيرة رخيصة (تُنطق «سيغو»)
-    en: cat rice, a tiny cheap rice packet (said "sego") = nasi kucing
-  - word: tela
-    pos: noun
-    ar_eg: كسافا (بتتنطق «تيلو»)
-    ar: الكسافا (تُنطق «تيلو»)
-    en: cassava (said "telo") = ketela, singkong
+      text: Puthu karo th, kenthang karo th. Aku wis ngerti, lho!
+      ar_eg: puthu بـ th، وkenthang بـ th. أنا فهمت خلاص!
+      ar: puthu بـ th وkenthang بـ th. لقد فهمتُ!
+      en: Puthu with th, kenthang with th. I've got it now!
+    - speaker: Mbak Ayu
+      text: Pinter! Saiki ngomong "adhem".
+      ar_eg: شاطر! قول دلوقتي «adhem».
+      ar: أحسنت! قل الآن «adhem».
+      en: Clever! Now say "adhem".
+    - speaker: Mohamed
+      text: Adhem, karo dh. Hawane adhem, nanging puthune anget!
+      ar_eg: adhem بـ dh. الجو برد، بس البوتو سخن!
+      ar: adhem بـ dh. الجو بارد، لكن البوتو دافئ!
+      en: Adhem, with dh. The weather's cold, but the puthu's warm!
+new_words: []
 review:
   status: draft
   verified: false

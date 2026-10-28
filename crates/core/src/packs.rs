@@ -16,9 +16,10 @@ use sha2::{Digest, Sha256};
 
 /// Azure F0's free neural TTS characters per month (SPEC §20).
 pub const FREE_MONTHLY_CHARS: u64 = 500_000;
-/// What the build tool may spend per month by default. The rest of the free
-/// quota is left for the TTS proxy at run time (Kabar Radio, new lines).
-pub const DEFAULT_MONTHLY_BUDGET: u64 = 300_000;
+/// What the build tool may spend per month by default. The TTS proxy at run
+/// time (Kabar Radio, new lines) gets 190k; the last 30k are headroom, so a
+/// counting slip can't run the month's voices dry.
+pub const DEFAULT_MONTHLY_BUDGET: u64 = 280_000;
 
 pub fn sha256_hex(bytes: &[u8]) -> String {
     Sha256::digest(bytes).iter().map(|b| format!("{b:02x}")).collect()
@@ -64,9 +65,35 @@ pub fn clip_ssml(voice: Voice, text: &str) -> String {
     )
 }
 
-/// Billable characters of a clip (Azure counts the spoken text).
-pub fn billable_chars(text: &str) -> u32 {
-    normalize_text(text).chars().count() as u32
+/// Billable characters of a clip: what Azure counts for its SSML.
+pub fn billable_chars(voice: Voice, text: &str) -> u32 {
+    ssml_billable_chars(&clip_ssml(voice, text)) as u32
+}
+
+/// Characters Azure bills for an SSML request: everything inside the body
+/// except the `<speak>` and `<voice>` tags themselves. Other markup
+/// (`<prosody pitch="+10%">`) and XML escapes (`&apos;` is six) count as
+/// written. Both TTS spenders (the packs tool and the Cloud proxy) count
+/// with this, so their shares of the free quota hold.
+pub fn ssml_billable_chars(ssml: &str) -> u64 {
+    let mut count = 0;
+    let mut rest = ssml;
+    while let Some(open) = rest.find('<') {
+        count += rest[..open].chars().count();
+        let Some(close) = rest[open..].find('>') else {
+            count += rest[open..].chars().count();
+            return count as u64;
+        };
+        let tag = &rest[open..=open + close];
+        let name = tag[1..].trim_start_matches('/');
+        let name =
+            &name[..name.find(|c: char| c.is_whitespace() || c == '>' || c == '/').unwrap_or(name.len())];
+        if name != "speak" && name != "voice" {
+            count += tag.chars().count();
+        }
+        rest = &rest[open + close + 1..];
+    }
+    (count + rest.chars().count()) as u64
 }
 
 /// The narrator voice of a language: Gadis for Indonesian, Siti for Javanese.
@@ -254,7 +281,7 @@ pub fn build_manifest(
                 key.clone(),
                 AudioEntry {
                     key,
-                    chars: billable_chars(&line.text),
+                    chars: billable_chars(line.voice, &line.text),
                     text: line.text,
                     voice: line.voice,
                     sha256: old.and_then(|o| o.sha256.clone()),
@@ -475,6 +502,7 @@ mod tests {
                     Example { text: "Apa  kabar?".into(), meaning: loc("") },
                 ],
                 grammar: None,
+                table: None,
             }],
             exercises: vec![
                 Exercise {
@@ -518,6 +546,9 @@ mod tests {
                 pos: None,
                 meaning: loc("news"),
                 arabic: Some("خبر".into()),
+                bridge: None,
+                false_friend: None,
+                same_as_id: false,
             }],
             souvenir: Some(Souvenir { id: "s".into(), title: "t".into(), note: loc("") }),
             review: Default::default(),
@@ -540,6 +571,13 @@ mod tests {
             r#"<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="id-ID"><voice name="id-ID-GadisNeural">Apa kabar?</voice></speak>"#
         );
         assert!(clip_ssml(Voice::JvDimas, "a & <b>").contains("a &amp; &lt;b&gt;"));
+        // Azure bills the escapes as written, not the speak/voice tags.
+        assert_eq!(billable_chars(Voice::IdGadis, "Apa kabar?"), 10);
+        assert_eq!(billable_chars(Voice::IdArdi, "Jum'at"), "Jum&apos;at".len() as u32);
+        assert_eq!(
+            ssml_billable_chars(r#"<speak a="1"><voice name="x"><break time="1s"/>ok</voice></speak>"#),
+            20
+        );
     }
 
     #[test]
@@ -551,7 +589,7 @@ mod tests {
         assert_eq!(speaker_voice("id", &d, "Mohamed"), Voice::IdArdi);
         assert_eq!(speaker_voice("jv", &d, "Bu Siti"), Voice::JvSiti);
         assert_eq!(speaker_voice("id", &d, "Mbak Rara"), Voice::IdGadis);
-        assert_eq!(speaker_voice("jv", &d, "Cak Heru"), Voice::JvDimas);
+        assert_eq!(speaker_voice("jv", &d, "Mas Heru"), Voice::JvDimas);
         assert_eq!(speaker_voice("id", &d, "Ni Luh"), Voice::IdGadis);
         assert_eq!(speaker_voice("jv", &d, "Mbah Putri"), Voice::JvSiti);
         assert_eq!(speaker_voice("jv", &d, "Mbah Darmi"), Voice::JvSiti);
@@ -627,7 +665,7 @@ mod tests {
 
     #[test]
     fn budget_refuses_overspending() {
-        let b = Budget { used: 290_000, limit: DEFAULT_MONTHLY_BUDGET };
+        let b = Budget { used: 270_000, limit: DEFAULT_MONTHLY_BUDGET };
         assert_eq!(b.left(), 10_000);
         assert!(b.check(10_000).is_ok());
         assert_eq!(b.check(10_001), Err(OverBudget { needed: 10_001, left: 10_000 }));

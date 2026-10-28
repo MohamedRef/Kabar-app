@@ -1,172 +1,186 @@
 schema: kabar.lesson/v1
 id: j6.u03.l10
 language: jv
-title: Ulangan J6.3
+title: Rega ing pasar
 can_do:
-  ar_eg: تقرا وتبني جملة قصيرة.
-  ar: أن تقرأ جملة قصيرة وتركّبها.
-  en: Read and build a short sentence.
+  ar_eg: تقرا لوحة أسعار بالخط الجاوي في السوق.
+  ar: أن تقرأ لوح أسعار بالخط الجاوي في السوق.
+  en: Read a price board in aksara Jawa at the market.
+slides:
+  - title: Papan rega
+    body:
+      ar_eg: |
+        في الطريق من المقابر، بيّاعة في Pasar Legi كتبت أسعارها بالخط الجاوي.
+        الأرقام هنا مكتوبة كلام: rong ewu (2.000) · sepuluh ewu (10.000) · telung puluh ewu (30.000). بص على cecak في rong وtelung، وwignyan في sepuluh.
+        كلمة جديدة: sesisir = سباطة صغيرة (كفّ) موز.
+      ar: |
+        في الطريق من المقابر كتبت بائعة في Pasar Legi أسعارها بالخط الجاوي.
+        الأعداد هنا مكتوبة كلمات: rong ewu (2.000) · sepuluh ewu (10.000) · telung puluh ewu (30.000). لاحظ cecak في rong وtelung، وwignyan في sepuluh.
+        كلمة جديدة: sesisir = كفّ (عنقود صغير) من الموز.
+      en: |
+        On the way back from the graves, a seller at Pasar Legi has written her prices in aksara Jawa.
+        The numbers are written as words: rong ewu (2,000) · sepuluh ewu (10,000) · telung puluh ewu (30,000). Spot the cecak in rong and telung, and the wignyan in sepuluh.
+        New word: sesisir = one hand (small bunch) of bananas.
+    grammar: jv.aksara.panyigeg
+    examples:
+      - text: ꦒꦼꦝꦁꦱꦼꦱꦶꦱꦶꦂꦱꦼꦥꦸꦭꦸꦃꦲꦺꦮꦸ꧉ (Gedhang sesisir sepuluh ewu.)
+        ar_eg: كفّ الموز بعشرة آلاف.
+        ar: كفّ الموز بعشرة آلاف.
+        en: A hand of bananas, ten thousand.
+      - text: ꦏꦁꦏꦸꦁꦫꦺꦴꦁꦲꦺꦮꦸ꧉ (Kangkung rong ewu.)
+        ar_eg: الكانجكونج (سبانخ مية) بألفين.
+        ar: الكانجكونج (سبانخ الماء) بألفين.
+        en: Water spinach, two thousand.
+      - text: ꦧꦮꦁꦲꦧꦁꦱꦼꦏꦶꦭꦺꦴꦠꦼꦭꦸꦁꦥꦸꦭꦸꦃꦲꦺꦮꦸ꧉ (Bawang abang sekilo telung puluh ewu.)
+        ar_eg: كيلو البصل الأحمر الصغير (شالوت) بتلاتين ألف.
+        ar: كيلو الكرّاث الأحمر (الشالوت) بثلاثين ألفًا.
+        en: Shallots, thirty thousand a kilo.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: cecak
-        ar_eg: ng في آخر المقطع
-        ar: ng في آخر المقطع
-        en: closing ng
-      - text: layar
-        ar_eg: r في آخر المقطع
-        ar: r في آخر المقطع
-        en: closing r
-      - text: wignyan
-        ar_eg: h في آخر المقطع
-        ar: h في آخر المقطع
-        en: closing h
-      - text: pangkon
-        ar_eg: أي حرف ساكن تاني، قبل الوقف
-        ar: سائر السواكن، عند الوقف
-        en: any other consonant, before a pause
-    words: [cecak, layar, wignyan, pangkon]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: كفّ الموز بكام؟
+      ar: بكم كفّ الموز؟
+      en: How much is a hand of bananas?
+    options: ["2.000", "10.000", "30.000"]
+    answer: 1
+    words: [sesisir]
+    explain:
+      ar_eg: "القايمة: Gedhang sesisir sepuluh ewu = عشر آلاف."
+      ar: في القائمة Gedhang sesisir sepuluh ewu أي عشرة آلاف.
+      en: "The list says Gedhang sesisir sepuluh ewu: ten thousand."
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: "اقرا: ꦲꦺꦴꦩꦃ"
-      ar: "اقرأ: ꦲꦺꦴꦩꦃ"
-      en: "Read: ꦲꦺꦴꦩꦃ"
-    options: [oma, omah, omang]
-    answer: 1
-    words: [wignyan]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تكتب wayang صح؟
-      ar: ما الكتابة الصحيحة لـ wayang؟
-      en: Which is the right way to write wayang?
-    options: ["ꦮꦪꦔ꧀", "ꦮꦪꦁ", "ꦮꦪꦂ"]
-    answer: 1
+      ar_eg: أنهي حاجة بألفين؟
+      ar: أيّها بألفين؟
+      en: Which item costs two thousand?
+    options: [kangkung, gedhang, bawang abang]
+    answer: 0
     explain:
-      ar_eg: ng الساكنة بتتكتب cecak، مش ꦔ + pangkon.
-      ar: تُكتب ng الساكنة cecak، لا ꦔ مع pangkon.
-      en: A closing ng is cecak, not ꦔ + pangkon.
+      ar_eg: ꦏꦁꦏꦸꦁꦫꦺꦴꦁꦲꦺꦮꦸ꧉ = Kangkung rong ewu (الكانكونج بألفين).
+      ar: ꦏꦁꦏꦸꦁꦫꦺꦴꦁꦲꦺꦮꦸ꧉ = Kangkung rong ewu (الكانكونج بألفين).
+      en: ꦏꦁꦏꦸꦁꦫꦺꦴꦁꦲꦺꦮꦸ꧉ = Kangkung rong ewu.
+    words: [cecak]
+  - id: e03
+    type: listen
+    text: Bawang abang sekilo telung puluh ewu.
+    question:
+      ar_eg: كيلو الشالوت بكام؟
+      ar: بكم كيلو الشالوت؟
+      en: How much is a kilo of shallots?
+    options: ["3.000", "13.000", "30.000"]
+    answer: 2
+    meaning:
+      ar_eg: كيلو الشالوت بتلاتين ألف.
+      ar: كيلو الشالوت بثلاثين ألفًا.
+      en: Shallots, thirty thousand a kilo.
     words: [cecak]
   - id: e04
-    type: listen
-    text: pasar
-    question:
-      ar_eg: سمعت أنهي كلمة؟
-      ar: أي كلمة سمعت؟
-      en: Which word did you hear?
-    options: ["ꦥꦱꦂ", "ꦥꦱꦁ", "ꦥꦱꦃ"]
-    answer: 0
-    meaning:
-      ar_eg: سوق
-      ar: سوق
-      en: market
-    words: [layar]
+    type: match_pairs
+    pairs:
+      - text: ꦒꦼꦝꦁ
+        ar_eg: gedhang — موز
+        ar: gedhang — موز
+        en: gedhang — banana
+      - text: ꦏꦁꦏꦸꦁ
+        ar_eg: kangkung — سبانخ مية
+        ar: kangkung — سبانخ الماء
+        en: kangkung — water spinach
+      - text: ꦧꦮꦁꦲꦧꦁ
+        ar_eg: bawang abang — شالوت (بصل أحمر صغير)
+        ar: bawang abang — شالوت
+        en: bawang abang — shallots
+      - text: ꦱꦼꦱꦶꦱꦶꦂ
+        ar_eg: sesisir — كفّ موز
+        ar: sesisir — كفّ موز
+        en: sesisir — a hand of bananas
+    words: [sesisir, cecak, layar]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: في ꦲꦏꦸꦩꦔꦤ꧀꧈ꦏꦺꦴꦮꦺꦠꦸꦫꦸ꧉ أنهي كلمة عليها pangkon؟
-      ar: في ꦲꦏꦸꦩꦔꦤ꧀꧈ꦏꦺꦴꦮꦺꦠꦸꦫꦸ꧉ أي كلمة عليها pangkon؟
-      en: In ꦲꦏꦸꦩꦔꦤ꧀꧈ꦏꦺꦴꦮꦺꦠꦸꦫꦸ꧉ which word carries pangkon?
-    options: [aku, mangan, turu]
-    answer: 1
+      ar_eg: "في ꦏꦁꦏꦸꦁ، الـ ng اللي في الآخر والـ ng اللي في النص بيتكتبوا بإيه؟"
+      ar: "في ꦏꦁꦏꦸꦁ، بأي علامة تُكتب ng الوسطى والأخيرة؟"
+      en: "In ꦏꦁꦏꦸꦁ, how are the middle ng and the final ng written?"
+    options: ["layar, layar", "cecak, pangkon", "cecak, cecak"]
+    answer: 2
     explain:
-      ar_eg: pangkon لما الكلام يقف (قبل ꧈ أو ꧉ أو آخر السطر). في نص الجملة بنستخدم pasangan.
-      ar: pangkon عند الوقف (قبل ꧈ أو ꧉ أو آخر السطر)، وفي الوصل تُستعمل pasangan.
-      en: Pangkon goes where speech pauses (before ꧈, ꧉ or a line end). Mid-sentence, Javanese uses pasangan.
-    words: [pangkon]
+      ar_eg: الاتنين ng بتقفل مقطع، فالاتنين cecak.
+      ar: كلتاهما ng تُغلق مقطعًا، فكلتاهما cecak.
+      en: Both ng close a syllable, so both are cecak.
+    words: [cecak]
   - id: e06
-    type: listen
-    text: lungguh
-    question:
-      ar_eg: سمعت أنهي كلمة؟
-      ar: أي كلمة سمعت؟
-      en: Which word did you hear?
-    options: ["ꦭꦸꦒꦸꦃ", "ꦭꦸꦁꦒꦸꦃ", "ꦭꦸꦁꦒꦸ"]
-    answer: 1
+    type: fill_blank
+    sentence: ꦫꦺꦴꦁꦲꦺꦮꦸ = ___
     meaning:
-      ar_eg: يقعد
-      ar: يجلس
-      en: sit
-    words: [cecak, wignyan]
+      ar_eg: اكتب السعر بالحروف اللاتينية أو بالأرقام.
+      ar: اكتب السعر بالحروف اللاتينية أو بالأرقام.
+      en: Type the price in Latin letters or digits.
+    answers: [rong ewu, "2000", "2.000"]
+    explain:
+      ar_eg: "ꦫꦺꦴꦁ rong (cecak)، وewu بتبدأ بحرف متحرك فبتتكتب بـ ꦲ: ꦲꦺꦮꦸ."
+      ar: "ꦫꦺꦴꦁ rong (cecak)، وewu تبدأ بصائت فتُكتب بـ ꦲ: ꦲꦺꦮꦸ."
+      en: "ꦫꦺꦴꦁ rong (cecak); ewu starts with a vowel, so ꦲ carries it: ꦲꦺꦮꦸ."
+    words: [cecak]
   - id: e07
     type: fill_blank
-    sentence: ꦱꦼꦤꦼꦁ = ___
+    sentence: Kangkung regane ___ ewu.
     meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: مبسوط)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: مسرور)"
-      en: Type the reading in Latin letters. (It means "happy".)
-    answers: [seneng]
-    words: [cecak]
+      ar_eg: الكانجكونج سعره ألفين.
+      ar: سعر الكانجكونج ألفان.
+      en: The water spinach costs two thousand.
+    options: [rong, telung, limang]
+    answers: [rong]
+    explain:
+      ar_eg: Kangkung rong ewu = ألفين. telung = تلاتة وlimang = خمسة.
+      ar: Kangkung rong ewu أي ألفان. أما telung فثلاثة وlimang خمسة.
+      en: "Kangkung rong ewu: two thousand. telung is three and limang is five."
   - id: e08
-    type: fill_blank
-    sentence: ꦚꦼꦏꦂ = ___
-    meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: يزور قبر بالورد)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: يزور القبر بالزهر)"
-      en: Type the reading in Latin letters. (It means "visit a grave with flowers".)
-    answers: [nyekar]
-    words: [layar]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: ابني «bocah lungguh» (العيل قاعد) مقطع مقطع.
-      ar: ركّب «bocah lungguh» (الطفل جالس) مقطعًا مقطعًا.
-      en: Build "bocah lungguh" (the child sits), syllable by syllable.
-    answer: ꦧꦺꦴ ꦕꦃ ꦭꦸꦁ ꦒꦸꦃ
-    distractors: ["ꦕ"]
-    words: [wignyan, cecak]
-  - id: e10
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ꦲꦏꦸꦱꦼꦤꦼꦁꦮꦪꦁ꧉"
-      ar: "اكتب بالحروف اللاتينية: ꦲꦏꦸꦱꦼꦤꦼꦁꦮꦪꦁ꧉"
-      en: "Write in Latin letters: ꦲꦏꦸꦱꦼꦤꦼꦁꦮꦪꦁ꧉"
-    answers: ["Aku seneng wayang.", akusenengwayang]
-    words: [cecak]
-  - id: e11
+      ar_eg: "اكتب بالحروف اللاتينية: ꦒꦼꦝꦁꦱꦼꦱꦶꦱꦶꦂꦱꦼꦥꦸꦭꦸꦃꦲꦺꦮꦸ꧉"
+      ar: "اكتب بالحروف اللاتينية: ꦒꦼꦝꦁꦱꦼꦱꦶꦱꦶꦂꦱꦼꦥꦸꦭꦸꦃꦲꦺꦮꦸ꧉"
+      en: "Write in Latin letters: ꦒꦼꦝꦁꦱꦼꦱꦶꦱꦶꦂꦱꦼꦥꦸꦭꦸꦃꦲꦺꦮꦸ꧉"
+    answers: ["Gedhang sesisir sepuluh ewu.", gedhang sesisir sepuluh ewu, "gedhang sesisir 10.000"]
+    words: [sesisir, layar, wignyan]
+  - id: e09
     type: speaking
-    text: Aku mangan, kowe turu.
+    text: Gedhang sesisir pira, Bu?
     meaning:
-      ar_eg: أنا باكل، وإنت نايم.
-      ar: أنا آكل، وأنت نائم.
-      en: I'm eating, you're sleeping.
-    words: [pangkon]
+      ar_eg: كفّ الموز بكام يا مدام؟
+      ar: بكم كفّ الموز يا سيدتي؟
+      en: How much is a hand of bananas, ma'am?
+    words: [sesisir]
 dialogue:
-  title: Mulih saka makam
+  title: Ing Pasar Legi
   lines:
-    - speaker: Dimas
-      text: Piye, Med? Seneng?
-      ar_eg: إيه رأيك يا محمد؟ مبسوط؟
-      ar: ما رأيك يا محمد؟ أأعجبك؟
-      en: How was it, Med? Did you enjoy it?
     - speaker: Mohamed
-      text: Seneng banget. Aku maca papan ing gapura.
-      ar_eg: مبسوط قوي. قريت اللوحة اللي على البوابة.
-      ar: كثيرًا. قرأتُ اللافتة على البوابة.
-      en: Very much. I read the sign on the gate.
-    - speaker: Dimas
-      text: Tenan? Tulisane apa?
-      ar_eg: بجد؟ كان مكتوب إيه؟
-      ar: حقًا؟ ماذا كان مكتوبًا؟
-      en: Really? What did it say?
+      text: Bu, gedhang sesisir pinten?
+      ar_eg: يا مدام، كفّ الموز بكام؟
+      ar: يا سيدتي، بكم كفّ الموز؟
+      en: Ma'am, how much is a hand of bananas?
+    - speaker: Bakul
+      text: Sedasa ewu, Mas.
+      ar_eg: بعشرة آلاف.
+      ar: بعشرة آلاف.
+      en: Ten thousand.
     - speaker: Mohamed
-      text: Makam. Nganggo pangkon ing mburi!
-      ar_eg: «makam». وفي الآخر pangkon!
-      ar: «makam»، وفي آخرها pangkon!
-      en: Makam. With pangkon at the end!
-souvenir:
-  id: j6.u03.souvenir
-  title: Makam Raja Mataram
-  note:
-    ar_eg: |
-      في كوتاغيدي مقابر أول ملوك ماتارام، جنب المسجد الكبير. واللي عايز يدخل لازم يلبس لبس جاوي تقليدي، وبيأجّروه هناك عند الباب — قاعدة آداب لسه عايشة لحد النهارده. وعلى البوابات والحيطان هتلاقي كتابة جاوية، وإنت دلوقتي تقدر تقرا منها كلمات كاملة.
-    ar: |
-      في كوتاغيدي مقابر أوائل ملوك ماتارام قرب المسجد الكبير، ولا يدخلها الزائر إلا باللباس الجاوي التقليدي الذي يُستأجر عند الباب، وهي قاعدة آداب ما زالت حيّة. وعلى البوابات والجدران كتابة جاوية صرت تقرأ منها كلمات كاملة.
-    en: |
-      Kotagede holds the graves of the first Mataram kings, next to the Great Mosque. To go in, visitors must wear traditional Javanese dress, which you can rent at the entrance — a rule of etiquette that is still alive today. On the gates and walls there's aksara Jawa, and now you can read whole words of it.
+      text: Kula maos papanipun! Kangkungipun kalih ewu, nggih?
+      ar_eg: أنا قريت اللوحة! والكانجكونج بألفين، صح؟
+      ar: قرأتُ اللوح! والكانجكونج بألفين، أليس كذلك؟
+      en: I read your board! The water spinach is two thousand, right?
+    - speaker: Bakul
+      text: Leres. Wah, Mas saged maos aksara Jawa!
+      ar_eg: مظبوط. يا سلام، إنت بتعرف تقرا الخط الجاوي!
+      ar: صحيح. ما شاء الله، تقرأ الخط الجاوي!
+      en: That's right. Wow, you can read aksara Jawa!
+new_words:
+  - word: sesisir
+    pos: noun
+    ar_eg: كفّ موز (سباطة صغيرة)
+    ar: كفّ من الموز (عنقود صغير)
+    en: one hand (small bunch) of bananas = sesisir
 review:
   status: draft
   verified: false

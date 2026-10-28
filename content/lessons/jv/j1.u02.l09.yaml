@@ -1,0 +1,239 @@
+schema: kabar.lesson/v1
+id: j1.u02.l09
+language: jv
+title: Ulangan J1.2
+can_do:
+  ar_eg: تعرّف بنفسك وترجّع السؤال للتاني.
+  ar: أن تعرّف بنفسك وتسأل محدّثك بالمثل.
+  en: Introduce yourself and ask back.
+slides:
+  - title: Takon lan njawab
+    body:
+      ar_eg: |
+        مراجعة الوحدة:
+        - أدوات السؤال: apa (opo)، sapa (sopo)، ngendi / endi، kapan، piye، pira (piro)، ngapa. وفي الكلام السريع: endi (= ngendi)، ki (= iki).
+        - السؤال في الآخر زي المصري: Jenengmu sapa? · Omahmu ngendi? · Regane pira?
+        - التعريف: Jenengku … · Aku wong Mesir · Aku saka Kairo · Aku guru / mahasiswa · Aku sinau basa Jawa.
+        - وترجّع السؤال: «Kowe?» أو «Jenengmu sapa?» أو مع حد أكبر «Mas / Mbak?».
+      ar: |
+        مراجعة الوحدة:
+        - أدوات الاستفهام: apa (opo)، sapa (sopo)، ngendi / endi، kapan، piye، pira (piro)، ngapa، وفي الكلام السريع endi (= ngendi) وki (= iki).
+        - الأداة في آخر الجملة كالعامية: Jenengmu sapa? · Omahmu ngendi? · Regane pira?
+        - التعريف بالنفس: Jenengku … · Aku wong Mesir · Aku saka Kairo · Aku guru / mahasiswa · Aku sinau basa Jawa.
+        - وردّ السؤال: «Kowe?» أو «Jenengmu sapa?» أو مع الأكبر «Mas / Mbak?».
+      en: |
+        Unit review:
+        - Question words: apa (opo), sapa (sopo), ngendi / endi, kapan, piye, pira (piro), ngapa; quick speech endi (= ngendi), ki (= iki).
+        - Question word last, as in Egyptian: Jenengmu sapa? · Omahmu ngendi? · Regane pira?
+        - Introducing yourself: Jenengku … · Aku wong Mesir · Aku saka Kairo · Aku guru / mahasiswa · Aku sinau basa Jawa.
+        - Ask back: "Kowe?", "Jenengmu sapa?", or to someone older "Mas / Mbak?".
+    grammar: jv.sentence.basic
+    examples:
+      - text: Jenengku Mohamed. Jenengmu sapa?
+        ar_eg: اسمي محمد. وإنت اسمك إيه؟
+        ar: اسمي محمد. وما اسمك؟
+        en: My name is Mohamed. What's yours?
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sapa
+        ar_eg: مين
+        ar: مَن
+        en: who
+      - text: ngendi
+        ar_eg: فين
+        ar: أين
+        en: where
+      - text: kapan
+        ar_eg: إمتى
+        ar: متى
+        en: when
+      - text: piye
+        ar_eg: إزاي
+        ar: كيف
+        en: how
+      - text: kanggo
+        ar_eg: عشان / لـ
+        ar: لِـ / من أجل
+        en: for
+      - text: ngopi
+        ar_eg: يشرب قهوة
+        ar: يشرب القهوة
+        en: have coffee
+    words: [sapa, ngendi, kapan, piye, kanggo, ngopi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: opo
+        ar_eg: إيه = apa (شات)
+        ar: apa (دردشة)
+        en: apa (chat)
+      - text: endi
+        ar_eg: فين = ngendi (كلام سريع)
+        ar: أين = ngendi (كلام سريع)
+        en: where = ngendi (quick speech)
+      - text: ki
+        ar_eg: ده = iki (كلام الشارع)
+        ar: هذا = iki (عامية)
+        en: this = iki (street speech)
+      - text: guru
+        ar_eg: مدرّس
+        ar: مدرّس
+        en: teacher
+      - text: penerjemah
+        ar_eg: مترجم
+        ar: مترجم
+        en: translator
+      - text: tembung
+        ar_eg: كلمة
+        ar: كلمة
+        en: word
+    words: [apa, endi, ki, guru, penerjemah, tembung]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تسأل البيّاع عن السعر. تقول إيه؟
+      ar: تريد أن تسأل البائع عن الثمن. ماذا تقول؟
+      en: You want to ask the seller the price. What do you say?
+    options: ['Regane pira?', 'Regane ngendi?', 'Regane sapa?']
+    answer: 0
+    words: [rega, pira]
+    explain:
+      ar_eg: السعر بيتسأل عنه بـ pira (كام). ngendi = فين، وsapa = مين.
+      ar: يُسأل عن السعر بـ pira (كم)؛ أما ngendi فأين، وsapa من.
+      en: Prices are asked with pira (how much). ngendi = where, sapa = who.
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: اللي بيترجم من لغة للغة اسمه إيه؟
+      ar: ما اسم من ينقل الكلام من لغة إلى أخرى؟
+      en: Who translates from one language to another?
+    options: [guru, dokter, penerjemah]
+    answer: 2
+    explain:
+      ar_eg: penerjemah = مترجم. guru = مدرّس، dokter = دكتور.
+      ar: penerjemah = مترجم. أمّا guru فمدرّس، وdokter فطبيب.
+      en: penerjemah = translator. guru = teacher, dokter = doctor.
+    words: [penerjemah, guru, dokter]
+  - id: e05
+    type: listen
+    text: Mas wong ngendi?
+    options: ['Mas sinau apa?', 'Omahmu ngendi?', 'Mas wong ngendi?']
+    answer: 2
+    words: [wong, ngendi]
+  - id: e06
+    type: listen
+    text: Aku sinau basa Jawa.
+    options: [Aku saka Jawa., Aku sinau basa Jawa., Aku guru basa Jawa.]
+    answer: 1
+    words: [sinau, basa]
+  - id: e07
+    type: fill_blank
+    sentence: Kowe saka ___?
+    meaning:
+      ar_eg: إنت منين؟
+      ar: من أين أنت؟
+      en: Where are you from?
+    options: [sapa, kapan, ngendi]
+    answers: [ngendi]
+    words: [saka, ngendi]
+    explain:
+      ar_eg: saka ngendi = منين. sapa = مين، وkapan = إمتى.
+      ar: saka ngendi = من أين؛ أما sapa فمن، وkapan متى.
+      en: saka ngendi = where from. sapa = who, kapan = when.
+  - id: e08
+    type: fill_blank
+    sentence: Omah___ gedhe.
+    meaning:
+      ar_eg: بيتي كبير.
+      ar: بيتي كبير.
+      en: My house is big.
+    options: [ku, mu]
+    answers: [ku]
+    words: [omah, gedhe]
+    explain:
+      ar_eg: "-ku = بتاعي: omahku = بيتي. -mu = بتاعك: omahmu = بيتك."
+      ar: "-ku للمتكلم: omahku = بيتي؛ أما -mu فللمخاطب: omahmu = بيتك."
+      en: "-ku = my: omahku = my house. -mu = your: omahmu = your house."
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: اسمي محمد. اسمك إيه؟
+      ar: اسمي محمد. ما اسمك؟
+      en: My name is Mohamed. What's your name?
+    answer: Jenengku Mohamed. Jenengmu sapa?
+    distractors: [pira, saya]
+    words: [jeneng, sapa]
+    explain:
+      ar_eg: jenengku = اسمي، وjenengmu sapa = اسمك إيه. pira = كام، وsaya إندونيسي مش جاوي.
+      ar: jenengku = اسمي، وjenengmu sapa = ما اسمك؟ أما pira فكم، وsaya إندونيسية لا جاوية.
+      en: jenengku = my name, jenengmu sapa = what's your name? pira = how much, and saya is Indonesian, not Javanese.
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Guruku bocah Jogja asli. Dheweke pinter.
+    answers_meaning:
+      ar_eg: [المدرّس بتاعي ابن يوجيا أصلي، وهو شاطر, مدرّسي من يوجيا أصلًا، وشاطر]
+      ar: [مدرّسي ابن يوجيا الأصيل، وهو ماهر, مدرّسي من يوجيا أصلًا، وهو ذكي]
+      en: ['My teacher is a true Jogja lad. He''s clever', 'My teacher is from Jogja, born and bred. He''s smart']
+    words: [guru, bocah, asli, pinter]
+  - id: e11
+    type: dictation
+    text: Aku krungu pitakone.
+    meaning:
+      ar_eg: سمعت السؤال.
+      ar: سمعت السؤال.
+      en: I heard the question.
+    words: [krungu, pitakon]
+  - id: e12
+    type: speaking
+    text: Jenengku Mohamed. Aku saka Kairo. Kowe saka ngendi?
+    meaning:
+      ar_eg: اسمي محمد. أنا من القاهرة. وإنت منين؟
+      ar: اسمي محمد. أنا من القاهرة. ومن أين أنت؟
+      en: My name is Mohamed. I'm from Cairo. Where are you from?
+    words: [jeneng, saka, ngendi]
+dialogue:
+  title: Nunggu sepur
+  lines:
+    - speaker: Mbak Sinta
+      text: Mas, sugeng enjing.
+      ar_eg: صباح الخير يا أستاذ.
+      ar: صباح الخير يا أخي.
+      en: Good morning.
+    - speaker: Mohamed
+      text: Sugeng enjing, Mbak. Jenengku Mohamed. Jenengmu sapa?
+      ar_eg: صباح النور يا آنسة. اسمي محمد. اسمك إيه؟
+      ar: صباح النور يا آنسة. اسمي محمد. ما اسمك؟
+      en: Good morning. My name is Mohamed. What's your name?
+    - speaker: Mbak Sinta
+      text: Sinta. Mas wong ngendi?
+      ar_eg: سينتا. وحضرتك منين؟
+      ar: سينتا. ومن أين أنت؟
+      en: Sinta. Where are you from?
+    - speaker: Mohamed
+      text: Aku wong Mesir. Mbak wong Jogja?
+      ar_eg: أنا مصري. وإنتِ من يوجيا؟
+      ar: أنا مصري. وهل أنتِ من يوجيا؟
+      en: I'm Egyptian. Are you from Jogja?
+    - speaker: Mbak Sinta
+      text: Ora, aku saka Malang. Aku mahasiswa.
+      ar_eg: لأ، أنا من مالانج. أنا طالبة.
+      ar: لا، أنا من مالانغ. وأنا طالبة جامعية.
+      en: No, I'm from Malang. I'm a student.
+    - speaker: Mohamed
+      text: Apik! Aku sinau basa Jawa.
+      ar_eg: حلو! أنا بتعلم جاوي.
+      ar: جميل! أنا أتعلّم الجاوية.
+      en: Nice! I'm learning Javanese.
+souvenir:
+  id: j1.u02.souvenir
+  title: Stasiun Tugu
+  note:
+    ar_eg: 'محطة Tugu هي المحطة الكبيرة في يوجيا، في آخر شارع Malioboro من ناحية الشمال، ومنها القطارات بتطلع لباقي جاوة، وأولها ماديون، المحطة الجاية في رحلتك في Kabar. وإنت مستني القطر، الجاوي بيبدأ الكلام بأداة سؤال: «Piye kabare?»، و«Regane pira?» عند الكشك. لو حفظت piye وpira، تقدر تفتح أي دردشة على الرصيف.'
+    ar: 'محطة Tugu هي محطة يوجيا الكبرى عند الطرف الشمالي لشارع Malioboro، ومنها تنطلق القطارات إلى سائر جاوة، ومنها ماديون، محطتك التالية في رحلة Kabar. وعلى الرصيف يبدأ الجاوي الحديث بأداة استفهام: «Piye kabare?» و«Regane pira?» عند الكشك. فإذا حفظت piye وpira فتحت أي حديث على الرصيف.'
+    en: 'Tugu is Jogja''s main train station, at the north end of Malioboro, where trains leave for the rest of Java, Madiun included: the next stop on your Kabar journey. While you wait on the platform, Javanese small talk opens with a question word: "Piye kabare?", and "Regane pira?" at the snack kiosk. Learn piye and pira and you can start a chat with anyone on the platform.'
+review:
+  status: draft
+  verified: false

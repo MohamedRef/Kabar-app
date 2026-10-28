@@ -1,190 +1,251 @@
 schema: kabar.lesson/v1
 id: bipa3.u03.l05
 language: id
-title: Rekomendasi film
+title: Aktor dan penggemar
 can_do:
-  ar_eg: ترشّح فيلم لصاحبك وتقول ليه يستاهل.
-  ar: أن ترشّح فيلمًا لصديقك وتذكر أسباب ذلك.
-  en: Recommend a film with reasons.
+  ar_eg: تتكلم عن الممثلين وأدوارهم ومشاهدهم والمعجبين اللي مستنيينهم.
+  ar: أن تتحدث عن الممثلين وأدوارهم ومشاهدهم والمعجبين الذين ينتظرونهم.
+  en: Talk about actors, their roles and scenes, and the fans waiting for them.
+slides:
+  - title: Di bioskop terbuka
+    body:
+      ar_eg: |
+        memainkan = يلعب (دور): memainkan peran = يمثّل دور. pemenang = الفايز، الكسبان (من menang).
+        karakter = شخصية في الفيلم، peran = دور. adegan = مشهد.
+        tampil = يطلع (على المسرح أو الشاشة)، penampilan = أداء، طلّة.
+        penggemar = معجب، فان (من gemar = يحب يعمل حاجة).
+      ar: |
+        memainkan = يؤدّي: memainkan peran = يؤدّي دورًا. pemenang = الفائز (من menang).
+        karakter = شخصية في الفيلم، peran = دور. adegan = مشهد.
+        tampil = يظهر (على المسرح أو الشاشة)، penampilan = أداء، مظهر.
+        penggemar = معجب (من gemar = يهوى).
+      en: |
+        memainkan = play: memainkan peran = play a role. pemenang = winner (from menang).
+        karakter = character, peran = role. adegan = scene.
+        tampil = appear, perform (on stage or screen), penampilan = performance, appearance.
+        penggemar = fan (from gemar = be keen on).
+    examples:
+      - text: Aktor itu memainkan peran seorang nelayan.
+        ar_eg: الممثل ده بيعمل دور صياد.
+        ar: يؤدي ذلك الممثل دور صياد.
+        en: That actor plays a fisherman.
+      - text: Adegan terakhir sangat mengharukan.
+        ar_eg: المشهد الأخير مؤثر جدًا.
+        ar: المشهد الأخير مؤثر جدًا.
+        en: The last scene is very moving.
+      - text: Dia pemenang untuk aktor terbaik tahun ini.
+        ar_eg: هو الفايز بجايزة أحسن ممثل السنة دي.
+        ar: هو الفائز بجائزة أفضل ممثل هذا العام.
+        en: He's this year's winner for best actor.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: ulasan
-        ar_eg: ريفيو، مراجعة
-        ar: مراجعة نقدية
-        en: review
-      - text: bintang
-        ar_eg: نجمة
-        ar: نجمة
-        en: star
-      - text: wajib
-        ar_eg: لازم، واجب
-        ar: واجب
-        en: must, obligatory
-      - text: mengharukan
-        ar_eg: مؤثّر
-        ar: مؤثّر
-        en: touching
-    words: [ulasan, bintang, wajib, mengharukan]
+      - text: memainkan
+        ar_eg: يلعب (دور)
+        ar: يؤدّي
+        en: play (a role)
+      - text: pemenang
+        ar_eg: الفايز
+        ar: الفائز
+        en: winner
+      - text: karakter
+        ar_eg: شخصية
+        ar: شخصية
+        en: character
+      - text: peran
+        ar_eg: دور
+        ar: دور
+        en: role
+    words: [memainkan, pemenang, karakter, peran]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: راكا بيسألك ترشّحله فيلم. أنهي رد فيه ترشيح وسبب؟
-      ar: يطلب منك راكا ترشيح فيلم. أيّ ردّ فيه ترشيح وسبب؟
-      en: Raka asks you to recommend a film. Which answer gives a recommendation and a reason?
-    options: ["Saya kurang setuju dengan filmnya.", "Kamu wajib menonton film ini karena alurnya menarik.", "Selamat menonton, mohon maaf lahir dan batin."]
-    answer: 1
-    words: [wajib, menarik]
+    type: match_pairs
+    pairs:
+      - text: adegan
+        ar_eg: مشهد
+        ar: مشهد
+        en: scene
+      - text: tampil
+        ar_eg: يطلع (على المسرح)
+        ar: يظهر، يؤدي
+        en: appear, perform
+      - text: penampilan
+        ar_eg: أداء، طلّة
+        ar: أداء، مظهر
+        en: performance
+      - text: penggemar
+        ar_eg: معجب
+        ar: معجب
+        en: fan
+    words: [adegan, tampil, penampilan, penggemar]
   - id: e03
     type: listen
-    text: Dari saya, film ini dapat empat bintang. Ceritanya mengharukan, tetapi alurnya agak pelan.
+    text: Penampilan pemenang itu bagus sekali.
     question:
-      ar_eg: الفيلم خد كام نجمة؟
-      ar: كم نجمة نال الفيلم؟
-      en: How many stars does the film get?
-    options: ["tiga bintang", "lima bintang", "empat bintang"]
-    answer: 2
+      ar_eg: إيه اللي عجبه؟
+      ar: ما الذي أعجبه؟
+      en: What did he like?
+    options: [الأداء, الموسيقى, الإخراج]
+    answer: 0
     meaning:
-      ar_eg: مني أنا، الفيلم ده ياخد أربع نجوم. القصة مؤثّرة، بس الأحداث بطيئة شوية.
-      ar: من جهتي ينال هذا الفيلم أربع نجوم؛ قصته مؤثّرة، لكنّ حبكته بطيئة قليلًا.
-      en: From me, this film gets four stars. The story is touching, but the plot is a bit slow.
-    words: [bintang, mengharukan, dapat]
+      ar_eg: أداء الفايز ده جامد جدًا.
+      ar: أداء ذلك الفائز رائع.
+      en: The winner's performance is outstanding.
+    words: [penampilan, pemenang]
   - id: e04
     type: fill_blank
-    sentence: Saya membaca ___ film itu di internet.
+    sentence: Dia ___ di televisi setiap Sabtu.
     meaning:
-      ar_eg: قريت ريفيو الفيلم ده على النت.
-      ar: قرأتُ مراجعة ذلك الفيلم على الإنترنت.
-      en: I read a review of that film online.
-    options: [bintang, layar, ulasan]
-    answers: [ulasan]
-    words: [ulasan]
+      ar_eg: هو ___ في التلفزيون كل سبت.
+      ar: هو ___ على التلفاز كل سبت.
+      en: He ___ on television every Saturday.
+    options: [adegan, karakter, tampil]
+    answers: [tampil]
+    words: [tampil, adegan, karakter]
+    explain:
+      ar_eg: «بيطلع» في التلفزيون = tampil. adegan = مشهد، وkarakter = شخصية، ودول أسماء مش أفعال.
+      ar: «يظهر» على التلفاز tampil. أما adegan فمشهد، وkarakter شخصية، وهما اسمان لا فعلان.
+      en: Appearing on TV is tampil. adegan is a scene and karakter a character; both are nouns, not verbs.
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: اسم الجزء الصغير من الفيلم اللي بيحصل في مكان واحد؟
+      ar: ما اسم الجزء القصير من الفيلم في مكان واحد؟
+      en: What's a short part of a film in one place called?
+    options: [penggemar, adegan, pemenang]
+    answer: 1
+    explain:
+      ar_eg: adegan = مشهد.
+      ar: adegan = مشهد.
+      en: adegan = scene.
+    words: [adegan, penggemar, pemenang]
+  - id: e06
+    type: fill_blank
+    sentence: Banyak ___ menunggu artis itu di bandara.
+    meaning:
+      ar_eg: ___ كتير مستنيين النجم في المطار.
+      ar: ينتظر كثير من ___ النجم في المطار.
+      en: Lots of ___ are waiting for the star at the airport.
+    options: [peran, penggemar, adegan]
+    answers: [penggemar]
+    words: [penggemar, peran, adegan]
+    explain:
+      ar_eg: اللي مستنيين النجم في المطار = penggemar (المعجبين). peran = دور، وadegan = مشهد.
+      ar: المنتظرون للنجم في المطار penggemar (المعجبون). أما peran فدور، وadegan مشهد.
+      en: The people waiting for the star are penggemar, fans. peran is a role and adegan a scene.
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: لازم تتفرج على الفيلم ده!
-      ar: يجب أن تشاهد هذا الفيلم!
-      en: You must watch this film!
-    answer: Kamu wajib menonton film ini!
-    distractors: [menghadiri, bintang]
-    words: [wajib]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اتفرج على الفيلم ده (أمر مؤدب بـ -lah)! القصة مشوّقة جدًا.
-      ar: شاهد هذا الفيلم (أمر مهذّب بـ-lah)! قصته مشوّقة جدًا.
-      en: Watch this film (polite command with -lah)! The story is really interesting.
-    answers:
-      - Tontonlah film ini! Ceritanya sangat menarik.
-      - Tontonlah film ini! Ceritanya sangat menarik
-      - Tontonlah film ini! Kisahnya sangat menarik.
-      - Tontonlah film ini! Ceritanya menarik sekali.
-      - Tontonlah film ini! Kisahnya menarik sekali.
-      - Tontonlah film ini, ceritanya sangat menarik!
-    words: [menarik]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: على حسب الريفيوهات، الفيلم ده واخد خمس نجوم.
-      ar: بحسب المراجعات، نال هذا الفيلم خمس نجوم.
-      en: According to the reviews, this film gets five stars.
-    answers:
-      - Menurut ulasan, film ini dapat lima bintang.
-      - Menurut ulasan, film ini dapat lima bintang
-      - Menurut ulasan, film ini mendapat lima bintang.
-      - Menurut ulasan, film ini mendapatkan lima bintang.
-      - Menurut ulasan-ulasan, film ini dapat lima bintang.
-      - Menurut ulasannya, film ini dapat lima bintang.
-      - Menurut ulasannya, film ini mendapat lima bintang.
-    words: [ulasan, bintang, dapat]
+      ar_eg: الدور ده تقيل جدًا.
+      ar: هذا الدور ثقيل جدًا.
+      en: This role is very demanding.
+    answer: Peran ini sangat berat.
+    distractors: [karakter, pemenang]
+    words: [peran]
+    explain:
+      ar_eg: "«الدور» = Peran، و«تقيل» = berat: Peran ini sangat berat. karakter وpemenang (الفايز) زيادة."
+      ar: "«الدور» Peran، و«ثقيل» berat: Peran ini sangat berat. أما karakter وpemenang (الفائز) فزائدتان."
+      en: "\"Role\" is Peran and \"demanding\" is berat: Peran ini sangat berat. karakter and pemenang (winner) are extra."
   - id: e08
-    type: dictation
-    text: Kamu wajib membaca ulasannya dulu.
-    meaning:
-      ar_eg: لازم تقرا الريفيو الأول.
-      ar: يجب أن تقرأ المراجعة أولًا.
-      en: You must read the review first.
-    words: [wajib, ulasan]
+    type: translate
+    direction: from_target
+    source_text: Karakter utamanya lucu sekali.
+    answers_meaning:
+      ar_eg: [الشخصية الرئيسية دمها خفيف جدًا, البطل دمه خفيف أوي]
+      ar: [الشخصية الرئيسية مضحكة جدًا, البطل ظريف جدًا]
+      en: [The main character is really funny, The main character is very funny]
+    words: [karakter]
   - id: e09
     type: speaking
-    text: Dari saya, lima bintang! Akhir ceritanya sangat mengharukan.
+    text: Dia akan memainkan peran raja malam ini.
     meaning:
-      ar_eg: مني أنا، خمس نجوم! نهاية القصة مؤثّرة جدًا.
-      ar: خمس نجوم من جهتي! نهاية القصة مؤثّرة جدًا.
-      en: Five stars from me! The ending is really touching.
-    words: [bintang, mengharukan]
+      ar_eg: هو هيعمل دور الملك الليلة.
+      ar: سيؤدي دور الملك الليلة.
+      en: He'll play the king tonight.
+    words: [memainkan, peran]
   - id: e10
     type: multiple_choice
-    question: Film ini dapat lima bintang dari saya!
-    question_meaning:
-      ar_eg: رأيه إيه في الفيلم؟
-      ar: ما رأيه في الفيلم؟
-      en: What does he think of the film?
-    options: ['Filmnya sangat bagus.', 'Filmnya kurang bagus.', 'Dia belum menonton filmnya.']
-    answer: 0
+    question: Siapa yang ___ peran ayah di film itu?
+    options: [penampilan, tampil, memainkan]
+    answer: 2
     explain:
-      ar_eg: dapat lima bintang = خد خمس نجوم، يعني الفيلم حلو جدًا.
-      ar: dapat lima bintang = نال خمس نجوم، أي أنّ الفيلم ممتاز.
-      en: dapat lima bintang = it gets five stars, so the film is great.
-    words: [dapat, bintang]
+      ar_eg: memainkan peran = يعمل دور.
+      ar: memainkan peran = يؤدّي دورًا.
+      en: memainkan peran = play a role.
+    words: [memainkan, penampilan, tampil]
 dialogue:
-  title: Film apa yang bagus?
   lines:
-    - speaker: Raka
-      text: Mohamed, ada rekomendasi film Indonesia?
-      ar_eg: يا محمد، عندك فيلم إندونيسي ترشّحه؟
-      ar: يا محمد، أعندك فيلم إندونيسي ترشّحه؟
-      en: Mohamed, any Indonesian film to recommend?
+    - speaker: Rina
+      text: Mohamed, malam ini ada film di pantai. Nonton, yuk!
+      ar_eg: يا محمد، الليلة فيه فيلم على الشط. يلا نتفرج!
+      ar: يا محمد، الليلة فيلم على الشاطئ. هيا نشاهده!
+      en: Mohamed, there's a film on the beach tonight. Let's go!
     - speaker: Mohamed
-      text: Ada! Kamu wajib menonton film nelayan Gili itu.
-      ar_eg: أيوه! لازم تتفرج على فيلم صياد جيلي ده.
-      ar: نعم! يجب أن تشاهد فيلم صيّاد جيلي ذاك.
-      en: Yes! You must watch that film about the Gili fisherman.
-    - speaker: Raka
-      text: Kenapa? Film horor, ya?
-      ar_eg: ليه؟ فيلم رعب؟
-      ar: لماذا؟ أهو فيلم رعب؟
-      en: Why? Is it a horror film?
+      text: Film apa? Siapa yang main?
+      ar_eg: فيلم إيه؟ مين الممثل؟
+      ar: أي فيلم؟ ومن الممثل؟
+      en: Which film? Who's in it?
+    - speaker: Rina
+      text: Film Indonesia. Pemainnya terkenal banget, penggemarnya banyak.
+      ar_eg: فيلم إندونيسي. الممثل نجم مشهور، وليه معجبين كتير أوي.
+      ar: فيلم إندونيسي. ممثله نجم مشهور له معجبون كثيرون.
+      en: An Indonesian film. The lead is a famous star with loads of fans.
     - speaker: Mohamed
-      text: Bukan, film keluarga. Ceritanya mengharukan dan latarnya indah.
-      ar_eg: لأ، فيلم عيلة. القصة مؤثّرة والمكان حلو.
-      ar: لا، فيلم عائلي، قصته مؤثّرة ومكانه جميل.
-      en: No, a family film. The story is touching and the setting is beautiful.
-    - speaker: Raka
-      text: Ulasannya bagaimana?
-      ar_eg: والريفيوهات بتقول إيه؟
-      ar: وما رأي المراجعات؟
-      en: What do the reviews say?
+      text: Dia memainkan peran apa?
+      ar_eg: دوره إيه؟
+      ar: ما دوره؟
+      en: What role does he play?
+    - speaker: Rina
+      text: Jadi nelayan. Ada adegan di laut yang mengharukan.
+      ar_eg: بيعمل صياد. وفيه مشهد في البحر مؤثر.
+      ar: يؤدي دور صياد. وفيه مشهد مؤثر في البحر.
+      en: He plays a fisherman. There's a moving scene at sea.
     - speaker: Mohamed
-      text: Katanya, di internet film ini dapat empat bintang. Ayo, kita tonton!
-      ar_eg: بيقولوا إنه على النت واخد أربع نجوم. يلا نتفرج عليه!
-      ar: يقولون إنه نال أربع نجوم على الإنترنت. هيا نشاهده!
-      en: They say it gets four stars online. Come on, let's watch it!
+      text: Wah, aku pengin lihat penampilannya!
+      ar_eg: الله، عايز أشوف أداءه!
+      ar: رائع، أريد أن أرى أداءه!
+      en: Great, I want to see his performance!
 new_words:
-  - word: ulasan
-    pos: noun
-    ar_eg: ريفيو، مراجعة
-    ar: مراجعة نقدية
-    en: review
-  - word: bintang
-    pos: noun
-    ar_eg: نجمة، نجم
-    ar: نجمة، نجم
-    en: star
-  - word: wajib
-    pos: adjective
-    ar_eg: لازم، واجب
-    ar: واجب
-    en: must, obligatory
-    arabic: واجب
-  - word: dapat
+  - word: memainkan
     pos: verb
-    ar_eg: ياخد / يحصل على (dapat lima bintang = خد خمس نجوم)؛ وكمان «يقدر»
-    ar: يحصل على؛ ويأتي بمعنى «يستطيع»
-    en: 'to get, receive; also: can'
+    ar_eg: يلعب (دور، مزيكا)
+    ar: يؤدّي، يعزف
+    en: play (a role, music)
+  - word: pemenang
+    pos: noun
+    ar_eg: الفايز، الكسبان
+    ar: الفائز
+    en: winner
+  - word: karakter
+    pos: noun
+    ar_eg: شخصية
+    ar: شخصية
+    en: character
+  - word: peran
+    pos: noun
+    ar_eg: دور
+    ar: دور
+    en: role
+  - word: adegan
+    pos: noun
+    ar_eg: مشهد
+    ar: مشهد
+    en: scene
+  - word: tampil
+    pos: verb
+    ar_eg: يطلع (على المسرح أو الشاشة)
+    ar: يظهر، يؤدي
+    en: appear, perform
+  - word: penampilan
+    pos: noun
+    ar_eg: أداء، طلّة
+    ar: أداء، مظهر
+    en: performance, appearance
+  - word: penggemar
+    pos: noun
+    ar_eg: معجب، فان
+    ar: معجب
+    en: fan
 review:
   status: draft
   verified: false

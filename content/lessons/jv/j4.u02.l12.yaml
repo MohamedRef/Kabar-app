@@ -1,0 +1,260 @@
+schema: kabar.lesson/v1
+id: j4.u02.l12
+language: jv
+title: Ulangan J4.2
+can_do:
+  ar_eg: تستخدم أسماء التبجيل صح.
+  ar: أن تستعمل أسماء التبجيل استعمالًا صحيحًا.
+  en: Use honorific nouns correctly.
+slides:
+  - title: Asmanipun? — Nami kula…
+    body:
+      ar_eg: |
+        القاعدة في جملة: حاجات الكبير مرفوعة، وحاجاتك عادية.
+        asma ↔ nami · yuswa ↔ umur · dalem ↔ griya · putra ↔ anak · garwa ↔ semah · asta ↔ tangan · mustaka ↔ sirah · ageman ↔ klambi · dhaharan ↔ panganan · gerah ↔ sakit · kagem ↔ kangge · kagungan ↔ gadhah.
+      ar: |
+        القاعدة في جملة: أشياء الكبير مرفوعة، وأشياؤك عادية.
+        asma ↔ nami · yuswa ↔ umur · dalem ↔ griya · putra ↔ anak · garwa ↔ semah · asta ↔ tangan · mustaka ↔ sirah · ageman ↔ klambi · dhaharan ↔ panganan · gerah ↔ sakit · kagem ↔ kangge · kagungan ↔ gadhah.
+      en: |
+        The rule in one line: the elder's things are raised; yours stay plain.
+        asma ↔ nami · yuswa ↔ umur · dalem ↔ griya · putra ↔ anak · garwa ↔ semah · asta ↔ tangan · mustaka ↔ sirah · ageman ↔ klambi · dhaharan ↔ panganan · gerah ↔ sakit · kagem ↔ kangge · kagungan ↔ gadhah.
+    grammar: jv.krama-inggil.nouns
+    examples:
+      - text: Asmanipun sinten, Pak? — Nami kula Slamet.
+        ar_eg: اسم حضرتك إيه يا حاج؟ — اسمي سلامت.
+        ar: ما اسمكم يا سيدي؟ — اسمي سلامت.
+        en: What's your name, sir? — My name is Slamet.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: asma
+        ar_eg: nami بتاعة الكبير (اسم)
+        ar: nami للكبير (اسم)
+        en: the elder's nami (name)
+      - text: dalem
+        ar_eg: griya بتاعة الكبير (بيت)
+        ar: griya للكبير (بيت)
+        en: the elder's griya (home)
+      - text: putra
+        ar_eg: anak بتاع الكبير (ولد)
+        ar: anak للكبير (ولد)
+        en: the elder's anak (child)
+      - text: mustaka
+        ar_eg: sirah بتاعة الكبير (راس)
+        ar: sirah للكبير (رأس)
+        en: the elder's sirah (head)
+    words: [asma, dalem, putra, mustaka]
+  - id: e02
+    type: listen
+    text: Dalemipun Simbah caket kaliyan Malioboro.
+    options: ['Dalemipun Simbah caket kaliyan Malioboro.', 'Griya kula caket kaliyan Malioboro.', 'Dalemipun Simbah tebih saking Malioboro.']
+    answer: 0
+    meaning:
+      ar_eg: بيت تيتة قريب من ماليوبورو.
+      ar: بيت الجدة قريب من ماليوبورو.
+      en: Grandma's house is near Malioboro.
+    words: [dalem, caket]
+  - id: e03
+    type: listen
+    text: Garwanipun Pak Slamet saweg gerah.
+    options: ['Garwanipun Pak Slamet saweg sare.', 'Garwanipun Pak Slamet saweg gerah.', 'Putranipun Pak Slamet saweg gerah.']
+    answer: 1
+    meaning:
+      ar_eg: مرات Pak Slamet تعبانة.
+      ar: زوجة Pak Slamet مريضة.
+      en: Pak Slamet's wife is unwell.
+    words: [garwa, gerah]
+  - id: e04
+    type: fill_blank
+    sentence: Menika ___ kagem Bapak.
+    meaning:
+      ar_eg: ده أكل عشان حضرتك يا أستاذ.
+      ar: هذا طعام لكم يا سيدي.
+      en: This is food for you, sir.
+    options: [dhaharan, panganan, sirah]
+    answers: [dhaharan]
+    words: [dhaharan, kagem]
+    explain:
+      ar_eg: أكل الكبير = dhaharan. panganan نغوكو، وsirah يعني راس.
+      ar: طعام الكبير = dhaharan، أما panganan فنغوكو، وsirah رأس.
+      en: Food for an elder is dhaharan. panganan is ngoko, sirah is a head.
+  - id: e05
+    type: fill_blank
+    sentence: Kula ___ adhi setunggal.
+    meaning:
+      ar_eg: عندي أخ صغير واحد.
+      ar: لديّ أخ أصغر واحد.
+      en: I have one younger sibling.
+    options: [kagungan, gadhah, garwa]
+    answers: [gadhah]
+    explain:
+      ar_eg: عن نفسك gadhah. kagungan للكبير.
+      ar: عن نفسك gadhah، وkagungan للكبير.
+      en: About yourself, gadhah; kagungan is for the elder.
+    words: [gadhah]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: قميص الباتيك ده عشان حضرتك يا أستاذ.
+      ar: قميص الباتيك هذا لكم يا سيدي.
+      en: This batik shirt is for you, sir.
+    answer: Ageman batik menika kagem Bapak.
+    distractors: [kangge, klambi]
+    words: [ageman, kagem]
+    explain:
+      ar_eg: هدوم للكبير = ageman، وkagem = علشان. kangge مش تكريم، وklambi نغوكو.
+      ar: ملابس للكبير = ageman، وkagem = لـ، أما kangge فلا تكريم فيها، وklambi نغوكو.
+      en: "Clothes for an elder: ageman, with kagem \"for\". kangge carries no honour, klambi is ngoko."
+  - id: e07
+    type: speaking
+    text: Umur kula selangkung. Yuswanipun Bapak pinten?
+    meaning:
+      ar_eg: أنا عندي خمسة وعشرين سنة. وحضرتك عندك كام سنة؟
+      ar: عمري خمسة وعشرون عامًا. وكم عمركم يا سيدي؟
+      en: I'm twenty-five. How old are you, sir?
+    words: [yuswa]
+  - id: e08
+    type: match_pairs
+    pairs:
+      - text: padharan
+        ar_eg: بطن (للكبير)
+        ar: بطن (للكبير)
+        en: stomach (elder)
+      - text: talingan
+        ar_eg: ودن (للكبير)
+        ar: أذن (للكبير)
+        en: ear (elder)
+      - text: pasuryan
+        ar_eg: وش (للكبير)
+        ar: وجه (للكبير)
+        en: face (elder)
+      - text: rikma
+        ar_eg: شعر (للكبير)
+        ar: شعر (للكبير)
+        en: hair (elder)
+      - text: unjukan
+        ar_eg: مشروب (للكبير)
+        ar: شراب (للكبير)
+        en: drink (polite)
+      - text: sinjang
+        ar_eg: جاريك (كراما)
+        ar: جاريك (كراما)
+        en: batik wrap (krama)
+    words: [padharan, talingan, pasuryan, rikma, unjukan, sinjang]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: jamu
+        ar_eg: جامو، مشروب أعشاب
+        ar: جامو، شراب أعشاب
+        en: herbal drink
+      - text: kebaya
+        ar_eg: كبايا
+        ar: كبايا
+        en: kebaya
+      - text: blangkon
+        ar_eg: بلانكون
+        ar: بلانكون
+        en: blangkon
+      - text: dhayoh
+        ar_eg: ضيف
+        ar: ضيف
+        en: guest
+      - text: gudeg
+        ar_eg: جوديج
+        ar: غوديغ
+        en: gudeg
+      - text: kenang-kenangan
+        ar_eg: تذكار
+        ar: تذكار
+        en: keepsake
+    words: [jamu, kebaya, blangkon, dhayoh, gudeg, kenang-kenangan]
+  - id: e10
+    type: fill_blank
+    sentence: ___ Simbah wilujeng, nggih.
+    meaning:
+      ar_eg: ___ تيتة تبقى بخير.
+      ar: ___ تكون الجدّة بخير.
+      en: ___ Grandma be well.
+    options: [Mugi, Pakewuh, Lega]
+    answers: [Mugi]
+    words: [mugi, pakewuh, lega, wilujeng]
+    explain:
+      ar_eg: Mugi = يا رب، علشان الأمنيات. pakewuh محرج، وlega مرتاح.
+      ar: Mugi = عسى، للتمنّي، أما pakewuh فمحرَج، وlega مرتاح.
+      en: Mugi = may, for wishes. pakewuh means "embarrassed", lega "relieved".
+  - id: e11
+    type: multiple_choice
+    question: Ibu ___ dhayoh kaliyan pasugatan.
+    question_meaning:
+      ar_eg: ماما ___ الضيوف بالضيافة.
+      ar: الوالدة ___ الضيوف بالضيافة.
+      en: Mother ___ the guests refreshments.
+    options: [nyuguhi, titip, mesem]
+    answer: 0
+    explain:
+      ar_eg: nyuguhi = يضيّف ويقدّم أكل وشرب.
+      ar: nyuguhi = يضيّف ويقدّم الطعام والشراب.
+      en: nyuguhi = serve guests food and drink.
+    words: [nyuguhi, titip, mesem, pasugatan]
+  - id: e12
+    type: fill_blank
+    sentence: ___ Simbah taksih sae.
+    meaning:
+      ar_eg: ___ تيتة لسه سليمة.
+      ar: ___ الجدّة ما زالت سليمة.
+      en: Grandma's ___ are still good.
+    options: [Wajanipun, Irunge, Selop]
+    answers: [Wajanipun]
+    words: [waja, irung, selop]
+    explain:
+      ar_eg: سنان الكبيرة = wajanipun. irunge مناخير بالنغوكو، وselop شبشب.
+      ar: أسنان الكبيرة = wajanipun، أما irunge فأنف بالنغوكو، وselop خفّ.
+      en: An elder's teeth are wajanipun. irunge is a ngoko nose, selop slippers.
+dialogue:
+  title: Malem ing Malioboro
+  lines:
+    - speaker: Pak Slamet
+      text: Mas Mohamed! Pripun kabaripun?
+      ar_eg: يا محمد! أخبارك إيه؟
+      ar: يا محمد! كيف حالك؟
+      en: Mohamed! How are you?
+    - speaker: Mohamed
+      text: Sae, Pak. Garwanipun pripun?
+      ar_eg: كويس يا حاج. والمدام عاملة إيه؟
+      ar: بخير يا سيدي. وكيف حال زوجتك؟
+      en: Fine, sir. How is your wife?
+    - speaker: Pak Slamet
+      text: Sae, Mas. Mbah Putri pripun?
+      ar_eg: كويسة يا ابني. وتيتة Mbah Putri عاملة إيه؟
+      ar: بخير يا بني. وكيف حال الجدة Mbah Putri؟
+      en: She's fine. How is Mbah Putri?
+    - speaker: Mohamed
+      text: Simbah sampun mboten gerah, Pak.
+      ar_eg: تيتة خفّت خلاص يا حاج.
+      ar: لم تعد الجدة مريضة يا سيدي.
+      en: Grandma isn't ill any more, sir.
+    - speaker: Pak Slamet
+      text: Alhamdulillah. Menika bakpia kagem Simbah.
+      ar_eg: الحمد لله. ودي bakpia عشان تيتة.
+      ar: الحمد لله. وهذه bakpia للجدة.
+      en: Thank God. Here's some bakpia for Grandma.
+    - speaker: Mohamed
+      text: Matur nuwun sanget, Pak.
+      ar_eg: متشكر أوي يا حاج.
+      ar: شكرًا جزيلًا يا سيدي.
+      en: Thank you so much, sir.
+souvenir:
+  id: j4.u02.souvenir
+  title: Dalan Malioboro
+  note:
+    ar_eg: |
+      Malioboro أشهر شارع في يوجيا: ماشي على نفس الخط من التوغو لحد قصر السلطان، ومليان باتيك وعربيات andong بالخيل وbecak. وبالليل بتتفرش القعدات على الأرض (lesehan) وتاكل gudeg. ولو سألت حد كبير عن اسمه هنا، افتكر إن كلمة «اسم» نفسها بتترفع: «Asmanipun sinten?»
+    ar: |
+      Malioboro أشهر شوارع يوغيا، يمتد على الخط نفسه من التوغو إلى قصر السلطان، ويزدحم بالباتيك وعربات andong والـ becak. وفي الليل تُفرش الجلسات الأرضية (lesehan) ويؤكل الـ gudeg. وإذا سألت كبيرًا هنا عن اسمه فتذكّر أن كلمة «اسم» نفسها تُرفع: «Asmanipun sinten?»
+    en: |
+      Malioboro is Yogya's most famous street, running along the same line from the Tugu toward the Sultan's palace, full of batik, horse-drawn andong and becak. At night, mats come out for lesehan (sit-on-the-floor) dining and gudeg. If you ask an elder's name here, remember that the word "name" itself is raised: "Asmanipun sinten?"
+review:
+  status: draft
+  verified: false

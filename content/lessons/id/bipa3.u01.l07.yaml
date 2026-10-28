@@ -1,199 +1,246 @@
 schema: kabar.lesson/v1
 id: bipa3.u01.l07
 language: id
-title: Ulangan Unit 1
+title: Doa dan janji
 can_do:
-  ar_eg: "ترد صح في خمس مناسبات: جواز، تخرّج، مولود، عيد، وعزا."
-  ar: "أن تستجيب على نحو مناسب لخمس مناسبات: زواج، وتخرّج، ومولود، وعيد، وعزاء."
-  en: Respond to five life events.
+  ar_eg: 'تكتب دعاء ووعد لحد بتحبه: للأبد، غالي، نبيل.'
+  ar: 'أن تكتب دعاءً ووعدًا لمن تحب: إلى الأبد، ثمين، نبيل.'
+  en: 'Write a prayer and a promise for someone you love: forever, precious, noble.'
+slides:
+  - title: Doa untuk pengantin
+    body:
+      ar_eg: |
+        doa = دعاء (من العربي). iman = إيمان. cinta = حب: Saya cinta kamu.
+        mulia = نبيل، كريم (orang yang mulia = إنسان نبيل). berharga = غالي، له قيمة.
+        abadi = أبدي (من العربي)، selamanya = على طول، للأبد. berjanji = يوعد.
+      ar: |
+        doa = دعاء (من العربية). iman = إيمان. cinta = حبّ: Saya cinta kamu.
+        mulia = نبيل، كريم (orang yang mulia = إنسان نبيل). berharga = ثمين، ذو قيمة.
+        abadi = أبدي (من العربية)، selamanya = إلى الأبد. berjanji = يَعِد.
+      en: |
+        doa = prayer (from Arabic). iman = faith. cinta = love: Saya cinta kamu.
+        mulia = noble, honourable (orang yang mulia = a noble person). berharga = precious, valuable.
+        abadi = eternal (from Arabic), selamanya = forever. berjanji = promise.
+    examples:
+      - text: Doa kami untuk kalian berdua.
+        ar_eg: دعاءنا ليكم انتو الاتنين.
+        ar: دعاؤنا لكما.
+        en: Our prayers are with you both.
+      - text: Saya berjanji akan cinta kamu selamanya.
+        ar_eg: أوعدك إني هحبك على طول.
+        ar: أعدك أن أحبك إلى الأبد.
+        en: I promise to love you forever.
+      - text: Keluarga adalah yang paling berharga.
+        ar_eg: العيلة هي أغلى حاجة.
+        ar: العائلة هي الأثمن.
+        en: Family is what is most precious.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: Selamat wisuda!
-        ar_eg: (صاحبتك اتخرّجت)
-        ar: (تخرّجت صديقتك)
-        en: (your friend graduated)
-      - text: Semoga langgeng!
-        ar_eg: (اتنين اتجوزوا)
-        ar: (تزوّج اثنان)
-        en: (a couple just married)
-      - text: Semoga membawa berkah.
-        ar_eg: (حد نقل بيت جديد)
-        ar: (انتقل أحدهم إلى بيت جديد)
-        en: (someone moved into a new house)
-      - text: Mohon maaf lahir dan batin.
-        ar_eg: (صباح العيد)
-        ar: (صباح العيد)
-        en: (Eid morning)
-      - text: Saya turut berduka cita.
-        ar_eg: (حد من عيلة صاحبك توفّى)
-        ar: (تُوفّي أحد أقارب صديقك)
-        en: (someone in your friend's family passed away)
-    words: [wisuda, langgeng, berkah, lahir dan batin, turut berduka cita]
+      - text: doa
+        ar_eg: دعاء
+        ar: دعاء
+        en: prayer
+      - text: iman
+        ar_eg: إيمان
+        ar: إيمان
+        en: faith
+      - text: cinta
+        ar_eg: حب
+        ar: حبّ
+        en: love
+      - text: mulia
+        ar_eg: نبيل
+        ar: نبيل
+        en: noble
+    words: [doa, iman, cinta, mulia]
   - id: e02
-    type: multiple_choice
-    question: Kartu ini ___ Bu Yanti. Ini hadiah dari kami.
-    options: [untuk, tentang, menurut]
-    answer: 0
-    explain:
-      ar_eg: هدية معمولة عشان حد = untuk.
-      ar: "الهدية لأجل شخص: untuk."
-      en: A gift made for someone takes untuk.
-    words: [untuk]
+    type: match_pairs
+    pairs:
+      - text: berharga
+        ar_eg: غالي
+        ar: ثمين
+        en: precious
+      - text: abadi
+        ar_eg: أبدي
+        ar: أبدي
+        en: eternal
+      - text: selamanya
+        ar_eg: للأبد
+        ar: إلى الأبد
+        en: forever
+      - text: berjanji
+        ar_eg: يوعد
+        ar: يَعِد
+        en: promise
+    words: [berharga, abadi, selamanya, berjanji]
   - id: e03
-    type: multiple_choice
-    question: ___ saya, Mataram tempat yang sangat indah.
-    options: [Kepada, Bagi, Pada]
-    answer: 1
-    explain:
-      ar_eg: Bagi saya = بالنسبة لي. kepada للحاجة الرايحة لحد، و pada للوقت.
-      ar: Bagi saya = بالنسبة إليّ؛ وkepada للتوجّه إلى شخص، وpada للزمن.
-      en: Bagi saya = for me; kepada is "to (someone)" and pada is for time.
-    words: [bagi]
-  - id: e04
     type: listen
-    text: Selamat atas kelahiran anak Ibu. Semoga membawa berkah.
-    options: ["Selamat atas wisuda anak Ibu. Semoga membawa berkah.", "Selamat atas kelahiran anak Ibu. Semoga bahagia selalu.", "Selamat atas kelahiran anak Ibu. Semoga membawa berkah."]
-    answer: 2
-    meaning:
-      ar_eg: مبروك المولود يا مدام. ربنا يجعله بركة.
-      ar: مبارك المولود يا سيدتي، جعله الله بركة.
-      en: Congratulations on the birth of your child. May the baby bring blessings.
-    words: [kelahiran, berkah]
-  - id: e05
-    type: listen
-    text: Menurut Pak Hamdi, ayahnya sakit sejak bulan Maret.
+    text: Saya berjanji akan selalu ada untuk keluarga kita.
     question:
-      ar_eg: والد الأستاذ حمدي كان عيان من إمتى؟
-      ar: منذ متى كان والد السيد حمدي مريضًا؟
-      en: Since when had Pak Hamdi's father been ill?
-    options: ["pada hari Jumat", "sejak bulan Maret", "sejak tahun lalu"]
-    answer: 1
+      ar_eg: بيعمل إيه؟
+      ar: ماذا يفعل؟
+      en: What is he doing?
+    options: [بيوعد, بيعتذر, بيسأل]
+    answer: 0
     meaning:
-      ar_eg: على حسب كلام الأستاذ حمدي، أبوه كان عيان من شهر مارس.
-      ar: بحسب السيد حمدي، كان والده مريضًا منذ شهر مارس.
-      en: According to Pak Hamdi, his father had been ill since March.
-    words: [menurut, sejak]
+      ar_eg: أوعدك إني هكون دايمًا موجود لعيلتنا.
+      ar: أعدك أن أكون دائمًا بجانب عائلتنا.
+      en: I promise I'll always be there for our family.
+    words: [berjanji]
+  - id: e04
+    type: fill_blank
+    sentence: Terima kasih atas ___ Anda untuk keluarga kami.
+    meaning:
+      ar_eg: شكرًا على ___ لعيلتنا.
+      ar: شكرًا على ___ لعائلتنا.
+      en: Thank you for your ___ for our family.
+    options: [doa, selamanya, abadi]
+    answers: [doa]
+    words: [doa, selamanya, abadi]
+    explain:
+      ar_eg: بنشكر الناس على doa (دعاهم). selamanya = للأبد، وabadi = دايم، ودول مش أسماء.
+      ar: نشكر الناس على doa (دعائهم). أما selamanya فـ«إلى الأبد»، وabadi «دائم»، وليسا اسمين.
+      en: We thank people for their doa (prayers). selamanya means forever, abadi lasting; neither is a noun.
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: كلمة بمعنى «على طول، للأبد»؟
+      ar: أي كلمة تعني «إلى الأبد»؟
+      en: Which word means 'forever'?
+    options: [berharga, mulia, selamanya]
+    answer: 2
+    explain:
+      ar_eg: selamanya = للأبد. وabadi = أبدي (صفة).
+      ar: selamanya = إلى الأبد. وabadi = أبدي (صفة).
+      en: selamanya = forever; abadi = eternal (adjective).
+    words: [selamanya, berharga, mulia]
   - id: e06
     type: fill_blank
-    sentence: Saya turut ___ cita, Pak.
+    sentence: Cinta mereka ___. Sampai tua mereka masih sayang.
     meaning:
-      ar_eg: البقية في حياتك يا أستاذ.
-      ar: أشاطرك الحزن يا سيدي.
-      en: I'm so sorry for your loss, sir.
-    options: [bahagia, berduka, langgeng]
-    answers: [berduka]
-    words: [turut berduka cita]
-  - id: e07
-    type: fill_blank
-    sentence: Kami mudik ___ hari Kamis.
-    meaning:
-      ar_eg: هنسافر البلد يوم الخميس.
-      ar: سنسافر إلى البلدة يوم الخميس.
-      en: We're going home for Eid on Thursday.
-    options: [kepada, pada, tentang]
-    answers: [pada]
+      ar_eg: حبهم ___. لحد ما كبروا لسه بيحبوا بعض.
+      ar: حبهما ___. ما زالا يتحابّان حتى الشيخوخة.
+      en: Their love is ___. Even in old age they still adore each other.
+    options: [iman, abadi, berjanji]
+    answers: [abadi]
+    words: [abadi, iman, berjanji]
     explain:
-      ar_eg: الوقت في الكلام الرسمي بياخد pada.
-      ar: يأخذ الزمن pada في الأسلوب الرسمي.
-      en: Time takes pada in formal Indonesian.
-    words: [pada, mudik]
-  - id: e08
+      ar_eg: حب لحد ما كبروا = حب abadi (دايم). iman = إيمان، وberjanji = يوعد.
+      ar: الحب الباقي حتى الشيخوخة حب abadi (دائم). أما iman فالإيمان، وberjanji يَعِد.
+      en: Love that lasts into old age is abadi (eternal). iman is faith, berjanji means promise.
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: بالنسبة للمسلمين، العيد وقت لصلة الرحم.
-      ar: العيد عند المسلمين وقت لصلة الرحم.
-      en: For Muslims, Eid is a time for visiting family and friends.
-    answer: Bagi umat Islam, Lebaran adalah waktu untuk silaturahmi.
-    distractors: [kepada, tentang]
-    words: [bagi, umat, silaturahmi]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ألف مبروك يا راكا! ربنا يخليكم لبعض.
-      ar: مبارك زواجك يا راكا! دام ودّكما.
-      en: Congratulations on your wedding, Raka! May your marriage last.
-    answers:
-      - Selamat menikah, Raka! Semoga langgeng!
-      - Selamat menikah, Raka! Semoga langgeng.
-      - Selamat menikah, Raka! Semoga langgeng
-      - Selamat menikah, Raka. Semoga langgeng.
-      - Selamat menikah, Raka, semoga langgeng!
-      - Selamat menikah ya, Raka! Semoga langgeng!
-      - Raka, selamat menikah! Semoga langgeng!
-      - Selamat menikah, Raka! Mudah-mudahan langgeng!
-    words: [langgeng]
-  - id: e10
+      ar_eg: صاحبك ده قلبه نبيل.
+      ar: لصديقك قلب نبيل.
+      en: Your friend has a noble heart.
+    answer: Teman kamu orang yang mulia.
+    distractors: [berharga, abadi]
+    words: [mulia]
+    explain:
+      ar_eg: "نبيل = mulia، والجملة: Teman kamu orang yang mulia. berharga = غالي / قيّم، وabadi = دايم."
+      ar: "النبيل mulia: Teman kamu orang yang mulia. أما berharga فثمين، وabadi دائم."
+      en: "Noble is mulia: Teman kamu orang yang mulia. berharga means precious, abadi lasting."
+  - id: e08
     type: translate
     direction: from_target
-    source_text: Saya mengucapkan selamat Idulfitri kepada keluarga Pak Irwan.
+    source_text: Waktu dengan keluarga sangat berharga.
     answers_meaning:
-      ar_eg:
-        - بقول عيد فطر سعيد لعيلة أستاذ إروان.
-        - بهنّي عيلة أستاذ إروان بعيد الفطر.
-        - بقول كل سنة وانتم طيبين لعيلة أستاذ إروان.
-      ar:
-        - أهنّئ أسرة الأستاذ إروان بعيد الفطر.
-        - أقدّم التهنئة بعيد الفطر إلى أسرة الأستاذ إروان.
-      en:
-        - I wish Pak Irwan's family a happy Eid al-Fitr.
-        - I wish Pak Irwan's family a happy Eid.
-        - I say happy Eid al-Fitr to Pak Irwan's family.
-        - I congratulate Pak Irwan's family on Eid al-Fitr.
-    words: [mengucapkan, kepada, Idulfitri]
-  - id: e11
-    type: dictation
-    text: Saya turut berduka cita. Semoga Bapak tabah.
-    meaning:
-      ar_eg: البقية في حياتك. ربنا يصبّرك يا أستاذ.
-      ar: أشاطرك الحزن، ألهمك الله الصبر يا سيدي.
-      en: I'm so sorry for your loss. May you be strong, sir.
-    words: [turut berduka cita, tabah]
-  - id: e12
+      ar_eg: [الوقت مع العيلة غالي جدًا, الوقت اللي بنقضيه مع العيلة غالي أوي]
+      ar: [الوقت مع العائلة ثمين جدًا, الوقت الذي نقضيه مع العائلة ثمين جدًا]
+      en: [Time with family is very precious, Time spent with family is very precious]
+    words: [berharga]
+  - id: e09
     type: speaking
-    text: Selamat wisuda, Rina! Semoga sukses dan bahagia selalu.
+    text: Semoga cinta dan iman kalian selalu kuat.
     meaning:
-      ar_eg: مبروك التخرّج يا رينا! بالتوفيق وربنا يسعدك على طول.
-      ar: مبارك تخرّجك يا رينا! وفّقك الله ودمتِ سعيدة.
-      en: Congratulations on graduating, Rina! Wishing you success and happiness always.
-    words: [wisuda, bahagia]
+      ar_eg: ربنا يخلّي حبكم وإيمانكم قوي دايمًا.
+      ar: أدام الله حبكما وإيمانكما قويين.
+      en: May your love and faith always be strong.
+    words: [cinta, iman]
+  - id: e10
+    type: multiple_choice
+    question: Ibu saya selalu ___ untuk saya setiap malam.
+    options: [cinta, berdoa, mulia]
+    answer: 1
+    explain:
+      ar_eg: berdoa = يدعي، من doa.
+      ar: berdoa = يدعو، من doa.
+      en: berdoa = to pray, from doa.
+    words: [doa, cinta, mulia]
 dialogue:
-  title: Minggu yang penuh acara
   lines:
     - speaker: Rina
-      text: Minggu ini banyak sekali acara, ya, Mohamed!
-      ar_eg: الأسبوع ده كان فيه مناسبات كتير أوي يا محمد!
-      ar: كان في هذا الأسبوع مناسبات كثيرة جدًا يا محمد!
-      en: So many events this week, Mohamed!
+      text: Mohamed, bantuin aku nulis kartu buat pengantin, dong.
+      ar_eg: يا محمد، ساعدني أكتب كارت للعرسان.
+      ar: يا محمد، ساعدني في كتابة بطاقة للعروسين.
+      en: Mohamed, help me write a card for the newlyweds.
     - speaker: Mohamed
-      text: Betul! Pada hari Sabtu Raka menikah. Saya bilang, "Semoga langgeng!"
-      ar_eg: "صح! يوم السبت راكا اتجوز. قلتله: «ربنا يخليكم لبعض!»"
-      ar: "صحيح! تزوّج راكا يوم السبت، فقلت له: «دام ودّكما!»"
-      en: True! On Saturday Raka got married. I said, "May your marriage last!"
+      text: 'Tulis doa dulu: "Semoga cinta kalian abadi."'
+      ar_eg: 'اكتبي دعاء الأول: «ربنا يخلّي حبكم للأبد.»'
+      ar: 'اكتبي دعاءً أولًا: «أدام الله حبكما.»'
+      en: 'Start with a prayer: ''May your love last forever.'''
     - speaker: Rina
-      text: Lalu hari Minggu kita ke rumah Pak Hamdi. Semoga keluarganya tabah.
-      ar_eg: وبعدين يوم الحد رحنا بيت الأستاذ حمدي. ربنا يصبّر عيلته.
-      ar: ثم ذهبنا يوم الأحد إلى بيت السيد حمدي. ألهم الله أسرته الصبر.
-      en: Then on Sunday we went to Pak Hamdi's house. May his family be strong.
+      text: Bagus. Terus apa?
+      ar_eg: حلو. وبعدين؟
+      ar: جميل. ثم ماذا؟
+      en: Nice. Then what?
     - speaker: Mohamed
-      text: Amin. Bagi saya, orang Lombok selalu datang untuk keluarga dan teman.
-      ar_eg: آمين. بالنسبة لي، أهل لومبوك دايمًا بييجوا جنب أهلهم وصحابهم.
-      ar: آمين. أرى أن أهل لومبوك يقفون دائمًا إلى جانب الأهل والأصدقاء.
-      en: Amen. For me, people in Lombok always show up for family and friends.
+      text: '"Kalian berdua orang yang mulia. Teman yang baik sangat berharga."'
+      ar_eg: «انتو الاتنين ناس نبلاء. الصحاب الكويسين غاليين جدًا.»
+      ar: «كلاكما نبيل. الأصدقاء الطيبون ثمينون جدًا.»
+      en: '''You''re both noble people. Good friends are very precious.'''
     - speaker: Rina
-      text: Itu namanya silaturahmi! Minggu depan ada Lebaran Topat. Ayo ikut!
-      ar_eg: ده اسمه صلة الرحم! الأسبوع الجاي فيه «ليباران توبات» (عيد الكتوبات). تعالى معانا!
-      ar: هذه هي صلة الرحم! وفي الأسبوع القادم «ليباران توبات» (عيد الكتوبات)، فتعالَ معنا!
-      en: That's silaturahmi! Next week is Lebaran Topat (the ketupat feast). Come along!
-souvenir:
-  id: bipa3.u01.souvenir
-  title: Ketupat Lebaran
-  note:
-    ar_eg: "في العيد كل الناس بتطلب السماح من بعض وتقول «Mohon maaf lahir dan batin»، وعلى كل سفرة لازم تلاقي الكتوبات، رز متطبوخ في سبت صغير من ورق جوز الهند. لومبوك اسمها «جزيرة الألف مسجد»، وبعد العيد بأسبوع أهلها بيعملوا «ليباران توبات»: عيد تاني صغير للكتوبات على البحر ومع العيلة. كل سنة وانت طيب يا محمد!"
-    ar: في العيد يطلب الناس المسامحة بعضهم من بعض قائلين «Mohon maaf lahir dan batin»، ولا تخلو مائدة من الكتوبات، وهو أرز يُطهى في سلة صغيرة من سعف جوز الهند. وتُلقَّب لومبوك بـ«جزيرة الألف مسجد»، وبعد العيد بأسبوع يحتفل أهلها بـ«ليباران توبات»، عيد صغير للكتوبات على الشاطئ مع الأهل. كل عام وأنت بخير يا محمد!
-    en: At Eid everyone asks each other's forgiveness with "Mohon maaf lahir dan batin", and every table has ketupat, rice cooked in little woven coconut-leaf pouches. Lombok is called the Island of a Thousand Mosques, and a week after Eid its people hold Lebaran Topat, a second, smaller ketupat feast by the sea with family. Happy Eid, Mohamed!
+      text: Terus aku berjanji bakal selalu datang bawa makanan enak!
+      ar_eg: وأنا أوعدكم إني هاجي دايمًا بأكل حلو!
+      ar: وأعدكم أن آتي دائمًا بطعام لذيذ!
+      en: And I promise I'll always come with good food!
+new_words:
+  - word: doa
+    pos: noun
+    arabic: دعاء
+    ar_eg: دعاء
+    ar: دعاء
+    en: prayer
+  - word: iman
+    pos: noun
+    arabic: إيمان
+    ar_eg: إيمان
+    ar: إيمان
+    en: faith
+  - word: cinta
+    pos: noun
+    ar_eg: حب؛ يحب
+    ar: حبّ؛ يحبّ
+    en: love
+  - word: mulia
+    pos: adjective
+    ar_eg: نبيل، كريم
+    ar: نبيل، شريف
+    en: noble, honourable
+  - word: berharga
+    pos: adjective
+    ar_eg: غالي، له قيمة
+    ar: ثمين، ذو قيمة
+    en: precious, valuable
+  - word: abadi
+    pos: adjective
+    arabic: أبدي
+    ar_eg: أبدي، دايم
+    ar: أبدي، دائم
+    en: eternal, lasting
+  - word: selamanya
+    pos: adverb
+    ar_eg: للأبد، على طول
+    ar: إلى الأبد
+    en: forever
+  - word: berjanji
+    pos: verb
+    ar_eg: يوعد
+    ar: يَعِد
+    en: promise
 review:
   status: draft
   verified: false

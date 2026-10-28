@@ -1,39 +1,39 @@
 schema: kabar.lesson/v1
 id: bipa1.u06.l08
 language: id
-title: Roti, susu, sendok
+title: Sarapan dan koran
 can_do:
-  ar_eg: تطلب الفطار وتسمّي الكوباية والطبق والمعلقة والشوكة والسكينة.
-  ar: أن تطلب الفطور وتسمّي الكوب والطبق والملعقة والشوكة والسكين.
-  en: Order breakfast and name the glass, plate, spoon, fork and knife.
+  ar_eg: تتكلم عن الفطار وإنت بتقرا الجرنال والإيميل على الموبايل.
+  ar: أن تتحدث عن الفطور وأنت تقرأ الجريدة والبريد على الهاتف.
+  en: Talk about breakfast while you read the paper and your email on your phone.
 slides:
-  - title: Sarapan
+  - title: Pagi di rumah
     body:
       ar_eg: |
-        على الفطار: roti (عيش أو توست)، susu (لبن)، es (تلج: es teh = شاي بالتلج).
-        gelas = كوباية، piring = طبق، sendok = معلقة، garpu = شوكة، pisau = سكينة.
-        الإندونيسيين بياكلوا الرز بالمعلقة في اليمين والشوكة في الشمال، والسكينة قليل. وكتير بياكلوا بإيدهم اليمين.
+        roti = عيش أو توست، susu = لبن، gelas = كوباية (segelas susu = كوباية لبن)، sendok = معلقة.
+        koran = جرنال. ponsel = موبايل (من telepon seluler)، وemail = إيميل.
+        selesai = خلص: Sarapan sudah selesai = الفطار خلص.
       ar: |
-        على الفطور: roti (خبز)، وsusu (حليب)، وes (ثلج: es teh = شاي مثلّج).
-        gelas = كوب، piring = طبق، sendok = ملعقة، garpu = شوكة، pisau = سكين.
-        يأكل الإندونيسيون الأرز بالملعقة في اليمنى والشوكة في اليسرى، ونادرًا ما يستعملون السكين، وكثيرون يأكلون باليد اليمنى.
+        roti = خبز أو توست، susu = حليب، gelas = كوب (segelas susu = كوب حليب)، sendok = ملعقة.
+        koran = جريدة. ponsel = هاتف محمول (من telepon seluler)، وemail = بريد إلكتروني.
+        selesai = انتهى: Sarapan sudah selesai = انتهى الفطور.
       en: |
-        At breakfast: roti (bread), susu (milk), es (ice: es teh = iced tea).
-        gelas = glass, piring = plate, sendok = spoon, garpu = fork, pisau = knife.
-        Indonesians eat rice with a spoon in the right hand and a fork in the left, rarely a knife, and many eat with the right hand.
+        roti = bread, toast, susu = milk, gelas = glass (segelas susu = a glass of milk), sendok = spoon.
+        koran = newspaper. ponsel = mobile phone (from telepon seluler), email = email.
+        selesai = finished: Sarapan sudah selesai = breakfast is over.
     examples:
-      - text: Saya sarapan roti dan susu.
-        ar_eg: بفطر عيش ولبن.
-        ar: أفطر خبزًا وحليبًا.
-        en: I have bread and milk for breakfast.
-      - text: Orang Indonesia makan nasi memakai sendok dan garpu.
-        ar_eg: الإندونيسيين بياكلوا الرز بالمعلقة والشوكة.
-        ar: يأكل الإندونيسيون الأرز بالملعقة والشوكة.
-        en: Indonesians eat rice with a spoon and fork.
-      - text: Minta es teh satu gelas!
-        ar_eg: واحد شاي بالتلج لو سمحت!
-        ar: كوب شاي مثلّج من فضلك!
-        en: One glass of iced tea, please!
+      - text: Saya sarapan roti dan satu gelas susu.
+        ar_eg: بفطر عيش وكوباية لبن.
+        ar: أفطر خبزًا وكوب حليب.
+        en: I have bread and a glass of milk for breakfast.
+      - text: Ayah membaca koran, saya membaca email di ponsel.
+        ar_eg: بابا بيقرا الجرنال، وأنا بقرا الإيميل على الموبايل.
+        ar: يقرأ أبي الجريدة، وأقرأ بريدي على الهاتف.
+        en: Dad reads the paper; I read email on my phone.
+      - text: Sarapan sudah selesai.
+        ar_eg: الفطار خلص.
+        ar: انتهى الفطور.
+        en: Breakfast is over.
 exercises:
   - id: e01
     type: match_pairs
@@ -46,150 +46,162 @@ exercises:
         ar_eg: لبن
         ar: حليب
         en: milk
-      - text: es
-        ar_eg: تلج
-        ar: ثلج
-        en: ice
       - text: gelas
         ar_eg: كوباية
         ar: كوب
         en: glass
-    words: [roti, susu, es, gelas]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: piring
-        ar_eg: طبق
-        ar: طبق
-        en: plate
       - text: sendok
         ar_eg: معلقة
         ar: ملعقة
         en: spoon
-      - text: garpu
-        ar_eg: شوكة
-        ar: شوكة
-        en: fork
-      - text: pisau
-        ar_eg: سكينة
-        ar: سكين
-        en: knife
-    words: [piring, sendok, garpu, pisau]
+    words: [roti, susu, gelas, sendok]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: koran
+        ar_eg: جرنال
+        ar: جريدة
+        en: newspaper
+      - text: ponsel
+        ar_eg: موبايل
+        ar: هاتف محمول
+        en: mobile phone
+      - text: email
+        ar_eg: إيميل
+        ar: بريد إلكتروني
+        en: email
+      - text: selesai
+        ar_eg: خلص
+        ar: انتهى
+        en: finished
+    words: [koran, ponsel, email, selesai]
   - id: e03
     type: listen
-    text: Setiap pagi saya minum susu dan makan roti.
+    text: Saya minum satu gelas susu.
     question:
-      ar_eg: بيفطر إيه؟
-      ar: ماذا يفطر؟
-      en: What does he have for breakfast?
-    options: [عيش ولبن, رز وسمك, شاي وكيك]
+      ar_eg: بيشرب إيه؟
+      ar: ماذا يشرب؟
+      en: What is he drinking?
+    options: [كوباية لبن, طبق عيش, معلقة]
     answer: 0
     meaning:
-      ar_eg: كل يوم الصبح بشرب لبن وباكل عيش.
-      ar: كل صباح أشرب الحليب وآكل الخبز.
-      en: Every morning I drink milk and eat bread.
-    words: [susu, roti]
+      ar_eg: بشرب كوباية لبن.
+      ar: أشرب كوب حليب.
+      en: I drink a glass of milk.
+    words: [gelas, susu]
   - id: e04
     type: fill_blank
-    sentence: Minta es teh satu ___!
+    sentence: Pagi ini saya makan ___ dan minum susu.
     meaning:
-      ar_eg: واحد شاي بالتلج، ___ لو سمحت!
-      ar: ___ شاي مثلّج من فضلك!
-      en: One ___ of iced tea, please!
-    options: [gelas, piring, pisau]
-    answers: [gelas]
-    words: [es, gelas, piring, pisau]
+      ar_eg: النهارده الصبح كلت ___ وشربت لبن.
+      ar: هذا الصباح أكلت ___ وشربت حليبًا.
+      en: This morning I ate ___ and drank milk.
+    options: [roti, koran, sendok]
+    answers: [roti]
+    words: [roti, koran, sendok, susu]
+    explain:
+      ar_eg: "للفطار: roti = عيش. koran = جرنال، وsendok = معلقة."
+      ar: roti = خبز للفطور. koran جريدة وsendok ملعقة.
+      en: "Breakfast with milk: roti (bread)."
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: الإندونيسيين غالبًا بياكلوا الرز بإيه؟
-      ar: بمَ يأكل الإندونيسيون الأرز غالبًا؟
-      en: What do Indonesians usually eat rice with?
-    options: [sendok dan garpu, pisau dan garpu, gelas dan piring]
+      ar_eg: بتاكل الشوربة بإيه؟
+      ar: بمَ تأكل الحساء؟
+      en: What do you eat soup with?
+    options: [sendok, gelas, ponsel]
     answer: 0
     explain:
-      ar_eg: معلقة في اليمين وشوكة في الشمال. السكينة قليل.
-      ar: ملعقة في اليمنى وشوكة في اليسرى، والسكين نادر.
-      en: A spoon in the right hand and a fork in the left; knives are rare.
-    words: [sendok, garpu, pisau, gelas, piring]
+      ar_eg: sendok = معلقة.
+      ar: sendok = ملعقة.
+      en: sendok = spoon.
+    words: [sendok, gelas, ponsel]
   - id: e06
     type: fill_blank
-    sentence: Nasi uduk di ___ itu enak.
+    sentence: Ayah membaca ___ setiap pagi.
     meaning:
-      ar_eg: الناسي أودوك اللي في ___ ده حلو.
-      ar: الناسي أودوك في ذلك ___ لذيذ.
-      en: The nasi uduk on that ___ is good.
-    options: [piring, gelas, susu]
-    answers: [piring]
-    words: [piring]
+      ar_eg: بابا بيقرا ___ كل يوم الصبح.
+      ar: يقرأ أبي ___ كل صباح.
+      en: Dad reads the ___ every morning.
+    options: [koran, susu, gelas]
+    answers: [koran]
+    words: [koran, susu, gelas]
+    explain:
+      ar_eg: بيقرا koran = جرنال. susu = لبن، وgelas = كوباية.
+      ar: يقرأ koran أي الجريدة.
+      en: You read a koran (newspaper).
   - id: e07
     type: build_sentence
     source:
-      ar_eg: عايز سكينة وشوكة لو سمحت.
-      ar: أريد سكينًا وشوكة من فضلك.
-      en: I'd like a knife and fork, please.
-    answer: Saya minta pisau dan garpu.
-    distractors: [roti, es]
-    words: [pisau, garpu]
+      ar_eg: فيه إيميل من المدرس بتاعي.
+      ar: هناك بريد من معلّمي.
+      en: There's an email from my teacher.
+    answer: Ada email dari guru saya.
+    distractors: [koran, ponsel]
+    words: [email]
+    explain:
+      ar_eg: Ada (فيه) + email + dari guru saya (من مدرسي). koran وponsel زيادة.
+      ar: Ada email dari guru saya. koran وponsel زائدتان.
+      en: Ada email + dari guru saya. koran and ponsel are extra.
   - id: e08
     type: translate
     direction: from_target
-    source_text: Kopi susunya enak, esnya banyak.
+    source_text: Sarapan sudah selesai.
     answers_meaning:
-      ar_eg: [القهوة باللبن حلوة، والتلج كتير, القهوة باللبن طعمها حلو وفيها تلج كتير]
-      ar: [القهوة بالحليب لذيذة، والثلج كثير, قهوة الحليب لذيذة وفيها ثلج كثير]
-      en: ['The milk coffee is good, and there''s lots of ice', 'The coffee with milk is tasty, with lots of ice']
-    words: [susu, es]
+      ar_eg: [الفطار خلص, خلصنا الفطار]
+      ar: [انتهى الفطور, انتهينا من الفطور]
+      en: [Breakfast is over, Breakfast is finished, 'We''ve finished breakfast']
+    words: [selesai]
   - id: e09
     type: speaking
-    text: Roti ini enak. Minta satu piring lagi!
+    text: Saya membaca email di ponsel.
     meaning:
-      ar_eg: العيش ده حلو. عايز طبق كمان لو سمحت!
-      ar: هذا الخبز لذيذ. طبقًا آخر من فضلك!
-      en: This bread is good. One more plate, please!
-    words: [roti, piring]
+      ar_eg: بقرا الإيميل على الموبايل.
+      ar: أقرأ البريد على هاتفي.
+      en: I read email on my phone.
+    words: [email, ponsel]
   - id: e10
     type: multiple_choice
-    question: Saya makan nasi memakai ___.
-    options: [sendok, gelas, susu]
+    question: Sarapan saya sudah ___. Sekarang saya kerja.
+    options: [selesai, roti, gelas]
     answer: 0
     explain:
-      ar_eg: 'الرز بيتاكل بالمعلقة: sendok. gelas كوباية وsusu لبن.'
-      ar: 'يؤكل الأرز بالملعقة: sendok، أما gelas فكوب وsusu حليب.'
-      en: 'Rice is eaten with a spoon: sendok. gelas is a glass and susu milk.'
-    words: [sendok, gelas, susu]
+      ar_eg: selesai = خلص.
+      ar: selesai = انتهى.
+      en: selesai = finished.
+    words: [selesai, roti, gelas]
 dialogue:
   lines:
-    - speaker: Pelayan
-      text: Selamat pagi, Pak. Mau sarapan apa?
-      ar_eg: صباح الخير يا أستاذ. تحب تفطر إيه؟
-      ar: صباح الخير يا سيدي. ماذا تريد للفطور؟
-      en: Good morning, sir. What would you like for breakfast?
+    - speaker: Bu Yanti
+      text: Mohamed, sarapan! Ada roti dan susu.
+      ar_eg: يا محمد، الفطار! فيه عيش ولبن.
+      ar: يا محمد، الفطور! هناك خبز وحليب.
+      en: Mohamed, breakfast! There's bread and milk.
     - speaker: Mohamed
-      text: Saya mau roti dan susu.
-      ar_eg: عايز عيش ولبن.
-      ar: أريد خبزًا وحليبًا.
-      en: I'd like bread and milk.
-    - speaker: Pelayan
-      text: Mau es, Pak?
-      ar_eg: تحب تلج يا أستاذ؟
-      ar: هل تريد ثلجًا يا سيدي؟
-      en: Would you like ice, sir?
+      text: Terima kasih, Bu. Boleh minta sendok?
+      ar_eg: شكرًا يا طنط. ممكن معلقة؟
+      ar: شكرًا يا سيدتي. هل لي بملعقة؟
+      en: Thank you. Could I have a spoon?
+    - speaker: Bu Yanti
+      text: Ini sendok dan gelasnya.
+      ar_eg: اتفضل المعلقة والكوباية.
+      ar: تفضّل الملعقة والكوب.
+      en: Here's a spoon and a glass.
     - speaker: Mohamed
-      text: Tidak, terima kasih. Minta satu gelas air putih juga.
-      ar_eg: لأ، شكرًا. وكوباية مية كمان لو سمحت.
-      ar: لا، شكرًا. وكوب ماء أيضًا من فضلك.
-      en: No, thanks. And a glass of water too, please.
-    - speaker: Pelayan
-      text: Baik. Ini piring, sendok, dan garpu.
-      ar_eg: حاضر. دا الطبق والمعلقة والشوكة.
-      ar: حسنًا. هذا الطبق والملعقة والشوكة.
-      en: Sure. Here's a plate, a spoon and a fork.
+      text: Wah, ada email dari guru saya di ponsel.
+      ar_eg: الله، فيه إيميل من المدرس على الموبايل.
+      ar: آه، وصلني بريد من معلّمي على الهاتف.
+      en: Oh, there's an email from my teacher on my phone.
+    - speaker: Bu Yanti
+      text: Nanti aja. Sarapan, ya!
+      ar_eg: بعدين. افطر الأول!
+      ar: لاحقًا. افطر أولًا!
+      en: Later. Eat your breakfast!
     - speaker: Mohamed
-      text: Terima kasih. Pisaunya di mana?
-      ar_eg: شكرًا. والسكينة فين؟
-      ar: شكرًا. وأين السكين؟
-      en: Thanks. Where's the knife?
+      text: Baik, Bu. Sarapan selesai, lalu saya baca korannya.
+      ar_eg: حاضر. أخلص فطار وبعدين أقرا الجرنال.
+      ar: حسنًا. أنهي الفطور ثم أقرأ الجريدة.
+      en: OK. Breakfast first, then I'll read the paper.
 new_words:
   - word: roti
     pos: noun
@@ -201,36 +213,36 @@ new_words:
     ar_eg: لبن
     ar: حليب
     en: milk
-  - word: es
-    pos: noun
-    ar_eg: تلج
-    ar: ثلج
-    en: ice
   - word: gelas
     pos: noun
     ar_eg: كوباية
     ar: كوب
     en: glass
-  - word: piring
-    pos: noun
-    ar_eg: طبق
-    ar: طبق
-    en: plate
   - word: sendok
     pos: noun
     ar_eg: معلقة
     ar: ملعقة
     en: spoon
-  - word: garpu
+  - word: koran
     pos: noun
-    ar_eg: شوكة
-    ar: شوكة
-    en: fork
-  - word: pisau
+    ar_eg: جرنال
+    ar: جريدة
+    en: newspaper
+  - word: ponsel
     pos: noun
-    ar_eg: سكينة
-    ar: سكين
-    en: knife
+    ar_eg: موبايل
+    ar: هاتف محمول
+    en: mobile phone
+  - word: email
+    pos: noun
+    ar_eg: إيميل
+    ar: بريد إلكتروني
+    en: email
+  - word: selesai
+    pos: verb
+    ar_eg: خلص
+    ar: انتهى
+    en: finished, done
 review:
   status: draft
   verified: false

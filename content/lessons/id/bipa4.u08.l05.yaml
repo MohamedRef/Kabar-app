@@ -1,167 +1,245 @@
 schema: kabar.lesson/v1
 id: bipa4.u08.l05
 language: id
-title: Dongeng dari Mesir
+title: Kalung mutiara sang janda
 can_do:
-  ar_eg: تحكي حدوتة مصرية (جحا وحماره) بالإندونيسي.
-  ar: أن تروي حكاية مصرية (جحا وحماره) بالإندونيسية.
-  en: Retell an Egyptian folk tale (Juha and his donkey) in Indonesian.
+  ar_eg: 'تحكي حكاية شعبية عن أرملة وابنها اليتيم: الغيرة والتضحية والنصيحة.'
+  ar: 'أن تروي حكاية شعبية عن أرملة وابنها اليتيم: الحسد والتضحية والنصيحة.'
+  en: 'Tell a folk tale about a widow and her orphan son: envy, sacrifice and advice.'
 slides:
-  - title: Juha dan keledainya
+  - title: Dahulu kala di pinggir hutan
     body:
       ar_eg: |
-        وقت تحكي حدوتتك! استعمل اللي اتعلمته:
-        البداية: Pada zaman dahulu, hiduplah …
-        عبارات طويلة: seorang lelaki lucu dari Mesir، keledai tua milik Juha.
-        وفي الآخر قول الـ amanat.
+        janda = أرملة (أو مطلّقة)، yatim = يتيم (anak yatim)، nasihat = نصيحة.
+        kalung = عقد، سلسلة، mutiara = لولي (kalung mutiara = عقد لولي).
+        iri = غيران، حسود (iri pada = غيران من)، pengorbanan = تضحية، harimau = نمر.
       ar: |
-        حان وقت حكايتك! استعمل ما تعلمته:
-        البداية: Pada zaman dahulu, hiduplah …
-        عبارات طويلة: seorang lelaki lucu dari Mesir، keledai tua milik Juha.
-        وفي النهاية اذكر الـ amanat.
+        janda = أرملة (أو مطلّقة)، yatim = يتيم (anak yatim)، nasihat = نصيحة.
+        kalung = قلادة، mutiara = لؤلؤ (kalung mutiara = قلادة لؤلؤ).
+        iri = حاسد، غيور (iri pada = يحسد)، pengorbanan = تضحية، harimau = نمر.
       en: |
-        Time to tell your own tale! Use what you've learned:
-        Opening: Pada zaman dahulu, hiduplah …
-        Long phrases: seorang lelaki lucu dari Mesir, keledai tua milik Juha.
-        End with the amanat.
-    grammar: id.phrase.complex
+        janda = widow (or divorcee), yatim = orphan (anak yatim), nasihat = advice.
+        kalung = necklace, mutiara = pearl (kalung mutiara = pearl necklace).
+        iri = envious, jealous (iri pada = envious of); pengorbanan = sacrifice; harimau = tiger.
     examples:
-      - text: Pada zaman dahulu, hiduplah seorang lelaki lucu bernama Juha.
-        ar_eg: كان يا ما كان، كان فيه راجل دمه خفيف اسمه جحا.
-        ar: كان يا ما كان، عاش رجل طريف اسمه جحا.
-        en: Once upon a time there lived a funny man called Juha.
-      - text: Juha dan anaknya menuntun keledai tua mereka ke pasar.
-        ar_eg: جحا وابنه شدّوا حمارهم العجوز ومشيوا بيه للسوق.
-        ar: قاد جحا وابنه حمارهما العجوز إلى السوق.
-        en: Juha and his son led their old donkey to the market.
+      - text: Dahulu kala, seorang janda tinggal dengan anak yatimnya.
+        ar_eg: زمان أوي، كان فيه أرملة عايشة مع ابنها اليتيم.
+        ar: في قديم الزمان عاشت أرملة مع ابنها اليتيم.
+        en: Long ago, a widow lived with her orphaned son.
+      - text: Dia hanya punya satu kalung mutiara.
+        ar_eg: ما كانش عندها غير عقد لولي واحد.
+        ar: لم تكن تملك إلا قلادة لؤلؤ واحدة.
+        en: She owned only one pearl necklace.
+      - text: Tetangganya iri pada kalung itu.
+        ar_eg: جارتها كانت غيرانة من العقد ده.
+        ar: كانت جارتها تحسدها على تلك القلادة.
+        en: Her neighbour envied that necklace.
 exercises:
   - id: e01
-    type: listen
-    text: Juha dan anaknya pergi ke pasar dengan seekor keledai.
-    options: ["Juha dan istrinya pergi ke pasar dengan seekor keledai.", "Juha dan anaknya pergi ke pasar dengan seekor kuda.", "Juha dan anaknya pergi ke pasar dengan seekor keledai."]
-    answer: 2
-    meaning:
-      ar_eg: جحا وابنه راحوا السوق ومعاهم حمار.
-      ar: ذهب جحا وابنه إلى السوق ومعهما حمار.
-      en: Juha and his son went to the market with a donkey.
-    words: [keledai]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في الآخر جحا وابنه مشيوا جنب الحمار. الناس عملت إيه؟
-      ar: في النهاية مشى جحا وابنه بجانب الحمار. ماذا فعل الناس؟
-      en: In the end Juha and his son walk beside the donkey. What do people do?
-    options: ["Orang-orang menertawakan mereka.", "Orang-orang menuntun mereka.", "Orang-orang menjual mereka."]
-    answer: 0
-    words: [menertawakan]
-  - id: e03
     type: match_pairs
     pairs:
-      - text: keledai
-        ar_eg: حمار
-        ar: حمار
-        en: donkey
-      - text: menuntun
-        ar_eg: يشد / يقود (بالإيد أو بالحبل)
-        ar: يقود (باليد أو بالحبل)
-        en: to lead (by the hand or a rope)
-      - text: menertawakan
-        ar_eg: يضحك على
-        ar: يضحك على، يسخر من
-        en: to laugh at
-      - text: amanat
-        ar_eg: عبرة
-        ar: عبرة
-        en: moral message
-      - text: watak
-        ar_eg: طبع
-        ar: طبع
-        en: personality
-    words: [keledai, menuntun, menertawakan, amanat, watak]
+      - text: janda
+        ar_eg: أرملة
+        ar: أرملة
+        en: widow
+      - text: yatim
+        ar_eg: يتيم
+        ar: يتيم
+        en: orphan
+      - text: kalung
+        ar_eg: عقد
+        ar: قلادة
+        en: necklace
+      - text: mutiara
+        ar_eg: لولي
+        ar: لؤلؤ
+        en: pearl
+    words: [janda, yatim, kalung, mutiara]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: nasihat
+        ar_eg: نصيحة
+        ar: نصيحة
+        en: advice
+      - text: pengorbanan
+        ar_eg: تضحية
+        ar: تضحية
+        en: sacrifice
+      - text: harimau
+        ar_eg: نمر
+        ar: نمر
+        en: tiger
+      - text: iri
+        ar_eg: غيران
+        ar: حاسد
+        en: envious
+    words: [nasihat, pengorbanan, harimau, iri]
+  - id: e03
+    type: listen
+    text: Ibunya selalu memberi nasihat yang baik.
+    question:
+      ar_eg: أمه بتديله إيه؟
+      ar: ماذا تعطيه أمه؟
+      en: What does his mother give him?
+    options: [نصيحة, عقد, فلوس]
+    answer: 0
+    meaning:
+      ar_eg: أمه دايمًا بتديله نصايح كويسة.
+      ar: كانت أمه تقدّم له دائمًا نصائح طيبة.
+      en: His mother always gave good advice.
+    words: [nasihat]
   - id: e04
     type: fill_blank
-    sentence: Juha ___ keledainya, dan anaknya naik di atasnya.
+    sentence: Sejak ayahnya wafat, dia menjadi anak ___.
     meaning:
-      ar_eg: جحا بيشد حماره، وابنه راكب عليه.
-      ar: يقود جحا حماره، وابنه راكب عليه.
-      en: Juha leads his donkey, and his son rides on it.
-    options: [menertawakan, menuntun, melanggar]
-    answers: [menuntun]
-    words: [menuntun, keledai]
+      ar_eg: من ساعة ما أبوه مات، بقى ___.
+      ar: منذ وفاة أبيه صار ___.
+      en: Since his father died, he has been an ___.
+    options: [yatim, janda, iri]
+    answers: [yatim]
+    words: [yatim, janda, iri]
+    explain:
+      ar_eg: yatim = يتيم، والأب مات. janda = أرملة (للست)، وiri = غيران.
+      ar: yatim = اليتيم، فقد مات أبوه. أما janda فالأرملة، وiri حاسد.
+      en: yatim means fatherless, since his father died. janda is a widow, and iri is envious.
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حيوان كبير مخطط بيعيش في الغابة. ده إيه؟
+      ar: حيوان كبير مخطّط يعيش في الغابة. ما هو؟
+      en: A big striped animal that lives in the forest. What is it?
+    options: [kalung, harimau, mutiara]
+    answer: 1
+    explain:
+      ar_eg: harimau = نمر.
+      ar: harimau = نمر.
+      en: harimau = tiger.
+    words: [kalung, harimau, mutiara]
+  - id: e06
+    type: fill_blank
+    sentence: Ibu itu menjual ___ emasnya untuk membayar sekolah anaknya.
+    meaning:
+      ar_eg: الأم دي باعت ___ الدهب بتاعها عشان تدفع مدرسة ابنها.
+      ar: باعت الأم ___ ها الذهبية لتدفع رسوم مدرسة ابنها.
+      en: The mother sold her gold ___ to pay for her son's school.
+    options: [kalung, nasihat, harimau]
+    answers: [kalung]
+    words: [kalung, nasihat, harimau, pengorbanan]
+    explain:
+      ar_eg: kalung emas = سلسلة دهب، وده اللي بيتباع. nasihat = نصيحة، وharimau = نمر.
+      ar: kalung emas = قلادة ذهب، وهي ما يُباع. أما nasihat فالنصيحة، وharimau النمر.
+      en: kalung emas is a gold necklace, something you can sell. nasihat is advice, and harimau is a tiger.
+  - id: e07
+    type: multiple_choice
+    question: Itu adalah ___ seorang ibu untuk anaknya.
+    options: [janda, iri, pengorbanan]
+    answer: 2
+    explain:
+      ar_eg: pengorbanan = تضحية.
+      ar: pengorbanan = تضحية.
+      en: pengorbanan = sacrifice.
+    words: [janda, iri, pengorbanan]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: الناس ضحكوا على جحا وابنه.
-      ar: ضحك الناس على جحا وابنه.
-      en: People laughed at Juha and his son.
-    answer: Orang-orang menertawakan Juha dan anaknya.
-    distractors: [menuntun, keledai]
-    words: [menertawakan]
-  - id: e06
+      ar_eg: الجيران كانوا غيرانين من الأرملة الطيبة دي.
+      ar: كان الجيران يحسدون تلك الأرملة الطيبة.
+      en: The neighbours envied that kind widow.
+    answer: Tetangga iri pada janda yang baik itu.
+    distractors: [mutiara, yatim]
+    words: [iri, janda, mutiara, yatim]
+    explain:
+      ar_eg: iri pada = غيران من، وjanda = أرملة. mutiara = لولي، وyatim = يتيم، ومش في الجملة.
+      ar: iri pada = يحسد، وjanda = الأرملة. أما mutiara فاللؤلؤ، وyatim اليتيم، وليسا في الجملة.
+      en: iri pada means envious of, and janda is a widow. mutiara (pearl) and yatim (orphan) aren't in the sentence.
+  - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عبرة الحكاية دي إننا مانقدرش نرضّي كل الناس.
-      ar: عبرة هذه الحكاية أننا لا نستطيع إرضاء جميع الناس.
-      en: The moral of this story is that we can't please everyone.
-    answers:
-      - Amanat cerita ini adalah kita tidak bisa menyenangkan semua orang.
-      - Amanat cerita ini adalah kita tidak bisa menyenangkan semua orang
-      - Amanat cerita ini adalah bahwa kita tidak bisa menyenangkan semua orang.
-      - Amanat cerita ini adalah kita tidak dapat menyenangkan semua orang.
-      - Amanat dongeng ini adalah kita tidak bisa menyenangkan semua orang.
-      - "Amanat cerita ini: kita tidak bisa menyenangkan semua orang."
-      - Amanatnya, kita tidak bisa menyenangkan semua orang.
-    words: [amanat]
-  - id: e07
-    type: dictation
-    text: Seorang lelaki tua menuntun keledainya ke pasar.
-    meaning:
-      ar_eg: راجل عجوز بيشد حماره للسوق.
-      ar: يقود رجل عجوز حماره إلى السوق.
-      en: An old man leads his donkey to the market.
-    words: [menuntun, keledai]
-  - id: e08
+    direction: from_target
+    source_text: Kalung mutiara itu hadiah dari suaminya.
+    answers_meaning:
+      ar_eg: [عقد اللولي ده هدية من جوزها, العقد اللولي ده جوزها كان جايبهولها هدية]
+      ar: [قلادة اللؤلؤ تلك هدية من زوجها, كانت تلك القلادة اللؤلؤية هدية من زوجها]
+      en: [That pearl necklace was a gift from her husband, 'The pearl necklace was her husband''s present']
+    words: [kalung, mutiara]
+  - id: e10
     type: speaking
-    text: Semua orang menertawakan Juha, tetapi dia masih tersenyum.
+    text: Janda itu memberi nasihat kepada anak yatimnya.
     meaning:
-      ar_eg: كل الناس ضحكت على جحا، بس هو فضل مبتسم.
-      ar: ضحك الجميع على جحا، لكنه ظل مبتسمًا.
-      en: Everyone laughed at Juha, but he kept smiling.
-    words: [menertawakan]
+      ar_eg: الأرملة دي نصحت ابنها اليتيم.
+      ar: نصحت تلك الأرملة ابنها اليتيم.
+      en: The widow gave advice to her orphaned son.
+    words: [janda, nasihat, yatim, harimau, pengorbanan]
 dialogue:
-  title: Dongeng Juha
   lines:
-    - speaker: Mohamed
-      text: Di Mesir ada dongeng terkenal tentang Juha dan keledainya.
-      ar_eg: في مصر فيه حدوتة مشهورة عن جحا وحماره.
-      ar: في مصر حكاية مشهورة عن جحا وحماره.
-      en: In Egypt there's a famous tale about Juha and his donkey.
     - speaker: Mas Rizal
-      text: Ceritakan, dong!
-      ar_eg: احكيها بقى!
-      ar: احكِها لي!
-      en: Go on, tell it!
+      text: Mohamed, mau dengar cerita rakyat dari Bone?
+      ar_eg: يا محمد، عايز تسمع حكاية شعبية من بوني؟
+      ar: يا محمد، هل تريد أن تسمع حكاية شعبية من بوني؟
+      en: Mohamed, want to hear a folk tale from Bone?
     - speaker: Mohamed
-      text: Juha naik keledai, dan anaknya berjalan. Orang-orang bilang Juha tidak kasihan pada anaknya.
-      ar_eg: جحا ركب الحمار وابنه ماشي. الناس قالت إن جحا ماعندوش رحمة بابنه.
-      ar: ركب جحا الحمار ومشى ابنه، فقال الناس إن جحا لا يرحم ابنه.
-      en: Juha rides the donkey and his son walks. People say Juha has no pity for his son.
+      text: Mau! Tentang apa?
+      ar_eg: آه! عن إيه؟
+      ar: نعم! عن ماذا؟
+      en: Yes! What's it about?
     - speaker: Mas Rizal
-      text: Lalu?
-      ar_eg: وبعدين؟
-      ar: ثم ماذا؟
-      en: And then?
+      text: Tentang seorang janda miskin dan anak yatimnya. Dia hanya punya kalung mutiara.
+      ar_eg: عن أرملة فقيرة وابنها اليتيم. ما كانش عندها غير عقد لولي.
+      ar: عن أرملة فقيرة وابنها اليتيم، لا تملك إلا قلادة لؤلؤ.
+      en: About a poor widow and her orphaned son. All she had was a pearl necklace.
     - speaker: Mohamed
-      text: Akhirnya mereka berdua menuntun keledai itu, dan semua orang menertawakan mereka!
-      ar_eg: في الآخر الاتنين شدّوا الحمار ومشيوا، والناس كلها ضحكت عليهم!
-      ar: وفي النهاية قاد الاثنان الحمار مشيًا، فضحك عليهما الجميع!
-      en: In the end they both lead the donkey on foot, and everyone laughs at them!
+      text: Terus? Ada yang iri?
+      ar_eg: وبعدين؟ حد غار منها؟
+      ar: ثم؟ هل حسدها أحد؟
+      en: And then? Was someone jealous?
     - speaker: Mas Rizal
-      text: Ha ha! Jadi amanatnya, kita tidak bisa menyenangkan semua orang.
-      ar_eg: ها ها! يعني العبرة إننا مانقدرش نرضّي كل الناس.
-      ar: ها ها! إذن العبرة أننا لا نستطيع إرضاء الجميع.
-      en: Ha ha! So the moral is, we can't please everyone.
+      text: Iya. Tapi pas harimau datang ke desa, dia jual kalungnya buat nolong semua orang. Itu pengorbanan besar.
+      ar_eg: أيوه. بس لما النمر جه القرية، باعت العقد عشان تنقذ الكل. دي تضحية كبيرة.
+      ar: نعم. لكن حين جاء النمر إلى القرية باعت قلادتها لتنقذ الجميع. تلك تضحية عظيمة.
+      en: Yes. But when a tiger came to the village, she sold her necklace to save everyone. That's a big sacrifice.
+new_words:
+  - word: janda
+    pos: noun
+    ar_eg: أرملة، مطلّقة
+    ar: أرملة
+    en: widow, divorcee
+  - word: yatim
+    pos: adj
+    arabic: يتيم
+    ar_eg: يتيم (anak yatim)
+    ar: يتيم
+    en: orphaned (anak yatim = orphan)
+  - word: kalung
+    pos: noun
+    ar_eg: عقد، سلسلة
+    ar: قلادة
+    en: necklace
+  - word: mutiara
+    pos: noun
+    ar_eg: لولي
+    ar: لؤلؤ
+    en: pearl
+  - word: nasihat
+    pos: noun
+    arabic: نصيحة
+    ar_eg: نصيحة
+    ar: نصيحة
+    en: advice
+  - word: pengorbanan
+    pos: noun
+    ar_eg: تضحية
+    ar: تضحية
+    en: sacrifice
+  - word: harimau
+    pos: noun
+    ar_eg: نمر
+    ar: نمر
+    en: tiger
+  - word: iri
+    pos: adj
+    ar_eg: غيران، حسود
+    ar: حاسد، غيور
+    en: envious, jealous
 review:
   status: draft
   verified: false

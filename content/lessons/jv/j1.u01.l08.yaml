@@ -1,0 +1,263 @@
+schema: kabar.lesson/v1
+id: j1.u01.l08
+language: jv
+title: Isih luwe? Ayo mangan!
+can_do:
+  ar_eg: تقول «لسه جعان، يلا ناكل»، وتقول «عندي» و«صح» و«بس»، وإنك لسه مكسوف تتكلم.
+  ar: أن تقول «ما زلت جائعًا، هيا نأكل»، وتقول «عندي» و«صحيح» و«لكن»، وأنك ما زلت تخجل من الكلام.
+  en: Say "still hungry? let's eat", say "I have", "right" and "but", and that you're still shy to speak.
+slides:
+  - title: Isih neng angkringan
+    body:
+      ar_eg: |
+        كلمات صغيرة هتسمعها في كل كلام من الأسبوع الجاي:
+        - **mangan** = ياكل (makan): Ayo mangan! = يلا ناكل!
+        - **isih** = لسه (masih): Aku isih luwe = لسه جعان.
+        - **nanging** = بس / لكن (tetapi). في الشارع بتسمع كمان **ning** و**tapi**.
+        - **duwe** = عنده (punya): Aku duwe kanca = عندي صاحب.
+        - **bener** = صح (benar) · **ngomong** = يتكلم / يقول (bicara, bilang)
+        - **kudu** = لازم (harus): Aku kudu mangan = لازم آكل.
+      ar: |
+        كلمات صغيرة ستسمعها في كل حديث من الأسبوع القادم:
+        - **mangan** = يأكل (makan): Ayo mangan! = هيا نأكل!
+        - **isih** = ما زال (masih): Aku isih luwe = ما زلت جائعًا.
+        - **nanging** = لكن (tetapi)، وفي الشارع تسمع أيضًا **ning** و**tapi**.
+        - **duwe** = يملك / عنده (punya): Aku duwe kanca = عندي صديق.
+        - **bener** = صحيح (benar) · **ngomong** = يتكلم / يقول (bicara, bilang)
+        - **kudu** = يجب (harus): Aku kudu mangan = يجب أن آكل.
+      en: |
+        Small words you'll hear in every conversation from next week on:
+        - **mangan** = eat (makan): Ayo mangan! = Let's eat!
+        - **isih** = still (masih): Aku isih luwe = I'm still hungry.
+        - **nanging** = but (tetapi); on the street you also hear **ning** and **tapi**.
+        - **duwe** = have, own (punya): Aku duwe kanca = I have a friend.
+        - **bener** = right, true (benar) · **ngomong** = speak, say (bicara, bilang)
+        - **kudu** = must, have to (harus): Aku kudu mangan = I have to eat.
+    examples:
+      - text: Aku isih luwe. Ayo mangan!
+        ar_eg: لسه جعان. يلا ناكل!
+        ar: ما زلت جائعًا. هيا نأكل!
+        en: I'm still hungry. Let's eat!
+      - text: Kowe duwe kanca? Duwe, Mas.
+        ar_eg: عندك صحاب؟ عندي يا ماس.
+        ar: هل لديك أصدقاء؟ نعم يا أخي.
+        en: Do you have friends? I do, Mas.
+      - text: Aku sehat, nanging ngantuk.
+        ar_eg: أنا كويس، بس نعسان.
+        ar: أنا بخير، لكنني نعسان.
+        en: I'm fine, but sleepy.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: mangan
+        ar_eg: ياكل
+        ar: يأكل
+        en: eat
+      - text: isih
+        ar_eg: لسه
+        ar: ما زال
+        en: still
+      - text: nanging
+        ar_eg: بس / لكن
+        ar: لكن
+        en: but
+      - text: duwe
+        ar_eg: عنده
+        ar: يملك
+        en: have, own
+    words: [mangan, isih, nanging, duwe]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: bener
+        ar_eg: صح
+        ar: صحيح
+        en: right, true
+      - text: ngomong
+        ar_eg: يتكلم / يقول
+        ar: يتكلم / يقول
+        en: speak, say
+      - text: luwe
+        ar_eg: جعان
+        ar: جائع
+        en: hungry
+      - text: kudu
+        ar_eg: لازم
+        ar: يجب
+        en: must
+    words: [bener, ngomong, luwe, kudu]
+  - id: e03
+    type: listen
+    text: Aku isih luwe. Ayo mangan!
+    question:
+      ar_eg: بيقول إيه؟
+      ar: ماذا يقول؟
+      en: What is he saying?
+    options: [لسه جعان، يلا ناكل, أنا شبعان خلاص, أنا نعسان، هنام]
+    answer: 0
+    meaning:
+      ar_eg: لسه جعان. يلا ناكل!
+      ar: ما زلت جائعًا. هيا نأكل!
+      en: I'm still hungry. Let's eat!
+    words: [isih, mangan]
+  - id: e04
+    type: fill_blank
+    sentence: Aku sehat, ___ ngantuk.
+    meaning:
+      ar_eg: أنا كويس، ___ نعسان.
+      ar: أنا بخير، ___ نعسان.
+      en: I'm fine, ___ sleepy.
+    options: [nanging, mangan, duwe]
+    answers: [nanging]
+    words: [nanging, mangan, duwe]
+    explain:
+      ar_eg: «كويس، بس نعسان» محتاجة nanging (بس / لكن). mangan = ياكل، وduwe = عنده.
+      ar: «بخير لكن نعسان» تحتاج nanging (لكن)؛ أما mangan فيأكل، وduwe يملك.
+      en: "\"Fine, but sleepy\" needs nanging (but). mangan = eat, duwe = have."
+  - id: e05
+    type: fill_blank
+    sentence: Kowe ___ kanca?
+    meaning:
+      ar_eg: ___ صحاب؟
+      ar: هل ___ أصدقاء؟
+      en: Do you ___ friends?
+    options: [duwe, isih, bener]
+    answers: [duwe]
+    words: [duwe, isih, bener]
+    explain:
+      ar_eg: "duwe = عنده: kowe duwe kanca = عندك صحاب. isih = لسه، وbener = صح."
+      ar: "duwe = يملك: kowe duwe kanca = هل عندك أصدقاء؟ أما isih فما زال، وbener صحيح."
+      en: "duwe = have: kowe duwe kanca = do you have friends? isih = still, bener = right."
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «صح»؟
+      ar: أيّ كلمة تعني «صحيح»؟
+      en: Which word means "right"?
+    options: [bener, ngomong, mangan]
+    answer: 0
+    explain:
+      ar_eg: bener = صح. ngomong = يتكلم، وmangan = ياكل.
+      ar: bener = صحيح، أما ngomong فيتكلم وmangan يأكل.
+      en: bener = right. ngomong = speak, mangan = eat.
+    words: [bener, ngomong, mangan]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «يتكلم»؟
+      ar: أيّ كلمة تعني «يتكلم»؟
+      en: Which word means "to speak"?
+    options: [ngomong, nanging, isih]
+    answer: 0
+    explain:
+      ar_eg: ngomong = يتكلم. nanging = بس، وisih = لسه.
+      ar: ngomong = يتكلم، أما nanging فلكن وisih ما زال.
+      en: ngomong = speak. nanging = but, isih = still.
+    words: [ngomong, nanging, isih]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: لسه مكسوف أتكلم.
+      ar: ما زلت أخجل من الكلام.
+      en: I'm still shy to speak.
+    answer: Aku isih isin ngomong.
+    distractors: [mangan, bener]
+    words: [isih, ngomong]
+    explain:
+      ar_eg: isih = لسه، isin = مكسوف، وngomong = يتكلم. mangan = ياكل، وbener = صح، ومش في الجملة.
+      ar: isih = ما زال، وisin = خجلان، وngomong = يتكلم؛ أما mangan فيأكل، وbener صحيح، وليسا في الجملة.
+      en: isih = still, isin = shy, ngomong = speak. mangan (eat) and bener (right) aren't in the sentence.
+  - id: e09
+    type: fill_blank
+    sentence: Sesuk aku ___ ketemu Mas Dimas.
+    meaning:
+      ar_eg: بكرة ___ أقابل ماس ديماس.
+      ar: غدًا ___ أن ألقى ماس ديماس.
+      en: Tomorrow I ___ meet Mas Dimas.
+    options: [kudu, isih, bener]
+    answers: [kudu]
+    words: [kudu, isih, bener]
+    explain:
+      ar_eg: kudu = لازم، وده اللي يدّي معنى «لازم أقابله بكرة». isih = لسه، وbener = صح.
+      ar: kudu = يجب، فتصير الجملة «غدًا يجب أن ألقاه»؛ أما isih فما زال، وbener صحيح.
+      en: "kudu = must: \"tomorrow I must meet Mas Dimas\". isih = still, bener = right."
+  - id: e10
+    type: speaking
+    text: Aku luwe, kudu mangan saiki!
+    meaning:
+      ar_eg: أنا جعان، لازم آكل دلوقتي!
+      ar: أنا جائع، يجب أن آكل الآن!
+      en: I'm hungry, I have to eat now!
+    words: [kudu, mangan]
+dialogue:
+  lines:
+    - speaker: Mas Heru
+      text: Mohamed, kowe isih luwe?
+      ar_eg: يا محمد، إنت لسه جعان؟
+      ar: يا محمد، هل ما زلت جائعًا؟
+      en: Mohamed, are you still hungry?
+    - speaker: Mohamed
+      text: Isih, Mas. Kudu mangan saiki!
+      ar_eg: لسه يا ماس. لازم ناكل دلوقتي!
+      ar: نعم يا أخي. يجب أن نأكل الآن!
+      en: Still, Mas. We have to eat now!
+    - speaker: Mas Heru
+      text: Ayo! Mohamed, saiki kowe duwe kanca?
+      ar_eg: يلا! يا محمد، بقى عندك صحاب دلوقتي؟
+      ar: هيا! يا محمد، هل صار لديك أصدقاء الآن؟
+      en: Let's go! Mohamed, do you have friends now?
+    - speaker: Mohamed
+      text: 'Duwe, Mas: kowe lan Mas Dimas!'
+      ar_eg: 'عندي يا ماس: إنت وماس ديماس!'
+      ar: 'نعم يا أخي: أنت وماس ديماس!'
+      en: 'I do, Mas: you and Mas Dimas!'
+    - speaker: Mas Heru
+      text: Bener! Nanging kowe isih isin ngomong, hehe.
+      ar_eg: صح! بس إنت لسه مكسوف تتكلم، هههه.
+      ar: صحيح! لكنك ما زلت تخجل من الكلام، هه.
+      en: True! But you're still shy to speak, hehe.
+    - speaker: Mohamed
+      text: Nggih, Mas. Sesuk aku ngomong maneh!
+      ar_eg: حاضر يا ماس. بكرة هتكلم تاني!
+      ar: حسنًا يا أخي. غدًا سأتكلم مرة أخرى!
+      en: Yes, Mas. Tomorrow I'll talk again!
+new_words:
+  - word: mangan
+    pos: verb
+    ar_eg: ياكل (makan)
+    ar: يأكل (makan)
+    en: eat (makan)
+  - word: isih
+    pos: adverb
+    ar_eg: لسه (masih)
+    ar: ما زال (masih)
+    en: still (masih)
+  - word: nanging / ning
+    pos: conjunction
+    ar_eg: بس / لكن (tetapi)؛ في الشارع ning أو tapi
+    ar: لكن (tetapi)؛ وفي الشارع ning أو tapi
+    en: but (tetapi); street ning or tapi
+  - word: duwe
+    pos: verb
+    ar_eg: عنده / يملك (punya)
+    ar: يملك / عنده (punya)
+    en: have, own (punya)
+  - word: bener
+    pos: adjective
+    ar_eg: صح (benar)
+    ar: صحيح (benar)
+    en: right, true (benar)
+  - word: ngomong
+    pos: verb
+    ar_eg: يتكلم / يقول (bicara, bilang)
+    ar: يتكلم / يقول (bicara, bilang)
+    en: speak, say (bicara, bilang)
+  - word: kudu
+    pos: verb
+    ar_eg: لازم (harus)
+    ar: يجب (harus)
+    en: must, have to (harus)
+review:
+  status: draft
+  verified: false

@@ -23,6 +23,11 @@ fn text(s: &str) -> Answer {
     Answer::Text(s.into())
 }
 
+/// Most fixtures are Indonesian lessons.
+fn grade(ex: &Exercise, answer: &Answer, lang: UiLanguage) -> Grade {
+    super::grade(ex, answer, lang, "id")
+}
+
 #[test]
 fn fixtures_parse_and_validate() {
     for (yaml, id) in [(L01, "bipa1.u01.l01"), (L02, "bipa1.u01.l02")] {
@@ -142,6 +147,78 @@ fn grading_text_answers() {
     );
     // Empty answers are never right.
     assert_eq!(grade(d, &text("  ?"), EG), Grade::Wrong);
+}
+
+#[test]
+fn indonesian_answers_take_either_register() {
+    let ex = |kind| Exercise { id: "x".into(), kind, explain: None, words: vec![] };
+    let to_target = |answers: &[&str]| {
+        ex(ExerciseKind::Translate {
+            direction: Direction::ToTarget,
+            source_meaning: Some(Localized::default()),
+            source_text: None,
+            answers: answers.iter().map(|a| a.to_string()).collect(),
+            answers_meaning: None,
+        })
+    };
+    let t = to_target(&["Saya sudah makan, tetapi saya tidak lapar."]);
+    for given in [
+        "Saya udah makan, tapi saya nggak lapar.",
+        "saya udah makan tetapi saya tidak lapar",
+        "Saya sudah makan, tapi saya gak lapar",
+    ] {
+        assert_eq!(grade(&t, &text(given), EG), Grade::Correct, "{given}");
+    }
+    // A typo elsewhere is still one small slip.
+    assert!(matches!(grade(&t, &text("Saya udah makan, tapi saya nggak lapr"), EG), Grade::Almost { .. }));
+    // Twins are the same word, not synonyms: a different word stays wrong.
+    assert_eq!(grade(&t, &text("Saya belum makan, tapi saya nggak lapar"), EG), Grade::NeedsReview);
+
+    // #298: bipa1.u02.l02.e03 lists only the formal answer.
+    let l02_e03 = to_target(&["Saya bisa bahasa Indonesia sedikit."]);
+    assert_eq!(
+        grade(&l02_e03, &text("Aku bisa bahasa Indonesia dikit"), EG),
+        Grade::NeedsReview,
+        "aku is not a twin"
+    );
+    assert_eq!(grade(&l02_e03, &text("Saya bisa bahasa Indonesia dikit"), EG), Grade::Correct);
+
+    // A casual reference accepts the formal answer too.
+    let casual = to_target(&["Gimana kabarnya?"]);
+    assert_eq!(grade(&casual, &text("Bagaimana kabarnya?"), EG), Grade::Correct);
+
+    // Tiles: the sentence built with "nggak" and "aja" matches a formal answer.
+    let build = ex(ExerciseKind::BuildSentence {
+        source: Localized::default(),
+        answer: "Saya tidak mau, saya di rumah saja.".into(),
+        alternatives: vec![],
+        distractors: vec!["nggak".into(), "aja".into()],
+    });
+    assert_eq!(grade(&build, &text("Saya nggak mau saya di rumah aja"), EG), Grade::Correct);
+
+    // Fill-blank chips: either form of the word is the right chip.
+    let blank = ex(ExerciseKind::FillBlank {
+        sentence: "Saya ___ makan.".into(),
+        meaning: Localized::default(),
+        options: vec!["udah".into(), "belum".into()],
+        answers: vec!["sudah".into()],
+    });
+    assert_eq!(grade(&blank, &Answer::Choice(0), EG), Grade::Correct);
+    assert_eq!(grade(&blank, &Answer::Choice(1), EG), Grade::Wrong);
+
+    // Dictation is writing down what was said: the register heard is the answer.
+    let dict = ex(ExerciseKind::Dictation {
+        text: "Saya udah makan.".into(),
+        audio: None,
+        meaning: Localized::default(),
+    });
+    assert_eq!(grade(&dict, &text("saya udah makan"), EG), Grade::Correct);
+    assert_ne!(grade(&dict, &text("saya sudah makan"), EG), Grade::Correct);
+
+    // Javanese keeps its own words: "aja" there is "don't", not "saja".
+    let jv = to_target(&["Aja mangan."]);
+    assert_ne!(super::grade(&jv, &text("Saja mangan."), EG, "jv"), Grade::Correct);
+    assert_eq!(super::grade(&jv, &text("Aja mangan"), EG, "jv"), Grade::Correct);
 }
 
 #[test]

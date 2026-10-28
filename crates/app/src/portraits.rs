@@ -2,9 +2,9 @@
 //! by the character's cast id (`content/cast.yaml`), plus an expression for
 //! the people you talk to, and build.rs embeds every export, so a new batch
 //! needs no code change. Speaker labels ("Kak Tiara") find their cast id
-//! through the registry; anyone without a portrait keeps their initial.
+//! through the registry; anyone without a portrait wears a monogram.
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::sync::LazyLock;
 
 use base64::Engine as _;
@@ -63,6 +63,22 @@ static REGISTRY: LazyLock<Cast> = LazyLock::new(|| {
     })
 });
 
+/// Forms of address that come before a name; they keep their own meaning.
+const HONORIFICS: &[&str] = &[
+    "bu", "ibu", "pak", "bapak", "mas", "mbak", "kak", "dik", "om", "tante", "mbah", "bude", "pakde",
+    "budhe", "pakdhe", "bulik", "paklik", "lik", "eyang", "cak", "ning",
+];
+
+static NAME_WORDS: LazyLock<HashSet<String>> = LazyLock::new(|| {
+    REGISTRY.name_words().map(str::to_lowercase).filter(|w| !HONORIFICS.contains(&w.as_str())).collect()
+});
+
+/// The word is part of a cast member's name ("Gadis", "Murni"), not an
+/// honorific: written with a capital, it's the character, not "girl".
+pub fn is_cast_name(word: &str) -> bool {
+    NAME_WORDS.contains(&word.to_lowercase())
+}
+
 /// The cast id behind a speaker label or persona name, if the character is
 /// in the registry.
 pub fn cast_id(speaker: &str) -> Option<&'static str> {
@@ -102,6 +118,67 @@ pub fn Face(src: &'static str, class: &'static str) -> Element {
     }
 }
 
+/// Tints for monograms, from tokens already contrast-checked against
+/// surfaces in every theme (crates/core/src/theme.rs).
+const MONOGRAM_TINTS: &[&str] = &["sawah", "wc-noun", "gold", "wc-adj", "wp-prefix", "wp-suffix", "indigo"];
+
+/// A small sign for speakers who are a role, not a person (`roles:` in
+/// content/cast.yaml): the warung seller, the doctor, the driver.
+fn role_glyph(speaker: &str) -> Option<&'static str> {
+    Some(match speaker.trim().to_lowercase().as_str() {
+        "penjual" | "bakul" => "🛒",
+        "pelayan" => "🍽",
+        "dokter" => "🩺",
+        "sopir" => "🚗",
+        "guru" => "📚",
+        "petugas" => "🪪",
+        "resepsionis" => "🛎",
+        "pembawa acara" | "penyiar" => "🎙",
+        "narrator" => "📖",
+        _ => return None,
+    })
+}
+
+/// What a speaker without a portrait wears: a role glyph, else the initial
+/// of their name past any honorific ("Bu Yani" → "Y"), in a tint picked by
+/// the name, so the same person looks the same in every lesson (#312).
+pub fn monogram(speaker: &str) -> (String, &'static str) {
+    let tint = {
+        // FNV-1a: stable across builds and platforms, unlike the std hasher.
+        let h = speaker
+            .trim()
+            .to_lowercase()
+            .bytes()
+            .fold(0x811c_9dc5_u32, |h, b| (h ^ b as u32).wrapping_mul(0x0100_0193));
+        MONOGRAM_TINTS[h as usize % MONOGRAM_TINTS.len()]
+    };
+    if let Some(glyph) = role_glyph(speaker) {
+        return (glyph.to_string(), tint);
+    }
+    let words: Vec<&str> = speaker.split_whitespace().collect();
+    let name = words.iter().find(|w| !HONORIFICS.contains(&w.to_lowercase().as_str())).or(words.first());
+    let initial = name.and_then(|w| w.chars().next()).map(|c| c.to_uppercase().collect()).unwrap_or_default();
+    (initial, tint)
+}
+
+/// A speaker's portrait, or their monogram until Codex draws them: every
+/// line of dialogue has a face. Decorative; the name next to it speaks.
+#[component]
+pub fn SpeakerFace(speaker: String, class: &'static str) -> Element {
+    if let Some(src) = of(&speaker, Mood::Neutral) {
+        return rsx! { Face { src, class } };
+    }
+    let (mark, tint) = monogram(&speaker);
+    rsx! {
+        span {
+            class: "face monogram {class}",
+            style: "--mono: var(--{tint})",
+            aria_hidden: "true",
+            "{mark}"
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -131,5 +208,24 @@ mod tests {
                 .collect();
         assert!(faces.len() == 5 || PORTRAITS.iter().all(|(n, _)| !n.starts_with("bu-siti")));
         assert!(of("Nobody", Mood::Neutral).is_none());
+    }
+
+    #[test]
+    fn faceless_speakers_get_a_monogram() {
+        assert_eq!(monogram("Bu Yani").0, "Y");
+        assert_eq!(monogram("Pak Hasan").0, "H");
+        assert_eq!(monogram("Pakdhe Darmo").0, "D");
+        assert_eq!(monogram("Mbah").0, "M", "an honorific alone keeps its own initial");
+        assert_eq!(monogram("ilham").0, "I");
+        assert_eq!(monogram("Penjual").0, "🛒");
+        assert_eq!(monogram("Pembawa acara").0, "🎙");
+        assert_eq!(monogram("").0, "");
+        // The same person, the same tint, wherever they speak.
+        assert_eq!(monogram("Bu Retno").1, monogram("bu retno ").1);
+        let tints: HashSet<_> = ["Pak Hasan", "Bu Yani", "Kak Selvi", "Pak Sastro", "Bu Retno", "Pak Elias"]
+            .into_iter()
+            .map(|s| monogram(s).1)
+            .collect();
+        assert!(tints.len() >= 3, "names spread over the tints: {tints:?}");
     }
 }

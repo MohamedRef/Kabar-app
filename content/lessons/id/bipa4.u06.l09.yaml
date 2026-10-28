@@ -1,0 +1,240 @@
+schema: kabar.lesson/v1
+id: bipa4.u06.l09
+language: id
+title: Arah mata angin
+can_do:
+  ar_eg: 'توصف مكان واتجاه: شمال وجنوب وشرق وغرب، وعلى طول الطريق.'
+  ar: 'أن تصف مكانًا واتجاهًا: الشمال والجنوب والشرق والغرب وعلى امتداد الطريق.'
+  en: 'Describe places and directions: north, south, east, west and along the road.'
+slides:
+  - title: Utara, selatan, timur, barat
+    body:
+      ar_eg: |
+        arah = اتجاه (arah ke pantai = اتجاه الشط). utara = شمال، selatan = جنوب، timur = شرق، barat = غرب.
+        sepanjang = على طول (sepanjang jalan = على طول الطريق، sepanjang hari = طول اليوم).
+        bentuk = شكل (berbentuk = شكله زي)، benda = حاجة، جسم (benda kuno = قطعة أثرية).
+      ar: |
+        arah = الاتجاه (arah ke pantai = نحو الشاطئ). utara = الشمال، selatan = الجنوب، timur = الشرق، barat = الغرب.
+        sepanjang = على امتداد (sepanjang jalan = على طول الطريق، sepanjang hari = طوال اليوم).
+        bentuk = الشكل (berbentuk = على شكل)، benda = الشيء أو الجسم (benda kuno = قطعة أثرية).
+      en: |
+        arah = direction (arah ke pantai = towards the beach). utara = north, selatan = south, timur = east, barat = west.
+        sepanjang = along, all through (sepanjang jalan = all along the road, sepanjang hari = all day).
+        bentuk = shape, form (berbentuk = shaped like), benda = object, thing (benda kuno = antique).
+    examples:
+      - text: Palu terletak di sebelah barat Sulawesi Tengah.
+        ar_eg: بالو في غرب سولاويزي الوسطى.
+        ar: تقع بالو غرب سولاويسي الوسطى.
+        en: Palu lies in the west of Central Sulawesi.
+      - text: Sepanjang jalan ke Malino ada pohon pinus.
+        ar_eg: على طول الطريق لمالينو فيه شجر صنوبر.
+        ar: على امتداد الطريق إلى مالينو أشجار صنوبر.
+        en: There are pine trees all along the road to Malino.
+      - text: Bentuk teluk itu seperti huruf U.
+        ar_eg: شكل الخليج ده زي حرف U.
+        ar: شكل ذلك الخليج كحرف U.
+        en: That bay is shaped like the letter U.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: utara
+        ar_eg: شمال
+        ar: شمال
+        en: north
+      - text: selatan
+        ar_eg: جنوب
+        ar: جنوب
+        en: south
+      - text: timur
+        ar_eg: شرق
+        ar: شرق
+        en: east
+      - text: barat
+        ar_eg: غرب
+        ar: غرب
+        en: west
+    words: [utara, selatan, timur, barat]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: arah
+        ar_eg: اتجاه
+        ar: اتجاه
+        en: direction
+      - text: sepanjang
+        ar_eg: على طول
+        ar: على امتداد
+        en: along
+      - text: bentuk
+        ar_eg: شكل
+        ar: شكل
+        en: shape
+      - text: benda
+        ar_eg: حاجة، جسم
+        ar: شيء
+        en: object
+    words: [arah, sepanjang, bentuk, benda]
+  - id: e03
+    type: listen
+    text: Matahari terbit di timur.
+    question:
+      ar_eg: الشمس بتطلع منين؟
+      ar: من أين تشرق الشمس؟
+      en: Where does the sun rise?
+    options: [الشرق, الغرب, الشمال]
+    answer: 0
+    meaning:
+      ar_eg: الشمس بتطلع من الشرق.
+      ar: تشرق الشمس من الشرق.
+      en: The sun rises in the east.
+    words: [timur]
+  - id: e04
+    type: fill_blank
+    sentence: Matahari terbenam di ___.
+    meaning:
+      ar_eg: الشمس بتغرب في ___.
+      ar: تغرب الشمس في ___.
+      en: The sun sets in the ___.
+    options: [barat, utara, timur]
+    answers: [barat]
+    words: [barat, utara, timur]
+    explain:
+      ar_eg: الشمس بتغرب في barat (الغرب). utara = الشمال، وtimur = الشرق، ومنه بتطلع.
+      ar: تغرب الشمس في barat (الغرب). أما utara فالشمال، وtimur الشرق ومنه تشرق.
+      en: The sun sets in the barat (west). utara is north, and timur is east, where it rises.
+  - id: e05
+    type: multiple_choice
+    question: Maaf, Pak, ___ ke pantai lewat mana?
+    options: [arah, bentuk, benda]
+    answer: 0
+    explain:
+      ar_eg: arah = اتجاه، وانت بتسأل عن الطريق. bentuk = شكل، وbenda = حاجة.
+      ar: arah = الاتجاه، فأنت تسأل عن الطريق. أما bentuk فالشكل، وbenda الشيء.
+      en: arah means direction, which you're asking for. bentuk is shape, and benda is an object.
+    words: [arah, bentuk, benda]
+  - id: e06
+    type: fill_blank
+    sentence: Kami jalan kaki ___ pantai sampai sore.
+    meaning:
+      ar_eg: مشينا ___ الشط لحد العصر.
+      ar: مشينا ___ الشاطئ حتى العصر.
+      en: We walked ___ the beach until the afternoon.
+    options: [sepanjang, selatan, benda]
+    answers: [sepanjang]
+    words: [sepanjang, selatan, benda]
+    explain:
+      ar_eg: sepanjang pantai = على طول الشط. selatan = الجنوب، وbenda = حاجة، شيء.
+      ar: sepanjang pantai = على امتداد الشاطئ. أما selatan فالجنوب، وbenda شيء.
+      en: sepanjang pantai means along the beach. selatan is south and benda is an object.
+  - id: e07
+    type: multiple_choice
+    question: Di museum itu ada banyak ___ kuno dari zaman raja.
+    options: [benda, arah, barat]
+    answer: 0
+    explain:
+      ar_eg: benda kuno = قطع أثرية. arah = اتجاه، وbarat = غرب.
+      ar: benda kuno = القطع الأثرية. أما arah فالاتجاه، وbarat الغرب.
+      en: benda kuno means antiques. arah is direction, and barat is west.
+    words: [benda, arah, barat]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: شكل البيت ده زي المركب.
+      ar: شكل هذا البيت كالقارب.
+      en: This house is shaped like a boat.
+    answer: Bentuk rumah ini seperti perahu.
+    distractors: [benda, arah]
+    words: [bentuk, benda, arah]
+    explain:
+      ar_eg: bentuk rumah = شكل البيت، وبعدها seperti perahu. benda = حاجة، وarah = اتجاه، ومالهمش مكان هنا.
+      ar: bentuk rumah = شكل البيت، وبعدها seperti perahu. أما benda فشيء، وarah اتجاه، ولا مكان لهما هنا.
+      en: bentuk rumah is the house's shape, then seperti perahu. benda is an object and arah a direction; they don't belong here.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Toraja ada di sebelah utara Makassar.
+    answers_meaning:
+      ar_eg: [توراجا في شمال ماكاسار, توراجا موجودة شمال ماكاسار]
+      ar: [تقع توراجا شمال ماكاسار, توراجا شمالي ماكاسار]
+      en: [Toraja is north of Makassar, Toraja lies to the north of Makassar]
+    words: [utara]
+  - id: e10
+    type: speaking
+    text: Pantai itu ada di selatan, tidak jauh dari kota.
+    meaning:
+      ar_eg: الشط ده في الجنوب، مش بعيد عن المدينة.
+      ar: ذلك الشاطئ في الجنوب، غير بعيد عن المدينة.
+      en: That beach is in the south, not far from town.
+    words: [selatan, arah, sepanjang]
+dialogue:
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, kita ke Pantai Tanjung Karang. Arahnya ke utara.
+      ar_eg: يا محمد، هنروح شط تانجونج كارانج. الاتجاه للشمال.
+      ar: يا محمد، سنذهب إلى شاطئ تانجونغ كارانغ، واتجاهه شمالًا.
+      en: Mohamed, we're going to Tanjung Karang Beach. It's to the north.
+    - speaker: Mohamed
+      text: Jauh, Mas? Palu ada di sebelah selatan teluk, kan?
+      ar_eg: بعيد؟ بالو في جنوب الخليج، صح؟
+      ar: هل هو بعيد؟ بالو جنوب الخليج، أليس كذلك؟
+      en: Is it far? Palu is at the south end of the bay, right?
+    - speaker: Mas Rizal
+      text: Iya. Sepanjang jalan kita bisa lihat laut di sebelah barat.
+      ar_eg: أيوه. وعلى طول الطريق هنشوف البحر من ناحية الغرب.
+      ar: نعم. وعلى امتداد الطريق سنرى البحر غربًا.
+      en: Yes. All along the road we can see the sea to the west.
+    - speaker: Mohamed
+      text: Bentuk teluknya bagus sekali dari atas gunung!
+      ar_eg: شكل الخليج حلو أوي من فوق الجبل!
+      ar: شكل الخليج جميل جدًا من أعلى الجبل!
+      en: The bay looks beautiful from up the mountain!
+    - speaker: Mas Rizal
+      text: 'Bener. Jangan lupa bawa benda penting: topi dan air minum.'
+      ar_eg: 'صح. ماتنساش تجيب الحاجات المهمة: برنيطة ومية.'
+      ar: 'صحيح. لا تنسَ الأشياء المهمة: قبعة وماء للشرب.'
+      en: 'Right. Don''t forget the important things: a hat and drinking water.'
+new_words:
+  - word: arah
+    pos: noun
+    ar_eg: اتجاه
+    ar: اتجاه
+    en: direction
+  - word: utara
+    pos: noun
+    ar_eg: شمال
+    ar: شمال
+    en: north
+  - word: selatan
+    pos: noun
+    ar_eg: جنوب
+    ar: جنوب
+    en: south
+  - word: timur
+    pos: noun
+    ar_eg: شرق
+    ar: شرق
+    en: east
+  - word: barat
+    pos: noun
+    ar_eg: غرب
+    ar: غرب
+    en: west
+  - word: sepanjang
+    pos: prep
+    ar_eg: على طول (sepanjang jalan)
+    ar: على امتداد (sepanjang jalan)
+    en: along, throughout
+  - word: bentuk
+    pos: noun
+    ar_eg: شكل
+    ar: شكل
+    en: shape, form
+  - word: benda
+    pos: noun
+    ar_eg: حاجة، جسم (benda kuno)
+    ar: شيء، جسم (benda kuno)
+    en: object, thing
+review:
+  status: draft
+  verified: false

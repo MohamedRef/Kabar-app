@@ -1,169 +1,251 @@
 schema: kabar.lesson/v1
 id: bipa6.u03.l09
 language: id
-title: Wawancara tokoh adat
+title: Harta dan kenangan
 can_do:
-  ar_eg: تعمل حوار باحترام مع كبير من كبار العادات وتسأله عن البيت واللقب والفنون.
-  ar: أن تحاور أحد كبار العُرف باحترام وتسأله عن البيت واللقب والفنون.
-  en: Interview a customary elder respectfully about the house, titles and arts.
+  ar_eg: تتكلم عن الورث والوصية والحداد، وتقارن بين المينانج والباتاك.
+  ar: أن تتحدث عن الإرث والوصية والحداد، وتقارن بين المينانغ والباتاك.
+  en: Talk about inheritance, a will and mourning, and compare Minang and Batak custom.
 slides:
-  - title: Bertanya dengan sopan
+  - title: Waris dan wasiat
     body:
       ar_eg: |
-        الـ tokoh adat (كبير العادات) بيستاهل احترام. ابدأ بالأدب، واسأل أسئلة مفتوحة:
-        - Mohon maaf, Datuk, boleh saya bertanya tentang …? = لو سمحت يا داتوك، ممكن أسأل عن …؟
-        - Bagaimana adat mengatur …? = العادات بتنظم … إزاي؟
-        - Siapa pewaris …? = مين اللي بيورث …؟ (pewaris = الوريث)
-        وفي الآخر: Terima kasih atas waktu dan petuahnya, Datuk.
+        waris = ورث (ahli waris = الورثة؛ من وارث). wasiat = وصية (من وصية).
+        berkabung = في حداد. dikenang = بيتفتكر، بيتذكر بالخير (من kenang).
+        dusun = قرية صغيرة، نجع. peternak = مربّي مواشي (peternak sapi).
+        marga = اسم العيلة عند الباتاك، بييجي من الأب. etnis = عِرق، جماعة إثنية.
+        - في الشارع: aku / -ku = saya (أنا)، kebalik = terbalik (بالعكس).
       ar: |
-        للـ tokoh adat (كبير العُرف) حقّ الاحترام؛ فابدأ بأدب واسأل أسئلة مفتوحة:
-        - Mohon maaf, Datuk, boleh saya bertanya tentang …? = عذرًا يا داتوك، أيمكنني السؤال عن …؟
-        - Bagaimana adat mengatur …? = كيف ينظّم العُرف …؟
-        - Siapa pewaris …? = من وارث …؟ (pewaris = الوارث)
-        وفي الختام: Terima kasih atas waktu dan petuahnya, Datuk.
+        waris = إرث (ahli waris = الورثة؛ من وارث). wasiat = وصية.
+        berkabung = يحدّ، في حداد. dikenang = يُذكَر (بالخير) (من kenang).
+        dusun = قرية صغيرة، نجع. peternak = مربّي الماشية (peternak sapi).
+        marga = اسم العشيرة عند الباتاك، ينتقل من الأب. etnis = عِرق، جماعة إثنية.
+        - في كلام الشارع: aku / -ku = saya (أنا)، kebalik = terbalik (معكوس).
       en: |
-        A tokoh adat (customary elder) deserves respect. Open politely and ask open questions:
-        - Mohon maaf, Datuk, boleh saya bertanya tentang …? = Excuse me, Datuk, may I ask about …?
-        - Bagaimana adat mengatur …? = How does custom govern …?
-        - Siapa pewaris …? = Who is the heir to …? (pewaris = heir)
-        To close: Terima kasih atas waktu dan petuahnya, Datuk.
+        waris = inheritance (ahli waris = heirs; from Arabic وارث). wasiat = will, testament (Arabic وصية).
+        berkabung = to be in mourning. dikenang = to be remembered (from kenang).
+        dusun = hamlet. peternak = livestock farmer (peternak sapi).
+        marga = Batak clan name, passed from the father. etnis = ethnic group.
+        - On the street: aku / -ku = saya (I), kebalik = terbalik (the other way round).
+    examples:
+      - text: Sebelum meninggal, kakek menulis wasiat.
+        ar_eg: قبل ما جدي يموت، كتب وصية.
+        ar: كتب الجد وصيته قبل وفاته.
+        en: Before he died, grandfather wrote a will.
+      - text: Seluruh dusun berkabung selama tiga hari.
+        ar_eg: النجع كله كان في حداد تلات أيام.
+        ar: حدّت القرية كلها ثلاثة أيام.
+        en: The whole hamlet mourned for three days.
+      - text: Orang Batak mewarisi marga dari ayah.
+        ar_eg: الباتاك بيورثوا اسم العشيرة من الأب.
+        ar: يرث الباتاك اسم العشيرة عن الأب.
+        en: Batak people inherit their marga from their father.
 exercises:
   - id: e01
+    type: match_pairs
+    pairs:
+      - text: waris
+        ar_eg: ورث
+        ar: إرث
+        en: inheritance
+      - text: wasiat
+        ar_eg: وصية
+        ar: وصية
+        en: will
+      - text: berkabung
+        ar_eg: في حداد
+        ar: يحدّ
+        en: to mourn
+      - text: dikenang
+        ar_eg: بيتفتكر
+        ar: يُذكَر
+        en: to be remembered
+    words: [waris, wasiat, berkabung, dikenang]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: dusun
+        ar_eg: نجع
+        ar: قرية صغيرة
+        en: hamlet
+      - text: peternak
+        ar_eg: مربّي مواشي
+        ar: مربّي ماشية
+        en: livestock farmer
+      - text: marga
+        ar_eg: اسم العشيرة (باتاك)
+        ar: اسم العشيرة
+        en: Batak clan name
+      - text: etnis
+        ar_eg: عِرق
+        ar: جماعة إثنية
+        en: ethnic group
+    words: [dusun, peternak, marga, etnis]
+  - id: e03
+    type: listen
+    text: Pak Amir dikenang sebagai peternak yang jujur.
+    question:
+      ar_eg: الناس فاكرة أمير إزاي؟
+      ar: كيف يتذكّر الناس أمير؟
+      en: How is Pak Amir remembered?
+    options: [بيتفتكر بالخير, اتنسى, اتسجن]
+    answer: 0
+    meaning:
+      ar_eg: الحاج أمير بيتفتكر إنه مربّي مواشي أمين.
+      ar: يُذكر السيد أمير مربّيًا للماشية أمينًا.
+      en: Pak Amir is remembered as an honest cattle farmer.
+    words: [dikenang, peternak]
+  - id: e04
+    type: fill_blank
+    sentence: Rumah gadang itu harta pusaka; tidak dibagi menurut hukum ___ Islam.
+    meaning:
+      ar_eg: الرومة جادانج دي إرث عيلة؛ ما بتتقسمش بقانون ___ الإسلامي.
+      ar: تلك الرومة غادانغ إرث عائلي؛ لا تُقسَّم وفق أحكام ___ الإسلامية.
+      en: That rumah gadang is clan heritage; it isn't divided under Islamic ___ law.
+    options: [waris, wasiat, etnis]
+    answers: [waris]
+    words: [waris, wasiat, etnis]
+    explain:
+      ar_eg: قانون الميراث = hukum waris. wasiat = وصية وetnis = عِرق، ومش اسم القانون.
+      ar: أحكام الإرث hukum waris؛ أمّا wasiat فوصيّة، وetnis عرق، ولا يُسمّى بهما القانون.
+      en: Inheritance law is hukum waris. wasiat is a will, and etnis an ethnic group.
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي سؤال مؤدب لكبير العادات؟
-      ar: أيّ سؤال مهذّب لكبير العُرف؟
-      en: Which is a polite question for a customary elder?
-    options:
-      - Kenapa adat ini aneh?
-      - Mohon maaf, Datuk, boleh saya bertanya tentang rumah gadang?
-      - Datuk, cepat jawab!
+      ar_eg: الورقة اللي حد بيكتب فيها هيعمل إيه بأملاكه بعد موته؟
+      ar: ما الوثيقة التي يكتب فيها المرء ما يُفعل بأملاكه بعد موته؟
+      en: The document saying what to do with your property after you die?
+    options: [marga, wasiat, dusun]
     answer: 1
-    words: [datuk, rumah gadang]
-  - id: e02
-    type: listen
-    text: Tokoh adat itu menjelaskan bahwa pewaris rumah gadang adalah anak perempuan.
-    question:
-      ar_eg: مين اللي بيورث البيت الكبير؟
-      ar: من يرث البيت الكبير؟
-      en: Who inherits the great house?
-    options:
-      - الابن الكبير.
-      - الخال.
-      - البنت.
-    answer: 2
-    words: [tokoh adat, pewaris]
-  - id: e03
+    explain:
+      ar_eg: wasiat = وصية، من العربي.
+      ar: wasiat = وصية، من العربية.
+      en: wasiat = will, from Arabic وصية.
+    words: [wasiat, marga, dusun]
+  - id: e06
     type: fill_blank
-    sentence: Siapa ___ gelar Datuk setelah Bapak?
+    sentence: Simatupang, Siregar, dan Nasution adalah nama ___ Batak.
     meaning:
-      ar_eg: مين اللي هيورث لقب داتوك بعد حضرتك؟
-      ar: من سيرث لقب داتوك بعدك؟
-      en: Who will inherit the Datuk title after you, sir?
-    options: [pewaris, pesilat, pemilik]
-    answers: [pewaris]
-    words: [pewaris]
-  - id: e04
+      ar_eg: سيماتوبانج وسيريجار وناسوتيون أسامي ___ باتاك.
+      ar: سيماتوبانغ وسيريغار وناسوتيون أسماء ___ باتاكية.
+      en: Simatupang, Siregar and Nasution are Batak ___ names.
+    options: [marga, peternak, dusun]
+    answers: [marga]
+    words: [marga, peternak, dusun]
+    explain:
+      ar_eg: "سيماتوبانج وسيريجار أسامي عشاير باتاك: marga. peternak = مربّي مواشي وdusun = قرية."
+      ar: سيماتوبانغ وسيريغار أسماء عشائر باتاك marga؛ أمّا peternak فمربّي ماشية، وdusun قرية.
+      en: Simatupang and Siregar are Batak clan names, marga. peternak is a herder, and dusun a hamlet.
+  - id: e07
+    type: multiple_choice
+    question: 'Medan adalah kota banyak ___: Batak, Melayu, Jawa, Tionghoa, dan India.'
+    options: [wasiat, berkabung, etnis]
+    answer: 2
+    explain:
+      ar_eg: etnis = جماعة إثنية، عِرق.
+      ar: etnis = جماعة إثنية.
+      en: etnis = ethnic group.
+    words: [etnis, wasiat, berkabung]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: العادات بتنظم تقسيم الورث إزاي؟
-      ar: كيف ينظّم العُرف تقسيم الميراث؟
-      en: How does custom govern the sharing of inheritance?
-    answer: Bagaimana adat mengatur pembagian warisan?
-    distractors: [lingkaran, dendang]
-    words: [adat, warisan]
-  - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: كبير العادات اتكلم عن وليمة تعيين الزعيم.
-      ar: تحدّث كبير العُرف عن وليمة تنصيب الزعيم.
-      en: The customary elder talked about the chief's installation feast.
-    answers:
-      - Tokoh adat itu bercerita tentang kenduri pelantikan penghulu.
-      - Tokoh adat itu berbicara tentang kenduri pelantikan penghulu.
-      - Tokoh adat bercerita tentang kenduri pelantikan penghulu.
-    words: [tokoh adat, kenduri, penghulu]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «pewaris» يعني مين؟
-      ar: من «pewaris»؟
-      en: Who is a "pewaris"?
-    options:
-      - الوريث.
-      - الضيف.
-      - المحرر.
-    answer: 0
-    words: [pewaris]
-  - id: e07
-    type: speaking
-    text: Terima kasih atas waktu dan petuahnya, Datuk.
-    meaning:
-      ar_eg: شكرًا على وقتك ونصايحك يا داتوك.
-      ar: شكرًا على وقتك ونصائحك يا داتوك.
-      en: Thank you for your time and your counsel, Datuk.
-    words: [datuk, petuah]
-  - id: e08
-    type: dictation
-    text: Kemenakan itu adalah pewaris gelar mamaknya.
-    meaning:
-      ar_eg: ابن الأخت ده هو وريث لقب خاله.
-      ar: ابن الأخت هذا هو وارث لقب خاله.
-      en: That nephew is the heir to his uncle's title.
-    words: [kemenakan, pewaris, mamak]
+      ar_eg: القرية كلها كانت في حداد على موت الشيخ.
+      ar: حدّت القرية كلها على وفاة الشيخ.
+      en: The whole village mourned the elder's death.
+    answer: Seluruh dusun berkabung atas kematian tetua adat.
+    distractors: [marga, waris]
+    words: [dusun, berkabung]
+    explain:
+      ar_eg: «القرية» = dusun و«حزنت على» = berkabung atas. marga وwaris مش في المعنى.
+      ar: «القرية» dusun و«حزنت على» berkabung atas؛ أمّا marga وwaris فليستا في المعنى.
+      en: "\"The village\" is dusun and \"mourned\" is berkabung atas. marga and waris aren't in the meaning."
   - id: e09
-    type: fill_blank
-    sentence: Menurut ___, randai harus diajarkan kepada anak muda.
-    meaning:
-      ar_eg: حسب كبير العادات، الرانداي لازم يتعلّم للشباب.
-      ar: بحسب كبير العُرف، ينبغي تعليم الرانداي للشباب.
-      en: According to the customary elder, randai must be taught to the young.
-    options: [tokoh adat, rangkiang, lingkaran]
-    answers: [tokoh adat]
-    words: [tokoh adat, randai]
+    type: translate
+    direction: from_target
+    source_text: Peternak itu dikenang oleh seluruh dusun.
+    answers_meaning:
+      ar_eg: [النجع كله فاكر مربّي المواشي ده, مربّي المواشي ده كل القرية بتفتكره]
+      ar: [تتذكّر القرية كلها ذلك المربّي, يذكر أهل القرية جميعًا ذلك المربّي]
+      en: [The whole hamlet remembers that farmer, That cattle farmer is remembered by the whole hamlet]
+    words: [peternak, dikenang, dusun]
   - id: e10
     type: speaking
-    text: Mohon maaf, Datuk, mengapa atap rumah gadang berbentuk gonjong?
+    text: Keluarga yang berkabung membaca wasiat ayahnya di depan semua ahli waris.
     meaning:
-      ar_eg: لو سمحت يا داتوك، ليه سقف البيت الكبير شكله زي القرون؟
-      ar: عذرًا يا داتوك، لماذا يتّخذ سقف البيت الكبير شكل القرون؟
-      en: Excuse me, Datuk, why is the great house's roof shaped in peaks?
-    words: [datuk, gonjong]
+      ar_eg: العيلة اللي في الحداد قرت وصية أبوهم قدام كل الورثة.
+      ar: قرأت الأسرة الحادّة وصية أبيها أمام جميع الورثة.
+      en: The mourning family read their father's will before all the heirs.
+    words: [berkabung, wasiat, waris]
 dialogue:
-  title: Bertamu ke rumah Datuk
   lines:
     - speaker: Mohamed
-      text: Mohon maaf, Datuk. Boleh saya bertanya tentang adat di kampung ini?
-      ar_eg: لو سمحت يا داتوك. ممكن أسأل عن العادات في البلد دي؟
-      ar: عذرًا يا داتوك، أيمكنني أن أسأل عن العُرف في هذه البلدة؟
-      en: Excuse me, Datuk. May I ask about the customs of this village?
+      text: Kalau orang Minang meninggal, siapa ahli warisnya?
+      ar_eg: لما حد مينانج يموت، مين الورثة؟
+      ar: إذا مات أحد المينانغ فمن ورثته؟
+      en: When a Minang person dies, who are the heirs?
     - speaker: Uda Rafi
-      text: Datuk senang, Mohamed. Silakan. Beliau tokoh adat paling tua di sini.
-      ar_eg: الداتوك مبسوط يا محمد. اتفضل. هو أكبر كبير عادات هنا.
-      ar: الداتوك مسرور يا محمد، تفضّل؛ فهو أكبر كبار العُرف هنا.
-      en: Datuk is happy to, Mohamed. Go ahead. He's the eldest customary leader here.
+      text: Harta yang dia cari sendiri ikut aturan waris Islam. Harta pusaka tetap di garis ibu.
+      ar_eg: الأملاك اللي كسبها بنفسه بتمشي على قواعد الورث الإسلامي. وإرث العيلة بيفضل في خط الأم.
+      ar: ما كسبه بنفسه يتبع قواعد الإرث الإسلامي، ويبقى الإرث العائلي في خط الأم.
+      en: What he earned himself follows the rules of Islamic inheritance. Clan heritage stays in the mother's line.
     - speaker: Mohamed
-      text: Siapa pewaris gelar Datuk nanti?
-      ar_eg: مين اللي هيورث لقب الداتوك بعدين؟
-      ar: من سيرث لقب الداتوك لاحقًا؟
-      en: Who will be the heir to the Datuk title?
+      text: Kata teman Batakku, marga turun dari ayah. Kebalik!
+      ar_eg: صاحبي الباتاك قال إن اسم العشيرة بييجي من الأب. بالعكس!
+      ar: قال صديقي الباتاكي إن اسم العشيرة يأتي من الأب. العكس تمامًا!
+      en: My Batak friend says the marga comes from the father. The opposite!
     - speaker: Uda Rafi
-      text: Kata Datuk, kemenakannya. Itu adat kami sejak dulu.
-      ar_eg: الداتوك بيقول ابن أخته. دي عادتنا من زمان.
-      ar: يقول الداتوك إنه ابن أخته، وهذا عُرفنا منذ القدم.
-      en: Datuk says his nephew. That's been our custom since long ago.
+      text: Betul. Sumatra punya banyak etnis, banyak tatanan.
+      ar_eg: مظبوط. سومطرة فيها عِرقيات كتير وأنظمة كتير.
+      ar: صحيح. في سومطرة جماعات إثنية كثيرة وأنظمة كثيرة.
+      en: Right. Sumatra has many ethnic groups, many systems.
+    - speaker: Mohamed
+      text: Dan semuanya mau dikenang dengan baik.
+      ar_eg: وكلهم عايزين الناس تفتكرهم بالخير.
+      ar: وكلهم يريدون أن يُذكَروا بخير.
+      en: And all of them want to be remembered well.
 new_words:
-  - word: tokoh adat
+  - word: waris
     pos: noun
-    ar_eg: كبير العادات
-    ar: كبير العُرف، زعيم تقليدي
-    en: customary elder
-  - word: pewaris
+    arabic: وارث
+    ar_eg: ورث (ahli waris = الورثة)
+    ar: إرث (ahli waris = الورثة)
+    en: inheritance (ahli waris = heirs)
+  - word: wasiat
     pos: noun
-    ar_eg: الوريث
-    ar: الوارث
-    en: heir
+    arabic: وصية
+    ar_eg: وصية
+    ar: وصية
+    en: will, testament
+  - word: berkabung
+    pos: verb
+    ar_eg: في حداد
+    ar: يحدّ على ميت
+    en: to be in mourning
+  - word: dikenang
+    pos: verb
+    ar_eg: بيتفتكر بالخير
+    ar: يُذكَر
+    en: to be remembered
+  - word: dusun
+    pos: noun
+    ar_eg: نجع، قرية صغيرة
+    ar: قرية صغيرة
+    en: hamlet, village
+  - word: peternak
+    pos: noun
+    ar_eg: مربّي مواشي
+    ar: مربّي ماشية
+    en: livestock farmer
+  - word: marga
+    pos: noun
+    ar_eg: اسم العشيرة عند الباتاك
+    ar: اسم العشيرة (عند الباتاك)
+    en: Batak clan name
+  - word: etnis
+    pos: noun
+    ar_eg: عِرق، جماعة إثنية
+    ar: جماعة إثنية
+    en: ethnic group
 review:
   status: draft
   verified: false

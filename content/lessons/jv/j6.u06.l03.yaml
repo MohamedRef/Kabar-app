@@ -1,192 +1,254 @@
 schema: kabar.lesson/v1
 id: j6.u06.l03
 language: jv
-title: Makna gandul
+title: Ing pondok
 can_do:
-  ar_eg: تفهم الشرح الجاوي كلمة بكلمة تحت النص العربي.
-  ar: أن تفهم الشرح الجاوي الحرفي تحت النص العربي.
-  en: Follow a word-by-word Javanese gloss under Arabic text.
+  ar_eg: 'تفهم الحياة في المعهد الديني: طرق التدريس، والمعنى المعلّق تحت الكلام العربي، والسكن.'
+  ar: 'أن تفهم الحياة في المعهد الديني: طرق التدريس، والمعنى المعلّق تحت النص العربي، والسكن.'
+  en: 'Follow life at a pesantren: the teaching methods, the hanging gloss under Arabic text, and the dormitory.'
 slides:
-  - title: Makna gandul
+  - title: Sorogan lan bandongan
     body:
       ar_eg: |
-        في الـ pesantren الطلبة بيقروا كتب عربي، وبيكتبوا تحت كل كلمة معناها بالجاوي، بالبيجون وبخط مايل كأنه «متعلّق». ده اسمه makna gandul.
-        مثلًا «الحمد لله» بتتشرح: utawi sakabehe puji iku kagungane Allah = «أما كل الحمد فهو ملك لله».
-        - utawi بتعلّم المبتدأ، ورمزها م.
-        - iku بتعلّم الخبر، ورمزها خ.
-        يعني النحو اللي اتعلمته في مصر، بس بالجاوي!
+        pondok = المعهد الديني (pondok pesantren)، asrama = السكن اللي بينام فيه الطلاب، pengasuh = شيخ المعهد والمسؤول عنه.
+        sorogan = الطالب بيقرا الكتاب لوحده قدام الشيخ. bandongan = الشيخ بيقرا والطلاب كلهم بيسمعوا ويكتبوا.
+        makna = معنى، gandul = متعلّق: makna gandul = المعنى المكتوب بالبيغون مايل تحت كل كلمة عربي.
+        tasbih = سبحة (ومن العربي «تسبيح»).
       ar: |
-        يقرأ طلاب الـ pesantren الكتب العربية، ويكتبون تحت كل كلمة معناها بالجاوية، بالبيجون وبخط مائل كأنه معلَّق، ويسمّى ذلك makna gandul.
-        فيُشرح «الحمد لله»: utawi sakabehe puji iku kagungane Allah = «أما كل الحمد فهو ملك لله».
-        - utawi علامة المبتدأ، ورمزها م.
-        - iku علامة الخبر، ورمزها خ.
-        فهو النحو الذي تعرفه، لكن بالجاوية!
+        pondok = المعهد الديني (pondok pesantren)، asrama = سكن الطلاب، pengasuh = شيخ المعهد والقائم عليه.
+        sorogan = يقرأ الطالب الكتاب منفردًا أمام الشيخ. bandongan = يقرأ الشيخ ويستمع الطلاب جميعًا ويكتبون.
+        makna = معنى، gandul = معلّق: makna gandul = المعنى المكتوب بالبيغون مائلًا تحت كل كلمة عربية.
+        tasbih = مسبحة (من «تسبيح»).
       en: |
-        At a pesantren, students read Arabic books and write the Javanese meaning under each word, in Pegon, slanting as if it "hangs". This is makna gandul.
-        «الحمد لله» is glossed: utawi sakabehe puji iku kagungane Allah = "as for all praise, it belongs to God".
-        - utawi marks the mubtada (subject), abbreviated م.
-        - iku marks the khabar (predicate), abbreviated خ.
-        It's the Arabic grammar you learned at school, in Javanese!
-    grammar: jv.pegon.basics
+        pondok = Islamic boarding school (pondok pesantren), asrama = dormitory, pengasuh = the kyai who heads the pesantren.
+        sorogan = a student reads the book alone before the teacher. bandongan = the teacher reads while many students listen and write.
+        makna = meaning, gandul = hanging: makna gandul = the Pegon gloss written slanting under each Arabic word.
+        tasbih = prayer beads (from Arabic تسبيح).
     examples:
-      - text: اوتاوي (utawi)
-        ar_eg: علامة المبتدأ — م
-        ar: علامة المبتدأ — م
-        en: marks the mubtada — م
-      - text: ايكو (iku)
-        ar_eg: علامة الخبر — خ
-        ar: علامة الخبر — خ
-        en: marks the khabar — خ
+      - text: Santri turu ing asrama pondok.
+        ar_eg: الطلاب بيناموا في سكن المعهد.
+        ar: ينام الطلاب في سكن المعهد.
+        en: The students sleep in the pesantren dormitory.
+      - text: Ing bandongan, santri nulis makna gandul.
+        ar_eg: في البندونغان، الطلاب بيكتبوا المعنى المعلّق.
+        ar: في البندونغان يكتب الطلاب المعنى المعلّق.
+        en: In bandongan, students write the hanging gloss.
+      - text: Pengasuh pondok maca kitab.
+        ar_eg: شيخ المعهد بيقرا الكتاب.
+        ar: يقرأ شيخ المعهد الكتاب.
+        en: The head of the pesantren reads the book.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: makna gandul
-        ar_eg: الشرح الجاوي «المتعلّق» تحت النص العربي
-        ar: الشرح الجاوي المعلَّق تحت النص العربي
-        en: the "hanging" Javanese gloss under Arabic text
-      - text: utawi
-        ar_eg: علامة المبتدأ (م)
-        ar: علامة المبتدأ (م)
-        en: marks the mubtada (م)
-      - text: iku
-        ar_eg: علامة الخبر (خ)
-        ar: علامة الخبر (خ)
-        en: marks the khabar (خ)
-      - text: kitab
-        ar_eg: كتاب (ديني)
-        ar: كتاب (ديني)
-        en: (religious) book
-    words: [makna gandul, utawi, kitab]
+      - text: pondok
+        ar_eg: معهد ديني
+        ar: معهد ديني
+        en: pesantren
+      - text: sorogan
+        ar_eg: قراية فردية قدام الشيخ
+        ar: قراءة فردية أمام الشيخ
+        en: one-to-one reading
+      - text: bandongan
+        ar_eg: درس جماعي
+        ar: درس جماعي
+        en: group lecture
+      - text: gandul
+        ar_eg: متعلّق
+        ar: معلّق
+        en: hanging
+    words: [pondok, sorogan, bandongan, gandul]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: utawi رمزها إيه في الـ makna gandul؟
-      ar: ما رمز utawi في الـ makna gandul؟
-      en: Which symbol stands for utawi in makna gandul?
-    options: [خ, م, ف]
-    answer: 1
-    explain:
-      ar_eg: utawi بتعلّم المبتدأ، فرمزها م. وiku للخبر، رمزها خ.
-      ar: utawi علامة المبتدأ فرمزها م، وiku علامة الخبر فرمزها خ.
-      en: utawi marks the mubtada, so م; iku marks the khabar, so خ.
-    words: [utawi, makna gandul]
+    type: match_pairs
+    pairs:
+      - text: makna
+        ar_eg: معنى
+        ar: معنى
+        en: meaning
+      - text: tasbih
+        ar_eg: سبحة
+        ar: مسبحة
+        en: prayer beads
+      - text: pengasuh
+        ar_eg: شيخ المعهد
+        ar: شيخ المعهد
+        en: head of a pesantren
+      - text: asrama
+        ar_eg: سكن الطلاب
+        ar: سكن الطلاب
+        en: dormitory
+    words: [makna, tasbih, pengasuh, asrama]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "اقرا: اوتاوي"
-      ar: "اقرأ: اوتاوي"
-      en: "Read: اوتاوي"
-    options: [utawi, utami, otawa]
+    type: listen
+    text: Santri turu ing asrama pondok.
+    question:
+      ar_eg: الطلاب بيناموا فين؟
+      ar: أين ينام الطلاب؟
+      en: Where do the students sleep?
+    options: [الطلاب بيناموا في سكن المعهد, الطلاب بيقروا في الجامع, الطلاب بياكلوا في البيت]
     answer: 0
-    words: [utawi]
+    meaning:
+      ar_eg: الطلاب بيناموا في سكن المعهد.
+      ar: ينام الطلاب في سكن المعهد.
+      en: The students sleep in the pesantren dormitory.
+    words: [asrama, pondok]
   - id: e04
     type: fill_blank
-    sentence: Utawi sakabehe puji ___ kagungane Allah.
+    sentence: Ing ___, santri maca kitab dhewe ing ngarepe kyai.
     meaning:
-      ar_eg: أما كل الحمد فهو ملك لله. (كلمة الخبر ناقصة)
-      ar: أما كل الحمد فهو ملك لله. (علامة الخبر ناقصة)
-      en: As for all praise, it belongs to God. (The khabar marker is missing.)
-    options: [utawi, iku, ing]
-    answers: [iku]
-    words: [makna gandul]
+      ar_eg: في الـ___، الطالب بيقرا الكتاب لوحده قدام الشيخ.
+      ar: في ___ يقرأ الطالب الكتاب وحده أمام الشيخ.
+      en: In ___, a student reads the book alone in front of the kyai.
+    options: [sorogan, bandongan, tasbih]
+    answers: [sorogan]
+    words: [sorogan, bandongan, tasbih]
+    explain:
+      ar_eg: sorogan = الطالب بيقرا لوحده قدّام الشيخ. bandongan = درس جماعي، وtasbih = سبحة.
+      ar: sorogan قراءة الطالب منفردًا أمام الشيخ. أما bandongan فدرس جماعي وtasbih سبحة.
+      en: sorogan is a student reading alone before the kyai. bandongan is the group class and tasbih is prayer beads.
   - id: e05
-    type: listen
-    text: Utawi sakabehe puji iku kagungane Allah.
-    question:
-      ar_eg: ده makna gandul لأنهي عبارة عربية؟
-      ar: هذا makna gandul لأي عبارة عربية؟
-      en: This is the makna gandul of which Arabic phrase?
-    options: [بسم الله, سبحان الله, الحمد لله]
-    answer: 2
-    meaning:
-      ar_eg: أما كل الحمد فهو ملك لله.
-      ar: أما كل الحمد فهو ملك لله.
-      en: As for all praise, it belongs to God.
-    words: [makna gandul, utawi]
-  - id: e06
     type: multiple_choice
     question_meaning:
-      ar_eg: الكلمات العربية الأصل في البيجون غالبًا بتتكتب إزاي؟ اختار kitab.
-      ar: كيف تُكتب الألفاظ العربية الأصل في البيجون غالبًا؟ اختر kitab.
-      en: Arabic loanwords usually keep their Arabic spelling in Pegon. Pick kitab.
-    options: [كيتاب, كيتب, كتاب]
-    answer: 2
+      ar_eg: لما الشيخ يقرا والطلاب كلهم يسمعوا ويكتبوا، ده اسمه …
+      ar: حين يقرأ الشيخ ويستمع الطلاب جميعًا ويكتبون، يسمّى ذلك …
+      en: When the kyai reads and all the students listen and write, it's called …
+    options: [pengasuh, bandongan, sorogan]
+    answer: 1
     explain:
-      ar_eg: "الكلمات العربية الأصل غالبًا بتفضل بإملاها العربي: كتاب."
-      ar: "يبقى الدخيل العربي غالبًا بإملائه الأصلي: كتاب."
-      en: "Arabic loanwords usually keep their Arabic spelling: كتاب."
-    words: [kitab]
+      ar_eg: bandongan = درس جماعي؛ sorogan = قراية فردية.
+      ar: bandongan = درس جماعي؛ sorogan = قراءة فردية.
+      en: bandongan = group lecture; sorogan = one-to-one reading.
+    words: [pengasuh, bandongan, sorogan]
+  - id: e06
+    type: fill_blank
+    sentence: Santri nulis ___ gandul ing sangisore tulisan Arab.
+    meaning:
+      ar_eg: الطلاب بيكتبوا الـ___ المعلّق تحت الكتابة العربي.
+      ar: يكتب الطلاب ___ المعلّق تحت النص العربي.
+      en: Students write the hanging ___ under the Arabic text.
+    options: [makna, asrama, pondok]
+    answers: [makna]
+    words: [makna, asrama, pondok]
+    explain:
+      ar_eg: makna gandul = المعنى المعلّق تحت السطر العربي. asrama = سكن وpondok = معهد.
+      ar: makna gandul المعنى المعلّق تحت السطر العربي. أما asrama فسكن وpondok معهد.
+      en: makna gandul is the hanging gloss under the Arabic. asrama is a dorm and pondok is the pesantren.
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: اكو ماچا كتاب"
-      ar: "اكتب بالحروف اللاتينية: اكو ماچا كتاب"
-      en: "Write in Latin letters: اكو ماچا كتاب"
-    answers: ["Aku maca kitab.", aku maca kitab]
+    type: multiple_choice
+    question: Simbah dzikir nganggo ___.
+    options: [tasbih, gandul, pengasuh]
+    answer: 0
     explain:
-      ar_eg: اكو = aku، ماچا = maca (چ = c)، وكتاب = kitab بإملاها العربي. يعني «أنا بقرا كتاب».
-      ar: "اكو = aku، وماچا = maca، وكتاب = kitab بإملائها العربي: «أقرأ كتابًا»."
-      en: "اكو = aku, ماچا = maca (چ = c), and كتاب = kitab in its Arabic spelling: \"I'm reading a book.\""
-    words: [kitab]
+      ar_eg: tasbih = سبحة.
+      ar: tasbih = مسبحة.
+      en: tasbih = prayer beads.
+    words: [tasbih, gandul, pengasuh]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: أما كل الحمد فهو ملك لله. (makna gandul لـ «الحمد لله»)
-      ar: أما كل الحمد فهو ملك لله. (makna gandul لـ «الحمد لله»)
-      en: As for all praise, it belongs to God. (makna gandul of «الحمد لله»)
-    answer: Utawi sakabehe puji iku kagungane Allah.
-    distractors: [ing]
-    words: [utawi, makna gandul]
+      ar_eg: شيخ المعهد بيقرا الكتاب.
+      ar: يقرأ شيخ المعهد الكتاب.
+      en: The head of the pesantren reads the book.
+    answer: Pengasuh pondok maca kitab.
+    distractors: [asrama, tasbih]
+    words: [pengasuh, pondok]
+    explain:
+      ar_eg: pengasuh pondok = شيخ المعهد. asrama = سكن وtasbih = سبحة، ومش في المعنى.
+      ar: pengasuh pondok شيخ المعهد. أما asrama (سكن) وtasbih (سبحة) فليستا في المعنى.
+      en: pengasuh pondok is the head of the pesantren. asrama (dorm) and tasbih (beads) aren't in the meaning.
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Makna gandul ditulis nganggo Pegon.
+    answers_meaning:
+      ar_eg: [المعنى المعلّق بيتكتب بالبيغون, المعنى المعلّق مكتوب بحروف بيغون]
+      ar: [يُكتب المعنى المعلّق بالبيغون, المعنى المعلّق مكتوب بحروف البيغون]
+      en: [The hanging gloss is written in Pegon, Makna gandul is written in Pegon script]
+    words: [makna, gandul]
+  - id: e10
     type: speaking
-    text: Utawi sakabehe puji iku kagungane Allah.
+    text: Aku seneng sorogan karo pengasuh.
     meaning:
-      ar_eg: أما كل الحمد فهو ملك لله.
-      ar: أما كل الحمد فهو ملك لله.
-      en: As for all praise, it belongs to God.
-    words: [utawi]
+      ar_eg: بحب أقرا قدام شيخ المعهد لوحدي.
+      ar: أحبّ القراءة منفردًا أمام شيخ المعهد.
+      en: I like reading one-to-one with the head of the pesantren.
+    words: [sorogan, pengasuh]
 dialogue:
-  title: Ngaji kitab
   lines:
     - speaker: Gus Hanif
-      text: Mas, menika makna gandul. Tegesipun dipun serat ing ngandhap.
-      ar_eg: يا محمد، ده الـ makna gandul. المعنى بيتكتب تحت.
-      ar: يا محمد، هذا الـ makna gandul. يُكتب المعنى تحت.
-      en: This is makna gandul. The meaning is written underneath.
+      text: Sugeng rawuh ing pondok kula, Mas Mohamed.
+      ar_eg: أهلًا بيك في معهدنا يا محمد.
+      ar: مرحبًا بك في معهدنا يا محمد.
+      en: Welcome to our pesantren, Mohamed.
     - speaker: Mohamed
-      text: Utawi menika tandha mubtada, nggih?
-      ar_eg: utawi دي علامة المبتدأ، صح؟
-      ar: utawi علامة المبتدأ، أليس كذلك؟
-      en: Utawi marks the mubtada, right?
+      text: Matur nuwun, Gus. Santri-santri sami wonten pundi?
+      ar_eg: شكرًا يا شيخ. الطلاب فين؟
+      ar: شكرًا يا شيخ. أين الطلاب؟
+      en: Thank you, Gus. Where are the students?
     - speaker: Gus Hanif
-      text: Leres! Lan iku tandha khabar.
-      ar_eg: صح! وiku علامة الخبر.
-      ar: صحيح! وiku علامة الخبر.
-      en: Right! And iku marks the khabar.
+      text: Sapunika wonten bandongan. Bapak kula, pengasuh pondok, maos buku.
+      ar_eg: دلوقتي فيه درس جماعي. أبويا، شيخ المعهد، بيقرا الكتاب.
+      ar: الآن درس جماعي. أبي، شيخ المعهد، يقرأ الكتاب.
+      en: There's a bandongan now. My father, the head of the pesantren, is reading the book.
     - speaker: Mohamed
-      text: Kados nahwu ing Mesir, nanging basa Jawa!
-      ar_eg: زي النحو في مصر، بس بالجاوي!
-      ar: كالنحو في مصر، لكن بالجاوية!
-      en: Like Arabic grammar back in Egypt, but in Javanese!
+      text: Bocah-bocah nyerat menapa ing bukunipun?
+      ar_eg: الطلاب بيكتبوا إيه في كتبهم؟
+      ar: ماذا يكتب الطلاب في كتبهم؟
+      en: What do the students write in their books?
+    - speaker: Gus Hanif
+      text: Makna gandul, mawi Pegon. Enjing-enjing wonten sorogan.
+      ar_eg: المعنى المعلّق بالبيغون. والصبح بدري فيه قراية فردية.
+      ar: المعنى المعلّق بالبيغون. وفي الصباح الباكر قراءة فردية.
+      en: The hanging gloss, in Pegon. Early in the morning there's sorogan.
+    - speaker: Mohamed
+      text: Sae sanget. Kula kepengin nyerat ugi!
+      ar_eg: حلو أوي. نفسي أكتب أنا كمان!
+      ar: رائع. أودّ أن أكتب أنا أيضًا!
+      en: Wonderful. I'd love to write too!
 new_words:
-  - word: makna gandul
+  - word: pondok
     pos: noun
-    ar_eg: الشرح الجاوي كلمة بكلمة «المتعلّق» تحت النص العربي
-    ar: الشرح الجاوي الحرفي المعلَّق تحت النص العربي
-    en: word-by-word Javanese gloss hanging under Arabic text
-  - word: utawi
-    pos: particle
-    ar_eg: علامة المبتدأ في الـ makna gandul (م)
-    ar: علامة المبتدأ في الـ makna gandul (م)
-    en: marks the mubtada in makna gandul (م)
-  - word: kitab
+    ar_eg: معهد ديني داخلي
+    ar: معهد ديني داخلي
+    en: Islamic boarding school
+    same_as_id: true
+  - word: sorogan
     pos: noun
-    arabic: كتاب
-    ar_eg: كتاب (ديني غالبًا)
-    ar: كتاب (ديني غالبًا)
-    en: (religious) book = kitab
+    ar_eg: قراية فردية قدام الشيخ
+    ar: قراءة فردية أمام الشيخ
+    en: one-to-one reading before the teacher
+  - word: bandongan
+    pos: noun
+    ar_eg: درس جماعي الشيخ بيقرا فيه
+    ar: درس جماعي يقرأ فيه الشيخ
+    en: group lecture read by the teacher
+  - word: gandul
+    pos: adjective
+    ar_eg: متعلّق
+    ar: معلّق
+    en: hanging
+  - word: makna
+    pos: noun
+    arabic: معنى
+    ar_eg: معنى
+    ar: معنى
+    en: meaning
+  - word: tasbih
+    pos: noun
+    arabic: تسبيح
+    ar_eg: سبحة
+    ar: مسبحة
+    en: prayer beads
+  - word: pengasuh
+    pos: noun
+    ar_eg: شيخ المعهد
+    ar: شيخ المعهد والقائم عليه
+    en: head of a pesantren
+  - word: asrama
+    pos: noun
+    ar_eg: سكن الطلاب
+    ar: سكن الطلاب
+    en: dormitory
 review:
   status: draft
   verified: false

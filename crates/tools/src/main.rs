@@ -12,10 +12,14 @@ use clap::{Parser, Subcommand};
 
 mod bakeoff;
 mod bridge;
+mod changes;
 mod coverage;
+mod dialect;
+mod explains;
 mod freq;
 mod gloss;
 mod golden;
+mod hashscan;
 mod kaikki;
 mod levels;
 mod packs;
@@ -70,6 +74,10 @@ enum Command {
     Update(update::Cmd),
     /// Unknown-word share of Sinetron, Radio and lesson dialogues against the curriculum.
     Coverage(coverage::Args),
+    /// Share of closed exercises with an `explain`, per level (#140).
+    Explains(explains::Args),
+    /// Surabaya and Semarang forms left in the Javanese track (Jogja + Madiun only).
+    Dialect(dialect::Args),
     /// Regenerate `schemas/*.schema.json` from the Rust content types.
     Schemas {
         /// Fail instead of writing when a schema is out of date.
@@ -101,6 +109,8 @@ fn main() -> Result<()> {
         Command::Packs(cmd) => packs::run(&root, cmd),
         Command::Update(cmd) => update::run(&root, cmd),
         Command::Coverage(args) => coverage::run(&root, args),
+        Command::Explains(args) => explains::run(&root, args),
+        Command::Dialect(args) => dialect::run(&root, args),
         Command::Schemas { check } => schemas::run(&root, check),
         Command::Readme { check } => readme::run(&root, check),
         Command::Validate => {
@@ -113,6 +123,16 @@ fn main() -> Result<()> {
                 println!("gloss↔bridge: {i}");
             }
             anyhow::ensure!(issues.is_empty(), "{} gloss↔bridge issue(s)", issues.len());
+            let issues = bridge::check_lessons(&root)?;
+            for i in &issues {
+                println!("lesson↔bridge: {i}");
+            }
+            anyhow::ensure!(issues.is_empty(), "{} lesson↔bridge issue(s)", issues.len());
+            let issues = hashscan::check(&root)?;
+            for i in &issues {
+                println!("yaml: {i}");
+            }
+            anyhow::ensure!(issues.is_empty(), "{} YAML value(s) cut by a \" #\" comment", issues.len());
             levels::run(&root, levels::Cmd::Validate)?;
             golden::run(&root, golden::Cmd::Validate)?;
             packs::run(&root, packs::Cmd::Build { check: true })?;

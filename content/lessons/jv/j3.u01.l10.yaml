@@ -1,0 +1,246 @@
+schema: kabar.lesson/v1
+id: j3.u01.l10
+language: jv
+title: Eyang lan rayi
+can_do:
+  ar_eg: 'تقابل جدّة صاحبك وأخته الصغيرة: تقول إنك مبسوط وفهمت، وتحكي إنك مستغرب، وتعرف تقول مكسوف.'
+  ar: 'أن تقابل جدّة صديقك وأخته الصغرى: تقول إنك سعيد وفهمت، وتعبّر عن دهشتك، وتعرف كلمة الخجل.'
+  en: 'Meet a friend''s grandmother and little sister: say you''re glad and you understand, show surprise, and say shy.'
+slides:
+  - title: Ngoko → krama ing kulawarga
+    body:
+      ar_eg: |
+        eyang = جدّ أو جدّة، أشيك واحترم من mbah. في جوجا كتير بيقولوا «Eyang» للكبار في العيلة.
+        adhik = أخ أو أخت أصغر (نغوكو). ← بالكراما: rayi. «rayi kula» = أخويا/أختي الصغيرة.
+        crita ← cariyos = حكاية، يحكي. seneng ← bingah = مبسوط، فرحان.
+        isin ← lingsem = مكسوف. ngerti ← mangertos = فاهم، يفهم.
+        gumun = مستغرب ومنبهر: «Aku gumun!» = أنا مش مصدّق!
+      ar: |
+        eyang = جدّ أو جدّة، وهي أرقى وأكثر احترامًا من mbah. في جوكجاكرتا يقولون «Eyang» لكبار العائلة كثيرًا.
+        adhik = أخ أو أخت أصغر (نغوكو). ← بالكراما: rayi. «rayi kula» = أخي أو أختي الصغرى.
+        crita ← cariyos = قصة، يحكي. seneng ← bingah = سعيد، فرِح.
+        isin ← lingsem = خجلان. ngerti ← mangertos = يفهم.
+        gumun = مندهش ومعجب: «Aku gumun!» = لا أصدّق!
+      en: |
+        eyang = grandparent, more respectful than mbah. In Jogja people often say "Eyang" for the elders of the family.
+        adhik = younger brother or sister (ngoko) → in krama: rayi. "rayi kula" = my younger sibling.
+        crita → cariyos = story, tell. seneng → bingah = glad, happy.
+        isin → lingsem = shy, embarrassed. ngerti → mangertos = understand.
+        gumun = amazed, can't believe it: "Aku gumun!" = wow, I can't believe it!
+    examples:
+      - text: Eyang, menika rayi kula.
+        ar_eg: يا جدّتي، دي أختي الصغيرة.
+        ar: يا جدّتي، هذه أختي الصغرى.
+        en: Grandma, this is my little sister.
+      - text: Kula bingah sanget, Eyang.
+        ar_eg: أنا مبسوط أوي يا جدّتي.
+        ar: أنا سعيد جدًا يا جدّتي.
+        en: I'm so glad, Grandma.
+      - text: Aku gumun, Mas!
+        ar_eg: مش مصدّق يا عم!
+        ar: أنا مندهش يا أخي!
+        en: Wow, I can't believe it!
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: eyang
+        ar_eg: جدّ، جدّة (باحترام)
+        ar: جدّ، جدّة (باحترام)
+        en: grandparent (respectful)
+      - text: rayi
+        ar_eg: أخ/أخت أصغر (كراما)
+        ar: أخ/أخت أصغر (كراما)
+        en: younger sibling (krama)
+      - text: adhik
+        ar_eg: أخ/أخت أصغر (نغوكو)
+        ar: أخ/أخت أصغر (نغوكو)
+        en: younger sibling (ngoko)
+      - text: mangertos
+        ar_eg: فاهم، يفهم (كراما)
+        ar: يفهم (كراما)
+        en: understand (krama)
+    words: [eyang, rayi, adhik, mangertos]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: cariyos
+        ar_eg: حكاية، يحكي (كراما)
+        ar: قصة، يحكي (كراما)
+        en: story, tell (krama)
+      - text: gumun
+        ar_eg: مستغرب، منبهر
+        ar: مندهش، معجب
+        en: amazed
+      - text: bingah
+        ar_eg: مبسوط (كراما)
+        ar: سعيد (كراما)
+        en: glad, happy (krama)
+      - text: lingsem
+        ar_eg: مكسوف (كراما)
+        ar: خجلان (كراما)
+        en: shy, embarrassed (krama)
+    words: [cariyos, gumun, bingah, lingsem]
+  - id: e03
+    type: listen
+    text: Kula bingah sanget, Eyang.
+    question:
+      ar_eg: محمد حاسس بإيه؟
+      ar: بماذا يشعر محمد؟
+      en: How does Mohamed feel?
+    options: [أنا مبسوط أوي يا جدّتي, أنا تعبان أوي يا جدّتي, أنا مكسوف أوي يا جدّتي]
+    answer: 0
+    meaning:
+      ar_eg: أنا مبسوط أوي يا جدّتي.
+      ar: أنا سعيد جدًا يا جدّتي.
+      en: I'm so glad, Grandma.
+    words: [bingah, eyang, lingsem]
+  - id: e04
+    type: fill_blank
+    sentence: Rayinipun Mas Dimas taksih ___, mlebet kamar terus.
+    meaning:
+      ar_eg: أخت ديماس الصغيرة لسه ___، دخلت الأوضة على طول.
+      ar: أخت ديماس الصغرى ما زالت ___، دخلت الغرفة فورًا.
+      en: Mas Dimas's little sister is still ___, she went straight into her room.
+    options: [lingsem, bingah, gumun]
+    answers: [lingsem]
+    words: [lingsem, rayi, bingah, gumun]
+    explain:
+      ar_eg: lingsem = مكسوفة، عشان كده دخلت أوضتها. bingah = فرحانة وgumun = منبهرة.
+      ar: lingsem تعني خجولة، لذلك دخلت غرفتها. أما bingah ففرحانة وgumun مندهشة.
+      en: lingsem is "shy", which is why she went to her room. bingah is "happy" and gumun is "amazed".
+  - id: e05
+    type: multiple_choice
+    question: adhik (ngoko) → ___ (krama)
+    options: [rayi, eyang, cariyos]
+    answer: 0
+    explain:
+      ar_eg: 'adhik بالنغوكو، rayi بالكراما: الاتنين يعني أخ أو أخت أصغر.'
+      ar: adhik بالنغوكو وrayi بالكراما، وكلاهما يعني الأخ أو الأخت الأصغر.
+      en: 'adhik is ngoko and rayi is krama: both mean younger sibling.'
+    words: [rayi, adhik, eyang, cariyos]
+  - id: e06
+    type: fill_blank
+    sentence: Nggih, Eyang, kula ___.
+    meaning:
+      ar_eg: أيوه يا جدّتي، أنا ___.
+      ar: نعم يا جدّتي، أنا ___.
+      en: Yes, Grandma, I ___.
+    options: [mangertos, lingsem, gumun]
+    answers: [mangertos]
+    words: [mangertos, gumun]
+    explain:
+      ar_eg: mangertos = فاهم (كراما)، الرد المؤدب على الكبير. lingsem = مكسوف وgumun = منبهر.
+      ar: mangertos تعني أفهم (كراما)، الرد المهذب للكبير. أما lingsem فخجول وgumun مندهش.
+      en: mangertos is "I understand" (krama), the polite answer to an elder. lingsem is "shy" and gumun is "amazed".
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: جدّتي حكت لي حكاية.
+      ar: حكت لي جدّتي قصة.
+      en: Grandma told me a story.
+    answer: Eyang cariyos dhateng kula
+    distractors: [adhik, gumun]
+    words: [eyang, cariyos]
+    explain:
+      ar_eg: cariyos dhateng kula = حكت لي. adhik = أخ صغير، وgumun = منبهر.
+      ar: cariyos dhateng kula تعني حكت لي. أما adhik فأخ أصغر، وgumun مندهش.
+      en: cariyos dhateng kula is "told me a story". adhik is "younger sibling", and gumun is "amazed".
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kula gumun, Eyang mangertos basa Arab.
+    answers_meaning:
+      ar_eg: [أنا مستغرب إن جدّتي فاهمة عربي, أنا منبهر، جدّتي بتفهم عربي]
+      ar: [أنا مندهش، جدّتي تفهم العربية, أدهشني أن جدّتي تفهم العربية]
+      en: ['I''m amazed, Grandma understands Arabic', 'I''m amazed that Grandma understands Arabic']
+    words: [gumun, mangertos, eyang]
+  - id: e09
+    type: speaking
+    text: Adhikku isih lingsem.
+    meaning:
+      ar_eg: أختي الصغيرة لسه مكسوفة.
+      ar: أختي الصغرى ما زالت خجلانة.
+      en: My little sister is still shy.
+    words: [adhik, lingsem]
+  - id: e10
+    type: multiple_choice
+    question: isin (ngoko) → ___ (krama)
+    options: [bingah, lingsem, cariyos]
+    answer: 1
+    explain:
+      ar_eg: 'isin بالنغوكو، lingsem بالكراما: مكسوف. bingah = مبسوط، cariyos = حكاية.'
+      ar: 'isin بالنغوكو وlingsem بالكراما: خجلان. bingah = سعيد، cariyos = قصة.'
+      en: 'isin is ngoko, lingsem is krama: shy. bingah = glad, cariyos = story.'
+    words: [lingsem, bingah, cariyos, gumun]
+dialogue:
+  lines:
+    - speaker: Mbah Putri
+      text: Nak Mohamed, Dimas sampun cariyos bab sampeyan.
+      ar_eg: يا ابني محمد، ديماس حكى لي عنك.
+      ar: يا بنيّ محمد، حدّثني ديماس عنك.
+      en: Mohamed, dear, Dimas has told me about you.
+    - speaker: Mohamed
+      text: Nggih, Eyang. Kula bingah sanget saged pinanggih.
+      ar_eg: أيوه يا جدّتي. أنا مبسوط أوي إني قابلتك.
+      ar: نعم يا جدّتي. أنا سعيد جدًا بلقائك.
+      en: Yes, Grandma. I'm so glad to meet you.
+    - speaker: Mbah Putri
+      text: Niki rayinipun Dimas. Kok namung mesem, Nduk?
+      ar_eg: ودي أخت ديماس الصغيرة. بتبتسمي وبس ليه يا بنتي؟
+      ar: وهذه أخت ديماس الصغرى. لماذا تكتفين بالابتسام يا ابنتي؟
+      en: This is Dimas's little sister. Why are you only smiling, love?
+    - speaker: Mas Dimas
+      text: Adhikku isih lingsem, Med. Ora apa-apa.
+      ar_eg: أختي لسه مكسوفة يا مِد. عادي.
+      ar: أختي ما زالت خجلانة يا مِد. لا بأس.
+      en: My little sister's still shy, Med. It's fine.
+    - speaker: Mohamed
+      text: Kula gumun, Eyang taksih mangertos basa Arab sekedhik!
+      ar_eg: أنا مستغرب إن حضرتك لسه فاهمة شوية عربي يا جدّتي!
+      ar: أنا مندهش أنك ما زلت تفهمين قليلًا من العربية يا جدّتي!
+      en: I'm amazed, Grandma, you still understand a little Arabic!
+new_words:
+  - word: eyang
+    pos: noun
+    ar_eg: جدّ أو جدّة (باحترام)
+    ar: جدّ أو جدّة (باحترام)
+    en: grandparent, respectful (= kakek/nenek; ngoko also mbah)
+  - word: rayi
+    pos: noun
+    ar_eg: أخ أو أخت أصغر (كراما)
+    ar: أخ أو أخت أصغر (كراما)
+    en: younger sibling, krama (ngoko adhik, Indonesian adik)
+  - word: adhik
+    pos: noun
+    ar_eg: أخ أو أخت أصغر (نغوكو)
+    ar: أخ أو أخت أصغر (نغوكو)
+    en: younger sibling, ngoko (krama rayi, Indonesian adik)
+  - word: mangertos
+    pos: verb
+    ar_eg: يفهم (كراما من ngerti)
+    ar: يفهم (كراما من ngerti)
+    en: understand, krama (ngoko ngerti, Indonesian mengerti)
+  - word: cariyos
+    pos: noun
+    ar_eg: حكاية؛ يحكي (كراما من crita)
+    ar: قصة؛ يحكي (كراما من crita)
+    en: story; tell, krama (ngoko crita, Indonesian cerita)
+  - word: gumun
+    pos: adjective
+    ar_eg: مستغرب ومنبهر
+    ar: مندهش ومعجب
+    en: amazed, astonished (= heran, kagum)
+  - word: bingah
+    pos: adjective
+    ar_eg: مبسوط، فرحان (كراما من seneng)
+    ar: سعيد (كراما من seneng)
+    en: glad, happy, krama (ngoko seneng, Indonesian senang)
+  - word: lingsem
+    pos: adjective
+    ar_eg: مكسوف (كراما من isin)
+    ar: خجلان (كراما من isin)
+    en: shy, embarrassed, krama (ngoko isin, Indonesian malu)
+review:
+  status: draft
+  verified: false

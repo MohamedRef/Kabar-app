@@ -1,194 +1,240 @@
 schema: kabar.lesson/v1
 id: bipa4.u09.l07
 language: id
-title: Opini warga Manado
+title: Jenis dan hubungan
 can_do:
-  ar_eg: تقرا مقال رأي قصير وتعرف رأي الكاتب وحججه والحل اللي بيقترحه.
-  ar: أن تقرأ مقال رأي قصيرًا وتعرف موقف الكاتب وحججه والحلّ الذي يقترحه.
-  en: Read a short opinion piece and identify the writer's view, arguments and proposed solution.
+  ar_eg: تتكلم عن أنواع الكائنات والعلاقة بينها وبين البيئة.
+  ar: أن تتحدث عن أنواع الكائنات وعلاقتها بالبيئة.
+  en: Talk about kinds of living things and how they relate to the environment.
 slides:
-  - title: Kolom opini
+  - title: Alam dan manusia
     body:
       ar_eg: |
-        مقال رأي كتبته مدرّسة من مانادو في جرنال محلي. ده نص عرضي (eksposisi).
-        دوّر على: الرأي، الحجج (Pertama، Kedua)، والحل (solusi).
+        jenis = نوع (jenis ikan = نوع سمك)، tertentu = معيّن (ikan tertentu = سمك معيّن)، kebanyakan = معظم، أغلب.
+        hubungan = علاقة (hubungan antara A dan B = العلاقة بين...)، menciptakan = يخلق، يعمل حاجة جديدة.
+        program = برنامج، kecuali = ماعدا، alami = طبيعي (من الطبيعة: pupuk alami = سماد طبيعي).
       ar: |
-        مقال رأي كتبته معلّمة من مانادو في صحيفة محلية، وهو نص عرضي (eksposisi).
-        ابحث عن: الرأي، والحجج (Pertama، Kedua)، والحلّ (solusi).
+        jenis = النوع (jenis ikan = نوع من السمك)، tertentu = معيّن (ikan tertentu)، kebanyakan = معظم، أغلب.
+        hubungan = العلاقة (hubungan antara A dan B)، menciptakan = يخلق، يبتكر.
+        program = البرنامج، kecuali = إلا، باستثناء، alami = طبيعي (من الطبيعة: pupuk alami = سماد طبيعي).
       en: |
-        An opinion piece by a Manado teacher in a local paper. It's an exposition (eksposisi).
-        Look for the thesis, the arguments (Pertama, Kedua) and the solution (solusi).
+        jenis = kind, type (jenis ikan = kind of fish), tertentu = certain, particular (ikan tertentu), kebanyakan = most.
+        hubungan = relationship (hubungan antara A dan B = the link between A and B), menciptakan = to create.
+        program = programme, kecuali = except, alami = natural (from nature: pupuk alami = natural fertiliser).
     examples:
-      - text: Saya berpendapat bahwa larangan kantong plastik adalah kebijakan yang tepat untuk Manado.
-        ar_eg: أنا شايفة إن منع الأكياس البلاستيك هو القرار الصح لمانادو.
-        ar: أرى أن حظر الأكياس البلاستيكية هو السياسة الصائبة لمانادو.
-        en: I believe a plastic-bag ban is the right policy for Manado.
-      - text: Pertama, plastik sekali pakai sulit didaur ulang. Kedua, banyak sampah plastik masuk ke laut Bunaken dan merusak terumbu karang.
-        ar_eg: أولًا، البلاستيك اللي بيتستعمل مرة واحدة صعب يتعاد تدويره. تانيًا، زبالة بلاستيك كتير بتوصل لبحر بوناكين وبتبوّظ الشعاب المرجانية.
-        ar: أولًا، يصعب إعادة تدوير البلاستيك أحادي الاستخدام. ثانيًا، تصل نفايات بلاستيكية كثيرة إلى بحر بوناكين وتُتلف الشعاب المرجانية.
-        en: First, single-use plastic is hard to recycle. Second, a lot of plastic waste ends up in the sea at Bunaken and damages the coral reefs.
-      - text: Memang, sebagian pedagang menolak. Namun, solusinya mudah, yaitu kita membawa tas belanja sendiri.
-        ar_eg: صحيح إن بعض التجار معترضين. بس الحل سهل، وهو إننا نجيب شنط الشوبنج بتاعتنا معانا.
-        ar: صحيح أن بعض التجار يرفضون، غير أن الحل سهل، وهو أن نحمل حقائب تسوّقنا الخاصة.
-        en: Admittedly, some traders are against it. But the solution is easy - we bring our own shopping bags.
+      - text: Di Bunaken ada ratusan jenis ikan.
+        ar_eg: في بوناكين فيه مئات الأنواع من السمك.
+        ar: في بوناكين مئات الأنواع من السمك.
+        en: There are hundreds of kinds of fish at Bunaken.
+      - text: Kebanyakan petani di sini memakai pupuk alami.
+        ar_eg: معظم الفلاحين هنا بيستعملوا سماد طبيعي.
+        ar: يستعمل معظم المزارعين هنا سمادًا طبيعيًا.
+        en: Most farmers here use natural fertiliser.
+      - text: Semua toko ikut program ini, kecuali dua.
+        ar_eg: كل المحلات مشتركة في البرنامج ده ماعدا اتنين.
+        ar: تشارك كل المتاجر في هذا البرنامج إلا اثنين.
+        en: All the shops take part in this programme except two.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: رأي الكاتبة إيه؟
-      ar: ما موقف الكاتبة؟
-      en: What is the writer's view?
-    options:
-      - Larangan kantong plastik adalah kebijakan yang tepat.
-      - Larangan kantong plastik merugikan semua warga.
-      - Kantong plastik mudah didaur ulang.
-    answer: 0
-    words: [larangan, kantong plastik, berpendapat, tepat, mudah]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: مين المعترض على المنع، على حسب الكاتبة؟
-      ar: من يعارض الحظر بحسب الكاتبة؟
-      en: According to the writer, who is against the ban?
-    options: [Para penyelam, Sebagian pedagang, Pemerintah kota]
-    answer: 1
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الكاتبة بتقترح حل إيه؟
-      ar: ما الحلّ الذي تقترحه الكاتبة؟
-      en: What solution does the writer propose?
-    options:
-      - Menutup pasar tradisional
-      - Membeli kantong plastik yang lebih kuat
-      - Membawa tas belanja sendiri
-    answer: 2
-    words: [solusi]
-  - id: e04
-    type: listen
-    text: Plastik sekali pakai sulit didaur ulang.
-    options:
-      - Plastik sekali pakai mudah didaur ulang.
-      - Plastik sekali pakai sulit didaur ulang.
-      - Plastik sekali pakai sulit dibuang.
-    answer: 1
-    meaning:
-      ar_eg: البلاستيك اللي بيتستعمل مرة واحدة صعب يتعاد تدويره.
-      ar: يصعب إعادة تدوير البلاستيك أحادي الاستخدام.
-      en: Single-use plastic is hard to recycle.
-    words: [sekali pakai, mendaur ulang, mudah]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: larangan
-        ar_eg: منع
-        ar: حظر
-        en: ban
-      - text: sekali pakai
-        ar_eg: بيتستعمل مرة واحدة
-        ar: أحادي الاستخدام
-        en: single-use
-      - text: mendaur ulang
-        ar_eg: يعيد التدوير
-        ar: يعيد التدوير
-        en: recycle
-      - text: solusi
-        ar_eg: حل
-        ar: حلّ
-        en: solution
-      - text: kesadaran
-        ar_eg: وعي
-        ar: وعي
-        en: awareness
-    words: [larangan, sekali pakai, mendaur ulang, solusi, kesadaran]
-  - id: e06
-    type: fill_blank
-    sentence: Banyak sampah plastik masuk ke laut. ___, terumbu karang rusak.
+      - text: jenis
+        ar_eg: نوع
+        ar: نوع
+        en: kind, type
+      - text: tertentu
+        ar_eg: معيّن
+        ar: معيّن
+        en: certain
+      - text: kebanyakan
+        ar_eg: معظم
+        ar: معظم
+        en: most
+      - text: hubungan
+        ar_eg: علاقة
+        ar: علاقة
+        en: relationship
+    words: [jenis, tertentu, kebanyakan, hubungan]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: menciptakan
+        ar_eg: يخلق، يعمل
+        ar: يخلق
+        en: to create
+      - text: program
+        ar_eg: برنامج
+        ar: برنامج
+        en: programme
+      - text: kecuali
+        ar_eg: ماعدا
+        ar: إلا
+        en: except
+      - text: alami
+        ar_eg: طبيعي
+        ar: طبيعي
+        en: natural
+    words: [menciptakan, program, kecuali, alami]
+  - id: e03
+    type: listen
+    text: Ada hubungan antara sampah plastik dan karang yang rusak.
+    question:
+      ar_eg: بين البلاستيك والمرجان فيه إيه؟
+      ar: ما الذي بين البلاستيك والمرجان؟
+      en: What is there between plastic and coral?
+    options: [علاقة, مسافة, مشكلة]
+    answer: 0
     meaning:
-      ar_eg: زبالة بلاستيك كتير بتوصل للبحر. والنتيجة إن الشعاب المرجانية بتبوظ.
-      ar: تصل نفايات بلاستيكية كثيرة إلى البحر، فتتلف الشعاب المرجانية.
-      en: A lot of plastic waste ends up in the sea. As a result, the coral reefs are damaged.
-    options: [Berkat itu, Akibatnya, Namun]
-    answers: [Akibatnya]
-    words: [akibatnya]
-  - id: e07
-    type: build_sentence
-    source:
-      ar_eg: أنا شايف إن السياسة دي صح.
-      ar: أرى أن هذه السياسة صائبة.
-      en: I believe this policy is the right one.
-    answer: Saya berpendapat bahwa kebijakan ini sudah tepat.
-    distractors: [solusi, menolak]
-    words: [berpendapat, kebijakan, tepat]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الحل سهل، وهو إننا نجيب شنط الشوبنج بتاعتنا.
-      ar: الحل سهل، وهو أن نحمل حقائب تسوّقنا الخاصة.
-      en: The solution is easy - we bring our own shopping bags.
-    answers:
-      - Solusinya mudah, yaitu kita membawa tas belanja sendiri.
-      - Solusinya mudah, kita membawa tas belanja sendiri.
-      - "Solusinya mudah: kita membawa tas belanja sendiri."
-      - Solusinya mudah, yaitu membawa tas belanja sendiri.
-      - "Solusinya mudah: membawa tas belanja sendiri."
-      - Solusinya gampang, yaitu kita membawa tas belanja sendiri.
-      - Solusinya mudah, yaitu kita bawa tas belanja sendiri.
-    words: [solusi, mudah]
-  - id: e09
+      ar_eg: فيه علاقة بين زبالة البلاستيك والمرجان اللي باظ.
+      ar: هناك علاقة بين نفايات البلاستيك والمرجان التالف.
+      en: There's a link between plastic waste and damaged coral.
+    words: [hubungan]
+  - id: e04
+    type: fill_blank
+    sentence: Di kebun ini ada lima ___ sayur.
+    meaning:
+      ar_eg: في الجنينة دي فيه خمس ___ خضار.
+      ar: في هذه الحديقة خمسة ___ من الخضار.
+      en: There are five ___ of vegetable in this garden.
+    options: [jenis, program, hubungan]
+    answers: [jenis]
+    words: [jenis, program, hubungan]
+    explain:
+      ar_eg: lima jenis sayur = خمس أنواع خضار. program = برنامج، وhubungan = علاقة.
+      ar: lima jenis sayur = خمسة أنواع من الخضار. أما program فبرنامج، وhubungan علاقة.
+      en: lima jenis sayur means five kinds of vegetable. program is a programme and hubungan a relationship.
+  - id: e05
     type: multiple_choice
-    question: Menurut saya, larangan ini kebijakan yang tepat.
-    question_meaning:
-      ar_eg: الكاتب موافق على المنع؟
-      ar: هل يوافق الكاتب على المنع؟
-      en: Does the writer agree with the ban?
-    options: ['Ya, dia setuju.', 'Tidak, dia tidak setuju.', 'Dia belum tahu.']
+    question: Semua warga datang ke kerja bakti, ___ Pak Johan. Dia sakit.
+    options: [kecuali, kebanyakan, tertentu]
     answer: 0
     explain:
-      ar_eg: tepat = صح / في محلّه.
-      ar: tepat = صائب.
-      en: tepat = right, appropriate.
-    words: [tepat, larangan]
+      ar_eg: kecuali = ماعدا، والأستاذ يوهان ماجاش. kebanyakan = معظم، وtertentu = معيّن.
+      ar: kecuali = إلا، فالأستاذ يوهان لم يأتِ. أما kebanyakan فمعظم، وtertentu معيّن.
+      en: 'kecuali means except: Pak Johan didn''t come. kebanyakan is most, and tertentu is certain.'
+    words: [kecuali, kebanyakan, tertentu]
+  - id: e06
+    type: fill_blank
+    sentence: Kota ini membuat ___ daur ulang untuk sekolah.
+    meaning:
+      ar_eg: المدينة دي عملت ___ إعادة تدوير للمدارس.
+      ar: أطلقت هذه المدينة ___ لإعادة التدوير في المدارس.
+      en: This city set up a recycling ___ for schools.
+    options: [program, alami, jenis]
+    answers: [program]
+    words: [program, alami, jenis]
+    explain:
+      ar_eg: program daur ulang = برنامج إعادة تدوير. alami = طبيعي، وjenis = نوع، ومايمشوش مع membuat هنا.
+      ar: program daur ulang = برنامج لإعادة التدوير. أما alami فطبيعي، وjenis نوع، ولا يناسبان هنا.
+      en: program daur ulang is a recycling programme. alami is natural and jenis is a kind; neither fits here.
+  - id: e07
+    type: multiple_choice
+    question: Petani ini tidak pakai pupuk kimia. Pupuknya ___.
+    options: [alami, tertentu, kecuali]
+    answer: 0
+    explain:
+      ar_eg: alami = طبيعي، عكس الكيماوي. tertentu = معيّن، وkecuali = ماعدا.
+      ar: alami = طبيعي، عكس الكيميائي. أما tertentu فمعيّن، وkecuali إلا.
+      en: alami means natural, the opposite of chemical. tertentu is certain, and kecuali is except.
+    words: [alami, tertentu, kecuali]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: البرنامج ده عمل شغل جديد للصيادين.
+      ar: أوجد هذا البرنامج فرص عمل جديدة للصيادين.
+      en: This programme created new jobs for fishermen.
+    answer: Program ini menciptakan lapangan kerja baru bagi nelayan.
+    distractors: [jenis, kecuali]
+    words: [menciptakan, program, jenis, kecuali]
+    explain:
+      ar_eg: menciptakan lapangan kerja = يعمل فرص شغل جديدة. jenis = نوع، وkecuali = ماعدا، ومالهمش مكان هنا.
+      ar: menciptakan lapangan kerja = يوجد فرص عمل. أما jenis فنوع، وkecuali إلا، ولا مكان لهما هنا.
+      en: menciptakan lapangan kerja means to create jobs. jenis is a kind and kecuali is except; they don't belong here.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Kebanyakan ikan hanya ada di tempat tertentu.
+    answers_meaning:
+      ar_eg: [معظم السمك موجود في أماكن معيّنة بس, أغلب السمك بيتلاقي في مكان معيّن بس]
+      ar: [يوجد معظم السمك في أماكن معيّنة فقط, لا يوجد أغلب السمك إلا في أماكن معيّنة]
+      en: [Most fish are only found in certain places, Most fish are found only in particular places]
+    words: [kebanyakan, tertentu]
+  - id: e10
+    type: speaking
+    text: Hubungan manusia dan alam harus seimbang.
+    meaning:
+      ar_eg: العلاقة بين الإنسان والطبيعة لازم تبقى متوازنة.
+      ar: يجب أن تكون العلاقة بين الإنسان والطبيعة متوازنة.
+      en: The relationship between people and nature must be balanced.
+    words: [hubungan, alami, menciptakan]
 dialogue:
-  title: Membahas opini
   lines:
     - speaker: Bu Grace
-      text: Mohamed, kamu sudah baca opini warga di koran hari ini?
-      ar_eg: يا Mohamed، قريت مقال الرأي في جرنال النهارده؟
-      ar: يا Mohamed، هل قرأت مقال الرأي في صحيفة اليوم؟
-      en: Mohamed, have you read the opinion piece in today's paper?
+      text: Mohamed, kamu tahu berapa jenis karang di Bunaken?
+      ar_eg: يا محمد، عارف فيه كام نوع مرجان في بوناكين؟
+      ar: يا محمد، أتعرف كم نوعًا من المرجان في بوناكين؟
+      en: Mohamed, do you know how many kinds of coral there are at Bunaken?
     - speaker: Mohamed
-      text: Sudah, Bu. Penulisnya mendukung larangan kantong plastik.
-      ar_eg: قريته يا أستاذة. الكاتبة مؤيدة منع الأكياس البلاستيك.
-      ar: نعم يا أستاذة. الكاتبة تؤيد حظر الأكياس البلاستيكية.
-      en: Yes, ma'am. The writer supports the plastic-bag ban.
+      text: Belum, Bu. Kebanyakan karangnya masih alami?
+      ar_eg: لأ يا مدام. معظم المرجان لسه طبيعي؟
+      ar: لا يا سيدتي. هل معظم المرجان ما زال طبيعيًا؟
+      en: No, ma'am. Is most of the coral still natural?
     - speaker: Bu Grace
-      text: Argumennya kuat?
-      ar_eg: حججها قوية؟
-      ar: هل حججها قوية؟
-      en: Are her arguments strong?
+      text: Iya, kecuali di dekat pelabuhan. Di sana airnya kotor.
+      ar_eg: أيوه، ماعدا جنب الميناء. هناك المية وسخة.
+      ar: نعم، إلا قرب الميناء، فالماء هناك متّسخ.
+      en: Yes, except near the harbour. The water is dirty there.
     - speaker: Mohamed
-      text: Cukup kuat. Dia juga menulis bahwa sebagian pedagang menolak, lalu memberi solusi.
-      ar_eg: قوية لحد كبير. وكمان كتبت إن بعض التجار معترضين، وبعدين قدّمت حل.
-      ar: قوية إلى حدّ ما. وكتبت أيضًا أن بعض التجار يرفضون، ثم قدّمت حلًّا.
-      en: Fairly strong. She also writes that some traders are against it, and then offers a solution.
+      text: Jadi ada hubungan antara sampah dan karang yang mati?
+      ar_eg: يعني فيه علاقة بين الزبالة والمرجان اللي بيموت؟
+      ar: إذن هناك علاقة بين النفايات والمرجان الميت؟
+      en: So there's a link between rubbish and dead coral?
     - speaker: Bu Grace
-      text: Bagus. Eksposisi yang baik memang melihat dua sisi.
-      ar_eg: حلو. النص العرضي الكويس فعلًا بيشوف الناحيتين.
-      ar: جميل. النص العرضي الجيد ينظر فعلًا إلى الجانبين.
-      en: Good. A good exposition does look at both sides.
+      text: Betul. Karena itu kami menciptakan program bersih laut untuk anak sekolah.
+      ar_eg: بالظبط. عشان كده عملنا برنامج تنضيف البحر لطلبة المدارس.
+      ar: صحيح. لذلك أطلقنا برنامج تنظيف البحر لطلاب المدارس.
+      en: Right. That's why we created a clean-sea programme for schoolchildren.
 new_words:
-  - word: tepat
-    pos: adjective
-    ar_eg: صح / مظبوط / في الصميم
-    ar: صائب / دقيق
-    en: right, exact, appropriate
-  - word: mudah
-    pos: adjective
-    ar_eg: سهل
-    ar: سهل
-    en: easy
+  - word: jenis
+    pos: noun
+    ar_eg: نوع
+    ar: نوع
+    en: kind, type
+  - word: tertentu
+    pos: adj
+    ar_eg: معيّن
+    ar: معيّن
+    en: certain, particular
+  - word: kebanyakan
+    pos: det
+    ar_eg: معظم، أغلب
+    ar: معظم، أغلب
+    en: most
+  - word: hubungan
+    pos: noun
+    ar_eg: علاقة
+    ar: علاقة
+    en: relationship, link
+  - word: menciptakan
+    pos: verb
+    ar_eg: يخلق، يعمل حاجة جديدة
+    ar: يخلق، يبتكر
+    en: to create
+  - word: program
+    pos: noun
+    ar_eg: برنامج
+    ar: برنامج
+    en: programme
+  - word: kecuali
+    pos: prep
+    ar_eg: ماعدا
+    ar: إلا، باستثناء
+    en: except
+  - word: alami
+    pos: adj
+    ar_eg: طبيعي (pupuk alami)
+    ar: طبيعي (pupuk alami)
+    en: natural
 review:
   status: draft
   verified: false

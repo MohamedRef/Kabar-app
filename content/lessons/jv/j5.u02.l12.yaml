@@ -1,0 +1,282 @@
+schema: kabar.lesson/v1
+id: j5.u02.l12
+language: jv
+title: Ulangan J5.2
+can_do:
+  ar_eg: تحكي خبر بكلامك.
+  ar: أن تعيد رواية خبر بكلماتك.
+  en: Retell a news item.
+slides:
+  - title: Kabeh pasif
+    body:
+      ar_eg: |
+        كل أشكال المجهول اللي في الأخبار:
+        - di- + فعل + dening = اتعمل على إيد … (oleh)
+        - ka- (رسمي): kapilih، kasebut
+        - -in- (أدبي): tinulis، sinebut، kinurmatan
+        - dipun- (كراما مكتوبة): dipunbangun
+        - ولو «أنا»: dak- / tak-، مش dening aku.
+        ولما تحكي الخبر لصاحبك، ارجع للكلام العادي: di- وsing وneng.
+      ar: |
+        صيغ المجهول كلها في الأخبار:
+        - di- + الفعل + dening = فُعل على يد … (oleh)
+        - ka- (رسمية): kapilih، kasebut
+        - -in- (أدبية): tinulis، sinebut، kinurmatan
+        - dipun- (كراما مكتوبة): dipunbangun
+        - ومع المتكلم dak- / tak- لا dening aku.
+        وحين تحكي الخبر لصديقك عُد إلى لغة الكلام: di- وsing وneng.
+      en: |
+        Every passive the news uses:
+        - di- + verb + dening = done by … (oleh)
+        - ka- (formal): kapilih, kasebut
+        - -in- (literary): tinulis, sinebut, kinurmatan
+        - dipun- (written krama): dipunbangun
+        - with "I": dak- / tak-, never dening aku.
+        When you retell the news to a friend, go back to speech: di-, sing, neng.
+    grammar: jv.passive.written
+    examples:
+      - text: Stasiun Madiun dibangun dening perusahaan sepur Walanda.
+        ar_eg: محطة ماديون اتبنت على إيد شركة سكة حديد هولندية.
+        ar: بنت شركةُ سكك حديد هولندية محطة ماديون.
+        en: Madiun Station was built by a Dutch railway company.
+      - text: Pak Slamet kapilih dadi lurah.
+        ar_eg: الأستاذ سلامت اتنتخب عمدة.
+        ar: انتُخب السيد سلامت عمدةً.
+        en: Pak Slamet was elected village head.
+      - text: Masjid enggal dipunbangun dening warga.
+        ar_eg: الجامع الجديد بناه الأهالي. (كراما)
+        ar: بنى الأهالي المسجد الجديد. (كراما)
+        en: The new mosque was built by the residents. (krama)
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dening
+        ar_eg: على إيد (= oleh)
+        ar: من قِبَل (= oleh)
+        en: by (= oleh)
+      - text: kapilih
+        ar_eg: اتنتخب (= dipilih)
+        ar: انتُخب (= dipilih)
+        en: was elected (= dipilih)
+      - text: sinebut
+        ar_eg: بيتسمّى (= disebut)
+        ar: يُسمّى (= disebut)
+        en: is called (= disebut)
+      - text: tinulis
+        ar_eg: مكتوب (= ditulis)
+        ar: مكتوب (= ditulis)
+        en: written (= ditulis)
+      - text: dipunbangun
+        ar_eg: اتبنى (كراما)
+        ar: بُني (كراما)
+        en: was built (krama)
+      - text: dakwaca
+        ar_eg: أنا قريته
+        ar: قرأتُه
+        en: I read it
+    words: [dening, kapilih, sinebut, tinulis]
+  - id: e02
+    type: multiple_choice
+    question: Lurah kasebut kapilih dening warga.
+    question_meaning:
+      ar_eg: يعني إيه بالإندونيسي؟
+      ar: ما معناها بالإندونيسية؟
+      en: What does it mean in Indonesian?
+    options: ['Warga memilih lurah itu.', 'Lurah itu memilih warga.', 'Lurah itu menulis warta.']
+    answer: 0
+    explain:
+      ar_eg: الفاعل بعد dening (warga). يعني الأهالي هما اللي انتخبوا.
+      ar: الفاعل بعد dening (warga)، فالأهالي هم المنتخِبون.
+      en: "The doer follows dening (warga): the residents did the electing."
+    words: [lurah, kapilih, kasebut]
+  - id: e03
+    type: listen
+    text: Dalan iku didandani dening warga.
+    options:
+      - Dalan iku diresiki dening warga.
+      - Dalan iku kebanjiran.
+      - Dalan iku didandani dening warga.
+    answer: 2
+    meaning:
+      ar_eg: الطريق اتصلّح على إيد الأهالي.
+      ar: أصلح الأهالي الطريق.
+      en: The road was repaired by the residents.
+    words: [didandani, warga]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: kacilakaan
+        ar_eg: حادثة
+        ar: حادث
+        en: accident
+      - text: pitulungan
+        ar_eg: مساعدة
+        ar: نجدة
+        en: help
+      - text: pejabat
+        ar_eg: مسؤول
+        ar: مسؤول حكومي
+        en: official
+      - text: nyoblos
+        ar_eg: ينتخب
+        ar: يقترع
+        en: vote
+      - text: kobong
+        ar_eg: اتحرق
+        ar: احترق
+        en: burn
+      - text: seksi
+        ar_eg: شاهد
+        ar: شاهد
+        en: witness
+    words: [kacilakaan, pitulungan, pejabat, nyoblos, kobong, seksi]
+  - id: e05
+    type: listen
+    text: Esuk iki, dalan kasebut wis diresiki dening warga.
+    question:
+      ar_eg: الشارع اتنضّف إمتى؟
+      ar: متى نُظِّف الشارع؟
+      en: When was the road cleaned?
+    options: [esuk iki, wingi sore, sesuk]
+    answer: 0
+    meaning:
+      ar_eg: الصبح ده، الأهالي نضّفوا الشارع المذكور خلاص.
+      ar: وفي صباح اليوم نظّف الأهالي الشارع المذكور.
+      en: This morning, the said road was cleaned up by the residents.
+    words: [diresiki, kasebut]
+  - id: e06
+    type: fill_blank
+    sentence: Buku iki ___ wingi.
+    meaning:
+      ar_eg: الكتاب ده قريته امبارح.
+      ar: قرأتُ هذا الكتاب أمس.
+      en: I read this book yesterday.
+    options: [dakwaca, diwaca dening aku, kapilih]
+    answers: [dakwaca]
+    explain:
+      ar_eg: مع «أنا» بنقول dak- / tak-، مش dening aku.
+      ar: مع المتكلم dak- / tak- لا dening aku.
+      en: With "I" it's dak- / tak-, never dening aku.
+    words: [dening]
+  - id: e07
+    type: fill_blank
+    sentence: Kutha iki ___ Kutha Pendekar.
+    meaning:
+      ar_eg: المدينة دي بيسموها «مدينة المقاتلين».
+      ar: تُسمّى هذه المدينة «مدينة المقاتلين».
+      en: This city is called the City of Fighters (Kutha Pendekar).
+    options: [didandani, kebanjiran, sinebut]
+    answers: [sinebut]
+    words: [sinebut]
+    explain:
+      ar_eg: sinebut = بيتسمّى. didandani = اتصلّح وkebanjiran = غرق في فيضان.
+      ar: sinebut تعني يُسمّى. أما didandani فأُصلح وkebanjiran غمره الفيضان.
+      en: sinebut means "is called". didandani is "repaired" and kebanjiran is "flooded".
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: محطة ماديون اتبنت أيام الهولنديين.
+      ar: بُني محطة ماديون في عهد الهولنديين.
+      en: Madiun Station was built in the Dutch era.
+    answer: Stasiun Madiun dibangun ing jaman Walanda.
+    distractors: [dening, kang]
+    words: [dibangun, jaman, Walanda]
+    explain:
+      ar_eg: dibangun ing jaman Walanda = اتبنت أيام الهولنديين. dening محتاجة فاعل بعدها، وkang = اللي.
+      ar: dibangun ing jaman Walanda = بُنيت في عهد الهولنديين. أما dening فتحتاج فاعلًا بعدها، وkang الذي.
+      en: dibangun ing jaman Walanda is "built in the Dutch era". dening needs a doer after it, and kang is "which".
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الخبر) الطريق اتصلّح على إيد الأهالي.
+      ar: (بأسلوب الخبر) أصلح الأهالي الطريق.
+      en: (news style) The road was repaired by the residents.
+    answers:
+      - Dalan iku didandani dening warga.
+      - Dalan kasebut didandani dening warga.
+      - Dalane didandani dening warga.
+      - Dalan iki didandani dening warga.
+      - Dalan didandani dening warga.
+    words: [didandani, dening, warga]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Lurah enggal kapilih dening warga, jenenge tinulis ing koran.
+    answers_meaning:
+      ar_eg:
+        - العمدة الجديد اتنتخب على إيد الأهالي، واسمه مكتوب في الجرنال.
+        - الأهالي انتخبوا العمدة الجديد، واسمه مكتوب في الجرنال.
+        - العمدة الجديد الأهالي انتخبوه، واسمه مكتوب في الجرنال.
+        - العمدة الجديد اتنتخب من الأهالي، واسمه مكتوب في الجرنال.
+      ar:
+        - انتخب الأهالي العمدةَ الجديد، واسمه مكتوب في الجريدة.
+        - انتُخب العمدة الجديد من قِبَل الأهالي، واسمه مكتوب في الجريدة.
+        - العمدة الجديد انتخبه الأهالي، واسمه مكتوب في الجريدة.
+        - انتخب السكان العمدةَ الجديد، واسمه مكتوب في الصحيفة.
+      en:
+        - The new village head was elected by the residents, and his name is written in the paper.
+        - The new village head was elected by the residents; his name is in the paper.
+        - The residents elected the new village head, and his name is written in the paper.
+        - The new village head was elected by the residents, his name is written in the newspaper.
+        - The new village head was elected by the residents, and his name is in the newspaper.
+    words: [lurah, kapilih, tinulis, enggal]
+  - id: e11
+    type: fill_blank
+    sentence: Rapat dewan wis ___, kabeh wis sepakat.
+    meaning:
+      ar_eg: اجتماع المجلس ___، والكل اتفق.
+      ar: ___ اجتماع المجلس واتفق الجميع.
+      en: The council meeting is ___; everyone has agreed.
+    options: [bubar, mudik, semaput]
+    answers: [bubar]
+    words: [bubar, mudik, semaput, dewan, sepakat]
+    explain:
+      ar_eg: bubar = الاجتماع خلص. mudik = سافر بلده وsemaput = أغمى عليه.
+      ar: bubar تعني انفضّ الاجتماع. أما mudik فالعودة للبلد وsemaput الإغماء.
+      en: bubar means the meeting ended. mudik is going home and semaput is fainting.
+  - id: e12
+    type: speaking
+    text: Wingi Kali Madiun luber, esuk iki dalane diresiki dening warga.
+    meaning:
+      ar_eg: امبارح نهر ماديون فاض، والنهارده الصبح الأهالي نضّفوا الشارع.
+      ar: فاض نهر ماديون أمس، ونظّف الأهالي الشارع صباح اليوم.
+      en: Yesterday the Madiun river overflowed; this morning the residents cleaned up the road.
+    words: [luber, diresiki]
+dialogue:
+  title: Nyritakake warta
+  lines:
+    - speaker: Mbak Ayu
+      text: Ana warta apa, Mohamed?
+      ar_eg: فيه أخبار إيه يا محمد؟
+      ar: ما الأخبار يا محمد؟
+      en: What's the news, Mohamed?
+    - speaker: Mohamed
+      text: Wingi dalan ing Manguharjo kebanjiran.
+      ar_eg: امبارح الشارع في مانجوهارجو غرق مية.
+      ar: غمرت المياه أمس الشارعَ في مانغوهارجو.
+      en: Yesterday the road in Manguharjo got flooded.
+    - speaker: Mbak Ayu
+      text: Waduh! Saiki piye?
+      ar_eg: يا خبر! وإيه الأخبار دلوقتي؟
+      ar: يا للهول! وكيف الحال الآن؟
+      en: Oh no! How is it now?
+    - speaker: Mohamed
+      text: Wis diresiki dening warga. Aman, Mbak.
+      ar_eg: الأهالي نضّفوه خلاص. كله تمام يا آيو.
+      ar: نظّفه الأهالي. كل شيء بخير يا آيو.
+      en: The residents have cleaned it up. All fine, Ayu.
+souvenir:
+  id: j5.u02.souvenir
+  title: Gerbong INKA
+  note:
+    ar_eg: |
+      ماديون اسمها كمان «مدينة القطر»: فيها مصنع INKA (Industri Kereta Api)، الشركة الإندونيسية اللي بتصنع عربيات القطر، في شارع Yos Sudarso مكان ورشة السكة الحديد القديمة. ومحطة ماديون نفسها من 1882. ومن عشرات السنين فيه مجلات زي Djaka Lodang في جوجا بتنشر بالجاوي، فالأخبار اللي بتقراها دلوقتي، عن القطرات أو غيرها، ليها تاريخ طويل.
+    ar: |
+      تُلقَّب ماديون أيضًا «مدينة القطار»: ففيها مصنع INKA (Industri Kereta Api)، الشركة الإندونيسية التي تصنع عربات القطارات، في شارع Yos Sudarso مكان ورشة السكك الحديدية القديمة. ومحطة ماديون نفسها قائمة منذ 1882. ومنذ عقود تنشر مجلات مثل Djaka Lodang في جوغجا بالجاوية، فالأخبار التي تقرؤها الآن لها تاريخ طويل.
+    en: |
+      Madiun is also the "railway city": it is home to INKA (Industri Kereta Api), Indonesia's rail-car maker, on Jalan Yos Sudarso where the old railway workshop stood, and Madiun Station itself dates from 1882. And for decades, magazines like Jogja's Djaka Lodang have published in Javanese, so the news you're reading now, about trains or anything else, has a long history.
+review:
+  status: draft
+  verified: false

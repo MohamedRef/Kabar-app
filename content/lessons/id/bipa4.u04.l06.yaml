@@ -1,178 +1,243 @@
 schema: kabar.lesson/v1
 id: bipa4.u04.l06
 language: id
-title: Siaran radio pagi
+title: Konferensi pers
 can_do:
-  ar_eg: تفهم خبر قصير في الراديو عن سياسة جديدة وتقول مين هيستفيد.
-  ar: أن تفهم خبرًا إذاعيًا قصيرًا عن سياسة جديدة وتذكر من سيستفيد منها.
-  en: Follow a short radio news item about a new policy and say who benefits.
+  ar_eg: 'تفهم إعلان رسمي من وزارة أو سفارة: مين أعلن وإيه اللي اتنشر.'
+  ar: 'أن تفهم إعلانًا رسميًا من وزارة أو سفارة: من أعلن وما الذي صدر.'
+  en: 'Follow an official announcement from a ministry or embassy: who announced what, and what was released.'
 slides:
-  - title: Berita pagi di radio
+  - title: Pengumuman resmi
     body:
       ar_eg: |
-        نشرة الصبح في راديو باريباري. اسمع الجمل الأول من غير ما تبص.
-        pendengar = المستمعين (من dengar = يسمع).
+        mengumumkan = يعلن، duta besar = سفير، dirilis = اتنشر، صدر (keputusan itu dirilis kemarin).
+        kementerian = وزارة (Kementerian Pendidikan)، pernyataan = بيان (pernyataan resmi)، otoritas = سلطة رسمية (otoritas bandara).
+        politisi = سياسي، komite = لجنة.
       ar: |
-        نشرة الصباح في إذاعة باريباري. استمع إلى الجمل أولًا دون أن تنظر.
-        pendengar = المستمعون (من dengar = يسمع).
+        mengumumkan = يعلن، duta besar = سفير، dirilis = صدر، نُشر (keputusan itu dirilis kemarin).
+        kementerian = وزارة (Kementerian Pendidikan)، pernyataan = بيان (pernyataan resmi)، otoritas = سلطة (otoritas bandara).
+        politisi = سياسي، komite = لجنة.
       en: |
-        The morning news on a Parepare radio station. Listen to the sentences first without looking.
-        pendengar = listeners (from dengar, to hear).
+        mengumumkan = to announce, duta besar = ambassador, dirilis = released (keputusan itu dirilis kemarin).
+        kementerian = ministry (Kementerian Pendidikan), pernyataan = statement (pernyataan resmi), otoritas = authority (otoritas bandara).
+        politisi = politician, komite = committee.
     examples:
-      - text: Selamat pagi, pendengar. Mulai tahun depan, pemerintah daerah akan memberikan beasiswa kepada seribu siswa.
-        ar_eg: صباح الخير يا مستمعين. من السنة الجاية، الحكومة المحلية هتدي منح دراسية لألف طالب.
-        ar: صباح الخير أيها المستمعون. ابتداءً من العام القادم ستمنح الحكومة المحلية منحًا دراسية لألف طالب.
-        en: Good morning, listeners. Starting next year, the local government will give scholarships to a thousand students.
-      - text: Menurut pemerintah daerah, setiap tahun ratusan anak putus sekolah karena biaya.
-        ar_eg: الحكومة المحلية بتقول إن كل سنة مئات العيال بيسيبوا المدرسة بسبب المصاريف.
-        ar: بحسب الحكومة المحلية، يترك مئات الأطفال الدراسة كل عام بسبب التكاليف.
-        en: According to the local government, hundreds of children drop out of school every year because of the cost.
-      - text: Berkat kebijakan ini, anak dari keluarga miskin diharapkan bisa terus sekolah.
-        ar_eg: بفضل السياسة دي، بيتمنّوا إن عيال العيلات الفقيرة يقدروا يكمّلوا تعليمهم.
-        ar: بفضل هذه السياسة، يُؤمَل أن يتمكّن أبناء الأسر الفقيرة من مواصلة الدراسة.
-        en: Thanks to this policy, children from poor families are expected to stay in school.
+      - text: Kementerian Pendidikan mengumumkan program baru.
+        ar_eg: وزارة التعليم أعلنت برنامج جديد.
+        ar: أعلنت وزارة التعليم عن برنامج جديد.
+        en: The Ministry of Education announced a new programme.
+      - text: Duta besar Mesir membaca pernyataan untuk mahasiswa.
+        ar_eg: السفير المصري قرا بيان للطلبة.
+        ar: قرأ السفير المصري بيانًا للطلاب.
+        en: The Egyptian ambassador read a statement for students.
+      - text: Keputusan komite itu dirilis kemarin.
+        ar_eg: قرار اللجنة دي نزل امبارح.
+        ar: صدر قرار تلك اللجنة أمس.
+        en: The committee's decision was released yesterday.
 exercises:
   - id: e01
-    type: listen
-    text: Mulai tahun depan, pemerintah daerah akan memberikan beasiswa kepada seribu siswa.
-    question:
-      ar_eg: كام طالب هياخد منحة؟
-      ar: كم طالبًا سيحصل على منحة؟
-      en: How many students will get a scholarship?
-    options: [Seratus siswa, Seribu siswa, Sepuluh ribu siswa]
-    answer: 1
-    meaning:
-      ar_eg: من السنة الجاية، الحكومة المحلية هتدي منح دراسية لألف طالب.
-      ar: ابتداءً من العام القادم ستمنح الحكومة المحلية منحًا دراسية لألف طالب.
-      en: Starting next year, the local government will give scholarships to a thousand students.
-    words: [beasiswa]
-  - id: e02
-    type: listen
-    text: Menurut pemerintah daerah, setiap tahun ratusan anak putus sekolah karena biaya.
-    question:
-      ar_eg: العيال بيسيبوا المدرسة ليه؟
-      ar: لماذا يترك الأطفال المدرسة؟
-      en: Why do children drop out of school?
-    options: [Karena biaya, Karena banjir, Karena sekolahnya jauh]
-    answer: 0
-    meaning:
-      ar_eg: كل سنة مئات العيال بيسيبوا المدرسة بسبب المصاريف.
-      ar: يترك مئات الأطفال الدراسة كل عام بسبب التكاليف.
-      en: Hundreds of children drop out every year because of the cost.
-    words: [putus sekolah]
-  - id: e03
-    type: listen
-    text: Berkat kebijakan ini, anak dari keluarga miskin diharapkan bisa terus sekolah.
-    question:
-      ar_eg: مين اللي هيستفيد من السياسة دي؟
-      ar: من المستفيد من هذه السياسة؟
-      en: Who benefits from this policy?
-    options: [Guru-guru di Parepare, Wartawan radio, Anak dari keluarga miskin]
-    answer: 2
-    meaning:
-      ar_eg: بفضل السياسة دي، بيتمنّوا إن عيال العيلات الفقيرة يكمّلوا تعليمهم.
-      ar: بفضل هذه السياسة يُؤمَل أن يواصل أبناء الأسر الفقيرة الدراسة.
-      en: Thanks to this policy, children from poor families are expected to stay in school.
-    words: [berkat, kebijakan]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة في الخبر بتقدّم سبب «كويس»؟
-      ar: أيّ كلمة في الخبر تقدّم سببًا «إيجابيًا»؟
-      en: Which word in the report introduces a good cause?
-    options: [gara-gara, berkat, akibatnya]
-    answer: 1
-    explain:
-      ar_eg: berkat = بفضل (سبب حلو). gara-gara = بسبب (سبب وحش، عامية). akibatnya = النتيجة، مش السبب.
-      ar: berkat = بفضل (سبب إيجابي)، وgara-gara = بسبب (سبب سلبي، عامية)، وakibatnya للنتيجة لا للسبب.
-      en: berkat = thanks to (good cause); gara-gara = because of (bad cause, casual); akibatnya gives the result, not the cause.
-    words: [berkat, gara-gara]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: beasiswa
-        ar_eg: منحة دراسية
-        ar: منحة دراسية
-        en: scholarship
-      - text: kebijakan
-        ar_eg: سياسة / قرار
-        ar: سياسة
-        en: policy
-      - text: putus sekolah
-        ar_eg: يسيب المدرسة
-        ar: يترك الدراسة
-        en: drop out of school
-      - text: berkat
-        ar_eg: بفضل
-        ar: بفضل
-        en: thanks to
-      - text: menyebabkan
-        ar_eg: يسبّب
-        ar: يسبّب
-        en: cause
-    words: [beasiswa, kebijakan, putus sekolah, berkat, menyebabkan]
-  - id: e06
-    type: dictation
-    text: Banyak anak putus sekolah karena biaya.
+      - text: mengumumkan
+        ar_eg: يعلن
+        ar: يعلن
+        en: to announce
+      - text: duta besar
+        ar_eg: سفير
+        ar: سفير
+        en: ambassador
+      - text: kementerian
+        ar_eg: وزارة
+        ar: وزارة
+        en: ministry
+      - text: pernyataan
+        ar_eg: بيان
+        ar: بيان
+        en: statement
+    words: [mengumumkan, duta besar, kementerian, pernyataan]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: otoritas
+        ar_eg: سلطة رسمية
+        ar: سلطة
+        en: authority
+      - text: politisi
+        ar_eg: سياسي
+        ar: سياسي
+        en: politician
+      - text: komite
+        ar_eg: لجنة
+        ar: لجنة
+        en: committee
+      - text: dirilis
+        ar_eg: اتنشر، صدر
+        ar: صدر
+        en: released
+    words: [otoritas, politisi, komite, dirilis]
+  - id: e03
+    type: listen
+    text: Otoritas bandara mengumumkan penerbangan ke Kairo terlambat.
+    question:
+      ar_eg: مين اللي أعلن؟
+      ar: من الذي أعلن؟
+      en: Who made the announcement?
+    options: [سلطة المطار, السفارة, الوزارة]
+    answer: 0
     meaning:
-      ar_eg: عيال كتير بيسيبوا المدرسة بسبب المصاريف.
-      ar: كثير من الأطفال يتركون الدراسة بسبب التكاليف.
-      en: Many children drop out of school because of the cost.
-    words: [putus sekolah]
-  - id: e07
+      ar_eg: سلطة المطار أعلنت إن الطيارة للقاهرة متأخرة.
+      ar: أعلنت سلطة المطار تأخر الرحلة إلى القاهرة.
+      en: The airport authority announced that the Cairo flight is delayed.
+    words: [otoritas, mengumumkan]
+  - id: e04
     type: fill_blank
-    sentence: Biaya sekolah yang mahal ___ banyak anak putus sekolah.
+    sentence: Kementerian sudah memberi ___ resmi tentang masalah itu.
     meaning:
-      ar_eg: مصاريف المدرسة الغالية بتخلّي عيال كتير يسيبوا المدرسة.
-      ar: تكاليف المدرسة المرتفعة تتسبّب في ترك كثير من الأطفال للدراسة.
-      en: Expensive school fees cause many children to drop out.
-    options: [mendukung, melaporkan, menyebabkan]
-    answers: [menyebabkan]
-    words: [menyebabkan, putus sekolah]
+      ar_eg: الوزارة طلّعت ___ رسمي عن المشكلة دي.
+      ar: أصدرت الوزارة ___ رسميًا عن تلك المسألة.
+      en: The ministry has issued an official ___ about that problem.
+    options: [pernyataan, komite, politisi]
+    answers: [pernyataan]
+    words: [pernyataan, komite, politisi]
+    explain:
+      ar_eg: pernyataan resmi = بيان رسمي. komite = لجنة، وpolitisi = سياسي.
+      ar: pernyataan resmi = بيان رسمي. أما komite فاللجنة، وpolitisi السياسي.
+      en: pernyataan resmi is an official statement. komite is a committee, and politisi is a politician.
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين بيرشّح نفسه في الانتخابات؟
+      ar: من يترشّح في الانتخابات؟
+      en: Who runs in elections?
+    options: [kementerian, politisi, pengumuman]
+    answer: 1
+    explain:
+      ar_eg: politisi = سياسي.
+      ar: politisi = سياسي.
+      en: politisi = politician.
+    words: [kementerian, politisi, pengumuman]
+  - id: e06
+    type: fill_blank
+    sentence: Nilai ujian akan ___ di internet hari Jumat.
+    meaning:
+      ar_eg: درجات الامتحان ___ على النت يوم الجمعة.
+      ar: ستُـ ___ درجات الامتحان على الإنترنت يوم الجمعة.
+      en: Exam marks will be ___ online on Friday.
+    options: [dirilis, otoritas, pernyataan]
+    answers: [dirilis]
+    words: [dirilis, otoritas, pernyataan]
+    explain:
+      ar_eg: dirilis = يتنشر أو يطلع، والدرجات بتطلع على النت. otoritas = سلطة، وpernyataan = بيان، ودول أسماء.
+      ar: dirilis = يُنشر، فالدرجات تُنشر على الإنترنت. أما otoritas فالسلطة، وpernyataan البيان، وهما اسمان.
+      en: "dirilis means released: the marks come out online. otoritas (authority) and pernyataan (statement) are nouns."
+  - id: e07
+    type: multiple_choice
+    question: Sebuah ___ dibentuk untuk memeriksa masalah itu.
+    options: [duta besar, pernyataan, komite]
+    answer: 2
+    explain:
+      ar_eg: komite = لجنة.
+      ar: komite = لجنة.
+      en: komite = committee.
+    words: [duta besar, pernyataan, komite]
   - id: e08
+    type: build_sentence
+    source:
+      ar_eg: الوزارة أعلنت القرار الصبح.
+      ar: أعلنت الوزارة القرار صباحًا.
+      en: The ministry announced the decision this morning.
+    answer: Kementerian mengumumkan keputusan itu tadi pagi.
+    distractors: [dirilis, komite]
+    words: [kementerian, mengumumkan, dirilis, komite]
+    explain:
+      ar_eg: mengumumkan = أعلن، والوزارة هي اللي أعلنت. dirilis مجهول، فمايمشيش مع فاعل، وkomite = لجنة.
+      ar: mengumumkan = أعلن، والوزارة هي الفاعل. أما dirilis فمبني للمجهول لا يأخذ فاعلًا، وkomite اللجنة.
+      en: mengumumkan means announced, with the ministry as subject. dirilis is passive, so it can't take a subject, and komite is a committee.
+  - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بفضل المنحة، Andi يقدر يكمّل تعليمه.
-      ar: بفضل المنحة يستطيع Andi مواصلة الدراسة.
-      en: Thanks to the scholarship, Andi can stay in school.
-    answers:
-      - Berkat beasiswa, Andi bisa terus sekolah.
-      - Berkat beasiswa itu, Andi bisa terus sekolah.
-      - Berkat beasiswa, Andi bisa terus bersekolah.
-      - Berkat beasiswa, Andi dapat terus sekolah.
-      - Andi bisa terus sekolah berkat beasiswa.
-      - Andi bisa terus bersekolah berkat beasiswa.
-    words: [berkat, beasiswa]
+    direction: from_target
+    source_text: Pengumuman itu dibaca oleh duta besar Mesir.
+    answers_meaning:
+      ar_eg: [الإعلان ده قراه السفير المصري, السفير المصري هو اللي قرا الإعلان]
+      ar: [قرأ ذلك الإعلانَ السفيرُ المصري, تلا السفير المصري الإعلان]
+      en: [The announcement was read by the Egyptian ambassador, The Egyptian ambassador read out the announcement]
+    words: [duta besar]
+  - id: e10
+    type: speaking
+    text: Otoritas kota mengumumkan pernyataan penting kepada pers.
+    meaning:
+      ar_eg: سلطة المدينة أعلنت بيان مهم للصحافة.
+      ar: أعلنت سلطة المدينة بيانًا مهمًا للصحافة.
+      en: The city authority announced an important statement to the press.
+    words: [pernyataan, otoritas, mengumumkan, politisi]
 dialogue:
-  title: Kabar baik untuk adik Andi
   lines:
-    - speaker: Andi
-      text: Mohamed, kamu dengar siaran radio tadi pagi?
-      ar_eg: يا Mohamed، سمعت نشرة الراديو الصبح؟
-      ar: يا Mohamed، هل سمعت نشرة الإذاعة صباح اليوم؟
-      en: Mohamed, did you hear the radio news this morning?
+    - speaker: Kak Nirmala
+      text: Mohamed, ikut aku ke kantor kota yuk? Ada pengumuman penting buat pers.
+      ar_eg: يا محمد، تيجي معايا مكتب المدينة؟ فيه إعلان مهم للصحافة.
+      ar: يا محمد، هل تأتي معي إلى مكتب المدينة؟ هناك إعلان مهم للصحافة.
+      en: Mohamed, coming with me to the city office? There's an important announcement for the press.
     - speaker: Mohamed
-      text: Dengar. Pemerintah daerah akan memberikan beasiswa kepada seribu siswa.
-      ar_eg: سمعتها. الحكومة المحلية هتدي منح لألف طالب.
-      ar: سمعتها. ستمنح الحكومة المحلية منحًا لألف طالب.
-      en: I did. The local government is giving scholarships to a thousand students.
-    - speaker: Andi
-      text: Wah, adik saya bisa mendaftar! Dulu temannya putus sekolah gara-gara biaya.
-      ar_eg: ياه، أختي الصغيرة تقدر تقدّم! زمان صاحبتها سابت المدرسة بسبب المصاريف.
-      ar: رائع، يمكن لأختي الصغرى أن تتقدّم! فقد تركت صديقتها الدراسة سابقًا بسبب التكاليف.
-      en: Great, my little sister can apply! Her friend dropped out because of the cost.
+      text: Boleh. Siapa yang mau mengumumkan apa?
+      ar_eg: ماشي. مين هيعلن إيه؟
+      ar: حسنًا. من سيعلن ماذا؟
+      en: Sure. Who's announcing what?
+    - speaker: Kak Nirmala
+      text: Kementerian Pendidikan dan komite beasiswa. Nama-nama penerima beasiswa baru dirilis.
+      ar_eg: وزارة التعليم ولجنة المنح. أسامي اللي خدوا المنحة لسه نازلة.
+      ar: وزارة التعليم ولجنة المنح. صدرت للتوّ أسماء الحاصلين على المنح.
+      en: The Education Ministry and the scholarship committee. The names of the scholarship winners have just been released.
     - speaker: Mohamed
-      text: Semoga kebijakan ini berhasil.
-      ar_eg: يا رب السياسة دي تنجح.
-      ar: نرجو أن تنجح هذه السياسة.
-      en: Let's hope this policy works.
-    - speaker: Andi
-      text: Amin. Berkat beasiswa, saya sendiri bisa kuliah di Makassar.
-      ar_eg: آمين. أنا نفسي بفضل منحة قدرت أدرس في الجامعة في ماكاسار.
-      ar: آمين. فأنا نفسي تمكّنت بفضل منحة من الدراسة الجامعية في ماكاسار.
-      en: Amen. Thanks to a scholarship, I was able to go to university in Makassar myself.
-new_words: []
+      text: Ada politisi juga nggak?
+      ar_eg: هيبقى فيه سياسيين كمان؟
+      ar: هل سيحضر سياسيون أيضًا؟
+      en: Will there be politicians too?
+    - speaker: Kak Nirmala
+      text: Ada. Mereka akan memberi pernyataan jam sepuluh.
+      ar_eg: أيوه. هيدّوا بيان الساعة عشرة.
+      ar: نعم. سيُدلون ببيان في العاشرة.
+      en: Yes. They'll give a statement at ten.
+new_words:
+  - word: mengumumkan
+    pos: verb
+    ar_eg: يعلن
+    ar: يعلن
+    en: to announce
+  - word: duta / duta besar
+    pos: noun
+    ar_eg: سفير، مندوب
+    ar: سفير
+    en: envoy, ambassador (duta besar)
+  - word: kementerian
+    pos: noun
+    ar_eg: وزارة
+    ar: وزارة
+    en: ministry
+  - word: pernyataan
+    pos: noun
+    ar_eg: بيان، تصريح
+    ar: بيان
+    en: statement
+  - word: otoritas
+    pos: noun
+    ar_eg: سلطة رسمية
+    ar: سلطة
+    en: authority
+  - word: politisi
+    pos: noun
+    ar_eg: سياسي
+    ar: سياسي
+    en: politician
+  - word: komite
+    pos: noun
+    ar_eg: لجنة
+    ar: لجنة
+    en: committee
+  - word: dirilis
+    pos: verb
+    ar_eg: اتنشر، نزل
+    ar: صدر، نُشر
+    en: to be released
 review:
   status: draft
   verified: false

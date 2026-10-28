@@ -1,193 +1,243 @@
 schema: kabar.lesson/v1
 id: bipa4.u02.l05
 language: id
-title: Jalan rusak
+title: Pesanan yang mengecewakan
 can_do:
-  ar_eg: تكتب رسالة قرّاء عن مشكلة في حتتك وتطلب حل.
-  ar: أن تكتب رسالة إلى بريد القرّاء عن مشكلة محلية وتطلب حلًا.
-  en: Write a letter about a local problem.
+  ar_eg: 'تشتكي من طلب أونلاين وحش: تلغيه، ترجّعه، وتطلب فلوسك.'
+  ar: 'أن تشكو من طلب سيئ عبر الإنترنت: تلغيه وتعيده وتطالب بالمبلغ.'
+  en: 'Complain about a bad online order: cancel it, send it back and ask for a refund.'
 slides:
-  - title: Masalah, akibat, permohonan
+  - title: Barang tidak sesuai
     body:
       ar_eg: |
-        في نص الرسالة رتّب كلامك كده:
-        1) المشكلة: Jalan di depan sekolah berlubang.
-        2) نتيجتها: membahayakan pengendara، ada kecelakaan.
-        3) الطلب: Kami mohon … secepat-cepatnya / sebaik-baiknya.
-        والتكرار اللي اتعلمته بيدي الوصف حياة: truk bolak-balik، warga tolong-menolong.
+        mengecewakan = بيخيّب الأمل، memuaskan = يرضي، يبسط (pelayanan yang memuaskan).
+        berkualitas = جودته عالية، rincian = التفاصيل (rincian pesanan = تفاصيل الطلب).
+        dibatalkan = اتلغى، dikembalikan = اترجّع، kerugian = خسارة، terganggu = متضايق أو متعطّل.
       ar: |
-        رتّب مضمون الرسالة هكذا:
-        1) المشكلة: Jalan di depan sekolah berlubang.
-        2) أثرها: membahayakan pengendara، ada kecelakaan.
-        3) الطلب: Kami mohon … secepat-cepatnya / sebaik-baiknya.
-        والتكرار الذي تعلمته يُحيي الوصف: truk bolak-balik، warga tolong-menolong.
+        mengecewakan = مخيّب للآمال، memuaskan = مُرضٍ (pelayanan yang memuaskan).
+        berkualitas = عالي الجودة، rincian = التفاصيل (rincian pesanan = تفاصيل الطلب).
+        dibatalkan = أُلغي، dikembalikan = أُعيد، kerugian = خسارة، terganggu = منزعج أو متعطّل.
       en: |
-        Order the body of your letter like this:
-        1) The problem: Jalan di depan sekolah berlubang.
-        2) Its effect: membahayakan pengendara, ada kecelakaan.
-        3) The request: Kami mohon … secepat-cepatnya / sebaik-baiknya.
-        The doubles you've learned bring it to life: truk bolak-balik, warga tolong-menolong.
-    grammar: id.reduplication.advanced
+        mengecewakan = disappointing, memuaskan = satisfying (pelayanan yang memuaskan).
+        berkualitas = high-quality, rincian = details (rincian pesanan = order details).
+        dibatalkan = cancelled, dikembalikan = returned, kerugian = loss, terganggu = disturbed, disrupted.
     examples:
-      - text: Jalan di depan sekolah berlubang dan membahayakan pengendara.
-        ar_eg: الطريق اللي قدام المدرسة مليان حفر وبيعرّض السواقين للخطر.
-        ar: الطريق أمام المدرسة مليء بالحفر ويعرّض السائقين للخطر.
-        en: The road in front of the school is full of potholes and endangers drivers.
-      - text: Kami mohon jalan ini diperbaiki secepat-cepatnya.
-        ar_eg: بنطلب إن الطريق ده يتصلح بأسرع ما يمكن.
-        ar: نرجو إصلاح هذا الطريق بأسرع ما يمكن.
-        en: We ask for this road to be repaired as quickly as possible.
+      - text: Pelayanan toko itu sangat mengecewakan.
+        ar_eg: خدمة المحل ده بتخيّب الأمل خالص.
+        ar: خدمة ذلك المتجر مخيّبة للآمال جدًا.
+        en: That shop's service is very disappointing.
+      - text: Pesanan saya dibatalkan oleh toko.
+        ar_eg: طلبي اتلغى من المحل.
+        ar: ألغى المتجر طلبي.
+        en: My order was cancelled by the shop.
+      - text: Sepatu ini berkualitas dan harganya murah.
+        ar_eg: الجزمة دي جودتها عالية وسعرها رخيص.
+        ar: هذا الحذاء عالي الجودة وسعره رخيص.
+        en: These shoes are good quality and cheap.
 exercises:
   - id: e01
-    type: listen
-    text: Jalan di depan sekolah berlubang.
-    options: ["Jalan di depan sekolah bolak-balik.", "Jalan di depan sekolah berlubang.", "Jalan di depan pasar berlubang."]
-    answer: 1
-    meaning:
-      ar_eg: الطريق اللي قدام المدرسة فيه حفر.
-      ar: الطريق أمام المدرسة مليء بالحفر.
-      en: The road in front of the school has potholes.
-    words: [berlubang]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة تنفع لجزء «الطلب» في الرسالة؟
-      ar: أيّ جملة تصلح لجزء «الطلب» في الرسالة؟
-      en: Which sentence belongs in the "request" part of the letter?
-    options: ["Hormat saya, Mohamed.", "Yth. Redaksi Kabar Sulawesi", "Kami mohon jalan ini diperbaiki secepat-cepatnya."]
-    answer: 2
-    words: [secepat-cepatnya]
-  - id: e03
     type: match_pairs
     pairs:
-      - text: berlubang
-        ar_eg: فيه حفر
-        ar: مليء بالحفر
-        en: potholed
-      - text: kecelakaan
-        ar_eg: حادثة
-        ar: حادث
-        en: accident
-      - text: pengendara
-        ar_eg: سواق (موتوسيكل / عربية)
-        ar: سائق / راكب دراجة
-        en: rider, driver
-      - text: membahayakan
-        ar_eg: يعرّض للخطر
-        ar: يعرّض للخطر
-        en: endanger
-      - text: bolak-balik
-        ar_eg: رايح جاي
-        ar: ذهابًا وإيابًا
-        en: back and forth
-    words: [berlubang, kecelakaan, pengendara, membahayakan, bolak-balik]
+      - text: mengecewakan
+        ar_eg: بيخيّب الأمل
+        ar: مخيّب للآمال
+        en: disappointing
+      - text: memuaskan
+        ar_eg: يرضي
+        ar: مُرضٍ
+        en: satisfying
+      - text: berkualitas
+        ar_eg: جودته عالية
+        ar: عالي الجودة
+        en: high-quality
+      - text: rincian
+        ar_eg: تفاصيل
+        ar: تفاصيل
+        en: details
+    words: [mengecewakan, memuaskan, berkualitas, rincian]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: dibatalkan
+        ar_eg: اتلغى
+        ar: أُلغي
+        en: cancelled
+      - text: dikembalikan
+        ar_eg: اترجّع
+        ar: أُعيد
+        en: returned
+      - text: kerugian
+        ar_eg: خسارة
+        ar: خسارة
+        en: loss
+      - text: terganggu
+        ar_eg: متضايق، متعطّل
+        ar: منزعج، متعطّل
+        en: disturbed
+    words: [dibatalkan, dikembalikan, kerugian, terganggu]
+  - id: e03
+    type: listen
+    text: Uang Anda akan dikembalikan dalam tiga hari.
+    question:
+      ar_eg: هيحصل إيه للفلوس؟
+      ar: ماذا سيحدث للمال؟
+      en: What will happen to the money?
+    options: [الفلوس هترجع, الطلب اتلغى, فيه خسارة]
+    answer: 0
+    meaning:
+      ar_eg: فلوس حضرتك هترجعلك في تلات أيام.
+      ar: ستُعاد أموالك خلال ثلاثة أيام.
+      en: Your money will be returned within three days.
+    words: [dikembalikan]
   - id: e04
     type: fill_blank
-    sentence: Bulan lalu ada tiga ___ di jalan itu.
+    sentence: Hasilnya bagus sekali. Saya sangat puas, pelayanannya ___.
     meaning:
-      ar_eg: الشهر اللي فات حصل تلات حوادث في الطريق ده.
-      ar: وقعت ثلاثة حوادث في ذلك الطريق الشهر الماضي.
-      en: Last month there were three accidents on that road.
-    options: [kecelakaan, pengendara, berlubang]
-    answers: [kecelakaan]
-    words: [kecelakaan]
+      ar_eg: النتيجة حلوة جدًا. أنا مبسوط خالص، الخدمة ___.
+      ar: النتيجة ممتازة. أنا راضٍ جدًا، فالخدمة ___.
+      en: The result is great. I'm very pleased; the service is ___.
+    options: [memuaskan, mengecewakan, terganggu]
+    answers: [memuaskan]
+    words: [memuaskan, mengecewakan, terganggu]
+    explain:
+      ar_eg: memuaskan = مُرضي، وده يناسب «أنا مبسوط جدًا». mengecewakan = مخيّب للأمل، وterganggu = اتعطّل.
+      ar: memuaskan = مُرضٍ، ويناسب «أنا راضٍ جدًا». أما mengecewakan فمخيّب للآمال، وterganggu تعطّل.
+      en: memuaskan means satisfying, matching "I'm very pleased". mengecewakan is disappointing, and terganggu is disrupted.
   - id: e05
-    type: fill_blank
-    sentence: Lubang besar itu ___ pengendara motor.
-    meaning:
-      ar_eg: (اكتب الفعل) الحفرة الكبيرة دي بتعرّض سواقين الموتوسيكلات للخطر.
-      ar: (اكتب الفعل) تلك الحفرة الكبيرة تعرّض راكبي الدراجات النارية للخطر.
-      en: (Type the verb.) That big hole endangers motorbike riders.
-    answers: [membahayakan]
-    words: [membahayakan, pengendara]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الطلب اتلغى. بالإندونيسي؟
+      ar: أُلغي الطلب. بالإندونيسية؟
+      en: The order was cancelled. In Indonesian?
+    options: [Pesanan dikembalikan., Pesanan berkualitas., Pesanan dibatalkan.]
+    answer: 2
+    explain:
+      ar_eg: dibatalkan = اتلغى. dikembalikan = اترجّع.
+      ar: dibatalkan = أُلغي، dikembalikan = أُعيد.
+      en: dibatalkan = cancelled; dikembalikan = returned.
+    words: [dikembalikan, berkualitas, dibatalkan]
   - id: e06
+    type: fill_blank
+    sentence: Karena listrik mati, pekerjaan kami ___.
+    meaning:
+      ar_eg: عشان الكهربا قطعت، شغلنا ___.
+      ar: لأن الكهرباء انقطعت، ___ عملنا.
+      en: Because of the power cut, our work was ___.
+    options: [terganggu, memuaskan, rincian]
+    answers: [terganggu]
+    words: [terganggu, memuaskan, rincian]
+    explain:
+      ar_eg: terganggu = اتعطّل أو اتأثر، وده اللي بيحصل لما النور يقطع. memuaskan = مُرضي، وrincian = تفاصيل.
+      ar: terganggu = تعطّل أو تأثر، وهذا ما يحدث عند انقطاع الكهرباء. أما memuaskan فمُرضٍ، وrincian التفاصيل.
+      en: terganggu means disrupted, which a power cut does. memuaskan is satisfying, and rincian are details.
+  - id: e07
+    type: multiple_choice
+    question: Barangnya rusak, jadi toko itu harus membayar ___ saya.
+    options: [rincian, kerugian, kualitasnya]
+    answer: 1
+    explain:
+      ar_eg: kerugian = خسارة. membayar kerugian = يعوّض الخسارة.
+      ar: kerugian = خسارة، وmembayar kerugian = يعوّض الخسارة.
+      en: kerugian = loss; membayar kerugian = to cover a loss.
+    words: [rincian, kerugian]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: عربيات الرمل رايحة جاية، فالطريق ده بقى مليان حفر.
-      ar: تذهب شاحنات الرمل وتجيء، فامتلأ هذا الطريق بالحفر.
-      en: Sand trucks go back and forth, so this road is full of potholes.
-    answer: Truk pasir bolak-balik sehingga jalan ini berlubang.
-    distractors: [lubang-lubang, kecelakaan]
-    words: [bolak-balik, berlubang]
-  - id: e07
-    type: dictation
-    text: Jalan rusak itu membahayakan pengendara dan anak-anak sekolah.
-    meaning:
-      ar_eg: الطريق البايظ ده بيعرّض السواقين وعيال المدارس للخطر.
-      ar: يعرّض ذلك الطريق المتضرر السائقين وتلاميذ المدارس للخطر.
-      en: That broken road endangers drivers and schoolchildren.
-    words: [membahayakan, pengendara]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: امبارح حصلت حادثة قدام السوق.
-      ar: وقع حادث أمام السوق أمس.
-      en: There was an accident in front of the market yesterday.
-    answers:
-      - Kemarin ada kecelakaan di depan pasar.
-      - Kemarin ada kecelakaan di depan pasar
-      - Ada kecelakaan di depan pasar kemarin.
-      - Kemarin terjadi kecelakaan di depan pasar.
-      - Terjadi kecelakaan di depan pasar kemarin.
-    words: [kecelakaan]
+      ar_eg: لو سمحت ابعتلي تفاصيل الطلب.
+      ar: من فضلك أرسل لي تفاصيل الطلب.
+      en: Please send me the order details.
+    answer: Tolong kirim rincian pesanan saya.
+    distractors: [kerugian, dibatalkan]
+    words: [rincian, kerugian, dibatalkan]
+    explain:
+      ar_eg: rincian pesanan = تفاصيل الطلب. kerugian = خسارة، وdibatalkan = اتلغى.
+      ar: rincian pesanan = تفاصيل الطلب. أما kerugian فالخسارة، وdibatalkan أُلغي.
+      en: rincian pesanan means order details. kerugian is a loss, and dibatalkan is cancelled.
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Barangnya tidak berkualitas dan sangat mengecewakan.
+    answers_meaning:
+      ar_eg: [الحاجة جودتها وحشة وبتخيّب الأمل خالص, البضاعة مش كويسة ومخيّبة للأمل جدًا]
+      ar: [البضاعة ليست جيدة الجودة ومخيّبة للآمال جدًا, السلعة رديئة الجودة ومخيبة جدًا للآمال]
+      en: [The item is poor quality and very disappointing, 'The goods aren''t good quality and are really disappointing']
+    words: [berkualitas, mengecewakan]
+  - id: e10
     type: speaking
-    text: Kami mohon pemerintah daerah memperbaiki jalan ini sebaik-baiknya.
+    text: Saya minta pesanan dibatalkan dan uang saya dikembalikan.
     meaning:
-      ar_eg: بنطلب من الحكومة المحلية تصلح الطريق ده على أحسن وجه.
-      ar: نرجو من الحكومة المحلية أن تُصلح هذا الطريق على أحسن وجه.
-      en: We ask the local government to repair this road as well as possible.
-    words: [pemerintah daerah, sebaik-baiknya]
+      ar_eg: عايز الطلب يتلغي وفلوسي ترجعلي.
+      ar: أطلب إلغاء الطلب وإعادة مالي.
+      en: I'd like the order cancelled and my money returned.
+    words: [dibatalkan, dikembalikan, memuaskan, terganggu]
 dialogue:
-  title: Draf surat pembaca
   lines:
-    - speaker: Mohamed
-      text: Bu Hasnah, ini draf surat saya. Boleh saya baca?
-      ar_eg: يا طنط حسنة، دي مسودة جوابي. ممكن أقراهولك؟
-      ar: يا سيدة حسنة، هذه مسودة رسالتي. هل أقرؤها؟
-      en: Bu Hasnah, here's my draft letter. May I read it?
     - speaker: Bu Hasnah
-      text: Silakan, Nak.
-      ar_eg: اتفضل يا ابني.
-      ar: تفضّل يا بني.
-      en: Go ahead, dear.
+      text: Mohamed, kenapa kamu kecewa?
+      ar_eg: يا محمد، مالك زعلان كده؟
+      ar: يا محمد، لماذا أنت محبط؟
+      en: Mohamed, why are you disappointed?
     - speaker: Mohamed
-      text: 'Jalan desa kami berlubang dan membahayakan pengendara. Bulan lalu ada dua kecelakaan.'
-      ar_eg: طريق قريتنا مليان حفر وبيعرّض السواقين للخطر. الشهر اللي فات حصلت حادثتين.
-      ar: طريق قريتنا مليء بالحفر ويعرّض السائقين للخطر، ووقع فيه حادثان الشهر الماضي.
-      en: Our village road is full of potholes and endangers drivers. Last month there were two accidents.
+      text: Saya pesan jaket lewat internet, Bu. Yang datang kecil dan nggak berkualitas.
+      ar_eg: طلبت جاكيت من النت. اللي جه صغير وجودته وحشة.
+      ar: طلبت سترة عبر الإنترنت، فوصلت صغيرة ورديئة الجودة.
+      en: I ordered a jacket online. What came is small and poor quality.
     - speaker: Bu Hasnah
-      text: Bagus, jelas sekali. Tulis juga bahwa truk tambang bolak-balik setiap hari.
-      ar_eg: حلو، واضح جدًا. واكتب كمان إن عربيات المحجر رايحة جاية كل يوم.
-      ar: جيد وواضح جدًا. واكتب أيضًا أن شاحنات المحجر تذهب وتجيء كل يوم.
-      en: Good, very clear. Also write that the quarry trucks go back and forth every day.
+      text: Wah, mengecewakan banget. Udah cek lagi apa yang kamu pesan?
+      ar_eg: يا خبر، دي حاجة تخيّب الأمل. راجعت تاني إنت طالب إيه؟
+      ar: يا للخيبة! هل راجعت ما طلبته مرة أخرى؟
+      en: Oh, how disappointing. Did you check again what you ordered?
     - speaker: Mohamed
-      text: Baik. Di akhir saya minta jalan ini diperbaiki secepat-cepatnya.
-      ar_eg: ماشي. وفي الآخر هطلب إن الطريق يتصلح بأسرع ما يمكن.
-      ar: حسنًا. وفي الختام أطلب إصلاح الطريق بأسرع ما يمكن.
-      en: OK. At the end I'll ask for the road to be repaired as quickly as possible.
+      text: Udah. Saya minta jaketnya dikembalikan, tapi tokonya diam aja.
+      ar_eg: أيوه. طلبت أرجّع الجاكيت، بس المحل ساكت خالص.
+      ar: نعم. طلبت إعادة السترة، لكن المتجر لم يقل شيئًا.
+      en: Yes. I asked to send it back, but the shop just stays silent.
+    - speaker: Bu Hasnah
+      text: Tulis aja surat pembaca. Toko harus mengganti kerugianmu!
+      ar_eg: اكتب رسالة للجرنال. المحل لازم يعوّضك عن خسارتك!
+      ar: اكتب رسالة إلى الصحيفة. يجب أن يعوّضك المتجر عن خسارتك!
+      en: Write a letter to the editor. The shop has to make up for your loss!
 new_words:
-  - word: berlubang
-    pos: adjective
-    ar_eg: فيه حفر / مخرّم
-    ar: مليء بالحفر
-    en: potholed, full of holes
-  - word: kecelakaan
+  - word: mengecewakan
+    pos: adj
+    ar_eg: بيخيّب الأمل
+    ar: مخيّب للآمال
+    en: disappointing
+  - word: memuaskan
+    pos: adj
+    ar_eg: يرضي، يبسط
+    ar: مُرضٍ
+    en: satisfying, satisfactory
+  - word: berkualitas
+    pos: adj
+    ar_eg: جودته عالية
+    ar: عالي الجودة
+    en: high-quality
+  - word: rincian
     pos: noun
-    ar_eg: حادثة
-    ar: حادث
-    en: accident
-  - word: pengendara
-    pos: noun
-    ar_eg: سواق (موتوسيكل / عربية)
-    ar: سائق / راكب
-    en: rider, driver
-  - word: membahayakan
+    ar_eg: تفاصيل
+    ar: تفاصيل
+    en: details, breakdown
+  - word: dibatalkan
     pos: verb
-    ar_eg: يعرّض للخطر
-    ar: يعرّض للخطر
-    en: endanger
+    ar_eg: اتلغى
+    ar: أُلغي
+    en: to be cancelled
+  - word: dikembalikan
+    pos: verb
+    ar_eg: اترجّع
+    ar: أُعيد
+    en: to be returned, refunded
+  - word: kerugian
+    pos: noun
+    ar_eg: خسارة
+    ar: خسارة
+    en: loss, damage
+  - word: terganggu
+    pos: adj
+    ar_eg: متضايق، متعطّل
+    ar: منزعج، متعطّل
+    en: disturbed, disrupted
 review:
   status: draft
   verified: false

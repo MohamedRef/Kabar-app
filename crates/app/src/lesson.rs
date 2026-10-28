@@ -410,9 +410,9 @@ fn log_episode(coach: Coach, db: &Db, p: &Player) {
     coach.record(db, practice, (summary.duration_ms / 1000) as u32);
 }
 
-/// The kendang tap for a right answer (silent when sounds are off).
+/// The chime (and phone tap) for a right answer (silent when sounds are off).
 fn chime(ui: Ui) {
-    crate::sounds::play(ui, crate::sounds::Sound::Kendang);
+    crate::sounds::play(ui, crate::sounds::Sound::Correct);
 }
 
 // ---------------------------------------------------------------------------
@@ -448,9 +448,16 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
             .find(|c| !c.is_whitespace())
             .is_some_and(|&c| is_latin_letter(c) && c.is_uppercase())
     };
+    // "-ku" after a space or an Arabic letter ("aku و-ku") is a suffix: its
+    // hyphen stays inside the Latin run, never mirrored to "ku-".
+    let affix_at = |i: usize| {
+        chars[i] == '-'
+            && latin(i + 1)
+            && (i == 0 || !(is_latin_letter(chars[i - 1]) || chars[i - 1].is_ascii_digit()))
+    };
     let mut i = 0;
     while i < chars.len() {
-        let affix = chars[i] == '-' && latin(i + 1) && (i == 0 || !chars[i - 1].is_alphanumeric());
+        let affix = affix_at(i);
         if latin(i) || affix {
             let start = i;
             let mut end = i;
@@ -489,10 +496,7 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
             i = end;
         } else {
             let start = i;
-            while i < chars.len()
-                && !latin(i)
-                && !(chars[i] == '-' && latin(i + 1) && (i == 0 || !chars[i - 1].is_alphanumeric()))
-            {
+            while i < chars.len() && !latin(i) && !affix_at(i) {
                 i += 1;
             }
             let run: String = chars[start..i].iter().collect();
@@ -500,6 +504,42 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
                 Some((false, prev)) => prev.push_str(&run),
                 _ => out.push((false, run)),
             }
+        }
+    }
+    out
+}
+
+fn is_arabic_letter(c: char) -> bool {
+    matches!(c, '\u{0600}'..='\u{06FF}' | '\u{0750}'..='\u{077F}' | '\u{08A0}'..='\u{08FF}' | '\u{FB50}'..='\u{FDFF}' | '\u{FE70}'..='\u{FEFF}')
+}
+
+/// Splits UI-language text of an English line into (is_arabic, run): an
+/// Arabic run spans Arabic words and the spaces between them, never the
+/// guillemets, brackets or commas around it, which stay with the English.
+pub fn arabic_runs(s: &str) -> Vec<(bool, String)> {
+    let chars: Vec<char> = s.chars().collect();
+    let arabic = |i: usize| chars.get(i).is_some_and(|&c| is_arabic_letter(c));
+    let mut out: Vec<(bool, String)> = Vec::new();
+    let mut i = 0;
+    while i < chars.len() {
+        let start = i;
+        if arabic(i) {
+            let mut end = i;
+            while i < chars.len() {
+                if arabic(i) || chars[i] == '\u{200C}' {
+                    end = i + 1;
+                } else if chars[i] != ' ' {
+                    break;
+                }
+                i += 1;
+            }
+            out.push((true, chars[start..end].iter().collect()));
+            i = end;
+        } else {
+            while i < chars.len() && !arabic(i) {
+                i += 1;
+            }
+            out.push((false, chars[start..i].iter().collect()));
         }
     }
     out
@@ -561,35 +601,42 @@ fn RichRuns(text: String, target: &'static str, pron: bool) -> Element {
         rsx! {
             for (j , unit) in pron_units(runs, target, say).into_iter().enumerate() {
                 match unit {
-                    Unit::Plain(t) => rsx! {
-                        span { key: "{key}.{j}", "{localize_digits(&t, lang, eastern)}" }
-                    },
-                    Unit::Latin { phrases, close, short } => {
-                        let last = phrases.len().saturating_sub(1);
-                        rsx! {
-                            // The phrase, its closing quote and its pronunciation
-                            // stay together; a short one stays on one line.
-                            span { key: "{key}.{j}", class: if short { "pron-unit nowrap" } else { "pron-unit" },
-                                bdi { lang: target, dir: "ltr", class: "latin",
-                                    for (k , ph) in phrases.iter().enumerate() {
-                                        span { key: "{k}",
-                                            "{ph.text}"
-                                            if ph.say && (k < last || close.is_empty()) {
-                                                Pron { text: ph.text.clone(), tag: target, inline: true }
-                                            }
-                                            "{ph.sep}"
-                                        }
-                                    }
-                                }
-                                if !close.is_empty() {
-                                    span { "{close}" }
-                                    if phrases.get(last).is_some_and(|p| p.say) {
-                                        Pron { text: phrases[last].text.clone(), tag: target, inline: true }
-                                    }
+                    Unit::Plain(t) if dir == "ltr" => rsx! {
+                        // Arabic in an English line («إنت») gets its own
+                        // right-to-left isolate, the mirror of Latin above, so
+                        // it can't pull the quotes and commas around it in.
+                        span { key: "{key}.{j}",
+                            for (k , (arabic, part)) in arabic_runs(&t).into_iter().enumerate() {
+                                if arabic {
+                                    bdi { key: "{k}", lang: "ar", dir: "rtl", "{part}" }
+                                } else {
+                                    span { key: "{k}", "{localize_digits(&part, lang, eastern)}" }
                                 }
                             }
                         }
-                    }
+                    },
+                    Unit::Plain(t) => rsx! {
+                        span { key: "{key}.{j}", "{localize_digits(&in_direction(&t, dir == \"rtl\"), lang, eastern)}" }
+                    },
+                    Unit::Latin { phrases, close, short } => rsx! {
+                        // The phrase, its closing quote and its pronunciation
+                        // stay together; a short one stays on one line.
+                        span { key: "{key}.{j}", class: if short { "pron-unit nowrap" } else { "pron-unit" },
+                            for (k , bit) in layout(&phrases, &close, dir == "rtl").into_iter().enumerate() {
+                                match bit {
+                                    Bit::Latin(t) => rsx! {
+                                        bdi { key: "{k}", lang: target, dir: "ltr", class: "latin", "{t}" }
+                                    },
+                                    Bit::Close(t) | Bit::Sep(t) => rsx! {
+                                        span { key: "{k}", "{t}" }
+                                    },
+                                    Bit::Say(t) => rsx! {
+                                        Pron { key: "{k}", text: t, tag: target, inline: true }
+                                    },
+                                }
+                            }
+                        }
+                    },
                 }
             }
         }
@@ -663,6 +710,46 @@ fn pron_units(runs: Vec<(bool, String)>, target: &str, say: bool) -> Vec<Unit> {
             && next.is_empty()
         {
             runs.next();
+        }
+    }
+    out
+}
+
+/// UI-language text as drawn in a line of direction `rtl`: an arrow written
+/// between an Arabic word and a Latin one ("besar = كبير → lebih besar")
+/// points along the reading, so it turns around in a right-to-left line.
+fn in_direction(text: &str, rtl: bool) -> std::borrow::Cow<'_, str> {
+    if rtl && text.contains('→') { text.replace('→', "←").into() } else { text.into() }
+}
+
+/// One piece of a drawn Latin unit, in reading order.
+#[derive(Debug, PartialEq)]
+enum Bit {
+    Latin(String),
+    Close(String),
+    /// The Arabic-script pronunciation of the phrase before it.
+    Say(String),
+    Sep(String),
+}
+
+/// The order a Latin unit is drawn in: each phrase in its own LTR isolate,
+/// then the closing quote, then its pronunciation outside the isolate so in
+/// an Arabic line it reads after the word (to its left), never before it.
+/// Arrows turn around in a right-to-left line so "A ← B" still points from
+/// the Indonesian to the Javanese side.
+fn layout(phrases: &[Phrase], close: &str, rtl: bool) -> Vec<Bit> {
+    let last = phrases.len().saturating_sub(1);
+    let mut out = Vec::new();
+    for (k, ph) in phrases.iter().enumerate() {
+        out.push(Bit::Latin(ph.text.clone()));
+        if k == last && !close.is_empty() {
+            out.push(Bit::Close(close.to_string()));
+        }
+        if ph.say {
+            out.push(Bit::Say(ph.text.clone()));
+        }
+        if !ph.sep.is_empty() {
+            out.push(Bit::Sep(if rtl { ph.sep.replace('→', "←") } else { ph.sep.clone() }));
         }
     }
     out
@@ -896,6 +983,8 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
         let g = player.write().check(&answer, lang);
         if matches!(g, Grade::Correct | Grade::Almost { .. }) {
             chime(ui);
+        } else if g == Grade::Wrong {
+            crate::sounds::missed(ui);
         }
         if !episode {
             save(db, &player.peek().position());
@@ -1281,6 +1370,38 @@ fn speaker_icon() -> Element {
 // Slides, dialogue, summary
 // ---------------------------------------------------------------------------
 
+/// The language of a table column: an "Indonesia" column in a Javanese
+/// lesson holds Indonesian words; every other column the lesson's own.
+fn column_tag(head: Option<&str>, target: &'static str) -> &'static str {
+    let indonesian = head.is_some_and(|h| {
+        let h = h.trim().to_lowercase();
+        h == "indonesia" || h == "indonesian" || h == "bahasa indonesia"
+    });
+    if indonesian { "id" } else { target }
+}
+
+/// One table cell. A cell that is a word or phrase always shows how it's
+/// said, in its column's language, so a table follows one rule (#381):
+/// Javanese "awan" is said even though Indonesian spells it the same.
+#[component]
+fn TableCell(text: String, tag: &'static str) -> Element {
+    let ui = use_context::<Ui>();
+    let say = ui.settings.read().ui_language != UiLanguage::En;
+    let word = latin_runs(&text).len() == 1 && is_target_run(&text) && !text.contains("**");
+    if !word {
+        return rsx! { Rich { text, target: tag, pron: true } };
+    }
+    rsx! {
+        // Word over its pronunciation, so a four-column table fits a phone.
+        span { class: "lp-cell-word",
+            bdi { lang: tag, dir: "ltr", class: "latin", "{text}" }
+            if say {
+                Pron { text: text.clone(), tag, inline: true }
+            }
+        }
+    }
+}
+
 #[component]
 fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Element {
     let ui = use_context::<Ui>();
@@ -1306,6 +1427,35 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                 h2 { class: "lp-slide-title", Title { text: title.clone(), target } }
             }
             p { class: "lp-slide-body pre", Rich { text: pick(&slide.body, lang).trim().to_string(), target, pron: true } }
+            if let Some(table) = &slide.table {
+                div { class: "lp-table-wrap",
+                    table { class: "lp-table",
+                        thead {
+                            tr {
+                                for (i, h) in table.head.iter().enumerate() {
+                                    th { key: "{i}", bdi { lang: target, dir: "ltr", "{h}" } }
+                                }
+                                th { "{lt(lang, L::TableMeaning)}" }
+                            }
+                        }
+                        tbody {
+                            for (i, row) in table.rows.iter().enumerate() {
+                                tr { key: "{i}",
+                                    for (j, cell) in row.cells.iter().enumerate() {
+                                        {
+                                            let tag = column_tag(table.head.get(j).map(String::as_str), target);
+                                            rsx! {
+                                                td { key: "{j}", lang: tag, TableCell { text: cell.clone(), tag } }
+                                            }
+                                        }
+                                    }
+                                    td { class: "muted", "{pick(&row.meaning, lang)}" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             if !slide.examples.is_empty() {
                 p { class: "muted lp-small", "{lt(lang, L::Examples)}" }
                 ul { class: "lp-examples",
@@ -1355,9 +1505,7 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
                                 move |_| speak_line(&d, i, &l, missing)
                             },
                             span { class: "lp-speaker",
-                                if let Some(src) = crate::portraits::of(&line.speaker, crate::portraits::Mood::Neutral) {
-                                    crate::portraits::Face { src, class: "lp-face" }
-                                }
+                                crate::portraits::SpeakerFace { speaker: line.speaker.clone(), class: "lp-face" }
                                 bdi { "{line.speaker}" }
                             }
                             Annotated { text: line.text.clone(), tag: target, meaning: pick(&line.meaning, lang).to_string(), class: "lp-target" }
@@ -1386,7 +1534,7 @@ fn SummaryView(
     let ui = use_context::<Ui>();
     let nav = use_context::<crate::play::PlayNav>();
     // The gong rings once when the summary appears.
-    use_hook(move || crate::sounds::play(ui, crate::sounds::Sound::Gong));
+    use_hook(move || crate::sounds::play(ui, crate::sounds::Sound::LessonEnd));
     let settings = ui.settings.read().clone();
     let lang = settings.ui_language;
     let eastern = settings.eastern_digits;
@@ -1416,6 +1564,12 @@ fn SummaryView(
                             li { key: "{w.word}", class: if w.arabic.is_some() { "bridge-row" } else { "" },
                                 Annotated { text: w.word.clone(), tag: target, class: if w.arabic.is_some() { "bridge-word" } else { "" } }
                                 span { class: "muted", Rich { text: pick(&w.meaning, lang).to_string(), target } }
+                                if let Some(ff) = &w.false_friend {
+                                    span { class: "lp-false-friend", title: lt(lang, L::FalseFriend),
+                                        span { "≠ {lt(lang, L::FalseFriend)}" }
+                                        bdi { lang: "id", dir: "ltr", class: "latin", "{ff}" }
+                                    }
+                                }
                                 if let Some(ar) = &w.arabic {
                                     span { class: "lp-bridge", title: lt(lang, L::FromArabic),
                                         span { class: "lp-bridge-label", "{lt(lang, L::FromArabic)}" }
@@ -1917,8 +2071,8 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
-                        if d.matched.contains(&i) {
-                            span { class: "lp-pair-tick", aria_hidden: "true", "✓" }
+                        if let Some(n) = couple_number(&d.matched, i) {
+                            span { class: "lp-pair-tick", aria_hidden: "true", "✓{n}" }
                         }
                         bdi { lang: target, dir: "ltr", class: "latin", "{word}" }
                     }
@@ -1939,8 +2093,8 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
-                        if d.matched.contains(&i) {
-                            span { class: "lp-pair-tick", aria_hidden: "true", "✓" }
+                        if let Some(n) = couple_number(&d.matched, i) {
+                            span { class: "lp-pair-tick", aria_hidden: "true", "✓{n}" }
                         }
                         Rich { text: pairs[i].1.clone(), target }
                     }
@@ -1950,12 +2104,15 @@ fn MatchPairs(
     }
 }
 
+/// Couple tints in lesson.css; a board has at most six pairs.
+const COUPLE_TINTS: usize = 6;
+
 /// The class of one pair button. A matched couple reads as done, not
-/// disabled: both halves share one of four tints (by the order they were
-/// matched), so the learner can see which word went with which meaning.
+/// disabled: both halves share a tint (by the order they were matched), so
+/// the learner can see which word went with which meaning.
 fn pair_class(matched: &[usize], sel: Option<usize>, i: usize, wrong: Option<usize>) -> String {
     if let Some(k) = matched.iter().position(|&m| m == i) {
-        format!("lp-pair done couple-{}", k % 4)
+        format!("lp-pair done couple-{}", k % COUPLE_TINTS)
     } else if wrong == Some(i) {
         "lp-pair wrong".into()
     } else if sel == Some(i) {
@@ -1963,6 +2120,12 @@ fn pair_class(matched: &[usize], sel: Option<usize>, i: usize, wrong: Option<usi
     } else {
         "lp-pair".into()
     }
+}
+
+/// The number both halves of a matched couple wear (1 for the first match),
+/// so colour is never the only cue (#311).
+fn couple_number(matched: &[usize], i: usize) -> Option<usize> {
+    matched.iter().position(|&m| m == i).map(|k| k + 1)
 }
 
 /// Once both sides are selected: a match sticks, a mismatch is remembered as
@@ -2057,7 +2220,14 @@ mod tests {
         let matched = [2, 0, 4, 1, 3];
         assert_eq!(pair_class(&matched, None, 2, None), "lp-pair done couple-0");
         assert_eq!(pair_class(&matched, None, 0, None), "lp-pair done couple-1");
-        assert_eq!(pair_class(&matched, None, 3, None), "lp-pair done couple-0");
+        assert_eq!(pair_class(&matched, None, 3, None), "lp-pair done couple-4");
+        // Six couples, six tints, and the number repeats nothing.
+        let six = [5, 4, 3, 2, 1, 0];
+        let tints: std::collections::BTreeSet<String> =
+            (0..6).map(|i| pair_class(&six, None, i, None)).collect();
+        assert_eq!(tints.len(), 6);
+        assert_eq!((couple_number(&six, 5), couple_number(&six, 0)), (Some(1), Some(6)));
+        assert_eq!(couple_number(&six[..2], 0), None);
         assert_eq!(pair_class(&[], Some(1), 1, None), "lp-pair selected");
         assert_eq!(pair_class(&[], Some(1), 1, Some(1)), "lp-pair wrong");
         assert_eq!(pair_class(&[], None, 1, None), "lp-pair");
@@ -2146,7 +2316,7 @@ mod tests {
         assert!(problems.is_empty(), "{}", problems.join("\n"));
         assert!(lesson_content("bipa1.u01.l01").is_some());
         assert!(lesson_content("bipa2.u10.l05").is_some());
-        assert!(lesson_content("bipa7.u10.l10").is_some());
+        assert!(lesson_content("bipa7.u10.l14").is_some());
         assert!(lesson_content("bipa8.u01.l01").is_none());
     }
 
@@ -2171,6 +2341,29 @@ mod tests {
     }
 
     #[test]
+    fn arabic_in_an_english_line_gets_its_own_isolate() {
+        // #403: j1.u01.l01, English UI.
+        let text = "ngoko between friends (like «إنت»), krama when being polite (like «حضرتك»).";
+        let plain: Vec<String> = pron_units(latin_runs(text), "jv", false)
+            .into_iter()
+            .filter_map(|u| if let Unit::Plain(t) = u { Some(t) } else { None })
+            .collect();
+        let arabic: Vec<String> =
+            plain.iter().flat_map(|t| arabic_runs(t)).filter(|(a, _)| *a).map(|(_, r)| r).collect();
+        assert_eq!(arabic, ["إنت", "حضرتك"]);
+        // Every character survives the split, quotes and commas outside.
+        for t in &plain {
+            assert_eq!(arabic_runs(t).into_iter().map(|(_, r)| r).collect::<String>(), *t);
+        }
+        assert_eq!(
+            arabic_runs("«إنت»), "),
+            [(false, "«".to_string()), (true, "إنت".to_string()), (false, "»), ".to_string())]
+        );
+        assert_eq!(arabic_runs("like «مع السلامة» here")[1], (true, "مع السلامة".to_string()));
+        assert_eq!(arabic_runs("only English"), [(false, "only English".to_string())]);
+    }
+
+    #[test]
     fn latin_runs_isolate_target_text() {
         let runs = latin_runs("«Apa kabar?» يعني «إزيك؟»");
         assert_eq!(
@@ -2190,6 +2383,19 @@ mod tests {
         let runs = latin_runs("- Menurut X, … = على حسب X …");
         assert_eq!(runs[1], (true, "Menurut X, …".into()));
         assert_eq!(runs[3], (true, "X …".into()));
+    }
+
+    #[test]
+    fn suffixes_keep_their_hyphen_and_arrows_follow_the_line() {
+        let runs = latin_runs("aku و-ku = saya");
+        assert_eq!(runs, vec![(true, "aku".into()), (false, " و".into()), (true, "-ku = saya".into()),]);
+        // A hyphen inside a Latin word is still a hyphen, not a new run.
+        assert_eq!(latin_runs("anak-anak"), vec![(true, "anak-anak".into())]);
+        let runs = latin_runs("besar = كبير → lebih besar = أكبر");
+        let plain: String =
+            runs.iter().filter(|(l, _)| !l).map(|(_, t)| in_direction(t, true).into_owned()).collect();
+        assert!(plain.contains('←') && !plain.contains('→'), "{plain}");
+        assert_eq!(in_direction("a → b", false), "a → b");
     }
 
     #[test]
@@ -2217,6 +2423,31 @@ mod tests {
         let units = pron_units(vec![(true, "ora ↔ tidak".into())], "id", true);
         let Unit::Latin { phrases, .. } = &units[0] else { panic!() };
         assert!(phrases.iter().all(|p| p.say));
+    }
+
+    #[test]
+    fn pronunciation_is_drawn_after_its_word_and_quote_outside_the_latin_isolate() {
+        let units = pron_units(latin_runs("«selamat jalan» لما تمشي"), "id", true);
+        let Unit::Latin { phrases, close, .. } = &units[1] else { panic!("{units:?}") };
+        assert_eq!(
+            layout(phrases, close, true),
+            [Bit::Latin("selamat jalan".into()), Bit::Close("»".into()), Bit::Say("selamat jalan".into())]
+        );
+        let units = pron_units(latin_runs("- Selamat pagi → Sugeng enjing (صباح الخير)"), "jv", true);
+        let Some(Unit::Latin { phrases, close, .. }) = units.iter().find(|u| matches!(u, Unit::Latin { .. }))
+        else {
+            panic!("{units:?}")
+        };
+        assert_eq!(
+            layout(phrases, close, true),
+            [
+                Bit::Latin("Selamat pagi".into()),
+                Bit::Sep(" ← ".into()),
+                Bit::Latin("Sugeng enjing".into()),
+                Bit::Say("Sugeng enjing".into()),
+            ]
+        );
+        assert_eq!(layout(phrases, close, false)[1], Bit::Sep(" → ".into()));
     }
 
     #[test]

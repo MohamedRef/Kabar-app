@@ -87,6 +87,72 @@ pub fn metered_network() -> bool {
     }
 }
 
+/// A light tap of vibration for lesson feedback.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Haptic {
+    Correct,
+    /// A wrong answer: barely there, never a scolding buzz.
+    Missed,
+    LessonEnd,
+}
+
+/// The device can vibrate (Android with a motor; most Galaxy tablets have
+/// none). Settings shows the vibration switch only then.
+pub fn can_vibrate() -> bool {
+    #[cfg(target_os = "android")]
+    {
+        static HAS: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+        *HAS.get_or_init(|| android::has_vibrator().unwrap_or(false))
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        false
+    }
+}
+
+/// Paints Android's status and navigation bars in the theme's background,
+/// with icons that read on it; `day` and `night` are `#rrggbb` (the same for
+/// a fixed theme). Does nothing elsewhere: the Mac keeps its own title bar.
+pub fn system_bars(day: &str, night: &str) {
+    #[cfg(target_os = "android")]
+    {
+        let argb = |hex: &str| {
+            let rgb = u32::from_str_radix(hex.trim_start_matches('#'), 16).unwrap_or(0);
+            (0xff00_0000 | rgb) as i32
+        };
+        if let Err(e) = android::system_bars(argb(day), argb(night)) {
+            crate::diag::report!("system bars failed: {e}");
+        }
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        let _ = (day, night);
+    }
+}
+
+/// Vibrates once for `kind` where the device can; does nothing elsewhere.
+pub fn vibrate(kind: Haptic) {
+    #[cfg(target_os = "android")]
+    {
+        if !can_vibrate() {
+            return;
+        }
+        // Haptics.CORRECT, MISSED, LESSON_END
+        let code = match kind {
+            Haptic::Correct => 0,
+            Haptic::Missed => 1,
+            Haptic::LessonEnd => 2,
+        };
+        if let Err(e) = android::vibrate(code) {
+            crate::diag::report!("vibration failed: {e}");
+        }
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        let _ = kind;
+    }
+}
+
 /// Speech rate for normal and slow replays (matches the WebView path).
 #[cfg_attr(not(target_os = "android"), allow(dead_code))]
 pub fn speech_rate(slow: bool) -> f32 {
@@ -457,6 +523,71 @@ pub mod reminders {
         }
         #[cfg(target_os = "macos")]
         super::macos::reminders::request();
+    }
+}
+
+/// The "new version" notification ([`crate::update::Notice`]) and, on
+/// Android, the periodic background check that sends it while Kabar is
+/// closed (`app.kabar.UpdateCheckJob`). No-ops elsewhere.
+pub mod update_notice {
+    use crate::update::Notice;
+
+    /// Shows `n` now; true once it's shown. Android skips it while Kabar
+    /// is in front (the banner says it) or notifications are off; the Mac
+    /// app shows it only when bundled, and macOS keeps it quiet while Kabar
+    /// is the active app.
+    pub fn post(n: &Notice) -> bool {
+        #[cfg(target_os = "android")]
+        {
+            super::android::post_update_notice(n)
+                .map_err(|e| crate::diag::report!("update notification: {e}"))
+                .unwrap_or(false)
+        }
+        #[cfg(target_os = "macos")]
+        {
+            super::macos::reminders::post_update(n)
+        }
+        #[cfg(not(any(target_os = "android", target_os = "macos")))]
+        {
+            let _ = n;
+            false
+        }
+    }
+
+    /// Removes a shown notification (the offer was closed or installed).
+    pub fn clear() {
+        #[cfg(target_os = "android")]
+        if let Err(e) = super::android::clear_update_notice() {
+            crate::diag::report!("update notification: {e}");
+        }
+        #[cfg(target_os = "macos")]
+        super::macos::reminders::clear_update();
+    }
+
+    /// Android: starts (or, with `false`, stops) the background check.
+    pub fn schedule(on: bool) {
+        #[cfg(target_os = "android")]
+        if let Err(e) = super::android::schedule_update_checks(on) {
+            crate::diag::report!("background update check: {e}");
+        }
+        #[cfg(not(target_os = "android"))]
+        let _ = on;
+    }
+
+    /// What a tap on the notification asked for, once: `open`, `download`
+    /// or `install`.
+    pub fn take_tap() -> Option<String> {
+        #[cfg(target_os = "android")]
+        {
+            super::android::take_update_tap()
+                .map_err(|e| crate::diag::report!("update notification: {e}"))
+                .ok()
+                .flatten()
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            None
+        }
     }
 }
 

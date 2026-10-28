@@ -52,14 +52,14 @@ levels:
     code: J1
     title: { en: "Survival ngoko", ar: "نغوكو" }
     requires: [bipa1]
-    journey: { place: Surabaya, kind: train_line }
+    journey: { place: "Malioboro, Yogyakarta", kind: train_line }
     units:
       - id: j1.u01
-        title: { target: "Piye kabare, rek?", en: "How are you?", ar: "كيف حالك؟" }
-        stop: Pasar Turi
-        culture: { souvenir: Suroboyo Bus, note: "Koen wis mangan ta, rek?" }
+        title: { target: "Piye kabare, Mas?", en: "How are you?", ar: "كيف حالك؟" }
+        stop: Malioboro
+        culture: { souvenir: Angkringan Malioboro, note: "Wis mangan durung, Mas?" }
         lessons:
-          - { id: j1.u01.l01, kind: learn, title: "Sek tak lapor pusat", minutes: 10 }
+          - { id: j1.u01.l01, kind: learn, title: "Sik, tak lapor", minutes: 10 }
     level_test: { id: j1.test, minutes: 25 }
   - id: j2
     code: J2
@@ -72,9 +72,9 @@ levels:
     code: J5
     title: { en: "Reading", ar: "القراءة" }
     requires: [j2]
-    journey: { place: Semarang, kind: branch_line }
+    journey: { place: "Kutha Pendekar (Madiun)", kind: branch_line }
     units:
-      - { id: j5.u01, title: { en: "News", ar: "الأخبار" }, stop: Tawang, lessons: [{ id: j5.u01.l01, title: "Warta", minutes: 14 }] }
+      - { id: j5.u01, title: { en: "News", ar: "الأخبار" }, stop: Madiun, lessons: [{ id: j5.u01.l01, title: "Warta", minutes: 14 }] }
   - id: j6
     code: J6
     title: { en: "Script", ar: "الخط" }
@@ -195,7 +195,7 @@ fn javanese_is_unverified_and_waits_gently_for_bipa1() {
     let p = Progress::new(&c, &set(&["j1.u01.l01"]));
     let s = souvenirs(&c, &p);
     assert!(s[0].unverified);
-    assert_eq!(s[0].note, "Koen wis mangan ta, rek?");
+    assert_eq!(s[0].note, "Wis mangan durung, Mas?");
 }
 
 #[test]
@@ -251,10 +251,12 @@ fn every_place_is_on_the_map_and_found_by_name() {
     for p in geo::PLACES {
         assert!((geo::LON_MIN..geo::LON_MAX).contains(&p.lon), "{}", p.name);
         assert!((geo::LAT_MIN..geo::LAT_MAX).contains(&p.lat), "{}", p.name);
-        // Nudged pins stay within ~20 km of the real place.
-        assert!((p.lon - p.map_lon).abs() < 0.2 && (p.lat - p.map_lat).abs() < 0.2, "{}", p.name);
+        // Nudged pins stay within ~20 km of the real place; Jogja's schematic
+        // (four levels a few km apart, #308) within ~40 km.
+        let reach = if matches!(p.level, "j1" | "j3" | "j6") { 0.4 } else { 0.2 };
+        assert!((p.lon - p.map_lon).abs() < reach && (p.lat - p.map_lat).abs() < reach, "{}", p.name);
     }
-    assert_eq!(geo::place_for("x", "Solo (Surakarta)").unwrap().level, "j3");
+    assert_eq!(geo::place_for("x", "Malioboro, Yogyakarta").unwrap().level, "j1");
     assert_eq!(geo::place_for("x", "Raja Ampat, Papua").unwrap().level, "bipa7");
     assert!(geo::place_for("x", "Atlantis").is_none());
     let (x, y) = geo::project(geo::LON_MIN, geo::LAT_MAX);

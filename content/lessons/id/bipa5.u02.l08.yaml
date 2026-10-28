@@ -1,203 +1,246 @@
 schema: kabar.lesson/v1
 id: bipa5.u02.l08
 language: id
-title: Suara warga
+title: Bupati turun ke desa
 can_do:
-  ar_eg: تسأل الناس عن رأيهم في العاصمة الجديدة وتلخّص الرأيين بجمل مترابطة.
-  ar: أن تسأل الناس عن رأيهم في العاصمة الجديدة وتلخّص الرأيين بجمل مترابطة.
-  en: Ask people what they think of the new capital and sum up both sides in connected sentences.
+  ar_eg: 'تحكي عن زيارة محافظ للقرى: المواصلات والمؤسسات والاقتصاد ورفاهية الناس ومشاكلهم.'
+  ar: 'أن تروي زيارة رئيس مقاطعة للقرى: المواصلات والمؤسسات والاقتصاد ورفاه السكان ومشكلاتهم.'
+  en: 'Report a regent''s village visit: transport, institutions, the economy, people''s welfare and their problems.'
 slides:
-  - title: Merangkum dua suara
-    grammar: id.conjunction.concessive
+  - title: Dari kabupaten sampai desa
     body:
       ar_eg: |
-        لما تلخّص آراء الناس، اربط الكلام:
-        - Menurut Pak Yusuf, … = حسب كلام الأستاذ يوسف …
-        - Meskipun / Walaupun …, … tetap … = مع إن …، برضه …
-        - Di satu sisi … Di sisi lain … = من ناحية … ومن ناحية تانية …
-        كلمتين جداد: penduduk asli = أهل البلد الأصليين، وkemacetan = زحمة المرور.
+        bupati = رئيس الـ kabupaten (زي محافظ مركز كبير)، regional = إقليمي (pembangunan regional).
+        pedesaan = الريف، angkutan = مواصلات أو نقل (angkutan umum = مواصلات عامة).
+        institusi = مؤسسة، perekonomian = الاقتصاد، kesejahteraan = رفاهية، حياة كريمة.
+        persoalan = مشكلة أو قضية (أرسمية من masalah شوية).
       ar: |
-        حين تلخّص آراء الناس، اربط الكلام:
-        - Menurut Pak Yusuf, … = بحسب الأستاذ يوسف …
-        - Meskipun / Walaupun …, … tetap … = مع أنّ …، يظلّ …
-        - Di satu sisi … Di sisi lain … = من جهة … ومن جهة أخرى …
-        وكلمتان جديدتان: penduduk asli = السكّان الأصليون، وkemacetan = الازدحام المروري.
+        bupati = رئيس الـ kabupaten (المقاطعة)، regional = إقليمي (pembangunan regional).
+        pedesaan = الريف، angkutan = النقل، المواصلات (angkutan umum = النقل العام).
+        institusi = مؤسسة، perekonomian = الاقتصاد، kesejahteraan = الرفاه.
+        persoalan = مسألة، قضية (أكثر رسمية من masalah).
       en: |
-        When you sum up people's views, connect them:
-        - Menurut Pak Yusuf, … = according to Pak Yusuf, …
-        - Meskipun / Walaupun …, … tetap … = although …, … still …
-        - Di satu sisi … Di sisi lain … = on one hand … on the other …
-        Two new words: penduduk asli = indigenous people, kemacetan = traffic jams.
+        bupati = regent, head of a kabupaten, regional = regional (pembangunan regional).
+        pedesaan = the countryside, rural areas, angkutan = transport (angkutan umum = public transport).
+        institusi = institution, perekonomian = the economy, kesejahteraan = welfare, well-being.
+        persoalan = issue, problem (more formal than masalah).
+    examples:
+      - text: Bupati mengunjungi tiga desa di daerah pedesaan.
+        ar_eg: البوباتي زار تلات قرى في الريف.
+        ar: زار رئيس المقاطعة ثلاث قرى في الريف.
+        en: The regent visited three villages in the countryside.
+      - text: Angkutan umum ke pasar hanya ada pagi hari.
+        ar_eg: المواصلات للسوق موجودة الصبح بس.
+        ar: لا يوجد نقل عام إلى السوق إلا صباحًا.
+        en: Public transport to the market only runs in the morning.
+      - text: Kesejahteraan warga adalah persoalan utama.
+        ar_eg: رفاهية الأهالي هي القضية الأساسية.
+        ar: رفاه السكان هو القضية الرئيسية.
+        en: Residents' welfare is the main issue.
 exercises:
   - id: e01
-    type: listen
-    text: Menurut Pak Yusuf, penduduk asli Paser sudah tinggal di sini sejak ratusan tahun lalu.
-    question:
-      ar_eg: الأستاذ يوسف بيتكلم عن مين؟
-      ar: عمّن يتحدّث الأستاذ يوسف؟
-      en: Who is Pak Yusuf talking about?
-    options:
-      - أهل البلد الأصليين من قبيلة باسر.
-      - الناس الجاية من جاوة.
-      - موظفين الحكومة الجداد.
-    answer: 0
-    words: [penduduk asli]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «kemacetan» معناها إيه؟
-      ar: ما معنى «kemacetan»؟
-      en: What does "kemacetan" mean?
-    options:
-      - هدوء.
-      - زحمة مرور.
-      - بنزين.
-    answer: 1
-    explain:
-      ar_eg: من macet (واقف / زحمة) + ke-…-an = حالة الزحمة.
-      ar: من macet (متوقّف، مزدحم) مع ke-…-an، أي حالة الازدحام.
-      en: From macet (stuck) with ke-…-an, the state of being jammed.
-    words: [kemacetan]
-  - id: e03
-    type: fill_blank
-    sentence: Jakarta terkenal dengan ___ yang parah setiap pagi.
-    meaning:
-      ar_eg: جاكرتا مشهورة بالزحمة الفظيعة كل صبح.
-      ar: تشتهر جاكرتا بازدحام مروري شديد كلّ صباح.
-      en: Jakarta is known for terrible traffic every morning.
-    options: [kemacetan, pemerataan, ganti rugi]
-    answers: [kemacetan]
-    words: [kemacetan]
-  - id: e04
-    type: build_sentence
-    source:
-      ar_eg: مع إن المشروع بيجيب شغل، أهل المنطقة برضه قلقانين.
-      ar: مع أنّ المشروع يوفّر فرص عمل، يظلّ أهل المنطقة قلقين.
-      en: Although the project brings jobs, local people are still worried.
-    answer: Meskipun proyek ini membawa lapangan kerja, warga setempat tetap khawatir.
-    distractors: [pendatang, digusur]
-    words: [warga setempat]
-  - id: e05
-    type: translate
-    direction: from_target
-    source_text: Penduduk asli meminta agar tanah adat mereka dihormati.
-    answers_meaning:
-      ar_eg:
-        - أهل البلد الأصليين طالبين إن أرض أجدادهم تتحترم.
-        - السكان الأصليين بيطلبوا احترام أراضيهم العرفية.
-      ar:
-        - يطالب السكّان الأصليون باحترام أراضيهم العرفية.
-        - يطلب أهل البلاد الأصليون أن تُحترم أراضي أجدادهم.
-      en:
-        - The indigenous people ask that their customary land be respected.
-        - Indigenous residents are asking for their ancestral land to be respected.
-    words: [penduduk asli]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Kemacetan di Jakarta parah. ___, banjir sering terjadi.» تحط إيه؟
-      ar: ماذا تضع في «Kemacetan di Jakarta parah. ___, banjir sering terjadi.»؟
-      en: Which fits "Kemacetan di Jakarta parah. ___, banjir sering terjadi."?
-    options: [Meskipun, Dengan demikian, Selain itu]
-    answer: 2
-    explain:
-      ar_eg: بتضيف مشكلة تانية على الأولى، يبقى Selain itu (وكمان).
-      ar: تضيف مشكلة ثانية إلى الأولى، فالمناسب Selain itu (فضلًا عن ذلك).
-      en: You're adding a second problem, so Selain itu (besides that).
-    words: [kemacetan, selain itu]
-  - id: e07
-    type: speaking
-    text: Di satu sisi ada manfaatnya. Di sisi lain, penduduk asli bisa digusur.
-    meaning:
-      ar_eg: من ناحية ليه فايدة. ومن ناحية تانية، أهل البلد الأصليين ممكن يتطردوا.
-      ar: من جهة له فوائده، ومن جهة أخرى قد يُخلى السكّان الأصليون من أراضيهم.
-      en: On one hand there are benefits. On the other, indigenous people could be evicted.
-    words: [penduduk asli, di sisi lain, menggusur]
-  - id: e08
-    type: dictation
-    text: Pemindahan ibu kota diharapkan mengurangi kemacetan di Jakarta.
-    meaning:
-      ar_eg: نقل العاصمة المفروض يقلل الزحمة في جاكرتا.
-      ar: يُرجى أن يخفّف نقلُ العاصمة الازدحامَ في جاكرتا.
-      en: Moving the capital is meant to ease Jakarta's traffic.
-    words: [kemacetan, pemindahan]
-  - id: e09
     type: match_pairs
     pairs:
-      - text: pendatang
-        ar_eg: ناس جاية من برا
-        ar: وافد
-        en: newcomer
-      - text: pemerataan
-        ar_eg: توزيع بالعدل
-        ar: توزيع عادل
-        en: fair distribution
-      - text: ganti rugi
-        ar_eg: تعويض
-        ar: تعويض
-        en: compensation
-      - text: tata ruang
-        ar_eg: تخطيط المساحات
-        ar: تخطيط المساحات
-        en: spatial planning
-      - text: khawatir
-        ar_eg: قلقان
-        ar: قلق
-        en: worried
-    words: [pendatang, pemerataan, ganti rugi, tata ruang, khawatir]
-  - id: e10
+      - text: bupati
+        ar_eg: رئيس الكابوباتن
+        ar: رئيس المقاطعة
+        en: regent
+      - text: regional
+        ar_eg: إقليمي
+        ar: إقليمي
+        en: regional
+      - text: pedesaan
+        ar_eg: الريف
+        ar: الريف
+        en: countryside
+      - text: angkutan
+        ar_eg: مواصلات
+        ar: نقل
+        en: transport
+    words: [bupati, regional, pedesaan, angkutan]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: institusi
+        ar_eg: مؤسسة
+        ar: مؤسسة
+        en: institution
+      - text: perekonomian
+        ar_eg: الاقتصاد
+        ar: الاقتصاد
+        en: the economy
+      - text: kesejahteraan
+        ar_eg: رفاهية
+        ar: رفاه
+        en: welfare
+      - text: persoalan
+        ar_eg: قضية، مشكلة
+        ar: مسألة
+        en: issue
+    words: [institusi, perekonomian, kesejahteraan, persoalan]
+  - id: e03
+    type: listen
+    text: Perekonomian desa ini bergantung pada kebun karet.
+    question:
+      ar_eg: اقتصاد القرية معتمد على إيه؟
+      ar: علامَ يعتمد اقتصاد القرية؟
+      en: What does the village economy depend on?
+    options: [على المطاط, على السياحة, على البترول]
+    answer: 0
+    meaning:
+      ar_eg: اقتصاد القرية دي معتمد على جناين المطاط.
+      ar: يعتمد اقتصاد هذه القرية على مزارع المطاط.
+      en: This village's economy depends on rubber gardens.
+    words: [perekonomian]
+  - id: e04
+    type: fill_blank
+    sentence: Anak-anak berjalan jauh karena tidak ada ___ ke sekolah.
+    meaning:
+      ar_eg: العيال بيمشوا مسافة طويلة عشان مافيش ___ للمدرسة.
+      ar: يمشي الأطفال مسافة طويلة لعدم وجود ___ إلى المدرسة.
+      en: Children walk far because there's no ___ to school.
+    options: [angkutan, institusi, regional]
+    answers: [angkutan]
+    words: [angkutan, institusi, regional]
+    explain:
+      ar_eg: مافيش «مواصلات» = angkutan، عشان كده بيمشوا. institusi = مؤسسة وregional = إقليمي، مايوصلوش للمدرسة.
+      ar: لا توجد angkutan (وسيلة نقل) فيمشون. أما institusi فالمؤسسة، وregional «إقليمي».
+      en: There's no angkutan (transport), so they walk. institusi (institution) and regional don't get you to school.
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين اللي بيحكم الـ kabupaten؟
+      ar: من يرأس الـ kabupaten؟
+      en: Who heads a kabupaten?
+    options: [persoalan, bupati, pedesaan]
+    answer: 1
+    explain:
+      ar_eg: bupati = رئيس الكابوباتن.
+      ar: bupati = رئيس المقاطعة.
+      en: bupati = regent.
+    words: [persoalan, bupati, pedesaan]
+  - id: e06
+    type: fill_blank
+    sentence: Universitas dan rumah sakit adalah ___ penting di kota itu.
+    meaning:
+      ar_eg: الجامعة والمستشفى ___ مهمة في المدينة دي.
+      ar: الجامعة والمستشفى ___ مهمة في تلك المدينة.
+      en: The university and the hospital are important ___ in that town.
+    options: [institusi, kesejahteraan, angkutan]
+    answers: [institusi]
+    words: [institusi, kesejahteraan, angkutan]
+    explain:
+      ar_eg: الجامعة والمستشفى institusi (مؤسسات). kesejahteraan = رفاهية وangkutan = مواصلات، ومش وصف ليهم.
+      ar: الجامعة والمستشفى institusi (مؤسّسات). أما kesejahteraan فالرفاه، وangkutan النقل.
+      en: A university and a hospital are institusi. kesejahteraan (welfare) and angkutan (transport) don't describe them.
+  - id: e07
+    type: multiple_choice
+    question: Bandara baru itu diharapkan memperkuat ekonomi ___ Kalimantan Timur.
+    options: [persoalan, pedesaan, regional]
+    answer: 2
+    explain:
+      ar_eg: regional = إقليمي.
+      ar: regional = إقليمي.
+      en: regional = regional.
+    words: [persoalan, pedesaan, regional]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: رفاهية الناس في الريف لسه قليلة.
+      ar: ما زال رفاه سكان الريف منخفضًا.
+      en: Welfare in the countryside is still low.
+    answer: Kesejahteraan warga pedesaan masih rendah.
+    distractors: [institusi, bupati]
+    words: [kesejahteraan, pedesaan]
+    explain:
+      ar_eg: «رفاهية» = Kesejahteraan. institusi = مؤسسة وbupati = رئيس المقاطعة، مش «الرفاهية».
+      ar: «الرفاه» = Kesejahteraan. أما institusi فالمؤسّسة، وbupati رئيس المقاطعة.
+      en: "\"Welfare\" is kesejahteraan. institusi (institution) and bupati (regent) aren't it."
+  - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: مع إن الطرق جديدة، لسه فيه زحمة الصبح.
-      ar: مع أنّ الطرق جديدة، ما زال هناك ازدحام في الصباح.
-      en: Even though the roads are new, there are still jams in the morning.
-    answers:
-      - Walaupun jalannya baru, masih ada kemacetan pada pagi hari.
-      - Meskipun jalannya baru, masih ada kemacetan pada pagi hari.
-      - Walaupun jalannya baru, masih ada kemacetan di pagi hari.
-      - Meskipun jalannya baru, pagi hari masih ada kemacetan.
-      - Walaupun jalan-jalannya baru, masih ada kemacetan pada pagi hari.
-    words: [kemacetan]
+    direction: from_target
+    source_text: Persoalan ini harus segera diselesaikan.
+    answers_meaning:
+      ar_eg: [المشكلة دي لازم تتحل بسرعة, القضية دي لازم تتحل حالًا]
+      ar: [يجب حلّ هذه المسألة سريعًا, ينبغي حلّ هذه القضية فورًا]
+      en: [This issue must be solved quickly, This problem has to be solved soon]
+    words: [persoalan]
+  - id: e10
+    type: speaking
+    text: Bupati ingin memperkuat perekonomian dan angkutan desa.
+    meaning:
+      ar_eg: البوباتي عايز يقوّي اقتصاد القرى ومواصلاتها.
+      ar: يريد رئيس المقاطعة تقوية اقتصاد القرى ونقلها.
+      en: The regent wants to strengthen the villages' economy and transport.
+    words: [bupati, perekonomian, angkutan]
 dialogue:
-  title: Dua suara dari Penajam
   lines:
+    - speaker: Mas Rizal
+      text: Hari ini Bupati Penajam turun ke desa-desa. Kita ikut, ya.
+      ar_eg: النهارده بوباتي بيناجام نازل للقرى. تعالى نروح.
+      ar: اليوم ينزل رئيس مقاطعة بيناجام إلى القرى. لنرافقه.
+      en: Today the regent of Penajam is visiting the villages. Let's go along.
     - speaker: Mohamed
-      text: Pak Yusuf, sebagai penduduk asli Paser, bagaimana pendapat Bapak tentang IKN?
-      ar_eg: يا أستاذ يوسف، بصفتك من أهل باسر الأصليين، إيه رأيك في العاصمة الجديدة؟
-      ar: يا أستاذ يوسف، بصفتك من سكّان باسر الأصليين، ما رأيك في العاصمة الجديدة؟
-      en: Pak Yusuf, as a native Paser man, what's your view of IKN?
-    - speaker: Pak Yusuf
-      text: Jalannya bagus sekarang. Meskipun begitu, kami takut kehilangan tanah adat.
-      ar_eg: الطرق بقت حلوة دلوقتي. ومع كده، إحنا خايفين نخسر أرض أجدادنا.
-      ar: الطرق صارت جيّدة، ومع ذلك نخشى أن نفقد أراضينا العرفية.
-      en: The roads are good now. Even so, we're afraid of losing our customary land.
-    - speaker: Rina
-      text: Saya pendatang dari Jakarta. Di sini tidak ada kemacetan, jadi saya senang.
-      ar_eg: أنا جاية من جاكرتا. هنا مفيش زحمة، فأنا مبسوطة.
-      ar: أنا وافدة من جاكرتا، وهنا لا ازدحام، لذا أنا سعيدة.
-      en: I'm a newcomer from Jakarta. There are no jams here, so I'm happy.
+      text: Apa persoalan utama di daerah pedesaan sini?
+      ar_eg: إيه المشكلة الأساسية في الريف هنا؟
+      ar: ما القضية الرئيسية في ريف هذه المنطقة؟
+      en: What's the main issue in the countryside here?
+    - speaker: Kepala desa
+      text: Angkutan, Pak. Ke rumah sakit kami harus naik perahu dua jam.
+      ar_eg: المواصلات يا أستاذ. عشان نروح المستشفى لازم نركب مركب ساعتين.
+      ar: النقل يا سيّدي. نركب قاربًا ساعتين لنصل إلى المستشفى.
+      en: Transport, sir. We take a boat for two hours to reach the hospital.
     - speaker: Mohamed
-      text: Jadi, di satu sisi pendatang senang. Di sisi lain, penduduk asli khawatir.
-      ar_eg: يعني، من ناحية الناس الجاية مبسوطة، ومن ناحية تانية أهل البلد قلقانين.
-      ar: إذن، من جهة الوافدون سعداء، ومن جهة أخرى السكّان الأصليون قلقون.
-      en: So, on one hand the newcomers are happy. On the other, the indigenous people are worried.
-    - speaker: Pak Yusuf
-      text: Betul. Kami tidak menolak pembangunan, tetapi kami ingin didengar.
-      ar_eg: مظبوط. إحنا مش رافضين التنمية، بس عايزين حد يسمعنا.
-      ar: صحيح. لسنا ضدّ التنمية، لكنّنا نريد أن يُسمع صوتنا.
-      en: Right. We're not against development, but we want to be heard.
+      text: Apakah perekonomian desa ikut tumbuh karena ibu kota baru?
+      ar_eg: اقتصاد القرية بيكبر بسبب العاصمة الجديدة؟
+      ar: هل ينمو اقتصاد القرية بسبب العاصمة الجديدة؟
+      en: Is the village economy growing because of the new capital?
+    - speaker: Kepala desa
+      text: Sedikit. Tapi kesejahteraan kami bergantung pada institusi yang dekat dengan warga.
+      ar_eg: شوية. بس رفاهيتنا معتمدة على مؤسسات قريبة من الناس.
+      ar: قليلًا. لكن رفاهنا يعتمد على مؤسسات قريبة من السكان.
+      en: A little. But our welfare depends on institutions close to the people.
 new_words:
-  - word: penduduk asli
+  - word: bupati
     pos: noun
-    ar_eg: أهل البلد الأصليين
-    ar: السكّان الأصليون
-    en: indigenous people, natives
-  - word: kemacetan
+    ar_eg: رئيس الكابوباتن (زي محافظ)
+    ar: رئيس المقاطعة
+    en: regent, head of a regency
+  - word: regional
+    pos: adjective
+    ar_eg: إقليمي
+    ar: إقليمي
+    en: regional
+  - word: pedesaan
     pos: noun
-    ar_eg: زحمة مرور
-    ar: ازدحام مروري
-    en: traffic jam, congestion
+    ar_eg: الريف
+    ar: الريف
+    en: the countryside, rural area
+  - word: angkutan
+    pos: noun
+    ar_eg: مواصلات، نقل
+    ar: نقل، مواصلات
+    en: transport
+  - word: institusi
+    pos: noun
+    ar_eg: مؤسسة
+    ar: مؤسسة
+    en: institution
+  - word: perekonomian
+    pos: noun
+    ar_eg: الاقتصاد
+    ar: الاقتصاد
+    en: the economy
+  - word: kesejahteraan
+    pos: noun
+    ar_eg: رفاهية، عيشة كريمة
+    ar: رفاه
+    en: welfare, well-being
+  - word: persoalan
+    pos: noun
+    ar_eg: قضية، مشكلة
+    ar: مسألة، قضية
+    en: issue, problem
 review:
   status: draft
   verified: false

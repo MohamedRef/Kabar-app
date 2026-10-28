@@ -51,6 +51,28 @@ slides:
         ar_eg: نفس الأكل كل يوم بيزهّق.
         ar: الطعام نفسه كل يوم مملّ.
         en: The same food every day is boring.
+  - title: "Ke dokter: bahasa resmi"
+    body:
+      ar_eg: |
+        الدكتور بيكلمك رسمي: Anda أو Bapak، والسؤال بـ Apakah: «Apakah Anda merokok?»
+        ردّ عليه بنفس المستوى: Tidak, Dok. Saya tidak merokok.
+        ومع صاحبك بعد الكشف: «Kata dokter, aku nggak boleh stres.»
+        نفس المعنى، مستوى مختلف.
+      ar: |
+        يكلّمك الطبيب بالفصحى: Anda أو Bapak، والسؤال بـ Apakah: «Apakah Anda merokok?»
+        أجبه بالمستوى نفسه: Tidak, Dok. Saya tidak merokok.
+        ومع صديقك بعد الكشف: «Kata dokter, aku nggak boleh stres.»
+        المعنى واحد والمستوى مختلف.
+      en: |
+        A doctor speaks formally: Anda or Bapak, and questions start with Apakah: «Apakah Anda merokok?»
+        Answer in the same register: Tidak, Dok. Saya tidak merokok.
+        To a friend afterwards: «Kata dokter, aku nggak boleh stres.»
+        Same meaning, different register.
+    examples:
+      - text: "Apakah Anda sering stres? (رسمي)"
+        ar_eg: "انت بتتوتر كتير؟ (رسمي)"
+        ar: "هل تتوتر كثيرًا؟ (فصحى)"
+        en: "Are you often stressed? (formal)"
 exercises:
   - id: e01
     type: match_pairs
@@ -109,6 +131,10 @@ exercises:
     options: [Menyenangkan, Membosankan, Menurunkan]
     answer: 1
     words: [membosankan]
+    explain:
+      ar_eg: الحاجة اللي بتتكرر كل يوم Membosankan (مملّة). Menyenangkan = ممتعة، وMenurunkan = ينزّل.
+      ar: تكرار الطعام نفسه يوميًا Membosankan «مملّ». أما Menyenangkan فـ«ممتع»، وMenurunkan «يخفّض».
+      en: The same food every day is Membosankan, boring. Menyenangkan means fun and Menurunkan to lower.
   - id: e05
     type: fill_blank
     sentence: Olahraga bisa ___ tekanan darah.
@@ -119,6 +145,10 @@ exercises:
     options: [membosankan, menurunkan, mematikan]
     answers: [menurunkan]
     words: [menurunkan, tekanan darah]
+    explain:
+      ar_eg: «تنزّل الضغط» = menurunkan (turun + -kan). membosankan = مملّ، وmematikan = يطفي.
+      ar: «تخفّض الضغط» menurunkan (turun مع -kan). أما membosankan فـ«مملّ»، وmematikan «يطفئ».
+      en: Lowering blood pressure is menurunkan (turun + -kan). membosankan means boring, mematikan to switch off.
   - id: e06
     type: fill_blank
     sentence: Jangan lupa ___ TV sebelum tidur.
@@ -129,6 +159,10 @@ exercises:
     options: [menaikkan, mematikan, membersihkan]
     answers: [mematikan]
     words: [mematikan]
+    explain:
+      ar_eg: «تطفي التلفزيون» = mematikan (mati + -kan). menaikkan = يعلّي، وmembersihkan = ينضّف.
+      ar: «تطفئ التلفاز» mematikan (mati مع -kan). أما menaikkan فـ«يرفع»، وmembersihkan «ينظّف».
+      en: Switching off the TV is mematikan (mati + -kan). menaikkan means to raise, membersihkan to clean.
   - id: e07
     type: build_sentence
     source:
@@ -138,6 +172,10 @@ exercises:
     answer: Kebiasaan sehat menurunkan tekanan darah.
     distractors: [turun, menaikan]
     words: [kebiasaan, menurunkan, tekanan darah]
+    explain:
+      ar_eg: "«بتنزّل» حاجة = menurunkan: Kebiasaan sehat menurunkan tekanan darah. turun = ينزل لوحده من غير مفعول، وmenaikan مكتوبة غلط وعكس المعنى."
+      ar: "«تخفّض» شيئًا menurunkan: Kebiasaan sehat menurunkan tekanan darah. أما turun فـ«ينزل» بلا مفعول، وmenaikan خطأ إملائي وعكس المعنى."
+      en: Lowering something is menurunkan. turun means to go down with no object, and menaikan is misspelt and means the opposite.
   - id: e08
     type: translate
     direction: to_target
@@ -165,30 +203,30 @@ dialogue:
   title: Jalan kaki ke kebun stroberi
   lines:
     - speaker: Mas Rizal
-      text: Mohamed, ayo kita memetik stroberi di kebun Bu Rohani!
-      ar_eg: يا محمد، يلا نقطف فراولة من جنينة مدام روحاني!
-      ar: يا محمد، هيا نقطف الفراولة من بستان السيدة روحاني!
-      en: Mohamed, let's go and pick strawberries in Bu Rohani's garden!
+      text: Mohamed, yuk ke kebun stroberi Bu Rohani!
+      ar_eg: محمد، يلا نروح جنينة الفراولة بتاعة بو روهاني!
+      ar: يا محمد، هيا نذهب إلى حقل الفراولة عند بو روهاني!
+      en: Mohamed, let's go to Bu Rohani's strawberry garden!
     - speaker: Mohamed
-      text: Ayo! Tunggu, saya mematikan HP dulu.
+      text: Ayo! Sebentar, aku mematikan HP dulu.
       ar_eg: يلا! استنى، هطفي الموبايل الأول.
       ar: هيا! انتظر، سأطفئ الهاتف أولًا.
       en: Let's go! Wait, I'll switch off my phone first.
     - speaker: Mas Rizal
-      text: Itu kebiasaan baik! Di kota kamu jarang jalan kaki, kan?
+      text: Itu kebiasaan bagus! Di kota kamu jarang jalan kaki, kan?
       ar_eg: دي عادة حلوة! في المدينة نادرًا لما بتمشي، صح؟
       ar: هذه عادة جيدة! نادرًا ما تمشي في المدينة، أليس كذلك؟
       en: That's a good habit! In the city you rarely walk, right?
     - speaker: Mohamed
-      text: Betul. Kata dokter, tekanan darah saya agak tinggi.
+      text: Iya. Kata dokter, tekanan darah saya agak tinggi.
       ar_eg: صح. الدكتور بيقول إن ضغطي عالي شوية.
       ar: صحيح. يقول الطبيب إنّ ضغط دمي مرتفع قليلًا.
       en: True. The doctor says my blood pressure is a bit high.
     - speaker: Mas Rizal
-      text: Jalan kaki bisa menurunkan tekanan darah. Dan memetik stroberi sangat menyenangkan!
-      ar_eg: المشي ممكن ينزّل الضغط. وقطف الفراولة ممتع جدًا!
-      ar: المشي قد يخفّض ضغط الدم، وقطف الفراولة ممتع جدًا!
-      en: Walking can lower blood pressure. And picking strawberries is great fun!
+      text: Jalan kaki bisa menurunkan tekanan darah. Terus jalan-jalan di kebun itu seru banget!
+      ar_eg: المشي بينزّل الضغط. وكمان التمشية في الجنينة دي حلوة أوي!
+      ar: المشي يخفض ضغط الدم، والتجوّل في ذلك الحقل ممتع جدًا!
+      en: Walking can lower blood pressure. And a walk round that garden is great fun!
 new_words:
   - word: menaikkan
     pos: verb

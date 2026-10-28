@@ -268,6 +268,22 @@ pub fn TodayCards() -> Element {
     }
 }
 
+/// A card's title that opens where its numbers come from (the journal's
+/// days, or the words in Review).
+#[component]
+fn CardHead(title: &'static str, to: Screen) -> Element {
+    let ui = use_context::<Ui>();
+    let mut screen = ui.screen;
+    rsx! {
+        h3 {
+            button { class: "tap tap-plain tap-head", onclick: move |_| screen.set(to),
+                "{title}"
+                span { class: "chev", aria_hidden: "true" }
+            }
+        }
+    }
+}
+
 // ------------------------------------------------------------- the screen
 
 #[derive(Clone, PartialEq)]
@@ -377,7 +393,7 @@ fn HeatCard(heat: core_stats::Heatmap, today: LocalDate) -> Element {
     );
     rsx! {
         section { class: "card st-card st-wide",
-            h3 { "{st(lang, S::HeatTitle)}" }
+            CardHead { title: st(lang, S::HeatTitle), to: Screen::Journal }
             div { class: "st-chart st-heat", dangerous_inner_html: svg }
             div { class: "st-legend", aria_hidden: "true",
                 span { "{st(lang, S::HeatLess)}" }
@@ -392,6 +408,7 @@ fn HeatCard(heat: core_stats::Heatmap, today: LocalDate) -> Element {
 #[component]
 fn TimeCard(time: core_stats::TimeStudied) -> Element {
     let ui = use_context::<Ui>();
+    let mut screen = ui.screen;
     let lang = ui.lang();
     let span = |s: core_stats::TimeSpan| {
         (duration(&ui, s.minutes), fill(st(lang, S::StudyDays), &[("n", &ui.num(s.days))]))
@@ -400,19 +417,20 @@ fn TimeCard(time: core_stats::TimeStudied) -> Element {
     let (mm, md) = span(time.month);
     rsx! {
         section { class: "card st-card",
-            h3 { "{st(lang, S::TimeTitle)}" }
+            CardHead { title: st(lang, S::TimeTitle), to: Screen::Journal }
+            // Each span opens the journal, day by day.
             div { class: "stats-row",
-                div { class: "stat",
+                button { class: "stat tap", onclick: move |_| screen.set(Screen::Journal),
                     span { class: "stat-value", "{wm}" }
                     span { class: "stat-label", {fill(st(lang, S::Week), &[("n", &ui.num(7u32))])} }
                     span { class: "stat-label", "{wd}" }
                 }
-                div { class: "stat",
+                button { class: "stat tap", onclick: move |_| screen.set(Screen::Journal),
                     span { class: "stat-value", "{mm}" }
                     span { class: "stat-label", {fill(st(lang, S::Month), &[("n", &ui.num(30u32))])} }
                     span { class: "stat-label", "{md}" }
                 }
-                div { class: "stat",
+                button { class: "stat tap", onclick: move |_| screen.set(Screen::Journal),
                     span { class: "stat-value", "{duration(&ui, time.total_minutes)}" }
                     span { class: "stat-label", "{st(lang, S::AllTime)}" }
                 }
@@ -435,7 +453,7 @@ fn WordsCard(words: Vec<WordCounts>) -> Element {
     let _ = KNOWN_STABILITY_DAYS; // the rule the note below explains
     rsx! {
         section { class: "card st-card",
-            h3 { "{st(lang, S::WordsTitle)}" }
+            CardHead { title: st(lang, S::WordsTitle), to: Screen::Review }
             if words.is_empty() {
                 p { class: "muted", "{st(lang, S::NoWords)}" }
             }
@@ -497,7 +515,7 @@ fn RetentionCard(week: Retention, month: Retention) -> Element {
     );
     rsx! {
         section { class: "card st-card",
-            h3 { "{st(lang, S::RetentionTitle)}" }
+            CardHead { title: st(lang, S::RetentionTitle), to: Screen::Review }
             table { class: "st-table",
                 thead {
                     tr {
@@ -553,7 +571,7 @@ fn ForecastCard(days: Vec<u32>, today: LocalDate) -> Element {
     });
     rsx! {
         section { class: "card st-card st-wide",
-            h3 { "{st(lang, S::ForecastTitle)}" }
+            CardHead { title: st(lang, S::ForecastTitle), to: Screen::Review }
             div { class: "st-chart st-forecast", dangerous_inner_html: svg }
             div { class: "st-axis", aria_hidden: "true",
                 span { "{st(lang, S::Today)}" }

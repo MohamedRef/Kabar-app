@@ -1,0 +1,260 @@
+schema: kabar.lesson/v1
+id: j5.u04.l12
+language: jv
+title: Ulangan J5.4
+can_do:
+  ar_eg: تشرح بوست مخلوط.
+  ar: أن تشرح منشورًا ممزوجًا.
+  en: Explain a mixed post.
+slides:
+  - title: Telung langkah
+    body:
+      ar_eg: |
+        عشان تشرح أي بوست مخلوط:
+        1. لاقي الهيكل الجاوي: wis، tak، neng، sing، durung، ya، -ne.
+        2. علّم الباقي: إندونيسي (udh، blm، bgt، gpp) ولا إنجليزي (share، OTW، like)؟ وافصل البادئات: di- + share، tak + follow.
+        3. رجّع إملا الشات: ojo → aja، iso → isa.
+        وافتكر: الخلط للصحاب، والكراما للكبار من غير إنجليزي.
+      ar: |
+        لشرح أي منشور ممزوج:
+        1. جد الهيكل الجاوي: wis، وtak، وneng، وsing، وdurung، وya، و-ne.
+        2. صنّف البقية: إندونيسية (udh، bgt، blm، gpp) أم إنجليزية (share، OTW، like)؟ وافصل السوابق: di- + share، وtak + follow.
+        3. ردّ إملاء الدردشة: ojo ← aja، وiso ← isa.
+        وتذكّر: الخلط للأصدقاء، والكراما للكبار بلا إنجليزية.
+      en: |
+        To explain any mixed post:
+        1. Find the Javanese frame: wis, tak, neng, sing, durung, ya, -ne.
+        2. Tag the rest: Indonesian (udh, blm, bgt, gpp) or English (share, OTW, like)? Split the affixes: di- + share, tak + follow.
+        3. Restore chat spelling: ojo → aja, iso → isa.
+        And remember: mixing is for friends; krama with elders, no English.
+    grammar: jv.codemix
+    examples:
+      - text: Guys, videone udh tak upload, ojo lali like yo!
+        ar_eg: يا جماعة، رفعت الفيديو خلاص، ماتنسوش اللايك!
+        ar: يا جماعة، رفعتُ الفيديو، لا تنسوا الإعجاب!
+        en: Guys, I've uploaded the video, don't forget to like it!
+      - text: HP-ne lowbat, mengko tak kabari neng grup.
+        ar_eg: الموبايل فاصل شحن، هبلّغكم على الجروب بعدين.
+        ar: بطارية الهاتف ضعيفة، سأخبركم في المجموعة لاحقًا.
+        en: My phone's battery is low; I'll let you know in the group later.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: udh
+        ar_eg: خلاص (sudah)
+        ar: قد (sudah)
+        en: already (sudah)
+      - text: blm
+        ar_eg: لسه (belum)
+        ar: لم بعد (belum)
+        en: not yet (belum)
+      - text: bgt
+        ar_eg: أوي (banget)
+        ar: جدًا (banget)
+        en: really (banget)
+      - text: gpp
+        ar_eg: مفيش مشكلة (nggak papa)
+        ar: لا بأس (nggak papa)
+        en: no problem (nggak papa)
+      - text: OTW
+        ar_eg: في الطريق
+        ar: في الطريق
+        en: on the way
+      - text: min
+        ar_eg: الأدمن
+        ar: مشرف الصفحة
+        en: admin
+    words: [udh, blm, bgt, gpp, OTW, min]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: خبر مش حقيقي بيلف على السوشيال. ده خبر …
+      ar: خبر غير حقيقي ينتشر على وسائل التواصل. هذا خبر …
+      en: A made-up story is going round social media. It's …
+    options: [palsu, sombong, selo]
+    answer: 0
+    explain:
+      ar_eg: 'palsu = مزيّف: warta palsu = خبر كدب.'
+      ar: 'palsu = مزيّف: warta palsu = خبر كاذب.'
+      en: 'palsu = fake: warta palsu = fake news.'
+    words: [palsu, sombong, selo]
+  - id: e03
+    type: match_pairs
+    pairs:
+      - text: ngunggah
+        ar_eg: يرفع
+        ar: يرفع (ملفًا)
+        en: upload
+      - text: kuota
+        ar_eg: باقة النت
+        ar: باقة الإنترنت
+        en: data allowance
+      - text: iri
+        ar_eg: حاسد
+        ar: حاسد
+        en: envious
+      - text: ngapura
+        ar_eg: يسامح
+        ar: يصفح
+        en: forgive
+      - text: umuk
+        ar_eg: يتفشخر
+        ar: يتباهى
+        en: brag
+      - text: ngapusi
+        ar_eg: يكذب
+        ar: يكذب
+        en: lie
+    words: [ngunggah, kuota, iri, ngapura, umuk, ngapusi]
+  - id: e04
+    type: listen
+    text: Sabar ya, aku lagi OTW.
+    options: ['Sabar ya, aku lagi OTW.', 'Sabar ya, aku wis tekan.', 'Sorry ya, aku lagi lowbat.']
+    answer: 0
+    meaning:
+      ar_eg: استنى شوية، أنا في الطريق.
+      ar: اصبر قليلًا، أنا في الطريق.
+      en: Hang on, I'm on my way.
+    words: [sabar, OTW]
+  - id: e05
+    type: listen
+    text: HP-ne lowbat, mengko tak kabari neng grup.
+    question:
+      ar_eg: هيبلّغهم فين؟
+      ar: أين سيخبرهم؟
+      en: Where will he let them know?
+    options: [neng omah, neng kampus, neng grup]
+    answer: 2
+    meaning:
+      ar_eg: الموبايل فاصل شحن، هبلّغكم على الجروب بعدين.
+      ar: بطارية الهاتف ضعيفة، سأخبركم في المجموعة لاحقًا.
+      en: My phone's battery is low; I'll let you know in the group later.
+    words: [lowbat, kabari, grup]
+  - id: e06
+    type: fill_blank
+    sentence: Videone apik ___, ojo lali like.
+    meaning:
+      ar_eg: الفيديو حلو أوي، ماتنساش اللايك.
+      ar: الفيديو رائع جدًا، لا تنسَ الإعجاب.
+      en: The video is really good, don't forget to like it.
+    options: [blm, gpp, bgt]
+    answers: [bgt]
+    words: [bgt]
+    explain:
+      ar_eg: bgt = banget = أوي. blm = لسه وgpp = مفيش مشكلة.
+      ar: "bgt أي banget: جدًا. أما blm فليس بعد وgpp لا بأس."
+      en: bgt is banget, "very". blm is "not yet" and gpp is "no problem".
+  - id: e07
+    type: fill_blank
+    sentence: ___, mengko tak kirim.
+    meaning:
+      ar_eg: مفيش مشكلة، هبعتها بعدين.
+      ar: لا بأس، سأرسلها لاحقًا.
+      en: No problem, I'll send it later.
+    options: [Gpp, Min, Bgt]
+    answers: [Gpp]
+    words: [gpp]
+    explain:
+      ar_eg: gpp = مفيش مشكلة. min = يا أدمن وbgt = أوي، ومش بيبدأوا الرد كده.
+      ar: gpp تعني لا بأس. أما min فنداء للمشرف وbgt جدًا.
+      en: gpp is "no problem". min addresses an admin and bgt is "very".
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: شيّرته على الجروب يا جماعة.
+      ar: شاركتُه في المجموعة يا جماعة.
+      en: I've shared it in the group, guys.
+    answer: Wis tak share neng grup, guys.
+    distractors: [dishare, sing]
+    words: [grup]
+    explain:
+      ar_eg: tak share = أنا شيّرت. dishare مبني للمجهول ومش مع tak، وsing مش في الجملة.
+      ar: tak share تعني شاركتُ. أما dishare فللمجهول ولا تأتي مع tak، وsing ليست في الجملة.
+      en: tak share is "I shared". dishare is passive and doesn't go with tak, and sing isn't in the sentence.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Durung sempet, sorry banget.
+    answers_meaning:
+      ar_eg:
+        - لسه ملحقتش، سوري جدًا.
+        - لسه ملحقتش، آسف جدًا.
+        - ملحقتش لسه، سوري أوي.
+        - لسه ملقيتش وقت، سوري جدًا.
+        - لسه ملحقتش، أنا آسف جدًا.
+      ar:
+        - لم تسنح لي الفرصة بعد، آسف جدًا.
+        - لم أجد وقتًا بعد، آسف جدًا.
+        - لم أتمكن بعد، آسف جدًا.
+      en:
+        - Haven't had the chance yet, really sorry.
+        - I haven't had the chance yet, really sorry.
+        - Haven't had time yet, really sorry.
+        - I haven't had time yet, so sorry.
+        - Haven't had the chance yet, so sorry.
+    words: [sempet]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (شات لصاحبك) استنى شوية، أنا في الطريق.
+      ar: (دردشة مع صديق) اصبر قليلًا، أنا في الطريق.
+      en: (chat to a friend) Hang on, I'm on my way.
+    answers:
+      - Sabar ya, aku lagi OTW.
+      - Sabar ya, aku OTW.
+      - Sabar, aku lagi OTW.
+      - Sabar ya, lagi OTW.
+      - Sabar ya, aku lagi neng dalan.
+      - Sabar ya, aku isih neng dalan.
+    words: [sabar, OTW]
+  - id: e11
+    type: speaking
+    text: Akunmu wis tak follow.
+    meaning:
+      ar_eg: تابعت أكونتك خلاص.
+      ar: تابعتُ حسابك.
+      en: I've followed your account.
+    words: [akun]
+dialogue:
+  title: Postingane Mohamed
+  lines:
+    - speaker: Mohamed
+      text: Mas, iki postinganku. Sepur lawas neng Ambarawa apik bgt!
+      ar_eg: "يا يودا، ده البوست بتاعي: القطر القديم في أمباراوا حلو أوي!"
+      ar: "يا يودا، هذا منشوري: القطار القديم في أمباراوا رائع جدًا!"
+      en: Yudha, here's my post. The old train in Ambarawa is really great!
+    - speaker: Mas Yudha
+      text: Wah, campur kode! Saiki kowe kaya wong Jawa asli, lho.
+      ar_eg: يا سلام، خلط لغات! دلوقتي إنت زي الجاوي الأصلي.
+      ar: رائع، خلط لغوي! صرت الآن كالجاوي الأصيل.
+      en: Wow, code-mixing! Now you're like a real Javanese.
+    - speaker: Mohamed
+      text: Nanging karo simbahmu, aku nganggo krama.
+      ar_eg: بس مع جدّك بتكلم كراما.
+      ar: لكني أكلّم جدّك بالكراما.
+      en: But with your grandpa, I use krama.
+    - speaker: Mas Yudha
+      text: Pinter. Akunmu wis tak follow.
+      ar_eg: شاطر. تابعت أكونتك خلاص.
+      ar: أحسنت. تابعتُ حسابك.
+      en: Clever. I've followed your account.
+    - speaker: Mohamed
+      text: Suwun, Mas!
+      ar_eg: متشكر يا يودا!
+      ar: شكرًا يا يودا!
+      en: Thanks, Yudha!
+souvenir:
+  id: j5.u04.souvenir
+  title: Museum Kereta Api Ambarawa
+  note:
+    ar_eg: |
+      محطة أمباراوا القديمة بقت متحف للقطارات: قاطرات بخار هولندية متصفّفة جنب بعض، وفيه قطر بخار سياحي بيطلع في الجبل على خط مسنّن (rack railway)، ودي حاجة نادرة في الدنيا. ولو دوّرت على أمباراوا في تيك توك هتلاقي بوستات كتير مخلوطة جاوي وإندونيسي وإنجليزي، والـ Reader في Kabar بيعلّم لغة كل كلمة.
+    ar: |
+      صارت محطة أمباراوا القديمة متحفًا للقطارات: قاطرات بخارية هولندية مصفوفة جنبًا إلى جنب، وقطار بخاري سياحي يصعد الجبل على سكة مسنّنة، وهو أمر نادر في العالم. وإن بحثت عن أمباراوا في تيك توك وجدت منشورات كثيرة تمزج الجاوية بالإندونيسية والإنجليزية، والقارئ (Reader) في Kabar يوسم لغة كل كلمة.
+    en: |
+      Ambarawa's old station is now a railway museum: Dutch-era steam locomotives lined up side by side, and a tourist steam train that climbs into the hills on a rack railway, a rare thing in the world. Search Ambarawa on TikTok and you'll find plenty of posts mixing Javanese, Indonesian and English; Kabar's Reader tags each word's language.
+review:
+  status: draft
+  verified: false

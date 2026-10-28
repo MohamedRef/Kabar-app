@@ -1,0 +1,176 @@
+schema: kabar.lesson/v1
+id: j4.u03.l09
+language: jv
+title: Ndherek dhateng Kraton
+can_do:
+  ar_eg: تقرا يوميات قصيرة فيها أفعال التواضع وأفعال التبجيل مع بعض.
+  ar: أن تقرأ يوميات قصيرة تجمع أفعال التواضع وأفعال التبجيل.
+  en: Read a short diary entry that mixes humble and honorific verbs.
+slides:
+  - title: Buku harian Mohamed
+    body:
+      ar_eg: |
+        محمد كتب في مذكراته بالكراما عن يومه في الـ Kraton مع Pak Harsono.
+        خد بالك من الاتجاهين: أفعال محمد ناحية الكبار krama andhap (ndherek، nyuwun pirsa، nyuwun pamit)، وفعل Pak Sastro ناحيته krama inggil (maringi).
+      ar: |
+        كتب محمد في يومياته بالكراما عن يومه في الـ Kraton مع Pak Harsono.
+        لاحظ الاتجاهين: أفعال محمد نحو الكبار krama andhap (ndherek، nyuwun pirsa، nyuwun pamit)، وفعل Pak Sastro نحوه krama inggil (maringi).
+      en: |
+        Mohamed wrote in his diary, in krama, about his day at the Kraton with Pak Harsono.
+        Watch both directions: Mohamed's actions towards the elders are krama andhap (ndherek, nyuwun pirsa, nyuwun pamit), and Pak Sastro's action towards him is krama inggil (maringi).
+    grammar: jv.krama-andhap
+    examples:
+      - text: Enjing kula ndherek Pak Harsono dhateng Kraton.
+        ar_eg: الصبح رحت مع Pak Harsono الـ Kraton.
+        ar: في الصباح رافقتُ Pak Harsono إلى الـ Kraton.
+        en: In the morning I went along with Pak Harsono to the Kraton.
+      - text: Kula nyuwun pirsa dhateng Pak Sastro, abdi dalem Kraton.
+        ar_eg: سألت Pak Sastro، واحد من خدّام القصر.
+        ar: سألتُ Pak Sastro، أحد خَدَم القصر.
+        en: I asked Pak Sastro, one of the Kraton's abdi dalem, some questions.
+      - text: Pak Sastro maringi kula buku, lajeng kula nyuwun pamit.
+        ar_eg: Pak Sastro إداني كتاب، وبعدين استأذنت ومشيت.
+        ar: أعطاني Pak Sastro كتابًا، ثم استأذنتُ في الانصراف.
+        en: Pak Sastro gave me a book, and then I took my leave.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: محمد راح الـ Kraton مع مين؟
+      ar: مع من ذهب محمد إلى الـ Kraton؟
+      en: Who did Mohamed go to the Kraton with?
+    options: [Pak Sastro, Pak Harsono, Mas Dimas]
+    answer: 1
+    explain:
+      ar_eg: «kula ndherek Pak Harsono» = رحت مع Pak Harsono.
+      ar: «kula ndherek Pak Harsono» = رافقتُ Pak Harsono.
+      en: '"kula ndherek Pak Harsono" = I went along with Pak Harsono.'
+    words: [ndherek]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Pak Sastro مين؟
+      ar: من هو Pak Sastro؟
+      en: Who is Pak Sastro?
+    options: [abdi dalem, bakul batik, garwanipun Pak Harsono]
+    answer: 0
+    explain:
+      ar_eg: «Pak Sastro, abdi dalem Kraton» = من خدّام القصر.
+      ar: «Pak Sastro, abdi dalem Kraton» = من خَدَم القصر.
+      en: '"Pak Sastro, abdi dalem Kraton" = one of the palace servants.'
+    words: [abdi dalem]
+  - id: e03
+    type: listen
+    text: Pak Sastro maringi kula buku, lajeng kula nyuwun pamit.
+    question:
+      ar_eg: Pak Sastro إدى محمد إيه؟
+      ar: ماذا أعطى Pak Sastro محمدًا؟
+      en: What did Pak Sastro give Mohamed?
+    options: [arta, jeruk, buku]
+    answer: 2
+    meaning:
+      ar_eg: Pak Sastro إداني كتاب، وبعدين استأذنت ومشيت.
+      ar: أعطاني Pak Sastro كتابًا، ثم استأذنتُ في الانصراف.
+      en: Pak Sastro gave me a book, and then I took my leave.
+    words: [maringi, nyuwun pamit]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: ndherek
+        ar_eg: يروح مع حد كبير (تواضع)
+        ar: يرافق كبيرًا (تواضع)
+        en: go along with an elder (humble)
+      - text: nyuwun pirsa
+        ar_eg: يسأل بأدب (تواضع)
+        ar: يسأل بأدب (تواضع)
+        en: ask politely (humble)
+      - text: maringi
+        ar_eg: يدّي (الكبير هو اللي بيدّي)
+        ar: يعطي (حين يعطي الكبير)
+        en: give (when the elder gives)
+      - text: nyuwun pamit
+        ar_eg: يستأذن يمشي (تواضع)
+        ar: يستأذن في الانصراف (تواضع)
+        en: take your leave (humble)
+    words: [ndherek, nyuwun pirsa, maringi, nyuwun pamit]
+  - id: e05
+    type: fill_blank
+    sentence: Pak Sastro ___ kula buku.
+    meaning:
+      ar_eg: Pak Sastro إداني كتاب.
+      ar: أعطاني Pak Sastro كتابًا.
+      en: Pak Sastro gave me a book.
+    options: [ngaturaken, maringi, nyuwun]
+    answers: [maringi]
+    explain:
+      ar_eg: الكبير هو اللي بيدّي، يبقى maringi. ngaturaken لما إنت تدّي الكبير.
+      ar: المعطي هو الكبير فتقول maringi، أما ngaturaken فحين تعطي أنت الكبير.
+      en: The elder is giving, so maringi. ngaturaken is when you give to the elder.
+    words: [maringi]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الصبح رحت مع Pak Harsono الـ Kraton.
+      ar: في الصباح رافقتُ Pak Harsono إلى الـ Kraton.
+      en: In the morning I went along with Pak Harsono to the Kraton.
+    answer: Enjing kula ndherek Pak Harsono dhateng Kraton.
+    distractors: [tindak, rawuh]
+    explain:
+      ar_eg: إنت رايح مع حد كبير، يبقى ndherek. tindak وrawuh للكبير بس.
+      ar: أنت ترافق كبيرًا فتقول ndherek، أما tindak وrawuh فللكبير.
+      en: You're going along with an elder, so ndherek. tindak and rawuh are for the elder.
+    words: [ndherek]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: سألت Pak Sastro بأدب.
+      ar: سألتُ Pak Sastro بأدب.
+      en: I asked Pak Sastro a question (politely).
+    answers:
+      - Kula nyuwun pirsa dhateng Pak Sastro.
+      - Kula sampun nyuwun pirsa dhateng Pak Sastro.
+    explain:
+      ar_eg: 'لما تسأل حد كبير: nyuwun pirsa dhateng + الشخص.'
+      ar: 'حين تسأل كبيرًا: nyuwun pirsa dhateng + الشخص.'
+      en: 'Asking an elder: nyuwun pirsa dhateng + the person.'
+    words: [nyuwun pirsa]
+  - id: e08
+    type: dictation
+    text: Pak Sastro maringi kula buku, lajeng kula nyuwun pamit.
+    meaning:
+      ar_eg: Pak Sastro إداني كتاب، وبعدين استأذنت ومشيت.
+      ar: أعطاني Pak Sastro كتابًا، ثم استأذنتُ في الانصراف.
+      en: Pak Sastro gave me a book, and then I took my leave.
+    words: [maringi, nyuwun pamit]
+dialogue:
+  title: Wangsul saking Kraton
+  lines:
+    - speaker: Bu Harsono
+      text: Mas Mohamed, saking pundi?
+      ar_eg: كنت فين يا محمد؟
+      ar: من أين أتيت يا محمد؟
+      en: Where have you been, Mohamed?
+    - speaker: Mohamed
+      text: Saking Kraton, Bu. Kula ndherek Pak Harsono.
+      ar_eg: من الـ Kraton يا هانم. رحت مع Pak Harsono.
+      ar: من الـ Kraton يا سيدتي. رافقتُ Pak Harsono.
+      en: From the Kraton, ma'am. I went along with Pak Harsono.
+    - speaker: Bu Harsono
+      text: Pak Sastro wonten, Mas?
+      ar_eg: Pak Sastro كان موجود؟
+      ar: هل كان Pak Sastro هناك؟
+      en: Was Pak Sastro there?
+    - speaker: Mohamed
+      text: Wonten, Bu. Pak Sastro maringi kula buku.
+      ar_eg: أيوه يا هانم. Pak Sastro إداني كتاب.
+      ar: نعم يا سيدتي. أعطاني Pak Sastro كتابًا.
+      en: Yes, ma'am. Pak Sastro gave me a book.
+    - speaker: Bu Harsono
+      text: Wah, sae sanget, Mas.
+      ar_eg: الله، حلو أوي يا محمد.
+      ar: جميل جدًا يا محمد.
+      en: Oh, how lovely.
+review:
+  status: draft
+  verified: false

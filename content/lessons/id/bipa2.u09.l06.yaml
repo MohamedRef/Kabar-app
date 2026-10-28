@@ -36,14 +36,18 @@ slides:
 exercises:
   - id: e01
     type: multiple_choice
-    question: berangkat jam brp?
+    question: jam 4 pagi ya, biar bisa lihat lumba2
     question_meaning:
-      ar_eg: راكا كتب كده في الجروب. هو عايز يعرف إيه؟ اختار الكتابة الكاملة.
-      ar: كتب راكا هذا في المجموعة. ماذا يريد أن يعرف؟ اختر الصيغة الكاملة.
-      en: Raka wrote this in the group. What does he want to know? Pick the full form.
-    options: ['Berangkat dengan siapa?', 'Berangkat jam berapa?', 'Berangkat dari mana?']
-    answer: 1
-    words: [berapa]
+      ar_eg: ني لوه عايزة يمشوا بدري ليه؟ اختار الكتابة الكاملة.
+      ar: لماذا تريد ني لوه الانطلاق مبكرًا؟ اختر الصيغة الكاملة.
+      en: Why does Ni Luh want to leave so early? Pick the full form.
+    options: ['Jam empat pagi, ya, supaya bisa melihat lumba-lumba.', 'Jam empat pagi, ya, tapi bisa melihat lumba-lumba.', 'Jam empat pagi, ya, sesudah melihat lumba-lumba.']
+    answer: 0
+    words: [supaya]
+    explain:
+      ar_eg: biar = supaya (عشان). في الشات والشارع biar، وفي الكتابة الرسمية supaya. وlumba2 = lumba-lumba.
+      ar: biar = supaya (لكي)؛ biar في الكلام والمحادثة، وsupaya في الكتابة الرسمية. وlumba2 = lumba-lumba.
+      en: biar = supaya (so that); biar in chats and on the street, supaya in formal writing. lumba2 = lumba-lumba.
   - id: e02
     type: multiple_choice
     question: aku yg nyetir
@@ -68,6 +72,10 @@ exercises:
     options: [bgt, udh, gk]
     answers: [gk]
     words: [nggak, saja]
+    explain:
+      ar_eg: gk papa = gak apa-apa (ولا يهمك). bgt = أوي، وudh = خلاص.
+      ar: gk papa = gak apa-apa (لا بأس). أما bgt فـ«جدًا» وudh «قد».
+      en: gk papa = gak apa-apa (no problem). bgt is "really", udh is "already".
   - id: e04
     type: fill_blank
     sentence: Ayo ___, bangun! Sudah jam empat.
@@ -78,6 +86,10 @@ exercises:
     options: [sih, dong, kan]
     answers: [dong]
     words: [dong]
+    explain:
+      ar_eg: Ayo dong = يلا بقى (زقّة). sih بتليّن السؤال، وkan = «مش كده؟».
+      ar: Ayo dong = هيّا إذن. أما sih فتليّن السؤال وkan «أليس كذلك؟».
+      en: Ayo dong = come on then. sih softens questions, kan is "right?".
   - id: e05
     type: build_sentence
     source:
@@ -87,6 +99,10 @@ exercises:
     answer: oke aku bawa makanan ya
     distractors: [yg, gk]
     words: [bawa, makanan, oke]
+    explain:
+      ar_eg: "في الشات: oke aku bawa makanan ya. yg وgk مالهمش مكان هنا."
+      ar: "في المحادثة: oke aku bawa makanan ya. أما yg وgk فزائدتان."
+      en: "In chat: oke aku bawa makanan ya. yg and gk don't fit."
   - id: e06
     type: translate
     direction: from_target
@@ -126,22 +142,22 @@ exercises:
     words: [gaes, ngantuk, nyetir, setuju, otw, wkwk]
   - id: e08
     type: listen
-    text: Gaes, aku ngantuk banget. Kamu aja yang nyetir, oke?
-    options: ['Gaes, aku ngantuk banget. Kamu aja yang nyetir, oke?', 'Gaes, aku ngantuk banget. Aku aja yang nyetir, oke?', 'Gaes, aku setuju. Kamu aja yang nyetir, oke?']
+    text: Gaes, aku ngantuk banget. Kamu aja yang nyetir, biar aku bisa tidur, oke?
+    options: ['Gaes, aku ngantuk banget. Kamu aja yang nyetir, biar aku bisa tidur, oke?', 'Gaes, aku ngantuk banget. Aku aja yang nyetir, biar kamu bisa tidur, oke?', 'Gaes, aku setuju. Kamu aja yang nyetir, biar aku bisa tidur, oke?']
     answer: 0
     meaning:
-      ar_eg: يا جماعة، أنا نعسان أوي. إنت اللي سوق، ماشي؟
-      ar: يا جماعة، أنا نعسان جدًا. قُد أنت، اتفقنا؟
-      en: Guys, I'm so sleepy. You drive, OK?
-    words: [gaes, ngantuk, nyetir, setuju, oke]
+      ar_eg: يا جماعة، أنا نعسان أوي. إنت اللي سوق عشان أعرف أنام، ماشي؟
+      ar: يا جماعة، أنا نعسان جدًا. قُد أنت لكي أنام، اتفقنا؟
+      en: Guys, I'm so sleepy. You drive so I can sleep, OK?
+    words: [gaes, ngantuk, nyetir, setuju, supaya, oke]
   - id: e09
     type: speaking
-    text: Oke, aku bawa makanan, ya. Sampai besok!
+    text: Oke, aku bawa makanan, biar kita nggak lapar. Sampai besok!
     meaning:
-      ar_eg: ماشي، أنا هجيب أكل. أشوفكم بكرة!
-      ar: حسنًا، سأحضر الطعام. إلى اللقاء غدًا!
-      en: OK, I'll bring food. See you tomorrow!
-    words: [bawa, sampai besok, oke]
+      ar_eg: ماشي، أنا هجيب أكل عشان مانجوعش. أشوفكم بكرة!
+      ar: حسنًا، سأحضر الطعام لكي لا نجوع. إلى اللقاء غدًا!
+      en: OK, I'll bring food so we don't get hungry. See you tomorrow!
+    words: [bawa, supaya, sampai besok, oke]
   - id: e10
     type: multiple_choice
     question: gaes, setuju gk?
@@ -210,11 +226,11 @@ new_words:
     ar_eg: موافق
     ar: يوافق
     en: to agree
-  - word: oke
-    pos: interjection
-    ar_eg: ماشي / أوكيه
-    ar: حسنًا
-    en: OK
+  - word: supaya / biar
+    pos: conjunction
+    ar_eg: عشان، علشان (supaya bisa = عشان نقدر)؛ في الشارع والشات biar
+    ar: لكي، حتى (supaya bisa = لكي نستطيع)؛ وفي العامية biar
+    en: so that (supaya bisa = so we can); on the street and in chats biar
 review:
   status: draft
   verified: false

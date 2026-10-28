@@ -35,6 +35,19 @@ pub enum S {
     TranslationOff,
     WordColours,
     GrammarHints,
+    SoundCorrect,
+    SoundEnd,
+    SoundHint,
+    DingSoft,
+    DingBell,
+    DingSaron,
+    KendangRound,
+    KendangLow,
+    KendangTight,
+    GongWarm,
+    GongDeep,
+    GongBright,
+    Vibration,
     // look
     TextSize,
     TextSmall,
@@ -42,6 +55,7 @@ pub enum S {
     TextLarge,
     TextLarger,
     TextSample,
+    BlackHint,
     // android
     Notifications,
     NotificationsBody,
@@ -171,6 +185,38 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (GrammarHints, Ar) => "اعرض القواعد الواردة في الجملة (تحت السطر وفي بطاقة الكلمة)",
         (GrammarHints, En) => "Show grammar hints (under lines and in word cards)",
 
+        (SoundCorrect, ArEg) => "صوت الإجابة الصح",
+        (SoundCorrect, Ar) => "صوت الإجابة الصحيحة",
+        (SoundCorrect, En) => "Right-answer sound",
+        (SoundEnd, ArEg | Ar) => "صوت نهاية الدرس",
+        (SoundEnd, En) => "End-of-lesson sound",
+        (SoundHint, ArEg) => "دوس على أي صوت تسمعه وتختاره.",
+        (SoundHint, Ar) => "المس أي صوت لتسمعه وتختاره.",
+        (SoundHint, En) => "Tap a sound to hear it and pick it.",
+        (DingSoft, ArEg | Ar) => "دينج ناعم",
+        (DingSoft, En) => "Soft ding",
+        (DingBell, ArEg | Ar) => "جرس لامع",
+        (DingBell, En) => "Bright bell",
+        (DingSaron, ArEg | Ar) => "سارون جاوي",
+        (DingSaron, En) => "Javanese saron",
+        (KendangRound, ArEg | Ar) => "كندانج مدوّر",
+        (KendangRound, En) => "Round kendang",
+        (KendangLow, ArEg | Ar) => "كندانج واطي",
+        (KendangLow, En) => "Low kendang",
+        (KendangTight, ArEg | Ar) => "كندانج مشدود",
+        (KendangTight, En) => "Tight kendang",
+        (GongWarm, ArEg | Ar) => "جونج دافي",
+        (GongWarm, En) => "Warm gong",
+        (GongDeep, ArEg | Ar) => "جونج عميق",
+        (GongDeep, En) => "Deep gong",
+        (GongBright, ArEg | Ar) => "جونج صغير",
+        (GongBright, En) => "Small gong",
+        (Vibration, ArEg) => "اهتزاز خفيف مع الإجابات وآخر الدرس، وبيمشي على إعداد اهتزاز اللمس في موبايلك",
+        (Vibration, Ar) => "اهتزاز خفيف مع الإجابات ونهاية الدرس، ويتبع إعداد اهتزاز اللمس في هاتفك",
+        (Vibration, En) => {
+            "A light vibration on answers and at a lesson's end; follows your phone's touch-vibration setting"
+        }
+
         (TextSize, ArEg | Ar) => "حجم الخط",
         (TextSize, En) => "Text size",
         (TextSmall, ArEg | Ar) => "صغير",
@@ -184,6 +230,13 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (TextSample, ArEg) => "كده هيبان الكلام في الدروس والقارئ.",
         (TextSample, Ar) => "هكذا سيظهر النص في الدروس والقارئ.",
         (TextSample, En) => "This is how text looks in lessons and the Reader.",
+        (BlackHint, ArEg) => {
+            "الخلفية سودا خالص، فبكسلات شاشة الأموليد بتطفي خالص: أريح للعين بالليل وبتوفّر بطارية."
+        }
+        (BlackHint, Ar) => "الخلفية سوداء تمامًا، فتنطفئ بكسلات شاشة AMOLED: أريح للعين ليلًا وتوفّر البطارية.",
+        (BlackHint, En) => {
+            "Pure black background, so AMOLED pixels switch off: easier on the eyes at night and kinder to the battery."
+        }
 
         (Notifications, ArEg | Ar) => "الإشعارات",
         (Notifications, En) => "Notifications",

@@ -105,6 +105,10 @@ exercises:
     options: [sehat, sejuk, sakit]
     answers: [sakit]
     words: [gigi, sakit]
+    explain:
+      ar_eg: sakit = بيوجع/عيّان. sehat = بصحة كويسة (عكسها)، وsejuk = هوا منعش.
+      ar: sakit = يؤلم. أما sehat فعكسها وsejuk «منعش».
+      en: sakit = hurts. sehat (healthy) is its opposite, sejuk is cool air.
   - id: e05
     type: build_sentence
     source:
@@ -115,6 +119,10 @@ exercises:
     alternatives: [Saya sakit perut.]
     distractors: [kepala, punya]
     words: [perut, sakit]
+    explain:
+      ar_eg: "الجزء + saya + sakit = الحتة دي بتوجعني: Perut saya sakit. kepala = راس، وده جزء تاني."
+      ar: "العضو + saya + sakit: Perut saya sakit. أما kepala فرأس، عضو آخر."
+      en: "Body part + saya + sakit: Perut saya sakit. kepala (head) is a different part."
   - id: e06
     type: build_sentence
     source:
@@ -137,6 +145,38 @@ exercises:
       ar: عندي التهاب في الحلق.
       en: I have a sore throat.
     words: [tenggorokan]
+  - id: e08
+    type: fill_blank
+    sentence: Saya ___ sakit kepala, Dok. Perut saya tidak sakit.
+    meaning:
+      ar_eg: عندي صداع بس يا دكتور. بطني مش بتوجعني.
+      ar: عندي صداع فقط يا دكتور. بطني لا يؤلمني.
+      en: I just have a headache, doctor. My stomach doesn't hurt.
+    options: [cuma, juga, sejak]
+    answers: [cuma]
+    explain:
+      ar_eg: cuma = بس. juga = كمان، وده عكس المعنى هنا.
+      ar: cuma = فقط، أما juga فـ«أيضًا»، وهي عكس المعنى هنا.
+      en: cuma = just, only; juga = also, the opposite of what's meant here.
+    words: [cuma, kepala, perut, sakit]
+  - id: e09
+    type: listen
+    text: Saya cuma sakit tenggorokan.
+    options: [Saya cuma sakit tenggorokan., Saya juga sakit tenggorokan., Saya sakit tenggorokan sejak kemarin.]
+    answer: 0
+    meaning:
+      ar_eg: عندي التهاب زور بس.
+      ar: عندي التهاب في الحلق فقط.
+      en: I just have a sore throat.
+    words: [cuma, tenggorokan]
+  - id: e10
+    type: speaking
+    text: Cuma sakit gigi, Dok.
+    meaning:
+      ar_eg: وجع سنان بس يا دكتور.
+      ar: ألم أسنان فقط يا دكتور.
+      en: Just a toothache, doctor.
+    words: [cuma, gigi, sakit]
 dialogue:
   lines:
     - speaker: Dokter
@@ -180,6 +220,11 @@ new_words:
     ar_eg: عيان / بيوجع
     ar: مريض / يؤلم
     en: sick; sore, hurting
+  - word: cuma
+    pos: adverb
+    ar_eg: بس، فقط (في الكلام؛ الرسمي hanya)
+    ar: فقط (في الكلام؛ والفصيح hanya)
+    en: just, only (spoken; formal hanya)
 review:
   status: draft
   verified: false

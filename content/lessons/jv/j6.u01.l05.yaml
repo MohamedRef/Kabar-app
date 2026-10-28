@@ -1,174 +1,248 @@
 schema: kabar.lesson/v1
 id: j6.u01.l05
 language: jv
-title: Jeneng ing papan
+title: Crita Aji Saka
 can_do:
-  ar_eg: تقرا أسامي مكتوبة بالخط الجاوي على سبورة.
-  ar: أن تقرأ أسماء مكتوبة بالخط الجاوي على لوح.
-  en: Read names written in aksara Jawa on a board.
+  ar_eg: 'تحكي أسطورة آجي ساكا اللي ورا الحروف العشرين: الرسولين والوصية والمبارزة.'
+  ar: 'أن تحكي أسطورة آجي ساكا وراء الحروف العشرين: الرسولان والوصية والمبارزة.'
+  en: 'Tell the Aji Saka legend behind the 20 letters: two messengers, an order and a duel.'
 slides:
-  - title: Kursus perak
+  - title: Ha na ca ra ka
     body:
       ar_eg: |
-        في ورشة فضة جنب Pasar Kotagedhe، المدرّب كتب أسامي الطلبة على السبورة بالخط الجاوي.
-        كل الأسامي دي حروف بس، كل حرف فيه a، ومفيش مسافات. اقرا حرف حرف: ꦩ ma + ꦪ ya = Maya.
+        الحروف العشرين بتحكي حكاية: آجي ساكا كان عنده utusan (رسول أو خدام) اتنين، دورا وسيمبادا.
+        سيمبادا كان ماسك weling (وصية أو أمر): «ماتديش الكريس لحد». ودورا جه ياخده، فعملوا tandhing (مبارزة) وماتوا الاتنين.
+        baris kapindho = السطر التاني، katelu = التالت، sabanjure = بعد كده. والحكايات القديمة دي مكتوبة في babad (حوليات).
       ar: |
-        في ورشة فضة قرب Pasar Kotagedhe كتب المدرّب أسماء المتدرّبين على اللوح بالخط الجاوي.
-        كل هذه الأسماء حروف مجرّدة، في كل حرف a، بلا مسافات. اقرأ حرفًا حرفًا: ꦩ ma + ꦪ ya = Maya.
+        الحروف العشرون تحكي قصة: كان لآجي ساكا utusan (رسولان أو خادمان) هما دورا وسيمبادا.
+        وكان سيمبادا يحفظ weling (وصية): «لا تعطِ الخنجر أحدًا». فجاء دورا ليأخذه، فتبارزا (tandhing) ومات الاثنان.
+        baris kapindho = السطر الثاني، katelu = الثالث، sabanjure = بعد ذلك. وتُروى هذه القصص في babad (الحوليات).
       en: |
-        At a silver workshop next to Pasar Kotagedhe, the trainer has written the students' names on the board in aksara Jawa.
-        Every name here is bare letters, each with its a, and no spaces. Read letter by letter: ꦩ ma + ꦪ ya = Maya.
-    grammar: jv.aksara.nglegena
+        The 20 letters tell a story: Aji Saka had two utusan (messengers), Dora and Sembada.
+        Sembada kept a weling (instruction): "give the keris to no one". Dora came for it, they fought a tandhing (duel), and both died.
+        baris kapindho = the second line, katelu = third, sabanjure = next, then. Old stories like this are written in a babad (chronicle).
     examples:
-      - text: ꦩꦪ · ꦗꦏ
-        ar_eg: Maya · Jaka (أسامي)
-        ar: Maya · Jaka (أسماء)
-        en: Maya · Jaka (names)
-      - text: ꦫꦏ · ꦫꦩ
-        ar_eg: Raka · Rama (أسامي)
-        ar: Raka · Rama (أسماء)
-        en: Raka · Rama (names)
-      - text: ꦢꦤ
-        ar_eg: Dana (اسم)
-        ar: Dana (اسم)
-        en: Dana (a name)
+      - text: Aji Saka duwe utusan loro, yaiku Dora lan Sembada.
+        ar_eg: آجي ساكا كان عنده رسولين، دورا وسيمبادا.
+        ar: كان لآجي ساكا رسولان، هما دورا وسيمبادا.
+        en: Aji Saka had two messengers, Dora and Sembada.
+      - text: Baris kapindho yaiku 'da ta sa wa la'.
+        ar_eg: السطر التاني هو da ta sa wa la.
+        ar: السطر الثاني هو da ta sa wa la.
+        en: The second line is 'da ta sa wa la'.
+      - text: Sabanjure, Dora lan Sembada tandhing.
+        ar_eg: بعد كده، دورا وسيمبادا اتبارزوا.
+        ar: بعد ذلك تبارز دورا وسيمبادا.
+        en: Then Dora and Sembada fought a duel.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: ꦩꦪ
-        ar_eg: Maya (مايا)
-        ar: Maya (مايا)
-        en: Maya
-      - text: ꦗꦏ
-        ar_eg: Jaka (جاكا)
-        ar: Jaka (جاكا)
-        en: Jaka
-      - text: ꦫꦏ
-        ar_eg: Raka (راكا)
-        ar: Raka (راكا)
-        en: Raka
-      - text: ꦢꦤ
-        ar_eg: Dana (دانا)
-        ar: Dana (دانا)
-        en: Dana
-    words: [ꦩ, ꦪ, ꦗ, ꦏ, ꦫ, ꦢ, ꦤ]
+      - text: aksara
+        ar_eg: حرف (كتابة)
+        ar: حرف، أبجدية
+        en: letter, script
+      - text: babad
+        ar_eg: حوليات
+        ar: حوليات
+        en: chronicle
+      - text: utusan
+        ar_eg: رسول
+        ar: رسول، مبعوث
+        en: messenger
+      - text: tandhing
+        ar_eg: مبارزة
+        ar: مبارزة
+        en: duel, contest
+    words: [aksara, babad, utusan, tandhing]
   - id: e02
-    type: listen
-    text: Jaka
-    question:
-      ar_eg: المدرّب نادى اسم. أنهي اسم على السبورة؟
-      ar: نادى المدرّب اسمًا. أي اسم على اللوح؟
-      en: The trainer called a name. Which name on the board is it?
-    options: ["ꦗꦏ", "ꦒꦏ", "ꦗꦒ"]
-    answer: 0
-    explain:
-      ar_eg: ꦗ ja (الجيم الفصحى) + ꦏ ka = Jaka. ꦒ هي ga.
-      ar: ꦗ ja (الجيم الفصيحة) + ꦏ ka = Jaka، أما ꦒ فهي ga.
-      en: ꦗ ja + ꦏ ka = Jaka. ꦒ is ga.
-    words: [ꦗ, ꦏ]
+    type: match_pairs
+    pairs:
+      - text: weling
+        ar_eg: وصية
+        ar: وصية، أمر
+        en: instruction
+      - text: kapindho
+        ar_eg: التاني
+        ar: الثاني
+        en: second
+      - text: katelu
+        ar_eg: التالت
+        ar: الثالث
+        en: third
+      - text: sabanjure
+        ar_eg: بعد كده
+        ar: بعد ذلك
+        en: next, then
+    words: [weling, kapindho, katelu, sabanjure]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "على السبورة: ꦫꦩ. ده مين؟"
-      ar: "على اللوح: ꦫꦩ. من هذا؟"
-      en: "On the board: ꦫꦩ. Who is it?"
-    options: [Raka, Mara, Rama]
-    answer: 2
-    explain:
-      ar_eg: ꦫ ra الأول، وبعدين ꦩ ma = Rama.
-      ar: ꦫ ra أولًا ثم ꦩ ma = Rama.
-      en: ꦫ ra first, then ꦩ ma = Rama.
-    words: [ꦫ, ꦩ]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "السبورة فيها: ꦩꦪ · ꦗꦏ · ꦫꦏ · ꦫꦩ · ꦢꦤ. كام اسم بيبدأ بـ ra؟"
-      ar: "على اللوح: ꦩꦪ · ꦗꦏ · ꦫꦏ · ꦫꦩ · ꦢꦤ. كم اسمًا يبدأ بـ ra؟"
-      en: "The board says: ꦩꦪ · ꦗꦏ · ꦫꦏ · ꦫꦩ · ꦢꦤ. How many names start with ra?"
-    options: ["1", "2", "3"]
-    answer: 1
-    explain:
-      ar_eg: ꦫꦏ Raka وꦫꦩ Rama، الاتنين بيبدأوا بـ ꦫ.
-      ar: ꦫꦏ Raka وꦫꦩ Rama، كلاهما يبدأ بـ ꦫ.
-      en: ꦫꦏ Raka and ꦫꦩ Rama both start with ꦫ.
-    words: [ꦫ]
-  - id: e05
     type: listen
-    text: Dana
+    text: Aji Saka menehi weling marang utusane.
     question:
-      ar_eg: سمعت أنهي اسم؟
-      ar: أي اسم سمعت؟
-      en: Which name did you hear?
-    options: ["ꦝꦤ", "ꦢꦤ", "ꦢꦏ"]
+      ar_eg: آجي ساكا عمل إيه؟
+      ar: ماذا فعل آجي ساكا؟
+      en: What did Aji Saka do?
+    options: [إدّى وصية لرسوله, اشترى كريس جديد, كتب جواب لصاحبه]
+    answer: 0
+    meaning:
+      ar_eg: آجي ساكا إدّى وصية لرسوله.
+      ar: أعطى آجي ساكا رسوله وصية.
+      en: Aji Saka gave an instruction to his messenger.
+    words: [weling, utusan]
+  - id: e04
+    type: fill_blank
+    sentence: Sembada nglakoni ___ Aji Saka.
+    meaning:
+      ar_eg: سيمبادا نفّذ ___ آجي ساكا.
+      ar: نفّذ سيمبادا ___ آجي ساكا.
+      en: Sembada carried out Aji Saka's ___.
+    options: [weling, aksara, tandhing]
+    answers: [weling]
+    words: [weling, aksara, tandhing]
+    explain:
+      ar_eg: weling = وصية / أمر. aksara = حرف وtandhing = مبارزة، ومش حاجة بتتنفّذ.
+      ar: weling تعني الوصية. أما aksara فحرف وtandhing مبارزة، ولا تُنفَّذان.
+      en: weling is an order to carry out. aksara is a letter and tandhing is a duel.
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «كتاب تاريخ قديم لمملكة»؟
+      ar: أي كلمة تعني «تاريخ مكتوب قديم لمملكة»؟
+      en: Which word means 'old written history of a kingdom'?
+    options: [tandhing, babad, aksara]
     answer: 1
     explain:
-      ar_eg: "Dana فيها d الخفيفة: ꦢ. الـ ꦝ دي dha التقيلة."
-      ar: في Dana الدال الخفيفة ꦢ، أما ꦝ فهي dha الثقيلة.
-      en: Dana has the light d, ꦢ. ꦝ is the heavy dha.
-    words: [ꦢ, ꦤ]
+      ar_eg: babad = حوليات، زي Babad Tanah Jawi.
+      ar: babad = حوليات، مثل Babad Tanah Jawi.
+      en: babad = chronicle, like the Babad Tanah Jawi.
+    words: [tandhing, babad, aksara]
   - id: e06
     type: fill_blank
-    sentence: ꦩꦪ = ___
+    sentence: Baris ___ yaiku 'da ta sa wa la'.
     meaning:
-      ar_eg: اكتب الاسم بالحروف اللاتينية.
-      ar: اكتب الاسم بالحروف اللاتينية.
-      en: Type the name in Latin letters.
-    answers: [Maya]
-    words: [ꦩ, ꦪ]
+      ar_eg: السطر ___ هو da ta sa wa la.
+      ar: السطر ___ هو da ta sa wa la.
+      en: The ___ line is 'da ta sa wa la'.
+    options: [kapindho, katelu, utusan]
+    answers: [kapindho]
+    words: [kapindho, katelu, utusan]
+    explain:
+      ar_eg: da ta sa wa la هو السطر التاني (kapindho). katelu = التالت وutusan = رسول.
+      ar: da ta sa wa la هو السطر الثاني (kapindho). أما katelu فالثالث وutusan رسول.
+      en: da ta sa wa la is the second line (kapindho). katelu is third and utusan is a messenger.
   - id: e07
+    type: multiple_choice
+    question: 'Baris ___: ''pa dha ja ya nya''.'
+    options: [kapindho, sabanjure, katelu]
+    answer: 2
+    explain:
+      ar_eg: 'pa dha ja ya nya هو السطر التالت: katelu.'
+      ar: 'pa dha ja ya nya هو السطر الثالث: katelu.'
+      en: 'pa dha ja ya nya is the third line: katelu.'
+    words: [kapindho, sabanjure, katelu]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: "اكتب الاسمين Maya وJaka بالترتيب، حرف حرف."
-      ar: "اكتب الاسمين Maya وJaka بالترتيب، حرفًا حرفًا."
-      en: "Write the names Maya and Jaka in order, letter by letter."
-    answer: ꦩ ꦪ ꦗ ꦏ
-    distractors: ["ꦒ"]
-    words: [ꦩ, ꦪ, ꦗ, ꦏ]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب الاسمين بالحروف اللاتينية: ꦫꦏ · ꦢꦤ"
-      ar: "اكتب الاسمين بالحروف اللاتينية: ꦫꦏ · ꦢꦤ"
-      en: "Write the two names in Latin letters: ꦫꦏ · ꦢꦤ"
-    answers: ["Raka, Dana", Raka Dana, RakaDana]
-    words: [ꦫ, ꦏ, ꦢ, ꦤ]
+      ar_eg: الرسولين اتبارزوا.
+      ar: تبارز الرسولان.
+      en: The two messengers fought a duel.
+    answer: Utusan loro iku padha tandhing.
+    distractors: [aksara, babad]
+    words: [utusan, tandhing]
+    explain:
+      ar_eg: padha tandhing = اتبارزوا. aksara = حرف وbabad = تاريخ مكتوب، ومش في المعنى.
+      ar: padha tandhing تعني تبارزا. أما aksara (حرف) وbabad (حوليّة) فليستا في المعنى.
+      en: padha tandhing is "fought a duel". aksara (letter) and babad (chronicle) aren't in the meaning.
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Ing babad ana crita raja-raja Jawa.
+    answers_meaning:
+      ar_eg: [في الحوليات فيه حكايات ملوك جاوة, الحوليات فيها قصص ملوك جاوة]
+      ar: [في الحوليات قصص ملوك جاوة, تحوي الحوليات قصص ملوك جاوة]
+      en: [The chronicle has stories of Javanese kings, In the babad there are stories of the kings of Java]
+    words: [babad]
+  - id: e10
     type: speaking
-    text: Maya, Jaka, Raka, Rama, Dana.
+    text: Sabanjure, Aji Saka nulis aksara.
     meaning:
-      ar_eg: الخمس أسامي اللي على السبورة.
-      ar: الأسماء الخمسة التي على اللوح.
-      en: The five names on the board.
+      ar_eg: بعد كده، آجي ساكا كتب الحروف.
+      ar: بعد ذلك كتب آجي ساكا الحروف.
+      en: Then Aji Saka wrote the letters.
+    words: [sabanjure, aksara]
 dialogue:
-  title: Ing papan tulis
   lines:
-    - speaker: Dimas
-      text: Med, ing papan tulis ana jeneng-jeneng. Coba wacanen.
-      ar_eg: يا محمد، فيه أسامي على السبورة. جرّب تقراها.
-      ar: يا محمد، على السبورة أسماء. جرّب أن تقرأها.
-      en: Med, there are names on the board. Try reading them.
+    - speaker: Mas Dimas
+      text: Mohamed, kowe ngerti crita Aji Saka?
+      ar_eg: يا محمد، تعرف حكاية آجي ساكا؟
+      ar: يا محمد، أتعرف قصة آجي ساكا؟
+      en: Mohamed, do you know the Aji Saka story?
     - speaker: Mohamed
-      text: Ma, ya... Maya! Lan iki Jaka.
-      ar_eg: ما، يا... Maya! ودي Jaka.
-      ar: ما، يا... Maya! وهذا Jaka.
-      en: Ma, ya... Maya! And this is Jaka.
-    - speaker: Dimas
-      text: Bener. Sing iki?
-      ar_eg: صح. واللي هنا؟
-      ar: صحيح. وهذا؟
-      en: Right. And this one?
+      text: Sithik. Aji Saka duwe utusan loro, ta?
+      ar_eg: شوية. آجي ساكا كان عنده رسولين، صح؟
+      ar: قليلًا. كان لآجي ساكا رسولان، أليس كذلك؟
+      en: A bit. Aji Saka had two messengers, right?
+    - speaker: Mas Dimas
+      text: 'Iya. Sembada nglakoni weling: keris aja diwenehake sapa wae.'
+      ar_eg: 'أيوه. سيمبادا نفذ الوصية: الكريس مايتديش لحد.'
+      ar: 'نعم. نفّذ سيمبادا الوصية: لا يُعطى الخنجر لأحد.'
+      en: 'Yes. Sembada kept the order: give the keris to no one.'
     - speaker: Mohamed
-      text: Ra, ka... Raka. Kabeh aksarane diwaca a!
-      ar_eg: را، كا... Raka. كل الحروف بتتقري بـ a!
-      ar: را، كا... Raka. كل الحروف تُقرأ بـ a!
-      en: Ra, ka... Raka. Every letter is read with a!
-    - speaker: Dimas
-      text: Iya. Kowe wis isa maca jeneng!
-      ar_eg: أيوه. إنت بقيت تعرف تقرا أسامي!
-      ar: نعم. صرت تستطيع قراءة الأسماء!
-      en: Yes. You can read names now!
+      text: Sabanjure Dora arep njupuk keris...
+      ar_eg: وبعدين دورا عايز ياخد الكريس...
+      ar: ثم أراد دورا أخذ الكريس...
+      en: Then Dora wanted to take the keris...
+    - speaker: Mas Dimas
+      text: Wong loro tandhing, lan padha mati. Mula ana 'ma ga ba tha nga'.
+      ar_eg: الاتنين اتبارزوا وماتوا سوا. عشان كده فيه ma ga ba tha nga.
+      ar: تبارز الاثنان وماتا معًا. لذلك توجد ma ga ba tha nga.
+      en: The two fought and both died. That's why there's 'ma ga ba tha nga'.
+    - speaker: Mohamed
+      text: Oh, 'padha bathange'! Saiki aku ngerti.
+      ar_eg: آه، «الاتنين بقوا جثث»! دلوقتي فهمت.
+      ar: آه، «صارا جثتين»! الآن فهمت.
+      en: Oh, 'both became corpses'! Now I get it.
+new_words:
+  - word: aksara
+    pos: noun
+    ar_eg: حرف، أبجدية
+    ar: حرف، أبجدية
+    en: letter, script
+  - word: babad
+    pos: noun
+    ar_eg: حوليات (تاريخ مكتوب)
+    ar: حوليات
+    en: chronicle
+  - word: utusan
+    pos: noun
+    ar_eg: رسول، مبعوث
+    ar: رسول، مبعوث
+    en: messenger, envoy
+  - word: tandhing
+    pos: noun
+    ar_eg: مبارزة، منافسة
+    ar: مبارزة، منافسة
+    en: duel, contest
+  - word: weling
+    pos: noun
+    ar_eg: وصية، أمر
+    ar: وصية، تعليمات
+    en: instruction, last order
+  - word: kapindho
+    pos: numeral
+    ar_eg: التاني
+    ar: الثاني
+    en: second
+  - word: katelu
+    pos: numeral
+    ar_eg: التالت
+    ar: الثالث
+    en: third
+  - word: sabanjure
+    pos: adverb
+    ar_eg: بعد كده؛ اللي بعده
+    ar: بعد ذلك؛ التالي
+    en: next, then
 review:
   status: draft
   verified: false

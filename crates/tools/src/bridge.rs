@@ -13,7 +13,7 @@ use std::path::PathBuf;
 
 use anyhow::{Context, Result, bail};
 use clap::Subcommand;
-use kabar_protocol::content::{BridgeEntry, DictEntry, Lang, MeaningShift, SoundRule};
+use kabar_protocol::content::{BridgeEntry, DictEntry, GlossEntry, Lang, MeaningShift, Pos, SoundRule};
 
 use crate::gloss::check_tri;
 use crate::paths::Root;
@@ -94,7 +94,7 @@ pub fn load_entries(root: &Root) -> Result<Vec<BridgeEntry>> {
 pub fn load_rules(root: &Root) -> Result<Vec<SoundRule>> {
     let path = rules_path(root);
     let text = fs::read_to_string(&path).with_context(|| format!("reading {}", path.display()))?;
-    serde_json::from_str(&text).with_context(|| path.display().to_string())
+    kabar_protocol::content::from_json_strict(&text).with_context(|| path.display().to_string())
 }
 
 fn save_entries(root: &Root, entries: &[BridgeEntry]) -> Result<()> {
@@ -112,7 +112,10 @@ pub fn read_jsonl<T: serde::de::DeserializeOwned>(path: &std::path::Path) -> Res
     text.lines()
         .enumerate()
         .filter(|(_, l)| !l.trim().is_empty())
-        .map(|(i, l)| serde_json::from_str(l).with_context(|| format!("{}:{}", path.display(), i + 1)))
+        .map(|(i, l)| {
+            kabar_protocol::content::from_json_strict(l)
+                .with_context(|| format!("{}:{}", path.display(), i + 1))
+        })
         .collect()
 }
 
@@ -240,6 +243,151 @@ fn crosscheck(root: &Root, write: bool) -> Result<()> {
     Ok(())
 }
 
+/// A lesson word whose `arabic:` names its Arabic source.
+pub struct LessonLoan {
+    pub lesson: String,
+    pub lang: Lang,
+    pub word: String,
+    pub arabic: String,
+    /// The card it shares when no lookup finds one (`bridge: selamat`).
+    pub bridge: Option<String>,
+}
+
+/// Every lesson word marked Arabic must lead to a Bridge card, and the card
+/// must name the same source (#143).
+pub fn check_lessons(root: &Root) -> Result<Vec<String>> {
+    let cards = load_entries(root)?;
+    let mut glosses = Vec::new();
+    let mut loans = Vec::new();
+    for lang in [Lang::Id, Lang::Jv] {
+        let dir = root.gloss_dir(lang);
+        if dir.exists() {
+            for f in sorted_files(&dir, "jsonl")? {
+                glosses.extend(read_jsonl::<GlossEntry>(&f)?);
+            }
+        }
+        let dir = root.path().join(format!("content/lessons/{}", lang.code()));
+        if !dir.exists() {
+            continue;
+        }
+        for f in sorted_files(&dir, "yaml")? {
+            let doc = kabar_content::yaml_value(&f).map_err(|e| anyhow::anyhow!("{e}"))?;
+            let lesson = doc.get("id").and_then(|v| v.as_str()).unwrap_or_default();
+            let words = doc.get("new_words").and_then(|v| v.as_array()).into_iter().flatten();
+            for w in words {
+                let text = |k: &str| w.get(k).and_then(|v| v.as_str()).map(str::to_owned);
+                if let (Some(word), Some(arabic)) = (text("word"), text("arabic")) {
+                    loans.push(LessonLoan {
+                        lesson: lesson.into(),
+                        lang,
+                        word,
+                        arabic,
+                        bridge: text("bridge"),
+                    });
+                }
+            }
+        }
+    }
+    Ok(lesson_sources(&loans, &cards, &glosses))
+}
+
+fn sorted_files(dir: &std::path::Path, ext: &str) -> Result<Vec<PathBuf>> {
+    let mut files: Vec<PathBuf> = fs::read_dir(dir)?
+        .filter_map(|e| e.ok().map(|e| e.path()))
+        .filter(|p| p.extension().is_some_and(|x| x == ext))
+        .collect();
+    files.sort();
+    Ok(files)
+}
+
+/// The Arabic as the check compares it: letters only, no article, so
+/// «القصّة» and «قِصَّة» agree.
+fn source_key(arabic: &str) -> String {
+    arabic
+        .split_whitespace()
+        .map(arabic_skeleton)
+        .map(|w| match w.strip_prefix("ال") {
+            Some(rest) if rest.chars().count() >= 2 => rest.to_owned(),
+            _ => w,
+        })
+        .filter(|w| !w.is_empty())
+        .collect::<Vec<_>>()
+        .join(" ")
+}
+
+pub fn lesson_sources(loans: &[LessonLoan], cards: &[BridgeEntry], glosses: &[GlossEntry]) -> Vec<String> {
+    let cards: BTreeMap<&str, &BridgeEntry> = cards.iter().map(|c| (c.word.as_str(), c)).collect();
+    let glosses: BTreeMap<(Lang, String), &GlossEntry> =
+        glosses.iter().map(|g| ((g.lang, g.word.to_lowercase()), g)).collect();
+    // A word, then its lemma and root; a Javanese word also its Indonesian
+    // equivalent and that word's stems (the Reader's lookup, reader/content.rs).
+    let stems = |lang: Lang, word: &str| -> Vec<String> {
+        let mut out = vec![word.to_lowercase()];
+        if let Some(g) = glosses.get(&(lang, word.to_lowercase())) {
+            out.extend([Some(&g.lemma), g.root.as_ref()].into_iter().flatten().map(|s| s.to_lowercase()));
+            let first =
+                g.indonesian.as_deref().and_then(|i| i.split(',').next()).map(|f| f.trim().to_lowercase());
+            if let (Lang::Jv, Some(first)) = (lang, first) {
+                if let Some(id) = glosses.get(&(Lang::Id, first.clone())) {
+                    out.extend(
+                        [Some(&id.lemma), id.root.as_ref()].into_iter().flatten().map(|s| s.to_lowercase()),
+                    );
+                }
+                out.push(first);
+            }
+        }
+        out
+    };
+    let mut issues = Vec::new();
+    for l in loans {
+        let at = format!("{}: {}", l.lesson, l.word);
+        let found: Vec<&BridgeEntry> = match &l.bridge {
+            Some(b) => match cards.get(b.as_str()) {
+                Some(c) => vec![c],
+                None => {
+                    issues.push(format!("{at}: bridge: {b} has no card"));
+                    continue;
+                }
+            },
+            // Phrases (hak pilih, asal-usul) also try each of their words.
+            None => std::iter::once(l.word.as_str())
+                .chain(l.word.split([' ', '-', '/', '(', ')']))
+                .filter(|w| !w.is_empty())
+                .flat_map(|w| stems(l.lang, w))
+                .filter_map(|k| cards.get(k.as_str()).copied())
+                .collect(),
+        };
+        if found.is_empty() {
+            // Names (Mesir) carry an Arabic origin without being Bridge material.
+            let name = glosses
+                .get(&(l.lang, l.word.to_lowercase()))
+                .is_some_and(|g| g.senses.iter().all(|s| matches!(s.pos, Pos::ProperNoun)));
+            if !name {
+                issues.push(format!(
+                    "{at}: no Bridge card; name the card it shares (bridge: <word>) or add one to content/bridge/id.jsonl"
+                ));
+            }
+            continue;
+        }
+        let key = source_key(&l.arabic);
+        // A derived word may name the root it shares with its card
+        // (peradilan ← عدل, card adil ← عادل); the card's own word may not.
+        let agrees = |c: &&BridgeEntry| {
+            let card = source_key(&c.arabic);
+            let same = !key.is_empty() && !card.is_empty() && (key.contains(&card) || card.contains(&key));
+            let root = c.root.as_deref().map(|r| arabic_skeleton(&r.replace(' ', "")));
+            same || (!c.word.eq_ignore_ascii_case(&l.word) && root.is_some_and(|r| r == key))
+        };
+        if !found.iter().any(agrees) {
+            issues.push(format!(
+                "{at}: arabic {} but the Bridge card {} says {}; use one source in both",
+                l.arabic, found[0].word, found[0].arabic
+            ));
+        }
+    }
+    issues
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -271,5 +419,42 @@ mod tests {
         assert!(issues.iter().any(|i| i.contains("root")), "{issues:?}");
         assert!(issues.iter().any(|i| i.contains("unknown sound rule")), "{issues:?}");
         assert!(issues.iter().any(|i| i.contains("doesn't list this rule")), "{issues:?}");
+    }
+
+    #[test]
+    fn lesson_loans_lead_to_a_card_with_the_same_source() {
+        let card = |word: &str, arabic: &str, root: &str| -> BridgeEntry {
+            serde_json::from_value(serde_json::json!({
+                "lang": "id", "word": word, "arabic": arabic, "root": root,
+                "arabic_meaning": {"arz": "x", "ar": "x", "en": "x"},
+                "meaning": {"arz": "x", "ar": "x", "en": "x"},
+                "shift": "same", "confidence": "high", "sources": ["claude-code"]
+            }))
+            .unwrap()
+        };
+        let cards =
+            [card("adil", "عَادِل", "ع د ل"), card("kisah", "قِصَّة", "ق ص ص"), card("hak", "حَقّ", "ح ق ق")];
+        let loan = |lesson: &str, lang, word: &str, arabic: &str, bridge: Option<&str>| LessonLoan {
+            lesson: lesson.into(),
+            lang,
+            word: word.into(),
+            arabic: arabic.into(),
+            bridge: bridge.map(Into::into),
+        };
+        let loans = [
+            // Article and vowels don't matter; a phrase finds its word's card.
+            loan("a", Lang::Id, "alkisah", "القصّة", Some("kisah")),
+            loan("b", Lang::Id, "hak pilih", "حقّ", None),
+            // A derived word may name the shared root; the card's word may not.
+            loan("c", Lang::Id, "peradilan", "عدل", Some("adil")),
+            loan("d", Lang::Id, "adil", "عدل", None),
+            loan("e", Lang::Jv, "ngelmu", "علم", None),
+            loan("f", Lang::Id, "kisah", "قصص", Some("cerita")),
+        ];
+        let issues = lesson_sources(&loans, &cards, &[]);
+        assert_eq!(issues.len(), 3, "{issues:?}");
+        assert!(issues[0].starts_with("d: adil: arabic عدل"), "{issues:?}");
+        assert!(issues[1].starts_with("e: ngelmu: no Bridge card"), "{issues:?}");
+        assert!(issues[2].starts_with("f: kisah: bridge: cerita has no card"), "{issues:?}");
     }
 }

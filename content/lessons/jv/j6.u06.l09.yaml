@@ -1,166 +1,189 @@
 schema: kabar.lesson/v1
 id: j6.u06.l09
 language: jv
-title: Aturan ing masjid
+title: Jadwal pesantren
 can_do:
-  ar_eg: تقرا قواعد الجامع بالبيجون، وتعرف الكلمات العربية اللي فيها.
-  ar: أن تقرأ قواعد المسجد بالبيجون وتتعرّف الألفاظ العربية فيها.
-  en: Read mosque rules in Pegon and spot the Arabic loanwords.
+  ar_eg: تقرا جدول البيسانترين مكتوب بالبيجون.
+  ar: أن تقرأ جدول البيسانترين مكتوبًا بالبيجون.
+  en: Read a pesantren timetable written in Pegon.
 slides:
-  - title: Papan aturan
+  - title: Papan ing pesantren
     body:
       ar_eg: |
-        على حيطة جامع البيسانترين فيه لوحة قواعد بالبيجون.
-        الكلمات العربية (صلاة، وضوء، مسجد) بتفضل بكتابتها العربية. والكلمات الجاوي بتتكتب بالحروف مع الحركات كحروف: سادوروڠي = sadurunge، ڎيسيك = dhisik.
-        كلمة جديدة: sadurunge = قبل.
+        على باب البيسانترين في Plered فيه لوحة بالبيجون. افتكر: a = ا، وi أو é = ي، وu أو o = و.
+        sore = سوري (o بـ و، وé بـ ي) · guru = ڮورو (ڮ = g) · kanggo = كاڠڮو (ڠ = ng).
+        كلمة جديدة: santri = طالب في البيسانترين.
       ar: |
-        على جدار مسجد البيسانترين لوح قواعد بالبيجون.
-        تبقى الألفاظ العربية (صلاة، وضوء، مسجد) بكتابتها العربية، وتُكتب الكلمات الجاوية بالحروف مع الحركات حروفًا: سادوروڠي = sadurunge، ڎيسيك = dhisik.
-        كلمة جديدة: sadurunge = قبل.
+        على باب البيسانترين في Plered لوح بالبيجون. تذكّر: a = ا، وi أو é = ي، وu أو o = و.
+        sore = سوري (o بـ و، وé بـ ي) · guru = ڮورو (ڮ = g) · kanggo = كاڠڮو (ڠ = ng).
+        كلمة جديدة: santri = طالب في البيسانترين.
       en: |
-        On the wall of the pesantren mosque there's a board of rules in Pegon.
-        Arabic words (صلاة, وضوء, مسجد) keep their Arabic spelling. Javanese words have their vowels written as letters: سادوروڠي = sadurunge, ڎيسيك = dhisik.
-        New word: sadurunge = before.
+        On the pesantren door in Plered there's a board in Pegon. Remember: a = ا, i or é = ي, u or o = و.
+        sore = سوري (o with و, é with ي) · guru = ڮورو (ڮ = g) · kanggo = كاڠڮو (ڠ = ng).
+        New word: santri = a pesantren student.
     grammar: jv.pegon.basics
     examples:
-      - text: سادوروڠي صلاة، وضوء ڎيسيك. (Sadurunge salat, wudhu dhisik.)
-        ar_eg: قبل الصلاة، اتوضّى الأول.
-        ar: قبل الصلاة، توضّأ أولًا.
-        en: Before prayer, do wudhu first.
-      - text: اجا رامي ايڠ مسجد. (Aja rame ing masjid.)
-        ar_eg: ماتعملش دوشة في الجامع.
-        ar: لا تُحدث ضجيجًا في المسجد.
-        en: Don't be noisy in the mosque.
-      - text: سانڎال ديچوڤوت ايڠ نجابا. (Sandhal dicopot ing njaba.)
-        ar_eg: الصندل يتقلع برّه.
-        ar: يُخلع الصندل في الخارج.
-        en: Sandals come off outside.
+      - text: "ڠاجي كتاب: سوري (ngaji kitab: sore)"
+        ar_eg: "دراسة الكتب: العصر"
+        ar: "دراسة الكتب: عصرًا"
+        en: "Kitab study: afternoons"
+      - text: "ڮورو: ڮوس حنيف (guru: Gus Hanif)"
+        ar_eg: "المدرّس: Gus Hanif"
+        ar: "المعلّم: Gus Hanif"
+        en: "Teacher: Gus Hanif"
+      - text: كاڠڮو ساكابيهي سانتري (kanggo sakabehe santri)
+        ar_eg: لكل الطلبة
+        ar: لجميع الطلاب
+        en: for all students
 exercises:
   - id: e01
     type: multiple_choice
     question_meaning:
-      ar_eg: تعمل إيه قبل الصلاة؟
-      ar: ماذا تفعل قبل الصلاة؟
-      en: What do you do before prayer?
-    options: [wudhu, mangan, turu]
+      ar_eg: اللوحة عن أنهي نشاط؟
+      ar: عن أي نشاط يتحدث اللوح؟
+      en: Which activity is the board about?
+    options: [ngaji kitab, kerja bakti, pengajian ing pasar]
     answer: 0
-    words: [sadurunge]
+    words: [ڠ]
+    explain:
+      ar_eg: "اللوحة: ڠاجي كتاب = ngaji kitab."
+      ar: "اللوحة: ڠاجي كتاب = ngaji kitab."
+      en: "The board says ڠاجي كتاب: ngaji kitab."
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: تقلع الصندل فين؟
-      ar: أين تخلع الصندل؟
-      en: Where do the sandals come off?
-    options: [ing mburi, ing njero, ing njaba]
-    answer: 2
-    explain:
-      ar_eg: ايڠ نجابا = ing njaba (برّه).
-      ar: ايڠ نجابا = ing njaba (في الخارج).
-      en: ايڠ نجابا = ing njaba (outside).
-  - id: e03
-    type: listen
-    text: Aja rame ing masjid.
-    question:
-      ar_eg: سمعت أنهي قاعدة؟
-      ar: أي قاعدة سمعت؟
-      en: Which rule did you hear?
-    options: [سادوروڠي صلاة، وضوء ڎيسيك, اجا رامي ايڠ مسجد, سانڎال ديچوڤوت ايڠ نجابا]
+      ar_eg: الدرس إمتى؟
+      ar: متى الدرس؟
+      en: When is the class?
+    options: [esuk, sore, bengi]
     answer: 1
-    meaning:
-      ar_eg: ماتعملش دوشة في الجامع.
-      ar: لا تُحدث ضجيجًا في المسجد.
-      en: Don't be noisy in the mosque.
-  - id: e04
-    type: match_pairs
-    pairs:
-      - text: سادوروڠي
-        ar_eg: sadurunge — قبل
-        ar: sadurunge — قبل
-        en: sadurunge — before
-      - text: ڎيسيك
-        ar_eg: dhisik — الأول
-        ar: dhisik — أولًا
-        en: dhisik — first
-      - text: نجابا
-        ar_eg: njaba — برّه
-        ar: njaba — الخارج
-        en: njaba — outside
-      - text: رامي
-        ar_eg: rame — دوشة
-        ar: rame — ضجيج
-        en: rame — noisy
-    words: [sadurunge, ڎ]
-  - id: e05
+    explain:
+      ar_eg: "سوري = sore: س + و (o) + ر + ي (é)."
+      ar: "سوري = sore: س + و (o) + ر + ي (é)."
+      en: "سوري = sore: س + و (o) + ر + ي (é)."
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي كلمة في اللوحة مكتوبة بالعربي زي ما هي؟
-      ar: أي كلمة في اللوح مكتوبة بالعربية كما هي؟
-      en: Which word on the board keeps its Arabic spelling?
-    options: [سادوروڠي, وضوء, ڎيسيك]
+      ar_eg: مين المدرّس؟
+      ar: من المعلّم؟
+      en: Who teaches?
+    options: [Pak Harjo, Gus Hanif, Bu Dewi]
     answer: 1
     explain:
-      ar_eg: wudhu كلمة عربية، فبتتكتب وضوء زي العربي. سادوروڠي وڎيسيك كلمات جاوي.
-      ar: wudhu لفظ عربي فيُكتب وضوء كالعربية، أما سادوروڠي وڎيسيك فجاويتان.
-      en: wudhu is an Arabic word, so it's written وضوء as in Arabic. سادوروڠي and ڎيسيك are Javanese.
-    words: [pegon]
+      ar_eg: ڮوس حنيف = Gus Hanif. الاسم العربي حنيف بيفضل بكتابته العربية.
+      ar: ڮوس حنيف = Gus Hanif، ويبقى الاسم العربي حنيف بكتابته العربية.
+      en: ڮوس حنيف = Gus Hanif. The Arabic name حنيف keeps its Arabic spelling.
+    words: [ڮ]
+  - id: e04
+    type: listen
+    text: Kanggo sakabehe santri.
+    question:
+      ar_eg: الدرس لمين؟
+      ar: لمن الدرس؟
+      en: Who is the class for?
+    options: [كاڠڮو ساكابيهي سانتري, كاڠڮو ڮورو, كاڠڮو بوچاه]
+    answer: 0
+    meaning:
+      ar_eg: لكل الطلبة.
+      ar: لجميع الطلاب.
+      en: For all students.
+    words: [santri]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: سوري
+        ar_eg: sore — العصر
+        ar: sore — العصر
+        en: sore — afternoon
+      - text: ڮورو
+        ar_eg: guru — مدرّس
+        ar: guru — معلّم
+        en: guru — teacher
+      - text: سانتري
+        ar_eg: santri — طالب بيسانترين
+        ar: santri — طالب البيسانترين
+        en: santri — pesantren student
+      - text: كاڠڮو
+        ar_eg: kanggo — لـ / عشان
+        ar: kanggo — لِـ / من أجل
+        en: kanggo — for
+    words: [santri, ڮ, ڠ]
   - id: e06
     type: fill_blank
-    sentence: سادوروڠي = ___
+    sentence: ڮورو = ___
     meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: قبل)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: قبل)"
-      en: Type the reading in Latin letters. (It means "before".)
-    answers: [sadurunge]
-    words: [sadurunge, ڠ]
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: مدرّس)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: معلّم)"
+      en: Type the reading in Latin letters. (It means "teacher".)
+    answers: [guru]
+    words: [ڮ]
+    explain:
+      ar_eg: ڮ (كاف بتلات نقط) = ga، فـ ڮورو = guru.
+      ar: ڮ (كاف بثلاث نقاط) = ga، فـ ڮورو = guru.
+      en: ڮ (kaf with three dots) is ga, so ڮورو is guru.
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: سادوروڠي صلاة، وضوء ڎيسيك"
-      ar: "اكتب بالحروف اللاتينية: سادوروڠي صلاة، وضوء ڎيسيك"
-      en: "Write in Latin letters: سادوروڠي صلاة، وضوء ڎيسيك"
-    answers: ["Sadurunge salat, wudhu dhisik.", sadurunge salat wudhu dhisik, sadurunge sholat wudhu dhisik]
-    words: [sadurunge, ڎ]
+      ar_eg: "اكتب بالحروف اللاتينية: كاڠڮو ساكابيهي سانتري"
+      ar: "اكتب بالحروف اللاتينية: كاڠڮو ساكابيهي سانتري"
+      en: "Write in Latin letters: كاڠڮو ساكابيهي سانتري"
+    answers: [kanggo sakabehe santri]
+    explain:
+      ar_eg: كاڠڮو = kanggo (ڠ ثم ڮ)، ساكابيهي = sakabehe (é بـ ي)، سانتري = santri.
+      ar: كاڠڮو = kanggo (ڠ ثم ڮ)، ساكابيهي = sakabehe (é بـ ي)، سانتري = santri.
+      en: كاڠڮو = kanggo (ڠ then ڮ), ساكابيهي = sakabehe (é as ي), سانتري = santri.
+    words: [santri, ڠ, ڮ]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: قبل ما تصلي في الجامع، اقلع الصندل.
-      ar: قبل الصلاة في المسجد، اخلع الصندل.
-      en: Before praying in the mosque, take off your sandals.
-    answer: Sadurunge sholat ing masjid, sandhal dicopot.
-    distractors: [njaba]
-    words: [sadurunge]
+      ar_eg: "اكتب بالبيجون: ngaji kitab sore"
+      ar: "اكتب بالبيجون: ngaji kitab sore"
+      en: "Build in Pegon: ngaji kitab sore"
+    answer: ڠاجي كتاب سوري
+    distractors: [ساڤا]
+    words: [ڠ, kitab]
+    explain:
+      ar_eg: ngaji kitab sore = ڠاجي كتاب سوري. ساڤا = sapa، ومش فيها.
+      ar: ngaji kitab sore = ڠاجي كتاب سوري. أما ساڤا فـ sapa، وليست فيها.
+      en: ngaji kitab sore is ڠاجي كتاب سوري. ساڤا is sapa, not in it.
   - id: e09
     type: speaking
-    text: Sadurunge salat, wudhu dhisik.
+    text: Saben sore santri-santri ngaji kitab.
     meaning:
-      ar_eg: قبل الصلاة، اتوضّى الأول.
-      ar: قبل الصلاة، توضّأ أولًا.
-      en: Before prayer, do wudhu first.
-    words: [sadurunge]
+      ar_eg: كل يوم العصر الطلبة بيدرسوا الكتب.
+      ar: كل عصر يدرس الطلاب الكتب.
+      en: Every afternoon the students study the kitab.
+    words: [santri]
 dialogue:
-  title: Sadurunge Asar
+  title: Ing lawang pesantren
   lines:
-    - speaker: Ali
-      text: Mas, sadurunge Asar, ayo wudhu dhisik.
-      ar_eg: يا محمد، قبل العصر، يلا نتوضّى الأول.
-      ar: يا محمد، قبل العصر، هيا نتوضّأ أولًا.
-      en: Mas, before Asr, let's do wudhu first.
+    - speaker: Gus Hanif
+      text: Mas Mohamed, sampun maos papan menika?
+      ar_eg: يا محمد، قريت اللوحة دي؟
+      ar: يا محمد، هل قرأت هذا اللوح؟
+      en: Mohamed, have you read this board?
     - speaker: Mohamed
-      text: Iya. Aku wis maca aturan ing tembok.
-      ar_eg: ماشي. أنا قريت القواعد اللي على الحيطة.
-      ar: حسنًا. قرأتُ القواعد على الجدار.
-      en: OK. I've read the rules on the wall.
-    - speaker: Ali
-      text: Kabeh nganggo Pegon. Isa maca?
-      ar_eg: كلها بالبيجون. عرفت تقراها؟
-      ar: كلها بالبيجون. هل استطعت قراءتها؟
-      en: It's all in Pegon. Could you read it?
+      text: Sampun, Gus. Ngaji kitab saben sore, kangge sedaya santri.
+      ar_eg: قريتها يا Gus. درس الكتب كل يوم العصر، لكل الطلبة.
+      ar: نعم يا Gus. دراسة الكتب كل عصر، لجميع الطلاب.
+      en: Yes, Gus. Kitab study every afternoon, for all the students.
+    - speaker: Gus Hanif
+      text: Leres. Panjenengan kersa tumut?
+      ar_eg: مظبوط. تحب تحضر معانا؟
+      ar: صحيح. أتحب أن تشاركنا؟
+      en: Right. Would you like to join?
     - speaker: Mohamed
-      text: Isa. Sandhal dicopot ing njaba, ta?
-      ar_eg: أيوه. الصندل يتقلع برّه، صح؟
-      ar: نعم. يُخلع الصندل في الخارج، أليس كذلك؟
-      en: Yes. Sandals off outside, right?
+      text: Kersa sanget, Gus!
+      ar_eg: أحب جدًا يا Gus!
+      ar: أحبّ ذلك كثيرًا يا Gus!
+      en: I'd love to, Gus!
+new_words:
+  - word: santri
+    pos: noun
+    ar_eg: طالب في البيسانترين
+    ar: طالب البيسانترين
+    en: pesantren student = santri
 review:
   status: draft
   verified: false

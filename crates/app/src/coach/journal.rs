@@ -17,7 +17,7 @@ use std::rc::Rc;
 use dioxus::prelude::*;
 use kabar_core::coach::rewards;
 use kabar_core::layout::WidthClass;
-use kabar_protocol::coach::{ActivityKind, LocalDate};
+use kabar_protocol::coach::{ActivityKind, LocalDate, Skill};
 use kabar_protocol::journal::{JournalEntry, MAX_REFLECTION_CHARS};
 
 use super::logic::{self, EntryKind, JournalDay, JournalFilter, JournalSources};
@@ -26,7 +26,7 @@ use crate::account::Cloud;
 use crate::cloud::Command;
 use crate::i18n::Msg;
 use crate::store::now_ms;
-use crate::{Db, Ui};
+use crate::{Db, Screen, Ui};
 
 /// Days rendered per page; "show older days" adds another page.
 const PAGE_DAYS: usize = 14;
@@ -151,6 +151,7 @@ fn Day(
     local_rev: Signal<u32>,
 ) -> Element {
     let ui = use_context::<Ui>();
+    let db = use_context::<Db>();
     let date = day.date;
     let stats = &day.stats;
     let editing_here = draft.read().as_ref().is_some_and(|d| d.date == date && d.editing.is_none());
@@ -190,11 +191,22 @@ fn Day(
             if !day.entries.is_empty() {
                 ul { class: "journal-entries",
                     for e in day.entries.iter() {
+                        // Each line opens what it was: the lesson, the reviews,
+                        // the reading, the souvenir, the taught word.
                         li { key: "{e.key}",
-                            span { class: "muted small journal-time",
-                                {labels::time(&ui, clock::time_of_day(e.at_ms, offset))}
+                            button {
+                                class: "journal-entry tap tap-plain",
+                                onclick: {
+                                    let kind = e.kind.clone();
+                                    let db = db.clone();
+                                    move |_| open_entry(ui, &db, &kind)
+                                },
+                                span { class: "muted small journal-time",
+                                    {labels::time(&ui, clock::time_of_day(e.at_ms, offset))}
+                                }
+                                span { class: "journal-what", EntryLine { kind: e.kind.clone() } }
+                                span { class: "chev", aria_hidden: "true" }
                             }
-                            span { class: "journal-what", EntryLine { kind: e.kind.clone() } }
                         }
                     }
                 }
@@ -323,6 +335,38 @@ fn Editor(draft: Signal<Option<Draft>>, local_rev: Signal<u32>) -> Element {
 }
 
 /// One timeline line, in words.
+/// Opens what a journal line refers to.
+fn open_entry(ui: Ui, db: &Db, kind: &EntryKind) {
+    let mut screen = ui.screen;
+    let to = match kind {
+        EntryKind::LessonDone { lesson_id, .. } => {
+            ui.open_lesson(lesson_id.clone());
+            return;
+        }
+        EntryKind::Activity(ActivityKind::LessonStep { unit_id, .. }) => {
+            let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+            match crate::journey::next_lesson_in(unit_id, &completed) {
+                Some(id) => {
+                    ui.open_lesson(id);
+                    return;
+                }
+                None => Screen::Journey,
+            }
+        }
+        EntryKind::Activity(ActivityKind::Reviews { .. } | ActivityKind::NewWords { .. }) => Screen::Review,
+        EntryKind::Activity(ActivityKind::Practice { skill, .. }) => match skill {
+            Skill::Reading => Screen::Reader,
+            Skill::Listening => Screen::Listen,
+            _ => Screen::Play,
+        },
+        EntryKind::Activity(ActivityKind::PlanItemDone { .. }) => Screen::Today,
+        EntryKind::Activity(ActivityKind::Purchase { .. }) => Screen::Coach,
+        EntryKind::Souvenir { .. } => Screen::Journey,
+        EntryKind::Taught { .. } => Screen::Teach,
+    };
+    screen.set(to);
+}
+
 #[component]
 fn EntryLine(kind: EntryKind) -> Element {
     let ui = use_context::<Ui>();

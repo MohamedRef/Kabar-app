@@ -20,7 +20,7 @@ dex="$(mktemp)"
 trap 'rm -f "$dex"' EXIT
 unzip -p "$APK" 'classes*.dex' >"$dex"
 missing=0
-for cls in app/kabar/ShareActivity app/kabar/PendingShare app/kabar/OcrBridge app/kabar/ImagePickActivity app/kabar/ExportSaveActivity app/kabar/UpdateInstaller; do
+for cls in app/kabar/ShareActivity app/kabar/PendingShare app/kabar/OcrBridge app/kabar/ImagePickActivity app/kabar/ExportSaveActivity app/kabar/UpdateInstaller app/kabar/UpdateNotice app/kabar/UpdateCheckJob; do
   if ! LC_ALL=C grep -aqF "L$cls;" "$dex"; then
     echo "Missing $cls in $APK"
     [ -n "${GITHUB_ACTIONS:-}" ] && echo "::error::Missing $cls in the APK"
@@ -48,6 +48,8 @@ if command -v aapt2 >/dev/null; then
   fi
   grep -q "TTS_SERVICE" <<<"$manifest" || fail "The manifest lost its text-to-speech <queries> block."
   grep -q "REQUEST_INSTALL_PACKAGES" <<<"$manifest" || fail "The manifest lost REQUEST_INSTALL_PACKAGES (self-updates)."
+  grep -q "dataExtractionRules" <<<"$manifest" && grep -q "fullBackupContent" <<<"$manifest" \
+    || fail "The manifest lost its backup rules: Auto Backup would copy the update APK and audio, go over 25 MB and skip kabar.db (#370)."
   grep -q "windowSoftInputMode" <<<"$manifest" || fail "MainActivity lost windowSoftInputMode=adjustResize: the keyboard would cover the Check button."
   # A debuggable APK runs slower and lets anyone with USB read Kabar's data.
   if grep -q "^application-debuggable" <<<"$badging"; then
@@ -56,7 +58,7 @@ if command -v aapt2 >/dev/null; then
   if grep -q "versionCode='1'" <<<"$badging"; then
     fail "The APK's versionCode is still dx's 1."
   fi
-  echo "Launcher icon: Kabar's; TTS queries present; release build ($(grep -o "versionCode='[0-9]*'" <<<"$badging"))"
+  echo "Launcher icon: Kabar's; TTS queries and backup rules present; release build ($(grep -o "versionCode='[0-9]*'" <<<"$badging"))"
 fi
 
 # Native libraries: arm64 only, stored uncompressed, because the manifest asks
@@ -69,3 +71,17 @@ if grep -q deflated <<<"$methods"; then
   fail "Native libraries are compressed; extractNativeLibs=false needs them stored."
 fi
 echo "Native libraries: arm64-v8a only, stored uncompressed"
+
+# The background update check (UpdateCheckJob.kt) calls into Rust by its JNI
+# name: the library must export it, or the job quietly does nothing.
+if command -v readelf >/dev/null; then
+  libdir="$(mktemp -d)"
+  unzip -q -o "$APK" 'lib/arm64-v8a/*.so' -d "$libdir"
+  syms="$(for so in "$libdir"/lib/arm64-v8a/*.so; do readelf --dyn-syms -W "$so"; done)"
+  rm -rf "$libdir"
+  for export in Java_app_kabar_UpdateCheckJob_check Java_app_kabar_UpdateCheckJob_shown; do
+    grep -q "$export" <<<"$syms" \
+      || fail "The native library doesn't export $export: the background update check can't reach Rust."
+  done
+  echo "Native exports for the background update check present"
+fi

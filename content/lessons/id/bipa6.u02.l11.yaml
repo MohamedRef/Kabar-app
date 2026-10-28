@@ -1,0 +1,200 @@
+schema: kabar.lesson/v1
+id: bipa6.u02.l11
+language: id
+title: Lomba deklamasi
+can_do:
+  ar_eg: تشارك في مسابقة إلقاء، وتقدّم قصيدتك، وتفهم رأي لجنة التحكيم.
+  ar: أن تشارك في مسابقة إلقاء، وتقدّم قصيدتك، وتفهم رأي لجنة التحكيم.
+  en: Take part in a recital contest, introduce your poem and follow the judges' comments.
+slides:
+  - title: Di depan juri
+    body:
+      ar_eg: |
+        في المسابقة، الـ juri (لجنة التحكيم) بيحكموا على حاجات معينة:
+        - penjiwaan: حاسس بالقصيدة؟
+        - suara: lantang وواضح؟
+        - ekspresi: الوش والإيدين مع المعنى؟
+        وفي الآخر بيعلنوا الـ juara (الفايز): juara pertama = المركز الأول.
+        قبل ما تبدأ قول: Saya akan membacakan sajak berjudul … karya … = هقرا قصيدة اسمها … للشاعر …
+        - في الشارع: udah = sudah (خلاص / بالفعل)، baca = membaca (يقرا)، tapi = tetapi (بس / لكن).
+      ar: |
+        في المسابقة تحكم الـ juri (لجنة التحكيم) على أمور محدّدة:
+        - penjiwaan: هل تعيش القصيدة؟
+        - suara: هل الصوت lantang وواضح؟
+        - ekspresi: هل يوافق الوجه واليدان المعنى؟
+        ثم تُعلن الـ juara (الفائز): juara pertama = المركز الأول.
+        وقبل أن تبدأ قل: Saya akan membacakan sajak berjudul … karya … = سأقرأ قصيدة بعنوان … للشاعر …
+        - في كلام الشارع: udah = sudah (قد / بالفعل)، baca = membaca (يقرأ)، tapi = tetapi (لكن).
+      en: |
+        In a contest, the juri (judges) score you on set points:
+        - penjiwaan: do you feel the poem?
+        - suara: is your voice lantang and clear?
+        - ekspresi: do face and hands match the meaning?
+        Then they announce the juara (winner): juara pertama = first place.
+        Before you start, say: Saya akan membacakan sajak berjudul … karya … = I'll recite a poem titled … by …
+        - On the street: udah = sudah (already), baca = membaca (to read), tapi = tetapi (but).
+exercises:
+  - id: e01
+    type: listen
+    text: Juara pertama lomba deklamasi tahun ini adalah siswa dari Pekanbaru.
+    question:
+      ar_eg: مين كسب المركز الأول؟
+      ar: من فاز بالمركز الأول؟
+      en: Who won first place?
+    options:
+      - مدرّس من جاكرتا.
+      - طالب من بيكانبارو.
+      - شاعر من ميدان.
+    answer: 1
+    words: [juara, deklamasi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «juri» هما مين؟
+      ar: من هم «juri»؟
+      en: Who are the "juri"?
+    options:
+      - الناس اللي بيقيّموا المتسابقين.
+      - الشعرا القدام.
+      - الجمهور اللي بيصقف.
+    answer: 0
+    words: [juri]
+    explain:
+      ar_eg: juri = لجنة التحكيم، اللي بتقيّم المتسابقين. مش الشعرا ولا الجمهور.
+      ar: juri لجنة التحكيم التي تقيّم المتسابقين، لا الشعراء ولا الجمهور.
+      en: juri are the judges who score contestants, not the poets or the audience.
+  - id: e03
+    type: build_sentence
+    source:
+      ar_eg: هقرا قصيدة اسمها «Aku» لتشايريل أنوار.
+      ar: سأقرأ قصيدة بعنوان «Aku» لتشايريل أنوار.
+      en: I'll recite a poem titled "Aku" by Chairil Anwar.
+    answer: Saya akan membacakan sajak berjudul "Aku" karya Chairil Anwar.
+    distractors: [juri, gurindam]
+    words: [sajak]
+    explain:
+      ar_eg: «هقرا» = akan membacakan و«بعنوان» = berjudul. juri وgurindam مش في المعنى.
+      ar: «سألقي» akan membacakan و«بعنوان» berjudul؛ أمّا juri وgurindam فليستا في المعنى.
+      en: "\"I'll recite\" is akan membacakan and \"titled\" is berjudul. juri and gurindam aren't in the meaning."
+  - id: e04
+    type: fill_blank
+    sentence: Menurut ___, penjiwaannya bagus, tetapi suaranya kurang lantang.
+    meaning:
+      ar_eg: حسب لجنة التحكيم، إحساسه حلو، بس صوته مش عالي كفاية.
+      ar: بحسب لجنة التحكيم، إحساسه جيّد لكنّ صوته غير عالٍ بما يكفي.
+      en: According to the judges, his feeling is good but his voice isn't loud enough.
+    options: [juri, juara, pelopor]
+    answers: [juri]
+    words: [juri, penjiwaan, lantang]
+    explain:
+      ar_eg: اللي بيقيّم هم juri. juara = الفايز، وpelopor = رائد.
+      ar: المقيِّمون juri؛ أمّا juara فالفائز، وpelopor الرائد.
+      en: Those who judge are the juri. juara is the winner, and pelopor a pioneer.
+  - id: e05
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كسبت المركز التاني في مسابقة الإلقاء.
+      ar: فزتُ بالمركز الثاني في مسابقة الإلقاء.
+      en: I came second in the recital contest.
+    answers:
+      - Saya juara kedua lomba deklamasi.
+      - Saya menjadi juara kedua lomba deklamasi.
+      - Saya juara kedua dalam lomba deklamasi.
+      - Saya menjadi juara kedua dalam lomba deklamasi.
+      - Aku juara kedua lomba deklamasi.
+      - Aku menjadi juara kedua lomba deklamasi.
+      - Aku juara kedua dalam lomba deklamasi.
+      - Aku menjadi juara kedua dalam lomba deklamasi.
+    words: [juara, deklamasi]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: اللجنة قالت «Ekspresimu datar.» تحسّن إيه؟
+      ar: قالت اللجنة «Ekspresimu datar.» ماذا تحسّن؟
+      en: The judges said "Ekspresimu datar." What should you improve?
+    options:
+      - سرعة القراية.
+      - طول القصيدة.
+      - تعبير الوش والصوت.
+    answer: 2
+    words: [ekspresi]
+    explain:
+      ar_eg: datar = «مسطّح» من غير إحساس، فلازم تحسّن تعبير الوش والصوت. مش السرعة ولا طول القصيدة.
+      ar: datar أي مسطّح بلا إحساس، فعليك تحسين تعبير الوجه والصوت، لا السرعة ولا طول القصيدة.
+      en: datar means flat, no feeling, so work on facial and vocal expression, not speed or length.
+  - id: e07
+    type: speaking
+    text: Terima kasih, Bapak dan Ibu juri. Saya akan membacakan sebuah gurindam.
+    meaning:
+      ar_eg: شكرًا يا حضرات لجنة التحكيم. هقرا gurindam.
+      ar: شكرًا لكم أعضاء لجنة التحكيم. سأقرأ gurindam.
+      en: Thank you, members of the jury. I'll recite a gurindam.
+    words: [juri, gurindam]
+  - id: e08
+    type: dictation
+    text: Juara lomba itu menghayati setiap larik dengan sungguh-sungguh.
+    meaning:
+      ar_eg: الفايز في المسابقة عاش كل سطر بجد.
+      ar: تمثّل الفائز بالمسابقة كلّ سطر بصدق.
+      en: The winner truly felt every line.
+    words: [juara, menghayati, larik]
+  - id: e09
+    type: fill_blank
+    sentence: Dia membaca dengan semangat, dan akhirnya dia menjadi ___ pertama.
+    meaning:
+      ar_eg: قرا بحماس، وفي الآخر بقى الأول.
+      ar: قرأ بحماسة، وفي النهاية صار الأوّل.
+      en: He read with spirit, and in the end he took first place.
+    options: [juara, juri, syair]
+    answers: [juara]
+    words: [juara, semangat]
+    explain:
+      ar_eg: المركز الأول = juara pertama. juri = اللي بيحكّموا، وsyair = نوع شعر.
+      ar: المركز الأوّل juara pertama؛ أمّا juri فالمحكّمون، وsyair نوع شعري.
+      en: First place is juara pertama. juri are the judges, and syair is a verse form.
+  - id: e10
+    type: speaking
+    text: Petuah gurindam ini sederhana, tetapi saya membacanya dengan penuh penjiwaan.
+    meaning:
+      ar_eg: نصيحة الـ gurindam ده بسيطة، بس قريتها بإحساس كامل.
+      ar: نصيحة هذا الـ gurindam بسيطة، لكنّي قرأته بكامل الإحساس.
+      en: This gurindam's advice is simple, but I read it with all my feeling.
+    words: [petuah, penjiwaan]
+dialogue:
+  title: Pengumuman juara
+  lines:
+    - speaker: Encik Zul
+      text: Mohamed, juri udah selesai menilai. Kamu gugup?
+      ar_eg: يا محمد، اللجنة خلصت تقييم. إنت متوتر؟
+      ar: يا محمد، أنهت اللجنة التقييم. أأنت متوتّر؟
+      en: Mohamed, the judges have finished scoring. Are you nervous?
+    - speaker: Mohamed
+      text: Sedikit. Saya baca gurindam dengan lantang, tapi saya lupa satu larik.
+      ar_eg: شوية. قريت الـ gurindam بصوت عالي، بس نسيت سطر.
+      ar: قليلًا. قرأت الـ gurindam بصوت عالٍ لكنّي نسيت سطرًا.
+      en: A little. I read the gurindam loud and clear, but I forgot one line.
+    - speaker: Mak Cik Rohana
+      text: Dengar! Juara ketiga... Mohamed dari Mesir!
+      ar_eg: اسمع! المركز التالت... محمد من مصر!
+      ar: اسمع! المركز الثالث... محمد من مصر!
+      en: Listen! Third place... Mohamed from Egypt!
+    - speaker: Mohamed
+      text: Alhamdulillah! Ternyata penjiwaan lebih penting daripada hafalan.
+      ar_eg: الحمد لله! طلع الإحساس أهم من الحفظ.
+      ar: الحمد لله! تبيّن أنّ الإحساس أهمّ من الحفظ.
+      en: Alhamdulillah! Feeling turned out to matter more than memorising.
+new_words:
+  - word: juri
+    pos: noun
+    ar_eg: لجنة التحكيم
+    ar: لجنة التحكيم
+    en: jury, judges
+  - word: juara
+    pos: noun
+    ar_eg: الفايز / البطل
+    ar: الفائز، البطل
+    en: winner, champion
+review:
+  status: draft
+  verified: false

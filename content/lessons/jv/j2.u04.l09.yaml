@@ -1,0 +1,232 @@
+schema: kabar.lesson/v1
+id: j2.u04.l09
+language: jv
+title: Ulangan J2.4
+can_do:
+  ar_eg: ترتب أسبوعك بالجاوي.
+  ar: أن تخطط لأسبوعك بالجاوية.
+  en: Plan a week.
+slides:
+  - title: Ringkesan J2.4
+    body:
+      ar_eg: |
+        - Saiki jam pira? → Jam telu. · setengah + الساعة الجاية: setengah wolu = 7:30.
+        - luwih seprapat = وربع، kurang seprapat = إلا ربع: jam lima kurang seprapat = 4:45.
+        - esuk، awan، sore، bengi بعد الساعة: jam pitu bengi.
+        - wingi، saiki، sesuk، mengko، dina iki — وmau = «من شوية» (tadi)، مش «عايز»!
+        - الأيام (عربي): Senen، Selasa، Rebo، Kemis، Jemuwah، Setu، Minggu / Ahad.
+        - pasaran: Legi → Pahing → Pon → Wage → Kliwon، وweton = يومك بالاسمين.
+        - الميعاد: Ketemu kapan? · Jam pira? · Neng ngendi? · isa / ora isa.
+      ar: |
+        - Saiki jam pira? ← Jam telu. · setengah + الساعة التالية: setengah wolu = 7:30.
+        - luwih seprapat = والربع، kurang seprapat = إلا ربعًا: jam lima kurang seprapat = 4:45.
+        - esuk وawan وsore وbengi بعد الساعة: jam pitu bengi.
+        - wingi، saiki، sesuk، mengko، dina iki، وmau = «قبل قليل» (tadi) لا «يريد»!
+        - الأيام (عربية): Senen، Selasa، Rebo، Kemis، Jemuwah، Setu، Minggu / Ahad.
+        - pasaran: Legi → Pahing → Pon → Wage → Kliwon، وweton = يومك باسميه.
+        - الموعد: Ketemu kapan? · Jam pira? · Neng ngendi? · isa / ora isa.
+      en: |
+        - Saiki jam pira? → Jam telu. · setengah + next hour: setengah wolu = 7:30.
+        - luwih seprapat = quarter past, kurang seprapat = quarter to: jam lima kurang seprapat = 4:45.
+        - esuk, awan, sore, bengi after the hour: jam pitu bengi.
+        - wingi, saiki, sesuk, mengko, dina iki — and mau = "earlier" (tadi), not "want"!
+        - Days (Arabic): Senen, Selasa, Rebo, Kemis, Jemuwah, Setu, Minggu / Ahad.
+        - pasaran: Legi → Pahing → Pon → Wage → Kliwon; weton = your day with both names.
+        - Meeting: Ketemu kapan? · Jam pira? · Neng ngendi? · isa / ora isa.
+    grammar: jv.time.expressions
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: Selasa
+        ar_eg: التلات
+        ar: الثلاثاء
+        en: Tuesday
+      - text: Minggu
+        ar_eg: الحد
+        ar: الأحد
+        en: Sunday
+      - text: mengko
+        ar_eg: بعدين
+        ar: لاحقًا
+        en: later
+      - text: setengah
+        ar_eg: نص
+        ar: نصف
+        en: half
+      - text: Wage
+        ar_eg: يوم واجيه (من أيام السوق)
+        ar: يوم واغيه (من أيام السوق)
+        en: Wage (a pasaran day)
+      - text: grimis
+        ar_eg: رذاذ / مطر خفيف
+        ar: رذاذ المطر
+        en: drizzle
+    words: [Selasa, Minggu, mengko, setengah, Wage, grimis]
+  - id: e02
+    type: multiple_choice
+    question: 8:45 = ?
+    question_meaning:
+      ar_eg: إزاي تقول تسعة إلا ربع؟
+      ar: كيف تقول التاسعة إلا ربعًا؟
+      en: How do you say 8:45?
+    options: [setengah sanga, jam sanga kurang seprapat, jam wolu luwih seprapat]
+    answer: 1
+    explain:
+      ar_eg: jam wolu luwih seprapat = 8:15، وsetengah sanga = 8:30.
+      ar: jam wolu luwih seprapat = 8:15، وsetengah sanga = 8:30.
+      en: jam wolu luwih seprapat = 8:15; setengah sanga = 8:30.
+    words: [kurang, seprapat, sanga]
+  - id: e03
+    type: multiple_choice
+    question: Selasa Pahing → ?
+    question_meaning:
+      ar_eg: النهارده تلات باهينج. بكرة إيه؟
+      ar: اليوم ثلاثاء باهينغ. فما الغد؟
+      en: Today is Tuesday Pahing. What's tomorrow?
+    options: [Rebo Pon, Senen Pon, Rebo Legi]
+    answer: 0
+    explain:
+      ar_eg: 'الأسبوعين بيتحركوا مع بعض: Selasa → Rebo، وPahing → Pon.'
+      ar: 'يتقدم الأسبوعان معًا: Selasa → Rebo، وPahing → Pon.'
+      en: 'Both weeks move on together: Selasa → Rebo, Pahing → Pon.'
+    words: [Rebo, Pon]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «من شوية» (tadi)؟
+      ar: أي كلمة تعني «قبل قليل» (tadi)؟
+      en: Which word means "earlier, just now" (tadi)?
+    options: [mau, mengko, sesuk]
+    answer: 0
+    words: [mau]
+    explain:
+      ar_eg: mau = من شوية. mengko = بعدين، وsesuk = بكرة.
+      ar: mau = قبل قليل؛ أما mengko فبعد قليل، وsesuk غدًا.
+      en: mau = earlier. mengko = later, sesuk = tomorrow.
+  - id: e05
+    type: listen
+    text: Pasare buka seminggu ping telu.
+    question:
+      ar_eg: السوق بيفتح قد إيه؟
+      ar: كم مرّة يفتح السوق؟
+      en: How often does the market open?
+    options: [السوق بيفتح تلات مرات في الأسبوع, السوق بيفتح كل يوم, السوق قافل الأسبوع ده]
+    answer: 0
+    meaning:
+      ar_eg: السوق بيفتح تلات مرات في الأسبوع.
+      ar: يفتح السوق ثلاث مرّات في الأسبوع.
+      en: The market opens three times a week.
+    words: [buka, seminggu, ping]
+  - id: e06
+    type: fill_blank
+    sentence: Jam setengah ___.
+    meaning:
+      ar_eg: اتنين ونص.
+      ar: الثانية والنصف.
+      en: Half past two.
+    answers: [telu]
+    explain:
+      ar_eg: 'setengah بتتحسب للساعة الجاية: «نص تلاتة» = اتنين ونص.'
+      ar: يُضاف setengah إلى الساعة التالية.
+      en: 'setengah counts toward the next hour: "half three" = 2:30.'
+    words: [setengah, telu]
+  - id: e07
+    type: fill_blank
+    sentence: ___ Jemuwah, dina iki Setu.
+    meaning:
+      ar_eg: امبارح كان الجمعة، والنهارده السبت.
+      ar: أمس كان الجمعة، واليوم السبت.
+      en: Yesterday was Friday; today is Saturday.
+    options: [Mengko, Wingi, Sesuk]
+    answers: [Wingi]
+    words: [wingi, dina iki]
+    explain:
+      ar_eg: امبارح = wingi، والنهارده السبت. mengko = بعدين، وsesuk = بكرة.
+      ar: أمس = wingi، واليوم السبت؛ أما mengko فبعد قليل، وsesuk غدًا.
+      en: Yesterday = wingi. mengko = later, sesuk = tomorrow.
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: نتقابل بكرة الساعة أربعة العصر.
+      ar: نلتقي غدًا في الرابعة عصرًا.
+      en: Let's meet tomorrow at four in the afternoon.
+    answer: Janjian sesuk jam papat sore.
+    distractors: [esuk, wingi]
+    words: [janjian, sesuk, sore]
+    explain:
+      ar_eg: janjian = ميعاد، sesuk = بكرة، jam papat sore = أربعة العصر. esuk = الصبح، وwingi = امبارح، ومش في المعنى.
+      ar: janjian = موعد، وsesuk = غدًا، وjam papat sore = الرابعة عصرًا؛ أما esuk فالصباح، وwingi أمس، وليسا في المعنى.
+      en: janjian = meet up, sesuk = tomorrow, jam papat sore = 4 pm. esuk and wingi aren't in the meaning.
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الساعة كام دلوقتي؟
+      ar: كم الساعة الآن؟
+      en: What time is it now?
+    answers: ['Saiki jam pira?', Saiki jam pira, 'Saiki jam piro?', Saiki jam piro, 'Jam pira saiki?', Jam pira saiki, 'Jam pira?', Jam pira]
+    words: [saiki, jam, pira]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Dina iki mendhung lan ana angin.
+    answers_meaning:
+      ar_eg: [النهارده الدنيا مغيّمة وفيه هوا, النهارده مغيّمة وفيه ريح]
+      ar: [اليوم غائم وهناك رياح, الجوّ اليوم غائم وفيه ريح]
+      en: ['Today it''s cloudy and windy', 'It''s overcast today and there''s wind']
+    words: [dina iki, mendhung, angin]
+  - id: e11
+    type: dictation
+    text: Senen, Selasa, Rebo, Kemis
+    meaning:
+      ar_eg: الاتنين، التلات، الأربع، الخميس
+      ar: الاثنين، الثلاثاء، الأربعاء، الخميس
+      en: Monday, Tuesday, Wednesday, Thursday
+    words: [Senen, Selasa, Rebo, Kemis]
+  - id: e12
+    type: speaking
+    text: Aku teles, payungku neng omah.
+    meaning:
+      ar_eg: أنا اتبلّيت، الشمسية بتاعتي في البيت.
+      ar: ابتللت، مظلّتي في البيت.
+      en: I'm wet, my umbrella's at home.
+    words: [teles, payung]
+dialogue:
+  title: Reog dina Setu
+  lines:
+    - speaker: Mohamed
+      text: Sari, Setu ana Reog?
+      ar_eg: ساري، فيه ريوج يوم السبت؟
+      ar: يا ساري، هل هناك عرض ريوغ يوم السبت؟
+      en: Sari, is there Reog on Saturday?
+    - speaker: Sari
+      text: Ana! Setu Pon, jam wolu bengi, neng alun-alun.
+      ar_eg: فيه! سبت بون، الساعة تمانية بالليل، في الميدان.
+      ar: نعم! السبت بون، في الثامنة ليلًا، في الساحة.
+      en: Yes! Saturday Pon, eight p.m., at the town square.
+    - speaker: Mohamed
+      text: Jemuwah aku ra isa, Setu isa. Ketemu jam pira?
+      ar_eg: الجمعة مقدرش، السبت ينفع. نتقابل الساعة كام؟
+      ar: لا أستطيع الجمعة، والسبت يناسبني. في أي ساعة نلتقي؟
+      en: I can't on Friday, Saturday works. What time shall we meet?
+    - speaker: Sari
+      text: Jam setengah wolu, neng ngarep alun-alun.
+      ar_eg: سبعة ونص، قدام الميدان.
+      ar: في السابعة والنصف، أمام الساحة.
+      en: Half past seven, in front of the town square.
+    - speaker: Mohamed
+      text: Sip! Setu ya.
+      ar_eg: تمام! أشوفك السبت.
+      ar: ممتاز! إلى السبت.
+      en: Great! See you Saturday.
+souvenir:
+  id: j2.u04.souvenir
+  title: Reog Ponorogo
+  note:
+    ar_eg: 'الريوج فخر بونوروجو: راقص واحد شايل قناع راس نمر عليه ريش طاووس ضخم، ممكن يوزن حوالي خمسين كيلو، وشايله بسنانه! وحوالين العرض ده التقويم الجاوي عايش لحد النهارده، الأسبوع العادي ماشي جنب أسبوع السوق، و«Jemuwah Kliwon» ليلة الكل عارفها. دلوقتي تقدر تسأل عن الساعة واليوم وتحدد ميعادك بالجاوي، فمتتأخرش على العرض!'
+    ar: 'الريوغ فخر بونوروغو: راقص واحد يحمل قناع رأس نمر يعلوه ريش طاووس هائل قد يقارب وزنه خمسين كيلوغرامًا، ويحمله بأسنانه! وحول هذا العرض يعيش التقويم الجاوي إلى اليوم، فيسير الأسبوع العادي إلى جانب أسبوع السوق، وليلة «Jemuwah Kliwon» يعرفها الجميع. صرت تسأل عن الساعة واليوم وتحدد موعدك بالجاوية، فلا تتأخر عن العرض!'
+    en: Reog is Ponorogo's pride — a single dancer carries a tiger-head mask crowned with huge peacock feathers, which can weigh around fifty kilos, and holds it with his teeth! Around it the Javanese calendar is still alive, the seven-day week running beside the market week, and everyone knows "Jemuwah Kliwon". You can now ask the time and day and fix a meeting in Javanese — so don't be late for the show!
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,218 @@
+schema: kabar.lesson/v1
+id: bipa7.u10.l11
+language: id
+title: Artikel ilmiah populer
+can_do:
+  ar_eg: تحوّل بحث علمي لمقالة مبسّطة يفهمها أي حد.
+  ar: أن تحوّل بحثًا علميًّا إلى مقالة مبسّطة يفهمها الجميع.
+  en: Turn research into a popular-science article anyone can follow.
+slides:
+  - title: Dari jurnal ke koran
+    grammar: id.register.academic
+    body:
+      ar_eg: |
+        نفس النتيجة مرتين (مثال متألّف للدرس):
+        - في المجلة العلمية: Temuan menunjukkan korelasi positif antara ketinggian lahan dan produktivitas ubi jalar.
+        - في artikel ilmiah populer (مقالة علمية مبسّطة): Makin tinggi kebunnya, makin banyak ubi yang dipanen. Ibaratnya, ubi jalar suka udara sejuk seperti kita suka kipas angin.
+        - الـ pembaca awam (القارئ العادي) مش متخصّص، فشيل الـ jargon (المصطلحات التقيلة) زي «korelasi positif».
+        - استعمل analogi (تشبيه) من الحياة اليومية.
+        لكن خلّيك أمين: التبسيط مايبقاش تغيير للنتيجة.
+      ar: |
+        النتيجة نفسها مرّتين (مثال مؤلَّف للدرس):
+        - في المجلّة العلمية: Temuan menunjukkan korelasi positif antara ketinggian lahan dan produktivitas ubi jalar.
+        - في artikel ilmiah populer (مقالة علمية مبسّطة): Makin tinggi kebunnya, makin banyak ubi yang dipanen. Ibaratnya, ubi jalar suka udara sejuk seperti kita suka kipas angin.
+        - الـ pembaca awam (القارئ غير المتخصّص) لا يعرف الـ jargon (الرطانة الاصطلاحية) مثل «korelasi positif»، فاحذفها.
+        - استعمل analogi (تشبيهًا) من الحياة اليومية.
+        وكن أمينًا، فالتبسيط لا يعني تغيير النتيجة.
+      en: |
+        The same finding twice (example invented for the lesson):
+        - In the journal: Temuan menunjukkan korelasi positif antara ketinggian lahan dan produktivitas ubi jalar.
+        - In an artikel ilmiah populer (popular-science article): Makin tinggi kebunnya, makin banyak ubi yang dipanen. Ibaratnya, ubi jalar suka udara sejuk seperti kita suka kipas angin.
+        - The pembaca awam (lay reader) isn't a specialist, so drop jargon like "korelasi positif".
+        - Use an analogi (analogy) from everyday life.
+        But stay honest: simplifying must never change the finding.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: artikel ilmiah populer
+        ar_eg: مقالة علمية مبسّطة
+        ar: مقالة علمية مبسّطة
+        en: popular-science article
+      - text: pembaca awam
+        ar_eg: القارئ العادي
+        ar: القارئ غير المتخصّص
+        en: lay reader
+      - text: jargon
+        ar_eg: مصطلحات تقيلة
+        ar: رطانة اصطلاحية
+        en: jargon
+      - text: analogi
+        ar_eg: تشبيه
+        ar: تشبيه
+        en: analogy
+    words: [artikel ilmiah populer, pembaca awam, jargon, analogi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة أنسب لمقالة علمية مبسّطة؟
+      ar: أيّ جملة أنسب لمقالة علمية مبسّطة؟
+      en: Which sentence best suits a popular-science article?
+    options:
+      - Terdapat korelasi positif yang signifikan secara statistik.
+      - Makin tinggi kebunnya, makin banyak ubi yang dipanen.
+      - Variabel independen memengaruhi variabel dependen.
+    answer: 1
+    words: [artikel ilmiah populer]
+    explain:
+      ar_eg: "للمقال المبسّط: Makin..., makin... (كل ما... كل ما...) واضحة للقارئ العادي. التانيين مليانين مصطلحات."
+      ar: "للمقال العلمي المبسّط: Makin tinggi..., makin banyak... بلا مصطلحات."
+      en: Makin... makin... is clear to lay readers; the others are jargon.
+  - id: e03
+    type: fill_blank
+    sentence: Kata "korelasi positif" adalah ___ yang sulit bagi pembaca awam.
+    meaning:
+      ar_eg: كلمة «korelasi positif» مصطلح تقيل صعب على القارئ العادي.
+      ar: عبارة «korelasi positif» رطانة صعبة على القارئ غير المتخصّص.
+      en: '"Korelasi positif" is jargon that is hard for lay readers.'
+    options: [jargon, analogi, abstrak]
+    answers: [jargon]
+    words: [jargon, pembaca awam]
+    explain:
+      ar_eg: korelasi positif مصطلح تقيل = jargon. analogi = تشبيه (بيسهّل)، وabstrak = ملخص.
+      ar: korelasi positif مصطلح متخصص أي jargon. analogi تشبيه يبسّط.
+      en: Specialist terms are jargon; analogi helps explain.
+  - id: e04
+    type: listen
+    text: Analogi yang baik membuat ilmu terasa dekat dengan kehidupan sehari-hari.
+    question:
+      ar_eg: التشبيه الكويس بيعمل إيه؟
+      ar: ماذا يفعل التشبيه الجيّد؟
+      en: What does a good analogy do?
+    options:
+      - بيقرّب العلم من الحياة اليومية.
+      - بيخلّي المقالة أطول.
+      - بيغيّر النتيجة.
+    answer: 0
+    words: [analogi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: اكتب للقارئ العادي.
+      ar: اكتب للقارئ غير المتخصّص.
+      en: Write for the lay reader.
+    answer: Menulislah untuk pembaca awam.
+    distractors: [jargon, analogi]
+    words: [pembaca awam]
+    explain:
+      ar_eg: Menulislah (اكتب) + untuk pembaca awam (للقارئ العادي). jargon وanalogi زيادة.
+      ar: Menulislah untuk pembaca awam. jargon وanalogi زائدتان.
+      en: Menulislah + untuk pembaca awam. jargon and analogi are extra.
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه الغلط اللي لازم تبعد عنه وإنت بتبسّط؟
+      ar: ما الخطأ الذي يجب تجنّبه عند التبسيط؟
+      en: What mistake must you avoid when simplifying?
+    options:
+      - تستعمل تشبيه.
+      - تشيل المصطلحات التقيلة.
+      - تغيّر النتيجة علشان تبقى مثيرة.
+    answer: 2
+    words: [artikel ilmiah populer]
+    explain:
+      ar_eg: التبسيط مسموح، بس ماينفعش تغيّر النتيجة علشان تبقى مثيرة. التشبيه وشيل المصطلحات حاجات كويسة.
+      ar: التبسيط جائز، أما تحريف النتيجة لإثارتها فخطأ.
+      en: Simplify, but never change the finding to make it exciting.
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: ابعد عن المصطلحات التقيلة واستعمل تشبيه.
+      ar: تجنّب الرطانة واستعمل تشبيهًا.
+      en: Avoid jargon and use an analogy.
+    answers:
+      - Hindari jargon dan gunakan analogi.
+      - Hindari jargon dan pakai analogi.
+      - Hindarilah jargon dan gunakanlah analogi.
+      - Jauhi jargon dan gunakan analogi.
+    words: [jargon, analogi]
+  - id: e08
+    type: speaking
+    text: Artikel ilmiah populer menjembatani peneliti dan pembaca awam.
+    meaning:
+      ar_eg: المقالة العلمية المبسّطة بتوصّل بين الباحث والقارئ العادي.
+      ar: تصل المقالة العلمية المبسّطة بين الباحث والقارئ غير المتخصّص.
+      en: Popular-science articles bridge researchers and lay readers.
+    words: [artikel ilmiah populer, pembaca awam]
+  - id: e09
+    type: dictation
+    text: Analogi itu mudah dipahami anak-anak.
+    meaning:
+      ar_eg: التشبيه ده سهل على العيال يفهموه.
+      ar: يسهل على الأطفال فهم ذلك التشبيه.
+      en: That analogy is easy for children to understand.
+    words: [analogi]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Terlalu banyak jargon membuat pembaca berhenti membaca.
+    answers_meaning:
+      ar_eg:
+        - المصطلحات التقيلة الكتير بتخلّي القارئ يبطّل يقرا.
+        - كتر الكلام المتخصّص بيطفّش القارئ.
+      ar:
+        - كثرة الرطانة تجعل القارئ يتوقّف عن القراءة.
+        - يُنفّر الإفراط في المصطلحات القارئَ فيترك القراءة.
+      en:
+        - Too much jargon makes readers stop reading.
+        - Overloading on jargon drives readers away.
+    words: [jargon]
+dialogue:
+  title: Kolom sains di koran lokal
+  lines:
+    - speaker: Pak Elias
+      text: Koran Wamena minta versi populer dari makalahmu.
+      ar_eg: جرنال وامينا طالب نسخة مبسّطة من ورقتك.
+      ar: طلبت صحيفة وامينا نسخة مبسّطة من ورقتك.
+      en: The Wamena paper wants a popular version of your paper.
+    - speaker: Mohamed
+      text: Pembacanya pembaca awam. Saya harus membuang jargon, ya?
+      ar_eg: قرّاءه ناس عاديين. يبقى لازم أشيل المصطلحات التقيلة، صح؟
+      ar: قرّاؤها من غير المتخصّصين، فعليّ حذف الرطانة، أليس كذلك؟
+      en: Its readers are lay readers. So I have to cut the jargon, right?
+    - speaker: Pak Elias
+      text: Betul, dan cari analogi dari kehidupan di lembah ini.
+      ar_eg: صح، ودوّر على تشبيه من الحياة في الوادي ده.
+      ar: صحيح، وابحث عن تشبيه من الحياة في هذا الوادي.
+      en: Right, and find an analogy from life in this valley.
+    - speaker: Mohamed
+      text: Ubi jalar betah di udara sejuk, seperti ikan betah di dalam air.
+      ar_eg: البطاطا مرتاحة في الجو البارد، زي السمك ما هو مرتاح في المية.
+      ar: تأنس البطاطا الحلوة بالهواء البارد كما يأنس السمك بالماء.
+      en: Sweet potatoes feel at home in cool air, like fish in water.
+new_words:
+  - word: artikel ilmiah populer
+    pos: noun
+    ar_eg: مقالة علمية مبسّطة
+    ar: مقالة علمية مبسّطة
+    en: popular-science article
+  - word: pembaca awam
+    pos: noun
+    arabic: عوامّ
+    ar_eg: القارئ العادي
+    ar: القارئ غير المتخصّص
+    en: lay reader
+  - word: jargon
+    pos: noun
+    ar_eg: مصطلحات تقيلة
+    ar: رطانة اصطلاحية
+    en: jargon
+  - word: analogi
+    pos: noun
+    ar_eg: تشبيه
+    ar: تشبيه
+    en: analogy
+review:
+  status: draft
+  verified: false

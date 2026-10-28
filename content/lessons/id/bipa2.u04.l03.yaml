@@ -13,14 +13,23 @@ slides:
         ayo = «يلا» بالظبط: Ayo makan! = يلا ناكل!
         yuk = يلا بس ألطف، وبتيجي في الأول أو الآخر: Ngopi, yuk! / Yuk, ke pasar!
         ولو بتعزم اللي قدامك معاك قول kita (مش kami): Ayo kita ke pasar!
+        في الشارع بيقولوا:
+        - aja = saja (بس، وخلاص)
+        - aku و-ku = saya (أنا، ـي) مع الأصحاب واللي في سنك؛ مع الكبار والغُرب saya
       ar: |
         ayo = «هيّا»: Ayo makan!
         yuk = هيّا بلطف، في أول الجملة أو آخرها: Ngopi, yuk!
         وإذا كانت الدعوة تشمل المخاطب فاستعمل kita لا kami: Ayo kita ke pasar!
+        في كلام الشارع:
+        - aja = saja (فقط)
+        - aku و-ku = saya (أنا، ـي) مع الأصدقاء والأقران؛ ومع الكبار والغرباء saya
       en: |
         ayo = "come on, let's": Ayo makan! = Let's eat!
         yuk = a softer "let's", at the start or the end: Ngopi, yuk! / Yuk, ke pasar!
         When the invitation includes the listener, use kita (not kami): Ayo kita ke pasar!
+        On the street:
+        - aja = saja (just, only)
+        - aku / -ku = saya (I, my) with friends and people your age; saya with elders and strangers
     grammar: id.invitation.ayo-mari
     examples:
       - text: Ayo, kita ke pasar!
@@ -77,6 +86,10 @@ exercises:
     options: ['Ngopi, yuk!', Ayo makan!, Mari kita jaga kebersihan.]
     answer: 2
     words: [mari]
+    explain:
+      ar_eg: Mari kita = يلا بينا بشكل رسمي، تسمعها في خطبة أو لافتة. Ayo وyuk للكلام العادي مع الناس.
+      ar: Mari kita دعوة رسمية تُسمع في الخطب واللافتات. أما Ayo وyuk فللكلام اليومي.
+      en: Mari kita is the formal "let us", for speeches and notices. Ayo and yuk are everyday.
   - id: e03
     type: fill_blank
     sentence: Ngopi, ___!
@@ -101,6 +114,10 @@ exercises:
     alternatives: [Ayo kita ke pasar!]
     distractors: [kami, jangan]
     words: [ayo, kita]
+    explain:
+      ar_eg: Ayo, kita… = يلا نـ…. kami مش بتشمل اللي بتكلمه، فما ينفعش في دعوة، وjangan = ماتعملش.
+      ar: Ayo, kita… = هيّا نـ…. أما kami فلا تشمل المخاطَب فلا تصلح للدعوة، وjangan للنهي.
+      en: Ayo, kita… = come on, let's…. kami excludes the listener, so it can't invite; jangan means "don't".
   - id: e05
     type: translate
     direction: to_target
@@ -138,6 +155,10 @@ exercises:
     options: [Nanti, Ayo, Mari]
     answers: [Nanti]
     words: [nanti dulu, yuk]
+    explain:
+      ar_eg: Nanti dulu = بعدين، الطريقة اللطيفة إنك تأجّل. Ayo وMari معناهم «يلا» يعني موافقة.
+      ar: Nanti dulu = لاحقًا، رفض مهذب. أما Ayo وMari فقبول للدعوة.
+      en: Nanti dulu (later) politely puts it off. Ayo and Mari would mean yes.
   - id: e09
     type: multiple_choice
     question: Ayo kita ke pasar!
@@ -148,6 +169,10 @@ exercises:
     options: ['Nanti dulu, ya.', 'Ayo!', 'Mari kita mulai.']
     answer: 0
     words: [nanti dulu, ayo, mari, mulai]
+    explain:
+      ar_eg: Nanti dulu, ya = «بعدين، ماشي؟»، تأجيل لطيف. Ayo! موافقة، وMari kita mulai = «يلا نبدأ» رسمي.
+      ar: Nanti dulu, ya تأجيل مهذب. أما Ayo! فموافقة، وMari kita mulai «لنبدأ» رسميًا.
+      en: Nanti dulu, ya is a gentle "later". Ayo! says yes; Mari kita mulai is a formal "let's begin".
   - id: e10
     type: fill_blank
     sentence: Semua sudah datang. Ayo, kita ___!
@@ -158,23 +183,27 @@ exercises:
     options: [mulai, lupa, pulang]
     answers: [mulai]
     words: [ayo, mulai]
+    explain:
+      ar_eg: الكل وصل، يبقى «يلا نبدأ» = mulai. lupa = ينسى، وpulang = يروّح.
+      ar: وصل الجميع، فـ«هيّا نبدأ» = mulai. أما lupa فـ«ينسى» وpulang «يعود».
+      en: "Everyone's here, so \"let's start\": mulai. lupa is forget, pulang is go home."
 dialogue:
   lines:
     - speaker: Raka
-      text: Mohamed, ngopi, yuk!
+      text: Mohamed, minum kopi, yuk!
       ar_eg: محمد، يلا نشرب قهوة!
       ar: محمد، هيا نشرب القهوة!
       en: Mohamed, let's grab a coffee!
     - speaker: Mohamed
-      text: Nanti dulu, Raka. Saya masih belajar.
+      text: Nanti dulu, Raka. Aku masih belajar.
       ar_eg: مش دلوقتي يا راكا. لسه بذاكر.
       ar: ليس الآن يا راكا. ما زلت أدرس.
       en: Not now, Raka. I'm still studying.
     - speaker: Raka
-      text: Ayo, sebentar saja!
-      ar_eg: يلا، شوية صغيرين بس!
-      ar: هيا، قليلًا فقط!
-      en: Come on, just for a bit!
+      text: Ayo, Mohamed!
+      ar_eg: يلا يا محمد!
+      ar: هيا يا محمد!
+      en: Come on, Mohamed!
     - speaker: Mohamed
       text: Oke, ayo! Mari kita ke kafe.
       ar_eg: ماشي، يلا! يلا بينا على الكافيه.

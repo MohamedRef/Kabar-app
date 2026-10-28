@@ -93,7 +93,7 @@ exercises:
       ar_eg: kaya gizi صفة، فمش محتاجة adalah ولا merupakan.
       ar: kaya gizi وصف، فلا يحتاج إلى adalah ولا merupakan.
       en: kaya gizi is an adjective phrase, so it takes neither adalah nor merupakan.
-    words: [gizi, kaya]
+    words: [gizi, kaya, merupakan]
   - id: e03
     type: listen
     text: Sayur adalah sumber serat.
@@ -113,7 +113,7 @@ exercises:
       ar_eg: بعدها اسم (buah)، فمحتاجين merupakan أو adalah. والنفي بيبقى bukan، مش tidak adalah.
       ar: يليها اسم (buah)، فنحتاج merupakan أو adalah، والنفي بـbukan لا tidak adalah.
       en: A noun (buah) follows, so merupakan (or adalah) fits; the negative is bukan, never tidak adalah.
-    words: [kaya]
+    words: [kaya, merupakan]
   - id: e05
     type: fill_blank
     sentence: Makanan sehat adalah makanan yang ___ dan seimbang.
@@ -124,6 +124,10 @@ exercises:
     options: [gizi, serat, bergizi]
     answers: [bergizi]
     words: [bergizi, seimbang]
+    explain:
+      ar_eg: "بعد yang محتاجين صفة: bergizi = مغذّي (ber- + gizi). gizi = التغذية نفسها، وserat = ألياف، ودول أسماء."
+      ar: "بعد yang نحتاج صفة: bergizi «مغذٍّ» (ber- مع gizi). أما gizi فالتغذية نفسها، وserat الألياف، وهما اسمان."
+      en: "After yang we need an adjective: bergizi, nutritious (ber- + gizi). gizi is nutrition itself and serat fibre; both are nouns."
   - id: e06
     type: fill_blank
     sentence: Ikan adalah ___ protein yang baik.
@@ -134,6 +138,10 @@ exercises:
     options: [sumber, serat, gizi]
     answers: [sumber]
     words: [sumber]
+    explain:
+      ar_eg: "«مصدر» = sumber: sumber protein. serat = ألياف، وgizi = تغذية."
+      ar: "«مصدر» sumber: sumber protein. أما serat فالألياف، وgizi التغذية."
+      en: "\"Source\" is sumber: sumber protein. serat is fibre and gizi nutrition."
   - id: e07
     type: build_sentence
     source:
@@ -143,6 +151,10 @@ exercises:
     answer: Makanan sehat adalah makanan yang bergizi dan seimbang.
     distractors: [sangat, tidak]
     words: [bergizi, seimbang]
+    explain:
+      ar_eg: "«مغذّي ومتوازن» = bergizi dan seimbang: Makanan sehat adalah makanan yang bergizi dan seimbang. sangat وtidak مش في المعنى."
+      ar: "«مغذٍّ ومتوازن» bergizi dan seimbang: Makanan sehat adalah makanan yang bergizi dan seimbang. ولا موضع لـsangat أو tidak."
+      en: "\"Nutritious and balanced\" is bergizi dan seimbang. sangat and tidak aren't in the meaning."
   - id: e08
     type: translate
     direction: to_target
@@ -158,7 +170,7 @@ exercises:
       - Sayuran merupakan sumber serat.
       - Sayur-sayuran adalah sumber serat.
       - Sayur-mayur adalah sumber serat.
-    words: [sumber, serat]
+    words: [sumber, serat, merupakan]
   - id: e09
     type: speaking
     text: Buah merupakan makanan yang kaya gizi.
@@ -166,22 +178,22 @@ exercises:
       ar_eg: الفاكهة تعتبر أكل غني بالقيمة الغذائية.
       ar: تُعدّ الفاكهة طعامًا غنيًّا بالقيمة الغذائية.
       en: Fruit is a highly nutritious food.
-    words: [gizi, kaya]
+    words: [gizi, kaya, merupakan]
 dialogue:
   title: Sayur dari Sembalun
   lines:
     - speaker: Mas Rizal
-      text: Inilah Sembalun. Sembalun merupakan daerah sayur dan stroberi.
+      text: Nah, ini Sembalun. Sembalun merupakan daerah sayur dan stroberi.
       ar_eg: أهي سمبالون. سمبالون منطقة خضار وفراولة.
       ar: ها هي سمبالون، وهي منطقة لزراعة الخضار والفراولة.
       en: Here's Sembalun. Sembalun is an area of vegetables and strawberries.
     - speaker: Mohamed
-      text: Wah, udaranya sejuk! Sayurnya juga segar sekali.
+      text: Wah, udaranya sejuk! Sayurnya juga seger banget.
       ar_eg: واو، الجو منعش! والخضار كمان فريش أوي.
       ar: ما أنعش الهواء! والخضار طازجة جدًا أيضًا.
       en: Wow, the air is cool! And the vegetables are so fresh.
     - speaker: Bu Rohani
-      text: Ya, sayur kami kaya gizi. Sayur adalah sumber serat dan vitamin.
+      text: Iya, sayur kami kaya gizi. Sayur itu sumber serat dan vitamin.
       ar_eg: أيوه، خضارنا مليان قيمة غذائية. الخضار مصدر ألياف وفيتامينات.
       ar: نعم، خضارنا غنية بالقيمة الغذائية، فالخضار مصدر للألياف والفيتامينات.
       en: Yes, our vegetables are very nutritious. Vegetables are a source of fibre and vitamins.
@@ -191,7 +203,7 @@ dialogue:
       ar: طعامي في المدينة غير متوازن بما يكفي يا سيدتي.
       en: My diet in the city isn't very balanced, Bu.
     - speaker: Bu Rohani
-      text: Kalau begitu, makanlah sayur Sembalun setiap hari!
+      text: Kalau gitu, makan sayur Sembalun setiap hari, ya!
       ar_eg: يبقى كُل خضار سمبالون كل يوم!
       ar: إذن، كُل من خضار سمبالون كل يوم!
       en: Then eat Sembalun vegetables every day!
@@ -227,6 +239,11 @@ new_words:
     ar_eg: غني (kaya vitamin = غني بالفيتامينات)
     ar: غنيّ (kaya vitamin = غنيّ بالفيتامينات)
     en: rich (kaya vitamin = rich in vitamins)
+  - word: merupakan
+    pos: verb
+    ar_eg: يُعتبر، يمثّل (أرسم من adalah)
+    ar: يُعدّ، يمثّل (أرسم من adalah)
+    en: is, constitutes (more formal than adalah)
 review:
   status: draft
   verified: false

@@ -22,18 +22,18 @@ slides:
         kuno = ancient, tugu = monument, lambang = symbol, emblem.
         puluhan = tens, dozens; atusan = hundreds. awujud = in the form of.
     examples:
-      - text: Lawang Sewu dibangun ing abad kaping rong puluh.
-        ar_eg: لاوانج سيوو اتبنى في القرن العشرين.
-        ar: بُني لاوانغ سيوو في القرن العشرين.
-        en: Lawang Sewu was built in the 20th century.
-      - text: Lawang Sewu duwe atusan lawang.
-        ar_eg: لاوانج سيوو فيه مئات الأبواب.
-        ar: في لاوانغ سيوو مئات الأبواب.
-        en: Lawang Sewu has hundreds of doors.
-      - text: Candhi Gedong Songo iku candhi kuno.
-        ar_eg: جيدونج سونجو معبد قديم أثري.
-        ar: غيدونغ سونغو معبد أثري قديم.
-        en: Gedong Songo is an ancient temple.
+      - text: Benteng Pendem dibangun ing abad kaping sangalas.
+        ar_eg: حصن بندم (حصن فان دن بوش في نغاوي) اتبنى في القرن التسعتاشر.
+        ar: بُني حصن بندم (حصن فان دن بوش في نغاوي) في القرن التاسع عشر.
+        en: Benteng Pendem (Fort Van den Bosch in Ngawi) was built in the 19th century.
+      - text: Atusan prajurit Walanda manggon ing Benteng Pendem.
+        ar_eg: حصن بندم كان ساكن فيه مئات العساكر الهولنديين.
+        ar: سكن حصنَ بندم مئاتُ الجنود الهولنديين.
+        en: Hundreds of Dutch soldiers lived in Benteng Pendem.
+      - text: Candhi Cetho iku candhi kuno.
+        ar_eg: معبد تشيتو (على جبل لاوو) معبد قديم أثري.
+        ar: معبد تشيتو (على جبل لاوو) معبد أثري قديم.
+        en: Candi Cetho (on Mount Lawu) is an ancient temple.
 exercises:
   - id: e01
     type: match_pairs
@@ -77,28 +77,32 @@ exercises:
     words: [lambang, atusan, puluhan, awujud]
   - id: e03
     type: listen
-    text: Lawang Sewu duwe atusan lawang lan cendhela.
+    text: Atusan prajurit Walanda manggon ing Benteng Pendem.
     question:
-      ar_eg: المبنى فيه قد إيه باب؟
-      ar: كم بابًا في المبنى؟
-      en: How many doors does the building have?
-    options: [مئات الأبواب, عشرات الأبواب, ألف باب بالظبط]
+      ar_eg: قد إيه عسكري كانوا ساكنين في الحصن؟
+      ar: كم جنديًا سكن الحصن؟
+      en: How many soldiers lived in the fort?
+    options: [مئات العساكر, عشرات العساكر, ألف عسكري بالظبط]
     answer: 0
     meaning:
-      ar_eg: لاوانج سيوو فيه مئات الأبواب والشبابيك.
-      ar: في لاوانغ سيوو مئات الأبواب والنوافذ.
-      en: Lawang Sewu has hundreds of doors and windows.
+      ar_eg: حصن بندم كان ساكن فيه مئات العساكر الهولنديين.
+      ar: سكن حصنَ بندم مئاتُ الجنود الهولنديين.
+      en: Hundreds of Dutch soldiers lived in Benteng Pendem.
     words: [atusan]
   - id: e04
     type: fill_blank
-    sentence: Candhi Gedong Songo iku candhi ___.
+    sentence: Candhi Cetho iku candhi ___.
     meaning:
-      ar_eg: جيدونج سونجو معبد ___.
-      ar: غيدونغ سونغو معبد ___.
-      en: Gedong Songo is an ___ temple.
+      ar_eg: معبد تشيتو معبد ___.
+      ar: معبد تشيتو معبد ___.
+      en: Candi Cetho is an ___ temple.
     options: [kuno, puluhan, awujud]
     answers: [kuno]
     words: [kuno, puluhan, awujud]
+    explain:
+      ar_eg: kuno = قديم أوي. puluhan = عشرات وawujud = على شكل، ومش صفة للمعبد.
+      ar: kuno تعني عتيق. أما puluhan فعشرات وawujud على هيئة، وليستا صفة للمعبد.
+      en: kuno means ancient. puluhan is "dozens" and awujud is "in the form of"; neither describes the temple.
   - id: e05
     type: multiple_choice
     question: Satus taun iku siji ___.
@@ -111,14 +115,18 @@ exercises:
     words: [tugu, abad, riwayat]
   - id: e06
     type: fill_blank
-    sentence: Tugu Muda iku ___ kutha Semarang.
+    sentence: Tugu Jogja iku ___ kutha Yogyakarta.
     meaning:
-      ar_eg: توجو مودا ___ مدينة سيمارانج.
-      ar: توغو مودا ___ مدينة سيمارانغ.
-      en: Tugu Muda is a ___ of Semarang.
+      ar_eg: توجو جوجا ___ مدينة يوجياكارتا.
+      ar: توغو جوغجا ___ مدينة يوغياكارتا.
+      en: The Tugu Jogja is a ___ of Yogyakarta.
     options: [lambang, abad, atusan]
     answers: [lambang]
     words: [lambang, abad, atusan, tugu]
+    explain:
+      ar_eg: lambang = رمز. abad = قرن وatusan = مئات.
+      ar: lambang تعني رمز. أما abad فقرن وatusan مئات.
+      en: lambang means symbol. abad is a century and atusan is "hundreds".
   - id: e07
     type: multiple_choice
     question: Ana telung puluh turis ing museum. Ana ___ turis.
@@ -138,6 +146,10 @@ exercises:
     answer: Riwayat tugu iki dawa banget.
     distractors: [abad, kuno]
     words: [riwayat, tugu]
+    explain:
+      ar_eg: riwayat = تاريخ، وdawa = طويل. abad = قرن وkuno = قديم، ومش في الجملة.
+      ar: riwayat تعني التاريخ وdawa طويل. أما abad (قرن) وkuno (عتيق) فليستا في الجملة.
+      en: riwayat is history and dawa is long. abad (century) and kuno (ancient) aren't in the sentence.
   - id: e09
     type: translate
     direction: from_target
@@ -158,35 +170,35 @@ exercises:
 dialogue:
   lines:
     - speaker: Mbak Ayu
-      text: Mohamed, wis maca riwayat Lawang Sewu ing Wikipedia?
-      ar_eg: يا محمد، قريت تاريخ لاوانج سيوو في ويكيبيديا؟
-      ar: يا محمد، هل قرأت تاريخ لاوانغ سيوو في ويكيبيديا؟
-      en: Mohamed, have you read the history of Lawang Sewu on Wikipedia?
+      text: Mohamed, wis maca riwayat Benteng Pendem ing Wikipedia?
+      ar_eg: يا محمد، قريت تاريخ حصن بندم في ويكيبيديا؟
+      ar: يا محمد، هل قرأت تاريخ حصن بندم في ويكيبيديا؟
+      en: Mohamed, have you read the history of Benteng Pendem on Wikipedia?
     - speaker: Mohamed
-      text: Wis. Gedhung iku dibangun ing abad kaping rong puluh, ta?
-      ar_eg: أيوه. المبنى ده اتبنى في القرن العشرين، صح؟
-      ar: نعم. بُني ذلك المبنى في القرن العشرين، أليس كذلك؟
-      en: Yes. It was built in the 20th century, right?
+      text: Wis. Benteng iku saka abad sangalas, ta?
+      ar_eg: أيوه. الحصن ده من القرن التسعتاشر، صح؟
+      ar: نعم. هذا الحصن من القرن التاسع عشر، أليس كذلك؟
+      en: Yes. The fort dates from the 19th century, right?
     - speaker: Mbak Ayu
-      text: Iya. Lawange ora sewu, nanging atusan.
-      ar_eg: أيوه. أبوابه مش ألف، بس مئات.
-      ar: نعم. أبوابه ليست ألفًا، بل مئات.
-      en: Yes. It doesn't have a thousand doors, but hundreds.
+      text: Iya. Ana atusan prajurit Walanda ing kono.
+      ar_eg: أيوه. كان فيه مئات العساكر الهولنديين هناك.
+      ar: نعم. كان فيه مئات الجنود الهولنديين.
+      en: Yes. There were hundreds of Dutch soldiers there.
     - speaker: Mohamed
-      text: Lha, tugu sing ana ing ngarepe iku apa?
-      ar_eg: طب والنصب اللي قدامه ده إيه؟
-      ar: وما ذلك النصب الذي أمامه؟
-      en: And what's the monument in front of it?
+      text: Lha, Tugu Jogja riwayate piye?
+      ar_eg: طب ونصب توجو في جوجا، تاريخه إيه؟
+      ar: وما تاريخ نصب توغو في جوغجا؟
+      en: And what's the story of the Tugu in Jogja?
     - speaker: Mbak Ayu
-      text: Tugu Muda, lambang perang limang dina ing Semarang.
-      ar_eg: توجو مودا، رمز معركة الخمس أيام في سيمارانج.
-      ar: توغو مودا، رمز معركة الأيام الخمسة في سيمارانغ.
-      en: Tugu Muda, the symbol of the Five-Day Battle in Semarang.
+      text: Wis ana wiwit abad wolulas. Saiki dadi lambang kutha Yogyakarta.
+      ar_eg: موجود من القرن التمنتاشر. ودلوقتي بقى رمز مدينة يوجياكارتا.
+      ar: قائم منذ القرن الثامن عشر، وصار اليوم رمز مدينة يوغياكارتا.
+      en: It has stood since the 18th century. Now it's the symbol of Yogyakarta.
     - speaker: Mohamed
-      text: Ayo mrana sesuk!
-      ar_eg: يلا نروح بكرة!
-      ar: هيا نذهب غدًا!
-      en: Let's go tomorrow!
+      text: Ayo mrana!
+      ar_eg: يلا نروح هناك!
+      ar: هيا نذهب إلى هناك!
+      en: Let's go there!
 new_words:
   - word: abad
     pos: noun

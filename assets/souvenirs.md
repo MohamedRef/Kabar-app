@@ -107,17 +107,17 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | bipa7.u09 | Danau Sentani | Festival Danau Sentani (Lake Sentani festival) | `bipa7.u09.png` |
 | bipa7.u10 | Lembah Baliem (Wamena) | Festival Lembah Baliem (Baliem valley festival) | `bipa7.u10.png` |
 
-## J1 · Surabaya
+## J1 · Malioboro, Yogyakarta
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
-| j1.u01 | Pasar Turi | Suroboyo Bus (Suroboyo Bus) | `j1.u01.png` |
-| j1.u02 | Gubeng | Stasiun Gubeng (Gubeng station) | `j1.u02.png` |
-| j1.u03 | Tunjungan | Jalan Tunjungan di malam hari (Jalan Tunjungan at night) | `j1.u03.png` |
-| j1.u04 | Ampel | Masjid Sunan Ampel (Sunan Ampel mosque) | `j1.u04.png` |
-| j1.u05 | Kenjeran | Pantai Kenjeran (Kenjeran beach) | `j1.u05.png` |
-| j1.u06 | Wonokromo | Kebun Binatang Surabaya (Surabaya zoo) | `j1.u06.png` |
-| j1.u07 | Pasar Atom | Pasar Atom (Pasar Atom) | `j1.u07.png` |
+| j1.u01 | Malioboro | Angkringan Malioboro (Angkringan Malioboro) | `j1.u01.png` |
+| j1.u02 | Tugu | Stasiun Tugu (Tugu station) | `j1.u02.png` |
+| j1.u03 | Alun-alun Kidul | Alun-alun Kidul di malam hari (Alun-alun Kidul at night) | `j1.u03.png` |
+| j1.u04 | Jalan Kaliurang | Jalan Kaliurang (Jalan Kaliurang) | `j1.u04.png` |
+| j1.u05 | Parangtritis | Pantai Parangtritis (Parangtritis beach) | `j1.u05.png` |
+| j1.u06 | Prawirotaman | Trans Jogja (Trans Jogja) | `j1.u06.png` |
+| j1.u07 | Pakuncen | Pasar Klithikan (Pasar Klithikan) | `j1.u07.png` |
 
 ## J2 · Madiun
 
@@ -130,18 +130,18 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | j2.u05 | Magetan | Telaga Sarangan (Lake Sarangan) | `j2.u05.png` |
 | j2.u06 | Ngawi | Benteng Pendem Ngawi (Benteng Pendem Ngawi) | `j2.u06.png` |
 
-## J3 · Solo (Surakarta)
+## J3 · Pakualaman, Yogyakarta
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
-| j3.u01 | Solo Balapan | Stasiun Solo Balapan (Solo Balapan station) | `j3.u01.png` |
-| j3.u02 | Pasar Gede | Pasar Gede (Pasar Gede) | `j3.u02.png` |
-| j3.u03 | Kauman | Kampung Batik Kauman (Kauman batik village) | `j3.u03.png` |
-| j3.u04 | Mangkunegaran | Pura Mangkunegaran (Pura Mangkunegaran) | `j3.u04.png` |
-| j3.u05 | Pasar Klewer | Batik Klewer (Batik from Klewer) | `j3.u05.png` |
-| j3.u06 | Laweyan | Rumah saudagar Laweyan (Laweyan merchants' houses) | `j3.u06.png` |
+| j3.u01 | Lempuyangan | Stasiun Lempuyangan (Lempuyangan station) | `j3.u01.png` |
+| j3.u02 | Pasar Kranggan | Pasar Kranggan (Pasar Kranggan) | `j3.u02.png` |
+| j3.u03 | Jalan Kaliurang | Kampung Kauman (Kampung Kauman) | `j3.u03.png` |
+| j3.u04 | Pakualaman | Pura Pakualaman (Pura Pakualaman) | `j3.u04.png` |
+| j3.u05 | Pasar Beringharjo | Batik Beringharjo (Batik from Beringharjo) | `j3.u05.png` |
+| j3.u06 | Giriloyo | Batik tulis Giriloyo (Giriloyo batik tulis) | `j3.u06.png` |
 
-## J4 · Yogyakarta
+## J4 · Kraton, Yogyakarta
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
@@ -152,13 +152,13 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | j4.u05 | Kotabaru | Kotabaru (Kotabaru colonial quarter) | `j4.u05.png` |
 | j4.u06 | Prambanan | Sendratari Ramayana Prambanan (Ramayana ballet at Prambanan) | `j4.u06.png` |
 
-## J5 · Semarang
+## J5 · Kutha Pendekar (Madiun)
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
-| j5.u01 | Semarang Tawang | Kutha Lama Semarang (Kota Lama Semarang) | `j5.u01.png` |
-| j5.u02 | Lawang Sewu | Lawang Sewu (Lawang Sewu) | `j5.u02.png` |
-| j5.u03 | Simpang Lima | Alun-alun Simpang Lima (Simpang Lima square) | `j5.u03.png` |
+| j5.u01 | Stasiun Madiun | Jalan Pahlawan Madiun (Jalan Pahlawan Madiun) | `j5.u01.png` |
+| j5.u02 | INKA | Gerbong INKA (Gerbong INKA) | `j5.u02.png` |
+| j5.u03 | Alun-alun Madiun | Alun-alun Madiun (Alun-alun Madiun) | `j5.u03.png` |
 | j5.u04 | Ambarawa | Museum Kereta Api Ambarawa (Ambarawa railway museum) | `j5.u04.png` |
 | j5.u05 | Kudus | Menara Kudus (Menara Kudus) | `j5.u05.png` |
 | j5.u06 | Demak | Masjid Agung Demak (Demak Great Mosque) | `j5.u06.png` |

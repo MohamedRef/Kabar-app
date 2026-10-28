@@ -1,165 +1,246 @@
 schema: kabar.lesson/v1
 id: j6.u04.l06
 language: jv
-title: Layang kanggo Pak Slamet
+title: Mulang aksara
 can_do:
-  ar_eg: تقرا جواب قصير بالكراما مكتوب بالخط الجاوي.
-  ar: أن تقرأ رسالة قصيرة بالكراما مكتوبة بالخط الجاوي.
-  en: Read a short krama letter in aksara Jawa.
+  ar_eg: 'تتكلم عن مدرسة بتعلّم الحروف الجاوية: السبورة والطباشير، وشعر التلاميذ على المسرح.'
+  ar: 'أن تتحدث عن مدرسة تعلّم الحروف الجاوية: السبورة والطباشير وشعر التلاميذ على المسرح.'
+  en: 'Talk about a school teaching Javanese script: blackboard and chalk, and pupils reciting poems on stage.'
 slides:
-  - title: Layang krama
+  - title: Ing sekolah
     body:
       ar_eg: |
-        محمد كتب جواب صغير لـ Pak Slamet، صاحب ورشة الفضة، بالكراما وبالخط الجاوي.
-        بص على الـ pasangan: enjing (n قبل j بتتكتب nya: ꦚ꧀ꦗ)، sampun saged (n + sa جنب الحرف)، saged maos (d + ma)، nuwun sanget (n + sa).
+        mulang = يدرّس، pindhah = ينقل (من بيت أو مدرسة لغيرها).
+        kapur = طباشير، papan tulis = سبورة.
+        geguritan = شعر جاوي حديث (حر)، sliramu = «إنت» في الشعر، كلمة رقيقة وأدبية.
+        pagelaran = عرض أو حفلة كبيرة، pentas = يطلع على المسرح ويعرض.
       ar: |
-        كتب محمد رسالة صغيرة إلى Pak Slamet صاحب ورشة الفضة، بالكراما وبالخط الجاوي.
-        لاحظ الـ pasangan: enjing (تُكتب n قبل j نيا: ꦚ꧀ꦗ)، sampun saged (n + sa بجانب الحرف)، saged maos (d + ma)، nuwun sanget (n + sa).
+        mulang = يدرّس، pindhah = ينتقل (من بيت أو مدرسة إلى أخرى).
+        kapur = طباشير، papan tulis = سبورة.
+        geguritan = شعر جاوي حديث حرّ، sliramu = «أنت» في الشعر، لفظ أدبي رقيق.
+        pagelaran = عرض أو حفل كبير، pentas = يعتلي المسرح ويؤدي.
       en: |
-        Mohamed has written a little letter to Pak Slamet, the silversmith, in krama and in aksara Jawa.
-        Spot the pasangan: enjing (n before j is written nya: ꦚ꧀ꦗ), sampun saged (n + sa, beside), saged maos (d + ma), nuwun sanget (n + sa).
-    grammar: jv.aksara.pasangan
+        mulang = teach, pindhah = move (house or school).
+        kapur = chalk, papan tulis = blackboard.
+        geguritan = modern free-verse Javanese poem, sliramu = "you" in poetry, a tender literary word.
+        pagelaran = performance, show; pentas = perform on stage.
     examples:
-      - text: ꦱꦸꦒꦼꦁꦲꦺꦚ꧀ꦗꦶꦁ꧈ꦥꦏ꧀꧉ (Sugeng enjing, Pak.)
-        ar_eg: صباح الخير يا أستاذ.
-        ar: صباح الخير يا سيدي.
-        en: Good morning, sir.
-      - text: ꦏꦸꦭꦱꦩ꧀ꦥꦸꦤ꧀ꦱꦒꦼꦢ꧀ꦩꦲꦺꦴꦱ꧀ꦭꦤ꧀ꦚꦼꦫꦠ꧀꧉ (Kula sampun saged maos lan nyerat.)
-        ar_eg: أنا بقيت أعرف أقرا وأكتب.
-        ar: صرتُ أستطيع القراءة والكتابة.
-        en: I can read and write now.
-      - text: ꦩꦠꦸꦂꦤꦸꦮꦸꦤ꧀ꦱꦔꦼꦠ꧀꧉ꦩꦺꦴꦲꦩꦺꦢ꧀ (Matur nuwun sanget. Mohamed)
-        ar_eg: متشكر جدًا. محمد
-        ar: شكرًا جزيلًا. محمد
-        en: Thank you very much. Mohamed
+      - text: Bu Guru mulang aksara Jawa nganggo kapur lan papan tulis.
+        ar_eg: المدرسة بتعلّم الحروف الجاوية بالطباشير والسبورة.
+        ar: تعلّم المعلمة الحروف الجاوية بالطباشير والسبورة.
+        en: The teacher teaches Javanese script with chalk and a blackboard.
+      - text: Murid-murid maca geguritan ing pagelaran sekolah.
+        ar_eg: التلاميذ بيقروا شعر في حفلة المدرسة.
+        ar: يلقي التلاميذ الشعر في حفل المدرسة.
+        en: The pupils recite poems at the school show.
+      - text: '''Sliramu'' iku tembung kanggo ''kowe'' ing geguritan.'
+        ar_eg: sliramu كلمة معناها «إنت» في الشعر.
+        ar: sliramu كلمة بمعنى «أنت» في الشعر.
+        en: '''Sliramu'' is the word for ''you'' in poetry.'
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الجواب مكتوب بأنهي مستوى كلام؟
-      ar: بأي مستوى كلام كُتبت الرسالة؟
-      en: Which speech level is the letter written in?
-    options: [ngoko, krama, Arek]
-    answer: 1
-    explain:
-      ar_eg: kula وsampun وsaged وmaos وsanget كلها كراما، لأن Pak Slamet أكبر ومحترم.
-      ar: kula وsampun وsaged وmaos وsanget كلها كراما، لأن Pak Slamet أكبر سنًّا ومحترم.
-      en: kula, sampun, saged, maos and sanget are all krama, since Pak Slamet is an elder.
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: محمد كتب الجواب إمتى في اليوم؟
-      ar: في أي وقت من اليوم كتب محمد الرسالة؟
-      en: At what time of day was the letter written?
-    options: [sore, bengi, esuk]
-    answer: 2
-    explain:
-      ar_eg: Sugeng enjing = صباح الخير، وenjing هي كراما esuk.
-      ar: Sugeng enjing = صباح الخير، وenjing كراما esuk.
-      en: Sugeng enjing = good morning; enjing is the krama of esuk.
-  - id: e03
-    type: listen
-    text: Kula sampun saged maos lan nyerat.
-    question:
-      ar_eg: محمد بيقول إنه بقى يعرف يعمل إيه؟
-      ar: ماذا يقول محمد إنه صار يستطيع؟
-      en: What does Mohamed say he can do now?
-    options: [maos lan nyerat, nyerat kemawon, maos kemawon]
-    answer: 0
-    meaning:
-      ar_eg: أنا بقيت أعرف أقرا وأكتب.
-      ar: صرتُ أستطيع القراءة والكتابة.
-      en: I can read and write now.
-  - id: e04
     type: match_pairs
     pairs:
-      - text: saged
-        ar_eg: يقدر (كراما isa)
-        ar: يستطيع (كراما isa)
-        en: can (krama of isa)
-      - text: maos
-        ar_eg: يقرا (كراما maca)
-        ar: يقرأ (كراما maca)
-        en: read (krama of maca)
-      - text: nyerat
-        ar_eg: يكتب (كراما nulis)
-        ar: يكتب (كراما nulis)
-        en: write (krama of nulis)
-      - text: sanget
-        ar_eg: قوي / جدًا (كراما banget)
-        ar: جدًّا (كراما banget)
-        en: very (krama of banget)
-    words: [pasangan]
+      - text: mulang
+        ar_eg: يدرّس
+        ar: يدرّس
+        en: teach
+      - text: pindhah
+        ar_eg: ينقل
+        ar: ينتقل
+        en: move (house)
+      - text: kapur
+        ar_eg: طباشير
+        ar: طباشير
+        en: chalk
+      - text: papan tulis
+        ar_eg: سبورة
+        ar: سبورة
+        en: blackboard
+    words: [mulang, pindhah, kapur, papan tulis]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: geguritan
+        ar_eg: شعر حديث
+        ar: شعر حديث
+        en: modern poem
+      - text: pagelaran
+        ar_eg: عرض، حفلة
+        ar: عرض
+        en: performance
+      - text: sliramu
+        ar_eg: إنت (في الشعر)
+        ar: أنت (في الشعر)
+        en: you (poetic)
+      - text: pentas
+        ar_eg: يعرض على المسرح
+        ar: يؤدّي على المسرح
+        en: perform on stage
+    words: [geguritan, pagelaran, sliramu, pentas]
+  - id: e03
+    type: listen
+    text: Bu Guru nulis aksara ing papan tulis nganggo kapur.
+    question:
+      ar_eg: المدرسة بتعمل إيه؟
+      ar: ماذا تفعل المعلمة؟
+      en: What is the teacher doing?
+    options: [المدرسة بتكتب على السبورة بالطباشير, المدرسة بتقرا شعر, التلاميذ بيلعبوا]
+    answer: 0
+    meaning:
+      ar_eg: المدرسة بتكتب الحروف على السبورة بالطباشير.
+      ar: تكتب المعلمة الحروف على السبورة بالطباشير.
+      en: The teacher writes letters on the blackboard with chalk.
+    words: [papan tulis, kapur]
+  - id: e04
+    type: fill_blank
+    sentence: Pak Slamet wis suwe ___ aksara Jawa marang bocah-bocah.
+    meaning:
+      ar_eg: عم سلامت بقاله كتير ___ الحروف الجاوية للعيال.
+      ar: منذ زمن و___ السيد سلامت الأطفال الحروف الجاوية.
+      en: Pak Slamet has long ___ Javanese script to children.
+    options: [mulang, pindhah, pentas]
+    answers: [mulang]
+    words: [mulang, pindhah, pentas]
+    explain:
+      ar_eg: mulang = يعلّم. pindhah = نقل وpentas = عرض على المسرح.
+      ar: mulang تعني يعلّم. أما pindhah فانتقل وpentas عرض مسرحي.
+      en: mulang means teach. pindhah is "move house" and pentas is "perform".
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: "في ꦲꦺꦚ꧀ꦗꦶꦁ، ليه الـ n بتتكتب ꦚ (nya)؟"
-      ar: "في ꦲꦺꦚ꧀ꦗꦶꦁ، لماذا تُكتب الـ n نيا ꦚ؟"
-      en: "In ꦲꦺꦚ꧀ꦗꦶꦁ, why is the n written ꦚ (nya)?"
-    options: ["Ana j ing mburine.", "Iku krama.", "Ana ing wiwitan."]
-    answer: 0
+      ar_eg: الشعر الجاوي الحديث الحر اسمه …
+      ar: الشعر الجاوي الحديث الحرّ يسمّى …
+      en: A modern free-verse Javanese poem is a …
+    options: [kapur, geguritan, pindhah]
+    answer: 1
     explain:
-      ar_eg: "الـ n اللي قبل c أو j بتتكتب nya، وتحتها pasangan ja: ꦚ꧀ꦗ. زي kanca: ꦏꦚ꧀ꦕ."
-      ar: "تُكتب الـ n قبل c أو j نيا، وتحتها pasangan ja: ꦚ꧀ꦗ، كما في kanca: ꦏꦚ꧀ꦕ."
-      en: "An n before c or j is written nya, with pasangan ja under it: ꦚ꧀ꦗ. Like kanca: ꦏꦚ꧀ꦕ."
-    words: [pasangan]
+      ar_eg: geguritan = شعر حديث. macapat هو الشعر القديم.
+      ar: geguritan = شعر حديث، أما macapat فشعر قديم.
+      en: geguritan = modern poem; macapat is the classical kind.
+    words: [kapur, geguritan, pindhah]
   - id: e06
     type: fill_blank
-    sentence: Matur nuwun ___.
+    sentence: Kulawargane ___ saka Solo menyang Yogya.
     meaning:
-      ar_eg: متشكر جدًا (بالكراما).
-      ar: شكرًا جزيلًا (بالكراما).
-      en: Thank you very much (krama).
-    options: [banget, sanget, saged]
-    answers: [sanget]
+      ar_eg: عيلته ___ من سولو ليوجيا.
+      ar: ___ عائلته من سولو إلى يوغيا.
+      en: His family ___ from Solo to Yogya.
+    options: [pindhah, mulang, sliramu]
+    answers: [pindhah]
+    words: [pindhah, mulang, sliramu]
+    explain:
+      ar_eg: pindhah saka … menyang = نقل من … لـ. mulang = يعلّم وsliramu = حضرتك.
+      ar: pindhah saka … menyang تعني انتقل من … إلى. أما mulang فيعلّم وsliramu أنت.
+      en: pindhah saka … menyang is "moved from … to". mulang is "teach" and sliramu is "you".
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ꦱꦸꦒꦼꦁꦲꦺꦚ꧀ꦗꦶꦁ꧈ꦥꦏ꧀꧉"
-      ar: "اكتب بالحروف اللاتينية: ꦱꦸꦒꦼꦁꦲꦺꦚ꧀ꦗꦶꦁ꧈ꦥꦏ꧀꧉"
-      en: "Write in Latin letters: ꦱꦸꦒꦼꦁꦲꦺꦚ꧀ꦗꦶꦁ꧈ꦥꦏ꧀꧉"
-    answers: ["Sugeng enjing, Pak.", sugeng enjing pak]
-    words: [pasangan]
+    type: multiple_choice
+    question: Ing geguritan, tembung '___' tegese 'kowe'.
+    options: [pagelaran, papan tulis, sliramu]
+    answer: 2
+    explain:
+      ar_eg: sliramu = «إنت» في الشعر.
+      ar: sliramu = «أنت» في الشعر.
+      en: sliramu = 'you' in poetry.
+    words: [pagelaran, papan tulis, sliramu]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: "اكتب «saged maos» مقطع مقطع. الـ pasangan بتتلزق في المقطع اللي قبلها."
-      ar: "اكتب «saged maos» مقطعًا مقطعًا. تلتصق الـ pasangan بالمقطع الذي قبلها."
-      en: Build "saged maos", syllable by syllable. The pasangan sticks to the syllable before it.
-    answer: ꦱ ꦒꦼꦢ꧀ꦩ ꦲꦺꦴꦱ꧀
-    distractors: ["ꦒꦼꦢ꧀"]
-    words: [pasangan]
+      ar_eg: التلاميذ هيعرضوا على المسرح الليلة.
+      ar: يؤدّي التلاميذ على المسرح الليلة.
+      en: The pupils perform on stage tonight.
+    answer: Murid-murid pentas bengi iki.
+    distractors: [kapur, mulang]
+    words: [pentas]
+    explain:
+      ar_eg: pentas = يعرضوا على المسرح. kapur = طباشير وmulang = يعلّم، ومش في المعنى.
+      ar: pentas تعني يؤدّون عرضًا. أما kapur (طباشير) وmulang (يعلّم) فليستا في المعنى.
+      en: pentas is "perform on stage". kapur (chalk) and mulang (teach) aren't in the meaning.
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Pagelaran wayang iki ing alun-alun.
+    answers_meaning:
+      ar_eg: [عرض الوايانج ده في الميدان, حفلة الوايانج في الميدان]
+      ar: [عرض الوايانغ هذا في الساحة, يُقام عرض الوايانغ في الساحة]
+      en: [This wayang performance is in the town square, The wayang show is on the square]
+    words: [pagelaran]
+  - id: e10
     type: speaking
-    text: Sugeng enjing, Pak. Kula sampun saged maos lan nyerat.
+    text: Aku maca geguritan ing pentas.
     meaning:
-      ar_eg: صباح الخير يا أستاذ. أنا بقيت أعرف أقرا وأكتب.
-      ar: صباح الخير يا سيدي. صرتُ أستطيع القراءة والكتابة.
-      en: Good morning, sir. I can read and write now.
+      ar_eg: أنا بقرا شعر على المسرح.
+      ar: ألقي الشعر على المسرح.
+      en: I recite a poem on stage.
+    words: [geguritan, pentas]
 dialogue:
-  title: Wangsulan Pak Slamet
   lines:
     - speaker: Pak Slamet
-      text: Mas Mohamed, kula sampun nampi serat panjenengan.
-      ar_eg: يا محمد، جوابك وصلني.
-      ar: يا محمد، وصلتني رسالتك.
-      en: Mohamed, I've received your letter.
+      text: Mas, anak kula mulang aksara Jawa wonten SD.
+      ar_eg: يا محمد، بنتي بتدرّس الحروف الجاوية في ابتدائي.
+      ar: ابنتي تدرّس الحروف الجاوية في مدرسة ابتدائية.
+      en: My daughter teaches Javanese script at a primary school.
     - speaker: Mohamed
-      text: Menapa saged dipunwaos, Pak?
-      ar_eg: عرفت تقراه يا أستاذ؟
-      ar: هل أمكنك قراءتها يا سيدي؟
-      en: Could you read it, sir?
+      text: Sae sanget! Menapa taksih mawi kapur lan papan tulis?
+      ar_eg: حلو أوي! لسه بالطباشير والسبورة؟
+      ar: رائع! أما زالت بالطباشير والسبورة؟
+      en: Wonderful! Still with chalk and a blackboard?
     - speaker: Pak Slamet
-      text: Saged sanget! Pasanganipun leres sedaya.
-      ar_eg: طبعًا! الـ pasangan كلها صح.
-      ar: بالتأكيد! الـ pasangan كلها صحيحة.
-      en: Perfectly! Your pasangan are all correct.
+      text: Inggih. Malem Minggu wonten pagelaran ing sekolahipun.
+      ar_eg: أيوه. ليلة الحد فيه حفلة في مدرستها.
+      ar: نعم. مساء السبت حفل في مدرستها.
+      en: Yes. On Saturday night there's a show at her school.
     - speaker: Mohamed
-      text: Alhamdulillah. Matur nuwun, Pak.
-      ar_eg: الحمد لله. متشكر يا أستاذ.
-      ar: الحمد لله. شكرًا يا سيدي.
-      en: Alhamdulillah. Thank you, sir.
+      text: Lare-lare badhe pentas menapa?
+      ar_eg: العيال هيعرضوا إيه؟
+      ar: ماذا سيقدّم الأطفال؟
+      en: What will the children perform?
+    - speaker: Pak Slamet
+      text: Maos geguritan. Wonten tembung 'sliramu' ingkang endah sanget.
+      ar_eg: هيقروا شعر. فيه كلمة sliramu حلوة أوي.
+      ar: سيلقون الشعر، وفيه كلمة sliramu جميلة جدًا.
+      en: Reciting poems. There's a lovely 'sliramu' in one.
+    - speaker: Mohamed
+      text: Kula badhe dhateng!
+      ar_eg: هاجي!
+      ar: سآتي!
+      en: I'll come!
+new_words:
+  - word: mulang
+    pos: verb
+    ar_eg: يدرّس
+    ar: يدرّس
+    en: teach
+  - word: pindhah
+    pos: verb
+    ar_eg: ينقل (من مكان لمكان)
+    ar: ينتقل
+    en: move (house, school)
+  - word: kapur
+    pos: noun
+    ar_eg: طباشير
+    ar: طباشير
+    en: chalk
+  - word: papan tulis
+    pos: noun
+    ar_eg: سبورة
+    ar: سبورة
+    en: blackboard
+  - word: geguritan
+    pos: noun
+    ar_eg: شعر جاوي حديث
+    ar: شعر جاوي حديث
+    en: modern Javanese poem
+  - word: sliramu
+    pos: pronoun
+    ar_eg: إنت (في الشعر)
+    ar: أنت (في الشعر)
+    en: you (poetic)
+  - word: pentas
+    pos: verb
+    ar_eg: يعرض على المسرح
+    ar: يؤدّي على المسرح
+    en: perform on stage
 review:
   status: draft
   verified: false

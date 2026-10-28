@@ -1,0 +1,120 @@
+name: Mac
+
+# Hosted macOS runners are sometimes unavailable for most of an hour and then
+# fail with "job was not acquired", which marked good PRs red (#424). So the
+# job is never a required check, and on pull requests it only runs when the
+# PR touches code that compiles differently on macOS (#428). It also runs on
+# every push to main, nightly and by hand; a failed nightly files or updates a
+# critic:platform issue so triage sees it the same day.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - .github/workflows/mac.yml
+      - Cargo.lock
+      - crates/app/Cargo.toml
+      - crates/app/Dioxus.toml
+      - crates/app/build.rs
+      - crates/app/src/main.rs
+      - crates/app/src/platform/macos.rs
+      - crates/app/src/platform/mod.rs
+      - crates/app/src/platform/ocr.rs
+      - crates/app/src/update/**
+      - crates/app/src/settings/menu.rs
+      - crates/app/src/cloud/session.rs
+      - crates/core/src/update.rs
+      - assets/export/macos/**
+  schedule:
+    - cron: "47 2 * * *"
+  workflow_dispatch:
+
+# A PR's newer push cancels its older run. On main a started run finishes, so
+# a busy stretch of merges still gets one full Mac verdict; a waiting run is
+# replaced by the newest commit's.
+concurrency:
+  group: mac-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  macos:
+    # The Mac-only code (Apple Vision OCR, Keychain, the PKCE sign-in opener)
+    # never compiles on Linux. Free on a public repo. It also bundles
+    # Kabar.app the way `just bundle-mac` does, so the Mac session has no
+    # build surprises; the bundle isn't uploaded.
+    timeout-minutes: 45
+    name: Mac app compiles
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          # dx strips the release binary with rust-objcopy, which needs
+          # libLLVM from llvm-tools.
+          components: clippy, llvm-tools
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: macos
+      - run: cargo clippy -p kabar-app --all-targets -- -D warnings
+      - run: cargo test -p kabar-app
+      # Built from source like scripts/setup-mac.sh does: the prebuilt macOS dx
+      # links Homebrew's OpenSSL at the Intel path (/usr/local/opt), which
+      # Apple-silicon runners don't have. ~/.cargo/bin is cached afterwards.
+      - name: Install dx 0.7.10
+        run: |
+          if ! dx --version 2>/dev/null | grep -q '0.7.10'; then
+            cargo install dioxus-cli --version 0.7.10 --locked
+          fi
+      - name: Bundle Kabar.app
+        run: |
+          cd crates/app
+          # On failure, the tail of dx's output becomes annotations, readable
+          # from the API without the raw log.
+          if ! dx bundle --platform macos --release --package-types macos --out-dir ../../dist/mac > ../../dx-bundle.log 2>&1; then
+            # GitHub keeps 10 annotations per step: send the error lines.
+            grep -iE 'error|failed|panick|not found|no such' ../../dx-bundle.log | grep -v ' INFO Compiled' | tail -n 9 | sed 's/^/::error::/'
+            exit 1
+          fi
+          tail -n 5 ../../dx-bundle.log
+          find ../../dist/mac -maxdepth 3 -name '*.app'
+          test -n "$(find ../../dist/mac -maxdepth 3 -name '*.app')"
+
+  # The nightly is the Mac safety net: when it fails, say so on one open
+  # issue (created the first time), and close it once a nightly passes again.
+  # Only scheduled runs get here, never pull requests, and the job checks
+  # nothing out.
+  nightly-report:
+    name: Report the nightly Mac build
+    needs: macos
+    if: always() && github.event_name == 'schedule' && needs.macos.result != 'cancelled'
+    runs-on: ubuntu-24.04
+    permissions:
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RESULT: ${{ needs.macos.result }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - run: |
+          title="Mac nightly failed"
+          open="$(gh issue list --state open --label critic:platform --search "\"$title\" in:title" --json number,title \
+            --jq "map(select(.title == \"$title\")) | .[0].number // empty")"
+          if [ "$RESULT" = "success" ]; then
+            if [ -n "$open" ]; then
+              gh issue close "$open" --comment "The nightly Mac build passes again: $RUN_URL"
+            fi
+          elif [ -n "$open" ]; then
+            gh issue comment "$open" --body "Still failing (${GITHUB_SHA::7}): $RUN_URL"
+          else
+            body="$(printf '%s\n\n%s' \
+              "The nightly Mac build (${GITHUB_SHA::7}) failed: $RUN_URL" \
+              "PRs run the Mac job only when they touch Mac code, so this nightly is where any other Mac-only break shows up. This issue closes itself when a nightly passes again.")"
+            gh issue create --title "$title" --label critic:platform --body "$body"
+          fi

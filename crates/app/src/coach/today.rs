@@ -232,6 +232,7 @@ fn WelcomeBack(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Elem
 #[component]
 fn RewardsBar(today: LocalDate, welcome: bool) -> Element {
     let ui = use_context::<Ui>();
+    let mut screen = ui.screen;
     let coach = use_context::<Coach>();
     let events = coach.events.read();
     let pelita = rewards::pelita(&events, today);
@@ -242,8 +243,10 @@ fn RewardsBar(today: LocalDate, welcome: bool) -> Element {
         (false, false) => "reward",
     };
     rsx! {
+        // Pelita opens Stats (the study days behind it); Koin opens Kak Nur's
+        // screen, where the Warung spends it.
         div { class: "rewards-bar",
-            div { class: lamp_class,
+            button { class: "{lamp_class} tap", onclick: move |_| crate::stats::open(ui, Screen::Stats),
                 span { class: "reward-icon", aria_hidden: "true", {icons::lamp()} }
                 span { class: "latin", bdi { "Pelita" } }
                 if welcome {
@@ -255,7 +258,7 @@ fn RewardsBar(today: LocalDate, welcome: bool) -> Element {
                     span { class: "muted small", "· {ui.t(Msg::Freezes)} {ui.num(pelita.freezes)}" }
                 }
             }
-            div { class: "reward",
+            button { class: "reward tap", onclick: move |_| screen.set(Screen::Coach),
                 span { class: "reward-icon", aria_hidden: "true", {icons::coin()} }
                 span { class: "latin", bdi { "Koin" } }
                 strong { "{ui.num(koin)}" }
@@ -283,6 +286,7 @@ fn PlanRow(
     let kind = item.kind.clone();
     let id = item.id.clone();
     let seconds = u32::from(item.minutes) * 60;
+    let (text_db, text_kind) = (db.clone(), kind.clone());
     rsx! {
         li { class: if done { "plan-item done" } else if next { "plan-item next" } else { "plan-item" },
             button {
@@ -303,7 +307,10 @@ fn PlanRow(
                 },
                 if done { "✓" }
             }
-            div { class: "plan-text",
+            // The row's text starts it too, not only the Start button.
+            button {
+                class: "plan-text tap tap-plain",
+                onclick: move |_| start_item(ui, &text_db, coach, &text_kind),
                 strong { "{ui.t(title)}" }
                 if let Some(detail) = detail {
                     span { class: "muted", " · " bdi { lang: "id", dir: "ltr", "{detail}" } }
@@ -409,7 +416,7 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
             div { class: "stats-row",
                 Stat { value: labels::minutes(&ui, r.minutes), label: Msg::StatTime }
                 Stat { value: ui.num(steps.max(r.items_done)), label: Msg::StatSteps }
-                Stat { value: ui.num(r.reviews), label: Msg::StatReviews }
+                Stat { value: ui.num(r.reviews), label: Msg::StatReviews, to: Screen::Review }
                 Stat { value: ui.num(r.new_words.len() as u32), label: Msg::StatNewWords }
             }
             if !r.new_words.is_empty() {

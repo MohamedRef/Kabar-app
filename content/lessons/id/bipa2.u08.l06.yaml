@@ -12,12 +12,24 @@ slides:
       ar_eg: |
         راكا بعتلك رسالة صوتية (pesan suara) عشان تيجي له بِدوجول بكرة. المرة دي اسمع الأول من غير ما تقرا.
         ركّز على كلمات الترتيب: pertama، lalu، ketika. وفيه كلمتين جداد: dingin (برد) و jaket (جاكت)، عشان بدوجول فوق الجبل وجوّها ساقع.
+        في الشارع بيقولوا:
+        - udah = sudah (خلاص، بقى)
+        - banget = sekali (أوي)، وبتيجي بعد الصفة زيها
+        - aku و-ku = saya (أنا، ـي) مع الأصحاب واللي في سنك؛ مع الكبار والغُرب saya
       ar: |
         أرسل لك راكا رسالة صوتية (pesan suara) لتلحق به في بِدوغول غدًا. هذه المرة استمع أولًا دون قراءة.
         انتبه إلى كلمات الترتيب: pertama، lalu، ketika. وهناك كلمتان جديدتان: dingin (بارد) و jaket (سترة)، لأن بدوغول في الجبال وجوّها بارد.
+        في كلام الشارع:
+        - udah = sudah (قد، بالفعل)
+        - banget = sekali (جدًّا)، وتأتي بعد الصفة مثلها
+        - aku و-ku = saya (أنا، ـي) مع الأصدقاء والأقران؛ ومع الكبار والغرباء saya
       en: |
         Raka sent you a voice message (pesan suara) so you can meet him in Bedugul tomorrow. This time, listen first, without reading.
         Listen for the order words: pertama, lalu, ketika. Two new words: dingin (cold) and jaket (jacket) — Bedugul is up in the mountains and it's cool there.
+        On the street:
+        - udah = sudah (already)
+        - banget = sekali (very), after the adjective just like sekali
+        - aku / -ku = saya (I, my) with friends and people your age; saya with elders and strangers
 exercises:
   - id: e01
     type: listen
@@ -63,7 +75,7 @@ exercises:
     words: [ketika, danau, tunggu]
   - id: e04
     type: listen
-    text: Jangan lupa bawa jaket, ya! Di Bedugul dingin.
+    text: Jangan lupa bawa jaket, ya! Kata berita, di Bedugul dingin.
     question:
       ar_eg: محمد لازم ياخد معاه إيه؟
       ar: ماذا يجب أن يأخذ محمد معه؟
@@ -71,10 +83,10 @@ exercises:
     options: [payung, helm, jaket]
     answer: 2
     meaning:
-      ar_eg: ما تنساش تجيب جاكت! بدوجول برد.
-      ar: لا تنسَ أن تحضر سترة! الجو بارد في بدوغول.
-      en: Don't forget to bring a jacket! It's cold in Bedugul.
-    words: [jaket, dingin, jangan, lupa]
+      ar_eg: ما تنساش تجيب جاكت! الأخبار بتقول بدوجول برد.
+      ar: لا تنسَ أن تحضر سترة! تقول الأخبار إن الجو بارد في بدوغول.
+      en: Don't forget to bring a jacket! The news says it's cold in Bedugul.
+    words: [jaket, dingin, berita, jangan, lupa]
   - id: e05
     type: match_pairs
     pairs:
@@ -111,6 +123,10 @@ exercises:
       - "Pertama ojek, lalu bus."
     answer: 0
     words: [pertama, lalu]
+    explain:
+      ar_eg: الرسالة بتقول «Pertama, kamu naik angkot ke terminal» وبعدين الأتوبيس لبدوجول.
+      ar: تقول الرسالة «Pertama, kamu naik angkot ke terminal» ثم الحافلة إلى بدوغول.
+      en: The message says "Pertama, kamu naik angkot ke terminal", then the bus to Bedugul.
   - id: e07
     type: fill_blank
     sentence: Di Bedugul ___ sekali, jadi saya pakai jaket.
@@ -120,23 +136,31 @@ exercises:
       en: It's very cold in Bedugul, so I'm wearing a jacket.
     answers: [dingin]
     words: [dingin, jaket]
+    explain:
+      ar_eg: dingin = برد، وعشان كده الجاكت.
+      ar: dingin = بارد، ولذلك السترة.
+      en: dingin = cold, hence the jacket.
   - id: e08
     type: build_sentence
     source:
-      ar_eg: بعدين اركب الأتوبيس لبدوجول.
-      ar: ثم اركب الحافلة إلى بدوغول.
-      en: Then take the bus to Bedugul.
-    answer: Lalu, kamu naik bus ke Bedugul.
+      ar_eg: الأخبار بتقول بدوجول برد أوي.
+      ar: تقول الأخبار إن بدوغول باردة جدًا.
+      en: The news says Bedugul is very cold.
+    answer: Kata berita, Bedugul dingin sekali.
     distractors: [sambil, ketika]
-    words: [lalu]
+    words: [berita, dingin]
+    explain:
+      ar_eg: kata berita = على حسب الأخبار (زي kata Rina). sambil = وأنا بـ…، وketika = لما.
+      ar: kata berita = بحسب الأخبار (مثل kata Rina). أما sambil فـ«في أثناء» وketika «عندما».
+      en: kata berita = according to the news (like kata Rina). sambil is "while", ketika "when".
   - id: e09
     type: dictation
-    text: Busnya bolak-balik dari Denpasar ke Bedugul.
+    text: Kata berita, besok hujan di Bedugul.
     meaning:
-      ar_eg: الأتوبيس رايح جاي من دنباسار لبدوجول.
-      ar: الحافلة تذهب وتعود بين دنباسار وبدوغول.
-      en: The bus goes back and forth between Denpasar and Bedugul.
-    words: [bolak-balik]
+      ar_eg: الأخبار بتقول بكرة هتمطر في بدوجول.
+      ar: تقول الأخبار إنها ستمطر غدًا في بدوغول.
+      en: The news says it'll rain in Bedugul tomorrow.
+    words: [berita]
   - id: e10
     type: translate
     direction: to_target
@@ -159,7 +183,7 @@ dialogue:
   title: Telepon dari terminal
   lines:
     - speaker: Mohamed
-      text: Halo, Raka! Saya sudah di terminal.
+      text: Halo, Raka! Aku udah di terminal.
       ar_eg: ألو يا راكا! أنا وصلت الموقف.
       ar: مرحبًا يا راكا! أنا الآن في المحطة.
       en: Hi, Raka! I'm at the terminal now.
@@ -179,12 +203,12 @@ dialogue:
       ar: الزرقاء، التي بجانب شباك التذاكر.
       en: The blue one, next to the ticket window.
     - speaker: Mohamed
-      text: Oke. Saya juga sudah bawa jaket.
+      text: Oke. Aku juga udah bawa jaket.
       ar_eg: تمام. وأنا كمان جبت الجاكت.
       ar: حسنًا. وقد أحضرت السترة أيضًا.
       en: OK. And I've brought a jacket too.
     - speaker: Raka
-      text: Bagus! Di sini dingin sekali. Sampai nanti!
+      text: Bagus! Di sini dingin banget. Sampai nanti!
       ar_eg: حلو! هنا برد أوي. أشوفك بعدين!
       ar: جيد! الجو هنا بارد جدًا. إلى اللقاء!
       en: Good! It's really cold here. See you soon!
@@ -199,6 +223,11 @@ new_words:
     ar_eg: جاكت
     ar: سترة
     en: jacket
+  - word: berita
+    pos: noun
+    ar_eg: أخبار، خبر (kata berita = الأخبار بتقول)
+    ar: أخبار، خبر (kata berita = تقول الأخبار)
+    en: news (kata berita = the news says)
 review:
   status: draft
   verified: false

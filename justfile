@@ -208,13 +208,13 @@ cloud-logs:
 packs:
     {{tools}} packs build
 
-# Generate missing audio with Azure F0 inside the monthly budget: `just packs-audio` (all) or `just packs-audio bipa1.u01,bipa1.u02`
-packs-audio units="" budget="300000":
-    {{tools}} packs synthesize --budget {{budget}} {{ if units != "" { "--units " + units } else { "" } }}
+# Generate missing audio with Azure F0 inside the monthly budget, whole units in order until it is used: `just packs-audio` (all) or `just packs-audio bipa1.u01,bipa1.u02`
+packs-audio units="" budget="280000":
+    {{tools}} packs synthesize --fit --budget {{budget}} {{ if units != "" { "--units " + units } else { "" } }}
 
 # What `packs-audio` would spend, without calling Azure
-packs-audio-plan units="" budget="300000":
-    {{tools}} packs synthesize --dry-run --budget {{budget}} {{ if units != "" { "--units " + units } else { "" } }}
+packs-audio-plan units="" budget="280000":
+    {{tools}} packs synthesize --dry-run --fit --budget {{budget}} {{ if units != "" { "--units " + units } else { "" } }}
 
 # Write dist/packs/<unit>.tar + index.json for every fully synthesized unit
 packs-bundle:

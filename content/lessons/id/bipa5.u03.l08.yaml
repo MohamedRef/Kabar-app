@@ -1,204 +1,251 @@
 schema: kabar.lesson/v1
 id: bipa5.u03.l08
 language: id
-title: Mesin dan manusia
+title: Mesin pintar di tambang
 can_do:
-  ar_eg: تشارك في نقاش جماعي عن الذكاء الاصطناعي والشغل، وتقول مين بيكسب ومين بيخسر.
-  ar: أن تشارك في نقاش جماعي عن الذكاء الاصطناعي والعمل، وتبيّن من يربح ومن يخسر.
-  en: Take part in a group discussion on AI and jobs, saying who gains and who loses.
+  ar_eg: 'تشرح تكنولوجيا جديدة في منجم: الهندسة والاختراق العلمي والمحاكاة والتوقع وطريقة الشغل، والشاشة والهوائي، وبمنطق عقلاني.'
+  ar: 'أن تشرح تقنية جديدة في منجم: الهندسة والإنجاز العلمي والمحاكاة والتنبؤ والآلية، والشاشة والهوائي، بأسلوب عقلاني.'
+  en: 'Explain new technology at a mine: engineering, breakthroughs, simulation, prediction and mechanism, the monitor and antenna, rationally.'
 slides:
-  - title: Untung atau rugi?
-    grammar: id.nominalization
+  - title: Teknologi untuk keselamatan
     body:
       ar_eg: |
-        في النقاش الرسمي هتحتاج فعلين متعاكسين:
-        - menguntungkan = يفيد / يكسّب: Otomatisasi menguntungkan perusahaan.
-        - merugikan = يضر / يخسّر: Penipuan merugikan pembeli.
-        وحوّل الأفعال لأسماء عشان كلامك يبان رسمي: menggunakan → penggunaan، mudah → kemudahan، bocor → kebocoran.
+        rekayasa = هندسة أو تصميم تقني (rekayasa perangkat lunak = هندسة برمجيات)، وكمان "تلاعب" (rekayasa data).
+        terobosan = اختراق علمي أو خطوة كبيرة جديدة، simulasi = محاكاة، prediksi = توقع.
+        mekanisme = آلية، طريقة الشغل، rasional = عقلاني.
+        monitor = شاشة مراقبة، antena = هوائي، أنتين.
       ar: |
-        في النقاش الرسمي تحتاج فعلين متقابلين:
-        - menguntungkan = يفيد، يعود بالربح: Otomatisasi menguntungkan perusahaan.
-        - merugikan = يضرّ، يُلحق خسارة: Penipuan merugikan pembeli.
-        وحوّل الأفعال إلى أسماء ليبدو كلامك رسميًا: menggunakan ← penggunaan، وmudah ← kemudahan، وbocor ← kebocoran.
+        rekayasa = هندسة، تصميم تقني (rekayasa perangkat lunak = هندسة البرمجيات)، وأيضًا "تلاعب" (rekayasa data).
+        terobosan = إنجاز، اختراق علمي، simulasi = محاكاة، prediksi = تنبّؤ، توقّع.
+        mekanisme = آلية، rasional = عقلاني.
+        monitor = شاشة مراقبة، antena = هوائي.
       en: |
-        Formal discussion needs two opposite verbs:
-        - menguntungkan = to benefit: Otomatisasi menguntungkan perusahaan.
-        - merugikan = to harm, to cost: Penipuan merugikan pembeli.
-        And turn verbs into nouns to sound formal: menggunakan → penggunaan, mudah → kemudahan, bocor → kebocoran.
+        rekayasa = engineering (rekayasa perangkat lunak = software engineering), also "manipulation" (rekayasa data).
+        terobosan = breakthrough, simulasi = simulation, prediksi = prediction, forecast.
+        mekanisme = mechanism, rasional = rational.
+        monitor = monitor, screen, antena = antenna, aerial.
+    examples:
+      - text: Sensor ini adalah terobosan dalam rekayasa tambang.
+        ar_eg: الحساس ده إنجاز كبير في هندسة المناجم.
+        ar: هذا المستشعر إنجاز في هندسة التعدين.
+        en: This sensor is a breakthrough in mining engineering.
+      - text: Simulasi komputer membuat prediksi longsor lebih akurat.
+        ar_eg: محاكاة الكمبيوتر بتخلي توقع الانهيارات أدق.
+        ar: تجعل المحاكاة الحاسوبية التنبؤ بالانهيارات أدق.
+        en: Computer simulation makes landslide prediction more accurate.
+      - text: Semua data dari antena terlihat di monitor ini.
+        ar_eg: كل الداتا اللي جاية من الهوائي بتبان على الشاشة دي.
+        ar: تظهر كل بيانات الهوائي على هذه الشاشة.
+        en: All the data from the antenna shows on this monitor.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Otomatisasi menguntungkan perusahaan.» معناها إيه؟
-      ar: ما معنى «Otomatisasi menguntungkan perusahaan.»؟
-      en: What does "Otomatisasi menguntungkan perusahaan." mean?
-    options:
-      - الأتمتة بتخسّر الشركة.
-      - الأتمتة بتفيد الشركة.
-      - الأتمتة بتقفل الشركة.
-    answer: 1
-    explain:
-      ar_eg: من untung (مكسب) + meN-…-kan = يجيب مكسب. وعكسها merugikan من rugi (خسارة).
-      ar: من untung (ربح) مع meN-…-kan أي يجلب الربح، وعكسها merugikan من rugi (خسارة).
-      en: From untung (profit) with meN-…-kan, to bring gain; the opposite, merugikan, is from rugi (loss).
-    words: [menguntungkan, otomatisasi]
-  - id: e02
-    type: listen
-    text: Penggunaan kecerdasan buatan merugikan pekerja yang tidak mau belajar.
-    question:
-      ar_eg: مين اللي بيخسر من الذكاء الاصطناعي؟
-      ar: من الخاسر من الذكاء الاصطناعي؟
-      en: Who loses out from AI?
-    options:
-      - الشركات الكبيرة.
-      - المبرمجين.
-      - العمال اللي مش عايزين يتعلموا.
-    answer: 2
-    words: [merugikan, penggunaan, kecerdasan buatan]
-  - id: e03
-    type: fill_blank
-    sentence: Perusahaan harus ___ kebocoran data pelanggan.
-    meaning:
-      ar_eg: الشركة لازم تمنع تسريب بيانات العملا.
-      ar: يجب على الشركة أن تمنع تسرّب بيانات العملاء.
-      en: The company must prevent customer data leaks.
-    options: [mencegah, menguntungkan, menggantikan]
-    answers: [mencegah]
-    words: [mencegah, bocor]
-  - id: e04
-    type: build_sentence
-    source:
-      ar_eg: الأتمتة بتفيد الشركات، بس بتضر العمال.
-      ar: تفيد الأتمتة الشركات، لكنها تضرّ العمّال.
-      en: Automation benefits companies but harms workers.
-    answer: Otomatisasi menguntungkan perusahaan, tetapi merugikan pekerja.
-    distractors: [menggantikan, keamanan]
-    words: [menguntungkan, merugikan, otomatisasi]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: keterampilan
-        ar_eg: مهارة
-        ar: مهارة
-        en: skill
-      - text: ojek daring
-        ar_eg: موتوسيكل أجرة من أبلكيشن
-        ar: درّاجة أجرة عبر تطبيق
-        en: app motorbike taxi
-      - text: penipuan
-        ar_eg: نصب
-        ar: احتيال
-        en: fraud
-      - text: risiko
-        ar_eg: خطر / مخاطرة
-        ar: خطر، مخاطرة
-        en: risk
-      - text: kemudahan
-        ar_eg: سهولة
-        ar: سهولة
-        en: ease, convenience
-    words: [keterampilan, ojek daring, penipuan, risiko, kemudahan]
-  - id: e06
-    type: translate
-    direction: from_target
-    source_text: Kemudahan belanja daring menguntungkan penjual kecil.
-    answers_meaning:
-      ar_eg:
-        - سهولة الشرا أونلاين بتفيد البياعين الصغيرين.
-        - إن الشرا أونلاين سهل ده بيكسّب التجار الصغيرين.
-      ar:
-        - تفيد سهولةُ التسوّق عبر الإنترنت صغارَ الباعة.
-        - سهولة الشراء عبر الإنترنت تعود بالربح على التجّار الصغار.
-      en:
-        - The ease of online shopping benefits small sellers.
-        - Easy online shopping is good for small traders.
-    words: [kemudahan, menguntungkan, daring]
-  - id: e07
+      - text: rekayasa
+        ar_eg: هندسة (تقنية)
+        ar: هندسة تقنية
+        en: engineering
+      - text: terobosan
+        ar_eg: إنجاز جديد
+        ar: إنجاز علمي
+        en: breakthrough
+      - text: simulasi
+        ar_eg: محاكاة
+        ar: محاكاة
+        en: simulation
+      - text: prediksi
+        ar_eg: توقع
+        ar: تنبّؤ
+        en: prediction
+    words: [rekayasa, terobosan, simulasi, prediksi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: mekanisme
+        ar_eg: آلية
+        ar: آلية
+        en: mechanism
+      - text: rasional
+        ar_eg: عقلاني
+        ar: عقلاني
+        en: rational
+      - text: monitor
+        ar_eg: شاشة
+        ar: شاشة مراقبة
+        en: monitor
+      - text: antena
+        ar_eg: أنتين
+        ar: هوائي
+        en: antenna
+    words: [mekanisme, rasional, monitor, antena]
+  - id: e03
+    type: listen
+    text: Menurut prediksi, hujan akan turun malam ini.
+    question:
+      ar_eg: مين بيقول إن المطر هينزل؟
+      ar: من يقول إنها ستمطر؟
+      en: What says it will rain?
+    options: [التوقعات, الإشاعات, الجرايد]
+    answer: 0
+    meaning:
+      ar_eg: حسب التوقعات، المطر هينزل الليلة.
+      ar: وفق التوقّعات، ستمطر الليلة.
+      en: According to the forecast, it will rain tonight.
+    words: [prediksi]
+  - id: e04
+    type: fill_blank
+    sentence: Sinyal di tambang lemah, jadi mereka memasang ___ baru.
+    meaning:
+      ar_eg: الشبكة في المنجم ضعيفة، فركبوا ___ جديد.
+      ar: الإشارة في المنجم ضعيفة، لذا ركّبوا ___ جديدًا.
+      en: The signal at the mine is weak, so they put up a new ___.
+    options: [antena, prediksi, rasional]
+    answers: [antena]
+    words: [antena, prediksi, rasional]
+    explain:
+      ar_eg: الشبكة ضعيفة فركّبوا antena. prediksi = توقّع وrasional = منطقي، ومايتركّبوش.
+      ar: ضعفت الإشارة فركّبوا antena (هوائيًا). أما prediksi فالتوقّع، وrasional «عقلاني»، ولا يُركَّبان.
+      en: Weak signal, so they put up an antena. prediksi (prediction) and rasional (rational) can't be put up.
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: «Banyak orang menggunakan AI.» عايز تكتبها بأسلوب رسمي «___ AI meningkat». تحط إيه؟
-      ar: تريد كتابة «Banyak orang menggunakan AI.» بأسلوب رسمي «___ AI meningkat»، فماذا تضع؟
-      en: To make "Banyak orang menggunakan AI." formal as "___ AI meningkat", which word fits?
-    options: [Penggunaan, Pengguna, Digunakan]
-    answer: 0
+      ar_eg: قبل ما يجربوا في الحقيقة، عملوها على الكمبيوتر الأول. ده اسمه إيه؟
+      ar: جرّبوها على الحاسوب قبل الواقع. ما اسم ذلك؟
+      en: They tried it on a computer before real life. What is that called?
+    options: [monitor, simulasi, mekanisme]
+    answer: 1
     explain:
-      ar_eg: penggunaan = الاستخدام (الفعل نفسه). pengguna = المستخدم (الشخص).
-      ar: penggunaan = الاستخدام نفسه، وpengguna = المستخدم (الشخص).
-      en: penggunaan is the use itself; pengguna is the user.
-    words: [penggunaan]
+      ar_eg: simulasi = محاكاة.
+      ar: simulasi = محاكاة.
+      en: simulasi = simulation.
+    words: [monitor, simulasi, mekanisme]
+  - id: e06
+    type: fill_blank
+    sentence: Mari kita bahas ini dengan kepala dingin dan cara yang ___.
+    meaning:
+      ar_eg: خلينا نتكلم في ده بهدوء وبطريقة ___.
+      ar: لنناقش هذا بهدوء وبطريقة ___.
+      en: Let's discuss this calmly and in a ___ way.
+    options: [rasional, terobosan, antena]
+    answers: [rasional]
+    words: [rasional, terobosan, antena]
+    explain:
+      ar_eg: «بهدوء» و«بطريقة» rasional (عقلانية). terobosan = إنجاز جديد وantena = هوائي، مش صفة لطريقة.
+      ar: «بطريقة» rasional (عقلانية). أما terobosan فالاختراق الجديد، وantena الهوائي، وليسا صفة لطريقة.
+      en: "\"In a rasional way\". terobosan (breakthrough) and antena aren't adjectives for a way of talking."
+  - id: e07
+    type: multiple_choice
+    question: Bagaimana ___ kerja mesin ini? Tolong jelaskan langkah demi langkah.
+    options: [rekayasa, prediksi, mekanisme]
+    answer: 2
+    explain:
+      ar_eg: mekanisme kerja = طريقة شغل المكنة.
+      ar: mekanisme kerja = آلية عمل الآلة.
+      en: mekanisme kerja = how the machine works.
+    words: [rekayasa, prediksi, mekanisme]
   - id: e08
-    type: speaking
-    text: Menurut saya, kecerdasan buatan lebih banyak menguntungkan daripada merugikan.
-    meaning:
-      ar_eg: في رأيي، الذكاء الاصطناعي فايدته أكتر من ضرره.
-      ar: في رأيي، نفع الذكاء الاصطناعي أكثر من ضرره.
-      en: In my view, AI does more good than harm.
-    words: [menguntungkan, merugikan]
+    type: build_sentence
+    source:
+      ar_eg: المهندسين بيتفرجوا على الداتا على الشاشة.
+      ar: يراقب المهندسون البيانات على الشاشة.
+      en: The engineers watch the data on the monitor.
+    answer: Para insinyur melihat data di monitor.
+    distractors: [antena, simulasi]
+    words: [monitor]
+    explain:
+      ar_eg: «على الشاشة» = di monitor. antena = هوائي وsimulasi = محاكاة، ومش مكان بيبصوا فيه على الداتا.
+      ar: «على الشاشة» = di monitor. أما antena فالهوائي، وsimulasi المحاكاة.
+      en: "\"On the monitor\" is di monitor. antena and simulasi aren't where you watch data."
   - id: e09
-    type: dictation
-    text: Penipuan daring merugikan banyak orang tua.
-    meaning:
-      ar_eg: النصب أونلاين بيضر ناس كبيرة في السن كتير.
-      ar: يضرّ الاحتيال الإلكتروني كثيرًا من كبار السنّ.
-      en: Online fraud harms many older people.
-    words: [penipuan, merugikan]
-  - id: e10
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لازم نناقش مخاطر الذكاء الاصطناعي.
-      ar: يجب أن نناقش مخاطر الذكاء الاصطناعي.
-      en: We need to discuss the risks of AI.
-    answers:
-      - Kita harus membahas risiko kecerdasan buatan.
-      - Kita perlu membahas risiko kecerdasan buatan.
-      - Kita harus membahas risiko-risiko kecerdasan buatan.
-      - Kita harus membahas risiko AI.
-    words: [membahas, risiko, kecerdasan buatan]
+    direction: from_target
+    source_text: Ini terobosan besar dalam rekayasa tambang.
+    answers_meaning:
+      ar_eg: [ده إنجاز كبير في هندسة المناجم, دي نقلة كبيرة في هندسة التعدين]
+      ar: [هذا إنجاز كبير في هندسة التعدين, هذه قفزة كبيرة في هندسة المناجم]
+      en: [This is a big breakthrough in mining engineering, This is a major breakthrough in mine engineering]
+    words: [terobosan, rekayasa]
+  - id: e10
+    type: speaking
+    text: Simulasi ini membantu prediksi yang rasional.
+    meaning:
+      ar_eg: المحاكاة دي بتساعد على توقع عقلاني.
+      ar: تساعد هذه المحاكاة على تنبّؤ عقلاني.
+      en: This simulation helps make rational predictions.
+    words: [simulasi, prediksi, rasional]
 dialogue:
-  title: Diskusi di kantor
   lines:
-    - speaker: Bu Lestari
-      text: Hari ini kita membahas penggunaan AI di kantor. Siapa yang mau mulai?
-      ar_eg: النهارده هنناقش استخدام الذكاء الاصطناعي في المكتب. مين يحب يبدأ؟
-      ar: نناقش اليوم استخدام الذكاء الاصطناعي في المكتب. من يودّ البدء؟
-      en: Today we're discussing the use of AI at the office. Who'd like to start?
-    - speaker: Rina
-      text: Menurut saya, AI menguntungkan kita. Laporan selesai lebih cepat.
-      ar_eg: في رأيي، الـ AI بيفيدنا. التقارير بتخلص أسرع.
-      ar: في رأيي، يفيدنا الذكاء الاصطناعي، فالتقارير تُنجز أسرع.
-      en: In my view, AI benefits us. Reports get done faster.
+    - speaker: Pak Hendra
+      text: Pak Mohamed, besok ada tamu dari Mesir. Tolong terjemahkan presentasi ini.
+      ar_eg: يا أستاذ محمد، بكرة جايلنا ضيوف من مصر. ترجم العرض ده لو سمحت.
+      ar: يا أستاذ محمد، يصلنا غدًا ضيوف من مصر. ترجم هذا العرض من فضلك.
+      en: Mohamed, guests from Egypt are coming tomorrow. Please translate this presentation.
     - speaker: Mohamed
-      text: Saya setuju sebagian. Namun, ada risiko kebocoran data klien.
-      ar_eg: أنا موافق جزئيًا. بس فيه خطر إن بيانات العملا تتسرب.
-      ar: أوافق جزئيًا، لكنّ هناك خطر تسرّب بيانات العملاء.
-      en: I partly agree. However, there's a risk of client data leaking.
-    - speaker: Bu Lestari
-      text: Betul. Kebocoran data bisa merugikan perusahaan.
-      ar_eg: مظبوط. تسريب البيانات ممكن يضر الشركة.
-      ar: صحيح، فتسرّب البيانات قد يضرّ الشركة.
-      en: True. A data leak could harm the company.
-    - speaker: Rina
-      text: Kalau begitu, kita perlu aturan dan keterampilan baru.
-      ar_eg: يبقى محتاجين قواعد ومهارات جديدة.
-      ar: إذن نحتاج إلى قواعد ومهارات جديدة.
-      en: Then we need rules and new skills.
+      text: Baik, Pak. Tentang apa?
+      ar_eg: حاضر يا فندم. عن إيه؟
+      ar: حسنًا يا سيّدي. عمّ يتحدث؟
+      en: Certainly, sir. What's it about?
+    - speaker: Pak Hendra
+      text: 'Terobosan kami: sensor dan antena yang mengirim data ke monitor di kantor.'
+      ar_eg: 'الإنجاز بتاعنا: حساسات وهوائيات بتبعت داتا لشاشات في المكتب.'
+      ar: 'إنجازنا: مستشعرات وهوائيات ترسل البيانات إلى شاشات في المكتب.'
+      en: 'Our breakthrough: sensors and antennas that send data to monitors in the office.'
     - speaker: Mohamed
-      text: Setuju. Mesin membantu, tetapi manusia tetap bertanggung jawab.
-      ar_eg: موافق. المكنة بتساعد، بس الإنسان هو اللي فاضل مسؤول.
-      ar: موافق. الآلة تساعد، لكنّ الإنسان يبقى المسؤول.
-      en: Agreed. Machines help, but people stay responsible.
+      text: Lalu komputer membuat simulasi dan prediksi longsor?
+      ar_eg: وبعدين الكمبيوتر بيعمل محاكاة وتوقع للانهيارات؟
+      ar: ثم يصنع الحاسوب محاكاة وتنبّؤًا بالانهيارات؟
+      en: And then the computer simulates and predicts landslides?
+    - speaker: Pak Hendra
+      text: Betul. Mekanismenya mudah, tapi rekayasanya sulit.
+      ar_eg: مظبوط. الآلية سهلة، بس الهندسة بتاعتها صعبة.
+      ar: صحيح. الآلية سهلة، لكنّ الهندسة صعبة.
+      en: Exactly. The mechanism is easy, but the engineering is hard.
+    - speaker: Mohamed
+      text: Saya akan memakai bahasa yang rasional dan jelas.
+      ar_eg: هستخدم لغة عقلانية وواضحة.
+      ar: سأستعمل لغة عقلانية وواضحة.
+      en: I'll use clear, rational language.
 new_words:
-  - word: menguntungkan
-    pos: verb
-    ar_eg: يفيد / يكسّب
-    ar: يفيد، يعود بالربح
-    en: to benefit, to be profitable for
-  - word: merugikan
-    pos: verb
-    ar_eg: يضر / يخسّر
-    ar: يضرّ، يُلحق خسارة
-    en: to harm, to cause loss to
+  - word: rekayasa
+    pos: noun
+    ar_eg: هندسة (تقنية)؛ تلاعب
+    ar: هندسة تقنية؛ تلاعب
+    en: engineering; manipulation
+  - word: terobosan
+    pos: noun
+    ar_eg: إنجاز جديد، نقلة
+    ar: إنجاز، اختراق علمي
+    en: breakthrough
+  - word: simulasi
+    pos: noun
+    ar_eg: محاكاة
+    ar: محاكاة
+    en: simulation
+  - word: prediksi
+    pos: noun
+    ar_eg: توقع
+    ar: تنبّؤ، توقّع
+    en: prediction, forecast
+  - word: mekanisme
+    pos: noun
+    ar_eg: آلية، طريقة شغل
+    ar: آلية
+    en: mechanism
+  - word: rasional
+    pos: adjective
+    ar_eg: عقلاني
+    ar: عقلاني
+    en: rational
+  - word: monitor
+    pos: noun
+    ar_eg: شاشة
+    ar: شاشة مراقبة
+    en: monitor, screen
+  - word: antena
+    pos: noun
+    ar_eg: أنتين، هوائي
+    ar: هوائي
+    en: antenna, aerial
 review:
   status: draft
   verified: false

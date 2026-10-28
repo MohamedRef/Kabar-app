@@ -1,0 +1,181 @@
+schema: kabar.lesson/v1
+id: bipa4.u08.l10
+language: id
+title: Dongeng dari Mesir
+can_do:
+  ar_eg: تحكي حدوتة مصرية (جحا وحماره) بالإندونيسي.
+  ar: أن تروي حكاية مصرية (جحا وحماره) بالإندونيسية.
+  en: Retell an Egyptian folk tale (Juha and his donkey) in Indonesian.
+slides:
+  - title: Juha dan keledainya
+    body:
+      ar_eg: |
+        وقت تحكي حدوتتك! استعمل اللي اتعلمته:
+        البداية: Pada zaman dahulu, hiduplah …
+        عبارات طويلة: seorang lelaki lucu dari Mesir، keledai tua milik Juha.
+        وفي الآخر قول الـ amanat.
+      ar: |
+        حان وقت حكايتك! استعمل ما تعلمته:
+        البداية: Pada zaman dahulu, hiduplah …
+        عبارات طويلة: seorang lelaki lucu dari Mesir، keledai tua milik Juha.
+        وفي النهاية اذكر الـ amanat.
+      en: |
+        Time to tell your own tale! Use what you've learned:
+        Opening: Pada zaman dahulu, hiduplah …
+        Long phrases: seorang lelaki lucu dari Mesir, keledai tua milik Juha.
+        End with the amanat.
+    grammar: id.phrase.complex
+    examples:
+      - text: Pada zaman dahulu, hiduplah seorang lelaki lucu bernama Juha.
+        ar_eg: كان يا ما كان، كان فيه راجل دمه خفيف اسمه جحا.
+        ar: كان يا ما كان، عاش رجل طريف اسمه جحا.
+        en: Once upon a time there lived a funny man called Juha.
+      - text: Juha dan anaknya menuntun keledai tua mereka ke pasar.
+        ar_eg: جحا وابنه شدّوا حمارهم العجوز ومشيوا بيه للسوق.
+        ar: قاد جحا وابنه حمارهما العجوز إلى السوق.
+        en: Juha and his son led their old donkey to the market.
+exercises:
+  - id: e01
+    type: listen
+    text: Juha dan anaknya pergi ke pasar dengan seekor keledai.
+    options: ["Juha dan istrinya pergi ke pasar dengan seekor keledai.", "Juha dan anaknya pergi ke pasar dengan seekor kuda.", "Juha dan anaknya pergi ke pasar dengan seekor keledai."]
+    answer: 2
+    meaning:
+      ar_eg: جحا وابنه راحوا السوق ومعاهم حمار.
+      ar: ذهب جحا وابنه إلى السوق ومعهما حمار.
+      en: Juha and his son went to the market with a donkey.
+    words: [keledai]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في الآخر جحا وابنه مشيوا جنب الحمار. الناس عملت إيه؟
+      ar: في النهاية مشى جحا وابنه بجانب الحمار. ماذا فعل الناس؟
+      en: In the end Juha and his son walk beside the donkey. What do people do?
+    options: ["Orang-orang menertawakan mereka.", "Orang-orang menuntun mereka.", "Orang-orang menjual mereka."]
+    answer: 0
+    words: [menertawakan]
+    explain:
+      ar_eg: في الآخر الناس ضحكت عليهم (menertawakan). ماحدش شدّهم ولا باعهم.
+      ar: في النهاية ضحك الناس عليهم (menertawakan)، فلم يقدهم أحد ولم يبعهم.
+      en: In the end people laughed at them (menertawakan). Nobody led or sold them.
+  - id: e03
+    type: match_pairs
+    pairs:
+      - text: keledai
+        ar_eg: حمار
+        ar: حمار
+        en: donkey
+      - text: menuntun
+        ar_eg: يشد / يقود (بالإيد أو بالحبل)
+        ar: يقود (باليد أو بالحبل)
+        en: to lead (by the hand or a rope)
+      - text: menertawakan
+        ar_eg: يضحك على
+        ar: يضحك على، يسخر من
+        en: to laugh at
+      - text: amanat
+        ar_eg: عبرة
+        ar: عبرة
+        en: moral message
+      - text: watak
+        ar_eg: طبع
+        ar: طبع
+        en: personality
+    words: [keledai, menuntun, menertawakan, amanat, watak]
+  - id: e04
+    type: fill_blank
+    sentence: Juha ___ keledainya, dan anaknya naik di atasnya.
+    meaning:
+      ar_eg: جحا بيشد حماره، وابنه راكب عليه.
+      ar: يقود جحا حماره، وابنه راكب عليه.
+      en: Juha leads his donkey, and his son rides on it.
+    options: [menertawakan, menuntun, melanggar]
+    answers: [menuntun]
+    words: [menuntun, keledai]
+    explain:
+      ar_eg: menuntun = يشد ويمشّي، وجحا ماشي جنب الحمار وابنه راكب. menertawakan = يضحك على، وmelanggar = يخالف.
+      ar: menuntun = يقود ماشيًا، فجحا يمشي بجانب الحمار وابنه راكب. أما menertawakan فيضحك على، وmelanggar يخالف.
+      en: "menuntun means lead on foot: Juha walks the donkey while his son rides. menertawakan is laugh at, and melanggar is break (a rule)."
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الناس ضحكوا على جحا وابنه.
+      ar: ضحك الناس على جحا وابنه.
+      en: People laughed at Juha and his son.
+    answer: Orang-orang menertawakan Juha dan anaknya.
+    distractors: [menuntun, keledai]
+    words: [menertawakan]
+    explain:
+      ar_eg: menertawakan = ضحكوا على. menuntun = يشد ويمشّي، وkeledai = حمار، ومش في الجملة.
+      ar: menertawakan = ضحكوا على. أما menuntun فيقود، وkeledai الحمار، وليسا في الجملة.
+      en: menertawakan means laughed at. menuntun (lead) and keledai (donkey) aren't in the sentence.
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عبرة الحكاية دي إننا مانقدرش نرضّي كل الناس.
+      ar: عبرة هذه الحكاية أننا لا نستطيع إرضاء جميع الناس.
+      en: The moral of this story is that we can't please everyone.
+    answers:
+      - Amanat cerita ini adalah kita tidak bisa menyenangkan semua orang.
+      - Amanat cerita ini adalah kita tidak bisa menyenangkan semua orang
+      - Amanat cerita ini adalah bahwa kita tidak bisa menyenangkan semua orang.
+      - Amanat cerita ini adalah kita tidak dapat menyenangkan semua orang.
+      - Amanat dongeng ini adalah kita tidak bisa menyenangkan semua orang.
+      - "Amanat cerita ini: kita tidak bisa menyenangkan semua orang."
+      - Amanatnya, kita tidak bisa menyenangkan semua orang.
+      - Amanat cerita ini adalah kita nggak bisa menyenangkan semua orang.
+      - Amanat cerita ini adalah kita nggak bisa menyenangkan semua orang
+    words: [amanat]
+  - id: e07
+    type: dictation
+    text: Seorang lelaki tua menuntun keledainya ke pasar.
+    meaning:
+      ar_eg: راجل عجوز بيشد حماره للسوق.
+      ar: يقود رجل عجوز حماره إلى السوق.
+      en: An old man leads his donkey to the market.
+    words: [menuntun, keledai]
+  - id: e08
+    type: speaking
+    text: Semua orang menertawakan Juha, tetapi dia masih tersenyum.
+    meaning:
+      ar_eg: كل الناس ضحكت على جحا، بس هو فضل مبتسم.
+      ar: ضحك الجميع على جحا، لكنه ظل مبتسمًا.
+      en: Everyone laughed at Juha, but he kept smiling.
+    words: [menertawakan]
+dialogue:
+  title: Dongeng Juha
+  lines:
+    - speaker: Mohamed
+      text: Di Mesir ada cerita terkenal tentang Juha dan keledainya.
+      ar_eg: في مصر فيه حكاية مشهورة عن جحا وحماره.
+      ar: في مصر حكاية مشهورة عن جحا وحماره.
+      en: In Egypt there's a famous story about Juha and his donkey.
+    - speaker: Mas Rizal
+      text: Ceritain, dong!
+      ar_eg: احكيها بقى!
+      ar: احكِها لي!
+      en: Go on, tell it!
+    - speaker: Mohamed
+      text: Juha naik keledai, anaknya jalan kaki. Orang-orang bilang Juha nggak sayang sama anaknya.
+      ar_eg: جحا ركب الحمار وابنه ماشي. الناس قالت إن جحا مش بيحب ابنه.
+      ar: ركب جحا الحمار ومشى ابنه، فقال الناس إن جحا لا يحب ابنه.
+      en: Juha rides the donkey and his son walks. People say Juha doesn't love his son.
+    - speaker: Mas Rizal
+      text: Terus?
+      ar_eg: وبعدين؟
+      ar: ثم ماذا؟
+      en: And then?
+    - speaker: Mohamed
+      text: Akhirnya mereka berdua menuntun keledai itu, dan semua orang menertawakan mereka!
+      ar_eg: في الآخر الاتنين شدّوا الحمار ومشيوا، والناس كلها ضحكت عليهم!
+      ar: وفي النهاية قاد الاثنان الحمار مشيًا، فضحك عليهما الجميع!
+      en: In the end they both lead the donkey on foot, and everyone laughs at them!
+    - speaker: Mas Rizal
+      text: Ha ha! Jadi amanatnya, kita nggak bisa bikin semua orang senang.
+      ar_eg: ها ها! يعني العبرة إننا مانقدرش نبسط كل الناس.
+      ar: ها ها! فالعبرة أننا لا نستطيع إسعاد الجميع.
+      en: Ha ha! So the moral is, we can't make everyone happy.
+review:
+  status: draft
+  verified: false

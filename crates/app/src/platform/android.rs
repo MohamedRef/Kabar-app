@@ -311,6 +311,48 @@ pub fn network_metered() -> Result<bool, String> {
     })
 }
 
+/// `SystemBars.apply(activity, day, night)`: bar colours as ARGB ints.
+pub fn system_bars(day: i32, night: i32) -> Result<(), String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.SystemBars"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("apply"),
+            jni_sig!("(Landroid/app/Activity;II)V"),
+            &[JValue::Object(activity), JValue::Int(day), JValue::Int(night)],
+        )?;
+        Ok(())
+    })
+}
+
+/// `Haptics.available(activity)`: the device has a vibration motor.
+pub fn has_vibrator() -> Result<bool, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.Haptics"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("available"),
+            jni_sig!("(Landroid/content/Context;)Z"),
+            &[JValue::Object(activity)],
+        )?
+        .z()
+    })
+}
+
+/// `Haptics.play(activity, kind)`.
+pub fn vibrate(kind: i32) -> Result<(), String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.Haptics"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("play"),
+            jni_sig!("(Landroid/content/Context;I)V"),
+            &[JValue::Object(activity), JValue::Int(kind)],
+        )?;
+        Ok(())
+    })
+}
+
 /// `UpdateInstaller.showPendingConfirm(activity)`: the confirmation screen
 /// that arrived while Kabar was in the background.
 pub fn show_pending_confirm() -> Result<(), String> {
@@ -907,4 +949,121 @@ pub fn battery_unrestricted() -> Result<bool, String> {
         )?
         .z()
     })
+}
+
+// ------------------------------------------------------------ update notice
+//
+// "A new Kabar is out": `UpdateNotice` (android/…/UpdateNotice.kt) posts it
+// and schedules `UpdateCheckJob`, which calls back into Rust below while
+// Kabar may be closed.
+
+fn update_notice<T>(
+    f: impl FnOnce(&mut Env, &JClass, &JObject) -> jni::errors::Result<T>,
+) -> Result<T, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.UpdateNotice"))?;
+        f(env, &class, activity)
+    })
+}
+
+/// Posts the notification unless Kabar is in front or notifications are off.
+pub fn post_update_notice(n: &crate::update::Notice) -> Result<bool, String> {
+    let json = serde_json::to_string(n).map_err(|e| e.to_string())?;
+    update_notice(|env, class, activity| {
+        let json = env.new_string(&json)?;
+        env.call_static_method(
+            class,
+            jni_str!("show"),
+            jni_sig!("(Landroid/content/Context;Ljava/lang/String;Z)Z"),
+            &[JValue::Object(activity), JValue::Object(&json), JValue::Bool(true)],
+        )?
+        .z()
+    })
+}
+
+pub fn clear_update_notice() -> Result<(), String> {
+    update_notice(|env, class, activity| {
+        env.call_static_method(
+            class,
+            jni_str!("clear"),
+            jni_sig!("(Landroid/content/Context;)V"),
+            &[JValue::Object(activity)],
+        )
+        .map(drop)
+    })
+}
+
+/// Starts or stops the periodic background check (JobScheduler).
+pub fn schedule_update_checks(on: bool) -> Result<(), String> {
+    update_notice(|env, class, activity| {
+        env.call_static_method(
+            class,
+            jni_str!("scheduleChecks"),
+            jni_sig!("(Landroid/content/Context;Z)V"),
+            &[JValue::Object(activity), JValue::Bool(on)],
+        )
+        .map(drop)
+    })
+}
+
+/// The action a notification tap left for the app, once.
+pub fn take_update_tap() -> Result<Option<String>, String> {
+    update_notice(|env, class, activity| {
+        let s = env
+            .call_static_method(
+                class,
+                jni_str!("takeTap"),
+                jni_sig!("(Landroid/content/Context;)Ljava/lang/String;"),
+                &[JValue::Object(activity)],
+            )?
+            .l()?;
+        to_string(env, s)
+    })
+}
+
+/// `UpdateCheckJob.check(dataDir, metered, canNotify, localMinute)`: the
+/// background check, from a JobScheduler thread in a process that may have
+/// no Activity (so nothing here may use `with_activity`). Returns the
+/// notification's JSON, or null.
+#[unsafe(no_mangle)]
+pub extern "system" fn Java_app_kabar_UpdateCheckJob_check<'caller>(
+    mut unowned_env: jni::EnvUnowned<'caller>,
+    _this: JObject<'caller>,
+    data_dir: JString<'caller>,
+    metered: jni::sys::jboolean,
+    can_notify: jni::sys::jboolean,
+    local_minute: jni::sys::jint,
+) -> JString<'caller> {
+    unowned_env
+        .with_env(|env| -> jni::errors::Result<JString<'caller>> {
+            let dir = data_dir.mutf8_chars(env)?.to_string();
+            let minute = u16::try_from(local_minute.clamp(0, 24 * 60 - 1)).unwrap_or(0);
+            let local = kabar_protocol::coach::LocalTime::hm(minute / 60, minute % 60);
+            let notice = crate::update::background_check(Path::new(&dir), metered, can_notify, local);
+            match notice.and_then(|n| serde_json::to_string(&n).ok()) {
+                Some(json) => JString::from_str(env, json),
+                None => Ok(JString::default()),
+            }
+        })
+        .resolve::<jni::errors::LogErrorAndDefault>()
+}
+
+/// `UpdateCheckJob.shown(dataDir, key)`: Android showed the notification
+/// `check` returned, so it isn't sent again (one that failed to show is
+/// tried again at the next run).
+#[unsafe(no_mangle)]
+pub extern "system" fn Java_app_kabar_UpdateCheckJob_shown<'caller>(
+    mut unowned_env: jni::EnvUnowned<'caller>,
+    _this: JObject<'caller>,
+    data_dir: JString<'caller>,
+    key: JString<'caller>,
+) {
+    unowned_env
+        .with_env(|env| -> jni::errors::Result<()> {
+            let dir = data_dir.mutf8_chars(env)?.to_string();
+            let key = key.mutf8_chars(env)?.to_string();
+            crate::update::background_shown(Path::new(&dir), &key);
+            Ok(())
+        })
+        .resolve::<jni::errors::LogErrorAndDefault>()
 }

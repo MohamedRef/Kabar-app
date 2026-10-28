@@ -1,0 +1,249 @@
+schema: kabar.lesson/v1
+id: j1.u02.l07
+language: jv
+title: Ngopi neng kene
+can_do:
+  ar_eg: تعزم حد على قهوة، وتسأل جاي منين وركب إيه، وتقول بيشتغل فين.
+  ar: أن تدعو أحدًا إلى القهوة، وتسأله من أين جاء وبماذا ركب، وأين يعمل.
+  en: Invite someone for coffee, ask where they came from and how, and where they work.
+slides:
+  - title: Warung kopi cedhak Tugu
+    body:
+      ar_eg: |
+        - **ngopi** = يشرب قهوة ويقعد يدردش (ngopi) · **ngombe** = يشرب (minum)
+        - **kene** = هنا: neng kene = هنا (di sini)
+        - **teka** = ييجي / يوصل (datang): teka saka ngendi? = جاي منين؟
+        - **numpak** = يركب (naik): numpak becak = يركب بيتشاك
+        - **nyambut gawe** = يشتغل (bekerja) · **padha** = زي بعض (sama): padha karo aku = زيي
+      ar: |
+        - **ngopi** = يشرب القهوة ويتسامر (ngopi) · **ngombe** = يشرب (minum)
+        - **kene** = هنا: neng kene = هنا (di sini)
+        - **teka** = يأتي / يصل (datang): teka saka ngendi? = من أين أتيت؟
+        - **numpak** = يركب (naik): numpak becak = يركب البيتشاك
+        - **nyambut gawe** = يعمل (bekerja) · **padha** = متشابه (sama): padha karo aku = مثلي
+      en: |
+        - **ngopi** = have coffee and hang out (ngopi) · **ngombe** = drink (minum)
+        - **kene** = here: neng kene = here (di sini)
+        - **teka** = come, arrive (datang): teka saka ngendi? = where have you come from?
+        - **numpak** = ride, take (naik): numpak becak = take a becak
+        - **nyambut gawe** = work (bekerja) · **padha** = the same (sama): padha karo aku = same as me
+    examples:
+      - text: Ayo ngopi neng kene!
+        ar_eg: يلا نشرب قهوة هنا!
+        ar: هيا نشرب القهوة هنا!
+        en: Let's have coffee here!
+      - text: Aku numpak becak saka Tugu.
+        ar_eg: ركبت بيتشاك من توجو.
+        ar: ركبت البيتشاك من توجو.
+        en: I took a becak from Tugu.
+      - text: Kancaku nyambut gawe neng Jogja.
+        ar_eg: صاحبي بيشتغل في يوجيا.
+        ar: صديقي يعمل في يوجياكرتا.
+        en: My friend works in Jogja.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: numpak
+        ar_eg: يركب
+        ar: يركب
+        en: ride, take
+      - text: kene
+        ar_eg: هنا
+        ar: هنا
+        en: here
+      - text: teka
+        ar_eg: ييجي
+        ar: يأتي
+        en: come
+      - text: padha
+        ar_eg: زي بعض
+        ar: متشابه
+        en: the same
+    words: [numpak, kene, teka, padha]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: ngombe
+        ar_eg: يشرب
+        ar: يشرب
+        en: drink
+      - text: ngopi
+        ar_eg: يشرب قهوة
+        ar: يشرب القهوة
+        en: have coffee
+      - text: nyambut gawe
+        ar_eg: يشتغل
+        ar: يعمل
+        en: work
+    words: [ngombe, ngopi, nyambut gawe]
+  - id: e03
+    type: listen
+    text: Ayo ngopi neng kene!
+    question:
+      ar_eg: بيقول إيه؟
+      ar: ماذا يقول؟
+      en: What is he saying?
+    options: [يلا نشرب قهوة هنا, يلا نروح البيت, يلا ناكل]
+    answer: 0
+    meaning:
+      ar_eg: يلا نشرب قهوة هنا!
+      ar: هيا نشرب القهوة هنا!
+      en: Let's have coffee here!
+    words: [ngopi, kene]
+  - id: e04
+    type: fill_blank
+    sentence: Aku ___ becak saka Tugu.
+    meaning:
+      ar_eg: أنا ___ بيتشاك من توجو.
+      ar: أنا ___ البيتشاك من توجو.
+      en: I ___ a becak from Tugu.
+    options: [numpak, ngombe, teka]
+    answers: [numpak]
+    words: [numpak, ngombe, teka]
+    explain:
+      ar_eg: numpak becak = ركبت بيتشاك. ngombe = يشرب، وteka = ييجي، ومينفعوش مع becak.
+      ar: numpak becak = ركبت البيتشاك؛ أما ngombe فيشرب، وteka يأتي، ولا يأتيان مع becak.
+      en: numpak becak = ride a becak. ngombe (drink) and teka (come) don't go with becak.
+  - id: e05
+    type: fill_blank
+    sentence: Mas Dimas ___ saka ngendi?
+    meaning:
+      ar_eg: ماس ديماس ___ منين؟
+      ar: من أين ___ ماس ديماس؟
+      en: Where is Mas Dimas ___ from?
+    options: [teka, padha, numpak]
+    answers: [teka]
+    words: [teka, padha, numpak]
+    explain:
+      ar_eg: "teka saka = جاي من: جاي منين؟ padha = زي بعض، وnumpak = يركب."
+      ar: "teka saka = آتٍ من: من أين أتى؟ أما padha فمثل، وnumpak يركب."
+      en: teka saka = come from. padha = same, numpak = ride.
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «هنا»؟
+      ar: أيّ كلمة تعني «هنا»؟
+      en: Which word means "here"?
+    options: [kene, padha, ngopi]
+    answer: 0
+    explain:
+      ar_eg: kene = هنا. padha = زي بعض، وngopi = يشرب قهوة.
+      ar: kene = هنا، أما padha فمتشابه وngopi يشرب القهوة.
+      en: kene = here. padha = the same, ngopi = have coffee.
+    words: [kene, padha, ngopi]
+  - id: e07
+    type: multiple_choice
+    question: Jenengku lan jenengmu padha!
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [اسمي واسمك زي بعض, اسمي أطول من اسمك, اسمك حلو]
+    answer: 0
+    explain:
+      ar_eg: padha = زي بعض.
+      ar: padha = متشابه.
+      en: padha = the same.
+    words: [padha]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: صاحبي بيشتغل في يوجيا.
+      ar: صديقي يعمل في يوجياكرتا.
+      en: My friend works in Jogja.
+    answer: Kancaku nyambut gawe neng Jogja.
+    distractors: [ngombe, kene]
+    words: [nyambut gawe, ngombe, kene]
+    explain:
+      ar_eg: nyambut gawe = بيشتغل، وneng Jogja = في يوجيا. ngombe = يشرب، وkene = هنا، ومش في المعنى.
+      ar: nyambut gawe = يعمل، وneng Jogja = في يوجياكرتا؛ أما ngombe فيشرب، وkene هنا، وليسا في المعنى.
+      en: nyambut gawe = work, neng Jogja = in Jogja. ngombe (drink) and kene (here) aren't in the meaning.
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Kowe nyambut gawe neng ngendi?
+    answers_meaning:
+      ar_eg: [بتشتغل فين؟, إنت شغال فين؟]
+      ar: [أين تعمل؟, أين تشتغل؟]
+      en: ['Where do you work?', 'Where are you working?']
+    words: [nyambut gawe]
+  - id: e10
+    type: speaking
+    text: Ayo ngopi neng kene, Mas!
+    meaning:
+      ar_eg: يلا نشرب قهوة هنا يا ماس!
+      ar: هيا نشرب القهوة هنا يا أخي!
+      en: Let's have coffee here, Mas!
+    words: [ngopi, kene]
+dialogue:
+  lines:
+    - speaker: Mas Yudha
+      text: Mohamed, ayo ngopi neng kene!
+      ar_eg: يا محمد، يلا نشرب قهوة هنا!
+      ar: يا محمد، هيا نشرب القهوة هنا!
+      en: Mohamed, let's have coffee here!
+    - speaker: Mohamed
+      text: Ayo, Mas. Aku ngombe kopi joss.
+      ar_eg: يلا يا ماس. أنا هشرب كوبي جوس.
+      ar: هيا يا أخي. سأشرب kopi joss.
+      en: Sure, Mas. I'll have a kopi joss.
+    - speaker: Mas Yudha
+      text: Kowe teka saka ngendi? Numpak apa?
+      ar_eg: إنت جاي منين؟ ركبت إيه؟
+      ar: من أين أتيت؟ بماذا ركبت؟
+      en: Where have you come from? How did you get here?
+    - speaker: Mohamed
+      text: Saka Tugu, Mas. Numpak becak.
+      ar_eg: من توجو يا ماس. ركبت بيتشاك.
+      ar: من توجو يا أخي. ركبت البيتشاك.
+      en: From Tugu, Mas. I took a becak.
+    - speaker: Mas Yudha
+      text: Wah, padha karo aku!
+      ar_eg: واو، زيي بالظبط!
+      ar: رائع، مثلي تمامًا!
+      en: Wow, same as me!
+    - speaker: Mohamed
+      text: Mas Yudha nyambut gawe neng kene, ta?
+      ar_eg: ماس يودها بيشتغل هنا، صح؟
+      ar: ماس يودها يعمل هنا، أليس كذلك؟
+      en: You work here, don't you, Mas Yudha?
+new_words:
+  - word: ngopi
+    pos: verb
+    ar_eg: يشرب قهوة ويقعد يدردش (ngopi)
+    ar: يشرب القهوة ويتسامر (ngopi)
+    en: have coffee, hang out over coffee (ngopi)
+  - word: ngombe
+    pos: verb
+    ar_eg: يشرب (minum)
+    ar: يشرب (minum)
+    en: drink (minum)
+  - word: kene
+    pos: adverb
+    ar_eg: هنا (sini)؛ neng kene = هنا
+    ar: هنا (sini)؛ neng kene = هنا
+    en: here (sini); neng kene = here
+  - word: teka
+    pos: verb
+    ar_eg: ييجي / يوصل (datang)
+    ar: يأتي / يصل (datang)
+    en: come, arrive (datang)
+  - word: numpak
+    pos: verb
+    ar_eg: يركب (naik)
+    ar: يركب (naik)
+    en: ride, take a vehicle (naik)
+  - word: nyambut gawe
+    pos: verb
+    ar_eg: يشتغل (bekerja)
+    ar: يعمل (bekerja)
+    en: work (bekerja)
+  - word: padha
+    pos: adjective
+    ar_eg: زي بعض (sama)
+    ar: متشابه (sama)
+    en: the same (sama)
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,166 @@
+schema: kabar.lesson/v1
+id: j3.u02.l10
+language: jv
+title: Kenalan ing Pasar Kranggan
+can_do:
+  ar_eg: تسمع حد بيعرّف ناس بالكراما وتفهم مين مين، وإمتى piyambakipun وإمتى panjenenganipun.
+  ar: أن تسمع تعريفًا بأشخاص بالكراما وتفهم من هو كل منهم، ومتى يقال piyambakipun ومتى panjenenganipun.
+  en: Follow a krama introduction by ear, and hear when it's piyambakipun and when panjenenganipun.
+slides:
+  - title: Rungokna Mas Dimas
+    body:
+      ar_eg: |
+        في Pasar Kranggan، Mas Dimas بيعرّف Bu Siti على محمد وعلى جدته. اسمع الأول من غير ما تقرا.
+        عن صاحبه بيقول piyambakipun (هو، بأدب)، وعن جدته panjenenganipun (هي، بتعظيم) زي «سيادتها».
+      ar: |
+        في Pasar Kranggan يعرّف Mas Dimas السيدة Bu Siti بمحمد وبجدته. استمع أولًا دون قراءة.
+        عن صديقه يقول piyambakipun (هو، بأدب)، وعن جدته panjenenganipun (هي، بتعظيم) مثل «سيادتها».
+      en: |
+        At Pasar Kranggan, Mas Dimas introduces Mohamed and his grandmother to Bu Siti. Listen first, without reading.
+        For his friend he says piyambakipun (he, politely); for his grandmother panjenenganipun (she, honoured), like «سيادتها».
+    grammar: jv.pronoun.krama
+exercises:
+  - id: e01
+    type: listen
+    text: Bu, menika kanca kula, Mohamed.
+    question:
+      ar_eg: محمد يبقى إيه بالنسبة لـ Dimas؟
+      ar: ما صلة محمد بـ Dimas؟
+      en: Who is Mohamed to Dimas?
+    options: [kanca, simbah, bapak]
+    answer: 0
+    meaning:
+      ar_eg: يا مدام، ده صاحبي محمد.
+      ar: يا سيدتي، هذا صديقي محمد.
+      en: Ma'am, this is my friend Mohamed.
+    words: [menika, kanca, kula]
+  - id: e02
+    type: listen
+    text: Piyambakipun saking Mesir.
+    question:
+      ar_eg: محمد منين؟
+      ar: من أين محمد؟
+      en: Where is Mohamed from?
+    options: [Madiun, Mesir, Yogya]
+    answer: 1
+    meaning:
+      ar_eg: هو من مصر.
+      ar: هو من مصر.
+      en: He's from Egypt.
+    words: [piyambakipun, saking]
+  - id: e03
+    type: listen
+    text: Menika simbah kula. Panjenenganipun sampun sepuh.
+    question:
+      ar_eg: Dimas بيقول panjenenganipun. بيتكلم عن مين؟
+      ar: يقول Dimas panjenenganipun. عمّن يتكلم؟
+      en: Dimas says panjenenganipun. Who is he talking about?
+    options: [Mohamed, Bu Siti, simbah]
+    answer: 2
+    meaning:
+      ar_eg: دي جدتي. هي كبيرة في السن.
+      ar: هذه جدتي. هي متقدمة في السن.
+      en: This is my grandmother. She's elderly.
+    explain:
+      ar_eg: panjenenganipun = «هي» بتعظيم، للكبار اللي بتحترمهم زي جدتك.
+      ar: panjenenganipun ضمير غائب للتعظيم، يقال للكبار المحترمين كالجدة.
+      en: panjenenganipun is an honoured "he / she", for elders you respect, like your grandmother.
+    words: [panjenenganipun, simbah, sepuh]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: kanca kula
+        ar_eg: صاحبي
+        ar: صديقي
+        en: my friend
+      - text: simbah kula
+        ar_eg: جدتي / جدي
+        ar: جدتي / جدي
+        en: my grandmother / grandfather
+      - text: nami kula
+        ar_eg: اسمي
+        ar: اسمي
+        en: my name
+      - text: griya kula
+        ar_eg: بيتي
+        ar: بيتي
+        en: my house
+    words: [kula, nami, griya]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Bu Siti قالت لمحمد «Sugeng rawuh, Mas!». يرد يقول إيه؟
+      ar: قالت Bu Siti لمحمد «Sugeng rawuh, Mas!». بماذا يردّ؟
+      en: Bu Siti says to Mohamed, "Sugeng rawuh, Mas!". What does he answer?
+    options: ['Sami-sami, Bu.', 'Dalem, Bu?', 'Matur nuwun, Bu.']
+    answer: 2
+    explain:
+      ar_eg: Sugeng rawuh = أهلًا وسهلًا، والرد شكرًا = Matur nuwun. Dalem للرد لما حد ينادي عليك، وSami-sami رد على الشكر.
+      ar: Sugeng rawuh ترحيب، والرد Matur nuwun؛ أما Dalem فجواب النداء، وSami-sami جواب الشكر.
+      en: Sugeng rawuh is a welcome; you answer Matur nuwun. Dalem answers a call, Sami-sami answers a thank-you.
+    words: [sugeng rawuh, matur nuwun]
+  - id: e06
+    type: dictation
+    text: Panjenenganipun sampun sepuh.
+    meaning:
+      ar_eg: هي (سيادتها) كبيرة في السن.
+      ar: هي متقدمة في السن.
+      en: She is elderly (honoured "she").
+    words: [panjenenganipun, sepuh]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'عرّف Dimas لـ Bu Siti بالكراما: ده صاحبي Dimas. هو من يوجيا.'
+      ar: 'عرّف Dimas لـ Bu Siti بالكراما: هذا صديقي Dimas. هو من يوجيا.'
+      en: "Introduce Dimas to Bu Siti in krama: This is my friend Dimas. He's from Yogya."
+    answers: ["Menika kanca kula, Dimas. Piyambakipun saking Yogya.", "Menika kanca kula, Mas Dimas. Piyambakipun saking Yogya.", "Bu, menika kanca kula, Dimas. Piyambakipun saking Yogya.", "Bu, menika kanca kula, Mas Dimas. Piyambakipun saking Yogya.", "Menika kanca kulo, Dimas. Piyambakipun saking Yogya.", "Menika kanca kulo, Mas Dimas. Piyambakipun saking Yogya.", "Niki kanca kula, Mas Dimas. Piyambakipun saking Yogya.", "Niki kanca kula, Dimas. Piyambakipun saking Yogya."]
+    explain:
+      ar_eg: 'Dimas في سنك وصاحبك: piyambakipun كفاية (panjenenganipun للكبار).'
+      ar: 'Dimas في مثل سنك وصديقك، فتكفي piyambakipun، وpanjenenganipun للكبار.'
+      en: Dimas is your age and your friend, so piyambakipun is right (panjenenganipun is for elders).
+    words: [menika, kanca, piyambakipun, saking]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: دي جدتي يا مدام.
+      ar: هذه جدتي يا سيدتي.
+      en: This is my grandmother, ma'am.
+    answer: Menika simbah kula, Bu.
+    distractors: [iki, aku]
+    explain:
+      ar_eg: 'menika (= iki) وkula بعد الاسم: simbah kula.'
+      ar: 'menika بدل iki، وkula بعد الاسم: simbah kula.'
+      en: 'menika (= iki), and kula after the noun: simbah kula.'
+    words: [menika, simbah, kula]
+dialogue:
+  title: Bu Siti lan simbah
+  lines:
+    - speaker: Mas Dimas
+      text: Bu Siti, menika kanca kula, Mohamed.
+      ar_eg: يا Bu Siti، ده صاحبي محمد.
+      ar: يا Bu Siti، هذا صديقي محمد.
+      en: Bu Siti, this is my friend Mohamed.
+    - speaker: Bu Siti
+      text: Sugeng rawuh, Mas Mohamed. Mas saking Jakarta?
+      ar_eg: أهلًا يا أستاذ محمد. حضرتك من جاكرتا؟
+      ar: أهلًا يا أخي محمد. هل أنت من جاكرتا؟
+      en: Welcome, Mohamed. Are you from Jakarta?
+    - speaker: Mohamed
+      text: Kula saking Mesir, Bu. Saking Kairo.
+      ar_eg: أنا من مصر يا مدام. من القاهرة.
+      ar: أنا من مصر يا سيدتي، من القاهرة.
+      en: I'm from Egypt, ma'am. From Cairo.
+    - speaker: Bu Siti
+      text: Wah, saking Mesir! Mas Dimas, simbah sampun dhahar?
+      ar_eg: الله، من مصر! يا Dimas، جدتك أكلت؟
+      ar: ما شاء الله، من مصر! يا Dimas، هل تفضّلت جدتك بالأكل؟
+      en: Wow, from Egypt! Dimas, has your grandmother eaten?
+    - speaker: Mas Dimas
+      text: Sampun, Bu. Matur nuwun.
+      ar_eg: أيوه يا مدام. شكرًا.
+      ar: نعم يا سيدتي. شكرًا.
+      en: Yes, ma'am. Thank you.
+review:
+  status: draft
+  verified: false

@@ -1,161 +1,249 @@
 schema: kabar.lesson/v1
 id: j6.u05.l04
 language: jv
-title: Ing Imogiri
+title: Kanjeng lan sinuwun
 can_do:
-  ar_eg: تقرا أسامي وكلمات عربية وأرقام في زيارة.
-  ar: أن تقرأ أسماء وألفاظًا عربية وأعدادًا في زيارة.
-  en: Read names, loanwords and numbers on a visit.
+  ar_eg: تعرف ألقاب الملوك والوزراء والطبقات في جاوة القديمة، اللي بتتكتب بحروف مُردا.
+  ar: أن تعرف ألقاب الملوك والوزراء والطبقات في جاوة القديمة، وهي تُكتب بحروف المُردا.
+  en: Know the titles of kings, ministers and social ranks in old Java, the names murda letters honour.
 slides:
-  - title: Murda, rekan, angka
+  - title: Pangkat ing kraton
     body:
       ar_eg: |
-        في إيموغيري هتشوف التلاتة مع بعض:
-        - murda للأسامي والألقاب المحترمة: ꦓꦸꦱ꧀ꦠꦶ.
-        - rekan للأصوات العربية: ꦢ꦳ꦶꦏꦶꦂ.
-        - الأرقام بين ꧇…꧇: ꧇꧔꧐꧙꧇.
+        sinuwun = «جلالة الملك»، بيتقال للملك. kanjeng = «صاحب المقام»، لقب قبل اسم النبلاء: Kanjeng Sinuwun.
+        adipati = حاكم إقليم (زي المحافظ أيام زمان)، patih = الوزير الأكبر، carik = كاتب القرية.
+        priyayi = طبقة الموظفين والنبلاء، زي «البهوات والباشوات» عندنا زمان. kawula = الرعية، الناس العاديين: kawula alit = عامة الشعب.
+        pangkat = رتبة أو منصب. أسماء أصحاب الرتب العالية بتتكتب بحروف مُردا.
       ar: |
-        في إيموغيري تجد الثلاثة معًا:
-        - murda لأسماء المحترمين وألقابهم: ꦓꦸꦱ꧀ꦠꦶ.
-        - rekan للأصوات العربية: ꦢ꦳ꦶꦏꦶꦂ.
-        - الأعداد بين ꧇…꧇: ꧇꧔꧐꧙꧇.
+        sinuwun = «جلالة الملك»، يخاطَب به الملك. kanjeng = «صاحب المقام»، لقب يسبق أسماء النبلاء: Kanjeng Sinuwun.
+        adipati = حاكم إقليم، patih = الوزير الأكبر، carik = كاتب القرية.
+        priyayi = طبقة الموظفين والنبلاء، كالبكوات والباشوات قديمًا. kawula = الرعية: kawula alit = عامة الناس.
+        pangkat = رتبة أو منصب. تُكتب أسماء ذوي الرتب العالية بحروف المُردا.
       en: |
-        At Imogiri you'll see all three together:
-        - murda for honoured names and titles: ꦓꦸꦱ꧀ꦠꦶ.
-        - rekan for Arabic sounds: ꦢ꦳ꦶꦏꦶꦂ.
-        - numbers between ꧇…꧇: ꧇꧔꧐꧙꧇.
-    grammar: jv.aksara.murda-rekan
+        sinuwun = "His Majesty", used for the king. kanjeng = "the honourable", a title before a noble's name: Kanjeng Sinuwun.
+        adipati = regent ruling a region, patih = chief minister (grand vizier), carik = village clerk.
+        priyayi = the official and noble class. kawula = subjects, ordinary people: kawula alit = the common folk.
+        pangkat = rank, position. Names of high-ranking people are written with murda letters.
     examples:
-      - text: ꦯꦸꦭ꧀ꦠꦤ꧀ (Sultan)
-        ar_eg: السلطان
-        ar: السلطان
-        en: Sultan
-      - text: ꧇꧔꧐꧙꧇ (409)
-        ar_eg: أربعمية وتسعة
-        ar: أربعمائة وتسعة
-        en: four hundred and nine
+      - text: Kanjeng Sinuwun rawuh ing kraton.
+        ar_eg: جلالة الملك وصل القصر.
+        ar: وصل جلالة الملك إلى القصر.
+        en: His Majesty has arrived at the palace.
+      - text: Patih iku pangkate ing sangisore raja.
+        ar_eg: الوزير الأكبر رتبته تحت الملك.
+        ar: رتبة الوزير الأكبر دون الملك.
+        en: The chief minister ranks below the king.
+      - text: Carik desa nulis layang kanggo warga.
+        ar_eg: كاتب القرية بيكتب جوابات للأهالي.
+        ar: يكتب كاتب القرية الرسائل للأهالي.
+        en: The village clerk writes letters for the residents.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة على البوابة مكتوبة بحرف murda؟
-      ar: أي كلمة على البوابة مكتوبة بحرف murda؟
-      en: Which word on the gate is written with a murda letter?
-    options: ["ꦱꦼꦒ", "ꦧꦸꦏꦸ", "ꦓꦸꦱ꧀ꦠꦶ"]
-    answer: 2
+    type: match_pairs
+    pairs:
+      - text: kanjeng
+        ar_eg: صاحب المقام
+        ar: صاحب المقام
+        en: the honourable
+      - text: sinuwun
+        ar_eg: جلالة الملك
+        ar: جلالة الملك
+        en: His Majesty
+      - text: adipati
+        ar_eg: حاكم إقليم
+        ar: حاكم إقليم
+        en: regent
+      - text: patih
+        ar_eg: الوزير الأكبر
+        ar: الوزير الأكبر
+        en: chief minister
+    words: [kanjeng, sinuwun, adipati, patih]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: priyayi
+        ar_eg: طبقة النبلاء
+        ar: طبقة النبلاء
+        en: noble class
+      - text: carik
+        ar_eg: كاتب القرية
+        ar: كاتب القرية
+        en: village clerk
+      - text: kawula
+        ar_eg: الرعية
+        ar: الرعية
+        en: subjects
+      - text: pangkat
+        ar_eg: رتبة
+        ar: رتبة
+        en: rank
+    words: [priyayi, carik, kawula, pangkat]
+  - id: e03
     type: listen
-    text: Undhak-undhakane ana patang atus sanga.
+    text: Patih iku pangkate ing sangisore raja.
     question:
-      ar_eg: السلالم عددها كام؟
-      ar: كم عدد الدرجات؟
-      en: How many steps are there?
-    options: ["꧇꧔꧐꧙꧇", "꧇꧔꧙꧐꧇", "꧇꧔꧙꧇"]
+      ar_eg: مين رتبته تحت الملك؟
+      ar: من رتبته دون الملك؟
+      en: Who ranks below the king?
+    options: [رتبة الوزير تحت الملك, الوزير هو الملك, الكاتب أعلى من الوزير]
     answer: 0
     meaning:
-      ar_eg: السلالم عددها أربعمية وتسعة.
-      ar: عدد الدرجات أربعمائة وتسع.
-      en: There are four hundred and nine steps.
-    words: [undhak-undhakan]
-  - id: e03
-    type: fill_blank
-    sentence: ꦢ꦳ꦶꦏꦶꦂ = ___
-    meaning:
-      ar_eg: اكتب القراية بالحروف اللاتينية.
-      ar: اكتب القراءة بالحروف اللاتينية.
-      en: Type the reading in Latin letters.
-    answers: [dzikir]
+      ar_eg: الوزير الأكبر رتبته تحت الملك.
+      ar: رتبة الوزير الأكبر دون الملك.
+      en: The chief minister ranks below the king.
+    words: [patih, pangkat]
   - id: e04
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب التاريخ بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
-      ar: "اكتب التاريخ بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
-      en: "Write the date in Latin letters and digits: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
-    answers: [tanggal 17, tanggal pitulas]
+    type: fill_blank
+    sentence: Biyen, wong sing mrentah kabupaten diarani ___.
+    meaning:
+      ar_eg: زمان، اللي بيحكم المقاطعة كان اسمه ___.
+      ar: قديمًا كان حاكم المقاطعة يسمّى ___.
+      en: In the past, the ruler of a regency was called the ___.
+    options: [adipati, carik, kawula]
+    answers: [adipati]
+    words: [adipati, carik, kawula]
+    explain:
+      ar_eg: adipati = الحاكم بتاع الـ kabupaten زمان. carik = كاتب القرية وkawula = الرعية.
+      ar: adipati حاكم الإقليم قديمًا. أما carik فكاتب القرية وkawula الرعية.
+      en: adipati was a regency's ruler. carik is the village clerk and kawula are subjects.
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الطبقة اللي فيها الموظفين والنبلاء في جاوة القديمة اسمها …
+      ar: طبقة الموظفين والنبلاء في جاوة القديمة تسمّى …
+      en: The class of officials and nobles in old Java is the …
+    options: [kawula, priyayi, sinuwun]
+    answer: 1
+    explain:
+      ar_eg: priyayi = طبقة النبلاء والموظفين.
+      ar: priyayi = طبقة النبلاء والموظفين.
+      en: priyayi = the noble and official class.
+    words: [kawula, priyayi, sinuwun]
+  - id: e06
+    type: fill_blank
+    sentence: Ing kantor desa, ___ sing nulis layang.
+    meaning:
+      ar_eg: في مكتب القرية، الـ___ هو اللي بيكتب الجوابات.
+      ar: في مكتب القرية، ___ هو من يكتب الرسائل.
+      en: At the village office, the ___ writes the letters.
+    options: [carik, kanjeng, pangkat]
+    answers: [carik]
+    words: [carik, kanjeng, pangkat]
+    explain:
+      ar_eg: carik = كاتب القرية. kanjeng = لقب تعظيم وpangkat = رتبة.
+      ar: carik كاتب القرية. أما kanjeng فلقب تبجيل وpangkat رتبة.
+      en: carik is the village clerk. kanjeng is an honorific and pangkat is rank.
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة بنقولها للملك بمعنى «جلالتك»؟
+      ar: أي كلمة يخاطَب بها الملك بمعنى «جلالتك»؟
+      en: Which word addresses the king as 'Your Majesty'?
+    options: [patih, sinuwun, priyayi]
+    answer: 1
+    explain:
+      ar_eg: sinuwun = جلالة الملك؛ patih = الوزير.
+      ar: sinuwun = جلالة الملك؛ patih = الوزير.
+      en: sinuwun = His Majesty; patih = the chief minister.
+    words: [patih, sinuwun, priyayi]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: السلالم عددها أربعمية وتسعة.
-      ar: عدد الدرجات أربعمائة وتسع.
-      en: There are four hundred and nine steps.
-    answer: Undhak-undhakane ana patang atus sanga.
-    distractors: [papat, satus]
-    words: [undhak-undhakan]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الراجل اللي بيحرس القبور الملكية اسمه إيه؟
-      ar: ما اسم حارس المقابر الملكية؟
-      en: What do you call the keeper of the royal tombs?
-    options: [juru kunci, dhalang, bakul]
-    answer: 0
-    words: [juru kunci]
-  - id: e07
-    type: fill_blank
-    sentence: ___ njaga makam raja-raja.
-    meaning:
-      ar_eg: حارس المقابر بيحرس قبور الملوك.
-      ar: يحرس حارسُ المقابر قبورَ الملوك.
-      en: The tomb keeper looks after the kings' graves.
-    options: [juru kunci, undhak-undhakan, zakat]
-    answers: [juru kunci]
-    words: [juru kunci]
-  - id: e08
-    type: dictation
-    text: Juru kunci njaga makam.
-    meaning:
-      ar_eg: حارس المقابر بيحرس القبر.
-      ar: يحرس حارسُ المقابر القبر.
-      en: The tomb keeper looks after the grave.
-    words: [juru kunci]
+      ar_eg: صاحب المقام الحاكم وصل.
+      ar: وصل صاحب المقام الحاكم.
+      en: The honourable regent has arrived.
+    answer: Kanjeng adipati rawuh.
+    distractors: [carik, pangkat]
+    words: [kanjeng, adipati]
+    explain:
+      ar_eg: Kanjeng adipati rawuh = سعادة الحاكم وصل. carik = كاتب وpangkat = رتبة، ومش في المعنى.
+      ar: Kanjeng adipati rawuh = وصل سعادة الحاكم. أما carik (كاتب) وpangkat (رتبة) فليستا في المعنى.
+      en: Kanjeng adipati rawuh is "the honourable regent has arrived". carik (clerk) and pangkat (rank) aren't in the meaning.
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Patih lan carik ngadhep sinuwun.
+    answers_meaning:
+      ar_eg: [الوزير والكاتب قابلوا الملك, الوزير الأكبر والكاتب وقفوا قدام جلالة الملك]
+      ar: [مثل الوزير والكاتب بين يدي الملك, الوزير الأكبر والكاتب في حضرة جلالة الملك]
+      en: [The chief minister and the clerk appear before the king, The chief minister and the clerk come before His Majesty]
+    words: [patih, carik]
+  - id: e10
     type: speaking
-    text: Undhak-undhakane akeh banget!
+    text: Kanjeng priyayi iku pangkate dhuwur.
     meaning:
-      ar_eg: السلالم كتير قوي!
-      ar: الدرجات كثيرة جدًا!
-      en: There are so many steps!
-    words: [undhak-undhakan]
+      ar_eg: النبيل ده رتبته عالية.
+      ar: هذا النبيل رتبته رفيعة.
+      en: That noble gentleman has a high rank.
+    words: [kanjeng, priyayi, pangkat]
 dialogue:
-  title: Juru kunci
   lines:
     - speaker: Pak Harjo
-      text: Kula juru kunci ing Imogiri, Mas.
-      ar_eg: أنا حارس المقابر في إيموغيري يا ابني.
-      ar: أنا حارس المقابر في إيموغيري يا بني.
-      en: I'm the tomb keeper at Imogiri.
+      text: Mas, aksara murda menika kangge nyerat asma tiyang ingkang pangkatipun inggil.
+      ar_eg: يا أستاذ، حروف مُردا دي بنكتب بيها أسامي الناس اللي رتبتهم عالية.
+      ar: حروف المُردا هذه تُكتب بها أسماء ذوي الرتب العالية.
+      en: Murda letters are for writing the names of high-ranking people.
     - speaker: Mohamed
-      text: Pak, kula badhe minggah dhateng makam.
-      ar_eg: يا عمّو، أنا عايز أطلع للمقابر.
-      ar: يا سيدي، أريد الصعود إلى المقابر.
-      en: Sir, I'd like to go up to the tombs.
+      text: Kados Kanjeng Sinuwun, Pak?
+      ar_eg: زي جلالة الملك يا عم؟
+      ar: مثل جلالة الملك يا سيدي؟
+      en: Like His Majesty, sir?
     - speaker: Pak Harjo
-      text: Mangga. Undhak-undhakanipun kathah sanget.
-      ar_eg: اتفضل. السلالم كتير قوي.
-      ar: تفضّل. الدرجات كثيرة جدًا.
-      en: Please do. There are a great many steps.
+      text: Leres. Ugi adipati lan patih ing jaman rumiyin.
+      ar_eg: مظبوط. وكمان الحكام والوزرا أيام زمان.
+      ar: صحيح. وكذلك الحكام والوزراء قديمًا.
+      en: Right. And regents and chief ministers in the old days.
     - speaker: Mohamed
-      text: Kula sampun maos ing papan, sekawan atus sanga!
-      ar_eg: "أنا قريت على اللوحة: أربعمية وتسعة!"
-      ar: "قرأتُ على اللوحة: أربعمائة وتسع!"
-      en: "I read it on the sign: four hundred and nine!"
+      text: Menawi carik desa?
+      ar_eg: وكاتب القرية؟
+      ar: وكاتب القرية؟
+      en: And a village clerk?
     - speaker: Pak Harjo
-      text: Leres! Ngatos-atos, Mas.
-      ar_eg: صح! خلي بالك من نفسك يا ابني.
-      ar: صحيح! انتبه لنفسك يا بني.
-      en: That's right! Take care.
+      text: Carik menika priyayi alit. Asmanipun cekap aksara limrah.
+      ar_eg: الكاتب ده من النبلاء الصغيرين. اسمه تكفيه الحروف العادية.
+      ar: الكاتب من صغار النبلاء، تكفي اسمه الحروف العادية.
+      en: A clerk is a minor priyayi. Ordinary letters are enough for his name.
+    - speaker: Mohamed
+      text: Lan kula namung kawula alit!
+      ar_eg: وأنا مجرد واحد من عامة الشعب!
+      ar: وأنا مجرّد واحد من العامة!
+      en: And I'm just one of the common folk!
 new_words:
-  - word: juru kunci
+  - word: sinuwun
     pos: noun
-    ar_eg: حارس المقابر / المكان المقدس
-    ar: حارس المقابر أو المزار
-    en: keeper of a tomb or sacred site = juru kunci
-  - word: undhak-undhakan
+    ar_eg: جلالة الملك
+    ar: جلالة الملك
+    en: His Majesty
+  - word: adipati
     pos: noun
-    ar_eg: سلالم / درجات
-    ar: درجات السلّم
-    en: steps, stairs = anak tangga
+    ar_eg: حاكم إقليم
+    ar: حاكم إقليم
+    en: regent, duke
+  - word: patih
+    pos: noun
+    ar_eg: الوزير الأكبر
+    ar: الوزير الأكبر
+    en: chief minister, grand vizier
+  - word: priyayi
+    pos: noun
+    ar_eg: طبقة النبلاء والموظفين
+    ar: طبقة النبلاء والموظفين
+    en: Javanese noble and official class
+  - word: carik
+    pos: noun
+    ar_eg: كاتب القرية
+    ar: كاتب القرية
+    en: village clerk
+  - word: kawula
+    pos: noun
+    ar_eg: الرعية، عامة الناس
+    ar: الرعية، العامة
+    en: subjects, common people
+  - word: pangkat
+    pos: noun
+    ar_eg: رتبة، منصب
+    ar: رتبة، منصب
+    en: rank, position
 review:
   status: draft
   verified: false

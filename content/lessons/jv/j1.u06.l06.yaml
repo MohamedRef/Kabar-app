@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: j1.u06.l06
+language: jv
+title: Takon dalan
+can_do:
+  ar_eg: تسأل عن الطريق وتفهم الوصف.
+  ar: أن تسأل عن الطريق وتتّبع الإرشادات.
+  en: Ask and follow directions.
+slides:
+  - title: Takon dalan
+    body:
+      ar_eg: |
+        **takon dalan** = تسأل عن الطريق (takon = يسأل، dalan = طريق = jalan).
+        اللي محتاجه كله:
+        - السؤال: «… neng ngendi, ya?» = … فين؟ (ya بتليّن السؤال).
+        - الرد: lurus (على طول)، ngiwa (شمال)، nengen (يمين)، terus (وبعدين).
+        - المكان: neng ngarep (قدام)، neng mburi (ورا)، neng jejere (جنب).
+        - والإشارة: sing kae, neng kana = اللي هناك بعيد.
+        ومع حد مش عارفه: ابدأ بـ Mas / Mbak، واختم بـ «Matur nuwun».
+      ar: |
+        **takon dalan** = السؤال عن الطريق (takon = يسأل، dalan = طريق = jalan).
+        وكل ما تحتاجه:
+        - السؤال: «… neng ngendi, ya?» = أين …؟ (وya تليّن السؤال).
+        - الجواب: lurus (مباشرة)، ngiwa (يسارًا)، nengen (يمينًا)، terus (ثم).
+        - الموضع: neng ngarep (أمام)، neng mburi (خلف)، neng jejere (بجانب).
+        - والإشارة: sing kae, neng kana = ذلك الذي هناك.
+        ومع الغريب ابدأ بـ Mas / Mbak واختم بـ «Matur nuwun».
+      en: |
+        **takon dalan** = asking the way (takon = ask, dalan = road = jalan).
+        All you need:
+        - The question: "… neng ngendi, ya?" = Where's …? (ya softens it).
+        - The answer: lurus (straight), ngiwa (left), nengen (right), terus (then).
+        - The spot: neng ngarep (in front), neng mburi (behind), neng jejere (next to).
+        - Pointing: sing kae, neng kana = that one over there.
+        With a stranger: open with Mas / Mbak and close with "Matur nuwun".
+    grammar: jv.preposition.place
+    examples:
+      - text: Mbak, stasiun neng ngendi, ya?
+        ar_eg: لو سمحتي يا آنسة، المحطة فين؟
+        ar: يا آنسة، أين المحطة من فضلك؟
+        en: Excuse me, where's the station?
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من الحوار) محمد رايح فين؟
+      ar: (من الحوار) إلى أين يذهب محمد؟
+      en: (From the dialogue) Where is Mohamed going?
+    options: [Neng stasiun, Neng pasar, Neng kebun binatang]
+    answer: 2
+    words: [neng, kebun binatang]
+    explain:
+      ar_eg: محمد بيسأل عن جنينة الحيوانات (kebun binatang)، مش المحطة ولا السوق.
+      ar: يسأل محمد عن حديقة الحيوان (kebun binatang)، لا عن المحطة ولا السوق.
+      en: Mohamed is asking for the zoo (kebun binatang), not the station or the market.
+  - id: e02
+    type: multiple_choice
+    question: Saka kene lurus wae, terus nengen.
+    question_meaning:
+      ar_eg: Mbak Indri قالت كده. محمد يعمل إيه؟
+      ar: هكذا قالت Mbak Indri. ماذا يفعل محمد؟
+      en: Mbak Indri said this. What should Mohamed do?
+    options: ['Lurus, terus nengen', 'Lurus, terus ngiwa', 'Nengen, terus lurus']
+    answer: 0
+    explain:
+      ar_eg: الأول lurus (على طول)، terus (وبعدين) nengen (يمين).
+      ar: أولًا lurus (مباشرة)، ثم terus nengen (يمينًا).
+      en: First lurus (straight), terus (then) nengen (right).
+    words: [lurus, terus, nengen]
+  - id: e03
+    type: listen
+    text: Kebun binatange neng jejere terminal.
+    options: [Kebun binatange neng jejere terminal., Kebun binatange neng ngarep terminal., Kebun binatange neng mburi terminal.]
+    answer: 0
+    words: [jejere]
+  - id: e04
+    type: fill_blank
+    sentence: Saka kene ___ wae, Mas.
+    meaning:
+      ar_eg: من هنا على طول يا أستاذ.
+      ar: من هنا امشِ مباشرة يا أخي.
+      en: From here just go straight, Mas.
+    answers: [lurus]
+    words: [lurus]
+    explain:
+      ar_eg: lurus wae = على طول كده.
+      ar: lurus wae = إلى الأمام مباشرة.
+      en: lurus wae = just go straight.
+  - id: e05
+    type: fill_blank
+    sentence: Mbak, kebun binatang neng ___, ya?
+    meaning:
+      ar_eg: لو سمحتي يا آنسة، جنينة الحيوانات فين؟
+      ar: يا آنسة، أين حديقة الحيوان من فضلك؟
+      en: Excuse me, where's the zoo?
+    answers: [ngendi, endi]
+    words: [ngendi]
+    explain:
+      ar_eg: neng ngendi = فين، للسؤال عن المكان.
+      ar: neng ngendi = أين، للسؤال عن المكان.
+      en: neng ngendi = where, asking for a place.
+  - id: e06
+    type: match_pairs
+    pairs:
+      - text: dalan
+        ar_eg: طريق، شارع (= jalan)
+        ar: طريق (= jalan)
+        en: road (= jalan)
+      - text: terminal
+        ar_eg: موقف أتوبيسات
+        ar: محطة حافلات
+        en: bus terminal
+      - text: ngarep
+        ar_eg: قدام
+        ar: أمام
+        en: in front
+      - text: mburi
+        ar_eg: ورا
+        ar: خلف
+        en: behind
+      - text: jejere
+        ar_eg: جنب
+        ar: بجانب
+        en: next to
+      - text: kebun binatang
+        ar_eg: جنينة الحيوانات
+        ar: حديقة الحيوان
+        en: zoo
+    words: [dalan, terminal, ngarep, mburi, jejere, kebun binatang]
+  - id: e07
+    type: listen
+    text: Dalane lurus wae, Mas.
+    options: ['Dalane lurus wae, Mas.', 'Dalane nengen wae, Mas.', 'Dalane ngiwa wae, Mas.']
+    answer: 0
+    meaning:
+      ar_eg: الطريق على طول يا أستاذ.
+      ar: الطريق مستقيم يا أخي.
+      en: The road goes straight on, Mas.
+    words: [dalan, lurus, nengen, ngiwa]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: جنينة الحيوانات جنب محطة الأتوبيس.
+      ar: حديقة الحيوان بجانب موقف الحافلات.
+      en: The zoo is next to the bus terminal.
+    answer: Kebun binatange neng jejere terminal.
+    distractors: [saka, kae]
+    words: [neng, jejere]
+    explain:
+      ar_eg: neng jejere = جنب، وterminal = موقف الأتوبيسات. saka = من، وkae = ده اللي هناك، ومش في المعنى.
+      ar: neng jejere = بجانب، وterminal = موقف الحافلات؛ أما saka فمن، وkae ذاك البعيد، وليسا في المعنى.
+      en: neng jejere = next to, terminal = bus terminal. saka (from) and kae (that over there) aren't in the meaning.
+  - id: e09
+    type: dictation
+    text: Lurus wae, terus nengen.
+    meaning:
+      ar_eg: على طول، وبعدين يمين.
+      ar: امشِ مباشرة ثم انعطف يمينًا.
+      en: Go straight, then turn right.
+    words: [lurus, nengen]
+  - id: e10
+    type: speaking
+    text: Mbak, dalan menyang terminal sing endi, ya?
+    meaning:
+      ar_eg: لو سمحتي يا آنسة، أنهي طريق يودّي على موقف الأتوبيسات؟
+      ar: من فضلك يا آنسة، أيّ طريق يؤدي إلى محطة الحافلات؟
+      en: Excuse me, which road goes to the bus terminal?
+    words: [dalan, menyang, terminal, sing endi]
+dialogue:
+  title: Takon dalan neng Prawirotaman
+  lines:
+    - speaker: Mohamed
+      text: Mbak, kebun binatang neng ngendi, ya?
+      ar_eg: لو سمحتي يا آنسة، جنينة الحيوانات فين؟
+      ar: يا آنسة، أين حديقة الحيوان من فضلك؟
+      en: Excuse me, Mbak, where's the zoo?
+    - speaker: Mbak Indri
+      text: Saka kene lurus wae, Mas.
+      ar_eg: من هنا على طول يا أستاذ.
+      ar: من هنا امشِ مباشرة يا أخي.
+      en: From here just go straight, Mas.
+    - speaker: Mohamed
+      text: Lurus wae? Terus?
+      ar_eg: على طول؟ وبعدين؟
+      ar: مباشرة؟ ثم ماذا؟
+      en: Straight? And then?
+    - speaker: Mbak Indri
+      text: Terus nengen. Kebun binatange neng jejere terminal Giwangan.
+      ar_eg: وبعدين يمين. جنينة الحيوانات جنب موقف جيوانجان.
+      ar: ثم يمينًا. حديقة الحيوان بجانب موقف جيوانجان.
+      en: Then right. The zoo is next to Giwangan terminal.
+    - speaker: Mohamed
+      text: Matur nuwun, Mbak!
+      ar_eg: شكرًا يا آنسة!
+      ar: شكرًا يا آنسة!
+      en: Thank you, Mbak!
+    - speaker: Mbak Indri
+      text: Padha-padha, Mas. Ati-ati, ya!
+      ar_eg: العفو يا أستاذ. خلي بالك من نفسك!
+      ar: عفوًا يا أخي. انتبه لنفسك!
+      en: You're welcome, Mas. Take care!
+new_words:
+  - word: terminal
+    pos: noun
+    ar_eg: موقف أتوبيسات (زي الإندونيسي)
+    ar: موقف حافلات (كالإندونيسية)
+    en: bus terminal (as in Indonesian)
+review:
+  status: draft
+  verified: false

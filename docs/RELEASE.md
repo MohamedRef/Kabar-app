@@ -33,7 +33,7 @@ A release is cut only when every gate in this table is green.
 |---|---|
 | fmt, clippy `-D warnings`, workspace tests, content `validate`, golden sets | CI (`fmt, clippy, tests`) |
 | Android arm64 compiles; a preview APK builds | CI (`Android arm64 compiles`, `Android preview APK`) |
-| The Mac app compiles, its tests pass and Kabar.app bundles | CI (`Mac app compiles`) |
+| The Mac app compiles, its tests pass and Kabar.app bundles | The Mac workflow (`Mac app compiles`: on main, nightly, by hand and on PRs that touch Mac code; a failed nightly opens a `critic:platform` issue) |
 | core and protocol build for wasm32; Kabar Cloud end-to-end on local workerd | CI |
 | Desktop QA pass at phone width and tablet width: the core loop, tone, bidi, no horizontal scroll | in the cloud, Xvfb (reports in the project's `qa/` folder) |
 | `ATTRIBUTION.md` covers every dataset, corpus, font and sound | review before tagging |
@@ -44,6 +44,7 @@ A release is cut only when every gate in this table is green.
 | Popover under 100 ms on the S24 Ultra; smooth scrolling on the Tab S11 | **devices** |
 | A shared WhatsApp screenshot reads with popovers in Arabic | **devices** |
 | The cost dashboard shows $0 with paid engines off | **devices** |
+| Android backup stays small and keeps progress: `adb shell bmgr backupnow app.kabar`, then `adb shell dumpsys backup` shows Kabar well under 25 MB; after a restore, progress is back and Cloud asks to sign in again (#370) | **devices** |
 
 ## 3. Versions and updates
 
@@ -104,6 +105,54 @@ $0 (GitHub Releases of the public repository).
 | Build | the signed APK | `Kabar.app` zipped with `ditto` |
 | Install | PackageInstaller; Android checks it's the same package and signing key | unzip beside the running app, swap with renames, reopen |
 | Automatic mode | downloads in the background on Wi-Fi only (mobile data and Data Saver wait; the offer still shows); installs quietly when Kabar is in the background and not mid-lesson (Android 12+, once Kabar installed itself), otherwise one tap | downloads in the background; goes in at the next launch |
+| What's new | before installing (banner, notification, Settings), once after the update, and the whole changelog in Settings | same |
+| "New version" notification | from the app's own checks while it's in the background, and from a JobScheduler job about every 4 hours while Kabar is closed (`UpdateCheckJob`, calling Rust's `update::background_check` over JNI); a Download or Install now button | from the app's own checks while it runs (UNUserNotificationCenter, bundled app only) |
+
+**The "new version" notification.** One per version and step (out, then
+downloaded and ready), worded in the learner's language with the first
+three lines of what's new (below). Never
+while Kabar is in front (its banner says it there), never inside Kak Nur's
+quiet hours (the next check after they end sends it), never for a version
+whose banner was closed, and not at all with Settings › Updates' switch off,
+in "Only when I check" mode, or when the device's notification switch is off.
+A tap opens the "what's new" sheet; the button also starts the download or
+the install. A tap while Kabar is already open is picked up within two
+seconds (the tap's activity is translucent, so the page may never hide), a
+tap left over a minute is dropped, and the job marks a notification as sent
+only after Android showed it (`UpdateCheckJob.shown`), so one Android refused
+goes out at the next run.
+
+**What's new.** Every pull request the learner would notice adds
+`changes/<topic>.yaml`, one line per change, in Egyptian Arabic and English
+(`ar` optional), each `new`, `improved` or `fixed`:
+
+```yaml
+- kind: fixed
+  ar_eg: الصوت مبقاش بيقطع لما تقفل الشاشة
+  en: Audio no longer cuts out with the screen off
+```
+
+A file holding `[]` says there's nothing to tell (CI, refactors, docs).
+When a feed is built (CI for `preview`, `just publish-update` for releases),
+`kabar-tools update manifest --previous <current update.json> --changes`
+gathers the files added since the commit the feed carries now, one pull
+request at a time; a merged pull request with no file falls back to its
+title (English), and titles starting with CI, docs, refactor, test and the
+like are skipped. That build's entry goes on top of the feed's `history`
+(40 builds, inside the signed `update.json`, so nothing extra to download or
+trust), and the notes older apps read are its first three lines. CI warns
+on an app pull request with no changes file; `kabar-tools update changes
+[--since <commit>]` previews what the next build will say.
+
+The app keeps every history it verifies (`updates/history.json`) and shows
+it in one sheet, laid out like Morphe Manager's update dialog: the installed
+build → the new one, how many builds that is and a count per kind, then a
+timeline with the newest build open and a card per kind ("Show all" past
+six lines). It opens from the Today banner's "What's new?", from the
+notification, and from Settings › About › Updates (also "Changelog": every
+build so far); downloading and installing happen in it too. At the first
+launch after an update it opens once by itself, listing everything since
+the build that ran before.
 
 **Channels.** `alpha`, `beta`, `stable` for release builds (the learner
 picks in Settings; a beta also reaches alpha, a release reaches everyone),

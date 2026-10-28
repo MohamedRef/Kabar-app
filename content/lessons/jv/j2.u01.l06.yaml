@@ -1,219 +1,253 @@
 schema: kabar.lesson/v1
 id: j2.u01.l06
 language: jv
-title: Ulangan J2.1
+title: Momong ponakan
 can_do:
-  ar_eg: توصف عيلتك بالنغوكو.
-  ar: أن تصف عائلتك بالنغوكو.
-  en: Describe your family in ngoko.
+  ar_eg: 'تتكلم عن العيلة في البيت: مين بيراعي العيل، ومين بيشيل البيبي، ومين بيتخانق.'
+  ar: 'أن تتحدث عن العائلة في البيت: من يرعى الطفل ومن يحمل الرضيع ومن يتشاجر.'
+  en: 'Talk about family life at home: who minds the kids, who carries the baby, who''s squabbling.'
 slides:
-  - title: Kulawarga
+  - title: Neng omahe Pak Budi
     body:
       ar_eg: |
-        مراجعة كلمات العيلة:
-        - bapak، ibu (simbok)، anak، bojo.
-        - mas (أخ كبير)، mbakyu (أخت كبيرة)، adhi (أصغر).
-        - pakdhe / budhe (أكبر من أبوك أو أمك)، paklik / bulik (أصغر).
-        - mbah kakung، mbah putri، putu، ponakan.
-        والسن هو اللي بيحدد، مش الجهة.
-        - بعد ساكن -e: omahe، jenenge. بعد متحرك -ne: bukune، regane.
-        - «بتاع فلان»: omahe Pak Budi (الحاجة الأول).
-        - -ku / -mu: masku، adhimu. · duweke sapa? = بتاع مين؟
+        - **kangmas** = أخويا الكبير، باحترام وحب (kakak laki-laki). ولما بنختصر بنقول Mas.
+        - **wedok** = بنت / ست (perempuan): anak wedok = بنت (ابنة).
+        - **momong** = يراعي عيل (mengasuh) · **nggendhong** = يشيل البيبي على جنبه أو في شال (menggendong).
+        - **rewel** = نكدي وبيزن، للعيل (rewel) · **ngelus** = يطبطب ويمسح بإيده (mengelus).
+        - **padu** = يتخانق (bertengkar) · **ngopeni** = يرعى ويهتم بحاجة أو حد (merawat).
       ar: |
-        مراجعة ألفاظ العائلة:
-        - bapak وibu (simbok) وanak وbojo.
-        - mas (الأخ الأكبر)، mbakyu (الأخت الكبرى)، adhi (الأصغر).
-        - pakdhe / budhe (أكبر من الوالد)، paklik / bulik (أصغر).
-        - mbah kakung وmbah putri وputu وponakan.
-        والمعيار السن لا الجهة.
-        - بعد الساكن -e: omahe، jenenge، وبعد الصائت -ne: bukune، regane.
-        - الإضافة: omahe Pak Budi (المملوك أولًا).
-        - -ku / -mu: masku، adhimu. · duweke sapa? = لمن؟
+        - **kangmas** = الأخ الأكبر، باحترام ومودة (kakak laki-laki)، ويُختصر Mas.
+        - **wedok** = أنثى / امرأة (perempuan): anak wedok = ابنة.
+        - **momong** = يرعى طفلًا (mengasuh) · **nggendhong** = يحمل الرضيع على جنبه أو في وشاح (menggendong).
+        - **rewel** = كثير البكاء والتذمّر، للطفل (rewel) · **ngelus** = يربّت ويمسح بيده (mengelus).
+        - **padu** = يتشاجر (bertengkar) · **ngopeni** = يرعى ويعتني (merawat).
       en: |
-        Family words recap:
-        - bapak, ibu (simbok), anak, bojo.
-        - mas (older brother), mbakyu (older sister), adhi (younger sibling).
-        - pakdhe / budhe (older than your parent), paklik / bulik (younger).
-        - mbah kakung, mbah putri, putu, ponakan.
-        Age decides, not which side of the family.
-        - After a consonant -e: omahe, jenenge. After a vowel -ne: bukune, regane.
-        - "X's": omahe Pak Budi (thing first).
-        - -ku / -mu: masku, adhimu. · duweke sapa? = whose?
-    grammar: jv.kinship.terms
+        - **kangmas** = older brother, said with respect and affection (kakak laki-laki); shortened to Mas.
+        - **wedok** = female, girl, woman (perempuan): anak wedok = daughter.
+        - **momong** = mind a child (mengasuh) · **nggendhong** = carry a baby on the hip or in a sling (menggendong).
+        - **rewel** = fussy, whiny, of a child (rewel) · **ngelus** = stroke, pat gently (mengelus).
+        - **padu** = quarrel (bertengkar) · **ngopeni** = look after, take care of (merawat).
+    examples:
+      - text: Sari lagi momong ponakane.
+        ar_eg: ساري بتراعي بنت أختها.
+        ar: ساري ترعى ابنة أختها.
+        en: Sari is minding her niece.
+      - text: Bayine rewel, Ibu nggendhong bayine.
+        ar_eg: البيبي بيزن، وماما شايلاه.
+        ar: الرضيع يبكي، والأم تحمله.
+        en: The baby's fussy; Mum is carrying her.
+      - text: Aja padu, cah!
+        ar_eg: ماتتخانقوش يا ولاد!
+        ar: لا تتشاجروا يا أولاد!
+        en: Don't fight, you two!
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: pakdhe
-        ar_eg: عم / خال أكبر من بابا أو ماما
-        ar: العم / الخال الأكبر من الوالد
-        en: parent's older brother
-      - text: bulik
-        ar_eg: عمة / خالة أصغر من بابا أو ماما
-        ar: العمة / الخالة الأصغر من الوالد
-        en: parent's younger sister
-      - text: putu
-        ar_eg: حفيد
-        ar: الحفيد
-        en: grandchild
-      - text: mbah kakung
-        ar_eg: جدو
-        ar: الجد
-        en: grandfather
-      - text: ponakan
-        ar_eg: ابن الأخ / الأخت
-        ar: ابن الأخ / الأخت
-        en: niece / nephew
-    words: [pakdhe, bulik, putu, mbah kakung, ponakan]
+      - text: kangmas
+        ar_eg: أخويا الكبير
+        ar: الأخ الأكبر
+        en: older brother
+      - text: wedok
+        ar_eg: بنت / ست
+        ar: أنثى
+        en: female, girl
+      - text: momong
+        ar_eg: يراعي عيل
+        ar: يرعى طفلًا
+        en: mind a child
+      - text: nggendhong
+        ar_eg: يشيل البيبي
+        ar: يحمل الرضيع
+        en: carry a baby
+    words: [kangmas, wedok, momong, nggendhong]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أخت بابا، وهي أكبر من بابا. تقولها إيه؟
-      ar: أخت أبيك، وهي أكبر منه. بمَ تناديها؟
-      en: Your father's sister, older than him. What do you call her?
-    options: [mbakyu, budhe, bulik]
-    answer: 1
-    words: [budhe]
+    type: match_pairs
+    pairs:
+      - text: rewel
+        ar_eg: نكدي وبيزن
+        ar: كثير التذمّر
+        en: fussy
+      - text: padu
+        ar_eg: يتخانق
+        ar: يتشاجر
+        en: quarrel
+      - text: ngopeni
+        ar_eg: يرعى ويهتم
+        ar: يعتني
+        en: look after
+      - text: ngelus
+        ar_eg: يطبطب
+        ar: يربّت
+        en: stroke, pat
+    words: [rewel, padu, ngopeni, ngelus]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تقول «اسم مراتي»؟ (jeneng + bojo)
-      ar: كيف تقول «اسم زوجتي»؟ (jeneng + bojo)
-      en: How do you say "my wife's name"? (jeneng + bojo)
-    options: [jenenge bojoku, jenengku bojo, bojoku jenenge]
-    answer: 0
-    explain:
-      ar_eg: الحاجة الأول (jenenge) وبعدين صاحبها (bojoku)، زي «اسم مراتي».
-      ar: المملوك أولًا (jenenge) ثم المالك (bojoku) كالإضافة العربية.
-      en: Thing first (jenenge), owner second (bojoku), like «اسم مراتي».
-    words: [jenenge, bojo]
-  - id: e04
-    type: multiple_choice
-    question: rega + -e / -ne
-    question_meaning:
-      ar_eg: أنهي شكل صح؟
-      ar: أيّ صيغة صحيحة؟
-      en: Which form is right?
-    options: [regae, reganya, regane]
-    answer: 2
-    explain:
-      ar_eg: rega آخرها a (متحرك) ⇐ -ne. وreganya إندونيسي.
-      ar: تنتهي rega بصائت ⇐ -ne، أما reganya فإندونيسية.
-      en: rega ends in a vowel ⇒ -ne. reganya is Indonesian.
-    words: [regane]
-  - id: e05
     type: listen
-    text: Iki bojoku, lan iki anakku.
-    options: ['Iki bojoku, lan iki anakku.', 'Iki bojoku, lan iki adhiku.', 'Iki budheku, lan iki anakku.']
+    text: Bayine rewel. Ibu nggendhong bayine.
+    question:
+      ar_eg: البيبي عامل إيه؟
+      ar: ما حال الرضيع؟
+      en: How's the baby?
+    options: [البيبي بيزن، وماما شايلاه, البيبي نايم, البيبي بيضحك]
     answer: 0
-    words: [bojo, anak]
-  - id: e06
-    type: fill_blank
-    sentence: Iki ___ sapa?
     meaning:
-      ar_eg: ده بتاع مين؟
-      ar: لمن هذا؟
-      en: Whose is this?
-    answers: [duweke]
-    words: [duweke]
-  - id: e07
+      ar_eg: البيبي بيزن. وماما شايلاه.
+      ar: الرضيع يبكي. والأم تحمله.
+      en: The baby's fussy. Mum is carrying her.
+    words: [rewel, nggendhong]
+  - id: e04
     type: fill_blank
-    sentence: Aku duwe ___ loro.
+    sentence: Mbak Sari lagi ___ ponakane neng omah.
     meaning:
-      ar_eg: عندي اتنين إخوات أصغر مني.
-      ar: لي أخوان أصغر مني.
-      en: I have two younger siblings.
-    options: [mas, mbakyu, adhi]
-    answers: [adhi]
+      ar_eg: ساري بـ ___ بنت أختها في البيت.
+      ar: ساري ___ ابنة أختها في البيت.
+      en: Sari is ___ her niece at home.
+    options: [momong, padu, ngelus]
+    answers: [momong]
+    words: [momong, padu, ngelus]
     explain:
-      ar_eg: أصغر منك ⇐ adhi. mas وmbakyu للأكبر.
-      ar: الأصغر ⇐ adhi، أما mas وmbakyu فللأكبر.
-      en: Younger ⇒ adhi; mas and mbakyu are older.
-    words: [adhi]
+      ar_eg: momong = بتراعي عيل صغير. padu = يتخانق، وngelus = يطبطب، ومش «تراعي».
+      ar: momong = ترعى طفلًا؛ أما padu فيتشاجر، وngelus يمسح بحنان، وليسا بمعنى الرعاية.
+      en: momong = look after a child. padu = squabble, ngelus = stroke gently.
+  - id: e05
+    type: fill_blank
+    sentence: Aja ___ terus karo adhimu!
+    meaning:
+      ar_eg: ماتـ ___ ـش على طول مع أخوك الصغير!
+      ar: لا ___ دائمًا مع أخيك الصغير!
+      en: Don't keep ___ with your little brother!
+    options: [padu, ngopeni, nggendhong]
+    answers: [padu]
+    words: [padu, ngopeni, nggendhong]
+    explain:
+      ar_eg: aja padu = متتخانقش. ngopeni = يراعي، وnggendhong = يشيل، ودول حاجات كويسة مش هتقول «بلاش».
+      ar: aja padu = لا تتشاجر؛ أما ngopeni فيرعى، وnggendhong يحمل، ولا يُنهى عنهما.
+      en: aja padu = don't squabble. ngopeni (look after) and nggendhong (carry) aren't things you'd forbid.
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «بنتي» بالجاوي؟
+      ar: كيف تقول «ابنتي» بالجاوية؟
+      en: '"My daughter" in Javanese?'
+    options: [anakku wedok, kangmasku, bojoku]
+    answer: 0
+    explain:
+      ar_eg: anak wedok = بنت (ابنة). kangmas = أخ كبير، وbojo = جوز / مرات.
+      ar: anak wedok = ابنة، أما kangmas فالأخ الأكبر وbojo الزوج أو الزوجة.
+      en: anak wedok = daughter. kangmas = older brother, bojo = spouse.
+    words: [wedok, kangmas]
+  - id: e07
+    type: multiple_choice
+    question: Simbah ngopeni pitik neng mburi omah.
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [جدتي بتربي فراخ ورا البيت, جدتي بتطبخ فراخ, جدتي بتبيع فراخ]
+    answer: 0
+    explain:
+      ar_eg: ngopeni = merawat (يرعى ويربي).
+      ar: ngopeni = merawat (يرعى).
+      en: ngopeni = merawat (looks after, keeps).
+    words: [ngopeni]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: محل باك بودي جنب الجامع.
-      ar: مطعم باك بودي بجانب المسجد.
-      en: Pak Budi's warung is next to the mosque.
-    answer: Warunge Pak Budi neng jejere masjid.
-    distractors: [omahe, mburi]
-    words: [warunge, jejere]
+      ar_eg: أخويا الكبير شايل البيبي.
+      ar: أخي الأكبر يحمل الرضيع.
+      en: My older brother is carrying the baby.
+    answer: Kangmasku nggendhong bayi.
+    distractors: [padu, rewel]
+    words: [kangmas, nggendhong]
+    explain:
+      ar_eg: kangmasku = أخويا الكبير، وnggendhong bayi = شايل البيبي. padu = يتخانق، وrewel = بيزنّ، ومش في المعنى.
+      ar: kangmasku = أخي الأكبر، وnggendhong bayi = يحمل الرضيع؛ أما padu فيتشاجر، وrewel نكِد، وليسا في المعنى.
+      en: kangmasku = my big brother, nggendhong bayi = carrying the baby. padu and rewel aren't in the meaning.
   - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اسمي محمد. أنا من القاهرة.
-      ar: اسمي محمد. أنا من القاهرة.
-      en: My name is Mohamed. I'm from Cairo.
-    answers: [Jenengku Mohamed. Aku saka Kairo., Jenengku Mohamed. Aku saka Kairo, 'Jenengku Mohamed, aku saka Kairo.', 'Jenengku Mohamed, aku saka Kairo', Jenengku Mohamed aku saka Kairo., Jenengku Mohamed aku saka Kairo, Jenengku Mohamed. Aku wong Kairo., Jenengku Mohamed. Aku wong Kairo]
-    words: [jenengku, saka]
+    direction: from_target
+    source_text: Ibu ngelus bocah sing rewel.
+    answers_meaning:
+      ar_eg: [ماما بتطبطب على العيل النكدي, الأم بتهدّي العيل اللي بيزن]
+      ar: [تربّت الأم على الطفل المتذمّر, الأم تمسح على الطفل الباكي]
+      en: [Mum strokes the fussy child, Mother is soothing the whiny kid]
+    words: [ngelus, rewel]
   - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أخويا الكبير بيشتغل في القاهرة، وأختي الكبيرة ساكنة في الجيزة.
-      ar: أخي الأكبر يعمل في القاهرة، وأختي الكبرى تسكن في الجيزة.
-      en: My older brother works in Cairo, and my older sister lives in Giza.
-    answers: ["Masku nyambut gawe neng Kairo, lan mbakyuku manggon neng Giza.", "Masku nyambut gawe neng Kairo, lan mbakyuku manggon neng Giza", "Masku nyambut gawe neng Kairo lan mbakyuku manggon neng Giza.", Masku nyambut gawe neng Kairo lan mbakyuku manggon neng Giza, "Masku nyambut gawe neng Kairo, mbakyuku manggon neng Giza.", "Masku nyambut gawe neng Kairo, mbakyuku manggon neng Giza", "Masku nyambut gawe neng Kairo mbakyuku manggon neng Giza.", Masku nyambut gawe neng Kairo mbakyuku manggon neng Giza, "Masku nyambut gawe neng Kairo, lan mbakku manggon neng Giza.", "Masku nyambut gawe neng Kairo, lan mbakku manggon neng Giza", "Masku nyambut gawe neng Kairo lan mbakku manggon neng Giza.", Masku nyambut gawe neng Kairo lan mbakku manggon neng Giza, "Masku nyambut gawe nang Kairo, lan mbakyuku manggon nang Giza.", "Masku nyambut gawe nang Kairo, lan mbakyuku manggon nang Giza", "Masku nyambut gawe nang Kairo lan mbakyuku manggon nang Giza.", Masku nyambut gawe nang Kairo lan mbakyuku manggon nang Giza, "Masku nyambut gawe neng Kairo, karo mbakyuku manggon neng Giza.", "Masku nyambut gawe neng Kairo, karo mbakyuku manggon neng Giza", "Masku nyambut gawe neng Kairo karo mbakyuku manggon neng Giza.", Masku nyambut gawe neng Kairo karo mbakyuku manggon neng Giza]
-    words: [mas, mbakyu, nyambut gawe, manggon]
-  - id: e11
-    type: dictation
-    text: Omahe Pak Budi adoh.
-    meaning:
-      ar_eg: بيت باك بودي بعيد.
-      ar: بيت باك بودي بعيد.
-      en: Pak Budi's house is far.
-    words: [omahe, adoh]
-  - id: e12
     type: speaking
-    text: Aku duwe mas siji lan adhi loro.
+    text: Anak wedok iki pinter momong adhine.
     meaning:
-      ar_eg: عندي أخ كبير واحد واتنين إخوات أصغر مني.
-      ar: لي أخ أكبر واحد وأخوان أصغر مني.
-      en: I have one older brother and two younger siblings.
-    words: [mas, adhi]
+      ar_eg: البنت دي شاطرة في مراعاة أخوها الصغير.
+      ar: هذه البنت ماهرة في رعاية أخيها الصغير.
+      en: This girl is good at minding her little brother.
+    words: [wedok, momong]
 dialogue:
-  title: Kulawargamu piye?
   lines:
-    - speaker: Bayu
-      text: Mas Mohamed duwe adhi?
-      ar_eg: يا أستاذ محمد، عندك إخوات أصغر منك؟
-      ar: يا أخي محمد، ألك إخوة أصغر منك؟
-      en: Mohamed, do you have younger siblings?
+    - speaker: Bu Rahayu
+      text: Sari, ponakanmu rewel terus. Kowe sing nggendhong, ya.
+      ar_eg: يا ساري، بنت أختك عمّالة تزنّ. شيليها إنتِ.
+      ar: يا ساري، ابنة أختك لا تكفّ عن البكاء. احمليها أنتِ.
+      en: Sari, your niece keeps fussing. You carry her, OK?
+    - speaker: Sari
+      text: Nggih, Bu. Cup, cup… aja nangis, Nduk.
+      ar_eg: حاضر يا ماما. خلاص، خلاص… ماتعيطيش يا حبيبتي.
+      ar: حاضر يا أمي. هُس، هُس… لا تبكي يا صغيرتي.
+      en: Yes, Mum. Shh, shh… don't cry, sweetie.
     - speaker: Mohamed
-      text: Iya, Dhik. Aku duwe adhi loro lan mbakyu siji.
-      ar_eg: أيوه يا صغير. عندي اتنين أصغر مني وأخت واحدة كبيرة.
-      ar: نعم يا صغيري. لي أخوان أصغر مني وأخت كبرى واحدة.
-      en: Yes, Dhik. I have two younger siblings and one older sister.
-    - speaker: Bayu
-      text: Kulawargane Mas Mohamed neng Kairo?
-      ar_eg: عيلتك في القاهرة؟
-      ar: هل عائلتك في القاهرة؟
-      en: Is your family in Cairo?
-    - speaker: Mohamed
-      text: Iya. Bapak lan ibuku neng Kairo. Mbahku neng Aswan.
-      ar_eg: أيوه. بابا وماما في القاهرة. وجدي في أسوان.
-      ar: نعم. أبي وأمي في القاهرة، وجدي في أسوان.
-      en: Yes. My father and mother are in Cairo. My grandparent is in Aswan.
-    - speaker: Pak Budi
-      text: Saiki kowe kulawarga neng kene, Mohamed!
-      ar_eg: ودلوقتي إنت من العيلة هنا يا محمد!
-      ar: والآن أنت من العائلة هنا يا محمد!
-      en: Now you're family here, Mohamed!
-souvenir:
-  id: j2.u01.souvenir
-  title: Warung Pak Budi
-  note:
-    ar_eg: |
-      هنا في ماديون بتبدأ حكاية الـ Sinetron بتاعة Kabar: Pak Budi بيدير محل أكل صغير (warung) ريحته رز ساخن وشاي، وبنته Sari بتدرس في القاهرة. يعني جاوة ومصر اتقابلوا على ترابيزة واحدة.
-      ودلوقتي إنت تعرف تسلّم على العيلة كلها: pakdhe، budhe، mbah putri، وتقول بيت مين وكتاب مين. أول حلقة مستنياك!
-    ar: |
-      هنا في ماديون تبدأ حكاية مسلسل Kabar: يدير Pak Budi مطعمًا صغيرًا (warung) تفوح منه رائحة الأرز الساخن والشاي، وابنته Sari تدرس في القاهرة، فتلتقي جاوة ومصر على مائدة واحدة.
-      وصرتَ تعرف كيف تحيّي العائلة كلها: pakdhe وbudhe وmbah putri، وتقول بيت من وكتاب من. الحلقة الأولى في انتظارك!
-    en: |
-      Kabar's Sinetron starts here in Madiun: Pak Budi runs a little warung that smells of hot rice and tea, and his daughter Sari studies in Cairo — Java and Egypt at one table.
-      Now you can greet the whole family — pakdhe, budhe, mbah putri — and say whose house and whose book. The first episode is waiting for you!
+      text: Sari pinter momong, ya.
+      ar_eg: ساري شاطرة في مراعاة العيال.
+      ar: ساري ماهرة في رعاية الأطفال.
+      en: Sari's good with kids.
+    - speaker: Sari
+      text: Iya to. Kangmasku malah ra isa, hehe.
+      ar_eg: طبعًا. أخويا الكبير مايعرفش خالص، هههه.
+      ar: طبعًا. أخي الأكبر لا يجيد ذلك أبدًا، هه.
+      en: Of course. My big brother can't do it at all, hehe.
+    - speaker: Bu Rahayu
+      text: Wis, aja padu. Kangmasmu sing ngopeni simbah.
+      ar_eg: خلاص، بلاش خناق. أخوكِ الكبير هو اللي بيراعي جدتك.
+      ar: كفى، لا شجار. أخوكِ الأكبر هو من يرعى الجدة.
+      en: Enough, no squabbling. Your big brother is the one who looks after Grandma.
+new_words:
+  - word: kangmas
+    pos: noun
+    ar_eg: أخويا الكبير، باحترام (kakak laki-laki)؛ مختصرها Mas
+    ar: الأخ الأكبر باحترام (kakak laki-laki)؛ ويُختصر Mas
+    en: older brother, respectful (kakak laki-laki); short Mas
+  - word: wedok
+    pos: adjective
+    ar_eg: بنت / ست (perempuan)؛ anak wedok = ابنة
+    ar: أنثى / امرأة (perempuan)؛ anak wedok = ابنة
+    en: female, girl (perempuan); anak wedok = daughter
+  - word: momong
+    pos: verb
+    ar_eg: يراعي عيل (mengasuh)
+    ar: يرعى طفلًا (mengasuh)
+    en: to mind a child (mengasuh)
+  - word: nggendhong
+    pos: verb
+    ar_eg: يشيل البيبي على جنبه أو في شال (menggendong)
+    ar: يحمل الرضيع على جنبه أو في وشاح (menggendong)
+    en: to carry a baby on the hip or in a sling (menggendong)
+  - word: rewel
+    pos: adjective
+    ar_eg: نكدي وبيزن، للعيل
+    ar: كثير البكاء والتذمّر، للطفل
+    en: fussy, whiny (of a child)
+  - word: padu
+    pos: verb
+    ar_eg: يتخانق (bertengkar)
+    ar: يتشاجر (bertengkar)
+    en: to quarrel (bertengkar)
+  - word: ngopeni
+    pos: verb
+    ar_eg: يرعى ويهتم (merawat)
+    ar: يرعى ويعتني (merawat)
+    en: to look after, take care of (merawat)
+  - word: ngelus
+    pos: verb
+    ar_eg: يطبطب ويمسح بإيده (mengelus)
+    ar: يربّت ويمسح بيده (mengelus)
+    en: to stroke, pat gently (mengelus)
 review:
   status: draft
   verified: false

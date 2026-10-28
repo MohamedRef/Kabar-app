@@ -1,0 +1,204 @@
+schema: kabar.lesson/v1
+id: bipa3.u01.l09
+language: id
+title: Pesan untuk Rina
+can_do:
+  ar_eg: تقرا رسايل تهنئة في جروب وتفهم مين قال إيه، وترد بتهنئة من عندك.
+  ar: أن تقرأ رسائل تهنئة في مجموعة دردشة وتفهم ما قاله كلّ شخص، ثم تكتب تهنئتك.
+  en: Read congratulation messages in a group chat and add your own.
+slides:
+  - title: Grup "Wisuda Rina"
+    grammar: id.hope.semoga
+    body:
+      ar_eg: |
+        النهارده حفلة تخرّج رينا، وجروب الواتساب مليان رسايل. اقرا التلات رسايل دول كويس:
+        مين بيقول إيه؟ ومين مش هييجي وليه؟ هتسمعهم وتجاوب أسئلة عليهم بعد كده.
+        خد بالك من selamat atas، bagi saya، وsemoga: كلهم من الوحدة دي.
+      ar: |
+        اليوم حفل تخرّج رينا، ومجموعة الدردشة مليئة بالرسائل. اقرأ الرسائل الثلاث بعناية:
+        من قال ماذا؟ ومن لن يحضر ولماذا؟ ستسمعها وتجيب عن أسئلة حولها بعد ذلك.
+        لاحظ selamat atas وbagi saya وsemoga، فكلّها من هذه الوحدة.
+      en: |
+        Today is Rina's graduation, and the group chat is full of messages. Read these three carefully:
+        who says what? Who can't come, and why? You'll hear them and answer questions next.
+        Notice selamat atas, bagi saya and semoga: all from this unit.
+    examples:
+      - text: "Pak Irwan: Selamat wisuda, Rina! Bagi saya, kamu murid yang sangat rajin. Semoga sukses selalu."
+        ar_eg: "الأستاذ إروان: مبروك التخرّج يا رينا! بالنسبة لي إنتِ طالبة مجتهدة جدًا. ربنا يوفّقك على طول."
+        ar: "الأستاذ إروان: مبارك التخرّج يا رينا! بالنسبة إليّ أنتِ طالبة مجتهدة جدًا. أتمنّى لكِ النجاح دائمًا."
+        en: "Pak Irwan: Happy graduation, Rina! To me, you're a very hard-working student. I wish you success always."
+      - text: "Bu Yanti: Selamat atas wisudamu, Rina! Semoga membawa berkah untuk keluargamu."
+        ar_eg: "بو يانتي: مبروك على تخرّجك يا رينا! يا رب يكون بركة لعيلتك."
+        ar: "بو يانتي: مبارك تخرّجكِ يا رينا! عسى أن يكون بركة لعائلتكِ."
+        en: "Bu Yanti: Congratulations on your graduation, Rina! May it bring blessings to your family."
+      - text: "Raka: Selamat, Rina! Maaf, saya tidak bisa datang karena saya masih di Surabaya. Minggu depan saya akan membawa hadiah untukmu."
+        ar_eg: "راكا: مبروك يا رينا! معلش مش هقدر آجي عشان لسه في سورابايا. الأسبوع الجاي هجيبلك هدية."
+        ar: "راكا: مبارك يا رينا! آسف، لا أستطيع الحضور لأنّي ما زلت في سورابايا. سأحضر لكِ هدية الأسبوع القادم."
+        en: "Raka: Congrats, Rina! Sorry, I can't come because I'm still in Surabaya. Next week I'll bring you a present."
+exercises:
+  - id: e01
+    type: listen
+    text: Selamat atas wisudamu, Rina! Semoga membawa berkah untuk keluargamu.
+    options:
+      - Selamat atas rumah barumu, Rina! Semoga membawa berkah untuk keluargamu.
+      - Selamat atas wisudamu, Rina! Semoga membawa berkah untuk keluargamu.
+      - Selamat atas wisudamu, Rina! Semoga membawa bahagia untuk keluargamu.
+    answer: 1
+    meaning:
+      ar_eg: مبروك على تخرّجك يا رينا! يا رب يكون بركة لعيلتك.
+      ar: مبارك تخرّجكِ يا رينا! عسى أن يكون بركة لعائلتكِ.
+      en: Congratulations on your graduation, Rina! May it bring blessings to your family.
+    words: [wisuda, berkah, atas]
+  - id: e02
+    type: listen
+    text: Maaf, saya tidak bisa datang karena saya masih di Surabaya.
+    question:
+      ar_eg: راكا مش جاي ليه؟
+      ar: لماذا لن يأتي راكا؟
+      en: Why isn't Raka coming?
+    options: ["Karena dia sakit.", "Karena dia menikah.", "Karena dia masih di Surabaya."]
+    answer: 2
+    meaning:
+      ar_eg: معلش، مش هقدر آجي عشان لسه في سورابايا.
+      ar: آسف، لا أستطيع الحضور لأنّي ما زلت في سورابايا.
+      en: Sorry, I can't come because I'm still in Surabaya.
+    words: [karena]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسب الرسايل، الأستاذ إروان شايف رينا إزاي؟
+      ar: بحسب الرسائل، كيف يرى الأستاذ إروان رينا؟
+      en: According to the messages, how does Pak Irwan see Rina?
+    options: ["Murid yang sangat rajin.", "Teman yang tabah.", "Pengantin yang bahagia."]
+    answer: 0
+    explain:
+      ar_eg: هو كتب «Bagi saya, kamu murid yang sangat rajin» يعني «بالنسبة لي إنتِ طالبة مجتهدة جدًا».
+      ar: كتب «Bagi saya, kamu murid yang sangat rajin» أي «بالنسبة إليّ أنتِ طالبة مجتهدة جدًا».
+      en: He wrote "Bagi saya, kamu murid yang sangat rajin", "to me, you're a very hard-working student".
+    words: [bagi, rajin]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: راكا هيعمل إيه الأسبوع الجاي؟
+      ar: ماذا سيفعل راكا الأسبوع القادم؟
+      en: What will Raka do next week?
+    options: ["Mudik ke Surabaya.", "Membawa hadiah untuk Rina.", "Menulis kartu untuk Pak Irwan."]
+    answer: 1
+    explain:
+      ar_eg: «Minggu depan saya akan membawa hadiah untukmu» = الأسبوع الجاي هجيبلك هدية.
+      ar: «Minggu depan saya akan membawa hadiah untukmu» أي سأحضر لكِ هدية الأسبوع القادم.
+      en: '"Minggu depan saya akan membawa hadiah untukmu" = next week I''ll bring you a present.'
+    words: [hadiah, untuk]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: wisuda
+        ar_eg: حفلة التخرّج
+        ar: حفل التخرّج
+        en: graduation
+      - text: rajin
+        ar_eg: مجتهد
+        ar: مجتهد
+        en: hard-working
+      - text: berkah
+        ar_eg: بركة
+        ar: بركة
+        en: blessing
+      - text: hadiah
+        ar_eg: هدية
+        ar: هدية
+        en: present, gift
+      - text: bagi saya
+        ar_eg: بالنسبة لي
+        ar: بالنسبة إليّ
+        en: to me, for me
+    words: [wisuda, rajin, berkah, hadiah, bagi]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين اللي دعا لرينا إن التخرّج يكون بركة لعيلتها؟
+      ar: من الذي دعا أن يكون التخرّج بركة لعائلة رينا؟
+      en: Who wished that the graduation would bless Rina's family?
+    options: [Raka, Pak Irwan, Bu Yanti]
+    answer: 2
+    words: [berkah, semoga]
+    explain:
+      ar_eg: "Bu Yanti هي اللي كتبت: Semoga membawa berkah untuk keluargamu. Raka وعد يجيب هدية، وPak Irwan مدح اجتهادها."
+      ar: "Bu Yanti هي من كتبت: Semoga membawa berkah untuk keluargamu. أما Raka فوعد بإحضار هدية، وPak Irwan أثنى على اجتهادها."
+      en: "Bu Yanti wrote: Semoga membawa berkah untuk keluargamu. Raka promised a gift, and Pak Irwan praised her hard work."
+  - id: e07
+    type: fill_blank
+    sentence: Selamat ___ wisudamu, Rina!
+    meaning:
+      ar_eg: مبروك على تخرّجك يا رينا!
+      ar: مبارك تخرّجكِ يا رينا!
+      en: Congratulations on your graduation, Rina!
+    options: [atas, kepada, tentang]
+    answers: [atas]
+    explain:
+      ar_eg: مع selamat لما تقول «على حاجة» بنستعمل atas. kepada للأشخاص، وtentang يعني «عن».
+      ar: مع selamat نستعمل atas للحدث المهنّأ به. أمّا kepada فللأشخاص، وtentang بمعنى «عن».
+      en: With selamat, the event you congratulate on takes atas. kepada is for people; tentang means "about".
+    words: [atas]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: بالنسبة لي، رينا طالبة مجتهدة جدًا.
+      ar: بالنسبة إليّ، رينا طالبة مجتهدة جدًا.
+      en: To me, Rina is a very hard-working student.
+    answer: Bagi saya, Rina murid yang sangat rajin.
+    distractors: [kepada, tentang]
+    words: [bagi, rajin]
+    explain:
+      ar_eg: «بالنسبة لي» = Bagi saya في أول الجملة. kepada للي بتكلمه، وtentang = عن.
+      ar: «بالنسبة إليّ» Bagi saya في أول الجملة. أما kepada فللمخاطَب، وtentang «عن».
+      en: "\"To me\" is Bagi saya at the start. kepada is for the person addressed, tentang means about."
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: مبروك التخرّج يا رينا! بالتوفيق دايمًا.
+      ar: مبارك التخرّج يا رينا! أتمنّى لكِ النجاح دائمًا.
+      en: Happy graduation, Rina! I wish you success always.
+    answers:
+      - Selamat wisuda, Rina! Semoga sukses selalu.
+      - Selamat wisuda, Rina! Semoga sukses selalu!
+      - Selamat wisuda, Rina! Semoga sukses selalu
+      - Selamat wisuda, Rina. Semoga sukses selalu.
+      - Selamat wisuda, Rina! Semoga selalu sukses.
+      - Selamat wisuda, Rina! Semoga selalu sukses!
+      - Selamat atas wisudamu, Rina! Semoga sukses selalu.
+      - Selamat atas wisudamu, Rina! Semoga sukses selalu!
+      - Selamat atas wisudamu, Rina! Semoga selalu sukses.
+    words: [wisuda, semoga]
+dialogue:
+  title: Membaca pesan di Mataram
+  lines:
+    - speaker: Rina
+      text: Mohamed, lihat deh! Banyak banget pesan buat wisudaku.
+      ar_eg: محمد، بُص! فيه رسايل كتير أوي عشان تخرّجي.
+      ar: انظر يا محمد! رسائل كثيرة جدًا بمناسبة تخرّجي.
+      en: Mohamed, look! So many messages for my graduation.
+    - speaker: Mohamed
+      text: Wah! Pak Irwan bilang kamu murid yang sangat rajin.
+      ar_eg: واو! الأستاذ إروان بيقول إنك طالبة مجتهدة جدًا.
+      ar: رائع! يقول الأستاذ إروان إنكِ طالبة مجتهدة جدًا.
+      en: Wow! Pak Irwan says you're a very hard-working student.
+    - speaker: Rina
+      text: Sayang, Raka nggak bisa datang. Dia masih di Surabaya.
+      ar_eg: خسارة إن راكا مش هييجي. لسه في سورابايا.
+      ar: للأسف لا يستطيع راكا الحضور، فهو ما زال في سورابايا.
+      en: Too bad Raka can't come. He's still in Surabaya.
+    - speaker: Mohamed
+      text: Nggak apa-apa, minggu depan dia bawa hadiah kok. Dari aku, selamat wisuda! Semoga sukses selalu.
+      ar_eg: ولا يهمك، الأسبوع الجاي هيجيبلك هدية. ومنّي أنا، مبروك التخرّج! بالتوفيق دايمًا.
+      ar: لا بأس، سيحضر لكِ هدية الأسبوع القادم. ومنّي أنا، مبارك التخرّج! أتمنّى لكِ النجاح دائمًا.
+      en: Never mind, next week he'll bring a present. From me, happy graduation! I wish you success always.
+    - speaker: Rina
+      text: Amin! Makasih banyak, Mohamed.
+      ar_eg: آمين! متشكرة أوي يا محمد.
+      ar: آمين! شكرًا جزيلًا يا محمد.
+      en: Amen! Thank you so much, Mohamed.
+review:
+  status: draft
+  verified: false

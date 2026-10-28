@@ -10,27 +10,27 @@ slides:
   - title: ngarep, mburi, jejere
     body:
       ar_eg: |
-        عشان توصف مكان حاجة، حط nang + الكلمة + المكان:
-        - **ngarep** = depan = قدام: nang ngarep stasiun = قدام المحطة.
-        - **mburi** = belakang = ورا: nang mburi pasar = ورا السوق.
-        - **jejere** = sebelah = جنب: nang jejere masjid = جنب الجامع.
+        عشان توصف مكان حاجة، حط neng + الكلمة + المكان:
+        - **ngarep** = depan = قدام: neng ngarep stasiun = قدام المحطة.
+        - **mburi** = belakang = ورا: neng mburi pasar = ورا السوق.
+        - **jejere** = sebelah = جنب: neng jejere masjid = جنب الجامع.
       ar: |
-        لوصف موضع شيء: nang + اللفظ + المكان:
-        - **ngarep** = depan = أمام: nang ngarep stasiun = أمام المحطة.
-        - **mburi** = belakang = خلف: nang mburi pasar = خلف السوق.
-        - **jejere** = sebelah = بجانب: nang jejere masjid = بجانب المسجد.
+        لوصف موضع شيء: neng + اللفظ + المكان:
+        - **ngarep** = depan = أمام: neng ngarep stasiun = أمام المحطة.
+        - **mburi** = belakang = خلف: neng mburi pasar = خلف السوق.
+        - **jejere** = sebelah = بجانب: neng jejere masjid = بجانب المسجد.
       en: |
-        To say where something is: nang + word + place:
-        - **ngarep** = depan = in front: nang ngarep stasiun = in front of the station.
-        - **mburi** = belakang = behind: nang mburi pasar = behind the market.
-        - **jejere** = sebelah = next to: nang jejere masjid = next to the mosque.
+        To say where something is: neng + word + place:
+        - **ngarep** = depan = in front: neng ngarep stasiun = in front of the station.
+        - **mburi** = belakang = behind: neng mburi pasar = behind the market.
+        - **jejere** = sebelah = next to: neng jejere masjid = next to the mosque.
     grammar: jv.preposition.place
     examples:
-      - text: Warunge nang ngarep stasiun.
+      - text: Warunge neng ngarep stasiun.
         ar_eg: المحل قدام المحطة.
         ar: الكشك أمام المحطة.
         en: The stall is in front of the station.
-      - text: Omahku nang mburi masjid.
+      - text: Omahku neng mburi masjid.
         ar_eg: بيتي ورا الجامع.
         ar: بيتي خلف المسجد.
         en: My house is behind the mosque.
@@ -100,19 +100,19 @@ exercises:
       ar_eg: ng في الشات ده اختصار لإيه؟
       ar: ما أصل ng في هذه الدردشة؟
       en: What does ng stand for in this chat?
-    options: [ngendi, nang, ngarep]
+    options: [ngendi, neng, ngarep]
     answer: 1
     explain:
-      ar_eg: ng = nang / neng (لـ / في). «ng prabowo?» = لبرابوو؟
-      ar: ng = nang / neng، فـ«ng prabowo?» = إلى برابوو؟
-      en: ng = nang / neng. "ng prabowo?" = To Prabowo?
-    words: [nang]
+      ar_eg: ng = neng (لـ / في). «ng prabowo?» = لبرابوو؟
+      ar: ng = neng، فـ«ng prabowo?» = إلى برابوو؟
+      en: ng = neng. "ng prabowo?" = To Prabowo?
+    words: [neng]
   - id: e03
     type: listen
-    text: Warunge nang jejere masjid.
-    options: [Warunge nang ngarep masjid., Warunge nang mburi masjid., Warunge nang jejere masjid.]
+    text: Warunge neng jejere masjid.
+    options: [Warunge neng ngarep masjid., Warunge neng mburi masjid., Warunge neng jejere masjid.]
     answer: 2
-    words: [jejere, nang]
+    words: [jejere, neng]
   - id: e04
     type: build_sentence
     source:
@@ -122,16 +122,20 @@ exercises:
     answer: Lurus wae, terus ngiwa.
     distractors: [nengen, saka]
     words: [lurus, terus, ngiwa]
+    explain:
+      ar_eg: lurus = على طول، وterus ngiwa = وبعدين شمال. nengen = يمين (عكس المطلوب)، وsaka = من.
+      ar: lurus = إلى الأمام، وterus ngiwa = ثم يسارًا؛ أما nengen فيمينًا (عكس المطلوب)، وsaka من.
+      en: lurus = straight, terus ngiwa = then left. nengen (right) is the wrong way, saka = from.
   - id: e05
     type: listen
-    text: Kebun binatange nang mburi masjid.
-    options: [Kebun binatange nang mburi masjid., Kebun binatange nang jejere masjid., Kebun binatange nang ngarep masjid.]
+    text: Kebun binatange neng mburi masjid.
+    options: [Kebun binatange neng mburi masjid., Kebun binatange neng jejere masjid., Kebun binatange neng ngarep masjid.]
     answer: 0
     meaning:
       ar_eg: جنينة الحيوانات ورا الجامع.
       ar: حديقة الحيوان خلف المسجد.
       en: The zoo is behind the mosque.
-    words: [kebun binatang, mburi, jejere, ngarep, nang]
+    words: [kebun binatang, mburi, jejere, ngarep, neng]
   - id: e06
     type: translate
     direction: to_target
@@ -165,34 +169,38 @@ exercises:
     options: [nengen, mburi, jejere]
     answers: [nengen]
     words: [kebun binatang, nengen, terus, lurus]
+    explain:
+      ar_eg: nengen = خُش يمين. mburi = ورا، وjejere = جنب، ومش اتجاه حركة.
+      ar: nengen = انعطف يمينًا؛ أما mburi فخلف، وjejere بجانب، وليسا اتجاه حركة.
+      en: nengen = turn right. mburi (behind) and jejere (next to) aren't directions to turn.
 dialogue:
-  title: Nang stasiun Wonokromo
+  title: Neng stasiun Prawirotaman
   lines:
     - speaker: Mohamed
-      text: Cak, kowe arep nang ngendi?
+      text: Mas, kowe arep neng ngendi?
       ar_eg: يا معلم، إنت رايح فين؟
       ar: يا أخي، إلى أين أنت ذاهب؟
-      en: Cak, where are you going?
-    - speaker: Cak Heru
-      text: Aku kate nang pasar. Koen?
+      en: Mas, where are you going?
+    - speaker: Mas Heru
+      text: Aku arep neng pasar. Kowe?
       ar_eg: أنا رايح السوق. وإنت؟
       ar: أنا ذاهب إلى السوق. وأنت؟
       en: I'm going to the market. You?
     - speaker: Mohamed
-      text: Aku arep nang kebun binatang. Nang ngendi?
+      text: Aku arep neng kebun binatang. Neng ngendi?
       ar_eg: أنا رايح جنينة الحيوانات. هي فين؟
       ar: سأذهب إلى حديقة الحيوان. أين هي؟
       en: I'm going to the zoo. Where is it?
-    - speaker: Cak Heru
+    - speaker: Mas Heru
       text: Saka kene lurus wae, terus nengen.
       ar_eg: من هنا على طول، وبعدين يمين.
       ar: من هنا امشِ مباشرة ثم انعطف يمينًا.
       en: From here go straight, then turn right.
     - speaker: Mohamed
-      text: Matur nuwun, Cak!
+      text: Matur nuwun, Mas!
       ar_eg: شكرًا يا معلم!
       ar: شكرًا يا أخي!
-      en: Thanks, Cak!
+      en: Thanks, Mas!
 new_words:
   - word: ngarep
     pos: preposition
@@ -226,9 +234,10 @@ new_words:
     en: straight on (= lurus)
   - word: terus
     pos: conjunction
-    ar_eg: وبعدين (= lalu)
-    ar: ثم (= lalu)
-    en: then (= lalu)
+    ar_eg: وبعدين (= lalu) (≠ إندونيسي terus = على طول، يفضل)
+    ar: ثم (= lalu) (≠ الإندونيسية terus = باستمرار)
+    en: then (= lalu) (≠ Indonesian terus "keep on")
+    false_friend: terus
   - word: kebun binatang
     pos: noun
     ar_eg: جنينة الحيوانات (نفس الكلمة الإندونيسية)
