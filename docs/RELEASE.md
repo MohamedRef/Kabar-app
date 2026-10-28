@@ -116,7 +116,11 @@ quiet hours (the next check after they end sends it), never for a version
 whose banner was closed, and not at all with Settings › Updates' switch off,
 in "Only when I check" mode, or when the device's notification switch is off.
 A tap opens the "what's new" sheet; the button also starts the download or
-the install.
+the install. A tap while Kabar is already open is picked up within two
+seconds (the tap's activity is translucent, so the page may never hide), a
+tap left over a minute is dropped, and the job marks a notification as sent
+only after Android showed it (`UpdateCheckJob.shown`), so one Android refused
+goes out at the next run.
 
 **What's new.** Every pull request the learner would notice adds
 `changes/<topic>.yaml`, one line per change, in Egyptian Arabic and English

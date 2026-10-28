@@ -505,8 +505,13 @@ pub fn use_update_notices(ui: Ui, nav: SettingsNav) {
         }
         let mut eval = document::eval(
             r#"
+            // The tap's activity is translucent: a tap while Kabar is open
+            // may never hide the page, so look on focus and every 2 s too.
             const send = () => { if (!document.hidden) dioxus.send(true); };
             document.addEventListener("visibilitychange", send);
+            window.addEventListener("focus", send);
+            window.addEventListener("pageshow", send);
+            setInterval(send, 2000);
             send();
             await new Promise(() => {});
             "#,
@@ -516,7 +521,7 @@ pub fn use_update_notices(ui: Ui, nav: SettingsNav) {
             // The sheet says what's new and holds the button; without it
             // (never in the shell), the Updates card does.
             match sheet {
-                Some(sheet) => sheet.open(SheetMode::Offer),
+                Some(sheet) => sheet.open_offer(),
                 None => nav.show(Some(Section::About)),
             }
             let lang = ui.lang();

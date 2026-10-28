@@ -141,17 +141,27 @@ object UpdateNotice {
         }
     }
 
+    /** A tap older than this was never taken (Kabar was killed first): dropped. */
+    private const val TAP_FRESH_MS = 60L * 1000
+
     internal fun putTap(context: Context, action: String) {
-        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putString("tap", action).apply()
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
+            .putString("tap", action)
+            .putLong("tap_at", System.currentTimeMillis())
+            .apply()
     }
 
-    /** The action a tap left (`open`, `download`, `install`), then forgets it. */
+    /**
+     * The action a fresh tap left (`open`, `download`, `install`), then
+     * forgets it. A stale one (over a minute old) is forgotten unused.
+     */
     @JvmStatic
     fun takeTap(context: Context): String? {
         val prefs = context.applicationContext.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         val tap = prefs.getString("tap", null) ?: return null
-        prefs.edit().remove("tap").apply()
-        return tap
+        val age = System.currentTimeMillis() - prefs.getLong("tap_at", 0L)
+        prefs.edit().remove("tap").remove("tap_at").apply()
+        return tap.takeIf { age in 0..TAP_FRESH_MS }
     }
 }
 
@@ -173,8 +183,13 @@ class UpdateCheckJob : JobService() {
                     val metered = metered(ctx)
                     val canNotify = UpdateNotice.allowed(ctx) && !UpdateInstaller.inForeground()
                     val now = LocalTime.now()
-                    val json = check(ctx.filesDir.absolutePath, metered, canNotify, now.hour * 60 + now.minute)
-                    if (!json.isNullOrBlank()) UpdateNotice.show(ctx, json, false)
+                    val dir = ctx.filesDir.absolutePath
+                    val json = check(dir, metered, canNotify, now.hour * 60 + now.minute)
+                    // Marked as sent only once it's up: one Android didn't
+                    // show is tried again at the next run.
+                    if (!json.isNullOrBlank() && UpdateNotice.show(ctx, json, false)) {
+                        shown(dir, JSONObject(json).optString("key"))
+                    }
                 }
             } catch (t: Throwable) {
                 Log.w(TAG, "Background update check failed", t)
@@ -196,6 +211,9 @@ class UpdateCheckJob : JobService() {
 
     /** `update::background_check` in Rust (platform/android.rs). */
     private external fun check(dataDir: String, metered: Boolean, canNotify: Boolean, localMinute: Int): String?
+
+    /** `update::background_shown` in Rust: the notice [check] returned is up. */
+    private external fun shown(dataDir: String, key: String)
 
     companion object {
         private const val TAG = "KabarUpdate"

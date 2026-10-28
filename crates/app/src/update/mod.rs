@@ -160,7 +160,6 @@ pub struct NoticeContext {
 #[derive(Clone, Debug, PartialEq, Eq, Serialize)]
 pub struct Notice {
     /// `version+build:stage`: remembered once sent.
-    #[serde(skip)]
     pub key: String,
     pub title: String,
     pub body: String,
@@ -523,9 +522,25 @@ pub fn get() -> Option<&'static Updater> {
     UPDATER.get()
 }
 
-/// Android's background job (`UpdateCheckJob`), in a process that may have
-/// no UI: the app's own updater if it's running here, else one opened for
-/// the job. Returns the notification to post, if any.
+/// The updater Android's background job (`UpdateCheckJob`) works with, in a
+/// process that may have no UI: the app's own if it's running here, else
+/// one opened for the job.
+#[cfg_attr(not(target_os = "android"), allow(dead_code))]
+fn job_updater(data_dir: &Path) -> &'static Updater {
+    static HEADLESS: OnceLock<Updater> = OnceLock::new();
+    match UPDATER.get() {
+        Some(u) => u,
+        None => HEADLESS.get_or_init(|| {
+            let off = (cfg!(debug_assertions) && dev_override("KABAR_UPDATE_URL").is_none())
+                .then_some(Off::DevBuild);
+            Updater::new(data_dir.join("updates"), BuildInfo::from_env(), this_platform(), None, off)
+        }),
+    }
+}
+
+/// Android's background job: checks when due and returns the notification
+/// to post, if any. Not marked as sent yet: the job calls
+/// [`background_shown`] once Android has shown it.
 #[cfg_attr(not(target_os = "android"), allow(dead_code))]
 pub fn background_check(
     data_dir: &Path,
@@ -533,16 +548,13 @@ pub fn background_check(
     can_notify: bool,
     local: LocalTime,
 ) -> Option<Notice> {
-    static HEADLESS: OnceLock<Updater> = OnceLock::new();
-    let u = match UPDATER.get() {
-        Some(u) => u,
-        None => HEADLESS.get_or_init(|| {
-            let off = (cfg!(debug_assertions) && dev_override("KABAR_UPDATE_URL").is_none())
-                .then_some(Off::DevBuild);
-            Updater::new(data_dir.join("updates"), BuildInfo::from_env(), this_platform(), None, off)
-        }),
-    };
-    u.background(metered, can_notify, local)
+    job_updater(data_dir).background(metered, can_notify, local)
+}
+
+/// The job's notification `key` is up: it doesn't go out again.
+#[cfg_attr(not(target_os = "android"), allow(dead_code))]
+pub fn background_shown(data_dir: &Path, key: &str) {
+    job_updater(data_dir).shown(key);
 }
 
 fn now_ms() -> u64 {
@@ -691,10 +703,21 @@ impl Updater {
 
     /// Android's background job: the same step as the app's loop, then the
     /// notification to post, if `can_notify` (notifications allowed, Kabar
-    /// not in front). Marked as sent before it's returned.
+    /// not in front). Not marked as sent: one Android doesn't show is tried
+    /// again at the next run ([`Self::shown`] marks it).
     fn background(&'static self, metered: bool, can_notify: bool, local: LocalTime) -> Option<Notice> {
         self.step(BACKGROUND_EVERY, metered);
-        self.send_notice(Some(local), |_| can_notify)
+        if !can_notify {
+            return None;
+        }
+        notice(&self.status(), Some(local), now_ms())
+    }
+
+    /// The notification `key` was shown.
+    fn shown(&self, key: &str) {
+        if self.status().prefs.notified.as_deref() != Some(key) {
+            self.update_prefs(|p| p.notified = Some(key.to_owned()));
+        }
     }
 
     /// Whether Android's background job should run: updates work here and
@@ -1426,8 +1449,13 @@ mod tests {
         let n = u.background(false, true, noon).expect("announced");
         assert_eq!(n.action, "install");
         assert!(matches!(u.status().phase, Phase::Ready(_)));
+        // Not shown (Android said no): offered again at the next run.
+        assert_eq!(u.status().prefs.notified, None, "marked only once shown");
+        assert_eq!(u.background(false, true, noon).as_ref(), Some(&n));
+        u.shown(&n.key);
         assert_eq!(u.status().prefs.notified.as_deref(), Some(n.key.as_str()));
-        assert!(u.background(false, true, noon).is_none(), "once");
+        assert!(u.background(false, true, noon).is_none(), "once shown, never again");
+        assert!(serde_json::to_string(&n).unwrap().contains(&format!("\"key\":\"{}\"", n.key)));
 
         // On mobile data: announced, not downloaded.
         let (u, _data) = updater(&url, "1.0.0-alpha.1");

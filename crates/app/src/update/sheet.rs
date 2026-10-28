@@ -131,6 +131,23 @@ impl UpdateSheetNav {
     pub fn open(mut self, mode: SheetMode) {
         self.0.set(Some(mode));
     }
+
+    /// What the offer brings, or the changelog when nothing is offered
+    /// right now (a notification tapped after Kabar restarted).
+    pub fn open_offer(self) {
+        let offered = super::get().is_some_and(|u| {
+            matches!(
+                u.status().phase,
+                Phase::Available(_)
+                    | Phase::Downloading { .. }
+                    | Phase::Ready(_)
+                    | Phase::Installing(_)
+                    | Phase::NeedsPermission(_)
+                    | Phase::Installed(_)
+            )
+        });
+        self.open(if offered { SheetMode::Offer } else { SheetMode::History });
+    }
 }
 
 /// Lines a kind card shows before "Show all"; it folds only past `FOLD_AT`.
