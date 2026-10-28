@@ -611,6 +611,7 @@ fn Shell() -> Element {
     let settings_open = *settings_nav.open.read();
     back::use_back(ui, current, settings_open);
     update::view::use_android_install(ui);
+    update::view::use_update_notices(ui, settings_nav);
     // Full-screen players keep the whole screen; everywhere else on the
     // phone a slim top bar carries the gear.
     let top_bar =

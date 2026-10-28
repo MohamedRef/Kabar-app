@@ -105,6 +105,17 @@ $0 (GitHub Releases of the public repository).
 | Build | the signed APK | `Kabar.app` zipped with `ditto` |
 | Install | PackageInstaller; Android checks it's the same package and signing key | unzip beside the running app, swap with renames, reopen |
 | Automatic mode | downloads in the background on Wi-Fi only (mobile data and Data Saver wait; the offer still shows); installs quietly when Kabar is in the background and not mid-lesson (Android 12+, once Kabar installed itself), otherwise one tap | downloads in the background; goes in at the next launch |
+| "New version" notification | from the app's own checks while it's in the background, and from a JobScheduler job about every 4 hours while Kabar is closed (`UpdateCheckJob`, calling Rust's `update::background_check` over JNI); a Download or Install now button | from the app's own checks while it runs (UNUserNotificationCenter, bundled app only) |
+
+**The "new version" notification.** One per version and step (out, then
+downloaded and ready), worded in the learner's language with the feed's
+"what's new" line (preview builds: the merged pull request's title). Never
+while Kabar is in front (its banner says it there), never inside Kak Nur's
+quiet hours (the next check after they end sends it), never for a version
+whose banner was closed, and not at all with Settings › Updates' switch off,
+in "Only when I check" mode, or when the device's notification switch is off.
+A tap opens Settings › About on the Updates card; the button also starts the
+download or the install.
 
 **Channels.** `alpha`, `beta`, `stable` for release builds (the learner
 picks in Settings; a beta also reaches alpha, a release reaches everyone),

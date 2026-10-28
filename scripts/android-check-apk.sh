@@ -20,7 +20,7 @@ dex="$(mktemp)"
 trap 'rm -f "$dex"' EXIT
 unzip -p "$APK" 'classes*.dex' >"$dex"
 missing=0
-for cls in app/kabar/ShareActivity app/kabar/PendingShare app/kabar/OcrBridge app/kabar/ImagePickActivity app/kabar/ExportSaveActivity app/kabar/UpdateInstaller; do
+for cls in app/kabar/ShareActivity app/kabar/PendingShare app/kabar/OcrBridge app/kabar/ImagePickActivity app/kabar/ExportSaveActivity app/kabar/UpdateInstaller app/kabar/UpdateNotice app/kabar/UpdateCheckJob; do
   if ! LC_ALL=C grep -aqF "L$cls;" "$dex"; then
     echo "Missing $cls in $APK"
     [ -n "${GITHUB_ACTIONS:-}" ] && echo "::error::Missing $cls in the APK"
@@ -71,3 +71,15 @@ if grep -q deflated <<<"$methods"; then
   fail "Native libraries are compressed; extractNativeLibs=false needs them stored."
 fi
 echo "Native libraries: arm64-v8a only, stored uncompressed"
+
+# The background update check (UpdateCheckJob.kt) calls into Rust by its JNI
+# name: the library must export it, or the job quietly does nothing.
+if command -v readelf >/dev/null; then
+  libdir="$(mktemp -d)"
+  unzip -q -o "$APK" 'lib/arm64-v8a/*.so' -d "$libdir"
+  syms="$(for so in "$libdir"/lib/arm64-v8a/*.so; do readelf --dyn-syms -W "$so"; done)"
+  rm -rf "$libdir"
+  grep -q 'Java_app_kabar_UpdateCheckJob_check' <<<"$syms" \
+    || fail "The native library doesn't export Java_app_kabar_UpdateCheckJob_check: the background update check can't reach Rust."
+  echo "Native export for the background update check present"
+fi

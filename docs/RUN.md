@@ -312,6 +312,7 @@ Kabar updates itself on every device (design: `docs/RELEASE.md` §5). Settings �
 - **Preview key renewed.** If the CI cache expired (7 days with no build), previews get a new key; Settings says to install the newest `kabar-preview.apk` by hand once.
 - **Mac.** In Automatic mode the new Kabar.app goes in the next time Kabar opens; **Update and restart** does it now. Keep Kabar.app in Applications (a copy run from Downloads can't replace itself).
 - **Offline packs** you downloaded update during the same check.
+- **"A new Kabar is out" notification.** On by default (Settings → About → Updates → *Send a notification when a new version is out*). On the phone and tablet a background check runs about every 4 hours even while Kabar is closed, and the notification carries what's new plus a **Download** or **Install now** button; tapping it opens the Updates card. On the Mac it comes from the app's own checks while Kabar is open (the first one asks macOS for permission). It stays silent during quiet hours (Coach settings) and when Android's or macOS's notification switch for Kabar is off. Samsung's "sleeping apps" can delay the background check, as it does Kak Nur's reminders (Coach shows a hint when Kabar is asleep).
 
 **Try it locally** (a development build, no GitHub): serve a feed folder and point the app at it. These variables work in debug builds only.
 
