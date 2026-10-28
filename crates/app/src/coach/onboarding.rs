@@ -362,9 +362,6 @@ fn Summary(profile: CoachProfile, today: LocalDate) -> Element {
                 dt { "{ui.t(Msg::OnbTarget)}" }
                 dd { "{target}" }
             }
-            if profile.focus == LanguageFocus::Both {
-                dd { class: "muted", "{ui.t(Msg::OnbBothOrder)}" }
-            }
             dt { "{ui.t(Msg::StudyTimes)}" }
             dd { "{times}" }
             dt { "{ui.t(Msg::ReminderStyle)}" }
