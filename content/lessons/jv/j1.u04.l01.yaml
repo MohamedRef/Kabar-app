@@ -179,7 +179,7 @@ exercises:
       ar_eg: 'الفاعل اسم (Mohamed) بعد الفعل، يبقى di-: dituku Mohamed = dibeli Mohamed.'
       ar: 'الفاعل اسم ظاهر بعد الفعل، فيُستعمل di-: dituku Mohamed = dibeli Mohamed.'
       en: 'The doer is a name after the verb, so use di-: dituku Mohamed = dibeli Mohamed.'
-    words: [tuku]
+    words: [tuku, kurma]
   - id: e05
     type: listen
     text: Sik, tak lapor pusat. Tunggu, ya.
@@ -191,14 +191,6 @@ exercises:
       en: Hang on, I'll report to head office. Please wait.
     words: [sik, lapor, pusat, tunggu, takon, terke, layang]
   - id: e06
-    type: speaking
-    text: Iya, tak tuku. Ngomong karo pusat sik, ya.
-    meaning:
-      ar_eg: أيوه، هاخده. كلّم الإدارة الأول، ماشي؟
-      ar: نعم، سأشتريه. تحدّث مع المركز أولًا، اتفقنا؟
-      en: Yes, I'll buy it. Check with head office first, OK?
-    words: [tuku, ngomong, karo, pusat, sik]
-  - id: e07
     type: multiple_choice
     question_meaning:
       ar_eg: أنهي كلمة معناها «جواب / رسالة»؟
@@ -211,6 +203,29 @@ exercises:
       ar: layang = surat، وlapor = يبلّغ، وngomong = يتكلم، وterke = يوصِل.
       en: layang = surat; lapor = report, ngomong = talk, terke = take someone.
     words: [layang, lapor, ngomong, terke]
+  - id: e07
+    type: listen
+    text: Aku arep tuku kurma.
+    options: ['Aku arep tuku kurma.', 'Aku arep tuku layang.', 'Aku arep takon pusat.']
+    answer: 0
+    meaning:
+      ar_eg: أنا هشتري بلح.
+      ar: سأشتري تمرًا.
+      en: I'm going to buy dates.
+    words: [kurma, tuku]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «بلح»؟
+      ar: أيّ كلمة تعني «تمر»؟
+      en: Which word means "dates" (the fruit)?
+    options: [kurma, layang, pusat]
+    answer: 0
+    explain:
+      ar_eg: kurma = بلح، زي الإندونيسي. layang = جواب، pusat = الإدارة.
+      ar: kurma = تمر كما في الإندونيسية، وlayang = رسالة، وpusat = المركز.
+      en: kurma = dates, as in Indonesian. layang = letter, pusat = head office.
+    words: [kurma, layang, pusat]
 dialogue:
   title: Kurma neng Jakal
   lines:
@@ -225,23 +240,18 @@ dialogue:
       ar: أريد أن أشتري تمرًا.
       en: I'm going to buy dates.
     - speaker: Pak Hasan
-      text: Kurma Ajwa, Mas? Apik lho.
-      ar_eg: بلح عجوة يا ابني؟ حلو أوي على فكرة.
-      ar: تمر عجوة يا بنيّ؟ إنه جيد جدًا.
-      en: Ajwa dates? They're really good.
+      text: Kurma Ajwa, Mas? Apik banget!
+      ar_eg: بلح عجوة يا ماس؟ حلو أوي!
+      ar: تمر عجوة يا ماس؟ رائع جدًا!
+      en: Ajwa dates, Mas? They're really good!
     - speaker: Mohamed
       text: Iya, tak tuku, Pak.
       ar_eg: أيوه، هاخده يا حاج.
       ar: نعم، سأشتريه يا سيدي.
       en: Yes, I'll take them, sir.
-    - speaker: Pak Hasan
-      text: Matur nuwun. Sik, tak bungkus.
-      ar_eg: شكرًا. استنى، هلفّهولك.
-      ar: شكرًا. انتظر، سأغلّفه لك.
-      en: Thank you. Hold on, I'll wrap them.
     - speaker: Mas Heru
-      text: Wah, kurmane wis dituku Mohamed!
-      ar_eg: واو، محمد اشترى البلح خلاص!
+      text: Wah, Mohamed wis tuku kurma!
+      ar_eg: واو، محمد اشترى البلح!
       ar: رائع، اشترى محمد التمر!
       en: Wow, Mohamed's bought the dates!
 new_words:
@@ -281,6 +291,12 @@ new_words:
     ar_eg: جواب، رسالة (= surat)
     ar: رسالة (= surat)
     en: letter (= surat)
+  - word: kurma
+    pos: noun
+    ar_eg: بلح (kurma)
+    ar: تمر (kurma)
+    en: dates, the fruit (kurma)
+    same_as_id: true
 review:
   status: draft
   verified: false

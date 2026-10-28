@@ -118,10 +118,6 @@ slides:
         ar_eg: ناوي تبيعه بكام؟ (شات)
         ar: بكم ستبيعه؟ (دردشة)
         en: How much will you sell it for? (chat)
-      - text: wes mangan durung?
-        ar_eg: كلت ولا لسه؟ (شات)
-        ar: هل أكلت أم ليس بعد؟ (دردشة)
-        en: Have you eaten yet? (chat)
       - text: Sik tak lapor pusat
         ar_eg: استنى، هبلّغ الإدارة. (هنفهم tak في J1.4)
         ar: انتظر، سأبلغ المركز. (نشرح tak في J1.4)
@@ -189,15 +185,6 @@ exercises:
       en: arp = arep with the vowels dropped.
     words: [arep]
   - id: e05
-    type: translate
-    direction: from_target
-    source_text: aku gk ngerti opo2
-    answers_meaning:
-      ar_eg: [أنا مش فاهم أي حاجة., مش فاهم حاجة, أنا مش فاهم حاجة خالص, مش فاهم أي حاجة]
-      ar: [لا أفهم شيئًا., لا أفهم أي شيء, أنا لا أفهم شيئًا]
-      en: [I don't understand anything., I don't understand anything, I understand nothing, I don't get anything]
-    words: [ra, ngerti, apa-apa]
-  - id: e06
     type: speaking
     text: Sik, aku wis ngerti. Ora apa-apa.
     meaning:
@@ -205,6 +192,37 @@ exercises:
       ar: لحظة، فهمتُ الآن. لا بأس.
       en: Hang on, I get it now. No problem.
     words: [sik, wis, ngerti, ora apa-apa]
+  - id: e06
+    type: listen
+    text: Ngapura, Mas.
+    options: ['Ngapura, Mas.', 'Ora apa-apa, Mas.', 'Sik, Mas.']
+    answer: 0
+    meaning:
+      ar_eg: معلش يا ماس.
+      ar: عذرًا يا ماس.
+      en: Sorry, Mas.
+    words: [ngapura, ora apa-apa, sik]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: خبطت في حد في الزحمة. تقول إيه؟
+      ar: اصطدمت بشخص في الزحام. ماذا تقول؟
+      en: You bump into someone in the crowd. What do you say?
+    options: [Ngapura, Ora apa-apa, Sik]
+    answer: 0
+    explain:
+      ar_eg: 'ngapura = معلش. والرد: ora apa-apa.'
+      ar: 'ngapura = آسف. والرد: ora apa-apa.'
+      en: 'ngapura = sorry. The reply: ora apa-apa.'
+    words: [ngapura, ora apa-apa]
+  - id: e08
+    type: speaking
+    text: Ngapura, aku ra ngerti.
+    meaning:
+      ar_eg: معلش، أنا مش فاهم.
+      ar: عذرًا، لا أفهم.
+      en: Sorry, I don't understand.
+    words: [ngapura, ra, ngerti]
 dialogue:
   title: Grup WA
   lines:
@@ -233,11 +251,6 @@ dialogue:
       ar_eg: خلوا بالكم من نفسكم يا جدعان.
       ar: انتبهوا لأنفسكم يا جماعة.
       en: Take care, guys.
-    - speaker: Mas Heru
-      text: suwun Mbak!
-      ar_eg: ميرسي يا رارا!
-      ar: شكرًا يا رارا!
-      en: Thanks, Rara!
 new_words:
   - word: ra
     pos: adverb
@@ -264,6 +277,11 @@ new_words:
     ar_eg: يتساب / يتباع (شات dicul)
     ar: يُطلق / يُباع (دردشة dicul)
     en: let go, sold off (chat dicul)
+  - word: ngapura
+    pos: noun
+    ar_eg: سماح؛ «Ngapura» = معلش، آسف
+    ar: عفو؛ «Ngapura» = آسف
+    en: forgiveness; "Ngapura" = sorry
 review:
   status: draft
   verified: false
