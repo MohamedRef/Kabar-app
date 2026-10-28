@@ -291,6 +291,7 @@ mod tests {
                 sha256: "ab".repeat(32),
                 version_code: Some(v(version).version_code()),
             }],
+            history: Vec::new(),
         }
     }
 

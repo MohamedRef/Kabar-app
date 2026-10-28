@@ -32,9 +32,14 @@ ditto -c -k --keepParent "$rel/Kabar.app" "$rel/Kabar.app.zip"
 published=0
 for channel in alpha beta stable; do
   out="dist/update/$channel"
+  # What's new: changes/ since the version this channel carries now, on top
+  # of its history (none yet on a first publish).
+  previous="$(mktemp)"
+  gh release download "update-$channel" --repo "$repo" --pattern update.json --output "$previous" --clobber \
+    2>/dev/null || rm -f "$previous"
   # The tool refuses a version that doesn't belong on a channel (an alpha on stable).
   if ! $tools update manifest --channel "$channel" --version "$v" --commit "$(git rev-parse --short HEAD)" \
-      --notes-en "$notes_en" --notes-ar-eg "$notes_ar_eg" \
+      --notes-en "$notes_en" --notes-ar-eg "$notes_ar_eg" --previous "$previous" --changes \
       --asset "android-arm64=$rel/kabar-$v.apk" --asset "$mac=$rel/Kabar.app.zip" --out "$out" 2>/dev/null; then
     continue
   fi
