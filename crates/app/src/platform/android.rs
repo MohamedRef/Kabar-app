@@ -311,17 +311,31 @@ pub fn network_metered() -> Result<bool, String> {
     })
 }
 
-/// `SystemBars.isNight(activity)`: the phone's own dark mode.
+/// The phone's own dark mode: `Resources.getSystem().configuration.uiMode`,
+/// which follows Settings › Display even under a light activity theme (as
+/// `SystemBars.isNight` reads it). Framework classes need no class loader.
 pub fn is_night() -> Result<bool, String> {
-    with_activity(|env, activity| {
-        let class = app_class(env, activity, jni_str!("app.kabar.SystemBars"))?;
-        env.call_static_method(
-            &class,
-            jni_str!("isNight"),
-            jni_sig!("(Landroid/app/Activity;)Z"),
-            &[JValue::Object(activity)],
-        )?
-        .z()
+    const UI_MODE_NIGHT_MASK: i32 = 0x30;
+    const UI_MODE_NIGHT_YES: i32 = 0x20;
+    with_activity(|env, _| {
+        let resources = env
+            .call_static_method(
+                jni_str!("android/content/res/Resources"),
+                jni_str!("getSystem"),
+                jni_sig!("()Landroid/content/res/Resources;"),
+                &[],
+            )?
+            .l()?;
+        let config = env
+            .call_method(
+                &resources,
+                jni_str!("getConfiguration"),
+                jni_sig!("()Landroid/content/res/Configuration;"),
+                &[],
+            )?
+            .l()?;
+        let ui_mode = env.get_field(&config, jni_str!("uiMode"), jni_sig!("I"))?.i()?;
+        Ok(ui_mode & UI_MODE_NIGHT_MASK == UI_MODE_NIGHT_YES)
     })
 }
 

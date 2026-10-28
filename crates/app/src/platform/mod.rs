@@ -116,10 +116,13 @@ pub fn can_vibrate() -> bool {
 pub fn device_dark() -> Option<bool> {
     #[cfg(target_os = "android")]
     {
+        static REPORTED: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
         match android::is_night() {
             Ok(dark) => Some(dark),
             Err(e) => {
-                crate::diag::report!("night mode check failed: {e}");
+                if !REPORTED.swap(true, std::sync::atomic::Ordering::Relaxed) {
+                    crate::diag::report!("night mode check failed: {e}");
+                }
                 None
             }
         }
