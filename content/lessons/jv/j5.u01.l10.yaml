@@ -1,183 +1,166 @@
 schema: kabar.lesson/v1
 id: j5.u01.l10
 language: jv
-title: Brem Madiun
+title: Kairo ing Wikipedia
 can_do:
-  ar_eg: تقرا مقالة قصيرة عن أكلة مشهورة وتعرف معمولة من إيه وفيها إيه.
-  ar: أن تقرأ مقالة قصيرة عن طعام مشهور وتعرف مادته ومحتواه.
-  en: Read a short article about a famous food and find what it's made of and what's inside.
-slides:
-  - title: Artikel panganan
-    body:
-      ar_eg: |
-        ماديون مش بس بلد البيتشيل. أشهر هدية بيرجع بيها الناس منها هي الـbrem، ودي مقالة صغيرة عنه. نفس الهيكل: iku وkang وsawijining.
-        فاكر oleh-oleh من J3؟ هدية السفر. كلمات جديدة: ketan = رز لزج، tape = أكلة مخمّرة، وtape ketan = رز لزج متخمّر. isi = محتوى أو حشو، وisine = محتواه.
-      ar: |
-        ماديون ليست بلد البيتشيل فقط؛ فأشهر هدية يعود بها الزوار منها هي الـbrem، وهذه مقالة صغيرة عنه. الهيكل نفسه: iku وkang وsawijining.
-        تذكر oleh-oleh من J3: هدية السفر. كلمات جديدة: ketan = أرز دبق، وtape = طعام مخمَّر، وtape ketan = أرز دبق مخمَّر. وisi = محتوى أو حشوة، وisine = محتواه.
-      en: |
-        Madiun isn't only pecel country: the gift everyone takes home from it is brem, and here is a small article about it. Same skeleton: iku, kang, sawijining.
-        Remember oleh-oleh from J3, a gift brought back from a trip. New words: ketan = sticky rice, tape = fermented food, so tape ketan = fermented sticky rice. isi = contents, filling; isine = its contents.
-    grammar: jv.reading.written-style
-    examples:
-      - text: Brem iku panganan kang misuwur saka Madiun.
-        ar_eg: البريم أكلة مشهورة من ماديون.
-        ar: البريم طعام مشهور من ماديون.
-        en: Brem is a famous food from Madiun.
-      - text: Brem iku sawijining oleh-oleh kang bahane tape ketan.
-        ar_eg: البريم هدية سفر معمولة من رز لزج متخمّر.
-        ar: البريم هدية سفر مادتها الأرز الدبق المخمَّر.
-        en: Brem is a souvenir snack made from fermented sticky rice.
-      - text: Kothak iki isine brem sepuluh.
-        ar_eg: العلبة دي فيها عشر حتت بريم.
-        ar: في هذه العلبة عشر قطع من البريم.
-        en: This box holds ten pieces of brem.
+  ar_eg: تسمع مقالة ويكيبيديا جاوية عن القاهرة وتفهمها من غير ما تشوفها.
+  ar: أن تستمع إلى مقالة ويكيبيديا جاوية عن القاهرة وتفهمها دون أن تراها.
+  en: Follow a Javanese Wikipedia article about Cairo by ear.
 exercises:
   - id: e01
     type: listen
-    text: Brem iku panganan kang misuwur saka Madiun.
-    options:
-      - Brem iku panganan kang murah saka Madiun.
-      - Brem iku panganan kang misuwur saka Kudus.
-      - Brem iku panganan kang misuwur saka Madiun.
+    text: Kairo iku ibukutha Mesir lan kutha kang paling gedhe ing Mesir.
+    question:
+      ar_eg: دي مقالة عن مدينتك! المقالة بتقول إن القاهرة إيه؟
+      ar: هذه مقالة عن مدينتك! ماذا تقول المقالة عن القاهرة؟
+      en: This article is about your city! What does it say Cairo is?
+    options: [ibukutha Mesir, pulo ing Mesir, provinsi ing Mesir]
+    answer: 0
+    meaning:
+      ar_eg: القاهرة هي عاصمة مصر وأكبر مدينة في مصر.
+      ar: القاهرة عاصمة مصر وأكبر مدنها.
+      en: Cairo is the capital of Egypt and the biggest city in Egypt.
+    explain:
+      ar_eg: kang paling gedhe = اللي هي الأكبر (yang paling besar).
+      ar: kang paling gedhe = الأكبر (yang paling besar).
+      en: kang paling gedhe = the biggest (yang paling besar).
+    words: [ibukutha]
+  - id: e02
+    type: listen
+    text: Kutha iki ana ing pinggir kali Nil.
+    question:
+      ar_eg: القاهرة فين؟
+      ar: أين تقع القاهرة؟
+      en: Where is Cairo?
+    options: [ing pinggir segara, ing pinggir kali Nil, ing pesisir kidul]
+    answer: 1
+    meaning:
+      ar_eg: المدينة دي على ضفة نهر النيل.
+      ar: تقع هذه المدينة على ضفة نهر النيل.
+      en: This city lies on the bank of the Nile.
+    explain:
+      ar_eg: kali = نهر، زي kali في الإندونيسي (sungai). pinggir = جنب / ضفة.
+      ar: kali = نهر، كـ kali في الإندونيسية (sungai)، وpinggir = حافة / ضفة.
+      en: kali = river, as in Indonesian kali (sungai); pinggir = edge, bank.
+    words: [kali]
+  - id: e03
+    type: listen
+    text: Ing Kairo ana masjid kang lawas banget, yaiku Masjid Al-Azhar.
+    question:
+      ar_eg: المقالة ذكرت أنهي مكان؟
+      ar: أي مكان تذكره المقالة؟
+      en: Which place does the article name?
+    options: [Benteng Pendem, Menara Kudus, Masjid Al-Azhar]
     answer: 2
     meaning:
-      ar_eg: البريم أكلة مشهورة من ماديون.
-      ar: البريم طعام مشهور من ماديون.
-      en: Brem is a famous food from Madiun.
-    words: [misuwur]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: حسب المقالة، البريم معمول من إيه؟
-      ar: بحسب المقالة، مِمَّ يُصنع البريم؟
-      en: According to the article, what is brem made from?
-    options: [tape ketan, tempe, kacang]
-    answer: 0
-    explain:
-      ar_eg: «kang bahane tape ketan» = مادته رز لزج متخمّر.
-      ar: «kang bahane tape ketan» = مادته الأرز الدبق المخمَّر.
-      en: '"kang bahane tape ketan" = whose ingredient is fermented sticky rice.'
-    words: [tape, ketan]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الهدية اللي بتجيبها للناس من السفر اسمها إيه؟
-      ar: ما اسم الهدية التي تجلبها للناس من السفر؟
-      en: What's the gift you bring people back from a trip?
-    options: [oleh-oleh, isi, ketan]
-    answer: 0
-    words: [oleh-oleh, isi, ketan]
+      ar_eg: في القاهرة جامع قديم جدًا، هو الجامع الأزهر.
+      ar: في القاهرة مسجد قديم جدًا، هو الجامع الأزهر.
+      en: In Cairo there is a very old mosque, namely Al-Azhar Mosque.
+    words: [yaiku, lawas]
   - id: e04
     type: match_pairs
     pairs:
-      - text: isi
-        ar_eg: محتوى، حشو
-        ar: محتوى، حشوة
-        en: contents, filling
-      - text: tape
-        ar_eg: أكلة متخمّرة
-        ar: طعام مخمَّر
-        en: fermented food
-      - text: ketan
-        ar_eg: رز لزج
-        ar: أرز دبق
-        en: sticky rice
-      - text: oleh-oleh
-        ar_eg: هدية من السفر
-        ar: هدية السفر
-        en: gift from a trip
-      - text: panganan
-        ar_eg: أكل
-        ar: طعام
-        en: food
-    words: [isi, tape, ketan, oleh-oleh, panganan]
+      - text: kali
+        ar_eg: نهر
+        ar: نهر
+        en: river
+      - text: segara
+        ar_eg: بحر
+        ar: بحر
+        en: sea
+      - text: pulo
+        ar_eg: جزيرة
+        ar: جزيرة
+        en: island
+      - text: ibukutha
+        ar_eg: عاصمة
+        ar: عاصمة
+        en: capital city
+      - text: paling gedhe
+        ar_eg: الأكبر
+        ar: الأكبر
+        en: the biggest
+    words: [kali, segara, pulo, ibukutha]
   - id: e05
     type: fill_blank
-    sentence: Kothak iki ___ brem sepuluh.
+    sentence: Ing Kairo ana masjid kang lawas banget, ___ Masjid Al-Azhar.
     meaning:
-      ar_eg: العلبة دي فيها عشر حتت بريم.
-      ar: في هذه العلبة عشر قطع من البريم.
-      en: This box holds ten pieces of brem.
-    options: [regane, isine, jenenge]
-    answers: [isine]
-    words: [isi]
+      ar_eg: في القاهرة جامع قديم جدًا، هو الجامع الأزهر.
+      ar: في القاهرة مسجد قديم جدًا، هو الجامع الأزهر.
+      en: In Cairo there is a very old mosque, namely Al-Azhar Mosque.
+    options: [minangka, yaiku, kalebu]
+    answers: [yaiku]
+    explain:
+      ar_eg: yaiku بتسمّي الحاجة اللي اتكلمنا عنها بشكل عام («جامع قديم» ← الأزهر).
+      ar: yaiku تسمّي ما ذُكر بشكل عام («مسجد قديم» ← الأزهر).
+      en: yaiku names the thing just mentioned in general terms ("an old mosque" → Al-Azhar).
+    words: [yaiku]
   - id: e06
     type: dictation
-    text: Brem iku panganan kang misuwur saka Madiun.
+    text: Kutha iki ana ing pinggir kali Nil.
     meaning:
-      ar_eg: البريم أكلة مشهورة من ماديون.
-      ar: البريم طعام مشهور من ماديون.
-      en: Brem is a famous food from Madiun.
-    words: [misuwur, panganan]
+      ar_eg: المدينة دي على ضفة نهر النيل.
+      ar: تقع هذه المدينة على ضفة نهر النيل.
+      en: This city lies on the bank of the Nile.
+    words: [kali]
   - id: e07
-    type: build_sentence
-    source:
-      ar_eg: (بأسلوب المقالة) البريم هدية سفر معمولة من رز لزج متخمّر.
-      ar: (بأسلوب المقالة) البريم هدية سفر مادتها الأرز الدبق المخمَّر.
-      en: (article style) Brem is a souvenir snack made from fermented sticky rice.
-    answer: Brem iku sawijining oleh-oleh kang bahane tape ketan.
-    distractors: [Walanda, saka]
-    words: [oleh-oleh, sawijining, kang, tape, ketan]
-  - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: مادة البريم رز لزج متخمّر.
-      ar: مادة البريم الأرز الدبق المخمَّر.
-      en: Brem's ingredient is fermented sticky rice.
+      ar_eg: (بأسلوب المقالة) القاهرة هي عاصمة مصر، وهي على ضفة نهر النيل.
+      ar: (بأسلوب المقالة) القاهرة عاصمة مصر، وتقع على ضفة نهر النيل.
+      en: (article style) Cairo is the capital of Egypt and lies on the bank of the Nile.
     answers:
-      - Bahane brem iku tape ketan.
-      - Bahane brem tape ketan.
-      - Brem bahane tape ketan.
-      - Brem iku bahane tape ketan.
-      - Bahan brem iku tape ketan.
-      - Bahane brem yaiku tape ketan.
-    words: [tape, ketan]
+      - Kairo iku ibukutha Mesir lan ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir, ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir lan kutha iki ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir. Kutha iki ana ing pinggir kali Nil.
+      - Kairo ibukutha Mesir lan ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir lan ana ing pinggire kali Nil.
+    words: [kali, ibukutha]
+  - id: e08
+    type: speaking
+    text: Aku saka Kairo, ibukutha Mesir, ing pinggir kali Nil.
+    meaning:
+      ar_eg: أنا من القاهرة، عاصمة مصر، على ضفة النيل.
+      ar: أنا من القاهرة، عاصمة مصر، على ضفة النيل.
+      en: I'm from Cairo, the capital of Egypt, on the bank of the Nile.
+    words: [kali, ibukutha]
 dialogue:
-  title: Ing toko oleh-oleh
+  title: Artikel Kairo
   lines:
-    - speaker: Mohamed
-      text: Mbak, brem iki bahane apa?
-      ar_eg: يا آيو، البريم ده معمول من إيه؟
-      ar: يا آيو، مِمَّ يُصنع هذا البريم؟
-      en: Ayu, what's this brem made of?
     - speaker: Mbak Ayu
-      text: Tape ketan, kaya ing artikel.
-      ar_eg: رز لزج متخمّر، زي ما في المقالة.
-      ar: أرز دبق مخمَّر، كما في المقالة.
-      en: Fermented sticky rice, like in the article.
+      text: Mohamed, aku maca artikel Kairo ing Wikipedia basa Jawa.
+      ar_eg: يا محمد، أنا قريت مقالة القاهرة في ويكيبيديا الجاوية.
+      ar: يا محمد، قرأت مقالة القاهرة في ويكيبيديا الجاوية.
+      en: Mohamed, I read the Cairo article on Javanese Wikipedia.
     - speaker: Mohamed
-      text: Lho, kok krasa adem ing cangkem?
-      ar_eg: الله! إزاي حاسس بيه ساقع في بُقّي؟
-      ar: عجبًا! لماذا أشعر به باردًا في فمي؟
-      en: Huh, why does it feel cool in my mouth?
+      text: Tenan? Artikele ngomong apa?
+      ar_eg: بجد؟ المقالة بتقول إيه؟
+      ar: حقًا؟ ماذا تقول المقالة؟
+      en: Really? What does the article say?
     - speaker: Mbak Ayu
-      text: Brem pancen ngono. Legi lan kecut, ta?
-      ar_eg: البريم كده فعلًا. مسكّر وحامض، صح؟
-      ar: هكذا البريم فعلًا. حلو وحامض، أليس كذلك؟
-      en: That's brem for you. Sweet and sour, right?
+      text: Kairo iku kutha kang paling gedhe ing Mesir, ing pinggir kali Nil.
+      ar_eg: القاهرة أكبر مدينة في مصر، على النيل.
+      ar: القاهرة أكبر مدينة في مصر، على ضفة النيل.
+      en: Cairo is the biggest city in Egypt, on the Nile.
     - speaker: Mohamed
-      text: Enak! Aku tuku sekothak kanggo oleh-oleh.
-      ar_eg: حلو! هشتري علبة هدية للناس.
-      ar: لذيذ! سأشتري علبة هديةً للأهل.
-      en: Tasty! I'll buy a box to take home as a gift.
+      text: Bener, lho. Omahku ora adoh saka kali Nil.
+      ar_eg: صح. بيتي مش بعيد عن النيل.
+      ar: صحيح. بيتي ليس بعيدًا عن النيل.
+      en: Right. My home isn't far from the Nile.
+    - speaker: Mbak Ayu
+      text: Wah, aku uga arep dolan menyang Kairo!
+      ar_eg: الله، أنا كمان عايزة أزور القاهرة!
+      ar: رائع، أنا أيضًا أريد زيارة القاهرة!
+      en: Wow, I want to visit Cairo too!
 new_words:
-  - word: isi
+  - word: kali
     pos: noun
-    ar_eg: محتوى، حشو (isine = محتواه)
-    ar: محتوى، حشوة (isine = محتواه)
-    en: contents, filling (isine = its contents) = isi
-  - word: ketan
-    pos: noun
-    ar_eg: رز لزج
-    ar: أرز دبق
-    en: sticky rice = ketan
-  - word: tape
-    pos: noun
-    ar_eg: أكلة متخمّرة (tape ketan = رز لزج متخمّر)
-    ar: طعام مخمَّر (tape ketan = أرز دبق مخمَّر)
-    en: fermented food (tape ketan = fermented sticky rice) = tape
+    ar_eg: نهر (≠ إندونيسي kali = مرة (dua kali = مرتين))
+    ar: نهر (≠ الإندونيسية kali = مرة (dua kali = مرتين))
+    en: river = sungai, kali (≠ Indonesian kali "time(s), as in dua kali")
+    false_friend: kali
 review:
   status: draft
   verified: false

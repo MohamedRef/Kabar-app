@@ -77,13 +77,17 @@ impl Store {
     pub fn taught_with_time(&self) -> Result<Vec<TaughtAt>> {
         let mut stmt = self
             .conn
-            .prepare("SELECT entry, hlc_wall FROM taught_entries WHERE deleted = 0 ORDER BY hlc_wall")?;
-        let rows = stmt.query_map([], |r| Ok((r.get::<_, String>(0)?, r.get::<_, i64>(1)?)))?;
-        rows.map(|row| {
-            let (json, wall) = row?;
-            Ok(TaughtAt { entry: serde_json::from_str(&json)?, at_ms: wall as u64 })
-        })
-        .collect()
+            .prepare("SELECT id, entry, hlc_wall FROM taught_entries WHERE deleted = 0 ORDER BY hlc_wall")?;
+        let rows = stmt
+            .query_map([], |r| Ok((r.get::<_, String>(0)?, r.get::<_, String>(1)?, r.get::<_, i64>(2)?)))?;
+        let mut taught = Vec::new();
+        for row in rows {
+            let (id, json, wall) = row?;
+            if let Some(entry) = super::taught::read_taught(&id, &json) {
+                taught.push(TaughtAt { entry, at_ms: wall as u64 });
+            }
+        }
+        Ok(taught)
     }
 }
 

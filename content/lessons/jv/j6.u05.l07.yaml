@@ -1,161 +1,236 @@
 schema: kabar.lesson/v1
 id: j6.u05.l07
 language: jv
-title: Ing Imogiri
+title: Desa ing Imogiri
 can_do:
-  ar_eg: تقرا أسامي وكلمات عربية وأرقام في زيارة.
-  ar: أن تقرأ أسماء وألفاظًا عربية وأعدادًا في زيارة.
-  en: Read names, loanwords and numbers on a visit.
+  ar_eg: تتكلم مع فلاح في إيموجيري عن أرضه وبهايمه، وعن الغنى والفقر، بجمل فيها «مع إن».
+  ar: أن تتحدث مع فلاح في إيموغيري عن أرضه وماشيته، وعن الغنى والفقر، بجمل فيها «رغم أن».
+  en: Chat with an Imogiri farmer about his land and animals, wealth and poverty, using 'even though'.
 slides:
-  - title: Murda, rekan, angka
+  - title: Sawah lan dalan
     body:
       ar_eg: |
-        في إيموغيري هتشوف التلاتة مع بعض:
-        - murda للأسامي والألقاب المحترمة: ꦓꦸꦱ꧀ꦠꦶ.
-        - rekan للأصوات العربية: ꦢ꦳ꦶꦏꦶꦂ.
-        - الأرقام بين ꧇…꧇: ꧇꧔꧐꧙꧇.
+        kebo = جاموسة، wedhus = معزة (أو خروف). amba = واسع، ciyut = ضيق.
+        sugih = غني، mlarat = فقير. sawetara = شوية، كام واحد (sawetara menit = كام دقيقة).
+        senajan = مع إن، رغم إن (senajan mlarat, ... = مع إنه فقير ...).
       ar: |
-        في إيموغيري تجد الثلاثة معًا:
-        - murda لأسماء المحترمين وألقابهم: ꦓꦸꦱ꧀ꦠꦶ.
-        - rekan للأصوات العربية: ꦢ꦳ꦶꦏꦶꦂ.
-        - الأعداد بين ꧇…꧇: ꧇꧔꧐꧙꧇.
+        kebo = جاموس، wedhus = ماعز (أو خروف). amba = واسع، ciyut = ضيّق.
+        sugih = غني، mlarat = فقير. sawetara = بعض، قليل من (sawetara menit = بضع دقائق).
+        senajan = رغم أنّ (senajan mlarat, ... = رغم فقره ...).
       en: |
-        At Imogiri you'll see all three together:
-        - murda for honoured names and titles: ꦓꦸꦱ꧀ꦠꦶ.
-        - rekan for Arabic sounds: ꦢ꦳ꦶꦏꦶꦂ.
-        - numbers between ꧇…꧇: ꧇꧔꧐꧙꧇.
-    grammar: jv.aksara.murda-rekan
+        kebo = water buffalo, wedhus = goat (or sheep). amba = wide, ciyut = narrow.
+        sugih = rich, mlarat = poor. sawetara = some, a few (sawetara menit = a few minutes).
+        senajan = even though (senajan mlarat, ... = even though he's poor, ...).
     examples:
-      - text: ꦯꦸꦭ꧀ꦠꦤ꧀ (Sultan)
-        ar_eg: السلطان
-        ar: السلطان
-        en: Sultan
-      - text: ꧇꧔꧐꧙꧇ (409)
-        ar_eg: أربعمية وتسعة
-        ar: أربعمائة وتسعة
-        en: four hundred and nine
+      - text: Jaman kuna, wong sugih duwe kebo lan sawah amba.
+        ar_eg: زمان، الغني كان عنده جاموس وأرض واسعة.
+        ar: قديمًا كان الغني يملك جواميس وحقولًا واسعة.
+        en: In the old days, rich people owned buffalo and wide rice fields.
+      - text: Senajan mlarat, warga desa iki rukun.
+        ar_eg: مع إنهم فقرا، أهل القرية دي عايشين في وفاق.
+        ar: رغم فقرهم، يعيش أهل هذه القرية في وئام.
+        en: Even though they're poor, the people of this village live in harmony.
+      - text: Dalane ciyut, mung cukup kanggo wedhus sawetara.
+        ar_eg: الطريق ضيق، يادوب يكفي كام معزة.
+        ar: الطريق ضيّق، يكفي بالكاد لبضع عنزات.
+        en: The path is narrow, just wide enough for a few goats.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة على البوابة مكتوبة بحرف murda؟
-      ar: أي كلمة على البوابة مكتوبة بحرف murda؟
-      en: Which word on the gate is written with a murda letter?
-    options: ["ꦱꦼꦒ", "ꦧꦸꦏꦸ", "ꦓꦸꦱ꧀ꦠꦶ"]
-    answer: 2
+    type: match_pairs
+    pairs:
+      - text: kebo
+        ar_eg: جاموسة
+        ar: جاموس
+        en: water buffalo
+      - text: wedhus
+        ar_eg: معزة
+        ar: ماعز
+        en: goat
+      - text: amba
+        ar_eg: واسع
+        ar: واسع
+        en: wide
+      - text: ciyut
+        ar_eg: ضيق
+        ar: ضيّق
+        en: narrow
+    words: [kebo, wedhus, amba, ciyut]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: sugih
+        ar_eg: غني
+        ar: غني
+        en: rich
+      - text: mlarat
+        ar_eg: فقير
+        ar: فقير
+        en: poor
+      - text: sawetara
+        ar_eg: شوية، كام
+        ar: بعض، بضعة
+        en: some, a few
+      - text: senajan
+        ar_eg: مع إن
+        ar: رغم أن
+        en: even though
+    words: [sugih, mlarat, sawetara, senajan]
+  - id: e03
     type: listen
-    text: Undhak-undhakane ana patang atus sanga.
+    text: Senajan mlarat, Pak Tani seneng nulung.
     question:
-      ar_eg: السلالم عددها كام؟
-      ar: كم عدد الدرجات؟
-      en: How many steps are there?
-    options: ["꧇꧔꧐꧙꧇", "꧇꧔꧙꧐꧇", "꧇꧔꧙꧇"]
+      ar_eg: الفلاح عامل إزاي؟
+      ar: كيف هو الفلاح؟
+      en: What is the farmer like?
+    options: [مع إنه فقير، الفلاح بيحب يساعد, الفلاح غني أوي, الفلاح مش بيساعد حد]
     answer: 0
     meaning:
-      ar_eg: السلالم عددها أربعمية وتسعة.
-      ar: عدد الدرجات أربعمائة وتسع.
-      en: There are four hundred and nine steps.
-    words: [undhak-undhakan]
-  - id: e03
-    type: fill_blank
-    sentence: ꦢ꦳ꦶꦏꦶꦂ = ___
-    meaning:
-      ar_eg: اكتب القراية بالحروف اللاتينية.
-      ar: اكتب القراءة بالحروف اللاتينية.
-      en: Type the reading in Latin letters.
-    answers: [dzikir]
+      ar_eg: مع إن الفلاح فقير، بيحب يساعد الناس.
+      ar: رغم فقره يحب الفلاح مساعدة الناس.
+      en: Even though he's poor, the farmer likes to help.
+    words: [senajan, mlarat]
   - id: e04
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب التاريخ بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
-      ar: "اكتب التاريخ بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
-      en: "Write the date in Latin letters and digits: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
-    answers: [tanggal 17, tanggal pitulas]
+    type: fill_blank
+    sentence: Sawahe ___ banget, ana kebo lima.
+    meaning:
+      ar_eg: الغيط ___ أوي، فيه خمس جواميس.
+      ar: الحقل ___ جدًا، وفيه خمسة جواميس.
+      en: The field is very ___; there are five buffalo.
+    options: [amba, ciyut, sugih]
+    answers: [amba]
+    words: [amba, ciyut, sugih]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حيوان كبير بيحرت الأرض في الغيط …
+      ar: حيوان كبير يحرث الحقل …
+      en: A big animal that ploughs the rice field …
+    options: [wedhus, kebo, sawetara]
+    answer: 1
+    explain:
+      ar_eg: kebo = الجاموسة اللي بتحرت. wedhus = معزة، وsawetara = كام.
+      ar: kebo = الجاموس الذي يحرث؛ wedhus = ماعز، وsawetara = بعض.
+      en: kebo = buffalo, the ploughing animal; wedhus = goat, sawetara = some.
+    words: [wedhus, kebo, sawetara]
+  - id: e06
+    type: fill_blank
+    sentence: Dalan menyang pasarean iku ___, montor ora bisa liwat.
+    meaning:
+      ar_eg: الطريق للمدافن ___، والعربيات مش بتعدّي.
+      ar: الطريق إلى المقبرة ___، فلا تمر السيارات.
+      en: The road to the cemetery is ___; cars can't get through.
+    options: [ciyut, amba, mlarat]
+    answers: [ciyut]
+    words: [ciyut, amba, mlarat]
+  - id: e07
+    type: multiple_choice
+    question: Dheweke ora duwe dhuwit, dheweke ___.
+    options: [sugih, mlarat, senajan]
+    answer: 1
+    explain:
+      ar_eg: 'اللي مامعهوش فلوس فقير: mlarat. sugih عكسها.'
+      ar: 'من لا مال له فقير: mlarat، وsugih عكسها.'
+      en: 'No money means poor: mlarat. sugih is the opposite.'
+    words: [sugih, mlarat, senajan]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: السلالم عددها أربعمية وتسعة.
-      ar: عدد الدرجات أربعمائة وتسع.
-      en: There are four hundred and nine steps.
-    answer: Undhak-undhakane ana patang atus sanga.
-    distractors: [papat, satus]
-    words: [undhak-undhakan]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الراجل اللي بيحرس القبور الملكية اسمه إيه؟
-      ar: ما اسم حارس المقابر الملكية؟
-      en: What do you call the keeper of the royal tombs?
-    options: [juru kunci, dhalang, bakul]
-    answer: 0
-    words: [juru kunci]
-  - id: e07
-    type: fill_blank
-    sentence: ___ njaga makam raja-raja.
-    meaning:
-      ar_eg: حارس المقابر بيحرس قبور الملوك.
-      ar: يحرس حارسُ المقابر قبورَ الملوك.
-      en: The tomb keeper looks after the kings' graves.
-    options: [juru kunci, undhak-undhakan, zakat]
-    answers: [juru kunci]
-    words: [juru kunci]
-  - id: e08
-    type: dictation
-    text: Juru kunci njaga makam.
-    meaning:
-      ar_eg: حارس المقابر بيحرس القبر.
-      ar: يحرس حارسُ المقابر القبر.
-      en: The tomb keeper looks after the grave.
-    words: [juru kunci]
+      ar_eg: أنا هستنى كام دقيقة.
+      ar: سأنتظر بضع دقائق.
+      en: I'll wait a few minutes.
+    answer: Aku ngenteni sawetara menit.
+    distractors: [kebo, amba]
+    words: [sawetara]
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Wong sugih iku duwe wedhus lan kebo.
+    answers_meaning:
+      ar_eg: [الراجل الغني ده عنده معيز وجاموس, الغني ده عنده معزة وجاموسة]
+      ar: [ذلك الغني يملك ماعزًا وجواميس, يملك ذلك الرجل الغني ماعزًا وجاموسًا]
+      en: [That rich man has goats and buffalo, The rich man owns a goat and a buffalo]
+    words: [sugih, wedhus, kebo]
+  - id: e10
     type: speaking
-    text: Undhak-undhakane akeh banget!
+    text: Senajan ciyut, omahku ayem.
     meaning:
-      ar_eg: السلالم كتير قوي!
-      ar: الدرجات كثيرة جدًا!
-      en: There are so many steps!
-    words: [undhak-undhakan]
+      ar_eg: مع إن بيتي ضيق، بس مريح.
+      ar: رغم ضيق بيتي، فهو مريح.
+      en: Even though it's small, my house is peaceful.
+    words: [senajan, ciyut]
 dialogue:
-  title: Juru kunci
   lines:
-    - speaker: Pak Harjo
-      text: Kula juru kunci ing Imogiri, Mas.
-      ar_eg: أنا حارس المقابر في إيموغيري يا ابني.
-      ar: أنا حارس المقابر في إيموغيري يا بني.
-      en: I'm the tomb keeper at Imogiri.
+    - speaker: Petani
+      text: Mas, sawahku iki amba, nanging dalane ciyut.
+      ar_eg: يا ابني، أرضي واسعة، بس الطريق ليها ضيق.
+      ar: يا بني، حقلي واسع، لكن طريقه ضيّق.
+      en: Young man, my field is wide, but the path to it is narrow.
     - speaker: Mohamed
-      text: Pak, kula badhe minggah dhateng makam.
-      ar_eg: يا عمّو، أنا عايز أطلع للمقابر.
-      ar: يا سيدي، أريد الصعود إلى المقابر.
-      en: Sir, I'd like to go up to the tombs.
-    - speaker: Pak Harjo
-      text: Mangga. Undhak-undhakanipun kathah sanget.
-      ar_eg: اتفضل. السلالم كتير قوي.
-      ar: تفضّل. الدرجات كثيرة جدًا.
-      en: Please do. There are a great many steps.
+      text: Kebo panjenengan pinten, Pak?
+      ar_eg: عندك كام جاموسة يا عم؟
+      ar: كم جاموسًا عندك يا عم؟
+      en: How many buffalo do you have, sir?
+    - speaker: Petani
+      text: Kebo loro, wedhus sawetara. Aku dudu wong sugih, lho.
+      ar_eg: جاموستين وكام معزة. أنا مش غني يا ابني.
+      ar: جاموسان وبعض الماعز. لست غنيًا يا بني.
+      en: Two buffalo and a few goats. I'm no rich man.
     - speaker: Mohamed
-      text: Kula sampun maos ing papan, sekawan atus sanga!
-      ar_eg: "أنا قريت على اللوحة: أربعمية وتسعة!"
-      ar: "قرأتُ على اللوحة: أربعمائة وتسع!"
-      en: "I read it on the sign: four hundred and nine!"
-    - speaker: Pak Harjo
-      text: Leres! Ngatos-atos, Mas.
-      ar_eg: صح! خلي بالك من نفسك يا ابني.
-      ar: صحيح! انتبه لنفسك يا بني.
-      en: That's right! Take care.
+      text: Nanging panjenengan katingal ayem, Pak.
+      ar_eg: بس باين عليك مرتاح البال يا عم.
+      ar: لكنك تبدو مطمئنًا يا عم.
+      en: But you look at peace, sir.
+    - speaker: Petani
+      text: Iya. Senajan mlarat, sing penting ayem lan rukun.
+      ar_eg: أيوه. مع إننا فقرا، المهم راحة البال والوفاق.
+      ar: نعم. رغم الفقر، المهم الطمأنينة والوئام.
+      en: Yes. Even though we're poor, what matters is peace and getting along.
+    - speaker: Mohamed
+      text: Leres, Pak.
+      ar_eg: عندك حق يا عم.
+      ar: صدقت يا عم.
+      en: That's true, sir.
 new_words:
-  - word: juru kunci
+  - word: kebo
     pos: noun
-    ar_eg: حارس المقابر / المكان المقدس
-    ar: حارس المقابر أو المزار
-    en: keeper of a tomb or sacred site = juru kunci
-  - word: undhak-undhakan
+    ar_eg: جاموسة
+    ar: جاموس
+    en: water buffalo
+  - word: wedhus
     pos: noun
-    ar_eg: سلالم / درجات
-    ar: درجات السلّم
-    en: steps, stairs = anak tangga
+    ar_eg: معزة؛ خروف
+    ar: ماعز؛ خروف
+    en: goat; sheep
+  - word: amba
+    pos: adjective
+    ar_eg: واسع
+    ar: واسع
+    en: wide, broad
+  - word: ciyut
+    pos: adjective
+    ar_eg: ضيق
+    ar: ضيّق
+    en: narrow
+  - word: sugih
+    pos: adjective
+    ar_eg: غني
+    ar: غني
+    en: rich
+  - word: mlarat
+    pos: adjective
+    ar_eg: فقير
+    ar: فقير
+    en: poor
+  - word: sawetara
+    pos: determiner
+    ar_eg: شوية، كام
+    ar: بعض، بضعة
+    en: some, a few
+  - word: senajan
+    pos: conjunction
+    ar_eg: مع إن
+    ar: رغم أنّ
+    en: even though
 review:
   status: draft
   verified: false

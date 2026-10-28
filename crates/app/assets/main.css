@@ -475,6 +475,20 @@ h3 { font-size: var(--fs-md); margin-block: var(--sp-4) var(--sp-2); }
 }
 /* Portraits (portraits.rs): a cover-cropped photo-style face in the avatar's circle. */
 img.face { object-fit: cover; object-position: 50% 30%; display: block; }
+/* A speaker without a portrait yet: their initial or role sign in a tint
+   chosen by name (portraits::monogram, #312). Sized by the face class. */
+.face.monogram {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  background: color-mix(in srgb, var(--mono) 18%, var(--surface));
+  border: 1.5px solid var(--mono);
+  color: var(--mono);
+  font-family: var(--font-latin);
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1;
+}
 img.face.nur-avatar { inline-size: 3.25rem; block-size: 3.25rem; box-shadow: 0 0 0 2px var(--gold-soft); }
 .nur-bubble {
   background: var(--surface-2);
@@ -796,8 +810,10 @@ button.icon-button { inline-size: 44px; padding: 0; flex: none; }
    Each label sits right above its buttons. */
 .reader-bar-wrap { position: relative; }
 .read-settings-scrim { position: fixed; inset: 0; z-index: 30; }
-/* the bar stays above the scrim: Aa, Focus and New text keep working */
-.reader-bar-wrap > .reader-bar { position: relative; z-index: 31; }
+/* While the popover is open the bar stays above its scrim, so Aa, Focus
+   and New text keep working. Only then: otherwise the word card, which
+   floats over the text, must cover the bar (#302). */
+.reader-bar-wrap.open > .reader-bar { position: relative; z-index: 31; }
 .read-settings {
   position: absolute; inset-block-start: calc(100% + var(--sp-2)); inset-inline-end: 0; z-index: 31;
   inline-size: min(30rem, 100%); box-sizing: border-box; box-shadow: var(--shadow);
@@ -912,7 +928,8 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .chip { display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; gap: 0.25rem; padding-block: 0.1rem; padding-inline: 0.5rem; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; }
 .chip.from-arabic { border-color: var(--gold); text-decoration: none; }
 .chip .latin { font-weight: 600; }
-.explain .chip { padding-block: 0.2rem; padding-inline: 0.6rem; gap: 0.4rem; cursor: pointer; }
+/* a long gloss wraps inside its chip instead of widening the page (large Reader sizes on a phone) */
+.explain .chip { padding-block: 0.2rem; padding-inline: 0.6rem; gap: 0.4rem; cursor: pointer; max-inline-size: 100%; box-sizing: border-box; flex-wrap: wrap; }
 .explain .chip-gloss { color: var(--text); }
 /* the whole line's translation: the learner's language, quiet but readable */
 .tr-line {

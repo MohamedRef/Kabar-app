@@ -73,6 +73,25 @@ pub struct Slide {
     /// Grammar-library id this slide teaches, for "explain more".
     #[serde(default)]
     pub grammar: Option<String>,
+    /// A small comparison table (e.g. ngoko / krama pairs), shown under the body.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub table: Option<SlideTable>,
+}
+
+/// Target-language columns plus a meaning column in the reader's language.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct SlideTable {
+    /// Column labels, target-language or linguistic terms ("Indonesia", "ngoko").
+    pub head: Vec<String>,
+    pub rows: Vec<TableRow>,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct TableRow {
+    /// One target-language cell per `head` column.
+    pub cells: Vec<String>,
+    #[serde(flatten)]
+    pub meaning: Localized,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -242,6 +261,14 @@ pub struct NewWord {
     /// (bersalaman → salam, Senen → senin).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub bridge: Option<String>,
+    /// Javanese only: the Indonesian word spelled the same with another
+    /// meaning (mau "a moment ago" ≠ Indonesian mau "want"). Shown as a badge.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub false_friend: Option<String>,
+    /// Javanese only: spelled like an Indonesian word and means the same,
+    /// although the glosses are worded differently (kapan, salam).
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub same_as_id: bool,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]

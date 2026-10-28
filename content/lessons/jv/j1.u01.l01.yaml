@@ -45,29 +45,36 @@ slides:
   - title: Esuk, awan, sore, bengi
     body:
       ar_eg: |
-        الجاوي بيبدّل كلمات كاملة حسب إنت بتكلم مين، مش الضمير بس. حتى أوقات اليوم ليها كلمتين:
-        - pagi: esuk (ngoko، بين الصحاب) · enjing (krama، مؤدب)
-        - siang: awan (ngoko) · siang (krama)
-        - sore: sore (ngoko) · sonten (krama)
-        - malam: bengi (ngoko) · dalu (krama)
-        ngoko ≈ «إنت»، krama ≈ «حضرتك». عشان كده التحية المؤدبة sugeng enjing فيها enjing مش esuk.
+        الجاوي بيبدّل كلمات كاملة حسب إنت بتكلم مين، مش الضمير بس. حتى أوقات اليوم ليها كلمتين: ngoko بين الصحاب (زي «إنت»)، وkrama للمؤدب (زي «حضرتك»).
+        عشان كده التحية المؤدبة sugeng enjing فيها enjing مش esuk.
         وبين الصحاب في يوجيا الناس غالبًا مابتقولش sugeng خالص: بيسألوا «Piye kabare?» أو «Piye, cah?» على طول، أو بيقولوا «Pagi!» بالإندونيسي.
       ar: |
-        تبدّل الجاوية ألفاظًا كاملة بحسب المخاطَب، لا الضمير وحده، حتى أوقات اليوم لها لفظان:
-        - pagi: esuk (ngoko، بين الأقران) · enjing (krama، مهذب)
-        - siang: awan (ngoko) · siang (krama)
-        - sore: sore (ngoko) · sonten (krama)
-        - malam: bengi (ngoko) · dalu (krama)
-        فالـ ngoko ≈ «أنت» والـ krama ≈ «حضرتك»، ولذلك تأتي التحية المهذبة sugeng enjing بلفظ enjing لا esuk.
+        تبدّل الجاوية ألفاظًا كاملة بحسب المخاطَب، لا الضمير وحده، حتى أوقات اليوم لها لفظان: ngoko بين الأقران (كـ«أنت»)، وkrama للتأدب (كـ«حضرتك»).
+        ولذلك تأتي التحية المهذبة sugeng enjing بلفظ enjing لا esuk.
         أما بين الأصدقاء في يوجيا فقلّما يقال sugeng، بل يُسأل مباشرة «Piye kabare?» أو «Piye, cah?» أو يقال «Pagi!» بالإندونيسية.
       en: |
-        Javanese swaps whole words depending on who you're talking to, not just pronouns. Even the times of day come in pairs:
-        - pagi: esuk (ngoko, between friends) · enjing (krama, polite)
-        - siang: awan (ngoko) · siang (krama)
-        - sore: sore (ngoko) · sonten (krama)
-        - malam: bengi (ngoko) · dalu (krama)
-        ngoko ≈ «إنت», krama ≈ «حضرتك». That's why the polite greeting is sugeng enjing, not "sugeng esuk".
+        Javanese swaps whole words depending on who you're talking to, not just pronouns. Even the times of day come in pairs: ngoko between friends (like «إنت»), krama when being polite (like «حضرتك»).
+        That's why the polite greeting is sugeng enjing, not "sugeng esuk".
         Between friends in Jogja people rarely say sugeng at all: they jump straight to "Piye kabare?" or "Piye, cah?", or say Indonesian "Pagi!".
+    table:
+      head: [Indonesia, ngoko, krama]
+      rows:
+        - cells: [pagi, esuk, enjing]
+          ar_eg: الصبح
+          ar: الصباح
+          en: morning
+        - cells: [siang, awan, siang]
+          ar_eg: الضهر
+          ar: الظهيرة
+          en: midday
+        - cells: [sore, sore, sonten]
+          ar_eg: العصر / بعد الضهر
+          ar: العصر
+          en: afternoon
+        - cells: [malam, bengi, dalu]
+          ar_eg: بالليل
+          ar: الليل
+          en: night
     examples:
       - text: esuk / enjing
         ar_eg: الصبح (ngoko / krama)
@@ -253,9 +260,10 @@ new_words:
     en: morning (ngoko; krama enjing)
   - word: awan
     pos: noun
-    ar_eg: الضهر (ngoko؛ krama siang)
-    ar: الظهيرة (ngoko؛ وبالـ krama siang)
-    en: midday, daytime (ngoko; krama siang)
+    ar_eg: الضهر (ngoko؛ krama siang) (≠ إندونيسي awan = سحابة)
+    ar: الظهيرة (ngoko؛ وبالـ krama siang) (≠ الإندونيسية awan = سحابة)
+    en: midday, daytime (ngoko; krama siang) (≠ Indonesian awan "cloud")
+    false_friend: awan
   - word: bengi
     pos: noun
     ar_eg: بالليل (ngoko؛ krama dalu)

@@ -370,6 +370,7 @@ pub fn draft(prepared: &Prepared, answer: &Answer<LearnEntry>) -> TaughtEntry {
         doubts,
         engine: answer.engine.as_str().into(),
         edited: false,
+        kept: Default::default(),
     }
 }
 

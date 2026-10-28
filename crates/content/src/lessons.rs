@@ -369,7 +369,12 @@ impl Check<'_> {
     fn new_words(&mut self, v: Option<&Value>) {
         for (i, w) in v.and_then(Value::as_array).into_iter().flatten().enumerate() {
             let at = format!("new_words[{i}]");
-            self.localized(&at, Some(w), &["word"], &["pos", "arabic", "bridge"]);
+            self.localized(
+                &at,
+                Some(w),
+                &["word"],
+                &["pos", "arabic", "bridge", "false_friend", "same_as_id"],
+            );
             if w.get("arabic").is_some() {
                 self.arabic(&format!("{at}.arabic"), w.get("arabic"));
             } else if w.get("bridge").is_some() {
@@ -721,7 +726,9 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
     let mut taught = BTreeSet::new();
     for (i, s) in slides.iter().enumerate() {
         let at = format!("slides[{i}]");
-        let Some(sm) = c.fields(&at, s, &["body"], &["title", "examples", "grammar"]) else { continue };
+        let Some(sm) = c.fields(&at, s, &["body"], &["title", "examples", "grammar", "table"]) else {
+            continue;
+        };
         c.localized(&format!("{at}.body"), sm.get("body"), &[], &[]);
         if sm.contains_key("title") {
             c.text(&format!("{at}.title"), sm.get("title"));
@@ -732,6 +739,29 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
         }
         for (j, ex) in examples.iter().enumerate() {
             c.localized(&format!("{at}.examples[{j}]"), Some(ex), &["text"], &[]);
+        }
+        if let Some(t) = sm.get("table")
+            && let Some(tm) = c.fields(&format!("{at}.table"), t, &["head", "rows"], &[])
+        {
+            let head = tm.get("head").and_then(Value::as_array).map_or(0, Vec::len);
+            let rows = tm.get("rows").and_then(Value::as_array).cloned().unwrap_or_default();
+            if !(2..=pacing::MAX_TABLE_COLUMNS).contains(&head)
+                || !(2..=pacing::MAX_TABLE_ROWS).contains(&rows.len())
+            {
+                c.push(format_args!(
+                    "{at}.table: 2–{} head columns and 2–{} rows",
+                    pacing::MAX_TABLE_COLUMNS,
+                    pacing::MAX_TABLE_ROWS
+                ));
+            }
+            for (j, row) in rows.iter().enumerate() {
+                let rat = format!("{at}.table.rows[{j}]");
+                c.localized(&rat, Some(row), &[], &["cells"]);
+                let cells = row.get("cells").and_then(Value::as_array).map_or(0, Vec::len);
+                if cells != head {
+                    c.push(format_args!("{rat}: {cells} cells for {head} columns"));
+                }
+            }
         }
         if let Some(g) = sm.get("grammar").and_then(Value::as_str) {
             if !index.grammar.contains(g) {
@@ -793,7 +823,7 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
     c.within(&lesson.kind, "new_words", words.len(), &caps.new_words);
     for (i, w) in words.iter().enumerate() {
         let at = format!("new_words[{i}]");
-        c.localized(&at, Some(w), &["word"], &["pos", "arabic", "bridge"]);
+        c.localized(&at, Some(w), &["word"], &["pos", "arabic", "bridge", "false_friend", "same_as_id"]);
         if w.get("arabic").is_some() {
             c.arabic(&format!("{at}.arabic"), w.get("arabic"));
         }
