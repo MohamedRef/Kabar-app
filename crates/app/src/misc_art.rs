@@ -8,7 +8,6 @@ use std::sync::LazyLock;
 
 use base64::Engine as _;
 use dioxus::prelude::*;
-use kabar_core::settings::Theme;
 use kabar_core::theme::{self as palette, Palette, Scheme};
 
 macro_rules! art {
@@ -72,17 +71,7 @@ pub fn paper_css() -> &'static str {
             let value = if p.scheme == Scheme::Dark { "none".to_string() } else { format!("url({paper})") };
             format!(".app[data-theme=\"{id}\"] {{ --notebook-paper: {value}; }}\n")
         };
-        let mut css = rule("system", &palette::LIGHT);
-        css.push_str(&format!(
-            "@media (prefers-color-scheme: dark) {{ {}}}\n",
-            rule("system", &palette::DARK)
-        ));
-        for theme in Theme::ALL {
-            if let Some(p) = theme.palette() {
-                css.push_str(&rule(theme.as_str(), p));
-            }
-        }
-        css
+        palette::rules_for_all(rule)
     });
     &CSS
 }
@@ -90,6 +79,7 @@ pub fn paper_css() -> &'static str {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use kabar_core::settings::Theme;
 
     #[test]
     fn every_picture_is_webp() {
