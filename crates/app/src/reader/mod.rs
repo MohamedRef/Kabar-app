@@ -80,16 +80,14 @@ pub fn lexicon() -> &'static [kabar_core::ink::spell::Known] {
 
 pub(crate) use self::card::speak;
 
-/// Where a floating card goes next to a word: below or above it, whichever
-/// side of the window has more room (`room` px).
+/// Where a peek floats next to a word: below or above it, whichever side
+/// of the window has more room.
 #[derive(Clone, Copy, Debug, PartialEq, Deserialize)]
 pub struct Peek {
     pub i: usize,
     pub start: f64,
     pub below: bool,
     pub y: f64,
-    #[serde(default)]
-    pub room: f64,
 }
 
 /// What the side panel / bottom sheet shows.
@@ -120,8 +118,6 @@ pub struct ReaderState {
     pub voice: Signal<UiLanguage>,
     pub peek: Signal<Option<Peek>>,
     pub panel: Signal<Option<Panel>>,
-    /// On phones the word card floats next to the word it was opened from.
-    pub anchor: Signal<Option<Peek>>,
     pub toast: Signal<Option<Msg>>,
     /// The open text's grammar, worked out once when it opens.
     pub grammar: Signal<Option<Rc<grammar::DocGrammar>>>,
@@ -182,7 +178,6 @@ impl ReaderState {
             voice: Signal::new(voice),
             peek: Signal::new(None),
             panel: Signal::new(None),
-            anchor: Signal::new(None),
             toast: Signal::new(None),
             grammar: Signal::new(None),
             translated: Signal::new(translate::Translated::default()),
@@ -277,8 +272,10 @@ pub struct Inbox(pub Signal<Option<SharedInput>>);
 enum FromJs {
     Peek(Peek),
     Unpeek,
-    /// The word card, placed next to the word on phones.
-    Open(Peek),
+    /// The word sheet for a word.
+    Open {
+        i: usize,
+    },
     Phrase {
         tokens: Vec<usize>,
     },
@@ -335,19 +332,16 @@ pub fn Reader() -> Element {
                             }
                         }
                         FromJs::Unpeek => st.peek.set(None),
-                        FromJs::Open(at) => {
+                        FromJs::Open { i } => {
                             st.peek.set(None);
-                            st.anchor.set(Some(at));
-                            st.panel.set(Some(Panel::Word(at.i)));
+                            st.panel.set(Some(Panel::Word(i)));
                         }
                         FromJs::Phrase { tokens } => {
                             st.peek.set(None);
-                            st.anchor.set(None);
                             st.panel.set(Some(Panel::Phrase { tokens, save_first: false }));
                         }
                         FromJs::Menu { tokens } => {
                             st.peek.set(None);
-                            st.anchor.set(None);
                             st.panel.set(Some(Panel::Phrase { tokens, save_first: true }));
                         }
                         FromJs::Highlight { tokens } => st.save_phrase(&db, &tokens),

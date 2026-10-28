@@ -583,6 +583,10 @@ pub enum Msg {
     ShareFirstImageOnly,
     SharedFrom,
     Close,
+    /// The word sheet's drag handle (screen readers, keyboard).
+    SheetResize,
+    /// The word sheet's name for screen readers.
+    WordSheet,
     Delete,
     Original,
     Explanation,
@@ -2572,6 +2576,12 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (Close, ArEg) => "اقفل",
         (Close, Ar) => "أغلق",
         (Close, En) => "Close",
+        (SheetResize, ArEg) => "اسحب عشان تكبّر أو تصغّر، أو استخدم الأسهم",
+        (SheetResize, Ar) => "اسحب لتكبير اللوحة أو تصغيرها، أو استخدم الأسهم",
+        (SheetResize, En) => "Drag to resize, or use the arrow keys",
+        (WordSheet, ArEg) => "تفاصيل الكلمة",
+        (WordSheet, Ar) => "تفاصيل الكلمة",
+        (WordSheet, En) => "Word details",
         (Delete, ArEg) => "امسح",
         (Delete, Ar) => "احذف",
         (Delete, En) => "Delete",

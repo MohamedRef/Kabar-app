@@ -30,6 +30,7 @@ use crate::reader::doc::{Lexicon, ReadDoc, Tag, Word};
 use crate::reader::explain::voice_of;
 use crate::reader::glossary::{Gloss, WordLang};
 use crate::reader::grammar::{DocGrammar, GrammarAt, syllabus};
+use crate::sheet::Sheet;
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
 
@@ -446,8 +447,8 @@ pub fn Annotated(
     }
 }
 
-/// The card under the sentence for one tapped word: what the Reader's card
-/// says, without its status and highlight tools.
+/// The word sheet for one tapped word (`crate::sheet`): what the Reader's
+/// card says, without its status and highlight tools.
 #[component]
 fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandler) -> Element {
     let ui = use_context::<Ui>();
@@ -468,12 +469,7 @@ fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandl
     });
 
     rsx! {
-        span {
-            class: "annot-card",
-            role: "dialog",
-            aria_label: "{surface}",
-            // Taps inside the card must not reach a button around the sentence.
-            onclick: move |e| e.stop_propagation(),
+        Sheet { label: surface.clone(), on_close: move |_| on_close.call(()),
             span { class: "annot-card-head",
                 strong {
                     bdi { class: "latin", lang: word_tag, dir: "ltr", "{surface}" }
@@ -483,7 +479,6 @@ fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandl
                     }
                 }
                 SayWord { text: surface.clone(), tag: word_tag }
-                button { class: "quiet small", onclick: move |_| on_close.call(()), "{tt(lang, T::Close)}" }
             }
             Breakdown { word: w.clone(), tag }
             match w.shown() {
