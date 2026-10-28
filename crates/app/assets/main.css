@@ -1131,18 +1131,7 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .bridge-line.false, .bridge-card.false strong { color: var(--dawn); }
 .bridge-line .ar { font-family: var(--font-arabic); font-size: 1.15rem; }
 
-/* full word card: side panel on wide windows, bottom sheet on phones */
-.panel { position: relative; }
-.panel-close { position: absolute; inset-block-start: 0.25rem; inset-inline-end: 0.25rem; }
-.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .panel {
-  position: sticky; inset-block-start: 1rem; max-block-size: calc(100dvh - 2rem); overflow-y: auto;
-}
-.app:is([data-width="compact"], [data-width="medium"]) .panel {
-  position: fixed; inset-inline: 0; inset-block-end: 0; z-index: 20; margin: 0;
-  max-block-size: 70dvh; overflow-y: auto; border-end-start-radius: 0; border-end-end-radius: 0;
-  padding-block-end: calc(1.25rem + env(safe-area-inset-bottom));
-}
-.app[data-width="compact"] .panel { inset-block-end: 4.5rem; }
+/* The full word card, inside the word sheet (sheet.css). */
 .word-card { display: grid; gap: 0.75rem; }
 .word-card .field { margin: 0; }
 .word-card .field p { margin-block: 0.15rem; }
@@ -1189,18 +1178,6 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .levels dd.current::before { content: "● "; font-size: 0.7em; vertical-align: middle; }
 .levels .note { margin-block-start: 0.5rem; }
 .tag.taught { background: var(--indigo); color: var(--surface); }
-.panel .phrase { margin-block-start: 1.5rem; }
-/* Room for the close button beside a long headline. */
-.panel .headline { padding-inline-end: 1.75rem; }
-/* Phones and tablets: the word card floats next to its word, on the side of
-   the window with room, and scrolls inside that room. */
-.app:is([data-width="compact"], [data-width="medium"]) .panel.anchored {
-  inset-inline: 0.5rem; border-radius: 16px; max-block-size: min(var(--anchor-room), 75dvh);
-  padding-block-end: 1rem; box-shadow: var(--shadow); z-index: 30;
-}
-.app:is([data-width="compact"], [data-width="medium"]) .panel.anchored.below { inset-block: var(--anchor-y) auto; }
-.app:is([data-width="compact"], [data-width="medium"]) .panel.anchored.above { inset-block: auto var(--anchor-y); }
-@media (prefers-reduced-motion: no-preference) { .panel.anchored { animation: reveal 150ms ease-out both; } }
 .explain-glue { display: grid; gap: 0.5rem; justify-items: start; border-inline-start: 3px solid var(--indigo); padding-inline-start: 0.75rem; }
 .explain-glue p { margin: 0; }
 .grammar-entry { border: 1px solid var(--line); border-radius: 12px; padding-block: 0.5rem; padding-inline: 0.75rem; }

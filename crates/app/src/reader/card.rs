@@ -20,6 +20,7 @@ use crate::coach::Coach;
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
 use crate::pron::{Pron, PronGuide};
+use crate::sheet::Sheet;
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
 
@@ -151,51 +152,35 @@ fn Headline(w: Word, surface: String) -> Element {
     }
 }
 
-/// Side panel (wide windows) or bottom sheet (phone).
+/// The word sheet: a side column on wide windows, a bottom sheet the
+/// learner resizes on phones and tablets (`crate::sheet`).
 #[component]
 pub fn PanelView() -> Element {
     let ui = use_context::<Ui>();
     let st = use_context::<ReaderState>();
     let panel = st.panel.read().clone();
     let text_id = st.open.read().as_ref().map(|o| o.text.id.clone()).unwrap_or_default();
-    // Phones and tablets: float next to the word the card was opened from,
-    // on the side with room. Wide windows keep the side column (CSS).
-    let anchor = match (&panel, *st.anchor.read()) {
-        (Some(Panel::Word(i)), Some(a)) if a.i == *i && a.room > 120.0 => Some(a),
-        _ => None,
-    };
-    let (class, style) = match anchor {
-        Some(a) => (
-            if a.below { "card panel anchored below" } else { "card panel anchored above" },
-            format!("--anchor-y: {}px; --anchor-room: {}px", a.y, a.room),
-        ),
-        None => ("card panel", String::new()),
-    };
     rsx! {
-        aside { class, style, aria_live: "polite",
-            div { class: "panel-close",
-                button {
-                    class: "ghost",
-                    "data-back": "true",
-                    aria_label: "{ui.t(Msg::Close)}",
-                    onclick: move |_| {
-                        let mut p = st.panel;
-                        p.set(None);
+        Sheet {
+            label: ui.t(Msg::WordSheet).to_string(),
+            side: true,
+            on_close: move |_| {
+                let mut p = st.panel;
+                p.set(None);
+            },
+            div { class: "panel", aria_live: "polite",
+                match panel {
+                    Some(Panel::Word(i)) => rsx! {
+                        WordCard { i }
                     },
-                    "×"
+                    Some(Panel::Phrase { tokens, save_first }) => rsx! {
+                        PhraseCard { tokens, save_first }
+                    },
+                    Some(Panel::Explain(i)) => rsx! {
+                        ExplainCard { key: "{text_id}-{i}", token: i }
+                    },
+                    None => rsx! {},
                 }
-            }
-            match panel {
-                Some(Panel::Word(i)) => rsx! {
-                    WordCard { i }
-                },
-                Some(Panel::Phrase { tokens, save_first }) => rsx! {
-                    PhraseCard { tokens, save_first }
-                },
-                Some(Panel::Explain(i)) => rsx! {
-                    ExplainCard { key: "{text_id}-{i}", token: i }
-                },
-                None => rsx! {},
             }
         }
     }

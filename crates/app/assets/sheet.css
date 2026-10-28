@@ -1,0 +1,150 @@
+/* The word sheet (crates/app/src/sheet.rs, gestures in sheet.js): a raised
+   layer in its own colour (--sheet, a tinted surface tested per theme)
+   with an accent hairline and a long shadow, so it never reads as one
+   more card on the page. Docked at the bottom on every width; the Reader
+   keeps it as a side column on wide windows (.side). Its height is
+   --sheet-f of the window, and short content keeps it short. */
+.bsheet {
+  --sheet-f: 0.56;
+  position: fixed;
+  z-index: 25;
+  inset-inline: 0;
+  inset-block-end: 0;
+  margin: 0 auto;
+  inline-size: 100%;
+  max-inline-size: 40rem;
+  max-block-size: calc(var(--sheet-f) * 100dvh);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: var(--sheet);
+  color: var(--text);
+  border: 1px solid color-mix(in srgb, var(--indigo) 40%, transparent);
+  border-block-end: 0;
+  border-start-start-radius: var(--radius-lg);
+  border-start-end-radius: var(--radius-lg);
+  box-shadow: 0 -10px 36px rgb(0 0 0 / 0.3), 0 -2px 8px rgb(0 0 0 / 0.12);
+  /* It often opens inside a button (examples, dialogue lines): undo the
+     button's text look. */
+  font: normal 400 var(--fs-md) / var(--lh-ui) var(--font-latin);
+  letter-spacing: normal;
+  text-align: start;
+  text-transform: none;
+  white-space: normal;
+  cursor: auto;
+  -webkit-user-select: text;
+  user-select: text;
+}
+/* The sheet often opens deep inside a slide or a button. Anything that
+   gives an ancestor a transform (a finished entrance animation that keeps
+   its last frame, a pressed button's scale, a tilted card) would pin the
+   "fixed" sheet to that ancestor instead of the window, so ancestors of an
+   open docked sheet drop them. Finished animations look the same without
+   their fill, and changing the fill never replays them. */
+.app :has(.bsheet:not(.side)) {
+  animation-fill-mode: none !important;
+  transform: none !important;
+  translate: none !important;
+  rotate: none !important;
+  scale: none !important;
+  filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  will-change: auto !important;
+  contain: none !important;
+}
+.app:lang(ar) .bsheet { font-family: var(--font-arabic); }
+@media (prefers-reduced-motion: no-preference) {
+  .bsheet { animation: bsheet-in var(--dur-slow) var(--ease) both; }
+  .bsheet.settling { transition: max-block-size 240ms var(--ease); }
+  .bsheet.closing { transition: transform 170ms ease-in, opacity 170ms ease-in; transform: translateY(100%); opacity: 0.6; }
+}
+.bsheet.closing { pointer-events: none; }
+@keyframes bsheet-in { from { transform: translateY(100%); } to { transform: none; } }
+
+/* The handle: a full-width strip, the bar in the accent colour, with the
+   close button at its end. */
+.bsheet-grip {
+  flex: none;
+  display: grid;
+  place-items: center;
+  block-size: 2.75rem;
+  cursor: ns-resize;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+}
+.bsheet-bar {
+  inline-size: 2.75rem;
+  block-size: 0.3rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--indigo) 60%, transparent);
+  transition: inline-size var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
+}
+.bsheet-grip:hover .bsheet-bar,
+.bsheet.dragging .bsheet-bar { inline-size: 3.5rem; background: var(--indigo); }
+.bsheet-grip:focus-visible { outline: none; }
+.bsheet-grip:focus-visible .bsheet-bar { outline: 2px solid var(--focus); outline-offset: 3px; }
+.bsheet.dragging, .bsheet.dragging * { cursor: ns-resize; -webkit-user-select: none; user-select: none; }
+
+/* The header's round 40dp button (#442), in the sheet's corner. */
+.bsheet-close {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: 0.125rem;
+  inset-inline-end: 0.375rem;
+  display: grid;
+  place-items: center;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  min-inline-size: 0;
+  min-block-size: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--text) 9%, transparent);
+  color: var(--muted);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.bsheet-close:hover, .bsheet-close:active { background: color-mix(in srgb, var(--text) 15%, transparent); color: var(--indigo); }
+
+.bsheet-body {
+  flex: 0 1 auto;
+  min-block-size: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: grid;
+  gap: var(--sp-3);
+  align-content: start;
+  padding-inline: var(--sp-4);
+  padding-block: var(--sp-1) calc(var(--sp-4) + env(safe-area-inset-bottom));
+}
+.bsheet-body p { margin: 0; }
+/* Grey boxes inside (notes, examples) stay boxes on the tinted sheet. */
+.bsheet .note, .bsheet blockquote { background: color-mix(in srgb, var(--surface) 55%, var(--sheet)); }
+
+/* The page under a docked sheet gets room to scroll its last lines up. */
+:root[data-sheet="open"] :is(.content, [data-sheet-room]) {
+  padding-block-end: calc(var(--sheet-room, 50dvh) + var(--sp-6)) !important;
+}
+
+/* The Reader on wide windows: a side column; the handle row stays as the
+   close button's row, without the bar. */
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .bsheet.side {
+  position: sticky;
+  z-index: auto;
+  inset-block-start: 1rem;
+  inset-inline: auto;
+  inset-block-end: auto;
+  margin: 0;
+  max-inline-size: none;
+  max-block-size: calc(100dvh - 2rem);
+  border-block-end: 1px solid color-mix(in srgb, var(--indigo) 40%, transparent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  animation: none;
+}
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .bsheet.side .bsheet-grip { cursor: auto; visibility: hidden; }

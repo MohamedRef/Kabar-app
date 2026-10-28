@@ -27,9 +27,9 @@ if (!window.__kabarReaderInit) {
   let longTimer = 0;
   let suppressClick = false;
 
-  // Where to float a card next to the word: on the side of the window with
-  // more room (below unless the word sits low), with that room in px so the
-  // card can scroll inside it. `start` is from the inline-start edge (RTL-aware).
+  // Where to float a peek next to the word: on the side of the window with
+  // more room (below unless the word sits low). `start` is from the
+  // inline-start edge (RTL-aware).
   function rectOf(el) {
     const r = el.getBoundingClientRect();
     const rtl = getComputedStyle(document.documentElement.querySelector(".app") || el).direction === "rtl";
@@ -40,13 +40,14 @@ if (!window.__kabarReaderInit) {
     const floor = nav && nav.top > innerHeight / 2 ? nav.top : innerHeight;
     const above = r.top - 8, beneath = floor - r.bottom - 8;
     return beneath >= Math.min(above, 360)
-      ? { start, below: true, y: r.bottom + 6, room: beneath }
-      : { start, below: false, y: innerHeight - r.top + 6, room: above };
+      ? { start, below: true, y: r.bottom + 6 }
+      : { start, below: false, y: innerHeight - r.top + 6 };
   }
 
   function open(el) {
     lastPeek = -1;
-    send({ type: "open", i: idx(el), ...rectOf(el) });
+    // The word sheet (sheet.js) scrolls the word above itself.
+    send({ type: "open", i: idx(el) });
   }
 
   function peek(el) {

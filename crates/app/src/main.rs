@@ -33,6 +33,7 @@ mod review;
 mod schedule;
 mod screens;
 mod settings;
+mod sheet;
 mod sounds;
 mod souvenir_art;
 mod stats;
@@ -347,6 +348,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let coach = use_context_provider(|| Coach::load(&db));
     annotated::use_words(&db);
     use_width_tracking(ui.width, ui.tablet);
+    sheet::use_gestures();
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
     schedule::use_optimizer(db.clone(), ui, coach);
@@ -398,6 +400,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         style { {pron_font} }
         style { {annotated::CSS.text()} }
         style { {reader::grammar::CSS.text()} }
+        style { {sheet::CSS.text()} }
         style { {ui_fonts} }
         style { {misc_art::paper_css()} }
         div {

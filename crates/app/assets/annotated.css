@@ -12,18 +12,11 @@
   font-size: 0.8rem; color: var(--muted); background: var(--surface-2); cursor: pointer;
 }
 .annot-reveal:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
-/* The card often opens inside a button (examples, dialogue lines): undo
-   the button's look so it reads as a card. */
-.annot-card {
-  display: grid; gap: 0.5rem; margin-block: 0.4rem; padding: 0.6rem 0.75rem;
-  border-radius: var(--radius); background: var(--surface); border: 1px solid var(--surface-2); box-shadow: var(--shadow);
-  color: var(--text); font-weight: normal; font-size: 1rem; text-align: start; cursor: auto; white-space: normal;
-}
-.annot-card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
-.annot-card-head strong { flex: 1; }
-.annot-card .field { display: grid; gap: 0.15rem; }
-.annot-card .gloss.big { font-size: 1.05rem; margin-block: 0.15rem; }
-.annot-card p { margin: 0; }
+/* The word sheet's content (the sheet itself is sheet.css). */
+.annot-card-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.annot-card-head strong { flex: 1; font-size: var(--fs-xl); font-weight: 700; color: var(--indigo); }
+.bsheet .field { display: grid; gap: 0.15rem; }
+.bsheet .annot-card-head ~ * .gloss.big { font-size: 1.05rem; margin-block: 0.15rem; }
 /* A story's target words (Kabar Pagi), as `mark.target` in main.css. */
 .annot-w.target { text-decoration: underline 2px var(--indigo); text-underline-offset: 4px; font-weight: 600; }
 .annot-w.target.bridge-word { text-decoration-color: var(--gold); color: var(--gold); }

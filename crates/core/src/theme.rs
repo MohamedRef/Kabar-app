@@ -29,6 +29,9 @@ pub struct Palette {
     pub bg: &'static str,
     pub surface: &'static str,
     pub surface_2: &'static str,
+    /// The word sheet (the card a tapped word opens): a raised, tinted
+    /// surface that never blends into the page or its cards.
+    pub sheet: &'static str,
     pub text: &'static str,
     pub muted: &'static str,
     pub line: &'static str,
@@ -87,6 +90,7 @@ pub const LIGHT: Palette = Palette {
     bg: "#f6f1e7",
     surface: "#fffaf1",
     surface_2: "#efe7d8",
+    sheet: "#e1e6f6",
     text: "#23211f",
     muted: "#5d574e",
     line: "#ddd2bf",
@@ -127,6 +131,7 @@ pub const DARK: Palette = Palette {
     bg: "#171615",
     surface: "#211f1d",
     surface_2: "#2b2926",
+    sheet: "#272d45",
     text: "#efe9df",
     muted: "#b3aa9c",
     line: "#3a3632",
@@ -172,6 +177,7 @@ pub const BLACK: Palette = Palette {
     bg: "#000000",
     surface: "#000000",
     surface_2: "#161616",
+    sheet: "#141a30",
     text: "#ebe7e0",
     muted: "#a9a297",
     line: "#383430",
@@ -205,6 +211,7 @@ pub const NIGHT: Palette = Palette {
     bg: "#100c08",
     surface: "#18120c",
     surface_2: "#221a12",
+    sheet: "#3a2a1d",
     text: "#e3cfb2",
     muted: "#a8916f",
     line: "#33281c",
@@ -245,6 +252,7 @@ pub const BATIK: Palette = Palette {
     bg: "#121830",
     surface: "#1a2140",
     surface_2: "#232b4f",
+    sheet: "#2a3466",
     text: "#ece9f4",
     muted: "#b0b3cf",
     line: "#323b63",
@@ -285,6 +293,7 @@ pub const SAWAH: Palette = Palette {
     bg: "#edf2e4",
     surface: "#f8fbf2",
     surface_2: "#e2ead5",
+    sheet: "#dee5f5",
     text: "#1d271b",
     muted: "#4f5c4a",
     line: "#cbd8bb",
@@ -409,6 +418,7 @@ impl Palette {
             ("bg", self.bg),
             ("surface", self.surface),
             ("surface-2", self.surface_2),
+            ("sheet", self.sheet),
             ("text", self.text),
             ("muted", self.muted),
             ("line", self.line),
@@ -525,6 +535,17 @@ mod tests {
                 ("prefix", p.words.prefix, p.surface_2, 4.5),
                 ("suffix", p.words.suffix, p.surface_2, 4.5),
                 ("confix", p.words.confix, p.surface_2, 4.5),
+                ("text on sheet", p.text, p.sheet, 7.0),
+                ("muted on sheet", p.muted, p.sheet, 4.5),
+                ("headword on sheet", p.indigo, p.sheet, 4.5),
+                ("Bridge gold on sheet", p.gold, p.sheet, 4.5),
+                ("verb on sheet", p.words.verb, p.sheet, 4.5),
+                ("noun on sheet", p.words.noun, p.sheet, 4.5),
+                ("adjective on sheet", p.words.adjective, p.sheet, 4.5),
+                ("function word on sheet", p.words.function, p.sheet, 4.5),
+                ("prefix on sheet", p.words.prefix, p.sheet, 4.5),
+                ("suffix on sheet", p.words.suffix, p.sheet, 4.5),
+                ("confix on sheet", p.words.confix, p.sheet, 4.5),
             ];
             for (what, fg, bg, min) in checks {
                 let ratio = contrast(fg, bg);
@@ -575,6 +596,29 @@ mod tests {
     }
 
     #[test]
+    fn word_sheet_stands_out() {
+        // The sheet floats over the page and its cards: it must read as a
+        // different layer at a glance, never as one more card.
+        let dist = |a: &str, b: &str| {
+            let (a, b) = (rgb(a), rgb(b));
+            (0..3).map(|i| (f64::from(a[i]) - f64::from(b[i])).powi(2)).sum::<f64>().sqrt()
+        };
+        for (theme, p) in all() {
+            for (what, under) in [("page", p.bg), ("card", p.surface), ("chip", p.surface_2)] {
+                let d = dist(p.sheet, under);
+                assert!(d >= 24.0, "{}: sheet vs {what} too close ({d:.0})", theme.as_str());
+            }
+            if p.scheme == Scheme::Dark {
+                assert!(
+                    luminance(p.sheet) > luminance(p.surface),
+                    "{}: a dark sheet sits above its cards",
+                    theme.as_str()
+                );
+            }
+        }
+    }
+
+    #[test]
     fn map_keeps_land_and_sea_apart() {
         for (theme, p) in all() {
             // Land and sea differ mostly in hue (green vs blue), so the
@@ -592,6 +636,7 @@ mod tests {
             p.bg,
             p.surface,
             p.surface_2,
+            p.sheet,
             p.text,
             p.muted,
             p.line,
