@@ -1,170 +1,234 @@
 schema: kabar.lesson/v1
 id: j3.u01.l09
 language: jv
-title: Pesen ing HP
+title: Badhe tumbas kalih
 can_do:
-  ar_eg: تقرا تلات رسايل قصيرة وتعرف كل واحدة مكتوبة بأنهي مستوى وليه.
-  ar: أن تقرأ ثلاث رسائل قصيرة وتعرف مستوى كل منها وسببه.
-  en: Read three short messages and tell which level each one uses, and why.
+  ar_eg: 'تشتري باكبيا من كشك المحطة بالكراما: تقول عايز تشتري، اتنين وخمسة، فلوس، عشان مين ورايح فين.'
+  ar: 'أن تشتري الباكبيا من كشك المحطة بالكراما: تقول تريد أن تشتري، اثنان وخمسة، المال، لمن وإلى أين.'
+  en: 'Buy bakpia at the station kiosk in krama: say you''d like to buy, two and five, money, who it''s for and where you''re going.'
 slides:
-  - title: Telung pesen
+  - title: Ing kios stasiun
     body:
       ar_eg: |
-        محمد لسه واصل محطة Lempuyangan، ولقى على موبايله تلات رسايل. اقراهم وخد بالك مين بيكلم مين:
-        صاحب ← ngoko، بياعة لزبون ← krama، جدة صاحبك ← krama inggil.
+        arep ← badhe = هـ، عايز: «Kula badhe tumbas» = عايز أشتري.
+        tuku ← tumbas = يشتري. dhuwit ← arta = فلوس.
+        loro ← kalih = اتنين. lima ← gangsal = خمسة.
+        kanggo ← kangge = عشان، لـ: «kangge Ibu» = لماما.
+        menyang/neng ← dhateng = لـ، رايح على: «dhateng Kauman» = لكاومان. في الشارع: teng.
       ar: |
-        وصل محمد لتوّه إلى محطة Lempuyangan فوجد في هاتفه ثلاث رسائل. اقرأها وانتبه لمن يخاطب من:
-        الصديق ← ngoko، والبائعة للزبون ← krama، وجدة الصديق ← krama inggil.
+        arep ← badhe = سوف، يريد: «Kula badhe tumbas» = أريد أن أشتري.
+        tuku ← tumbas = يشتري. dhuwit ← arta = مال.
+        loro ← kalih = اثنان. lima ← gangsal = خمسة.
+        kanggo ← kangge = لِـ، من أجل: «kangge Ibu» = لأمي.
+        menyang/neng ← dhateng = إلى: «dhateng Kauman» = إلى كاومان. وفي الشارع: teng.
       en: |
-        Mohamed has just arrived at Lempuyangan station and finds three messages on his phone. Read them and notice who is writing to whom:
-        a friend → ngoko, a seller to a customer → krama, a friend's grandmother → krama inggil.
+        arep → badhe = will, want to: "Kula badhe tumbas" = I'd like to buy.
+        tuku → tumbas = buy. dhuwit → arta = money.
+        loro → kalih = two. lima → gangsal = five.
+        kanggo → kangge = for: "kangge Ibu" = for Mum.
+        menyang/neng → dhateng = to: "dhateng Kauman" = to Kauman. On the street: teng.
     examples:
-      - text: "Mas Dimas: Mohamed, kowe wis mangan? Aku neng Lempuyangan."
-        ar_eg: "Mas Dimas: يا محمد، كلت؟ أنا في Lempuyangan."
-        ar: "Mas Dimas: يا محمد، هل أكلت؟ أنا في Lempuyangan."
-        en: "Mas Dimas: Mohamed, have you eaten? I'm at Lempuyangan."
-      - text: "Bu Siti: Sugeng enjing, Mas. Sampeyan sampun nedha? Mangga, soto!"
-        ar_eg: "Bu Siti: صباح الخير يا أستاذ. حضرتك كلت؟ اتفضل، شوربة سوتو!"
-        ar: "Bu Siti: صباح الخير يا أخي. هل أكلتَ؟ تفضّل، حساء سوتو!"
-        en: "Bu Siti: Good morning. Have you eaten? Please, have some soto!"
-      - text: "Mohamed → Mbah Putri: Sugeng sonten, Mbah. Panjenengan sampun dhahar?"
-        ar_eg: "محمد لجدة Dimas: مساء الخير يا تيتة. حضرتك أكلتي؟"
-        ar: "محمد إلى جدة Dimas: مساء الخير يا جدتي. هل تفضلتِ بالأكل؟"
-        en: "Mohamed to Dimas's grandmother: Good afternoon, Grandma. Have you eaten?"
-    grammar: jv.speechlevel.overview
+      - text: Kula badhe tumbas bakpia kalih kotak.
+        ar_eg: عايز أشتري علبتين باكبيا.
+        ar: أريد أن أشتري علبتين من الباكبيا.
+        en: I'd like to buy two boxes of bakpia.
+      - text: Setunggal kangge Mbah, setunggal kangge kula.
+        ar_eg: واحدة لتيتة وواحدة ليّا.
+        ar: واحدة للجدّة وواحدة لي.
+        en: One for Grandma, one for me.
+      - text: Kula badhe dhateng Kauman.
+        ar_eg: أنا رايح كاومان.
+        ar: سأذهب إلى كاومان.
+        en: I'm going to Kauman.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الرسايل) مين كتب بالـ ngoko؟
-      ar: (من الرسائل) من كتب بالـ ngoko؟
-      en: (from the messages) Who wrote in ngoko?
-    options: [Mas Dimas, Bu Siti, Mohamed]
-    answer: 0
-    explain:
-      ar_eg: 'kowe، wis، mangan كلها ngoko: Dimas صاحب محمد.'
-      ar: 'kowe وwis وmangan كلها ngoko، فـ Dimas صديق محمد.'
-      en: kowe, wis, mangan are all ngoko — Dimas is Mohamed's friend.
-    words: [kowe, wis, mangan]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من رسالة Dimas) Dimas فين دلوقتي؟
-      ar: (من رسالة Dimas) أين Dimas الآن؟
-      en: (from Dimas's message) Where is Dimas now?
-    options: [neng omah, neng warung kopi, neng Lempuyangan]
-    answer: 2
-    words: [neng]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: Bu Siti بياعة بتكتب لزبون. رسالتها بأنهي مستوى؟
-      ar: Bu Siti بائعة تكتب لزبون. بأيّ مستوى رسالتها؟
-      en: Bu Siti is a seller writing to a customer. Which level is her message?
-    options: [ngoko, krama, krama inggil]
-    answer: 1
-    explain:
-      ar_eg: 'sampeyan، sampun، nedha = krama: أدب مع زبون، من غير ما توصل لـ krama inggil.'
-      ar: 'sampeyan وsampun وnedha من الـ krama: أدب مع الزبون دون krama inggil.'
-      en: sampeyan, sampun, nedha are krama — polite to a customer, without going up to krama inggil.
-    words: [krama, sampeyan]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في رسالة محمد لجدة Dimas، أنهي كلمة بترفع مقامها هي؟
-      ar: في رسالة محمد إلى جدة Dimas، أيّ كلمة ترفع مقامها؟
-      en: In Mohamed's message to Dimas's grandmother, which word honours her?
-    options: [nedha, dhahar, mangan]
-    answer: 1
-    explain:
-      ar_eg: dhahar كلمة krama inggil للتاني المحترم بس. nedha كراما عادية، وmangan نغوكو.
-      ar: dhahar من krama inggil وتُقال للمعظَّم وحده؛ nedha كراما عادية وmangan نغوكو.
-      en: dhahar is krama inggil, only for the honoured person. nedha is plain krama, mangan is ngoko.
-    words: [dhahar, krama inggil]
-  - id: e05
-    type: listen
-    text: Sugeng sonten, Mbah. Panjenengan sampun dhahar?
-    options: ['Sugeng enjing, Mbah. Panjenengan sampun dhahar?', 'Sugeng sonten, Mbak. Sampeyan sampun nedha?', 'Sugeng sonten, Mbah. Panjenengan sampun dhahar?']
-    answer: 2
-    meaning:
-      ar_eg: مساء الخير يا تيتة. حضرتك أكلتي؟
-      ar: مساء الخير يا جدتي. هل تفضلتِ بالأكل؟
-      en: Good afternoon, Grandma. Have you eaten?
-    words: [sugeng sonten, panjenengan, dhahar]
-  - id: e06
     type: match_pairs
     pairs:
-      - text: Aku neng Lempuyangan.
-        ar_eg: أنا في Lempuyangan.
-        ar: أنا في Lempuyangan.
-        en: I'm at Lempuyangan.
-      - text: Mangga, soto!
-        ar_eg: اتفضل سوتو!
-        ar: تفضّل حساء سوتو!
-        en: Please, have some soto!
-      - text: Sugeng sonten
-        ar_eg: مساء الخير (العصر)
-        ar: مساء الخير (العصر)
-        en: Good afternoon
-      - text: Sampeyan sampun nedha?
-        ar_eg: حضرتك كلت؟ (krama)
-        ar: هل أكلتَ؟ (krama)
-        en: Have you eaten? (krama)
-    words: [neng, mangga, sugeng sonten, nedha]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'رد على Bu Siti: أيوه يا مدام، أنا كلت. شكرًا.'
-      ar: 'ردّ على Bu Siti: نعم يا سيدتي، قد أكلتُ. شكرًا.'
-      en: "Reply to Bu Siti: Yes, ma'am, I've eaten. Thank you."
-    answers: ["Inggih, Bu, kula sampun nedha. Matur nuwun.", "Inggih, kula sampun nedha, Bu. Matur nuwun.", "Inggih, Bu. Kula sampun nedha. Matur nuwun.", "Inggih, Bu, kulo sampun nedha. Matur nuwun.", "Inggih, kulo sampun nedha, Bu. Matur nuwun.", "Inggih, kula sampun nedha. Matur nuwun, Bu.", "Inggih, kulo sampun nedha. Matur nuwun, Bu.", "Inggih, Bu, kula sampun nedha. Matur nuwun, Bu."]
+      - text: badhe
+        ar_eg: هـ، عايز (كراما)
+        ar: سوف، يريد (كراما)
+        en: will, want to (krama)
+      - text: tumbas
+        ar_eg: يشتري (كراما)
+        ar: يشتري (كراما)
+        en: buy (krama)
+      - text: arta
+        ar_eg: فلوس (كراما)
+        ar: مال (كراما)
+        en: money (krama)
+      - text: dhateng
+        ar_eg: لـ، رايح على (كراما)
+        ar: إلى (كراما)
+        en: to (krama)
+    words: [badhe, tumbas, arta, dhateng]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kalih
+        ar_eg: اتنين (كراما)
+        ar: اثنان (كراما)
+        en: two (krama)
+      - text: gangsal
+        ar_eg: خمسة (كراما)
+        ar: خمسة (كراما)
+        en: five (krama)
+      - text: kangge
+        ar_eg: عشان، لـ (كراما)
+        ar: لِـ، من أجل (كراما)
+        en: for (krama)
+      - text: tumbas
+        ar_eg: يشتري (كراما)
+        ar: يشتري (كراما)
+        en: buy (krama)
+    words: [kalih, gangsal, kangge, tumbas]
+  - id: e03
+    type: listen
+    text: Kula badhe tumbas bakpia kalih kotak.
+    question:
+      ar_eg: محمد عايز كام علبة؟
+      ar: كم علبة يريد محمد؟
+      en: How many boxes does Mohamed want?
+    options: [عايز علبتين باكبيا, عايز خمس علب باكبيا, عايز أبيع باكبيا]
+    answer: 0
+    meaning:
+      ar_eg: عايز أشتري علبتين باكبيا.
+      ar: أريد أن أشتري علبتين من الباكبيا.
+      en: I'd like to buy two boxes of bakpia.
+    words: [badhe, tumbas, kalih, gangsal]
+  - id: e04
+    type: fill_blank
+    sentence: Bakpia punika ___ Mbah Putri.
+    meaning:
+      ar_eg: الباكبيا دي ___ تيتة بوتري.
+      ar: هذه الباكبيا ___ الجدّة بوتري.
+      en: This bakpia is ___ Mbah Putri.
+    options: [kangge, dhateng, arta]
+    answers: [kangge]
+    words: [kangge, dhateng, arta]
+  - id: e05
+    type: multiple_choice
+    question: lima (ngoko) → ___ (krama)
+    options: [kalih, gangsal, badhe]
+    answer: 1
     explain:
-      ar_eg: إنت بتتكلم عن نفسك، يبقى kula وnedha (مش dhahar).
-      ar: تتكلم عن نفسك فتقول kula وnedha لا dhahar.
-      en: You're talking about yourself, so kula and nedha (never dhahar).
-    words: [inggih, kula, sampun, nedha]
-  - id: e08
+      ar_eg: 'lima بالنغوكو، gangsal بالكراما: خمسة. kalih = اتنين.'
+      ar: 'lima بالنغوكو وgangsal بالكراما: خمسة. kalih = اثنان.'
+      en: 'lima is ngoko, gangsal is krama: five. kalih = two.'
+    words: [gangsal, kalih, badhe]
+  - id: e06
+    type: fill_blank
+    sentence: Nyuwun sewu, Bu, ___ kula kirang.
+    meaning:
+      ar_eg: معلش يا ست، ___ي مش مكفّية.
+      ar: عفوًا يا سيدتي، ___ي لا يكفي.
+      en: Sorry, ma'am, I haven't got enough ___.
+    options: [arta, tumbas, kangge]
+    answers: [arta]
+    words: [arta, tumbas, kangge]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: 'رد على Dimas: أنا لسه ماكلتش يا Mas.'
-      ar: 'ردّ على Dimas: لم آكل بعد يا Mas.'
-      en: "Reply to Dimas: I haven't eaten yet, Mas."
-    answer: Aku durung mangan, Mas.
-    distractors: [dereng, nedha]
+      ar_eg: أنا رايح كاومان.
+      ar: سأذهب إلى كاومان.
+      en: I'm going to Kauman.
+    answer: Kula badhe dhateng Kauman
+    distractors: [tumbas, kalih]
+    words: [badhe, dhateng]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kula tumbas gangsal kangge kanca-kanca.
+    answers_meaning:
+      ar_eg: [أنا هشتري خمسة لصحابي, بشتري خمسة لأصحابي]
+      ar: [أشتري خمسة لأصدقائي, سأشتري خمسة لأصدقائي]
+      en: ['I''m buying five for my friends', 'I''ll buy five for my friends']
+    words: [tumbas, gangsal, kangge]
+  - id: e09
+    type: speaking
+    text: Kula badhe dhateng peken, tumbas kalih.
+    meaning:
+      ar_eg: أنا رايح السوق، هشتري اتنين.
+      ar: سأذهب إلى السوق لأشتري اثنين.
+      en: I'm off to the market to buy two.
+    words: [badhe, dhateng, kalih]
+  - id: e10
+    type: multiple_choice
+    question: dhuwit (ngoko) → ___ (krama)
+    options: [arta, dhateng, kalih]
+    answer: 0
     explain:
-      ar_eg: لصاحبك ngoko على طول، يبقى durung وmangan.
-      ar: مع الصديق ngoko، فتقول durung وmangan.
-      en: To a friend, ngoko all the way — durung and mangan.
-    words: [aku, durung, mangan]
+      ar_eg: 'dhuwit بالنغوكو، arta بالكراما: فلوس. dhateng = لـ.'
+      ar: 'dhuwit بالنغوكو وarta بالكراما: مال. dhateng = إلى.'
+      en: 'dhuwit is ngoko, arta is krama: money. dhateng = to.'
+    words: [arta, dhateng, kalih]
 dialogue:
-  title: Ing Lempuyangan
   lines:
+    - speaker: Penjual
+      text: Monggo, Mas. Badhe tumbas napa?
+      ar_eg: اتفضل يا أستاذ. عايز تشتري إيه؟
+      ar: تفضّل يا أخي. ماذا تريد أن تشتري؟
+      en: Come on over, mate. What would you like?
     - speaker: Mohamed
-      text: Mas, iki pesen saka Bu Siti.
-      ar_eg: يا Mas، دي رسالة من Bu Siti.
-      ar: يا Mas، هذه رسالة من Bu Siti.
-      en: Mas, this is a message from Bu Siti.
-    - speaker: Mas Dimas
-      text: "Krama, to? «Sampun nedha?»"
-      ar_eg: "كراما، مش كده؟ «Sampun nedha?»"
-      ar: "كراما، أليس كذلك؟ «Sampun nedha?»"
-      en: "Krama, right? «Sampun nedha?»"
+      text: Bakpia kalih kotak, Bu. Setunggal kangge Mbah Putri.
+      ar_eg: علبتين باكبيا يا ست. واحدة لتيتة بوتري.
+      ar: علبتان من الباكبيا يا سيدتي. واحدة للجدّة بوتري.
+      en: Two boxes of bakpia, ma'am. One's for Mbah Putri.
+    - speaker: Penjual
+      text: Nggih. Kalih kotak, sewidak ewu.
+      ar_eg: ماشي. علبتين بستين ألف.
+      ar: حسنًا. علبتان بستين ألفًا.
+      en: Sure. Two boxes, sixty thousand.
     - speaker: Mohamed
-      text: "Iya. Aku arep bales nganggo krama."
-      ar_eg: "أيوه. هرد عليها بالكراما."
-      ar: "نعم. سأردّ بالكراما."
-      en: "Yes. I'm going to reply in krama."
-    - speaker: Mas Dimas
-      text: "Apik! «Nggih, sampun, Bu.»"
-      ar_eg: "حلو! «Nggih, sampun, Bu.» (أيوه، كلت يا حاجة)"
-      ar: "جيد! «Nggih, sampun, Bu.» (نعم، أكلتُ يا سيدتي)"
-      en: "Good! «Nggih, sampun, Bu.» (Yes, I have, ma'am.)"
+      text: Waduh, arta kula namung seket gangsal.
+      ar_eg: يا خبر، فلوسي خمسة وخمسين بس.
+      ar: يا للمصيبة، مالي خمسة وخمسون فقط.
+      en: Oh dear, I've only got fifty-five.
+    - speaker: Penjual
+      text: Mpun, seket gangsal mawon. Badhe teng pundi, Mas?
+      ar_eg: خلاص، خمسة وخمسين وبس. رايح فين يا أستاذ؟
+      ar: حسنًا، خمسة وخمسون فقط. إلى أين أنت ذاهب يا أخي؟
+      en: Go on, fifty-five then. Where are you off to?
     - speaker: Mohamed
-      text: Suwun, Mas!
-      ar_eg: متشكر يا Mas!
-      ar: شكرًا يا Mas!
-      en: Thanks, Mas!
+      text: Dhateng Kauman, Bu. Matur nuwun sanget!
+      ar_eg: رايح كاومان يا ست. متشكر جدًا!
+      ar: إلى كاومان يا سيدتي. شكرًا جزيلًا!
+      en: To Kauman, ma'am. Thanks so much!
+new_words:
+  - word: badhe
+    pos: particle
+    ar_eg: هـ، عايز (كراما من arep)
+    ar: سوف، يريد (كراما من arep)
+    en: will, want to, krama (ngoko arep, Indonesian akan/mau)
+  - word: tumbas
+    pos: verb
+    ar_eg: يشتري (كراما من tuku)
+    ar: يشتري (كراما من tuku)
+    en: buy, krama (ngoko tuku, Indonesian beli)
+  - word: arta
+    pos: noun
+    ar_eg: فلوس (كراما من dhuwit)
+    ar: مال (كراما من dhuwit)
+    en: money, krama (ngoko dhuwit, Indonesian uang)
+  - word: dhateng
+    pos: preposition
+    ar_eg: لـ، رايح على (كراما من menyang/neng؛ في الشارع teng)
+    ar: إلى (كراما من menyang/neng؛ وفي الشارع teng)
+    en: to, krama (ngoko menyang/neng, street teng, Indonesian ke)
+  - word: kalih
+    pos: number
+    ar_eg: اتنين (كراما من loro)
+    ar: اثنان (كراما من loro)
+    en: two, krama (ngoko loro, Indonesian dua)
+  - word: gangsal
+    pos: number
+    ar_eg: خمسة (كراما من lima)
+    ar: خمسة (كراما من lima)
+    en: five, krama (ngoko lima, Indonesian lima)
+  - word: kangge
+    pos: preposition
+    ar_eg: عشان، لـ (كراما من kanggo)
+    ar: لِـ، من أجل (كراما من kanggo)
+    en: for, krama (ngoko kanggo, Indonesian untuk)
 review:
   status: draft
   verified: false

@@ -48,6 +48,10 @@ slides:
         ar_eg: رز
         ar: أرز
         en: rice
+      - text: ꦩꦼꦤꦺ (mêné)
+        ar_eg: بعدين — pepet على ꦩ وtaling قبل ꦤ
+        ar: لاحقًا — pepet على ꦩ وtaling قبل ꦤ
+        en: later — pepet on ꦩ, taling before ꦤ
       - text: ꦒꦼꦝꦺ (gêdhé)
         ar_eg: كبير — pepet على ꦒ وtaling قبل ꦝ
         ar: كبير — pepet على ꦒ وtaling قبل ꦝ
@@ -64,15 +68,15 @@ exercises:
         ar_eg: علامة ê (ə) — فوق الحرف
         ar: علامة ê (ə) — فوق الحرف
         en: the ê (ə) mark — above the letter
-      - text: teka
-        ar_eg: ييجي
-        ar: يأتي
-        en: come
+      - text: mene
+        ar_eg: بعدين / كمان شوية
+        ar: لاحقًا / بعد قليل
+        en: later
       - text: ꦏꦺꦤꦺ
         ar_eg: هنا (kene)
         ar: هنا (kene)
         en: here (kene)
-    words: [taling, pepet, teka]
+    words: [taling, pepet, mene]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -157,6 +161,28 @@ exercises:
       ar: tê-ka (pepet) + ké-né (taling) = teka kene أي تعالَ هنا، وتُكتب لاتينيًا بـ e عادية.
       en: tê-ka (pepet) + ké-né (taling) = teka kene, "come here". Latin spelling writes plain e.
     words: [teka, taling]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تكتب mene (بعدين)؟ (mê-né)
+      ar: كيف تكتب mene (لاحقًا)؟ (mê-né)
+      en: How do you write mene (later)? (mê-né)
+    options: ["ꦩꦺꦤꦼ", "ꦩꦼꦤꦺ", "ꦩꦼꦤꦼ"]
+    answer: 1
+    explain:
+      ar_eg: أول مقطع mê بـ pepet فوق ꦩ، وتاني مقطع né بـ taling قبل ꦤ.
+      ar: المقطع الأول mê بـ pepet فوق ꦩ، والثاني né بـ taling قبل ꦤ.
+      en: The first syllable mê takes pepet above ꦩ, the second né takes taling before ꦤ.
+    words: [mene, pepet, taling]
+  - id: e10
+    type: fill_blank
+    sentence: ꦩꦼꦤꦺ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: بعدين)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: لاحقًا)"
+      en: Type the reading in Latin letters. (It means "later".)
+    answers: [mene, mêné]
+    words: [mene, pepet]
 dialogue:
   title: Ing warung
   lines:
@@ -191,11 +217,11 @@ new_words:
     ar_eg: علامة ê (الحركة الخفيفة ə)، فوق الحرف
     ar: علامة ê (الصائت المختلس ə)، فوق الحرف
     en: the ê (schwa) mark, above the letter
-  - word: teka
-    pos: verb
-    ar_eg: ييجي (بيتنطق teko وبيتكتب teka)
-    ar: يأتي (يُنطق teko ويُكتب teka)
-    en: come (said teko, written teka) = datang
+  - word: mene
+    pos: adverb
+    ar_eg: بعدين / كمان شوية (nanti)
+    ar: لاحقًا / بعد قليل (nanti)
+    en: later (nanti)
 review:
   status: draft
   verified: false

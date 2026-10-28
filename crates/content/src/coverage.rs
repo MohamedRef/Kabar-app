@@ -10,14 +10,18 @@
 //! position teaches it (a taught phrase covers its words; a suffixed or
 //! reduplicated form is covered by its root; a street form such as "nggak" by
 //! its formal twin in `content/freq/id.street.tsv`, a se- measure such as
-//! "seratus" by its root, a chat spelling such as "tdk" by its full form), when the note of that line
+//! "seratus" by its root, a chat spelling such as "tdk" by its full form, and
+//! a plainly inflected form such as "kirim" or "dikirim" by a taught word on
+//! the same root, "mengirim"), when the note of that line
 //! or an earlier line of the same item explains it (the learner met the gloss), or when it is not vocabulary at all: a name (capitalised and
 //! either a cast name or absent from the frequency list), a number, or an
 //! entry in `content/freq/<lang>.core-exclude.tsv`.
 
 use std::collections::{BTreeMap, BTreeSet};
 use std::path::Path;
+use std::sync::OnceLock;
 
+use kabar_core::lang::morph_id::IndonesianMorph;
 use kabar_core::lang::{Lang, normalize, street};
 use serde_json::Value;
 
@@ -103,6 +107,21 @@ struct Track {
     lesson_level: BTreeMap<String, usize>,
     exclude: BTreeSet<String>,
     dictionary: BTreeSet<String>,
+    /// Indonesian root -> first position a taught word built on it appears
+    /// (mengirim teaches kirim; setiap teaches tiap). Empty for Javanese.
+    roots: BTreeMap<String, usize>,
+}
+
+/// The root of `w` when it is built only with inflection a BIPA 1–3 learner
+/// reads through (meN-, ber-, di-, ter-, se-, -kan, -i, clitics), else `None`.
+/// Derivations that change the meaning (peN-, ke-an, per-an, -an) don't count.
+fn inflected_root(w: &str) -> Option<String> {
+    static MORPH: OnceLock<IndonesianMorph> = OnceLock::new();
+    let a = MORPH.get_or_init(IndonesianMorph::default).analyze(w)?;
+    let plain = a.confix.is_none()
+        && a.prefixes.iter().all(|p| matches!(p.label.as_str(), "meN-" | "ber-" | "di-" | "ter-" | "se-"))
+        && a.suffix.as_ref().is_none_or(|s| matches!(s.label.as_str(), "-kan" | "-i"));
+    plain.then_some(a.root)
 }
 
 impl Track {
@@ -130,6 +149,11 @@ impl Track {
             if w.len() > 5 && root.strip_suffix("in").is_some_and(|r| r.len() > 2 && street(r)) {
                 return true;
             }
+            // Same root, plain inflection: kirim once mengirim is taught,
+            // dibaca once membaca is.
+            if inflected_root(w).and_then(|r| self.roots.get(&r)).is_some_and(|&p| p <= pos) {
+                return true;
+            }
         }
         // A chat spelling ("tp", "udh") is known once its full form is: the
         // reader shows the expansion.
@@ -144,16 +168,31 @@ impl Track {
         {
             return true;
         }
+        // Krama "dipunwaos", "tumbasaken": known once the affix lesson and
+        // the root are.
+        if self.lang == "jv" {
+            let affixed = |affix: &str, root: Option<&str>| {
+                at(affix) && root.is_some_and(|r| r.len() > 2 && self.known(r, pos))
+            };
+            if affixed("dipun-", w.strip_prefix("dipun")) || affixed("-aken", w.strip_suffix("aken")) {
+                return true;
+            }
+        }
         suffixes(&self.lang).iter().any(|s| w.len() > s.len() + 2 && w.strip_suffix(s).is_some_and(at))
     }
 
-    /// Taught phrases at `pos`, longest first.
-    fn phrases(&self, pos: usize) -> Vec<&str> {
-        let mut p: Vec<&str> = self
+    /// Taught phrases at `pos`, longest first, each also with a clitic on
+    /// its last word ("rumusan masalahnya", "sesi tanya jawabnya").
+    fn phrases(&self, pos: usize) -> Vec<String> {
+        let clitics: &[&str] =
+            if self.lang == "id" { &["nya", "ku", "mu"] } else { &["e", "ne", "ku", "mu"] };
+        let mut p: Vec<String> = self
             .taught
             .iter()
             .filter(|(w, p)| w.contains(' ') && **p <= pos)
-            .map(|(w, _)| w.as_str())
+            .flat_map(|(w, _)| {
+                std::iter::once(w.clone()).chain(clitics.iter().map(move |c| format!("{w}{c}")))
+            })
             .collect();
         p.sort_by_key(|p| std::cmp::Reverse(p.len()));
         p
@@ -271,6 +310,7 @@ fn tracks(root: &Path) -> Result<Vec<Track>, LoadError> {
             taught: BTreeMap::new(),
             units: BTreeMap::new(),
             lesson_level: BTreeMap::new(),
+            roots: BTreeMap::new(),
         };
         for (level, l) in c.levels.iter().enumerate() {
             requires.push((out.len(), t.order.len(), l.requires.clone()));
@@ -312,6 +352,14 @@ fn tracks(root: &Path) -> Result<Vec<Track>, LoadError> {
             for w in words {
                 let p = out[track].taught.entry(w).or_insert(start);
                 *p = (*p).min(start);
+            }
+        }
+    }
+    for t in out.iter_mut().filter(|t| t.lang == "id") {
+        for (w, &p) in &t.taught {
+            if let Some(r) = inflected_root(w) {
+                let e = t.roots.entry(r).or_insert(p);
+                *e = (*e).min(p);
             }
         }
     }
@@ -433,6 +481,7 @@ mod tests {
             units: BTreeMap::new(),
             lesson_level: BTreeMap::new(),
             exclude: BTreeSet::new(),
+            roots: BTreeMap::new(),
             dictionary: ["saya", "makan", "nasi", "pecel", "sari"].into_iter().map(String::from).collect(),
         }
     }
@@ -494,5 +543,39 @@ mod tests {
         assert_eq!(u, vec!["tdk".to_owned(), "sebentar".to_owned()]);
         let (_, u) = measure(&t, &names, 1, "Seratus, tdk, wkwk.", &ex(""));
         assert!(u.is_empty(), "{u:?}");
+    }
+
+    #[test]
+    fn plain_inflections_share_a_taught_root() {
+        let mut t = track();
+        t.roots = BTreeMap::from([("kirim".to_owned(), 0), ("baca".to_owned(), 1)]);
+        let names = BTreeSet::new();
+        let (_, u) = measure(&t, &names, 0, "Saya kirim, dikirimkan, pengiriman.", &ex(""));
+        assert_eq!(u, vec!["pengiriman".to_owned()]);
+        assert_eq!(inflected_root("dikirimkan").as_deref(), Some("kirim"));
+        assert_eq!(inflected_root("pengiriman"), None);
+    }
+
+    #[test]
+    fn krama_affixed_forms_count_once_affix_and_root_are_taught() {
+        let mut t = track();
+        t.lang = "jv".into();
+        t.taught = [("waos", 0), ("tumbas", 0), ("dipun-", 1), ("-aken", 1)]
+            .into_iter()
+            .map(|(w, p)| (w.to_owned(), p))
+            .collect();
+        let names = BTreeSet::new();
+        let line = "dipunwaos tumbasaken dipuntumbasaken dipunserat";
+        let (_, u) = measure(&t, &names, 0, line, &ex(""));
+        assert_eq!(u.len(), 4, "{u:?}");
+        let (_, u) = measure(&t, &names, 1, line, &ex(""));
+        assert_eq!(u, vec!["dipunserat".to_owned()]);
+    }
+
+    #[test]
+    fn a_taught_phrase_with_a_clitic_is_still_the_phrase() {
+        let names = BTreeSet::new();
+        let (_, u) = measure(&track(), &names, 0, "Saya di rumah sakitnya.", &ex(""));
+        assert_eq!(u, vec!["di".to_owned()]);
     }
 }
