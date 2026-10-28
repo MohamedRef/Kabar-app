@@ -27,7 +27,7 @@ use crate::pron::Pron;
 use crate::reader::card::InfoView;
 use crate::reader::doc::{Lexicon, ReadDoc, Tag, Word};
 use crate::reader::explain::voice_of;
-use crate::reader::glossary::Gloss;
+use crate::reader::glossary::{Gloss, WordLang};
 use crate::reader::grammar::{DocGrammar, GrammarAt, syllabus};
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
@@ -261,7 +261,11 @@ fn analyze(
     taught: &PersonalDictionary,
     marked: &[String],
 ) -> (Rc<ReadDoc>, Rc<Vec<Piece>>) {
-    let doc = ReadDoc::from_text(text, Lexicon { glossary: crate::reader::glossary(), taught });
+    // The screen knows the language ("jv" on a J1 lesson): words both
+    // dictionaries have take that sense, even standing alone.
+    let hint = if lang == CoreLang::Javanese { WordLang::Javanese } else { WordLang::Indonesian };
+    let doc =
+        ReadDoc::from_text_in(text, Lexicon { glossary: crate::reader::glossary(), taught }, Some(hint));
     let parts = pieces(&doc, marked, lang);
     (Rc::new(doc), Rc::new(parts))
 }
@@ -609,6 +613,21 @@ mod tests {
         assert!(girl.iter().any(|p| p.text == "gadis" && !p.name && p.gloss.is_some()));
         // "Bu" in an Indonesian line is the Indonesian title, not Javanese "Mum".
         assert!(!word("Bu").gloss.as_ref().unwrap().arz.contains("ماما"));
+    }
+
+    #[test]
+    fn a_javanese_screen_gives_shared_words_their_javanese_sense() {
+        // #378: "awan" alone on a J1 end screen is Javanese "daytime", not
+        // Indonesian "cloud"; the same word on an Indonesian screen stays "cloud".
+        let taught = PersonalDictionary::new(Vec::new());
+        let gloss = |lang| {
+            let (_, parts) = analyze("awan", lang, &taught, &[]);
+            parts.iter().find(|p| p.text == "awan").and_then(|p| p.gloss.clone()).expect("a gloss")
+        };
+        let jv = gloss(CoreLang::Javanese);
+        assert!(jv.en.contains("midday") || jv.en.contains("daytime"), "{jv:?}");
+        assert!(!jv.arz.contains("سحاب"), "{jv:?}");
+        assert!(gloss(CoreLang::Indonesian).en.contains("cloud"));
     }
 
     #[test]
