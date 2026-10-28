@@ -166,7 +166,7 @@
 /* Under the map, never over its art (#152). */
 .jm-controls { display: flex; gap: 0.4rem; justify-content: flex-end; margin-block-start: -0.25rem; }
 .jm-controls button {
-  inline-size: 44px; block-size: 44px; padding: 0; display: grid; place-items: center;
+  inline-size: var(--tap); block-size: var(--tap); padding: 0; display: grid; place-items: center;
   font-size: 1.3rem; line-height: 1;
 }
 .jm-hint { margin: 0; font-size: 0.85rem; }
@@ -185,7 +185,7 @@
   max-block-size: calc(100dvh - 2rem); overflow-y: auto; position: sticky; inset-block-start: 1rem;
 }
 .jm-panel-close { display: flex; justify-content: flex-end; margin-block-end: -2.5rem; }
-.jm-panel-close button { inline-size: 44px; padding: 0; font-size: 1.3rem; }
+.jm-panel-close button { inline-size: var(--tap); padding: 0; font-size: 1.3rem; }
 .jm-panel .level-title { padding-inline-end: 3rem; }
 
 /* ---------- suitcase ---------- */

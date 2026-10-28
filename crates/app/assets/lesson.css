@@ -31,7 +31,7 @@
   padding-inline: 1rem;
 }
 .lp-close {
-  inline-size: 44px;
+  inline-size: var(--tap);
   padding: 0;
   font-size: 1.6rem;
   line-height: 1;
@@ -340,7 +340,7 @@
 .ln-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-2); }
 .ln-kicker { margin: 0; font-size: var(--fs-xs); color: var(--muted); font-weight: 600; letter-spacing: 0.02em; }
 .ln-title { margin: 0; font-family: var(--font-latin); font-size: var(--fs-xl); color: var(--indigo); }
-.ln-hide { color: var(--muted); font-size: 1.4rem; line-height: 1; padding: 0; inline-size: 44px; }
+.ln-hide { color: var(--muted); font-size: 1.4rem; line-height: 1; padding: 0; inline-size: var(--tap); }
 .ln-cando { margin: 0; font-size: var(--fs-sm); }
 
 .ln-outline { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-1); }

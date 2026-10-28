@@ -107,8 +107,8 @@
 .rev-word { font-family: var(--font-latin); font-size: 1.6rem; font-weight: 700; color: var(--indigo); }
 .rev-word.big { font-size: clamp(2.2rem, 7vw, 3.2rem); }
 .icon-btn {
-  inline-size: 44px;
-  block-size: 44px;
+  inline-size: var(--tap);
+  block-size: var(--tap);
   padding: 0;
   display: inline-grid;
   place-items: center;
@@ -192,7 +192,7 @@
   gap: 0.05rem;
   border-radius: 14px;
   padding-inline: 0.4rem;
-  min-block-size: 56px;
+  min-block-size: var(--row);
   border-width: 2px;
 }
 .rate-label { font-weight: 700; }
@@ -202,7 +202,7 @@
 .rate.good { border-color: var(--sawah); color: var(--sawah); }
 .rate.easy { border-color: var(--indigo); color: var(--indigo); }
 .rate.suggested { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px currentColor; }
-.reveal-btn { min-block-size: 56px; font-weight: 600; }
+.reveal-btn { min-block-size: var(--row); font-weight: 600; }
 
 /* The answer buttons stay in one place so the hand learns them (Anki):
    the card keeps a steady height, and on tablets and the Mac the row
