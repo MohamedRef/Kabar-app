@@ -139,7 +139,16 @@ pub struct ReadDoc {
 impl ReadDoc {
     /// Pasted or shared text: one segment per non-empty line.
     pub fn from_text(body: &str, lex: Lexicon) -> Self {
+        Self::from_text_in(body, lex, None)
+    }
+
+    /// Text whose language is known (a Javanese lesson's word list): a word
+    /// both dictionaries have takes that language's sense, even alone, where
+    /// the engine can't tell ("awan" is Javanese "daytime", not Indonesian
+    /// "cloud", on a J1 screen). Without `lang`, each line's majority decides.
+    pub fn from_text_in(body: &str, lex: Lexicon, lang: Option<WordLang>) -> Self {
         let mut b = Builder::new(body);
+        b.lang = lang;
         let mut offset = 0;
         for line in body.split_inclusive('\n') {
             let trimmed = line.trim_end_matches(['\n', '\r']);
@@ -231,11 +240,13 @@ struct Builder<'a> {
     body: &'a str,
     segments: Vec<Segment>,
     tokens: Vec<ReadToken>,
+    /// The text's language, when the caller knows it.
+    lang: Option<WordLang>,
 }
 
 impl<'a> Builder<'a> {
     fn new(body: &'a str) -> Self {
-        Self { body, segments: Vec::new(), tokens: Vec::new() }
+        Self { body, segments: Vec::new(), tokens: Vec::new(), lang: None }
     }
 
     fn push(&mut self, start: usize, end: usize, kind: SegKind, lex: Lexicon) {
@@ -243,7 +254,7 @@ impl<'a> Builder<'a> {
         let first = self.tokens.len();
         if kind != SegKind::Chrome {
             let analyzed = engine().analyze(&self.body[start..end]);
-            let context = line_lang(&analyzed);
+            let context = self.lang.or_else(|| line_lang(&analyzed));
             for a in analyzed {
                 let (s, e) = (start + a.token.start, start + a.token.end);
                 // "512gb" and "17" are numbers, not words to learn.
