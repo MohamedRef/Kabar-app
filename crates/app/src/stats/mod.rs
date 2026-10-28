@@ -26,9 +26,10 @@ use kabar_protocol::test::TestFinished;
 
 use self::text::{S, st};
 use crate::coach::{Coach, labels};
+use crate::embedded::{Css, css};
 use crate::{Db, Screen, Ui};
 
-const STATS_CSS: &str = include_str!("../../assets/stats.css");
+const STATS_CSS: Css = css!("assets/stats.css");
 
 /// The Indonesian route, parsed once (shared with the Journey Map).
 fn curriculum() -> Option<&'static Curriculum> {
@@ -235,7 +236,7 @@ pub fn TodayCards() -> Element {
         crate::coach::say(&ui, kabar_core::coach::voice::Line::LevelCheckInvite, today, &[("name", &name)]);
     let db_later = use_context::<Db>();
     rsx! {
-        style { {STATS_CSS} }
+        style { {STATS_CSS.text()} }
         if due() && !snoozed() {
             div { class: "card st-invite", style: "margin-block-start: 1rem",
                 h3 { "{st(lang, S::CheckTitle)}" }
@@ -342,7 +343,7 @@ pub fn StatsScreen() -> Element {
     });
     let n = n.read();
     rsx! {
-        style { {STATS_CSS} }
+        style { {STATS_CSS.text()} }
         div { class: "st",
             div { class: "st-head",
                 button { class: "st-back", onclick: move |_| back(ui), "{st(lang, S::Back)}" }

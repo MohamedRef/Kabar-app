@@ -13,7 +13,9 @@ name: Android preview APK
 # Self-updates (docs/RELEASE.md §5): the APK is built for the `preview`
 # update channel with the public half of a second CI key (Ed25519, also kept
 # in the Actions cache), and the release carries a signed update.json, so an
-# installed preview updates itself after every merge to main.
+# installed preview updates itself after every merge to main. The feed also
+# carries the content bundle; a merge that changes only content or
+# stylesheets publishes no APK, just a new bundle (see "Content-only update?").
 
 on:
   push:
@@ -59,14 +61,6 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           key: android-preview
-      - uses: actions/setup-java@v5
-        with:
-          distribution: temurin
-          java-version: "17"
-      - uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
-      - name: Install dx 0.7.10
-        run: cargo binstall -y --force dioxus-cli@0.7.10
-
       # The update key comes first: its public half is built into the app.
       - name: Restore preview update key
         if: env.KEEP_KEY == 'true'
@@ -75,6 +69,56 @@ jobs:
         with:
           path: ~/.kabar-preview-update
           key: android-preview-update-key-v1
+      - name: Restore preview signing key
+        if: env.KEEP_KEY == 'true'
+        id: key
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.kabar-preview
+          key: android-preview-key-v1
+
+      # Content-only: when everything merged since the build on the feed is
+      # content the app builds in (crates/protocol/src/bundle_sources.rs, not
+      # the curricula, which kabar-core embeds too), changes/ notes, docs or
+      # stylesheets, the feed keeps that APK and only the content bundle is
+      # new: devices take it in the background with nothing to install. Any
+      # other file, a new version or a new key means a full build.
+      - name: Content-only update?
+        if: env.KEEP_KEY == 'true' && steps.update-key.outputs.cache-hit == 'true' && steps.key.outputs.cache-hit == 'true'
+        run: |
+          curl -fsSL --retry 3 -o /tmp/live-update.json \
+            "https://github.com/$GITHUB_REPOSITORY/releases/download/preview/update.json" || exit 0
+          jq -e '.assets[] | select(.platform == "android-arm64")' /tmp/live-update.json >/dev/null || exit 0
+          prev="$(jq -r '.commit // empty' /tmp/live-update.json)"
+          version="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
+          if [ -z "$prev" ] || [ "$(jq -r .version /tmp/live-update.json)" != "$version" ] \
+            || ! git merge-base --is-ancestor "$prev" HEAD; then
+            exit 0
+          fi
+          changed="$(git diff --name-only "$prev" HEAD)"
+          if [ -z "$changed" ]; then
+            exit 0
+          fi
+          content='content/(lessons|tests|stories|radio|personas|grammar)/|content/glosses/(id|jv)/[^/]+\.jsonl$'
+          content+='|content/(bridge/id\.jsonl|freq/id\.tsv|javanese/speech-levels\.jsonl|cast\.yaml)$'
+          if grep -Ev "^($content|changes/|docs/|[^/]+\.md$|crates/app/.+\.css$)" <<<"$changed"; then
+            echo "Code changed since $prev (above): a full build."
+            exit 0
+          fi
+          echo "Only content or stylesheets changed since $prev: the feed keeps its APK."
+          echo "CONTENT_ONLY=true" >> "$GITHUB_ENV"
+
+      - uses: actions/setup-java@v5
+        if: env.CONTENT_ONLY != 'true'
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
+        if: env.CONTENT_ONLY != 'true'
+      - name: Install dx 0.7.10
+        if: env.CONTENT_ONLY != 'true'
+        run: cargo binstall -y --force dioxus-cli@0.7.10
+
       - name: Create preview update key
         if: steps.update-key.outputs.cache-hit != 'true'
         run: |
@@ -98,6 +142,7 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Android environment
+        if: env.CONTENT_ONLY != 'true'
         run: |
           echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> "$GITHUB_ENV"
           echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> "$GITHUB_ENV"
@@ -105,6 +150,7 @@ jobs:
           echo "$BT" >> "$GITHUB_PATH"
 
       - name: Build APK
+        if: env.CONTENT_ONLY != 'true'
         working-directory: crates/app
         run: |
           dx bundle --platform android --release --package-types apk \
@@ -112,20 +158,15 @@ jobs:
             --out-dir ../../dist/android/raw
 
       - name: Rebuild as a release APK (not debuggable, R8, versionCode)
+        if: env.CONTENT_ONLY != 'true'
         run: |
           APK="$(scripts/android-release-apk.sh)"
           mkdir -p dist/android/release && cp "$APK" dist/android/release/kabar-unsigned.apk
 
       - name: Check the APK (Kotlin glue, launcher icon, manifest, not debuggable)
+        if: env.CONTENT_ONLY != 'true'
         run: scripts/android-check-apk.sh dist/android/release/kabar-unsigned.apk
 
-      - name: Restore preview signing key
-        if: env.KEEP_KEY == 'true'
-        id: key
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.kabar-preview
-          key: android-preview-key-v1
       - name: Create preview signing key
         if: steps.key.outputs.cache-hit != 'true'
         run: |
@@ -142,6 +183,7 @@ jobs:
           key: android-preview-key-v1
 
       - name: Sign
+        if: env.CONTENT_ONLY != 'true'
         run: |
           IN=dist/android/release/kabar-unsigned.apk
           PASS="$(cat ~/.kabar-preview/pass)"
@@ -154,7 +196,7 @@ jobs:
             || { echo "APK has no arm64-v8a library"; unzip -l dist/android/kabar-preview.apk; exit 1; }
           ls -lh dist/android/kabar-preview.apk
 
-      - name: Signed update feed (update.json + signature)
+      - name: Signed update feed (APK, content bundle, update.json + signature)
         run: |
           VERSION="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
           # What's new: the changes/*.yaml files (or, without one, the pull
@@ -164,19 +206,31 @@ jobs:
           curl -fsSL --retry 3 -o /tmp/previous-update.json \
             "https://github.com/$GITHUB_REPOSITORY/releases/download/preview/update.json" \
             || rm -f /tmp/previous-update.json
+          # The bundle reaches devices with no review step of its own: the
+          # content must pass the same checks CI runs on it first.
+          cargo run -q -p kabar-tools -- validate
+          cargo run -q -p kabar-tools -- update bundle --out dist/bundle
+          if [ "${CONTENT_ONLY:-}" = true ]; then
+            app=(--carry android-arm64)
+          else
+            app=(--asset android-arm64=dist/android/kabar-preview.apk)
+          fi
           cargo run -q -p kabar-tools -- update manifest --channel preview --version "$VERSION" \
             --build "$KABAR_BUILD" --commit "$KABAR_COMMIT" \
-            --previous /tmp/previous-update.json --changes \
-            --asset android-arm64=dist/android/kabar-preview.apk --out dist/update
+            --previous /tmp/previous-update.json --changes "${app[@]}" \
+            --content dist/bundle/kabar-content.bundle --out dist/update
           KABAR_UPDATE_SECRET="$(cat ~/.kabar-preview-update/secret)" \
             cargo run -q -p kabar-tools -- update sign dist/update --public-key ~/.kabar-preview-update/key.pub
           cargo run -q -p kabar-tools -- update verify dist/update --public-key ~/.kabar-preview-update/key.pub
+          # Always there, so the artifact keeps its dist/ layout without an APK.
+          echo "${CONTENT_ONLY:-false}" > dist/content-only
           ls -l dist/update
 
       - uses: actions/upload-artifact@v4
         with:
           name: kabar-preview-apk
           path: |
+            dist/content-only
             dist/android/kabar-preview.apk
             dist/update/
           retention-days: 14
@@ -228,15 +282,22 @@ jobs:
           for f in dist/update/*; do
             case "$(basename "$f")" in update.json|update.json.sig) ;; *) builds+=("$f") ;; esac
           done
-          gh release upload preview dist/android/kabar-preview.apk "${builds[@]}" --clobber
+          # A content-only feed carries the APK already on the release.
+          if [ -f dist/android/kabar-preview.apk ]; then
+            builds+=(dist/android/kabar-preview.apk)
+          fi
+          live="$(gh release download preview -p update.json -O - 2>/dev/null || true)"
+          gh release upload preview "${builds[@]}" --clobber
           gh release upload preview dist/update/update.json.sig dist/update/update.json --clobber
-          # Feed builds are named by build number (#295), so nothing a live
-          # update.json names is ever overwritten. Keep this build and the one
-          # before it (a device may have just read the previous feed) and
-          # drop older ones so the release doesn't grow without end. Feed
-          # files from before #295 (no build number) count as build 0.
-          gh api "repos/$GH_REPO/releases/tags/preview" \
-            --jq '.assets[] | select(.name | test("^kabar-[0-9]")) | "\((.name | capture("-b(?<b>[0-9]+)-").b) // "0") \(.id)"' \
-            | sort -rn | tail -n +3 | while read -r _ id; do
-                gh api -X DELETE "repos/$GH_REPO/releases/assets/$id"
+          # Feed files are named by build number (#295), so nothing a live
+          # update.json names is ever overwritten. Keep the files this feed
+          # and the one before name (a device may have just read it; a
+          # content-only feed names an older APK) and drop the rest so the
+          # release doesn't grow without end.
+          keep="$( { jq -r '.assets[].file, (.content.file // empty)' dist/update/update.json
+                     jq -r '.assets[].file, (.content.file // empty)' <<<"$live" 2>/dev/null || true; } | sort -u)"
+          gh api "repos/$GH_REPO/releases/tags/preview" --jq '.assets[] | select(.name | test("^kabar-")) | "\(.id) \(.name)"' \
+            | while read -r id name; do
+                [ "$name" = kabar-preview.apk ] || grep -qxF "$name" <<<"$keep" \
+                  || gh api -X DELETE "repos/$GH_REPO/releases/assets/$id"
               done

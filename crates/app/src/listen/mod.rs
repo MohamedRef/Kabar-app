@@ -23,10 +23,11 @@ use crate::annotated::Annotated;
 use crate::audio::AudioCache;
 use crate::coach::Coach;
 use crate::embedded::{self, RADIO, STORIES};
+use crate::embedded::{Css, css};
 use crate::lesson::{EpisodeQuiz, Rich, target_tag};
 use crate::{Db, Ui};
 
-pub(crate) const LISTEN_CSS: &str = include_str!("../../assets/listen.css");
+pub(crate) const LISTEN_CSS: Css = css!("assets/listen.css");
 
 /// Every episode file, parsed once; a broken file stays listed with its error.
 struct Shows {
@@ -152,7 +153,7 @@ pub fn ListenScreen() -> Element {
     };
 
     rsx! {
-        style { {LISTEN_CSS} }
+        style { {LISTEN_CSS.text()} }
         div { class: "listen",
             if open().is_none() {
                 h2 { "{ui.t(crate::i18n::Msg::NavListen)}" }

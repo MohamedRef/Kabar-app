@@ -18,9 +18,10 @@ use kabar_core::locale::UiLanguage;
 use kabar_protocol::content::Lang;
 
 use crate::Ui;
+use crate::embedded::{Css, css};
 use crate::reader::glossary::WordLang;
 
-const STUDIO_CSS: &str = include_str!("../../assets/studio.css");
+const STUDIO_CSS: Css = css!("assets/studio.css");
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum Tab {
@@ -61,7 +62,7 @@ pub fn StudioScreen() -> Element {
     .collect::<Vec<_>>();
     let shown = tabs.len();
     rsx! {
-        style { {STUDIO_CSS} }
+        style { {STUDIO_CSS.text()} }
         div { class: "studio",
             div { class: "studio-tabs", role: "tablist", hidden: shown < 2,
                 for (t, label) in tabs {

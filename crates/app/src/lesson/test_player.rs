@@ -22,9 +22,10 @@ use super::{
 };
 use crate::annotated::Annotated;
 use crate::coach::Coach;
+use crate::embedded::{Css, css};
 use crate::{Db, Screen, Ui};
 
-const TEST_CSS: &str = include_str!("../../assets/test.css");
+const TEST_CSS: Css = css!("assets/test.css");
 
 #[component]
 pub fn TestScreen(id: String, yaml: String) -> Element {
@@ -49,7 +50,7 @@ pub fn TestScreen(id: String, yaml: String) -> Element {
         Ok(test) => rsx! { TestView { key: "{id}", test: test.clone() } },
     };
     rsx! {
-        style { {TEST_CSS} }
+        style { {TEST_CSS.text()} }
         {body}
     }
 }
