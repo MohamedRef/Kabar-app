@@ -334,6 +334,20 @@ fn tracks(root: &Path) -> Result<Vec<Track>, LoadError> {
                     let words = v.get("new_words").and_then(Value::as_array).into_iter().flatten();
                     for w in words.filter_map(|w| str_field(w, "word")) {
                         for f in forms(w) {
+                            // An affix card ("dipun-", "-aken") also covers
+                            // talk about the affix itself ("Dipun-, -aken.").
+                            let bare = f.trim_matches('-').to_owned();
+                            if bare != f && !bare.is_empty() {
+                                t.taught.entry(bare).or_insert(pos);
+                            }
+                            // A phrase card ("matur nuwun", "sugeng rawuh")
+                            // drills each of its words, so "nuwun" or
+                            // "sugeng" on its own is not new either.
+                            if f.contains(' ') {
+                                for part in tokens(&f) {
+                                    t.taught.entry(part.to_lowercase()).or_insert(pos);
+                                }
+                            }
                             t.taught.entry(f).or_insert(pos);
                         }
                     }
