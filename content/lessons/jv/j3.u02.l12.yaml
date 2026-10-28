@@ -1,0 +1,255 @@
+schema: kabar.lesson/v1
+id: j3.u02.l12
+language: jv
+title: Ulangan J3.2
+can_do:
+  ar_eg: تبدّل الضماير حسب الموقف.
+  ar: أن تبدّل الضمائر بحسب الموقف.
+  en: Swap pronouns by situation.
+slides:
+  - title: Tabel tembung ganti
+    body:
+      ar_eg: |
+        كل الضماير في جدول واحد (ngoko ← krama ← krama inggil):
+        - أنا: aku ← kula (chat kulo)، وdalem للتواضع الشديد و«أفندم؟»
+        - إنت: kowe ← sampeyan ← panjenengan
+        - هو / هي: dheweke ← piyambakipun ← panjenenganipun
+        - بتاعي: -ku ← اسم + kula (nami kula، griya kula)
+        وعمرك ما تستخدم panjenengan أو dhahar أو asma عن نفسك.
+      ar: |
+        الضمائر كلها في جدول واحد (ngoko ← krama ← krama inggil):
+        - أنا: aku ← kula (وفي الدردشة kulo)، وdalem للتواضع الشديد ولجواب النداء
+        - أنت: kowe ← sampeyan ← panjenengan
+        - هو / هي: dheweke ← piyambakipun ← panjenenganipun
+        - الملكية: -ku ← الاسم + kula (nami kula، griya kula)
+        ولا تستعمل panjenengan ولا dhahar ولا asma عن نفسك.
+      en: |
+        All the pronouns in one table (ngoko → krama → krama inggil):
+        - I: aku → kula (chat kulo); dalem for deep humility and "yes?" when called
+        - you: kowe → sampeyan → panjenengan
+        - he / she: dheweke → piyambakipun → panjenenganipun
+        - my: -ku → noun + kula (nami kula, griya kula)
+        Never use panjenengan, dhahar or asma about yourself.
+    grammar: jv.pronoun.krama
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: aku
+        ar_eg: بالكراما kula
+        ar: بالكراما kula
+        en: in krama → kula
+      - text: kowe
+        ar_eg: بالكراما sampeyan
+        ar: بالكراما sampeyan
+        en: in krama → sampeyan
+      - text: dheweke
+        ar_eg: بالكراما piyambakipun
+        ar: بالكراما piyambakipun
+        en: in krama → piyambakipun
+      - text: jenengku
+        ar_eg: بالكراما nami kula
+        ar: بالكراما nami kula
+        en: in krama → nami kula
+      - text: omahku
+        ar_eg: بالكراما griya kula
+        ar: بالكراما griya kula
+        en: in krama → griya kula
+    words: [kula, sampeyan, piyambakipun, nami, griya]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك Dimas. «إنت» = ؟
+      ar: صديقك Dimas. «أنت» = ؟
+      en: Your friend Dimas. "You" = ?
+    options: [panjenengan, kowe, sampeyan]
+    answer: 1
+    explain:
+      ar_eg: 'صاحبك: kowe.'
+      ar: 'الصديق: kowe.'
+      en: A friend — kowe.
+    words: [kowe]
+  - id: e03
+    type: fill_blank
+    sentence: Nyuwun ___, Bu, gadhah salak ingkang alit?
+    meaning:
+      ar_eg: لو سمحتي ___ يا ست، عندك سلاك صغير؟
+      ar: اسمحي لي ___ يا سيدتي، هل لديك سلاك صغير؟
+      en: May I ___, ma'am, have you got any small salak?
+    options: [pirsa, mriki, kemawon]
+    answers: [pirsa]
+    words: [pirsa, nyuwun, gadhah, ingkang, mriki, kemawon]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: جدة Dimas. «حضرتك» = ؟
+      ar: جدة Dimas. «حضرتكِ» = ؟
+      en: Dimas's grandmother. "You" = ?
+    options: [panjenengan, piyambakipun, sampeyan]
+    answer: 0
+    explain:
+      ar_eg: 'الجدة: panjenengan. piyambakipun = «هي» مش «إنتي».'
+      ar: 'الجدة: panjenengan، أما piyambakipun فمعناها «هي».'
+      en: Grandma — panjenengan. Piyambakipun means "she", not "you".
+    words: [panjenengan]
+  - id: e05
+    type: listen
+    text: Dalem, Mbah?
+    options: ['Dalem, Mbah?', 'Dereng, Mbah.', 'Inggih, Mbak.']
+    answer: 0
+    words: [dalem]
+  - id: e06
+    type: fill_blank
+    sentence: Nami ___ Mohamed, Bu.
+    meaning:
+      ar_eg: اسمي محمد يا مدام.
+      ar: اسمي محمد يا سيدتي.
+      en: My name is Mohamed, ma'am.
+    answers: [kula, kulo]
+    explain:
+      ar_eg: '«اسمي» بالكراما: nami kula.'
+      ar: '«اسمي» بالكراما: nami kula.'
+      en: '"My name" in krama: nami kula.'
+    words: [nami, kula]
+  - id: e07
+    type: fill_blank
+    sentence: Menika griya ___, Mbah?
+    meaning:
+      ar_eg: ده بيت حضرتك يا تيتة؟
+      ar: أهذا بيتك يا جدتي؟
+      en: Is this your house, Grandma?
+    options: [kula, kowe, panjenengan]
+    answers: [panjenengan]
+    explain:
+      ar_eg: '«بيتك» للجدة: griya panjenengan. griya kula = بيتي.'
+      ar: '«بيتكِ» للجدة: griya panjenengan، أما griya kula فـ«بيتي».'
+      en: '"Your house" to Grandma: griya panjenengan. Griya kula = my house.'
+    words: [griya, panjenengan]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: حضرتك كلت يا أستاذ؟ (لراجل غريب في سنك)
+      ar: هل أكلتَ يا أخي؟ (لرجل غريب في مثل سنك)
+      en: Have you eaten? (to a stranger your age, Mas)
+    answer: Sampeyan sampun nedha, Mas?
+    distractors: [kowe, wis]
+    words: [sampeyan, sampun, nedha]
+  - id: e09
+    type: fill_blank
+    sentence: Sedhela, Mbah, kula ___ dhateng warung.
+    meaning:
+      ar_eg: لحظة يا تيتة، ___ للدكان.
+      ar: لحظة يا جدة، ___ إلى الدكان.
+      en: Just a moment, Mbah, I'm ___ to the shop.
+    options: [medal, kori, lemari]
+    answers: [medal]
+    words: [medal, sedhela, kori, lemari]
+  - id: e10
+    type: multiple_choice
+    question: Tas kula ___ oleh-oleh.
+    options: [kebak, bantal, sinyal]
+    answer: 0
+    explain:
+      ar_eg: kebak = مليان. bantal = مخدة، sinyal = شبكة.
+      ar: kebak = ممتلئ. bantal = وسادة، sinyal = إشارة.
+      en: kebak = full. bantal = pillow, sinyal = signal.
+    words: [kebak, bantal, sinyal, oleh-oleh]
+  - id: e11
+    type: match_pairs
+    pairs:
+      - text: mlebet
+        ar_eg: يدخل (كراما)
+        ar: يدخل (كراما)
+        en: enter (krama)
+      - text: toya
+        ar_eg: مية (كراما)
+        ar: ماء (كراما)
+        en: water (krama)
+      - text: andhuk
+        ar_eg: فوطة
+        ar: منشفة
+        en: towel
+      - text: kepenak
+        ar_eg: مريح
+        ar: مريح
+        en: comfortable
+      - text: samenika
+        ar_eg: دلوقتي (كراما)
+        ar: الآن (كراما)
+        en: now (krama)
+      - text: wau
+        ar_eg: من شوية (كراما)
+        ar: قبل قليل (كراما)
+        en: earlier (krama)
+    words: [mlebet, toya, andhuk, kepenak, samenika, wau]
+  - id: e12
+    type: match_pairs
+    pairs:
+      - text: ngriki
+        ar_eg: هنا (كراما)
+        ar: هنا (كراما)
+        en: here (krama)
+      - text: lebet
+        ar_eg: جوّه (كراما)
+        ar: داخل (كراما)
+        en: inside (krama)
+      - text: jawi
+        ar_eg: برّه (كراما)
+        ar: خارج (كراما)
+        en: outside (krama)
+      - text: ngajeng
+        ar_eg: قدّام (كراما)
+        ar: أمام (كراما)
+        en: front (krama)
+      - text: wingking
+        ar_eg: ورا (كراما)
+        ar: خلف (كراما)
+        en: back, behind (krama)
+      - text: sepen
+        ar_eg: هادي، مفيش ناس (كراما)
+        ar: هادئ، خالٍ (كراما)
+        en: quiet, deserted (krama)
+    words: [ngriki, lebet, jawi, ngajeng, wingking, sepen]
+dialogue:
+  title: Pamit saka Pasar Kranggan
+  lines:
+    - speaker: Bu Siti
+      text: "Mas, Mas Dimas niku saking Yogya, nggih?"
+      ar_eg: "يا أستاذ، ديماس ده من يوجيا، صح؟"
+      ar: "يا أخي، ديماس من يوجيا، أليس كذلك؟"
+      en: "Mas, Dimas is from Yogya, isn't he?"
+    - speaker: Mohamed
+      text: Inggih, Bu. Piyambakipun saking Yogya.
+      ar_eg: أيوه يا مدام. هو من يوجيا.
+      ar: نعم يا سيدتي، هو من يوغياكرتا.
+      en: Yes, ma'am. He's from Yogya.
+    - speaker: Bu Siti
+      text: "Oh, nggih. Sampun nedha, Mas?"
+      ar_eg: "آه، طيب. كلت يا أستاذ؟"
+      ar: "آه، حسنًا. هل أكلتَ؟"
+      en: "Oh, right. Eaten yet?"
+    - speaker: Mohamed
+      text: Sampun, Bu. Matur nuwun.
+      ar_eg: آه يا مدام. شكرًا.
+      ar: نعم يا سيدتي. شكرًا.
+      en: Yes, ma'am. Thank you.
+    - speaker: Mas Dimas
+      text: "Mohamed, ayo mulih, wis sore!"
+      ar_eg: "يا محمد، يلا نروّح، الدنيا ليّلت!"
+      ar: "يا محمد، هيا نعود، تأخّر الوقت!"
+      en: "Mohamed, let's head home, it's getting late!"
+    - speaker: Mohamed
+      text: Ayo, Mas!
+      ar_eg: يلا يا دِيماس!
+      ar: هيا يا ديماس!
+      en: Let's go, Dimas!
+souvenir:
+  id: j3.u02.souvenir
+  title: Pasar Kranggan
+  note:
+    ar_eg: 'Pasar Kranggan سوق شعبي قديم في يوجيا قريب من Tugu، والبياعين فيه شغالين من قبل الفجر. هنا هتسمع «sampeyan» في كل حتة: مؤدبة بس دافية، زي «حضرتك» بتاعة السوق. ولما تقابل حد كبير، panjenengan بتفتحلك القلوب.'
+    ar: Pasar Kranggan سوق شعبي عريق في يوجيا قرب Tugu، يعمل باعته من قبل الفجر. وفيه تسمع «sampeyan» في كل مكان، مهذبة دافئة كـ«حضرتك» في الأسواق. أما مع الكبار فتفتح لك panjenengan القلوب.
+    en: Pasar Kranggan is an old everyday market in Jogja near the Tugu, with sellers at work before dawn. Here you'll hear "sampeyan" everywhere — polite but warm, the market's «حضرتك». And with elders, panjenengan opens every heart.
+review:
+  status: draft
+  verified: false

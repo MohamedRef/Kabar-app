@@ -132,6 +132,16 @@ impl Track {
         {
             return true;
         }
+        // Krama "dipunwaos", "tumbasaken": known once the affix lesson and
+        // the root are.
+        if self.lang == "jv" {
+            let affixed = |affix: &str, root: Option<&str>| {
+                at(affix) && root.is_some_and(|r| r.len() > 2 && self.known(r, pos))
+            };
+            if affixed("dipun-", w.strip_prefix("dipun")) || affixed("-aken", w.strip_suffix("aken")) {
+                return true;
+            }
+        }
         suffixes(&self.lang).iter().any(|s| w.len() > s.len() + 2 && w.strip_suffix(s).is_some_and(at))
     }
 
@@ -462,5 +472,21 @@ mod tests {
         assert!(u.is_empty(), "{u:?}");
         let (_, u) = measure(&track(), &names, 0, "Saya bacain.", &ex(""));
         assert_eq!(u, vec!["bacain".to_owned()]);
+    }
+
+    #[test]
+    fn krama_affixed_forms_count_once_affix_and_root_are_taught() {
+        let mut t = track();
+        t.lang = "jv".into();
+        t.taught = [("waos", 0), ("tumbas", 0), ("dipun-", 1), ("-aken", 1)]
+            .into_iter()
+            .map(|(w, p)| (w.to_owned(), p))
+            .collect();
+        let names = BTreeSet::new();
+        let line = "dipunwaos tumbasaken dipuntumbasaken dipunserat";
+        let (_, u) = measure(&t, &names, 0, line, &ex(""));
+        assert_eq!(u.len(), 4, "{u:?}");
+        let (_, u) = measure(&t, &names, 1, line, &ex(""));
+        assert_eq!(u, vec!["dipunserat".to_owned()]);
     }
 }

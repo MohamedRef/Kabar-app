@@ -37,14 +37,17 @@ slides:
         sampun = sudah، ودي كمان الرد «آه، خلاص». dereng = belum = «لسه».
         في الشات: sampun بتتكتب كتير mpun أو pun.
         السؤال والرد: Sampeyan sampun nedha? — Sampun. / Dereng.
+        nate (tau) = سبق وعملت: «Sampun nate dhateng Jogja?» = رحت جوجا قبل كده؟ — «Dereng nate» = عمري ما رحت.
       ar: |
         sampun = sudah، وهي أيضًا جواب «نعم، قد فعلت». وdereng = belum = «ليس بعد».
         وفي الدردشة تُكتب sampun كثيرًا mpun أو pun.
         سؤال وجواب: Sampeyan sampun nedha? — Sampun. / Dereng.
+        nate (tau) = سبق أن: «Sampun nate dhateng Jogja?» = هل سبق أن زرت جوكجاكرتا؟ — «Dereng nate» = لم يسبق لي.
       en: |
         sampun = sudah, and also the answer "yes, already". dereng = belum = "not yet".
         In chats sampun is often typed mpun or pun.
         Question and answer: Sampeyan sampun nedha? — Sampun. / Dereng.
+        nate (tau) = ever: "Sampun nate dhateng Jogja?" = have you ever been to Jogja? — "Dereng nate" = never yet.
     grammar: jv.krama.function-words
     examples:
       - text: Sampeyan sampun nedha? — Dereng.
@@ -132,11 +135,11 @@ exercises:
         ar_eg: لـ / على (neng) = ke
         ar: إلى (neng) = ke
         en: to (neng) = ke
-      - text: sae
-        ar_eg: كويس / حلو (apik) = bagus
-        ar: جيد / جميل (apik) = bagus
-        en: good, nice (apik) = bagus
-    words: [sampun, peken, badhe, taksih, dhateng, sae]
+      - text: nate
+        ar_eg: سبق وعمل (tau) = pernah
+        ar: سبق أن (tau) = pernah
+        en: ever (tau) = pernah
+    words: [sampun, peken, badhe, taksih, dhateng, nate]
   - id: e02
     type: multiple_choice
     question: arep
@@ -178,10 +181,10 @@ exercises:
     words: [kula, badhe, dhateng]
   - id: e06
     type: listen
-    text: Batik menika sae.
-    options: [Batik menika sae., Batik menika apik., Batik iki sae.]
+    text: Kula dereng nate dhateng Kauman.
+    options: [Kula dereng nate dhateng Kauman., Kula sampun nate dhateng Kauman., Kula dereng dhateng Kauman.]
     answer: 0
-    words: [menika, sae]
+    words: [nate, dereng, dhateng]
   - id: e07
     type: speaking
     text: Kula badhe dhateng peken.
@@ -192,18 +195,18 @@ exercises:
     words: [badhe, dhateng, peken]
   - id: e08
     type: multiple_choice
-    question: apik
+    question: pernah
     question_meaning:
-      ar_eg: إيه الكراما بتاعة apik؟
-      ar: ما نظير apik في الكراما؟
-      en: What's the krama for apik?
-    options: [sae, sampun, peken]
+      ar_eg: إيه الكلمة الجاوية (كراما) لـ pernah الإندونيسي؟
+      ar: ما مقابل pernah الإندونيسية بالكراما الجاوية؟
+      en: What's the krama for Indonesian pernah (ever)?
+    options: [nate, sampun, peken]
     answer: 0
     explain:
-      ar_eg: apik (ngoko) ← sae (krama) = bagus. وpeken = السوق.
-      ar: apik (ngoko) ← sae (krama) = bagus، وpeken = السوق.
-      en: apik (ngoko) → sae (krama) = bagus; peken = market.
-    words: [sae]
+      ar_eg: pernah = nate بالكراما (سبق وعمل). sampun = خلاص، وpeken = السوق.
+      ar: pernah = nate بالكراما (سبق أن)، وsampun = قد، وpeken = السوق.
+      en: pernah = nate in krama (ever); sampun = already, peken = market.
+    words: [nate, sampun]
 dialogue:
   title: Ing Kauman
   lines:
@@ -238,31 +241,21 @@ dialogue:
       ar: شكرًا يا سيدتي.
       en: Thank you, ma'am.
 new_words:
-  - word: badhe
+  - word: nate
     pos: adverb
-    ar_eg: هـ / ناوي (krama لـ arep) = akan, mau
-    ar: سوف (krama لـ arep) = akan, mau
-    en: will, going to (krama for arep) = akan, mau
+    ar_eg: سبق وعمل (كراما من tau)
+    ar: سبق أن (كراما من tau)
+    en: ever, krama (ngoko tau, Indonesian pernah)
   - word: taksih
     pos: adverb
     ar_eg: لسه بـ / مازال (krama لـ isih) = masih
     ar: ما زال (krama لـ isih) = masih
     en: still (krama for isih) = masih
-  - word: dhateng
-    pos: preposition
-    ar_eg: لـ / على (krama لـ neng، في الكلام teng) = ke
-    ar: إلى (krama لـ neng، وفي الكلام teng) = ke
-    en: to (krama for neng; spoken teng) = ke
   - word: peken
     pos: noun
     ar_eg: السوق (krama لـ pasar)
     ar: السوق (krama لـ pasar)
     en: market (krama for pasar)
-  - word: sae
-    pos: adjective
-    ar_eg: كويس / حلو (krama لـ apik)
-    ar: حسن / جيد (krama لـ apik)
-    en: good, nice (krama for apik)
 review:
   status: draft
   verified: false
