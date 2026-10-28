@@ -178,6 +178,21 @@ fn every_failure_is_reported() {
 }
 
 #[test]
+fn signed_out_is_not_called_offline() {
+    let cloud = Scripted::new(
+        EngineId::WorkersAi,
+        vec![Err(EngineError::NotConnected { reason: "not signed in to Kabar Cloud".into() })],
+    );
+    let home =
+        Scripted::new(EngineId::Local, vec![Err(EngineError::Unavailable { reason: "asleep".into() })]);
+    let r = router(&[&cloud, &home]);
+    assert_eq!(
+        block_on(r.run::<AnalyzeText>(&sek_request())).unwrap_err().friendly(),
+        FriendlyReason::NotAvailable
+    );
+}
+
+#[test]
 fn personal_data_never_reaches_gemini() {
     let gem = Scripted::new(EngineId::GeminiFree, vec![]);
     let wai = Scripted::new(EngineId::WorkersAi, vec![]);

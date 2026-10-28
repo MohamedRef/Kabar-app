@@ -205,6 +205,12 @@ pub enum EngineError {
     },
     /// The router refused before calling: personal data to a training engine.
     PrivacyBlocked,
+    /// The app couldn't ask the proxy at all: this build has no Kabar Cloud
+    /// URL, or nobody is signed in. Made on the device; the proxy never
+    /// sends it, so older clients never meet it.
+    NotConnected {
+        reason: String,
+    },
     Other {
         message: String,
     },

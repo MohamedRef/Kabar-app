@@ -34,8 +34,10 @@ new_sqlite_classes = ["Account"]
 # AZURE_SPEECH_KEY, ANTHROPIC_API_KEY, FCM_SERVICE_ACCOUNT) go in with
 # `wrangler secret put`.
 [vars]
-# OAuth client ids (Android + macOS), comma-separated.
-GOOGLE_CLIENT_IDS = ""
+# OAuth client ids, comma-separated. For now the one Desktop-app client that
+# Batna uses too (the Mac and Android both sign in with it, PKCE + loopback);
+# a Kabar-only client can replace it later (docs/CLOUD.md §3.2).
+GOOGLE_CLIENT_IDS = "1001052243528-3d8bmf0efprgdvov9f663fm8u63kblck.apps.googleusercontent.com"
 WORKERS_AI_MODEL = "@cf/aisingapore/gemma-sea-lion-v4-27b-it"
 # Calls with an image (Gambar!, handwriting, screenshots). Provisional until the bake-off.
 WORKERS_AI_VISION_MODEL = "@cf/meta/llama-4-scout-17b-16e-instruct"

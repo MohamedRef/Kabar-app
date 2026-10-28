@@ -23,7 +23,7 @@ pub fn status_for(e: &EngineError) -> u16 {
     match e {
         EngineError::PrivacyBlocked => 403,
         EngineError::QuotaExhausted { .. } | EngineError::RateLimited { .. } => 429,
-        EngineError::Unavailable { .. } => 503,
+        EngineError::Unavailable { .. } | EngineError::NotConnected { .. } => 503,
         EngineError::Other { .. } => 502,
     }
 }

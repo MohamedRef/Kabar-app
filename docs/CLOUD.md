@@ -100,17 +100,40 @@ Workers AI needs no key.
 4. `GET /v1/vault` now says `"push_configured": true`. The app sends its token on every launch, which starts the reminder alarm.
 
 ### 3.5 Deploy
+**From GitHub (no Mac needed).** The `Deploy Kabar Cloud` workflow (`.github/workflows/cloud-deploy.yml`) builds and deploys the Worker, the same way Batna Cloud is deployed.
+1. In Cloudflare, open **Workers & Pages** once so the account has its `workers.dev` subdomain (already true: Batna Cloud lives there).
+2. At **My Profile › API Tokens**, create a token from the **Edit Cloudflare Workers** template and add two permissions: **Account › D1 › Edit** and **Account › Workers AI › Edit**.
+3. Add repo secrets (**Settings › Secrets and variables › Actions**):
+   - `CLOUDFLARE_API_TOKEN`: the token.
+   - `KABAR_ALLOWED_EMAILS`: your Gmail.
+   - Optional: `GEMINI_API_KEY` (§3.3), `AZURE_SPEECH_KEY` (§3.3).
+4. Run **Actions › Deploy Kabar Cloud › Run workflow**. The run summary shows the Worker URL.
+
+The first run makes the D1 database `kabar`, applies its migrations and makes the token signing key inside Cloudflare, so `just cloud-setup` isn't needed. The committed `wrangler.toml` keeps a placeholder D1 id; the workflow fills in the real one for each run. After that, every push to `main` that touches `crates/server` or `crates/protocol` redeploys.
+
+**From the Mac:**
 ```bash
 just deploy-cloud
 curl https://kabar-cloud.<your-subdomain>.workers.dev/v1/health
 ```
-Tell me the URL; the app will point at it.
 
 ### 3.6 Connect the app
 1. `cp .env.example .env` and fill in `KABAR_CLOUD_URL` (the URL above) and the **Desktop** client's id and secret (§3.2). `.env` is git-ignored; `just` loads it and the app reads it at build time.
 2. `just run-mac` → **Settings → Account & devices → Sign in with Google**. The browser opens, you pick your Gmail, and the page says to go back to Kabar.
 3. `just apk` and `just install <serial>` for the S24 Ultra and the Tab S11, then sign in the same way on each.
 4. Save a word under **Try sync** on one device: it shows up on the others within seconds.
+
+
+### 3.7 The preview APK (GitHub Actions)
+The auto-updating preview APK is built on GitHub, where there is no `.env`. `android-preview.yml` builds in `KABAR_CLOUD_URL` (default `https://kabar-cloud.hamorefaat85.workers.dev`) and `KABAR_GOOGLE_CLIENT_ID` (default: the Desktop client in `wrangler.toml`); repo variables of the same names override them. The client secret is one repo secret:
+
+| Kind | Name | Value |
+|---|---|---|
+| Secret | `KABAR_GOOGLE_CLIENT_SECRET` | the Desktop client's secret |
+
+Only pushes to `main` get these; a PR's build gets none, and its AI features say this build isn't connected. Like every installed-app secret it can be read out of the APK, which is only acceptable because the client is a **Desktop app** OAuth client, which Google treats as public. Never put a Web-application client's secret here.
+
+For now Kabar signs in with the same Desktop client as Batna, so Google's consent page shows Batna's project name. A Kabar-only client (§3.2) can replace it later: put its id in `wrangler.toml` and the `KABAR_GOOGLE_CLIENT_ID` repo variable, and its secret in `KABAR_GOOGLE_CLIENT_SECRET`.
 
 ## 4. Local development
 

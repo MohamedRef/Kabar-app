@@ -16,8 +16,9 @@ use kabar_protocol::content::{Lang, Trilingual};
 use kabar_protocol::learn::{SourceKind, TaughtEntry};
 use serde::Deserialize;
 
+use crate::account::Cloud;
 use crate::embedded::{Css, css};
-use crate::{Db, Ui};
+use crate::{Db, Screen, Ui};
 
 const TEACH_CSS: Css = css!("assets/teach.css");
 
@@ -101,6 +102,7 @@ pub fn TeachScreen() -> Element {
     let ai = use_context::<Ai>();
     let inbox = use_context::<TeachInbox>();
     let words = use_context::<crate::annotated::Words>();
+    let cloud = use_context::<Cloud>();
     let engine = use_hook(|| Rc::new(Engine::default()));
 
     let mut lang = use_signal(|| Lang::Id);
@@ -296,6 +298,25 @@ pub fn TeachScreen() -> Element {
                 match status() {
                     Status::Fetching => rsx! { span { class: "muted", "{tr(T::Fetching)}" } },
                     Status::Thinking => rsx! { span { class: "muted", "{tr(T::Thinking)}" } },
+                    // Kabar Cloud is the fix, so say which step is missing
+                    // and open it, instead of blaming the internet.
+                    Status::Problem(T::NotConnected) => {
+                        let configured = cloud.status.read().configured;
+                        rsx! {
+                            span { class: "no", role: "status",
+                                if configured { "{tr(T::NotConnected)}" } else { "{tr(T::NoCloudInBuild)}" }
+                            }
+                            if configured {
+                                button {
+                                    onclick: move |_| {
+                                        let mut s = ui.screen;
+                                        s.set(Screen::Devices);
+                                    },
+                                    "{tr(T::SignIn)}"
+                                }
+                            }
+                        }
+                    }
                     Status::Problem(m) => rsx! { span { class: "no", role: "status", "{tr(m)}" } },
                     Status::Invalid(why) => rsx! { span { class: "no", role: "status", bdi { "{why}" } } },
                     Status::Idle => rsx! {},
@@ -730,6 +751,8 @@ pub enum T {
     ResetsLater,
     Unreachable,
     NotConnected,
+    NoCloudInBuild,
+    SignIn,
     TryAgain,
 }
 
@@ -876,14 +899,26 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (Unreachable, Ar) => "لا يستطيع \u{2068}Kabar\u{2069} الاتصال الآن. جرّب مجددًا عند عودة الاتصال.",
         (Unreachable, En) => "Kabar can't reach its helpers right now. Try again once you're online.",
         (NotConnected, ArEg) => {
-            "\u{2068}Kabar\u{2069} لسه مش متوصّل بـ Kabar Cloud، فمش هيقدر يكتب الشرح دلوقتي. أول ما يتوصّل هيشتغل."
+            "\u{2068}Kabar\u{2069} بيكتب الشرح عن طريق \u{2068}Kabar Cloud\u{2069}، وإنت لسه مش مسجّل دخول فيه. سجّل دخول مرة واحدة وارجع جرّب."
         }
         (NotConnected, Ar) => {
-            "\u{2068}Kabar\u{2069} غير متصل بعد بـ Kabar Cloud، لذا لا يمكنه كتابة الشرح الآن."
+            "يكتب \u{2068}Kabar\u{2069} الشرح عبر \u{2068}Kabar Cloud\u{2069}، ولم تسجّل الدخول إليه بعد. سجّل الدخول مرة واحدة ثم عُد وجرّب."
         }
         (NotConnected, En) => {
-            "Kabar isn't connected to Kabar Cloud yet, so it can't write this up right now."
+            "Kabar writes this up through Kabar Cloud, and you're not signed in to it yet. Sign in once, then come back and try again."
         }
+        (NoCloudInBuild, ArEg) => {
+            "النسخة دي من \u{2068}Kabar\u{2069} لسه مش متوصلة بـ \u{2068}Kabar Cloud\u{2069}، فمش هتقدر تكتب الشرح. النت عندك سليم؛ أول تحديث فيه السيرفر هيشغّلها."
+        }
+        (NoCloudInBuild, Ar) => {
+            "هذه النسخة من \u{2068}Kabar\u{2069} غير مربوطة بـ \u{2068}Kabar Cloud\u{2069} بعد، لذا لا يمكنها كتابة الشرح. اتصالك سليم؛ سيعمل هذا مع أول تحديث يربط الخادم."
+        }
+        (NoCloudInBuild, En) => {
+            "This build of Kabar isn't connected to Kabar Cloud yet, so it can't write this up. Your internet is fine; the first update with the server switches it on."
+        }
+        (SignIn, ArEg) => "سجّل دخول",
+        (SignIn, Ar) => "سجّل الدخول",
+        (SignIn, En) => "Sign in",
         (TryAgain, ArEg) => "حصلت لخبطة في الرد. جرّب تاني.",
         (TryAgain, Ar) => "حدث خلل في الرد. حاول مرة أخرى.",
         (TryAgain, En) => "Something went wrong with the answer. Try again.",

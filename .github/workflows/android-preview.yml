@@ -152,6 +152,16 @@ jobs:
       - name: Build APK
         if: env.CONTENT_ONLY != 'true'
         working-directory: crates/app
+        # Kabar Cloud and Google sign-in are built in (crates/app/src/cloud/mod.rs);
+        # without them every AI feature reads "not connected". The URL and client
+        # id are public (the id is in wrangler.toml too), so they default to
+        # Kabar's own; repo variables override them. The client secret is a repo
+        # secret (docs/CLOUD.md §3.6). Push builds only: a PR's copy of this
+        # workflow gets empty values. Never echo these.
+        env:
+          KABAR_CLOUD_URL: ${{ env.KEEP_KEY == 'true' && (vars.KABAR_CLOUD_URL || 'https://kabar-cloud.hamorefaat85.workers.dev') || '' }}
+          KABAR_GOOGLE_CLIENT_ID: ${{ env.KEEP_KEY == 'true' && (vars.KABAR_GOOGLE_CLIENT_ID || '1001052243528-3d8bmf0efprgdvov9f663fm8u63kblck.apps.googleusercontent.com') || '' }}
+          KABAR_GOOGLE_CLIENT_SECRET: ${{ env.KEEP_KEY == 'true' && secrets.KABAR_GOOGLE_CLIENT_SECRET || '' }}
         run: |
           dx bundle --platform android --release --package-types apk \
             --target aarch64-linux-android --no-default-features --features mobile \
