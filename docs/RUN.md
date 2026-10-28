@@ -78,7 +78,7 @@ Also tell me how the ink *feels*: does it trail behind the pen tip, and by rough
 
 ## 5. Kabar Cloud (M2)
 
-Full guide: `docs/CLOUD.md`. Short version, on the Mac:
+Full guide: `docs/CLOUD.md`. From a phone: add the repo secrets and run **Actions › Deploy Kabar Cloud** (CLOUD.md §3.5); the preview APK built from `main` then signs in (§3.7). Short version, on the Mac:
 
 ```bash
 just cloud-e2e       # offline test: fake Google, phone + tablet, live sync, sign-out

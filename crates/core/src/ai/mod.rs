@@ -147,7 +147,8 @@ pub enum FriendlyReason {
     ResetsLater,
     /// Offline, or Kabar Home is asleep.
     Unreachable,
-    /// Nothing is set up for this yet.
+    /// Nothing is set up for this yet: no engine, no Kabar Cloud in this
+    /// build, or signed out of it.
     NotAvailable,
     TryAgain,
 }
@@ -167,8 +168,24 @@ impl AiError {
                     )
                 }) {
                     FriendlyReason::ResetsLater
-                } else if all(|e| matches!(e, AttemptError::Engine(EngineError::Unavailable { .. }))) {
-                    FriendlyReason::Unreachable
+                } else if all(|e| {
+                    matches!(
+                        e,
+                        AttemptError::Engine(
+                            EngineError::Unavailable { .. } | EngineError::NotConnected { .. }
+                        )
+                    )
+                }) {
+                    // Signing in helps even when Kabar Home is asleep too;
+                    // "offline" would send the learner checking their Wi-Fi.
+                    if attempts
+                        .iter()
+                        .any(|a| matches!(a.error, AttemptError::Engine(EngineError::NotConnected { .. })))
+                    {
+                        FriendlyReason::NotAvailable
+                    } else {
+                        FriendlyReason::Unreachable
+                    }
                 } else {
                     FriendlyReason::TryAgain
                 }

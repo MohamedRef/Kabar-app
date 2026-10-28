@@ -51,6 +51,20 @@ impl From<CloudError> for Unreachable {
     }
 }
 
+/// What the router hears: "offline" only when the network really failed,
+/// so the learner is told to sign in, or to wait, as the case is.
+impl From<Unreachable> for EngineError {
+    fn from(why: Unreachable) -> Self {
+        let reason = why.to_string();
+        match why {
+            Unreachable::NotConfigured | Unreachable::SignedOut => Self::NotConnected { reason },
+            Unreachable::Offline => Self::Unavailable { reason },
+            Unreachable::QuotaExhausted => Self::QuotaExhausted { retry_after_s: None },
+            Unreachable::Server(message) => Self::Other { message },
+        }
+    }
+}
+
 /// A handle on the sync thread, filled in once it starts. Cheap to clone;
 /// UI-thread only (the router and the WebView are single-threaded).
 #[derive(Clone, Default)]
@@ -90,7 +104,7 @@ impl CloudLink {
         let result = self.with_token(move |api, token| api.ai(token, &call)).await;
         match result {
             Ok(reply) => reply,
-            Err(why) => Err(EngineError::Unavailable { reason: why.to_string() }),
+            Err(why) => Err(why.into()),
         }
     }
 

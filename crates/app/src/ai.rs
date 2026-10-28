@@ -145,7 +145,7 @@ mod tests {
     use std::rc::Rc;
 
     use kabar_core::ai::tasks::GradeAnswer;
-    use kabar_core::ai::{AiError, AiRequest, AttemptError};
+    use kabar_core::ai::{AiError, AiRequest, AttemptError, FriendlyReason};
     use kabar_protocol::ai::{EngineError, Task};
 
     use super::*;
@@ -199,12 +199,15 @@ mod tests {
             panic!("expected every engine to fail");
         };
         assert!(!attempts.is_empty());
-        for a in attempts {
+        for a in &attempts {
             assert!(
-                matches!(&a.error, AttemptError::Engine(EngineError::Unavailable { reason }) if reason.contains("isn't set up")),
+                matches!(&a.error, AttemptError::Engine(EngineError::NotConnected { reason }) if reason.contains("isn't set up")),
                 "{a:?}"
             );
         }
+        // Not "you're offline": the learner hears that Kabar Cloud isn't connected.
+        let err = AiError::AllFailed { task: Task::GradeAnswer, attempts };
+        assert_eq!(err.friendly(), FriendlyReason::NotAvailable);
     }
 
     #[test]

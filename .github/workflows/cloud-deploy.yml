@@ -1,0 +1,139 @@
+name: Deploy Kabar Cloud
+
+# Deploys the Kabar Cloud Worker (crates/server) from GitHub, so no Mac or
+# wrangler login is needed (docs/CLOUD.md §3.5). Runs by hand (Actions › Deploy
+# Kabar Cloud › Run workflow) and on every push to main that touches the
+# server, so the hub is always at least as new as the apps built from main.
+#
+# Needs two repo secrets: CLOUDFLARE_API_TOKEN ("Edit Cloudflare Workers"
+# template plus D1 Edit and Workers AI Edit) and KABAR_ALLOWED_EMAILS (the
+# Gmail allowed to sign in). Without the token the run says so and stops
+# green. Optional secrets switch engines on: GEMINI_API_KEY, AZURE_SPEECH_KEY.
+# The D1 database and the token signing key are made here once; the key is
+# piped straight into the Worker's secrets, never printed or stored elsewhere.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - crates/server/**
+      - crates/protocol/**
+      - .github/workflows/cloud-deploy.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloud-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy the Worker
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - name: Check the Cloudflare token
+        id: ready
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::notice::No CLOUDFLARE_API_TOKEN secret yet; nothing deployed (docs/CLOUD.md §3.5)."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v5
+        if: steps.ready.outputs.go == 'true'
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        if: steps.ready.outputs.go == 'true'
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+        if: steps.ready.outputs.go == 'true'
+        with:
+          key: kabar-cloud-deploy
+      - uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
+        if: steps.ready.outputs.go == 'true'
+      - name: Install worker-build and wrangler
+        if: steps.ready.outputs.go == 'true'
+        run: |
+          cargo binstall -y --force worker-build@0.8
+          npm install -g wrangler@4
+
+      # The committed wrangler.toml holds a placeholder id; the real one is
+      # looked up (or the database made, the first time) and filled in here.
+      - name: D1 database and migrations
+        if: steps.ready.outputs.go == 'true'
+        working-directory: crates/server
+        run: |
+          set -o pipefail
+          id="$(wrangler d1 list --json | jq -r '.[] | select(.name == "kabar") | .uuid' | head -1)"
+          if [ -z "$id" ]; then
+            wrangler d1 create kabar >/dev/null
+            id="$(wrangler d1 list --json | jq -r '.[] | select(.name == "kabar") | .uuid' | head -1)"
+          fi
+          if [ -z "$id" ]; then
+            echo "::error::Couldn't find or create the D1 database 'kabar'. Does the token have D1 Edit?"
+            exit 1
+          fi
+          # Only the top-level binding; [env.e2e] keeps its offline placeholder.
+          sed -i "0,/database_id = \"00000000-0000-0000-0000-000000000000\"/s//database_id = \"$id\"/" wrangler.toml
+          wrangler d1 migrations apply kabar --remote
+
+      - name: Deploy
+        if: steps.ready.outputs.go == 'true'
+        working-directory: crates/server
+        run: |
+          # Without pipefail, tee's success would hide a failed deploy.
+          set -o pipefail
+          wrangler deploy 2>&1 | tee deploy.log
+          url="$(grep -oE 'https://[a-z0-9.-]+\.workers\.dev' deploy.log | head -1 || true)"
+          rm -f deploy.log
+          {
+            echo "### Kabar Cloud is deployed"
+            if [ -n "$url" ]; then
+              echo "Worker URL: \`$url\`"
+              echo
+              echo "If it isn't the default in android-preview.yml, put it in the repo variable \`KABAR_CLOUD_URL\` (docs/CLOUD.md §3.6)."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Once per Worker: these stay in Cloudflare across deploys.
+      - name: Token signing key (first deploy only)
+        if: steps.ready.outputs.go == 'true'
+        working-directory: crates/server
+        run: |
+          if wrangler secret list | grep -q TOKEN_SIGNING_KEY; then
+            echo "already set"
+          else
+            openssl rand -base64 32 | tr -d '\n' | wrangler secret put TOKEN_SIGNING_KEY >/dev/null
+            echo "set"
+          fi
+      - name: Sign-in allowlist and engine keys
+        if: steps.ready.outputs.go == 'true'
+        working-directory: crates/server
+        env:
+          ALLOWED: ${{ secrets.KABAR_ALLOWED_EMAILS }}
+          GEMINI: ${{ secrets.GEMINI_API_KEY }}
+          AZURE: ${{ secrets.AZURE_SPEECH_KEY }}
+        run: |
+          if [ -z "$ALLOWED" ]; then
+            echo "::warning::No KABAR_ALLOWED_EMAILS secret: nobody can sign in until it is set and this runs again."
+          else
+            printf '%s' "$ALLOWED" | wrangler secret put ALLOWED_EMAILS >/dev/null
+            echo "allowlist set"
+          fi
+          # Optional: each one switches an engine on. Workers AI needs no key.
+          if [ -n "$GEMINI" ]; then
+            printf '%s' "$GEMINI" | wrangler secret put GEMINI_API_KEY >/dev/null
+            echo "Gemini key set"
+          fi
+          if [ -n "$AZURE" ]; then
+            printf '%s' "$AZURE" | wrangler secret put AZURE_SPEECH_KEY >/dev/null
+            echo "Azure Speech key set"
+          fi
