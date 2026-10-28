@@ -1,206 +1,233 @@
 schema: kabar.lesson/v1
 id: j1.u02.l06
 language: jv
-title: Kenalan neng warung kopi
+title: Tembung lan pitakon
 can_do:
-  ar_eg: تدردش مع حد غريب في قهوة على الرصيف.
-  ar: أن تتحادث مع غريب في كشك قهوة.
-  en: Chat with a stranger at a coffee stall.
+  ar_eg: 'تستعمل كلام الفصل بالجاوي: كلمة، جملة، سؤال، إجابة، مثال.'
+  ar: 'أن تستخدم لغة الصفّ بالجاوية: كلمة، جملة، سؤال، جواب، مثال.'
+  en: 'Use classroom Javanese: word, sentence, question, answer, example.'
 slides:
-  - title: Mas wong ngendi?
+  - title: Tembung, ukara, pitakon
     body:
       ar_eg: |
-        في الوارونج (warung kopi = قهوة شعبية صغيرة) الناس بتتعرف على بعض بسرعة. أهم سؤال:
-        - Mas wong ngendi? = حضرتك منين؟ (حرفيًا «إنت شخص من فين؟»، زي Orang mana?)
-        والرد: Aku wong Mesir / Aku saka Kairo.
-        وبعدين: Jenengmu sapa? · Sinau apa? · Omahmu ngendi?
-        وفي العنوان: kenalan = نتعرّف، وneng = di (في) — هنتعلمها كويس في J1.6.
+        tembung = كلمة، ukara = جملة، pitakon = سؤال، wangsulan = إجابة.
+        conto = مثال: Conto ukara: «Aku luwe.»
+        nyoba = يجرّب، krungu = يسمع، eling = فاكر (ويتقال كمان iling).
+        الكلمات دي هتسمعها كتير من مذيعين راديو كبار.
       ar: |
-        في الـ warung kopi (مقهى شعبي صغير) يتعارف الناس سريعًا، وأهم سؤال:
-        - Mas wong ngendi? = من أين أنت؟ (حرفيًا «أنت شخص من أين؟»، كـ Orang mana?)
-        والجواب: Aku wong Mesir / Aku saka Kairo.
-        ثم: Jenengmu sapa? · Sinau apa? · Omahmu ngendi?
-        وفي العنوان: kenalan = نتعارف، وneng = di (في)، وتأتي مفصّلة في J1.6.
+        tembung = كلمة، ukara = جملة، pitakon = سؤال، wangsulan = جواب.
+        conto = مثال: Conto ukara: «Aku luwe.»
+        nyoba = يجرّب، krungu = يسمع، eling = يتذكّر (وتُنطق أيضًا iling).
+        ستسمع هذه الكلمات كثيرًا من مذيعي راديو كبار.
       en: |
-        At a warung kopi (a small street coffee stall) people get to know each other fast. The key question:
-        - Mas wong ngendi? = Where are you from? (literally "person from where?", like Orang mana?)
-        The answer: Aku wong Mesir / Aku saka Kairo.
-        Then: Jenengmu sapa? · Sinau apa? · Omahmu ngendi?
-        In the title: kenalan = getting acquainted, neng = di (at) — full lesson in J1.6.
-    grammar: jv.question.words
+        tembung = word, ukara = sentence, pitakon = question, wangsulan = answer.
+        conto = example: Conto ukara: "Aku luwe."
+        nyoba = try, krungu = hear, eling = remember (also said iling).
+        You'll hear these a lot from the Kabar Radio hosts.
     examples:
-      - text: Mas wong ngendi? — Aku wong Mesir.
-        ar_eg: حضرتك منين؟ — أنا مصري.
-        ar: من أين أنت؟ — أنا مصري.
-        en: Where are you from? — I'm Egyptian.
-      - text: Kopine, cah!
-        ar_eg: القهوة يا جماعة! (اتفضلوا)
-        ar: القهوة يا جماعة! (تفضلوا)
-        en: Here's your coffee, guys!
+      - text: Pitakone apa, Mas?
+        ar_eg: السؤال إيه يا ماس؟
+        ar: ما السؤال يا أخي؟
+        en: What's the question, Mas?
+      - text: Aku krungu ukara Jawa.
+        ar_eg: سمعت جملة جاوي.
+        ar: سمعت جملة جاوية.
+        en: I heard a Javanese sentence.
+      - text: Aku eling jenengmu, Mbak.
+        ar_eg: أنا فاكر اسمك يا أبلة.
+        ar: أتذكّر اسمك يا أختي.
+        en: I remember your name, Mbak.
 exercises:
   - id: e01
-    type: multiple_choice
-    question: Mas wong ngendi?
-    question_meaning:
-      ar_eg: واحد في القهوة سألك كده. يقصد إيه؟
-      ar: سألك أحدهم في المقهى هذا السؤال. ماذا يقصد؟
-      en: Someone at the stall asks you this. What do they mean?
-    options: ['Where are you from?', 'What''s your name?', 'Where are you going?']
-    answer: 0
-    explain:
-      ar_eg: wong ngendi = orang mana = منين.
-      ar: wong ngendi = orang mana = من أين.
-      en: wong ngendi = orang mana = from where.
-    words: [wong, ngendi]
-  - id: e02
-    type: listen
-    text: Aku wong Jogja.
-    options: [Aku wong Jogja., 'Aku saka Jogja?', Aku bakul warung kopi.]
-    answer: 0
-    words: [wong, warung kopi, bakul]
-  - id: e03
-    type: build_sentence
-    source:
-      ar_eg: حضرتك منين يا كابتن؟
-      ar: من أين أنت يا أخي؟
-      en: Where are you from? (to a young man)
-    answer: Mas wong ngendi?
-    distractors: [sapa, saya]
-    words: [wong, ngendi]
-  - id: e04
-    type: fill_blank
-    sentence: Aku ___ basa Jawa.
-    meaning:
-      ar_eg: أنا بتعلم جاوي.
-      ar: أنا أتعلّم الجاوية.
-      en: I'm learning Javanese.
-    answers: [sinau]
-    explain:
-      ar_eg: sinau = belajar (يتعلم).
-      ar: sinau = belajar (يتعلّم).
-      en: sinau = belajar.
-    words: [sinau]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: kenalan
-        ar_eg: يتعرّف على حد
-        ar: يتعارف
-        en: get acquainted
-      - text: wong ngendi
-        ar_eg: منين؟
-        ar: من أين؟
-        en: where from?
-      - text: warung kopi
-        ar_eg: قهوة شعبية
-        ar: مقهى شعبي
-        en: coffee stall
-      - text: sinau
-        ar_eg: يتعلم
-        ar: يتعلم
-        en: learn
-      - text: bakul
-        ar_eg: بيّاع
-        ar: بائع
-        en: seller
-      - text: gedhe
-        ar_eg: كبير
-        ar: كبير
-        en: big
-    words: [kenalan, wong ngendi, warung kopi, sinau, bakul, gedhe]
-  - id: e06
+      - text: tembung
+        ar_eg: كلمة
+        ar: كلمة
+        en: word
+      - text: ukara
+        ar_eg: جملة
+        ar: جملة
+        en: sentence
+      - text: pitakon
+        ar_eg: سؤال
+        ar: سؤال
+        en: question
+      - text: wangsulan
+        ar_eg: إجابة
+        ar: جواب
+        en: answer
+    words: [tembung, ukara, pitakon, wangsulan]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: conto
+        ar_eg: مثال
+        ar: مثال
+        en: example
+      - text: nyoba
+        ar_eg: يجرّب
+        ar: يجرّب
+        en: try
+      - text: krungu
+        ar_eg: يسمع
+        ar: يسمع
+        en: hear
+      - text: eling
+        ar_eg: فاكر
+        ar: يتذكّر
+        en: remember
+    words: [conto, nyoba, krungu, eling]
+  - id: e03
     type: listen
-    text: Kenalan, jenengku Yudi.
-    options: ['Kenalan, jenengku Yudi.', 'Kenalan, jenengku Yuda.', 'Sugeng sonten, jenengku Yudi.']
+    text: Pitakone apa, Mas?
+    options: ['Pitakone apa, Mas?', 'Wangsulane apa, Mas?', 'Tembunge apa, Mas?']
     answer: 0
     meaning:
-      ar_eg: أعرّفك بنفسي، اسمي يودي.
-      ar: دعني أعرّفك بنفسي، اسمي يودي.
-      en: Let me introduce myself, I'm Yudi.
-    words: [kenalan, jeneng]
+      ar_eg: السؤال إيه يا ماس؟
+      ar: ما السؤال يا أخي؟
+      en: What's the question, Mas?
+    words: [pitakon, wangsulan, tembung]
+  - id: e04
+    type: fill_blank
+    sentence: 'Pitakon: «Piye kabare?» ___: «Apik.»'
+    meaning:
+      ar_eg: 'السؤال: «أخبارك إيه؟» ___: «كويس.»'
+      ar: 'السؤال: «كيف حالك؟» ___: «بخير.»'
+      en: 'Question: "How are you?" ___: "Good."'
+    options: [Wangsulan, Tembung, Conto]
+    answers: [Wangsulan]
+    words: [wangsulan, tembung, conto, pitakon]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «أنا فاكر اسمك» بالجاوي؟
+      ar: كيف تقول «أتذكّر اسمك» بالجاوية؟
+      en: '"I remember your name" in Javanese?'
+    options: [Aku eling jenengmu., Aku krungu jenengmu., Aku nyoba jenengmu.]
+    answer: 0
+    explain:
+      ar_eg: eling = فاكر. krungu = سمع، nyoba = جرّب.
+      ar: eling = يتذكّر. أمّا krungu فيسمع، وnyoba فيجرّب.
+      en: eling = remember. krungu = hear, nyoba = try.
+    words: [eling, krungu, nyoba]
+  - id: e06
+    type: fill_blank
+    sentence: Aku ___ basa Jawa, Mas. Apik?
+    meaning:
+      ar_eg: أنا ___ الجاوي يا ماس. كويس؟
+      ar: أنا ___ الجاوية يا ماس. هل هي جيّدة؟
+      en: I'm ___ Javanese, Mas. Is it good?
+    options: [nyoba, krungu, eling]
+    answers: [nyoba]
+    words: [nyoba, krungu, eling]
   - id: e07
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي حاجة معناها «قهوة شعبية صغيرة»؟
-      ar: أيّها تعني «مقهى شعبي صغير»؟
-      en: Which one means "a small coffee stall"?
-    options: [warung kopi, omah, basa]
-    answer: 0
-    words: [warung kopi, omah, basa]
+      ar_eg: «جملة» بالجاوي؟
+      ar: ما معنى «جملة» بالجاوية؟
+      en: '"Sentence" in Javanese?'
+    options: [tembung, ukara, pitakon]
+    answer: 1
+    explain:
+      ar_eg: ukara = جملة. tembung = كلمة، pitakon = سؤال.
+      ar: ukara = جملة. أمّا tembung فكلمة، وpitakon فسؤال.
+      en: ukara = sentence. tembung = word, pitakon = question.
+    words: [ukara, tembung, pitakon]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: لأ، أنا مدرس.
-      ar: لا، أنا معلم.
-      en: No, I'm a teacher.
-    answer: Ora, aku guru.
-    distractors: [iya, mahasiswa]
-    words: [ora, guru]
+      ar_eg: سمعت جملة جاوي يا ماس.
+      ar: سمعت جملة جاوية يا أخي.
+      en: I heard a Javanese sentence, Mas.
+    answer: Aku krungu ukara Jawa, Mas.
+    distractors: [eling, tembung]
+    words: [krungu, ukara]
   - id: e09
-    type: dictation
-    text: Jenengku Yudi, aku wong Jogja.
-    meaning:
-      ar_eg: اسمي يودي، أنا من يوجيا.
-      ar: اسمي يودي، أنا من أهل يوجيا.
-      en: My name is Yudi, I'm from Jogja.
-    words: [jeneng, wong]
+    type: translate
+    direction: from_target
+    source_text: Kowe eling tembung «luwe»?
+    answers_meaning:
+      ar_eg: [إنت فاكر كلمة «luwe»؟, فاكر كلمة luwe؟]
+      ar: [هل تتذكّر كلمة «luwe»؟, أتتذكّر كلمة luwe؟]
+      en: ['Do you remember the word "luwe"?', 'Do you remember the word luwe?']
+    words: [eling, tembung]
   - id: e10
     type: speaking
-    text: Sugeng sonten, Mas. Kenalan, jenengku Mohamed.
+    text: 'Conto ukara: Aku luwe banget.'
     meaning:
-      ar_eg: مساء الخير يا كابتن. أعرّفك بنفسي، اسمي محمد.
-      ar: مساء الخير يا أخي. دعني أعرّفك بنفسي، اسمي محمد.
-      en: Good afternoon, Mas. Let me introduce myself, I'm Mohamed.
-    words: [kenalan, jeneng]
+      ar_eg: 'مثال جملة: أنا جعان أوي.'
+      ar: 'مثال على جملة: أنا جائع جدًّا.'
+      en: 'Example sentence: I''m really hungry.'
+    words: [conto, ukara]
 dialogue:
-  title: Warung Mas Mat
   lines:
-    - speaker: Mas Yudi
-      text: Sugeng sonten, Mas.
-      ar_eg: مساء الخير يا كابتن.
-      ar: مساء الخير يا أخي.
-      en: Good afternoon.
+    - speaker: Mas Dimas
+      text: Mohamed, aku duwe pitakon. Tembung «isin» apa?
+      ar_eg: يا محمد، عندي سؤال. كلمة «isin» يعني إيه؟
+      ar: محمد، لديّ سؤال. ما معنى كلمة «isin»؟
+      en: Mohamed, I've got a question. What does "isin" mean?
     - speaker: Mohamed
-      text: Sugeng sonten. Piye kabare, Mas?
-      ar_eg: مساء النور. إزيك؟
-      ar: مساء النور. كيف حالك؟
-      en: Good afternoon. How are you?
-    - speaker: Mas Yudi
-      text: Apik. Mas wong ngendi?
-      ar_eg: كويس. حضرتك منين؟
-      ar: بخير. من أين أنت؟
-      en: Good. Where are you from?
+      text: Sedhela... aku eling! Isin iku malu.
+      ar_eg: لحظة... افتكرت! isin يعني malu.
+      ar: لحظة... تذكّرت! isin تعني malu.
+      en: Wait... I remember! Isin means malu.
+    - speaker: Mas Dimas
+      text: Wangsulanmu bener. Saiki conto ukara?
+      ar_eg: إجابتك صح. طب مثال جملة؟
+      ar: جوابك صحيح. والآن مثال جملة؟
+      en: Your answer's right. Now an example sentence?
     - speaker: Mohamed
-      text: Aku wong Mesir, saka Kairo. Jenengku Mohamed.
-      ar_eg: أنا مصري، من القاهرة. اسمي محمد.
-      ar: أنا مصري، من القاهرة. اسمي محمد.
-      en: I'm Egyptian, from Cairo. My name is Mohamed.
-    - speaker: Mas Yudi
-      text: Jenengku Yudi, aku wong Jogja. Mas sinau apa?
-      ar_eg: اسمي يودي، أنا من يوجيا. بتدرس إيه؟
-      ar: اسمي يودي، من يوجيا. ماذا تدرس؟
-      en: I'm Yudi, from Jogja. What are you studying?
-    - speaker: Mohamed
-      text: Aku sinau basa Jawa. Aku guru basa Arab.
-      ar_eg: بتعلم جاوي. أنا مدرس عربي.
-      ar: أتعلّم الجاوية، وأنا معلم لغة عربية.
-      en: I'm learning Javanese. I'm an Arabic teacher.
+      text: 'Aku nyoba: «Aku isin ngomong Jawa.»'
+      ar_eg: 'هجرّب: «أنا مكسوف أتكلم جاوي.»'
+      ar: 'سأجرّب: «أخجل من التكلّم بالجاوية.»'
+      en: 'Let me try: "I''m shy to speak Javanese."'
+    - speaker: Mas Dimas
+      text: Apik! Aku krungu ukaramu jelas.
+      ar_eg: حلو! سامع جملتك واضحة.
+      ar: ممتاز! أسمع جملتك بوضوح.
+      en: Great! I heard your sentence clearly.
 new_words:
-  - word: kenalan
-    pos: verb
-    ar_eg: يتعرّف على حد (= berkenalan)
-    ar: يتعارف (= berkenalan)
-    en: to get acquainted (= berkenalan)
-  - word: wong ngendi
-    pos: phrase
-    ar_eg: منين؟ (= orang mana)
-    ar: من أين؟ (= orang mana)
-    en: from where? (= orang mana)
-  - word: warung kopi
+  - word: tembung
     pos: noun
-    ar_eg: قهوة شعبية صغيرة
-    ar: مقهى شعبي صغير
-    en: small street coffee stall
+    ar_eg: كلمة
+    ar: كلمة
+    en: word
+  - word: ukara
+    pos: noun
+    ar_eg: جملة
+    ar: جملة
+    en: sentence
+  - word: pitakon
+    pos: noun
+    ar_eg: سؤال
+    ar: سؤال
+    en: question
+  - word: wangsulan
+    pos: noun
+    ar_eg: إجابة
+    ar: جواب
+    en: answer
+  - word: conto
+    pos: noun
+    ar_eg: مثال
+    ar: مثال
+    en: example
+  - word: nyoba
+    pos: verb
+    ar_eg: يجرّب
+    ar: يجرّب، يحاول
+    en: try
+  - word: krungu
+    pos: verb
+    ar_eg: يسمع
+    ar: يسمع
+    en: hear
+  - word: eling / iling
+    pos: verb
+    ar_eg: فاكر، يفتكر
+    ar: يتذكّر
+    en: remember
 review:
   status: draft
   verified: false

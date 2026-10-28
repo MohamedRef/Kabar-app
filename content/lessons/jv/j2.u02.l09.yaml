@@ -1,0 +1,200 @@
+schema: kabar.lesson/v1
+id: j2.u02.l09
+language: jv
+title: Menu warung pecel
+can_do:
+  ar_eg: تقرا منيو وارونج بيكل وتطلب منه وإنت فاهم الأسعار.
+  ar: أن تقرأ قائمة مطعم البيتشيل وتطلب منها فاهمًا الأسعار.
+  en: Read a warung menu and order from it.
+slides:
+  - title: Menune Bu Darmi
+    body:
+      ar_eg: |
+        على حيطة وارونج Bu Darmi في كاروبان، المنيو مكتوب بالطباشير. الأسعار بالأرقام، وإنت بتقولها بالجاوي زي ما اتعلمت في J1:
+        - 2.000 = rong ewu، 3.000 = telung ewu، 4.000 = patang ewu، 5.000 = limang ewu، 10.000 = sepuluh ewu.
+        وتحت المنيو ملاحظة صغيرة. regane padha = السعر واحد (padha = نفس الحاجة، زي padha-padha).
+      ar: |
+        على جدار مطعم Bu Darmi في كاروبان كُتبت القائمة بالطباشير. الأسعار بالأرقام، وتنطقها بالجاوية كما تعلّمت في J1:
+        - 2.000 = rong ewu، و3.000 = telung ewu، و4.000 = patang ewu، و5.000 = limang ewu، و10.000 = sepuluh ewu.
+        وتحت القائمة ملاحظة صغيرة: regane padha = السعر نفسه (padha = متماثل، كما في padha-padha).
+      en: |
+        On the wall of Bu Darmi's warung in Caruban, the menu is written in chalk. Prices are in digits; say them in Javanese as you learned in J1:
+        - 2.000 = rong ewu, 3.000 = telung ewu, 4.000 = patang ewu, 5.000 = limang ewu, 10.000 = sepuluh ewu.
+        Under the menu there's a small note. regane padha = the price is the same (padha = same, as in padha-padha).
+    examples:
+      - text: Sega pecel 10.000 · Endhog 5.000 · Peyek 2.000
+        ar_eg: رز بيكل ١٠٬٠٠٠ · بيضة ٥٬٠٠٠ · بِيِك (مقرمش فول سوداني) ٢٬٠٠٠
+        ar: أرز البيتشيل ١٠٬٠٠٠ · بيضة ٥٬٠٠٠ · بِيِك (رقائق الفول السوداني) ٢٬٠٠٠
+        en: Pecel rice 10,000 · Egg 5,000 · Peyek (peanut cracker) 2,000
+      - text: Teh anget 3.000 · Es teh legi 4.000 · Banyu putih 2.000
+        ar_eg: شاي سخن ٣٬٠٠٠ · شاي ساقع بسكر ٤٬٠٠٠ · مية ٢٬٠٠٠
+        ar: شاي دافئ ٣٬٠٠٠ · شاي مثلّج محلّى ٤٬٠٠٠ · ماء ٢٬٠٠٠
+        en: Warm tea 3,000 · Sweet iced tea 4,000 · Water 2,000
+      - text: Sing ora seneng pedhes, sambele sithik wae. Mangan kene apa dibungkus, regane padha.
+        ar_eg: اللي مش بيحب الحراق، يبقى الصوص شوية صغيرين بس. تاكل هنا أو تيك أواي، السعر واحد.
+        ar: من لا يحبّ الحارّ فليكن الصوص قليلًا. الأكل هنا أو السفري بالسعر نفسه.
+        en: If you don't like it spicy, just a little sauce. Eat in or take away, same price.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Teh anget 3.000
+    question_meaning:
+      ar_eg: الشاي السخن بكام؟
+      ar: كم سعر الشاي الدافئ؟
+      en: How much is the warm tea?
+    options: ["Rong ewu.", "Telung ewu.", "Patang ewu."]
+    answer: 1
+    explain:
+      ar_eg: 3.000 = telung ewu (telu + ng قبل ewu).
+      ar: 3.000 = telung ewu (telu تصير telung قبل ewu).
+      en: 3,000 = telung ewu (telu becomes telung before ewu).
+    words: [teh anget, ewu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إنت مش بتحب الحراق. المنيو بيقترح إيه؟
+      ar: أنت لا تحبّ الطعام الحارّ. ماذا تقترح القائمة؟
+      en: You don't like spicy food. What does the menu suggest?
+    options: ["Sambele sithik wae.", "Sega pecel loro.", "Es teh legi wae."]
+    answer: 0
+    explain:
+      ar_eg: «Sing ora seneng pedhes, sambele sithik wae» = اللي مش بيحب الحراق، صوص قليل.
+      ar: «Sing ora seneng pedhes, sambele sithik wae» = من لا يحبّ الحارّ فليكن الصوص قليلًا.
+      en: '"Sing ora seneng pedhes, sambele sithik wae" = if you don''t like spicy, a little sauce.'
+    words: [seneng, pedhes, sithik]
+  - id: e03
+    type: multiple_choice
+    question: Mangan kene apa dibungkus, regane padha.
+    question_meaning:
+      ar_eg: لو خدت الأكل تيك أواي، السعر هيبقى إيه؟
+      ar: إذا أخذت الطعام سفريًّا، كيف يكون السعر؟
+      en: If you take your food away, what about the price?
+    options: ["Dibungkus larang.", "Mangan kene murah.", "Regane padha."]
+    answer: 2
+    explain:
+      ar_eg: regane padha = السعر واحد، سواء أكلت هنا أو خدته.
+      ar: regane padha = السعر نفسه، سواء أكلت هنا أو أخذته.
+      en: regane padha = same price, whether you eat in or take it away.
+    words: [dibungkus, rega, padha]
+  - id: e04
+    type: listen
+    text: Es teh legi patang ewu.
+    options: ["Teh anget patang ewu.", "Es teh legi patang ewu.", "Es teh legi telung ewu."]
+    answer: 1
+    meaning:
+      ar_eg: الشاي الساقع بالسكر بأربعة آلاف.
+      ar: الشاي المثلّج المحلّى بأربعة آلاف.
+      en: Sweet iced tea is four thousand.
+    words: [legi, ewu]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: nganggo endhog
+        ar_eg: بالبيض
+        ar: مع بيضة
+        en: with egg
+      - text: dibungkus
+        ar_eg: تيك أواي (متغلّف)
+        ar: سفري (مغلّف)
+        en: take away (wrapped)
+      - text: mangan kene
+        ar_eg: ياكل هنا
+        ar: يأكل هنا
+        en: eat in
+      - text: sithik wae
+        ar_eg: شوية صغيرين بس
+        ar: قليلًا فقط
+        en: just a little
+      - text: regane padha
+        ar_eg: السعر واحد
+        ar: السعر نفسه
+        en: same price
+    words: [nganggo, endhog, dibungkus, sithik, rega, padha]
+  - id: e06
+    type: fill_blank
+    sentence: Banyu putih ___ ewu.
+    meaning:
+      ar_eg: المية بألفين (2.000).
+      ar: الماء بألفين (2.000).
+      en: Water is two thousand (2,000).
+    answers: ["rong", "Rong"]
+    explain:
+      ar_eg: "قبل ewu، loro بتبقى rong: rong ewu."
+      ar: "قبل ewu تصير loro: rong، فنقول rong ewu."
+      en: "Before ewu, loro becomes rong: rong ewu."
+    words: [banyu putih, ewu]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اطلب من المنيو: «رز بيكل واحد بالبيض يا طنط. تيك أواي.»"
+      ar: "اطلب من القائمة: «أرز بيتشيل واحد مع بيضة يا سيدتي. سفري.»"
+      en: "Order from the menu: \"One pecel rice with egg, ma'am. To take away.\""
+    answers:
+      - Sega pecel siji, nganggo endhog, Bu. Dibungkus.
+      - Sega pecel siji, nganggo endhog, Bu. Dibungkus
+      - Sega pecel siji nganggo endhog, Bu. Dibungkus.
+      - Sega pecel siji, nganggo endhog. Dibungkus, Bu.
+      - Sega pecel siji nganggo endhog, dibungkus, Bu.
+      - Sega pecel siji, nganggo endhog, dibungkus, Bu.
+      - Bu, sega pecel siji, nganggo endhog. Dibungkus.
+      - Sego pecel siji, nganggo endhog, Bu. Dibungkus.
+    explain:
+      ar_eg: nganggo endhog = بالبيض، dibungkus = تيك أواي.
+      ar: nganggo endhog = مع بيضة، وdibungkus = سفري.
+      en: nganggo endhog = with egg, dibungkus = to take away.
+    words: [sega, nganggo, endhog, dibungkus]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: أنا مش بحب الحراق، الصوص شوية صغيرين بس.
+      ar: لا أحبّ الطعام الحارّ، الصوص قليلًا فقط.
+      en: I don't like spicy food, just a little sauce.
+    answer: Aku ora seneng pedhes, sambele sithik wae.
+    distractors: [legi, rada]
+    words: [seneng, pedhes, sithik]
+  - id: e09
+    type: speaking
+    text: Es teh legi karo teh anget, regane padha, Bu?
+    meaning:
+      ar_eg: الشاي الساقع بالسكر والشاي السخن، سعرهم زي بعض يا طنط؟
+      ar: الشاي المثلّج المحلّى والشاي الدافئ، هل سعرهما واحد يا سيدتي؟
+      en: Are sweet iced tea and warm tea the same price, ma'am?
+    words: [legi, teh anget, rega, padha]
+dialogue:
+  title: Maca menu
+  lines:
+    - speaker: Sari
+      text: Mohamed, menune iki. Pesen apa?
+      ar_eg: يا محمد، المنيو أهو. هتطلب إيه؟
+      ar: يا محمد، هذه القائمة. ماذا تطلب؟
+      en: Mohamed, here's the menu. What are you having?
+    - speaker: Mohamed
+      text: Sega pecel siji, nganggo endhog. Sambele sithik wae, Bu.
+      ar_eg: رز بيكل واحد بالبيض. الصوص شوية بس يا طنط.
+      ar: أرز بيتشيل واحد مع بيضة. الصوص قليلًا فقط يا سيدتي.
+      en: One pecel rice with egg. Just a little sauce, ma'am.
+    - speaker: Bu Darmi
+      text: Ngombe apa, Mas?
+      ar_eg: تشرب إيه يا أستاذ؟
+      ar: ماذا تشرب يا أخي؟
+      en: What will you drink, Mas?
+    - speaker: Mohamed
+      text: Es teh legi, Bu. Patang ewu, to?
+      ar_eg: شاي ساقع بالسكر يا طنط. بأربعة آلاف، صح؟
+      ar: شاي مثلّج محلّى يا سيدتي. بأربعة آلاف، أليس كذلك؟
+      en: Sweet iced tea, ma'am. That's four thousand, right?
+    - speaker: Bu Darmi
+      text: Iya, Mas. Mangan kene apa dibungkus?
+      ar_eg: أيوه يا أستاذ. هتاكل هنا ولا تيك أواي؟
+      ar: نعم يا أخي. تأكل هنا أم سفري؟
+      en: Yes, Mas. Eating in or taking away?
+    - speaker: Mohamed
+      text: Mangan kene, Bu. Regane padha, to?
+      ar_eg: هاكل هنا يا طنط. السعر واحد، صح؟
+      ar: سآكل هنا يا سيدتي. السعر نفسه، أليس كذلك؟
+      en: Eating in, ma'am. Same price, right?
+new_words: []
+review:
+  status: draft
+  verified: false

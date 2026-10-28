@@ -1,184 +1,190 @@
 schema: kabar.lesson/v1
 id: j1.u05.l06
 language: jv
-title: Warung neng Parangtritis
+title: Seneng kabeh!
 can_do:
-  ar_eg: تقرا لوحة وارونج على الشط بالجاوي وتطلب.
-  ar: أن تقرأ لوحة مطعم شعبي على الشاطئ بالجاوية وتطلب.
-  en: Read a beach warung's sign in Javanese and order.
+  ar_eg: تقول إنك مبسوط وإن كله حلو، وتقول «جديد» و«زي».
+  ar: أن تقول إنك سعيد وإن كل شيء جميل، وتقول «جديد» و«مثل».
+  en: Say you're happy and everything's great, and say "new" and "like".
 slides:
-  - title: Papan warung
+  - title: Neng Parangtritis
     body:
       ar_eg: |
-        على الرملة، لوحة خشب مكتوبة بخط اليد:
-        WARUNG MBAK SRI
-        - Iwak bakar … 25rb
-        - Jagung bakar … 10rb
-        - Degan … 12rb
-        - Banyu putih … 5rb
-        «Ora ana wifi, ngobrola wae!» = مفيش واي فاي، اتكلموا مع بعض وخلاص!
-        rb = ribu (ألف روبية). وفي الكلام هتسمع: «Degane pira, Mbak?».
+        - **seneng** = مبسوط / بيحب (senang, suka): Aku seneng neng pantai = مبسوط على البحر.
+        - **kabeh** = كله / كلهم (semua): kancaku kabeh = صحابي كلهم.
+        - **anyar** = جديد (baru): motor anyar = موتوسيكل جديد.
+        - **kaya** = زي (seperti)، وفي الشات بتتكتب koyo: kaya wong Jogja = زي أهل يوجيا.
       ar: |
-        على الرمل لوحة خشبية بخط اليد:
-        WARUNG MBAK SRI
-        - Iwak bakar … 25rb
-        - Jagung bakar … 10rb
-        - Degan … 12rb
-        - Banyu putih … 5rb
-        «Ora ana wifi, ngobrola wae!» = لا يوجد واي فاي، تحادثوا فحسب!
-        rb = ribu (ألف روبية). وفي الكلام: «Degane pira, Mbak?».
+        - **seneng** = سعيد / يحب (senang, suka): Aku seneng neng pantai = أنا سعيد على الشاطئ.
+        - **kabeh** = الكل / جميعًا (semua): kancaku kabeh = أصدقائي كلهم.
+        - **anyar** = جديد (baru): motor anyar = دراجة نارية جديدة.
+        - **kaya** = مثل (seperti)، وفي الدردشة تُكتب koyo: kaya wong Jogja = مثل أهل يوجياكرتا.
       en: |
-        On the sand, a hand-painted wooden board:
-        WARUNG MBAK SRI
-        - Iwak bakar … 25rb
-        - Jagung bakar … 10rb
-        - Degan … 12rb
-        - Banyu putih … 5rb
-        "Ora ana wifi, ngobrola wae!" = No wifi, just talk to each other!
-        rb = ribu (thousand rupiah). Out loud: "Degane pira, Mbak?".
-    grammar: jv.particle.basic
+        - **seneng** = happy, to like (senang, suka): Aku seneng neng pantai = I love it at the beach.
+        - **kabeh** = all, everyone (semua): kancaku kabeh = all my friends.
+        - **anyar** = new (baru): motor anyar = a new motorbike.
+        - **kaya** = like, as (seperti); chats write koyo: kaya wong Jogja = like a Jogja local.
     examples:
-      - text: Ora ana wifi, ngobrola wae!
-        ar_eg: مفيش واي فاي، اتكلموا مع بعض وخلاص!
-        ar: لا يوجد واي فاي، تحادثوا فحسب!
-        en: No wifi, just talk!
-      - text: Degane pira, Mbak?
-        ar_eg: جوز الهند بكام يا آنسة؟
-        ar: بكم جوز الهند يا آنسة؟
-        en: How much is the coconut?
-      - text: Iwak bakare panas, ati-ati.
-        ar_eg: السمك المشوي سخن، خلي بالك.
-        ar: السمك المشوي ساخن، انتبه.
-        en: The grilled fish is hot, careful.
+      - text: Aku seneng neng pantai.
+        ar_eg: أنا مبسوط على البحر.
+        ar: أنا سعيد على الشاطئ.
+        en: I love it at the beach.
+      - text: Kabeh kancaku seneng degan.
+        ar_eg: صحابي كلهم بيحبوا جوز الهند الأخضر.
+        ar: كل أصدقائي يحبون جوز الهند الأخضر.
+        en: All my friends love young coconut.
+      - text: Kowe ngomong kaya wong Jogja!
+        ar_eg: إنت بتتكلم زي أهل يوجيا!
+        ar: أنت تتكلم مثل أهل يوجياكرتا!
+        en: You talk like a Jogja local!
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من اللوحة) جوز الهند بكام؟
-      ar: (من اللوحة) بكم جوز الهند؟
-      en: (From the sign) How much is a coconut?
-    options: [12rb, 25rb, 5rb]
-    answer: 0
-    explain:
-      ar_eg: Degan … 12rb = اتناشر ألف روبية.
-      ar: Degan … 12rb = اثنا عشر ألف روبية.
-      en: Degan … 12rb = twelve thousand rupiah.
-    words: [degan]
+    type: match_pairs
+    pairs:
+      - text: kaya
+        ar_eg: زي
+        ar: مثل
+        en: like, as
+      - text: anyar
+        ar_eg: جديد
+        ar: جديد
+        en: new
+      - text: seneng
+        ar_eg: مبسوط / بيحب
+        ar: سعيد / يحب
+        en: happy, like
+      - text: kabeh
+        ar_eg: كله / كلهم
+        ar: الكل
+        en: all
+    words: [kaya, anyar, seneng, kabeh]
   - id: e02
-    type: multiple_choice
-    question: Ora ana wifi, ngobrola wae!
-    question_meaning:
-      ar_eg: اللوحة بتقول إيه؟
-      ar: ماذا تقول اللوحة؟
-      en: What does the sign say?
-    options: [مفيش واي فاي، اتكلموا مع بعض, الواي فاي ببلاش, الواي فاي بعدين]
-    answer: 0
-    explain:
-      ar_eg: ora ana = مفيش، وwae = بس / وخلاص.
-      ar: ora ana = لا يوجد، وwae = فحسب.
-      en: ora ana = there isn't; wae = just.
-    words: [ora ana, wae]
-  - id: e03
     type: listen
-    text: Iwak bakar karo banyu putih, Mbak.
+    text: Aku seneng neng pantai.
     question:
-      ar_eg: طلب إيه؟
-      ar: ماذا طلب؟
-      en: What did he order?
-    options: [سمك مشوي وميه, درة وجوز هند, سمك بس]
+      ar_eg: هو حاسس بإيه؟
+      ar: بماذا يشعر؟
+      en: How does he feel?
+    options: [مبسوط على البحر, زهقان من البحر, جعان على البحر]
     answer: 0
     meaning:
-      ar_eg: سمك مشوي وميه سادة يا آنسة.
-      ar: سمك مشوي وماء عادي يا آنسة.
-      en: Grilled fish and plain water, please.
-    words: [iwak, banyu]
+      ar_eg: أنا مبسوط على البحر.
+      ar: أنا سعيد على الشاطئ.
+      en: I love it at the beach.
+    words: [seneng]
+  - id: e03
+    type: fill_blank
+    sentence: Motorku ___, Mas!
+    meaning:
+      ar_eg: الموتوسيكل بتاعي ___ يا ماس!
+      ar: دراجتي ___ يا أخي!
+      en: My motorbike is ___, Mas!
+    options: [anyar, kaya, kabeh]
+    answers: [anyar]
+    words: [anyar, kaya, kabeh]
   - id: e04
     type: fill_blank
-    sentence: Degane ___, Mbak?
+    sentence: Kowe ngomong ___ wong Jogja.
     meaning:
-      ar_eg: جوز الهند بكام يا آنسة؟
-      ar: بكم جوز الهند يا آنسة؟
-      en: How much is the coconut?
-    options: [pira, sapa, ngendi]
-    answers: [pira]
-    words: [degan, pira]
+      ar_eg: إنت بتتكلم ___ أهل يوجيا.
+      ar: أنت تتكلم ___ أهل يوجياكرتا.
+      en: You talk ___ a Jogja local.
+    options: [kaya, seneng, anyar]
+    answers: [kaya]
+    words: [kaya, seneng, anyar]
   - id: e05
-    type: fill_blank
-    sentence: Iwak bakare ___, ati-ati!
-    meaning:
-      ar_eg: السمك المشوي سخن، خلي بالك!
-      ar: السمك المشوي ساخن، انتبه!
-      en: The grilled fish is hot, careful!
-    options: [panas, adem, sumuk]
-    answers: [panas]
-    words: [iwak, panas, adem, sumuk]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «كله / كلهم»؟
+      ar: أيّ كلمة تعني «الكل»؟
+      en: Which word means "all"?
+    options: [kabeh, kaya, anyar]
+    answer: 0
+    explain:
+      ar_eg: kabeh = كله. kaya = زي، وanyar = جديد.
+      ar: kabeh = الكل، أما kaya فمثل وanyar جديد.
+      en: kabeh = all. kaya = like, anyar = new.
+    words: [kabeh, kaya, anyar]
   - id: e06
     type: build_sentence
     source:
-      ar_eg: أنا عايز درة مشوية بس.
-      ar: أريد ذرة مشوية فقط.
-      en: I only want grilled corn.
-    answer: Aku mung arep jagung bakar.
-    distractors: [degan, kakehan]
-    words: [mung, jagung bakar]
+      ar_eg: صحابي كلهم مبسوطين.
+      ar: أصدقائي كلهم سعداء.
+      en: All my friends are happy.
+    answer: Kancaku kabeh seneng.
+    distractors: [anyar, kaya]
+    words: [kabeh, seneng]
   - id: e07
     type: translate
     direction: from_target
-    source_text: Neng warung iki ora ana wifi, mung ombak lan layangan.
+    source_text: Ombake gedhe kaya omah!
     answers_meaning:
-      ar_eg: [في الوارونج ده مفيش واي فاي، فيه بس موج وطيارات ورق, الوارونج ده مفيهوش واي فاي، بس موج وطيارات]
-      ar: [لا يوجد في هذا المطعم واي فاي، فقط موج وطائرات ورقية, ليس في هذا المطعم واي فاي، بل موج وطائرات ورقية فحسب]
-      en: ['This warung has no wifi, only waves and kites', 'No wifi at this warung, just waves and kites']
-    words: [ora ana, mung, ombak, layangan]
+      ar_eg: [الموج كبير زي البيت, الموج قد البيت]
+      ar: [الموج كبير مثل البيت, الأمواج بحجم البيت]
+      en: [The waves are as big as a house, The waves are big like a house]
+    words: [kaya]
   - id: e08
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الشاي طعمه سكر زيادة. تقول لمبك سري إيه بلطف؟
-      ar: الشاي فيه سكر كثير. ماذا تقول لمبك سري بلطف؟
-      en: The tea has too much sugar. What do you tell Mbak Sri, kindly?
-    options: ['Ngapura, Mbak, gulane kakehan.', 'Gulane adem, Mbak.', 'Gulane ora ana, Mbak.']
-    answer: 0
-    explain:
-      ar_eg: kakehan = زيادة عن اللزوم، وngapura بيليّن الكلام.
-      ar: kakehan = أكثر من اللازم، وngapura يلطّف العبارة.
-      en: kakehan = too much; ngapura softens it.
-    words: [ngapura, kakehan, adem]
-  - id: e09
     type: speaking
-    text: Mbak, iwak bakar karo degan. Ora kakehan gula, ya.
+    text: Seneng banget, kabeh apik!
     meaning:
-      ar_eg: يا آنسة، سمك مشوي وجوز هند. ومن غير سكر كتير، ماشي؟
-      ar: يا آنسة، سمك مشوي وجوز هند، دون سكر كثير، حسنًا؟
-      en: Grilled fish and a coconut, please. Not too much sugar, OK?
-    words: [iwak, degan, kakehan]
+      ar_eg: مبسوط جدًا، كله حلو!
+      ar: سعيد جدًا، كل شيء جميل!
+      en: So happy, everything's great!
+    words: [seneng, kabeh]
 dialogue:
-  title: Warung Mbak Sri
   lines:
-    - speaker: Mbak Sri
-      text: Mangga, Mas. Arep apa?
-      ar_eg: اتفضل يا كابتن. تحب إيه؟
-      ar: تفضل يا أخي. ماذا تريد؟
-      en: Welcome. What would you like?
+    - speaker: Mas Yudha
+      text: Mohamed, seneng neng pantai?
+      ar_eg: يا محمد، مبسوط على البحر؟
+      ar: يا محمد، هل أنت سعيد على الشاطئ؟
+      en: Mohamed, enjoying the beach?
     - speaker: Mohamed
-      text: Degane pira, Mbak?
-      ar_eg: جوز الهند بكام يا آنسة؟
-      ar: بكم جوز الهند يا آنسة؟
-      en: How much is a coconut?
-    - speaker: Mbak Sri
-      text: Rolas ewu. Iwak bakare ya enak lho.
-      ar_eg: اتناشر ألف. والسمك المشوي حلو على فكرة.
-      ar: اثنا عشر ألفًا. والسمك المشوي لذيذ أيضًا.
-      en: Twelve thousand. The grilled fish is good too, you know.
+      text: 'Seneng banget, Mas! Kabeh apik: pasir, ombak, layangan.'
+      ar_eg: 'مبسوط جدًا يا ماس! كله حلو: الرملة والموج والطيارات الورق.'
+      ar: 'سعيد جدًا يا أخي! كل شيء جميل: الرمل والموج والطائرات الورقية.'
+      en: 'Loving it, Mas! Everything''s great: the sand, the waves, the kites.'
+    - speaker: Mas Yudha
+      text: Motormu anyar, ta?
+      ar_eg: الموتوسيكل بتاعك جديد، مش كده؟
+      ar: دراجتك جديدة، أليس كذلك؟
+      en: Your motorbike's new, isn't it?
     - speaker: Mohamed
-      text: Iwak bakar karo degan, ora kakehan gula, ya.
-      ar_eg: سمك مشوي وجوز هند، ومن غير سكر كتير.
-      ar: سمك مشوي وجوز هند، دون سكر كثير.
-      en: Grilled fish and a coconut, not too sweet.
-    - speaker: Mbak Sri
-      text: Siap. Iwake panas, ati-ati!
-      ar_eg: حاضر. السمك سخن، خلي بالك!
-      ar: حسنًا. السمك ساخن، انتبه!
-      en: Coming up. The fish is hot, careful!
+      text: Ora, Mas. Iku motore kancaku.
+      ar_eg: لا يا ماس. ده موتوسيكل صاحبي.
+      ar: لا يا أخي. تلك دراجة صديقي.
+      en: No, Mas. That's my friend's bike.
+    - speaker: Mas Yudha
+      text: Wah, kowe ngomong kaya wong Jogja!
+      ar_eg: واو، إنت بتتكلم زي أهل يوجيا!
+      ar: رائع، أنت تتكلم مثل أهل يوجياكرتا!
+      en: Wow, you talk like a Jogja local!
+    - speaker: Mohamed
+      text: Hehe, matur nuwun, Mas!
+      ar_eg: هههه، شكرًا يا ماس!
+      ar: هه، شكرًا يا أخي!
+      en: Hehe, thanks, Mas!
+new_words:
+  - word: seneng
+    pos: adjective
+    ar_eg: مبسوط / بيحب (senang, suka)
+    ar: سعيد / يحب (senang, suka)
+    en: happy, to like (senang, suka)
+  - word: kabeh
+    pos: pronoun
+    ar_eg: كله / كلهم (semua)
+    ar: الكل / جميعًا (semua)
+    en: all, everyone (semua)
+  - word: anyar
+    pos: adjective
+    ar_eg: جديد (baru)
+    ar: جديد (baru)
+    en: new (baru)
+  - word: kaya
+    pos: preposition
+    ar_eg: زي (seperti)؛ في الشات koyo (≠ إندونيسي kaya = غني)
+    ar: مثل (seperti)؛ وفي الدردشة koyo (≠ الإندونيسية kaya = غني)
+    en: like, as (seperti); chat koyo (≠ Indonesian kaya "rich")
+    false_friend: kaya
 review:
   status: draft
   verified: false

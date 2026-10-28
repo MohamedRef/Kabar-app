@@ -47,6 +47,7 @@ jobs:
           fi
       # Advisory (#138): share of words in each Sinetron episode, Radio script
       # and lesson dialogue that the curriculum hasn't taught by that point.
+      # Dialogues ratchet against content/freq/dialogue-over.tsv (#371).
       - name: Reading coverage (advisory)
         run: |
           { echo '```'; cargo run -q -p kabar-tools -- coverage --warn; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"

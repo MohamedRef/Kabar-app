@@ -44,6 +44,7 @@ A release is cut only when every gate in this table is green.
 | Popover under 100 ms on the S24 Ultra; smooth scrolling on the Tab S11 | **devices** |
 | A shared WhatsApp screenshot reads with popovers in Arabic | **devices** |
 | The cost dashboard shows $0 with paid engines off | **devices** |
+| Android backup stays small and keeps progress: `adb shell bmgr backupnow app.kabar`, then `adb shell dumpsys backup` shows Kabar well under 25 MB; after a restore, progress is back and Cloud asks to sign in again (#370) | **devices** |
 
 ## 3. Versions and updates
 

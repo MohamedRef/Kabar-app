@@ -1,0 +1,222 @@
+schema: kabar.lesson/v1
+id: j2.u05.l09
+language: jv
+title: Layang saka Ibu
+can_do:
+  ar_eg: تقرا ورقة مليانة طلبات من ماما وتنفّذها.
+  ar: أن تقرأ رسالة قصيرة مليئة بالطلبات من الأم وتنفّذها.
+  en: Read a note full of requests and act on it.
+slides:
+  - title: Layang neng meja
+    grammar: jv.imperative.ngoko
+    body:
+      ar_eg: |
+        Sari صحيت لقت البيت فاضي، وعلى الترابيزة ورقة صغيرة (layang) من مامتها Bu Rahayu. الورقة كلها أوامر لطيفة:
+        - panganen = كُله (‎-en: فيه مفعول).
+        - rewangi = ساعده (فعل ‎-i بيفضل زي ما هو).
+        - aja lali = ما تنساش، وبعدها الفعل: aja lali nyirami kembang.
+        وشايف ya في الآخر؟ هي اللي بتخلّي الأمر حنيّن.
+      ar: |
+        استيقظت Sari فوجدت البيت خاليًا، وعلى الطاولة رسالة صغيرة (layang) من أمها Bu Rahayu. الرسالة كلها أوامر لطيفة:
+        - panganen = كُلْه (‎-en: مع مفعول به).
+        - rewangi = ساعِدْه (أفعال ‎-i تبقى كما هي).
+        - aja lali = لا تنسَ، ثم الفعل: aja lali nyirami kembang.
+        وهل لاحظت ya في آخرها؟ هي التي تجعل الأمر رقيقًا.
+      en: |
+        Sari wakes up to an empty house and a little note (layang) on the table from her mum, Bu Rahayu. It's all gentle commands:
+        - panganen = eat it (-en: there's an object).
+        - rewangi = help (him) (-i verbs stay as they are).
+        - aja lali = don't forget, then the verb: aja lali nyirami kembang.
+        Notice the ya at the end? That's what makes a command kind.
+    examples:
+      - text: Sari, Ibu neng pasar karo Bapak. Sotone wis tak gawe, panganen, ya.
+        ar_eg: يا ساري، ماما في السوق مع بابا. الشوربة (سوتو) عملتها، كُليها.
+        ar: يا ساري، أمك في السوق مع أبيك. أعددتُ السوتو، كُليه.
+        en: Sari, Mum's at the market with Dad. I've made the soto, eat it, OK?
+      - text: Ibu mulih jam sewelas. Rewangi Bayu sinau, ya.
+        ar_eg: ماما راجعة الساعة حداشر. ساعدي بايو في المذاكرة.
+        ar: ستعود أمك الساعة الحادية عشرة. ساعدي بايو في دراسته.
+        en: Mum will be home at eleven. Help Bayu study, OK?
+      - text: Aja lali nyirami kembang lan mateni lampu, ya! — Ibu
+        ar_eg: ما تنسيش تسقي الورد وتطفي النور! — ماما
+        ar: لا تنسي سقي الزهور وإطفاء النور! — أمك
+        en: Don't forget to water the flowers and turn off the light! — Mum
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Sari, Ibu neng pasar karo Bapak.
+    question_meaning:
+      ar_eg: ماما فين دلوقتي؟
+      ar: أين الأم الآن؟
+      en: Where is Mum now?
+    options: ["Neng omah.", "Neng pasar.", "Neng stasiun."]
+    answer: 1
+    explain:
+      ar_eg: Ibu neng pasar = ماما في السوق، ومعاها بابا (karo Bapak).
+      ar: Ibu neng pasar = الأم في السوق، ومعها الأب (karo Bapak).
+      en: Ibu neng pasar = Mum's at the market, with Dad (karo Bapak).
+  - id: e02
+    type: multiple_choice
+    question: Sotone wis tak gawe, panganen, ya.
+    question_meaning:
+      ar_eg: Sari المفروض تعمل إيه في السوتو؟
+      ar: ماذا يجب أن تفعل Sari بالسوتو؟
+      en: What should Sari do with the soto?
+    options: ["Panganen.", "Tukokna.", "Enteni."]
+    answer: 0
+    explain:
+      ar_eg: panganen = كُله. ماما عملته خلاص (wis tak gawe)، فمش محتاجة تشتريه.
+      ar: panganen = كُلْه، فقد أعدّته الأم (wis tak gawe) ولا حاجة لشرائه.
+      en: panganen = eat it. Mum has already made it (wis tak gawe), so no need to buy it.
+    words: [panganen, gawe]
+  - id: e03
+    type: multiple_choice
+    question: Ibu mulih jam sewelas.
+    question_meaning:
+      ar_eg: ماما راجعة إمتى؟
+      ar: متى تعود الأم؟
+      en: When will Mum be back?
+    options: ["Jam sepuluh.", "Jam rolas.", "Jam sewelas."]
+    answer: 2
+    explain:
+      ar_eg: sewelas = حداشر (١١). rolas = اتناشر.
+      ar: sewelas = الحادية عشرة (١١)، أما rolas فهي ١٢.
+      en: sewelas = eleven (11). rolas = twelve.
+    words: [mulih, jam, sewelas]
+  - id: e04
+    type: listen
+    text: Aja lali nyirami kembang lan mateni lampu, ya!
+    question:
+      ar_eg: أنهي شغلانتين ما ينفعش Sari تنساهم؟
+      ar: ما المهمّتان اللتان يجب ألّا تنساهما Sari؟
+      en: Which two jobs mustn't Sari forget?
+    options: ["Nyirami kembang lan mateni lampu.", "Masak lan nyapu.", "Tuku gula lan masak."]
+    answer: 0
+    meaning:
+      ar_eg: ما تنسيش تسقي الورد وتطفي النور!
+      ar: لا تنسي سقي الزهور وإطفاء النور!
+      en: Don't forget to water the flowers and turn off the light!
+    words: [aja, lali, nyirami, mateni]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: panganen
+        ar_eg: كُله!
+        ar: كُلْه!
+        en: eat it!
+      - text: rewangi
+        ar_eg: ساعده!
+        ar: ساعِدْه!
+        en: help (him)!
+      - text: aja lali
+        ar_eg: ما تنساش
+        ar: لا تنسَ
+        en: don't forget
+      - text: nyirami kembang
+        ar_eg: يسقي الورد
+        ar: يسقي الزهور
+        en: water the flowers
+      - text: mateni lampu
+        ar_eg: يطفي النور
+        ar: يطفئ النور
+        en: turn off the light
+    words: [panganen, rewangi, aja, lali, nyirami, kembang, mateni, lampu]
+  - id: e06
+    type: fill_blank
+    sentence: ___ Bayu sinau, ya.
+    meaning:
+      ar_eg: ساعدي بايو في المذاكرة.
+      ar: ساعدي بايو في دراسته.
+      en: Help Bayu study, OK?
+    options: ["Ngrewangi", "Rewangi", "Rewanga"]
+    answers: ["Rewangi"]
+    explain:
+      ar_eg: "الأمر من فعل ‎-i بيفضل ‎-i ومن غير N-: Rewangi! زي Enteni!"
+      ar: "صيغة الأمر من أفعال ‎-i تبقى بـ‎-i ودون N-: Rewangi! مثل Enteni!"
+      en: "An -i verb keeps -i in a command, without N-: Rewangi!, like Enteni!"
+    words: [rewangi]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Sotone wis tak gawe, panganen, ya.
+    answers_meaning:
+      ar_eg: ["السوتو عملته، كُليه.", "عملت السوتو، كُليه", "السوتو جاهز، كُليه ماشي؟", "عملت الشوربة، كليها"]
+      ar: ["أعددت السوتو، كُليه.", "أعددت السوتو فكُليه", "السوتو جاهز، كُليه"]
+      en: ["I've made the soto, eat it, OK?", "I've made the soto, eat it.", "The soto's ready, eat it, OK?", "I made the soto, eat it"]
+    explain:
+      ar_eg: wis tak gawe = عملته خلاص (tak + gawe)، وpanganen = كُله.
+      ar: wis tak gawe = قد أعددته (tak + gawe)، وpanganen = كُلْه.
+      en: wis tak gawe = I've made it (tak + gawe), panganen = eat it.
+    words: [panganen, gawe]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: "Sari بترد على ماما: «حاضر يا ماما. الورد سقيته.»"
+      ar: "تردّ Sari على أمها: «حسنًا يا أمي. سقيت الزهور.»"
+      en: "Sari replies to Mum: \"OK, Mum. I've watered the flowers.\""
+    answer: Iya, Bu. Kembange wis tak sirami.
+    distractors: [nyirami, lali]
+    explain:
+      ar_eg: "بعد tak بيرجع الأصل: siram + ‎-i = tak sirami، مش tak nyirami."
+      ar: "بعد tak يعود الأصل: siram + ‎-i = tak sirami، لا tak nyirami."
+      en: "After tak the base comes back: siram + -i = tak sirami, not tak nyirami."
+    words: [kembang, nyirami]
+  - id: e09
+    type: speaking
+    text: Aja lali mateni lampu, ya!
+    meaning:
+      ar_eg: ما تنساش تطفي النور!
+      ar: لا تنسَ إطفاء النور!
+      en: Don't forget to turn off the light!
+    words: [aja, lali, mateni]
+  - id: e10
+    type: multiple_choice
+    question: Sotone sapa sing gawe?
+    question_meaning:
+      ar_eg: مين اللي عمل السوتو؟
+      ar: من صنع السوتو؟
+      en: Who made the soto?
+    options: [Ibu., Sari., Bayu.]
+    answer: 0
+    explain:
+      ar_eg: Sotone wis tak gawe = السوتو أنا عملته، وده كلام ماما في الورقة. gawe = buat.
+      ar: Sotone wis tak gawe = السوتو صنعتُه، وهذا كلام الأم في الرسالة. gawe = buat.
+      en: Sotone wis tak gawe = I've made the soto, from Mum's note. gawe = buat.
+    words: [gawe]
+dialogue:
+  title: Telpon karo Ibu
+  lines:
+    - speaker: Sari
+      text: Bu, aku wis maca layange Ibu.
+      ar_eg: يا ماما، قريت الورقة بتاعتك.
+      ar: يا أمي، قرأت رسالتك.
+      en: Mum, I've read your note.
+    - speaker: Bu Rahayu
+      text: Wis mangan, Nduk?
+      ar_eg: كلتي يا حبيبتي؟
+      ar: هل أكلتِ يا ابنتي؟
+      en: Have you eaten, love?
+    - speaker: Sari
+      text: Wis, Bu. Sotone enak tenan! Kembange wis tak sirami.
+      ar_eg: أيوه يا ماما. السوتو حلو أوي! والورد سقيته.
+      ar: نعم يا أمي. السوتو لذيذ جدًا! وسقيت الزهور.
+      en: Yes, Mum. The soto is really good! I've watered the flowers.
+    - speaker: Bu Rahayu
+      text: Apik. Lampune piye?
+      ar_eg: حلو. والنور؟
+      ar: جيد. وماذا عن النور؟
+      en: Good. And the light?
+    - speaker: Sari
+      text: Wis tak pateni, Bu. Saiki aku ngrewangi Bayu sinau.
+      ar_eg: طفيته يا ماما. ودلوقتي بساعد بايو يذاكر.
+      ar: أطفأته يا أمي. والآن أساعد بايو في دراسته.
+      en: I've turned it off, Mum. Now I'm helping Bayu study.
+    - speaker: Bu Rahayu
+      text: Matur nuwun, Nduk. Enteni Ibu neng omah, ya!
+      ar_eg: متشكرة يا حبيبتي. استنيني في البيت!
+      ar: شكرًا يا ابنتي. انتظريني في البيت!
+      en: Thank you, love. Wait for me at home, OK?
+new_words: []
+review:
+  status: draft
+  verified: false

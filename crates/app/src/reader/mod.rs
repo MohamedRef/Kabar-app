@@ -784,7 +784,7 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
                                         move |_| st.load(&db, text.clone())
                                     },
                                     span { class: "pill", "{kind_icon(text.kind)}" }
-                                    bdi { lang: "id", " {text.title}" }
+                                    bdi { lang: "id", title: "{text.title}", "{text.title}" }
                                 }
                                 button {
                                     class: "ghost",
