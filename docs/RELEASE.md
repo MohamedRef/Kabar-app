@@ -133,6 +133,7 @@ goes out at the next run.
 ```
 
 A file holding `[]` says there's nothing to tell (CI, refactors, docs).
+A PR that only changes `README.md` (the daily refresh) needs no file.
 When a feed is built (CI for `preview`, `just publish-update` for releases),
 `kabar-tools update manifest --previous <current update.json> --changes`
 gathers the files added since the commit the feed carries now, one pull

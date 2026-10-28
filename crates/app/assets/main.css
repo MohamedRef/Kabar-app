@@ -246,9 +246,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   padding: 1.5rem;
   text-align: center;
 }
-.welcome .card { max-inline-size: 34rem; }
+.welcome .card { max-inline-size: 34rem; overflow: clip; }
+.welcome .row { justify-content: center; }
 /* The hero (prompt 7): dawn over the terraces, "Apa kabar?" in its empty sky. */
-.welcome .hero { position: relative; margin: -1.25rem -1.25rem 1rem; border-start-start-radius: var(--radius); border-start-end-radius: var(--radius); overflow: hidden; }
+.welcome .hero { position: relative; margin: calc(-1 * var(--card-pad)) calc(-1 * var(--card-pad)) 1rem; border-start-start-radius: var(--radius); border-start-end-radius: var(--radius); overflow: hidden; }
 .welcome .hero img { display: block; inline-size: 100%; block-size: 16rem; object-fit: cover; object-position: center 0%; }
 .welcome .hero .tall { display: none; }
 .app[data-width="compact"] .welcome .hero .wide { display: none; }
@@ -418,6 +419,25 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 }
 .brand-small { font-weight: 700; color: var(--indigo); font-size: 1.1rem; }
 .gear-button { border-color: transparent; background: transparent; display: inline-flex; align-items: center; justify-content: center; block-size: var(--tap); color: var(--muted); }
+/* Morphe's header: the bar blends into the page, the title sits on the
+   start side and the gear and back arrow are round 40dp buttons with a
+   faint translucent fill, all centred on one row. */
+.top-bar {
+  min-block-size: calc(2.5rem + 0.7rem);
+  padding-inline: 1rem 0.75rem;
+  background: var(--bg);
+  border-block-end-color: transparent;
+}
+.top-bar .brand-small { font-size: 1.25rem; line-height: 1.25; }
+.top-bar .gear-button {
+  inline-size: 2.5rem; block-size: 2.5rem; min-inline-size: 0; min-block-size: 0; padding: 0; flex: none;
+  border: 1px solid var(--line-soft); border-radius: 50%;
+  background: color-mix(in srgb, var(--text) 7%, transparent);
+  color: var(--text);
+}
+.top-bar .gear-button svg { inline-size: 1.375rem; block-size: 1.375rem; }
+.top-bar .gear-button:hover, .top-bar .gear-button:active { background: var(--surface-2); color: var(--indigo); }
+.top-bar .top-title { gap: var(--sp-2); }
 
 /* The phone's More tab and sheet; the top bar's back arrow and title */
 .nav-more { display: none; }
@@ -445,12 +465,16 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .more-sub { grid-column: 2; font-size: 0.82rem; color: var(--muted); }
 .top-title { display: flex; align-items: center; gap: 0.25rem; min-inline-size: 0; }
 .top-title h1 { margin: 0; font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-/* Rail labels stay on one line (long ones are shortened or ellipsed). */
+/* Rail labels: long ones get a short form, and any label may take two lines. */
 .nav-label-short { display: none; }
 .app:is([data-width="medium"], [data-nav="slim"]:not([data-width="compact"])) .nav-label-full { display: none; }
 .app:is([data-width="medium"], [data-nav="slim"]:not([data-width="compact"])) .nav-label-short { display: inline; }
 .app[data-width="medium"] .nav-label,
-.app[data-nav="slim"] .nav-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-inline-size: 100%; }
+.app[data-nav="slim"] .nav-label {
+  /* Two short lines beat one clipped one (#434). */
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2;
+  overflow: hidden; overflow-wrap: anywhere; text-align: center; max-inline-size: 100%;
+}
 .app[data-width="medium"] .nav-item { min-inline-size: 0; }
 /* The rail is narrow: spend its width on the label, not on button padding,
    so "Kak Nur" fits instead of becoming "…k Nur". */
