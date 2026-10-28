@@ -346,6 +346,38 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 }
 .app[data-width="compact"] .nav-item { flex-direction: column; gap: 0.1rem; font-size: 0.72rem; padding-inline: 0.4rem; }
 .app[data-width="compact"] .nav-item.secondary { display: none; }
+/* The bar floats as a pill above the page edge, after Morphe Manager's
+   look (ideas only): a hairline, a soft lift, and a pill behind the active
+   icon instead of a filled tab. Tabs share the width and never push the bar
+   past a 360dp screen. */
+.app[data-width="compact"] .nav {
+  inset-inline: var(--sp-3);
+  inset-block-end: calc(var(--sp-2) + env(safe-area-inset-bottom));
+  padding: var(--sp-1);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-raised);
+}
+.app[data-width="compact"] .nav-item {
+  flex: 1 1 0; min-inline-size: 0;
+  min-block-size: var(--tap-lg);
+  justify-content: center;
+  padding-inline: 0;
+  font-size: max(0.6875rem, 11px);
+  border-radius: var(--radius-pill);
+}
+.app[data-width="compact"] .nav-item[aria-current="page"] { background: transparent; }
+.app[data-width="compact"] .nav-item .nav-icon {
+  display: grid; place-items: center;
+  inline-size: min(3rem, 100%); block-size: 1.75rem;
+  border-radius: var(--radius-pill);
+  transition: background-color var(--dur) var(--ease);
+}
+.app[data-width="compact"] .nav-item[aria-current="page"] .nav-icon { background: color-mix(in srgb, var(--indigo) 14%, transparent); }
+.app[data-width="compact"] .nav-item :is(.nav-label, .nav-label-full) {
+  max-inline-size: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
 
 /* medium: rail */
 .app[data-width="medium"] .shell { grid-template-columns: 5.5rem 1fr; }
@@ -402,6 +434,11 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   text-align: start; border: 0; border-radius: 12px; background: transparent; padding: 0.7rem 0.5rem;
 }
 .more-list button[aria-current="page"] { background: var(--surface-2); color: var(--indigo); }
+/* One grouped block of rows with hairline dividers. */
+.more-list { border: 1px solid var(--line-soft); border-radius: var(--radius-lg); overflow: hidden; }
+.more-list li + li { border-block-start: 1px solid var(--line-soft); }
+.more-list button { border-radius: 0; min-block-size: var(--tap-lg); padding-inline: var(--sp-3); }
+.more-sheet { border-start-start-radius: var(--radius-lg); border-start-end-radius: var(--radius-lg); }
 .more-title { font-weight: 600; }
 .more-sub { grid-column: 2; font-size: 0.82rem; color: var(--muted); }
 .top-title { display: flex; align-items: center; gap: 0.25rem; min-inline-size: 0; }
