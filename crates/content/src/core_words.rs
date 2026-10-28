@@ -163,13 +163,22 @@ pub fn check(
                 uses.push((ex.to_owned(), used));
             }
             let lines = lesson.pointer("/dialogue/lines").and_then(Value::as_array).into_iter().flatten();
-            let dialogue =
-                lines.filter_map(|l| l.get("text").and_then(Value::as_str)).collect::<Vec<_>>().join(" ");
-            let dialogue = phrases.iter().fold(dialogue.to_lowercase(), |t, p| mask(&t, p));
-            let spoken: BTreeSet<String> = tokens(&dialogue)
-                .into_iter()
-                .filter(|w| !street_lang.and_then(|l| street::formal(l, w)).is_some_and(covered))
-                .collect();
+            // Street forms read as their formal twins first, so "makasih" and
+            // "nggak pernah" meet the taught phrases "terima kasih" and
+            // "tidak pernah".
+            let mut spoken = BTreeSet::new();
+            for line in lines.filter_map(|l| l.get("text").and_then(Value::as_str)) {
+                let words = tokens(&line.to_lowercase());
+                let formal: Vec<&str> = words
+                    .iter()
+                    .map(|w| match street_lang.and_then(|l| street::formal(l, w)) {
+                        Some(f) if !covered(w) => f,
+                        _ => w,
+                    })
+                    .collect();
+                let text = phrases.iter().fold(formal.join(" "), |t, p| mask(&t, p));
+                spoken.extend(tokens(&text));
+            }
             uses.push(("dialogue".to_owned(), spoken));
             for (at, used) in uses {
                 for w in used {
