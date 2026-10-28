@@ -361,7 +361,10 @@ fn open_entry(ui: Ui, db: &Db, kind: &EntryKind) {
         },
         EntryKind::Activity(ActivityKind::PlanItemDone { .. }) => Screen::Today,
         EntryKind::Activity(ActivityKind::Purchase { .. }) => Screen::Coach,
-        EntryKind::Souvenir { .. } => Screen::Journey,
+        EntryKind::Souvenir { unit_id, .. } => {
+            crate::journey::open_suitcase(ui, unit_id);
+            return;
+        }
         EntryKind::Taught { .. } => Screen::Teach,
     };
     screen.set(to);

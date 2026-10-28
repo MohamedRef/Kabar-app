@@ -597,6 +597,20 @@ button.tap-plain { border-color: transparent; background: transparent; border-ra
 /* A forward chevron at the end of a row (points left in Arabic). */
 .chev { flex: none; display: inline-block; inline-size: 0.5rem; block-size: 0.5rem; border-block-start: 2px solid var(--muted); border-inline-end: 2px solid var(--muted); transform: rotate(45deg); opacity: 0.7; }
 [dir="rtl"] .chev { transform: rotate(-45deg); }
+/* A card that is one link: icon, text, chevron (Settings › What Kabar costs). */
+button.tap-link { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; }
+.tap-link-text { flex: 1; }
+/* A card with one job (Kabar Pagi, the placement invite) opens on a tap
+   anywhere; its button stays the visible, focusable target, and its click
+   bubbles up to the card's own onclick. */
+.card-action { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) and (pointer: fine) {
+  .card-action:hover { border-color: var(--sawah); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card-action { transition: transform 120ms ease; }
+  .card-action:active { transform: scale(0.99); }
+}
 /* A heading that opens what it names: the text, then a chevron. */
 button.tap-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; font-weight: 700; }
 
