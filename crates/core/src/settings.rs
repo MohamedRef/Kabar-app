@@ -13,10 +13,15 @@ pub enum Theme {
     /// Follows the OS: [`Theme::Light`] by day, [`Theme::Dark`] by night.
     #[default]
     System,
+    /// Follows the OS: [`Theme::Light`] by day, [`Theme::Black`] by night.
+    #[serde(rename = "system-black")]
+    SystemBlack,
     /// Paper: warm off-white.
     Light,
     /// Merapi: black volcanic sand.
     Dark,
+    /// Gerhana (eclipse): true black, so OLED pixels switch off.
+    Black,
     /// Malam: very dark and warm, low blue light, for studying at night.
     Night,
     /// Batik: deep indigo.
@@ -26,14 +31,25 @@ pub enum Theme {
 }
 
 impl Theme {
-    pub const ALL: [Self; 6] = [Self::System, Self::Light, Self::Dark, Self::Night, Self::Batik, Self::Sawah];
+    pub const ALL: [Self; 8] = [
+        Self::System,
+        Self::SystemBlack,
+        Self::Light,
+        Self::Dark,
+        Self::Black,
+        Self::Night,
+        Self::Batik,
+        Self::Sawah,
+    ];
 
     /// Stable id: stored in settings, synced, and used as `data-theme`.
     pub fn as_str(self) -> &'static str {
         match self {
             Self::System => "system",
+            Self::SystemBlack => "system-black",
             Self::Light => "light",
             Self::Dark => "dark",
+            Self::Black => "black",
             Self::Night => "night",
             Self::Batik => "batik",
             Self::Sawah => "sawah",
