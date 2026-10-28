@@ -1,197 +1,181 @@
 schema: kabar.lesson/v1
 id: bipa4.u04.l11
 language: id
-title: Komentar pembaca
+title: Siaran radio pagi
 can_do:
-  ar_eg: تقرا تعليقات القرّاء على خبر وتعرف مين مؤيد ومين معارض وليه.
-  ar: أن تقرأ تعليقات القرّاء على خبر وتميّز المؤيد من المعارض وحججهما.
-  en: Read readers' comments on a news story and tell who is for, who is against, and why.
+  ar_eg: تفهم خبر قصير في الراديو عن سياسة جديدة وتقول مين هيستفيد.
+  ar: أن تفهم خبرًا إذاعيًا قصيرًا عن سياسة جديدة وتذكر من سيستفيد منها.
+  en: Follow a short radio news item about a new policy and say who benefits.
 slides:
-  - title: Komentar di bawah berita
+  - title: Berita pagi di radio
     body:
       ar_eg: |
-        تحت خبر «مدارس باريباري بتمنع الموبايل» كتب ٣ قرّاء تعليقات.
-        كل واحد رأيه إيه؟ مؤيد (mendukung) ولا معارض (menolak) ولا شايف الناحيتين؟
+        نشرة الصبح في راديو باريباري. اسمع الجمل الأول من غير ما تبص.
+        pendengar = المستمعين (من dengar = يسمع).
       ar: |
-        كتب ثلاثة قرّاء تعليقات تحت خبر «مدارس باريباري تمنع الهواتف».
-        ما رأي كلٍّ منهم؟ مؤيد (mendukung) أم معارض (menolak) أم يرى الجانبين؟
+        نشرة الصباح في إذاعة باريباري. استمع إلى الجمل أولًا دون أن تنظر.
+        pendengar = المستمعون (من dengar = يسمع).
       en: |
-        Under the story "Parepare schools ban phones", three readers left comments.
-        What does each think? For (mendukung), against (menolak), or seeing both sides?
+        The morning news on a Parepare radio station. Listen to the sentences first without looking.
+        pendengar = listeners (from dengar, to hear).
     examples:
-      - text: "Rahma: Saya mendukung kebijakan ini. Sejak HP dilarang, anak saya lebih fokus belajar."
-        ar_eg: "رحمة: أنا مؤيدة القرار ده. من ساعة ما منعوا الموبايل، ابني بقى مركّز أكتر في المذاكرة."
-        ar: "رحمة: أؤيد هذه السياسة. منذ مُنع الهاتف صار ابني أكثر تركيزًا في الدراسة."
-        en: "Rahma: I support this policy. Since phones were banned, my child focuses more on studying."
-      - text: "Ilham: Saya menolak. Gara-gara tidak membawa HP, anak saya tidak bisa menghubungi saya waktu pulang terlambat."
-        ar_eg: "إلهام: أنا معترض. بسبب إن ابني مش معاه موبايل، ماقدرش يكلمني لما اتأخر في الرجوع."
-        ar: "إلهام: أنا أرفض. لأن ابني لا يحمل هاتفًا، لم يستطع الاتصال بي حين تأخّر في العودة."
-        en: "Ilham: I'm against it. Because he had no phone, my son couldn't contact me when he came home late."
-      - text: "Pak Yusuf: Di satu sisi, siswa lebih fokus. Di sisi lain, sekolah harus membantu orang tua menghubungi anaknya."
-        ar_eg: "الأستاذ يوسف: من ناحية، الطلبة بقوا مركّزين أكتر. ومن ناحية تانية، المدرسة لازم تساعد الأهالي يكلّموا ولادهم."
-        ar: "الأستاذ يوسف: من جهة، صار الطلاب أكثر تركيزًا. ومن جهة أخرى، على المدرسة أن تساعد الأهل على الاتصال بأبنائهم."
-        en: "Pak Yusuf: On the one hand, students focus more. On the other hand, the school must help parents contact their children."
+      - text: Selamat pagi, pendengar. Mulai tahun depan, pemerintah daerah akan memberikan beasiswa kepada seribu siswa.
+        ar_eg: صباح الخير يا مستمعين. من السنة الجاية، الحكومة المحلية هتدي منح دراسية لألف طالب.
+        ar: صباح الخير أيها المستمعون. ابتداءً من العام القادم ستمنح الحكومة المحلية منحًا دراسية لألف طالب.
+        en: Good morning, listeners. Starting next year, the local government will give scholarships to a thousand students.
+      - text: Menurut pemerintah daerah, setiap tahun ratusan anak putus sekolah karena biaya.
+        ar_eg: الحكومة المحلية بتقول إن كل سنة مئات العيال بيسيبوا المدرسة بسبب المصاريف.
+        ar: بحسب الحكومة المحلية، يترك مئات الأطفال الدراسة كل عام بسبب التكاليف.
+        en: According to the local government, hundreds of children drop out of school every year because of the cost.
+      - text: Berkat kebijakan ini, anak dari keluarga miskin diharapkan bisa terus sekolah.
+        ar_eg: بفضل السياسة دي، بيتمنّوا إن عيال العيلات الفقيرة يقدروا يكمّلوا تعليمهم.
+        ar: بفضل هذه السياسة، يُؤمَل أن يتمكّن أبناء الأسر الفقيرة من مواصلة الدراسة.
+        en: Thanks to this policy, children from poor families are expected to stay in school.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: مين اللي مؤيد القرار؟
-      ar: من يؤيد السياسة؟
-      en: Who supports the policy?
-    options: [Rahma, Ilham, Pak Yusuf]
-    answer: 0
-    explain:
-      ar_eg: Rahma كتبت «Saya mendukung». Pak Yusuf شايف الناحيتين، وIlham معترض.
-      ar: كتبت Rahma «Saya mendukung»، أما Pak Yusuf فيرى الجانبين، وIlham يرفض.
-      en: Rahma wrote "Saya mendukung"; Pak Yusuf sees both sides, and Ilham is against.
-    words: [mendukung]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: Ilham معترض ليه؟
-      ar: لماذا يرفض Ilham؟
-      en: Why is Ilham against it?
-    options:
-      - Anaknya tidak fokus belajar.
-      - HP anaknya hilang di sekolah.
-      - Anaknya tidak bisa menghubunginya.
-    answer: 2
-    words: [menolak]
-    explain:
-      ar_eg: إلهام معترض عشان ابنه مش بيعرف يكلّمه. التركيز وضياع الموبايل مش السبب اللي قاله.
-      ar: يعترض إلهام لأن ابنه لا يستطيع الاتصال به، لا بسبب التركيز ولا ضياع الهاتف.
-      en: Ilham objects because his child can't contact him. Focus and a lost phone aren't the reason he gives.
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الأستاذ يوسف بيقترح إيه؟
-      ar: ماذا يقترح الأستاذ يوسف؟
-      en: What does Pak Yusuf suggest?
-    options:
-      - Siswa boleh membawa HP ke kelas.
-      - Sekolah harus membantu orang tua menghubungi anaknya.
-      - Kebijakan itu harus dibatalkan.
+    type: listen
+    text: Mulai tahun depan, pemerintah daerah akan memberikan beasiswa kepada seribu siswa.
+    question:
+      ar_eg: كام طالب هياخد منحة؟
+      ar: كم طالبًا سيحصل على منحة؟
+      en: How many students will get a scholarship?
+    options: [Seratus siswa, Seribu siswa, Sepuluh ribu siswa]
     answer: 1
-    words: [kekurangan]
-    explain:
-      ar_eg: الأستاذ يوسف بيقترح إن المدرسة تساعد الأهالي يوصلوا لعيالهم. هو مش عايز الموبايل في الفصل ولا عايز يلغي السياسة.
-      ar: يقترح الأستاذ يوسف أن تساعد المدرسة الأهالي على الوصول إلى أبنائهم، دون إدخال الهواتف إلى الصف أو إلغاء السياسة.
-      en: Pak Yusuf suggests the school help parents reach their children. He doesn't want phones in class or the policy cancelled.
+    meaning:
+      ar_eg: من السنة الجاية، الحكومة المحلية هتدي منح دراسية لألف طالب.
+      ar: ابتداءً من العام القادم ستمنح الحكومة المحلية منحًا دراسية لألف طالب.
+      en: Starting next year, the local government will give scholarships to a thousand students.
+    words: [beasiswa]
+  - id: e02
+    type: listen
+    text: Menurut pemerintah daerah, setiap tahun ratusan anak putus sekolah karena biaya.
+    question:
+      ar_eg: العيال بيسيبوا المدرسة ليه؟
+      ar: لماذا يترك الأطفال المدرسة؟
+      en: Why do children drop out of school?
+    options: [Karena biaya, Karena banjir, Karena sekolahnya jauh]
+    answer: 0
+    meaning:
+      ar_eg: كل سنة مئات العيال بيسيبوا المدرسة بسبب المصاريف.
+      ar: يترك مئات الأطفال الدراسة كل عام بسبب التكاليف.
+      en: Hundreds of children drop out every year because of the cost.
+    words: [putus sekolah]
+  - id: e03
+    type: listen
+    text: Berkat kebijakan ini, anak dari keluarga miskin diharapkan bisa terus sekolah.
+    question:
+      ar_eg: مين اللي هيستفيد من السياسة دي؟
+      ar: من المستفيد من هذه السياسة؟
+      en: Who benefits from this policy?
+    options: [Guru-guru di Parepare, Wartawan radio, Anak dari keluarga miskin]
+    answer: 2
+    meaning:
+      ar_eg: بفضل السياسة دي، بيتمنّوا إن عيال العيلات الفقيرة يكمّلوا تعليمهم.
+      ar: بفضل هذه السياسة يُؤمَل أن يواصل أبناء الأسر الفقيرة الدراسة.
+      en: Thanks to this policy, children from poor families are expected to stay in school.
+    words: [berkat, kebijakan]
   - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة في الخبر بتقدّم سبب «كويس»؟
+      ar: أيّ كلمة في الخبر تقدّم سببًا «إيجابيًا»؟
+      en: Which word in the report introduces a good cause?
+    options: [gara-gara, berkat, akibatnya]
+    answer: 1
+    explain:
+      ar_eg: berkat = بفضل (سبب حلو). gara-gara = بسبب (سبب وحش، عامية). akibatnya = النتيجة، مش السبب.
+      ar: berkat = بفضل (سبب إيجابي)، وgara-gara = بسبب (سبب سلبي، عامية)، وakibatnya للنتيجة لا للسبب.
+      en: berkat = thanks to (good cause); gara-gara = because of (bad cause, casual); akibatnya gives the result, not the cause.
+    words: [berkat, gara-gara]
+  - id: e05
     type: match_pairs
     pairs:
-      - text: mendukung
-        ar_eg: يؤيّد
-        ar: يؤيّد
-        en: support
-      - text: menolak
-        ar_eg: يعترض / يرفض
-        ar: يرفض
-        en: reject, oppose
-      - text: kelebihan
-        ar_eg: ميزة
-        ar: ميزة
-        en: advantage
-      - text: kekurangan
-        ar_eg: عيب
-        ar: عيب
-        en: drawback
-      - text: dampak
-        ar_eg: تأثير
-        ar: أثر
-        en: impact
-    words: [mendukung, menolak, kelebihan, kekurangan, dampak]
-  - id: e05
-    type: listen
-    text: Di satu sisi, siswa lebih fokus.
-    options:
-      - Di sisi lain, siswa lebih fokus.
-      - Di satu sisi, siswa lebih fokus.
-      - Di satu sisi, siswa kurang fokus.
-    answer: 1
-    meaning:
-      ar_eg: من ناحية، الطلبة بقوا مركّزين أكتر.
-      ar: من جهة، صار الطلاب أكثر تركيزًا.
-      en: On the one hand, students focus more.
+      - text: beasiswa
+        ar_eg: منحة دراسية
+        ar: منحة دراسية
+        en: scholarship
+      - text: kebijakan
+        ar_eg: سياسة / قرار
+        ar: سياسة
+        en: policy
+      - text: putus sekolah
+        ar_eg: يسيب المدرسة
+        ar: يترك الدراسة
+        en: drop out of school
+      - text: berkat
+        ar_eg: بفضل
+        ar: بفضل
+        en: thanks to
+      - text: menyebabkan
+        ar_eg: يسبّب
+        ar: يسبّب
+        en: cause
+    words: [beasiswa, kebijakan, putus sekolah, berkat, menyebabkan]
   - id: e06
-    type: fill_blank
-    sentence: ___ tidak membawa HP, anak saya tidak bisa menghubungi saya.
+    type: dictation
+    text: Banyak anak putus sekolah karena biaya.
     meaning:
-      ar_eg: بسبب إن ابني مش معاه موبايل، ماقدرش يكلمني.
-      ar: لأن ابني لا يحمل هاتفًا، لم يستطع الاتصال بي.
-      en: Because he had no phone, my son couldn't contact me.
-    options: [Berkat, Gara-gara, Akibatnya]
-    answers: [Gara-gara]
-    explain:
-      ar_eg: السبب هنا وحش، فـ gara-gara (عامية) مناسبة. berkat للسبب الحلو بس.
-      ar: السبب هنا سلبي فتناسبه gara-gara (عامية)، أما berkat فللسبب الإيجابي.
-      en: The cause is a bad one, so gara-gara (casual) fits; berkat is only for good causes.
-    words: [gara-gara]
+      ar_eg: عيال كتير بيسيبوا المدرسة بسبب المصاريف.
+      ar: كثير من الأطفال يتركون الدراسة بسبب التكاليف.
+      en: Many children drop out of school because of the cost.
+    words: [putus sekolah]
   - id: e07
-    type: build_sentence
-    source:
-      ar_eg: ومن ناحية تانية، الأهالي صعب عليهم يكلّموا ولادهم.
-      ar: ومن جهة أخرى، يصعب على الأهل الاتصال بأبنائهم.
-      en: On the other hand, parents find it hard to contact their children.
-    answer: Di sisi lain, orang tua sulit menghubungi anaknya.
-    distractors: [satu, mendukung]
-    words: [kekurangan]
+    type: fill_blank
+    sentence: Biaya sekolah yang mahal ___ banyak anak putus sekolah.
+    meaning:
+      ar_eg: مصاريف المدرسة الغالية بتخلّي عيال كتير يسيبوا المدرسة.
+      ar: تكاليف المدرسة المرتفعة تتسبّب في ترك كثير من الأطفال للدراسة.
+      en: Expensive school fees cause many children to drop out.
+    options: [mendukung, melaporkan, menyebabkan]
+    answers: [menyebabkan]
+    words: [menyebabkan, putus sekolah]
     explain:
-      ar_eg: di sisi lain = من ناحية تانية، وبتجيب الرأي العكسي. satu ناقصة هنا، وmendukung = يؤيد، ومش في الجملة.
-      ar: di sisi lain = من ناحية أخرى، وتأتي بالرأي المقابل. أما satu فناقصة هنا، وmendukung يؤيد، وليست في الجملة.
-      en: di sisi lain means "on the other hand", bringing the other view. satu is incomplete here, and mendukung (support) isn't in the sentence.
+      ar_eg: menyebabkan = يسبّب، والمصاريف الغالية بتخلّي العيال تسيب المدرسة. mendukung = يؤيد، وmelaporkan = يبلّغ.
+      ar: menyebabkan = يسبّب، فالرسوم الغالية تُخرج الأطفال من المدرسة. أما mendukung فيؤيد، وmelaporkan يُبلغ.
+      en: "menyebabkan means \"causes\": high fees make children drop out. mendukung is support, and melaporkan is report."
   - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: أنا مؤيد السياسة دي عشان الطلبة بيركّزوا أكتر.
-      ar: أؤيد هذه السياسة لأن الطلاب يركّزون أكثر.
-      en: I support this policy because students focus more.
+      ar_eg: بفضل المنحة، Andi يقدر يكمّل تعليمه.
+      ar: بفضل المنحة يستطيع Andi مواصلة الدراسة.
+      en: Thanks to the scholarship, Andi can stay in school.
     answers:
-      - Saya mendukung kebijakan ini karena siswa lebih fokus.
-      - Saya mendukung kebijakan ini karena siswa jadi lebih fokus.
-      - Saya mendukung kebijakan ini karena para siswa lebih fokus.
-      - Saya mendukung kebijakan ini sebab siswa lebih fokus.
-      - Saya mendukung kebijakan ini karena siswa menjadi lebih fokus.
-      - Aku mendukung kebijakan ini karena siswa lebih fokus.
-      - Aku mendukung kebijakan ini karena siswa jadi lebih fokus.
-    words: [mendukung]
-  - id: e09
-    type: speaking
-    text: Menurut saya, kebijakan ini punya kelebihan dan kekurangan.
-    meaning:
-      ar_eg: في رأيي، السياسة دي ليها مميزات وعيوب.
-      ar: في رأيي، لهذه السياسة مزايا وعيوب.
-      en: In my opinion, this policy has advantages and drawbacks.
-    words: [kelebihan, kekurangan]
+      - Berkat beasiswa, Andi bisa terus sekolah.
+      - Berkat beasiswa itu, Andi bisa terus sekolah.
+      - Berkat beasiswa, Andi bisa terus bersekolah.
+      - Berkat beasiswa, Andi dapat terus sekolah.
+      - Andi bisa terus sekolah berkat beasiswa.
+      - Andi bisa terus bersekolah berkat beasiswa.
+    words: [berkat, beasiswa]
 dialogue:
-  title: Membaca komentar
+  title: Kabar baik untuk adik Andi
   lines:
-    - speaker: Kak Nirmala
-      text: Berita soal HP di sekolah dapat banyak komentar pembaca.
-      ar_eg: خبر الموبايلات في المدارس جاله تعليقات كتير من القرّاء.
-      ar: تلقّى خبر الهواتف في المدارس تعليقات كثيرة من القرّاء.
-      en: The story about phones at school got lots of reader comments.
+    - speaker: Andi
+      text: Mohamed, kamu dengar siaran radio tadi pagi?
+      ar_eg: يا Mohamed، سمعت نشرة الراديو الصبح؟
+      ar: يا Mohamed، هل سمعت نشرة الإذاعة صباح اليوم؟
+      en: Mohamed, did you hear the radio news this morning?
     - speaker: Mohamed
-      text: Iya, Kak. Ada yang mendukung, ada yang menolak.
-      ar_eg: أيوه. فيه ناس مؤيدة وناس معترضة.
-      ar: نعم. منهم المؤيد ومنهم الرافض.
-      en: Yes. Some support it, some are against it.
-    - speaker: Kak Nirmala
-      text: Menurutmu, komentar mana yang paling bagus?
-      ar_eg: في رأيك، أنهي تعليق أحسن واحد؟
-      ar: في رأيك، أيّ تعليق هو الأفضل؟
-      en: Which comment do you think is the best?
+      text: Dengar. Pemerintah daerah mau kasih beasiswa ke seribu siswa.
+      ar_eg: سمعتها. الحكومة المحلية هتدي منح لألف طالب.
+      ar: سمعتها. ستمنح الحكومة المحلية منحًا لألف طالب.
+      en: I did. The local government is giving scholarships to a thousand students.
+    - speaker: Andi
+      text: Wah, adikku bisa daftar! Dulu temannya putus sekolah gara-gara biaya.
+      ar_eg: ياه، أختي الصغيرة تقدر تقدّم! زمان صاحبتها سابت المدرسة بسبب المصاريف.
+      ar: رائع، يمكن لأختي الصغرى أن تتقدّم! فقد تركت صديقتها الدراسة سابقًا بسبب التكاليف.
+      en: Great, my little sister can apply! Her friend dropped out because of the cost.
     - speaker: Mohamed
-      text: Komentar Pak Yusuf. Dia melihat kelebihan dan kekurangannya.
-      ar_eg: تعليق الأستاذ يوسف. هو شايف المميزات والعيوب.
-      ar: تعليق الأستاذ يوسف، فهو ينظر إلى المزايا والعيوب.
-      en: Pak Yusuf's. He looks at the advantages and the drawbacks.
-    - speaker: Kak Nirmala
-      text: Setuju. Pembaca yang baik melihat dua sisi.
-      ar_eg: موافقة. القارئ الشاطر بيشوف الناحيتين.
-      ar: أوافق. القارئ الجيد ينظر إلى الجانبين.
-      en: Agreed. A good reader looks at both sides.
+      text: Semoga kebijakan ini berhasil.
+      ar_eg: يا رب السياسة دي تنجح.
+      ar: نرجو أن تنجح هذه السياسة.
+      en: Let's hope this policy works.
+    - speaker: Andi
+      text: Amin. Berkat beasiswa, aku sendiri bisa kuliah di Makassar.
+      ar_eg: آمين. أنا نفسي بفضل منحة قدرت أدرس في الجامعة في ماكاسار.
+      ar: آمين. فأنا نفسي تمكّنت بفضل منحة من الدراسة الجامعية في ماكاسار.
+      en: Amen. Thanks to a scholarship, I was able to go to university in Makassar myself.
 new_words: []
 review:
   status: draft

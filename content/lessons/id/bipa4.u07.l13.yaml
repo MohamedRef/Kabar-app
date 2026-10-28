@@ -1,0 +1,223 @@
+schema: kabar.lesson/v1
+id: bipa4.u07.l13
+language: id
+title: Ulangan Unit 7
+can_do:
+  ar_eg: تدّي نصايح صحية وتتكلم عن الوقاية والعلاج والخدمات الصحية.
+  ar: أن تقدّم نصائح صحية وتتحدث عن الوقاية والعلاج والخدمات الصحية.
+  en: Give health advice and talk about prevention, treatment and health services.
+slides:
+  - title: Keluarga peN-…-an
+    body:
+      ar_eg: |
+        افتكر: فعل meN- ← اسم peN-…-an بنفس الأنف:
+        memeriksa → pemeriksaan، mengobati → pengobatan، mencegah → pencegahan، menggunakan → penggunaan.
+        me- لوحدها ← pe-…-an: melayani → pelayanan، merawat → perawatan.
+        والشخص بـ peN- بس: penderita، pengguna.
+      ar: |
+        تذكّر: فعل meN- ← اسم peN-…-an بالصوت الأنفي نفسه:
+        memeriksa → pemeriksaan، mengobati → pengobatan، mencegah → pencegahan، menggunakan → penggunaan.
+        me- وحدها ← pe-…-an: melayani → pelayanan، merawat → perawatan.
+        والشخص بـ peN- فقط: penderita، pengguna.
+      en: |
+        Remember: meN- verb → peN-…-an noun with the same nasal:
+        memeriksa → pemeriksaan, mengobati → pengobatan, mencegah → pencegahan, menggunakan → penggunaan.
+        Plain me- → pe-…-an: melayani → pelayanan, merawat → perawatan.
+        The person takes peN- alone: penderita, pengguna.
+    grammar: id.confix.peng-an
+    examples:
+      - text: Pemeriksaan rutin penting bagi penderita darah tinggi.
+        ar_eg: الكشف الدوري مهم لعيانين الضغط.
+        ar: الفحص الدوري مهم لمرضى ارتفاع الضغط.
+        en: Routine check-ups are important for people with high blood pressure.
+      - text: Penggunaan garam harus dikurangi.
+        ar_eg: استعمال الملح لازم يقل.
+        ar: يجب تقليل استخدام الملح.
+        en: Salt use should be reduced.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pemeriksaan
+        ar_eg: فحص / كشف
+        ar: فحص
+        en: examination, check-up
+      - text: pengobatan
+        ar_eg: علاج
+        ar: علاج
+        en: treatment
+      - text: pelayanan
+        ar_eg: خدمة
+        ar: خدمة
+        en: service
+      - text: perawatan
+        ar_eg: رعاية / تمريض
+        ar: رعاية
+        en: care
+      - text: pendaftaran
+        ar_eg: تسجيل
+        ar: تسجيل
+        en: registration
+    words: [pemeriksaan, pengobatan, pelayanan, perawatan, pendaftaran]
+  - id: e02
+    type: fill_blank
+    sentence: Setelah operasi, keadaannya makin ___.
+    meaning:
+      ar_eg: بعد العملية، حالته بقت ___.
+      ar: بعد العملية صارت حالته ___.
+      en: After the operation, his condition is getting ___.
+    options: [membaik, nyenyak, bakteri, kadang]
+    answers: [membaik]
+    words: [membaik, nyenyak, bakteri, kadang]
+    explain:
+      ar_eg: makin membaik = بتتحسّن أكتر بعد العملية. nyenyak للنوم، وbakteri = بكتيريا. kadang = ساعات، ومايجيش بعد makin.
+      ar: makin membaik = تتحسّن أكثر بعد العملية. أما nyenyak فللنوم، وbakteri البكتيريا. أما kadang فأحيانًا، ولا تأتي بعد makin.
+      en: makin membaik means getting better after the operation. nyenyak is for sleep, and bakteri are bacteria. kadang means sometimes and can't follow makin.
+  - id: e03
+    type: listen
+    text: Penyakit ini menular, jadi anak-anak perlu imunisasi.
+    options: ["Penyakit ini menular, jadi anak-anak perlu imunisasi.", "Penyakit ini tidak menular, jadi anak-anak tidak perlu imunisasi.", "Penyakit ini menular, jadi orang tua perlu imunisasi."]
+    answer: 0
+    meaning:
+      ar_eg: المرض ده معدي، عشان كده الأطفال محتاجين تطعيم.
+      ar: هذا المرض معدٍ، لذلك يحتاج الأطفال إلى التطعيم.
+      en: This disease is contagious, so children need immunisation.
+    words: [menular, imunisasi]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك عنده كحة وسخونية بس خايف من المصاريف. تنصحه بإيه؟
+      ar: صديقك مصاب بسعال وحمّى لكنه يخشى التكاليف. بماذا تنصحه؟
+      en: Your friend has a cough and fever but is worried about the cost. What do you advise?
+    options: ["Periksa ke pasar saja. Biayanya ditanggung BPJS.", "Jangan ke puskesmas. Pengobatan itu menular.", "Periksa ke puskesmas saja. Biayanya ditanggung BPJS."]
+    answer: 2
+    words: [puskesmas, ditanggung]
+    explain:
+      ar_eg: "النصيحة الصح: اكشف في البوسكسماس، والـ BPJS بتغطي المصاريف. السوق مش مكان كشف، والعلاج مش معدي."
+      ar: "النصيحة الصحيحة: افحص في المركز الصحي، وBPJS يغطي التكاليف. فالسوق ليس مكان فحص، والعلاج لا يُعدي."
+      en: "The right advice: go to the puskesmas, and BPJS covers the cost. A market isn't a clinic, and treatment isn't contagious."
+  - id: e05
+    type: listen
+    text: Intinya, olahraga teratur menurunkan risiko penyakit jantung.
+    options: ["Intinya, olahraga teratur meningkatkan risiko penyakit jantung.", "Intinya, olahraga teratur menurunkan risiko penyakit jantung.", "Intinya, makanan teratur menurunkan risiko penyakit jantung."]
+    answer: 1
+    meaning:
+      ar_eg: الخلاصة، الرياضة المنتظمة بتقلّل خطر أمراض القلب.
+      ar: خلاصة القول، الرياضة المنتظمة تقلّل خطر أمراض القلب.
+      en: The main point is that regular exercise lowers the risk of heart disease.
+    words: [intinya, teratur, risiko, jantung]
+  - id: e06
+    type: fill_blank
+    sentence: ___ lebih baik daripada pengobatan.
+    meaning:
+      ar_eg: (اكتب الكلمة) الوقاية أحسن من العلاج.
+      ar: (اكتب الكلمة) الوقاية خير من العلاج.
+      en: (Type the word.) Prevention is better than cure.
+    answers: [Pencegahan, pencegahan]
+    words: [pencegahan, pengobatan]
+    explain:
+      ar_eg: pencegahan = وقاية، من cegah + peN-…-an.
+      ar: pencegahan = الوقاية، من cegah مع peN-…-an.
+      en: pencegahan is prevention, from cegah with peN-…-an.
+  - id: e07
+    type: fill_blank
+    sentence: Banyak ___ darah tinggi tidak merasakan gejala.
+    meaning:
+      ar_eg: عيانين ضغط كتير مش بيحسوا بأعراض.
+      ar: كثير من مرضى ارتفاع الضغط لا يشعرون بأعراض.
+      en: Many people with high blood pressure feel no symptoms.
+    options: [penderitaan, menderita, penderita]
+    answers: [penderita]
+    words: [penderita, darah tinggi, gejala]
+    explain:
+      ar_eg: penderita = المريض (شخص)، وده اللي بيحس بأعراض. penderitaan = معاناة، وmenderita = يعاني (فعل).
+      ar: penderita = المريض (شخص)، وهو من يشعر بالأعراض. أما penderitaan فالمعاناة، وmenderita يعاني (فعل).
+      en: penderita is a sufferer (a person), who feels symptoms. penderitaan is suffering, and menderita is the verb.
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: الأحسن تعمل كشف طبي بشكل دوري.
+      ar: يُستحسن أن تُجري فحصًا طبيًا بانتظام.
+      en: You should have a health check-up regularly.
+    answer: Sebaiknya Anda melakukan pemeriksaan kesehatan secara rutin.
+    alternatives: ["Anda sebaiknya melakukan pemeriksaan kesehatan secara rutin."]
+    distractors: [pemeriksa, gejala]
+    words: [pemeriksaan, kesehatan, rutin]
+    explain:
+      ar_eg: pemeriksaan = كشف (اسم)، وsecara rutin = بانتظام. pemeriksa = اللي بيكشف (شخص)، وgejala = أعراض.
+      ar: pemeriksaan = الفحص (اسم)، وsecara rutin = بانتظام. أما pemeriksa فالفاحص (شخص)، وgejala الأعراض.
+      en: pemeriksaan is the check-up, and secara rutin means regularly. pemeriksa is the examiner, and gejala are symptoms.
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: cedera
+        ar_eg: إصابة
+        ar: إصابة
+        en: injury
+      - text: pulih
+        ar_eg: خف
+        ar: تعافى
+        en: to recover
+      - text: masker
+        ar_eg: كمامة
+        ar: كمامة
+        en: face mask
+      - text: beracun
+        ar_eg: سام
+        ar: سامّ
+        en: poisonous
+      - text: gelisah
+        ar_eg: قلقان
+        ar: قلِق
+        en: restless
+      - text: terapi
+        ar_eg: علاج
+        ar: علاج
+        en: therapy
+    words: [cedera, pulih, masker, beracun, gelisah, terapi]
+  - id: e10
+    type: speaking
+    text: Kalau gejalanya parah, segera periksa ke puskesmas.
+    meaning:
+      ar_eg: لو الأعراض جامدة، روح البوسكسماس على طول.
+      ar: إن كانت الأعراض شديدة، فاذهب فورًا إلى المركز الصحي.
+      en: If the symptoms are severe, get checked at the puskesmas right away.
+    words: [gejala, parah, puskesmas]
+dialogue:
+  title: Saran untuk Mas Rizal
+  lines:
+    - speaker: Mas Rizal
+      text: Akhir-akhir ini aku sering pusing.
+      ar_eg: اليومين دول بيجيلي صداع ودوخة كتير.
+      ar: أشعر بالدوار كثيرًا في الآونة الأخيرة.
+      en: I've been getting dizzy a lot lately.
+    - speaker: Mohamed
+      text: Mungkin darahmu tinggi. Lebih baik kamu periksa ke puskesmas.
+      ar_eg: يمكن ضغطك عالي. الأحسن تروح تكشف في البوسكسماس.
+      ar: ربما ضغط دمك مرتفع. الأفضل أن تفحص نفسك في المركز الصحي.
+      en: Maybe your blood pressure is high. You'd better get checked at the puskesmas.
+    - speaker: Mas Rizal
+      text: Periksanya mahal nggak?
+      ar_eg: هو الكشف غالي؟
+      ar: هل الفحص مكلف؟
+      en: Is the check-up expensive?
+    - speaker: Mohamed
+      text: Nggak. Pakai kartu BPJS, kamu nggak bayar.
+      ar_eg: لأ. بكارت الـ BPJS مش هتدفع حاجة.
+      ar: لا. ببطاقة BPJS لن تدفع شيئًا.
+      en: No. With a BPJS card, you don't pay.
+    - speaker: Mas Rizal
+      text: Oke, besok aku ke sana. Makasih, ya.
+      ar_eg: تمام، بكرة هروح. متشكر.
+      ar: حسنًا، سأذهب غدًا. شكرًا لك.
+      en: OK, I'll go tomorrow. Thanks.
+souvenir:
+  id: bipa4.u07.souvenir
+  title: Hiu paus Botubarani
+  note:
+    ar_eg: في قرية بوتوباراني جنب جورونتالو، أسماك القرش الحوتي (hiu paus) بتقرّب من الشط، وبتيجي على بقايا الجمبري من مصنع قريب. ممكن تشوفها من مركب صغير وانت ساكت ومن غير ما تلمسها. ولو تعبت في رحلتك، هتلاقي في كل منطقة puskesmas، والتأمين الصحي الحكومي BPJS بيغطي أغلب الناس في إندونيسيا.
+    ar: في قرية بوتوباراني قرب غورونتالو تقترب أسماك القرش الحوتي (hiu paus) من الشاطئ، تجذبها بقايا الروبيان من مصنع قريب، فيمكن مشاهدتها من قارب صغير بهدوء ودون لمسها. وإن مرضت في رحلتك فستجد في كل منطقة مركزًا صحيًا (puskesmas)، ويغطي التأمين الصحي الوطني BPJS معظم سكان إندونيسيا.
+    en: At Botubarani village near Gorontalo, whale sharks (hiu paus) come close to the shore, drawn by shrimp scraps from a nearby factory. You can watch them quietly from a small boat, without touching them. And if you fall ill on your travels, every area has a puskesmas, and the national BPJS health insurance covers most of Indonesia's population.
+review:
+  status: draft
+  verified: false
