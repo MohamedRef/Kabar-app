@@ -1,174 +1,227 @@
 schema: kabar.lesson/v1
 id: j2.u01.l07
 language: jv
-title: Kulawargane Pak Budi
+title: Sing penting sehat
 can_do:
-  ar_eg: توصف عيلة.
-  ar: أن تصف عائلة.
-  en: Describe a family.
+  ar_eg: تقول «المهم الصحة»، وتقبل أكل زيادة، وتقول «أنا جاي معاكم» و«برضه» و«أكيد» و«امبارح».
+  ar: أن تقول «المهم الصحة»، وتقبل طعامًا إضافيًا، وتقول «سآتي معكم» و«أيضًا» و«بالتأكيد» و«أمس».
+  en: Say "health is what matters", accept a second helping, and say "I'm coming too", "also", "surely" and "yesterday".
 slides:
-  - title: Iki sapa?
+  - title: Neng omahe Pak Budi
     body:
       ar_eg: |
-        على حيطة محل Pak Budi فيه صورة كبيرة للعيلة. عشان توصفها محتاج:
-        - Iki / Kuwi sapa? = مين ده؟ · Sing iki sapa? = واللي ده مين؟
-        - كلمات العيلة: bapak، ibu، mas، mbakyu، adhi، pakdhe، budhe، mbah putri…
-        - -e / -ne عشان «بتاع فلان»: mase Sari = أخو ساري الكبير، omahe = بيته.
-        - -ku للي بتاعك: bojoku = مراتي، anakku = ابني / بنتي.
+        كلمات بتسمعها كل يوم في بيت عيلة في ماديون:
+        - **tambah** = زيادة / كمان (tambah): Tambah sega? = تزود رز؟
+        - **wingi** = امبارح (kemarin) · **penting** = مهم (penting): **sing penting…** = المهم…
+        - **uga** = كمان / برضه (juga) · **mesthi** = أكيد (pasti)
+        - **melu** = ييجي معاك / يشارك (ikut): Aku melu! = أنا جاي معاكم!
       ar: |
-        على جدار مطعم Pak Budi صورة كبيرة للعائلة، ولوصفها تحتاج:
-        - Iki / Kuwi sapa? = من هذا؟ · Sing iki sapa? = ومن هذا؟
-        - ألفاظ العائلة: bapak وibu وmas وmbakyu وadhi وpakdhe وbudhe وmbah putri…
-        - -e / -ne للإضافة: mase Sari = أخو ساري الأكبر، omahe = بيته.
-        - -ku للمتكلم: bojoku = زوجتي، anakku = ولدي.
+        كلمات تسمعها كل يوم في بيت عائلة في ماديون:
+        - **tambah** = إضافة / المزيد (tambah): Tambah sega? = أتريد مزيدًا من الأرز؟
+        - **wingi** = أمس (kemarin) · **penting** = مهم (penting): **sing penting…** = المهم…
+        - **uga** = أيضًا (juga) · **mesthi** = بالتأكيد (pasti)
+        - **melu** = يرافق / يشارك (ikut): Aku melu! = سآتي معكم!
       en: |
-        On the wall of Pak Budi's warung hangs a big family photo. To describe it you need:
-        - Iki / Kuwi sapa? = Who's this? · Sing iki sapa? = And who's this one?
-        - Family words: bapak, ibu, mas, mbakyu, adhi, pakdhe, budhe, mbah putri…
-        - -e / -ne for "X's": mase Sari = Sari's older brother, omahe = his house.
-        - -ku for "my": bojoku = my wife, anakku = my child.
-    grammar: jv.kinship.terms
+        Words you hear every day in a family home in Madiun:
+        - **tambah** = more, add (tambah): Tambah sega? = More rice?
+        - **wingi** = yesterday (kemarin) · **penting** = important (penting): **sing penting…** = what matters is…
+        - **uga** = also, too (juga) · **mesthi** = surely, definitely (pasti)
+        - **melu** = come along, join in (ikut): Aku melu! = I'm coming too!
     examples:
-      - text: Kuwi Agus, mase Sari.
-        ar_eg: ده أجوس، أخو ساري الكبير.
-        ar: ذاك أغوس، أخو ساري الأكبر.
-        en: That's Agus, Sari's older brother.
+      - text: Wingi aku ngantuk banget, saiki wis apik.
+        ar_eg: امبارح كنت نعسان جدًا، ودلوقتي بقيت كويس.
+        ar: كنت نعسان جدًا أمس، والآن صرت بخير.
+        en: I was really sleepy yesterday; now I'm fine.
+      - text: Sing penting sehat, ya!
+        ar_eg: المهم الصحة!
+        ar: المهم الصحة!
+        en: Health is what matters!
+      - text: Aku melu, Mas! Sari uga melu.
+        ar_eg: أنا جاي معاكم يا ماس! وساري جاية برضه.
+        ar: سآتي معكم يا أخي! وساري أيضًا.
+        en: I'm coming, Mas! Sari's coming too.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الحوار) الـ budhe بتاعة ساري ساكنة فين؟
-      ar: (من الحوار) أين تسكن budhe ساري؟
-      en: (From the dialogue) Where does Sari's budhe live?
-    options: [Neng Madiun, Neng Kairo, Neng Ponorogo]
-    answer: 2
-    words: [budhe, manggon]
+    type: match_pairs
+    pairs:
+      - text: tambah
+        ar_eg: زيادة / كمان
+        ar: المزيد
+        en: more, add
+      - text: wingi
+        ar_eg: امبارح
+        ar: أمس
+        en: yesterday
+      - text: uga
+        ar_eg: برضه / كمان
+        ar: أيضًا
+        en: also, too
+    words: [tambah, wingi, uga]
   - id: e02
-    type: multiple_choice
-    question: Kuwi mbakyuku, budhene Sari.
-    question_meaning:
-      ar_eg: Pak Budi بيقول كده. الست دي إيه بالنسبة له؟
-      ar: يقول Pak Budi هذا. ما صلة هذه السيدة به؟
-      en: Pak Budi says this. Who is this woman to him?
-    options: [Bojone Pak Budi, Adhine Pak Budi, Mbakyune Pak Budi]
-    answer: 2
-    explain:
-      ar_eg: mbakyuku = أختي الكبيرة. وعشان هي أكبر من أبو ساري، تبقى budhe لساري.
-      ar: mbakyuku = أختي الكبرى، ولأنها أكبر من والد ساري فهي budhe لساري.
-      en: mbakyuku = my older sister. Being older than Sari's father, she's Sari's budhe.
-    words: [mbakyu, budhe]
+    type: match_pairs
+    pairs:
+      - text: mesthi
+        ar_eg: أكيد
+        ar: بالتأكيد
+        en: surely
+      - text: penting
+        ar_eg: مهم
+        ar: مهم
+        en: important
+      - text: melu
+        ar_eg: ييجي معاك
+        ar: يرافق
+        en: come along
+    words: [mesthi, penting, melu]
   - id: e03
     type: listen
-    text: Mbah putri manggon neng kene.
-    options: [Mbah putri manggon neng kana., Mbah kakung manggon neng kene., Mbah putri manggon neng kene.]
-    answer: 2
-    words: [mbah putri, manggon, kene]
-  - id: e04
-    type: fill_blank
-    sentence: Sing neng foto ___ sapa, Pak?
-    meaning:
-      ar_eg: واللي في الصورة دي مين يا عمو؟ (بتشاور على حد في الصورة اللي في إيدك)
-      ar: ومن هذا الذي في الصورة يا عم؟ (تشير إلى شخص في الصورة التي بيدك)
-      en: And who's this in the photo, sir? (pointing at the photo in your hand)
-    answers: [iki]
-    words: [sing, foto, iki]
-  - id: e05
-    type: fill_blank
-    sentence: Omah___ neng Ponorogo.
-    meaning:
-      ar_eg: بيتها في بونوروجو.
-      ar: بيتها في بونوروغو.
-      en: Her house is in Ponorogo.
-    answers: [e]
-    explain:
-      ar_eg: omah آخرها ساكن (h) ⇐ omahe.
-      ar: تنتهي omah بساكن ⇐ omahe.
-      en: omah ends in a consonant ⇒ omahe.
-    words: [omahe]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ده أجوس، أخو ساري الكبير.
-      ar: هذا أغوس، أخو ساري الأكبر.
-      en: This is Agus, Sari's older brother.
-    answers: ["Iki Agus, mase Sari.", "Iki Agus, mase Sari", "Iki Agus mase Sari.", Iki Agus mase Sari, "Kuwi Agus, mase Sari.", "Kuwi Agus, mase Sari", "Kuwi Agus mase Sari.", Kuwi Agus mase Sari]
-    words: [mas]
-  - id: e07
-    type: listen
-    text: Iki fotone kulawargaku.
-    options: [Iki fotone kulawargaku., Iki omahe kulawargaku., Iki fotone mbakyuku.]
+    text: Wingi aku neng omahe simbah.
+    question:
+      ar_eg: كان فين امبارح؟
+      ar: أين كان أمس؟
+      en: Where was he yesterday?
+    options: [امبارح كنت في بيت جدو, بكرة هروح بيت جدو, جدو في بيتي]
     answer: 0
     meaning:
-      ar_eg: دي صورة عيلتي.
-      ar: هذه صورة عائلتي.
-      en: This is a photo of my family.
-    words: [foto, kulawarga, omahe, mbakyu]
+      ar_eg: امبارح كنت في بيت جدو.
+      ar: كنت أمس في بيت الجد.
+      en: Yesterday I was at Grandpa's.
+    words: [wingi]
+  - id: e04
+    type: fill_blank
+    sentence: Aku ___ neng omahe Pakdhe!
+    meaning:
+      ar_eg: أنا ___ لبيت عمو!
+      ar: أنا ___ إلى بيت العم!
+      en: I'm ___ to Uncle's house!
+    options: [melu, wingi, tambah]
+    answers: [melu]
+    words: [melu, wingi, tambah]
+  - id: e05
+    type: fill_blank
+    sentence: Sing ___ sehat.
+    meaning:
+      ar_eg: الـ ___ الصحة.
+      ar: الـ ___ الصحة.
+      en: What's ___ is health.
+    options: [penting, tambah, uga]
+    answers: [penting]
+    words: [penting, tambah, uga]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بو راهايو بتعرض عليك رز تاني. بتقول إيه؟
+      ar: تعرض عليك بو راهايو مزيدًا من الأرز. ماذا تقول؟
+      en: Bu Rahayu offers you more rice. What does she say?
+    options: ['Tambah sega?', 'Uga sega?', 'Wingi sega?']
+    answer: 0
+    explain:
+      ar_eg: tambah = زيادة. uga = برضه، وwingi = امبارح.
+      ar: tambah = المزيد، أما uga فأيضًا وwingi أمس.
+      en: tambah = more. uga = also, wingi = yesterday.
+    words: [tambah, uga, wingi]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «أكيد»؟
+      ar: أيّ كلمة تعني «بالتأكيد»؟
+      en: Which word means "surely"?
+    options: [mesthi, uga, melu]
+    answer: 0
+    explain:
+      ar_eg: mesthi = أكيد. uga = برضه، وmelu = ييجي معاك.
+      ar: mesthi = بالتأكيد، أما uga فأيضًا وmelu يرافق.
+      en: mesthi = surely. uga = also, melu = come along.
+    words: [mesthi, uga, melu]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: عمي وطنط ساكنين في بونوروجو.
-      ar: عمي وعمتي يسكنان في بونوروغو.
-      en: My uncle and aunt live in Ponorogo.
-    answer: Pakdhe karo budhe manggon neng Ponorogo.
-    alternatives: [Budhe karo pakdhe manggon neng Ponorogo.]
-    distractors: [saka, adhi]
-    words: [pakdhe, budhe, manggon]
+      ar_eg: جدو كمان مدرس.
+      ar: الجد معلّم أيضًا.
+      en: Grandpa is a teacher too.
+    answer: Simbah uga guru.
+    distractors: [mesthi, tambah]
+    words: [uga]
   - id: e09
-    type: dictation
-    text: Pakdhe karo budhe manggon neng Ponorogo.
-    meaning:
-      ar_eg: عمي وطنط ساكنين في بونوروجو.
-      ar: عمي وعمتي يسكنان في بونوروغو.
-      en: My uncle and aunt live in Ponorogo.
-    words: [pakdhe, budhe]
+    type: translate
+    direction: from_target
+    source_text: Bapak mesthi seneng.
+    answers_meaning:
+      ar_eg: [أكيد بابا هيبقى مبسوط, بابا أكيد هيفرح]
+      ar: [سيكون الأب سعيدًا بالتأكيد, سيفرح الأب حتمًا]
+      en: [Dad will definitely be happy, Dad will surely be pleased]
+    words: [mesthi]
   - id: e10
     type: speaking
-    text: Fotone apik! Kulawargane Pak Budi gedhe!
+    text: Sing penting kabeh sehat.
     meaning:
-      ar_eg: الصورة حلوة! عيلة باك بودي كبيرة!
-      ar: الصورة جميلة! عائلة باك بودي كبيرة!
-      en: Nice photo! Pak Budi's family is big!
-    words: [foto, kulawarga]
+      ar_eg: المهم إن الكل بخير.
+      ar: المهم أن الجميع بخير.
+      en: What matters is that everyone's well.
+    words: [penting]
 dialogue:
-  title: Foto kulawarga
   lines:
+    - speaker: Bu Rahayu
+      text: Mas Mohamed, tambah sega?
+      ar_eg: يا ماس محمد، تزود رز؟
+      ar: يا محمد، أتريد مزيدًا من الأرز؟
+      en: Mohamed, more rice?
     - speaker: Mohamed
-      text: Pak, iki fotone kulawargane Pak Budi?
-      ar_eg: يا عمو، دي صورة عيلة حضرتك؟
-      ar: يا عم، أهذه صورة عائلتك يا Pak Budi؟
-      en: Pak, is this a photo of your family?
-    - speaker: Pak Budi
-      text: Iya. Iki aku, iki bojoku.
-      ar_eg: أيوه. ده أنا، ودي مراتي.
-      ar: نعم. هذا أنا، وهذه زوجتي.
-      en: Yes. This is me, and this is my wife.
+      text: Nggih, Bu, matur nuwun.
+      ar_eg: أيوه يا حاجة، شكرًا.
+      ar: نعم يا سيدتي، شكرًا.
+      en: Yes please, Bu, thank you.
+    - speaker: Bu Rahayu
+      text: Wingi kowe ngantuk banget, ta? Saiki piye?
+      ar_eg: امبارح كنت نعسان جدًا، مش كده؟ عامل إيه دلوقتي؟
+      ar: كنت نعسان جدًا أمس، أليس كذلك؟ كيف حالك الآن؟
+      en: You were really sleepy yesterday, weren't you? How are you now?
     - speaker: Mohamed
-      text: Sing iki sapa, Pak?
-      ar_eg: واللي ده مين يا عمو؟
-      ar: ومن هذا يا عم؟
-      en: And who's this one, Pak?
-    - speaker: Pak Budi
-      text: Kuwi Agus, mase Sari. Lan kuwi Bayu, adhine.
-      ar_eg: ده أجوس، أخو ساري الكبير. وده بايو، أخوها الصغير.
-      ar: ذاك أغوس، أخو ساري الأكبر. وذاك بايو، أخوها الأصغر.
-      en: That's Agus, Sari's older brother. And that's Bayu, her younger brother.
+      text: Saiki apik, Bu. Sing penting sehat.
+      ar_eg: دلوقتي كويس يا حاجة. المهم الصحة.
+      ar: الآن بخير يا سيدتي. المهم الصحة.
+      en: I'm fine now, Bu. Health is what matters.
+    - speaker: Sari
+      text: Sesuk aku neng omahe Simbah. Mas melu?
+      ar_eg: بكرة أنا رايحة بيت جدو. جاي معايا؟
+      ar: غدًا سأذهب إلى بيت الجد. أتأتي معي؟
+      en: Tomorrow I'm going to Grandpa's. Coming along?
     - speaker: Mohamed
-      text: Lan sing iki?
-      ar_eg: واللي دي؟
-      ar: وهذه؟
-      en: And this one?
-    - speaker: Pak Budi
-      text: Kuwi mbakyuku, budhene Sari. Omahe neng Ponorogo. Mbah putri manggon neng kene, karo aku.
-      ar_eg: دي أختي الكبيرة، طنط ساري. بيتها في بونوروجو. وتيتة ساكنة هنا معايا.
-      ar: تلك أختي الكبرى، عمّة ساري. بيتها في بونوروغو. والجدة تسكن هنا معي.
-      en: That's my older sister, Sari's budhe. Her house is in Ponorogo. Grandma lives here, with me.
+      text: Melu! Bayu uga melu, ta? Mesthi rame.
+      ar_eg: جاي! وبايو جاي برضه، صح؟ أكيد هتبقى حلوة وزحمة.
+      ar: سآتي! وبايو سيأتي أيضًا، صحيح؟ ستكون حتمًا مفعمة بالحياة.
+      en: I'm in! Bayu's coming too, right? It'll surely be lively.
 new_words:
-  - word: foto
-    pos: noun
-    ar_eg: صورة (زي الإندونيسي)
-    ar: صورة (كالإندونيسية)
-    en: photo (as in Indonesian)
+  - word: tambah
+    pos: verb
+    ar_eg: زيادة / كمان (tambah)
+    ar: المزيد / يضيف (tambah)
+    en: more, add (tambah)
+  - word: wingi
+    pos: adverb
+    ar_eg: امبارح (kemarin)
+    ar: أمس (kemarin)
+    en: yesterday (kemarin)
+  - word: uga
+    pos: adverb
+    ar_eg: كمان / برضه (juga)
+    ar: أيضًا (juga)
+    en: also, too (juga)
+  - word: mesthi
+    pos: adverb
+    ar_eg: أكيد (pasti)
+    ar: بالتأكيد (pasti)
+    en: surely, definitely (pasti)
+  - word: penting
+    pos: adjective
+    ar_eg: مهم (penting)؛ sing penting = المهم
+    ar: مهم (penting)؛ sing penting = المهم
+    en: important (penting); sing penting = what matters
+  - word: melu
+    pos: verb
+    ar_eg: ييجي معاك / يشارك (ikut)
+    ar: يرافق / يشارك (ikut)
+    en: come along, join in (ikut)
 review:
   status: draft
   verified: false

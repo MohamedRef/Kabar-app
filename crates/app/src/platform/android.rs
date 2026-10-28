@@ -311,6 +311,20 @@ pub fn network_metered() -> Result<bool, String> {
     })
 }
 
+/// `SystemBars.apply(activity, day, night)`: bar colours as ARGB ints.
+pub fn system_bars(day: i32, night: i32) -> Result<(), String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.SystemBars"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("apply"),
+            jni_sig!("(Landroid/app/Activity;II)V"),
+            &[JValue::Object(activity), JValue::Int(day), JValue::Int(night)],
+        )?;
+        Ok(())
+    })
+}
+
 /// `Haptics.available(activity)`: the device has a vibration motor.
 pub fn has_vibrator() -> Result<bool, String> {
     with_activity(|env, activity| {

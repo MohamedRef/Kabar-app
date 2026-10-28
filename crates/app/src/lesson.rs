@@ -1320,6 +1320,38 @@ fn speaker_icon() -> Element {
 // Slides, dialogue, summary
 // ---------------------------------------------------------------------------
 
+/// The language of a table column: an "Indonesia" column in a Javanese
+/// lesson holds Indonesian words; every other column the lesson's own.
+fn column_tag(head: Option<&str>, target: &'static str) -> &'static str {
+    let indonesian = head.is_some_and(|h| {
+        let h = h.trim().to_lowercase();
+        h == "indonesia" || h == "indonesian" || h == "bahasa indonesia"
+    });
+    if indonesian { "id" } else { target }
+}
+
+/// One table cell. A cell that is a word or phrase always shows how it's
+/// said, in its column's language, so a table follows one rule (#381):
+/// Javanese "awan" is said even though Indonesian spells it the same.
+#[component]
+fn TableCell(text: String, tag: &'static str) -> Element {
+    let ui = use_context::<Ui>();
+    let say = ui.settings.read().ui_language != UiLanguage::En;
+    let word = latin_runs(&text).len() == 1 && is_target_run(&text) && !text.contains("**");
+    if !word {
+        return rsx! { Rich { text, target: tag, pron: true } };
+    }
+    rsx! {
+        // Word over its pronunciation, so a four-column table fits a phone.
+        span { class: "lp-cell-word",
+            bdi { lang: tag, dir: "ltr", class: "latin", "{text}" }
+            if say {
+                Pron { text: text.clone(), tag, inline: true }
+            }
+        }
+    }
+}
+
 #[component]
 fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Element {
     let ui = use_context::<Ui>();
@@ -1360,7 +1392,12 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                             for (i, row) in table.rows.iter().enumerate() {
                                 tr { key: "{i}",
                                     for (j, cell) in row.cells.iter().enumerate() {
-                                        td { key: "{j}", lang: target, Rich { text: cell.clone(), target, pron: true } }
+                                        {
+                                            let tag = column_tag(table.head.get(j).map(String::as_str), target);
+                                            rsx! {
+                                                td { key: "{j}", lang: tag, TableCell { text: cell.clone(), tag } }
+                                            }
+                                        }
                                     }
                                     td { class: "muted", "{pick(&row.meaning, lang)}" }
                                 }

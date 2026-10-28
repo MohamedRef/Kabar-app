@@ -110,6 +110,26 @@ pub fn can_vibrate() -> bool {
     }
 }
 
+/// Paints Android's status and navigation bars in the theme's background,
+/// with icons that read on it; `day` and `night` are `#rrggbb` (the same for
+/// a fixed theme). Does nothing elsewhere: the Mac keeps its own title bar.
+pub fn system_bars(day: &str, night: &str) {
+    #[cfg(target_os = "android")]
+    {
+        let argb = |hex: &str| {
+            let rgb = u32::from_str_radix(hex.trim_start_matches('#'), 16).unwrap_or(0);
+            (0xff00_0000 | rgb) as i32
+        };
+        if let Err(e) = android::system_bars(argb(day), argb(night)) {
+            crate::diag::report!("system bars failed: {e}");
+        }
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        let _ = (day, night);
+    }
+}
+
 /// Vibrates once for `kind` where the device can; does nothing elsewhere.
 pub fn vibrate(kind: Haptic) {
     #[cfg(target_os = "android")]
