@@ -18,6 +18,7 @@ use kabar_protocol::lesson::Localized;
 use kabar_protocol::srs::{Card, CardKind, MeaningShift, Rating, ReviewMode, StudyLanguage};
 use serde::Deserialize;
 
+use crate::Screen;
 use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::i18n::Msg;
@@ -619,9 +620,20 @@ fn ReviewHome() -> Element {
     rsx! {
         div { class: "card",
             h2 { "{ui.t(Msg::NavReview)}" }
+            // Due and new start a classic round; the rest open Stats.
             div { class: "rev-stats",
-                Stat { label: Msg::RevDue, value: ui.num(stats.due as u64), accent: true }
-                Stat { label: Msg::RevNew, value: ui.num(stats.new_available as u64), accent: false }
+                Stat {
+                    label: Msg::RevDue,
+                    value: ui.num(stats.due as u64),
+                    accent: true,
+                    start: stats.due > 0,
+                }
+                Stat {
+                    label: Msg::RevNew,
+                    value: ui.num(stats.new_available as u64),
+                    accent: false,
+                    start: stats.new_available > 0,
+                }
                 Stat { label: Msg::RevReviewedToday, value: ui.num(stats.reviews_today as u64), accent: false }
                 Stat {
                     label: Msg::RevRetention,
@@ -639,6 +651,11 @@ fn ReviewHome() -> Element {
         }
         div { class: "card",
             h3 { class: "rev-h3", "{ui.t(Msg::RevForecast)}" }
+            // The week's bars open Stats, where the forecast runs further.
+            button {
+                class: "tap tap-plain forecast-tap",
+                aria_label: "{ui.t(Msg::RevForecast)}",
+                onclick: move |_| crate::stats::open(ui, Screen::Stats),
             ol { class: "forecast",
                 for (i, n) in forecast.iter().copied().enumerate() {
                     li {
@@ -658,6 +675,7 @@ fn ReviewHome() -> Element {
                         }
                     }
                 }
+            }
             }
             crate::stats::StatsButton {}
         }
@@ -694,11 +712,22 @@ fn ReviewHome() -> Element {
     }
 }
 
+/// A number that opens what it counts: a classic round when `start` is
+/// given, else Stats.
 #[component]
-fn Stat(label: Msg, value: String, accent: bool) -> Element {
+fn Stat(label: Msg, value: String, accent: bool, #[props(default)] start: bool) -> Element {
     let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
     rsx! {
-        div { class: if accent { "rev-stat accent" } else { "rev-stat" },
+        button {
+            class: if accent { "rev-stat accent tap" } else { "rev-stat tap" },
+            onclick: move |_| {
+                if start {
+                    engine.start(ReviewMode::Classic);
+                } else {
+                    crate::stats::open(ui, Screen::Stats);
+                }
+            },
             span { class: "rev-stat-value", "{value}" }
             span { class: "rev-stat-label", "{ui.t(label)}" }
         }

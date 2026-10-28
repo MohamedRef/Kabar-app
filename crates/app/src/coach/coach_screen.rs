@@ -4,7 +4,7 @@
 use dioxus::prelude::*;
 use kabar_core::coach::voice::Line;
 use kabar_core::coach::{report, rewards};
-use kabar_protocol::coach::{ActivityEvent, ActivityKind, CoachProfile, LocalDate, WeeklyReport};
+use kabar_protocol::coach::{ActivityEvent, ActivityKind, CoachProfile, LocalDate, Skill, WeeklyReport};
 
 use super::widgets::{Nur, Stat};
 use super::{Coach, labels, logic, say};
@@ -139,11 +139,22 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
             }
             if !r.next_focus.is_empty() {
                 h3 { "{ui.t(Msg::NextFocus)}" }
+                // Each focus opens where that skill is practised.
                 ol { class: "focus-list",
                     for (i , f) in r.next_focus.iter().enumerate() {
                         li { key: "{i}",
-                            "{ui.t(labels::skill(f.skill))} · "
-                            bdi { lang: "id", "{f.topic}" }
+                            button {
+                                class: "tap tap-plain",
+                                onclick: {
+                                    let to = skill_screen(f.skill);
+                                    move |_| {
+                                        let mut screen = ui.screen;
+                                        screen.set(to);
+                                    }
+                                },
+                                "{ui.t(labels::skill(f.skill))} · "
+                                bdi { lang: "id", "{f.topic}" }
+                            }
                         }
                     }
                 }
@@ -160,6 +171,16 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
                 }
             }
         }
+    }
+}
+
+/// Where a skill is practised.
+fn skill_screen(skill: Skill) -> Screen {
+    match skill {
+        Skill::Reading => Screen::Reader,
+        Skill::Listening => Screen::Listen,
+        Skill::Vocabulary => Screen::Review,
+        Skill::Writing | Skill::Speaking => Screen::Play,
     }
 }
 

@@ -245,3 +245,11 @@
 .app:not([data-width="compact"]) .level-art { inline-size: 6rem; block-size: 6rem; }
 .jm-sticker .sticker-leader { stroke: var(--indigo); stroke-opacity: 0.5; stroke-width: 0.5; stroke-dasharray: 1 1; stroke-linecap: round; }
 .jm-sticker[data-selected="true"] .sticker-leader { stroke: var(--dawn); stroke-opacity: 0.9; }
+
+/* Taps (main.css .tap): a level's name and a stop's name open the next
+   lesson there; a souvenir opens the lesson that gave it. */
+button.level-title { font-weight: inherit; }
+button.level-title .chev { margin-inline-start: auto; align-self: center; }
+button.stop-head { font-size: inherit; font-weight: inherit; inline-size: auto; }
+.souvenirs > li { display: grid; }
+button.souvenir { display: block; inline-size: 100%; text-align: start; }
