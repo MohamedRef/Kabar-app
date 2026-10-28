@@ -48,11 +48,29 @@ fn url(id: &str) -> Option<&'static str> {
     URLS.get(id).map(String::as_str)
 }
 
-fn eval_play(id: &str, volume: f32) {
+/// Plays a sound by id. The web view keeps one `Audio` element per sound in
+/// `window.__kabarSounds`, so the ~70 KB data URL crosses into it only the
+/// first time; every later play sends just the id.
+fn eval_play(id: &'static str, volume: f32) {
     let Some(url) = url(id) else { return };
-    document::eval(&format!(
-        "try {{ const a = new Audio({url:?}); a.volume = {volume}; a.play().catch(() => {{}}); }} catch (e) {{}}"
-    ));
+    let id_js = format!("{id:?}");
+    let play = format!(
+        "const a = (window.__kabarSounds ??= {{}})[{id_js}];
+         if (!a) {{ dioxus.send(false); }} else {{
+           try {{ a.pause(); a.currentTime = 0; a.volume = {volume}; a.play().catch(() => {{}}); }} catch (e) {{}}
+           dioxus.send(true);
+         }}"
+    );
+    spawn(async move {
+        if let Ok(true) = document::eval(&play).recv::<bool>().await {
+            return;
+        }
+        // First play in this web view (or it was reloaded): load it once.
+        document::eval(&format!(
+            "try {{ const a = new Audio({url:?}); (window.__kabarSounds ??= {{}})[{id_js}] = a;
+                   a.volume = {volume}; a.play().catch(() => {{}}); }} catch (e) {{}}"
+        ));
+    });
 }
 
 const END_VOLUME: f32 = 0.7;
