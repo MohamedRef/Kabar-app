@@ -58,19 +58,21 @@ jobs:
       # Advisory until the Jogja/Madiun relocation lands: Javanese is Jogja + Madiun only.
       - name: Javanese dialect (advisory)
         run: cargo run -q -p kabar-tools -- dialect --warn
-      # Advisory: a pull request the learner will notice says so in
-      # changes/<topic>.yaml (docs/RELEASE.md §5, "What's new"); without one
-      # the update shows its title, in English.
-      - name: What's new file (advisory)
+      # Every pull request says what the learner will notice in
+      # changes/<topic>.yaml (docs/RELEASE.md §5, "What's new"): new lines in
+      # a new or existing file, or a new file holding [] when there is
+      # nothing to tell. Without one the update showed the PR's English
+      # title under the wrong kind. The files must parse.
+      - name: What's new file
         if: github.event_name == 'pull_request'
         env:
           BASE: ${{ github.base_ref }}
         run: |
           git fetch -q --depth=1 origin "$BASE"
-          files="$(git diff --name-only --diff-filter=AM FETCH_HEAD HEAD)"
-          if grep -qE '^(crates/(app|core)/|android/|content/)' <<<"$files" \
-            && ! grep -qE '^changes/.+\.yaml$' <<<"$files"; then
-            echo "::warning::No changes/*.yaml: the app will show this PR's title (English) as what's new. Add one line per visible change, or a file holding [] when there is nothing to tell."
+          files="$(git diff --name-only --diff-filter=AM FETCH_HEAD HEAD -- 'changes/*.yaml')"
+          if ! grep -qE '^changes/[^/]+\.yaml$' <<<"$files"; then
+            echo "::error::No changes/<topic>.yaml in this pull request. Add one line per change the learner can see (kind new/improved/fixed, ar_eg in Egyptian Arabic, en), or a file holding [] when there is nothing to tell. See docs/RELEASE.md §5."
+            exit 1
           fi
           cargo run -q -p kabar-tools -- update changes >/dev/null
 
