@@ -19,7 +19,7 @@ the Arabic words Indonesian already borrowed.
 
 | Feature | Mac | S24 Ultra (phone) | Tab S11 (tablet) |
 |---|---|---|---|
-| Journey Map (Jakarta → Raja Ampat, Surabaya → Yogyakarta), Lesson Player, Lanjut handoff | ✓ | ✓ vertical route | ✓ full map, pinch and pan |
+| Journey Map (Jakarta → Raja Ampat, Yogyakarta ↔ Madiun), Lesson Player, Lanjut handoff | ✓ zoom out to the whole journey | ✓ vertical route | ✓ full map, pinch and pan, zoom out to the whole journey |
 | Placement test, level tests ("Take a flight"), monthly level check | ✓ | ✓ | ✓ |
 | Review (FSRS): classic cards, 1-minute bursts, typed answers | ✓ | ✓ | ✓ |
 | Stats: skill radar, pace and forecast | ✓ | ✓ | ✓ |
@@ -34,6 +34,7 @@ the Arabic words Indonesian already borrowed.
 | Watch & listen: Sinetron, Kabar Radio, offline download, background playback | ✓ | ✓ background audio | ✓ background audio |
 | Persona chats: a chat partner for every level (10 personas) | ✓ | ✓ | ✓ |
 | Studio: AI mind maps, Study Desk panes | ✓ | — | ✓ |
+| Lesson sounds (pick them in Settings) and a light vibration | ✓ sounds | ✓ vibration follows the phone's touch setting | ✓ vibration follows the tablet's touch setting |
 | Offline packs (audio per unit) | ✓ | ✓ | ✓ |
 | Sync through Kabar Cloud, Google sign-in, Devices screen | ✓ | ✓ | ✓ |
 | Updates over the air: signed feed, automatic / tell me first / off, alpha·beta·stable (preview for CI builds) | ✓ swaps Kabar.app | ✓ PackageInstaller | ✓ PackageInstaller |
@@ -60,21 +61,21 @@ every morning. CI warns when the table below is behind the content.
 | BIPA 3 | Lombok | B1 | 10 | 97 | 936 | 505 | 1,623 / 1,600 | ~11 h | 39 |
 | BIPA 4 | Sulawesi | B2 | 10 | 114 | 1,062 | 502 | 2,125 / 2,100 | ~12 h | 37 |
 | BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,235 | 599 | 2,723 / 2,700 | ~13 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 606 | 3,329 / 3,300 | ~13 h | 38 |
-| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 704 | 4,033 / 4,000 | ~15 h | 38 |
-| **Total** |  | — | 70 | 788 | 7,657 | 4,035 | 4,033 / 4,000 | ~86 h | 260 |
+| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 608 | 3,331 / 3,300 | ~13 h | 38 |
+| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 704 | 4,035 / 4,000 | ~15 h | 38 |
+| **Total** |  | — | 70 | 788 | 7,657 | 4,037 | 4,035 / 4,000 | ~86 h | 260 |
 
 **Javanese (J1–J6)**
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | J1 | Malioboro, Yogyakarta | — | 7 | 56 | 519 | 305 | 256 / 250 | ~6 h | 34 |
-| J2 | Madiun | — | 6 | 56 | 541 | 293 | 502 / 500 | ~6 h | 35 |
-| J3 | Pakualaman, Yogyakarta | — | 6 | 61 | 554 | 250 | 710 / 750 | ~6 h | 35 |
-| J4 | Kraton, Yogyakarta | — | 6 | 69 | 648 | 247 | 934 / 1,000 | ~8 h | 38 |
-| J5 | Kutha Pendekar (Madiun) | — | 6 | 72 | 683 | 299 | 1,184 / 1,250 | ~8 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 86 | 808 | 293 | 1,440 / 1,500 | ~9 h | 37 |
-| **Total** |  | — | 37 | 400 | 3,753 | 1,687 | 1,440 / 1,500 | ~44 h | 218 |
+| J2 | Madiun | — | 6 | 48 | 461 | 229 | 438 / 500 | ~5 h | 35 |
+| J3 | Pakualaman, Yogyakarta | — | 6 | 67 | 615 | 298 | 694 / 750 | ~7 h | 35 |
+| J4 | Kraton, Yogyakarta | — | 6 | 73 | 687 | 273 | 944 / 1,000 | ~8 h | 38 |
+| J5 | Kutha Pendekar (Madiun) | — | 6 | 72 | 683 | 299 | 1,194 / 1,250 | ~8 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 86 | 808 | 293 | 1,450 / 1,500 | ~9 h | 37 |
+| **Total** |  | — | 37 | 402 | 3,773 | 1,697 | 1,450 / 1,500 | ~44 h | 218 |
 
 **Reference content and stories**
 
@@ -177,6 +178,8 @@ Jump straight into a lesson or test: `KABAR_OPEN_LESSON=bipa1.u01.l01 just run-m
 | [RELEASE.md](docs/RELEASE.md) | Release checklist (no release yet) |
 | [CONTENT.md](docs/CONTENT.md) | Content pipeline |
 | [PEDAGOGY.md](docs/PEDAGOGY.md) | Lesson pacing and evidence |
+| [DESIGN.md](docs/DESIGN.md) | Design system: how screens look and adapt |
+| [CAST.md](docs/CAST.md) | Who is who, and which units each character belongs to |
 | [RESEARCH.md](docs/RESEARCH.md) | Services and free-tier verification |
 | [BAKEOFF.md](docs/BAKEOFF.md) | Engine bake-off |
 | [VISUAL-ASSETS.md](docs/VISUAL-ASSETS.md) | Art pipeline |
