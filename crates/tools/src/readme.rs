@@ -61,7 +61,8 @@ struct LevelRow {
     new_words: usize,
     /// Distinct words taught up to the end of this level, and the plan.
     /// Javanese leaves out words spelled and meaning like an Indonesian new
-    /// word (#289); a false friend (mau "a moment ago") still counts.
+    /// word (#289) or marked `same_as_id` (a near-twin like bedha, a chat
+    /// abbreviation like udh); a false friend (mau "a moment ago") still counts.
     known: usize,
     target: Option<u64>,
     minutes: u64,
@@ -199,7 +200,7 @@ fn awaiting(open: usize) -> String {
 }
 
 /// Lesson id → (exercises, new words lower-cased, the false friends among
-/// them), for every file in `content/lessons/`.
+/// them, the ones marked `same_as_id`), for every file in `content/lessons/`.
 fn lesson_files(root: &Path) -> Result<BTreeMap<String, Lesson>> {
     let mut out = BTreeMap::new();
     for f in yaml_files(&root.join("content/lessons"))? {
@@ -207,11 +208,13 @@ fn lesson_files(root: &Path) -> Result<BTreeMap<String, Lesson>> {
         let id = v["id"].as_str().with_context(|| format!("{}: no id", f.display()))?.to_string();
         let all = || v["new_words"].as_array().into_iter().flatten();
         let words = all().map(|w| str_of(&w["word"]).to_lowercase()).collect();
-        let false_friends = all()
-            .filter(|w| w["false_friend"].is_string())
-            .map(|w| str_of(&w["word"]).to_lowercase())
-            .collect();
-        out.insert(id, (len(&v["exercises"]), words, false_friends));
+        let marked = |key: &str| {
+            all()
+                .filter(|w| !w[key].is_null() && w[key] != false)
+                .map(|w| str_of(&w["word"]).to_lowercase())
+                .collect()
+        };
+        out.insert(id, (len(&v["exercises"]), words, marked("false_friend"), marked("same_as_id")));
     }
     Ok(out)
 }
@@ -228,9 +231,10 @@ fn test_items(root: &Path) -> Result<BTreeMap<String, usize>> {
     Ok(out)
 }
 
-type Lesson = (usize, Vec<String>, BTreeSet<String>);
+type Lesson = (usize, Vec<String>, BTreeSet<String>, BTreeSet<String>);
 
-/// `twins`: words that only count as known when they are false friends.
+/// `twins`: words that only count as known when they are false friends;
+/// with `twins`, words marked `same_as_id` never count.
 fn levels(
     root: &Path,
     file: &str,
@@ -254,12 +258,15 @@ fn levels(
             for lesson in unit["lessons"].as_array().into_iter().flatten() {
                 r.planned += 1;
                 r.minutes += lesson["minutes"].as_u64().unwrap_or(0);
-                if let Some((ex, words, false_friends)) = lessons.get(&str_of(&lesson["id"])) {
+                if let Some((ex, words, false_friends, same)) = lessons.get(&str_of(&lesson["id"])) {
                     r.written += 1;
                     r.exercises += ex;
                     r.new_words += words.len();
-                    let counts =
-                        |w: &&String| twins.is_none_or(|t| !t.contains(*w) || false_friends.contains(*w));
+                    let counts = |w: &&String| {
+                        twins.is_none_or(|t| {
+                            (!t.contains(*w) || false_friends.contains(*w)) && !same.contains(*w)
+                        })
+                    };
                     known.extend(words.iter().filter(counts).cloned());
                 }
             }
