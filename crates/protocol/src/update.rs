@@ -124,12 +124,37 @@ pub struct UpdateManifest {
     /// Older apps ignore it.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub history: Vec<BuildChanges>,
+    /// The content bundle (`crate::bundle`) of this build: devices whose app
+    /// is this build or older read their lessons and the rest from it, so
+    /// content changes need no install. Older apps ignore it.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub content: Option<ContentFile>,
 }
 
 impl UpdateManifest {
     pub fn asset(&self, platform: UpdatePlatform) -> Option<&UpdateAsset> {
         self.assets.iter().find(|a| a.platform == platform)
     }
+
+    /// The build that made `asset`: an earlier one when a content-only feed
+    /// carries the app over unchanged, else this feed's.
+    pub fn build_of(&self, asset: &UpdateAsset) -> u64 {
+        asset.build.unwrap_or(self.build)
+    }
+}
+
+/// The feed's content bundle.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ContentFile {
+    /// File name next to `update.json`, like [`UpdateAsset::file`].
+    pub file: String,
+    pub size: u64,
+    /// SHA-256 of the file, lowercase hex.
+    pub sha256: String,
+    /// The app build its stylesheets were made with: only a running build
+    /// of the feed's version with exactly this number uses them, so a newer
+    /// look never lands on older screens.
+    pub ui_build: u64,
 }
 
 #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
@@ -157,6 +182,9 @@ pub struct BuildChanges {
     /// RFC 3339, when the build was published.
     pub published_at: String,
     pub changes: Vec<Change>,
+    /// Content or the look only: it arrived with no app install.
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub content_only: bool,
 }
 
 impl BuildChanges {
@@ -203,6 +231,11 @@ pub struct UpdateAsset {
     /// over the old app to succeed.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub version_code: Option<u64>,
+    /// The build that made this file when a content-only feed carries it
+    /// over from an earlier one; absent, the manifest's own build. Apps
+    /// compare this, so such a feed never offers the app they already run.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub build: Option<u64>,
 }
 
 #[cfg(test)]

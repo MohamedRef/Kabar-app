@@ -16,11 +16,12 @@ use kabar_core::lang::analyze::AnalyzedToken;
 use super::ReaderState;
 use super::doc::ReadDoc;
 use super::explain::{GrammarEntry, library, voice_of};
+use crate::embedded::{Css, css};
 use crate::i18n::Msg;
 use crate::lesson::Rich;
 use crate::{Db, Ui};
 
-pub const CSS: &str = include_str!("../../assets/reader-grammar.css");
+pub const CSS: Css = css!("assets/reader-grammar.css");
 
 /// One sentence of the text and the grammar found in it.
 #[derive(Clone, Debug, PartialEq)]

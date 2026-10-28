@@ -11,7 +11,7 @@ use base64::Engine as _;
 use dioxus::prelude::*;
 use kabar_core::cast::Cast;
 
-use crate::embedded::{CAST, unpack};
+use crate::embedded::{CAST, text};
 
 // PORTRAITS: (cast id[-expression], 256x256 WebP).
 include!(concat!(env!("OUT_DIR"), "/portraits.rs"));
@@ -57,7 +57,7 @@ static URLS: LazyLock<HashMap<&'static str, String>> = LazyLock::new(|| {
 });
 
 static REGISTRY: LazyLock<Cast> = LazyLock::new(|| {
-    Cast::parse(&unpack(CAST)).unwrap_or_else(|e| {
+    Cast::parse(&text(CAST)).unwrap_or_else(|e| {
         crate::diag::report!("reading content/cast.yaml failed: {e}");
         Cast::default()
     })

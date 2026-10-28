@@ -284,8 +284,8 @@ mod tests {
         let files: Vec<_> = embedded::all(GRAMMAR).collect();
         let (lib, problems) = Library::from_yaml(files.iter().map(|(id, yaml)| (*id, yaml.as_str())));
         assert!(problems.is_empty(), "{problems:#?}");
-        assert_eq!(lib.len(), GRAMMAR.len());
-        assert!(GRAMMAR.len() > 100);
+        assert_eq!(lib.len(), GRAMMAR.rows.len());
+        assert!(GRAMMAR.rows.len() > 100);
     }
 
     #[test]

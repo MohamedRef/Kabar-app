@@ -66,6 +66,8 @@ miniz_oxide = "0.8"
 
 [dev-dependencies]
 tempfile = "3"
+# Signs test update feeds (the app itself only verifies, via kabar-core).
+ed25519-dalek = "2"
 
 [features]
 default = ["desktop"]

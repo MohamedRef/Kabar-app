@@ -16,9 +16,10 @@ use kabar_protocol::content::{Lang, Trilingual};
 use kabar_protocol::learn::{SourceKind, TaughtEntry};
 use serde::Deserialize;
 
+use crate::embedded::{Css, css};
 use crate::{Db, Ui};
 
-const TEACH_CSS: &str = include_str!("../assets/teach.css");
+const TEACH_CSS: Css = css!("assets/teach.css");
 
 /// What the popover hands over when the learner taps "Teach Kabar".
 #[derive(Clone, Debug, PartialEq)]
@@ -201,7 +202,7 @@ pub fn TeachScreen() -> Element {
     let google = text::google_search_url(lang(), &word());
 
     rsx! {
-        style { {TEACH_CSS} }
+        style { {TEACH_CSS.text()} }
         div { class: "card teach",
             h2 { "{tr(T::Title)}" }
             p { class: "muted", "{tr(T::Intro)}" }

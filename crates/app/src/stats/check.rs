@@ -29,6 +29,7 @@ use super::text::{S, st};
 use super::{fill, iso, level_label, level_tests, load_logs, pct, rtl};
 use crate::annotated::Annotated;
 use crate::coach::{Coach, labels, say, widgets::Nur};
+use crate::embedded::{Css, css};
 use crate::lesson::text::{L, lt};
 use crate::lesson::{
     Draft, ExerciseView, MAX_STEP_MS, Rich, TextAnswer, autoplay_text, draft_answer, instruction,
@@ -37,8 +38,8 @@ use crate::lesson::{
 use crate::portraits::Mood;
 use crate::{Db, Screen, Ui};
 
-const LESSON_CSS: &str = include_str!("../../assets/lesson.css");
-const TEST_CSS: &str = include_str!("../../assets/test.css");
+const LESSON_CSS: Css = css!("assets/lesson.css");
+const TEST_CSS: Css = css!("assets/test.css");
 /// Only the Indonesian route has level tests so far.
 const LANGUAGE: &str = "id";
 
@@ -214,9 +215,9 @@ pub fn LevelCheckScreen() -> Element {
         },
     };
     rsx! {
-        style { {LESSON_CSS} }
-        style { {TEST_CSS} }
-        style { {super::STATS_CSS} }
+        style { {LESSON_CSS.text()} }
+        style { {TEST_CSS.text()} }
+        style { {super::STATS_CSS.text()} }
         div { class: "st st-check",
             div { class: "st-head",
                 button {

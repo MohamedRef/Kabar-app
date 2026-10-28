@@ -45,6 +45,7 @@ const SHEET_CSS: &str = r#"
 .us-sheet [data-kind="improved"] { --hue: var(--us-improved); }
 .us-sheet [data-kind="fixed"], .us-badge[data-badge="latest"], .us-badge[data-badge="new"] { --hue: var(--us-fixed); }
 .us-badge[data-badge="installed"] { --hue: var(--us-installed); }
+.us-badge[data-badge="content"] { --hue: var(--us-new); }
 .us-head { display: flex; gap: 0.875rem; align-items: center;
   padding: max(1rem, env(safe-area-inset-top)) 1rem 0.75rem; }
 .us-logo { flex: none; inline-size: 3rem; block-size: 3rem; border-radius: 50%; overflow: hidden; }
@@ -416,7 +417,7 @@ pub fn UpdateSheet() -> Element {
         _ => None,
     };
     let current = s.current();
-    let this_label = label(&s.version, s.build);
+    let this_label = label(&s.version, s.shown_build());
     let latest_key = s.history.first().map(BuildChanges::key);
 
     // What the timeline shows first, the jump the summary names, and what
@@ -482,7 +483,7 @@ pub fn UpdateSheet() -> Element {
     let today = today(&s);
     let badge_of = |b: &BuildChanges| -> Option<(&'static str, U)> {
         let o = changelog::order(&b.version, b.build);
-        if Some(b.key()) == Some(format!("{}+{}", s.version, s.build)) {
+        if Some(b.key()) == Some(format!("{}+{}", s.version, s.shown_build())) {
             Some(("installed", U::BadgeInstalled))
         } else if latest_key.as_deref() == Some(b.key().as_str()) {
             Some(("latest", U::BadgeLatest))
@@ -509,7 +510,7 @@ pub fn UpdateSheet() -> Element {
         .collect();
     // As in Morphe, the installed build closes the main list and "Earlier
     // builds" starts after it.
-    let this_key = format!("{}+{}", s.version, s.build);
+    let this_key = format!("{}+{}", s.version, s.shown_build());
     let first_earlier = shown.iter().position(|(e, b)| *e && b.key() != this_key);
     let more_earlier = earlier.len() > show_earlier;
     let empty = shown.is_empty();
@@ -615,6 +616,9 @@ pub fn UpdateSheet() -> Element {
                                             bdi { dir: "ltr", class: "latin", "v{label(&b.version, b.build)}" }
                                             if let Some((id, u)) = badge {
                                                 span { class: "us-badge", "data-badge": "{id}", "{ut(lang, u)}" }
+                                            }
+                                            if b.content_only {
+                                                span { class: "us-badge", "data-badge": "content", "{ut(lang, U::BadgeContent)}" }
                                             }
                                         }
                                         span { class: "us-rel-meta", "{meta}" }

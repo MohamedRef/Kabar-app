@@ -161,6 +161,27 @@ icon; GitHub (the channel's releases page) and the download or install
 button stay pinned at the bottom. A build whose lines were all
 housekeeping drops out of the feed.
 
+**Content without an install.** The feed also carries a content bundle
+(`kabar_protocol::bundle`, made by `kabar-tools update bundle`): every file
+the app builds in (lessons, tests, stories, Radio, personas, grammar,
+glosses, the Bridge, the frequency list, speech levels, the cast and both
+curricula, the list in `crates/protocol/src/bundle_sources.rs` that
+`crates/app/build.rs` shares) plus the stylesheets under `crates/app`. A
+check downloads a newer bundle in the background (on Wi-Fi in automatic
+mode), checks its signed size and SHA-256 and that every file unpacks, and
+keeps it in `<data>/content/`; from the next launch the app reads its content
+from it (`crate::embedded`). It is used only while it is at least as new as
+the running build, so an app update (newer content built in) drops it. Its
+stylesheets apply only on the exact build in the manifest's `ui_build`.
+When everything merged since the preview feed's commit is that content (not
+the curricula, which `kabar-core` also embeds), `changes/`, `docs/`, a
+top-level `.md` or a `crates/app/**/*.css` file, CI builds no APK:
+`update manifest --carry android-arm64` keeps the feed's APK entry (same
+file, its own `build`), apps compare that build and offer nothing to
+install, and the history entry is marked as a content update in "What's
+new". `kabar-tools validate` runs before every bundle is built. Strings,
+icons, art, layout and logic are code and still come with an APK.
+
 **Channels.** `alpha`, `beta`, `stable` for release builds (the learner
 picks in Settings; a beta also reaches alpha, a release reaches everyone),
 and `preview` for CI builds of `main`, which is fixed for them. Each channel

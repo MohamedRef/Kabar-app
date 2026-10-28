@@ -29,9 +29,10 @@ use crate::platform::{self, TtsStatus};
 use crate::pron::Pron;
 use crate::{Db, Ui};
 
-const LESSON_CSS: &str = include_str!("../assets/lesson.css");
+const LESSON_CSS: Css = css!("assets/lesson.css");
 
 use crate::embedded::{self, LESSONS, TESTS};
+use crate::embedded::{Css, css};
 
 /// The YAML of a lesson, if this build ships it.
 pub fn lesson_content(id: &str) -> Option<String> {
@@ -64,7 +65,7 @@ pub fn LessonScreen() -> Element {
     let body = match &*opened.read() {
         Opened::Test(yaml) => {
             return rsx! {
-                style { {LESSON_CSS} }
+                style { {LESSON_CSS.text()} }
                 test_player::TestScreen { id: id.clone(), yaml: yaml.clone() }
             };
         }
@@ -77,7 +78,7 @@ pub fn LessonScreen() -> Element {
         Opened::Lesson(lesson) => rsx! { PlayerView { key: "{id}", lesson: (**lesson).clone() } },
     };
     rsx! {
-        style { {LESSON_CSS} }
+        style { {LESSON_CSS.text()} }
         {body}
     }
 }
@@ -868,7 +869,7 @@ fn Title(text: String, target: &'static str) -> Element {
 #[component]
 pub fn EpisodeQuiz(lesson: LessonContent, on_close: EventHandler) -> Element {
     rsx! {
-        style { {LESSON_CSS} }
+        style { {LESSON_CSS.text()} }
         PlayerView { lesson, on_close }
     }
 }
@@ -2275,7 +2276,7 @@ mod tests {
 
     #[test]
     fn every_embedded_test_parses_validates_and_can_be_passed() {
-        assert!(TESTS.len() >= 3, "only {} tests embedded", TESTS.len());
+        assert!(TESTS.rows.len() >= 3, "only {} tests embedded", TESTS.rows.len());
         for (id, yaml) in embedded::all(TESTS) {
             let test = parse_test(&yaml).unwrap_or_else(|e| panic!("{id}: {e}"));
             assert_eq!(&test.id, id);
@@ -2300,7 +2301,7 @@ mod tests {
 
     #[test]
     fn every_embedded_lesson_parses_and_validates() {
-        assert!(LESSONS.len() >= 100, "only {} lessons embedded", LESSONS.len());
+        assert!(LESSONS.rows.len() >= 100, "only {} lessons embedded", LESSONS.rows.len());
         let mut problems = Vec::new();
         for (id, yaml) in embedded::all(LESSONS) {
             match parse_lesson(&yaml) {
