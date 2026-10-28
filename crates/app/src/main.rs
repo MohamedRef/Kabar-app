@@ -351,28 +351,35 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
-    // Android's status and navigation bars take the theme's background, so
-    // True black keeps the whole OLED screen dark. A System theme also
-    // repaints them when the device switches dark mode while Kabar is open.
-    let mut os_scheme = use_signal(|| 0u32);
+    // System themes follow the device's dark mode. Android's WebView can't
+    // be trusted for it (it reports light under a light activity theme), so
+    // there the platform is asked directly and re-asked every few seconds,
+    // and `data-theme` names the concrete side. Elsewhere `device_dark` is
+    // None and `prefers-color-scheme` does the job.
+    let mut device_dark = use_signal(platform::device_dark);
     use_future(move || async move {
-        let mut eval = document::eval(
-            r#"matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => dioxus.send(1));
-            await new Promise(() => {});"#,
-        );
-        while eval.recv::<u32>().await.is_ok() {
-            os_scheme += 1;
+        if device_dark.peek().is_none() {
+            return;
+        }
+        loop {
+            tokio::time::sleep(std::time::Duration::from_secs(2)).await;
+            let now = platform::device_dark();
+            if now.is_some() && now != *device_dark.peek() {
+                device_dark.set(now);
+            }
         }
     });
+    // Android's status and navigation bars take the theme's background, so
+    // True black keeps the whole OLED screen dark.
     use_effect(move || {
-        os_scheme.read();
+        device_dark.read();
         let (day, night) = ui.settings.read().theme.day_and_night();
         platform::system_bars(day.bg, night.bg);
     });
 
     let settings = ui.settings.read();
     let lang = settings.ui_language;
-    let theme = settings.theme.as_str();
+    let theme = settings.theme.resolved(*device_dark.read()).as_str();
     let width = ui.width.read().as_str();
     let theme_css = use_hook(theme::stylesheet);
     let pron_font = use_hook(pron::font_css);
