@@ -211,6 +211,11 @@ fn mask_any_case(text: &str, phrase: &str) -> String {
     out
 }
 
+/// Javanese (aksara) or Arabic script.
+fn script(c: char) -> bool {
+    matches!(c, '\u{0600}'..='\u{06FF}' | '\u{A980}'..='\u{A9DF}')
+}
+
 /// Lowercased words of `text` the learner should know at `pos`, and the
 /// unknown ones among them.
 fn measure(
@@ -226,7 +231,9 @@ fn measure(
     let sentences = text.split(['.', '!', '?', '…', ':', ';', '"', '“', '”', '(', ')', '\n']);
     let words = sentences.flat_map(|s| tokens(s).into_iter().enumerate());
     for (at, tok) in words {
-        if tok.chars().any(|c| c.is_ascii_digit()) {
+        // Numbers, single letters ("a" as in "written a, read o") and words
+        // shown in Javanese or Arabic script are not vocabulary to read.
+        if tok.chars().any(|c| c.is_ascii_digit() || script(c)) || tok.chars().count() == 1 {
             continue;
         }
         let w = tok.to_lowercase();
@@ -461,6 +468,8 @@ mod tests {
             measure(&track(), &names, 0, "Saya makan pecel 2 kali, Pak Joko.", &ex("pecel = طبق خضار"));
         assert_eq!(n, 4);
         assert_eq!(u, vec!["kali".to_owned()]);
+        let (n, u) = measure(&track(), &names, 0, "Saya makan a, ꦱꦺꦴꦠꦺꦴ, نور.", &ex(""));
+        assert_eq!((n, u), (2, Vec::<String>::new()));
     }
 
     #[test]
