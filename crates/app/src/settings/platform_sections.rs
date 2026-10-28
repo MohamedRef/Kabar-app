@@ -237,18 +237,17 @@ pub fn AccountSection() -> Element {
     let nav = use_context::<SettingsNav>();
     rsx! {
         crate::account::AccountScreen {}
-        div { class: "card",
-            div { class: "row",
-                button {
-                    onclick: move |_| {
-                        let mut s = ui.screen;
-                        s.set(Screen::Cost);
-                        nav.close();
-                    },
-                    span { class: "nav-icon", aria_hidden: "true", {crate::icons::nav(Screen::Cost)} }
-                    " {ui.t(Msg::CostTitle)}"
-                }
-            }
+        // The card is the button, so the whole of it opens the cost page.
+        button {
+            class: "card tap tap-link",
+            onclick: move |_| {
+                let mut s = ui.screen;
+                s.set(Screen::Cost);
+                nav.close();
+            },
+            span { class: "nav-icon", aria_hidden: "true", {crate::icons::nav(Screen::Cost)} }
+            span { class: "tap-link-text", "{ui.t(Msg::CostTitle)}" }
+            span { class: "chev", aria_hidden: "true" }
         }
     }
 }

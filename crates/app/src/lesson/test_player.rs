@@ -73,10 +73,12 @@ pub fn PlacementInvite() -> Element {
         return rsx! {};
     }
     rsx! {
-        div { class: "card placement-invite", style: "margin-block-start: 1rem",
+        // The whole card opens the test; the button's click bubbles up to it.
+        div { class: "card card-action placement-invite", style: "margin-block-start: 1rem",
+            onclick: move |_| ui.open_lesson("placement"),
             h3 { "{lt(lang, L::InviteTitle)}" }
             p { class: "muted", "{localize_digits(lt(lang, L::InviteBody), lang, eastern)}" }
-            button { class: "primary", onclick: move |_| ui.open_lesson("placement"), "{lt(lang, L::InviteButton)}" }
+            button { class: "primary", "{lt(lang, L::InviteButton)}" }
         }
     }
 }

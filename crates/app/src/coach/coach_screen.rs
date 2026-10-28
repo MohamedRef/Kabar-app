@@ -349,19 +349,18 @@ fn Warung(today: LocalDate) -> Element {
 fn JournalLink() -> Element {
     let ui = use_context::<Ui>();
     rsx! {
-        div { class: "card journal-link",
+        // The whole card opens the Journal; the button's click bubbles up to it.
+        div { class: "card card-action journal-link",
+            onclick: move |_| {
+                let mut screen = ui.screen;
+                screen.set(Screen::Journal);
+            },
             h2 {
                 span { class: "nav-icon", aria_hidden: "true", {icons::nav(Screen::Journal)} }
                 " {ui.t(Msg::JournalTitle)}"
             }
             p { class: "muted", "{ui.t(Msg::JournalIntro)}" }
-            button {
-                class: "primary",
-                onclick: move |_| {
-                    let mut screen = ui.screen;
-                    screen.set(Screen::Journal);
-                },
-                "{ui.t(Msg::JournalOpen)}" }
+            button { class: "primary", "{ui.t(Msg::JournalOpen)}" }
         }
     }
 }

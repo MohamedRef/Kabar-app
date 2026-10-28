@@ -21,6 +21,7 @@ pub fn CostScreen() -> Element {
     let cloud = use_context::<Cloud>();
     let status = cloud.status.read().clone();
     let connected = status.configured && status.sync != SyncState::SignedOut;
+    let configured = status.configured;
 
     // Ask for fresh counters when the screen opens and whenever sync comes back.
     let state = use_memo(move || cloud.status.read().sync);
@@ -64,16 +65,18 @@ pub fn CostScreen() -> Element {
                 }
             },
             (false, _) => rsx! {
-                div { class: "card",
+                // Signed out: the whole card opens sign-in (the button's click bubbles up).
+                div {
+                    class: if status.configured { "card card-action" } else { "card" },
+                    onclick: move |_| {
+                        if configured {
+                            let mut s = ui.screen;
+                            s.set(Screen::Devices);
+                        }
+                    },
                     p { "{ui.t(Msg::CostOffline)}" }
                     if status.configured {
-                        button {
-                            onclick: move |_| {
-                                let mut s = ui.screen;
-                                s.set(Screen::Devices);
-                            },
-                            "{ui.t(Msg::CloudSignIn)}"
-                        }
+                        button { "{ui.t(Msg::CloudSignIn)}" }
                     }
                 }
             },

@@ -210,6 +210,8 @@
 /* ---------- suitcase ---------- */
 .souvenirs { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
 .souvenir { position: relative; margin: 0; border-block-start: 4px solid var(--gold); }
+/* The souvenir the Journal's line pointed at. */
+.souvenir.found { outline: 3px solid var(--gold); outline-offset: 3px; }
 .souvenir h3 { margin: 0 0 0.25rem; font-size: 1.1rem; padding-inline-end: 3.5rem; }
 .souvenir-where { margin: 0 0 0.6rem; font-size: 0.85rem; }
 .souvenir-note { margin: 0; font-size: 0.92rem; font-family: var(--font-latin); text-align: start; }
