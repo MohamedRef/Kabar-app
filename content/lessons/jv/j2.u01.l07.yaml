@@ -1,203 +1,174 @@
 schema: kabar.lesson/v1
 id: j2.u01.l07
 language: jv
-title: Kulawargaku
+title: Kulawargane Pak Budi
 can_do:
-  ar_eg: تقرا بوست قصير عن عيلة وتفهم مين قريب مين.
-  ar: أن تقرأ منشورًا قصيرًا عن عائلة وتفهم صلات القرابة فيه.
-  en: Read a short post about a family.
+  ar_eg: توصف عيلة.
+  ar: أن تصف عائلة.
+  en: Describe a family.
 slides:
-  - title: Statuse Sari
-    grammar: jv.possessive.e-ne
+  - title: Iki sapa?
     body:
       ar_eg: |
-        Sari نزّلت صورة عيلتها على الواتساب وكتبت تحتها بوست صغير. اقراه واخد بالك من آخر الكلمات:
-        - ‎-ku = بتاعي: bapakku = أبويا، masku = أخويا الكبير.
-        - ‎-e / -ne = بتاعه / بتاع فلان: omahe Bapak = بيت بابا.
-        - manggon = ساكن، duwe = عنده، saiki = دلوقتي.
+        على حيطة محل Pak Budi فيه صورة كبيرة للعيلة. عشان توصفها محتاج:
+        - Iki / Kuwi sapa? = مين ده؟ · Sing iki sapa? = واللي ده مين؟
+        - كلمات العيلة: bapak، ibu، mas، mbakyu، adhi، pakdhe، budhe، mbah putri…
+        - -e / -ne عشان «بتاع فلان»: mase Sari = أخو ساري الكبير، omahe = بيته.
+        - -ku للي بتاعك: bojoku = مراتي، anakku = ابني / بنتي.
       ar: |
-        نشرت Sari صورة عائلتها على واتساب وكتبت تحتها منشورًا قصيرًا. اقرأه وانتبه لأواخر الكلمات:
-        - ‎-ku = ـي: bapakku = أبي، وmasku = أخي الأكبر.
-        - ‎-e / -ne = ـه / الخاص بفلان: omahe Bapak = بيت أبي.
-        - manggon = يسكن، وduwe = يملك، وsaiki = الآن.
+        على جدار مطعم Pak Budi صورة كبيرة للعائلة، ولوصفها تحتاج:
+        - Iki / Kuwi sapa? = من هذا؟ · Sing iki sapa? = ومن هذا؟
+        - ألفاظ العائلة: bapak وibu وmas وmbakyu وadhi وpakdhe وbudhe وmbah putri…
+        - -e / -ne للإضافة: mase Sari = أخو ساري الأكبر، omahe = بيته.
+        - -ku للمتكلم: bojoku = زوجتي، anakku = ولدي.
       en: |
-        Sari posted a family photo on WhatsApp with a short caption. Read it and watch the word endings:
-        - -ku = my: bapakku = my father, masku = my older brother.
-        - -e / -ne = his / her / X's: omahe Bapak = Dad's house.
-        - manggon = live, duwe = have, saiki = now.
+        On the wall of Pak Budi's warung hangs a big family photo. To describe it you need:
+        - Iki / Kuwi sapa? = Who's this? · Sing iki sapa? = And who's this one?
+        - Family words: bapak, ibu, mas, mbakyu, adhi, pakdhe, budhe, mbah putri…
+        - -e / -ne for "X's": mase Sari = Sari's older brother, omahe = his house.
+        - -ku for "my": bojoku = my wife, anakku = my child.
+    grammar: jv.kinship.terms
     examples:
-      - text: Jenengku Sari, aku saka Madiun. Saiki aku sinau neng Kairo.
-        ar_eg: اسمي ساري، أنا من ماديون. دلوقتي بدرس في القاهرة.
-        ar: اسمي ساري، وأنا من ماديون. أدرس الآن في القاهرة.
-        en: My name is Sari, I'm from Madiun. Now I study in Cairo.
-      - text: Bapak lan ibuku manggon neng Madiun. Bapakku duwe warung.
-        ar_eg: بابا وماما ساكنين في ماديون. بابا عنده وارونج (مطعم صغير).
-        ar: أبي وأمي يسكنان في ماديون. أبي يملك مطعمًا صغيرًا.
-        en: My father and mother live in Madiun. My father has a warung.
-      - text: Mas Agus, Bayu lan Mbah putri manggon neng omahe Bapak.
-        ar_eg: أخويا الكبير أجوس وبايو وتيتة ساكنين في بيت بابا.
-        ar: أخي الأكبر أغوس وبايو وجدّتي يسكنون في بيت أبي.
-        en: My older brother Agus, Bayu and Grandma live in Dad's house.
+      - text: Kuwi Agus, mase Sari.
+        ar_eg: ده أجوس، أخو ساري الكبير.
+        ar: ذاك أغوس، أخو ساري الأكبر.
+        en: That's Agus, Sari's older brother.
 exercises:
   - id: e01
     type: multiple_choice
-    question: Saiki aku sinau neng Kairo.
     question_meaning:
-      ar_eg: Sari بتدرس فين دلوقتي؟
-      ar: أين تدرس Sari الآن؟
-      en: Where does Sari study now?
-    options: ["Neng Madiun.", "Neng Kairo.", "Neng Suroboyo."]
-    answer: 1
-    explain:
-      ar_eg: هي من ماديون (saka Madiun)، لكن saiki (دلوقتي) بتدرس في القاهرة.
-      ar: هي من ماديون (saka Madiun)، لكنها saiki (الآن) تدرس في القاهرة.
-      en: She's from Madiun (saka Madiun), but saiki (now) she studies in Cairo.
-    words: [saiki, sinau]
+      ar_eg: (من الحوار) الـ budhe بتاعة ساري ساكنة فين؟
+      ar: (من الحوار) أين تسكن budhe ساري؟
+      en: (From the dialogue) Where does Sari's budhe live?
+    options: [Neng Madiun, Neng Kairo, Neng Ponorogo]
+    answer: 2
+    words: [budhe, manggon]
   - id: e02
     type: multiple_choice
-    question: Bapakku duwe warung.
+    question: Kuwi mbakyuku, budhene Sari.
     question_meaning:
-      ar_eg: أبو Sari عنده إيه؟
-      ar: ماذا يملك والد Sari؟
-      en: What does Sari's father have?
-    options: ["Warung.", "Toko buku.", "Omah neng Kairo."]
-    answer: 0
+      ar_eg: Pak Budi بيقول كده. الست دي إيه بالنسبة له؟
+      ar: يقول Pak Budi هذا. ما صلة هذه السيدة به؟
+      en: Pak Budi says this. Who is this woman to him?
+    options: [Bojone Pak Budi, Adhine Pak Budi, Mbakyune Pak Budi]
+    answer: 2
     explain:
-      ar_eg: duwe = عنده (punya).
-      ar: duwe = يملك (punya).
-      en: duwe = have (punya).
-    words: [duwe]
+      ar_eg: mbakyuku = أختي الكبيرة. وعشان هي أكبر من أبو ساري، تبقى budhe لساري.
+      ar: mbakyuku = أختي الكبرى، ولأنها أكبر من والد ساري فهي budhe لساري.
+      en: mbakyuku = my older sister. Being older than Sari's father, she's Sari's budhe.
+    words: [mbakyu, budhe]
   - id: e03
-    type: multiple_choice
-    question: Mas Agus, Bayu lan Mbah putri manggon neng omahe Bapak.
-    question_meaning:
-      ar_eg: مين من دول ساكن في بيت أبو Sari؟
-      ar: من يسكن في بيت والد Sari؟
-      en: Who lives in Sari's father's house?
-    options: ["Sari.", "Pakdhe lan budhe.", "Mbah putri."]
-    answer: 2
-    explain:
-      ar_eg: omahe Bapak = بيت بابا، وMbah putri = تيتة ساكنة هناك. Sari نفسها في القاهرة.
-      ar: omahe Bapak = بيت أبي، وMbah putri = الجدّة تسكن هناك، أما Sari ففي القاهرة.
-      en: omahe Bapak = Dad's house, and Mbah putri lives there. Sari herself is in Cairo.
-    words: [manggon, mbah putri]
-  - id: e04
     type: listen
-    text: Bapakku duwe warung.
-    options: ["Masku duwe warung.", "Bapakku nyambut gawe neng warung.", "Bapakku duwe warung."]
+    text: Mbah putri manggon neng kene.
+    options: [Mbah putri manggon neng kana., Mbah kakung manggon neng kene., Mbah putri manggon neng kene.]
     answer: 2
-    meaning:
-      ar_eg: بابا عنده وارونج.
-      ar: أبي يملك مطعمًا صغيرًا.
-      en: My father has a warung.
-    words: [bapak, duwe]
-  - id: e05
-    type: match_pairs
-    pairs:
-      - text: masku
-        ar_eg: أخويا الكبير
-        ar: أخي الأكبر
-        en: my older brother
-      - text: adhiku
-        ar_eg: أخويا / أختي الصغيرة
-        ar: أخي / أختي الأصغر
-        en: my younger sibling
-      - text: omahe Bapak
-        ar_eg: بيت بابا
-        ar: بيت أبي
-        en: Dad's house
-      - text: mbah putri
-        ar_eg: تيتة
-        ar: الجدّة
-        en: grandmother
-      - text: manggon
-        ar_eg: يسكن
-        ar: يسكن
-        en: live (somewhere)
-    words: [mas, adhi, mbah putri, manggon]
-  - id: e06
+    words: [mbah putri, manggon, kene]
+  - id: e04
     type: fill_blank
-    sentence: Sari kancaku. Bapak___ duwe warung.
+    sentence: Sing neng foto ___ sapa, Pak?
     meaning:
-      ar_eg: ساري صاحبتي. أبوها عنده وارونج.
-      ar: ساري صديقتي. أبوها يملك مطعمًا صغيرًا.
-      en: Sari is my friend. Her father has a warung.
-    options: ["ku", "ne", "e"]
-    answers: ["e"]
+      ar_eg: واللي في الصورة دي مين يا عمو؟ (بتشاور على حد في الصورة اللي في إيدك)
+      ar: ومن هذا الذي في الصورة يا عم؟ (تشير إلى شخص في الصورة التي بيدك)
+      en: And who's this in the photo, sir? (pointing at the photo in your hand)
+    answers: [iki]
+    words: [sing, foto, iki]
+  - id: e05
+    type: fill_blank
+    sentence: Omah___ neng Ponorogo.
+    meaning:
+      ar_eg: بيتها في بونوروجو.
+      ar: بيتها في بونوروغو.
+      en: Her house is in Ponorogo.
+    answers: [e]
     explain:
-      ar_eg: هنا «أبوها» مش «أبويا»، فنقول bapake. وbapak آخرها حرف ساكن، فبناخد ‎-e مش ‎-ne.
-      ar: المقصود «أبوها» لا «أبي»، فنقول bapake. وbapak تنتهي بساكن، فتأخذ ‎-e لا ‎-ne.
-      en: It's "her father", not "my father", so bapake. bapak ends in a consonant, so it takes -e, not -ne.
-    words: [-e / -ne, bapak]
-  - id: e07
+      ar_eg: omah آخرها ساكن (h) ⇐ omahe.
+      ar: تنتهي omah بساكن ⇐ omahe.
+      en: omah ends in a consonant ⇒ omahe.
+    words: [omahe]
+  - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب بوست زي Sari: «أبويا وأمي ساكنين في القاهرة.»"
-      ar: "اكتب منشورًا مثل Sari: «أبي وأمي يسكنان في القاهرة.»"
-      en: "Write a post like Sari's: \"My father and mother live in Cairo.\""
-    answers:
-      - Bapak lan ibuku manggon neng Kairo.
-      - Bapak lan ibuku manggon neng Kairo
-      - Bapakku lan ibuku manggon neng Kairo.
-      - Bapakku lan ibuku manggon neng Kairo
-      - Bapak karo ibuku manggon neng Kairo.
-      - Bapakku karo ibuku manggon neng Kairo.
-      - Bapak lan ibuku manggon ing Kairo.
-    explain:
-      ar_eg: "زي ما Sari كتبت: Bapak lan ibuku = أبويا وأمي، وmanggon neng = ساكنين في."
-      ar: "كما كتبت Sari: Bapak lan ibuku = أبي وأمي، وmanggon neng = يسكنان في."
-      en: "Just as Sari wrote: Bapak lan ibuku = my father and mother, manggon neng = live in."
-    words: [bapak, ibu, manggon]
+      ar_eg: ده أجوس، أخو ساري الكبير.
+      ar: هذا أغوس، أخو ساري الأكبر.
+      en: This is Agus, Sari's older brother.
+    answers: ["Iki Agus, mase Sari.", "Iki Agus, mase Sari", "Iki Agus mase Sari.", Iki Agus mase Sari, "Kuwi Agus, mase Sari.", "Kuwi Agus, mase Sari", "Kuwi Agus mase Sari.", Kuwi Agus mase Sari]
+    words: [mas]
+  - id: e07
+    type: listen
+    text: Iki fotone kulawargaku.
+    options: [Iki fotone kulawargaku., Iki omahe kulawargaku., Iki fotone mbakyuku.]
+    answer: 0
+    meaning:
+      ar_eg: دي صورة عيلتي.
+      ar: هذه صورة عائلتي.
+      en: This is a photo of my family.
+    words: [foto, kulawarga, omahe, mbakyu]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: تيتة ساكنة في بيت أخويا الكبير.
-      ar: جدّتي تسكن في بيت أخي الأكبر.
-      en: Grandma lives in my older brother's house.
-    answer: Mbah putri manggon neng omahe masku.
-    distractors: [omahku, bapak]
-    explain:
-      ar_eg: "omahe masku = بيت أخويا: الحاجة الأول، وبعدين صاحبها."
-      ar: "omahe masku = بيت أخي: الشيء أولًا ثم صاحبه."
-      en: "omahe masku = my older brother's house: the thing first, then the owner."
-    words: [mbah putri, manggon, -e / -ne, mas]
+      ar_eg: عمي وطنط ساكنين في بونوروجو.
+      ar: عمي وعمتي يسكنان في بونوروغو.
+      en: My uncle and aunt live in Ponorogo.
+    answer: Pakdhe karo budhe manggon neng Ponorogo.
+    alternatives: [Budhe karo pakdhe manggon neng Ponorogo.]
+    distractors: [saka, adhi]
+    words: [pakdhe, budhe, manggon]
   - id: e09
-    type: speaking
-    text: Kulawargaku manggon neng Kairo.
+    type: dictation
+    text: Pakdhe karo budhe manggon neng Ponorogo.
     meaning:
-      ar_eg: عيلتي ساكنة في القاهرة.
-      ar: عائلتي تسكن في القاهرة.
-      en: My family lives in Cairo.
-    words: [kulawarga, manggon]
+      ar_eg: عمي وطنط ساكنين في بونوروجو.
+      ar: عمي وعمتي يسكنان في بونوروغو.
+      en: My uncle and aunt live in Ponorogo.
+    words: [pakdhe, budhe]
+  - id: e10
+    type: speaking
+    text: Fotone apik! Kulawargane Pak Budi gedhe!
+    meaning:
+      ar_eg: الصورة حلوة! عيلة باك بودي كبيرة!
+      ar: الصورة جميلة! عائلة باك بودي كبيرة!
+      en: Nice photo! Pak Budi's family is big!
+    words: [foto, kulawarga]
 dialogue:
-  title: Statuse Sari
+  title: Foto kulawarga
   lines:
     - speaker: Mohamed
-      text: Sari, aku wis maca statusmu.
-      ar_eg: يا ساري، قريت الستيتس بتاعك.
-      ar: يا ساري، قرأت حالتك.
-      en: Sari, I've read your status.
-    - speaker: Sari
-      text: Apik ra? Iki kulawargaku.
-      ar_eg: حلو؟ دي عيلتي.
-      ar: هل هو جميل؟ هذه عائلتي.
-      en: Is it nice? This is my family.
+      text: Pak, iki fotone kulawargane Pak Budi?
+      ar_eg: يا عمو، دي صورة عيلة حضرتك؟
+      ar: يا عم، أهذه صورة عائلتك يا Pak Budi؟
+      en: Pak, is this a photo of your family?
+    - speaker: Pak Budi
+      text: Iya. Iki aku, iki bojoku.
+      ar_eg: أيوه. ده أنا، ودي مراتي.
+      ar: نعم. هذا أنا، وهذه زوجتي.
+      en: Yes. This is me, and this is my wife.
     - speaker: Mohamed
-      text: Apik! Mbah putri manggon neng omahe bapakmu, to?
-      ar_eg: حلو! تيتة ساكنة في بيت أبوكي، صح؟
-      ar: جميل! جدّتك تسكن في بيت أبيك، أليس كذلك؟
-      en: Lovely! Your grandma lives in your father's house, right?
-    - speaker: Sari
-      text: Iya, karo Mas Agus lan Bayu.
-      ar_eg: أيوه، مع أخويا أجوس وبايو.
-      ar: نعم، مع أخي أغوس وبايو.
-      en: Yes, with Mas Agus and Bayu.
+      text: Sing iki sapa, Pak?
+      ar_eg: واللي ده مين يا عمو؟
+      ar: ومن هذا يا عم؟
+      en: And who's this one, Pak?
+    - speaker: Pak Budi
+      text: Kuwi Agus, mase Sari. Lan kuwi Bayu, adhine.
+      ar_eg: ده أجوس، أخو ساري الكبير. وده بايو، أخوها الصغير.
+      ar: ذاك أغوس، أخو ساري الأكبر. وذاك بايو، أخوها الأصغر.
+      en: That's Agus, Sari's older brother. And that's Bayu, her younger brother.
     - speaker: Mohamed
-      text: Kulawargamu gedhe! Kulawargaku neng Kairo.
-      ar_eg: عيلتك كبيرة! عيلتي في القاهرة.
-      ar: عائلتك كبيرة! عائلتي في القاهرة.
-      en: Your family is big! My family is in Cairo.
+      text: Lan sing iki?
+      ar_eg: واللي دي؟
+      ar: وهذه؟
+      en: And this one?
+    - speaker: Pak Budi
+      text: Kuwi mbakyuku, budhene Sari. Omahe neng Ponorogo. Mbah putri manggon neng kene, karo aku.
+      ar_eg: دي أختي الكبيرة، طنط ساري. بيتها في بونوروجو. وتيتة ساكنة هنا معايا.
+      ar: تلك أختي الكبرى، عمّة ساري. بيتها في بونوروغو. والجدة تسكن هنا معي.
+      en: That's my older sister, Sari's budhe. Her house is in Ponorogo. Grandma lives here, with me.
+new_words:
+  - word: foto
+    pos: noun
+    ar_eg: صورة (زي الإندونيسي)
+    ar: صورة (كالإندونيسية)
+    en: photo (as in Indonesian)
 review:
   status: draft
   verified: false

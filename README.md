@@ -60,22 +60,22 @@ every morning. CI warns when the table below is behind the content.
 | BIPA 2 | Bali | A2 | 10 | 85 | 800 | 506 | 1,118 / 1,100 | ~10 h | 35 |
 | BIPA 3 | Lombok | B1 | 10 | 97 | 936 | 505 | 1,623 / 1,600 | ~11 h | 39 |
 | BIPA 4 | Sulawesi | B2 | 10 | 114 | 1,062 | 502 | 2,125 / 2,100 | ~12 h | 37 |
-| BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,235 | 599 | 2,723 / 2,700 | ~13 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 608 | 3,331 / 3,300 | ~13 h | 38 |
+| BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,236 | 601 | 2,725 / 2,700 | ~13 h | 38 |
+| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 606 | 3,331 / 3,300 | ~13 h | 38 |
 | BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 704 | 4,035 / 4,000 | ~15 h | 38 |
-| **Total** |  | — | 70 | 788 | 7,660 | 4,037 | 4,035 / 4,000 | ~86 h | 260 |
+| **Total** |  | — | 70 | 788 | 7,661 | 4,037 | 4,035 / 4,000 | ~86 h | 260 |
 
 **Javanese (J1–J6)**
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
-| J1 | Malioboro, Yogyakarta | — | 7 | 50 | 459 | 261 | 212 / 250 | ~6 h | 34 |
-| J2 | Madiun | — | 6 | 48 | 461 | 240 | 405 / 500 | ~5 h | 35 |
-| J3 | Pakualaman, Yogyakarta | — | 6 | 67 | 615 | 298 | 661 / 750 | ~7 h | 35 |
-| J4 | Kraton, Yogyakarta | — | 6 | 73 | 687 | 274 | 912 / 1,000 | ~8 h | 38 |
-| J5 | Kutha Pendekar (Madiun) | — | 6 | 72 | 683 | 302 | 1,165 / 1,250 | ~8 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 86 | 808 | 294 | 1,422 / 1,500 | ~9 h | 37 |
-| **Total** |  | — | 37 | 396 | 3,713 | 1,669 | 1,422 / 1,500 | ~43 h | 218 |
+| J1 | Malioboro, Yogyakarta | — | 7 | 56 | 519 | 305 | 256 / 250 | ~6 h | 34 |
+| J2 | Madiun | — | 6 | 56 | 541 | 293 | 502 / 500 | ~6 h | 35 |
+| J3 | Pakualaman, Yogyakarta | — | 6 | 67 | 615 | 298 | 758 / 750 | ~7 h | 35 |
+| J4 | Kraton, Yogyakarta | — | 6 | 73 | 687 | 273 | 1,008 / 1,000 | ~8 h | 38 |
+| J5 | Kutha Pendekar (Madiun) | — | 6 | 72 | 683 | 299 | 1,258 / 1,250 | ~8 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 86 | 808 | 293 | 1,514 / 1,500 | ~9 h | 37 |
+| **Total** |  | — | 37 | 410 | 3,853 | 1,761 | 1,514 / 1,500 | ~45 h | 218 |
 
 **Reference content and stories**
 

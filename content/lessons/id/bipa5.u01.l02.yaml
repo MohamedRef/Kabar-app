@@ -123,27 +123,27 @@ exercises:
     words: [lulus]
   - id: e03
     type: fill_blank
-    sentence: Saya mengikuti kursus bahasa Inggris ___ memenuhi syarat perusahaan.
+    sentence: Saya butuh kursus bahasa Inggris ___ memenuhi syarat perusahaan.
     meaning:
-      ar_eg: باخد كورس إنجليزي عشان أستوفي شروط الشركة.
-      ar: ألتحق بدورة إنجليزية لكي أستوفي شروط الشركة.
-      en: I'm taking an English course in order to meet the company's requirements.
+      ar_eg: محتاج كورس إنجليزي عشان أستوفي شروط الشركة.
+      ar: أحتاج إلى دورة إنجليزية لكي أستوفي شروط الشركة.
+      en: I need an English course in order to meet the company's requirements.
     options: [agar, sehingga, sejak]
     answers: [agar]
     explain:
       ar_eg: ده غرض (عشان)، فالأداة agar. sehingga نتيجة، وsejak «من ساعة».
       ar: هذا غرض، فالأداة agar؛ أما sehingga فللنتيجة وsejak للزمن.
       en: This is purpose, so agar; sehingga is result and sejak means since.
-    words: [syarat]
+    words: [syarat, butuh]
   - id: e04
     type: listen
-    text: Gajinya kecil, sehingga dia mencari pekerjaan lain.
+    text: Gajinya kecil, sehingga dia pasti butuh pekerjaan lain.
     options:
-      - Gajinya besar, sehingga dia tidak pindah.
-      - Gajinya kecil, sehingga dia mencari pekerjaan lain.
-      - Gajinya kecil, tetapi dia tidak mencari pekerjaan lain.
+      - Gajinya besar, sehingga dia pasti tidak pindah.
+      - Gajinya kecil, sehingga dia pasti butuh pekerjaan lain.
+      - Gajinya kecil, tetapi dia tidak butuh pekerjaan lain.
     answer: 1
-    words: [gaji]
+    words: [gaji, pasti, butuh]
   - id: e05
     type: build_sentence
     source:
@@ -170,38 +170,58 @@ exercises:
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: لو عندك المهارة دي، المرتب هيبقى أكبر.
-      ar: إن كانت لديك هذه المهارة فسيكون الراتب أكبر.
-      en: If you have this skill, the salary will be bigger.
+      ar_eg: لو عندك المهارة دي، المرتب أكيد هيبقى أكبر.
+      ar: إن كانت لديك هذه المهارة فسيكون الراتب حتمًا أكبر.
+      en: If you have this skill, the salary will surely be bigger.
     answers:
-      - Jika Anda punya keahlian ini, gajinya akan lebih besar.
-      - Jika Anda memiliki keahlian ini, gajinya akan lebih besar.
-      - Apabila Anda punya keahlian ini, gajinya akan lebih besar.
-      - Apabila Anda memiliki keahlian ini, gajinya akan lebih besar.
-      - Kalau Anda punya keahlian ini, gajinya akan lebih besar.
+      - Jika Anda punya keahlian ini, gajinya pasti lebih besar.
+      - Jika Anda memiliki keahlian ini, gajinya pasti lebih besar.
+      - Apabila Anda punya keahlian ini, gajinya pasti lebih besar.
+      - Apabila Anda memiliki keahlian ini, gajinya pasti lebih besar.
+      - Kalau Anda punya keahlian ini, gajinya pasti lebih besar.
     explain:
       ar_eg: الشرط الأول ← jika / apabila وبعدها فاصلة.
       ar: الشرط أولًا ← jika أو apabila ثم فاصلة.
       en: Condition first, so jika / apabila, then a comma.
-    words: [keahlian, gaji]
+    words: [keahlian, gaji, pasti]
   - id: e08
     type: speaking
-    text: Setelah saya lulus, saya bekerja di bidang pemasaran selama lima tahun.
+    text: Setelah saya lulus, saya bekerja di bagian pemasaran selama lima tahun.
     meaning:
       ar_eg: بعد ما اتخرّجت، اشتغلت في التسويق خمس سنين.
       ar: بعد تخرّجي عملت في مجال التسويق خمس سنوات.
       en: After I graduated, I worked in marketing for five years.
-    words: [lulus, pengalaman]
+    words: [lulus, pengalaman, bagian]
   - id: e09
     type: multiple_choice
-    question: "Iklan itu menyebutkan bahwa ___ utamanya adalah pengalaman dua tahun."
+    question: "Iklan itu menyebutkan bahwa ___ utamanya adalah pengalaman dua tahun di bagian keuangan."
     question_meaning:
-      ar_eg: كمّل الجملة. «الإعلان بيقول إن … الأساسي خبرة سنتين.»
-      ar: أكمل الجملة. «يذكر الإعلان أنّ … الأساسي خبرة سنتين.»
-      en: Complete the sentence. "The ad says that the main … is two years' experience."
+      ar_eg: كمّل الجملة. «الإعلان بيقول إن … الأساسي خبرة سنتين في قسم الحسابات.»
+      ar: أكمل الجملة. «يذكر الإعلان أنّ … الأساسي خبرة سنتين في القسم المالي.»
+      en: Complete the sentence. "The ad says that the main … is two years' experience in the finance department."
     options: [gaji, lulus, syarat]
     answer: 2
-    words: [syarat, pengalaman]
+    words: [syarat, pengalaman, bagian]
+  - id: e10
+    type: match_pairs
+    pairs:
+      - text: pasti
+        ar_eg: أكيد
+        ar: حتمًا
+        en: surely
+      - text: butuh
+        ar_eg: محتاج
+        ar: يحتاج
+        en: to need
+      - text: bagian
+        ar_eg: جزء، قسم
+        ar: جزء، قسم
+        en: part, department
+      - text: gaji
+        ar_eg: مرتب
+        ar: راتب
+        en: salary
+    words: [pasti, butuh, bagian, gaji]
 dialogue:
   title: Lowongan di perusahaan minyak
   lines:
@@ -242,6 +262,21 @@ new_words:
     ar_eg: يتخرّج / ينجح
     ar: يتخرّج، ينجح
     en: to graduate, to pass
+  - word: pasti
+    pos: adverb
+    ar_eg: أكيد، لازم
+    ar: حتمًا، بالتأكيد
+    en: certainly, surely
+  - word: butuh
+    pos: verb
+    ar_eg: محتاج (= membutuhkan، أقل رسمية)
+    ar: يحتاج (= membutuhkan، أقل رسمية)
+    en: to need (less formal membutuhkan)
+  - word: bagian
+    pos: noun
+    ar_eg: جزء
+    ar: جزء
+    en: part
 review:
   status: draft
   verified: false
