@@ -50,7 +50,7 @@ use tokio::sync::watch;
 
 /// Where the feeds live: one GitHub release per channel of the public repo
 /// (free; no token needed to download).
-const FEEDS_URL: &str = "https://github.com/MohamedRef/Kabar-app/releases/download";
+pub(super) const FEEDS_URL: &str = "https://github.com/MohamedRef/Kabar-app/releases/download";
 /// The release public key (`just update-keygen` fills it once).
 const RELEASE_KEY: &str = include_str!("../../update-key.pub");
 /// How often a running Kabar looks for an update by itself.
@@ -629,7 +629,7 @@ impl Updater {
     }
 
     /// What's installed, on the channel chosen now.
-    fn installed(&self) -> Installed {
+    pub(super) fn installed(&self) -> Installed {
         self.info.installed(self.tx.borrow().prefs.channel)
     }
 

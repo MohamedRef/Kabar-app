@@ -712,7 +712,17 @@ fn ReviewHome() -> Element {
                     let engine = engine.clone();
                     let burst_secs = ui.num(BURST_MS / 1000);
                     rsx! {
-                        div { key: "{mode:?}", class: if mode == ReviewMode::Burst { "card rev-mode mode-burst" } else { "card rev-mode" },
+                        // The whole card starts the mode when there is something to do;
+                        // the Start button's click bubbles up to it.
+                        div {
+                            key: "{mode:?}",
+                            class: match (mode == ReviewMode::Burst, count > 0) {
+                                (true, true) => "card card-action rev-mode mode-burst",
+                                (true, false) => "card rev-mode mode-burst",
+                                (false, true) => "card card-action rev-mode",
+                                (false, false) => "card rev-mode",
+                            },
+                            onclick: move |_| if count > 0 { engine.start(mode) },
                             h3 { class: "rev-h3", Isolated { text: ui.t(title).to_string() } }
                             p { class: "muted", Isolated { text: ui.t(hint).replace("{n}", &burst_secs) } }
                             if mode == ReviewMode::CardWall && width == WidthClass::Compact {
@@ -724,7 +734,6 @@ fn ReviewHome() -> Element {
                             button {
                                 class: "primary",
                                 disabled: count == 0,
-                                onclick: move |_| engine.start(mode),
                                 "{ui.t(Msg::RevStart)}"
                                 if count > 0 {
                                     span { class: "count-badge", "{ui.num(count as u64)}" }

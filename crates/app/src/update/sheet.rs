@@ -11,8 +11,12 @@
 //!   row with its badge, date and counts, folding open into one card per
 //!   kind that shows five lines and "Show all (n)" beyond six;
 //! - "Earlier builds" under it, a few at a time;
-//! - the download, install or restart button in the foot, so the whole
-//!   update happens here.
+//! - GitHub (the channel's releases page) and the download, install or
+//!   restart button pinned at the foot, so the whole update happens here.
+//!
+//! On a phone it covers the whole screen, with Kabar's icon heading it; on
+//! wider windows it is a centred dialog. Morphe's filled pills: blue for
+//! new, amber for fixes, green for improvements.
 
 use dioxus::prelude::*;
 use kabar_core::locale::{UiLanguage, eastern_arabic_digits};
@@ -25,89 +29,114 @@ use super::{Phase, Status};
 use crate::Ui;
 
 const SHEET_CSS: &str = r#"
-.us-backdrop { position: fixed; inset: 0; z-index: 40; background: rgb(0 0 0 / 0.35); }
-.us-sheet { position: fixed; z-index: 41; inset-inline: 0; inset-block-end: 0; max-block-size: 90dvh;
-  display: flex; flex-direction: column; background: var(--surface); box-shadow: var(--shadow-raised, var(--shadow));
-  border-start-start-radius: var(--radius-lg); border-start-end-radius: var(--radius-lg); }
-.app:not([data-width="compact"]) .us-sheet { inset: 0; margin: auto; inline-size: min(36rem, 92vw);
-  block-size: fit-content; max-block-size: 86dvh; border-radius: var(--radius-lg); }
-.us-head { display: grid; grid-template-columns: auto 1fr auto; gap: var(--sp-3); align-items: center;
-  padding: var(--sp-4) var(--sp-4) var(--sp-2); }
-.us-logo { inline-size: 2.6rem; block-size: 2.6rem; border-radius: 12px; display: grid; place-items: center;
-  background: color-mix(in srgb, var(--sawah) 14%, var(--surface)); color: var(--sawah); }
-.us-logo svg { inline-size: 1.5rem; block-size: 1.5rem; }
+/* Phones: a full page over everything, as Morphe's update screen is; from
+   600px a centred dialog. */
+.us-backdrop { position: fixed; inset: 0; z-index: 60; background: rgb(0 0 0 / 0.45); }
+.us-sheet { position: fixed; z-index: 61; inset: 0; display: flex; flex-direction: column;
+  background: var(--bg); color: var(--text);
+  /* Morphe's tones: blue for new, amber for fixes, green for improvements.
+     Filled at 60% over the page and inked at 30% over the text, so each
+     theme (light, dark, true black) gets a strong pill with readable text. */
+  --us-new: #4a78e8; --us-fixed: #c08a00; --us-improved: #2f9a3a; --us-installed: #2f9a3a; }
+.app:not([data-width="compact"]) .us-sheet { inset: 0; margin: auto; inline-size: min(34rem, 92vw);
+  block-size: min(46rem, 88dvh); border-radius: 1.5rem; border: 1px solid var(--line);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.3); overflow: hidden; }
+.us-sheet [data-kind="new"], .us-sheet .us-ver.to { --hue: var(--us-new); }
+.us-sheet [data-kind="improved"] { --hue: var(--us-improved); }
+.us-sheet [data-kind="fixed"], .us-badge[data-badge="latest"], .us-badge[data-badge="new"] { --hue: var(--us-fixed); }
+.us-badge[data-badge="installed"] { --hue: var(--us-installed); }
+.us-head { display: flex; gap: 0.875rem; align-items: center;
+  padding: max(1rem, env(safe-area-inset-top)) 1rem 0.75rem; }
+.us-logo { flex: none; inline-size: 3rem; block-size: 3rem; border-radius: 50%; overflow: hidden; }
+.us-logo svg, .us-logo img { display: block; inline-size: 100%; block-size: 100%; }
+.us-head-text { flex: 1; min-inline-size: 0; }
+.us-head h2 { margin: 0; font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
+.us-head p { margin: 0.1rem 0 0; font-size: 0.875rem; color: var(--muted); }
+.us-head .icon-button { flex: none; }
+.us-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 0.25rem 1rem 1rem; }
+.us-lead { margin: 0 0 0.75rem; font-size: 0.875rem; color: var(--muted); }
+.us-summary { display: grid; justify-items: center; gap: 0.75rem; text-align: center;
+  padding: 1.25rem 1rem; margin-block-end: 1.5rem; border-radius: 1.5rem;
+  background: color-mix(in srgb, var(--text) 3%, var(--bg)); border: 1px solid var(--line); }
+.us-jump { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+.us-ver { padding: 0.3rem 0.75rem; border-radius: 999px; font-size: 0.8125rem; font-weight: 600;
+  background: color-mix(in srgb, var(--muted) 30%, var(--bg)); color: var(--text); }
+.us-ver.to { background: color-mix(in srgb, var(--hue) 60%, var(--bg)); color: color-mix(in srgb, var(--hue) 22%, var(--text)); }
+.us-arrow { display: inline-grid; color: var(--muted); }
+.us-arrow svg { inline-size: 1.25rem; block-size: 1.25rem; }
+[dir="rtl"] .us-arrow svg { transform: scaleX(-1); }
+.us-count { margin: 0; font-weight: 700; font-size: 1.0625rem; }
+.us-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.us-pill { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.55rem 1.1rem;
+  border-radius: 999px; font-size: 0.9375rem; font-weight: 600;
+  background: color-mix(in srgb, var(--hue) 60%, var(--bg)); color: color-mix(in srgb, var(--hue) 22%, var(--text)); }
+.us-pill svg { inline-size: 1.1rem; block-size: 1.1rem; }
+.us-summary progress { inline-size: 100%; accent-color: var(--us-new); }
+.us-summary .us-mb { margin: 0; font-size: 0.8125rem; color: var(--muted); }
+/* The timeline: a rail on the start side, a node per build on it. */
 /* The Settings sheet's own buttons hide under this one: one ✕ at a time. */
 .app:has(.us-sheet) .settings-head > .icon-button { visibility: hidden; }
-.us-failed { margin: 0; padding: var(--sp-2) var(--sp-4) 0; font-size: var(--fs-sm); color: var(--text); }
-.us-head h2 { margin: 0; font-size: var(--fs-lg); line-height: var(--lh-tight); }
-.us-head p { margin: 0; font-size: var(--fs-sm); color: var(--muted); }
-.us-body { overflow-y: auto; padding: var(--sp-2) var(--sp-4) var(--sp-4); overscroll-behavior: contain; }
-.us-foot { display: flex; flex-direction: column; gap: var(--sp-2);
-  padding: var(--sp-3) var(--sp-4); padding-block-end: max(var(--sp-3), env(safe-area-inset-bottom)); }
-.us-foot button { inline-size: 100%; min-block-size: 48px; border-radius: var(--radius-pill); font-weight: 600; }
-.us-summary { display: grid; justify-items: center; gap: var(--sp-3); text-align: center;
-  padding: var(--sp-5) var(--sp-4); margin-block-end: var(--sp-5); border-radius: var(--radius-lg);
-  background: var(--surface-2); border: 1px solid var(--line); }
-.us-jump { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; justify-content: center; }
-.us-ver-badge { padding: 0.2rem 0.65rem; border-radius: var(--radius-sm); font-size: var(--fs-sm);
-  background: color-mix(in srgb, var(--muted) 22%, var(--surface)); }
-.us-ver-badge.to { background: var(--indigo); color: var(--surface); font-weight: 600; }
-.us-arrow { color: var(--muted); }
-[dir="rtl"] .us-arrow, .app[dir="rtl"] .us-arrow { transform: scaleX(-1); }
-.us-count { margin: 0; font-weight: 700; font-size: var(--fs-md); }
-.us-pills { display: flex; flex-wrap: wrap; gap: var(--sp-2); justify-content: center; }
-.us-pill { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 1rem;
-  border-radius: var(--radius-pill); font-size: var(--fs-sm); font-weight: 600; }
-.us-pill svg, .us-kind-icon svg { inline-size: 1rem; block-size: 1rem; }
-[data-kind="new"] { --tone: var(--indigo); }
-[data-kind="improved"] { --tone: var(--sawah); }
-[data-kind="fixed"] { --tone: var(--dawn); }
-.us-pill { background: color-mix(in srgb, var(--tone) 22%, var(--surface)); color: var(--tone); }
-.us-summary progress { inline-size: 100%; accent-color: var(--sawah); }
+.us-failed { margin: 0; font-size: var(--fs-sm); color: var(--text); }
 .us-timeline { list-style: none; margin: 0; padding: 0; }
-.us-release { position: relative; padding-inline-start: 1.6rem; padding-block-end: var(--sp-4); }
-.us-release::before { content: ""; position: absolute; inset-inline-start: 0.45rem; inset-block: 1.1rem 0;
-  inline-size: 2px; background: var(--line); }
-.us-release:last-child::before { display: none; }
-/* Nodes: a dashed ring for builds not installed yet, a green ring for the
-   installed one, a small dot for the ones before it. */
-.us-release::after { content: ""; position: absolute; inset-inline-start: 0.2rem; inset-block-start: 0.6rem;
-  inline-size: 0.55rem; block-size: 0.55rem; border-radius: 50%; background: var(--muted); }
-.us-release[data-ahead="true"]::after { inset-inline-start: 0.05rem; inset-block-start: 0.45rem;
-  inline-size: 0.85rem; block-size: 0.85rem; box-sizing: border-box; background: var(--surface);
-  border: 2px dashed var(--muted); }
-.us-release[data-badge="installed"]::after { inset-inline-start: 0.05rem; inset-block-start: 0.45rem;
-  inline-size: 0.85rem; block-size: 0.85rem; box-sizing: border-box; background: var(--surface);
-  border: 3px solid var(--sawah); }
-.us-release[data-badge="latest"], .us-release[data-badge="new"] { --node: var(--dawn); }
-.us-release[data-badge="installed"] { --node: var(--sawah); }
-.us-rel-head { inline-size: 100%; display: grid; grid-template-columns: 1fr auto; gap: 0.15rem var(--sp-2);
-  text-align: start; border: 0; background: transparent; padding: 0.2rem 0; color: inherit; }
-.us-rel-title { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); font-weight: 700; }
-.us-rel-meta { grid-column: 1; font-size: var(--fs-sm); color: var(--muted); }
-.us-chevron { grid-row: 1 / span 2; grid-column: 2; align-self: center; color: var(--muted);
+.us-release { position: relative; padding-inline-start: 2rem; padding-block-end: 0.5rem; }
+.us-release::before { content: ""; position: absolute; inset-inline-start: calc(0.625rem - 1px);
+  inset-block: 1.9rem -0.6rem; inline-size: 2px; background: var(--line); }
+.us-timeline > li:last-child::before { display: none; }
+.us-release::after { content: ""; position: absolute; box-sizing: border-box;
+  inset-inline-start: calc(0.625rem - 0.3rem); inset-block-start: 0.85rem;
+  inline-size: 0.6rem; block-size: 0.6rem; border-radius: 50%; background: var(--muted); }
+.us-release[data-ahead="true"]::after, .us-release[data-badge="installed"]::after {
+  inset-inline-start: calc(0.625rem - 0.5rem); inset-block-start: 0.65rem;
+  inline-size: 1rem; block-size: 1rem; background: var(--bg); border: 2px dashed var(--muted); }
+.us-release[data-badge="installed"]::after { border: 3px solid var(--us-installed); }
+.us-rel-head { inline-size: 100%; display: grid; grid-template-columns: 1fr auto; column-gap: 0.5rem;
+  text-align: start; border: 0; background: transparent; padding: 0.45rem 0; color: inherit;
+  font: inherit; cursor: pointer; }
+.us-rel-title { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 1rem; font-weight: 700; }
+.us-rel-meta { grid-column: 1; font-size: 0.8125rem; color: var(--muted); margin-block-start: 0.1rem; }
+.us-chevron { grid-row: 1 / span 2; grid-column: 2; align-self: center; display: inline-grid; color: var(--muted);
   transition: transform var(--dur) var(--ease); }
+.us-chevron svg { inline-size: 1.4rem; block-size: 1.4rem; }
 .us-rel-head[aria-expanded="true"] .us-chevron { transform: rotate(180deg); }
-.us-badge { font-size: var(--fs-xs); font-weight: 600; padding: 0.1rem 0.55rem; border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--node, var(--muted)) 22%, var(--surface)); color: var(--node, var(--muted)); }
-.us-kinds { display: grid; gap: var(--sp-2); margin-block-start: var(--sp-2); }
-.us-kind { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--sp-3) var(--sp-4);
-  background: var(--surface-2); }
-.us-kind-head { display: flex; align-items: center; gap: var(--sp-3); margin-block-end: var(--sp-2); }
-.us-kind-icon { inline-size: 1.9rem; block-size: 1.9rem; border-radius: var(--radius-sm); display: grid; place-items: center;
-  background: color-mix(in srgb, var(--tone) 22%, var(--surface)); color: var(--tone); }
-.us-kind-head h3 { margin: 0; font-size: var(--fs-md); font-weight: 600; }
-.us-chip { margin-inline-start: auto; min-inline-size: 1.6rem; padding: 0.05rem 0.45rem; border-radius: var(--radius-sm);
-  text-align: center; font-size: var(--fs-sm); background: color-mix(in srgb, var(--muted) 18%, var(--surface)); }
+.us-badge { font-size: 0.75rem; font-weight: 600; padding: 0.15rem 0.6rem; border-radius: 999px;
+  background: color-mix(in srgb, var(--hue) 45%, var(--bg)); color: color-mix(in srgb, var(--hue) 30%, var(--text)); }
+.us-kinds { display: grid; gap: 0.625rem; margin-block: 0.4rem 0.6rem; }
+.us-kind { border: 1px solid var(--line); border-radius: 1.125rem; overflow: hidden;
+  background: color-mix(in srgb, var(--text) 3%, var(--bg)); }
+.us-kind-head { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.875rem;
+  background: color-mix(in srgb, var(--text) 7%, var(--bg)); }
+.us-kind-icon { inline-size: 2rem; block-size: 2rem; border-radius: 0.6rem; display: grid; place-items: center;
+  background: color-mix(in srgb, var(--hue) 45%, var(--bg)); color: color-mix(in srgb, var(--hue) 30%, var(--text)); }
+.us-kind-icon svg { inline-size: 1.05rem; block-size: 1.05rem; }
+.us-kind-head h3 { margin: 0; font-size: 0.9375rem; font-weight: 600; }
+.us-chip { margin-inline-start: auto; min-inline-size: 1.6rem; block-size: 1.6rem; padding-inline: 0.4rem;
+  display: inline-grid; place-items: center; border-radius: 999px; font-size: 0.8125rem; font-weight: 600;
+  background: color-mix(in srgb, var(--muted) 30%, var(--bg)); }
 .us-items { list-style: none; margin: 0; padding: 0; display: grid; }
-.us-items li { position: relative; padding-inline-start: 1.25rem; padding-block: 0.55rem; line-height: var(--lh-ui); }
-.us-items li + li { border-block-start: 1px solid var(--line-soft); }
-.us-items li::before { content: ""; position: absolute; inset-inline-start: 0.2rem; inset-block-start: calc(0.55rem + 0.6em);
-  inline-size: 0.35rem; block-size: 0.35rem; border-radius: 50%; background: var(--tone); }
-.us-more { border: 0; background: transparent; color: var(--indigo); padding: var(--sp-1) 0; font-weight: 600; }
-.us-divider { padding-inline-start: 1.6rem; padding-block: 0 var(--sp-4); font-weight: 600; position: relative; }
-.us-divider::before { content: ""; position: absolute; inset-inline-start: 0.45rem; inset-block: 0;
-  inline-size: 2px; background: var(--line); }
+.us-items li { position: relative; padding: 0.65rem 0.875rem; padding-inline-start: 2.1rem;
+  font-size: 0.875rem; line-height: 1.6; }
+.us-items li + li { border-block-start: 1px solid var(--line); }
+.us-items li::before { content: ""; position: absolute; inset-inline-start: 1rem; inset-block-start: calc(0.65rem + 0.55em);
+  inline-size: 0.4rem; block-size: 0.4rem; border-radius: 50%; background: color-mix(in srgb, var(--hue) 85%, var(--text)); }
+.us-more { border: 0; background: transparent; color: var(--indigo); padding: 0.4rem 0.875rem 0.6rem;
+  font: inherit; font-size: 0.875rem; font-weight: 600; cursor: pointer; }
+.us-divider { position: relative; padding-inline-start: 2rem; padding-block: 0.6rem 0.5rem;
+  font-size: 0.9375rem; font-weight: 600; }
+.us-divider::before { content: ""; position: absolute; inset-inline-start: calc(0.625rem - 1px);
+  inset-block: 0 -0.2rem; inline-size: 2px; background: var(--line); }
+/* The buttons stay at the bottom; the list fades under them. */
+.us-foot { position: relative; display: grid; gap: 0.625rem; padding: 0.5rem 1rem;
+  padding-block-end: max(0.875rem, env(safe-area-inset-bottom)); background: var(--bg); }
+.us-foot::before { content: ""; position: absolute; inset-inline: 0; inset-block-end: 100%; block-size: 1.5rem;
+  background: linear-gradient(to top, var(--bg), transparent); pointer-events: none; }
+.us-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; inline-size: 100%;
+  min-block-size: 3.25rem; border-radius: 999px; font: inherit; font-size: 1rem; font-weight: 600;
+  border: 1px solid var(--line); background: color-mix(in srgb, var(--text) 5%, var(--bg)); color: var(--text);
+  cursor: pointer; }
+.us-btn svg { inline-size: 1.2rem; block-size: 1.2rem; }
+.us-btn.us-go { border-color: color-mix(in srgb, var(--us-new) 55%, var(--bg));
+  background: color-mix(in srgb, var(--us-new) 16%, var(--bg)); }
+.us-btn:active { transform: scale(0.98); }
 @media (prefers-reduced-motion: reduce) { .us-chevron { transition: none; } }
 "#;
 
@@ -252,6 +281,69 @@ const MONTHS_EN: [&str; 12] = [
     "November",
     "December",
 ];
+
+fn glyph(view_box: &'static str, d: &'static str, filled: bool) -> Element {
+    let (fill, stroke) = if filled { ("currentColor", "none") } else { ("none", "currentColor") };
+    rsx! {
+        svg { view_box: "{view_box}", fill: "{fill}", stroke: "{stroke}", stroke_width: "2",
+            stroke_linecap: "round", stroke_linejoin: "round", "aria-hidden": "true",
+            path { d: "{d}" }
+        }
+    }
+}
+
+fn chevron() -> Element {
+    glyph("0 0 24 24", "M6 9l6 6 6-6", false)
+}
+
+fn arrow() -> Element {
+    glyph("0 0 24 24", "M5 12h14M13 6l6 6-6 6", false)
+}
+
+fn download_icon() -> Element {
+    glyph("0 0 24 24", "M12 4v11M7 10l5 5 5-5M5 20h14", false)
+}
+
+/// GitHub's mark, for the button that opens the releases page.
+fn github_icon() -> Element {
+    glyph(
+        "0 0 16 16",
+        "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z",
+        true,
+    )
+}
+
+/// Kabar's icon (the web export), as the sheet's app icon.
+fn app_mark() -> Element {
+    static URL: std::sync::LazyLock<String> = std::sync::LazyLock::new(|| {
+        use base64::Engine as _;
+        let png = include_bytes!("../../../../assets/export/web/icon-192.png");
+        format!("data:image/png;base64,{}", base64::engine::general_purpose::STANDARD.encode(png))
+    });
+    rsx! {
+        img { src: URL.as_str(), alt: "", draggable: "false" }
+    }
+}
+
+/// The releases page of the channel this build follows.
+fn releases_url() -> String {
+    let base = super::FEEDS_URL.replace("/releases/download", "/releases/tag");
+    match super::get() {
+        Some(u) => format!("{base}/{}", u.installed().channel.release_tag()),
+        None => base.trim_end_matches("/tag").to_owned(),
+    }
+}
+
+/// The summary's two chips: `#165 → #190` when the version is the same
+/// (preview builds), else `v0.1.0 (12) → v0.2.0 (30)`.
+fn jump_labels(from: &str, to: &str) -> (String, String) {
+    match (from.split_once(" ("), to.split_once(" (")) {
+        (Some((fv, fb)), Some((tv, tb))) if fv == tv => {
+            (format!("#{}", fb.trim_end_matches(')')), format!("#{}", tb.trim_end_matches(')')))
+        }
+        _ => (format!("v{from}"), format!("v{to}")),
+    }
+}
 
 /// "Today", "2 days ago" within a week, then "28 October".
 fn when(ui: &Ui, published: &str, today: i64) -> Option<String> {
@@ -436,8 +528,8 @@ pub fn UpdateSheet() -> Element {
         div { class: "us-backdrop", onclick: close }
         div { class: "us-sheet", role: "dialog", aria_modal: "true", aria_labelledby: "us-title",
             div { class: "us-head",
-                span { class: "us-logo", aria_hidden: "true", {kind_icon(ChangeKind::New)} }
-                div {
+                span { class: "us-logo", {app_mark()} }
+                div { class: "us-head-text",
                     h2 { id: "us-title", "{title}" }
                     p {
                         "Kabar · "
@@ -452,15 +544,20 @@ pub fn UpdateSheet() -> Element {
             }
             div { class: "us-body",
                 if let Some(sub) = sub {
-                    p { class: "muted", "{sub}" }
+                    p { class: "us-lead", "{sub}" }
                 }
                 if m != SheetMode::History && (from_label.is_some() || !pills.is_empty() || progress.is_some()) {
                     div { class: "us-summary",
                         if let (Some(f), Some(t)) = (from_label.clone(), to_label.clone()) {
-                            div { class: "us-jump",
-                                span { class: "us-ver-badge", bdi { dir: "ltr", "v{f}" } }
-                                span { class: "us-arrow", aria_hidden: "true", "→" }
-                                span { class: "us-ver-badge to", bdi { dir: "ltr", "v{t}" } }
+                            {
+                                let (f, t) = jump_labels(&f, &t);
+                                rsx! {
+                                    div { class: "us-jump",
+                                        span { class: "us-ver", bdi { dir: "ltr", class: "latin", "{f}" } }
+                                        span { class: "us-arrow", {arrow()} }
+                                        span { class: "us-ver to", bdi { dir: "ltr", class: "latin", "{t}" } }
+                                    }
+                                }
                             }
                         }
                         if !top.is_empty() {
@@ -478,7 +575,7 @@ pub fn UpdateSheet() -> Element {
                         }
                         if let Some((done, total)) = progress {
                             progress { max: "{total}", value: "{done}" }
-                            p { class: "muted", "{megabytes(&ui, done)} / {megabytes(&ui, total)}" }
+                            p { class: "us-mb", "{megabytes(&ui, done)} / {megabytes(&ui, total)}" }
                         }
                     }
                 }
@@ -519,12 +616,12 @@ pub fn UpdateSheet() -> Element {
                                         },
                                         span { class: "us-rel-title",
                                             bdi { dir: "ltr", class: "latin", "v{label(&b.version, b.build)}" }
-                                            if let Some((_, u)) = badge {
-                                                span { class: "us-badge", "{ut(lang, u)}" }
+                                            if let Some((id, u)) = badge {
+                                                span { class: "us-badge", "data-badge": "{id}", "{ut(lang, u)}" }
                                             }
                                         }
                                         span { class: "us-rel-meta", "{meta}" }
-                                        span { class: "us-chevron", aria_hidden: "true", "⌄" }
+                                        span { class: "us-chevron", {chevron()} }
                                     }
                                     if open {
                                         div { class: "us-kinds",
@@ -593,22 +690,31 @@ pub fn UpdateSheet() -> Element {
                     button { class: "us-more", onclick: move |_| earlier_shown += EARLIER_STEP, "{ut(lang, U::ShowOlder)}" }
                 }
             }
-            if let (SheetMode::Offer, Phase::Failed { why, .. }) = (m, &s.phase) {
-                p { class: "us-failed", role: "alert", "{ut(lang, super::view::failure_text(why))}" }
-            }
             div { class: "us-foot",
-                if action.is_some() {
-                    button { onclick: close, "{ut(lang, U::Later)}" }
+                if let (SheetMode::Offer, Phase::Failed { why, .. }) = (m, &s.phase) {
+                    p { class: "us-failed", role: "alert", "{ut(lang, super::view::failure_text(why))}" }
+                }
+                button {
+                    class: "us-btn",
+                    onclick: move |_| {
+                        let _ = crate::platform::open_url(&releases_url());
+                    },
+                    {github_icon()}
+                    bdi { dir: "ltr", class: "latin", "GitHub" }
                 }
                 match action {
                     Some((label, run)) => rsx! {
-                        button { class: "primary", onclick: move |_| run(lang), "{ut(lang, label)}" }
-                    },
-                    None => rsx! {
-                        button { class: "primary", onclick: close,
-                            {ut(lang, if m == SheetMode::Updated { U::GotIt } else { U::Close })}
+                        button { class: "us-btn us-go", onclick: move |_| run(lang),
+                            if matches!(s.phase, Phase::Available(_)) {
+                                {download_icon()}
+                            }
+                            "{ut(lang, label)}"
                         }
                     },
+                    None if m == SheetMode::Updated => rsx! {
+                        button { class: "us-btn us-go", onclick: close, "{ut(lang, U::GotIt)}" }
+                    },
+                    None => rsx! {},
                 }
             }
         }

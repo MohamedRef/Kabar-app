@@ -204,7 +204,8 @@ pub fn collect(root: &Path, since: Option<&str>) -> Result<Vec<Change>> {
 /// without repeats, cut to [`HISTORY_BUILDS`] and the size limit.
 ///
 /// English-only lines that [`RETRO`] names are rewritten on the way, so
-/// older builds catch up with their Arabic.
+/// older builds catch up with their Arabic; a build left with no lines
+/// goes.
 pub fn history(
     previous: Option<&UpdateManifest>,
     entry: Option<BuildChanges>,
@@ -224,7 +225,10 @@ pub fn history(
                     }
                 })
                 .collect();
-            all.push(old);
+            // A build whose every line was housekeeping says nothing.
+            if !old.changes.is_empty() {
+                all.push(old);
+            }
         }
     }
     all.truncate(HISTORY_BUILDS);
@@ -347,6 +351,7 @@ mod tests {
             serde_json::from_str(include_str!("../../../fixtures/update/update.json")).unwrap();
         prev.history = vec![entry(2), entry(1)];
         let h = history(Some(&prev), Some(entry(3)), &retro);
+        assert_eq!(h.len(), 2, "build 1 only had housekeeping");
         let lines: Vec<(u64, ChangeKind, &str)> = h
             .iter()
             .flat_map(|b| b.changes.iter().map(move |c| (b.build, c.kind, c.text.en.as_str())))
