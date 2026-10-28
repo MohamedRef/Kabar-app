@@ -155,7 +155,10 @@ six lines). It opens from the Today banner's "What's new?", from the
 notification, and from Settings › About › Updates (also "Changelog": every
 build so far); downloading and installing happen in it too. At the first
 launch after an update it opens once by itself, listing everything since
-the build that ran before.
+the build that ran before. On a phone it fills the screen under Kabar's
+icon; GitHub (the channel's releases page) and the download or install
+button stay pinned at the bottom. A build whose lines were all
+housekeeping drops out of the feed.
 
 **Channels.** `alpha`, `beta`, `stable` for release builds (the learner
 picks in Settings; a beta also reaches alpha, a release reaches everyone),
