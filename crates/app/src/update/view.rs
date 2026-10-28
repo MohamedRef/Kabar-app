@@ -72,8 +72,10 @@ pub(super) fn megabytes(ui: &Ui, bytes: u64) -> String {
 }
 
 /// What went wrong, in one line (the card's headline, the sheet's note).
-pub(super) fn failure_text(why: &Failure) -> U {
+/// A network failure with an offer in hand broke the download, not the check.
+pub(super) fn failure_text(why: &Failure, offer: Option<&Offer>) -> U {
     match why {
+        Failure::Network if offer.is_some() => U::FailedDownload,
         Failure::Network => U::FailedNetwork,
         Failure::Verify(_) => U::FailedVerify,
         Failure::Install(_) => U::FailedInstall,
@@ -280,7 +282,7 @@ fn PhaseView(phase: Phase, auto: bool) -> Element {
         Phase::Installing(_) => Some(U::Installing),
         Phase::NeedsPermission(_) => Some(U::NeedsPermission),
         Phase::Installed(_) => Some(U::Installed),
-        Phase::Failed { why, .. } => Some(failure_text(why)),
+        Phase::Failed { why, offer } => Some(failure_text(why, offer.as_ref())),
     };
     let Some(headline) = headline else { return rsx! {} };
     let detail = match &phase {

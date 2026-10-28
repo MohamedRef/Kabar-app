@@ -33,6 +33,7 @@ pub enum U {
     RestartNow,
     NextLaunch,
     FailedNetwork,
+    FailedDownload,
     FailedVerify,
     FailedInstall,
     TooNew,
@@ -203,6 +204,9 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (FailedNetwork, ArEg) => "ماعرفناش نوصل لمكان التحديثات. Kabar هيجرّب تاني بعدين لوحده.",
         (FailedNetwork, Ar) => "تعذّر الوصول إلى مصدر التحديثات. سيحاول Kabar مجددًا لاحقًا.",
         (FailedNetwork, En) => "Couldn't reach the update server. Kabar will try again later by itself.",
+        (FailedDownload, ArEg) => "التنزيل ماكملش. النسخة اللي معاك سليمة، جرّب تاني بعد شوية.",
+        (FailedDownload, Ar) => "لم يكتمل التنزيل. نسختك الحالية سليمة، حاول مجددًا بعد قليل.",
+        (FailedDownload, En) => "The download didn't finish. Your current Kabar is fine; try again in a bit.",
         (FailedVerify, ArEg) => "التحديث ده ماعدّاش فحص الأمان (التوقيع أو البصمة)، فـKabar ماثبّتوش.",
         (FailedVerify, Ar) => "لم يجتز هذا التحديث فحص الأمان (التوقيع أو البصمة)، فلم يثبّته Kabar.",
         (FailedVerify, En) => {

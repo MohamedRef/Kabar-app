@@ -691,8 +691,10 @@ pub fn UpdateSheet() -> Element {
                 }
             }
             div { class: "us-foot",
-                if let (SheetMode::Offer, Phase::Failed { why, .. }) = (m, &s.phase) {
-                    p { class: "us-failed", role: "alert", "{ut(lang, super::view::failure_text(why))}" }
+                if let (SheetMode::Offer, Phase::Failed { why, offer }) = (m, &s.phase) {
+                    p { class: "us-failed", role: "alert",
+                        "{ut(lang, super::view::failure_text(why, offer.as_ref()))}"
+                    }
                 }
                 button {
                     class: "us-btn",
