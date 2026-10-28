@@ -55,6 +55,7 @@ pub enum S {
     TextLarge,
     TextLarger,
     TextSample,
+    BlackHint,
     // android
     Notifications,
     NotificationsBody,
@@ -229,6 +230,13 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (TextSample, ArEg) => "كده هيبان الكلام في الدروس والقارئ.",
         (TextSample, Ar) => "هكذا سيظهر النص في الدروس والقارئ.",
         (TextSample, En) => "This is how text looks in lessons and the Reader.",
+        (BlackHint, ArEg) => {
+            "الخلفية سودا خالص، فبكسلات شاشة الأموليد بتطفي خالص: أريح للعين بالليل وبتوفّر بطارية."
+        }
+        (BlackHint, Ar) => "الخلفية سوداء تمامًا، فتنطفئ بكسلات شاشة AMOLED: أريح للعين ليلًا وتوفّر البطارية.",
+        (BlackHint, En) => {
+            "Pure black background, so AMOLED pixels switch off: easier on the eyes at night and kinder to the battery."
+        }
 
         (Notifications, ArEg | Ar) => "الإشعارات",
         (Notifications, En) => "Notifications",

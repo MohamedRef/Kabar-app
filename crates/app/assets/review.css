@@ -98,7 +98,10 @@
 .progress-fill { display: block; block-size: 100%; background: var(--sawah); border-radius: 999px; }
 .rev-foot { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
 /* Key hints are for keyboards: touch screens never see them. */
+/* Keyboard shortcuts: only where a keyboard is likely. Touch screens hide them,
+   and so does phone width, whatever the pointer (#381). */
 @media (hover: none), (pointer: coarse) { .kbd-hint { display: none; } }
+.app[data-width="compact"] .kbd-hint { display: none; }
 
 /* ---------- Classic card ---------- */
 .rev-card { margin: 0; text-align: center; min-block-size: 14rem; display: flex; flex-direction: column; justify-content: center; gap: 0.25rem; }
@@ -161,6 +164,9 @@
 .badge.gold { background: var(--gold-soft); color: var(--gold); }
 .badge.warn { background: var(--surface-2); color: var(--muted); border: 1px dashed var(--line); }
 .badge.alarm { background: var(--dawn-soft); color: var(--dawn); }
+/* A Javanese word that means something else in Indonesian (#379): its own
+   look, so it never reads as the Arabic-loan false friend above. */
+.badge.twin { background: var(--surface-2); color: var(--indigo); border: 1px solid var(--indigo); justify-self: center; }
 
 .rev-answer { display: flex; gap: 0.5rem; margin-block-start: 0.75rem; justify-content: center; flex-wrap: wrap; }
 .rev-answer input {
