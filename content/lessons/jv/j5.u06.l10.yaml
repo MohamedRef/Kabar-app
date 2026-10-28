@@ -1,190 +1,167 @@
 schema: kabar.lesson/v1
 id: j5.u06.l10
 language: jv
-title: Sluku-sluku bathok
+title: Udan ing Demak
 can_do:
-  ar_eg: تسمع أغنية أطفال قديمة وتفهم الحكمة اللي في آخرها.
-  ar: أن تستمع إلى أغنية أطفال قديمة وتفهم الحكمة في آخرها.
-  en: Follow an old children's song by ear and catch the advice at its end.
+  ar_eg: تقرا كلمات أغنية كامبورساري وتتابع حكايتها من «زمان» لـ «دلوقتي».
+  ar: أن تقرأ كلمات أغنية كامبورساري وتتابع حكايتها من «قديمًا» إلى «الآن».
+  en: Read campursari lyrics and follow the story from "back then" to "now".
+slides:
+  - title: Tembang campursari anyar
+    body:
+      ar_eg: |
+        ماس رزال كاتب الكلمات دي على طريقة الكامبورساري (أغنية متألّفة لـ Kabar، مش أغنية حقيقية). أغاني الكامبورساري بتحكي حكاية، فتابع أدوات الحكي: biyen (زمان)، nalika (لما)، saiki (دلوقتي).
+        مفيش كلمات جديدة: janji وkangen وati وambyar من درس الكامبورساري، وpamit = يستأذن ويودّع، وtanpa = من غير.
+      ar: |
+        كتب ماس رزال هذه الكلمات على طريقة الكامبورساري (أغنية مؤلفة لـ Kabar، لا أغنية حقيقية). أغاني الكامبورساري تحكي قصة، فتابع أدوات السرد: biyen (قديمًا)، وnalika (حين)، وsaiki (الآن).
+        لا كلمات جديدة: janji وkangen وati وambyar من درس الكامبورساري، وpamit = يستأذن مودّعًا، وtanpa = بلا.
+      en: |
+        Mas Rizal wrote these lines in campursari style (a song made up for Kabar, not a real one). Campursari songs tell a story, so follow the connectors: biyen (back then), nalika (when), saiki (now).
+        No new words: janji, kangen, ati and ambyar are from the Campursari lesson; pamit = say goodbye, take leave, and tanpa = without.
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Biyen kowe janji ora bakal lunga.
+        ar_eg: زمان وعدتني إنك مش هتمشي.
+        ar: قديمًا وعدتني ألّا ترحل.
+        en: Back then you promised you'd never leave.
+      - text: Nanging nalika udan ing Demak, kowe lunga tanpa pamit.
+        ar_eg: بس لما كانت بتمطر في ديماك، مشيت من غير ما تودّعني.
+        ar: لكن حين أمطرت في ديماك، رحلت دون وداع.
+        en: But when it rained in Demak, you left without a goodbye.
+      - text: Saiki aku mung bisa kangen, atiku ambyar.
+        ar_eg: ودلوقتي مش باقي لي غير الوحشة، وقلبي اتكسر.
+        ar: والآن لا أملك إلا الحنين، وقلبي محطّم.
+        en: Now all I can do is miss you; my heart is shattered.
 exercises:
   - id: e01
-    type: listen
-    text: Sluku-sluku bathok, bathoke ela-elo.
-    options:
-      - Sluku-sluku bathok, bathoke ela-elo.
-      - Sluku-sluku bathok, bathoke ilang.
-      - Sluku-sluku bocah, bocahe ela-elo.
-    answer: 0
-    meaning:
-      ar_eg: سلوكو سلوكو يا قشرة جوز الهند، القشرة بتتهزّ يمين وشمال.
-      ar: سلوكو سلوكو يا قشرة جوز الهند، والقشرة تتمايل يمينًا ويسارًا.
-      en: Sluku-sluku, coconut shell, the shell sways left and right.
-    explain:
-      ar_eg: أغنية بيغنّيها الكبار للأطفال وهم بيلعبوا، وبينسبوها لسونان كاليجاغا. bathok = قشرة جوز الهند، وهنا كناية عن الراس. ela-elo = بيتهزّ يمين وشمال.
-      ar: أغنية يغنّيها الكبار للأطفال في اللعب، ويُنسبونها إلى سونان كاليجاغا. bathok = قشرة جوز الهند، وهي هنا كناية عن الرأس، وela-elo = يتمايل يمينًا ويسارًا.
-      en: Grown-ups sing this to children at play; it's credited to Sunan Kalijaga. bathok = coconut shell, here a picture of the head; ela-elo = swaying left and right.
-    words: [bathok]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الحبيب وعد بإيه زمان؟
+      ar: بمَ وعد الحبيب قديمًا؟
+      en: What did the lover promise back then?
+    options: [bakal teka sesuk, ora bakal lunga, bakal nulis layang]
+    answer: 1
+    words: [janji]
   - id: e02
     type: listen
-    text: Wong mati ora obah, yen obah medeni bocah.
+    text: Nanging nalika udan ing Demak, kowe lunga tanpa pamit.
     question:
-      ar_eg: لو الميت اتحرّك، يحصل إيه؟
-      ar: إن تحرّك الميت، فماذا يحدث؟
-      en: If the dead moved, what would happen?
-    options: [bocah bungah, medeni bocah, bocah turu]
-    answer: 1
+      ar_eg: الحبيب مشي إمتى؟
+      ar: متى رحل الحبيب؟
+      en: When did the lover leave?
+    options: [nalika udan, nalika esuk, sawise maghrib]
+    answer: 0
     meaning:
-      ar_eg: الميت ما بيتحرّكش، ولو اتحرّك يخضّ العيال.
-      ar: الميت لا يتحرك، ولو تحرّك لأفزع الأطفال.
-      en: The dead don't move; if they moved, they'd frighten the children.
-    explain:
-      ar_eg: obah = يتحرّك، medeni = يخوّف. وmati = ميت، زي الإندونيسي.
-      ar: obah = يتحرك، وmedeni = يُفزع، وmati = ميت كالإندونيسية.
-      en: obah = move, medeni = frightening; mati = dead, as in Indonesian.
-    words: [obah, medeni, mati]
+      ar_eg: بس لما كانت بتمطر في ديماك، مشيت من غير ما تودّعني.
+      ar: لكن حين أمطرت في ديماك، رحلت دون وداع.
+      en: But when it rained in Demak, you left without a goodbye.
+    words: [nalika, pamit]
   - id: e03
-    type: listen
-    text: Yen urip goleka dhuwit.
-    question:
-      ar_eg: الأغنية بتنصح الحي يعمل إيه؟
-      ar: بمَ تنصح الأغنيةُ الحيَّ؟
-      en: What does the song tell the living to do?
-    options: [turu wae, dolanan wae, goleka dhuwit]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: المغنّي حاسس بإيه دلوقتي؟
+      ar: بمَ يشعر المغنّي الآن؟
+      en: How does the singer feel now?
+    options: [bungah, seneng banget, kangen lan ambyar]
     answer: 2
-    meaning:
-      ar_eg: وطول ما إنت عايش، اسعى على رزقك.
-      ar: وما دمت حيًّا، فاسعَ في طلب الرزق.
-      en: While you're alive, go and earn a living.
     explain:
-      ar_eg: 'urip = عايش (hidup). goleka = أمر من golek (يدوّر): «دوّر على».'
-      ar: 'urip = حيّ (hidup)، وgoleka أمر من golek (يبحث): «ابحث عن».'
-      en: urip = alive (hidup); goleka is the command form of golek (look for).
-    words: [urip]
+      ar_eg: 'saiki = دلوقتي: «mung bisa kangen, atiku ambyar».'
+      ar: 'saiki = الآن: «mung bisa kangen, atiku ambyar».'
+      en: 'saiki = now: "mung bisa kangen, atiku ambyar".'
+    words: [kangen, ambyar]
   - id: e04
     type: match_pairs
     pairs:
-      - text: bathok
-        ar_eg: قشرة جوز الهند
-        ar: قشرة جوز الهند
-        en: coconut shell
-      - text: obah
-        ar_eg: يتحرّك
-        ar: يتحرك
-        en: move
-      - text: medeni
-        ar_eg: يخوّف
-        ar: مُفزع
-        en: frightening
-      - text: urip
-        ar_eg: عايش
-        ar: حيّ
-        en: alive
-      - text: goleka
-        ar_eg: دوّر على (أمر)
-        ar: ابحث عن (أمر)
-        en: go and look for
-    words: [bathok, obah, medeni, urip]
+      - text: janji
+        ar_eg: وعد
+        ar: وعد
+        en: promise
+      - text: pamit
+        ar_eg: يودّع / يستأذن يمشي
+        ar: يودّع مستأذنًا
+        en: say goodbye, take leave
+      - text: tanpa
+        ar_eg: من غير
+        ar: بلا / دون
+        en: without
+      - text: kangen
+        ar_eg: وحشني / يحنّ
+        ar: يشتاق
+        en: miss someone
+      - text: ambyar
+        ar_eg: متكسّر
+        ar: محطّم
+        en: shattered
+    words: [janji, pamit, kangen, ambyar]
   - id: e05
     type: fill_blank
-    sentence: Wong mati ora ___.
+    sentence: Nanging ___ udan ing Demak, kowe lunga tanpa pamit.
     meaning:
-      ar_eg: الميت ما بيتحرّكش.
-      ar: الميت لا يتحرك.
-      en: The dead don't move.
-    options: [urip, obah, medeni]
-    answers: [obah]
-    words: [obah, mati]
+      ar_eg: بس لما كانت بتمطر في ديماك، مشيت من غير ما تودّعني.
+      ar: لكن حين أمطرت في ديماك، رحلت دون وداع.
+      en: But when it rained in Demak, you left without a goodbye.
+    options: [biyen, nalika, pungkasane]
+    answers: [nalika]
+    words: [nalika]
   - id: e06
     type: dictation
-    text: Yen urip goleka dhuwit.
+    text: Saiki aku mung bisa kangen, atiku ambyar.
     meaning:
-      ar_eg: طول ما إنت عايش، اسعى على رزقك.
-      ar: ما دمت حيًّا، فاسعَ في طلب الرزق.
-      en: While you're alive, go and earn a living.
-    words: [urip]
+      ar_eg: ودلوقتي مش باقي لي غير الوحشة، وقلبي اتكسر.
+      ar: والآن لا أملك إلا الحنين، وقلبي محطّم.
+      en: Now all I can do is miss you; my heart is shattered.
+    words: [kangen, ambyar, ati]
   - id: e07
-    type: translate
-    direction: from_target
-    source_text: Wong mati ora obah, yen obah medeni bocah.
-    answers_meaning:
-      ar_eg:
-        - الميت ما بيتحرّكش، ولو اتحرّك يخضّ العيال.
-        - الميت مش بيتحرك، ولو اتحرك يخوّف الأطفال.
-        - اللي مات ما بيتحركش، ولو اتحرك هيرعب العيال.
-        - الميت ما بيتحركش، لو اتحرك يخوّف العيال.
-      ar:
-        - الميت لا يتحرك، ولو تحرّك لأفزع الأطفال.
-        - الميت لا يتحرك، وإن تحرك أخاف الأطفال.
-        - الموتى لا يتحركون، ولو تحركوا لأخافوا الأطفال.
-      en:
-        - The dead don't move; if they moved, they'd frighten the children.
-        - A dead person doesn't move; if he moved, he'd scare the children.
-        - The dead don't move, and if they did, they would scare children.
-        - Dead people don't move; if they move, they frighten children.
-        - The dead don't move; if they moved it would scare the kids.
-    words: [obah, medeni, mati]
+    type: build_sentence
+    source:
+      ar_eg: (من الأغنية) مشيت من غير ما تودّعني.
+      ar: (من الأغنية) رحلتَ دون وداع.
+      en: (from the song) You left without a goodbye.
+    answer: Kowe lunga tanpa pamit.
+    distractors: [janji, kangen]
+    words: [pamit]
   - id: e08
-    type: speaking
-    text: Sluku-sluku bathok, bathoke ela-elo.
-    meaning:
-      ar_eg: سلوكو سلوكو يا قشرة جوز الهند، القشرة بتتهزّ يمين وشمال.
-      ar: سلوكو سلوكو يا قشرة جوز الهند، والقشرة تتمايل يمينًا ويسارًا.
-      en: Sluku-sluku, coconut shell, the shell sways left and right.
-    words: [bathok]
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (من الأغنية) زمان وعدتني إنك مش هتمشي.
+      ar: (من الأغنية) قديمًا وعدتني ألّا ترحل.
+      en: (from the song) Back then you promised you'd never leave.
+    answers:
+      - Biyen kowe janji ora bakal lunga.
+      - Biyen kowe janji ora arep lunga.
+      - Biyen kowe janji ora lunga.
+      - Biyen kowe wis janji ora bakal lunga.
+      - Kowe biyen janji ora bakal lunga.
+    words: [janji, biyen]
 dialogue:
-  title: Ela-elo
+  title: Tembang anyar
   lines:
+    - speaker: Mas Rizal
+      text: Mohamed, iki tembang campursari anyarku, "Udan ing Demak".
+      ar_eg: يا محمد، دي أغنية الكامبورساري الجديدة بتاعتي، «مطر في ديماك».
+      ar: يا محمد، هذه أغنيتي الجديدة على طريقة الكامبورساري، «مطر في ديماك».
+      en: Mohamed, this is my new campursari song, "Rain in Demak".
     - speaker: Mohamed
-      text: Pak, "ela-elo" menika menapa?
-      ar_eg: يا حاج، «ela-elo» يعني إيه؟
-      ar: يا سيدي، ما «ela-elo»؟
-      en: Sir, what does "ela-elo" mean?
-    - speaker: Pak Ahmad
-      text: Sirahe obah ngiwa nengen.
-      ar_eg: الراس بتتهزّ يمين وشمال.
-      ar: الرأس يتمايل يمينًا ويسارًا.
-      en: The head sways left and right.
-    - speaker: Pak Ahmad
-      text: Miturut tafsiran, ela-elo saka "la ilaha illallah".
-      ar_eg: وحسب تفسير ناس، ela-elo جاية من «لا إله إلا الله».
-      ar: وبحسب أحد التفاسير، ela-elo من «لا إله إلا الله».
-      en: One reading says ela-elo comes from "la ilaha illallah".
+      text: Critane piye, Mas?
+      ar_eg: حكايتها إيه يا رزال؟
+      ar: ما قصتها يا رزال؟
+      en: What's the story, Rizal?
+    - speaker: Mas Rizal
+      text: Biyen kekasihe janji ora bakal lunga. Nanging dheweke lunga tanpa pamit.
+      ar_eg: زمان حبيبته وعدت إنها مش هتمشي. بس مشيت من غير ما تودّع.
+      ar: قديمًا وعدته حبيبته ألّا ترحل، لكنها رحلت دون وداع.
+      en: Back then his sweetheart promised never to leave. But she left without a goodbye.
     - speaker: Mohamed
-      text: Masya Allah. Lan "yen urip goleka dhuwit"?
-      ar_eg: ما شاء الله. و«yen urip goleka dhuwit»؟
-      ar: ما شاء الله. و«yen urip goleka dhuwit»؟
-      en: Masha'Allah. And "yen urip goleka dhuwit"?
-    - speaker: Pak Ahmad
-      text: Tegese, yen isih urip, kudu nyambut gawe.
-      ar_eg: معناها، طول ما إنت عايش، لازم تشتغل.
-      ar: 'معناها: ما دمت حيًّا، فعليك أن تعمل.'
-      en: It means while you're alive, you have to work.
-new_words:
-  - word: bathok
-    pos: noun
-    ar_eg: قشرة جوز الهند
-    ar: قشرة جوز الهند
-    en: coconut shell = tempurung
-  - word: obah
-    pos: verb
-    ar_eg: يتحرّك
-    ar: يتحرك
-    en: move = bergerak
-  - word: medeni
-    pos: adjective
-    ar_eg: يخوّف
-    ar: مُفزع
-    en: frightening = menakutkan
-  - word: urip
-    pos: adjective
-    ar_eg: عايش / حياة
-    ar: حيّ / حياة
-    en: alive, life = hidup
-  - word: mati
-    pos: verb
-    ar_eg: يموت؛ ميّت
-    ar: يموت؛ ميت
-    en: to die; dead = mati
+      text: Waduh, ambyar maneh!
+      ar_eg: يا ساتر، قلب مكسور تاني!
+      ar: يا للأسف، قلب محطّم مرة أخرى!
+      en: Oh no, heartbroken again!
+    - speaker: Mas Rizal
+      text: Hehe, tembang campursari akeh sing ambyar.
+      ar_eg: هههه، أغاني الكامبورساري كتير منها قلوب مكسورة.
+      ar: هههه، كثير من أغاني الكامبورساري عن القلوب المحطمة.
+      en: Haha, lots of campursari songs are heartbreak songs.
 review:
   status: draft
   verified: false

@@ -111,14 +111,36 @@ exercises:
     words: [hari ini, Kamis]
   - id: e07
     type: listen
-    text: Hari ini hari Rabu.
-    options: ['Hari ini hari Rabu.', 'Hari ini hari Selasa.', 'Hari ini hari Senin.']
+    text: Hari Rabu tidak bisa. Hari Kamis saja, ya?
+    options: ['Hari Rabu tidak bisa. Hari Kamis saja, ya?', 'Hari Rabu bisa. Hari Kamis saja, ya?', 'Hari Senin tidak bisa. Hari Selasa saja, ya?']
     answer: 0
     meaning:
-      ar_eg: النهارده الأربع.
-      ar: اليوم الأربعاء.
-      en: Today is Wednesday.
-    words: [hari ini, Rabu]
+      ar_eg: الأربع مش هينفع. خليها الخميس، ماشي؟
+      ar: الأربعاء لا يناسب. لنجعلها الخميس، اتفقنا؟
+      en: Wednesday doesn't work. Let's just do Thursday, OK?
+    words: [Rabu, Kamis, saja]
+  - id: e08
+    type: fill_blank
+    sentence: Senin tidak bisa. Hari Jumat ___, ya?
+    meaning:
+      ar_eg: الاتنين مش هينفع. خليها الجمعة، ماشي؟
+      ar: الاثنين لا يناسب. لنجعلها الجمعة، اتفقنا؟
+      en: Monday doesn't work. Let's just do Friday, OK?
+    options: [saja, ini, apa]
+    answers: [saja]
+    explain:
+      ar_eg: 'hari Jumat saja = خليها الجمعة وخلاص. في الشارع بيقولوا aja: Jumat aja!'
+      ar: 'hari Jumat saja = لنكتفِ بالجمعة. وفي العامية aja: Jumat aja!'
+      en: 'hari Jumat saja = let''s just make it Friday. On the street it''s aja: Jumat aja!'
+    words: [Senin, Jumat, saja]
+  - id: e09
+    type: speaking
+    text: Ya, hari Kamis aja!
+    meaning:
+      ar_eg: أيوه، خليها الخميس!
+      ar: نعم، لنجعلها الخميس!
+      en: Yes, let's just do Thursday!
+    words: [Kamis, saja]
 dialogue:
   lines:
     - speaker: Mohamed
@@ -182,6 +204,11 @@ new_words:
     ar: الجمعة
     en: Friday
     arabic: الجمعة
+  - word: saja / aja
+    pos: adverb
+    ar_eg: بس، وخلاص (hari Kamis saja = خليها الخميس)؛ في الشارع aja
+    ar: فقط (hari Kamis saja = لنكتفِ بالخميس)؛ وفي العامية aja
+    en: just, only (hari Kamis saja = let's just do Thursday); on the street aja
 review:
   status: draft
   verified: false

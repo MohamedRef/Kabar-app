@@ -1,7 +1,9 @@
 package app.kabar
 
 import android.content.Context
+import android.media.AudioAttributes
 import android.os.Build
+import android.os.VibrationAttributes
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
@@ -11,6 +13,10 @@ import android.os.VibratorManager
  * Vibration). Rust calls [play] from the UI thread; Vibrator is thread-safe
  * and returns at once. Devices without a motor (most Galaxy tablets) report
  * [available] false and Settings hides the switch there.
+ *
+ * Every tap is filed as touch feedback, so the phone's own controls come
+ * first: Samsung's "Touch interaction" intensity, Do Not Disturb and
+ * Bedtime mode all mute it, as they mute the keyboard's taps.
  */
 object Haptics {
     const val CORRECT = 0
@@ -45,7 +51,17 @@ object Haptics {
             )
             else -> return
         }
-        v.vibrate(effect)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            v.vibrate(effect, VibrationAttributes.createForUsage(VibrationAttributes.USAGE_TOUCH))
+        } else {
+            // Android 9–12 map this audio usage to touch vibration.
+            @Suppress("DEPRECATION")
+            v.vibrate(effect, sonification)
+        }
+    }
+
+    private val sonification: AudioAttributes by lazy {
+        AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).build()
     }
 
     /** Android 10+ tuned effects; a short one-shot on Android 9. */

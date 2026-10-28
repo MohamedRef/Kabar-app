@@ -48,7 +48,7 @@ pub fn OpenBar(sheet: Signal<bool>) -> Element {
     let shown = *sheet.read();
 
     rsx! {
-        div { class: "reader-bar-wrap",
+        div { class: if shown { "reader-bar-wrap open" } else { "reader-bar-wrap" },
         div { class: "card reader-bar one-line",
             h2 { "{ui.t(Msg::NavReader)}" }
             button {

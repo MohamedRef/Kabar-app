@@ -448,9 +448,16 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
             .find(|c| !c.is_whitespace())
             .is_some_and(|&c| is_latin_letter(c) && c.is_uppercase())
     };
+    // "-ku" after a space or an Arabic letter ("aku و-ku") is a suffix: its
+    // hyphen stays inside the Latin run, never mirrored to "ku-".
+    let affix_at = |i: usize| {
+        chars[i] == '-'
+            && latin(i + 1)
+            && (i == 0 || !(is_latin_letter(chars[i - 1]) || chars[i - 1].is_ascii_digit()))
+    };
     let mut i = 0;
     while i < chars.len() {
-        let affix = chars[i] == '-' && latin(i + 1) && (i == 0 || !chars[i - 1].is_alphanumeric());
+        let affix = affix_at(i);
         if latin(i) || affix {
             let start = i;
             let mut end = i;
@@ -489,10 +496,7 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
             i = end;
         } else {
             let start = i;
-            while i < chars.len()
-                && !latin(i)
-                && !(chars[i] == '-' && latin(i + 1) && (i == 0 || !chars[i - 1].is_alphanumeric()))
-            {
+            while i < chars.len() && !latin(i) && !affix_at(i) {
                 i += 1;
             }
             let run: String = chars[start..i].iter().collect();
@@ -562,7 +566,7 @@ fn RichRuns(text: String, target: &'static str, pron: bool) -> Element {
             for (j , unit) in pron_units(runs, target, say).into_iter().enumerate() {
                 match unit {
                     Unit::Plain(t) => rsx! {
-                        span { key: "{key}.{j}", "{localize_digits(&t, lang, eastern)}" }
+                        span { key: "{key}.{j}", "{localize_digits(&in_direction(&t, dir == \"rtl\"), lang, eastern)}" }
                     },
                     Unit::Latin { phrases, close, short } => rsx! {
                         // The phrase, its closing quote and its pronunciation
@@ -659,6 +663,13 @@ fn pron_units(runs: Vec<(bool, String)>, target: &str, say: bool) -> Vec<Unit> {
         }
     }
     out
+}
+
+/// UI-language text as drawn in a line of direction `rtl`: an arrow written
+/// between an Arabic word and a Latin one ("besar = كبير → lebih besar")
+/// points along the reading, so it turns around in a right-to-left line.
+fn in_direction(text: &str, rtl: bool) -> std::borrow::Cow<'_, str> {
+    if rtl && text.contains('→') { text.replace('→', "←").into() } else { text.into() }
 }
 
 /// One piece of a drawn Latin unit, in reading order.
@@ -1334,6 +1345,30 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                 h2 { class: "lp-slide-title", Title { text: title.clone(), target } }
             }
             p { class: "lp-slide-body pre", Rich { text: pick(&slide.body, lang).trim().to_string(), target, pron: true } }
+            if let Some(table) = &slide.table {
+                div { class: "lp-table-wrap",
+                    table { class: "lp-table",
+                        thead {
+                            tr {
+                                for (i, h) in table.head.iter().enumerate() {
+                                    th { key: "{i}", bdi { lang: target, dir: "ltr", "{h}" } }
+                                }
+                                th { "{lt(lang, L::TableMeaning)}" }
+                            }
+                        }
+                        tbody {
+                            for (i, row) in table.rows.iter().enumerate() {
+                                tr { key: "{i}",
+                                    for (j, cell) in row.cells.iter().enumerate() {
+                                        td { key: "{j}", lang: target, Rich { text: cell.clone(), target, pron: true } }
+                                    }
+                                    td { class: "muted", "{pick(&row.meaning, lang)}" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             if !slide.examples.is_empty() {
                 p { class: "muted lp-small", "{lt(lang, L::Examples)}" }
                 ul { class: "lp-examples",
@@ -1383,9 +1418,7 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
                                 move |_| speak_line(&d, i, &l, missing)
                             },
                             span { class: "lp-speaker",
-                                if let Some(src) = crate::portraits::of(&line.speaker, crate::portraits::Mood::Neutral) {
-                                    crate::portraits::Face { src, class: "lp-face" }
-                                }
+                                crate::portraits::SpeakerFace { speaker: line.speaker.clone(), class: "lp-face" }
                                 bdi { "{line.speaker}" }
                             }
                             Annotated { text: line.text.clone(), tag: target, meaning: pick(&line.meaning, lang).to_string(), class: "lp-target" }
@@ -1951,8 +1984,8 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
-                        if d.matched.contains(&i) {
-                            span { class: "lp-pair-tick", aria_hidden: "true", "✓" }
+                        if let Some(n) = couple_number(&d.matched, i) {
+                            span { class: "lp-pair-tick", aria_hidden: "true", "✓{n}" }
                         }
                         bdi { lang: target, dir: "ltr", class: "latin", "{word}" }
                     }
@@ -1973,8 +2006,8 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
-                        if d.matched.contains(&i) {
-                            span { class: "lp-pair-tick", aria_hidden: "true", "✓" }
+                        if let Some(n) = couple_number(&d.matched, i) {
+                            span { class: "lp-pair-tick", aria_hidden: "true", "✓{n}" }
                         }
                         Rich { text: pairs[i].1.clone(), target }
                     }
@@ -1984,12 +2017,15 @@ fn MatchPairs(
     }
 }
 
+/// Couple tints in lesson.css; a board has at most six pairs.
+const COUPLE_TINTS: usize = 6;
+
 /// The class of one pair button. A matched couple reads as done, not
-/// disabled: both halves share one of four tints (by the order they were
-/// matched), so the learner can see which word went with which meaning.
+/// disabled: both halves share a tint (by the order they were matched), so
+/// the learner can see which word went with which meaning.
 fn pair_class(matched: &[usize], sel: Option<usize>, i: usize, wrong: Option<usize>) -> String {
     if let Some(k) = matched.iter().position(|&m| m == i) {
-        format!("lp-pair done couple-{}", k % 4)
+        format!("lp-pair done couple-{}", k % COUPLE_TINTS)
     } else if wrong == Some(i) {
         "lp-pair wrong".into()
     } else if sel == Some(i) {
@@ -1997,6 +2033,12 @@ fn pair_class(matched: &[usize], sel: Option<usize>, i: usize, wrong: Option<usi
     } else {
         "lp-pair".into()
     }
+}
+
+/// The number both halves of a matched couple wear (1 for the first match),
+/// so colour is never the only cue (#311).
+fn couple_number(matched: &[usize], i: usize) -> Option<usize> {
+    matched.iter().position(|&m| m == i).map(|k| k + 1)
 }
 
 /// Once both sides are selected: a match sticks, a mismatch is remembered as
@@ -2091,7 +2133,14 @@ mod tests {
         let matched = [2, 0, 4, 1, 3];
         assert_eq!(pair_class(&matched, None, 2, None), "lp-pair done couple-0");
         assert_eq!(pair_class(&matched, None, 0, None), "lp-pair done couple-1");
-        assert_eq!(pair_class(&matched, None, 3, None), "lp-pair done couple-0");
+        assert_eq!(pair_class(&matched, None, 3, None), "lp-pair done couple-4");
+        // Six couples, six tints, and the number repeats nothing.
+        let six = [5, 4, 3, 2, 1, 0];
+        let tints: std::collections::BTreeSet<String> =
+            (0..6).map(|i| pair_class(&six, None, i, None)).collect();
+        assert_eq!(tints.len(), 6);
+        assert_eq!((couple_number(&six, 5), couple_number(&six, 0)), (Some(1), Some(6)));
+        assert_eq!(couple_number(&six[..2], 0), None);
         assert_eq!(pair_class(&[], Some(1), 1, None), "lp-pair selected");
         assert_eq!(pair_class(&[], Some(1), 1, Some(1)), "lp-pair wrong");
         assert_eq!(pair_class(&[], None, 1, None), "lp-pair");
@@ -2224,6 +2273,19 @@ mod tests {
         let runs = latin_runs("- Menurut X, … = على حسب X …");
         assert_eq!(runs[1], (true, "Menurut X, …".into()));
         assert_eq!(runs[3], (true, "X …".into()));
+    }
+
+    #[test]
+    fn suffixes_keep_their_hyphen_and_arrows_follow_the_line() {
+        let runs = latin_runs("aku و-ku = saya");
+        assert_eq!(runs, vec![(true, "aku".into()), (false, " و".into()), (true, "-ku = saya".into()),]);
+        // A hyphen inside a Latin word is still a hyphen, not a new run.
+        assert_eq!(latin_runs("anak-anak"), vec![(true, "anak-anak".into())]);
+        let runs = latin_runs("besar = كبير → lebih besar = أكبر");
+        let plain: String =
+            runs.iter().filter(|(l, _)| !l).map(|(_, t)| in_direction(t, true).into_owned()).collect();
+        assert!(plain.contains('←') && !plain.contains('→'), "{plain}");
+        assert_eq!(in_direction("a → b", false), "a → b");
     }
 
     #[test]

@@ -502,6 +502,7 @@ mod tests {
                     Example { text: "Apa  kabar?".into(), meaning: loc("") },
                 ],
                 grammar: None,
+                table: None,
             }],
             exercises: vec![
                 Exercise {
