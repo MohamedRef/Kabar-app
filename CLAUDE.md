@@ -16,7 +16,7 @@ Kabar is a personal Indonesian + Javanese learning app in Rust for one learner (
 ## Workflow
 - Go milestone by milestone (`docs/SPEC.md` §23). Don't start app code for a milestone until its plan is approved.
 - Before every commit: `just check` (= `scripts/check-tracked-files.sh`, `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test --workspace`). All green. CI also clippy-checks the Android arm64 build.
-- Every PR adds `changes/<topic>.yaml` or appends to one (one line per change the learner can see: `kind` new/improved/fixed, `ar_eg`, `en`); the app's "What's new" is built from these (`docs/RELEASE.md` §5). Housekeeping PRs add a file holding `[]`. CI fails a PR without one.
+- Every PR adds `changes/<topic>.yaml` or appends to one (one line per change the learner can see: `kind` new/improved/fixed, `ar_eg`, `en`); the app's "What's new" is built from these (`docs/RELEASE.md` §5). Housekeeping PRs add a file holding `[]`; a PR that only changes `README.md` needs none. CI fails a PR without one.
 - Run/install instructions live in `docs/RUN.md`; keep them current.
 - `README.md` shows the current state. Its content numbers are generated: the daily README routine refreshes them, and running `just readme` in a content PR is welcome but never required (CI only warns, so parallel PRs can't turn main red). Update its feature, roadmap and run tables by hand when a PR changes them.
 - After each milestone: tell the user exactly how to run it on the Mac and install it on the S24 Ultra and Tab S11, summarize changes, commit with a clear message.
