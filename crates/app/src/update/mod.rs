@@ -208,7 +208,7 @@ pub(crate) fn notes_in(lang: UiLanguage, n: &UpdateNotes) -> String {
 /// an offer whose banner was closed, never inside quiet hours. `local` is the
 /// device's wall clock when the platform knows it (Android's job passes it).
 pub fn notice(s: &Status, local: Option<LocalTime>, now_ms: u64) -> Option<Notice> {
-    use text::{U, ut};
+    use text::{U, more_changes, ut};
     if s.off.is_some() || s.prefs.mode == Mode::Off || !s.prefs.notify {
         return None;
     }
@@ -242,7 +242,7 @@ pub fn notice(s: &Status, local: Option<LocalTime>, now_ms: u64) -> Option<Notic
     let mut whats_new = if offer.changes.is_empty() {
         notes_in(lang, &offer.notes)
     } else {
-        changelog::notice_lines(lang, &offer.changes, ut(lang, U::NoticeMore))
+        changelog::notice_lines(lang, &offer.changes, |n| more_changes(lang, n))
     };
     if whats_new.chars().count() > 300 {
         whats_new = whats_new.chars().take(299).collect::<String>() + "…";

@@ -87,19 +87,24 @@ pub fn line(lang: UiLanguage, c: &Change) -> (String, bool) {
 }
 
 /// The notification's "what's new": up to three lines, then "+N".
-pub fn notice_lines(lang: UiLanguage, builds: &[BuildChanges], more: &str) -> String {
+pub fn notice_lines(lang: UiLanguage, builds: &[BuildChanges], more: impl Fn(usize) -> String) -> String {
     lines_upto(lang, builds, more, 3)
 }
 
 /// The first `max` lines, new things first, then "+N".
-pub fn lines_upto(lang: UiLanguage, builds: &[BuildChanges], more: &str, max: usize) -> String {
+pub fn lines_upto(
+    lang: UiLanguage,
+    builds: &[BuildChanges],
+    more: impl Fn(usize) -> String,
+    max: usize,
+) -> String {
     let all: Vec<&Change> = builds.iter().flat_map(|b| b.changes.iter()).collect();
     // New things first, then improvements, then fixes.
     let mut sorted = all.clone();
     sorted.sort_by_key(|c| kind_index(c.kind));
     let mut out: Vec<String> = sorted.iter().take(max).map(|c| format!("• {}", line(lang, c).0)).collect();
     if all.len() > max {
-        out.push(more.replace("{n}", &(all.len() - max).to_string()));
+        out.push(more(all.len() - max));
     }
     out.join("\n")
 }
@@ -192,9 +197,9 @@ mod tests {
     fn notice_lines_put_new_things_first() {
         use ChangeKind::*;
         let h = [b("0.1.0", 9, &[Fixed, New, Improved, Fixed, New])];
-        let s = notice_lines(UiLanguage::ArEg, &h, "و{n} كمان");
+        let s = notice_lines(UiLanguage::ArEg, &h, |n| format!("و{n} كمان"));
         assert_eq!(s, "• تغيير 1\n• تغيير 4\n• تغيير 2\nو2 كمان");
-        let en = notice_lines(UiLanguage::En, &h[..], "+{n} more");
+        let en = notice_lines(UiLanguage::En, &h[..], |n| format!("+{n} more"));
         assert!(en.starts_with("• change 1"));
     }
 

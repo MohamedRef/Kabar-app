@@ -36,6 +36,9 @@ const SHEET_CSS: &str = r#"
 .us-logo { inline-size: 2.6rem; block-size: 2.6rem; border-radius: 12px; display: grid; place-items: center;
   background: color-mix(in srgb, var(--sawah) 14%, var(--surface)); color: var(--sawah); }
 .us-logo svg { inline-size: 1.5rem; block-size: 1.5rem; }
+/* The Settings sheet's own buttons hide under this one: one ✕ at a time. */
+.app:has(.us-sheet) .settings-head > .icon-button { visibility: hidden; }
+.us-failed { margin: 0; padding: var(--sp-2) var(--sp-4) 0; font-size: var(--fs-sm); color: var(--text); }
 .us-head h2 { margin: 0; font-size: var(--fs-lg); line-height: var(--lh-tight); }
 .us-head p { margin: 0; font-size: var(--fs-sm); color: var(--muted); }
 .us-body { overflow-y: auto; padding: var(--sp-2) var(--sp-4) var(--sp-4); overscroll-behavior: contain; }
@@ -589,6 +592,9 @@ pub fn UpdateSheet() -> Element {
                 if more_earlier {
                     button { class: "us-more", onclick: move |_| earlier_shown += EARLIER_STEP, "{ut(lang, U::ShowOlder)}" }
                 }
+            }
+            if let (SheetMode::Offer, Phase::Failed { why, .. }) = (m, &s.phase) {
+                p { class: "us-failed", role: "alert", "{ut(lang, super::view::failure_text(why))}" }
             }
             div { class: "us-foot",
                 if action.is_some() {
