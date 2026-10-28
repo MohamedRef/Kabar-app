@@ -19,7 +19,7 @@ the Arabic words Indonesian already borrowed.
 
 | Feature | Mac | S24 Ultra (phone) | Tab S11 (tablet) |
 |---|---|---|---|
-| Journey Map (Jakarta → Raja Ampat, Surabaya → Yogyakarta), Lesson Player, Lanjut handoff | ✓ | ✓ vertical route | ✓ full map, pinch and pan |
+| Journey Map (Jakarta → Raja Ampat, Yogyakarta ↔ Madiun), Lesson Player, Lanjut handoff | ✓ zoom out to the whole journey | ✓ vertical route | ✓ full map, pinch and pan, zoom out to the whole journey |
 | Placement test, level tests ("Take a flight"), monthly level check | ✓ | ✓ | ✓ |
 | Review (FSRS): classic cards, 1-minute bursts, typed answers | ✓ | ✓ | ✓ |
 | Stats: skill radar, pace and forecast | ✓ | ✓ | ✓ |
@@ -34,6 +34,7 @@ the Arabic words Indonesian already borrowed.
 | Watch & listen: Sinetron, Kabar Radio, offline download, background playback | ✓ | ✓ background audio | ✓ background audio |
 | Persona chats: a chat partner for every level (10 personas) | ✓ | ✓ | ✓ |
 | Studio: AI mind maps, Study Desk panes | ✓ | — | ✓ |
+| Lesson sounds (pick them in Settings) and a light vibration | ✓ sounds | ✓ vibration follows the phone's touch setting | ✓ vibration follows the tablet's touch setting |
 | Offline packs (audio per unit) | ✓ | ✓ | ✓ |
 | Sync through Kabar Cloud, Google sign-in, Devices screen | ✓ | ✓ | ✓ |
 | Updates over the air: signed feed, automatic / tell me first / off, alpha·beta·stable (preview for CI builds) | ✓ swaps Kabar.app | ✓ PackageInstaller | ✓ PackageInstaller |
@@ -70,11 +71,11 @@ every morning. CI warns when the table below is behind the content.
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | J1 | Malioboro, Yogyakarta | — | 7 | 50 | 459 | 261 | 212 / 250 | ~6 h | 34 |
 | J2 | Madiun | — | 6 | 48 | 461 | 240 | 405 / 500 | ~5 h | 35 |
-| J3 | Pakualaman, Yogyakarta | — | 6 | 61 | 554 | 250 | 613 / 750 | ~6 h | 35 |
-| J4 | Kraton, Yogyakarta | — | 6 | 73 | 687 | 274 | 864 / 1,000 | ~8 h | 38 |
-| J5 | Kutha Pendekar (Madiun) | — | 6 | 72 | 683 | 302 | 1,117 / 1,250 | ~8 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 86 | 808 | 294 | 1,374 / 1,500 | ~9 h | 37 |
-| **Total** |  | — | 37 | 390 | 3,652 | 1,621 | 1,374 / 1,500 | ~43 h | 218 |
+| J3 | Pakualaman, Yogyakarta | — | 6 | 67 | 615 | 298 | 661 / 750 | ~7 h | 35 |
+| J4 | Kraton, Yogyakarta | — | 6 | 73 | 687 | 274 | 912 / 1,000 | ~8 h | 38 |
+| J5 | Kutha Pendekar (Madiun) | — | 6 | 72 | 683 | 302 | 1,165 / 1,250 | ~8 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 86 | 808 | 294 | 1,422 / 1,500 | ~9 h | 37 |
+| **Total** |  | — | 37 | 396 | 3,713 | 1,669 | 1,422 / 1,500 | ~43 h | 218 |
 
 **Reference content and stories**
 
@@ -177,6 +178,8 @@ Jump straight into a lesson or test: `KABAR_OPEN_LESSON=bipa1.u01.l01 just run-m
 | [RELEASE.md](docs/RELEASE.md) | Release checklist (no release yet) |
 | [CONTENT.md](docs/CONTENT.md) | Content pipeline |
 | [PEDAGOGY.md](docs/PEDAGOGY.md) | Lesson pacing and evidence |
+| [DESIGN.md](docs/DESIGN.md) | Design system: how screens look and adapt |
+| [CAST.md](docs/CAST.md) | Who is who, and which units each character belongs to |
 | [RESEARCH.md](docs/RESEARCH.md) | Services and free-tier verification |
 | [BAKEOFF.md](docs/BAKEOFF.md) | Engine bake-off |
 | [VISUAL-ASSETS.md](docs/VISUAL-ASSETS.md) | Art pipeline |

@@ -1,150 +1,164 @@
 schema: kabar.lesson/v1
 id: j3.u04.l08
 language: jv
-title: Kenalan karo Pak Wiryo
+title: Papan ing Pura
 can_do:
-  ar_eg: تسمع مرشد بيعرّف نفسه بالكراما وتفهم هو منين وبيحب إيه، وتعرّف نفسك ليه.
-  ar: أن تسمع مرشدًا يعرّف بنفسه بالكراما وتفهم من أين هو وماذا يحب، ثم تعرّف بنفسك.
-  en: Follow a guide's krama self-introduction by ear, then introduce yourself to him.
+  ar_eg: تقرا لافتة بالكراما في القصر وتسأل الحارس عن الطريق بأدب.
+  ar: أن تقرأ لافتة بالكراما في القصر وتسأل الحارس عن الطريق بأدب.
+  en: Read a krama sign at the palace and ask the guard the way politely.
 slides:
-  - title: Rungokna Pak Wiryo
+  - title: Papan ing lawang Pura
     body:
       ar_eg: |
-        في الـ pendhapa، Pak Wiryo المرشد بيرحّب بمجموعة زوار. اسمعه من غير ما تقرا.
-        هو بيتكلم عن نفسه بـ kula، وبيكلم الزوار بـ panjenengan، وفي الآخر بيعزمهم يسألوا: Mangga, taken kemawon!
+        على باب Pura Pakualaman فيه لافتة للزوار. اقراها:
+        lurus kemawon = امشي على طول، lajeng = بعد كده، mboten kepareng = ممنوع (مش مسموح).
       ar: |
-        في الـ pendhapa يرحّب المرشد Pak Wiryo بمجموعة من الزوار. استمع إليه دون قراءة.
-        يتكلم عن نفسه بـ kula، ويخاطب الزوار بـ panjenengan، ثم يدعوهم إلى السؤال: Mangga, taken kemawon!
+        على باب Pura Pakualaman لافتة للزوار. اقرأها:
+        lurus kemawon = امشِ مستقيمًا، وlajeng = ثم، وmboten kepareng = ممنوع (غير مسموح).
       en: |
-        In the pendhapa, Pak Wiryo the guide welcomes a group of visitors. Listen without reading.
-        He talks about himself with kula, addresses the visitors with panjenengan, and invites questions: Mangga, taken kemawon!
+        At the gate of Pura Pakualaman there is a sign for visitors. Read it:
+        lurus kemawon = just go straight, lajeng = then, mboten kepareng = not allowed.
+    examples:
+      - text: Sugeng rawuh ing Pura Pakualaman.
+        ar_eg: أهلًا وسهلًا في قصر Pakualaman.
+        ar: مرحبًا بكم في قصر Pakualaman.
+        en: Welcome to Pura Pakualaman.
+      - text: "Pendhapa: saking mriki lurus kemawon, lajeng nengen."
+        ar_eg: "الـ Pendhapa: من هنا على طول، وبعدين يمين."
+        ar: "الـ Pendhapa: من هنا مستقيمًا، ثم يمينًا."
+        en: "Pendhapa: from here just go straight, then turn right."
+      - text: Nyuwun sewu, mboten kepareng nedha ing pendhapa.
+        ar_eg: لا مؤاخذة، ممنوع الأكل في الـ pendhapa.
+        ar: عفوًا، لا يُسمح بالأكل في الـ pendhapa.
+        en: Sorry, no eating in the pendhapa.
     grammar: jv.krama.questions
 exercises:
   - id: e01
-    type: listen
-    text: Sugeng enjing. Nami kula Wiryo. Kula saking Klaten.
-    question:
-      ar_eg: Pak Wiryo منين؟
-      ar: من أين Pak Wiryo؟
-      en: Where is Pak Wiryo from?
-    options: [Jogja, Klaten, Kairo]
-    answer: 1
-    meaning:
-      ar_eg: صباح الخير. اسمي Wiryo. أنا من Klaten.
-      ar: صباح الخير. اسمي Wiryo. أنا من Klaten.
-      en: Good morning. My name is Wiryo. I'm from Klaten.
-    words: [nami, saking]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) إزاي توصل للـ pendhapa؟
+      ar: (من اللافتة) كيف تصل إلى الـ pendhapa؟
+      en: (from the sign) How do you get to the pendhapa?
+    options: ["lurus, lajeng ngiwa", "nengen, lajeng lurus", "lurus, lajeng nengen"]
+    answer: 2
+    words: [lajeng, mriki]
   - id: e02
-    type: listen
-    text: Kula remen sanget basa Jawi lan pendhapa menika.
-    question:
-      ar_eg: Pak Wiryo بيحب إيه؟
-      ar: ماذا يحب Pak Wiryo؟
-      en: What does Pak Wiryo love?
-    options: [basa Jawi, batik, teh]
-    answer: 0
-    meaning:
-      ar_eg: أنا بحب أوي اللغة الجاوية والـ pendhapa ده.
-      ar: أحب كثيرًا اللغة الجاوية وهذا الـ pendhapa.
-      en: I really love the Javanese language and this pendhapa.
-    words: [remen, sanget, basa Jawi]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) إيه الممنوع في الـ pendhapa؟
+      ar: (من اللافتة) ما الممنوع في الـ pendhapa؟
+      en: (from the sign) What can't you do in the pendhapa?
+    options: [mlampah, nedha, taken]
+    answer: 1
+    words: [kepareng, nedha, pendhapa]
   - id: e03
     type: listen
-    text: Panjenengan saking pundi? Mangga, taken kemawon!
+    text: Nyuwun sewu, Mas, mboten kepareng nedha ing pendhapa.
     question:
-      ar_eg: Pak Wiryo بيعزم الزوار يعملوا إيه؟
-      ar: إلامَ يدعو Pak Wiryo الزوار؟
-      en: What does Pak Wiryo invite the visitors to do?
-    options: [nedha, mlampah, taken]
-    answer: 2
-    meaning:
-      ar_eg: حضراتكم منين؟ اتفضلوا اسألوا!
-      ar: من أين حضراتكم؟ تفضّلوا بالسؤال!
-      en: Where are you from? Please, feel free to ask!
-    words: [pundi, taken]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: Pak Wiryo سأل «Panjenengan saking pundi?». محمد يرد بإيه؟
-      ar: سأل Pak Wiryo «Panjenengan saking pundi?». بمَ يجيب محمد؟
-      en: Pak Wiryo asks "Panjenengan saking pundi?". What does Mohamed answer?
-    options: ['Nami kula Mohamed, Pak.', 'Kula remen basa Jawi, Pak.', 'Kula saking Kairo, Pak.']
-    answer: 2
-    explain:
-      ar_eg: saking pundi = منين. الرد saking + مكان.
-      ar: saking pundi = من أين، والجواب saking + المكان.
-      en: saking pundi = where from; answer with saking + a place.
-    words: [saking, pundi]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: 'زائر سأل محمد: «Kenging menapa sampeyan sinau basa Jawi?». أحسن رد؟'
-      ar: 'سأل زائر محمدًا: «Kenging menapa sampeyan sinau basa Jawi?». ما أنسب جواب؟'
-      en: 'A visitor asks Mohamed: "Kenging menapa sampeyan sinau basa Jawi?". The best answer?'
-    options: ['Jam sanga.', 'Kula remen basa Jawi.', 'Kula saking Kairo.']
+      ar_eg: الحارس قال لمحمد إيه؟ محمد يقدر ياكل في الـ pendhapa؟
+      ar: ماذا قال الحارس لمحمد؟ هل يستطيع الأكل في الـ pendhapa؟
+      en: What did the guard tell Mohamed? Can he eat in the pendhapa?
+    options: [Kepareng, Mboten kepareng]
     answer: 1
-    explain:
-      ar_eg: kenging menapa = ليه، فالرد سبب.
-      ar: kenging menapa = لماذا، فالجواب سبب.
-      en: kenging menapa = why, so the answer is a reason.
-    words: [kenging menapa, remen]
-  - id: e06
-    type: dictation
-    text: Mangga, taken kemawon.
     meaning:
-      ar_eg: اتفضل اسأل.
-      ar: تفضّل بالسؤال.
-      en: Please, feel free to ask.
-    words: [mangga, taken, kemawon]
-  - id: e07
+      ar_eg: لا مؤاخذة يا أستاذ، ممنوع الأكل في الـ pendhapa.
+      ar: عفوًا يا أخي، لا يُسمح بالأكل في الـ pendhapa.
+      en: Sorry, you can't eat in the pendhapa.
+    words: [mboten, kepareng]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: Sugeng rawuh
+        ar_eg: أهلًا وسهلًا
+        ar: مرحبًا بكم
+        en: Welcome
+      - text: lurus kemawon
+        ar_eg: على طول بس
+        ar: مستقيمًا فقط
+        en: just straight on
+      - text: lajeng nengen
+        ar_eg: وبعدين يمين
+        ar: ثم يمينًا
+        en: then turn right
+      - text: mboten kepareng
+        ar_eg: ممنوع / مش مسموح
+        ar: غير مسموح
+        en: not allowed
+    words: [kemawon, lajeng, kepareng]
+  - id: e05
+    type: fill_blank
+    sentence: Saking mriki lurus ___, lajeng nengen.
+    meaning:
+      ar_eg: من هنا على طول، وبعدين يمين.
+      ar: من هنا مستقيمًا، ثم يمينًا.
+      en: From here just go straight, then turn right.
+    options: [wae, sanget, kemawon]
+    answers: [kemawon]
+    explain:
+      ar_eg: '«بس / وخلاص» بالكراما kemawon (في الكلام mawon). wae نغوكو، وsanget معناها «جدًا».'
+      ar: '«فقط» بالكراما kemawon (وفي الكلام mawon)؛ wae من الـ ngoko، وsanget تعني «جدًا».'
+      en: '"Just" in krama is kemawon (spoken mawon). wae is ngoko; sanget means "very".'
+    words: [kemawon]
+  - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: 'عرّف نفسك لـ Pak Wiryo بالكراما: اسمي محمد. أنا من القاهرة. بحب الجاوي أوي.'
-      ar: 'عرّف بنفسك لـ Pak Wiryo بالكراما: اسمي محمد. أنا من القاهرة. أحب الجاوية كثيرًا.'
-      en: "Introduce yourself to Pak Wiryo in krama: My name is Mohamed. I'm from Cairo. I really love Javanese."
-    answers: ["Nami kula Mohamed. Kula saking Kairo. Kula remen sanget basa Jawi.", "Nami kulo Mohamed. Kulo saking Kairo. Kulo remen sanget basa Jawi.", "Nami kula Mohamed. Kula saking Kairo. Kula remen basa Jawi sanget.", "Nami kula Mohamed, saking Kairo. Kula remen sanget basa Jawi.", "Nami kula Mohamed, saking Kairo. Kula remen basa Jawi sanget.", "Nami kula Mohamed. Kula saking Kairo. Kula remen sanget kaliyan basa Jawi."]
+      ar_eg: 'اسأل الحارس: لا مؤاخذة يا حاج، الـ pendhapa فين؟'
+      ar: 'اسأل الحارس: عفوًا يا سيدي، أين الـ pendhapa؟'
+      en: "Ask the guard: Excuse me, sir, where is the pendhapa?"
+    answers: ["Nyuwun sewu, Pak, pendhapa ing pundi?", "Nyuwun sewu, Pak, pendhapanipun ing pundi?", "Nyuwun sewu, pendhapa ing pundi, Pak?", "Nyuwun sewu, Pak, pendhapa wonten pundi?", "Nyuwun sewu, Pak, pendhapa wonten ing pundi?"]
     explain:
-      ar_eg: 'remen = seneng (يحب)، sanget = banget (أوي).'
-      ar: 'remen = seneng (يحب)، وsanget = banget (جدًا).'
-      en: 'remen = seneng (like), sanget = banget (very).'
-    words: [nami, kula, saking, remen, sanget, basa Jawi]
-  - id: e08
-    type: speaking
-    text: Pak Wiryo, panjenengan saking Klaten?
-    meaning:
-      ar_eg: يا Pak Wiryo، حضرتك من Klaten؟
-      ar: يا Pak Wiryo، هل حضرتك من Klaten؟
-      en: Pak Wiryo, are you from Klaten?
-    words: [panjenengan, saking]
+      ar_eg: 'فين = ing pundi (ngendi بالنغوكو). وابدأ دايمًا بـ Nyuwun sewu.'
+      ar: 'أين = ing pundi (وبالنغوكو ngendi)، وابدأ دائمًا بـ Nyuwun sewu.'
+      en: 'Where = ing pundi (ngoko ngendi). Always open with Nyuwun sewu.'
+    words: [nyuwun sewu, pundi, pendhapa]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: أقدر أمشي لحد الـ pendhapa.
+      ar: أستطيع المشي إلى الـ pendhapa.
+      en: I can walk to the pendhapa.
+    answer: Kula saged mlampah dhateng pendhapa.
+    distractors: [isa, neng]
+    explain:
+      ar_eg: 'saged = isa (يقدر)، mlampah = mlaku (يمشي)، dhateng = neng.'
+      ar: 'saged = isa (يستطيع)، وmlampah = mlaku (يمشي)، وdhateng = neng.'
+      en: 'saged = isa (can), mlampah = mlaku (walk), dhateng = neng.'
+    words: [saged, mlampah, dhateng]
 dialogue:
-  title: Mohamed taken
+  title: Ing lawang Pura
   lines:
     - speaker: Mohamed
-      text: Pak Wiryo, kula badhe taken.
-      ar_eg: يا Pak Wiryo، عايز أسأل سؤال.
-      ar: يا Pak Wiryo، أريد أن أسأل.
-      en: Pak Wiryo, I'd like to ask something.
+      text: Nyuwun sewu, Pak Wiryo. Pendhapa ing pundi?
+      ar_eg: لا مؤاخذة يا Pak Wiryo. الـ pendhapa فين؟
+      ar: عفوًا يا Pak Wiryo. أين الـ pendhapa؟
+      en: Excuse me, Pak Wiryo. Where is the pendhapa?
     - speaker: Pak Wiryo
-      text: Mangga, Mas.
-      ar_eg: اتفضل يا أستاذ.
-      ar: تفضّل يا أخي.
-      en: Go ahead.
+      text: "Saking mriki lurus mawon, mangke nengen, Mas."
+      ar_eg: "من هنا على طول، وبعدين يمين يا أستاذ."
+      ar: "من هنا امشِ مستقيمًا، ثم يمينًا."
+      en: "From here just go straight, then right."
     - speaker: Mohamed
-      text: Kenging menapa panjenengan remen pendhapa?
-      ar_eg: حضرتك بتحب الـ pendhapa ليه؟
-      ar: لماذا تحب الـ pendhapa؟
-      en: Why do you love the pendhapa?
+      text: Tebih, Pak?
+      ar_eg: بعيد يا حاج؟
+      ar: هل هو بعيد يا سيدي؟
+      en: Is it far, sir?
     - speaker: Pak Wiryo
-      text: Pendhapa menika sae sanget, Mas. Sampeyan remen?
-      ar_eg: الـ pendhapa ده حلو أوي يا أستاذ. وإنت بتحبه؟
-      ar: هذا الـ pendhapa جميل جدًا يا أخي. وهل تحبه أنت؟
-      en: This pendhapa is very beautiful. Do you like it?
+      text: Mboten, celak kemawon. Nanging mboten kepareng nedha ing pendhapa, nggih.
+      ar_eg: لأ، قريب. بس ممنوع الأكل في الـ pendhapa، ماشي؟
+      ar: لا، قريب. لكن لا يُسمح بالأكل في الـ pendhapa، حسنًا؟
+      en: No, it's close. But no eating in the pendhapa, all right?
     - speaker: Mohamed
-      text: Inggih, Pak. Remen sanget!
-      ar_eg: أيوه يا حاج. بحبه أوي!
-      ar: نعم يا سيدي. أحبه كثيرًا!
-      en: Yes, sir. Very much!
+      text: Inggih, Pak. Matur nuwun sanget.
+      ar_eg: حاضر يا حاج. شكرًا جدًا.
+      ar: حاضر يا سيدي. شكرًا جزيلًا.
+      en: Of course, sir. Thank you very much.
+new_words:
+  - word: kepareng
+    pos: verb
+    ar_eg: 'مسموح (oleh ← boleh)، كراما إنغيل. على اللافتات: mboten kepareng = ممنوع'
+    ar: 'مسموح (oleh ← boleh)، كراما إنغيل. على اللافتات: mboten kepareng = ممنوع'
+    en: 'allowed, may (ngoko oleh, Indonesian boleh), krama inggil. On signs, mboten kepareng = not allowed'
 review:
   status: draft
   verified: false
