@@ -73,10 +73,13 @@ pub fn PagiTodayCard() -> Element {
         return rsx! {};
     }
     rsx! {
-        div { class: "card pagi-card reveal",
+        // A tap anywhere opens the story; the button is the keyboard and
+        // screen-reader target, and its click bubbles up to the card.
+        div { class: "card card-action pagi-card reveal",
+            onclick: move |_| super::open(ui, nav, Route::Pagi),
             h2 { lang: "id", bdi { "Kabar Pagi" } }
             p { class: "muted", "{ui.t(Msg::PagiBlurb)}" }
-            button { class: "primary", onclick: move |_| super::open(ui, nav, Route::Pagi), "{ui.t(Msg::PagiListen)}" }
+            button { class: "primary", "{ui.t(Msg::PagiListen)}" }
         }
     }
 }

@@ -52,14 +52,16 @@ pub fn Alarm() -> Element {
     let Some(s) = session.read().clone() else {
         return rsx! {
             PlayHeader { title: Msg::AlarmTitle }
-            div { class: "card alarm-intro",
+            // The whole card starts the game; the button's click bubbles up to it.
+            div { class: "card card-action alarm-intro",
+                onclick: move |_| session.set(new_session()),
                 p { "{ui.t(Msg::AlarmIntro)}" }
                 p { class: "alarm-example",
                     bdi { class: "latin", lang: "id", "kalimat" }
                     " ≠ "
                     span { lang: "ar", "«كلمة»" }
                 }
-                button { class: "primary", onclick: move |_| session.set(new_session()), "{ui.t(Msg::Start)}" }
+                button { class: "primary", "{ui.t(Msg::Start)}" }
             }
         };
     };

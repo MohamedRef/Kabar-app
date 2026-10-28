@@ -22,6 +22,7 @@ const TAPPABLE: &[&str] = &[
     "lesson",
     "game-card",
     "journal-entry",
+    "seed-word",
     "tap",
     "tap-head",
 ];
@@ -131,4 +132,104 @@ fn the_scanner_sees_elements() {
     let found = elements(src);
     assert_eq!(found[0].0, "li");
     assert_eq!(found[1], ("button".to_string(), "tile tap".to_string(), 4));
+}
+
+/// The rsx block that opens on `line` (1-based): its text up to the
+/// matching brace, string literals emptied.
+fn block_from(lines: &[&str], line: usize) -> String {
+    let mut depth = 0i32;
+    let mut out = String::new();
+    for l in &lines[line - 1..] {
+        let l = strip_strings(l);
+        for c in l.chars() {
+            match c {
+                '{' => depth += 1,
+                '}' => depth -= 1,
+                _ => {}
+            }
+        }
+        out.push_str(&l);
+        out.push('\n');
+        if depth <= 0 {
+            break;
+        }
+    }
+    out
+}
+
+/// Buttons that leave a card rather than open what it shows.
+const EXITS: &[&str] = &["Msg::Back)", "Msg::PlayAgain)", "Msg::RevBackHome)", "back_label("];
+
+/// One-button cards whose button is a side action, not what the card
+/// shows: freeing downloaded space (a stray tap must not delete), and
+/// refreshing the month's cost.
+const SIDE_ACTION_CARDS: &[&str] = &["lx-space", "cost-head"];
+
+/// A card whose one job is one button (Kabar Pagi's "listen", the
+/// placement invite) opens on a tap anywhere on it, not only on the
+/// button: such a card carries `card-action` and an `onclick` of its own.
+/// Cards with a choice (two buttons, a field, a link) are left alone.
+/// Returns the lines of the cards in `src` that break this.
+fn one_button_cards(src: &str) -> Vec<usize> {
+    let lines: Vec<&str> = src.lines().collect();
+    let mut dead = Vec::new();
+    for (element, classes, line) in elements(src) {
+        let classes: Vec<&str> = classes.split_whitespace().collect();
+        if PRESSABLE.contains(&element.as_str()) || !classes.contains(&"card") {
+            continue;
+        }
+        let block = block_from(&lines, line);
+        let controls =
+            ["button {", "input {", "textarea {", "select {", "a {", "summary {", "for ", "Link {"]
+                .iter()
+                .map(|c| block.matches(c).count())
+                .sum::<usize>();
+        let buttons = block.matches("button {").count();
+        // Components inside may hold their own controls: only a plain card counts.
+        let nested = block.lines().skip(1).any(|l| {
+            let t = l.trim_start();
+            t.chars().next().is_some_and(|c| c.is_ascii_uppercase()) && t.contains(" {")
+        });
+        // A card whose button only leaves (Back, Play again, Review home) shows a result, not a thing.
+        let raw: String = lines[line - 1..line - 1 + block.lines().count()].join("\n");
+        let side =
+            EXITS.iter().any(|e| raw.contains(e)) || classes.iter().any(|c| SIDE_ACTION_CARDS.contains(c));
+        if buttons == 1 && controls == 1 && !nested && !side {
+            let head: String = block.lines().take_while(|l| !l.contains("button {")).collect();
+            if !classes.contains(&"card-action") || !head.contains("onclick") {
+                dead.push(line);
+            }
+        }
+    }
+    dead
+}
+
+#[test]
+fn single_action_cards_open_anywhere() {
+    let mut files = Vec::new();
+    sources(&Path::new(env!("CARGO_MANIFEST_DIR")).join("src"), &mut files);
+    let dead: Vec<String> = files
+        .iter()
+        .filter(|(path, _)| !path.ends_with("dead_ends.rs"))
+        .flat_map(|(path, src)| {
+            one_button_cards(src).into_iter().map(move |line| {
+                format!(
+                    "{path}:{line}: a one-button card should open on a tap anywhere (`card-action` + onclick)"
+                )
+            })
+        })
+        .collect();
+    assert!(dead.is_empty(), "single-action cards that only react to their button:\n{}", dead.join("\n"));
+}
+
+#[test]
+fn the_card_check_sees_issue_433() {
+    // Kabar Pagi before #433: only its button reacted.
+    let before = "div { class: \"card pagi-card reveal\",\n    h2 { \"Kabar Pagi\" }\n    p { class: \"muted\", \"x\" }\n    button { class: \"primary\", onclick: move |_| go(), \"Listen\" }\n}\n";
+    assert_eq!(one_button_cards(before), vec![1]);
+    let after = "div { class: \"card card-action pagi-card\",\n    onclick: move |_| go(),\n    h2 { \"Kabar Pagi\" }\n    button { class: \"primary\", \"Listen\" }\n}\n";
+    assert!(one_button_cards(after).is_empty());
+    // Two choices (do it now / later) stay a card with two buttons.
+    let choice = "div { class: \"card\",\n    button { onclick: move |_| a(), \"Now\" }\n    button { onclick: move |_| b(), \"Later\" }\n}\n";
+    assert!(one_button_cards(choice).is_empty());
 }

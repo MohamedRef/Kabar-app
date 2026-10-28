@@ -160,6 +160,17 @@ enum Pane {
     Suitcase,
 }
 
+/// A souvenir to show in the Suitcase when Journey next opens (the
+/// Journal's "new souvenir" line).
+static SUITCASE_AT: GlobalSignal<Option<String>> = Signal::global(|| None);
+
+/// Opens Journey on the Suitcase, scrolled to the souvenir of `unit_id`.
+pub fn open_suitcase(ui: Ui, unit_id: &str) {
+    *SUITCASE_AT.write() = Some(unit_id.to_string());
+    let mut screen = ui.screen;
+    screen.set(crate::Screen::Journey);
+}
+
 #[component]
 pub fn JourneyScreen() -> Element {
     let ui = use_context::<Ui>();
@@ -180,7 +191,7 @@ pub fn JourneyScreen() -> Element {
     let coach = use_context::<crate::coach::Coach>();
     let start = use_hook(|| start_level(&db, coach.profile.peek().as_ref()));
     let mut route = use_signal(|| Route::Indonesian);
-    let mut pane = use_signal(|| Pane::Route);
+    let mut pane = use_signal(|| if SUITCASE_AT.peek().is_some() { Pane::Suitcase } else { Pane::Route });
     // The stop picked on each route lives here, above the phone list and the
     // map, so it survives a window resize or a trip to the suitcase
     // (list-detail rule, docs/DESIGN.md). `None` = not picked yet.
@@ -957,6 +968,17 @@ fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> 
                 .map(move |s| (s, tl))
         })
         .collect();
+    let focus = use_hook(|| SUITCASE_AT.write().take());
+    use_effect({
+        let focus = focus.clone();
+        move || {
+            if let Some(unit) = &focus {
+                document::eval(&format!(
+                    r#"document.getElementById("souvenir-{unit}")?.scrollIntoView({{block: "center"}});"#
+                ));
+            }
+        }
+    });
     rsx! {
         section { class: "suitcase", aria_label: "{ui.t(Msg::JourneySuitcase)}",
             if cards.is_empty() {
@@ -968,9 +990,9 @@ fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> 
             ul { class: "souvenirs",
                 // A souvenir opens the lesson that gave it.
                 for (s, tl) in cards {
-                    li { key: "{s.unit_id}",
+                    li { key: "{s.unit_id}", id: "souvenir-{s.unit_id}",
                     button {
-                        class: "souvenir card tap",
+                        class: if focus.as_deref() == Some(s.unit_id.as_str()) { "souvenir card tap found" } else { "souvenir card tap" },
                         onclick: {
                             let lesson = souvenir_lesson(&s.unit_id);
                             move |_| if let Some(id) = &lesson { ui.open_lesson(id.clone()) }

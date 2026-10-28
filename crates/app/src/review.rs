@@ -567,6 +567,44 @@ pub fn ReviewScreen() -> Element {
 
 // ---------------------------------------------------------------- home
 
+/// The empty deck's invite: the starter words as chips, each opening its
+/// Arabic Bridge card (word, meaning, the Arabic it comes from, and the
+/// false-friend warning), so the words teach before the first round.
+#[component]
+fn SeedInvite() -> Element {
+    let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
+    let mut open = use_signal(|| None::<&'static str>);
+    let count = ui.num(seed_words().count() as u64);
+    let card = open()
+        .and_then(|w| seed_bridge_deck().into_iter().find(|c| c.kind == CardKind::Bridge && c.word == w));
+    rsx! {
+        div { class: "card review-seed",
+            h2 { "{ui.t(Msg::RevSeedTitle)}" }
+            p { {ui.t(Msg::RevSeedBody).replace("{n}", &count)} }
+            ul { class: "seed-words", lang: "id",
+                for w in seed_words() {
+                    li { key: "{w}",
+                        button {
+                            class: "seed-word",
+                            aria_pressed: if open() == Some(w) { "true" } else { "false" },
+                            aria_controls: "seed-card",
+                            onclick: move |_| open.set(if open() == Some(w) { None } else { Some(w) }),
+                            bdi { "{w}" }
+                        }
+                    }
+                }
+            }
+            if let Some(card) = card {
+                div { id: "seed-card", class: "seed-card", aria_live: "polite",
+                    Back { key: "{card.id}", card }
+                }
+            }
+            button { class: "primary", onclick: move |_| engine.seed(), "{ui.t(Msg::RevSeedButton)}" }
+        }
+    }
+}
+
 #[component]
 fn ReviewHome() -> Element {
     let ui = use_context::<Ui>();
@@ -575,19 +613,7 @@ fn ReviewHome() -> Element {
     let empty = engine.deck.read().is_empty();
 
     if empty {
-        let count = ui.num(seed_words().count() as u64);
-        return rsx! {
-            div { class: "card review-seed",
-                h2 { "{ui.t(Msg::RevSeedTitle)}" }
-                p { {ui.t(Msg::RevSeedBody).replace("{n}", &count)} }
-                ul { class: "seed-words", lang: "id",
-                    for w in seed_words() {
-                        li { key: "{w}", bdi { "{w}" } }
-                    }
-                }
-                button { class: "primary", onclick: move |_| engine.seed(), "{ui.t(Msg::RevSeedButton)}" }
-            }
-        };
+        return rsx! { SeedInvite {} };
     }
 
     let sched = engine.sched.clone();
