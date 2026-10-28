@@ -161,6 +161,43 @@ pub const DARK: Palette = Palette {
     },
 };
 
+/// Gerhana (eclipse): true black for OLED screens. Every background is
+/// `#000000`, so those pixels switch off: cards are told apart by thin
+/// outlines (`line`) instead of grey surfaces, and the batik pattern and map
+/// paper are left out. Text is a soft off-white, which smears less than pure
+/// white when an OLED screen scrolls. Accents and word colours are Merapi's,
+/// which read even better on black.
+pub const BLACK: Palette = Palette {
+    scheme: Scheme::Dark,
+    bg: "#000000",
+    surface: "#000000",
+    surface_2: "#161616",
+    text: "#ebe7e0",
+    muted: "#a9a297",
+    line: "#383430",
+    sawah: "#7cc08a",
+    dawn: "#f2a07f",
+    dawn_soft: "#4d271c",
+    indigo: "#a9b8ee",
+    gold: "#e6be55",
+    gold_soft: "#3d300c",
+    focus: "#a9b8ee",
+    ink: "#c3cdf2",
+    paper: "#000000",
+    status_new: "#f2a07f",
+    status_learning: "#9fb1f0",
+    status_known: "#7cc08a",
+    map_sea: "#000000",
+    map_sea_ink: "#14232a",
+    map_land: "#13261a",
+    map_land_edge: "#4b6446",
+    map_land_other: "#14120f",
+    map_rail_bed: "#000000",
+    pattern: "#a9b8ee",
+    pattern_opacity: 0.0,
+    words: DARK.words,
+};
+
 /// Malam: for studying at night. Very dark and warm, with no colour where
 /// blue outweighs red, so the screen stays easy on the eyes before sleep.
 pub const NIGHT: Palette = Palette {
@@ -283,21 +320,66 @@ pub const SAWAH: Palette = Palette {
 };
 
 impl Theme {
-    /// The palette for a concrete theme. `System` has none of its own: it
-    /// follows the OS between [`LIGHT`] and [`DARK`] (see [`stylesheet`]).
+    /// The palette for a concrete theme. `System` and `SystemBlack` have
+    /// none of their own: they follow the OS (see [`Theme::follows_os`]).
     pub fn palette(self) -> Option<&'static Palette> {
         match self {
-            Self::System => None,
+            Self::System | Self::SystemBlack => None,
             Self::Light => Some(&LIGHT),
             Self::Dark => Some(&DARK),
+            Self::Black => Some(&BLACK),
             Self::Night => Some(&NIGHT),
             Self::Batik => Some(&BATIK),
             Self::Sawah => Some(&SAWAH),
         }
     }
+
+    /// The (day, night) palettes of a theme that follows the OS.
+    pub fn follows_os(self) -> Option<(&'static Palette, &'static Palette)> {
+        match self {
+            Self::System => Some((&LIGHT, &DARK)),
+            Self::SystemBlack => Some((&LIGHT, &BLACK)),
+            _ => None,
+        }
+    }
+
+    /// The palettes shown by day and by night: the same one for a fixed theme.
+    pub fn day_and_night(self) -> (&'static Palette, &'static Palette) {
+        match (self.palette(), self.follows_os()) {
+            (Some(p), _) => (p, p),
+            (None, Some(pair)) => pair,
+            (None, None) => (&LIGHT, &DARK),
+        }
+    }
+}
+
+/// CSS for every theme from one rule maker: `rule(id, palette)` returns the
+/// rules for `.app[data-theme="<id>"]`. Themes that follow the OS get their
+/// day rule plus their night rule inside `prefers-color-scheme: dark`. Every
+/// per-theme stylesheet goes through here, so a new theme can't be missed.
+pub fn rules_for_all(rule: impl Fn(&str, &Palette) -> String) -> String {
+    let mut css = String::new();
+    for theme in Theme::ALL {
+        let id = theme.as_str();
+        match (theme.palette(), theme.follows_os()) {
+            (Some(p), _) => css.push_str(&rule(id, p)),
+            (None, Some((day, night))) => {
+                css.push_str(&rule(id, day));
+                css.push_str(&format!("@media (prefers-color-scheme: dark) {{\n  {}}}\n", rule(id, night)));
+            }
+            (None, None) => unreachable!("{id} has neither a palette nor an OS pair"),
+        }
+    }
+    css
 }
 
 impl Palette {
+    /// True black (OLED): textures and patterns stay off so the background
+    /// pixels stay off too.
+    pub fn is_true_black(&self) -> bool {
+        self.bg == "#000000"
+    }
+
     /// The tokens as CSS custom-property declarations.
     pub fn css_vars(&self) -> String {
         let vars = [
@@ -346,19 +428,12 @@ impl Palette {
 
 /// CSS for every theme. The app root carries `data-theme="<id>"`; the
 /// variables are also set on `:root` (via `:has`) so the page background
-/// and the ink canvas match. `system` follows `prefers-color-scheme`.
+/// and the ink canvas match. `system` and `system-black` follow
+/// `prefers-color-scheme`.
 pub fn stylesheet() -> String {
-    let rule = |id: &str, p: &Palette| {
+    rules_for_all(|id, p| {
         format!(":root:has(.app[data-theme=\"{id}\"]), .app[data-theme=\"{id}\"] {{ {} }}\n", p.css_vars())
-    };
-    let mut css = rule("system", &LIGHT);
-    css.push_str(&format!("@media (prefers-color-scheme: dark) {{\n  {}}}\n", rule("system", &DARK)));
-    for theme in Theme::ALL {
-        if let Some(p) = theme.palette() {
-            css.push_str(&rule(theme.as_str(), p));
-        }
-    }
-    css
+    })
 }
 
 /// WCAG 2.x contrast ratio between two `#rrggbb` colours (1.0 to 21.0).
@@ -531,12 +606,40 @@ mod tests {
     }
 
     #[test]
+    fn black_switches_oled_pixels_off() {
+        let p = &BLACK;
+        for (what, c) in [
+            ("bg", p.bg),
+            ("surface", p.surface),
+            ("paper", p.paper),
+            ("sea", p.map_sea),
+            ("rail bed", p.map_rail_bed),
+        ] {
+            assert_eq!(c, "#000000", "black: {what} must be true black");
+        }
+        assert_eq!(p.pattern_opacity, 0.0, "black: no batik pattern on the background");
+        // With surface == bg, cards are drawn by their outline alone.
+        assert!(contrast(p.line, p.bg) >= 1.5, "black: card outlines must show");
+        assert_eq!(Theme::Black.palette(), Some(&BLACK));
+        assert_eq!(Theme::SystemBlack.follows_os(), Some((&LIGHT, &BLACK)));
+        assert_eq!(Theme::Black.day_and_night(), (&BLACK, &BLACK));
+    }
+
+    #[test]
+    fn every_theme_has_a_palette_or_follows_the_os() {
+        for theme in Theme::ALL {
+            assert!(theme.palette().is_some() != theme.follows_os().is_some(), "{}", theme.as_str());
+        }
+    }
+
+    #[test]
     fn stylesheet_has_a_rule_per_theme_and_system_follows_the_os() {
         let css = stylesheet();
         for theme in Theme::ALL {
             assert!(css.contains(&format!(".app[data-theme=\"{}\"]", theme.as_str())), "{}", theme.as_str());
         }
         assert!(css.contains("@media (prefers-color-scheme: dark)"));
+        assert_eq!(css.matches("@media (prefers-color-scheme: dark)").count(), 2);
         assert!(css.contains("--status-known"));
         assert!(css.contains("--wc-verb") && css.contains("--wp-suffix"));
         assert!(!css.contains("{{"));
