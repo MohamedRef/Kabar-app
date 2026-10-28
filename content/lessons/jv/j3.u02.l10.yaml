@@ -1,238 +1,167 @@
 schema: kabar.lesson/v1
 id: j3.u02.l10
 language: jv
-title: Ulangan J3.2
+title: Layang saka Mohamed
 can_do:
-  ar_eg: تبدّل الضماير حسب الموقف.
-  ar: أن تبدّل الضمائر بحسب الموقف.
-  en: Swap pronouns by situation.
+  ar_eg: تقرا وتكتب ورقة شكر قصيرة بالكراما لجدة صاحبك.
+  ar: أن تقرأ وتكتب ورقة شكر قصيرة بالكراما لجدة صديقك.
+  en: Read and write a short krama thank-you note to a friend's grandmother.
 slides:
-  - title: Tabel tembung ganti
+  - title: Layang cilik
     body:
       ar_eg: |
-        كل الضماير في جدول واحد (ngoko ← krama ← krama inggil):
-        - أنا: aku ← kula (chat kulo)، وdalem للتواضع الشديد و«أفندم؟»
-        - إنت: kowe ← sampeyan ← panjenengan
-        - هو / هي: dheweke ← piyambakipun ← panjenenganipun
-        - بتاعي: -ku ← اسم + kula (nami kula، griya kula)
-        وعمرك ما تستخدم panjenengan أو dhahar أو asma عن نفسك.
+        محمد بات عند جدة Dimas. الصبح بدري خرج مع Dimas، وساب لها ورقة على الترابيزة. اقراها:
+        عن نفسه بيقول kula وnedha، ومابيقولش أبدًا dhahar عن نفسه.
       ar: |
-        الضمائر كلها في جدول واحد (ngoko ← krama ← krama inggil):
-        - أنا: aku ← kula (وفي الدردشة kulo)، وdalem للتواضع الشديد ولجواب النداء
-        - أنت: kowe ← sampeyan ← panjenengan
-        - هو / هي: dheweke ← piyambakipun ← panjenenganipun
-        - الملكية: -ku ← الاسم + kula (nami kula، griya kula)
-        ولا تستعمل panjenengan ولا dhahar ولا asma عن نفسك.
+        بات محمد عند جدة Dimas، وخرج مع Dimas في الصباح الباكر، وترك لها ورقة على الطاولة. اقرأها:
+        يقول عن نفسه kula وnedha، ولا يقول dhahar عن نفسه أبدًا.
       en: |
-        All the pronouns in one table (ngoko → krama → krama inggil):
-        - I: aku → kula (chat kulo); dalem for deep humility and "yes?" when called
-        - you: kowe → sampeyan → panjenengan
-        - he / she: dheweke → piyambakipun → panjenenganipun
-        - my: -ku → noun + kula (nami kula, griya kula)
-        Never use panjenengan, dhahar or asma about yourself.
+        Mohamed stayed the night at Dimas's grandmother's. Early in the morning he went out with Dimas and left her a note on the table. Read it:
+        about himself he says kula and nedha — never dhahar.
+    examples:
+      - text: Sugeng enjing, Mbah Putri.
+        ar_eg: صباح الخير يا تيتة.
+        ar: صباح الخير يا جدتي.
+        en: Good morning, Grandma.
+      - text: Kula sampun nedha. Matur nuwun, Mbah.
+        ar_eg: أنا فطرت (كلت). شكرًا يا تيتة.
+        ar: قد أكلتُ. شكرًا يا جدتي.
+        en: I've eaten. Thank you, Grandma.
+      - text: Kula lan Mas Dimas ing Pasar Kranggan. — Mohamed
+        ar_eg: أنا وDimas في Pasar Kranggan. — محمد
+        ar: أنا وDimas في Pasar Kranggan. — محمد
+        en: Dimas and I are at Pasar Kranggan. — Mohamed
     grammar: jv.pronoun.krama
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: aku
-        ar_eg: بالكراما kula
-        ar: بالكراما kula
-        en: in krama → kula
-      - text: kowe
-        ar_eg: بالكراما sampeyan
-        ar: بالكراما sampeyan
-        en: in krama → sampeyan
-      - text: dheweke
-        ar_eg: بالكراما piyambakipun
-        ar: بالكراما piyambakipun
-        en: in krama → piyambakipun
-      - text: jenengku
-        ar_eg: بالكراما nami kula
-        ar: بالكراما nami kula
-        en: in krama → nami kula
-      - text: omahku
-        ar_eg: بالكراما griya kula
-        ar: بالكراما griya kula
-        en: in krama → griya kula
-    words: [kula, sampeyan, piyambakipun, nami, griya]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من الورقة) محمد وDimas فين؟
+      ar: (من الورقة) أين محمد وDimas؟
+      en: (from the note) Where are Mohamed and Dimas?
+    options: [ing griya, ing Pasar Kranggan, ing Balapan]
+    answer: 1
+    words: [ing]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: صاحبك Dimas. «إنت» = ؟
-      ar: صديقك Dimas. «أنت» = ؟
-      en: Your friend Dimas. "You" = ?
-    options: [panjenengan, kowe, sampeyan]
-    answer: 1
-    explain:
-      ar_eg: 'صاحبك: kowe.'
-      ar: 'الصديق: kowe.'
-      en: A friend — kowe.
-    words: [kowe]
+      ar_eg: (من الورقة) محمد أكل قبل ما يخرج؟
+      ar: (من الورقة) هل أكل محمد قبل خروجه؟
+      en: (from the note) Did Mohamed eat before he left?
+    options: [Sampun, Dereng]
+    answer: 0
+    words: [sampun, nedha]
   - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: Bu Siti البياعة في Pasar Kranggan. «إنتي» = ؟
-      ar: Bu Siti البائعة في Pasar Kranggan. «أنتِ» = ؟
-      en: Bu Siti, the seller at Pasar Kranggan. "You" = ?
-    options: [sampeyan, dheweke, kowe]
-    answer: 0
+      ar_eg: أنهي جملة كانت هتبقى غلط في ورقة محمد؟
+      ar: أيّ جملة كانت ستكون خطأً في ورقة محمد؟
+      en: Which sentence would have been wrong in Mohamed's note?
+    options: ['Kula sampun nedha.', 'Matur nuwun, Mbah.', 'Kula sampun dhahar.']
+    answer: 2
     explain:
-      ar_eg: 'البياعة: sampeyan (مؤدبة ويومية).'
-      ar: 'البائعة: sampeyan (مهذبة يومية).'
-      en: A seller — sampeyan (polite, everyday).
-    words: [sampeyan]
+      ar_eg: dhahar للتاني المحترم بس. عن نفسك nedha.
+      ar: dhahar للمعظَّم وحده، وعن النفس يقال nedha.
+      en: dhahar is only for the honoured person. About yourself, nedha.
+    words: [dhahar, nedha]
   - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: جدة Dimas. «حضرتك» = ؟
-      ar: جدة Dimas. «حضرتكِ» = ؟
-      en: Dimas's grandmother. "You" = ?
-    options: [panjenengan, piyambakipun, sampeyan]
-    answer: 0
-    explain:
-      ar_eg: 'الجدة: panjenengan. piyambakipun = «هي» مش «إنتي».'
-      ar: 'الجدة: panjenengan، أما piyambakipun فمعناها «هي».'
-      en: Grandma — panjenengan. Piyambakipun means "she", not "you".
-    words: [panjenengan]
-  - id: e05
     type: listen
-    text: Dalem, Mbah?
-    options: ['Dalem, Mbah?', 'Dereng, Mbah.', 'Inggih, Mbak.']
-    answer: 0
-    words: [dalem]
+    text: Kula sampun nedha. Matur nuwun, Mbah.
+    options: ['Kula dereng nedha. Matur nuwun, Mbah.', 'Kula sampun nedha. Matur nuwun, Mbak.', 'Kula sampun nedha. Matur nuwun, Mbah.']
+    answer: 2
+    meaning:
+      ar_eg: أنا كلت. شكرًا يا تيتة.
+      ar: قد أكلتُ. شكرًا يا جدتي.
+      en: I've eaten. Thank you, Grandma.
+    words: [kula, sampun, nedha]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: Sugeng enjing
+        ar_eg: صباح الخير
+        ar: صباح الخير
+        en: Good morning
+      - text: Matur nuwun
+        ar_eg: شكرًا
+        ar: شكرًا
+        en: Thank you
+      - text: Kula lan Mas Dimas
+        ar_eg: أنا وDimas
+        ar: أنا وDimas
+        en: Dimas and I
+      - text: ing Pasar Kranggan
+        ar_eg: في Pasar Kranggan
+        ar: في Pasar Kranggan
+        en: at Pasar Kranggan
+    words: [sugeng enjing, matur nuwun, lan]
   - id: e06
     type: fill_blank
-    sentence: Nami ___ Mohamed, Bu.
+    sentence: Sugeng enjing, Mbah. ___ sampun nedha.
     meaning:
-      ar_eg: اسمي محمد يا مدام.
-      ar: اسمي محمد يا سيدتي.
-      en: My name is Mohamed, ma'am.
-    answers: [kula, kulo]
+      ar_eg: صباح الخير يا تيتة. أنا كلت.
+      ar: صباح الخير يا جدتي. قد أكلتُ.
+      en: Good morning, Grandma. I've eaten.
+    options: [Aku, Kula, Panjenengan]
+    answers: [Kula]
     explain:
-      ar_eg: '«اسمي» بالكراما: nami kula.'
-      ar: '«اسمي» بالكراما: nami kula.'
-      en: '"My name" in krama: nami kula.'
-    words: [nami, kula]
+      ar_eg: 'لجدة صاحبك، «أنا» = kula. aku نغوكو، وpanjenengan معناها «حضرتك».'
+      ar: 'مع جدة الصديق «أنا» = kula؛ aku من الـ ngoko، وpanjenengan تعني «حضرتك».'
+      en: 'To a friend''s grandmother, "I" is kula. aku is ngoko, and panjenengan means "you".'
+    words: [kula]
   - id: e07
-    type: fill_blank
-    sentence: Menika griya ___, Mbah?
-    meaning:
-      ar_eg: ده بيت حضرتك يا تيتة؟
-      ar: أهذا بيتك يا جدتي؟
-      en: Is this your house, Grandma?
-    options: [kula, kowe, panjenengan]
-    answers: [panjenengan]
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'اكتب ورقة لـ Bu Siti: مساء الخير (بالليل) يا مدام. أنا كلت. شكرًا.'
+      ar: 'اكتب ورقة لـ Bu Siti: مساء الخير يا سيدتي (ليلًا). قد أكلتُ. شكرًا.'
+      en: "Write a note to Bu Siti: Good evening, ma'am. I've eaten. Thank you."
+    answers: ["Sugeng dalu, Bu. Kula sampun nedha. Matur nuwun.", "Sugeng dalu, Bu. Kulo sampun nedha. Matur nuwun.", "Sugeng dalu, Bu Siti. Kula sampun nedha. Matur nuwun.", "Sugeng dalu, Bu. Kula sampun nedha. Matur nuwun, Bu.", "Sugeng dalu, Bu Siti. Kula sampun nedha. Matur nuwun, Bu."]
     explain:
-      ar_eg: '«بيتك» للجدة: griya panjenengan. griya kula = بيتي.'
-      ar: '«بيتكِ» للجدة: griya panjenengan، أما griya kula فـ«بيتي».'
-      en: '"Your house" to Grandma: griya panjenengan. Griya kula = my house.'
-    words: [griya, panjenengan]
+      ar_eg: بالليل = Sugeng dalu، وعن نفسك kula + nedha.
+      ar: في الليل Sugeng dalu، وعن نفسك kula مع nedha.
+      en: In the evening it's Sugeng dalu; about yourself, kula + nedha.
+    words: [sugeng dalu, kula, sampun, nedha]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: حضرتك كلت يا أستاذ؟ (لراجل غريب في سنك)
-      ar: هل أكلتَ يا أخي؟ (لرجل غريب في مثل سنك)
-      en: Have you eaten? (to a stranger your age, Mas)
-    answer: Sampeyan sampun nedha, Mas?
-    distractors: [kowe, wis]
-    words: [sampeyan, sampun, nedha]
-  - id: e09
-    type: fill_blank
-    sentence: Sedhela, Mbah, kula ___ dhateng warung.
-    meaning:
-      ar_eg: لحظة يا تيتة، ___ للدكان.
-      ar: لحظة يا جدة، ___ إلى الدكان.
-      en: Just a moment, Mbah, I'm ___ to the shop.
-    options: [medal, kori, lemari]
-    answers: [medal]
-    words: [medal, sedhela, kori, lemari]
-  - id: e10
-    type: multiple_choice
-    question: Tas kula ___ oleh-oleh.
-    options: [kebak, bantal, sinyal]
-    answer: 0
+      ar_eg: أنا وDimas في Pasar Kranggan.
+      ar: أنا وDimas في Pasar Kranggan.
+      en: Dimas and I are at Pasar Kranggan.
+    answer: Kula lan Mas Dimas ing Pasar Kranggan.
+    distractors: [aku, neng]
     explain:
-      ar_eg: kebak = مليان. bantal = مخدة، sinyal = شبكة.
-      ar: kebak = ممتلئ. bantal = وسادة، sinyal = إشارة.
-      en: kebak = full. bantal = pillow, sinyal = signal.
-    words: [kebak, bantal, sinyal, oleh-oleh]
-  - id: e11
-    type: match_pairs
-    pairs:
-      - text: mlebet
-        ar_eg: يدخل (كراما)
-        ar: يدخل (كراما)
-        en: enter (krama)
-      - text: toya
-        ar_eg: مية (كراما)
-        ar: ماء (كراما)
-        en: water (krama)
-      - text: andhuk
-        ar_eg: فوطة
-        ar: منشفة
-        en: towel
-      - text: kepenak
-        ar_eg: مريح
-        ar: مريح
-        en: comfortable
-      - text: samenika
-        ar_eg: دلوقتي (كراما)
-        ar: الآن (كراما)
-        en: now (krama)
-      - text: wau
-        ar_eg: من شوية (كراما)
-        ar: قبل قليل (كراما)
-        en: earlier (krama)
-    words: [mlebet, toya, andhuk, kepenak, samenika, wau]
-  - id: e12
-    type: speaking
-    text: Dalem, Mbah? Inggih, kula sampun nedha.
-    meaning:
-      ar_eg: أفندم يا تيتة؟ أيوه، أنا كلت.
-      ar: نعم يا جدتي؟ نعم، قد أكلتُ.
-      en: Yes, Grandma? Yes, I've eaten.
-    words: [dalem, inggih, kula]
+      ar_eg: في ورقة لحد كبير، kula مش aku.
+      ar: في ورقة لكبير السن تكتب kula لا aku.
+      en: In a note to an elder, kula, not aku.
+    words: [kula, lan]
 dialogue:
-  title: Pamit saka Pasar Kranggan
+  title: Mbah Putri maca layang
   lines:
-    - speaker: Bu Siti
-      text: "Mas, Mas Dimas niku saking Yogya, nggih?"
-      ar_eg: "يا أستاذ، ديماس ده من يوجيا، صح؟"
-      ar: "يا أخي، ديماس من يوجيا، أليس كذلك؟"
-      en: "Mas, Dimas is from Yogya, isn't he?"
-    - speaker: Mohamed
-      text: Inggih, Bu. Piyambakipun saking Yogya.
-      ar_eg: أيوه يا مدام. هو من يوجيا.
-      ar: نعم يا سيدتي، هو من يوغياكرتا.
-      en: Yes, ma'am. He's from Yogya.
-    - speaker: Bu Siti
-      text: "Oh, nggih. Sampun nedha, Mas?"
-      ar_eg: "آه، طيب. كلت يا أستاذ؟"
-      ar: "آه، حسنًا. هل أكلتَ؟"
-      en: "Oh, right. Eaten yet?"
-    - speaker: Mohamed
-      text: Sampun, Bu. Matur nuwun.
-      ar_eg: آه يا مدام. شكرًا.
-      ar: نعم يا سيدتي. شكرًا.
-      en: Yes, ma'am. Thank you.
+    - speaker: Mbah Putri
+      text: "Le, iki layang saka Mohamed, to?"
+      ar_eg: "يا ديماس، دي رسالة من محمد، مش كده؟"
+      ar: "يا بنيّ، هذه رسالة من محمد، أليس كذلك؟"
+      en: "Dimas, this is a note from Mohamed, isn't it?"
     - speaker: Mas Dimas
-      text: "Mohamed, ayo mulih, wis sore!"
-      ar_eg: "يا محمد، يلا نروّح، الدنيا ليّلت!"
-      ar: "يا محمد، هيا نعود، تأخّر الوقت!"
-      en: "Mohamed, let's head home, it's getting late!"
-    - speaker: Mohamed
-      text: Ayo, Mas!
-      ar_eg: يلا يا دِيماس!
-      ar: هيا يا ديماس!
-      en: Let's go, Dimas!
-souvenir:
-  id: j3.u02.souvenir
-  title: Pasar Kranggan
-  note:
-    ar_eg: 'Pasar Kranggan سوق شعبي قديم في يوجيا قريب من Tugu، والبياعين فيه شغالين من قبل الفجر. هنا هتسمع «sampeyan» في كل حتة: مؤدبة بس دافية، زي «حضرتك» بتاعة السوق. ولما تقابل حد كبير، panjenengan بتفتحلك القلوب.'
-    ar: Pasar Kranggan سوق شعبي عريق في يوجيا قرب Tugu، يعمل باعته من قبل الفجر. وفيه تسمع «sampeyan» في كل مكان، مهذبة دافئة كـ«حضرتك» في الأسواق. أما مع الكبار فتفتح لك panjenengan القلوب.
-    en: Pasar Kranggan is an old everyday market in Jogja near the Tugu, with sellers at work before dawn. Here you'll hear "sampeyan" everywhere — polite but warm, the market's «حضرتك». And with elders, panjenengan opens every heart.
+      text: Inggih, Mbah.
+      ar_eg: أيوه يا تيتة.
+      ar: نعم يا جدتي.
+      en: Yes, Grandma.
+    - speaker: Mbah Putri
+      text: "Mohamed wis mangan durung?"
+      ar_eg: "محمد كل ولا لسه؟"
+      ar: "هل أكل محمد؟"
+      en: "Has Mohamed eaten yet?"
+    - speaker: Mas Dimas
+      text: Sampun, Mbah. Piyambakipun sampun nedha.
+      ar_eg: أيوه يا تيتة. هو كل.
+      ar: نعم يا جدتي. قد أكل.
+      en: Yes, Grandma. He has eaten.
+    - speaker: Mbah Putri
+      text: "Apik. Mohamed ki bocah apik, lho."
+      ar_eg: "حلو. محمد ده ولد كويس على فكرة."
+      ar: "جيد. محمد ولد طيب."
+      en: "Good. That Mohamed's a good lad, you know."
 review:
   status: draft
   verified: false

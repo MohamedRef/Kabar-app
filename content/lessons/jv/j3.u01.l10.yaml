@@ -1,236 +1,166 @@
 schema: kabar.lesson/v1
 id: j3.u01.l10
 language: jv
-title: Ulangan J3.1
+title: Ing Lempuyangan
 can_do:
-  ar_eg: تبرر اختيارك للمستوى.
-  ar: أن تعلّل اختيارك للمستوى.
-  en: Justify a level choice.
+  ar_eg: تسمع جمل في المحطة وتعرف من المستوى مين بيكلم مين.
+  ar: أن تسمع جملًا في المحطة وتعرف من المستوى من يخاطب من.
+  en: Listen to lines at the station and work out from the level who is talking to whom.
 slides:
-  - title: Kenapa ngoko, kenapa krama?
+  - title: Rungokna!
     body:
       ar_eg: |
-        في المراجعة دي مش بس هتختار المستوى، هتعرف ليه:
-        - مين قدامك؟ صاحب / أصغر ← ngoko. غريب / بياع ← krama. جد، جدة، مدرس ← krama inggil.
-        - بتتكلم عن مين؟ عن التاني المحترم ← dhahar، panjenengan. عن نفسك ← kula، nedha (عمرك ما تستخدم krama inggil لنفسك).
-        - جملة واحدة = مستوى واحد: ماتخلطش wis مع nedha.
+        محمد واقف على رصيف Lempuyangan ومعاه Mas Dimas، وجنبهم Bu Siti بتبيع سوتو. اسمع الجمل من غير ما تبص على الكلام.
+        المستوى بيقولك كتير: البياعة بتكلم الزبون krama، الصاحب بيكلم صاحبه ngoko، وأي حد بيكلم جدة بـ krama inggil.
       ar: |
-        في هذه المراجعة تختار المستوى وتعرف السبب:
-        - من المخاطَب؟ صديق أو أصغر ← ngoko، وغريب أو بائع ← krama، وجد أو جدة أو معلم ← krama inggil.
-        - عمّن تتكلم؟ عن المعظَّم ← dhahar وpanjenengan، وعن نفسك ← kula وnedha، ولا krama inggil للنفس.
-        - الجملة الواحدة على مستوى واحد: لا تخلط wis مع nedha.
+        يقف محمد على رصيف Lempuyangan مع Mas Dimas، وبجوارهما Bu Siti تبيع السوتو. استمع إلى الجمل دون النظر إلى النص.
+        المستوى يخبرك بالكثير: البائعة تخاطب الزبون بالـ krama، والصديق صديقه بالـ ngoko، والجدة تُخاطَب بالـ krama inggil.
       en: |
-        In this review you choose a level and know why:
-        - Who's in front of you? Friend / younger → ngoko. Stranger / seller → krama. Grandparent, teacher → krama inggil.
-        - Who are you talking about? The honoured person → dhahar, panjenengan. Yourself → kula, nedha (never krama inggil for yourself).
-        - One sentence, one level: don't mix wis with nedha.
+        Mohamed is on the platform at Lempuyangan with Mas Dimas, next to Bu Siti selling soto. Listen to the lines without reading them.
+        The level tells you a lot: a seller speaks krama to a customer, friends speak ngoko, and a grandmother is addressed in krama inggil.
     grammar: jv.speechlevel.overview
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: Kowe wis mangan?
-        ar_eg: ngoko — لصاحبك
-        ar: ngoko — للصديق
-        en: ngoko — to a friend
-      - text: Sampeyan sampun nedha?
-        ar_eg: krama — لبياع أو غريب
-        ar: krama — لبائع أو غريب
-        en: krama — to a seller or stranger
-      - text: Panjenengan sampun dhahar?
-        ar_eg: krama inggil — لجدة أو مدرس
-        ar: krama inggil — لجدة أو معلم
-        en: krama inggil — to a grandmother or teacher
-      - text: Wis mangan durung, cah?
-        ar_eg: ngoko الشارع في يوجيا
-        ar: ngoko الشارع في يوجيا
-        en: street ngoko in Jogja
-    words: [mangan, nedha, dhahar]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: aku
-        ar_eg: بالكراما kula
-        ar: بالكراما kula
-        en: in krama → kula
-      - text: iya
-        ar_eg: بالكراما inggih
-        ar: بالكراما inggih
-        en: in krama → inggih
-      - text: durung
-        ar_eg: بالكراما dereng
-        ar: بالكراما dereng
-        en: in krama → dereng
-      - text: wis
-        ar_eg: بالكراما sampun
-        ar: بالكراما sampun
-        en: in krama → sampun
-    words: [kula, inggih, dereng, sampun]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: راجل غريب في سنك تقريبًا في محطة Lempuyangan. أنهي مستوى ولية؟
-      ar: رجل غريب في مثل سنك تقريبًا في محطة Lempuyangan. أيّ مستوى، ولماذا؟
-      en: A stranger about your age at Lempuyangan station. Which level, and why?
-    options: [krama, ngoko, krama andhap]
-    answer: 0
-    explain:
-      ar_eg: 'السن مش كل حاجة: هو غريب، والغريب ياخد krama (sampeyan). ngoko بس للصحاب.'
-      ar: العمر ليس كل شيء؛ فهو غريب، والغريب يُخاطب بالـ krama (sampeyan)، والـ ngoko للأصدقاء.
-      en: Age isn't everything — he's a stranger, and strangers get krama (sampeyan). Ngoko is for friends.
-    words: [krama]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Kula sampun dhahar» غلط. أنهي التصحيح الصح؟
-      ar: «Kula sampun dhahar» خطأ. ما التصحيح الصحيح؟
-      en: '"Kula sampun dhahar" is wrong. Which correction is right?'
-    options: [Aku sampun dhahar., Kula sampun nedha., Kula wis dhahar.]
-    answer: 1
-    explain:
-      ar_eg: dhahar كلمة krama inggil بترفع التاني. عن نفسك قول nedha.
-      ar: dhahar من krama inggil ترفع المخاطَب، وعن النفس يقال nedha.
-      en: dhahar is krama inggil — it raises the other person. About yourself say nedha.
-    words: [dhahar, nedha]
-  - id: e05
     type: listen
-    text: Panjenengan sampun dhahar, Mbah?
-    options: ['Panjenengan sampun dhahar, Mbah?', 'Kowe wis mangan, Mas?', 'Sampeyan sampun nedha, Mbak?']
+    text: Sampeyan sampun nedha, Mas?
+    question:
+      ar_eg: مين على الأغلب اللي بيسأل محمد كده؟
+      ar: من الأرجح أنه يسأل محمدًا هذا السؤال؟
+      en: Who is most likely asking Mohamed this?
+    options: [Mas Dimas, Bu Siti]
+    answer: 1
+    meaning:
+      ar_eg: حضرتك كلت يا أستاذ؟
+      ar: هل أكلتَ يا أخي؟
+      en: Have you eaten? (krama)
+    explain:
+      ar_eg: ده krama (sampeyan، sampun، nedha). البياعة بتكلم زبونها كده؛ Dimas صاحبه وكان هيقول ngoko.
+      ar: هذه krama، وهكذا تخاطب البائعة زبونها؛ أما Dimas فصديقه وكان سيستعمل ngoko.
+      en: This is krama — how a seller talks to a customer. Dimas is his friend and would use ngoko.
+    words: [sampeyan, sampun, nedha]
+  - id: e02
+    type: listen
+    text: Mohamed, kowe wis mangan? Aku durung.
+    question:
+      ar_eg: مين اللي بيتكلم؟
+      ar: من المتكلم؟
+      en: Who is speaking?
+    options: [Mas Dimas, Bu Siti]
     answer: 0
-    words: [panjenengan, dhahar, mbah]
-  - id: e06
-    type: fill_blank
-    sentence: Mbah, panjenengan ___ dhahar?
+    meaning:
+      ar_eg: يا محمد، كلت؟ أنا لسه.
+      ar: يا محمد، هل أكلت؟ أنا لم آكل بعد.
+      en: Mohamed, have you eaten? I haven't yet.
+    explain:
+      ar_eg: kowe وwis وmangan ngoko، ودي لغة الصحاب. البياعة مش هتكلم زبون كده.
+      ar: kowe وwis وmangan من الـ ngoko، لغة الأصدقاء، ولا تخاطب البائعة زبونها هكذا.
+      en: kowe, wis, mangan are ngoko — friends' talk. A seller wouldn't speak to a customer like that.
+    words: [kowe, wis, mangan, durung]
+  - id: e03
+    type: listen
+    text: Mbah, panjenengan sampun dhahar?
+    question:
+      ar_eg: سمعت أنهي كلمة krama inggil؟
+      ar: أيّ كلمة krama inggil سمعت؟
+      en: Which krama inggil word did you hear?
+    options: [nedha, dhahar, mangan]
+    answer: 1
     meaning:
       ar_eg: يا تيتة، حضرتك أكلتي؟
       ar: يا جدتي، هل تفضلتِ بالأكل؟
       en: Grandma, have you eaten?
-    options: [sampun, kula, wis]
-    answers: [sampun]
-    explain:
-      ar_eg: في جملة كراما «خلاص» = sampun. wis ngoko وهتبوّظ الجملة.
-      ar: في جملة الكراما تكون sampun، أما wis فمن الـ ngoko.
-      en: In a krama sentence "already" is sampun; wis is ngoko and breaks the level.
-    words: [sampun]
-  - id: e07
-    type: fill_blank
-    sentence: Dereng, Bu. Kula dereng ___.
-    meaning:
-      ar_eg: لسه يا مدام. أنا لسه ماكلتش.
-      ar: ليس بعد يا سيدتي. لم آكل بعد.
-      en: Not yet, ma'am. I haven't eaten yet.
-    answers: [nedha]
-    explain:
-      ar_eg: 'عن نفسك بالكراما: nedha.'
-      ar: 'عن النفس بالكراما: nedha.'
-      en: About yourself in krama — nedha.
-    words: [dereng, nedha]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: أيوه يا تيتة، أنا كلت.
-      ar: نعم يا جدتي، قد أكلتُ.
-      en: Yes, Grandma, I've eaten.
-    answer: Inggih, Mbah, kula sampun nedha.
-    alternatives: ['Inggih, kula sampun nedha, Mbah.']
-    distractors: [dhahar, wis]
-    words: [inggih, kula, sampun, nedha]
-  - id: e09
-    type: fill_blank
-    sentence: Mangga ___ ing kursi, Mbah.
-    meaning:
-      ar_eg: اتفضلي ___ على الكرسي يا تيتة.
-      ar: تفضّلي ___ على الكرسي يا جدة.
-      en: Please ___ on the chair, Mbah.
-    options: [linggih, pinanggih, ngundang]
-    answers: [linggih]
-    words: [linggih, pinanggih, ngundang, kursi]
-  - id: e10
-    type: multiple_choice
-    question: Wedi (ngoko) → ___ (krama)
-    options: [bungah, ajrih, eman]
+    words: [panjenengan, dhahar]
+  - id: e04
+    type: listen
+    text: Dereng, Mas. Kula dereng nedha.
+    question:
+      ar_eg: Bu Siti كلت ولا لسه؟
+      ar: هل أكلت Bu Siti أم ليس بعد؟
+      en: Has Bu Siti eaten?
+    options: [Sampun, Dereng]
     answer: 1
-    explain:
-      ar_eg: wedi ← ajrih = خايف. bungah = مبسوط، eman = يا خسارة.
-      ar: wedi ← ajrih = خائف. bungah = سعيد، eman = يا للأسف.
-      en: wedi → ajrih = afraid. bungah = glad, eman = what a pity.
-    words: [ajrih, bungah, eman]
-  - id: e11
+    meaning:
+      ar_eg: لسه يا أستاذ. أنا لسه ماكلتش.
+      ar: ليس بعد يا أخي. لم آكل بعد.
+      en: Not yet. I haven't eaten yet.
+    words: [dereng, nedha]
+  - id: e05
     type: match_pairs
     pairs:
-      - text: tanggi
-        ar_eg: جار (كراما)
-        ar: جار (كراما)
-        en: neighbour (krama)
-      - text: lare
-        ar_eg: عيل (كراما)
-        ar: طفل (كراما)
-        en: child (krama)
-      - text: sayah
-        ar_eg: تعبان (كراما)
-        ar: متعب (كراما)
-        en: tired (krama)
-      - text: linggih
-        ar_eg: يقعد (كراما)
-        ar: يجلس (كراما)
-        en: sit (krama)
-      - text: manten
-        ar_eg: عريس، عروسة
-        ar: عريس، عروس
-        en: bride, groom
-      - text: kengetan
-        ar_eg: فاكر (كراما)
-        ar: يتذكّر (كراما)
-        en: remember (krama)
-    words: [tanggi, lare, sayah, linggih, manten, kengetan]
-  - id: e12
-    type: speaking
-    text: Kowe wis mangan? Sampeyan sampun nedha? Panjenengan sampun dhahar?
+      - text: Le
+        ar_eg: يا ابني (الكبير لولد صغير)
+        ar: يا بنيّ (الكبير لولد صغير)
+        en: what an elder calls a little boy
+      - text: Mbah
+        ar_eg: يا جدو / يا تيتة
+        ar: يا جدي / يا جدتي
+        en: Grandpa / Grandma
+      - text: Mas
+        ar_eg: لقب لشاب
+        ar: لقب للشاب
+        en: title for a young man
+      - text: Bu
+        ar_eg: يا مدام / يا حاجة
+        ar: يا سيدتي
+        en: ma'am (an older woman)
+    words: [le, mas]
+  - id: e06
+    type: dictation
+    text: Sampeyan sampun nedha, Mas?
     meaning:
-      ar_eg: كلت؟ حضرتك كلت؟ سيادتك أكلت؟ (التلات مستويات)
-      ar: هل أكلت؟ هل أكلتَ؟ هل تفضلتم بالأكل؟ (المستويات الثلاثة)
-      en: Have you eaten? — in all three levels.
-    words: [mangan, nedha, dhahar]
+      ar_eg: حضرتك كلت يا أستاذ؟
+      ar: هل أكلتَ يا أخي؟
+      en: Have you eaten? (krama)
+    words: [sampeyan, sampun, nedha]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'رد على Bu Siti: لسه يا مدام. وحضرتك كلتي؟'
+      ar: 'ردّ على Bu Siti: ليس بعد يا سيدتي. وهل أكلتِ؟'
+      en: "Answer Bu Siti: Not yet, ma'am. Have you eaten?"
+    answers: ["Dereng, Bu. Sampeyan sampun nedha?", "Dereng, Bu. Sampeyan?", "Dereng, Bu. Kula dereng nedha. Sampeyan sampun nedha?", "Dereng, Bu. Kulo dereng nedha. Sampeyan sampun nedha?", "Dereng, Bu. Panjenengan sampun dhahar?", "Dereng, Bu. Sampeyan sampun nedha, Bu?"]
+    explain:
+      ar_eg: 'البياعة بتاخد krama: Sampeyan sampun nedha. ولو قلت panjenengan + dhahar ده أدب زيادة ومقبول.'
+      ar: 'البائعة تُخاطب بالـ krama: Sampeyan sampun nedha، والـ panjenengan مع dhahar أدب زائد مقبول.'
+      en: A seller gets krama — Sampeyan sampun nedha. Panjenengan + dhahar is extra polite and also fine.
+    words: [dereng, sampeyan, sampun, nedha]
+  - id: e08
+    type: speaking
+    text: Sugeng sonten, Mbah. Panjenengan sampun dhahar?
+    meaning:
+      ar_eg: مساء الخير يا تيتة. حضرتك أكلتي؟
+      ar: مساء الخير يا جدتي. هل تفضلتِ بالأكل؟
+      en: Good afternoon, Grandma. Have you eaten?
+    words: [sugeng sonten, panjenengan, dhahar]
 dialogue:
-  title: Respect Meter karo Mas Dimas
+  title: Soto ing stasiun
   lines:
-    - speaker: Mas Dimas
-      text: Mohamed, karo Bu Siti, ngoko apa krama?
-      ar_eg: يا محمد، مع Bu Siti، ngoko ولا krama؟
-      ar: يا محمد، مع Bu Siti، ngoko أم krama؟
-      en: Mohamed, with Bu Siti — ngoko or krama?
+    - speaker: Bu Siti
+      text: "Mas, sampun nedha? Mangga, soto!"
+      ar_eg: "يا أستاذ، كلت؟ اتفضل، سوتو!"
+      ar: "يا أخي، هل أكلت؟ تفضّل، سوتو!"
+      en: "Eaten yet? Come on, soto!"
     - speaker: Mohamed
-      text: "Krama: «Sampun nedha, Bu?»"
-      ar_eg: "كراما: «Sampun nedha, Bu?»"
-      ar: "كراما: «Sampun nedha, Bu?»"
-      en: "Krama: «Sampun nedha, Bu?»"
+      text: Dereng, Bu. Matur nuwun!
+      ar_eg: لسه يا مدام. شكرًا!
+      ar: ليس بعد يا سيدتي. شكرًا!
+      en: Not yet, ma'am. Thank you!
     - speaker: Mas Dimas
-      text: Apik! Karo mbahku?
-      ar_eg: حلو! ومع جدتي؟
-      ar: أحسنت! ومع جدتي؟
-      en: Good! And with my grandma?
+      text: "Mohamed, aku ya durung mangan, je."
+      ar_eg: "يا محمد، وأنا كمان لسه ماكلتش."
+      ar: "يا محمد، أنا أيضًا لم آكل بعد."
+      en: "Mohamed, I haven't eaten yet either, man."
     - speaker: Mohamed
-      text: 'Krama inggil: «Panjenengan sampun dhahar, Mbah?»'
-      ar_eg: 'krama inggil: «Panjenengan sampun dhahar, Mbah?» (سيادتك أكلتي يا تيتة؟)'
-      ar: 'krama inggil: «Panjenengan sampun dhahar, Mbah?» (هل تفضلتِ بالأكل يا جدتي؟)'
-      en: 'Krama inggil: «Panjenengan sampun dhahar, Mbah?» (Have you eaten, Grandma?)'
-    - speaker: Mas Dimas
-      text: Karo aku?
-      ar_eg: ومعايا أنا؟
-      ar: ومعي أنا؟
-      en: And with me?
-    - speaker: Mohamed
-      text: "Wis mangan durung, Mas? Aku durung, je!"
-      ar_eg: "كلت ولا لسه يا ديماس؟ أنا لسه!"
-      ar: "هل أكلت يا ديماس؟ أنا لم آكل بعد!"
-      en: "Eaten yet, Dimas? I haven't!"
-souvenir:
-  id: j3.u01.souvenir
-  title: Stasiun Lempuyangan
-  note:
-    ar_eg: محطة Lempuyangan هي بوابتك ليوجيا، المدينة اللي بيعتبروها قلب الجاوي «الناعم» (alus). هنا لما تقول «Sampeyan sampun nedha?» بدل «Kowe wis mangan?» الوشوش بتنوّر على طول. حتى لو الكراما بتاعتك لسه قليلة، المحاولة نفسها بتكسبك احترام الناس.
-    ar: محطة Lempuyangan بوابتك إلى يوجيا، المدينة التي تُعدّ قلب الجاوية الرقيقة (alus). وهنا إذا قلت «Sampeyan sampun nedha?» بدل «Kowe wis mangan?» أشرقت الوجوه فورًا، فالمحاولة وحدها تكسبك احترام الناس ولو كان نصيبك من الكراما قليلًا.
-    en: Lempuyangan station is your gateway to Jogja, the heartland of refined (alus) Javanese. Here, saying "Sampeyan sampun nedha?" instead of "Kowe wis mangan?" makes faces light up straight away. Even a little krama earns you instant respect.
+      text: Ayo mangan soto, Mas!
+      ar_eg: يلا ناكل سوتو يا Mas!
+      ar: هيا نأكل السوتو يا Mas!
+      en: Let's eat soto, Mas!
+    - speaker: Bu Siti
+      text: "Mangga, Mas, mangga."
+      ar_eg: "اتفضل يا أستاذ، اتفضل."
+      ar: "تفضّل، تفضّل."
+      en: "Come on, help yourself."
 review:
   status: draft
   verified: false
