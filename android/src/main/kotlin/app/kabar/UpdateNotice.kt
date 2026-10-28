@@ -65,8 +65,8 @@ object UpdateNotice {
     fun show(context: Context, json: String, onlyInBackground: Boolean): Boolean {
         if (!allowed(context)) return false
         if (onlyInBackground && UpdateInstaller.inForeground()) return false
-        val app = context.applicationContext
-        val nm = app.getSystemService(NotificationManager::class.java) ?: return false
+        val ctx = context.applicationContext
+        val nm = ctx.getSystemService(NotificationManager::class.java) ?: return false
         val n = try { JSONObject(json) } catch (e: org.json.JSONException) { return false }
         val title = n.optString("title").ifBlank { return false }
         val body = n.optString("body")
@@ -77,18 +77,18 @@ object UpdateNotice {
                 NotificationManager.IMPORTANCE_DEFAULT,
             ),
         )
-        val builder = Notification.Builder(app, CHANNEL)
+        val builder = Notification.Builder(ctx, CHANNEL)
             .setSmallIcon(app.kabar.bridge.R.drawable.ic_stat_kabar)
             .setContentTitle(title)
             .setContentText(body.lineSequence().firstOrNull().orEmpty())
             .setStyle(Notification.BigTextStyle().bigText(body))
-            .setContentIntent(tap(app, "open", 0))
+            .setContentIntent(tap(ctx, "open", 0))
             .setOnlyAlertOnce(true)
             .setAutoCancel(true)
         val action = n.optString("action")
         val button = n.optString("button")
         if (action.isNotBlank() && button.isNotBlank()) {
-            builder.addAction(Notification.Action.Builder(null, button, tap(app, action, 1)).build())
+            builder.addAction(Notification.Action.Builder(null, button, tap(ctx, action, 1)).build())
         }
         nm.notify(NOTIFICATION_ID, builder.build())
         return true
@@ -115,16 +115,16 @@ object UpdateNotice {
      */
     @JvmStatic
     fun scheduleChecks(context: Context, on: Boolean) {
-        val app = context.applicationContext
-        val jobs = app.getSystemService(JobScheduler::class.java) ?: return
-        app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putBoolean("checks", on).apply()
+        val ctx = context.applicationContext
+        val jobs = ctx.getSystemService(JobScheduler::class.java) ?: return
+        ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putBoolean("checks", on).apply()
         if (!on) {
             jobs.cancel(JOB_ID)
             return
         }
         val pending = jobs.getPendingJob(JOB_ID)
         if (pending != null && pending.intervalMillis == PERIOD_MS) return
-        val job = JobInfo.Builder(JOB_ID, ComponentName(app, UpdateCheckJob::class.java))
+        val job = JobInfo.Builder(JOB_ID, ComponentName(ctx, UpdateCheckJob::class.java))
             .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
             .setPeriodic(PERIOD_MS, FLEX_MS)
             .setPersisted(true)
@@ -166,15 +166,15 @@ class UpdateCheckJob : JobService() {
     @Volatile private var worker: Thread? = null
 
     override fun onStartJob(params: JobParameters): Boolean {
-        val app = applicationContext
+        val ctx = applicationContext
         worker = thread(name = "kabar-update-check") {
             try {
-                if (loadNative(app)) {
-                    val metered = metered(app)
-                    val canNotify = UpdateNotice.allowed(app) && !UpdateInstaller.inForeground()
+                if (loadNative(ctx)) {
+                    val metered = metered(ctx)
+                    val canNotify = UpdateNotice.allowed(ctx) && !UpdateInstaller.inForeground()
                     val now = LocalTime.now()
-                    val json = check(app.filesDir.absolutePath, metered, canNotify, now.hour * 60 + now.minute)
-                    if (!json.isNullOrBlank()) UpdateNotice.show(app, json, false)
+                    val json = check(ctx.filesDir.absolutePath, metered, canNotify, now.hour * 60 + now.minute)
+                    if (!json.isNullOrBlank()) UpdateNotice.show(ctx, json, false)
                 }
             } catch (t: Throwable) {
                 Log.w(TAG, "Background update check failed", t)
