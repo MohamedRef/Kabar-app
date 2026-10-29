@@ -220,6 +220,27 @@ pub fn radar(
     s
 }
 
+/// A ring filled to `share` (0..1) from the top, clockwise in LTR and
+/// counter-clockwise in RTL. The number sits over it in HTML, so it uses the
+/// UI's digits and font.
+pub fn ring(share: f32, rtl: bool, label: &str) -> String {
+    const R: f32 = 42.0;
+    let length = 2.0 * std::f32::consts::PI * R;
+    let on = (share.clamp(0.0, 1.0) * length * 10.0).round() / 10.0;
+    let mut s = open(100.0, 100.0, "chart ring-svg", label);
+    let flip = if rtl { r#" transform="translate(100 0) scale(-1 1)""# } else { "" };
+    let _ = write!(s, r#"<g{flip}><circle class="ring-track" cx="50" cy="50" r="{R}"/>"#);
+    // Nothing drawn at zero: a round cap alone would show a dot.
+    if on > 0.0 {
+        let _ = write!(
+            s,
+            r#"<circle class="ring-on" cx="50" cy="50" r="{R}" stroke-dasharray="{on} {length}" transform="rotate(-90 50 50)"/>"#
+        );
+    }
+    s.push_str("</g></svg>");
+    s
+}
+
 #[cfg(test)]
 mod tests {
     use std::collections::BTreeMap;

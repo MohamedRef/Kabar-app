@@ -236,6 +236,16 @@ fn check_hint(ex: &Exercise) -> L {
     }
 }
 
+/// The level a lesson id belongs to, as the Journey names it:
+/// `bipa1.u01.l01` → "BIPA 1", `j3.u02.l04` → "J3".
+fn level_label(id: &str) -> String {
+    let level = id.split('.').next().unwrap_or(id);
+    match level.strip_prefix("bipa") {
+        Some(n) => format!("BIPA {n}"),
+        None => level.to_uppercase(),
+    }
+}
+
 /// The label of the button that closes the player: back to where it was
 /// opened from.
 pub(crate) fn back_label(ui: Ui) -> L {
@@ -1028,6 +1038,8 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
             op(&mut p)
         };
         let Some(pos) = pos else { return };
+        // A new screen starts at its top, not where the last one was scrolled.
+        document::eval(r#"document.querySelector(".lp-body")?.scrollTo(0, 0);"#);
         let mut draft = draft;
         draft.set(Draft::default());
         saved_draft.set(Draft::default());
@@ -1316,7 +1328,7 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                     "×"
                 }
                 // Isolated left to right so "3 / 12" never reads "12 / 3".
-                span { class: "lp-count", dir: "ltr", aria_label: "{counter_label}", "{counter}" }
+                span { class: "lp-count ltr-count", dir: "ltr", aria_label: "{counter_label}", "{counter}" }
                 div {
                     class: "lp-progress",
                     role: "progressbar",
@@ -1343,8 +1355,12 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                         },
                         Step::Exercise { .. } => match exercise.clone() {
                             Some(ex) => rsx! {
-                                if retry {
-                                    span { class: "pill lp-retry", "{lt(lang, L::Retry)}" }
+                                p { class: "lp-focus",
+                                    span { class: "status-chip neutral", bdi { dir: "ltr", "{level_label(&lesson.id)}" } }
+                                    bdi { lang: target, dir: "ltr", "{lesson.title}" }
+                                    if retry {
+                                        span { class: "pill lp-retry", "{lt(lang, L::Retry)}" }
+                                    }
                                 }
                                 p { class: "lp-instruction", "{lt(lang, instruction(&ex, &language))}" }
                                 ExerciseView {
@@ -1728,9 +1744,9 @@ fn SummaryView(
             // Finishing (and passing) is the learner's progress; whether the
             // content is right is asked separately below.
             p { class: "lp-finished reveal",
-                span { class: "pill ok", "✓ {lt(lang, L::Finished)}" }
+                span { class: "status-chip good", "✓ {lt(lang, L::Finished)}" }
                 if passed {
-                    span { class: "pill ok", "{lt(lang, L::Passed)}" }
+                    span { class: "status-chip good", "{lt(lang, L::Passed)}" }
                 }
             }
             if perfect {
@@ -2821,6 +2837,12 @@ mod tests {
         let view = kabar_core::lesson::retry_options(ex, 7).unwrap();
         let back = restore_draft(&view, &saved, &[]).choice.unwrap();
         assert_eq!(option_key(&view, back), option_key(ex, 0));
+    }
+
+    #[test]
+    fn levels_are_named_like_the_journey() {
+        assert_eq!(level_label("bipa1.u01.l01"), "BIPA 1");
+        assert_eq!(level_label("j3.u02.l04"), "J3");
     }
 
     #[test]

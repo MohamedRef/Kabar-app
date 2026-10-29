@@ -19,6 +19,7 @@
 //!   before the answer was at least [`MATURE_INTERVAL_DAYS`] (Anki's rule).
 
 pub mod level_check;
+pub mod overview;
 pub mod pace;
 
 use std::collections::{BTreeMap, HashSet};
