@@ -7,15 +7,20 @@ use dioxus::prelude::*;
 use kabar_core::locale::UiLanguage;
 use kabar_protocol::pack::{PackIndex, PackSummary};
 
-use super::{NOT_CONFIGURED, base_url, download, downloading, refresh_index, store};
+use super::{Job, NOT_CONFIGURED, base_url, enqueue, jobs, refresh_index, store};
 use crate::Ui;
 
 const PACKS_CSS: &str = r#"
 .packs-level { margin-block: 0.5rem; }
-.packs-level > summary { cursor: pointer; font-weight: 600; padding-block: 0.35rem; }
+.packs-storage { display: flex; justify-content: space-between; gap: 0.5rem; margin-block: 0.5rem; }
+.packs-auto { display: flex; align-items: center; gap: 0.75rem; }
+.packs-level { border-block-start: 1px solid var(--line-soft); }
+.packs-level > summary { cursor: pointer; font-weight: 600; min-block-size: 48px; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; list-style: none; }
+.packs-level > summary::-webkit-details-marker { display: none; }
+.packs-level[open] > summary .chev { transform: rotate(135deg); }
 .packs-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
 .packs-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; justify-content: space-between;
-  padding-block: 0.35rem; padding-inline: 0.5rem; border-radius: 10px; background: var(--dawn-soft); }
+  padding-block: 0.35rem; padding-inline: 0.5rem; border-radius: 10px; background: var(--surface-2); }
 .packs-name { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: baseline; min-inline-size: 0; }
 .packs-actions { display: flex; gap: 0.4rem; align-items: center; margin-inline-start: auto; }
 "#;
@@ -37,6 +42,9 @@ enum P {
     Failed,
     NotConfigured,
     Clips,
+    Queued,
+    RowFailed,
+    Retry,
 }
 
 fn pt(lang: UiLanguage, p: P) -> &'static str {
@@ -91,6 +99,15 @@ fn pt(lang: UiLanguage, p: P) -> &'static str {
         (NotConfigured, En) => {
             "This build doesn't know where the packs live yet. Lessons use the device's voice."
         }
+        (Queued, ArEg) => "مستنية دورها",
+        (Queued, Ar) => "في الانتظار",
+        (Queued, En) => "Queued",
+        (RowFailed, ArEg) => "ماعرفناش ننزّلها",
+        (RowFailed, Ar) => "تعذّر التنزيل",
+        (RowFailed, En) => "Couldn't download",
+        (Retry, ArEg) => "جرّب تاني",
+        (Retry, Ar) => "أعد المحاولة",
+        (Retry, En) => "Try again",
         (Clips, ArEg) => "مقطع",
         (Clips, Ar) => "مقطع",
         (Clips, En) => "clips",
@@ -137,6 +154,8 @@ pub fn OfflinePacks() -> Element {
     let mut storage = use_signal(|| store.storage_bytes());
     let mut auto = use_signal(|| store.auto());
     let mut busy = use_signal(BTreeMap::<String, bool>::new);
+    // Downloads run in the background queue; follow it while this shows.
+    let mut queue = use_signal(jobs);
     let mut checking = use_signal(|| false);
     let mut notice = use_signal(|| None::<Notice>);
     let configured = base_url().is_some();
@@ -147,20 +166,33 @@ pub fn OfflinePacks() -> Element {
         index.set(store.index());
     };
 
-    let mut run = move |id: String, remove: bool| {
+    use_future(move || async move {
+        loop {
+            tokio::time::sleep(std::time::Duration::from_millis(400)).await;
+            let now = jobs();
+            if *queue.peek() != now {
+                // Something finished: show what's installed now.
+                reload();
+                queue.set(now);
+            }
+        }
+    });
+
+    let mut download = move |id: String| {
+        notice.set(None);
+        enqueue(&id);
+        queue.set(jobs());
+    };
+
+    let mut remove = move |id: String| {
         busy.write().insert(id.clone(), true);
         notice.set(None);
         spawn(async move {
             let (tx, rx) = futures_channel::oneshot::channel();
             let job = id.clone();
             let _ = std::thread::Builder::new().name("kabar-packs".into()).spawn(move || {
-                let r = if remove {
-                    let unit = job.split_once('/').map_or(job.as_str(), |(_, u)| u).to_owned();
-                    store.remove(&unit)
-                } else {
-                    download(store, &job).map(drop)
-                };
-                let _ = tx.send(r);
+                let unit = job.split_once('/').map_or(job.as_str(), |(_, u)| u).to_owned();
+                let _ = tx.send(store.remove(&unit));
             });
             let result = rx.await.unwrap_or_else(|_| Err("stopped".into()));
             busy.write().remove(&id);
@@ -199,10 +231,12 @@ pub fn OfflinePacks() -> Element {
         }
     }
     let installed_now = installed.read().clone();
+    let queue_now = queue.read().clone();
     let levels: Vec<(String, Vec<PackSummary>, bool)> = levels
         .into_iter()
         .map(|(l, rows)| {
-            let open = rows.iter().any(|r| installed_now.contains_key(&r.id));
+            let open =
+                rows.iter().any(|r| installed_now.contains_key(&r.id) || queue_now.contains_key(&r.id));
             (l, rows, open)
         })
         .collect();
@@ -214,13 +248,15 @@ pub fn OfflinePacks() -> Element {
         section { class: "card", aria_labelledby: "packs-title",
             h2 { id: "packs-title", "{pt(lang, P::Title)}" }
             p { class: "muted", "{pt(lang, P::Intro)}" }
-            div { class: "field",
+            div { class: "packs-storage",
                 span { class: "label", "{pt(lang, P::Storage)}" }
-                span { "{size_text(&ui, total)}" }
+                span { class: "ltr-count", "{size_text(&ui, total)}" }
             }
             div { class: "field",
-                label {
+                label { class: "packs-auto",
                     input {
+                        class: "switch",
+                        role: "switch",
                         r#type: "checkbox",
                         checked: *auto.read(),
                         onchange: move |e: FormEvent| {
@@ -230,14 +266,14 @@ pub fn OfflinePacks() -> Element {
                             }
                         },
                     }
-                    " {pt(lang, P::Auto)}"
+                    span { "{pt(lang, P::Auto)}" }
                 }
             }
             if !configured {
                 p { class: "muted", role: "status", "{pt(lang, P::NotConfigured)}" }
             } else {
                 div { class: "row",
-                    button { disabled: *checking.read(), onclick: check,
+                    button { class: "outline", disabled: *checking.read(), onclick: check,
                         if *checking.read() { "{pt(lang, P::Checking)}" } else { "{pt(lang, P::Check)}" }
                     }
                 }
@@ -254,6 +290,7 @@ pub fn OfflinePacks() -> Element {
                     open,
                     summary {
                         bdi { class: "latin", "{level_name(&level)}" }
+                        span { class: "chev" }
                     }
                     ul { class: "packs-list",
                         for row in rows {
@@ -261,10 +298,11 @@ pub fn OfflinePacks() -> Element {
                                 key: "{row.id}",
                                 row: row.clone(),
                                 installed: installed_now.get(&row.id).copied(),
-                                busy: busy_now.contains_key(&row.id) || downloading(&row.id),
+                                busy: busy_now.contains_key(&row.id),
+                                job: queue_now.get(&row.id).cloned(),
                                 configured,
-                                on_download: move |id: String| run(id, false),
-                                on_remove: move |id: String| run(id, true),
+                                on_download: move |id: String| download(id),
+                                on_remove: move |id: String| remove(id),
                             }
                         }
                     }
@@ -279,6 +317,7 @@ fn PackRow(
     row: PackSummary,
     installed: Option<u32>,
     busy: bool,
+    job: Option<Job>,
     configured: bool,
     on_download: EventHandler<String>,
     on_remove: EventHandler<String>,
@@ -302,24 +341,29 @@ fn PackRow(
                     span { class: "muted", bdi { class: "latin", "{stop}" } }
                 }
                 span { class: "muted lp-small",
-                    if ready { "{size_text(&ui, size)} · " }
+                    if ready { span { class: "ltr-count", "{size_text(&ui, size)}" } " · " }
                     "{clips} {pt(lang, P::Clips)}"
                 }
             }
             span { class: "packs-actions",
-                if busy {
-                    span { class: "muted", role: "status", "{pt(lang, P::Downloading)}" }
+                if busy || job == Some(Job::Downloading) {
+                    span { class: "status-chip accent", role: "status", "{pt(lang, P::Downloading)}" }
+                } else if job == Some(Job::Queued) {
+                    span { class: "status-chip neutral", role: "status", "{pt(lang, P::Queued)}" }
+                } else if job == Some(Job::Failed) && configured {
+                    span { class: "status-chip bad", role: "status", "{pt(lang, P::RowFailed)}" }
+                    button { class: "tonal", onclick: move |_| on_download.call(id1.clone()), "{pt(lang, P::Retry)}" }
                 } else if installed.is_some() {
                     if outdated && configured {
-                        button { onclick: move |_| on_download.call(id1.clone()), "{pt(lang, P::Update)}" }
+                        button { class: "tonal", onclick: move |_| on_download.call(id1.clone()), "{pt(lang, P::Update)}" }
                     } else {
-                        span { class: "pill", "{pt(lang, P::Downloaded)}" }
+                        span { class: "status-chip good", "✓ {pt(lang, P::Downloaded)}" }
                     }
-                    button { onclick: move |_| on_remove.call(id2.clone()), "{pt(lang, P::Remove)}" }
+                    button { class: "outline", onclick: move |_| on_remove.call(id2.clone()), "{pt(lang, P::Remove)}" }
                 } else if !ready {
                     span { class: "muted", "{pt(lang, P::NotReady)}" }
                 } else if configured {
-                    button { class: "primary", onclick: move |_| on_download.call(id1.clone()), "{pt(lang, P::Download)}" }
+                    button { class: "tonal", onclick: move |_| on_download.call(id1.clone()), "{pt(lang, P::Download)}" }
                 }
             }
         }

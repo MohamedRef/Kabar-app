@@ -817,7 +817,7 @@ pub struct LessonEvent {
 // Review cards and the review log (M6).
 mod reader;
 mod reviews;
-pub use reader::{Highlight, SavedText, TextKind};
+pub use reader::{Highlight, SavedText, SavedWord, TextKind};
 // Tablet Studio ink: notebooks, pages, strokes, items, transcripts (M9).
 mod ink;
 // Teach Kabar's personal dictionary (spec §26).

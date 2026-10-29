@@ -115,6 +115,11 @@ pub fn lamp() -> Element {
     stroke("M4 15h13a3 3 0 0 0 3-3M6 15c0 2 2 4 6 4s6-2 6-4M12 4c2 2 2 4 0 6-2-2-2-4 0-6z")
 }
 
+/// A magnifying glass, for search fields.
+pub fn search() -> Element {
+    stroke("M10.5 4a6.5 6.5 0 1 0 0 13 6.5 6.5 0 1 0 0-13zM15.5 15.5 20 20")
+}
+
 /// Koin.
 pub fn coin() -> Element {
     stroke("M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18zM12 7a5 5 0 1 0 0 10 5 5 0 1 0 0-10z")
