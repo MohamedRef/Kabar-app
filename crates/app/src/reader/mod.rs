@@ -18,6 +18,7 @@ pub mod doc;
 pub mod explain;
 pub mod glossary;
 pub mod grammar;
+mod library;
 pub mod morph;
 mod reading;
 pub mod translate;
@@ -34,12 +35,14 @@ use kabar_core::locale::UiLanguage;
 use kabar_core::reader::screen_ai::{self, StructureScreenshot};
 use kabar_core::reader::screenshot::{ScreenDoc, Side, structure};
 use kabar_protocol::ai::Task;
+use kabar_protocol::lesson::{Example, Localized};
 use kabar_protocol::reader::{OcrResult, SharedInput, WordStatus};
+use kabar_protocol::srs::{ArabicOrigin, Card, CardKind, CardSource, MeaningShift, StudyLanguage};
 use serde::Deserialize;
 
 use self::content::LocalGlossary;
 use self::doc::{Lexicon, ReadDoc, SegKind};
-use self::glossary::{Glossary, Shift};
+use self::glossary::{Glossary, Shift, WordInfo};
 use crate::account::Cloud;
 use crate::i18n::Msg;
 use crate::store::{Highlight, SavedText, Store, StoreError, TextKind};
@@ -246,21 +249,83 @@ fn save_phrase(
     Ok(h)
 }
 
-/// "Add to review": the word goes into the review deck first, and only once
-/// it's there does a new word count as learning.
+/// "Add to review": the word becomes a real review card (when Kabar can
+/// explain it) and is remembered with its sentence for the Library; only
+/// once that's done does a new word count as learning. Returns whether the
+/// word was promoted to learning.
 pub(crate) fn add_to_review(
     store: &mut Store,
     key: &str,
     surface: &str,
     sentence: &str,
     text_id: &str,
+    info: Option<&WordInfo>,
 ) -> Result<bool, StoreError> {
+    if let Some(card) = reader_card(key, surface, info, sentence, text_id, &store.cards()?) {
+        store.upsert_card(&card)?;
+    }
     store.save_word(key, surface, sentence, Some(text_id))?;
     let promote = store.word_statuses([key])?.get(key).copied().unwrap_or_default() == WordStatus::New;
     if promote {
         store.set_word_status(key, WordStatus::Learning)?;
     }
     Ok(promote)
+}
+
+/// The recognition card "Add to review" makes: the word as it was met, its
+/// meaning, the sentence it was met in and its Arabic Bridge. None when
+/// there's no meaning to recall (Teach Kabar covers those) or when the deck
+/// already holds a recognition card for the word. The id is stable, so the
+/// same word saved on two devices is one card.
+pub(crate) fn reader_card(
+    key: &str,
+    surface: &str,
+    info: Option<&WordInfo>,
+    sentence: &str,
+    text_id: &str,
+    existing: &[Card],
+) -> Option<Card> {
+    let info = info?;
+    let language = if key.starts_with("jv:") { StudyLanguage::Jv } else { StudyLanguage::Id };
+    let word = surface.trim().to_lowercase();
+    if word.is_empty() || info.gloss.en.trim().is_empty() && info.gloss.arz.trim().is_empty() {
+        return None;
+    }
+    let held = existing.iter().any(|c| {
+        c.kind == CardKind::Recognition
+            && c.language == language
+            && (c.word.eq_ignore_ascii_case(&word) || c.word.eq_ignore_ascii_case(&info.lemma))
+    });
+    if held {
+        return None;
+    }
+    let localized =
+        |g: &glossary::Gloss| Localized { ar_eg: g.arz.clone(), ar: g.ar.clone(), en: g.en.clone() };
+    let empty = Localized { ar_eg: String::new(), ar: String::new(), en: String::new() };
+    Some(Card {
+        v: kabar_protocol::srs::CARD_VERSION,
+        id: format!("reader.{}.{word}.recognition", language.tag()),
+        word,
+        language,
+        kind: CardKind::Recognition,
+        meaning: localized(&info.gloss),
+        note: info.note.as_ref().map(localized),
+        example: Some(Example { text: sentence.trim().to_string(), meaning: empty }),
+        arabic: info.bridge.as_ref().map(|b| ArabicOrigin {
+            word: b.arabic.clone(),
+            root: b.root.clone(),
+            shift: match b.shift {
+                Shift::Same | Shift::Narrowed | Shift::Broadened => MeaningShift::Same,
+                Shift::Shifted => MeaningShift::Shifted,
+                Shift::FalseFriend => MeaningShift::FalseFriend,
+            },
+            note: b.note.as_ref().map(localized),
+        }),
+        source: CardSource::Reader,
+        source_ref: Some(text_id.to_string()),
+        // Javanese and AI-drafted glosses stay flagged until approved.
+        verified: info.verified,
+    })
 }
 
 /// Input that arrived from outside (Android share sheet), waiting for the Reader.
@@ -311,7 +376,7 @@ pub fn Reader() -> Element {
     });
     translate::use_translation(st);
     let busy = use_signal(|| None::<Msg>);
-    let recent = use_signal(|| db.0.borrow().recent_texts(12).unwrap_or_default());
+    let recent = use_signal(|| db.0.borrow().recent_texts(library::TEXTS).unwrap_or_default());
     // The reading settings popover under Aa.
     let sheet = use_signal(|| false);
 
@@ -411,6 +476,7 @@ pub fn Reader() -> Element {
             match open {
                 None => rsx! {
                     InputCard { busy, recent }
+                    library::Library { recent }
                 },
                 Some(open) => rsx! {
                     ReadView { open }
@@ -452,7 +518,7 @@ fn open_new(
     match saved {
         Ok(text) => {
             st.load(db, text.clone());
-            recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
+            recent.set(db.0.borrow().recent_texts(library::TEXTS).unwrap_or_default());
             Some(text)
         }
         Err(e) => {
@@ -562,7 +628,7 @@ fn refine_with_ai(
                 if st.open.peek().as_ref().is_some_and(|o| o.text.id == t.id) {
                     st.load(&db, t);
                 }
-                recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
+                recent.set(db.0.borrow().recent_texts(library::TEXTS).unwrap_or_default());
             }
             Err(e) => crate::diag::report!("saving the AI layout failed: {e}"),
         }
@@ -594,7 +660,7 @@ fn import_url(
         match saved {
             Ok(text) => {
                 st.load(&db, text);
-                recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
+                recent.set(db.0.borrow().recent_texts(library::TEXTS).unwrap_or_default());
             }
             Err(e) => crate::diag::report!("saving the page failed: {e}"),
         }
@@ -762,43 +828,6 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
                         }
                     }
                     span { class: "muted", "{ui.t(Msg::ReaderDrop)}" }
-                }
-            }
-            if !recent.read().is_empty() {
-                div { class: "card",
-                    h3 { "{ui.t(Msg::ReaderRecent)}" }
-                    ul { class: "recent",
-                        for text in recent.read().iter().cloned() {
-                            li { key: "{text.id}",
-                                button {
-                                    class: "recent-item",
-                                    onclick: {
-                                        let db = db.clone();
-                                        let text = text.clone();
-                                        move |_| st.load(&db, text.clone())
-                                    },
-                                    span { class: "pill", "{kind_icon(text.kind)}" }
-                                    bdi { lang: "id", title: "{text.title}", "{text.title}" }
-                                }
-                                button {
-                                    class: "ghost",
-                                    aria_label: "{ui.t(Msg::Delete)}",
-                                    onclick: {
-                                        let db = db.clone();
-                                        let id = text.id.clone();
-                                        move |_| {
-                                            let deleted = db.0.borrow_mut().delete_text(&id);
-                                            match deleted {
-                                                Ok(_) => recent.set(db.0.borrow().recent_texts(12).unwrap_or_default()),
-                                                Err(e) => st.write_failed("deleting a text", &e),
-                                            }
-                                        }
-                                    },
-                                    "×"
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }
@@ -1025,8 +1054,8 @@ mod tests {
     fn adding_to_review_promotes_a_new_word_once() {
         let (mut store, text) = store_with_text();
         let s = "Saya sedang membaca buku.";
-        assert!(add_to_review(&mut store, "id:baca", "membaca", s, &text.id).unwrap());
-        assert!(!add_to_review(&mut store, "id:baca", "membaca", s, &text.id).unwrap());
+        assert!(add_to_review(&mut store, "id:baca", "membaca", s, &text.id, None).unwrap());
+        assert!(!add_to_review(&mut store, "id:baca", "membaca", s, &text.id, None).unwrap());
         assert_eq!(store.word_statuses(["id:baca"]).unwrap()["id:baca"], WordStatus::Learning);
         assert_eq!(store.saved_word_count("id:baca").unwrap(), 2);
     }
@@ -1036,13 +1065,76 @@ mod tests {
         let (mut store, text) = store_with_text();
         store.refuse_writes();
         let s = "Saya sedang membaca buku.";
-        assert!(add_to_review(&mut store, "id:baca", "membaca", s, &text.id).is_err());
+        assert!(add_to_review(&mut store, "id:baca", "membaca", s, &text.id, None).is_err());
         assert_eq!(
             store.word_statuses(["id:baca"]).unwrap().get("id:baca").copied().unwrap_or_default(),
             WordStatus::New
         );
         assert!(save_phrase(&mut store, &text.id, 0, 4, "Saya", s).is_err());
         assert!(store.highlights(&text.id).unwrap().is_empty());
+    }
+
+    fn baca() -> WordInfo {
+        let g = |s: &str| glossary::Gloss { arz: s.into(), ar: s.into(), en: s.into() };
+        WordInfo {
+            lemma: "baca".into(),
+            lang: glossary::WordLang::Indonesian,
+            pos: None,
+            gloss: g("read"),
+            indonesian: None,
+            bridge: None,
+            levels: None,
+            note: None,
+            example: None,
+            verified: true,
+        }
+    }
+
+    #[test]
+    fn adding_to_review_makes_one_real_card() {
+        let (mut store, text) = store_with_text();
+        let s = "Saya sedang membaca buku.";
+        let info = baca();
+        add_to_review(&mut store, "id:baca", "Membaca", s, &text.id, Some(&info)).unwrap();
+        add_to_review(&mut store, "id:baca", "membaca", s, &text.id, Some(&info)).unwrap();
+        let cards: Vec<Card> =
+            store.cards().unwrap().into_iter().filter(|c| c.source == CardSource::Reader).collect();
+        assert_eq!(cards.len(), 1, "saving twice is one card");
+        let c = &cards[0];
+        assert_eq!((c.id.as_str(), c.word.as_str()), ("reader.id.membaca.recognition", "membaca"));
+        assert_eq!(c.meaning.en, "read");
+        assert_eq!(c.example.as_ref().unwrap().text, s);
+        assert_eq!(c.source_ref.as_deref(), Some(text.id.as_str()));
+        assert_eq!(store.saved_words(10).unwrap().len(), 1);
+    }
+
+    #[test]
+    fn no_card_without_a_meaning_or_when_the_deck_has_the_word() {
+        let (_, text) = store_with_text();
+        assert!(reader_card("id:x", "x", None, "x", &text.id, &[]).is_none());
+        let info = baca();
+        let card = reader_card("id:baca", "baca", Some(&info), "baca", &text.id, &[]).unwrap();
+        assert!(
+            reader_card("id:baca", "membaca", Some(&info), "s", &text.id, &[card]).is_none(),
+            "lemma held"
+        );
+        let jv =
+            reader_card("jv:baca", "baca", Some(&WordInfo { verified: false, ..info }), "", &text.id, &[]);
+        assert!(jv.is_some_and(|c| c.language == StudyLanguage::Jv && !c.verified));
+    }
+
+    #[test]
+    fn saved_words_list_each_word_once_newest_first() {
+        let (mut store, text) = store_with_text();
+        store.save_word("id:baca", "membaca", "one", Some(&text.id)).unwrap();
+        store.save_word("id:buku", "buku", "two", Some(&text.id)).unwrap();
+        store.save_word("id:baca", "baca", "three", None).unwrap();
+        let words = store.saved_words(10).unwrap();
+        let got: Vec<(&str, &str)> = words.iter().map(|w| (w.lexeme.as_str(), w.sentence.as_str())).collect();
+        assert_eq!(got, [("id:baca", "three"), ("id:buku", "two")]);
+        assert_eq!(store.text(&text.id).unwrap().unwrap().id, text.id);
+        store.delete_text(&text.id).unwrap();
+        assert!(store.text(&text.id).unwrap().is_none());
     }
 
     #[test]

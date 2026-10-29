@@ -25,6 +25,7 @@ the Arabic words Indonesian already borrowed.
 | Stats: skill radar, pace and forecast | ✓ | ✓ | ✓ |
 | Kak Nur coach: onboarding, daily plan, recap, weekly report | ✓ + notifications (bundled app, opt-in) | ✓ + local reminders (FCM next) | ✓ + local reminders (opt-in) |
 | Reader with word popovers, Arabic Bridge, speech levels, Arabic-script pronunciation | ✓ | ✓ | ✓ |
+| Reader library (texts, saved words, downloads) and Arabic Bridge list | ✓ | ✓ | ✓ |
 | Reader reading settings (size, spacing, line width) and focus mode | ✓ + focus | ✓ one-line bar | ✓ + focus |
 | Screenshot Decoder | ✓ Apple Vision OCR | ✓ ML Kit OCR | ✓ ML Kit OCR |
 | Share-to-Kabar (text, selection, screenshots) | — | ✓ | ✓ |

@@ -1,0 +1,41 @@
+/* The Arabic Bridge (play/bridge_deck.rs). Gold here means "from Arabic"
+   and is used for nothing else in the app. Colours from theme tokens only. */
+
+.deck-hero {
+  display: grid; justify-items: center; gap: var(--sp-2); text-align: center;
+  background: color-mix(in srgb, var(--gold-soft) 55%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--gold) 25%, transparent);
+}
+.deck-hero p { margin: 0; }
+.deck-count { font-family: var(--font-latin); font-size: clamp(1.6rem, 6vw, 2.4rem); font-weight: 700; color: var(--gold); line-height: 1.2; }
+.deck-marked span { unicode-bidi: isolate; }
+
+.deck-search {
+  inline-size: 100%; box-sizing: border-box; min-block-size: 48px; margin-block: var(--sp-3);
+  padding-inline: var(--sp-4); border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--surface); color: var(--text); font: inherit;
+}
+
+.deck-list {
+  list-style: none; margin: 0 0 var(--sp-4); padding: 0; display: grid;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+.deck-list > li + li { border-block-start: 1px solid var(--line); }
+.app:not([data-width="compact"]) .deck-list { grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr)); column-gap: 1px; background: var(--line); }
+.app:not([data-width="compact"]) .deck-list > li { background: var(--surface); }
+.app:not([data-width="compact"]) .deck-list > li + li { border-block-start: 0; }
+
+.deck-row > summary {
+  display: flex; align-items: center; gap: var(--sp-3); cursor: pointer; list-style: none;
+  min-block-size: 56px; box-sizing: border-box; padding-block: var(--sp-2); padding-inline: var(--sp-4);
+}
+.deck-row > summary::-webkit-details-marker { display: none; }
+.deck-row[open] > summary { background: color-mix(in srgb, var(--gold-soft) 35%, transparent); }
+.deck-word { flex: 1; display: grid; gap: 2px; min-inline-size: 0; justify-items: start; }
+.deck-word .bridge-word { font-size: var(--fs-lg); font-weight: 700; }
+.deck-word .muted { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-inline-size: 100%; }
+.bridge-ar { flex: none; font-family: var(--font-arabic); font-size: var(--fs-xl); color: var(--gold); }
+.deck-row.known .deck-word .bridge-word { background: none; }
+.deck-detail { display: grid; gap: var(--sp-2); justify-items: start; padding-block: var(--sp-2) var(--sp-4); padding-inline: var(--sp-4); }
+.deck-detail p { margin: 0; }
+button.deck-games { display: flex; margin-inline: auto; margin-block-end: var(--sp-4); }

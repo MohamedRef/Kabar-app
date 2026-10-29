@@ -1,0 +1,68 @@
+/* The Library on the Reader's home (reader/library.rs). Colours from theme
+   tokens only; gold is the Arabic Bridge's and nothing else's. */
+
+.library { display: grid; gap: var(--sp-3); margin-block-start: var(--sp-3); }
+.library > * { min-inline-size: 0; }
+.lib-head h2 { margin: 0; font-size: var(--fs-xl); font-weight: 600; }
+.lib-head p { margin: var(--sp-1) 0 0; }
+
+/* The Arabic Bridge row. */
+button.bridge-entry {
+  display: flex; align-items: center; gap: var(--sp-3); inline-size: 100%;
+  text-align: start; padding: var(--sp-4);
+  background: color-mix(in srgb, var(--gold-soft) 45%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+}
+.bridge-entry-copy { flex: 1; display: grid; gap: var(--sp-1); justify-items: start; min-inline-size: 0; }
+.bridge-entry-copy strong { font-size: var(--fs-lg); }
+.bridge-entry-n { font-weight: 700; color: var(--gold); unicode-bidi: isolate; }
+.bridge-entry-ar { flex: none; font-family: var(--font-arabic); font-size: var(--fs-2xl); color: var(--gold); line-height: 1; }
+
+.lib-search {
+  inline-size: 100%; box-sizing: border-box; min-block-size: 48px;
+  padding-inline: var(--sp-4); border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--surface); color: var(--text); font: inherit;
+}
+
+/* Segmented tabs. */
+.lib-tabs { display: flex; gap: var(--sp-1); padding: var(--sp-1); border-radius: var(--radius); background: var(--dawn-soft); }
+.lib-tabs button {
+  flex: 1; min-block-size: 44px; border: 0; border-radius: calc(var(--radius) - 4px);
+  background: transparent; color: var(--muted); font-weight: 600;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2);
+}
+.lib-tabs button[aria-selected="true"] { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+.lib-count { font-size: var(--fs-xs); font-weight: 600; color: var(--muted); unicode-bidi: isolate; }
+
+.lib-list {
+  list-style: none; margin: 0; padding: 0; display: grid;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+.lib-list > li { display: flex; align-items: center; min-inline-size: 0; }
+.lib-list > li + li { border-block-start: 1px solid var(--line); }
+button.lib-row {
+  flex: 1; display: flex; align-items: center; gap: var(--sp-3); min-inline-size: 0; min-block-size: 56px;
+  padding-block: var(--sp-2); padding-inline: var(--sp-3); text-align: start;
+  border: 0; border-radius: 0; background: transparent;
+}
+button.lib-row.card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.lib-icon {
+  flex: none; display: grid; place-items: center; inline-size: 2.5rem; block-size: 2.5rem;
+  border-radius: calc(var(--radius) - 2px); background: var(--dawn-soft);
+}
+.lib-copy { flex: 1; display: grid; gap: 2px; min-inline-size: 0; justify-items: start; }
+.lib-title { max-inline-size: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; font-family: var(--font-latin); }
+.lib-delete { flex: none; min-inline-size: 48px; min-block-size: 48px; }
+.lib-empty { margin: 0; padding: var(--sp-4); border-radius: var(--radius); background: var(--dawn-soft); }
+
+/* A saved word: tap to see its sentence and open it in its text. */
+.lib-word { inline-size: 100%; }
+.lib-word > summary {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--sp-2); cursor: pointer;
+  min-block-size: 48px; box-sizing: border-box; padding-block: var(--sp-3); padding-inline: var(--sp-4);
+}
+.lib-word-surface { font-family: var(--font-latin); font-weight: 700; }
+.lib-word-gloss { color: var(--muted); }
+.lib-word > summary .pill { margin-inline-start: auto; }
+.lib-word-body { display: grid; gap: var(--sp-2); justify-items: start; padding-block-end: var(--sp-3); padding-inline: var(--sp-4); }
+.lib-sentence { margin: 0; font-family: var(--font-latin); }
