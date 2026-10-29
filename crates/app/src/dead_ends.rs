@@ -26,6 +26,10 @@ const TAPPABLE: &[&str] = &[
     "seed-word",
     "tap",
     "tap-head",
+    // Shared components (components.css, redesign 2026-10-29).
+    "activity-row",
+    "answer",
+    "rating",
 ];
 
 /// Elements that can be pressed. A `li.lx-card.locked` is a broken episode
