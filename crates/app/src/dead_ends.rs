@@ -26,6 +26,10 @@ const TAPPABLE: &[&str] = &[
     "seed-word",
     "tap",
     "tap-head",
+    // Shared components (components.css, redesign 2026-10-29).
+    "activity-row",
+    "answer",
+    "rating",
     "ch-persona",
     "ch-scene",
     "ch-context",

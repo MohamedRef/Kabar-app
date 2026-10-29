@@ -1,12 +1,12 @@
 /* Watch & listen: Sinetron and Kabar Radio (PLAN §16 B), 2026-10-29
    redesign: episode rows with an icon tile, an episode card on the primary
    colour, a seek-by-line bar and one row of player buttons. Logical
-   properties only. The new roles (--primary, --on-primary, --soft) come
-   from the foundation tokens, each falling back to the token it replaces. */
+   properties only. Colours are the foundation's semantic tokens
+   (docs/DESIGN.md); Glossy stays solid on true black. */
 .listen {
-  --lx-primary: var(--primary, var(--sawah));
-  --lx-on-primary: var(--on-primary, var(--surface));
-  --lx-soft: var(--soft, color-mix(in srgb, var(--sawah) 12%, var(--surface)));
+  --lx-primary: var(--primary);
+  --lx-on-primary: var(--on-primary);
+  --lx-soft: var(--soft);
   display: flex; flex-direction: column; gap: var(--sp-3, 0.75rem);
   max-inline-size: 46rem; margin-inline: auto;
 }
@@ -133,23 +133,23 @@ button.lx-tr[aria-pressed="true"] { background: var(--lx-soft); color: var(--lx-
 
 /* Glossy · Material You: a tonal gradient on the episode card, a lifted
    control dock (blur only there, a small floating surface), pill actions. */
-.app[data-appearance="glossy"] .lx-hero {
+.app[data-appearance="glossy"]:not([data-theme="black"]) .lx-hero {
   background: linear-gradient(135deg, color-mix(in srgb, var(--lx-primary) 88%, var(--lx-on-primary)), var(--lx-primary));
   box-shadow: inset 0 1px 0 color-mix(in srgb, var(--lx-on-primary) 25%, transparent), var(--shadow);
   border-radius: 1.7rem;
 }
-.app[data-appearance="glossy"] .lx-controls {
+.app[data-appearance="glossy"]:not([data-theme="black"]) .lx-controls {
   background: color-mix(in srgb, var(--surface) 86%, transparent);
   box-shadow: inset 0 1px 0 color-mix(in srgb, var(--surface) 60%, transparent), var(--shadow-raised, var(--shadow));
   border-radius: 1.6rem;
 }
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .app[data-appearance="glossy"] .lx-controls { -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+  .app[data-appearance="glossy"]:not([data-theme="black"]) .lx-controls { -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
 }
 @media (prefers-reduced-transparency: reduce) {
-  .app[data-appearance="glossy"] .lx-controls { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .app[data-appearance="glossy"]:not([data-theme="black"]) .lx-controls { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
-.app[data-appearance="glossy"] .lx-icon { box-shadow: inset 0 1px 0 color-mix(in srgb, var(--lx-on-primary) 30%, transparent); }
+.app[data-appearance="glossy"]:not([data-theme="black"]) .lx-icon { box-shadow: inset 0 1px 0 color-mix(in srgb, var(--lx-on-primary) 30%, transparent); }
 /* A line reads left to right from the left edge, under its speaker. */
 .lx-cue > .lx-line { justify-self: stretch; }
 .lx-line .annot-text { display: block; text-align: start; }
