@@ -1,58 +1,155 @@
-/* Watch & listen: Sinetron and Kabar Radio (PLAN §16 B). Logical properties only. */
-.listen { display: grid; gap: 0.75rem; max-inline-size: 46rem; margin-inline: auto; }
-.listen .seg { display: inline-flex; gap: 0.25rem; padding: 0.25rem; border-radius: 999px; background: var(--surface-2); justify-self: start; }
+/* Watch & listen: Sinetron and Kabar Radio (PLAN §16 B), 2026-10-29
+   redesign: episode rows with an icon tile, an episode card on the primary
+   colour, a seek-by-line bar and one row of player buttons. Logical
+   properties only. Colours are the foundation's semantic tokens
+   (docs/DESIGN.md); Glossy stays solid on true black. */
+.listen {
+  --lx-primary: var(--primary);
+  --lx-on-primary: var(--on-primary);
+  --lx-soft: var(--soft);
+  display: flex; flex-direction: column; gap: var(--sp-3, 0.75rem);
+  max-inline-size: 46rem; margin-inline: auto;
+}
+.listen > *, .lx-player > * { flex-shrink: 0; }
+.listen .ltr-num { direction: ltr; unicode-bidi: isolate; }
+.lx-page-head { display: grid; gap: var(--sp-1, 0.25rem); }
+.lx-page-head h2 { margin: 0; font-size: var(--fs-xl, 1.4rem); font-weight: 600; }
+.lx-page-head p { margin: 0; line-height: var(--lh-arabic, 1.8); }
+.listen .seg { display: inline-flex; gap: 0.25rem; padding: 0.25rem; border-radius: 999px; background: var(--surface-2); align-self: flex-start; }
 .listen .seg button { border: 0; background: transparent; }
-.listen .seg button[aria-selected="true"] { background: var(--indigo); color: var(--surface); }
+.listen .seg button[aria-selected="true"] { background: var(--lx-primary); color: var(--lx-on-primary); }
 .small { font-size: 0.85rem; }
 
-.lx-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+/* Episode rows: icon tile, text, chevron. */
+.lx-list { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--sp-2, 0.5rem); }
 /* Wide windows: the episode lists become a feed grid; the player keeps
    its reading column. */
 .app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .listen:has(.lx-list) { max-inline-size: 72rem; }
 .app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .lx-list { grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); align-items: start; }
 .lx-list .card { margin: 0; }
-.lx-card { inline-size: 100%; display: grid; gap: 0.25rem; text-align: start; font: inherit; color: var(--text); cursor: pointer; }
+.lx-card { inline-size: 100%; display: flex; align-items: center; gap: var(--sp-3, 0.75rem); text-align: start; font: inherit; color: var(--text); cursor: pointer; }
+li.lx-card { display: grid; gap: 0.25rem; }
 .lx-card.locked { cursor: default; opacity: 0.7; }
-.lx-card strong { font-size: 1.1rem; }
+.lx-body { flex: 1; display: grid; gap: 0.2rem; justify-items: start; min-inline-size: 0; }
+.lx-body strong { font-size: 1.1rem; }
+.lx-summary { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.lx-icon {
+  flex: none; align-self: flex-start; display: grid; place-items: center;
+  inline-size: 2.6rem; block-size: 2.6rem; border-radius: 0.8rem;
+  background: var(--lx-primary); color: var(--lx-on-primary);
+}
+.lx-icon.locked { background: var(--surface-2); color: var(--muted); }
 .pill.lx-offline { background: var(--gold-soft); color: var(--text); }
-.lx-space { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.lx-space { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-2, 0.5rem); }
 .lx-space p { margin: 0; }
 
-.lx-player { display: grid; gap: 0.5rem; padding-block-end: 5rem; }
-.lx-head { display: flex; align-items: center; gap: 0.5rem; }
-.lx-head h2 { margin: 0; font-size: 1.3rem; }
+/* ---------- The player ---------- */
+.lx-player { display: flex; flex-direction: column; gap: var(--sp-3, 0.75rem); padding-block-end: 9rem; }
+.lx-head { display: flex; align-items: center; gap: var(--sp-2, 0.5rem); }
 /* On the phone the top bar already names the screen and has the back
    arrow (which closes the episode through data-back): one of each (#434). */
-.app[data-width="compact"] .listen > h2,
-.app[data-width="compact"] .lx-back { display: none; }
-.lx-download { min-block-size: 2.25rem; }
-.lx-notice { background: var(--dawn-soft); border-radius: var(--radius); padding: 0.5rem 0.75rem; margin: 0; }
+.app[data-width="compact"] .lx-page-head h2,
+.app[data-width="compact"] .lx-head { display: none; }
+
+.lx-hero {
+  display: grid; justify-items: center; gap: var(--sp-2, 0.5rem); text-align: center;
+  padding-block: var(--sp-6, 1.5rem); padding-inline: var(--sp-4, 1rem);
+  border-radius: 1.25rem; background: var(--lx-primary); color: var(--lx-on-primary);
+}
+.lx-hero h2 { margin: 0; font-size: var(--fs-xl, 1.35rem); font-weight: 600; line-height: 1.4; }
+.lx-show { font-size: var(--fs-xs, 0.75rem); letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
+.lx-show:empty { display: none; }
+.lx-waves { display: flex; align-items: center; gap: 0.25rem; block-size: 1.6rem; margin-block-end: var(--sp-1, 0.25rem); }
+.lx-waves i { inline-size: 3px; block-size: 0.75rem; border-radius: 4px; background: currentColor; opacity: 0.35; }
+.lx-waves i:nth-child(2n) { block-size: 1.15rem; }
+.lx-waves i:nth-child(3n) { block-size: 1.6rem; }
+.lx-count {
+  display: inline-flex; gap: 0.3rem; padding-block: 0.15rem; padding-inline: 0.7rem; border-radius: 999px;
+  background: color-mix(in srgb, var(--lx-on-primary) 16%, transparent); font-size: var(--fs-sm, 0.85rem); font-weight: 600;
+}
+.lx-download { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--sp-2, 0.5rem); }
+button.lx-hero-btn {
+  min-block-size: 2.5rem; border-radius: 999px; font-weight: 600;
+  background: color-mix(in srgb, var(--lx-on-primary) 14%, transparent);
+  border-color: color-mix(in srgb, var(--lx-on-primary) 30%, transparent); color: inherit;
+}
+.lx-notice { background: var(--dawn-soft); border-radius: var(--radius); padding-block: 0.5rem; padding-inline: 0.75rem; margin: 0; }
+
+/* Transcript */
 .lx-lines, .lx-cues { list-style: none; padding: 0; margin: 0; }
-.lx-group h3 { margin-block: 1rem 0.25rem; font-size: 1rem; color: var(--indigo); }
+.lx-group h3 { margin-block: 1rem 0.25rem; font-size: 1rem; color: var(--lx-primary); }
 .lx-group > p { margin-block: 0 0.5rem; }
-.lx-cue { display: grid; justify-items: start; gap: 0.15rem; margin-block: 0.4rem; padding: 0.35rem 0.6rem; border-radius: var(--radius); border-inline-start: 3px solid transparent; }
+.lx-cue {
+  display: grid; justify-items: start; gap: 0.15rem; margin-block: 0.4rem;
+  padding-block: 0.5rem; padding-inline: 0.75rem; border-radius: var(--radius);
+  border: 1px solid transparent; border-inline-start-width: 3px;
+}
 .lx-cue.b { background: var(--surface-2); }
-.lx-cue.on { border-inline-start-color: var(--sawah); box-shadow: var(--shadow); }
+.lx-cue.on { background: var(--surface); border-color: var(--line-soft, var(--line)); border-inline-start-color: var(--lx-primary); box-shadow: var(--shadow); }
+.lx-cue:not(.on) .lx-text { color: color-mix(in srgb, var(--text) 82%, var(--muted)); }
 .lx-line { all: unset; cursor: pointer; display: grid; gap: 0.1rem; }
-.lx-line:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 0.3rem; }
+.lx-line:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 0.3rem; }
 .lx-speaker { font-size: 0.8rem; color: var(--muted); font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; }
 .lx-face { inline-size: 1.75rem; block-size: 1.75rem; border-radius: 50%; }
 .lx-text { font-family: var(--font-latin); font-size: 1.1rem; }
 .lx-meaning, .lx-note { margin: 0; }
 .lx-reveal { min-inline-size: 2.75rem; padding: 0 0.5rem; color: var(--muted); text-decoration: none; }
 .lx-note-chip { border: 0; cursor: pointer; font: inherit; font-size: 0.8rem; }
-.lx-note { background: var(--gold-soft); border-radius: 0.5rem; padding: 0.35rem 0.6rem; font-size: 0.92rem; }
+.lx-note { background: var(--gold-soft); border-radius: 0.5rem; padding-block: 0.35rem; padding-inline: 0.6rem; font-size: 0.92rem; }
 .lx-end { display: grid; gap: 0.5rem; justify-items: start; margin-block-start: 1rem; }
 .lx-next { margin: 0; }
 
+/* Controls: the seek bar, then speed · previous · play · next · translations. */
 .lx-controls {
-  position: sticky; inset-block-end: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
-  padding: 0.6rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+  position: sticky; inset-block-end: 0; display: grid; gap: var(--sp-2, 0.5rem);
+  padding-block: var(--sp-2, 0.5rem) var(--sp-3, 0.75rem); padding-inline: var(--sp-3, 0.75rem);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 1.25rem; box-shadow: var(--shadow-raised, var(--shadow));
 }
 /* Above the phone's bottom bar. */
 .app[data-width="compact"] .lx-controls { inset-block-end: calc(4rem + env(safe-area-inset-bottom)); z-index: 11; }
-.lx-controls button[aria-pressed="true"] { background: var(--surface-2); color: var(--indigo); font-weight: 600; }
-@media (prefers-reduced-motion: no-preference) { .lx-cue { transition: border-color 0.2s, box-shadow 0.2s; } }
+/* The timeline runs left to right in every language. */
+.lx-seek { display: flex; align-items: center; gap: var(--sp-2, 0.5rem); direction: ltr; color: var(--muted); }
+.lx-seek input { flex: 1; min-inline-size: 0; accent-color: var(--lx-primary); block-size: 1.75rem; }
+.lx-buttons { display: flex; align-items: center; justify-content: center; gap: var(--sp-3, 0.75rem); direction: ltr; }
+.lx-buttons button { min-block-size: var(--tap, 3rem); }
+button.lx-step, button.lx-speed {
+  display: inline-grid; place-items: center; padding: 0; inline-size: var(--tap, 3rem);
+  border-radius: 50%; border-color: transparent; background: transparent; color: var(--text);
+}
+button.lx-speed { font-weight: 700; font-size: var(--fs-sm, 0.9rem); }
+button.lx-speed[aria-pressed="true"] { background: var(--lx-soft); color: var(--lx-primary); }
+button.primary.lx-play {
+  display: inline-grid; place-items: center; padding: 0;
+  inline-size: 3.5rem; block-size: 3.5rem; border-radius: 50%;
+  background: var(--lx-primary); color: var(--lx-on-primary);
+}
+.lx-tri { margin-inline-start: 3px; }
+button.lx-tr { border-radius: 999px; font-size: var(--fs-sm, 0.9rem); }
+button.lx-tr[aria-pressed="true"] { background: var(--lx-soft); color: var(--lx-primary); border-color: var(--lx-primary); font-weight: 600; }
+@media (prefers-reduced-motion: no-preference) { .lx-cue { transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s; } }
 .lx-teaser { border-style: dashed; }
-.lx-teaser progress { inline-size: 100%; block-size: 0.5rem; accent-color: var(--sawah); }
+.lx-teaser progress { inline-size: 100%; block-size: 0.5rem; accent-color: var(--lx-primary); }
 .lx-more { text-align: center; }
+
+/* Glossy · Material You: a tonal gradient on the episode card, a lifted
+   control dock (blur only there, a small floating surface), pill actions. */
+.app[data-appearance="glossy"]:not([data-theme="black"]) .lx-hero {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--lx-primary) 88%, var(--lx-on-primary)), var(--lx-primary));
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--lx-on-primary) 25%, transparent), var(--shadow);
+  border-radius: 1.7rem;
+}
+.app[data-appearance="glossy"]:not([data-theme="black"]) .lx-controls {
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--surface) 60%, transparent), var(--shadow-raised, var(--shadow));
+  border-radius: 1.6rem;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .app[data-appearance="glossy"]:not([data-theme="black"]) .lx-controls { -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .app[data-appearance="glossy"]:not([data-theme="black"]) .lx-controls { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+.app[data-appearance="glossy"]:not([data-theme="black"]) .lx-icon { box-shadow: inset 0 1px 0 color-mix(in srgb, var(--lx-on-primary) 30%, transparent); }
+/* A line reads left to right from the left edge, under its speaker. */
+.lx-cue > .lx-line { justify-self: stretch; }
+.lx-line .annot-text { display: block; text-align: start; }

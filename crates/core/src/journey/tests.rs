@@ -199,7 +199,7 @@ fn javanese_is_unverified_and_waits_gently_for_bipa1() {
 }
 
 #[test]
-fn passing_a_units_lessons_approves_its_javanese() {
+fn checking_a_units_lessons_approves_its_javanese() {
     let c = parse_curriculum(JAVANESE).unwrap();
     let done = set(&["j1.u01.l01"]);
     let p = Progress::new(&c, &done).with_approved(&done);

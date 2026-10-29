@@ -31,8 +31,9 @@ impl Store {
     /// card). Words the deck already holds are skipped, so finishing the same
     /// lesson again is a no-op. Returns how many cards were added.
     ///
-    /// `approved`: the learner passed the lesson with a reasonable score, so
-    /// its cards (new, and any from an earlier try) lose the unverified flag.
+    /// `approved`: the learner already checked the lesson's content
+    /// (`Store::verified_lessons`), so its cards (new, and any from an
+    /// earlier try) lose the unverified flag.
     pub fn add_lesson_cards(
         &mut self,
         lesson: &kabar_protocol::lesson::LessonContent,
@@ -53,6 +54,22 @@ impl Store {
             self.upsert_cards(&cards)?;
         }
         Ok(added)
+    }
+
+    /// Sets the unverified flag of a lesson's cards (those whose
+    /// `source_ref` is the lesson) after the learner checked its content or
+    /// took the check back. Cards already in that state aren't rewritten.
+    pub fn set_lesson_cards_verified(&mut self, lesson_id: &str, verified: bool) -> Result<()> {
+        let changed: Vec<Card> = self
+            .cards()?
+            .into_iter()
+            .filter(|c| c.source_ref.as_deref() == Some(lesson_id) && c.verified != verified)
+            .map(|c| Card { verified, ..c })
+            .collect();
+        if !changed.is_empty() {
+            self.upsert_cards(&changed)?;
+        }
+        Ok(())
     }
 
     /// Live cards in the order they were added. A payload this build can't

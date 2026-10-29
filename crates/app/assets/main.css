@@ -313,7 +313,13 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .shell { display: grid; min-block-size: 100dvh; }
 /* the phone's top bar keeps its height on short screens */
 .app[data-width="compact"] .shell { align-content: start; }
-.content { padding: var(--gutter); padding-block-end: 6rem; max-inline-size: 76rem; inline-size: 100%; margin-inline: auto; }
+.content { padding: var(--gutter); padding-block-end: calc(6rem + env(safe-area-inset-bottom)); max-inline-size: 76rem; inline-size: 100%; margin-inline: auto; }
+/* Redesign layout fixes (2026-10-29). A child of a flex column never
+   shrinks below its content, so a hero's heading or button can't be
+   squeezed away; and grids on wider windows size rows to their content,
+   so a short chip row can't collapse the card beside it. */
+.app :where(.content, .bsheet-body, .more-sheet) > * { flex-shrink: 0; }
+.app:not([data-width="compact"]) :where(.today-grid, .coach-grid, .play-grid, .pasar-layout) { grid-auto-rows: max-content; align-items: start; }
 .app:not([data-width="compact"]) .content { padding-block: var(--sp-6) var(--sp-8); }
 
 .nav { display: flex; background: var(--surface); border-color: var(--line); }
@@ -454,7 +460,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .app[data-width="compact"] .nav-more { display: flex; }
 .more-backdrop { position: fixed; inset: 0; z-index: 30; background: rgb(0 0 0 / 0.3); }
 .more-sheet {
-  position: fixed; z-index: 31; inset-inline: 0; inset-block-end: 0; max-block-size: 85dvh; overflow-y: auto;
+  position: fixed; z-index: 31; inset-inline: 0; inset-block-end: 0; max-block-size: 85dvh; overflow-y: auto; overscroll-behavior: contain;
   background: var(--surface); border-start-start-radius: var(--radius); border-start-end-radius: var(--radius);
   box-shadow: var(--shadow); padding: 0.75rem 1rem; padding-block-end: max(1rem, env(safe-area-inset-bottom));
 }
@@ -470,7 +476,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .more-list { border: 1px solid var(--line-soft); border-radius: var(--radius-lg); overflow: hidden; }
 .more-list li + li { border-block-start: 1px solid var(--line-soft); }
 .more-list button { border-radius: 0; min-block-size: var(--tap-lg); padding-inline: var(--sp-3); }
-.more-sheet { border-start-start-radius: var(--radius-lg); border-start-end-radius: var(--radius-lg); }
+.more-sheet { border-start-start-radius: var(--radius-sheet); border-start-end-radius: var(--radius-sheet); }
 .more-title { font-weight: 600; }
 .more-sub { grid-column: 2; font-size: 0.82rem; color: var(--muted); }
 .top-title { display: flex; align-items: center; gap: 0.25rem; min-inline-size: 0; }
@@ -852,26 +858,7 @@ button.choice.right:disabled, button.choice.missed:disabled { opacity: 1; }
 .feedback.kind { background: var(--surface-2); border-inline-start: 4px solid var(--dawn); }
 .summary-card .score { font-size: 2.2rem; margin: 0; font-variant-numeric: tabular-nums; }
 
-/* Bridge deck */
-.deck-hero { text-align: center; background: var(--gold-soft); border-color: transparent; }
-.deck-count { font-family: var(--font-latin); font-size: clamp(1.7rem, 6vw, 2.6rem); font-weight: 700; color: var(--gold); margin: 0; }
-.flip-card { display: flex; flex-direction: column; gap: 0.5rem; }
-button.flip-face {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-block-size: 9rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--gold-soft);
-  background: var(--surface);
-  box-shadow: var(--shadow);
-  color: var(--text);
-}
-button.flip-face[aria-pressed="true"] { background: var(--gold-soft); color: var(--text); border-color: var(--gold); }
-.flip-front, .flip-back { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; text-align: center; }
-.bridge-ar { font-size: 2rem; color: var(--gold); }
-.flip-card.known button.flip-face { border-color: var(--sawah); }
-.known-tag { align-self: center; }
+/* Bridge deck: assets/bridge.css (play/bridge_deck.rs) */
 button.quiet-solid { background: var(--surface-2); border-color: transparent; }
 
 /* Sound-Shift Detective */

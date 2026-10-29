@@ -49,6 +49,7 @@ fn seed_stats_demo() {
         ..CoachProfile::default()
     };
     store.save_coach_profile(&profile).unwrap();
+    seed_chat(&mut store, now);
 
     // ~16 weeks of study with rest days, a pattern that grows over time.
     for back in 0..110i32 {
@@ -135,5 +136,51 @@ fn seed_stats_demo() {
             ..prev
         };
         store.record_lesson_event(LEVEL_CHECK_LESSON_ID, LEVEL_CHECK_KIND, &now_check).unwrap();
+    }
+}
+
+/// Mas Ardi's hotel check-in (scene d01) replayed from its example dialogue,
+/// with the recast the scene teaches as a correction, so Chat previews show
+/// bubbles, a fix and "spot on".
+fn seed_chat(store: &mut Store, now: u64) {
+    use kabar_protocol::chat::{ChatCorrection, ChatMessage, ChatRole, ChatRow, Conversation};
+    let yaml = include_str!("../../../../content/personas/mas-ardi.yaml");
+    let ardi = kabar_core::story::parse_persona(yaml).unwrap();
+    let scene = ardi.example_dialogues.iter().find(|d| d.id == "d01").unwrap();
+    let doc = "demo-chat-ardi".to_string();
+    let conversation = Conversation {
+        id: doc.clone(),
+        doc: doc.clone(),
+        persona: ardi.id.clone(),
+        scenario: Some(scene.id.clone()),
+        level: scene.level.clone(),
+        register: "standard".into(),
+        created_ms: now - 600_000,
+        updated_ms: now - 60_000,
+    };
+    store.save_chat_row(&ChatRow::Conversation(conversation)).unwrap();
+    for (i, line) in scene.lines.iter().take(5).enumerate() {
+        let learner = line.speaker == kabar_core::chat::LEARNER;
+        // The persona line after a learner line may recast its mistake.
+        let fix = scene.lines.get(i + 1).and_then(|n| n.correction.as_ref()).filter(|_| learner);
+        let message = ChatMessage {
+            id: format!("{doc}-{i}"),
+            doc: doc.clone(),
+            role: if learner { ChatRole::Learner } else { ChatRole::Persona },
+            text: line.text.clone(),
+            corrections: fix
+                .map(|c| ChatCorrection {
+                    text: c.wrong.clone(),
+                    fix: c.right.clone(),
+                    why_en: c.why.en.clone(),
+                    why_ar: c.why.ar_eg.clone(),
+                })
+                .into_iter()
+                .collect(),
+            register: None,
+            unverified: false,
+            created_ms: now - 600_000 + i as u64 * 60_000,
+        };
+        store.save_chat_row(&ChatRow::Message(message)).unwrap();
     }
 }

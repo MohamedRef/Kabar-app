@@ -4,6 +4,8 @@
 
 .studio { display: grid; gap: 1rem; }
 .studio-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+/* One tool left (pen writing paused): no tab bar that only links to itself. */
+.studio-tabs[hidden] { display: none; }
 
 /* ---------- ink canvas ---------- */
 .ink-wrap { position: relative; }
@@ -82,9 +84,40 @@
 .gambar .verdict { font-size: 1.15rem; font-weight: 600; margin: 0; }
 
 /* ---------- mind map ---------- */
-.mindmap { display: grid; gap: 0.75rem; }
-.mindmap form input { flex: 1; min-inline-size: 10rem; }
-.map-list { flex-wrap: wrap; gap: 0.35rem; margin-block-start: 0.5rem; }
+/* Mind map, 2026-10-29 redesign: a side column (topic, language, your maps)
+   next to the canvas on wide windows, stacked on a phone. */
+.mindmap {
+  --mm-primary: var(--primary);
+  --mm-soft: var(--soft);
+  display: grid; gap: var(--sp-3, 0.75rem); align-items: start;
+}
+.mindmap > * { min-inline-size: 0; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .mindmap:has(.map-main > *) { grid-template-columns: minmax(17rem, 22rem) minmax(0, 1fr); }
+/* No map yet: the form alone, at a readable width. */
+.mindmap:not(:has(.map-main > *)) .map-side { max-inline-size: 36rem; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .map-side { position: sticky; inset-block-start: var(--sp-3, 0.75rem); }
+.map-side { display: grid; gap: var(--sp-2, 0.5rem); margin: 0; }
+.map-side h2 { margin: 0; font-size: var(--fs-lg, 1.2rem); font-weight: 600; }
+.map-side > p { margin: 0; line-height: var(--lh-arabic, 1.8); }
+.map-form { display: flex; flex-wrap: wrap; gap: var(--sp-2, 0.5rem); align-items: center; }
+.map-form input {
+  flex: 1 1 100%; min-inline-size: 0; box-sizing: border-box; min-block-size: var(--tap, 3rem);
+  border: 1px solid var(--line); border-radius: 0.8rem; background: var(--surface); color: var(--text);
+  padding-inline: var(--sp-3, 0.75rem); font: inherit;
+}
+.map-langs { display: inline-flex; gap: 0.25rem; padding: 0.25rem; border-radius: 999px; background: var(--surface-2); }
+.map-langs button { border: 0; background: transparent; border-radius: 999px; min-inline-size: 3rem; }
+.map-langs button[aria-pressed="true"] { background: var(--mm-primary); color: var(--on-primary); }
+.map-form button.primary { flex: 1; }
+.map-problem { margin: 0; padding-block: var(--sp-2, 0.5rem); padding-inline: var(--sp-3, 0.75rem); border-radius: 0.8rem; background: var(--dawn-soft); }
+.map-list-title { margin: var(--sp-2, 0.5rem) 0 0; font-size: var(--fs-md, 1rem); font-weight: 600; }
+.map-list { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.map-list button { border-radius: 999px; }
+.map-list button[aria-pressed="true"] { background: var(--mm-soft); color: var(--mm-primary); border-color: var(--mm-primary); }
+.map-main { display: grid; gap: var(--sp-2, 0.5rem); }
+.map-main:empty { display: none; }
+.app[data-appearance="glossy"]:not([data-theme="black"]) .map-side { border-radius: 1.4rem; box-shadow: inset 0 1px 0 color-mix(in srgb, var(--surface) 60%, transparent), var(--shadow); }
+.app[data-appearance="glossy"]:not([data-theme="black"]) .map-form :is(input, button.primary) { border-radius: 999px; }
 .badge { font-size: 0.8rem; padding: 0.15rem 0.6rem; border-radius: 999px; background: var(--gold-soft); color: var(--text); }
 
 /* ---------- Listening Companion: built for a narrow split-screen pane ---------- */

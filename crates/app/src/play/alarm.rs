@@ -87,7 +87,7 @@ pub fn Alarm() -> Element {
     rsx! {
         PlayHeader { title: Msg::AlarmTitle }
         div { class: "card round alarm",
-            p { class: "muted small", "{ui.num(s.index as u64 + 1)} / {ui.num(total)}" }
+            super::RoundCount { at: s.index as u64 + 1, total: total as u64 }
             div { class: "alarm-banner", role: "note",
                 span { class: "alarm-dot", aria_hidden: "true" }
                 span { "{ui.t(Msg::AlarmLooksLike)} " }

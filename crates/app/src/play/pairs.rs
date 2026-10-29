@@ -255,7 +255,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
     rsx! {
         div { class: "card round pairs-round",
             div { class: "row pairs-meta",
-                span { class: "muted small", "{ui.num(s.index as u64 + 1)} / {ui.num(total)}" }
+                super::RoundCount { at: s.index as u64 + 1, total: total as u64 }
                 span { class: "pill small", bdi { class: "latin", lang: "jv", "{contrast_label(round.pair.contrast)}" } }
                 if !reviewed {
                     span { class: "pill unverified small", "{ui.t(Msg::Unverified)} · " bdi { "Jawa" } }
