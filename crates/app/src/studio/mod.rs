@@ -360,9 +360,9 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (Score, Ar) => "خمّنها \u{2068}Kabar\u{2069}",
         (Score, En) => "guessed",
 
-        (MapIntro, ArEg) => "اكتب موضوع، و \u{2068}Kabar\u{2069} يعمله خريطة كلمات تكمّل عليها بالقلم.",
-        (MapIntro, Ar) => "اكتب موضوعًا، وسيصنع \u{2068}Kabar\u{2069} خريطة كلمات تكملها بالقلم.",
-        (MapIntro, En) => "Name a topic and Kabar draws a word map you can extend with the pen.",
+        (MapIntro, ArEg) => "اكتب موضوع، و \u{2068}Kabar\u{2069} يعمله خريطة كلمات تراجع منها.",
+        (MapIntro, Ar) => "اكتب موضوعًا، وسيصنع \u{2068}Kabar\u{2069} خريطة كلمات تراجع منها.",
+        (MapIntro, En) => "Name a topic and Kabar draws a word map to review from.",
         (Topic, ArEg | Ar) => "di pasar، keluarga، cuaca…",
         (Topic, En) => "di pasar, keluarga, cuaca…",
         (Make, ArEg) => "اعمل الخريطة",
