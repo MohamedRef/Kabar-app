@@ -100,6 +100,19 @@ fn now_ms() -> u64 {
     crate::cloud::engine::now_ms()
 }
 
+/// The Devices screen (from Teach Kabar and Cost & limits): the page
+/// heading, then the same account and devices as Settings › Account.
+#[component]
+pub fn DevicesScreen() -> Element {
+    let ui = use_context::<Ui>();
+    rsx! {
+        div { class: "page-head",
+            div { h1 { "{ui.t(Msg::NavDevices)}" } }
+        }
+        AccountScreen {}
+    }
+}
+
 #[component]
 pub fn AccountScreen() -> Element {
     let ui = use_context::<Ui>();
