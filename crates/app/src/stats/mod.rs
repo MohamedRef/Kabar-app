@@ -402,24 +402,24 @@ pub fn StatsScreen() -> Element {
     rsx! {
         style { {STATS_CSS.text()} }
         div { class: "st",
-            div { class: "st-head",
+            div { class: "page-head st-head",
+                div {
+                    h1 { "{st(lang, S::Title)}" }
+                    p { class: "sub", "{st(lang, S::Lede)}" }
+                }
                 // The header's round arrow (#442, #448); a phone's top bar
                 // already has one, so it shows from the rail up.
                 button {
-                    class: "st-back st-back-page round-back",
+                    class: "icon-button st-back st-back-page round-back",
                     aria_label: st(lang, S::Back),
                     title: st(lang, S::Back),
                     onclick: move |_| back(ui),
                     span { aria_hidden: "true", {back_arrow(lang)} }
                 }
-                div {
-                    h2 { "{st(lang, S::Title)}" }
-                    p { class: "muted st-lede", "{st(lang, S::Lede)}" }
-                }
             }
             PeriodSwitch { period }
             PeriodView { p: n.period(period()).clone(), today: n.today, total_minutes: n.total_minutes }
-            h3 { class: "st-section", "{st(lang, S::MoreDetail)}" }
+            div { class: "section-head", h2 { "{st(lang, S::MoreDetail)}" } }
             div { class: "st-grid",
                 HeatCard { heat: n.heat.clone(), today: n.today }
                 WordsCard { words: n.words.clone() }
@@ -446,11 +446,12 @@ fn PeriodSwitch(period: Signal<Period>) -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     rsx! {
-        div { class: "st-period", role: "group", aria_label: st(ui.lang(), S::PeriodGroup),
+        div { class: "segmented st-period", role: "radiogroup", aria_label: st(ui.lang(), S::PeriodGroup),
             for p in Period::ALL {
                 button {
                     key: "{p.id()}",
-                    aria_pressed: if period() == p { "true" } else { "false" },
+                    role: "radio",
+                    aria_checked: if period() == p { "true" } else { "false" },
                     onclick: {
                         let db = db.clone();
                         move |_| {
@@ -538,7 +539,7 @@ fn RingCard(tally: Tally) -> Element {
                 if let Some(v) = verdict {
                     p { class: "st-verdict", "{v}" }
                 }
-                button { class: "st-ring-go", "{st(lang, action)}" }
+                button { class: "tonal st-ring-go", "{st(lang, action)}" }
             }
         }
     }
@@ -613,37 +614,53 @@ fn ActivityCard(overview: Overview, today: LocalDate, total_minutes: u32) -> Ele
     }
 }
 
-/// Skills under the bar in the period, each with the place to practise it.
+/// Skills under the bar in the period, each a row that opens the place to
+/// practise it; or, with none, what fills this list and the way on.
 #[component]
 fn WeakCard(weak: Vec<WeakSpot>, measured: bool) -> Element {
     let ui = use_context::<Ui>();
     let mut screen = ui.screen;
     let lang = ui.lang();
     rsx! {
-        section { class: "card st-card st-weak",
-            h3 { "{st(lang, S::WeakTitle)}" }
+        section { class: "st-weak",
+            div { class: "section-head", h2 { "{st(lang, S::WeakTitle)}" } }
             if weak.is_empty() {
-                p { class: "muted",
-                    if measured {
-                        "{st(lang, S::WeakNone)}"
-                    } else {
-                        {fill(st(lang, S::WeakNoData), &[("n", &ui.num(MIN_SKILL_ATTEMPTS))])}
+                // The whole card goes on to the journey; the button's click bubbles up.
+                div {
+                    class: "card card-action empty-state st-weak-empty",
+                    onclick: move |_| screen.set(Screen::Journey),
+                    span { class: "row-icon", aria_hidden: "true", {crate::icons::nav(Screen::Journey)} }
+                    p {
+                        if measured {
+                            "{st(lang, S::WeakNone)}"
+                        } else {
+                            {fill(st(lang, S::WeakNoData), &[("n", &ui.num(MIN_SKILL_ATTEMPTS))])}
+                        }
                     }
+                    button { class: "tonal", "{st(lang, S::WeakJourney)}" }
                 }
-                button { class: "st-weak-journey", onclick: move |_| screen.set(Screen::Journey), "{st(lang, S::WeakJourney)}" }
-            }
-            for w in weak {
-                {
-                    let (to, action) = skill_action(w.skill);
-                    let line = fill(st(lang, S::WeakLine), &[("correct", &ui.num(w.correct)), ("total", &ui.num(w.total))]);
-                    rsx! {
-                        button { key: "{w.skill:?}", class: "tap tap-link st-weak-row", onclick: move |_| screen.set(to),
-                            span { class: "st-weak-text",
-                                strong { "{ui.t(labels::skill(w.skill))}" }
-                                span { class: "muted small", bdi { "{line}" } " · " bdi { "{pct(&ui, w.share())}" } }
+            } else {
+                div { class: "card grouped",
+                    for w in weak {
+                        {
+                            let (to, action) = skill_action(w.skill);
+                            let line = fill(
+                                st(lang, S::WeakLine),
+                                &[("correct", &ui.num(w.correct)), ("total", &ui.num(w.total))],
+                            );
+                            rsx! {
+                                button { key: "{w.skill:?}", class: "activity-row", onclick: move |_| screen.set(to),
+                                    span { class: "row-icon", aria_hidden: "true", {crate::icons::nav(to)} }
+                                    span { class: "row-copy",
+                                        strong { "{ui.t(labels::skill(w.skill))}" }
+                                        small { bdi { "{line}" } " · " bdi { "{pct(&ui, w.share())}" } }
+                                    }
+                                    span { class: "row-end",
+                                        span { class: "st-weak-go", "{st(lang, action)}" }
+                                        span { class: "chev", aria_hidden: "true" }
+                                    }
+                                }
                             }
-                            span { class: "st-weak-go", "{st(lang, action)}" }
-                            span { class: "chev", aria_hidden: "true" }
                         }
                     }
                 }

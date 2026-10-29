@@ -3,17 +3,9 @@
    throughout, so RTL just works. */
 
 .st { display: grid; gap: 1rem; }
-.st-head { display: flex; align-items: center; gap: 0.75rem; }
-.st-head h2 { margin: 0; }
-.st-lede { margin: 0.15rem 0 0; font-size: var(--fs-sm); }
-.st-section { margin: 0.5rem 0 0; font-size: var(--fs-lg); }
-
-/* period switch: a two-option segmented control */
-.st-period { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.25rem; padding: 0.25rem;
-  border-radius: var(--radius-pill); background: var(--surface-2); border: 1px solid var(--line); }
-.st-period button { min-block-size: var(--tap); border: 0; border-radius: var(--radius-pill); background: transparent;
-  color: var(--muted); font-weight: 600; }
-.st-period button[aria-pressed="true"] { background: var(--sawah); color: var(--surface); }
+/* the page head's back arrow sits at the end, after the title */
+.st-head { margin-block-end: 0; }
+.st-period { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 /* the period's headline: ring, activity, tiles, weak spots */
 .st-top { display: grid; gap: 1rem; align-items: start; grid-auto-rows: max-content; }
@@ -23,8 +15,8 @@
 .st-ring-card { display: flex; align-items: center; gap: 1rem; }
 .st-ring { position: relative; flex: none; inline-size: 6.5rem; block-size: 6.5rem; }
 .st-ring-svg svg { display: block; inline-size: 100%; block-size: 100%; }
-.ring-track { fill: none; stroke: var(--surface-2); stroke-width: 10; }
-.ring-on { fill: none; stroke: var(--sawah); stroke-width: 10; stroke-linecap: round; }
+.ring-track { fill: none; stroke: var(--soft); stroke-width: 10; }
+.ring-on { fill: none; stroke: var(--primary); stroke-width: 10; stroke-linecap: round; }
 .st-ring-value { position: absolute; inset: 0; display: grid; place-items: center; font-size: var(--fs-xl);
   font-weight: 700; font-variant-numeric: tabular-nums; }
 .st-ring-text { min-inline-size: 0; flex: 1; }
@@ -37,8 +29,8 @@
 .st-bar-col { flex: 1 1 0; min-inline-size: 0; display: flex; flex-direction: column; gap: 0.3rem; }
 .st-bar-track { flex: 1; display: flex; align-items: flex-end; }
 .st-bar { display: block; inline-size: 100%; min-block-size: 0; border-radius: var(--radius-sm) var(--radius-sm) 3px 3px;
-  background: var(--sawah); opacity: 0.32; }
-.st-bar-col.now .st-bar { opacity: 1; }
+  background: var(--soft); }
+.st-bar-col.now .st-bar { background: var(--primary); }
 .st-bar-label { font-size: var(--fs-xs); color: var(--muted); text-align: center; white-space: nowrap; overflow: hidden;
   text-overflow: ellipsis; }
 .st-bar-col.now .st-bar-label { color: var(--text); font-weight: 600; }
@@ -47,16 +39,11 @@
 
 .st-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
 .st-tiles .stat { align-items: center; text-align: center; padding-block: 0.8rem; }
-.app[data-width="expanded"] .st-tiles, .app:is([data-width="large"], [data-width="extra-large"]) .st-tiles { align-self: stretch; }
+.app[data-width="expanded"] .st-tiles, .app:is([data-width="large"], [data-width="extra-large"]) .st-tiles { grid-column: 1 / -1; }
 
-.st-weak h3 { margin-block: 0 0.4rem; }
-.st-weak p { margin: 0; }
-.st-weak-journey { margin-block-start: 0.6rem; }
-.st-weak-row { inline-size: 100%; text-align: start; padding-block: 0.6rem; padding-inline: 0.2rem; background: transparent;
-  border: 0; border-block-start: 1px solid var(--line); border-radius: 0; }
-.st-weak-row:first-of-type { border-block-start: 0; }
-.st-weak-text { flex: 1; min-inline-size: 0; display: flex; flex-direction: column; gap: 0.1rem; font-weight: 400; }
-.st-weak-go { color: var(--sawah); font-size: var(--fs-sm); font-weight: 600; }
+.st-weak .section-head { margin-block-start: 0; }
+.st-weak-empty { padding-block: var(--sp-5); }
+.st-weak-go { color: var(--primary); font-size: var(--fs-sm); font-weight: 600; }
 .app[data-width="compact"] .st-back-page { display: none; }
 .st-grid { display: grid; gap: 1rem; align-items: start; }
 /* Tablet portrait: one roomy column (two were too narrow for the numbers). */
