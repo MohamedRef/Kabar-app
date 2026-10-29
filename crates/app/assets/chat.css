@@ -1,70 +1,169 @@
-/* Persona chats (PLAN §16 C). Logical properties only. */
-.chat { display: grid; gap: 0.75rem; max-inline-size: 46rem; margin-inline: auto; }
+/* Persona chats (PLAN §16 C), 2026-10-29 redesign: a context card for the
+   partner and scene, quiet bubbles, an idea chip and a compact composer.
+   Logical properties only. The new roles (--primary, --soft, --on-primary,
+   --good-bg) come from the foundation tokens; each falls back to the older
+   token it replaces so the screen reads right on any theme. */
+.chat {
+  --ch-primary: var(--primary, var(--sawah));
+  --ch-on-primary: var(--on-primary, var(--surface));
+  --ch-soft: var(--soft, color-mix(in srgb, var(--sawah) 12%, var(--surface)));
+  display: flex; flex-direction: column; gap: var(--sp-3, 0.75rem);
+  max-inline-size: 46rem; margin-inline: auto;
+}
+/* Natural height in the scroll column: nothing shrinks out of sight. */
+.chat > *, .ch-chat > * { flex-shrink: 0; }
 .chat h2, .chat h3 { margin: 0; }
 .ch-personas, .ch-history, .ch-scenes, .ch-messages, .ch-fixes { list-style: none; padding: 0; margin: 0; }
 .app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .chat:has(.ch-personas) { max-inline-size: 72rem; }
-.ch-personas { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
-.ch-personas .card, .ch-scenes .card { margin: 0; }
-.ch-persona, .ch-scene, .ch-open {
-  inline-size: 100%; display: flex; gap: 0.75rem; align-items: flex-start; text-align: start;
-  font: inherit; color: var(--text); cursor: pointer;
+
+.ch-page-head { display: grid; gap: var(--sp-1, 0.25rem); }
+.ch-page-head h2 { font-size: var(--fs-xl, 1.4rem); font-weight: 600; }
+.ch-page-head p { margin: 0; line-height: var(--lh-arabic, 1.8); }
+.ch-section { font-size: var(--fs-md, 1rem); font-weight: 600; margin-block-start: var(--sp-2, 0.5rem); }
+
+/* Partner, scene and past-chat rows: avatar, two lines, chevron. */
+.ch-personas { display: grid; gap: var(--sp-2, 0.5rem); grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+.ch-scenes, .ch-history { display: grid; gap: var(--sp-2, 0.5rem); }
+.ch-personas .card, .ch-scenes .card, .ch-history .card { margin: 0; }
+button.ch-persona, button.ch-scene, button.ch-context, .ch-open {
+  display: flex; gap: var(--sp-3, 0.75rem); align-items: center; text-align: start;
+  font: inherit; color: var(--text); font-weight: inherit;
 }
-.ch-scene { display: grid; gap: 0.3rem; justify-items: start; }
-.ch-scenes { display: grid; gap: 0.6rem; }
-.ch-who { display: grid; gap: 0.2rem; justify-items: start; min-inline-size: 0; }
+.ch-who { flex: 1; display: grid; gap: 0.15rem; justify-items: start; min-inline-size: 0; }
+.ch-name { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2, 0.5rem); min-inline-size: 0; }
+.ch-name h2 { font-size: var(--fs-lg, 1.2rem); }
+.ch-lang { background: var(--ch-soft); color: var(--ch-primary); }
+.ch-lang.jv { background: var(--surface-2); color: var(--muted); }
+.ch-levels { color: var(--muted); }
 .ch-avatar {
-  flex: none; display: inline-grid; place-items: center; inline-size: 2.5rem; block-size: 2.5rem;
-  border-radius: 50%; background: var(--indigo); color: var(--surface); font-weight: 700; font-size: 1.1rem;
+  flex: none; display: inline-grid; place-items: center; inline-size: 2.75rem; block-size: 2.75rem;
+  border-radius: 50%; background: var(--ch-soft); color: var(--ch-primary); font-weight: 700; font-size: 1.1rem;
 }
-.ch-avatar.jv { background: var(--sawah); }
-img.face.ch-avatar { inline-size: 3rem; block-size: 3rem; }
-.ch-head img.face.ch-avatar { inline-size: 3.5rem; block-size: 3.5rem; transition: opacity 0.2s; }
-.ch-history { display: grid; gap: 0.5rem; }
-.ch-past { display: flex; align-items: center; gap: 0.5rem; margin: 0; }
-.ch-open { all: unset; flex: 1; display: flex; gap: 0.75rem; align-items: center; cursor: pointer; min-inline-size: 0; }
-.ch-open:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 0.3rem; }
+.ch-avatar.jv { background: var(--surface-2); color: var(--text); }
+img.face.ch-avatar { inline-size: 3rem; block-size: 3rem; background: var(--surface-2); }
+.ch-context img.face.ch-avatar { inline-size: 3.25rem; block-size: 3.25rem; transition: opacity var(--dur, 0.2s); }
+
+.ch-past { display: flex; align-items: center; gap: var(--sp-2, 0.5rem); padding-block: var(--sp-2, 0.5rem); }
+.ch-open { all: unset; flex: 1; display: flex; gap: var(--sp-3, 0.75rem); align-items: center; cursor: pointer; min-inline-size: 0; padding-block: var(--sp-1, 0.25rem); }
+.ch-open:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-sm, 0.4rem); }
 .ch-preview { display: block; max-inline-size: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-.ch-chat { display: grid; gap: 0.5rem; }
-.ch-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-.ch-head h2 { font-size: 1.3rem; }
-.ch-replay { margin-inline-start: auto; }
-.ch-scene-line { margin: 0; }
-.ch-register { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
-.ch-register button { min-block-size: 2.25rem; border-radius: 999px; }
-.ch-register button[aria-pressed="true"] { background: var(--indigo); color: var(--surface); }
+/* Icon-only buttons: a 48px target around a small glyph. */
+button.ch-icon {
+  flex: none; display: inline-grid; place-items: center; padding: 0;
+  inline-size: var(--tap, 3rem); block-size: var(--tap, 3rem); min-block-size: 0;
+  border-radius: 50%; text-decoration: none; color: var(--muted);
+}
+button.ch-icon svg { inline-size: 1.25rem; block-size: 1.25rem; }
 
-.ch-messages { display: grid; gap: 0.6rem; padding-block: 0.5rem; }
-.ch-msg { display: grid; gap: 0.25rem; max-inline-size: 85%; }
-.ch-msg.them { justify-self: start; justify-items: start; }
-.ch-msg.me { justify-self: end; justify-items: end; }
-.ch-bubble { padding: 0.5rem 0.75rem; border-radius: 1rem; background: var(--surface-2); box-shadow: var(--shadow); }
-.ch-msg.them .ch-bubble { border-end-start-radius: 0.25rem; }
-.ch-msg.me .ch-bubble { border-end-end-radius: 0.25rem; background: var(--indigo); color: var(--surface); }
-.ch-text { margin: 0; font-size: 1.1rem; line-height: 1.6; text-align: start; }
-.ch-tools { display: flex; align-items: center; gap: 0.35rem; margin-block-start: 0.25rem; }
-.ch-listen { min-inline-size: 2.5rem; min-block-size: 2.25rem; }
+/* ---------- One chat ---------- */
+.ch-chat { display: flex; flex-direction: column; gap: var(--sp-3, 0.75rem); }
+.ch-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2, 0.5rem); }
+.ch-replay { display: inline-flex; align-items: center; gap: var(--sp-2, 0.5rem); border-radius: 999px; background: var(--ch-soft); color: var(--ch-primary); border-color: transparent; font-weight: 600; }
+.ch-replay svg { inline-size: 1.2rem; block-size: 1.2rem; }
+.ch-replay:disabled { background: var(--surface-2); color: var(--muted); }
+.ch-profile p { margin-block: var(--sp-2, 0.5rem) 0; line-height: var(--lh-arabic, 1.8); }
+button.ch-context { background: var(--ch-soft); border-color: transparent; box-shadow: none; margin: 0; }
+.ch-scene-line { line-height: var(--lh-arabic, 1.8); }
+
+.ch-register { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2, 0.5rem); }
+button.ch-chip {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  min-block-size: 2.25rem; padding-block: 0.3rem; padding-inline: 0.85rem;
+  border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+  font-size: var(--fs-sm, 0.9rem); font-weight: 600;
+}
+button.ch-chip svg { inline-size: 1rem; block-size: 1rem; }
+button.ch-chip[aria-pressed="true"] { background: var(--ch-soft); color: var(--ch-primary); border-color: var(--ch-primary); }
+
+.ch-note { display: flex; gap: var(--sp-2, 0.5rem); align-items: flex-start; margin: 0; color: var(--muted); line-height: var(--lh-arabic, 1.8); }
+.ch-note svg { flex: none; inline-size: 1rem; block-size: 1rem; margin-block-start: 0.3rem; }
+
+/* Bubbles: the partner's on the surface with a line, the learner's tonal.
+   Target-language text reads left to right inside either. */
+.ch-messages { display: flex; flex-direction: column; gap: var(--sp-4, 1rem); padding-block: var(--sp-2, 0.5rem); }
+.ch-msg { display: grid; gap: var(--sp-1, 0.25rem); max-inline-size: 88%; }
+.ch-msg.them { align-self: flex-start; justify-items: start; }
+.ch-msg.me { align-self: flex-end; justify-items: end; }
+.ch-bubble {
+  padding-block: 0.7rem; padding-inline: 0.9rem; border-radius: 1rem;
+  background: var(--surface); border: 1px solid var(--line-soft, var(--line)); color: var(--text);
+}
+.ch-msg.them .ch-bubble { border-end-start-radius: 0.3rem; }
+.ch-msg.me .ch-bubble { border-end-end-radius: 0.3rem; background: var(--ch-soft); border-color: transparent; }
+.ch-text { margin: 0; font-size: 1.05rem; line-height: 1.7; }
+/* The sentence is a left-to-right block; its start is the left edge even in
+   an Arabic UI. The translation under it keeps the UI's direction. */
+.ch-bubble .annot-text, .ch-msg.me .ch-bubble > bdi { display: block; text-align: start; }
+.ch-msg.me .ch-bubble bdi { font-size: 1.05rem; line-height: 1.7; }
+.ch-tools { display: flex; align-items: center; gap: var(--sp-2, 0.5rem); margin-block-start: var(--sp-1, 0.25rem); margin-inline-start: -0.75rem; }
 .ch-unverified { background: var(--dawn-soft); color: var(--text); }
 .ch-typing { color: var(--muted); }
 
-.ch-fixes { display: grid; gap: 0.35rem; padding: 0.5rem 0.75rem; border-radius: var(--radius); background: var(--gold-soft); text-align: start; }
-.ch-fixes p { margin: 0.15rem 0 0; }
-.ch-was { color: var(--muted); }
-.ch-fix { font-weight: 600; }
-.ch-ok { color: var(--sawah); }
-.ch-problem { background: var(--dawn-soft); border-radius: var(--radius); padding: 0.5rem 0.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
-.ch-problem p { margin: 0; flex: 1; }
-
-.ch-compose {
-  position: sticky; inset-block-end: 0; display: flex; align-items: flex-end; gap: 0.4rem; padding-block: 0.5rem;
-  background: var(--bg);
+/* A gentler way to say it: under the learner's message. */
+.ch-fixes {
+  display: grid; gap: var(--sp-2, 0.5rem); padding-block: var(--sp-2, 0.5rem); padding-inline: var(--sp-3, 0.75rem);
+  border-radius: var(--radius-sm, 0.75rem); background: var(--surface); border: 1px dashed var(--line); text-align: start;
 }
-.ch-compose textarea { flex: 1; min-inline-size: 0; box-sizing: border-box; font-size: 1.05rem; resize: vertical; min-block-size: 2.75rem; }
+.ch-fixes p { margin: 0.15rem 0 0; line-height: var(--lh-arabic, 1.8); }
+.ch-was { color: var(--muted); }
+.ch-fix { font-weight: 700; color: var(--ch-primary); }
+.ch-ok { justify-self: end; }
+.ch-problem {
+  display: flex; flex-wrap: wrap; gap: var(--sp-2, 0.5rem); align-items: center;
+  background: var(--dawn-soft); border-radius: var(--radius-sm, 0.75rem); padding-block: var(--sp-2, 0.5rem); padding-inline: var(--sp-3, 0.75rem);
+}
+.ch-problem p { margin: 0; flex: 1; min-inline-size: 12rem; }
 
-.ch-send { flex: none; flex-wrap: nowrap; gap: 0.35rem; }
-.ch-messages > li { scroll-margin-block-end: 9rem; }
-.ch-privacy { margin: 0; }
+/* The composer stays above the bottom bar; the last bubble clears it. */
+.ch-compose {
+  position: sticky; inset-block-end: 0; display: grid; gap: var(--sp-2, 0.5rem);
+  padding-block: var(--sp-2, 0.5rem); background: var(--bg);
+}
+.ch-chips { display: flex; flex-wrap: wrap; gap: var(--sp-2, 0.5rem); }
+.ch-idea {
+  display: flex; align-items: center; gap: var(--sp-3, 0.75rem);
+  padding-block: var(--sp-2, 0.5rem); padding-inline: var(--sp-3, 0.75rem);
+  border-radius: var(--radius-sm, 0.75rem); background: var(--surface); border: 1px solid var(--line);
+}
+.ch-idea bdi { font-weight: 600; }
+.ch-field { display: flex; align-items: flex-end; gap: var(--sp-2, 0.5rem); }
+.ch-field textarea {
+  flex: 1; min-inline-size: 0; box-sizing: border-box; resize: vertical;
+  min-block-size: var(--tap, 3rem); font-size: 1.05rem; border-radius: 0.8rem;
+  border: 1px solid var(--line); background: var(--surface); color: var(--text);
+}
+button.primary.ch-send {
+  flex: none; display: inline-grid; place-items: center; padding: 0;
+  inline-size: var(--tap, 3rem); block-size: var(--tap, 3rem); min-block-size: 0; border-radius: 0.8rem;
+  background: var(--ch-primary); color: var(--ch-on-primary);
+}
+button.primary.ch-send:disabled { background: var(--surface-2); color: var(--muted); }
+button.ch-send svg { inline-size: 1.25rem; block-size: 1.25rem; }
+/* The plane points forward: left in Arabic. */
+[dir="rtl"] .ch-send svg { transform: scaleX(-1); }
+.ch-messages > li, .ch-problem { scroll-margin-block-end: 10rem; }
 /* Above the phone's bottom bar. */
 .app[data-width="compact"] .ch-compose { inset-block-end: calc(4rem + env(safe-area-inset-bottom)); z-index: 11; }
-.ch-compose.ink { flex-direction: column; align-items: stretch; position: static; }
+.ch-compose.ink { position: static; }
+.ch-compose.ink .ch-field { flex-direction: column; align-items: stretch; }
 .ch-register-line { color: var(--text); }
+
+/* Glossy · Material You: tonal surfaces, a top-edge highlight, pill actions.
+   No blur on the long transcript; selection and feedback stay opaque. */
+.app[data-appearance="glossy"] .chat :is(.ch-bubble, .ch-idea, .ch-fixes) {
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--surface) 55%, transparent);
+}
+.app[data-appearance="glossy"] .chat button.ch-context {
+  background: linear-gradient(150deg, color-mix(in srgb, var(--ch-soft) 88%, var(--surface)), var(--ch-soft));
+  border: 1px solid color-mix(in srgb, var(--ch-primary) 14%, var(--line));
+  border-radius: 1.4rem;
+}
+.app[data-appearance="glossy"] .chat .ch-msg.me .ch-bubble {
+  background: linear-gradient(150deg, color-mix(in srgb, var(--ch-soft) 85%, var(--surface)), var(--ch-soft));
+}
+.app[data-appearance="glossy"] .chat :is(.ch-field textarea, button.primary.ch-send) { border-radius: 999px; }
+/* Long role blurbs stay two lines in the list; the profile has them whole. */
+.ch-persona .ch-who > .muted { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+/* On a phone the top bar already names the screen. */
+.app[data-width="compact"] .ch-page-head h2 { display: none; }
