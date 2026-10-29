@@ -445,7 +445,9 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .top-bar {
   min-block-size: calc(2.5rem + 0.7rem);
   padding-inline: 1rem 0.75rem;
-  background: var(--bg);
+  /* Transparent, so the page's own pattern (and Glossy's tint) runs up
+     under the title instead of stopping at a flat band. */
+  background: transparent;
   border-block-end-color: transparent;
 }
 .top-bar .brand-small { font-size: 1.25rem; line-height: 1.25; }
@@ -926,7 +928,6 @@ mark.pair-mark { background: var(--gold-soft); color: inherit; border-radius: 4p
 .pairs-meaning { flex: 1 1 10rem; min-inline-size: 0; }
 
 /* Kabar Pagi */
-.pagi-card { border-inline-start: 4px solid var(--dawn); }
 .story-title { font-family: var(--font-latin); }
 .pagi-cast { display: flex; flex-wrap: wrap; gap: 0.75rem; list-style: none; padding: 0; margin-block: 0.25rem 0.75rem; }
 .pagi-cast:empty { display: none; }

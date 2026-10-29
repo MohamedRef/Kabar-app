@@ -311,6 +311,9 @@ input.switch:focus-visible { outline: 3px solid var(--focus); outline-offset: 2p
   box-shadow: var(--gloss-hi);
 }
 .app[data-appearance="glossy"] :is(.row-icon, button.icon-button, .stat, .stat-static) { box-shadow: var(--gloss-hi); }
+/* The header's outlined round buttons keep an even ring: a top-edge
+   highlight there made the bottom of the circle look cut off. */
+.app[data-appearance="glossy"] :is(.top-bar .gear-button, .round-back) { box-shadow: none; border-color: var(--line); }
 .app[data-appearance="glossy"] :is(.stat, .stat-static) { border-radius: var(--radius-control); }
 .app[data-appearance="glossy"] button.answer[aria-pressed="true"] { box-shadow: var(--gloss-hi), 0 0 0 1px color-mix(in srgb, var(--primary) 10%, transparent); }
 .app[data-appearance="glossy"]:not([data-theme="black"]) button.rating.good {
