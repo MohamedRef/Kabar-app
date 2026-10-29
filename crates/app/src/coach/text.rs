@@ -93,9 +93,15 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (StartNow, ArEg) => "ابدأ دلوقتي، والباقي بعدين",
         (StartNow, Ar) => "ابدأ الآن، والباقي لاحقًا",
         (StartNow, En) => "Start now, the rest later",
-        (StartNowHint, ArEg) => "الهدف والمواعيد والتذكير تقدر تظبطهم بعدين من صفحة Kak Nur. التذكير هيفضل مقفول لحد ما تشغّله.",
-        (StartNowHint, Ar) => "الهدف والمواعيد والتذكير يمكنك ضبطها لاحقًا من صفحة Kak Nur. سيبقى التذكير متوقفًا حتى تفعّله.",
-        (StartNowHint, En) => "Set a goal, study times and reminders later on Kak Nur's page. Reminders stay off until you turn them on.",
+        (StartNowHint, ArEg) => {
+            "الهدف والمواعيد والتذكير تقدر تظبطهم بعدين من صفحة Kak Nur. التذكير هيفضل مقفول لحد ما تشغّله."
+        }
+        (StartNowHint, Ar) => {
+            "الهدف والمواعيد والتذكير يمكنك ضبطها لاحقًا من صفحة Kak Nur. سيبقى التذكير متوقفًا حتى تفعّله."
+        }
+        (StartNowHint, En) => {
+            "Set a goal, study times and reminders later on Kak Nur's page. Reminders stay off until you turn them on."
+        }
     }
 }
 
@@ -105,5 +111,16 @@ pub fn left(lang: UiLanguage, minutes: &str) -> String {
         UiLanguage::ArEg => format!("فاضل {minutes}"),
         UiLanguage::Ar => format!("متبقٍّ {minutes}"),
         UiLanguage::En => format!("{minutes} left"),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn minutes_left_reads_in_order() {
+        assert_eq!(left(UiLanguage::ArEg, "7 دقايق"), "فاضل 7 دقايق");
+        assert_eq!(left(UiLanguage::En, "7 min"), "7 min left");
     }
 }

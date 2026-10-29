@@ -51,3 +51,15 @@ pub fn lessons_of(lang: UiLanguage, done: &str, total: &str, total_n: usize) -> 
         UiLanguage::ArEg | UiLanguage::Ar => format!("{done} من {total} درس"),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn lesson_counts_agree_with_the_total() {
+        assert_eq!(lessons_of(UiLanguage::ArEg, "3", "8", 8), "3 من 8 دروس");
+        assert_eq!(lessons_of(UiLanguage::ArEg, "3", "14", 14), "3 من 14 درس");
+        assert_eq!(lessons_of(UiLanguage::En, "0", "7", 7), "0 of 7 lessons");
+    }
+}

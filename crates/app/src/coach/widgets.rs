@@ -28,16 +28,17 @@ pub fn Nur(text: String, #[props(default)] mood: Mood) -> Element {
     }
 }
 
-/// "5, 15 or 30 minutes today?"
+/// "5, 15 or 30 minutes today?": the real plan sizes as a segmented control.
 #[component]
 pub fn SizePicker(value: PlanSize, onpick: EventHandler<PlanSize>) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
-        div { class: "row", role: "group",
+        div { class: "segmented size-picker", role: "radiogroup",
             for size in PlanSize::ALL {
                 button {
                     key: "{size:?}",
-                    aria_pressed: if size == value { "true" } else { "false" },
+                    role: "radio",
+                    aria_checked: if size == value { "true" } else { "false" },
                     onclick: move |_| onpick.call(size),
                     {labels::minutes(&ui, u32::from(size.minutes()))}
                 }

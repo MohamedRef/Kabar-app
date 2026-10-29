@@ -372,8 +372,10 @@ fn now_card(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
     let tl = j.route.target_lang();
     let Some(current) = progress.current().map(str::to_string) else { return rsx! {} };
     let cur = j.curriculum();
-    let Some((level, unit)) =
-        cur.levels.iter().find_map(|l| l.units.iter().find(|u| u.lessons.iter().any(|x| x.id == current)).map(|u| (l, u)))
+    let Some((level, unit)) = cur
+        .levels
+        .iter()
+        .find_map(|l| l.units.iter().find(|u| u.lessons.iter().any(|x| x.id == current)).map(|u| (l, u)))
     else {
         return rsx! {};
     };
@@ -393,7 +395,9 @@ fn now_card(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
             let name = local_souvenir(&unit.id, lang).map_or(c.souvenir.clone(), |(t, _)| t);
             (tt(lang, T::SouvenirHere), name, id)
         }),
-        (None, Some(test)) if last_stop => Some((tt(lang, T::LevelTestNext), level.code.clone(), test.id.clone())),
+        (None, Some(test)) if last_stop => {
+            Some((tt(lang, T::LevelTestNext), level.code.clone(), test.id.clone()))
+        }
         _ => None,
     };
     let open = current.clone();
@@ -403,7 +407,7 @@ fn now_card(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
                 class: "now-card tap",
                 onclick: move |_| ui.open_lesson(open.clone()),
                 span { class: "now-eyebrow",
-                    span { class: "pill latin", bdi { "{level.code}" } }
+                    span { class: "status-chip latin", bdi { "{level.code}" } }
                     " {tt(lang, T::NowStop)}"
                 }
                 span { class: "now-city", bdi { lang: tl, dir: "ltr", "{unit.stop}" } }
@@ -419,7 +423,7 @@ fn now_card(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
                 }
                 span { class: "now-progress",
                     span {
-                        class: "bar",
+                        class: "progress-line",
                         role: "progressbar",
                         aria_valuemin: "0",
                         aria_valuemax: "{total}",
@@ -432,14 +436,14 @@ fn now_card(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
             }
             if let Some((label, name, id)) = milestone {
                 button {
-                    class: "now-milestone tap tap-plain",
+                    class: "activity-row now-milestone",
                     onclick: move |_| ui.open_lesson(id.clone()),
-                    span { class: "now-milestone-icon", aria_hidden: "true", {icon_suitcase()} }
-                    span { class: "tap-link-text",
-                        span { class: "muted small", "{label}" }
+                    span { class: "row-icon gold", aria_hidden: "true", {icon_suitcase()} }
+                    span { class: "row-copy",
+                        small { "{label}" }
                         strong { bdi { lang: tl, dir: "ltr", "{name}" } }
                     }
-                    span { class: "chev", aria_hidden: "true" }
+                    span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
                 }
             }
         }

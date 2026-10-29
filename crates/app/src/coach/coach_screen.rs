@@ -8,8 +8,8 @@ use kabar_protocol::coach::{
     ActivityEvent, ActivityKind, CoachProfile, LocalDate, ReminderStyle, Skill, WeeklyReport,
 };
 
-use super::widgets::{Nur, Stat};
 use super::text::{T, tt};
+use super::widgets::{Nur, Stat};
 use super::{Coach, labels, logic, say};
 use crate::i18n::Msg;
 use crate::portraits::Mood;
@@ -102,7 +102,7 @@ fn NextStep(profile: CoachProfile, today: LocalDate) -> Element {
             Nur { text: say(&ui, line, today, &args) }
             if let Some(item) = next {
                 button {
-                    class: "primary",
+                    class: "primary wide",
                     onclick: {
                         let db = db.clone();
                         let kind = item.kind.clone();
@@ -111,32 +111,28 @@ fn NextStep(profile: CoachProfile, today: LocalDate) -> Element {
                     "{labels::plan_item_text(&ui, &item.kind)} · {labels::minutes(&ui, u32::from(item.minutes))}"
                 }
             }
-            ul { class: "coach-links",
-                li {
-                    button {
-                        class: "tap tap-plain",
-                        onclick: move |_| settings.show(Some(crate::settings::Section::Coach)),
-                        span { class: "plan-icon", aria_hidden: "true", {icons::nav(Screen::Coach)} }
-                        span { class: "tap-link-text",
-                            strong { "{tt(lang, T::EditPlan)}" }
-                            span { class: "muted small", "{tt(lang, T::EditPlanHint)}" }
-                        }
-                        span { class: "chev", aria_hidden: "true" }
+            div { class: "card grouped coach-links",
+                button {
+                    class: "activity-row",
+                    onclick: move |_| settings.show(Some(crate::settings::Section::Coach)),
+                    span { class: "row-icon", aria_hidden: "true", {icons::nav(Screen::Coach)} }
+                    span { class: "row-copy",
+                        strong { "{tt(lang, T::EditPlan)}" }
+                        small { "{tt(lang, T::EditPlanHint)}" }
                     }
+                    span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
                 }
-                li {
-                    button {
-                        class: "tap tap-plain",
-                        onclick: move |_| settings.show(Some(crate::settings::Section::Coach)),
-                        span { class: "plan-icon", aria_hidden: "true", {icons::lamp()} }
-                        span { class: "tap-link-text",
-                            strong { "{tt(lang, T::Reminders)}" }
-                            span { class: "muted small",
-                                if reminders_on { "{tt(lang, T::RemindersOn)}" } else { "{tt(lang, T::RemindersOff)}" }
-                            }
+                button {
+                    class: "activity-row",
+                    onclick: move |_| settings.show(Some(crate::settings::Section::Coach)),
+                    span { class: "row-icon gold", aria_hidden: "true", {icons::lamp()} }
+                    span { class: "row-copy",
+                        strong { "{tt(lang, T::Reminders)}" }
+                        small {
+                            if reminders_on { "{tt(lang, T::RemindersOn)}" } else { "{tt(lang, T::RemindersOff)}" }
                         }
-                        span { class: "chev", aria_hidden: "true" }
                     }
+                    span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
                 }
             }
         }

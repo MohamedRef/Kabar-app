@@ -1,93 +1,51 @@
 /* Today, Kak Nur's page and onboarding (2026-10-29 redesign).
-   Colours come from the theme tokens only. The older coach rules still in
-   main.css (.plan-item, .nur, .rewards-bar…) are the base these refine. */
+   Built on the shared components (components.css: .card.hero, .grouped,
+   .activity-row, .segmented, .section-head); this file only lays them out.
+   Colours come from the theme tokens. The older coach rules in main.css
+   (.plan-item, .nur, .rewards-bar…) are the base these refine. */
 
 /* ---------- Today ---------- */
 .today-main { display: grid; gap: var(--sp-4); min-inline-size: 0; align-content: start; grid-auto-rows: max-content; }
-.today-main > * { margin-block: 0; flex-shrink: 0; }
+.today-main > * { margin-block: 0; }
 
-/* "How long today?" and the real plan sizes as chips. */
+/* "How long today?" and the real plan sizes. */
 .today-size { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-2); }
-.today-size .row { margin: 0; gap: var(--sp-2); }
-.today-size .row button { min-inline-size: 4.5rem; }
+.size-picker > button { min-inline-size: 4.5rem; }
 
-/* The hero: the one next step, in the brand colour, with one button. */
-.today-hero {
-  background: var(--sawah);
-  color: var(--surface);
-  border-color: transparent;
-  padding: var(--sp-5);
-  display: grid;
-  gap: var(--sp-2);
-  position: relative;
-  overflow: hidden;
-}
+/* The hero: the one next step, today's minutes, one button. */
+.today-hero { display: grid; gap: var(--sp-2); padding: var(--sp-5); }
 .today-hero > * { margin: 0; }
 .hero-eyebrow { display: flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-sm); opacity: 0.85; }
 .hero-icon { display: inline-flex; }
 .hero-icon svg { inline-size: 1.1rem; block-size: 1.1rem; }
-.hero-title { font-size: var(--fs-xl); line-height: var(--lh-tight); font-weight: 700; }
+.hero-title { font-size: var(--fs-xl); line-height: var(--lh-tight); font-weight: 600; }
 .hero-sub { font-size: var(--fs-sm); opacity: 0.9; }
-.today-hero .progress { background: color-mix(in srgb, var(--surface) 25%, transparent); margin-block-start: var(--sp-2); }
-.today-hero .progress-fill { background: var(--surface); }
+.today-hero .progress { background: color-mix(in srgb, var(--on-primary) 22%, transparent); margin-block-start: var(--sp-2); block-size: 0.4rem; }
+.today-hero .progress-fill { background: var(--accent); }
 .hero-count { opacity: 0.85; direction: ltr; unicode-bidi: isolate; text-align: end; }
-/* The start button: the brand's light, full width, never squeezed. */
-.today-hero button.primary.hero-start {
-  background: var(--surface);
-  color: var(--sawah);
-  inline-size: 100%;
-  min-block-size: var(--tap-lg);
-  font-weight: 700;
-  margin-block-start: var(--sp-2);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-2);
-}
-@media (hover: hover) and (pointer: fine) {
-  .today-hero button.primary.hero-start:where(:not(:disabled):hover) { background: color-mix(in srgb, var(--surface) 88%, var(--sawah)); }
-}
-/* An arrow pointing forward (left in Arabic). */
+.today-hero button.hero-start { margin-block-start: var(--sp-2); font-weight: 700; }
 .chev.hero-arrow { border-color: currentColor; opacity: 1; }
-/* Marking done is a quiet text link inside the hero, not a second button. */
-.today-hero button.quiet.hero-mark { color: inherit; opacity: 0.85; justify-self: center; font-size: var(--fs-sm); padding-block: var(--sp-2); }
-/* The welcome-back card keeps the hero's colour; its plan rows sit on it. */
-.today-hero.welcome-back .nur-bubble { background: color-mix(in srgb, var(--surface) 14%, transparent); }
+/* Marking done is a quiet text action inside the hero, not a second button. */
+.today-hero button.text-btn.hero-mark { color: inherit; opacity: 0.85; justify-self: center; font-size: var(--fs-sm); font-weight: 500; text-decoration: underline; }
+/* Tablet and wider: the start button needn't span the whole hero. */
+.app:not([data-width="compact"]) .today-hero button.hero-start { justify-self: end; inline-size: min(100%, 26rem); }
+/* The welcome-back card is a hero too; its plan rows sit on the surface. */
+.today-hero.welcome-back .nur-bubble { background: color-mix(in srgb, var(--on-primary) 12%, transparent); }
 .today-hero.welcome-back .nur-name { color: inherit; }
 .today-hero.welcome-back .plan-item { background: var(--surface); color: var(--text); border-color: transparent; }
 .today-hero.welcome-back details summary { color: inherit; }
-.today-hero.welcome-back button.welcome-back-start { background: var(--surface); color: var(--sawah); inline-size: 100%; min-block-size: var(--tap-lg); font-weight: 700; }
 
-/* The rest of the plan: one grouped list of rows. */
-.section-title { font-size: var(--fs-md); margin-block: 0 var(--sp-2); }
-.today-rest .plan {
-  margin: 0;
-  gap: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  overflow: hidden;
-}
-.today-rest .plan-item { border: 0; border-radius: 0; padding-block: var(--sp-2); padding-inline: var(--sp-3); }
-.today-rest .plan-item + .plan-item, .today-rest .plan-break { border-block-start: 1px solid var(--line-soft); }
+/* The rest of the plan: one grouped card of rows, each with its tick. */
+.today-rest .section-head { margin-block: 0 var(--sp-2); }
+.today-rest .plan { margin: 0; gap: 0; display: block; }
+.today-rest .plan-item { border: 0; border-radius: 0; padding: 0; padding-inline-end: var(--sp-3); gap: var(--sp-2); }
 .today-rest .plan-item.done { background: var(--surface-2); }
-.today-rest .plan-break { padding: var(--sp-3); }
-.plan-text { display: flex; align-items: center; gap: var(--sp-3); min-block-size: var(--tap); }
-.plan-icon {
-  flex: none;
-  display: grid;
-  place-items: center;
-  inline-size: 2.5rem;
-  block-size: 2.5rem;
-  border-radius: var(--radius-sm);
-  background: var(--surface-2);
-  color: var(--sawah);
-}
-.plan-words { flex: 1; min-inline-size: 0; display: grid; }
-.plan-detail { overflow-wrap: anywhere; }
-.plan-min { flex: none; }
-/* The tick: small and round, clearly not a Start button. */
-.plan-item button.check { inline-size: 1.75rem; block-size: 1.75rem; min-block-size: 0; border-width: 1.5px; font-size: var(--fs-sm); position: relative; }
+.today-rest .plan-item.done .row-copy strong { color: var(--muted); }
+.today-rest .plan-break { padding: var(--sp-3) var(--card-pad); }
+.today-rest button.activity-row { flex: 1; min-inline-size: 0; }
+/* The tick: small and round, clearly not a Start button… */
+.plan-item button.check { inline-size: 1.75rem; block-size: 1.75rem; min-block-size: 0; border-width: 1.5px; border-color: var(--primary); font-size: var(--fs-sm); position: relative; }
+.plan-item button.check[aria-checked="true"] { background: var(--primary); color: var(--on-primary); }
 /* …with a full-size touch target around it. */
 .plan-item button.check::after { content: ""; position: absolute; inset: -0.6rem; }
 
@@ -96,9 +54,9 @@ button.nur-card {
   display: flex;
   align-items: center;
   gap: var(--sp-2);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius-card);
+  background: var(--soft);
   padding: var(--sp-2) var(--sp-3);
 }
 button.nur-card .nur { flex: 1; margin: 0; }
@@ -111,8 +69,11 @@ button.nur-card .nur-bubble { background: transparent; padding: 0; }
 .coach-next { display: grid; gap: var(--sp-3); }
 .coach-next > * { margin: 0; }
 .coach-next .nur { margin: 0; }
-.coach-next button.primary { inline-size: 100%; min-block-size: var(--tap-lg); font-weight: 700; }
-.coach-links { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); }
-.coach-links li + li { border-block-start: 1px solid var(--line-soft); }
-.coach-links button.tap-plain { display: flex; align-items: center; gap: var(--sp-3); padding: var(--sp-3); border-radius: 0; min-block-size: var(--row, var(--tap)); }
-.coach-links .tap-link-text { flex: 1; display: grid; }
+.coach-next .coach-links { box-shadow: none; }
+
+/* ---------- Onboarding ---------- */
+.onboarding .answers { margin-block-end: var(--sp-3); }
+.onboarding button.answer { flex-direction: column; align-items: flex-start; gap: 0.1rem; }
+.onboarding button.answer .hint { font-size: var(--fs-sm); font-weight: 400; opacity: 0.85; }
+.onboarding button.onb-early { margin-block-start: var(--sp-3); }
+.onb-early-hint { margin: 0; }

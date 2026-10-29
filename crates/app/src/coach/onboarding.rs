@@ -6,8 +6,8 @@ use kabar_core::coach::onboarding::{self, ProfileError, Step};
 use kabar_core::coach::voice::Line;
 use kabar_protocol::coach::{CoachProfile, LanguageFocus, LocalDate, ReminderStyle, Target};
 
-use super::widgets::{Nur, QuietHoursEditor, SizePicker, StylePicker, TimesEditor};
 use super::text::{T, tt};
+use super::widgets::{Nur, QuietHoursEditor, SizePicker, StylePicker, TimesEditor};
 use super::{Coach, labels, say};
 use crate::i18n::Msg;
 use crate::{Db, Ui};
@@ -95,6 +95,7 @@ pub fn Onboarding() -> Element {
     let can_start_early = matches!(current, Step::Minutes | Step::Target | Step::Times);
 
     rsx! {
+        style { {super::today::COACH_CSS.text()} }
         div { class: "onboarding",
             div { class: "card",
                 ol { class: "dots", aria_label: "{ui.t(Msg::OnbProgress)}",
@@ -125,7 +126,7 @@ pub fn Onboarding() -> Element {
                     }
                 }
                 if let Some(msg) = error() {
-                    p { class: "error", role: "alert", "{ui.t(msg)}" }
+                    p { class: "field-error", role: "alert", "{ui.t(msg)}" }
                 }
                 div { class: "row step-nav",
                     if current != Step::Name {
@@ -160,7 +161,7 @@ pub fn Onboarding() -> Element {
                     }
                 }
                 if can_start_early {
-                    button { class: "quiet onb-early", onclick: {
+                    button { class: "text-btn onb-early", onclick: {
                             let db = db.clone();
                             move |_| finish(&db, true)
                         }, "{tt(ui.lang(), T::StartNow)}" }
@@ -236,11 +237,11 @@ fn FocusStep(draft: Signal<CoachProfile>) -> Element {
     let ui = use_context::<Ui>();
     let current = draft.read().focus;
     rsx! {
-        div { class: "choices", role: "group",
+        div { class: "answers", role: "group",
             for f in labels::FOCUSES {
                 button {
                     key: "{f:?}",
-                    class: "choice",
+                    class: "answer",
                     aria_pressed: if f == current { "true" } else { "false" },
                     onclick: move |_| draft.write().focus = f,
                     match labels::focus(f) {
@@ -329,11 +330,11 @@ fn StartStep(draft: Signal<CoachProfile>) -> Element {
     let ui = use_context::<Ui>();
     let current = draft.read().start;
     rsx! {
-        div { class: "choices", role: "group",
+        div { class: "answers", role: "group",
             for s in labels::STARTS {
                 button {
                     key: "{s:?}",
-                    class: "choice",
+                    class: "answer",
                     aria_pressed: if s == current { "true" } else { "false" },
                     onclick: move |_| draft.write().start = s,
                     strong { "{ui.t(labels::starting_point(s).0)}" }
