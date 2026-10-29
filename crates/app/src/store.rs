@@ -11,7 +11,7 @@
 //! dropped by an older build. A new typed table needs a `Typed` entry and a
 //! line in `backfill_sync`.
 
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 use std::path::Path;
 
 use kabar_core::clock::HlcClock;
@@ -21,7 +21,7 @@ use kabar_protocol::coach::{
     ActivityEvent, ActivityKind, CoachProfile, DailyPlan, LocalDate, PROFILE_ROW_ID, REMINDER_ROW_ID,
     ReminderState, WeeklyReport,
 };
-use kabar_protocol::lesson::LessonPosition;
+use kabar_protocol::lesson::{LessonCompleted, LessonPosition, LessonVerified, Verification};
 use kabar_protocol::pen::PenLabReport;
 use kabar_protocol::sync::{MAX_PAYLOAD_BYTES, Op, OpKind, RejectReason, SeqOp, SyncKind, table_kind};
 use kabar_protocol::{DeviceId, Hlc};
@@ -698,23 +698,71 @@ impl Store {
         Ok(ids)
     }
 
-    /// Ids of lessons the learner approved by passing them with a reasonable
-    /// score on any device (`kabar_core::lesson::approves`). Their "not
-    /// reviewed yet" flag comes off, Javanese included.
-    pub fn approved_lessons(&self) -> Result<BTreeSet<String>> {
+    /// Lessons whose content the learner checked, on any device, and how:
+    /// their newest `verified` / `unverified` event says checked, or (kept
+    /// from before the two were separated on 2026-10-29) a pass recorded
+    /// under the old rule (`kabar_core::lesson::verifies_by_pass`). Their
+    /// "not reviewed yet" flag comes off, Javanese included. Finishing a
+    /// lesson alone never adds one.
+    pub fn verified_lessons(&self) -> Result<BTreeMap<String, Verification>> {
         let mut stmt = self.conn.prepare(
-            "SELECT lesson_id, payload FROM lesson_events WHERE kind = 'completed' AND deleted = 0",
+            "SELECT lesson_id, kind, payload FROM lesson_events
+             WHERE kind IN ('completed', 'verified', 'unverified') AND deleted = 0
+             ORDER BY hlc_wall, hlc_counter, device_id",
         )?;
-        let rows: Vec<(String, String)> =
-            stmt.query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?.collect::<rusqlite::Result<_>>()?;
-        Ok(rows
-            .into_iter()
-            .filter(|(_, payload)| {
-                serde_json::from_str::<kabar_protocol::lesson::LessonCompleted>(payload)
-                    .is_ok_and(|done| kabar_core::lesson::approves(&done))
-            })
-            .map(|(id, _)| id)
-            .collect())
+        let rows: Vec<(String, String, String)> = stmt
+            .query_map([], |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)))?
+            .collect::<rusqlite::Result<_>>()?;
+        let mut checked: BTreeMap<String, bool> = BTreeMap::new();
+        let mut passed: BTreeMap<String, u32> = BTreeMap::new();
+        for (id, kind, payload) in rows {
+            match kind.as_str() {
+                "verified" => {
+                    checked.insert(id, true);
+                }
+                "unverified" => {
+                    checked.insert(id, false);
+                }
+                _ => {
+                    let Ok(done) = serde_json::from_str::<LessonCompleted>(&payload) else { continue };
+                    if kabar_core::lesson::verifies_by_pass(&done) {
+                        let best = passed.entry(id).or_default();
+                        *best = (*best).max(done.score);
+                    }
+                }
+            }
+        }
+        let mut out: BTreeMap<String, Verification> =
+            passed.into_iter().map(|(id, score)| (id, Verification::PassedEarlier { score })).collect();
+        out.extend(checked.into_iter().filter(|(_, on)| *on).map(|(id, _)| (id, Verification::Checked)));
+        Ok(out)
+    }
+
+    /// Ids of the lessons in [`Store::verified_lessons`].
+    pub fn approved_lessons(&self) -> Result<BTreeSet<String>> {
+        Ok(self.verified_lessons()?.into_keys().collect())
+    }
+
+    /// The learner checked a lesson's content: a synced `verified` event,
+    /// and its review cards lose the unverified flag. Checking a lesson
+    /// that is already checked adds nothing.
+    pub fn verify_lesson(&mut self, lesson_id: &str) -> Result<()> {
+        if self.verified_lessons()?.get(lesson_id) != Some(&Verification::Checked) {
+            self.record_lesson_event(lesson_id, "verified", &LessonVerified::default())?;
+        }
+        self.set_lesson_cards_verified(lesson_id, true)
+    }
+
+    /// Takes the learner's check back. `lesson_events` is append-only, so
+    /// this is a correction: an `unverified` event that outranks the check
+    /// by HLC on every device. The cards go back to unverified unless an
+    /// old-rule pass still verifies the lesson.
+    pub fn unverify_lesson(&mut self, lesson_id: &str) -> Result<()> {
+        if self.verified_lessons()?.get(lesson_id) == Some(&Verification::Checked) {
+            self.record_lesson_event(lesson_id, "unverified", &LessonVerified::default())?;
+        }
+        let still = self.verified_lessons()?.contains_key(lesson_id);
+        self.set_lesson_cards_verified(lesson_id, still)
     }
 
     /// Appends a lesson event (`completed`, ...). Append-only: never updated.
@@ -1328,6 +1376,7 @@ mod tests {
                     mistakes: vec![],
                 })
                 .collect(),
+            pass_verifies: true,
         };
         store.record_lesson_event("j1.u01.l01", "completed", &done(100, 0)).unwrap();
         store.record_lesson_event("j1.u01.l02", "completed", &done(40, 3)).unwrap();
@@ -1335,6 +1384,73 @@ mod tests {
         // A later, better try approves it too.
         store.record_lesson_event("j1.u01.l02", "completed", &done(80, 1)).unwrap();
         assert_eq!(store.approved_lessons().unwrap().len(), 2);
+    }
+
+    /// Since 2026-10-29 a pass is progress, not a content check: only the
+    /// learner's tap checks a lesson, and taking it back restores the flag
+    /// on the lesson and its cards. Old passes keep counting.
+    #[test]
+    fn checking_content_is_separate_from_passing() {
+        use kabar_protocol::lesson::{ExerciseResult, LessonCompleted, Outcome};
+        let lesson =
+            kabar_core::lesson::parse_lesson(include_str!("../../../fixtures/lessons/bipa1.u01.l01.yaml"))
+                .unwrap();
+        let mut store = Store::open_in_memory().unwrap();
+        let pass = |pass_verifies| LessonCompleted {
+            score: 100,
+            xp: 0,
+            duration_ms: 0,
+            mistakes: vec![],
+            results: vec![ExerciseResult {
+                id: "e01".into(),
+                first: Outcome::Correct,
+                retry: None,
+                mistakes: vec![],
+            }],
+            pass_verifies,
+        };
+        store.record_lesson_event(&lesson.id, "completed", &pass(false)).unwrap();
+        store.add_lesson_cards(&lesson, false).unwrap();
+        assert!(store.verified_lessons().unwrap().is_empty(), "a new pass checks nothing");
+
+        store.verify_lesson(&lesson.id).unwrap();
+        store.verify_lesson(&lesson.id).unwrap();
+        assert_eq!(store.verified_lessons().unwrap().get(&lesson.id), Some(&Verification::Checked));
+        assert_eq!(
+            store.lesson_events(&lesson.id).unwrap().iter().filter(|e| e.kind == "verified").count(),
+            1
+        );
+        let mine = |s: &Store| -> Vec<bool> {
+            s.cards()
+                .unwrap()
+                .into_iter()
+                .filter(|c| c.source_ref.as_deref() == Some(lesson.id.as_str()))
+                .map(|c| c.verified)
+                .collect()
+        };
+        assert!(!mine(&store).is_empty() && mine(&store).iter().all(|v| *v));
+
+        store.unverify_lesson(&lesson.id).unwrap();
+        assert!(store.verified_lessons().unwrap().is_empty());
+        assert!(mine(&store).iter().all(|v| !*v));
+        // A correction, not a deletion: the log keeps both events.
+        let kinds: Vec<String> =
+            store.lesson_events(&lesson.id).unwrap().into_iter().map(|e| e.kind).collect();
+        assert_eq!(kinds, ["completed", "verified", "unverified"]);
+        store.unverify_lesson(&lesson.id).unwrap();
+        store.verify_lesson(&lesson.id).unwrap();
+        assert_eq!(store.verified_lessons().unwrap().get(&lesson.id), Some(&Verification::Checked));
+        assert_eq!(store.lesson_events(&lesson.id).unwrap().len(), 4, "no duplicate events");
+        store.unverify_lesson(&lesson.id).unwrap();
+
+        // A pass from before the split still counts, and says so.
+        store
+            .record_lesson_event("j1.u01.l01", "completed", &LessonCompleted { score: 85, ..pass(true) })
+            .unwrap();
+        assert_eq!(
+            store.verified_lessons().unwrap().get("j1.u01.l01"),
+            Some(&Verification::PassedEarlier { score: 85 })
+        );
     }
 
     #[test]
@@ -1347,6 +1463,7 @@ mod tests {
             duration_ms: 420_000,
             mistakes: vec!["sore".into()],
             results: vec![],
+            pass_verifies: false,
         };
         let a = store.record_lesson_event("bipa1.u01.l01", "completed", &done).unwrap();
         let b = store.record_lesson_event("bipa1.u01.l01", "completed", &done).unwrap();
@@ -1383,6 +1500,7 @@ mod tests {
             lesson_id: "bipa1.u01.l02".into(),
             step: LessonStep::Exercise { id: id.into(), retry: false },
             progress: None,
+            response: None,
         };
         store.save_position(&at("e03")).unwrap();
         store.save_position(&at("e04")).unwrap();

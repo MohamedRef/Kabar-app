@@ -19,6 +19,7 @@ use kabar_core::locale::{UiLanguage, format_number, format_percent, localize_dig
 use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::lesson::{
     Dialogue, Direction, Exercise, ExerciseKind, LessonContent, LessonPosition, LessonStep, Localized,
+    SavedResponse, Verification,
 };
 use kabar_protocol::srs::StudyLanguage;
 
@@ -167,6 +168,71 @@ pub fn draft_answer(ex: &Exercise, d: &Draft, tiles: &[String]) -> Option<Answer
             .then(|| Answer::Text(d.picked.iter().map(|&i| tiles[i].as_str()).collect::<Vec<_>>().join(" "))),
         K::Speaking { .. } => Some(Answer::Practiced),
         K::Translate { .. } | K::Listen { .. } | K::FillBlank { .. } | K::Dictation { .. } => typed(),
+    }
+}
+
+/// The stable key of option `i`: its target text, or the English meaning
+/// of a meaning choice (meaning options carry no target text).
+fn option_key(ex: &Exercise, i: usize) -> Option<String> {
+    match &ex.kind {
+        ExerciseKind::MultipleChoice { options, options_meaning, .. } if !options_meaning.is_empty() => {
+            options_meaning.get(i).map(|m| m.en.clone()).or_else(|| options.get(i).cloned())
+        }
+        ExerciseKind::MultipleChoice { options, .. }
+        | ExerciseKind::Listen { options, .. }
+        | ExerciseKind::FillBlank { options, .. } => options.get(i).cloned(),
+        _ => None,
+    }
+}
+
+/// The draft as a saved position keeps it: options, tiles and pairs by their
+/// text, so a reshuffle or a content edit can't point it at another one.
+pub(crate) fn save_draft(ex: &Exercise, d: &Draft, tiles: &[String]) -> SavedResponse {
+    let pair_word = |i: &usize| match &ex.kind {
+        ExerciseKind::MatchPairs { pairs } => pairs.get(*i).map(|p| p.text.clone()),
+        _ => None,
+    };
+    SavedResponse {
+        choice: d.choice.and_then(|i| option_key(ex, i)),
+        text: d.text.clone(),
+        tiles: d.picked.iter().filter_map(|&i| tiles.get(i).cloned()).collect(),
+        matched: d.matched.iter().filter_map(pair_word).collect(),
+        missed: d.missed.clone(),
+        checked: None,
+    }
+}
+
+/// A saved answer back on screen. Pieces the content no longer has are
+/// dropped rather than guessed.
+pub(crate) fn restore_draft(ex: &Exercise, r: &SavedResponse, tiles: &[String]) -> Draft {
+    let count = option_count(ex);
+    let choice =
+        r.choice.as_ref().and_then(|key| (0..count).find(|&i| option_key(ex, i).as_ref() == Some(key)));
+    // Tiles may repeat a word: each saved one takes the first free tile.
+    let mut picked: Vec<usize> = Vec::new();
+    for t in &r.tiles {
+        if let Some(i) = (0..tiles.len()).find(|&i| &tiles[i] == t && !picked.contains(&i)) {
+            picked.push(i);
+        }
+    }
+    let matched = match &ex.kind {
+        ExerciseKind::MatchPairs { pairs } => {
+            r.matched.iter().filter_map(|w| pairs.iter().position(|p| &p.text == w)).collect()
+        }
+        _ => Vec::new(),
+    };
+    Draft { choice, text: r.text.clone(), picked, matched, missed: r.missed.clone(), ..Draft::default() }
+}
+
+/// What the Check button waits for, said under it while it's disabled.
+fn check_hint(ex: &Exercise) -> L {
+    use ExerciseKind as K;
+    match &ex.kind {
+        K::MatchPairs { .. } => L::HintMatch,
+        K::BuildSentence { .. } => L::HintTiles,
+        K::MultipleChoice { .. } => L::HintChoose,
+        K::Listen { options, .. } | K::FillBlank { options, .. } if !options.is_empty() => L::HintChoose,
+        _ => L::HintType,
     }
 }
 
@@ -890,16 +956,37 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
     let settings = ui.settings.read().clone();
     let lang = settings.ui_language;
 
-    let mut player = use_signal(|| {
-        let saved = db.read().0.borrow().position().ok().flatten();
-        match saved {
-            Some(p) if !episode && p.lesson_id == lesson.id && p.step != LessonStep::Summary => {
-                Player::resume(lesson.clone(), &p)
+    // Where this lesson was left, with the answer that was on screen.
+    let saved = use_hook(|| {
+        let saved = if episode { None } else { db.read().0.borrow().position().ok().flatten() };
+        saved.filter(|p| p.lesson_id == lesson.id && p.step != LessonStep::Summary)
+    });
+    let mut player = use_signal(|| match &saved {
+        Some(p) => Player::resume(lesson.clone(), p),
+        None => Player::new(lesson.clone()),
+    });
+    // The answer comes back before Check or Continue is decided from it.
+    let draft = use_signal(|| {
+        let p = player.peek();
+        match (&saved, p.exercise()) {
+            (Some(s), Some(ex)) if s.step == p.position().step => {
+                s.response.as_ref().map(|r| restore_draft(ex, r, &p.tiles(ex))).unwrap_or_default()
             }
-            _ => Player::new(lesson.clone()),
+            _ => Draft::default(),
         }
     });
-    let draft = use_signal(Draft::default);
+    // Reopened on feedback whose answer wasn't kept (saved by an older
+    // build): say so, rather than show feedback for a blank task.
+    let mut answered_before = use_signal(|| {
+        let p = player.peek();
+        p.pending().is_some()
+            && *draft.peek() == Draft::default()
+            && !matches!(p.exercise().map(|e| &e.kind), Some(ExerciseKind::Speaking { .. }))
+    });
+    // The draft as last saved, and a counter that cancels a pending save
+    // of typed text.
+    let mut saved_draft = use_hook(|| CopyValue::new(draft.peek().clone()));
+    let mut typing = use_hook(|| CopyValue::new(0u32));
     let last = use_signal(now_ms);
     let revealed = use_signal(|| 1usize);
     let audio_missing = use_signal(|| false);
@@ -911,11 +998,12 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
     // The lesson notes pane on wide windows; the learner can tuck it away.
     let mut notes_open = use_signal(|| true);
 
-    // Save where we are on open (Lanjut) and play the first exercise's audio.
+    // Save where we are on open (Lanjut), with the restored answer so a
+    // second reopen still has it, and play the first exercise's audio.
     use_hook(move || {
         let p = player.peek();
         if !episode {
-            save(db, &p.position());
+            save_with(db, &p, &draft.peek());
             // Just in time: this unit's and the next unit's audio (SPEC §20).
             crate::packs::prefetch_for(&p.lesson().id);
         }
@@ -939,6 +1027,9 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
         let Some(pos) = pos else { return };
         let mut draft = draft;
         draft.set(Draft::default());
+        saved_draft.set(Draft::default());
+        typing += 1;
+        answered_before.set(false);
         let mut revealed = revealed;
         revealed.set(1);
         let p = player.peek();
@@ -951,8 +1042,9 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                     if let Err(e) = store.record_lesson_event(&p.lesson().id, "completed", &p.completed()) {
                         crate::diag::report!("saving the lesson result failed: {e}");
                     }
-                    // The new words join the review deck.
-                    let approved = kabar_core::lesson::approves(&p.completed());
+                    // The new words join the review deck, checked only if the
+                    // learner already checked this lesson's content.
+                    let approved = store.verified_lessons().is_ok_and(|v| v.contains_key(&p.lesson().id));
                     if !episode && let Err(e) = store.add_lesson_cards(p.lesson(), approved) {
                         crate::diag::report!("adding the lesson's words to review failed: {e}");
                     }
@@ -988,9 +1080,34 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
             crate::sounds::missed(ui);
         }
         if !episode {
-            save(db, &player.peek().position());
+            save_with(db, &player.peek(), &draft.peek());
         }
     };
+
+    // Every change to the answer is saved, so closing the lesson (or the
+    // app) and coming back shows it again. Typing is saved once it pauses.
+    use_effect(move || {
+        let d = draft.read().clone();
+        if episode || d == *saved_draft.peek() {
+            return;
+        }
+        let typed_only = Draft { text: d.text.clone(), ..saved_draft.peek().clone() } == d;
+        saved_draft.set(d);
+        typing += 1;
+        if !typed_only {
+            save_with(db, &player.peek(), &draft.peek());
+            return;
+        }
+        let ticket = *typing.peek();
+        spawn(async move {
+            tokio::time::sleep(std::time::Duration::from_millis(700)).await;
+            if typing.try_peek().is_ok_and(|t| *t == ticket)
+                && let (Ok(p), Ok(d)) = (player.try_peek(), draft.try_peek())
+            {
+                save_with(db, &p, &d);
+            }
+        });
+    });
 
     // The one primary action: Enter and the big button both run it.
     let mut primary = move || {
@@ -1110,11 +1227,23 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
         );
     });
 
+    // Leaving mid-answer keeps what was typed even if it hasn't paused yet.
+    let mut leave = move || {
+        let unsaved =
+            matches!(player.peek().step(), Step::Exercise { .. }) && *draft.peek() != *saved_draft.peek();
+        if !episode && unsaved {
+            typing += 1;
+            save_with(db, &player.peek(), &draft.peek());
+        }
+        close();
+    };
+
     let p = player.read();
     let l = p.lesson();
     let target = target_tag(&l.language);
     let step = p.step();
     let pct = (p.fraction() * 100.0).round();
+    let (count_n, count_total) = p.counter();
     let pending = p.pending().cloned();
     let exercise = p.exercise().cloned();
     let can_check =
@@ -1158,6 +1287,16 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
     let wide = *ui.width.read() >= kabar_core::layout::WidthClass::Expanded;
     let marks = if wide { exercise_marks(&p) } else { Vec::new() };
     let answering = matches!(step, Step::Exercise { .. }) && pending.is_none();
+    let hint = match (&exercise, answering && !enabled) {
+        (Some(ex), true) => Some(lt(lang, check_hint(ex))),
+        _ => None,
+    };
+    let passed = step == Step::Summary && kabar_core::lesson::passes(&p.completed());
+    let eastern = settings.eastern_digits;
+    let counter = localize_digits(&format!("{count_n} / {count_total}"), lang, eastern);
+    let counter_label = lt(lang, L::StepOf)
+        .replace("{n}", &format_number(count_n as u64, lang, eastern))
+        .replace("{total}", &format_number(count_total as u64, lang, eastern));
     drop(p);
 
     let with_notes = wide && *notes_open.read();
@@ -1170,9 +1309,11 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                     "data-back": "true",
                     aria_label: lt(lang, L::Close),
                     title: lt(lang, L::Close),
-                    onclick: move |_| close(),
+                    onclick: move |_| leave(),
                     "×"
                 }
+                // Isolated left to right so "3 / 12" never reads "12 / 3".
+                span { class: "lp-count", dir: "ltr", aria_label: "{counter_label}", "{counter}" }
                 div {
                     class: "lp-progress",
                     role: "progressbar",
@@ -1187,6 +1328,9 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
             }
             div { class: "lp-body",
                 div { class: "lp-col", key: "{step:?}",
+                    if *answered_before.read() {
+                        p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::AnsweredBefore)}" }
+                    }
                     if show_voice_note(*voice_note_at.read(), *voice_skips.read(), step) {
                         p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
                     }
@@ -1219,7 +1363,7 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                             }
                         },
                         Step::Summary => rsx! {
-                            SummaryView { lesson: lesson.clone(), summary_score: summary.score, summary_xp: summary.xp, duration_ms: summary.duration_ms, mistakes: summary.mistakes.clone(), perfect: summary.graded > 0 && summary.correct == summary.graded }
+                            SummaryView { lesson: lesson.clone(), passed, check_content: !episode, summary_score: summary.score, summary_xp: summary.xp, duration_ms: summary.duration_ms, mistakes: summary.mistakes.clone(), perfect: summary.graded > 0 && summary.correct == summary.graded }
                         },
                     }
                 }
@@ -1238,10 +1382,13 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                                     chime(ui);
                                 }
                                 if !episode {
-                                    save(db, &player.peek().position());
+                                    save_with(db, &player.peek(), &draft.peek());
                                 }
                             },
                         }
+                    }
+                    if let Some(h) = hint {
+                        p { class: "lp-hint", id: "lp-hint", "{h}" }
                     }
                     div { class: "lp-buttons",
                         if matches!(step, Step::Slide(i) if i > 0) {
@@ -1257,6 +1404,7 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                         button {
                             class: "primary lp-primary",
                             disabled: !enabled,
+                            aria_describedby: if hint.is_some() { "lp-hint" } else { "" },
                             onclick: move |_| primary(),
                             "{label}"
                         }
@@ -1296,6 +1444,18 @@ fn exercise_marks(p: &Player) -> Vec<notes::Mark> {
             if current == Some(i) { Mark::Current } else { done.unwrap_or(Mark::Todo) }
         })
         .collect()
+}
+
+/// Saves the position with the answer on screen: what's picked or typed,
+/// and once checked, its grade.
+fn save_with(db: CopyValue<Db>, p: &Player, d: &Draft) {
+    let mut pos = p.position();
+    if let Some(ex) = p.exercise() {
+        let checked = pos.response.take().and_then(|r| r.checked);
+        let r = SavedResponse { checked, ..save_draft(ex, d, &p.tiles(ex)) };
+        pos.response = (!r.is_empty()).then_some(r);
+    }
+    save(db, &pos);
 }
 
 fn save(db: CopyValue<Db>, pos: &LessonPosition) {
@@ -1536,6 +1696,8 @@ fn duration_text(ms: u64, lang: UiLanguage, eastern: bool) -> String {
 #[component]
 fn SummaryView(
     lesson: LessonContent,
+    passed: bool,
+    check_content: bool,
     summary_score: u32,
     summary_xp: u32,
     duration_ms: u64,
@@ -1559,6 +1721,14 @@ fn SummaryView(
             }
             h2 { class: "lp-done reveal", "{lt(lang, L::Done)}" }
             p { class: "lp-lesson-title reveal", bdi { lang: target, dir: "ltr", "{lesson.title}" } }
+            // Finishing (and passing) is the learner's progress; whether the
+            // content is right is asked separately below.
+            p { class: "lp-finished reveal",
+                span { class: "pill ok", "✓ {lt(lang, L::Finished)}" }
+                if passed {
+                    span { class: "pill ok", "{lt(lang, L::Passed)}" }
+                }
+            }
             if perfect {
                 p { class: "ok reveal", "{lt(lang, L::Perfect)}" }
             }
@@ -1566,6 +1736,9 @@ fn SummaryView(
                 div { dt { "{lt(lang, L::Score)}" } dd { bdi { "{format_percent(u64::from(summary_score), lang, eastern)}" } } }
                 div { dt { "{lt(lang, L::Xp)}" } dd { bdi { "+{num(summary_xp)}" } } }
                 div { dt { "{lt(lang, L::Time)}" } dd { bdi { "{duration_text(duration_ms, lang, eastern)}" } } }
+            }
+            if check_content && !lesson.review.verified {
+                ContentCheck { lesson_id: lesson.id.clone() }
             }
             if !lesson.new_words.is_empty() {
                 section { class: "card reveal d2",
@@ -1625,6 +1798,71 @@ fn SummaryView(
                 }
             }
         }
+    }
+}
+
+/// The learner's check of the lesson's content, apart from their score:
+/// one tap marks it right (its "not reviewed" flag and its cards' come off),
+/// and the tap can be taken back. A lesson counted as checked under the old
+/// pass rule says so.
+#[component]
+fn ContentCheck(lesson_id: String) -> Element {
+    let ui = use_context::<Ui>();
+    let db = use_context::<Db>();
+    let lang = ui.settings.read().ui_language;
+    let eastern = ui.settings.read().eastern_digits;
+    let read = {
+        let (db, id) = (db.clone(), lesson_id.clone());
+        move || {
+            db.0.borrow().verified_lessons().map(|v| v.get(&id).copied()).unwrap_or_else(|e| {
+                crate::diag::report!("reading checked lessons failed: {e}");
+                None
+            })
+        }
+    };
+    let mut state = use_signal(read.clone());
+    let set = {
+        let (db, id) = (db.clone(), lesson_id.clone());
+        move |ok: bool| {
+            let mut store = db.0.borrow_mut();
+            let done = if ok { store.verify_lesson(&id) } else { store.unverify_lesson(&id) };
+            if let Err(e) = done {
+                crate::diag::report!("saving the content check failed: {e}");
+            }
+            drop(store);
+            state.set(read());
+        }
+    };
+    match *state.read() {
+        None => {
+            let mut set = set.clone();
+            rsx! {
+                section {
+                    class: "card card-action lp-content reveal d2",
+                    onclick: move |_| set(true),
+                    h3 { "{lt(lang, L::ContentTitle)}" }
+                    p { class: "muted lp-small", "{lt(lang, L::ContentHint)}" }
+                    button { class: "tonal lp-content-ok", "{lt(lang, L::ContentOk)}" }
+                }
+            }
+        }
+        Some(Verification::Checked) => {
+            let mut set = set.clone();
+            rsx! {
+                div { class: "lp-content-done reveal d2", role: "status",
+                    span { "✓ {lt(lang, L::ContentChecked)}" }
+                    button { class: "ghost lp-content-undo", onclick: move |_| set(false), "{lt(lang, L::ContentUndo)}" }
+                }
+            }
+        }
+        Some(Verification::PassedEarlier { score }) => rsx! {
+            div { class: "lp-content-done reveal d2", role: "status",
+                span {
+                    "✓ "
+                    {lt(lang, L::ContentPassedEarlier).replace("{score}", &format_percent(u64::from(score), lang, eastern))}
+                }
+            }
+        },
     }
 }
 
@@ -2529,5 +2767,62 @@ mod tests {
         );
         assert_eq!(draft_answer(&ex("e11"), &d, &[]), Some(Answer::Practiced));
         assert_eq!(draft_answer(&ex("e02"), &d, &[]), None, "match pairs check themselves");
+    }
+
+    /// Every kind's answer survives a save and a reopen, by content: the
+    /// same option, tiles (repeats included), pairs and text come back.
+    #[test]
+    fn drafts_survive_saving_for_every_kind() {
+        let lesson = parse_lesson(FIXTURE).unwrap();
+        let player = Player::new(lesson.clone());
+        let mut kinds = std::collections::HashSet::new();
+        for ex in &lesson.exercises {
+            let tiles = player.tiles(ex);
+            let d = match &ex.kind {
+                ExerciseKind::MatchPairs { .. } => {
+                    Draft { matched: vec![1, 0], missed: vec!["pagi".into()], ..Draft::default() }
+                }
+                ExerciseKind::BuildSentence { .. } => {
+                    Draft { picked: vec![tiles.len() - 1, 0], ..Draft::default() }
+                }
+                _ if option_count(ex) > 0 => Draft { choice: Some(option_count(ex) - 1), ..Draft::default() },
+                _ => Draft { text: "Selamat sore".into(), ..Draft::default() },
+            };
+            kinds.insert(std::mem::discriminant(&ex.kind));
+            let saved = save_draft(ex, &d, &tiles);
+            let json = serde_json::to_string(&saved).unwrap();
+            let back = restore_draft(ex, &serde_json::from_str(&json).unwrap(), &tiles);
+            assert_eq!(back, d, "{}", ex.id);
+        }
+        assert!(kinds.len() >= 6, "the fixture covers {} kinds", kinds.len());
+        // Repeated tiles each find their own slot; unknown pieces drop out.
+        let ex =
+            lesson.exercises.iter().find(|e| matches!(e.kind, ExerciseKind::BuildSentence { .. })).unwrap();
+        let tiles = vec!["a".to_string(), "b".into(), "a".into()];
+        let r = SavedResponse { tiles: vec!["a".into(), "a".into(), "zzz".into()], ..Default::default() };
+        assert_eq!(restore_draft(ex, &r, &tiles).picked, vec![0, 2]);
+    }
+
+    /// A choice is kept by its text, so a reshuffled retry restores the
+    /// same option, not the same slot.
+    #[test]
+    fn a_choice_is_kept_by_its_text() {
+        let lesson = parse_lesson(FIXTURE).unwrap();
+        let ex =
+            lesson.exercises.iter().find(|e| matches!(e.kind, ExerciseKind::MultipleChoice { .. })).unwrap();
+        let saved = save_draft(ex, &Draft { choice: Some(0), ..Draft::default() }, &[]);
+        let view = kabar_core::lesson::retry_options(ex, 7).unwrap();
+        let back = restore_draft(&view, &saved, &[]).choice.unwrap();
+        assert_eq!(option_key(&view, back), option_key(ex, 0));
+    }
+
+    #[test]
+    fn a_disabled_check_says_what_it_waits_for() {
+        let lesson = parse_lesson(FIXTURE).unwrap();
+        for ex in &lesson.exercises {
+            for lang in [UiLanguage::ArEg, UiLanguage::Ar, UiLanguage::En] {
+                assert!(!lt(lang, check_hint(ex)).is_empty());
+            }
+        }
     }
 }
