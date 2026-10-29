@@ -33,6 +33,10 @@ const TAPPABLE: &[&str] = &[
     "ch-persona",
     "ch-scene",
     "ch-context",
+    // Today and Journey (redesign 2026-10-29).
+    "nur-card",
+    "now-card",
+    "now-milestone",
 ];
 
 /// Elements that can be pressed. A `li.lx-card.locked` is a broken episode

@@ -3,9 +3,12 @@
 
 use dioxus::prelude::*;
 use kabar_core::coach::voice::Line;
-use kabar_core::coach::{report, rewards};
-use kabar_protocol::coach::{ActivityEvent, ActivityKind, CoachProfile, LocalDate, Skill, WeeklyReport};
+use kabar_core::coach::{history, plan, report, rewards};
+use kabar_protocol::coach::{
+    ActivityEvent, ActivityKind, CoachProfile, LocalDate, ReminderStyle, Skill, WeeklyReport,
+};
 
+use super::text::{T, tt};
 use super::widgets::{Nur, Stat};
 use super::{Coach, labels, logic, say};
 use crate::i18n::Msg;
@@ -47,14 +50,90 @@ pub fn CoachScreen() -> Element {
     };
     let today = coach.today();
     rsx! {
+        style { {super::today::COACH_CSS.text()} }
         div { class: "coach-grid",
             div {
+                NextStep { profile: profile.clone(), today }
                 ReportCard { profile, today }
                 Achievements { today }
             }
             div {
                 Warung { today }
                 JournalLink {}
+            }
+        }
+    }
+}
+
+/// Kak Nur's brief, actionable word from today's real plan: what to do
+/// next and one button that opens it, then the plan's settings and the
+/// (opt-in) reminders, each opening its section of Settings.
+#[component]
+fn NextStep(profile: CoachProfile, today: LocalDate) -> Element {
+    let ui = use_context::<Ui>();
+    let db = use_context::<Db>();
+    let coach = use_context::<Coach>();
+    let settings = use_context::<crate::settings::SettingsNav>();
+    let lang = ui.lang();
+    let _rev = coach.plan_rev.read();
+    let events = coach.events.read().clone();
+    let plan = super::plan_for(&db, &profile, &events, today);
+    let progress = plan::progress(&plan, &history::day(&events, today));
+    let next = plan.items.iter().zip(&progress.done).find(|(_, d)| !**d).map(|(i, _)| i.clone());
+    let minutes = ui.num(plan.size.minutes());
+    let (count, topic) = labels::plan_voice_args(&ui, &plan.items);
+    let args = [
+        ("name", profile.name.as_str()),
+        ("minutes", minutes.as_str()),
+        ("count", count.as_str()),
+        ("topic", topic.as_str()),
+    ];
+    let line = match (&next, plan.comeback) {
+        (None, _) => Line::PlanAllDone,
+        (Some(_), true) => Line::PlanComeback,
+        (Some(_), false) => Line::PlanMorning,
+    };
+    let reminders_on = profile.reminder_style != ReminderStyle::Off;
+    rsx! {
+        section { class: "card coach-next", aria_labelledby: "coach-next-title",
+            h2 { id: "coach-next-title",
+                if next.is_some() { "{tt(lang, T::CoachNextTitle)}" } else { "{tt(lang, T::CoachDoneTitle)}" }
+            }
+            Nur { text: say(&ui, line, today, &args) }
+            if let Some(item) = next {
+                button {
+                    class: "primary wide",
+                    onclick: {
+                        let db = db.clone();
+                        let kind = item.kind.clone();
+                        move |_| super::today::start_item(ui, &db, coach, &kind)
+                    },
+                    "{labels::plan_item_text(&ui, &item.kind)} · {labels::minutes(&ui, u32::from(item.minutes))}"
+                }
+            }
+            div { class: "card grouped coach-links",
+                button {
+                    class: "activity-row",
+                    onclick: move |_| settings.show(Some(crate::settings::Section::Coach)),
+                    span { class: "row-icon", aria_hidden: "true", {icons::nav(Screen::Coach)} }
+                    span { class: "row-copy",
+                        strong { "{tt(lang, T::EditPlan)}" }
+                        small { "{tt(lang, T::EditPlanHint)}" }
+                    }
+                    span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
+                }
+                button {
+                    class: "activity-row",
+                    onclick: move |_| settings.show(Some(crate::settings::Section::Coach)),
+                    span { class: "row-icon gold", aria_hidden: "true", {icons::lamp()} }
+                    span { class: "row-copy",
+                        strong { "{tt(lang, T::Reminders)}" }
+                        small {
+                            if reminders_on { "{tt(lang, T::RemindersOn)}" } else { "{tt(lang, T::RemindersOff)}" }
+                        }
+                    }
+                    span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
+                }
             }
         }
     }

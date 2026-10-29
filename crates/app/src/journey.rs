@@ -24,6 +24,10 @@ use crate::{Db, Ui};
 use kabar_protocol::coach::CoachProfile;
 use kabar_protocol::lesson::Souvenir;
 
+mod text;
+
+use text::{T, tt};
+
 const JOURNEY_CSS: Css = css!("assets/journey.css");
 const PAN_ZOOM_JS: &str = include_str!("../assets/journey.js");
 const INDONESIA_SVG: &str = include_str!("../assets/journey/indonesia.svg");
@@ -191,7 +195,11 @@ pub fn JourneyScreen() -> Element {
     });
     let coach = use_context::<crate::coach::Coach>();
     let start = use_hook(|| start_level(&db, coach.profile.peek().as_ref()));
-    let mut route = use_signal(|| Route::Indonesian);
+    // Opens on the learner's own route (Javanese when that is their only focus).
+    let mut route = use_signal(|| match coach.profile.peek().as_ref().map(|p| p.focus) {
+        Some(kabar_protocol::coach::LanguageFocus::Javanese) => Route::Javanese,
+        _ => Route::Indonesian,
+    });
     let mut pane = use_signal(|| if SUITCASE_AT.peek().is_some() { Pane::Suitcase } else { Pane::Route });
     // The stop picked on each route lives here, above the phone list and the
     // map, so it survives a window resize or a trip to the suitcase
@@ -280,6 +288,9 @@ pub fn JourneyScreen() -> Element {
                     }
                 }
             }
+            if pane() != Pane::Suitcase {
+                {now_card(&ui, &j, &j.progress())}
+            }
             if pane() == Pane::Suitcase {
                 Suitcase { completed: completed.clone(), approved: approved.clone() }
             } else if compact && pane() == Pane::Route {
@@ -299,13 +310,13 @@ fn RouteList(j: Journey, picked: Signal<Option<Option<String>>>) -> Element {
     let cur = j.curriculum();
     let progress = j.progress();
     let elsewhere = j.done_elsewhere();
-    // Bring the stop picked on the map (before a resize) or else the current
-    // lesson into view once, gently.
-    let (target, block) = match picked.peek().clone().flatten() {
-        Some(level) => (format!("rl-{level}"), "start"),
-        None => ("journey-current".to_string(), "center"),
-    };
+    // Bring the stop picked on the map (before a resize) into view once,
+    // gently. Otherwise the list opens at the top, under the current-unit
+    // card, which already leads to the next lesson.
+    let target = picked.peek().clone().flatten().map(|level| format!("rl-{level}"));
+    let block = "start";
     use_effect(move || {
+        let Some(target) = target.clone() else { return };
         document::eval(&format!(
             r#"const el = document.getElementById({target:?});
             if (el) {{
@@ -344,6 +355,95 @@ fn continue_bar(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
                 span { class: "continue-sub",
                     "{ui.t(Msg::JourneyContinue)}: "
                     bdi { lang: j.route.target_lang(), dir: "ltr", "{title}" }
+                }
+            }
+        }
+    }
+}
+
+/// Where the learner is: the unit holding the next lesson, its city, what
+/// the next lesson lets them do, how far through the unit they are, and the
+/// nearest milestone (the stop's souvenir, or the level test once every
+/// stop is done). The card opens the next lesson; the milestone row opens
+/// the lesson that gives the souvenir, or the test.
+fn now_card(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
+    let ui = *ui;
+    let lang = ui.lang();
+    let tl = j.route.target_lang();
+    let Some(current) = progress.current().map(str::to_string) else { return rsx! {} };
+    let cur = j.curriculum();
+    let Some((level, unit)) = cur
+        .levels
+        .iter()
+        .find_map(|l| l.units.iter().find(|u| u.lessons.iter().any(|x| x.id == current)).map(|u| (l, u)))
+    else {
+        return rsx! {};
+    };
+    let (done, total) = progress.unit_counts(unit);
+    let pct = (done * 100).checked_div(total).unwrap_or(0);
+    let lesson = unit.lessons.iter().find(|l| l.id == current);
+    let can_do = crate::lesson::lesson_content(&current)
+        .and_then(|c| kabar_core::lesson::parse_lesson(&c).ok())
+        .map(|l| kabar_core::lesson::pick(&l.can_do, lang).to_string())
+        .filter(|c| !c.is_empty());
+    let (done_s, total_s) = (ui.num(done as u64), ui.num(total as u64));
+    // The nearest milestone: this stop's souvenir, else the level test when
+    // this is the level's last unfinished stop.
+    let last_stop = level.units.iter().filter(|u| !progress.unit_done(u)).count() <= 1;
+    let milestone = match (&unit.culture, &level.level_test) {
+        (Some(c), _) => souvenir_lesson(&unit.id).map(|id| {
+            let name = local_souvenir(&unit.id, lang).map_or(c.souvenir.clone(), |(t, _)| t);
+            (tt(lang, T::SouvenirHere), name, id)
+        }),
+        (None, Some(test)) if last_stop => {
+            Some((tt(lang, T::LevelTestNext), level.code.clone(), test.id.clone()))
+        }
+        _ => None,
+    };
+    let open = current.clone();
+    rsx! {
+        section { class: "journey-now", aria_label: "{tt(lang, T::NowStop)}",
+            button {
+                class: "now-card tap",
+                onclick: move |_| ui.open_lesson(open.clone()),
+                span { class: "now-eyebrow",
+                    span { class: "status-chip latin", bdi { "{level.code}" } }
+                    " {tt(lang, T::NowStop)}"
+                }
+                span { class: "now-city", bdi { lang: tl, dir: "ltr", "{unit.stop}" } }
+                span { class: "now-unit", "{local(lang, &unit.title)}" }
+                if let Some(l) = lesson {
+                    span { class: "now-lesson",
+                        "{tt(lang, T::Continue)}: "
+                        bdi { lang: tl, dir: "ltr", "{l.title}" }
+                    }
+                }
+                if let Some(c) = can_do {
+                    span { class: "now-goal muted", "{tt(lang, T::Goal)} " "{c}" }
+                }
+                span { class: "now-progress",
+                    span {
+                        class: "progress-line",
+                        role: "progressbar",
+                        aria_valuemin: "0",
+                        aria_valuemax: "{total}",
+                        aria_valuenow: "{done}",
+                        aria_label: "{unit.stop}",
+                        span { class: "fill", style: "inline-size: {pct}%" }
+                    }
+                    span { class: "count", "{text::lessons_of(lang, &done_s, &total_s, total)}" }
+                }
+            }
+            if let Some((label, name, id)) = milestone {
+                button {
+                    class: "activity-row now-milestone",
+                    onclick: move |_| ui.open_lesson(id.clone()),
+                    span { class: "row-icon gold", aria_hidden: "true", {icon_suitcase()} }
+                    span { class: "row-copy",
+                        small { "{label}" }
+                        strong { bdi { lang: tl, dir: "ltr", "{name}" } }
+                    }
+                    span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
                 }
             }
         }
@@ -507,19 +607,21 @@ fn lessons(ui: &Ui, tl: &'static str, unit: &Unit, progress: &Progress, mark_cur
             for lesson in unit.lessons.iter() {
                 {
                     let state = progress.lesson_state(&lesson.id);
-                    let (state_attr, state_msg) = match state {
-                        LessonState::Done => ("done", Some(Msg::JourneyDone)),
-                        LessonState::Current => ("current", Some(Msg::JourneyUpNext)),
-                        LessonState::Open => ("open", None),
+                    let state_attr = match state {
+                        LessonState::Done => "done",
+                        LessonState::Current => "current",
+                        LessonState::Open => "open",
+                    };
+                    // Done / Continue / Upcoming, in words (nothing is locked).
+                    let state_text = match state {
+                        LessonState::Done => ui.t(Msg::JourneyDone),
+                        LessonState::Current => tt(ui.lang(), T::Continue),
+                        LessonState::Open => tt(ui.lang(), T::Upcoming),
                     };
                     let id = lesson.id.clone();
                     let kind = ui.t(kind_label(lesson.kind));
                     let minutes = crate::coach::labels::minutes(&ui, lesson.minutes);
-                    let label = format!(
-                        "{}, {kind}, {minutes}{}",
-                        lesson.title,
-                        state_msg.map(|m| format!(", {}", ui.t(m))).unwrap_or_default()
-                    );
+                    let label = format!("{}, {kind}, {minutes}, {state_text}", lesson.title);
                     rsx! {
                         li { key: "{lesson.id}",
                             button {
@@ -536,11 +638,8 @@ fn lessons(ui: &Ui, tl: &'static str, unit: &Unit, progress: &Progress, mark_cur
                                 span { class: "lesson-text",
                                     bdi { class: "lesson-title", lang: tl, dir: "ltr", "{lesson.title}" }
                                     span { class: "lesson-meta muted",
-                                        "{kind} · {minutes}"
-                                        if let Some(m) = state_msg {
-                                            " · "
-                                            span { class: "lesson-state", "{ui.t(m)}" }
-                                        }
+                                        "{kind} · {minutes} · "
+                                        span { class: "lesson-state", "{state_text}" }
                                     }
                                 }
                             }
@@ -859,6 +958,12 @@ pub fn unit_title(lang: UiLanguage, unit_id: &str) -> Option<String> {
         Some(target) if target != local => format!("{local} · \u{2068}{target}\u{2069}"),
         _ => local.to_string(),
     })
+}
+
+/// A lesson's title in its own language (`None` for an unknown id).
+pub fn lesson_title(lesson_id: &str) -> Option<String> {
+    let routes = ROUTES.as_ref().ok()?;
+    routes.id.lessons().chain(routes.jv.lessons()).find(|l| l.id == lesson_id).map(|l| l.title.clone())
 }
 
 /// The lesson a plan's "Start" opens: the unit's first unfinished lesson.

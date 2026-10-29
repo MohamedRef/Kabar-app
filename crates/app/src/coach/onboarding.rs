@@ -4,8 +4,9 @@
 use dioxus::prelude::*;
 use kabar_core::coach::onboarding::{self, ProfileError, Step};
 use kabar_core::coach::voice::Line;
-use kabar_protocol::coach::{CoachProfile, LanguageFocus, LocalDate, Target};
+use kabar_protocol::coach::{CoachProfile, LanguageFocus, LocalDate, ReminderStyle, Target};
 
+use super::text::{T, tt};
 use super::widgets::{Nur, QuietHoursEditor, SizePicker, StylePicker, TimesEditor};
 use super::{Coach, labels, say};
 use crate::i18n::Msg;
@@ -65,8 +66,36 @@ pub fn Onboarding() -> Element {
     let index = Step::ALL.iter().position(|s| *s == current).unwrap_or(0);
 
     let suggest = move |p: &CoachProfile| onboarding::suggest_target(p.start, p.daily_size, today);
+    // Saves the profile through the core's validation; on an error, goes
+    // back to the step that needs fixing. `early`: the fast start, taken
+    // before the reminders step, so reminders stay off until the learner
+    // turns them on (Kak Nur's page and Settings › Kak Nur).
+    let finish = move |db: &Db, early: bool| {
+        let mut profile = draft();
+        profile.name = profile.name.trim().to_string();
+        profile.utc_offset_min = coach.offset();
+        if !target_touched() && profile.target.is_some() {
+            profile.target = Some(suggest(&profile));
+        }
+        if early {
+            profile.reminder_style = ReminderStyle::Off;
+        }
+        match onboarding::finish(profile, today) {
+            Ok(profile) => coach.save_profile(db, profile),
+            Err(e) => {
+                let (s, msg) = error_step(&e);
+                let (mut error, mut step) = (error, step);
+                error.set(Some(msg));
+                step.set(s);
+            }
+        }
+    };
+    // The fast start: once the language and the starting point are chosen,
+    // the rest (minutes, target, times, reminders) can wait.
+    let can_start_early = matches!(current, Step::Minutes | Step::Target | Step::Times);
 
     rsx! {
+        style { {super::today::COACH_CSS.text()} }
         div { class: "onboarding",
             div { class: "card",
                 ol { class: "dots", aria_label: "{ui.t(Msg::OnbProgress)}",
@@ -97,7 +126,7 @@ pub fn Onboarding() -> Element {
                     }
                 }
                 if let Some(msg) = error() {
-                    p { class: "error", role: "alert", "{ui.t(msg)}" }
+                    p { class: "field-error", role: "alert", "{ui.t(msg)}" }
                 }
                 div { class: "row step-nav",
                     if current != Step::Name {
@@ -110,26 +139,10 @@ pub fn Onboarding() -> Element {
                         }
                     }
                     if current == Step::Done {
-                        button {
-                            class: "primary",
-                            onclick: move |_| {
-                                let mut profile = draft();
-                                profile.name = profile.name.trim().to_string();
-                                profile.utc_offset_min = coach.offset();
-                                if !target_touched() && profile.target.is_some() {
-                                    profile.target = Some(suggest(&profile));
-                                }
-                                match onboarding::finish(profile, today) {
-                                    Ok(profile) => coach.save_profile(&db, profile),
-                                    Err(e) => {
-                                        let (s, msg) = error_step(&e);
-                                        error.set(Some(msg));
-                                        step.set(s);
-                                    }
-                                }
-                            },
-                            "{ui.t(Msg::OnbFinish)}"
-                        }
+                        button { class: "primary", onclick: {
+                                let db = db.clone();
+                                move |_| finish(&db, false)
+                            }, "{ui.t(Msg::OnbFinish)}" }
                     } else {
                         button {
                             class: "primary",
@@ -146,6 +159,13 @@ pub fn Onboarding() -> Element {
                             "{ui.t(Msg::Next)}"
                         }
                     }
+                }
+                if can_start_early {
+                    button { class: "text-btn onb-early", onclick: {
+                            let db = db.clone();
+                            move |_| finish(&db, true)
+                        }, "{tt(ui.lang(), T::StartNow)}" }
+                    p { class: "muted small onb-early-hint", "{tt(ui.lang(), T::StartNowHint)}" }
                 }
             }
         }
@@ -217,11 +237,11 @@ fn FocusStep(draft: Signal<CoachProfile>) -> Element {
     let ui = use_context::<Ui>();
     let current = draft.read().focus;
     rsx! {
-        div { class: "choices", role: "group",
+        div { class: "answers", role: "group",
             for f in labels::FOCUSES {
                 button {
                     key: "{f:?}",
-                    class: "choice",
+                    class: "answer",
                     aria_pressed: if f == current { "true" } else { "false" },
                     onclick: move |_| draft.write().focus = f,
                     match labels::focus(f) {
@@ -310,11 +330,11 @@ fn StartStep(draft: Signal<CoachProfile>) -> Element {
     let ui = use_context::<Ui>();
     let current = draft.read().start;
     rsx! {
-        div { class: "choices", role: "group",
+        div { class: "answers", role: "group",
             for s in labels::STARTS {
                 button {
                     key: "{s:?}",
-                    class: "choice",
+                    class: "answer",
                     aria_pressed: if s == current { "true" } else { "false" },
                     onclick: move |_| draft.write().start = s,
                     strong { "{ui.t(labels::starting_point(s).0)}" }
