@@ -16,7 +16,7 @@ use dioxus::prelude::*;
 use kabar_core::ai::FriendlyReason;
 use kabar_core::ai::tasks::{RoleplayTurn, TranslateText};
 use kabar_core::chat::{
-    Scenario, chat_level, is_javanese, persona_voice, registers, replay, request, scenarios,
+    Scenario, chat_level, is_javanese, persona_voice, registers, replay, reply_idea, request, scenarios,
 };
 use kabar_core::lang::Lang as CoreLang;
 use kabar_core::lesson::pick;
@@ -43,7 +43,7 @@ use crate::reader::translate::in_voice;
 use crate::store::now_ms;
 use crate::studio::pad::{InkAnswer, InkPad};
 use crate::teach::Ai;
-use crate::{Db, Ui};
+use crate::{Db, Screen, Ui, icons};
 
 const CHAT_CSS: Css = css!("assets/chat.css");
 
@@ -204,6 +204,7 @@ pub fn ChatScreen() -> Element {
                 id: cid.clone(),
                 on_back: move |_| view.set(View::Home),
                 on_replay: move |id| view.set(View::Replay(id)),
+                on_persona: move |id| view.set(View::Scenes(id)),
             }
         },
         View::Replay(cid) => {
@@ -282,42 +283,14 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
         .unwrap_or(LanguageFocus::Both);
 
     rsx! {
-        h2 { "{ui.t(crate::i18n::Msg::NavChat)}" }
-        p { class: "muted", "{tt(lang, T::Intro)}" }
-        ul { class: "ch-personas",
-            for entry in personas_for(focus) {
-                match entry {
-                    Ok(p) => {
-                        let id = p.id.clone();
-                        let jv = is_javanese(p);
-                        // The levels the persona is written for, so the
-                        // learner can find the partner for their unit.
-                        let bands = p.style.levels.iter().map(|b| level_name(&b.level)).collect::<Vec<_>>().join(" · ");
-                        rsx! {
-                            li { key: "{p.id}",
-                                button { class: "card ch-persona", onclick: move |_| on_persona.call(id.clone()),
-                                    Avatar { name: p.name.clone(), javanese: jv }
-                                    span { class: "ch-who",
-                                        strong { bdi { class: "latin", "{p.name}" } }
-                                        span { class: "pill small", if jv { "{tt(lang, T::Javanese)}" } else { "{tt(lang, T::Indonesian)}" } }
-                                        span { class: "pill small latin", dir: "ltr", "{bands}" }
-                                        span { class: "muted small", "{pick(&p.role, lang)}" }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    Err((id, e)) => rsx! {
-                        li { key: "{id}", class: "card",
-                            p { "{tt(lang, T::Broken)}" }
-                            p { class: "muted small latin", dir: "ltr", "{id}: {e}" }
-                        }
-                    },
-                }
-            }
+        header { class: "ch-page-head",
+            h2 { "{ui.t(crate::i18n::Msg::NavChat)}" }
+            p { class: "muted", "{tt(lang, T::Intro)}" }
         }
+        // Where the learner left off comes first: picking up a chat is the
+        // usual next step once there is one.
         if !chats.is_empty() {
-            h3 { "{tt(lang, T::YourChats)}" }
+            h3 { class: "ch-section", "{tt(lang, T::YourChats)}" }
             ul { class: "ch-history",
                 for c in chats {
                     if let Some(p) = persona(&c.persona) {
@@ -333,27 +306,69 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
                                     button { class: "ch-open", onclick: move |_| on_chat.call(open_id.clone()),
                                         Avatar { name: p.name.clone(), javanese: is_javanese(p) }
                                         span { class: "ch-who",
-                                            strong { bdi { class: "latin", "{p.name}" } " · "
-                                                span { class: "muted small", "{ui.num(count as u64)} {tt(lang, T::Messages)}" }
+                                            span { class: "ch-name",
+                                                strong { bdi { class: "latin", "{p.name}" } }
+                                                span { class: "pill neutral small", "{level_name(&c.level)}" }
                                             }
                                             bdi { class: "latin muted ch-preview", lang: target, "{preview}" }
+                                            span { class: "muted small", "{ui.num(count as u64)} {tt(lang, T::Messages)}" }
                                         }
+                                        span { class: "chev", aria_hidden: "true" }
                                     }
                                     button {
-                                        class: "quiet small",
+                                        class: "ch-icon quiet",
                                         aria_label: "{tt(lang, T::Delete)}",
+                                        title: "{tt(lang, T::Delete)}",
                                         onclick: move |_| {
                                             if let Err(e) = db.0.borrow_mut().delete_conversation(&delete_id) {
                                                 crate::diag::report!("deleting the chat failed: {e}");
                                             }
                                             revision += 1;
                                         },
-                                        "✕"
+                                        {icons::trash()}
                                     }
                                 }
                             }
                         }
                     }
+                }
+            }
+        }
+        h3 { class: "ch-section", "{tt(lang, T::Partners)}" }
+        ul { class: "ch-personas",
+            for entry in personas_for(focus) {
+                match entry {
+                    Ok(p) => {
+                        let id = p.id.clone();
+                        let jv = is_javanese(p);
+                        // The levels the persona is written for, so the
+                        // learner can find the partner for their unit.
+                        let bands = p.style.levels.iter().map(|b| level_name(&b.level)).collect::<Vec<_>>().join(" · ");
+                        rsx! {
+                            li { key: "{p.id}",
+                                button { class: "card tap ch-persona", onclick: move |_| on_persona.call(id.clone()),
+                                    Avatar { name: p.name.clone(), javanese: jv }
+                                    span { class: "ch-who",
+                                        span { class: "ch-name",
+                                            strong { bdi { class: "latin", "{p.name}" } }
+                                            span { class: if jv { "pill small ch-lang jv" } else { "pill small ch-lang" },
+                                                if jv { "{tt(lang, T::Javanese)}" } else { "{tt(lang, T::Indonesian)}" }
+                                            }
+                                        }
+                                        span { class: "muted small", "{pick(&p.role, lang)}" }
+                                        span { class: "ch-levels small latin", dir: "ltr", "{bands}" }
+                                    }
+                                    span { class: "chev", aria_hidden: "true" }
+                                }
+                            }
+                        }
+                    }
+                    Err((id, e)) => rsx! {
+                        li { key: "{id}", class: "card",
+                            p { "{tt(lang, T::Broken)}" }
+                            p { class: "muted small latin", dir: "ltr", "{id}: {e}" }
+                        }
+                    },
                 }
             }
         }
@@ -366,14 +381,18 @@ fn Scenes(persona: Persona, on_back: EventHandler, on_pick: EventHandler<Scenari
     let lang = ui.lang();
     let target = target_tag(&persona.language);
     rsx! {
-        header { class: "ch-head",
-            button { class: "quiet", onclick: move |_| on_back.call(()), "{tt(lang, T::Back)}" }
-            Avatar { name: persona.name.clone(), javanese: is_javanese(&persona) }
-            h2 { bdi { class: "latin", "{persona.name}" } }
+        header { class: "ch-bar",
+            button { class: "quiet ch-back", "data-back": "true", onclick: move |_| on_back.call(()), "{tt(lang, T::Back)}" }
         }
-        p { Rich { text: pick(&persona.personality, lang).to_string(), target } }
-        p { class: "ch-register-line", Rich { text: pick(&persona.style.register, lang).to_string(), target } }
-        h3 { "{tt(lang, T::StartWith)}" }
+        section { class: "card ch-profile",
+            div { class: "ch-name",
+                Avatar { name: persona.name.clone(), javanese: is_javanese(&persona) }
+                h2 { bdi { class: "latin", "{persona.name}" } }
+            }
+            p { Rich { text: pick(&persona.personality, lang).to_string(), target } }
+            p { class: "ch-register-line muted", Rich { text: pick(&persona.style.register, lang).to_string(), target } }
+        }
+        h3 { class: "ch-section", "{tt(lang, T::StartWith)}" }
         ul { class: "ch-scenes",
             for s in scenarios(&persona) {
                 {
@@ -381,14 +400,19 @@ fn Scenes(persona: Persona, on_back: EventHandler, on_pick: EventHandler<Scenari
                     let pick_it = s.clone();
                     rsx! {
                         li { key: "{key}",
-                            button { class: "card ch-scene", onclick: move |_| on_pick.call(pick_it.clone()),
-                                span { class: "pill small latin", "{level_name(&s.level)}" }
-                                if s.id.is_none() {
-                                    strong { "{tt(lang, T::FreeChat)}" }
-                                } else {
-                                    span { Rich { text: pick(&s.situation, lang).to_string(), target } }
+                            button { class: "card tap ch-scene", onclick: move |_| on_pick.call(pick_it.clone()),
+                                span { class: "ch-who",
+                                    span { class: "ch-name",
+                                        if s.id.is_none() {
+                                            strong { "{tt(lang, T::FreeChat)}" }
+                                        } else {
+                                            strong { Rich { text: pick(&s.situation, lang).to_string(), target } }
+                                        }
+                                        span { class: "pill neutral small latin", "{level_name(&s.level)}" }
+                                    }
+                                    bdi { class: "latin muted ch-preview", lang: target, "“{s.opener}”" }
                                 }
-                                bdi { class: "latin muted", lang: target, "“{s.opener}”" }
+                                span { class: "chev", aria_hidden: "true" }
                             }
                         }
                     }
@@ -406,7 +430,12 @@ enum Status {
 }
 
 #[component]
-fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> Element {
+fn Chat(
+    id: String,
+    on_back: EventHandler,
+    on_replay: EventHandler<String>,
+    on_persona: EventHandler<String>,
+) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
     let db = use_context::<Db>();
@@ -418,6 +447,7 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
     let mut draft = use_signal(String::new);
     let mut status = use_signal(|| Status::Idle);
     let mut ink = use_signal(|| false);
+    let mut idea_open = use_signal(|| false);
     // This visit's turns, for Kak Nur's activity log: (sent, without a fix).
     let mut tally = use_signal(|| (0u32, 0u32));
     let opened = use_hook(now_ms);
@@ -504,7 +534,10 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
                         status.set(Status::Idle);
                         scroll_to_end();
                     }
-                    Err(e) => status.set(Status::Problem(friendly(e.friendly()))),
+                    Err(e) => {
+                        status.set(Status::Problem(friendly(e.friendly())));
+                        scroll_to(".ch-problem");
+                    }
                 }
             });
         }
@@ -557,13 +590,17 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
     let mut send_key = send.clone();
     let mut retry = ask.clone();
 
+    // The scene's next learner line, as an idea the learner can open and
+    // copy into the box (never sent for them).
+    let turn = all.iter().filter(|m| m.role == ChatRole::Learner).count();
+    let their_turn_done = all.last().is_some_and(|m| m.role == ChatRole::Persona);
+    let idea = reply_idea(p, c.scenario.as_deref(), turn).filter(|_| !busy && their_turn_done);
+    let idea_flag = is_javanese(p) && !p.review.verified;
+
     rsx! {
         div { class: "ch-chat",
-            header { class: "ch-head",
-                button { class: "quiet", onclick: move |_| on_back.call(()), "{tt(lang, T::Back)}" }
-                Avatar { name: p.name.clone(), javanese: is_javanese(p), mood: mood_of(busy, &all) }
-                h2 { bdi { class: "latin", "{p.name}" } }
-                span { class: "pill small latin", "{level_name(&c.level)}" }
+            header { class: "ch-bar",
+                button { class: "quiet ch-back", "data-back": "true", onclick: move |_| on_back.call(()), "{tt(lang, T::Back)}" }
                 {
                     let id = c.id.clone();
                     rsx! {
@@ -571,12 +608,31 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
                             class: "ch-replay",
                             disabled: all.len() < 2,
                             onclick: move |_| on_replay.call(id.clone()),
-                            "▶ {tt(lang, T::Replay)}"
+                            {icons::play()}
+                            span { "{tt(lang, T::Replay)}" }
                         }
                     }
                 }
             }
-            p { class: "ch-scene-line muted", Rich { text: pick(&scene.situation, lang).to_string(), target } }
+            {
+                let pid = p.id.clone();
+                rsx! {
+                    button {
+                        class: "card tap ch-context",
+                        aria_label: "{p.name}: {tt(lang, T::AboutPartner)}",
+                        onclick: move |_| on_persona.call(pid.clone()),
+                        Avatar { name: p.name.clone(), javanese: is_javanese(p), mood: mood_of(busy, &all) }
+                        span { class: "ch-who",
+                            span { class: "ch-name",
+                                strong { bdi { class: "latin", "{p.name}" } }
+                                span { class: "pill small latin", "{level_name(&c.level)}" }
+                            }
+                            span { class: "ch-scene-line muted small", Rich { text: pick(&scene.situation, lang).to_string(), target } }
+                        }
+                        span { class: "chev", aria_hidden: "true" }
+                    }
+                }
+            }
             div { class: "ch-register", role: "group", aria_label: "{tt(lang, T::TalkToMe)}",
                 span { class: "muted small", "{tt(lang, T::TalkToMe)}" }
                 for r in registers(p) {
@@ -585,6 +641,7 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
                         rsx! {
                             button {
                                 key: "{r}",
+                                class: "ch-chip",
                                 aria_pressed: if c.register == r { "true" } else { "false" },
                                 onclick: move |_| set(r),
                                 "{tt(lang, register_label(r))}"
@@ -593,8 +650,10 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
                     }
                 }
             }
-            p { class: "muted small", "{tt(lang, T::TapWord)}" }
-            p { class: "muted small ch-privacy", "🔒 {tt(lang, T::Privacy)}" }
+            p { class: "ch-note small",
+                {icons::lock()}
+                span { "{tt(lang, T::TapWord)} {tt(lang, T::Privacy)}" }
+            }
             ol { class: "ch-messages",
                 for (i , m) in all.iter().enumerate() {
                     match m.role {
@@ -635,7 +694,7 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
                                         }
                                     }
                                 } else if answered(i) {
-                                    span { class: "ch-ok small", "{tt(lang, T::AllGood)}" }
+                                    span { class: "pill good small ch-ok", "{tt(lang, T::AllGood)}" }
                                 }
                             }
                         },
@@ -650,42 +709,85 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
             if let Status::Problem(why) = status() {
                 div { class: "ch-problem", role: "alert",
                     p { "{tt(lang, why)}" }
-                    if why != T::NotConnected {
+                    if why == T::NotConnected {
+                        button {
+                            onclick: move |_| {
+                                let mut s = ui.screen;
+                                s.set(Screen::Devices);
+                            },
+                            "{tt(lang, T::OpenDevices)}"
+                        }
+                    } else {
                         button { onclick: move |_| retry(), "{tt(lang, T::Retry)}" }
                     }
                 }
             }
             div { class: if ink() { "ch-compose ink" } else { "ch-compose" },
-                if ink() {
-                    InkPad {
-                        lang: ink_lang,
-                        on_submit: move |a: InkAnswer| {
-                            if let Some(t) = a.text {
-                                draft.set(t);
+                if let Some(line) = idea {
+                    if idea_open() {
+                        div { class: "ch-idea", role: "note",
+                            span { class: "ch-who",
+                                bdi { class: "latin", lang: target, "{line.text}" }
+                                span { class: "muted small", "{pick(&line.meaning, lang)}" }
+                                if idea_flag {
+                                    span { class: "pill small ch-unverified", "{tt(lang, T::Unverified)}" }
+                                }
                             }
-                            ink.set(false);
-                        },
+                            {
+                                let text = line.text.clone();
+                                rsx! {
+                                    button {
+                                        class: "ch-chip",
+                                        onclick: move |_| {
+                                            draft.set(text.clone());
+                                            idea_open.set(false);
+                                        },
+                                        "{tt(lang, T::UseIdea)}"
+                                    }
+                                }
+                            }
+                        }
                     }
-                } else {
-                    textarea {
-                        class: "latin",
-                        dir: "ltr",
-                        lang: target,
-                        rows: "1",
-                        maxlength: "{MAX_MESSAGE_CHARS}",
-                        placeholder: "{tt(lang, T::Placeholder)}",
-                        aria_label: "{tt(lang, T::Placeholder)}",
-                        value: "{draft}",
-                        oninput: move |e| draft.set(e.value()),
-                        onkeydown: move |e| {
-                            if e.key() == Key::Enter && !e.modifiers().shift() {
-                                e.prevent_default();
-                                send_key();
-                            }
-                        },
+                    div { class: "ch-chips",
+                        button {
+                            class: "ch-chip",
+                            aria_pressed: if idea_open() { "true" } else { "false" },
+                            onclick: move |_| idea_open.toggle(),
+                            {icons::bulb()}
+                            span { "{tt(lang, T::Idea)}" }
+                        }
                     }
                 }
-                div { class: "row ch-send",
+                div { class: "ch-field",
+                    if ink() {
+                        InkPad {
+                            lang: ink_lang,
+                            on_submit: move |a: InkAnswer| {
+                                if let Some(t) = a.text {
+                                    draft.set(t);
+                                }
+                                ink.set(false);
+                            },
+                        }
+                    } else {
+                        textarea {
+                            class: "latin",
+                            dir: "ltr",
+                            lang: target,
+                            rows: "1",
+                            maxlength: "{MAX_MESSAGE_CHARS}",
+                            placeholder: "{tt(lang, T::Placeholder)}",
+                            aria_label: "{tt(lang, T::Placeholder)}",
+                            value: "{draft}",
+                            oninput: move |e| draft.set(e.value()),
+                            onkeydown: move |e| {
+                                if e.key() == Key::Enter && !e.modifiers().shift() {
+                                    e.prevent_default();
+                                    send_key();
+                                }
+                            },
+                        }
+                    }
                     // Handwriting is paused (Mohamed, 2026-10-26): the toggle
                     // comes back with the tablet pen work.
                     if HANDWRITING {
@@ -694,10 +796,12 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
                         }
                     }
                     button {
-                        class: "primary",
+                        class: "primary ch-send",
                         disabled: busy || draft().trim().is_empty(),
+                        aria_label: "{tt(lang, T::Send)}",
+                        title: "{tt(lang, T::Send)}",
                         onclick: move |_| send_click(),
-                        "{tt(lang, T::Send)}"
+                        {icons::send()}
                     }
                 }
             }
@@ -706,12 +810,17 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
 }
 
 fn scroll_to_end() {
-    document::eval(
-        r#"setTimeout(() => document.querySelector('.ch-messages > li:last-child')?.scrollIntoView({
+    scroll_to(".ch-messages > li:last-child");
+}
+
+/// Brings `selector` (the newest bubble, or a problem) above the composer.
+fn scroll_to(selector: &str) {
+    document::eval(&format!(
+        r#"setTimeout(() => document.querySelector('{selector}')?.scrollIntoView({{
             block: "end",
             behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-        }), 30);"#,
-    );
+        }}), 30);"#
+    ));
 }
 
 #[component]
@@ -720,10 +829,11 @@ fn ListenButton(text: String, language: String, voice: kabar_protocol::cloud::Vo
     let missing = use_signal(|| false);
     rsx! {
         button {
-            class: "quiet small ch-listen",
+            class: "ch-icon quiet ch-listen",
             aria_label: "{tt(ui.lang(), T::Listen)}",
+            title: "{tt(ui.lang(), T::Listen)}",
             onclick: move |_| crate::lesson::speak_in(&text, &language, voice, missing),
-            "🔊"
+            {icons::speaker()}
         }
     }
 }
