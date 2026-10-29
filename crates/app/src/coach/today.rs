@@ -13,28 +13,38 @@ use kabar_protocol::coach::{
 };
 
 use super::widgets::{Nur, Progress, SizePicker, Stat};
+use super::text::{self, T, tt};
 use super::{Coach, build_plan, labels, logic, plan_for, say};
 use crate::i18n::Msg;
 use crate::portraits::Mood;
 use crate::{Db, Screen, Ui, icons};
 
-/// Where a plan item's "start" button goes.
+pub(crate) const COACH_CSS: crate::embedded::Css = crate::embedded::css!("assets/coach.css");
+
+/// The lesson a lesson step opens: the unit's next lesson, or the Journey's
+/// next one once that unit is finished. `None` when neither is known.
+fn lesson_for(db: &Db, coach: Coach, unit_id: &str) -> Option<String> {
+    let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+    crate::journey::next_lesson_in(unit_id, &completed).or_else(|| journey_next(db, coach, &completed))
+}
+
+/// The Journey's next lesson on the learner's own route.
+pub(super) fn journey_next(db: &Db, coach: Coach, completed: &std::collections::BTreeSet<String>) -> Option<String> {
+    let profile = coach.profile.peek().clone()?;
+    let start = crate::journey::start_level(db, Some(&profile));
+    let javanese = profile.focus == LanguageFocus::Javanese;
+    let unit = crate::journey::current_unit(completed, start.as_deref(), javanese)?;
+    crate::journey::next_lesson_in(&unit, completed)
+}
+
 /// Opens what a plan item asks for: a lesson item goes straight into the
 /// unit's next lesson, or the Journey's next one once that unit is finished
 /// (the Journey itself only when neither is known).
-fn start_item(ui: Ui, db: &Db, coach: Coach, kind: &PlanItemKind) {
+pub(super) fn start_item(ui: Ui, db: &Db, coach: Coach, kind: &PlanItemKind) {
     let screen = match kind {
         PlanItemKind::Review { .. } => Screen::Review,
         PlanItemKind::Lesson { unit_id } => {
-            let completed = db.0.borrow().completed_lessons().unwrap_or_default();
-            let next = crate::journey::next_lesson_in(unit_id, &completed).or_else(|| {
-                let profile = coach.profile.peek().clone()?;
-                let start = crate::journey::start_level(db, Some(&profile));
-                let javanese = profile.focus == LanguageFocus::Javanese;
-                let unit = crate::journey::current_unit(&completed, start.as_deref(), javanese)?;
-                crate::journey::next_lesson_in(&unit, &completed)
-            });
-            if let Some(lesson) = next {
+            if let Some(lesson) = lesson_for(db, coach, unit_id) {
                 ui.open_lesson(lesson);
                 return;
             }
@@ -45,6 +55,16 @@ fn start_item(ui: Ui, db: &Db, coach: Coach, kind: &PlanItemKind) {
     };
     let mut current = ui.screen;
     current.set(screen);
+}
+
+/// The icon a plan step shows: where it goes.
+pub(super) fn item_icon(kind: &PlanItemKind) -> Element {
+    icons::nav(match kind {
+        PlanItemKind::Review { .. } => Screen::Review,
+        PlanItemKind::Lesson { .. } => Screen::Journey,
+        PlanItemKind::WeakSpot { .. } => Screen::LevelCheck,
+        PlanItemKind::Reading => Screen::Reader,
+    })
 }
 
 /// Rebuilds and saves today's plan at the size the learner just picked.
@@ -103,56 +123,72 @@ pub fn Today() -> Element {
         recap::recap_ready(progress.goal_met, stats.studied(), coach.time_of_day(), &profile.study_times);
 
     rsx! {
-        RewardsBar { today, welcome }
+        style { {COACH_CSS.text()} }
         crate::update::view::UpdateBanner {}
         // Wide screens: the plan, with the side cards (recap, placement,
         // Kabar Pagi) in a second column when there are any.
         div { class: "coach-grid today-grid",
-            div {
+            div { class: "today-main",
                 if welcome {
                     WelcomeBack { profile: profile.clone(), plan: plan.clone(), today }
                 } else {
-                div { class: "card",
-                    h2 { lang: "id", bdi { dir: "ltr", "{ui.t(Msg::TodayTitle)}" } }
-                    Nur { text: say(&ui, greeting, today, &args) }
-                    p { class: "muted", "{say(&ui, Line::PlanAskSize, today, &args)}" }
-                    SizePicker {
-                        value: plan.size,
-                        onpick: {
-                            let db = db.clone();
-                            let profile = profile.clone();
-                            move |size| pick_size(&db, coach, &profile, today, size)
-                        },
-                    }
-                    Progress {
-                        done: progress.minutes_done,
-                        goal,
-                        label: ui.t(Msg::TodayProgress).to_string(),
-                    }
-                    p { class: "muted small",
-                        "{labels::minutes(&ui, progress.minutes_done)} / {labels::minutes(&ui, goal)}"
-                        if progress.goal_met {
-                            " · "
-                            span { class: "ok", "{ui.t(Msg::GoalMet)}" }
+                    div { class: "today-size",
+                        span { class: "muted small", "{tt(ui.lang(), T::HowLong)}" }
+                        SizePicker {
+                            value: plan.size,
+                            onpick: {
+                                let db = db.clone();
+                                let profile = profile.clone();
+                                move |size| pick_size(&db, coach, &profile, today, size)
+                            },
                         }
                     }
-                    ul { class: "plan",
-                        for (i , item) in plan.items.iter().enumerate() {
-                            PlanRow {
-                                key: "{item.id}",
-                                item: item.clone(),
-                                done: progress.done.get(i).copied().unwrap_or(false),
-                                today,
-                                show_start: true,
-                                next: next == Some(i),
-                                break_text: (break_at == Some(i))
-                                    .then(|| say(&ui, Line::PlanBreak, today, &args)),
+                    Hero {
+                        plan: plan.clone(),
+                        next,
+                        minutes_done: progress.minutes_done,
+                        // What's left is the steps not done yet, whatever the clock says.
+                        left: plan
+                            .items
+                            .iter()
+                            .zip(&progress.done)
+                            .filter(|(_, d)| !**d)
+                            .map(|(i, _)| u32::from(i.minutes))
+                            .sum::<u32>(),
+                    }
+                    if plan.items.len() > 1 {
+                        section { class: "today-rest", aria_labelledby: "today-rest-title",
+                            h2 { id: "today-rest-title", class: "section-title", "{tt(ui.lang(), T::ThenRows)}" }
+                            ul { class: "plan",
+                                for (i , item) in plan.items.iter().enumerate() {
+                                    if Some(i) != next {
+                                        PlanRow {
+                                            key: "{item.id}",
+                                            item: item.clone(),
+                                            done: progress.done.get(i).copied().unwrap_or(false),
+                                            today,
+                                            break_text: (break_at == Some(i))
+                                                .then(|| say(&ui, Line::PlanBreak, today, &args)),
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
+                    // Kak Nur's one line opens her page (report, achievements, Warung).
+                    button {
+                        class: "nur-card tap",
+                        aria_label: "{tt(ui.lang(), T::NurOpens)}",
+                        onclick: move |_| {
+                            let mut screen = ui.screen;
+                            screen.set(Screen::Coach);
+                        },
+                        Nur { text: say(&ui, greeting, today, &args) }
+                        span { class: "chev", aria_hidden: "true" }
+                    }
                     Snooze { profile: profile.clone(), goal_met: progress.goal_met }
                 }
-                }
+                RewardsBar { today, welcome }
             }
             div { class: "today-side",
                 if recap_ready {
@@ -161,6 +197,122 @@ pub fn Today() -> Element {
                 crate::lesson::PlacementInvite {}
                 crate::play::PagiTodayCard {}
                 crate::stats::TodayCards {}
+            }
+        }
+    }
+}
+
+/// The hero: the plan's next step, today's minutes, and one button that
+/// opens that step. A step with no record of its own (a reading, a weak
+/// spot) can be ticked here too, with a quiet text button that looks
+/// nothing like Start. Once the plan is done the hero offers one more
+/// lesson from the Journey.
+#[component]
+fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> Element {
+    let ui = use_context::<Ui>();
+    let db = use_context::<Db>();
+    let coach = use_context::<Coach>();
+    let lang = ui.lang();
+    let goal = u32::from(plan.size.minutes());
+    let step = next.and_then(|i| plan.items.get(i)).cloned();
+    let time = rsx! {
+        Progress { done: minutes_done, goal, label: ui.t(Msg::TodayProgress).to_string() }
+        p { class: "hero-count small",
+            bdi { "{labels::minutes(&ui, minutes_done)} / {labels::minutes(&ui, goal)}" }
+        }
+    };
+    let Some(step) = step else {
+        let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+        let more = journey_next(&db, coach, &completed);
+        let title = more.as_deref().and_then(crate::journey::lesson_title);
+        return rsx! {
+            section { class: "card today-hero done", aria_labelledby: "hero-title",
+                p { class: "hero-eyebrow", "{tt(lang, T::PlanEyebrow)}" }
+                h2 { id: "hero-title", class: "hero-title", "{tt(lang, T::AllDoneTitle)}" }
+                {time}
+                button {
+                    class: "primary hero-start",
+                    onclick: move |_| match &more {
+                        Some(id) => ui.open_lesson(id.clone()),
+                        None => {
+                            let mut screen = ui.screen;
+                            screen.set(Screen::Journey);
+                        }
+                    },
+                    "{tt(lang, T::OneMoreLesson)}"
+                    if let Some(t) = title {
+                        " · "
+                        bdi { lang: "id", dir: "ltr", "{t}" }
+                    }
+                }
+            }
+        };
+    };
+    let (kind_msg, detail) = labels::plan_item(&ui, &step.kind);
+    // A lesson step names the lesson it opens; its unit is the subtitle.
+    let lesson = match &step.kind {
+        PlanItemKind::Lesson { unit_id } => {
+            lesson_for(&db, coach, unit_id).and_then(|id| crate::journey::lesson_title(&id))
+        }
+        _ => None,
+    };
+    let started = minutes_done > 0;
+    let label = if started {
+        format!("{} · {}", tt(lang, T::ContinuePlan), text::left(lang, &labels::minutes(&ui, left)))
+    } else {
+        format!("{} · {}", tt(lang, T::StartPlan), labels::minutes(&ui, goal))
+    };
+    // Lessons and reviews tick themselves; the rest can be ticked by hand.
+    let manual = matches!(step.kind, PlanItemKind::Reading | PlanItemKind::WeakSpot { .. });
+    let seconds = u32::from(step.minutes) * 60;
+    let kind = step.kind.clone();
+    let id = step.id.clone();
+    rsx! {
+        section { class: "card today-hero", aria_labelledby: "hero-title",
+            p { class: "hero-eyebrow",
+                span { class: "hero-icon", aria_hidden: "true", {item_icon(&step.kind)} }
+                "{tt(lang, T::PlanEyebrow)}"
+            }
+            if let Some(title) = lesson {
+                h2 { id: "hero-title", class: "hero-title",
+                    bdi { lang: "id", dir: "ltr", "{title}" }
+                }
+                p { class: "hero-sub",
+                    "{tt(lang, T::LessonIn)} "
+                    if let Some(d) = &detail { bdi { "{d}" } }
+                    " · {labels::minutes(&ui, u32::from(step.minutes))}"
+                }
+            } else {
+                h2 { id: "hero-title", class: "hero-title", "{ui.t(kind_msg)}" }
+                p { class: "hero-sub",
+                    if let Some(d) = &detail {
+                        bdi { lang: "id", "{d}" }
+                        " · "
+                    }
+                    "{labels::minutes(&ui, u32::from(step.minutes))}"
+                }
+            }
+            {time}
+            button {
+                class: "primary hero-start",
+                onclick: {
+                    let db = db.clone();
+                    move |_| start_item(ui, &db, coach, &kind)
+                },
+                "{label}"
+                span { class: "chev hero-arrow", aria_hidden: "true" }
+            }
+            if manual {
+                button {
+                    class: "quiet hero-mark",
+                    onclick: {
+                        let db = db.clone();
+                        move |_| {
+                            coach.record(&db, ActivityKind::PlanItemDone { item_id: id.clone() }, seconds);
+                        }
+                    },
+                    "{tt(lang, T::MarkStepDone)}"
+                }
             }
         }
     }
@@ -178,7 +330,7 @@ fn WelcomeBack(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Elem
     let args = [("name", profile.name.as_str()), ("minutes", minutes.as_str())];
     let first = plan.items.first().map(|i| i.kind.clone());
     rsx! {
-        section { class: "card welcome-back", aria_labelledby: "welcome-back-title",
+        section { class: "card today-hero welcome-back", aria_labelledby: "welcome-back-title",
             h2 { id: "welcome-back-title", "{ui.t(Msg::WelcomeBackTitle)}" }
             Nur { text: say(&ui, Line::PlanComeback, today, &args) }
             h3 { class: "welcome-back-plan-title",
@@ -191,7 +343,7 @@ fn WelcomeBack(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Elem
                         item: item.clone(),
                         done: false,
                         today,
-                        show_start: false,
+                        tick: false,
                         break_text: None,
                     }
                 }
@@ -267,16 +419,17 @@ fn RewardsBar(today: LocalDate, welcome: bool) -> Element {
     }
 }
 
-/// One plan item. `show_start`: its own Start button (the welcome-back card
-/// has a single one instead). `break_text`: Kak Nur's break offer, shown
-/// after this item when a 30-minute plan breaks here.
+/// One plan step below the hero. The row itself opens the step; the small
+/// round check beside it ticks it off by hand (or unticks it), so starting
+/// and marking done never look like the same button. `tick: false` drops
+/// the check (the welcome-back card). `break_text`: Kak Nur's break offer,
+/// shown after this step when a 30-minute plan breaks here.
 #[component]
 fn PlanRow(
     item: PlanItem,
     done: bool,
     today: LocalDate,
-    show_start: bool,
-    #[props(default)] next: bool,
+    #[props(default = true)] tick: bool,
     break_text: Option<String>,
 ) -> Element {
     let ui = use_context::<Ui>();
@@ -286,45 +439,41 @@ fn PlanRow(
     let kind = item.kind.clone();
     let id = item.id.clone();
     let seconds = u32::from(item.minutes) * 60;
-    let (text_db, text_kind) = (db.clone(), kind.clone());
+    let text_db = db.clone();
     rsx! {
-        li { class: if done { "plan-item done" } else if next { "plan-item next" } else { "plan-item" },
-            button {
-                class: "check",
-                role: "checkbox",
-                aria_checked: if done { "true" } else { "false" },
-                aria_label: "{ui.t(Msg::MarkDone)}",
-                onclick: move |_| {
-                    if done {
-                        let ids: Vec<String> = logic::done_events(&coach.events.peek(), today, &id)
-                            .into_iter()
-                            .map(str::to_string)
-                            .collect();
-                        coach.retract(&db, &ids);
-                    } else {
-                        coach.record(&db, ActivityKind::PlanItemDone { item_id: id.clone() }, seconds);
-                    }
-                },
-                if done { "✓" }
-            }
-            // The row's text starts it too, not only the Start button.
+        li { class: if done { "plan-item done" } else { "plan-item" },
             button {
                 class: "plan-text tap tap-plain",
-                onclick: move |_| start_item(ui, &text_db, coach, &text_kind),
-                strong { "{ui.t(title)}" }
-                if let Some(detail) = detail {
-                    span { class: "muted", " · " bdi { lang: "id", dir: "ltr", "{detail}" } }
+                onclick: move |_| start_item(ui, &text_db, coach, &kind),
+                span { class: "plan-icon", aria_hidden: "true", {item_icon(&item.kind)} }
+                span { class: "plan-words",
+                    strong { "{ui.t(title)}" }
+                    if let Some(detail) = detail {
+                        span { class: "muted small plan-detail", bdi { lang: "id", dir: "ltr", "{detail}" } }
+                    }
                 }
-                div { class: "muted small", {labels::minutes(&ui, u32::from(item.minutes))} }
+                span { class: "muted small plan-min", {labels::minutes(&ui, u32::from(item.minutes))} }
+                span { class: "chev", aria_hidden: "true" }
             }
-            if !done && show_start {
+            if tick {
                 button {
-                    class: if next { "primary" } else { "" },
-                    onclick: {
-                        let db = db.clone();
-                        move |_| start_item(ui, &db, coach, &kind)
+                    class: "check",
+                    role: "checkbox",
+                    aria_checked: if done { "true" } else { "false" },
+                    aria_label: "{ui.t(Msg::MarkDone)}: {ui.t(title)}",
+                    title: "{ui.t(Msg::MarkDone)}",
+                    onclick: move |_| {
+                        if done {
+                            let ids: Vec<String> = logic::done_events(&coach.events.peek(), today, &id)
+                                .into_iter()
+                                .map(str::to_string)
+                                .collect();
+                            coach.retract(&db, &ids);
+                        } else {
+                            coach.record(&db, ActivityKind::PlanItemDone { item_id: id.clone() }, seconds);
+                        }
                     },
-                    "{ui.t(Msg::Start)}"
+                    if done { "✓" }
                 }
             }
         }

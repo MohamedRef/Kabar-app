@@ -861,6 +861,12 @@ pub fn unit_title(lang: UiLanguage, unit_id: &str) -> Option<String> {
     })
 }
 
+/// A lesson's title in its own language (`None` for an unknown id).
+pub fn lesson_title(lesson_id: &str) -> Option<String> {
+    let routes = ROUTES.as_ref().ok()?;
+    routes.id.lessons().chain(routes.jv.lessons()).find(|l| l.id == lesson_id).map(|l| l.title.clone())
+}
+
 /// The lesson a plan's "Start" opens: the unit's first unfinished lesson.
 /// `None` for an unknown unit or one already finished.
 pub fn next_lesson_in(unit_id: &str, completed: &BTreeSet<String>) -> Option<String> {
