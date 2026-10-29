@@ -6,7 +6,7 @@ use kabar_core::locale::format_number;
 use kabar_core::settings::Theme;
 
 use super::Scope;
-use super::device::{DevicePrefs, TextSize};
+use super::device::{Appearance, DevicePrefs, TextSize};
 use super::text::{S, st};
 use crate::i18n::Msg;
 use crate::screens::LanguagePicker;
@@ -21,6 +21,7 @@ pub fn LookSection() -> Element {
     let lang = ui.lang();
     let sample = format_number(2026, settings.ui_language, settings.eastern_digits);
     let size = *prefs.text_size.read();
+    let appearance = *prefs.appearance.read();
 
     rsx! {
         div { class: "card",
@@ -48,6 +49,25 @@ pub fn LookSection() -> Element {
                 if matches!(settings.theme, Theme::Black | Theme::SystemBlack) {
                     p { class: "muted", "{st(lang, S::BlackHint)}" }
                 }
+            }
+
+            div { class: "field",
+                span { class: "label", id: "appearance-label", "{st(lang, S::Appearance)}" Scope { device_only: true } }
+                div { class: "segmented", role: "radiogroup", aria_labelledby: "appearance-label",
+                    for &a in Appearance::ALL {
+                        button {
+                            key: "{a.as_str()}",
+                            role: "radio",
+                            aria_checked: if a == appearance { "true" } else { "false" },
+                            onclick: {
+                                let db = db.clone();
+                                move |_| prefs.set_appearance(&db, a)
+                            },
+                            "{st(lang, appearance_label(a))}"
+                        }
+                    }
+                }
+                p { class: "field-hint", "{st(lang, S::AppearanceHint)}" }
             }
 
             div { class: "field",
@@ -117,6 +137,13 @@ fn swatch(th: Theme) -> String {
             format!("background: linear-gradient(135deg, {} 50%, {} 50%)", day.surface, night.surface)
         }
         (None, None) => String::new(),
+    }
+}
+
+fn appearance_label(a: Appearance) -> S {
+    match a {
+        Appearance::Calm => S::AppearanceCalm,
+        Appearance::Glossy => S::AppearanceGlossy,
     }
 }
 

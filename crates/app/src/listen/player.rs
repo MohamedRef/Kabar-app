@@ -348,6 +348,16 @@ impl Deck {
     }
 }
 
+/// The show a program belongs to, from its id (`sinetron.e01`,
+/// `radio.bipa1.u01`); a chat replay has none.
+fn show_name(id: &str) -> &'static str {
+    match id.split('.').next() {
+        Some("sinetron") => "Sinetron",
+        Some("radio") => "Kabar Radio",
+        _ => "",
+    }
+}
+
 fn heading_label(kind: SegmentKind) -> T {
     match kind {
         SegmentKind::Intro => T::Intro,
@@ -474,6 +484,11 @@ pub fn ProgramPlayer(
     let dl = *download.read();
     let translated = program.cues.iter().any(|c| !c.meaning.en.is_empty());
     let first_speaker = program.cues.first().map(|c| c.speaker.clone()).unwrap_or_default();
+    let total = program.cues.len();
+    let last = total.saturating_sub(1);
+    // Line 0 of N before anything has played.
+    let shown = if *deck.seq.read() > 0 { (current + 1).min(total) } else { 0 };
+    let show = show_name(&program.id);
     let mut scene_no = 0;
 
     rsx! {
@@ -481,23 +496,34 @@ pub fn ProgramPlayer(
             header { class: "lx-head",
                 // System Back and the phone's top-bar arrow close the episode too.
                 button { class: "quiet lx-back", "data-back": "true", onclick: move |_| on_back.call(()), "{tt(lang, T::Back)}" }
-                h2 { bdi { lang: target, class: "latin", "{title}" } }
             }
-            div { class: "row lx-download", display: if downloadable { "" } else { "none" },
-                match dl {
-                    DownloadState::Running(done, total) => rsx! {
-                        span { class: "muted small", role: "status",
-                            "{tt(lang, T::Downloading)} "
-                            bdi { "{ui.num(done as u64)}/{ui.num(total as u64)}" }
-                        }
-                    },
-                    _ if downloaded => rsx! {
-                        span { class: "pill lx-offline", "✓ {tt(lang, T::Downloaded)}" }
-                        button { class: "quiet small", onclick: remove_download, "{tt(lang, T::RemoveDownload)}" }
-                    },
-                    _ => rsx! {
-                        button { onclick: start_download, "⤓ {tt(lang, T::Download)}" }
-                    },
+            // The episode card: the show, its title and where you are. The
+            // wave is drawing only; the counter is the real line.
+            section { class: "lx-hero",
+                div { class: "lx-waves", aria_hidden: "true",
+                    for k in 0..24 {
+                        i { key: "{k}" }
+                    }
+                }
+                span { class: "lx-show latin", dir: "ltr", "{show}" }
+                h2 { bdi { lang: target, class: "latin", "{title}" } }
+                span { class: "lx-count", "{tt(lang, T::Line)} " bdi { class: "ltr-num", "{ui.num(shown as u64)} / {ui.num(total as u64)}" } }
+                div { class: "lx-download", display: if downloadable { "" } else { "none" },
+                    match dl {
+                        DownloadState::Running(done, total) => rsx! {
+                            span { class: "small", role: "status",
+                                "{tt(lang, T::Downloading)} "
+                                bdi { class: "ltr-num", "{ui.num(done as u64)}/{ui.num(total as u64)}" }
+                            }
+                        },
+                        _ if downloaded => rsx! {
+                            span { class: "pill lx-offline", "✓ {tt(lang, T::Downloaded)}" }
+                            button { class: "lx-hero-btn", onclick: remove_download, "{tt(lang, T::RemoveDownload)}" }
+                        },
+                        _ => rsx! {
+                            button { class: "lx-hero-btn", onclick: start_download, "⤓ {tt(lang, T::Download)}" }
+                        },
+                    }
                 }
             }
             if let DownloadState::Failed(why) = dl {
@@ -582,32 +608,92 @@ pub fn ProgramPlayer(
             }
             section { class: "lx-end", {children} }
             div { class: "lx-controls",
-                if playing {
-                    button { class: "primary", onclick: move |_| deck.pause(), "⏸ {tt(lang, T::Pause)}" }
-                } else {
-                    button { class: "primary", onclick: move |_| deck.resume(), "▶ {tt(lang, T::Play)}" }
+                // Seek by line: the transcript is the timeline.
+                div { class: "lx-seek",
+                    bdi { class: "ltr-num small", "{ui.num(shown as u64)}" }
+                    input {
+                        r#type: "range",
+                        min: "0",
+                        max: "{last}",
+                        value: "{current}",
+                        disabled: last == 0,
+                        aria_label: "{tt(lang, T::Position)}",
+                        aria_valuetext: "{tt(lang, T::Line)} {shown} / {total}",
+                        onchange: move |e| {
+                            if let Ok(i) = e.value().parse::<usize>() {
+                                deck.play(i.min(last));
+                            }
+                        },
+                    }
+                    bdi { class: "ltr-num small", "{ui.num(total as u64)}" }
                 }
-                button {
-                    aria_pressed: if slow { "true" } else { "false" },
-                    onclick: move |_| {
-                        let mut rate = deck.rate;
-                        let r = if slow { 1.0 } else { 0.8 };
-                        rate.set(r);
-                        if *deck.native.peek() {
-                            platform::track::rate(r as f32).ok();
-                        }
-                        deck.send(serde_json::json!({ "op": "rate", "rate": r }));
-                    },
-                    "{tt(lang, T::Slower)}"
-                }
-                if translated {
+                div { class: "lx-buttons",
                     button {
-                        aria_pressed: if show_all() { "true" } else { "false" },
-                        onclick: move |_| show_all.toggle(),
-                        "{tt(lang, T::Translations)}"
+                        class: "lx-speed",
+                        aria_pressed: if slow { "true" } else { "false" },
+                        aria_label: if slow { "{tt(lang, T::NormalSpeed)}" } else { "{tt(lang, T::Slower)}" },
+                        title: if slow { "{tt(lang, T::NormalSpeed)}" } else { "{tt(lang, T::Slower)}" },
+                        onclick: move |_| {
+                            let mut rate = deck.rate;
+                            let r = if slow { 1.0 } else { 0.8 };
+                            rate.set(r);
+                            if *deck.native.peek() {
+                                platform::track::rate(r as f32).ok();
+                            }
+                            deck.send(serde_json::json!({ "op": "rate", "rate": r }));
+                        },
+                        bdi { class: "ltr-num", if slow { "0.8×" } else { "1×" } }
+                    }
+                    button {
+                        class: "lx-step",
+                        aria_label: "{tt(lang, T::PrevLine)}",
+                        title: "{tt(lang, T::PrevLine)}",
+                        disabled: current == 0,
+                        onclick: move |_| deck.play(current.saturating_sub(1)),
+                        {step_icon(false)}
+                    }
+                    if playing {
+                        button { class: "primary lx-play", aria_label: "{tt(lang, T::Pause)}", title: "{tt(lang, T::Pause)}", onclick: move |_| deck.pause(),
+                            svg { width: "26", height: "26", view_box: "0 0 24 24", fill: "currentColor", "aria-hidden": "true",
+                                path { d: "M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" }
+                            }
+                        }
+                    } else {
+                        button { class: "primary lx-play", aria_label: "{tt(lang, T::Play)}", title: "{tt(lang, T::Play)}", onclick: move |_| deck.resume(),
+                            svg { class: "lx-tri", width: "26", height: "26", view_box: "0 0 24 24", fill: "currentColor", "aria-hidden": "true",
+                                path { d: "M8 5v14l11-7z" }
+                            }
+                        }
+                    }
+                    button {
+                        class: "lx-step",
+                        aria_label: "{tt(lang, T::NextLine)}",
+                        title: "{tt(lang, T::NextLine)}",
+                        disabled: current >= last,
+                        onclick: move |_| deck.play((current + 1).min(last)),
+                        {step_icon(true)}
+                    }
+                    if translated {
+                        button {
+                            class: "lx-tr",
+                            aria_pressed: if show_all() { "true" } else { "false" },
+                            onclick: move |_| show_all.toggle(),
+                            "{tt(lang, T::Translations)}"
+                        }
                     }
                 }
             }
+        }
+    }
+}
+
+/// A skip-a-line arrow: a triangle against a bar. Media arrows keep their
+/// left-to-right sense in Arabic, like the seek bar under them.
+fn step_icon(forward: bool) -> Element {
+    let d = if forward { "M6 6v12l8.5-6zM16 6h2v12h-2z" } else { "M18 6v12l-8.5-6zM6 6h2v12H6z" };
+    rsx! {
+        svg { width: "22", height: "22", view_box: "0 0 24 24", fill: "currentColor", "aria-hidden": "true",
+            path { d }
         }
     }
 }

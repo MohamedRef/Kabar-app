@@ -215,7 +215,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
 
     rsx! {
         div { class: "card round",
-            p { class: "muted small", "{ui.num(s.index as u64 + 1)} / {ui.num(total)}" }
+            super::RoundCount { at: s.index as u64 + 1, total: total as u64 }
             p { class: "muted",
                 if arabic_choices { "{ui.t(Msg::DetectiveGuessArabic)}" } else { "{ui.t(Msg::DetectiveGuessIndonesian)}" }
             }

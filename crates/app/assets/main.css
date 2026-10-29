@@ -1,13 +1,14 @@
-/* Kabar — palette from Java: Merapi black sand, sawah green, Bromo dawn,
-   batik indigo, and Bridge gold reserved for Arabic-origin words.
+/* Kabar: warm paper, deep forest green, a lime accent, and Bridge gold
+   reserved for Arabic-origin words (redesign 2026-10-29; the other themes
+   keep their Java palettes: Merapi, Malam, Batik, Sawah, True black).
    Logical properties only, so the Arabic UI mirrors for free. */
 
 :root {
   /* Colours come from the theme stylesheet (kabar_core::theme), keyed by
-     data-theme on .app. These are the Paper defaults for the first paint. */
-  --bg: #f6f1e7;
-  --surface: #fffaf1;
-  --text: #23211f;
+     data-theme on .app. These are the Light defaults for the first paint. */
+  --bg: #f7f8ef;
+  --surface: #ffffff;
+  --text: #203b33;
   --radius: 14px;
   --shadow: 0 1px 2px rgb(35 33 31 / 0.08), 0 4px 16px rgb(35 33 31 / 0.06);
   --font-latin: "Plus Jakarta Sans", "Inter", "Segoe UI", "Roboto", system-ui, sans-serif;
@@ -45,6 +46,11 @@
   --sp-8: 3rem;
   --radius-sm: 8px;
   --radius-lg: 20px;
+  /* Redesign radii: controls (main buttons, fields, answers), cards, sheets.
+     Glossy raises the card radius (components.css). */
+  --radius-control: 13px;
+  --radius-card: 18px;
+  --radius-sheet: 24px;
   --radius-pill: 999px;
   /* Control heights in rem, so Settings › Text size scales them with the
      text. --tap: buttons and toggles; --tap-lg: main actions; --row: big
@@ -98,24 +104,24 @@
   --wc-verb: #a61e4d;
   --wc-noun: #1f5fa6;
   --wc-adj: #6b3fa0;
-  --wc-func: #5d574e;
+  --wc-func: #5b6a61;
   --wp-prefix: #a84300;
   --wp-suffix: #0b7062;
   --wp-confix: #4d6b0f;
-  --wp-clitic: #5d574e;
-  --wp-root: #23211f;
+  --wp-clitic: #5b6a61;
+  --wp-root: #203b33;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --wc-verb: #f28fae;
     --wc-noun: #8fbcf2;
     --wc-adj: #c6a6f0;
-    --wc-func: #b3aa9c;
+    --wc-func: #afc2ad;
     --wp-prefix: #f39f6c;
     --wp-suffix: #6fd0bd;
     --wp-confix: #b9d47a;
-    --wp-clitic: #b3aa9c;
-    --wp-root: #efe9df;
+    --wp-clitic: #afc2ad;
+    --wp-root: #eff5e9;
   }
 }
 .wc-verb { --wc: var(--wc-verb); }
@@ -210,7 +216,7 @@ button {
   padding-inline: 1rem;
   min-block-size: var(--tap);
 }
-button.primary { background: var(--sawah); color: var(--surface); border-color: transparent; }
+button.primary { background: var(--primary); color: var(--on-primary); border-color: transparent; }
 button[aria-pressed="true"] { background: var(--indigo); color: var(--surface); border-color: transparent; }
 button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 /* Mouse and trackpad: a quiet hover on everything clickable. The selectors
@@ -220,7 +226,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   button:where(:not(:disabled):not(.primary):not([aria-pressed="true"]):not([aria-current="page"]):hover) {
     background: color-mix(in srgb, var(--surface-2) 75%, var(--surface));
   }
-  button.primary:where(:not(:disabled):hover) { background: color-mix(in srgb, var(--sawah) 88%, var(--text)); }
+  button.primary:where(:not(:disabled):hover) { background: color-mix(in srgb, var(--primary) 88%, var(--text)); }
   .nav-item:where(:not([aria-current="page"]):hover) { color: var(--text); }
 }
 
@@ -307,7 +313,13 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .shell { display: grid; min-block-size: 100dvh; }
 /* the phone's top bar keeps its height on short screens */
 .app[data-width="compact"] .shell { align-content: start; }
-.content { padding: var(--gutter); padding-block-end: 6rem; max-inline-size: 76rem; inline-size: 100%; margin-inline: auto; }
+.content { padding: var(--gutter); padding-block-end: calc(6rem + env(safe-area-inset-bottom)); max-inline-size: 76rem; inline-size: 100%; margin-inline: auto; }
+/* Redesign layout fixes (2026-10-29). A child of a flex column never
+   shrinks below its content, so a hero's heading or button can't be
+   squeezed away; and grids on wider windows size rows to their content,
+   so a short chip row can't collapse the card beside it. */
+.app :where(.content, .bsheet-body, .more-sheet) > * { flex-shrink: 0; }
+.app:not([data-width="compact"]) :where(.today-grid, .coach-grid, .play-grid, .pasar-layout) { grid-auto-rows: max-content; align-items: start; }
 .app:not([data-width="compact"]) .content { padding-block: var(--sp-6) var(--sp-8); }
 
 .nav { display: flex; background: var(--surface); border-color: var(--line); }
@@ -359,7 +371,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   padding: var(--sp-1);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-pill);
-  background: var(--surface-2);
+  background: var(--surface);
   box-shadow: var(--shadow-raised);
 }
 .app[data-width="compact"] .nav-item {
@@ -370,14 +382,14 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   font-size: max(0.6875rem, 11px);
   border-radius: var(--radius-pill);
 }
-.app[data-width="compact"] .nav-item[aria-current="page"] { background: transparent; }
+.app[data-width="compact"] .nav-item[aria-current="page"] { background: transparent; color: var(--primary); }
 .app[data-width="compact"] .nav-item .nav-icon {
   display: grid; place-items: center;
   inline-size: min(3rem, 100%); block-size: 1.75rem;
   border-radius: var(--radius-pill);
   transition: background-color var(--dur) var(--ease);
 }
-.app[data-width="compact"] .nav-item[aria-current="page"] .nav-icon { background: color-mix(in srgb, var(--indigo) 14%, transparent); }
+.app[data-width="compact"] .nav-item[aria-current="page"] .nav-icon { background: var(--soft); }
 .app[data-width="compact"] .nav-item :is(.nav-label, .nav-label-full) {
   max-inline-size: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
@@ -448,7 +460,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .app[data-width="compact"] .nav-more { display: flex; }
 .more-backdrop { position: fixed; inset: 0; z-index: 30; background: rgb(0 0 0 / 0.3); }
 .more-sheet {
-  position: fixed; z-index: 31; inset-inline: 0; inset-block-end: 0; max-block-size: 85dvh; overflow-y: auto;
+  position: fixed; z-index: 31; inset-inline: 0; inset-block-end: 0; max-block-size: 85dvh; overflow-y: auto; overscroll-behavior: contain;
   background: var(--surface); border-start-start-radius: var(--radius); border-start-end-radius: var(--radius);
   box-shadow: var(--shadow); padding: 0.75rem 1rem; padding-block-end: max(1rem, env(safe-area-inset-bottom));
 }
@@ -464,7 +476,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .more-list { border: 1px solid var(--line-soft); border-radius: var(--radius-lg); overflow: hidden; }
 .more-list li + li { border-block-start: 1px solid var(--line-soft); }
 .more-list button { border-radius: 0; min-block-size: var(--tap-lg); padding-inline: var(--sp-3); }
-.more-sheet { border-start-start-radius: var(--radius-lg); border-start-end-radius: var(--radius-lg); }
+.more-sheet { border-start-start-radius: var(--radius-sheet); border-start-end-radius: var(--radius-sheet); }
 .more-title { font-weight: 600; }
 .more-sub { grid-column: 2; font-size: 0.82rem; color: var(--muted); }
 .top-title { display: flex; align-items: center; gap: 0.25rem; min-inline-size: 0; }
@@ -502,7 +514,7 @@ html:has(.app[data-text-size="larger"]) { font-size: 125%; }
 .card {
   background: var(--surface);
   border: 1px solid var(--line-soft);
-  border-radius: var(--radius);
+  border-radius: var(--radius-card);
   box-shadow: var(--shadow);
   padding: var(--card-pad);
   margin-block-end: var(--stack);

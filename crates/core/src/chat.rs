@@ -5,7 +5,7 @@
 use kabar_protocol::chat::{ChatMessage, ChatRole};
 use kabar_protocol::cloud::Voice;
 use kabar_protocol::lesson::Localized;
-use kabar_protocol::story::{LevelBand, Persona, voice_named};
+use kabar_protocol::story::{LevelBand, Line, Persona, voice_named};
 use serde_json::{Value, json};
 
 use crate::ai::AiRequest;
@@ -64,6 +64,19 @@ pub fn scenarios(persona: &Persona) -> Vec<Scenario> {
     }
     out.sort_by_key(|s| (level_key(&s.level), s.id.is_none()));
     out
+}
+
+/// A reply idea for the learner's `turn`-th message (0-based) in a scene: the
+/// learner line at that point of the scene's example dialogue. `None` in a
+/// free chat, once the example has run out, or when the persona's next line
+/// recasts it (that learner line holds a deliberate mistake).
+pub fn reply_idea<'a>(persona: &'a Persona, scenario: Option<&str>, turn: usize) -> Option<&'a Line> {
+    let dialogue = persona.example_dialogues.iter().find(|d| Some(d.id.as_str()) == scenario)?;
+    let lines = &dialogue.lines;
+    let at = lines.iter().enumerate().filter(|(_, l)| l.speaker == LEARNER).nth(turn)?.0;
+    let recast =
+        lines[at + 1..].iter().find(|l| l.speaker != LEARNER).is_some_and(|l| l.correction.is_some());
+    (!recast).then(|| &lines[at])
 }
 
 /// `bipa1`…`bipa7` sort before `j1`…`j6`; anything else last.
@@ -271,6 +284,27 @@ mod tests {
             register: None,
             unverified: false,
             created_ms: 0,
+        }
+    }
+
+    #[test]
+    fn reply_ideas_follow_the_scene_and_skip_planted_mistakes() {
+        let ardi = parse_persona(ARDI).unwrap();
+        let idea = |turn| reply_idea(&ardi, Some("d01"), turn).map(|l| l.text.as_str());
+        assert_eq!(idea(0), Some("Selamat siang. Saya mau check-in. Nama saya Mohamed."));
+        assert_eq!(idea(1), None, "\"malam tiga\" is the mistake Ardi recasts");
+        assert_eq!(idea(2), Some("Ya, tiga malam."));
+        assert_eq!(idea(99), None);
+        assert_eq!(reply_idea(&ardi, None, 0).map(|l| l.text.as_str()), None, "a free chat has no script");
+        for p in all() {
+            for d in &p.example_dialogues {
+                for turn in 0..20 {
+                    if let Some(l) = reply_idea(&p, Some(&d.id), turn) {
+                        assert_eq!(l.speaker, LEARNER);
+                        assert!(!l.meaning.ar_eg.is_empty(), "{} {}: an idea needs its meaning", p.id, d.id);
+                    }
+                }
+            }
         }
     }
 
