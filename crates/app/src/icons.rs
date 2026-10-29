@@ -125,6 +125,36 @@ pub fn star() -> Element {
     stroke("M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7z")
 }
 
+/// Send: a paper plane, pointing forward (mirrored in Arabic by CSS).
+pub fn send() -> Element {
+    stroke("M4 12 20 4l-4 16-4-6zM12 14l8-10")
+}
+
+/// Listen: a speaker with two waves.
+pub fn speaker() -> Element {
+    stroke("M4 9h4l5-4v14l-5-4H4zM16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11")
+}
+
+/// Replay as a dialogue: a play triangle in a circle.
+pub fn play() -> Element {
+    stroke("M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM10 8.5v7l6-3.5z")
+}
+
+/// Delete: a bin.
+pub fn trash() -> Element {
+    stroke("M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6")
+}
+
+/// An idea: a light bulb.
+pub fn bulb() -> Element {
+    stroke("M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z")
+}
+
+/// Private: a padlock.
+pub fn lock() -> Element {
+    stroke("M6 11h12v9H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3")
+}
+
 // Kabar's own icons (assets/icons/custom/README.md has what each one means).
 const JOURNEY_ISLAND: &str = include_str!("../../../assets/icons/custom/journey-island.svg");
 const COACH: &str = include_str!("../../../assets/icons/custom/coach.svg");
