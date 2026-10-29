@@ -51,6 +51,16 @@ pub struct SavedText {
     pub layout: Option<String>,
 }
 
+/// A word or phrase saved from the Reader, newest save per lexeme.
+#[derive(Clone, Debug, PartialEq)]
+pub struct SavedWord {
+    /// `{lang}:{lexeme}`, or `phrase:{text}` for a highlighted phrase.
+    pub lexeme: String,
+    pub surface: String,
+    pub sentence: String,
+    pub text_id: Option<String>,
+}
+
 #[derive(Clone, Debug, PartialEq)]
 pub struct Highlight {
     pub id: String,
@@ -188,6 +198,25 @@ impl Store {
             .collect())
     }
 
+    /// One saved text by id, if it's still there.
+    pub fn text(&self, id: &str) -> Result<Option<SavedText>> {
+        let json: Option<String> = self
+            .conn
+            .query_row("SELECT payload FROM texts WHERE id = ?1 AND deleted = 0", [id], |r| r.get(0))
+            .optional()?;
+        Ok(json.and_then(|json| {
+            let row: TextRow = serde_json::from_str(&json).ok()?;
+            Some(SavedText {
+                id: id.to_string(),
+                title: row.title,
+                body: row.body,
+                kind: TextKind::parse(&row.kind),
+                source: row.source,
+                layout: row.layout,
+            })
+        }))
+    }
+
     pub fn delete_text(&mut self, id: &str) -> Result<()> {
         self.write_synced("texts", id, OpKind::Delete, None)?;
         Ok(())
@@ -278,6 +307,22 @@ impl Store {
             params![id, lexeme, surface, sentence, text_id, self.device.0, hlc.wall_ms as i64, hlc.counter],
         )?;
         Ok(())
+    }
+
+    /// Words and phrases saved from the Reader, the newest save of each
+    /// first (the Library's "saved words").
+    pub fn saved_words(&self, limit: usize) -> Result<Vec<SavedWord>> {
+        let mut stmt = self.conn.prepare(
+            "SELECT lexeme, surface, sentence, text_id FROM saved_words s
+             WHERE deleted = 0 AND NOT EXISTS (
+                 SELECT 1 FROM saved_words n WHERE n.lexeme = s.lexeme AND n.deleted = 0
+                 AND (n.hlc_wall, n.hlc_counter, n.id) > (s.hlc_wall, s.hlc_counter, s.id))
+             ORDER BY hlc_wall DESC, hlc_counter DESC LIMIT ?1",
+        )?;
+        let rows = stmt.query_map([limit as i64], |r| {
+            Ok(SavedWord { lexeme: r.get(0)?, surface: r.get(1)?, sentence: r.get(2)?, text_id: r.get(3)? })
+        })?;
+        Ok(rows.collect::<rusqlite::Result<_>>()?)
     }
 
     pub fn saved_word_count(&self, lexeme: &str) -> Result<usize> {

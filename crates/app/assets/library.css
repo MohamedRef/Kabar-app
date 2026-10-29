@@ -1,0 +1,43 @@
+/* The Library on the Reader's home (reader/library.rs). Built from the
+   shared components (components.css): .section-head, .card.grouped with
+   button.activity-row, .search-field, .segmented, .status-chip. Only what
+   they don't cover lives here. Gold is the Arabic Bridge's and nothing else's. */
+
+/* Tablet landscape and Mac: the new-text card and the Library side by side. */
+.app:is([data-width="expanded"], [data-width="large"]) .reader-home {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: var(--gutter); align-items: start;
+}
+.app:is([data-width="expanded"], [data-width="large"]) .reader-home > .library { margin-block-start: 0; }
+.library { display: grid; gap: var(--sp-3); margin-block-start: var(--sp-4); }
+.library > * { min-inline-size: 0; margin: 0; }
+.lib-head h2 { margin: 0; font-size: var(--fs-lg); font-weight: 600; }
+.lib-head .sub { margin: var(--sp-1) 0 0; color: var(--muted); font-size: var(--fs-sm); }
+
+/* The Arabic Bridge row: the one gold row in the Library. */
+.bridge-entry { border-color: color-mix(in srgb, var(--gold) 30%, var(--line)); }
+.bridge-entry-n { font-weight: 700; color: var(--gold); }
+.bridge-entry-ar { font-family: var(--font-arabic); font-size: var(--fs-xl); line-height: 1; color: var(--gold); }
+
+/* The three tabs span the column. */
+.segmented.lib-tabs { display: flex; flex-wrap: nowrap; }
+.segmented.lib-tabs > button { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2); }
+.lib-count { font-size: var(--fs-xs); opacity: 0.8; }
+
+.lib-list { list-style: none; padding: 0; }
+.lib-list > li { display: flex; align-items: center; min-inline-size: 0; }
+.lib-list > li > button.activity-row { flex: 1; min-inline-size: 0; }
+.lib-title { display: block; max-inline-size: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--font-latin); }
+.lib-delete { flex: none; margin-inline-end: var(--sp-2); color: var(--muted); }
+.lib-empty { color: var(--muted); }
+
+/* A saved word: open it to see its sentence and go to its text. */
+.lib-word { inline-size: 100%; }
+.lib-word > summary {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--sp-2); cursor: pointer;
+  min-block-size: var(--row); box-sizing: border-box; padding-block: var(--sp-3); padding-inline: var(--card-pad);
+}
+.lib-word-surface { font-family: var(--font-latin); font-weight: 700; }
+.lib-word-gloss { color: var(--muted); }
+.lib-word > summary .status-chip { margin-inline-start: auto; }
+.lib-word-body { display: grid; gap: var(--sp-2); justify-items: start; padding-block-end: var(--sp-3); padding-inline: var(--card-pad); }
+.lib-sentence { margin: 0; font-family: var(--font-latin); }

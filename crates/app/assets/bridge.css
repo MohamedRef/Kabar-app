@@ -1,0 +1,26 @@
+/* The Arabic Bridge (play/bridge_deck.rs), built from the shared components
+   (.card.flat, .search-field, .card.grouped, .status-chip, button.tonal).
+   Gold here means "from Arabic" and is used for nothing else in the app. */
+
+.deck-hero { display: grid; justify-items: center; gap: var(--sp-2); text-align: center; }
+.deck-hero p { margin: 0; }
+.deck-count { font-family: var(--font-latin); font-size: clamp(1.6rem, 6vw, 2.4rem); font-weight: 700; color: var(--gold); line-height: 1.2; }
+.deck-search { margin-block: var(--sp-3); }
+
+.deck-list { list-style: none; padding: 0; margin-block-end: var(--sp-4); }
+.app:not([data-width="compact"]) .deck-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr)); }
+.app:not([data-width="compact"]) .deck-list > li { border-block-start: 1px solid var(--line-soft); }
+
+.deck-row > summary {
+  display: flex; align-items: center; gap: var(--sp-3); cursor: pointer; list-style: none;
+  min-block-size: var(--row); box-sizing: border-box; padding-block: var(--sp-2); padding-inline: var(--card-pad);
+}
+.deck-row > summary::-webkit-details-marker { display: none; }
+.deck-row[open] > summary { background: var(--gold-bg); }
+.deck-word { flex: 1; display: grid; gap: 2px; min-inline-size: 0; justify-items: start; }
+.deck-word .bridge-word { font-size: var(--fs-lg); font-weight: 700; }
+.deck-word .muted { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-inline-size: 100%; }
+.bridge-ar { flex: none; font-family: var(--font-arabic); font-size: var(--fs-xl); color: var(--gold); }
+.deck-detail { display: grid; gap: var(--sp-2); justify-items: start; padding-block: var(--sp-2) var(--sp-4); padding-inline: var(--card-pad); }
+.deck-detail p { margin: 0; }
+button.deck-games { margin-block-end: var(--sp-4); }

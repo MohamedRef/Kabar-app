@@ -202,6 +202,10 @@ fn WordCard(i: usize) -> Element {
     let sentence = open.doc.sentence_of(i).to_string();
     let key = w.key.clone();
     let status = key.as_deref().map(|k| st.status(k));
+    // What the review card is made from (a taught meaning wins).
+    let info = w.shown();
+    // Saved before (here or from another text): the button says so.
+    let saved_before = key.as_deref().is_some_and(|k| db.0.borrow().saved_word_count(k).unwrap_or(0) > 0);
     let breakdown = w.breakdown().map(|_| (parts_of_token(&w.analyzed), w.class));
     let speak_text = w.analyzed.normalized.as_ref().map_or(surface.clone(), |n| n.full.clone());
     let taught = w.taught_approved().and_then(taught_info);
@@ -327,9 +331,10 @@ fn WordCard(i: usize) -> Element {
                 if let Some(k) = key.clone() {
                     button {
                         class: "primary",
-                        disabled: *added.read(),
+                        disabled: *added.read() || saved_before,
                         onclick: {
                             let db = db.clone();
+                            let info = info.clone();
                             let surface = surface.clone();
                             let sentence = sentence.clone();
                             move |_| {
@@ -339,6 +344,7 @@ fn WordCard(i: usize) -> Element {
                                     &surface,
                                     &sentence,
                                     &open.text.id,
+                                    info.as_ref(),
                                 );
                                 match saved {
                                     Ok(promoted) => {
@@ -353,7 +359,7 @@ fn WordCard(i: usize) -> Element {
                                 }
                             }
                         },
-                        if *added.read() { "{ui.t(Msg::AddedToReview)}" } else { "{ui.t(Msg::AddToReview)}" }
+                        if *added.read() || saved_before { "{ui.t(Msg::AddedToReview)}" } else { "{ui.t(Msg::AddToReview)}" }
                     }
                 }
             }
