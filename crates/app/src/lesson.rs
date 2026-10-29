@@ -27,7 +27,7 @@ use self::text::{L, lt};
 use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::platform::{self, TtsStatus};
-use crate::pron::Pron;
+use crate::pron::{Pron, Say};
 use crate::{Db, Ui};
 
 const LESSON_CSS: Css = css!("assets/lesson.css");
@@ -58,6 +58,7 @@ pub(crate) fn now_ms() -> u64 {
 #[component]
 pub fn LessonScreen() -> Element {
     let ui = use_context::<Ui>();
+    crate::focus::use_focus_mode(true);
     let lang = ui.settings.read().ui_language;
     let id = ui.lesson.read().clone().unwrap_or_default();
     // Unpacked and parsed once per lesson, not on every render.
@@ -233,6 +234,16 @@ fn check_hint(ex: &Exercise) -> L {
         K::MultipleChoice { .. } => L::HintChoose,
         K::Listen { options, .. } | K::FillBlank { options, .. } if !options.is_empty() => L::HintChoose,
         _ => L::HintType,
+    }
+}
+
+/// The level a lesson id belongs to, as the Journey names it:
+/// `bipa1.u01.l01` → "BIPA 1", `j3.u02.l04` → "J3".
+fn level_label(id: &str) -> String {
+    let level = id.split('.').next().unwrap_or(id);
+    match level.strip_prefix("bipa") {
+        Some(n) => format!("BIPA {n}"),
+        None => level.to_uppercase(),
     }
 }
 
@@ -698,7 +709,10 @@ fn RichRuns(text: String, target: &'static str, pron: bool) -> Element {
                                         span { key: "{k}", "{t}" }
                                     },
                                     Bit::Say(t) => rsx! {
-                                        Pron { key: "{k}", text: t, tag: target, inline: true }
+                                        span { key: "{k}",
+                                            Say { text: t.clone(), tag: target }
+                                            Pron { text: t, tag: target, inline: true }
+                                        }
                                     },
                                 }
                             }
@@ -1025,6 +1039,8 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
             op(&mut p)
         };
         let Some(pos) = pos else { return };
+        // A new screen starts at its top, not where the last one was scrolled.
+        document::eval(r#"document.querySelector(".lp-body")?.scrollTo(0, 0);"#);
         let mut draft = draft;
         draft.set(Draft::default());
         saved_draft.set(Draft::default());
@@ -1313,7 +1329,7 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                     "×"
                 }
                 // Isolated left to right so "3 / 12" never reads "12 / 3".
-                span { class: "lp-count", dir: "ltr", aria_label: "{counter_label}", "{counter}" }
+                span { class: "lp-count ltr-count", dir: "ltr", aria_label: "{counter_label}", "{counter}" }
                 div {
                     class: "lp-progress",
                     role: "progressbar",
@@ -1340,8 +1356,12 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                         },
                         Step::Exercise { .. } => match exercise.clone() {
                             Some(ex) => rsx! {
-                                if retry {
-                                    span { class: "pill lp-retry", "{lt(lang, L::Retry)}" }
+                                p { class: "lp-focus",
+                                    span { class: "status-chip neutral", bdi { dir: "ltr", "{level_label(&lesson.id)}" } }
+                                    bdi { lang: target, dir: "ltr", "{lesson.title}" }
+                                    if retry {
+                                        span { class: "pill lp-retry", "{lt(lang, L::Retry)}" }
+                                    }
                                 }
                                 p { class: "lp-instruction", "{lt(lang, instruction(&ex, &language))}" }
                                 ExerciseView {
@@ -1520,7 +1540,7 @@ pub(crate) fn no_audio_msg() -> L {
     }
 }
 
-fn speaker_icon() -> Element {
+pub(crate) fn speaker_icon() -> Element {
     rsx! {
         svg {
             width: "22",
@@ -1566,6 +1586,7 @@ fn TableCell(text: String, tag: &'static str) -> Element {
         // Word over its pronunciation, so a four-column table fits a phone.
         span { class: "lp-cell-word",
             bdi { lang: tag, dir: "ltr", class: "latin", "{text}" }
+            Say { text: text.clone(), tag }
             if say {
                 Pron { text: text.clone(), tag, inline: true }
             }
@@ -1640,7 +1661,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                                 },
                                 span { class: "lp-example-icon", {speaker_icon()} }
                                 span { class: "lp-example-text",
-                                    Annotated { text: ex.text.clone(), tag: target, meaning: pick(&ex.meaning, lang).to_string(), class: "lp-target" }
+                                    Annotated { text: ex.text.clone(), tag: target, meaning: pick(&ex.meaning, lang).to_string(), class: "lp-target", say: false }
                                 }
                             }
                         }
@@ -1679,7 +1700,7 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
                                 crate::portraits::SpeakerFace { speaker: line.speaker.clone(), class: "lp-face" }
                                 bdi { "{line.speaker}" }
                             }
-                            Annotated { text: line.text.clone(), tag: target, meaning: pick(&line.meaning, lang).to_string(), class: "lp-target" }
+                            Annotated { text: line.text.clone(), tag: target, meaning: pick(&line.meaning, lang).to_string(), class: "lp-target", say: false }
                         }
                     }
                 }
@@ -1724,9 +1745,9 @@ fn SummaryView(
             // Finishing (and passing) is the learner's progress; whether the
             // content is right is asked separately below.
             p { class: "lp-finished reveal",
-                span { class: "pill ok", "✓ {lt(lang, L::Finished)}" }
+                span { class: "status-chip good", "✓ {lt(lang, L::Finished)}" }
                 if passed {
-                    span { class: "pill ok", "{lt(lang, L::Passed)}" }
+                    span { class: "status-chip good", "{lt(lang, L::Passed)}" }
                 }
             }
             if perfect {
@@ -1925,7 +1946,10 @@ fn Feedback(
                 Grade::Correct => rsx! {
                     p { class: "lp-verdict", "{lt(lang, praise)}" }
                     if let Some(w) = &word {
-                        p { Rich { text: lt(lang, L::CorrectWord).replace("{w}", w), target } }
+                        p {
+                            Rich { text: lt(lang, L::CorrectWord).replace("{w}", w), target }
+                            Say { text: w.clone(), tag: target }
+                        }
                         Pron { text: w.clone(), tag: target }
                     }
                 },
@@ -2814,6 +2838,12 @@ mod tests {
         let view = kabar_core::lesson::retry_options(ex, 7).unwrap();
         let back = restore_draft(&view, &saved, &[]).choice.unwrap();
         assert_eq!(option_key(&view, back), option_key(ex, 0));
+    }
+
+    #[test]
+    fn levels_are_named_like_the_journey() {
+        assert_eq!(level_label("bipa1.u01.l01"), "BIPA 1");
+        assert_eq!(level_label("j3.u02.l04"), "J3");
     }
 
     #[test]

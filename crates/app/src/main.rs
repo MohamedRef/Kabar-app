@@ -13,6 +13,7 @@ mod data_export;
 mod dead_ends;
 mod diag;
 mod embedded;
+mod focus;
 mod fonts;
 mod i18n;
 mod icons;
@@ -158,6 +159,8 @@ pub struct Ui {
     pub lesson: Signal<Option<String>>,
     /// The screen the player was opened from; closing it goes back there.
     pub lesson_from: Signal<Screen>,
+    /// A lesson or review session holds the screen (`focus::use_focus_mode`).
+    pub focus: Signal<bool>,
 }
 
 /// The local database, shared through context.
@@ -336,6 +339,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         }),
         lesson: Signal::new(open_lesson),
         lesson_from: Signal::new(Screen::Journey),
+        focus: Signal::new(false),
     });
     use_context_provider(|| db.clone());
     let prefs = use_context_provider(|| settings::device::DevicePrefs::load(&db));
@@ -415,6 +419,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             dir: lang.dir().as_str(),
             "data-theme": theme,
             "data-appearance": appearance,
+            "data-focus": if *ui.focus.read() { "true" } else { "false" },
             "data-width": width,
             "data-text-size": text_size,
             "data-nav": nav_style,
