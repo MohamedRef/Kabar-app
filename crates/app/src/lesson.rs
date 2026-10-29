@@ -998,11 +998,12 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
     // The lesson notes pane on wide windows; the learner can tuck it away.
     let mut notes_open = use_signal(|| true);
 
-    // Save where we are on open (Lanjut) and play the first exercise's audio.
+    // Save where we are on open (Lanjut), with the restored answer so a
+    // second reopen still has it, and play the first exercise's audio.
     use_hook(move || {
         let p = player.peek();
         if !episode {
-            save(db, &p.position());
+            save_with(db, &p, &draft.peek());
             // Just in time: this unit's and the next unit's audio (SPEC §20).
             crate::packs::prefetch_for(&p.lesson().id);
         }
