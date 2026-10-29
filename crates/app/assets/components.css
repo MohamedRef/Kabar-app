@@ -346,3 +346,116 @@ input.switch:focus-visible { outline: 3px solid var(--focus); outline-offset: 2p
 @media (prefers-contrast: more) {
   .app[data-appearance="glossy"] .card { border-color: var(--line); box-shadow: none; }
 }
+
+/* ---------- List screens: view switcher and collections ----------
+   div.view-bar (views::ViewBar): the order menu and three layout buttons.
+   ul.coll[data-layout=cards|list|compact] > li > button.coll-btn holding
+   .coll-lead (a .coll-badge or .row-icon), .coll-main (.coll-title,
+   .coll-sub, .coll-extra), .coll-end and .chev. Same markup in every
+   layout: compact hides .coll-sub/.coll-extra/.coll-when-roomy and shows
+   .coll-when-compact; cards stack everything in a grid tile.
+   .coll-btn may be a summary (a details row). An item may carry one
+   extra button (.coll-aside, e.g. delete) after its .coll-btn. */
+.view-bar { display: flex; align-items: center; justify-content: flex-end; gap: var(--sp-2); flex-wrap: wrap; flex-shrink: 0; }
+.view-bar:has(.view-sort) { justify-content: space-between; }
+.view-seg { display: inline-flex; gap: 2px; padding: 3px; border-radius: var(--radius-pill); background: var(--surface-2); }
+.view-seg > button {
+  position: relative; display: grid; place-items: center; inline-size: 2.6rem; block-size: 2.25rem; min-block-size: 0;
+  border: 0; border-radius: var(--radius-pill); background: none; color: var(--muted); padding: 0;
+}
+.view-seg > button::after { content: ""; position: absolute; inset-block: min(0px, calc((100% - var(--tap)) / 2)); inset-inline: 0; }
+.view-seg > button svg { inline-size: 1.15rem; block-size: 1.15rem; }
+.view-seg > button[aria-checked="true"] { background: var(--surface); color: var(--primary); box-shadow: 0 1px 2px color-mix(in srgb, var(--text) 14%, transparent); }
+.view-sort { position: relative; }
+button.view-sort-btn {
+  display: inline-flex; align-items: center; gap: 6px; min-block-size: 2.4rem; padding-inline: var(--sp-3);
+  border: 1px solid var(--line-soft); border-radius: var(--radius-pill); background: var(--surface);
+  color: var(--text); font-size: var(--fs-sm); font-weight: 500;
+}
+.view-sort-btn svg { inline-size: 1.05rem; block-size: 1.05rem; color: var(--muted); }
+button.view-scrim { position: fixed; inset: 0; z-index: 40; background: transparent; border: 0; padding: 0; min-block-size: 0; cursor: default; }
+.view-menu {
+  position: absolute; z-index: 41; inset-block-start: calc(100% + 6px); inset-inline-start: 0;
+  min-inline-size: 13rem; display: flex; flex-direction: column; padding: 4px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-control);
+  box-shadow: var(--shadow-raised);
+}
+button.view-menu-item {
+  display: flex; align-items: center; justify-content: flex-start; gap: var(--sp-2); min-block-size: var(--tap);
+  padding-inline: var(--sp-2) var(--sp-3); border: 0; border-radius: var(--radius-sm, 10px); background: none;
+  color: var(--text); font-weight: 400; text-align: start;
+}
+button.view-menu-item[aria-checked="true"] { color: var(--primary); font-weight: 600; }
+.view-tick { inline-size: 1.2rem; text-align: center; }
+@media (hover: hover) and (pointer: fine) {
+  button.view-menu-item:hover, .view-seg > button:not([aria-checked="true"]):hover { background: var(--soft); }
+}
+
+.coll { list-style: none; margin: 0; padding: 0; flex-shrink: 0; }
+.coll > li { position: relative; display: flex; align-items: stretch; min-inline-size: 0; }
+.coll > li > details { flex: 1; min-inline-size: 0; }
+.coll-btn {
+  flex: 1; min-inline-size: 0; display: flex; align-items: center; gap: var(--sp-3); min-block-size: var(--row);
+  padding: var(--sp-3) var(--card-pad); border: 0; border-radius: 0; background: none; color: inherit;
+  font-weight: inherit; text-align: start; cursor: pointer;
+}
+summary.coll-btn { list-style: none; }
+summary.coll-btn::-webkit-details-marker { display: none; }
+.coll-btn:active { transform: var(--press, scale(0.98)); }
+.coll-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+.coll-lead { flex: none; display: flex; align-items: center; }
+.coll-badge {
+  min-inline-size: 2.4rem; block-size: 2.4rem; padding-inline: var(--sp-2); display: grid; place-items: center;
+  border-radius: var(--radius-control); background: var(--soft); color: var(--primary);
+  font-family: var(--font-latin); font-size: var(--fs-sm); font-weight: 700;
+}
+.coll-badge.good { background: var(--good-bg); color: var(--good); }
+.coll-badge.strong { background: var(--primary); color: var(--on-primary); }
+.coll-badge.quiet { background: var(--surface-2); color: var(--muted); }
+.coll-main { flex: 1; min-inline-size: 0; display: flex; flex-direction: column; gap: 2px; }
+.coll-title { font-weight: 600; line-height: var(--lh-ui); overflow-wrap: anywhere; }
+.coll-sub { color: var(--muted); font-size: var(--fs-sm); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.coll-extra { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-2); }
+.coll-end { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; color: var(--muted); font-size: var(--fs-xs); text-align: end; }
+.coll-when-compact { display: none; }
+.coll-aside { flex: none; align-self: center; margin-inline-end: var(--sp-2); }
+
+/* List and compact: rows in one surface with hairlines. */
+.coll:is([data-layout="list"], [data-layout="compact"]) {
+  background: var(--surface); border: 1px solid var(--line-soft); border-radius: var(--radius-card); overflow: clip;
+}
+.coll:is([data-layout="list"], [data-layout="compact"]) > li + li { border-block-start: 1px solid var(--line-soft); }
+@media (hover: hover) and (pointer: fine) {
+  .coll:is([data-layout="list"], [data-layout="compact"]) .coll-btn:hover { background: var(--soft); }
+}
+.coll[data-layout="compact"] .coll-btn { min-block-size: var(--tap); padding-block: var(--sp-2); gap: var(--sp-2); }
+.coll[data-layout="compact"] :is(.coll-sub, .coll-extra, .coll-when-roomy) { display: none; }
+.coll[data-layout="compact"] .coll-when-compact { display: inline; }
+.coll[data-layout="compact"] .coll-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.coll[data-layout="compact"] :is(.coll-badge, .coll-lead .row-icon) { min-inline-size: 2rem; block-size: 2rem; }
+.coll[data-layout="compact"] .coll-lead .row-icon { inline-size: 2rem; }
+.coll[data-layout="compact"] .coll-end { flex-direction: row; align-items: center; gap: var(--sp-2); }
+
+/* Cards: tiles in a grid, two across on a phone, more when there is
+   room. The tile is the li, so a second button (.coll-aside) or an open
+   details body stays inside it. */
+.coll[data-layout="cards"] { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-2); }
+.app:not([data-width="compact"]) .coll[data-layout="cards"] { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+.coll[data-layout="cards"] > li {
+  flex-direction: column; background: var(--surface); border: 1px solid var(--line-soft); border-radius: var(--radius-card); overflow: clip;
+}
+.coll[data-layout="cards"] .coll-btn { position: relative; flex-direction: column; align-items: stretch; gap: var(--sp-2); padding: var(--sp-3); }
+.coll[data-layout="cards"] > li > details > .coll-btn { block-size: 100%; }
+.coll[data-layout="cards"] > li > details { display: flex; flex-direction: column; }
+.coll[data-layout="cards"] .coll-lead { padding-inline-end: var(--sp-4); }
+.coll[data-layout="cards"] .coll-extra { margin-block-start: auto; padding-block-start: var(--sp-1); }
+.coll[data-layout="cards"] .coll-end { flex-direction: row; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-2); text-align: start; }
+.coll[data-layout="cards"] .coll-btn > .chev { position: absolute; inset-block-start: calc(var(--sp-3) + 1rem); inset-inline-end: var(--sp-3); }
+.coll[data-layout="cards"] .coll-aside { align-self: flex-end; margin: 0 var(--sp-2) var(--sp-2); }
+@media (hover: hover) and (pointer: fine) { .coll[data-layout="cards"] > li:hover { border-color: var(--primary); } }
+.app[data-appearance="glossy"]:not([data-theme="black"]) :is(.coll:not([data-layout="cards"]), .coll[data-layout="cards"] > li) {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 94%, white), var(--surface));
+  border-color: color-mix(in srgb, var(--primary) 16%, var(--line));
+  box-shadow: var(--gloss-hi), var(--gloss-shadow);
+}
+.app[data-appearance="glossy"] .view-seg > button[aria-checked="true"] { background: var(--accent); color: var(--accent-ink); box-shadow: var(--gloss-hi); }

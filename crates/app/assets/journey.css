@@ -117,6 +117,16 @@
 .lesson-meta { font-size: 0.8rem; }
 .lesson-state { color: var(--dawn); font-weight: 600; }
 .lesson[data-state="done"] .lesson-state { color: var(--sawah); }
+/* The view switcher (views.rs): compact keeps one line per lesson, the
+   dot says its state; cards put the lessons two across as tiles. */
+.lessons[data-layout="compact"] { gap: 0.2rem; }
+.lessons[data-layout="compact"] .lesson { padding-block: 0.3rem; min-block-size: var(--tap); }
+.lessons[data-layout="compact"] .lesson-meta { display: none; }
+.lessons[data-layout="compact"] .lesson-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lessons[data-layout="cards"] { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.45rem; }
+.lessons[data-layout="cards"] > li { display: flex; }
+.lessons[data-layout="cards"] .lesson { flex-direction: column; align-items: flex-start; gap: 0.4rem; block-size: 100%; padding: 0.65rem; border: 1px solid var(--line-soft); }
+.route-list > .view-bar, .jm-panel > .view-bar { margin-block-end: var(--sp-2); }
 
 /* ---------- phone: vertical route ---------- */
 .route-list { display: grid; gap: 1.25rem; }

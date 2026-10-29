@@ -266,6 +266,19 @@ fn mood_of(busy: bool, all: &[ChatMessage]) -> Mood {
     }
 }
 
+/// Past chats: rows by default, newest first or by partner.
+const HISTORY_VIEW: crate::views::Collection = crate::views::Collection {
+    key: "chat.history",
+    layout: crate::views::Layout::List,
+    sorts: &[crate::views::Sort::Recent, crate::views::Sort::Name],
+};
+/// Partners: rows by default, in the course's order or by name.
+const PARTNERS_VIEW: crate::views::Collection = crate::views::Collection {
+    key: "chat.partners",
+    layout: crate::views::Layout::List,
+    sorts: &[crate::views::Sort::Course, crate::views::Sort::Name],
+};
+
 #[component]
 fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Element {
     let ui = use_context::<Ui>();
@@ -281,6 +294,21 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
     let focus = try_use_context::<Coach>()
         .and_then(|c| c.profile.read().as_ref().map(|p| p.focus))
         .unwrap_or(LanguageFocus::Both);
+    // Past chats arrive newest first; partners in the course's order.
+    let history_pick = HISTORY_VIEW.pick(&db);
+    let mut chats: Vec<_> = chats.into_iter().filter_map(|c| persona(&c.persona).map(|p| (c, p))).collect();
+    crate::views::sort_by(&mut chats, history_pick.sort, |_| false, |(_, p)| p.name.clone());
+    let partners_pick = PARTNERS_VIEW.pick(&db);
+    let mut partners = personas_for(focus);
+    crate::views::sort_by(
+        &mut partners,
+        partners_pick.sort,
+        |_| false,
+        |e| match e {
+            Ok(p) => p.name.clone(),
+            Err((id, _)) => id.to_string(),
+        },
+    );
 
     rsx! {
         header { class: "ch-page-head",
@@ -291,42 +319,41 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
         // usual next step once there is one.
         if !chats.is_empty() {
             h3 { class: "ch-section", "{tt(lang, T::YourChats)}" }
-            ul { class: "ch-history",
-                for c in chats {
-                    if let Some(p) = persona(&c.persona) {
-                        {
-                            let last = db.0.borrow().chat_messages(&c.id).unwrap_or_default();
-                            let count = last.len();
-                            let preview = last.last().map(|m| m.text.clone()).unwrap_or_default();
-                            let (open_id, delete_id) = (c.id.clone(), c.id.clone());
-                            let db = db.clone();
-                            let target = target_tag(&p.language);
-                            rsx! {
-                                li { key: "{c.id}", class: "card ch-past",
-                                    button { class: "ch-open", onclick: move |_| on_chat.call(open_id.clone()),
-                                        Avatar { name: p.name.clone(), javanese: is_javanese(p) }
-                                        span { class: "ch-who",
-                                            span { class: "ch-name",
-                                                strong { bdi { class: "latin", "{p.name}" } }
-                                                span { class: "pill neutral small", "{level_name(&c.level)}" }
-                                            }
-                                            bdi { class: "latin muted ch-preview", lang: target, "{preview}" }
-                                            span { class: "muted small", "{ui.num(count as u64)} {tt(lang, T::Messages)}" }
+            crate::views::ViewBar { of: HISTORY_VIEW }
+            ul { class: "coll ch-history", "data-layout": history_pick.layout.as_str(),
+                for (c , p) in chats {
+                    {
+                        let last = db.0.borrow().chat_messages(&c.id).unwrap_or_default();
+                        let count = last.len();
+                        let preview = last.last().map(|m| m.text.clone()).unwrap_or_default();
+                        let (open_id, delete_id) = (c.id.clone(), c.id.clone());
+                        let db = db.clone();
+                        let target = target_tag(&p.language);
+                        rsx! {
+                            li { key: "{c.id}",
+                                button { class: "coll-btn ch-open", onclick: move |_| on_chat.call(open_id.clone()),
+                                    span { class: "coll-lead", Avatar { name: p.name.clone(), javanese: is_javanese(p) } }
+                                    span { class: "coll-main ch-who",
+                                        span { class: "coll-title ch-name",
+                                            strong { bdi { class: "latin", "{p.name}" } }
+                                            span { class: "pill neutral small coll-when-roomy", "{level_name(&c.level)}" }
                                         }
-                                        span { class: "chev", aria_hidden: "true" }
+                                        bdi { class: "latin muted ch-preview coll-sub", lang: target, "{preview}" }
+                                        span { class: "muted small coll-extra", "{ui.num(count as u64)} {tt(lang, T::Messages)}" }
                                     }
-                                    button {
-                                        class: "ch-icon quiet",
-                                        aria_label: "{tt(lang, T::Delete)}",
-                                        title: "{tt(lang, T::Delete)}",
-                                        onclick: move |_| {
-                                            if let Err(e) = db.0.borrow_mut().delete_conversation(&delete_id) {
-                                                crate::diag::report!("deleting the chat failed: {e}");
-                                            }
-                                            revision += 1;
-                                        },
-                                        {icons::trash()}
-                                    }
+                                    span { class: "chev", aria_hidden: "true" }
+                                }
+                                button {
+                                    class: "ch-icon quiet coll-aside",
+                                    aria_label: "{tt(lang, T::Delete)}",
+                                    title: "{tt(lang, T::Delete)}",
+                                    onclick: move |_| {
+                                        if let Err(e) = db.0.borrow_mut().delete_conversation(&delete_id) {
+                                            crate::diag::report!("deleting the chat failed: {e}");
+                                        }
+                                        revision += 1;
+                                    },
+                                    {icons::trash()}
                                 }
                             }
                         }
@@ -335,8 +362,9 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
             }
         }
         h3 { class: "ch-section", "{tt(lang, T::Partners)}" }
-        ul { class: "ch-personas",
-            for entry in personas_for(focus) {
+        crate::views::ViewBar { of: PARTNERS_VIEW }
+        ul { class: "coll ch-personas", "data-layout": partners_pick.layout.as_str(),
+            for entry in partners {
                 match entry {
                     Ok(p) => {
                         let id = p.id.clone();
@@ -346,17 +374,17 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
                         let bands = p.style.levels.iter().map(|b| level_name(&b.level)).collect::<Vec<_>>().join(" · ");
                         rsx! {
                             li { key: "{p.id}",
-                                button { class: "card tap ch-persona", onclick: move |_| on_persona.call(id.clone()),
-                                    Avatar { name: p.name.clone(), javanese: jv }
-                                    span { class: "ch-who",
-                                        span { class: "ch-name",
+                                button { class: "coll-btn ch-partner", onclick: move |_| on_persona.call(id.clone()),
+                                    span { class: "coll-lead", Avatar { name: p.name.clone(), javanese: jv } }
+                                    span { class: "coll-main ch-who",
+                                        span { class: "coll-title ch-name",
                                             strong { bdi { class: "latin", "{p.name}" } }
                                             span { class: if jv { "pill small ch-lang jv" } else { "pill small ch-lang" },
                                                 if jv { "{tt(lang, T::Javanese)}" } else { "{tt(lang, T::Indonesian)}" }
                                             }
                                         }
-                                        span { class: "muted small", "{pick(&p.role, lang)}" }
-                                        span { class: "ch-levels small latin", dir: "ltr", "{bands}" }
+                                        span { class: "coll-sub", "{pick(&p.role, lang)}" }
+                                        span { class: "coll-extra ch-levels small latin", dir: "ltr", "{bands}" }
                                     }
                                     span { class: "chev", aria_hidden: "true" }
                                 }
@@ -364,7 +392,7 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
                         }
                     }
                     Err((id, e)) => rsx! {
-                        li { key: "{id}", class: "card",
+                        li { key: "{id}", class: "card ch-broken",
                             p { "{tt(lang, T::Broken)}" }
                             p { class: "muted small latin", dir: "ltr", "{id}: {e}" }
                         }

@@ -37,6 +37,10 @@ const TAPPABLE: &[&str] = &[
     "nur-card",
     "now-card",
     "now-milestone",
+    // List screens' items in every layout (views.rs, components.css .coll):
+    // cards, rows and compact lines are the same button or summary.
+    "coll-btn",
+    "view-menu-item",
 ];
 
 /// Elements that can be pressed. A `li.lx-card.locked` is a broken episode
@@ -546,4 +550,58 @@ fn the_open_check_sees_a_picture_card() {
     assert_eq!(cards_that_open_nothing(picture), vec![1]);
     let opens = "section { class: \"card st-card\",\n    CardHead { title: t, to: Screen::Review }\n    p { \"42\" }\n}\n";
     assert!(cards_that_open_nothing(opens).is_empty());
+}
+
+/// List screens with a view switcher (views::ViewBar, 2026-10-29): in every
+/// layout an item is the same `button.coll-btn` (or a details `summary`),
+/// so a card, a row and a compact line all open what they show. Each `.coll`
+/// list takes the screen's layout, its items are `coll-btn`s, every file
+/// with a switcher reads its choice, and components.css draws all three.
+#[test]
+fn every_view_of_a_list_opens_its_items() {
+    let mut files = Vec::new();
+    sources(&Path::new(env!("CARGO_MANIFEST_DIR")).join("src"), &mut files);
+    let mut bad = Vec::new();
+    let mut lists = 0;
+    for (path, src) in &files {
+        if path.ends_with("dead_ends.rs") || path.ends_with("views.rs") {
+            continue;
+        }
+        let lines: Vec<&str> = src.lines().collect();
+        for f in elements(src) {
+            if !f.classes.iter().any(|c| c == "coll") {
+                continue;
+            }
+            lists += 1;
+            let block = lines[f.line - 1..f.end].join("\n");
+            if !lines[f.line - 1].contains("\"data-layout\"") {
+                bad.push(format!("{path}:{}: a .coll list without the screen's data-layout", f.line));
+            }
+            // Items written inline, or a row component (DeckRow) that is.
+            let row_component = block.contains("Row {");
+            if !row_component && !block.contains("coll-btn") {
+                bad.push(format!("{path}:{}: a .coll list whose items aren't coll-btn buttons", f.line));
+            }
+        }
+        if src.contains("ViewBar { of: ") && !src.contains(".pick(&") {
+            bad.push(format!("{path}: a ViewBar whose choice the list never reads"));
+        }
+    }
+    let css =
+        std::fs::read_to_string(Path::new(env!("CARGO_MANIFEST_DIR")).join("assets/components.css")).unwrap();
+    for layout in crate::views::Layout::ALL {
+        if !css.contains(&format!("[data-layout=\"{}\"]", layout.as_str())) {
+            bad.push(format!("components.css draws no `{}` layout", layout.as_str()));
+        }
+    }
+    assert!(lists >= 7, "the scanner should see the list screens' .coll lists, saw {lists}");
+    assert!(bad.is_empty(), "list views that can't open their items:\n{}", bad.join("\n"));
+}
+
+/// A row component inside a `.coll` list must itself be a `coll-btn`.
+#[test]
+fn the_bridge_rows_are_coll_items() {
+    let src = std::fs::read_to_string(Path::new(env!("CARGO_MANIFEST_DIR")).join("src/play/bridge_deck.rs"))
+        .unwrap();
+    assert!(src.contains("summary { class: \"coll-btn\""));
 }

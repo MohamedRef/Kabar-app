@@ -199,6 +199,22 @@ fn custom(file: &'static str) -> Element {
     }
 }
 
+/// The view switcher's layouts: cards in a grid, rows with a second line,
+/// one line each.
+pub fn layout(l: crate::views::Layout) -> Element {
+    use crate::views::Layout;
+    stroke(match l {
+        Layout::Cards => "M4.5 4.5h6v6h-6zM13.5 4.5h6v6h-6zM4.5 13.5h6v6h-6zM13.5 13.5h6v6h-6z",
+        Layout::List => "M4.5 5h4v4h-4zM11.5 6h8M11.5 8.5h5M4.5 15h4v4h-4zM11.5 16h8M11.5 18.5h5",
+        Layout::Compact => "M4.5 5h15M4.5 9.67h15M4.5 14.33h15M4.5 19h15",
+    })
+}
+
+/// A list's order: an arrow down beside shorter and shorter lines.
+pub fn sort() -> Element {
+    stroke("M7 4.5v15M4 16.5l3 3 3-3M13 6.5h7M13 11.5h5M13 16.5h3")
+}
+
 fn stroke(d: &'static str) -> Element {
     rsx! {
         svg {

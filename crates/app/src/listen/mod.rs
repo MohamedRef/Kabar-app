@@ -199,10 +199,22 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                     unlocked(c, &Progress::new(c, &completed), start.as_deref(), &s.unlock_after)
                 })
             };
-            let (rows, hidden) = sinetron_rows(&SHOWS.sinetron, open_of);
+            let (mut rows, hidden) = sinetron_rows(&SHOWS.sinetron, open_of);
+            let view = SINETRON_VIEW.pick(&db);
+            crate::views::sort_by(
+                &mut rows,
+                view.sort,
+                |r| match r {
+                    Row::Open(s, _) => !completed.contains(&s.id),
+                    Row::Next(..) => true,
+                    Row::Broken(..) => false,
+                },
+                |_| String::new(),
+            );
             rsx! {
                 p { class: "muted", "{tt(lang, T::SinetronIntro)}" }
-                ol { class: "lx-list",
+                crate::views::ViewBar { of: SINETRON_VIEW }
+                ol { class: "coll lx-list", "data-layout": view.layout.as_str(),
                     for row in rows {
                         match row {
                             Row::Open(s, n) => {
@@ -211,15 +223,15 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                                 rsx! {
                                     li { key: "{s.id}",
                                         button {
-                                            class: "card lx-card",
+                                            class: "coll-btn lx-card",
                                             onclick: move |_| on_open.call(Open::Sinetron(id.clone())),
-                                            span { class: "lx-icon", aria_hidden: "true", {crate::icons::play()} }
-                                            span { class: "lx-body",
+                                            span { class: "coll-lead lx-icon", aria_hidden: "true", {crate::icons::play()} }
+                                            span { class: "coll-main lx-body",
                                                 span { class: "muted small", "{episode_label(&ui, s, n)}" }
-                                                strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
-                                                span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
-                                                span { class: "muted small lx-summary", Rich { text: pick(&s.summary, lang).to_string(), target } }
-                                                span { class: "row",
+                                                strong { class: "coll-title", bdi { lang: target, class: "latin", "{s.title.target}" } }
+                                                span { class: "coll-sub", Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
+                                                span { class: "muted small lx-summary coll-extra", Rich { text: pick(&s.summary, lang).to_string(), target } }
+                                                span { class: "row coll-extra",
                                                     if completed.contains(&s.id) {
                                                         span { class: "pill good", "✓ {tt(lang, T::Watched)}" }
                                                     }
@@ -252,17 +264,17 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                                 rsx! {
                                     li { key: "{s.id}",
                                     button {
-                                        class: "card lx-card lx-teaser tap",
+                                        class: "coll-btn lx-card lx-teaser",
                                         onclick: move |_| if let Some(id) = &next { ui.open_lesson(id.clone()) },
-                                        span { class: "lx-icon locked", aria_hidden: "true", "🔒" }
-                                        span { class: "lx-body",
+                                        span { class: "coll-lead lx-icon locked", aria_hidden: "true", "🔒" }
+                                        span { class: "coll-main lx-body",
                                             span { class: "muted small", "{episode_label(&ui, s, n)}" }
-                                            strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
-                                            span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
-                                            span { class: "muted small", "{tt(lang, T::OpensAfter)}: " Rich { text: unit_title, target } }
+                                            strong { class: "coll-title", bdi { lang: target, class: "latin", "{s.title.target}" } }
+                                            span { class: "coll-sub", Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
+                                            span { class: "muted small coll-extra", "{tt(lang, T::OpensAfter)}: " Rich { text: unit_title, target } }
                                             if total > 0 {
-                                                progress { max: "{total}", value: "{done}" }
-                                                span { class: "small", "{lessons_left(&ui, total - done)}" }
+                                                progress { class: "coll-extra", max: "{total}", value: "{done}" }
+                                                span { class: "small coll-extra", "{lessons_left(&ui, total - done)}" }
                                             }
                                         }
                                         span { class: "chev", aria_hidden: "true" }
@@ -279,10 +291,20 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                 }
             }
         }
-        Tab::Radio => rsx! {
+        Tab::Radio => {
+            let view = RADIO_VIEW.pick(&db);
+            let mut radio: Vec<_> = SHOWS.radio.iter().collect();
+            crate::views::sort_by(
+                &mut radio,
+                view.sort,
+                |e| e.as_ref().is_ok_and(|r| !completed.contains(&r.id)),
+                |_| String::new(),
+            );
+            rsx! {
             p { class: "muted", Rich { text: tt(lang, T::RadioIntro).to_string(), target: "id" } }
-            ol { class: "lx-list",
-                for entry in SHOWS.radio.iter() {
+            crate::views::ViewBar { of: RADIO_VIEW }
+            ol { class: "coll lx-list", "data-layout": view.layout.as_str(),
+                for entry in radio {
                     match entry {
                         Ok(r) => {
                             let target = target_tag(&r.language);
@@ -290,14 +312,14 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                             rsx! {
                                 li { key: "{r.id}",
                                     button {
-                                        class: "card lx-card",
+                                        class: "coll-btn lx-card",
                                         onclick: move |_| on_open.call(Open::Radio(id.clone())),
-                                        span { class: "lx-icon", aria_hidden: "true", {crate::icons::nav(crate::Screen::Listen)} }
-                                        span { class: "lx-body",
+                                        span { class: "coll-lead lx-icon", aria_hidden: "true", {crate::icons::nav(crate::Screen::Listen)} }
+                                        span { class: "coll-main lx-body",
                                             span { class: "muted small", "{crate::coach::labels::minutes(&ui, r.minutes)}" }
-                                            strong { bdi { lang: target, class: "latin", "{r.title.target}" } }
-                                            span { Rich { text: pick(&r.title.meaning, lang).to_string(), target } }
-                                            span { class: "row",
+                                            strong { class: "coll-title", bdi { lang: target, class: "latin", "{r.title.target}" } }
+                                            span { class: "coll-sub", Rich { text: pick(&r.title.meaning, lang).to_string(), target } }
+                                            span { class: "row coll-extra",
                                                 if completed.contains(&r.id) {
                                                     span { class: "pill good", "✓ {tt(lang, T::Listened)}" }
                                                 }
@@ -315,7 +337,8 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                     }
                 }
             }
-        },
+            }
+        }
     };
 
     rsx! {
@@ -338,6 +361,18 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
         }
     }
 }
+
+/// The episode lists: rows by default; in order, or not watched yet first.
+const SINETRON_VIEW: crate::views::Collection = crate::views::Collection {
+    key: "listen.sinetron",
+    layout: crate::views::Layout::List,
+    sorts: &[crate::views::Sort::Course, crate::views::Sort::Left],
+};
+const RADIO_VIEW: crate::views::Collection = crate::views::Collection {
+    key: "listen.radio",
+    layout: crate::views::Layout::List,
+    sorts: &[crate::views::Sort::Course, crate::views::Sort::Left],
+};
 
 /// One entry of the Sinetron list.
 /// The number is the episode's place in its own series (Javanese starts at
@@ -410,7 +445,7 @@ fn more_episodes(ui: &Ui, n: usize) -> String {
 fn Broken(id: String, error: String) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
-        li { class: "card lx-card locked",
+        li { class: "card lx-card locked lx-broken",
             strong { bdi { class: "mono", "{id}" } }
             span { class: "muted small", "{tt(ui.lang(), T::Broken)}" }
             span { class: "mono small", dir: "ltr", "{error}" }

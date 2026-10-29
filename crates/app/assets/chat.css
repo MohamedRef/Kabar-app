@@ -20,11 +20,11 @@
 .ch-page-head p { margin: 0; line-height: var(--lh-arabic, 1.8); }
 .ch-section { font-size: var(--fs-md, 1rem); font-weight: 600; margin-block-start: var(--sp-2, 0.5rem); }
 
-/* Partner, scene and past-chat rows: avatar, two lines, chevron. */
-.ch-personas { display: grid; gap: var(--sp-2, 0.5rem); grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
-.ch-scenes, .ch-history { display: grid; gap: var(--sp-2, 0.5rem); }
-.ch-personas .card, .ch-scenes .card, .ch-history .card { margin: 0; }
-button.ch-persona, button.ch-scene, button.ch-context, .ch-open {
+/* Scene rows: avatar, two lines, chevron. Partners and past chats use the
+   shared .coll layouts (views.rs); a broken partner is a plain card. */
+.ch-scenes { display: grid; gap: var(--sp-2, 0.5rem); }
+.ch-scenes .card, .ch-personas .card { margin: 0; }
+button.ch-scene, button.ch-context {
   display: flex; gap: var(--sp-3, 0.75rem); align-items: center; text-align: start;
   font: inherit; color: var(--text); font-weight: inherit;
 }
@@ -42,9 +42,6 @@ button.ch-persona, button.ch-scene, button.ch-context, .ch-open {
 img.face.ch-avatar { inline-size: 3rem; block-size: 3rem; background: var(--surface-2); }
 .ch-context img.face.ch-avatar { inline-size: 3.25rem; block-size: 3.25rem; transition: opacity var(--dur, 0.2s); }
 
-.ch-past { display: flex; align-items: center; gap: var(--sp-2, 0.5rem); padding-block: var(--sp-2, 0.5rem); }
-.ch-open { all: unset; flex: 1; display: flex; gap: var(--sp-3, 0.75rem); align-items: center; cursor: pointer; min-inline-size: 0; padding-block: var(--sp-1, 0.25rem); }
-.ch-open:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-sm, 0.4rem); }
 .ch-preview { display: block; max-inline-size: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* Icon-only buttons: a 48px target around a small glyph. */
@@ -163,6 +160,5 @@ button.ch-send svg { inline-size: 1.25rem; block-size: 1.25rem; }
 }
 .app[data-appearance="glossy"]:not([data-theme="black"]) .chat :is(.ch-field textarea, button.primary.ch-send) { border-radius: 999px; }
 /* Long role blurbs stay two lines in the list; the profile has them whole. */
-.ch-persona .ch-who > .muted { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 /* On a phone the top bar already names the screen. */
 .app[data-width="compact"] .ch-page-head h2 { display: none; }
