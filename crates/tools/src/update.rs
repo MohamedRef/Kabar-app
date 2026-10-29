@@ -68,6 +68,11 @@ pub enum Cmd {
         dir: PathBuf,
         #[arg(long)]
         public_key: Option<PathBuf>,
+        /// A platform whose build was carried from the previous feed
+        /// (`manifest --carry`): its file is already on the release, so it
+        /// may be missing here; when it is here, it is checked as usual.
+        #[arg(long = "carried", value_parser = parse_platform)]
+        carried: Vec<UpdatePlatform>,
     },
     /// Print what `changes/` adds after `--since` (default: only HEAD), and check every file there.
     Changes {
@@ -226,10 +231,10 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
             eprintln!("signed {}", dir.join(SIGNATURE_FILE).display());
             Ok(())
         }
-        Cmd::Verify { dir, public_key } => {
+        Cmd::Verify { dir, public_key, carried } => {
             let public =
                 fs::read_to_string(public_key.unwrap_or_else(|| root.path().join(RELEASE_KEY_FILE)))?;
-            let m = verify(&dir, &public)?;
+            let m = verify(&dir, &public, &carried)?;
             eprintln!(
                 "ok: {} {} build {}, {} file(s) match",
                 m.channel.as_str(),
@@ -452,13 +457,19 @@ pub fn sign(dir: &Path, secret_b64: &str, public: &str) -> Result<()> {
     Ok(())
 }
 
-pub fn verify(dir: &Path, public: &str) -> Result<UpdateManifest> {
+/// Checks `dir`'s feed: the signature, then every file it names. A build of
+/// a `carried` platform may be absent (it is already on the release).
+pub fn verify(dir: &Path, public: &str, carried: &[UpdatePlatform]) -> Result<UpdateManifest> {
     let key = parse_public_key(public).map_err(|e| anyhow::anyhow!("{e}"))?;
     let json = fs::read(dir.join(MANIFEST_FILE))?;
     let sig = fs::read_to_string(dir.join(SIGNATURE_FILE))?;
     let m = verify_manifest(&json, &sig, &key).map_err(|e| anyhow::anyhow!("{e}"))?;
     for a in &m.assets {
-        let bytes = fs::read(dir.join(&a.file)).with_context(|| a.file.clone())?;
+        let path = dir.join(&a.file);
+        if carried.contains(&a.platform) && !path.exists() {
+            continue;
+        }
+        let bytes = fs::read(&path).with_context(|| a.file.clone())?;
         check_download(a, bytes.len() as u64, &sha256_hex(&bytes))
             .map_err(|e| anyhow::anyhow!("{}: {e}", a.file))?;
     }
@@ -607,11 +618,21 @@ mod tests {
         assert!(!feed.join(SIGNATURE_FILE).exists());
 
         sign(&feed, &secret, &public).unwrap();
-        assert_eq!(verify(&feed, &public).unwrap(), m);
+        assert_eq!(verify(&feed, &public, &[]).unwrap(), m);
 
-        // A swapped build fails verification.
-        fs::write(feed.join(&m.assets[0].file), b"something else").unwrap();
-        assert!(verify(&feed, &public).is_err());
+        // A carried build (already on the release) may be missing here, but
+        // only when it's named as carried; when present it's still checked.
+        let apk_path = feed.join(&m.assets[0].file);
+        let bytes = fs::read(&apk_path).unwrap();
+        fs::remove_file(&apk_path).unwrap();
+        assert!(verify(&feed, &public, &[]).is_err());
+        assert_eq!(verify(&feed, &public, &[UpdatePlatform::AndroidArm64]).unwrap(), m);
+        fs::write(&apk_path, &bytes).unwrap();
+
+        // A swapped build fails verification, carried or not.
+        fs::write(&apk_path, b"something else").unwrap();
+        assert!(verify(&feed, &public, &[]).is_err());
+        assert!(verify(&feed, &public, &[UpdatePlatform::AndroidArm64]).is_err());
     }
 
     #[test]
