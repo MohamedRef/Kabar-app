@@ -295,19 +295,14 @@ impl Engine {
 
     /// Takes back the last answer; its card goes to the front of the queue.
     fn undo(&self) -> bool {
-        let mut session = self.session;
-        let Some(answer) = session.write().as_mut().and_then(Session::undo) else { return false };
-        match self.db.0.borrow_mut().undo_review(&answer.event_id) {
-            Ok(_) => {
-                let mut deck = self.deck;
-                deck.write().forget(&answer.event_id, &self.sched);
-                true
-            }
-            Err(e) => {
-                crate::diag::report!("undo failed: {e}");
-                false
-            }
-        }
+        let (mut session, mut deck) = (self.session, self.deck);
+        let mut session = session.write();
+        let Some(session) = session.as_mut() else { return false };
+        let undone = take_back(&mut self.db.0.borrow_mut(), session, &mut deck.write(), &self.sched);
+        undone.unwrap_or_else(|e| {
+            crate::diag::report!("undo failed: {e}");
+            false
+        })
     }
 
     /// Ends the session (once: effects may ask twice before unmounting).
@@ -345,9 +340,42 @@ impl Engine {
         deck.set(load_deck(&self.db, &self.sched));
     }
 
+    /// The learner checked a card's content: it loses the unverified flag
+    /// (its memory schedule is untouched).
+    fn verify_card(&self, card: &Card) {
+        let checked = Card { verified: true, ..card.clone() };
+        if let Err(e) = self.db.0.borrow_mut().upsert_card(&checked) {
+            crate::diag::report!("saving the content check failed: {e}");
+            let mut error = self.error;
+            error.set(Some(Msg::RevSaveFailed));
+            return;
+        }
+        let mut deck = self.deck;
+        deck.set(load_deck(&self.db, &self.sched));
+    }
+
     fn card(&self, id: &str) -> Option<Card> {
         self.deck.read().card(id).cloned()
     }
+}
+
+/// Undo of the session's last answer, in this order so the three never
+/// disagree: the event gets its tombstone in the log (the review log is
+/// append-only; a tombstone is its supported correction, and it syncs),
+/// then the session hands the card back and the deck forgets the event, so
+/// the card's schedule is exactly what it was before the answer. Nothing
+/// changes if the log write fails. Returns whether an answer was undone.
+fn take_back(
+    store: &mut Store,
+    session: &mut Session,
+    deck: &mut Deck,
+    sched: &Scheduler,
+) -> Result<bool, crate::store::StoreError> {
+    let Some(last) = session.answers().last().map(|a| a.event_id.clone()) else { return Ok(false) };
+    store.undo_review(&last)?;
+    session.undo();
+    deck.forget(&last, sched);
+    Ok(true)
 }
 
 // ---------------------------------------------------------------- text helpers
@@ -1020,6 +1048,11 @@ fn Classic() -> Element {
     let rate = use_callback({
         let engine = engine.clone();
         move |r: Rating| {
+            // Only a revealed card is rated: a quick second tap must not
+            // rate the card that just replaced it.
+            if !revealed() {
+                return;
+            }
             let Some((card_id, shown_ms)) = hand() else { return };
             if engine.answer(&card_id, r, now_ms().saturating_sub(shown_ms)) {
                 advance(&engine);
@@ -1108,9 +1141,6 @@ fn Classic() -> Element {
                                 let _ = e.set_focus(true).await;
                             },
                         }
-                        if !revealed() {
-                            button { r#type: "submit", class: "primary", "{ui.t(Msg::RevCheck)}" }
-                        }
                     }
                     if let Some(m) = checked() {
                         p { class: if m == AnswerMatch::Exact { "rev-verdict ok" } else { "rev-verdict" },
@@ -1134,8 +1164,21 @@ fn Classic() -> Element {
                     Back { card: card.clone() }
                 }
             }
+            // Whether the card's content is right is its own question, kept
+            // apart from the memory rating below.
+            if revealed() && card.language == StudyLanguage::Jv {
+                ContentRow { card: card.clone() }
+            }
+            // The footer keeps its place: one primary action before the
+            // answer shows, the four ratings (with their real next
+            // intervals) after.
+            div { class: "rev-footer",
             if revealed() {
-                div { class: "rate-row", role: "group",
+                p { class: "rev-ask", id: "rev-ask",
+                    strong { "{ui.t(Msg::RevHowWell)}" }
+                    span { class: "muted small", " {ui.t(Msg::RevRateHint)}" }
+                }
+                div { class: "rate-row", role: "group", aria_labelledby: "rev-ask",
                     for (i, p) in previews.iter().enumerate() {
                         {
                             let r = p.rating;
@@ -1155,7 +1198,18 @@ fn Classic() -> Element {
                         }
                     }
                 }
-            } else if !is_production {
+            } else if is_production {
+                div { class: "rate-row",
+                    button {
+                        class: "primary reveal-btn",
+                        onclick: {
+                            let mut check = check.clone();
+                            move |_| check()
+                        },
+                        "{ui.t(Msg::RevCheck)}"
+                    }
+                }
+            } else {
                 div { class: "rate-row",
                     button {
                         class: "primary reveal-btn",
@@ -1165,12 +1219,35 @@ fn Classic() -> Element {
                     }
                 }
             }
+            }
             div { class: "rev-foot",
                 span { class: "muted small kbd-hint", {ui.digits(ui.t(Msg::RevKeysHint))} }
                 SessionActions { on_undo: move |_| undo.call(()) }
             }
             if wide {
                 SessionPane { left, on_undo: move |_| undo.call(()) }
+            }
+        }
+    }
+}
+
+/// A Javanese card's content check, separate from how well it was
+/// remembered: unchecked until the learner says the card is right.
+#[component]
+fn ContentRow(card: Card) -> Element {
+    let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
+    rsx! {
+        div { class: "rev-content", role: "status",
+            if card.verified {
+                span { class: "muted small", "{ui.t(Msg::RevContentChecked)}" }
+            } else {
+                span { class: "muted small", "{ui.t(Msg::RevContentUnchecked)}" }
+                button {
+                    class: "ghost rev-content-ok",
+                    onclick: move |_| engine.verify_card(&card),
+                    "{ui.t(Msg::RevContentOk)}"
+                }
             }
         }
     }
@@ -1719,6 +1796,42 @@ mod tests {
         // Nor does a deck built with another scheduler.
         let travel = crate::schedule::scheduler_at(420, &Default::default());
         assert!(!Rc::ptr_eq(&deck(&db, &sched), &deck(&db, &travel)));
+    }
+
+    /// Undo puts everything back as it was: the card's schedule, the
+    /// session (card in hand again), and the log (the event tombstoned, no
+    /// second event). Undoing with nothing answered changes nothing.
+    #[test]
+    fn undo_restores_schedule_session_and_log() {
+        let db = Db(Rc::new(RefCell::new(Store::open_in_memory().unwrap())));
+        let sched = Scheduler::default();
+        db.0.borrow_mut().upsert_cards(&seed_bridge_deck()).unwrap();
+        let now = 1_761_472_800_000;
+        let mut deck = read_deck(&db, &sched);
+        let queue = deck.queue(&sched, now, |_| true);
+        let mut session = Session::new(ReviewMode::Classic, queue.clone(), now);
+        let card = session.pull().unwrap();
+        let before = deck.state(&card);
+        let preview = sched.preview(&before, now);
+
+        assert!(!take_back(&mut db.0.borrow_mut(), &mut session, &mut deck, &sched).unwrap());
+
+        let event =
+            db.0.borrow_mut().record_review(&card, Rating::Easy, now, 900, ReviewMode::Classic).unwrap();
+        deck.record(event.clone(), &sched);
+        session.answer(event.id.clone(), card.clone(), Rating::Easy, 900);
+        assert_ne!(deck.state(&card), before);
+
+        assert!(take_back(&mut db.0.borrow_mut(), &mut session, &mut deck, &sched).unwrap());
+        assert_eq!(deck.state(&card), before);
+        assert_eq!(sched.preview(&deck.state(&card), now), preview, "the buttons show the same intervals");
+        assert!(session.answers().is_empty());
+        assert_eq!(session.pull(), Some(card.clone()), "the card is back in hand");
+        assert!(db.0.borrow().review_log().unwrap().is_empty());
+        // The log and the in-memory deck agree after a full replay.
+        assert_eq!(read_deck(&db, &sched).state(&card), before);
+        // A second undo has nothing left to take back.
+        assert!(!take_back(&mut db.0.borrow_mut(), &mut session, &mut deck, &sched).unwrap());
     }
 
     #[test]

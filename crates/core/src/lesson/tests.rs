@@ -341,6 +341,8 @@ fn answer(p: &mut Player, miss: &[&str]) -> Grade {
 fn player_walks_slides_exercises_retries_dialogue_summary() {
     let mut p = Player::new(l01());
     assert_eq!(p.step(), Step::Slide(0));
+    let total = l01().slides.len() + l01().exercises.len() + 1;
+    assert_eq!(p.counter(), (1, total));
     assert_eq!(p.position().step, LessonStep::Slide { index: 0 });
     assert!(p.back().is_none());
     p.advance();
@@ -376,6 +378,8 @@ fn player_walks_slides_exercises_retries_dialogue_summary() {
     p.advance();
     assert_eq!(p.step(), Step::Summary);
     assert_eq!(p.fraction(), 1.0);
+    // Two retries joined the road.
+    assert_eq!(p.counter(), (total + 2, total + 2));
 
     let s = p.summary();
     // 12 exercises, speaking isn't graded: 11 graded, 9 right first time.
@@ -431,6 +435,91 @@ fn resume_keeps_step_and_results() {
     assert_eq!(e03.retry, Some(Outcome::Correct));
     // match_pairs is never "missed"; its result is a Correct.
     assert_eq!(q.summary().graded, 11);
+}
+
+/// Walks `p` to the first try of exercise `id`.
+fn walk_to(p: &mut Player, id: &str) {
+    while p.exercise().is_none_or(|e| e.id != id) {
+        if p.exercise().is_some() {
+            answer(p, &[]);
+        }
+        p.advance();
+    }
+}
+
+fn reopen(lesson: LessonContent, saved: &LessonPosition) -> Player {
+    let json = serde_json::to_string(saved).unwrap();
+    Player::resume(lesson, &serde_json::from_str(&json).unwrap())
+}
+
+/// A checked answer survives closing the lesson: it reopens on its feedback
+/// with Continue, and is never graded a second time.
+#[test]
+fn a_checked_answer_reopens_on_its_feedback_and_grades_once() {
+    let mut p = Player::new(l01());
+    walk_to(&mut p, "e03");
+    let g = answer(&mut p, &["e03"]);
+    assert_eq!(g, Grade::Wrong);
+    let saved = p.position();
+    assert_eq!(saved.response.as_ref().and_then(|r| r.checked.clone()), Some(SavedGrade::Wrong));
+
+    let mut q = reopen(l01(), &saved);
+    assert_eq!(q.step(), p.step());
+    assert_eq!(q.pending(), Some(&Grade::Wrong), "feedback, not a fresh Check");
+    // The right answer now changes nothing: the first try stays missed.
+    let right = Answer::Choice(match &ex(&l01(), "e03").kind {
+        ExerciseKind::MultipleChoice { answer, .. } => *answer,
+        ExerciseKind::Listen { answer: Some(a), .. } => *a,
+        k => panic!("{k:?}"),
+    });
+    assert_eq!(q.check(&right, EG), Grade::Wrong);
+    assert_eq!(q.completed().results, p.completed().results);
+    q.advance();
+    assert_eq!(q.pending(), None);
+    assert_eq!(q.position().response, None, "a fresh exercise has nothing saved");
+}
+
+/// Positions saved before grades were kept: an exercise whose result is
+/// already recorded reopens answered (from the outcome), never as a blank
+/// task with a second grading.
+#[test]
+fn an_old_position_with_a_result_reopens_answered() {
+    let mut p = Player::new(l01());
+    walk_to(&mut p, "e01");
+    answer(&mut p, &[]);
+    let mut old = p.position();
+    old.response = None;
+    let q = reopen(l01(), &old);
+    assert_eq!(q.pending(), Some(&Grade::Correct));
+    // Before checking, nothing is pending, on any kind.
+    let mut fresh = Player::new(l01());
+    walk_to(&mut fresh, "e01");
+    assert_eq!(reopen(l01(), &fresh.position()).pending(), None);
+}
+
+/// Self-review answers come back to their question, and a retry restores
+/// only once the retry itself was answered.
+#[test]
+fn needs_review_and_retries_restore_their_own_pass() {
+    let mut p = Player::new(l01());
+    walk_to(&mut p, "e08");
+    assert_eq!(p.check(&text("salah sekali"), EG), Grade::NeedsReview);
+    let q = reopen(l01(), &p.position());
+    assert_eq!(q.pending(), Some(&Grade::NeedsReview));
+    p.self_assess(false);
+    assert_eq!(reopen(l01(), &p.position()).pending(), Some(&Grade::Wrong));
+
+    // On to e08's retry: unanswered there, despite the missed first try.
+    let e08 = l01().exercises.iter().position(|e| e.id == "e08").unwrap();
+    while p.step() != (Step::Exercise { index: e08, retry: true }) {
+        if p.exercise().is_some() && p.pending().is_none() {
+            answer(&mut p, &[]);
+        }
+        p.advance();
+    }
+    assert_eq!(reopen(l01(), &p.position()).pending(), None);
+    answer(&mut p, &[]);
+    assert_eq!(reopen(l01(), &p.position()).pending(), Some(&Grade::Correct));
 }
 
 /// The text of a choice item's options, in the order shown.
@@ -521,6 +610,7 @@ fn resume_falls_back_to_the_start_for_unknown_positions() {
         lesson_id: "bipa1.u01.l01".into(),
         step: LessonStep::Exercise { id: "e99".into(), retry: false },
         progress: None,
+        response: None,
     };
     assert_eq!(Player::resume(l01(), &pos).step(), Step::Slide(0));
     let other = LessonPosition { lesson_id: "bipa9.u01.l01".into(), ..pos };
@@ -604,16 +694,37 @@ fn finished(score: u32, firsts: &[Outcome]) -> LessonCompleted {
                 mistakes: Vec::new(),
             })
             .collect(),
+        pass_verifies: true,
     }
 }
 
 #[test]
-fn a_reasonable_score_approves_the_lesson() {
+fn a_reasonable_score_passes_the_lesson() {
     use Outcome::*;
-    assert!(approves(&finished(80, &[Correct, Correct, Correct, Almost, Missed])));
-    assert!(approves(&finished(100, &[Correct, Correct, Skipped, Practiced])));
-    assert!(!approves(&finished(60, &[Correct, Correct, Correct, Missed, Missed])), "too low");
-    assert!(!approves(&finished(100, &[Correct, Skipped, Skipped, Practiced])), "mostly skipped");
-    assert!(!approves(&finished(100, &[Practiced, Skipped])), "nothing graded");
-    assert!(!approves(&finished(100, &[])), "old event without results");
+    assert!(passes(&finished(80, &[Correct, Correct, Correct, Almost, Missed])));
+    assert!(passes(&finished(100, &[Correct, Correct, Skipped, Practiced])));
+    assert!(!passes(&finished(60, &[Correct, Correct, Correct, Missed, Missed])), "too low");
+    assert!(!passes(&finished(100, &[Correct, Skipped, Skipped, Practiced])), "mostly skipped");
+    assert!(!passes(&finished(100, &[Practiced, Skipped])), "nothing graded");
+    assert!(!passes(&finished(100, &[])), "old event without results");
+}
+
+/// Since 2026-10-29 a pass is progress only; just old passes still count as
+/// the content check, and a new run never does by itself.
+#[test]
+fn only_old_passes_verify_the_content() {
+    use Outcome::*;
+    let old = finished(90, &[Correct, Correct, Correct]);
+    assert!(verifies_by_pass(&old));
+    let new = LessonCompleted { pass_verifies: false, ..old.clone() };
+    assert!(passes(&new) && !verifies_by_pass(&new));
+    assert!(!verifies_by_pass(&finished(40, &[Missed, Missed, Correct])), "an old fail never did");
+    let mut p = Player::new(l02());
+    while !matches!(p.step(), Step::Summary) {
+        if p.exercise().is_some() {
+            answer(&mut p, &[]);
+        }
+        p.advance();
+    }
+    assert!(passes(&p.completed()) && !verifies_by_pass(&p.completed()));
 }
