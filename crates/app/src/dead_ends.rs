@@ -278,7 +278,9 @@ fn one_button_cards(src: &str) -> Vec<usize> {
     let mut dead = Vec::new();
     for Found { element, classes, line, .. } in elements(src) {
         let classes: Vec<&str> = classes.iter().map(String::as_str).collect();
-        if PRESSABLE.contains(&element.as_str()) || !classes.contains(&"card") {
+        // A grouped list's rows fill the card edge to edge: the row is the card.
+        if PRESSABLE.contains(&element.as_str()) || !classes.contains(&"card") || classes.contains(&"grouped")
+        {
             continue;
         }
         let block = block_from(&lines, line);
@@ -505,7 +507,7 @@ const OPENING_COMPONENTS: &[&str] = &["CardHead {"];
 /// Redesigned screens (2026-10-29) where every card must open something:
 /// no card is only a picture of numbers. Each card's block holds an
 /// `onclick` (its own or a button's) or an opening component.
-const EVERY_CARD_OPENS: &[&str] = &["stats/mod.rs"];
+const EVERY_CARD_OPENS: &[&str] = &["stats/mod.rs", "settings/mod.rs"];
 
 /// Lines of cards in `src` that open nothing.
 fn cards_that_open_nothing(src: &str) -> Vec<usize> {
