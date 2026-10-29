@@ -1,4 +1,4 @@
-//! Settings › About › Updates, the gentle "new Kabar is ready" card on
+//! Settings › Updates, the gentle "new Kabar is ready" card on
 //! Today, and the hooks that follow the updater from the UI (installs on
 //! Android, and what the "new version" notification needs and opens).
 
@@ -20,10 +20,9 @@ pub(super) const UPDATE_CSS: &str = r#"
 .update-state progress { inline-size: 100%; accent-color: var(--sawah); }
 .update-notes { white-space: pre-line; }
 .update-notes-label { display: block; }
-.update-check { margin-block-end: 0.75rem; }
-.update-modes { display: grid; gap: 0.35rem; }
-.update-modes label { display: grid; grid-template-columns: auto 1fr; column-gap: 0.5rem; align-items: start; }
-.update-modes .muted { grid-column: 2; font-size: 0.85rem; }
+.update-covers { margin-block: 0.5rem 0; }
+.update-found p { margin-block: 0.15rem; }
+.row-copy small.update-waiting { color: var(--primary); font-weight: 600; }
 .update-banner { display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: center;
   border-inline-start: 4px solid var(--sawah); }
 .update-banner .ub-text { flex: 1 1 14rem; min-inline-size: 0; }
@@ -121,7 +120,58 @@ pub(super) fn primary_action(lang: UiLanguage, phase: &Phase) -> Option<(U, fn(U
     }
 }
 
-/// Settings › About › Updates.
+/// What the updater is doing, in a headline (`None` before the first check).
+fn headline(phase: &Phase) -> Option<U> {
+    Some(match phase {
+        Phase::Idle => return None,
+        Phase::Checking => U::Checking,
+        Phase::UpToDate => U::UpToDate,
+        Phase::NotForThisDevice => U::NotForDevice,
+        Phase::Available(_) => U::Available,
+        Phase::Downloading { .. } => U::Downloading,
+        Phase::Ready(_) => U::Ready,
+        Phase::Installing(_) => U::Installing,
+        Phase::NeedsPermission(_) => U::NeedsPermission,
+        Phase::Installed(_) => U::Installed,
+        Phase::Failed { why, offer } => failure_text(why, offer.as_ref()),
+    })
+}
+
+/// "Last checked: Today 14:32", or "Not checked yet".
+fn last_checked(ui: &Ui, s: &Status) -> String {
+    let lang = ui.lang();
+    match s.prefs.last_check_ms {
+        Some(ms) => ut(lang, U::LastChecked).replace("{when}", &super::sheet::moment(ui, ms, s)),
+        None => ut(lang, U::NeverChecked).to_owned(),
+    }
+}
+
+/// The Updates row's line in the Settings list: live state, else when the
+/// last check ran.
+pub fn summary(ui: &Ui, s: &Status) -> String {
+    let lang = ui.lang();
+    if s.off.is_some() {
+        return ut(lang, U::OffShort).into();
+    }
+    if s.checking_all {
+        return ut(lang, U::Checking).into();
+    }
+    match &s.phase {
+        Phase::Failed { offer: None, .. } => ut(lang, U::CheckFailedShort).into(),
+        Phase::Idle | Phase::UpToDate | Phase::NotForThisDevice | Phase::Failed { .. } => {
+            if s.content_waiting.is_some() {
+                ut(lang, U::ContentWaitingShort).into()
+            } else {
+                last_checked(ui, s)
+            }
+        }
+        p => headline(p).map(|h| ut(lang, h).to_owned()).unwrap_or_default(),
+    }
+}
+
+/// Settings › Updates: where the app and its lessons stand, one button that
+/// checks for both (and refreshes downloaded audio packs), and how updates
+/// arrive.
 #[component]
 pub fn UpdatesCard() -> Element {
     let ui = use_context::<Ui>();
@@ -129,9 +179,9 @@ pub fn UpdatesCard() -> Element {
     let status = use_update_status();
     let Some(s) = status.read().clone() else { return rsx! {} };
     let version = env!("CARGO_PKG_VERSION");
-    let build = super::get().map_or(0, |u| u.info.build);
     let commit = super::commit();
-    let busy = matches!(s.phase, Phase::Checking | Phase::Downloading { .. } | Phase::Installing(_));
+    let busy = s.checking_all
+        || matches!(s.phase, Phase::Checking | Phase::Downloading { .. } | Phase::Installing(_));
     let has_offer = matches!(
         s.phase,
         Phase::Available(_)
@@ -140,29 +190,42 @@ pub fn UpdatesCard() -> Element {
             | Phase::NeedsPermission(_)
             | Phase::Installed(_)
     );
+    // What the last check found besides the app, once it's done.
+    let done = !busy && s.prefs.last_check_ms.is_some();
+    let content_found = s.content_check.filter(|_| done).map(|c| match c {
+        super::content::Refresh::Current => U::ContentSame,
+        super::content::Refresh::Taken(_) => U::ContentWaitingShort,
+        super::content::Refresh::Failed => U::ContentFailed,
+    });
+    let packs = (done && s.packs_refreshed > 0)
+        .then(|| ut(lang, U::PacksRefreshed).replace("{n}", &ui.num(s.packs_refreshed as u64)));
+    let content_line = match (s.content_build, s.content_since_ms) {
+        (0, _) => ut(lang, U::ContentBuiltIn).to_owned(),
+        (b, since) => {
+            let mut line = format!("{} · {} {}", ut(lang, U::ContentUpdated), ut(lang, U::Build), ui.num(b));
+            if let Some(ms) = since {
+                line += &format!(" · {}", super::sheet::moment(&ui, ms, &s));
+            }
+            line
+        }
+    };
+    let app_icon = crate::icons::settings_section(if cfg!(target_os = "android") {
+        Section::Android
+    } else {
+        Section::Mac
+    });
     let sheet = try_use_context::<UpdateSheetNav>();
+    let open_history = move |_| {
+        if let Some(sheet) = sheet {
+            sheet.open(SheetMode::History);
+        }
+    };
 
     rsx! {
         style { {UPDATE_CSS} }
-        section { class: "card", aria_labelledby: "updates-title",
-            h2 { id: "updates-title", "{ut(lang, U::Title)}" }
-            div { class: "field",
-                span { class: "label", "{ut(lang, U::ThisBuild)}" }
-                // Each Latin piece isolated on its own: inside one LTR run the
-                // Arabic word "build" pulled the numbers around it out of order.
-                span {
-                    code { dir: "ltr", bdi { "{version}" } }
-                    if build > 0 {
-                        " · {ut(lang, U::Build)} "
-                        code { dir: "ltr", bdi { "{build}" } }
-                    }
-                    if let Some(c) = commit {
-                        " · "
-                        code { dir: "ltr", bdi { "{c}" } }
-                    }
-                }
-            }
+        div { class: "card update-now",
             if let Some(off) = s.off {
+                p { strong { "{ut(lang, U::OffShort)}" } }
                 p { class: "muted settings-hint", role: "status",
                     {ut(lang, match off {
                         Off::DevBuild => U::OffDev,
@@ -172,52 +235,130 @@ pub fn UpdatesCard() -> Element {
                     })}
                 }
             } else {
-                PhaseView { phase: s.phase.clone(), auto: s.prefs.mode == Mode::Auto }
-                if s.content_waiting {
-                    p { class: "muted small", role: "status", "{ut(lang, U::ContentWaiting)}" }
+                if s.checking_all && !matches!(s.phase, Phase::Checking) {
+                    div { class: "update-state", role: "status", aria_live: "polite",
+                        p { strong { "{ut(lang, U::Checking)}" } }
+                    }
+                } else {
+                    PhaseView { phase: s.phase.clone(), auto: s.prefs.mode == Mode::Auto }
                 }
+                div { class: "update-found", role: "status", aria_live: "polite",
+                    p { class: "muted small", "{last_checked(&ui, &s)}" }
+                    if let Some(u) = content_found {
+                        p { class: "small",
+                            if u == U::ContentSame { "✓ " }
+                            "{ut(lang, u)}"
+                        }
+                    }
+                    if let Some(p) = packs {
+                        p { class: "small", "✓ {p}" }
+                    }
+                }
+                if s.content_waiting.is_some() {
+                    div { class: "update-state",
+                        p { "{ut(lang, U::ContentWaiting)}" }
+                        if cfg!(target_os = "macos") {
+                            div { class: "row",
+                                button { class: "primary", onclick: move |_| restart_now(), "{ut(lang, U::RestartNow)}" }
+                            }
+                        } else {
+                            p { class: "muted small", "{ut(lang, U::ReopenHint)}" }
+                        }
+                    }
+                }
+                p { class: "muted small update-covers", "{ut(lang, U::CheckCovers)}" }
                 div { class: "row update-check",
                     button {
+                        class: if has_offer || s.content_waiting.is_some() { "" } else { "primary" },
                         disabled: busy,
-                        onclick: move |_| work(|u| u.check(false)),
+                        onclick: move |_| work(Updater::check_everything),
                         "{ut(lang, U::CheckNow)}"
                     }
                     if let Some(sheet) = sheet {
                         if has_offer {
                             button { onclick: move |_| sheet.open(SheetMode::Offer), "{ut(lang, U::WhatsNewAsk)}" }
                         }
-                        button { onclick: move |_| sheet.open(SheetMode::History), "{ut(lang, U::History)}" }
                     }
                 }
+            }
+        }
+
+        div { class: "section-head", h2 { "{ut(lang, U::OnThisDevice)}" } }
+        div { class: "card grouped",
+            button { class: "activity-row", onclick: open_history,
+                span { class: "row-icon", aria_hidden: "true", {app_icon} }
+                span { class: "row-copy",
+                    strong { "{ut(lang, U::AppRow)}" }
+                    // Each Latin piece isolated on its own: inside one LTR run the
+                    // Arabic word "build" pulled the numbers around it out of order.
+                    small {
+                        bdi { dir: "ltr", "{version}" }
+                        if s.build > 0 {
+                            " · {ut(lang, U::Build)} "
+                            bdi { dir: "ltr", "{ui.num(s.build)}" }
+                        }
+                        if let Some(c) = commit {
+                            " · "
+                            bdi { dir: "ltr", class: "latin", "{c}" }
+                        }
+                    }
+                }
+                span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
+            }
+            button { class: "activity-row", onclick: open_history,
+                span { class: "row-icon", aria_hidden: "true", {crate::icons::settings_section(Section::Learning)} }
+                span { class: "row-copy",
+                    strong { "{ut(lang, U::ContentRow)}" }
+                    small { "{content_line}" }
+                    if s.content_waiting.is_some() {
+                        small { class: "update-waiting", "{ut(lang, U::ContentWaitingShort)}" }
+                    }
+                }
+                span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
+            }
+            button { class: "activity-row", onclick: open_history,
+                span { class: "row-icon", aria_hidden: "true", {crate::icons::settings_section(Section::Updates)} }
+                span { class: "row-copy",
+                    strong { "{ut(lang, U::History)}" }
+                    small { "{ut(lang, U::HistoryHint)}" }
+                }
+                span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
+            }
+        }
+
+        if s.off.is_none() {
+            div { class: "section-head", h2 { "{ut(lang, U::HowItWorks)}" } }
+            div { class: "card",
                 div { class: "field",
-                    span { class: "label", "{ut(lang, U::Mode)}" crate::settings::Scope { device_only: true } }
-                    div { class: "update-modes", role: "radiogroup",
+                    span { class: "label", id: "update-mode-label",
+                        "{ut(lang, U::Mode)}"
+                        crate::settings::Scope { device_only: true }
+                    }
+                    div { class: "segmented", role: "radiogroup", aria_labelledby: "update-mode-label",
                         for m in Mode::ALL {
-                            label { key: "{m:?}",
-                                input {
-                                    r#type: "radio",
-                                    name: "update-mode",
-                                    checked: s.prefs.mode == m,
-                                    onchange: move |_| {
-                                        if let Some(u) = super::get() {
-                                            u.set_mode(m);
-                                        }
-                                    },
-                                }
-                                span {
-                                    {ut(lang, match m { Mode::Auto => U::ModeAuto, Mode::Notify => U::ModeNotify, Mode::Off => U::ModeOff })}
-                                }
-                                span { class: "muted",
-                                    {ut(lang, match m { Mode::Auto => U::ModeAutoHint, Mode::Notify => U::ModeNotifyHint, Mode::Off => U::ModeOffHint })}
-                                }
+                            button {
+                                key: "{m:?}",
+                                role: "radio",
+                                aria_checked: if s.prefs.mode == m { "true" } else { "false" },
+                                onclick: move |_| {
+                                    if let Some(u) = super::get() {
+                                        u.set_mode(m);
+                                    }
+                                },
+                                {ut(lang, match m { Mode::Auto => U::ModeAuto, Mode::Notify => U::ModeNotify, Mode::Off => U::ModeOff })}
                             }
                         }
+                    }
+                    p { class: "muted small",
+                        {ut(lang, match s.prefs.mode { Mode::Auto => U::ModeAutoHint, Mode::Notify => U::ModeNotifyHint, Mode::Off => U::ModeOffHint })}
                     }
                 }
                 if s.prefs.mode != Mode::Off {
                     div { class: "field",
-                        label {
+                        label { class: "switch-row",
                             input {
+                                class: "switch",
+                                role: "switch",
                                 r#type: "checkbox",
                                 checked: s.prefs.notify,
                                 onchange: move |e: FormEvent| {
@@ -229,34 +370,43 @@ pub fn UpdatesCard() -> Element {
                             " {ut(lang, U::NotifyToggle)}"
                             crate::settings::Scope { device_only: true }
                         }
-                        p { class: "muted settings-hint", "{ut(lang, U::NotifyToggleHint)}" }
+                        p { class: "muted small", "{ut(lang, U::NotifyToggleHint)}" }
                     }
                 }
                 div { class: "field",
-                    span { class: "label", "{ut(lang, U::Channel)}" crate::settings::Scope { device_only: true } }
+                    span { class: "label", id: "update-channel-label",
+                        "{ut(lang, U::Channel)}"
+                        crate::settings::Scope { device_only: true }
+                    }
                     if s.preview {
                         span { class: "pill", "{ut(lang, U::Preview)}" }
-                        p { class: "muted settings-hint", "{ut(lang, U::PreviewHint)}" }
+                        p { class: "muted small", "{ut(lang, U::PreviewHint)}" }
                     } else {
-                        div { class: "row", role: "group",
+                        div { class: "segmented", role: "radiogroup", aria_labelledby: "update-channel-label",
                             for c in Channel::RELEASE {
                                 button {
                                     key: "{c.as_str()}",
-                                    aria_pressed: if s.channel == c { "true" } else { "false" },
+                                    role: "radio",
+                                    aria_checked: if s.channel == c { "true" } else { "false" },
                                     disabled: busy,
                                     onclick: move |_| work(move |u| u.set_channel(c)),
                                     "{ut(lang, channel_label(c))}"
                                 }
                             }
                         }
-                        p { class: "muted settings-hint", "{ut(lang, U::ChannelHint)}" }
+                        p { class: "muted small", "{ut(lang, U::ChannelHint)}" }
                     }
                 }
+                p { class: "muted small", "{ut(lang, U::Safety)}" }
+                p { class: "muted small", "{ut(lang, U::Packs)}" }
             }
-            p { class: "muted settings-hint", "{ut(lang, U::Safety)}" }
-            p { class: "muted settings-hint", "{ut(lang, U::Packs)}" }
         }
     }
+}
+
+fn restart_now() {
+    #[cfg(target_os = "macos")]
+    super::restart();
 }
 
 #[component]
@@ -274,19 +424,7 @@ fn PhaseView(phase: Phase, auto: bool) -> Element {
         Phase::Failed { offer, .. } => offer.clone(),
         _ => None,
     };
-    let headline = match &phase {
-        Phase::Idle => None,
-        Phase::Checking => Some(U::Checking),
-        Phase::UpToDate => Some(U::UpToDate),
-        Phase::NotForThisDevice => Some(U::NotForDevice),
-        Phase::Available(_) => Some(U::Available),
-        Phase::Downloading { .. } => Some(U::Downloading),
-        Phase::Ready(_) => Some(U::Ready),
-        Phase::Installing(_) => Some(U::Installing),
-        Phase::NeedsPermission(_) => Some(U::NeedsPermission),
-        Phase::Installed(_) => Some(U::Installed),
-        Phase::Failed { why, offer } => Some(failure_text(why, offer.as_ref())),
-    };
+    let headline = headline(&phase);
     let Some(headline) = headline else { return rsx! {} };
     let detail = match &phase {
         Phase::Failed { why: Failure::Verify(d) | Failure::Install(d), .. } => Some(d.clone()),
@@ -368,14 +506,36 @@ fn open_install_permission() {
 
 /// The card on Today once there's something to do: a download to start
 /// (Tell me first), an install, or a restart. Closing it hides it until the
-/// next version.
+/// next version. Without one, new lessons that came over the air get a
+/// short note until Kabar is reopened.
 #[component]
 pub fn UpdateBanner() -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
     let status = use_update_status();
+    let mut hide_content = use_signal(|| false);
     let Some(s) = status.read().clone() else { return rsx! {} };
-    let Some(offer) = s.banner().cloned() else { return rsx! {} };
+    let Some(offer) = s.banner().cloned() else {
+        // New lessons downloaded over the air: a quiet note until reopened.
+        if s.content_waiting.is_none() || hide_content() {
+            return rsx! {};
+        }
+        return rsx! {
+            style { {UPDATE_CSS} }
+            section { class: "card update-banner", role: "status",
+                div { class: "ub-text",
+                    p { strong { "{ut(lang, U::ContentWaitingShort)}" } }
+                    p { class: "muted small", "{ut(lang, U::ReopenHint)}" }
+                }
+                div { class: "row",
+                    if cfg!(target_os = "macos") {
+                        button { class: "primary", onclick: move |_| restart_now(), "{ut(lang, U::RestartNow)}" }
+                    }
+                    button { onclick: move |_| hide_content.set(true), "{ut(lang, U::GotIt)}" }
+                }
+            }
+        };
+    };
     let Some((label, run)) = primary_action(lang, &s.phase) else { return rsx! {} };
     let headline = match s.phase {
         Phase::Available(_) => U::Available,
@@ -538,7 +698,7 @@ pub fn use_update_notices(ui: Ui, nav: SettingsNav) {
             // (never in the shell), the Updates card does.
             match sheet {
                 Some(sheet) => sheet.open_offer(),
-                None => nav.show(Some(Section::About)),
+                None => nav.show(Some(Section::Updates)),
             }
             let lang = ui.lang();
             match tap.as_str() {

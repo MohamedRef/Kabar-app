@@ -78,6 +78,8 @@ pub fn settings_section(section: crate::settings::Section) -> Element {
         // a download arrow into a tray
         Section::Storage => "M12 4v10M8 10l4 4 4-4M4 16v3h16v-3",
         Section::Account => return nav(Screen::Devices),
+        // two arrows chasing each other round
+        Section::Updates => "M20 12a8 8 0 0 1-14.3 4.9M4 12a8 8 0 0 1 14.3-4.9M18.5 3v4h-4M5.5 21v-4h4",
         // an i in a circle
         Section::About => "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v5M12 8h.01",
     };

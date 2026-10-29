@@ -1,12 +1,10 @@
-//! Updates' own strings (Settings › About › Updates, the banner and the
+//! Updates' own strings (Settings › Updates, the banner and the
 //! "new version" notification).
 
 use kabar_core::locale::UiLanguage;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum U {
-    Title,
-    ThisBuild,
     Build,
     // why updates are off here
     OffDev,
@@ -98,17 +96,29 @@ pub enum U {
     Close,
     GotIt,
     NoDetails,
+    // Settings › Updates: what's on this device, and what a check found
+    AppRow,
+    ContentRow,
+    ContentBuiltIn,
+    ContentUpdated,
+    ContentWaitingShort,
+    ContentSame,
+    ContentFailed,
+    PacksRefreshed,
+    LastChecked,
+    NeverChecked,
+    CheckFailedShort,
+    OffShort,
+    ReopenHint,
+    OnThisDevice,
+    HowItWorks,
+    CheckCovers,
 }
 
 pub fn ut(lang: UiLanguage, u: U) -> &'static str {
     use U::*;
     use UiLanguage::*;
     match (u, lang) {
-        (Title, ArEg | Ar) => "التحديثات",
-        (Title, En) => "Updates",
-        (ThisBuild, ArEg) => "النسخة اللي معاك",
-        (ThisBuild, Ar) => "الإصدار المثبّت",
-        (ThisBuild, En) => "This build",
         (Build, ArEg | Ar) => "بناء",
         (Build, En) => "build",
 
@@ -384,8 +394,8 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (BadgeContent, ArEg) => "تحديث محتوى",
         (BadgeContent, Ar) => "تحديث محتوى",
         (BadgeContent, En) => "Content update",
-        (ContentWaiting, ArEg) => "دروس ومحتوى جديد نزلوا، وهيظهروا أول ما تفتح كبر تاني، من غير تثبيت.",
-        (ContentWaiting, Ar) => "نُزِّل محتوى جديد، وسيظهر عند فتح كبر في المرة القادمة، دون تثبيت.",
+        (ContentWaiting, ArEg) => "دروس ومحتوى جديد نزلوا، وهيظهروا أول ما تفتح Kabar تاني، من غير تثبيت.",
+        (ContentWaiting, Ar) => "نُزِّل محتوى جديد، وسيظهر عند فتح Kabar في المرة القادمة، دون تثبيت.",
         (ContentWaiting, En) => {
             "New lessons and content are in; they show the next time Kabar opens, with nothing to install."
         }
@@ -422,6 +432,54 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (NoDetails, ArEg) => "النسخة دي مفيهاش تفاصيل مكتوبة.",
         (NoDetails, Ar) => "لا توجد تفاصيل مكتوبة لهذا الإصدار.",
         (NoDetails, En) => "This build came without details.",
+        (AppRow, ArEg) => "البرنامج",
+        (AppRow, Ar) => "التطبيق",
+        (AppRow, En) => "The app",
+        (ContentRow, ArEg) => "الدروس والشكل",
+        (ContentRow, Ar) => "الدروس والمظهر",
+        (ContentRow, En) => "Lessons and look",
+        (ContentBuiltIn, ArEg) => "زي ما جت مع البرنامج",
+        (ContentBuiltIn, Ar) => "كما جاءت مع التطبيق",
+        (ContentBuiltIn, En) => "As they came with the app",
+        (ContentUpdated, ArEg) => "اتحدّثت من غير تثبيت",
+        (ContentUpdated, Ar) => "حُدِّثت دون تثبيت",
+        (ContentUpdated, En) => "Updated without an install",
+        (ContentWaitingShort, ArEg) => "دروس جديدة نزلت: اقفل Kabar وافتحه",
+        (ContentWaitingShort, Ar) => "نُزِّل محتوى جديد: أغلق Kabar وافتحه",
+        (ContentWaitingShort, En) => "New lessons are in: reopen Kabar",
+        (ContentSame, ArEg) => "الدروس والشكل على آخر حاجة",
+        (ContentSame, Ar) => "الدروس والمظهر محدَّثة",
+        (ContentSame, En) => "Lessons and look are up to date",
+        (ContentFailed, ArEg) => "في دروس جديدة بس ماعرفناش ننزّلها. هنجرّب تاني في الفحص الجاي.",
+        (ContentFailed, Ar) => "يوجد محتوى جديد لكن تعذّر تنزيله. سنحاول في الفحص القادم.",
+        (ContentFailed, En) => "New lessons are out but didn't come through. The next check tries again.",
+        (PacksRefreshed, ArEg) => "واتحدّث كمان {n} من باكات الصوت.",
+        (PacksRefreshed, Ar) => "وحُدِّثت أيضًا {n} من حزم الصوت.",
+        (PacksRefreshed, En) => "{n} audio packs were refreshed too.",
+        (LastChecked, ArEg) => "آخر فحص: {when}",
+        (LastChecked, Ar) => "آخر فحص: {when}",
+        (LastChecked, En) => "Last checked: {when}",
+        (NeverChecked, ArEg) => "لسه مافحصناش",
+        (NeverChecked, Ar) => "لم يُفحص بعد",
+        (NeverChecked, En) => "Not checked yet",
+        (CheckFailedShort, ArEg) => "آخر فحص ماوصلش",
+        (CheckFailedShort, Ar) => "تعذّر الفحص الأخير",
+        (CheckFailedShort, En) => "The last check didn't get through",
+        (OffShort, ArEg) => "التحديثات مقفولة هنا",
+        (OffShort, Ar) => "التحديثات متوقفة هنا",
+        (OffShort, En) => "Updates are off here",
+        (ReopenHint, ArEg) => "اقفل Kabar خالص وافتحه تاني عشان تشوفها.",
+        (ReopenHint, Ar) => "أغلق Kabar تمامًا وافتحه من جديد لتظهر.",
+        (ReopenHint, En) => "Close Kabar fully and open it again to see them.",
+        (OnThisDevice, ArEg) => "على الجهاز ده",
+        (OnThisDevice, Ar) => "على هذا الجهاز",
+        (OnThisDevice, En) => "On this device",
+        (HowItWorks, ArEg) => "إزاي بيتحدّث",
+        (HowItWorks, Ar) => "طريقة التحديث",
+        (HowItWorks, En) => "How it updates",
+        (CheckCovers, ArEg) => "بيدوّر على البرنامج والدروس وباكات الصوت مرة واحدة.",
+        (CheckCovers, Ar) => "يبحث عن تحديثات التطبيق والدروس وحزم الصوت معًا.",
+        (CheckCovers, En) => "Looks for the app, lessons and audio packs in one go.",
     }
 }
 

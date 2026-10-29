@@ -420,20 +420,24 @@ pub fn prefetch_for(lesson_id: &str) {
 }
 
 /// Over the air with the app update check: refreshes the index and
-/// re-downloads every installed pack that has a newer version, if
-/// auto-download is on and the connection isn't metered. Blocking; called
-/// from the updater's thread.
-pub fn update_installed() {
-    let Some(store) = store() else { return };
-    if base_url().is_none() || !store.auto() || crate::platform::metered_network() {
-        return;
+/// re-downloads every installed pack that has a newer version, when the
+/// connection isn't metered and either auto-download is on or the learner
+/// asked (`by_hand`, "Check for updates"). Returns how many packs it
+/// refreshed. Blocking; called from the updater's thread.
+pub fn update_installed(by_hand: bool) -> usize {
+    let Some(store) = store() else { return 0 };
+    if base_url().is_none() || !(by_hand || store.auto()) || crate::platform::metered_network() {
+        return 0;
     }
-    let Ok(index) = refresh_index(store) else { return };
+    let Ok(index) = refresh_index(store) else { return 0 };
+    let mut done = 0;
     for id in packs::outdated(&index, &store.installed_versions()) {
-        if let Err(e) = download(store, &id) {
-            crate::diag::report!("updating pack {id} failed: {e}");
+        match download(store, &id) {
+            Ok(_) => done += 1,
+            Err(e) => crate::diag::report!("updating pack {id} failed: {e}"),
         }
     }
+    done
 }
 
 /// A `data:` URL of the pre-generated clip for a line, for the WebView's

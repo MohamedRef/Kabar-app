@@ -31,11 +31,12 @@ pub enum Section {
     Mac,
     Storage,
     Account,
+    Updates,
     About,
 }
 
 impl Section {
-    pub const ALL: [Self; 9] = [
+    pub const ALL: [Self; 10] = [
         Self::Learning,
         Self::Look,
         Self::Coach,
@@ -44,6 +45,7 @@ impl Section {
         Self::Mac,
         Self::Storage,
         Self::Account,
+        Self::Updates,
         Self::About,
     ];
 
@@ -68,6 +70,7 @@ impl Section {
             Self::Mac => "mac",
             Self::Storage => "storage",
             Self::Account => "account",
+            Self::Updates => "updates",
             Self::About => "about",
         }
     }
@@ -86,6 +89,7 @@ impl Section {
             Self::Mac => S::Mac,
             Self::Storage => S::Storage,
             Self::Account => S::Account,
+            Self::Updates => S::Updates,
             Self::About => S::About,
         }
     }
@@ -100,6 +104,7 @@ impl Section {
             Self::Mac => S::MacSub,
             Self::Storage => S::StorageSub,
             Self::Account => S::AccountSub,
+            Self::Updates => S::UpdatesSub,
             Self::About => S::AboutSub,
         }
     }
@@ -290,7 +295,7 @@ const GROUPS: [(S, &[Section]); 4] = [
     (S::GroupStudy, &[Section::Learning, Section::Coach]),
     (S::GroupLook, &[Section::Look]),
     (S::GroupDevice, &[Section::Android, Section::Tablet, Section::Mac]),
-    (S::GroupData, &[Section::Account, Section::Storage, Section::About]),
+    (S::GroupData, &[Section::Account, Section::Storage, Section::Updates, Section::About]),
 ];
 
 /// The section list as grouped rows, headed by the learner (from Kak Nur's
@@ -306,12 +311,17 @@ fn SectionList(sections: Vec<Section>, current: Option<Section>) -> Element {
     let mut section_sig = nav.section;
     let name = coach.profile.read().as_ref().map(|p| p.name.trim().to_string()).filter(|n| !n.is_empty());
     let sync = cloud.map(|c| c.status.read().sync);
+    let updates = crate::update::view::use_update_status().read().clone();
     // What a row says under its title: live state where there is one.
     let detail = move |s: Section| -> String {
         match s {
             Section::Account => match sync.and_then(crate::account::sync_msg) {
                 Some(m) => ui.t(m).to_string(),
                 None => st(lang, S::AccountSub).to_string(),
+            },
+            Section::Updates => match updates.as_ref() {
+                Some(u) => crate::update::view::summary(&ui, u),
+                None => st(lang, S::UpdatesSub).to_string(),
             },
             Section::About => format!("{} {}", st(lang, S::Version), env!("CARGO_PKG_VERSION")),
             s => st(lang, s.summary()).to_string(),
@@ -376,6 +386,7 @@ fn SectionView(section: Section) -> Element {
         Section::Mac => rsx! { platform_sections::MacSection {} },
         Section::Storage => rsx! { platform_sections::StorageSection {} },
         Section::Account => rsx! { platform_sections::AccountSection {} },
+        Section::Updates => rsx! { crate::update::view::UpdatesCard {} },
         Section::About => rsx! { platform_sections::AboutSection {} },
     }
 }

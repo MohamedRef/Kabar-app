@@ -153,7 +153,7 @@ it in one sheet, laid out like Morphe Manager's update dialog: the installed
 build → the new one, how many builds that is and a count per kind, then a
 timeline with the newest build open and a card per kind ("Show all" past
 six lines). It opens from the Today banner's "What's new?", from the
-notification, and from Settings › About › Updates (also "Changelog": every
+notification, and from Settings › Updates (also "Changelog": every
 build so far); downloading and installing happen in it too. At the first
 launch after an update it opens once by itself, listing everything since
 the build that ran before. On a phone it fills the screen under Kabar's
