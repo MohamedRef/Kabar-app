@@ -497,6 +497,9 @@ impl Palette {
             ("primary", self.sawah),
             ("on-primary", self.on_primary),
             ("accent", self.accent),
+            // Batna names its accent container --accent-soft (its --accent
+            // is the brand colour); the alias lets shared CSS read the same.
+            ("accent-soft", self.accent),
             ("accent-ink", self.accent_ink),
             ("soft", self.soft),
             ("good", self.good),

@@ -59,7 +59,7 @@ It does not read wallpaper colours.
 | `--bg`, `--surface`, `--surface-2` | page, card, quiet fill (chips, stat tiles) |
 | `--text`, `--muted`, `--line`, `--line-soft` | text and hairlines |
 | `--primary` (= `--sawah`), `--on-primary` | main action fill and its label |
-| `--accent`, `--accent-ink` | accent container (the hero's button, active nav pill in Glossy) |
+| `--accent` (alias `--accent-soft`), `--accent-ink` | accent container (the hero's button, active nav pill in Glossy). Kabar keeps the design file's name; Batna's `--accent` was already its brand colour, so Batna calls the container `--accent-soft`, and Kabar exports that alias too so the two apps match |
 | `--soft` | soft tonal container (tonal button, picked answer, row icon) |
 | `--good`, `--good-bg`, `--bad`, `--bad-bg` | right and wrong, each with its container |
 | `--gold`, `--gold-bg` (= `--gold-soft`) | Bridge gold: Arabic-origin words only |
