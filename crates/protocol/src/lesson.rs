@@ -288,6 +288,55 @@ pub struct LessonPosition {
     /// its score and retries. Absent in positions written before it existed.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub progress: Option<LessonProgress>,
+    /// The answer on screen at `step`, so a reopened lesson shows it again
+    /// and, once checked, its feedback instead of a fresh Check. Absent in
+    /// positions written before it existed.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub response: Option<SavedResponse>,
+}
+
+/// The learner's answer to the exercise on screen, kept by content (option
+/// and tile texts, pair words), never by on-screen positions, which a
+/// reshuffle or a content edit would change.
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct SavedResponse {
+    /// The picked option's text (`options`, or the English of
+    /// `options_meaning` for meaning choices).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub choice: Option<String>,
+    /// Typed text.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub text: String,
+    /// Build sentence: the picked tiles, in answer order.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub tiles: Vec<String>,
+    /// Match pairs: target words of the pairs already matched, in order.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub matched: Vec<String>,
+    /// Match pairs: target words of wrong taps so far.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub missed: Vec<String>,
+    /// Set once the answer was checked: the grade its feedback shows.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub checked: Option<SavedGrade>,
+}
+
+impl SavedResponse {
+    /// Nothing picked, typed or checked.
+    pub fn is_empty(&self) -> bool {
+        *self == Self::default()
+    }
+}
+
+/// A checked answer's grade, as its feedback shows it.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(tag = "grade", rename_all = "snake_case")]
+pub enum SavedGrade {
+    Correct,
+    Almost { expected: String },
+    Wrong,
+    NeedsReview,
+    Practiced,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -354,6 +403,32 @@ pub struct LessonCompleted {
     pub mistakes: Vec<String>,
     #[serde(default)]
     pub results: Vec<ExerciseResult>,
+    /// Whether passing this run also counts as the learner's check of the
+    /// lesson's content: the rule until 2026-10-29, when finishing and
+    /// checking the content became two things (a `verified` event is the
+    /// check now). Events written before then lack the field and keep
+    /// counting; newer builds write false.
+    #[serde(default = "legacy_pass_verifies")]
+    pub pass_verifies: bool,
+}
+
+fn legacy_pass_verifies() -> bool {
+    true
+}
+
+/// Payload of a `verified` row in `lesson_events`: the learner checked the
+/// lesson's content and found it right. Undone by a tombstone on the row.
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LessonVerified {}
+
+/// Why a lesson counts as checked, shown next to it so it's never a guess.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Verification {
+    /// The learner tapped "the content is right".
+    Checked,
+    /// Passed with a good score under the old rule, before the two were
+    /// separated (kept, never reset).
+    PassedEarlier { score: u32 },
 }
 
 #[cfg(test)]
@@ -366,7 +441,42 @@ mod tests {
         let p: LessonPosition = serde_json::from_str(json).unwrap();
         assert_eq!(p.step, LessonStep::Exercise { id: "e03".into(), retry: false });
         assert_eq!(p.progress, None);
+        assert_eq!(p.response, None);
         // Unused new fields stay out of the JSON, so old readers see the same shape.
         assert_eq!(serde_json::to_string(&p).unwrap(), json);
+    }
+
+    #[test]
+    fn a_saved_response_round_trips() {
+        let p = LessonPosition {
+            lesson_id: "bipa1.u01.l01".into(),
+            step: LessonStep::Exercise { id: "e07".into(), retry: false },
+            progress: None,
+            response: Some(SavedResponse {
+                tiles: vec!["Selamat".into(), "jalan,".into()],
+                checked: Some(SavedGrade::Almost { expected: "Selamat jalan".into() }),
+                ..SavedResponse::default()
+            }),
+        };
+        let json = serde_json::to_string(&p).unwrap();
+        assert!(json.contains(r#""checked":{"grade":"almost","expected":"Selamat jalan"}"#), "{json}");
+        assert_eq!(serde_json::from_str::<LessonPosition>(&json).unwrap(), p);
+        assert!(SavedResponse::default().is_empty());
+    }
+
+    #[test]
+    fn completions_before_the_split_still_verify() {
+        let old = r#"{"score":90,"xp":12,"duration_ms":1000}"#;
+        assert!(serde_json::from_str::<LessonCompleted>(old).unwrap().pass_verifies);
+        let new = LessonCompleted {
+            score: 90,
+            xp: 12,
+            duration_ms: 1000,
+            mistakes: vec![],
+            results: vec![],
+            pass_verifies: false,
+        };
+        let json = serde_json::to_string(&new).unwrap();
+        assert!(!serde_json::from_str::<LessonCompleted>(&json).unwrap().pass_verifies);
     }
 }
