@@ -44,6 +44,19 @@ pub struct Palette {
     /// Bridge gold: Arabic-origin words only.
     pub gold: &'static str,
     pub gold_soft: &'static str,
+    /// Text and icons on a primary (`sawah`) fill.
+    pub on_primary: &'static str,
+    /// Accent container (the hero's main action, the current nav pill) and
+    /// the text on it.
+    pub accent: &'static str,
+    pub accent_ink: &'static str,
+    /// Soft tonal container: tonal buttons, selected answers, row icons.
+    pub soft: &'static str,
+    /// Right and wrong, each with its container.
+    pub good: &'static str,
+    pub good_bg: &'static str,
+    pub bad: &'static str,
+    pub bad_bg: &'static str,
     pub focus: &'static str,
     /// Default pen colour and the Notebook paper.
     pub ink: &'static str,
@@ -84,25 +97,36 @@ pub struct WordColors {
     pub confix: &'static str,
 }
 
-/// Paper: warm off-white, the default light theme.
+/// Kabar light (redesign 2026-10-29): warm paper, deep forest green, a lime
+/// accent and Bridge gold. The default light theme. Muted text and gold are
+/// a notch darker than the design file (#63746a, #98621b), and the word sheet
+/// takes a pale lime, so text on the sheet still passes AA.
 pub const LIGHT: Palette = Palette {
     scheme: Scheme::Light,
-    bg: "#f6f1e7",
-    surface: "#fffaf1",
-    surface_2: "#efe7d8",
-    sheet: "#e1e6f6",
-    text: "#23211f",
-    muted: "#5d574e",
-    line: "#ddd2bf",
-    sawah: "#2f6b3a",
-    dawn: "#b04a2f",
-    dawn_soft: "#f4c9b5",
-    indigo: "#2b3a70",
-    gold: "#7a5600",
-    gold_soft: "#f3e2b3",
-    focus: "#2b3a70",
+    bg: "#f7f8ef",
+    surface: "#ffffff",
+    surface_2: "#edf2e5",
+    sheet: "#e6f2c4",
+    text: "#203b33",
+    muted: "#5a6a60",
+    line: "#dfe6d8",
+    sawah: "#245b48",
+    dawn: "#ad493c",
+    dawn_soft: "#fbece7",
+    indigo: "#245b48",
+    gold: "#8a5713",
+    gold_soft: "#fff0cf",
+    on_primary: "#ffffff",
+    accent: "#d4ec9c",
+    accent_ink: "#314f22",
+    soft: "#eaf2dc",
+    good: "#277654",
+    good_bg: "#e8f4ec",
+    bad: "#ad493c",
+    bad_bg: "#fbece7",
+    focus: "#245b48",
     ink: "#2b3a70",
-    paper: "#fffdf8",
+    paper: "#fffffb",
     status_new: "#c0502f",
     status_learning: "#3d5bb0",
     status_known: "#2f7a3e",
@@ -110,56 +134,65 @@ pub const LIGHT: Palette = Palette {
     map_sea_ink: "#b9cfd3",
     map_land: "#d3e0bd",
     map_land_edge: "#a9bf8f",
-    map_land_other: "#e9e3d6",
-    map_rail_bed: "#fffaf1",
-    pattern: "#2b3a70",
-    pattern_opacity: 0.06,
+    map_land_other: "#e9e8dc",
+    map_rail_bed: "#ffffff",
+    pattern: "#245b48",
+    pattern_opacity: 0.05,
     words: WordColors {
         verb: "#a61e4d",
         noun: "#1f5fa6",
         adjective: "#6b3fa0",
-        function: "#5d574e",
+        function: "#5b6a61",
         prefix: "#a84300",
         suffix: "#0b7062",
         confix: "#4d6b0f",
     },
 };
 
-/// Merapi: black volcanic sand, the default dark theme.
+/// Kabar dark (redesign 2026-10-29): deep forest night with a lime primary.
+/// The default dark theme.
 pub const DARK: Palette = Palette {
     scheme: Scheme::Dark,
-    bg: "#171615",
-    surface: "#211f1d",
-    surface_2: "#2b2926",
-    sheet: "#272d45",
-    text: "#efe9df",
-    muted: "#b3aa9c",
-    line: "#3a3632",
-    sawah: "#7cc08a",
-    dawn: "#f2a07f",
-    dawn_soft: "#5a2e22",
-    indigo: "#a9b8ee",
-    gold: "#e6be55",
-    gold_soft: "#4a3b12",
-    focus: "#a9b8ee",
+    bg: "#12231b",
+    surface: "#1b3026",
+    surface_2: "#223a2e",
+    sheet: "#24364a",
+    text: "#eff5e9",
+    muted: "#afc2ad",
+    line: "#3d5944",
+    sawah: "#d4ec9c",
+    dawn: "#f1b2a3",
+    dawn_soft: "#4a2b25",
+    indigo: "#d4ec9c",
+    gold: "#e6c481",
+    gold_soft: "#3e3421",
+    on_primary: "#203321",
+    accent: "#30492f",
+    accent_ink: "#d4ec9c",
+    soft: "#243c29",
+    good: "#a0d7b3",
+    good_bg: "#1d3d2b",
+    bad: "#f1b2a3",
+    bad_bg: "#4a2b25",
+    focus: "#d4ec9c",
     ink: "#c3cdf2",
-    paper: "#1c1b19",
+    paper: "#16271f",
     status_new: "#f2a07f",
     status_learning: "#9fb1f0",
     status_known: "#7cc08a",
-    map_sea: "#172227",
-    map_sea_ink: "#23343b",
-    map_land: "#2b3a2b",
+    map_sea: "#14232a",
+    map_sea_ink: "#21343b",
+    map_land: "#2b3f2c",
     map_land_edge: "#4b6446",
-    map_land_other: "#2a2724",
-    map_rail_bed: "#171615",
-    pattern: "#a9b8ee",
-    pattern_opacity: 0.05,
+    map_land_other: "#22302a",
+    map_rail_bed: "#12231b",
+    pattern: "#d4ec9c",
+    pattern_opacity: 0.04,
     words: WordColors {
         verb: "#f28fae",
         noun: "#8fbcf2",
         adjective: "#c6a6f0",
-        function: "#b3aa9c",
+        function: "#afc2ad",
         prefix: "#f39f6c",
         suffix: "#6fd0bd",
         confix: "#b9d47a",
@@ -187,6 +220,14 @@ pub const BLACK: Palette = Palette {
     indigo: "#a9b8ee",
     gold: "#e6be55",
     gold_soft: "#3d300c",
+    on_primary: "#000000",
+    accent: "#1d3322",
+    accent_ink: "#bfe3c6",
+    soft: "#101a12",
+    good: "#7cc08a",
+    good_bg: "#0d1f12",
+    bad: "#f2a07f",
+    bad_bg: "#2b140c",
     focus: "#a9b8ee",
     ink: "#c3cdf2",
     paper: "#000000",
@@ -221,6 +262,14 @@ pub const NIGHT: Palette = Palette {
     indigo: "#cfa48e",
     gold: "#e8b83a",
     gold_soft: "#3d2e0a",
+    on_primary: "#100c08",
+    accent: "#3a3418",
+    accent_ink: "#e0d898",
+    soft: "#221a12",
+    good: "#b5b86a",
+    good_bg: "#24220f",
+    bad: "#e0956a",
+    bad_bg: "#3a2012",
     focus: "#cfa48e",
     ink: "#d9b48a",
     paper: "#140f0a",
@@ -262,6 +311,14 @@ pub const BATIK: Palette = Palette {
     indigo: "#b8c4f5",
     gold: "#f0c75e",
     gold_soft: "#4a3c18",
+    on_primary: "#121830",
+    accent: "#2b3766",
+    accent_ink: "#dfe5fb",
+    soft: "#232b4f",
+    good: "#86c995",
+    good_bg: "#1b3328",
+    bad: "#f3a585",
+    bad_bg: "#4a2a32",
     focus: "#f0c75e",
     ink: "#d6ddfa",
     paper: "#161c38",
@@ -303,6 +360,14 @@ pub const SAWAH: Palette = Palette {
     indigo: "#2b3a70",
     gold: "#735100",
     gold_soft: "#f1e1b0",
+    on_primary: "#ffffff",
+    accent: "#cfe3b0",
+    accent_ink: "#24461f",
+    soft: "#e2ead5",
+    good: "#2a7038",
+    good_bg: "#e0eed8",
+    bad: "#a8452b",
+    bad_bg: "#f7e2d8",
     focus: "#2a6334",
     ink: "#25502c",
     paper: "#fafcf5",
@@ -428,6 +493,19 @@ impl Palette {
             ("indigo", self.indigo),
             ("gold", self.gold),
             ("gold-soft", self.gold_soft),
+            ("gold-bg", self.gold_soft),
+            ("primary", self.sawah),
+            ("on-primary", self.on_primary),
+            ("accent", self.accent),
+            // Batna names its accent container --accent-soft (its --accent
+            // is the brand colour); the alias lets shared CSS read the same.
+            ("accent-soft", self.accent),
+            ("accent-ink", self.accent_ink),
+            ("soft", self.soft),
+            ("good", self.good),
+            ("good-bg", self.good_bg),
+            ("bad", self.bad),
+            ("bad-bg", self.bad_bg),
             ("focus", self.focus),
             ("ink", self.ink),
             ("paper", self.paper),
@@ -507,6 +585,7 @@ mod tests {
 
     #[test]
     fn every_theme_meets_wcag_aa() {
+        let mut failures = Vec::new();
         for (theme, p) in all() {
             // (what, foreground, background, minimum ratio)
             let checks = [
@@ -546,12 +625,27 @@ mod tests {
                 ("prefix on sheet", p.words.prefix, p.sheet, 4.5),
                 ("suffix on sheet", p.words.suffix, p.sheet, 4.5),
                 ("confix on sheet", p.words.confix, p.sheet, 4.5),
+                // Redesign roles (2026-10-29): each foreground with its container.
+                ("on primary", p.on_primary, p.sawah, 4.5),
+                ("accent ink", p.accent_ink, p.accent, 4.5),
+                ("text on soft", p.text, p.soft, 7.0),
+                ("tonal button", p.sawah, p.soft, 4.5),
+                ("right answer", p.good, p.good_bg, 4.5),
+                ("wrong answer", p.bad, p.bad_bg, 4.5),
+                ("text on right answer", p.text, p.good_bg, 7.0),
+                ("text on wrong answer", p.text, p.bad_bg, 7.0),
+                ("good on surface", p.good, p.surface, 4.5),
+                ("bad on surface", p.bad, p.surface, 4.5),
+                ("gold on its container", p.gold, p.gold_soft, 4.5),
             ];
             for (what, fg, bg, min) in checks {
                 let ratio = contrast(fg, bg);
-                assert!(ratio >= min, "{}: {what} is {ratio:.2}:1, needs {min}:1", theme.as_str());
+                if ratio < min {
+                    failures.push(format!("{}: {what} is {ratio:.2}:1, needs {min}:1", theme.as_str()));
+                }
             }
         }
+        assert!(failures.is_empty(), "{}", failures.join("\n"));
     }
 
     #[test]
@@ -646,6 +740,14 @@ mod tests {
             p.indigo,
             p.gold,
             p.gold_soft,
+            p.on_primary,
+            p.accent,
+            p.accent_ink,
+            p.soft,
+            p.good,
+            p.good_bg,
+            p.bad,
+            p.bad_bg,
             p.focus,
             p.ink,
             p.paper,
@@ -725,6 +827,17 @@ mod tests {
         assert!(css.contains("@media (prefers-color-scheme: dark)"));
         assert_eq!(css.matches("@media (prefers-color-scheme: dark)").count(), 2);
         assert!(css.contains("--status-known"));
+        for role in [
+            "--primary:",
+            "--on-primary:",
+            "--accent-ink:",
+            "--soft:",
+            "--good-bg:",
+            "--bad-bg:",
+            "--gold-bg:",
+        ] {
+            assert!(css.contains(role), "{role}");
+        }
         assert!(css.contains("--wc-verb") && css.contains("--wp-suffix"));
         assert!(!css.contains("{{"));
     }

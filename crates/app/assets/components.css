@@ -1,0 +1,345 @@
+/* Shared components and the Glossy layer (redesign 2026-10-29).
+   docs/DESIGN.md § Components lists every class here. Screens use these
+   before inventing their own look; colours come from theme tokens only, so
+   every theme (Light, Dark, True black, Malam, Batik, Sawah) follows. */
+
+/* ---------- Buttons ----------
+   button.primary  one per view, the step that moves the learner on
+   button.tonal    a strong second action (soft container)
+   button.outline  a plain secondary action
+   button.text-btn an inline link-like action
+   button.icon-button  a round icon-only action (give it aria-label)
+   Add .wide to stretch a button across its column. */
+button:is(.primary, .tonal, .outline) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-block-size: var(--tap-lg);
+  padding-inline: var(--sp-4);
+  border-radius: var(--radius-control);
+  font-weight: 600;
+  text-align: center;
+}
+button.tonal { background: var(--soft); color: var(--primary); border-color: transparent; }
+button.outline { background: var(--surface); color: var(--text); border-color: var(--line); }
+button.wide { display: flex; inline-size: 100%; }
+button.text-btn {
+  background: transparent;
+  border-color: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  padding-inline: var(--sp-2);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+button.icon-button {
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--text) 7%, transparent);
+  border-color: transparent;
+  color: var(--text);
+}
+button.tonal:disabled, button.outline:disabled { opacity: 1; background: var(--surface-2); color: var(--muted); border-color: var(--line-soft); }
+@media (hover: hover) and (pointer: fine) {
+  button.tonal:where(:not(:disabled):hover) { background: color-mix(in srgb, var(--soft) 80%, var(--primary)); }
+}
+
+/* ---------- Headings ----------
+   .page-head > div > h1 + p.sub, then optional actions at the end.
+   .section-head > h2 + .aside (a short count or hint). */
+.page-head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); margin-block: var(--sp-2) var(--stack); }
+.page-head > :first-child { min-inline-size: 0; }
+.page-head h1 { margin: 0; font-size: var(--fs-xl); font-weight: 600; line-height: var(--lh-tight); }
+.page-head .sub { margin: var(--sp-1) 0 0; color: var(--muted); font-size: var(--fs-sm); }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-3); margin-block: var(--sp-5) var(--sp-2); }
+.section-head h2 { margin: 0; font-size: var(--fs-md); font-weight: 600; }
+.section-head .aside { font-size: var(--fs-xs); color: var(--muted); }
+
+/* ---------- Status chip ----------
+   A short state label, never a button: .status-chip + good / bad / gold /
+   accent / neutral. Pair the colour with a word or glyph (never colour alone). */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding-block: 0.15rem;
+  padding-inline: var(--sp-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  background: var(--soft);
+  color: var(--primary);
+  white-space: nowrap;
+}
+.status-chip.good { background: var(--good-bg); color: var(--good); }
+.status-chip.bad { background: var(--bad-bg); color: var(--bad); }
+.status-chip.gold { background: var(--gold-soft); color: var(--gold); }
+.status-chip.accent { background: var(--accent); color: var(--accent-ink); }
+.status-chip.neutral { background: var(--surface-2); color: var(--muted); }
+
+/* ---------- Cards and lists ----------
+   .card (main.css) · .card.flat (tonal, no outline) · .card.hero (the one
+   big next step: primary fill, its button takes the accent).
+   .grouped: rows inside one card, divided by hairlines.
+   button.activity-row: icon · title + detail · end (time, count, chevron).
+   An activity row always opens what it names (dead_ends.rs). */
+.card.flat { background: var(--surface-2); border-color: transparent; box-shadow: none; }
+.card.hero { background: var(--primary); color: var(--on-primary); border-color: transparent; }
+.card.hero :is(h1, h2, h3, p) { color: inherit; }
+.card.hero .sub { opacity: 0.85; }
+.card.hero button.primary { background: var(--accent); color: var(--accent-ink); }
+.grouped { padding: 0; overflow: clip; }
+.grouped > * + * { border-block-start: 1px solid var(--line-soft); }
+button.activity-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  inline-size: 100%;
+  min-block-size: var(--row);
+  padding-block: var(--sp-3);
+  padding-inline: var(--card-pad);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  text-align: start;
+  font-weight: inherit;
+}
+.grouped > button.activity-row:first-child { border-start-start-radius: inherit; border-start-end-radius: inherit; }
+.grouped > button.activity-row:last-child { border-end-start-radius: inherit; border-end-end-radius: inherit; }
+.row-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 2.4rem;
+  block-size: 2.4rem;
+  border-radius: var(--radius-control);
+  background: var(--soft);
+  color: var(--primary);
+}
+.row-icon.gold { background: var(--gold-soft); color: var(--gold); }
+.row-copy { flex: 1; min-inline-size: 0; }
+.row-copy strong { display: block; font-weight: 600; line-height: var(--lh-ui); }
+.row-copy small { display: block; color: var(--muted); font-size: var(--fs-xs); line-height: var(--lh-ui); }
+.row-end { flex: none; display: inline-flex; align-items: center; gap: var(--sp-2); color: var(--muted); font-size: var(--fs-xs); }
+
+/* ---------- Note and empty state ----------
+   .note (main.css) for an aside; .empty-state > .row-icon + h2 + p + an
+   action that fixes the emptiness. */
+.empty-state { display: flex; flex-direction: column; align-items: center; gap: var(--sp-3); padding-block: var(--sp-7); padding-inline: var(--sp-5); text-align: center; }
+.empty-state .row-icon { inline-size: 3.75rem; block-size: 3.75rem; border-radius: var(--radius-lg); }
+.empty-state h2 { margin: 0; font-size: var(--fs-lg); }
+.empty-state p { margin: 0; color: var(--muted); max-inline-size: var(--measure-ar); }
+
+/* ---------- Answer choice ----------
+   button.answer with an optional .answer-mark (letter or glyph). States:
+   aria-pressed="true" (picked, not yet checked), .correct, .incorrect.
+   After Check the buttons are disabled but keep their state colours. */
+.answers { display: grid; gap: var(--sp-2); }
+button.answer {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  inline-size: 100%;
+  min-block-size: var(--row);
+  padding-block: var(--sp-2);
+  padding-inline: var(--sp-4);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--text);
+  text-align: start;
+  font-weight: inherit;
+}
+.answer-mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 1.4rem;
+  block-size: 1.4rem;
+  border: 1.5px solid var(--muted);
+  border-radius: 50%;
+  font-family: var(--font-latin);
+  font-size: var(--fs-xs);
+}
+button.answer[aria-pressed="true"] { background: var(--soft); border-color: var(--primary); color: var(--primary); font-weight: 600; }
+button.answer[aria-pressed="true"] .answer-mark { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+button.answer.correct { background: var(--good-bg); border-color: var(--good); color: var(--good); font-weight: 600; }
+button.answer.incorrect { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
+button.answer.correct .answer-mark { background: var(--good); border-color: var(--good); color: var(--good-bg); }
+button.answer.incorrect .answer-mark { background: var(--bad); border-color: var(--bad); color: var(--bad-bg); }
+button.answer:disabled { opacity: 1; cursor: default; }
+
+/* ---------- Counts and progress ----------
+   .ltr-count keeps "2 / 5" in reading order inside Arabic text.
+   .progress-line > .fill (inline-size from the screen). */
+.ltr-count { direction: ltr; unicode-bidi: isolate; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.progress-line { block-size: 0.35rem; border-radius: var(--radius-pill); background: var(--surface-2); overflow: hidden; }
+.progress-line > .fill { display: block; block-size: 100%; background: var(--primary); border-radius: inherit; }
+
+/* ---------- Review rating row ----------
+   .rating-row > button.rating.again / .hard / .good / .easy, each with the
+   scheduler's real interval in <small>. Stays in one place on screen. */
+.rating-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-2); }
+button.rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  min-block-size: calc(var(--row) + var(--sp-2));
+  padding-inline: var(--sp-1);
+  border-radius: var(--radius-control);
+  border-color: var(--line);
+  background: var(--surface);
+  font-weight: 600;
+}
+button.rating small { font-weight: 400; font-size: var(--fs-xs); color: var(--muted); }
+button.rating.again { color: var(--bad); }
+button.rating.easy { color: var(--good); }
+button.rating.good { background: var(--primary); color: var(--on-primary); border-color: transparent; }
+button.rating.good small { color: inherit; opacity: 0.85; }
+
+/* ---------- Forms ----------
+   .search-field (label > icon + input). .field (main.css) with .field-hint
+   and, when invalid, .field.invalid + .field-error (say what to fix; keep
+   what was typed). .segmented (role=radiogroup, buttons role=radio +
+   aria-checked). input.switch (type=checkbox, role=switch). */
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-block-size: var(--tap);
+  padding-inline: var(--sp-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--muted);
+}
+.search-field input { flex: 1; min-inline-size: 0; border: 0; background: none; outline: none; color: var(--text); font: inherit; }
+.search-field:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
+.field-hint { margin-block: var(--sp-1) 0; color: var(--muted); font-size: var(--fs-sm); }
+.field-error { margin-block: var(--sp-1) 0; color: var(--bad); font-size: var(--fs-sm); font-weight: 600; }
+.field.invalid :is(.text-input, input, textarea, select) { border-color: var(--bad); }
+.segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  padding: 0.2rem;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+}
+.segmented > button { border-color: transparent; background: transparent; color: var(--muted); min-block-size: calc(var(--tap) - 0.4rem); }
+.segmented > button:is([aria-checked="true"], [aria-pressed="true"]) { background: var(--surface); color: var(--primary); font-weight: 600; box-shadow: var(--shadow); }
+input.switch {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  position: relative;
+  inline-size: 2.75rem;
+  block-size: 1.6rem;
+  margin: 0;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  vertical-align: middle;
+}
+input.switch::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0.15rem;
+  inset-inline-start: 0.15rem;
+  inline-size: 1.2rem;
+  block-size: 1.2rem;
+  border-radius: 50%;
+  background: var(--muted);
+  transition: inset-inline-start var(--dur) var(--ease);
+}
+input.switch:checked { background: var(--primary); border-color: var(--primary); }
+input.switch:checked::after { inset-inline-start: calc(100% - 1.35rem); background: var(--on-primary); }
+input.switch:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* ---------- Glossy · Material You ----------
+   data-appearance="glossy" on .app. Tonal containers, a top-edge highlight,
+   rounder cards and pill main actions. Blur only on small floating surfaces
+   (the phone's bottom bar and the More sheet), with a solid fallback. No
+   animation. Text, selected, right and wrong stay on solid fills.
+   True black keeps its switched-off pixels: no gradients there. */
+.app[data-appearance="glossy"] {
+  --radius-card: 22px;
+  --gloss-hi: inset 0 1px 0 color-mix(in srgb, white 22%, transparent);
+  --gloss-shadow: 0 7px 22px color-mix(in srgb, var(--text) 7%, transparent);
+}
+.app[data-appearance="glossy"]:not([data-theme="black"]) {
+  background-image:
+    radial-gradient(ellipse at 6% 4%, color-mix(in srgb, var(--accent) 38%, transparent), transparent 46%),
+    radial-gradient(ellipse at 98% 45%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 50%),
+    var(--batik);
+  background-attachment: fixed;
+}
+.app[data-appearance="glossy"]:not([data-theme="black"]) .card {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 94%, white), var(--surface));
+  border-color: color-mix(in srgb, var(--primary) 16%, var(--line));
+  box-shadow: var(--gloss-hi), var(--gloss-shadow);
+}
+.app[data-appearance="glossy"]:not([data-theme="black"]) .card.flat {
+  background: linear-gradient(150deg, color-mix(in srgb, var(--soft) 88%, var(--surface)), var(--soft));
+  border-color: color-mix(in srgb, var(--primary) 12%, var(--line));
+}
+.app[data-appearance="glossy"]:not([data-theme="black"]) .card.hero {
+  border-radius: calc(var(--radius-card) + 4px);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--primary) 90%, white), var(--primary) 54%, color-mix(in srgb, var(--primary) 94%, black));
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 38%, transparent), 0 10px 25px color-mix(in srgb, var(--primary) 17%, transparent);
+}
+.app[data-appearance="glossy"] button:is(.primary, .tonal, .outline) { border-radius: var(--radius-pill); }
+.app[data-appearance="glossy"]:not([data-theme="black"]) button.primary:not(:disabled) {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 90%, white), var(--primary));
+  box-shadow: var(--gloss-hi), 0 4px 11px color-mix(in srgb, var(--primary) 14%, transparent);
+}
+.app[data-appearance="glossy"]:not([data-theme="black"]) .card.hero button.primary:not(:disabled) {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 88%, white), var(--accent));
+  color: var(--accent-ink);
+}
+.app[data-appearance="glossy"]:not([data-theme="black"]) button.tonal:not(:disabled) {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--soft) 85%, var(--surface)), var(--soft));
+  box-shadow: var(--gloss-hi);
+}
+.app[data-appearance="glossy"] :is(.row-icon, button.icon-button, .stat, .stat-static) { box-shadow: var(--gloss-hi); }
+.app[data-appearance="glossy"] :is(.stat, .stat-static) { border-radius: var(--radius-control); }
+.app[data-appearance="glossy"] button.answer[aria-pressed="true"] { box-shadow: var(--gloss-hi), 0 0 0 1px color-mix(in srgb, var(--primary) 10%, transparent); }
+.app[data-appearance="glossy"]:not([data-theme="black"]) button.rating.good {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 90%, white), var(--primary));
+  box-shadow: var(--gloss-hi);
+}
+.app[data-appearance="glossy"] .segmented > button:is([aria-checked="true"], [aria-pressed="true"]) { background: var(--accent); color: var(--accent-ink); }
+.app[data-appearance="glossy"] .nav-item[aria-current="page"] .nav-icon { background: var(--accent); color: var(--accent-ink); box-shadow: var(--gloss-hi); }
+/* The floating surfaces: translucent and blurred where the WebView can. */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .app[data-appearance="glossy"]:not([data-theme="black"])[data-width="compact"] .nav,
+  .app[data-appearance="glossy"]:not([data-theme="black"]) .more-sheet {
+    background: color-mix(in srgb, var(--surface) 86%, transparent);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    backdrop-filter: blur(18px) saturate(1.2);
+  }
+}
+.app[data-appearance="glossy"][data-width="compact"] .nav { box-shadow: var(--gloss-hi), var(--shadow-raised); }
+/* Reduced transparency: every floating surface goes solid again. */
+@media (prefers-reduced-transparency: reduce) {
+  .app[data-appearance="glossy"][data-width="compact"] .nav,
+  .app[data-appearance="glossy"] .more-sheet {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .app[data-appearance="glossy"] { background-image: var(--batik); }
+}
+/* High contrast: outlines over sheen. */
+@media (prefers-contrast: more) {
+  .app[data-appearance="glossy"] .card { border-color: var(--line); box-shadow: none; }
+}
