@@ -1,40 +1,19 @@
 name: Mac
 
-# Hosted macOS runners are sometimes unavailable for most of an hour and then
-# fail with "job was not acquired", which marked good PRs red (#424). So the
-# job is never a required check, and on pull requests it only runs when the
-# PR touches code that compiles differently on macOS (#428). It also runs on
-# every push to main, nightly and by hand; a failed nightly files or updates a
-# critic:platform issue so triage sees it the same day.
+# Hosted macOS runners are slow and sometimes unavailable for most of an
+# hour (#424). Mohamed (2026-10-29): the Mac build runs once, not per PR or
+# per merge: nightly and by hand (Actions > Mac > Run workflow). A failed
+# nightly files or updates a critic:platform issue so triage sees it the
+# same day.
 on:
-  push:
-    branches: [main]
-  pull_request:
-    paths:
-      - .github/workflows/mac.yml
-      - Cargo.lock
-      - crates/app/Cargo.toml
-      - crates/app/Dioxus.toml
-      - crates/app/build.rs
-      - crates/app/src/main.rs
-      - crates/app/src/platform/macos.rs
-      - crates/app/src/platform/mod.rs
-      - crates/app/src/platform/ocr.rs
-      - crates/app/src/update/**
-      - crates/app/src/settings/menu.rs
-      - crates/app/src/cloud/session.rs
-      - crates/core/src/update.rs
-      - assets/export/macos/**
   schedule:
     - cron: "47 2 * * *"
   workflow_dispatch:
 
-# A PR's newer push cancels its older run. On main a started run finishes, so
-# a busy stretch of merges still gets one full Mac verdict; a waiting run is
-# replaced by the newest commit's.
+# A started run finishes; a waiting one is replaced by the newest.
 concurrency:
   group: mac-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  cancel-in-progress: false
 
 permissions:
   contents: read
