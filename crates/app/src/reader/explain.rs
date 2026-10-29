@@ -201,6 +201,20 @@ pub fn ExplainCard(token: usize) -> Element {
     }
 }
 
+/// An Arabic explanation with each Latin snippet in its own `<bdi>`, so
+/// "-at" or "(rahmat ← رحمة)" keep their order inside right-to-left text.
+pub(crate) fn mixed(text: &str) -> Element {
+    rsx! {
+        for (n, (latin, run)) in crate::lesson::latin_runs(text).into_iter().enumerate() {
+            if latin {
+                bdi { key: "{n}", class: "latin", dir: "ltr", "{run}" }
+            } else {
+                span { key: "{n}", "{run}" }
+            }
+        }
+    }
+}
+
 #[component]
 pub(crate) fn GrammarEntry(point: GrammarPoint, matched: Vec<String>, voice: Voice) -> Element {
     let ui = use_context::<Ui>();
@@ -219,7 +233,7 @@ pub(crate) fn GrammarEntry(point: GrammarPoint, matched: Vec<String>, voice: Voi
                     span { class: "tag unverified", "{ui.t(Msg::Unverified)}" }
                 }
             }
-            p { "{voice.of(&p.summary)}" }
+            p { {mixed(voice.of(&p.summary))} }
             if !matched.is_empty() {
                 p { class: "muted small",
                     "{ui.t(Msg::FoundBy)} "
@@ -232,12 +246,12 @@ pub(crate) fn GrammarEntry(point: GrammarPoint, matched: Vec<String>, voice: Voi
             if let Some(pat) = p.pattern.first() {
                 p { class: "pattern", dir: "ltr", bdi { class: "latin", "{pat}" } }
             }
-            p { "{voice.of(&p.explanation)}" }
+            p { {mixed(voice.of(&p.explanation))} }
             if let Some(e) = ex {
                 div { class: "field",
                     span { class: "label", "{ui.t(Msg::Example)}" }
                     p { dir: "ltr", lang, bdi { class: "latin", "{e.text}" } }
-                    p { class: "muted", "{voice.example(&e)}" }
+                    p { class: "muted", {mixed(voice.example(&e))} }
                 }
             }
             if let Some(m) = mistake {
@@ -248,13 +262,14 @@ pub(crate) fn GrammarEntry(point: GrammarPoint, matched: Vec<String>, voice: Voi
                         " → "
                         bdi { class: "latin", "{m.right}" }
                     }
-                    p { class: "muted", "{voice.of(&m.why)}" }
+                    p { class: "muted", {mixed(voice.of(&m.why))} }
                 }
             }
             if let Some(b) = &p.arabic_bridge {
-                div { class: "field bridge",
+                // Not `.bridge`: that's the gold Bridge pill.
+                div { class: "field grammar-bridge",
                     span { class: "label", "{ui.t(Msg::RevFromArabic)}" }
-                    p { "{voice.of(b)}" }
+                    p { {mixed(voice.of(b))} }
                 }
             }
         }

@@ -989,14 +989,6 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
             _ => Draft::default(),
         }
     });
-    // Reopened on feedback whose answer wasn't kept (saved by an older
-    // build): say so, rather than show feedback for a blank task.
-    let mut answered_before = use_signal(|| {
-        let p = player.peek();
-        p.pending().is_some()
-            && *draft.peek() == Draft::default()
-            && !matches!(p.exercise().map(|e| &e.kind), Some(ExerciseKind::Speaking { .. }))
-    });
     // The draft as last saved, and a counter that cancels a pending save
     // of typed text.
     let mut saved_draft = use_hook(|| CopyValue::new(draft.peek().clone()));
@@ -1045,7 +1037,6 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
         draft.set(Draft::default());
         saved_draft.set(Draft::default());
         typing += 1;
-        answered_before.set(false);
         let mut revealed = revealed;
         revealed.set(1);
         let p = player.peek();
@@ -1344,9 +1335,6 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
             }
             div { class: "lp-body",
                 div { class: "lp-col", key: "{step:?}",
-                    if *answered_before.read() {
-                        p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::AnsweredBefore)}" }
-                    }
                     if show_voice_note(*voice_note_at.read(), *voice_skips.read(), step) {
                         p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
                     }
@@ -1407,8 +1395,9 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                             },
                         }
                     }
+                    // Read out with a disabled Check; the screen stays clean.
                     if let Some(h) = hint {
-                        p { class: "lp-hint", id: "lp-hint", "{h}" }
+                        p { class: "visually-hidden", id: "lp-hint", "{h}" }
                     }
                     div { class: "lp-buttons",
                         if matches!(step, Step::Slide(i) if i > 0) {
@@ -1419,6 +1408,15 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                                 class: "lp-skip",
                                 onclick: move |_| commit(&|p| Some(p.skip())),
                                 "{lt(lang, L::CantListenNow)}"
+                            }
+                        }
+                        if pending.is_some() && exercise.is_some() {
+                            button {
+                                class: "lp-again",
+                                aria_label: "{lt(lang, L::TryAgain)}",
+                                title: "{lt(lang, L::TryAgain)}",
+                                onclick: move |_| commit(&|p| p.try_again()),
+                                {retry_icon()}
                             }
                         }
                         button {
@@ -1537,6 +1535,24 @@ pub(crate) fn no_audio_msg() -> L {
     match platform::tts_status() {
         TtsStatus::MissingVoice | TtsStatus::Unsupported => L::NoVoiceData,
         _ => L::NoAudio,
+    }
+}
+
+/// The circular arrow of "Try again".
+fn retry_icon() -> Element {
+    rsx! {
+        svg {
+            width: "22",
+            height: "22",
+            view_box: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            stroke_width: "1.8",
+            stroke_linecap: "round",
+            stroke_linejoin: "round",
+            "aria-hidden": "true",
+            path { d: "M20 12a8 8 0 1 1-2.34-5.66M20 4v4h-4" }
+        }
     }
 }
 
