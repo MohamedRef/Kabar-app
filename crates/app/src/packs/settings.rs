@@ -12,12 +12,16 @@ use crate::Ui;
 
 const PACKS_CSS: &str = r#"
 .packs-level { margin-block: 0.5rem; }
-.packs-level > summary { cursor: pointer; font-weight: 600; padding-block: 0.35rem; }
+.packs-storage { display: flex; justify-content: space-between; gap: 0.5rem; margin-block: 0.5rem; }
+.packs-auto { display: flex; align-items: center; gap: 0.75rem; }
+.packs-level { border-block-start: 1px solid var(--line-soft); }
+.packs-level > summary { cursor: pointer; font-weight: 600; min-block-size: 48px; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; list-style: none; }
+.packs-level > summary::-webkit-details-marker { display: none; }
+.packs-level[open] > summary .chev { transform: rotate(135deg); }
 .packs-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
 .packs-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; justify-content: space-between;
-  padding-block: 0.35rem; padding-inline: 0.5rem; border-radius: 10px; background: var(--dawn-soft); }
+  padding-block: 0.35rem; padding-inline: 0.5rem; border-radius: 10px; background: var(--surface-2); }
 .packs-name { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: baseline; min-inline-size: 0; }
-.packs-failed { font-weight: 600; }
 .packs-actions { display: flex; gap: 0.4rem; align-items: center; margin-inline-start: auto; }
 "#;
 
@@ -244,13 +248,15 @@ pub fn OfflinePacks() -> Element {
         section { class: "card", aria_labelledby: "packs-title",
             h2 { id: "packs-title", "{pt(lang, P::Title)}" }
             p { class: "muted", "{pt(lang, P::Intro)}" }
-            div { class: "field",
+            div { class: "packs-storage",
                 span { class: "label", "{pt(lang, P::Storage)}" }
-                span { "{size_text(&ui, total)}" }
+                span { class: "ltr-count", "{size_text(&ui, total)}" }
             }
             div { class: "field",
-                label {
+                label { class: "packs-auto",
                     input {
+                        class: "switch",
+                        role: "switch",
                         r#type: "checkbox",
                         checked: *auto.read(),
                         onchange: move |e: FormEvent| {
@@ -260,14 +266,14 @@ pub fn OfflinePacks() -> Element {
                             }
                         },
                     }
-                    " {pt(lang, P::Auto)}"
+                    span { "{pt(lang, P::Auto)}" }
                 }
             }
             if !configured {
                 p { class: "muted", role: "status", "{pt(lang, P::NotConfigured)}" }
             } else {
                 div { class: "row",
-                    button { disabled: *checking.read(), onclick: check,
+                    button { class: "outline", disabled: *checking.read(), onclick: check,
                         if *checking.read() { "{pt(lang, P::Checking)}" } else { "{pt(lang, P::Check)}" }
                     }
                 }
@@ -284,6 +290,7 @@ pub fn OfflinePacks() -> Element {
                     open,
                     summary {
                         bdi { class: "latin", "{level_name(&level)}" }
+                        span { class: "chev" }
                     }
                     ul { class: "packs-list",
                         for row in rows {
@@ -334,29 +341,29 @@ fn PackRow(
                     span { class: "muted", bdi { class: "latin", "{stop}" } }
                 }
                 span { class: "muted lp-small",
-                    if ready { "{size_text(&ui, size)} · " }
+                    if ready { span { class: "ltr-count", "{size_text(&ui, size)}" } " · " }
                     "{clips} {pt(lang, P::Clips)}"
                 }
             }
             span { class: "packs-actions",
                 if busy || job == Some(Job::Downloading) {
-                    span { class: "muted", role: "status", "{pt(lang, P::Downloading)}" }
+                    span { class: "status-chip accent", role: "status", "{pt(lang, P::Downloading)}" }
                 } else if job == Some(Job::Queued) {
-                    span { class: "muted", role: "status", "{pt(lang, P::Queued)}" }
+                    span { class: "status-chip neutral", role: "status", "{pt(lang, P::Queued)}" }
                 } else if job == Some(Job::Failed) && configured {
-                    span { class: "packs-failed", role: "status", "{pt(lang, P::RowFailed)}" }
-                    button { class: "primary", onclick: move |_| on_download.call(id1.clone()), "{pt(lang, P::Retry)}" }
+                    span { class: "status-chip bad", role: "status", "{pt(lang, P::RowFailed)}" }
+                    button { class: "tonal", onclick: move |_| on_download.call(id1.clone()), "{pt(lang, P::Retry)}" }
                 } else if installed.is_some() {
                     if outdated && configured {
-                        button { onclick: move |_| on_download.call(id1.clone()), "{pt(lang, P::Update)}" }
+                        button { class: "tonal", onclick: move |_| on_download.call(id1.clone()), "{pt(lang, P::Update)}" }
                     } else {
-                        span { class: "pill", "{pt(lang, P::Downloaded)}" }
+                        span { class: "status-chip good", "✓ {pt(lang, P::Downloaded)}" }
                     }
-                    button { onclick: move |_| on_remove.call(id2.clone()), "{pt(lang, P::Remove)}" }
+                    button { class: "outline", onclick: move |_| on_remove.call(id2.clone()), "{pt(lang, P::Remove)}" }
                 } else if !ready {
                     span { class: "muted", "{pt(lang, P::NotReady)}" }
                 } else if configured {
-                    button { class: "primary", onclick: move |_| on_download.call(id1.clone()), "{pt(lang, P::Download)}" }
+                    button { class: "tonal", onclick: move |_| on_download.call(id1.clone()), "{pt(lang, P::Download)}" }
                 }
             }
         }

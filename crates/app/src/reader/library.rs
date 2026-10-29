@@ -189,21 +189,26 @@ pub fn Library(recent: Signal<Vec<SavedText>>) -> Element {
         section { class: "library", aria_labelledby: "library-title",
             div { class: "lib-head",
                 h2 { id: "library-title", "{lt(lang, L::Title)}" }
-                p { class: "muted small", "{lt(lang, L::Intro)}" }
+                p { class: "sub", "{lt(lang, L::Intro)}" }
             }
             BridgeEntry {}
             if current != Tab::Downloads {
-                input {
-                    class: "lib-search",
-                    r#type: "search",
-                    dir: "auto",
-                    placeholder: "{lt(lang, L::Search)}",
-                    aria_label: "{lt(lang, L::Search)}",
-                    value: "{query}",
-                    oninput: move |e| query.set(e.value()),
+                label { class: "search-field",
+                    {crate::icons::search()}
+                    input {
+                        r#type: "search",
+                        dir: "auto",
+                        placeholder: "{lt(lang, L::Search)}",
+                        aria_label: "{lt(lang, L::Search)}",
+                        value: "{query}",
+                        oninput: move |e| query.set(e.value()),
+                    }
                 }
             }
-            div { class: "lib-tabs", role: "tablist",
+            div {
+                class: "segmented lib-tabs",
+                role: "radiogroup",
+                aria_label: "{lt(lang, L::Title)}",
                 for (t , label , count) in [
                     (Tab::Texts, L::Texts, Some(recent.read().len())),
                     (Tab::Words, L::Words, Some(words.read().len())),
@@ -212,12 +217,12 @@ pub fn Library(recent: Signal<Vec<SavedText>>) -> Element {
                 {
                     button {
                         key: "{label:?}",
-                        role: "tab",
-                        aria_selected: if t == current { "true" } else { "false" },
+                        role: "radio",
+                        aria_checked: if t == current { "true" } else { "false" },
                         onclick: move |_| tab.set(t),
                         "{lt(lang, label)}"
                         if let Some(n) = count.filter(|n| *n > 0) {
-                            span { class: "lib-count", dir: "ltr", "{ui.num(n as u64)}" }
+                            span { class: "ltr-count lib-count", "{ui.num(n as u64)}" }
                         }
                     }
                 }
@@ -240,21 +245,27 @@ fn BridgeEntry() -> Element {
     let lang = ui.lang();
     let count = play::content::bridge().as_ref().ok().map(kabar_core::games::bridge::known_count);
     rsx! {
-        button {
-            class: "card tap bridge-entry",
-            onclick: move |_| play::open(ui, nav, Route::Deck),
-            span { class: "bridge-entry-copy",
-                span { class: "pill gold small", "{lt(lang, L::BridgeTag)}" }
-                strong { "{lt(lang, L::BridgeTitle)}" }
-                if let Some(n) = count {
-                    span { class: "muted small",
-                        span { class: "bridge-entry-n", dir: "ltr", "{ui.num(n as u64)}" }
-                        " {lt(lang, L::BridgeCount)}"
+        div { class: "card grouped bridge-entry",
+            button {
+                class: "activity-row",
+                onclick: move |_| play::open(ui, nav, Route::Deck),
+                span { class: "row-icon gold", aria_hidden: "true", {crate::icons::game(Route::Deck)} }
+                span { class: "row-copy",
+                    strong { "{lt(lang, L::BridgeTitle)}" }
+                    small {
+                        if let Some(n) = count {
+                            span { class: "ltr-count bridge-entry-n", "{ui.num(n as u64)}" }
+                            " {lt(lang, L::BridgeCount)}"
+                        } else {
+                            "{lt(lang, L::BridgeTag)}"
+                        }
                     }
                 }
+                span { class: "row-end",
+                    span { class: "bridge-entry-ar", lang: "ar", "خبر" }
+                    span { class: "chev" }
+                }
             }
-            span { class: "bridge-entry-ar", lang: "ar", aria_hidden: "true", "خبر" }
-            span { class: "chev", aria_hidden: "true" }
         }
     }
 }
@@ -273,29 +284,29 @@ fn TextList(recent: Signal<Vec<SavedText>>, q: String) -> Element {
         .collect();
     if recent.read().is_empty() {
         return rsx! {
-            p { class: "lib-empty muted", "{lt(lang, L::NoTexts)}" }
+            p { class: "card flat lib-empty", "{lt(lang, L::NoTexts)}" }
         };
     }
     if texts.is_empty() {
         return rsx! {
-            p { class: "lib-empty muted", role: "status", "{lt(lang, L::NoMatch)}" }
+            p { class: "card flat lib-empty", role: "status", "{lt(lang, L::NoMatch)}" }
         };
     }
     rsx! {
-        ul { class: "lib-list",
+        ul { class: "card grouped lib-list",
             for text in texts {
                 li { key: "{text.id}",
                     button {
-                        class: "tap lib-row",
+                        class: "activity-row",
                         onclick: {
                             let db = db.clone();
                             let text = text.clone();
                             move |_| st.load(&db, text.clone())
                         },
-                        span { class: "lib-icon", aria_hidden: "true", "{super::kind_icon(text.kind)}" }
-                        span { class: "lib-copy",
-                            bdi { class: "lib-title", lang: "id", dir: "ltr", "{text.title}" }
-                            span { class: "muted small",
+                        span { class: "row-icon", aria_hidden: "true", "{super::kind_icon(text.kind)}" }
+                        span { class: "row-copy",
+                            strong { bdi { class: "lib-title", lang: "id", dir: "ltr", "{text.title}" } }
+                            small {
                                 "{lt(lang, kind_label(text.kind))}"
                                 if let Some(src) = text.source.as_deref() {
                                     " · "
@@ -303,10 +314,10 @@ fn TextList(recent: Signal<Vec<SavedText>>, q: String) -> Element {
                                 }
                             }
                         }
-                        span { class: "chev", aria_hidden: "true" }
+                        span { class: "row-end", span { class: "chev" } }
                     }
                     button {
-                        class: "ghost lib-delete",
+                        class: "icon-button lib-delete",
                         aria_label: "{ui.t(crate::i18n::Msg::Delete)}",
                         title: "{ui.t(crate::i18n::Msg::Delete)}",
                         onclick: {
@@ -358,24 +369,29 @@ fn WordList(words: Vec<SavedWord>, taught: usize, q: String) -> Element {
         .collect();
     rsx! {
         if taught > 0 {
+            div { class: "card grouped lib-taught",
             button {
-                class: "card tap lib-row lib-taught",
+                class: "activity-row",
                 onclick: move |_| {
                     let mut screen = ui.screen;
                     screen.set(Screen::Teach);
                 },
-                span { class: "lib-icon", aria_hidden: "true", "✍" }
-                span { class: "lib-copy",
-                    strong { "{lt(lang, L::Taught)} · " span { dir: "ltr", "{ui.num(taught as u64)}" } }
-                    span { class: "muted small", "{lt(lang, L::TaughtNote)}" }
+                span { class: "row-icon", aria_hidden: "true", {crate::icons::nav(Screen::Teach)} }
+                span { class: "row-copy",
+                    strong { "{lt(lang, L::Taught)}" }
+                    small { "{lt(lang, L::TaughtNote)}" }
                 }
-                span { class: "chev", aria_hidden: "true" }
+                span { class: "row-end",
+                    span { class: "ltr-count", "{ui.num(taught as u64)}" }
+                    span { class: "chev" }
+                }
+            }
             }
         }
         if shown.is_empty() {
-            p { class: "lib-empty muted", if q.is_empty() { "{lt(lang, L::NoWords)}" } else { "{lt(lang, L::NoMatch)}" } }
+            p { class: "card flat lib-empty", if q.is_empty() { "{lt(lang, L::NoWords)}" } else { "{lt(lang, L::NoMatch)}" } }
         } else {
-            ul { class: "lib-list",
+            ul { class: "card grouped lib-list",
                 for (w , gloss) in shown {
                     li { key: "{w.lexeme}", SavedWordRow { w, gloss } }
                 }
@@ -405,7 +421,7 @@ fn SavedWordRow(w: SavedWord, gloss: Option<String>) -> Element {
                     span { class: "lib-word-gloss muted", "{lt(lang, L::Phrase)}" }
                 }
                 if learning {
-                    span { class: "pill small", "{lt(lang, L::InReview)}" }
+                    span { class: "status-chip accent", "{lt(lang, L::InReview)}" }
                 }
             }
             div { class: "lib-word-body",
@@ -413,7 +429,7 @@ fn SavedWordRow(w: SavedWord, gloss: Option<String>) -> Element {
                 match text {
                     Some(text) => rsx! {
                         button {
-                            class: "quiet-solid",
+                            class: "tonal",
                             onclick: {
                                 let db = db.clone();
                                 let lexeme = w.lexeme.clone();

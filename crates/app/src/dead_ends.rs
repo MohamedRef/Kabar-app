@@ -26,8 +26,10 @@ const TAPPABLE: &[&str] = &[
     "seed-word",
     "tap",
     "tap-head",
-    "lib-row",
-    "bridge-entry",
+    // Shared components (components.css, redesign 2026-10-29).
+    "activity-row",
+    "answer",
+    "rating",
 ];
 
 /// Elements that can be pressed. A `li.lx-card.locked` is a broken episode
@@ -292,7 +294,9 @@ fn one_button_cards(src: &str) -> Vec<usize> {
         let raw: String = lines[line - 1..line - 1 + block.lines().count()].join("\n");
         let side =
             EXITS.iter().any(|e| raw.contains(e)) || classes.iter().any(|c| SIDE_ACTION_CARDS.contains(c));
-        if buttons == 1 && controls == 1 && !nested && !side {
+        // A grouped card's activity row fills the card edge to edge: the card is the row.
+        let filled = classes.contains(&"grouped") && raw.contains("activity-row");
+        if buttons == 1 && controls == 1 && !nested && !side && !filled {
             let head: String = block.lines().take_while(|l| !l.contains("button {")).collect();
             if !classes.contains(&"card-action") || !head.contains("onclick") {
                 dead.push(line);

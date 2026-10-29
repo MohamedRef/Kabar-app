@@ -15,6 +15,7 @@ const READ_SIZE_KEY: &str = "pref.read_size";
 const READ_SPACING_KEY: &str = "pref.read_spacing";
 const READ_WIDTH_KEY: &str = "pref.read_width";
 const READ_FOCUS_KEY: &str = "pref.read_focus";
+const APPEARANCE_KEY: &str = "pref.appearance";
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub enum TextSize {
@@ -101,6 +102,14 @@ macro_rules! choice {
 }
 
 choice! {
+    /// Interface style (redesign 2026-10-29): Calm (solid surfaces, the
+    /// default) or Glossy · Material You (tonal surfaces, a light sheen).
+    /// Independent of the colour theme; `data-appearance` on the app root.
+    /// A device without the pref, or with an unknown value, gets Calm.
+    Appearance { Calm = "calm", Glossy = "glossy" } default Calm
+}
+
+choice! {
     /// The Reader's text size, on top of the app's text size.
     ReadSize { Smaller = "s", Normal = "m", Larger = "l", Largest = "xl" } default Normal
 }
@@ -139,6 +148,7 @@ pub struct DevicePrefs {
     /// and the tablet never both go off.
     pub remind_here: Signal<Option<bool>>,
     pub reading: Signal<Reading>,
+    pub appearance: Signal<Appearance>,
 }
 
 impl DevicePrefs {
@@ -162,6 +172,7 @@ impl DevicePrefs {
                 width: get(READ_WIDTH_KEY).map_or_else(ReadWidth::default, |v| ReadWidth::parse(&v)),
                 focus: get(READ_FOCUS_KEY).as_deref() == Some("on"),
             }),
+            appearance: Signal::new(stored_appearance(&store)),
         }
     }
 
@@ -209,10 +220,26 @@ impl DevicePrefs {
         self.reading.set(r);
     }
 
+    /// Only flips the root's `data-appearance`: every screen keeps its state.
+    pub fn set_appearance(mut self, db: &Db, appearance: Appearance) {
+        save(db, APPEARANCE_KEY, appearance.as_str());
+        self.appearance.set(appearance);
+    }
+
     pub fn set_nav_style(mut self, db: &Db, style: NavStyle) {
         save(db, NAV_STYLE_KEY, style.as_str());
         self.nav_style.set(style);
     }
+}
+
+/// The saved interface style; Calm when the row is missing (older installs)
+/// or unreadable.
+fn stored_appearance(store: &crate::store::Store) -> Appearance {
+    store
+        .local_value(APPEARANCE_KEY)
+        .ok()
+        .flatten()
+        .map_or_else(Appearance::default, |v| Appearance::parse(&v))
 }
 
 fn remind_default(choice: Option<bool>, phone: bool) -> bool {
@@ -247,6 +274,31 @@ mod tests {
         for &s in ReadSpacing::ALL {
             assert_eq!(ReadSpacing::parse(s.as_str()), s);
         }
+    }
+
+    #[test]
+    fn appearance_defaults_to_calm_and_round_trips() {
+        // Older installs have no pref.appearance row: they stay Calm.
+        assert_eq!(Appearance::default(), Appearance::Calm);
+        assert_eq!(Appearance::parse(""), Appearance::Calm);
+        assert_eq!(Appearance::parse("shiny"), Appearance::Calm);
+        for &a in Appearance::ALL {
+            assert_eq!(Appearance::parse(a.as_str()), a);
+        }
+        assert_eq!(Appearance::Glossy.as_str(), "glossy");
+    }
+
+    #[test]
+    fn appearance_survives_a_restart() {
+        use crate::store::Store;
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("kabar.db");
+        let mut store = Store::open(&path).unwrap();
+        assert_eq!(stored_appearance(&store), Appearance::Calm, "a profile without the pref is Calm");
+        store.set_local_value(APPEARANCE_KEY, Appearance::Glossy.as_str()).unwrap();
+        drop(store);
+        let store = Store::open(&path).unwrap();
+        assert_eq!(stored_appearance(&store), Appearance::Glossy);
     }
 
     #[test]

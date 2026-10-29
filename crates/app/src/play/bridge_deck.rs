@@ -31,6 +31,14 @@ fn found(e: &BridgeEntry, q: &str) -> bool {
         || [&e.meaning.arz, &e.meaning.ar, &e.meaning.en].iter().any(|m| m.to_lowercase().contains(&q))
 }
 
+/// Whether the Arabic word's own meaning adds something: not when it's the
+/// Indonesian meaning again, or just the Arabic word itself.
+fn says_more(e: &BridgeEntry, arabic_meaning: &str, meaning: &str) -> bool {
+    let bare = |s: &str| s.chars().filter(|c| !('\u{064B}'..='\u{0652}').contains(c)).collect::<String>();
+    let m = bare(arabic_meaning.trim());
+    !m.is_empty() && m != bare(meaning.trim()) && m != bare(e.arabic.trim())
+}
+
 fn search_label(lang: kabar_core::locale::UiLanguage) -> &'static str {
     use kabar_core::locale::UiLanguage::*;
     match lang {
@@ -84,31 +92,33 @@ pub fn BridgeDeck() -> Element {
     rsx! {
         style { {CSS.text()} }
         PlayHeader { title: Msg::DeckTitle }
-        div { class: "card deck-hero",
-            span { class: "pill gold small", "{ui.t(Msg::BridgeFromArabic)}" }
+        div { class: "card flat deck-hero",
+            span { class: "status-chip gold", "{ui.t(Msg::BridgeFromArabic)}" }
             p { class: "deck-count", lang: "id", bdi { "{deck_headline(deck.len())}" } }
             p { class: "muted", "{ui.t(Msg::DeckHeroNote)}" }
             p { class: "small deck-marked",
                 "{ui.t(Msg::DeckMarked)} "
-                span { dir: "ltr", strong { "{ui.num(marked as u64)}" } " / {ui.num(deck.len() as u64)}" }
+                span { class: "ltr-count", strong { "{ui.num(marked as u64)}" } " / {ui.num(deck.len() as u64)}" }
             }
         }
-        input {
-            class: "deck-search",
-            r#type: "search",
-            dir: "auto",
-            placeholder: "{search_label(ui.lang())}",
-            aria_label: "{search_label(ui.lang())}",
-            value: "{query}",
-            oninput: move |e| {
-                query.set(e.value());
-                shown.set(PAGE);
-            },
+        label { class: "search-field deck-search",
+            {crate::icons::search()}
+            input {
+                r#type: "search",
+                dir: "auto",
+                placeholder: "{search_label(ui.lang())}",
+                aria_label: "{search_label(ui.lang())}",
+                value: "{query}",
+                oninput: move |e| {
+                    query.set(e.value());
+                    shown.set(PAGE);
+                },
+            }
         }
         if matching.is_empty() {
-            p { class: "card muted", role: "status", "{no_match(ui.lang())}" }
+            p { class: "card flat muted", role: "status", "{no_match(ui.lang())}" }
         } else {
-            ul { class: "deck-list",
+            ul { class: "card grouped deck-list",
                 for entry in matching.iter().take(visible).copied() {
                     li { key: "{entry.word}",
                         DeckRow { entry: entry.clone(), known: logged.contains(&entry.word) }
@@ -118,11 +128,11 @@ pub fn BridgeDeck() -> Element {
         }
         if visible < matching.len() {
             div { class: "row center",
-                button { onclick: move |_| shown += PAGE, "{ui.t(Msg::ShowMore)}" }
+                button { class: "outline", onclick: move |_| shown += PAGE, "{ui.t(Msg::ShowMore)}" }
             }
         }
         button {
-            class: "deck-games",
+            class: "tonal wide deck-games",
             onclick: move |_| nav.set(Route::Hub),
             "🎲 {games_label(ui.lang())}"
         }
@@ -151,7 +161,7 @@ fn DeckRow(entry: BridgeEntry, known: bool) -> Element {
                     span { class: "muted small", "{meaning(ui.lang(), &entry.meaning)}" }
                 }
                 if known {
-                    span { class: "ok small", aria_label: "{ui.t(Msg::DeckKnown)}", "✓" }
+                    span { class: "status-chip good", aria_label: "{ui.t(Msg::DeckKnown)}", "✓" }
                 }
                 span { class: "ar bridge-ar", lang: "ar", dir: "rtl", "{entry.arabic}" }
             }
@@ -162,20 +172,20 @@ fn DeckRow(entry: BridgeEntry, known: bool) -> Element {
                         span { lang: "ar", dir: "rtl", "{root}" }
                     }
                 }
-                if meaning(ui.lang(), &entry.arabic_meaning) != meaning(ui.lang(), &entry.meaning) {
+                if says_more(&entry, meaning(ui.lang(), &entry.arabic_meaning), meaning(ui.lang(), &entry.meaning)) {
                     p { class: "small",
                         span { class: "ar", lang: "ar", "{entry.arabic}" }
                         " · {meaning(ui.lang(), &entry.arabic_meaning)}"
                     }
                 }
                 if let Some(shift) = shift {
-                    span { class: "pill gold small", "{ui.t(shift)}" }
+                    span { class: "status-chip gold", "{ui.t(shift)}" }
                 }
                 if known {
-                    span { class: "ok small", "✓ {ui.t(Msg::DeckKnown)}" }
+                    span { class: "status-chip good", "✓ {ui.t(Msg::DeckKnown)}" }
                 } else {
                     button {
-                        class: "quiet-solid",
+                        class: "tonal",
                         onclick: move |_| {
                             let logged = logic::logged_words(&coach.events.peek());
                             let words = logic::unlogged(std::slice::from_ref(&word), &logged);
@@ -204,5 +214,8 @@ mod tests {
         assert!(found(kabar, &kabar.arabic));
         assert!(found(kabar, &kabar.meaning.en));
         assert!(!found(kabar, "zzzz"));
+        assert!(!says_more(kabar, &kabar.arabic, "news"), "the Arabic word again says nothing new");
+        assert!(!says_more(kabar, "أخبار", "أخبار"));
+        assert!(says_more(kabar, "نبأ", "أخبار"));
     }
 }

@@ -186,6 +186,15 @@ pub fn VoicePicker() -> Element {
     }
 }
 
+/// The line under the Reader's title.
+pub fn tagline(lang: UiLanguage) -> &'static str {
+    match lang {
+        UiLanguage::ArEg => "كلمة جديدة، في حكاية مفهومة.",
+        UiLanguage::Ar => "كلمة جديدة، في نص مفهوم.",
+        UiLanguage::En => "New words, in a text you understand.",
+    }
+}
+
 fn size_label(s: ReadSize) -> Msg {
     match s {
         ReadSize::Smaller => Msg::ReadSmaller,

@@ -463,9 +463,11 @@ pub fn Reader() -> Element {
             if open.is_some() {
                 reading::OpenBar { sheet }
             } else {
-                div { class: "card reader-bar",
-                    h2 { style: "margin: 0", "{ui.t(Msg::NavReader)}" }
-                    reading::VoicePicker {}
+                div { class: "page-head reader-head",
+                    div {
+                        h1 { "{ui.t(Msg::NavReader)}" }
+                        p { class: "sub", "{reading::tagline(ui.lang())}" }
+                    }
                 }
             }
 
@@ -475,8 +477,11 @@ pub fn Reader() -> Element {
 
             match open {
                 None => rsx! {
-                    InputCard { busy, recent }
-                    library::Library { recent }
+                    // Side by side on a wide window: open a text, or pick one up again.
+                    div { class: "reader-home",
+                        InputCard { busy, recent }
+                        library::Library { recent }
+                    }
                 },
                 Some(open) => rsx! {
                     ReadView { open }
@@ -776,6 +781,7 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
                     }
                 },
                 p { class: "muted", "{ui.t(Msg::ReaderIntro)}" }
+                reading::VoicePicker {}
                 textarea {
                     class: "reader-textarea",
                     // `auto` follows the typed text, but an empty box would lay
