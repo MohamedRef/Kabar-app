@@ -130,11 +130,6 @@
    phone-width card, never a strip across the tablet or the Mac. */
 .app:not([data-width="compact"]) .bsheet:not(.side) { max-inline-size: min(28rem, calc(100% - 2 * var(--gutter))); }
 
-/* The page under a docked sheet gets room to scroll its last lines up. */
-:root[data-sheet="open"] :is(.content, [data-sheet-room]) {
-  padding-block-end: calc(var(--sheet-room, 50dvh) + var(--sp-6)) !important;
-}
-
 /* The Reader on wide windows: a side column; the handle row stays as the
    close button's row, without the bar. */
 .app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .bsheet.side {
