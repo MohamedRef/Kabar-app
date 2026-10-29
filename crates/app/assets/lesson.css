@@ -437,3 +437,30 @@
 @keyframes ln-in { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: none; } }
 [dir="rtl"] .lp-notes { animation-name: ln-in-rtl; }
 @keyframes ln-in-rtl { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+
+/* ---------- state machine cues (redesign 2026-10-29) ---------- */
+/* "3 / 12": numbers read left to right inside the Arabic bar. */
+.lp-count {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  white-space: nowrap;
+}
+/* What a disabled Check waits for, right above it. */
+.lp-hint { margin-block: 0 0.5rem; font-size: var(--fs-sm); color: var(--muted); text-align: center; }
+
+/* Lesson end: progress and the content check are two separate things. */
+.lp-finished { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-block: 0.25rem 0.75rem; }
+.lp-content h3 { margin-block: 0 0.25rem; }
+.lp-content-ok { margin-block-start: 0.5rem; }
+.lp-content-done {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--sawah);
+  margin-block: 0.5rem;
+}

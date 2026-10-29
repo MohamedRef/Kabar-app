@@ -416,8 +416,9 @@ fn legacy_pass_verifies() -> bool {
     true
 }
 
-/// Payload of a `verified` row in `lesson_events`: the learner checked the
-/// lesson's content and found it right. Undone by a tombstone on the row.
+/// Payload of a `verified` row in `lesson_events` (the learner checked the
+/// lesson's content and found it right) and of an `unverified` row (they
+/// took that back). The newest of the two by HLC stands.
 #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct LessonVerified {}
 

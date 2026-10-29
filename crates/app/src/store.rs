@@ -699,34 +699,42 @@ impl Store {
     }
 
     /// Lessons whose content the learner checked, on any device, and how:
-    /// a live `verified` event, or (kept from before the two were separated
-    /// on 2026-10-29) a pass recorded under the old rule
-    /// (`kabar_core::lesson::verifies_by_pass`). Their "not reviewed yet"
-    /// flag comes off, Javanese included. Finishing a lesson alone never
-    /// adds one.
+    /// their newest `verified` / `unverified` event says checked, or (kept
+    /// from before the two were separated on 2026-10-29) a pass recorded
+    /// under the old rule (`kabar_core::lesson::verifies_by_pass`). Their
+    /// "not reviewed yet" flag comes off, Javanese included. Finishing a
+    /// lesson alone never adds one.
     pub fn verified_lessons(&self) -> Result<BTreeMap<String, Verification>> {
         let mut stmt = self.conn.prepare(
             "SELECT lesson_id, kind, payload FROM lesson_events
-             WHERE kind IN ('completed', 'verified') AND deleted = 0",
+             WHERE kind IN ('completed', 'verified', 'unverified') AND deleted = 0
+             ORDER BY hlc_wall, hlc_counter, device_id",
         )?;
         let rows: Vec<(String, String, String)> = stmt
             .query_map([], |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)))?
             .collect::<rusqlite::Result<_>>()?;
-        let mut out = BTreeMap::new();
+        let mut checked: BTreeMap<String, bool> = BTreeMap::new();
+        let mut passed: BTreeMap<String, u32> = BTreeMap::new();
         for (id, kind, payload) in rows {
-            if kind == "verified" {
-                out.insert(id, Verification::Checked);
-                continue;
-            }
-            let Ok(done) = serde_json::from_str::<LessonCompleted>(&payload) else { continue };
-            if !kabar_core::lesson::verifies_by_pass(&done) {
-                continue;
-            }
-            let entry = out.entry(id).or_insert(Verification::PassedEarlier { score: done.score });
-            if let Verification::PassedEarlier { score } = entry {
-                *score = (*score).max(done.score);
+            match kind.as_str() {
+                "verified" => {
+                    checked.insert(id, true);
+                }
+                "unverified" => {
+                    checked.insert(id, false);
+                }
+                _ => {
+                    let Ok(done) = serde_json::from_str::<LessonCompleted>(&payload) else { continue };
+                    if kabar_core::lesson::verifies_by_pass(&done) {
+                        let best = passed.entry(id).or_default();
+                        *best = (*best).max(done.score);
+                    }
+                }
             }
         }
+        let mut out: BTreeMap<String, Verification> =
+            passed.into_iter().map(|(id, score)| (id, Verification::PassedEarlier { score })).collect();
+        out.extend(checked.into_iter().filter(|(_, on)| *on).map(|(id, _)| (id, Verification::Checked)));
         Ok(out)
     }
 
@@ -736,27 +744,22 @@ impl Store {
     }
 
     /// The learner checked a lesson's content: a synced `verified` event,
-    /// and its review cards lose the unverified flag. Checking it again
-    /// adds nothing.
+    /// and its review cards lose the unverified flag. Checking a lesson
+    /// that is already checked adds nothing.
     pub fn verify_lesson(&mut self, lesson_id: &str) -> Result<()> {
-        if !self.lesson_events(lesson_id)?.iter().any(|e| e.kind == "verified") {
+        if self.verified_lessons()?.get(lesson_id) != Some(&Verification::Checked) {
             self.record_lesson_event(lesson_id, "verified", &LessonVerified::default())?;
         }
         self.set_lesson_cards_verified(lesson_id, true)
     }
 
-    /// Takes the learner's check back (a tombstone on every `verified` event
-    /// of the lesson, so each device drops it). Its cards go back to
-    /// unverified unless an old-rule pass still verifies the lesson.
+    /// Takes the learner's check back. `lesson_events` is append-only, so
+    /// this is a correction: an `unverified` event that outranks the check
+    /// by HLC on every device. The cards go back to unverified unless an
+    /// old-rule pass still verifies the lesson.
     pub fn unverify_lesson(&mut self, lesson_id: &str) -> Result<()> {
-        let ids: Vec<String> = self
-            .lesson_events(lesson_id)?
-            .into_iter()
-            .filter(|e| e.kind == "verified")
-            .map(|e| e.id)
-            .collect();
-        for id in &ids {
-            self.write_synced("lesson_events", id, OpKind::Delete, None)?;
+        if self.verified_lessons()?.get(lesson_id) == Some(&Verification::Checked) {
+            self.record_lesson_event(lesson_id, "unverified", &LessonVerified::default())?;
         }
         let still = self.verified_lessons()?.contains_key(lesson_id);
         self.set_lesson_cards_verified(lesson_id, still)
@@ -1430,13 +1433,15 @@ mod tests {
         store.unverify_lesson(&lesson.id).unwrap();
         assert!(store.verified_lessons().unwrap().is_empty());
         assert!(mine(&store).iter().all(|v| !*v));
-        assert!(
-            store
-                .outbox(1000)
-                .unwrap()
-                .iter()
-                .any(|op| op.table == "lesson_events" && op.kind == OpKind::Delete)
-        );
+        // A correction, not a deletion: the log keeps both events.
+        let kinds: Vec<String> =
+            store.lesson_events(&lesson.id).unwrap().into_iter().map(|e| e.kind).collect();
+        assert_eq!(kinds, ["completed", "verified", "unverified"]);
+        store.unverify_lesson(&lesson.id).unwrap();
+        store.verify_lesson(&lesson.id).unwrap();
+        assert_eq!(store.verified_lessons().unwrap().get(&lesson.id), Some(&Verification::Checked));
+        assert_eq!(store.lesson_events(&lesson.id).unwrap().len(), 4, "no duplicate events");
+        store.unverify_lesson(&lesson.id).unwrap();
 
         // A pass from before the split still counts, and says so.
         store
