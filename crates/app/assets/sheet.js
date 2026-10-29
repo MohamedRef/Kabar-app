@@ -46,6 +46,7 @@ if (!window.__kabarSheetInit) {
     } else {
       delete root.dataset.sheet;
       root.style.removeProperty("--sheet-room");
+      restore();
       document.querySelectorAll("[data-sheet-room]").forEach((b) => delete b.dataset.sheetRoom);
     }
   };
@@ -216,17 +217,39 @@ if (!window.__kabarSheetInit) {
     }
     return document.scrollingElement;
   };
+  // Where the page was before a sheet scrolled a word above it: closing
+  // the sheet puts it back, unless the learner scrolled in the meantime.
+  let back = null;
   const reveal = (el) => {
-    const word =
-      el.closest(".annot")?.querySelector(".annot-w.on") ?? document.querySelector("#reader-doc .w.selected");
-    if (!word) return;
-    const box = scroller(word);
+    const words = [
+      ...(el.closest(".annot")?.querySelectorAll(".annot-w.on") ?? []),
+      ...document.querySelectorAll("#reader-doc .w.selected"),
+    ];
+    if (!words.length) return;
+    const box = scroller(words[0]);
     box.dataset.sheetRoom = "true";
-    const r = word.getBoundingClientRect();
     const top = vh() - el.offsetHeight;
-    if (r.bottom <= top - 12 && r.top >= 0) return;
+    // The tapped word (or its chip under the line) already shows: stay put.
+    const seen = (w) => {
+      const r = w.getBoundingClientRect();
+      return r.bottom <= top - 12 && r.top >= 0;
+    };
+    if (words.some(seen)) return;
+    const r = words[0].getBoundingClientRect();
+    const before = box.scrollTop;
     // Put the word a little above the middle of what the sheet leaves.
     box.scrollBy({ top: r.top + r.height / 2 - top * 0.45, behavior: reduced() ? "auto" : "smooth" });
+    back = { box, before, after: null };
+    const mine = back;
+    setTimeout(() => {
+      if (back === mine) mine.after = box.scrollTop;
+    }, 450);
+  };
+  const restore = () => {
+    const b = back;
+    back = null;
+    if (!b || b.after === null || Math.abs(b.box.scrollTop - b.after) > 4) return;
+    b.box.scrollTo({ top: b.before, behavior: reduced() ? "auto" : "smooth" });
   };
   const opened = (el) => {
     for (const other of sheets()) {

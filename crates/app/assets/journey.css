@@ -255,3 +255,47 @@ button.level-title .chev { margin-inline-start: auto; align-self: center; }
 button.stop-head { font-size: inherit; font-weight: inherit; inline-size: auto; }
 .souvenirs > li { display: grid; }
 button.souvenir { display: block; inline-size: 100%; text-align: start; }
+
+/* ---------- Where you are (2026-10-29 redesign) ----------
+   The current unit as one tonal card that opens the next lesson, and the
+   nearest milestone as an activity row under it (components.css). */
+.journey-now { display: grid; gap: var(--sp-2); margin-block: var(--sp-3); }
+.app[data-width="medium"] .journey-now { margin-block-start: 0; }
+button.now-card {
+  display: grid;
+  gap: var(--sp-1);
+  justify-items: start;
+  inline-size: 100%;
+  padding: var(--sp-4);
+  border-radius: var(--radius-card);
+  border: 1px solid transparent;
+  background: var(--soft);
+  color: var(--text);
+  text-align: start;
+  font-weight: inherit;
+}
+.now-eyebrow { font-size: var(--fs-sm); color: var(--muted); display: inline-flex; align-items: center; gap: var(--sp-1); }
+.now-city { font-family: var(--font-latin); font-size: var(--fs-2xl); font-weight: 700; line-height: var(--lh-tight); color: var(--primary); }
+.now-unit { font-weight: 600; }
+.now-lesson, .now-goal { font-size: var(--fs-sm); }
+.now-progress { display: flex; align-items: center; gap: var(--sp-2); inline-size: 100%; margin-block-start: var(--sp-2); }
+.now-progress .progress-line { flex: 1; display: block; background: color-mix(in srgb, var(--surface) 70%, transparent); }
+.now-progress .count { font-size: var(--fs-sm); color: var(--muted); white-space: nowrap; }
+button.activity-row.now-milestone { border: 1px solid var(--line-soft); border-radius: var(--radius-card); background: var(--surface); }
+/* A lesson's state, in words: Done, Continue, Upcoming. */
+.lesson[data-state="open"] .lesson-state { color: var(--muted); }
+/* Expanded and wider: one short strip above the map, the milestone beside
+   it, so the map keeps its room. Medium (tablet portrait) stacks them. */
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .journey-now { display: flex; align-items: stretch; margin-block: 0 var(--sp-3); }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) button.now-card {
+  flex: 1;
+  min-inline-size: 0;
+  grid-template-columns: auto minmax(0, 1fr) minmax(8rem, 14rem);
+  column-gap: var(--sp-4);
+  align-items: center;
+  padding: var(--sp-3) var(--sp-4);
+}
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .now-eyebrow { grid-column: 1 / -1; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .now-city { grid-row: 2 / span 3; font-size: var(--fs-xl); }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .now-progress { grid-column: 3; grid-row: 2 / span 3; margin: 0; flex-direction: column; align-items: stretch; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) button.activity-row.now-milestone { flex: 0 1 16rem; inline-size: auto; }

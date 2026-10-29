@@ -53,32 +53,38 @@ fn affixed_forms_borrow_the_root_e() {
 
 #[test]
 fn spec_morphology_sentences() {
-    assert_eq!(id("Apa kabar?"), "آپَا كَابَارْ؟");
-    assert_eq!(id("Saya sedang membaca buku."), "سَايَا سِدَاڠْ مِمْبَاتْشَا بُوكُو.");
+    assert_eq!(id("Apa kabar?"), "آبَا كَابَارْ؟");
+    assert_eq!(id("Saya sedang membaca buku."), "سَايَا سِدَانْجْ مِمْبَاتْشَا بُوكُو.");
     assert_eq!(id("Anak-anak bermain di taman."), "آنَاءْ-آنَاءْ بِرْمَائِينْ دِي تَامَانْ.");
-    assert_eq!(id("Kesehatan itu penting."), "كِسێهَاتَانْ إِيتُو پِنْتِيڠْ.");
+    assert_eq!(id("Kesehatan itu penting."), "كِسَيْهَاتَانْ إِيتُو بِنْتِينْجْ.");
 }
 
 #[test]
 fn letters_arabic_lacks() {
-    assert_eq!(id("pagi"), "پَاجِي");
+    assert_eq!(id("pagi"), "بَاجِي");
     assert_eq!(id("cari"), "تْشَارِي");
-    assert_eq!(id("jalan"), "چَالَانْ");
-    assert_eq!(id("sore"), "سۆرێ");
+    assert_eq!(id("jalan"), "دْجَالَانْ");
+    assert_eq!(id("sore"), "سَوْرَيْ");
+    assert_eq!(id("orang"), "أَوْرَانْجْ");
+    assert_eq!(id("tanggal"), "تَانْجَالْ");
+    assert_eq!(id("toko"), "تَوْكَوْ");
+    assert_eq!(id("ekor"), "أَيْكَوْرْ");
 }
 
 #[test]
 fn glides_and_diphthongs() {
     assert_eq!(id("dia"), "دِيَا");
     assert_eq!(id("buah"), "بُوَاهْ");
-    assert_eq!(id("pantai"), "پَانْتَايْ");
+    assert_eq!(id("pantai"), "بَانْتَايْ");
     assert_eq!(id("kalau"), "كَالَاوْ");
+    assert_eq!(id("survei"), "سُورْفَيْ");
+    assert_eq!(jv("piye"), "بِيَيْ");
 }
 
 #[test]
 fn bridge_words() {
     assert_eq!(id("selamat"), "سِلَامَاتْ");
-    assert_eq!(id("pikir"), "پِيكِيرْ");
+    assert_eq!(id("pikir"), "بِيكِيرْ");
     assert_eq!(id("kursi"), "كُورْسِي");
 }
 
@@ -97,9 +103,9 @@ fn javanese_open_o_and_heavy_consonants() {
 
 #[test]
 fn spec_javanese_speech_levels() {
-    assert_eq!(jv("Kowe wis mangan?"), "كۆوێ وِيسْ مَاڠَانْ؟");
-    assert_eq!(jv("Sampeyan sampun nedha?"), "سَامْپێيَانْ سَامْپُونْ نِضۆ؟");
-    assert_eq!(jv("Panjenengan sampun dhahar?"), "پَانْچِنِڠَانْ سَامْپُونْ ضَاهَارْ؟");
+    assert_eq!(jv("Kowe wis mangan?"), "كَوْوَيْ وِيسْ مَانْجَانْ؟");
+    assert_eq!(jv("Sampeyan sampun nedha?"), "سَامْبَيْيَانْ سَامْبُونْ نِضَوْ؟");
+    assert_eq!(jv("Panjenengan sampun dhahar?"), "بَانْدْجِنِنْجَانْ سَامْبُونْ ضَاهَارْ؟");
 }
 
 #[test]
@@ -110,12 +116,28 @@ fn overrides_must_match_their_word() {
     assert!(PronDict::parse("besar\tbəsar\nbesar\tbesar\n", "").is_err());
 }
 
+/// Only the original Arabic letters (hamza to ya) and the vowel marks: no
+/// Persian or Kurdish extras such as پ چ ڠ ێ ۆ.
+fn pure_arabic(c: char) -> bool {
+    ('\u{0621}'..='\u{064A}').contains(&c) || ('\u{064E}'..='\u{0652}').contains(&c) || c == '-'
+}
+
 #[test]
-fn every_lexicon_word_renders_in_arabic_letters() {
+fn every_lexicon_word_renders_in_original_arabic_letters() {
     let d = PronDict::builtin();
     for (word, phones) in &d.id {
         let a = arabic(phones);
         assert!(!a.is_empty(), "{word}");
-        assert!(a.chars().all(|c| ('\u{0600}'..='\u{06FF}').contains(&c) || c == '-'), "{word} → {a}");
+        assert!(a.chars().all(pure_arabic), "{word} → {a}");
+    }
+}
+
+#[test]
+fn every_phone_renders_in_original_arabic_letters() {
+    for (p, _) in CODES {
+        for seg in [vec![*p], vec![*p, Ph::A], vec![Ph::B, *p], vec![Ph::B, *p, Ph::A, Ph::I]] {
+            let a = arabic(&seg);
+            assert!(a.chars().all(pure_arabic), "{seg:?} → {a}");
+        }
     }
 }

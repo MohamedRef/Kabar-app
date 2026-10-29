@@ -13,6 +13,7 @@ mod data_export;
 mod dead_ends;
 mod diag;
 mod embedded;
+mod focus;
 mod fonts;
 mod i18n;
 mod icons;
@@ -158,6 +159,8 @@ pub struct Ui {
     pub lesson: Signal<Option<String>>,
     /// The screen the player was opened from; closing it goes back there.
     pub lesson_from: Signal<Screen>,
+    /// A lesson or review session holds the screen (`focus::use_focus_mode`).
+    pub focus: Signal<bool>,
 }
 
 /// The local database, shared through context.
@@ -310,7 +313,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     // (previews and screenshots on the Mac).
     let open_lesson = use_hook(|| std::env::var("KABAR_OPEN_LESSON").ok());
     // KABAR_OPEN_SCREEN=stats | level_check | journey | reader | review | play | listen | chat
-    // | coach | journal | studio opens those screens the same way (previews and screenshots).
+    // | coach | journal | studio | teach | cost | devices opens those screens the same way (previews and screenshots).
     let open_screen = use_hook(|| match std::env::var("KABAR_OPEN_SCREEN").as_deref() {
         Ok("stats") => Some(Screen::Stats),
         Ok("level_check") => Some(Screen::LevelCheck),
@@ -323,6 +326,9 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         Ok("coach") => Some(Screen::Coach),
         Ok("journal") => Some(Screen::Journal),
         Ok("studio") => Some(Screen::Studio),
+        Ok("teach") => Some(Screen::Teach),
+        Ok("cost") => Some(Screen::Cost),
+        Ok("devices") => Some(Screen::Devices),
         _ => None,
     });
     let ui = use_context_provider(|| Ui {
@@ -336,6 +342,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         }),
         lesson: Signal::new(open_lesson),
         lesson_from: Signal::new(Screen::Journey),
+        focus: Signal::new(false),
     });
     use_context_provider(|| db.clone());
     let prefs = use_context_provider(|| settings::device::DevicePrefs::load(&db));
@@ -415,6 +422,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             dir: lang.dir().as_str(),
             "data-theme": theme,
             "data-appearance": appearance,
+            "data-focus": if *ui.focus.read() { "true" } else { "false" },
             "data-width": width,
             "data-text-size": text_size,
             "data-nav": nav_style,
@@ -751,7 +759,7 @@ fn Shell() -> Element {
                     // Settings is a sheet over the current screen, not a screen.
                     Screen::Settings => rsx! { coach::today::Today {} },
                     Screen::PenLab => rsx! { penlab::PenLab {} },
-                    Screen::Devices => rsx! { account::AccountScreen {} },
+                    Screen::Devices => rsx! { account::DevicesScreen {} },
                     Screen::Teach => rsx! { teach::TeachScreen {} },
                     Screen::Cost => rsx! { cost::CostScreen {} },
                     Screen::Listen => rsx! { listen::ListenScreen {} },

@@ -187,6 +187,11 @@ pub enum Msg {
     RevAllDone,
     RevNextReview,
     RevShowAnswer,
+    RevHowWell,
+    RevRateHint,
+    RevContentUnchecked,
+    RevContentOk,
+    RevContentChecked,
     RevKeysHint,
     RateAgain,
     RateHard,
@@ -434,8 +439,7 @@ pub enum Msg {
     DeckBlurb,
     DeckHeroNote,
     DeckMarked,
-    DeckTapToFlip,
-    DeckFlip,
+    BridgeFromArabic,
     DeckMarkKnown,
     DeckKnown,
     DetectiveTitle,
@@ -672,6 +676,7 @@ pub enum Msg {
     PronModeOff,
     PronTitle,
     PronShow,
+    PronListen,
     PronHowToRead,
     PronGuideIntro,
     PronGuideNote,
@@ -1275,6 +1280,21 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RevNextReview, ArEg) => "المراجعة الجاية: {when}",
         (RevNextReview, Ar) => "المراجعة القادمة: {when}",
         (RevNextReview, En) => "Next review: {when}",
+        (RevHowWell, ArEg) => "افتكرتها قد إيه؟",
+        (RevHowWell, Ar) => "إلى أي حد تذكّرتها؟",
+        (RevHowWell, En) => "How well did you remember it?",
+        (RevRateHint, ArEg) => "قيّم اللي افتكرته، مش سهولة السؤال.",
+        (RevRateHint, Ar) => "قيّم ما تذكّرته، لا سهولة السؤال.",
+        (RevRateHint, En) => "Rate what you remembered, not how easy it looked.",
+        (RevContentUnchecked, ArEg) => "صحة المحتوى: لسه ما راجعتهاش",
+        (RevContentUnchecked, Ar) => "صحة المحتوى: لم تُراجَع بعد",
+        (RevContentUnchecked, En) => "Content: not checked yet",
+        (RevContentOk, ArEg) => "المحتوى سليم",
+        (RevContentOk, Ar) => "المحتوى سليم",
+        (RevContentOk, En) => "The content is right",
+        (RevContentChecked, ArEg) => "صحة المحتوى: راجعتها ✓",
+        (RevContentChecked, Ar) => "صحة المحتوى: رُوجعت ✓",
+        (RevContentChecked, En) => "Content: checked ✓",
         (RevShowAnswer, ArEg) => "وريني الإجابة",
         (RevShowAnswer, Ar) => "أظهر الإجابة",
         (RevShowAnswer, En) => "Show answer",
@@ -1998,12 +2018,8 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (DeckMarked, ArEg) => "اللي علّمت عليها:",
         (DeckMarked, Ar) => "ما أشرت إليه:",
         (DeckMarked, En) => "Marked as known:",
-        (DeckTapToFlip, ArEg) => "دوس عشان تقلبها",
-        (DeckTapToFlip, Ar) => "انقر لقلب البطاقة",
-        (DeckTapToFlip, En) => "Tap to flip",
-        (DeckFlip, ArEg) => "اقلب البطاقة",
-        (DeckFlip, Ar) => "اقلب البطاقة",
-        (DeckFlip, En) => "Flip the card",
+        (BridgeFromArabic, ArEg | Ar) => "من العربي للإندونيسي",
+        (BridgeFromArabic, En) => "From Arabic to Indonesian",
         (DeckMarkKnown, ArEg) => "عارفها",
         (DeckMarkKnown, Ar) => "أعرفها",
         (DeckMarkKnown, En) => "I know it",
@@ -2783,6 +2799,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PronModeOff, ArEg) => "مقفول",
         (PronModeOff, Ar) => "مُطفأ",
         (PronModeOff, En) => "Off",
+        (PronListen, ArEg) => "اسمع النطق الأصلي",
+        (PronListen, Ar) => "استمع إلى النطق الأصلي",
+        (PronListen, En) => "Hear it said",
         (PronTitle, ArEg) => "النطق بالحروف العربي",
         (PronTitle, Ar) => "النطق بالحروف العربية",
         (PronTitle, En) => "Pronunciation in Arabic script",
@@ -2793,13 +2812,13 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PronHowToRead, Ar) => "كيف أقرأ النطق العربي؟",
         (PronHowToRead, En) => "How to read the Arabic pronunciation",
         (PronGuideIntro, ArEg) => {
-            "تحت كل كلمة إندونيسي أو جاوي هتلاقي نطقها بالحروف العربي بالتشكيل. أغلب الحروف زي العربي بالظبط؛ دي العلامات اللي محتاجة تاخد بالك منها:"
+            "تحت كل كلمة إندونيسي أو جاوي هتلاقي نطقها بالحروف العربي بالتشكيل. كل الحروف عربي أصلي، بس فيه أصوات مش في العربي ليها كتابة ثابتة؛ دي اللي محتاج تاخد بالك منها:"
         }
         (PronGuideIntro, Ar) => {
-            "تحت كل كلمة إندونيسية أو جاوية نطقها بالحروف العربية مشكولة. معظم الحروف كالعربية تمامًا، وهذه العلامات الخاصة:"
+            "تحت كل كلمة إندونيسية أو جاوية نطقها بالحروف العربية مشكولة. والحروف كلها عربية أصلية، وهذه الأصوات التي لها كتابة خاصة:"
         }
         (PronGuideIntro, En) => {
-            "Under each Indonesian or Javanese word you'll see how to say it, in fully vowelled Arabic script. Most letters are plain Arabic; these are the special signs:"
+            "Under each Indonesian or Javanese word you'll see how to say it, in fully vowelled Arabic script. Every letter is plain Arabic; these are the sounds with a special spelling:"
         }
         (PronGuideNote, ArEg) => {
             "الراء ملفوفة زي العربي، والهاء في آخر الكلمة بتتقال خفيفة. التعريب تقريب يساعدك تبدأ: اسمع الصوت، ولو اختلفوا صدّق ودنك. نطق الجاوي لسه محتاج مراجعة."

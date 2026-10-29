@@ -45,7 +45,7 @@ pub fn problem_msg(p: Problem) -> Msg {
     }
 }
 
-fn sync_msg(s: SyncState) -> Option<Msg> {
+pub(crate) fn sync_msg(s: SyncState) -> Option<Msg> {
     match s {
         SyncState::SignedOut => None,
         SyncState::Connecting => Some(Msg::SyncConnecting),
@@ -98,6 +98,19 @@ pub fn ago(lang: UiLanguage, eastern: bool, then_ms: u64, now_ms: u64) -> String
 
 fn now_ms() -> u64 {
     crate::cloud::engine::now_ms()
+}
+
+/// The Devices screen (from Teach Kabar and Cost & limits): the page
+/// heading, then the same account and devices as Settings › Account.
+#[component]
+pub fn DevicesScreen() -> Element {
+    let ui = use_context::<Ui>();
+    rsx! {
+        div { class: "page-head",
+            div { h1 { "{ui.t(Msg::NavDevices)}" } }
+        }
+        AccountScreen {}
+    }
 }
 
 #[component]

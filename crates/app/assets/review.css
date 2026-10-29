@@ -229,7 +229,7 @@ button.rev-stat { border-color: transparent; }
    the card keeps a steady height, and on tablets and the Mac the row
    sticks to the window's bottom edge when a long back pushes it down. */
 .app:not([data-width="compact"]) .rev-card { min-block-size: 20rem; }
-.app:not([data-width="compact"]) .rev-session .rate-row {
+.app:not([data-width="compact"]) .rev-session .rev-footer {
   position: sticky;
   inset-block-end: 0;
   background: var(--bg);
@@ -422,3 +422,26 @@ button.rev-stat { border-color: transparent; }
   .fc-fill, .progress-fill { transition: block-size 240ms ease, inline-size 240ms linear; }
 }
 @keyframes rev-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ---------- stable footer (redesign 2026-10-29) ---------- */
+/* Before the answer shows: one primary action; after: the question and the
+   four ratings with their real next intervals, always in this one place. */
+.rev-footer { display: grid; gap: var(--sp-2); }
+.rev-ask { margin: 0; text-align: center; }
+/* The content check sits apart from the memory rating. */
+.rev-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  padding-block: var(--sp-1);
+  border-block-start: 1px dashed var(--line);
+}
+/* Phones too: a steady card height keeps the footer in one place. */
+.app[data-width="compact"] .rev-card { min-block-size: 14rem; }
+/* The classic session's ratings use the shared .rating buttons
+   (components.css); the one the typed answer suggests gets a ring. */
+button.rating.suggested { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px currentColor; }
+button.rating.hard { color: var(--gold); }
+.session-bar .progress-line { flex: 1; }

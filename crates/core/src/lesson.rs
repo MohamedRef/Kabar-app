@@ -9,7 +9,7 @@ use std::collections::HashSet;
 
 use kabar_protocol::lesson::{
     AcceptedMeanings, Direction, Exercise, ExerciseKind, ExerciseResult, LESSON_SCHEMA, LessonCompleted,
-    LessonContent, LessonPosition, LessonProgress, LessonStep, Localized, Outcome,
+    LessonContent, LessonPosition, LessonProgress, LessonStep, Localized, Outcome, SavedGrade, SavedResponse,
 };
 
 use crate::lang::Lang;
@@ -417,6 +417,40 @@ impl Grade {
     pub fn is_correct(&self) -> bool {
         matches!(self, Grade::Correct | Grade::Almost { .. } | Grade::Practiced)
     }
+
+    /// The grade as a saved position keeps it.
+    pub fn saved(&self) -> SavedGrade {
+        match self {
+            Grade::Correct => SavedGrade::Correct,
+            Grade::Almost { expected } => SavedGrade::Almost { expected: expected.clone() },
+            Grade::Wrong => SavedGrade::Wrong,
+            Grade::NeedsReview => SavedGrade::NeedsReview,
+            Grade::Practiced => SavedGrade::Practiced,
+        }
+    }
+
+    pub fn from_saved(saved: &SavedGrade) -> Self {
+        match saved {
+            SavedGrade::Correct => Grade::Correct,
+            SavedGrade::Almost { expected } => Grade::Almost { expected: expected.clone() },
+            SavedGrade::Wrong => Grade::Wrong,
+            SavedGrade::NeedsReview => Grade::NeedsReview,
+            SavedGrade::Practiced => Grade::Practiced,
+        }
+    }
+
+    /// The grade a recorded outcome stands for, when only the outcome
+    /// survived (positions saved before answers were kept). A skip has no
+    /// feedback to show.
+    fn of_outcome(outcome: Outcome, ex: &Exercise) -> Option<Self> {
+        Some(match outcome {
+            Outcome::Correct => Grade::Correct,
+            Outcome::Almost => Grade::Almost { expected: display_answer(ex, UiLanguage::En) },
+            Outcome::Missed => Grade::Wrong,
+            Outcome::Practiced => Grade::Practiced,
+            Outcome::Skipped => return None,
+        })
+    }
 }
 
 /// Folds an answer for comparison: case, punctuation and whitespace, Arabic
@@ -783,7 +817,23 @@ impl Player {
         if let Some(step) = step {
             p.go(step);
         }
+        p.pending = p.restored_grade(position.response.as_ref().and_then(|r| r.checked.as_ref()));
         p
+    }
+
+    /// The feedback a resumed exercise shows: an exercise answered before
+    /// the lesson was closed is never asked (and graded) again. The saved
+    /// grade wins; a position from before grades were saved falls back to
+    /// the recorded outcome. Nothing if this pass has no result (the content
+    /// changed, or the answer was never checked).
+    fn restored_grade(&self, saved: Option<&SavedGrade>) -> Option<Grade> {
+        let Step::Exercise { index, retry } = self.step else { return None };
+        let r = self.result(index)?;
+        let outcome = if retry { r.retry? } else { r.first };
+        match saved {
+            Some(g) => Some(Grade::from_saved(g)),
+            None => Grade::of_outcome(outcome, self.exercise()?),
+        }
     }
 
     pub fn lesson(&self) -> &LessonContent {
@@ -818,7 +868,14 @@ impl Player {
             Step::Dialogue => LessonStep::Dialogue,
             Step::Summary => LessonStep::Summary,
         };
-        LessonPosition { lesson_id: self.lesson.id.clone(), step, progress: Some(self.progress.clone()) }
+        let response =
+            self.pending.as_ref().map(|g| SavedResponse { checked: Some(g.saved()), ..Default::default() });
+        LessonPosition {
+            lesson_id: self.lesson.id.clone(),
+            step,
+            progress: Some(self.progress.clone()),
+            response,
+        }
     }
 
     /// Adds active time (the UI caps idle gaps before calling this).
@@ -975,6 +1032,19 @@ impl Player {
 
     /// 0.0–1.0 for the progress bar. Retries extend the road a little.
     pub fn fraction(&self) -> f32 {
+        let (done, total) = self.road();
+        if total == 0 { 1.0 } else { done as f32 / total as f32 }
+    }
+
+    /// The screen on view as (number, total), 1-based, for the "3 / 12"
+    /// counter; the summary is past the road and shows (total, total).
+    pub fn counter(&self) -> (usize, usize) {
+        let (done, total) = self.road();
+        ((done + 1).min(total), total)
+    }
+
+    /// Screens behind the learner and screens on the road (summary aside).
+    fn road(&self) -> (usize, usize) {
         let slides = self.lesson.slides.len();
         let ex = self.lesson.exercises.len();
         let retries = (0..ex).filter(|&i| self.missed_first(i)).count();
@@ -987,9 +1057,9 @@ impl Player {
                 slides + ex + (0..index).filter(|&i| self.missed_first(i)).count()
             }
             Step::Dialogue => slides + ex + retries,
-            Step::Summary => return 1.0,
+            Step::Summary => total,
         };
-        if total == 0 { 1.0 } else { done as f32 / total as f32 }
+        (done, total)
     }
 
     pub fn summary(&self) -> Summary {
@@ -1026,21 +1096,29 @@ impl Player {
             duration_ms: s.duration_ms,
             mistakes: s.mistakes,
             results: self.progress.results.clone(),
+            pass_verifies: false,
         }
     }
 }
 
-/// First-try score (0–100) at which finishing a lesson approves it.
-pub const APPROVE_SCORE: u32 = 80;
+/// First-try score (0–100) at which a finished lesson counts as passed.
+pub const PASS_SCORE: u32 = 80;
 
-/// Whether a finished lesson counts as approved by the learner, so its
-/// "not reviewed yet" flag comes off (Javanese included). The learner must
-/// score at least [`APPROVE_SCORE`] on the first try, with at least half of
-/// the gradable exercises actually answered rather than skipped.
-pub fn approves(done: &LessonCompleted) -> bool {
+/// Whether a finished lesson was passed: at least [`PASS_SCORE`] on the
+/// first try, with at least half of the gradable exercises actually
+/// answered rather than skipped. Passing is the learner's progress, not a
+/// check of the content (see [`verifies_by_pass`]).
+pub fn passes(done: &LessonCompleted) -> bool {
     let count = |o: Outcome| done.results.iter().filter(|r| r.first == o).count();
     let graded = count(Outcome::Correct) + count(Outcome::Almost) + count(Outcome::Missed);
-    graded > 0 && graded >= count(Outcome::Skipped) && done.score >= APPROVE_SCORE
+    graded > 0 && graded >= count(Outcome::Skipped) && done.score >= PASS_SCORE
+}
+
+/// Whether this completion also checked the content: only a pass recorded
+/// under the old rule ([`LessonCompleted::pass_verifies`]). New passes need
+/// the learner's explicit check.
+pub fn verifies_by_pass(done: &LessonCompleted) -> bool {
+    done.pass_verifies && passes(done)
 }
 
 /// Build-sentence tiles (answer words + distractors), shuffled by `seed` and

@@ -219,16 +219,18 @@ pub fn LevelCheckScreen() -> Element {
         style { {TEST_CSS.text()} }
         style { {super::STATS_CSS.text()} }
         div { class: "st st-check",
-            div { class: "st-head",
+            div { class: "page-head st-head",
+                div {
+                    h1 { "{st(lang, S::CheckTitle)}" }
+                }
                 button {
-                    class: "st-back round-back",
+                    class: "icon-button st-back round-back",
                     "data-back": "true",
                     aria_label: st(lang, S::CheckClose),
                     title: st(lang, S::CheckClose),
                     onclick: move |_| super::back(ui),
                     span { aria_hidden: "true", {super::back_arrow(lang)} }
                 }
-                h2 { "{st(lang, S::CheckTitle)}" }
             }
             {body}
         }

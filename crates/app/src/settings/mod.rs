@@ -150,22 +150,28 @@ const SETTINGS_CSS: &str = r#"
 }
 .settings-head h2 { margin: 0; font-size: 1.2rem; flex: 1; }
 .settings-body { flex: 1; min-block-size: 0; display: grid; grid-template-columns: 1fr; }
-.app:not([data-width="compact"]) .settings-body { grid-template-columns: 17rem 1fr; }
-.settings-sections {
-  display: flex; flex-direction: column; gap: 0.2rem; padding: 0.75rem; overflow-y: auto;
-  background: var(--surface);
-}
+.app:not([data-width="compact"]) .settings-body { grid-template-columns: 20rem 1fr; }
+.settings-sections { display: flex; flex-direction: column; padding: 0.75rem; overflow-y: auto; }
 .app:not([data-width="compact"]) .settings-sections { border-inline-end: 1px solid var(--line); }
-.settings-sections button {
-  display: grid; grid-template-columns: 1.6rem 1fr; column-gap: 0.6rem; align-items: center;
-  text-align: start; border: 0; background: transparent; border-radius: 12px; padding: 0.55rem 0.7rem;
-}
-.settings-sections button .ss-title { font-weight: 600; }
-.settings-sections button .ss-sub { grid-column: 2; font-size: 0.82rem; color: var(--muted); }
-.settings-sections button[aria-current="true"] { background: var(--surface-2); color: var(--indigo); }
-.app[data-width="compact"] .settings-sections button { padding-block: 0.8rem; border-block-end: 1px solid var(--line); border-radius: 0; }
+.settings-sections .section-head:first-child { margin-block-start: 0; }
+.settings-sections .card.grouped { margin: 0; }
+.settings-sections .activity-row[aria-current="true"] { background: var(--soft); }
+.settings-sections .activity-row[aria-current="true"] strong { color: var(--primary); }
+.settings-me { margin-block-end: var(--sp-2); }
+.app:not([data-width="compact"]) .settings-sections .activity-row { padding-inline: var(--sp-3); }
+.app:not([data-width="compact"]) .settings-sections .row-end { display: none; }
+.settings-avatar { font-weight: 700; font-size: var(--fs-lg); background: var(--accent); color: var(--accent-ink); border-radius: 50%; }
 .settings-pane { overflow-y: auto; padding: 1rem; padding-block-end: max(2rem, env(safe-area-inset-bottom)); }
 .settings-pane > .card:last-child { margin-block-end: 0; }
+/* Inside a section: one card, its fields as rows split by hairlines, the
+   choices as segmented controls and on/off fields as switches at the end. */
+.settings-pane .card > .field + .field { border-block-start: 1px solid var(--line-soft); padding-block-start: var(--sp-3); }
+.settings-pane .card > .field { margin-block-end: var(--sp-3); }
+.settings-pane .card > .field:last-child { margin-block-end: 0; }
+.settings-pane .field > .label { display: block; font-weight: 600; margin-block-end: var(--sp-2); }
+.settings-pane .segmented { border-radius: var(--radius-control); }
+label.switch-row, .field > label.switch-row { display: flex; margin: 0; align-items: center; gap: var(--sp-2); min-block-size: var(--tap); font-weight: 600; cursor: pointer; }
+.switch-row > input.switch { order: 2; margin-inline-start: auto; flex: none; }
 .settings-scope { font-size: 0.75rem; margin-inline-start: 0.4rem; font-weight: 400; vertical-align: 0.1rem; }
 .settings-hint { margin-block: 0.25rem 0; }
 .shortcut-table { border-collapse: collapse; inline-size: 100%; }
@@ -266,22 +272,92 @@ pub fn SettingsSheet() -> Element {
             }
             div { class: "settings-body",
                 if !drilled {
-                    nav { class: "settings-sections", aria_label: "{st(lang, S::Sections)}",
-                        for s in sections {
-                            button {
-                                key: "{s.id()}",
-                                aria_current: if !compact && current == Some(s) { "true" } else { "false" },
-                                onclick: move |_| section_sig.set(Some(s)),
-                                span { class: "nav-icon", aria_hidden: "true", {crate::icons::settings_section(s)} }
-                                span { class: "ss-title", "{st(lang, s.title())}" }
-                                span { class: "ss-sub", "{st(lang, s.summary())}" }
-                            }
-                        }
-                    }
+                    SectionList { sections: sections.clone(), current: if compact { None } else { current } }
                 }
                 if let Some(s) = current {
                     div { class: "settings-pane", key: "{s.id()}",
                         SectionView { section: s }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// Settings' groups, in order: a heading and the sections under it (only
+/// those shown here appear; an empty group is left out).
+const GROUPS: [(S, &[Section]); 4] = [
+    (S::GroupStudy, &[Section::Learning, Section::Coach]),
+    (S::GroupLook, &[Section::Look]),
+    (S::GroupDevice, &[Section::Android, Section::Tablet, Section::Mac]),
+    (S::GroupData, &[Section::Account, Section::Storage, Section::About]),
+];
+
+/// The section list as grouped rows, headed by the learner (from Kak Nur's
+/// profile, opening the study plan they set). `current` is marked on wide
+/// windows, where the chosen section shows beside the list.
+#[component]
+fn SectionList(sections: Vec<Section>, current: Option<Section>) -> Element {
+    let ui = use_context::<Ui>();
+    let nav = use_context::<SettingsNav>();
+    let coach = use_context::<crate::coach::Coach>();
+    let cloud = try_use_context::<crate::Cloud>();
+    let lang = ui.lang();
+    let mut section_sig = nav.section;
+    let name = coach.profile.read().as_ref().map(|p| p.name.trim().to_string()).filter(|n| !n.is_empty());
+    let sync = cloud.map(|c| c.status.read().sync);
+    // What a row says under its title: live state where there is one.
+    let detail = move |s: Section| -> String {
+        match s {
+            Section::Account => match sync.and_then(crate::account::sync_msg) {
+                Some(m) => ui.t(m).to_string(),
+                None => st(lang, S::AccountSub).to_string(),
+            },
+            Section::About => format!("{} {}", st(lang, S::Version), env!("CARGO_PKG_VERSION")),
+            s => st(lang, s.summary()).to_string(),
+        }
+    };
+    rsx! {
+        nav { class: "settings-sections", aria_label: "{st(lang, S::Sections)}",
+            if let Some(name) = name {
+                div { class: "card grouped settings-me",
+                    button {
+                        class: "activity-row",
+                        onclick: move |_| section_sig.set(Some(Section::Coach)),
+                        span { class: "row-icon settings-avatar", aria_hidden: "true",
+                            {name.chars().next().map(|c| c.to_uppercase().to_string()).unwrap_or_default()}
+                        }
+                        span { class: "row-copy",
+                            strong { bdi { "{name}" } }
+                            small { "{st(lang, S::ProfileSub)}" }
+                        }
+                        span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
+                    }
+                }
+            }
+            for (title, members) in GROUPS {
+                {
+                    let shown: Vec<Section> = members.iter().copied().filter(|s| sections.contains(s)).collect();
+                    rsx! {
+                        if !shown.is_empty() {
+                            div { key: "{st(lang, title)}", class: "section-head", h2 { "{st(lang, title)}" } }
+                            div { class: "card grouped",
+                                for s in shown {
+                                    button {
+                                        key: "{s.id()}",
+                                        class: "activity-row",
+                                        aria_current: if current == Some(s) { "true" } else { "false" },
+                                        onclick: move |_| section_sig.set(Some(s)),
+                                        span { class: "row-icon", aria_hidden: "true", {crate::icons::settings_section(s)} }
+                                        span { class: "row-copy",
+                                            strong { "{st(lang, s.title())}" }
+                                            small { "{detail(s)}" }
+                                        }
+                                        span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -343,6 +419,14 @@ mod tests {
         } else {
             assert!(here.contains(&Section::Mac) && !here.contains(&Section::Android));
             assert!(!Section::Tablet.shown(true), "the tablet section is Android-only");
+        }
+    }
+
+    #[test]
+    fn every_section_sits_in_one_group() {
+        for s in Section::ALL {
+            let n = GROUPS.iter().filter(|(_, m)| m.contains(&s)).count();
+            assert_eq!(n, 1, "{s:?} must be listed exactly once");
         }
     }
 

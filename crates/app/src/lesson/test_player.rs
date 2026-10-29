@@ -175,6 +175,7 @@ fn record(db: &Db, coach: Coach, r: &TestRunner) {
                         duration_ms: res.duration_ms,
                         mistakes,
                         results: Vec::new(),
+                        pass_verifies: false,
                     };
                     if let Err(e) = store.record_lesson_event(&test.id, "completed", &done) {
                         crate::diag::report!("marking the level done failed: {e}");

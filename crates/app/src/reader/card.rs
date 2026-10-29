@@ -19,7 +19,7 @@ use crate::annotated::parts::{PartsLine, SayWord};
 use crate::coach::Coach;
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
-use crate::pron::{Pron, PronGuide};
+use crate::pron::{Pron, PronGuide, Say};
 use crate::sheet::Sheet;
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
@@ -133,6 +133,7 @@ fn Headline(w: Word, surface: String) -> Element {
         div { class: "headline",
             bdi { class: "latin surface", lang: "id", "{surface}" }
             if let Some((text, tag)) = pron {
+                Say { text: text.clone(), tag }
                 Pron { text, tag }
             }
             if let Some(n) = normalized {
@@ -202,6 +203,10 @@ fn WordCard(i: usize) -> Element {
     let sentence = open.doc.sentence_of(i).to_string();
     let key = w.key.clone();
     let status = key.as_deref().map(|k| st.status(k));
+    // What the review card is made from (a taught meaning wins).
+    let info = w.shown();
+    // Saved before (here or from another text): the button says so.
+    let saved_before = key.as_deref().is_some_and(|k| db.0.borrow().saved_word_count(k).unwrap_or(0) > 0);
     let breakdown = w.breakdown().map(|_| (parts_of_token(&w.analyzed), w.class));
     let speak_text = w.analyzed.normalized.as_ref().map_or(surface.clone(), |n| n.full.clone());
     let taught = w.taught_approved().and_then(taught_info);
@@ -287,7 +292,10 @@ fn WordCard(i: usize) -> Element {
 
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::InThisSentence)}" }
-                p { class: "sentence", dir: "ltr", lang: "id", bdi { "{sentence}" } }
+                p { class: "sentence", dir: "ltr", lang: "id",
+                    bdi { "{sentence}" }
+                    Say { text: sentence.clone(), tag: if w.tag == Tag::Javanese { "jv" } else { "id" } }
+                }
                 Pron { text: sentence.clone(), tag: if w.tag == Tag::Javanese { "jv" } else { "id" } }
                 button {
                     class: "ghost small",
@@ -327,9 +335,10 @@ fn WordCard(i: usize) -> Element {
                 if let Some(k) = key.clone() {
                     button {
                         class: "primary",
-                        disabled: *added.read(),
+                        disabled: *added.read() || saved_before,
                         onclick: {
                             let db = db.clone();
+                            let info = info.clone();
                             let surface = surface.clone();
                             let sentence = sentence.clone();
                             move |_| {
@@ -339,6 +348,7 @@ fn WordCard(i: usize) -> Element {
                                     &surface,
                                     &sentence,
                                     &open.text.id,
+                                    info.as_ref(),
                                 );
                                 match saved {
                                     Ok(promoted) => {
@@ -353,7 +363,7 @@ fn WordCard(i: usize) -> Element {
                                 }
                             }
                         },
-                        if *added.read() { "{ui.t(Msg::AddedToReview)}" } else { "{ui.t(Msg::AddToReview)}" }
+                        if *added.read() || saved_before { "{ui.t(Msg::AddedToReview)}" } else { "{ui.t(Msg::AddToReview)}" }
                     }
                 }
             }
@@ -427,6 +437,7 @@ pub(crate) fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::InIndonesian)}" }
                 bdi { class: "latin", lang: "id", "{ind}" }
+                Say { text: ind.clone(), tag: "id" }
                 Pron { text: ind.clone(), tag: "id" }
             }
         }
@@ -436,7 +447,10 @@ pub(crate) fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
         if let Some((text, tr)) = &info.example {
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::Example)}" }
-                p { class: "sentence", dir: "ltr", lang, "{text}" }
+                p { class: "sentence", dir: "ltr", lang,
+                    "{text}"
+                    Say { text: text.clone(), tag: lang }
+                }
                 Pron { text: text.clone(), tag: lang }
                 p { class: "muted", "{tr.get(voice)}" }
             }

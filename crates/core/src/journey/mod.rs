@@ -192,7 +192,8 @@ pub struct Progress {
     done: BTreeSet<String>,
     done_levels: BTreeSet<String>,
     current: Option<String>,
-    /// Lessons the learner approved by passing them (`lesson::approves`).
+    /// Lessons whose content the learner checked (a `verified` event, or a
+    /// pass under the old rule: `lesson::verifies_by_pass`).
     approved: BTreeSet<String>,
 }
 
@@ -220,18 +221,18 @@ impl Progress {
         Self { done, done_levels, current, approved: BTreeSet::new() }
     }
 
-    /// Adds the lessons the learner approved by passing them.
+    /// Adds the lessons whose content the learner checked.
     pub fn with_approved(mut self, approved: &BTreeSet<String>) -> Self {
         self.approved = approved.clone();
         self
     }
 
-    /// Every lesson of the unit was passed with a reasonable score.
+    /// The learner checked the content of every lesson of the unit.
     pub fn unit_approved(&self, unit: &Unit) -> bool {
         !unit.lessons.is_empty() && unit.lessons.iter().all(|l| self.approved.contains(&l.id))
     }
 
-    /// Every lesson of the level was passed with a reasonable score.
+    /// The learner checked the content of every lesson of the level.
     pub fn level_approved(&self, level: &Level) -> bool {
         level.lessons().next().is_some() && level.lessons().all(|l| self.approved.contains(&l.id))
     }

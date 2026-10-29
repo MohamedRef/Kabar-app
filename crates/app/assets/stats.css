@@ -3,8 +3,47 @@
    throughout, so RTL just works. */
 
 .st { display: grid; gap: 1rem; }
-.st-head { display: flex; align-items: center; gap: 0.75rem; }
-.st-head h2 { margin: 0; }
+/* the page head's back arrow sits at the end, after the title */
+.st-head { margin-block-end: 0; }
+.st-period { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+/* the period's headline: ring, activity, tiles, weak spots */
+.st-top { display: grid; gap: 1rem; align-items: start; grid-auto-rows: max-content; }
+.st-top > * { min-inline-size: 0; }
+.app[data-width="expanded"] .st-top, .app:is([data-width="large"], [data-width="extra-large"]) .st-top {
+  grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.st-ring-card { display: flex; align-items: center; gap: 1rem; }
+.st-ring { position: relative; flex: none; inline-size: 6.5rem; block-size: 6.5rem; }
+.st-ring-svg svg { display: block; inline-size: 100%; block-size: 100%; }
+.ring-track { fill: none; stroke: var(--soft); stroke-width: 10; }
+.ring-on { fill: none; stroke: var(--primary); stroke-width: 10; stroke-linecap: round; }
+.st-ring-value { position: absolute; inset: 0; display: grid; place-items: center; font-size: var(--fs-xl);
+  font-weight: 700; font-variant-numeric: tabular-nums; }
+.st-ring-text { min-inline-size: 0; flex: 1; }
+.st-ring-text h3 { margin-block: 0 0.3rem; }
+.st-ring-text p { margin-block: 0 0.4rem; }
+.st-verdict { font-size: var(--fs-sm); }
+.st-ring-go { margin-block-start: 0.2rem; }
+
+.st-bars { display: flex; align-items: stretch; gap: 0.4rem; block-size: 8rem; margin-block: 0.4rem; }
+.st-bar-col { flex: 1 1 0; min-inline-size: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.st-bar-track { flex: 1; display: flex; align-items: flex-end; }
+.st-bar { display: block; inline-size: 100%; min-block-size: 0; border-radius: var(--radius-sm) var(--radius-sm) 3px 3px;
+  background: var(--soft); }
+.st-bar-col.now .st-bar { background: var(--primary); }
+.st-bar-label { font-size: var(--fs-xs); color: var(--muted); text-align: center; white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis; }
+.st-bar-col.now .st-bar-label { color: var(--text); font-weight: 600; }
+/* the baseline under empty days */
+.st-bar-track { border-block-end: 1px solid var(--line); }
+
+.st-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
+.st-tiles .stat { align-items: center; text-align: center; padding-block: 0.8rem; }
+.app[data-width="expanded"] .st-tiles, .app:is([data-width="large"], [data-width="extra-large"]) .st-tiles { grid-column: 1 / -1; }
+
+.st-weak .section-head { margin-block-start: 0; }
+.st-weak-empty { padding-block: var(--sp-5); }
+.st-weak-go { color: var(--primary); font-size: var(--fs-sm); font-weight: 600; }
 .app[data-width="compact"] .st-back-page { display: none; }
 .st-grid { display: grid; gap: 1rem; align-items: start; }
 /* Tablet portrait: one roomy column (two were too narrow for the numbers). */
@@ -91,5 +130,5 @@
 .st-outcome .stats-row { max-inline-size: 14rem; }
 
 @media (forced-colors: active) {
-  .hm, .fc .bar, .st-seg, .st-key { forced-color-adjust: none; }
+  .hm, .fc .bar, .st-seg, .st-key, .st-bar, .ring-on, .ring-track { forced-color-adjust: none; }
 }

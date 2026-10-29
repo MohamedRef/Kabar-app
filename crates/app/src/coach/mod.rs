@@ -11,6 +11,7 @@ pub mod logic;
 pub mod notify;
 pub mod onboarding;
 pub mod settings;
+pub mod text;
 pub mod today;
 pub mod widgets;
 
