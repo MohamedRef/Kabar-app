@@ -319,6 +319,14 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
    squeezed away; and grids on wider windows size rows to their content,
    so a short chip row can't collapse the card beside it. */
 .app :where(.content, .bsheet-body, .more-sheet) > * { flex-shrink: 0; }
+/* Focused study on phones (focus.rs): a lesson or review session hides the
+   bottom and top bars; the session's own Finish / × is the way out, and its
+   answer row sits at the bottom edge with the last card scrollable above. */
+.app[data-width="compact"][data-focus="true"] :is(.nav, .top-bar) { display: none; }
+.app[data-width="compact"][data-focus="true"] .content {
+  padding-block: calc(var(--sp-2) + env(safe-area-inset-top)) calc(var(--sp-6) + env(safe-area-inset-bottom));
+}
+.app[data-width="compact"][data-focus="true"] :is(.rev-session .rate-row, .burst-answers) { inset-block-end: env(safe-area-inset-bottom); }
 .app:not([data-width="compact"]) :where(.today-grid, .coach-grid, .play-grid, .pasar-layout) { grid-auto-rows: max-content; align-items: start; }
 .app:not([data-width="compact"]) .content { padding-block: var(--sp-6) var(--sp-8); }
 

@@ -58,6 +58,7 @@ pub(crate) fn now_ms() -> u64 {
 #[component]
 pub fn LessonScreen() -> Element {
     let ui = use_context::<Ui>();
+    crate::focus::use_focus_mode(true);
     let lang = ui.settings.read().ui_language;
     let id = ui.lesson.read().clone().unwrap_or_default();
     // Unpacked and parsed once per lesson, not on every render.

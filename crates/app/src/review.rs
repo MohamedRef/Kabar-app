@@ -576,6 +576,8 @@ pub fn ReviewScreen() -> Element {
     let ui = use_context::<Ui>();
     let view = *engine.view.read();
     let error = *engine.error.read();
+    // A running session holds the phone's screen; Finish is its way out.
+    crate::focus::use_focus_mode(matches!(view, View::Classic | View::Wall | View::Burst));
 
     rsx! {
         style { {REVIEW_CSS.text()} }
@@ -1362,7 +1364,8 @@ fn SessionActions(on_undo: EventHandler<()>) -> Element {
     rsx! {
         div { class: "row",
             button { class: "rev-undo", disabled: !can_undo, onclick: move |_| on_undo.call(()), "{ui.t(Msg::RevUndo)}" }
-            button { onclick: move |_| engine.finish(), "{ui.t(Msg::RevFinish)}" }
+            // Android Back ends the session here (its answers are already saved).
+            button { "data-back": "true", onclick: move |_| engine.finish(), "{ui.t(Msg::RevFinish)}" }
         }
     }
 }
