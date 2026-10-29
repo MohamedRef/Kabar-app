@@ -45,7 +45,7 @@ pub fn problem_msg(p: Problem) -> Msg {
     }
 }
 
-fn sync_msg(s: SyncState) -> Option<Msg> {
+pub(crate) fn sync_msg(s: SyncState) -> Option<Msg> {
     match s {
         SyncState::SignedOut => None,
         SyncState::Connecting => Some(Msg::SyncConnecting),

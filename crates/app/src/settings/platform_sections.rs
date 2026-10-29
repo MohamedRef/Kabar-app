@@ -64,8 +64,10 @@ pub fn AndroidSection() -> Element {
             }
 
             div { class: "field",
-                label {
+                label { class: "switch-row",
                     input {
+                        class: "switch",
+                        role: "switch",
                         r#type: "checkbox",
                         checked: pen,
                         onchange: {
@@ -149,8 +151,10 @@ pub fn MacSection() -> Element {
         }
         div { class: "card",
             div { class: "field",
-                label {
+                label { class: "switch-row",
                     input {
+                        class: "switch",
+                        role: "switch",
                         r#type: "checkbox",
                         checked: hover,
                         onchange: {
@@ -186,11 +190,12 @@ fn NavStyleField() -> Element {
     rsx! {
         div { class: "field",
             span { class: "label", "{st(lang, S::NavStyle)}" Scope { device_only: true } }
-            div { class: "row", role: "group",
+            div { class: "segmented", role: "radiogroup",
                 for n in NavStyle::ALL {
                     button {
                         key: "{n.as_str()}",
-                        aria_pressed: if n == style { "true" } else { "false" },
+                        role: "radio",
+                            aria_checked: if n == style { "true" } else { "false" },
                         onclick: {
                             let db = db.clone();
                             move |_| prefs.set_nav_style(&db, n)
@@ -237,17 +242,22 @@ pub fn AccountSection() -> Element {
     let nav = use_context::<SettingsNav>();
     rsx! {
         crate::account::AccountScreen {}
-        // The card is the button, so the whole of it opens the cost page.
-        button {
-            class: "card tap tap-link",
-            onclick: move |_| {
-                let mut s = ui.screen;
-                s.set(Screen::Cost);
-                nav.close();
-            },
-            span { class: "nav-icon", aria_hidden: "true", {crate::icons::nav(Screen::Cost)} }
-            span { class: "tap-link-text", "{ui.t(Msg::CostTitle)}" }
-            span { class: "chev", aria_hidden: "true" }
+        // Cost & limits is its own page: a row that opens it.
+        div { class: "card grouped",
+            button {
+                class: "activity-row",
+                onclick: move |_| {
+                    let mut s = ui.screen;
+                    s.set(Screen::Cost);
+                    nav.close();
+                },
+                span { class: "row-icon", aria_hidden: "true", {crate::icons::nav(Screen::Cost)} }
+                span { class: "row-copy",
+                    strong { "{ui.t(Msg::CostTitle)}" }
+                    small { "{st(ui.lang(), S::CostSub)}" }
+                }
+                span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
+            }
         }
     }
 }

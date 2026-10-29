@@ -25,11 +25,12 @@ pub fn LearningSection() -> Element {
         div { class: "card",
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::SettingsPron)}" }
-                div { class: "row", role: "group",
+                div { class: "segmented", role: "radiogroup",
                     for mode in PronMode::ALL {
                         button {
                             key: "{mode:?}",
-                            aria_pressed: if mode == settings.pronunciation { "true" } else { "false" },
+                            role: "radio",
+                            aria_checked: if mode == settings.pronunciation { "true" } else { "false" },
                             onclick: {
                                 let db = db.clone();
                                 move |_| ui.update_settings(&db, |s| s.pronunciation = mode)
@@ -46,11 +47,12 @@ pub fn LearningSection() -> Element {
 
             div { class: "field",
                 span { class: "label", "{st(lang, S::Translation)}" }
-                div { class: "row", role: "group",
+                div { class: "segmented", role: "radiogroup",
                     for mode in TranslationMode::ALL {
                         button {
                             key: "{mode:?}",
-                            aria_pressed: if mode == settings.translation { "true" } else { "false" },
+                            role: "radio",
+                            aria_checked: if mode == settings.translation { "true" } else { "false" },
                             onclick: {
                                 let db = db.clone();
                                 move |_| ui.update_settings(&db, |s| s.translation = mode)
@@ -62,8 +64,10 @@ pub fn LearningSection() -> Element {
             }
 
             div { class: "field",
-                label {
+                label { class: "switch-row",
                     input {
+                        class: "switch",
+                        role: "switch",
                         r#type: "checkbox",
                         checked: !settings.word_colours_off,
                         onchange: {
@@ -79,8 +83,10 @@ pub fn LearningSection() -> Element {
             }
 
             div { class: "field",
-                label {
+                label { class: "switch-row",
                     input {
+                        class: "switch",
+                        role: "switch",
                         r#type: "checkbox",
                         checked: !settings.grammar_hints_off,
                         onchange: {
@@ -97,11 +103,12 @@ pub fn LearningSection() -> Element {
 
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::SettingsRetention)}" }
-                div { class: "row", role: "group",
+                div { class: "segmented", role: "radiogroup",
                     for (pct, label) in [(85u8, Msg::RetentionLight), (90, Msg::RetentionBalanced), (95, Msg::RetentionFirm)] {
                         button {
                             key: "{pct}",
-                            aria_pressed: if settings.desired_retention.0 == pct { "true" } else { "false" },
+                            role: "radio",
+                            aria_checked: if settings.desired_retention.0 == pct { "true" } else { "false" },
                             onclick: {
                                 let db = db.clone();
                                 move |_| ui.update_settings(&db, |s| s.desired_retention = RetentionPct(pct))
@@ -115,8 +122,10 @@ pub fn LearningSection() -> Element {
             }
 
             div { class: "field",
-                label {
+                label { class: "switch-row",
                     input {
+                        class: "switch",
+                        role: "switch",
                         r#type: "checkbox",
                         checked: !settings.sounds_off,
                         onchange: {
@@ -134,11 +143,12 @@ pub fn LearningSection() -> Element {
             if !settings.sounds_off {
                 div { class: "field",
                     span { class: "label", "{st(lang, S::SoundCorrect)}" }
-                    div { class: "row", role: "group",
+                    div { class: "segmented", role: "radiogroup",
                         for choice in CorrectSound::ALL {
                             button {
                                 key: "{choice.id()}",
-                                aria_pressed: if settings.correct_sound == choice { "true" } else { "false" },
+                                role: "radio",
+                            aria_checked: if settings.correct_sound == choice { "true" } else { "false" },
                                 onclick: {
                                     let db = db.clone();
                                     move |_| {
@@ -153,11 +163,12 @@ pub fn LearningSection() -> Element {
                 }
                 div { class: "field",
                     span { class: "label", "{st(lang, S::SoundEnd)}" }
-                    div { class: "row", role: "group",
+                    div { class: "segmented", role: "radiogroup",
                         for choice in EndSound::ALL {
                             button {
                                 key: "{choice.id()}",
-                                aria_pressed: if settings.end_sound == choice { "true" } else { "false" },
+                                role: "radio",
+                            aria_checked: if settings.end_sound == choice { "true" } else { "false" },
                                 onclick: {
                                     let db = db.clone();
                                     move |_| {
@@ -175,8 +186,10 @@ pub fn LearningSection() -> Element {
 
             if crate::platform::can_vibrate() {
                 div { class: "field",
-                    label {
+                    label { class: "switch-row",
                         input {
+                            class: "switch",
+                            role: "switch",
                             r#type: "checkbox",
                             checked: !settings.haptics_off,
                             onchange: {
