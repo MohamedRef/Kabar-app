@@ -278,7 +278,8 @@ fn open_store() -> Result<(Store, std::path::PathBuf), String> {
     update::content::use_installed(&dir);
     packs::init(&dir);
     update::init(&dir);
-    Ok((Store::open(&path).map_err(|e| e.to_string())?, path))
+    let marker = platform::install_marker();
+    Ok((Store::open_marked(&path, marker.as_deref()).map_err(|e| e.to_string())?, path))
 }
 
 #[component]

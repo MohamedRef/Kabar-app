@@ -27,6 +27,20 @@ pub fn data_dir() -> Result<PathBuf, String> {
     }
 }
 
+/// Android only: a file in the app's `no_backup` folder, which Auto Backup
+/// and device-to-device transfers never copy (`store/install.rs`).
+pub fn install_marker() -> Option<PathBuf> {
+    #[cfg(target_os = "android")]
+    {
+        let files = PathBuf::from(android::files_dir().ok()?);
+        Some(files.parent()?.join("no_backup").join("kabar-install"))
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        None
+    }
+}
+
 /// Where Settings → Export writes its file: `~/Downloads` on the Mac (and
 /// other desktops); on Android the app's external files directory
 /// (`Android/data/app.kabar/files`), from where [`save_document`] copies it
