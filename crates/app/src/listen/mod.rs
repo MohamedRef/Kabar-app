@@ -156,8 +156,10 @@ pub fn ListenScreen() -> Element {
         style { {LISTEN_CSS.text()} }
         div { class: "listen",
             if open().is_none() {
-                h2 { "{ui.t(crate::i18n::Msg::NavListen)}" }
-                p { class: "muted", "{tt(ui.lang(), T::ListenIntro)}" }
+                header { class: "lx-page-head",
+                    h2 { "{ui.t(crate::i18n::Msg::NavListen)}" }
+                    p { class: "muted", "{tt(ui.lang(), T::ListenIntro)}" }
+                }
                 div { class: "seg", role: "tablist", aria_label: "{ui.t(crate::i18n::Msg::NavListen)}",
                     for (t, label) in [(Tab::Sinetron, "Sinetron"), (Tab::Radio, "Kabar Radio")] {
                         button {
@@ -211,18 +213,22 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                                         button {
                                             class: "card lx-card",
                                             onclick: move |_| on_open.call(Open::Sinetron(id.clone())),
-                                            span { class: "muted small", "{episode_label(&ui, s, n)}" }
-                                            strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
-                                            span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
-                                            span { class: "muted small", Rich { text: pick(&s.summary, lang).to_string(), target } }
-                                            span { class: "row",
-                                                if completed.contains(&s.id) {
-                                                    span { class: "pill", "✓ {tt(lang, T::Watched)}" }
-                                                }
-                                                if has_track(&s.id) {
-                                                    span { class: "pill lx-offline", "⤓ {tt(lang, T::Downloaded)}" }
+                                            span { class: "lx-icon", aria_hidden: "true", {crate::icons::play()} }
+                                            span { class: "lx-body",
+                                                span { class: "muted small", "{episode_label(&ui, s, n)}" }
+                                                strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
+                                                span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
+                                                span { class: "muted small lx-summary", Rich { text: pick(&s.summary, lang).to_string(), target } }
+                                                span { class: "row",
+                                                    if completed.contains(&s.id) {
+                                                        span { class: "pill good", "✓ {tt(lang, T::Watched)}" }
+                                                    }
+                                                    if has_track(&s.id) {
+                                                        span { class: "pill lx-offline", "⤓ {tt(lang, T::Downloaded)}" }
+                                                    }
                                                 }
                                             }
+                                            span { class: "chev", aria_hidden: "true" }
                                         }
                                     }
                                 }
@@ -248,14 +254,18 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                                     button {
                                         class: "card lx-card lx-teaser tap",
                                         onclick: move |_| if let Some(id) = &next { ui.open_lesson(id.clone()) },
-                                        span { class: "muted small", "🔒 {episode_label(&ui, s, n)}" }
-                                        strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
-                                        span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
-                                        span { class: "muted small", "{tt(lang, T::OpensAfter)}: " Rich { text: unit_title, target } }
-                                        if total > 0 {
-                                            progress { max: "{total}", value: "{done}" }
-                                            span { class: "small", "{lessons_left(&ui, total - done)}" }
+                                        span { class: "lx-icon locked", aria_hidden: "true", "🔒" }
+                                        span { class: "lx-body",
+                                            span { class: "muted small", "{episode_label(&ui, s, n)}" }
+                                            strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
+                                            span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
+                                            span { class: "muted small", "{tt(lang, T::OpensAfter)}: " Rich { text: unit_title, target } }
+                                            if total > 0 {
+                                                progress { max: "{total}", value: "{done}" }
+                                                span { class: "small", "{lessons_left(&ui, total - done)}" }
+                                            }
                                         }
+                                        span { class: "chev", aria_hidden: "true" }
                                     }
                                     }
                                 }
@@ -282,17 +292,21 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                                     button {
                                         class: "card lx-card",
                                         onclick: move |_| on_open.call(Open::Radio(id.clone())),
-                                        span { class: "muted small", "{crate::coach::labels::minutes(&ui, r.minutes)}" }
-                                        strong { bdi { lang: target, class: "latin", "{r.title.target}" } }
-                                        span { Rich { text: pick(&r.title.meaning, lang).to_string(), target } }
-                                        span { class: "row",
-                                            if completed.contains(&r.id) {
-                                                span { class: "pill", "✓ {tt(lang, T::Listened)}" }
-                                            }
-                                            if has_track(&r.id) {
-                                                span { class: "pill lx-offline", "⤓ {tt(lang, T::Downloaded)}" }
+                                        span { class: "lx-icon", aria_hidden: "true", {crate::icons::nav(crate::Screen::Listen)} }
+                                        span { class: "lx-body",
+                                            span { class: "muted small", "{crate::coach::labels::minutes(&ui, r.minutes)}" }
+                                            strong { bdi { lang: target, class: "latin", "{r.title.target}" } }
+                                            span { Rich { text: pick(&r.title.meaning, lang).to_string(), target } }
+                                            span { class: "row",
+                                                if completed.contains(&r.id) {
+                                                    span { class: "pill good", "✓ {tt(lang, T::Listened)}" }
+                                                }
+                                                if has_track(&r.id) {
+                                                    span { class: "pill lx-offline", "⤓ {tt(lang, T::Downloaded)}" }
+                                                }
                                             }
                                         }
+                                        span { class: "chev", aria_hidden: "true" }
                                     }
                                 }
                             }

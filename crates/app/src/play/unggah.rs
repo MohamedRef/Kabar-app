@@ -308,7 +308,7 @@ fn SceneView(session: Signal<Option<Session>>) -> Element {
                 div { class: "card", Meter { value: meter.0, delta } }
             }
             div { class: "card round uu-turn",
-                p { class: "muted small", "{ui.t(Msg::UnggahTurn)} {ui.num(s.turn_no as u64)} / {ui.num(total as u64)}" }
+                super::RoundCount { at: s.turn_no as u64, total: total as u64, label: Msg::UnggahTurn }
                 p { "{meaning(ui.lang(), &s.turn.situation)}" }
                 if let Some(said) = &s.turn.partner_says {
                     div { class: "bubble seller uu-says",

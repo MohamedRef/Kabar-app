@@ -193,7 +193,7 @@ pub fn RupiahReader() -> Element {
     rsx! {
         PlayHeader { title: Msg::RupiahTitle }
         div { class: "card round",
-            p { class: "muted small", "{ui.num(s.index as u64 + 1)} / {ui.num(total)}" }
+            super::RoundCount { at: s.index as u64 + 1, total: total as u64 }
             p { class: "price big latin", lang: "id", dir: "ltr", bdi { "{drill.shown}" } }
             form {
                 class: "row answer-row",

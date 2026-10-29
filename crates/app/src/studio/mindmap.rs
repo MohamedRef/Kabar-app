@@ -85,24 +85,29 @@ pub fn MindMapScreen() -> Element {
 
     rsx! {
         div { class: "mindmap",
-            div { class: "card",
+            // On wide windows this column sits beside the map.
+            section { class: "card map-side",
+                h2 { "{tr(l, T::MindMap)}" }
                 p { class: "muted", "{tr(l, T::MapIntro)}" }
-                form { class: "row", onsubmit: make,
+                form { class: "map-form", onsubmit: make,
                     input {
                         class: "latin",
                         dir: "ltr",
                         r#type: "text",
                         placeholder: "{tr(l, T::Topic)}",
+                        aria_label: "{tr(l, T::Topic)}",
                         value: "{topic}",
                         oninput: move |e| topic.set(e.value()),
                     }
-                    for (code, value) in [("id", Lang::Id), ("jv", Lang::Jv)] {
-                        button {
-                            key: "{code}",
-                            r#type: "button",
-                            aria_pressed: if lang() == value { "true" } else { "false" },
-                            onclick: move |_| lang.set(value),
-                            bdi { class: "latin", "{code}" }
+                    div { class: "map-langs", role: "group",
+                        for (code, value) in [("id", Lang::Id), ("jv", Lang::Jv)] {
+                            button {
+                                key: "{code}",
+                                r#type: "button",
+                                aria_pressed: if lang() == value { "true" } else { "false" },
+                                onclick: move |_| lang.set(value),
+                                bdi { class: "latin", "{code}" }
+                            }
                         }
                     }
                     button { class: "primary", r#type: "submit", disabled: busy() || topic().trim().is_empty(),
@@ -110,11 +115,11 @@ pub fn MindMapScreen() -> Element {
                     }
                 }
                 if let Some(p) = problem() {
-                    p { class: "muted small", role: "status", "{tr(l, p)}" }
+                    p { class: "map-problem", role: "status", "{tr(l, p)}" }
                 }
                 if !maps.read().is_empty() {
-                    div { class: "row map-list",
-                        span { class: "muted small", "{tr(l, T::Maps)}:" }
+                    h3 { class: "map-list-title", "{tr(l, T::Maps)}" }
+                    div { class: "map-list",
                         for d in maps.read().iter() {
                             button {
                                 key: "{d.id}",
@@ -129,11 +134,13 @@ pub fn MindMapScreen() -> Element {
                     }
                 }
             }
-            if let Some(doc) = current {
-                MapView {
-                    key: "{doc.id}",
-                    unverified: doc.lang == Lang::Jv || unverified.read().contains(&doc.id),
-                    doc,
+            div { class: "map-main",
+                if let Some(doc) = current {
+                    MapView {
+                        key: "{doc.id}",
+                        unverified: doc.lang == Lang::Jv || unverified.read().contains(&doc.id),
+                        doc,
+                    }
                 }
             }
         }

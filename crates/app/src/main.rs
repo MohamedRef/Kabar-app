@@ -109,7 +109,7 @@ impl Screen {
             Self::Teach => Msg::NavTeach,
             Self::Journal => Msg::NavJournal,
             Self::Cost => Msg::CostTitle,
-            Self::Stats => Msg::NavReview,
+            Self::Stats => Msg::NavStats,
             Self::LevelCheck => Msg::NavCoach,
             Self::Listen => Msg::NavListen,
             Self::Chat => Msg::NavChat,
@@ -139,6 +139,7 @@ impl Screen {
                 | Self::Cost
                 | Self::Listen
                 | Self::Chat
+                | Self::Stats
         )
     }
 }
@@ -309,7 +310,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     // (previews and screenshots on the Mac).
     let open_lesson = use_hook(|| std::env::var("KABAR_OPEN_LESSON").ok());
     // KABAR_OPEN_SCREEN=stats | level_check | journey | reader | review | play | listen | chat
-    // | coach | journal opens those screens the same way (previews and screenshots).
+    // | coach | journal | studio opens those screens the same way (previews and screenshots).
     let open_screen = use_hook(|| match std::env::var("KABAR_OPEN_SCREEN").as_deref() {
         Ok("stats") => Some(Screen::Stats),
         Ok("level_check") => Some(Screen::LevelCheck),
@@ -321,6 +322,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         Ok("chat") => Some(Screen::Chat),
         Ok("coach") => Some(Screen::Coach),
         Ok("journal") => Some(Screen::Journal),
+        Ok("studio") => Some(Screen::Studio),
         _ => None,
     });
     let ui = use_context_provider(|| Ui {
@@ -674,7 +676,7 @@ fn Shell() -> Element {
             Msg::NavGroupPractise,
             &[Screen::Play, Screen::Listen, Screen::Chat, Screen::Teach, Screen::Studio, Screen::PenLab][..],
         ),
-        (Msg::NavGroupMe, &[Screen::Coach, Screen::Journal][..]),
+        (Msg::NavGroupMe, &[Screen::Stats, Screen::Coach, Screen::Journal][..]),
     ];
     // Re-tapping the tab you're on starts that section over (Games → the
     // hub, Chat → the list, Review → its home): the screen remounts.
@@ -701,8 +703,12 @@ fn Shell() -> Element {
                                 let play::PlayNav(mut nav) = consume_context::<play::PlayNav>();
                                 nav.set(play::Route::Hub);
                             }
-                            let mut screen = ui.screen;
-                            screen.set(item);
+                            if item == Screen::Stats {
+                                stats::open(ui, item);
+                            } else {
+                                let mut screen = ui.screen;
+                                screen.set(item);
+                            }
                         },
                         span { class: "nav-icon", aria_hidden: "true", {icons::nav(item)} }
                         // One name everywhere; the narrow rail shows its short

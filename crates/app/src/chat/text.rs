@@ -38,6 +38,11 @@ pub enum T {
     Broken,
     Messages,
     You,
+    Partners,
+    Idea,
+    UseIdea,
+    OpenDevices,
+    AboutPartner,
 }
 
 pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
@@ -148,5 +153,20 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (You, ArEg) => "إنت",
         (You, Ar) => "أنت",
         (You, En) => "You",
+        (Partners, ArEg) => "تتكلم مع مين؟",
+        (Partners, Ar) => "مع من تتحدث؟",
+        (Partners, En) => "Who to talk to",
+        (Idea, ArEg) => "فكرة للرد",
+        (Idea, Ar) => "فكرة للرد",
+        (Idea, En) => "Reply idea",
+        (UseIdea, ArEg) => "اكتبها",
+        (UseIdea, Ar) => "اكتبها",
+        (UseIdea, En) => "Use it",
+        (OpenDevices, ArEg) => "افتح الأجهزة",
+        (OpenDevices, Ar) => "افتح الأجهزة",
+        (OpenDevices, En) => "Open Devices",
+        (AboutPartner, ArEg) => "عن الشخصية ومشاهدها",
+        (AboutPartner, Ar) => "عن الشخصية ومشاهدها",
+        (AboutPartner, En) => "About them and their scenes",
     }
 }
