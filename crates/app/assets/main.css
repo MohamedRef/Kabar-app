@@ -858,26 +858,7 @@ button.choice.right:disabled, button.choice.missed:disabled { opacity: 1; }
 .feedback.kind { background: var(--surface-2); border-inline-start: 4px solid var(--dawn); }
 .summary-card .score { font-size: 2.2rem; margin: 0; font-variant-numeric: tabular-nums; }
 
-/* Bridge deck */
-.deck-hero { text-align: center; background: var(--gold-soft); border-color: transparent; }
-.deck-count { font-family: var(--font-latin); font-size: clamp(1.7rem, 6vw, 2.6rem); font-weight: 700; color: var(--gold); margin: 0; }
-.flip-card { display: flex; flex-direction: column; gap: 0.5rem; }
-button.flip-face {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-block-size: 9rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--gold-soft);
-  background: var(--surface);
-  box-shadow: var(--shadow);
-  color: var(--text);
-}
-button.flip-face[aria-pressed="true"] { background: var(--gold-soft); color: var(--text); border-color: var(--gold); }
-.flip-front, .flip-back { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; text-align: center; }
-.bridge-ar { font-size: 2rem; color: var(--gold); }
-.flip-card.known button.flip-face { border-color: var(--sawah); }
-.known-tag { align-self: center; }
+/* Bridge deck: assets/bridge.css (play/bridge_deck.rs) */
 button.quiet-solid { background: var(--surface-2); border-color: transparent; }
 
 /* Sound-Shift Detective */

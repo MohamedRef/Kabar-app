@@ -309,8 +309,91 @@ pub fn download(store: &PackStore, id: &str) -> Result<PackManifest, String> {
     result
 }
 
-pub fn downloading(id: &str) -> bool {
-    IN_FLIGHT.lock().map(|b| b.contains(id)).unwrap_or(false)
+/// Where a pack the learner asked for stands. Downloads the learner starts
+/// run one at a time, in the order asked, so a slow connection finishes one
+/// unit before starting the next.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum Job {
+    Queued,
+    Downloading,
+    /// The download or the check failed; the row offers to try again.
+    Failed,
+}
+
+/// Packs asked for and not yet installed, in the order asked. A finished
+/// download leaves the list; a failed one stays until retried.
+static JOBS: Mutex<Vec<(String, Job)>> = Mutex::new(Vec::new());
+static WORKER: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+
+/// Every pack the learner asked for that isn't installed yet.
+pub fn jobs() -> BTreeMap<String, Job> {
+    let mut out: BTreeMap<String, Job> = JOBS.lock().map(|j| j.iter().cloned().collect()).unwrap_or_default();
+    // A prefetch or update running in the background shows too.
+    if let Ok(busy) = IN_FLIGHT.lock() {
+        for id in busy.iter() {
+            out.insert(id.clone(), Job::Downloading);
+        }
+    }
+    out
+}
+
+/// Queues a pack (again, after a failure) and makes sure the queue runs.
+pub fn enqueue(id: &str) {
+    let Some(store) = store() else { return };
+    queue(&JOBS, id);
+    if !WORKER.swap(true, std::sync::atomic::Ordering::SeqCst) {
+        let started = std::thread::Builder::new().name("kabar-packs".into()).spawn(move || {
+            run_queue(&JOBS, |id| download(store, id).map(drop));
+            WORKER.store(false, std::sync::atomic::Ordering::SeqCst);
+            // Asked for while the worker was finishing: run again.
+            if JOBS.lock().is_ok_and(|j| j.iter().any(|(_, s)| *s == Job::Queued)) {
+                enqueue_again();
+            }
+        });
+        if started.is_err() {
+            WORKER.store(false, std::sync::atomic::Ordering::SeqCst);
+        }
+    }
+}
+
+fn enqueue_again() {
+    let next =
+        JOBS.lock().ok().and_then(|j| j.iter().find(|(_, s)| *s == Job::Queued).map(|(id, _)| id.clone()));
+    if let Some(id) = next {
+        enqueue(&id);
+    }
+}
+
+fn queue(jobs: &Mutex<Vec<(String, Job)>>, id: &str) {
+    let Ok(mut jobs) = jobs.lock() else { return };
+    match jobs.iter_mut().find(|(j, _)| j == id) {
+        Some((_, state @ Job::Failed)) => *state = Job::Queued,
+        Some(_) => {}
+        None => jobs.push((id.to_owned(), Job::Queued)),
+    }
+}
+
+/// Runs queued jobs one by one until none is left.
+fn run_queue(jobs: &Mutex<Vec<(String, Job)>>, mut fetch: impl FnMut(&str) -> Result<(), String>) {
+    loop {
+        let next = {
+            let Ok(mut jobs) = jobs.lock() else { return };
+            let Some((id, state)) = jobs.iter_mut().find(|(_, s)| *s == Job::Queued) else { return };
+            *state = Job::Downloading;
+            id.clone()
+        };
+        let result = fetch(&next);
+        let Ok(mut jobs) = jobs.lock() else { return };
+        match result {
+            Ok(()) => jobs.retain(|(id, _)| *id != next),
+            Err(e) => {
+                crate::diag::report!("pack {next}: {e}");
+                if let Some((_, state)) = jobs.iter_mut().find(|(id, _)| *id == next) {
+                    *state = Job::Failed;
+                }
+            }
+        }
+    }
 }
 
 /// Just in time (SPEC §20): when a lesson opens, fetch its unit's pack and
@@ -458,6 +541,25 @@ mod tests {
         assert!(store.install(&row, &t).is_err());
         assert!(store.installed().is_empty());
         assert_eq!(store.storage_bytes(), 0);
+    }
+
+    #[test]
+    fn the_queue_runs_in_order_and_keeps_failures_for_a_retry() {
+        let jobs = Mutex::new(Vec::new());
+        for id in ["a", "b", "c", "a"] {
+            queue(&jobs, id);
+        }
+        let mut order = Vec::new();
+        run_queue(&jobs, |id| {
+            order.push(id.to_owned());
+            if id == "b" { Err("network".into()) } else { Ok(()) }
+        });
+        assert_eq!(order, ["a", "b", "c"], "one at a time, asked twice runs once");
+        assert_eq!(*jobs.lock().unwrap(), [("b".to_owned(), Job::Failed)]);
+        queue(&jobs, "b");
+        assert_eq!(*jobs.lock().unwrap(), [("b".to_owned(), Job::Queued)], "retry");
+        run_queue(&jobs, |_| Ok(()));
+        assert!(jobs.lock().unwrap().is_empty());
     }
 
     #[test]
