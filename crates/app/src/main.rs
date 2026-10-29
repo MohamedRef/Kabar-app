@@ -59,6 +59,8 @@ use crate::i18n::{Msg, t};
 use crate::store::Store;
 
 const MAIN_CSS: Css = css!("assets/main.css");
+/// Shared components and the Glossy layer (docs/DESIGN.md § Components).
+const COMPONENTS_CSS: Css = css!("assets/components.css");
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Screen {
@@ -386,6 +388,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let onboarded = coach.profile.read().is_some();
     let text_size = prefs.text_size.read().as_str();
     let nav_style = prefs.nav_style.read().as_str();
+    let appearance = prefs.appearance.read().as_str();
     let on_off = |on: bool| if on { "on" } else { "off" };
     let pen_hover = on_off(*prefs.pen_hover.read());
     let mouse_hover = on_off(*prefs.mouse_hover.read());
@@ -396,6 +399,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     rsx! {
         document::Title { "Kabar" }
         style { {MAIN_CSS.text()} }
+        style { {COMPONENTS_CSS.text()} }
         style { {theme_css} }
         style { {pron_font} }
         style { {annotated::CSS.text()} }
@@ -408,6 +412,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             lang: lang.tag(),
             dir: lang.dir().as_str(),
             "data-theme": theme,
+            "data-appearance": appearance,
             "data-width": width,
             "data-text-size": text_size,
             "data-nav": nav_style,

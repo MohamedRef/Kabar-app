@@ -56,6 +56,10 @@ pub enum S {
     TextLarger,
     TextSample,
     BlackHint,
+    Appearance,
+    AppearanceCalm,
+    AppearanceGlossy,
+    AppearanceHint,
     // android
     Notifications,
     NotificationsBody,
@@ -227,6 +231,20 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (TextLarge, En) => "Large",
         (TextLarger, ArEg | Ar) => "أكبر",
         (TextLarger, En) => "Larger",
+        (Appearance, ArEg | Ar) => "نمط الواجهة",
+        (Appearance, En) => "Interface style",
+        (AppearanceCalm, ArEg | Ar) => "هادئ",
+        (AppearanceCalm, En) => "Calm",
+        (AppearanceGlossy, _) => "Glossy · Material You",
+        (AppearanceHint, ArEg) => {
+            "هادئ: أسطح سادة وهادية. Glossy: ألوان ناعمة ولمعة خفيفة. الألوان نفسها من المظهر اللي فوق."
+        }
+        (AppearanceHint, Ar) => {
+            "هادئ: أسطح سادة. Glossy: ألوان ناعمة ولمعة خفيفة. الألوان نفسها من المظهر أعلاه."
+        }
+        (AppearanceHint, En) => {
+            "Calm: solid, quiet surfaces. Glossy: soft tonal colour and a light sheen. Colours still come from the theme above."
+        }
         (TextSample, ArEg) => "كده هيبان الكلام في الدروس والقارئ.",
         (TextSample, Ar) => "هكذا سيظهر النص في الدروس والقارئ.",
         (TextSample, En) => "This is how text looks in lessons and the Reader.",

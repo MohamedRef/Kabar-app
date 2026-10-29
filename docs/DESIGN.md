@@ -33,6 +33,43 @@ Canonical layouts to reach for (Material 3): **list-detail** (Journey stops,
 Chat personas, Reader library), **supporting pane** (Lesson notes, Reader word
 card, Review session side), **feed** (Play, Watch & listen).
 
+## Redesign 2026-10-29 (Calm / Glossy)
+
+The design handoff lives in the project files
+(`design/redesign-2026-10-29/`). Kabar's new Light and Dark palettes replace
+the old Paper and Merapi values under the same theme ids, so System follows
+them; True black, Malam, Batik and Sawah keep their colours and gain the new
+roles below.
+
+**Appearance** is a second dimension next to the theme: Calm (default, solid
+surfaces) or Glossy · Material You (tonal surfaces, a top-edge highlight,
+22 px cards, pill main actions, blur only on the phone bar and the More
+sheet). It is a device preference (`pref.appearance` in the local `meta`
+table, never synced), shown in Settings › Look as "نمط الواجهة", and reaches
+CSS as `.app[data-appearance="calm|glossy"]`. A missing or unknown value is
+Calm. Switching only flips the attribute, so no screen loses its state.
+Glossy goes solid under `prefers-reduced-transparency`, adds no animation,
+and leaves True black's pixels off (no gradients on `data-theme="black"`).
+It does not read wallpaper colours.
+
+### Colour roles (`kabar_core::theme`, contrast-tested)
+
+| Token | Meaning |
+|---|---|
+| `--bg`, `--surface`, `--surface-2` | page, card, quiet fill (chips, stat tiles) |
+| `--text`, `--muted`, `--line`, `--line-soft` | text and hairlines |
+| `--primary` (= `--sawah`), `--on-primary` | main action fill and its label |
+| `--accent` (alias `--accent-soft`), `--accent-ink` | accent container (the hero's button, active nav pill in Glossy). Kabar keeps the design file's name; Batna's `--accent` was already its brand colour, so Batna calls the container `--accent-soft`, and Kabar exports that alias too so the two apps match |
+| `--soft` | soft tonal container (tonal button, picked answer, row icon) |
+| `--good`, `--good-bg`, `--bad`, `--bad-bg` | right and wrong, each with its container |
+| `--gold`, `--gold-bg` (= `--gold-soft`) | Bridge gold: Arabic-origin words only |
+| `--indigo` | selected state and headings (the primary green in Light/Dark) |
+| `--dawn`, `--dawn-soft` | warnings and the default pill |
+| `--sheet` | the word sheet's own layer |
+
+Feature CSS takes colours from these tokens only
+(`stylesheets_take_colours_from_tokens`).
+
 ## Tokens (`crates/app/assets/main.css`)
 
 Colours come from `kabar_core::theme` (contrast-tested); everything else is a
@@ -47,7 +84,7 @@ CSS custom property. Sizes are rem so Settings › Text size scales them.
 | Density (on `.app`, per width) | `--gutter` (screen padding), `--stack` (gap between blocks), `--card-pad` |
 | Control heights | `--tap` (buttons, 44px; 40px compact), `--tap-lg` (main actions), `--row` (big answer rows); in rem so Text size scales them |
 | Compact notch | Under 600dp the type scale, `--lh-read`/`--lh-arabic`, density and control heights each step down one notch (`.app[data-width="compact"]`) |
-| Radius | `--radius-sm` 8px · `--radius` 14px · `--radius-lg` 20px · `--radius-pill` |
+| Radius | `--radius-sm` 8px · `--radius-control` 13px (main buttons, fields, answers) · `--radius` 14px (older rules) · `--radius-card` 18px (22px in Glossy) · `--radius-lg` 20px · `--radius-sheet` 24px · `--radius-pill` |
 | Surface | `--line-soft` (default card border), `--shadow`, `--shadow-raised` (sheets, popovers) |
 | Motion | `--ease`, `--dur-fast` 120ms · `--dur` 200ms · `--dur-slow` 320ms |
 
@@ -63,11 +100,30 @@ Rules:
 
 ## Components
 
-Use these before inventing a new look.
+Use these before inventing a new look. The shared redesign set is in
+`crates/app/assets/components.css`; anything that looks tappable opens what
+it shows (`dead_ends.rs` lists the classes).
 
 | Component | Classes | Notes |
 |---|---|---|
-| Primary button | `button.primary` | One per view: the step that moves the learner on. Disabled turns neutral grey, never pale green |
+| Primary button | `button.primary` | One per view: the step that moves the learner on. 13 px corners (pill in Glossy). Disabled turns neutral grey, never pale green |
+| Tonal / outline / text button | `button.tonal`, `button.outline`, `button.text-btn` | Second action, plain secondary action, inline link-like action. Add `.wide` to fill the column |
+| Icon button | `button.icon-button` | Round, faint fill, needs `aria-label` |
+| Page heading | `.page-head` > `div` > `h1` + `p.sub`, then actions | One per screen |
+| Section heading | `.section-head` > `h2` + `.aside` | `.aside` is a short count or hint |
+| Status chip | `.status-chip` + `good` / `bad` / `gold` / `accent` / `neutral` | A label, never a button; colour plus a word or glyph |
+| Flat / hero card | `.card.flat`, `.card.hero` | Hero = the one big next step (primary fill; its `button.primary` takes the accent) |
+| Grouped list | `.card.grouped` > `button.activity-row` | Hairlines between rows |
+| Activity row | `button.activity-row` > `.row-icon` (+`.gold`) · `.row-copy` > `strong` + `small` · `.row-end` (+`.chev`) | Always opens what it names |
+| Empty state | `.empty-state` > `.row-icon` + `h2` + `p` + action | Say what fills it |
+| Answer choice | `.answers` > `button.answer` (+ `.answer-mark`) | `aria-pressed="true"` picked, `.correct`, `.incorrect`; disabled after Check keeps its colours |
+| Counter | `.ltr-count` | "2 / 5" stays in order inside Arabic |
+| Progress | `.progress-line` > `.fill` | Width from the screen |
+| Rating row | `.rating-row` > `button.rating.again/.hard/.good/.easy` + `small` interval | Real scheduler intervals; stays put |
+| Search | `label.search-field` > icon + `input` | |
+| Field | `.field` + `.field-hint`; invalid: `.field.invalid` + `.field-error` | Keep what was typed |
+| Segmented | `.segmented[role=radiogroup]` > `button[role=radio][aria-checked]` | Two to four short options |
+| Switch | `input.switch[type=checkbox][role=switch]` | |
 | Button | `button` | Pill, 44 px tall, quiet hover on pointer devices |
 | Quiet button | `button.quiet`, `.ghost` | Secondary actions, icons |
 | Card | `.card` | Surface, `--line-soft` border, `--card-pad`; one topic per card |
