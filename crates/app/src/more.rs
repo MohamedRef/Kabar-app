@@ -1,6 +1,6 @@
 //! The phone's navigation beyond its four main tabs: the "More" tab and its
-//! sheet (Games, Watch & listen, Chat, Kak Nur, Journal, Teach Kabar,
-//! Settings), and the top bar, which shows a back arrow and the screen's name
+//! sheet (Games, Watch & listen, Chat, Progress, Kak Nur, Journal, Teach
+//! Kabar, Settings), and the top bar, which shows a back arrow and the screen's name
 //! on every screen that isn't a tab.
 
 use dioxus::prelude::*;
@@ -14,8 +14,15 @@ use crate::{Screen, Ui, icons};
 pub const TABS: [Screen; 4] = [Screen::Today, Screen::Journey, Screen::Reader, Screen::Review];
 
 /// What the More sheet lists, in order.
-const MORE: [Screen; 6] =
-    [Screen::Play, Screen::Listen, Screen::Chat, Screen::Coach, Screen::Journal, Screen::Teach];
+const MORE: [Screen; 7] = [
+    Screen::Play,
+    Screen::Listen,
+    Screen::Chat,
+    Screen::Stats,
+    Screen::Coach,
+    Screen::Journal,
+    Screen::Teach,
+];
 
 /// Whether the More tab is "where you are" on the phone.
 pub fn under_more(screen: Screen) -> bool {
@@ -52,9 +59,32 @@ fn summary(lang: UiLanguage, screen: Screen) -> &'static str {
         (Screen::Teach, ArEg) => "علّم Kabar كلمة جديدة لقيتها",
         (Screen::Teach, Ar) => "علّم Kabar كلمة جديدة وجدتها",
         (Screen::Teach, En) => "Teach Kabar a word you found",
+        (Screen::Stats, ArEg) => "حفظك ونشاطك ومهاراتك واختبار المستوى",
+        (Screen::Stats, Ar) => "حفظك ونشاطك ومهاراتك واختبار المستوى",
+        (Screen::Stats, En) => "Retention, activity, skills and the level check",
         (_, ArEg) => "اللغة والشكل والجهاز والحساب",
         (_, Ar) => "اللغة والمظهر والجهاز والحساب",
         (_, En) => "Language, look, this device, account",
+    }
+}
+
+/// Shortcuts into a screen's inner page, so they are easy to find on the
+/// phone: the Reader's library and the Arabic Bridge deck in Games.
+#[derive(Clone, Copy, PartialEq, Debug)]
+enum Shortcut {
+    Library,
+    Bridge,
+}
+
+fn shortcut_text(lang: UiLanguage, s: Shortcut) -> (&'static str, &'static str) {
+    use UiLanguage::*;
+    match (s, lang) {
+        (Shortcut::Library, ArEg) => ("المكتبة", "النصوص اللي حفظتها أو استوردتها"),
+        (Shortcut::Library, Ar) => ("المكتبة", "النصوص التي حفظتها أو استوردتها"),
+        (Shortcut::Library, En) => ("Library", "Texts you saved or imported"),
+        (Shortcut::Bridge, ArEg) => ("الجسر العربي", "كلمات إندونيسية جاية من العربي"),
+        (Shortcut::Bridge, Ar) => ("الجسر العربي", "كلمات إندونيسية أصلها عربي"),
+        (Shortcut::Bridge, En) => ("Arabic Bridge", "Indonesian words that came from Arabic"),
     }
 }
 
@@ -136,12 +166,47 @@ pub fn MoreSheet() -> Element {
                                     let crate::play::PlayNav(mut nav) = consume_context::<crate::play::PlayNav>();
                                     nav.set(crate::play::Route::Hub);
                                 }
-                                let mut s = ui.screen;
-                                s.set(screen);
+                                // Stats remembers where Back returns to.
+                                if screen == Screen::Stats {
+                                    crate::stats::open(ui, screen);
+                                } else {
+                                    let mut s = ui.screen;
+                                    s.set(screen);
+                                }
                             },
                             span { class: "nav-icon", aria_hidden: "true", {icons::nav(screen)} }
                             span { class: "more-title", "{ui.t(screen.label())}" }
                             span { class: "more-sub", "{summary(lang, screen)}" }
+                        }
+                    }
+                }
+                for shortcut in [Shortcut::Library, Shortcut::Bridge] {
+                    li { key: "{shortcut:?}",
+                        button {
+                            onclick: move |_| {
+                                open.set(false);
+                                let screen = match shortcut {
+                                    Shortcut::Library => {
+                                        consume_context::<crate::reader::ReaderState>().close();
+                                        Screen::Reader
+                                    }
+                                    Shortcut::Bridge => {
+                                        let crate::play::PlayNav(mut nav) = consume_context::<crate::play::PlayNav>();
+                                        nav.set(crate::play::Route::Deck);
+                                        Screen::Play
+                                    }
+                                };
+                                let mut s = ui.screen;
+                                s.set(screen);
+                            },
+                            span { class: "nav-icon", aria_hidden: "true",
+                                match shortcut {
+                                    Shortcut::Library => icons::nav(Screen::Reader),
+                                    Shortcut::Bridge => icons::game(crate::play::Route::Deck),
+                                }
+                            }
+                            span { class: "more-title", "{shortcut_text(lang, shortcut).0}" }
+                            span { class: "more-sub", "{shortcut_text(lang, shortcut).1}" }
                         }
                     }
                 }
@@ -202,7 +267,15 @@ mod tests {
 
     #[test]
     fn every_screen_has_a_home_on_the_phone() {
-        for s in [Screen::Play, Screen::Listen, Screen::Chat, Screen::Coach, Screen::Journal, Screen::Teach] {
+        for s in [
+            Screen::Play,
+            Screen::Listen,
+            Screen::Chat,
+            Screen::Stats,
+            Screen::Coach,
+            Screen::Journal,
+            Screen::Teach,
+        ] {
             assert!(MORE.contains(&s) && under_more(s), "{s:?} must be in More");
         }
         for s in TABS {
