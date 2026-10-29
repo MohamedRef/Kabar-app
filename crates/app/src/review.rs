@@ -24,7 +24,7 @@ use crate::coach::Coach;
 use crate::embedded::{Css, css};
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
-use crate::pron::Pron;
+use crate::pron::{Pron, Say};
 use crate::store::Store;
 use crate::{Db, Ui};
 
@@ -1549,6 +1549,7 @@ fn WallCard(card: Card, flipped: bool, sort: Callback<(String, Pile)>) -> Elemen
             div { class: "face back",
                 if card.kind == CardKind::Bridge {
                     bdi { class: "wall-word small latin", lang: card.language.tag(), dir: "ltr", "{card.word}" }
+                    Say { text: card.word.clone(), tag: card.language.tag() }
                 }
                 Pron { text: card.word.clone(), tag: card.language.tag() }
                 span { class: "wall-meaning", "{localized(&ui, &card.meaning)}" }

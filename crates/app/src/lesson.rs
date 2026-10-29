@@ -27,7 +27,7 @@ use self::text::{L, lt};
 use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::platform::{self, TtsStatus};
-use crate::pron::Pron;
+use crate::pron::{Pron, Say};
 use crate::{Db, Ui};
 
 const LESSON_CSS: Css = css!("assets/lesson.css");
@@ -708,7 +708,10 @@ fn RichRuns(text: String, target: &'static str, pron: bool) -> Element {
                                         span { key: "{k}", "{t}" }
                                     },
                                     Bit::Say(t) => rsx! {
-                                        Pron { key: "{k}", text: t, tag: target, inline: true }
+                                        span { key: "{k}",
+                                            Say { text: t.clone(), tag: target }
+                                            Pron { text: t, tag: target, inline: true }
+                                        }
                                     },
                                 }
                             }
@@ -1536,7 +1539,7 @@ pub(crate) fn no_audio_msg() -> L {
     }
 }
 
-fn speaker_icon() -> Element {
+pub(crate) fn speaker_icon() -> Element {
     rsx! {
         svg {
             width: "22",
@@ -1582,6 +1585,7 @@ fn TableCell(text: String, tag: &'static str) -> Element {
         // Word over its pronunciation, so a four-column table fits a phone.
         span { class: "lp-cell-word",
             bdi { lang: tag, dir: "ltr", class: "latin", "{text}" }
+            Say { text: text.clone(), tag }
             if say {
                 Pron { text: text.clone(), tag, inline: true }
             }
@@ -1656,7 +1660,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                                 },
                                 span { class: "lp-example-icon", {speaker_icon()} }
                                 span { class: "lp-example-text",
-                                    Annotated { text: ex.text.clone(), tag: target, meaning: pick(&ex.meaning, lang).to_string(), class: "lp-target" }
+                                    Annotated { text: ex.text.clone(), tag: target, meaning: pick(&ex.meaning, lang).to_string(), class: "lp-target", say: false }
                                 }
                             }
                         }
@@ -1695,7 +1699,7 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
                                 crate::portraits::SpeakerFace { speaker: line.speaker.clone(), class: "lp-face" }
                                 bdi { "{line.speaker}" }
                             }
-                            Annotated { text: line.text.clone(), tag: target, meaning: pick(&line.meaning, lang).to_string(), class: "lp-target" }
+                            Annotated { text: line.text.clone(), tag: target, meaning: pick(&line.meaning, lang).to_string(), class: "lp-target", say: false }
                         }
                     }
                 }
@@ -1941,7 +1945,10 @@ fn Feedback(
                 Grade::Correct => rsx! {
                     p { class: "lp-verdict", "{lt(lang, praise)}" }
                     if let Some(w) = &word {
-                        p { Rich { text: lt(lang, L::CorrectWord).replace("{w}", w), target } }
+                        p {
+                            Rich { text: lt(lang, L::CorrectWord).replace("{w}", w), target }
+                            Say { text: w.clone(), tag: target }
+                        }
                         Pron { text: w.clone(), tag: target }
                     }
                 },
