@@ -3,10 +3,10 @@
    Logical properties only, so the Arabic UI mirrors. */
 
 .lp {
-  --lp-good: color-mix(in srgb, var(--sawah) 14%, var(--surface));
-  --lp-miss: color-mix(in srgb, var(--dawn) 14%, var(--surface));
+  --lp-good: var(--good-bg);
+  --lp-miss: var(--bad-bg);
   --lp-almost: var(--gold-soft);
-  --lp-review: color-mix(in srgb, var(--indigo) 10%, var(--surface));
+  --lp-review: var(--soft);
   position: fixed;
   inset: 0;
   z-index: 30;
@@ -51,8 +51,8 @@
 @media (hover: hover) and (pointer: fine) {
   .lp-close:where(:hover) { background: var(--surface-2); color: var(--indigo); }
 }
-.lp-progress { flex: 1; block-size: 12px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
-.lp-bar { block-size: 100%; border-radius: 999px; background: var(--sawah); }
+.lp-progress { flex: 1; block-size: 0.4rem; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.lp-bar { block-size: 100%; border-radius: 999px; background: var(--primary); }
 
 /* ---------- body ---------- */
 .lp-body { flex: 1; overflow-y: auto; padding-block: 0.5rem 1.5rem; }
@@ -62,7 +62,7 @@
 .lp-lesson-title { font-size: 1.05rem; font-weight: 600; color: var(--indigo); display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-block: 0.25rem; }
 .lp-draft { background: var(--surface-2); color: var(--muted); font-weight: 400; }
 .lp-retry { background: var(--gold-soft); color: var(--gold); margin-block-end: 0.25rem; }
-.lp-instruction { font-size: 1.25rem; font-weight: 700; margin-block: 0.5rem 1rem; }
+.lp-instruction { font-size: 1.3rem; font-weight: 600; line-height: 1.6; margin-block: 0.25rem 1rem; }
 .lp-notice h2 { font-size: 1.3rem; }
 
 .lp-slide-title { font-family: var(--font-latin); font-size: clamp(1.6rem, 6vw, 2.2rem); color: var(--indigo); margin-block: 0.5rem; }
@@ -119,14 +119,14 @@
 /* Touch screens have no number keys: the hints only help with a keyboard. */
 @media (hover: none) and (pointer: coarse) { .chips .lp-key:not(.lp-mark) { display: none; } }
 .lp-voice-note { margin-block: 0 0.75rem; }
-.lp-choice[aria-pressed="true"] { background: var(--lp-review); color: var(--text); border-color: var(--indigo); }
-.lp-choice.right { background: var(--lp-good); border-color: var(--sawah); color: var(--text); }
-.lp-choice.wrong { background: var(--lp-miss); border-color: var(--dawn); color: var(--text); }
+.lp-choice[aria-pressed="true"] { background: var(--soft); color: var(--text); border-color: var(--primary); }
+.lp-choice.right { background: var(--good-bg); border-color: var(--good); color: var(--text); }
+.lp-choice.wrong { background: var(--bad-bg); border-color: var(--bad); color: var(--text); }
 .lp-choice:disabled { cursor: default; opacity: 1; }
 /* Graded: a tick or cross in the key-badge slot, so right/wrong never rests on colour alone. */
 .lp-key.lp-mark { font-size: 1rem; font-weight: 700; color: var(--surface); border-color: transparent; }
-.lp-choice.right .lp-mark { background: var(--sawah); }
-.lp-choice.wrong .lp-mark { background: var(--dawn); }
+.lp-choice.right .lp-mark { background: var(--good); }
+.lp-choice.wrong .lp-mark { background: var(--bad); }
 .lp-key {
   inline-size: 1.7rem;
   block-size: 1.7rem;
@@ -198,7 +198,7 @@
 .lp-pair { border-radius: var(--radius); border-width: 2px; min-block-size: 52px; font-size: 1.05rem; }
 /* Selected tiles set aria-pressed, whose base rule paints text in --surface for
    an indigo fill; on this light tint the text must go back to --text (#228). */
-.lp-pair.selected { border-color: var(--indigo); background: var(--lp-review); color: var(--text); }
+.lp-pair.selected { border-color: var(--primary); background: var(--soft); color: var(--text); }
 /* A matched couple reads as done, not disabled: full-strength text, a tick and
    one shared tint per couple so the pairing stays visible (#149). */
 .lp-pair.done {
@@ -222,7 +222,7 @@
 .lp-pair.couple-4 { --couple: var(--wp-prefix); }
 .lp-pair.couple-5 { --couple: var(--wp-suffix); }
 .lp-pair-tick { font-weight: 700; color: var(--couple); font-family: var(--font-latin); white-space: nowrap; }
-.lp-pair.wrong { border-color: var(--dawn); background: var(--lp-miss); }
+.lp-pair.wrong { border-color: var(--bad); background: var(--bad-bg); }
 
 /* dialogue */
 .lp-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
@@ -291,8 +291,8 @@
 .lp-feedback { max-block-size: 45dvh; overflow-y: auto; margin-block-end: 0.5rem; }
 .lp-feedback p { margin-block: 0.25rem; }
 .lp-verdict { font-size: 1.2rem; font-weight: 700; }
-.good .lp-verdict { color: var(--sawah); }
-.miss .lp-verdict { color: var(--dawn); }
+.good .lp-verdict { color: var(--good); }
+.miss .lp-verdict { color: var(--bad); }
 .almost .lp-verdict { color: var(--gold); }
 .lp-answer { font-size: 1.15rem; font-weight: 600; }
 .lp-refs { margin-block: 0.25rem; padding-inline-start: 1.25rem; }
@@ -449,7 +449,7 @@
   white-space: nowrap;
 }
 /* What a disabled Check waits for, right above it. */
-.lp-hint { margin-block: 0 0.5rem; font-size: var(--fs-sm); color: var(--muted); text-align: center; }
+.lp-actions .lp-hint { margin-block: 0 0.5rem; font-size: var(--fs-sm); color: var(--muted); text-align: center; }
 
 /* Lesson end: progress and the content check are two separate things. */
 .lp-finished { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-block: 0.25rem 0.75rem; }
@@ -464,3 +464,9 @@
   color: var(--sawah);
   margin-block: 0.5rem;
 }
+
+/* The lesson this question belongs to, small, above it (a label, not a button). */
+.lp-focus { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); margin-block: 0.25rem 0.5rem; font-size: var(--fs-sm); color: var(--muted); }
+/* Glossy: the choices and the footer button pick up the rounder shapes. */
+.app[data-appearance="glossy"] .lp-choices:not(.chips) .lp-choice { border-radius: var(--radius-card); }
+.app[data-appearance="glossy"] .lp-primary { border-radius: 999px; }
