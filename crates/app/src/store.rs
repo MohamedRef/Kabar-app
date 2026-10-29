@@ -327,11 +327,18 @@ pub struct PenLabRun {
 
 impl Store {
     pub fn open(path: &Path) -> Result<Self> {
-        Self::init(Connection::open(path)?)
+        Self::open_marked(path, None)
+    }
+
+    /// Opens the database and, with a `marker` in a folder that is never
+    /// backed up or transferred, gives a copy restored from another device
+    /// its own device id (`store/install.rs`).
+    pub fn open_marked(path: &Path, marker: Option<&Path>) -> Result<Self> {
+        Self::init(Connection::open(path)?, marker)
     }
 
     pub fn open_in_memory() -> Result<Self> {
-        Self::init(Connection::open_in_memory()?)
+        Self::init(Connection::open_in_memory()?, None)
     }
 
     /// Every later write fails, as on a full or locked disk (tests of the
@@ -341,7 +348,7 @@ impl Store {
         self.conn.execute_batch("PRAGMA query_only = ON").unwrap();
     }
 
-    fn init(mut conn: Connection) -> Result<Self> {
+    fn init(mut conn: Connection, marker: Option<&Path>) -> Result<Self> {
         conn.pragma_update(None, "journal_mode", "WAL")?;
         conn.pragma_update(None, "foreign_keys", "ON")?;
         // The UI and the sync engine each hold a connection.
@@ -358,6 +365,10 @@ impl Store {
                 conn.execute("INSERT INTO meta (key, value) VALUES ('device_id', ?1)", [&id])?;
                 DeviceId(id)
             }
+        };
+        let device = match marker {
+            Some(m) => install::check(&mut conn, m, device)?,
+            None => device,
         };
 
         // Never issue a timestamp at or below the newest one already written here.
@@ -877,6 +888,8 @@ mod journal;
 pub use journal::{LessonDone, TaughtAt};
 // One-click full export (spec §7).
 pub mod export;
+// A database restored from another device takes its own device id.
+mod install;
 
 fn write_synced(
     tx: &Transaction<'_>,
@@ -998,6 +1011,16 @@ impl Typed {
             "lesson_events" => Self::LessonEvent,
             _ => return None,
         })
+    }
+
+    /// The typed table of an append-only event table.
+    fn event_table(self) -> Option<&'static str> {
+        match self {
+            Self::XpEvent => Some("xp_events"),
+            Self::Review => Some("review_log"),
+            Self::LessonEvent => Some("lesson_events"),
+            Self::Doc(..) => None,
+        }
     }
 }
 
