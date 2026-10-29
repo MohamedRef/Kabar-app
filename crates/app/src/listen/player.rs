@@ -546,7 +546,7 @@ pub fn ProgramPlayer(
                                             portraits::SpeakerFace { speaker: cue.speaker.clone(), class: "lx-face" }
                                             bdi { "{cue.speaker}" }
                                         }
-                                        Annotated { text: cue.text.clone(), tag: target, class: "lx-text" }
+                                        Annotated { text: cue.text.clone(), tag: target, class: "lx-text", say: false }
                                     }
                                     if show_all() || revealed.read().contains(&i) {
                                         p { class: "lx-meaning muted", Rich { text: pick(&cue.meaning, lang).to_string(), target } }

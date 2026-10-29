@@ -19,7 +19,7 @@ use crate::annotated::parts::{PartsLine, SayWord};
 use crate::coach::Coach;
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
-use crate::pron::{Pron, PronGuide};
+use crate::pron::{Pron, PronGuide, Say};
 use crate::sheet::Sheet;
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
@@ -133,6 +133,7 @@ fn Headline(w: Word, surface: String) -> Element {
         div { class: "headline",
             bdi { class: "latin surface", lang: "id", "{surface}" }
             if let Some((text, tag)) = pron {
+                Say { text: text.clone(), tag }
                 Pron { text, tag }
             }
             if let Some(n) = normalized {
@@ -287,7 +288,10 @@ fn WordCard(i: usize) -> Element {
 
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::InThisSentence)}" }
-                p { class: "sentence", dir: "ltr", lang: "id", bdi { "{sentence}" } }
+                p { class: "sentence", dir: "ltr", lang: "id",
+                    bdi { "{sentence}" }
+                    Say { text: sentence.clone(), tag: if w.tag == Tag::Javanese { "jv" } else { "id" } }
+                }
                 Pron { text: sentence.clone(), tag: if w.tag == Tag::Javanese { "jv" } else { "id" } }
                 button {
                     class: "ghost small",
@@ -427,6 +431,7 @@ pub(crate) fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::InIndonesian)}" }
                 bdi { class: "latin", lang: "id", "{ind}" }
+                Say { text: ind.clone(), tag: "id" }
                 Pron { text: ind.clone(), tag: "id" }
             }
         }
@@ -436,7 +441,10 @@ pub(crate) fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
         if let Some((text, tr)) = &info.example {
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::Example)}" }
-                p { class: "sentence", dir: "ltr", lang, "{text}" }
+                p { class: "sentence", dir: "ltr", lang,
+                    "{text}"
+                    Say { text: text.clone(), tag: lang }
+                }
                 Pron { text: text.clone(), tag: lang }
                 p { class: "muted", "{tr.get(voice)}" }
             }

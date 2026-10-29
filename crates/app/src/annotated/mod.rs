@@ -24,7 +24,7 @@ use self::parts::{ClassChip, Legend, PartsLine, SayWord};
 use self::text::{T, tt};
 use crate::embedded::{Css, css};
 use crate::lesson::Rich;
-use crate::pron::Pron;
+use crate::pron::{Pron, Say};
 use crate::reader::card::InfoView;
 use crate::reader::doc::{Lexicon, ReadDoc, Tag, Word};
 use crate::reader::explain::voice_of;
@@ -337,6 +337,8 @@ fn WordRun(p: Piece, i: usize, open: Signal<Option<usize>>, glosses: bool) -> El
 /// - `inline`: flows inside a sentence of the UI language; no line below.
 /// - `class`: extra classes for the target-language text itself.
 /// - `marked`: words to underline, e.g. the words a story is built on.
+/// - `say`: a speaker beside the text; off where the text already plays
+///   when tapped (a dialogue bubble, an example button, a chat bubble).
 #[component]
 pub fn Annotated(
     text: String,
@@ -347,6 +349,7 @@ pub fn Annotated(
     #[props(default = true)] pron: bool,
     #[props(default)] class: String,
     #[props(default)] marked: Vec<String>,
+    #[props(default = true)] say: bool,
 ) -> Element {
     let ui = use_context::<Ui>();
     let words = use_context::<Words>();
@@ -414,6 +417,9 @@ pub fn Annotated(
                         }
                     }
                 }
+            }
+            if say {
+                Say { text: text.clone(), tag }
             }
             if pron {
                 Pron { text: text.clone(), tag, inline }

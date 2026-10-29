@@ -771,7 +771,7 @@ fn PersonaText(
     // Javanese and engine answers stay flagged until the learner approves them.
     let flag = unverified || (meaning.is_some() && (javanese || guessed));
     rsx! {
-        Annotated { text, tag, class: "ch-text", meaning }
+        Annotated { text, tag, class: "ch-text", meaning, say: false }
         div { class: "ch-tools",
             {children}
             if flag {

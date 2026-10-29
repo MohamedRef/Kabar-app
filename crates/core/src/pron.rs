@@ -1,16 +1,22 @@
 //! Pronunciation in Arabic script (تعريب النطق) for Indonesian and Javanese.
 //!
 //! Words become phones first, then Arabic letters with full vowel marks, so
-//! an Egyptian reader can say a word before hearing it. The scheme:
+//! an Egyptian reader can say a word before hearing it. Only the original
+//! Arabic letters are used, no Persian or Kurdish extras (Mohamed,
+//! 2026-10-29). The scheme:
 //!
-//! - every full vowel is a mark plus a letter: a `ـَا`, i `ـِي`, u `ـُو`,
-//!   é `ێ`, o `ۆ`. The letter only names the vowel; Indonesian vowels are short.
+//! - every full vowel is a mark plus a letter: a `ـَا`, i `ـِي`, u `ـُو`.
+//!   The letter only names the vowel; Indonesian vowels are short.
+//! - é is `ـَيْ` and o is `ـَوْ`, read the way Egyptian Arabic reads بَيْت
+//!   (bēt) and يَوْم (yōm).
 //! - the weak e (pepet, ə) is a bare kasra, nothing after it.
-//! - letters read the Egyptian way: g is `ج` (the Egyptian g), and j is `چ`
-//!   (dj, as Egyptian print writes "jacket" چاكيت). Sounds Arabic lacks get one
-//!   fixed spelling each: p `پ`, c `تْش`, ng `ڠ`, ny `نْي`.
+//! - letters read the Egyptian way: g is `ج` (the Egyptian g), and j is `دْج`
+//!   (as Egyptians write "bridge" بريدج). Sounds Arabic lacks get one fixed
+//!   spelling each: p `ب` (how Egyptians say it), c `تْش`, ng `نْج` (just
+//!   `ن` before g or k), ny `نْي`.
 //! - a final or pre-consonant k is a glottal stop, written `ء`.
-//! - Javanese dh/th are `ض`/`ط`, and a final open-syllable a reads `ۆ` (apa → أۆپۆ).
+//! - Javanese dh/th are `ض`/`ط`, and a final open-syllable a reads like o
+//!   (apa → أَوْبَوْ).
 //!
 //! Indonesian spelling is regular except for e (ə or é) and some k (k or ʔ).
 //! Those come from a pronunciation lexicon (`content/pron/id.tsv`, from
@@ -543,14 +549,14 @@ const SHADDA: char = '\u{0651}';
 fn letter(p: Ph) -> &'static str {
     match p {
         Ph::B => "ب",
-        Ph::P => "پ",
+        Ph::P => "ب",
         Ph::T => "ت",
         Ph::D => "د",
         Ph::K => "ك",
         Ph::G => "ج",
         Ph::Glottal => "ء",
         Ph::C => "تْش",
-        Ph::J => "چ",
+        Ph::J => "دْج",
         Ph::F | Ph::V => "ف",
         Ph::S => "س",
         Ph::Z => "ز",
@@ -559,7 +565,7 @@ fn letter(p: Ph) -> &'static str {
         Ph::H => "ه",
         Ph::M => "م",
         Ph::N => "ن",
-        Ph::Ng => "ڠ",
+        Ph::Ng => "نْج",
         Ph::Ny => "نْي",
         Ph::L => "ل",
         Ph::R => "ر",
@@ -572,7 +578,7 @@ fn letter(p: Ph) -> &'static str {
 }
 
 /// The vowel after a consonant (or carrier). `glide`: another vowel follows,
-/// so i and u leave their letter to the glide (dia → دِيَا).
+/// so i, u, é and o leave their letter to the glide (dia → دِيَا).
 fn vowel_marks(v: Ph, glide: bool) -> String {
     match v {
         Ph::A => format!("{FATHA}ا"),
@@ -581,8 +587,9 @@ fn vowel_marks(v: Ph, glide: bool) -> String {
         Ph::U if glide => DAMMA.to_string(),
         Ph::U => format!("{DAMMA}و"),
         Ph::Schwa => KASRA.to_string(),
-        Ph::E => "ێ".to_string(),
-        Ph::O | Ph::OpenO => "ۆ".to_string(),
+        Ph::E | Ph::O | Ph::OpenO if glide => FATHA.to_string(),
+        Ph::E => format!("{FATHA}ي{SUKUN}"),
+        Ph::O | Ph::OpenO => format!("{FATHA}و{SUKUN}"),
         _ => String::new(),
     }
 }
@@ -599,7 +606,9 @@ fn arabic_segment(seg: &[Ph]) -> String {
         let p = seg[k];
         let next = seg.get(k + 1).copied();
         if !p.is_vowel() {
-            s.push_str(letter(p));
+            // ng before g or k is a plain n: the g or k is written next (tanggal → تَانْجَالْ).
+            let nasal_before_stop = p == Ph::Ng && matches!(next, Some(Ph::G | Ph::K));
+            s.push_str(if nasal_before_stop { "ن" } else { letter(p) });
             k += 1;
             if next == Some(p) {
                 // Doubled consonant (Allah): one letter with shadda.
@@ -623,8 +632,8 @@ fn arabic_segment(seg: &[Ph]) -> String {
                 continue;
             }
             s.push(match p {
-                Ph::U | Ph::O | Ph::OpenO => 'أ',
-                _ => 'إ',
+                Ph::I | Ph::Schwa => 'إ',
+                _ => 'أ',
             });
         } else {
             let prev = seg[k - 1];
@@ -646,11 +655,12 @@ fn arabic_segment(seg: &[Ph]) -> String {
 /// Writes the vowel at `k` (and a final diphthong glide); returns phones used.
 fn write_vowel(s: &mut String, seg: &[Ph], k: usize) -> usize {
     let v = seg[k];
-    // i before y and u before w lend their letter too (piye → پِيێ, nuwun → نُوُونْ).
+    // i before y and u before w lend their letter too (piye → بِيَيْ, nuwun → نُوُونْ).
     let glide =
         seg.get(k + 1).is_some_and(|&n| n.is_vowel() || (v, n) == (Ph::I, Ph::Y) || (v, n) == (Ph::U, Ph::W));
     let is_diphthong = diphthong_at(seg, k);
-    s.push_str(&vowel_marks(v, glide && !is_diphthong));
+    // ei (survei): é's own ي is the glide's, so only the fatha is written.
+    s.push_str(&vowel_marks(v, (glide && !is_diphthong) || (is_diphthong && v == Ph::E)));
     1 + diphthong(s, seg, k + 1)
 }
 

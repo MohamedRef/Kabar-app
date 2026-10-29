@@ -669,6 +669,7 @@ pub enum Msg {
     PronModeOff,
     PronTitle,
     PronShow,
+    PronListen,
     PronHowToRead,
     PronGuideIntro,
     PronGuideNote,
@@ -2772,6 +2773,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PronModeOff, ArEg) => "مقفول",
         (PronModeOff, Ar) => "مُطفأ",
         (PronModeOff, En) => "Off",
+        (PronListen, ArEg) => "اسمع النطق الأصلي",
+        (PronListen, Ar) => "استمع إلى النطق الأصلي",
+        (PronListen, En) => "Hear it said",
         (PronTitle, ArEg) => "النطق بالحروف العربي",
         (PronTitle, Ar) => "النطق بالحروف العربية",
         (PronTitle, En) => "Pronunciation in Arabic script",
@@ -2782,13 +2786,13 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PronHowToRead, Ar) => "كيف أقرأ النطق العربي؟",
         (PronHowToRead, En) => "How to read the Arabic pronunciation",
         (PronGuideIntro, ArEg) => {
-            "تحت كل كلمة إندونيسي أو جاوي هتلاقي نطقها بالحروف العربي بالتشكيل. أغلب الحروف زي العربي بالظبط؛ دي العلامات اللي محتاجة تاخد بالك منها:"
+            "تحت كل كلمة إندونيسي أو جاوي هتلاقي نطقها بالحروف العربي بالتشكيل. كل الحروف عربي أصلي، بس فيه أصوات مش في العربي ليها كتابة ثابتة؛ دي اللي محتاج تاخد بالك منها:"
         }
         (PronGuideIntro, Ar) => {
-            "تحت كل كلمة إندونيسية أو جاوية نطقها بالحروف العربية مشكولة. معظم الحروف كالعربية تمامًا، وهذه العلامات الخاصة:"
+            "تحت كل كلمة إندونيسية أو جاوية نطقها بالحروف العربية مشكولة. والحروف كلها عربية أصلية، وهذه الأصوات التي لها كتابة خاصة:"
         }
         (PronGuideIntro, En) => {
-            "Under each Indonesian or Javanese word you'll see how to say it, in fully vowelled Arabic script. Most letters are plain Arabic; these are the special signs:"
+            "Under each Indonesian or Javanese word you'll see how to say it, in fully vowelled Arabic script. Every letter is plain Arabic; these are the sounds with a special spelling:"
         }
         (PronGuideNote, ArEg) => {
             "الراء ملفوفة زي العربي، والهاء في آخر الكلمة بتتقال خفيفة. التعريب تقريب يساعدك تبدأ: اسمع الصوت، ولو اختلفوا صدّق ودنك. نطق الجاوي لسه محتاج مراجعة."

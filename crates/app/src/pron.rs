@@ -15,9 +15,8 @@ use kabar_core::settings::PronMode;
 use crate::Ui;
 use crate::i18n::Msg;
 
-/// Noto Naskh Arabic, cut to the Arabic block: its marks sit well on
-/// fully vowelled text and it has every extra letter (ڠ ێ ۆ پ چ), which
-/// not every system Arabic font does.
+/// Noto Naskh Arabic, cut to the Arabic block: its vowel marks sit well on
+/// fully vowelled text, which not every system Arabic font manages.
 const FONT: &[u8] = include_bytes!("../../../content/fonts/NotoNaskhArabic-Kabar.ttf");
 
 /// The `@font-face` for `.pron`, once per app.
@@ -72,6 +71,44 @@ pub fn Pron(text: String, tag: String, #[props(default)] inline: bool) -> Elemen
     }
 }
 
+/// A small speaker beside Indonesian or Javanese text: tap it to hear the
+/// text in its own language's voice (pack clip, neural voice, then the
+/// device's). A span, not a button: it often sits inside a button.
+#[component]
+pub fn Say(text: String, tag: String) -> Element {
+    let ui = use_context::<Ui>();
+    let missing = use_signal(|| false);
+    if text.trim().is_empty() {
+        return rsx! {};
+    }
+    let play = {
+        let (text, tag) = (text.clone(), tag.clone());
+        move || crate::lesson::speak(text.trim(), &tag, false, None, missing)
+    };
+    let on_key = play.clone();
+    let on_click = play;
+    rsx! {
+        span {
+            class: "say",
+            role: "button",
+            tabindex: "0",
+            title: ui.t(Msg::PronListen),
+            aria_label: ui.t(Msg::PronListen),
+            onclick: move |e| {
+                e.stop_propagation();
+                on_click();
+            },
+            onkeydown: move |e: KeyboardEvent| {
+                if e.key() == Key::Enter || e.key() == Key::Character(" ".into()) {
+                    e.stop_propagation();
+                    on_key();
+                }
+            },
+            {crate::lesson::speaker_icon()}
+        }
+    }
+}
+
 /// One row of the guide: the Arabic sign, the Latin spelling it stands for,
 /// an example word, and how to say it.
 struct Row {
@@ -104,31 +141,31 @@ const ROWS: &[Row] = &[
         en: "A kasra with no letter after it is the weak e (schwa), like the e in English \"the\".",
     },
     Row {
-        sign: "بێ",
+        sign: "بَيْ",
         latin: "e",
         example: "sore",
         lang: Lang::Indonesian,
-        ar_eg: "e مفتوحة، زي «بيت» و«ليه» بالمصري.",
-        ar: "e مفتوحة، كالياء الممالة في نطق «بيت» بالعامية المصرية.",
-        en: "The open e, like the vowel in Egyptian «بيت» (bēt).",
+        ar_eg: "e مفتوحة، زي «بَيْت» و«لَيْه» بالمصري، مش «باي».",
+        ar: "e مفتوحة، كنطق «بَيْت» بالعامية المصرية لا كالفصحى.",
+        en: "The open e, read like Egyptian «بَيْت» (bēt), not Classical bayt.",
     },
     Row {
-        sign: "بۆ",
+        sign: "بَوْ",
         latin: "o",
         example: "toko",
         lang: Lang::Indonesian,
-        ar_eg: "o، زي «يوم» و«لون» بالمصري.",
-        ar: "o، كالواو الممالة في نطق «يوم» بالعامية المصرية.",
-        en: "o, like the vowel in Egyptian «يوم» (yōm).",
+        ar_eg: "o، زي «يَوْم» و«لَوْن» بالمصري، مش «ياو».",
+        ar: "o، كنطق «يَوْم» بالعامية المصرية لا كالفصحى.",
+        en: "o, read like Egyptian «يَوْم» (yōm), not Classical yawm.",
     },
     Row {
-        sign: "پ",
+        sign: "ب",
         latin: "p",
         example: "pagi",
         lang: Lang::Indonesian,
-        ar_eg: "p زي الإنجليزي: باء من غير ما تهزّ صوتك.",
-        ar: "p كما في الإنجليزية: باء مهموسة.",
-        en: "p as in English.",
+        ar_eg: "الـ p بتتكتب باء. لو عايز تقولها صح: باء من غير ما تهزّ صوتك، زي الإنجليزي.",
+        ar: "تكتب p باءً؛ وتنطق باءً مهموسة كما في الإنجليزية.",
+        en: "p is written ب. Said right, it's a b without voice, as in English.",
     },
     Row {
         sign: "ج",
@@ -140,13 +177,13 @@ const ROWS: &[Row] = &[
         en: "ج is read the Egyptian way: a hard g.",
     },
     Row {
-        sign: "چ",
+        sign: "دْج",
         latin: "j",
         example: "jalan",
         lang: Lang::Indonesian,
-        ar_eg: "جيم معطّشة زي الفصحى (dj)، زي «چاكيت». الـ j في الإندونيسي عمرها ما بتبقى g.",
-        ar: "الجيم المعطّشة الفصيحة (dj)، وتكتب چ لتمييزها عن g.",
-        en: "j as in \"jam\" (the Classical ج), written چ to keep it apart from g.",
+        ar_eg: "جيم معطّشة زي الفصحى، زي آخر «بريدج». الدال قبلها عشان متتقريش g: الـ j في الإندونيسي عمرها ما بتبقى g.",
+        ar: "الجيم المعطّشة الفصيحة، وتسبقها دال لتمييزها عن g، كما في «بريدج».",
+        en: "j as in \"jam\" (the Classical ج); the د in front keeps it apart from g.",
     },
     Row {
         sign: "تْش",
@@ -158,13 +195,13 @@ const ROWS: &[Row] = &[
         en: "ch as in \"chai\". Indonesian c always sounds like this.",
     },
     Row {
-        sign: "ڠ",
+        sign: "نْج",
         latin: "ng",
         example: "orang",
         lang: Lang::Indonesian,
-        ar_eg: "النون اللي في «بنك» قبل الكاف بالظبط، بس من غير الكاف. ng مش n وبعدها g.",
-        ar: "النون الأنفية التي تسبق الكاف في «بنك»، بلا كاف بعدها.",
-        en: "ng as in \"sing\", with no g after it.",
+        ar_eg: "صوت واحد من الأنف، زي النون اللي في «بنك» قبل الكاف، والجيم بتتقال خفيفة أوي أو متتقالش خالص. ng مش n وبعدها g واضحة.",
+        ar: "صوت أنفي واحد كالنون التي تسبق الكاف في «بنك»، والجيم بعدها خفيفة جدًا أو صامتة.",
+        en: "ng as in \"sing\": one nasal sound, the ج barely said.",
     },
     Row {
         sign: "نْي",
@@ -194,7 +231,7 @@ const ROWS: &[Row] = &[
         en: "Javanese only: d and t with the tongue tip curled back. Heavy, but not a full Arabic emphatic.",
     },
     Row {
-        sign: "بۆ",
+        sign: "بَوْ",
         latin: "a",
         example: "apa",
         lang: Lang::Javanese,
