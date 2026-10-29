@@ -222,7 +222,10 @@ jobs:
           cargo run -q -p kabar-tools -- update bundle --out dist/bundle
           if [ "${CONTENT_ONLY:-}" = true ]; then
             app=(--carry android-arm64)
+            # The carried APK is already on the release, not in dist/update.
+            carried=(--carried android-arm64)
           else
+            carried=()
             app=(--asset android-arm64=dist/android/kabar-preview.apk)
           fi
           cargo run -q -p kabar-tools -- update manifest --channel preview --version "$VERSION" \
@@ -231,7 +234,7 @@ jobs:
             --content dist/bundle/kabar-content.bundle --out dist/update
           KABAR_UPDATE_SECRET="$(cat ~/.kabar-preview-update/secret)" \
             cargo run -q -p kabar-tools -- update sign dist/update --public-key ~/.kabar-preview-update/key.pub
-          cargo run -q -p kabar-tools -- update verify dist/update --public-key ~/.kabar-preview-update/key.pub
+          cargo run -q -p kabar-tools -- update verify dist/update --public-key ~/.kabar-preview-update/key.pub "${carried[@]}"
           # Always there, so the artifact keeps its dist/ layout without an APK.
           echo "${CONTENT_ONLY:-false}" > dist/content-only
           ls -l dist/update
