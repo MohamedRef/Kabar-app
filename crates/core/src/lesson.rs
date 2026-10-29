@@ -757,6 +757,9 @@ pub struct Player {
     /// order (see [`retry_options`]), shown and graded in place of the
     /// original so a remembered position isn't the answer.
     retry_view: Option<Exercise>,
+    /// "Try again" on a checked exercise: answering it once more is
+    /// practice, graded on screen but never recorded over the first grade.
+    practice: bool,
 }
 
 impl Player {
@@ -775,6 +778,7 @@ impl Player {
             progress: LessonProgress::default(),
             pending: None,
             retry_view: None,
+            practice: false,
         };
         p.go(p.first_step());
         p
@@ -783,6 +787,7 @@ impl Player {
     /// Moves to `step`, preparing the reshuffled options of a retry.
     fn go(&mut self, step: Step) {
         self.step = step;
+        self.practice = false;
         self.retry_view = match step {
             Step::Exercise { index, retry: true } => {
                 self.lesson.exercises.get(index).and_then(|ex| retry_options(ex, self.seed))
@@ -903,6 +908,10 @@ impl Player {
         }
         let ex = self.retry_view.as_ref().unwrap_or(&self.lesson.exercises[index]);
         let g = grade(ex, answer, lang, &self.lesson.language);
+        if self.practice {
+            self.pending = Some(g.clone());
+            return g;
+        }
         let mut mistakes = Vec::new();
         if let Answer::Matched { missed } = answer {
             mistakes.extend(missed.iter().cloned());
@@ -923,6 +932,10 @@ impl Player {
             return;
         }
         let ex = &self.lesson.exercises[index];
+        if self.practice {
+            self.pending = Some(if means_the_same { Grade::Correct } else { Grade::Wrong });
+            return;
+        }
         let (outcome, mistakes) = if means_the_same {
             (Outcome::Correct, Vec::new())
         } else {
@@ -932,9 +945,20 @@ impl Player {
         self.pending = Some(if means_the_same { Grade::Correct } else { Grade::Wrong });
     }
 
+    /// "Try again" on a checked exercise: clears its feedback so it can be
+    /// answered once more. The first grade stays the one that counts.
+    pub fn try_again(&mut self) -> Option<LessonPosition> {
+        if !matches!(self.step, Step::Exercise { .. }) || self.pending.is_none() {
+            return None;
+        }
+        self.pending = None;
+        self.practice = true;
+        Some(self.position())
+    }
+
     /// "Can't listen now": no score, no retry.
     pub fn skip(&mut self) -> LessonPosition {
-        if let (Step::Exercise { index, retry }, None) = (self.step, &self.pending) {
+        if let (Step::Exercise { index, retry }, None, false) = (self.step, &self.pending, self.practice) {
             self.record(index, retry, Outcome::Skipped, Vec::new());
         }
         self.advance()

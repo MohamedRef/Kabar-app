@@ -449,7 +449,6 @@
   white-space: nowrap;
 }
 /* What a disabled Check waits for, right above it. */
-.lp-actions .lp-hint { margin-block: 0 0.5rem; font-size: var(--fs-sm); color: var(--muted); text-align: center; }
 
 /* Lesson end: progress and the content check are two separate things. */
 .lp-finished { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-block: 0.25rem 0.75rem; }
@@ -470,3 +469,8 @@
 /* Glossy: the choices and the footer button pick up the rounder shapes. */
 .app[data-appearance="glossy"] .lp-choices:not(.chips) .lp-choice { border-radius: var(--radius-card); }
 .app[data-appearance="glossy"] .lp-primary { border-radius: 999px; }
+
+/* "Try again" on a checked answer: just the circular arrow. */
+.lp-again { inline-size: 3rem; block-size: 3rem; padding: 0; display: inline-grid; place-items: center; border-radius: 999px; flex: none; background: var(--surface-2); color: var(--primary); border: 1px solid var(--line); }
+.app[data-width="compact"] .lp-buttons:has(.lp-again) { flex-wrap: nowrap; }
+.app[data-width="compact"] .lp-buttons:has(.lp-again) .lp-primary { flex: 1 1 auto; }

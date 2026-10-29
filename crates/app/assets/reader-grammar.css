@@ -27,3 +27,6 @@
 .line-grammar { margin-block: 0.15rem; display: flex; flex-wrap: wrap; gap: 0.25rem; }
 .gr-chip { font-size: 0.8em; cursor: pointer; border-color: var(--wc, var(--line)); }
 .gr-chip.gr-ahead { border-style: dashed; color: var(--muted); }
+/* The full entry under "Read more" sits inside its rule: no second box. */
+.gr-more .grammar-entry { border: 0; padding-inline: 0; }
+.grammar-entry .grammar-bridge .label { color: var(--gold); }
