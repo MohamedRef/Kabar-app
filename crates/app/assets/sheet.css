@@ -21,8 +21,8 @@
   color: var(--text);
   border: 1px solid color-mix(in srgb, var(--indigo) 40%, transparent);
   border-block-end: 0;
-  border-start-start-radius: var(--radius-lg);
-  border-start-end-radius: var(--radius-lg);
+  border-start-start-radius: var(--radius-sheet);
+  border-start-end-radius: var(--radius-sheet);
   box-shadow: 0 -10px 36px rgb(0 0 0 / 0.3), 0 -2px 8px rgb(0 0 0 / 0.12);
   /* It often opens inside a button (examples, dialogue lines): undo the
      button's text look. */
@@ -125,6 +125,10 @@
 .bsheet-body p { margin: 0; }
 /* Grey boxes inside (notes, examples) stay boxes on the tinted sheet. */
 .bsheet .note, .bsheet blockquote { background: color-mix(in srgb, var(--surface) 55%, var(--sheet)); }
+
+/* Bounded on wider windows (redesign 2026-10-29): a docked sheet is a
+   phone-width card, never a strip across the tablet or the Mac. */
+.app:not([data-width="compact"]) .bsheet:not(.side) { max-inline-size: min(28rem, calc(100% - 2 * var(--gutter))); }
 
 /* The page under a docked sheet gets room to scroll its last lines up. */
 :root[data-sheet="open"] :is(.content, [data-sheet-room]) {

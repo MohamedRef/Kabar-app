@@ -30,6 +30,9 @@ const TAPPABLE: &[&str] = &[
     "activity-row",
     "answer",
     "rating",
+    "ch-persona",
+    "ch-scene",
+    "ch-context",
 ];
 
 /// Elements that can be pressed. A `li.lx-card.locked` is a broken episode

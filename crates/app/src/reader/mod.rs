@@ -222,7 +222,7 @@ impl ReaderState {
         self.panel.set(panel);
     }
 
-    fn close(mut self) {
+    pub(crate) fn close(mut self) {
         self.open.set(None);
         self.grammar.set(None);
         self.peek.set(None);

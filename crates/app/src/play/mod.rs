@@ -18,6 +18,7 @@ pub mod unggah;
 use dioxus::prelude::*;
 use kabar_core::games::bridge;
 
+use crate::embedded::{Css, css};
 use crate::i18n::Msg;
 use crate::{Screen, Ui, icons};
 use logic::deck_headline;
@@ -66,10 +67,23 @@ pub fn open(ui: Ui, nav: PlayNav, route: Route) {
     screen.set(Screen::Play);
 }
 
+const PLAY_CSS: Css = css!("assets/play.css");
+
 #[component]
 pub fn Play() -> Element {
     let PlayNav(nav) = use_context::<PlayNav>();
-    match *nav.read() {
+    let route = *nav.read();
+    // Bridge games keep Bridge gold for a right answer; the others use the
+    // success colours.
+    let bridge = matches!(route, Route::Deck | Route::Detective | Route::Alarm);
+    rsx! {
+        style { {PLAY_CSS.text()} }
+        div { class: if bridge { "play bridge-game" } else { "play" }, {screen(route)} }
+    }
+}
+
+fn screen(route: Route) -> Element {
+    match route {
         Route::Hub => rsx! { Hub {} },
         Route::Pagi => rsx! { pagi::PagiPlayer {} },
         Route::Deck => rsx! { bridge_deck::BridgeDeck {} },
@@ -113,7 +127,7 @@ fn Hub() -> Element {
     let known = use_hook(|| content::bridge().as_ref().ok().map(|d| bridge::known_deck(d).len()));
 
     rsx! {
-        div { class: "card play-intro",
+        header { class: "play-intro",
             h2 { "{ui.t(Msg::NavPlay)}" }
             p { class: "muted", "{ui.t(Msg::PlayIntro)}" }
         }
@@ -144,6 +158,7 @@ fn Hub() -> Element {
                         }
                         span { class: "muted small", "{ui.t(game.blurb)}" }
                     }
+                    span { class: "chev", aria_hidden: "true" }
                 }
             }
         }
@@ -159,13 +174,14 @@ pub fn PlayHeader(title: Msg, #[props(default)] latin: bool) -> Element {
         div { class: "play-header",
             button {
                 class: "quiet back",
+                "data-back": "true",
                 onclick: move |_| {
                     speech::stop();
                     let mut nav = nav;
                     nav.set(Route::Hub);
                 },
-                span { aria_hidden: "true", class: "flip", "←" }
-                " {ui.t(Msg::NavPlay)}"
+                span { class: "chev back-chev", aria_hidden: "true" }
+                "{ui.t(Msg::NavPlay)}"
             }
             if latin {
                 h2 { lang: "id", bdi { dir: "ltr", "{ui.t(title)}" } }
@@ -202,16 +218,60 @@ pub fn RoundSummary(correct: u32, total: u32, onagain: EventHandler<()>, childre
     } else {
         Msg::PlayKeepGoing
     };
+    let PlayNav(nav) = use_context::<PlayNav>();
     rsx! {
         div { class: "card summary-card reveal",
             p { class: "score",
-                strong { "{ui.num(correct)}" }
-                span { class: "muted", " / {ui.num(total)}" }
+                bdi { dir: "ltr",
+                    strong { "{ui.num(correct)}" }
+                    span { class: "muted", " / {ui.num(total)}" }
+                }
             }
             p { "{ui.t(line)}" }
             {children}
-            div { class: "row",
+            // What next: the same game again, another game, or the words
+            // in a real conversation.
+            div { class: "row play-next",
                 button { class: "primary", onclick: move |_| onagain.call(()), "{ui.t(Msg::PlayAgain)}" }
+                button {
+                    onclick: move |_| {
+                        speech::stop();
+                        let mut nav = nav;
+                        nav.set(Route::Hub);
+                    },
+                    "{ui.t(Msg::PlayOtherGames)}"
+                }
+                button {
+                    class: "quiet-solid",
+                    onclick: move |_| {
+                        speech::stop();
+                        let mut s = ui.screen;
+                        s.set(Screen::Chat);
+                    },
+                    "{ui.t(Msg::PlayTryInChat)}"
+                }
+            }
+        }
+    }
+}
+
+/// "3 / 8" with a bar: where the player is in a round. The numbers read
+/// left to right in every language.
+#[component]
+pub fn RoundCount(at: u64, total: u64, #[props(default)] label: Option<Msg>) -> Element {
+    let ui = use_context::<Ui>();
+    let done = at.saturating_sub(1).min(total);
+    let percent = (done * 100).checked_div(total).unwrap_or(0);
+    rsx! {
+        div { class: "play-count",
+            span { class: "muted small",
+                if let Some(l) = label {
+                    "{ui.t(l)} "
+                }
+                bdi { class: "ltr-count", "{ui.num(at)} / {ui.num(total)}" }
+            }
+            div { class: "progress-line", aria_hidden: "true",
+                span { class: "fill", style: "inline-size: {percent}%" }
             }
         }
     }
