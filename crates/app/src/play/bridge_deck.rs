@@ -79,6 +79,7 @@ pub fn BridgeDeck() -> Element {
     };
     let ui = use_context::<Ui>();
     let coach = use_context::<Coach>();
+    let db = use_context::<Db>();
     let PlayNav(mut nav) = use_context::<PlayNav>();
     let deck = use_hook(|| bridge::known_deck(data));
     let mut shown = use_signal(|| PAGE);
@@ -86,7 +87,9 @@ pub fn BridgeDeck() -> Element {
     let logged = logic::logged_words(&coach.events.read());
     let marked = deck.iter().filter(|e| logged.contains(&e.word)).count();
     let q = query.read().clone();
-    let matching: Vec<&BridgeEntry> = deck.iter().copied().filter(|e| found(e, &q)).collect();
+    let mut matching: Vec<&BridgeEntry> = deck.iter().copied().filter(|e| found(e, &q)).collect();
+    let pick = DECK_VIEW.pick(&db);
+    crate::views::sort_by(&mut matching, pick.sort, |e| !logged.contains(&e.word), |e| e.word.clone());
     let visible = (*shown.read()).min(matching.len());
 
     rsx! {
@@ -118,7 +121,8 @@ pub fn BridgeDeck() -> Element {
         if matching.is_empty() {
             p { class: "card flat muted", role: "status", "{no_match(ui.lang())}" }
         } else {
-            ul { class: "card grouped deck-list",
+            crate::views::ViewBar { of: DECK_VIEW }
+            ul { class: "coll deck-list", "data-layout": pick.layout.as_str(),
                 for entry in matching.iter().take(visible).copied() {
                     li { key: "{entry.word}",
                         DeckRow { entry: entry.clone(), known: logged.contains(&entry.word) }
@@ -139,6 +143,14 @@ pub fn BridgeDeck() -> Element {
     }
 }
 
+/// The deck: rows by default; the deck's order, the words not marked
+/// known yet first, or A to Z.
+const DECK_VIEW: crate::views::Collection = crate::views::Collection {
+    key: "bridge.deck",
+    layout: crate::views::Layout::List,
+    sorts: &[crate::views::Sort::Course, crate::views::Sort::Left, crate::views::Sort::Name],
+};
+
 /// One Bridge word: the word and its Arabic; open it for the root, the
 /// meaning and "I know it".
 #[component]
@@ -155,15 +167,17 @@ fn DeckRow(entry: BridgeEntry, known: bool) -> Element {
 
     rsx! {
         details { class: if known { "deck-row known" } else { "deck-row" },
-            summary {
-                span { class: "deck-word",
-                    bdi { class: "bridge-word latin", lang: "id", dir: "ltr", "{entry.word}" }
-                    span { class: "muted small", "{meaning(ui.lang(), &entry.meaning)}" }
+            summary { class: "coll-btn",
+                span { class: "coll-main deck-word",
+                    bdi { class: "coll-title bridge-word latin", lang: "id", dir: "ltr", "{entry.word}" }
+                    span { class: "coll-sub", "{meaning(ui.lang(), &entry.meaning)}" }
                 }
-                if known {
-                    span { class: "status-chip good", aria_label: "{ui.t(Msg::DeckKnown)}", "✓" }
+                span { class: "coll-end deck-end",
+                    span { class: "ar bridge-ar", lang: "ar", dir: "rtl", "{entry.arabic}" }
+                    if known {
+                        span { class: "status-chip good", aria_label: "{ui.t(Msg::DeckKnown)}", "✓" }
+                    }
                 }
-                span { class: "ar bridge-ar", lang: "ar", dir: "rtl", "{entry.arabic}" }
             }
             div { class: "deck-detail",
                 if let Some(root) = &entry.root {

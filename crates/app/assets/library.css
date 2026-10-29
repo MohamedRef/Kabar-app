@@ -28,6 +28,8 @@
 .lib-list > li > button.activity-row { flex: 1; min-inline-size: 0; }
 .lib-title { display: block; max-inline-size: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--font-latin); }
 .lib-delete { flex: none; margin-inline-end: var(--sp-2); color: var(--muted); }
+/* Saved texts in cards: a title may take two lines. */
+.coll[data-layout="cards"] .lib-title { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .lib-empty { color: var(--muted); }
 
 /* A saved word: open it to see its sentence and go to its text. */

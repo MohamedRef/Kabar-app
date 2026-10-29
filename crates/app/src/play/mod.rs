@@ -120,45 +120,61 @@ const GAMES: [GameCard; 8] = [
     GameCard { route: Route::Pairs, title: Msg::PairsTitle, blurb: Msg::PairsBlurb, accent: "indigo" },
 ];
 
+/// The games: tiles by default; a list or one line each, in the hub's
+/// order or by name.
+const HUB_VIEW: crate::views::Collection = crate::views::Collection {
+    key: "play.hub",
+    layout: crate::views::Layout::Cards,
+    sorts: &[crate::views::Sort::Course, crate::views::Sort::Name],
+};
+
 #[component]
 fn Hub() -> Element {
     let ui = use_context::<Ui>();
     let PlayNav(nav) = use_context::<PlayNav>();
+    let db = use_context::<crate::Db>();
     let known = use_hook(|| content::bridge().as_ref().ok().map(|d| bridge::known_deck(d).len()));
+    let pick = HUB_VIEW.pick(&db);
+    let mut games: Vec<&GameCard> = GAMES.iter().collect();
+    crate::views::sort_by(&mut games, pick.sort, |_| false, |g| ui.t(g.title).to_string());
 
     rsx! {
         header { class: "play-intro",
             h2 { "{ui.t(Msg::NavPlay)}" }
             p { class: "muted", "{ui.t(Msg::PlayIntro)}" }
         }
-        div { class: "play-grid",
-            for game in GAMES.iter() {
-                button {
-                    key: "{game.route:?}",
-                    class: "game-card {game.accent}",
-                    onclick: {
-                        let route = game.route;
-                        move |_| {
-                            let mut nav = nav;
-                            nav.set(route);
-                        }
-                    },
-                    span { class: "game-icon", aria_hidden: "true", {icons::game(game.route)} }
-                    span { class: "game-text",
-                        if game.route == Route::Deck && known.is_some() {
-                            strong { class: "gold-text", lang: "id",
-                                bdi { {deck_headline(known.unwrap_or_default())} }
+        crate::views::ViewBar { of: HUB_VIEW }
+        ul { class: "coll play-hub", "data-layout": pick.layout.as_str(),
+            for game in games {
+                li { key: "{game.route:?}",
+                    button {
+                        class: "coll-btn game-tile {game.accent}",
+                        onclick: {
+                            let route = game.route;
+                            move |_| {
+                                let mut nav = nav;
+                                nav.set(route);
                             }
-                        } else if game.route.latin_title() {
-                            strong { lang: "id",
-                                bdi { dir: "ltr", "{ui.t(game.title)}" }
-                            }
-                        } else {
-                            strong { "{ui.t(game.title)}" }
+                        },
+                        span { class: "coll-lead",
+                            span { class: "game-icon", aria_hidden: "true", {icons::game(game.route)} }
                         }
-                        span { class: "muted small", "{ui.t(game.blurb)}" }
+                        span { class: "coll-main",
+                            if game.route == Route::Deck && known.is_some() {
+                                strong { class: "coll-title gold-text", lang: "id",
+                                    bdi { {deck_headline(known.unwrap_or_default())} }
+                                }
+                            } else if game.route.latin_title() {
+                                strong { class: "coll-title", lang: "id",
+                                    bdi { dir: "ltr", "{ui.t(game.title)}" }
+                                }
+                            } else {
+                                strong { class: "coll-title", "{ui.t(game.title)}" }
+                            }
+                            span { class: "coll-sub", "{ui.t(game.blurb)}" }
+                        }
+                        span { class: "chev", aria_hidden: "true" }
                     }
-                    span { class: "chev", aria_hidden: "true" }
                 }
             }
         }

@@ -276,12 +276,14 @@ fn TextList(recent: Signal<Vec<SavedText>>, q: String) -> Element {
     let db = use_context::<Db>();
     let st = use_context::<ReaderState>();
     let lang = ui.lang();
-    let texts: Vec<SavedText> = recent
+    let pick = TEXTS_VIEW.pick(&db);
+    let mut texts: Vec<SavedText> = recent
         .read()
         .iter()
         .filter(|t| matches(&q, &[&t.title, &t.body, t.source.as_deref().unwrap_or("")]))
         .cloned()
         .collect();
+    crate::views::sort_by(&mut texts, pick.sort, |_| false, |t| t.title.clone());
     if recent.read().is_empty() {
         return rsx! {
             p { class: "card flat lib-empty", "{lt(lang, L::NoTexts)}" }
@@ -293,20 +295,21 @@ fn TextList(recent: Signal<Vec<SavedText>>, q: String) -> Element {
         };
     }
     rsx! {
-        ul { class: "card grouped lib-list",
+        crate::views::ViewBar { of: TEXTS_VIEW }
+        ul { class: "coll lib-texts", "data-layout": pick.layout.as_str(),
             for text in texts {
                 li { key: "{text.id}",
                     button {
-                        class: "activity-row",
+                        class: "coll-btn",
                         onclick: {
                             let db = db.clone();
                             let text = text.clone();
                             move |_| st.load(&db, text.clone())
                         },
-                        span { class: "row-icon", aria_hidden: "true", "{super::kind_icon(text.kind)}" }
-                        span { class: "row-copy",
-                            strong { bdi { class: "lib-title", lang: "id", dir: "ltr", "{text.title}" } }
-                            small {
+                        span { class: "coll-lead", span { class: "row-icon", aria_hidden: "true", "{super::kind_icon(text.kind)}" } }
+                        span { class: "coll-main",
+                            strong { class: "coll-title", bdi { class: "lib-title", lang: "id", dir: "ltr", "{text.title}" } }
+                            small { class: "coll-sub",
                                 "{lt(lang, kind_label(text.kind))}"
                                 if let Some(src) = text.source.as_deref() {
                                     " · "
@@ -314,10 +317,10 @@ fn TextList(recent: Signal<Vec<SavedText>>, q: String) -> Element {
                                 }
                             }
                         }
-                        span { class: "row-end", span { class: "chev" } }
+                        span { class: "chev", aria_hidden: "true" }
                     }
                     button {
-                        class: "icon-button lib-delete",
+                        class: "icon-button lib-delete coll-aside",
                         aria_label: "{ui.t(crate::i18n::Msg::Delete)}",
                         title: "{ui.t(crate::i18n::Msg::Delete)}",
                         onclick: {
@@ -338,6 +341,13 @@ fn TextList(recent: Signal<Vec<SavedText>>, q: String) -> Element {
         }
     }
 }
+
+/// Saved texts: rows by default, newest first or by title.
+const TEXTS_VIEW: crate::views::Collection = crate::views::Collection {
+    key: "reader.texts",
+    layout: crate::views::Layout::List,
+    sorts: &[crate::views::Sort::Recent, crate::views::Sort::Name],
+};
 
 /// A URL's host, an app's name as is.
 fn source_name(src: &str) -> &str {

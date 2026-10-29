@@ -43,6 +43,7 @@ mod studio;
 mod teach;
 mod theme;
 mod update;
+mod views;
 
 use std::cell::RefCell;
 use std::rc::Rc;

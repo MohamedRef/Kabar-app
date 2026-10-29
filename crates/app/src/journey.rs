@@ -20,6 +20,7 @@ use kabar_core::locale::UiLanguage;
 use crate::embedded::{Css, css};
 use crate::i18n::Msg;
 use crate::map_art::{self, Size as ArtSize};
+use crate::views::Layout;
 use crate::{Db, Ui};
 use kabar_protocol::coach::CoachProfile;
 use kabar_protocol::lesson::Souvenir;
@@ -304,6 +305,12 @@ pub fn JourneyScreen() -> Element {
 
 // ---------------------------------------------------------------- phone ----
 
+/// Each stop's lessons: rows (the path's own look), tiles two across, or
+/// one line each with the state left to the dot. The course order always:
+/// the path is the order.
+const LESSONS_VIEW: crate::views::Collection =
+    crate::views::Collection { key: "journey.lessons", layout: Layout::List, sorts: &[] };
+
 #[component]
 fn RouteList(j: Journey, picked: Signal<Option<Option<String>>>) -> Element {
     let ui = use_context::<Ui>();
@@ -326,12 +333,14 @@ fn RouteList(j: Journey, picked: Signal<Option<Option<String>>>) -> Element {
         ));
     });
 
+    let layout = LESSONS_VIEW.pick(&use_context::<crate::Db>()).layout;
     rsx! {
         div { class: "route-list",
+            crate::views::ViewBar { of: LESSONS_VIEW }
             for level in cur.levels.iter() {
                 section { key: "{level.id}", id: "rl-{level.id}", class: "rl-level",
                     {level_head(&ui, &j, level, &progress, &elsewhere)}
-                    {unit_stops(&ui, &j, level, &progress, true)}
+                    {unit_stops(&ui, &j, level, &progress, true, layout)}
                 }
             }
             {continue_bar(&ui, &j, &progress)}
@@ -551,7 +560,14 @@ fn level_head(
 }
 
 /// The units of a level as stops on a winding path, lessons inside each.
-fn unit_stops(ui: &Ui, j: &Journey, level: &Level, progress: &Progress, mark_current: bool) -> Element {
+fn unit_stops(
+    ui: &Ui,
+    j: &Journey,
+    level: &Level,
+    progress: &Progress,
+    mark_current: bool,
+    layout: Layout,
+) -> Element {
     let ui = *ui;
     let lang = ui.settings.read().ui_language;
     let tl = j.route.target_lang();
@@ -592,7 +608,7 @@ fn unit_stops(ui: &Ui, j: &Journey, level: &Level, progress: &Progress, mark_cur
                                 }
                             }
                         }
-                        {lessons(&ui, tl, unit, progress, mark_current)}
+                        {lessons(&ui, tl, unit, progress, mark_current, layout)}
                     }
                 }
             }
@@ -600,10 +616,17 @@ fn unit_stops(ui: &Ui, j: &Journey, level: &Level, progress: &Progress, mark_cur
     }
 }
 
-fn lessons(ui: &Ui, tl: &'static str, unit: &Unit, progress: &Progress, mark_current: bool) -> Element {
+fn lessons(
+    ui: &Ui,
+    tl: &'static str,
+    unit: &Unit,
+    progress: &Progress,
+    mark_current: bool,
+    layout: Layout,
+) -> Element {
     let ui = *ui;
     rsx! {
-        ol { class: "lessons",
+        ol { class: "lessons", "data-layout": layout.as_str(),
             for lesson in unit.lessons.iter() {
                 {
                     let state = progress.lesson_state(&lesson.id);
@@ -665,6 +688,7 @@ fn kind_attr(kind: LessonKind) -> &'static str {
 #[component]
 fn MapView(j: Journey, picked: Signal<Option<Option<String>>>) -> Element {
     let ui = use_context::<Ui>();
+    let layout = LESSONS_VIEW.pick(&use_context::<crate::Db>()).layout;
     let cur = j.curriculum();
     let map = j.map();
     let progress = j.progress();
@@ -893,7 +917,8 @@ fn MapView(j: Journey, picked: Signal<Option<Option<String>>>) -> Element {
                         button { aria_label: "{ui.t(Msg::JourneyClose)}", title: "{ui.t(Msg::JourneyClose)}", onclick: move |_| picked.set(Some(None)), "×" }
                     }
                     {level_head(&ui, &j, level, &progress, &elsewhere)}
-                    {unit_stops(&ui, &j, level, &progress, false)}
+                    crate::views::ViewBar { of: LESSONS_VIEW }
+                    {unit_stops(&ui, &j, level, &progress, false, layout)}
                 }
             }
         }

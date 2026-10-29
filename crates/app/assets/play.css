@@ -32,6 +32,11 @@
 }
 .play .game-card.gold .game-icon { background: var(--gold-soft); color: var(--gold); }
 .play .game-card.dawn .game-icon { background: var(--dawn-soft); color: var(--text); }
+/* The hub's games in the shared .coll layouts (views.rs). */
+.play .game-tile.gold .game-icon { background: var(--gold-soft); color: var(--gold); }
+.play .game-tile.dawn .game-icon { background: var(--dawn-soft); color: var(--text); }
+.play .coll[data-layout="compact"] .game-icon { inline-size: 2rem; block-size: 2rem; }
+.play .coll[data-layout="compact"] .game-icon svg { inline-size: 1.1rem; block-size: 1.1rem; }
 
 /* Round header: back, title, then the round's counter and bar. */
 .play .play-header { margin-block-end: 0; }

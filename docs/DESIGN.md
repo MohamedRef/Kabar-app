@@ -133,6 +133,15 @@ it shows (`dead_ends.rs` lists the classes).
 | Sidebar group | `.nav-group` + `.nav-heading` | Learn · Practise · Me. Named on the sidebar, thin dividers on the rail, invisible in the phone's bottom bar |
 | Answer row | `.rate-row` | Stays in one place: bottom of the screen on phone and tablet portrait, under a steady-height card on wide windows |
 | Feedback | glyph + words + colour | Never colour alone (✓ / ↺ / –, a verdict line) |
+| View switcher | `views::ViewBar { of: Collection }` → `.view-bar` > `.view-sort`? + `.view-seg[role=radiogroup]` | Cards / list / compact plus the list's orders. Saved per list on this device (local `view.<key>`). `KABAR_VIEW=cards\|list\|compact` forces a layout for screenshots |
+| Collection | `ul.coll[data-layout]` > `li` > `button.coll-btn` (or a details `summary.coll-btn`) > `.coll-lead` + `.coll-main` (`.coll-title`, `.coll-sub`, `.coll-extra`) + `.coll-end` + `.chev`; optional `.coll-aside` button | One markup, three looks. Compact hides `.coll-sub`/`.coll-extra`/`.coll-when-roomy`, shows `.coll-when-compact`. Test: `every_view_of_a_list_opens_its_items` |
+
+List screens (2026-10-29): every list a learner browses has the view
+switcher, like a Files app: games, Reader texts, the Arabic Bridge deck,
+chat partners and past chats, Sinetron and Radio, and each Journey stop's
+lessons (layout only: the path is the order). A new list declares a
+`views::Collection`, puts a `ViewBar` above its `ul.coll` and builds its
+items from the collection markup.
 
 Key hints (Space, 1–4, ?) show only on keyboard and mouse devices, never on
 touch screens. A list-detail selection (Journey's stop) lives above the
