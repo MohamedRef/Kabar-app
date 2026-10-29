@@ -205,9 +205,13 @@ pub fn TeachScreen() -> Element {
 
     rsx! {
         style { {TEACH_CSS.text()} }
+        div { class: "page-head",
+            div {
+                h1 { "{tr(T::Title)}" }
+                p { class: "sub", "{tr(T::Intro)}" }
+            }
+        }
         div { class: "card teach",
-            h2 { "{tr(T::Title)}" }
-            p { class: "muted", "{tr(T::Intro)}" }
 
             div { class: "field",
                 label { r#for: "teach-word", "{tr(T::Word)}" }
@@ -221,11 +225,12 @@ pub fn TeachScreen() -> Element {
                         placeholder: "mantul",
                         oninput: move |e| word.set(e.value()),
                     }
-                    div { class: "row", role: "group",
+                    div { class: "segmented", role: "radiogroup", aria_label: "{tr(T::Word)}",
                         for (code, name) in [(Lang::Id, "Bahasa Indonesia"), (Lang::Jv, "Basa Jawa")] {
                             button {
                                 key: "{code.code()}",
-                                aria_pressed: if lang() == code { "true" } else { "false" },
+                                role: "radio",
+                                aria_checked: if lang() == code { "true" } else { "false" },
                                 onclick: move |_| lang.set(code),
                                 bdi { lang: code.code(), "{name}" }
                             }

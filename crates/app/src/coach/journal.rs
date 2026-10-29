@@ -99,14 +99,19 @@ pub fn JournalScreen() -> Element {
 
     rsx! {
         div { class: "journal",
-            header { class: "card journal-head",
-                h2 { "{ui.t(Msg::JournalTitle)}" }
-                p { class: "muted", "{ui.t(Msg::JournalIntro)}" }
-                div { class: "row journal-filters", role: "group", aria_label: "{ui.t(Msg::JournalTitle)}",
+            header { class: "journal-head",
+                div { class: "page-head",
+                    div {
+                        h1 { "{ui.t(Msg::JournalTitle)}" }
+                        p { class: "sub", "{ui.t(Msg::JournalIntro)}" }
+                    }
+                }
+                div { class: "segmented journal-filters", role: "radiogroup", aria_label: "{ui.t(Msg::JournalTitle)}",
                     for f in JournalFilter::ALL {
                         button {
                             key: "{f:?}",
-                            aria_pressed: if filter() == f { "true" } else { "false" },
+                            role: "radio",
+                            aria_checked: if filter() == f { "true" } else { "false" },
                             onclick: move |_| {
                                 filter.set(f);
                                 shown.set(PAGE_DAYS);

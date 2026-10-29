@@ -39,13 +39,15 @@ pub fn CostScreen() -> Element {
     let spend = report.as_ref().map_or(0, |r| r.spend_usd_cents);
 
     rsx! {
-        div { class: "card cost-head",
-            div { class: "row spread",
-                h2 { "{ui.t(Msg::CostTitle)}" }
-                if connected {
-                    button { onclick: move |_| cloud.send(crate::cloud::Command::LoadUsage), "{ui.t(Msg::DevicesRefresh)}" }
-                }
+        div { class: "page-head",
+            div {
+                h1 { "{ui.t(Msg::CostTitle)}" }
             }
+            if connected {
+                button { class: "tonal", onclick: move |_| cloud.send(crate::cloud::Command::LoadUsage), "{ui.t(Msg::DevicesRefresh)}" }
+            }
+        }
+        div { class: "card cost-head",
             p { class: "cost-total",
                 bdi { class: "cost-amount latin", dir: "ltr", "{logic::dollars(spend)}" }
                 " "
