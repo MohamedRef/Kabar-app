@@ -728,3 +728,29 @@ fn only_old_passes_verify_the_content() {
     }
     assert!(passes(&p.completed()) && !verifies_by_pass(&p.completed()));
 }
+
+/// "Try again" on a checked answer: it can be answered once more, graded on
+/// screen, but the first grade stays the one recorded.
+#[test]
+fn trying_again_is_practice_and_keeps_the_first_grade() {
+    let mut p = Player::new(l01());
+    walk_to(&mut p, "e03");
+    assert_eq!(p.try_again(), None, "nothing to try again before Check");
+    assert_eq!(answer(&mut p, &["e03"]), Grade::Wrong);
+    let recorded = p.completed().results;
+    let pos = p.try_again().expect("a checked exercise can be tried again");
+    assert_eq!(p.pending(), None);
+    assert_eq!(pos.response, None, "the old feedback is cleared");
+    let right = Answer::Choice(match &ex(&l01(), "e03").kind {
+        ExerciseKind::MultipleChoice { answer, .. } => *answer,
+        ExerciseKind::Listen { answer: Some(a), .. } => *a,
+        k => panic!("{k:?}"),
+    });
+    assert_eq!(p.check(&right, EG), Grade::Correct, "graded on screen");
+    assert_eq!(p.completed().results, recorded, "but never recorded");
+    p.advance();
+    // The next exercise counts again.
+    let before = p.completed().results.len();
+    answer(&mut p, &[]);
+    assert_eq!(p.completed().results.len(), before + 1);
+}

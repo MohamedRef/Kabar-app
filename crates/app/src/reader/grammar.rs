@@ -261,7 +261,7 @@ pub fn GrammarAt(doc: Rc<ReadDoc>, grammar: Rc<DocGrammar>, i: usize, voice: Voi
                         }
                     }
                     if let Some(note) = hit_note(&h, voice) {
-                        p { class: "gr-note", "{note}" }
+                        p { class: "gr-note", {super::explain::mixed(&note)} }
                     }
                     PlaceLine { found: f.clone() }
                     if let Some(p) = library().get(&f.grammar) {
