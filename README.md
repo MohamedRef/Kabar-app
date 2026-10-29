@@ -34,18 +34,23 @@ the Arabic words Indonesian already borrowed.
 | Watch & listen: Sinetron, Kabar Radio, offline download, background playback | ✓ | ✓ background audio | ✓ background audio |
 | Persona chats: a chat partner for every level (10 personas) | ✓ | ✓ | ✓ |
 | Studio: AI mind maps, Study Desk panes | ✓ | — | ✓ |
+| Themes: Paper, Merapi, True black (AMOLED), Malam, Batik, Sawah, and two System themes that follow night mode | ✓ | ✓ status and navigation bars match the theme | ✓ status and navigation bars match the theme |
 | Lesson sounds (pick them in Settings) and a light vibration | ✓ sounds | ✓ vibration follows the phone's touch setting | ✓ vibration follows the tablet's touch setting |
 | Offline packs (audio per unit) | ✓ | ✓ | ✓ |
 | Sync through Kabar Cloud, Google sign-in, Devices screen | ✓ | ✓ | ✓ |
-| Updates over the air: signed feed, automatic / tell me first / off, alpha·beta·stable (preview for CI builds) | ✓ swaps Kabar.app | ✓ PackageInstaller | ✓ PackageInstaller |
+| Updates over the air: signed feed, automatic / tell me first / off, alpha·beta·stable (preview for CI builds), interrupted downloads resume | ✓ swaps Kabar.app | ✓ PackageInstaller | ✓ PackageInstaller |
 | "A new Kabar is out" notification with what's new (keeps quiet hours) | ✓ while open | ✓ even when closed, Download / Install button | ✓ even when closed, Download / Install button |
+| Content and look updates without an app install: a signed content bundle (lessons, stories, Radio, glosses, stylesheets) downloads in the background and applies at the next launch | ✓ | ✓ | ✓ |
 | What's new: a sheet before installing, once after each update, and a full changelog in Settings (from `changes/*.yaml`) | ✓ | ✓ | ✓ |
 | Pen **writing** (Notebook, Gambar!, handwritten answers, Card Wall, aksara calligraphy) | paused | paused | paused |
 | Home-screen widgets | — | parked | parked |
 
 Kabar Cloud is a Cloudflare Worker on the free plan (sync hub, key vault, AI
-and TTS proxy). Its code and local end-to-end test are done; it is not
-deployed yet. A web build (M2+) comes after the deploy.
+and TTS proxy). Its code and local end-to-end test are done, and a
+"Deploy Kabar Cloud" GitHub Actions workflow can now deploy it without the Mac
+([docs/CLOUD.md](docs/CLOUD.md) §3.5). It is not deployed yet: the workflow
+waits for the `CLOUDFLARE_API_TOKEN` repo secret. A web build (M2+) comes
+after the deploy.
 
 ## Content in numbers
 
@@ -111,7 +116,7 @@ phased for after M13, never dropped.
 |---|---|---|---|
 | M0 | Research, plan, free-tier check, engine bake-off | 🟡 code done | run the bake-off on the Mac with real keys |
 | M1 | Workspace, Dioxus app on all three devices, i18n + RTL, themes, SQLite, Pen Lab | ✅ done | first install on the devices |
-| M2 | Kabar Cloud v0: Google sign-in, devices, live sync, key vault, AI/TTS proxy | 🟡 code done | Cloudflare deploy and Google client ids (needs the Mac) |
+| M2 | Kabar Cloud v0: Google sign-in, devices, live sync, key vault, AI/TTS proxy | 🟡 code done | add the Cloudflare token secret and run the Deploy Kabar Cloud workflow (no Mac needed); Kabar's own Google client (it borrows Batna's for now) |
 | M2+ | Web build on Cloudflare Pages | ⏳ waits for M2 | plan for approval after the deploy |
 | M3 | Dictionary import + language engine | ✅ done | |
 | M4 | Content pipeline v1: frequency lists, glosses, grammar library, golden sets | ✅ done | learner review of the content |
@@ -143,7 +148,7 @@ first Mac session is a checklist in [docs/MAC-TODO.md](docs/MAC-TODO.md).
 | Android, dev | `just run-android [device]` | live reload on a connected Galaxy |
 | Android, release | `just android-keystore` (once), `just apk`, `just install <serial>` | signed `dist/android/kabar.apk` on the S24 Ultra or Tab S11 |
 | Kabar Cloud, local | `just cloud-dev`, `just cloud-e2e` | Worker on `127.0.0.1:8787`; phone → tablet sync test |
-| Kabar Cloud, deploy | `just cloud-setup` (once), `just deploy-cloud` | Worker on `*.workers.dev` ([docs/CLOUD.md](docs/CLOUD.md)) |
+| Kabar Cloud, deploy | `just cloud-setup` (once), `just deploy-cloud`; or Actions › Deploy Kabar Cloud | Worker on `*.workers.dev` ([docs/CLOUD.md](docs/CLOUD.md)) |
 | Offline packs | `just packs`, `just packs-audio`, `just packs-bundle` | unit manifests, Azure F0 audio, release tars |
 | README numbers | `just readme` | refreshes the table above |
 
