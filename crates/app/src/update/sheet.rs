@@ -1,6 +1,6 @@
 //! The "what's new" sheet: what an update brings before it's installed,
 //! what it brought right after (once, by itself), and the whole changelog
-//! from Settings › About › Updates. One sheet for all three, laid out the
+//! from Settings › Updates. One sheet for all three, laid out the
 //! way Morphe Manager's update dialog is (ideas only, none of its code):
 //!
 //! - a head with the state ("A new Kabar is out", "Kabar was updated") and
@@ -148,7 +148,7 @@ pub enum SheetMode {
     Offer,
     /// What the update just installed brought: opens once by itself.
     Updated,
-    /// Every build so far (Settings › About › Updates).
+    /// Every build so far (Settings › Updates).
     History,
 }
 
@@ -348,10 +348,26 @@ fn jump_labels(from: &str, to: &str) -> (String, String) {
 
 /// "Today", "2 days ago" within a week, then "28 October".
 fn when(ui: &Ui, published: &str, today: i64) -> Option<String> {
-    let day = day_of(published)?;
+    Some(on_day(ui, day_of(published)?, today))
+}
+
+/// A moment on this device, e.g. "Today 14:32", "Yesterday", "28 October".
+pub(super) fn moment(ui: &Ui, ms: u64, s: &Status) -> String {
+    let local = ms as i64 + offset_ms(s);
+    let day = local.div_euclid(86_400_000);
+    let today = today(s);
+    if day == today {
+        let offset = s.prefs.notice.map_or(0, |n| n.utc_offset_min);
+        let t = crate::coach::labels::time(ui, crate::coach::clock::time_of_day(ms, offset));
+        return format!("{} {t}", ut(ui.lang(), U::Today));
+    }
+    on_day(ui, day, today)
+}
+
+fn on_day(ui: &Ui, day: i64, today: i64) -> String {
     let lang = ui.lang();
     let ago = today - day;
-    Some(match ago {
+    match ago {
         ..=0 => ut(lang, U::Today).to_owned(),
         1 => ut(lang, U::Yesterday).to_owned(),
         2 => ut(lang, U::TwoDaysAgo).to_owned(),
@@ -366,12 +382,15 @@ fn when(ui: &Ui, published: &str, today: i64) -> Option<String> {
             let s = if y == ty { format!("{d} {month}") } else { format!("{d} {month} {y}") };
             digits(ui, s)
         }
-    })
+    }
+}
+
+fn offset_ms(s: &Status) -> i64 {
+    s.prefs.notice.map_or(0, |n| i64::from(n.utc_offset_min)) * 60_000
 }
 
 fn today(s: &Status) -> i64 {
-    let offset = s.prefs.notice.map_or(0, |n| i64::from(n.utc_offset_min)) * 60_000;
-    (super::now_ms() as i64 + offset).div_euclid(86_400_000)
+    (super::now_ms() as i64 + offset_ms(s)).div_euclid(86_400_000)
 }
 
 /// The sheet; mounted once in the shell. Opens by itself once after an

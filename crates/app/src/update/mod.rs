@@ -383,8 +383,17 @@ pub struct Status {
     /// The feed build whose content bundle is in use, when newer than this
     /// build (a content-only update), else 0.
     pub content_build: u64,
-    /// A newer content bundle is downloaded; it is used from the next launch.
-    pub content_waiting: bool,
+    /// When that bundle arrived (ms since the epoch), if known.
+    pub content_since_ms: Option<u64>,
+    /// The feed build of a newer content bundle that is downloaded and used
+    /// from the next launch.
+    pub content_waiting: Option<u64>,
+    /// What the last check found for lessons and look.
+    pub content_check: Option<content::Refresh>,
+    /// How many offline audio packs the last check by hand refreshed.
+    pub packs_refreshed: usize,
+    /// A check by hand is running (the feed, then the audio packs).
+    pub checking_all: bool,
     /// Every build's changes seen so far, newest first (changelog.rs).
     pub history: Vec<BuildChanges>,
 }
@@ -600,7 +609,9 @@ impl Updater {
             None
         });
         let mut prefs = prefs;
-        let content_build = dir.parent().and_then(|d| content::in_use(d, &info)).map_or(0, |c| c.build);
+        let in_use = dir.parent().and_then(|d| content::in_use(d, &info));
+        let content_build = in_use.as_ref().map_or(0, |c| c.build);
+        let content_since_ms = in_use.and_then(|c| c.fetched_ms);
         let this = format!("{}+{}", info.version, info.build.max(content_build));
         if off.is_none() && prefs.last_run.as_deref() != Some(this.as_str()) {
             // Updated (not a first install): say what's new once.
@@ -631,7 +642,11 @@ impl Updater {
             version: info.version.to_string(),
             build: info.build,
             content_build,
-            content_waiting: false,
+            content_since_ms,
+            content_waiting: None,
+            content_check: None,
+            packs_refreshed: 0,
+            checking_all: false,
             history,
         };
         let (tx, _) = watch::channel(status);
@@ -686,7 +701,7 @@ impl Updater {
     /// offline packs, then announce what it found.
     fn tick(&'static self) {
         if self.step(CHECK_EVERY, crate::platform::metered_network()) {
-            crate::packs::update_installed();
+            crate::packs::update_installed(false);
         }
         self.send_notice(None, crate::platform::update_notice::post);
     }
@@ -769,6 +784,30 @@ impl Updater {
         self.check_with(download, true);
     }
 
+    /// "Check for updates" by hand: the app, lessons and look, and the
+    /// offline audio packs already on this device, in one go.
+    pub fn check_everything(&'static self) {
+        let mut started = false;
+        self.tx.send_if_modified(|s| {
+            started = !s.checking_all;
+            if started {
+                s.checking_all = true;
+                s.packs_refreshed = 0;
+            }
+            started
+        });
+        if !started {
+            return;
+        }
+        self.check(false);
+        let reached = !matches!(self.status().phase, Phase::Failed { offer: None, .. });
+        let n = if self.status().off.is_none() && reached { crate::packs::update_installed(true) } else { 0 };
+        self.tx.send_modify(|s| {
+            s.packs_refreshed = n;
+            s.checking_all = false;
+        });
+    }
+
     /// [`Self::check`]; with `content`, a newer content bundle is fetched too.
     fn check_with(&'static self, download: bool, content: bool) {
         let Ok(_job) = self.job.try_lock() else { return };
@@ -827,11 +866,14 @@ impl Updater {
             other => update_failure(other),
         })?;
         self.remember_history(&m.history);
-        if content
-            && let Some(data) = self.dir.parent()
-            && content::refresh(data, &self.installed(), &self.info, &m, &self.feed_url())
-        {
-            self.tx.send_modify(|s| s.content_waiting = true);
+        if content && let Some(data) = self.dir.parent() {
+            let found = content::refresh(data, &self.installed(), &self.info, &m, &self.feed_url());
+            self.tx.send_modify(|s| {
+                s.content_check = Some(found);
+                if let content::Refresh::Taken(build) = found {
+                    s.content_waiting = Some(build);
+                }
+            });
         }
         let platform = self.platform.ok_or(Failure::Verify("no platform".into()))?;
         match decide(&self.installed(), &m, platform).map_err(update_failure)? {
@@ -1339,7 +1381,11 @@ mod tests {
             version: "1.0.0-alpha.1".into(),
             build: 0,
             content_build: 0,
-            content_waiting: false,
+            content_since_ms: None,
+            content_waiting: None,
+            content_check: None,
+            packs_refreshed: 0,
+            checking_all: false,
             history: Vec::new(),
         }
     }
@@ -1588,15 +1634,24 @@ mod tests {
         let url = serve(feed.path().to_path_buf());
 
         let (u, data) = updater(&url, "1.0.0-alpha.1");
-        u.check(false);
+        // "Check for updates" by hand: the feed, the content, then the packs.
+        u.check_everything();
         assert_eq!(u.status().phase, Phase::UpToDate, "the same build: nothing to install");
-        assert!(u.status().content_waiting);
+        assert_eq!(u.status().content_waiting, Some(m.build));
+        assert_eq!(u.status().content_check, Some(content::Refresh::Taken(m.build)));
+        assert!(!u.status().checking_all, "the check by hand is over");
+        assert_eq!(u.status().packs_refreshed, 0, "no audio packs on this device");
         let (entries, look) = content::load(data.path(), &u.info).unwrap();
         assert_eq!((entries.len(), look), (1, true), "the look fits the build it was made with");
         // Taken once; a newer app drops it.
         let again = updater_in(data.path(), &url, "1.0.0-alpha.1");
         again.check(false);
-        assert!(!again.status().content_waiting);
+        assert_eq!(again.status().content_waiting, None);
+        assert_eq!(
+            again.status().content_check,
+            Some(content::Refresh::Current),
+            "nothing newer than what's in use"
+        );
         let newer = BuildInfo { version: Version::parse("1.0.0-alpha.2").unwrap(), ..u.info.clone() };
         assert!(content::load(data.path(), &newer).is_none());
         assert!(content::load(data.path(), &u.info).is_none(), "and it is gone");

@@ -4,7 +4,7 @@
 //! Every verified feed's history is merged into `<data>/updates/history.json`,
 //! so the sheet can list what an offer brings before it's installed, what
 //! the build just installed brought (once, at the first launch after an
-//! update), and the whole history in Settings › About › Updates, offline.
+//! update), and the whole history in Settings › Updates, offline.
 //!
 //! The layout follows Morphe Manager's update dialog (ideas only, no code):
 //! a summary of the jump, then a timeline of builds with one card per kind.

@@ -39,6 +39,20 @@ pub(super) struct BundleInfo {
     pub sha256: String,
     /// The app build its stylesheets fit.
     pub ui_build: u64,
+    /// When it arrived on this device (ms since the epoch).
+    #[serde(default)]
+    pub fetched_ms: Option<u64>,
+}
+
+/// What a check did about the content bundle.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Refresh {
+    /// Nothing newer than what's here (in use or waiting).
+    Current,
+    /// This feed build's bundle is downloaded; it's used from the next launch.
+    Taken(u64),
+    /// A newer one exists but didn't come through; the next check tries again.
+    Failed,
 }
 
 impl BundleInfo {
@@ -87,14 +101,20 @@ pub(super) fn load(data: &Path, info: &BuildInfo) -> Option<(Entries, bool)> {
 /// Downloads the feed's bundle when it is newer than the one in use, checks
 /// it, and keeps it for the next launch. True when one was taken. Failures
 /// are only reported: the content in use keeps working.
-pub(super) fn refresh(data: &Path, me: &Installed, info: &BuildInfo, m: &UpdateManifest, base: &str) -> bool {
+pub(super) fn refresh(
+    data: &Path,
+    me: &Installed,
+    info: &BuildInfo,
+    m: &UpdateManifest,
+    base: &str,
+) -> Refresh {
     let current = in_use(data, info).and_then(|i| i.order());
     let file = match content_update(me, m, current) {
         Ok(Some(f)) => f.clone(),
-        Ok(None) => return false,
+        Ok(None) => return Refresh::Current,
         Err(e) => {
             crate::diag::report!("content bundle: {e}");
-            return false;
+            return Refresh::Failed;
         }
     };
     let result = (|| -> Result<(), String> {
@@ -131,15 +151,16 @@ pub(super) fn refresh(data: &Path, me: &Installed, info: &BuildInfo, m: &UpdateM
             build: m.build,
             sha256: file.sha256.clone(),
             ui_build: file.ui_build,
+            fetched_ms: Some(super::now_ms()),
         };
         let json = serde_json::to_vec_pretty(&info).map_err(|e| e.to_string())?;
         fs::write(dir.join(INFO), json).map_err(|e| e.to_string())
     })();
     match result {
-        Ok(()) => true,
+        Ok(()) => Refresh::Taken(m.build),
         Err(e) => {
             crate::diag::report!("content bundle {} not taken: {e}", file.file);
-            false
+            Refresh::Failed
         }
     }
 }

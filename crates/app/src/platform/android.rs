@@ -209,7 +209,7 @@ pub fn save_state() -> Result<super::SaveState, String> {
     })
 }
 
-/// What `UpdateInstaller` is doing (Settings › About › Updates).
+/// What `UpdateInstaller` is doing (Settings › Updates).
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum InstallState {
     Idle,
