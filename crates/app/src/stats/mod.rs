@@ -11,15 +11,17 @@ pub mod text;
 mod demo;
 
 use dioxus::prelude::*;
+use kabar_core::coach::report::MIN_SKILL_ATTEMPTS;
 use kabar_core::journey::{Curriculum, Progress};
 use kabar_core::locale::{Direction, UiLanguage};
 use kabar_core::review::Deck;
 use kabar_core::stats::level_check::{self as lc, check_due};
+use kabar_core::stats::overview::{self, Overview, Period, WeakSpot};
 use kabar_core::stats::{
     self as core_stats, DayTotal, FORECAST_DAYS, HEATMAP_WEEKS, KNOWN_STABILITY_DAYS, MATURE_INTERVAL_DAYS,
-    Retention, WordCounts,
+    Retention, Tally, WordCounts,
 };
-use kabar_protocol::coach::LocalDate;
+use kabar_protocol::coach::{LocalDate, Skill};
 use kabar_protocol::level_check::{LEVEL_CHECK_KIND, LEVEL_CHECK_LESSON_ID, LevelCheckResult};
 use kabar_protocol::srs::{ReviewEvent, StudyLanguage};
 use kabar_protocol::test::TestFinished;
@@ -294,17 +296,35 @@ fn CardHead(title: &'static str, to: Screen) -> Element {
 
 // ------------------------------------------------------------- the screen
 
+/// One period's headline numbers (the top of the screen).
+#[derive(Clone, PartialEq)]
+struct PeriodNumbers {
+    overview: Overview,
+    /// True retention of every learned-card review in the period.
+    retention: Tally,
+    weak: Vec<WeakSpot>,
+    /// Whether any skill had enough answers to judge.
+    measured: bool,
+}
+
 #[derive(Clone, PartialEq)]
 struct Numbers {
     today: LocalDate,
+    periods: Vec<(Period, PeriodNumbers)>,
     heat: core_stats::Heatmap,
-    time: core_stats::TimeStudied,
+    total_minutes: u32,
     words: Vec<WordCounts>,
     week: Retention,
     month: Retention,
     forecast: Vec<u32>,
     checks: Vec<LevelCheckResult>,
     due: bool,
+}
+
+impl Numbers {
+    fn period(&self, p: Period) -> &PeriodNumbers {
+        &self.periods.iter().find(|(q, _)| *q == p).unwrap_or(&self.periods[0]).1
+    }
 }
 
 fn numbers(db: &Db, coach: &Coach) -> Numbers {
@@ -314,17 +334,35 @@ fn numbers(db: &Db, coach: &Coach) -> Numbers {
     let events = coach.events.read();
     let totals = core_stats::day_totals(&events, &log, coach.offset());
     let sched = crate::schedule::scheduler(coach, &db.0.borrow());
-    // One pass over the log for both windows and every card's state (#116).
-    let (states, windows) = core_stats::replay_with_retention(&sched, &log, now, &[7, 30]);
+    // One pass over the log for every window and every card's state (#116):
+    // the detail table's 7 and 30 days, then each period's own span.
+    let mut spans = vec![7, 30];
+    spans.extend(Period::ALL.iter().map(|p| p.days() as u64));
+    let (states, windows) = core_stats::replay_with_retention(&sched, &log, now, &spans);
     let (week, month) = (windows[0], windows[1]);
+    let periods = Period::ALL
+        .iter()
+        .zip(&windows[2..])
+        .map(|(&p, r)| {
+            let skills = lc::recent_skills(&events, today, p.days());
+            let numbers = PeriodNumbers {
+                overview: overview::overview(&totals, today, p),
+                retention: r.all(),
+                weak: overview::weak_spots(&skills),
+                measured: skills.iter().any(|&(_, total)| total >= MIN_SKILL_ATTEMPTS),
+            };
+            (p, numbers)
+        })
+        .collect();
     let deck = Deck::with_states(cards, log, states);
     let words = core_stats::word_counts(deck.cards(), |id| deck.state(id));
     let forecast = deck.forecast(&sched, now, FORECAST_DAYS);
     let due = check_is_due(&totals, &checks, today);
     Numbers {
         today,
+        periods,
         heat: core_stats::heatmap(&totals, today, HEATMAP_WEEKS),
-        time: core_stats::time_studied(&totals, today),
+        total_minutes: totals.values().map(|t| t.minutes).sum(),
         words,
         week,
         month,
@@ -333,6 +371,9 @@ fn numbers(db: &Db, coach: &Coach) -> Numbers {
         due,
     }
 }
+
+/// The period the learner last picked on this device.
+const PERIOD_KEY: &str = "stats_period";
 
 #[component]
 pub fn StatsScreen() -> Element {
@@ -345,6 +386,17 @@ pub fn StatsScreen() -> Element {
     let n = use_memo(move || {
         let _ = (ui.settings.read().desired_retention, ui.settings.read().fsrs.clone());
         numbers(&db, &coach)
+    });
+    let db_period = use_context::<Db>();
+    let period = use_signal(move || {
+        db_period
+            .0
+            .borrow()
+            .local_value(PERIOD_KEY)
+            .ok()
+            .flatten()
+            .and_then(|v| Period::from_id(&v))
+            .unwrap_or_default()
     });
     let n = n.read();
     rsx! {
@@ -360,15 +412,241 @@ pub fn StatsScreen() -> Element {
                     onclick: move |_| back(ui),
                     span { aria_hidden: "true", {back_arrow(lang)} }
                 }
-                h2 { "{st(lang, S::Title)}" }
+                div {
+                    h2 { "{st(lang, S::Title)}" }
+                    p { class: "muted st-lede", "{st(lang, S::Lede)}" }
+                }
             }
+            PeriodSwitch { period }
+            PeriodView { p: n.period(period()).clone(), today: n.today, total_minutes: n.total_minutes }
+            h3 { class: "st-section", "{st(lang, S::MoreDetail)}" }
             div { class: "st-grid",
                 HeatCard { heat: n.heat.clone(), today: n.today }
-                TimeCard { time: n.time }
                 WordsCard { words: n.words.clone() }
                 RetentionCard { week: n.week, month: n.month }
                 ForecastCard { days: n.forecast.clone(), today: n.today }
                 CheckCard { checks: n.checks.clone(), due: n.due, today: n.today }
+            }
+        }
+    }
+}
+
+fn period_name(ui: &Ui, p: Period) -> String {
+    let (s, n) = match p {
+        Period::Week => (S::PeriodWeek, p.days() as u32),
+        Period::Month => (S::PeriodMonth, (p.days() / 7) as u32),
+    };
+    fill(st(ui.lang(), s), &[("n", &ui.num(n))])
+}
+
+/// Week / four weeks. Changes every number above the detail cards, and is
+/// remembered on this device.
+#[component]
+fn PeriodSwitch(period: Signal<Period>) -> Element {
+    let ui = use_context::<Ui>();
+    let db = use_context::<Db>();
+    rsx! {
+        div { class: "st-period", role: "group", aria_label: st(ui.lang(), S::PeriodGroup),
+            for p in Period::ALL {
+                button {
+                    key: "{p.id()}",
+                    aria_pressed: if period() == p { "true" } else { "false" },
+                    onclick: {
+                        let db = db.clone();
+                        move |_| {
+                        period.set(p);
+                        if let Err(e) = db.0.borrow_mut().set_local_value(PERIOD_KEY, p.id()) {
+                            crate::diag::report!("saving the stats period failed: {e}");
+                        }
+                    }},
+                    "{period_name(&ui, p)}"
+                }
+            }
+        }
+    }
+}
+
+/// Where a skill is practised, and the button that says so.
+fn skill_action(skill: Skill) -> (Screen, S) {
+    match skill {
+        Skill::Reading => (Screen::Reader, S::WeakReading),
+        Skill::Listening => (Screen::Listen, S::WeakListening),
+        Skill::Vocabulary => (Screen::Review, S::WeakVocabulary),
+        Skill::Writing | Skill::Speaking => (Screen::Play, S::WeakPlay),
+    }
+}
+
+#[component]
+fn PeriodView(p: PeriodNumbers, today: LocalDate, total_minutes: u32) -> Element {
+    let ui = use_context::<Ui>();
+    let mut screen = ui.screen;
+    let lang = ui.lang();
+    let o = &p.overview;
+    rsx! {
+        div { class: "st-top",
+            RingCard { tally: p.retention }
+            ActivityCard { overview: o.clone(), today, total_minutes }
+            div { class: "stats-row st-tiles",
+                button { class: "stat tap", onclick: move |_| screen.set(Screen::Journal),
+                    span { class: "stat-value", bdi { "{ui.num(o.active_days)}" } }
+                    span { class: "stat-label", "{st(lang, S::TileDays)}" }
+                }
+                button { class: "stat tap", onclick: move |_| screen.set(Screen::Journal),
+                    span { class: "stat-value", "{duration(&ui, o.minutes)}" }
+                    span { class: "stat-label", "{st(lang, S::TimeTitle)}" }
+                }
+                button { class: "stat tap", onclick: move |_| screen.set(Screen::Review),
+                    span { class: "stat-value", bdi { "{ui.num(o.reviews)}" } }
+                    span { class: "stat-label", "{st(lang, S::TileReviews)}" }
+                }
+            }
+            WeakCard { weak: p.weak.clone(), measured: p.measured }
+        }
+    }
+}
+
+/// True retention for the period as a ring, what it means, and one action.
+/// The whole card opens Review; its button's click bubbles up to it.
+#[component]
+fn RingCard(tally: Tally) -> Element {
+    let ui = use_context::<Ui>();
+    let mut screen = ui.screen;
+    let lang = ui.lang();
+    let share = tally.share();
+    let (line, action) = match share {
+        None => (st(lang, S::RingEmpty).to_string(), S::RingStart),
+        Some(s) => (
+            fill(
+                st(lang, S::RingExplain),
+                &[("total", &ui.num(tally.total)), ("passed", &ui.num(tally.passed))],
+            ),
+            if s >= 0.85 { S::RingStart } else { S::RingReview },
+        ),
+    };
+    let verdict = share.map(|s| st(lang, if s >= 0.85 { S::RingGood } else { S::RingLow }));
+    let value = share.map_or("–".to_string(), |s| pct(&ui, s));
+    let svg = charts::ring(share.unwrap_or(0.0), rtl(&ui), &format!("{}: {value}", st(lang, S::RingTitle)));
+    rsx! {
+        section { class: "card card-action st-card st-ring-card", onclick: move |_| screen.set(Screen::Review),
+            div { class: "st-ring", aria_hidden: "true",
+                div { class: "st-ring-svg", dangerous_inner_html: svg }
+                span { class: "st-ring-value", bdi { "{value}" } }
+            }
+            div { class: "st-ring-text",
+                h3 { "{st(lang, S::RingTitle)}" }
+                p { class: "muted", "{line}" }
+                if let Some(v) = verdict {
+                    p { class: "st-verdict", "{v}" }
+                }
+                button { class: "st-ring-go", "{st(lang, action)}" }
+            }
+        }
+    }
+}
+
+/// Minutes per bar (a day, or a week on the four-week view), today's bar
+/// in the strong colour, and how the period compares with the one before.
+#[component]
+fn ActivityCard(overview: Overview, today: LocalDate, total_minutes: u32) -> Element {
+    let ui = use_context::<Ui>();
+    let lang = ui.lang();
+    let o = overview;
+    let peak = o.buckets.iter().map(|b| b.minutes).max().unwrap_or(0).max(1);
+    let label = |b: &overview::Bucket| -> String {
+        if b.days == 1 {
+            if b.start == today {
+                st(lang, S::Today).to_string()
+            } else {
+                ui.t(labels::weekday(b.start.weekday())).to_string()
+            }
+        } else {
+            fill(st(lang, S::WeekOf), &[("date", &labels::date(&ui, b.start, today))])
+        }
+    };
+    let title = st(lang, if o.period == Period::Week { S::ActivityWeek } else { S::ActivityMonth });
+    let diff = o.minutes.abs_diff(o.previous_minutes);
+    let compare = if o.minutes == 0 {
+        st(lang, S::ActivityEmpty).to_string()
+    } else if o.minutes > o.previous_minutes {
+        fill(st(lang, S::ActivityUp), &[("n", &duration(&ui, diff))])
+    } else if o.minutes < o.previous_minutes {
+        fill(st(lang, S::ActivityDown), &[("n", &duration(&ui, diff))])
+    } else {
+        st(lang, S::ActivitySame).to_string()
+    };
+    let bars: Vec<(String, String, f32, bool)> = o
+        .buckets
+        .iter()
+        .map(|b| {
+            let name = label(b);
+            let tip = fill(
+                st(lang, S::ActivityBar),
+                &[
+                    ("label", &name),
+                    ("minutes", &labels::minutes(&ui, b.minutes)),
+                    ("reviews", &ui.num(b.reviews)),
+                ],
+            );
+            let h = if b.minutes == 0 { 0.0 } else { (b.minutes as f32 / peak as f32 * 100.0).max(4.0) };
+            let last = b.start.add_days(b.days - 1) == today;
+            (name, tip, h, last)
+        })
+        .collect();
+    let summary = bars.iter().map(|b| b.1.as_str()).collect::<Vec<_>>().join(" · ");
+    let n_bars = bars.len();
+    rsx! {
+        section { class: "card st-card st-activity",
+            CardHead { title, to: Screen::Journal }
+            div { class: "st-bars", role: "img", aria_label: "{summary}", "data-n": "{n_bars}",
+                for (i, (name, tip, h, now)) in bars.into_iter().enumerate() {
+                    div { key: "{i}", class: if now { "st-bar-col now" } else { "st-bar-col" }, title: "{tip}",
+                        div { class: "st-bar-track",
+                            span { class: "st-bar", style: "block-size: {h}%" }
+                        }
+                        span { class: "st-bar-label", "{name}" }
+                    }
+                }
+            }
+            p { class: "st-summary", "{compare}" }
+            p { class: "muted small", "{st(lang, S::AllTime)}: " bdi { "{duration(&ui, total_minutes)}" } }
+        }
+    }
+}
+
+/// Skills under the bar in the period, each with the place to practise it.
+#[component]
+fn WeakCard(weak: Vec<WeakSpot>, measured: bool) -> Element {
+    let ui = use_context::<Ui>();
+    let mut screen = ui.screen;
+    let lang = ui.lang();
+    rsx! {
+        section { class: "card st-card st-weak",
+            h3 { "{st(lang, S::WeakTitle)}" }
+            if weak.is_empty() {
+                p { class: "muted",
+                    if measured {
+                        "{st(lang, S::WeakNone)}"
+                    } else {
+                        {fill(st(lang, S::WeakNoData), &[("n", &ui.num(MIN_SKILL_ATTEMPTS))])}
+                    }
+                }
+                button { class: "st-weak-journey", onclick: move |_| screen.set(Screen::Journey), "{st(lang, S::WeakJourney)}" }
+            }
+            for w in weak {
+                {
+                    let (to, action) = skill_action(w.skill);
+                    let line = fill(st(lang, S::WeakLine), &[("correct", &ui.num(w.correct)), ("total", &ui.num(w.total))]);
+                    rsx! {
+                        button { key: "{w.skill:?}", class: "tap tap-link st-weak-row", onclick: move |_| screen.set(to),
+                            span { class: "st-weak-text",
+                                strong { "{ui.t(labels::skill(w.skill))}" }
+                                span { class: "muted small", bdi { "{line}" } " · " bdi { "{pct(&ui, w.share())}" } }
+                            }
+                            span { class: "st-weak-go", "{st(lang, action)}" }
+                            span { class: "chev", aria_hidden: "true" }
+                        }
+                    }
+                }
             }
         }
     }
@@ -417,40 +695,6 @@ fn HeatCard(heat: core_stats::Heatmap, today: LocalDate) -> Element {
                 span { "{st(lang, S::HeatMore)}" }
             }
             p { class: "st-summary", "{summary}" }
-        }
-    }
-}
-
-#[component]
-fn TimeCard(time: core_stats::TimeStudied) -> Element {
-    let ui = use_context::<Ui>();
-    let mut screen = ui.screen;
-    let lang = ui.lang();
-    let span = |s: core_stats::TimeSpan| {
-        (duration(&ui, s.minutes), fill(st(lang, S::StudyDays), &[("n", &ui.num(s.days))]))
-    };
-    let (wm, wd) = span(time.week);
-    let (mm, md) = span(time.month);
-    rsx! {
-        section { class: "card st-card",
-            CardHead { title: st(lang, S::TimeTitle), to: Screen::Journal }
-            // Each span opens the journal, day by day.
-            div { class: "stats-row",
-                button { class: "stat tap", onclick: move |_| screen.set(Screen::Journal),
-                    span { class: "stat-value", "{wm}" }
-                    span { class: "stat-label", {fill(st(lang, S::Week), &[("n", &ui.num(7u32))])} }
-                    span { class: "stat-label", "{wd}" }
-                }
-                button { class: "stat tap", onclick: move |_| screen.set(Screen::Journal),
-                    span { class: "stat-value", "{mm}" }
-                    span { class: "stat-label", {fill(st(lang, S::Month), &[("n", &ui.num(30u32))])} }
-                    span { class: "stat-label", "{md}" }
-                }
-                button { class: "stat tap", onclick: move |_| screen.set(Screen::Journal),
-                    span { class: "stat-value", "{duration(&ui, time.total_minutes)}" }
-                    span { class: "stat-label", "{st(lang, S::AllTime)}" }
-                }
-            }
         }
     }
 }

@@ -488,3 +488,47 @@ fn the_css_check_reads_link_looks() {
     want.push(("mark".into(), vec!["hit".into()]));
     assert_eq!(linkish_classes(css), want);
 }
+
+/// Components that put an opening control in the card that holds them
+/// (a title that opens where its numbers come from).
+const OPENING_COMPONENTS: &[&str] = &["CardHead {"];
+
+/// Redesigned screens (2026-10-29) where every card must open something:
+/// no card is only a picture of numbers. Each card's block holds an
+/// `onclick` (its own or a button's) or an opening component.
+const EVERY_CARD_OPENS: &[&str] = &["stats/mod.rs"];
+
+/// Lines of cards in `src` that open nothing.
+fn cards_that_open_nothing(src: &str) -> Vec<usize> {
+    let lines: Vec<&str> = src.lines().collect();
+    elements(src)
+        .into_iter()
+        .filter(|f| f.classes.iter().any(|c| c == "card"))
+        .filter(|f| {
+            let raw = lines[f.line - 1..f.end.min(lines.len())].join("\n");
+            !raw.contains("onclick") && !OPENING_COMPONENTS.iter().any(|c| raw.contains(c))
+        })
+        .map(|f| f.line)
+        .collect()
+}
+
+#[test]
+fn redesigned_cards_all_open_something() {
+    let src = Path::new(env!("CARGO_MANIFEST_DIR")).join("src");
+    let dead: Vec<String> = EVERY_CARD_OPENS
+        .iter()
+        .flat_map(|file| {
+            let text = std::fs::read_to_string(src.join(file)).unwrap();
+            cards_that_open_nothing(&text).into_iter().map(move |line| format!("{file}:{line}"))
+        })
+        .collect();
+    assert!(dead.is_empty(), "cards that open nothing:\n{}", dead.join("\n"));
+}
+
+#[test]
+fn the_open_check_sees_a_picture_card() {
+    let picture = "section { class: \"card st-card\",\n    h3 { \"Title\" }\n    p { \"42\" }\n}\n";
+    assert_eq!(cards_that_open_nothing(picture), vec![1]);
+    let opens = "section { class: \"card st-card\",\n    CardHead { title: t, to: Screen::Review }\n    p { \"42\" }\n}\n";
+    assert!(cards_that_open_nothing(opens).is_empty());
+}
