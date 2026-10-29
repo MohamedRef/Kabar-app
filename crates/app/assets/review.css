@@ -440,3 +440,8 @@ button.rev-stat { border-color: transparent; }
 }
 /* Phones too: a steady card height keeps the footer in one place. */
 .app[data-width="compact"] .rev-card { min-block-size: 14rem; }
+/* The classic session's ratings use the shared .rating buttons
+   (components.css); the one the typed answer suggests gets a ring. */
+button.rating.suggested { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px currentColor; }
+button.rating.hard { color: var(--gold); }
+.session-bar .progress-line { flex: 1; }

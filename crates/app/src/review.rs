@@ -1178,13 +1178,13 @@ fn Classic() -> Element {
                     strong { "{ui.t(Msg::RevHowWell)}" }
                     span { class: "muted small", " {ui.t(Msg::RevRateHint)}" }
                 }
-                div { class: "rate-row", role: "group", aria_labelledby: "rev-ask",
+                div { class: "rate-row rating-row", role: "group", aria_labelledby: "rev-ask",
                     for (i, p) in previews.iter().enumerate() {
                         {
                             let r = p.rating;
                             let span = span_short(&ui, Span::from_days(p.interval_days));
                             let hint = if suggested == Some(r) { " suggested" } else { "" };
-                            let class = format!("rate {}{hint}", rate_class(r));
+                            let class = format!("rating {}{hint}", rate_class(r));
                             rsx! {
                                 button {
                                     key: "{i}",
@@ -1192,7 +1192,7 @@ fn Classic() -> Element {
                                     "aria-keyshortcuts": "{i + 1}",
                                     onclick: move |_| rate.call(r),
                                     span { class: "rate-label", "{ui.t(rating_msg(r))}" }
-                                    span { class: "rate-span", "{span}" }
+                                    small { class: "rate-span", "{span}" }
                                 }
                             }
                         }
@@ -1340,13 +1340,15 @@ fn SessionBar(left: usize) -> Element {
     rsx! {
         div { class: "session-bar",
             div {
-                class: "progress",
+                class: "progress progress-line",
                 role: "progressbar",
                 aria_valuemin: "0",
                 aria_valuemax: "{total}",
                 aria_valuenow: "{done}",
-                span { class: "progress-fill", style: "inline-size: {done * 100 / total.max(1)}%" }
+                span { class: "progress-fill fill", style: "inline-size: {done * 100 / total.max(1)}%" }
             }
+            // The card in hand out of the session, read left to right.
+            span { class: "muted small ltr-count", dir: "ltr", "{ui.num((done + 1) as u64)} / {ui.num(total as u64)}" }
             span { class: "muted small", {ui.t(Msg::RevLeft).replace("{n}", &ui.num((left + 1) as u64))} }
         }
     }
