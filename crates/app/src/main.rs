@@ -310,7 +310,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     // (previews and screenshots on the Mac).
     let open_lesson = use_hook(|| std::env::var("KABAR_OPEN_LESSON").ok());
     // KABAR_OPEN_SCREEN=stats | level_check | journey | reader | review | play | listen | chat
-    // | coach | journal opens those screens the same way (previews and screenshots).
+    // | coach | journal | studio opens those screens the same way (previews and screenshots).
     let open_screen = use_hook(|| match std::env::var("KABAR_OPEN_SCREEN").as_deref() {
         Ok("stats") => Some(Screen::Stats),
         Ok("level_check") => Some(Screen::LevelCheck),
@@ -322,6 +322,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         Ok("chat") => Some(Screen::Chat),
         Ok("coach") => Some(Screen::Coach),
         Ok("journal") => Some(Screen::Journal),
+        Ok("studio") => Some(Screen::Studio),
         _ => None,
     });
     let ui = use_context_provider(|| Ui {

@@ -1,0 +1,80 @@
+/* Play, 2026-10-29 redesign: the hub's game rows, round headers with a
+   counter bar, answer tiles with explicit states and an end-of-round card
+   with somewhere to go next. The rules each game draws on stay in
+   main.css; this sheet restyles them inside `.play` with the foundation's
+   semantic tokens (docs/DESIGN.md). Glossy stays solid on true black. */
+.play {
+  --pl-primary: var(--primary);
+  --pl-on-primary: var(--on-primary);
+  --pl-soft: var(--soft);
+  --pl-good: var(--good);
+  --pl-good-bg: var(--good-bg);
+  --pl-bad: var(--bad);
+  --pl-bad-bg: var(--bad-bg);
+  display: flex; flex-direction: column; gap: var(--sp-3, 0.75rem);
+}
+.play > * { flex-shrink: 0; margin-block-end: 0; }
+
+/* Hub */
+.play-intro { display: grid; gap: var(--sp-1, 0.25rem); }
+.play-intro h2 { margin: 0; font-size: var(--fs-xl, 1.4rem); font-weight: 600; }
+.play-intro p { margin: 0; line-height: var(--lh-arabic, 1.8); }
+.app[data-width="compact"] .play-intro h2 { display: none; }
+.play .play-grid { gap: var(--sp-2, 0.5rem); margin-block-end: 0; }
+.play button.game-card {
+  align-items: center; gap: var(--sp-3, 0.75rem); padding: var(--sp-4, 1rem);
+  border: 1px solid var(--line-soft, var(--line)); border-radius: 1.1rem; box-shadow: none;
+}
+.play .game-card .game-text { flex: 1; }
+.play .game-icon {
+  display: grid; place-items: center; inline-size: 2.6rem; block-size: 2.6rem; padding: 0;
+  border-radius: 0.8rem; background: var(--pl-soft); color: var(--pl-primary);
+}
+.play .game-card.gold .game-icon { background: var(--gold-soft); color: var(--gold); }
+.play .game-card.dawn .game-icon { background: var(--dawn-soft); color: var(--text); }
+
+/* Round header: back, title, then the round's counter and bar. */
+.play .play-header { margin-block-end: 0; }
+.play .play-header .back { display: inline-flex; align-items: center; gap: var(--sp-2, 0.5rem); border-color: transparent; color: var(--pl-primary); font-weight: 600; padding-inline: var(--sp-2, 0.5rem); }
+.play .back-chev { border-color: currentColor; opacity: 1; transform: rotate(-135deg); }
+[dir="rtl"] .play .back-chev { transform: rotate(135deg); }
+.play-count { display: grid; gap: var(--sp-1, 0.25rem); margin-block-end: var(--sp-2, 0.5rem); }
+.pairs-meta .play-count { flex: 1 1 8rem; margin: 0; }
+
+/* Rounds */
+.play .round { border-radius: 1.1rem; }
+.play .choices { gap: var(--sp-2, 0.6rem); }
+.play button.choice {
+  min-block-size: 4.2rem; border: 1.5px solid var(--line); border-radius: 0.9rem;
+  background: var(--surface); color: var(--text); font-weight: 600;
+}
+@media (hover: hover) and (pointer: fine) {
+  .play button.choice:where(:not(:disabled):hover) { border-color: var(--pl-primary); background: var(--pl-soft); }
+}
+/* Answered: right and missed say so in shape as well as colour. */
+.play button.choice.right { background: var(--pl-good-bg); border-color: var(--pl-good); color: var(--text); }
+.play button.choice.missed { background: var(--pl-bad-bg); border-color: var(--pl-bad); border-style: dashed; }
+.play button.choice.right::before { content: "✓"; font-weight: 700; color: var(--pl-good); }
+.play button.choice.missed::before { content: "✗"; font-weight: 700; color: var(--pl-bad); }
+.play button.choice.faded { opacity: 0.5; }
+.play.bridge-game button.choice.right { background: var(--gold-soft); border-color: var(--gold); }
+.play.bridge-game button.choice.right::before { color: var(--gold); }
+.play .feedback { border-radius: 0.9rem; }
+.play .feedback.right { background: var(--pl-good-bg); }
+.play.bridge-game .feedback.right { background: var(--gold-soft); }
+.play .feedback.kind { background: var(--surface-2); border-inline-start-color: var(--pl-bad); }
+
+/* End of a round */
+.play .summary-card { text-align: center; display: grid; justify-items: center; gap: var(--sp-2, 0.5rem); }
+.play .summary-card .score { font-size: 2.4rem; }
+.play-next { justify-content: center; }
+.app[data-width="compact"] .play-next { display: grid; inline-size: 100%; }
+
+/* Glossy · Material You: tonal tiles, a top-edge highlight, pill actions. */
+.app[data-appearance="glossy"]:not([data-theme="black"]) .play :is(button.game-card, .round, .summary-card) {
+  border-radius: 1.4rem;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--surface) 60%, transparent), var(--shadow);
+}
+.app[data-appearance="glossy"]:not([data-theme="black"]) .play button.choice { border-radius: 1.1rem; }
+.app[data-appearance="glossy"]:not([data-theme="black"]) .play .game-icon { box-shadow: inset 0 1px 0 color-mix(in srgb, var(--surface) 55%, transparent); }
+.app[data-appearance="glossy"]:not([data-theme="black"]) .play :is(button.primary, .play-next button) { border-radius: 999px; }
