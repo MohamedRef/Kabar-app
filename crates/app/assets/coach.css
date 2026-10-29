@@ -3,7 +3,7 @@
    main.css (.plan-item, .nur, .rewards-bar…) are the base these refine. */
 
 /* ---------- Today ---------- */
-.today-main { display: grid; gap: var(--sp-4); min-inline-size: 0; }
+.today-main { display: grid; gap: var(--sp-4); min-inline-size: 0; align-content: start; grid-auto-rows: max-content; }
 .today-main > * { margin-block: 0; flex-shrink: 0; }
 
 /* "How long today?" and the real plan sizes as chips. */

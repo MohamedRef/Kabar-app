@@ -30,6 +30,9 @@ pub enum T {
     Reminders,
     RemindersOn,
     RemindersOff,
+    /// Onboarding's fast start, once language and starting point are picked.
+    StartNow,
+    StartNowHint,
 }
 
 pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
@@ -87,6 +90,12 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (RemindersOff, ArEg) => "مقفول. تقدر تشغّله لو حابب",
         (RemindersOff, Ar) => "متوقف. يمكنك تفعيله متى شئت",
         (RemindersOff, En) => "Off. Turn it on whenever you like",
+        (StartNow, ArEg) => "ابدأ دلوقتي، والباقي بعدين",
+        (StartNow, Ar) => "ابدأ الآن، والباقي لاحقًا",
+        (StartNow, En) => "Start now, the rest later",
+        (StartNowHint, ArEg) => "الهدف والمواعيد والتذكير تقدر تظبطهم بعدين من صفحة Kak Nur. التذكير هيفضل مقفول لحد ما تشغّله.",
+        (StartNowHint, Ar) => "الهدف والمواعيد والتذكير يمكنك ضبطها لاحقًا من صفحة Kak Nur. سيبقى التذكير متوقفًا حتى تفعّله.",
+        (StartNowHint, En) => "Set a goal, study times and reminders later on Kak Nur's page. Reminders stay off until you turn them on.",
     }
 }
 

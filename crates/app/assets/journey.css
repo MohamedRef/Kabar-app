@@ -255,3 +255,55 @@ button.level-title .chev { margin-inline-start: auto; align-self: center; }
 button.stop-head { font-size: inherit; font-weight: inherit; inline-size: auto; }
 .souvenirs > li { display: grid; }
 button.souvenir { display: block; inline-size: 100%; text-align: start; }
+
+/* ---------- Where you are (2026-10-29 redesign) ----------
+   The current unit as one tinted card that opens the next lesson, and the
+   nearest milestone as a row under it. */
+.journey-now { display: grid; gap: var(--sp-2); margin-block: var(--sp-3); max-inline-size: 46rem; }
+.app:not([data-width="compact"]) .journey-now { margin-inline: auto; inline-size: 100%; }
+button.now-card {
+  display: grid;
+  gap: var(--sp-1);
+  justify-items: start;
+  padding: var(--sp-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--sawah) 35%, var(--line));
+  background: color-mix(in srgb, var(--sawah) 10%, var(--surface));
+}
+.now-eyebrow { font-size: var(--fs-sm); color: var(--muted); display: inline-flex; align-items: center; gap: var(--sp-1); }
+.now-city { font-family: var(--font-latin); font-size: var(--fs-2xl); font-weight: 700; line-height: var(--lh-tight); }
+.now-unit { font-weight: 600; }
+.now-lesson { font-size: var(--fs-sm); }
+.now-goal { font-size: var(--fs-sm); }
+.now-progress { display: flex; align-items: center; gap: var(--sp-2); inline-size: 100%; margin-block-start: var(--sp-2); }
+.now-progress .bar { flex: 1; display: block; block-size: 0.4rem; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.now-progress .fill { display: block; block-size: 100%; background: var(--sawah); border-radius: inherit; }
+.now-progress .count { font-size: var(--fs-sm); color: var(--muted); white-space: nowrap; }
+button.now-milestone {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+.now-milestone-icon { flex: none; display: grid; place-items: center; inline-size: 2.25rem; block-size: 2.25rem; border-radius: 50%; background: var(--gold-soft); color: var(--gold); }
+.now-milestone .tap-link-text { display: grid; }
+/* A lesson's state, in words: Done, Continue, Upcoming. */
+.lesson[data-state="open"] .lesson-state { color: var(--muted); }
+/* Wider windows: one short strip above the map, the milestone beside it,
+   so the map keeps its room. */
+.app:not([data-width="compact"]) .journey-now { display: flex; align-items: stretch; max-inline-size: none; margin-block: 0 var(--sp-3); }
+.app:not([data-width="compact"]) button.now-card {
+  flex: 1;
+  min-inline-size: 0;
+  grid-template-columns: auto minmax(0, 1fr) minmax(8rem, 14rem);
+  column-gap: var(--sp-4);
+  align-items: center;
+  padding: var(--sp-3) var(--sp-4);
+}
+.app:not([data-width="compact"]) .now-eyebrow { grid-column: 1 / -1; }
+.app:not([data-width="compact"]) .now-city { grid-row: 2 / span 3; font-size: var(--fs-xl); }
+.app:not([data-width="compact"]) .now-progress { grid-column: 3; grid-row: 2 / span 3; margin: 0; flex-direction: column; align-items: stretch; }
+.app:not([data-width="compact"]) button.now-milestone { flex: 0 1 16rem; inline-size: auto; }

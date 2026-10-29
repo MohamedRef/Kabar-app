@@ -26,6 +26,9 @@ const TAPPABLE: &[&str] = &[
     "seed-word",
     "tap",
     "tap-head",
+    "nur-card",
+    "now-card",
+    "now-milestone",
 ];
 
 /// Elements that can be pressed. A `li.lx-card.locked` is a broken episode
