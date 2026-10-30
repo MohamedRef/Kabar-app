@@ -163,9 +163,11 @@ pub fn st(lang: UiLanguage, msg: S) -> &'static str {
         (KnownRule, En) => {
             "“Known” means you'd very likely still recall it three weeks after your last review. “Learning” means you've reviewed it and it's settling in."
         }
-        (NoWords, ArEg) => "لسه مفيش كلمات هنا. أول ما تراجع شوية كلمات هتلاقيها بتتجمّع.",
-        (NoWords, Ar) => "لا كلمات هنا بعد. ما إن تراجع بعض الكلمات حتى تبدأ بالظهور.",
-        (NoWords, En) => "No words here yet. Review a few and you'll see them gather.",
+        (NoWords, ArEg) => "لسه مفيش كلمات هنا. الكلمات بتيجي من الدروس والقارئ، وبعد أول درس هتلاقيها هنا.",
+        (NoWords, Ar) => "لا كلمات هنا بعد. تأتي الكلمات من الدروس والقارئ، وبعد أول درس ستجدها هنا.",
+        (NoWords, En) => {
+            "No words here yet. They come from lessons and the Reader; after your first lesson you'll find them here."
+        }
         (LangId, ArEg | Ar) => "الإندونيسية",
         (LangId, En) => "Indonesian",
         (LangJv, ArEg | Ar) => "الجاوية",
