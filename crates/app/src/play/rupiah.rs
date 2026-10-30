@@ -111,7 +111,7 @@ pub fn RupiahReader() -> Element {
         let current = *level.read();
         return rsx! {
             PlayHeader { title: Msg::RupiahTitle }
-            div { class: "card",
+            crate::ui::DivCard {
                 p { class: "muted", "{ui.t(Msg::RupiahIntro)}" }
                 p { class: "price-example", lang: "id",
                     bdi { class: "latin price", "Rp26.000.000" }
@@ -192,7 +192,7 @@ pub fn RupiahReader() -> Element {
 
     rsx! {
         PlayHeader { title: Msg::RupiahTitle }
-        div { class: "card round",
+        crate::ui::DivCard { class: "round",
             super::RoundCount { at: s.index as u64 + 1, total: total as u64 }
             p { class: "price big latin", lang: "id", dir: "ltr", bdi { "{drill.shown}" } }
             form {
