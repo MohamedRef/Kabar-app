@@ -74,4 +74,19 @@ mod tests {
         dom.rebuild_in_place();
         let _ = dom.render_immediate_to_vec();
     }
+
+    #[test]
+    fn shared_surface_styles_cover_widths_themes_text_and_reduced_motion() {
+        let base = include_str!("../assets/main.css");
+        let components = include_str!("../assets/components.css");
+        assert!(base.contains("data-width=\\\"compact\\\""));
+        assert!(base.contains("data-width=\\\"medium\\\""));
+        assert!(base.contains("data-width=\\\"expanded\\\""));
+        assert!(base.contains("--card-pad"));
+        assert!(base.contains("--radius-card"));
+        assert!(base.contains("prefers-reduced-motion"));
+        assert!(components.contains("data-appearance=\\\"glossy\\\""));
+        assert!(components.contains("data-theme=\\\"black\\\""));
+        assert!(components.contains("prefers-reduced-transparency"));
+    }
 }
