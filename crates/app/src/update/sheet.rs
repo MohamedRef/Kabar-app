@@ -77,6 +77,13 @@ const EARLIER_STEP: usize = 4;
 /// Builds the changelog lists before "Earlier builds".
 const HISTORY_FIRST: usize = 1;
 
+/// The full history labels every release after the newest as "Earlier".
+/// An update offer instead leaves the installed build above that separator.
+fn earlier_divider(shown: &[(bool, BuildChanges)], mode: SheetMode, installed_key: &str) -> Option<usize> {
+    shown.iter().position(|(earlier, b)| *earlier && (mode == SheetMode::History || b.key() != installed_key))
+}
+
+
 fn kind_label(k: ChangeKind) -> U {
     match k {
         ChangeKind::New => U::KindNew,
@@ -416,10 +423,10 @@ pub fn UpdateSheet() -> Element {
         .map(|b| (false, b))
         .chain(earlier.iter().take(show_earlier).cloned().map(|b| (true, b)))
         .collect();
-    // As in Morphe, the installed build closes the main list and "Earlier
-    // builds" starts after it.
+    // History separates the newest from every older build; an update offer
+    // keeps the installed build beside the offered ones before the divider.
     let this_key = format!("{}+{}", s.version, s.shown_build());
-    let first_earlier = shown.iter().position(|(e, b)| *e && b.key() != this_key);
+    let first_earlier = earlier_divider(&shown, m, &this_key);
     let more_earlier = earlier.len() > show_earlier;
     let empty = shown.is_empty();
     let fallback_notes = offer
@@ -436,7 +443,9 @@ pub fn UpdateSheet() -> Element {
             div { class: "us-head",
                 span { class: "us-logo", {app_mark()} }
                 div { class: "us-head-text",
-                    h2 { id: "us-title", "Kabar" }
+                    h2 { id: "us-title", "Kabar"
+                        span { class: "us-sr-only", " · {title}" }
+                    }
                     p {
                         bdi { dir: "ltr", class: "latin",
                             "v{offer.as_ref().filter(|_| m == SheetMode::Offer).map_or(this_label.clone(), |o| o.label())}"
@@ -633,5 +642,35 @@ pub fn UpdateSheet() -> Element {
                 }
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{BuildChanges, SheetMode, earlier_divider};
+
+    fn release(build: u64) -> BuildChanges {
+        BuildChanges {
+            version: "1.0.0".to_owned(),
+            build,
+            published_at: "2026-10-30T00:00:00Z".to_owned(),
+            changes: Vec::new(),
+            content_only: false,
+        }
+    }
+
+    #[test]
+    fn history_labels_the_first_older_release_even_when_it_is_installed() {
+        let shown = vec![(false, release(3)), (true, release(2)), (true, release(1))];
+        assert_eq!(earlier_divider(&shown, SheetMode::History, "1.0.0+2"), Some(1));
+        assert_eq!(earlier_divider(&shown, SheetMode::History, "1.0.0+3"), Some(1));
+    }
+
+    #[test]
+    fn offer_places_installed_build_before_earlier_history() {
+        let shown = vec![(false, release(3)), (true, release(2)), (true, release(1))];
+        assert_eq!(earlier_divider(&shown, SheetMode::Offer, "1.0.0+2"), Some(2));
+        assert_eq!(earlier_divider(&shown, SheetMode::Offer, "1.0.0+3"), Some(1));
+        assert_eq!(earlier_divider(&shown[..1], SheetMode::Offer, "1.0.0+2"), None);
     }
 }
