@@ -129,7 +129,7 @@ pub fn AccountScreen() -> Element {
     });
 
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { bdi { lang: "en", class: "latin", "Kabar Cloud" } }
             if !status.configured {
                 p { class: "muted", "{ui.t(Msg::CloudNotConfigured)}" }
@@ -199,7 +199,7 @@ fn DevicesCard() -> Element {
     let now = now_ms();
 
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             div { class: "row spread",
                 h2 { "{ui.t(Msg::DevicesTitle)}" }
                 button { onclick: move |_| cloud.send(Command::LoadDevices), "{ui.t(Msg::DevicesRefresh)}" }
@@ -299,7 +299,7 @@ fn TrySyncCard() -> Element {
     };
 
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { "{ui.t(Msg::TrySyncTitle)}" }
             p { class: "muted", "{ui.t(Msg::TrySyncBody)}" }
             form {

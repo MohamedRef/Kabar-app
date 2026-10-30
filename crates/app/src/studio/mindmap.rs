@@ -86,7 +86,7 @@ pub fn MindMapScreen() -> Element {
     rsx! {
         div { class: "mindmap",
             // On wide windows this column sits beside the map.
-            section { class: "card map-side",
+            crate::ui::Card { class: "map-side",
                 h2 { "{tr(l, T::MindMap)}" }
                 p { class: "muted", "{tr(l, T::MapIntro)}" }
                 form { class: "map-form", onsubmit: make,

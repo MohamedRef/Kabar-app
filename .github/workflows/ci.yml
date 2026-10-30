@@ -44,6 +44,8 @@ jobs:
           node-version: 22
       - name: Android Back navigation controller regression tests
         run: node --test crates/app/tests/system-back.test.cjs
+      - name: Production Android Back and Settings keyboard regression tests
+        run: node --test crates/app/tests/ui-runtime.test.mjs
       - name: Content checks (lessons, tests, glosses, offline pack manifests)
         run: cargo run -p kabar-tools -- validate
       # Advisory only: parallel PRs would race each other on these numbers.

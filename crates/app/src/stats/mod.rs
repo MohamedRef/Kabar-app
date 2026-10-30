@@ -596,7 +596,7 @@ fn ActivityCard(overview: Overview, today: LocalDate, total_minutes: u32) -> Ele
     let summary = bars.iter().map(|b| b.1.as_str()).collect::<Vec<_>>().join(" · ");
     let n_bars = bars.len();
     rsx! {
-        section { class: "card st-card st-activity",
+        crate::ui::Card { class: "st-card st-activity",
             CardHead { title, to: Screen::Journal }
             div { class: "st-bars", role: "img", aria_label: "{summary}", "data-n": "{n_bars}",
                 for (i, (name, tip, h, now)) in bars.into_iter().enumerate() {
@@ -640,7 +640,7 @@ fn WeakCard(weak: Vec<WeakSpot>, measured: bool) -> Element {
                     button { class: "tonal", "{st(lang, S::WeakJourney)}" }
                 }
             } else {
-                div { class: "card grouped",
+                crate::ui::DivCard { class: "grouped",
                     for w in weak {
                         {
                             let (to, action) = skill_action(w.skill);
@@ -703,7 +703,7 @@ fn HeatCard(heat: core_stats::Heatmap, today: LocalDate) -> Element {
         |m| labels::month_short(&ui, m.ymd().1).to_string(),
     );
     rsx! {
-        section { class: "card st-card st-wide",
+        crate::ui::Card { class: "st-card st-wide",
             CardHead { title: st(lang, S::HeatTitle), to: Screen::Journal }
             div { class: "st-chart st-heat", dangerous_inner_html: svg }
             div { class: "st-legend", aria_hidden: "true",
@@ -729,7 +729,7 @@ fn WordsCard(words: Vec<WordCounts>) -> Element {
     let lang = ui.lang();
     let _ = KNOWN_STABILITY_DAYS; // the rule the note below explains
     rsx! {
-        section { class: "card st-card",
+        crate::ui::Card { class: "st-card",
             CardHead { title: st(lang, S::WordsTitle), to: Screen::Review }
             if words.is_empty() {
                 p { class: "muted", "{st(lang, S::NoWords)}" }
@@ -791,7 +791,7 @@ fn RetentionCard(week: Retention, month: Retention) -> Element {
         &[("days", &ui.num(MATURE_INTERVAL_DAYS as u32)), ("pct", &pct(&ui, 0.9))],
     );
     rsx! {
-        section { class: "card st-card",
+        crate::ui::Card { class: "st-card",
             CardHead { title: st(lang, S::RetentionTitle), to: Screen::Review }
             table { class: "st-table",
                 thead {
@@ -847,7 +847,7 @@ fn ForecastCard(days: Vec<u32>, today: LocalDate) -> Element {
         fill(st(lang, S::ForecastBar), &[("day", &day_name(i)), ("n", &ui.num(n))])
     });
     rsx! {
-        section { class: "card st-card st-wide",
+        crate::ui::Card { class: "st-card st-wide",
             CardHead { title: st(lang, S::ForecastTitle), to: Screen::Review }
             div { class: "st-chart st-forecast", dangerous_inner_html: svg }
             div { class: "st-axis", aria_hidden: "true",
@@ -867,7 +867,7 @@ fn CheckCard(checks: Vec<LevelCheckResult>, due: bool, today: LocalDate) -> Elem
     let last = checks.last().cloned();
     let before = checks.len().checked_sub(2).and_then(|i| checks.get(i)).map(|c| c.radar.clone());
     rsx! {
-        section { class: "card st-card st-wide",
+        crate::ui::Card { class: "st-card st-wide",
             h3 { "{st(lang, S::CheckTitle)}" }
             match &last {
                 None => rsx! { p { class: "muted", "{st(lang, S::CheckNever)}" } },

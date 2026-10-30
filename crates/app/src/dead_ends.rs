@@ -77,7 +77,43 @@ fn elements(src: &str) -> Vec<Found> {
     const KEY: &str = "class: ";
     let mut found = Vec::new();
     let lines: Vec<&str> = src.lines().collect();
+    // A shared card's `class:` prop on its own line belongs to that card.
+    let mut prop_line = None;
     for (line_no, line) in lines.iter().enumerate() {
+        if prop_line == Some(line_no) {
+            continue;
+        }
+        // Shared Card/DivCard add the "card" class inside the component,
+        // not at the call site. Continue auditing them as real native
+        // section/div cards; otherwise the UX scanner silently misses
+        // newly migrated surfaces (including calls with no class prop).
+        let shared = match line.trim_start() {
+            s if s.starts_with("crate::ui::Card {") => Some("section"),
+            s if s.starts_with("crate::ui::DivCard {") => Some("div"),
+            _ => None,
+        };
+        if let Some(element) = shared {
+            let mut classes = vec!["card".to_owned()];
+            // Class may be on the next line, which must not hide a
+            // clickable-looking surface from the dead-end audit.
+            let value = line.split_once("class: ").map(|(_, value)| value).or_else(|| {
+                let next = lines.get(line_no + 1)?.trim_start().strip_prefix("class: ")?;
+                prop_line = Some(line_no + 1);
+                Some(next)
+            });
+            if let Some(value) = value {
+                for lit in literals(value) {
+                    expand(src, &lit, &mut classes, 0);
+                }
+            }
+            found.push(Found {
+                element: element.to_owned(),
+                classes,
+                line: line_no + 1,
+                end: block_end(&lines, line_no) + 1,
+            });
+            continue;
+        }
         let mut rest: &str = line;
         while let Some(at) = rest.find(KEY) {
             let before = strip_strings(&rest[..at]);
@@ -604,4 +640,31 @@ fn the_bridge_rows_are_coll_items() {
     let src = std::fs::read_to_string(Path::new(env!("CARGO_MANIFEST_DIR")).join("src/play/bridge_deck.rs"))
         .unwrap();
     assert!(src.contains("summary { class: \"coll-btn\""));
+}
+
+#[test]
+fn shared_card_class_on_next_line_is_audited() {
+    let source = "crate::ui::DivCard {\n    class: \"tap extra\",\n    button { \"Open\" }\n}";
+    let cards = elements(source);
+    assert_eq!(cards.len(), 1);
+    assert_eq!(cards[0].element, "div");
+    assert_eq!(cards[0].classes, ["card", "tap", "extra"]);
+}
+
+#[test]
+fn shared_card_components_remain_visible_to_dead_end_checks() {
+    let source = r#"
+        crate::ui::Card {
+            h2 { "Static card" }
+        }
+        crate::ui::DivCard { class: "flat extra",
+            button { onclick: move |_| open(), "Open" }
+        }
+    "#;
+    let cards = elements(source);
+    assert_eq!(cards.len(), 2);
+    assert_eq!(cards[0].element, "section");
+    assert_eq!(cards[0].classes, ["card"]);
+    assert_eq!(cards[1].element, "div");
+    assert_eq!(cards[1].classes, ["card", "flat", "extra"]);
 }

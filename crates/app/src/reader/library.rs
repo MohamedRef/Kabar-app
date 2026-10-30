@@ -245,7 +245,7 @@ fn BridgeEntry() -> Element {
     let lang = ui.lang();
     let count = play::content::bridge().as_ref().ok().map(kabar_core::games::bridge::known_count);
     rsx! {
-        div { class: "card grouped bridge-entry",
+        crate::ui::DivCard { class: "grouped bridge-entry",
             button {
                 class: "activity-row",
                 onclick: move |_| play::open(ui, nav, Route::Deck),
@@ -379,7 +379,7 @@ fn WordList(words: Vec<SavedWord>, taught: usize, q: String) -> Element {
         .collect();
     rsx! {
         if taught > 0 {
-            div { class: "card grouped lib-taught",
+            crate::ui::DivCard { class: "grouped lib-taught",
             button {
                 class: "activity-row",
                 onclick: move |_| {

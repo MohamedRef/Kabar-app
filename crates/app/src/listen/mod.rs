@@ -343,7 +343,7 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
 
     rsx! {
         {list}
-        section { class: "card lx-space",
+        crate::ui::Card { class: "lx-space",
             if usage.files == 0 {
                 p { class: "muted", "{tt(lang, T::NoDownloads)}" }
             } else {

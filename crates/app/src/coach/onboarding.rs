@@ -97,7 +97,7 @@ pub fn Onboarding() -> Element {
     rsx! {
         style { {super::today::COACH_CSS.text()} }
         div { class: "onboarding",
-            div { class: "card",
+            crate::ui::DivCard {
                 ol { class: "dots", aria_label: "{ui.t(Msg::OnbProgress)}",
                     for (i , s) in Step::ALL.iter().enumerate() {
                         li {

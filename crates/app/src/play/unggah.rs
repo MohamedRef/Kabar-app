@@ -159,7 +159,7 @@ fn Picker(session: Signal<Option<Session>>, data_reviewed: bool) -> Element {
     let open: Vec<String> = data.open_at(level.as_deref()).iter().map(|s| s.id.clone()).collect();
 
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             p { class: "muted", "{ui.t(Msg::UnggahIntro)}" }
         }
         if data.scenarios.is_empty() {
@@ -256,7 +256,7 @@ fn SceneView(session: Signal<Option<Session>>) -> Element {
     let total = sc.turns.len();
 
     let partner_card = rsx! {
-        div { class: "card uu-partner",
+        crate::ui::DivCard { class: "uu-partner",
             div { class: "row",
                 strong { class: "uu-partner-name", bdi { class: "latin", lang: "jv", "{sc.partner.name}" } }
                 span { class: "muted small", "{meaning(ui.lang(), &sc.partner.role)}" }
@@ -273,7 +273,7 @@ fn SceneView(session: Signal<Option<Session>>) -> Element {
         let (fitting, turns) = result.map_or((0, total as u32), |r| (r.fitting, r.turns));
         return rsx! {
             {partner_card}
-            div { class: "card summary-card uu-end reveal",
+            crate::ui::DivCard { class: "summary-card uu-end reveal",
                 Meter { value: meter.0, delta: None }
                 p { class: "score",
                     strong { "{ui.num(fitting)}" }
@@ -307,7 +307,7 @@ fn SceneView(session: Signal<Option<Session>>) -> Element {
                 {partner_card}
                 div { class: "card", Meter { value: meter.0, delta } }
             }
-            div { class: "card round uu-turn",
+            crate::ui::DivCard { class: "round uu-turn",
                 super::RoundCount { at: s.turn_no as u64, total: total as u64, label: Msg::UnggahTurn }
                 p { "{meaning(ui.lang(), &s.turn.situation)}" }
                 if let Some(said) = &s.turn.partner_says {

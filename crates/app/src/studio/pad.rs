@@ -206,7 +206,7 @@ pub fn DictationScreen() -> Element {
     });
     let say = move || crate::reader::speak(&word(), "id-ID");
     rsx! {
-        div { class: "card dictation",
+        crate::ui::DivCard { class: "dictation",
             p { class: "muted", "{tr(l, T::DictationIntro)}" }
             div { class: "row",
                 button { class: "primary", onclick: move |_| say(), "🔊 {tr(l, T::PlayAgain)}" }

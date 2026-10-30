@@ -993,7 +993,7 @@ fn ReadView(open: Open) -> Element {
 
     rsx! {
         div { class: if panel_open { "read-layout with-panel" } else { "read-layout" },
-            div { class: "card read-card",
+            crate::ui::DivCard { class: "read-card",
                 if let Some(src) = &open.text.source {
                     p { class: "muted small",
                         "{ui.t(Msg::SharedFrom)} "

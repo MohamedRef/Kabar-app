@@ -126,7 +126,7 @@ pub fn PagiPlayer() -> Element {
     rsx! {
         PlayHeader { title: Msg::PagiTitle, latin: true }
         div { class: "pagi-layout",
-            div { class: "card",
+            crate::ui::DivCard {
                 h2 { class: "story-title", lang: "id", bdi { "{story.title}" } }
                 // Who's in today's story, by the names the sentences use.
                 ul { class: "pagi-cast",
@@ -195,7 +195,7 @@ pub fn PagiPlayer() -> Element {
                     p { class: "muted small audio-note", "{ui.t(Msg::AudioMissing)}" }
                 }
             }
-            div { class: "card",
+            crate::ui::DivCard {
                 ol { class: "sentences",
                     for (i , s) in story.sentences.iter().take(visible).enumerate() {
                         li {
@@ -239,7 +239,7 @@ pub fn PagiPlayer() -> Element {
                     button { onclick: move |_| shown += 1, "{ui.t(Msg::Next)}" }
                 }
             }
-            div { class: "card",
+            crate::ui::DivCard {
                 if read {
                     p { class: "ok", "✓ {ui.t(Msg::PagiReadToday)}" }
                 } else {

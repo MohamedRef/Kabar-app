@@ -567,7 +567,7 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     });
 
     rsx! {
-        div { class: "card recap",
+        crate::ui::DivCard { class: "recap",
             h2 { "{ui.t(Msg::RecapTitle)}" }
             Nur { mood: Mood::Laughing, text: headline }
             div { class: "stats-row",

@@ -357,7 +357,7 @@ fn PageView(doc: InkDocument, focus: Option<[f32; 4]>) -> Element {
             InkCanvas { handle: handle.clone(), doc: doc.id.clone(), pen, focus, class: "ink-page",
                 ItemsLayer { items: items(), on_remove: remove_item }
             }
-            div { class: "card lines",
+            crate::ui::DivCard { class: "lines",
                 div { class: "row",
                     h3 { "{tr(l, T::Lines)}" }
                     button { class: "quiet", disabled: reading() || groups.is_empty(), onclick: read_all,

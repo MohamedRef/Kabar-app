@@ -186,7 +186,7 @@ pub fn GambarScreen() -> Element {
 
     rsx! {
         div { class: "gambar",
-            div { class: "card gambar-head",
+            crate::ui::DivCard { class: "gambar-head",
                 match phase() {
                     Phase::Ready => rsx! {
                         h2 { "Gambar!" }

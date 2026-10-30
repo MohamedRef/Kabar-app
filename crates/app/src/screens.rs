@@ -13,7 +13,7 @@ pub fn Welcome() -> Element {
 
     rsx! {
         div { class: "welcome",
-            div { class: "card",
+            crate::ui::DivCard {
                 // Dawn over the terraces (prompt 7); the greeting sits in its empty sky.
                 div { class: "hero",
                     crate::misc_art::Picture { art: crate::misc_art::Art::HeroLandscape, class: "wide" }
@@ -49,7 +49,7 @@ pub fn Welcome() -> Element {
 pub fn ComingSoon(title: Msg, milestone: &'static str) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { "{ui.t(title)}" }
             p { class: "muted",
                 "{ui.t(Msg::ComingIn)} "

@@ -27,7 +27,7 @@ pub fn CoachSettings() -> Element {
     };
 
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { bdi { class: "latin", "Kak Nur" } }
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::DailySize)}" }
