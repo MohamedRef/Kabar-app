@@ -247,9 +247,12 @@ fn remind_default(choice: Option<bool>, phone: bool) -> bool {
 }
 
 fn save(db: &Db, key: &str, value: &str) {
-    if let Err(e) = db.0.borrow_mut().set_local_value(key, value) {
-        crate::diag::report!("saving {key} failed: {e}");
-    }
+    let db = db.clone();
+    let key = key.to_owned();
+    let value = value.to_owned();
+    crate::persistence::save(format!("local.{key}"), move || {
+        db.0.borrow_mut().set_local_value(&key, &value).map_err(|e| e.to_string())
+    });
 }
 
 #[cfg(test)]

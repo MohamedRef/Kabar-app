@@ -259,7 +259,7 @@ pub fn PaidConfirm(engine: EngineId, onanswer: EventHandler<bool>) -> Element {
             h3 { id: "cost-confirm-title", "{ui.t(Msg::CostConfirmTitle)}" }
             p { "{ui.t(Msg::CostConfirmBody)}" }
             div { class: "row",
-                button { class: "primary", autofocus: true, onclick: move |_| onanswer.call(false), "{ui.t(Msg::CostConfirmNo)}" }
+                button { class: "primary", autofocus: true, "data-back": "true", onclick: move |_| onanswer.call(false), "{ui.t(Msg::CostConfirmNo)}" }
                 button { onclick: move |_| onanswer.call(true), "{ui.t(Msg::CostConfirmYes)}" }
             }
         }

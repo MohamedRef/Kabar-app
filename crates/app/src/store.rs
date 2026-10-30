@@ -348,6 +348,11 @@ impl Store {
         self.conn.execute_batch("PRAGMA query_only = ON").unwrap();
     }
 
+    #[cfg(test)]
+    pub fn allow_writes(&self) {
+        self.conn.execute_batch("PRAGMA query_only = OFF").unwrap();
+    }
+
     fn init(mut conn: Connection, marker: Option<&Path>) -> Result<Self> {
         conn.pragma_update(None, "journal_mode", "WAL")?;
         conn.pragma_update(None, "foreign_keys", "ON")?;
