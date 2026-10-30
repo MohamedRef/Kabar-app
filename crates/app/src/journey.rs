@@ -357,7 +357,7 @@ fn continue_bar(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
     let ui = *ui;
     let Some(id) = progress.current() else {
         return rsx! {
-            p { class: "all-done card", crate::review::Isolated { text: ui.t(Msg::JourneyAllDone).to_string() } }
+            crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "all-done", crate::review::Isolated { text: ui.t(Msg::JourneyAllDone).to_string() } }
         };
     };
     let title = j.curriculum().lessons().find(|l| l.id == id).map(|l| l.title.clone()).unwrap_or_default();
@@ -1030,8 +1030,8 @@ fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> 
                 // A souvenir opens the lesson that gave it.
                 for (s, tl) in cards {
                     li { key: "{s.unit_id}", id: "souvenir-{s.unit_id}",
-                    button {
-                        class: if focus.as_deref() == Some(s.unit_id.as_str()) { "souvenir card tap found" } else { "souvenir card tap" },
+                    crate::ui::CardButton {
+                        class: if focus.as_deref() == Some(s.unit_id.as_str()) { "souvenir tap found" } else { "souvenir tap" },
                         onclick: {
                             let lesson = souvenir_lesson(&s.unit_id);
                             move |_| if let Some(id) = &lesson { ui.open_lesson(id.clone()) }

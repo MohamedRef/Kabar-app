@@ -126,7 +126,7 @@ pub fn JournalScreen() -> Element {
                 }
             }
             if nothing && filter() != JournalFilter::All {
-                p { class: "card muted", "{ui.t(Msg::JournalNothingHere)}" }
+                crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "muted", "{ui.t(Msg::JournalNothingHere)}" }
             }
             for day in days.iter().take(shown()) {
                 Day {
@@ -166,7 +166,7 @@ fn Day(
         (minutes, xp)
     });
     rsx! {
-        section { class: "card journal-day", aria_label: "{labels::day_heading(&ui, date, today)}",
+        crate::ui::Card { class: "journal-day", aria_label: "{labels::day_heading(&ui, date, today)}",
             header { class: "journal-day-head",
                 h3 { "{labels::day_heading(&ui, date, today)}" }
                 if let Some((minutes, xp)) = summary {

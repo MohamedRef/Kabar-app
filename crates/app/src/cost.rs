@@ -58,7 +58,7 @@ pub fn CostScreen() -> Element {
         match (connected, usage) {
             (true, Some(Ok(_))) => rsx! {},
             (true, None) => rsx! {
-                div { class: "card", p { class: "muted", aria_live: "polite", "{ui.t(Msg::CostLoading)}" } }
+                crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { class: "muted", aria_live: "polite", "{ui.t(Msg::CostLoading)}" } }
             },
             (true, Some(Err(p))) => rsx! {
                 crate::ui::DivCard {
@@ -68,8 +68,8 @@ pub fn CostScreen() -> Element {
             },
             (false, _) => rsx! {
                 // Signed out: the whole card opens sign-in (the button's click bubbles up).
-                div {
-                    class: if status.configured { "card card-action" } else { "card" },
+                crate::ui::Card { element: crate::ui::CardElement::Div,
+                    class: if status.configured { "card-action" } else { "" },
                     onclick: move |_| {
                         if configured {
                             let mut s = ui.screen;
@@ -114,7 +114,7 @@ fn Allowances(report: UsageReport) -> Element {
 
     rsx! {
         if !warnings.is_empty() {
-            div { class: "card cost-warnings", role: "status",
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "cost-warnings", role: "status",
                 for w in warnings {
                     p { key: "{w}", class: "notice", "{w}" }
                 }

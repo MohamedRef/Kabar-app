@@ -176,7 +176,7 @@ pub fn TextGrammar() -> Element {
     }
     let ahead = found.iter().filter(|f| f.standing == Standing::Ahead).count();
     rsx! {
-        details { class: "card text-grammar",
+        crate::ui::Card { element: crate::ui::CardElement::Disclosure, class: "text-grammar",
             summary {
                 "{ui.t(Msg::GrammarInText)} "
                 span { class: "chip", "{found.len()}" }

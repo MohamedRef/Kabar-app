@@ -87,7 +87,7 @@ pub fn PenLab() -> Element {
                     }
                 }
             }
-            div { class: "card stats", dir: "ltr", lang: "en",
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "stats", dir: "ltr", lang: "en",
                 dl {
                     dt { "Device" }
                     dd { {report.device_model.clone().unwrap_or_else(|| "?".into())} }

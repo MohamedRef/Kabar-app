@@ -53,7 +53,7 @@ pub fn Alarm() -> Element {
         return rsx! {
             PlayHeader { title: Msg::AlarmTitle }
             // The whole card starts the game; the button's click bubbles up to it.
-            div { class: "card card-action alarm-intro",
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "card-action alarm-intro",
                 onclick: move |_| session.set(new_session()),
                 p { "{ui.t(Msg::AlarmIntro)}" }
                 p { class: "alarm-example",
@@ -69,7 +69,7 @@ pub fn Alarm() -> Element {
     if s.rounds.is_empty() {
         return rsx! {
             PlayHeader { title: Msg::AlarmTitle }
-            div { class: "card", p { "{ui.t(Msg::DetectiveNoRounds)}" } }
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(Msg::DetectiveNoRounds)}" } }
         };
     }
     if s.done {

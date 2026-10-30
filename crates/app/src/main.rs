@@ -206,7 +206,7 @@ fn App() -> Element {
             div { class: "app", dir: "ltr",
                 style { {MAIN_CSS.text()} }
                 div { class: "content",
-                    div { class: "card",
+                    crate::ui::Card { element: crate::ui::CardElement::Div, class: "",
                         h2 { "Kabar couldn't open its local database" }
                         p { class: "mono", "{e}" }
                     }
