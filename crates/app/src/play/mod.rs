@@ -213,7 +213,7 @@ pub fn PlayHeader(title: Msg, #[props(default)] latin: bool) -> Element {
 pub fn ContentProblem(detail: String) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             p { "{ui.t(Msg::PlayContentProblem)}" }
             details {
                 summary { class: "muted small", "{ui.t(Msg::PlayDetails)}" }
@@ -236,7 +236,7 @@ pub fn RoundSummary(correct: u32, total: u32, onagain: EventHandler<()>, childre
     };
     let PlayNav(nav) = use_context::<PlayNav>();
     rsx! {
-        div { class: "card summary-card reveal",
+        crate::ui::DivCard { class: "summary-card reveal",
             p { class: "score",
                 bdi { dir: "ltr",
                     strong { "{ui.num(correct)}" }
