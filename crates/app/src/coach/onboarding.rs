@@ -270,6 +270,9 @@ fn TargetStep(draft: Signal<CoachProfile>, touched: Signal<bool>, today: LocalDa
         if both {
             p { class: "note", "{ui.t(Msg::OnbBothOrder)}" }
         }
+        if target.is_some() {
+            p { class: "muted small", "{tt(ui.lang(), T::TargetEstimateHint)}" }
+        }
         match target.clone() {
             Some(t) => rsx! {
                 div { class: "row field",

@@ -33,6 +33,7 @@ pub enum T {
     /// Onboarding's fast start, once language and starting point are picked.
     StartNow,
     StartNowHint,
+    TargetEstimateHint,
 }
 
 pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
@@ -102,6 +103,9 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (StartNowHint, En) => {
             "Set a goal, study times and reminders later on Kak Nur's page. Reminders stay off until you turn them on."
         }
+        (TargetEstimateHint, ArEg) => "التاريخ ده تقدير على حسب وقتك اليومي، مش ميعاد مضمون. تقدر تعدّله أو تكمل من غير هدف.",
+        (TargetEstimateHint, Ar) => "هذا التاريخ تقدير مبني على وقتك اليومي، وليس موعدًا مضمونًا. يمكنك تعديله أو المتابعة دون هدف.",
+        (TargetEstimateHint, En) => "This date estimates progress from your daily study time, not a guaranteed deadline. You can change it or continue without a target.",
     }
 }
 
