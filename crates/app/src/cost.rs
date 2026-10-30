@@ -47,7 +47,7 @@ pub fn CostScreen() -> Element {
                 button { class: "tonal", onclick: move |_| cloud.send(crate::cloud::Command::LoadUsage), "{ui.t(Msg::DevicesRefresh)}" }
             }
         }
-        div { class: "card cost-head",
+        crate::ui::DivCard { class: "cost-head",
             p { class: "cost-total",
                 bdi { class: "cost-amount latin", dir: "ltr", "{logic::dollars(spend)}" }
                 " "
@@ -61,7 +61,7 @@ pub fn CostScreen() -> Element {
                 div { class: "card", p { class: "muted", aria_live: "polite", "{ui.t(Msg::CostLoading)}" } }
             },
             (true, Some(Err(p))) => rsx! {
-                div { class: "card",
+                crate::ui::DivCard {
                     p { class: "notice", role: "status", "{ui.t(problem_msg(p))}" }
                     p { class: "muted", "{ui.t(Msg::CostOffline)}" }
                 }
@@ -87,7 +87,7 @@ pub fn CostScreen() -> Element {
             Allowances { report: report.clone() }
             Platform { report }
         } else {
-            div { class: "card",
+            crate::ui::DivCard {
                 h2 { "{ui.t(Msg::CostPlatformTitle)}" }
                 p { class: "muted", "{ui.t(Msg::CostPlatformBody)}" }
             }
@@ -120,7 +120,7 @@ fn Allowances(report: UsageReport) -> Element {
                 }
             }
         }
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { "{ui.t(Msg::CostServicesTitle)}" }
             ul { class: "cost-list",
                 for u in rows {
@@ -181,7 +181,7 @@ fn Platform(report: UsageReport) -> Element {
     let ui = use_context::<Ui>();
     let (lang, eastern) = (ui.lang(), ui.eastern());
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { "{ui.t(Msg::CostPlatformTitle)}" }
             p { class: "muted", "{ui.t(Msg::CostPlatformBody)}" }
             ul { class: "cost-platform",
@@ -220,7 +220,7 @@ fn ClaudeCard() -> Element {
     let on = claude.as_ref().is_some_and(|c| c.enabled && c.configured);
 
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { "{ui.t(Msg::CostClaudeTitle)}" }
             if on {
                 p { "{ui.t(Msg::CostClaudeOnBody)}" }
