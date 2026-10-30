@@ -22,6 +22,7 @@ mod library;
 pub mod morph;
 mod reading;
 pub mod translate;
+pub mod wait_word;
 mod web;
 
 use std::collections::{HashMap, HashSet};
@@ -477,6 +478,7 @@ pub fn Reader() -> Element {
                 crate::ui::Card { element: crate::ui::CardElement::Div, class: "reader-busy", role: "status", aria_busy: "true",
                     p { strong { "{ui.t(m)}" } }
                     p { class: "muted small", "{ui.t(Msg::ReaderBusyHint)}" }
+                    wait_word::WaitWord {}
                 }
             }
 
