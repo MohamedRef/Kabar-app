@@ -428,7 +428,7 @@ fn WordList(words: Vec<SavedWord>, taught: usize, q: String) -> Element {
             }
         }
         if has_words && has_phrases {
-            div { class: "segmented lib-kind-filter", role: "group", aria_label: "{lt(lang, L::FilterSaved)}",
+            div { class: "segmented lib-kind-filter", role: "radiogroup", aria_label: "{lt(lang, L::FilterSaved)}",
                 for (kind, label) in [
                     (WordGroup::All, L::AllSaved),
                     (WordGroup::Words, L::Words),
@@ -436,7 +436,8 @@ fn WordList(words: Vec<SavedWord>, taught: usize, q: String) -> Element {
                 ] {
                     button {
                         key: "{kind:?}",
-                        aria_pressed: if active_group == kind { "true" } else { "false" },
+                        role: "radio",
+                        aria_checked: if active_group == kind { "true" } else { "false" },
                         onclick: move |_| group.set(kind),
                         "{lt(lang, label)}"
                     }
