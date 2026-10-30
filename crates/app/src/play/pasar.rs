@@ -61,7 +61,7 @@ pub fn Pasar() -> Element {
 
     rsx! {
         PlayHeader { title: Msg::PasarTitle, latin: true }
-        div { class: "card",
+        crate::ui::DivCard {
             p { class: "muted", "{ui.t(Msg::PasarIntro)}" }
         }
         if data.items.is_empty() {
@@ -153,7 +153,7 @@ fn Haggle(current: Signal<Option<Match>>) -> Element {
 
     rsx! {
         div { class: "pasar-layout",
-            div { class: "card pasar-head",
+            crate::ui::DivCard { class: "pasar-head",
                 p { class: "item-name", lang, bdi { class: "latin", "{item.name}" } }
                 p { class: "muted small", "{meaning(ui.lang(), &item.meaning)}" }
                 div { class: "row",
@@ -189,7 +189,7 @@ fn Haggle(current: Signal<Option<Match>>) -> Element {
                     },
                 }
             } else {
-                div { class: "card moves",
+                crate::ui::DivCard { class: "moves",
                     div { class: "move-grid",
                         for mv in [Move::AskPrice, Move::AskLower, Move::Accept, Move::Refuse] {
                             button {
@@ -288,7 +288,7 @@ fn ResultCard(result: PasarResult, onagain: EventHandler<()>) -> Element {
     };
     let stars = result.stars.min(3);
     rsx! {
-        div { class: "card summary-card reveal",
+        crate::ui::DivCard { class: "summary-card reveal",
             p { class: "stars", aria_label: "{ui.num(stars)} / {ui.num(3u8)}",
                 for i in 0..3u8 {
                     span { key: "{i}", class: if i < stars { "star on" } else { "star" }, aria_hidden: "true", "★" }
