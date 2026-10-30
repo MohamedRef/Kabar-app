@@ -11,7 +11,8 @@
 .app:not([data-width="compact"]) .us-sheet { inset: 0; margin: auto; inline-size: min(34rem, 92vw); block-size: min(46rem, 88dvh); border-radius: 1.5rem; border: 1px solid var(--line); box-shadow: 0 12px 40px rgb(0 0 0 / .3); overflow: hidden; }
 .us-sheet [data-kind="new"], .us-sheet .us-ver.to { --hue: var(--us-new); }
 .us-sheet [data-kind="improved"] { --hue: var(--us-improved); }
-.us-sheet [data-kind="fixed"], .us-badge[data-badge="latest"], .us-badge[data-badge="new"] { --hue: var(--us-fixed); }
+.us-sheet [data-kind="fixed"] { --hue: var(--us-fixed); }
+.us-badge[data-badge="latest"], .us-badge[data-badge="new"] { --hue: var(--us-new); }
 .us-badge[data-badge="installed"] { --hue: var(--us-installed); }
 .us-badge[data-badge="content"] { --hue: var(--us-new); }
 
