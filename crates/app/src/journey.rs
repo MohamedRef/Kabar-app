@@ -339,11 +339,23 @@ fn RouteList(j: Journey, picked: Signal<Option<Option<String>>>) -> Element {
     });
 
     let layout = LESSONS_VIEW.pick(&use_context::<crate::Db>()).layout;
+    // Mark the active stop's level, without changing curriculum order or
+    // locking any completed/unstarted lesson.
+    let active_level = progress.current().and_then(|id| {
+        cur.levels
+            .iter()
+            .find(|level| level.units.iter().any(|unit| unit.lessons.iter().any(|lesson| lesson.id == id)))
+            .map(|level| level.id.as_str())
+    });
     rsx! {
         div { class: "route-list",
             crate::views::ViewBar { of: LESSONS_VIEW }
             for level in cur.levels.iter() {
-                section { key: "{level.id}", id: "rl-{level.id}", class: "rl-level",
+                section {
+                    key: "{level.id}",
+                    id: "rl-{level.id}",
+                    class: "rl-level",
+                    "data-current": if active_level == Some(level.id.as_str()) { "true" } else { "false" },
                     {level_head(&ui, &j, level, &progress, &elsewhere)}
                     {unit_stops(&ui, &j, level, &progress, true, layout)}
                 }
