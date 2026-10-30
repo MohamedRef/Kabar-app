@@ -23,6 +23,15 @@ pub const RETENTION_WINDOW_DAYS: u64 = 30;
 /// A Burst lasts one minute.
 pub const BURST_MS: u64 = 60_000;
 
+/// Selects part of the existing review queue without inventing card states.
+/// Due cards and unseen cards use the same scheduling and daily limits as All.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum QueueScope {
+    All,
+    Due,
+    New,
+}
+
 /// The learner's cards with their derived FSRS state.
 #[derive(Clone, Debug, Default)]
 pub struct Deck {
@@ -155,6 +164,27 @@ impl Deck {
         let new = self.unseen().filter(|c| fits(c)).filter(|c| words.insert(c.sibling_key())).take(budget);
         out.extend(new.map(|c| c.id.clone()));
         out
+    }
+
+    /// Filters the *already constructed* session queue. This preserves due-first
+    /// ordering, daily new-card budget and sibling burial for every entry point.
+    /// "New" is exactly the unseen segment of `queue`, not a custom FSRS
+    /// difficulty band; only the existing scheduler decides what is due.
+    pub fn queue_scoped(
+        &self,
+        scheduler: &Scheduler,
+        now_ms: u64,
+        fits: impl Fn(&Card) -> bool,
+        scope: QueueScope,
+    ) -> Vec<String> {
+        self.queue(scheduler, now_ms, fits)
+            .into_iter()
+            .filter(|id| match scope {
+                QueueScope::All => true,
+                QueueScope::Due => self.states.contains_key(id),
+                QueueScope::New => !self.states.contains_key(id),
+            })
+            .collect()
     }
 
     pub fn forecast(&self, scheduler: &Scheduler, now_ms: u64, days: usize) -> Vec<u32> {
@@ -469,6 +499,43 @@ mod tests {
         let stats = deck.stats(&s, T0);
         assert_eq!((stats.due, stats.new_available, stats.reviews_today), (0, 11, 0));
         assert_eq!(stats.retention, None);
+    }
+
+    #[test]
+    fn scoped_queues_match_home_counts_without_changing_scheduling() {
+        let scheduler = Scheduler::default();
+        let reviewed = ev("older", "seed.bridge.kabar.recognition", T0 - 30 * DAY_MS, Rating::Good);
+        let deck = Deck::new(seed_bridge_deck(), vec![reviewed], &scheduler);
+
+        let all = deck.queue_scoped(&scheduler, T0, |_| true, QueueScope::All);
+        let due = deck.queue_scoped(&scheduler, T0, |_| true, QueueScope::Due);
+        let new = deck.queue_scoped(&scheduler, T0, |_| true, QueueScope::New);
+        let stats = deck.stats(&scheduler, T0);
+
+        assert_eq!(all, deck.queue(&scheduler, T0, |_| true));
+        assert_eq!(due, ["seed.bridge.kabar.recognition"]);
+        assert_eq!(new.len(), 10, "the due word buries its unseen sibling");
+        assert!(new.iter().all(|id| id.ends_with(".recognition")));
+        assert_eq!(stats.due, due.len());
+        assert_eq!(stats.new_available, new.len());
+        assert_eq!([due, new].concat(), all, "both filters preserve the full queue's order");
+    }
+
+    #[test]
+    fn scoped_new_queue_respects_daily_budget_and_due_siblings() {
+        let scheduler = Scheduler::default();
+        let log: Vec<_> = seed_bridge_deck()
+            .iter()
+            .filter(|card| card.kind == CardKind::Recognition)
+            .enumerate()
+            .map(|(i, card)| ev(&format!("r{i}"), &card.id, T0 + i as u64, Rating::Good))
+            .collect();
+        let deck = Deck::new(seed_bridge_deck(), log, &scheduler);
+
+        assert!(deck.queue_scoped(&scheduler, T0 + 60_000, |_| true, QueueScope::New).is_empty());
+        let later = T0 + 7 * DAY_MS;
+        assert!(deck.queue_scoped(&scheduler, later, |_| true, QueueScope::New).is_empty());
+        assert_eq!(deck.queue_scoped(&scheduler, later, |_| true, QueueScope::Due).len(), 11);
     }
 
     #[test]

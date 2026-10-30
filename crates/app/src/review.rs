@@ -9,8 +9,8 @@ use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
 use kabar_core::locale::UiLanguage;
 use kabar_core::review::{
-    AnswerMatch, BURST_MS, Deck, Session, Span, Summary, cloze, compare_answer, is_quick, seed_bridge_deck,
-    seed_words, wall_rating,
+    AnswerMatch, BURST_MS, Deck, QueueScope, Session, Span, Summary, cloze, compare_answer, is_quick,
+    seed_bridge_deck, seed_words, wall_rating,
 };
 use kabar_core::srs::{Pile, Scheduler};
 use kabar_protocol::coach::ActivityKind;
@@ -237,8 +237,12 @@ impl Engine {
     }
 
     fn start(&self, mode: ReviewMode) {
+        self.start_scoped(mode, QueueScope::All);
+    }
+
+    fn start_scoped(&self, mode: ReviewMode, scope: QueueScope) {
         let now = now_ms();
-        let queue = self.deck.read().queue(&self.sched, now, fits(mode));
+        let queue = self.deck.read().queue_scoped(&self.sched, now, fits(mode), scope);
         let (mut session, mut view, mut error) = (self.session, self.view, self.error);
         session.set(Some(Session::new(mode, queue, now)));
         error.set(None);
@@ -683,12 +687,14 @@ fn ReviewHome() -> Element {
                     label: Msg::RevDue,
                     value: ui.num(stats.due as u64),
                     accent: true,
+                    scope: Some(QueueScope::Due),
                     start: stats.due > 0,
                 }
                 Stat {
                     label: Msg::RevNew,
                     value: ui.num(stats.new_available as u64),
                     accent: false,
+                    scope: Some(QueueScope::New),
                     start: stats.new_available > 0,
                 }
                 Stat { label: Msg::RevReviewedToday, value: ui.num(stats.reviews_today as u64), accent: false }
@@ -781,7 +787,13 @@ fn ReviewHome() -> Element {
 /// A number that opens what it counts: a classic round when `start` is
 /// given, else Stats.
 #[component]
-fn Stat(label: Msg, value: String, accent: bool, #[props(default)] start: bool) -> Element {
+fn Stat(
+    label: Msg,
+    value: String,
+    accent: bool,
+    #[props(default)] start: bool,
+    #[props(default)] scope: Option<QueueScope>,
+) -> Element {
     let ui = use_context::<Ui>();
     let engine = use_context::<Engine>();
     rsx! {
@@ -789,7 +801,7 @@ fn Stat(label: Msg, value: String, accent: bool, #[props(default)] start: bool) 
             class: if accent { "rev-stat accent tap" } else { "rev-stat tap" },
             onclick: move |_| {
                 if start {
-                    engine.start(ReviewMode::Classic);
+                    engine.start_scoped(ReviewMode::Classic, scope.unwrap_or(QueueScope::All));
                 } else {
                     crate::stats::open(ui, Screen::Stats);
                 }
