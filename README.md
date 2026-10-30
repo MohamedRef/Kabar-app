@@ -187,6 +187,7 @@ Jump straight into a lesson or test: `KABAR_OPEN_LESSON=bipa1.u01.l01 just run-m
 | [CONTENT.md](docs/CONTENT.md) | Content pipeline |
 | [PEDAGOGY.md](docs/PEDAGOGY.md) | Lesson pacing and evidence |
 | [DESIGN.md](docs/DESIGN.md) | Design system: how screens look and adapt |
+| [UI-MAINTENANCE.md](docs/UI-MAINTENANCE.md) | Shared components, Settings search and code review priorities |
 | [CAST.md](docs/CAST.md) | Who is who, and which units each character belongs to |
 | [RESEARCH.md](docs/RESEARCH.md) | Services and free-tier verification |
 | [BAKEOFF.md](docs/BAKEOFF.md) | Engine bake-off |

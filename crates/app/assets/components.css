@@ -110,6 +110,7 @@ button.activity-row {
   text-align: start;
   font-weight: inherit;
 }
+button.activity-row:focus-visible { outline-offset: -3px; }
 .grouped > button.activity-row:first-child { border-start-start-radius: inherit; border-start-end-radius: inherit; }
 .grouped > button.activity-row:last-child { border-end-start-radius: inherit; border-end-end-radius: inherit; }
 .row-icon {
@@ -422,7 +423,7 @@ summary.coll-btn::-webkit-details-marker { display: none; }
 
 /* List and compact: rows in one surface with hairlines. */
 .coll:is([data-layout="list"], [data-layout="compact"]) {
-  background: var(--surface); border: 1px solid var(--line-soft); border-radius: var(--radius-card); overflow: clip;
+  background: var(--surface); border: 1px solid var(--card-border); border-radius: var(--radius-card); box-shadow: var(--card-shadow); overflow: clip;
 }
 .coll:is([data-layout="list"], [data-layout="compact"]) > li + li { border-block-start: 1px solid var(--line-soft); }
 @media (hover: hover) and (pointer: fine) {
@@ -442,7 +443,7 @@ summary.coll-btn::-webkit-details-marker { display: none; }
 .coll[data-layout="cards"] { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-2); }
 .app:not([data-width="compact"]) .coll[data-layout="cards"] { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
 .coll[data-layout="cards"] > li {
-  flex-direction: column; background: var(--surface); border: 1px solid var(--line-soft); border-radius: var(--radius-card); overflow: clip;
+  flex-direction: column; background: var(--surface); border: 1px solid var(--card-border); border-radius: var(--radius-card); box-shadow: var(--card-shadow); overflow: clip;
 }
 .coll[data-layout="cards"] .coll-btn { position: relative; flex-direction: column; align-items: stretch; gap: var(--sp-2); padding: var(--sp-3); }
 .coll[data-layout="cards"] > li > details > .coll-btn { block-size: 100%; }
@@ -459,3 +460,5 @@ summary.coll-btn::-webkit-details-marker { display: none; }
   box-shadow: var(--gloss-hi), var(--gloss-shadow);
 }
 .app[data-appearance="glossy"] .view-seg > button[aria-checked="true"] { background: var(--accent); color: var(--accent-ink); box-shadow: var(--gloss-hi); }
+
+.row-title { font-family: inherit; }

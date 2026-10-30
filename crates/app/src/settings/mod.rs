@@ -13,12 +13,14 @@ mod look;
 #[cfg(all(feature = "desktop", not(target_os = "android")))]
 pub mod menu;
 mod platform_sections;
+mod search;
 mod text;
 
 use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
 
 use crate::Ui;
+use crate::ui::{ActionRow, Card};
 use text::{S, st};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -108,6 +110,28 @@ impl Section {
             Self::About => S::AboutSub,
         }
     }
+    fn matches(self, query: &str) -> bool {
+        use kabar_core::locale::UiLanguage;
+        let keywords = match self {
+            Self::Learning => "pronunciation translation sounds vibration نطق ترجمة صوت اهتزاز",
+            Self::Look => "theme font size language digits appearance calm glossy ثيم خط حجم لغة ارقام ألوان",
+            Self::Coach => "notifications reminders quiet hours plan تنبيهات اشعارات تذكير مواعيد خطة",
+            Self::Android => "notifications permission audio background pen اذونات إشعارات صوت خلفية قلم",
+            Self::Tablet => "sidebar navigation layout pen قائمة تخطيط قلم",
+            Self::Mac => "keyboard shortcuts mouse sidebar اختصارات كيبورد ماوس قائمة",
+            Self::Storage => {
+                "backup restore export import download offline diagnostics نسخة احتياطية استرجاع تصدير استيراد تحميل تشخيص"
+            }
+            Self::Account => "google sign in sync devices cost limits جوجل دخول مزامنة أجهزة تكلفة حدود",
+            Self::Updates => "version download install changelog اصدار نسخة تنزيل تثبيت جديد",
+            Self::About => "version welcome device اصدار نسخة ترحيب جهاز",
+        };
+        let mut text = format!("{} {keywords}", self.id());
+        for lang in [UiLanguage::ArEg, UiLanguage::Ar, UiLanguage::En] {
+            text.push_str(&format!(" {} {}", st(lang, self.title()), st(lang, self.summary())));
+        }
+        search::matches(query, &text)
+    }
 }
 
 /// Whether the sheet is open and on which section. `section: None` is the
@@ -116,6 +140,7 @@ impl Section {
 pub struct SettingsNav {
     pub open: Signal<bool>,
     pub section: Signal<Option<Section>>,
+    query: Signal<String>,
 }
 
 impl SettingsNav {
@@ -124,10 +149,12 @@ impl SettingsNav {
         Self {
             open: Signal::new(start.is_some()),
             section: Signal::new(start.as_deref().and_then(Section::from_id)),
+            query: Signal::new(String::new()),
         }
     }
 
     pub fn show(mut self, section: Option<Section>) {
+        self.query.set(String::new());
         self.section.set(section);
         self.open.set(true);
     }
@@ -137,95 +164,13 @@ impl SettingsNav {
     }
 }
 
-const SETTINGS_CSS: &str = r#"
-.settings-backdrop { position: fixed; inset: 0; z-index: 40; background: rgb(0 0 0 / 0.35); }
-.settings-window {
-  position: fixed; z-index: 41; display: flex; flex-direction: column;
-  background: var(--bg, var(--surface)); color: var(--text);
-  inset: 0;
-}
-.app:not([data-width="compact"]) .settings-window {
-  inset-block: 4vh; inset-inline: max(1.5rem, calc((100vw - 60rem) / 2));
-  border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
-}
-.settings-head {
-  display: flex; align-items: center; gap: 0.5rem; padding-block: 0.6rem; padding-inline: 1rem;
-  padding-block-start: max(0.6rem, env(safe-area-inset-top));
-  border-block-end: 1px solid var(--line); background: var(--surface);
-}
-.settings-head h2 { margin: 0; font-size: 1.2rem; flex: 1; }
-.settings-body { flex: 1; min-block-size: 0; display: grid; grid-template-columns: 1fr; }
-.app:not([data-width="compact"]) .settings-body { grid-template-columns: 20rem 1fr; }
-.settings-sections { display: flex; flex-direction: column; padding: 0.75rem; overflow-y: auto; }
-.app:not([data-width="compact"]) .settings-sections { border-inline-end: 1px solid var(--line); }
-.settings-sections .section-head:first-child { margin-block-start: 0; }
-.settings-sections .card.grouped { margin: 0; }
-.settings-sections .activity-row[aria-current="true"] { background: var(--soft); }
-.settings-sections .activity-row[aria-current="true"] strong { color: var(--primary); }
-.settings-me { margin-block-end: var(--sp-2); }
-.app:not([data-width="compact"]) .settings-sections .activity-row { padding-inline: var(--sp-3); }
-.app:not([data-width="compact"]) .settings-sections .row-end { display: none; }
-.settings-avatar { font-weight: 700; font-size: var(--fs-lg); background: var(--accent); color: var(--accent-ink); border-radius: 50%; }
-.settings-pane { overflow-y: auto; padding: 1rem; padding-block-end: max(2rem, env(safe-area-inset-bottom)); }
-.settings-pane > .card:last-child { margin-block-end: 0; }
-/* Inside a section: one card, its fields as rows split by hairlines, the
-   choices as segmented controls and on/off fields as switches at the end. */
-.settings-pane .card > .field + .field { border-block-start: 1px solid var(--line-soft); padding-block-start: var(--sp-3); }
-.settings-pane .card > .field { margin-block-end: var(--sp-3); }
-.settings-pane .card > .field:last-child { margin-block-end: 0; }
-.settings-pane .field > .label { display: block; font-weight: 600; margin-block-end: var(--sp-2); }
-.settings-pane .segmented { border-radius: var(--radius-control); }
-label.switch-row, .field > label.switch-row { display: flex; margin: 0; align-items: center; gap: var(--sp-2); min-block-size: var(--tap); font-weight: 600; cursor: pointer; }
-.switch-row > input.switch { order: 2; margin-inline-start: auto; flex: none; }
-.settings-scope { font-size: 0.75rem; margin-inline-start: 0.4rem; font-weight: 400; vertical-align: 0.1rem; }
-.settings-hint { margin-block: 0.25rem 0; }
-.shortcut-table { border-collapse: collapse; inline-size: 100%; }
-.shortcut-table td { padding-block: 0.4rem; border-block-end: 1px solid var(--line); }
-.shortcut-table td:last-child { text-align: end; white-space: nowrap; }
-kbd { font-family: ui-monospace, monospace; font-size: 0.85rem; padding-inline: 0.4rem; padding-block: 0.1rem;
-  border: 1px solid var(--line); border-block-end-width: 2px; border-radius: 6px; background: var(--surface-2); }
-.text-sample { padding-block: 0.5rem; padding-inline: 0.75rem; border-radius: 10px; background: var(--surface-2); margin-block-start: 0.5rem; }
-.text-sample p { margin-block: 0.2rem; }
-.text-sample p[dir="ltr"] { text-align: start; font-size: 1.15rem; }
-.about-name { font-size: 2rem; font-weight: 700; color: var(--indigo); margin-block: 0 0.25rem; }
-.keys { display: inline-flex; gap: 0.25rem; align-items: center; }
-"#;
+const SETTINGS_CSS: crate::embedded::Css = crate::embedded::css!("assets/settings.css");
 
 /// The Settings sheet; renders nothing while closed.
 #[component]
 pub fn SettingsSheet() -> Element {
     let ui = use_context::<Ui>();
     let nav = use_context::<SettingsNav>();
-    // Escape steps back (phone) or closes. Listened for on the document in
-    // the capture phase: WebKit doesn't focus buttons on click, so the sheet
-    // rarely has focus, and the Lesson Player underneath must not see it.
-    use_future(move || async move {
-        let mut eval = document::eval(
-            r#"
-            window.__kabarSettingsEsc = () => dioxus.send(true);
-            if (!window.__kabarSettingsEscInit) {
-              window.__kabarSettingsEscInit = true;
-              document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape" && document.querySelector(".settings-window")) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  window.__kabarSettingsEsc();
-                }
-              }, true);
-            }
-            await new Promise(() => {});
-            "#,
-        );
-        let mut section = nav.section;
-        while eval.recv::<bool>().await.is_ok() {
-            let compact = *ui.width.peek() == WidthClass::Compact;
-            if compact && section.peek().is_some() {
-                section.set(None);
-            } else {
-                nav.close();
-            }
-        }
-    });
     if !*nav.open.read() {
         return rsx! {};
     }
@@ -243,7 +188,7 @@ pub fn SettingsSheet() -> Element {
     let mut section_sig = nav.section;
 
     rsx! {
-        style { {SETTINGS_CSS} }
+        style { {SETTINGS_CSS.text()} }
         div { class: "settings-backdrop", onclick: move |_| nav.close() }
         div {
             class: "settings-window",
@@ -251,13 +196,14 @@ pub fn SettingsSheet() -> Element {
             aria_modal: "true",
             aria_labelledby: "settings-title",
             tabindex: "-1",
-            onmounted: move |e: MountedEvent| async move {
-                let _ = e.set_focus(true).await;
+            "data-drilled": if drilled { "true" } else { "false" },
+            onmounted: move |_| {
+                document::eval(include_str!("../../assets/settings-dialog.js"));
             },
             header { class: "settings-head",
                 if drilled {
                     button {
-                        class: "icon-button",
+                        class: "icon-button settings-back",
                         "data-back": "true",
                         aria_label: "{st(lang, S::Back)}",
                         onclick: move |_| section_sig.set(None),
@@ -280,7 +226,11 @@ pub fn SettingsSheet() -> Element {
                     SectionList { sections: sections.clone(), current: if compact { None } else { current } }
                 }
                 if let Some(s) = current {
-                    div { class: "settings-pane", key: "{s.id()}",
+                    div { class: "settings-pane", key: "{s.id()}", role: "region", aria_labelledby: "settings-section-title",
+                        header { class: "settings-intro",
+                            h3 { id: "settings-section-title", "{st(lang, s.title())}" }
+                            p { "{st(lang, s.summary())}" }
+                        }
                         SectionView { section: s }
                     }
                 }
@@ -308,66 +258,72 @@ fn SectionList(sections: Vec<Section>, current: Option<Section>) -> Element {
     let coach = use_context::<crate::coach::Coach>();
     let cloud = try_use_context::<crate::Cloud>();
     let lang = ui.lang();
-    let mut section_sig = nav.section;
+    let mut section = nav.section;
+    let mut query = nav.query;
     let name = coach.profile.read().as_ref().map(|p| p.name.trim().to_string()).filter(|n| !n.is_empty());
     let sync = cloud.map(|c| c.status.read().sync);
     let updates = crate::update::view::use_update_status().read().clone();
-    // What a row says under its title: live state where there is one.
+    let filtered: Vec<Section> = sections.into_iter().filter(|s| s.matches(&query.read())).collect();
     let detail = move |s: Section| -> String {
         match s {
-            Section::Account => match sync.and_then(crate::account::sync_msg) {
-                Some(m) => ui.t(m).to_string(),
-                None => st(lang, S::AccountSub).to_string(),
-            },
-            Section::Updates => match updates.as_ref() {
-                Some(u) => crate::update::view::summary(&ui, u),
-                None => st(lang, S::UpdatesSub).to_string(),
-            },
+            Section::Account => sync
+                .and_then(crate::account::sync_msg)
+                .map(|m| ui.t(m))
+                .unwrap_or(st(lang, S::AccountSub))
+                .to_string(),
+            Section::Updates => updates
+                .as_ref()
+                .map(|u| crate::update::view::summary(&ui, u))
+                .unwrap_or_else(|| st(lang, S::UpdatesSub).to_string()),
             Section::About => format!("{} {}", st(lang, S::Version), env!("CARGO_PKG_VERSION")),
             s => st(lang, s.summary()).to_string(),
         }
     };
     rsx! {
-        nav { class: "settings-sections", aria_label: "{st(lang, S::Sections)}",
-            if let Some(name) = name {
-                div { class: "card grouped settings-me",
-                    button {
-                        class: "activity-row",
-                        onclick: move |_| section_sig.set(Some(Section::Coach)),
-                        span { class: "row-icon settings-avatar", aria_hidden: "true",
-                            {name.chars().next().map(|c| c.to_uppercase().to_string()).unwrap_or_default()}
+        aside { class: "settings-index",
+            div { class: "settings-tools",
+                input {
+                    class: "settings-search", r#type: "search",
+                    aria_label: "{st(lang, S::Search)}", placeholder: "{st(lang, S::Search)}",
+                    value: "{query}", oninput: move |event| query.set(event.value()),
+                }
+                p { class: "settings-save-hint", "{st(lang, S::Immediate)}" }
+            }
+            nav { class: "settings-sections", aria_label: "{st(lang, S::Sections)}",
+                if query.read().trim().is_empty() {
+                    if let Some(name) = name {
+                        Card { class: "grouped settings-me",
+                            ActionRow {
+                                title: name.clone(), detail: st(lang, S::ProfileSub),
+                                icon: rsx! { span { class: "settings-avatar", {name.chars().next().map(|c| c.to_uppercase().to_string()).unwrap_or_default()} } },
+                                onclick: move |_| section.set(Some(Section::Coach)),
+                            }
                         }
-                        span { class: "row-copy",
-                            strong { bdi { "{name}" } }
-                            small { "{st(lang, S::ProfileSub)}" }
-                        }
-                        span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
                     }
                 }
-            }
-            for (title, members) in GROUPS {
-                {
-                    let shown: Vec<Section> = members.iter().copied().filter(|s| sections.contains(s)).collect();
-                    rsx! {
-                        if !shown.is_empty() {
-                            div { key: "{st(lang, title)}", class: "section-head", h2 { "{st(lang, title)}" } }
-                            div { class: "card grouped",
-                                for s in shown {
-                                    button {
-                                        key: "{s.id()}",
-                                        class: "activity-row",
-                                        aria_current: if current == Some(s) { "true" } else { "false" },
-                                        onclick: move |_| section_sig.set(Some(s)),
-                                        span { class: "row-icon", aria_hidden: "true", {crate::icons::settings_section(s)} }
-                                        span { class: "row-copy",
-                                            strong { "{st(lang, s.title())}" }
-                                            small { "{detail(s)}" }
+                for (title, members) in GROUPS {
+                    {
+                        let shown: Vec<Section> = members.iter().copied().filter(|s| filtered.contains(s)).collect();
+                        rsx! {
+                            if !shown.is_empty() {
+                                div { key: "{st(lang, title)}", class: "section-head", h2 { "{st(lang, title)}" } }
+                                Card { class: "grouped",
+                                    for s in shown {
+                                        ActionRow {
+                                            key: "{s.id()}", title: st(lang, s.title()), detail: detail(s),
+                                            selected: current == Some(s), icon: crate::icons::settings_section(s),
+                                            onclick: move |_| section.set(Some(s)),
                                         }
-                                        span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
                                     }
                                 }
                             }
                         }
+                    }
+                }
+                if filtered.is_empty() {
+                    div { class: "settings-empty", role: "status",
+                        p { "{st(lang, S::NoResults)}" }
+                        button { r#type: "button", onclick: move |_| query.set(String::new()), "{st(lang, S::ClearSearch)}" }
                     }
                 }
             }
@@ -447,5 +403,17 @@ mod tests {
             assert_eq!(Section::from_id(s.id()), Some(s));
         }
         assert_eq!(Section::from_id("nope"), None);
+    }
+
+    #[test]
+    fn search_finds_preferences_inside_their_section() {
+        assert!(Section::Look.matches("حجم الخط"));
+        assert!(Section::Look.matches("FONT size"));
+        assert!(Section::Coach.matches("إِشْعَارات"));
+        assert!(Section::Storage.matches("نسخة احتياطية"));
+        assert!(!Section::ALL.into_iter().any(|s| s.matches("zzzz-no-setting")));
+        for section in Section::ALL {
+            assert!(section.matches(section.id()));
+        }
     }
 }

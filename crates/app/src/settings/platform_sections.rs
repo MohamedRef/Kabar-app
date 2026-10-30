@@ -2,6 +2,8 @@
 //! storage, account and about.
 
 use dioxus::prelude::*;
+
+use crate::ui::{ActionRow, Card};
 use kabar_core::layout::WidthClass;
 
 use super::device::{DevicePrefs, NavStyle};
@@ -40,7 +42,7 @@ pub fn AndroidSection() -> Element {
     let pen = *prefs.pen_hover.read();
 
     rsx! {
-        div { class: "card",
+        Card {
             div { class: "field",
                 span { class: "label", "{st(lang, S::Notifications)}" Scope { device_only: true } }
                 p { class: "muted settings-hint", "{st(lang, S::NotificationsBody)}" }
@@ -97,7 +99,7 @@ pub fn AndroidSection() -> Element {
 #[component]
 pub fn TabletSection() -> Element {
     rsx! {
-        div { class: "card",
+        Card {
             NavStyleField {}
             LayoutNow {}
         }
@@ -123,10 +125,10 @@ pub fn MacSection() -> Element {
     ];
 
     rsx! {
-        div { class: "card",
+        Card {
             p { class: "muted settings-hint", "{st(lang, S::MenuTip)}" }
         }
-        div { class: "card",
+        Card {
             h2 { "{st(lang, S::Shortcuts)}" }
             table { class: "shortcut-table",
                 tbody {
@@ -149,7 +151,7 @@ pub fn MacSection() -> Element {
                 }
             }
         }
-        div { class: "card",
+        Card {
             div { class: "field",
                 label { class: "switch-row",
                     input {
@@ -228,7 +230,7 @@ pub fn StorageSection() -> Element {
     rsx! {
         crate::packs::settings::OfflinePacks {}
         crate::data_export::ExportCard {}
-        div { class: "card",
+        Card {
             span { class: "label", "{st(ui.lang(), S::DataFolder)}" }
             p { code { dir: "ltr", bdi { "{dir}" } } }
         }
@@ -243,20 +245,16 @@ pub fn AccountSection() -> Element {
     rsx! {
         crate::account::AccountScreen {}
         // Cost & limits is its own page: a row that opens it.
-        div { class: "card grouped",
-            button {
-                class: "activity-row",
+        Card { class: "grouped",
+            ActionRow {
+                title: ui.t(Msg::CostTitle),
+                detail: st(ui.lang(), S::CostSub),
+                icon: crate::icons::nav(Screen::Cost),
                 onclick: move |_| {
                     let mut s = ui.screen;
                     s.set(Screen::Cost);
                     nav.close();
                 },
-                span { class: "row-icon", aria_hidden: "true", {crate::icons::nav(Screen::Cost)} }
-                span { class: "row-copy",
-                    strong { "{ui.t(Msg::CostTitle)}" }
-                    small { "{st(ui.lang(), S::CostSub)}" }
-                }
-                span { class: "row-end", span { class: "chev", aria_hidden: "true" } }
             }
         }
     }
@@ -271,7 +269,7 @@ pub fn AboutSection() -> Element {
     let device = db.0.borrow().device_id().to_string();
     let model = platform::device_model().unwrap_or_default();
     rsx! {
-        div { class: "card",
+        Card {
             p { class: "about-name latin", bdi { lang: "id", dir: "ltr", "Kabar" } }
             p { class: "muted", "{st(lang, S::PersonalBuild)}" }
             div { class: "field",

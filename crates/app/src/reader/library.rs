@@ -345,7 +345,7 @@ fn TextList(recent: Signal<Vec<SavedText>>, q: String) -> Element {
 /// Saved texts: rows by default, newest first or by title.
 const TEXTS_VIEW: crate::views::Collection = crate::views::Collection {
     key: "reader.texts",
-    layout: crate::views::Layout::List,
+    layout: crate::views::Layout::DEFAULT,
     sorts: &[crate::views::Sort::Recent, crate::views::Sort::Name],
 };
 

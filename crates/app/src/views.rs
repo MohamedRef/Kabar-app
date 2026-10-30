@@ -22,6 +22,8 @@ pub enum Layout {
 
 impl Layout {
     pub const ALL: [Self; 3] = [Self::Cards, Self::List, Self::Compact];
+    /// Starting layout for collections; saved choices still win.
+    pub const DEFAULT: Self = Self::List;
 
     pub fn as_str(self) -> &'static str {
         match self {

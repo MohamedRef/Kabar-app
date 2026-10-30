@@ -1,0 +1,90 @@
+/* Settings shell: a searchable index and a detail pane. Shared shape
+   comes from Card / ActionRow and the app's tokens; this file owns layout. */
+.settings-backdrop { position: fixed; inset: 0; z-index: 40; background: rgb(0 0 0 / 0.35); }
+.settings-window {
+  position: fixed; z-index: 41; inset: 0;
+  display: flex; flex-direction: column;
+  background: var(--bg, var(--surface)); color: var(--text); font: inherit;
+}
+.settings-window:focus { outline: none; }
+.settings-head {
+  display: flex; align-items: center; gap: var(--sp-2);
+  padding-block: max(var(--sp-3), env(safe-area-inset-top, 0px)) var(--sp-3);
+  padding-inline: var(--sp-4); border-block-end: 1px solid var(--line-soft, var(--line));
+}
+.settings-head h2 { flex: 1; margin: 0; font-size: var(--fs-lg); }
+.settings-back { order: -1; }
+.settings-body { flex: 1; min-block-size: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
+.settings-index { display: flex; flex-direction: column; min-inline-size: 0; min-block-size: 0; }
+.settings-tools { padding: var(--sp-3); padding-block-end: 0; }
+.settings-search {
+  display: block; inline-size: 100%; min-inline-size: 0; min-block-size: var(--tap);
+  padding-block: var(--sp-2); padding-inline: var(--sp-3);
+  border: 1px solid var(--line); border-radius: var(--radius-control);
+  background: var(--surface); color: var(--text); font: inherit;
+}
+.settings-search::placeholder { color: var(--muted); opacity: 1; }
+.settings-search:focus-visible { outline: 2px solid var(--primary, var(--accent)); outline-offset: 2px; }
+.settings-save-hint { margin-block: var(--sp-2); font-size: var(--fs-sm); color: var(--muted); }
+.settings-sections { flex: 1; min-block-size: 0; overflow-y: auto; padding: var(--sp-3); overscroll-behavior: contain; }
+.settings-sections .section-head { margin-block: var(--sp-4) var(--sp-2); }
+.settings-sections .section-head:first-child { margin-block-start: 0; }
+.settings-sections .section-head h2 { font-size: var(--fs-sm); color: var(--muted); }
+.settings-sections .card { margin: 0; }
+.settings-me { margin-block-end: var(--sp-4) !important; }
+.settings-avatar { font-weight: 700; font-size: var(--fs-lg); }
+.settings-pane {
+  min-inline-size: 0; overflow-y: auto; overscroll-behavior: contain;
+  padding: var(--sp-4); padding-block-end: max(var(--sp-6), env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column; gap: var(--sp-4);
+}
+.settings-pane > * { flex-shrink: 0; }
+.settings-pane > .card { margin-block-end: 0; }
+.settings-intro h3 { margin: 0; font-size: var(--fs-lg); font-weight: 600; }
+.settings-intro p { margin-block: var(--sp-1) 0; color: var(--muted); font-size: var(--fs-sm); }
+.settings-empty { padding: var(--sp-4); text-align: center; color: var(--muted); }
+.settings-empty p { margin-block: 0 var(--sp-3); }
+@media (max-width: 599.98px) {
+  .settings-window[data-drilled="false"] .settings-pane,
+  .settings-window[data-drilled="false"] .settings-title-section,
+  .settings-window[data-drilled="false"] .settings-back,
+  .settings-window[data-drilled="true"] .settings-index,
+  .settings-window[data-drilled="true"] .settings-title-list { display: none; }
+  .settings-intro h3 { display: none; }
+}
+@media (min-width: 600px) {
+  .settings-window {
+    inset-block: max(1rem, 4dvh); inset-inline: max(1rem, calc((100vw - 62rem) / 2));
+    border: 1px solid var(--line); border-radius: var(--radius-sheet); overflow: hidden;
+    box-shadow: 0 12px 40px rgb(0 0 0 / 0.2);
+  }
+  .settings-body { grid-template-columns: minmax(11rem, 30%) minmax(0, 1fr); }
+  .settings-index { border-inline-end: 1px solid var(--line-soft, var(--line)); }
+  .settings-sections .activity-row { padding-inline: var(--sp-3); }
+  .settings-sections .row-end { display: none; }
+  .settings-sections .activity-row[aria-current="page"] { background: var(--soft, var(--accent-soft)); }
+  .settings-sections .activity-row[aria-current="page"] strong { color: var(--primary, var(--accent)); }
+  .settings-back, .settings-title-section { display: none; }
+}
+
+/* Inside a section: one card, its fields as rows split by hairlines, the
+   choices as segmented controls and on/off fields as switches at the end. */
+.settings-pane .card > .field + .field { border-block-start: 1px solid var(--line-soft); padding-block-start: var(--sp-3); }
+.settings-pane .card > .field { margin-block-end: var(--sp-3); }
+.settings-pane .card > .field:last-child { margin-block-end: 0; }
+.settings-pane .field > .label { display: block; font-weight: 600; margin-block-end: var(--sp-2); }
+.settings-pane .segmented { border-radius: var(--radius-control); }
+label.switch-row, .field > label.switch-row { display: flex; margin: 0; align-items: center; gap: var(--sp-2); min-block-size: var(--tap); font-weight: 600; cursor: pointer; }
+.switch-row > input.switch { order: 2; margin-inline-start: auto; flex: none; }
+.settings-scope { font-size: 0.75rem; margin-inline-start: 0.4rem; font-weight: 400; vertical-align: 0.1rem; }
+.settings-hint { margin-block: 0.25rem 0; }
+.shortcut-table { border-collapse: collapse; inline-size: 100%; }
+.shortcut-table td { padding-block: 0.4rem; border-block-end: 1px solid var(--line); }
+.shortcut-table td:last-child { text-align: end; white-space: nowrap; }
+kbd { font-family: ui-monospace, monospace; font-size: 0.85rem; padding-inline: 0.4rem; padding-block: 0.1rem;
+  border: 1px solid var(--line); border-block-end-width: 2px; border-radius: 6px; background: var(--surface-2); }
+.text-sample { padding-block: 0.5rem; padding-inline: 0.75rem; border-radius: 10px; background: var(--surface-2); margin-block-start: 0.5rem; }
+.text-sample p { margin-block: 0.2rem; }
+.text-sample p[dir="ltr"] { text-align: start; font-size: 1.15rem; }
+.about-name { font-size: 2rem; font-weight: 700; color: var(--indigo); margin-block: 0 0.25rem; }
+.keys { display: inline-flex; gap: 0.25rem; align-items: center; }
