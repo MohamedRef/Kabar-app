@@ -38,6 +38,9 @@ fn fixture() -> Element {
         prefs.appearance.set(case.appearance);
         prefs
     });
+    // The production section index reads the coach context. Without it
+    // the medium/wide SSR fixture silently omits that subtree.
+    use_context_provider(|| crate::coach::Coach::load(&db));
     use_context_provider(|| SettingsNav {
         open: Signal::new(true),
         section: Signal::new(Some(Section::Look)),
@@ -76,6 +79,9 @@ fn export_browser_fixtures() {
                         dom.rebuild_in_place();
                         let html = dioxus::ssr::render(&dom);
                         assert!(html.contains("settings-window") && html.contains("text-sample"));
+                        if width >= 600 {
+                            assert!(html.contains("settings-index"), "wide Settings must render its section index");
+                        }
                         let file = format!(
                             "{width}-{}-{}-{}-{}.html",
                             lang.tag(),

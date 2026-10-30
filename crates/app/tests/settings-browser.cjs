@@ -31,7 +31,7 @@ async function run() {
         const box = dialog.getBoundingClientRect();
         const pane = document.querySelector('.settings-pane');
         const list = document.querySelector('.settings-index');
-        const search = document.querySelector('.settings-search input');
+        const search = document.querySelector('input.settings-search');
         const visible = el => Boolean(el && el.getClientRects().length);
         return {
           direction: getComputedStyle(root).direction,
