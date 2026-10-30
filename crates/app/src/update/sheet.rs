@@ -450,8 +450,8 @@ pub fn UpdateSheet() -> Element {
                 }
             }
             div { class: "us-body",
-                p { class: "us-context-title", "{title}" }
                 if m != SheetMode::History {
+                    p { class: "us-context-title", "{title}" }
                     if let Some(sub) = sub {
                         p { class: "us-lead", "{sub}" }
                     }
