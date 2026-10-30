@@ -79,14 +79,10 @@ const HISTORY_FIRST: usize = 1;
 
 /// The full history labels every release after the newest as "Earlier".
 /// An update offer instead leaves the installed build above that separator.
-fn earlier_divider(
-    shown: &[(bool, BuildChanges)],
-    mode: SheetMode,
-    installed_key: &str,
-) -> Option<usize> {
-    shown.iter().position(|(earlier, build)| {
-        *earlier && (mode == SheetMode::History || build.key() != installed_key)
-    })
+fn earlier_divider(shown: &[(bool, BuildChanges)], mode: SheetMode, installed_key: &str) -> Option<usize> {
+    shown
+        .iter()
+        .position(|(earlier, build)| *earlier && (mode == SheetMode::History || build.key() != installed_key))
 }
 
 fn kind_label(k: ChangeKind) -> U {
