@@ -288,7 +288,18 @@
 .lp-actions.miss { background: var(--lp-miss); }
 .lp-actions.almost { background: var(--lp-almost); }
 .lp-actions.review { background: var(--lp-review); }
-.lp-feedback { max-block-size: 45dvh; overflow-y: auto; margin-block-end: 0.5rem; }
+.lp-feedback {
+  max-block-size: 45dvh;
+  overflow-y: auto;
+  margin-block-end: 0.5rem;
+  padding-inline-start: 0.75rem;
+  border-inline-start: 3px solid var(--line);
+}
+/* A non-colour cue (the verdict text) remains visible for every outcome. */
+.good .lp-feedback { border-inline-start-color: var(--good); }
+.miss .lp-feedback { border-inline-start-color: var(--bad); }
+.almost .lp-feedback { border-inline-start-color: var(--gold); }
+.review .lp-feedback { border-inline-start-color: var(--indigo); }
 .lp-feedback p { margin-block: 0.25rem; }
 .lp-verdict { font-size: 1.2rem; font-weight: 700; }
 .good .lp-verdict { color: var(--good); }

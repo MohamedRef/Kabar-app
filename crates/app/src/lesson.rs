@@ -2012,12 +2012,14 @@ fn Feedback(
             if let Some(m) = meaning {
                 p { class: "muted", Rich { text: m, target } }
             }
-            if !matches!(grade, Grade::Correct | Grade::Practiced) {
-                if let Some(e) = explain {
-                    details { class: "lp-why", open: true,
-                        summary { "{lt(lang, L::Why)}" }
-                        p { Rich { text: e, target } }
-                    }
+            // Keep optional teaching notes discoverable after a correct answer,
+            // while showing them automatically when a learner needs help.
+            if let Some(e) = explain {
+                details {
+                    class: "lp-why",
+                    open: !matches!(grade, Grade::Correct | Grade::Practiced),
+                    summary { "{lt(lang, L::Why)}" }
+                    p { Rich { text: e, target } }
                 }
             }
         }
