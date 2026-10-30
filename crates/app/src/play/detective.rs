@@ -62,7 +62,7 @@ fn Intro(rule: Signal<Option<String>>, session: Signal<Option<Session>>) -> Elem
     let more_label = ui.t(Msg::DetectiveShowAllRules).replace("{n}", &ui.num(total));
 
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             p { class: "muted", "{ui.t(Msg::DetectiveIntro)}" }
             div { class: "row", role: "group",
                 button {
@@ -157,7 +157,7 @@ fn RuleCard(rule: SoundRule) -> Element {
     let data = content::bridge().as_ref().ok();
     let ui = use_context::<Ui>();
     rsx! {
-        div { class: "card rule-card reveal",
+        crate::ui::DivCard { class: "rule-card reveal",
             p { class: "rule-shift",
                 RuleShift { from: rule.from.clone(), to: rule.to.clone() }
             }
@@ -189,7 +189,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
 
     if s.rounds.is_empty() {
         return rsx! {
-            div { class: "card",
+            crate::ui::DivCard {
                 p { "{ui.t(Msg::DetectiveNoRounds)}" }
                 button { onclick: move |_| session.set(None), "{ui.t(Msg::Back)}" }
             }
@@ -214,7 +214,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
     let arabic_choices = round.mode == DetectiveMode::GuessArabic;
 
     rsx! {
-        div { class: "card round",
+        crate::ui::DivCard { class: "round",
             super::RoundCount { at: s.index as u64 + 1, total: total as u64 }
             p { class: "muted",
                 if arabic_choices { "{ui.t(Msg::DetectiveGuessArabic)}" } else { "{ui.t(Msg::DetectiveGuessIndonesian)}" }
