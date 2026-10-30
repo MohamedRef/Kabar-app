@@ -270,6 +270,11 @@ fn TargetStep(draft: Signal<CoachProfile>, touched: Signal<bool>, today: LocalDa
         if both {
             p { class: "note", "{ui.t(Msg::OnbBothOrder)}" }
         }
+        // Only the automatically suggested date is calculated from study time.
+        // A date the learner chose themselves is their own target, not our estimate.
+        if target.is_some() && !touched() {
+            p { class: "muted small", "{tt(ui.lang(), T::TargetEstimateHint)}" }
+        }
         match target.clone() {
             Some(t) => rsx! {
                 div { class: "row field",
