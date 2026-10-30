@@ -60,6 +60,14 @@
 .st-open { margin-block-start: 0.75rem; }
 .st-link { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; justify-content: space-between; }
 .st-link p { margin: 0; }
+/* A small weekly preview replaces Today's old text-only Stats link.
+   It reuses the full Stats chart's bar classes and semantic theme tokens. */
+.st-today-week { display: grid; gap: 0.35rem; }
+.st-today-week-head { display: flex; flex-wrap: wrap; gap: 0.3rem 0.75rem; align-items: baseline; justify-content: space-between; }
+.st-today-week-head h3 { margin: 0; font-size: var(--fs-md); }
+.st-today-bars { block-size: 5rem; margin-block: 0.3rem 0.5rem; }
+.st-today-week-summary { margin: 0; font-size: var(--fs-sm); color: var(--muted); }
+.st-today-week > button { justify-self: start; }
 
 /* charts */
 .st-chart svg { display: block; inline-size: 100%; block-size: auto; overflow: visible; }
