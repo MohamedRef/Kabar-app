@@ -25,6 +25,9 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
+        with:
+          # PR merge commit and its first parent; the base may move meanwhile.
+          fetch-depth: 2
       - name: No build output or huge files in git
         run: scripts/check-tracked-files.sh
       - name: System libraries for the desktop WebView
@@ -67,15 +70,12 @@ jobs:
       # the file check.
       - name: What's new file
         if: github.event_name == 'pull_request'
-        env:
-          BASE: ${{ github.base_ref }}
         run: |
-          git fetch -q --depth=1 origin "$BASE"
-          if [ "$(git diff --name-only FETCH_HEAD HEAD)" = "README.md" ]; then
+          if [ "$(git diff --name-only HEAD^1 HEAD)" = "README.md" ]; then
             echo "README.md only: no changes/<topic>.yaml needed."
             exit 0
           fi
-          files="$(git diff --name-only --diff-filter=AM FETCH_HEAD HEAD -- 'changes/*.yaml')"
+          files="$(git diff --name-only --diff-filter=AM HEAD^1 HEAD -- 'changes/*.yaml')"
           if ! grep -qE '^changes/[^/]+\.yaml$' <<<"$files"; then
             echo "::error::No changes/<topic>.yaml in this pull request. Add one line per change the learner can see (kind new/improved/fixed, ar_eg in Egyptian Arabic, en), or a file holding [] when there is nothing to tell. See docs/RELEASE.md §5."
             exit 1

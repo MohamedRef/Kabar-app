@@ -201,7 +201,15 @@ impl Engine {
             Ok(session) => {
                 let vault =
                     self.vault.take().unwrap_or_else(|| Box::new(super::session::MemoryVault::default()));
-                self.auth = Some(Auth::new(session, vault));
+                match Auth::new(session, vault) {
+                    Ok(auth) => self.auth = Some(auth),
+                    Err(vault) => {
+                        crate::diag::report!("Kabar Cloud: sign-in session was not saved");
+                        self.vault = Some(vault);
+                        self.problem = Some(Problem::SignInFailed);
+                        return;
+                    }
+                }
                 self.problem = None;
                 self.stopped = false;
                 self.client = SyncClient::new(self.store.last_seq().unwrap_or(0));

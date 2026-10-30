@@ -1,7 +1,7 @@
 //! Kabar Cloud calls made outside the sync thread: the AI proxy and the TTS
 //! proxy. The sync engine owns the session; a call asks it for a fresh
 //! access token ([`Command::Access`]), then does its HTTP on a short-lived
-//! thread so the UI never waits on the network.
+//! blocking task so the UI never waits on the network.
 
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -140,11 +140,7 @@ fn sha256_hex(bytes: &[u8]) -> String {
     Sha256::digest(bytes).iter().map(|b| format!("{b:02x}")).collect()
 }
 
-/// Runs blocking work on its own thread and awaits it from any executor.
+/// Runs blocking calls on Tokio's bounded blocking thread pool.
 pub async fn off_thread<T: Send + 'static>(f: impl FnOnce() -> T + Send + 'static) -> T {
-    let (tx, rx) = oneshot::channel();
-    std::thread::spawn(move || {
-        tx.send(f()).ok();
-    });
-    rx.await.expect("worker thread panicked")
+    tokio::task::spawn_blocking(f).await.expect("blocking task panicked")
 }
