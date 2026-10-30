@@ -5,14 +5,11 @@
 //!
 //! - a head with the state ("A new Kabar is out", "Kabar was updated") and
 //!   `Kabar · v0.1.0 · build 412`;
-//! - a summary card: the installed build → the new one, how many builds
-//!   that is, and a pill per kind (new, improved, fixed);
-//! - a timeline: a rail with a dot per build (newest open), each build a
-//!   row with its badge, date and counts, folding open into one card per
-//!   kind that shows five lines and "Show all (n)" beyond six;
-//! - "Earlier builds" under it, a few at a time;
-//! - GitHub (the channel's releases page) and the download, install or
-//!   restart button pinned at the foot, so the whole update happens here.
+//! - a compact installed → available build summary that leaves room for the timeline;
+//! - a quiet timeline: newest build open, earlier builds folded, each kind
+//!   in a card with a count and a small coloured icon;
+//! - "Earlier builds" immediately after the newest one, a few at a time;
+//! - GitHub and a close or update action pinned at the foot.
 //!
 //! On a phone it covers the whole screen, with Kabar's icon heading it; on
 //! wider windows it is a centred dialog. Morphe's filled pills: blue for
@@ -28,118 +25,7 @@ use super::view::{UPDATE_CSS, megabytes, primary_action, use_update_status};
 use super::{Phase, Status};
 use crate::Ui;
 
-const SHEET_CSS: &str = r#"
-/* Phones: a full page over everything, as Morphe's update screen is; from
-   600px a centred dialog. */
-.us-backdrop { position: fixed; inset: 0; z-index: 60; background: rgb(0 0 0 / 0.45); }
-.us-sheet { position: fixed; z-index: 61; inset: 0; display: flex; flex-direction: column;
-  background: var(--bg); color: var(--text);
-  /* Morphe's tones: blue for new, amber for fixes, green for improvements.
-     Filled at 60% over the page and inked at 30% over the text, so each
-     theme (light, dark, true black) gets a strong pill with readable text. */
-  --us-new: #4a78e8; --us-fixed: #c08a00; --us-improved: #2f9a3a; --us-installed: #2f9a3a; }
-.app:not([data-width="compact"]) .us-sheet { inset: 0; margin: auto; inline-size: min(34rem, 92vw);
-  block-size: min(46rem, 88dvh); border-radius: 1.5rem; border: 1px solid var(--line);
-  box-shadow: 0 12px 40px rgb(0 0 0 / 0.3); overflow: hidden; }
-.us-sheet [data-kind="new"], .us-sheet .us-ver.to { --hue: var(--us-new); }
-.us-sheet [data-kind="improved"] { --hue: var(--us-improved); }
-.us-sheet [data-kind="fixed"], .us-badge[data-badge="latest"], .us-badge[data-badge="new"] { --hue: var(--us-fixed); }
-.us-badge[data-badge="installed"] { --hue: var(--us-installed); }
-.us-badge[data-badge="content"] { --hue: var(--us-new); }
-.us-head { display: flex; gap: 0.875rem; align-items: center;
-  padding: max(1rem, env(safe-area-inset-top)) 1rem 0.75rem; }
-.us-logo { flex: none; inline-size: 3rem; block-size: 3rem; border-radius: 50%; overflow: hidden; }
-.us-logo svg, .us-logo img { display: block; inline-size: 100%; block-size: 100%; }
-.us-head-text { flex: 1; min-inline-size: 0; }
-.us-head h2 { margin: 0; font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
-.us-head p { margin: 0.1rem 0 0; font-size: 0.875rem; color: var(--muted); }
-.us-head .icon-button { flex: none; }
-.us-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 0.25rem 1rem 1rem; }
-.us-lead { margin: 0 0 0.75rem; font-size: 0.875rem; color: var(--muted); }
-.us-summary { display: grid; justify-items: center; gap: 0.75rem; text-align: center;
-  padding: 1.25rem 1rem; margin-block-end: 1.5rem; border-radius: 1.5rem;
-  background: color-mix(in srgb, var(--text) 3%, var(--bg)); border: 1px solid var(--line); }
-.us-jump { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
-.us-ver { padding: 0.3rem 0.75rem; border-radius: 999px; font-size: 0.8125rem; font-weight: 600;
-  background: color-mix(in srgb, var(--muted) 30%, var(--bg)); color: var(--text); }
-.us-ver.to { background: color-mix(in srgb, var(--hue) 60%, var(--bg)); color: color-mix(in srgb, var(--hue) 22%, var(--text)); }
-.us-arrow { display: inline-grid; color: var(--muted); }
-.us-arrow svg { inline-size: 1.25rem; block-size: 1.25rem; }
-[dir="rtl"] .us-arrow svg { transform: scaleX(-1); }
-.us-count { margin: 0; font-weight: 700; font-size: 1.0625rem; }
-.us-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
-.us-pill { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.55rem 1.1rem;
-  border-radius: 999px; font-size: 0.9375rem; font-weight: 600;
-  background: color-mix(in srgb, var(--hue) 60%, var(--bg)); color: color-mix(in srgb, var(--hue) 22%, var(--text)); }
-.us-pill svg { inline-size: 1.1rem; block-size: 1.1rem; }
-.us-summary progress { inline-size: 100%; accent-color: var(--us-new); }
-.us-summary .us-mb { margin: 0; font-size: 0.8125rem; color: var(--muted); }
-/* The timeline: a rail on the start side, a node per build on it. */
-/* The Settings sheet's own buttons hide under this one: one ✕ at a time. */
-.app:has(.us-sheet) .settings-head > .icon-button { visibility: hidden; }
-.us-failed { margin: 0; font-size: var(--fs-sm); color: var(--text); }
-.us-timeline { list-style: none; margin: 0; padding: 0; }
-.us-release { position: relative; padding-inline-start: 2rem; padding-block-end: 0.5rem; }
-.us-release::before { content: ""; position: absolute; inset-inline-start: calc(0.625rem - 1px);
-  inset-block: 1.9rem -0.6rem; inline-size: 2px; background: var(--line); }
-.us-timeline > li:last-child::before { display: none; }
-.us-release::after { content: ""; position: absolute; box-sizing: border-box;
-  inset-inline-start: calc(0.625rem - 0.3rem); inset-block-start: 0.85rem;
-  inline-size: 0.6rem; block-size: 0.6rem; border-radius: 50%; background: var(--muted); }
-.us-release[data-ahead="true"]::after, .us-release[data-badge="installed"]::after {
-  inset-inline-start: calc(0.625rem - 0.5rem); inset-block-start: 0.65rem;
-  inline-size: 1rem; block-size: 1rem; background: var(--bg); border: 2px dashed var(--muted); }
-.us-release[data-badge="installed"]::after { border: 3px solid var(--us-installed); }
-.us-rel-head { inline-size: 100%; display: grid; grid-template-columns: 1fr auto; column-gap: 0.5rem;
-  text-align: start; border: 0; background: transparent; padding: 0.45rem 0; color: inherit;
-  font: inherit; cursor: pointer; }
-.us-rel-title { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 1rem; font-weight: 700; }
-.us-rel-meta { grid-column: 1; font-size: 0.8125rem; color: var(--muted); margin-block-start: 0.1rem; }
-.us-chevron { grid-row: 1 / span 2; grid-column: 2; align-self: center; display: inline-grid; color: var(--muted);
-  transition: transform var(--dur) var(--ease); }
-.us-chevron svg { inline-size: 1.4rem; block-size: 1.4rem; }
-.us-rel-head[aria-expanded="true"] .us-chevron { transform: rotate(180deg); }
-.us-badge { font-size: 0.75rem; font-weight: 600; padding: 0.15rem 0.6rem; border-radius: 999px;
-  background: color-mix(in srgb, var(--hue) 45%, var(--bg)); color: color-mix(in srgb, var(--hue) 30%, var(--text)); }
-.us-kinds { display: grid; gap: 0.625rem; margin-block: 0.4rem 0.6rem; }
-.us-kind { border: 1px solid var(--line); border-radius: 1.125rem; overflow: hidden;
-  background: color-mix(in srgb, var(--text) 3%, var(--bg)); }
-.us-kind-head { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.875rem;
-  background: color-mix(in srgb, var(--text) 7%, var(--bg)); }
-.us-kind-icon { inline-size: 2rem; block-size: 2rem; border-radius: 0.6rem; display: grid; place-items: center;
-  background: color-mix(in srgb, var(--hue) 45%, var(--bg)); color: color-mix(in srgb, var(--hue) 30%, var(--text)); }
-.us-kind-icon svg { inline-size: 1.05rem; block-size: 1.05rem; }
-.us-kind-head h3 { margin: 0; font-size: 0.9375rem; font-weight: 600; }
-.us-chip { margin-inline-start: auto; min-inline-size: 1.6rem; block-size: 1.6rem; padding-inline: 0.4rem;
-  display: inline-grid; place-items: center; border-radius: 999px; font-size: 0.8125rem; font-weight: 600;
-  background: color-mix(in srgb, var(--muted) 30%, var(--bg)); }
-.us-items { list-style: none; margin: 0; padding: 0; display: grid; }
-.us-items li { position: relative; padding: 0.65rem 0.875rem; padding-inline-start: 2.1rem;
-  font-size: 0.875rem; line-height: 1.6; }
-.us-items li + li { border-block-start: 1px solid var(--line); }
-.us-items li::before { content: ""; position: absolute; inset-inline-start: 1rem; inset-block-start: calc(0.65rem + 0.55em);
-  inline-size: 0.4rem; block-size: 0.4rem; border-radius: 50%; background: color-mix(in srgb, var(--hue) 85%, var(--text)); }
-.us-more { border: 0; background: transparent; color: var(--indigo); padding: 0.4rem 0.875rem 0.6rem;
-  font: inherit; font-size: 0.875rem; font-weight: 600; cursor: pointer; }
-.us-divider { position: relative; padding-inline-start: 2rem; padding-block: 0.6rem 0.5rem;
-  font-size: 0.9375rem; font-weight: 600; }
-.us-divider::before { content: ""; position: absolute; inset-inline-start: calc(0.625rem - 1px);
-  inset-block: 0 -0.2rem; inline-size: 2px; background: var(--line); }
-/* The buttons stay at the bottom; the list fades under them. */
-.us-foot { position: relative; display: grid; gap: 0.625rem; padding: 0.5rem 1rem;
-  padding-block-end: max(0.875rem, env(safe-area-inset-bottom)); background: var(--bg); }
-.us-foot::before { content: ""; position: absolute; inset-inline: 0; inset-block-end: 100%; block-size: 1.5rem;
-  background: linear-gradient(to top, var(--bg), transparent); pointer-events: none; }
-.us-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; inline-size: 100%;
-  min-block-size: 3.25rem; border-radius: 999px; font: inherit; font-size: 1rem; font-weight: 600;
-  border: 1px solid var(--line); background: color-mix(in srgb, var(--text) 5%, var(--bg)); color: var(--text);
-  cursor: pointer; }
-.us-btn svg { inline-size: 1.2rem; block-size: 1.2rem; }
-.us-btn.us-go { border-color: color-mix(in srgb, var(--us-new) 55%, var(--bg));
-  background: color-mix(in srgb, var(--us-new) 16%, var(--bg)); }
-.us-btn:active { transform: scale(0.98); }
-@media (prefers-reduced-motion: reduce) { .us-chevron { transition: none; } }
-"#;
+const SHEET_CSS: &str = include_str!("sheet.css");
 
 /// Which sheet is open.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -189,7 +75,15 @@ const FOLD_AT: usize = 6;
 /// Earlier builds shown at a time.
 const EARLIER_STEP: usize = 4;
 /// Builds the changelog lists before "Earlier builds".
-const HISTORY_FIRST: usize = 6;
+const HISTORY_FIRST: usize = 1;
+
+/// The full history labels every release after the newest as "Earlier".
+/// An update offer instead leaves the installed build above that separator.
+fn earlier_divider(shown: &[(bool, BuildChanges)], mode: SheetMode, installed_key: &str) -> Option<usize> {
+    shown
+        .iter()
+        .position(|(earlier, build)| *earlier && (mode == SheetMode::History || build.key() != installed_key))
+}
 
 fn kind_label(k: ChangeKind) -> U {
     match k {
@@ -530,10 +424,10 @@ pub fn UpdateSheet() -> Element {
         .map(|b| (false, b))
         .chain(earlier.iter().take(show_earlier).cloned().map(|b| (true, b)))
         .collect();
-    // As in Morphe, the installed build closes the main list and "Earlier
-    // builds" starts after it.
+    // History separates the newest from every older build; an update offer
+    // keeps the installed build beside the offered ones before the divider.
     let this_key = format!("{}+{}", s.version, s.shown_build());
-    let first_earlier = shown.iter().position(|(e, b)| *e && b.key() != this_key);
+    let first_earlier = earlier_divider(&shown, m, &this_key);
     let more_earlier = earlier.len() > show_earlier;
     let empty = shown.is_empty();
     let fallback_notes = offer
@@ -550,9 +444,10 @@ pub fn UpdateSheet() -> Element {
             div { class: "us-head",
                 span { class: "us-logo", {app_mark()} }
                 div { class: "us-head-text",
-                    h2 { id: "us-title", "{title}" }
+                    h2 { id: "us-title", "Kabar"
+                        span { class: "us-sr-only", " · {title}" }
+                    }
                     p {
-                        "Kabar · "
                         bdi { dir: "ltr", class: "latin",
                             "v{offer.as_ref().filter(|_| m == SheetMode::Offer).map_or(this_label.clone(), |o| o.label())}"
                         }
@@ -563,8 +458,11 @@ pub fn UpdateSheet() -> Element {
                 }
             }
             div { class: "us-body",
-                if let Some(sub) = sub {
-                    p { class: "us-lead", "{sub}" }
+                if m != SheetMode::History {
+                    p { class: "us-context-title", "{title}" }
+                    if let Some(sub) = sub {
+                        p { class: "us-lead", "{sub}" }
+                    }
                 }
                 if m != SheetMode::History && (from_label.is_some() || !pills.is_empty() || progress.is_some()) {
                     div { class: "us-summary",
@@ -739,9 +637,41 @@ pub fn UpdateSheet() -> Element {
                     None if m == SheetMode::Updated => rsx! {
                         button { class: "us-btn us-go", onclick: close, "{ut(lang, U::GotIt)}" }
                     },
-                    None => rsx! {},
+                    None => rsx! {
+                        button { class: "us-btn", onclick: close, "{ut(lang, U::Close)}" }
+                    },
                 }
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{BuildChanges, SheetMode, earlier_divider};
+
+    fn release(build: u64) -> BuildChanges {
+        BuildChanges {
+            version: "1.0.0".to_owned(),
+            build,
+            published_at: "2026-10-30T00:00:00Z".to_owned(),
+            changes: Vec::new(),
+            content_only: false,
+        }
+    }
+
+    #[test]
+    fn history_labels_the_first_older_release_even_when_it_is_installed() {
+        let shown = vec![(false, release(3)), (true, release(2)), (true, release(1))];
+        assert_eq!(earlier_divider(&shown, SheetMode::History, "1.0.0+2"), Some(1));
+        assert_eq!(earlier_divider(&shown, SheetMode::History, "1.0.0+3"), Some(1));
+    }
+
+    #[test]
+    fn offer_places_installed_build_before_earlier_history() {
+        let shown = vec![(false, release(3)), (true, release(2)), (true, release(1))];
+        assert_eq!(earlier_divider(&shown, SheetMode::Offer, "1.0.0+2"), Some(2));
+        assert_eq!(earlier_divider(&shown, SheetMode::Offer, "1.0.0+3"), Some(1));
+        assert_eq!(earlier_divider(&shown[..1], SheetMode::Offer, "1.0.0+2"), None);
     }
 }
