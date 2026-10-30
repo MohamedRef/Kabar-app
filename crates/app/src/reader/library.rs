@@ -319,8 +319,8 @@ fn TextList(recent: Signal<Vec<SavedText>>, q: String, mut query: Signal<String>
     }
     if texts.is_empty() {
         return rsx! {
-            crate::ui::DivCard { class: "flat empty-state lib-empty", role: "status",
-                p { "{lt(lang, L::NoMatch)}" }
+            div { class: "empty-state", role: "status",
+                crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat lib-empty", "{lt(lang, L::NoMatch)}" }
                 button { class: "tonal", onclick: move |_| query.set(String::new()), "{lt(lang, L::ClearSearch)}" }
             }
         };
@@ -452,14 +452,16 @@ fn WordList(words: Vec<SavedWord>, taught: usize, q: String, mut query: Signal<S
             }
         }
         if shown.is_empty() {
-            crate::ui::DivCard { class: "flat empty-state lib-empty", role: "status",
-                if q.is_empty() && !has_words && !has_phrases {
-                    p { "{lt(lang, L::NoWords)}" }
-                } else {
-                    p { "{lt(lang, L::NoMatch)}" }
-                    if !q.is_empty() {
-                        button { class: "tonal", onclick: move |_| query.set(String::new()), "{lt(lang, L::ClearSearch)}" }
+            div { class: "empty-state", role: "status",
+                crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat lib-empty",
+                    if q.is_empty() && !has_words && !has_phrases {
+                        "{lt(lang, L::NoWords)}"
+                    } else {
+                        "{lt(lang, L::NoMatch)}"
                     }
+                }
+                if !q.is_empty() {
+                    button { class: "tonal", onclick: move |_| query.set(String::new()), "{lt(lang, L::ClearSearch)}" }
                 }
             }
         } else {
