@@ -75,7 +75,7 @@ pub fn PagiTodayCard() -> Element {
     rsx! {
         // A tap anywhere opens the story; the button is the keyboard and
         // screen-reader target, and its click bubbles up to the card.
-        div { class: "card card-action pagi-card reveal",
+        crate::ui::Card { element: crate::ui::CardElement::Div, class: "card-action pagi-card reveal",
             onclick: move |_| super::open(ui, nav, Route::Pagi),
             h2 { lang: "id", bdi { "Kabar Pagi" } }
             p { class: "muted", "{ui.t(Msg::PagiBlurb)}" }
@@ -112,7 +112,7 @@ pub fn PagiPlayer() -> Element {
     let Some((words, story)) = story else {
         return rsx! {
             PlayHeader { title: Msg::PagiTitle, latin: true }
-            div { class: "card", p { "{ui.t(Msg::PagiNoStory)}" } }
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(Msg::PagiNoStory)}" } }
         };
     };
     let read = logic::practiced_on(&coach.events.read(), today, logic::TOPIC_PAGI);

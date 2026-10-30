@@ -240,7 +240,7 @@ pub fn TodayCards() -> Element {
     rsx! {
         style { {STATS_CSS.text()} }
         if due() && !snoozed() {
-            div { class: "card st-invite", style: "margin-block-start: 1rem",
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "st-invite", style: "margin-block-start: 1rem",
                 h3 { "{st(lang, S::CheckTitle)}" }
                 crate::coach::widgets::Nur { text: invite }
                 div { class: "row",
@@ -265,7 +265,7 @@ pub fn TodayCards() -> Element {
             }
         }
         // The whole card opens Stats; the button's click bubbles up to it.
-        div { class: "card card-action st-link", style: "margin-block-start: 1rem",
+        crate::ui::Card { element: crate::ui::CardElement::Div, class: "card-action st-link", style: "margin-block-start: 1rem",
             onclick: move |_| open(ui, Screen::Stats),
             p { class: "muted", "{st(lang, S::OpenStatsHint)}" }
             button { "{st(lang, S::OpenStats)}" }
@@ -528,7 +528,7 @@ fn RingCard(tally: Tally) -> Element {
     let value = share.map_or("–".to_string(), |s| pct(&ui, s));
     let svg = charts::ring(share.unwrap_or(0.0), rtl(&ui), &format!("{}: {value}", st(lang, S::RingTitle)));
     rsx! {
-        section { class: "card card-action st-card st-ring-card", onclick: move |_| screen.set(Screen::Review),
+        crate::ui::Card { class: "card-action st-card st-ring-card", onclick: move |_| screen.set(Screen::Review),
             div { class: "st-ring", aria_hidden: "true",
                 div { class: "st-ring-svg", dangerous_inner_html: svg }
                 span { class: "st-ring-value", bdi { "{value}" } }
@@ -626,8 +626,8 @@ fn WeakCard(weak: Vec<WeakSpot>, measured: bool) -> Element {
             div { class: "section-head", h2 { "{st(lang, S::WeakTitle)}" } }
             if weak.is_empty() {
                 // The whole card goes on to the journey; the button's click bubbles up.
-                div {
-                    class: "card card-action empty-state st-weak-empty",
+                crate::ui::Card { element: crate::ui::CardElement::Div,
+                    class: "card-action empty-state st-weak-empty",
                     onclick: move |_| screen.set(Screen::Journey),
                     span { class: "row-icon", aria_hidden: "true", {crate::icons::nav(Screen::Journey)} }
                     p {

@@ -286,12 +286,12 @@ fn TextList(recent: Signal<Vec<SavedText>>, q: String) -> Element {
     crate::views::sort_by(&mut texts, pick.sort, |_| false, |t| t.title.clone());
     if recent.read().is_empty() {
         return rsx! {
-            p { class: "card flat lib-empty", "{lt(lang, L::NoTexts)}" }
+            crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat lib-empty", "{lt(lang, L::NoTexts)}" }
         };
     }
     if texts.is_empty() {
         return rsx! {
-            p { class: "card flat lib-empty", role: "status", "{lt(lang, L::NoMatch)}" }
+            crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat lib-empty", role: "status", "{lt(lang, L::NoMatch)}" }
         };
     }
     rsx! {
@@ -399,9 +399,9 @@ fn WordList(words: Vec<SavedWord>, taught: usize, q: String) -> Element {
             }
         }
         if shown.is_empty() {
-            p { class: "card flat lib-empty", if q.is_empty() { "{lt(lang, L::NoWords)}" } else { "{lt(lang, L::NoMatch)}" } }
+            crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat lib-empty", if q.is_empty() { "{lt(lang, L::NoWords)}" } else { "{lt(lang, L::NoMatch)}" } }
         } else {
-            ul { class: "card grouped lib-list",
+            crate::ui::Card { element: crate::ui::CardElement::List, class: "grouped lib-list",
                 for (w , gloss) in shown {
                     li { key: "{w.lexeme}", SavedWordRow { w, gloss } }
                 }

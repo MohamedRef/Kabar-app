@@ -75,7 +75,7 @@ pub fn PlacementInvite() -> Element {
     }
     rsx! {
         // The whole card opens the test; the button's click bubbles up to it.
-        div { class: "card card-action placement-invite", style: "margin-block-start: 1rem",
+        crate::ui::Card { element: crate::ui::CardElement::Div, class: "card-action placement-invite", style: "margin-block-start: 1rem",
             onclick: move |_| ui.open_lesson("placement"),
             h3 { "{lt(lang, L::InviteTitle)}" }
             p { class: "muted", "{localize_digits(lt(lang, L::InviteBody), lang, eastern)}" }
@@ -444,8 +444,8 @@ fn TestView(test: TestContent) -> Element {
             }
             if *confirm_close.read() {
                 div { class: "lt-confirm-backdrop",
-                    div {
-                        class: "card lt-confirm",
+                    crate::ui::Card { element: crate::ui::CardElement::Div,
+                        class: "lt-confirm",
                         role: "alertdialog",
                         aria_modal: "true",
                         aria_labelledby: "lt-confirm-title",
@@ -688,7 +688,7 @@ fn SelfCheck(runner: Signal<TestRunner>) -> Element {
             h2 { class: "lp-slide-title", "{lt(lang, L::SelfCheckTitle)}" }
             p { class: "muted", "{lt(lang, L::SelfCheckBody)}" }
             for (item, answer, chosen) in rows {
-                section { key: "{item.id}", class: "card lt-open",
+                crate::ui::Card { key: "{item.id}", class: "lt-open",
                     p { class: "lp-question-meaning pre", Rich { text: item_prompt(&item, lang), target } }
                     p { class: "muted lp-small", "{lt(lang, L::YourAnswer)}" }
                     if answer.trim().is_empty() {
@@ -834,7 +834,7 @@ fn Results(test: TestContent, results: TestResults, on_retry: EventHandler<()>) 
                 }
             }
             if !results.skills.is_empty() {
-                section { class: "card reveal d2",
+                crate::ui::Card { class: "reveal d2",
                     h3 { "{lt(lang, L::BySkill)}" }
                     ul { class: "lt-skills",
                         for (skill, tally) in results.skills.iter() {
@@ -844,7 +844,7 @@ fn Results(test: TestContent, results: TestResults, on_retry: EventHandler<()>) 
                 }
             }
             if !weak_units.is_empty() && test.kind == TestKind::Level {
-                section { class: "card reveal d2",
+                crate::ui::Card { class: "reveal d2",
                     h3 { "{lt(lang, L::UnitsToRevisit)}" }
                     ul { class: "lt-units",
                         for (title, lesson) in weak_units.iter().cloned() {
@@ -860,7 +860,7 @@ fn Results(test: TestContent, results: TestResults, on_retry: EventHandler<()>) 
                 p { class: "muted lp-small", "{skipped_line}" }
             }
             if !missed.is_empty() && test.kind == TestKind::Level {
-                section { class: "card reveal d3",
+                crate::ui::Card { class: "reveal d3",
                     h3 { "{lt(lang, L::ToPractise)}" }
                     ul { class: "lt-missed",
                         for (item, q, a) in missed.iter() {

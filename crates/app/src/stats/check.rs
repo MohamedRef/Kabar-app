@@ -251,7 +251,7 @@ fn Intro(level: String, welcome: Line, has_test: bool, on_start: EventHandler<()
         (fill(st(lang, S::CheckNoTest), &[("level", &label)]), S::CheckSeeResult)
     };
     rsx! {
-        section { class: "card st-card",
+        crate::ui::Card { class: "st-card",
             Nur { mood: Mood::Listening, text: invite }
             p { "{text}" }
             button { class: "primary", onclick: move |_| on_start.call(()), "{st(lang, button)}" }
@@ -511,7 +511,7 @@ fn Runner(runner: Signal<Option<TestRunner>>, on_done: EventHandler<()>) -> Elem
                     h3 { "{lt(lang, L::SelfCheckTitle)}" }
                     p { class: "muted", "{lt(lang, L::SelfCheckBody)}" }
                     for (id, prompt, answer, refs, chosen) in self_rows {
-                        section { key: "{id}", class: "card lt-open",
+                        crate::ui::Card { key: "{id}", class: "lt-open",
                             if !prompt.is_empty() {
                                 p { class: "lp-question-meaning pre", Rich { text: prompt.clone(), target } }
                             }
@@ -674,7 +674,7 @@ fn Outcome(
     let before = previous.map(|p| p.radar);
     let _ = has_test;
     rsx! {
-        section { class: "card st-card st-outcome",
+        crate::ui::Card { class: "st-card st-outcome",
             h3 { class: "lp-done reveal", "{st(lang, title)}" }
             if let Some(t) = nur_text {
                 Nur { mood: Mood::Explaining, text: t }
@@ -698,10 +698,10 @@ fn Outcome(
                 }
             }
         }
-        section { class: "card st-card",
+        crate::ui::Card { class: "st-card",
             RadarView { now: result.radar.clone(), before }
         }
-        section { class: "card st-card",
+        crate::ui::Card { class: "st-card",
             match &result.eta {
                 Some(eta) => rsx! { EtaLine { level: eta.level.clone(), date: eta.date, today } },
                 None => rsx! {

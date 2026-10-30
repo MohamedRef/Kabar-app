@@ -1876,8 +1876,8 @@ fn ContentCheck(lesson_id: String) -> Element {
         None => {
             let mut set = set.clone();
             rsx! {
-                section {
-                    class: "card card-action lp-content reveal d2",
+                crate::ui::Card {
+                    class: "card-action lp-content reveal d2",
                     onclick: move |_| set(true),
                     h3 { "{lt(lang, L::ContentTitle)}" }
                     p { class: "muted lp-small", "{lt(lang, L::ContentHint)}" }

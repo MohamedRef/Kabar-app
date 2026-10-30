@@ -472,7 +472,7 @@ pub fn Reader() -> Element {
             }
 
             if let Some(m) = *busy.read() {
-                div { class: "card", role: "status", "{ui.t(m)}" }
+                crate::ui::Card { element: crate::ui::CardElement::Div, class: "", role: "status", "{ui.t(m)}" }
             }
 
             match open {
@@ -754,9 +754,9 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
     };
 
     rsx! {
-            div {
-                class: if *dragging.read() { "card reader-input dragging" } else { "card reader-input" },
-                ondragover: move |e| {
+            crate::ui::Card { element: crate::ui::CardElement::Div,
+                class: if *dragging.read() { "reader-input dragging" } else { "reader-input" },
+                ondragover: move |e: DragEvent| {
                     e.prevent_default();
                     dragging.set(true);
                 },

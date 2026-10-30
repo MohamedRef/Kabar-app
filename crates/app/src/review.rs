@@ -1110,9 +1110,9 @@ fn Classic() -> Element {
     rsx! {
         div { id: "review-classic", class: if wide { "rev-session with-pane" } else { "rev-session" },
             SessionBar { left }
-            article {
+            crate::ui::Card { element: crate::ui::CardElement::Article,
                 key: "{card_id}",
-                class: "card rev-card",
+                class: "rev-card",
                 aria_live: "polite",
                 Front { card: card.clone() }
                 if is_production {
@@ -1659,9 +1659,9 @@ fn Burst() -> Element {
                     span { class: "progress-fill", style: "inline-size: {left_ms * 100 / BURST_MS}%" }
                 }
             }
-            button {
+            crate::ui::CardButton {
                 key: "{card_id}",
-                class: if revealed() { "card burst-card revealed" } else { "card burst-card" },
+                class: if revealed() { "burst-card revealed" } else { "burst-card" },
                 aria_expanded: if revealed() { "true" } else { "false" },
                 onclick: move |_| revealed.set(true),
                 span { class: if front_ar { "burst-word ar" } else { "burst-word latin" },

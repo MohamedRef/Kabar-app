@@ -64,6 +64,7 @@ fn sources(dir: &Path, out: &mut Vec<(String, String)>) {
 #[derive(Debug, PartialEq)]
 struct Found {
     element: String,
+    shared: bool,
     classes: Vec<String>,
     line: usize,
     end: usize,
@@ -88,29 +89,53 @@ fn elements(src: &str) -> Vec<Found> {
         // section/div cards; otherwise the UX scanner silently misses
         // newly migrated surfaces (including calls with no class prop).
         let shared = match line.trim_start() {
+            s if s.starts_with("crate::ui::CardButton {") => Some("button"),
             s if s.starts_with("crate::ui::Card {") => Some("section"),
             s if s.starts_with("crate::ui::DivCard {") => Some("div"),
             _ => None,
         };
-        if let Some(element) = shared {
+        if let Some(mut element) = shared {
             let mut classes = vec!["card".to_owned()];
-            // Class may be on the next line, which must not hide a
-            // clickable-looking surface from the dead-end audit.
-            let value = line.split_once("class: ").map(|(_, value)| value).or_else(|| {
-                let next = lines.get(line_no + 1)?.trim_start().strip_prefix("class: ")?;
-                prop_line = Some(line_no + 1);
-                Some(next)
-            });
-            if let Some(value) = value {
-                for lit in literals(value) {
-                    expand(src, &lit, &mut classes, 0);
+            let end = block_end(&lines, line_no);
+            let mut depth = 0i32;
+            for (offset, text) in lines[line_no..=end].iter().enumerate() {
+                let code = strip_strings(text);
+                if let Some(at) = text.find("class: ") {
+                    let before = strip_strings(&text[..at]);
+                    let own = depth + before.matches('{').count() as i32 - before.matches('}').count() as i32;
+                    if own == 1 {
+                        prop_line = Some(line_no + offset);
+                        for lit in literals(&text[at + "class: ".len()..]) {
+                            expand(src, &lit, &mut classes, 0);
+                        }
+                    }
                 }
+                if let Some(at) = code.find("element:") {
+                    let before = &code[..at];
+                    let own = depth + before.matches('{').count() as i32 - before.matches('}').count() as i32;
+                    if own == 1
+                        && let Some(kind) = code[at..].split("CardElement::").nth(1)
+                    {
+                        element = match kind.split(|c: char| !c.is_alphanumeric()).next().unwrap_or("") {
+                            "Div" => "div",
+                            "Article" => "article",
+                            "Aside" => "aside",
+                            "Paragraph" => "p",
+                            "List" => "ul",
+                            "ListItem" => "li",
+                            "Disclosure" => "details",
+                            _ => "section",
+                        };
+                    }
+                }
+                depth += code.matches('{').count() as i32 - code.matches('}').count() as i32;
             }
             found.push(Found {
                 element: element.to_owned(),
+                shared: true,
                 classes,
                 line: line_no + 1,
-                end: block_end(&lines, line_no) + 1,
+                end: end + 1,
             });
             continue;
         }
@@ -144,6 +169,7 @@ fn elements(src: &str) -> Vec<Found> {
             if !element.is_empty() && !classes.is_empty() {
                 found.push(Found {
                     element,
+                    shared: false,
                     classes,
                     line: line_no + 1,
                     end: block_end(&lines, open_line) + 1,
@@ -301,7 +327,7 @@ fn block_from(lines: &[&str], line: usize) -> String {
             break;
         }
     }
-    out
+    out.replace("crate::ui::CardButton {", "button {").replace("CardButton {", "button {")
 }
 
 /// Buttons that leave a card rather than open what it shows.
@@ -667,4 +693,33 @@ fn shared_card_components_remain_visible_to_dead_end_checks() {
     assert_eq!(cards[0].classes, ["card"]);
     assert_eq!(cards[1].element, "div");
     assert_eq!(cards[1].classes, ["card", "flat", "extra"]);
+}
+
+#[test]
+fn shared_keyed_and_semantic_cards_are_still_audited() {
+    let source = "crate::ui::Card { element: crate::ui::CardElement::Article,\n key: \"item\",\n class: \"st-item\",\n}\ncrate::ui::CardButton { class: \"tap\", onclick: move |_| open(), \"Open\" }";
+    let found = elements(source);
+    assert_eq!(found.len(), 2);
+    assert_eq!(found[0].element, "article");
+    assert!(found[0].shared && found[0].classes.iter().any(|c| c == "card"));
+    assert_eq!(found[1].element, "button");
+    assert!(found[1].shared);
+}
+
+#[test]
+fn base_card_markup_is_owned_by_shared_components() {
+    let mut files = Vec::new();
+    sources(&Path::new(env!("CARGO_MANIFEST_DIR")).join("src"), &mut files);
+    let mut duplicated = Vec::new();
+    for (path, text) in files {
+        if path.ends_with("/ui.rs") || path.ends_with("/ui/tests.rs") || path.ends_with("dead_ends.rs") {
+            continue;
+        }
+        for found in elements(&text) {
+            if !found.shared && found.classes.iter().any(|class| class == "card") {
+                duplicated.push(format!("{path}:{}", found.line));
+            }
+        }
+    }
+    assert!(duplicated.is_empty(), "base cards must use Card/DivCard/CardButton: {}", duplicated.join(", "));
 }

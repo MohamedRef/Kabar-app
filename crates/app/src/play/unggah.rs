@@ -163,7 +163,7 @@ fn Picker(session: Signal<Option<Session>>, data_reviewed: bool) -> Element {
             p { class: "muted", "{ui.t(Msg::UnggahIntro)}" }
         }
         if data.scenarios.is_empty() {
-            div { class: "card", p { "{ui.t(Msg::UnggahNoScenes)}" } }
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(Msg::UnggahNoScenes)}" } }
         }
         div { class: "play-grid",
             for sc in data.scenarios.iter() {
@@ -305,7 +305,7 @@ fn SceneView(session: Signal<Option<Session>>) -> Element {
         div { class: "uu-layout",
             div { class: "uu-side",
                 {partner_card}
-                div { class: "card", Meter { value: meter.0, delta } }
+                crate::ui::Card { element: crate::ui::CardElement::Div, class: "", Meter { value: meter.0, delta } }
             }
             crate::ui::DivCard { class: "round uu-turn",
                 super::RoundCount { at: s.turn_no as u64, total: total as u64, label: Msg::UnggahTurn }

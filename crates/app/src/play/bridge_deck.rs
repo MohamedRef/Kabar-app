@@ -119,7 +119,7 @@ pub fn BridgeDeck() -> Element {
             }
         }
         if matching.is_empty() {
-            p { class: "card flat muted", role: "status", "{no_match(ui.lang())}" }
+            crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat muted", role: "status", "{no_match(ui.lang())}" }
         } else {
             crate::views::ViewBar { of: DECK_VIEW }
             ul { class: "coll deck-list", "data-layout": pick.layout.as_str(),

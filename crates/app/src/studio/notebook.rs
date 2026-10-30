@@ -106,7 +106,7 @@ pub fn NotebookScreen() -> Element {
 
     rsx! {
         div { class: "notebook",
-            aside { class: "notebook-side card",
+            crate::ui::Card { element: crate::ui::CardElement::Aside, class: "notebook-side",
                 div { class: "row",
                     select {
                         aria_label: "{tr(l, T::Notebook)}",

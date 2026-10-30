@@ -245,7 +245,7 @@ pub fn OfflinePacks() -> Element {
 
     rsx! {
         style { {PACKS_CSS} }
-        section { class: "card", aria_labelledby: "packs-title",
+        crate::ui::Card { class: "", aria_labelledby: "packs-title",
             h2 { id: "packs-title", "{pt(lang, P::Title)}" }
             p { class: "muted", "{pt(lang, P::Intro)}" }
             div { class: "packs-storage",
