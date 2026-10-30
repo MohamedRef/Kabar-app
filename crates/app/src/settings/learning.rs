@@ -2,6 +2,8 @@
 //! These sync to every device.
 
 use dioxus::prelude::*;
+
+use crate::ui::Card;
 use kabar_core::settings::{CorrectSound, EndSound, PronMode, RetentionPct, TranslationMode};
 
 use super::text::{S, st};
@@ -22,7 +24,7 @@ pub fn LearningSection() -> Element {
     };
 
     rsx! {
-        div { class: "card",
+        Card {
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::SettingsPron)}" }
                 div { class: "segmented", role: "radiogroup",

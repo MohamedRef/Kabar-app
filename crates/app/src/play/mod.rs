@@ -124,7 +124,7 @@ const GAMES: [GameCard; 8] = [
 /// order or by name.
 const HUB_VIEW: crate::views::Collection = crate::views::Collection {
     key: "play.hub",
-    layout: crate::views::Layout::Cards,
+    layout: crate::views::Layout::DEFAULT,
     sorts: &[crate::views::Sort::Course, crate::views::Sort::Name],
 };
 

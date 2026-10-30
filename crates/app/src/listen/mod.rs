@@ -365,12 +365,12 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
 /// The episode lists: rows by default; in order, or not watched yet first.
 const SINETRON_VIEW: crate::views::Collection = crate::views::Collection {
     key: "listen.sinetron",
-    layout: crate::views::Layout::List,
+    layout: crate::views::Layout::DEFAULT,
     sorts: &[crate::views::Sort::Course, crate::views::Sort::Left],
 };
 const RADIO_VIEW: crate::views::Collection = crate::views::Collection {
     key: "listen.radio",
-    layout: crate::views::Layout::List,
+    layout: crate::views::Layout::DEFAULT,
     sorts: &[crate::views::Sort::Course, crate::views::Sort::Left],
 };
 

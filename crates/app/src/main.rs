@@ -42,6 +42,7 @@ mod store;
 mod studio;
 mod teach;
 mod theme;
+mod ui;
 mod update;
 mod views;
 

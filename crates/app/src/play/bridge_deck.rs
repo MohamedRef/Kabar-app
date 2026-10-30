@@ -147,7 +147,7 @@ pub fn BridgeDeck() -> Element {
 /// known yet first, or A to Z.
 const DECK_VIEW: crate::views::Collection = crate::views::Collection {
     key: "bridge.deck",
-    layout: crate::views::Layout::List,
+    layout: crate::views::Layout::DEFAULT,
     sorts: &[crate::views::Sort::Course, crate::views::Sort::Left, crate::views::Sort::Name],
 };
 

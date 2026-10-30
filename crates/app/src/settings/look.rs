@@ -2,6 +2,8 @@
 //! the text size (this device only: the phone and the Mac want different ones).
 
 use dioxus::prelude::*;
+
+use crate::ui::Card;
 use kabar_core::locale::format_number;
 use kabar_core::settings::Theme;
 
@@ -24,7 +26,7 @@ pub fn LookSection() -> Element {
     let appearance = *prefs.appearance.read();
 
     rsx! {
-        div { class: "card",
+        Card {
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::SettingsLanguage)}" }
                 LanguagePicker {}
