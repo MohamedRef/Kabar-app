@@ -95,7 +95,7 @@ pub fn BridgeDeck() -> Element {
     rsx! {
         style { {CSS.text()} }
         PlayHeader { title: Msg::DeckTitle }
-        div { class: "card flat deck-hero",
+        crate::ui::DivCard { class: "flat deck-hero",
             span { class: "status-chip gold", "{ui.t(Msg::BridgeFromArabic)}" }
             p { class: "deck-count", lang: "id", bdi { "{deck_headline(deck.len())}" } }
             p { class: "muted", "{ui.t(Msg::DeckHeroNote)}" }
