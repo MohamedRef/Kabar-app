@@ -24,6 +24,16 @@
    shared .coll layouts (views.rs); a broken partner is a plain card. */
 .ch-scenes { display: grid; gap: var(--sp-2, 0.5rem); }
 .ch-scenes .card, .ch-personas .card { margin: 0; }
+/* The first line of an authored scene can have a locally translated meaning. */
+.ch-scene-hint { margin: 0; line-height: var(--lh-arabic, 1.8); }
+.ch-scene-meaning {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  white-space: normal;
+  line-height: var(--lh-ui, 1.5);
+}
 button.ch-scene, button.ch-context {
   display: flex; gap: var(--sp-3, 0.75rem); align-items: center; text-align: start;
   font: inherit; color: var(--text); font-weight: inherit;
