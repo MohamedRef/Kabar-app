@@ -9,8 +9,8 @@ use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
 use kabar_core::locale::UiLanguage;
 use kabar_core::review::{
-    AnswerMatch, BURST_MS, Deck, QueueScope, Session, Span, Summary, cloze, compare_answer, is_quick, seed_bridge_deck,
-    seed_words, wall_rating,
+    AnswerMatch, BURST_MS, Deck, QueueScope, Session, Span, Summary, cloze, compare_answer, is_quick,
+    seed_bridge_deck, seed_words, wall_rating,
 };
 use kabar_core::srs::{Pile, Scheduler};
 use kabar_protocol::coach::ActivityKind;
