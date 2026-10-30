@@ -1,7 +1,7 @@
 # Shared UI completion: Kabar
 
-Updated: 2026-10-30. Current branch: `improve/interactive-cards-20261030`.
-Previous checkpoint: merged PR #483.
+Updated: 2026-10-30. Current branch: `improve/workflow-modules-20261030`.
+Previous checkpoint: merged PR #486; subsequent merged UX changes are retained.
 
 ## Item 1: interactive and dynamic cards (2026-10-30)
 
@@ -23,6 +23,29 @@ Previous checkpoint: merged PR #483.
 The existing physical-device and browser-layout gaps below remain separate
 numbered items. Passing these component tests does not certify pixel layout.
 
+## Item 2: workflow ownership (2026-10-30)
+
+- [x] Split rendering stages, update state and orchestration, persistence
+  responsibilities and existing tests into focused sibling modules.
+- [x] Preserve the public feature facades and original function bodies. Child
+  modules keep parent-only visibility for implementation helpers; no new runtime
+  dependency, persistence format, scheduler or content approval change is involved.
+- [x] Retain each original behavior test once, rebasing physical fixture paths.
+  A function inventory confirms that no function was lost or duplicated.
+- Validation results and full native/target CI are recorded on this item's PR.
+  Local checks omit desktop features because this runner has no WebView libraries.
+
+| Feature facade | Before (lines) | After (lines) |
+|---|---:|---:|
+| `lesson.rs` | 2,816 | 529 |
+| `review.rs` | 1,909 | 448 |
+| `journey.rs` | 1,590 | 746 |
+| `store.rs` | 1,830 | 880 |
+| `update/mod.rs` | 1,878 | 385 |
+
+The remaining facade code owns integration and shared state. Tests live in
+`tests.rs`; they are not replaced with new tests of the extraction itself.
+
 ## Implementation checkpoint
 
 - [x] Follow-up: migrated 11 more static content surfaces across Studio, Diagnostics, Pen Lab, Chat, Reader and Screens (9 files). The follow-up brings the explicitly counted static-card migrations from 67 to 78; controls and original div/section tags are preserved.
@@ -34,7 +57,7 @@ numbered items. Passing these component tests does not certify pixel layout.
 - [x] Added VirtualDom smoke coverage exercising actual shared components with button, label, text input, and action row.
 - [x] Added stylesheet contract assertions for responsive width classes, appearance, high-contrast black theme, reduced motion/transparency, and shared surface tokens.
 - [x] Completed the remaining base-card migration using explicit native semantics; interactive, keyed, labelled and list surfaces keep their original role.
-- [ ] Further split large independent workflows (`lesson.rs`, `review.rs`, `store.rs`, `update/mod.rs`) in small tested changes.
+- [x] Split the targeted large workflows behind their existing feature APIs (see item 2).
 - [ ] Add true browser/WebView layout, focus and keyboard tests on rendered production views. VirtualDom and source CSS tests do **not** prove pixel layouts or keyboard navigation.
 - [ ] Complete the separate physical-device matrix below. Current-item CI status is recorded on its PR.
 

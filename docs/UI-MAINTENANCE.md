@@ -72,6 +72,28 @@ Tests cover a real blocked directory, retained prior files where applicable,
 latest-choice replacement, unrelated failures, repeated failed retry and a real
 Dioxus reactive observer. Native WebView layout still requires device QA.
 
+## Workflow module ownership (2026-10-30)
+
+| Responsibility | Module |
+|---|---|
+| Lesson orchestration | `lesson/player.rs` |
+| Lesson text and pronunciation | `lesson/reading.rs` |
+| Slides, dialogues and audio controls | `lesson/slides.rs` |
+| Answer inputs and feedback | `lesson/exercises.rs` |
+| Lesson completion and verification | `lesson/outcome.rs` |
+| Review transitions and deck cache | `review/engine.rs` |
+| Review modes and completion | `review/{classic,wall,burst,outcome}.rs` |
+| Review time labels | `review/labels.rs` |
+| Journey map geometry, catalog and souvenirs | `journey/{map_view,catalog,suitcase}.rs` |
+| Store settings and synced row operations | `store/{preferences,sync_rows}.rs` |
+| Update state and execution | `update/{model,service}.rs` |
+
+Keep callers on the existing feature facade. Change the owning stage rather
+than copying its state into another screen. Public names are re-exported with
+their existing visibility; internal helpers use parent-only visibility. Shared
+state stays with the parent, and persistence operations keep their transactions.
+Existing tests live beside the owning facade in a child `tests.rs` module.
+
 ## Remaining work, in priority order
 
 1. **Feature-specific write recovery.** Shared preference writes now use
@@ -79,10 +101,9 @@ Dioxus reactive observer. Native WebView layout still requires device QA.
    retain their existing error handling. Give those workflows an appropriate
    recovery UI; never blindly replay append-only events through the preference
    queue.
-2. **Smaller feature modules.** `lesson.rs`, `review.rs`, `journey.rs`,
-   `store.rs` and `update/mod.rs` combine large rendering and workflow units.
-   Extract pure decisions first, then move player stages and persistence
-   operations behind narrow APIs, with existing behavior tests intact.
+2. **Workflow ownership.** The targeted large files are now feature facades;
+   use the ownership table below for stages, persistence helpers and tests.
+   Keep new workflow logic in its owning module and keep callers on the facade.
 3. **Guard shared component reuse.** Base cards now use `ui::Card`, the
    compatibility `DivCard` delegate or native `CardButton`. Use `CardElement`
    for articles, list items, paragraphs and disclosure roots; pass existing ARIA,
