@@ -1,0 +1,45 @@
+name: Settings browser regression
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: settings-browser-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  settings:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: settings-browser
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Render production Settings with real preferences and styles
+        env:
+          APP_BROWSER_FIXTURES: ${{ github.workspace }}/target/browser-fixtures
+        run: cargo test -p kabar-app --no-default-features --locked export_browser_fixtures -- --ignored
+      - name: Install the pinned test browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/browser-tools" --no-audit --no-fund playwright@1.62.1
+          "$RUNNER_TEMP/browser-tools/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Computed layout, Tab, Escape, inert background and focus restoration
+        run: NODE_PATH="$RUNNER_TEMP/browser-tools/node_modules" node crates/app/tests/settings-browser.cjs target/browser-fixtures target/browser-results
+      - name: Browser reports and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: settings-browser-results
+          path: target/browser-results
+          if-no-files-found: ignore
+          retention-days: 14

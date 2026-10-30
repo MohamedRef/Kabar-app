@@ -7,6 +7,9 @@
 //! apply. Shared learning preferences sync to every device; the rest are
 //! marked "this device only" (`device::DevicePrefs`).
 
+#[cfg(test)]
+mod browser;
+
 pub mod device;
 mod learning;
 mod look;
