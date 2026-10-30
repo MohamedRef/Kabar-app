@@ -27,8 +27,6 @@ use crate::Ui;
 
 const SHEET_CSS: &str = include_str!("sheet.css");
 
-
-
 /// Which sheet is open.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum SheetMode {
