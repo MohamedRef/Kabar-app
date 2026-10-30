@@ -300,8 +300,8 @@ pub fn TeachScreen() -> Element {
             div { class: "row",
                 button { class: "primary", disabled: !can_teach, onclick: teach, "{tr(T::Teach)}" }
                 match status() {
-                    Status::Fetching => rsx! { span { class: "muted", "{tr(T::Fetching)}" } },
-                    Status::Thinking => rsx! { span { class: "muted", "{tr(T::Thinking)}" } },
+                    Status::Fetching => rsx! { span { class: "muted", role: "status", "{tr(T::Fetching)}" } },
+                    Status::Thinking => rsx! { span { class: "muted", role: "status", "{tr(T::Thinking)}" } },
                     // Kabar Cloud is the fix, so say which step is missing
                     // and open it, instead of blaming the internet.
                     Status::Problem(T::NotConnected) => {

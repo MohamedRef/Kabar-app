@@ -734,7 +734,10 @@ fn Chat(
                 }
                 if busy {
                     li { class: "ch-msg them", role: "status",
-                        div { class: "ch-bubble ch-typing", bdi { class: "latin", "{p.name}" } " {tt(lang, T::Typing)}" }
+                        div { class: "ch-bubble ch-typing", bdi { class: "latin", "{p.name}" } " {tt(lang, T::PreparingReply)}" }
+                        if turn == 1 {
+                            span { class: "muted small", "{tt(lang, T::WaitHint)}" }
+                        }
                     }
                 }
             }
