@@ -353,6 +353,23 @@ pub fn system_bars(day: i32, night: i32) -> Result<(), String> {
     })
 }
 
+/// `WebViewGuard.install(activity)`: guards the WebView against a lost
+/// renderer, and returns how recent runs ended, one per line.
+pub fn webview_guard() -> Result<Option<String>, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.WebViewGuard"))?;
+        let s = env
+            .call_static_method(
+                &class,
+                jni_str!("install"),
+                jni_sig!("(Landroid/app/Activity;)Ljava/lang/String;"),
+                &[JValue::Object(activity)],
+            )?
+            .l()?;
+        to_string(env, s)
+    })
+}
+
 /// `Haptics.available(activity)`: the device has a vibration motor.
 pub fn has_vibrator() -> Result<bool, String> {
     with_activity(|env, activity| {

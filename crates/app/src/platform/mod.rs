@@ -167,6 +167,23 @@ pub fn system_bars(day: &str, night: &str) {
     }
 }
 
+/// Android: keeps a lost WebView renderer from crashing Kabar
+/// (`app.kabar.WebViewGuard`). Android reclaims a backgrounded app's
+/// renderer under memory pressure; unhandled, that kills Kabar as a crash
+/// ("Kabar is crashing frequently"). Also reports how recent runs ended to
+/// the diagnostics. Call once at start; nothing elsewhere.
+pub fn guard_webview() {
+    #[cfg(target_os = "android")]
+    match android::webview_guard() {
+        Ok(lines) => {
+            for line in lines.unwrap_or_default().lines().filter(|l| !l.is_empty()) {
+                crate::diag::report!("{line}");
+            }
+        }
+        Err(e) => crate::diag::report!("WebView guard failed: {e}"),
+    }
+}
+
 /// Vibrates once for `kind` where the device can; does nothing elsewhere.
 pub fn vibrate(kind: Haptic) {
     #[cfg(target_os = "android")]
