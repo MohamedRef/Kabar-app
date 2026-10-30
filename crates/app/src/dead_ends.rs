@@ -77,7 +77,12 @@ fn elements(src: &str) -> Vec<Found> {
     const KEY: &str = "class: ";
     let mut found = Vec::new();
     let lines: Vec<&str> = src.lines().collect();
+    // A shared card's `class:` prop on its own line belongs to that card.
+    let mut prop_line = None;
     for (line_no, line) in lines.iter().enumerate() {
+        if prop_line == Some(line_no) {
+            continue;
+        }
         // Shared Card/DivCard add the "card" class inside the component,
         // not at the call site. Continue auditing them as real native
         // section/div cards; otherwise the UX scanner silently misses
@@ -91,12 +96,11 @@ fn elements(src: &str) -> Vec<Found> {
             let mut classes = vec!["card".to_owned()];
             // Class may be on the next line, which must not hide a
             // clickable-looking surface from the dead-end audit.
-            let value = line
-                .split_once("class: ")
-                .map(|(_, value)| value)
-                .or_else(|| {
-                    lines.get(line_no + 1).and_then(|next| next.trim_start().strip_prefix("class: "))
-                });
+            let value = line.split_once("class: ").map(|(_, value)| value).or_else(|| {
+                let next = lines.get(line_no + 1)?.trim_start().strip_prefix("class: ")?;
+                prop_line = Some(line_no + 1);
+                Some(next)
+            });
             if let Some(value) = value {
                 for lit in literals(value) {
                     expand(src, &lit, &mut classes, 0);
