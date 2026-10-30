@@ -342,6 +342,15 @@ fn ReviewHome() -> Element {
                 if let Some(when) = &next_due {
                     p { class: "muted", {ui.t(Msg::RevNextReview).replace("{when}", when)} }
                 }
+                // Resting is the default; new words are an option, never a nudge.
+                button {
+                    class: "tonal rev-learn-new",
+                    onclick: move |_| {
+                        let mut screen = ui.screen;
+                        screen.set(Screen::Journey);
+                    },
+                    "{ui.t(Msg::RevLearnNew)}"
+                }
             }
         }
         crate::ui::DivCard {

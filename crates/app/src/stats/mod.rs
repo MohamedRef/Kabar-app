@@ -665,6 +665,17 @@ fn ActivityCard(overview: Overview, today: LocalDate, total_minutes: u32) -> Ele
                 }
             }
             p { class: "st-summary", "{compare}" }
+            // An empty period says one short lesson is enough; give the way to it.
+            if o.minutes == 0 {
+                button {
+                    class: "tonal st-activity-go",
+                    onclick: move |_| {
+                        let mut screen = ui.screen;
+                        screen.set(Screen::Journey);
+                    },
+                    "{st(lang, S::WeakJourney)}"
+                }
+            }
             p { class: "muted small", "{st(lang, S::AllTime)}: " bdi { "{duration(&ui, total_minutes)}" } }
         }
     }
@@ -788,7 +799,18 @@ fn WordsCard(words: Vec<WordCounts>) -> Element {
         crate::ui::Card { class: "st-card",
             CardHead { title: st(lang, S::WordsTitle), to: Screen::Review }
             if words.is_empty() {
-                p { class: "muted", "{st(lang, S::NoWords)}" }
+                div { class: "empty-state st-words-empty",
+                    span { class: "row-icon", aria_hidden: "true", {crate::icons::nav(Screen::Journey)} }
+                    p { "{st(lang, S::NoWords)}" }
+                    button {
+                        class: "tonal",
+                        onclick: move |_| {
+                            let mut screen = ui.screen;
+                            screen.set(Screen::Journey);
+                        },
+                        "{st(lang, S::WeakJourney)}"
+                    }
+                }
             }
             for w in words.iter().copied() {
                 {
