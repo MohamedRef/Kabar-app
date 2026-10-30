@@ -99,4 +99,3 @@ pub fn current_unit(completed: &BTreeSet<String>, start: Option<&str>, javanese:
         .find(|u| u.lessons.iter().any(|l| l.id == lesson))
         .map(|u| u.id.clone())
 }
-
