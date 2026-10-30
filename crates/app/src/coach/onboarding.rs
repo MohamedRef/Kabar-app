@@ -195,7 +195,7 @@ fn WhyStep(draft: Signal<CoachProfile>) -> Element {
     let chosen = draft.read().motivations.clone();
     let note = draft.read().why_note.clone().unwrap_or_default();
     rsx! {
-        div { class: "row field", role: "group",
+        div { class: "row field", role: "group", aria_label: "{ui.t(Msg::OnbWhy)}",
             for m in labels::MOTIVATIONS {
                 button {
                     key: "{m:?}",
@@ -237,7 +237,7 @@ fn FocusStep(draft: Signal<CoachProfile>) -> Element {
     let ui = use_context::<Ui>();
     let current = draft.read().focus;
     rsx! {
-        div { class: "answers", role: "group",
+        div { class: "answers", role: "group", aria_label: "{ui.t(Msg::OnbFocus)}",
             for f in labels::FOCUSES {
                 button {
                     key: "{f:?}",
@@ -335,7 +335,7 @@ fn StartStep(draft: Signal<CoachProfile>) -> Element {
     let ui = use_context::<Ui>();
     let current = draft.read().start;
     rsx! {
-        div { class: "answers", role: "group",
+        div { class: "answers", role: "group", aria_label: "{ui.t(Msg::OnbStart)}",
             for s in labels::STARTS {
                 button {
                     key: "{s:?}",
