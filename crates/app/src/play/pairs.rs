@@ -127,7 +127,7 @@ fn Intro(
         data.tips.iter().filter(|t| current.is_none_or(|c| c == t.contrast)).cloned().collect();
 
     rsx! {
-        div { class: "card pairs-intro",
+        crate::ui::DivCard { class: "pairs-intro",
             p { class: "muted", "{ui.t(Msg::PairsIntro)}" }
             if !data.reviewed {
                 p {
@@ -189,7 +189,7 @@ fn Intro(
 fn TipCard(tip: Tip) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
-        div { class: "card pairs-tip",
+        crate::ui::DivCard { class: "pairs-tip",
             p { class: "pairs-tip-title",
                 strong { "{ui.t(Msg::PairsTipTitle)} " }
                 bdi { class: "latin", lang: "jv", "{contrast_label(tip.contrast)}" }
@@ -228,7 +228,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
 
     if s.rounds.is_empty() {
         return rsx! {
-            div { class: "card",
+            crate::ui::DivCard {
                 p { "{ui.t(Msg::DetectiveNoRounds)}" }
                 button { onclick: move |_| session.set(None), "{ui.t(Msg::Back)}" }
             }
@@ -253,7 +253,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
     let in_lang = if target.lang == "jv" { Msg::PairsInJavanese } else { Msg::PairsInIndonesian };
 
     rsx! {
-        div { class: "card round pairs-round",
+        crate::ui::DivCard { class: "round pairs-round",
             div { class: "row pairs-meta",
                 super::RoundCount { at: s.index as u64 + 1, total: total as u64 }
                 span { class: "pill small", bdi { class: "latin", lang: "jv", "{contrast_label(round.pair.contrast)}" } }
