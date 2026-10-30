@@ -6,6 +6,8 @@
 //! signal in, events out) so level tests can reuse them without the player.
 
 mod notes;
+mod decision;
+use decision::{ChoiceMark, blank_hugs_next, choice_mark, show_voice_note, voice_note_step};
 mod test_player;
 pub use test_player::PlacementInvite;
 pub(crate) use test_player::item_prompt;
@@ -2202,69 +2204,7 @@ fn Choices(
     }
 }
 
-/// How a graded choice is marked, so right and wrong never rely on colour
-/// alone (WCAG 1.4.1): a glyph in the key-badge slot plus an aria label.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-enum ChoiceMark {
-    /// The right answer, which the learner didn't pick.
-    Right,
-    /// The learner's pick, and it's right.
-    YoursRight,
-    /// The learner's pick, and it's wrong.
-    YoursWrong,
-}
-
-impl ChoiceMark {
-    fn glyph(self) -> &'static str {
-        match self {
-            ChoiceMark::Right | ChoiceMark::YoursRight => "✓",
-            ChoiceMark::YoursWrong => "✗",
-        }
-    }
-
-    fn says(self) -> L {
-        match self {
-            ChoiceMark::Right => L::ChoiceCorrect,
-            ChoiceMark::YoursRight => L::ChoiceYoursCorrect,
-            ChoiceMark::YoursWrong => L::ChoiceYours,
-        }
-    }
-}
-
-/// Where the "no voice, listening skipped" note goes after a skip from `from`
-/// to `to`: the first step the learner actually sees after the first skip.
-/// A run of back-to-back skips carries it forward; later skips leave it put,
-/// so the note shows once per lesson instead of on every step.
-fn voice_note_step(note: Option<Step>, from: Step, to: Step) -> Option<Step> {
-    match note {
-        None => Some(to),
-        Some(at) if at == from => Some(to),
-        kept => kept,
-    }
-}
-
-/// Whether the text after a blank starts with punctuation that should sit
-/// right against the filled word.
-fn blank_hugs_next(after: &str) -> bool {
-    after.starts_with([',', '.', '!', '?', ';', ':', ')', '…'])
-}
-
-/// The note shows on its one step, and again in the summary.
-fn show_voice_note(note: Option<Step>, skips: u32, step: Step) -> bool {
-    skips > 0 && (note == Some(step) || step == Step::Summary)
-}
-
-/// The mark for one option. Nothing is marked until the answer is checked;
-/// other options stay unmarked.
-fn choice_mark(locked: bool, is_answer: bool, is_chosen: bool) -> Option<ChoiceMark> {
-    match (locked, is_answer, is_chosen) {
-        (false, _, _) => None,
-        (true, true, true) => Some(ChoiceMark::YoursRight),
-        (true, true, false) => Some(ChoiceMark::Right),
-        (true, false, true) => Some(ChoiceMark::YoursWrong),
-        (true, false, false) => None,
-    }
-}
+// Stateless choice and voice-note decisions are in decision.rs.
 
 /// Free text: typed, Samsung handwriting keyboard, or DeX keyboard. `lang`
 /// tells the IME which language to expect. Enter checks (the player's key
