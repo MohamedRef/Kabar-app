@@ -45,19 +45,24 @@ impl Trail {
         if let Some(last) = self.last
             && last != now
             && !std::mem::take(&mut self.popping)
-            && remembered(last)
         {
-            self.stack.push(last);
-            if self.stack.len() > DEPTH {
-                self.stack.remove(0);
+            if remembered(last) {
+                self.stack.push(last);
+                if self.stack.len() > DEPTH {
+                    self.stack.remove(0);
+                }
+            }
+            // Today is home: reaching it clears the trail, so Back there
+            // leaves the app. Coming back to a screen already on the trail
+            // closes the loop, so Back never walks round A, B, A, B; this also
+            // drops the origin a closed transient screen (Settings) returns to.
+            if now == Screen::Today {
+                self.stack.clear();
+            } else if let Some(at) = self.stack.iter().position(|s| *s == now) {
+                self.stack.truncate(at);
             }
         }
         self.last = Some(now);
-        // Do not discard older visits to the same screen. A transient
-        // view returning to the previous frame needs only a single pop.
-        if self.stack.last() == Some(&now) {
-            self.stack.pop();
-        }
         !self.stack.is_empty() || now != Screen::Today
     }
 
@@ -145,16 +150,47 @@ mod tests {
     }
 
     #[test]
-    fn repeated_visits_are_unwound_in_chronological_order() {
+    fn going_round_in_circles_never_lengthens_the_way_back() {
         let mut t = Trail::default();
-        for s in [Screen::Today, Screen::Review, Screen::Today, Screen::Review] {
-            t.visit(s);
+        for screen in [
+            Screen::Today,
+            Screen::Journey,
+            Screen::Reader,
+            Screen::Journey,
+            Screen::Reader,
+            Screen::Journey,
+            Screen::Reader,
+        ] {
+            t.visit(screen);
         }
-        assert_eq!(t.back(Screen::Review), Some(Screen::Today));
+        assert_eq!(t.back(Screen::Reader), Some(Screen::Journey));
+        t.visit(Screen::Journey);
+        assert_eq!(t.back(Screen::Journey), Some(Screen::Today));
         t.visit(Screen::Today);
-        assert_eq!(t.back(Screen::Today), Some(Screen::Review));
-        t.visit(Screen::Review);
-        assert_eq!(t.back(Screen::Review), Some(Screen::Today));
+        assert_eq!(t.back(Screen::Today), None);
+    }
+
+    #[test]
+    fn back_on_today_leaves_once_today_is_reached_again() {
+        let mut t = Trail::default();
+        for screen in [Screen::Today, Screen::Journey, Screen::Reader, Screen::Today] {
+            t.visit(screen);
+        }
+        assert!(!t.visit(Screen::Today), "home has nowhere to go back to");
+        assert_eq!(t.back(Screen::Today), None);
+    }
+
+    #[test]
+    fn closing_a_transient_screen_does_not_create_a_ghost_step() {
+        let mut t = Trail::default();
+        t.visit(Screen::Today);
+        t.visit(Screen::Journey);
+        t.visit(Screen::Reader);
+        t.visit(Screen::Lesson);
+        t.visit(Screen::Reader);
+        assert_eq!(t.back(Screen::Reader), Some(Screen::Journey));
+        t.visit(Screen::Journey);
+        assert_eq!(t.back(Screen::Journey), Some(Screen::Today));
         t.visit(Screen::Today);
         assert_eq!(t.back(Screen::Today), None);
     }

@@ -41,7 +41,9 @@ jobs:
       - run: cargo test --workspace
       - uses: actions/setup-node@v5
         with:
-          node-version: '22'
+          node-version: 22
+      - name: Android Back navigation controller regression tests
+        run: node --test crates/app/tests/system-back.test.cjs
       - name: Production Android Back and Settings keyboard regression tests
         run: node --test crates/app/tests/ui-runtime.test.mjs
       - name: Content checks (lessons, tests, glosses, offline pack manifests)

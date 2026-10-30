@@ -14,9 +14,30 @@ if (!window.__kabarBackInit) {
     element.getClientRects().length > 0 &&
     !element.closest('[hidden], [inert], [aria-hidden="true"]') &&
     getComputedStyle(element).visibility !== 'hidden';
-  // Sheets and dialogs render after their parent screen; last visible wins.
-  const topBackControl = () =>
-    [...document.querySelectorAll('[data-back="true"]')].filter(visible).at(-1);
+  // The last DOM node need not be the frontmost sheet. Prefer the dialog
+  // painted on top (its own z-index, or the nearest positioned ancestor),
+  // then the last eligible Back control *inside* it.
+  const layer = (element) => {
+    for (let node = element; node; node = node.parentElement) {
+      const z = getComputedStyle(node).zIndex;
+      if (z !== 'auto' && z !== '') {
+        const index = Number(z);
+        if (Number.isFinite(index)) return index;
+      }
+    }
+    return 0;
+  };
+  const topBackControl = () => {
+    const controls = [...document.querySelectorAll('[data-back="true"]')].filter(visible);
+    const dialogs = [...document.querySelectorAll('[role="dialog"], dialog[open]')].filter(visible);
+    if (dialogs.length) {
+      const front = dialogs.reduce((top, dialog) =>
+        !top || layer(dialog) >= layer(top) ? dialog : top, null);
+      const inside = controls.filter((control) => front.contains(control));
+      if (inside.length) return inside.at(-1);
+    }
+    return controls.at(-1);
+  };
 
   function sync() {
     if (releasing || waitingForScreen) return;
@@ -50,7 +71,7 @@ if (!window.__kabarBackInit) {
     subtree: true,
     childList: true,
     attributes: true,
-    attributeFilter: ['data-back', 'class', 'style', 'hidden', 'inert', 'disabled', 'aria-hidden'],
+    attributeFilter: ['data-back', 'class', 'style', 'hidden', 'inert', 'disabled', 'aria-hidden', 'open'],
   });
 
   window.addEventListener('popstate', () => {
