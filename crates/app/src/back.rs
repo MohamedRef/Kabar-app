@@ -12,49 +12,14 @@
 //! On Today with nothing open no entry is kept, so Back leaves Kabar as
 //! Android users expect.
 
-use std::cell::{Cell, RefCell};
+use std::cell::RefCell;
 use std::rc::Rc;
 
 use dioxus::prelude::*;
 
 use crate::{Screen, Ui};
 
-const BACK_JS: &str = r#"
-window.__kabarBackSend = (m) => dioxus.send(m);
-if (!window.__kabarBackInit) {
-  window.__kabarBackInit = true;
-  // Trust the real WebView history entry rather than a stale local flag.
-  // Each overlay and screen shares one synthetic entry, never an entry per layer.
-  let untrapping = false;
-  window.__kabarTrap = () => {
-    if (history.state?.kabar !== true) history.pushState({ kabar: true }, "");
-  };
-  window.__kabarUntrap = () => {
-    if (history.state?.kabar === true) {
-      untrapping = true;
-      history.back();
-    }
-  };
-  window.addEventListener("popstate", () => {
-    if (untrapping) {
-      untrapping = false;
-      return;
-    }
-    // The last *visible* Back control is topmost. Hidden Settings controls
-    // must not swallow Back while a full-screen update sheet is open.
-    const targets = [...document.querySelectorAll('[data-back="true"]')]
-      .filter((e) => !e.disabled && e.getClientRects().length > 0 && !e.closest('[hidden], [inert]'));
-    const top = targets[targets.length - 1];
-    if (top) {
-      top.click();
-      window.__kabarTrap();
-    } else {
-      window.__kabarBackSend(true);
-    }
-  });
-}
-await new Promise(() => {});
-"#;
+const BACK_JS: &str = include_str!("../assets/system-back.js");
 
 /// How many screens Back remembers.
 const DEPTH: usize = 30;
@@ -101,21 +66,16 @@ impl Trail {
     }
 }
 
-/// Wires Back for the Shell. `overlay_open`: a sheet that Back should close
-/// is showing (it carries its own `data-back` control).
-pub fn use_back(ui: Ui, current: Screen, back_layers: u8) {
+/// One navigation trail for top-level screens. Every visible control with
+/// data-back="true" participates automatically, without feature-specific flags.
+pub fn use_back(ui: Ui, current: Screen) {
     let trail = use_hook(|| Rc::new(RefCell::new(Trail::default())));
-    let armed = use_hook(|| Rc::new(Cell::new(None::<(Screen, u8)>)));
-
-    // Keep a single trap only when Back has an actual destination.
-    let can_back = trail.borrow_mut().visit(current) || back_layers != 0;
-    if armed.replace(Some((current, back_layers))) != Some((current, back_layers)) {
-        document::eval(if can_back {
-            "window.__kabarTrap && window.__kabarTrap();"
-        } else {
-            "window.__kabarUntrap && window.__kabarUntrap();"
-        });
-    }
+    let can_back = trail.borrow_mut().visit(current);
+    document::eval(if can_back {
+        "window.__kabarSetScreenBack && window.__kabarSetScreenBack(true);"
+    } else {
+        "window.__kabarSetScreenBack && window.__kabarSetScreenBack(false);"
+    });
 
     use_future({
         let trail = trail.clone();
@@ -123,16 +83,21 @@ pub fn use_back(ui: Ui, current: Screen, back_layers: u8) {
             let trail = trail.clone();
             async move {
                 let mut eval = document::eval(BACK_JS);
-                // The first screen may already have somewhere to go.
-                if *ui.screen.peek() != Screen::Today || back_layers != 0 {
-                    document::eval("window.__kabarTrap && window.__kabarTrap();");
-                }
-                while eval.recv::<bool>().await.is_ok() {
-                    let now = *ui.screen.peek();
-                    let to = trail.borrow_mut().back(now);
-                    if let Some(to) = to {
-                        let mut screen = ui.screen;
-                        screen.set(to);
+                while let Ok(message) = eval.recv::<String>().await {
+                    if message == "back" {
+                        let now = *ui.screen.peek();
+                        if let Some(to) = trail.borrow_mut().back(now) {
+                            let mut screen = ui.screen;
+                            screen.set(to);
+                        }
+                    }
+                    if message == "ready" || message == "back" {
+                        let can_back = trail.borrow_mut().visit(*ui.screen.peek());
+                        document::eval(if can_back {
+                            "window.__kabarSetScreenBack && window.__kabarSetScreenBack(true);"
+                        } else {
+                            "window.__kabarSetScreenBack && window.__kabarSetScreenBack(false);"
+                        });
                     }
                 }
             }
