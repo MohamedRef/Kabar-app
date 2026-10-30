@@ -137,6 +137,16 @@ button.activity-row:focus-visible { outline-offset: -3px; }
 .empty-state h2 { margin: 0; font-size: var(--fs-lg); }
 .empty-state p { margin: 0; color: var(--muted); max-inline-size: var(--measure-ar); }
 
+/* ---------- Wait word (reader/wait_word.rs) ----------
+   One saved word to recall while something long is on its way. */
+.wait-word { border-block-start: 1px solid var(--line); padding-block-start: var(--sp-2); }
+.wait-word > summary { cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-2); min-block-size: var(--tap); }
+.wait-word-surface { font-family: var(--font-latin); font-weight: 700; }
+.wait-word-body { display: grid; gap: var(--sp-1); padding-block-end: var(--sp-1); }
+.wait-word-body p { margin: 0; }
+.wait-word-gloss { font-weight: 600; }
+.wait-word-sentence { font-family: var(--font-latin); color: var(--muted); }
+
 /* ---------- Answer choice ----------
    button.answer with an optional .answer-mark (letter or glyph). States:
    aria-pressed="true" (picked, not yet checked), .correct, .incorrect.

@@ -326,6 +326,9 @@ pub fn TeachScreen() -> Element {
                     Status::Idle => rsx! {},
                 }
             }
+            if busy {
+                crate::reader::wait_word::WaitWord {}
+            }
         }
 
         if let Some(cur) = current() {
