@@ -69,9 +69,14 @@ impl Saves {
     }
 }
 
+/// Retry outstanding choices, retaining failures until their write succeeds.
+pub fn retry_pending() -> bool {
+    let succeeded = current().is_none_or(Saves::retry);
+    succeeded
+}
+
 #[component]
 pub fn SaveNotice() -> Element {
-    let saves = use_context::<Saves>();
     let pending = use_pending_saves();
     let ui = use_context::<crate::Ui>();
     let (message, retry) = match ui.lang() {
@@ -94,7 +99,7 @@ pub fn SaveNotice() -> Element {
         div { class: "save-notice", role: "alert", aria_atomic: "true",
             p { "{message}" }
             button { class: "secondary save-retry",
-                onclick: move |_| { saves.retry(); },
+                onclick: move |_| { retry_pending(); },
                 "{retry}"
             }
         }
@@ -130,12 +135,12 @@ mod tests {
         let mut dom = VirtualDom::new(app);
         dom.rebuild_in_place();
         assert!(!OBSERVED.get());
-        dom.in_scope(ScopeId::ROOT, || {
+        dom.in_scope(ScopeId::APP, || {
             save("theme", || Err("blocked".into()));
         });
         let _ = dom.render_immediate_to_vec();
         assert!(OBSERVED.get());
-        dom.in_scope(ScopeId::ROOT, || {
+        dom.in_scope(ScopeId::APP, || {
             save("theme", || Ok(()));
         });
         let _ = dom.render_immediate_to_vec();
@@ -149,7 +154,7 @@ mod tests {
         std::fs::write(&folder, "blocked").unwrap();
         let mut dom = VirtualDom::new(app);
         dom.rebuild_in_place();
-        dom.in_scope(ScopeId::ROOT, || {
+        dom.in_scope(ScopeId::APP, || {
             for value in ["normal", "large"] {
                 let path = folder.clone();
                 save("size", move || {

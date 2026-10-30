@@ -48,12 +48,37 @@ inert while Settings is open. Tab stays inside the active dialog, Escape
 uses the visible Back/Close control, and closing restores the previous focus.
 The study or reading screen remains mounted beneath the sheet.
 
+## Preference recovery
+
+`state.rs` owns app-wide state; root re-exports preserve existing imports.
+`persistence/queue.rs` stores only the newest failed action per stable key.
+A successful unrelated write does not hide another failure. Retrying snapshots
+checks each generation before executing, performs IO without a live signal
+borrow, and removes only successful current actions. Pending choices live in
+memory; closing the app can lose them, as the notice explicitly states.
+
+The notice appears in Settings while open and on the main surface otherwise.
+Its live region announces failure and the retry action stays keyboard accessible.
+Capture owned desired values and durable storage handles; do not capture
+screen-local signals that could be dropped when a section closes.
+
+`Ui::update_settings` keeps its initial atomic batch, then records retries per
+changed setting. A retry writes just that row through the existing synced/HLC
+operation and applies just that field to the root settings signal. It never
+restores an old complete settings snapshot over a newer language or other
+preference. Device and collection choices use the same queue with local keys.
+
+Tests cover a real blocked directory, retained prior files where applicable,
+latest-choice replacement, unrelated failures, repeated failed retry and a real
+Dioxus reactive observer. Native WebView layout still requires device QA.
+
 ## Remaining work, in priority order
 
-1. **Visible persistence failures.** `settings/device.rs::save` and collection
-   writes report failures through diagnostics while keeping in-memory state.
-   Introduce a shared save-result state with retry and an honest error near
-   the control. Do not show a success banner before persistence succeeds.
+1. **Feature-specific write recovery.** Shared preference writes now use
+   `persistence/`, but domain writes such as reviews, content edits and exports
+   retain their existing error handling. Give those workflows an appropriate
+   recovery UI; never blindly replay append-only events through the preference
+   queue.
 2. **Smaller feature modules.** `lesson.rs`, `review.rs`, `journey.rs`,
    `store.rs` and `update/mod.rs` combine large rendering and workflow units.
    Extract pure decisions first, then move player stages and persistence

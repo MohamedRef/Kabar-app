@@ -32,8 +32,14 @@ on this PR branch; update this checkpoint with evidence and the next step.
 - Added queue, real IO recovery and reactive Dioxus observer tests.
 - Formatting and whitespace checked. App tests are running in a fresh local
   Rust environment; full validation is pending for this checkpoint.
-- Next: integrate synced per-key preferences and review choices without
-  restoring stale snapshots. Complete strict Clippy, workspace tests and content
-  gates, and record exact results here and in the PR before marking ready.
+- Added synced preference recovery without restoring old whole-settings
+  snapshots. Kabar keeps atomic initial writes and retries per field; Batna
+  review commands change only their own field in current backend settings.
+- Initial local tests caught a test-harness context mistake: Dioxus's app
+  context is `ScopeId::APP`, not the outer boundary `ROOT`. Corrected both
+  harnesses; app tests are rerunning. No failed result is reported as passing.
+- Batna app tests on the recovery implementation: 206 passed.
+- Next: finish strict Clippy, workspace tests and content gates. Review current
+  remote main and concurrent PR overlap again before marking ready.
 - Native Mac/Android visual QA remains outstanding; DOM tests cannot prove
   native layout or renderer recovery on a physical device.

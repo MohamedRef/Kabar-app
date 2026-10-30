@@ -74,8 +74,29 @@ impl Ui {
         let old = self.settings.read().clone();
         let mut new = old.clone();
         f(&mut new);
-        if let Err(e) = db.0.borrow_mut().save_settings(&old, &new) {
-            crate::diag::report!("saving settings failed: {e}");
+        let changes = old.changed_pairs(&new);
+        if changes.is_empty() {
+            return;
+        }
+        let result = db.0.borrow_mut().save_settings(&old, &new).map_err(|e| e.to_string());
+        for (key, value) in changes {
+            let db = db.clone();
+            let settings = self.settings;
+            crate::persistence::record(format!("settings.{key}"), result.clone(), move || {
+                let value_json: serde_json::Value =
+                    serde_json::from_str(&value).map_err(|e| e.to_string())?;
+                db.0.borrow_mut()
+                    .write_synced(
+                        "settings",
+                        key,
+                        kabar_protocol::sync::OpKind::Upsert,
+                        Some(serde_json::json!({ "value": value_json })),
+                    )
+                    .map_err(|e| e.to_string())?;
+                let mut settings = settings;
+                settings.write().apply_pair(key, &value);
+                Ok(())
+            });
         }
         self.settings.set(new);
     }
@@ -101,5 +122,55 @@ impl Ui {
 impl PartialEq for Db {
     fn eq(&self, other: &Self) -> bool {
         Rc::ptr_eq(&self.0, &other.0)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use kabar_core::settings::Theme;
+
+    fn app() -> Element {
+        crate::persistence::use_provide_saves();
+        use_context_provider(|| Db(Rc::new(RefCell::new(Store::open_in_memory().unwrap()))));
+        use_context_provider(|| Ui {
+            settings: Signal::new(Settings::default()),
+            width: Signal::new(WidthClass::Expanded),
+            tablet: Signal::new(false),
+            screen: Signal::new(Screen::Today),
+            lesson: Signal::new(None),
+            lesson_from: Signal::new(Screen::Journey),
+            focus: Signal::new(false),
+        });
+        rsx! {}
+    }
+
+    #[test]
+    fn retry_keeps_the_latest_failed_choice_and_unrelated_newer_settings() {
+        let mut dom = VirtualDom::new(app);
+        dom.rebuild_in_place();
+        dom.in_scope(ScopeId::APP, || {
+            let mut ui = consume_context::<Ui>();
+            let db = consume_context::<Db>();
+            db.0.borrow().refuse_writes();
+            ui.update_settings(&db, |s| s.theme = Theme::Black);
+            ui.update_settings(&db, |s| s.theme = Theme::SystemBlack);
+            ui.update_settings(&db, |s| s.eastern_digits = true);
+            assert!(crate::persistence::use_pending_saves());
+            db.0.borrow().allow_writes();
+            ui.update_settings(&db, |s| s.eastern_digits = false);
+            assert!(crate::persistence::use_pending_saves(), "unrelated success retains theme failure");
+            // Simulate a later sync changing another field, followed by the UI reload.
+            let old = db.0.borrow().settings().unwrap();
+            let next = Settings { word_colours_off: true, ..old.clone() };
+            db.0.borrow_mut().save_settings(&old, &next).unwrap();
+            ui.settings.set(next);
+            assert!(crate::persistence::retry_pending());
+            let saved = db.0.borrow().settings().unwrap();
+            assert_eq!(saved.theme, Theme::SystemBlack);
+            assert!(!saved.eastern_digits);
+            assert!(saved.word_colours_off);
+            assert_eq!(*ui.settings.peek(), saved);
+        });
     }
 }
