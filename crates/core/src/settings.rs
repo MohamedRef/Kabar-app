@@ -239,31 +239,35 @@ impl Settings {
     pub fn from_pairs<'a>(pairs: impl IntoIterator<Item = (&'a str, &'a str)>) -> Self {
         let mut s = Self::default();
         for (key, value) in pairs {
-            match key {
-                keys::UI_LANGUAGE => s.ui_language = serde_json::from_str(value).unwrap_or_default(),
-                keys::THEME => s.theme = serde_json::from_str(value).unwrap_or_default(),
-                keys::EASTERN_DIGITS => s.eastern_digits = serde_json::from_str(value).unwrap_or_default(),
-                keys::WELCOMED => s.welcomed = serde_json::from_str(value).unwrap_or_default(),
-                keys::SOUNDS_OFF => s.sounds_off = serde_json::from_str(value).unwrap_or_default(),
-                keys::CORRECT_SOUND => s.correct_sound = serde_json::from_str(value).unwrap_or_default(),
-                keys::END_SOUND => s.end_sound = serde_json::from_str(value).unwrap_or_default(),
-                keys::HAPTICS_OFF => s.haptics_off = serde_json::from_str(value).unwrap_or_default(),
-                keys::PRONUNCIATION => s.pronunciation = serde_json::from_str(value).unwrap_or_default(),
-                keys::DESIRED_RETENTION => {
-                    s.desired_retention = serde_json::from_str(value).unwrap_or_default()
-                }
-                keys::FSRS_PARAMS => s.fsrs = serde_json::from_str(value).unwrap_or_default(),
-                keys::TRANSLATION => s.translation = serde_json::from_str(value).unwrap_or_default(),
-                keys::WORD_COLOURS_OFF => {
-                    s.word_colours_off = serde_json::from_str(value).unwrap_or_default()
-                }
-                keys::GRAMMAR_HINTS_OFF => {
-                    s.grammar_hints_off = serde_json::from_str(value).unwrap_or_default()
-                }
-                _ => {}
-            }
+            s.apply_pair(key, value);
         }
         s
+    }
+
+    /// Apply a single stored field, retaining every unrelated value.
+    /// Unknown keys are ignored; unreadable values use the field's default.
+    pub fn apply_pair(&mut self, key: &str, value: &str) {
+        match key {
+            keys::UI_LANGUAGE => self.ui_language = serde_json::from_str(value).unwrap_or_default(),
+            keys::THEME => self.theme = serde_json::from_str(value).unwrap_or_default(),
+            keys::EASTERN_DIGITS => self.eastern_digits = serde_json::from_str(value).unwrap_or_default(),
+            keys::WELCOMED => self.welcomed = serde_json::from_str(value).unwrap_or_default(),
+            keys::SOUNDS_OFF => self.sounds_off = serde_json::from_str(value).unwrap_or_default(),
+            keys::CORRECT_SOUND => self.correct_sound = serde_json::from_str(value).unwrap_or_default(),
+            keys::END_SOUND => self.end_sound = serde_json::from_str(value).unwrap_or_default(),
+            keys::HAPTICS_OFF => self.haptics_off = serde_json::from_str(value).unwrap_or_default(),
+            keys::PRONUNCIATION => self.pronunciation = serde_json::from_str(value).unwrap_or_default(),
+            keys::DESIRED_RETENTION => {
+                self.desired_retention = serde_json::from_str(value).unwrap_or_default()
+            }
+            keys::FSRS_PARAMS => self.fsrs = serde_json::from_str(value).unwrap_or_default(),
+            keys::TRANSLATION => self.translation = serde_json::from_str(value).unwrap_or_default(),
+            keys::WORD_COLOURS_OFF => self.word_colours_off = serde_json::from_str(value).unwrap_or_default(),
+            keys::GRAMMAR_HINTS_OFF => {
+                self.grammar_hints_off = serde_json::from_str(value).unwrap_or_default()
+            }
+            _ => {}
+        }
     }
 
     /// The `(key, json value)` pairs that differ between `self` and `other`.
@@ -318,6 +322,15 @@ mod tests {
         assert_eq!(s.ui_language, UiLanguage::ArEg);
         assert_eq!(s.theme, Theme::System);
         assert!(!s.welcomed);
+    }
+
+    #[test]
+    fn applying_one_pair_keeps_unrelated_values() {
+        let mut settings = Settings { eastern_digits: true, welcomed: true, ..Settings::default() };
+        settings.apply_pair("theme", "\"system-black\"");
+        settings.apply_pair("unknown", "true");
+        assert_eq!(settings.theme, Theme::SystemBlack);
+        assert!(settings.eastern_digits && settings.welcomed);
     }
 
     #[test]
