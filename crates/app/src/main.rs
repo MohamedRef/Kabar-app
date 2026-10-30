@@ -368,6 +368,9 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     schedule::use_optimizer(db.clone(), ui, coach);
     use_learner_profile(&db, coach);
     coach::notify::use_local_reminders(&db, coach, ui, prefs);
+    // Android: a renderer reclaimed in the background ends Kabar quietly
+    // instead of crashing it; earlier crashes show in the diagnostics.
+    use_hook(platform::guard_webview);
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
