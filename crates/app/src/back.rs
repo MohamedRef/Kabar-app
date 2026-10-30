@@ -23,16 +23,27 @@ const BACK_JS: &str = r#"
 window.__kabarBackSend = (m) => dioxus.send(m);
 if (!window.__kabarBackInit) {
   window.__kabarBackInit = true;
-  let trapped = false;
+  // Trust the real WebView history entry rather than a stale local flag.
+  // Each overlay and screen shares one synthetic entry, never an entry per layer.
+  let untrapping = false;
   window.__kabarTrap = () => {
-    if (!trapped) {
-      history.pushState({ kabar: true }, "");
-      trapped = true;
+    if (history.state?.kabar !== true) history.pushState({ kabar: true }, "");
+  };
+  window.__kabarUntrap = () => {
+    if (history.state?.kabar === true) {
+      untrapping = true;
+      history.back();
     }
   };
   window.addEventListener("popstate", () => {
-    trapped = false;
-    const targets = document.querySelectorAll('[data-back="true"]');
+    if (untrapping) {
+      untrapping = false;
+      return;
+    }
+    // The last *visible* Back control is topmost. Hidden Settings controls
+    // must not swallow Back while a full-screen update sheet is open.
+    const targets = [...document.querySelectorAll('[data-back="true"]')]
+      .filter((e) => !e.disabled && e.getClientRects().length > 0 && !e.closest('[hidden], [inert]'));
     const top = targets[targets.length - 1];
     if (top) {
       top.click();
@@ -92,14 +103,18 @@ impl Trail {
 
 /// Wires Back for the Shell. `overlay_open`: a sheet that Back should close
 /// is showing (it carries its own `data-back` control).
-pub fn use_back(ui: Ui, current: Screen, overlay_open: bool) {
+pub fn use_back(ui: Ui, current: Screen, back_layers: u8) {
     let trail = use_hook(|| Rc::new(RefCell::new(Trail::default())));
-    let armed = use_hook(|| Rc::new(Cell::new(None::<(Screen, bool)>)));
+    let armed = use_hook(|| Rc::new(Cell::new(None::<(Screen, u8)>)));
 
-    // Re-arm the trap whenever the screen or an overlay changes.
-    let can_back = trail.borrow_mut().visit(current) || overlay_open;
-    if armed.replace(Some((current, overlay_open))) != Some((current, overlay_open)) && can_back {
-        document::eval("window.__kabarTrap && window.__kabarTrap();");
+    // Keep a single trap only when Back has an actual destination.
+    let can_back = trail.borrow_mut().visit(current) || back_layers != 0;
+    if armed.replace(Some((current, back_layers))) != Some((current, back_layers)) {
+        document::eval(if can_back {
+            "window.__kabarTrap && window.__kabarTrap();"
+        } else {
+            "window.__kabarUntrap && window.__kabarUntrap();"
+        });
     }
 
     use_future({
@@ -109,7 +124,9 @@ pub fn use_back(ui: Ui, current: Screen, overlay_open: bool) {
             async move {
                 let mut eval = document::eval(BACK_JS);
                 // The first screen may already have somewhere to go.
-                document::eval("window.__kabarTrap && window.__kabarTrap();");
+                if *ui.screen.peek() != Screen::Today || back_layers != 0 {
+                    document::eval("window.__kabarTrap && window.__kabarTrap();");
+                }
                 while eval.recv::<bool>().await.is_ok() {
                     let now = *ui.screen.peek();
                     let to = trail.borrow_mut().back(now);
