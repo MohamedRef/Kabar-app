@@ -33,7 +33,10 @@ pub fn Nur(text: String, #[props(default)] mood: Mood) -> Element {
 pub fn SizePicker(value: PlanSize, onpick: EventHandler<PlanSize>) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
-        div { class: "segmented size-picker", role: "radiogroup",
+        div {
+            class: "segmented size-picker",
+            role: "radiogroup",
+            aria_label: "{ui.t(Msg::DailySize)}",
             for size in PlanSize::ALL {
                 button {
                     key: "{size:?}",
