@@ -39,6 +39,11 @@ jobs:
       - run: cargo fmt --all --check
       - run: cargo clippy --workspace --all-targets -- -D warnings
       - run: cargo test --workspace
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Android Back navigation controller regression tests
+        run: node --test crates/app/tests/system-back.test.cjs
       - name: Content checks (lessons, tests, glosses, offline pack manifests)
         run: cargo run -p kabar-tools -- validate
       # Advisory only: parallel PRs would race each other on these numbers.
