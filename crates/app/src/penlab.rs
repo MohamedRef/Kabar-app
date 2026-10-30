@@ -42,7 +42,7 @@ pub fn PenLab() -> Element {
     let json = serde_json::to_string_pretty(&report).unwrap_or_default();
 
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { bdi { "Pen Lab" } }
             p { class: "muted", "{ui.t(Msg::PenLabIntro)}" }
         }
@@ -131,7 +131,7 @@ pub fn PenLab() -> Element {
             }
         }
         if !runs.read().is_empty() {
-            div { class: "card",
+            crate::ui::DivCard {
                 h2 { "{ui.t(Msg::PenLabSavedRuns)}" }
                 for run in runs.read().iter() {
                     SavedRun { key: "{run.id}", run: run.clone() }

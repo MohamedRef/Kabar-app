@@ -412,7 +412,7 @@ fn Scenes(persona: Persona, on_back: EventHandler, on_pick: EventHandler<Scenari
         header { class: "ch-bar",
             button { class: "quiet ch-back", "data-back": "true", onclick: move |_| on_back.call(()), "{tt(lang, T::Back)}" }
         }
-        section { class: "card ch-profile",
+        crate::ui::Card { class: "ch-profile",
             div { class: "ch-name",
                 Avatar { name: persona.name.clone(), javanese: is_javanese(&persona) }
                 h2 { bdi { class: "latin", "{persona.name}" } }

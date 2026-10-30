@@ -49,7 +49,7 @@ pub fn OpenBar(sheet: Signal<bool>) -> Element {
 
     rsx! {
         div { class: if shown { "reader-bar-wrap open" } else { "reader-bar-wrap" },
-        div { class: "card reader-bar one-line",
+        crate::ui::DivCard { class: "reader-bar one-line",
             h2 { "{ui.t(Msg::NavReader)}" }
             button {
                 class: "read-aa",
