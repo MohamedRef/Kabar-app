@@ -89,7 +89,15 @@ fn elements(src: &str) -> Vec<Found> {
         };
         if let Some(element) = shared {
             let mut classes = vec!["card".to_owned()];
-            if let Some((_, value)) = line.split_once("class: ") {
+            // Class may be on the next line, which must not hide a
+            // clickable-looking surface from the dead-end audit.
+            let value = line
+                .split_once("class: ")
+                .map(|(_, value)| value)
+                .or_else(|| {
+                    lines.get(line_no + 1).and_then(|next| next.trim_start().strip_prefix("class: "))
+                });
+            if let Some(value) = value {
                 for lit in literals(value) {
                     expand(src, &lit, &mut classes, 0);
                 }
@@ -628,6 +636,15 @@ fn the_bridge_rows_are_coll_items() {
     let src = std::fs::read_to_string(Path::new(env!("CARGO_MANIFEST_DIR")).join("src/play/bridge_deck.rs"))
         .unwrap();
     assert!(src.contains("summary { class: \"coll-btn\""));
+}
+
+#[test]
+fn shared_card_class_on_next_line_is_audited() {
+    let source = "crate::ui::DivCard {\n    class: \"tap extra\",\n    button { \"Open\" }\n}";
+    let cards = elements(source);
+    assert_eq!(cards.len(), 1);
+    assert_eq!(cards[0].element, "div");
+    assert_eq!(cards[0].classes, ["card", "tap", "extra"]);
 }
 
 #[test]
