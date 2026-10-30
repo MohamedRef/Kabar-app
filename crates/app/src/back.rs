@@ -44,17 +44,23 @@ impl Trail {
     fn visit(&mut self, now: Screen) -> bool {
         if let Some(last) = self.last
             && last != now
-            && !std::mem::take(&mut self.popping)
-            && remembered(last)
-            && self.stack.last() != Some(&last)
         {
-            self.stack.push(last);
-            if self.stack.len() > DEPTH {
-                self.stack.remove(0);
+            if self.popping {
+                // Back already consumed one entry; do not record the return trip.
+                self.popping = false;
+            } else if remembered(last) {
+                // Preserve every visit, even when a screen was visited before.
+                self.stack.push(last);
+                if self.stack.len() > DEPTH {
+                    self.stack.remove(0);
+                }
+            } else if self.stack.last() == Some(&now) {
+                // A transient screen (player/Settings) was closed normally.
+                // Its origin is already visible and must not become a ghost Back.
+                self.stack.pop();
             }
         }
         self.last = Some(now);
-        self.stack.retain(|s| *s != now);
         !self.stack.is_empty() || now != Screen::Today
     }
 
@@ -142,12 +148,41 @@ mod tests {
     }
 
     #[test]
-    fn a_screen_is_remembered_once() {
+    fn revisits_follow_the_exact_navigation_order() {
         let mut t = Trail::default();
-        for s in [Screen::Today, Screen::Review, Screen::Today, Screen::Review] {
-            t.visit(s);
+        for screen in [
+            Screen::Today,
+            Screen::Journey,
+            Screen::Reader,
+            Screen::Journey,
+            Screen::Reader,
+        ] {
+            t.visit(screen);
         }
-        assert_eq!(t.back(Screen::Review), Some(Screen::Today));
+        for expected in [
+            Screen::Journey,
+            Screen::Reader,
+            Screen::Journey,
+            Screen::Today,
+        ] {
+            let from = t.last.expect("visited screen");
+            assert_eq!(t.back(from), Some(expected));
+            t.visit(expected);
+        }
+        assert_eq!(t.back(Screen::Today), None);
+    }
+
+    #[test]
+    fn closing_a_transient_screen_does_not_create_a_ghost_step() {
+        let mut t = Trail::default();
+        t.visit(Screen::Today);
+        t.visit(Screen::Journey);
+        t.visit(Screen::Reader);
+        t.visit(Screen::Lesson);
+        t.visit(Screen::Reader);
+        assert_eq!(t.back(Screen::Reader), Some(Screen::Journey));
+        t.visit(Screen::Journey);
+        assert_eq!(t.back(Screen::Journey), Some(Screen::Today));
         t.visit(Screen::Today);
         assert_eq!(t.back(Screen::Today), None);
     }
