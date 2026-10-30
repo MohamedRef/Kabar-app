@@ -65,4 +65,3 @@ pub(super) fn choice_mark(locked: bool, is_answer: bool, is_chosen: bool) -> Opt
         (true, false, false) => None,
     }
 }
-
