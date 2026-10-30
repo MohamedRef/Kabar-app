@@ -126,7 +126,18 @@ pub fn JournalScreen() -> Element {
                 }
             }
             if nothing && filter() != JournalFilter::All {
-                crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "muted", "{ui.t(Msg::JournalNothingHere)}" }
+                // A filter that hides everything offers the way back to all of it.
+                div { class: "empty-state", role: "status",
+                    crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "muted", "{ui.t(Msg::JournalNothingHere)}" }
+                    button {
+                        class: "tonal",
+                        onclick: move |_| {
+                            filter.set(JournalFilter::All);
+                            shown.set(PAGE_DAYS);
+                        },
+                        "{ui.t(Msg::JournalShowAll)}"
+                    }
+                }
             }
             for day in days.iter().take(shown()) {
                 Day {
