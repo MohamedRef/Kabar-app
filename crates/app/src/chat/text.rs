@@ -21,7 +21,8 @@ pub enum T {
     Send,
     Write,
     Type,
-    Typing,
+    PreparingReply,
+    WaitHint,
     Privacy,
     Unverified,
     MoreNatural,
@@ -100,9 +101,12 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (Type, ArEg) => "⌨ بالكيبورد",
         (Type, Ar) => "⌨ بلوحة المفاتيح",
         (Type, En) => "⌨ Type",
-        (Typing, ArEg) => "بيكتب…",
-        (Typing, Ar) => "يكتب…",
-        (Typing, En) => "is typing…",
+        (PreparingReply, ArEg) => "بيحضّر رد…",
+        (PreparingReply, Ar) => "يحضّر ردًا…",
+        (PreparingReply, En) => "is preparing a reply…",
+        (WaitHint, ArEg) => "وأنت مستني، جهّز سؤال بسيط تكمل بيه الحوار.",
+        (WaitHint, Ar) => "أثناء الانتظار، حضّر سؤالًا بسيطًا لتواصل الحوار.",
+        (WaitHint, En) => "While you wait, think of a simple question to keep the conversation going.",
         (Privacy, ArEg) => {
             "رسايلك بتروح لمحرك ذكاء اصطناعي مجاني كنص تعليمي. متكتبش بيانات شخصية حقيقية، والإيميلات وأرقام التليفون بتتشال قبل ما تتبعت."
         }
