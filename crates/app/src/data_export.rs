@@ -109,7 +109,7 @@ pub fn ExportCard() -> Element {
     };
 
     rsx! {
-        div { class: "card export-card",
+        crate::ui::DivCard { class: "export-card",
             h2 { "{ui.t(Msg::ExportTitle)}" }
             p { class: "muted", "{ui.t(Msg::ExportBody)}" }
             div { class: "row",
