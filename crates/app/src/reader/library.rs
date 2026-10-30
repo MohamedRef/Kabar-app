@@ -169,7 +169,7 @@ pub(crate) fn matches(query: &str, fields: &[&str]) -> bool {
 }
 
 /// `id:baca` → (`baca`, Indonesian); `phrase:…` → None.
-fn word_of(lexeme: &str) -> Option<(&str, WordLang)> {
+pub(super) fn word_of(lexeme: &str) -> Option<(&str, WordLang)> {
     match lexeme.split_once(':') {
         Some(("phrase", _)) => None,
         Some(("jv", w)) => Some((w, WordLang::Javanese)),
