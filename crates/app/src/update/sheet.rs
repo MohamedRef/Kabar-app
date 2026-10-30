@@ -89,7 +89,6 @@ fn earlier_divider(
     })
 }
 
-
 fn kind_label(k: ChangeKind) -> U {
     match k {
         ChangeKind::New => U::KindNew,
