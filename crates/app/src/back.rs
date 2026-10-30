@@ -46,7 +46,6 @@ impl Trail {
             && last != now
             && !std::mem::take(&mut self.popping)
             && remembered(last)
-            && self.stack.last() != Some(&last)
         {
             self.stack.push(last);
             if self.stack.len() > DEPTH {
@@ -54,7 +53,11 @@ impl Trail {
             }
         }
         self.last = Some(now);
-        self.stack.retain(|s| *s != now);
+        // Do not discard older visits to the same screen. A transient
+        // view returning to the previous frame needs only a single pop.
+        if self.stack.last() == Some(&now) {
+            self.stack.pop();
+        }
         !self.stack.is_empty() || now != Screen::Today
     }
 
@@ -142,11 +145,15 @@ mod tests {
     }
 
     #[test]
-    fn a_screen_is_remembered_once() {
+    fn repeated_visits_are_unwound_in_chronological_order() {
         let mut t = Trail::default();
         for s in [Screen::Today, Screen::Review, Screen::Today, Screen::Review] {
             t.visit(s);
         }
+        assert_eq!(t.back(Screen::Review), Some(Screen::Today));
+        t.visit(Screen::Today);
+        assert_eq!(t.back(Screen::Today), Some(Screen::Review));
+        t.visit(Screen::Review);
         assert_eq!(t.back(Screen::Review), Some(Screen::Today));
         t.visit(Screen::Today);
         assert_eq!(t.back(Screen::Today), None);
