@@ -211,8 +211,7 @@ pub fn TeachScreen() -> Element {
                 p { class: "sub", "{tr(T::Intro)}" }
             }
         }
-        div { class: "card teach",
-
+        crate::ui::DivCard { class: "teach",
             div { class: "field",
                 label { r#for: "teach-word", "{tr(T::Word)}" }
                 div { class: "row",
@@ -423,7 +422,7 @@ fn Review(
     let checked_too = checked.clone();
 
     rsx! {
-        div { class: "card teach-review",
+        crate::ui::DivCard { class: "teach-review",
             div { class: "row",
                 h2 { bdi { lang: g.lang.code(), class: "latin", "{g.word}" } }
                 if w.is_approved() {
@@ -641,7 +640,7 @@ fn MyDictionary(entries: Vec<TaughtEntry>, on_open: EventHandler<TaughtEntry>) -
     }
     let (drafts, approved): (Vec<_>, Vec<_>) = entries.into_iter().partition(|e| !e.is_approved());
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { "{tr(l, T::MyDictionary)}" }
             if !drafts.is_empty() {
                 h3 { "{tr(l, T::ToReview)}" }
