@@ -19,31 +19,7 @@ use dioxus::prelude::*;
 
 use crate::{Screen, Ui};
 
-const BACK_JS: &str = r#"
-window.__kabarBackSend = (m) => dioxus.send(m);
-if (!window.__kabarBackInit) {
-  window.__kabarBackInit = true;
-  let trapped = false;
-  window.__kabarTrap = () => {
-    if (!trapped) {
-      history.pushState({ kabar: true }, "");
-      trapped = true;
-    }
-  };
-  window.addEventListener("popstate", () => {
-    trapped = false;
-    const targets = document.querySelectorAll('[data-back="true"]');
-    const top = targets[targets.length - 1];
-    if (top) {
-      top.click();
-      window.__kabarTrap();
-    } else {
-      window.__kabarBackSend(true);
-    }
-  });
-}
-await new Promise(() => {});
-"#;
+const BACK_JS: &str = include_str!("../assets/system-back.js");
 
 /// How many screens Back remembers.
 const DEPTH: usize = 30;
@@ -90,36 +66,52 @@ impl Trail {
     }
 }
 
-/// Wires Back for the Shell. `overlay_open`: a sheet that Back should close
-/// is showing (it carries its own `data-back` control).
-pub fn use_back(ui: Ui, current: Screen, overlay_open: bool) {
+/// One navigation trail for top-level screens. Every visible control with
+/// data-back="true" participates automatically, without feature-specific flags.
+pub fn use_back(ui: Ui, current: Screen) {
     let trail = use_hook(|| Rc::new(RefCell::new(Trail::default())));
-    let armed = use_hook(|| Rc::new(Cell::new(None::<(Screen, bool)>)));
-
-    // Re-arm the trap whenever the screen or an overlay changes.
-    let can_back = trail.borrow_mut().visit(current) || overlay_open;
-    if armed.replace(Some((current, overlay_open))) != Some((current, overlay_open)) && can_back {
-        document::eval("window.__kabarTrap && window.__kabarTrap();");
+    // What the script was last told: the Shell re-renders often, and only a
+    // change needs a round trip to the WebView.
+    let told = use_hook(|| Rc::new(Cell::new(None::<bool>)));
+    let can_back = trail.borrow_mut().visit(current);
+    if told.replace(Some(can_back)) != Some(can_back) {
+        tell(can_back);
     }
 
     use_future({
         let trail = trail.clone();
+        let told = told.clone();
         move || {
             let trail = trail.clone();
+            let told = told.clone();
             async move {
                 let mut eval = document::eval(BACK_JS);
-                // The first screen may already have somewhere to go.
-                document::eval("window.__kabarTrap && window.__kabarTrap();");
-                while eval.recv::<bool>().await.is_ok() {
-                    let now = *ui.screen.peek();
-                    let to = trail.borrow_mut().back(now);
-                    if let Some(to) = to {
-                        let mut screen = ui.screen;
-                        screen.set(to);
+                while let Ok(message) = eval.recv::<String>().await {
+                    if message == "back" {
+                        let now = *ui.screen.peek();
+                        if let Some(to) = trail.borrow_mut().back(now) {
+                            let mut screen = ui.screen;
+                            screen.set(to);
+                        }
+                    }
+                    if message == "ready" || message == "back" {
+                        // Always answer: the script waits for this after a Back.
+                        let can_back = trail.borrow_mut().visit(*ui.screen.peek());
+                        told.set(Some(can_back));
+                        tell(can_back);
                     }
                 }
             }
         }
+    });
+}
+
+/// Tells the script whether the screen trail has somewhere to go back to.
+fn tell(can_back: bool) {
+    document::eval(if can_back {
+        "window.__kabarSetScreenBack && window.__kabarSetScreenBack(true);"
+    } else {
+        "window.__kabarSetScreenBack && window.__kabarSetScreenBack(false);"
     });
 }
 

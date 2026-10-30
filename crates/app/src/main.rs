@@ -584,7 +584,7 @@ fn Shell() -> Element {
     #[cfg(all(feature = "desktop", not(target_os = "android")))]
     settings::menu::use_menu_events(ui, settings_nav);
     let settings_open = *settings_nav.open.read();
-    back::use_back(ui, current, settings_open);
+    back::use_back(ui, current);
     update::view::use_android_install(ui);
     update::view::use_update_notices(ui, settings_nav);
     // Full-screen players keep the whole screen; everywhere else on the

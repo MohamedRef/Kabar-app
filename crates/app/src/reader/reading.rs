@@ -53,6 +53,7 @@ pub fn OpenBar(sheet: Signal<bool>) -> Element {
             h2 { "{ui.t(Msg::NavReader)}" }
             button {
                 class: "read-aa",
+                "data-back": if shown { "true" } else { "false" },
                 aria_expanded: if shown { "true" } else { "false" },
                 aria_controls: "read-settings",
                 aria_label: "{ui.t(Msg::ReadingSettings)}",
