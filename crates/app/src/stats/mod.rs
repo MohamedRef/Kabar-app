@@ -260,7 +260,7 @@ pub fn TodayCards() -> Element {
         })
         .collect();
     let daily_summary = bars.iter().map(|b| b.1.as_str()).collect::<Vec<_>>().join(" · ");
-    let week_label = fill(st(lang, S::PeriodWeek), &[("n", &ui.num(7))]);
+    let week_label = fill(st(lang, S::PeriodWeek), &[("n", &ui.num(Period::Week.days() as u64))]);
     let activity_summary = format!(
         "{}: {} · {}: {}",
         st(lang, S::TileDays),
