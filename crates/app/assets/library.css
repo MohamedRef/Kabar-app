@@ -22,6 +22,9 @@
 .segmented.lib-tabs { display: flex; flex-wrap: nowrap; }
 .segmented.lib-tabs > button { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2); }
 .lib-count { font-size: var(--fs-xs); opacity: 0.8; }
+/* Only shown when both saved words and highlighted phrases exist. */
+.segmented.lib-kind-filter { display: flex; flex-wrap: wrap; }
+.segmented.lib-kind-filter > button { flex: 1 1 auto; min-block-size: var(--tap); }
 
 .lib-list { list-style: none; padding: 0; }
 .lib-list > li { display: flex; align-items: center; min-inline-size: 0; }
