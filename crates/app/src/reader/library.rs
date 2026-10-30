@@ -58,6 +58,7 @@ enum L {
     Downloads,
     NoTexts,
     NoMatch,
+    ClearSearch,
     NoWords,
     AllSaved,
     Phrases,
@@ -102,6 +103,9 @@ fn lt(lang: UiLanguage, l: L) -> &'static str {
         (NoMatch, ArEg) => "مالقيناش حاجة بالكلمة دي.",
         (NoMatch, Ar) => "لا نتائج لهذا البحث.",
         (NoMatch, En) => "Nothing matches that.",
+        (ClearSearch, ArEg) => "امسح البحث",
+        (ClearSearch, Ar) => "امسح البحث",
+        (ClearSearch, En) => "Clear search",
         (NoWords, ArEg) => "الكلمات والعبارات اللي تحفظها من القارئ هتلاقيها هنا، ومع كل واحدة جملتها.",
         (NoWords, Ar) => "الكلمات والعبارات التي تحفظها من القارئ تظهر هنا، مع جملة كل منها.",
         (NoWords, En) => "Words and phrases you save from the Reader appear here with their sentences.",
@@ -252,8 +256,8 @@ pub fn Library(recent: Signal<Vec<SavedText>>) -> Element {
                 }
             }
             match current {
-                Tab::Texts => rsx! { TextList { recent, q } },
-                Tab::Words => rsx! { WordList { words: words.read().clone(), taught: *taught.read(), q } },
+                Tab::Texts => rsx! { TextList { recent, q, query } },
+                Tab::Words => rsx! { WordList { words: words.read().clone(), taught: *taught.read(), q, query } },
                 Tab::Downloads => rsx! { crate::packs::settings::OfflinePacks {} },
             }
         }
@@ -295,7 +299,7 @@ fn BridgeEntry() -> Element {
 }
 
 #[component]
-fn TextList(recent: Signal<Vec<SavedText>>, q: String) -> Element {
+fn TextList(recent: Signal<Vec<SavedText>>, q: String, mut query: Signal<String>) -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let st = use_context::<ReaderState>();
@@ -315,7 +319,10 @@ fn TextList(recent: Signal<Vec<SavedText>>, q: String) -> Element {
     }
     if texts.is_empty() {
         return rsx! {
-            crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat lib-empty", role: "status", "{lt(lang, L::NoMatch)}" }
+            div { class: "empty-state", role: "status",
+                crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat lib-empty", "{lt(lang, L::NoMatch)}" }
+                button { class: "tonal", onclick: move |_| query.set(String::new()), "{lt(lang, L::ClearSearch)}" }
+            }
         };
     }
     rsx! {
@@ -384,7 +391,7 @@ fn source_name(src: &str) -> &str {
 }
 
 #[component]
-fn WordList(words: Vec<SavedWord>, taught: usize, q: String) -> Element {
+fn WordList(words: Vec<SavedWord>, taught: usize, q: String, mut query: Signal<String>) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
     let st = use_context::<ReaderState>();
@@ -445,14 +452,16 @@ fn WordList(words: Vec<SavedWord>, taught: usize, q: String) -> Element {
             }
         }
         if shown.is_empty() {
-            crate::ui::Card {
-                element: crate::ui::CardElement::Paragraph,
-                class: "flat lib-empty",
-                role: "status",
-                if q.is_empty() && !has_words && !has_phrases {
-                    "{lt(lang, L::NoWords)}"
-                } else {
-                    "{lt(lang, L::NoMatch)}"
+            div { class: "empty-state", role: "status",
+                crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat lib-empty",
+                    if q.is_empty() && !has_words && !has_phrases {
+                        "{lt(lang, L::NoWords)}"
+                    } else {
+                        "{lt(lang, L::NoMatch)}"
+                    }
+                }
+                if !q.is_empty() {
+                    button { class: "tonal", onclick: move |_| query.set(String::new()), "{lt(lang, L::ClearSearch)}" }
                 }
             }
         } else {
