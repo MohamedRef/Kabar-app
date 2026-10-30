@@ -31,6 +31,23 @@ enum Tab {
     Downloads,
 }
 
+/// Separates saved Reader phrases from individual words without changing
+/// their stable IDs or storage. All is always the default.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum WordGroup {
+    All,
+    Words,
+    Phrases,
+}
+
+fn in_word_group(lexeme: &str, group: WordGroup) -> bool {
+    match group {
+        WordGroup::All => true,
+        WordGroup::Words => !lexeme.starts_with("phrase:"),
+        WordGroup::Phrases => lexeme.starts_with("phrase:"),
+    }
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum L {
     Title,
@@ -42,6 +59,9 @@ enum L {
     NoTexts,
     NoMatch,
     NoWords,
+    AllSaved,
+    Phrases,
+    FilterSaved,
     BridgeTag,
     BridgeTitle,
     BridgeCount,
@@ -82,11 +102,15 @@ fn lt(lang: UiLanguage, l: L) -> &'static str {
         (NoMatch, ArEg) => "مالقيناش حاجة بالكلمة دي.",
         (NoMatch, Ar) => "لا نتائج لهذا البحث.",
         (NoMatch, En) => "Nothing matches that.",
-        (NoWords, ArEg) => {
-            "الكلمات اللي تضيفها للمراجعة من القارئ هتظهر هنا، كل كلمة مع الجملة اللي قابلتها فيها."
-        }
-        (NoWords, Ar) => "الكلمات التي تضيفها إلى المراجعة من القارئ ستظهر هنا، كل كلمة مع جملتها.",
-        (NoWords, En) => "Words you add to review from the Reader show up here, each with its sentence.",
+        (NoWords, ArEg) => "الكلمات والعبارات اللي تحفظها من القارئ هتلاقيها هنا، ومع كل واحدة جملتها.",
+        (NoWords, Ar) => "الكلمات والعبارات التي تحفظها من القارئ تظهر هنا، مع جملة كل منها.",
+        (NoWords, En) => "Words and phrases you save from the Reader appear here with their sentences.",
+        (AllSaved, ArEg | Ar) => "الكل",
+        (AllSaved, En) => "All",
+        (Phrases, ArEg | Ar) => "العبارات",
+        (Phrases, En) => "Phrases",
+        (FilterSaved, ArEg | Ar) => "اعرض المحفوظات",
+        (FilterSaved, En) => "Show saved items",
         (BridgeTag, ArEg | Ar) => "من العربي للإندونيسي",
         (BridgeTag, En) => "From Arabic to Indonesian",
         (BridgeTitle, ArEg | Ar) => "الجسر العربي",
@@ -365,8 +389,13 @@ fn WordList(words: Vec<SavedWord>, taught: usize, q: String) -> Element {
     let lang = ui.lang();
     let st = use_context::<ReaderState>();
     let voice = *st.voice.read();
+    let mut group = use_signal(|| WordGroup::All);
+    let active_group = *group.read();
+    let has_words = words.iter().any(|w| in_word_group(&w.lexeme, WordGroup::Words));
+    let has_phrases = words.iter().any(|w| in_word_group(&w.lexeme, WordGroup::Phrases));
     let shown: Vec<(SavedWord, Option<String>)> = words
         .into_iter()
+        .filter(|w| in_word_group(&w.lexeme, active_group))
         .map(|w| {
             let gloss = word_of(&w.lexeme).and_then(|(word, l)| {
                 glossary()
@@ -398,8 +427,34 @@ fn WordList(words: Vec<SavedWord>, taught: usize, q: String) -> Element {
             }
             }
         }
+        if has_words && has_phrases {
+            div { class: "segmented lib-kind-filter", role: "radiogroup", aria_label: "{lt(lang, L::FilterSaved)}",
+                for (kind, label) in [
+                    (WordGroup::All, L::AllSaved),
+                    (WordGroup::Words, L::Words),
+                    (WordGroup::Phrases, L::Phrases),
+                ] {
+                    button {
+                        key: "{kind:?}",
+                        role: "radio",
+                        aria_checked: if active_group == kind { "true" } else { "false" },
+                        onclick: move |_| group.set(kind),
+                        "{lt(lang, label)}"
+                    }
+                }
+            }
+        }
         if shown.is_empty() {
-            crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat lib-empty", if q.is_empty() { "{lt(lang, L::NoWords)}" } else { "{lt(lang, L::NoMatch)}" } }
+            crate::ui::Card {
+                element: crate::ui::CardElement::Paragraph,
+                class: "flat lib-empty",
+                role: "status",
+                if q.is_empty() && !has_words && !has_phrases {
+                    "{lt(lang, L::NoWords)}"
+                } else {
+                    "{lt(lang, L::NoMatch)}"
+                }
+            }
         } else {
             crate::ui::Card { element: crate::ui::CardElement::List, class: "grouped lib-list",
                 for (w , gloss) in shown {
@@ -466,6 +521,18 @@ mod tests {
         assert!(matches("", &["anything"]));
         assert!(matches("pagi", &["Selamat Pagi"]));
         assert!(!matches("malam", &["Selamat Pagi", ""]));
+    }
+
+    #[test]
+    fn saved_word_groups_separate_words_and_phrases() {
+        for key in ["id:baca", "jv:mangan"] {
+            assert!(in_word_group(key, WordGroup::All));
+            assert!(in_word_group(key, WordGroup::Words));
+            assert!(!in_word_group(key, WordGroup::Phrases));
+        }
+        assert!(in_word_group("phrase:apa kabar", WordGroup::All));
+        assert!(!in_word_group("phrase:apa kabar", WordGroup::Words));
+        assert!(in_word_group("phrase:apa kabar", WordGroup::Phrases));
     }
 
     #[test]
