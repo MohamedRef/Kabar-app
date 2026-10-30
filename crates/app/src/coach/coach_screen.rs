@@ -111,7 +111,7 @@ fn NextStep(profile: CoachProfile, today: LocalDate) -> Element {
                     "{labels::plan_item_text(&ui, &item.kind)} · {labels::minutes(&ui, u32::from(item.minutes))}"
                 }
             }
-            div { class: "card grouped coach-links",
+            crate::ui::DivCard { class: "grouped coach-links",
                 button {
                     class: "activity-row",
                     onclick: move |_| settings.show(Some(crate::settings::Section::Coach)),
@@ -178,7 +178,7 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
     let retention = r.retention.map_or("–".to_string(), |x| ui.percent(x));
 
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { "{ui.t(Msg::ReportTitle)}" }
             if saved.is_some() {
                 div { class: "row", role: "group",
@@ -270,7 +270,7 @@ fn Achievements(today: LocalDate) -> Element {
     let events = coach.events.read();
     let unlocked = rewards::unlocked(&events, today);
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { "{ui.t(Msg::AchievementsTitle)}" }
             ul { class: "achievements",
                 for a in rewards::achievements() {
@@ -319,7 +319,7 @@ fn Warung(today: LocalDate) -> Element {
     let koin_left = ui.num(balance);
 
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { bdi { lang: "id", "Warung" } }
             p { class: "muted small",
                 "{ui.t(Msg::WarungExplain)} · "
