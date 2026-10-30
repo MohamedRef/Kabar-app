@@ -9,7 +9,6 @@ pub enum S {
     Title,
     Back,
     OpenStats,
-    OpenStatsHint,
     // heatmap
     HeatTitle,
     HeatSummary,
@@ -123,9 +122,6 @@ pub fn st(lang: UiLanguage, msg: S) -> &'static str {
         (OpenStats, ArEg) => "كل الإحصائيات",
         (OpenStats, Ar) => "كل الإحصاءات",
         (OpenStats, En) => "All stats",
-        (OpenStatsHint, ArEg) => "أيام المذاكرة، الكلمات اللي بقت ثابتة معاك، والتذكّر.",
-        (OpenStatsHint, Ar) => "أيام الدراسة، والكلمات التي رسخت لديك، ونسبة التذكّر.",
-        (OpenStatsHint, En) => "Study days, the words that have stuck, and how well you remember.",
 
         (HeatTitle, ArEg) => "أيام المذاكرة",
         (HeatTitle, Ar) => "أيام الدراسة",

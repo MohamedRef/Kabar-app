@@ -227,19 +227,54 @@ pub fn TodayCards() -> Element {
             .and_then(|v| v.parse::<LocalDate>().ok())
             .is_some_and(|d| today.days_since(d) < SNOOZE_DAYS)
     });
-    let due = use_memo(move || {
+    // Reuse the same synced-log totals for both the monthly check and
+    // Today's seven-day preview; never count a second, synthetic streak.
+    let snapshot = use_memo(move || {
         let events = coach.events.read();
         let log = db.0.borrow().review_log().unwrap_or_default();
         let totals = core_stats::day_totals(&events, &log, coach.offset());
-        check_is_due(&totals, &level_checks(&db), coach.today())
+        let today = coach.today();
+        (check_is_due(&totals, &level_checks(&db), today), overview::overview(&totals, today, Period::Week))
     });
+    let (due, week) = snapshot.read().clone();
+    let peak = week.buckets.iter().map(|b| b.minutes).max().unwrap_or(0).max(1);
+    let bars: Vec<(String, String, f32, bool)> = week
+        .buckets
+        .iter()
+        .map(|b| {
+            let day = if b.start == today {
+                st(lang, S::Today).to_string()
+            } else {
+                ui.t(labels::weekday(b.start.weekday())).to_string()
+            };
+            let detail = fill(
+                st(lang, S::ActivityBar),
+                &[
+                    ("label", &day),
+                    ("minutes", &labels::minutes(&ui, b.minutes)),
+                    ("reviews", &ui.num(b.reviews)),
+                ],
+            );
+            let height = if b.minutes == 0 { 0.0 } else { (b.minutes as f32 / peak as f32 * 100.0).max(4.0) };
+            (day, detail, height, b.start == today)
+        })
+        .collect();
+    let daily_summary = bars.iter().map(|b| b.1.as_str()).collect::<Vec<_>>().join(" · ");
+    let week_label = fill(st(lang, S::PeriodWeek), &[("n", &ui.num(Period::Week.days() as u64))]);
+    let activity_summary = format!(
+        "{}: {} · {}: {}",
+        st(lang, S::TileDays),
+        ui.num(week.active_days),
+        st(lang, S::TimeTitle),
+        labels::minutes(&ui, week.minutes),
+    );
     let name = coach.profile.read().as_ref().map(|p| p.name.clone()).unwrap_or_default();
     let invite =
         crate::coach::say(&ui, kabar_core::coach::voice::Line::LevelCheckInvite, today, &[("name", &name)]);
     let db_later = use_context::<Db>();
     rsx! {
         style { {STATS_CSS.text()} }
-        if due() && !snoozed() {
+        if due && !snoozed() {
             crate::ui::Card { element: crate::ui::CardElement::Div, class: "st-invite", style: "margin-block-start: 1rem",
                 h3 { "{st(lang, S::CheckTitle)}" }
                 crate::coach::widgets::Nur { text: invite }
@@ -264,11 +299,32 @@ pub fn TodayCards() -> Element {
                 }
             }
         }
-        // The whole card opens Stats; the button's click bubbles up to it.
-        crate::ui::Card { element: crate::ui::CardElement::Div, class: "card-action st-link", style: "margin-block-start: 1rem",
+        // The existing Stats shortcut now shows a lightweight, real-data
+        // preview. The full chart and period controls still live in Stats.
+        crate::ui::Card {
+            element: crate::ui::CardElement::Div,
+            class: "card-action st-today-week",
+            style: "margin-block-start: 1rem",
             onclick: move |_| open(ui, Screen::Stats),
-            p { class: "muted", "{st(lang, S::OpenStatsHint)}" }
-            button { "{st(lang, S::OpenStats)}" }
+            div { class: "st-today-week-head",
+                h3 { "{st(lang, S::ActivityWeek)}" }
+                span { class: "muted small", "{week_label}" }
+            }
+            div { class: "st-bars st-today-bars", role: "img", aria_label: "{daily_summary}",
+                for (i, (name, detail, height, is_today)) in bars.into_iter().enumerate() {
+                    div {
+                        key: "{i}",
+                        class: if is_today { "st-bar-col now" } else { "st-bar-col" },
+                        title: "{detail}",
+                        div { class: "st-bar-track",
+                            span { class: "st-bar", style: "block-size: {height}%" }
+                        }
+                        span { class: "st-bar-label", "{name}" }
+                    }
+                }
+            }
+            p { class: "st-today-week-summary", "{activity_summary}" }
+            button { class: "tonal", "{st(lang, S::OpenStats)}" }
         }
     }
 }
