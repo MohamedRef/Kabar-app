@@ -421,6 +421,7 @@ fn Scenes(persona: Persona, on_back: EventHandler, on_pick: EventHandler<Scenari
             p { class: "ch-register-line muted", Rich { text: pick(&persona.style.register, lang).to_string(), target } }
         }
         h3 { class: "ch-section", "{tt(lang, T::StartWith)}" }
+        p { class: "ch-scene-hint muted small", "{tt(lang, T::SceneHint)}" }
         ul { class: "ch-scenes",
             for s in scenarios(&persona) {
                 {
@@ -439,6 +440,9 @@ fn Scenes(persona: Persona, on_back: EventHandler, on_pick: EventHandler<Scenari
                                         span { class: "pill neutral small latin", "{level_name(&s.level)}" }
                                     }
                                     bdi { class: "latin muted ch-preview", lang: target, "“{s.opener}”" }
+                                    if s.id.is_some() && !pick(&s.opener_meaning, lang).trim().is_empty() {
+                                        span { class: "ch-scene-meaning muted small", "{pick(&s.opener_meaning, lang)}" }
+                                    }
                                 }
                                 span { class: "chev", aria_hidden: "true" }
                             }

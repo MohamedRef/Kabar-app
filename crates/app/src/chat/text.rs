@@ -8,6 +8,7 @@ pub enum T {
     Intro,
     YourChats,
     StartWith,
+    SceneHint,
     FreeChat,
     Javanese,
     Indonesian,
@@ -64,6 +65,11 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (StartWith, ArEg) => "ابدأ مع",
         (StartWith, Ar) => "ابدأ مع",
         (StartWith, En) => "Start with",
+        (SceneHint, ArEg) => "اختار موقف واتدرّب على الرد. ولو حابب تتكلم من غير موقف، اختار دردشة حرة.",
+        (SceneHint, Ar) => "اختر موقفًا وتدرّب على الرد. وللحديث دون موقف محدد، اختر محادثة حرة.",
+        (SceneHint, En) => {
+            "Pick a situation and practise replying, or choose Free chat to talk without a set scene."
+        }
         (FreeChat, ArEg) => "دردشة حرة",
         (FreeChat, Ar) => "محادثة حرة",
         (FreeChat, En) => "Free chat",
