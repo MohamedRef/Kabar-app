@@ -126,7 +126,7 @@ fn Notice(title: &'static str, body: String, id: String) -> Element {
             }
             div { class: "lp-body",
                 div { class: "lp-col",
-                    div { class: "card lp-notice",
+                    crate::ui::DivCard { class: "lp-notice",
                         h2 { "{title}" }
                         p { class: "pre", "{body}" }
                         p { class: "muted mono", bdi { "{id}" } }
@@ -1778,7 +1778,7 @@ fn SummaryView(
                 ContentCheck { lesson_id: lesson.id.clone() }
             }
             if !lesson.new_words.is_empty() {
-                section { class: "card reveal d2",
+                crate::ui::Card { class: "reveal d2",
                     h3 { "{lt(lang, L::NewWords)}" }
                     ul { class: "lp-words",
                         for w in lesson.new_words.iter() {
@@ -1803,7 +1803,7 @@ fn SummaryView(
                 }
             }
             if !mistakes.is_empty() {
-                section { class: "card reveal d3",
+                crate::ui::Card { class: "reveal d3",
                     h3 { "{lt(lang, L::Tomorrow)}" }
                     p { class: "row",
                         for m in mistakes.iter() {
@@ -1813,7 +1813,7 @@ fn SummaryView(
                 }
             }
             if let Some(s) = &lesson.souvenir {
-                section { class: "card lp-souvenir reveal d3",
+                crate::ui::Card { class: "lp-souvenir reveal d3",
                     crate::souvenir_art::SouvenirArt {
                         unit_id: crate::souvenir_art::unit_of(&s.id).to_string(),
                         size: crate::souvenir_art::Size::Card,
