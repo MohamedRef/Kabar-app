@@ -71,8 +71,7 @@ impl Saves {
 
 /// Retry outstanding choices, retaining failures until their write succeeds.
 pub fn retry_pending() -> bool {
-    let succeeded = current().is_none_or(Saves::retry);
-    succeeded
+    current().is_none_or(Saves::retry)
 }
 
 #[component]

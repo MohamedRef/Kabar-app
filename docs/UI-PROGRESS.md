@@ -38,7 +38,10 @@ on this PR branch; update this checkpoint with evidence and the next step.
 - Initial local tests caught a test-harness context mistake: Dioxus's app
   context is `ScopeId::APP`, not the outer boundary `ROOT`. Corrected both
   harnesses; app tests are rerunning. No failed result is reported as passing.
-- Batna app tests on the recovery implementation: 206 passed.
+- App tests: Kabar 316 passed, 3 existing ignored; Batna 206 passed.
+- Strict workspace/all-target Clippy passed for Batna without desktop features.
+  Kabar found one unnecessary temporary return binding; simplified it and
+  queued the same strict check again. Full workspace tests/content are running.
 - Next: finish strict Clippy, workspace tests and content gates. Review current
   remote main and concurrent PR overlap again before marking ready.
 - Native Mac/Android visual QA remains outstanding; DOM tests cannot prove
