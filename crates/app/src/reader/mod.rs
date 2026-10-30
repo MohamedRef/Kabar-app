@@ -472,7 +472,12 @@ pub fn Reader() -> Element {
             }
 
             if let Some(m) = *busy.read() {
-                crate::ui::Card { element: crate::ui::CardElement::Div, class: "", role: "status", "{ui.t(m)}" }
+                // Fetching a page or reading a picture can take a while: say
+                // it opens by itself, so the library stays usable meanwhile.
+                crate::ui::Card { element: crate::ui::CardElement::Div, class: "reader-busy", role: "status", aria_busy: "true",
+                    p { strong { "{ui.t(m)}" } }
+                    p { class: "muted small", "{ui.t(Msg::ReaderBusyHint)}" }
+                }
             }
 
             match open {
