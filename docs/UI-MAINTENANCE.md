@@ -10,7 +10,7 @@ composition. It does not need a class hierarchy to make one card change
 reach the other cards. `crates/core` holds logic, `protocol` holds boundary
 types, and `app` holds rendering, persistence and platform adapters.
 
-`Ui` in `crates/app/src/main.rs` shares settings through Dioxus signals;
+`Ui` in `crates/app/src/state.rs` shares settings through Dioxus signals;
 `Ui::update_settings` is the existing write path. Reuse it rather than
 copying settings into a screen-local state. Device-only preferences belong
 in `settings/device.rs`. A learner's stored content and an app surface are

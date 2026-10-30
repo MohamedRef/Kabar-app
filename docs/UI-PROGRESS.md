@@ -26,9 +26,14 @@ on this PR branch; update this checkpoint with evidence and the next step.
 ## Verification and next step
 
 - Repository conventions and concurrent PR file lists reviewed.
-- No code changes or new test results in this checkpoint commit.
-- Next: implement a small shared preference-save queue and integrate the
-  settings write paths. Run formatting, strict Clippy, workspace tests and
-  content gates; record exact results here and in the PR before marking ready.
+- Implemented the shared latest-choice queue, visible notice, device and collection
+  preference recovery; extracted `state.rs`. Batna file publication now preserves
+  the previous preference file on failure.
+- Added queue, real IO recovery and reactive Dioxus observer tests.
+- Formatting and whitespace checked. App tests are running in a fresh local
+  Rust environment; full validation is pending for this checkpoint.
+- Next: integrate synced per-key preferences and review choices without
+  restoring stale snapshots. Complete strict Clippy, workspace tests and content
+  gates, and record exact results here and in the PR before marking ready.
 - Native Mac/Android visual QA remains outstanding; DOM tests cannot prove
   native layout or renderer recovery on a physical device.

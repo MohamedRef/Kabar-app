@@ -221,6 +221,7 @@ pub fn SettingsSheet() -> Element {
                     span { aria_hidden: "true", "✕" }
                 }
             }
+            crate::persistence::SaveNotice {}
             div { class: "settings-body",
                 if !drilled {
                     SectionList { sections: sections.clone(), current: if compact { None } else { current } }

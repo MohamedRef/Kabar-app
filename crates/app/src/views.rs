@@ -151,12 +151,12 @@ impl Collection {
     }
 
     pub fn set(&self, db: &Db, p: ViewPick) {
-        let saved = serde_json::to_string(&p).map_err(|e| e.to_string()).and_then(|v| {
-            db.0.borrow_mut().set_local_value(&self.store_key(), &v).map_err(|e| e.to_string())
+        let db = db.clone();
+        let key = self.store_key();
+        crate::persistence::save(format!("local.{key}"), move || {
+            let value = serde_json::to_string(&p).map_err(|e| e.to_string())?;
+            db.0.borrow_mut().set_local_value(&key, &value).map_err(|e| e.to_string())
         });
-        if let Err(e) = saved {
-            crate::diag::report!("saving the {} view failed: {e}", self.key);
-        }
         PICKS.write().insert(self.key, p);
     }
 }

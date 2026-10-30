@@ -462,3 +462,13 @@ summary.coll-btn::-webkit-details-marker { display: none; }
 .app[data-appearance="glossy"] .view-seg > button[aria-checked="true"] { background: var(--accent); color: var(--accent-ink); box-shadow: var(--gloss-hi); }
 
 .row-title { font-family: inherit; }
+
+/* Shared preference failure surface, visible only while a save is pending. */
+.save-notice {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3);
+  padding: var(--sp-3); margin-block-end: var(--sp-3);
+  border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--surface);
+}
+.save-notice p { flex: 1 1 16rem; margin: 0; overflow-wrap: anywhere; }
+.save-retry { flex: 0 0 auto; }
+.settings-window > .save-notice { margin: var(--sp-3); }
