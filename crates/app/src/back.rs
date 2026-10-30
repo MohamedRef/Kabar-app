@@ -12,7 +12,7 @@
 //! On Today with nothing open no entry is kept, so Back leaves Kabar as
 //! Android users expect.
 
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 
 use dioxus::prelude::*;
@@ -70,17 +70,20 @@ impl Trail {
 /// data-back="true" participates automatically, without feature-specific flags.
 pub fn use_back(ui: Ui, current: Screen) {
     let trail = use_hook(|| Rc::new(RefCell::new(Trail::default())));
+    // What the script was last told: the Shell re-renders often, and only a
+    // change needs a round trip to the WebView.
+    let told = use_hook(|| Rc::new(Cell::new(None::<bool>)));
     let can_back = trail.borrow_mut().visit(current);
-    document::eval(if can_back {
-        "window.__kabarSetScreenBack && window.__kabarSetScreenBack(true);"
-    } else {
-        "window.__kabarSetScreenBack && window.__kabarSetScreenBack(false);"
-    });
+    if told.replace(Some(can_back)) != Some(can_back) {
+        tell(can_back);
+    }
 
     use_future({
         let trail = trail.clone();
+        let told = told.clone();
         move || {
             let trail = trail.clone();
+            let told = told.clone();
             async move {
                 let mut eval = document::eval(BACK_JS);
                 while let Ok(message) = eval.recv::<String>().await {
@@ -92,16 +95,23 @@ pub fn use_back(ui: Ui, current: Screen) {
                         }
                     }
                     if message == "ready" || message == "back" {
+                        // Always answer: the script waits for this after a Back.
                         let can_back = trail.borrow_mut().visit(*ui.screen.peek());
-                        document::eval(if can_back {
-                            "window.__kabarSetScreenBack && window.__kabarSetScreenBack(true);"
-                        } else {
-                            "window.__kabarSetScreenBack && window.__kabarSetScreenBack(false);"
-                        });
+                        told.set(Some(can_back));
+                        tell(can_back);
                     }
                 }
             }
         }
+    });
+}
+
+/// Tells the script whether the screen trail has somewhere to go back to.
+fn tell(can_back: bool) {
+    document::eval(if can_back {
+        "window.__kabarSetScreenBack && window.__kabarSetScreenBack(true);"
+    } else {
+        "window.__kabarSetScreenBack && window.__kabarSetScreenBack(false);"
     });
 }
 
