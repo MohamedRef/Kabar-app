@@ -10,6 +10,13 @@ pub fn Card(#[props(default)] class: &'static str, children: Element) -> Element
     rsx! { section { class: "card {class}", {children} } }
 }
 
+/// A content surface that retains its native `div` semantics. Use this for
+/// existing div cards; `Card` retains `section` semantics instead.
+#[component]
+pub fn DivCard(#[props(default)] class: &'static str, children: Element) -> Element {
+    rsx! { div { class: "card {class}", {children} } }
+}
+
 /// A navigation row: one button owns the whole hit area and accessible
 /// name. Settings and other grouped lists share its markup and CSS.
 #[component]
