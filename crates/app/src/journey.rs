@@ -28,7 +28,9 @@ use kabar_protocol::lesson::Souvenir;
 mod text;
 mod today;
 use today::find_unit;
-pub use today::{current_unit, learner_levels, lesson_title, next_lesson_in, start_level, unit_refresher, unit_title};
+pub use today::{
+    current_unit, learner_levels, lesson_title, next_lesson_in, start_level, unit_refresher, unit_title,
+};
 
 use text::{T, tt};
 
