@@ -674,15 +674,7 @@ fn Shell() -> Element {
     #[cfg(all(feature = "desktop", not(target_os = "android")))]
     settings::menu::use_menu_events(ui, settings_nav);
     let settings_open = *settings_nav.open.read();
-    let settings_detail = settings_open && settings_nav.section.read().is_some();
-    let updates_open = use_context::<update::sheet::UpdateSheetNav>().0.read().is_some();
-    let more_open = *use_context::<more::MoreNav>().0.read();
-    // Each nested layer must re-arm Android Back when it opens or closes.
-    let back_layers = u8::from(settings_open)
-        | (u8::from(settings_detail) << 1)
-        | (u8::from(updates_open) << 2)
-        | (u8::from(more_open) << 3);
-    back::use_back(ui, current, back_layers);
+    back::use_back(ui, current);
     update::view::use_android_install(ui);
     update::view::use_update_notices(ui, settings_nav);
     // Full-screen players keep the whole screen; everywhere else on the
