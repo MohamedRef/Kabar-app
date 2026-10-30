@@ -361,10 +361,7 @@ mod tests {
         d.refresh(&id("mac"), "h1", "h4", late + 1000).unwrap();
         // Presenting h4 confirms the rotation; h1 becomes retired.
         d.refresh(&id("mac"), "h4", "h5", late + 2000).unwrap();
-        assert_eq!(
-            d.refresh(&id("mac"), "h1", "h6", late + 3000),
-            Err(RefreshError::Reused)
-        );
+        assert_eq!(d.refresh(&id("mac"), "h1", "h6", late + 3000), Err(RefreshError::Reused));
         assert!(!d.is_active(&id("mac")).unwrap());
     }
 
