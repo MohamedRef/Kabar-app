@@ -610,7 +610,7 @@ fn SeedInvite() -> Element {
     let card = open()
         .and_then(|w| seed_bridge_deck().into_iter().find(|c| c.kind == CardKind::Bridge && c.word == w));
     rsx! {
-        div { class: "card review-seed",
+        crate::ui::DivCard { class: "review-seed",
             h2 { "{ui.t(Msg::RevSeedTitle)}" }
             p { {ui.t(Msg::RevSeedBody).replace("{n}", &count)} }
             ul { class: "seed-words", lang: "id",
@@ -675,7 +675,7 @@ fn ReviewHome() -> Element {
     let nothing_due = stats.due + stats.new_available == 0;
 
     rsx! {
-        div { class: "card",
+        crate::ui::DivCard {
             h2 { "{ui.t(Msg::NavReview)}" }
             // Due and new start a classic round; the rest open Stats.
             div { class: "rev-stats",
@@ -706,7 +706,7 @@ fn ReviewHome() -> Element {
                 }
             }
         }
-        div { class: "card",
+        crate::ui::DivCard {
             h3 { class: "rev-h3", "{ui.t(Msg::RevForecast)}" }
             // The week's bars open Stats, where the forecast runs further.
             button {
@@ -1723,7 +1723,7 @@ fn Done() -> Element {
 
     if summary.answers == 0 {
         return rsx! {
-            div { class: "card rev-done",
+            crate::ui::DivCard { class: "rev-done",
                 p { "{ui.t(Msg::RevNothingHere)}" }
                 if let Some(when) = &next {
                     p { class: "muted", {ui.t(Msg::RevNextReview).replace("{when}", when)} }
@@ -1734,7 +1734,7 @@ fn Done() -> Element {
     }
 
     rsx! {
-        div { class: "card rev-done",
+        crate::ui::DivCard { class: "rev-done",
             h2 { "{ui.t(Msg::RevDoneTitle)}" }
             div { class: "rev-stats",
                 Stat { label: Msg::RevCards, value: ui.num(summary.answers as u64), accent: false }
