@@ -46,6 +46,19 @@ numbered items. Passing these component tests does not certify pixel layout.
 The remaining facade code owns integration and shared state. Tests live in
 `tests.rs`; they are not replaced with new tests of the extraction itself.
 
+## Item 3: rendered Settings browser checks (2026-10-30)
+
+- [x] Export actual Settings/Look components and production styles through a
+  test-only SSR renderer with synthetic preferences and an in-memory store.
+- [x] Add pinned Chromium regression coverage for computed layout, focus and
+  keyboard behavior across widths, themes, appearances, text sizes and RTL/LTR.
+- The phone's normal 15px density is intentional; the suite verifies it along
+  with 16px on wider layouts and the 125% larger-text setting.
+- Browser run results and screenshots belong to this item's CI; see
+  [SETTINGS-BROWSER-QA.md](SETTINGS-BROWSER-QA.md) for exact limitations.
+- [ ] Real-device and broader-screen verification remains separate. SSR
+  callbacks are not hydrated and physical-device QA is not claimed.
+
 ## Implementation checkpoint
 
 - [x] Follow-up: migrated 11 more static content surfaces across Studio, Diagnostics, Pen Lab, Chat, Reader and Screens (9 files). The follow-up brings the explicitly counted static-card migrations from 67 to 78; controls and original div/section tags are preserved.
