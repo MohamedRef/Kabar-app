@@ -26,6 +26,10 @@
 .us-head h2 { margin: 0; font-size: 1.28rem; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
 .us-head p { margin: .15rem 0 0; font-size: .875rem; color: var(--muted); }
 .us-head .icon-button { flex: none; }
+.us-sr-only {
+  position: absolute; inline-size: 1px; block-size: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
 .us-body {
   flex: 1; min-block-size: 0; overflow-y: auto; overscroll-behavior: contain;
   padding: 1rem 1.1rem 1.5rem;
