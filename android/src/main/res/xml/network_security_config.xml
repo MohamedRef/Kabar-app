@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Explicit network policy: release connections require TLS. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+    <!-- The local development/test server may use HTTP loopback. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain>localhost</domain>
+        <domain>127.0.0.1</domain>
+    </domain-config>
+</network-security-config>
