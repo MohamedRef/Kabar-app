@@ -80,7 +80,10 @@ fn export_browser_fixtures() {
                         let html = dioxus::ssr::render(&dom);
                         assert!(html.contains("settings-window") && html.contains("text-sample"));
                         if width >= 600 {
-                            assert!(html.contains("settings-index"), "wide Settings must render its section index");
+                            assert!(
+                                html.contains("settings-index"),
+                                "wide Settings must render its section index"
+                            );
                         }
                         let file = format!(
                             "{width}-{}-{}-{}-{}.html",
