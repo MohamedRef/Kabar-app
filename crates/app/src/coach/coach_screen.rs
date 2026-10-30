@@ -95,7 +95,7 @@ fn NextStep(profile: CoachProfile, today: LocalDate) -> Element {
     };
     let reminders_on = profile.reminder_style != ReminderStyle::Off;
     rsx! {
-        section { class: "card coach-next", aria_labelledby: "coach-next-title",
+        crate::ui::Card { class: "coach-next", aria_labelledby: "coach-next-title",
             h2 { id: "coach-next-title",
                 if next.is_some() { "{tt(lang, T::CoachNextTitle)}" } else { "{tt(lang, T::CoachDoneTitle)}" }
             }
@@ -429,7 +429,7 @@ fn JournalLink() -> Element {
     let ui = use_context::<Ui>();
     rsx! {
         // The whole card opens the Journal; the button's click bubbles up to it.
-        div { class: "card card-action journal-link",
+        crate::ui::Card { element: crate::ui::CardElement::Div, class: "card-action journal-link",
             onclick: move |_| {
                 let mut screen = ui.screen;
                 screen.set(Screen::Journal);

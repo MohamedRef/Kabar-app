@@ -223,7 +223,7 @@ pub fn UpdatesCard() -> Element {
 
     rsx! {
         style { {UPDATE_CSS} }
-        div { class: "card update-now",
+        crate::ui::Card { element: crate::ui::CardElement::Div, class: "update-now",
             if let Some(off) = s.off {
                 p { strong { "{ut(lang, U::OffShort)}" } }
                 p { class: "muted settings-hint", role: "status",
@@ -284,7 +284,7 @@ pub fn UpdatesCard() -> Element {
         }
 
         div { class: "section-head", h2 { "{ut(lang, U::OnThisDevice)}" } }
-        div { class: "card grouped",
+        crate::ui::Card { element: crate::ui::CardElement::Div, class: "grouped",
             button { class: "activity-row", onclick: open_history,
                 span { class: "row-icon", aria_hidden: "true", {app_icon} }
                 span { class: "row-copy",
@@ -328,7 +328,7 @@ pub fn UpdatesCard() -> Element {
 
         if s.off.is_none() {
             div { class: "section-head", h2 { "{ut(lang, U::HowItWorks)}" } }
-            div { class: "card",
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "",
                 div { class: "field",
                     span { class: "label", id: "update-mode-label",
                         "{ut(lang, U::Mode)}"
@@ -522,7 +522,7 @@ pub fn UpdateBanner() -> Element {
         }
         return rsx! {
             style { {UPDATE_CSS} }
-            section { class: "card update-banner", role: "status",
+            crate::ui::Card { class: "update-banner", role: "status",
                 div { class: "ub-text",
                     p { strong { "{ut(lang, U::ContentWaitingShort)}" } }
                     p { class: "muted small", "{ut(lang, U::ReopenHint)}" }
@@ -552,7 +552,7 @@ pub fn UpdateBanner() -> Element {
     let sheet = try_use_context::<UpdateSheetNav>();
     rsx! {
         style { {UPDATE_CSS} }
-        section { class: "card update-banner", role: "status",
+        crate::ui::Card { class: "update-banner", role: "status",
             div { class: "ub-text",
                 p {
                     strong { "{ut(lang, headline)}" }

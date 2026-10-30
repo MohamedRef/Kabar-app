@@ -65,7 +65,7 @@ pub fn Pasar() -> Element {
             p { class: "muted", "{ui.t(Msg::PasarIntro)}" }
         }
         if data.items.is_empty() {
-            div { class: "card", p { "{ui.t(Msg::PasarNoItems)}" } }
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(Msg::PasarNoItems)}" } }
         }
         div { class: "play-grid",
             for item in data.items.iter() {
@@ -169,7 +169,7 @@ fn Haggle(current: Signal<Option<Match>>) -> Element {
                     }
                 }
             }
-            div { class: "card transcript", role: "log", aria_live: "polite",
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "transcript", role: "log", aria_live: "polite",
                 SellerBubble { index: 0, turn: m.opening.clone(), lang, revealed }
                 for (i , (mv , turn)) in m.game.turns().iter().enumerate() {
                     div { key: "{i}",

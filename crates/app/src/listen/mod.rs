@@ -445,7 +445,7 @@ fn more_episodes(ui: &Ui, n: usize) -> String {
 fn Broken(id: String, error: String) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
-        li { class: "card lx-card locked lx-broken",
+        crate::ui::Card { element: crate::ui::CardElement::ListItem, class: "lx-card locked lx-broken",
             strong { bdi { class: "mono", "{id}" } }
             span { class: "muted small", "{tt(ui.lang(), T::Broken)}" }
             span { class: "mono small", dir: "ltr", "{error}" }

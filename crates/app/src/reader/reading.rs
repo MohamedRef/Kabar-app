@@ -99,7 +99,7 @@ fn Sheet() -> Element {
     let set = move |next: Reading| prefs.set_reading(&db, next);
 
     rsx! {
-        div { id: "read-settings", class: "card read-settings", role: "group",
+        crate::ui::Card { element: crate::ui::CardElement::Div, id: "read-settings", class: "read-settings", role: "group",
             aria_label: "{ui.t(Msg::ReadingSettings)}",
             p { class: "read-preview", lang: "id", dir: "ltr", "Apa kabar? Kabar baik, terima kasih." }
             VoicePicker {}

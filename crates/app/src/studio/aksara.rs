@@ -467,7 +467,7 @@ pub fn AksaraScreen() -> Element {
                 p { class: "muted small", role: "status", "{tr(l, p)}" }
             }
             if let Some(o) = outcome() {
-                div { class: "card aksara-result", role: "status",
+                crate::ui::Card { element: crate::ui::CardElement::Div, class: "aksara-result", role: "status",
                     if done {
                         p { class: "ok",
                             if mode() == Mode::Trace { "{tr(l, T::TraceDone)}" } else { "{tr(l, T::WriteDone)}" }

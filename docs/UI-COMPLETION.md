@@ -1,6 +1,27 @@
 # Shared UI completion: Kabar
 
-Updated: 2026-10-30. Branch: `improve/shared-ui-completion` (PR #483).
+Updated: 2026-10-30. Current branch: `improve/interactive-cards-20261030`.
+Previous checkpoint: merged PR #483.
+
+## Item 1: interactive and dynamic cards (2026-10-30)
+
+- [x] Migrated 63 remaining native base-card surfaces, including dynamic
+  classes, clickable buttons, status/alert regions, labelled sections and keyed
+  list items. No native `.card` markup remains outside the shared factory.
+- [x] Added `CardElement` for the original native tags. Global HTML/ARIA/data
+  attributes pass through; typed click and drag handlers retain their callbacks.
+- [x] `DivCard` delegates to the same Card implementation. `CardButton` retains
+  native keyboard, disabled and form-button behavior with one explicit type.
+- [x] Added rendered-production-component tests for semantic roots, attributes,
+  dynamic status, event registration, keyed input retention and form type.
+- [x] Kept shared components visible to the dead-end scanner and added a guard
+  against copying base card markup back into individual features.
+- [x] Local strict workspace/all-target Clippy, full workspace tests, content
+  validation and production-script Node tests passed without desktop features.
+  Batna packs also build and round-trip. Full native/target CI runs on the PR.
+
+The existing physical-device and browser-layout gaps below remain separate
+numbered items. Passing these component tests does not certify pixel layout.
 
 ## Implementation checkpoint
 
@@ -12,10 +33,10 @@ Updated: 2026-10-30. Branch: `improve/shared-ui-completion` (PR #483).
 - [x] Extracted daily Journey route helpers to `journey/today.rs` and lesson decisions to `lesson/decision.rs`, retaining existing public call sites.
 - [x] Added VirtualDom smoke coverage exercising actual shared components with button, label, text input, and action row.
 - [x] Added stylesheet contract assertions for responsive width classes, appearance, high-contrast black theme, reduced motion/transparency, and shared surface tokens.
-- [ ] Complete migration of every remaining eligible surface; do not change an interactive button, `li`, ARIA attributes, keyed node, or custom element into a generic card.
+- [x] Completed the remaining base-card migration using explicit native semantics; interactive, keyed, labelled and list surfaces keep their original role.
 - [ ] Further split large independent workflows (`lesson.rs`, `review.rs`, `store.rs`, `update/mod.rs`) in small tested changes.
 - [ ] Add true browser/WebView layout, focus and keyboard tests on rendered production views. VirtualDom and source CSS tests do **not** prove pixel layouts or keyboard navigation.
-- [ ] Verify latest-head CI and do real device QA before marking ready.
+- [ ] Complete the separate physical-device matrix below. Current-item CI status is recorded on its PR.
 
 ## Quality and rollout
 
@@ -27,4 +48,7 @@ Kabar and Batna maintain independent sources and release lifecycles; copy proven
 
 ## Next change boundaries
 
-Keep the PR in draft until tests, target coverage and native verification are complete. Preserve saved data formats, cloud behavior, preferences, existing events and content approvals. Do not merge or deploy as part of this checkpoint.
+Each numbered item is checked, committed and uploaded separately. The current
+item covers the shared card contract; later workflow, browser, device and write
+feedback work remains explicitly tracked. CI status belongs to the current PR
+head. No merge, release or deployment is implied by uploading a checkpoint.

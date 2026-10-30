@@ -184,7 +184,7 @@ pub fn RupiahReader() -> Element {
     let Some(drill) = s.drills.get(s.index).cloned() else {
         return rsx! {
             PlayHeader { title: Msg::RupiahTitle }
-            div { class: "card", p { "{ui.t(Msg::DetectiveNoRounds)}" } }
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(Msg::DetectiveNoRounds)}" } }
         };
     };
     let last = s.index + 1 == s.drills.len();

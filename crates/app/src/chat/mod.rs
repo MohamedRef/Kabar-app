@@ -392,7 +392,7 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
                         }
                     }
                     Err((id, e)) => rsx! {
-                        li { key: "{id}", class: "card ch-broken",
+                        crate::ui::Card { element: crate::ui::CardElement::ListItem, key: "{id}", class: "ch-broken",
                             p { "{tt(lang, T::Broken)}" }
                             p { class: "muted small latin", dir: "ltr", "{id}: {e}" }
                         }
@@ -428,7 +428,7 @@ fn Scenes(persona: Persona, on_back: EventHandler, on_pick: EventHandler<Scenari
                     let pick_it = s.clone();
                     rsx! {
                         li { key: "{key}",
-                            button { class: "card tap ch-scene", onclick: move |_| on_pick.call(pick_it.clone()),
+                            crate::ui::CardButton { class: "tap ch-scene", onclick: move |_| on_pick.call(pick_it.clone()),
                                 span { class: "ch-who",
                                     span { class: "ch-name",
                                         if s.id.is_none() {
@@ -645,8 +645,8 @@ fn Chat(
             {
                 let pid = p.id.clone();
                 rsx! {
-                    button {
-                        class: "card tap ch-context",
+                    crate::ui::CardButton {
+                        class: "tap ch-context",
                         aria_label: "{p.name}: {tt(lang, T::AboutPartner)}",
                         onclick: move |_| on_persona.call(pid.clone()),
                         Avatar { name: p.name.clone(), javanese: is_javanese(p), mood: mood_of(busy, &all) }

@@ -165,7 +165,7 @@ pub fn Today() -> Element {
                             div { class: "section-head",
                                 h2 { id: "today-rest-title", "{tt(ui.lang(), T::ThenRows)}" }
                             }
-                            ul { class: "plan card grouped",
+                            crate::ui::Card { element: crate::ui::CardElement::List, class: "plan grouped",
                                 for (i , item) in plan.items.iter().enumerate() {
                                     if Some(i) != next {
                                         PlanRow {
@@ -232,7 +232,7 @@ fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> E
         let more = journey_next(&db, coach, &completed);
         let title = more.as_deref().and_then(crate::journey::lesson_title);
         return rsx! {
-            section { class: "card hero today-hero done", aria_labelledby: "hero-title",
+            crate::ui::Card { class: "hero today-hero done", aria_labelledby: "hero-title",
                 p { class: "hero-eyebrow", "{tt(lang, T::PlanEyebrow)}" }
                 h2 { id: "hero-title", class: "hero-title", "{tt(lang, T::AllDoneTitle)}" }
                 {time}
@@ -274,7 +274,7 @@ fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> E
     let kind = step.kind.clone();
     let id = step.id.clone();
     rsx! {
-        section { class: "card hero today-hero", aria_labelledby: "hero-title",
+        crate::ui::Card { class: "hero today-hero", aria_labelledby: "hero-title",
             p { class: "hero-eyebrow",
                 span { class: "hero-icon", aria_hidden: "true", {item_icon(&step.kind)} }
                 "{tt(lang, T::PlanEyebrow)}"
@@ -336,7 +336,7 @@ fn WelcomeBack(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Elem
     let args = [("name", profile.name.as_str()), ("minutes", minutes.as_str())];
     let first = plan.items.first().map(|i| i.kind.clone());
     rsx! {
-        section { class: "card hero today-hero welcome-back", aria_labelledby: "welcome-back-title",
+        crate::ui::Card { class: "hero today-hero welcome-back", aria_labelledby: "welcome-back-title",
             h2 { id: "welcome-back-title", "{ui.t(Msg::WelcomeBackTitle)}" }
             Nur { text: say(&ui, Line::PlanComeback, today, &args) }
             h3 { class: "welcome-back-plan-title",
