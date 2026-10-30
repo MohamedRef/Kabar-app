@@ -27,21 +27,20 @@ if (!window.__kabarBackInit) {
     }
     return 0;
   };
-  const topBackControl = () => {
+  const topDialog = () =>
+    [...document.querySelectorAll('[role="dialog"], dialog[open]')].filter(visible)
+      .reduce((top, dialog) => !top || layer(dialog) >= layer(top) ? dialog : top, null);
+  const topBackControl = (dialog = topDialog()) => {
     const controls = [...document.querySelectorAll('[data-back="true"]')].filter(visible);
-    const dialogs = [...document.querySelectorAll('[role="dialog"], dialog[open]')].filter(visible);
-    if (dialogs.length) {
-      const front = dialogs.reduce((top, dialog) =>
-        !top || layer(dialog) >= layer(top) ? dialog : top, null);
-      const inside = controls.filter((control) => front.contains(control));
-      if (inside.length) return inside.at(-1);
-    }
-    return controls.at(-1);
+    // Never select a Back action from underneath a transitioning modal.
+    return dialog ? controls.filter((control) => dialog.contains(control)).at(-1) : controls.at(-1);
   };
 
   function sync() {
     if (releasing || waitingForScreen) return;
-    const wantsBack = screenCanBack || !!topBackControl();
+    // A dialog keeps Android history armed even if its button briefly hides.
+    const dialog = topDialog();
+    const wantsBack = screenCanBack || !!dialog || !!topBackControl(dialog);
     if (wantsBack && !trapped()) {
       history.pushState({ ...(history.state || {}), kabarBackTrap: true }, '');
     } else if (!wantsBack && trapped()) {
@@ -80,9 +79,13 @@ if (!window.__kabarBackInit) {
       scheduleSync();
       return;
     }
-    const top = topBackControl();
+    const dialog = topDialog();
+    const top = topBackControl(dialog);
     if (top) {
       top.click();
+      scheduleSync();
+    } else if (dialog) {
+      // Do not navigate the screen underneath a dialog in transition.
       scheduleSync();
     } else if (screenCanBack) {
       // A screen change is asynchronous. Wait for Rust to confirm the

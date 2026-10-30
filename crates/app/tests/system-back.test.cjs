@@ -149,3 +149,56 @@ test('a sheet closes before going back to an earlier screen', async () => {
   assert.deepEqual(pressed, ['sheet']);
   assert.deepEqual(app.received, ['ready']);
 });
+
+test('Changes > Updates > Settings > Home survives hidden modal controls', async () => {
+  const app = start();
+  const steps = [];
+  const settings = app.add({ dialog: true, z: 41 });
+  const closeSettings = app.add({ back: true, parentElement: settings, click: () => {
+    steps.push('home'); settings.active = false; closeSettings.active = false; app.mutation();
+  } });
+  const backSection = app.add({ back: true, parentElement: settings, click: () => {
+    steps.push('settings'); backSection.active = false; app.mutation();
+  } });
+  const changes = app.add({ dialog: true, z: 61 });
+  const closeChanges = app.add({ back: true, parentElement: changes, click: () => {
+    steps.push('updates'); closeChanges.hidden = true; app.mutation();
+  } });
+  closeSettings.hidden = true;
+  backSection.hidden = true;
+  app.mutation();
+  await app.flush();
+  app.history.back();
+  await app.flush();
+  assert.deepEqual(steps, ['updates']);
+  assert.equal(app.history.current, 1, 'do not exit while dialogs are still mounted');
+  changes.active = false;
+  closeChanges.active = false;
+  closeSettings.hidden = false;
+  backSection.hidden = false;
+  app.mutation();
+  await app.flush();
+  app.history.back();
+  await app.flush();
+  assert.deepEqual(steps, ['updates', 'settings']);
+  assert.equal(app.history.current, 1);
+  app.history.back();
+  await app.flush();
+  assert.deepEqual(steps, ['updates', 'settings', 'home']);
+  assert.equal(app.history.current, 0);
+});
+
+test('modal without a visible Back control cannot pass Back to underlying screen', async () => {
+  const app = start();
+  const actions = [];
+  app.add({ back: true, click: () => actions.push('underlying screen') });
+  const modal = app.add({ dialog: true, z: 60 });
+  app.add({ back: true, parentElement: modal, hidden: true });
+  app.setScreenBack(true);
+  await app.flush();
+  app.history.back();
+  await app.flush();
+  assert.deepEqual(actions, []);
+  assert.deepEqual(app.received, ['ready']);
+  assert.equal(app.history.current, 1);
+});
