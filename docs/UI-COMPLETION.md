@@ -4,6 +4,8 @@ Updated: 2026-10-30. Branch: `improve/shared-ui-completion` (PR #483).
 
 ## Implementation checkpoint
 
+- [x] Follow-up: migrated 11 more static content surfaces across Studio, Diagnostics, Pen Lab, Chat, Reader and Screens (9 files). The follow-up brings the explicitly counted static-card migrations from 67 to 78; controls and original div/section tags are preserved.
+- [x] Added scanner regression coverage for shared Card/DivCard classes on the next source line.
 - [x] Incorporated merged preference-recovery and Android Back changes from `main`.
 - [x] Added semantic shared content surfaces: `ui::Card` retains `section`, `ui::DivCard` retains `div`. Existing `ui::ActionRow` keeps its accessible native button.
 - [x] Migrated a first set of static cards in Lesson, Review, Journey-related Today, Play, Listen, Reader, Stats, Teach, and other eligible views without flattening child controls. Interactive cards and elements with special native attributes remain in place.
