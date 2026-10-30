@@ -5,8 +5,8 @@
 //! The exercise views below are standalone components (exercise + `Draft`
 //! signal in, events out) so level tests can reuse them without the player.
 
-mod notes;
 mod decision;
+mod notes;
 use decision::{ChoiceMark, blank_hugs_next, choice_mark, show_voice_note, voice_note_step};
 mod test_player;
 pub use test_player::PlacementInvite;
