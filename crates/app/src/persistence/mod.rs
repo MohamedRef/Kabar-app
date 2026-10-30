@@ -78,19 +78,8 @@ pub fn retry_pending() -> bool {
 pub fn SaveNotice() -> Element {
     let pending = use_pending_saves();
     let ui = use_context::<crate::Ui>();
-    let (message, retry) = match ui.lang() {
-        kabar_core::locale::UiLanguage::ArEg => (
-            "فيه إعدادات ما اتحفظتش. اختياراتك شغالة دلوقتي، بس ممكن تضيع لما تقفل التطبيق.",
-            "حاول تحفظ تاني",
-        ),
-        kabar_core::locale::UiLanguage::Ar => {
-            ("تعذّر حفظ بعض الإعدادات. اختياراتك مطبّقة الآن، وقد تُفقد عند إغلاق التطبيق.", "إعادة محاولة الحفظ")
-        }
-        kabar_core::locale::UiLanguage::En => (
-            "Some preferences could not be saved. Your choices apply now but may be lost when you close the app.",
-            "Retry saving",
-        ),
-    };
+    let message = ui.t(crate::i18n::Msg::SaveFailed);
+    let retry = ui.t(crate::i18n::Msg::SaveRetry);
     if !pending {
         return rsx! {};
     }

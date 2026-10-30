@@ -680,6 +680,9 @@ pub enum Msg {
     PronHowToRead,
     PronGuideIntro,
     PronGuideNote,
+    // Preference save recovery
+    SaveFailed,
+    SaveRetry,
 }
 
 pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
@@ -2829,6 +2832,16 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PronGuideNote, En) => {
             "r is rolled as in Arabic, and a final h is light. The script is an approximation to get you started: listen to the audio and trust your ear when they differ. Javanese pronunciations aren't reviewed yet."
         }
+        (SaveFailed, ArEg) => {
+            "فيه إعدادات ما اتحفظتش. اختياراتك شغالة دلوقتي، بس ممكن تضيع لما تقفل التطبيق."
+        }
+        (SaveFailed, Ar) => "تعذّر حفظ بعض الإعدادات. اختياراتك مطبّقة الآن، وقد تُفقد عند إغلاق التطبيق.",
+        (SaveFailed, En) => {
+            "Some preferences could not be saved. Your choices apply now but may be lost when you close the app."
+        }
+        (SaveRetry, ArEg) => "حاول تحفظ تاني",
+        (SaveRetry, Ar) => "إعادة محاولة الحفظ",
+        (SaveRetry, En) => "Retry saving",
     }
 }
 
