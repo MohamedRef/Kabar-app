@@ -16,16 +16,37 @@ function start() {
   const callbacks = [];
   const window = { addEventListener: (event, fn) => listeners.set(event, fn) };
   const states = [null];
+  // Chromium's history intervention: an entry the page pushed past with no
+  // user activation since its last push is skipped by WebView.goBack(), and
+  // canGoBack() ignores it, so wry then lets Android close the app.
+  const skip = [false];
   let current = 0;
+  let activated = false;
+  const go = (to) => {
+    current = to;
+    queueMicrotask(() => listeners.get('popstate')?.());
+  };
   const history = {
     get state() { return states[current]; },
     get current() { return current; },
-    pushState(state) { states.splice(++current, Infinity, state); },
-    back() {
-      if (current === 0) return;
-      current -= 1;
-      queueMicrotask(() => listeners.get('popstate')?.());
+    get length() { return states.length; },
+    pushState(state) {
+      if (!activated) skip[current] = true;
+      activated = false;
+      states.splice(current + 1, Infinity, state);
+      skip.splice(current + 1, Infinity, false);
+      current += 1;
     },
+    back() { if (current > 0) go(current - 1); },
+    forward() { if (current + 1 < states.length) go(current + 1); },
+    // What the Android Back gesture does (WryActivity.onKeyDown).
+    system() {
+      for (let to = current - 1; to >= 0; to--) {
+        if (!skip[to]) { go(to); return 'back'; }
+      }
+      return 'exit';
+    },
+    tap() { activated = true; },
   };
   const document = {
     documentElement: {},
@@ -201,4 +222,76 @@ test('modal without a visible Back control cannot pass Back to underlying screen
   assert.deepEqual(actions, []);
   assert.deepEqual(app.received, ['ready']);
   assert.equal(app.history.current, 1);
+});
+
+test('Back after closing Changes in Settings never leaves the app (WebView skips untapped entries)', async () => {
+  const app = start();
+  const steps = [];
+  // Tap the gear: Settings opens straight into its Updates section.
+  app.history.tap();
+  const settings = app.add({ dialog: true, z: 41 });
+  const closeSettings = app.add({ back: true, parentElement: settings, click: () => {
+    steps.push('closed settings'); settings.active = false; closeSettings.active = false; app.mutation();
+  } });
+  const section = app.add({ back: true, parentElement: settings, click: () => {
+    steps.push('section list'); section.active = false; app.mutation();
+  } });
+  await app.flush();
+  // Tap "What's new": the Changes sheet opens over Settings.
+  app.history.tap();
+  const changes = app.add({ dialog: true, z: 61 });
+  const closeChanges = app.add({ back: true, parentElement: changes, click: () => {
+    steps.push('closed changes'); changes.active = false; closeChanges.active = false; app.mutation();
+  } });
+  await app.flush();
+  // From here on only Back gestures, no taps.
+  for (const expected of ['closed changes', 'section list', 'closed settings']) {
+    assert.equal(app.history.system(), 'back', `Back must not leave the app before "${expected}"`);
+    await app.flush();
+    assert.equal(steps.at(-1), expected);
+  }
+  assert.deepEqual(app.received, ['ready']);
+  assert.equal(app.history.system(), 'exit', 'Back on Today leaves the app');
+});
+
+test('screen Back twice in a row keeps a way back each time', async () => {
+  const app = start();
+  app.history.tap();
+  app.setScreenBack(true);
+  await app.flush();
+  for (let n = 0; n < 3; n++) {
+    assert.equal(app.history.system(), 'back');
+    await app.flush();
+    assert.equal(app.received.at(-1), 'back');
+    app.setScreenBack(n < 2);
+    await app.flush();
+  }
+  assert.equal(app.history.system(), 'exit');
+});
+
+test('a sheet opened without a tap after one closed by X still takes Back', async () => {
+  const app = start();
+  app.history.tap();
+  const first = app.add({ dialog: true, z: 50 });
+  const closeFirst = app.add({ back: true, parentElement: first, click: () => {
+    first.active = false; closeFirst.active = false; app.mutation();
+  } });
+  await app.flush();
+  app.history.tap();
+  closeFirst.click();
+  await app.flush();
+  assert.equal(app.history.current, 0, 'nothing left open: history is released');
+  // A sheet that opens by itself (no tap), e.g. What's new after an update.
+  const steps = [];
+  const second = app.add({ dialog: true, z: 50 });
+  const closeSecond = app.add({ back: true, parentElement: second, click: () => {
+    steps.push('closed'); second.active = false; closeSecond.active = false; app.mutation();
+  } });
+  await app.flush();
+  assert.equal(app.history.current, 1, 're-armed on the entry already ahead');
+  assert.equal(app.history.length, 2, 'no new history entry');
+  assert.equal(app.history.system(), 'back');
+  await app.flush();
+  assert.deepEqual(steps, ['closed']);
+  assert.equal(app.history.system(), 'exit');
 });
