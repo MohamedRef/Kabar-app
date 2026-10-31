@@ -146,6 +146,7 @@ fn appearance_label(a: Appearance) -> S {
     match a {
         Appearance::Calm => S::AppearanceCalm,
         Appearance::Glossy => S::AppearanceGlossy,
+        Appearance::LiquidGlass => S::AppearanceLiquidGlass,
     }
 }
 

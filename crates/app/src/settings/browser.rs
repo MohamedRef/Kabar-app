@@ -49,6 +49,7 @@ fn fixture() -> Element {
     rsx! {
         style { {crate::MAIN_CSS.text()} }
         style { {crate::COMPONENTS_CSS.text()} }
+        style { {crate::LIQUID_GLASS_CSS.text()} }
         style { {kabar_core::theme::stylesheet()} }
         style { {crate::fonts::css()} }
         div { class: "app", lang: ui.lang().tag(), dir: ui.lang().dir().as_str(),

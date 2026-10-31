@@ -66,6 +66,7 @@ pub use state::{Db, Ui};
 const MAIN_CSS: Css = css!("assets/main.css");
 /// Shared components and the Glossy layer (docs/DESIGN.md § Components).
 const COMPONENTS_CSS: Css = css!("assets/components.css");
+const LIQUID_GLASS_CSS: Css = css!("assets/liquid-glass.css");
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Screen {
@@ -328,6 +329,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         style { {annotated::CSS.text()} }
         style { {reader::grammar::CSS.text()} }
         style { {sheet::CSS.text()} }
+        style { {LIQUID_GLASS_CSS.text()} }
         style { {ui_fonts} }
         style { {misc_art::paper_css()} }
         div {

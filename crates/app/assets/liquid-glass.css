@@ -1,0 +1,66 @@
+/* Opt-in CSS interpretation of Liquid Glass (not Apple's native material).
+   Token-based, RTL-safe, no new assets or animations. Content stays solid. */
+.app[data-appearance="liquid-glass"] {
+  --liquid-highlight: inset 0 1px 0 color-mix(in srgb, white 35%, transparent);
+  --liquid-rim: color-mix(in srgb, var(--line) 65%, white);
+  --liquid-shadow: 0 8px 24px rgb(0 0 0 / 0.14);
+  --radius-card: 20px;
+}
+.app[data-appearance="liquid-glass"]:not([data-theme="black"]) {
+  background-image:
+    radial-gradient(ellipse at 6% 4%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 48%),
+    var(--batik);
+}
+.app[data-appearance="liquid-glass"] :is(.nav, .top-bar) {
+  background: var(--surface);
+  border-color: var(--liquid-rim);
+  box-shadow: var(--liquid-highlight);
+}
+.app[data-appearance="liquid-glass"] .nav-item[aria-current="page"] .nav-icon {
+  border-radius: var(--radius-pill);
+  background: var(--soft);
+  color: var(--primary);
+  box-shadow: var(--liquid-highlight);
+}
+.app[data-appearance="liquid-glass"] :is(.top-bar .gear-button, .round-back, .bsheet-close) {
+  border-radius: 50%;
+  box-shadow: var(--liquid-highlight);
+}
+.app[data-appearance="liquid-glass"] :is(.more-sheet, .settings-head) {
+  background: var(--surface);
+  border-color: var(--liquid-rim);
+  box-shadow: var(--liquid-highlight), var(--shadow-raised);
+}
+.app[data-appearance="liquid-glass"] .bsheet {
+  background: var(--sheet);
+  border-color: var(--line);
+}
+/* Reuse the existing floating pill geometry without changing tab order. */
+.app[data-appearance="liquid-glass"][data-width="compact"] .nav {
+  border-color: var(--liquid-rim);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--liquid-highlight), var(--liquid-shadow);
+}
+/* Don't blur the true-black theme: preserve pure-black OLED surfaces. */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .app[data-appearance="liquid-glass"]:not([data-theme="black"])[data-width="compact"] :is(.nav, .top-bar) {
+    background: color-mix(in srgb, var(--surface) 87%, transparent);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+  }
+  .app[data-appearance="liquid-glass"]:not([data-theme="black"]) .more-sheet {
+    background: color-mix(in srgb, var(--surface) 94%, transparent);
+    -webkit-backdrop-filter: blur(12px) saturate(1.1);
+    backdrop-filter: blur(12px) saturate(1.1);
+  }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active) {
+  .app[data-appearance="liquid-glass"] { background-image: var(--batik); }
+  .app[data-appearance="liquid-glass"] :is(.nav, .top-bar, .more-sheet, .settings-head) {
+    background: var(--surface);
+    border-color: var(--line);
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

@@ -33,7 +33,7 @@ Canonical layouts to reach for (Material 3): **list-detail** (Journey stops,
 Chat personas, Reader library), **supporting pane** (Lesson notes, Reader word
 card, Review session side), **feed** (Play, Watch & listen).
 
-## Redesign 2026-10-29 (Calm / Glossy)
+## Redesign 2026-10-29 (Calm / Glossy / Liquid Glass)
 
 The design handoff lives in the project files
 (`design/redesign-2026-10-29/`). Kabar's new Light and Dark palettes replace
@@ -46,11 +46,20 @@ surfaces) or Glossy · Material You (tonal surfaces, a top-edge highlight,
 22 px cards, pill main actions, blur only on the phone bar and the More
 sheet). It is a device preference (`pref.appearance` in the local `meta`
 table, never synced), shown in Settings › Look as "نمط الواجهة", and reaches
-CSS as `.app[data-appearance="calm|glossy"]`. A missing or unknown value is
+CSS as `.app[data-appearance="calm|glossy|liquid-glass"]`. A missing or unknown value is
 Calm. Switching only flips the attribute, so no screen loses its state.
 Glossy goes solid under `prefers-reduced-transparency`, adds no animation,
 and leaves True black's pixels off (no gradients on `data-theme="black"`).
 It does not read wallpaper colours.
+
+**Liquid Glass** is an optional iOS-inspired *CSS* appearance, not Apple's
+native refraction effect. The theme-aware compact nav and header use frosted
+fills and highlights, with solid lesson/reader/answer surfaces. The compact
+nav retains its existing responsive pill and touch targets. The More sheet is
+the only additional blurred popover, never the word sheet or reading content.
+The true-black theme remains solid and black to protect OLED behaviour.
+Browser support, reduced transparency, high contrast and forced colours all
+fall back to solid surfaces. See `assets/liquid-glass.css`.
 
 ### Colour roles (`kabar_core::theme`, contrast-tested)
 
