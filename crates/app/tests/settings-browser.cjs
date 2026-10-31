@@ -45,7 +45,7 @@ async function run() {
           modal: dialog.getAttribute('aria-modal'),
           appearance: root.getAttribute('data-appearance'),
           settingsBackground: getComputedStyle(dialog).backgroundImage,
-          settingsCardBackground: getComputedStyle(pane.querySelector('.card')).backgroundImage,
+          settingsCardBackground: getComputedStyle(pane.querySelector('.card')).backgroundColor,
           settingsCardShadow: getComputedStyle(pane.querySelector('.card')).boxShadow,
           role: dialog.getAttribute('role'),
           sample: document.querySelector('.text-sample')?.textContent.trim(),
@@ -59,13 +59,13 @@ async function run() {
           assert.equal(layout.settingsBackground, 'none', `${name}: AMOLED background remains solid`);
         } else {
           assert.ok(layout.settingsBackground.includes('radial-gradient'), `${name}: Settings must show Liquid Glass`);
-          assert.ok(layout.settingsCardBackground.includes('linear-gradient'), `${name}: cards need a visible glass fill`);
+          assert.ok(/^(rgba|color)\(.*(\/|,)\s*0?\.\d+\)$/.test(layout.settingsCardBackground), `${name}: cards must be translucent glass, got ${layout.settingsCardBackground}`);
         }
         assert.notEqual(layout.settingsCardShadow, 'none', `${name}: card glass outline must be visible`);
         const calmBackground = await page.locator('.settings-pane .card').evaluate(el => {
           const root = document.querySelector('.app');
           root.setAttribute('data-appearance', 'calm');
-          const before = getComputedStyle(el).backgroundImage;
+          const before = getComputedStyle(el).backgroundColor;
           root.setAttribute('data-appearance', 'liquid-glass');
           return before;
         });

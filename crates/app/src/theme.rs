@@ -137,6 +137,39 @@ mod tests {
     }
 
     #[test]
+    fn surface_ink_stays_solid_under_liquid_glass() {
+        // Liquid Glass turns --surface translucent (assets/liquid-glass.css).
+        // Text, fills and strokes painted in the surface colour (white-ish
+        // ink on indigo or green) read the solid copy instead, or they fade.
+        let mut dirs = vec![std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("assets")];
+        dirs.push(std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("src/update"));
+        for dir in dirs {
+            for entry in std::fs::read_dir(&dir).expect("css dir") {
+                let path = entry.expect("dir entry").path();
+                if path.extension().is_none_or(|e| e != "css") {
+                    continue;
+                }
+                let css = std::fs::read_to_string(&path).expect("readable css");
+                for prop in ["color", "fill", "stroke"] {
+                    let bare = format!("{prop}: var(--surface)");
+                    let hit = css.match_indices(&bare).any(|(i, _)| {
+                        // `background-color:` and `border-color:` are surfaces, not ink.
+                        !css[..i].ends_with('-')
+                    });
+                    assert!(!hit, "{}: use `{prop}: var(--glass-solid, var(--surface))`", path.display());
+                }
+            }
+        }
+        let glass = include_str!("../assets/liquid-glass.css");
+        assert!(glass.contains("--glass-solid: var(--surface);"));
+        for fallback in
+            ["prefers-reduced-transparency: reduce", "prefers-contrast: more", "forced-colors: active"]
+        {
+            assert!(glass.contains(fallback), "liquid-glass.css needs a solid fallback for {fallback}");
+        }
+    }
+
+    #[test]
     fn every_theme_gets_a_batik_tile() {
         use kabar_core::settings::Theme;
         let css = stylesheet();
