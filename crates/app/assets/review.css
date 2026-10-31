@@ -33,7 +33,7 @@ button.seed-word {
   font-weight: 600;
   -webkit-tap-highlight-color: transparent;
 }
-button.seed-word[aria-pressed="true"] { background: var(--gold); color: var(--surface); }
+button.seed-word[aria-pressed="true"] { background: var(--gold); color: var(--glass-solid, var(--surface)); }
 @media (hover: hover) and (pointer: fine) {
   button.seed-word:hover { border-color: var(--gold); }
 }

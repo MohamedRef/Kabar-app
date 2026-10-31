@@ -53,15 +53,25 @@ and leaves True black's pixels off (no gradients on `data-theme="black"`).
 It does not read wallpaper colours.
 
 **Liquid Glass** is an optional iOS-inspired *CSS* appearance, not Apple's
-native refraction effect. Theme-aware gradient backdrops, visibly layered
-translucent cards and collections, a stronger selected tab and frosted chrome
-make the choice distinct from Calm and Glossy. Settings is also glass-themed
-because it occupies the whole phone screen while choosing an appearance.
-Study answers keep their existing semantic colours. The Reader word sheet
-stays opaque; blur is limited to small chrome and Settings cards.
-True black retains a pure black page with subtle accent rims for controls.
-Browser support, reduced transparency, high contrast and forced colours fall
-back to solid surfaces. See `assets/liquid-glass.css`.
+native refraction. It reads as glass because there is something behind it:
+- a fixed colour field from the theme's accent, primary, gold and indigo
+  (`--glass-field`) behind the page, Settings and the lesson player;
+- below `.app`, `--surface` and `--surface-2` are redefined as translucent
+  copies of the theme's solid values (`--glass-solid`, `--glass-solid-2`), so
+  every card, row, input and control turns to glass without per-screen CSS.
+  Overlays (sheets, dialogs, menus, popovers) get the solid values back;
+- a bright specular rim and top highlight (`--glass-rim`, `--glass-glint`,
+  subtler on dark themes via `light-dark()`), pill controls and a tinted lens
+  for the selected tab and segment;
+- real blur only where content scrolls under a floating surface: the bottom
+  bar, sticky bars, Settings' header, the lesson footer and sheets.
+
+Ink painted in the surface colour (white text on indigo or green) must read
+`var(--glass-solid, var(--surface))`; a test fails on a bare
+`color: var(--surface)`. Answers keep their semantic fills; primary buttons
+stay solid. True black keeps a pure black page with accent rims only.
+Reduced transparency, more contrast and forced colours fall back to Calm's
+solid surfaces. See `assets/liquid-glass.css`.
 
 ### Colour roles (`kabar_core::theme`, contrast-tested)
 

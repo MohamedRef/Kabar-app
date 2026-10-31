@@ -15,7 +15,7 @@
 .journey-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: space-between; }
 .seg { display: inline-flex; gap: 0.25rem; padding: 0.25rem; border-radius: 999px; background: var(--surface-2); }
 .seg button { border: 0; background: transparent; display: inline-flex; align-items: center; gap: 0.4rem; }
-.seg button[aria-pressed="true"] { background: var(--indigo); color: var(--surface); }
+.seg button[aria-pressed="true"] { background: var(--indigo); color: var(--glass-solid, var(--surface)); }
 .seg-icon { display: inline-flex; }
 .suitcase-toggle, .map-toggle { display: inline-flex; align-items: center; gap: 0.4rem; }
 .journey-tools { display: flex; gap: 0.4rem; margin-inline-start: auto; }
@@ -50,7 +50,7 @@
   flex: none; display: grid; place-items: center; inline-size: 2.6rem; block-size: 2.6rem;
   border-radius: 50%; background: var(--surface-2); color: var(--indigo);
 }
-.level-head[data-done="true"] .level-icon { background: var(--sawah); color: var(--surface); }
+.level-head[data-done="true"] .level-icon { background: var(--sawah); color: var(--glass-solid, var(--surface)); }
 .level-head h2 { margin: 0; font-size: 1.3rem; line-height: 1.3; }
 .level-head .pill { vertical-align: middle; font-size: 0.8rem; }
 .level-sub { margin: 0.1rem 0 0; font-size: 0.9rem; }
@@ -105,7 +105,7 @@
 .lesson:hover { background: var(--surface-2); }
 .lesson-dot {
   flex: none; display: grid; place-items: center; inline-size: 1.5rem; block-size: 1.5rem; border-radius: 50%;
-  border: 2px solid var(--line); color: var(--surface);
+  border: 2px solid var(--line); color: var(--glass-solid, var(--surface));
 }
 .lesson-dot svg { inline-size: 0.95rem; block-size: 0.95rem; stroke-width: 3; }
 .lesson[data-kind="review"] .lesson-dot { border-style: dashed; }
@@ -177,7 +177,7 @@
 .jm-route .branch { stroke: var(--rail); stroke-width: 3; stroke-dasharray: 9 4; }
 .jm-route .rail-bed { stroke: var(--rail-bed); stroke-width: 8; }
 .jm-level .unit-loop { stroke: var(--indigo); stroke-opacity: 0.45; stroke-width: 1.5; stroke-dasharray: 3 4; }
-.jm-level .unit-dot { fill: var(--surface); stroke: var(--indigo); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.jm-level .unit-dot { fill: var(--glass-solid, var(--surface)); stroke: var(--indigo); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .jm-level .unit-dot.done { fill: var(--sawah); stroke: var(--sawah); }
 /* Pins too close to a neighbour (Bali, Lombok) sit a little apart at the
    default zoom and slide home as the map zooms in: see `nudge_style`. */
@@ -195,9 +195,9 @@
   paint-order: stroke; stroke: var(--sea); stroke-width: 1px; stroke-linejoin: round;
 }
 .jm-level[data-state="done"] .pin-disc { fill: var(--sawah); stroke: var(--sawah); }
-.jm-level[data-state="done"] .pin-code { fill: var(--surface); }
+.jm-level[data-state="done"] .pin-code { fill: var(--glass-solid, var(--surface)); }
 .jm-level[data-state="current"] .pin-disc { fill: var(--dawn); stroke: var(--dawn); }
-.jm-level[data-state="current"] .pin-code { fill: var(--surface); }
+.jm-level[data-state="current"] .pin-code { fill: var(--glass-solid, var(--surface)); }
 .jm-pin[aria-pressed="true"] .pin-hit { fill: var(--dawn-soft); fill-opacity: 0.7; }
 .jm-pin:focus-visible .pin-hit { stroke: var(--focus); stroke-width: 0.8; }
 /* Under the map, never over its art (#152). */
@@ -255,7 +255,7 @@
 .jm-stage .sea { fill-opacity: 0.55; }
 /* Landmark stickers keep their size while zooming, like the pins. */
 .jm-sticker { cursor: pointer; transform: scale(var(--inv)); }
-.jm-sticker .sticker-edge { fill: var(--surface); stroke: var(--line); stroke-width: 0.3; }
+.jm-sticker .sticker-edge { fill: var(--glass-solid, var(--surface)); stroke: var(--line); stroke-width: 0.3; }
 .jm-sticker[data-selected="true"] .sticker-edge { stroke: var(--dawn); stroke-width: 0.8; }
 .level-art {
   flex: none; inline-size: 4.5rem; block-size: 4.5rem; border-radius: 50%;
