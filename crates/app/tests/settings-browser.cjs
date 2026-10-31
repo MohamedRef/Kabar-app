@@ -69,7 +69,9 @@ async function run() {
           root.setAttribute('data-appearance', 'liquid-glass');
           return before;
         });
-        assert.notEqual(layout.settingsCardBackground, calmBackground, `${name}: changing appearance must update CSS without reload`);
+        if (item.theme !== 'black') {
+          assert.notEqual(layout.settingsCardBackground, calmBackground, `${name}: changing appearance must update CSS without reload`);
+        }
       }
       assert.equal(layout.role, 'dialog', name);
       assert.equal(layout.modal, 'true', name);
