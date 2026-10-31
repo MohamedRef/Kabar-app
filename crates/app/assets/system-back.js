@@ -7,6 +7,16 @@ if (!window.__kabarBackInit) {
   let waitingForScreen = false;
   let releasing = false;
   let scheduled = false;
+  // Android WebView (like Chrome) skips a history entry on Back when the
+  // page pushed the entry after it with no tap in between, and canGoBack()
+  // ignores skipped entries, so wry lets Android close the app. Two Backs in
+  // a row (Changes, then a Settings section) re-pushed the trap with no tap
+  // and the third Back left Kabar. So the trap is pushed once: after a Back
+  // it stays ahead in history and is re-armed with history.forward(), which
+  // adds no entry and marks nothing skippable.
+  let trapAhead = false;
+  let arriving = false;
+  let arriveTimer = 0;
 
   const trapped = () => history.state?.kabarBackTrap === true;
   const visible = (element) =>
@@ -36,13 +46,29 @@ if (!window.__kabarBackInit) {
     return dialog ? controls.filter((control) => dialog.contains(control)).at(-1) : controls.at(-1);
   };
 
+  function arm() {
+    if (!trapAhead) {
+      history.pushState({ ...(history.state || {}), kabarBackTrap: true }, '');
+      return;
+    }
+    arriving = true;
+    history.forward();
+    // If the entry ahead is gone after all, push a fresh trap instead.
+    arriveTimer = setTimeout(() => {
+      if (!arriving) return;
+      arriving = false;
+      trapAhead = false;
+      scheduleSync();
+    }, 400);
+  }
+
   function sync() {
-    if (releasing || waitingForScreen) return;
+    if (releasing || waitingForScreen || arriving) return;
     // A dialog keeps Android history armed even if its button briefly hides.
     const dialog = topDialog();
     const wantsBack = screenCanBack || !!dialog || !!topBackControl(dialog);
     if (wantsBack && !trapped()) {
-      history.pushState({ ...(history.state || {}), kabarBackTrap: true }, '');
+      arm();
     } else if (!wantsBack && trapped()) {
       // Closing the final overlay with X must not leave a phantom Back.
       releasing = true;
@@ -74,6 +100,19 @@ if (!window.__kabarBackInit) {
   });
 
   window.addEventListener('popstate', () => {
+    if (trapped()) {
+      // history.forward() arrived back on the trap entry.
+      arriving = false;
+      clearTimeout(arriveTimer);
+      scheduleSync();
+      return;
+    }
+    // Every other popstate lands just below the trap, which stays ahead.
+    trapAhead = true;
+    if (arriving) {
+      arriving = false;
+      clearTimeout(arriveTimer);
+    }
     if (releasing) {
       releasing = false;
       scheduleSync();
