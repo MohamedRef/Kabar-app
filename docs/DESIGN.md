@@ -53,13 +53,15 @@ and leaves True black's pixels off (no gradients on `data-theme="black"`).
 It does not read wallpaper colours.
 
 **Liquid Glass** is an optional iOS-inspired *CSS* appearance, not Apple's
-native refraction effect. The theme-aware compact nav and header use frosted
-fills and highlights, with solid lesson/reader/answer surfaces. The compact
-nav retains its existing responsive pill and touch targets. The More sheet is
-the only additional blurred popover, never the word sheet or reading content.
-The true-black theme remains solid and black to protect OLED behaviour.
-Browser support, reduced transparency, high contrast and forced colours all
-fall back to solid surfaces. See `assets/liquid-glass.css`.
+native refraction effect. Theme-aware gradient backdrops, visibly layered
+translucent cards and collections, a stronger selected tab and frosted chrome
+make the choice distinct from Calm and Glossy. Settings is also glass-themed
+because it occupies the whole phone screen while choosing an appearance.
+Study answers keep their existing semantic colours. The Reader word sheet
+stays opaque; blur is limited to small chrome and Settings cards.
+True black retains a pure black page with subtle accent rims for controls.
+Browser support, reduced transparency, high contrast and forced colours fall
+back to solid surfaces. See `assets/liquid-glass.css`.
 
 ### Colour roles (`kabar_core::theme`, contrast-tested)
 

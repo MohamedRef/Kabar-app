@@ -286,13 +286,13 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (AppearanceGlossy, _) => "Glossy · Material You",
         (AppearanceLiquidGlass, _) => "Liquid Glass · iOS",
         (AppearanceHint, ArEg) => {
-            "هادئ: أسطح سادة. Glossy: لمعة وألوان ناعمة. Liquid Glass: تنقّل زجاجي مطفي مع نصوص واضحة. الألوان من المظهر اللي فوق."
+            "هادئ: أسطح سادة. Glossy: لمعة وألوان ناعمة. Liquid Glass: خلفية وكروت بطبقات زجاجية وشريط تنقّل مطفي. الألوان من المظهر اللي فوق."
         }
         (AppearanceHint, Ar) => {
-            "هادئ: أسطح سادة. Glossy: لمعة خفيفة. Liquid Glass: عناصر تنقّل زجاجية مع نصوص واضحة. الألوان من المظهر أعلاه."
+            "هادئ: أسطح سادة. Glossy: لمعة خفيفة. Liquid Glass: خلفية وكروت زجاجية وشريط تنقّل مطفي. الألوان من المظهر أعلاه."
         }
         (AppearanceHint, En) => {
-            "Calm: solid surfaces. Glossy: soft tonal sheen. Liquid Glass: frosted navigation with readable text. Colours come from the theme above."
+            "Calm: solid surfaces. Glossy: soft tonal sheen. Liquid Glass: layered cards, frosted navigation and clear text. Colours come from the theme above."
         }
         (TextSample, ArEg) => "كده هيبان الكلام في الدروس والقارئ.",
         (TextSample, Ar) => "هكذا سيظهر النص في الدروس والقارئ.",
