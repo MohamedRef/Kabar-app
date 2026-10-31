@@ -71,6 +71,7 @@ pub enum S {
     Appearance,
     AppearanceCalm,
     AppearanceGlossy,
+    AppearanceLiquidGlass,
     AppearanceHint,
     // android
     Notifications,
@@ -283,14 +284,15 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (AppearanceCalm, ArEg | Ar) => "هادئ",
         (AppearanceCalm, En) => "Calm",
         (AppearanceGlossy, _) => "Glossy · Material You",
+        (AppearanceLiquidGlass, _) => "Liquid Glass · iOS",
         (AppearanceHint, ArEg) => {
-            "هادئ: أسطح سادة وهادية. Glossy: ألوان ناعمة ولمعة خفيفة. الألوان نفسها من المظهر اللي فوق."
+            "هادئ: أسطح سادة. Glossy: لمعة وألوان ناعمة. Liquid Glass: تنقّل زجاجي مطفي مع نصوص واضحة. الألوان من المظهر اللي فوق."
         }
         (AppearanceHint, Ar) => {
-            "هادئ: أسطح سادة. Glossy: ألوان ناعمة ولمعة خفيفة. الألوان نفسها من المظهر أعلاه."
+            "هادئ: أسطح سادة. Glossy: لمعة خفيفة. Liquid Glass: عناصر تنقّل زجاجية مع نصوص واضحة. الألوان من المظهر أعلاه."
         }
         (AppearanceHint, En) => {
-            "Calm: solid, quiet surfaces. Glossy: soft tonal colour and a light sheen. Colours still come from the theme above."
+            "Calm: solid surfaces. Glossy: soft tonal sheen. Liquid Glass: frosted navigation with readable text. Colours come from the theme above."
         }
         (TextSample, ArEg) => "كده هيبان الكلام في الدروس والقارئ.",
         (TextSample, Ar) => "هكذا سيظهر النص في الدروس والقارئ.",

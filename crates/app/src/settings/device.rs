@@ -103,10 +103,10 @@ macro_rules! choice {
 
 choice! {
     /// Interface style (redesign 2026-10-29): Calm (solid surfaces, the
-    /// default) or Glossy · Material You (tonal surfaces, a light sheen).
+    /// default), Glossy · Material You, or iOS-inspired Liquid Glass.
     /// Independent of the colour theme; `data-appearance` on the app root.
     /// A device without the pref, or with an unknown value, gets Calm.
-    Appearance { Calm = "calm", Glossy = "glossy" } default Calm
+    Appearance { Calm = "calm", Glossy = "glossy", LiquidGlass = "liquid-glass" } default Calm
 }
 
 choice! {
