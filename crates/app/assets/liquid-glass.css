@@ -1,62 +1,136 @@
-/* Opt-in CSS interpretation of Liquid Glass (not Apple's native material).
-   Token-based, RTL-safe, no new assets or animations. Content stays solid. */
+/* Liquid Glass is an opt-in, iOS-inspired CSS material. It changes cards,
+   Settings and navigation visibly, not only a chrome strip hidden by Settings.
+   No native refraction, new images, animation or app-wide blur. */
 .app[data-appearance="liquid-glass"] {
-  --liquid-highlight: inset 0 1px 0 color-mix(in srgb, white 35%, transparent);
-  --liquid-rim: color-mix(in srgb, var(--line) 65%, white);
-  --liquid-shadow: 0 8px 24px rgb(0 0 0 / 0.14);
-  --radius-card: 20px;
+  --liquid-rim: color-mix(in srgb, var(--primary) 30%, var(--line));
+  --liquid-glint: inset 0 1px 0 color-mix(in srgb, var(--text) 17%, transparent);
+  --liquid-shadow: 0 8px 24px color-mix(in srgb, var(--text) 10%, transparent);
+  --liquid-soft: color-mix(in srgb, var(--surface) 85%, transparent);
+  --radius-card: 24px;
+  --card-shadow: var(--liquid-glint), var(--liquid-shadow);
 }
 .app[data-appearance="liquid-glass"]:not([data-theme="black"]) {
   background-image:
-    radial-gradient(ellipse at 6% 4%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 48%),
+    radial-gradient(ellipse 85% 48% at 0% 0%,
+      color-mix(in srgb, var(--accent) 68%, transparent), transparent),
+    radial-gradient(ellipse 85% 58% at 100% 100%,
+      color-mix(in srgb, var(--primary) 15%, transparent), transparent),
     var(--batik);
 }
-.app[data-appearance="liquid-glass"] :is(.nav, .top-bar) {
-  background: var(--surface);
+/* Glass tint in shared cards and collection surfaces, not semantic answers. */
+.app[data-appearance="liquid-glass"] :is(
+  .card:not(.hero), .stat, .stat-static,
+  .coll:is([data-layout="list"], [data-layout="compact"]),
+  .coll[data-layout="cards"] > li
+) {
+  background: linear-gradient(145deg, var(--liquid-soft),
+    color-mix(in srgb, var(--primary) 8%, var(--surface)));
+  border: 1px solid var(--liquid-rim);
+  border-radius: var(--radius-card);
+  box-shadow: var(--liquid-glint), var(--liquid-shadow);
+}
+.app[data-appearance="liquid-glass"] .card.hero {
+  border-radius: var(--radius-card);
+  box-shadow: var(--liquid-glint), var(--liquid-shadow);
+}
+.app[data-appearance="liquid-glass"] .card :is(.grouped, .coll) {
+  box-shadow: none;
+}
+.app[data-appearance="liquid-glass"] :is(.segmented, .view-seg, button.tonal, button.outline) {
+  background: linear-gradient(145deg, var(--liquid-soft),
+    color-mix(in srgb, var(--accent) 32%, var(--surface)));
   border-color: var(--liquid-rim);
-  box-shadow: var(--liquid-highlight);
+  box-shadow: var(--liquid-glint);
+}
+.app[data-appearance="liquid-glass"] button.primary:not(:disabled) {
+  border-radius: var(--radius-pill);
+  box-shadow: var(--liquid-glint), 0 4px 12px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+.app[data-appearance="liquid-glass"] .segmented > button[aria-checked="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: var(--liquid-glint);
+}
+/* Settings occupies the whole phone viewport, so it MUST visibly react on
+   selection without waiting until dismissal. */
+.app[data-appearance="liquid-glass"] .settings-window {
+  background:
+    radial-gradient(ellipse 83% 48% at 0% 0%,
+      color-mix(in srgb, var(--accent) 72%, transparent), transparent),
+    radial-gradient(ellipse 79% 58% at 100% 100%,
+      color-mix(in srgb, var(--primary) 15%, transparent), transparent),
+    var(--bg);
+}
+.app[data-appearance="liquid-glass"] .settings-head {
+  background: var(--liquid-soft);
+  border-block-end: 1px solid var(--liquid-rim);
+  box-shadow: var(--liquid-glint);
+}
+.app[data-appearance="liquid-glass"] .settings-search {
+  background: var(--liquid-soft);
+  border-color: var(--liquid-rim);
+  border-radius: var(--radius-pill);
+}
+.app[data-appearance="liquid-glass"] .settings-pane .card {
+  background: linear-gradient(145deg, var(--liquid-soft),
+    color-mix(in srgb, var(--accent) 12%, var(--surface)));
+  border-color: var(--liquid-rim);
+  box-shadow: var(--liquid-glint), var(--liquid-shadow);
+}
+.app[data-appearance="liquid-glass"] :is(.nav, .top-bar, .more-sheet) {
+  background: color-mix(in srgb, var(--surface) 95%, transparent);
+  border-color: var(--liquid-rim);
+  box-shadow: var(--liquid-glint), var(--liquid-shadow);
 }
 .app[data-appearance="liquid-glass"] .nav-item[aria-current="page"] .nav-icon {
+  background: linear-gradient(145deg, var(--accent),
+    color-mix(in srgb, var(--accent) 82%, var(--surface)));
+  color: var(--accent-ink);
   border-radius: var(--radius-pill);
-  background: var(--soft);
-  color: var(--primary);
-  box-shadow: var(--liquid-highlight);
+  box-shadow: var(--liquid-glint), 0 2px 7px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 .app[data-appearance="liquid-glass"] :is(.top-bar .gear-button, .round-back, .bsheet-close) {
-  border-radius: 50%;
-  box-shadow: var(--liquid-highlight);
-}
-.app[data-appearance="liquid-glass"] :is(.more-sheet, .settings-head) {
-  background: var(--surface);
+  background: var(--liquid-soft);
   border-color: var(--liquid-rim);
-  box-shadow: var(--liquid-highlight), var(--shadow-raised);
+  box-shadow: var(--liquid-glint);
 }
 .app[data-appearance="liquid-glass"] .bsheet {
   background: var(--sheet);
-  border-color: var(--line);
-}
-/* Reuse the existing floating pill geometry without changing tab order. */
-.app[data-appearance="liquid-glass"][data-width="compact"] .nav {
   border-color: var(--liquid-rim);
-  border-radius: var(--radius-pill);
-  box-shadow: var(--liquid-highlight), var(--liquid-shadow);
 }
-/* Don't blur the true-black theme: preserve pure-black OLED surfaces. */
+/* Pure OLED black: no glows on the page; a visible accent rim still distinguishes controls. */
+.app[data-appearance="liquid-glass"][data-theme="black"] .settings-window {
+  background: var(--bg);
+}
+.app[data-appearance="liquid-glass"][data-theme="black"] :is(
+  .card:not(.hero), .settings-pane .card,
+  .coll:is([data-layout="list"], [data-layout="compact"]),
+  .coll[data-layout="cards"] > li
+) {
+  background: var(--surface);
+  border-color: var(--liquid-rim);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--primary) 24%, transparent);
+}
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .app[data-appearance="liquid-glass"]:not([data-theme="black"])[data-width="compact"] :is(.nav, .top-bar) {
-    background: color-mix(in srgb, var(--surface) 87%, transparent);
-    -webkit-backdrop-filter: blur(14px) saturate(1.2);
-    backdrop-filter: blur(14px) saturate(1.2);
+  .app[data-appearance="liquid-glass"]:not([data-theme="black"])[data-width="compact"] :is(.nav, .top-bar, .settings-head) {
+    background: color-mix(in srgb, var(--surface) 81%, transparent);
+    -webkit-backdrop-filter: blur(15px) saturate(1.2);
+    backdrop-filter: blur(15px) saturate(1.2);
   }
-  .app[data-appearance="liquid-glass"]:not([data-theme="black"]) .more-sheet {
-    background: color-mix(in srgb, var(--surface) 94%, transparent);
-    -webkit-backdrop-filter: blur(12px) saturate(1.1);
-    backdrop-filter: blur(12px) saturate(1.1);
+  .app[data-appearance="liquid-glass"]:not([data-theme="black"]) :is(.more-sheet, .settings-pane > .card) {
+    -webkit-backdrop-filter: blur(10px) saturate(1.1);
+    backdrop-filter: blur(10px) saturate(1.1);
   }
 }
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active) {
   .app[data-appearance="liquid-glass"] { background-image: var(--batik); }
-  .app[data-appearance="liquid-glass"] :is(.nav, .top-bar, .more-sheet, .settings-head) {
+  .app[data-appearance="liquid-glass"] .settings-window { background: var(--bg); }
+  .app[data-appearance="liquid-glass"] :is(
+    .nav, .top-bar, .more-sheet, .settings-head, .settings-pane .card,
+    .card:not(.hero), .stat, .stat-static,
+    .coll:is([data-layout="list"], [data-layout="compact"]),
+    .coll[data-layout="cards"] > li
+  ) {
     background: var(--surface);
     border-color: var(--line);
     box-shadow: none;

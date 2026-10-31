@@ -43,12 +43,36 @@ async function run() {
           listVisible: visible(list) || visible(search),
           title: document.querySelector('#settings-title')?.textContent.trim(),
           modal: dialog.getAttribute('aria-modal'),
+          appearance: root.getAttribute('data-appearance'),
+          settingsBackground: getComputedStyle(dialog).backgroundImage,
+          settingsCardBackground: getComputedStyle(pane.querySelector('.card')).backgroundImage,
+          settingsCardShadow: getComputedStyle(pane.querySelector('.card')).boxShadow,
           role: dialog.getAttribute('role'),
           sample: document.querySelector('.text-sample')?.textContent.trim(),
           back: [...dialog.querySelectorAll('[data-back="true"]')].filter(visible).at(-1)?.className,
         };
       });
       assert.equal(layout.direction, item.dir, name);
+      assert.equal(layout.appearance, item.appearance, `${name}: appearance preference`);
+      if (item.appearance === 'liquid-glass') {
+        if (item.theme === 'black') {
+          assert.equal(layout.settingsBackground, 'none', `${name}: AMOLED background remains solid`);
+        } else {
+          assert.ok(layout.settingsBackground.includes('radial-gradient'), `${name}: Settings must show Liquid Glass`);
+          assert.ok(layout.settingsCardBackground.includes('linear-gradient'), `${name}: cards need a visible glass fill`);
+        }
+        assert.notEqual(layout.settingsCardShadow, 'none', `${name}: card glass outline must be visible`);
+        const calmBackground = await page.locator('.settings-pane .card').evaluate(el => {
+          const root = document.querySelector('.app');
+          root.setAttribute('data-appearance', 'calm');
+          const before = getComputedStyle(el).backgroundImage;
+          root.setAttribute('data-appearance', 'liquid-glass');
+          return before;
+        });
+        if (item.theme !== 'black') {
+          assert.notEqual(layout.settingsCardBackground, calmBackground, `${name}: changing appearance must update CSS without reload`);
+        }
+      }
       assert.equal(layout.role, 'dialog', name);
       assert.equal(layout.modal, 'true', name);
       assert.ok(layout.title && layout.sample, `${name}: production heading and sample`);
@@ -65,7 +89,9 @@ async function run() {
       assert.equal(layout.listVisible, item.width >= 600, `${name}: section index visibility`);
       assert.equal(layout.back.includes('settings-back'), item.width < 600, `${name}: responsive Back target`);
 
-      if (item.size === 'larger' && item.appearance === 'calm') {
+      if ((item.size === 'larger' && item.appearance === 'calm') ||
+          (item.size === 'normal' && item.appearance === 'liquid-glass' &&
+            item.width === 384 && ['light', 'dark', 'black'].includes(item.theme))) {
         await page.screenshot({ path: path.join(output, name + '.png') });
       }
       await page.locator('#opener').focus();
