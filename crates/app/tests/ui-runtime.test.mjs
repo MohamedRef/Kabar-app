@@ -31,6 +31,12 @@ function backHarness() {
         handlers.popstate?.();
       }
     },
+    forward() {
+      if (position + 1 < entries.length) {
+        position++;
+        handlers.popstate?.();
+      }
+    },
   };
   class Observer {
     constructor(onChange) { changed = onChange; }
@@ -48,6 +54,8 @@ function backHarness() {
     MutationObserver: Observer,
     getComputedStyle: () => ({ visibility: 'visible' }),
     queueMicrotask,
+    setTimeout,
+    clearTimeout,
   });
   return {
     history,
