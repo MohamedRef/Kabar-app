@@ -651,10 +651,12 @@ fn content_cleanup_keeps_both_selections_and_legacy_files() {
     fs::create_dir_all(&dir).unwrap();
     let info =
         BuildInfo { version: Version::parse("1.0.0-alpha.1").unwrap(), build: 0, preview: false, key: None };
-    let make = |text: &[u8]| kabar_protocol::bundle::encode(&[(
-        "CAST".to_owned(),
-        miniz_oxide::deflate::compress_to_vec(text, 10),
-    )]);
+    let make = |text: &[u8]| {
+        kabar_protocol::bundle::encode(&[(
+            "CAST".to_owned(),
+            miniz_oxide::deflate::compress_to_vec(text, 10),
+        )])
+    };
     let current_bytes = make(b"cast: []\n");
     let previous_bytes = make(b"cast: [previous]\n");
     let orphan_bytes = make(b"cast: [orphan]\n");
@@ -662,11 +664,9 @@ fn content_cleanup_keeps_both_selections_and_legacy_files() {
     let previous_sha = kabar_core::packs::sha256_hex(&previous_bytes);
     let orphan_sha = kabar_core::packs::sha256_hex(&orphan_bytes);
     let bundle = |sha: &str| dir.join(format!("content.{sha}.bundle"));
-    for (sha, bytes) in [
-        (&current_sha, &current_bytes),
-        (&previous_sha, &previous_bytes),
-        (&orphan_sha, &orphan_bytes),
-    ] {
+    for (sha, bytes) in
+        [(&current_sha, &current_bytes), (&previous_sha, &previous_bytes), (&orphan_sha, &orphan_bytes)]
+    {
         fs::write(bundle(sha), bytes).unwrap();
     }
     let select = |sha: &str| content::BundleInfo {
@@ -677,11 +677,8 @@ fn content_cleanup_keeps_both_selections_and_legacy_files() {
         fetched_ms: None,
     };
     fs::write(dir.join("content.json"), serde_json::to_vec(&select(&current_sha)).unwrap()).unwrap();
-    fs::write(
-        dir.join("content.previous.json"),
-        serde_json::to_vec(&select(&previous_sha)).unwrap(),
-    )
-    .unwrap();
+    fs::write(dir.join("content.previous.json"), serde_json::to_vec(&select(&previous_sha)).unwrap())
+        .unwrap();
     fs::write(dir.join("content.bundle"), b"legacy file").unwrap();
     for name in ["content.bundle.part", "content.json.part", "content.previous.json.part"] {
         fs::write(dir.join(name), b"abandoned").unwrap();
