@@ -198,6 +198,10 @@ to the feed's build. A bundle that downloaded whole but fails this build's
 checks is remembered in `content.unreadable.json` together with the app
 build that refused it, and isn't fetched again until the app changes. A cut
 or mismatched download is not remembered; the next check tries again.
+The preview workflow builds the bundle before the APK and bakes its digest
+into the app (`KABAR_BUILTIN_CONTENT`), so a device that has just installed
+that APK and runs on its built-in content doesn't download the same content
+again from the feed that brought it.
 
 **Bundle checks.** `kabar_core::bundle_check` holds the rules a bundle must
 pass, and both sides run them: `kabar-tools update bundle` and `update

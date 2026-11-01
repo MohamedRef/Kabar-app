@@ -149,6 +149,17 @@ jobs:
           BT="$(ls -d "$ANDROID_SDK_ROOT"/build-tools/* | sort -V | tail -1)"
           echo "$BT" >> "$GITHUB_PATH"
 
+      - name: Content bundle (built in and on the feed)
+        # Built before the APK so the APK knows the digest of the content it
+        # has built in (KABAR_BUILTIN_CONTENT): a device that installs it
+        # doesn't download that same content again from this feed. The
+        # bundle reaches devices with no review step of its own: the content
+        # must pass the same checks CI runs on it first.
+        run: |
+          cargo run -q -p kabar-tools -- validate
+          cargo run -q -p kabar-tools -- update bundle --out dist/bundle
+          echo "KABAR_BUILTIN_CONTENT=$(sha256sum dist/bundle/kabar-content.bundle | cut -d' ' -f1)" >> "$GITHUB_ENV"
+
       - name: Build APK
         if: env.CONTENT_ONLY != 'true'
         working-directory: crates/app
@@ -216,10 +227,6 @@ jobs:
           curl -fsSL --retry 3 -o /tmp/previous-update.json \
             "https://github.com/$GITHUB_REPOSITORY/releases/download/preview/update.json" \
             || rm -f /tmp/previous-update.json
-          # The bundle reaches devices with no review step of its own: the
-          # content must pass the same checks CI runs on it first.
-          cargo run -q -p kabar-tools -- validate
-          cargo run -q -p kabar-tools -- update bundle --out dist/bundle
           # Learner records point at content ids: the new bundle must keep
           # every id of the bundle devices have now (docs/CONTENT-IDS.md),
           # and the job summary says what changed for them.
