@@ -1,7 +1,7 @@
 # Shared UI completion: Kabar
 
-Updated: 2026-10-30. Current branch: `improve/workflow-modules-20261030`.
-Previous checkpoint: merged PR #486; subsequent merged UX changes are retained.
+Updated: 2026-11-01. See [UI-PROGRESS.md](UI-PROGRESS.md) for current
+merged checkpoints, verification receipts and remaining work.
 
 ## Item 1: interactive and dynamic cards (2026-10-30)
 
@@ -71,20 +71,20 @@ The remaining facade code owns integration and shared state. Tests live in
 - [x] Added stylesheet contract assertions for responsive width classes, appearance, high-contrast black theme, reduced motion/transparency, and shared surface tokens.
 - [x] Completed the remaining base-card migration using explicit native semantics; interactive, keyed, labelled and list surfaces keep their original role.
 - [x] Split the targeted large workflows behind their existing feature APIs (see item 2).
-- [ ] Add true browser/WebView layout, focus and keyboard tests on rendered production views. VirtualDom and source CSS tests do **not** prove pixel layouts or keyboard navigation.
+- [x] Add computed-layout, focus and keyboard checks for production-rendered Settings; see the browser QA scope and remaining device matrix.
 - [ ] Complete the separate physical-device matrix below. Current-item CI status is recorded on its PR.
 
 ## Quality and rollout
 
-Current automated coverage includes strict Rust formatting, Clippy, tests, content validation, Android arm64 compile and Android renderer-loss regression (workflow outcomes are published on the PR). The CSS contract test checks production selectors, not computed layout.
-
-Still to verify on actual WebViews: 384/600/840dp and wider, all supported themes, Calm/Glossy, Egyptian Arabic RTL and English LTR, maximum text size, keyboard Tab/Escape, screen reader labels, nested sheets and Android Back. No real-device test has been claimed.
-
-Kabar and Batna maintain independent sources and release lifecycles; copy proven primitives deliberately and never add a shared runtime dependency.
+The current evidence and remaining device matrix are in [UI-PROGRESS.md](UI-PROGRESS.md).
+Computed Chromium layouts supplement the CSS and VirtualDom contracts. They do
+not replace live application integration, screen-reader or physical WebView QA.
+No physical-device pass is claimed. Independent app sources and release cycles
+remain intact.
 
 ## Next change boundaries
 
-Each numbered item is checked, committed and uploaded separately. The current
-item covers the shared card contract; later workflow, browser, device and write
-feedback work remains explicitly tracked. CI status belongs to the current PR
-head. No merge, release or deployment is implied by uploading a checkpoint.
+Use [UI-PROGRESS.md](UI-PROGRESS.md) as the current status index. Each bounded
+change is checked, committed and uploaded independently. Verification belongs
+to its exact PR head; an uploaded checkpoint does not imply a release or a
+physical-device pass.

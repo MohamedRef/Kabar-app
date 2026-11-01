@@ -196,10 +196,20 @@ impl Engine {
         let mut session = session.write();
         let Some(session) = session.as_mut() else { return false };
         let undone = take_back(&mut self.db.0.borrow_mut(), session, &mut deck.write(), &self.sched);
-        undone.unwrap_or_else(|e| {
-            crate::diag::report!("undo failed: {e}");
-            false
-        })
+        let mut error = self.error;
+        match undone {
+            Ok(undone) => {
+                if *error.peek() == Some(Msg::RevUndoFailed) {
+                    error.set(None);
+                }
+                undone
+            }
+            Err(e) => {
+                crate::diag::report!("undo failed: {e}");
+                error.set(Some(Msg::RevUndoFailed));
+                false
+            }
+        }
     }
 
     /// Ends the session (once: effects may ask twice before unmounting).

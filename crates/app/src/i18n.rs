@@ -233,6 +233,7 @@ pub enum Msg {
     RevBackHome,
     RevNothingHere,
     RevSaveFailed,
+    RevUndoFailed,
     // --- coach: general ---
     Back,
     Next,
@@ -1374,6 +1375,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RevSaveFailed, ArEg) => "معرفتش أحفظ الإجابة دي. جرّب تاني.",
         (RevSaveFailed, Ar) => "تعذّر حفظ هذه الإجابة. حاول مجددًا.",
         (RevSaveFailed, En) => "Couldn't save that answer. Please try again.",
+        (RevUndoFailed, ArEg) => "معرفتش أرجّع الإجابة. لسه مسجّلة؛ جرّب تاني.",
+        (RevUndoFailed, Ar) => "تعذّر التراجع عن الإجابة. لا تزال مسجّلة؛ حاول مجددًا.",
+        (RevUndoFailed, En) => "Couldn't undo that answer. It is still saved; please try again.",
 
         // --- coach: general ---
         (Back, ArEg) => "رجوع",
