@@ -35,6 +35,10 @@ pub enum Cmd {
         base: Option<String>,
         #[arg(long)]
         base_bundle: Option<PathBuf>,
+        /// Compare this bundle (from `update bundle`, stylesheets included)
+        /// instead of the working tree's content files.
+        #[arg(long)]
+        head_bundle: Option<PathBuf>,
     },
     /// Every check a content change must pass, in one run.
     Preflight {
@@ -58,13 +62,17 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
             );
             Ok(())
         }
-        Cmd::Diff { base, base_bundle } => {
+        Cmd::Diff { base, base_bundle, head_bundle } => {
             let base = match (base, base_bundle) {
                 (Some(r), None) => ids::git_files(root.path(), &r)?,
                 (None, Some(b)) => ids::bundle_files(&b)?,
                 _ => bail!("give --base <git ref> or --base-bundle <file>"),
             };
-            for line in diff(&base, &ids::working_files(root.path())?).lines() {
+            let head = match head_bundle {
+                Some(b) => ids::bundle_files(&b)?,
+                None => ids::working_files(root.path())?,
+            };
+            for line in diff(&base, &head).lines() {
                 println!("{line}");
             }
             Ok(())

@@ -510,6 +510,8 @@ pub fn verify(dir: &Path, public: &str, carried: &[UpdatePlatform]) -> Result<Up
             "{}: the download doesn't match the signed manifest",
             c.file
         );
+        // What a device checks next: a feed devices would refuse is broken.
+        check_bundle(&bytes).with_context(|| c.file.clone())?;
     }
     Ok(m)
 }

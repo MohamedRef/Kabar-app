@@ -203,6 +203,21 @@ check (`check_keys`: no duplicate keys, every single file present, at least
 one lesson) before it activates a bundle. Keys this build doesn't know are
 allowed, since a newer bundle may carry content for a newer app.
 
+**Publishing preflight.** `just publish-update-dry-run [channel]`
+(`scripts/update-preflight.sh`, default `preview`) runs every publishing
+step for a content-only update without uploading anything, on any machine
+and with no secrets: validate the source; build the bundle (the device
+checks); download the channel's live `update.json` and bundle, run `ids
+check` against that bundle and write the content diff
+(`dist/preflight/impact.md`); write the manifest carrying the live feed's
+builds (so no APK is made); sign it with a throwaway key; `update verify`
+it like a device (signature, sizes, SHA-256, then the bundle checks); and
+print the channel, build, size, digest and `ui_build`
+(`dist/preflight/report.md`). The preview workflow runs the same id check
+against the live preview bundle before it signs, and puts the content diff
+in the job summary. `update verify` now also runs the bundle checks, so a
+feed devices would refuse fails before upload.
+
 **Channels.** `alpha`, `beta`, `stable` for release builds (the learner
 picks in Settings; a beta also reaches alpha, a release reaches everyone),
 and `preview` for CI builds of `main`, which is fixed for them. Each channel
