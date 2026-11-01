@@ -251,8 +251,7 @@ fn whats_new_before_and_after_an_update() {
 fn a_content_bundle_comes_without_an_install() {
     use base64::Engine as _;
     use ed25519_dalek::Signer as _;
-    let packed = miniz_oxide::deflate::compress_to_vec(b"cast: []\n", 10);
-    let bundle = kabar_protocol::bundle::encode(&[("CAST".into(), packed)]);
+    let bundle = cast_bundle("cast: []\n");
     let feed = tempfile::tempdir().unwrap();
     let m = UpdateManifest {
         format: kabar_protocol::update::UPDATE_FORMAT,
@@ -288,7 +287,11 @@ fn a_content_bundle_comes_without_an_install() {
     assert!(!u.status().checking_all, "the check by hand is over");
     assert_eq!(u.status().packs_refreshed, 0, "no audio packs on this device");
     let (entries, look) = content::load(data.path(), &u.info).unwrap();
-    assert_eq!((entries.len(), look), (1, true), "the look fits the build it was made with");
+    assert_eq!(
+        (entries.len(), look),
+        (kabar_core::bundle_check::sample_files("").len(), true),
+        "the look fits the build it was made with"
+    );
     // Taken once; a newer app drops it.
     let again = updater_in(data.path(), &url, "1.0.0-alpha.1");
     again.check(false);
@@ -526,10 +529,7 @@ fn content_pointer_survives_an_interrupted_bundle_download() {
     let data = tempfile::tempdir().unwrap();
     let dir = data.path().join("content");
     fs::create_dir_all(&dir).unwrap();
-    let bytes = kabar_protocol::bundle::encode(&[(
-        "CAST".to_owned(),
-        miniz_oxide::deflate::compress_to_vec(b"cast: []\n", 10),
-    )]);
+    let bytes = cast_bundle("cast: []\n");
     let sha = kabar_core::packs::sha256_hex(&bytes);
     fs::write(dir.join("content.bundle"), &bytes).unwrap();
     let old = content::BundleInfo {
@@ -556,10 +556,7 @@ fn corrupt_content_recovers_the_previous_verified_bundle() {
     let data = tempfile::tempdir().unwrap();
     let dir = data.path().join("content");
     fs::create_dir_all(&dir).unwrap();
-    let bytes = kabar_protocol::bundle::encode(&[(
-        "CAST".to_owned(),
-        miniz_oxide::deflate::compress_to_vec(b"cast: []\n", 10),
-    )]);
+    let bytes = cast_bundle("cast: []\n");
     let sha = kabar_core::packs::sha256_hex(&bytes);
     fs::write(dir.join("content.bundle"), &bytes).unwrap();
     let previous = content::BundleInfo {
@@ -590,10 +587,7 @@ fn content_refresh_keeps_a_verified_fallback_before_switching() {
     let data = tempfile::tempdir().unwrap();
     let dir = data.path().join("content");
     fs::create_dir_all(&dir).unwrap();
-    let old_bytes = kabar_protocol::bundle::encode(&[(
-        "CAST".to_owned(),
-        miniz_oxide::deflate::compress_to_vec(b"cast: []\n", 10),
-    )]);
+    let old_bytes = cast_bundle("cast: []\n");
     let previous = content::BundleInfo {
         version: "1.0.0-alpha.1".into(),
         build: 0,
@@ -604,10 +598,7 @@ fn content_refresh_keeps_a_verified_fallback_before_switching() {
     fs::write(dir.join("content.bundle"), &old_bytes).unwrap();
     fs::write(dir.join("content.json"), serde_json::to_vec(&previous).unwrap()).unwrap();
 
-    let next_bytes = kabar_protocol::bundle::encode(&[(
-        "CAST".to_owned(),
-        miniz_oxide::deflate::compress_to_vec(b"cast: [new]\n", 10),
-    )]);
+    let next_bytes = cast_bundle("cast: [new]\n");
     let next_sha = kabar_core::packs::sha256_hex(&next_bytes);
     let feed = tempfile::tempdir().unwrap();
     fs::write(feed.path().join("next.bundle"), &next_bytes).unwrap();
@@ -651,12 +642,7 @@ fn content_cleanup_keeps_both_selections_and_legacy_files() {
     fs::create_dir_all(&dir).unwrap();
     let info =
         BuildInfo { version: Version::parse("1.0.0-alpha.1").unwrap(), build: 0, preview: false, key: None };
-    let make = |text: &[u8]| {
-        kabar_protocol::bundle::encode(&[(
-            "CAST".to_owned(),
-            miniz_oxide::deflate::compress_to_vec(text, 10),
-        )])
-    };
+    let make = |text: &[u8]| cast_bundle(std::str::from_utf8(text).unwrap());
     let current_bytes = make(b"cast: []\n");
     let previous_bytes = make(b"cast: [previous]\n");
     let orphan_bytes = make(b"cast: [orphan]\n");
@@ -714,11 +700,17 @@ fn alpha_build() -> BuildInfo {
     BuildInfo { version: Version::parse("1.0.0-alpha.1").unwrap(), build: 0, preview: false, key: None }
 }
 
+/// Every test bundle's cast: empty, followed by a comment that tells the
+/// bundles apart.
+const CAST_HEAD: &str = "characters: []\n# ";
+
+/// A bundle that passes the content checks, told apart by `text` in its cast.
 fn cast_bundle(text: &str) -> Vec<u8> {
-    kabar_protocol::bundle::encode(&[(
-        "CAST".to_owned(),
-        miniz_oxide::deflate::compress_to_vec(text.as_bytes(), 10),
-    )])
+    let entries: Vec<_> = kabar_core::bundle_check::sample_files(&format!("{CAST_HEAD}{text}"))
+        .into_iter()
+        .map(|(key, text)| (key, miniz_oxide::deflate::compress_to_vec(text.as_bytes(), 10)))
+        .collect();
+    kabar_protocol::bundle::encode(&entries)
 }
 
 /// Stores `bytes` content-addressed and returns their selector.
@@ -739,7 +731,8 @@ fn read_selector(dir: &Path, selector: &str) -> Option<content::BundleInfo> {
 
 fn cast_of(entries: &[(String, Vec<u8>)]) -> String {
     let packed = &entries.iter().find(|(k, _)| k == "CAST").unwrap().1;
-    String::from_utf8(miniz_oxide::inflate::decompress_to_vec(packed).unwrap()).unwrap()
+    let text = String::from_utf8(miniz_oxide::inflate::decompress_to_vec(packed).unwrap()).unwrap();
+    text.strip_prefix(CAST_HEAD).unwrap_or(&text).to_owned()
 }
 
 #[test]
@@ -954,4 +947,51 @@ fn content_manifest(file: &str, bytes: &[u8], build: u64) -> UpdateManifest {
             ui_build: 0,
         }),
     }
+}
+
+#[test]
+fn an_invalid_or_oversized_bundle_is_never_taken() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    let info = alpha_build();
+    let good = stored(&dir, &cast_bundle("cast: [good]\n"), 1);
+    select(&dir, "content.json", &good);
+    let feed = tempfile::tempdir().unwrap();
+    let url = serve(feed.path().to_path_buf());
+    let pack = |files: Vec<(String, String)>| {
+        let entries: Vec<_> = files
+            .into_iter()
+            .map(|(k, t)| (k, miniz_oxide::deflate::compress_to_vec(t.as_bytes(), 10)))
+            .collect();
+        kabar_protocol::bundle::encode(&entries)
+    };
+    let mut broken_lesson = kabar_core::bundle_check::sample_files("characters: []\n");
+    broken_lesson.iter_mut().find(|(k, _)| k.starts_with("LESSONS/")).unwrap().1 = "id: [unclosed".into();
+    let mut no_curriculum = kabar_core::bundle_check::sample_files("characters: []\n");
+    no_curriculum.retain(|(k, _)| k != "CURRICULUM_JV");
+    let mut bomb = kabar_core::bundle_check::sample_files("characters: []\n");
+    bomb.push(("STORIES/huge".into(), " ".repeat(kabar_protocol::bundle::MAX_FILE_UNPACKED + 1)));
+    for (n, files) in [broken_lesson, no_curriculum, bomb].into_iter().enumerate() {
+        let bytes = pack(files);
+        let name = format!("bad{n}.bundle");
+        fs::write(feed.path().join(&name), &bytes).unwrap();
+        let manifest = content_manifest(&name, &bytes, 2 + n as u64);
+        assert_eq!(
+            content::refresh(data.path(), &info.installed(Some(Channel::Alpha)), &info, &manifest, &url),
+            content::Refresh::Failed,
+            "bundle {n}"
+        );
+        assert_eq!(read_selector(&dir, "content.json"), Some(good.clone()), "bundle {n}");
+    }
+    let (entries, _) = content::load(data.path(), &info).unwrap();
+    assert_eq!(cast_of(&entries), "cast: [good]\n");
+
+    // A selected bundle missing a required file isn't activated either.
+    let mut short = kabar_core::bundle_check::sample_files("characters: []\n");
+    short.retain(|(k, _)| k != "CURRICULUM_ID");
+    content::confirm_stable(data.path(), &good).unwrap();
+    let short = stored(&dir, &pack(short), 9);
+    select(&dir, "content.json", &short);
+    let (entries, _) = content::load(data.path(), &info).unwrap();
+    assert_eq!(cast_of(&entries), "cast: [good]\n", "the previous or good bundle instead");
 }
