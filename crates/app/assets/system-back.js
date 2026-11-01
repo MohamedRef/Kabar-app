@@ -5,6 +5,7 @@ if (!window.__kabarBackInit) {
   window.__kabarBackInit = true;
   let screenCanBack = false;
   let waitingForScreen = false;
+  let waitingSince = 0;
   let releasing = false;
   let scheduled = false;
   // Android WebView (like Chrome) skips a history entry on Back when the
@@ -99,6 +100,30 @@ if (!window.__kabarBackInit) {
     attributeFilter: ['data-back', 'class', 'style', 'hidden', 'inert', 'disabled', 'aria-hidden', 'open'],
   });
 
+  // Android's Back key comes here first (android/…/BackKey.kt), so Back never
+  // depends on WebView history: one step back, or "exit" on Today with
+  // nothing open, which hands the press to Android.
+  window.__kabarNativeBack = () => {
+    const dialog = topDialog();
+    const top = topBackControl(dialog);
+    if (top) {
+      top.click();
+      scheduleSync();
+      return 'step';
+    }
+    // A dialog in transition: wait for it rather than leave.
+    if (dialog) return 'step';
+    // Rust answers every Back; don't stay stuck if an answer was lost.
+    if (waitingForScreen && Date.now() - waitingSince < 1500) return 'step';
+    if (screenCanBack) {
+      waitingForScreen = true;
+      waitingSince = Date.now();
+      window.__kabarBackSend('back');
+      return 'step';
+    }
+    return 'exit';
+  };
+
   window.addEventListener('popstate', () => {
     if (trapped()) {
       // history.forward() arrived back on the trap entry.
@@ -130,6 +155,7 @@ if (!window.__kabarBackInit) {
       // A screen change is asynchronous. Wait for Rust to confirm the
       // next destination before installing the next history trap.
       waitingForScreen = true;
+      waitingSince = Date.now();
       window.__kabarBackSend('back');
     }
   });

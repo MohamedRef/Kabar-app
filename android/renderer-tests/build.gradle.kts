@@ -21,6 +21,7 @@ kotlin {
 // Compile production source directly rather than copying or reimplementing it.
 tasks.named<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>("compileTestKotlin") {
     source(file("../src/main/kotlin/app/kabar/WebViewGuard.kt"))
+    source(file("../src/main/kotlin/app/kabar/BackKeys.kt"))
 }
 
 tasks.test {

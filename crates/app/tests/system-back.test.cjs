@@ -96,7 +96,8 @@ function start() {
   }
   const flush = async () => { for (let n = 0; n < 8; n++) await Promise.resolve(); };
   const setScreenBack = (value) => window[`__${prefix}SetScreenBack`](value);
-  return { add, flush, mutation, history, received, setScreenBack };
+  const nativeBack = () => window[`__${prefix}NativeBack`]();
+  return { add, flush, mutation, history, received, setScreenBack, nativeBack };
 }
 
 test('Back closes highest visual dialog before the later DOM sibling', async () => {
@@ -294,4 +295,42 @@ test('a sheet opened without a tap after one closed by X still takes Back', asyn
   await app.flush();
   assert.deepEqual(steps, ['closed']);
   assert.equal(app.history.system(), 'exit');
+});
+
+test('Android Back key: one step per press, and exit only on Today with nothing open', async () => {
+  const app = start();
+  const steps = [];
+  app.setScreenBack(true); // on Stats, came from Today
+  const settings = app.add({ dialog: true, z: 41 });
+  const closeSettings = app.add({ back: true, parentElement: settings, click: () => {
+    steps.push('closed settings'); settings.active = false; closeSettings.active = false; app.mutation();
+  } });
+  const section = app.add({ back: true, parentElement: settings, click: () => {
+    steps.push('section list'); section.active = false; app.mutation();
+  } });
+  const changes = app.add({ dialog: true, z: 61 });
+  const closeChanges = app.add({ back: true, parentElement: changes, click: () => {
+    steps.push('closed changes'); changes.active = false; closeChanges.active = false; app.mutation();
+  } });
+  await app.flush();
+  for (const expected of ['closed changes', 'section list', 'closed settings']) {
+    assert.equal(app.nativeBack(), 'step');
+    await app.flush();
+    assert.equal(steps.at(-1), expected);
+  }
+  assert.equal(app.nativeBack(), 'step', 'Stats steps back to Today');
+  assert.deepEqual(app.received, ['ready', 'back']);
+  assert.equal(app.nativeBack(), 'step', 'wait for Rust to confirm the screen');
+  app.setScreenBack(false); // Today
+  await app.flush();
+  assert.equal(app.nativeBack(), 'exit', 'Today with nothing open leaves the app');
+  assert.deepEqual(app.received, ['ready', 'back']);
+});
+
+test('Android Back key never leaves from under a dialog in transition', async () => {
+  const app = start();
+  const sheet = app.add({ dialog: true, z: 50 });
+  app.add({ back: true, parentElement: sheet, hidden: true });
+  await app.flush();
+  assert.equal(app.nativeBack(), 'step');
 });
