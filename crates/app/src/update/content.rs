@@ -145,10 +145,8 @@ fn cleanup_unreferenced(dir: &Path) {
         let Some(name) = path.file_name().and_then(|f| f.to_str()) else {
             continue;
         };
-        let old_part = matches!(
-            name,
-            "content.bundle.part" | "content.json.part" | "content.previous.json.part"
-        );
+        let old_part =
+            matches!(name, "content.bundle.part" | "content.json.part" | "content.previous.json.part");
         let orphan = name
             .strip_prefix("content.")
             .and_then(|s| s.strip_suffix(".bundle"))
