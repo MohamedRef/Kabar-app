@@ -36,7 +36,6 @@ pub enum U {
     FailedInstall,
     TooNew,
     KeyChanged,
-    WaitingWifi,
     Later,
     // mode and channel
     Mode,
@@ -47,14 +46,10 @@ pub enum U {
     ModeOff,
     ModeOffHint,
     Channel,
-    ChannelHint,
     Alpha,
     Beta,
     Stable,
     Preview,
-    PreviewHint,
-    Safety,
-    Packs,
     WhatsNew,
     // the notification Android shows once the new Kabar is in
     DoneTitle,
@@ -69,14 +64,12 @@ pub enum U {
     NoticeTapInstalled,
     NoticeChannel,
     NotifyToggle,
-    NotifyToggleHint,
     // the "what's new" sheet (sheet.rs)
     WhatsNewAsk,
     History,
     HistoryHint,
     HistoryEmpty,
     UpdatedTitle,
-    UpdatedSub,
     KindNew,
     KindImproved,
     KindFixed,
@@ -99,7 +92,6 @@ pub enum U {
     // Settings › Updates: what's on this device, and what a check found
     AppRow,
     ContentRow,
-    ContentBuiltIn,
     ContentUpdated,
     ContentWaitingShort,
     ContentSame,
@@ -112,7 +104,6 @@ pub enum U {
     ReopenHint,
     OnThisDevice,
     HowItWorks,
-    CheckCovers,
 }
 
 pub fn ut(lang: UiLanguage, u: U) -> &'static str {
@@ -241,9 +232,6 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (KeyChanged, En) => {
             "The preview signing key changed, so this build can't verify new ones. Install the newest kabar-preview.apk by hand once; after that it's automatic again."
         }
-        (WaitingWifi, ArEg) => "هتنزل لوحدها أول ما تتوصل بواي فاي، أو نزّلها دلوقتي.",
-        (WaitingWifi, Ar) => "سينزل وحده عند الاتصال بشبكة Wi-Fi، أو نزّله الآن.",
-        (WaitingWifi, En) => "It downloads by itself on Wi-Fi, or download it now.",
         (Later, ArEg) => "بعدين",
         (Later, Ar) => "لاحقًا",
         (Later, En) => "Later",
@@ -278,15 +266,6 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (Channel, ArEg) => "القناة",
         (Channel, Ar) => "القناة",
         (Channel, En) => "Channel",
-        (ChannelHint, ArEg) => {
-            "ألفا بتاخد كل جديد أول بأول (وبيتا والنسخ الثابتة كمان). بيتا أهدى، والثابتة أهدى وأهدى."
-        }
-        (ChannelHint, Ar) => {
-            "ألفا تأخذ كل جديد أولًا بأول (ومعها بيتا والإصدارات الثابتة). بيتا أهدأ، والثابتة أهدأ منهما."
-        }
-        (ChannelHint, En) => {
-            "Alpha gets everything first (betas and stable releases too). Beta is calmer, Stable calmest."
-        }
         (Alpha, ArEg | Ar) => "ألفا",
         (Alpha, En) => "Alpha",
         (Beta, ArEg | Ar) => "بيتا",
@@ -296,21 +275,6 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (Stable, En) => "Stable",
         (Preview, ArEg | Ar) => "معاينة",
         (Preview, En) => "Preview",
-        (PreviewHint, ArEg) => "دي نسخة معاينة من GitHub: بتتحدّث مع كل تعديل يدخل main.",
-        (PreviewHint, Ar) => "هذا إصدار معاينة من GitHub: يتحدّث مع كل تعديل يدخل main.",
-        (PreviewHint, En) => "A preview build from GitHub: it updates with every change merged into main.",
-        (Safety, ArEg) => {
-            "كل تحديث بيتأكد إنه متوقّع بمفتاحك وإن بصمته (SHA-256) مظبوطة قبل ما يتثبّت، وأندرويد كمان بيتأكد إنه بنفس مفتاح التوقيع."
-        }
-        (Safety, Ar) => {
-            "يتحقق كل تحديث من توقيعه بمفتاحك ومن بصمته (SHA-256) قبل التثبيت، ويتحقق أندرويد أيضًا من مفتاح التوقيع نفسه."
-        }
-        (Safety, En) => {
-            "Every update is checked against your signing key and its SHA-256 before it installs; Android also checks the APK's signing key."
-        }
-        (Packs, ArEg) => "باكات الصوت اللي نزّلتها بتتحدّث مع نفس الفحص.",
-        (Packs, Ar) => "تتحدّث حزم الصوت المنزّلة مع الفحص نفسه.",
-        (Packs, En) => "Audio packs you downloaded update with the same check.",
         (WhatsNew, ArEg) => "الجديد",
         (WhatsNew, Ar) => "الجديد",
         (WhatsNew, En) => "What's new",
@@ -349,15 +313,6 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (NotifyToggle, ArEg) => "ابعتلي إشعار أول ما تنزل نسخة جديدة",
         (NotifyToggle, Ar) => "أرسل إشعارًا عند صدور إصدار جديد",
         (NotifyToggle, En) => "Send a notification when a new version is out",
-        (NotifyToggleHint, ArEg) => {
-            "على أندرويد حتى لو Kabar مقفول (بيبص كل كام ساعة)، وعلى الماك وهو مفتوح، ومعاه الجديد في سطرين. مش بيرنّ في ساعات الهدوء، ومفتاح الإشعارات في الجهاز له الكلمة الأخيرة."
-        }
-        (NotifyToggleHint, Ar) => {
-            "على أندرويد حتى لو كان Kabar مغلقًا (يتحقق كل بضع ساعات)، وعلى الماك وهو مفتوح، ومعه الجديد في سطرين. لا يرنّ في ساعات الهدوء، ومفتاح الإشعارات في الجهاز له الكلمة الأخيرة."
-        }
-        (NotifyToggleHint, En) => {
-            "On Android even while Kabar is closed (it looks every few hours), on the Mac while it's open, with what's new in a line or two. Never during your quiet hours, and the device's own notification switch has the last word."
-        }
 
         (WhatsNewAsk, ArEg) => "إيه الجديد؟",
         (WhatsNewAsk, Ar) => "ما الجديد؟",
@@ -373,9 +328,6 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (UpdatedTitle, ArEg) => "Kabar اتحدّث",
         (UpdatedTitle, Ar) => "تم تحديث Kabar",
         (UpdatedTitle, En) => "Kabar was updated",
-        (UpdatedSub, ArEg) => "ده اللي اتغيّر من آخر مرة فتحته.",
-        (UpdatedSub, Ar) => "هذا ما تغيّر منذ آخر مرة فتحته.",
-        (UpdatedSub, En) => "Here's what changed since you last opened it.",
         (KindNew, ArEg | Ar) => "جديد",
         (KindNew, En) => "New",
         (KindImproved, ArEg) => "اتحسّن",
@@ -438,9 +390,6 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (ContentRow, ArEg) => "الدروس والشكل",
         (ContentRow, Ar) => "الدروس والمظهر",
         (ContentRow, En) => "Lessons and look",
-        (ContentBuiltIn, ArEg) => "زي ما جت مع البرنامج",
-        (ContentBuiltIn, Ar) => "كما جاءت مع التطبيق",
-        (ContentBuiltIn, En) => "As they came with the app",
         (ContentUpdated, ArEg) => "اتحدّثت من غير تثبيت",
         (ContentUpdated, Ar) => "حُدِّثت دون تثبيت",
         (ContentUpdated, En) => "Updated without an install",
@@ -477,9 +426,6 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (HowItWorks, ArEg) => "إزاي بيتحدّث",
         (HowItWorks, Ar) => "طريقة التحديث",
         (HowItWorks, En) => "How it updates",
-        (CheckCovers, ArEg) => "بيدوّر على البرنامج والدروس وباكات الصوت مرة واحدة.",
-        (CheckCovers, Ar) => "يبحث عن تحديثات التطبيق والدروس وحزم الصوت معًا.",
-        (CheckCovers, En) => "Looks for the app, lessons and audio packs in one go.",
     }
 }
 

@@ -92,7 +92,6 @@ pub fn ListeningScreen() -> Element {
 
     rsx! {
         div { class: "listening",
-            p { class: "muted small", "{tr(l, T::ListenIntro)}" }
             div { class: "row",
                 for (code, value) in [("id", Lang::Id), ("jv", Lang::Jv)] {
                     button {

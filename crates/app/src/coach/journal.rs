@@ -103,7 +103,6 @@ pub fn JournalScreen() -> Element {
                 div { class: "page-head",
                     div {
                         h1 { "{ui.t(Msg::JournalTitle)}" }
-                        p { class: "sub", "{ui.t(Msg::JournalIntro)}" }
                     }
                 }
                 div { class: "segmented journal-filters", role: "radiogroup", aria_label: "{ui.t(Msg::JournalTitle)}",
@@ -120,9 +119,7 @@ pub fn JournalScreen() -> Element {
                         }
                     }
                 }
-                p { class: "muted small journal-private", "{ui.t(Msg::JournalPrivate)}" }
                 if inked {
-                    p { class: "muted small", "{ui.t(Msg::JournalInkLater)}" }
                 }
             }
             if nothing && filter() != JournalFilter::All {

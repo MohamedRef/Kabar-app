@@ -238,7 +238,6 @@ pub(super) fn MapView(j: Journey, picked: Signal<Option<Option<String>>>) -> Ele
                     button { aria_label: "{ui.t(Msg::JourneyZoomOut)}", title: "{ui.t(Msg::JourneyZoomOut)}", onclick: move |_| zoom_out("zoom(1 / 1.5)"), "−" }
                     button { aria_label: "{ui.t(Msg::JourneyZoomReset)}", title: "{ui.t(Msg::JourneyZoomReset)}", onclick: move |_| zoom_reset("reset()"), {icon_reset()} }
                 }
-                p { class: "muted jm-hint", "{ui.t(Msg::JourneyMapHint)}" }
                 {continue_bar(&ui, &j, &progress)}
             }
             if let Some(level) = panel_level {

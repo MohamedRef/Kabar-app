@@ -5,10 +5,8 @@ use kabar_core::locale::UiLanguage;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum T {
-    Intro,
     YourChats,
     StartWith,
-    SceneHint,
     FreeChat,
     Javanese,
     Indonesian,
@@ -22,7 +20,6 @@ pub enum T {
     Write,
     Type,
     PreparingReply,
-    WaitHint,
     Privacy,
     Unverified,
     MoreNatural,
@@ -51,26 +48,12 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
     use T::*;
     use UiLanguage::*;
     match (msg, lang) {
-        (Intro, ArEg) => {
-            "اتكلم مع صحابك من إندونيسيا، كل واحد لمستوى. بيردّوا عليك، ولو فيه حاجة تتقال أحسن بيقولولك بالراحة."
-        }
-        (Intro, Ar) => {
-            "تحدّث مع أصدقائك من إندونيسيا، لكلٍّ منهم مستواه. يردّون عليك، وإن كان في كلامك ما يُقال أفضل نبّهوك بلطف."
-        }
-        (Intro, En) => {
-            "Talk with friends from Indonesia, each written for a level. They answer, and gently show you a more natural way to say things."
-        }
         (YourChats, ArEg) => "دردشاتك",
         (YourChats, Ar) => "محادثاتك",
         (YourChats, En) => "Your chats",
         (StartWith, ArEg) => "ابدأ مع",
         (StartWith, Ar) => "ابدأ مع",
         (StartWith, En) => "Start with",
-        (SceneHint, ArEg) => "اختار موقف واتدرّب على الرد. ولو حابب تتكلم من غير موقف، اختار دردشة حرة.",
-        (SceneHint, Ar) => "اختر موقفًا وتدرّب على الرد. وللحديث دون موقف محدد، اختر محادثة حرة.",
-        (SceneHint, En) => {
-            "Pick a situation and practise replying, or choose Free chat to talk without a set scene."
-        }
         (FreeChat, ArEg) => "دردشة حرة",
         (FreeChat, Ar) => "محادثة حرة",
         (FreeChat, En) => "Free chat",
@@ -104,9 +87,6 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (PreparingReply, ArEg) => "بيحضّر رد…",
         (PreparingReply, Ar) => "يحضّر ردًا…",
         (PreparingReply, En) => "is preparing a reply…",
-        (WaitHint, ArEg) => "وأنت مستني، جهّز سؤال بسيط تكمل بيه الحوار.",
-        (WaitHint, Ar) => "أثناء الانتظار، حضّر سؤالًا بسيطًا لتواصل الحوار.",
-        (WaitHint, En) => "While you wait, think of a simple question to keep the conversation going.",
         (Privacy, ArEg) => {
             "رسايلك بتروح لمحرك ذكاء اصطناعي مجاني كنص تعليمي. متكتبش بيانات شخصية حقيقية، والإيميلات وأرقام التليفون بتتشال قبل ما تتبعت."
         }

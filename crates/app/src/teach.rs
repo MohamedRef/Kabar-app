@@ -288,13 +288,10 @@ pub fn TeachScreen() -> Element {
                             placeholder: "https://",
                             oninput: move |e| link.set(e.value()),
                         }
-                        p { class: "muted small", "{tr(T::LinkHint)}" }
                     },
                     Mode::Wiktionary => rsx! {
-                        p { class: "muted small", "{tr(T::WiktionaryHint)}" }
                     },
                 }
-                p { class: "muted small", "{tr(T::ScreenshotHint)}" }
             }
 
             div { class: "row",
@@ -729,9 +726,6 @@ pub enum T {
     Screenshot,
     SearchGoogle,
     PastePlaceholder,
-    LinkHint,
-    WiktionaryHint,
-    ScreenshotHint,
     Teach,
     Fetching,
     Thinking,
@@ -805,25 +799,6 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (PastePlaceholder, ArEg) => "الصق هنا الشرح من جوجل أو من أي قاموس",
         (PastePlaceholder, Ar) => "الصق هنا الشرح من جوجل أو من أي قاموس",
         (PastePlaceholder, En) => "Paste the explanation from Google or any dictionary",
-        (LinkHint, ArEg) => "لو الموقع مارضيش يفتح جوه \u{2068}Kabar\u{2069}، انسخ الجزء المهم والصقه.",
-        (LinkHint, Ar) => "إذا رفض الموقع الفتح داخل \u{2068}Kabar\u{2069}، انسخ الجزء المهم والصقه.",
-        (LinkHint, En) => "If the site won't open inside Kabar, copy the part that matters and paste it.",
-        (WiktionaryHint, ArEg) => {
-            "\u{2068}Kabar\u{2069} هيجيب تعريف الكلمة من ويكاموس الإنجليزي، ببلاش ومن غير حساب."
-        }
-        (WiktionaryHint, Ar) => {
-            "سيجلب \u{2068}Kabar\u{2069} تعريف الكلمة من ويكاموس الإنجليزي مجانًا ودون حساب."
-        }
-        (WiktionaryHint, En) => "Kabar fetches the word's entry from English Wiktionary: free, no account.",
-        (ScreenshotHint, ArEg) => {
-            "عندك سكرين شوت للشرح؟ قراية الصور على الجهاز جاية مع القارئ؛ لحد كده انسخ النص منها."
-        }
-        (ScreenshotHint, Ar) => {
-            "لديك لقطة شاشة للشرح؟ قراءة الصور على الجهاز تأتي مع القارئ؛ حتى ذلك الحين انسخ النص منها."
-        }
-        (ScreenshotHint, En) => {
-            "Got a screenshot of the explanation? On-device reading comes with the Reader; until then, copy its text."
-        }
         (Teach, ArEg) => "علّم \u{2068}Kabar\u{2069}",
         (Teach, Ar) => "علّم \u{2068}Kabar\u{2069}",
         (Teach, En) => "Teach Kabar",

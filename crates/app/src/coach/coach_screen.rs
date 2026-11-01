@@ -240,7 +240,6 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
             }
             div { class: "league",
                 h3 { bdi { lang: "id", "Liga Pribadi" } }
-                p { class: "muted small", "{ui.t(Msg::LeagueExplain)}" }
                 div { class: "stats-row",
                     Stat {
                         value: format!("{} / {}", ui.num(r.league.rank), ui.num(r.league.of)),
@@ -326,7 +325,6 @@ fn Warung(today: LocalDate) -> Element {
                 bdi { class: "latin", "Koin" }
                 " {ui.num(balance)}"
             }
-            p { class: "muted small", "{ui.t(Msg::KoinEarnedFrom)}" }
             if let Some(b) = toast() {
                 div { class: "toast", role: "status",
                     Nur { mood: Mood::Laughing, text: say(&ui, Line::WarungBought, today, &[("name", name.as_str()), ("item", b.name), ("koin", &koin_left)]) }
@@ -438,7 +436,6 @@ fn JournalLink() -> Element {
                 span { class: "nav-icon", aria_hidden: "true", {icons::nav(Screen::Journal)} }
                 " {ui.t(Msg::JournalTitle)}"
             }
-            p { class: "muted", "{ui.t(Msg::JournalIntro)}" }
             button { class: "primary", "{ui.t(Msg::JournalOpen)}" }
         }
     }

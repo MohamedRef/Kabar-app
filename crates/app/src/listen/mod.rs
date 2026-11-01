@@ -158,7 +158,6 @@ pub fn ListenScreen() -> Element {
             if open().is_none() {
                 header { class: "lx-page-head",
                     h2 { "{ui.t(crate::i18n::Msg::NavListen)}" }
-                    p { class: "muted", "{tt(ui.lang(), T::ListenIntro)}" }
                 }
                 div { class: "seg", role: "tablist", aria_label: "{ui.t(crate::i18n::Msg::NavListen)}",
                     for (t, label) in [(Tab::Sinetron, "Sinetron"), (Tab::Radio, "Kabar Radio")] {
@@ -212,7 +211,6 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                 |_| String::new(),
             );
             rsx! {
-                p { class: "muted", "{tt(lang, T::SinetronIntro)}" }
                 crate::views::ViewBar { of: SINETRON_VIEW }
                 ol { class: "coll lx-list", "data-layout": view.layout.as_str(),
                     for row in rows {
@@ -301,7 +299,6 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                 |_| String::new(),
             );
             rsx! {
-            p { class: "muted", Rich { text: tt(lang, T::RadioIntro).to_string(), target: "id" } }
             crate::views::ViewBar { of: RADIO_VIEW }
             ol { class: "coll lx-list", "data-layout": view.layout.as_str(),
                 for entry in radio {
@@ -477,7 +474,6 @@ fn RadioEnd(episode: RadioEpisode) -> Element {
     let target = target_tag(&episode.language);
     rsx! {
         h3 { "{tt(ui.lang(), T::Words)}" }
-        p { class: "muted", "{tt(ui.lang(), T::WordsHint)}" }
         div { class: "row",
             for w in episode.words.iter() {
                 span { key: "{w}", class: "pill", Annotated { text: w.clone(), tag: target, inline: true } }
@@ -520,18 +516,6 @@ mod tests {
         for (id, yaml) in embedded::all(PERSONAS) {
             let p = kabar_core::story::parse_persona(&yaml).unwrap();
             assert_eq!(&p.id, id);
-        }
-        // The Radio intro names the hosts who actually present the shows.
-        for r in SHOWS.radio.iter().flatten() {
-            for h in &r.hosts {
-                for lang in [UiLanguage::ArEg, UiLanguage::Ar, UiLanguage::En] {
-                    assert!(
-                        tt(lang, T::RadioIntro).contains(&h.name),
-                        "{lang:?} RadioIntro misses {}",
-                        h.name
-                    );
-                }
-            }
         }
         // Episodes come in order.
         let numbers: Vec<u32> = SHOWS.sinetron.iter().flatten().map(|s| s.episode).collect();

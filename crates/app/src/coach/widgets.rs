@@ -201,7 +201,6 @@ pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) ->
                     }
                     " {ui.t(Msg::RemindHere)}"
                 }
-                p { class: "hint", "{ui.t(Msg::RemindHereHint)}" }
             }
             if asleep {
                 p { class: "hint", "{ui.t(Msg::RemindersAsleep)}" }

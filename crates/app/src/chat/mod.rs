@@ -313,7 +313,6 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
     rsx! {
         header { class: "ch-page-head",
             h2 { "{ui.t(crate::i18n::Msg::NavChat)}" }
-            p { class: "muted", "{tt(lang, T::Intro)}" }
         }
         // Where the learner left off comes first: picking up a chat is the
         // usual next step once there is one.
@@ -421,7 +420,6 @@ fn Scenes(persona: Persona, on_back: EventHandler, on_pick: EventHandler<Scenari
             p { class: "ch-register-line muted", Rich { text: pick(&persona.style.register, lang).to_string(), target } }
         }
         h3 { class: "ch-section", "{tt(lang, T::StartWith)}" }
-        p { class: "ch-scene-hint muted small", "{tt(lang, T::SceneHint)}" }
         ul { class: "ch-scenes",
             for s in scenarios(&persona) {
                 {
@@ -736,7 +734,6 @@ fn Chat(
                     li { class: "ch-msg them", role: "status",
                         div { class: "ch-bubble ch-typing", bdi { class: "latin", "{p.name}" } " {tt(lang, T::PreparingReply)}" }
                         if turn == 1 {
-                            span { class: "muted small", "{tt(lang, T::WaitHint)}" }
                         }
                     }
                 }

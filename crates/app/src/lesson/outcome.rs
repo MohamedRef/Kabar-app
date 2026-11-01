@@ -153,7 +153,6 @@ pub(super) fn ContentCheck(lesson_id: String) -> Element {
                     class: "card-action lp-content reveal d2",
                     onclick: move |_| set(true),
                     h3 { "{lt(lang, L::ContentTitle)}" }
-                    p { class: "muted lp-small", "{lt(lang, L::ContentHint)}" }
                     button { class: "tonal lp-content-ok", "{lt(lang, L::ContentOk)}" }
                 }
             }

@@ -44,7 +44,6 @@ pub fn PenLab() -> Element {
     rsx! {
         crate::ui::DivCard {
             h2 { bdi { "Pen Lab" } }
-            p { class: "muted", "{ui.t(Msg::PenLabIntro)}" }
         }
         div { class: "penlab",
             div {

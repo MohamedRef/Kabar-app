@@ -5,9 +5,6 @@ use kabar_core::locale::UiLanguage;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum T {
-    ListenIntro,
-    SinetronIntro,
-    RadioIntro,
     Episode,
     Indonesian,
     Javanese,
@@ -41,7 +38,6 @@ pub enum T {
     Questions,
     NextTime,
     Words,
-    WordsHint,
     Back,
     Broken,
     Scene,
@@ -56,23 +52,6 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
     use T::*;
     use UiLanguage::*;
     match (msg, lang) {
-        (SinetronIntro, ArEg) => "حلقة جديدة بتفتح مع كل وحدة بتخلّصها في الرحلة.",
-        (SinetronIntro, Ar) => "تُفتح حلقة جديدة مع كل وحدة تُنهيها في الرحلة.",
-        (SinetronIntro, En) => "A new episode opens with every unit you finish on the Journey.",
-        (ListenIntro, ArEg) => "مسلسل قصير بحلقة لكل وحدة بتخلّصها، وراديو بيراجع معاك كلمات الوحدة.",
-        (ListenIntro, Ar) => "مسلسل قصير بحلقة لكل وحدة تُنهيها، وإذاعة تراجع معك كلمات الوحدة.",
-        (ListenIntro, En) => {
-            "A short drama with an episode for every unit you finish, and a radio show that goes over the unit's words."
-        }
-        (RadioIntro, ArEg) => {
-            "حلقة لكل وحدة: Kak Tiara وKak Reza بيراجعوا كلمات الإندونيسي معاك، وMbak Sekar وMas Danang كلمات الجاوي. نزّلها واسمعها في الطريق."
-        }
-        (RadioIntro, Ar) => {
-            "حلقة لكل وحدة: Kak Tiara وKak Reza يراجعان معك كلمات الإندونيسية، وMbak Sekar وMas Danang كلمات الجاوية. نزّلها واستمع إليها في الطريق."
-        }
-        (RadioIntro, En) => {
-            "One episode per unit: Kak Tiara and Kak Reza go over the Indonesian words with you, Mbak Sekar and Mas Danang the Javanese ones. Download one for the road."
-        }
         (Episode, ArEg | Ar) => "الحلقة",
         (Episode, En) => "Episode",
         (Indonesian, ArEg) => "إندونيسي",
@@ -161,9 +140,6 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (NextTime, En) => "Next time",
         (Words, ArEg | Ar) => "كلمات الحلقة",
         (Words, En) => "Words in this episode",
-        (WordsHint, ArEg) => "كلها من دروس الوحدة. دوس على كلمة تشوف معناها.",
-        (WordsHint, Ar) => "كلّها من دروس الوحدة. انقر كلمة لترى معناها.",
-        (WordsHint, En) => "All from this unit's lessons. Tap a word for its meaning.",
         (Back, ArEg | Ar) => "رجوع",
         (Back, En) => "Back",
         (PrevLine, ArEg) => "الجملة اللي فاتت",

@@ -233,7 +233,6 @@ pub fn SettingsSheet() -> Element {
                     div { class: "settings-pane", key: "{s.id()}", role: "region", aria_labelledby: "settings-section-title",
                         header { class: "settings-intro",
                             h3 { id: "settings-section-title", "{st(lang, s.title())}" }
-                            p { "{st(lang, s.summary())}" }
                         }
                         SectionView { section: s }
                     }
@@ -291,7 +290,6 @@ fn SectionList(sections: Vec<Section>, current: Option<Section>) -> Element {
                     aria_label: "{st(lang, S::Search)}", placeholder: "{st(lang, S::Search)}",
                     value: "{query}", oninput: move |event| query.set(event.value()),
                 }
-                p { class: "settings-save-hint", "{st(lang, S::Immediate)}" }
             }
             nav { class: "settings-sections", aria_label: "{st(lang, S::Sections)}",
                 if query.read().trim().is_empty() {

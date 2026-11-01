@@ -301,7 +301,6 @@ fn TrySyncCard() -> Element {
     rsx! {
         crate::ui::DivCard {
             h2 { "{ui.t(Msg::TrySyncTitle)}" }
-            p { class: "muted", "{ui.t(Msg::TrySyncBody)}" }
             form {
                 class: "row",
                 onsubmit: move |e: FormEvent| {

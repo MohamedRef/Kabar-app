@@ -111,7 +111,6 @@ pub fn ExportCard() -> Element {
     rsx! {
         crate::ui::DivCard { class: "export-card",
             h2 { "{ui.t(Msg::ExportTitle)}" }
-            p { class: "muted", "{ui.t(Msg::ExportBody)}" }
             div { class: "row",
                 button { class: "primary", disabled: busy(), onclick: run,
                     if busy() { "{ui.t(Msg::ExportSaving)}" } else { "{ui.t(Msg::ExportButton)}" }
