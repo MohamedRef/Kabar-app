@@ -995,3 +995,115 @@ fn an_invalid_or_oversized_bundle_is_never_taken() {
     let (entries, _) = content::load(data.path(), &info).unwrap();
     assert_eq!(cast_of(&entries), "cast: [good]\n", "the previous or good bundle instead");
 }
+
+#[test]
+fn a_feed_carrying_the_bundle_already_here_downloads_nothing() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    let info = alpha_build();
+    let bytes = cast_bundle("cast: [same]\n");
+    let held = stored(&dir, &bytes, 1);
+    select(&dir, "content.json", &held);
+    // The feed's release no longer even has the file: any download fails.
+    let feed = tempfile::tempdir().unwrap();
+    let (url, log) = serve_logged(feed.path().to_path_buf());
+    let manifest = content_manifest("gone.bundle", &bytes, 7);
+    assert_eq!(
+        content::refresh(data.path(), &info.installed(Some(Channel::Alpha)), &info, &manifest, &url),
+        content::Refresh::Current,
+        "nothing new to reopen for"
+    );
+    assert!(log.lock().unwrap().is_empty(), "no request was made");
+    let now = read_selector(&dir, "content.json").unwrap();
+    assert_eq!(
+        (now.build, now.sha256.as_str()),
+        (7, held.sha256.as_str()),
+        "the pointer moved to the feed's build"
+    );
+    // The next check sees nothing newer.
+    assert_eq!(
+        content::refresh(data.path(), &info.installed(Some(Channel::Alpha)), &info, &manifest, &url),
+        content::Refresh::Current,
+    );
+    let (entries, _) = content::load(data.path(), &info).unwrap();
+    assert_eq!(cast_of(&entries), "cast: [same]\n");
+}
+
+#[test]
+fn a_feed_going_back_to_a_bundle_kept_here_reuses_it() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    let info = alpha_build();
+    let older = cast_bundle("cast: [older]\n");
+    stored(&dir, &older, 1);
+    let newer = stored(&dir, &cast_bundle("cast: [newer]\n"), 2);
+    select(&dir, "content.json", &newer);
+    let feed = tempfile::tempdir().unwrap();
+    let (url, log) = serve_logged(feed.path().to_path_buf());
+    let manifest = content_manifest("older.bundle", &older, 3);
+    assert_eq!(
+        content::refresh(data.path(), &info.installed(Some(Channel::Alpha)), &info, &manifest, &url),
+        content::Refresh::Taken(3),
+    );
+    assert!(log.lock().unwrap().is_empty(), "no request was made");
+    assert_eq!(
+        read_selector(&dir, "content.previous.json"),
+        Some(newer),
+        "the one replaced stays recoverable"
+    );
+    let (entries, _) = content::load(data.path(), &info).unwrap();
+    assert_eq!(cast_of(&entries), "cast: [older]\n");
+}
+
+#[test]
+fn a_bundle_this_build_cannot_read_is_fetched_once_until_the_app_changes() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    let info = alpha_build();
+    let good = stored(&dir, &cast_bundle("cast: [good]\n"), 1);
+    select(&dir, "content.json", &good);
+    let mut files = kabar_core::bundle_check::sample_files("characters: []\n");
+    files.iter_mut().find(|(k, _)| k.starts_with("LESSONS/")).unwrap().1 =
+        "a: [lesson from a newer app".into();
+    let entries: Vec<_> = files
+        .into_iter()
+        .map(|(k, t)| (k, miniz_oxide::deflate::compress_to_vec(t.as_bytes(), 10)))
+        .collect();
+    let bytes = kabar_protocol::bundle::encode(&entries);
+    let feed = tempfile::tempdir().unwrap();
+    fs::write(feed.path().join("next.bundle"), &bytes).unwrap();
+    let (url, log) = serve_logged(feed.path().to_path_buf());
+    let manifest = content_manifest("next.bundle", &bytes, 5);
+    let check = |info: &BuildInfo| {
+        content::refresh(data.path(), &info.installed(Some(Channel::Alpha)), info, &manifest, &url)
+    };
+    assert_eq!(check(&info), content::Refresh::Failed);
+    assert_eq!(log.lock().unwrap().len(), 1);
+    assert_eq!(check(&info), content::Refresh::Current, "remembered for this app build");
+    assert_eq!(log.lock().unwrap().len(), 1, "not downloaded again");
+    assert_eq!(read_selector(&dir, "content.json"), Some(good), "the content in use stays");
+    // After an app update the same bundle is tried again (here it is still
+    // unreadable, so it fails again).
+    let updated = BuildInfo { build: 2, ..alpha_build() };
+    assert_eq!(check(&updated), content::Refresh::Failed);
+    assert_eq!(log.lock().unwrap().len(), 2, "a newer app gets its own try");
+}
+
+#[test]
+fn a_dropped_download_is_not_remembered_as_unreadable() {
+    let data = tempfile::tempdir().unwrap();
+    let info = alpha_build();
+    let bytes = cast_bundle("cast: [next]\n");
+    let feed = tempfile::tempdir().unwrap();
+    // The file on the feed isn't the signed one (a cut or swapped download).
+    fs::write(feed.path().join("next.bundle"), &bytes[..bytes.len() / 2]).unwrap();
+    let (url, log) = serve_logged(feed.path().to_path_buf());
+    let manifest = content_manifest("next.bundle", &bytes, 5);
+    for _ in 0..2 {
+        assert_eq!(
+            content::refresh(data.path(), &info.installed(Some(Channel::Alpha)), &info, &manifest, &url),
+            content::Refresh::Failed,
+        );
+    }
+    assert_eq!(log.lock().unwrap().len(), 2, "each check tries the network again");
+}

@@ -191,6 +191,14 @@ then the previous selection, then the built-in content, and the rejected
 digest is neither activated nor downloaded again. The last-known-good bundle
 is never counted, so crashes unrelated to content can't reject it.
 
+**No download twice.** A feed whose bundle has the same digest as one the
+device already keeps (a merge that changed only the app, or a feed that
+went back to earlier content) is taken from disk: only the selector moves
+to the feed's build. A bundle that downloaded whole but fails this build's
+checks is remembered in `content.unreadable.json` together with the app
+build that refused it, and isn't fetched again until the app changes. A cut
+or mismatched download is not remembered; the next check tries again.
+
 **Bundle checks.** `kabar_core::bundle_check` holds the rules a bundle must
 pass, and both sides run them: `kabar-tools update bundle` and `update
 manifest --content` refuse to publish a bundle that fails, and a device

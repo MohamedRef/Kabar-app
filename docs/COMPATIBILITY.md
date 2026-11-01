@@ -64,7 +64,9 @@ each rule names where it lives and the test that holds it.
   running build's parsers before the bundle is taken
   (`bundle_check::check_files`). Content that needs a newer parser therefore
   never replaces readable content on an old app: the old app keeps its
-  last-known-good bundle (see `docs/RELEASE.md`, "Last-known-good content").
+  last-known-good bundle (see `docs/RELEASE.md`, "Last-known-good content"),
+  remembers the digest for its own build so it doesn't download it again,
+  and tries it once more after an app update.
 - **Stylesheets** apply only on the exact build in `ui_build`, so a newer
   look never lands on older screens; other builds use the content and keep
   their own CSS.
