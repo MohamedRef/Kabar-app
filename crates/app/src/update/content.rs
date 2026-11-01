@@ -29,6 +29,7 @@ use super::{BuildInfo, agent};
 const DIR: &str = "content";
 const BUNDLE: &str = "content.bundle";
 const INFO: &str = "content.json";
+const BACKUP_INFO: &str = "content.previous.json";
 
 /// New downloads use a content-addressed filename. The metadata pointer
 /// changes only after those bytes are fully written and verified, so a crash
@@ -94,23 +95,51 @@ pub fn use_installed(data: &Path) {
 
 type Entries = Vec<(String, Vec<u8>)>;
 
-pub(super) fn load(data: &Path, info: &BuildInfo) -> Option<(Entries, bool)> {
-    let dir = data.join(DIR);
-    let Some(meta) = in_use(data, info) else {
-        let _ = fs::remove_file(dir.join(BUNDLE));
-        let _ = fs::remove_file(dir.join(INFO));
-        return None;
-    };
-    let bytes = fs::read(selected_path(&dir, &meta)).ok()?;
-    if !kabar_core::packs::sha256_hex(&bytes).eq_ignore_ascii_case(&meta.sha256) {
-        crate::diag::report!("content bundle changed on disk; using the built-in content");
+/// Verify both the selected file and the matching metadata before activating it.
+fn validated(dir: &Path, info: &BuildInfo, selector: &str) -> Option<(Entries, bool)> {
+    let meta: BundleInfo = serde_json::from_slice(&fs::read(dir.join(selector)).ok()?).ok()?;
+    if meta.order()? < (info.version, info.build) {
         return None;
     }
-    let entries = kabar_protocol::bundle::decode(&bytes)
-        .map_err(|e| crate::diag::report!("content bundle doesn't open ({e}); using the built-in content"))
-        .ok()?;
+    let bytes = fs::read(selected_path(dir, &meta)).ok()?;
+    if !kabar_core::packs::sha256_hex(&bytes).eq_ignore_ascii_case(&meta.sha256) {
+        return None;
+    }
+    let entries = kabar_protocol::bundle::decode(&bytes).ok()?;
     let look = meta.order() == Some((info.version, meta.ui_build));
     Some((entries, look))
+}
+
+/// Write selectors through a temporary file, never exposing partial JSON.
+fn commit_selector(dir: &Path, selector: &str, json: &[u8]) -> Result<(), String> {
+    let temp = dir.join(format!("{selector}.part"));
+    fs::write(&temp, json).map_err(|e| e.to_string())?;
+    fs::rename(&temp, dir.join(selector)).map_err(|e| e.to_string())
+}
+
+pub(super) fn load(data: &Path, info: &BuildInfo) -> Option<(Entries, bool)> {
+    let dir = data.join(DIR);
+    if let Some(bundle) = validated(&dir, info, INFO) {
+        return Some(bundle);
+    }
+    if let Some(bundle) = validated(&dir, info, BACKUP_INFO) {
+        // Restore only an independently verified previous selection.
+        if let Ok(previous) = fs::read(dir.join(BACKUP_INFO))
+            && let Err(e) = commit_selector(&dir, INFO, &previous)
+        {
+            crate::diag::report!("content selector recovery failed: {e}");
+        }
+        crate::diag::report!("recovered the previous verified content bundle");
+        return Some(bundle);
+    }
+    if in_use(data, info).is_none() {
+        // Preserve the existing stale-content behavior for app upgrades.
+        let _ = fs::remove_file(dir.join(BUNDLE));
+        let _ = fs::remove_file(dir.join(INFO));
+    } else {
+        crate::diag::report!("content bundle unavailable; using the built-in content");
+    }
+    None
 }
 
 /// Downloads the feed's bundle when it is newer than the one in use, checks
@@ -162,19 +191,22 @@ pub(super) fn refresh(
         let part = dir.join(format!("{BUNDLE}.part"));
         fs::write(&part, &bytes).map_err(|e| e.to_string())?;
         fs::rename(&part, &target).map_err(|e| e.to_string())?;
-        let info = BundleInfo {
+        let next = BundleInfo {
             version: m.version.clone(),
             build: m.build,
             sha256: file.sha256.clone(),
             ui_build: file.ui_build,
             fetched_ms: Some(super::now_ms()),
         };
-        let json = serde_json::to_vec_pretty(&info).map_err(|e| e.to_string())?;
-        let pointer_part = dir.join(format!("{INFO}.part"));
-        fs::write(&pointer_part, json).map_err(|e| e.to_string())?;
-        // The previous metadata still names the old, unchanged bundle until
-        // this final rename. Never point at a partially downloaded file.
-        fs::rename(&pointer_part, dir.join(INFO)).map_err(|e| e.to_string())
+        let json = serde_json::to_vec_pretty(&next).map_err(|e| e.to_string())?;
+        // The previous selection must be recoverable before changing the
+        // active pointer. A corrupt active selection never replaces a good backup.
+        if validated(&dir, info, INFO).is_some() {
+            let old = fs::read(dir.join(INFO)).map_err(|e| e.to_string())?;
+            commit_selector(&dir, BACKUP_INFO, &old)?;
+        }
+        // Commit the active pointer only after its bundle and fallback are safe.
+        commit_selector(&dir, INFO, &json)
     })();
     match result {
         Ok(()) => Refresh::Taken(m.build),
