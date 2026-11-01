@@ -179,8 +179,10 @@ top-level `.md` or a `crates/app/**/*.css` file, CI builds no APK:
 `update manifest --carry android-arm64` keeps the feed's APK entry (same
 file, its own `build`), apps compare that build and offer nothing to
 install, and the history entry is marked as a content update in "What's
-new". `kabar-tools validate` runs before every bundle is built.
-A downloaded bundle becomes *last-known-good* (`content.good.json`) only
+new". `kabar-tools validate` runs before every bundle is built. Strings,
+icons, art, layout and logic are code and still come with an APK.
+
+**Last-known-good content.** A downloaded bundle becomes *last-known-good* (`content.good.json`) only
 after Kabar has drawn its screens and run 10 s on it; downloads never move
 that pointer, and cleanup never removes its bundle. A bundle activated three
 launches in a row without reaching that point is rejected
@@ -199,8 +201,7 @@ across them), every lesson and test (schema version, id matching its file,
 the player's shape rules) and the cast. Every launch runs the cheap key
 check (`check_keys`: no duplicate keys, every single file present, at least
 one lesson) before it activates a bundle. Keys this build doesn't know are
-allowed, since a newer bundle may carry content for a newer app. Strings,
-icons, art, layout and logic are code and still come with an APK.
+allowed, since a newer bundle may carry content for a newer app.
 
 **Channels.** `alpha`, `beta`, `stable` for release builds (the learner
 picks in Settings; a beta also reaches alpha, a release reaches everyone),
