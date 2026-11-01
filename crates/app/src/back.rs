@@ -11,6 +11,11 @@
 //!
 //! On Today with nothing open no entry is kept, so Back leaves Kabar as
 //! Android users expect.
+//!
+//! On Android the Back key itself goes to the page first (`BackKey.kt` in
+//! android/, `__kabarNativeBack` in system-back.js), because WebView skips
+//! history entries added without a tap and would then let Android close
+//! Kabar from any screen. The history trap stays as a fallback.
 
 use std::cell::{Cell, RefCell};
 use std::rc::Rc;

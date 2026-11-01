@@ -353,10 +353,19 @@ pub fn system_bars(day: i32, night: i32) -> Result<(), String> {
     })
 }
 
-/// `WebViewGuard.install(activity)`: guards the WebView against a lost
+/// `BackKey.install(activity)`, then `WebViewGuard.install(activity)`: routes
+/// the Back key through the page, guards the WebView against a lost
 /// renderer, and returns how recent runs ended, one per line.
 pub fn webview_guard() -> Result<Option<String>, String> {
     with_activity(|env, activity| {
+        // Back goes through the page first, never WebView history (BackKey.kt).
+        let back = app_class(env, activity, jni_str!("app.kabar.BackKey"))?;
+        env.call_static_method(
+            &back,
+            jni_str!("install"),
+            jni_sig!("(Landroid/app/Activity;)V"),
+            &[JValue::Object(activity)],
+        )?;
         let class = app_class(env, activity, jni_str!("app.kabar.WebViewGuard"))?;
         let s = env
             .call_static_method(
