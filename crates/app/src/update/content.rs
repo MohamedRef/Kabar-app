@@ -191,14 +191,14 @@ pub(super) fn refresh(
         let part = dir.join(format!("{BUNDLE}.part"));
         fs::write(&part, &bytes).map_err(|e| e.to_string())?;
         fs::rename(&part, &target).map_err(|e| e.to_string())?;
-        let info = BundleInfo {
+        let next = BundleInfo {
             version: m.version.clone(),
             build: m.build,
             sha256: file.sha256.clone(),
             ui_build: file.ui_build,
             fetched_ms: Some(super::now_ms()),
         };
-        let json = serde_json::to_vec_pretty(&info).map_err(|e| e.to_string())?;
+        let json = serde_json::to_vec_pretty(&next).map_err(|e| e.to_string())?;
         // The previous selection must be recoverable before changing the
         // active pointer. A corrupt active selection never replaces a good backup.
         if validated(&dir, info, INFO).is_some() {
