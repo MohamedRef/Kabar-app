@@ -1,0 +1,82 @@
+# Template for `kabar-tools content new-lesson` (docs/AUTHORING.md).
+# Every TODO(author) must be replaced before the lesson can ship: the
+# bundle check refuses a lesson that still has one.
+schema: kabar.lesson/v1
+id: "{{id}}"
+language: "{{language}}"
+title: TODO(author) title in the target language
+can_do:
+  ar_eg: TODO(author) ما يقدر يعمله بعد الدرس
+  ar: TODO(author) ما يستطيع فعله بعد الدرس
+  en: TODO(author) what the learner can do after the lesson
+slides:
+  - title: TODO(author) slide title
+    body:
+      ar_eg: TODO(author) الشرح بالمصري
+      ar: TODO(author) الشرح بالفصحى
+      en: TODO(author) the explanation in English
+    examples:
+      - text: TODO(author) example sentence
+        ar_eg: TODO(author) معناها
+        ar: TODO(author) معناها
+        en: TODO(author) its meaning
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: TODO(author) السؤال
+      ar: TODO(author) السؤال
+      en: TODO(author) the question
+    options: ['TODO(author) right', 'TODO(author) wrong 1', 'TODO(author) wrong 2']
+    answer: 0
+    explain:
+      ar_eg: TODO(author) ليه دي الإجابة
+      ar: TODO(author) لماذا هذه الإجابة
+      en: TODO(author) why this is the answer
+    words: []
+  - id: e02
+    type: fill_blank
+    sentence: TODO(author) a sentence with ___ for the gap
+    meaning:
+      ar_eg: TODO(author) معناها
+      ar: TODO(author) معناها
+      en: TODO(author) its meaning
+    options: ['TODO(author) right', 'TODO(author) wrong']
+    answers: ['TODO(author) right']
+    words: []
+  - id: e03
+    type: listen
+    text: TODO(author) a sentence to hear
+    options: ['TODO(author) a sentence to hear', 'TODO(author) other 1', 'TODO(author) other 2']
+    answer: 0
+    words: []
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: TODO(author) الجملة بالمصري
+      ar: TODO(author) الجملة بالفصحى
+      en: TODO(author) the sentence in English
+    answer: TODO(author) the target sentence
+    distractors: ['TODO(author) extra word']
+    words: []
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: TODO(author) السؤال
+      ar: TODO(author) السؤال
+      en: TODO(author) the question
+    options: ['TODO(author) right', 'TODO(author) wrong 1', 'TODO(author) wrong 2']
+    answer: 0
+    words: []
+  - id: e06
+    type: dictation
+    text: TODO(author) a sentence to write down
+    meaning:
+      ar_eg: TODO(author) معناها
+      ar: TODO(author) معناها
+      en: TODO(author) its meaning
+    words: []
+new_words: []
+review:
+  status: draft
+  verified: false

@@ -19,6 +19,10 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use kabar_protocol::bundle::{CSS_PREFIX, SOURCES, Source};
 
+/// What `content/templates/*.yaml` puts where the author still has to
+/// write something (`kabar-tools content new-lesson`).
+pub const TEMPLATE_MARK: &str = "TODO(author)";
+
 /// One problem, naming the bundle key and, when there is one, the id.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Issue {
@@ -117,6 +121,9 @@ pub fn check_files(files: &[(String, String)]) -> Vec<Issue> {
     }
 
     for (key, text) in files {
+        if (key.starts_with("LESSONS/") || key.starts_with("TESTS/")) && text.contains(TEMPLATE_MARK) {
+            issues.push(issue(key, format!("unfinished: replace every {TEMPLATE_MARK} from the template")));
+        }
         if let Some(id) = key.strip_prefix("LESSONS/") {
             match crate::lesson::parse_lesson(text) {
                 Err(e) => issues.push(issue(key, e.to_string())),
@@ -242,6 +249,22 @@ mod tests {
         let issues = check_files(&short);
         assert!(issues.iter().any(|i| i.key == "CURRICULUM_JV" && i.reason == "is missing"));
         assert!(issues.iter().any(|i| i.key == files[0].0 && i.reason == "appears twice"));
+    }
+
+    #[test]
+    fn a_lesson_from_the_template_parses_but_cannot_ship_until_filled() {
+        let template = include_str!("../../../content/templates/lesson.yaml")
+            .replace("{{id}}", "bipa1.u01.l01")
+            .replace("{{language}}", "id");
+        let mut files = sample_files("characters: []\n");
+        files.iter_mut().find(|(k, _)| k == "LESSONS/bipa1.u01.l01").unwrap().1 = template.clone();
+        let issues = check_files(&files);
+        assert_eq!(issues.len(), 1, "only the unfinished marker: {issues:?}");
+        assert!(issues[0].reason.starts_with("unfinished"));
+        // Filled in, it ships.
+        files.iter_mut().find(|(k, _)| k == "LESSONS/bipa1.u01.l01").unwrap().1 =
+            template.replace(TEMPLATE_MARK, "Isi");
+        assert_eq!(check_files(&files), Vec::new());
     }
 
     #[test]
