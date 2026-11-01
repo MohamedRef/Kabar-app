@@ -36,6 +36,12 @@ async function run() {
         return {
           direction: getComputedStyle(root).direction,
           fontSize: parseFloat(getComputedStyle(root).fontSize),
+          // What the text-size rule saw, for a failing scale check: the
+          // attribute, whether html:has() matched it, the root font size.
+          textSize: root.getAttribute('data-text-size'),
+          textSizeRuleMatches: document.documentElement.matches(`:has(.app[data-text-size="${root.getAttribute('data-text-size')}"])`),
+          htmlFontSize: getComputedStyle(document.documentElement).fontSize,
+          readyState: document.readyState,
           viewport: innerWidth,
           documentWidth: document.documentElement.scrollWidth,
           dialog: { left: box.left, right: box.right, width: box.width, height: box.height },
@@ -85,7 +91,9 @@ async function run() {
       // Check the intended scale at every width instead of imposing 16px on phones.
       const expectedSize = (item.width < 600 ? 15 : 16) * (item.size === 'larger' ? 1.25 : 1);
       assert.ok(Math.abs(layout.fontSize - expectedSize) <= 0.2,
-        `${name}: unexpected text scale ${layout.fontSize}px (expected ${expectedSize}px)`);
+        `${name}: unexpected text scale ${layout.fontSize}px (expected ${expectedSize}px; ` +
+        `data-text-size=${layout.textSize}, html:has() matched=${layout.textSizeRuleMatches}, ` +
+        `html font-size=${layout.htmlFontSize}, readyState=${layout.readyState})`);
       assert.equal(layout.listVisible, item.width >= 600, `${name}: section index visibility`);
       assert.equal(layout.back.includes('settings-back'), item.width < 600, `${name}: responsive Back target`);
 
