@@ -117,6 +117,9 @@ pub struct UpdateManifest {
     /// What's new, a line or two per language; shown before installing.
     #[serde(default)]
     pub notes: UpdateNotes,
+    /// Assets for platforms this build doesn't know are skipped, so a feed
+    /// can add a platform without older apps refusing the whole manifest.
+    #[serde(deserialize_with = "known_only")]
     pub assets: Vec<UpdateAsset>,
     /// What each recent build changed, newest first (this build, when it
     /// changed anything visible, then up to [`HISTORY_BUILDS`] before it), so
@@ -181,6 +184,9 @@ pub struct BuildChanges {
     pub build: u64,
     /// RFC 3339, when the build was published.
     pub published_at: String,
+    /// Lines of a kind this build doesn't know are skipped, like unknown
+    /// assets.
+    #[serde(deserialize_with = "known_only")]
     pub changes: Vec<Change>,
     /// Content or the look only: it arrived with no app install.
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
@@ -238,6 +244,50 @@ pub struct UpdateAsset {
     pub build: Option<u64>,
 }
 
+/// A feed list whose entries name something by a string field: the
+/// platform of an asset, the kind of a change line.
+trait Named: serde::de::DeserializeOwned {
+    const FIELD: &'static str;
+    fn known(name: &str) -> bool;
+}
+
+impl Named for UpdateAsset {
+    const FIELD: &'static str = "platform";
+    fn known(name: &str) -> bool {
+        UpdatePlatform::parse(name).is_some()
+    }
+}
+
+impl Named for Change {
+    const FIELD: &'static str = "kind";
+    fn known(name: &str) -> bool {
+        ChangeKind::ALL.iter().any(|k| serde_json::to_value(k).is_ok_and(|v| v == name))
+    }
+}
+
+/// Entries naming a platform or change kind this build doesn't know (one
+/// added after it was built) are skipped instead of failing the whole feed;
+/// the signature covers the exact bytes, so nothing is re-signed, and those
+/// entries were never for this build. Every other entry must parse: a
+/// damaged known entry still fails the manifest.
+fn known_only<'de, D, T>(de: D) -> Result<Vec<T>, D::Error>
+where
+    D: serde::Deserializer<'de>,
+    T: Named,
+{
+    use serde::de::Error as _;
+    let mut out = Vec::new();
+    for v in Vec::<serde_json::Value>::deserialize(de)? {
+        if let Some(name) = v.get(T::FIELD).and_then(|n| n.as_str())
+            && !T::known(name)
+        {
+            continue;
+        }
+        out.push(serde_json::from_value(v).map_err(D::Error::custom)?);
+    }
+    Ok(out)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -276,5 +326,32 @@ mod tests {
         assert!(m.history.is_empty());
         // and none is written back
         assert!(!serde_json::to_string(&m).unwrap().contains("history"));
+    }
+
+    #[test]
+    fn a_feed_with_a_platform_or_change_kind_from_a_newer_build_still_parses() {
+        let mut v: serde_json::Value =
+            serde_json::from_str(include_str!("../../../fixtures/update/update.json")).unwrap();
+        v["assets"].as_array_mut().unwrap().push(serde_json::json!({
+            "platform": "windows-x86_64", "file": "kabar.msix", "size": 1, "sha256": "00"
+        }));
+        v["history"][0]["changes"].as_array_mut().unwrap().push(serde_json::json!({
+            "kind": "removed", "ar_eg": "شيء اتشال"
+        }));
+        v["a_field_from_later"] = serde_json::json!({"anything": [1, 2]});
+        let m: UpdateManifest = serde_json::from_value(v).unwrap();
+        assert_eq!(m.assets.len(), 2, "the unknown platform is skipped, the others stay");
+        assert!(m.asset(UpdatePlatform::AndroidArm64).is_some());
+        assert!(m.history[0].changes.iter().all(|c| ChangeKind::ALL.contains(&c.kind)));
+        assert!(!m.history[0].changes.is_empty());
+    }
+
+    #[test]
+    fn a_damaged_entry_of_a_known_platform_still_fails_the_feed() {
+        // Skipping is for entries from the future, not for damaged ones.
+        let mut v: serde_json::Value =
+            serde_json::from_str(include_str!("../../../fixtures/update/update.json")).unwrap();
+        v["assets"][0].as_object_mut().unwrap().remove("sha256");
+        assert!(serde_json::from_value::<UpdateManifest>(v).is_err());
     }
 }
