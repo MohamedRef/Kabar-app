@@ -540,7 +540,8 @@ fn content_pointer_survives_an_interrupted_bundle_download() {
         fetched_ms: None,
     };
     fs::write(dir.join("content.json"), serde_json::to_vec(&old).unwrap()).unwrap();
-    let info = BuildInfo { version: Version::parse("1.0.0-alpha.1").unwrap(), build: 0, preview: false, key: None };
+    let info =
+        BuildInfo { version: Version::parse("1.0.0-alpha.1").unwrap(), build: 0, preview: false, key: None };
     assert!(content::load(data.path(), &info).is_some(), "legacy file works");
     // A download completed, but the process ended before its metadata
     // pointer was committed. The selected bundle must stay intact.
