@@ -846,7 +846,6 @@ fn WordsCard(words: Vec<WordCounts>) -> Element {
                     }
                 }
             }
-            p { class: "muted small", "{st(lang, S::KnownRule)}" }
         }
     }
 }

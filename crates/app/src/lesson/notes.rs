@@ -181,7 +181,6 @@ pub fn LessonNotes(
                 section { class: "ln-words",
                     h3 { "{lt(lang, L::NewWords)}" }
                     if answering {
-                        p { class: "ln-hidden-note muted", "{nt(lang, N::MeaningsHidden)}" }
                     }
                     ul {
                         for w in lesson.new_words.iter() {
@@ -230,7 +229,6 @@ enum N {
     Learn,
     Slide,
     Practice,
-    MeaningsHidden,
     Todo,
     Now,
     Right,
@@ -262,9 +260,6 @@ fn nt(lang: UiLanguage, msg: N) -> &'static str {
         (Practice, ArEg) => "نتمرّن",
         (Practice, Ar) => "نتدرّب",
         (Practice, En) => "Practice",
-        (MeaningsHidden, ArEg) => "المعاني مستخبية لحد ما تجاوب، عشان تفتكر لوحدك.",
-        (MeaningsHidden, Ar) => "المعاني مخفية حتى تجيب، لتتذكّر بنفسك.",
-        (MeaningsHidden, En) => "Meanings are hidden until you answer, so you can recall them yourself.",
         (Todo, ArEg) => "لسه",
         (Todo, Ar) => "لم يبدأ",
         (Todo, En) => "Not yet",

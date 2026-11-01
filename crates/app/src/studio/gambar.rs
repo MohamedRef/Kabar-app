@@ -190,7 +190,6 @@ pub fn GambarScreen() -> Element {
                 match phase() {
                     Phase::Ready => rsx! {
                         h2 { "Gambar!" }
-                        p { class: "muted", "{tr(l, T::GambarIntro)}" }
                         button { class: "primary", onclick: start.clone(), "{tr(l, T::Start)}" }
                     },
                     Phase::Drawing { word, left, .. } => rsx! {

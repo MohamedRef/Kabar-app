@@ -21,7 +21,6 @@ pub enum S {
     Known,
     Learning,
     New,
-    KnownRule,
     NoWords,
     LangId,
     LangJv,
@@ -154,15 +153,6 @@ pub fn st(lang: UiLanguage, msg: S) -> &'static str {
         (New, ArEg) => "لسه جديدة",
         (New, Ar) => "جديدة",
         (New, En) => "New",
-        (KnownRule, ArEg) => {
-            "«ثابتة» يعني غالبًا هتفتكرها حتى بعد تلات أسابيع من آخر مراجعة. «بتتعلمها» يعني راجعتها ولسه بتترسّخ."
-        }
-        (KnownRule, Ar) => {
-            "«راسخة» تعني أنك على الأرجح ستتذكرها حتى بعد ثلاثة أسابيع من آخر مراجعة. «قيد التعلّم» تعني أنك راجعتها وما زالت تترسّخ."
-        }
-        (KnownRule, En) => {
-            "“Known” means you'd very likely still recall it three weeks after your last review. “Learning” means you've reviewed it and it's settling in."
-        }
         (NoWords, ArEg) => "لسه مفيش كلمات هنا. الكلمات بتيجي من الدروس والقارئ، وبعد أول درس هتلاقيها هنا.",
         (NoWords, Ar) => "لا كلمات هنا بعد. تأتي الكلمات من الدروس والقارئ، وبعد أول درس ستجدها هنا.",
         (NoWords, En) => {

@@ -141,7 +141,6 @@ fn Hub() -> Element {
     rsx! {
         header { class: "play-intro",
             h2 { "{ui.t(Msg::NavPlay)}" }
-            p { class: "muted", "{ui.t(Msg::PlayIntro)}" }
         }
         crate::views::ViewBar { of: HUB_VIEW }
         ul { class: "coll play-hub", "data-layout": pick.layout.as_str(),

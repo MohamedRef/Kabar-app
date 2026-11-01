@@ -119,7 +119,6 @@ pub fn LearningSection() -> Element {
                         }
                     }
                 }
-                p { class: "muted small", "{ui.t(Msg::RetentionHint)}" }
                 p { class: "muted small", "{tuning}" }
             }
 
@@ -182,7 +181,6 @@ pub fn LearningSection() -> Element {
                             }
                         }
                     }
-                    p { class: "muted small", "{st(lang, S::SoundHint)}" }
                 }
             }
 

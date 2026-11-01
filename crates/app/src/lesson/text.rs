@@ -70,7 +70,6 @@ pub enum L {
     Finished,
     Passed,
     ContentTitle,
-    ContentHint,
     ContentOk,
     ContentChecked,
     ContentPassedEarlier,
@@ -331,11 +330,6 @@ pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
         (ContentTitle, ArEg) => "المحتوى نفسه سليم؟",
         (ContentTitle, Ar) => "هل المحتوى نفسه سليم؟",
         (ContentTitle, En) => "Is the content itself right?",
-        (ContentHint, ArEg) => "درجتك بتقيس فهمك إنت. دي حاجة تانية: إن الدرس نفسه مكتوب صح.",
-        (ContentHint, Ar) => "درجتك تقيس فهمك أنت. هذا أمر آخر: أن الدرس نفسه مكتوب بشكل صحيح.",
-        (ContentHint, En) => {
-            "Your score measures what you understood. This is separate: whether the lesson itself is right."
-        }
         (ContentOk, ArEg) => "المحتوى سليم",
         (ContentOk, Ar) => "المحتوى سليم",
         (ContentOk, En) => "The content is right",

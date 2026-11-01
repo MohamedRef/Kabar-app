@@ -200,7 +200,7 @@ pub fn UpdatesCard() -> Element {
     let packs = (done && s.packs_refreshed > 0)
         .then(|| ut(lang, U::PacksRefreshed).replace("{n}", &ui.num(s.packs_refreshed as u64)));
     let content_line = match (s.content_build, s.content_since_ms) {
-        (0, _) => ut(lang, U::ContentBuiltIn).to_owned(),
+        (0, _) => String::new(),
         (b, since) => {
             let mut line = format!("{} · {} {}", ut(lang, U::ContentUpdated), ut(lang, U::Build), ui.num(b));
             if let Some(ms) = since {
@@ -266,7 +266,6 @@ pub fn UpdatesCard() -> Element {
                         }
                     }
                 }
-                p { class: "muted small update-covers", "{ut(lang, U::CheckCovers)}" }
                 div { class: "row update-check",
                     button {
                         class: if has_offer || s.content_waiting.is_some() { "" } else { "primary" },
@@ -309,7 +308,9 @@ pub fn UpdatesCard() -> Element {
                 span { class: "row-icon", aria_hidden: "true", {crate::icons::settings_section(Section::Learning)} }
                 span { class: "row-copy",
                     strong { "{ut(lang, U::ContentRow)}" }
-                    small { "{content_line}" }
+                    if !content_line.is_empty() {
+                        small { "{content_line}" }
+                    }
                     if s.content_waiting.is_some() {
                         small { class: "update-waiting", "{ut(lang, U::ContentWaitingShort)}" }
                     }
@@ -370,7 +371,6 @@ pub fn UpdatesCard() -> Element {
                             " {ut(lang, U::NotifyToggle)}"
                             crate::settings::Scope { device_only: true }
                         }
-                        p { class: "muted small", "{ut(lang, U::NotifyToggleHint)}" }
                     }
                 }
                 div { class: "field",
@@ -380,7 +380,6 @@ pub fn UpdatesCard() -> Element {
                     }
                     if s.preview {
                         span { class: "pill", "{ut(lang, U::Preview)}" }
-                        p { class: "muted small", "{ut(lang, U::PreviewHint)}" }
                     } else {
                         div { class: "segmented", role: "radiogroup", aria_labelledby: "update-channel-label",
                             for c in Channel::RELEASE {
@@ -394,11 +393,8 @@ pub fn UpdatesCard() -> Element {
                                 }
                             }
                         }
-                        p { class: "muted small", "{ut(lang, U::ChannelHint)}" }
                     }
                 }
-                p { class: "muted small", "{ut(lang, U::Safety)}" }
-                p { class: "muted small", "{ut(lang, U::Packs)}" }
             }
         }
     }
@@ -469,7 +465,6 @@ fn PhaseView(phase: Phase, auto: bool) -> Element {
                 p { class: "muted", "{ut(lang, U::InstallingAndroid)}" }
             }
             if matches!(phase, Phase::Available(_)) && auto && cfg!(target_os = "android") {
-                p { class: "muted", "{ut(lang, U::WaitingWifi)}" }
             }
             if matches!(phase, Phase::Installed(_)) {
                 p { class: "muted", "{ut(lang, U::NextLaunch)}" }

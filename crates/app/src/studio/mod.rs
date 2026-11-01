@@ -153,7 +153,6 @@ pub enum T {
     Unreachable,
     TryAgain,
     // Gambar!
-    GambarIntro,
     Start,
     DrawThis,
     SecondsLeft,
@@ -170,14 +169,12 @@ pub enum T {
     NextRound,
     Score,
     // Mind map
-    MapIntro,
     Topic,
     Make,
     Making,
     Unverified,
     Maps,
     // Listening Companion
-    ListenIntro,
     HeardIt,
     NoSuggestions,
     AddReview,
@@ -305,9 +302,6 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (TryAgain, Ar) => "حدث خطأ. حاول مجددًا.",
         (TryAgain, En) => "Something went wrong. Try again.",
 
-        (GambarIntro, ArEg) => "ارسم الكلمة في دقيقة، و \u{2068}Kabar\u{2069} يحاول يخمّن هي إيه.",
-        (GambarIntro, Ar) => "ارسم الكلمة في دقيقة، ويحاول \u{2068}Kabar\u{2069} تخمينها.",
-        (GambarIntro, En) => "Draw the word in a minute and Kabar tries to guess it.",
         (Start, ArEg) => "يلا نبدأ",
         (Start, Ar) => "ابدأ",
         (Start, En) => "Start",
@@ -360,9 +354,6 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (Score, Ar) => "خمّنها \u{2068}Kabar\u{2069}",
         (Score, En) => "guessed",
 
-        (MapIntro, ArEg) => "اكتب موضوع، و \u{2068}Kabar\u{2069} يعمله خريطة كلمات تراجع منها.",
-        (MapIntro, Ar) => "اكتب موضوعًا، وسيصنع \u{2068}Kabar\u{2069} خريطة كلمات تراجع منها.",
-        (MapIntro, En) => "Name a topic and Kabar draws a word map to review from.",
         (Topic, ArEg | Ar) => "di pasar، keluarga، cuaca…",
         (Topic, En) => "di pasar, keluarga, cuaca…",
         (Make, ArEg) => "اعمل الخريطة",
@@ -378,15 +369,6 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (Maps, Ar) => "خرائطك",
         (Maps, En) => "Your maps",
 
-        (ListenIntro, ArEg) => {
-            "حطه جنب يوتيوب في الشاشة المقسومة. سمعت كلمة؟ اكتبها زي ما سمعتها، و \u{2068}Kabar\u{2069} يقولك ممكن تكون إيه."
-        }
-        (ListenIntro, Ar) => {
-            "ضعه بجانب يوتيوب في الشاشة المقسومة. سمعت كلمة؟ اكتبها كما سمعتها، وسيقترح \u{2068}Kabar\u{2069} ما قد تكون."
-        }
-        (ListenIntro, En) => {
-            "Put this next to YouTube in split screen. Heard a word? Write it the way it sounded and Kabar suggests what it could be."
-        }
         (HeardIt, ArEg) => "اللي سمعته",
         (HeardIt, Ar) => "ما سمعته",
         (HeardIt, En) => "What you heard",
@@ -504,7 +486,7 @@ mod tests {
     fn every_message_has_three_languages() {
         // The match is exhaustive per (msg, lang); this keeps empty strings out.
         for l in [UiLanguage::ArEg, UiLanguage::Ar, UiLanguage::En] {
-            for m in [T::Notebook, T::NotConnected, T::SelfCheck, T::ListenIntro, T::CorrectForm] {
+            for m in [T::Notebook, T::NotConnected, T::SelfCheck, T::CorrectForm] {
                 assert!(!tr(l, m).trim().is_empty());
             }
         }

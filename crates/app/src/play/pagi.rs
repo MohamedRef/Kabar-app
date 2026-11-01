@@ -78,7 +78,6 @@ pub fn PagiTodayCard() -> Element {
         crate::ui::Card { element: crate::ui::CardElement::Div, class: "card-action pagi-card reveal",
             onclick: move |_| super::open(ui, nav, Route::Pagi),
             h2 { lang: "id", bdi { "Kabar Pagi" } }
-            p { class: "muted", "{ui.t(Msg::PagiBlurb)}" }
             button { class: "primary", "{ui.t(Msg::PagiListen)}" }
         }
     }

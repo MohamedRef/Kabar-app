@@ -88,7 +88,6 @@ pub fn MindMapScreen() -> Element {
             // On wide windows this column sits beside the map.
             crate::ui::Card { class: "map-side",
                 h2 { "{tr(l, T::MindMap)}" }
-                p { class: "muted", "{tr(l, T::MapIntro)}" }
                 form { class: "map-form", onsubmit: make,
                     input {
                         class: "latin",

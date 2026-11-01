@@ -44,7 +44,6 @@ pub enum Msg {
     SettingsSounds,
     CostTitle,
     CostThisMonth,
-    CostHardStops,
     CostOffline,
     CostLoading,
     CostServicesTitle,
@@ -66,7 +65,6 @@ pub enum Msg {
     CostPerDay,
     CostPerMonth,
     CostPlatformTitle,
-    CostPlatformBody,
     CostClaudeTitle,
     CostClaudeOffBody,
     CostClaudeOnBody,
@@ -77,20 +75,17 @@ pub enum Msg {
     CostConfirmYes,
     CostClaudeHowTo,
     ExportTitle,
-    ExportBody,
     ExportButton,
     ExportSaving,
     ExportSaved,
     ExportFailed,
     DiagTitle,
-    DiagBody,
     DiagEmpty,
     DiagCount,
     DiagRefresh,
     DiagCopy,
     DiagCopied,
     ExportAndroidHint,
-    PenLabIntro,
     PenLabClear,
     PenLabSave,
     PenLabCopy,
@@ -132,7 +127,6 @@ pub enum Msg {
     DeviceSignOut,
     DeviceSignedOut,
     TrySyncTitle,
-    TrySyncBody,
     TrySyncSave,
     TrySyncSaved,
     JustNow,
@@ -140,7 +134,6 @@ pub enum Msg {
     JourneyJavanese,
     JourneyRoute,
     JourneyMap,
-    JourneyMapHint,
     JourneyMapOfIndonesia,
     JourneyMapOfJava,
     JourneyContinue,
@@ -317,7 +310,6 @@ pub enum Msg {
     RemindersBlocked,
     RemindersAllow,
     RemindHere,
-    RemindHereHint,
     RemindersAsleep,
     RemindersBattery,
     QuietFrom,
@@ -360,7 +352,6 @@ pub enum Msg {
     Strongest,
     Weakest,
     NextFocus,
-    LeagueExplain,
     LeagueRank,
     LeagueXp,
     AchievementsTitle,
@@ -372,12 +363,10 @@ pub enum Msg {
     InUse,
     NotEnoughKoin,
     KoinToGo,
-    KoinEarnedFrom,
     JournalTitle,
     JournalEmpty,
     NavJournal,
     NavStats,
-    JournalIntro,
     JournalOpen,
     JournalFilterAll,
     JournalFilterLearning,
@@ -395,8 +384,6 @@ pub enum Msg {
     JournalReflectionDeleteSure,
     JournalReflectionEdited,
     JournalReflectionLabel,
-    JournalPrivate,
-    JournalInkLater,
     JournalTestPassed,
     JournalSouvenir,
     JournalTaught,
@@ -409,7 +396,6 @@ pub enum Msg {
     EvPurchase,
     // --- play ---
     NavPlay,
-    PlayIntro,
     PlayContentProblem,
     PlayDetails,
     PlayAgain,
@@ -439,14 +425,12 @@ pub enum Msg {
     PagiNoStory,
     DeckTitle,
     DeckBlurb,
-    DeckHeroNote,
     DeckMarked,
     BridgeFromArabic,
     DeckMarkKnown,
     DeckKnown,
     DetectiveTitle,
     DetectiveBlurb,
-    DetectiveIntro,
     DetectiveAllRules,
     DetectiveShowAllRules,
     DetectiveShowFewerRules,
@@ -495,7 +479,6 @@ pub enum Msg {
     PasarWalked,
     PasarPaid,
     PasarSaved,
-    ReaderIntro,
     ReaderPlaceholder,
     ReaderRead,
     ReaderScreenshot,
@@ -571,7 +554,6 @@ pub enum Msg {
     NoGrammarMatched,
     FoundBy,
     GrammarInText,
-    GrammarInTextHint,
     GrammarForWord,
     GrammarLearned,
     GrammarAtLevel,
@@ -672,7 +654,6 @@ pub enum Msg {
     RetentionLight,
     RetentionBalanced,
     RetentionFirm,
-    RetentionHint,
     RetentionTuned,
     RetentionLearning,
     PronModeOn,
@@ -781,15 +762,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (CostThisMonth, ArEg) => "الشهر ده",
         (CostThisMonth, Ar) => "هذا الشهر",
         (CostThisMonth, En) => "this month",
-        (CostHardStops, ArEg) => {
-            "\u{2068}Kabar\u{2069} شغّال على الخطط المجانية بحدود ثابتة: لما الحصة المجانية لخدمة تخلص، الخدمة دي بتقف لحد ما تتجدد. مفيش أي حاجة بتتحاسب."
-        }
-        (CostHardStops, Ar) => {
-            "يعمل \u{2068}Kabar\u{2069} على الخطط المجانية بحدود صارمة: عندما تنفد الحصة المجانية لخدمة ما، تتوقف حتى تتجدد. لا يُدفع أي شيء."
-        }
-        (CostHardStops, En) => {
-            "Kabar runs on free tiers with hard stops: when a service's free allowance is used up, it pauses until it resets. Nothing is ever charged."
-        }
         (CostOffline, ArEg) => {
             "\u{2068}Kabar Cloud\u{2069} مش متوصل دلوقتي، فمفيش عدادات نعرضها. بس برضه صفر: كل خدمة بتقف عند حدها المجاني."
         }
@@ -872,15 +844,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (CostPerMonth, En) => "a month",
         (CostPlatformTitle, ArEg | Ar) => "\u{2068}Cloudflare\u{2069} (الخطة المجانية)",
         (CostPlatformTitle, En) => "Cloudflare (Free plan)",
-        (CostPlatformBody, ArEg) => {
-            "خطة \u{2068}Cloudflare\u{2069} المجانية مفيهاش كارت، فمينفعش تحاسبك. لو وصلت لحد، الخدمة بتقف لحد اليوم اللي بعده."
-        }
-        (CostPlatformBody, Ar) => {
-            "لا ترتبط خطة \u{2068}Cloudflare\u{2069} المجانية بأي بطاقة، فلا يمكنها أن تحاسبك. إذا بلغتَ حدًّا تتوقف الخدمة حتى اليوم التالي."
-        }
-        (CostPlatformBody, En) => {
-            "Cloudflare's Free plan has no card on file, so it can't bill you. If a limit is reached, it pauses until the next day."
-        }
         (CostClaudeTitle, ArEg) => "\u{2068}Claude\u{2069} (محرّك بفلوس)",
         (CostClaudeTitle, Ar) => "\u{2068}Claude\u{2069} (محرّك مدفوع)",
         (CostClaudeTitle, En) => "Claude (paid engine)",
@@ -933,15 +896,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (DiagTitle, ArEg) => "اللي حصل مؤخرًا",
         (DiagTitle, Ar) => "ما حدث مؤخرًا",
         (DiagTitle, En) => "What happened lately",
-        (DiagBody, ArEg) => {
-            "لو حاجة اشتغلت غلط، انسخ دول وابعتهم. فيهم بس رسايل التطبيق، من غير كلامك ولا مفاتيح الدخول."
-        }
-        (DiagBody, Ar) => {
-            "إن عمل شيء على غير المتوقع، انسخ هذه السطور وأرسلها. فيها رسائل التطبيق فقط، بلا نصوصك ولا مفاتيح الدخول."
-        }
-        (DiagBody, En) => {
-            "If something misbehaved, copy these and send them. They hold only the app's own messages, never your texts or sign-in keys."
-        }
         (DiagEmpty, ArEg) => "مفيش حاجة غلط من ساعة ما فتحت التطبيق.",
         (DiagEmpty, Ar) => "لم يحدث أي خطأ منذ فتح التطبيق.",
         (DiagEmpty, En) => "Nothing has gone wrong since Kabar opened.",
@@ -959,15 +913,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (DiagCopied, En) => "Copied",
         (ExportTitle, ArEg | Ar) => "بياناتك",
         (ExportTitle, En) => "Your data",
-        (ExportBody, ArEg) => {
-            "احفظ كل حاجة على الجهاز ده في ملف واحد يفضل معاك. مفاتيح تسجيل الدخول عمرها ما بتدخل فيه."
-        }
-        (ExportBody, Ar) => {
-            "احفظ كل ما على هذا الجهاز في ملف واحد تحتفظ به. لا تُضمَّن مفاتيح تسجيل الدخول أبدًا."
-        }
-        (ExportBody, En) => {
-            "Save everything on this device to one file you keep. Sign-in keys are never included."
-        }
         (ExportButton, ArEg) => "صدّر كل حاجة",
         (ExportButton, Ar) => "تصدير كل شيء",
         (ExportButton, En) => "Export everything",
@@ -988,15 +933,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         }
         (ExportAndroidHint, En) => {
             "On Android the file lands in Kabar's own folder; copy it to a computer over USB."
-        }
-        (PenLabIntro, ArEg) => {
-            "اكتب وارسم هنا بالقلم وبصباعك. جرّب تقرّب القلم من غير ما تلمس، وزرار القلم، والممحاة. وبعدين احفظ التقرير وابعته."
-        }
-        (PenLabIntro, Ar) => {
-            "اكتب وارسم هنا بالقلم وبإصبعك. جرّب تقريب القلم دون لمس، وزر القلم، والممحاة. ثم احفظ التقرير وأرسله."
-        }
-        (PenLabIntro, En) => {
-            "Write and draw here with the pen and your finger. Try hovering, the pen button and the eraser. Then save the report and send it."
         }
         (PenLabClear, ArEg) => "امسح",
         (PenLabClear, Ar) => "امسح",
@@ -1117,9 +1053,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (DeviceSignedOut, En) => "Signed out",
         (TrySyncTitle, ArEg | Ar) => "جرّب المزامنة",
         (TrySyncTitle, En) => "Try sync",
-        (TrySyncBody, ArEg) => "احفظ كلمة هنا، وهتلاقيها على أجهزتك التانية في ثواني.",
-        (TrySyncBody, Ar) => "احفظ كلمة هنا وستجدها على أجهزتك الأخرى خلال ثوانٍ.",
-        (TrySyncBody, En) => "Save a word here and it shows up on your other devices within seconds.",
         (TrySyncSave, ArEg | Ar) => "احفظ",
         (TrySyncSave, En) => "Save",
         (TrySyncSaved, ArEg) => "الكلمات المحفوظة",
@@ -1137,11 +1070,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JourneyRoute, En) => "Route",
         (JourneyMap, ArEg | Ar) => "الخريطة",
         (JourneyMap, En) => "Map",
-        (JourneyMapHint, ArEg) => "دوس على أي محطة عشان تشوف دروسها. اسحب الخريطة أو قرّبها بصباعين.",
-        (JourneyMapHint, Ar) => "اضغط على أي محطة لترى دروسها. اسحب الخريطة أو كبّرها بإصبعين.",
-        (JourneyMapHint, En) => {
-            "Tap any stop to see its lessons. Drag the map, or zoom with two fingers or the trackpad."
-        }
         (JourneyMapOfIndonesia, ArEg | Ar) => "خريطة إندونيسيا",
         (JourneyMapOfIndonesia, En) => "Map of Indonesia",
         (JourneyMapOfJava, ArEg | Ar) => "خريطة جاوة",
@@ -1664,15 +1592,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RemindHere, ArEg) => "فكّرني على الجهاز ده",
         (RemindHere, Ar) => "ذكّرني على هذا الجهاز",
         (RemindHere, En) => "Remind me on this device",
-        (RemindHereHint, ArEg) => {
-            "عادةً الموبايل بس هو اللي بيرنّ، عشان ميرنّش جهازين مع بعض. شغّلها هنا لو عايز الجهاز ده كمان."
-        }
-        (RemindHereHint, Ar) => {
-            "عادةً يرنّ الهاتف وحده كي لا يرنّ جهازان معًا. فعّلها هنا إن أردت هذا الجهاز أيضًا."
-        }
-        (RemindHereHint, En) => {
-            "Usually only your phone rings, so two devices never go off together. Turn this on to hear from me here too."
-        }
         (RemindersAsleep, ArEg) => {
             "سامسونج ممكن تنيّم \u{2068}Kabar\u{2069} لو مافتحتهوش كام يوم، وساعتها التذكيرات بتقف. من البطارية اختار «بدون قيود» عشان أفضل أفكّرك."
         }
@@ -1792,9 +1711,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (NextFocus, ArEg) => "تركيز الأسبوع الجاي",
         (NextFocus, Ar) => "تركيز الأسبوع القادم",
         (NextFocus, En) => "Next week's focus",
-        (LeagueExplain, ArEg) => "إنت قصاد أسابيعك اللي فاتت بس، مش قصاد حد تاني.",
-        (LeagueExplain, Ar) => "أنت في مواجهة أسابيعك السابقة فقط، لا أحد غيرك.",
-        (LeagueExplain, En) => "You against your own past weeks, nobody else.",
         (LeagueRank, ArEg) => "ترتيب الأسبوع ده",
         (LeagueRank, Ar) => "ترتيب هذا الأسبوع",
         (LeagueRank, En) => "This week's rank",
@@ -1825,9 +1741,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (KoinToGo, ArEg) => "فاضلك {n}",
         (KoinToGo, Ar) => "يتبقّى لك {n}",
         (KoinToGo, En) => "{n} more",
-        (KoinEarnedFrom, ArEg) => "بتكسب الكوين من الدروس والمراجعة والألعاب.",
-        (KoinEarnedFrom, Ar) => "تكسب العملات من الدروس والمراجعة والألعاب.",
-        (KoinEarnedFrom, En) => "You earn Koin from lessons, reviews and games.",
         (JournalTitle, ArEg) => "يومياتك في التعلم",
         (JournalTitle, Ar) => "سجل التعلّم",
         (JournalTitle, En) => "Learning journal",
@@ -1838,9 +1751,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (NavJournal, En) => "Journal",
         (NavStats, ArEg | Ar) => "التقدّم",
         (NavStats, En) => "Progress",
-        (JournalIntro, ArEg) => "كل اللي عملته يوم بيوم، ومعاه خواطرك انت.",
-        (JournalIntro, Ar) => "كل ما أنجزته يومًا بيوم، ومعه خواطرك.",
-        (JournalIntro, En) => "Everything you've done, day by day, with your own reflections.",
         (JournalOpen, ArEg) => "افتح اليوميات",
         (JournalOpen, Ar) => "افتح اليوميات",
         (JournalOpen, En) => "Open the journal",
@@ -1888,14 +1798,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JournalReflectionLabel, ArEg) => "خاطرتك",
         (JournalReflectionLabel, Ar) => "خاطرتك",
         (JournalReflectionLabel, En) => "Your reflection",
-        (JournalPrivate, ArEg) => "خواطرك ليك انت بس: بتتزامن بين أجهزتك ومبتروحش لأي ذكاء اصطناعي.",
-        (JournalPrivate, Ar) => "خواطرك لك وحدك: تتزامن بين أجهزتك ولا تُرسَل إلى أي ذكاء اصطناعي.",
-        (JournalPrivate, En) => {
-            "Your reflections are yours alone: they sync between your devices and never go to any AI."
-        }
-        (JournalInkLater, ArEg) => "الكتابة بالقلم على التابلت جاية مع \u{2068}Tablet Studio\u{2069}.",
-        (JournalInkLater, Ar) => "الكتابة بالقلم على الجهاز اللوحي قادمة مع \u{2068}Tablet Studio\u{2069}.",
-        (JournalInkLater, En) => "Handwritten reflections on the tablet arrive with Tablet Studio.",
         (JournalTestPassed, ArEg) => "عدّيت اختبار المستوى",
         (JournalTestPassed, Ar) => "اجتزت اختبار المستوى",
         (JournalTestPassed, En) => "Passed the level test",
@@ -1927,11 +1829,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         // --- play ---
         (NavPlay, ArEg | Ar) => "ألعاب",
         (NavPlay, En) => "Play",
-        (PlayIntro, ArEg) => "ألعاب صغيرة بتثبّت اللي اتعلمته، وكتير منها بيبدأ من العربي اللي إنت عارفه.",
-        (PlayIntro, Ar) => "ألعاب قصيرة تثبّت ما تعلمته، وكثير منها ينطلق من العربية التي تعرفها.",
-        (PlayIntro, En) => {
-            "Short games that make what you learn stick, many starting from the Arabic you already know."
-        }
         (PlayContentProblem, ArEg) => {
             "اللعبة دي محتاجة محتوى مقدرتش أفتحه دلوقتي. باقي التطبيق شغال عادي، وهنصلّحها في النسخة الجاية."
         }
@@ -2025,9 +1922,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (DeckBlurb, ArEg) => "كلمات جاية من العربي ومعناها زي ما إنت فاكره.",
         (DeckBlurb, Ar) => "كلمات أصلها عربي وبقي معناها كما تعرفه.",
         (DeckBlurb, En) => "Words from Arabic that kept the meaning you know.",
-        (DeckHeroNote, ArEg) => "كل دي كلمات إندونيسية جاية من العربي، وإنت تقدر تفهمها من النهارده.",
-        (DeckHeroNote, Ar) => "كلها كلمات إندونيسية أصلها عربي، ويمكنك فهمها من اليوم.",
-        (DeckHeroNote, En) => "All Indonesian words from Arabic that you can understand today.",
         (DeckMarked, ArEg) => "اللي علّمت عليها:",
         (DeckMarked, Ar) => "ما أشرت إليه:",
         (DeckMarked, En) => "Marked as known:",
@@ -2047,9 +1941,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (DetectiveBlurb, ArEg) => "اعرف إزاي الأصوات العربي اتغيرت، وخمّن الأصل.",
         (DetectiveBlurb, Ar) => "تعرّف كيف تغيّرت الأصوات العربية، وخمّن الأصل.",
         (DetectiveBlurb, En) => "Learn how Arabic sounds changed, then guess the origin.",
-        (DetectiveIntro, ArEg) => "اختار قاعدة تتمرن عليها، أو خليهم كلهم مع بعض.",
-        (DetectiveIntro, Ar) => "اختر قاعدة للتدرّب عليها، أو اجمعها كلها.",
-        (DetectiveIntro, En) => "Pick a rule to practise, or mix them all.",
         (DetectiveAllRules, ArEg) => "كل القواعد",
         (DetectiveAllRules, Ar) => "كل القواعد",
         (DetectiveAllRules, En) => "All rules",
@@ -2285,11 +2176,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ReadFocusLeave, ArEg) => "اخرج من التركيز",
         (ReadFocusLeave, Ar) => "الخروج من وضع التركيز",
         (ReadFocusLeave, En) => "Leave focus mode",
-        (ReaderIntro, ArEg) => "الصق أي كلام إندونيسي أو جاوي، أو افتح سكرين شوت، وكل كلمة هتبقى ليها شرح.",
-        (ReaderIntro, Ar) => "الصق أي نص إندونيسي أو جاوي، أو افتح لقطة شاشة، وستجد شرحًا لكل كلمة.",
-        (ReaderIntro, En) => {
-            "Paste any Indonesian or Javanese text, or open a screenshot, and every word gets explained."
-        }
         (ReaderPlaceholder, ArEg) => "مثلاً: \u{2068}Saya sedang membaca buku.\u{2069}",
         (ReaderPlaceholder, Ar) => "مثال: \u{2068}Saya sedang membaca buku.\u{2069}",
         (ReaderPlaceholder, En) => "e.g. Saya sedang membaca buku.",
@@ -2541,15 +2427,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (GrammarInText, ArEg) => "القواعد اللي في النص",
         (GrammarInText, Ar) => "القواعد في هذا النص",
         (GrammarInText, En) => "Grammar in this text",
-        (GrammarInTextHint, ArEg) => {
-            "\u{2068}Kabar\u{2069} لقاها في النص من غير نت. اللي اتعلمته الأول، واللي لسه جاي متعلّم عليه."
-        }
-        (GrammarInTextHint, Ar) => {
-            "وجدها \u{2068}Kabar\u{2069} في النص دون اتصال. ما تعلّمتَه أولًا، وما لم يأتِ بعد عليه علامة."
-        }
-        (GrammarInTextHint, En) => {
-            "Spotted offline. What you've learned comes first; what's still ahead is marked."
-        }
         (GrammarForWord, ArEg) => "القاعدة هنا",
         (GrammarForWord, Ar) => "القاعدة هنا",
         (GrammarForWord, En) => "Grammar here",
@@ -2788,15 +2665,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RetentionFirm, ArEg) => "ثابت",
         (RetentionFirm, Ar) => "ثابت",
         (RetentionFirm, En) => "Firm",
-        (RetentionHint, ArEg) => {
-            "كل كلمة بترجعلك في المعاد اللي هتكون فيه على وشك تنساها. كل ما النسبة تعلى، المراجعات تكتر. المتوازن هو الأنسب لمعظم الناس."
-        }
-        (RetentionHint, Ar) => {
-            "تعود كل كلمة في الوقت الذي تكون فيه على وشك نسيانها. كلما ارتفعت النسبة زادت المراجعات. المتوازن هو الأنسب لمعظم المتعلمين."
-        }
-        (RetentionHint, En) => {
-            "Each word comes back just as you're about to forget it. A higher target means more reviews. Balanced suits most learners."
-        }
         (RetentionTuned, ArEg) => "المواعيد متظبطة على ذاكرتك انت، من {n} مراجعة.",
         (RetentionTuned, Ar) => "المواعيد مضبوطة على ذاكرتك أنت، من {n} مراجعة.",
         (RetentionTuned, En) => "Timing is tuned to your own memory, from {n} reviews.",

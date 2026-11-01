@@ -10,7 +10,6 @@ pub enum S {
     Search,
     NoResults,
     ClearSearch,
-    Immediate,
     GroupStudy,
     GroupLook,
     GroupDevice,
@@ -49,7 +48,6 @@ pub enum S {
     GrammarHints,
     SoundCorrect,
     SoundEnd,
-    SoundHint,
     DingSoft,
     DingBell,
     DingSaron,
@@ -67,23 +65,18 @@ pub enum S {
     TextLarge,
     TextLarger,
     TextSample,
-    BlackHint,
     Appearance,
     AppearanceCalm,
     AppearanceGlossy,
     AppearanceLiquidGlass,
-    AppearanceHint,
     // android
     Notifications,
-    NotificationsBody,
     NotificationsOn,
     NotificationsOff,
     NotificationsAllow,
     NotificationsOpen,
     BackgroundAudio,
-    BackgroundAudioBody,
     AppInfo,
-    AppInfoBody,
     AppInfoOpen,
     PenHover,
     PenHoverBody,
@@ -93,7 +86,6 @@ pub enum S {
     NavLabels,
     NavIcons,
     LayoutNow,
-    LayoutBody,
     Shortcuts,
     ShortcutSettings,
     ShortcutScreens,
@@ -106,13 +98,10 @@ pub enum S {
     MouseHover,
     MouseHoverBody,
     QuickLookup,
-    QuickLookupBody,
     Later,
-    MenuTip,
     // storage and about
     DataFolder,
     Version,
-    PersonalBuild,
 }
 
 pub fn st(lang: UiLanguage, s: S) -> &'static str {
@@ -154,9 +143,6 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (ClearSearch, ArEg) => "امسح البحث",
         (ClearSearch, Ar) => "مسح البحث",
         (ClearSearch, En) => "Clear search",
-        (Immediate, ArEg) => "الاختيارات بتتطبّق أول ما تغيّرها",
-        (Immediate, Ar) => "تُطبَّق الاختيارات فور تغييرها",
-        (Immediate, En) => "Preferences apply as you change them",
         (Synced, ArEg) => "بيتزامن مع أجهزتك",
         (Synced, Ar) => "يُزامَن مع أجهزتك",
         (Synced, En) => "Syncs to your devices",
@@ -242,9 +228,6 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (SoundCorrect, En) => "Right-answer sound",
         (SoundEnd, ArEg | Ar) => "صوت نهاية الدرس",
         (SoundEnd, En) => "End-of-lesson sound",
-        (SoundHint, ArEg) => "دوس على أي صوت تسمعه وتختاره.",
-        (SoundHint, Ar) => "المس أي صوت لتسمعه وتختاره.",
-        (SoundHint, En) => "Tap a sound to hear it and pick it.",
         (DingSoft, ArEg | Ar) => "دينج ناعم",
         (DingSoft, En) => "Soft ding",
         (DingBell, ArEg | Ar) => "جرس لامع",
@@ -285,37 +268,12 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (AppearanceCalm, En) => "Calm",
         (AppearanceGlossy, _) => "Glossy · Material You",
         (AppearanceLiquidGlass, _) => "Liquid Glass · iOS",
-        (AppearanceHint, ArEg) => {
-            "هادئ: أسطح سادة. Glossy: لمعة وألوان ناعمة. Liquid Glass: خلفية وكروت بطبقات زجاجية وشريط تنقّل مطفي. الألوان من المظهر اللي فوق."
-        }
-        (AppearanceHint, Ar) => {
-            "هادئ: أسطح سادة. Glossy: لمعة خفيفة. Liquid Glass: خلفية وكروت زجاجية وشريط تنقّل مطفي. الألوان من المظهر أعلاه."
-        }
-        (AppearanceHint, En) => {
-            "Calm: solid surfaces. Glossy: soft tonal sheen. Liquid Glass: layered cards, frosted navigation and clear text. Colours come from the theme above."
-        }
         (TextSample, ArEg) => "كده هيبان الكلام في الدروس والقارئ.",
         (TextSample, Ar) => "هكذا سيظهر النص في الدروس والقارئ.",
         (TextSample, En) => "This is how text looks in lessons and the Reader.",
-        (BlackHint, ArEg) => {
-            "الخلفية سودا خالص، فبكسلات شاشة الأموليد بتطفي خالص: أريح للعين بالليل وبتوفّر بطارية."
-        }
-        (BlackHint, Ar) => "الخلفية سوداء تمامًا، فتنطفئ بكسلات شاشة AMOLED: أريح للعين ليلًا وتوفّر البطارية.",
-        (BlackHint, En) => {
-            "Pure black background, so AMOLED pixels switch off: easier on the eyes at night and kinder to the battery."
-        }
 
         (Notifications, ArEg | Ar) => "الإشعارات",
         (Notifications, En) => "Notifications",
-        (NotificationsBody, ArEg) => {
-            "تذكيرات Kak Nur بتوصل كإشعارات. أزرار تشغيل المسلسل والراديو على شاشة القفل شغالة في الحالتين."
-        }
-        (NotificationsBody, Ar) => {
-            "تصل تذكيرات Kak Nur كإشعارات. أزرار تشغيل المسلسل والراديو على شاشة القفل تعمل في الحالتين."
-        }
-        (NotificationsBody, En) => {
-            "Kak Nur's reminders arrive as notifications. The Sinetron and Radio lock-screen controls work either way."
-        }
         (NotificationsOn, ArEg) => "مسموح بيها",
         (NotificationsOn, Ar) => "مسموح بها",
         (NotificationsOn, En) => "Allowed",
@@ -331,25 +289,9 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (BackgroundAudio, ArEg) => "الصوت في الخلفية",
         (BackgroundAudio, Ar) => "الصوت في الخلفية",
         (BackgroundAudio, En) => "Background audio",
-        (BackgroundAudioBody, ArEg) => {
-            "الحلقات اللي نزّلتها بتفضل شغالة والشاشة مقفولة، وتقدر توقّفها من شاشة القفل أو السماعة."
-        }
-        (BackgroundAudioBody, Ar) => {
-            "تستمر الحلقات المنزّلة في العمل والشاشة مقفلة، ويمكنك إيقافها من شاشة القفل أو السماعة."
-        }
-        (BackgroundAudioBody, En) => {
-            "Downloaded episodes keep playing with the screen off; pause them from the lock screen or your headphones."
-        }
         (AppInfo, ArEg) => "Kabar في إعدادات أندرويد",
         (AppInfo, Ar) => "Kabar في إعدادات أندرويد",
         (AppInfo, En) => "Kabar in Android settings",
-        (AppInfoBody, ArEg) => {
-            "المساحة والبطارية والأذونات. لو الصوت بيقف في الخلفية، خلّي البطارية «من غير قيود»."
-        }
-        (AppInfoBody, Ar) => "المساحة والبطارية والأذونات. إن توقّف الصوت في الخلفية، اجعل البطارية «بلا قيود».",
-        (AppInfoBody, En) => {
-            "Storage, battery and permissions. If audio stops in the background, set battery to “Unrestricted”."
-        }
         (AppInfoOpen, ArEg) => "افتح معلومات التطبيق",
         (AppInfoOpen, Ar) => "افتح معلومات التطبيق",
         (AppInfoOpen, En) => "Open app info",
@@ -375,15 +317,6 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (LayoutNow, ArEg) => "شكل الشاشة دلوقتي",
         (LayoutNow, Ar) => "تخطيط الشاشة الآن",
         (LayoutNow, En) => "Layout right now",
-        (LayoutBody, ArEg) => {
-            "Kabar بيمشي على عرض الشباك مش نوع الجهاز، فتقسيم الشاشة وDeX والشباك الصغير شغالين لوحدهم."
-        }
-        (LayoutBody, Ar) => {
-            "يتبع Kabar عرض النافذة لا نوع الجهاز، فيعمل تقسيم الشاشة وDeX والنافذة الصغيرة تلقائيًا."
-        }
-        (LayoutBody, En) => {
-            "Kabar follows the window width, not the device, so split screen, DeX and small windows just work."
-        }
         (Shortcuts, ArEg) => "اختصارات الكيبورد",
         (Shortcuts, Ar) => "اختصارات لوحة المفاتيح",
         (Shortcuts, En) => "Keyboard shortcuts",
@@ -418,25 +351,14 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (MouseHoverBody, En) => "With this off, clicking a word still opens its card.",
         (QuickLookup, ArEg | Ar) => "Quick Lookup",
         (QuickLookup, En) => "Quick Lookup",
-        (QuickLookupBody, ArEg) => "اختصار من أي برنامج يحلّل الكلام اللي نسخته. جاي في مرحلة جاية.",
-        (QuickLookupBody, Ar) => "اختصار من أي برنامج يحلّل النص المنسوخ. قادم في مرحلة لاحقة.",
-        (QuickLookupBody, En) => {
-            "A hotkey from any app that explains what you copied. Coming in a later milestone."
-        }
         (Later, ArEg) => "بعدين",
         (Later, Ar) => "لاحقًا",
         (Later, En) => "Later",
-        (MenuTip, ArEg) => "الإعدادات موجودة دايمًا في قائمة Kabar فوق، أو بـ \u{2066}⌘,\u{2069}",
-        (MenuTip, Ar) => "الإعدادات موجودة دائمًا في قائمة Kabar بالأعلى، أو عبر \u{2066}⌘,\u{2069}",
-        (MenuTip, En) => "Settings are always in the Kabar menu at the top, or press ⌘,",
 
         (DataFolder, ArEg) => "مكان بياناتك على الجهاز",
         (DataFolder, Ar) => "مكان بياناتك على الجهاز",
         (DataFolder, En) => "Where your data lives on this device",
         (Version, ArEg | Ar) => "النسخة",
         (Version, En) => "Version",
-        (PersonalBuild, ArEg) => "نسخة شخصية ليك انت بس، مش منشورة في أي متجر.",
-        (PersonalBuild, Ar) => "نسخة شخصية لك وحدك، غير منشورة في أي متجر.",
-        (PersonalBuild, En) => "A personal build just for you, not published in any store.",
     }
 }

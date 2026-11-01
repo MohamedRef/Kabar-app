@@ -63,7 +63,6 @@ fn Intro(rule: Signal<Option<String>>, session: Signal<Option<Session>>) -> Elem
 
     rsx! {
         crate::ui::DivCard {
-            p { class: "muted", "{ui.t(Msg::DetectiveIntro)}" }
             div { class: "row", role: "group",
                 button {
                     aria_pressed: if current.is_none() { "true" } else { "false" },

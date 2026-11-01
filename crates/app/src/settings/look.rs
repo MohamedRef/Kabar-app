@@ -49,7 +49,6 @@ pub fn LookSection() -> Element {
                     }
                 }
                 if matches!(settings.theme, Theme::Black | Theme::SystemBlack) {
-                    p { class: "muted", "{st(lang, S::BlackHint)}" }
                 }
             }
 
@@ -69,7 +68,6 @@ pub fn LookSection() -> Element {
                         }
                     }
                 }
-                p { class: "field-hint", "{st(lang, S::AppearanceHint)}" }
             }
 
             div { class: "field",

@@ -45,7 +45,6 @@ pub fn AndroidSection() -> Element {
         Card {
             div { class: "field",
                 span { class: "label", "{st(lang, S::Notifications)}" Scope { device_only: true } }
-                p { class: "muted settings-hint", "{st(lang, S::NotificationsBody)}" }
                 div { class: "row",
                     match allowed() {
                         Some(true) => rsx! { span { class: "pill", "✓ {st(lang, S::NotificationsOn)}" } },
@@ -62,7 +61,6 @@ pub fn AndroidSection() -> Element {
 
             div { class: "field",
                 span { class: "label", "{st(lang, S::BackgroundAudio)}" }
-                p { class: "muted settings-hint", "{st(lang, S::BackgroundAudioBody)}" }
             }
 
             div { class: "field",
@@ -85,7 +83,6 @@ pub fn AndroidSection() -> Element {
 
             div { class: "field",
                 span { class: "label", "{st(lang, S::AppInfo)}" }
-                p { class: "muted settings-hint", "{st(lang, S::AppInfoBody)}" }
                 button { onclick: move |_| open(AppPage::Details), "{st(lang, S::AppInfoOpen)}" }
             }
 
@@ -126,7 +123,6 @@ pub fn MacSection() -> Element {
 
     rsx! {
         Card {
-            p { class: "muted settings-hint", "{st(lang, S::MenuTip)}" }
         }
         Card {
             h2 { "{st(lang, S::Shortcuts)}" }
@@ -175,7 +171,6 @@ pub fn MacSection() -> Element {
                     bdi { class: "latin", "{st(lang, S::QuickLookup)}" }
                     span { class: "pill settings-scope", "{st(lang, S::Later)}" }
                 }
-                p { class: "muted settings-hint", "{st(lang, S::QuickLookupBody)}" }
             }
         }
     }
@@ -218,7 +213,6 @@ fn LayoutNow() -> Element {
         div { class: "field",
             span { class: "label", "{st(lang, S::LayoutNow)}" }
             span { class: "pill", "{ui.t(width_label(*ui.width.read()))}" }
-            p { class: "muted settings-hint", "{st(lang, S::LayoutBody)}" }
         }
     }
 }
@@ -271,7 +265,6 @@ pub fn AboutSection() -> Element {
     rsx! {
         Card {
             p { class: "about-name latin", bdi { lang: "id", dir: "ltr", "Kabar" } }
-            p { class: "muted", "{st(lang, S::PersonalBuild)}" }
             div { class: "field",
                 span { class: "label", "{st(lang, S::Version)}" }
                 code { dir: "ltr", bdi { "{env!(\"CARGO_PKG_VERSION\")}" } }

@@ -185,7 +185,6 @@ pub fn TextGrammar() -> Element {
                     span { class: "chip gr-ahead", "{ui.t(Msg::GrammarNotYet)} · {ahead}" }
                 }
             }
-            p { class: "muted small", "{ui.t(Msg::GrammarInTextHint)}" }
             ul { class: "gr-list",
                 for f in found.iter() {
                     li { key: "{f.grammar}", class: "gr-item {standing_class(f.standing)}",

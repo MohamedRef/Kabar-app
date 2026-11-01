@@ -53,7 +53,6 @@ pub fn CostScreen() -> Element {
                 " "
                 span { class: "cost-period", "{ui.t(Msg::CostThisMonth)}" }
             }
-            p { class: "muted", "{ui.t(Msg::CostHardStops)}" }
         }
         match (connected, usage) {
             (true, Some(Ok(_))) => rsx! {},
@@ -89,7 +88,6 @@ pub fn CostScreen() -> Element {
         } else {
             crate::ui::DivCard {
                 h2 { "{ui.t(Msg::CostPlatformTitle)}" }
-                p { class: "muted", "{ui.t(Msg::CostPlatformBody)}" }
             }
         }
         ClaudeCard {}
@@ -183,7 +181,6 @@ fn Platform(report: UsageReport) -> Element {
     rsx! {
         crate::ui::DivCard {
             h2 { "{ui.t(Msg::CostPlatformTitle)}" }
-            p { class: "muted", "{ui.t(Msg::CostPlatformBody)}" }
             ul { class: "cost-platform",
                 for (i, p) in report.platform.iter().enumerate() {
                     if let (Some(unit), Some(per)) = (logic::unit_msg(p.unit), logic::period_msg(p.period)) {

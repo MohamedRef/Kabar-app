@@ -28,7 +28,6 @@ const PACKS_CSS: &str = r#"
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum P {
     Title,
-    Intro,
     Auto,
     Storage,
     Download,
@@ -54,11 +53,6 @@ fn pt(lang: UiLanguage, p: P) -> &'static str {
         (Title, ArEg) => "الباكات للاستخدام من غير نت",
         (Title, Ar) => "الحزم دون اتصال",
         (Title, En) => "Offline packs",
-        (Intro, ArEg) => "كل وحدة ليها باكة صوت بأصوات طبيعية. نزّلها مرة وتشتغل من غير نت.",
-        (Intro, Ar) => "لكل وحدة حزمة صوت بأصوات طبيعية. نزّلها مرة واحدة لتعمل دون اتصال.",
-        (Intro, En) => {
-            "Each unit has a pack of natural-voice audio. Download it once and it works with no network."
-        }
         (Auto, ArEg) => "نزّل الوحدة الحالية واللي بعدها لوحدهم على الواي فاي",
         (Auto, Ar) => "نزّل الوحدة الحالية والتالية تلقائيًا عبر الواي فاي",
         (Auto, En) => "Download the current and next unit automatically on Wi-Fi",
@@ -247,7 +241,6 @@ pub fn OfflinePacks() -> Element {
         style { {PACKS_CSS} }
         crate::ui::Card { class: "", aria_labelledby: "packs-title",
             h2 { id: "packs-title", "{pt(lang, P::Title)}" }
-            p { class: "muted", "{pt(lang, P::Intro)}" }
             div { class: "packs-storage",
                 span { class: "label", "{pt(lang, P::Storage)}" }
                 span { class: "ltr-count", "{size_text(&ui, total)}" }

@@ -130,7 +130,6 @@ pub fn DiagnosticsCard() -> Element {
     rsx! {
         crate::ui::DivCard { class: "diagnostics-card",
             h2 { "{ui.t(Msg::DiagTitle)}" }
-            p { class: "muted", "{ui.t(Msg::DiagBody)}" }
             if count == 0 {
                 p { "{ui.t(Msg::DiagEmpty)}" }
             } else {

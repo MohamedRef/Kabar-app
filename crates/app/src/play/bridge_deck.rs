@@ -98,7 +98,6 @@ pub fn BridgeDeck() -> Element {
         crate::ui::DivCard { class: "flat deck-hero",
             span { class: "status-chip gold", "{ui.t(Msg::BridgeFromArabic)}" }
             p { class: "deck-count", lang: "id", bdi { "{deck_headline(deck.len())}" } }
-            p { class: "muted", "{ui.t(Msg::DeckHeroNote)}" }
             p { class: "small deck-marked",
                 "{ui.t(Msg::DeckMarked)} "
                 span { class: "ltr-count", strong { "{ui.num(marked as u64)}" } " / {ui.num(deck.len() as u64)}" }

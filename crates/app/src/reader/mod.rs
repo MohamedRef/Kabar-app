@@ -787,7 +787,6 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
                         }
                     }
                 },
-                p { class: "muted", "{ui.t(Msg::ReaderIntro)}" }
                 reading::VoicePicker {}
                 textarea {
                     class: "reader-textarea",
