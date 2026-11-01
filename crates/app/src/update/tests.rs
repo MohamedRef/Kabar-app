@@ -701,11 +701,8 @@ fn content_cleanup_keeps_both_selections_and_legacy_files() {
     assert!(bundle(&orphan_sha).exists(), "unreadable backup disables cleanup");
 
     // Even parseable metadata with a non-SHA digest cannot authorize deletion.
-    fs::write(
-        dir.join("content.previous.json"),
-        serde_json::to_vec(&select("not-a-sha256")).unwrap(),
-    )
-    .unwrap();
+    fs::write(dir.join("content.previous.json"), serde_json::to_vec(&select("not-a-sha256")).unwrap())
+        .unwrap();
     assert!(content::load(data.path(), &info).is_some());
     assert!(bundle(&orphan_sha).exists(), "invalid backup digest disables cleanup");
 }
