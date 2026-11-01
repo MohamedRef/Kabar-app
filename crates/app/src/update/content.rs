@@ -124,10 +124,10 @@ pub(super) fn load(data: &Path, info: &BuildInfo) -> Option<(Entries, bool)> {
     }
     if let Some(bundle) = validated(&dir, info, BACKUP_INFO) {
         // Restore only an independently verified previous selection.
-        if let Ok(previous) = fs::read(dir.join(BACKUP_INFO)) {
-            if let Err(e) = commit_selector(&dir, INFO, &previous) {
-                crate::diag::report!("content selector recovery failed: {e}");
-            }
+        if let Ok(previous) = fs::read(dir.join(BACKUP_INFO))
+            && let Err(e) = commit_selector(&dir, INFO, &previous)
+        {
+            crate::diag::report!("content selector recovery failed: {e}");
         }
         crate::diag::report!("recovered the previous verified content bundle");
         return Some(bundle);
