@@ -1,59 +1,59 @@
-# UI follow-up progress
+# UI follow-up status
 
-Updated: 2026-10-30. PR: https://github.com/MohamedRef/Kabar-app/pull/481
-Branch: `improve/preference-save-recovery`.
+Updated: 2026-11-01. Baseline: `ffe22a24908a0951fc3fe3d9f486bb56dc2d16fd`. Current write-feedback checkpoint:
+[512](https://github.com/MohamedRef/Kabar-app/pull/512). This file is the status index; older test counts in PR descriptions
+belong to those commits, not to the current application.
 
-## Baseline and concurrent changes
+## Completed checkpoints
 
-- Started from main `3de3c1a6f26718db598765c326a0b36c8c57a0d4` after the shared Settings UI, audit
-  hardening and Android WebView guard had already merged.
-- Renderer regression PR #480 merged during this work. Integrated main
-  `21c1655` and verified the merge tree. Android Kotlin, test harness and
-  workflow changes are retained intact; the existing startup guard is preserved.
-- Each coherent change was pushed promptly. Both applications own their code;
-  Batna does not depend on Kabar crates. No deployment or merge is requested.
+1. **Settings and shared preferences.** Searchable Settings, compact/wide
+   presentation, shared root state and observable preference recovery are in
+   main. Preference retries retain the latest value per key; unrelated writes
+   do not erase failures. Recovery checkpoint: [481](https://github.com/MohamedRef/Kabar-app/pull/481).
+2. **One card contract per category.** Static, dynamic and interactive base
+   cards use the shared primitives with native tags, attributes and handlers.
+   The source guard prevents copied base-card markup. Checkpoint: [486](https://github.com/MohamedRef/Kabar-app/pull/486).
+3. **Workflow ownership.** Lesson, review/study, persistence and update stages
+   have focused modules with stable feature facades and their original tests.
+   Checkpoint: [494](https://github.com/MohamedRef/Kabar-app/pull/494); see [UI-MAINTENANCE.md](UI-MAINTENANCE.md).
+4. **Computed browser layout and keyboard.** The Settings browser job now
+   passes 600 production-rendered cases, including Liquid Glass, normal and
+   largest text, responsive widths and System themes in both OS schemes.
+   Checkpoint: [495](https://github.com/MohamedRef/Kabar-app/pull/495); [latest baseline result](https://github.com/MohamedRef/Kabar-app/actions/runs/41286612089).
+5. **Command-specific write feedback.** Reader imports/layout saves now use the existing visible failure notice. Review Undo retains the stored answer and reports failure; a successful retry clears its own notice. Checkpoint: [512](https://github.com/MohamedRef/Kabar-app/pull/512).
+6. **Progress documentation.** This index, the completion checklist and the
+   browser matrix describe current evidence and separate it from device QA.
 
-## Completed implementation
+## Verification receipts
 
-- Shared reactive preference-save service and UI-independent queue. Only the
-  newest failed action per stable key is retained; unrelated successful writes
-  cannot hide a failure. Retry removes only successful current generations.
-- Accessible failure notice in Settings, or on the main surface when Settings
-  closes. The notice states that closing the app may lose unsaved choices.
-- Device and collection preferences use the shared recovery path. App-wide
-  state is extracted into `state.rs` with stable root re-exports.
-- Kabar keeps atomic initial settings writes and retries only changed fields,
-  preserving unrelated newer settings and updating the shared reactive state.
-- Batna centralizes device changes through `Ui::update_prefs`, atomically
-  publishes its existing preference file, and preserves the old file on failure.
-  Synced settings use per-key retries; review commands change one field in
-  current backend settings, preserving other choices and fitted parameters.
-- `docs/UI-MAINTENANCE.md` describes ownership and safe extension points.
+- Baseline [CI](https://github.com/MohamedRef/Kabar-app/actions/runs/41286612014) and
+  [renderer regression](https://github.com/MohamedRef/Kabar-app/actions/runs/41286612008) passed.
+- Current command changes have their own formatting, strict Clippy, workspace
+  tests, content checks and CI receipts on [512](https://github.com/MohamedRef/Kabar-app/pull/512). Baseline green does not
+  certify a later commit. The PR head is the source of truth for its checks.
+- Browser fixtures use production components, CSS, fonts and preference types.
+  Rust callbacks are not hydrated; browser checks do not prove application
+  click/persistence integration or native Back behavior on a physical device.
 
-## Verification
+## Physical device matrix still needed
 
-- Local workspace tests with `--no-default-features --locked`: **1,037
-  passed, 4 existing ignored**; no failures. App suite: 316 passed.
-- Strict workspace/all-target Clippy via `clippy-driver`, warnings denied,
-  passed without desktop features in both apps.
-- Full Rust formatting, whitespace and equivalent tracked-source gates passed.
-- Content validation and localized release-note validation passed. Batna's
-  offline packs also built and round-tripped successfully.
-- Tests exercise real blocked writes and recovery, latest-choice replacement,
-  unrelated failures, repeated retries and a Dioxus reactive observer. Kabar
-  includes a SQLite read-only/recovery test with an intervening synced setting.
-- Full desktop, Android and Worker checks run on the PR. The merged Kotlin/JVM
-  renderer regression workflow is included. The PR's latest-head checks are
-  the source of truth for CI status, including after documentation commits.
+| Device | Automated evidence | Manual visual and interaction QA |
+|---|---|---|
+| Mac | [Baseline Mac workflow passed](https://github.com/MohamedRef/Kabar-app/actions/runs/41294629709) | Not performed in this task |
+| S24 Ultra | Android arm64 build and renderer-controller regression | Not performed in this task |
+| Tab S11 | Android arm64 build and renderer-controller regression | Not performed in this task |
 
-## Remaining work
+Check compact/medium/expanded windows, maximum interface size, all appearances
+and themes, Arabic/Latin text, focus/Tab/Escape, nested Settings/Updates sheets,
+Android Back, screen readers and pen interactions on the actual devices.
 
-- Before review/merge, inspect the latest PR head's complete CI results. Keep
-  the PR open for review; no merge or release was requested in this task.
-- Native Mac/Android visual QA remains outstanding: compact/wide layouts,
-  maximum interface size, RTL/LTR, themes, keyboard, Back and nested sheets.
-  Virtual DOM/JVM tests do not prove physical-device rendering or crash recovery.
-- Domain-specific writes (reviews, content edits, exports) retain their existing
-  error paths. Never blindly replay append-only study events through this queue.
-- Continue gradual extraction of large workflows and adoption of Card/ActionRow,
-  following the remaining priorities in UI-MAINTENANCE.md.
+## Remaining priorities
+
+- Complete the physical matrix above and broader live-screen integration.
+- Continue the separate audit of lesson position/completion and other background
+  or feature writes. The command fixes above are not a blanket claim that every
+  persistence path has recovery UI. Exports and content-edit forms keep their
+  existing operation-specific results; never put append-only study events into
+  the idempotent preference retry queue.
+- Keep implementation details in the owning modules and shared presentation in
+  the shared primitives; both applications retain independent sources/releases.

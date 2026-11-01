@@ -14,11 +14,11 @@ No real user data, live APIs, app launch, installation or release is involved.
 | Width | 320, 384, 600, 840, 1280 CSS px |
 | Height | 900 CSS px |
 | Theme | Every supported theme; System variants in light and dark OS schemes |
-| Appearance | Calm and Glossy |
+| Appearance | Calm, Glossy and Liquid Glass |
 | Text size | Normal and the largest supported size |
 | Direction | Egyptian Arabic RTL and English LTR |
 
-The matrix runs 400 browser cases. The text-scale assertion respects the\nproduction 15px compact and 16px wider normal bases, and checks the 125%\nlarger-text scaling rather than enforcing one size at every width.\nAssertions inspect computed dialog bounds,
+The matrix runs 600 browser cases with the current three appearances. The text-scale assertion respects the\nproduction 15px compact and 16px wider normal bases, and checks the 125%\nlarger-text scaling rather than enforcing one size at every width.\nAssertions inspect computed dialog bounds,
 document and pane overflow, the responsive section index and Back target, actual
 focus after Tab/Shift+Tab, the Escape target, inert background and focus restored
 after removal. Browser errors fail the job. Largest-text Calm screenshots and a

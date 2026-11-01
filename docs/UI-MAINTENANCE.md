@@ -94,13 +94,20 @@ their existing visibility; internal helpers use parent-only visibility. Shared
 state stays with the parent, and persistence operations keep their transactions.
 Existing tests live beside the owning facade in a child `tests.rs` module.
 
+## Command write feedback (2026-11-01)
+
+The current command-specific checkpoint is [512](https://github.com/MohamedRef/Kabar-app/pull/512); see
+[UI-PROGRESS.md](UI-PROGRESS.md) for the verification index and remaining audit.
+Reader imports and layout updates use ReaderState::write_failed without replacing the current document on failure. Review Undo reports a distinct visible failure, preserves session/deck/log state when the tombstone write fails, and clears that notice after successful recovery.
+These workflows do not enqueue append-only review events in preference recovery.
+
 ## Remaining work, in priority order
 
-1. **Feature-specific write recovery.** Shared preference writes now use
-   `persistence/`, but domain writes such as reviews, content edits and exports
-   retain their existing error handling. Give those workflows an appropriate
-   recovery UI; never blindly replay append-only events through the preference
-   queue.
+1. **Additional domain write feedback.** Reader import/layout failures and
+   review Undo now have explicit notices alongside existing review-save errors.
+   Continue the separate audit of lesson progress/completion, profile/reminder
+   and pen writes. Keep operation-specific transaction and retry semantics;
+   append-only events do not belong in the preference queue.
 2. **Workflow ownership.** The targeted large files are now feature facades;
    use the ownership table below for stages, persistence helpers and tests.
    Keep new workflow logic in its owning module and keep callers on the facade.
