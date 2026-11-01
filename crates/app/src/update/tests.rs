@@ -592,7 +592,7 @@ fn content_refresh_keeps_a_verified_fallback_before_switching() {
     fs::create_dir_all(&dir).unwrap();
     let old_bytes = kabar_protocol::bundle::encode(&[(
         "CAST".to_owned(),
-        miniz_oxide::deflate::compress_to_vec(b"cast: []\\n", 10),
+        miniz_oxide::deflate::compress_to_vec(b"cast: []\n", 10),
     )]);
     let previous = content::BundleInfo {
         version: "1.0.0-alpha.1".into(),
@@ -606,7 +606,7 @@ fn content_refresh_keeps_a_verified_fallback_before_switching() {
 
     let next_bytes = kabar_protocol::bundle::encode(&[(
         "CAST".to_owned(),
-        miniz_oxide::deflate::compress_to_vec(b"cast: [new]\\n", 10),
+        miniz_oxide::deflate::compress_to_vec(b"cast: [new]\n", 10),
     )]);
     let next_sha = kabar_core::packs::sha256_hex(&next_bytes);
     let feed = tempfile::tempdir().unwrap();
