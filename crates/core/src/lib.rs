@@ -9,6 +9,7 @@ pub mod cast;
 pub mod chat;
 pub mod clock;
 pub mod coach;
+pub mod content_ids;
 pub mod games;
 pub mod grammar;
 pub mod ink;

@@ -184,6 +184,7 @@ Jump straight into a lesson or test: `KABAR_OPEN_LESSON=bipa1.u01.l01 just run-m
 | [MAC-TODO.md](docs/MAC-TODO.md) | The first Mac session, step by step |
 | [CLOUD.md](docs/CLOUD.md) | Kabar Cloud setup and deploy |
 | [RELEASE.md](docs/RELEASE.md) | Release checklist (no release yet) |
+| [CONTENT-IDS.md](docs/CONTENT-IDS.md) | Content ids learner records point at, and the check that keeps them |
 | [CONTENT.md](docs/CONTENT.md) | Content pipeline |
 | [PEDAGOGY.md](docs/PEDAGOGY.md) | Lesson pacing and evidence |
 | [DESIGN.md](docs/DESIGN.md) | Design system: how screens look and adapt |
