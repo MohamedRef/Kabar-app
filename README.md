@@ -187,6 +187,7 @@ Jump straight into a lesson or test: `KABAR_OPEN_LESSON=bipa1.u01.l01 just run-m
 | [AUTHORING.md](docs/AUTHORING.md) | Adding and correcting content: template, preflight, diff |
 | [CONTENT-IDS.md](docs/CONTENT-IDS.md) | Content ids learner records point at, and the check that keeps them |
 | [COMPATIBILITY.md](docs/COMPATIBILITY.md) | What each version number means and what an older or newer app does with it |
+| [CONTENT-DELIVERY.md](docs/CONTENT-DELIVERY.md) | Bundle size and change measurements; why no modules or deltas yet, and when to revisit |
 | [CONTENT.md](docs/CONTENT.md) | Content pipeline |
 | [PEDAGOGY.md](docs/PEDAGOGY.md) | Lesson pacing and evidence |
 | [DESIGN.md](docs/DESIGN.md) | Design system: how screens look and adapt |
