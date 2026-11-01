@@ -584,3 +584,62 @@ fn corrupt_content_recovers_the_previous_verified_bundle() {
     fs::write(dir.join("content.json"), serde_json::to_vec(&current).unwrap()).unwrap();
     assert!(content::load(data.path(), &info).is_none(), "fall back to embedded content");
 }
+
+#[test]
+fn content_refresh_keeps_a_verified_fallback_before_switching() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    fs::create_dir_all(&dir).unwrap();
+    let old_bytes = kabar_protocol::bundle::encode(&[(
+        "CAST".to_owned(),
+        miniz_oxide::deflate::compress_to_vec(b"cast: []\\n", 10),
+    )]);
+    let previous = content::BundleInfo {
+        version: "1.0.0-alpha.1".into(),
+        build: 0,
+        sha256: kabar_core::packs::sha256_hex(&old_bytes),
+        ui_build: 0,
+        fetched_ms: None,
+    };
+    fs::write(dir.join("content.bundle"), &old_bytes).unwrap();
+    fs::write(dir.join("content.json"), serde_json::to_vec(&previous).unwrap()).unwrap();
+
+    let next_bytes = kabar_protocol::bundle::encode(&[(
+        "CAST".to_owned(),
+        miniz_oxide::deflate::compress_to_vec(b"cast: [new]\\n", 10),
+    )]);
+    let next_sha = kabar_core::packs::sha256_hex(&next_bytes);
+    let feed = tempfile::tempdir().unwrap();
+    fs::write(feed.path().join("next.bundle"), &next_bytes).unwrap();
+    let url = serve(feed.path().to_path_buf());
+    let info =
+        BuildInfo { version: Version::parse("1.0.0-alpha.1").unwrap(), build: 0, preview: false, key: None };
+    let manifest = UpdateManifest {
+        format: kabar_protocol::update::UPDATE_FORMAT,
+        channel: Channel::Alpha,
+        version: "1.0.0-alpha.1".into(),
+        build: 1,
+        commit: None,
+        published_at: "2026-11-01T00:00:00Z".into(),
+        notes: UpdateNotes::default(),
+        assets: Vec::new(),
+        history: Vec::new(),
+        content: Some(kabar_protocol::update::ContentFile {
+            file: "next.bundle".into(),
+            size: next_bytes.len() as u64,
+            sha256: next_sha.clone(),
+            ui_build: 0,
+        }),
+    };
+    assert_eq!(
+        content::refresh(data.path(), &info.installed(Channel::Alpha), &info, &manifest, &url),
+        content::Refresh::Taken(1),
+    );
+    let saved: content::BundleInfo =
+        serde_json::from_slice(&fs::read(dir.join("content.previous.json")).unwrap()).unwrap();
+    assert_eq!(saved, previous);
+    assert!(content::load(data.path(), &info).is_some(), "new selection is readable");
+    fs::remove_file(dir.join(format!("content.{next_sha}.bundle"))).unwrap();
+    assert!(content::load(data.path(), &info).is_some(), "failed new bundle recovers old one");
+    assert_eq!(content::in_use(data.path(), &info), Some(previous));
+}
