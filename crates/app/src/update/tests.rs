@@ -706,3 +706,252 @@ fn content_cleanup_keeps_both_selections_and_legacy_files() {
     assert!(content::load(data.path(), &info).is_some());
     assert!(bundle(&orphan_sha).exists(), "invalid backup digest disables cleanup");
 }
+
+// Last-known-good content (content.rs): a bundle becomes good only after
+// Kabar ran on it, and one that keeps Kabar from starting is rejected.
+
+fn alpha_build() -> BuildInfo {
+    BuildInfo { version: Version::parse("1.0.0-alpha.1").unwrap(), build: 0, preview: false, key: None }
+}
+
+fn cast_bundle(text: &str) -> Vec<u8> {
+    kabar_protocol::bundle::encode(&[(
+        "CAST".to_owned(),
+        miniz_oxide::deflate::compress_to_vec(text.as_bytes(), 10),
+    )])
+}
+
+/// Stores `bytes` content-addressed and returns their selector.
+fn stored(dir: &Path, bytes: &[u8], build: u64) -> content::BundleInfo {
+    let sha = kabar_core::packs::sha256_hex(bytes);
+    fs::create_dir_all(dir).unwrap();
+    fs::write(dir.join(format!("content.{sha}.bundle")), bytes).unwrap();
+    content::BundleInfo { version: "1.0.0-alpha.1".into(), build, sha256: sha, ui_build: 0, fetched_ms: None }
+}
+
+fn select(dir: &Path, selector: &str, meta: &content::BundleInfo) {
+    fs::write(dir.join(selector), serde_json::to_vec(meta).unwrap()).unwrap();
+}
+
+fn read_selector(dir: &Path, selector: &str) -> Option<content::BundleInfo> {
+    serde_json::from_slice(&fs::read(dir.join(selector)).ok()?).ok()
+}
+
+fn cast_of(entries: &[(String, Vec<u8>)]) -> String {
+    let packed = &entries.iter().find(|(k, _)| k == "CAST").unwrap().1;
+    String::from_utf8(miniz_oxide::inflate::decompress_to_vec(packed).unwrap()).unwrap()
+}
+
+#[test]
+fn a_bundle_becomes_last_known_good_only_after_kabar_ran_on_it() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    let info = alpha_build();
+    let a = stored(&dir, &cast_bundle("cast: [a]\n"), 1);
+    select(&dir, "content.json", &a);
+
+    // Downloaded, verified and activated is not yet stable.
+    let (entries, _) = content::load(data.path(), &info).unwrap();
+    assert_eq!(cast_of(&entries), "cast: [a]\n");
+    assert!(read_selector(&dir, "content.good.json").is_none(), "activation alone isn't stability");
+    assert!(dir.join("content.starts.json").exists(), "the launch is counted");
+
+    content::confirm_stable(data.path(), &a).unwrap();
+    assert_eq!(read_selector(&dir, "content.good.json"), Some(a.clone()));
+    assert!(!dir.join("content.starts.json").exists(), "a confirmed bundle has no pending starts");
+    // Confirming again (a second session) changes nothing.
+    content::confirm_stable(data.path(), &a).unwrap();
+    assert_eq!(read_selector(&dir, "content.good.json"), Some(a.clone()));
+
+    // Two downloads in a row: good stays on A until B itself is confirmed,
+    // and survives cleanup although it is neither current nor previous.
+    let b = stored(&dir, &cast_bundle("cast: [b]\n"), 2);
+    select(&dir, "content.previous.json", &a);
+    select(&dir, "content.json", &b);
+    let c = stored(&dir, &cast_bundle("cast: [c]\n"), 3);
+    select(&dir, "content.previous.json", &b);
+    select(&dir, "content.json", &c);
+    let (entries, _) = content::load(data.path(), &info).unwrap();
+    assert_eq!(cast_of(&entries), "cast: [c]\n");
+    assert_eq!(read_selector(&dir, "content.good.json"), Some(a.clone()));
+    assert!(dir.join(format!("content.{}.bundle", a.sha256)).exists(), "good bundle is never cleaned");
+
+    content::confirm_stable(data.path(), &c).unwrap();
+    assert_eq!(read_selector(&dir, "content.good.json"), Some(c.clone()));
+    // Restart: A is now unreferenced and goes; B (previous) and C stay.
+    assert!(content::load(data.path(), &info).is_some());
+    assert!(!dir.join(format!("content.{}.bundle", a.sha256)).exists());
+    assert!(dir.join(format!("content.{}.bundle", b.sha256)).exists());
+    assert!(!dir.join("content.starts.json").exists(), "the good bundle's launches aren't counted");
+}
+
+#[test]
+fn a_bundle_that_keeps_kabar_from_starting_falls_back_to_last_known_good() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    let info = alpha_build();
+    let good = stored(&dir, &cast_bundle("cast: [good]\n"), 1);
+    let bad_bytes = cast_bundle("cast: [bad]\n");
+    let bad = stored(&dir, &bad_bytes, 2);
+    select(&dir, "content.good.json", &good);
+    select(&dir, "content.previous.json", &good);
+    select(&dir, "content.json", &bad);
+
+    // Kabar dies before confirming, launch after launch.
+    for _ in 0..content::MAX_UNCONFIRMED_STARTS {
+        let (entries, _) = content::load(data.path(), &info).unwrap();
+        assert_eq!(cast_of(&entries), "cast: [bad]\n", "a crash or two isn't blamed on content");
+    }
+    let (entries, _) = content::load(data.path(), &info).unwrap();
+    assert_eq!(cast_of(&entries), "cast: [good]\n", "the good bundle is back");
+    assert_eq!(read_selector(&dir, "content.json"), Some(good.clone()));
+    assert!(content::is_rejected(&dir, &bad.sha256));
+
+    // Restart after recovery: still the good one, and it is never counted,
+    // however often Kabar is closed early on it.
+    for _ in 0..5 {
+        let (entries, _) = content::load(data.path(), &info).unwrap();
+        assert_eq!(cast_of(&entries), "cast: [good]\n");
+    }
+    assert!(!content::is_rejected(&dir, &good.sha256));
+
+    // Even if the rejected bundle is selected again it isn't activated.
+    select(&dir, "content.json", &bad);
+    let (entries, _) = content::load(data.path(), &info).unwrap();
+    assert_eq!(cast_of(&entries), "cast: [good]\n");
+    // And the feed offering it again downloads nothing.
+    let feed = tempfile::tempdir().unwrap();
+    fs::write(feed.path().join("bad.bundle"), &bad_bytes).unwrap();
+    let (url, log) = serve_logged(feed.path().to_path_buf());
+    let manifest = content_manifest("bad.bundle", &bad_bytes, 2);
+    assert_eq!(
+        content::refresh(data.path(), &info.installed(Some(Channel::Alpha)), &info, &manifest, &url),
+        content::Refresh::Current,
+    );
+    assert!(log.lock().unwrap().is_empty(), "a rejected bundle is never fetched again");
+    assert_eq!(read_selector(&dir, "content.json"), Some(good));
+}
+
+#[test]
+fn a_crash_loop_with_nothing_confirmed_ends_on_the_built_in_content() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    let info = alpha_build();
+    let older = stored(&dir, &cast_bundle("cast: [older]\n"), 1);
+    let newer = stored(&dir, &cast_bundle("cast: [newer]\n"), 2);
+    select(&dir, "content.previous.json", &older);
+    select(&dir, "content.json", &newer);
+    for _ in 0..content::MAX_UNCONFIRMED_STARTS {
+        assert!(content::load(data.path(), &info).is_some());
+    }
+    // The previous selection gets its own fresh count...
+    for _ in 0..content::MAX_UNCONFIRMED_STARTS {
+        let (entries, _) = content::load(data.path(), &info).unwrap();
+        assert_eq!(cast_of(&entries), "cast: [older]\n");
+    }
+    // ...and when it fails too, the built-in content is used, with no loop.
+    assert!(content::load(data.path(), &info).is_none());
+    assert!(content::load(data.path(), &info).is_none());
+    assert!(content::is_rejected(&dir, &older.sha256) && content::is_rejected(&dir, &newer.sha256));
+}
+
+#[test]
+fn a_damaged_last_known_good_is_never_activated() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    let info = alpha_build();
+    let good = stored(&dir, &cast_bundle("cast: [good]\n"), 1);
+    select(&dir, "content.good.json", &good);
+    let current = stored(&dir, &cast_bundle("cast: [current]\n"), 2);
+    select(&dir, "content.json", &current);
+
+    // Bit rot in the good bundle: never activated, built-in content instead.
+    fs::write(dir.join(format!("content.{}.bundle", good.sha256)), b"damaged").unwrap();
+    fs::write(dir.join(format!("content.{}.bundle", current.sha256)), b"damaged").unwrap();
+    assert!(content::load(data.path(), &info).is_none());
+
+    // A torn good selector disables cleanup instead of guessing.
+    let current = stored(&dir, &cast_bundle("cast: [current]\n"), 2);
+    let orphan = stored(&dir, &cast_bundle("cast: [orphan]\n"), 3);
+    fs::write(dir.join("content.good.json"), b"{\"version\":").unwrap();
+    let (entries, _) = content::load(data.path(), &info).unwrap();
+    assert_eq!(cast_of(&entries), "cast: [current]\n");
+    assert!(dir.join(format!("content.{}.bundle", orphan.sha256)).exists());
+
+    // A good selector from an older app's content isn't used either.
+    let newer_app =
+        BuildInfo { version: Version::parse("1.0.0-alpha.2").unwrap(), build: 0, preview: false, key: None };
+    select(&dir, "content.good.json", &current);
+    assert!(content::load(data.path(), &newer_app).is_none(), "built-in content of the newer app wins");
+}
+
+#[test]
+fn an_interrupted_good_pointer_write_keeps_the_last_good_bundle() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    let info = alpha_build();
+    let good = stored(&dir, &cast_bundle("cast: [good]\n"), 1);
+    select(&dir, "content.good.json", &good);
+    // The next confirmation died mid-write: its temporary files are torn.
+    fs::write(dir.join("content.good.json.part"), b"{\"vers").unwrap();
+    fs::write(dir.join("content.good.bundle.part"), b"half a bundle").unwrap();
+    fs::write(dir.join("content.json"), b"{\"torn").unwrap();
+    let (entries, _) = content::load(data.path(), &info).unwrap();
+    assert_eq!(cast_of(&entries), "cast: [good]\n");
+    assert_eq!(read_selector(&dir, "content.json"), Some(good));
+    assert!(!dir.join("content.good.json.part").exists() && !dir.join("content.good.bundle.part").exists());
+}
+
+#[test]
+fn a_legacy_bundle_gets_its_own_copy_when_confirmed() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    fs::create_dir_all(&dir).unwrap();
+    let info = alpha_build();
+    let bytes = cast_bundle("cast: [legacy]\n");
+    fs::write(dir.join("content.bundle"), &bytes).unwrap();
+    let legacy = content::BundleInfo {
+        version: "1.0.0-alpha.1".into(),
+        build: 0,
+        sha256: kabar_core::packs::sha256_hex(&bytes),
+        ui_build: 0,
+        fetched_ms: None,
+    };
+    select(&dir, "content.json", &legacy);
+    assert!(content::load(data.path(), &info).is_some(), "legacy installs keep working");
+    content::confirm_stable(data.path(), &legacy).unwrap();
+    assert!(dir.join(format!("content.{}.bundle", legacy.sha256)).exists());
+    // The legacy file and the selector are lost: the good copy still works.
+    fs::remove_file(dir.join("content.bundle")).unwrap();
+    fs::remove_file(dir.join("content.json")).unwrap();
+    let (entries, _) = content::load(data.path(), &info).unwrap();
+    assert_eq!(cast_of(&entries), "cast: [legacy]\n");
+}
+
+#[test]
+fn a_fresh_install_and_offline_launch_use_the_built_in_content() {
+    let data = tempfile::tempdir().unwrap();
+    let info = alpha_build();
+    assert!(content::load(data.path(), &info).is_none(), "fresh install");
+    assert!(!data.path().join("content").join("content.starts.json").exists(), "nothing is counted");
+}
+
+fn content_manifest(file: &str, bytes: &[u8], build: u64) -> UpdateManifest {
+    UpdateManifest {
+        format: kabar_protocol::update::UPDATE_FORMAT,
+        channel: Channel::Alpha,
+        version: "1.0.0-alpha.1".into(),
+        build,
+        commit: None,
+        published_at: "2026-11-01T00:00:00Z".into(),
+        notes: UpdateNotes::default(),
+        assets: Vec::new(),
+        history: Vec::new(),
+        content: Some(kabar_protocol::update::ContentFile {
+            file: file.into(),
+            size: bytes.len() as u64,
+            sha256: kabar_core::packs::sha256_hex(bytes),
+            ui_build: 0,
+        }),
+    }
+}

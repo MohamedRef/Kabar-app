@@ -6,9 +6,26 @@
 //! content change needs no app install.
 //!
 //! ```text
-//! <data>/content/content.bundle  the bundle in use from the next launch
-//! <data>/content/content.json    where it came from (BundleInfo)
+//! <data>/content/content.<sha>.bundle   bundles, addressed by SHA-256
+//! <data>/content/content.bundle         a pre-#513 install's bundle
+//! <data>/content/content.json           the selected bundle (BundleInfo)
+//! <data>/content/content.previous.json  the selection before the last download
+//! <data>/content/content.good.json      the last bundle Kabar ran on calmly
+//! <data>/content/content.starts.json    launches of an unconfirmed bundle
+//! <data>/content/content.rejected.json  bundles that kept Kabar from starting
 //! ```
+//!
+//! A bundle goes through these states: downloaded and verified (`refresh`),
+//! selected (`content.json`), activated at launch (`load`), and confirmed
+//! stable once Kabar has drawn its screens and run for [`STABLE_AFTER`] on it
+//! (`confirm_running`). Only a confirmed bundle becomes last-known-good;
+//! the good selector is written by nothing else, so a run of downloads can
+//! never push it out. A bundle that was activated [`MAX_UNCONFIRMED_STARTS`]
+//! times without being confirmed is rejected: launch falls back to the good
+//! bundle, then the previous selection, then the built-in content, and the
+//! rejected digest is never activated or downloaded again. The good bundle
+//! itself is never counted, so a crash that isn't about content can't
+//! reject it.
 //!
 //! A bundle is used only while it is at least as new as the running build
 //! (an app update brings newer content built in, and the old bundle goes),
@@ -30,6 +47,21 @@ const DIR: &str = "content";
 const BUNDLE: &str = "content.bundle";
 const INFO: &str = "content.json";
 const BACKUP_INFO: &str = "content.previous.json";
+const GOOD_INFO: &str = "content.good.json";
+const STARTS: &str = "content.starts.json";
+const REJECTED: &str = "content.rejected.json";
+/// Temporary name for the copy a legacy bundle gets when it is confirmed.
+const GOOD_PART: &str = "content.good.bundle.part";
+
+/// Launches of a bundle that never reached [`STABLE_AFTER`] before it is
+/// treated as the reason Kabar can't start. Three keeps a user who closes
+/// the app quickly once or twice from losing a good update.
+pub(super) const MAX_UNCONFIRMED_STARTS: u8 = 3;
+/// How long Kabar runs on a bundle, after its screens are drawn, before
+/// the bundle counts as stable.
+pub const STABLE_AFTER: Duration = Duration::from_secs(10);
+/// Rejected digests remembered (oldest dropped first).
+const MAX_REJECTED: usize = 16;
 
 /// New downloads use a content-addressed filename. The metadata pointer
 /// changes only after those bytes are fully written and verified, so a crash
@@ -83,38 +115,176 @@ pub(super) fn in_use(data: &Path, info: &BuildInfo) -> Option<BundleInfo> {
     (meta.order()? >= (info.version, info.build)).then_some(meta)
 }
 
+/// The bundle activated by this process, for [`confirm_running`].
+static ACTIVE: std::sync::OnceLock<(std::path::PathBuf, BundleInfo)> = std::sync::OnceLock::new();
+
 /// Reads content from the downloaded bundle from now on, when there is one
 /// for this build; a stale one (the app was updated since) is removed.
 /// Called at launch, before anything reads content.
 pub fn use_installed(data: &Path) {
     let info = BuildInfo::from_env();
-    if let Some((entries, look)) = load(data, &info) {
+    if let Some((meta, entries, look)) = activate(data, &info) {
+        let _ = ACTIVE.set((data.to_path_buf(), meta));
         crate::embedded::use_bundle(entries, look);
+    }
+}
+
+/// Kabar has drawn its screens and run [`STABLE_AFTER`] on the bundle it
+/// activated at launch: that bundle becomes last-known-good. Reads and
+/// may copy the bundle, so call it off the UI thread. Runs once.
+pub fn confirm_running() {
+    static DONE: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    if DONE.swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    let Some((data, meta)) = ACTIVE.get() else { return };
+    if let Err(e) = confirm_stable(data, meta) {
+        crate::diag::report!("content bundle {} not confirmed: {e}", meta.build);
     }
 }
 
 type Entries = Vec<(String, Vec<u8>)>;
 
-/// Verify both the selected file and the matching metadata before activating it.
-fn validated(dir: &Path, info: &BuildInfo, selector: &str) -> Option<(Entries, bool)> {
-    let meta: BundleInfo = serde_json::from_slice(&fs::read(dir.join(selector)).ok()?).ok()?;
-    if meta.order()? < (info.version, info.build) {
+fn read_meta(dir: &Path, selector: &str) -> Option<BundleInfo> {
+    serde_json::from_slice(&fs::read(dir.join(selector)).ok()?).ok()
+}
+
+fn same_sha(a: &str, b: &str) -> bool {
+    a.eq_ignore_ascii_case(b)
+}
+
+/// Verify both the selected file and the matching metadata before activating
+/// it: the selector parses, fits this build, isn't rejected, and its bundle
+/// is whole and decodes.
+fn validated(dir: &Path, info: &BuildInfo, selector: &str) -> Option<(BundleInfo, Entries, bool)> {
+    let meta = read_meta(dir, selector)?;
+    if meta.order()? < (info.version, info.build) || is_rejected(dir, &meta.sha256) {
         return None;
     }
     let bytes = fs::read(selected_path(dir, &meta)).ok()?;
-    if !kabar_core::packs::sha256_hex(&bytes).eq_ignore_ascii_case(&meta.sha256) {
+    if bytes.len() as u64 > kabar_protocol::bundle::MAX_BYTES
+        || !same_sha(&kabar_core::packs::sha256_hex(&bytes), &meta.sha256)
+    {
         return None;
     }
     let entries = kabar_protocol::bundle::decode(&bytes).ok()?;
     let look = meta.order() == Some((info.version, meta.ui_build));
-    Some((entries, look))
+    Some((meta, entries, look))
+}
+
+/// Writes `bytes` to `path` through `temp`, flushed to disk before the
+/// rename, so a crash leaves either the old file or the whole new one.
+fn write_atomic(dir: &Path, temp: &str, path: &Path, bytes: &[u8]) -> Result<(), String> {
+    use std::io::Write as _;
+    let temp = dir.join(temp);
+    let mut file = fs::File::create(&temp).map_err(|e| e.to_string())?;
+    file.write_all(bytes).and_then(|()| file.sync_all()).map_err(|e| e.to_string())?;
+    drop(file);
+    fs::rename(&temp, path).map_err(|e| e.to_string())?;
+    // Make the rename itself durable where the platform allows it.
+    #[cfg(unix)]
+    if let Ok(d) = fs::File::open(dir) {
+        let _ = d.sync_all();
+    }
+    Ok(())
 }
 
 /// Write selectors through a temporary file, never exposing partial JSON.
 fn commit_selector(dir: &Path, selector: &str, json: &[u8]) -> Result<(), String> {
-    let temp = dir.join(format!("{selector}.part"));
-    fs::write(&temp, json).map_err(|e| e.to_string())?;
-    fs::rename(&temp, dir.join(selector)).map_err(|e| e.to_string())
+    write_atomic(dir, &format!("{selector}.part"), &dir.join(selector), json)
+}
+
+/// Launches of one unconfirmed bundle.
+#[derive(Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+struct Starts {
+    sha256: String,
+    count: u8,
+}
+
+fn starts_of(dir: &Path, sha: &str) -> u8 {
+    fs::read(dir.join(STARTS))
+        .ok()
+        .and_then(|b| serde_json::from_slice::<Starts>(&b).ok())
+        .filter(|s| same_sha(&s.sha256, sha))
+        .map_or(0, |s| s.count)
+}
+
+fn rejected(dir: &Path) -> Vec<String> {
+    fs::read(dir.join(REJECTED)).ok().and_then(|b| serde_json::from_slice(&b).ok()).unwrap_or_default()
+}
+
+pub(super) fn is_rejected(dir: &Path, sha: &str) -> bool {
+    rejected(dir).iter().any(|r| same_sha(r, sha))
+}
+
+fn reject(dir: &Path, sha: &str) {
+    let mut list = rejected(dir);
+    if list.iter().any(|r| same_sha(r, sha)) {
+        return;
+    }
+    list.push(sha.to_ascii_lowercase());
+    let excess = list.len().saturating_sub(MAX_REJECTED);
+    list.drain(..excess);
+    let result = serde_json::to_vec(&list)
+        .map_err(|e| e.to_string())
+        .and_then(|json| commit_selector(dir, REJECTED, &json));
+    if let Err(e) = result {
+        crate::diag::report!("content bundle rejection not saved: {e}");
+    }
+}
+
+/// Counts this launch against `meta` unless it is the confirmed bundle.
+fn count_start(dir: &Path, meta: &BundleInfo) {
+    let good = read_meta(dir, GOOD_INFO);
+    if good.is_some_and(|g| same_sha(&g.sha256, &meta.sha256)) {
+        if starts_of(dir, &meta.sha256) > 0 {
+            let _ = fs::remove_file(dir.join(STARTS));
+        }
+        return;
+    }
+    let next = Starts {
+        sha256: meta.sha256.to_ascii_lowercase(),
+        count: starts_of(dir, &meta.sha256).saturating_add(1),
+    };
+    let result = serde_json::to_vec(&next)
+        .map_err(|e| e.to_string())
+        .and_then(|json| commit_selector(dir, STARTS, &json));
+    if let Err(e) = result {
+        crate::diag::report!("content start count not saved: {e}");
+    }
+}
+
+/// Makes `meta` (the bundle this process activated and ran on) the
+/// last-known-good one. A legacy `content.bundle` gets its own
+/// content-addressed copy first, so the good selector never depends on a
+/// file a later launch might remove.
+pub(super) fn confirm_stable(data: &Path, meta: &BundleInfo) -> Result<(), String> {
+    let dir = data.join(DIR);
+    if is_rejected(&dir, &meta.sha256) {
+        return Ok(());
+    }
+    let target = bundle_path(&dir, &meta.sha256).ok_or("invalid bundle digest")?;
+    let intact = |path: &Path| {
+        fs::read(path).is_ok_and(|b| same_sha(&kabar_core::packs::sha256_hex(&b), &meta.sha256))
+    };
+    let already = read_meta(&dir, GOOD_INFO).as_ref() == Some(meta) && intact(&target);
+    if !already {
+        if !intact(&target) {
+            let bytes = fs::read(selected_path(&dir, meta)).map_err(|e| e.to_string())?;
+            if !same_sha(&kabar_core::packs::sha256_hex(&bytes), &meta.sha256) {
+                return Err("the bundle in use changed on disk".into());
+            }
+            write_atomic(&dir, GOOD_PART, &target, &bytes)?;
+        }
+        // The pointer moves last: until then the old good bundle stays
+        // referenced, and cleanup keeps it.
+        let json = serde_json::to_vec_pretty(meta).map_err(|e| e.to_string())?;
+        commit_selector(&dir, GOOD_INFO, &json)?;
+    }
+    if starts_of(&dir, &meta.sha256) > 0 {
+        let _ = fs::remove_file(dir.join(STARTS));
+    }
+    Ok(())
 }
 
 /// Reclaim only unreferenced SHA-addressed bundles and interrupted writes.
@@ -128,13 +298,13 @@ fn cleanup_unreferenced(dir: &Path) {
             Err(_) => None,
         }
     };
-    let (Some(current), Some(previous)) = (read(INFO), read(BACKUP_INFO)) else {
+    let (Some(current), Some(previous), Some(good)) = (read(INFO), read(BACKUP_INFO), read(GOOD_INFO)) else {
         return;
     };
     // A syntactically valid selector may still have an invalid digest. Fail
     // closed rather than deleting a possible recovery candidate.
     let mut retained = Vec::new();
-    for meta in [current, previous].into_iter().flatten() {
+    for meta in [current, previous, good].into_iter().flatten() {
         let Some(path) = bundle_path(dir, &meta.sha256) else { return };
         retained.push(path);
     }
@@ -147,8 +317,16 @@ fn cleanup_unreferenced(dir: &Path) {
         let Some(name) = path.file_name().and_then(|f| f.to_str()) else {
             continue;
         };
-        let old_part =
-            matches!(name, "content.bundle.part" | "content.json.part" | "content.previous.json.part");
+        let old_part = matches!(
+            name,
+            "content.bundle.part"
+                | "content.json.part"
+                | "content.previous.json.part"
+                | "content.good.json.part"
+                | "content.starts.json.part"
+                | "content.rejected.json.part"
+                | GOOD_PART
+        );
         let orphan = name
             .strip_prefix("content.")
             .and_then(|s| s.strip_suffix(".bundle"))
@@ -160,22 +338,45 @@ fn cleanup_unreferenced(dir: &Path) {
     }
 }
 
+#[cfg(test)]
 pub(super) fn load(data: &Path, info: &BuildInfo) -> Option<(Entries, bool)> {
+    activate(data, info).map(|(_, entries, look)| (entries, look))
+}
+
+/// Picks the bundle this launch reads: the selected one, unless it is
+/// damaged or kept Kabar from starting; then the last-known-good one; then
+/// the previous selection; else none (the built-in content). Counts the
+/// launch against the bundle it picks.
+fn activate(data: &Path, info: &BuildInfo) -> Option<(BundleInfo, Entries, bool)> {
     let dir = data.join(DIR);
-    if let Some(bundle) = validated(&dir, info, INFO) {
-        cleanup_unreferenced(&dir);
-        return Some(bundle);
+    if let Some(current) = read_meta(&dir, INFO)
+        && !read_meta(&dir, GOOD_INFO).is_some_and(|g| same_sha(&g.sha256, &current.sha256))
+        && starts_of(&dir, &current.sha256) >= MAX_UNCONFIRMED_STARTS
+    {
+        crate::diag::report!(
+            "content bundle {} didn't let Kabar start {MAX_UNCONFIRMED_STARTS} times; rejected",
+            current.build
+        );
+        reject(&dir, &current.sha256);
+        let _ = fs::remove_file(dir.join(STARTS));
     }
-    if let Some(bundle) = validated(&dir, info, BACKUP_INFO) {
-        // Restore only an independently verified previous selection.
-        if let Ok(previous) = fs::read(dir.join(BACKUP_INFO))
-            && let Err(e) = commit_selector(&dir, INFO, &previous)
-        {
-            crate::diag::report!("content selector recovery failed: {e}");
+    for selector in [INFO, GOOD_INFO, BACKUP_INFO] {
+        let Some((meta, entries, look)) = validated(&dir, info, selector) else { continue };
+        if selector != INFO {
+            // Restore only an independently verified selection.
+            match serde_json::to_vec_pretty(&meta) {
+                Ok(json) => {
+                    if let Err(e) = commit_selector(&dir, INFO, &json) {
+                        crate::diag::report!("content selector recovery failed: {e}");
+                    }
+                }
+                Err(e) => crate::diag::report!("content selector recovery failed: {e}"),
+            }
+            crate::diag::report!("recovered content bundle {} from {selector}", meta.build);
         }
-        crate::diag::report!("recovered the previous verified content bundle");
+        count_start(&dir, &meta);
         cleanup_unreferenced(&dir);
-        return Some(bundle);
+        return Some((meta, entries, look));
     }
     if in_use(data, info).is_none() {
         // Preserve the existing stale-content behavior for app upgrades.
@@ -199,6 +400,11 @@ pub(super) fn refresh(
 ) -> Refresh {
     let current = in_use(data, info).and_then(|i| i.order());
     let file = match content_update(me, m, current) {
+        Ok(Some(f)) if is_rejected(&data.join(DIR), &f.sha256) => {
+            // It kept Kabar from starting here; wait for a newer one.
+            crate::diag::report!("content bundle {} was rejected on this device; skipped", f.file);
+            return Refresh::Current;
+        }
         Ok(Some(f)) => f.clone(),
         Ok(None) => return Refresh::Current,
         Err(e) => {
@@ -233,9 +439,7 @@ pub(super) fn refresh(
         let dir = data.join(DIR);
         fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
         let target = bundle_path(&dir, &file.sha256).ok_or("invalid bundle digest")?;
-        let part = dir.join(format!("{BUNDLE}.part"));
-        fs::write(&part, &bytes).map_err(|e| e.to_string())?;
-        fs::rename(&part, &target).map_err(|e| e.to_string())?;
+        write_atomic(&dir, &format!("{BUNDLE}.part"), &target, &bytes)?;
         let next = BundleInfo {
             version: m.version.clone(),
             build: m.build,
