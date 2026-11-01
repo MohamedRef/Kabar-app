@@ -220,6 +220,17 @@ jobs:
           # content must pass the same checks CI runs on it first.
           cargo run -q -p kabar-tools -- validate
           cargo run -q -p kabar-tools -- update bundle --out dist/bundle
+          # Learner records point at content ids: the new bundle must keep
+          # every id of the bundle devices have now (docs/CONTENT-IDS.md),
+          # and the job summary says what changed for them.
+          live="$(jq -r '.content.file // empty' /tmp/previous-update.json 2>/dev/null || true)"
+          if [ -n "$live" ] && curl -fsSL --retry 3 -o "/tmp/$live" \
+              "https://github.com/$GITHUB_REPOSITORY/releases/download/preview/$live"; then
+            cargo run -q -p kabar-tools -- ids check --base-bundle "/tmp/$live"
+            { echo '### Content compared with the live preview feed'
+              cargo run -q -p kabar-tools -- content diff --base-bundle "/tmp/$live" \
+                --head-bundle dist/bundle/kabar-content.bundle; } >> "$GITHUB_STEP_SUMMARY"
+          fi
           if [ "${CONTENT_ONLY:-}" = true ]; then
             app=(--carry android-arm64)
             # The carried APK is already on the release, not in dist/update.

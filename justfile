@@ -156,6 +156,11 @@ release:
 update-keygen:
     scripts/update-keygen.sh
 
+# Dry run of a content-only update on a channel: every publishing step,
+# signed with a throwaway key, nothing uploaded (docs/RELEASE.md §5)
+publish-update-dry-run channel="preview":
+    scripts/update-preflight.sh {{channel}}
+
 # After `just release`, only once the learner says go: publish it as an
 # over-the-air update to the phone, tablet and Mac (docs/RELEASE.md §5)
 publish-update notes_en="" notes_ar_eg="":
