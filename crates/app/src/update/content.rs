@@ -131,11 +131,13 @@ fn cleanup_unreferenced(dir: &Path) {
     let (Some(current), Some(previous)) = (read(INFO), read(BACKUP_INFO)) else {
         return;
     };
-    let retained = [current, previous]
-        .into_iter()
-        .flatten()
-        .filter_map(|meta| bundle_path(dir, &meta.sha256))
-        .collect::<Vec<_>>();
+    // A syntactically valid selector may still have an invalid digest. Fail
+    // closed rather than deleting a possible recovery candidate.
+    let mut retained = Vec::new();
+    for meta in [current, previous].into_iter().flatten() {
+        let Some(path) = bundle_path(dir, &meta.sha256) else { return };
+        retained.push(path);
+    }
     let Ok(files) = fs::read_dir(dir) else { return };
     for item in files.flatten() {
         if !item.file_type().is_ok_and(|t| t.is_file()) {
