@@ -632,7 +632,7 @@ fn content_refresh_keeps_a_verified_fallback_before_switching() {
         }),
     };
     assert_eq!(
-        content::refresh(data.path(), &info.installed(Channel::Alpha), &info, &manifest, &url),
+        content::refresh(data.path(), &info.installed(Some(Channel::Alpha)), &info, &manifest, &url),
         content::Refresh::Taken(1),
     );
     let saved: content::BundleInfo =
