@@ -30,6 +30,24 @@ const DIR: &str = "content";
 const BUNDLE: &str = "content.bundle";
 const INFO: &str = "content.json";
 
+/// New downloads use a content-addressed filename. The metadata pointer
+/// changes only after those bytes are fully written and verified, so a crash
+/// mid-update leaves the previous selected bundle untouched.
+fn bundle_path(dir: &Path, sha: &str) -> Option<std::path::PathBuf> {
+    if sha.len() != 64 || !sha.bytes().all(|b| b.is_ascii_hexdigit()) {
+        return None;
+    }
+    Some(dir.join(format!("content.{}.bundle", sha.to_ascii_lowercase())))
+}
+
+fn selected_path(dir: &Path, meta: &BundleInfo) -> std::path::PathBuf {
+    // Existing installations used content.bundle; retain compatibility.
+    bundle_path(dir, &meta.sha256)
+        .filter(|p| p.exists())
+        .unwrap_or_else(|| dir.join(BUNDLE))
+}
+
+
 /// Where the bundle on disk came from.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub(super) struct BundleInfo {
@@ -86,7 +104,7 @@ pub(super) fn load(data: &Path, info: &BuildInfo) -> Option<(Entries, bool)> {
         let _ = fs::remove_file(dir.join(INFO));
         return None;
     };
-    let bytes = fs::read(dir.join(BUNDLE)).ok()?;
+    let bytes = fs::read(selected_path(&dir, &meta)).ok()?;
     if !kabar_core::packs::sha256_hex(&bytes).eq_ignore_ascii_case(&meta.sha256) {
         crate::diag::report!("content bundle changed on disk; using the built-in content");
         return None;
@@ -143,9 +161,10 @@ pub(super) fn refresh(
         }
         let dir = data.join(DIR);
         fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
+        let target = bundle_path(&dir, &file.sha256).ok_or("invalid bundle digest")?;
         let part = dir.join(format!("{BUNDLE}.part"));
         fs::write(&part, &bytes).map_err(|e| e.to_string())?;
-        fs::rename(&part, dir.join(BUNDLE)).map_err(|e| e.to_string())?;
+        fs::rename(&part, &target).map_err(|e| e.to_string())?;
         let info = BundleInfo {
             version: m.version.clone(),
             build: m.build,
@@ -154,7 +173,11 @@ pub(super) fn refresh(
             fetched_ms: Some(super::now_ms()),
         };
         let json = serde_json::to_vec_pretty(&info).map_err(|e| e.to_string())?;
-        fs::write(dir.join(INFO), json).map_err(|e| e.to_string())
+        let pointer_part = dir.join(format!("{INFO}.part"));
+        fs::write(&pointer_part, json).map_err(|e| e.to_string())?;
+        // The previous metadata still names the old, unchanged bundle until
+        // this final rename. Never point at a partially downloaded file.
+        fs::rename(&pointer_part, dir.join(INFO)).map_err(|e| e.to_string())
     })();
     match result {
         Ok(()) => Refresh::Taken(m.build),
