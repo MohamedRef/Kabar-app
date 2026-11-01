@@ -48,6 +48,17 @@ jobs:
         run: node --test crates/app/tests/ui-runtime.test.mjs
       - name: Content checks (lessons, tests, glosses, offline pack manifests)
         run: cargo run -p kabar-tools -- validate
+      # Learner progress, answers and reviews point at content ids. Against
+      # the commit before this one (the PR's base; the previous main on a
+      # push), no id may vanish or change meaning unless
+      # content/ids-retired.txt says so (docs/CONTENT-IDS.md).
+      - name: Content ids learner records point at
+        run: |
+          status=0
+          cargo run -q -p kabar-tools -- ids check --base HEAD^1 > ids.txt 2>&1 || status=$?
+          cat ids.txt
+          { echo '### Content ids'; echo '```'; cat ids.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          exit "$status"
       # Advisory only: parallel PRs would race each other on these numbers.
       # The daily README routine commits the refreshed block.
       - name: README numbers (advisory, refreshed daily)

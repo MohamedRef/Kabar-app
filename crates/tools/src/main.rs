@@ -20,6 +20,7 @@ mod freq;
 mod gloss;
 mod golden;
 mod hashscan;
+mod ids;
 mod kaikki;
 mod levels;
 mod packs;
@@ -69,6 +70,9 @@ enum Command {
     /// Offline packs per unit: manifests, Azure audio within the free quota, release tars.
     #[command(subcommand)]
     Packs(packs::Cmd),
+    /// Content ids learner records point at: list them, or check none was removed or repurposed.
+    #[command(subcommand)]
+    Ids(ids::Cmd),
     /// App update feeds: the signing key, `update.json` and its signature.
     #[command(subcommand)]
     Update(update::Cmd),
@@ -108,6 +112,7 @@ fn main() -> Result<()> {
         Command::Bakeoff(cmd) => bakeoff::run(&root, cmd),
         Command::Packs(cmd) => packs::run(&root, cmd),
         Command::Update(cmd) => update::run(&root, cmd),
+        Command::Ids(cmd) => ids::run(&root, cmd),
         Command::Coverage(args) => coverage::run(&root, args),
         Command::Explains(args) => explains::run(&root, args),
         Command::Dialect(args) => dialect::run(&root, args),
