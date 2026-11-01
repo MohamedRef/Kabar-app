@@ -707,3 +707,15 @@ pub fn use_update_notices(ui: Ui, nav: SettingsNav) {
         }
     });
 }
+
+/// Once the shell has drawn its first screen and Kabar has run calmly for
+/// `content::STABLE_AFTER`, the content bundle it launched with becomes the
+/// last-known-good one (`content.rs`). Mounted once in the shell.
+pub fn use_content_confirmation() {
+    use_future(|| async {
+        tokio::time::sleep(super::content::STABLE_AFTER).await;
+        // Hashing (and, for a legacy install, copying) the bundle stays off
+        // the UI thread.
+        std::thread::spawn(super::content::confirm_running);
+    });
+}

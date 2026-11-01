@@ -589,6 +589,7 @@ fn Shell() -> Element {
     back::use_back(ui, current);
     update::view::use_android_install(ui);
     update::view::use_update_notices(ui, settings_nav);
+    update::view::use_content_confirmation();
     // Full-screen players keep the whole screen; everywhere else on the
     // phone a slim top bar carries the gear.
     let top_bar =

@@ -179,7 +179,15 @@ top-level `.md` or a `crates/app/**/*.css` file, CI builds no APK:
 `update manifest --carry android-arm64` keeps the feed's APK entry (same
 file, its own `build`), apps compare that build and offer nothing to
 install, and the history entry is marked as a content update in "What's
-new". `kabar-tools validate` runs before every bundle is built. Strings,
+new". `kabar-tools validate` runs before every bundle is built.
+A downloaded bundle becomes *last-known-good* (`content.good.json`) only
+after Kabar has drawn its screens and run 10 s on it; downloads never move
+that pointer, and cleanup never removes its bundle. A bundle activated three
+launches in a row without reaching that point is rejected
+(`content.rejected.json`): the next launch uses the last-known-good bundle,
+then the previous selection, then the built-in content, and the rejected
+digest is neither activated nor downloaded again. The last-known-good bundle
+is never counted, so crashes unrelated to content can't reject it. Strings,
 icons, art, layout and logic are code and still come with an APK.
 
 **Channels.** `alpha`, `beta`, `stable` for release builds (the learner
