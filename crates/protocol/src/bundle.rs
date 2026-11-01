@@ -21,6 +21,14 @@ pub const MAGIC: &[u8; 8] = b"KABARCB1";
 /// A bundle is never bigger than this (the whole course is ~8 MB packed).
 pub const MAX_BYTES: u64 = 96 * 1024 * 1024;
 
+/// No file in a bundle unpacks to more than this (the largest is ~4 MB).
+pub const MAX_FILE_UNPACKED: usize = 16 * 1024 * 1024;
+
+/// All of a bundle's files together never unpack to more than this
+/// (the whole course is ~30 MB), so a hostile or broken bundle can't
+/// exhaust a phone's memory.
+pub const MAX_UNPACKED: u64 = 256 * 1024 * 1024;
+
 #[derive(Debug, PartialEq, Eq)]
 pub enum BundleError {
     /// Not a Kabar content bundle, or a layout this build can't read.

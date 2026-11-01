@@ -4,6 +4,7 @@
 
 pub mod ai;
 pub mod aksara;
+pub mod bundle_check;
 pub mod cast;
 pub mod chat;
 pub mod clock;

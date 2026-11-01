@@ -187,7 +187,19 @@ launches in a row without reaching that point is rejected
 (`content.rejected.json`): the next launch uses the last-known-good bundle,
 then the previous selection, then the built-in content, and the rejected
 digest is neither activated nor downloaded again. The last-known-good bundle
-is never counted, so crashes unrelated to content can't reject it. Strings,
+is never counted, so crashes unrelated to content can't reject it.
+
+**Bundle checks.** `kabar_core::bundle_check` holds the rules a bundle must
+pass, and both sides run them: `kabar-tools update bundle` and `update
+manifest --content` refuse to publish a bundle that fails, and a device
+refuses to take one. The full check (`check_files`) unpacks every file
+within `MAX_FILE_UNPACKED` (16 MiB) each and `MAX_UNPACKED` (256 MiB) in all,
+requires UTF-8, parses both curricula (level, unit and lesson ids unique
+across them), every lesson and test (schema version, id matching its file,
+the player's shape rules) and the cast. Every launch runs the cheap key
+check (`check_keys`: no duplicate keys, every single file present, at least
+one lesson) before it activates a bundle. Keys this build doesn't know are
+allowed, since a newer bundle may carry content for a newer app. Strings,
 icons, art, layout and logic are code and still come with an APK.
 
 **Channels.** `alpha`, `beta`, `stable` for release builds (the learner

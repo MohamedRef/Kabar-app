@@ -322,10 +322,40 @@ pub fn bundle(root: &Path, out: &Path) -> Result<(PathBuf, usize)> {
         entries.push((key, miniz_oxide::deflate::compress_to_vec(&raw, 10)));
     }
     entries.sort();
+    let bytes = encode(&entries);
+    check_bundle(&bytes).context("the content would make a broken bundle")?;
     fs::create_dir_all(out)?;
     let path = out.join("kabar-content.bundle");
-    fs::write(&path, encode(&entries))?;
+    fs::write(&path, bytes)?;
     Ok((path, entries.len()))
+}
+
+/// The checks a device runs before it takes a bundle
+/// (`kabar_core::bundle_check`, within the unpack limits), so nothing is
+/// published that devices would refuse. Lists every problem.
+pub fn check_bundle(bytes: &[u8]) -> Result<()> {
+    use kabar_protocol::bundle::{MAX_BYTES, MAX_FILE_UNPACKED, MAX_UNPACKED, decode};
+    ensure!(bytes.len() as u64 <= MAX_BYTES, "{} bytes is over the {MAX_BYTES}-byte limit", bytes.len());
+    let entries = decode(bytes).map_err(|e| anyhow::anyhow!("{e}"))?;
+    let mut total = 0u64;
+    let mut files = Vec::with_capacity(entries.len());
+    for (key, packed) in entries {
+        let raw = miniz_oxide::inflate::decompress_to_vec_with_limit(&packed, MAX_FILE_UNPACKED)
+            .map_err(|_| anyhow::anyhow!("{key} doesn't unpack (or is over {MAX_FILE_UNPACKED} bytes)"))?;
+        total += raw.len() as u64;
+        ensure!(total <= MAX_UNPACKED, "the files unpack to over {MAX_UNPACKED} bytes");
+        let text = String::from_utf8(raw).map_err(|_| anyhow::anyhow!("{key} isn't UTF-8"))?;
+        files.push((key, text));
+    }
+    for key in files.iter().map(|(k, _)| k).filter(|k| !kabar_core::bundle_check::known_key(k)) {
+        println!("bundle: {key} is unknown to this build (an older app ignores it)");
+    }
+    let issues = kabar_core::bundle_check::check_files(&files);
+    for i in &issues {
+        println!("bundle: {i}");
+    }
+    ensure!(issues.is_empty(), "{} content problem(s) in the bundle", issues.len());
+    Ok(())
 }
 
 /// The files a manifest names.
@@ -408,7 +438,7 @@ pub fn write_manifest(
         None => None,
         Some(path) => {
             let bytes = fs::read(path).with_context(|| path.display().to_string())?;
-            kabar_protocol::bundle::decode(&bytes).map_err(|e| anyhow::anyhow!("{}: {e}", path.display()))?;
+            check_bundle(&bytes).with_context(|| path.display().to_string())?;
             let file = match channel {
                 Channel::Preview => format!("kabar-content-{version}-b{build}.bundle"),
                 _ => format!("kabar-content-{version}.bundle"),
@@ -511,6 +541,29 @@ mod tests {
     /// Seed of the test key behind `fixtures/update/` (never a real key).
     const FIXTURE_SEED: [u8; 32] = [0x4b; 32];
 
+    /// The smallest bundle devices take.
+    fn sample_bundle() -> Vec<u8> {
+        let entries: Vec<_> = kabar_core::bundle_check::sample_files("characters: []\n")
+            .into_iter()
+            .map(|(k, t)| (k, miniz_oxide::deflate::compress_to_vec(t.as_bytes(), 10)))
+            .collect();
+        kabar_protocol::bundle::encode(&entries)
+    }
+
+    #[test]
+    fn a_bundle_devices_would_refuse_is_never_published() {
+        assert!(check_bundle(&sample_bundle()).is_ok());
+        let mut files = kabar_core::bundle_check::sample_files("characters: []\n");
+        files.retain(|(k, _)| k != "CAST");
+        let entries: Vec<_> = files
+            .into_iter()
+            .map(|(k, t)| (k, miniz_oxide::deflate::compress_to_vec(t.as_bytes(), 10)))
+            .collect();
+        let err = check_bundle(&kabar_protocol::bundle::encode(&entries)).unwrap_err();
+        assert!(err.to_string().contains("1 content problem"), "{err}");
+        assert!(check_bundle(b"KABARCB1\x05").is_err(), "a cut bundle");
+    }
+
     fn files(given: &[(UpdatePlatform, PathBuf)]) -> Files<'_> {
         Files { given, carried: &[], content: None }
     }
@@ -521,7 +574,7 @@ mod tests {
         let apk = dir.path().join("kabar.apk");
         fs::write(&apk, b"apk").unwrap();
         let bundle = dir.path().join("kabar-content.bundle");
-        fs::write(&bundle, kabar_protocol::bundle::encode(&[("CAST".into(), vec![1])])).unwrap();
+        fs::write(&bundle, sample_bundle()).unwrap();
         let given = [(UpdatePlatform::AndroidArm64, apk)];
         let content = Files { given: &given, carried: &[], content: Some(&bundle) };
         let first = write_manifest(

@@ -168,8 +168,33 @@ fn validated(dir: &Path, info: &BuildInfo, selector: &str) -> Option<(BundleInfo
         return None;
     }
     let entries = kabar_protocol::bundle::decode(&bytes).ok()?;
+    // Cheap enough for every launch: the full check ran when it was taken.
+    let issues = kabar_core::bundle_check::check_keys(entries.iter().map(|(k, _)| k.as_str()));
+    if let Some(first) = issues.first() {
+        crate::diag::report!("content bundle {} not used: {first}", meta.build);
+        return None;
+    }
     let look = meta.order() == Some((info.version, meta.ui_build));
     Some((meta, entries, look))
+}
+
+/// Unpacks every file of a bundle as text, within
+/// `kabar_protocol::bundle::MAX_FILE_UNPACKED` each and `MAX_UNPACKED` in all.
+pub(super) fn unpack_all(entries: &[(String, Vec<u8>)]) -> Result<Vec<(String, String)>, String> {
+    use kabar_protocol::bundle::{MAX_FILE_UNPACKED, MAX_UNPACKED};
+    let mut total = 0u64;
+    let mut files = Vec::with_capacity(entries.len());
+    for (key, packed) in entries {
+        let raw = miniz_oxide::inflate::decompress_to_vec_with_limit(packed, MAX_FILE_UNPACKED)
+            .map_err(|_| format!("{key} doesn't unpack (or is over {MAX_FILE_UNPACKED} bytes)"))?;
+        total += raw.len() as u64;
+        if total > MAX_UNPACKED {
+            return Err(format!("the files unpack to over {MAX_UNPACKED} bytes"));
+        }
+        let text = String::from_utf8(raw).map_err(|_| format!("{key} isn't UTF-8"))?;
+        files.push((key.clone(), text));
+    }
+    Ok(files)
 }
 
 /// Writes `bytes` to `path` through `temp`, flushed to disk before the
@@ -430,12 +455,16 @@ pub(super) fn refresh(
         {
             return Err("doesn't match the signed manifest".into());
         }
-        // Every file must open, or none is used.
-        for (key, packed) in kabar_protocol::bundle::decode(&bytes).map_err(|e| e.to_string())? {
-            let text = miniz_oxide::inflate::decompress_to_vec(&packed)
-                .map_err(|_| format!("{key} doesn't unpack"))?;
-            std::str::from_utf8(&text).map_err(|_| format!("{key} isn't UTF-8"))?;
+        // Every file must open within the size limits and pass the same
+        // checks `kabar-tools update bundle` runs before publishing, or
+        // none is used.
+        let entries = kabar_protocol::bundle::decode(&bytes).map_err(|e| e.to_string())?;
+        let files = unpack_all(&entries)?;
+        let issues = kabar_core::bundle_check::check_files(&files);
+        if let Some(first) = issues.first() {
+            return Err(format!("{} content problem(s), first {first}", issues.len()));
         }
+        drop(files);
         let dir = data.join(DIR);
         fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
         let target = bundle_path(&dir, &file.sha256).ok_or("invalid bundle digest")?;
