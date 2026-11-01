@@ -50,6 +50,9 @@ const BACKUP_INFO: &str = "content.previous.json";
 const GOOD_INFO: &str = "content.good.json";
 const STARTS: &str = "content.starts.json";
 const REJECTED: &str = "content.rejected.json";
+/// Bundles this app build could not read, so they aren't fetched again
+/// until the app changes (`Unreadable`).
+const UNREADABLE: &str = "content.unreadable.json";
 /// Temporary name for the copy a legacy bundle gets when it is confirmed.
 const GOOD_PART: &str = "content.good.bundle.part";
 
@@ -258,6 +261,61 @@ fn reject(dir: &Path, sha: &str) {
     }
 }
 
+/// A bundle that downloaded whole but failed this build's checks: content
+/// made for a newer app, or broken. Unlike a rejection it is tied to the
+/// app build that couldn't read it, so an app update tries it again.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+struct Unreadable {
+    sha256: String,
+    /// `version+build` of the app that refused it.
+    app: String,
+}
+
+fn app_key(info: &BuildInfo) -> String {
+    format!("{}+{}", info.version, info.build)
+}
+
+fn unreadable(dir: &Path) -> Vec<Unreadable> {
+    fs::read(dir.join(UNREADABLE)).ok().and_then(|b| serde_json::from_slice(&b).ok()).unwrap_or_default()
+}
+
+fn is_unreadable(dir: &Path, info: &BuildInfo, sha: &str) -> bool {
+    let app = app_key(info);
+    unreadable(dir).iter().any(|u| u.app == app && same_sha(&u.sha256, sha))
+}
+
+fn mark_unreadable(dir: &Path, info: &BuildInfo, sha: &str) {
+    let app = app_key(info);
+    // Entries from earlier app builds no longer apply.
+    let mut list: Vec<_> = unreadable(dir).into_iter().filter(|u| u.app == app).collect();
+    if list.iter().any(|u| same_sha(&u.sha256, sha)) {
+        return;
+    }
+    list.push(Unreadable { sha256: sha.to_ascii_lowercase(), app });
+    let excess = list.len().saturating_sub(MAX_REJECTED);
+    list.drain(..excess);
+    let result = fs::create_dir_all(dir)
+        .map_err(|e| e.to_string())
+        .and_then(|()| serde_json::to_vec(&list).map_err(|e| e.to_string()))
+        .and_then(|json| commit_selector(dir, UNREADABLE, &json));
+    if let Err(e) = result {
+        crate::diag::report!("unreadable content bundle not remembered: {e}");
+    }
+}
+
+/// The feed's bundle when this device already holds exactly those bytes
+/// (a feed that changed only the app, or went back to earlier content), and
+/// whether they sit at the bundle's own content-addressed path.
+fn on_disk(dir: &Path, file: &kabar_protocol::update::ContentFile) -> Option<(Vec<u8>, bool)> {
+    let target = bundle_path(dir, &file.sha256)?;
+    let legacy = read_meta(dir, INFO).filter(|m| same_sha(&m.sha256, &file.sha256)).map(|_| dir.join(BUNDLE));
+    [(target, true)].into_iter().chain(legacy.map(|p| (p, false))).find_map(|(path, own)| {
+        let bytes = fs::read(path).ok()?;
+        (bytes.len() as u64 == file.size && same_sha(&kabar_core::packs::sha256_hex(&bytes), &file.sha256))
+            .then_some((bytes, own))
+    })
+}
+
 /// Counts this launch against `meta` unless it is the confirmed bundle.
 fn count_start(dir: &Path, meta: &BundleInfo) {
     let good = read_meta(dir, GOOD_INFO);
@@ -350,6 +408,7 @@ fn cleanup_unreferenced(dir: &Path) {
                 | "content.good.json.part"
                 | "content.starts.json.part"
                 | "content.rejected.json.part"
+                | "content.unreadable.json.part"
                 | GOOD_PART
         );
         let orphan = name
@@ -413,9 +472,29 @@ fn activate(data: &Path, info: &BuildInfo) -> Option<(BundleInfo, Entries, bool)
     None
 }
 
+/// Fetches the feed's bundle and checks it against the signed manifest row.
+fn download(base: &str, file: &kabar_protocol::update::ContentFile) -> Result<Vec<u8>, String> {
+    let mut res = agent(Duration::from_secs(10 * 60))
+        .get(&format!("{base}/{}", file.file))
+        .call()
+        .map_err(|e| e.to_string())?;
+    if res.status().as_u16() != 200 {
+        return Err(format!("HTTP {}", res.status()));
+    }
+    let mut bytes = Vec::new();
+    res.body_mut().as_reader().take(file.size + 1).read_to_end(&mut bytes).map_err(|e| e.to_string())?;
+    if bytes.len() as u64 != file.size || !same_sha(&kabar_core::packs::sha256_hex(&bytes), &file.sha256) {
+        return Err("doesn't match the signed manifest".into());
+    }
+    Ok(bytes)
+}
+
 /// Downloads the feed's bundle when it is newer than the one in use, checks
 /// it, and keeps it for the next launch. True when one was taken. Failures
-/// are only reported: the content in use keeps working.
+/// are only reported: the content in use keeps working. Bytes the device
+/// already holds aren't downloaded again (a feed that changed only the app
+/// carries the same bundle under a new build), and a bundle this app build
+/// couldn't read isn't fetched again until the app changes.
 pub(super) fn refresh(
     data: &Path,
     me: &Installed,
@@ -430,6 +509,10 @@ pub(super) fn refresh(
             crate::diag::report!("content bundle {} was rejected on this device; skipped", f.file);
             return Refresh::Current;
         }
+        Ok(Some(f)) if is_unreadable(&data.join(DIR), info, &f.sha256) => {
+            // This app build couldn't read it; an app update tries again.
+            return Refresh::Current;
+        }
         Ok(Some(f)) => f.clone(),
         Ok(None) => return Refresh::Current,
         Err(e) => {
@@ -437,38 +520,38 @@ pub(super) fn refresh(
             return Refresh::Failed;
         }
     };
-    let result = (|| -> Result<(), String> {
+    let dir = data.join(DIR);
+    // The same bytes as the bundle in use: only the build number moves.
+    let unchanged = in_use(data, info).is_some_and(|i| same_sha(&i.sha256, &file.sha256));
+    // Err((true, _)): the file itself can't be used by this build, and is
+    // remembered; Err((false, _)): try again next time.
+    let result = (|| -> Result<(), (bool, String)> {
+        let net = |e: String| (false, e);
         if file.size > kabar_protocol::bundle::MAX_BYTES {
-            return Err(format!("{} bytes is too large", file.size));
+            return Err(net(format!("{} bytes is too large", file.size)));
         }
-        let mut res = agent(Duration::from_secs(10 * 60))
-            .get(&format!("{base}/{}", file.file))
-            .call()
-            .map_err(|e| e.to_string())?;
-        if res.status().as_u16() != 200 {
-            return Err(format!("HTTP {}", res.status()));
-        }
-        let mut bytes = Vec::new();
-        res.body_mut().as_reader().take(file.size + 1).read_to_end(&mut bytes).map_err(|e| e.to_string())?;
-        if bytes.len() as u64 != file.size
-            || !kabar_core::packs::sha256_hex(&bytes).eq_ignore_ascii_case(&file.sha256)
-        {
-            return Err("doesn't match the signed manifest".into());
-        }
+        let held = on_disk(&dir, &file);
+        let own_copy = held.as_ref().is_some_and(|(_, own)| *own);
+        let bytes = match held {
+            Some((bytes, _)) => bytes,
+            None => download(base, &file).map_err(net)?,
+        };
         // Every file must open within the size limits and pass the same
         // checks `kabar-tools update bundle` runs before publishing, or
         // none is used.
-        let entries = kabar_protocol::bundle::decode(&bytes).map_err(|e| e.to_string())?;
-        let files = unpack_all(&entries)?;
+        let bad = |e: String| (true, e);
+        let entries = kabar_protocol::bundle::decode(&bytes).map_err(|e| bad(e.to_string()))?;
+        let files = unpack_all(&entries).map_err(bad)?;
         let issues = kabar_core::bundle_check::check_files(&files);
         if let Some(first) = issues.first() {
-            return Err(format!("{} content problem(s), first {first}", issues.len()));
+            return Err(bad(format!("{} content problem(s), first {first}", issues.len())));
         }
         drop(files);
-        let dir = data.join(DIR);
-        fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-        let target = bundle_path(&dir, &file.sha256).ok_or("invalid bundle digest")?;
-        write_atomic(&dir, &format!("{BUNDLE}.part"), &target, &bytes)?;
+        fs::create_dir_all(&dir).map_err(|e| net(e.to_string()))?;
+        let target = bundle_path(&dir, &file.sha256).ok_or_else(|| net("invalid bundle digest".into()))?;
+        if !own_copy {
+            write_atomic(&dir, &format!("{BUNDLE}.part"), &target, &bytes).map_err(net)?;
+        }
         let next = BundleInfo {
             version: m.version.clone(),
             build: m.build,
@@ -476,20 +559,24 @@ pub(super) fn refresh(
             ui_build: file.ui_build,
             fetched_ms: Some(super::now_ms()),
         };
-        let json = serde_json::to_vec_pretty(&next).map_err(|e| e.to_string())?;
+        let json = serde_json::to_vec_pretty(&next).map_err(|e| net(e.to_string()))?;
         // The previous selection must be recoverable before changing the
         // active pointer. A corrupt active selection never replaces a good backup.
-        if validated(&dir, info, INFO).is_some() {
-            let old = fs::read(dir.join(INFO)).map_err(|e| e.to_string())?;
-            commit_selector(&dir, BACKUP_INFO, &old)?;
+        if !unchanged && validated(&dir, info, INFO).is_some() {
+            let old = fs::read(dir.join(INFO)).map_err(|e| net(e.to_string()))?;
+            commit_selector(&dir, BACKUP_INFO, &old).map_err(net)?;
         }
         // Commit the active pointer only after its bundle and fallback are safe.
-        commit_selector(&dir, INFO, &json)
+        commit_selector(&dir, INFO, &json).map_err(net)
     })();
     match result {
+        Ok(()) if unchanged => Refresh::Current,
         Ok(()) => Refresh::Taken(m.build),
-        Err(e) => {
+        Err((bad, e)) => {
             crate::diag::report!("content bundle {} not taken: {e}", file.file);
+            if bad {
+                mark_unreadable(&dir, info, &file.sha256);
+            }
             Refresh::Failed
         }
     }
