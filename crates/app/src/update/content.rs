@@ -117,9 +117,51 @@ fn commit_selector(dir: &Path, selector: &str, json: &[u8]) -> Result<(), String
     fs::rename(&temp, dir.join(selector)).map_err(|e| e.to_string())
 }
 
+/// Reclaim only unreferenced SHA-addressed bundles and interrupted writes.
+/// A missing or unreadable selector disables deletion: its bundle might still
+/// be recoverable. Never touch legacy content.bundle or media pack storage.
+fn cleanup_unreferenced(dir: &Path) {
+    let read = |name: &str| -> Option<Option<BundleInfo>> {
+        match fs::read(dir.join(name)) {
+            Ok(bytes) => serde_json::from_slice(&bytes).ok().map(Some),
+            Err(e) if e.kind() == std::io::ErrorKind::NotFound => Some(None),
+            Err(_) => None,
+        }
+    };
+    let (Some(current), Some(previous)) = (read(INFO), read(BACKUP_INFO)) else {
+        return;
+    };
+    let retained = [current, previous]
+        .into_iter()
+        .flatten()
+        .filter_map(|meta| bundle_path(dir, &meta.sha256))
+        .collect::<Vec<_>>();
+    let Ok(files) = fs::read_dir(dir) else { return };
+    for item in files.flatten() {
+        if !item.file_type().is_ok_and(|t| t.is_file()) {
+            continue;
+        }
+        let path = item.path();
+        let Some(name) = path.file_name().and_then(|f| f.to_str()) else {
+            continue;
+        };
+        let old_part =
+            matches!(name, "content.bundle.part" | "content.json.part" | "content.previous.json.part");
+        let orphan = name
+            .strip_prefix("content.")
+            .and_then(|s| s.strip_suffix(".bundle"))
+            .and_then(|sha| bundle_path(dir, sha))
+            .is_some_and(|candidate| candidate == path && !retained.contains(&candidate));
+        if old_part || orphan {
+            let _ = fs::remove_file(path);
+        }
+    }
+}
+
 pub(super) fn load(data: &Path, info: &BuildInfo) -> Option<(Entries, bool)> {
     let dir = data.join(DIR);
     if let Some(bundle) = validated(&dir, info, INFO) {
+        cleanup_unreferenced(&dir);
         return Some(bundle);
     }
     if let Some(bundle) = validated(&dir, info, BACKUP_INFO) {
@@ -130,6 +172,7 @@ pub(super) fn load(data: &Path, info: &BuildInfo) -> Option<(Entries, bool)> {
             crate::diag::report!("content selector recovery failed: {e}");
         }
         crate::diag::report!("recovered the previous verified content bundle");
+        cleanup_unreferenced(&dir);
         return Some(bundle);
     }
     if in_use(data, info).is_none() {
