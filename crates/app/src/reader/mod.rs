@@ -534,7 +534,7 @@ fn open_new(
             Some(text)
         }
         Err(e) => {
-            crate::diag::report!("saving text failed: {e}");
+            st.write_failed("saving text", &e);
             None
         }
     }
@@ -642,7 +642,7 @@ fn refine_with_ai(
                 }
                 recent.set(db.0.borrow().recent_texts(library::TEXTS).unwrap_or_default());
             }
-            Err(e) => crate::diag::report!("saving the AI layout failed: {e}"),
+            Err(e) => st.write_failed("saving the AI layout", &e),
         }
     });
 }
@@ -674,7 +674,7 @@ fn import_url(
                 st.load(&db, text);
                 recent.set(db.0.borrow().recent_texts(library::TEXTS).unwrap_or_default());
             }
-            Err(e) => crate::diag::report!("saving the page failed: {e}"),
+            Err(e) => st.write_failed("saving the page", &e),
         }
     });
 }
@@ -1084,6 +1084,37 @@ mod tests {
         );
         assert!(save_phrase(&mut store, &text.id, 0, 4, "Saya", s).is_err());
         assert!(store.highlights(&text.id).unwrap().is_empty());
+    }
+
+    #[test]
+    fn a_failed_text_import_notifies_and_keeps_the_open_document() {
+        fn app() -> Element {
+            crate::persistence::use_provide_saves();
+            use_context_provider(|| Db(Rc::new(std::cell::RefCell::new(Store::open_in_memory().unwrap()))));
+            use_context_provider(|| ReaderState::new(UiLanguage::En));
+            use_context_provider(|| Signal::new(Vec::<SavedText>::new()));
+            rsx! {}
+        }
+        let mut dom = VirtualDom::new(app);
+        dom.rebuild_in_place();
+        dom.in_scope(ScopeId::APP, || {
+            let db = consume_context::<Db>();
+            let st = consume_context::<ReaderState>();
+            let recent = consume_context::<Signal<Vec<SavedText>>>();
+            let first = open_new(&db, st, "Saya membaca.", TextKind::Pasted, None, None, recent).unwrap();
+            let before = recent.peek().clone();
+            db.0.borrow().refuse_writes();
+            assert!(open_new(&db, st, "Kabar baik.", TextKind::Pasted, None, None, recent).is_none());
+            assert_eq!(*st.toast.peek(), Some(Msg::ReaderWriteFailed));
+            assert_eq!(st.open.peek().as_ref().unwrap().text.id, first.id);
+            assert_eq!(*recent.peek(), before);
+            assert_eq!(db.0.borrow().recent_texts(10).unwrap().len(), 1);
+            assert!(!crate::persistence::use_pending_saves(), "domain writes are not preference retries");
+            db.0.borrow().allow_writes();
+            let saved = open_new(&db, st, "Kabar baik.", TextKind::Pasted, None, None, recent).unwrap();
+            assert_eq!(st.open.peek().as_ref().unwrap().text.id, saved.id);
+            assert_eq!(db.0.borrow().recent_texts(10).unwrap().len(), 2);
+        });
     }
 
     fn baca() -> WordInfo {

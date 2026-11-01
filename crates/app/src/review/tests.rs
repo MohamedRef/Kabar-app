@@ -62,6 +62,60 @@ fn undo_restores_schedule_session_and_log() {
 }
 
 #[test]
+fn failed_undo_notifies_without_changing_the_review_then_recovers() {
+    fn app() -> Element {
+        let db = use_context_provider(|| {
+            let mut store = Store::open_in_memory().unwrap();
+            store.upsert_cards(&seed_bridge_deck()).unwrap();
+            Db(Rc::new(RefCell::new(store)))
+        });
+        use_context_provider(|| {
+            let sched = Rc::new(Scheduler::default());
+            let deck = read_deck(&db, &sched);
+            let session = Session::new(ReviewMode::Classic, deck.queue(&sched, now_ms(), |_| true), now_ms());
+            Engine {
+                coach: Coach::load(&db),
+                db,
+                sched,
+                deck: Signal::new(deck),
+                session: Signal::new(Some(session)),
+                view: Signal::new(View::Classic),
+                summary: Signal::new(None),
+                error: Signal::new(None),
+            }
+        });
+        let engine = use_context::<Engine>();
+        let error = *engine.error.read();
+        rsx! { if let Some(msg) = error { p { role: "alert", {crate::i18n::t(UiLanguage::En, msg)} } } }
+    }
+    let mut dom = VirtualDom::new(app);
+    dom.rebuild_in_place();
+    dom.in_scope(ScopeId::APP, || {
+        let engine = consume_context::<Engine>();
+        let card = engine.pull().unwrap();
+        assert!(engine.answer(&card, Rating::Good, 1200));
+        let before = engine.deck.peek().state(&card);
+        engine.db.0.borrow().refuse_writes();
+        assert!(!engine.undo());
+        assert_eq!(*engine.error.peek(), Some(Msg::RevUndoFailed));
+        assert_eq!(engine.deck.peek().state(&card), before);
+        assert_eq!(engine.session.peek().as_ref().unwrap().answers().len(), 1);
+        assert_eq!(engine.db.0.borrow().review_log().unwrap().len(), 1);
+    });
+    let _ = dom.render_immediate_to_vec();
+    let html = dioxus::ssr::render(&dom);
+    assert!(html.contains("role=\"alert\"") && html.contains("It is still saved"), "{html}");
+    dom.in_scope(ScopeId::APP, || {
+        let engine = consume_context::<Engine>();
+        engine.db.0.borrow().allow_writes();
+        assert!(engine.undo());
+        assert_eq!(*engine.error.peek(), None);
+        assert!(engine.db.0.borrow().review_log().unwrap().is_empty());
+        assert!(engine.session.peek().as_ref().unwrap().answers().is_empty());
+    });
+}
+
+#[test]
 fn javanese_false_friends_reach_review_cards() {
     let card = |word: &str, language| Card {
         v: 1,
