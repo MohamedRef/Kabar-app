@@ -472,6 +472,14 @@ fn activate(data: &Path, info: &BuildInfo) -> Option<(BundleInfo, Entries, bool)
     None
 }
 
+/// Whether a feed bundle with digest `sha` is exactly the content this
+/// app has built in: CI builds the bundle before the APK and bakes its
+/// digest in as `KABAR_BUILTIN_CONTENT`. Only while no downloaded bundle is
+/// in use, so a feed going back to this content still replaces a newer one.
+fn built_in(builtin: Option<&str>, bundle_in_use: bool, sha: &str) -> bool {
+    !bundle_in_use && builtin.is_some_and(|b| same_sha(b.trim(), sha))
+}
+
 /// Fetches the feed's bundle and checks it against the signed manifest row.
 fn download(base: &str, file: &kabar_protocol::update::ContentFile) -> Result<Vec<u8>, String> {
     let mut res = agent(Duration::from_secs(10 * 60))
@@ -520,6 +528,11 @@ pub(super) fn refresh(
             return Refresh::Failed;
         }
     };
+    // The app runs on its built-in content and the feed's bundle is that
+    // same content (the build that made this app): nothing to download.
+    if built_in(option_env!("KABAR_BUILTIN_CONTENT"), in_use(data, info).is_some(), &file.sha256) {
+        return Refresh::Current;
+    }
     let dir = data.join(DIR);
     // The same bytes as the bundle in use: only the build number moves.
     let unchanged = in_use(data, info).is_some_and(|i| same_sha(&i.sha256, &file.sha256));
@@ -579,5 +592,22 @@ pub(super) fn refresh(
             }
             Refresh::Failed
         }
+    }
+}
+
+#[cfg(test)]
+mod built_in_tests {
+    use super::built_in;
+
+    #[test]
+    fn the_feed_bundle_of_the_running_build_is_not_downloaded() {
+        let sha = "ab".repeat(32);
+        assert!(built_in(Some(&sha), false, &sha.to_uppercase()), "the same content");
+        assert!(
+            !built_in(Some(&sha), true, &sha),
+            "a downloaded bundle is in use: the feed may roll it back"
+        );
+        assert!(!built_in(Some(&"cd".repeat(32)), false, &sha), "other content");
+        assert!(!built_in(None, false, &sha), "a local build doesn't know its digest");
     }
 }
