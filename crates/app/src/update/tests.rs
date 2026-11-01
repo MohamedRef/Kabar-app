@@ -643,3 +643,63 @@ fn content_refresh_keeps_a_verified_fallback_before_switching() {
     assert!(content::load(data.path(), &info).is_some(), "failed new bundle recovers old one");
     assert_eq!(content::in_use(data.path(), &info), Some(previous));
 }
+
+#[test]
+fn content_cleanup_keeps_both_selections_and_legacy_files() {
+    let data = tempfile::tempdir().unwrap();
+    let dir = data.path().join("content");
+    fs::create_dir_all(&dir).unwrap();
+    let info =
+        BuildInfo { version: Version::parse("1.0.0-alpha.1").unwrap(), build: 0, preview: false, key: None };
+    let make = |text: &[u8]| kabar_protocol::bundle::encode(&[(
+        "CAST".to_owned(),
+        miniz_oxide::deflate::compress_to_vec(text, 10),
+    )]);
+    let current_bytes = make(b"cast: []\n");
+    let previous_bytes = make(b"cast: [previous]\n");
+    let orphan_bytes = make(b"cast: [orphan]\n");
+    let current_sha = kabar_core::packs::sha256_hex(&current_bytes);
+    let previous_sha = kabar_core::packs::sha256_hex(&previous_bytes);
+    let orphan_sha = kabar_core::packs::sha256_hex(&orphan_bytes);
+    let bundle = |sha: &str| dir.join(format!("content.{sha}.bundle"));
+    for (sha, bytes) in [
+        (&current_sha, &current_bytes),
+        (&previous_sha, &previous_bytes),
+        (&orphan_sha, &orphan_bytes),
+    ] {
+        fs::write(bundle(sha), bytes).unwrap();
+    }
+    let select = |sha: &str| content::BundleInfo {
+        version: "1.0.0-alpha.1".into(),
+        build: 0,
+        sha256: sha.into(),
+        ui_build: 0,
+        fetched_ms: None,
+    };
+    fs::write(dir.join("content.json"), serde_json::to_vec(&select(&current_sha)).unwrap()).unwrap();
+    fs::write(
+        dir.join("content.previous.json"),
+        serde_json::to_vec(&select(&previous_sha)).unwrap(),
+    )
+    .unwrap();
+    fs::write(dir.join("content.bundle"), b"legacy file").unwrap();
+    for name in ["content.bundle.part", "content.json.part", "content.previous.json.part"] {
+        fs::write(dir.join(name), b"abandoned").unwrap();
+    }
+    fs::write(dir.join("unrelated.json"), b"leave alone").unwrap();
+    assert!(content::load(data.path(), &info).is_some());
+    assert!(bundle(&current_sha).exists(), "active bundle is retained");
+    assert!(bundle(&previous_sha).exists(), "previous verified bundle is retained");
+    assert!(!bundle(&orphan_sha).exists(), "unreferenced bundle is removed");
+    assert!(dir.join("content.bundle").exists(), "legacy compatibility is retained");
+    assert!(dir.join("unrelated.json").exists());
+    for name in ["content.bundle.part", "content.json.part", "content.previous.json.part"] {
+        assert!(!dir.join(name).exists(), "abandoned temporary write is removed");
+    }
+
+    // Corrupt metadata must fail closed: no speculative deletion.
+    fs::write(dir.join("content.previous.json"), b"incomplete").unwrap();
+    fs::write(bundle(&orphan_sha), &orphan_bytes).unwrap();
+    assert!(content::load(data.path(), &info).is_some());
+    assert!(bundle(&orphan_sha).exists(), "unreadable backup disables cleanup");
+}
