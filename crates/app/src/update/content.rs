@@ -42,11 +42,8 @@ fn bundle_path(dir: &Path, sha: &str) -> Option<std::path::PathBuf> {
 
 fn selected_path(dir: &Path, meta: &BundleInfo) -> std::path::PathBuf {
     // Existing installations used content.bundle; retain compatibility.
-    bundle_path(dir, &meta.sha256)
-        .filter(|p| p.exists())
-        .unwrap_or_else(|| dir.join(BUNDLE))
+    bundle_path(dir, &meta.sha256).filter(|p| p.exists()).unwrap_or_else(|| dir.join(BUNDLE))
 }
-
 
 /// Where the bundle on disk came from.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
