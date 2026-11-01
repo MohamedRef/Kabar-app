@@ -105,9 +105,15 @@ run-mac:
 run-phone-preview:
     KABAR_WINDOW_SIZE=412x915 cargo run -p kabar-app
 
+# The SHA-256 of the content bundle this tree builds: a build that carries it
+# (KABAR_BUILTIN_CONTENT) doesn't download the same bundle again (docs/RELEASE.md)
+content-digest:
+    @cargo run -q -p kabar-tools -- update bundle --out {{dist}}/bundle > /dev/null
+    @shasum -a 256 {{dist}}/bundle/kabar-content.bundle | cut -d' ' -f1
+
 # Build a release .app for the Mac into dist/
 bundle-mac:
-    cd {{app}} && dx bundle --platform macos --release --package-types macos --out-dir ../../{{dist}}/mac
+    export KABAR_BUILTIN_CONTENT="$({{just_executable()}} content-digest)" && cd {{app}} && dx bundle --platform macos --release --package-types macos --out-dir ../../{{dist}}/mac
     # Same code identity for every build (Keychain trust survives updates):
     # signed with "Kabar Code Signing" once `just mac-codesign-cert` made it.
     if security find-identity -v -p codesigning | grep -q '"Kabar Code Signing"'; then \
@@ -132,7 +138,7 @@ run-android device="":
 # Build a signed release APK into dist/android/kabar.apk
 apk:
     rm -rf {{dist}}/android && mkdir -p {{dist}}/android
-    cd {{app}} && dx bundle --platform android --release --package-types apk --target aarch64-linux-android --no-default-features --features mobile --out-dir ../../{{dist}}/android/raw
+    export KABAR_BUILTIN_CONTENT="$({{just_executable()}} content-digest)" && cd {{app}} && dx bundle --platform android --release --package-types apk --target aarch64-linux-android --no-default-features --features mobile --out-dir ../../{{dist}}/android/raw
     # dx leaves a debug build; rebuild it as a release (no debuggable, R8, versionCode).
     apk="$(scripts/android-release-apk.sh)" && \
       scripts/android-check-apk.sh "$apk" && \

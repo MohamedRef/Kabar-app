@@ -199,7 +199,8 @@ checks is remembered in `content.unreadable.json` together with the app
 build that refused it, and isn't fetched again until the app changes. A cut
 or mismatched download is not remembered; the next check tries again.
 The preview workflow builds the bundle before the APK and bakes its digest
-into the app (`KABAR_BUILTIN_CONTENT`), so a device that has just installed
+into the app (`KABAR_BUILTIN_CONTENT`; `just apk` and `just bundle-mac` do
+the same through `just content-digest`), so a device that has just installed
 that APK and runs on its built-in content doesn't download the same content
 again from the feed that brought it.
 
