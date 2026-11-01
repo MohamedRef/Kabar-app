@@ -416,3 +416,12 @@ fn a_disabled_check_says_what_it_waits_for() {
         }
     }
 }
+
+#[test]
+fn arabic_article_stays_with_its_latin_word() {
+    use super::reading::glue_articles;
+    assert_eq!(glue_articles("الـ kopi بتاعك"), "الـ\u{a0}kopi بتاعك");
+    assert_eq!(glue_articles("بالـ **Bu Rina**"), "بالـ\u{a0}**Bu Rina**");
+    // Only before a Latin word.
+    assert_eq!(glue_articles("الـ كلمة"), "الـ كلمة");
+}

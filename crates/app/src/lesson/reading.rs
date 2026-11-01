@@ -139,6 +139,7 @@ pub(super) fn run_has_sentence_break(run: &[char]) -> bool {
 /// `**words**` in the content are shown in bold.
 #[component]
 pub(crate) fn Rich(text: String, target: &'static str, #[props(default)] pron: bool) -> Element {
+    let text = glue_articles(&text);
     rsx! {
         for (j, (bold, part)) in bold_parts(&text).into_iter().enumerate() {
             if bold {
@@ -148,6 +149,19 @@ pub(crate) fn Rich(text: String, target: &'static str, #[props(default)] pron: b
             }
         }
     }
+}
+/// "الـ kopi", "بالـ **Bu Rina**": the Arabic article is written apart from
+/// the Latin word it belongs to. The space after it becomes a no-break space,
+/// so a line never ends on "الـ" with its word on the next one.
+pub(crate) fn glue_articles(text: &str) -> String {
+    let chars: Vec<char> = text.chars().collect();
+    let mut out = String::with_capacity(text.len());
+    for (i, &c) in chars.iter().enumerate() {
+        let article = i > 0 && chars[i - 1] == '\u{640}';
+        let word = chars[i + 1..].iter().find(|&&n| n != '*').is_some_and(|&n| is_latin_letter(n));
+        out.push(if c == ' ' && article && word { '\u{a0}' } else { c });
+    }
+    out
 }
 /// Splits `**bold**` markup out of content text: (is bold, text) parts in
 /// order. An unpaired `**` stays as written.
