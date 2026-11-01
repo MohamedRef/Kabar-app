@@ -13,6 +13,7 @@ use clap::{Parser, Subcommand};
 mod bakeoff;
 mod bridge;
 mod changes;
+mod content;
 mod coverage;
 mod dialect;
 mod explains;
@@ -96,6 +97,10 @@ enum Command {
     },
     /// Validate all content (schemas, glosses, bridge). Run before committing content.
     Validate,
+    /// Authoring: start a lesson from the template, compare content with a
+    /// version, and run every check a content change must pass (docs/AUTHORING.md).
+    #[command(subcommand)]
+    Content(content::Cmd),
 }
 
 fn main() -> Result<()> {
@@ -118,31 +123,35 @@ fn main() -> Result<()> {
         Command::Dialect(args) => dialect::run(&root, args),
         Command::Schemas { check } => schemas::run(&root, check),
         Command::Readme { check } => readme::run(&root, check),
-        Command::Validate => {
-            schemas::run(&root, true)?;
-            gloss::run(&root, gloss::Cmd::Validate { batch: None, lang: None })?;
-            bridge::run(&root, bridge::Cmd::Validate)?;
-            let mut issues = gloss::crosscheck_bridge(&root, kabar_protocol::content::Lang::Id)?;
-            issues.extend(gloss::crosscheck_bridge(&root, kabar_protocol::content::Lang::Jv)?);
-            for i in &issues {
-                println!("gloss↔bridge: {i}");
-            }
-            anyhow::ensure!(issues.is_empty(), "{} gloss↔bridge issue(s)", issues.len());
-            let issues = bridge::check_lessons(&root)?;
-            for i in &issues {
-                println!("lesson↔bridge: {i}");
-            }
-            anyhow::ensure!(issues.is_empty(), "{} lesson↔bridge issue(s)", issues.len());
-            let issues = hashscan::check(&root)?;
-            for i in &issues {
-                println!("yaml: {i}");
-            }
-            anyhow::ensure!(issues.is_empty(), "{} YAML value(s) cut by a \" #\" comment", issues.len());
-            levels::run(&root, levels::Cmd::Validate)?;
-            golden::run(&root, golden::Cmd::Validate)?;
-            packs::run(&root, packs::Cmd::Build { check: true })?;
-            println!("all content ok");
-            Ok(())
-        }
+        Command::Validate => validate(&root),
+        Command::Content(cmd) => content::run(&root, cmd),
     }
+}
+
+/// `kabar-tools validate`: every content check that needs only the repo.
+pub(crate) fn validate(root: &paths::Root) -> Result<()> {
+    schemas::run(root, true)?;
+    gloss::run(root, gloss::Cmd::Validate { batch: None, lang: None })?;
+    bridge::run(root, bridge::Cmd::Validate)?;
+    let mut issues = gloss::crosscheck_bridge(root, kabar_protocol::content::Lang::Id)?;
+    issues.extend(gloss::crosscheck_bridge(root, kabar_protocol::content::Lang::Jv)?);
+    for i in &issues {
+        println!("gloss↔bridge: {i}");
+    }
+    anyhow::ensure!(issues.is_empty(), "{} gloss↔bridge issue(s)", issues.len());
+    let issues = bridge::check_lessons(root)?;
+    for i in &issues {
+        println!("lesson↔bridge: {i}");
+    }
+    anyhow::ensure!(issues.is_empty(), "{} lesson↔bridge issue(s)", issues.len());
+    let issues = hashscan::check(root)?;
+    for i in &issues {
+        println!("yaml: {i}");
+    }
+    anyhow::ensure!(issues.is_empty(), "{} YAML value(s) cut by a \" #\" comment", issues.len());
+    levels::run(root, levels::Cmd::Validate)?;
+    golden::run(root, golden::Cmd::Validate)?;
+    packs::run(root, packs::Cmd::Build { check: true })?;
+    println!("all content ok");
+    Ok(())
 }

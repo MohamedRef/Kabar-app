@@ -71,6 +71,18 @@ bakeoff-report run *args="":
 content-check:
     {{tools}} validate
 
+# Authoring (docs/AUTHORING.md): a new lesson from the template
+content-new id:
+    {{tools}} content new-lesson {{id}}
+
+# Every check a content change must pass, against a base commit
+content-preflight base="origin/main":
+    {{tools}} content preflight --base {{base}}
+
+# Which content files differ from a commit
+content-diff base="origin/main":
+    {{tools}} content diff --base {{base}}
+
 # Refresh the generated numbers in README.md (CI fails when they are stale)
 readme:
     {{tools}} readme
