@@ -94,6 +94,31 @@ are only steps 5 to 7.
    marker. The builds reach your devices only through the update feed
    (§5), which nobody else installs from.
 
+### From CI (the usual way, since the first alpha on 2026-11-02)
+
+The **Release** workflow (`.github/workflows/release.yml`, Actions ›
+Release › Run workflow, by hand only) does steps 5–6 and 8 without the Mac:
+
+1. Once, on the Mac: `scripts/release-secrets.sh`. It makes (or reuses) the
+   update key, the Android release keystore and the "Kabar Code Signing"
+   identity exactly as step 3 does, and copies them into the repo's Actions
+   secrets with `gh secret set` (`KABAR_UPDATE_SECRET`,
+   `KABAR_ANDROID_KEYSTORE`, `KABAR_ANDROID_KEYSTORE_PASSWORD`,
+   `KABAR_MAC_CERT_P12`, `KABAR_MAC_CERT_PASSWORD`). Commit
+   `crates/app/update-key.pub` the first time. Back up `~/.kabar/` and the
+   Keychain items `kabar-update`, `kabar-android`, `kabar-codesign`.
+2. Set `version` in `Cargo.toml` in a PR (with its `changes/` line), merge.
+3. Run the workflow. It builds the content bundle, the release APK (Linux,
+   with Firebase from `KABAR_GOOGLE_SERVICES_JSON`) and Kabar.app (macOS
+   runner), bakes in Kabar Cloud and the Google client (sync), signs
+   everything with the keys above and publishes `v<version>`
+   (`kabar-<version>.apk`, `Kabar-<version>-mac.zip`) and the channel
+   feed(s) `update-alpha`, … (§5).
+4. First time only: uninstall a *preview* build (different key) and install
+   the APK on both Galaxy devices; on the Mac move Kabar.app to
+   Applications and run `xattr -dr com.apple.quarantine /Applications/Kabar.app`
+   once (self-signed). Later releases arrive over the air.
+
 ## 5. Updates over the air
 
 Every device pulls a published update by itself: no cable, no store, still

@@ -1,0 +1,331 @@
+name: Release
+
+# Builds a real Kabar release (alpha, beta or stable, from `version` in
+# Cargo.toml) and publishes it (docs/RELEASE.md §4–5): the signed release
+# APK, the signed Kabar.app and the content pack, on
+#
+# - the channel feed(s) the version belongs to (`update-alpha`, …): the
+#   signed update.json the installed apps read, files first, manifest last;
+# - a release of its own (`v<version>`) with the APK and the zipped
+#   Kabar.app for installing by hand.
+#
+# By hand only (Actions › Release › Run workflow): nothing is released
+# unless the learner says go. The keys come from repo secrets that
+# scripts/release-secrets.sh copies from the Mac's Keychain; the public
+# update key is crates/app/update-key.pub. Same build steps as
+# android-preview.yml and mac.yml, with the release keys.
+
+on:
+  workflow_dispatch:
+    inputs:
+      notes_en:
+        description: "Short notes (English, optional: what's new comes from changes/)"
+        required: false
+        default: ""
+      notes_ar_eg:
+        description: "Short notes (Egyptian Arabic, optional)"
+        required: false
+        default: ""
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  # Kabar Cloud and Google sign-in, built in like the preview builds
+  # (crates/app/src/cloud/mod.rs, docs/CLOUD.md §3.6). The URL and client id
+  # are public; the client secret (a repo secret) is passed only to the two
+  # build steps. Never echo these.
+  KABAR_CLOUD_URL: ${{ vars.KABAR_CLOUD_URL || 'https://kabar-cloud.hamorefaat85.workers.dev' }}
+  KABAR_GOOGLE_CLIENT_ID: ${{ vars.KABAR_GOOGLE_CLIENT_ID || '1001052243528-3d8bmf0efprgdvov9f663fm8u63kblck.apps.googleusercontent.com' }}
+  KABAR_BUILD: ${{ github.run_number }}
+
+jobs:
+  prepare:
+    name: Version, keys and content pack
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+      channels: ${{ steps.v.outputs.channels }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: release-tools
+          save-if: false
+      - name: Release version and its channels
+        id: v
+        run: |
+          v="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
+          # An alpha goes on alpha; a beta on alpha + beta; a release on all three.
+          case "$v" in
+            *-alpha.*) channels="alpha" ;;
+            *-beta.*|*-rc.*) channels="alpha beta" ;;
+            *-*) echo "::error::$v is no release version"; exit 1 ;;
+            *) channels="alpha beta stable" ;;
+          esac
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+          echo "channels=$channels" >> "$GITHUB_OUTPUT"
+          echo "Kabar $v → $channels"
+      - name: Every key is there
+        env:
+          HAVE_UPDATE: ${{ secrets.KABAR_UPDATE_SECRET != '' }}
+          HAVE_KEYSTORE: ${{ secrets.KABAR_ANDROID_KEYSTORE != '' && secrets.KABAR_ANDROID_KEYSTORE_PASSWORD != '' }}
+          HAVE_MAC: ${{ secrets.KABAR_MAC_CERT_P12 != '' && secrets.KABAR_MAC_CERT_PASSWORD != '' }}
+          HAVE_GOOGLE: ${{ secrets.KABAR_GOOGLE_CLIENT_SECRET != '' }}
+        run: |
+          ok=true
+          grep -q '^[A-Za-z0-9+/]\{43\}=$' crates/app/update-key.pub \
+            || { echo "::error::crates/app/update-key.pub holds no key: run scripts/release-secrets.sh on the Mac and commit it"; ok=false; }
+          [ "$HAVE_UPDATE" = true ] || { echo "::error::secret KABAR_UPDATE_SECRET is missing (scripts/release-secrets.sh)"; ok=false; }
+          [ "$HAVE_KEYSTORE" = true ] || { echo "::error::secrets KABAR_ANDROID_KEYSTORE(_PASSWORD) are missing (scripts/release-secrets.sh)"; ok=false; }
+          [ "$HAVE_MAC" = true ] || { echo "::error::secrets KABAR_MAC_CERT_P12/_PASSWORD are missing (scripts/release-secrets.sh)"; ok=false; }
+          [ "$HAVE_GOOGLE" = true ] || echo "::warning::KABAR_GOOGLE_CLIENT_SECRET is missing: Google sign-in for sync may fail (docs/CLOUD.md §3.6)"
+          $ok
+      - name: Content bundle (built in and on the feed)
+        run: |
+          cargo run -q -p kabar-tools -- validate
+          cargo run -q -p kabar-tools -- update bundle --out dist/packs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kabar-release-pack
+          path: dist/packs/
+          retention-days: 30
+
+  android:
+    name: Release APK
+    needs: prepare
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: android-preview
+          save-if: false
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
+      - name: Install dx 0.7.10
+        run: cargo binstall -y --force dioxus-cli@0.7.10
+      - uses: actions/download-artifact@v4
+        with:
+          name: kabar-release-pack
+          path: dist/packs
+      - name: Build identity
+        run: |
+          {
+            echo "KABAR_COMMIT=${GITHUB_SHA::7}"
+            echo "KABAR_BUILTIN_CONTENT=$(sha256sum dist/packs/kabar-content.bundle | cut -d' ' -f1)"
+            echo "ANDROID_HOME=$ANDROID_SDK_ROOT"
+            echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME"
+          } >> "$GITHUB_ENV"
+          ls -d "$ANDROID_SDK_ROOT"/build-tools/* | sort -V | tail -1 >> "$GITHUB_PATH"
+      - name: Firebase settings (Kak Nur's pushed reminders)
+        env:
+          KABAR_GOOGLE_SERVICES_JSON: ${{ secrets.KABAR_GOOGLE_SERVICES_JSON }}
+        run: python3 scripts/android-firebase.py
+      - name: Build APK
+        working-directory: crates/app
+        env:
+          KABAR_GOOGLE_CLIENT_SECRET: ${{ secrets.KABAR_GOOGLE_CLIENT_SECRET }}
+        run: |
+          dx bundle --platform android --release --package-types apk \
+            --target aarch64-linux-android --no-default-features --features mobile \
+            --out-dir ../../dist/android/raw
+      - name: Rebuild as a release APK (not debuggable, R8, versionCode)
+        run: |
+          APK="$(scripts/android-release-apk.sh)"
+          scripts/android-check-apk.sh "$APK"
+          mkdir -p dist/android/release && cp "$APK" dist/android/release/kabar-unsigned.apk
+      - name: Sign with the release key
+        env:
+          KEYSTORE_B64: ${{ secrets.KABAR_ANDROID_KEYSTORE }}
+          PASS: ${{ secrets.KABAR_ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          ks="$RUNNER_TEMP/kabar-release.jks"
+          printf %s "$KEYSTORE_B64" | base64 -d > "$ks"
+          zipalign -f -p 4 dist/android/release/kabar-unsigned.apk "$RUNNER_TEMP/aligned.apk"
+          apksigner sign --ks "$ks" --ks-key-alias kabar --ks-pass env:PASS --key-pass env:PASS \
+            --out dist/android/kabar.apk "$RUNNER_TEMP/aligned.apk"
+          rm -f "$ks"
+          apksigner verify --print-certs dist/android/kabar.apk
+          unzip -l dist/android/kabar.apk | grep -q 'lib/arm64-v8a/' \
+            || { echo "APK has no arm64-v8a library"; exit 1; }
+          ls -lh dist/android/kabar.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kabar-release-apk
+          path: dist/android/kabar.apk
+          retention-days: 30
+
+  mac:
+    name: Release Kabar.app
+    needs: prepare
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: llvm-tools
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: macos
+          save-if: false
+      - name: Install dx 0.7.10
+        run: |
+          if ! dx --version 2>/dev/null | grep -q '0.7.10'; then
+            cargo install dioxus-cli --version 0.7.10 --locked
+          fi
+      - uses: actions/download-artifact@v4
+        with:
+          name: kabar-release-pack
+          path: dist/packs
+      - name: Build Kabar.app
+        env:
+          KABAR_GOOGLE_CLIENT_SECRET: ${{ secrets.KABAR_GOOGLE_CLIENT_SECRET }}
+        run: |
+          export KABAR_COMMIT="${GITHUB_SHA::7}"
+          export KABAR_BUILTIN_CONTENT="$(shasum -a 256 dist/packs/kabar-content.bundle | cut -d' ' -f1)"
+          cd crates/app
+          if ! dx bundle --platform macos --release --package-types macos --out-dir ../../dist/mac/raw > ../../dx-bundle.log 2>&1; then
+            grep -iE 'error|failed|panick|not found|no such' ../../dx-bundle.log | grep -v ' INFO Compiled' | tail -n 9 | sed 's/^/::error::/'
+            exit 1
+          fi
+          cd ../..
+          app="$(find dist/mac/raw -maxdepth 4 -name '*.app' | head -1)"
+          test -n "$app"
+          rm -rf dist/mac/Kabar.app && cp -R "$app" dist/mac/Kabar.app
+      - name: Sign as "Kabar Code Signing" (the identity installed apps trust)
+        env:
+          P12_B64: ${{ secrets.KABAR_MAC_CERT_P12 }}
+          P12_PASS: ${{ secrets.KABAR_MAC_CERT_PASSWORD }}
+        run: |
+          kc="$RUNNER_TEMP/kabar.keychain-db"
+          kcpass="$(openssl rand -hex 16)"
+          printf %s "$P12_B64" | base64 -d > "$RUNNER_TEMP/kabar.p12"
+          security create-keychain -p "$kcpass" "$kc"
+          security set-keychain-settings -lut 3600 "$kc"
+          security unlock-keychain -p "$kcpass" "$kc"
+          security import "$RUNNER_TEMP/kabar.p12" -k "$kc" -P "$P12_PASS" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$kcpass" "$kc" >/dev/null
+          security list-keychains -d user -s "$kc" $(security list-keychains -d user | tr -d '"')
+          rm -f "$RUNNER_TEMP/kabar.p12"
+          codesign --force --deep --keychain "$kc" --sign "Kabar Code Signing" dist/mac/Kabar.app
+          codesign --verify --deep --strict dist/mac/Kabar.app
+          codesign -dvv dist/mac/Kabar.app 2>&1 | grep -E 'Authority|Identifier'
+          ditto -c -k --keepParent dist/mac/Kabar.app dist/mac/Kabar.app.zip
+          ls -lh dist/mac/Kabar.app.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kabar-release-mac
+          path: dist/mac/Kabar.app.zip
+          retention-days: 30
+
+  publish:
+    name: Publish the release and its update feed
+    needs: [prepare, android, mac]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+          # What's new reads the changes/ files merged since the feed's build.
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: release-tools
+          save-if: false
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist/in
+      - name: Signed feed per channel
+        env:
+          V: ${{ needs.prepare.outputs.version }}
+          CHANNELS: ${{ needs.prepare.outputs.channels }}
+          NOTES_EN: ${{ inputs.notes_en }}
+          NOTES_AR_EG: ${{ inputs.notes_ar_eg }}
+          KABAR_UPDATE_SECRET: ${{ secrets.KABAR_UPDATE_SECRET }}
+        run: |
+          apk=dist/in/kabar-release-apk/kabar.apk
+          zip=dist/in/kabar-release-mac/Kabar.app.zip
+          pack=dist/in/kabar-release-pack/kabar-content.bundle
+          for channel in $CHANNELS; do
+            out="dist/update/$channel"
+            curl -fsSL --retry 3 -o /tmp/previous.json \
+              "https://github.com/$GITHUB_REPOSITORY/releases/download/update-$channel/update.json" \
+              || rm -f /tmp/previous.json
+            cargo run -q -p kabar-tools -- update manifest --channel "$channel" --version "$V" \
+              --build "$KABAR_BUILD" --commit "${GITHUB_SHA::7}" \
+              --notes-en "$NOTES_EN" --notes-ar-eg "$NOTES_AR_EG" --previous /tmp/previous.json --changes \
+              --asset "android-arm64=$apk" --asset "macos-arm64=$zip" --content "$pack" --out "$out"
+            cargo run -q -p kabar-tools -- update sign "$out"
+            # The app's own checks, against the key built into release builds.
+            cargo run -q -p kabar-tools -- update verify "$out"
+            ls -l "$out"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kabar-release-feeds
+          path: dist/update/
+          retention-days: 30
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          V: ${{ needs.prepare.outputs.version }}
+          CHANNELS: ${{ needs.prepare.outputs.channels }}
+        run: |
+          # The release people install from by hand.
+          tag="v$V"
+          mkdir -p dist/human
+          cp dist/in/kabar-release-apk/kabar.apk "dist/human/kabar-$V.apk"
+          cp dist/in/kabar-release-mac/Kabar.app.zip "dist/human/Kabar-$V-mac.zip"
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --prerelease --target "$GITHUB_SHA" --title "Kabar $V" --notes "$(cat <<NOTES
+          Kabar $V, built by the Release workflow (run ${{ github.run_number }}, ${GITHUB_SHA::7}).
+
+          - Android (S24 Ultra, Tab S11): install kabar-$V.apk. It is signed with the release key, so uninstall a *preview* build first (export your data from Settings first, or let sync bring it back). From now on it updates itself from the $CHANNELS feed.
+          - Mac: unzip Kabar-$V-mac.zip, move Kabar.app to Applications, then once: \`xattr -dr com.apple.quarantine /Applications/Kabar.app\` (it is self-signed). Later versions install themselves.
+          NOTES
+          )"
+          fi
+          gh release upload "$tag" dist/human/* --clobber
+          # The feeds: files first, the signed manifest last.
+          for channel in $CHANNELS; do
+            feed="update-$channel"
+            out="dist/update/$channel"
+            if ! gh release view "$feed" >/dev/null 2>&1; then
+              gh release create "$feed" --prerelease --latest=false --target "$GITHUB_SHA" --title "Kabar updates ($channel)" \
+                --notes "Kabar's $channel update feed. The app reads update.json, checks its signature and each file's SHA-256. Published by the Release workflow; never edit by hand."
+            fi
+            files=()
+            for f in "$out"/*; do
+              case "$(basename "$f")" in update.json|update.json.sig) ;; *) files+=("$f") ;; esac
+            done
+            gh release upload "$feed" "${files[@]}" --clobber
+            gh release upload "$feed" "$out/update.json.sig" "$out/update.json" --clobber
+            echo "published $V on $channel: https://github.com/$GH_REPO/releases/tag/$feed"
+          done

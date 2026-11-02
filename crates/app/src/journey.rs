@@ -455,7 +455,7 @@ fn now_card(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
                         aria_label: "{unit.stop}",
                         span { class: "fill", style: "inline-size: {pct}%" }
                     }
-                    span { class: "count", "{text::lessons_of(lang, &done_s, &total_s, total)}" }
+                    span { class: "count", "{text::lessons_of(lang, &done_s, &total_s)}" }
                 }
             }
             if let Some((label, name, id)) = milestone {

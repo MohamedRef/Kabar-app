@@ -17,10 +17,9 @@ pub fn LearningSection() -> Element {
     let settings = ui.settings.read().clone();
     let lang = ui.lang();
     let tuning = match &settings.fsrs {
-        Some(p) => ui.t(Msg::RetentionTuned).replace("{n}", &ui.num(u64::from(p.reviews))),
+        Some(p) => ui.fill(Msg::RetentionTuned, &[("n", &ui.num(u64::from(p.reviews)))]),
         None => ui
-            .t(Msg::RetentionLearning)
-            .replace("{n}", &ui.num(kabar_core::srs::MIN_REVIEWS_TO_OPTIMIZE as u64)),
+            .fill(Msg::RetentionLearning, &[("n", &ui.num(kabar_core::srs::MIN_REVIEWS_TO_OPTIMIZE as u64))]),
     };
 
     rsx! {

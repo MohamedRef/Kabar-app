@@ -193,7 +193,9 @@ fn SignedIn(status: CloudStatus) -> Element {
                 span { class: "muted", "{ui.t(Msg::SyncLast)}: {last}" }
             }
         }
-        button { onclick: move |_| cloud.send(Command::SignOut), "{ui.t(Msg::CloudSignOut)}" }
+        div { class: "sync-actions",
+            button { onclick: move |_| cloud.send(Command::SignOut), "{ui.t(Msg::CloudSignOut)}" }
+        }
     }
 }
 
@@ -207,7 +209,7 @@ fn DevicesCard() -> Element {
 
     rsx! {
         crate::ui::DivCard {
-            div { class: "row spread",
+            div { class: "row devices-head",
                 h2 { "{ui.t(Msg::DevicesTitle)}" }
                 button { onclick: move |_| cloud.send(Command::LoadDevices), "{ui.t(Msg::DevicesRefresh)}" }
             }
@@ -225,7 +227,7 @@ fn DevicesCard() -> Element {
                                     div { class: "row",
                                         bdi { class: "device-name", "{d.name}" }
                                         if d.current {
-                                            span { class: "pill", "{ui.t(Msg::DeviceThis)}" }
+                                            span { class: "pill info", "{ui.t(Msg::DeviceThis)}" }
                                         }
                                     }
                                     div { class: "muted",
@@ -244,6 +246,7 @@ fn DevicesCard() -> Element {
                                 }
                                 if !d.current && !d.revoked {
                                     button {
+                                        class: "device-out",
                                         onclick: {
                                             let id = d.device_id.clone();
                                             move |_| cloud.send(Command::RevokeDevice(id.clone()))

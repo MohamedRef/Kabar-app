@@ -101,8 +101,10 @@ pub fn iso(s: &str) -> String {
     format!("\u{2068}{s}\u{2069}")
 }
 
-pub fn fill(template: &str, args: &[(&str, &str)]) -> String {
-    args.iter().fold(template.to_string(), |acc, (k, v)| acc.replace(&format!("{{{k}}}"), v))
+/// A stats line with its `{placeholders}` filled, counts agreeing with their
+/// nouns (`crate::i18n::fill`).
+pub fn stf(lang: UiLanguage, s: S, args: &[(&str, &str)]) -> String {
+    crate::i18n::fill(lang, st(lang, s), args)
 }
 
 // ------------------------------------------------------------- data
@@ -247,8 +249,9 @@ pub fn TodayCards() -> Element {
             } else {
                 ui.t(labels::weekday(b.start.weekday())).to_string()
             };
-            let detail = fill(
-                st(lang, S::ActivityBar),
+            let detail = stf(
+                lang,
+                S::ActivityBar,
                 &[
                     ("label", &day),
                     ("minutes", &labels::minutes(&ui, b.minutes)),
@@ -260,7 +263,7 @@ pub fn TodayCards() -> Element {
         })
         .collect();
     let daily_summary = bars.iter().map(|b| b.1.as_str()).collect::<Vec<_>>().join(" · ");
-    let week_label = fill(st(lang, S::PeriodWeek), &[("n", &ui.num(Period::Week.days() as u64))]);
+    let week_label = stf(lang, S::PeriodWeek, &[("n", &ui.num(Period::Week.days() as u64))]);
     let empty_week = week.minutes == 0 && week.reviews == 0;
     let activity_summary = format!(
         "{}: {} · {}: {}",
@@ -499,7 +502,7 @@ fn period_name(ui: &Ui, p: Period) -> String {
         Period::Week => (S::PeriodWeek, p.days() as u32),
         Period::Month => (S::PeriodMonth, (p.days() / 7) as u32),
     };
-    fill(st(ui.lang(), s), &[("n", &ui.num(n))])
+    stf(ui.lang(), s, &[("n", &ui.num(n))])
 }
 
 /// Week / four weeks. Changes every number above the detail cards, and is
@@ -580,10 +583,7 @@ fn RingCard(tally: Tally) -> Element {
     let (line, action) = match share {
         None => (st(lang, S::RingEmpty).to_string(), S::RingStart),
         Some(s) => (
-            fill(
-                st(lang, S::RingExplain),
-                &[("total", &ui.num(tally.total)), ("passed", &ui.num(tally.passed))],
-            ),
+            stf(lang, S::RingExplain, &[("total", &ui.num(tally.total)), ("passed", &ui.num(tally.passed))]),
             if s >= 0.85 { S::RingStart } else { S::RingReview },
         ),
     };
@@ -624,7 +624,7 @@ fn ActivityCard(overview: Overview, today: LocalDate, total_minutes: u32) -> Ele
                 ui.t(labels::weekday(b.start.weekday())).to_string()
             }
         } else {
-            fill(st(lang, S::WeekOf), &[("date", &labels::date(&ui, b.start, today))])
+            stf(lang, S::WeekOf, &[("date", &labels::date(&ui, b.start, today))])
         }
     };
     let title = st(lang, if o.period == Period::Week { S::ActivityWeek } else { S::ActivityMonth });
@@ -632,9 +632,9 @@ fn ActivityCard(overview: Overview, today: LocalDate, total_minutes: u32) -> Ele
     let compare = if o.minutes == 0 {
         st(lang, S::ActivityEmpty).to_string()
     } else if o.minutes > o.previous_minutes {
-        fill(st(lang, S::ActivityUp), &[("n", &duration(&ui, diff))])
+        stf(lang, S::ActivityUp, &[("n", &duration(&ui, diff))])
     } else if o.minutes < o.previous_minutes {
-        fill(st(lang, S::ActivityDown), &[("n", &duration(&ui, diff))])
+        stf(lang, S::ActivityDown, &[("n", &duration(&ui, diff))])
     } else {
         st(lang, S::ActivitySame).to_string()
     };
@@ -643,8 +643,9 @@ fn ActivityCard(overview: Overview, today: LocalDate, total_minutes: u32) -> Ele
         .iter()
         .map(|b| {
             let name = label(b);
-            let tip = fill(
-                st(lang, S::ActivityBar),
+            let tip = stf(
+                lang,
+                S::ActivityBar,
                 &[
                     ("label", &name),
                     ("minutes", &labels::minutes(&ui, b.minutes)),
@@ -708,7 +709,7 @@ fn WeakCard(weak: Vec<WeakSpot>, measured: bool) -> Element {
                         if measured {
                             "{st(lang, S::WeakNone)}"
                         } else {
-                            {fill(st(lang, S::WeakNoData), &[("n", &ui.num(MIN_SKILL_ATTEMPTS))])}
+                            {stf(lang, S::WeakNoData, &[("n", &ui.num(MIN_SKILL_ATTEMPTS))])}
                         }
                     }
                     button { class: "tonal", "{st(lang, S::WeakJourney)}" }
@@ -718,8 +719,7 @@ fn WeakCard(weak: Vec<WeakSpot>, measured: bool) -> Element {
                     for w in weak {
                         {
                             let (to, action) = skill_action(w.skill);
-                            let line = fill(
-                                st(lang, S::WeakLine),
+                            let line = stf(lang, S::WeakLine,
                                 &[("correct", &ui.num(w.correct)), ("total", &ui.num(w.total))],
                             );
                             rsx! {
@@ -747,8 +747,9 @@ fn WeakCard(weak: Vec<WeakSpot>, measured: bool) -> Element {
 fn HeatCard(heat: core_stats::Heatmap, today: LocalDate) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
-    let summary = fill(
-        st(lang, S::HeatSummary),
+    let summary = stf(
+        lang,
+        S::HeatSummary,
         &[
             ("weeks", &ui.num(HEATMAP_WEEKS)),
             ("days", &ui.num(heat.active_days)),
@@ -762,10 +763,11 @@ fn HeatCard(heat: core_stats::Heatmap, today: LocalDate) -> Element {
         |d| {
             let date = labels::date(&ui, d.date, today);
             if d.level == 0 {
-                fill(st(lang, S::HeatCellEmpty), &[("date", &date)])
+                stf(lang, S::HeatCellEmpty, &[("date", &date)])
             } else {
-                fill(
-                    st(lang, S::HeatCell),
+                stf(
+                    lang,
+                    S::HeatCell,
                     &[
                         ("date", &date),
                         ("minutes", &labels::minutes(&ui, d.minutes)),
@@ -822,8 +824,7 @@ fn WordsCard(words: Vec<WordCounts>) -> Element {
             for w in words.iter().copied() {
                 {
                     let total = w.total().max(1) as f32;
-                    let summary = fill(
-                        st(lang, S::WordsSummary),
+                    let summary = stf(lang, S::WordsSummary,
                         &[
                             ("lang", language_name(lang, w.language)),
                             ("known", &ui.num(w.known)),
@@ -870,8 +871,9 @@ fn RetentionCard(week: Retention, month: Retention) -> Element {
         (st(lang, S::Young), cell(week.young), cell(month.young)),
         (st(lang, S::AllReviews), cell(week.all()), cell(month.all())),
     ];
-    let rule = fill(
-        st(lang, S::RetentionRule),
+    let rule = stf(
+        lang,
+        S::RetentionRule,
         &[("days", &ui.num(MATURE_INTERVAL_DAYS as u32)), ("pct", &pct(&ui, 0.9))],
     );
     rsx! {
@@ -881,8 +883,8 @@ fn RetentionCard(week: Retention, month: Retention) -> Element {
                 thead {
                     tr {
                         th { scope: "col" }
-                        th { scope: "col", {fill(st(lang, S::Week), &[("n", &ui.num(7u32))])} }
-                        th { scope: "col", {fill(st(lang, S::Month), &[("n", &ui.num(30u32))])} }
+                        th { scope: "col", {stf(lang, S::Week, &[("n", &ui.num(7u32))])} }
+                        th { scope: "col", {stf(lang, S::Month, &[("n", &ui.num(30u32))])} }
                     }
                 }
                 tbody {
@@ -914,10 +916,11 @@ fn ForecastCard(days: Vec<u32>, today: LocalDate) -> Element {
     };
     let n_days = ui.num(days.len() as u64);
     let summary = if s.total == 0 {
-        fill(st(lang, S::ForecastEmpty), &[("n", &n_days)])
+        stf(lang, S::ForecastEmpty, &[("n", &n_days)])
     } else {
-        fill(
-            st(lang, S::ForecastSummary),
+        stf(
+            lang,
+            S::ForecastSummary,
             &[
                 ("n", &n_days),
                 ("total", &ui.num(s.total)),
@@ -928,7 +931,7 @@ fn ForecastCard(days: Vec<u32>, today: LocalDate) -> Element {
         )
     };
     let svg = charts::forecast(&days, rtl(&ui), st(lang, S::ForecastTitle), |i, n| {
-        fill(st(lang, S::ForecastBar), &[("day", &day_name(i)), ("n", &ui.num(n))])
+        stf(lang, S::ForecastBar, &[("day", &day_name(i)), ("n", &ui.num(n))])
     });
     rsx! {
         crate::ui::Card { class: "st-card st-wide",
@@ -936,7 +939,7 @@ fn ForecastCard(days: Vec<u32>, today: LocalDate) -> Element {
             div { class: "st-chart st-forecast", dangerous_inner_html: svg }
             div { class: "st-axis", aria_hidden: "true",
                 span { "{st(lang, S::Today)}" }
-                span { {fill(st(lang, S::In30Days), &[("n", &n_days)])} }
+                span { {stf(lang, S::In30Days, &[("n", &n_days)])} }
             }
             p { class: "st-summary", "{summary}" }
         }
@@ -956,14 +959,14 @@ fn CheckCard(checks: Vec<LevelCheckResult>, due: bool, today: LocalDate) -> Elem
             match &last {
                 None => rsx! { p { class: "muted", "{st(lang, S::CheckNever)}" } },
                 Some(c) => rsx! {
-                    p { class: "muted", {fill(st(lang, S::CheckLast), &[("date", &labels::date(&ui, c.date, today))])} }
+                    p { class: "muted", {stf(lang, S::CheckLast, &[("date", &labels::date(&ui, c.date, today))])} }
                     check::RadarView { now: c.radar.clone(), before }
                     if let Some(eta) = &c.eta {
                         check::EtaLine { level: eta.level.clone(), date: eta.date, today }
                     }
                     if !due {
                         p { class: "muted small",
-                            {fill(st(lang, S::CheckNotDue), &[("date", &labels::date(&ui, c.date.add_days(lc::CHECK_EVERY_DAYS), today))])}
+                            {stf(lang, S::CheckNotDue, &[("date", &labels::date(&ui, c.date.add_days(lc::CHECK_EVERY_DAYS), today))])}
                         }
                     }
                 },

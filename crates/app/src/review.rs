@@ -248,7 +248,7 @@ fn SeedInvite() -> Element {
     rsx! {
         crate::ui::DivCard { class: "review-seed",
             h2 { "{ui.t(Msg::RevSeedTitle)}" }
-            p { {ui.t(Msg::RevSeedBody).replace("{n}", &count)} }
+            p { {ui.fill(Msg::RevSeedBody, &[("n", &count)])} }
             ul { class: "seed-words", lang: "id",
                 for w in seed_words() {
                     li { key: "{w}",
@@ -402,7 +402,7 @@ fn ReviewHome() -> Element {
                             },
                             onclick: move |_| if count > 0 { engine.start(mode) },
                             h3 { class: "rev-h3", Isolated { text: ui.t(title).to_string() } }
-                            p { class: "muted", Isolated { text: ui.t(hint).replace("{n}", &burst_secs) } }
+                            p { class: "muted", Isolated { text: ui.fill(hint, &[("n", &burst_secs)]) } }
                             if mode == ReviewMode::CardWall && width == WidthClass::Compact {
                                 p { class: "muted small", "{ui.t(Msg::RevWallPhone)}" }
                             }

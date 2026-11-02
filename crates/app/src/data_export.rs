@@ -134,7 +134,7 @@ pub fn ExportCard() -> Element {
                 None => rsx! {},
                 Some(Outcome::Saved { path, rows }) => rsx! {
                     div { class: "export-result", role: "status", aria_live: "polite",
-                        p { {ui.t(Msg::ExportSaved).replace("{rows}", &ui.num(rows))} }
+                        p { {ui.fill(Msg::ExportSaved, &[("rows", &ui.num(rows))])} }
                         code { class: "export-path", dir: "ltr", bdi { "{path}" } }
                         if cfg!(target_os = "android") {
                             p { class: "muted", "{ui.t(Msg::ExportAndroidHint)}" }
@@ -146,7 +146,7 @@ pub fn ExportCard() -> Element {
                 },
                 Some(Outcome::Placed { name, rows }) => rsx! {
                     div { class: "export-result", role: "status", aria_live: "polite",
-                        p { {placed_text(ui.lang(), false).replace("{rows}", &ui.num(rows))} }
+                        p { {crate::i18n::fill(ui.lang(), placed_text(ui.lang(), false), &[("rows", &ui.num(rows))])} }
                         if let Some(name) = name {
                             code { class: "export-path", dir: "ltr", bdi { "{name}" } }
                         }
@@ -170,9 +170,9 @@ fn placed_text(lang: kabar_core::locale::UiLanguage, waiting: bool) -> &'static 
         (true, ArEg) => "اختار تحفظه فين (التنزيلات أو Drive مثلًا)…",
         (true, Ar) => "اختر مكان الحفظ (التنزيلات أو Drive مثلًا)…",
         (true, En) => "Choose where to save it (Downloads or Drive, say)…",
-        (false, ArEg) => "اتحفظ {rows} صف في المكان اللي اخترته، وتقدر تفتحه من تطبيق الملفات:",
-        (false, Ar) => "حُفظ {rows} صفًّا في المكان الذي اخترته، ويمكنك فتحه من تطبيق الملفات:",
-        (false, En) => "Saved {rows} rows where you chose; open it from the Files app:",
+        (false, ArEg) => "اتحفظ {rows|صف|صفين|صفوف} في المكان اللي اخترته، وتقدر تفتحه من تطبيق الملفات:",
+        (false, Ar) => "حُفظ {rows|صفّ|صفّان|صفوف|صفًّا} في المكان الذي اخترته، ويمكنك فتحه من تطبيق الملفات:",
+        (false, En) => "Saved {rows|row|rows} where you chose; open it from the Files app:",
     }
 }
 
