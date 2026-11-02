@@ -33,7 +33,11 @@
 .today-hero.welcome-back .nur-bubble { background: color-mix(in srgb, var(--on-primary) 12%, transparent); }
 .today-hero.welcome-back .nur-name { color: inherit; }
 .today-hero.welcome-back .plan-item { background: var(--surface); color: var(--text); border-color: transparent; }
-.today-hero.welcome-back details summary { color: inherit; }
+/* The "bigger plan" link sits on the hero's own colour: inherit it (the base
+   .welcome-back-more rule's --muted is for the plain surface and nearly
+   vanishes on the light hero). */
+.today-hero.welcome-back details.welcome-back-more { color: inherit; }
+.today-hero.welcome-back details summary { color: inherit; opacity: 0.85; }
 
 /* The rest of the plan: one grouped card of rows, each with its tick. */
 .today-rest .section-head { margin-block: 0 var(--sp-2); }
@@ -64,6 +68,27 @@ button.nur-card .nur-bubble { background: transparent; padding: 0; }
 .today-main > button.quiet { justify-self: start; }
 /* Pelita and Koin: secondary, at the end of the column. */
 .today-main .rewards-bar { margin: 0; justify-content: center; }
+
+/* The two columns stack on a phone: keep the same rhythm between the main
+   column and the side cards (Pelita/Koin used to touch Kabar Pagi), and
+   between the side cards themselves. */
+.today-grid { row-gap: var(--sp-4); }
+.today-side { display: grid; gap: var(--sp-4); min-inline-size: 0; align-content: start; }
+.today-side > * { margin-block: 0; }
+.today-side:empty { display: none; }
+
+/* Kabar Pagi: what it is beside the button, not a lone button in a box. */
+.pagi-card { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3); }
+.pagi-card-icon { display: inline-flex; align-items: center; justify-content: center; inline-size: 2.75rem; block-size: 2.75rem; border-radius: 50%; background: var(--soft); color: var(--primary); flex: none; }
+.pagi-card-icon svg { inline-size: 1.4rem; block-size: 1.4rem; }
+.pagi-card-copy { flex: 1 1 12rem; min-inline-size: 0; }
+.pagi-card-copy h2 { margin: 0; }
+.pagi-card-copy p { margin: 0.2rem 0 0; }
+.pagi-card > button { flex: none; }
+
+/* Kak Nur: a short Latin phrase ("Pelan-pelan saja") stays on one line
+   instead of splitting across a right-to-left wrap. */
+.nur-bubble .nur-latin { white-space: nowrap; }
 
 /* ---------- Kak Nur's page: the next-step card ---------- */
 .coach-next { display: grid; gap: var(--sp-3); }

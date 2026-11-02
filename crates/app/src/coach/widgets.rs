@@ -22,9 +22,82 @@ pub fn Nur(text: String, #[props(default)] mood: Mood) -> Element {
             }
             div { class: "nur-bubble",
                 span { class: "nur-name latin", bdi { "Kak Nur" } }
-                p { "{text}" }
+                p {
+                    for (i, (latin, part)) in isolates(&text).into_iter().enumerate() {
+                        if latin {
+                            bdi { key: "{i}", class: "nur-latin", "{part}" }
+                        } else {
+                            span { key: "{i}", "{part}" }
+                        }
+                    }
+                }
             }
         }
+    }
+}
+
+/// Longest isolated snippet kept on one line; anything longer may wrap.
+const NOWRAP_MAX: usize = 24;
+
+/// Splits a Kak Nur line at its FSI … PDI isolates (`\u{2068}` … `\u{2069}`,
+/// which wrap every Latin snippet in an Arabic line) into plain runs and
+/// short isolated runs. The isolated runs become `<bdi>`, so the direction
+/// stays isolated and the snippet doesn't break across a right-to-left wrap.
+/// A long or unclosed isolate stays plain text, marks and all.
+fn isolates(text: &str) -> Vec<(bool, String)> {
+    let mut out: Vec<(bool, String)> = Vec::new();
+    let mut push = |latin: bool, s: &str| {
+        if s.is_empty() {
+            return;
+        }
+        match out.last_mut() {
+            Some((false, prev)) if !latin => prev.push_str(s),
+            _ => out.push((latin, s.to_string())),
+        }
+    };
+    let mut rest = text;
+    while let Some(start) = rest.find('\u{2068}') {
+        let after = &rest[start + '\u{2068}'.len_utf8()..];
+        let Some(end) = after.find('\u{2069}') else { break };
+        let inner = &after[..end];
+        push(false, &rest[..start]);
+        if inner.chars().count() <= NOWRAP_MAX && !inner.contains('\u{2068}') {
+            push(true, inner);
+        } else {
+            push(false, &rest[start..start + '\u{2068}'.len_utf8() + end + '\u{2069}'.len_utf8()]);
+        }
+        rest = &after[end + '\u{2069}'.len_utf8()..];
+    }
+    push(false, rest);
+    out
+}
+
+#[cfg(test)]
+mod nur_tests {
+    use super::isolates;
+
+    #[test]
+    fn isolates_split_latin_snippets_out() {
+        let s = "أهلاً يا \u{2068}Mohamed\u{2069}. \u{2068}Pelan-pelan saja\u{2069}، يعني على مهلك.";
+        assert_eq!(
+            isolates(s),
+            vec![
+                (false, "أهلاً يا ".to_string()),
+                (true, "Mohamed".to_string()),
+                (false, ". ".to_string()),
+                (true, "Pelan-pelan saja".to_string()),
+                (false, "، يعني على مهلك.".to_string()),
+            ]
+        );
+    }
+
+    #[test]
+    fn plain_long_and_unclosed_text_stays_plain() {
+        assert_eq!(isolates("Hello there"), vec![(false, "Hello there".to_string())]);
+        let long = format!("x \u{2068}{}\u{2069} y", "a".repeat(40));
+        assert_eq!(isolates(&long), vec![(false, long.clone())]);
+        let open = "x \u{2068}abc";
+        assert_eq!(isolates(open), vec![(false, open.to_string())]);
     }
 }
 

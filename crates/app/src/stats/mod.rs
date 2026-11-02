@@ -261,6 +261,7 @@ pub fn TodayCards() -> Element {
         .collect();
     let daily_summary = bars.iter().map(|b| b.1.as_str()).collect::<Vec<_>>().join(" · ");
     let week_label = fill(st(lang, S::PeriodWeek), &[("n", &ui.num(Period::Week.days() as u64))]);
+    let empty_week = week.minutes == 0 && week.reviews == 0;
     let activity_summary = format!(
         "{}: {} · {}: {}",
         st(lang, S::TileDays),
@@ -304,26 +305,32 @@ pub fn TodayCards() -> Element {
         crate::ui::Card {
             element: crate::ui::CardElement::Div,
             class: "card-action st-today-week",
-            style: "margin-block-start: 1rem",
             onclick: move |_| open(ui, Screen::Stats),
             div { class: "st-today-week-head",
                 h3 { "{st(lang, S::ActivityWeek)}" }
                 span { class: "muted small", "{week_label}" }
             }
-            div { class: "st-bars st-today-bars", role: "img", aria_label: "{daily_summary}",
-                for (i, (name, detail, height, is_today)) in bars.into_iter().enumerate() {
-                    div {
-                        key: "{i}",
-                        class: if is_today { "st-bar-col now" } else { "st-bar-col" },
-                        title: "{detail}",
-                        div { class: "st-bar-track",
-                            span { class: "st-bar", style: "block-size: {height}%" }
+            // A week with no study yet: a warm line instead of seven empty bars.
+            if empty_week {
+                p { class: "st-today-week-empty", "{st(lang, S::ActivityWeekEmpty)}" }
+            } else {
+                div { class: "st-bars st-today-bars", role: "img", aria_label: "{daily_summary}",
+                    for (i, (name, detail, height, is_today)) in bars.into_iter().enumerate() {
+                        div {
+                            key: "{i}",
+                            class: if is_today { "st-bar-col now" } else { "st-bar-col" },
+                            title: "{detail}",
+                            div { class: "st-bar-track",
+                                span { class: "st-bar", style: "block-size: {height}%" }
+                            }
+                            span { class: "st-bar-label", "{name}" }
                         }
-                        span { class: "st-bar-label", "{name}" }
                     }
                 }
             }
-            p { class: "st-today-week-summary", "{activity_summary}" }
+            if !empty_week {
+                p { class: "st-today-week-summary", "{activity_summary}" }
+            }
             button { class: "tonal", "{st(lang, S::OpenStats)}" }
         }
     }

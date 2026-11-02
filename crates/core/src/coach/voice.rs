@@ -357,6 +357,8 @@ fn render(lang: UiLanguage, segs: &[Seg<'_>], args: &[(&str, &str)]) -> String {
 /// said by the noun alone ("دقيقة", "دقيقتين"), 3–10 take the plural, 11–99 the
 /// `many` form (defaults to `one`, e.g. "15 دقيقة"), and 0 or 100+ the `one`
 /// form. English forms are `one|other`. Without a value, the plural noun alone.
+/// The count and its noun are joined by a no-break space, so a wrap never
+/// leaves "5" at the end of one line and "دقايق" at the start of the next.
 fn plural(lang: UiLanguage, value: Option<&str>, forms: &[&str]) -> String {
     let form = |i: usize| forms.get(i).or(forms.last()).copied().unwrap_or_default();
     let Some(value) = value else {
@@ -368,16 +370,16 @@ fn plural(lang: UiLanguage, value: Option<&str>, forms: &[&str]) -> String {
     };
     let n = parse_count(value);
     match lang {
-        UiLanguage::En => format!("{value} {}", if n == Some(1) { form(0) } else { form(1) }),
+        UiLanguage::En => format!("{value}\u{a0}{}", if n == Some(1) { form(0) } else { form(1) }),
         UiLanguage::ArEg | UiLanguage::Ar => match n {
             Some(1) => form(0).to_string(),
             Some(2) => form(1).to_string(),
-            Some(n) if (3..=10).contains(&(n % 100)) => format!("{value} {}", form(2)),
+            Some(n) if (3..=10).contains(&(n % 100)) => format!("{value}\u{a0}{}", form(2)),
             Some(n) if (11..=99).contains(&(n % 100)) => {
-                format!("{value} {}", forms.get(3).unwrap_or(&form(0)))
+                format!("{value}\u{a0}{}", forms.get(3).unwrap_or(&form(0)))
             }
-            Some(_) => format!("{value} {}", form(0)),
-            None => format!("{value} {}", form(2)),
+            Some(_) => format!("{value}\u{a0}{}", form(0)),
+            None => format!("{value}\u{a0}{}", form(2)),
         },
     }
 }
@@ -815,24 +817,24 @@ mod tests {
         let p = |v: &str| plural(UiLanguage::ArEg, Some(v), &ar);
         assert_eq!(p("1"), "دقيقة");
         assert_eq!(p("2"), "دقيقتين");
-        assert_eq!(p("5"), "5 دقايق");
-        assert_eq!(p("١٠"), "١٠ دقايق");
-        assert_eq!(p("15"), "15 دقيقة");
-        assert_eq!(p("100"), "100 دقيقة");
-        assert_eq!(p("103"), "103 دقايق");
-        assert_eq!(p("lots"), "lots دقايق");
+        assert_eq!(p("5"), "5\u{a0}دقايق");
+        assert_eq!(p("١٠"), "١٠\u{a0}دقايق");
+        assert_eq!(p("15"), "15\u{a0}دقيقة");
+        assert_eq!(p("100"), "100\u{a0}دقيقة");
+        assert_eq!(p("103"), "103\u{a0}دقايق");
+        assert_eq!(p("lots"), "lots\u{a0}دقايق");
         assert_eq!(plural(UiLanguage::ArEg, None, &ar), "دقايق");
         let msa = ["يوم", "يومين", "أيام", "يومًا"];
-        assert_eq!(plural(UiLanguage::Ar, Some("15"), &msa), "15 يومًا");
-        assert_eq!(plural(UiLanguage::Ar, Some("200"), &msa), "200 يوم");
+        assert_eq!(plural(UiLanguage::Ar, Some("15"), &msa), "15\u{a0}يومًا");
+        assert_eq!(plural(UiLanguage::Ar, Some("200"), &msa), "200\u{a0}يوم");
         let en = ["day", "days"];
-        assert_eq!(plural(UiLanguage::En, Some("1"), &en), "1 day");
-        assert_eq!(plural(UiLanguage::En, Some("0"), &en), "0 days");
-        assert_eq!(plural(UiLanguage::En, Some("7"), &en), "7 days");
+        assert_eq!(plural(UiLanguage::En, Some("1"), &en), "1\u{a0}day");
+        assert_eq!(plural(UiLanguage::En, Some("0"), &en), "0\u{a0}days");
+        assert_eq!(plural(UiLanguage::En, Some("7"), &en), "7\u{a0}days");
         assert_eq!(plural(UiLanguage::En, None, &en), "days");
 
         let s = say(UiLanguage::En, Line::PelitaLit, 0, &[("streak", "1")]);
-        assert_eq!(s, "Your Pelita, your lamp, has been lit for 1 day. Hebat, well done.");
+        assert_eq!(s, "Your Pelita, your lamp, has been lit for 1\u{a0}day. Hebat, well done.");
         let s = say(UiLanguage::ArEg, Line::PelitaLit, 0, &[("streak", "2")]);
         assert_eq!(s, "قنديلك (\u{2068}Pelita\u{2069}) منوّر بقاله يومين. \u{2068}Hebat\u{2069}، يعني برافو.");
     }
