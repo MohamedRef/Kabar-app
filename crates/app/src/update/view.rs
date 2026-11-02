@@ -378,21 +378,20 @@ pub fn UpdatesCard() -> Element {
                         "{ut(lang, U::Channel)}"
                         crate::settings::Scope { device_only: true }
                     }
-                    if s.preview {
-                        span { class: "pill", "{ut(lang, U::Preview)}" }
-                    } else {
-                        div { class: "segmented", role: "radiogroup", aria_labelledby: "update-channel-label",
-                            for c in Channel::RELEASE {
-                                button {
-                                    key: "{c.as_str()}",
-                                    role: "radio",
-                                    aria_checked: if s.channel == c { "true" } else { "false" },
-                                    disabled: busy,
-                                    onclick: move |_| work(move |u| u.set_channel(c)),
-                                    "{ut(lang, channel_label(c))}"
-                                }
+                    div { class: "segmented", role: "radiogroup", aria_labelledby: "update-channel-label",
+                        for c in Channel::ALL {
+                            button {
+                                key: "{c.as_str()}",
+                                role: "radio",
+                                aria_checked: if s.channel == c { "true" } else { "false" },
+                                disabled: busy,
+                                onclick: move |_| work(move |u| u.set_channel(c)),
+                                "{ut(lang, channel_label(c))}"
                             }
                         }
+                    }
+                    if s.channel == Channel::Preview {
+                        p { class: "muted small", "{ut(lang, U::PreviewChannelNote)}" }
                     }
                 }
             }

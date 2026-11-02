@@ -524,7 +524,7 @@ impl Updater {
 
     /// Switches release channel and looks again.
     pub fn set_channel(&'static self, channel: Channel) {
-        if self.status().preview || channel == Channel::Preview {
+        if self.status().channel == channel {
             return;
         }
         self.update_prefs(|p| p.channel = Some(channel));

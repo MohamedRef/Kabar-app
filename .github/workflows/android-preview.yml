@@ -1,18 +1,21 @@
 name: Android preview APK
 
 # Builds an installable arm64 APK for testing on a phone without the Mac.
-# Signed with a throwaway *preview* key generated in CI (never committed, never
-# the release key in ~/.kabar). The key is kept in the Actions cache so
-# updates install over each other; if the cache expires (7 days unused) a new
-# key is made and the next preview needs an uninstall first.
+# Since the first alpha (2026-11-02) pushes to main are signed with the
+# *release* keys (repo secrets from scripts/release-secrets.sh): the APK with
+# the release keystore and the feed with the release update key. So a
+# release build can follow the preview channel when the learner picks it in
+# Settings › Updates, and a preview build can go back to alpha, without
+# reinstalling. Builds before this used a CI-cached preview key and need one
+# reinstall.
 #
-# Pull-request runs never touch that key: they sign with a one-off key (enough
-# to prove the APK signs) and get a read-only token. Only pushes to main and
-# manual runs restore the key, and only the separate `publish` job can write.
+# Pull-request runs never see the secrets: they sign with one-off keys
+# (enough to prove the APK signs) and get a read-only token. Only the
+# separate `publish` job can write.
 #
 # Self-updates (docs/RELEASE.md §5): the APK is built for the `preview`
-# update channel with the public half of a second CI key (Ed25519, also kept
-# in the Actions cache), and the release carries a signed update.json, so an
+# update channel (its default; Settings can switch it to alpha), and the
+# release carries a signed update.json, so an
 # installed preview updates itself after every merge to main. The feed also
 # carries the content bundle; a merge that changes only content or
 # stylesheets publishes no APK, just a new bundle (see "Content-only update?").
@@ -61,22 +64,6 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           key: android-preview
-      # The update key comes first: its public half is built into the app.
-      - name: Restore preview update key
-        if: env.KEEP_KEY == 'true'
-        id: update-key
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.kabar-preview-update
-          key: android-preview-update-key-v1
-      - name: Restore preview signing key
-        if: env.KEEP_KEY == 'true'
-        id: key
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.kabar-preview
-          key: android-preview-key-v1
-
       # Content-only: when everything merged since the build on the feed is
       # content the app builds in (crates/protocol/src/bundle_sources.rs, not
       # the curricula, which kabar-core embeds too), changes/ notes, docs or
@@ -84,7 +71,7 @@ jobs:
       # new: devices take it in the background with nothing to install. Any
       # other file, a new version or a new key means a full build.
       - name: Content-only update?
-        if: env.KEEP_KEY == 'true' && steps.update-key.outputs.cache-hit == 'true' && steps.key.outputs.cache-hit == 'true'
+        if: env.KEEP_KEY == 'true'
         run: |
           curl -fsSL --retry 3 -o /tmp/live-update.json \
             "https://github.com/$GITHUB_REPOSITORY/releases/download/preview/update.json" || exit 0
@@ -119,19 +106,22 @@ jobs:
         if: env.CONTENT_ONLY != 'true'
         run: cargo binstall -y --force dioxus-cli@0.7.10
 
-      - name: Create preview update key
-        if: steps.update-key.outputs.cache-hit != 'true'
+      # The update key comes first: its public half is built into the app.
+      # Pushes use the release key; pull requests a one-off key.
+      - name: Update key
+        env:
+          SECRET: ${{ env.KEEP_KEY == 'true' && secrets.KABAR_UPDATE_SECRET || '' }}
         run: |
           mkdir -p ~/.kabar-preview-update
-          cargo run -q -p kabar-tools -- update keygen --public-out ~/.kabar-preview-update/key.pub \
-            > ~/.kabar-preview-update/secret
+          if [ "$KEEP_KEY" = true ]; then
+            [ -n "$SECRET" ] || { echo "::error::secret KABAR_UPDATE_SECRET is missing (scripts/release-secrets.sh)"; exit 1; }
+            cp crates/app/update-key.pub ~/.kabar-preview-update/key.pub
+            printf %s "$SECRET" > ~/.kabar-preview-update/secret
+          else
+            cargo run -q -p kabar-tools -- update keygen --public-out ~/.kabar-preview-update/key.pub \
+              > ~/.kabar-preview-update/secret
+          fi
           chmod 600 ~/.kabar-preview-update/secret
-      - name: Save preview update key
-        if: env.KEEP_KEY == 'true' && steps.update-key.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: ~/.kabar-preview-update
-          key: android-preview-update-key-v1
       - name: Preview build identity
         run: |
           {
@@ -198,28 +188,33 @@ jobs:
         if: env.CONTENT_ONLY != 'true'
         run: scripts/android-check-apk.sh dist/android/release/kabar-unsigned.apk
 
-      - name: Create preview signing key
-        if: steps.key.outputs.cache-hit != 'true'
+      - name: Signing key
+        if: env.CONTENT_ONLY != 'true'
+        env:
+          KEYSTORE_B64: ${{ env.KEEP_KEY == 'true' && secrets.KABAR_ANDROID_KEYSTORE || '' }}
+          KEYSTORE_PASS: ${{ env.KEEP_KEY == 'true' && secrets.KABAR_ANDROID_KEYSTORE_PASSWORD || '' }}
         run: |
           mkdir -p ~/.kabar-preview
-          openssl rand -hex 24 > ~/.kabar-preview/pass
-          keytool -genkeypair -keystore ~/.kabar-preview/preview.jks -alias preview \
-            -keyalg RSA -keysize 4096 -validity 3650 -dname "CN=Kabar preview" \
-            -storepass "$(cat ~/.kabar-preview/pass)" -keypass "$(cat ~/.kabar-preview/pass)"
-      - name: Save preview signing key
-        if: env.KEEP_KEY == 'true' && steps.key.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: ~/.kabar-preview
-          key: android-preview-key-v1
-
+          if [ "$KEEP_KEY" = true ]; then
+            [ -n "$KEYSTORE_B64" ] || { echo "::error::secret KABAR_ANDROID_KEYSTORE is missing (scripts/release-secrets.sh)"; exit 1; }
+            printf %s "$KEYSTORE_B64" | base64 -d > ~/.kabar-preview/preview.jks
+            printf %s "$KEYSTORE_PASS" > ~/.kabar-preview/pass
+            echo kabar > ~/.kabar-preview/alias
+          else
+            openssl rand -hex 24 > ~/.kabar-preview/pass
+            keytool -genkeypair -keystore ~/.kabar-preview/preview.jks -alias preview \
+              -keyalg RSA -keysize 4096 -validity 3650 -dname "CN=Kabar PR check" \
+              -storepass "$(cat ~/.kabar-preview/pass)" -keypass "$(cat ~/.kabar-preview/pass)"
+            echo preview > ~/.kabar-preview/alias
+          fi
+          chmod 600 ~/.kabar-preview/*
       - name: Sign
         if: env.CONTENT_ONLY != 'true'
         run: |
           IN=dist/android/release/kabar-unsigned.apk
           PASS="$(cat ~/.kabar-preview/pass)"
           zipalign -f -p 4 "$IN" /tmp/aligned.apk
-          apksigner sign --ks ~/.kabar-preview/preview.jks --ks-key-alias preview \
+          apksigner sign --ks ~/.kabar-preview/preview.jks --ks-key-alias "$(cat ~/.kabar-preview/alias)" \
             --ks-pass "pass:$PASS" --key-pass "pass:$PASS" --out dist/android/kabar-preview.apk /tmp/aligned.apk
           apksigner verify --print-certs dist/android/kabar-preview.apk
           # The S24 Ultra and Tab S11 are arm64; dx defaults to the emulator ABI.
@@ -305,7 +300,7 @@ jobs:
               exit 0
             fi
           fi
-          NOTES="Preview build of ${GITHUB_SHA::7}, signed with a CI preview key (not the release key). Install: download kabar-preview.apk on the phone and allow installs from your browser."
+          NOTES="Preview build of ${GITHUB_SHA::7}, signed with the release key, so it installs over the alpha and back. Install: download kabar-preview.apk on the phone and allow installs from your browser."
           # The release stays in place and only its tag and files change, so
           # the download link and the update feed never 404 (#222).
           if gh release view preview >/dev/null 2>&1; then

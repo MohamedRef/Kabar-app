@@ -50,6 +50,7 @@ pub enum U {
     Beta,
     Stable,
     Preview,
+    PreviewChannelNote,
     WhatsNew,
     // the notification Android shows once the new Kabar is in
     DoneTitle,
@@ -275,6 +276,15 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (Stable, En) => "Stable",
         (Preview, ArEg | Ar) => "معاينة",
         (Preview, En) => "Preview",
+        (PreviewChannelNote, ArEg) => {
+            "المعاينة بتنزل مع كل تعديل، فممكن تلاقي فيها حاجة لسه مش مظبوطة. على الماك هيوصلك منها المحتوى بس. ترجع للألفا وقت ما تحب."
+        }
+        (PreviewChannelNote, Ar) => {
+            "تصل المعاينة مع كل تعديل، وقد تجد فيها ما لم يكتمل بعد. على الماك يصلك منها المحتوى فقط. يمكنك الرجوع إلى ألفا متى شئت."
+        }
+        (PreviewChannelNote, En) => {
+            "Preview brings every change as it lands, so some things may still be rough. On the Mac it brings content only. Switch back to alpha any time."
+        }
         (WhatsNew, ArEg) => "الجديد",
         (WhatsNew, Ar) => "الجديد",
         (WhatsNew, En) => "What's new",
