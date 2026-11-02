@@ -87,6 +87,7 @@ pub enum S {
     RingReview,
     RingStart,
     ActivityWeek,
+    ActivityWeekEmpty,
     ActivityMonth,
     ActivityUp,
     ActivityDown,
@@ -372,6 +373,11 @@ pub fn st(lang: UiLanguage, msg: S) -> &'static str {
         (ActivityWeek, ArEg) => "جلساتك يوم بيوم",
         (ActivityWeek, Ar) => "جلساتك يومًا بيوم",
         (ActivityWeek, En) => "Your study, day by day",
+        (ActivityWeekEmpty, ArEg) => "الأسبوع ده لسه صفحة بيضا. أول جلسة النهارده هتبان هنا عمود.",
+        (ActivityWeekEmpty, Ar) => "هذا الأسبوع ما زال صفحة بيضاء. أول جلسة اليوم ستظهر هنا عمودًا.",
+        (ActivityWeekEmpty, En) => {
+            "This week is still a blank page. Today's first session will show up here as a bar."
+        }
         (ActivityMonth, ArEg) => "جلساتك أسبوع بأسبوع",
         (ActivityMonth, Ar) => "جلساتك أسبوعًا بأسبوع",
         (ActivityMonth, En) => "Your study, week by week",
