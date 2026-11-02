@@ -134,7 +134,7 @@ pub fn DiagnosticsCard() -> Element {
                 p { "{ui.t(Msg::DiagEmpty)}" }
             } else {
                 details {
-                    summary { {ui.t(Msg::DiagCount).replace("{n}", &ui.num(count as u64))} }
+                    summary { {ui.fill(Msg::DiagCount, &[("n", &ui.num(count as u64))])} }
                     pre { class: "mono diag-lines", dir: "ltr",
                         for (i, line) in shown.read().iter().enumerate() {
                             bdi { key: "{i}", "{line}\n" }

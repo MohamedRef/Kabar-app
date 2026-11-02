@@ -26,7 +26,7 @@ use kabar_protocol::level_check::{
 use kabar_protocol::test::{TestContent, TestItemKind, TestSkill};
 
 use super::text::{S, st};
-use super::{fill, iso, level_label, level_tests, load_logs, pct, rtl};
+use super::{iso, level_label, level_tests, load_logs, pct, rtl, stf};
 use crate::annotated::Annotated;
 use crate::coach::{Coach, labels, say, widgets::Nur};
 use crate::embedded::{Css, css};
@@ -246,9 +246,9 @@ fn Intro(level: String, welcome: Line, has_test: bool, on_start: EventHandler<()
     let name = coach.profile.read().as_ref().map(|p| p.name.clone()).unwrap_or_default();
     let invite = say(&ui, welcome, coach.today(), &[("name", &name)]);
     let (text, button) = if has_test {
-        (fill(st(lang, S::CheckIntro), &[("level", &label)]), S::CheckStart)
+        (stf(lang, S::CheckIntro, &[("level", &label)]), S::CheckStart)
     } else {
-        (fill(st(lang, S::CheckNoTest), &[("level", &label)]), S::CheckSeeResult)
+        (stf(lang, S::CheckNoTest, &[("level", &label)]), S::CheckSeeResult)
     };
     rsx! {
         crate::ui::Card { class: "st-card",
@@ -585,7 +585,7 @@ pub fn RadarView(now: Vec<RadarPoint>, before: Option<Vec<RadarPoint>>) -> Eleme
     let axis = Skill::ALL.map(|s| skill_name(&ui, s).to_string());
     let svg =
         super::charts::radar(&now, before.as_deref(), rtl(&ui), st(lang, S::RadarTitle), &axis, |s, v| {
-            fill(st(lang, S::RadarSummary), &[("skill", skill_name(&ui, s)), ("value", &pct(&ui, v))])
+            stf(lang, S::RadarSummary, &[("skill", skill_name(&ui, s)), ("value", &pct(&ui, v))])
         });
     let change = lc::radar_change(&now, before.as_deref().unwrap_or(&[]));
     let rows: Vec<(Skill, Option<f32>, Option<f32>)> = Skill::ALL
@@ -662,10 +662,11 @@ fn Outcome(
         LevelMove::Stay => (S::ResultStay, None, Some(S::StayBody)),
     };
     let nur_text = nur.map(|l| say(&ui, l, today, &[("name", &name), ("level", &level)]));
-    let body_text = body.map(|b| fill(st(lang, b), &[("level", &iso(&level))]));
+    let body_text = body.map(|b| stf(lang, b, &[("level", &iso(&level))]));
     let flight = match (result.moved, result.score, pass_mark) {
-        (LevelMove::Stay, Some(score), Some(mark)) if score + 1e-4 >= mark => Some(fill(
-            st(lang, S::FlightInvite),
+        (LevelMove::Stay, Some(score), Some(mark)) if score + 1e-4 >= mark => Some(stf(
+            lang,
+            S::FlightInvite,
             &[("mark", &pct(&ui, mark)), ("level", &iso(&level_label(&result.from_level)))],
         )),
         _ => None,
@@ -733,8 +734,9 @@ fn PaceNote() -> Element {
     let log = db.0.borrow().review_log().unwrap_or_default();
     let totals = core_stats::day_totals(&coach.events.read(), &log, coach.offset());
     let Some(p) = pace::pace(&totals, coach.today()) else { return rsx! {} };
-    let text = fill(
-        st(ui.lang(), S::ForecastEstimate),
+    let text = stf(
+        ui.lang(),
+        S::ForecastEstimate,
         &[("minutes", &labels::minutes(&ui, p.minutes_per_day.round() as u32)), ("days", &ui.num(p.days))],
     );
     rsx! { p { class: "muted small", "{text}" } }

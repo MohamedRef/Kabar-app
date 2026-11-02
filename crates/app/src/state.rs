@@ -36,6 +36,12 @@ impl Ui {
         t(self.settings.read().ui_language, msg)
     }
 
+    /// A catalog line with its `{placeholders}` filled, counts agreeing with
+    /// their nouns (`crate::i18n::fill`).
+    pub fn fill(&self, msg: Msg, args: &[(&str, &str)]) -> String {
+        crate::i18n::fill(self.lang(), self.t(msg), args)
+    }
+
     pub fn lang(&self) -> UiLanguage {
         self.settings.read().ui_language
     }

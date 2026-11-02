@@ -237,6 +237,18 @@ pub fn say(lang: UiLanguage, line: Line, seed: u64, args: &[(&str, &str)]) -> St
     render(lang, &parsed[pick], args)
 }
 
+/// Fills one of the app's own UI templates (not Kak Nur's lines): `{name}`
+/// takes its argument as written and `{name|one|two|few[|many]}` the count
+/// with its noun, by the same rules as Kak Nur's lines (see `plural`), so no
+/// screen reads "7 ساعة" or "2 أيام". A template that does not parse falls
+/// back to plain replacement.
+pub fn fill(lang: UiLanguage, template: &str, args: &[(&str, &str)]) -> String {
+    match parse(template) {
+        Ok(segs) => render(lang, &segs, args),
+        Err(_) => args.iter().fold(template.to_string(), |acc, (k, v)| acc.replace(&format!("{{{k}}}"), v)),
+    }
+}
+
 // --- content ------------------------------------------------------------------
 
 #[derive(Debug, Deserialize)]
@@ -816,6 +828,20 @@ mod tests {
     fn values_are_not_reparsed() {
         let s = say(UiLanguage::En, Line::RecapRemember, 0, &[("topic", "{name}")]);
         assert_eq!(s, "One thing to remember from today: {name}.");
+    }
+
+    #[test]
+    fn fill_ui_templates() {
+        let f = |lang, v: &str| fill(lang, "اتحفظ {rows|صف|صفين|صفوف} في:", &[("rows", v)]);
+        assert_eq!(f(UiLanguage::ArEg, "1"), "اتحفظ صف في:");
+        assert_eq!(f(UiLanguage::ArEg, "2"), "اتحفظ صفين في:");
+        assert_eq!(f(UiLanguage::ArEg, "7"), "اتحفظ 7\u{a0}صفوف في:");
+        assert_eq!(f(UiLanguage::ArEg, "٧"), "اتحفظ ٧\u{a0}صفوف في:");
+        assert_eq!(f(UiLanguage::ArEg, "12"), "اتحفظ 12\u{a0}صف في:");
+        assert_eq!(fill(UiLanguage::En, "{n|line|lines}", &[("n", "1")]), "1\u{a0}line");
+        assert_eq!(fill(UiLanguage::En, "{n} in {d}", &[("n", "3"), ("d", "x")]), "3 in x");
+        // Not a template: plain replacement.
+        assert_eq!(fill(UiLanguage::En, "{N} {n}", &[("n", "3")]), "{N} 3");
     }
 
     #[test]
