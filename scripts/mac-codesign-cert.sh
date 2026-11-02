@@ -5,8 +5,12 @@
 # an update (the Kabar Cloud sign-in), and the updater checks a new
 # Kabar.app comes from the same signer (docs/RELEASE.md §5). No Apple
 # Developer account needed. macOS asks for your password once to trust it.
+# The identity is also kept as ~/.kabar/kabar-codesign.p12 (password in the
+# Keychain, service "kabar-codesign"), so scripts/release-secrets.sh can hand
+# the same signer to the release workflow. Back it up with the other keys.
 set -euo pipefail
 NAME="Kabar Code Signing"
+P12="$HOME/.kabar/kabar-codesign.p12"
 
 if security find-identity -v -p codesigning | grep -q "\"$NAME\""; then
   echo "\"$NAME\" is already in the Keychain."
@@ -31,6 +35,9 @@ openssl req -x509 -newkey rsa:2048 -nodes -days 7300 -config "$tmp/cert.cnf" \
 pass="$(openssl rand -hex 16)"
 openssl pkcs12 -export -inkey "$tmp/key.pem" -in "$tmp/cert.pem" -name "$NAME" \
   -out "$tmp/kabar.p12" -passout "pass:$pass" 2>/dev/null
+mkdir -p "$(dirname "$P12")"
+cp "$tmp/kabar.p12" "$P12" && chmod 600 "$P12"
+security add-generic-password -U -s kabar-codesign -a "$USER" -w "$pass"
 security import "$tmp/kabar.p12" -k "$HOME/Library/Keychains/login.keychain-db" -P "$pass" -T /usr/bin/codesign
 security add-trusted-cert -r trustRoot -p codeSign -k "$HOME/Library/Keychains/login.keychain-db" "$tmp/cert.pem"
 security find-identity -v -p codesigning | grep "\"$NAME\""

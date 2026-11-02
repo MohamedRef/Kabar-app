@@ -1,3 +1,4 @@
-# Kabar's update key (Ed25519, public half). Empty until `just update-keygen`
-# runs once on the Mac (docs/RELEASE.md §5): until then release builds don't
-# look for updates. CI preview builds get their own key at build time.
+# Kabar's update key (Ed25519, public half). Builds trust update feeds
+# signed with its secret half, which lives only in the Mac's Keychain
+# (`just update-keygen`). Replacing it strands every installed build.
+nwOrbbJvJz0/l+TpGNs+rdm9ltel70d2muFJS0kRYug=

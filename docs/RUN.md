@@ -39,6 +39,8 @@ Sections: Learning (pronunciation, translation under sentences, sounds), Look & 
 
 ## 3. Galaxy S24 Ultra and Tab S11
 
+**Easiest: the alpha release.** On each device open the `v<version>` release on GitHub (Releases), download `kabar-<version>.apk` and install it (uninstall a preview build first: different key). On the Mac, unzip `Kabar-<version>-mac.zip`, move Kabar.app to Applications and run `xattr -dr com.apple.quarantine /Applications/Kabar.app` once. From then on they update themselves from `update-alpha` (RELEASE.md §4–5). The steps below are for development builds.
+
 ### Enable debugging (once per device)
 1. Settings → About phone/tablet → Software information → tap **Build number** 7 times.
 2. Settings → Developer options → turn on **USB debugging** and **Wireless debugging**.
