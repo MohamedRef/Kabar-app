@@ -504,8 +504,8 @@ pub mod track {
 }
 
 /// Kak Nur's reminders reach this device as local notifications: Android,
-/// and the bundled Mac app (UNUserNotificationCenter). Push through FCM is
-/// issue #187.
+/// and the bundled Mac app (UNUserNotificationCenter). On Android with
+/// Firebase set up, Kabar Cloud pushes them instead ([`push`], #187).
 pub const LOCAL_REMINDERS: bool = cfg!(any(target_os = "android", target_os = "macos"));
 
 /// Local reminder scheduling; no-ops where [`LOCAL_REMINDERS`] is false.
@@ -577,6 +577,83 @@ pub mod reminders {
         }
         #[cfg(target_os = "macos")]
         super::macos::reminders::request();
+    }
+}
+
+/// Kak Nur's reminders pushed by Kabar Cloud through Firebase Cloud
+/// Messaging (`PushBridge` and `PushService` in android/…/Push.kt). Android
+/// only, and only in an APK built with Firebase's settings
+/// (`scripts/android-firebase.py`); elsewhere nothing is pushed.
+pub mod push {
+    /// Firebase is set up in this build, so a token can be had.
+    pub fn available() -> bool {
+        #[cfg(target_os = "android")]
+        {
+            super::android::push_available()
+                .map_err(|e| crate::diag::report!("push check: {e}"))
+                .unwrap_or(false)
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            false
+        }
+    }
+
+    /// This device's FCM token, once Firebase has handed it over (asking
+    /// for it the first time returns `None`; ask again a little later).
+    pub fn token() -> Option<String> {
+        #[cfg(target_os = "android")]
+        {
+            super::android::push_token()
+                .map_err(|e| crate::diag::report!("push token: {e}"))
+                .ok()
+                .flatten()
+                .filter(|t| !t.is_empty())
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            None
+        }
+    }
+
+    /// Kabar Cloud pushes this device's reminders, as last confirmed for
+    /// the token Firebase still holds (a rotated token reads `false` until
+    /// the app registers it).
+    pub fn pushed() -> bool {
+        #[cfg(target_os = "android")]
+        {
+            super::android::push_pushed()
+                .map_err(|e| crate::diag::report!("push state: {e}"))
+                .unwrap_or(false)
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            false
+        }
+    }
+
+    /// Remembers Kabar Cloud's answer for `token`.
+    pub fn set_pushed(token: &str, pushed: bool) {
+        #[cfg(target_os = "android")]
+        if let Err(e) = super::android::push_set_pushed(if pushed { token } else { "" }) {
+            crate::diag::report!("push state: {e}");
+        }
+        #[cfg(not(target_os = "android"))]
+        let _ = (token, pushed);
+    }
+
+    /// Hands over the wording pushes are shown with
+    /// ([`crate::coach::notify::Phrasebook`] as JSON).
+    pub fn set_phrasebook(json: &str) -> Result<(), String> {
+        #[cfg(target_os = "android")]
+        {
+            super::android::push_set_phrasebook(json)
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            let _ = json;
+            Ok(())
+        }
     }
 }
 

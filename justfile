@@ -138,6 +138,8 @@ run-android device="":
 # Build a signed release APK into dist/android/kabar.apk
 apk:
     rm -rf {{dist}}/android && mkdir -p {{dist}}/android
+    # Firebase for pushed reminders, from ~/.kabar/google-services.json if it's there.
+    python3 scripts/android-firebase.py
     export KABAR_BUILTIN_CONTENT="$({{just_executable()}} content-digest)" && cd {{app}} && dx bundle --platform android --release --package-types apk --target aarch64-linux-android --no-default-features --features mobile --out-dir ../../{{dist}}/android/raw
     # dx leaves a debug build; rebuild it as a release (no debuggable, R8, versionCode).
     apk="$(scripts/android-release-apk.sh)" && \

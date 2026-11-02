@@ -22,6 +22,11 @@ pub struct Cloud {
     /// Bumped when remote ops change rows the UI shows.
     pub revision: Signal<u64>,
     pub commands: Signal<Option<UnboundedSender<Command>>>,
+    /// Kabar Cloud pushes Kak Nur's reminders to this device (FCM, #187), so
+    /// it schedules none of its own. Kept across launches by `PushBridge`.
+    pub push: Signal<bool>,
+    /// The token last sent this run (`""`: "not here"), so it goes once.
+    pub push_sent: Signal<Option<String>>,
 }
 
 impl Cloud {

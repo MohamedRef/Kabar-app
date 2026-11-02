@@ -277,6 +277,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     schedule::use_optimizer(db.clone(), ui, coach);
     use_learner_profile(&db, coach);
     coach::notify::use_local_reminders(&db, coach, ui, prefs);
+    coach::notify::use_push_token(ui, prefs);
     // Android: a renderer reclaimed in the background ends Kabar quietly
     // instead of crashing it; earlier crashes show in the diagnostics.
     use_hook(platform::guard_webview);
@@ -370,6 +371,8 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
         signing_in: Signal::new(false),
         revision: Signal::new(0),
         commands: Signal::new(None),
+        push: Signal::new(platform::push::pushed()),
+        push_sent: Signal::new(None),
     });
     let db = db.clone();
     let coach = try_use_context::<Coach>();
@@ -402,7 +405,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
         spawn(async move {
             let (mut status, mut devices, mut signing_in, mut revision) =
                 (cloud.status, cloud.devices, cloud.signing_in, cloud.revision);
-            let mut usage = cloud.usage;
+            let (mut usage, mut push, mut push_sent) = (cloud.usage, cloud.push, cloud.push_sent);
             while let Some(event) = handle.events.recv().await {
                 match event {
                     Event::Status(s) => {
@@ -413,6 +416,14 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
                     Event::Devices(d) => devices.set(Some(d)),
                     Event::Usage(u) => usage.set(Some(u)),
                     Event::SigningIn(on) => signing_in.set(on),
+                    Event::Push { token, pushed: Some(pushed) } => {
+                        platform::push::set_pushed(&token, pushed);
+                        if *push.peek() != pushed {
+                            push.set(pushed);
+                        }
+                    }
+                    // Not answered: try again on the next reconnect.
+                    Event::Push { pushed: None, .. } => push_sent.set(None),
                     Event::Changed(tables) => {
                         let store = db.0.borrow();
                         if tables.contains("settings")

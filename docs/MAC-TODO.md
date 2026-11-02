@@ -125,7 +125,7 @@ just check                # fmt + clippy + tests: all green
   cd -
   ```
   Only in a month with Max credit: `ANTHROPIC_API_KEY` plus `CLAUDE_ENABLED = "true"`.
-- [ ] 5.4b Reminders (M7, [CLOUD.md §3.4](CLOUD.md)): in the Firebase console add the Android app `app.kabar` and keep `google-services.json` for the app build, outside the repo. Then Project settings → Service accounts → Generate new private key, `cd crates/server && wrangler secret put FCM_SERVICE_ACCOUNT < that-file.json && cd -`, and delete the file.
+- [ ] 5.4b Pushed reminders (optional, [CLOUD.md §3.4](CLOUD.md)): in the Firebase console add the Android app `app.kabar`. Put `google-services.json`'s contents in the repo secret `KABAR_GOOGLE_SERVICES_JSON` (and `mv` the file to `~/.kabar/` for `just apk`). Then Project settings → Service accounts → Generate new private key, put its contents in the repo secret `FCM_SERVICE_ACCOUNT`, run **Deploy Kabar Cloud**, and delete the file.
 - [ ] 5.5 `just deploy-cloud`, then `curl https://kabar-cloud.<subdomain>.workers.dev/v1/health`.
 - [ ] 5.6 Commit `crates/server/wrangler.toml` (the ids aren't secrets), then send me the URL.
 - [ ] 5.6b Connect the app ([CLOUD.md §3.6](CLOUD.md)): `cp .env.example .env`, fill in the URL and the Desktop client's id + secret, then `just run-mac` → Settings → **Account & devices** → **Sign in with Google**. Rebuild the APK (`just apk`, `just install <serial>`) and sign in on both Galaxy devices. Save a word in **Try sync** on the phone and watch it appear on the tablet.

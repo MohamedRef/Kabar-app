@@ -159,6 +159,7 @@ impl Engine {
             }
             Command::LoadDevices => self.load_devices().await,
             Command::LoadUsage => self.load_usage().await,
+            Command::PushToken(token) => self.set_push_token(token).await,
             Command::RevokeDevice(device) => {
                 if device == self.device.device_id {
                     return Box::pin(self.command(Command::SignOut)).await;
@@ -264,6 +265,30 @@ impl Engine {
             }
         };
         self.events.send(Event::Usage(usage)).ok();
+    }
+
+    async fn set_push_token(&mut self, token: String) {
+        let pushed = match self.access(false).await {
+            Some(access) => {
+                let api = self.api.clone();
+                let sent = token.clone();
+                match blocking(move || api.set_push_token(&access, &sent)).await {
+                    // Registered and the Cloud has its Firebase key: it rings here.
+                    Ok(reply) => Some(reply.registered && reply.push_configured && !token.is_empty()),
+                    // Quietly: local reminders keep ringing until it works.
+                    Err(e) if e.is_signed_out() => {
+                        self.cloud_error(&e);
+                        None
+                    }
+                    Err(e) => {
+                        crate::diag::report!("Kabar Cloud push token: {e}");
+                        None
+                    }
+                }
+            }
+            None => None,
+        };
+        self.events.send(Event::Push { token, pushed }).ok();
     }
 
     /// A fresh access token, or `None` (with the reason recorded).

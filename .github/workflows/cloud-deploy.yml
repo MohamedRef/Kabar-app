@@ -8,7 +8,9 @@ name: Deploy Kabar Cloud
 # Needs two repo secrets: CLOUDFLARE_API_TOKEN ("Edit Cloudflare Workers"
 # template plus D1 Edit and Workers AI Edit) and KABAR_ALLOWED_EMAILS (the
 # Gmail allowed to sign in). Without the token the run says so and stops
-# green. Optional secrets switch engines on: GEMINI_API_KEY, AZURE_SPEECH_KEY.
+# green. Optional secrets switch engines on: GEMINI_API_KEY, AZURE_SPEECH_KEY,
+# and FCM_SERVICE_ACCOUNT (Firebase's service-account JSON) turns on Kak
+# Nur's pushed reminders (docs/CLOUD.md §3.4).
 # The D1 database and the token signing key are made here once; the key is
 # piped straight into the Worker's secrets, never printed or stored elsewhere.
 
@@ -121,6 +123,7 @@ jobs:
           ALLOWED: ${{ secrets.KABAR_ALLOWED_EMAILS }}
           GEMINI: ${{ secrets.GEMINI_API_KEY }}
           AZURE: ${{ secrets.AZURE_SPEECH_KEY }}
+          FCM: ${{ secrets.FCM_SERVICE_ACCOUNT }}
         run: |
           if [ -z "$ALLOWED" ]; then
             echo "::warning::No KABAR_ALLOWED_EMAILS secret: nobody can sign in until it is set and this runs again."
@@ -136,4 +139,8 @@ jobs:
           if [ -n "$AZURE" ]; then
             printf '%s' "$AZURE" | wrangler secret put AZURE_SPEECH_KEY >/dev/null
             echo "Azure Speech key set"
+          fi
+          if [ -n "$FCM" ]; then
+            printf '%s' "$FCM" | wrangler secret put FCM_SERVICE_ACCOUNT >/dev/null
+            echo "Firebase service account set: reminders can be pushed"
           fi
