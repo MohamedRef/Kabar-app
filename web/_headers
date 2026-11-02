@@ -1,0 +1,11 @@
+# Never indexed; the wasm and its loader are revalidated on every visit, so a
+# deploy reaches the browser on the next reload.
+/*
+  X-Robots-Tag: noindex, nofollow
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+/*.wasm
+  Content-Type: application/wasm
+  Cache-Control: no-cache
+/*.js
+  Cache-Control: no-cache

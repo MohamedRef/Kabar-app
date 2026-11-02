@@ -250,7 +250,7 @@ pub fn use_push_token(ui: Ui, prefs: DevicePrefs) {
                 if token.is_some() || !here {
                     break;
                 }
-                tokio::time::sleep(TOKEN_POLL).await;
+                crate::platform::time::sleep(TOKEN_POLL).await;
                 token = platform::push::token();
             }
             let token = if here {

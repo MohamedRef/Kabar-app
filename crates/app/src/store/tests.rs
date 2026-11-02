@@ -28,6 +28,29 @@ fn device_id_and_settings_survive_reopen() {
     assert_eq!(store.settings().unwrap(), new);
 }
 
+/// The web build keeps the database as bytes in the browser: they come back
+/// whole, with the same device and settings, and an empty snapshot is a
+/// fresh store. A file database (WAL) reads back from memory too.
+#[test]
+fn a_snapshot_round_trips() {
+    let mut store = Store::open_in_memory().unwrap();
+    let old = store.settings().unwrap();
+    let new = Settings { theme: Theme::Dark, welcomed: true, ..old.clone() };
+    store.save_settings(&old, &new).unwrap();
+    let (changes, bytes) = store.snapshot().unwrap();
+    assert!(changes > 0 && !bytes.is_empty());
+    let back = Store::from_snapshot(&bytes).unwrap();
+    assert_eq!(back.device_id(), store.device_id());
+    assert_eq!(back.settings().unwrap(), new);
+    let fresh = Store::from_snapshot(&[]).unwrap();
+    assert_ne!(fresh.device_id(), store.device_id());
+
+    let dir = tempfile::tempdir().unwrap();
+    let mut file = Store::open(&dir.path().join("kabar.db")).unwrap();
+    let (_, bytes) = file.snapshot().unwrap();
+    assert_eq!(Store::from_snapshot(&bytes).unwrap().device_id(), file.device_id());
+}
+
 #[test]
 fn pen_lab_runs_newest_first() {
     let mut store = Store::open_in_memory().unwrap();

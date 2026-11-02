@@ -296,6 +296,21 @@ python3 scripts/assets/synth_sounds.py               # gong, ding and kendang, 3
 3. Copy them, as `.ogg`, to `assets/sounds/ui/`, together with the pack's `License.txt`.
 4. Tell Claude which files you picked. Claude then wires them in (buttons and page turns, off with the sounds switch) and adds the row to `ATTRIBUTION.md`.
 
+## 15b. Web app (any browser)
+
+The same app compiled to WebAssembly ([docs/WEB.md](WEB.md)).
+
+```sh
+cargo install wasm-bindgen-cli@<version in Cargo.lock> --locked   # once
+just web            # http://localhost:8080 (dev build)
+just web-release    # target/web/kabar, as Cloudflare serves it
+```
+
+Online: Actions › "Deploy Kabar web" › Run workflow, then open the address in
+the run summary on the Mac, phone or tablet (Chrome › Add to home screen
+installs it). Progress stays in that browser; sync through Kabar Cloud comes in
+phase 2.
+
 ## 16. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.

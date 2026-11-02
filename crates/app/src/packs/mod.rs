@@ -57,6 +57,9 @@ pub const DEFAULT_PACKS_URL: &str = "https://github.com/MohamedRef/Kabar-app/rel
 /// time (`.env`), else [`DEFAULT_PACKS_URL`]. An empty value turns
 /// downloads off.
 pub fn base_url() -> Option<String> {
+    if cfg!(target_arch = "wasm32") {
+        return None;
+    }
     let url = std::env::var("KABAR_PACKS_URL")
         .ok()
         .or(option_env!("KABAR_PACKS_URL").map(String::from))
@@ -245,6 +248,7 @@ pub fn embedded_index() -> PackIndex {
 
 // --- network (blocking; call from a worker thread) ------------------------------
 
+#[cfg(not(target_arch = "wasm32"))]
 fn agent() -> ureq::Agent {
     ureq::Agent::config_builder()
         .http_status_as_error(false)
@@ -253,6 +257,14 @@ fn agent() -> ureq::Agent {
         .into()
 }
 
+/// The web build fetches packs in a later phase (docs/WEB.md); [`base_url`]
+/// is `None` there, so nothing asks.
+#[cfg(target_arch = "wasm32")]
+fn get(_url: &str) -> Result<Vec<u8>, String> {
+    Err(NOT_CONFIGURED.into())
+}
+
+#[cfg(not(target_arch = "wasm32"))]
 fn get(url: &str) -> Result<Vec<u8>, String> {
     let mut res = agent().get(url).call().map_err(|e| format!("network: {e}"))?;
     let status = res.status().as_u16();

@@ -27,8 +27,15 @@ fn gloss_entries<T: Send>(
 ) -> impl Iterator<Item = Result<T, serde_json::Error>> {
     let batches: Vec<&[u8]> =
         rows(GLOSS_BATCHES).into_iter().chain(rows(GLOSS_BATCHES_JV)).map(|(_, b)| b).collect();
+    // The web has one thread: the batches are parsed in turn there.
+    #[cfg(target_arch = "wasm32")]
+    let parts: Vec<Vec<_>> =
+        batches.iter().map(|b| jsonl::<GlossEntry>(&unpack(b)).map(|r| r.map(&prepare)).collect()).collect();
+    #[cfg(not(target_arch = "wasm32"))]
     let cores = std::thread::available_parallelism().map_or(1, |n| n.get()).min(8);
+    #[cfg(not(target_arch = "wasm32"))]
     let prepare = &prepare;
+    #[cfg(not(target_arch = "wasm32"))]
     let parts: Vec<Vec<_>> = std::thread::scope(|s| {
         let workers: Vec<_> = batches
             .chunks(batches.len().div_ceil(cores).max(1))

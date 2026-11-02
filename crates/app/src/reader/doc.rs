@@ -554,7 +554,7 @@ mod perf {
     #[test]
     #[ignore = "timing probe, run by hand with --release"]
     fn popover_timing() {
-        let t = std::time::Instant::now();
+        let t = web_time::Instant::now();
         let g = LocalGlossary::load();
         eprintln!("glossary load: {:?}", t.elapsed());
         // The §24 test texts.
@@ -564,7 +564,7 @@ mod perf {
             "Saya sedang membaca buku. Rumahnya dibersihkan kemarin. Anak-anak bermain di taman.",
         ];
         let taught = PersonalDictionary::default();
-        let t = std::time::Instant::now();
+        let t = web_time::Instant::now();
         for text in texts {
             let _ = ReadDoc::from_text(text, Lexicon { glossary: &g, taught: &taught });
         }

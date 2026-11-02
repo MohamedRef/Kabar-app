@@ -13,32 +13,54 @@ path = "src/main.rs"
 [dependencies]
 kabar-core.workspace = true
 kabar-protocol.workspace = true
-dioxus = { version = "0.7.10", features = [] }
+# Dioxus's defaults minus `devtools` (hot reload), which only the native
+# builds take (below): in the web app it would knock on a dx dev server forever.
+dioxus = { version = "0.7.10", default-features = false, features = ["launch", "logger", "lib"] }
 serde.workspace = true
 serde_json.workspace = true
 thiserror.workspace = true
 
-rusqlite = { version = "0.41", features = ["bundled"] }
+rusqlite = { version = "0.41", features = ["bundled", "serialize"] }
 uuid = { version = "1", features = ["v4", "v7"] }
 futures-channel = "0.3"
 # Unpacks the content build.rs compresses (pure Rust, already in the tree).
 miniz_oxide = "0.8"
 
-# Kabar Cloud client: TLS is rustls + ring with webpki roots everywhere, so the
-# Android build needs no Java trust-store glue.
 base64 = "0.22"
 futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
 getrandom = "0.3"
-keyring-core = "1"
 sha2 = "0.10"
 # Offline packs: one tar per unit (crates/app/src/packs).
 tar = { version = "0.4", default-features = false }
+# std::time::{Instant, SystemTime} panic in the browser; this is std on native.
+web-time = "1"
+
+# Native builds (Mac, Android): the network, the keychain and real threads.
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+dioxus = { version = "0.7.10", features = ["devtools"] }
+# Kabar Cloud client: TLS is rustls + ring with webpki roots everywhere, so the
+# Android build needs no Java trust-store glue.
+keyring-core = "1"
 tokio = { version = "1", features = ["rt", "net", "time", "sync", "macros", "io-util"] }
 tokio-tungstenite = { version = "0.30", default-features = false, features = ["connect", "rustls-tls-webpki-roots"] }
 ureq = { version = "3", default-features = false, features = ["rustls", "json"] }
 
-[target.'cfg(not(target_os = "android"))'.dependencies]
+[target.'cfg(not(any(target_os = "android", target_arch = "wasm32")))'.dependencies]
 directories = "6"
+
+# The web build (wasm32, docs/WEB.md): the browser stands in for the OS
+# (src/platform/web.rs). SQLite runs in wasm and persists in IndexedDB.
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+tokio = { version = "1", features = ["sync", "macros"] }
+getrandom = { version = "0.3", features = ["wasm_js"] }
+getrandom02 = { package = "getrandom", version = "0.2", features = ["js"] }
+uuid = { version = "1", features = ["v4", "v7", "js"] }
+gloo-timers = { version = "0.3", features = ["futures"] }
+sqlite-wasm-rs = { version = "0.6", features = ["wasm-bindgen"] }
+js-sys = "0.3"
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+web-sys = { version = "0.3", features = ["console", "Window", "Document", "Element", "HtmlElement", "Location", "Storage", "Navigator", "Blob", "BlobPropertyBag", "Url", "HtmlAnchorElement", "MediaQueryList"] }
 
 [target.'cfg(target_os = "android")'.dependencies]
 jni = "0.22"
@@ -75,6 +97,8 @@ ed25519-dalek = "2"
 default = ["desktop"]
 desktop = ["dioxus/desktop"]
 mobile = ["dioxus/mobile"]
+# The web app (`just web`, docs/WEB.md).
+web = ["dioxus/web"]
 
 [lints]
 workspace = true

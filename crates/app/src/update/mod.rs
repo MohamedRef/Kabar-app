@@ -41,7 +41,8 @@ use std::fs;
 use std::io::{Read as _, Write as _};
 use std::path::{Path, PathBuf};
 use std::sync::{Mutex, OnceLock};
-use std::time::{Duration, SystemTime, UNIX_EPOCH};
+use std::time::Duration;
+use web_time::{SystemTime, UNIX_EPOCH};
 
 use kabar_core::locale::UiLanguage;
 use kabar_core::update::{
@@ -330,16 +331,25 @@ fn read_part_meta(path: &Path) -> Option<PartMeta> {
     serde_json::from_slice(&fs::read(path).ok()?).ok()
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 /// The first byte of a 206 answer (`Content-Range: bytes 600-999/1000`).
 fn range_start<B>(res: &ureq::http::Response<B>) -> Option<u64> {
     let v = res.headers().get("content-range")?.to_str().ok()?;
     v.strip_prefix("bytes ")?.split('-').next()?.trim().parse().ok()
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 fn agent(timeout: Duration) -> ureq::Agent {
     ureq::Agent::config_builder().http_status_as_error(false).timeout_global(Some(timeout)).build().into()
 }
 
+/// The web build never updates itself: each deploy is the newest build.
+#[cfg(target_arch = "wasm32")]
+fn get_small(_url: &str) -> Result<Vec<u8>, Failure> {
+    Err(Failure::Network)
+}
+
+#[cfg(not(target_arch = "wasm32"))]
 fn get_small(url: &str) -> Result<Vec<u8>, Failure> {
     let mut res = agent(Duration::from_secs(30)).get(url).call().map_err(|_| Failure::Network)?;
     if res.status().as_u16() != 200 {

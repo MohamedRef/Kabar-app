@@ -28,7 +28,7 @@ pub fn AndroidSection() -> Element {
             return;
         }
         loop {
-            tokio::time::sleep(std::time::Duration::from_millis(1500)).await;
+            crate::platform::time::sleep(std::time::Duration::from_millis(1500)).await;
             let now = platform::notifications_enabled();
             if *allowed.peek() != now {
                 allowed.set(now);

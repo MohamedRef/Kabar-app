@@ -2,6 +2,7 @@
 //! Fetched natively (no CORS, unlike the WebView), so any public page works;
 //! a page that can't be read asks the learner to paste the text instead.
 
+#[cfg(not(target_arch = "wasm32"))]
 use std::time::Duration;
 
 use kabar_core::learn::text::{PageText, html_to_text};
@@ -43,6 +44,7 @@ pub fn article_text(html: &str) -> PageText {
 }
 
 /// Blocking: run it off the UI thread ([`fetch`]).
+#[cfg(not(target_arch = "wasm32"))]
 pub fn fetch_page(url: &str) -> Result<PageText, String> {
     let agent: ureq::Agent = ureq::Agent::config_builder()
         .timeout_global(Some(Duration::from_secs(20)))
@@ -70,6 +72,14 @@ pub fn fetch_page(url: &str) -> Result<PageText, String> {
     if page.text.trim().is_empty() { Err("no readable text".into()) } else { Ok(page) }
 }
 
+/// The web: a browser may not read other sites' pages (CORS), so the Reader
+/// asks for the text instead, as for any page it can't read.
+#[cfg(target_arch = "wasm32")]
+pub async fn fetch(_url: String) -> Result<PageText, String> {
+    Err("the browser can't read other sites' pages".into())
+}
+
+#[cfg(not(target_arch = "wasm32"))]
 pub async fn fetch(url: String) -> Result<PageText, String> {
     let (tx, rx) = futures_channel::oneshot::channel();
     std::thread::spawn(move || {

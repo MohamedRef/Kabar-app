@@ -168,7 +168,7 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
         }
         let ticket = *typing.peek();
         spawn(async move {
-            tokio::time::sleep(std::time::Duration::from_millis(700)).await;
+            crate::platform::time::sleep(std::time::Duration::from_millis(700)).await;
             if typing.try_peek().is_ok_and(|t| *t == ticket)
                 && let (Ok(p), Ok(d)) = (player.try_peek(), draft.try_peek())
             {

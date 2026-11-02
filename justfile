@@ -105,6 +105,15 @@ run-mac:
 run-phone-preview:
     KABAR_WINDOW_SIZE=412x915 cargo run -p kabar-app
 
+# The web app: builds target/web/kabar and serves it on http://localhost:8080 (docs/WEB.md)
+web:
+    scripts/web/build.sh --dev
+    python3 -m http.server 8080 --bind 127.0.0.1 --directory target/web/kabar
+
+# The web app, optimised, as Cloudflare serves it (docs/WEB.md)
+web-release:
+    scripts/web/build.sh
+
 # The SHA-256 of the content bundle this tree builds: a build that carries it
 # (KABAR_BUILTIN_CONTENT) doesn't download the same bundle again (docs/RELEASE.md)
 content-digest:

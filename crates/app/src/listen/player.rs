@@ -426,7 +426,7 @@ pub fn ProgramPlayer(
             return;
         }
         loop {
-            tokio::time::sleep(std::time::Duration::from_millis(400)).await;
+            crate::platform::time::sleep(std::time::Duration::from_millis(400)).await;
             if *deck.native.peek() {
                 match platform::track::state() {
                     Ok((t, playing, ended)) => deck.native_tick(t, playing, ended),

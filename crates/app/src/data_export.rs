@@ -45,6 +45,17 @@ pub fn save(store: &Store, dir: &Path, now_ms: u64, utc_offset_min: i16) -> Resu
     Ok((path, export.rows))
 }
 
+/// The web: the same export as a browser download (to the browser's
+/// Downloads); returns its name and the number of rows.
+#[cfg(target_arch = "wasm32")]
+fn download(store: &Store, now_ms: u64, utc_offset_min: i16) -> Result<(PathBuf, u64), String> {
+    let export = store.export(env!("CARGO_PKG_VERSION"), now_ms).map_err(|e| e.to_string())?;
+    let mut text = serde_json::to_vec_pretty(&export.document).map_err(|e| e.to_string())?;
+    text.push(b'\n');
+    let name = format!("kabar-export-{}.json", LocalDate::from_unix_ms(now_ms, utc_offset_min));
+    crate::platform::web::download(&name, "application/json", &text).map(|n| (PathBuf::from(n), export.rows))
+}
+
 #[derive(Clone, Debug, PartialEq)]
 enum Outcome {
     Saved {
@@ -71,6 +82,9 @@ pub fn ExportCard() -> Element {
 
     let run = move |_| {
         busy.set(true);
+        #[cfg(target_arch = "wasm32")]
+        let result = download(&db.0.borrow(), coach.now(), coach.offset());
+        #[cfg(not(target_arch = "wasm32"))]
         let result = platform_dir().and_then(|dir| save(&db.0.borrow(), &dir, coach.now(), coach.offset()));
         if crate::platform::SAVE_DIALOG
             && let Ok((path, rows)) = &result
@@ -82,7 +96,7 @@ pub fn ExportCard() -> Element {
                 spawn(async move {
                     use crate::platform::SaveState;
                     let state = loop {
-                        tokio::time::sleep(std::time::Duration::from_millis(300)).await;
+                        crate::platform::time::sleep(std::time::Duration::from_millis(300)).await;
                         match crate::platform::save_state() {
                             SaveState::Open => {}
                             other => break other,

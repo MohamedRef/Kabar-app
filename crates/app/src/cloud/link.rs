@@ -7,11 +7,15 @@ use std::cell::RefCell;
 use std::rc::Rc;
 
 use kabar_protocol::ai::{AiReject, CacheKey, EngineCall, EngineError, EngineReply};
-use kabar_protocol::cloud::{ErrorCode, TtsRequest};
+#[cfg(not(target_arch = "wasm32"))]
+use kabar_protocol::cloud::ErrorCode;
+use kabar_protocol::cloud::TtsRequest;
 use tokio::sync::mpsc::UnboundedSender;
+#[cfg(not(target_arch = "wasm32"))]
 use tokio::sync::oneshot;
 
 use super::Command;
+#[cfg(not(target_arch = "wasm32"))]
 use super::api::{Api, CloudError};
 
 /// Why Kabar Cloud couldn't be asked.
@@ -38,6 +42,7 @@ impl std::fmt::Display for Unreachable {
     }
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 impl From<CloudError> for Unreachable {
     fn from(e: CloudError) -> Self {
         match e {
@@ -75,6 +80,7 @@ impl CloudLink {
         *self.0.borrow_mut() = Some(commands);
     }
 
+    #[cfg(not(target_arch = "wasm32"))]
     async fn access(&self, force: bool) -> Result<(Api, String), Unreachable> {
         let commands = self.0.borrow().clone().ok_or(Unreachable::NotConfigured)?;
         let (reply, answer) = oneshot::channel();
@@ -82,6 +88,7 @@ impl CloudLink {
         answer.await.map_err(|_| Unreachable::NotConfigured)?.ok_or(Unreachable::SignedOut)
     }
 
+    #[cfg(not(target_arch = "wasm32"))]
     /// Runs `f` with a fresh token, once more with a forced refresh if the
     /// token was refused.
     async fn with_token<T: Send + 'static>(
@@ -99,6 +106,7 @@ impl CloudLink {
         unreachable!("the loop returns on its second pass")
     }
 
+    #[cfg(not(target_arch = "wasm32"))]
     /// One engine run through `POST /v1/ai`.
     pub async fn ai(&self, call: EngineCall) -> Result<EngineReply, EngineError> {
         let result = self.with_token(move |api, token| api.ai(token, &call)).await;
@@ -108,6 +116,7 @@ impl CloudLink {
         }
     }
 
+    #[cfg(not(target_arch = "wasm32"))]
     /// Tells Kabar Cloud the learner rejected the answer cached under `key`
     /// (`POST /v1/ai/reject`).
     pub async fn ai_reject(&self, key: CacheKey) -> Result<(), Unreachable> {
@@ -115,12 +124,14 @@ impl CloudLink {
         self.with_token(move |api, token| api.ai_reject(token, &reject)).await
     }
 
+    #[cfg(not(target_arch = "wasm32"))]
     /// MP3 for `req` through `POST /v1/tts`.
     pub async fn tts(&self, req: TtsRequest) -> Result<Vec<u8>, Unreachable> {
         self.with_token(move |api, token| api.tts(token, &req)).await
     }
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 impl CloudLink {
     /// Uploads a PNG or JPEG for the vision tasks and returns the
     /// `EngineCall::image_sha256` that names it. Upload right before each
@@ -135,12 +146,35 @@ impl CloudLink {
     }
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 fn sha256_hex(bytes: &[u8]) -> String {
     use sha2::{Digest, Sha256};
     Sha256::digest(bytes).iter().map(|b| format!("{b:02x}")).collect()
 }
 
-/// Runs blocking calls on Tokio's bounded blocking thread pool.
+/// The web build doesn't reach Kabar Cloud yet (docs/WEB.md, phase 2): every
+/// call says so, and the router tells the learner to connect.
+#[cfg(target_arch = "wasm32")]
+impl CloudLink {
+    pub async fn ai(&self, _call: EngineCall) -> Result<EngineReply, EngineError> {
+        Err(Unreachable::NotConfigured.into())
+    }
+
+    pub async fn ai_reject(&self, _key: CacheKey) -> Result<(), Unreachable> {
+        Err(Unreachable::NotConfigured)
+    }
+
+    pub async fn tts(&self, _req: TtsRequest) -> Result<Vec<u8>, Unreachable> {
+        Err(Unreachable::NotConfigured)
+    }
+
+    pub async fn put_blob(&self, _bytes: Vec<u8>) -> Result<String, Unreachable> {
+        Err(Unreachable::NotConfigured)
+    }
+}
+
+/// Runs blocking calls on Tokio's bounded blocking thread pool (in place on
+/// the web, which has one thread).
 pub async fn off_thread<T: Send + 'static>(f: impl FnOnce() -> T + Send + 'static) -> T {
-    tokio::task::spawn_blocking(f).await.expect("blocking task panicked")
+    crate::platform::time::blocking(f).await
 }

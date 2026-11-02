@@ -50,8 +50,14 @@ Kabar Cloud is a Cloudflare Worker on the free plan (sync hub, key vault, AI
 and TTS proxy). Its code and local end-to-end test are done, and a
 "Deploy Kabar Cloud" GitHub Actions workflow can now deploy it without the Mac
 ([docs/CLOUD.md](docs/CLOUD.md) §3.5). It is not deployed yet: the workflow
-waits for the `CLOUDFLARE_API_TOKEN` repo secret. A web build (M2+) comes
-after the deploy.
+waits for the `CLOUDFLARE_API_TOKEN` repo secret.
+
+**Web (any browser)**: the same Rust app compiled to WebAssembly, shaped like
+the "Crafting Apps" (one codebase, a thin web shell, a static site). Lessons,
+review, stats, Kak Nur, the Reader, Play, Watch & listen and themes all run in
+the browser, with progress kept in the browser's IndexedDB and exports as
+downloads. Kabar Cloud from the browser (sign-in, sync, AI, cloud voices),
+offline packs and OCR come in phase 2 ([docs/WEB.md](docs/WEB.md)).
 
 ## Content in numbers
 
@@ -118,7 +124,7 @@ phased for after M13, never dropped.
 | M0 | Research, plan, free-tier check, engine bake-off | 🟡 code done | run the bake-off on the Mac with real keys |
 | M1 | Workspace, Dioxus app on all three devices, i18n + RTL, themes, SQLite, Pen Lab | ✅ done | first install on the devices |
 | M2 | Kabar Cloud v0: Google sign-in, devices, live sync, key vault, AI/TTS proxy | 🟡 code done | add the Cloudflare token secret and run the Deploy Kabar Cloud workflow (no Mac needed); Kabar's own Google client (it borrows Batna's for now) |
-| M2+ | Web build on Cloudflare Pages | ⏳ waits for M2 | plan for approval after the deploy |
+| M2+ | Web app (WebAssembly) on a static Cloudflare Worker | 🟡 phase 1 done | phase 2: Kabar Cloud from the browser (sign-in, sync, AI, voices), offline packs ([docs/WEB.md](docs/WEB.md)) |
 | M3 | Dictionary import + language engine | ✅ done | |
 | M4 | Content pipeline v1: frequency lists, glosses, grammar library, golden sets | ✅ done | learner review of the content |
 | M5 | Reader, Screenshot Decoder, Share-to-Kabar, pen pointing | ✅ done | pen dragging deferred |
@@ -146,6 +152,8 @@ first Mac session is a checklist in [docs/MAC-TODO.md](docs/MAC-TODO.md).
 | Mac, dev | `just run-mac` | desktop app with hot reload |
 | Phone layout on the Mac | `just run-phone-preview` | the app in a 412×915 window |
 | Mac, app bundle | `just bundle-mac` | `dist/mac/Kabar.app` |
+| Web, dev | `just web` | the browser app on http://localhost:8080 ([docs/WEB.md](docs/WEB.md)) |
+| Web, release | `just web-release` | `target/web/kabar`, what Cloudflare serves |
 | Android, dev | `just run-android [device]` | live reload on a connected Galaxy |
 | Android, release | `just android-keystore` (once), `just apk`, `just install <serial>` | signed `dist/android/kabar.apk` on the S24 Ultra or Tab S11 |
 | Kabar Cloud, local | `just cloud-dev`, `just cloud-e2e` | Worker on `127.0.0.1:8787`; phone → tablet sync test |
