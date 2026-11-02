@@ -671,6 +671,12 @@ pub enum Msg {
     SaveRetry,
 }
 
+/// Fills a template from this catalog: `{n}` as written, `{n|one|two|few[|many]}`
+/// with Arabic's dual and plural (`kabar_core::coach::voice::fill`).
+pub fn fill(lang: UiLanguage, template: &str, args: &[(&str, &str)]) -> String {
+    kabar_core::coach::voice::fill(lang, template, args)
+}
+
 pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
     use Msg::*;
     use UiLanguage::*;
@@ -900,9 +906,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (DiagEmpty, ArEg) => "مفيش حاجة غلط من ساعة ما فتحت التطبيق.",
         (DiagEmpty, Ar) => "لم يحدث أي خطأ منذ فتح التطبيق.",
         (DiagEmpty, En) => "Nothing has gone wrong since Kabar opened.",
-        (DiagCount, ArEg) => "{n} سطر",
-        (DiagCount, Ar) => "{n} سطر",
-        (DiagCount, En) => "{n} lines",
+        (DiagCount, ArEg) => "{n|سطر|سطرين|سطور}",
+        (DiagCount, Ar) => "{n|سطر|سطران|أسطر|سطرًا}",
+        (DiagCount, En) => "{n|line|lines}",
         (DiagRefresh, ArEg) => "حدّث",
         (DiagRefresh, Ar) => "تحديث",
         (DiagRefresh, En) => "Refresh",
@@ -920,9 +926,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ExportSaving, ArEg) => "بنحفظ…",
         (ExportSaving, Ar) => "جارٍ الحفظ…",
         (ExportSaving, En) => "Saving…",
-        (ExportSaved, ArEg) => "اتحفظ {rows} صف في:",
-        (ExportSaved, Ar) => "حُفظ {rows} صفًّا في:",
-        (ExportSaved, En) => "Saved {rows} rows to:",
+        (ExportSaved, ArEg) => "اتحفظ {rows|صف|صفين|صفوف} في:",
+        (ExportSaved, Ar) => "حُفظ {rows|صفّ|صفّان|صفوف|صفًّا} في:",
+        (ExportSaved, En) => "Saved {rows|row|rows} to:",
         (ExportFailed, ArEg) => "معرفناش نحفظ الملف. مفيش حاجة اتغيّرت، تحب تجرّب تاني؟",
         (ExportFailed, Ar) => "تعذّر حفظ الملف. لم يتغير شيء، هل تحاول مرة أخرى؟",
         (ExportFailed, En) => "Couldn't save the file. Nothing was changed; want to try again?",
@@ -1135,13 +1141,13 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RevSeedTitle, Ar) => "ابدأ بكلمات تعرفها أصلًا",
         (RevSeedTitle, En) => "Start with words you already know",
         (RevSeedBody, ArEg) => {
-            "{n} كلمة إندونيسي أصلها عربي. هتعرف أغلبهم من أول نظرة، وفيهم اتنين بيعملوا مقالب."
+            "{n|كلمة إندونيسي|كلمتين إندونيسي|كلمات إندونيسي|كلمة إندونيسي} أصلها عربي. هتعرف أغلبهم من أول نظرة، وفيهم اتنين بيعملوا مقالب."
         }
         (RevSeedBody, Ar) => {
-            "{n} كلمة إندونيسية أصلها عربي. ستعرف أغلبها من النظرة الأولى، واثنتان منها تخدعانك."
+            "{n|كلمة إندونيسية|كلمتان إندونيسيتان|كلمات إندونيسية|كلمةً إندونيسية} أصلها عربي. ستعرف أغلبها من النظرة الأولى، واثنتان منها تخدعانك."
         }
         (RevSeedBody, En) => {
-            "{n} Indonesian words that came from Arabic. You'll recognize most at first sight, and two of them play tricks."
+            "{n|Indonesian word|Indonesian words} that came from Arabic. You'll recognize most at first sight, and two of them play tricks."
         }
         (RevSeedButton, ArEg) => "ضيف الكلمات دي",
         (RevSeedButton, Ar) => "أضف هذه الكلمات",
@@ -1204,9 +1210,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RevWallPhone, En) => "One card at a time on the phone; the full table is on the tablet.",
         (RevBurst, ArEg | Ar) => "دقيقة سريعة",
         (RevBurst, En) => "1-minute burst",
-        (RevBurstHint, ArEg) => "أكتر عدد كروت تقدر عليه في {n} ثانية.",
-        (RevBurstHint, Ar) => "أكبر عدد من البطاقات في {n} ثانية.",
-        (RevBurstHint, En) => "As many quick cards as fit in {n} seconds.",
+        (RevBurstHint, ArEg) => "أكتر عدد كروت تقدر عليه في {n|ثانية|ثانيتين|ثواني}.",
+        (RevBurstHint, Ar) => "أكبر عدد من البطاقات في {n|ثانية|ثانيتين|ثوانٍ|ثانيةً}.",
+        (RevBurstHint, En) => "As many quick cards as fit in {n|second|seconds}.",
         (RevStart, ArEg) => "يلا",
         (RevStart, Ar) => "ابدأ",
         (RevStart, En) => "Start",
@@ -2669,17 +2675,17 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RetentionFirm, ArEg) => "ثابت",
         (RetentionFirm, Ar) => "ثابت",
         (RetentionFirm, En) => "Firm",
-        (RetentionTuned, ArEg) => "المواعيد متظبطة على ذاكرتك انت، من {n} مراجعة.",
-        (RetentionTuned, Ar) => "المواعيد مضبوطة على ذاكرتك أنت، من {n} مراجعة.",
-        (RetentionTuned, En) => "Timing is tuned to your own memory, from {n} reviews.",
+        (RetentionTuned, ArEg) => "المواعيد متظبطة على ذاكرتك انت، من {n|مراجعة|مراجعتين|مراجعات}.",
+        (RetentionTuned, Ar) => "المواعيد مضبوطة على ذاكرتك أنت، من {n|مراجعة|مراجعتين|مراجعات|مراجعةً}.",
+        (RetentionTuned, En) => "Timing is tuned to your own memory, from {n|review|reviews}.",
         (RetentionLearning, ArEg) => {
-            "\u{2068}Kabar\u{2069} بيتعلم ذاكرتك: بعد حوالي {n} مراجعة هيظبط المواعيد عليك انت."
+            "\u{2068}Kabar\u{2069} بيتعلم ذاكرتك: بعد حوالي {n|مراجعة|مراجعتين|مراجعات} هيظبط المواعيد عليك انت."
         }
         (RetentionLearning, Ar) => {
-            "يتعلّم \u{2068}Kabar\u{2069} ذاكرتك: بعد نحو {n} مراجعة سيضبط المواعيد عليك أنت."
+            "يتعلّم \u{2068}Kabar\u{2069} ذاكرتك: بعد نحو {n|مراجعة|مراجعتين|مراجعات|مراجعةً} سيضبط المواعيد عليك أنت."
         }
         (RetentionLearning, En) => {
-            "Kabar is learning your memory: after about {n} reviews it tunes the timing to you."
+            "Kabar is learning your memory: after about {n|review|reviews} it tunes the timing to you."
         }
         (PronModeOn, ArEg) => "ظاهر على طول",
         (PronModeOn, Ar) => "ظاهر دائمًا",
@@ -2758,5 +2764,55 @@ pub fn part_of_speech(lang: UiLanguage, pos: &str) -> &str {
         ArEg => arz,
         Ar => ar,
         En => en,
+    }
+}
+
+#[cfg(test)]
+mod grammar_tests {
+    use super::*;
+    use crate::stats::text::{S, st};
+
+    const NB: char = '\u{a0}';
+
+    fn msg(lang: UiLanguage, m: Msg, n: &str) -> String {
+        fill(lang, t(lang, m), &[("n", n), ("rows", n)])
+    }
+
+    /// Counts agree with their nouns: 1 and 2 by the noun alone, 3–10 the
+    /// plural, 11 and up the singular (Mohamed, 2026-11-02).
+    #[test]
+    fn counted_lines_agree_in_arabic() {
+        use UiLanguage::*;
+        assert_eq!(msg(ArEg, Msg::DiagCount, "1"), "سطر");
+        assert_eq!(msg(ArEg, Msg::DiagCount, "2"), "سطرين");
+        assert_eq!(msg(ArEg, Msg::DiagCount, "7"), format!("7{NB}سطور"));
+        assert_eq!(msg(ArEg, Msg::DiagCount, "12"), format!("12{NB}سطر"));
+        assert_eq!(msg(ArEg, Msg::ExportSaved, "٢"), "اتحفظ صفين في:");
+        assert_eq!(msg(Ar, Msg::ExportSaved, "15"), format!("حُفظ 15{NB}صفًّا في:"));
+        assert_eq!(msg(ArEg, Msg::RevBurstHint, "60"), format!("أكتر عدد كروت تقدر عليه في 60{NB}ثانية."));
+        assert!(msg(ArEg, Msg::RetentionTuned, "5").ends_with(&format!("من 5{NB}مراجعات.")));
+        assert!(msg(ArEg, Msg::RevSeedBody, "2").starts_with("كلمتين إندونيسي أصلها عربي."));
+        let stat = |lang, s, args: &[(&str, &str)]| fill(lang, st(lang, s), args);
+        assert_eq!(stat(ArEg, S::In30Days, &[("n", "30")]), format!("بعد 30{NB}يوم"));
+        assert_eq!(stat(ArEg, S::PeriodWeek, &[("n", "7")]), format!("آخر 7{NB}أيام"));
+        assert_eq!(stat(ArEg, S::PeriodMonth, &[("n", "4")]), format!("آخر 4{NB}أسابيع"));
+        assert_eq!(
+            stat(ArEg, S::RingExplain, &[("total", "2"), ("passed", "1")]),
+            "من مراجعتين لكلمات شفتها قبل كده، افتكرت 1."
+        );
+        assert!(
+            stat(
+                ArEg,
+                S::ForecastSummary,
+                &[("n", "30"), ("total", "7"), ("avg", "1"), ("day", "x"), ("peak", "3")]
+            )
+            .starts_with(&format!("في 30{NB}يوم جايين: 7{NB}مراجعات في المجموع"))
+        );
+    }
+
+    #[test]
+    fn counted_lines_agree_in_english() {
+        assert_eq!(msg(UiLanguage::En, Msg::DiagCount, "1"), format!("1{NB}line"));
+        assert_eq!(msg(UiLanguage::En, Msg::ExportSaved, "3"), format!("Saved 3{NB}rows to:"));
     }
 }

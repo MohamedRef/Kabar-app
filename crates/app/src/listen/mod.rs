@@ -24,6 +24,7 @@ use crate::audio::AudioCache;
 use crate::coach::Coach;
 use crate::embedded::{self, RADIO, STORIES};
 use crate::embedded::{Css, css};
+use crate::i18n::fill;
 use crate::lesson::{EpisodeQuiz, Rich, target_tag};
 use crate::{Db, Ui};
 
@@ -421,9 +422,9 @@ fn lessons_left(ui: &Ui, n: usize) -> String {
     let n_text = ui.num(n as u64);
     match (ui.lang(), n) {
         (UiLanguage::ArEg, 1) => "فاضلك درس واحد في الوحدة".to_string(),
-        (UiLanguage::ArEg, _) => format!("فاضلك {n_text} من دروس الوحدة"),
+        (UiLanguage::ArEg, _) => fill(ui.lang(), "فاضلك {n|درس|درسين|دروس} في الوحدة", &[("n", &n_text)]),
         (UiLanguage::Ar, 1) => "بقي لك درس واحد في الوحدة".to_string(),
-        (UiLanguage::Ar, _) => format!("بقي لك {n_text} من دروس الوحدة"),
+        (UiLanguage::Ar, _) => fill(ui.lang(), "بقي لك {n|درس|درسان|دروس|درسًا} في الوحدة", &[("n", &n_text)]),
         (UiLanguage::En, 1) => "1 lesson to go in this unit".to_string(),
         (UiLanguage::En, _) => format!("{n_text} lessons to go in this unit"),
     }
@@ -431,11 +432,12 @@ fn lessons_left(ui: &Ui, n: usize) -> String {
 
 fn more_episodes(ui: &Ui, n: usize) -> String {
     let n_text = ui.num(n as u64);
-    match ui.lang() {
-        UiLanguage::ArEg => format!("وبعدها {n_text} حلقة كمان مستنياك."),
-        UiLanguage::Ar => format!("وبعدها {n_text} حلقة أخرى بانتظارك."),
-        UiLanguage::En => format!("And {n_text} more episodes after that."),
-    }
+    let template = match ui.lang() {
+        UiLanguage::ArEg => "وبعدها {n|حلقة|حلقتين|حلقات} كمان مستنياك.",
+        UiLanguage::Ar => "وبعدها {n|حلقة أخرى|حلقتان أخريان|حلقات أخرى|حلقةً أخرى} بانتظارك.",
+        UiLanguage::En => "And {n|more episode|more episodes} after that.",
+    };
+    fill(ui.lang(), template, &[("n", &n_text)])
 }
 
 #[component]

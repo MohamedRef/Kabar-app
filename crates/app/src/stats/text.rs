@@ -126,9 +126,13 @@ pub fn st(lang: UiLanguage, msg: S) -> &'static str {
         (HeatTitle, ArEg) => "أيام المذاكرة",
         (HeatTitle, Ar) => "أيام الدراسة",
         (HeatTitle, En) => "Study days",
-        (HeatSummary, ArEg) => "آخر {weeks} أسبوع: ذاكرت في {days} منهم، والوقت كله {minutes}.",
-        (HeatSummary, Ar) => "آخر {weeks} أسبوعًا: عدد أيام الدراسة {days}، بمجموع {minutes}.",
-        (HeatSummary, En) => "Last {weeks} weeks: you studied on {days} days, {minutes} in all.",
+        (HeatSummary, ArEg) => {
+            "آخر {weeks|أسبوع|أسبوعين|أسابيع}: ذاكرت في {days|يوم|يومين|أيام} منهم، والوقت كله {minutes}."
+        }
+        (HeatSummary, Ar) => {
+            "آخر {weeks|أسبوع|أسبوعين|أسابيع|أسبوعًا}: عدد أيام الدراسة {days}، بمجموع {minutes}."
+        }
+        (HeatSummary, En) => "Last {weeks|week|weeks}: you studied on {days|day|days}, {minutes} in all.",
         (HeatLess, ArEg) => "أقل",
         (HeatLess, Ar) => "أقل",
         (HeatLess, En) => "Less",
@@ -170,11 +174,11 @@ pub fn st(lang: UiLanguage, msg: S) -> &'static str {
         (RetentionTitle, ArEg) => "بتفتكر قد إيه",
         (RetentionTitle, Ar) => "نسبة التذكّر",
         (RetentionTitle, En) => "True retention",
-        (Week, ArEg) => "آخر {n} أيام",
-        (Week, Ar) => "آخر {n} أيام",
+        (Week, ArEg) => "آخر {n|يوم|يومين|أيام}",
+        (Week, Ar) => "آخر {n|يوم|يومين|أيام|يومًا}",
         (Week, En) => "Last {n} days",
-        (Month, ArEg) => "آخر {n} يوم",
-        (Month, Ar) => "آخر {n} يومًا",
+        (Month, ArEg) => "آخر {n|يوم|يومين|أيام}",
+        (Month, Ar) => "آخر {n|يوم|يومين|أيام|يومًا}",
         (Month, En) => "Last {n} days",
         (Mature, ArEg) => "كلمات قديمة",
         (Mature, Ar) => "بطاقات ناضجة",
@@ -209,25 +213,29 @@ pub fn st(lang: UiLanguage, msg: S) -> &'static str {
         (ForecastTitle, Ar) => "المراجعات القادمة",
         (ForecastTitle, En) => "Reviews ahead",
         (ForecastSummary, ArEg) => {
-            "في الـ{n} يوم الجايين: {total} مراجعات في المجموع، حوالي {avg} في اليوم. أكتر يوم: {day} ({peak})."
+            "في {n|اليوم الجاي|اليومين الجايين|أيام جاية|يوم جايين}: {total|مراجعة|مراجعتين|مراجعات} في المجموع، حوالي {avg} في اليوم. أكتر يوم: {day} ({peak})."
         }
         (ForecastSummary, Ar) => {
-            "خلال {n} يومًا القادمة: مجموع المراجعات {total}، نحو {avg} يوميًّا. أكثر الأيام: {day} ({peak})."
+            "خلال {n|اليوم القادم|اليومين القادمين|أيام قادمة|يومًا قادمًا}: مجموع المراجعات {total}، نحو {avg} يوميًّا. أكثر الأيام: {day} ({peak})."
         }
         (ForecastSummary, En) => {
-            "Next {n} days: {total} reviews, about {avg} a day. Busiest: {day} ({peak})."
+            "Next {n|day|days}: {total|review|reviews}, about {avg} a day. Busiest: {day} ({peak})."
         }
-        (ForecastEmpty, ArEg) => "مفيش مراجعات متجدولة في الـ{n} يوم الجايين. الكلمات مرتاحة.",
-        (ForecastEmpty, Ar) => "لا مراجعات مجدولة خلال {n} يومًا القادمة. الكلمات مستقرة.",
-        (ForecastEmpty, En) => "Nothing scheduled for the next {n} days. Your words are resting.",
+        (ForecastEmpty, ArEg) => {
+            "مفيش مراجعات متجدولة في {n|اليوم الجاي|اليومين الجايين|أيام جاية|يوم جايين}. الكلمات مرتاحة."
+        }
+        (ForecastEmpty, Ar) => {
+            "لا مراجعات مجدولة خلال {n|اليوم القادم|اليومين القادمين|أيام قادمة|يومًا قادمًا}. الكلمات مستقرة."
+        }
+        (ForecastEmpty, En) => "Nothing scheduled for the next {n|day|days}. Your words are resting.",
         (ForecastBar, ArEg | Ar) => "{day}: {n}",
         (ForecastBar, En) => "{day}: {n}",
         (Today, ArEg) => "النهارده",
         (Today, Ar) => "اليوم",
         (Today, En) => "Today",
-        (In30Days, ArEg) => "بعد {n} يوم",
-        (In30Days, Ar) => "بعد {n} يومًا",
-        (In30Days, En) => "In {n} days",
+        (In30Days, ArEg) => "بعد {n|يوم|يومين|أيام}",
+        (In30Days, Ar) => "بعد {n|يوم|يومين|أيام|يومًا}",
+        (In30Days, En) => "In {n|day|days}",
 
         (CheckTitle, ArEg | Ar) => "فحص المستوى الشهري",
         (CheckTitle, En) => "Monthly level check",
@@ -334,27 +342,29 @@ pub fn st(lang: UiLanguage, msg: S) -> &'static str {
         (ForecastNoPace, ArEg) => "لما نذاكر كام يوم كمان هقدر أقولك تقريبًا هتوصل إمتى.",
         (ForecastNoPace, Ar) => "بعد بضعة أيام أخرى من الدراسة أستطيع أن أقدّر متى تصل.",
         (ForecastNoPace, En) => "A few more days of study and I can estimate when you'll get there.",
-        (ForecastEstimate, ArEg) => "على أساس متوسط {minutes} في اليوم في آخر {days} يوم.",
-        (ForecastEstimate, Ar) => "بناءً على متوسط {minutes} يوميًّا خلال آخر {days} يومًا.",
-        (ForecastEstimate, En) => "Based on {minutes} a day on average over the last {days} days.",
+        (ForecastEstimate, ArEg) => "على أساس متوسط {minutes} في اليوم في آخر {days|يوم|يومين|أيام}.",
+        (ForecastEstimate, Ar) => "بناءً على متوسط {minutes} يوميًّا خلال آخر {days|يوم|يومين|أيام|يومًا}.",
+        (ForecastEstimate, En) => "Based on {minutes} a day on average over the last {days|day|days}.",
         (Lede, ArEg) => "شوف اللي اتحسّن، واعرف خطوتك الجاية.",
         (Lede, Ar) => "انظر ما تحسّن، واعرف خطوتك التالية.",
         (Lede, En) => "See what improved, and what to do next.",
         (PeriodGroup, ArEg) => "الفترة",
         (PeriodGroup, Ar) => "الفترة",
         (PeriodGroup, En) => "Period",
-        (PeriodWeek, ArEg) => "آخر {n} أيام",
-        (PeriodWeek, Ar) => "آخر {n} أيام",
+        (PeriodWeek, ArEg) => "آخر {n|يوم|يومين|أيام}",
+        (PeriodWeek, Ar) => "آخر {n|يوم|يومين|أيام|يومًا}",
         (PeriodWeek, En) => "Last {n} days",
-        (PeriodMonth, ArEg) => "آخر {n} أسابيع",
-        (PeriodMonth, Ar) => "آخر {n} أسابيع",
+        (PeriodMonth, ArEg) => "آخر {n|أسبوع|أسبوعين|أسابيع}",
+        (PeriodMonth, Ar) => "آخر {n|أسبوع|أسبوعين|أسابيع|أسبوعًا}",
         (PeriodMonth, En) => "Last {n} weeks",
         (RingTitle, ArEg) => "تثبيت الكلمات",
         (RingTitle, Ar) => "رسوخ الكلمات",
         (RingTitle, En) => "Words sticking",
-        (RingExplain, ArEg) => "من {total} مراجعة لكلمات شفتها قبل كده، افتكرت {passed}.",
-        (RingExplain, Ar) => "من {total} مراجعة لكلمات رأيتها من قبل، تذكّرت {passed}.",
-        (RingExplain, En) => "Of {total} reviews of words you'd seen before, you remembered {passed}.",
+        (RingExplain, ArEg) => "من {total|مراجعة|مراجعتين|مراجعات} لكلمات شفتها قبل كده، افتكرت {passed}.",
+        (RingExplain, Ar) => {
+            "من {total|مراجعة|مراجعتين|مراجعات|مراجعةً} لكلمات رأيتها من قبل، تذكّرت {passed}."
+        }
+        (RingExplain, En) => "Of {total|review|reviews} of words you'd seen before, you remembered {passed}.",
         (RingEmpty, ArEg) => "لسه مفيش مراجعات لكلمات قديمة في الفترة دي.",
         (RingEmpty, Ar) => "لا مراجعات لكلمات سابقة في هذه الفترة بعد.",
         (RingEmpty, En) => "No reviews of words you'd seen before in this period yet.",
@@ -411,8 +421,10 @@ pub fn st(lang: UiLanguage, msg: S) -> &'static str {
         (WeakNone, ArEg) => "مفيش مهارة واقعة في الفترة دي. حلو جدًا!",
         (WeakNone, Ar) => "لا مهارة متعثرة في هذه الفترة. أحسنت!",
         (WeakNone, En) => "No skill is lagging in this period. Lovely!",
-        (WeakNoData, ArEg) => "لما تجاوب {n} أسئلة أو أكتر في مهارة، هقولك لو محتاجة اهتمام.",
-        (WeakNoData, Ar) => "حين تجيب عن {n} أسئلة أو أكثر في مهارة، سأخبرك إن احتاجت اهتمامًا.",
+        (WeakNoData, ArEg) => "لما تجاوب {n|سؤال|سؤالين|أسئلة} أو أكتر في مهارة، هقولك لو محتاجة اهتمام.",
+        (WeakNoData, Ar) => {
+            "حين تجيب عن {n|سؤال|سؤالين|أسئلة|سؤالًا} أو أكثر في مهارة، سأخبرك إن احتاجت اهتمامًا."
+        }
         (WeakNoData, En) => {
             "Once you answer {n} or more questions in a skill, I'll say if it needs attention."
         }

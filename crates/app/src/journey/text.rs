@@ -44,12 +44,13 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
 }
 
 /// "٣ من ٨ دروس" / "3 of 8 lessons".
-pub fn lessons_of(lang: UiLanguage, done: &str, total: &str, total_n: usize) -> String {
-    match lang {
-        UiLanguage::En => format!("{done} of {total} lessons"),
-        UiLanguage::ArEg | UiLanguage::Ar if (3..=10).contains(&total_n) => format!("{done} من {total} دروس"),
-        UiLanguage::ArEg | UiLanguage::Ar => format!("{done} من {total} درس"),
-    }
+pub fn lessons_of(lang: UiLanguage, done: &str, total: &str) -> String {
+    let template = match lang {
+        UiLanguage::En => "{done} of {total|lesson|lessons}",
+        UiLanguage::ArEg => "{done} من {total|درس|درسين|دروس}",
+        UiLanguage::Ar => "{done} من {total|درس|درسين|دروس|درسًا}",
+    };
+    crate::i18n::fill(lang, template, &[("done", done), ("total", total)])
 }
 
 #[cfg(test)]
@@ -58,8 +59,11 @@ mod tests {
 
     #[test]
     fn lesson_counts_agree_with_the_total() {
-        assert_eq!(lessons_of(UiLanguage::ArEg, "3", "8", 8), "3 من 8 دروس");
-        assert_eq!(lessons_of(UiLanguage::ArEg, "3", "14", 14), "3 من 14 درس");
-        assert_eq!(lessons_of(UiLanguage::En, "0", "7", 7), "0 of 7 lessons");
+        assert_eq!(lessons_of(UiLanguage::ArEg, "3", "8"), "3 من 8\u{a0}دروس");
+        assert_eq!(lessons_of(UiLanguage::ArEg, "٣", "٨"), "٣ من ٨\u{a0}دروس");
+        assert_eq!(lessons_of(UiLanguage::ArEg, "3", "14"), "3 من 14\u{a0}درس");
+        assert_eq!(lessons_of(UiLanguage::ArEg, "1", "2"), "1 من درسين");
+        assert_eq!(lessons_of(UiLanguage::En, "0", "7"), "0 of 7\u{a0}lessons");
+        assert_eq!(lessons_of(UiLanguage::En, "0", "1"), "0 of 1\u{a0}lesson");
     }
 }
