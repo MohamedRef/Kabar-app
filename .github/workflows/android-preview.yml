@@ -160,6 +160,16 @@ jobs:
           cargo run -q -p kabar-tools -- update bundle --out dist/bundle
           echo "KABAR_BUILTIN_CONTENT=$(sha256sum dist/bundle/kabar-content.bundle | cut -d' ' -f1)" >> "$GITHUB_ENV"
 
+      - name: Firebase settings (Kak Nur's pushed reminders)
+        if: env.CONTENT_ONLY != 'true'
+        # google-services.json lives in the KABAR_GOOGLE_SERVICES_JSON repo
+        # secret (docs/CLOUD.md §3.4), never in the repo. Without it (PRs, or
+        # before Firebase is set up) the APK has no Firebase and Kak Nur's
+        # reminders stay local notifications.
+        env:
+          KABAR_GOOGLE_SERVICES_JSON: ${{ env.KEEP_KEY == 'true' && secrets.KABAR_GOOGLE_SERVICES_JSON || '' }}
+        run: python3 scripts/android-firebase.py
+
       - name: Build APK
         if: env.CONTENT_ONLY != 'true'
         working-directory: crates/app

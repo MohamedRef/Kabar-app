@@ -208,6 +208,13 @@ pub const FSI: char = '\u{2068}';
 /// Pop directional isolate: closes it.
 pub const PDI: char = '\u{2069}';
 
+/// How many wordings `line` has in `lang`. `say` with seeds `0..n` gives each
+/// of them once, and any other seed repeats `say(seed % n)`: what the app's
+/// push phrasebook relies on (`coach::notify::phrasebook`).
+pub fn variant_count(lang: UiLanguage, line: Line) -> usize {
+    variants(lang, line).len()
+}
+
 /// Kak Nur's line for `line` in `lang`, with `{placeholders}` filled from
 /// `args`. `seed` picks among variants (use the date's day number, so every
 /// device shows the same wording on the same day).

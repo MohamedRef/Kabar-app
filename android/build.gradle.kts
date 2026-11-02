@@ -1,4 +1,4 @@
-// Kabar's Android glue (share target + ML Kit OCR), compiled as a Gradle library module.
+// Kabar's Android glue (share target, ML Kit OCR, reminders and FCM), compiled as a Gradle library module.
 //
 // You never build this directly: `dx` finds it through the
 // `#[manganis::ffi("../../android")]` marker in crates/app/src/platform/android.rs,
@@ -42,4 +42,8 @@ dependencies {
     // ML Kit Text Recognition v2, Latin script, with the model bundled in the APK:
     // free, on-device, no Google Play services download. Terms: see ATTRIBUTION.md.
     implementation("com.google.mlkit:text-recognition:16.0.1")
+    // Firebase Cloud Messaging: Kak Nur's reminders pushed by Kabar Cloud
+    // (Push.kt). Free (Spark plan). Configured from string resources that
+    // scripts/android-firebase.py writes, not the google-services plugin.
+    implementation("com.google.firebase:firebase-messaging:24.1.0")
 }

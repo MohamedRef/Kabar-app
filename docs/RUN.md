@@ -86,7 +86,7 @@ just cloud-tools     # once: wrangler + worker-build
 wrangler login       # once: your free Cloudflare account
 just cloud-setup     # once: D1, signing key, allowlist
 just deploy-cloud    # after adding GOOGLE_CLIENT_IDS (CLOUD.md §3.2)
-# Reminders (M7): Firebase service account → `wrangler secret put FCM_SERVICE_ACCOUNT` (CLOUD.md §3.4)
+# Pushed reminders (optional): Firebase service account → repo secret FCM_SERVICE_ACCOUNT or `wrangler secret put` (CLOUD.md §3.4)
 ```
 
 Then connect the app (CLOUD.md §3.6):
@@ -136,7 +136,7 @@ Reminders are local notifications from Kak Nur: choosing a reminder style asks f
 - **Time zones.** Alarms follow the device's time zone, so daylight saving (Egypt's ends this week) keeps 19:00 at 19:00.
 - **Samsung "sleeping apps".** One UI stops the alarms of apps it puts to sleep. If Kabar isn't exempt, the reminder settings say so: tap "Open battery settings" → Battery → **Unrestricted** (or Settings → Battery → Background usage limits → Never sleeping apps → add Kabar).
 - **Mac.** Notifications work in the bundled `Kabar.app` (`just bundle-mac`), not in `just run-mac`.
-- **Still to come.** If you finish today's goal on the tablet while the phone is closed, the phone can still ring once. Only push through Kabar Cloud can stop that, and it's planned in issue #187 (needs Cloud deployed and Firebase).
+- **Pushed by Kabar Cloud (optional).** With Firebase set up (CLOUD.md §3.4) and the phone signed in, Kabar Cloud sends the phone's reminders instead, deciding from every device's synced study: finish today's goal on the tablet and the closed phone stays quiet. The phone then schedules no local reminders, so none arrives twice; the push carries no personal text, and the phone words it in your UI language. Signed out, or without Firebase in the APK (`~/.kabar/google-services.json` for `just apk`, the `KABAR_GOOGLE_SERVICES_JSON` secret for the preview APK), the local reminders above stay.
 
 ### Settings: Cost & limits, and Export everything
 

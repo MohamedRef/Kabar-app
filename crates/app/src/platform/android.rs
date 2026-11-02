@@ -949,6 +949,82 @@ fn reminders<T>(f: impl FnOnce(&mut Env, &JClass, &JObject) -> jni::errors::Resu
     })
 }
 
+// Kabar Cloud's pushed reminders (#187) live in `PushBridge`
+// (android/…/Push.kt): Firebase's token, whether the Cloud rings here, and
+// the phrasebook a push is worded from.
+
+fn push<T>(f: impl FnOnce(&mut Env, &JClass, &JObject) -> jni::errors::Result<T>) -> Result<T, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.PushBridge"))?;
+        f(env, &class, activity)
+    })
+}
+
+pub fn push_available() -> Result<bool, String> {
+    push(|env, class, activity| {
+        env.call_static_method(
+            class,
+            jni_str!("available"),
+            jni_sig!("(Landroid/content/Context;)Z"),
+            &[JValue::Object(activity)],
+        )?
+        .z()
+    })
+}
+
+pub fn push_token() -> Result<Option<String>, String> {
+    push(|env, class, activity| {
+        let s = env
+            .call_static_method(
+                class,
+                jni_str!("token"),
+                jni_sig!("(Landroid/content/Context;)Ljava/lang/String;"),
+                &[JValue::Object(activity)],
+            )?
+            .l()?;
+        to_string(env, s)
+    })
+}
+
+pub fn push_pushed() -> Result<bool, String> {
+    push(|env, class, activity| {
+        env.call_static_method(
+            class,
+            jni_str!("pushed"),
+            jni_sig!("(Landroid/content/Context;)Z"),
+            &[JValue::Object(activity)],
+        )?
+        .z()
+    })
+}
+
+/// `token`: Kabar Cloud pushes to this token; empty: it pushes nowhere here.
+pub fn push_set_pushed(token: &str) -> Result<(), String> {
+    push(|env, class, activity| {
+        let token = env.new_string(token)?;
+        env.call_static_method(
+            class,
+            jni_str!("setPushed"),
+            jni_sig!("(Landroid/content/Context;Ljava/lang/String;)V"),
+            &[JValue::Object(activity), JValue::Object(&token)],
+        )
+        .map(drop)
+    })
+}
+
+pub fn push_set_phrasebook(json: &str) -> Result<(), String> {
+    push(|env, class, activity| {
+        let json = env.new_string(json)?;
+        env.call_static_method(
+            class,
+            jni_str!("setPhrasebook"),
+            jni_sig!("(Landroid/content/Context;Ljava/lang/String;)V"),
+            &[JValue::Object(activity), JValue::Object(&json)],
+        )
+        .map(drop)
+    })
+}
+
 /// Replaces the scheduled reminders with `json` (`[{at, title, text}]`).
 pub fn schedule_reminders(json: &str) -> Result<(), String> {
     reminders(|env, class, activity| {

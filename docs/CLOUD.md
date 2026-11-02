@@ -89,15 +89,20 @@ wrangler secret put ANTHROPIC_API_KEY
 Workers AI needs no key.
 
 ### 3.4 Firebase Cloud Messaging (reminders, free Spark plan)
+Optional: without it Kak Nur's reminders are local notifications on each device. With it, Kabar Cloud decides from every device's synced activity, so a goal met on the tablet silences the phone too.
 1. <https://console.firebase.google.com/> → **Add project** → pick the existing Google Cloud project "Kabar" (so sign-in and push share one project). Analytics: off. The plan stays **Spark** (free); FCM has no charges.
-2. **Project settings → General → Add app → Android**: package `app.kabar`. Download `google-services.json` for the app build (not a secret, but keep it out of the repo, like the rest of `~/.kabar`).
-3. **Project settings → Service accounts → Generate new private key**. This downloads a JSON file. It *is* a secret:
+2. **Project settings → General → Add app → Android**: package `app.kabar`. Download `google-services.json`. It holds no secret, but it stays out of the repo:
+   - for CI's preview APK: repo secret **`KABAR_GOOGLE_SERVICES_JSON`** = the file's whole contents (**Settings › Secrets and variables › Actions**);
+   - for `just apk` on the Mac: `mv ~/Downloads/google-services.json ~/.kabar/`.
+
+   `scripts/android-firebase.py` turns it into string resources that Firebase reads at start-up (git-ignored; dx generates the Gradle project, so the google-services plugin isn't used).
+3. **Project settings → Service accounts → Generate new private key**. This downloads a JSON file. It *is* a secret. Either add it as the repo secret **`FCM_SERVICE_ACCOUNT`** (whole contents) and run **Deploy Kabar Cloud**, or from the Mac:
    ```bash
    cd crates/server
    wrangler secret put FCM_SERVICE_ACCOUNT < ~/Downloads/kabar-*-firebase-adminsdk-*.json
    rm ~/Downloads/kabar-*-firebase-adminsdk-*.json
    ```
-4. `GET /v1/vault` now says `"push_configured": true`. The app sends its token on every launch, which starts the reminder alarm.
+4. `GET /v1/vault` now says `"push_configured": true`. A signed-in Android device that rings (Settings › "Remind me on this device") sends its token at launch, which starts the reminder alarm; from then on it schedules no local reminders, so none arrives twice.
 
 ### 3.5 Deploy
 **From GitHub (no Mac needed).** The `Deploy Kabar Cloud` workflow (`.github/workflows/cloud-deploy.yml`) builds and deploys the Worker, the same way Batna Cloud is deployed.
@@ -169,7 +174,7 @@ Counters are in D1 `quota_usage`; a call that would cross a limit is refused bef
 ## 7. Known gaps (phased, not dropped)
 
 - **Android sign-in** uses the same browser + loopback flow as the Mac for now. The one-tap Credential Manager sheet needs the Kotlin bridge in `android/`; the server already accepts its tokens (Web client id).
-- **Push tokens**: the app doesn't send its FCM token yet. Android reminders are local notifications for now (`android/…/Reminders.kt`, `crates/app/src/coach/notify.rs`); FCM is phase 2 of issue #127, and the app will stop scheduling locally once its token is registered so a reminder never arrives twice.
+- **Pushed reminders** (#187) need Firebase (§3.4). The app (`android/…/Push.kt`, `crates/app/src/coach/notify.rs`) sends its token on launch and after a rotation (`PUT /v1/devices/me/push`; `""` from a device that doesn't ring), and stops scheduling local reminders while the Cloud confirms it pushes there. A push carries `{kind, line, seed}` only; the device words it from a phrasebook in the UI language that the app keeps on the device. Signed out, or without Firebase in the APK or the Cloud, local reminders stay. The Mac keeps local notifications (no FCM there).
 - On Linux (development and CI only) the session is kept in memory, so you sign in on every launch. The Mac uses the Keychain and Android the Keystore.
 
 - Vision tasks (`read_handwriting`, `guess_sketch`, `check_strokes`) need an image (`image_sha256`, see `/v1/blobs`). `structure_screenshot` also works from the on-device OCR text alone (no image attached); it is personal (other people's chats), so it never goes to `gemini_free` or the shared cache.

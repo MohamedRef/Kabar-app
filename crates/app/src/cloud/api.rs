@@ -6,7 +6,8 @@ use std::time::Duration;
 use kabar_protocol::DeviceId;
 use kabar_protocol::ai::{AiReject, EngineCall, EngineError, EngineReply};
 use kabar_protocol::cloud::{
-    ApiError, DeviceList, ErrorCode, GoogleSignIn, RefreshRequest, Session, TtsRequest, UsageReport,
+    ApiError, DeviceList, ErrorCode, GoogleSignIn, PushTokenReply, PushTokenRequest, RefreshRequest, Session,
+    TtsRequest, UsageReport,
 };
 use serde::de::DeserializeOwned;
 use ureq::http::Response;
@@ -83,6 +84,18 @@ impl Api {
     /// `GET /v1/usage`: the cost dashboard's counters.
     pub fn usage(&self, access: &str) -> Result<UsageReport, CloudError> {
         read(self.agent.get(format!("{}/v1/usage", self.base)).header("authorization", bearer(access)).call())
+    }
+
+    /// `PUT /v1/devices/me/push`: this device's FCM token (`""` turns push
+    /// off for it).
+    pub fn set_push_token(&self, access: &str, token: &str) -> Result<PushTokenReply, CloudError> {
+        let body = PushTokenRequest { token: token.into() };
+        read(
+            self.agent
+                .put(format!("{}/v1/devices/me/push", self.base))
+                .header("authorization", bearer(access))
+                .send_json(&body),
+        )
     }
 
     pub fn revoke(&self, access: &str, device: &DeviceId) -> Result<(), CloudError> {

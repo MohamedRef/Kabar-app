@@ -58,6 +58,9 @@ pub enum Command {
     RevokeDevice(DeviceId),
     /// Read the cost dashboard's counters (`GET /v1/usage`).
     LoadUsage,
+    /// Send this device's FCM token (`""`: no pushes here), answered with
+    /// [`Event::Push`].
+    PushToken(String),
     /// A local write landed in the outbox.
     Kick,
     /// The app went to the background (`true`: push what's waiting, then
@@ -84,6 +87,12 @@ pub enum Event {
     Changed(BTreeSet<String>),
     /// The browser is open for Google sign-in.
     SigningIn(bool),
+    /// Kabar Cloud's answer to [`Command::PushToken`]: whether it now pushes
+    /// this device's reminders (`None`: it couldn't be asked).
+    Push {
+        token: String,
+        pushed: Option<bool>,
+    },
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
