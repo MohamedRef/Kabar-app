@@ -94,15 +94,18 @@ object PushBridge {
      * `voice::say(line, seed)` picks in the app (`coach::notify::push_text`).
      * A line this build doesn't know falls back to the plain study nudge.
      */
-    fun words(context: Context, line: String, seed: Long): Pair<String, String>? = try {
-        val book = JSONObject(prefs(context).getString(BOOK, null) ?: return null)
-        val lines = book.getJSONObject("lines")
-        val variants = lines.optJSONArray(line) ?: lines.optJSONArray("remind_study") ?: return null
-        if (variants.length() == 0) return null
-        val text = variants.getString(Math.floorMod(seed, variants.length().toLong()).toInt())
-        Pair(book.optString("title", "Kak Nur"), text)
-    } catch (e: JSONException) {
-        null
+    fun words(context: Context, line: String, seed: Long): Pair<String, String>? {
+        val json = prefs(context).getString(BOOK, null) ?: return null
+        return try {
+            val book = JSONObject(json)
+            val lines = book.getJSONObject("lines")
+            val variants = lines.optJSONArray(line) ?: lines.optJSONArray("remind_study") ?: return null
+            if (variants.length() == 0) return null
+            val text = variants.getString(Math.floorMod(seed, variants.length().toLong()).toInt())
+            Pair(book.optString("title", "Kak Nur"), text)
+        } catch (e: JSONException) {
+            null
+        }
     }
 }
 
