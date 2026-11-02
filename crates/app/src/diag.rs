@@ -11,7 +11,7 @@
 use std::collections::VecDeque;
 use std::fmt;
 use std::sync::Mutex;
-use std::time::{SystemTime, UNIX_EPOCH};
+use web_time::{SystemTime, UNIX_EPOCH};
 
 use dioxus::prelude::*;
 
@@ -80,7 +80,13 @@ fn write_out(line: &str) {
     android::write(line);
 }
 
-#[cfg(not(target_os = "android"))]
+/// The web: the browser's console (stderr goes nowhere in wasm).
+#[cfg(target_arch = "wasm32")]
+fn write_out(line: &str) {
+    web_sys::console::warn_1(&format!("kabar: {line}").into());
+}
+
+#[cfg(not(any(target_os = "android", target_arch = "wasm32")))]
 #[allow(clippy::disallowed_macros)]
 fn write_out(line: &str) {
     eprintln!("kabar: {line}");

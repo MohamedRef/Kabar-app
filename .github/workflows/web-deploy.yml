@@ -1,0 +1,78 @@
+name: Deploy Kabar web
+
+# Builds the web app (docs/WEB.md) and deploys it as a static-assets Worker,
+# `kabar-web`, on the same free Cloudflare account and token as Kabar Cloud
+# (CLOUDFLARE_API_TOKEN). Runs by hand and on every push to main that changes
+# what the app shows. Without the token the run says so and stops green.
+# adapted from batna-app main: .github/workflows/web-deploy.yml
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - crates/app/**
+      - crates/core/**
+      - crates/protocol/**
+      - content/**
+      - assets/**
+      - web/**
+      - scripts/web/**
+      - Cargo.lock
+      - .github/workflows/web-deploy.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: web-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: web-deploy
+      - uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
+      - name: Install wasm-bindgen-cli and binaryen
+        run: |
+          version=$(awk '/^name = "wasm-bindgen"$/{getline; gsub(/version = |"/, ""); print; exit}' Cargo.lock)
+          cargo binstall -y --force "wasm-bindgen-cli@$version"
+          # wasm-opt shrinks the download; the build still works without it.
+          if curl -fsSL https://github.com/WebAssembly/binaryen/releases/download/version_123/binaryen-version_123-x86_64-linux.tar.gz | tar xz; then
+            echo "$PWD/binaryen-version_123/bin" >> "$GITHUB_PATH"
+          else
+            echo "::warning::binaryen not installed; the wasm is not shrunk"
+          fi
+      - name: Build
+        run: scripts/web/build.sh
+      - name: Check the Cloudflare token
+        id: ready
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::notice::No CLOUDFLARE_API_TOKEN secret yet; built but not deployed."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy
+        if: steps.ready.outputs.go == 'true'
+        working-directory: web
+        run: |
+          set -o pipefail
+          npx -y wrangler@4 deploy 2>&1 | tee deploy.log
+          url="$(grep -oE 'https://[a-z0-9.-]+\.workers\.dev' deploy.log | head -1 || true)"
+          rm -f deploy.log
+          { echo "### Kabar web is deployed"; [ -n "$url" ] && echo "Open: $url"; } >> "$GITHUB_STEP_SUMMARY"

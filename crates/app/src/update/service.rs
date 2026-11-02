@@ -383,6 +383,13 @@ impl Updater {
     /// part left by an interrupted try of the same build is continued with
     /// an HTTP Range request instead of starting over; the hash still covers
     /// every byte, old and new.
+    #[cfg(target_arch = "wasm32")]
+    pub(super) fn fetch_build(&self, _url: &str, _offer: &Offer, _path: &Path) -> Result<(), Fetch> {
+        // The web build never downloads builds (each deploy is the newest).
+        Err(Fetch::stopped(Failure::Network))
+    }
+
+    #[cfg(not(target_arch = "wasm32"))]
     pub(super) fn fetch_build(&self, url: &str, offer: &Offer, path: &Path) -> Result<(), Fetch> {
         let (part, meta) = part_paths(path);
         let want = PartMeta { size: offer.asset.size, sha256: offer.asset.sha256.clone() };
@@ -524,7 +531,7 @@ impl Updater {
         self.clear_downloads(None);
         self.set_phase(Phase::Idle);
         let auto = self.status().prefs.mode == Mode::Auto;
-        std::thread::spawn(move || self.check(auto));
+        let _ = crate::platform::time::spawn("kabar-update", move || self.check(auto));
     }
 
     pub fn dismiss(&self) {

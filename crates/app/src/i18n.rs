@@ -669,6 +669,12 @@ pub enum Msg {
     // Preference save recovery
     SaveFailed,
     SaveRetry,
+    /// The web app: another tab took over the browser's copy of the data.
+    WebOtherTab,
+    /// The web app: the browser refused to keep the data.
+    WebSaveFailed,
+    /// The web app: Kabar Cloud (sign-in, sync, AI, voices) comes later.
+    WebCloudLater,
 }
 
 /// Fills a template from this catalog: `{n}` as written, `{n|one|two|few[|many]}`
@@ -2736,6 +2742,33 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (SaveRetry, ArEg) => "حاول تحفظ تاني",
         (SaveRetry, Ar) => "إعادة محاولة الحفظ",
         (SaveRetry, En) => "Retry saving",
+        (WebOtherTab, ArEg) => {
+            "\u{2068}Kabar\u{2069} مفتوح في تاب تانية، فالتاب دي وقفت تحفظ. اعمل تحديث للصفحة عشان تكمّل هنا."
+        }
+        (WebOtherTab, Ar) => {
+            "\u{2068}Kabar\u{2069} مفتوح في تبويب آخر، فتوقّف هذا التبويب عن الحفظ. حدّث الصفحة لتكمل هنا."
+        }
+        (WebOtherTab, En) => {
+            "Kabar is open in another tab, so this one stopped saving. Reload to keep learning here."
+        }
+        (WebSaveFailed, ArEg) => {
+            "المتصفح ماقبلش يحفظ تقدّمك دلوقتي. هنحاول تاني لوحدنا؛ ولو فضلت الرسالة دي، اعمل تصدير من الإعدادات."
+        }
+        (WebSaveFailed, Ar) => {
+            "رفض المتصفح حفظ تقدّمك الآن. سنحاول مجددًا تلقائيًا؛ وإن بقيت هذه الرسالة فصدّر بياناتك من الإعدادات."
+        }
+        (WebSaveFailed, En) => {
+            "The browser wouldn't keep your progress just now. Kabar keeps trying; if this stays, export your data from Settings."
+        }
+        (WebCloudLater, ArEg) => {
+            "نسخة الويب لسه من غير \u{2068}Kabar Cloud\u{2069}: تسجيل الدخول والمزامنة وأسئلة الذكاء الاصطناعي والأصوات جايين في الخطوة الجاية. كل الدروس والمراجعة والألعاب شغالة هنا."
+        }
+        (WebCloudLater, Ar) => {
+            "نسخة الويب بلا \u{2068}Kabar Cloud\u{2069} حتى الآن: تسجيل الدخول والمزامنة وأسئلة الذكاء الاصطناعي والأصوات قادمة في المرحلة التالية. كل الدروس والمراجعة والألعاب تعمل هنا."
+        }
+        (WebCloudLater, En) => {
+            "The web app doesn't reach Kabar Cloud yet: sign-in, sync, AI answers and cloud voices come next. Every lesson, review and game works here."
+        }
     }
 }
 

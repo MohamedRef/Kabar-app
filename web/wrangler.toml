@@ -1,0 +1,9 @@
+# The Kabar web app as a static-assets Worker (no script): the same Cloudflare
+# account and token as Kabar Cloud, free plan. Deployed by
+# .github/workflows/web-deploy.yml from target/web/kabar (scripts/web/build.sh).
+name = "kabar-web"
+compatibility_date = "2026-10-01"
+
+[assets]
+directory = "../target/web/kabar"
+not_found_handling = "single-page-application"

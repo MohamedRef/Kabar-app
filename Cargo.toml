@@ -44,6 +44,15 @@ inherits = "dev"
 [profile.server-dev]
 inherits = "dev"
 
+# The web app (scripts/web/build.sh): smallest code, so the wasm stays under
+# the static host's 25 MiB per-file limit (docs/WEB.md). `strip` stays off
+# for wasm-bindgen's custom sections.
+[profile.web-release]
+inherits = "release"
+opt-level = "z"
+lto = "fat"
+strip = false
+
 [profile.wasm-dev]
 inherits = "dev"
 opt-level = 1

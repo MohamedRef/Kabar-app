@@ -41,7 +41,9 @@ use kabar_core::update::{Installed, Version, content_update};
 use kabar_protocol::update::UpdateManifest;
 use serde::{Deserialize, Serialize};
 
-use super::{BuildInfo, agent};
+use super::BuildInfo;
+#[cfg(not(target_arch = "wasm32"))]
+use super::agent;
 
 const DIR: &str = "content";
 const BUNDLE: &str = "content.bundle";
@@ -205,9 +207,11 @@ pub(super) fn unpack_all(entries: &[(String, Vec<u8>)]) -> Result<Vec<(String, S
 fn write_atomic(dir: &Path, temp: &str, path: &Path, bytes: &[u8]) -> Result<(), String> {
     use std::io::Write as _;
     let temp = dir.join(temp);
-    let mut file = fs::File::create(&temp).map_err(|e| e.to_string())?;
-    file.write_all(bytes).and_then(|()| file.sync_all()).map_err(|e| e.to_string())?;
-    drop(file);
+    {
+        // Closed before the rename.
+        let mut file = fs::File::create(&temp).map_err(|e| e.to_string())?;
+        file.write_all(bytes).and_then(|()| file.sync_all()).map_err(|e| e.to_string())?;
+    }
     fs::rename(&temp, path).map_err(|e| e.to_string())?;
     // Make the rename itself durable where the platform allows it.
     #[cfg(unix)]
@@ -480,7 +484,14 @@ fn built_in(builtin: Option<&str>, bundle_in_use: bool, sha: &str) -> bool {
     !bundle_in_use && builtin.is_some_and(|b| same_sha(b.trim(), sha))
 }
 
+/// The web build takes its content from each deploy, never from the feed.
+#[cfg(target_arch = "wasm32")]
+fn download(_base: &str, _file: &kabar_protocol::update::ContentFile) -> Result<Vec<u8>, String> {
+    Err("the web app's content comes with each deploy".into())
+}
+
 /// Fetches the feed's bundle and checks it against the signed manifest row.
+#[cfg(not(target_arch = "wasm32"))]
 fn download(base: &str, file: &kabar_protocol::update::ContentFile) -> Result<Vec<u8>, String> {
     let mut res = agent(Duration::from_secs(10 * 60))
         .get(&format!("{base}/{}", file.file))

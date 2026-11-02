@@ -63,7 +63,7 @@ impl Words {
         let (tx, rx) = futures_channel::oneshot::channel::<()>();
         // The same OnceLock as `reader::warm_up`: whichever thread comes
         // second waits for the first parse instead of doing its own.
-        std::thread::spawn(move || {
+        let _ = crate::platform::time::spawn("kabar-glossary", move || {
             crate::reader::glossary();
             phrases::warm_up();
             let _ = tx.send(());

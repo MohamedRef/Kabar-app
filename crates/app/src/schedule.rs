@@ -92,7 +92,7 @@ pub fn use_optimizer(db: Db, ui: Ui, coach: Coach) {
         let db = db.clone();
         spawn(async move {
             let (tx, rx) = futures_channel::oneshot::channel();
-            std::thread::spawn(move || {
+            let _ = crate::platform::time::spawn("kabar-fsrs", move || {
                 let sched = Scheduler::from_settings(&settings, offset);
                 let reviews = sched.training_items(&log).len();
                 let _ = tx.send(sched.optimize(&log).map(|weights| (weights, reviews)));

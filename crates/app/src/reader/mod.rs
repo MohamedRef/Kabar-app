@@ -66,8 +66,8 @@ pub fn glossary() -> &'static dyn Glossary {
 pub fn warm_up() {
     static STARTED: std::sync::Once = std::sync::Once::new();
     STARTED.call_once(|| {
-        std::thread::spawn(|| {
-            let t = std::time::Instant::now();
+        let _ = crate::platform::time::spawn("kabar-glossary", || {
+            let t = web_time::Instant::now();
             glossary();
             // `just logs` shows it: the cold first popover waits at most this long.
             crate::diag::report!("glossary ready in {} ms", t.elapsed().as_millis());
@@ -557,7 +557,7 @@ fn run_ocr(
     busy.set(Some(Msg::OcrWorking));
     spawn(async move {
         let (tx, rx) = futures_channel::oneshot::channel();
-        std::thread::spawn(move || {
+        let _ = platform::time::spawn("kabar-ocr", move || {
             let _ = tx.send(platform::ocr_image(&path));
         });
         let result = rx.await.unwrap_or_else(|_| Err("OCR thread stopped".into()));
@@ -705,7 +705,7 @@ fn pick_native(st: ReaderState, inbox: Inbox) {
     spawn(async move {
         // Ten minutes is far longer than anyone browses their photos.
         for _ in 0..2400 {
-            tokio::time::sleep(std::time::Duration::from_millis(250)).await;
+            crate::platform::time::sleep(std::time::Duration::from_millis(250)).await;
             // State first: once it says done, the picked image is already stored.
             let state = platform::pick_state();
             if let Some(input) = platform::take_shared_input() {

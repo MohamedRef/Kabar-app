@@ -102,7 +102,7 @@ pub fn ago(lang: UiLanguage, eastern: bool, then_ms: u64, now_ms: u64) -> String
 }
 
 fn now_ms() -> u64 {
-    crate::cloud::engine::now_ms()
+    crate::store::now_ms()
 }
 
 /// The Devices screen (from Teach Kabar and Cost & limits): the page
@@ -137,7 +137,9 @@ pub fn AccountScreen() -> Element {
         crate::ui::DivCard {
             h2 { bdi { lang: "en", class: "latin", "Kabar Cloud" } }
             if !status.configured {
-                p { class: "muted", "{ui.t(Msg::CloudNotConfigured)}" }
+                p { class: "muted",
+                    if cfg!(target_arch = "wasm32") { "{ui.t(Msg::WebCloudLater)}" } else { "{ui.t(Msg::CloudNotConfigured)}" }
+                }
             } else if signed_in {
                 SignedIn { status: status.clone() }
             } else {

@@ -346,6 +346,37 @@ impl Store {
         Self::init(Connection::open_in_memory()?, None)
     }
 
+    /// The web build's store: in memory, starting from the snapshot the
+    /// browser kept (`platform::web`), and migrated like a file would be.
+    #[cfg_attr(not(target_arch = "wasm32"), allow(dead_code))] // web, and tests
+    pub fn from_snapshot(bytes: &[u8]) -> Result<Self> {
+        let mut conn = Connection::open_in_memory()?;
+        if !bytes.is_empty() {
+            let mut bytes = bytes.to_vec();
+            // A WAL-mode header (file format 2) can't be read from memory.
+            if bytes.len() > 19 && bytes[18] == 2 && bytes[19] == 2 {
+                (bytes[18], bytes[19]) = (1, 1);
+            }
+            let len = bytes.len();
+            conn.deserialize_read_exact(rusqlite::MAIN_DB, &bytes[..], len, false)?;
+        }
+        Self::init(conn, None)
+    }
+
+    /// The whole database as bytes, with SQLite's change counter, so the web
+    /// build keeps it in the browser only when something changed.
+    #[cfg_attr(not(target_arch = "wasm32"), allow(dead_code))] // web, and tests
+    pub fn snapshot(&mut self) -> Result<(u64, Vec<u8>)> {
+        let bytes = self.conn.serialize(rusqlite::MAIN_DB)?.to_vec();
+        Ok((self.conn.total_changes(), bytes))
+    }
+
+    /// SQLite's count of rows this connection changed.
+    #[cfg_attr(not(target_arch = "wasm32"), allow(dead_code))]
+    pub fn changes(&self) -> u64 {
+        self.conn.total_changes()
+    }
+
     /// Every later write fails, as on a full or locked disk (tests of the
     /// screens' error paths).
     #[cfg(test)]
@@ -870,8 +901,8 @@ pub mod export;
 mod install;
 
 pub fn now_ms() -> u64 {
-    std::time::SystemTime::now()
-        .duration_since(std::time::UNIX_EPOCH)
+    web_time::SystemTime::now()
+        .duration_since(web_time::UNIX_EPOCH)
         .map(|d| d.as_millis() as u64)
         .unwrap_or_default()
 }

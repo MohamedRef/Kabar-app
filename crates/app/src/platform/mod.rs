@@ -8,6 +8,9 @@ mod macos;
 // Pure helpers; each native bridge uses a subset, other platforms only in tests.
 #[allow(dead_code)]
 mod ocr;
+pub mod time;
+#[cfg(target_arch = "wasm32")]
+pub mod web;
 
 use std::path::{Path, PathBuf};
 
@@ -19,7 +22,12 @@ pub fn data_dir() -> Result<PathBuf, String> {
     {
         android::files_dir().map(PathBuf::from)
     }
-    #[cfg(not(target_os = "android"))]
+    // The browser has no folders: the database is in IndexedDB (`web`).
+    #[cfg(target_arch = "wasm32")]
+    {
+        Err("the browser keeps Kabar's data in IndexedDB".to_string())
+    }
+    #[cfg(not(any(target_os = "android", target_arch = "wasm32")))]
     {
         directories::ProjectDirs::from("app", "Kabar", "Kabar")
             .map(|d| d.data_dir().to_path_buf())
@@ -50,7 +58,12 @@ pub fn export_dir() -> Result<PathBuf, String> {
     {
         android::external_files_dir().or_else(|_| android::files_dir()).map(PathBuf::from)
     }
-    #[cfg(not(target_os = "android"))]
+    // The web downloads exports instead (`web::download`).
+    #[cfg(target_arch = "wasm32")]
+    {
+        data_dir()
+    }
+    #[cfg(not(any(target_os = "android", target_arch = "wasm32")))]
     {
         match directories::UserDirs::new() {
             Some(u) => Ok(u.download_dir().map_or_else(|| u.home_dir().to_path_buf(), Path::to_path_buf)),
@@ -421,7 +434,13 @@ pub fn open_url(url: &str) -> Result<(), String> {
     {
         android::open_url(url)
     }
-    #[cfg(not(target_os = "android"))]
+    // The web: a new tab.
+    #[cfg(target_arch = "wasm32")]
+    {
+        let window = web_sys::window().ok_or("no window")?;
+        window.open_with_url_and_target(url, "_blank").map(drop).map_err(|e| format!("{e:?}"))
+    }
+    #[cfg(not(any(target_os = "android", target_arch = "wasm32")))]
     {
         let opener = if cfg!(target_os = "macos") { "open" } else { "xdg-open" };
         std::process::Command::new(opener).arg(url).spawn().map(drop).map_err(|e| format!("{opener}: {e}"))

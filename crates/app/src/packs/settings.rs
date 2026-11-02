@@ -162,7 +162,7 @@ pub fn OfflinePacks() -> Element {
 
     use_future(move || async move {
         loop {
-            tokio::time::sleep(std::time::Duration::from_millis(400)).await;
+            crate::platform::time::sleep(std::time::Duration::from_millis(400)).await;
             let now = jobs();
             if *queue.peek() != now {
                 // Something finished: show what's installed now.

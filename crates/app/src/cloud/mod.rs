@@ -2,23 +2,41 @@
 //! screen. A background thread runs the [`engine::Engine`] on its own tokio
 //! runtime and database connection; the UI talks to it through channels.
 
+// Sign-in, the sync engine and the HTTP client run on their own thread with
+// tokio's network stack; the web build reaches Kabar Cloud later (docs/WEB.md).
+#[cfg(not(target_arch = "wasm32"))]
 pub mod api;
 #[cfg(test)]
 #[allow(clippy::disallowed_macros)] // the e2e run prints its timings
 mod e2e;
+#[cfg(not(target_arch = "wasm32"))]
 pub mod engine;
 pub mod link;
+#[cfg(not(target_arch = "wasm32"))]
 pub mod oauth;
+#[cfg(not(target_arch = "wasm32"))]
 pub mod session;
 
 use std::collections::BTreeSet;
+#[cfg(not(target_arch = "wasm32"))]
 use std::path::PathBuf;
 
 use kabar_protocol::DeviceId;
 use kabar_protocol::cloud::{DeviceInfo, DeviceSummary, UsageReport};
-use tokio::sync::mpsc::{UnboundedReceiver, UnboundedSender, unbounded_channel};
+#[cfg(not(target_arch = "wasm32"))]
+use tokio::sync::mpsc::unbounded_channel;
+use tokio::sync::mpsc::{UnboundedReceiver, UnboundedSender};
 
+#[cfg(not(target_arch = "wasm32"))]
 use self::oauth::GoogleClient;
+
+/// The Google client the web build will sign in with (docs/WEB.md, phase 2).
+#[cfg(target_arch = "wasm32")]
+#[derive(Clone, Debug)]
+pub struct GoogleClient {
+    pub client_id: String,
+    pub client_secret: Option<String>,
+}
 
 /// Where Kabar Cloud is and which Google client signs in. Set at build time
 /// from `.env` (`KABAR_CLOUD_URL`, `KABAR_GOOGLE_CLIENT_ID`,
@@ -31,6 +49,13 @@ pub struct CloudConfig {
 }
 
 impl CloudConfig {
+    /// The web build doesn't sync yet: Settings says so.
+    #[cfg(target_arch = "wasm32")]
+    pub fn from_env() -> Option<Self> {
+        None
+    }
+
+    #[cfg(not(target_arch = "wasm32"))]
     pub fn from_env() -> Option<Self> {
         let var = |name: &str, built: Option<&'static str>| {
             std::env::var(name).ok().or(built.map(String::from)).filter(|v| !v.trim().is_empty())
@@ -70,6 +95,7 @@ pub enum Command {
     /// A fresh access token for calls made off the sync thread (AI, TTS).
     /// `None` when signed out. `force` refreshes even an unexpired token
     /// (after a 401).
+    #[cfg(not(target_arch = "wasm32"))]
     Access {
         force: bool,
         reply: tokio::sync::oneshot::Sender<Option<(api::Api, String)>>,
@@ -152,6 +178,7 @@ pub struct CloudHandle {
     pub events: UnboundedReceiver<Event>,
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 /// Starts the engine on its own thread. `db_path` is opened a second time
 /// (SQLite WAL), so the UI's connection never waits on the network.
 pub fn start(

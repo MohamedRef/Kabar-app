@@ -1,4 +1,11 @@
 //! Kabar: one Dioxus codebase for the Mac, the S24 Ultra and the Tab S11.
+//!
+//! The same code is the web app (`web/`, docs/WEB.md): built for wasm32, the
+//! browser stands in for the OS (`platform::web`).
+
+// The web build leaves out the Mac/Android-only paths (the sync thread,
+// updates over the air, files), so some of their helpers go unused there.
+#![cfg_attr(target_arch = "wasm32", allow(dead_code, unused_imports, unused_variables, unused_mut))]
 
 mod account;
 mod ai;
@@ -181,10 +188,30 @@ fn main() {
             .with_cfg(Config::new().with_window(window).with_menu(menu).with_disable_context_menu(true))
             .launch(App);
     }
-    #[cfg(not(all(feature = "desktop", not(target_os = "android"))))]
+    // The web: the kept database is read before the first screen.
+    #[cfg(target_arch = "wasm32")]
+    wasm_bindgen_futures::spawn_local(async {
+        platform::web::boot().await;
+        dioxus::launch(App);
+    });
+    #[cfg(not(any(all(feature = "desktop", not(target_os = "android")), target_arch = "wasm32")))]
     dioxus::launch(App);
 }
 
+/// The web: the database the browser kept, in memory (`platform::web`). A
+/// snapshot this build can't read stays in the browser untouched; this
+/// session then runs on a fresh store and doesn't save over it.
+#[cfg(target_arch = "wasm32")]
+fn open_store() -> Result<(Store, std::path::PathBuf), String> {
+    let store = Store::from_snapshot(&platform::web::take_snapshot()).or_else(|e| {
+        crate::diag::report!("the browser's copy didn't open: {e}");
+        platform::web::stop_saving(platform::web::Trouble::Failed);
+        Store::open_in_memory()
+    });
+    Ok((store.map_err(|e| e.to_string())?, std::path::PathBuf::from("kabar.db")))
+}
+
+#[cfg(not(target_arch = "wasm32"))]
 fn open_store() -> Result<(Store, std::path::PathBuf), String> {
     let dir = platform::data_dir()?;
     std::fs::create_dir_all(&dir).map_err(|e| format!("{}: {e}", dir.display()))?;
@@ -257,6 +284,8 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     });
     use_context_provider(|| db.clone());
     persistence::use_provide_saves();
+    #[cfg(target_arch = "wasm32")]
+    platform::web::use_saver(db.clone());
     let prefs = use_context_provider(|| settings::device::DevicePrefs::load(&db));
     use_context_provider(settings::SettingsNav::new);
     use_context_provider(update::sheet::UpdateSheetNav::new);
@@ -347,6 +376,9 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             "data-mouse-hover": mouse_hover,
             "data-word-colours": word_colours,
             style: "{batik}",
+            if cfg!(target_arch = "wasm32") {
+                WebNotice {}
+            }
             if !settings.welcomed {
                 persistence::SaveNotice {}
                 screens::Welcome {}
@@ -358,6 +390,15 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             }
         }
     }
+}
+
+/// The web: a line on top while this tab can't save (`platform::web`).
+#[component]
+fn WebNotice() -> Element {
+    #[cfg(target_arch = "wasm32")]
+    return rsx! { platform::web::StorageNotice {} };
+    #[cfg(not(target_arch = "wasm32"))]
+    rsx! {}
 }
 
 /// Starts Kabar Cloud sync (when this build knows a server) and mirrors its
@@ -377,6 +418,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
     let db = db.clone();
     let coach = try_use_context::<Coach>();
     let words = use_context::<annotated::Words>();
+    #[cfg(not(target_arch = "wasm32"))]
     use_hook(move || {
         let Some(config) = cloud::CloudConfig::from_env() else { return };
         let device = kabar_protocol::cloud::DeviceInfo {

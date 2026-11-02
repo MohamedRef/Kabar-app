@@ -713,9 +713,9 @@ pub fn use_update_notices(ui: Ui, nav: SettingsNav) {
 /// last-known-good one (`content.rs`). Mounted once in the shell.
 pub fn use_content_confirmation() {
     use_future(|| async {
-        tokio::time::sleep(super::content::STABLE_AFTER).await;
+        crate::platform::time::sleep(super::content::STABLE_AFTER).await;
         // Hashing (and, for a legacy install, copying) the bundle stays off
         // the UI thread.
-        std::thread::spawn(super::content::confirm_running);
+        let _ = crate::platform::time::spawn("kabar-update", super::content::confirm_running);
     });
 }
