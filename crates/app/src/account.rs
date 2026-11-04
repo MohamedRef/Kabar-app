@@ -279,8 +279,13 @@ pub fn ReturningSignIn() -> Element {
                         }
                     }
                 }
-                PasswordSignIn {}
-                if let Some(p) = status.problem.filter(|_| !tried()) {
+                // Signed in already (the account is syncing down): a second
+                // sign-in would only replace the session it just got.
+                if status.sync == SyncState::SignedOut {
+                    PasswordSignIn {}
+                }
+                // A password attempt's problem shows inside its card.
+                if let Some(p) = status.problem.filter(|_| !tried() || status.sync != SyncState::SignedOut) {
                     p { class: "notice", role: "status", "{problem_line(&ui, p)}" }
                 }
             }
