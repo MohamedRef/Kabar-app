@@ -17,6 +17,7 @@ the learner and committed under `content/` (`docs/SPEC.md` §18). The tool is
 | `content/glosses/id/batch-NNN.jsonl` | 100 glosses per batch | Claude Code + `prompts/gloss@v1.md` |
 | `content/glosses/jv/plan.tsv`, `batch-NNN.jsonl` | Javanese glosses (with `indonesian` and `speech_level`), unverified | Claude Code + `prompts/gloss-jv@v1.md` |
 | `content/javanese/speech-levels.jsonl` | Javanese speech-level table: ngoko, madya, krama, krama inggil, krama andhap per meaning | Claude Code + `prompts/speech-levels@v1.md` |
+| `content/names.yaml` | one Egyptian Arabic (`ar_eg`) spelling per name (Jogja جوجا, pecel بيتشل, ngoko نجوكو …) and the variants `kabar-content` flags in `ar_eg` texts and `arz` glosses; g is ج as in `kabar_core::pron` (#570) | by hand |
 | `content/golden/<task>.yaml` | golden sets for the 17 runtime AI tasks (`content/golden/README.md`) | Claude Code |
 | `fixtures/golden/` | images for vision golden items | rendered synthetically, or captured on the devices |
 | `content/bridge/sound-rules.json` | Arabic → Indonesian sound changes | by hand |

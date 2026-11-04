@@ -1,0 +1,38 @@
+schema: kabar.names/v1
+# One Egyptian Arabic (ar_eg) spelling per place, food and other name the
+# lessons write in Arabic letters (#570). Spellings follow the app's
+# Arabic-letter scheme (crates/core/src/pron.rs): g is ج, never غ, and ng is نج.
+# `kabar-content` flags every `avoid` spelling in an ar_eg text (and in the
+# word sheets' arz glosses), with or without a clitic in front (و ف ب ك ل ال لل).
+# MSA (`ar`) keeps the press spellings (يوغياكرتا), so it is not checked.
+names:
+  - latin: Jogja
+    ar_eg: جوجا
+    avoid: [جوكجا, جوغجا]
+  - latin: Yogyakarta
+    ar_eg: يوجياكارتا
+    avoid: [يوجياكرتا, يوغياكارتا, يوغياكرتا]
+  - latin: pecel
+    ar_eg: بيتشل
+    avoid: [بيتشيل]
+  - latin: Palembang
+    ar_eg: باليمبانج
+    avoid: [باليمبانغ]
+  - latin: Petruk
+    ar_eg: بتروك
+    avoid: [بيتروك]
+  - latin: ngoko
+    ar_eg: نجوكو
+    avoid: [نغوكو]
+  - latin: wayang
+    ar_eg: وايانج
+    avoid: [وايانغ]
+  - latin: dalang
+    ar_eg: دالانج
+    avoid: [دالانغ]
+  - latin: Kotagede
+    ar_eg: كوتاجيدي
+    avoid: [كوتاغيدي]
+  - latin: sega / sego
+    ar_eg: سيجو
+    avoid: [سيغو, سِغو]
