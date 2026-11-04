@@ -256,10 +256,13 @@ against the live preview bundle before it signs, and puts the content diff
 in the job summary. `update verify` now also runs the bundle checks, so a
 feed devices would refuse fails before upload.
 
-**Channels.** `alpha`, `beta`, `stable` for release builds (the learner
-picks in Settings; a beta also reaches alpha, a release reaches everyone),
-and `preview` for CI builds of `main`, which is fixed for them. Each channel
-is its own GitHub release (`update-alpha`, …, and the existing `preview`).
+**Channels.** `preview` (every merge to `main`), `alpha`, `beta`, `stable`
+(a beta also reaches alpha, a release reaches everyone). Since 2026-11-02
+preview builds are signed with the release keys too, so any build can pick
+any channel in Settings › Updates and move back and forth without a
+reinstall; a preview build starts on `preview`, a release build on `alpha`.
+Preview has no Mac build, so a Mac on preview gets content only. Each
+channel is its own GitHub release (`update-alpha`, …, and `preview`).
 
 **What a device checks, in order.** (1) The Ed25519 signature over the exact
 bytes of `update.json`, with the public key built into the app; nothing in

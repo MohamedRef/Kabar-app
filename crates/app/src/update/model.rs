@@ -382,14 +382,12 @@ impl BuildInfo {
         Self { version, build, preview, key: key_text.and_then(|k| parse_public_key(&k).ok()) }
     }
 
-    /// A preview build follows `preview`; a release build its chosen
-    /// release channel (alpha by default), never `preview`.
+    /// The channel picked in Settings, else the build's own: `preview`
+    /// for a CI preview build, `alpha` for a release build. Since the first
+    /// alpha both are signed with the release keys (2026-11-02), so either
+    /// kind can follow any channel and move between them.
     pub(super) fn channel(&self, chosen: Option<Channel>) -> Channel {
-        if self.preview {
-            Channel::Preview
-        } else {
-            chosen.filter(|c| *c != Channel::Preview).unwrap_or(Channel::Alpha)
-        }
+        chosen.unwrap_or(if self.preview { Channel::Preview } else { Channel::Alpha })
     }
 
     pub(super) fn installed(&self, chosen: Option<Channel>) -> Installed {

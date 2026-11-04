@@ -42,6 +42,7 @@ pub enum Channel {
 }
 
 impl Channel {
+    pub const ALL: [Self; 4] = [Self::Preview, Self::Alpha, Self::Beta, Self::Stable];
     pub const RELEASE: [Self; 3] = [Self::Alpha, Self::Beta, Self::Stable];
 
     pub fn as_str(self) -> &'static str {

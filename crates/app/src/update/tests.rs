@@ -56,10 +56,12 @@ fn prefs_round_trip_and_default_to_automatic_alpha() {
         BuildInfo { version: Version::parse("1.0.0").unwrap(), build: 0, preview: false, key: None };
     assert_eq!(release.channel(None), Channel::Alpha);
     assert_eq!(release.channel(Some(Channel::Beta)), Channel::Beta);
-    // A release build never follows the preview feed, whatever the file says.
-    assert_eq!(release.channel(Some(Channel::Preview)), Channel::Alpha);
+    // Both kinds are signed with the release keys, so a release build may
+    // follow the preview feed and a preview build may go back to alpha.
+    assert_eq!(release.channel(Some(Channel::Preview)), Channel::Preview);
     let preview = BuildInfo { preview: true, ..release };
-    assert_eq!(preview.channel(Some(Channel::Stable)), Channel::Preview);
+    assert_eq!(preview.channel(None), Channel::Preview);
+    assert_eq!(preview.channel(Some(Channel::Alpha)), Channel::Alpha);
 }
 
 #[test]
