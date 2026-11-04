@@ -16,5 +16,9 @@ serde_ignored.workspace = true
 # JSON Schema generation for build-time content (used by kabar-tools).
 schema = ["dep:schemars"]
 
+[dev-dependencies]
+# Property tests for the HLC order.
+proptest = "1"
+
 [lints]
 workspace = true
