@@ -24,7 +24,7 @@ Cost: **$0**. Nothing here needs a card on file.
 | Wire types | `crates/protocol/src/{sync,cloud,ai}.rs` | versioned (`PROTOCOL_VERSION`, `AI_WIRE_VERSION`) |
 | D1 `kabar` | `crates/server/migrations/` | `ai_cache`, `quota_usage` |
 | Sync client (device side) | `crates/core/src/sync_client.rs` | pure state machine: hello, catch-up, one push in flight, acks |
-| App engine | `crates/app/src/cloud/` | Google sign-in (PKCE + loopback), session in Keychain/Keystore, WebSocket, reconnect backoff |
+| App engine | `crates/app/src/cloud/` | Google sign-in (PKCE + loopback), session in a private file (Mac) / Keystore (Android), WebSocket, reconnect backoff |
 | Local merge state | `crates/app/src/store.rs` | `sync_rows` + `outbox`; every synced write goes through `write_synced` |
 
 Devices live in the account's Durable Object rather than D1 (a small change to PLAN.md §5/§6): a remote sign-out and closing that device's socket then happen in one place, with no second database to keep consistent.
@@ -175,7 +175,7 @@ Counters are in D1 `quota_usage`; a call that would cross a limit is refused bef
 
 - **Android sign-in** uses the same browser + loopback flow as the Mac for now. The one-tap Credential Manager sheet needs the Kotlin bridge in `android/`; the server already accepts its tokens (Web client id).
 - **Pushed reminders** (#187) need Firebase (§3.4). The app (`android/…/Push.kt`, `crates/app/src/coach/notify.rs`) sends its token on launch and after a rotation (`PUT /v1/devices/me/push`; `""` from a device that doesn't ring), and stops scheduling local reminders while the Cloud confirms it pushes there. A push carries `{kind, line, seed}` only; the device words it from a phrasebook in the UI language that the app keeps on the device. Signed out, or without Firebase in the APK or the Cloud, local reminders stay. The Mac keeps local notifications (no FCM there).
-- On Linux (development and CI only) the session is kept in memory, so you sign in on every launch. The Mac uses the Keychain and Android the Keystore.
+- On Linux (development and CI only) the session is kept in memory, so you sign in on every launch. Android keeps it in the Keystore. The Mac keeps it in `cloud-session.json` in Kabar's data folder, readable by your account only: the self-signed Kabar.app has no Apple team ID, so the Keychain trusted only the exact build that saved the session and asked for the login password after every new build, every 15 minutes (each token refresh). The first launch with this change moves a Keychain session over, so the Keychain may ask one last time.
 
 - Vision tasks (`read_handwriting`, `guess_sketch`, `check_strokes`) need an image (`image_sha256`, see `/v1/blobs`). `structure_screenshot` also works from the on-device OCR text alone (no image attached); it is personal (other people's chats), so it never goes to `gemini_free` or the shared cache.
 - Op-log compaction (monthly snapshot) arrives once the log is big enough to matter.

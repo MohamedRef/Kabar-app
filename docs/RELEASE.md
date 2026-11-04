@@ -281,8 +281,8 @@ it is fetched whole once more. (4) Android: the APK's package, signing certifica
 Mac: once Kabar.app is signed with the free "Kabar Code Signing"
 certificate (`just mac-codesign-cert`, once), a new bundle must pass
 `codesign --verify --deep --strict` and match the running app's designated
-requirement. The same identity on every build also keeps the Keychain
-trusting Kabar after an update (the Kabar Cloud sign-in).
+requirement. (The Kabar Cloud sign-in is a private file in the data
+folder, not a Keychain item, so it survives any update without a prompt.)
 A feed caught mid-upload (new signature, old manifest) is read once more
 20 seconds later before it counts as a failure.
 Anything that fails is deleted and never installed; the current Kabar stays.

@@ -434,8 +434,15 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
                 kabar_protocol::cloud::Platform::Other
             },
         };
+        #[cfg(target_os = "macos")]
+        let vault: Box<dyn cloud::session::SessionVault> = match path.parent() {
+            Some(dir) => Box::new(cloud::session::FileVault::mac(dir)),
+            None => Box::new(cloud::session::KeyringVault::new()),
+        };
+        #[cfg(all(not(target_os = "macos"), not(target_arch = "wasm32")))]
+        let vault: Box<dyn cloud::session::SessionVault> = Box::new(cloud::session::KeyringVault::new());
         #[cfg(not(target_arch = "wasm32"))]
-        let started = cloud::start(config, path, device, Box::new(cloud::session::KeyringVault::new()));
+        let started = cloud::start(config, path, device, vault);
         #[cfg(target_arch = "wasm32")]
         let started = {
             let _ = path;
