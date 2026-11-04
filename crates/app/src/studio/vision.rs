@@ -51,4 +51,13 @@ mod tests {
         assert_eq!(&bytes[1..4], b"PNG");
         assert!(png_bytes("data:image/jpeg;base64,AAAA").is_none());
     }
+
+    #[test]
+    fn each_cloud_problem_gets_its_own_friendly_reason() {
+        assert_eq!(friendly(&Unreachable::NotConfigured), FriendlyReason::NotAvailable);
+        assert_eq!(friendly(&Unreachable::SignedOut), FriendlyReason::NotAvailable);
+        assert_eq!(friendly(&Unreachable::Offline), FriendlyReason::Unreachable);
+        assert_eq!(friendly(&Unreachable::QuotaExhausted), FriendlyReason::ResetsLater);
+        assert_eq!(friendly(&Unreachable::Server("500".into())), FriendlyReason::TryAgain);
+    }
 }
