@@ -6,6 +6,8 @@
 
 pub mod api;
 #[cfg(test)]
+mod converge;
+#[cfg(test)]
 #[allow(clippy::disallowed_macros)] // the e2e run prints its timings
 mod e2e;
 pub mod engine;
