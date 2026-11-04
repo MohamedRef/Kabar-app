@@ -102,6 +102,8 @@ just apk && just install <serial>   # same on the S24 Ultra and the Tab S11
 
 Check it: save a word in **Try sync** on the phone; it appears on the tablet within seconds. The Devices list shows every signed-in device and can sign one out.
 
+**Without Gmail** (a borrowed laptop, the web app): set a username and password once under Settings → Account & sync → **Username and password** on a signed-in device. On the other device, signed out, type them in the same place; tick **This isn't my device** there and the sign-in ends when the tab or app closes. You land on the same account, with every lesson where you left it (CLOUD.md §4.1).
+
 Once signed in, AI features (Teach Kabar, and later the persona chats) run through Kabar Cloud's AI proxy. Lesson and review audio switches to Azure's neural voices after `wrangler secret put AZURE_SPEECH_KEY` (CLOUD.md §3.3). Each line is fetched once and then kept on the device, so replays work offline. Without the key, or when the monthly free characters run out, the device's own voice reads the line.
 
 ## 6. Content pipeline (vocabulary, Arabic Bridge)
@@ -301,7 +303,7 @@ python3 scripts/assets/synth_sounds.py               # gong, ding and kendang, 3
 
 ## 15b. Web app (any browser)
 
-The same app compiled to WebAssembly ([docs/WEB.md](WEB.md)).
+The same app compiled to WebAssembly ([docs/WEB.md](WEB.md)). After the first visit it opens from the device; a new version downloads in the background and shows from the next open.
 
 ```sh
 cargo install wasm-bindgen-cli@<version in Cargo.lock> --locked   # once

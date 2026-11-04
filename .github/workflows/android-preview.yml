@@ -295,7 +295,12 @@ jobs:
           published="$(gh api "repos/$GH_REPO/git/refs/tags/preview" --jq .object.sha 2>/dev/null || true)"
           if [ -n "$published" ]; then
             status="$(gh api "repos/$GH_REPO/compare/$published...$GITHUB_SHA" --jq .status)"
-            if [ "$status" != "ahead" ]; then
+            # A run that failed halfway (a GitHub 500 mid-upload, 2026-11-04)
+            # can leave the tag moved but update.json gone: a re-run of the
+            # same commit then publishes again instead of leaving no feed.
+            if [ "$status" = identical ] && ! gh release download preview -p update.json -O /dev/null 2>/dev/null; then
+              echo "The release carries ${published::7} but has no update.json: publishing again."
+            elif [ "$status" != "ahead" ]; then
               echo "The release already carries ${published::7} ($status); nothing to publish."
               exit 0
             fi

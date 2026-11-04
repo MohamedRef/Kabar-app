@@ -24,7 +24,7 @@ Cost: **$0**. Nothing here needs a card on file.
 | Wire types | `crates/protocol/src/{sync,cloud,ai}.rs` | versioned (`PROTOCOL_VERSION`, `AI_WIRE_VERSION`) |
 | D1 `kabar` | `crates/server/migrations/` | `ai_cache`, `quota_usage` |
 | Sync client (device side) | `crates/core/src/sync_client.rs` | pure state machine: hello, catch-up, one push in flight, acks |
-| App engine | `crates/app/src/cloud/` | Google sign-in (PKCE + loopback), session in Keychain/Keystore, WebSocket, reconnect backoff |
+| App engine | `crates/app/src/cloud/` | Google sign-in (PKCE + loopback), session in a private file (Mac) / Keystore (Android), WebSocket, reconnect backoff |
 | Local merge state | `crates/app/src/store.rs` | `sync_rows` + `outbox`; every synced write goes through `write_synced` |
 
 Devices live in the account's Durable Object rather than D1 (a small change to PLAN.md §5/§6): a remote sign-out and closing that device's socket then happen in one place, with no second database to keep consistent.
@@ -38,7 +38,11 @@ All JSON. Authenticated routes take `Authorization: Bearer <access_token>`. Erro
 | `GET /v1/health` | `{ name, protocol }` |
 | `POST /v1/auth/google` | `{ id_token, device }` → `Session` |
 | `POST /v1/auth/refresh` | `{ refresh_token }` → new `Session` (the old refresh token stops working) |
+| `POST /v1/auth/password` | `{ username, password_key, device }` → `Session` (§4.1); `401 wrong_password`, `429 too_many_tries` with `retry_after_ms` |
 | `POST /v1/auth/signout` | signs this device out |
+| `GET /v1/login` | `{ username }` (`null` when none is set) |
+| `POST /v1/login` | `{ username, password_key }` sets or changes them → `{ username }`; `409 username_taken` |
+| `DELETE /v1/login` | turns username sign-in off |
 | `GET /v1/devices` | Devices screen: `{ devices: [DeviceSummary] }` |
 | `DELETE /v1/devices/{id}` | remote sign-out |
 | `PUT /v1/devices/me/push` | `{ token }` (this device's FCM token; `""` turns push off) → `{ registered, push_configured }` |
@@ -149,6 +153,18 @@ just cloud-dev   # http://127.0.0.1:8787 (Workers AI calls need `wrangler login`
 just cloud-logs  # live logs from the deployed Worker
 ```
 
+### 4.1 Username and password
+
+For a borrowed laptop or a library computer, where your Gmail isn't. Set a username and password once from a signed-in device (Settings › Account & sync › "Username and password"); then on any device, signed out, type them in the same screen. It is the same account as Google, so everything syncs down, including where each lesson stands (the `sessions` table). Tick "This isn't my device" on someone else's device: the session then lives only in that browser tab (`sessionStorage`) or, in the Mac and Android apps, in memory, and ends when it closes. Sign out there when you're done, or from your phone's Devices list.
+
+How the password is kept safe:
+
+- **It never leaves the device.** The app stretches it with Argon2id (19 MiB, 2 passes, 1 lane; salt `kabar-login-v1:<username>`; `kabar_protocol::cloud::PASSWORD_PARAMS`) and sends only the 32-byte result. The Worker's 10 ms CPU budget can't run a slow hash; the device can (about a quarter of a second). Changing these parameters changes every key, so they are pinned by a test.
+- **The server keeps no key.** The username's `Login` Durable Object stores a random salt and `SHA-256(salt, key)`, compared in constant time. A copy of its storage still costs the full Argon2id work per guess.
+- **Wrong passwords lock the username**: 5 in a row lock it for a minute, each further one doubles the lock, up to an hour (about 24 guesses a day at most). A wrong password and an unknown username get the same answer (`wrong_password`), and an unknown username writes nothing; a lock answers `too_many_tries` with `retry_after_ms`. Setting a new password lifts a lock.
+- Usernames are 3–32 of `a-z 0-9 . _ -`, matched case-insensitively. Passwords are at least 10 characters.
+- The allowlist still applies: the username carries the Google account's email, checked on every sign-in and refresh.
+
 ## 5. Free-tier hard stops
 
 Counters are in D1 `quota_usage`; a call that would cross a limit is refused before it's made (`quota_exhausted` with `retry_after_s` until the UTC reset). Change them in `wrangler.toml`.
@@ -175,7 +191,7 @@ Counters are in D1 `quota_usage`; a call that would cross a limit is refused bef
 
 - **Android sign-in** uses the same browser + loopback flow as the Mac for now. The one-tap Credential Manager sheet needs the Kotlin bridge in `android/`; the server already accepts its tokens (Web client id).
 - **Pushed reminders** (#187) need Firebase (§3.4). The app (`android/…/Push.kt`, `crates/app/src/coach/notify.rs`) sends its token on launch and after a rotation (`PUT /v1/devices/me/push`; `""` from a device that doesn't ring), and stops scheduling local reminders while the Cloud confirms it pushes there. A push carries `{kind, line, seed}` only; the device words it from a phrasebook in the UI language that the app keeps on the device. Signed out, or without Firebase in the APK or the Cloud, local reminders stay. The Mac keeps local notifications (no FCM there).
-- On Linux (development and CI only) the session is kept in memory, so you sign in on every launch. The Mac uses the Keychain and Android the Keystore.
+- On Linux (development and CI only) the session is kept in memory, so you sign in on every launch. Android keeps it in the Keystore. The Mac keeps it in `cloud-session.json` in Kabar's data folder, readable by your account only: the self-signed Kabar.app has no Apple team ID, so the Keychain trusted only the exact build that saved the session and asked for the login password after every new build, every 15 minutes (each token refresh). The first launch with this change moves a Keychain session over, so the Keychain may ask one last time.
 
 - Vision tasks (`read_handwriting`, `guess_sketch`, `check_strokes`) need an image (`image_sha256`, see `/v1/blobs`). `structure_screenshot` also works from the on-device OCR text alone (no image attached); it is personal (other people's chats), so it never goes to `gemini_free` or the shared cache.
 - Op-log compaction (monthly snapshot) arrives once the log is big enough to matter.
