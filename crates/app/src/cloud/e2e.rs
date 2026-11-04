@@ -164,6 +164,59 @@ fn phone_and_tablet_sync_through_kabar_cloud() {
         _ => None,
     });
 
+    // Username + password: the phone sets them, then a borrowed computer
+    // ("not my device") signs in with them and gets the same account.
+    let secret = |s: &str| super::Secret(s.into());
+    phone.send(Command::SetLogin { username: "Mo.E2E".into(), password: secret("short") });
+    phone.wait("short refused", |e| match e {
+        Event::Login(l) if l.problem.is_some() => {
+            assert_eq!(l.problem, Some(Problem::ShortPassword));
+            Some(())
+        }
+        _ => None,
+    });
+    phone.send(Command::SetLogin { username: "Mo.E2E".into(), password: secret("correct horse battery") });
+    phone.wait("login saved", |e| match e {
+        Event::Login(l) if l.saved => {
+            assert_eq!(l.username, Some(Some("mo.e2e".into())));
+            Some(())
+        }
+        _ => None,
+    });
+    let mut borrowed = Device::start(dir.path(), "Library PC", Platform::Other, &url);
+    borrowed.send(Command::SignInPassword {
+        username: "mo.e2e".into(),
+        password: secret("wrong horse battery"),
+        remember: false,
+    });
+    borrowed.wait("wrong password", |e| match e {
+        Event::Status(s) if s.problem.is_some() => {
+            assert_eq!(s.problem, Some(Problem::WrongPassword));
+            Some(())
+        }
+        _ => None,
+    });
+    borrowed.send(Command::SignInPassword {
+        username: " MO.E2E ".into(),
+        password: secret("correct horse battery"),
+        remember: false,
+    });
+    borrowed.wait("borrowed live", |e| match e {
+        Event::Status(s) if s.sync == SyncState::Live => {
+            assert!(s.temporary, "a borrowed computer keeps no session");
+            Some(())
+        }
+        _ => None,
+    });
+    let rows = borrowed.store.synced_rows("word_status").unwrap();
+    assert!(rows.iter().any(|r| r.1["lexeme"] == "rumah"), "{rows:?}");
+    assert_eq!(borrowed.store.settings().unwrap().theme, Theme::Dark);
+    borrowed.send(Command::SignOut);
+    borrowed.wait("borrowed signed out", |e| {
+        matches!(e, Event::Status(s) if s.sync == SyncState::SignedOut).then_some(())
+    });
+    borrowed.send(Command::Shutdown);
+
     phone.send(Command::SignOut);
     phone.wait("phone signed out", |e| {
         matches!(e, Event::Status(s) if s.sync == SyncState::SignedOut).then_some(())

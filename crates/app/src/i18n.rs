@@ -30,6 +30,7 @@ pub enum Msg {
     WelcomeExplain,
     WelcomeFirstWord,
     WelcomeStart,
+    WelcomeHaveAccount,
     NavToday,
     NavJourney,
     NavReader,
@@ -691,8 +692,35 @@ pub enum Msg {
     WebOtherTab,
     /// The web app: the browser refused to keep the data.
     WebSaveFailed,
-    /// The web app: Kabar Cloud (sign-in, sync, AI, voices) comes later.
-    WebCloudLater,
+    // Username + password sign-in (docs/CLOUD.md § Username and password).
+    PwTitle,
+    PwIntro,
+    PwUsername,
+    PwPassword,
+    PwNotMine,
+    PwNotMineHint,
+    PwSignIn,
+    PwChecking,
+    PwYours,
+    PwHow,
+    PwNone,
+    PwUsernameHint,
+    PwNew,
+    PwPasswordHint,
+    PwAgain,
+    PwSave,
+    PwSaving,
+    PwSaved,
+    PwChange,
+    PwRemove,
+    PwCancel,
+    PwTemporary,
+    ProblemWrongPassword,
+    ProblemLocked,
+    ProblemTaken,
+    ProblemBadUsername,
+    ProblemShortPassword,
+    ProblemMismatch,
 }
 }
 
@@ -720,6 +748,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (WelcomeStart, ArEg) => "يلا نبدأ",
         (WelcomeStart, Ar) => "لنبدأ",
         (WelcomeStart, En) => "Let's begin",
+        (WelcomeHaveAccount, ArEg) => "بتتعلّم مع Kabar قبل كده؟ ادخل على حسابك",
+        (WelcomeHaveAccount, Ar) => "تتعلّم مع Kabar من قبل؟ سجّل الدخول إلى حسابك",
+        (WelcomeHaveAccount, En) => "Already learning with Kabar? Sign in",
         (NavToday, ArEg | Ar) => "اليوم",
         (NavToday, En) => "Today",
         (NavJourney, ArEg | Ar) => "الرحلة",
@@ -2779,15 +2810,116 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (WebSaveFailed, En) => {
             "The browser wouldn't keep your progress just now. Kabar keeps trying; if this stays, export your data from Settings."
         }
-        (WebCloudLater, ArEg) => {
-            "تسجيل الدخول على الويب هيبقى باسم مستخدم وباسورد، وجاي قريب. لحد ما ييجي، كل الدروس والمراجعة والألعاب شغالة هنا، والتقدّم محفوظ في المتصفح."
+        (PwTitle, ArEg) => "الدخول باسم مستخدم وباسورد",
+        (PwTitle, Ar) => "الدخول باسم مستخدم وكلمة مرور",
+        (PwTitle, En) => "Username and password",
+        (PwIntro, ArEg) => {
+            "على جهاز مش بتاعك أو على الويب: ادخل باسم المستخدم والباسورد اللي ظبطتهم من جهازك، وهتلاقي تقدّمك كله وآخر حتة وقفت عندها."
         }
-        (WebCloudLater, Ar) => {
-            "تسجيل الدخول على الويب سيكون باسم مستخدم وكلمة مرور، وهو قادم قريبًا. حتى ذلك الحين تعمل كل الدروس والمراجعة والألعاب هنا، والتقدّم محفوظ في المتصفح."
+        (PwIntro, Ar) => {
+            "على جهاز ليس لك أو على الويب: ادخل باسم المستخدم وكلمة المرور اللذين ضبطتهما من جهازك، وستجد تقدّمك كله وآخر موضع توقفت عنده."
         }
-        (WebCloudLater, En) => {
-            "On the web you'll sign in with a username and password, coming soon. Until then every lesson, review and game works here, with progress kept in this browser."
+        (PwIntro, En) => {
+            "On a device that isn't yours, or on the web: sign in with the username and password you set on your own device, and everything comes back, right where you left off."
         }
+        (PwUsername, ArEg) => "اسم المستخدم",
+        (PwUsername, Ar) => "اسم المستخدم",
+        (PwUsername, En) => "Username",
+        (PwPassword, ArEg) => "الباسورد",
+        (PwPassword, Ar) => "كلمة المرور",
+        (PwPassword, En) => "Password",
+        (PwNotMine, ArEg) => "الجهاز ده مش بتاعي",
+        (PwNotMine, Ar) => "هذا الجهاز ليس لي",
+        (PwNotMine, En) => "This isn't my device",
+        (PwNotMineHint, ArEg) => "هتخرج لوحدك أول ما تقفل التاب أو التطبيق.",
+        (PwNotMineHint, Ar) => "ستخرج تلقائيًا عند إغلاق التبويب أو التطبيق.",
+        (PwNotMineHint, En) => "You're signed out when the tab or app closes.",
+        (PwSignIn, ArEg) => "ادخل",
+        (PwSignIn, Ar) => "ادخل",
+        (PwSignIn, En) => "Sign in",
+        (PwChecking, ArEg) => "بيدخل…",
+        (PwChecking, Ar) => "جارٍ الدخول…",
+        (PwChecking, En) => "Signing in…",
+        (PwYours, ArEg) => "بتدخل من أي جهاز بـ",
+        (PwYours, Ar) => "تدخل من أي جهاز بـ",
+        (PwYours, En) => "On any device, sign in as",
+        (PwHow, ArEg) => {
+            "على أي جهاز: افتح Kabar، ومن «الإعدادات › الحساب والمزامنة» اكتب اسم المستخدم والباسورد."
+        }
+        (PwHow, Ar) => {
+            "على أي جهاز: افتح Kabar، ومن «الإعدادات › الحساب والمزامنة» اكتب اسم المستخدم وكلمة المرور."
+        }
+        (PwHow, En) => "On any device: open Kabar and type them under Settings › Account & sync.",
+        (PwNone, ArEg) => {
+            "اختار اسم مستخدم وباسورد عشان تدخل من أي جهاز أو من الويب من غير جيميل. حسابك هو هو، فكل حاجة بتتزامن."
+        }
+        (PwNone, Ar) => {
+            "اختر اسم مستخدم وكلمة مرور لتدخل من أي جهاز أو من الويب دون Gmail. الحساب نفسه، فكل شيء يتزامن."
+        }
+        (PwNone, En) => {
+            "Pick a username and password to sign in on any device or on the web without Gmail. It's the same account, so everything syncs."
+        }
+        (PwUsernameHint, ArEg) => "من ٣ لـ ٣٢: حروف إنجليزي صغيرة وأرقام و . _ -",
+        (PwUsernameHint, Ar) => "من ٣ إلى ٣٢: حروف إنجليزية صغيرة وأرقام و . _ -",
+        (PwUsernameHint, En) => "3 to 32 of a–z, 0–9 and . _ -",
+        (PwNew, ArEg) => "الباسورد الجديد",
+        (PwNew, Ar) => "كلمة المرور الجديدة",
+        (PwNew, En) => "New password",
+        (PwPasswordHint, ArEg) => "١٠ حروف على الأقل. جملة قصيرة تفتكرها أحسن من كلمة صعبة.",
+        (PwPasswordHint, Ar) => "١٠ أحرف على الأقل. جملة قصيرة تتذكرها أفضل من كلمة صعبة.",
+        (PwPasswordHint, En) => "At least 10 characters. A short phrase you'll remember beats a hard word.",
+        (PwAgain, ArEg) => "اكتبه تاني",
+        (PwAgain, Ar) => "أعد كتابتها",
+        (PwAgain, En) => "Type it again",
+        (PwSave, ArEg) => "احفظ",
+        (PwSave, Ar) => "احفظ",
+        (PwSave, En) => "Save",
+        (PwSaving, ArEg) => "بيحفظ…",
+        (PwSaving, Ar) => "جارٍ الحفظ…",
+        (PwSaving, En) => "Saving…",
+        (PwSaved, ArEg) => "اتحفظ. تقدر تدخل بيه من أي جهاز دلوقتي.",
+        (PwSaved, Ar) => "تم الحفظ. يمكنك الدخول به من أي جهاز الآن.",
+        (PwSaved, En) => "Saved. You can sign in with it on any device now.",
+        (PwChange, ArEg) => "غيّر",
+        (PwChange, Ar) => "غيّر",
+        (PwChange, En) => "Change",
+        (PwRemove, ArEg) => "اقفل الدخول بالباسورد",
+        (PwRemove, Ar) => "أوقف الدخول بكلمة المرور",
+        (PwRemove, En) => "Turn off password sign-in",
+        (PwCancel, ArEg) => "إلغاء",
+        (PwCancel, Ar) => "إلغاء",
+        (PwCancel, En) => "Cancel",
+        (PwTemporary, ArEg) => {
+            "دخول مؤقت: هتخرج لوحدك لما تقفل التاب أو التطبيق. لو خلصت قبلها، دوس «سجّل خروج من الجهاز ده»."
+        }
+        (PwTemporary, Ar) => {
+            "دخول مؤقت: ستخرج تلقائيًا عند إغلاق التبويب أو التطبيق. إن انتهيت قبل ذلك فاضغط «تسجيل الخروج من هذا الجهاز»."
+        }
+        (PwTemporary, En) => {
+            "Temporary sign-in: you're signed out when the tab or app closes. Done sooner? Tap “Sign out on this device”."
+        }
+        (ProblemWrongPassword, ArEg) => "اسم المستخدم أو الباسورد مش مظبوط. جرّب تاني.",
+        (ProblemWrongPassword, Ar) => "اسم المستخدم أو كلمة المرور غير صحيحة. حاول مرة أخرى.",
+        (ProblemWrongPassword, En) => "That username and password don't match. Try again.",
+        (ProblemLocked, ArEg) => {
+            "محاولات غلط كتير، فالدخول بالاسم ده واقف شوية. جرّب تاني بعد {n|دقيقة|دقيقتين|دقايق}."
+        }
+        (ProblemLocked, Ar) => {
+            "محاولات خاطئة كثيرة، فالدخول بهذا الاسم متوقف قليلًا. حاول مجددًا بعد {n|دقيقة|دقيقتين|دقائق|دقيقة}."
+        }
+        (ProblemLocked, En) => "Too many wrong tries, so this username is paused. Try again in {n} min.",
+        (ProblemTaken, ArEg) => "اسم المستخدم ده محجوز. اختار اسم تاني.",
+        (ProblemTaken, Ar) => "اسم المستخدم هذا محجوز. اختر اسمًا آخر.",
+        (ProblemTaken, En) => "That username is taken. Pick another.",
+        (ProblemBadUsername, ArEg) => "اسم المستخدم من ٣ لـ ٣٢: حروف إنجليزي وأرقام و . _ - بس.",
+        (ProblemBadUsername, Ar) => "اسم المستخدم من ٣ إلى ٣٢: حروف إنجليزية وأرقام و . _ - فقط.",
+        (ProblemBadUsername, En) => "A username is 3 to 32 of a–z, 0–9 and . _ - only.",
+        (ProblemShortPassword, ArEg) => "الباسورد لازم يبقى ١٠ حروف على الأقل.",
+        (ProblemShortPassword, Ar) => "يجب أن تكون كلمة المرور ١٠ أحرف على الأقل.",
+        (ProblemShortPassword, En) => "A password needs at least 10 characters.",
+        (ProblemMismatch, ArEg) => "الباسوردين مش زي بعض.",
+        (ProblemMismatch, Ar) => "كلمتا المرور غير متطابقتين.",
+        (ProblemMismatch, En) => "The two passwords differ.",
     }
 }
 

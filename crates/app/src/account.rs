@@ -7,7 +7,7 @@ use kabar_protocol::cloud::{DeviceSummary, Platform, UsageReport};
 use kabar_protocol::sync::OpKind;
 use tokio::sync::mpsc::UnboundedSender;
 
-use crate::cloud::{CloudStatus, Command, Problem, SyncState};
+use crate::cloud::{CloudStatus, Command, LoginStatus, Problem, Secret, SyncState};
 use crate::i18n::Msg;
 use crate::{Db, Ui};
 
@@ -19,6 +19,7 @@ pub struct Cloud {
     /// The cost dashboard's counters, once asked for.
     pub usage: Signal<Option<Result<UsageReport, Problem>>>,
     pub signing_in: Signal<bool>,
+    pub login: Signal<LoginStatus>,
     /// Bumped when remote ops change rows the UI shows.
     pub revision: Signal<u64>,
     pub commands: Signal<Option<UnboundedSender<Command>>>,
@@ -47,6 +48,20 @@ pub fn problem_msg(p: Problem) -> Msg {
         Problem::Network => Msg::ProblemNetwork,
         Problem::Server => Msg::ProblemServer,
         Problem::Outdated => Msg::ProblemOutdated,
+        Problem::WrongPassword => Msg::ProblemWrongPassword,
+        Problem::Locked(_) => Msg::ProblemLocked,
+        Problem::UsernameTaken => Msg::ProblemTaken,
+        Problem::BadUsername => Msg::ProblemBadUsername,
+        Problem::ShortPassword => Msg::ProblemShortPassword,
+        Problem::Mismatch => Msg::ProblemMismatch,
+    }
+}
+
+/// The sentence for a problem, with the wait when the username is locked.
+pub fn problem_line(ui: &Ui, p: Problem) -> String {
+    match p {
+        Problem::Locked(minutes) => ui.fill(Msg::ProblemLocked, &[("n", &ui.num(minutes))]),
+        p => ui.t(problem_msg(p)).to_string(),
     }
 }
 
@@ -142,8 +157,8 @@ pub fn AccountScreen() -> Element {
                 SignedIn { status: status.clone() }
             } else {
                 p { "{ui.t(Msg::CloudIntro)}" }
+                // The web app signs in with a username and password only (below).
                 if cfg!(target_arch = "wasm32") {
-                    p { class: "muted", "{ui.t(Msg::WebCloudLater)}" }
                 } else if *cloud.signing_in.read() {
                     p { class: "muted", aria_live: "polite", "{ui.t(Msg::CloudSigningIn)}" }
                 } else {
@@ -151,10 +166,14 @@ pub fn AccountScreen() -> Element {
                 }
             }
             if let Some(p) = status.problem {
-                p { class: "notice", role: "status", "{ui.t(problem_msg(p))}" }
+                p { class: "notice", role: "status", "{problem_line(&ui, p)}" }
             }
         }
+        if status.configured && !signed_in {
+            PasswordSignIn {}
+        }
         if signed_in {
+            LoginCard {}
             DevicesCard {}
             TrySyncCard {}
         }
@@ -178,6 +197,9 @@ fn SignedIn(status: CloudStatus) -> Element {
         if status.sync == SyncState::Offline {
             crate::misc_art::Picture { art: crate::misc_art::Art::Offline, class: "empty-art small" }
         }
+        if status.temporary {
+            p { class: "notice", role: "note", "{ui.t(Msg::PwTemporary)}" }
+        }
         div { class: "field row",
             if let Some(msg) = sync_msg(status.sync) {
                 span {
@@ -199,6 +221,239 @@ fn SignedIn(status: CloudStatus) -> Element {
     }
 }
 
+/// First launch on a new device (the Welcome screen): someone who already
+/// learns with Kabar signs in instead of starting over. The account's
+/// profile and lessons sync down before the hub says Live, so Today opens
+/// where they left off, and this device's onboarding never overwrites them.
+#[component]
+pub fn ReturningSignIn() -> Element {
+    let ui = use_context::<Ui>();
+    let db = use_context::<Db>();
+    let cloud = use_context::<Cloud>();
+    let mut open = use_signal(|| false);
+    let status = cloud.status.read().clone();
+    let state = use_memo(move || cloud.status.read().sync);
+    use_effect(move || {
+        if state() == SyncState::Live && !ui.settings.peek().welcomed {
+            ui.update_settings(&db, |s| s.welcomed = true);
+        }
+    });
+    if !status.configured {
+        return rsx! {};
+    }
+    rsx! {
+        if !open() {
+            p {
+                button { class: "outline", onclick: move |_| open.set(true), "{ui.t(Msg::WelcomeHaveAccount)}" }
+            }
+        } else {
+            div { class: "welcome-sign-in",
+                if !cfg!(target_arch = "wasm32") {
+                    p {
+                        button {
+                            disabled: *cloud.signing_in.read(),
+                            onclick: move |_| cloud.send(Command::SignInGoogle),
+                            "{ui.t(Msg::CloudSignIn)}"
+                        }
+                    }
+                }
+                PasswordSignIn {}
+                if let Some(p) = status.problem {
+                    p { class: "notice", role: "status", "{problem_line(&ui, p)}" }
+                }
+            }
+        }
+    }
+}
+
+/// Signed out: username + password, for a device without Google and the web.
+#[component]
+fn PasswordSignIn() -> Element {
+    let ui = use_context::<Ui>();
+    let cloud = use_context::<Cloud>();
+    let mut username = use_signal(String::new);
+    let mut password = use_signal(String::new);
+    let mut theirs = use_signal(|| false);
+    let busy = *cloud.signing_in.read();
+    let ready = !username.read().trim().is_empty() && !password.read().is_empty();
+    rsx! {
+        crate::ui::DivCard { class: "pw-card",
+            h2 { "{ui.t(Msg::PwTitle)}" }
+            p { class: "muted", "{ui.t(Msg::PwIntro)}" }
+            form { class: "pw-form",
+                onsubmit: move |e| {
+                    e.prevent_default();
+                    if !ready || busy {
+                        return;
+                    }
+                    cloud.send(Command::SignInPassword {
+                        username: username.peek().clone(),
+                        password: Secret(password.peek().clone()),
+                        remember: !*theirs.peek(),
+                    });
+                    password.set(String::new());
+                },
+                label { class: "field",
+                    span { class: "label", "{ui.t(Msg::PwUsername)}" }
+                    input {
+                        class: "text-input latin", r#type: "text", name: "username", dir: "ltr", lang: "en",
+                        autocomplete: "username", autocapitalize: "none", spellcheck: "false",
+                        value: "{username}",
+                        oninput: move |e| username.set(e.value()),
+                    }
+                }
+                label { class: "field",
+                    span { class: "label", "{ui.t(Msg::PwPassword)}" }
+                    input {
+                        class: "text-input latin", r#type: "password", name: "password", dir: "ltr",
+                        autocomplete: "current-password",
+                        value: "{password}",
+                        oninput: move |e| password.set(e.value()),
+                    }
+                }
+                label { class: "pw-theirs",
+                    input {
+                        r#type: "checkbox",
+                        checked: theirs(),
+                        onchange: move |e: FormEvent| theirs.set(e.checked()),
+                    }
+                    span {
+                        "{ui.t(Msg::PwNotMine)}"
+                        small { class: "muted", "{ui.t(Msg::PwNotMineHint)}" }
+                    }
+                }
+                div { class: "sync-actions",
+                    button { class: "primary", r#type: "submit", disabled: !ready || busy,
+                        if busy { "{ui.t(Msg::PwChecking)}" } else { "{ui.t(Msg::PwSignIn)}" }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// Signed in: the username and password this account signs in with
+/// elsewhere, set or changed here.
+#[component]
+fn LoginCard() -> Element {
+    let ui = use_context::<Ui>();
+    let cloud = use_context::<Cloud>();
+    let login = cloud.login.read().clone();
+    let state = use_memo(move || cloud.status.read().sync);
+    use_effect(move || {
+        if matches!(state(), SyncState::Live | SyncState::CatchingUp) && cloud.login.peek().username.is_none()
+        {
+            cloud.send(Command::LoadLogin);
+        }
+    });
+    let current = login.username.clone().flatten();
+    let mut username = use_signal(String::new);
+    let mut password = use_signal(String::new);
+    let mut again = use_signal(String::new);
+    let mut mismatch = use_signal(|| false);
+    let mut editing = use_signal(|| false);
+    // The form starts from the username the account has.
+    let known = current.clone();
+    use_effect(use_reactive!(|known| {
+        if let Some(k) = known
+            && username.peek().is_empty()
+        {
+            username.set(k);
+        }
+    }));
+    let saved = login.saved;
+    use_effect(use_reactive!(|saved| {
+        if saved {
+            password.set(String::new());
+            again.set(String::new());
+            editing.set(false);
+        }
+    }));
+    let open = editing() || login.username == Some(None);
+    let ready = !username.read().trim().is_empty() && !password.read().is_empty() && !again.read().is_empty();
+    let problem = if mismatch() { Some(Problem::Mismatch) } else { login.problem };
+    rsx! {
+        crate::ui::DivCard { class: "pw-card",
+            h2 { "{ui.t(Msg::PwTitle)}" }
+            match &login.username {
+                None => rsx! { p { class: "muted", "…" } },
+                Some(Some(name)) => rsx! {
+                    div { class: "field",
+                        span { class: "label", "{ui.t(Msg::PwYours)}" }
+                        bdi { class: "latin", "{name}" }
+                    }
+                    if saved {
+                        p { class: "notice", role: "status", "{ui.t(Msg::PwSaved)}" }
+                    }
+                    p { class: "muted", "{ui.t(Msg::PwHow)}" }
+                },
+                Some(None) => rsx! { p { class: "muted", "{ui.t(Msg::PwNone)}" } },
+            }
+            if open {
+                form { class: "pw-form",
+                    onsubmit: move |e| {
+                        e.prevent_default();
+                        if *password.peek() != *again.peek() {
+                            mismatch.set(true);
+                            return;
+                        }
+                        mismatch.set(false);
+                        cloud.send(Command::SetLogin {
+                            username: username.peek().clone(),
+                            password: Secret(password.peek().clone()),
+                        });
+                    },
+                    label { class: "field",
+                        span { class: "label", "{ui.t(Msg::PwUsername)}" }
+                        input {
+                            class: "text-input latin", r#type: "text", name: "username", dir: "ltr", lang: "en",
+                            autocomplete: "username", autocapitalize: "none", spellcheck: "false",
+                            value: "{username}",
+                            oninput: move |e| username.set(e.value()),
+                        }
+                        p { class: "field-hint", "{ui.t(Msg::PwUsernameHint)}" }
+                    }
+                    label { class: "field",
+                        span { class: "label", "{ui.t(Msg::PwNew)}" }
+                        input {
+                            class: "text-input latin", r#type: "password", name: "new-password", dir: "ltr",
+                            autocomplete: "new-password",
+                            value: "{password}",
+                            oninput: move |e| { password.set(e.value()); mismatch.set(false); },
+                        }
+                        p { class: "field-hint", "{ui.t(Msg::PwPasswordHint)}" }
+                    }
+                    label { class: "field",
+                        span { class: "label", "{ui.t(Msg::PwAgain)}" }
+                        input {
+                            class: "text-input latin", r#type: "password", name: "new-password-again", dir: "ltr",
+                            autocomplete: "new-password",
+                            value: "{again}",
+                            oninput: move |e| { again.set(e.value()); mismatch.set(false); },
+                        }
+                    }
+                    div { class: "sync-actions",
+                        if current.is_some() {
+                            button { r#type: "button", onclick: move |_| editing.set(false), "{ui.t(Msg::PwCancel)}" }
+                        }
+                        button { class: "primary", r#type: "submit", disabled: !ready || login.saving,
+                            if login.saving { "{ui.t(Msg::PwSaving)}" } else { "{ui.t(Msg::PwSave)}" }
+                        }
+                    }
+                }
+            } else if current.is_some() {
+                div { class: "sync-actions",
+                    button { class: "danger", disabled: login.saving, onclick: move |_| cloud.send(Command::RemoveLogin), "{ui.t(Msg::PwRemove)}" }
+                    button { onclick: move |_| editing.set(true), "{ui.t(Msg::PwChange)}" }
+                }
+            }
+            if let Some(p) = problem {
+                p { class: "notice", role: "status", "{problem_line(&ui, p)}" }
+            }
+        }
+    }
+}
+
 #[component]
 fn DevicesCard() -> Element {
     let ui = use_context::<Ui>();
@@ -215,7 +470,7 @@ fn DevicesCard() -> Element {
             }
             match devices {
                 None => rsx! { p { class: "muted", "…" } },
-                Some(Err(p)) => rsx! { p { class: "notice", "{ui.t(problem_msg(p))}" } },
+                Some(Err(p)) => rsx! { p { class: "notice", "{problem_line(&ui, p)}" } },
                 Some(Ok(list)) => rsx! {
                     ul { class: "devices",
                         for d in list {

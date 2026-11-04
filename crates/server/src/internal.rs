@@ -58,3 +58,38 @@ pub struct BlobData {
     pub mime: String,
     pub data_b64: String,
 }
+
+/// Account object `GET /login`: the caller's email (to put on a new
+/// username) and the username the account has now.
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AccountLoginState {
+    pub email: String,
+    pub username: Option<String>,
+}
+
+/// Account object `POST /login`: the username it has from now on.
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoginName {
+    pub username: Option<String>,
+}
+
+/// Login object `POST /set`.
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoginSet {
+    pub account_id: String,
+    pub email: String,
+    pub salt: String,
+    pub verifier: String,
+}
+
+/// Login object `POST /clear`.
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoginClear {
+    pub account_id: String,
+}
+
+/// Login object `POST /check`: the app's stretched key, base64url.
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoginCheck {
+    pub key: String,
+}
