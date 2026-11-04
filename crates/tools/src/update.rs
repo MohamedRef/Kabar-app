@@ -224,12 +224,7 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
             Ok(())
         }
         Cmd::Sign { dir, public_key } => {
-            let secret = std::env::var("KABAR_UPDATE_SECRET").context("KABAR_UPDATE_SECRET is not set")?;
-            let public =
-                fs::read_to_string(public_key.unwrap_or_else(|| root.path().join(RELEASE_KEY_FILE)))?;
-            sign(&dir, &secret, &public)?;
-            eprintln!("signed {}", dir.join(SIGNATURE_FILE).display());
-            Ok(())
+            sign_cmd(root, &dir, public_key, std::env::var("KABAR_UPDATE_SECRET").ok())
         }
         Cmd::Verify { dir, public_key, carried } => {
             let public =
@@ -258,6 +253,15 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
             Ok(())
         }
     }
+}
+
+/// `update sign`: `secret` is `KABAR_UPDATE_SECRET`.
+fn sign_cmd(root: &Root, dir: &Path, public_key: Option<PathBuf>, secret: Option<String>) -> Result<()> {
+    let secret = secret.context("KABAR_UPDATE_SECRET is not set")?;
+    let public = fs::read_to_string(public_key.unwrap_or_else(|| root.path().join(RELEASE_KEY_FILE)))?;
+    sign(dir, &secret, &public)?;
+    eprintln!("signed {}", dir.join(SIGNATURE_FILE).display());
+    Ok(())
 }
 
 fn workspace_version(root: &Root) -> Result<String> {
@@ -729,22 +733,235 @@ mod tests {
         assert_eq!(civil_from_days(11_016), (2000, 2, 29));
     }
 
-    /// Regenerates the signed fixture the core and app tests read:
-    /// `cargo test -p kabar-tools write_update_fixture -- --ignored`.
+    fn read_feed(dir: &Path) -> UpdateManifest {
+        serde_json::from_slice(&fs::read(dir.join(MANIFEST_FILE)).unwrap()).unwrap()
+    }
+
     #[test]
-    #[ignore]
-    fn write_update_fixture() {
-        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../fixtures/update");
-        fs::create_dir_all(&root).unwrap();
+    fn the_command_line_makes_signs_and_verifies_a_feed() {
+        let s = crate::testkit::Sandbox::empty();
+        s.write("Cargo.toml", "[workspace.package]\nversion = \"1.0.0-alpha.3\"\nedition = \"2024\"\n");
+        let apk = s.write("dist/kabar.apk", b"apk bytes");
+        let key = s.path().join("keys/update-key.pub").display().to_string();
+        s.cli(&["update", "keygen", "--public-out", &key]).unwrap();
+        let first = fs::read_to_string(&key).unwrap();
+        let err = s.cli(&["update", "keygen", "--public-out", &key]).unwrap_err();
+        assert!(err.to_string().contains("already holds a key"), "{err}");
+        s.cli(&["update", "keygen", "--public-out", &key, "--force"]).unwrap();
+        assert_ne!(fs::read_to_string(&key).unwrap(), first, "--force makes a new key");
+        // The default place is the app's release key file.
+        s.cli(&["update", "keygen"]).unwrap();
+        assert!(key_line(&s.read(RELEASE_KEY_FILE)).is_some());
+
+        let asset = format!("android-arm64={}", apk.display());
+        let feed = s.path().join("feed");
+        let out = feed.display().to_string();
+        s.cli(&[
+            "update",
+            "manifest",
+            "--channel",
+            "alpha",
+            "--asset",
+            &asset,
+            "--out",
+            &out,
+            "--commit",
+            "abc",
+        ])
+        .unwrap();
+        let m = read_feed(&feed);
+        assert_eq!(
+            (m.version.as_str(), m.commit.as_deref()),
+            ("1.0.0-alpha.3", Some("abc")),
+            "Cargo.toml's version"
+        );
+        assert!(feed.join("kabar-1.0.0-alpha.3-android-arm64.apk").exists());
+
+        let (_, secret) = keygen(&s.path().join("k2.pub"), false).unwrap();
+        let k2 = Some(s.path().join("k2.pub"));
+        let err = sign_cmd(&s.root(), &feed, k2.clone(), None).unwrap_err();
+        assert!(err.to_string().contains("KABAR_UPDATE_SECRET is not set"));
+        sign_cmd(&s.root(), &feed, k2, Some(secret)).unwrap();
+        let k2 = s.path().join("k2.pub").display().to_string();
+        s.cli(&["update", "verify", &out, "--public-key", &k2]).unwrap();
+        assert!(s.cli(&["update", "verify", &out]).is_err(), "signed for another key than the app's");
+        fs::write(feed.join("kabar-1.0.0-alpha.3-android-arm64.apk"), b"swapped").unwrap();
+        assert!(s.cli(&["update", "verify", &out, "--public-key", &k2]).is_err());
+        fs::remove_file(feed.join("kabar-1.0.0-alpha.3-android-arm64.apk")).unwrap();
+        s.cli(&["update", "verify", &out, "--public-key", &k2, "--carried", "android-arm64"]).unwrap();
+    }
+
+    #[test]
+    fn manifest_arguments_are_checked() {
+        let s = crate::testkit::Sandbox::empty();
+        let apk = s.write("kabar.apk", b"apk");
+        let zip = s.write("kabar.app.zip", b"zip");
+        let bundle = s.write("kabar-content.bundle", sample_bundle());
+        let asset = format!("android-arm64={}", apk.display());
+        let mac = format!("macos-arm64={}", zip.display());
+        let cli = |extra: &[&str]| {
+            let mut args = vec!["update", "manifest", "--version", "1.0.0-alpha.3"];
+            args.extend_from_slice(extra);
+            s.cli(&args)
+        };
+        let prev = s.path().join("prev").display().to_string();
+        cli(&["--channel", "alpha", "--asset", &asset, "--asset", &mac, "--build", "40", "--out", &prev])
+            .unwrap();
+        let prev_json = format!("{prev}/update.json");
+
+        // A content-only feed carries the app from the previous one.
+        let next = s.path().join("next");
+        let next_out = next.display().to_string();
+        let bundle_arg = bundle.display().to_string();
+        cli(&[
+            "--channel",
+            "alpha",
+            "--build",
+            "41",
+            "--carry",
+            "android-arm64",
+            "--previous",
+            &prev_json,
+            "--content",
+            &bundle_arg,
+            "--asset",
+            &mac,
+            "--notes-en",
+            "Faster",
+            "--out",
+            &next_out,
+        ])
+        .unwrap();
+        let m = read_feed(&next);
+        let app = m.asset(UpdatePlatform::AndroidArm64).unwrap();
+        assert_eq!((app.build, app.file.as_str()), (Some(40), "kabar-1.0.0-alpha.3-android-arm64.apk"));
+        assert_eq!(m.notes.en, "Faster");
+        assert_eq!(m.content.as_ref().unwrap().file, "kabar-content-1.0.0-alpha.3.bundle");
+        assert!(!next.join("kabar-1.0.0-alpha.3-android-arm64.apk").exists(), "carried, not copied");
+
+        for (args, why) in [
+            (vec!["--channel", "alpha", "--out", next_out.as_str()], "give at least one --asset or --carry"),
+            (vec!["--channel", "alpha", "--carry", "android-arm64"], "--carry needs a --previous feed"),
+            (
+                vec!["--channel", "beta", "--previous", &prev_json, "--asset", &asset],
+                "the previous feed is for alpha",
+            ),
+            (
+                vec!["--channel", "alpha", "--previous", &prev_json, "--carry", "macos-x86_64"],
+                "--carry: no macos-x86_64 in the previous feed",
+            ),
+            (
+                vec![
+                    "--channel",
+                    "alpha",
+                    "--carry",
+                    "android-arm64",
+                    "--asset",
+                    &asset,
+                    "--previous",
+                    &prev_json,
+                ],
+                "is both carried and given",
+            ),
+        ] {
+            let err = cli(&args).unwrap_err();
+            assert!(format!("{err:#}").contains(why), "{args:?}: {err:#}");
+        }
+        let err = s
+            .cli(&[
+                "update",
+                "manifest",
+                "--channel",
+                "alpha",
+                "--version",
+                "1.0.0-alpha.4",
+                "--previous",
+                &prev_json,
+                "--carry",
+                "android-arm64",
+            ])
+            .unwrap_err();
+        assert!(err.to_string().contains("the previous feed is 1.0.0-alpha.3, not 1.0.0-alpha.4"), "{err}");
+        // A previous feed that doesn't exist yet is fine (the first build of a channel).
+        cli(&[
+            "--channel",
+            "alpha",
+            "--asset",
+            &asset,
+            "--previous",
+            "/nowhere/update.json",
+            "--out",
+            &next_out,
+        ])
+        .unwrap();
+        assert!(cli(&["--channel", "nightly", "--asset", &asset]).is_err());
+        assert!(cli(&["--channel", "alpha", "--asset", "android-arm64"]).is_err(), "no path");
+        assert!(cli(&["--channel", "alpha", "--asset", "ios=x.ipa"]).is_err());
+        assert!(s.cli(&["update", "verify", "x", "--carried", "ios"]).is_err());
+        assert!(workspace_version(&s.root()).is_err(), "no Cargo.toml");
+    }
+
+    #[test]
+    fn manifest_gathers_the_changes_since_the_previous_feed() {
+        let repo = crate::testkit::repo();
+        if crate::ids::git_files(&repo, "HEAD").is_err() {
+            return; // not a git checkout (a source tarball)
+        }
+        let s = crate::testkit::Sandbox::empty();
+        let apk = s.write("kabar.apk", b"apk");
+        let out = s.path().join("feed");
+        let args = [
+            "kabar-tools",
+            "--root",
+            repo.to_str().unwrap(),
+            "update",
+            "manifest",
+            "--channel",
+            "preview",
+            "--version",
+            "0.0.1",
+            "--build",
+            "3",
+            "--changes",
+            "--asset",
+            &format!("android-arm64={}", apk.display()),
+            "--out",
+            out.to_str().unwrap(),
+        ];
+        use clap::Parser as _;
+        crate::dispatch(crate::Cli::try_parse_from(args).unwrap()).unwrap();
+        let m = read_feed(&out);
+        assert_eq!(m.assets[0].file, "kabar-0.0.1-b3-android-arm64.apk");
+        let found = changes::collect(&repo, None).unwrap();
+        assert_eq!(m.notes, changes::notes_from(&found), "notes come from the changes when none are given");
+        match m.history.first() {
+            Some(h) if !found.is_empty() => assert_eq!((h.build, &h.changes), (3, &found)),
+            _ => assert!(found.is_empty() || m.history.is_empty()),
+        }
+        // `update changes` checks every fragment and prints what's new.
+        let args = ["kabar-tools", "--root", repo.to_str().unwrap(), "update", "changes", "--since", "HEAD"];
+        crate::dispatch(crate::Cli::try_parse_from(args).unwrap()).unwrap();
+        let bundle_out = s.path().join("bundle");
+        let args = [
+            "kabar-tools",
+            "--root",
+            repo.to_str().unwrap(),
+            "update",
+            "bundle",
+            "--out",
+            bundle_out.to_str().unwrap(),
+        ];
+        crate::dispatch(crate::Cli::try_parse_from(args).unwrap()).unwrap();
+        assert!(check_bundle(&fs::read(bundle_out.join("kabar-content.bundle")).unwrap()).is_ok());
+    }
+
+    /// The signed fixture the core and app tests read: (file name, bytes).
+    fn update_fixture() -> Vec<(&'static str, Vec<u8>)> {
         let key = SigningKey::from_bytes(&FIXTURE_SEED);
         let public = B64.encode(key.verifying_key().as_bytes());
-        fs::write(
-            root.join("test-key.pub"),
-            format!(
-                "# Test key for fixtures/update only (seed 0x4b × 32). Never trusted by a build.\n{public}\n"
-            ),
-        )
-        .unwrap();
+        let pub_file = format!(
+            "# Test key for fixtures/update only (seed 0x4b × 32). Never trusted by a build.\n{public}\n"
+        );
         // The app tests write these bytes as the feed's APK (no .apk is tracked).
         let apk = b"fixture apk bytes".to_vec();
         let m = UpdateManifest {
@@ -801,8 +1018,39 @@ mod tests {
             content: None,
         };
         let json = serde_json::to_vec_pretty(&m).unwrap();
-        fs::write(root.join(MANIFEST_FILE), &json).unwrap();
-        fs::write(root.join(SIGNATURE_FILE), format!("{}\n", B64.encode(key.sign(&json).to_bytes())))
-            .unwrap();
+        let sig = format!("{}\n", B64.encode(key.sign(&json).to_bytes()));
+        vec![
+            ("test-key.pub", pub_file.into_bytes()),
+            (MANIFEST_FILE, json),
+            (SIGNATURE_FILE, sig.into_bytes()),
+        ]
+    }
+
+    fn fixture_dir() -> PathBuf {
+        Path::new(env!("CARGO_MANIFEST_DIR")).join("../../fixtures/update")
+    }
+
+    /// Regenerates the fixture after a format change:
+    /// `cargo test -p kabar-tools write_update_fixture -- --ignored`.
+    #[test]
+    #[ignore]
+    fn write_update_fixture() {
+        fs::create_dir_all(fixture_dir()).unwrap();
+        for (name, bytes) in update_fixture() {
+            fs::write(fixture_dir().join(name), bytes).unwrap();
+        }
+    }
+
+    #[test]
+    fn the_committed_fixture_is_what_the_generator_makes_and_it_verifies() {
+        for (name, bytes) in update_fixture() {
+            assert_eq!(fs::read(fixture_dir().join(name)).unwrap(), bytes, "fixtures/update/{name} is stale");
+        }
+        // The app's checks accept it (its APK bytes come from the app tests).
+        let public = fs::read_to_string(fixture_dir().join("test-key.pub")).unwrap();
+        let json = fs::read(fixture_dir().join(MANIFEST_FILE)).unwrap();
+        let sig = fs::read_to_string(fixture_dir().join(SIGNATURE_FILE)).unwrap();
+        let m = verify_manifest(&json, &sig, &parse_public_key(&public).unwrap()).unwrap();
+        assert_eq!((m.version.as_str(), m.history.len()), ("1.0.0-alpha.2", 2));
     }
 }

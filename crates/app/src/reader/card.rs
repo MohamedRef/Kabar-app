@@ -24,7 +24,7 @@ use crate::sheet::Sheet;
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
 
-fn tag_msg(tag: Tag) -> Msg {
+pub(super) fn tag_msg(tag: Tag) -> Msg {
     match tag {
         Tag::Indonesian => Msg::LangIndonesian,
         Tag::Javanese => Msg::LangJavanese,
@@ -34,7 +34,7 @@ fn tag_msg(tag: Tag) -> Msg {
     }
 }
 
-fn status_msg(s: WordStatus) -> Msg {
+pub(super) fn status_msg(s: WordStatus) -> Msg {
     match s {
         WordStatus::New => Msg::StatusNew,
         WordStatus::Learning => Msg::StatusLearning,
@@ -43,7 +43,7 @@ fn status_msg(s: WordStatus) -> Msg {
     }
 }
 
-fn shift_msg(s: Shift) -> Msg {
+pub(super) fn shift_msg(s: Shift) -> Msg {
     match s {
         Shift::Same => Msg::ShiftSame,
         Shift::Narrowed => Msg::ShiftNarrowed,
@@ -53,7 +53,7 @@ fn shift_msg(s: Shift) -> Msg {
     }
 }
 
-fn level_msg(l: SpeechLevel) -> Msg {
+pub(super) fn level_msg(l: SpeechLevel) -> Msg {
     match l {
         SpeechLevel::Ngoko => Msg::LevelNgoko,
         SpeechLevel::Madya => Msg::LevelMadya,
@@ -165,10 +165,7 @@ pub fn PanelView() -> Element {
         Sheet {
             label: ui.t(Msg::WordSheet).to_string(),
             side: true,
-            on_close: move |_| {
-                let mut p = st.panel;
-                p.set(None);
-            },
+            on_close: move |_| st.show(None),
             div { class: "panel", aria_live: "polite",
                 match panel {
                     Some(Panel::Word(i)) => rsx! {
@@ -299,10 +296,7 @@ fn WordCard(i: usize) -> Element {
                 Pron { text: sentence.clone(), tag: if w.tag == Tag::Javanese { "jv" } else { "id" } }
                 button {
                     class: "ghost small",
-                    onclick: move |_| {
-                        let mut p = st.panel;
-                        p.set(Some(Panel::Explain(i)));
-                    },
+                    onclick: move |_| st.show(Some(Panel::Explain(i))),
                     "💡 {ui.t(Msg::ExplainWord)}"
                 }
             }
@@ -319,12 +313,7 @@ fn WordCard(i: usize) -> Element {
                     button {
                         class: if w.has_gloss() { "" } else { "primary" },
                         title: "{ui.t(Msg::TeachKabarHint)}",
-                        onclick: move |_| {
-                            let mut slot = teach.0;
-                            slot.set(Some(seed.clone()));
-                            let mut screen = ui.screen;
-                            screen.set(Screen::Teach);
-                        },
+                        onclick: move |_| teach_word(ui, teach, seed.clone()),
                         "✍ {ui.t(Msg::TeachKabar)}"
                     }
                 }
@@ -342,24 +331,8 @@ fn WordCard(i: usize) -> Element {
                             let surface = surface.clone();
                             let sentence = sentence.clone();
                             move |_| {
-                                let saved = super::add_to_review(
-                                    &mut db.0.borrow_mut(),
-                                    &k,
-                                    &surface,
-                                    &sentence,
-                                    &open.text.id,
-                                    info.as_ref(),
-                                );
-                                match saved {
-                                    Ok(promoted) => {
-                                        if promoted {
-                                            let mut statuses = st.statuses;
-                                            statuses.write().insert(k.clone(), WordStatus::Learning);
-                                        }
-                                        added.set(true);
-                                    }
-                                    // The button stays ready for another try.
-                                    Err(e) => st.write_failed("adding to review", &e),
+                                if add_word(&db, st, &k, &surface, &sentence, &open.text.id, info.as_ref()) {
+                                    added.set(true);
                                 }
                             }
                         },
@@ -401,10 +374,8 @@ fn WordCard(i: usize) -> Element {
                                     let db = db.clone();
                                     let k = k.clone();
                                     move |_| {
-                                        let sent = db.0.borrow_mut().add_feedback("gloss", &k, up);
-                                        match sent {
-                                            Ok(()) => thanks.set(true),
-                                            Err(e) => st.write_failed("saving feedback", &e),
+                                        if send_feedback(&db, st, &k, up) {
+                                            thanks.set(true);
                                         }
                                     }
                                 },
@@ -416,6 +387,66 @@ fn WordCard(i: usize) -> Element {
             }
         }
     }
+}
+
+/// "Add to review" on a word card: the card is made and the word saved; a
+/// new word turns learning. False (and a kind toast) when the store refused,
+/// so the button stays ready for another try.
+pub(super) fn add_word(
+    db: &Db,
+    st: ReaderState,
+    key: &str,
+    surface: &str,
+    sentence: &str,
+    text_id: &str,
+    info: Option<&WordInfo>,
+) -> bool {
+    let saved = super::add_to_review(&mut db.0.borrow_mut(), key, surface, sentence, text_id, info);
+    match saved {
+        Ok(promoted) => {
+            if promoted {
+                let mut statuses = st.statuses;
+                statuses.write().insert(key.to_string(), WordStatus::Learning);
+            }
+            true
+        }
+        Err(e) => {
+            st.write_failed("adding to review", &e);
+            false
+        }
+    }
+}
+
+/// 👍 / 👎 on a gloss. True once it is stored.
+pub(super) fn send_feedback(db: &Db, st: ReaderState, key: &str, up: bool) -> bool {
+    let sent = db.0.borrow_mut().add_feedback("gloss", key, up);
+    match sent {
+        Ok(()) => true,
+        Err(e) => {
+            st.write_failed("saving feedback", &e);
+            false
+        }
+    }
+}
+
+/// Removes a saved phrase's highlight, on screen only once it is gone from the store.
+pub(super) fn remove_highlight(db: &Db, st: ReaderState, id: &str) {
+    let removed = db.0.borrow_mut().remove_highlight(id);
+    match removed {
+        Ok(()) => {
+            let mut hl = st.highlights;
+            hl.write().retain(|x| x.id != id);
+        }
+        Err(e) => st.write_failed("removing a highlight", &e),
+    }
+}
+
+/// Opens Teach Kabar with the word and its sentence filled in.
+pub(crate) fn teach_word(ui: Ui, inbox: TeachInbox, seed: TeachSeed) {
+    let mut slot = inbox.0;
+    slot.set(Some(seed));
+    let mut screen = ui.screen;
+    screen.set(Screen::Teach);
 }
 
 /// One gloss: meaning, note, example, speech levels and the Bridge card.
@@ -539,16 +570,7 @@ fn PhraseCard(tokens: Vec<usize>, save_first: bool) -> Element {
                         button {
                             onclick: {
                                 let db = db.clone();
-                                move |_| {
-                                    let removed = db.0.borrow_mut().remove_highlight(&h.id);
-                                    match removed {
-                                        Ok(()) => {
-                                            let mut hl = st.highlights;
-                                            hl.write().retain(|x| x.id != h.id);
-                                        }
-                                        Err(e) => st.write_failed("removing a highlight", &e),
-                                    }
-                                }
+                                move |_| remove_highlight(&db, st, &h.id)
                             },
                             "{ui.t(Msg::RemoveHighlight)}"
                         }
@@ -561,12 +583,7 @@ fn PhraseCard(tokens: Vec<usize>, save_first: bool) -> Element {
                 button {
                     onclick: {
                         let first = tokens.first().copied();
-                        move |_| {
-                            if let Some(i) = first {
-                                let mut p = st.panel;
-                                p.set(Some(Panel::Explain(i)));
-                            }
-                        }
+                        move |_| st.show(first.map(Panel::Explain))
                     },
                     "{ui.t(Msg::ExplainSentence)}"
                 }
@@ -576,10 +593,7 @@ fn PhraseCard(tokens: Vec<usize>, save_first: bool) -> Element {
                     li { key: "{i}",
                         button {
                             class: "ghost",
-                            onclick: move |_| {
-                                let mut p = st.panel;
-                                p.set(Some(Panel::Word(i)));
-                            },
+                            onclick: move |_| st.show(Some(Panel::Word(i))),
                             bdi { class: "latin", lang: "id", "{surface}" }
                         }
                         span { " {gloss.as_deref().unwrap_or(\"…\")}" }

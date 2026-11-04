@@ -29,6 +29,8 @@ mod paths;
 mod pron;
 mod readme;
 mod schemas;
+#[cfg(test)]
+mod testkit;
 mod text;
 mod update;
 mod wiki;
@@ -104,7 +106,11 @@ enum Command {
 }
 
 fn main() -> Result<()> {
-    let cli = Cli::parse();
+    dispatch(Cli::parse())
+}
+
+/// Runs one parsed command line.
+fn dispatch(cli: Cli) -> Result<()> {
     let root = paths::Root::new(cli.root);
     match cli.command {
         Command::Freq(cmd) => freq::run(&root, cmd),
@@ -154,4 +160,35 @@ pub(crate) fn validate(root: &paths::Root) -> Result<()> {
     packs::run(root, packs::Cmd::Build { check: true })?;
     println!("all content ok");
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::testkit::Sandbox;
+
+    #[test]
+    fn validate_stops_at_the_first_failing_check() {
+        let s = Sandbox::with(&["schemas", "content/bridge/id.jsonl", "content/bridge/sound-rules.json"]);
+        s.write("content/glosses/id/plan.tsv", "");
+        s.write("content/glosses/jv/plan.tsv", "");
+        s.write(
+            "content/lessons/id/bipa1.u01.l01.yaml",
+            "id: bipa1.u01.l01\nnew_words:\n  - {word: zzz, arabic: زززز}\n",
+        );
+        let err = s.cli(&["validate"]).unwrap_err();
+        assert_eq!(err.to_string(), "1 lesson↔bridge issue(s)");
+        s.write("content/lessons/id/bipa1.u01.l01.yaml", "id: bipa1.u01.l01\ntitle: Halo #1 tip\n");
+        let err = s.cli(&["validate"]).unwrap_err();
+        assert_eq!(err.to_string(), "1 YAML value(s) cut by a \" #\" comment");
+        s.write("content/lessons/id/bipa1.u01.l01.yaml", "id: bipa1.u01.l01\n");
+        let err = s.cli(&["validate"]).unwrap_err();
+        assert!(format!("{err:#}").contains("speech-levels.jsonl"), "the next check runs: {err:#}");
+    }
+
+    #[test]
+    fn the_command_line_is_well_formed() {
+        use clap::CommandFactory as _;
+        crate::Cli::command().debug_assert();
+        assert!(Sandbox::empty().cli(&["no-such-command"]).is_err());
+    }
 }
