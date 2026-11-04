@@ -2,8 +2,9 @@
 //!
 //! - One Egyptian Arabic spelling per name (#570): `content/names.yaml`
 //!   (`kabar.names/v1`) gives the `ar_eg` spelling of each place, food or
-//!   other name and the variants to `avoid`. Every `ar_eg` text in the content
-//!   YAML and every `arz` gloss in the word sheets is checked. MSA (`ar`)
+//!   other name and the variants to `avoid`. Every `ar_eg` and `arz` text in
+//!   the content YAML (golden sets included) and every `arz` gloss in the
+//!   word sheets is checked. MSA (`ar`)
 //!   keeps press spellings and is not checked.
 //! - Aksara letters need distinct hints (#568): in letter-teaching lines the
 //!   Arabic hint is all that tells the learner how a letter sounds, so two
@@ -142,6 +143,9 @@ pub fn check(root: &Path, out: &mut Vec<String>) -> Result<(), LoadError> {
         let v = yaml_value(file)?;
         let mut texts = Vec::new();
         ar_eg_texts(&v, "ar_eg", &mut texts);
+        // The golden sets write Egyptian Arabic under `arz` (#590): an engine
+        // that spells names the house way must not score as a miss.
+        ar_eg_texts(&v, "arz", &mut texts);
         report(&file.display().to_string(), &texts, &names, out);
     }
     for lang in ["id", "jv"] {
