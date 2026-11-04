@@ -743,26 +743,5 @@ fn PaceNote() -> Element {
 }
 
 #[cfg(test)]
-mod tests {
-    use kabar_core::coach::voice;
-    use kabar_core::locale::UiLanguage;
-
-    use super::*;
-
-    #[test]
-    fn the_welcome_fits_how_the_check_was_reached() {
-        assert_eq!(welcome_line(true, false), Line::LevelCheckFirst);
-        assert_eq!(welcome_line(true, true), Line::LevelCheckFirst);
-        assert_eq!(welcome_line(false, true), Line::LevelCheckInvite);
-        assert_eq!(welcome_line(false, false), Line::LevelCheckAnytime);
-        // Only the monthly invitation says a month has passed.
-        for seed in 0..4 {
-            for line in [Line::LevelCheckFirst, Line::LevelCheckAnytime] {
-                let ar = voice::say(UiLanguage::ArEg, line, seed, &[("name", "Mohamed")]);
-                assert!(!ar.contains("شهر"), "{ar}");
-                let en = voice::say(UiLanguage::En, line, seed, &[("name", "Mohamed")]);
-                assert!(!en.contains("month"), "{en}");
-            }
-        }
-    }
-}
+#[path = "check_tests.rs"]
+mod tests;
