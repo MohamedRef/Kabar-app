@@ -53,6 +53,11 @@ jobs:
       version: ${{ steps.v.outputs.version }}
       channels: ${{ steps.v.outputs.channels }}
     steps:
+      - name: Only main is released
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "::error::Releases are cut from main only; this run is on $GITHUB_REF (#572)."
+          exit 1
       - uses: actions/checkout@v5
         with:
           persist-credentials: false
@@ -307,8 +312,8 @@ jobs:
             gh release create "$tag" --prerelease --target "$GITHUB_SHA" --title "Kabar $V" --notes "$(cat <<NOTES
           Kabar $V, built by the Release workflow (run ${{ github.run_number }}, ${GITHUB_SHA::7}).
 
-          - Android (S24 Ultra, Tab S11): install kabar-$V.apk. It is signed with the release key, so uninstall a *preview* build first (export your data from Settings first, or let sync bring it back). From now on it updates itself from the $CHANNELS feed.
-          - Mac: unzip Kabar-$V-mac.zip, move Kabar.app to Applications, then once: \`xattr -dr com.apple.quarantine /Applications/Kabar.app\` (it is self-signed). Later versions install themselves.
+          - Android (S24 Ultra, Tab S11): install kabar-$V.apk. It is signed with the same key as preview builds since 2026-11-02, so it installs over them; only a preview from before that date needs uninstalling first (export your data from Settings first). From now on it updates itself from the $CHANNELS feed.
+          - Mac: unzip Kabar-$V-mac.zip, move Kabar.app to ~/Applications, then once: \`xattr -dr com.apple.quarantine ~/Applications/Kabar.app\` (it is self-signed). Later versions install themselves.
           NOTES
           )"
           fi

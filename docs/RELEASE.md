@@ -54,8 +54,10 @@ A release is cut only when every gate in this table is green.
   password in Keychain). Android installs an update over the old app only if
   it's signed with the same key. **Back the key up** (MAC-TODO §3): losing
   it means uninstalling and starting over.
-- The CI preview APK uses a throwaway preview key. Don't install it over
-  the release: uninstall it first, or keep only the release build.
+- Since 2026-11-02 the CI preview APK from main is signed with the release
+  key too, so preview and release install over each other. Only a preview
+  from before that date, a PR build or a run by hand on a branch (throwaway
+  key, never published) needs uninstalling first.
 - From the first alpha on, the devices update themselves (§5): publishing
   a release is `just publish-update`, not a cable.
 - Before installing an update, Settings → **Your data → Export everything**
@@ -114,9 +116,10 @@ Release › Run workflow, by hand only) does steps 5–6 and 8 without the Mac:
    everything with the keys above and publishes `v<version>`
    (`kabar-<version>.apk`, `Kabar-<version>-mac.zip`) and the channel
    feed(s) `update-alpha`, … (§5).
-4. First time only: uninstall a *preview* build (different key) and install
-   the APK on both Galaxy devices; on the Mac move Kabar.app to
-   Applications and run `xattr -dr com.apple.quarantine /Applications/Kabar.app`
+4. First time only: install the APK on both Galaxy devices (it installs
+   over a preview from main; only one from before 2026-11-02 needs
+   uninstalling first); on the Mac move Kabar.app to ~/Applications and run
+   `xattr -dr com.apple.quarantine ~/Applications/Kabar.app`
    once (self-signed). Later releases arrive over the air.
 
 ## 5. Updates over the air
