@@ -33,7 +33,7 @@ Kabar Cloud into the browser (sync, AI answers, cloud voices).
 | Export everything | A file in Downloads / Save to | A browser download |
 | Background work (glossary, FSRS fitting) | Threads | The browser's one thread, after the screen has painted |
 | Read aloud | System voice / WebView | The browser's voice (Web Speech) |
-| Updates and content bundles | Over the air | Each deploy is the newest build; reload to get it |
+| Updates and content bundles | Over the air | Each deploy downloads in the background (service worker) and is used from the next open |
 | Kabar Cloud sign-in | Google (browser + loopback) | Username and password (the login work, `POST /v1/auth/password`); Google's desktop flow needs a loopback server a page can't run |
 | Session | Keystore / private file | `localStorage`, or `sessionStorage` for "not my computer" (`WebVault`) |
 | Sync | Its own thread and database connection, tokio-tungstenite | A task on the page's thread sharing the UI's database, the browser's `WebSocket` (token as the `kabar.bearer.<token>` subprotocol, since a browser can't set `Authorization` there) |
@@ -44,6 +44,17 @@ Kabar Cloud into the browser (sync, AI answers, cloud voices).
 | Reminders | Notifications | Not on the web; the phone or Mac rings |
 
 Nothing is dropped: the rows marked phase 2 are planned below.
+
+## Opening fast
+
+`web/sw.js` (adapted from Batna's) keeps the newest build on the device.
+`scripts/web/build.sh` fills in a build id (a hash of every file) and the file
+list; each build has its own cache (`kabar-<id>`), so `kabar.js` and its wasm
+always match. It answers this origin's GETs from that cache (every navigation
+is `./`); Kabar Cloud never goes through it. A new deploy installs in the
+background and the old cache goes once it activates, so after the first visit
+opening doesn't wait for the 20+ MB download: it shows on the open after the
+one that fetched it.
 
 ## Size
 

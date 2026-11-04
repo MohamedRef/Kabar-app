@@ -7,15 +7,18 @@
 use std::time::Duration;
 
 use kabar_core::sync_client::{Backoff, Effect, Phase, SyncClient};
-use kabar_protocol::cloud::{DeviceInfo, DeviceSummary, ErrorCode, GoogleSignIn};
+use kabar_protocol::cloud::{
+    DeviceInfo, DeviceSummary, ErrorCode, GoogleSignIn, PasswordLogin, PasswordSignIn, Session, SetPassword,
+};
 use kabar_protocol::sync::{MAX_OPS_PER_PUSH, ServerMsg};
 use tokio::sync::mpsc::{UnboundedReceiver, UnboundedSender};
 use web_time::Instant;
 
 use super::api::{Api, CloudError};
+use super::password::{self, Invalid};
 use super::session::{Auth, SessionVault};
 use super::socket::{ConnectError, Frame, Socket};
-use super::{CloudStatus, Command, Event, GoogleClient, Problem, SyncState};
+use super::{CloudStatus, Command, Event, GoogleClient, LoginStatus, Problem, SyncState};
 use crate::store::Store;
 
 /// The engine's database: its own connection where there are threads, the
@@ -65,6 +68,10 @@ pub struct Engine {
     last_status: Option<CloudStatus>,
     force_refresh: bool,
     problem: Option<Problem>,
+    /// The usual vault, set aside while a sign-in on someone else's device
+    /// keeps its session in a forgetful one; back after sign-out.
+    spare_vault: Option<Box<dyn SessionVault>>,
+    login: LoginStatus,
     events: UnboundedSender<Event>,
 }
 
@@ -98,6 +105,8 @@ impl Engine {
             last_status: None,
             force_refresh: false,
             problem: None,
+            spare_vault: None,
+            login: LoginStatus::default(),
             events,
         }
     }
@@ -162,6 +171,23 @@ impl Engine {
         match cmd {
             Command::SignInGoogle => self.sign_in_google().await,
             Command::SignInWithIdToken(token) => self.sign_in(token).await,
+            Command::SignInPassword { username, password, remember } => {
+                self.problem = None;
+                self.events.send(Event::SigningIn(true)).ok();
+                self.sign_in_password(username, password.0, remember).await;
+                self.events.send(Event::SigningIn(false)).ok();
+            }
+            Command::LoadLogin => {
+                let result = self.with_access(|api, access| async move { api.login(&access).await }).await;
+                self.login_answer(result);
+            }
+            Command::SetLogin { username, password } => self.set_login(username, password.0).await,
+            Command::RemoveLogin => {
+                self.login_busy();
+                let result =
+                    self.with_access(|api, access| async move { api.remove_login(&access).await }).await;
+                self.login_answer(result);
+            }
             Command::SignOut => {
                 if let Some(access) = self.access(false).await {
                     let _ = self.api.sign_out(&access).await;
@@ -236,24 +262,7 @@ impl Engine {
     async fn sign_in(&mut self, id_token: String) {
         let body = GoogleSignIn { id_token, device: self.device.clone() };
         match self.api.sign_in_google(&body).await {
-            Ok(session) => {
-                let vault =
-                    self.vault.take().unwrap_or_else(|| Box::new(super::session::MemoryVault::default()));
-                match Auth::new(session, vault) {
-                    Ok(auth) => self.auth = Some(auth),
-                    Err(vault) => {
-                        crate::diag::report!("Kabar Cloud: sign-in session was not saved");
-                        self.vault = Some(vault);
-                        self.problem = Some(Problem::SignInFailed);
-                        return;
-                    }
-                }
-                self.problem = None;
-                self.stopped = false;
-                self.client = SyncClient::new(self.store.with(|s| s.last_seq()).unwrap_or(0));
-                self.backoff.reset();
-                self.retry_at = Instant::now();
-            }
+            Ok(session) => self.begin_session(session, true),
             Err(e) => {
                 crate::diag::report!("Kabar Cloud sign-in: {e}");
                 self.problem = Some(match &e {
@@ -265,11 +274,141 @@ impl Engine {
         }
     }
 
+    /// Keeps a session Kabar Cloud just gave and starts syncing.
+    /// `remember: false` keeps it until the app or tab closes
+    /// ([`super::session::not_remembered`]).
+    fn begin_session(&mut self, session: Session, remember: bool) {
+        let usual = self.vault.take().unwrap_or_else(|| Box::new(super::session::MemoryVault::default()));
+        let vault = if remember {
+            usual
+        } else {
+            // An older session for this device mustn't outlive this one.
+            usual.clear();
+            self.spare_vault = Some(usual);
+            super::session::not_remembered()
+        };
+        match Auth::new(session, vault) {
+            Ok(auth) => self.auth = Some(auth),
+            Err(vault) => {
+                crate::diag::report!("Kabar Cloud: sign-in session was not saved");
+                self.vault = Some(self.spare_vault.take().unwrap_or(vault));
+                self.problem = Some(Problem::SignInFailed);
+                return;
+            }
+        }
+        self.problem = None;
+        self.stopped = false;
+        self.client = SyncClient::new(self.store.with(|s| s.last_seq()).unwrap_or(0));
+        self.backoff.reset();
+        self.retry_at = Instant::now();
+    }
+
+    async fn sign_in_password(&mut self, username: String, password: String, remember: bool) {
+        let key = match stretch(username.clone(), password).await {
+            Ok(k) => k,
+            Err(e) => {
+                crate::diag::report!("password sign-in: {e}");
+                self.problem = Some(Problem::SignInFailed);
+                return;
+            }
+        };
+        let body = PasswordSignIn { username, password_key: key, device: self.device.clone() };
+        match self.api.sign_in_password(&body).await {
+            Ok(session) => self.begin_session(session, remember),
+            Err(e) => {
+                crate::diag::report!("password sign-in: {e}");
+                self.problem = Some(password_problem(&e).unwrap_or(match e {
+                    CloudError::Network(_) => Problem::Network,
+                    CloudError::Api { code: ErrorCode::NotAllowed, .. } => Problem::NotAllowed,
+                    _ => Problem::SignInFailed,
+                }));
+            }
+        }
+    }
+
+    /// Runs a call with an access token; a 401 refreshes once and retries
+    /// (this device's clock may run behind the server's). `None` when there
+    /// is no token (the reason is recorded).
+    async fn with_access<T, F>(&mut self, call: impl Fn(Api, String) -> F) -> Option<Result<T, CloudError>>
+    where
+        F: std::future::Future<Output = Result<T, CloudError>>,
+    {
+        let mut force = false;
+        loop {
+            let access = self.access(force).await?;
+            match call(self.api.clone(), access).await {
+                Err(CloudError::Api { code: ErrorCode::Unauthorized, .. }) if !force => force = true,
+                result => return Some(result),
+            }
+        }
+    }
+
+    fn login_busy(&mut self) {
+        self.login.saving = true;
+        self.login.saved = false;
+        self.login.problem = None;
+        self.events.send(Event::Login(self.login.clone())).ok();
+    }
+
+    /// Settings shows what Kabar Cloud said about the username, or why it
+    /// couldn't say.
+    fn login_answer(&mut self, result: Option<Result<PasswordLogin, CloudError>>) {
+        let was_saving = std::mem::take(&mut self.login.saving);
+        match result {
+            Some(Ok(l)) => {
+                self.login.username = Some(l.username);
+                self.login.saved = was_saving;
+                self.login.problem = None;
+            }
+            Some(Err(e)) => {
+                self.login.problem = Some(password_problem(&e).unwrap_or_else(|| {
+                    self.cloud_error(&e);
+                    self.problem.unwrap_or(Problem::Server)
+                }));
+            }
+            None => self.login.problem = Some(self.problem.unwrap_or(Problem::Network)),
+        }
+        self.events.send(Event::Login(self.login.clone())).ok();
+    }
+
+    async fn set_login(&mut self, username: String, password: String) {
+        if let Err(why) = password::check_new(&username, &password) {
+            self.login.problem = Some(match why {
+                Invalid::Username => Problem::BadUsername,
+                Invalid::TooShort => Problem::ShortPassword,
+            });
+            self.login.saved = false;
+            self.events.send(Event::Login(self.login.clone())).ok();
+            return;
+        }
+        self.login_busy();
+        let key = match stretch(username.clone(), password).await {
+            Ok(k) => k,
+            Err(e) => {
+                crate::diag::report!("setting the password: {e}");
+                self.login.saving = false;
+                self.login.problem = Some(Problem::Server);
+                self.events.send(Event::Login(self.login.clone())).ok();
+                return;
+            }
+        };
+        let body = SetPassword { username, password_key: key };
+        let call = move |api: Api, access: String| {
+            let body = body.clone();
+            async move { api.set_login(&access, &body).await }
+        };
+        let result = self.with_access(call).await;
+        self.login_answer(result);
+    }
+
     fn sign_out_locally(&mut self) {
         self.drop_socket();
         if let Some(auth) = self.auth.take() {
-            self.vault = Some(auth.forget());
+            let forgetful = auth.forget();
+            self.vault = Some(self.spare_vault.take().unwrap_or(forgetful));
         }
+        self.login = LoginStatus::default();
+        self.events.send(Event::Login(LoginStatus::default())).ok();
         self.stopped = false;
         self.events.send(Event::Devices(Ok(Vec::new()))).ok();
     }
@@ -539,6 +678,7 @@ impl Engine {
                 .flatten()
                 .and_then(|v| v.parse().ok()),
             problem: self.problem,
+            temporary: self.auth.as_ref().is_some_and(|a| !a.remembered()),
         };
         if self.last_status.as_ref() != Some(&status) {
             self.last_status = Some(status.clone());
@@ -554,9 +694,65 @@ async fn next_frame(ws: &mut Option<Socket>) -> Frame {
     }
 }
 
+/// Stretches the password (`password::password_key`) off the UI thread
+/// where there is one. The browser has one thread: a short nap first lets
+/// the page show that it's signing in before the work starts.
+async fn stretch(username: String, password: String) -> Result<String, String> {
+    #[cfg(not(target_arch = "wasm32"))]
+    return tokio::task::spawn_blocking(move || password::password_key(&username, &password))
+        .await
+        .map_err(|e| e.to_string())?;
+    #[cfg(target_arch = "wasm32")]
+    {
+        crate::platform::time::sleep(Duration::from_millis(50)).await;
+        password::password_key(&username, &password)
+    }
+}
+
+/// What a password answer means for the learner, when it's about the password.
+fn password_problem(e: &CloudError) -> Option<Problem> {
+    match e {
+        CloudError::Api { code: ErrorCode::WrongPassword, .. } => Some(Problem::WrongPassword),
+        CloudError::Api { code: ErrorCode::UsernameTaken, .. } => Some(Problem::UsernameTaken),
+        CloudError::Api { code: ErrorCode::TooManyTries, retry_after_ms, .. } => {
+            Some(Problem::Locked(retry_after_ms.unwrap_or(60_000).div_ceil(60_000).max(1)))
+        }
+        _ => None,
+    }
+}
+
 pub fn now_ms() -> u64 {
     web_time::SystemTime::now()
         .duration_since(web_time::UNIX_EPOCH)
         .map(|d| d.as_millis() as u64)
         .unwrap_or_default()
+}
+
+#[cfg(test)]
+mod password_tests {
+    use super::*;
+
+    #[test]
+    fn password_answers_become_their_own_problems() {
+        let api = |status, body: &str| super::super::api::api_error(status, body);
+        assert_eq!(
+            password_problem(&api(401, r#"{"code":"wrong_password","message":""}"#)),
+            Some(Problem::WrongPassword)
+        );
+        assert_eq!(
+            password_problem(&api(409, r#"{"code":"username_taken","message":""}"#)),
+            Some(Problem::UsernameTaken)
+        );
+        // Minutes, rounded up: 61 seconds is "2 minutes", never "0".
+        let locked = |ms: u64| {
+            password_problem(&api(
+                429,
+                &format!(r#"{{"code":"too_many_tries","message":"","retry_after_ms":{ms}}}"#),
+            ))
+        };
+        assert_eq!(locked(61_000), Some(Problem::Locked(2)));
+        assert_eq!(locked(1), Some(Problem::Locked(1)));
+        assert_eq!(password_problem(&api(401, r#"{"code":"unauthorized","message":""}"#)), None);
+        assert_eq!(password_problem(&CloudError::Network("down".into())), None);
+    }
 }

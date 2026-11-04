@@ -20,8 +20,10 @@ use crate::devices::{Devices, PushTarget, RefreshError};
 use crate::fcm::{self, AccessToken, SendOutcome, ServiceAccount};
 use crate::hub::{Conn, Hub};
 use crate::internal::{
-    BlobData, BlobGet, BlobPut, DEVICE_HEADER, Expiry, Refresh, Register, Revoke, SetPush,
+    AccountLoginState, BlobData, BlobGet, BlobPut, DEVICE_HEADER, Expiry, LoginName, Refresh, Register,
+    Revoke, SetPush,
 };
+use crate::login::AccountLogin;
 
 /// Close code sent to a signed-out device.
 const CLOSE_REVOKED: u16 = 4001;
@@ -257,6 +259,25 @@ impl DurableObject for Account {
                     self.ensure_alarm().await?;
                 }
                 Response::from_json(&PushTokenReply { registered: body.token.is_some(), push_configured })
+            }
+            // Username + password (`crate::login`): only a signed-in device
+            // may read or change it.
+            (Method::Get, "/login") => {
+                let caller = Self::device_header(&req)?;
+                let Some(email) = devices.email(&caller).map_err(sql_err)? else {
+                    return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
+                };
+                let username = AccountLogin::open(&db).username().map_err(sql_err)?;
+                Response::from_json(&AccountLoginState { email, username })
+            }
+            (Method::Post, "/login") => {
+                let caller = Self::device_header(&req)?;
+                if !devices.is_active(&caller).map_err(sql_err)? {
+                    return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
+                }
+                let body: LoginName = req.json().await?;
+                AccountLogin::open(&db).set_username(body.username.as_deref()).map_err(sql_err)?;
+                Response::empty()
             }
             (Method::Get, "/active") => {
                 let device = Self::device_header(&req)?;

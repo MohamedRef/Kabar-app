@@ -24,11 +24,16 @@ migrations_dir = "migrations"
 # One Durable Object per account: devices + sync hub (SQLite storage, the
 # only kind on the Free plan).
 [durable_objects]
-bindings = [{ name = "ACCOUNT", class_name = "Account" }]
+# Plus one small object per username for password sign-in (`login.rs`).
+bindings = [{ name = "ACCOUNT", class_name = "Account" }, { name = "LOGIN", class_name = "Login" }]
 
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["Account"]
+
+[[migrations]]
+tag = "v2"
+new_sqlite_classes = ["Login"]
 
 # Not secret. Secrets (ALLOWED_EMAILS, TOKEN_SIGNING_KEY, GEMINI_API_KEY,
 # AZURE_SPEECH_KEY, ANTHROPIC_API_KEY, FCM_SERVICE_ACCOUNT) go in with
@@ -59,4 +64,4 @@ vars = { GOOGLE_CLIENT_IDS = "", CLAUDE_ENABLED = "false" }
 d1_databases = [
   { binding = "DB", database_name = "kabar", database_id = "00000000-0000-0000-0000-000000000000", migrations_dir = "migrations" },
 ]
-durable_objects = { bindings = [{ name = "ACCOUNT", class_name = "Account" }] }
+durable_objects = { bindings = [{ name = "ACCOUNT", class_name = "Account" }, { name = "LOGIN", class_name = "Login" }] }
