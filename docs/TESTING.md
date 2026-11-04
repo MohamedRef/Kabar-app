@@ -2,7 +2,7 @@
 
 Kabar aims for **at least 90% line coverage** of the Rust workspace (Mohamed, 2026-11-04). CI's `coverage` job
 (`.github/workflows/ci.yml`) fails a PR whose line coverage is below `scripts/coverage-floor`. The floor only
-goes up: it started at the coverage of main on 2026-11-04 (67%) and is raised as tests land, until it reaches 90.
+goes up: it started at the coverage of main on 2026-11-04 (66%) and is raised as tests land, until it reaches 90.
 
 ## Running it
 
