@@ -1,6 +1,9 @@
-//! The app's sync engine against a local Kabar Cloud (workerd + fake Google).
-//! Ignored by `cargo test`; `crates/server/tests/e2e.mjs` runs it with
-//! `KABAR_E2E_URL` and `KABAR_E2E_TOKEN_URL` set. Nothing leaves the machine.
+//! The app's sync engine against a local Kabar Cloud. The same scenario runs
+//! twice: against the real Worker (workerd + fake Google; ignored by `cargo
+//! test`, `crates/server/tests/e2e.mjs` runs it with `KABAR_E2E_URL` and
+//! `KABAR_E2E_TOKEN_URL` set), and on every `cargo test` against
+//! [`super::fake::FakeCloud`], which runs the hub's real code. Nothing leaves
+//! the machine.
 
 use std::time::{Duration, Instant};
 
@@ -13,37 +16,63 @@ use super::session::MemoryVault;
 use super::{CloudConfig, CloudHandle, Command, Event, Problem, SyncState};
 use crate::store::Store;
 
-struct Device {
-    store: Store,
-    handle: CloudHandle,
+pub(super) struct Device {
+    pub store: Store,
+    pub handle: CloudHandle,
 }
 
 impl Device {
-    fn start(dir: &std::path::Path, name: &str, platform: Platform, url: &str) -> Self {
+    pub fn start(dir: &std::path::Path, name: &str, platform: Platform, url: &str) -> Self {
+        Self::start_with(dir, name, platform, url, Box::new(MemoryVault::default()))
+    }
+
+    pub fn start_with(
+        dir: &std::path::Path,
+        name: &str,
+        platform: Platform,
+        url: &str,
+        vault: Box<dyn super::session::SessionVault>,
+    ) -> Self {
         let path = dir.join(format!("{name}.db"));
         let store = Store::open(&path).unwrap();
         let info =
             DeviceInfo { device_id: store.device_id().clone(), name: name.into(), model: None, platform };
         let config = CloudConfig { base_url: url.into(), google: None };
-        let handle = super::start(config, path, info, Box::new(MemoryVault::default())).unwrap();
+        let handle = super::start(config, path, info, vault).unwrap();
         Self { store, handle }
     }
 
-    fn send(&self, c: Command) {
+    pub fn send(&self, c: Command) {
         self.handle.commands.send(c).unwrap();
     }
 
     /// Waits for the first event `f` accepts.
-    fn wait<T>(&mut self, what: &str, f: impl FnMut(&Event) -> Option<T>) -> T {
+    pub fn wait<T>(&mut self, what: &str, f: impl FnMut(&Event) -> Option<T>) -> T {
         wait(&mut self.handle.events, what, f)
     }
 
-    fn wait_live(&mut self) {
+    pub fn wait_live(&mut self) {
         self.wait("live", |e| matches!(e, Event::Status(s) if s.sync == SyncState::Live).then_some(()));
+    }
+
+    /// Waits for a status `f` accepts and returns it.
+    pub fn wait_status(
+        &mut self,
+        what: &str,
+        mut f: impl FnMut(&super::CloudStatus) -> bool,
+    ) -> super::CloudStatus {
+        self.wait(what, |e| match e {
+            Event::Status(s) if f(s) => Some(s.clone()),
+            _ => None,
+        })
     }
 }
 
-fn wait<T>(rx: &mut UnboundedReceiver<Event>, what: &str, mut f: impl FnMut(&Event) -> Option<T>) -> T {
+pub(super) fn wait<T>(
+    rx: &mut UnboundedReceiver<Event>,
+    what: &str,
+    mut f: impl FnMut(&Event) -> Option<T>,
+) -> T {
     let deadline = Instant::now() + Duration::from_secs(10);
     loop {
         let left = deadline.saturating_duration_since(Instant::now());
@@ -74,6 +103,23 @@ fn phone_and_tablet_sync_through_kabar_cloud() {
     else {
         panic!("set KABAR_E2E_URL and KABAR_E2E_TOKEN_URL");
     };
+    phone_and_tablet(&url, || id_token(&token_url));
+}
+
+#[test]
+fn phone_and_tablet_sync_through_the_local_hub() {
+    let cloud = super::fake::FakeCloud::start();
+    phone_and_tablet(&cloud.url, || super::fake::FakeCloud::id_token("learner@example.com"));
+    // The hub kept the phone's word and the setting made before sign-in.
+    assert_eq!(cloud.row("word_status", "id:rumah").unwrap()["status"], "learning");
+    assert_eq!(cloud.row("settings", "theme").unwrap()["value"], "dark");
+    assert_eq!(cloud.head_seq(), 2, "one op each, nothing twice");
+}
+
+/// M2's acceptance scenario: settings and words move between a phone and a
+/// tablet, the Devices screen, the AI/TTS/blob proxies, remote sign-out.
+fn phone_and_tablet(url: &str, id_token: impl Fn() -> String) {
+    let url = url.to_string();
     let dir = tempfile::tempdir().unwrap();
     let mut phone = Device::start(dir.path(), "Galaxy S24 Ultra", Platform::Android, &url);
     let mut tablet = Device::start(dir.path(), "Galaxy Tab S11", Platform::Android, &url);
@@ -82,9 +128,9 @@ fn phone_and_tablet_sync_through_kabar_cloud() {
     let old = phone.store.settings().unwrap();
     phone.store.save_settings(&old, &Settings { theme: Theme::Dark, ..old.clone() }).unwrap();
 
-    phone.send(Command::SignInWithIdToken(id_token(&token_url)));
+    phone.send(Command::SignInWithIdToken(id_token()));
     phone.wait_live();
-    tablet.send(Command::SignInWithIdToken(id_token(&token_url)));
+    tablet.send(Command::SignInWithIdToken(id_token()));
     // Catch-up is applied before the hub says caught_up.
     tablet.wait_live();
     assert_eq!(tablet.store.settings().unwrap().theme, Theme::Dark);
