@@ -126,7 +126,7 @@ impl Updater {
         let due =
             s.prefs.last_check_ms.is_none_or(|t| now_ms().saturating_sub(t) >= every.as_millis() as u64);
         // Automatic downloads wait for Wi-Fi (a ~45 MB APK on mobile data,
-        // up to every merge on the preview channel); the offer still shows.
+        // up to every 4 hours on the preview channel); the offer still shows.
         let auto = s.prefs.mode == Mode::Auto && !metered;
         if due {
             // Content bundles (~8 MB) wait for Wi-Fi too.
