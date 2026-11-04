@@ -4,7 +4,7 @@ name: Main clock
 # 16:23Z preview and 16:41Z coverage runs of 2026-11-04 never fired, and the
 # nightly Mac run starts 6–7 h late every day. So merges to main start this
 # small clock instead. It waits until 4 hours have passed since the last
-# preview was published, then runs by hand (workflow_dispatch) the jobs that
+# preview was published or started, then runs by hand (workflow_dispatch) the jobs that
 # Mohamed wants every 4 hours, not after every merge (2026-11-04): the
 # Android preview, coverage and the Settings browser regression. A newer
 # merge cancels the waiting clock and starts a new one, so a busy stretch of
@@ -38,18 +38,24 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           every=$((4 * 3600))
-          last="$(gh api "repos/$GH_REPO/releases/tags/preview" \
+          # The later of the last published feed and the last preview run
+          # started (by this clock, by hand or by cron), so merges during a
+          # build don't start a second one right after it.
+          feed="$(gh api "repos/$GH_REPO/releases/tags/preview" \
             --jq '[.assets[] | select(.name == "update.json") | .updated_at][0] // empty' 2>/dev/null || true)"
+          run="$(gh api "repos/$GH_REPO/actions/workflows/android-preview.yml/runs?branch=main&per_page=10" \
+            --jq '[.workflow_runs[] | select(.conclusion != "cancelled") | .created_at][0] // empty' 2>/dev/null || true)"
+          last="$(printf '%s\n' "$feed" "$run" | sed '/^$/d' | sort | tail -n 1)"
           if [ -z "$last" ]; then
-            echo "No preview feed yet: building now."
+            echo "No preview yet: building now."
             exit 0
           fi
           age=$(( $(date -u +%s) - $(date -u -d "$last" +%s) ))
           wait=$(( every - age ))
           if [ "$wait" -le 0 ]; then
-            echo "The preview is $((age / 60)) min old: building now."
+            echo "The last preview is $((age / 60)) min old: building now."
           else
-            echo "The preview is $((age / 60)) min old: waiting $((wait / 60)) min (a newer merge restarts this wait)."
+            echo "The last preview is $((age / 60)) min old: waiting $((wait / 60)) min (a newer merge restarts this wait)."
             sleep "$wait"
           fi
       - name: Run the 4-hourly jobs on main
