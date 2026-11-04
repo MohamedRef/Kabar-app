@@ -479,16 +479,4 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
 }
 
 #[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn every_message_has_three_languages() {
-        // The match is exhaustive per (msg, lang); this keeps empty strings out.
-        for l in [UiLanguage::ArEg, UiLanguage::Ar, UiLanguage::En] {
-            for m in [T::Notebook, T::NotConnected, T::SelfCheck, T::CorrectForm] {
-                assert!(!tr(l, m).trim().is_empty());
-            }
-        }
-    }
-}
+mod tests;

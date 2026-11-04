@@ -82,6 +82,21 @@ pub fn requests(program: &Program) -> Vec<TtsRequest> {
     program.cues.iter().map(|c| audio::line(c.voice, &c.text, c.pitch_percent, 0)).collect()
 }
 
+/// What one poll of the native player means for the deck: whether its
+/// playing flag flips (a pause or play from the lock screen), and which
+/// engine event to handle. The end counts once, while the deck still plays.
+fn native_change(
+    was_playing: bool,
+    t: f64,
+    playing: bool,
+    ended: bool,
+) -> (Option<bool>, Option<&'static str>) {
+    if ended {
+        return (None, was_playing.then_some("ended"));
+    }
+    ((playing != was_playing).then_some(playing), (t >= 0.0).then_some("time"))
+}
+
 /// What to tell the learner when Kabar Cloud couldn't be asked.
 pub fn notice_for(e: &Unreachable) -> T {
     match e {
@@ -279,18 +294,13 @@ impl Deck {
     /// The native player's state, polled: moves the transcript along, and
     /// follows a pause or play from the lock screen.
     fn native_tick(mut self, t: f64, playing: bool, ended: bool) {
-        let seq = *self.seq.peek();
-        if ended {
-            if *self.playing.peek() {
-                self.on_event(EngineEvent { ev: "ended".into(), seq, t });
-            }
-            return;
-        }
-        if playing != *self.playing.peek() {
+        let (flip, ev) = native_change(*self.playing.peek(), t, playing, ended);
+        if let Some(playing) = flip {
             self.playing.set(playing);
         }
-        if t >= 0.0 {
-            self.on_event(EngineEvent { ev: "time".into(), seq, t });
+        if let Some(ev) = ev {
+            let seq = *self.seq.peek();
+            self.on_event(EngineEvent { ev: ev.into(), seq, t });
         }
     }
 
@@ -721,5 +731,17 @@ mod tests {
         assert!(spoken_ms("Selamat pagi, Pak!", 0.8) > spoken_ms("Selamat pagi, Pak!", 1.0));
         assert_eq!(notice_for(&Unreachable::QuotaExhausted), T::Quota);
         assert_eq!(notice_for(&Unreachable::SignedOut), T::NeedCloud);
+    }
+
+    #[test]
+    fn the_native_player_moves_the_transcript_and_follows_the_lock_screen() {
+        // Playing on: the time moves the transcript, nothing flips.
+        assert_eq!(native_change(true, 3.5, true, false), (None, Some("time")));
+        // Paused from the lock screen (no time known yet): only the flag flips.
+        assert_eq!(native_change(true, -1.0, false, false), (Some(false), None));
+        assert_eq!(native_change(false, 0.0, true, false), (Some(true), Some("time")));
+        // The end is reported while playing, and once only.
+        assert_eq!(native_change(true, 9.0, false, true), (None, Some("ended")));
+        assert_eq!(native_change(false, 9.0, false, true), (None, None));
     }
 }
