@@ -251,9 +251,11 @@ button.rating.good small { color: inherit; opacity: 0.85; }
   border-radius: var(--radius-pill);
   background: var(--surface-2);
 }
-/* A switch that fills its row and never wraps (UI style, #580). */
+/* A switch that fills its row and never wraps onto a second row (UI style,
+   #580). A long label ("Liquid Glass" at 320px, larger text) breaks inside
+   its own button instead of pushing the row past the screen. */
 .segmented.seg-fill { display: flex; flex-wrap: nowrap; }
-.segmented.seg-fill > button { flex: 1 1 0; min-inline-size: 0; padding-inline: var(--sp-2); white-space: nowrap; }
+.segmented.seg-fill > button { flex: 1 1 0; min-inline-size: 0; padding-inline: var(--sp-2); line-height: 1.2; text-wrap: balance; overflow-wrap: anywhere; }
 .segmented > button { border-color: transparent; background: transparent; color: var(--muted); min-block-size: calc(var(--tap) - 0.4rem); }
 .segmented > button:is([aria-checked="true"], [aria-pressed="true"]) { background: var(--surface); color: var(--primary); font-weight: 600; box-shadow: var(--shadow); }
 input.switch {
