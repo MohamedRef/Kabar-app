@@ -189,6 +189,50 @@ pub fn git_files(root: &Path, rev: &str) -> Result<Vec<(String, String)>> {
 mod tests {
     use super::*;
 
+    fn pack(files: &[(String, String)]) -> Vec<u8> {
+        let entries: Vec<(String, Vec<u8>)> = files
+            .iter()
+            .map(|(k, t)| (k.clone(), miniz_oxide::deflate::compress_to_vec(t.as_bytes(), 1)))
+            .collect();
+        kabar_protocol::bundle::encode(&entries)
+    }
+
+    #[test]
+    fn check_against_a_published_bundle() {
+        let s = crate::testkit::Sandbox::with(&["curriculum"]);
+        s.copy_matching("content/lessons/id", &["bipa1.u01."]);
+        let here = working_files(s.path()).unwrap();
+        assert!(here.iter().any(|(k, _)| k == "LESSONS/bipa1.u01.l01"), "lessons are keyed by id");
+        let same = s.write("same.bundle", pack(&here));
+        assert_eq!(bundle_files(&same).unwrap(), here, "a bundle unpacks to what it packed");
+        s.cli(&["ids", "check", "--base-bundle", same.to_str().unwrap()]).unwrap();
+        s.cli(&["ids", "list"]).unwrap();
+
+        // The device has a lesson this tree dropped: its ids would break records.
+        let mut more = here.clone();
+        let (_, l01) = here.iter().find(|(k, _)| k == "LESSONS/bipa1.u01.l01").unwrap();
+        more.push(("LESSONS/bipa1.u01.l99".into(), l01.replace("bipa1.u01.l01", "bipa1.u01.l99")));
+        let base = s.write("base.bundle", pack(&more));
+        let err = s.cli(&["ids", "check", "--base-bundle", base.to_str().unwrap()]).unwrap_err();
+        assert!(err.to_string().contains("were removed or repurposed"), "{err}");
+
+        let err = s.cli(&["ids", "check"]).unwrap_err();
+        assert!(err.to_string().contains("give --base <git ref> or --base-bundle <file>"));
+        assert!(s.cli(&["ids", "check", "--base", "HEAD"]).is_err(), "not a git checkout");
+        s.write("cut.bundle", b"KABARCB1\x05");
+        assert!(bundle_files(&s.path().join("cut.bundle")).is_err());
+        let junk = s.write(
+            "junk.bundle",
+            kabar_protocol::bundle::encode(&[("CAST".into(), b"not deflate".to_vec())]),
+        );
+        assert!(bundle_files(&junk).unwrap_err().to_string().contains("CAST doesn't unpack"));
+        s.write(RETIRED, "");
+        std::fs::remove_file(s.path().join(RETIRED)).unwrap();
+        std::fs::create_dir(s.path().join(RETIRED)).unwrap();
+        let reg = registry(&here);
+        assert!(check(s.path(), &reg, &reg).is_err(), "an unreadable retired list is an error");
+    }
+
     #[test]
     fn git_and_working_tree_read_the_same_files() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");

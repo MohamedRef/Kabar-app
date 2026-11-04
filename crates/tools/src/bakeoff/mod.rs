@@ -129,7 +129,11 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
 }
 
 fn run_cmd(root: &Root, args: RunArgs) -> Result<()> {
-    let env = |k: &str| std::env::var(k).ok();
+    run_with(root, args, &|k: &str| std::env::var(k).ok(), &Ureq::new())
+}
+
+/// [`run_cmd`] with the keys from `env` and requests through `http`.
+fn run_with(root: &Root, args: RunArgs, env: &dyn Fn(&str) -> Option<String>, http: &dyn Http) -> Result<()> {
     let engines = args.engines.iter().map(|s| Engine::from_spec(s, env)).collect::<Result<Vec<_>>>()?;
     let tasks = if args.tasks.is_empty() {
         Task::ALL.to_vec()
@@ -141,8 +145,7 @@ fn run_cmd(root: &Root, args: RunArgs) -> Result<()> {
     };
     let out =
         root.path().join(args.out.unwrap_or_else(|| PathBuf::from(format!("bakeoff/runs/{}", today()))));
-    let http = Ureq::new();
-    let mut runner = Runner::new(&http, out.clone());
+    let mut runner = Runner::new(http, out.clone());
     runner.limit = args.limit;
     let mut stopped = BTreeSet::new();
     for task in tasks {
