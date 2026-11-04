@@ -74,7 +74,7 @@ fn matched_pairs_share_a_couple_tint() {
 }
 
 /// The reference answer for a closed exercise.
-fn right_answer(ex: &Exercise) -> Answer {
+pub(super) fn right_answer(ex: &Exercise) -> Answer {
     use ExerciseKind as K;
     match &ex.kind {
         K::MultipleChoice { answer, .. } => Answer::Choice(*answer),

@@ -926,3 +926,6 @@ mod tests {
         }
     }
 }
+
+#[cfg(test)]
+mod play_tests;

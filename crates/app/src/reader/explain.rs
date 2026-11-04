@@ -88,7 +88,7 @@ fn accept(answer: ExplainSentence, s: &Sentence, needs_review: bool) -> Glue {
     Glue { answer, unverified }
 }
 
-fn friendly(r: FriendlyReason) -> Msg {
+pub(super) fn friendly(r: FriendlyReason) -> Msg {
     match r {
         FriendlyReason::ResetsLater => Msg::ExplainResetsLater,
         FriendlyReason::Unreachable => Msg::ExplainUnreachable,
@@ -97,7 +97,7 @@ fn friendly(r: FriendlyReason) -> Msg {
     }
 }
 
-fn register_msg(r: Register) -> Msg {
+pub(super) fn register_msg(r: Register) -> Msg {
     match r {
         Register::Chat => Msg::RegisterChat,
         Register::Formal => Msg::RegisterFormal,

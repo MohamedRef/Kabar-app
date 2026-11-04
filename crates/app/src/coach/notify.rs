@@ -156,13 +156,7 @@ pub fn use_local_reminders(db: &Db, coach: Coach, ui: Ui, prefs: DevicePrefs) {
         if !platform::push::available() {
             return;
         }
-        let profile = coach.profile.read();
-        let Some(profile) = profile.as_ref() else { return };
-        let (lang, eastern_digits) = {
-            let s = ui.settings.read();
-            (s.ui_language, s.eastern_digits)
-        };
-        let json = serde_json::to_string(&phrasebook(lang, eastern_digits, profile)).unwrap_or_default();
+        let Some(json) = phrasebook_json(coach, ui) else { return };
         if let Err(e) = platform::push::set_phrasebook(&json) {
             crate::diag::report!("push phrasebook: {e}");
         }
@@ -178,29 +172,8 @@ pub fn use_local_reminders(db: &Db, coach: Coach, ui: Ui, prefs: DevicePrefs) {
         if !platform::LOCAL_REMINDERS {
             return;
         }
-        let here = prefs.reminds_here(*ui.tablet.read());
         let pushed = cloud.is_some_and(|c| *c.push.read());
-        let profile = coach.profile.read();
-        let state = coach.reminders.read();
-        let events = coach.events.read();
-        let (lang, eastern_digits) = {
-            let s = ui.settings.read();
-            (s.ui_language, s.eastern_digits)
-        };
-        let now_ms = *coach.now_ms.peek();
-        let offset = profile.as_ref().map_or(CoachProfile::default().utc_offset_min, |p| p.utc_offset_min);
-        let plan = db.0.borrow().plan_for(clock::today(now_ms, offset)).ok().flatten();
-        let items = schedule(Inputs {
-            lang,
-            eastern_digits,
-            here,
-            pushed,
-            profile: profile.as_ref(),
-            state: &state,
-            events: &events,
-            plan: plan.as_ref(),
-            now_ms,
-        });
+        let items = local_schedule(&db, coach, ui, prefs, pushed);
         let json = serde_json::to_string(&items).unwrap_or_else(|_| "[]".into());
         if let Err(e) = platform::reminders::schedule(&json) {
             crate::diag::report!("scheduling reminders: {e}");
@@ -210,6 +183,54 @@ pub fn use_local_reminders(db: &Db, coach: Coach, ui: Ui, prefs: DevicePrefs) {
 
 /// How long to wait for Firebase's first token: it usually comes within a
 /// few seconds of the first launch, later ones have it at once.
+/// The phrasebook for pushed reminders as JSON, in the UI language (none
+/// before onboarding). Reads the signals, so an effect re-runs on changes.
+fn phrasebook_json(coach: Coach, ui: Ui) -> Option<String> {
+    let profile = coach.profile.read();
+    let profile = profile.as_ref()?;
+    let (lang, eastern_digits) = {
+        let s = ui.settings.read();
+        (s.ui_language, s.eastern_digits)
+    };
+    Some(serde_json::to_string(&phrasebook(lang, eastern_digits, profile)).unwrap_or_default())
+}
+
+/// The reminders this device schedules now: the synced settings and log,
+/// today's plan, and whether this device rings (`prefs`) or the Cloud
+/// pushes instead (`pushed`). Reads the signals, so an effect re-runs.
+fn local_schedule(db: &Db, coach: Coach, ui: Ui, prefs: DevicePrefs, pushed: bool) -> Vec<Scheduled> {
+    let here = prefs.reminds_here(*ui.tablet.read());
+    let profile = coach.profile.read();
+    let state = coach.reminders.read();
+    let events = coach.events.read();
+    let (lang, eastern_digits) = {
+        let s = ui.settings.read();
+        (s.ui_language, s.eastern_digits)
+    };
+    let now_ms = *coach.now_ms.peek();
+    let offset = profile.as_ref().map_or(CoachProfile::default().utc_offset_min, |p| p.utc_offset_min);
+    let plan = db.0.borrow().plan_for(clock::today(now_ms, offset)).ok().flatten();
+    schedule(Inputs {
+        lang,
+        eastern_digits,
+        here,
+        pushed,
+        profile: profile.as_ref(),
+        state: &state,
+        events: &events,
+        plan: plan.as_ref(),
+        now_ms,
+    })
+}
+
+/// The token to send the Cloud, if it changed: this device's Firebase
+/// token when it rings, an empty one (no pushes here) when another device
+/// does. `None`: nothing to send (no token yet, or already sent).
+fn token_to_send(here: bool, token: Option<String>, sent: Option<&str>) -> Option<String> {
+    let token = if here { token? } else { String::new() };
+    (sent != Some(token.as_str())).then_some(token)
+}
+
 const TOKEN_TRIES: u32 = 12;
 const TOKEN_POLL: std::time::Duration = std::time::Duration::from_secs(5);
 
@@ -253,18 +274,11 @@ pub fn use_push_token(ui: Ui, prefs: DevicePrefs) {
                 crate::platform::time::sleep(TOKEN_POLL).await;
                 token = platform::push::token();
             }
-            let token = if here {
-                let Some(t) = token else {
-                    crate::diag::report!("no Firebase token yet: reminders stay local");
-                    return;
-                };
-                t
-            } else {
-                String::new()
-            };
-            if sent.peek().as_deref() == Some(token.as_str()) {
+            if here && token.is_none() {
+                crate::diag::report!("no Firebase token yet: reminders stay local");
                 return;
             }
+            let Some(token) = token_to_send(here, token, sent.peek().as_deref()) else { return };
             sent.set(Some(token.clone()));
             cloud.send(Command::PushToken(token));
         });
@@ -389,5 +403,65 @@ mod tests {
         // Steady's limit for two times is two a day: none left after both rang.
         let later = schedule(Inputs { now_ms: at(19) + 60_000, ..inputs(Some(&p), &next) });
         assert!(later.iter().all(|s| s.date != "2026-10-27"));
+    }
+
+    #[test]
+    fn the_token_is_sent_once_and_cleared_when_another_device_rings() {
+        assert_eq!(token_to_send(true, Some("tok".into()), None), Some("tok".into()));
+        assert_eq!(token_to_send(true, Some("tok".into()), Some("tok")), None, "already sent");
+        assert_eq!(token_to_send(true, Some("new".into()), Some("tok")), Some("new".into()));
+        assert_eq!(token_to_send(true, None, None), None, "no token yet");
+        // Another device rings: an empty token stops pushes here.
+        assert_eq!(token_to_send(false, Some("tok".into()), Some("tok")), Some(String::new()));
+        assert_eq!(token_to_send(false, None, Some("")), None);
+    }
+
+    fn hooks_body() -> Element {
+        let db = use_context::<Db>();
+        let coach = use_context::<Coach>();
+        let ui = use_context::<Ui>();
+        let prefs = use_context::<DevicePrefs>();
+        use_local_reminders(&db, coach, ui, prefs);
+        use_push_token(ui, prefs);
+        rsx! { p { "ok" } }
+    }
+
+    #[test]
+    fn the_schedule_follows_the_device_and_the_cloud() {
+        use crate::test_dom::{App, FakeDocument, memory_db};
+        let db = memory_db();
+        let mut p = profile(ReminderStyle::Gentle);
+        p.utc_offset_min = 120;
+        db.0.borrow_mut().save_coach_profile(&p).unwrap();
+        let mut app = App::with(UiLanguage::En, db, FakeDocument::new(), hooks_body);
+        assert!(app.screen().contains("ok"));
+        // Nothing was delivered while closed, so nothing changed.
+        assert_eq!(app.db.0.borrow().reminder_state().unwrap(), ReminderState::default());
+        let (coach, ui, prefs, db) =
+            (app.ctx::<Coach>(), app.ctx::<Ui>(), app.ctx::<DevicePrefs>(), app.db.clone());
+        app.dom.in_app(|| prefs.set_remind_here(&db, true));
+        let items = app.dom.in_app(|| local_schedule(&db, coach, ui, prefs, false));
+        assert!(!items.is_empty() && items.len() <= UPCOMING);
+        assert!(items.iter().all(|i| i.title == TITLE && !i.text.is_empty()), "{items:?}");
+        assert!(items.iter().any(|i| i.text.contains(&p.name)), "Kak Nur uses the name: {items:?}");
+        assert!(items.windows(2).all(|w| w[0].at < w[1].at), "in time order");
+        // The Cloud pushes instead, or another device rings: nothing local.
+        assert!(app.dom.in_app(|| local_schedule(&db, coach, ui, prefs, true)).is_empty());
+        app.dom.in_app(|| prefs.set_remind_here(&db, false));
+        assert!(app.dom.in_app(|| local_schedule(&db, coach, ui, prefs, false)).is_empty());
+        // The pushed phrasebook speaks the UI language, with the name filled in.
+        let json = app.dom.in_app(|| phrasebook_json(coach, ui)).expect("a phrasebook");
+        let book: serde_json::Value = serde_json::from_str(&json).unwrap();
+        assert_eq!(book["title"], TITLE);
+        assert!(book["lines"].as_object().unwrap().len() == PUSH_LINES.len());
+        assert!(json.contains(&p.name));
+    }
+
+    #[test]
+    fn no_phrasebook_before_onboarding() {
+        use crate::test_dom::App;
+        let mut app = App::new(UiLanguage::En, hooks_body);
+        let (coach, ui) = (app.ctx::<Coach>(), app.ctx::<Ui>());
+        assert_eq!(app.dom.in_app(|| phrasebook_json(coach, ui)), None);
     }
 }

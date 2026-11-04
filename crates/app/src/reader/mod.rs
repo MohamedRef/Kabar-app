@@ -25,6 +25,11 @@ pub mod translate;
 pub mod wait_word;
 mod web;
 
+#[cfg(test)]
+pub(crate) mod fixture;
+#[cfg(test)]
+mod ui_tests;
+
 use std::collections::{HashMap, HashSet};
 use std::rc::Rc;
 use std::sync::OnceLock;
@@ -223,6 +228,11 @@ impl ReaderState {
         self.panel.set(panel);
     }
 
+    /// Shows `panel` in the side panel / bottom sheet (None closes it).
+    pub(crate) fn show(mut self, panel: Option<Panel>) {
+        self.panel.set(panel);
+    }
+
     pub(crate) fn close(mut self) {
         self.open.set(None);
         self.grammar.set(None);
@@ -387,40 +397,9 @@ pub fn Reader() -> Element {
         move || {
             let db = db.clone();
             async move {
-                let mut st = st;
                 let mut eval = document::eval(READER_JS);
                 while let Ok(msg) = eval.recv::<FromJs>().await {
-                    match msg {
-                        FromJs::Peek(p) => {
-                            // The word's card is already open: don't repeat it in a popover.
-                            if *st.panel.peek() != Some(Panel::Word(p.i)) {
-                                st.peek.set(Some(p));
-                            }
-                        }
-                        FromJs::Unpeek => st.peek.set(None),
-                        FromJs::Open { i } => {
-                            st.peek.set(None);
-                            st.panel.set(Some(Panel::Word(i)));
-                        }
-                        FromJs::Phrase { tokens } => {
-                            st.peek.set(None);
-                            st.panel.set(Some(Panel::Phrase { tokens, save_first: false }));
-                        }
-                        FromJs::Menu { tokens } => {
-                            st.peek.set(None);
-                            st.panel.set(Some(Panel::Phrase { tokens, save_first: true }));
-                        }
-                        FromJs::Highlight { tokens } => st.save_phrase(&db, &tokens),
-                        // One layer at a time: the settings popover first.
-                        FromJs::Escape if *sheet.peek() => {
-                            let mut sheet = sheet;
-                            sheet.set(false);
-                        }
-                        FromJs::Escape => {
-                            st.peek.set(None);
-                            st.panel.set(None);
-                        }
-                    }
+                    on_js(&db, st, sheet, msg);
                 }
             }
         }
@@ -433,21 +412,7 @@ pub fn Reader() -> Element {
             let Some(input) = inbox.0.read().clone() else { return };
             let mut slot = inbox.0;
             slot.set(None);
-            match input {
-                SharedInput::Text { text, source } => match web::as_url(&text) {
-                    Some(url) => import_url(db.clone(), st, busy, recent, url.to_string()),
-                    None => {
-                        open_new(&db, st, &text, TextKind::Shared, source.as_deref(), None, recent);
-                    }
-                },
-                SharedInput::Image { path, source, more, .. } => {
-                    if more > 0 {
-                        let mut toast = st.toast;
-                        toast.set(Some(Msg::ShareFirstImageOnly));
-                    }
-                    run_ocr(db.clone(), st, busy, recent, std::path::PathBuf::from(path), source);
-                }
-            }
+            take_shared(&db, st, busy, recent, input);
         }
     });
 
@@ -513,6 +478,81 @@ pub fn Reader() -> Element {
     }
 }
 
+/// One message from `reader.js`: a peek, a word or phrase to open, a
+/// phrase to save, or Escape closing the top layer.
+fn on_js(db: &Db, mut st: ReaderState, mut sheet: Signal<bool>, msg: FromJs) {
+    match msg {
+        FromJs::Peek(p) => {
+            // The word's card is already open: don't repeat it in a popover.
+            if *st.panel.peek() != Some(Panel::Word(p.i)) {
+                st.peek.set(Some(p));
+            }
+        }
+        FromJs::Unpeek => st.peek.set(None),
+        FromJs::Open { i } => {
+            st.peek.set(None);
+            st.panel.set(Some(Panel::Word(i)));
+        }
+        FromJs::Phrase { tokens } => {
+            st.peek.set(None);
+            st.panel.set(Some(Panel::Phrase { tokens, save_first: false }));
+        }
+        FromJs::Menu { tokens } => {
+            st.peek.set(None);
+            st.panel.set(Some(Panel::Phrase { tokens, save_first: true }));
+        }
+        FromJs::Highlight { tokens } => st.save_phrase(db, &tokens),
+        // One layer at a time: the settings popover first.
+        FromJs::Escape if *sheet.peek() => sheet.set(false),
+        FromJs::Escape => {
+            st.peek.set(None);
+            st.panel.set(None);
+        }
+    }
+}
+
+/// Something shared to Kabar (Android share sheet): a link is fetched, text
+/// opens as it is, a screenshot is read.
+fn take_shared(
+    db: &Db,
+    mut st: ReaderState,
+    busy: Signal<Option<Msg>>,
+    recent: Signal<Vec<SavedText>>,
+    input: SharedInput,
+) {
+    match input {
+        SharedInput::Text { text, source } => match web::as_url(&text) {
+            Some(url) => import_url(db.clone(), st, busy, recent, url.to_string()),
+            None => {
+                open_new(db, st, &text, TextKind::Shared, source.as_deref(), None, recent);
+            }
+        },
+        SharedInput::Image { path, source, more, .. } => {
+            if more > 0 {
+                st.toast.set(Some(Msg::ShareFirstImageOnly));
+            }
+            run_ocr(db.clone(), st, busy, recent, std::path::PathBuf::from(path), source);
+        }
+    }
+}
+
+/// Typed, pasted or dropped text: a lone link is fetched, anything else
+/// opens as a pasted text.
+fn read_input(
+    db: &Db,
+    st: ReaderState,
+    busy: Signal<Option<Msg>>,
+    recent: Signal<Vec<SavedText>>,
+    body: &str,
+) {
+    match web::as_url(body) {
+        Some(url) => import_url(db.clone(), st, busy, recent, url.to_string()),
+        None => {
+            open_new(db, st, body, TextKind::Pasted, None, None, recent);
+        }
+    }
+}
+
 /// Saves a new text and opens it.
 fn open_new(
     db: &Db,
@@ -562,34 +602,41 @@ fn run_ocr(
         });
         let result = rx.await.unwrap_or_else(|_| Err("OCR thread stopped".into()));
         busy.set(None);
-        match result {
-            Ok(ocr) => {
-                let screen = structure(&ocr);
-                if screen.items.is_empty() {
-                    st.toast.set(Some(Msg::ScreenshotEmpty));
-                    return;
-                }
-                let body = screen.reading_text();
-                let layout = serde_json::to_string(&screen).ok();
-                let saved = open_new(
-                    &db,
-                    st,
-                    &body,
-                    TextKind::Screenshot,
-                    source.as_deref(),
-                    layout.as_deref(),
-                    recent,
-                );
-                if let (Some(ai), Some(text)) = (ai, saved) {
-                    refine_with_ai(ai, db, st, recent, ocr, text);
-                }
+        open_ocr(&db, st, recent, result, source, ai);
+    });
+}
+
+/// What the OCR read: structured into a screen and opened, then refined by
+/// the AI in the background when an engine is connected. An empty picture
+/// or a failed read says so instead.
+fn open_ocr(
+    db: &Db,
+    mut st: ReaderState,
+    recent: Signal<Vec<SavedText>>,
+    result: Result<OcrResult, String>,
+    source: Option<String>,
+    ai: Option<Ai>,
+) {
+    match result {
+        Ok(ocr) => {
+            let screen = structure(&ocr);
+            if screen.items.is_empty() {
+                st.toast.set(Some(Msg::ScreenshotEmpty));
+                return;
             }
-            Err(e) => {
-                crate::diag::report!("OCR failed: {e}");
-                st.toast.set(Some(Msg::OcrFailed));
+            let body = screen.reading_text();
+            let layout = serde_json::to_string(&screen).ok();
+            let saved =
+                open_new(db, st, &body, TextKind::Screenshot, source.as_deref(), layout.as_deref(), recent);
+            if let (Some(ai), Some(text)) = (ai, saved) {
+                refine_with_ai(ai, db.clone(), st, recent, ocr, text);
             }
         }
-    });
+        Err(e) => {
+            crate::diag::report!("OCR failed: {e}");
+            st.toast.set(Some(Msg::OcrFailed));
+        }
+    }
 }
 
 /// The AI pass (`structure_screenshot`, spec §11) after the deterministic
@@ -679,11 +726,14 @@ fn import_url(
     });
 }
 
-/// Copies picked or dropped image bytes into Kabar's inbox folder, so every
-/// platform's OCR gets a plain file path.
-async fn stash_image(file: &FileData) -> Result<std::path::PathBuf, String> {
+/// Copies picked or dropped image bytes into Kabar's inbox folder (`dir`),
+/// so every platform's OCR gets a plain file path.
+async fn stash_image(
+    file: &FileData,
+    dir: Result<std::path::PathBuf, String>,
+) -> Result<std::path::PathBuf, String> {
     let bytes = file.read_bytes().await.map_err(|e| e.to_string())?;
-    let dir = platform::data_dir()?.join("inbox");
+    let dir = dir?;
     std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
     let ext = file.name().rsplit_once('.').map_or("png".to_string(), |(_, e)| e.to_lowercase());
     let path = dir.join(format!("{}.{ext}", uuid::Uuid::new_v4()));
@@ -748,7 +798,7 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
             let db = db.clone();
             let Some(file) = files.into_iter().find(is_image) else { return };
             spawn(async move {
-                match stash_image(&file).await {
+                match stash_image(&file, platform::data_dir().map(|d| d.join("inbox"))).await {
                     Ok(path) => run_ocr(db, st, busy, recent, path, None),
                     Err(e) => {
                         crate::diag::report!("reading the image failed: {e}");
@@ -761,88 +811,75 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
     };
 
     rsx! {
-            crate::ui::Card { element: crate::ui::CardElement::Div,
-                class: if *dragging.read() { "reader-input dragging" } else { "reader-input" },
-                ondragover: move |e: DragEvent| {
+        crate::ui::Card { element: crate::ui::CardElement::Div,
+            class: if *dragging.read() { "reader-input dragging" } else { "reader-input" },
+            ondragover: move |e: DragEvent| {
+                e.prevent_default();
+                dragging.set(true);
+            },
+            ondragleave: move |_| dragging.set(false),
+            ondrop: {
+                let db = db.clone();
+                let pick = pick.clone();
+                move |e: DragEvent| {
                     e.prevent_default();
-                    dragging.set(true);
-                },
-                ondragleave: move |_| dragging.set(false),
-                ondrop: {
-                    let db = db.clone();
-                    let pick = pick.clone();
-                    move |e: DragEvent| {
-                        e.prevent_default();
-                        dragging.set(false);
-                        let files = e.files();
-                        if files.iter().any(is_image) {
-                            pick(files);
-                        } else if let Some(text) = e.data_transfer().get_as_text() {
-                            match web::as_url(&text) {
-                                Some(url) => import_url(db.clone(), st, busy, recent, url.to_string()),
-                                None => {
-        open_new(&db, st, &text, TextKind::Pasted, None, None, recent);
-    }
-                            }
-                        }
+                    dragging.set(false);
+                    let files = e.files();
+                    if files.iter().any(is_image) {
+                        pick(files);
+                    } else if let Some(text) = e.data_transfer().get_as_text() {
+                        read_input(&db, st, busy, recent, &text);
                     }
-                },
-                reading::VoicePicker {}
-                textarea {
-                    class: "reader-textarea",
-                    // `auto` follows the typed text, but an empty box would lay
-                    // the Arabic placeholder out left-to-right.
-                    dir: if draft.read().is_empty() { ui.lang().dir().as_str() } else { "auto" },
-                    lang: "id",
-                    rows: "5",
-                    placeholder: "{ui.t(Msg::ReaderPlaceholder)}",
-                    // Uncontrolled: fast typing, IMEs and Samsung's handwriting
-                    // keyboard never lose characters to a re-render.
-                    oninput: move |e| draft.set(e.value()),
                 }
-                div { class: "row",
+            },
+            reading::VoicePicker {}
+            textarea {
+                class: "reader-textarea",
+                // `auto` follows the typed text, but an empty box would lay
+                // the Arabic placeholder out left-to-right.
+                dir: if draft.read().is_empty() { ui.lang().dir().as_str() } else { "auto" },
+                lang: "id",
+                rows: "5",
+                placeholder: "{ui.t(Msg::ReaderPlaceholder)}",
+                // Uncontrolled: fast typing, IMEs and Samsung's handwriting
+                // keyboard never lose characters to a re-render.
+                oninput: move |e| draft.set(e.value()),
+            }
+            div { class: "row",
+                button {
+                    class: "primary",
+                    disabled: draft.read().trim().is_empty(),
+                    onclick: {
+                        let db = db.clone();
+                        move |_| read_input(&db, st, busy, recent, &draft.read())
+                    },
+                    "{ui.t(Msg::ReaderRead)}"
+                }
+                if platform::NATIVE_IMAGE_PICKER {
                     button {
-                        class: "primary",
-                        disabled: draft.read().trim().is_empty(),
-                        onclick: {
-                            let db = db.clone();
-                            move |_| {
-                                let body = draft.read().clone();
-                                match web::as_url(&body) {
-                                    Some(url) => import_url(db.clone(), st, busy, recent, url.to_string()),
-                                    None => {
-        open_new(&db, st, &body, TextKind::Pasted, None, None, recent);
-    }
-                                }
-                            }
-                        },
-                        "{ui.t(Msg::ReaderRead)}"
+                        disabled: busy.read().is_some(),
+                        onclick: move |_| pick_native(st, inbox),
+                        "{ui.t(Msg::ReaderScreenshot)}"
                     }
-                    if platform::NATIVE_IMAGE_PICKER {
-                        button {
-                            disabled: busy.read().is_some(),
-                            onclick: move |_| pick_native(st, inbox),
-                            "{ui.t(Msg::ReaderScreenshot)}"
-                        }
-                    } else {
-                        label { class: "button-like",
-                            "{ui.t(Msg::ReaderScreenshot)}"
-                            input {
-                                r#type: "file",
-                                // macOS Vision also reads HEIC/TIFF (iPhone photos, older screenshots).
-                                accept: "image/*,.heic,.heif,.tif,.tiff,.bmp",
-                                class: "visually-hidden",
-                                onchange: {
-                                    let pick = pick.clone();
-                                    move |e: FormEvent| pick(e.files())
-                                },
-                            }
+                } else {
+                    label { class: "button-like",
+                        "{ui.t(Msg::ReaderScreenshot)}"
+                        input {
+                            r#type: "file",
+                            // macOS Vision also reads HEIC/TIFF (iPhone photos, older screenshots).
+                            accept: "image/*,.heic,.heif,.tif,.tiff,.bmp",
+                            class: "visually-hidden",
+                            onchange: {
+                                let pick = pick.clone();
+                                move |e: FormEvent| pick(e.files())
+                            },
                         }
                     }
-                    span { class: "muted", "{ui.t(Msg::ReaderDrop)}" }
                 }
+                span { class: "muted", "{ui.t(Msg::ReaderDrop)}" }
             }
         }
+    }
 }
 
 fn kind_icon(kind: TextKind) -> &'static str {
