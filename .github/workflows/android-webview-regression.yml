@@ -1,13 +1,26 @@
 name: Android WebView renderer regression
 
+# Mohamed, 2026-11-04: only when the Kotlin side changes (it tests android/
+# alone), plus by hand. It used to run on every PR and every merge.
 on:
   push:
     branches: [main]
+    paths:
+      - android/**
+      - .github/workflows/android-webview-regression.yml
   pull_request:
     branches: [main]
+    paths:
+      - android/**
+      - .github/workflows/android-webview-regression.yml
+  workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: webview-renderer-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   webview-renderer:

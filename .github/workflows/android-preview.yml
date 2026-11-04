@@ -23,17 +23,11 @@ name: Android preview APK
 # Mohamed, 2026-11-04: not after every merge any more, but every 4 hours and
 # by hand (Actions › Android preview APK › Run workflow). A scheduled run whose
 # main is already on the preview feed stops after the small `changed` job.
+# Mohamed, 2026-11-04 (later): not on pull requests either; they jammed the
+# Actions queue. To test-build a branch, run it by hand on that branch.
 on:
   schedule:
     - cron: "23 */4 * * *"
-  pull_request:
-    paths:
-      - .github/workflows/android-preview.yml
-      - android/**
-      - crates/app/AndroidManifest.xml
-      - crates/app/Dioxus.toml
-      - scripts/android-check-apk.sh
-      - scripts/android-release-apk.sh
   workflow_dispatch:
 
 # A pull request's newer push cancels its older run. On main, runs queue

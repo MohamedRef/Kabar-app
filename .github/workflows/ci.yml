@@ -5,11 +5,11 @@ on:
     branches: [main]
   pull_request:
 
-# A new push to a PR cancels that PR's older run. On main every commit runs
-# to the end, so each merged PR gets its own verdict instead of a
-# "cancelled" when the next merge lands a minute later.
+# A newer push cancels the older run, on a PR and on main alike: each main
+# commit holds every earlier one, so the newest run's verdict covers them
+# (Mohamed, 2026-11-04: merges queued a full run each and jammed Actions).
 concurrency:
-  group: ci-${{ github.ref }}-${{ github.event_name == 'pull_request' && 'pr' || github.sha }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 # Every job here only reads the repo, on pull requests and on main alike.
@@ -22,6 +22,11 @@ env:
 # Line coverage is not checked here any more: it rebuilt the whole workspace
 # instrumented on every PR and was the slowest job. It runs on main every
 # 4 hours and by hand in coverage.yml (Mohamed, 2026-11-04).
+#
+# A pull request runs only the fast checks: fmt, clippy, tests and content
+# (`check`) and the Android arm64 clippy. The web and Cloud builds run on
+# main after the merge; the browser regressions, the Android preview and
+# coverage run every 4 hours and by hand.
 
 jobs:
   check:
@@ -124,6 +129,8 @@ jobs:
 
   wasm:
     name: core and protocol build for wasm32
+    # main only: PRs keep to the fast checks (Mohamed, 2026-11-04).
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
@@ -136,6 +143,8 @@ jobs:
 
   web:
     name: Web app compiles (wasm32)
+    # main only: PRs keep to the fast checks (Mohamed, 2026-11-04).
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
@@ -151,6 +160,8 @@ jobs:
 
   cloud:
     name: Kabar Cloud (wasm build + local end-to-end)
+    # main only: PRs keep to the fast checks (Mohamed, 2026-11-04).
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
