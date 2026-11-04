@@ -110,7 +110,7 @@ pub fn Today() -> Element {
     } else if plan.comeback {
         Line::PlanComeback
     } else {
-        Line::PlanMorning
+        kabar_core::coach::voice::plan_line(coach.time_of_day().hour())
     };
     let break_at = plan::break_after(&plan);
     let minutes = ui.num(goal);
@@ -547,7 +547,7 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
         .iter()
         .zip(&done)
         .find(|(i, d)| **d && !matches!(i.kind, PlanItemKind::Review { .. }))
-        .map(|(i, _)| labels::plan_item_text(&ui, &i.kind))
+        .map(|(i, _)| labels::plan_item_phrase(&ui, &i.kind))
         .unwrap_or_default();
     let base = [
         ("name", profile.name.as_str()),
@@ -562,7 +562,7 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     });
     let next = r.tomorrow.as_ref().map(|first| {
         let (count, topic) = labels::plan_voice_args(&ui, &tomorrow.items);
-        let topic = if topic.is_empty() { labels::plan_item_text(&ui, first) } else { topic };
+        let topic = if topic.is_empty() { labels::plan_item_phrase(&ui, first) } else { topic };
         say(&ui, Line::RecapTomorrow, today, &[("topic", topic.as_str()), ("count", count.as_str())])
     });
 

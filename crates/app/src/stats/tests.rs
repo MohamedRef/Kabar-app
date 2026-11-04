@@ -672,3 +672,30 @@ fn choices_that_cannot_be_saved_still_apply_for_now() {
     assert!(td::html(&dom).contains("data-n=\"4\""));
     assert_eq!(td::db(&dom).0.borrow().local_value("stats_period").unwrap(), None);
 }
+
+#[component]
+fn RailStats() -> Element {
+    let ui = use_context::<crate::Ui>();
+    rsx! { button { class: "rail-stats", onclick: move |_| open_from_nav(ui), "Progress" } }
+}
+
+fn rail_view(screen: Screen) -> Option<Element> {
+    match screen {
+        Screen::Stats => Some(rsx! { StatsScreen {} }),
+        Screen::Today => Some(rsx! { RailStats {} TodayCards {} }),
+        _ => None,
+    }
+}
+
+#[test]
+fn stats_from_the_rail_has_no_back_arrow() {
+    // #587: a rail destination has nowhere to go back to.
+    let mut dom = td::mount(Setup::new(empty(), Screen::Today, rail_view));
+    td::click_where(&mut dom, |l| l.class() == "rail-stats");
+    assert_eq!(td::screen(&dom), Screen::Stats);
+    assert!(!td::html(&dom).contains("st-back-page"));
+    // Pushed from a page, it has one again.
+    let mut dom = td::mount(Setup::new(empty(), Screen::Today, view));
+    td::click_where(&mut dom, |l| l.class() == "st-open");
+    assert!(td::html(&dom).contains("st-back-page"));
+}

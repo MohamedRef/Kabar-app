@@ -720,7 +720,7 @@ fn Shell() -> Element {
                                 nav.set(play::Route::Hub);
                             }
                             if item == Screen::Stats {
-                                stats::open(ui, item);
+                                stats::open_from_nav(ui);
                             } else {
                                 let mut screen = ui.screen;
                                 screen.set(item);

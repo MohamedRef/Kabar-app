@@ -150,6 +150,58 @@ pub(crate) fn Rich(text: String, target: &'static str, #[props(default)] pron: b
         }
     }
 }
+/// A slide's explanation: text, with each run of `- ` lines drawn as a real
+/// list, so a screen reader hears a list and no typed hyphen shows (#587).
+#[component]
+pub(crate) fn SlideBody(text: String, target: &'static str, #[props(default)] pron: bool) -> Element {
+    rsx! {
+        div { class: "lp-slide-body",
+            for (i, block) in body_blocks(&text).into_iter().enumerate() {
+                match block {
+                    BodyBlock::Text(t) => rsx! { p { key: "{i}", class: "pre", Rich { text: t, target, pron } } },
+                    BodyBlock::List(items) => rsx! {
+                        ul { key: "{i}", class: "lp-list",
+                            for (j, item) in items.into_iter().enumerate() {
+                                li { key: "{j}", Rich { text: item, target, pron } }
+                            }
+                        }
+                    },
+                }
+            }
+        }
+    }
+}
+
+#[derive(Debug, PartialEq)]
+pub(crate) enum BodyBlock {
+    Text(String),
+    List(Vec<String>),
+}
+
+/// Splits a body into text and `- ` list runs, in order.
+pub(crate) fn body_blocks(text: &str) -> Vec<BodyBlock> {
+    let mut out: Vec<BodyBlock> = Vec::new();
+    for line in text.trim().lines() {
+        let item = line.trim_start().strip_prefix("- ").map(str::trim);
+        match (item, out.last_mut()) {
+            (Some(item), Some(BodyBlock::List(items))) => items.push(item.to_string()),
+            (Some(item), _) => out.push(BodyBlock::List(vec![item.to_string()])),
+            (None, Some(BodyBlock::Text(t))) => {
+                t.push('\n');
+                t.push_str(line);
+            }
+            (None, _) => out.push(BodyBlock::Text(line.to_string())),
+        }
+    }
+    for b in &mut out {
+        if let BodyBlock::Text(t) = b {
+            *t = t.trim().to_string();
+        }
+    }
+    out.retain(|b| !matches!(b, BodyBlock::Text(t) if t.is_empty()));
+    out
+}
+
 /// "الـ kopi", "بالـ **Bu Rina**": the Arabic article is written apart from
 /// the Latin word it belongs to. The space after it becomes a no-break space,
 /// so a line never ends on "الـ" with its word on the next one.

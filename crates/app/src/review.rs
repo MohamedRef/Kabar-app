@@ -360,7 +360,7 @@ fn ReviewHome() -> Element {
                 class: "tap tap-plain forecast-tap",
                 aria_label: "{ui.t(Msg::RevForecast)}",
                 onclick: move |_| crate::stats::open(ui, Screen::Stats),
-            ol { class: "forecast",
+            ol { class: if forecast.iter().all(|&n| n == 0) { "forecast empty" } else { "forecast" },
                 for (i, n) in forecast.iter().copied().enumerate() {
                     li {
                         key: "{i}",
@@ -380,6 +380,10 @@ fn ReviewHome() -> Element {
                     }
                 }
             }
+            }
+            // Seven grey bars looked like data (#587).
+            if forecast.iter().all(|&n| n == 0) {
+                p { class: "muted small", "{ui.t(Msg::RevForecastEmpty)}" }
             }
             crate::stats::StatsButton {}
         }

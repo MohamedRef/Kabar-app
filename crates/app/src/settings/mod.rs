@@ -287,7 +287,10 @@ fn SectionList(sections: Vec<Section>, current: Option<Section>) -> Element {
                 .as_ref()
                 .map(|u| crate::update::view::summary(&ui, u))
                 .unwrap_or_else(|| st(lang, S::UpdatesSub).to_string()),
-            Section::About => format!("{} {}", st(lang, S::Version), env!("CARGO_PKG_VERSION")),
+            // Isolated left-to-right, or Arabic reads "alpha.1-1.0.0" (#584).
+            Section::About => {
+                format!("{} \u{2066}{}\u{2069}", st(lang, S::Version), env!("CARGO_PKG_VERSION"))
+            }
             s => st(lang, s.summary()).to_string(),
         }
     };

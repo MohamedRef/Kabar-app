@@ -190,7 +190,7 @@ fn the_wide_sheet_lists_grouped_sections_beside_learning() {
         html.contains(&format!("id=\"settings-section-title\">{}<", st(UiLanguage::ArEg, text::S::Learning)))
     );
     assert!(html.contains(&format!(
-        "{} {}",
+        "{} \u{2066}{}\u{2069}",
         st(UiLanguage::ArEg, text::S::Version),
         env!("CARGO_PKG_VERSION")
     )));
@@ -338,7 +338,8 @@ fn look_changes_theme_language_digits_and_device_prefs() {
     h.click("Larger");
     assert_eq!(*prefs(&h).text_size.peek(), device::TextSize::Larger);
     assert_eq!(local(&h, "pref.text_size").as_deref(), Some("larger"));
-    h.click("Liquid Glass · iOS");
+    h.click("Liquid Glass");
+    assert!(h.html().contains("See-through glass, in the spirit of iOS"));
     assert_eq!(*prefs(&h).appearance.peek(), device::Appearance::LiquidGlass);
     assert_eq!(local(&h, "pref.appearance").as_deref(), Some("liquid-glass"));
 

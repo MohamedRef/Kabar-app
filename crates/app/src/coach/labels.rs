@@ -123,6 +123,14 @@ pub fn date(ui: &Ui, d: LocalDate, today: LocalDate) -> String {
     if y == today.ymd().0 { short } else { format!("{short}/{}", ui.num(y as u32)) }
 }
 
+/// A date with its month spelled out ("2 November", «٢ نوفمبر»), for
+/// "week of …" labels, where "2/11" reads like a fraction (#582).
+pub fn day_month(ui: &Ui, d: LocalDate, today: LocalDate) -> String {
+    let (y, m, day) = d.ymd();
+    let short = format!("{} {}", ui.num(day), month(ui, m));
+    if y == today.ymd().0 { short } else { format!("{short} {}", ui.num(y as u32)) }
+}
+
 /// A month's name in the UI language (1 = January).
 pub fn month(ui: &Ui, m: u32) -> &'static str {
     const AR: [&str; 12] = [
@@ -223,8 +231,24 @@ pub fn plan_item(ui: &Ui, kind: &PlanItemKind) -> (Msg, Option<String>) {
 pub fn plan_item_text(ui: &Ui, kind: &PlanItemKind) -> String {
     match plan_item(ui, kind) {
         // Isolated so a Latin title keeps its punctuation inside Arabic text.
-        (msg, Some(detail)) => format!("{} (\u{2068}{detail}\u{2069})", ui.t(msg)),
+        (msg, Some(detail)) => format!("{}: \u{2068}{detail}\u{2069}", ui.t(msg)),
         (msg, None) => ui.t(msg).to_string(),
+    }
+}
+
+/// A plan step as a phrase for the middle of Kak Nur's sentence: «درس
+/// التحية», "the Greetings lesson", never "Lesson (Greetings · Salam)" (#583).
+pub fn plan_item_phrase(ui: &Ui, kind: &PlanItemKind) -> String {
+    let lang = ui.settings.read().ui_language;
+    let fill = |msg: Msg, t: &str| ui.t(msg).replace("{t}", &format!("\u{2068}{t}\u{2069}"));
+    match kind {
+        PlanItemKind::Lesson { unit_id } => {
+            let title = crate::journey::unit_local_title(lang, unit_id).unwrap_or_else(|| unit_id.clone());
+            fill(Msg::PhraseLesson, &title)
+        }
+        PlanItemKind::WeakSpot { topic, .. } => fill(Msg::PhraseWeakSpot, topic),
+        PlanItemKind::Reading => ui.t(Msg::PhraseReading).to_string(),
+        PlanItemKind::Review { .. } => plan_item_text(ui, kind),
     }
 }
 
@@ -241,7 +265,7 @@ pub fn plan_voice_args(ui: &Ui, items: &[PlanItem]) -> (String, String) {
     let topic = items
         .iter()
         .find(|i| !matches!(i.kind, PlanItemKind::Review { .. }))
-        .map(|i| plan_item_text(ui, &i.kind))
+        .map(|i| plan_item_phrase(ui, &i.kind))
         .unwrap_or_default();
     (count, topic)
 }
