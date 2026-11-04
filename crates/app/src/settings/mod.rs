@@ -95,6 +95,7 @@ impl Section {
             Self::Coach => S::Coach,
             Self::Android => S::Android,
             Self::Tablet => S::Tablet,
+            Self::Mac if WEB => S::Browser,
             Self::Mac => S::Mac,
             Self::Storage => S::Storage,
             Self::Account => S::Account,
@@ -110,6 +111,7 @@ impl Section {
             Self::Coach => S::CoachSub,
             Self::Android => S::AndroidSub,
             Self::Tablet => S::TabletSub,
+            Self::Mac if WEB => S::BrowserSub,
             Self::Mac => S::MacSub,
             Self::Storage => S::StorageSub,
             Self::Account => S::AccountSub,
@@ -125,7 +127,7 @@ impl Section {
             Self::Coach => "notifications reminders quiet hours plan تنبيهات اشعارات تذكير مواعيد خطة",
             Self::Android => "notifications permission audio background pen اذونات إشعارات صوت خلفية قلم",
             Self::Tablet => "sidebar navigation layout pen قائمة تخطيط قلم",
-            Self::Mac => "keyboard shortcuts mouse sidebar اختصارات كيبورد ماوس قائمة",
+            Self::Mac => "keyboard shortcuts mouse sidebar browser اختصارات كيبورد ماوس قائمة متصفح",
             Self::Storage => {
                 "backup restore export import download offline diagnostics نسخة احتياطية استرجاع تصدير استيراد تحميل تشخيص"
             }
@@ -170,6 +172,9 @@ impl SettingsNav {
         self.open.set(false);
     }
 }
+
+/// The web build: some desktop rows say something else or hide there.
+pub(crate) const WEB: bool = cfg!(target_arch = "wasm32");
 
 const SETTINGS_CSS: crate::embedded::Css = crate::embedded::css!("assets/settings.css");
 

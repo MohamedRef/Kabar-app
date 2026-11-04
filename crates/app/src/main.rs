@@ -329,6 +329,18 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         let (day, night) = ui.settings.read().theme.day_and_night();
         platform::system_bars(day.bg, night.bg);
     });
+    // The web page's own root says lang="ar" dir="rtl" for the boot screen;
+    // follow the learner's language so English isn't laid out (or read
+    // aloud) as Arabic.
+    #[cfg(target_arch = "wasm32")]
+    use_effect(move || {
+        let lang = ui.settings.read().ui_language;
+        document::eval(&format!(
+            "document.documentElement.lang={:?};document.documentElement.dir={:?};",
+            lang.tag(),
+            lang.dir().as_str()
+        ));
+    });
 
     let settings = ui.settings.read();
     let lang = settings.ui_language;

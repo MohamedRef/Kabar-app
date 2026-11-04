@@ -36,6 +36,7 @@ use std::sync::OnceLock;
 
 use dioxus::html::{FileData, HasFileData};
 use dioxus::prelude::*;
+use kabar_core::layout::WidthClass;
 use kabar_core::learn::PersonalDictionary;
 use kabar_core::locale::UiLanguage;
 use kabar_core::reader::screen_ai::{self, StructureScreenshot};
@@ -783,6 +784,17 @@ fn is_image(file: &FileData) -> bool {
         })
 }
 
+/// The line beside the Reader's buttons: nothing on a phone, where there's
+/// nothing to drag (#587), and text only where no OCR can read a picture
+/// (#576).
+fn drop_hint(ocr: bool, compact: bool) -> Option<Msg> {
+    match (compact, ocr) {
+        (true, _) => None,
+        (false, true) => Some(Msg::ReaderDrop),
+        (false, false) => Some(Msg::ReaderDropText),
+    }
+}
+
 #[component]
 fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Element {
     let ui = use_context::<Ui>();
@@ -826,7 +838,12 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
                     dragging.set(false);
                     let files = e.files();
                     if files.iter().any(is_image) {
-                        pick(files);
+                        if platform::OCR {
+                            pick(files);
+                        } else {
+                            let mut t = st.toast;
+                            t.set(Some(Msg::OcrUnavailable));
+                        }
                     } else if let Some(text) = e.data_transfer().get_as_text() {
                         read_input(&db, st, busy, recent, &text);
                     }
@@ -855,7 +872,8 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
                     },
                     "{ui.t(Msg::ReaderRead)}"
                 }
-                if platform::NATIVE_IMAGE_PICKER {
+                if !platform::OCR {
+                } else if platform::NATIVE_IMAGE_PICKER {
                     button {
                         disabled: busy.read().is_some(),
                         onclick: move |_| pick_native(st, inbox),
@@ -876,7 +894,9 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
                         }
                     }
                 }
-                span { class: "muted", "{ui.t(Msg::ReaderDrop)}" }
+                if let Some(hint) = drop_hint(platform::OCR, *ui.width.read() == WidthClass::Compact) {
+                    span { class: "muted", "{ui.t(hint)}" }
+                }
             }
         }
     }

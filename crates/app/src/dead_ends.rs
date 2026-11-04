@@ -723,3 +723,29 @@ fn base_card_markup_is_owned_by_shared_components() {
     }
     assert!(duplicated.is_empty(), "base cards must use Card/DivCard/CardButton: {}", duplicated.join(", "));
 }
+
+/// #575: a bare `[dir="rtl"] x` rule also matches the web page's own
+/// `<html dir="rtl">`, so it fires in English too. Direction rules hang off
+/// the app root (`.app[dir="rtl"] x`), which follows the learner's language.
+#[test]
+fn direction_rules_hang_off_the_app_root() {
+    let mut files = Vec::new();
+    css_files(&Path::new(env!("CARGO_MANIFEST_DIR")).join("assets"), &mut files);
+    css_files(&Path::new(env!("CARGO_MANIFEST_DIR")).join("src"), &mut files);
+    assert!(files.len() > 10);
+    let mut bad = Vec::new();
+    for file in files {
+        let css = strip_comments(&std::fs::read_to_string(&file).unwrap());
+        for selector in css.split(['{', '}', ',']) {
+            let sel = selector.trim();
+            if sel.starts_with("[dir")
+                || sel.contains(" [dir")
+                || sel.contains(">[dir")
+                || sel.contains("> [dir")
+            {
+                bad.push(format!("{}: {sel}", file.display()));
+            }
+        }
+    }
+    assert!(bad.is_empty(), "scope these to .app[dir=…]:\n{}", bad.join("\n"));
+}

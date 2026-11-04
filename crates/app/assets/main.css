@@ -653,7 +653,7 @@ button.tap-plain { border-color: transparent; background: transparent; border-ra
 }
 /* A forward chevron at the end of a row (points left in Arabic). */
 .chev { flex: none; display: inline-block; inline-size: 0.5rem; block-size: 0.5rem; border-block-start: 2px solid var(--muted); border-inline-end: 2px solid var(--muted); transform: rotate(45deg); opacity: 0.7; }
-[dir="rtl"] .chev { transform: rotate(-45deg); }
+.app[dir="rtl"] .chev { transform: rotate(-45deg); }
 /* A card that is one link: icon, text, chevron (Settings › What Kabar costs). */
 button.tap-link { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; }
 .tap-link-text { flex: 1; }
@@ -816,7 +816,7 @@ span.time-input select { border: 0; background: transparent; min-block-size: 40p
 .app[data-width="compact"] .compact-only { display: flex; }
 .more-links button { display: inline-flex; align-items: center; gap: 0.4rem; }
 .flip { display: inline-block; }
-[dir="rtl"] .flip { transform: scaleX(-1); }
+.app[dir="rtl"] .flip { transform: scaleX(-1); }
 .center { justify-content: center; }
 .end { justify-content: flex-end; }
 .gold-text { color: var(--gold); }

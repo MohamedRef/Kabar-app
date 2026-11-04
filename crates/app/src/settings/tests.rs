@@ -437,6 +437,16 @@ fn mac_lists_shortcuts_and_keeps_hover_on_this_device() {
 }
 
 #[test]
+fn the_web_lists_no_menu_bar_shortcuts() {
+    use super::platform_sections::shortcut_rows;
+    let keys = |web| shortcut_rows(web).into_iter().flat_map(|(_, k)| k.iter().copied()).collect::<Vec<_>>();
+    // Browsers keep ⌘1…⌘7 / Ctrl+1…7 for their tabs, and the web has no menu bar (#577).
+    assert!(keys(true).iter().all(|k| !k.contains('⌘')), "{:?}", keys(true));
+    assert!(keys(false).contains(&"⌘1"));
+    assert_eq!(shortcut_rows(false).len(), shortcut_rows(true).len() + 2);
+}
+
+#[test]
 fn the_tablet_section_names_the_layout_in_use() {
     for (width, label) in
         [(400, "Compact"), (700, "Medium"), (1000, "Expanded"), (1300, "Large"), (1700, "Extra large")]

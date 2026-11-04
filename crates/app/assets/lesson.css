@@ -400,7 +400,7 @@
 .ln-slides li.done { color: var(--muted); }
 .ln-slides li.current { color: var(--indigo); font-weight: 600; }
 .ln-slides li.current::before { content: "› "; }
-[dir="rtl"] .ln-slides li.current::before { content: "‹ "; }
+.app[dir="rtl"] .ln-slides li.current::before { content: "‹ "; }
 
 .ln-dots { list-style: none; margin: var(--sp-2) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .ln-dot {
@@ -446,7 +446,7 @@
   .ln-dot { transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease); }
 }
 @keyframes ln-in { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: none; } }
-[dir="rtl"] .lp-notes { animation-name: ln-in-rtl; }
+.app[dir="rtl"] .lp-notes { animation-name: ln-in-rtl; }
 @keyframes ln-in-rtl { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
 
 /* ---------- state machine cues (redesign 2026-10-29) ---------- */

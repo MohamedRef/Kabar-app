@@ -32,6 +32,8 @@ pub enum S {
     TabletSub,
     Mac,
     MacSub,
+    Browser,
+    BrowserSub,
     Storage,
     StorageSub,
     Account,
@@ -102,6 +104,7 @@ pub enum S {
     Later,
     // storage and about
     DataFolder,
+    DataInBrowser,
     Version,
 }
 }
@@ -183,6 +186,11 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (MacSub, ArEg) => "الاختصارات والماوس والقائمة",
         (MacSub, Ar) => "الاختصارات والفأرة والقائمة",
         (MacSub, En) => "Shortcuts, mouse, menu bar",
+        (Browser, ArEg | Ar) => "المتصفح",
+        (Browser, En) => "This browser",
+        (BrowserSub, ArEg) => "الاختصارات والماوس",
+        (BrowserSub, Ar) => "الاختصارات والفأرة",
+        (BrowserSub, En) => "Shortcuts and mouse",
         (Storage, ArEg) => "من غير نت والتخزين",
         (Storage, Ar) => "دون اتصال والتخزين",
         (Storage, En) => "Offline & storage",
@@ -360,6 +368,9 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (DataFolder, ArEg) => "مكان بياناتك على الجهاز",
         (DataFolder, Ar) => "مكان بياناتك على الجهاز",
         (DataFolder, En) => "Where your data lives on this device",
+        (DataInBrowser, ArEg) => "في تخزين المتصفح ده. لو مسحت بيانات الموقع هتتمسح معاها، فصدّرها الأول.",
+        (DataInBrowser, Ar) => "في تخزين هذا المتصفح. مسح بيانات الموقع يمسحها، فصدّرها أولًا.",
+        (DataInBrowser, En) => "In this browser's storage. Clearing site data removes it, so export first.",
         (Version, ArEg | Ar) => "النسخة",
         (Version, En) => "Version",
     }

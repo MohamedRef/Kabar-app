@@ -310,6 +310,10 @@ pub enum PickState {
     Failed,
 }
 
+/// Whether this build can read text out of a screenshot. The web app has
+/// no OCR engine yet (`docs/WEB.md`, phase 3), so it offers pasting only.
+pub const OCR: bool = !cfg!(target_arch = "wasm32");
+
 /// Whether the Reader opens screenshots through [`pick_image`] instead of a
 /// file input. Dioxus answers a file input with a native dialog that only
 /// exists on desktop, so on Android it never returns a file.
