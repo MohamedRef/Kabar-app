@@ -142,6 +142,7 @@ fn harness(case: Case) -> Element {
             devices: Signal::new(None),
             usage: Signal::new(None),
             signing_in: Signal::new(false),
+            login: Signal::new(Default::default()),
             revision: Signal::new(0),
             commands: Signal::new(None),
             push: Signal::new(false),
