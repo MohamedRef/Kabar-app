@@ -1022,3 +1022,13 @@ fn the_journal_shows_finished_lessons_and_lesson_steps() {
     app.click_text(en(Msg::JournalFilterLearning));
     assert!(app.screen().contains("81%"));
 }
+
+#[test]
+fn minutes_left_agree_with_the_progress_line() {
+    use super::today::minutes_left;
+    // "1 min / 15 min" over "15 min left" didn't add up (#602).
+    assert_eq!(minutes_left(15, 1, 15), 14);
+    assert_eq!(minutes_left(15, 0, 15), 15);
+    // Past the goal with a step still open: that step's minutes.
+    assert_eq!(minutes_left(15, 16, 5), 5);
+}

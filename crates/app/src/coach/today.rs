@@ -151,14 +151,17 @@ pub fn Today() -> Element {
                         plan: plan.clone(),
                         next,
                         minutes_done: progress.minutes_done,
-                        // What's left is the steps not done yet, whatever the clock says.
-                        left: plan
-                            .items
-                            .iter()
-                            .zip(&progress.done)
-                            .filter(|(_, d)| !**d)
-                            .map(|(i, _)| u32::from(i.minutes))
-                            .sum::<u32>(),
+                        left: minutes_left(
+                            u32::from(plan.size.minutes()),
+                            progress.minutes_done,
+                            plan
+                                .items
+                                .iter()
+                                .zip(&progress.done)
+                                .filter(|(_, d)| !**d)
+                                .map(|(i, _)| u32::from(i.minutes))
+                                .sum::<u32>(),
+                        ),
                     }
                     if plan.items.len() > 1 {
                         section { class: "today-rest", aria_labelledby: "today-rest-title",
@@ -213,6 +216,13 @@ pub fn Today() -> Element {
 /// spot) can be ticked here too, with a quiet text button that looks
 /// nothing like Start. Once the plan is done the hero offers one more
 /// lesson from the Journey.
+/// "15 min left" on Continue: the clock minutes the progress line above
+/// counts toward the goal, so "1 min / 15 min" reads "14 min left" (#602).
+/// Past the goal with steps still open, the open steps' minutes.
+pub(super) fn minutes_left(goal: u32, done: u32, open_steps: u32) -> u32 {
+    if done < goal { goal - done } else { open_steps }
+}
+
 #[component]
 fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> Element {
     let ui = use_context::<Ui>();
