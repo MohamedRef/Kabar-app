@@ -198,6 +198,13 @@ impl Store {
             .collect())
     }
 
+    /// Ids of every saved text still there (one query, no bodies read).
+    pub fn live_text_ids(&self) -> Result<std::collections::HashSet<String>> {
+        let mut stmt = self.conn.prepare("SELECT id FROM texts WHERE deleted = 0")?;
+        let ids = stmt.query_map([], |r| r.get(0))?.collect::<rusqlite::Result<_>>()?;
+        Ok(ids)
+    }
+
     /// One saved text by id, if it's still there.
     pub fn text(&self, id: &str) -> Result<Option<SavedText>> {
         let json: Option<String> = self

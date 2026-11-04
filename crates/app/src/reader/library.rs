@@ -407,6 +407,7 @@ pub(super) fn WordList(
     mut query: Signal<String>,
 ) -> Element {
     let ui = use_context::<Ui>();
+    let db = use_context::<Db>();
     let lang = ui.lang();
     let st = use_context::<ReaderState>();
     let voice = *st.voice.read();
@@ -427,6 +428,14 @@ pub(super) fn WordList(
         })
         .filter(|(w, g)| matches(&q, &[&w.surface, &w.sentence, g.as_deref().unwrap_or("")]))
         .collect();
+    // Two queries for the whole list, not two per row (#566). From the
+    // store, not the Reader's state: that only holds the words of the text
+    // opened last.
+    let (statuses, live_texts) = {
+        let store = db.0.borrow();
+        let keys = shown.iter().map(|(w, _)| w.lexeme.as_str()).filter(|k| !k.starts_with("phrase:"));
+        (store.word_statuses(keys).unwrap_or_default(), store.live_text_ids().unwrap_or_default())
+    };
     rsx! {
         if taught > 0 {
             crate::ui::DivCard { class: "grouped lib-taught",
@@ -481,7 +490,14 @@ pub(super) fn WordList(
         } else {
             crate::ui::Card { element: crate::ui::CardElement::List, class: "grouped lib-list",
                 for (w , gloss) in shown {
-                    li { key: "{w.lexeme}", SavedWordRow { w, gloss } }
+                    li { key: "{w.lexeme}",
+                        SavedWordRow {
+                            learning: statuses.get(&w.lexeme) == Some(&WordStatus::Learning),
+                            has_text: w.text_id.as_ref().is_some_and(|id| live_texts.contains(id)),
+                            w,
+                            gloss,
+                        }
+                    }
                 }
             }
         }
@@ -491,18 +507,12 @@ pub(super) fn WordList(
 /// One saved word: tap to see the sentence it was saved from and open it
 /// there.
 #[component]
-fn SavedWordRow(w: SavedWord, gloss: Option<String>) -> Element {
+fn SavedWordRow(w: SavedWord, gloss: Option<String>, learning: bool, has_text: bool) -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let st = use_context::<ReaderState>();
     let lang = ui.lang();
     let phrase = w.lexeme.starts_with("phrase:");
-    // From the store, not the Reader's state: that only holds the words of
-    // the text opened last.
-    let learning = !phrase
-        && db.0.borrow().word_statuses([w.lexeme.as_str()]).ok().and_then(|s| s.get(&w.lexeme).copied())
-            == Some(WordStatus::Learning);
-    let text = w.text_id.as_deref().and_then(|id| db.0.borrow().text(id).ok().flatten());
     rsx! {
         details { class: "lib-word",
             summary {
@@ -518,21 +528,25 @@ fn SavedWordRow(w: SavedWord, gloss: Option<String>) -> Element {
             }
             div { class: "lib-word-body",
                 p { class: "lib-sentence", lang: "id", dir: "ltr", bdi { "{w.sentence}" } }
-                match text {
-                    Some(text) => rsx! {
-                        button {
-                            class: "tonal",
-                            onclick: {
-                                let db = db.clone();
-                                let lexeme = w.lexeme.clone();
-                                move |_| open_at(&db, st, text.clone(), &lexeme)
-                            },
-                            "{lt(lang, L::OpenInText)}"
-                        }
-                    },
-                    None => rsx! {
-                        p { class: "muted small", "{lt(lang, L::TextGone)}" }
-                    },
+                if has_text {
+                    button {
+                        class: "tonal",
+                        onclick: {
+                            let db = db.clone();
+                            let lexeme = w.lexeme.clone();
+                            let id = w.text_id.clone().unwrap_or_default();
+                            // The body is read only when it's opened.
+                            move |_| {
+                                let text = db.0.borrow().text(&id).ok().flatten();
+                                if let Some(text) = text {
+                                    open_at(&db, st, text, &lexeme);
+                                }
+                            }
+                        },
+                        "{lt(lang, L::OpenInText)}"
+                    }
+                } else {
+                    p { class: "muted small", "{lt(lang, L::TextGone)}" }
                 }
             }
         }

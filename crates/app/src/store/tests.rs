@@ -621,3 +621,14 @@ fn refuses_a_newer_schema() {
     conn.pragma_update(None, "user_version", 99).unwrap();
     assert!(matches!(migrate(&mut conn), Err(StoreError::TooNew { found: 99, .. })));
 }
+
+#[test]
+fn live_text_ids_leave_out_deleted_texts() {
+    let mut store = Store::open_in_memory().unwrap();
+    let kept = store.save_text("Selamat pagi, Bu Siti.", TextKind::Pasted, None, None).unwrap();
+    let gone = store.save_text("Apa kabar?", TextKind::Pasted, None, None).unwrap();
+    store.delete_text(&gone.id).unwrap();
+    let ids = store.live_text_ids().unwrap();
+    assert!(ids.contains(&kept.id));
+    assert!(!ids.contains(&gone.id));
+}
