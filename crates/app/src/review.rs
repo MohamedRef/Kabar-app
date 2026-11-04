@@ -454,4 +454,6 @@ fn Stat(
 }
 
 #[cfg(test)]
+mod play_tests;
+#[cfg(test)]
 mod tests;
