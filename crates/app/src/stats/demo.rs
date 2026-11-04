@@ -2,7 +2,7 @@
 //! check (never shipped; test-only):
 //!
 //! ```sh
-//! KABAR_DEMO_DB=/tmp/kabar-demo/kabar.db cargo test -p kabar-app seed_stats_demo -- --ignored
+//! KABAR_DEMO_DB=/tmp/kabar-demo/kabar.db cargo test -p kabar-app seed_stats_demo
 //! ```
 //!
 //! Then point the app's data dir at it (on Linux: `HOME` such that
@@ -22,26 +22,60 @@ use crate::store::{Store, now_ms};
 
 const DAY_MS: u64 = 86_400_000;
 
+/// What the demo database holds beyond the shared study history.
+#[derive(Clone, Default)]
+pub(super) struct Demo {
+    /// UI language: "en", "ar", anything else Egyptian Arabic.
+    pub lang: String,
+    pub eastern: bool,
+    /// Placed at this level (e.g. `bipa3`, above the levels with test items).
+    pub placed: Option<String>,
+    /// No level check yet, for the first check's welcome.
+    pub first_check: bool,
+    /// This month's check as well as last month's.
+    pub two_checks: bool,
+}
+
+/// Writes the demo database to `KABAR_DEMO_DB`; without it, to a temporary
+/// file, checking that it opens again with the history in it.
 #[test]
-#[ignore = "writes a demo database; run by hand for previews"]
 fn seed_stats_demo() {
-    let path = std::env::var("KABAR_DEMO_DB").expect("set KABAR_DEMO_DB");
+    let tmp = tempfile::tempdir().unwrap();
+    let path = std::env::var("KABAR_DEMO_DB")
+        .map(std::path::PathBuf::from)
+        .unwrap_or_else(|_| tmp.path().join("kabar.db"));
     let _ = std::fs::remove_file(&path);
-    let mut store = Store::open(std::path::Path::new(&path)).unwrap();
+    let mut store = Store::open(&path).unwrap();
+    let demo = Demo {
+        lang: std::env::var("KABAR_DEMO_LANG").unwrap_or_default(),
+        eastern: std::env::var("KABAR_DEMO_EASTERN").is_ok(),
+        placed: std::env::var("KABAR_DEMO_PLACED").ok(),
+        first_check: std::env::var("KABAR_DEMO_FIRST_CHECK").is_ok(),
+        two_checks: std::env::var("KABAR_DEMO_TWO_CHECKS").is_ok(),
+    };
+    seed(&mut store, &demo, now_ms());
+    drop(store);
+    let store = Store::open(&path).unwrap();
+    assert!(store.activity(None).unwrap().len() > 100, "about 16 weeks of study");
+    assert!(!store.review_log().unwrap().is_empty());
+    assert_eq!(store.coach_profile().unwrap().map(|p| p.name).as_deref(), Some("Hamo"));
+}
+
+/// Fills `store` with about 16 weeks of study ending at `now`: activity,
+/// a reviewed deck, a chat, and the level checks `demo` asks for.
+pub(super) fn seed(store: &mut Store, demo: &Demo, now: u64) {
     let old = store.settings().unwrap();
-    let lang = std::env::var("KABAR_DEMO_LANG").unwrap_or_default();
     let new = Settings {
         welcomed: true,
-        ui_language: match lang.as_str() {
+        ui_language: match demo.lang.as_str() {
             "en" => kabar_core::locale::UiLanguage::En,
             "ar" => kabar_core::locale::UiLanguage::Ar,
             _ => kabar_core::locale::UiLanguage::ArEg,
         },
-        eastern_digits: std::env::var("KABAR_DEMO_EASTERN").is_ok(),
+        eastern_digits: demo.eastern,
         ..old.clone()
     };
     store.save_settings(&old, &new).unwrap();
-    let now = now_ms();
     let today = LocalDate::from_unix_ms(now, 120);
     let profile = CoachProfile {
         name: "Hamo".into(),
@@ -49,7 +83,7 @@ fn seed_stats_demo() {
         ..CoachProfile::default()
     };
     store.save_coach_profile(&profile).unwrap();
-    seed_chat(&mut store, now);
+    seed_chat(store, now);
 
     // ~16 weeks of study with rest days, a pattern that grows over time.
     for back in 0..110i32 {
@@ -86,11 +120,11 @@ fn seed_stats_demo() {
         }
     }
 
-    // KABAR_DEMO_PLACED=bipa3: placed above the levels that have test items,
-    // so the check goes straight to its outcome (history only).
-    if let Ok(level) = std::env::var("KABAR_DEMO_PLACED") {
+    // Placed above the levels that have test items, so the check goes
+    // straight to its outcome (history only).
+    if let Some(level) = &demo.placed {
         let placed = kabar_protocol::test::PlacementResult {
-            start_level: level,
+            start_level: level.clone(),
             start_unit: None,
             sections: Vec::new(),
         };
@@ -117,12 +151,11 @@ fn seed_stats_demo() {
         missed: Vec::new(),
         duration_ms: 560_000,
     };
-    // KABAR_DEMO_FIRST_CHECK: no check yet, for the first check's welcome.
-    if std::env::var("KABAR_DEMO_FIRST_CHECK").is_ok() {
+    if demo.first_check {
         return;
     }
     store.record_lesson_event(LEVEL_CHECK_LESSON_ID, LEVEL_CHECK_KIND, &prev).unwrap();
-    if std::env::var("KABAR_DEMO_TWO_CHECKS").is_ok() {
+    if demo.two_checks {
         let now_check = LevelCheckResult {
             date: today,
             score: Some(0.71),

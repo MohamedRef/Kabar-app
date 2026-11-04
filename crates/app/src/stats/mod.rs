@@ -9,6 +9,8 @@ pub mod text;
 
 #[cfg(test)]
 mod demo;
+#[cfg(test)]
+mod tests;
 
 use dioxus::prelude::*;
 use kabar_core::coach::report::MIN_SKILL_ATTEMPTS;

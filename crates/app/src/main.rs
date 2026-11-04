@@ -53,6 +53,8 @@ mod teach;
 #[cfg(test)]
 mod test_dom;
 #[cfg(test)]
+mod test_screens;
+#[cfg(test)]
 mod testkit;
 mod theme;
 mod ui;
