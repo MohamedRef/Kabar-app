@@ -14,7 +14,7 @@ use crate::pron::Pron;
 use crate::reader::card::speak;
 use crate::reader::explain::voice_of;
 
-fn piece_text(p: &Part) -> String {
+pub(super) fn piece_text(p: &Part) -> String {
     match p.kind {
         PartKind::Prefix => format!("{}-", p.form),
         PartKind::Suffix | PartKind::Clitic => format!("-{}", p.form),

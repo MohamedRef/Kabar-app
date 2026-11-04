@@ -109,7 +109,7 @@ fn Title(id: String, voice: Voice) -> Element {
     }
 }
 
-fn standing_msg(s: Standing) -> Option<Msg> {
+pub(super) fn standing_msg(s: Standing) -> Option<Msg> {
     match s {
         Standing::Learned => Some(Msg::GrammarLearned),
         Standing::AtLevel => Some(Msg::GrammarAtLevel),
@@ -118,7 +118,7 @@ fn standing_msg(s: Standing) -> Option<Msg> {
     }
 }
 
-fn standing_class(s: Standing) -> &'static str {
+pub(super) fn standing_class(s: Standing) -> &'static str {
     match s {
         Standing::Learned => "gr-learned",
         Standing::AtLevel => "gr-level",
@@ -308,10 +308,7 @@ pub fn LineGrammar(seg: usize) -> Element {
                     key: "{f.grammar}",
                     class: "chip gr-chip {standing_class(f.standing)} {f.hits[0].role.css()}",
                     title: if f.standing == Standing::Ahead { ui.t(Msg::GrammarNotYet) } else { "" },
-                    onclick: move |_| {
-                        let mut p = st.panel;
-                        p.set(Some(super::Panel::Explain(token)));
-                    },
+                    onclick: move |_| st.show(Some(super::Panel::Explain(token))),
                     Title { id: f.grammar.clone(), voice }
                 }
             }

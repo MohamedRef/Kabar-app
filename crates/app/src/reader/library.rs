@@ -49,7 +49,7 @@ fn in_word_group(lexeme: &str, group: WordGroup) -> bool {
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-enum L {
+pub(super) enum L {
     Title,
     Intro,
     Search,
@@ -78,7 +78,7 @@ enum L {
     InReview,
 }
 
-fn lt(lang: UiLanguage, l: L) -> &'static str {
+pub(super) fn lt(lang: UiLanguage, l: L) -> &'static str {
     use L::*;
     use UiLanguage::*;
     match (l, lang) {
@@ -180,7 +180,7 @@ pub(super) fn word_of(lexeme: &str) -> Option<(&str, WordLang)> {
 
 /// Opens a saved text with the saved word's card (or the saved phrase)
 /// showing, so the learner lands on the word in its sentence.
-fn open_at(db: &Db, st: ReaderState, text: SavedText, lexeme: &str) {
+pub(super) fn open_at(db: &Db, st: ReaderState, text: SavedText, lexeme: &str) {
     st.load(db, text);
     let Some(open) = st.open.peek().clone() else { return };
     let panel = if lexeme.starts_with("phrase:") {
@@ -198,6 +198,15 @@ fn open_at(db: &Db, st: ReaderState, text: SavedText, lexeme: &str) {
     };
     let mut p = st.panel;
     p.set(panel);
+}
+
+/// Deletes a saved text; the list changes only once the store did.
+pub(super) fn delete_text(db: &Db, st: ReaderState, mut recent: Signal<Vec<SavedText>>, id: &str) {
+    let deleted = db.0.borrow_mut().delete_text(id);
+    match deleted {
+        Ok(()) => recent.set(db.0.borrow().recent_texts(TEXTS).unwrap_or_default()),
+        Err(e) => st.write_failed("deleting a text", &e),
+    }
 }
 
 #[component]
@@ -267,7 +276,7 @@ pub fn Library(recent: Signal<Vec<SavedText>>) -> Element {
 /// The Arabic Bridge, one tap from the Reader: opens the deck of
 /// Indonesian words an Arabic speaker already understands.
 #[component]
-fn BridgeEntry() -> Element {
+pub(super) fn BridgeEntry() -> Element {
     let ui = use_context::<Ui>();
     let nav = use_context::<PlayNav>();
     let lang = ui.lang();
@@ -299,7 +308,7 @@ fn BridgeEntry() -> Element {
 }
 
 #[component]
-fn TextList(recent: Signal<Vec<SavedText>>, q: String, mut query: Signal<String>) -> Element {
+pub(super) fn TextList(recent: Signal<Vec<SavedText>>, q: String, mut query: Signal<String>) -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let st = use_context::<ReaderState>();
@@ -357,13 +366,7 @@ fn TextList(recent: Signal<Vec<SavedText>>, q: String, mut query: Signal<String>
                         onclick: {
                             let db = db.clone();
                             let id = text.id.clone();
-                            move |_| {
-                                let deleted = db.0.borrow_mut().delete_text(&id);
-                                match deleted {
-                                    Ok(()) => recent.set(db.0.borrow().recent_texts(TEXTS).unwrap_or_default()),
-                                    Err(e) => st.write_failed("deleting a text", &e),
-                                }
-                            }
+                            move |_| delete_text(&db, st, recent, &id)
                         },
                         "×"
                     }
@@ -391,7 +394,12 @@ fn source_name(src: &str) -> &str {
 }
 
 #[component]
-fn WordList(words: Vec<SavedWord>, taught: usize, q: String, mut query: Signal<String>) -> Element {
+pub(super) fn WordList(
+    words: Vec<SavedWord>,
+    taught: usize,
+    q: String,
+    mut query: Signal<String>,
+) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
     let st = use_context::<ReaderState>();
