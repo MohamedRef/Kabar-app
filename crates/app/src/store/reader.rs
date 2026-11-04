@@ -230,25 +230,27 @@ impl Store {
     }
 
     /// Statuses for the given `{lang}:{lexeme}` keys; missing ones are `New`.
+    /// One query however many keys (a Library list asks for hundreds, #598).
     pub fn word_statuses<'a>(
         &self,
         keys: impl IntoIterator<Item = &'a str>,
     ) -> Result<HashMap<String, WordStatus>> {
+        let mut out: HashMap<String, WordStatus> =
+            keys.into_iter().map(|k| (k.to_string(), WordStatus::default())).collect();
+        if out.is_empty() {
+            return Ok(out);
+        }
+        let ids = serde_json::to_string(&out.keys().collect::<Vec<_>>()).unwrap_or_default();
         let mut stmt = self.conn.prepare_cached(
-            "SELECT json_extract(payload, '$.status') FROM word_status WHERE id = ?1 AND deleted = 0",
+            "SELECT id, json_extract(payload, '$.status') FROM word_status
+             WHERE deleted = 0 AND id IN (SELECT value FROM json_each(?1))",
         )?;
-        let mut out = HashMap::new();
-        for key in keys {
-            if out.contains_key(key) {
-                continue;
+        let rows = stmt.query_map([ids], |r| Ok((r.get::<_, String>(0)?, r.get::<_, Option<String>>(1)?)))?;
+        for row in rows {
+            let (id, status) = row?;
+            if let Some(status) = status.as_deref().and_then(WordStatus::parse) {
+                out.insert(id, status);
             }
-            let status = stmt
-                .query_row([key], |r| r.get::<_, Option<String>>(0))
-                .optional()?
-                .flatten()
-                .and_then(|s| WordStatus::parse(&s))
-                .unwrap_or_default();
-            out.insert(key.to_string(), status);
         }
         Ok(out)
     }
