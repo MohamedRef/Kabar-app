@@ -257,3 +257,7 @@ packs-bundle:
 # Upload dist/packs to the `packs` GitHub release (needs `gh auth login`)
 packs-upload tag="packs":
     scripts/packs-upload.sh {{tag}}
+
+# Line coverage with the CI floor (docs/TESTING.md); `just coverage --html` for a browsable report
+coverage *args:
+    scripts/coverage.sh {{args}}

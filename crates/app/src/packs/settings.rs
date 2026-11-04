@@ -385,7 +385,7 @@ mod tests {
     use super::super::tests::{one_at_a_time, pack, pack_v, release};
     use super::*;
     use crate::Screen;
-    use crate::test_dom::{self as td, Setup};
+    use crate::test_screens::{self as td, Setup};
 
     const EN: UiLanguage = UiLanguage::En;
 

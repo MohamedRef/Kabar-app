@@ -449,6 +449,32 @@ fn a_persona_chat_turn_uses_the_style_guide_and_repairs_a_bad_quote() {
 }
 
 #[test]
+fn each_drawing_gets_its_own_answer_and_the_same_drawing_is_cached() {
+    let wai = Scripted::new(
+        EngineId::WorkersAi,
+        vec![
+            Ok(fixture!("guess_sketch.kucing.workers_ai.json")),
+            Ok(EngineReply {
+                engine: EngineId::WorkersAi,
+                text: r#"{"guess_id": "rumah", "alternatives": []}"#.into(),
+                model: String::new(),
+            }),
+        ],
+    );
+    let r = router(&[&wai]);
+    let cat = crate::ink::recognize::sketch_request(&"a".repeat(64));
+    let house = crate::ink::recognize::sketch_request(&"b".repeat(64));
+    assert_eq!(block_on(r.run::<GuessSketch>(&cat)).unwrap().value.guess_id, "kucing");
+    let second = block_on(r.run::<GuessSketch>(&house)).unwrap();
+    assert_eq!(second.value.guess_id, "rumah", "a new drawing is looked at, not answered from the first one");
+    assert!(!second.from_cache);
+    let again = block_on(r.run::<GuessSketch>(&cat)).unwrap();
+    assert!(again.from_cache && again.value.guess_id == "kucing");
+    assert_eq!(wai.calls().len(), 2);
+    assert_ne!(wai.calls()[0].cache_key, wai.calls()[1].cache_key);
+}
+
+#[test]
 fn a_blank_sketch_is_unclear_and_lemmas_stay_indonesian() {
     let gem = Scripted::new(
         EngineId::GeminiFree,

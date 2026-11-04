@@ -143,7 +143,7 @@ pub fn word_by_word(doc: &ReadDoc, seg: usize, voice: UiLanguage) -> String {
     out.join(" ")
 }
 
-fn failure(r: FriendlyReason) -> Msg {
+pub(super) fn failure(r: FriendlyReason) -> Msg {
     match r {
         FriendlyReason::ResetsLater => Msg::TranslationResetsLater,
         FriendlyReason::Unreachable => Msg::TranslationUnreachable,

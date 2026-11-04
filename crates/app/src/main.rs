@@ -52,6 +52,8 @@ mod studio;
 mod teach;
 #[cfg(test)]
 mod test_dom;
+#[cfg(test)]
+mod test_screens;
 mod theme;
 mod ui;
 mod update;

@@ -35,21 +35,21 @@ fn pos_of(w: &Word) -> Option<&str> {
 
 /// Everything the open breakdown shows, worked out once per word and voice.
 #[derive(Clone, PartialEq)]
-struct Shown {
-    detail: WordDetail,
-    root_gloss: Option<String>,
+pub(super) struct Shown {
+    pub(super) detail: WordDetail,
+    pub(super) root_gloss: Option<String>,
     /// Each affix once (a confix's two halves are one), with what it does
     /// and whether the note is reviewed.
-    notes: Vec<(Part, &'static str, bool)>,
-    redup: Option<(&'static str, String)>,
+    pub(super) notes: Vec<(Part, &'static str, bool)>,
+    pub(super) redup: Option<(&'static str, String)>,
     /// Grammar entries: title and summary in the voice.
-    entries: Vec<(String, String)>,
+    pub(super) entries: Vec<(String, String)>,
     /// The whole word as it is said (the full form of a chat spelling).
-    say: String,
-    tag: &'static str,
+    pub(super) say: String,
+    pub(super) tag: &'static str,
 }
 
-fn shown(st: &ReaderState, i: usize, ui_voice: UiLanguage) -> Option<Shown> {
+pub(super) fn shown(st: &ReaderState, i: usize, ui_voice: UiLanguage) -> Option<Shown> {
     let voice = voice_of(ui_voice);
     let open = st.open.read();
     let doc = &open.as_ref()?.doc;
@@ -150,73 +150,84 @@ pub fn MorphDetail(i: usize) -> Element {
                 }
             }
             if let Some(s) = body {
-                div { class: "morph-body",
-                    div { class: "parts-row",
-                        if s.detail.parts.len() > 1 {
-                            PartsLine { parts: s.detail.parts.clone(), class, labels: true, voice: ui_voice }
-                        }
-                        SayWord { text: s.say.clone(), tag: s.tag.to_string() }
-                    }
-                    if let Some(change) = &s.detail.sound_change {
-                        p { class: "muted small",
-                            bdi { class: "latin", dir: "ltr", "{change}" }
-                            " · {ui.t(Msg::MorphSoundChange)}"
-                        }
-                    }
-                    ul { class: "morph-notes",
-                        if s.detail.parts.len() > 1 {
-                            li {
-                                bdi { class: "latin piece wp-root", lang: "id", dir: "ltr", "{s.detail.root}" }
-                                if let Some(g) = &s.root_gloss {
-                                    span { " · {g}" }
-                                }
-                                if !s.detail.root_verified {
-                                    span { class: "tag unverified", "{ui.t(Msg::Unverified)}" }
-                                }
-                            }
-                        }
-                        for (j, (p, meaning, verified)) in s.notes.iter().enumerate() {
-                            li { key: "{j}",
-                                bdi { class: "latin piece {p.kind.css()}", lang: "id", dir: "ltr", "{p.label}" }
-                                span { " · " }
-                                Rich { text: plain(meaning), target: "id" }
-                                if !verified {
-                                    span { class: "tag unverified", "{ui.t(Msg::Unverified)}" }
-                                }
-                            }
-                        }
-                        if let Some((note, doubled)) = &s.redup {
-                            li {
-                                bdi { class: "latin piece wp-root", lang: "id", dir: "ltr", "{doubled}" }
-                                span { " · " }
-                                Rich { text: plain(note), target: "id" }
-                            }
-                        }
-                    }
-                    if !s.detail.aspect.is_empty() {
-                        div { class: "field",
-                            span { class: "label", "{ui.t(Msg::MorphTimeWords)}" }
-                            p {
-                                for (j, a) in s.detail.aspect.iter().enumerate() {
-                                    bdi { key: "{j}", class: "latin class-chip wc-func", lang: "id", dir: "ltr", "{a.surface}" }
-                                }
-                            }
-                        }
-                    }
-                    if !s.entries.is_empty() {
-                        div { class: "field",
-                            span { class: "label", "{ui.t(Msg::MorphGrammar)}" }
-                            for (j, (title, summary)) in s.entries.iter().enumerate() {
-                                details { key: "{j}", class: "morph-entry",
-                                    summary { Rich { text: title.clone(), target: "id" } }
-                                    p { Rich { text: summary.clone(), target: "id" } }
-                                }
-                            }
-                        }
-                    }
-                    Legend { voice: ui_voice }
+                MorphBody { s, class, voice: ui_voice }
+            }
+        }
+    }
+}
+
+/// The opened breakdown: the pieces, what each affix does, the root's
+/// meaning, the time words around a verb and the grammar entries.
+#[component]
+pub(super) fn MorphBody(s: Shown, class: Option<WordClass>, voice: UiLanguage) -> Element {
+    let ui = use_context::<Ui>();
+    let ui_voice = voice;
+    rsx! {
+        div { class: "morph-body",
+            div { class: "parts-row",
+                if s.detail.parts.len() > 1 {
+                    PartsLine { parts: s.detail.parts.clone(), class, labels: true, voice: ui_voice }
+                }
+                SayWord { text: s.say.clone(), tag: s.tag.to_string() }
+            }
+            if let Some(change) = &s.detail.sound_change {
+                p { class: "muted small",
+                    bdi { class: "latin", dir: "ltr", "{change}" }
+                    " · {ui.t(Msg::MorphSoundChange)}"
                 }
             }
+            ul { class: "morph-notes",
+                if s.detail.parts.len() > 1 {
+                    li {
+                        bdi { class: "latin piece wp-root", lang: "id", dir: "ltr", "{s.detail.root}" }
+                        if let Some(g) = &s.root_gloss {
+                            span { " · {g}" }
+                        }
+                        if !s.detail.root_verified {
+                            span { class: "tag unverified", "{ui.t(Msg::Unverified)}" }
+                        }
+                    }
+                }
+                for (j, (p, meaning, verified)) in s.notes.iter().enumerate() {
+                    li { key: "{j}",
+                        bdi { class: "latin piece {p.kind.css()}", lang: "id", dir: "ltr", "{p.label}" }
+                        span { " · " }
+                        Rich { text: plain(meaning), target: "id" }
+                        if !verified {
+                            span { class: "tag unverified", "{ui.t(Msg::Unverified)}" }
+                        }
+                    }
+                }
+                if let Some((note, doubled)) = &s.redup {
+                    li {
+                        bdi { class: "latin piece wp-root", lang: "id", dir: "ltr", "{doubled}" }
+                        span { " · " }
+                        Rich { text: plain(note), target: "id" }
+                    }
+                }
+            }
+            if !s.detail.aspect.is_empty() {
+                div { class: "field",
+                    span { class: "label", "{ui.t(Msg::MorphTimeWords)}" }
+                    p {
+                        for (j, a) in s.detail.aspect.iter().enumerate() {
+                            bdi { key: "{j}", class: "latin class-chip wc-func", lang: "id", dir: "ltr", "{a.surface}" }
+                        }
+                    }
+                }
+            }
+            if !s.entries.is_empty() {
+                div { class: "field",
+                    span { class: "label", "{ui.t(Msg::MorphGrammar)}" }
+                    for (j, (title, summary)) in s.entries.iter().enumerate() {
+                        details { key: "{j}", class: "morph-entry",
+                            summary { Rich { text: title.clone(), target: "id" } }
+                            p { Rich { text: summary.clone(), target: "id" } }
+                        }
+                    }
+                }
+            }
+            Legend { voice: ui_voice }
         }
     }
 }

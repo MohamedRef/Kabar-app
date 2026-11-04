@@ -256,7 +256,7 @@ against the live preview bundle before it signs, and puts the content diff
 in the job summary. `update verify` now also runs the bundle checks, so a
 feed devices would refuse fails before upload.
 
-**Channels.** `preview` (every merge to `main`), `alpha`, `beta`, `stable`
+**Channels.** `preview` (`main`, built every 4 hours when it changed, or by hand), `alpha`, `beta`, `stable`
 (a beta also reaches alpha, a release reaches everyone). Since 2026-11-02
 preview builds are signed with the release keys too, so any build can pick
 any channel in Settings › Updates and move back and forth without a

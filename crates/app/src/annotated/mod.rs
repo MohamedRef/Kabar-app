@@ -9,6 +9,8 @@
 pub mod parts;
 pub mod phrases;
 pub mod text;
+#[cfg(test)]
+mod ui_tests;
 
 use std::rc::Rc;
 
@@ -32,7 +34,7 @@ use crate::reader::glossary::{Gloss, WordLang};
 use crate::reader::grammar::{DocGrammar, GrammarAt, syllabus};
 use crate::sheet::Sheet;
 use crate::teach::{TeachInbox, TeachSeed};
-use crate::{Db, Screen, Ui};
+use crate::{Db, Ui};
 
 pub const CSS: Css = css!("assets/annotated.css");
 
@@ -277,6 +279,12 @@ fn text_lang(tag: &str) -> CoreLang {
     if tag == "jv" { CoreLang::Javanese } else { CoreLang::Indonesian }
 }
 
+/// A tap on word `i`: opens its sheet, or closes it when it is the open one.
+fn toggle(mut open: Signal<Option<usize>>, i: usize) {
+    let next = if *open.peek() == Some(i) { None } else { Some(i) };
+    open.set(next);
+}
+
 /// One tappable word: its colours, and its short meaning under it when
 /// `glosses` is on (a name says it's a name).
 #[component]
@@ -293,7 +301,7 @@ fn WordRun(p: Piece, i: usize, open: Signal<Option<usize>>, glosses: bool) -> El
             // Annotated text often sits inside a button (examples, dialogue lines).
             onclick: move |e| {
                 e.stop_propagation();
-                open.set(if open() == Some(i) { None } else { Some(i) });
+                toggle(open, i);
             },
             onkeydown: move |e: KeyboardEvent| {
                 if e.key() == Key::Enter {
@@ -496,12 +504,7 @@ fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandl
                     if let Some(seed) = seed {
                         button {
                             class: "ghost small",
-                            onclick: move |_| {
-                                let mut inbox = teach.0;
-                                inbox.set(Some(seed.clone()));
-                                let mut screen = ui.screen;
-                                screen.set(Screen::Teach);
-                            },
+                            onclick: move |_| crate::reader::card::teach_word(ui, teach, seed.clone()),
                             "{tt(lang, T::TeachIt)}"
                         }
                     }

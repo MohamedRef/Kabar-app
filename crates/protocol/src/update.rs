@@ -34,7 +34,7 @@ pub const SIGNATURE_FILE: &str = "update.json.sig";
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum Channel {
-    /// Every merge to `main`, built and signed by CI.
+    /// `main`, built and signed by CI every 4 hours (when it changed) or by hand.
     Preview,
     Alpha,
     Beta,

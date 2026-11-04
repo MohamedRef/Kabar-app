@@ -211,7 +211,7 @@ mod screen {
     use super::*;
     use crate::Screen;
     use crate::store::Store;
-    use crate::test_dom::{self as td, Setup};
+    use crate::test_screens::{self as td, Setup};
     use kabar_protocol::coach::{CoachProfile, LanguageFocus};
 
     const EN: UiLanguage = UiLanguage::En;

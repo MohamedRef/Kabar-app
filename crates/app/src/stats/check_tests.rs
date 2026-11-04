@@ -7,7 +7,7 @@ use kabar_protocol::coach::{ActivityKind, CoachProfile, Target};
 
 use super::*;
 use crate::store::Store;
-use crate::test_dom::{self as td, Setup};
+use crate::test_screens::{self as td, Setup};
 
 const EN: UiLanguage = UiLanguage::En;
 

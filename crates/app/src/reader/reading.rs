@@ -67,11 +67,7 @@ pub fn OpenBar(sheet: Signal<bool>) -> Element {
                     title: if r.focus { ui.t(Msg::ReadFocusLeave) } else { ui.t(Msg::ReadFocus) },
                     onclick: {
                         let db = db.clone();
-                        move |_| {
-                            // Focus means nothing over the text, the popover included.
-                            sheet.set(false);
-                            prefs.set_reading(&db, Reading { focus: !r.focus, ..r });
-                        }
+                        move |_| toggle_focus(&db, prefs, sheet, r)
                     },
                     if r.focus { "{ui.t(Msg::ReadFocusLeave)}" } else { "{ui.t(Msg::ReadFocus)}" }
                 }
@@ -85,6 +81,13 @@ pub fn OpenBar(sheet: Signal<bool>) -> Element {
         }
         }
     }
+}
+
+/// Focus mode on or off. Focus means nothing over the text, the settings
+/// popover included.
+pub(super) fn toggle_focus(db: &Db, prefs: DevicePrefs, mut sheet: Signal<bool>, r: Reading) {
+    sheet.set(false);
+    prefs.set_reading(db, Reading { focus: !r.focus, ..r });
 }
 
 /// The settings under the bar: voice, size, spacing and, where the window

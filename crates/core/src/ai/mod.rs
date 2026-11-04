@@ -285,7 +285,12 @@ impl Router {
         let task = T::TASK;
         let route = self.routes.get(task);
         let template = self.prompts.get(task, route.prompt_version).ok_or(AiError::NoPrompt(task))?;
-        let input_hash = json::input_hash(&req.input);
+        // A vision task's text input is the same for every drawing: the
+        // image is part of what is asked, so it is part of the key.
+        let input_hash = match &req.image_sha256 {
+            Some(sha) => json::input_hash(&serde_json::json!({ "input": req.input, "image_sha256": sha })),
+            None => json::input_hash(&req.input),
+        };
         let profile = self.profile();
         let profile_hash = profile.cache_tag();
         let key_for = |engine| CacheKey {

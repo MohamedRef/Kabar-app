@@ -16,7 +16,7 @@ use super::text::{S, st};
 use super::*;
 use crate::Screen;
 use crate::store::{Store, now_ms};
-use crate::test_dom::{self as td, Setup};
+use crate::test_screens::{self as td, Setup};
 
 const DAY_MS: u64 = 86_400_000;
 

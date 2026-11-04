@@ -1,433 +1,713 @@
-//! Test-only: find a rendered element's event listener by what the element
-//! shows, and fire the event, so a test can press a real button in a
-//! `VirtualDom` and check what the press did (the SSR renderer alone never
-//! runs a handler).
+//! A small in-memory DOM for component tests: it applies the VirtualDom's
+//! mutations, so a test can find a button by its text, click it, type into
+//! a field, and read the screen again. SSR alone renders one frame and runs
+//! no event handlers; this drives the real handlers the way a tap does.
 //!
-//! ```ignore
-//! let mut dom = VirtualDom::new(app);
-//! dom.rebuild_in_place();
-//! test_dom::click(&mut dom, "All stats");
-//! assert!(test_dom::html(&dom).contains("Your stats"));
-//! ```
+//! Only what the app's screens use is modelled: elements, text, attributes,
+//! listeners and placeholders. Events carry default data (a click at 0,0, no
+//! modifiers), which is all the handlers read.
 
 use std::any::Any;
+use std::collections::HashMap;
 use std::rc::Rc;
 
-use dioxus::core::{AttributeValue, DynamicNode, ElementId, Event, TemplateAttribute, TemplateNode, VNode};
-use dioxus::html::{
-    PlatformEventData, SerializedFormData, SerializedHtmlEventConverter, SerializedMouseData,
-};
+use dioxus::core::{AttributeValue, ElementId, Template, TemplateAttribute, TemplateNode, WriteMutations};
+use dioxus::html::{PlatformEventData, SerializedHtmlEventConverter};
 use dioxus::prelude::*;
 
-/// One element listening for an event.
-#[derive(Clone, Debug)]
-pub struct Listener {
-    /// The event without its `on` (`click`, `change`, `keydown`).
-    pub event: String,
-    pub id: ElementId,
-    pub tag: String,
-    /// The element's attributes (static and dynamic, text values only).
-    pub attrs: Vec<(String, String)>,
-    /// All text inside the element, components included.
-    pub text: String,
+#[derive(Debug, Clone)]
+enum Kind {
+    Element { tag: String, attrs: Vec<(String, String)>, listeners: Vec<String> },
+    Text(String),
+    Placeholder,
 }
 
-impl Listener {
-    pub fn attr(&self, name: &str) -> Option<&str> {
-        self.attrs.iter().find(|(n, _)| n == name).map(|(_, v)| v.as_str())
-    }
-
-    pub fn class(&self) -> &str {
-        self.attr("class").unwrap_or_default()
-    }
+#[derive(Debug, Clone)]
+struct Node {
+    kind: Kind,
+    parent: Option<usize>,
+    children: Vec<usize>,
+    id: Option<ElementId>,
 }
 
-/// The page as HTML, without its `<style>` blocks (so a failing assertion
-/// prints the page, not the stylesheet).
-pub fn html(dom: &VirtualDom) -> String {
-    let mut html = dioxus::ssr::render(dom);
-    while let Some(start) = html.find("<style>") {
-        let end = html[start..].find("</style>").map_or(html.len(), |e| start + e + "</style>".len());
-        html.replace_range(start..end, "");
-    }
-    if let Ok(dir) = std::env::var("KABAR_TEST_HTML") {
-        let name = std::thread::current().name().unwrap_or("page").replace("::", "-");
-        let _ = std::fs::write(format!("{dir}/{name}.html"), &html);
-    }
-    html
+/// The mutation target: an arena of nodes, the root at index 0.
+#[derive(Default)]
+struct Tree {
+    nodes: Vec<Node>,
+    ids: HashMap<ElementId, usize>,
+    stack: Vec<usize>,
 }
 
-/// Every listener on the page, in document order.
-pub fn listeners(dom: &VirtualDom) -> Vec<Listener> {
-    let mut out = Vec::new();
-    if let Some(scope) = dom.get_scope(ScopeId::APP) {
-        walk(dom, scope.root_node(), &mut out);
+impl Tree {
+    fn new() -> Self {
+        let mut t = Self::default();
+        t.nodes.push(Node {
+            kind: Kind::Element { tag: "root".into(), attrs: Vec::new(), listeners: Vec::new() },
+            parent: None,
+            children: Vec::new(),
+            id: Some(ElementId(0)),
+        });
+        t.ids.insert(ElementId(0), 0);
+        t
     }
-    out
-}
 
-fn walk(dom: &VirtualDom, node: &VNode, out: &mut Vec<Listener>) {
-    for root in node.template.roots.iter() {
-        walk_template(dom, node, root, &[], out);
+    fn add(&mut self, kind: Kind) -> usize {
+        self.nodes.push(Node { kind, parent: None, children: Vec::new(), id: None });
+        self.nodes.len() - 1
     }
-}
 
-/// Walks a template node, collecting listeners on elements in document order.
-fn walk_template(dom: &VirtualDom, node: &VNode, t: &TemplateNode, _path: &[u8], out: &mut Vec<Listener>) {
-    match t {
-        TemplateNode::Element { tag, attrs, children, .. } => {
-            let mut all = Vec::new();
-            let mut events = Vec::new();
-            for a in attrs.iter() {
-                match a {
-                    TemplateAttribute::Static { name, value, .. } => {
-                        all.push((name.to_string(), value.to_string()));
-                    }
-                    TemplateAttribute::Dynamic { id } => {
-                        for attr in node.dynamic_attrs[*id].iter() {
-                            match &attr.value {
-                                AttributeValue::Listener(_) => {
-                                    if let Some(el) = node.mounted_dynamic_attribute(*id, dom) {
-                                        let name = attr.name.trim_start_matches("on").to_string();
-                                        events.push((name, el));
-                                    }
-                                }
-                                AttributeValue::Text(v) => all.push((attr.name.to_string(), v.clone())),
-                                AttributeValue::Bool(b) => all.push((attr.name.to_string(), b.to_string())),
-                                AttributeValue::Int(i) => all.push((attr.name.to_string(), i.to_string())),
-                                AttributeValue::Float(f) => all.push((attr.name.to_string(), f.to_string())),
-                                _ => {}
-                            }
+    fn build(&mut self, node: &TemplateNode) -> usize {
+        match node {
+            TemplateNode::Element { tag, attrs, children, .. } => {
+                let attrs = attrs
+                    .iter()
+                    .filter_map(|a| match a {
+                        TemplateAttribute::Static { name, value, .. } => {
+                            Some((name.to_string(), value.to_string()))
                         }
-                    }
+                        TemplateAttribute::Dynamic { .. } => None,
+                    })
+                    .collect();
+                let me = self.add(Kind::Element { tag: tag.to_string(), attrs, listeners: Vec::new() });
+                for child in children.iter() {
+                    let c = self.build(child);
+                    self.attach(me, c, None);
                 }
+                me
             }
-            if !events.is_empty() {
-                let mut text = String::new();
-                for c in children.iter() {
-                    text_of(dom, node, c, &mut text);
-                }
-                for (event, id) in events {
-                    out.push(Listener {
-                        event,
-                        id,
-                        tag: tag.to_string(),
-                        attrs: all.clone(),
-                        text: text.clone(),
-                    });
-                }
-            }
-            for c in children.iter() {
-                walk_template(dom, node, c, &[], out);
-            }
+            TemplateNode::Text { text } => self.add(Kind::Text(text.to_string())),
+            TemplateNode::Dynamic { .. } => self.add(Kind::Placeholder),
         }
-        TemplateNode::Text { .. } => {}
-        TemplateNode::Dynamic { id } => walk_dynamic(dom, node, *id, out),
     }
-}
 
-fn walk_dynamic(dom: &VirtualDom, node: &VNode, id: usize, out: &mut Vec<Listener>) {
-    match &node.dynamic_nodes[id] {
-        DynamicNode::Component(c) => {
-            if let Some(scope) = c.mounted_scope(id, node, dom) {
-                walk(dom, scope.root_node(), out);
-            }
+    fn assign(&mut self, node: usize, id: ElementId) {
+        if let Some(old) = self.nodes[node].id
+            && self.ids.get(&old) == Some(&node)
+        {
+            self.ids.remove(&old);
         }
-        DynamicNode::Fragment(nodes) => {
-            for n in nodes {
-                walk(dom, n, out);
-            }
+        self.nodes[node].id = Some(id);
+        self.ids.insert(id, node);
+    }
+
+    fn detach(&mut self, node: usize) {
+        if let Some(p) = self.nodes[node].parent.take() {
+            self.nodes[p].children.retain(|&c| c != node);
         }
-        DynamicNode::Text(_) | DynamicNode::Placeholder(_) => {}
     }
-}
 
-fn text_of(dom: &VirtualDom, node: &VNode, t: &TemplateNode, out: &mut String) {
-    match t {
-        TemplateNode::Element { children, .. } => {
-            for c in children.iter() {
-                text_of(dom, node, c, out);
-            }
+    /// Puts `child` under `parent`, at `at` or last.
+    fn attach(&mut self, parent: usize, child: usize, at: Option<usize>) {
+        self.detach(child);
+        self.nodes[child].parent = Some(parent);
+        match at {
+            Some(i) => self.nodes[parent].children.insert(i, child),
+            None => self.nodes[parent].children.push(child),
         }
-        TemplateNode::Text { text } => out.push_str(text),
-        TemplateNode::Dynamic { id } => match &node.dynamic_nodes[*id] {
-            DynamicNode::Text(v) => out.push_str(&v.value),
-            DynamicNode::Component(c) => {
-                if let Some(scope) = c.mounted_scope(*id, node, dom) {
-                    vnode_text(dom, scope.root_node(), out);
-                }
-            }
-            DynamicNode::Fragment(nodes) => {
-                for n in nodes {
-                    vnode_text(dom, n, out);
-                }
-            }
-            DynamicNode::Placeholder(_) => {}
-        },
-    }
-}
-
-fn vnode_text(dom: &VirtualDom, node: &VNode, out: &mut String) {
-    for root in node.template.roots.iter() {
-        text_of(dom, node, root, out);
-    }
-}
-
-/// The one listener for `event` whose element matches `pick`. Panics, with
-/// what is on the page, when there is none or more than one.
-pub fn find(dom: &VirtualDom, event: &str, pick: impl Fn(&Listener) -> bool) -> Listener {
-    let all = listeners(dom);
-    let hits: Vec<&Listener> = all.iter().filter(|l| l.event == event && pick(l)).collect();
-    match hits.as_slice() {
-        [one] => (*one).clone(),
-        _ => panic!(
-            "{} {event} listeners match; on the page: {:#?}",
-            hits.len(),
-            all.iter().map(|l| (&l.event, &l.tag, l.class(), &l.text)).collect::<Vec<_>>()
-        ),
-    }
-}
-
-thread_local! {
-    /// Tokio for the app's timers (`use_future` loops sleep on it).
-    static RT: tokio::runtime::Runtime =
-        tokio::runtime::Builder::new_current_thread().enable_all().build().expect("a tokio runtime");
-}
-
-/// Runs `f` with this thread's tokio runtime entered.
-fn in_rt<T>(f: impl FnOnce() -> T) -> T {
-    RT.with(|rt| {
-        let _entered = rt.enter();
-        f()
-    })
-}
-
-fn converter() {
-    use std::sync::Once;
-    static SET: Once = Once::new();
-    SET.call_once(|| dioxus::html::set_event_converter(Box::new(SerializedHtmlEventConverter)));
-}
-
-/// Fires `event` with `data` at a listener, then re-renders.
-pub fn fire(dom: &mut VirtualDom, l: &Listener, data: Box<dyn Any>) {
-    converter();
-    let event = Event::new(Rc::new(PlatformEventData::new(data)) as Rc<dyn Any>, true);
-    in_rt(|| {
-        dom.runtime().handle_event(&l.event, event, l.id);
-        dom.render_immediate_to_vec();
-    });
-}
-
-/// Clicks the one clickable element whose text contains `text`.
-pub fn click(dom: &mut VirtualDom, text: &str) {
-    let l = find(dom, "click", |l| l.text.contains(text));
-    click_on(dom, &l);
-}
-
-/// Clicks the one clickable element `pick` matches.
-pub fn click_where(dom: &mut VirtualDom, pick: impl Fn(&Listener) -> bool) {
-    let l = find(dom, "click", pick);
-    click_on(dom, &l);
-}
-
-pub fn click_on(dom: &mut VirtualDom, l: &Listener) {
-    fire(dom, l, Box::new(SerializedMouseData::default()));
-}
-
-/// Changes a form control (a checkbox: "true"/"false").
-pub fn change(dom: &mut VirtualDom, pick: impl Fn(&Listener) -> bool, value: &str) {
-    let l = find(dom, "change", pick);
-    let data = SerializedFormData { value: value.to_string(), values: Vec::new(), valid: true };
-    fire(dom, &l, Box::new(data));
-}
-
-/// Lets spawned tasks, futures and background threads run for `ms`
-/// milliseconds, re-rendering as they finish.
-pub fn settle(dom: &mut VirtualDom, ms: u64) {
-    let end = std::time::Instant::now() + std::time::Duration::from_millis(ms);
-    RT.with(|rt| {
-        rt.block_on(async {
-            while let Some(left) = end.checked_duration_since(std::time::Instant::now()) {
-                if tokio::time::timeout(left, dom.wait_for_work()).await.is_err() {
-                    break;
-                }
-                dom.render_immediate_to_vec();
-            }
-        })
-    });
-    in_rt(|| dom.render_immediate_to_vec());
-}
-
-// ------------------------------------------------------------- app fixture
-
-/// What a mounted test app starts with.
-pub struct Setup {
-    pub lang: kabar_core::locale::UiLanguage,
-    pub eastern: bool,
-    /// Window width in dp (sets the width class).
-    pub width: f64,
-    pub screen: crate::Screen,
-    pub store: crate::store::Store,
-    /// Draws a screen; anything it doesn't draw shows as `screen: <name>`.
-    pub view: fn(crate::Screen) -> Option<Element>,
-}
-
-impl Setup {
-    pub fn new(
-        store: crate::store::Store,
-        screen: crate::Screen,
-        view: fn(crate::Screen) -> Option<Element>,
-    ) -> Self {
-        Self { lang: kabar_core::locale::UiLanguage::En, eastern: false, width: 1280.0, screen, store, view }
     }
 
-    pub fn lang(mut self, lang: kabar_core::locale::UiLanguage) -> Self {
-        self.lang = lang;
-        self
+    fn pop(&mut self, m: usize) -> Vec<usize> {
+        let at = self.stack.len() - m;
+        self.stack.split_off(at)
     }
 
-    pub fn eastern(mut self) -> Self {
-        self.eastern = true;
-        self
+    fn node(&self, id: ElementId) -> usize {
+        *self.ids.get(&id).unwrap_or_else(|| panic!("no node for {id:?}"))
     }
 
-    pub fn width(mut self, width: f64) -> Self {
-        self.width = width;
-        self
-    }
-}
-
-thread_local! {
-    static SETUP: std::cell::RefCell<Option<Setup>> = const { std::cell::RefCell::new(None) };
-}
-
-/// Mounts the app with `setup`'s store, settings and first screen, renders
-/// it, and returns the dom.
-pub fn mount(setup: Setup) -> VirtualDom {
-    SETUP.with(|s| *s.borrow_mut() = Some(setup));
-    let mut dom = VirtualDom::new(root);
-    in_rt(|| dom.rebuild_in_place());
-    dom
-}
-
-fn nothing(_: crate::Screen) -> Option<Element> {
-    None
-}
-
-#[derive(Clone, Copy)]
-struct View(fn(crate::Screen) -> Option<Element>);
-
-fn root() -> Element {
-    use crate::{Db, Ui};
-    // The setup is read once, on the first render.
-    let first = use_hook(|| {
-        let setup = SETUP.with(|s| s.borrow_mut().take()).expect("mount() sets up the app");
-        Rc::new(std::cell::RefCell::new(Some(setup)))
-    });
-    let (lang, eastern, width, screen, view) = {
-        let s = first.borrow();
-        match s.as_ref() {
-            Some(s) => (s.lang, s.eastern, s.width, s.screen, s.view),
-            None => (
-                kabar_core::locale::UiLanguage::En,
-                false,
-                0.0,
-                crate::Screen::Today,
-                nothing as fn(crate::Screen) -> Option<Element>,
-            ),
+    fn at_path(&self, path: &[u8]) -> usize {
+        let mut n = *self.stack.last().expect("empty stack");
+        for &i in path {
+            n = self.nodes[n].children[i as usize];
         }
-    };
-    crate::persistence::use_provide_saves();
-    let db = use_context_provider(|| {
-        let store = std::mem::replace(
-            &mut first.borrow_mut().as_mut().expect("first render").store,
-            crate::store::Store::open_in_memory().expect("in-memory store"),
-        );
-        Db(Rc::new(std::cell::RefCell::new(store)))
-    });
-    let ui = use_context_provider(|| {
-        let settings = kabar_core::settings::Settings {
-            ui_language: lang,
-            eastern_digits: eastern,
-            ..db.0.borrow().settings().unwrap_or_default()
+        n
+    }
+
+    fn replace(&mut self, old: usize, new: Vec<usize>) {
+        let parent = self.nodes[old].parent.expect("replacing a detached node");
+        let i = self.nodes[parent].children.iter().position(|&c| c == old).unwrap();
+        for (k, n) in new.into_iter().enumerate() {
+            self.attach(parent, n, Some(i + k));
+        }
+        self.detach(old);
+        self.forget(old);
+    }
+
+    fn insert_beside(&mut self, anchor: usize, new: Vec<usize>, after: bool) {
+        let parent = self.nodes[anchor].parent.expect("inserting beside a detached node");
+        for n in new.into_iter().rev() {
+            let i = self.nodes[parent].children.iter().position(|&c| c == anchor).unwrap();
+            self.attach(parent, n, Some(if after { i + 1 } else { i }));
+        }
+    }
+
+    /// Drops the ids of a removed subtree, unless they were reused already.
+    fn forget(&mut self, node: usize) {
+        if let Some(id) = self.nodes[node].id
+            && self.ids.get(&id) == Some(&node)
+        {
+            self.ids.remove(&id);
+        }
+        for c in self.nodes[node].children.clone() {
+            self.forget(c);
+        }
+    }
+
+    fn element(&mut self, node: usize) -> (&mut Vec<(String, String)>, &mut Vec<String>) {
+        match &mut self.nodes[node].kind {
+            Kind::Element { attrs, listeners, .. } => (attrs, listeners),
+            k => panic!("not an element: {k:?}"),
+        }
+    }
+}
+
+impl WriteMutations for Tree {
+    fn append_children(&mut self, id: ElementId, m: usize) {
+        let parent = self.node(id);
+        for c in self.pop(m) {
+            self.attach(parent, c, None);
+        }
+    }
+
+    fn assign_node_id(&mut self, path: &'static [u8], id: ElementId) {
+        let n = self.at_path(path);
+        self.assign(n, id);
+    }
+
+    fn create_placeholder(&mut self, id: ElementId) {
+        let n = self.add(Kind::Placeholder);
+        self.assign(n, id);
+        self.stack.push(n);
+    }
+
+    fn create_text_node(&mut self, value: &str, id: ElementId) {
+        let n = self.add(Kind::Text(value.to_string()));
+        self.assign(n, id);
+        self.stack.push(n);
+    }
+
+    fn load_template(&mut self, template: Template, index: usize, id: ElementId) {
+        let n = self.build(&template.roots[index]);
+        self.assign(n, id);
+        self.stack.push(n);
+    }
+
+    fn replace_node_with(&mut self, id: ElementId, m: usize) {
+        let new = self.pop(m);
+        let old = self.node(id);
+        self.replace(old, new);
+    }
+
+    fn replace_placeholder_with_nodes(&mut self, path: &'static [u8], m: usize) {
+        let new = self.pop(m);
+        let old = self.at_path(path);
+        self.replace(old, new);
+    }
+
+    fn insert_nodes_after(&mut self, id: ElementId, m: usize) {
+        let new = self.pop(m);
+        let anchor = self.node(id);
+        self.insert_beside(anchor, new, true);
+    }
+
+    fn insert_nodes_before(&mut self, id: ElementId, m: usize) {
+        let new = self.pop(m);
+        let anchor = self.node(id);
+        self.insert_beside(anchor, new, false);
+    }
+
+    fn set_attribute(
+        &mut self,
+        name: &'static str,
+        ns: Option<&'static str>,
+        value: &AttributeValue,
+        id: ElementId,
+    ) {
+        let n = self.node(id);
+        let name = match ns {
+            Some("style") => format!("style:{name}"),
+            _ => name.to_string(),
         };
-        Ui {
-            settings: Signal::new(settings),
-            width: Signal::new(kabar_core::layout::WidthClass::from_width(width)),
-            tablet: Signal::new(false),
-            screen: Signal::new(screen),
-            lesson: Signal::new(None),
-            lesson_from: Signal::new(crate::Screen::Journey),
-            focus: Signal::new(false),
+        let value = match value {
+            AttributeValue::Text(s) => Some(s.clone()),
+            AttributeValue::Float(f) => Some(f.to_string()),
+            AttributeValue::Int(i) => Some(i.to_string()),
+            AttributeValue::Bool(true) => Some("true".into()),
+            AttributeValue::Bool(false) | AttributeValue::None => None,
+            AttributeValue::Listener(_) | AttributeValue::Any(_) => return,
+        };
+        let (attrs, _) = self.element(n);
+        attrs.retain(|(k, _)| *k != name);
+        if let Some(v) = value {
+            attrs.push((name, v));
         }
-    });
-    use_context_provider(|| crate::coach::Coach::load(&db));
-    crate::annotated::use_words(&db);
-    let view = use_hook(|| View(view));
-    // Later renders keep the first render's view.
-    first.borrow_mut().take();
-    let now = *ui.screen.read();
-    let lesson = ui.lesson.read().clone();
-    rsx! {
-        div { id: "test-app", "data-screen": "{now:?}", "data-lesson": lesson.unwrap_or_default(),
-            match (view.0)(now) {
-                Some(page) => page,
-                None => rsx! { p { class: "test-screen", "screen: {now:?}" } },
-            }
+    }
+
+    fn set_node_text(&mut self, value: &str, id: ElementId) {
+        let n = self.node(id);
+        self.nodes[n].kind = Kind::Text(value.to_string());
+    }
+
+    fn create_event_listener(&mut self, name: &'static str, id: ElementId) {
+        let n = self.node(id);
+        let (_, listeners) = self.element(n);
+        if !listeners.iter().any(|l| l == name) {
+            listeners.push(name.to_string());
         }
+    }
+
+    fn remove_event_listener(&mut self, name: &'static str, id: ElementId) {
+        let n = self.node(id);
+        let (_, listeners) = self.element(n);
+        listeners.retain(|l| l != name);
+    }
+
+    fn remove_node(&mut self, id: ElementId) {
+        let n = self.node(id);
+        self.detach(n);
+        self.forget(n);
+    }
+
+    fn push_root(&mut self, id: ElementId) {
+        let n = self.node(id);
+        self.stack.push(n);
     }
 }
 
-/// The screen the app shows now.
-pub fn screen(dom: &VirtualDom) -> crate::Screen {
-    dom.in_scope(ScopeId::APP, || *consume_context::<crate::Ui>().screen.peek())
+/// A mounted app plus its DOM.
+pub struct TestDom {
+    pub vdom: VirtualDom,
+    tree: Tree,
 }
 
-/// The lesson the player was asked to open.
-pub fn lesson(dom: &VirtualDom) -> Option<String> {
-    dom.in_scope(ScopeId::APP, || consume_context::<crate::Ui>().lesson.peek().clone())
+/// One element found on screen.
+#[derive(Clone, Copy, Debug)]
+pub struct El(usize);
+
+impl TestDom {
+    /// Mounts `app` and renders it.
+    pub fn new(app: fn() -> Element) -> Self {
+        Self::from_vdom(VirtualDom::new(app))
+    }
+
+    pub fn from_vdom(mut vdom: VirtualDom) -> Self {
+        dioxus::html::set_event_converter(Box::new(SerializedHtmlEventConverter));
+        let mut tree = Tree::new();
+        vdom.rebuild(&mut tree);
+        let mut me = Self { vdom, tree };
+        me.settle();
+        me
+    }
+
+    /// Applies pending work (signal writes, effects, ready tasks).
+    pub fn settle(&mut self) {
+        for _ in 0..8 {
+            // Effects and ready futures run on `poll`; a bounded loop keeps
+            // a test from hanging on a timer that never fires.
+            let waker = std::task::Waker::noop();
+            let mut cx = std::task::Context::from_waker(waker);
+            let ready = {
+                let mut work = std::pin::pin!(self.vdom.wait_for_work());
+                work.as_mut().poll(&mut cx).is_ready()
+            };
+            if !ready {
+                break;
+            }
+            self.vdom.render_immediate(&mut self.tree);
+        }
+        self.vdom.render_immediate(&mut self.tree);
+    }
+
+    /// Runs `f` inside the app's root scope (to read or write its contexts).
+    pub fn in_app<T>(&mut self, f: impl FnOnce() -> T) -> T {
+        let out = self.vdom.in_scope(ScopeId::APP, f);
+        self.settle();
+        out
+    }
+
+    fn text_of(&self, n: usize, out: &mut String) {
+        match &self.tree.nodes[n].kind {
+            Kind::Text(t) => out.push_str(t),
+            Kind::Placeholder => {}
+            Kind::Element { .. } => {
+                for &c in &self.tree.nodes[n].children {
+                    self.text_of(c, out);
+                }
+            }
+        }
+    }
+
+    /// The visible text of an element (all its text, joined).
+    pub fn text(&self, el: El) -> String {
+        let mut s = String::new();
+        self.text_of(el.0, &mut s);
+        s
+    }
+
+    /// All the text on screen.
+    pub fn screen(&self) -> String {
+        self.text(El(0))
+    }
+
+    fn html_of(&self, n: usize, out: &mut String) {
+        match &self.tree.nodes[n].kind {
+            Kind::Text(t) => out.push_str(t),
+            Kind::Placeholder => {}
+            Kind::Element { tag, attrs, .. } => {
+                out.push('<');
+                out.push_str(tag);
+                for (k, v) in attrs {
+                    out.push_str(&format!(" {k}=\"{v}\""));
+                }
+                out.push('>');
+                for &c in &self.tree.nodes[n].children {
+                    self.html_of(c, out);
+                }
+                out.push_str(&format!("</{tag}>"));
+            }
+        }
+    }
+
+    /// The screen as rough HTML, for assertions on classes and attributes.
+    pub fn html(&self) -> String {
+        let mut s = String::new();
+        self.html_of(0, &mut s);
+        s
+    }
+
+    fn walk(&self, n: usize, out: &mut Vec<usize>) {
+        out.push(n);
+        for &c in &self.tree.nodes[n].children {
+            self.walk(c, out);
+        }
+    }
+
+    fn all(&self) -> Vec<usize> {
+        let mut v = Vec::new();
+        self.walk(0, &mut v);
+        v
+    }
+
+    pub fn tag(&self, el: El) -> &str {
+        match &self.tree.nodes[el.0].kind {
+            Kind::Element { tag, .. } => tag,
+            _ => "",
+        }
+    }
+
+    pub fn attr(&self, el: El, name: &str) -> Option<&str> {
+        match &self.tree.nodes[el.0].kind {
+            Kind::Element { attrs, .. } => attrs.iter().find(|(k, _)| k == name).map(|(_, v)| v.as_str()),
+            _ => None,
+        }
+    }
+
+    pub fn has_class(&self, el: El, class: &str) -> bool {
+        self.attr(el, "class").is_some_and(|c| c.split_whitespace().any(|x| x == class))
+    }
+
+    /// Every element with this tag.
+    pub fn find_all(&self, tag: &str) -> Vec<El> {
+        self.all().into_iter().map(El).filter(|&e| self.tag(e) == tag).collect()
+    }
+
+    /// Every element carrying `class`.
+    pub fn by_class(&self, class: &str) -> Vec<El> {
+        self.all().into_iter().map(El).filter(|&e| self.has_class(e, class)).collect()
+    }
+
+    /// Whether `inner` sits inside `outer` (or is it).
+    pub fn contains(&self, outer: El, inner: El) -> bool {
+        let mut n = Some(inner.0);
+        while let Some(i) = n {
+            if i == outer.0 {
+                return true;
+            }
+            n = self.tree.nodes[i].parent;
+        }
+        false
+    }
+
+    /// The buttons on screen, in document order.
+    pub fn buttons(&self) -> Vec<El> {
+        self.find_all("button")
+    }
+
+    /// The first `tag` whose text contains `text`; panics with the screen if none.
+    pub fn find(&self, tag: &str, text: &str) -> El {
+        self.try_find(tag, text)
+            .unwrap_or_else(|| panic!("no <{tag}> containing {text:?} on screen:\n{}", self.html()))
+    }
+
+    pub fn try_find(&self, tag: &str, text: &str) -> Option<El> {
+        self.find_all(tag).into_iter().find(|&e| self.text(e).contains(text))
+    }
+
+    /// The button whose text contains `text`.
+    pub fn button(&self, text: &str) -> El {
+        self.find("button", text)
+    }
+
+    pub fn disabled(&self, el: El) -> bool {
+        self.attr(el, "disabled").is_some()
+    }
+
+    fn listener_on(&self, el: El, name: &str) -> Option<ElementId> {
+        // Like the browser, the event starts at the element; the runtime
+        // bubbles it up the component tree from the nearest listener.
+        let mut n = Some(el.0);
+        while let Some(i) = n {
+            let node = &self.tree.nodes[i];
+            if let Kind::Element { listeners, .. } = &node.kind
+                && listeners.iter().any(|l| l == name)
+            {
+                return node.id;
+            }
+            n = node.parent;
+        }
+        None
+    }
+
+    fn fire(&mut self, el: El, name: &str, data: Box<dyn Any>, bubbles: bool) {
+        let id = self
+            .listener_on(el, name)
+            .unwrap_or_else(|| panic!("nothing listens to {name} at {:?}:\n{}", self.text(el), self.html()));
+        let event = dioxus::core::Event::new(Rc::new(PlatformEventData::new(data)) as Rc<dyn Any>, bubbles);
+        self.vdom.runtime().handle_event(name, event, id);
+        self.settle();
+    }
+
+    /// Taps an element (a click event at it, bubbling).
+    pub fn click(&mut self, el: El) {
+        assert!(!self.disabled(el), "clicking a disabled element: {}", self.text(el));
+        self.fire(el, "click", Box::new(dioxus::html::SerializedMouseData::default()), true);
+    }
+
+    /// Taps the button whose text contains `text`.
+    pub fn click_text(&mut self, text: &str) {
+        let b = self.button(text);
+        self.click(b);
+    }
+
+    /// Taps the first `tag` whose text contains `text`.
+    pub fn click_on(&mut self, tag: &str, text: &str) {
+        let e = self.find(tag, text);
+        self.click(e);
+    }
+
+    /// Types `value` into a field (an `input` event with the new value).
+    pub fn input(&mut self, el: El, value: &str) {
+        let data = dioxus::html::SerializedFormData::new(value.to_string(), Vec::new());
+        self.fire(el, "input", Box::new(data), true);
+    }
+
+    /// Submits a form (`submit`, as Enter in its field does).
+    pub fn submit(&mut self, form: El) {
+        let data = dioxus::html::SerializedFormData::new(String::new(), Vec::new());
+        self.fire(form, "submit", Box::new(data), true);
+    }
+
+    /// Sets a select or field and sends `change`.
+    pub fn change(&mut self, el: El, value: &str) {
+        let data = dioxus::html::SerializedFormData::new(value.to_string(), Vec::new());
+        self.fire(el, "change", Box::new(data), true);
+    }
 }
 
-/// The app's database.
-pub fn db(dom: &VirtualDom) -> crate::Db {
-    dom.in_scope(ScopeId::APP, consume_context::<crate::Db>)
+/// What the fake WebView answers to a script: the values it `dioxus.send`s.
+pub type Replies = Rc<dyn Fn(&str) -> Vec<serde_json::Value>>;
+
+/// A WebView stand-in for `document::eval`: it records every script and
+/// answers with [`Replies`] (nothing by default, as when no voice exists).
+pub struct FakeDocument {
+    scripts: std::cell::RefCell<Vec<String>>,
+    replies: std::cell::RefCell<Replies>,
+    owner: dioxus::signals::Owner<dioxus::signals::UnsyncStorage>,
 }
 
-/// Today, as the app's coach sees it.
-pub fn today(dom: &VirtualDom) -> kabar_protocol::coach::LocalDate {
-    dom.in_scope(ScopeId::APP, || consume_context::<crate::coach::Coach>().today())
+impl FakeDocument {
+    pub fn new() -> Rc<Self> {
+        Rc::new(Self {
+            scripts: Default::default(),
+            replies: std::cell::RefCell::new(Rc::new(|_| Vec::new())),
+            owner: Default::default(),
+        })
+    }
+
+    /// Answers scripts containing `needle` with `values`; others get nothing.
+    pub fn reply_to(&self, needle: &'static str, values: Vec<serde_json::Value>) {
+        let previous = self.replies.borrow().clone();
+        *self.replies.borrow_mut() =
+            Rc::new(move |js| if js.contains(needle) { values.clone() } else { previous(js) });
+    }
+
+    /// Every script run so far.
+    pub fn scripts(&self) -> Vec<String> {
+        self.scripts.borrow().clone()
+    }
+
+    /// How many scripts so far contain `needle`.
+    pub fn ran(&self, needle: &str) -> usize {
+        self.scripts.borrow().iter().filter(|s| s.contains(needle)).count()
+    }
 }
 
-/// Today for a store about to be mounted with the default profile.
-pub fn today_now() -> kabar_protocol::coach::LocalDate {
-    kabar_protocol::coach::LocalDate::from_unix_ms(
-        crate::store::now_ms(),
-        kabar_protocol::coach::CoachProfile::default().utc_offset_min,
-    )
+struct Scripted(std::collections::VecDeque<serde_json::Value>);
+
+impl dioxus::document::Evaluator for Scripted {
+    fn send(&self, _: serde_json::Value) -> Result<(), dioxus::document::EvalError> {
+        Ok(())
+    }
+
+    fn poll_recv(
+        &mut self,
+        _: &mut std::task::Context<'_>,
+    ) -> std::task::Poll<Result<serde_json::Value, dioxus::document::EvalError>> {
+        std::task::Poll::Ready(self.0.pop_front().ok_or(dioxus::document::EvalError::Finished))
+    }
+
+    fn poll_join(
+        &mut self,
+        _: &mut std::task::Context<'_>,
+    ) -> std::task::Poll<Result<serde_json::Value, dioxus::document::EvalError>> {
+        std::task::Poll::Ready(Ok(serde_json::Value::Null))
+    }
 }
 
-/// `text` as the HTML shows it (`'` → `&#39;`, `&` → `&amp;`, …).
-pub fn esc(text: &str) -> String {
-    text.replace('&', "&amp;")
-        .replace('<', "&lt;")
-        .replace('>', "&gt;")
-        .replace('"', "&quot;")
-        .replace('\'', "&#39;")
+impl dioxus::document::Document for FakeDocument {
+    fn eval(&self, js: String) -> dioxus::document::Eval {
+        let values = (self.replies.borrow())(&js);
+        self.scripts.borrow_mut().push(js);
+        let boxed: Box<dyn dioxus::document::Evaluator> = Box::new(Scripted(values.into()));
+        dioxus::document::Eval::new(self.owner.insert(boxed))
+    }
 }
 
-/// Whether the page shows `text` (escaped as HTML would).
-pub fn shows(html: &str, text: &str) -> bool {
-    html.contains(&esc(text))
+/// The app's shared contexts around one screen, as `App` provides them.
+#[derive(Clone)]
+struct RootProps {
+    db: crate::Db,
+    lang: kabar_core::locale::UiLanguage,
+    doc: Rc<FakeDocument>,
+    body: fn() -> Element,
 }
 
-/// A template's text up to its first `{placeholder}`.
-pub fn lead(template: &str) -> &str {
-    template.split('{').next().unwrap_or_default()
+impl PartialEq for RootProps {
+    fn eq(&self, _: &Self) -> bool {
+        true
+    }
 }
 
-/// Types `value` into the one text field `pick` matches.
-pub fn input(dom: &mut VirtualDom, pick: impl Fn(&Listener) -> bool, value: &str) {
-    let l = find(dom, "input", pick);
-    let data = SerializedFormData { value: value.to_string(), values: Vec::new(), valid: true };
-    fire(dom, &l, Box::new(data));
+fn root(p: RootProps) -> Element {
+    crate::persistence::use_provide_saves();
+    let db = use_context_provider(|| p.db.clone());
+    use_context_provider(|| crate::Ui {
+        settings: Signal::new(kabar_core::settings::Settings { ui_language: p.lang, ..Default::default() }),
+        width: Signal::new(kabar_core::layout::WidthClass::Compact),
+        tablet: Signal::new(false),
+        screen: Signal::new(crate::Screen::Today),
+        lesson: Signal::new(None),
+        lesson_from: Signal::new(crate::Screen::Journey),
+        focus: Signal::new(false),
+    });
+    use_context_provider(|| crate::settings::device::DevicePrefs::load(&db));
+    use_context_provider(crate::settings::SettingsNav::new);
+    use_context_provider(crate::play::PlayNav::new);
+    crate::annotated::use_words(&db);
+    use_context_provider(|| crate::coach::Coach::load(&db));
+    use_context_provider(|| p.doc.clone() as Rc<dyn dioxus::document::Document>);
+    (p.body)()
+}
+
+/// A fresh in-memory store.
+pub fn memory_db() -> crate::Db {
+    crate::Db(Rc::new(std::cell::RefCell::new(crate::store::Store::open_in_memory().unwrap())))
+}
+
+/// One screen mounted with the app's contexts, its store and its WebView.
+pub struct App {
+    pub dom: TestDom,
+    pub db: crate::Db,
+    pub doc: Rc<FakeDocument>,
+}
+
+impl App {
+    /// Mounts `body` over `db` (seed it first) in `lang`, with `doc` as the WebView.
+    pub fn with(
+        lang: kabar_core::locale::UiLanguage,
+        db: crate::Db,
+        doc: Rc<FakeDocument>,
+        body: fn() -> Element,
+    ) -> Self {
+        let props = RootProps { db: db.clone(), lang, doc: doc.clone(), body };
+        let dom = TestDom::from_vdom(VirtualDom::new_with_props(root, props));
+        Self { dom, db, doc }
+    }
+
+    /// Mounts `body` over an empty store, in `lang`, with no voices.
+    pub fn new(lang: kabar_core::locale::UiLanguage, body: fn() -> Element) -> Self {
+        Self::with(lang, memory_db(), FakeDocument::new(), body)
+    }
+
+    /// A context the app provides (Ui, Coach, PlayNav...).
+    pub fn ctx<T: Clone + 'static>(&mut self) -> T {
+        self.dom.in_app(consume_context::<T>)
+    }
+
+    /// The screen `Ui.screen` is on now.
+    pub fn screen_now(&mut self) -> crate::Screen {
+        let ui = self.ctx::<crate::Ui>();
+        *ui.screen.peek()
+    }
+
+    /// The activity log as stored.
+    pub fn activity(&self) -> Vec<kabar_protocol::coach::ActivityEvent> {
+        self.db.0.borrow().activity(None).unwrap()
+    }
+}
+
+impl std::ops::Deref for App {
+    type Target = TestDom;
+    fn deref(&self) -> &TestDom {
+        &self.dom
+    }
+}
+
+impl std::ops::DerefMut for App {
+    fn deref_mut(&mut self) -> &mut TestDom {
+        &mut self.dom
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn clicks_reach_handlers_and_the_screen_follows() {
+        fn app() -> Element {
+            let mut n = use_signal(|| 0);
+            let mut text = use_signal(String::new);
+            rsx! {
+                p { "count {n}" }
+                if n() > 1 { span { class: "many big", "many" } }
+                div { onclick: move |_| n += 10,
+                    button { onclick: move |_| n += 1, "add" }
+                }
+                input { oninput: move |e| text.set(e.value()) }
+                p { "typed {text}" }
+                for i in 0..n().min(3) { em { key: "{i}", "{i}" } }
+            }
+        }
+        let mut dom = TestDom::new(app);
+        assert!(dom.screen().contains("count 0"));
+        dom.click_text("add");
+        // The click bubbles: the button's +1 and the div's +10.
+        assert!(dom.screen().contains("count 11"), "{}", dom.html());
+        assert_eq!(dom.by_class("big").len(), 1);
+        assert_eq!(dom.find_all("em").len(), 3);
+        let field = dom.find_all("input")[0];
+        dom.input(field, "halo");
+        assert!(dom.screen().contains("typed halo"));
+    }
 }

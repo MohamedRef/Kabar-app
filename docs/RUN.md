@@ -10,6 +10,7 @@ brew install just
 just setup-mac        # Rust targets, dx 0.7.10, Java 17, Android SDK + NDK r27c
 source ~/.kabar/env.sh   # or open a new terminal
 just check            # fmt + clippy + tests must be green
+just coverage         # line coverage vs the CI floor (docs/TESTING.md)
 ```
 
 8 GB RAM tip: close Chrome/Android Studio while the first Android build runs; it's the heaviest step.
@@ -329,7 +330,7 @@ Kabar Cloud (`just cloud-dev`) already allows `http://localhost:8080`.
 
 Kabar updates itself on every device (design: `docs/RELEASE.md` §5). Settings → **Updates** shows where things stand and when Kabar last checked, one **Check for updates** button that looks for the app, new lessons and look, and refreshes downloaded audio packs in one go, what is on this device (**The app**: version and build; **Lessons and look**: as they came with the app, or the content-only build that came over the air and when), how updates happen (**Automatic**, **Tell me first**, **Only when I check**) and the channel (Alpha, Beta, Stable; a preview build is fixed to Preview). A card on Today says when a new Kabar is ready, and a short note says when new lessons came over the air and show once Kabar is reopened (on the Mac it has **Restart now**).
 
-- **Preview APK (now).** The `Android preview APK` workflow builds every merge to `main` for the `preview` channel and publishes a signed `update.json` next to `kabar-preview.apk`. Install a preview that has this feature once by hand; from then on it updates itself. The first install of an update asks Android to allow "Install unknown apps" for Kabar and to confirm; after Kabar installed itself once, Android 12+ lets later updates go in quietly (in Automatic mode: while Kabar is in the background and not mid-lesson).
+- **Preview APK (now).** The `Android preview APK` workflow builds `main` every 4 hours (only when it changed) and by hand (Actions › Android preview APK › Run workflow) for the `preview` channel and publishes a signed `update.json` next to `kabar-preview.apk`. Install a preview that has this feature once by hand; from then on it updates itself. The first install of an update asks Android to allow "Install unknown apps" for Kabar and to confirm; after Kabar installed itself once, Android 12+ lets later updates go in quietly (in Automatic mode: while Kabar is in the background and not mid-lesson).
 - **Release builds (release day, only when you say go).** Once: `just update-keygen` (secret into the Keychain, public half into `crates/app/update-key.pub`; commit it and back the secret up with the Android key). Each release: `just release`, then `just publish-update "<what's new>" "<الجديد>"`. It zips Kabar.app with `ditto`, writes and signs one feed per channel the version belongs to, verifies it, and uploads it to the `update-alpha` / `update-beta` / `update-stable` releases.
 - **Mobile data.** Automatic downloads wait for Wi-Fi (and Data Saver); the offer shows in Settings with a Download button meanwhile. If Android needs a confirmation while Kabar is in the background, it comes as a "tap to install" notification and opens when you're back in Kabar.
 - **Preview key renewed.** If the CI cache expired (7 days with no build), previews get a new key; Settings says to install the newest `kabar-preview.apk` by hand once.

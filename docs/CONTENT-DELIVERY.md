@@ -98,7 +98,7 @@ It is not built yet because:
 - **The cost is low.** Automatic downloads already run on Wi-Fi only,
   never on a metered network or with Android's Data Saver on.
 - **The cadence will drop.** Release channels publish far less often than
-  `preview`, which follows every merge during development.
+  `preview`, which follows `main` (built every 4 hours when it changed) during development.
 - **The risk is real.** It adds a new failure surface (index, ranges,
   reassembly) to the path that must never brick content.
 

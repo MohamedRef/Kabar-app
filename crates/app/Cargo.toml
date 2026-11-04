@@ -92,8 +92,8 @@ miniz_oxide = "0.8"
 [dev-dependencies]
 # Render actual shared components for semantic regression coverage.
 dioxus = { version = "0.7.10", features = ["ssr"] }
-# Serialized events for the screen tests (test_dom.rs), also in builds
-# without the desktop renderer (CI's browser-fixture jobs).
+# Serialized event data, so tests fire real click/input handlers (lesson/sim.rs,
+# test_screens.rs) in every feature set, including --no-default-features.
 dioxus-html = { version = "0.7.10", features = ["serialize"] }
 tempfile = "3"
 # Signs test update feeds (the app itself only verifies, via kabar-core).
