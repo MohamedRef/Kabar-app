@@ -1,5 +1,11 @@
-//! The signed-in session. The refresh token lives in the macOS Keychain or
-//! the Android Keystore (through `keyring-core`), never in the database.
+//! The signed-in session. The refresh token lives in the Android Keystore
+//! (through `keyring-core`) and on the Mac in a file only the user's account
+//! can read (`FileVault`); never in the database.
+//!
+//! Why not the Mac Keychain: Kabar.app is self-signed, so it has no Apple
+//! team ID, and the Keychain then trusts only the exact build that saved an
+//! item. Every new build asked for the login password again, and since the
+//! refresh token rotates every 15 minutes, the prompt kept coming back.
 
 use kabar_protocol::cloud::Session;
 
@@ -67,6 +73,85 @@ fn init_default_store() {
             Err(e) => crate::diag::report!("credential store unavailable: {e}"),
         }
     });
+}
+
+/// A file in Kabar's data folder, readable by this user only (0600). The
+/// Mac's vault: see the module docs for why not the Keychain. The file
+/// holds JSON `null` once signed out, so a missing file means "never used",
+/// which is when a session the Keychain kept before is moved over, once.
+#[cfg(any(target_os = "macos", test))]
+pub struct FileVault {
+    path: std::path::PathBuf,
+    /// Where a session was kept before this vault existed.
+    legacy: Option<Box<dyn SessionVault>>,
+}
+
+#[cfg(any(target_os = "macos", test))]
+impl FileVault {
+    /// The Mac's vault, next to the database.
+    #[cfg(target_os = "macos")]
+    pub fn mac(data_dir: &std::path::Path) -> Self {
+        Self::new(data_dir.join(FILE_NAME), Some(Box::new(KeyringVault::new())))
+    }
+
+    pub fn new(path: std::path::PathBuf, legacy: Option<Box<dyn SessionVault>>) -> Self {
+        Self { path, legacy }
+    }
+
+    fn write(&self, session: Option<&Session>) -> bool {
+        let json = serde_json::to_vec(&session).unwrap_or_default();
+        write_private(&self.path, &json)
+            .map_err(|e| crate::diag::report!("saving the session failed: {e}"))
+            .is_ok()
+    }
+}
+
+#[cfg(any(target_os = "macos", test))]
+const FILE_NAME: &str = "cloud-session.json";
+
+#[cfg(any(target_os = "macos", test))]
+impl SessionVault for FileVault {
+    fn load(&self) -> Option<Session> {
+        match std::fs::read(&self.path) {
+            Ok(bytes) => serde_json::from_slice::<Option<Session>>(&bytes).ok().flatten(),
+            Err(e) if e.kind() == std::io::ErrorKind::NotFound => {
+                // First launch with this vault: move the Keychain's session
+                // over (the Keychain may ask one last time), then never read
+                // the Keychain again. Its copy goes stale at the next refresh.
+                let session = self.legacy.as_ref().and_then(|v| v.load());
+                self.write(session.as_ref());
+                session
+            }
+            Err(e) => {
+                crate::diag::report!("reading the session failed: {e}");
+                None
+            }
+        }
+    }
+
+    fn save(&self, session: &Session) -> bool {
+        self.write(Some(session))
+    }
+
+    fn clear(&self) {
+        self.write(None);
+    }
+}
+
+/// Replaces `path` with `bytes` in one step, readable by this user only.
+#[cfg(any(target_os = "macos", test))]
+fn write_private(path: &std::path::Path, bytes: &[u8]) -> std::io::Result<()> {
+    use std::io::Write;
+    let tmp = path.with_extension("tmp");
+    let _ = std::fs::remove_file(&tmp);
+    let mut options = std::fs::OpenOptions::new();
+    options.write(true).create_new(true);
+    #[cfg(unix)]
+    std::os::unix::fs::OpenOptionsExt::mode(&mut options, 0o600);
+    let mut file = options.open(&tmp)?;
+    file.write_all(bytes)?;
+    file.sync_all()?;
+    std::fs::rename(&tmp, path)
 }
 
 /// In memory only (tests, and the end-to-end check).
@@ -140,5 +225,82 @@ impl Auth {
     pub fn forget(self) -> Box<dyn SessionVault> {
         self.vault.clear();
         self.vault
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn session(refresh: &str) -> Session {
+        Session {
+            account_id: "acc".into(),
+            device_id: kabar_protocol::hlc::DeviceId("dev".into()),
+            email: None,
+            access_token: "a".into(),
+            access_expires_at_ms: 1,
+            refresh_token: refresh.into(),
+            refresh_expires_at_ms: 2,
+        }
+    }
+
+    /// Counts reads of the old store, to prove it is read once at most.
+    struct Legacy(Option<Session>, std::sync::Arc<std::sync::atomic::AtomicUsize>);
+
+    impl SessionVault for Legacy {
+        fn load(&self) -> Option<Session> {
+            self.1.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            self.0.clone()
+        }
+        fn save(&self, _: &Session) -> bool {
+            panic!("the old store is never written")
+        }
+        fn clear(&self) {
+            panic!("the old store is never written")
+        }
+    }
+
+    fn vault(
+        dir: &std::path::Path,
+        legacy: Option<Session>,
+    ) -> (FileVault, std::sync::Arc<std::sync::atomic::AtomicUsize>) {
+        let reads = std::sync::Arc::new(std::sync::atomic::AtomicUsize::new(0));
+        let v = FileVault::new(dir.join(FILE_NAME), Some(Box::new(Legacy(legacy, reads.clone()))));
+        (v, reads)
+    }
+
+    #[test]
+    fn file_vault_moves_the_keychain_session_over_once() {
+        let dir = tempfile::tempdir().unwrap();
+        let (v, reads) = vault(dir.path(), Some(session("old")));
+        assert_eq!(v.load(), Some(session("old")));
+        assert_eq!(v.load(), Some(session("old")));
+        assert!(v.save(&session("new")));
+        assert_eq!(v.load(), Some(session("new")));
+        assert_eq!(reads.load(std::sync::atomic::Ordering::SeqCst), 1);
+    }
+
+    #[test]
+    fn file_vault_stays_signed_out_without_asking_the_keychain_again() {
+        let dir = tempfile::tempdir().unwrap();
+        let (v, _) = vault(dir.path(), Some(session("old")));
+        assert!(v.save(&session("s")));
+        v.clear();
+        assert_eq!(v.load(), None);
+        // A fresh launch: the file says "signed out", so the Keychain isn't read.
+        let (v, reads) = vault(dir.path(), Some(session("old")));
+        assert_eq!(v.load(), None);
+        assert_eq!(reads.load(std::sync::atomic::Ordering::SeqCst), 0);
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn file_vault_is_readable_by_this_user_only() {
+        use std::os::unix::fs::PermissionsExt;
+        let dir = tempfile::tempdir().unwrap();
+        let (v, _) = vault(dir.path(), None);
+        assert!(v.save(&session("s")));
+        let mode = std::fs::metadata(dir.path().join(FILE_NAME)).unwrap().permissions().mode();
+        assert_eq!(mode & 0o777, 0o600);
     }
 }
