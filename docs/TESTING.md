@@ -1,7 +1,10 @@
 # Testing and coverage
 
-Kabar aims for **at least 90% line coverage** of the Rust workspace (Mohamed, 2026-11-04). CI's `coverage` job
-(`.github/workflows/ci.yml`) fails a PR whose line coverage is below `scripts/coverage-floor`. The floor only
+Kabar aims for **at least 90% line coverage** of the Rust workspace (Mohamed, 2026-11-04). The `Coverage` workflow
+(`.github/workflows/coverage.yml`) fails when main's line coverage is below `scripts/coverage-floor`. It runs on main
+every 4 hours (skipped when main has not moved) and by hand (Actions > Coverage > Run workflow), not on pull requests
+(Mohamed, 2026-11-04: it was the slowest PR check). Run `just coverage` before merging a PR that adds code; a red
+scheduled run is fixed in its own PR. The floor only
 goes up: it started at the coverage of main on 2026-11-04 (66%) and is raised as tests land, until it reaches 90.
 
 ## Running it
