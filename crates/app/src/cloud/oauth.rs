@@ -92,7 +92,7 @@ pub async fn google_id_token(client: &GoogleClient) -> Result<String, OAuthError
         .map_err(|_| OAuthError::TimedOut)??;
 
     let client = client.clone();
-    tokio::task::spawn_blocking(move || exchange(&client, &code, &pkce.verifier, &redirect_uri))
+    tokio::task::spawn_blocking(move || exchange(TOKEN_URL, &client, &code, &pkce.verifier, &redirect_uri))
         .await
         .map_err(|e| OAuthError::Failed(e.to_string()))?
 }
@@ -154,6 +154,7 @@ struct TokenResponse {
 }
 
 fn exchange(
+    token_url: &str,
     client: &GoogleClient,
     code: &str,
     verifier: &str,
@@ -174,7 +175,7 @@ fn exchange(
     if let Some(secret) = &client.client_secret {
         form.push(("client_secret", secret));
     }
-    let mut res = agent.post(TOKEN_URL).send_form(form).map_err(|e| OAuthError::Failed(e.to_string()))?;
+    let mut res = agent.post(token_url).send_form(form).map_err(|e| OAuthError::Failed(e.to_string()))?;
     if !res.status().is_success() {
         let body = res.body_mut().read_to_string().unwrap_or_default();
         return Err(OAuthError::Failed(format!("token exchange {}: {body}", res.status())));
@@ -266,5 +267,135 @@ mod tests {
         assert_eq!(decode("a%20b+c%2F"), "a b c/");
         assert_eq!(decode("100%"), "100%");
         assert_eq!(decode("%zz"), "%zz");
+    }
+
+    #[test]
+    fn redirect_parsing_names_every_failure() {
+        let other = "GET /?error=server_error&state=s1 HTTP/1.1\r\n";
+        assert_eq!(parse_redirect(other, "s1"), Some(Err(OAuthError::Failed("server_error".into()))));
+        let empty = "GET /?state=s1 HTTP/1.1\r\n";
+        assert_eq!(parse_redirect(empty, "s1"), Some(Err(OAuthError::Failed("no code".into()))));
+        assert_eq!(parse_redirect("POST /?code=x&state=s1 HTTP/1.1\r\n", "s1"), None);
+        assert_eq!(
+            OAuthError::Browser("no xdg-open".into()).to_string(),
+            "couldn't open the browser: no xdg-open"
+        );
+        // Two sign-ins never share a state or a verifier.
+        assert_ne!(random_state(), random_state());
+        assert_ne!(Pkce::new().verifier, Pkce::new().verifier);
+    }
+
+    /// Sends `requests` to the loopback listener one connection each, and
+    /// returns what the browser was shown for each.
+    async fn browser(port: u16, requests: &[&str]) -> Vec<String> {
+        let mut pages = Vec::new();
+        for r in requests {
+            let mut s = tokio::net::TcpStream::connect(("127.0.0.1", port)).await.unwrap();
+            s.write_all(r.as_bytes()).await.unwrap();
+            let mut page = String::new();
+            s.read_to_string(&mut page).await.unwrap();
+            pages.push(page);
+        }
+        pages
+    }
+
+    #[test]
+    fn the_loopback_listener_skips_strays_and_thanks_the_browser() {
+        let rt = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
+        rt.block_on(async {
+            let listener = TcpListener::bind("127.0.0.1:0").await.unwrap();
+            let port = listener.local_addr().unwrap().port();
+            let requests =
+                ["GET /favicon.ico HTTP/1.1\r\n\r\n", "GET /?code=4%2F0Ab&state=s1 HTTP/1.1\r\n\r\n"];
+            let (code, pages) = tokio::join!(wait_for_code(&listener, "s1"), browser(port, &requests));
+            assert_eq!(code, Ok("4/0Ab".into()));
+            assert!(pages[0].starts_with("HTTP/1.1 404"), "{}", pages[0]);
+            assert!(
+                pages[1].starts_with("HTTP/1.1 200") && pages[1].contains("go back to Kabar"),
+                "{}",
+                pages[1]
+            );
+            assert!(pages[1].contains("تمام، رجع لـ Kabar"));
+
+            // "Cancel" on Google's page: the browser hears to try again.
+            let listener = TcpListener::bind("127.0.0.1:0").await.unwrap();
+            let port = listener.local_addr().unwrap().port();
+            let requests = ["GET /?error=access_denied&state=s2 HTTP/1.1\r\n\r\n"];
+            let (code, pages) = tokio::join!(wait_for_code(&listener, "s2"), browser(port, &requests));
+            assert_eq!(code, Err(OAuthError::Cancelled));
+            assert!(pages[0].contains("Not signed in"), "{}", pages[0]);
+        });
+    }
+
+    /// A one-request token endpoint: answers `status` and `body`, and hands
+    /// back the form it received.
+    fn token_endpoint(status: u16, body: &'static str) -> (String, std::thread::JoinHandle<String>) {
+        use std::io::{Read, Write};
+        let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+        let url = format!("http://{}/token", listener.local_addr().unwrap());
+        let handle = std::thread::spawn(move || {
+            let (mut s, _) = listener.accept().unwrap();
+            let mut got = Vec::new();
+            let mut buf = [0u8; 4096];
+            loop {
+                let n = s.read(&mut buf).unwrap();
+                got.extend_from_slice(&buf[..n]);
+                let text = String::from_utf8_lossy(&got).to_string();
+                if let Some((head, rest)) = text.split_once("\r\n\r\n") {
+                    let len = head
+                        .lines()
+                        .find_map(|l| {
+                            l.to_ascii_lowercase()
+                                .strip_prefix("content-length:")
+                                .map(|v| v.trim().parse::<usize>().unwrap())
+                        })
+                        .unwrap_or(0);
+                    if rest.len() >= len {
+                        let reply = format!(
+                            "HTTP/1.1 {status} X\r\ncontent-type: application/json\r\ncontent-length: {}\r\nconnection: close\r\n\r\n{body}",
+                            body.len()
+                        );
+                        s.write_all(reply.as_bytes()).unwrap();
+                        return rest.to_string();
+                    }
+                }
+            }
+        });
+        (url, handle)
+    }
+
+    #[test]
+    fn the_code_is_exchanged_with_the_verifier_for_an_id_token() {
+        let client = GoogleClient { client_id: "123-desk".into(), client_secret: Some("shh".into()) };
+        let (url, sent) = token_endpoint(200, r#"{"id_token":"eyJhbGciOi.payload.sig","access_token":"x"}"#);
+        let token = exchange(&url, &client, "4/0Ab", "verifier-1", "http://127.0.0.1:5000").unwrap();
+        assert_eq!(token, "eyJhbGciOi.payload.sig");
+        let form = sent.join().unwrap();
+        for part in [
+            "code=4%2F0Ab",
+            "client_id=123-desk",
+            "code_verifier=verifier-1",
+            "grant_type=authorization_code",
+            "client_secret=shh",
+        ] {
+            assert!(form.contains(part), "{part} missing from {form}");
+        }
+
+        // Google refuses the code: its answer is kept for the log.
+        let public = GoogleClient { client_id: "123-desk".into(), client_secret: None };
+        let (url, sent) = token_endpoint(400, r#"{"error":"invalid_grant"}"#);
+        let err = exchange(&url, &public, "used", "v", "http://127.0.0.1:5000").unwrap_err();
+        assert!(
+            matches!(&err, OAuthError::Failed(m) if m.contains("400") && m.contains("invalid_grant")),
+            "{err:?}"
+        );
+        assert!(!sent.join().unwrap().contains("client_secret"));
+
+        // A 200 that isn't a token answer.
+        let (url, _sent) = token_endpoint(200, "<html>captive portal</html>");
+        assert!(matches!(
+            exchange(&url, &public, "c", "v", "http://127.0.0.1:5000"),
+            Err(OAuthError::Failed(_))
+        ));
     }
 }

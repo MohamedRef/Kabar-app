@@ -31,9 +31,28 @@ pub(super) const UPDATE_CSS: &str = r#"
 
 /// The updater's status, following its thread.
 pub fn use_update_status() -> Signal<Option<Status>> {
-    let mut status = use_signal(|| super::get().map(Updater::status));
+    use_status_of(updater())
+}
+
+/// Puts the update screens below it on another updater than the app's own
+/// (a test's). Provided as context.
+#[derive(Clone, Copy)]
+pub(super) struct UseUpdater(pub &'static Updater);
+
+/// The updater the update screens act on: the app's, unless a
+/// [`UseUpdater`] above says otherwise. Call it in a component or a handler.
+pub(super) fn updater() -> Option<&'static Updater> {
+    match try_consume_context::<UseUpdater>() {
+        Some(UseUpdater(u)) => Some(u),
+        None => super::get(),
+    }
+}
+
+/// [`use_update_status`] for one updater (tests follow their own).
+pub(super) fn use_status_of(updater: Option<&'static Updater>) -> Signal<Option<Status>> {
+    let mut status = use_signal(|| updater.map(Updater::status));
     use_future(move || async move {
-        let Some(u) = super::get() else { return };
+        let Some(u) = updater else { return };
         let mut rx = u.subscribe();
         while rx.changed().await.is_ok() {
             let now = rx.borrow_and_update().clone();
@@ -56,7 +75,7 @@ pub(super) fn texts(lang: UiLanguage) -> InstallTexts {
 
 /// Runs a blocking updater call off the UI thread.
 pub(super) fn work(f: impl FnOnce(&'static Updater) + Send + 'static) {
-    if let Some(u) = super::get() {
+    if let Some(u) = updater() {
         let _ = std::thread::Builder::new().name("kabar-update".into()).spawn(move || f(u));
     }
 }
@@ -174,10 +193,17 @@ pub fn summary(ui: &Ui, s: &Status) -> String {
 /// arrive.
 #[component]
 pub fn UpdatesCard() -> Element {
-    let ui = use_context::<Ui>();
-    let lang = ui.lang();
     let status = use_update_status();
     let Some(s) = status.read().clone() else { return rsx! {} };
+    rsx! { UpdatesCardFor { s } }
+}
+
+/// [`UpdatesCard`] for one status (the card follows the updater; tests
+/// render each state).
+#[component]
+pub(super) fn UpdatesCardFor(s: Status) -> Element {
+    let ui = use_context::<Ui>();
+    let lang = ui.lang();
     let version = env!("CARGO_PKG_VERSION");
     let commit = super::commit();
     let busy = s.checking_all
@@ -342,7 +368,7 @@ pub fn UpdatesCard() -> Element {
                                 role: "radio",
                                 aria_checked: if s.prefs.mode == m { "true" } else { "false" },
                                 onclick: move |_| {
-                                    if let Some(u) = super::get() {
+                                    if let Some(u) = updater() {
                                         u.set_mode(m);
                                     }
                                 },
@@ -363,7 +389,7 @@ pub fn UpdatesCard() -> Element {
                                 r#type: "checkbox",
                                 checked: s.prefs.notify,
                                 onchange: move |e: FormEvent| {
-                                    if let Some(u) = super::get() {
+                                    if let Some(u) = updater() {
                                         u.set_notify(e.checked());
                                     }
                                 },
@@ -504,11 +530,17 @@ fn open_install_permission() {
 /// short note until Kabar is reopened.
 #[component]
 pub fn UpdateBanner() -> Element {
+    let status = use_update_status();
+    let Some(s) = status.read().clone() else { return rsx! {} };
+    rsx! { UpdateBannerFor { s } }
+}
+
+/// [`UpdateBanner`] for one status.
+#[component]
+pub(super) fn UpdateBannerFor(s: Status) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
-    let status = use_update_status();
     let mut hide_content = use_signal(|| false);
-    let Some(s) = status.read().clone() else { return rsx! {} };
     let Some(offer) = s.banner().cloned() else {
         // New lessons downloaded over the air: a quiet note until reopened.
         if s.content_waiting.is_none() || hide_content() {
@@ -564,7 +596,7 @@ pub fn UpdateBanner() -> Element {
                 }
                 button {
                     onclick: move |_| {
-                        if let Some(u) = super::get() {
+                        if let Some(u) = updater() {
                             u.dismiss();
                         }
                     },
@@ -596,34 +628,63 @@ pub fn use_android_install(ui: Ui) {
         while let Ok(hidden) = eval.recv::<Option<bool>>().await {
             let Some(s) = status.peek().clone() else { continue };
             let lang = ui.lang();
-            match (&s.phase, hidden) {
-                (Phase::Installing(_), _) => {
+            let screen = *ui.screen.peek();
+            match install_beat(&s, hidden, screen, install_allowed, install_quietly) {
+                InstallBeat::Poll { back_in_front } => {
                     #[cfg(target_os = "android")]
                     if let Some(u) = super::get() {
                         // Back in front: a confirmation that arrived in the
                         // background (shown as a notification) opens now.
-                        if hidden == Some(false) {
+                        if back_in_front {
                             let _ = crate::platform::android::show_pending_confirm();
                         }
                         u.poll_install();
                     }
+                    let _ = back_in_front;
                 }
-                (Phase::NeedsPermission(_), Some(false)) if install_allowed() => {
+                InstallBeat::Install => {
                     let t = texts(lang);
                     work(move |u| u.install(t));
                 }
-                (Phase::Ready(o), Some(true)) if s.prefs.mode == Mode::Auto => {
-                    let calm = !matches!(*ui.screen.peek(), Screen::Lesson | Screen::LevelCheck);
-                    let tried = s.prefs.auto_failed.as_deref() == Some(o.key().as_str());
-                    if calm && !tried && install_quietly() {
-                        let t = texts(lang);
-                        work(move |u| u.install(t));
-                    }
-                }
-                _ => {}
+                InstallBeat::Wait => {}
             }
         }
     });
+}
+
+/// What the Android install follower does on one beat (a second passing,
+/// or Kabar going to or coming back from the background).
+#[derive(Debug, PartialEq)]
+pub(super) enum InstallBeat {
+    /// An install is under way: ask Android how it went.
+    Poll {
+        back_in_front: bool,
+    },
+    /// Start (or retry) the install.
+    Install,
+    Wait,
+}
+
+/// `hidden` is `Some` when the page was hidden or shown, `None` on a timer
+/// beat. `allowed` and `quietly` ask Android, only when the answer matters.
+pub(super) fn install_beat(
+    s: &Status,
+    hidden: Option<bool>,
+    screen: Screen,
+    allowed: impl FnOnce() -> bool,
+    quietly: impl FnOnce() -> bool,
+) -> InstallBeat {
+    match (&s.phase, hidden) {
+        (Phase::Installing(_), _) => InstallBeat::Poll { back_in_front: hidden == Some(false) },
+        // Back from Settings after allowing "Install unknown apps".
+        (Phase::NeedsPermission(_), Some(false)) if allowed() => InstallBeat::Install,
+        (Phase::Ready(o), Some(true)) if s.prefs.mode == Mode::Auto => {
+            let calm = !matches!(screen, Screen::Lesson | Screen::LevelCheck);
+            let tried = s.prefs.auto_failed.as_deref() == Some(o.key().as_str());
+            if calm && !tried && quietly() { InstallBeat::Install } else { InstallBeat::Wait }
+        }
+        _ => InstallBeat::Wait,
+    }
 }
 
 fn install_allowed() -> bool {
@@ -653,22 +714,8 @@ fn install_quietly() -> bool {
 /// the notification: the "what's new" sheet opens, and the notification's
 /// button starts the download or the install. Mounted once in the shell.
 pub fn use_update_notices(ui: Ui, nav: SettingsNav) {
-    let coach = try_use_context::<Coach>();
+    use_notice_context(ui, updater());
     let sheet = try_use_context::<UpdateSheetNav>();
-    use_effect(move || {
-        let lang = ui.lang();
-        let (quiet, offset) = match coach {
-            Some(c) => {
-                let quiet = c.profile.read().as_ref().map(|p| p.quiet_hours);
-                let offset = (*c.device_offset.read()).unwrap_or_else(|| c.offset());
-                (quiet, offset)
-            }
-            None => (None, 0),
-        };
-        if let Some(u) = super::get() {
-            u.set_notice_context(NoticeContext { lang, quiet, utc_offset_min: offset });
-        }
-    });
     use_future(move || async move {
         if !cfg!(target_os = "android") || super::get().is_none() {
             return;
@@ -695,16 +742,53 @@ pub fn use_update_notices(ui: Ui, nav: SettingsNav) {
                 None => nav.show(Some(Section::Updates)),
             }
             let lang = ui.lang();
-            match tap.as_str() {
-                "download" => work(Updater::download),
-                "install" => {
+            match tap_action(&tap) {
+                Some(TapAction::Download) => work(Updater::download),
+                Some(TapAction::Install) => {
                     let t = texts(lang);
                     work(move |u| u.install(t));
                 }
-                _ => {}
+                None => {}
             }
         }
     });
+}
+
+/// Tells `updater` the learner's language and quiet hours, and keeps them
+/// current (the background job words its notification with them).
+pub(super) fn use_notice_context(ui: Ui, updater: Option<&'static Updater>) {
+    let coach = try_use_context::<Coach>();
+    use_effect(move || {
+        let lang = ui.lang();
+        let (quiet, offset) = match coach {
+            Some(c) => {
+                let quiet = c.profile.read().as_ref().map(|p| p.quiet_hours);
+                let offset = (*c.device_offset.read()).unwrap_or_else(|| c.offset());
+                (quiet, offset)
+            }
+            None => (None, 0),
+        };
+        if let Some(u) = updater {
+            u.set_notice_context(NoticeContext { lang, quiet, utc_offset_min: offset });
+        }
+    });
+}
+
+/// What the update notification's button asked for.
+#[derive(Debug, PartialEq)]
+pub(super) enum TapAction {
+    Download,
+    Install,
+}
+
+/// The notification's tap: its button (`download`, `install`), or the body
+/// (anything else), which only opens the sheet.
+pub(super) fn tap_action(tap: &str) -> Option<TapAction> {
+    match tap {
+        "download" => Some(TapAction::Download),
+        "install" => Some(TapAction::Install),
+        _ => None,
+    }
 }
 
 /// Once the shell has drawn its first screen and Kabar has run calmly for

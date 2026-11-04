@@ -5,7 +5,6 @@
 //!
 //! Only handlers on the element itself run (no bubbling), which is how the
 //! screens attach them anyway: the button, input or card that is tapped.
-#![allow(dead_code)] // a kit: helpers land before every screen's tests use them
 
 use std::any::Any;
 use std::rc::Rc;
@@ -250,7 +249,7 @@ fn walk_template(
 /// navigation, the word index and the Teach inbox), around an in-memory
 /// store. Call at the top of a test app; returns the `Ui` and `Db`.
 pub(crate) fn provide(width: kabar_core::layout::WidthClass) -> (crate::Ui, crate::Db) {
-    use std::cell::RefCell;
+    use_page();
     crate::persistence::use_provide_saves();
     let db = use_context_provider(|| {
         crate::Db(Rc::new(RefCell::new(crate::store::Store::open_in_memory().unwrap())))
@@ -269,4 +268,122 @@ pub(crate) fn provide(width: kabar_core::layout::WidthClass) -> (crate::Ui, crat
     use_context_provider(|| crate::teach::TeachInbox(Signal::new(None)));
     crate::annotated::use_words(&db);
     (ui, db)
+}
+
+// ---------------------------------------------------------------------------
+// A scripted page: what the WebView's JavaScript would send back
+// ---------------------------------------------------------------------------
+
+use dioxus::document::{Document, Eval, EvalError, Evaluator};
+use std::cell::RefCell;
+use std::collections::VecDeque;
+
+/// Decides what a script sends back to Rust (`dioxus.send`), from its source.
+type Replies = Box<dyn FnMut(&str) -> Vec<serde_json::Value>>;
+
+thread_local! {
+    static REPLIES: RefCell<Option<Replies>> = const { RefCell::new(None) };
+    static SCRIPTS: RefCell<Vec<String>> = const { RefCell::new(Vec::new()) };
+    /// Scripts that stay open (key listeners, timers), by a piece of their
+    /// source, with what the page has sent them and who waits for it.
+    static LIVE: RefCell<Vec<Live>> = const { RefCell::new(Vec::new()) };
+}
+
+struct Live {
+    pattern: &'static str,
+    queue: Rc<RefCell<VecDeque<serde_json::Value>>>,
+    wakers: Rc<RefCell<Vec<std::task::Waker>>>,
+}
+
+/// Every script run since the test app started.
+pub(crate) fn scripts() -> Vec<String> {
+    SCRIPTS.with_borrow(Clone::clone)
+}
+
+/// What scripts send back right away in the next test app (none by
+/// default: as if the WebView answered nothing). Set before `Sim::new`.
+pub(crate) fn on_eval(f: impl FnMut(&str) -> Vec<serde_json::Value> + 'static) {
+    REPLIES.set(Some(Box::new(f)));
+}
+
+/// Scripts containing `pattern` stay open in the next test app, waiting for
+/// [`Sim::page_sends`]. Set before `Sim::new`.
+pub(crate) fn live(pattern: &'static str) {
+    LIVE.with_borrow_mut(|l| l.push(Live { pattern, queue: Rc::default(), wakers: Rc::default() }));
+}
+
+impl Sim {
+    /// The open script containing `pattern` sends `value` (a key press, a
+    /// timer tick, a drop on the wall).
+    pub fn page_sends(&mut self, pattern: &str, value: serde_json::Value) {
+        let wakers = LIVE.with_borrow(|l| {
+            let live = l.iter().find(|x| x.pattern == pattern).expect("not a live script");
+            live.queue.borrow_mut().push_back(value);
+            std::mem::take(&mut *live.wakers.borrow_mut())
+        });
+        for w in wakers {
+            w.wake();
+        }
+        self.settle();
+    }
+}
+
+struct Page {
+    owners: RefCell<Vec<dioxus::signals::Owner>>,
+}
+
+enum Scripted {
+    Once(VecDeque<serde_json::Value>),
+    Open(Rc<RefCell<VecDeque<serde_json::Value>>>, Rc<RefCell<Vec<std::task::Waker>>>),
+}
+
+impl Evaluator for Scripted {
+    fn send(&self, _: serde_json::Value) -> Result<(), EvalError> {
+        Ok(())
+    }
+    fn poll_recv(
+        &mut self,
+        cx: &mut std::task::Context<'_>,
+    ) -> std::task::Poll<Result<serde_json::Value, EvalError>> {
+        match self {
+            Scripted::Once(q) => std::task::Poll::Ready(q.pop_front().ok_or(EvalError::Finished)),
+            Scripted::Open(q, wakers) => match q.borrow_mut().pop_front() {
+                Some(v) => std::task::Poll::Ready(Ok(v)),
+                None => {
+                    wakers.borrow_mut().push(cx.waker().clone());
+                    std::task::Poll::Pending
+                }
+            },
+        }
+    }
+    fn poll_join(
+        &mut self,
+        _: &mut std::task::Context<'_>,
+    ) -> std::task::Poll<Result<serde_json::Value, EvalError>> {
+        std::task::Poll::Ready(Ok(serde_json::Value::Null))
+    }
+}
+
+impl Document for Page {
+    fn eval(&self, js: String) -> Eval {
+        let open = LIVE.with_borrow(|l| {
+            l.iter()
+                .find(|x| js.contains(x.pattern))
+                .map(|x| Scripted::Open(x.queue.clone(), x.wakers.clone()))
+        });
+        let scripted = open.unwrap_or_else(|| {
+            Scripted::Once(REPLIES.with_borrow_mut(|r| r.as_mut().map(|f| f(&js)).unwrap_or_default()).into())
+        });
+        SCRIPTS.with_borrow_mut(|s| s.push(js));
+        let owner = dioxus::signals::Owner::default();
+        let eval = Eval::new(owner.insert(Box::new(scripted) as Box<dyn Evaluator>));
+        self.owners.borrow_mut().push(owner);
+        eval
+    }
+}
+
+/// Provides the scripted page as the document (`sim::provide` does this).
+fn use_page() {
+    SCRIPTS.with_borrow_mut(Vec::clear);
+    use_context_provider(|| Rc::new(Page { owners: RefCell::default() }) as Rc<dyn Document>);
 }

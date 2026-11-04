@@ -252,7 +252,7 @@ pub(crate) mod tests {
     fn the_export_button_saves_a_file_and_says_where() {
         let dir = tempfile::tempdir().unwrap();
         EXPORT_DIR.with(|d| *d.borrow_mut() = Some(Ok(dir.path().join("Downloads"))));
-        let mut h = crate::testkit::Harness::new(card);
+        let mut h = crate::screen_kit::Harness::new(card);
         assert!(!h.html().contains("role=\"status\""), "nothing to report before the first export");
         h.click("Export everything");
         let html = h.html();
@@ -269,7 +269,7 @@ pub(crate) mod tests {
     #[test]
     fn a_failed_export_says_so_and_changes_nothing() {
         EXPORT_DIR.with(|d| *d.borrow_mut() = Some(Err("no Downloads folder".into())));
-        let mut h = crate::testkit::Harness::new(card);
+        let mut h = crate::screen_kit::Harness::new(card);
         h.click("Export everything");
         let html = h.html();
         assert!(

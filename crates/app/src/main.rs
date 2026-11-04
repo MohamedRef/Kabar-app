@@ -40,6 +40,8 @@ mod pron;
 mod reader;
 mod review;
 mod schedule;
+#[cfg(test)]
+mod screen_kit;
 mod screens;
 mod settings;
 mod sheet;
@@ -50,6 +52,8 @@ mod stats;
 mod store;
 mod studio;
 mod teach;
+#[cfg(test)]
+mod test_dom;
 #[cfg(test)]
 mod testkit;
 mod theme;

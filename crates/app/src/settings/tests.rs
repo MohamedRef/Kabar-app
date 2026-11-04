@@ -4,7 +4,7 @@
 
 use super::*;
 use crate::cloud::{CloudStatus, Command, Problem, SyncState};
-use crate::testkit::Harness;
+use crate::screen_kit::Harness;
 use crate::{Cloud, Db, Screen};
 use kabar_core::locale::UiLanguage;
 use kabar_core::settings::Settings;
@@ -727,7 +727,7 @@ fn the_devices_list_loads_and_fails_gently() {
 fn try_sync_saves_a_word_for_every_device() {
     let mut h = open(account(signed_in(SyncState::Live)));
     sent();
-    let field = || |t: &crate::testkit::Target| t.attr("placeholder") == Some("rumah");
+    let field = || |t: &crate::screen_kit::Target| t.attr("placeholder") == Some("rumah");
     h.type_into("input", field(), "  Rumah ");
     let form = h.find("submit", |_| true);
     h.form(&form, "");

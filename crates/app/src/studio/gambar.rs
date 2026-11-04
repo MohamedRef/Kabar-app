@@ -58,6 +58,11 @@ fn known_drawables(db: &Db) -> Vec<&'static str> {
         .collect()
 }
 
+#[cfg(test)]
+pub(super) fn known_drawables_for_tests(db: &Db) -> Vec<&'static str> {
+    known_drawables(db)
+}
+
 #[component]
 pub fn GambarScreen() -> Element {
     let ui = use_context::<Ui>();

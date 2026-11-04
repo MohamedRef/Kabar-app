@@ -114,15 +114,25 @@ fn shared<'a>(cell: &'a OnceLock<Updater>, data_dir: &Path) -> &'a Updater {
         let platform = dev_override("KABAR_UPDATE_PLATFORM")
             .and_then(|p| UpdatePlatform::parse(&p))
             .or_else(this_platform);
-        let off = if cfg!(debug_assertions) && feed_override.is_none() {
-            Some(Off::DevBuild)
-        } else if cfg!(target_os = "macos") && bundle::running_bundle().is_none() && feed_override.is_none() {
-            Some(Off::NotInBundle)
-        } else {
-            None
-        };
+        let outside_bundle = || cfg!(target_os = "macos") && bundle::running_bundle().is_none();
+        let off = off_reason(cfg!(debug_assertions), outside_bundle, feed_override.is_some());
         Updater::new(data_dir.join("updates"), BuildInfo::from_env(), platform, feed_override, off)
     })
+}
+
+/// Why this build doesn't update itself: a debug build, or a Mac app run
+/// outside its bundle (nothing to replace). A dev feed override turns
+/// updates on in both, for testing the updater.
+fn off_reason(debug: bool, outside_bundle: impl FnOnce() -> bool, feed_override: bool) -> Option<Off> {
+    if feed_override {
+        None
+    } else if debug {
+        Some(Off::DevBuild)
+    } else if outside_bundle() {
+        Some(Off::NotInBundle)
+    } else {
+        None
+    }
 }
 
 /// Opens the updater under the app's data directory (or takes the one the
@@ -393,3 +403,5 @@ fn write_json(dir: &Path, name: &str, value: &impl Serialize) -> Result<(), Stri
 
 #[cfg(test)]
 mod tests;
+#[cfg(test)]
+mod view_tests;

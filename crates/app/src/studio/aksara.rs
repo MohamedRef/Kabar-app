@@ -578,6 +578,25 @@ mod tests {
     }
 
     #[test]
+    fn every_part_has_its_own_name_in_both_arabic_voices() {
+        let set = AksaraSet::parse(STROKES_JSON).unwrap();
+        let ka = set.get("ka").unwrap();
+        for l in [UiLanguage::ArEg, UiLanguage::Ar] {
+            let mut lines: Vec<String> = [Part::Left, Part::Middle, Part::Right, Part::Above, Part::Below]
+                .into_iter()
+                .map(|part| match &issue_pieces(l, &Issue::Missing { stroke: 0, part }, ka)[..] {
+                    [Piece::Text(t)] => t.clone(),
+                    _ => panic!("one text piece"),
+                })
+                .collect();
+            assert!(lines.iter().all(|t| t.starts_with("الخط رقم 1 (")), "{lines:?}");
+            lines.dedup();
+            assert_eq!(lines.len(), 5, "{lines:?}");
+        }
+        assert_eq!(part_name(UiLanguage::En, Part::Left), "");
+    }
+
+    #[test]
     fn ink_points_undo_the_coordinate_scale() {
         let stroke = InkStroke {
             id: "a".into(),

@@ -285,7 +285,7 @@ mod tests {
     }
 
     use crate::play::{PlayNav, Route};
-    use crate::testkit::Harness;
+    use crate::screen_kit::Harness;
     use kabar_core::layout::WidthClass;
     use std::cell::Cell;
 
@@ -331,7 +331,7 @@ mod tests {
         h.read(|| *consume_context::<MoreNav>().0.peek())
     }
 
-    fn more_tab(h: &Harness) -> crate::testkit::Target {
+    fn more_tab(h: &Harness) -> crate::screen_kit::Target {
         h.find("click", |t| t.attr("class") == Some("nav-item nav-more"))
     }
 
