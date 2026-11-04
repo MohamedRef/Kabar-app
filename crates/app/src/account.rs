@@ -57,6 +57,22 @@ pub fn problem_msg(p: Problem) -> Msg {
     }
 }
 
+/// A failed password sign-in, said in the card itself: it isn't retried in
+/// the background, so "I'll keep trying" would promise a retry that never
+/// comes (#579).
+pub fn sign_in_problem_line(ui: &Ui, p: Problem) -> String {
+    match p {
+        Problem::Network => ui.t(Msg::ProblemSignInNetwork).to_string(),
+        Problem::Server => ui.t(Msg::ProblemSignInServer).to_string(),
+        p => problem_line(ui, p),
+    }
+}
+
+/// Set once a password sign-in was sent from this screen, so its outcome
+/// shows inside the sign-in card instead of under the card above it.
+#[derive(Clone, Copy)]
+struct PasswordTried(Signal<bool>);
+
 /// The sentence for a problem, with the wait when the username is locked.
 pub fn problem_line(ui: &Ui, p: Problem) -> String {
     match p {
@@ -139,6 +155,10 @@ pub fn AccountScreen() -> Element {
     let cloud = use_context::<Cloud>();
     let status = cloud.status.read().clone();
     let signed_in = status.email.is_some() || status.sync != SyncState::SignedOut;
+    let PasswordTried(tried) = use_context_provider(|| PasswordTried(Signal::new(false)));
+    // A password attempt's problem shows in its own card.
+    let card_problem = status.problem.filter(|_| signed_in || !tried());
+    let intro = if cfg!(target_arch = "wasm32") { Msg::CloudIntroWeb } else { Msg::CloudIntro };
 
     // Load the device list when this screen opens, and again after sign-in.
     let state = use_memo(move || cloud.status.read().sync);
@@ -156,8 +176,9 @@ pub fn AccountScreen() -> Element {
             } else if signed_in {
                 SignedIn { status: status.clone() }
             } else {
-                p { "{ui.t(Msg::CloudIntro)}" }
-                // The web app signs in with a username and password only (below).
+                // The web app signs in with a username and password only
+                // (below), so it doesn't point to a Google button (#578).
+                p { "{ui.t(intro)}" }
                 if cfg!(target_arch = "wasm32") {
                 } else if *cloud.signing_in.read() {
                     p { class: "muted", aria_live: "polite", "{ui.t(Msg::CloudSigningIn)}" }
@@ -165,7 +186,7 @@ pub fn AccountScreen() -> Element {
                     button { class: "primary", onclick: move |_| cloud.send(Command::SignInGoogle), "{ui.t(Msg::CloudSignIn)}" }
                 }
             }
-            if let Some(p) = status.problem {
+            if let Some(p) = card_problem {
                 p { class: "notice", role: "status", "{problem_line(&ui, p)}" }
             }
         }
@@ -232,6 +253,7 @@ pub fn ReturningSignIn() -> Element {
     let cloud = use_context::<Cloud>();
     let mut open = use_signal(|| false);
     let status = cloud.status.read().clone();
+    let PasswordTried(tried) = use_context_provider(|| PasswordTried(Signal::new(false)));
     let state = use_memo(move || cloud.status.read().sync);
     use_effect(move || {
         if state() == SyncState::Live && !ui.settings.peek().welcomed {
@@ -258,7 +280,7 @@ pub fn ReturningSignIn() -> Element {
                     }
                 }
                 PasswordSignIn {}
-                if let Some(p) = status.problem {
+                if let Some(p) = status.problem.filter(|_| !tried()) {
                     p { class: "notice", role: "status", "{problem_line(&ui, p)}" }
                 }
             }
@@ -274,7 +296,10 @@ fn PasswordSignIn() -> Element {
     let mut username = use_signal(String::new);
     let mut password = use_signal(String::new);
     let mut theirs = use_signal(|| false);
+    let local = use_signal(|| false);
+    let mut tried = try_use_context::<PasswordTried>().map_or(local, |t| t.0);
     let busy = *cloud.signing_in.read();
+    let problem = cloud.status.read().problem.filter(|_| tried() && !busy);
     let ready = !username.read().trim().is_empty() && !password.read().is_empty();
     rsx! {
         crate::ui::DivCard { class: "pw-card",
@@ -291,7 +316,8 @@ fn PasswordSignIn() -> Element {
                         password: Secret(password.peek().clone()),
                         remember: !*theirs.peek(),
                     });
-                    password.set(String::new());
+                    // The password stays typed, so a retry is one tap (#579).
+                    tried.set(true);
                 },
                 label { class: "field",
                     span { class: "label", "{ui.t(Msg::PwUsername)}" }
@@ -326,6 +352,9 @@ fn PasswordSignIn() -> Element {
                     button { class: "primary", r#type: "submit", disabled: !ready || busy,
                         if busy { "{ui.t(Msg::PwChecking)}" } else { "{ui.t(Msg::PwSignIn)}" }
                     }
+                }
+                if let Some(p) = problem {
+                    p { class: "field-error", role: "alert", "{sign_in_problem_line(&ui, p)}" }
                 }
             }
         }
@@ -623,6 +652,53 @@ mod tests {
     use super::*;
 
     const MIN: u64 = 60_000;
+
+    fn signed_out_account() -> crate::testkit::App {
+        use crate::testkit::{App, Setup};
+        let mut app = App::new(
+            || rsx! { AccountScreen {} },
+            Setup { sync: Some(SyncState::SignedOut), ..Setup::default() },
+        );
+        app.with(|| consume_context::<Cloud>().status.write().configured = true);
+        app.settle();
+        app
+    }
+
+    #[test]
+    fn a_failed_password_sign_in_says_so_in_its_card_and_keeps_the_password() {
+        use crate::testkit::visible;
+        let mut app = signed_out_account();
+        // A background sync problem (no attempt yet) stays under the cloud card.
+        app.with(|| consume_context::<Cloud>().status.write().problem = Some(Problem::Network));
+        app.settle();
+        let en = |m| crate::i18n::t(UiLanguage::En, m);
+        assert!(visible(&app.html()).contains(en(Msg::ProblemNetwork)));
+        assert!(!app.html().contains("role=\"alert\""));
+
+        app.with(|| consume_context::<Cloud>().status.write().problem = None);
+        let field = |app: &crate::testkit::App, kind: &str| {
+            app.targets("input").into_iter().find(|t| t.attr("type") == Some(kind)).expect(kind).el
+        };
+        let typed = |v: &str| -> Box<dyn std::any::Any> {
+            Box::new(dioxus::html::SerializedFormData::new(v.to_string(), Vec::new()))
+        };
+        let user = field(&app, "text");
+        app.dom.dispatch(user, "input", typed("mohamed"), true);
+        app.settle();
+        let pass = field(&app, "password");
+        app.dom.dispatch(pass, "input", typed("secret-pass"), true);
+        app.settle();
+        app.submit("pw-form");
+        // The engine answers: Kabar Cloud is unreachable (#579).
+        app.with(|| consume_context::<Cloud>().status.write().problem = Some(Problem::Network));
+        app.settle();
+        let html = app.html();
+        let text = visible(&html);
+        assert!(text.contains(en(Msg::ProblemSignInNetwork)), "{text}");
+        assert!(!text.contains(en(Msg::ProblemNetwork)), "no 'I'll keep trying' for a password sign-in");
+        assert!(html.contains("role=\"alert\""));
+        assert!(html.contains("value=\"secret-pass\""), "the typed password stays for a retry");
+    }
 
     #[test]
     fn relative_times_use_arabic_number_forms() {
