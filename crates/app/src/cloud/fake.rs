@@ -100,6 +100,10 @@ pub struct Knobs {
     pub socket_status: AtomicU64,
     /// Pushes are acked with every op rejected for good.
     pub reject_pushes: AtomicBool,
+    /// Sync handshakes are accepted over TCP and never answered.
+    pub stall_sockets: AtomicBool,
+    /// Open sockets go quiet for good: no replies, no pongs (half-open).
+    pub deaf_sockets: AtomicBool,
 }
 
 pub struct State {
@@ -518,6 +522,10 @@ async fn serve(mut stream: TcpStream, state: Arc<State>) {
     let mut parts = head.split_whitespace();
     let (method, path) = (parts.next().unwrap_or("").to_string(), parts.next().unwrap_or("").to_string());
     if path == "/v1/sync" {
+        if state.knobs.stall_sockets.load(Ordering::SeqCst) {
+            let _held = stream;
+            return std::future::pending().await;
+        }
         return socket(stream, state).await;
     }
     state.requests.lock().unwrap().push(format!("{method} {path}"));
@@ -586,7 +594,19 @@ async fn socket(stream: TcpStream, state: Arc<State>) {
         conn_id: format!("c{}", state.next.fetch_add(1, Ordering::SeqCst)),
         ready: false,
     };
-    while let Some(Ok(msg)) = source.next().await {
+    let deafened = async {
+        while !state.knobs.deaf_sockets.load(Ordering::SeqCst) {
+            tokio::time::sleep(std::time::Duration::from_millis(20)).await;
+        }
+    };
+    tokio::pin!(deafened);
+    loop {
+        let msg = tokio::select! {
+            msg = source.next() => msg,
+            // Stops reading (so nothing answers pings) and keeps the TCP open.
+            () = &mut deafened => std::future::pending().await,
+        };
+        let Some(Ok(msg)) = msg else { break };
         let Message::Text(text) = msg else { continue };
         if state.knobs.outdated.load(Ordering::SeqCst) && text.contains("\"hello\"") {
             let msg = ServerMsg::Error {

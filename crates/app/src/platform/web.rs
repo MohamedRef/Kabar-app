@@ -159,7 +159,8 @@ pub fn stop_saving(why: Trouble) {
     TROUBLE.with(|t| t.set(Some(why)));
 }
 
-fn owns_tab() -> bool {
+/// Whether this tab is the newest one, which alone saves and syncs.
+pub fn owns_tab() -> bool {
     TAB.with(|t| ls_get(OWNER_KEY).is_none_or(|owner| owner == *t.borrow()))
 }
 

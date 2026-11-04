@@ -577,3 +577,121 @@ fn a_username_and_password_can_be_set_used_locked_and_removed() {
     let s = late.wait_status("refused", |s| s.problem.is_some());
     assert_eq!((s.sync, s.problem), (SyncState::SignedOut, Some(Problem::WrongPassword)));
 }
+
+#[test]
+fn a_handshake_that_never_answers_holds_up_nothing_and_times_out() {
+    let cloud = FakeCloud::start();
+    cloud.state.knobs.stall_sockets.store(true, Ordering::SeqCst);
+    let dir = tempfile::tempdir().unwrap();
+    let mut phone = Device::start(dir.path(), "phone", Platform::Android, &cloud.url);
+    phone.send(Command::SignInWithIdToken(FakeCloud::id_token(EMAIL)));
+    phone.wait_status("connecting", |s| s.sync == SyncState::Connecting);
+
+    // AI and voices ask for a token while the handshake hangs (#563).
+    let asked = std::time::Instant::now();
+    assert!(access(&phone, false).is_some());
+    assert!(asked.elapsed() < Duration::from_millis(800), "the token waited for the socket");
+
+    let offline = phone.wait_status("timed out", |s| s.sync == SyncState::Offline);
+    assert_eq!(offline.problem, Some(Problem::Network));
+    cloud.state.knobs.stall_sockets.store(false, Ordering::SeqCst);
+    phone.wait_live();
+}
+
+#[test]
+fn a_socket_that_goes_quiet_is_dropped_and_its_writes_go_up_again() {
+    let cloud = FakeCloud::start();
+    let dir = tempfile::tempdir().unwrap();
+    let mut phone = signed_in(dir.path(), &cloud, "phone");
+
+    // Half-open (#564): the TCP stays up but nothing comes back.
+    cloud.state.knobs.deaf_sockets.store(true, Ordering::SeqCst);
+    std::thread::sleep(Duration::from_millis(100));
+    word(&mut phone, "id:rumah", "learning");
+    phone.wait_status("left live", |s| s.sync != SyncState::Live);
+    assert_eq!(cloud.row("word_status", "id:rumah"), None);
+
+    cloud.state.knobs.deaf_sockets.store(false, Ordering::SeqCst);
+    phone.wait_status("flushed after reconnect", |s| s.sync == SyncState::Live && s.pending == 0);
+    eventually("hub has the word", || cloud.row("word_status", "id:rumah").is_some());
+}
+
+#[test]
+fn signing_in_again_while_signed_in_keeps_the_new_session() {
+    let cloud = FakeCloud::start();
+    let dir = tempfile::tempdir().unwrap();
+    let vault = std::sync::Arc::new(MemoryVault::default());
+    let start = || {
+        Device::start_with(
+            dir.path(),
+            "mac",
+            Platform::Macos,
+            &cloud.url,
+            Box::new(SharedVault(vault.clone())),
+        )
+    };
+    let mut mac = start();
+    mac.send(Command::SignInWithIdToken(FakeCloud::id_token(EMAIL)));
+    mac.wait_live();
+    let first = vault.load().unwrap().refresh_token;
+
+    // The Welcome form signs in a second time over the live session (#565).
+    mac.send(Command::SignInWithIdToken(FakeCloud::id_token(EMAIL)));
+    eventually("the new session is kept", || vault.load().is_some_and(|s| s.refresh_token != first));
+    mac.wait_live();
+    drop(mac);
+
+    let mut again = start();
+    again.wait_live();
+}
+
+/// One vault several holders read and write, like two browser tabs'
+/// localStorage or one Mac's session file across launches.
+struct SharedVault(std::sync::Arc<MemoryVault>);
+
+impl SessionVault for SharedVault {
+    fn load(&self) -> Option<Session> {
+        self.0.load()
+    }
+    fn save(&self, s: &Session) -> bool {
+        self.0.save(s)
+    }
+    fn clear(&self) {
+        self.0.clear()
+    }
+}
+
+#[test]
+fn two_holders_of_one_vault_take_turns_refreshing_without_signing_out() {
+    use super::api::Api;
+    use super::session::Auth;
+    let cloud = FakeCloud::start();
+    // Every call refreshes, so each turn rotates the refresh token.
+    cloud.state.knobs.short_tokens.store(true, Ordering::SeqCst);
+    let rt = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
+    let api = Api::new(&cloud.url);
+    let device = kabar_protocol::cloud::DeviceInfo {
+        device_id: kabar_protocol::DeviceId("web".into()),
+        name: "Browser".into(),
+        model: None,
+        platform: Platform::Other,
+    };
+    let body = kabar_protocol::cloud::GoogleSignIn { id_token: FakeCloud::id_token(EMAIL), device };
+    let session = rt.block_on(api.sign_in_google(&body)).unwrap();
+    // Two tabs: one localStorage session, one device (#562).
+    let kept = std::sync::Arc::new(MemoryVault::default());
+    let mut a = Auth::new(session, Box::new(SharedVault(kept.clone()))).ok().unwrap();
+    let mut b = Auth::restore(Box::new(SharedVault(kept.clone())), super::engine::now_ms()).ok().unwrap();
+    for turn in 0..4 {
+        let tab = if turn % 2 == 0 { &mut a } else { &mut b };
+        let token = rt.block_on(tab.access_token(&api, super::engine::now_ms(), false));
+        assert!(token.is_ok(), "turn {turn}: {:?}", token.err().map(|e| e.to_string()));
+    }
+    // A refresh the other tab raced past is retried with its newer token.
+    let stale = kept.load().unwrap();
+    rt.block_on(b.access_token(&api, super::engine::now_ms(), true)).unwrap();
+    let mut c = Auth::new(stale.clone(), Box::new(SharedVault(kept.clone()))).ok().unwrap();
+    kept.save(b.session());
+    assert!(rt.block_on(c.access_token(&api, super::engine::now_ms(), true)).is_ok());
+    assert!(kept.load().is_some(), "still signed in");
+}
