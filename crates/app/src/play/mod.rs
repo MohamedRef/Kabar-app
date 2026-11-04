@@ -13,6 +13,8 @@ pub mod pairs;
 pub mod pasar;
 pub mod rupiah;
 pub mod speech;
+#[cfg(test)]
+mod ui_tests;
 pub mod unggah;
 
 use dioxus::prelude::*;
