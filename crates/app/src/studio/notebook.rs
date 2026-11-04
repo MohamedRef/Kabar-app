@@ -370,11 +370,12 @@ fn PageView(doc: InkDocument, focus: Option<[f32; 4]>) -> Element {
                 if groups.is_empty() {
                     p { class: "muted small", "{tr(l, T::NoLines)}" }
                 }
-                for g in groups.iter() {
+                for (g, saved) in groups.iter().map(|g| (g, transcripts.read().iter().find(|t| t.group == g.id).cloned())) {
                     LineRow {
-                        key: "{g.id}",
+                        // A new reading of the line refills its box.
+                        key: "{g.id}:{saved.as_ref().map_or(\"\", |t| t.text.as_str())}",
                         group: g.clone(),
-                        saved: transcripts.read().iter().find(|t| t.group == g.id).cloned(),
+                        saved,
                         lang,
                         on_focus: {
                             let handle = handle.clone();
