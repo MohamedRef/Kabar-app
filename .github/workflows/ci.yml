@@ -19,6 +19,10 @@ permissions:
 env:
   CARGO_TERM_COLOR: always
 
+# Line coverage is not checked here any more: it rebuilt the whole workspace
+# instrumented on every PR and was the slowest job. It runs on main every
+# 4 hours and by hand in coverage.yml (Mohamed, 2026-11-04).
+
 jobs:
   check:
     name: fmt, clippy, tests
@@ -166,31 +170,3 @@ jobs:
           npm install -g wrangler@4
       - name: End-to-end on local workerd (fake Google, two devices)
         run: node crates/server/tests/e2e.mjs
-
-  # Line coverage of the workspace must not drop below scripts/coverage-floor
-  # (docs/TESTING.md). The floor only goes up, towards 90%.
-  coverage:
-    name: Line coverage floor
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v5
-      - name: System libraries for the desktop WebView
-        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libxdo-dev libsoup-3.0-dev
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          components: llvm-tools-preview
-      - uses: Swatinem/rust-cache@v2
-        with:
-          key: coverage
-          save-if: ${{ github.ref == 'refs/heads/main' }}
-      - uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
-      - name: cargo-llvm-cov
-        run: cargo binstall -y --force cargo-llvm-cov@0.9.1
-      - name: Coverage against the floor
-        run: scripts/coverage.sh --lcov lcov.info
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: coverage-lcov
-          path: lcov.info
-          if-no-files-found: ignore

@@ -1,0 +1,71 @@
+name: Coverage
+
+# Line coverage of the workspace must not drop below scripts/coverage-floor
+# (docs/TESTING.md). The floor only goes up, towards 90%.
+#
+# Mohamed, 2026-11-04: not on every pull request any more. It rebuilt the
+# whole workspace instrumented, was the slowest CI job and held a runner
+# that other PRs queued behind. It runs on main every 4 hours (skipped when
+# main has not moved since the last green run) and by hand
+# (Actions > Coverage > Run workflow). A red run is fixed in its own PR.
+on:
+  schedule:
+    - cron: "41 */4 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: coverage
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  coverage:
+    name: Line coverage floor
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Main changed since the last coverage run?
+        id: changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          last="$(gh api "repos/${{ github.repository }}/actions/workflows/coverage.yml/runs?branch=main&status=success&per_page=1" --jq '.workflow_runs[0].head_sha // ""')"
+          if [ "${{ github.event_name }}" = schedule ] && [ "$last" = "${{ github.sha }}" ]; then
+            echo "main is still at $last, already checked."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v5
+        if: steps.changed.outputs.run == 'true'
+      - name: System libraries for the desktop WebView
+        if: steps.changed.outputs.run == 'true'
+        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libxdo-dev libsoup-3.0-dev
+      - uses: dtolnay/rust-toolchain@stable
+        if: steps.changed.outputs.run == 'true'
+        with:
+          components: llvm-tools-preview
+      - uses: Swatinem/rust-cache@v2
+        if: steps.changed.outputs.run == 'true'
+        with:
+          key: coverage
+          save-if: ${{ github.ref == 'refs/heads/main' }}
+      - uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
+        if: steps.changed.outputs.run == 'true'
+      - name: cargo-llvm-cov
+        if: steps.changed.outputs.run == 'true'
+        run: cargo binstall -y --force cargo-llvm-cov@0.9.1
+      - name: Coverage against the floor
+        if: steps.changed.outputs.run == 'true'
+        run: scripts/coverage.sh --lcov lcov.info
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.changed.outputs.run == 'true'
+        with:
+          name: coverage-lcov
+          path: lcov.info
+          if-no-files-found: ignore

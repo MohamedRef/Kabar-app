@@ -924,20 +924,4 @@ fn PersonaText(
 }
 
 #[cfg(test)]
-mod tests {
-    use super::*;
-
-    fn languages(focus: LanguageFocus) -> Vec<bool> {
-        personas_for(focus).into_iter().flatten().map(is_javanese).collect()
-    }
-
-    #[test]
-    fn the_focus_language_leads_the_partner_list() {
-        let id = languages(LanguageFocus::Indonesian);
-        assert!(id.contains(&true) && !id[0], "Indonesian partners first");
-        assert!(id.windows(2).all(|w| w[0] <= w[1]), "then every Javanese one");
-        let jv = languages(LanguageFocus::Javanese);
-        assert!(jv[0] && jv.windows(2).all(|w| w[0] >= w[1]));
-        assert_eq!(languages(LanguageFocus::Both), id);
-    }
-}
+mod tests;

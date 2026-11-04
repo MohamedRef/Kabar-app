@@ -79,6 +79,7 @@ fn yes() -> bool {
     true
 }
 
+#[derive(Debug, PartialEq, Eq)]
 pub struct PackStore {
     audio: PathBuf,
     packs: PathBuf,
@@ -283,9 +284,8 @@ fn get(url: &str) -> Result<Vec<u8>, String> {
     Ok(bytes)
 }
 
-/// Fetches the release's `index.json` and remembers it.
-pub fn refresh_index(store: &PackStore) -> Result<PackIndex, String> {
-    let base = base_url().ok_or(NOT_CONFIGURED)?;
+/// Fetches the `index.json` of the release at `base` and remembers it.
+fn refresh_index_from(store: &PackStore, base: &str) -> Result<PackIndex, String> {
     let index: PackIndex =
         serde_json::from_slice(&get(&format!("{base}/index.json"))?).map_err(|e| format!("index: {e}"))?;
     if index.format > PACK_FORMAT {
@@ -297,8 +297,9 @@ pub fn refresh_index(store: &PackStore) -> Result<PackIndex, String> {
 
 pub const NOT_CONFIGURED: &str = "no KABAR_PACKS_URL in this build";
 
-/// Downloads and installs one pack (by id, from the newest index).
-pub fn download(store: &PackStore, id: &str) -> Result<PackManifest, String> {
+/// Downloads and installs one pack (by id, from the newest index) from the
+/// release at `base` (`None`: not configured).
+fn download_from(store: &PackStore, base: Option<&str>, id: &str) -> Result<PackManifest, String> {
     {
         let mut busy = IN_FLIGHT.lock().map_err(|e| e.to_string())?;
         if !busy.insert(id.to_owned()) {
@@ -306,7 +307,7 @@ pub fn download(store: &PackStore, id: &str) -> Result<PackManifest, String> {
         }
     }
     let result = (|| {
-        let base = base_url().ok_or(NOT_CONFIGURED)?;
+        let base = base.ok_or(NOT_CONFIGURED)?;
         let index = store.index();
         let row = index.get(id).ok_or("no such pack")?;
         if !row.downloadable() {
@@ -349,17 +350,17 @@ pub fn jobs() -> BTreeMap<String, Job> {
     out
 }
 
-/// Queues a pack (again, after a failure) and makes sure the queue runs.
-pub fn enqueue(id: &str) {
-    let Some(store) = store() else { return };
+/// Queues a pack for `store` (again, after a failure) and makes sure the
+/// queue runs, downloading from the release at `base`.
+fn enqueue_in(store: &'static PackStore, base: Option<String>, id: &str) {
     queue(&JOBS, id);
     if !WORKER.swap(true, std::sync::atomic::Ordering::SeqCst) {
         let started = std::thread::Builder::new().name("kabar-packs".into()).spawn(move || {
-            run_queue(&JOBS, |id| download(store, id).map(drop));
+            run_queue(&JOBS, |id| download_from(store, base.as_deref(), id).map(drop));
             WORKER.store(false, std::sync::atomic::Ordering::SeqCst);
             // Asked for while the worker was finishing: run again.
             if JOBS.lock().is_ok_and(|j| j.iter().any(|(_, s)| *s == Job::Queued)) {
-                enqueue_again();
+                enqueue_again(store, base);
             }
         });
         if started.is_err() {
@@ -368,11 +369,11 @@ pub fn enqueue(id: &str) {
     }
 }
 
-fn enqueue_again() {
+fn enqueue_again(store: &'static PackStore, base: Option<String>) {
     let next =
         JOBS.lock().ok().and_then(|j| j.iter().find(|(_, s)| *s == Job::Queued).map(|(id, _)| id.clone()));
     if let Some(id) = next {
-        enqueue(&id);
+        enqueue_in(store, base, &id);
     }
 }
 
@@ -414,7 +415,8 @@ fn run_queue(jobs: &Mutex<Vec<(String, Job)>>, mut fetch: impl FnMut(&str) -> Re
 /// lesson plays with the device's own voice meanwhile.
 pub fn prefetch_for(lesson_id: &str) {
     let Some(store) = store() else { return };
-    if base_url().is_none() || !store.auto() {
+    let Some(base) = base_url() else { return };
+    if !store.auto() {
         return;
     }
     let lesson_id = lesson_id.to_owned();
@@ -422,13 +424,19 @@ pub fn prefetch_for(lesson_id: &str) {
         if crate::platform::metered_network() {
             return;
         }
-        let index = refresh_index(store).unwrap_or_else(|_| store.index());
-        for id in packs::prefetch(&index, &lesson_id, &store.installed_versions()) {
-            if let Err(e) = download(store, &id) {
-                crate::diag::report!("prefetching {id} failed: {e}");
-            }
-        }
+        prefetch_from(store, &base, &lesson_id);
     });
+}
+
+/// The packs of `lesson_id`'s unit and the next one, from `base`, after a
+/// fresh look at the index (the one already known when that fails).
+fn prefetch_from(store: &PackStore, base: &str, lesson_id: &str) {
+    let index = refresh_index_from(store, base).unwrap_or_else(|_| store.index());
+    for id in packs::prefetch(&index, lesson_id, &store.installed_versions()) {
+        if let Err(e) = download_from(store, Some(base), &id) {
+            crate::diag::report!("prefetching {id} failed: {e}");
+        }
+    }
 }
 
 /// Over the air with the app update check: refreshes the index and
@@ -438,13 +446,19 @@ pub fn prefetch_for(lesson_id: &str) {
 /// refreshed. Blocking; called from the updater's thread.
 pub fn update_installed(by_hand: bool) -> usize {
     let Some(store) = store() else { return 0 };
-    if base_url().is_none() || !(by_hand || store.auto()) || crate::platform::metered_network() {
+    let Some(base) = base_url() else { return 0 };
+    if !(by_hand || store.auto()) || crate::platform::metered_network() {
         return 0;
     }
-    let Ok(index) = refresh_index(store) else { return 0 };
+    update_installed_from(store, &base)
+}
+
+/// Re-downloads every installed pack the release at `base` has newer.
+fn update_installed_from(store: &PackStore, base: &str) -> usize {
+    let Ok(index) = refresh_index_from(store, base) else { return 0 };
     let mut done = 0;
     for id in packs::outdated(&index, &store.installed_versions()) {
-        match download(store, &id) {
+        match download_from(store, Some(base), &id) {
             Ok(_) => done += 1,
             Err(e) => crate::diag::report!("updating pack {id} failed: {e}"),
         }
@@ -456,13 +470,17 @@ pub fn update_installed(by_hand: bool) -> usize {
 /// `<audio>` (works the same on the Mac and Android, no file server needed).
 /// `voice` is the dialogue speaker's; otherwise the language's narrator.
 pub fn clip_url(text: &str, language: &str, voice: Option<Voice>) -> Option<String> {
-    let path = store()?.clip(voice.unwrap_or_else(|| default_voice(language)), text)?;
+    clip_url_in(store()?, text, language, voice)
+}
+
+fn clip_url_in(store: &PackStore, text: &str, language: &str, voice: Option<Voice>) -> Option<String> {
+    let path = store.clip(voice.unwrap_or_else(|| default_voice(language)), text)?;
     let bytes = fs::read(path).ok()?;
     Some(format!("data:{AUDIO_MIME};base64,{}", base64::engine::general_purpose::STANDARD.encode(bytes)))
 }
 
 #[cfg(test)]
-mod tests {
+pub(crate) mod tests {
     use kabar_core::packs::{PackInput, build_manifest, refresh_totals, summary};
     use kabar_protocol::lesson::LessonContent;
 
@@ -490,7 +508,12 @@ mod tests {
 
     /// A manifest with fake clips, its index row and its tar (the layout
     /// `kabar-tools packs bundle` writes).
-    fn pack() -> (PackManifest, Vec<Vec<u8>>, PackSummary, Vec<u8>) {
+    pub(super) fn pack() -> (PackManifest, Vec<Vec<u8>>, PackSummary, Vec<u8>) {
+        pack_v(1)
+    }
+
+    /// [`pack`] at `version`.
+    pub(super) fn pack_v(version: u32) -> (PackManifest, Vec<Vec<u8>>, PackSummary, Vec<u8>) {
         let l = lesson();
         let mut m = build_manifest(
             "id",
@@ -498,6 +521,7 @@ mod tests {
             &[PackInput { id: "bipa1.u01.l01", yaml_sha256: "x".into(), lesson: &l }],
             None,
         );
+        m.version = version;
         let clips: Vec<Vec<u8>> = (0..m.audio.len()).map(|i| format!("clip {i}").into_bytes()).collect();
         for (a, bytes) in m.audio.iter_mut().zip(&clips) {
             a.sha256 = Some(sha256_hex(bytes));
@@ -585,6 +609,22 @@ mod tests {
         assert!(store.auto());
         store.set_auto(false).unwrap();
         assert!(!store.auto());
+        // Prefs saved before the switch existed (or damaged) mean on.
+        fs::write(dir.path().join("packs/prefs.json"), "{}").unwrap();
+        assert!(store.auto());
+        fs::write(dir.path().join("packs/prefs.json"), "not json").unwrap();
+        assert!(store.auto());
+    }
+
+    #[test]
+    fn without_a_pack_store_nothing_is_fetched() {
+        // The app opens its store at start; before that (and in these
+        // tests) prefetching and updating quietly do nothing.
+        assert!(store().is_none());
+        assert_eq!(update_installed(true), 0);
+        prefetch_for("bipa1.u01.l01");
+        assert_eq!(clip_url("Selamat pagi", "id", None), None);
+        assert!(jobs().is_empty() || jobs().values().all(|j| *j != Job::Queued));
     }
 
     #[test]
@@ -594,5 +634,269 @@ mod tests {
         assert!(index.packs.iter().any(|p| p.id == "jv/j1.u01"));
         let dir = tempfile::tempdir().unwrap();
         assert_eq!(PackStore::new(dir.path()).index(), index);
+    }
+
+    // ------------------------------------------------------- over the network
+
+    /// Serves `files` over plain HTTP on localhost (404 for anything else),
+    /// and logs each path asked for.
+    pub(super) fn serve(files: BTreeMap<String, Vec<u8>>) -> (String, std::sync::Arc<Mutex<Vec<String>>>) {
+        use std::io::{BufRead as _, BufReader, Write as _};
+        let log = std::sync::Arc::new(Mutex::new(Vec::new()));
+        let seen = log.clone();
+        let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+        let url = format!("http://{}", listener.local_addr().unwrap());
+        std::thread::spawn(move || {
+            for stream in listener.incoming().flatten() {
+                let mut reader = BufReader::new(stream);
+                let mut line = String::new();
+                if reader.read_line(&mut line).is_err() {
+                    continue;
+                }
+                let path = line.split_whitespace().nth(1).unwrap_or("/").trim_start_matches('/').to_owned();
+                loop {
+                    let mut h = String::new();
+                    if reader.read_line(&mut h).is_err() || h.trim().is_empty() {
+                        break;
+                    }
+                }
+                seen.lock().unwrap().push(path.clone());
+                let mut stream = reader.into_inner();
+                let _ = match files.get(&path) {
+                    Some(body) => stream
+                        .write_all(
+                            format!(
+                                "HTTP/1.1 200 OK\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
+                                body.len()
+                            )
+                            .as_bytes(),
+                        )
+                        .and_then(|()| stream.write_all(body)),
+                    None => stream.write_all(
+                        b"HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\nConnection: close\r\n\r\n",
+                    ),
+                };
+            }
+        });
+        (url, log)
+    }
+
+    /// Downloads share `IN_FLIGHT` and the job queue: tests that download
+    /// take turns, so one never sees another's "already downloading".
+    pub(super) fn one_at_a_time() -> std::sync::MutexGuard<'static, ()> {
+        static TURN: Mutex<()> = Mutex::new(());
+        TURN.lock().unwrap_or_else(|e| e.into_inner())
+    }
+
+    fn index_of(rows: Vec<PackSummary>) -> PackIndex {
+        PackIndex { format: PACK_FORMAT, packs: rows }
+    }
+
+    /// A release holding `rows` as its index and each `(file, tar)`.
+    pub(super) fn release(
+        rows: Vec<PackSummary>,
+        tars: &[(&str, &[u8])],
+    ) -> (String, std::sync::Arc<Mutex<Vec<String>>>) {
+        let mut files = BTreeMap::new();
+        files.insert("index.json".to_owned(), serde_json::to_vec(&index_of(rows)).unwrap());
+        for (name, tar) in tars {
+            files.insert((*name).to_owned(), tar.to_vec());
+        }
+        serve(files)
+    }
+
+    fn store_in(dir: &tempfile::TempDir) -> PackStore {
+        PackStore::new(dir.path())
+    }
+
+    #[test]
+    fn a_fetched_index_is_remembered_and_wins_over_the_built_in_one() {
+        let dir = tempfile::tempdir().unwrap();
+        let store = store_in(&dir);
+        let (_, _, row, tar) = pack();
+        let (url, log) = release(vec![row.clone()], &[(&row.file, &tar)]);
+        let index = refresh_index_from(&store, &url).unwrap();
+        assert_eq!(index.packs, vec![row.clone()]);
+        assert_eq!(store.index(), index, "the release's index, not the built-in one");
+        assert_eq!(*log.lock().unwrap(), ["index.json"]);
+        // A fetched index with nothing in it never hides the built-in units.
+        let (empty, _) = release(Vec::new(), &[]);
+        refresh_index_from(&store, &empty).unwrap();
+        assert_eq!(store.index(), embedded_index());
+    }
+
+    #[test]
+    fn index_failures_say_what_went_wrong() {
+        let dir = tempfile::tempdir().unwrap();
+        let store = store_in(&dir);
+        // Nothing published there.
+        let (url, _) = serve(BTreeMap::new());
+        assert!(refresh_index_from(&store, &url).unwrap_err().ends_with("HTTP 404"));
+        // Not an index.
+        let mut files = BTreeMap::new();
+        files.insert("index.json".to_owned(), b"<html>".to_vec());
+        let (url, _) = serve(files);
+        assert!(refresh_index_from(&store, &url).unwrap_err().starts_with("index:"));
+        // Made for a newer app: refused, and not remembered.
+        let newer = PackIndex { format: PACK_FORMAT + 1, packs: vec![pack().2] };
+        let mut files = BTreeMap::new();
+        files.insert("index.json".to_owned(), serde_json::to_vec(&newer).unwrap());
+        let (url, _) = serve(files);
+        assert_eq!(refresh_index_from(&store, &url).unwrap_err(), "the packs need a newer Kabar");
+        assert_eq!(store.index(), embedded_index());
+        // Nobody listening at all.
+        let closed = {
+            let l = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+            format!("http://{}", l.local_addr().unwrap())
+        };
+        assert!(refresh_index_from(&store, &closed).unwrap_err().starts_with("network:"));
+    }
+
+    #[test]
+    fn a_download_is_checked_then_installed_and_plays() {
+        let _turn = one_at_a_time();
+        let dir = tempfile::tempdir().unwrap();
+        let store = store_in(&dir);
+        let (m, clips, row, tar) = pack();
+        let (url, log) = release(vec![row.clone()], &[(&row.file, &tar)]);
+        refresh_index_from(&store, &url).unwrap();
+        let installed = download_from(&store, Some(&url), &row.id).unwrap();
+        assert_eq!(installed, m);
+        assert_eq!(store.installed_versions().get(&row.id), Some(&1));
+        assert_eq!(log.lock().unwrap().last().map(String::as_str), Some(row.file.as_str()));
+        // The Lesson Player gets the clip as a data URL for <audio>.
+        let first = &m.audio[0];
+        let url = clip_url_in(&store, &first.text, "id", Some(first.voice)).unwrap();
+        let b64 = base64::engine::general_purpose::STANDARD.encode(&clips[0]);
+        assert_eq!(url, format!("data:{AUDIO_MIME};base64,{b64}"));
+        assert_eq!(clip_url_in(&store, "a line no pack has", "id", None), None);
+        // Nothing is left running.
+        assert!(!jobs().contains_key(&row.id));
+    }
+
+    #[test]
+    fn downloads_that_cannot_happen_are_refused_plainly() {
+        let _turn = one_at_a_time();
+        let dir = tempfile::tempdir().unwrap();
+        let store = store_in(&dir);
+        let (_, _, row, tar) = pack();
+        let (url, _) = release(vec![row.clone()], &[(&row.file, &tar)]);
+        // A build without a packs address.
+        assert_eq!(download_from(&store, None, &row.id).unwrap_err(), NOT_CONFIGURED);
+        // A unit the index doesn't list.
+        refresh_index_from(&store, &url).unwrap();
+        assert_eq!(download_from(&store, Some(&url), "id/nope").unwrap_err(), "no such pack");
+        // Listed, but its audio isn't bundled yet.
+        let waiting = PackSummary { file_sha256: None, ..row.clone() };
+        let (url2, log) = release(vec![waiting], &[]);
+        refresh_index_from(&store, &url2).unwrap();
+        assert_eq!(
+            download_from(&store, Some(&url2), &row.id).unwrap_err(),
+            "this unit's audio isn't published yet"
+        );
+        assert_eq!(*log.lock().unwrap(), ["index.json"], "no tar asked for");
+        // Announced but missing from the release.
+        let (url3, _) = release(vec![row.clone()], &[]);
+        refresh_index_from(&store, &url3).unwrap();
+        let err = download_from(&store, Some(&url3), &row.id).unwrap_err();
+        assert!(err.ends_with("HTTP 404"), "{err}");
+        // The same pack already on its way (a prefetch and a tap).
+        IN_FLIGHT.lock().unwrap().insert(row.id.clone());
+        assert_eq!(jobs().get(&row.id), Some(&Job::Downloading), "shown as downloading");
+        assert_eq!(download_from(&store, Some(&url), &row.id).unwrap_err(), "already downloading");
+        IN_FLIGHT.lock().unwrap().remove(&row.id);
+        assert!(store.installed().is_empty());
+    }
+
+    #[test]
+    fn opening_a_lesson_fetches_its_unit_and_updates_bring_new_versions() {
+        let _turn = one_at_a_time();
+        let dir = tempfile::tempdir().unwrap();
+        let store = store_in(&dir);
+        let (_, _, row, tar) = pack();
+        let (url, log) = release(vec![row.clone()], &[(&row.file, &tar)]);
+        prefetch_from(&store, &url, "bipa1.u01.l02");
+        assert_eq!(store.installed_versions().get(&row.id), Some(&1));
+        assert_eq!(*log.lock().unwrap(), ["index.json".to_owned(), row.file.clone()]);
+        // Installed and current: nothing more to fetch or update.
+        prefetch_from(&store, &url, "bipa1.u01.l03");
+        assert_eq!(log.lock().unwrap().len(), 3, "only the index again");
+        assert_eq!(update_installed_from(&store, &url), 0);
+
+        // Version 2 on the release: the update re-downloads it.
+        let (_, _, row2, tar2) = pack_v(2);
+        let (url2, _) = release(vec![row2.clone()], &[(&row2.file, &tar2)]);
+        assert_eq!(update_installed_from(&store, &url2), 1);
+        assert_eq!(store.installed_versions().get(&row.id), Some(&2));
+        // An index that can't be read updates nothing.
+        let (gone, _) = serve(BTreeMap::new());
+        assert_eq!(update_installed_from(&store, &gone), 0);
+        // A broken tar on the release: counted as not updated, old pack kept.
+        let (_, _, row3, _) = pack_v(3);
+        let (url3, _) = release(vec![row3.clone()], &[(&row3.file, b"not a tar")]);
+        assert_eq!(update_installed_from(&store, &url3), 0);
+        assert_eq!(store.installed_versions().get(&row.id), Some(&2));
+        // With no index at all, prefetch falls back to the one it has.
+        prefetch_from(&store, &gone, "bipa1.u01.l01");
+        assert_eq!(store.installed_versions().get(&row.id), Some(&2));
+    }
+
+    #[test]
+    fn packs_with_odd_contents_are_refused() {
+        let dir = tempfile::tempdir().unwrap();
+        let store = store_in(&dir);
+        let (m, clips, row, _) = pack();
+        let signed = |tar: Vec<u8>| (PackSummary { file_sha256: Some(sha256_hex(&tar)), ..row.clone() }, tar);
+        // No manifest in the tar.
+        let mut b = tar::Builder::new(Vec::new());
+        let mut h = tar::Header::new_ustar();
+        h.set_size(1);
+        h.set_mode(0o644);
+        b.append_data(&mut h, "readme.txt", &b"x"[..]).unwrap();
+        let (r, t) = signed(b.into_inner().unwrap());
+        assert_eq!(store.install(&r, &t).unwrap_err(), "the pack has no manifest");
+        // A clip the manifest doesn't list.
+        let tar = {
+            let mut b = tar::Builder::new(Vec::new());
+            let mut add = |name: &str, data: &[u8]| {
+                let mut h = tar::Header::new_ustar();
+                h.set_size(data.len() as u64);
+                h.set_mode(0o644);
+                b.append_data(&mut h, name, data).unwrap();
+            };
+            add("manifest.json", &serde_json::to_vec(&m).unwrap());
+            add("audio/stray.mp3", b"stray");
+            b.into_inner().unwrap()
+        };
+        let (r, t) = signed(tar);
+        assert!(store.install(&r, &t).unwrap_err().contains("isn't in the manifest"));
+        // A clip the manifest lists but the tar lacks.
+        let short: Vec<Vec<u8>> = clips[..clips.len() - 1].to_vec();
+        let (r, t) = signed(tar_of(&m, &short));
+        assert!(store.install(&r, &t).unwrap_err().ends_with("is missing"));
+        assert!(store.installed().is_empty());
+    }
+
+    #[test]
+    fn removing_one_pack_keeps_clips_another_still_needs() {
+        let dir = tempfile::tempdir().unwrap();
+        let store = store_in(&dir);
+        let (m, _, row, tar) = pack();
+        store.install(&row, &tar).unwrap();
+        // A second unit's manifest sharing the first clip.
+        let mut other = m.clone();
+        other.id = "id/bipa1.u02".into();
+        other.unit = "bipa1.u02".into();
+        other.audio.truncate(1);
+        fs::write(store.manifest_path("bipa1.u02"), serde_json::to_vec(&other).unwrap()).unwrap();
+        store.remove("bipa1.u01").unwrap();
+        assert!(store.clip(m.audio[0].voice, &m.audio[0].text).is_some(), "still needed by bipa1.u02");
+        assert!(m.audio[1..].iter().all(|a| store.clip(a.voice, &a.text).is_none()));
+        // Removing what isn't there is fine.
+        store.remove("bipa9.u09").unwrap();
+        // The release address: plain https by default.
+        if std::env::var_os("KABAR_PACKS_URL").is_none() && option_env!("KABAR_PACKS_URL").is_none() {
+            assert_eq!(base_url().as_deref(), Some(DEFAULT_PACKS_URL));
+        }
     }
 }

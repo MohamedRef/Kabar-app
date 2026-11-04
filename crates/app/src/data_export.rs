@@ -130,36 +130,44 @@ pub fn ExportCard() -> Element {
                     if busy() { "{ui.t(Msg::ExportSaving)}" } else { "{ui.t(Msg::ExportButton)}" }
                 }
             }
-            match outcome() {
-                None => rsx! {},
-                Some(Outcome::Saved { path, rows }) => rsx! {
-                    div { class: "export-result", role: "status", aria_live: "polite",
-                        p { {ui.fill(Msg::ExportSaved, &[("rows", &ui.num(rows))])} }
-                        code { class: "export-path", dir: "ltr", bdi { "{path}" } }
-                        if cfg!(target_os = "android") {
-                            p { class: "muted", "{ui.t(Msg::ExportAndroidHint)}" }
-                        }
-                    }
-                },
-                Some(Outcome::Choosing) => rsx! {
-                    p { class: "muted", role: "status", aria_live: "polite", "{placed_text(ui.lang(), true)}" }
-                },
-                Some(Outcome::Placed { name, rows }) => rsx! {
-                    div { class: "export-result", role: "status", aria_live: "polite",
-                        p { {crate::i18n::fill(ui.lang(), placed_text(ui.lang(), false), &[("rows", &ui.num(rows))])} }
-                        if let Some(name) = name {
-                            code { class: "export-path", dir: "ltr", bdi { "{name}" } }
-                        }
-                    }
-                },
-                Some(Outcome::Failed(e)) => rsx! {
-                    div { class: "notice", role: "status",
-                        p { "{ui.t(Msg::ExportFailed)}" }
-                        p { class: "muted mono", dir: "ltr", bdi { "{e}" } }
-                    }
-                },
+            if let Some(outcome) = outcome() {
+                ExportResult { outcome }
             }
         }
+    }
+}
+
+/// What the last export did: where the file went, or why it didn't.
+#[component]
+fn ExportResult(outcome: Outcome) -> Element {
+    let ui = use_context::<Ui>();
+    match outcome {
+        Outcome::Saved { path, rows } => rsx! {
+            div { class: "export-result", role: "status", aria_live: "polite",
+                p { {ui.fill(Msg::ExportSaved, &[("rows", &ui.num(rows))])} }
+                code { class: "export-path", dir: "ltr", bdi { "{path}" } }
+                if cfg!(target_os = "android") {
+                    p { class: "muted", "{ui.t(Msg::ExportAndroidHint)}" }
+                }
+            }
+        },
+        Outcome::Choosing => rsx! {
+            p { class: "muted", role: "status", aria_live: "polite", "{placed_text(ui.lang(), true)}" }
+        },
+        Outcome::Placed { name, rows } => rsx! {
+            div { class: "export-result", role: "status", aria_live: "polite",
+                p { {crate::i18n::fill(ui.lang(), placed_text(ui.lang(), false), &[("rows", &ui.num(rows))])} }
+                if let Some(name) = name {
+                    code { class: "export-path", dir: "ltr", bdi { "{name}" } }
+                }
+            }
+        },
+        Outcome::Failed(e) => rsx! {
+            div { class: "notice", role: "status",
+                p { "{ui.t(Msg::ExportFailed)}" }
+                p { class: "muted mono", dir: "ltr", bdi { "{e}" } }
+            }
+        },
     }
 }
 
@@ -177,12 +185,23 @@ fn placed_text(lang: kabar_core::locale::UiLanguage, waiting: bool) -> &'static 
 }
 
 fn platform_dir() -> Result<PathBuf, String> {
+    // Tests export into a temporary folder, never the real Downloads.
+    #[cfg(test)]
+    if let Some(dir) = tests::EXPORT_DIR.with(|d| d.borrow().clone()) {
+        return dir;
+    }
     crate::platform::export_dir()
 }
 
 #[cfg(test)]
-mod tests {
+pub(crate) mod tests {
     use super::*;
+    use std::cell::RefCell;
+
+    thread_local! {
+        /// Where `ExportCard` writes in this test thread.
+        pub static EXPORT_DIR: RefCell<Option<Result<PathBuf, String>>> = const { RefCell::new(None) };
+    }
 
     #[test]
     fn saves_one_dated_file_and_never_overwrites() {
@@ -206,5 +225,117 @@ mod tests {
             .filter(|e| e.as_ref().unwrap().path().to_string_lossy().ends_with(".part"))
             .count();
         assert_eq!(leftovers, 0);
+    }
+
+    fn ui(lang: kabar_core::locale::UiLanguage) -> Ui {
+        use kabar_core::layout::WidthClass;
+        Ui {
+            settings: Signal::new(kabar_core::settings::Settings { ui_language: lang, ..Default::default() }),
+            width: Signal::new(WidthClass::Compact),
+            tablet: Signal::new(false),
+            screen: Signal::new(crate::Screen::Today),
+            lesson: Signal::new(None),
+            lesson_from: Signal::new(crate::Screen::Today),
+            focus: Signal::new(false),
+        }
+    }
+
+    fn card() -> Element {
+        use std::{cell::RefCell, rc::Rc};
+        let db = use_context_provider(|| Db(Rc::new(RefCell::new(Store::open_in_memory().unwrap()))));
+        use_context_provider(|| ui(kabar_core::locale::UiLanguage::En));
+        use_context_provider(|| Coach::load(&db));
+        rsx! { ExportCard {} }
+    }
+
+    #[test]
+    fn the_export_button_saves_a_file_and_says_where() {
+        let dir = tempfile::tempdir().unwrap();
+        EXPORT_DIR.with(|d| *d.borrow_mut() = Some(Ok(dir.path().join("Downloads"))));
+        let mut h = crate::screen_kit::Harness::new(card);
+        assert!(!h.html().contains("role=\"status\""), "nothing to report before the first export");
+        h.click("Export everything");
+        let html = h.html();
+        let file = std::fs::read_dir(dir.path().join("Downloads")).unwrap().next().unwrap().unwrap().path();
+        let name = file.file_name().unwrap().to_string_lossy().into_owned();
+        assert!(name.starts_with("kabar-export-") && name.ends_with(".json"), "{name}");
+        assert!(html.contains(&name) && html.contains("Saved "), "{html}");
+        assert!(!html.contains("disabled"), "the button is ready again");
+        let doc: serde_json::Value = serde_json::from_slice(&std::fs::read(&file).unwrap()).unwrap();
+        assert_eq!(doc["app_version"], env!("CARGO_PKG_VERSION"));
+        EXPORT_DIR.with(|d| *d.borrow_mut() = None);
+    }
+
+    #[test]
+    fn a_failed_export_says_so_and_changes_nothing() {
+        EXPORT_DIR.with(|d| *d.borrow_mut() = Some(Err("no Downloads folder".into())));
+        let mut h = crate::screen_kit::Harness::new(card);
+        h.click("Export everything");
+        let html = h.html();
+        assert!(
+            html.contains("Couldn&#39;t save the file. Nothing was changed; want to try again?"),
+            "{html}"
+        );
+        assert!(html.contains("no Downloads folder"));
+        EXPORT_DIR.with(|d| *d.borrow_mut() = None);
+    }
+
+    #[test]
+    fn a_read_only_folder_leaves_no_half_file() {
+        let dir = tempfile::tempdir().unwrap();
+        let blocker = dir.path().join("file");
+        std::fs::write(&blocker, "x").unwrap();
+        let store = Store::open_in_memory().unwrap();
+        // A file where the folder should be: creating the folder fails.
+        let err = save(&store, &blocker.join("sub"), 1_793_011_856_000, 0).unwrap_err();
+        assert!(err.contains("sub"), "the error names the folder: {err}");
+        assert_eq!(std::fs::read_dir(dir.path()).unwrap().count(), 1);
+    }
+
+    /// Android's Save-to steps, in each language.
+    #[test]
+    fn android_save_steps_read_right() {
+        use crate::i18n::checks::{LANGS, problems};
+        for lang in LANGS {
+            for waiting in [true, false] {
+                let text = placed_text(lang, waiting);
+                assert!(problems(lang, text, true).is_empty(), "{lang:?} {waiting}: {text}");
+            }
+        }
+        fn shown(lang: kabar_core::locale::UiLanguage, outcome: Outcome) -> String {
+            let mut dom = VirtualDom::new_with_props(
+                |(lang, outcome): (kabar_core::locale::UiLanguage, Outcome)| {
+                    use_context_provider(|| ui(lang));
+                    rsx! { ExportResult { outcome } }
+                },
+                (lang, outcome),
+            );
+            dom.rebuild_in_place();
+            dioxus::ssr::render(&dom)
+        }
+        use kabar_core::locale::UiLanguage::*;
+        assert!(shown(En, Outcome::Choosing).contains("Choose where to save it"));
+        let placed =
+            shown(ArEg, Outcome::Placed { name: Some("kabar-export-2026-11-04.json".into()), rows: 2 });
+        assert!(
+            placed.contains("اتحفظ صفين في المكان اللي اخترته")
+                && placed.contains("kabar-export-2026-11-04.json")
+        );
+        let unnamed = shown(Ar, Outcome::Placed { name: None, rows: 12 });
+        assert!(unnamed.contains("حُفظ 12\u{a0}صفًّا") && !unnamed.contains("export-path"), "{unnamed}");
+        let saved = shown(En, Outcome::Saved { path: "/tmp/x.json".into(), rows: 1 });
+        assert!(saved.contains("Saved 1\u{a0}row to:") && saved.contains("/tmp/x.json"));
+    }
+
+    #[test]
+    fn a_failed_write_reports_the_file_and_keeps_no_part() {
+        let dir = tempfile::tempdir().unwrap();
+        let store = Store::open_in_memory().unwrap();
+        let now = 1_793_011_856_000;
+        // A folder squats where the temporary file goes, so writing fails.
+        std::fs::create_dir(dir.path().join("kabar-export-2026-10-26.json.part")).unwrap();
+        let err = save(&store, dir.path(), now, 0).unwrap_err();
+        assert!(err.contains("kabar-export-2026-10-26.json"), "{err}");
+        assert!(!dir.path().join("kabar-export-2026-10-26.json").exists(), "no half-written export");
     }
 }

@@ -216,6 +216,12 @@ fn the_job_and_the_app_share_one_updater() {
     assert!(std::ptr::eq(job_updater(data.path()), job));
     let local = OnceLock::new();
     assert!(std::ptr::eq(shared(&local, data.path()), shared(&local, data.path())));
+    // The job's own calls: a development build never announces anything,
+    // and a shown notice is remembered so it doesn't go out again.
+    assert_eq!(job.status().off, Some(Off::DevBuild));
+    assert_eq!(background_check(data.path(), false, true, LocalTime::hm(12, 0)), None);
+    background_shown(data.path(), "1.0.0-alpha.2+0:available");
+    assert_eq!(job.status().prefs.notified.as_deref(), Some("1.0.0-alpha.2+0:available"));
 }
 
 #[test]
@@ -1108,4 +1114,240 @@ fn a_dropped_download_is_not_remembered_as_unreadable() {
         );
     }
     assert_eq!(log.lock().unwrap().len(), 2, "each check tries the network again");
+}
+
+fn install_texts() -> InstallTexts {
+    InstallTexts {
+        lang: UiLanguage::En,
+        done_title: "Kabar was updated".into(),
+        done_body: "Open it to see what's new".into(),
+        ready_title: "Tap to install".into(),
+    }
+}
+
+#[test]
+fn installing_rechecks_the_download_and_says_why_it_cannot() {
+    let feed = fixture_feed();
+    let url = serve(feed.path().to_path_buf());
+    let (u, _data) = updater(&url, "1.0.0-alpha.1");
+    // Nothing downloaded: a tap on "Install" does nothing.
+    u.install(install_texts());
+    assert_eq!(u.status().phase, Phase::Idle);
+
+    u.check(true);
+    let Phase::Ready(offer) = u.status().phase else { panic!("{:?}", u.status().phase) };
+    // This system has no installer: the failure keeps the offer for "Try again".
+    u.install(install_texts());
+    assert_eq!(
+        u.status().phase,
+        Phase::Failed {
+            offer: Some(offer.clone()),
+            why: Failure::Install("no installer on this system".into())
+        }
+    );
+    // Swapped on disk since: refused, and the download goes.
+    fs::write(u.dir.join(&offer.asset.file), b"fixture apk bytez").unwrap();
+    u.install(install_texts());
+    assert!(
+        matches!(u.status().phase, Phase::Failed { why: Failure::Verify(_), .. }),
+        "{:?}",
+        u.status().phase
+    );
+    assert!(!u.dir.join(&offer.asset.file).exists());
+}
+
+#[test]
+fn a_build_missing_from_the_feed_is_a_download_failure_with_the_offer_kept() {
+    let feed = fixture_feed();
+    fs::remove_file(feed.path().join("kabar-1.0.0-alpha.2-android-arm64.apk")).unwrap();
+    let url = serve(feed.path().to_path_buf());
+    let (u, _data) = updater(&url, "1.0.0-alpha.1");
+    u.check(true);
+    let s = u.status();
+    assert!(
+        matches!(&s.phase, Phase::Failed { offer: Some(o), why: Failure::Network } if o.version == "1.0.0-alpha.2"),
+        "{:?}",
+        s.phase
+    );
+}
+
+#[test]
+fn the_learners_switches_are_kept_and_change_what_runs() {
+    let feed = fixture_feed();
+    let url = serve(feed.path().to_path_buf());
+    let (u, data) = updater(&url, "1.0.0-alpha.1");
+    assert!(u.background_checks());
+
+    // Off: Android's background job stops, and no check runs by itself.
+    u.set_mode(Mode::Off);
+    assert!(!u.background_checks());
+    assert!(!u.step(Duration::ZERO, false), "no check while off");
+    assert_eq!(u.status().prefs.last_check_ms, None);
+    u.set_mode(Mode::Notify);
+
+    // Tell me first: a check finds the build and waits for a tap.
+    assert!(u.step(Duration::ZERO, false));
+    let Phase::Available(offer) = u.status().phase else { panic!("{:?}", u.status().phase) };
+    assert_eq!(u.status().banner(), Some(&offer));
+    // "Later" hides the banner for this build, and remembers it.
+    u.dismiss();
+    assert_eq!(u.status().banner(), None);
+    assert_eq!(load_prefs(&data.path().join("updates")).dismissed, Some(offer.key()));
+
+    // The notification switch, the language it speaks, and what was shown.
+    u.set_notify(false);
+    assert!(!u.status().prefs.notify);
+    let ctx = NoticeContext { lang: UiLanguage::ArEg, quiet: None, utc_offset_min: 120 };
+    u.set_notice_context(ctx);
+    u.set_notice_context(ctx);
+    assert_eq!(load_prefs(&data.path().join("updates")).notice, Some(ctx));
+    u.shown("1.0.0-alpha.2+0:available");
+    assert_eq!(u.status().prefs.notified.as_deref(), Some("1.0.0-alpha.2+0:available"));
+
+    // The same channel again changes nothing; another starts over.
+    u.set_channel(Channel::Alpha);
+    assert!(matches!(u.status().phase, Phase::Available(_)));
+    u.set_channel(Channel::Beta);
+    assert_eq!(u.status().channel, Channel::Beta);
+    assert_eq!(load_prefs(&data.path().join("updates")).channel, Some(Channel::Beta));
+}
+
+#[test]
+fn the_background_job_announces_only_where_it_may() {
+    let feed = fixture_feed();
+    let url = serve(feed.path().to_path_buf());
+    let (u, _data) = updater(&url, "1.0.0-alpha.1");
+    u.set_mode(Mode::Notify);
+    let noon = LocalTime::hm(12, 0);
+    // Kabar in front, or notifications off: checked, but nothing to post.
+    assert_eq!(u.background(false, false, noon), None);
+    assert!(matches!(u.status().phase, Phase::Available(_)));
+    let n = u.background(false, true, noon).expect("the new build is announced");
+    assert_eq!(n.action, "download");
+    // Not marked as sent until Android says it showed it.
+    assert_eq!(u.status().prefs.notified, None);
+    // The running app's own post: shown here, so it's remembered.
+    let sent = u.send_notice(Some(noon), |_| true).unwrap();
+    assert_eq!(u.status().prefs.notified, Some(sent.key));
+    assert!(u.send_notice(Some(noon), |_| true).is_none(), "once per step");
+}
+
+#[test]
+fn only_a_dev_feed_turns_updates_on_in_a_debug_or_unbundled_build() {
+    let never = || -> bool { panic!("a debug build doesn't look for its bundle") };
+    assert_eq!(off_reason(true, never, false), Some(Off::DevBuild));
+    assert_eq!(off_reason(false, || true, false), Some(Off::NotInBundle));
+    assert_eq!(off_reason(false, || false, false), None);
+    // A local feed tests the updater in either.
+    assert_eq!(off_reason(true, || true, true), None);
+    assert_eq!(off_reason(false, || true, true), None);
+}
+
+#[test]
+fn the_android_install_follower_acts_only_when_it_should() {
+    use crate::Screen;
+    use view::{InstallBeat, install_beat};
+    let yes = || true;
+    let no = || false;
+    let unasked = || -> bool { panic!("Android isn't asked when the answer can't matter") };
+    let o = offer("1.0.0-alpha.2", 0);
+
+    // An install under way is polled on every beat; coming back to the
+    // front also opens a confirmation that waited in the background.
+    let installing = status(Phase::Installing(o.clone()), Mode::Auto);
+    let beat = |hidden| install_beat(&installing, hidden, Screen::Journey, unasked, unasked);
+    assert_eq!(beat(None), InstallBeat::Poll { back_in_front: false });
+    assert_eq!(beat(Some(true)), InstallBeat::Poll { back_in_front: false });
+    assert_eq!(beat(Some(false)), InstallBeat::Poll { back_in_front: true });
+
+    // Back from "Install unknown apps": retried once it was allowed.
+    let asked = status(Phase::NeedsPermission(o.clone()), Mode::Notify);
+    assert_eq!(install_beat(&asked, Some(false), Screen::Journey, yes, unasked), InstallBeat::Install);
+    assert_eq!(install_beat(&asked, Some(false), Screen::Journey, no, unasked), InstallBeat::Wait);
+    assert_eq!(install_beat(&asked, None, Screen::Journey, unasked, unasked), InstallBeat::Wait);
+
+    // Automatic mode installs a ready update quietly in the background,
+    // never mid-lesson, never twice for an offer that failed that way, and
+    // only where Android needs no confirmation.
+    let ready = status(Phase::Ready(o.clone()), Mode::Auto);
+    assert_eq!(install_beat(&ready, Some(true), Screen::Journey, unasked, yes), InstallBeat::Install);
+    assert_eq!(install_beat(&ready, Some(true), Screen::Journey, unasked, no), InstallBeat::Wait);
+    for busy in [Screen::Lesson, Screen::LevelCheck] {
+        assert_eq!(install_beat(&ready, Some(true), busy, unasked, unasked), InstallBeat::Wait);
+    }
+    assert_eq!(install_beat(&ready, Some(false), Screen::Journey, unasked, unasked), InstallBeat::Wait);
+    let mut tried = ready.clone();
+    tried.prefs.auto_failed = Some(o.key());
+    assert_eq!(install_beat(&tried, Some(true), Screen::Journey, unasked, unasked), InstallBeat::Wait);
+    let told = status(Phase::Ready(o), Mode::Notify);
+    assert_eq!(install_beat(&told, Some(true), Screen::Journey, unasked, unasked), InstallBeat::Wait);
+    let idle = status(Phase::UpToDate, Mode::Auto);
+    assert_eq!(install_beat(&idle, Some(false), Screen::Journey, unasked, unasked), InstallBeat::Wait);
+}
+
+#[test]
+fn the_notifications_buttons_start_their_step_and_its_body_only_opens() {
+    use view::{TapAction, tap_action};
+    assert_eq!(tap_action("download"), Some(TapAction::Download));
+    assert_eq!(tap_action("install"), Some(TapAction::Install));
+    assert_eq!(tap_action("open"), None);
+    assert_eq!(tap_action(""), None);
+}
+
+#[test]
+fn an_updater_without_a_platform_or_a_key_stays_off_and_does_nothing() {
+    let data = tempfile::tempdir().unwrap();
+    let mut info = alpha_build();
+    info.key = None;
+    let no_key = Updater::new(data.path().join("a"), info, Some(UpdatePlatform::AndroidArm64), None, None);
+    assert_eq!(no_key.status().off, Some(Off::NoKey));
+    let no_platform = Updater::new(data.path().join("b"), alpha_build(), None, None, None);
+    assert_eq!(no_platform.status().off, Some(Off::NoPlatform));
+    // It follows the GitHub release of its channel.
+    assert_eq!(no_platform.feed_url(), format!("{FEEDS_URL}/update-alpha"));
+
+    // Checking or installing while off changes nothing and saves nothing.
+    let u: &'static Updater = Box::leak(Box::new(no_platform));
+    u.check_with(true, true);
+    u.install(view::texts(UiLanguage::En));
+    let s = u.status();
+    assert_eq!(s.phase, Phase::Idle);
+    assert_eq!(s.prefs.last_check_ms, None);
+}
+
+#[test]
+fn a_build_published_only_for_other_devices_is_not_offered() {
+    let feed = fixture_feed();
+    let url = serve(feed.path().to_path_buf());
+    let data = tempfile::tempdir().unwrap();
+    let android = updater_in(data.path(), &url, "1.0.0-alpha.1");
+    let mut mac = Updater::new(
+        data.path().join("mac"),
+        android.info.clone(),
+        Some(UpdatePlatform::MacosX86_64),
+        Some(url),
+        None,
+    );
+    mac.retry_after = Duration::from_millis(10);
+    let mac: &'static Updater = Box::leak(Box::new(mac));
+    mac.check(true);
+    assert_eq!(mac.status().phase, Phase::NotForThisDevice);
+    // Nothing to install, so the install button does nothing.
+    mac.install(view::texts(UiLanguage::En));
+    assert_eq!(mac.status().phase, Phase::NotForThisDevice);
+}
+
+#[test]
+fn a_shown_notice_and_a_closed_whats_new_are_remembered_once() {
+    let (u, _data) = updater("http://127.0.0.1:9", "1.0.0-alpha.1");
+    u.shown("k1");
+    assert_eq!(u.status().prefs.notified.as_deref(), Some("k1"));
+    u.shown("k1");
+    assert_eq!(load_prefs(&u.dir).notified.as_deref(), Some("k1"), "saved");
+
+    u.update_prefs(|p| p.whats_new_from = Some("1.0.0-alpha.0+0".into()));
+    u.close_whats_new();
+    assert_eq!(u.status().prefs.whats_new_from, None);
+    assert_eq!(load_prefs(&u.dir).whats_new_from, None, "closing is saved");
+    u.close_whats_new();
 }

@@ -491,7 +491,11 @@ fn SavedWordRow(w: SavedWord, gloss: Option<String>) -> Element {
     let st = use_context::<ReaderState>();
     let lang = ui.lang();
     let phrase = w.lexeme.starts_with("phrase:");
-    let learning = !phrase && st.status(&w.lexeme) == WordStatus::Learning;
+    // From the store, not the Reader's state: that only holds the words of
+    // the text opened last.
+    let learning = !phrase
+        && db.0.borrow().word_statuses([w.lexeme.as_str()]).ok().and_then(|s| s.get(&w.lexeme).copied())
+            == Some(WordStatus::Learning);
     let text = w.text_id.as_deref().and_then(|id| db.0.borrow().text(id).ok().flatten());
     rsx! {
         details { class: "lib-word",

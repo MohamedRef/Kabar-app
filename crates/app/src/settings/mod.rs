@@ -9,6 +9,8 @@
 
 #[cfg(test)]
 mod browser;
+#[cfg(test)]
+mod tests;
 
 pub mod device;
 mod learning;
@@ -60,6 +62,8 @@ impl Section {
             Self::Android => cfg!(target_os = "android"),
             Self::Tablet => cfg!(target_os = "android") && tablet,
             Self::Mac => !cfg!(target_os = "android"),
+            // The web app is the newest build on every open (web/sw.js).
+            Self::Updates => !cfg!(target_arch = "wasm32"),
             _ => true,
         }
     }
@@ -375,7 +379,7 @@ pub fn GearButton() -> Element {
 }
 
 #[cfg(test)]
-mod tests {
+mod unit_tests {
     use super::*;
 
     #[test]
