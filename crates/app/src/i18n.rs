@@ -120,6 +120,7 @@ pub enum Msg {
     WidthExtraLarge,
     NavDevices,
     CloudIntro,
+    CloudIntroWeb,
     CloudNotConfigured,
     CloudSignIn,
     CloudSigningIn,
@@ -137,6 +138,8 @@ pub enum Msg {
     ProblemSignInFailed,
     ProblemSignedOutRemotely,
     ProblemNetwork,
+    ProblemSignInNetwork,
+    ProblemSignInServer,
     ProblemServer,
     ProblemOutdated,
     DevicesTitle,
@@ -1037,6 +1040,13 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (CloudIntro, ArEg) => "سجّل دخول بجوجل عشان تقدّمك يتزامن بين الموبايل والتابلت والماك.",
         (CloudIntro, Ar) => "سجّل الدخول بحساب Google لمزامنة تقدّمك بين الهاتف واللوحي والماك.",
         (CloudIntro, En) => "Sign in with Google so your progress syncs between your phone, tablet and Mac.",
+        (CloudIntroWeb, ArEg) => {
+            "ادخل باسم المستخدم والباسورد عشان تقدّمك يتزامن مع الموبايل والتابلت والماك."
+        }
+        (CloudIntroWeb, Ar) => "ادخل باسم المستخدم وكلمة المرور لمزامنة تقدّمك مع الهاتف واللوحي والماك.",
+        (CloudIntroWeb, En) => {
+            "Sign in with your username and password to sync with your phone, tablet and Mac."
+        }
         (CloudNotConfigured, ArEg) => {
             "النسخة دي لسه مش متوصلة بـ \u{2068}Kabar Cloud\u{2069}. أول ما السيرفر يشتغل هتقدر تسجّل دخول من هنا، وكل حاجة محفوظة على جهازك لحد ساعتها."
         }
@@ -1096,6 +1106,16 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ProblemNetwork, ArEg) => "مش قادر أوصل لـ \u{2068}Kabar Cloud\u{2069} دلوقتي. هفضل أحاول لوحدي.",
         (ProblemNetwork, Ar) => "تعذّر الوصول إلى \u{2068}Kabar Cloud\u{2069} الآن. سأواصل المحاولة تلقائيًا.",
         (ProblemNetwork, En) => "Can't reach Kabar Cloud right now. I'll keep trying.",
+        (ProblemSignInNetwork, ArEg) => {
+            "مقدرتش أوصل لـ \u{2068}Kabar Cloud\u{2069}. اتأكد إن النت شغال وجرّب تاني."
+        }
+        (ProblemSignInNetwork, Ar) => {
+            "تعذّر الوصول إلى \u{2068}Kabar Cloud\u{2069}. تأكد من الاتصال وحاول مجددًا."
+        }
+        (ProblemSignInNetwork, En) => "Couldn't reach Kabar Cloud. Check your connection and try again.",
+        (ProblemSignInServer, ArEg) => "\u{2068}Kabar Cloud\u{2069} فيه مشكلة دلوقتي. جرّب تاني بعد شوية.",
+        (ProblemSignInServer, Ar) => "يواجه \u{2068}Kabar Cloud\u{2069} مشكلة الآن. حاول مجددًا بعد قليل.",
+        (ProblemSignInServer, En) => "Kabar Cloud is having trouble right now. Try again in a bit.",
         (ProblemServer, ArEg) => "\u{2068}Kabar Cloud\u{2069} فيه مشكلة دلوقتي. هحاول تاني بعد شوية.",
         (ProblemServer, Ar) => "يواجه \u{2068}Kabar Cloud\u{2069} مشكلة الآن. سأحاول مجددًا بعد قليل.",
         (ProblemServer, En) => "Kabar Cloud is having trouble. I'll try again in a bit.",
