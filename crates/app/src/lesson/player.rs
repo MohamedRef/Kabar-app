@@ -160,12 +160,14 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
             return;
         }
         let typed_only = Draft { text: d.text.clone(), ..saved_draft.peek().clone() } == d;
-        saved_draft.set(d);
         typing += 1;
         if !typed_only {
+            saved_draft.set(d);
             save_with(db, &player.peek(), &draft.peek());
             return;
         }
+        // `saved_draft` moves on only once the text is really saved, so
+        // leaving before the pause still sees it as unsaved and saves it.
         let ticket = *typing.peek();
         spawn(async move {
             crate::platform::time::sleep(std::time::Duration::from_millis(700)).await;
@@ -173,6 +175,7 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
                 && let (Ok(p), Ok(d)) = (player.try_peek(), draft.try_peek())
             {
                 save_with(db, &p, &d);
+                saved_draft.set(d.clone());
             }
         });
     });

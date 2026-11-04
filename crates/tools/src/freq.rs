@@ -85,13 +85,19 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
             Ok(())
         }
         Cmd::Show { lang, from, count } => {
-            let lang = parse_lang(&lang)?;
-            for row in read_list(&root.freq_list(lang))?.iter().skip(from.saturating_sub(1)).take(count) {
-                println!("{}\t{}\t{:.2}\t{}", row.rank, row.word, row.zipf, row.sources);
-            }
+            print!("{}", show(&read_list(&root.freq_list(parse_lang(&lang)?))?, from, count));
             Ok(())
         }
     }
+}
+
+/// Rows `from` (1-based) on, at most `count`, as the list file has them.
+fn show(rows: &[Row], from: usize, count: usize) -> String {
+    rows.iter()
+        .skip(from.saturating_sub(1))
+        .take(count)
+        .map(|r| format!("{}\t{}\t{:.2}\t{}\n", r.rank, r.word, r.zipf, r.sources))
+        .collect()
 }
 
 pub fn parse_lang(code: &str) -> Result<Lang> {
@@ -345,6 +351,105 @@ mod tests {
 
     fn scores(pairs: &[(&str, f64)]) -> Scores {
         pairs.iter().map(|(w, z)| (w.to_string(), *z)).collect()
+    }
+
+    use crate::testkit::Sandbox;
+
+    fn gz(bytes: &[u8]) -> Vec<u8> {
+        let mut e = flate2::write::GzEncoder::new(Vec::new(), flate2::Compression::fast());
+        e.write_all(bytes).unwrap();
+        e.finish().unwrap()
+    }
+
+    fn bz2(text: &str) -> Vec<u8> {
+        let mut e = bzip2::write::BzEncoder::new(Vec::new(), bzip2::Compression::fast());
+        e.write_all(text.as_bytes()).unwrap();
+        e.finish().unwrap()
+    }
+
+    fn words(s: &Sandbox, lang: Lang) -> Vec<String> {
+        read_list(&s.root().freq_list(lang)).unwrap().into_iter().map(|r| r.word).collect()
+    }
+
+    #[test]
+    fn builds_the_indonesian_list_from_both_sources() {
+        let s = Sandbox::empty();
+        let err = s.cli(&["freq", "id"]).unwrap_err();
+        assert!(format!("{err:#}").contains("run `scripts/fetch-sources.sh` first"), "{err:#}");
+        let cb =
+            (serde_json::json!({"format": "cB"}), vec!["yang"], vec!["dan", "the"], vec!["kabar", "aaah"]);
+        s.write("data/raw/small_id.msgpack.gz", gz(&rmp_serde::to_vec(&cb).unwrap()));
+        s.write(
+            "data/raw/hermitdave-id_full.txt",
+            "yang 500\nDan 300\nkabar 100\nhei 50\nbad line\nx notanumber\n",
+        );
+        s.write("content/freq/id.exclude.tsv", "# junk\nthe\tEnglish\n");
+        s.cli(&["freq", "id", "--top", "4"]).unwrap();
+        let text = s.read("content/freq/id.tsv");
+        assert!(text.starts_with("# Kabar Indonesian frequency list."), "{text}");
+        assert_eq!(
+            words(&s, Lang::Id),
+            ["yang", "dan", "kabar", "hei"],
+            "excluded, shape-filtered, cut at --top"
+        );
+        let rows = read_list(&s.root().freq_list(Lang::Id)).unwrap();
+        assert_eq!(rows[0].sources, "wordfreq,opensubtitles");
+        assert_eq!(rows[3].sources, "opensubtitles");
+        assert_eq!(
+            show(&rows, 2, 2),
+            format!(
+                "2\tdan\t{:.2}\twordfreq,opensubtitles\n3\tkabar\t{:.2}\twordfreq,opensubtitles\n",
+                rows[1].zipf, rows[2].zipf
+            )
+        );
+        assert_eq!(show(&rows, 0, 1).lines().count(), 1, "from 0 reads as from 1");
+        s.cli(&["freq", "show", "--count", "2"]).unwrap();
+        assert!(s.cli(&["freq", "show", "--lang", "su"]).is_err());
+    }
+
+    #[test]
+    fn builds_the_javanese_list_with_and_without_wikipedia() {
+        let s = Sandbox::empty();
+        s.write(
+            "data/raw/nusa/a.csv",
+            "id,text,label\n1,\"Aku mangan sega, kowe mangan apa?\",x\n2,Aku turu,y\n",
+        );
+        s.write("data/raw/nusa/b.csv", "src_text,tgt_text\nSaya makan,Aku mangan\n");
+        s.write("data/raw/nusa/readme.txt", "ignored");
+        s.cli(&["freq", "jv"]).unwrap();
+        assert_eq!(words(&s, Lang::Jv)[..2], ["aku", "mangan"], "ties go by word");
+        assert!(read_list(&s.root().freq_list(Lang::Jv)).unwrap().iter().all(|r| r.sources == "nusa"));
+        assert!(s.read("content/freq/jv.tsv").starts_with("# Kabar Javanese frequency list."));
+
+        let dump = s.write(
+            "dump.xml.bz2",
+            bz2("<mediawiki><page><title>Sega</title><ns>0</ns><revision><text>Sega lan iwak, sega maneh.</text></revision></page></mediawiki>"),
+        );
+        s.cli(&["freq", "jv", "--dump", dump.to_str().unwrap()]).unwrap();
+        let rows = read_list(&s.root().freq_list(Lang::Jv)).unwrap();
+        let sega = rows.iter().find(|r| r.word == "sega").unwrap();
+        assert_eq!(sega.sources, "nusa,jvwiki");
+        assert_eq!(rows.iter().find(|r| r.word == "iwak").unwrap().sources, "jvwiki");
+
+        s.write("data/raw/nusa/c.csv", "id,label\n1,x\n");
+        let err = s.cli(&["freq", "jv"]).unwrap_err();
+        assert!(err.to_string().contains("no text or tgt_text column"), "{err}");
+        assert!(count_csv_dir(&s.path().join("nowhere")).is_err());
+        assert!(crate::wiki::count_words(&s.path().join("none.bz2")).is_err());
+    }
+
+    #[test]
+    fn bad_inputs_are_refused() {
+        assert!(parse_wordfreq_cb(&rmp_serde::to_vec(&Vec::<Vec<String>>::new()).unwrap()).is_err(), "empty");
+        let other = (serde_json::json!({"format": "other"}), vec!["yang"]);
+        assert!(parse_wordfreq_cb(&rmp_serde::to_vec(&other).unwrap()).is_err());
+        let map_bucket = (serde_json::json!({"format": "cB"}), serde_json::json!({"a": 1}));
+        assert!(parse_wordfreq_cb(&rmp_serde::to_vec(&map_bucket).unwrap()).is_err());
+        assert!(zipf_from_counts(HashMap::new()).is_empty());
+        let s = Sandbox::empty();
+        s.write("content/freq/id.tsv", "1\tyang\n");
+        assert!(read_list(&s.root().freq_list(Lang::Id)).is_err(), "four columns");
+        assert!(read_exclude(&s.path().join("none.tsv")).unwrap().is_empty());
     }
 
     #[test]

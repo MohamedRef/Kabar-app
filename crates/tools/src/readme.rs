@@ -382,4 +382,118 @@ mod tests {
         assert_eq!(hours(50), "50 min");
         assert_eq!(hours(545), "~9 h");
     }
+
+    /// A small repository whose numbers are known.
+    fn tiny() -> crate::testkit::Sandbox {
+        let s = crate::testkit::Sandbox::empty();
+        s.write(
+            "curriculum/indonesian.yaml",
+            "levels:\n  - code: bipa1\n    journey: {place: Jakarta}\n    cefr: {approx: A1}\n    vocab_target: 500\n    level_test: {id: test.bipa1}\n    units:\n      - lessons:\n          - {id: bipa1.u01.l01, minutes: 60}\n          - {id: bipa1.u01.l02, minutes: 45}\n",
+        );
+        s.write(
+            "curriculum/javanese.yaml",
+            "levels:\n  - code: j1\n    journey: {place: Solo}\n    units:\n      - lessons:\n          - {id: j1.u01.l01, minutes: 30}\n",
+        );
+        s.write(
+            "content/lessons/id/bipa1.u01.l01.yaml",
+            "id: bipa1.u01.l01\nexercises: [1, 2, 3]\nnew_words:\n  - {word: Buku}\n  - {word: rumah}\n  - {word: mau}\n",
+        );
+        s.write(
+            "content/lessons/jv/j1/j1.u01.l01.yaml",
+            "id: j1.u01.l01\nexercises: [1]\nnew_words:\n  - {word: buku}\n  - {word: mau, false_friend: true}\n  - {word: udh, same_as_id: true}\n  - {word: omah, false_friend: false}\n",
+        );
+        s.write("content/tests/bipa1.yaml", "id: test.bipa1\nsections:\n  - items: [1, 2]\n  - items: [3]\n");
+        s.write("content/tests/placement.yaml", "id: placement\nsections:\n  - items: [1, 2, 3, 4]\n");
+        s.write("content/grammar/id/a.yaml", "x: 1\n");
+        s.write("content/grammar/id/b.yaml", "x: 1\n");
+        s.write("content/grammar/jv/c.yaml", "x: 1\n");
+        s.write(
+            "content/glosses/id/batch-001.jsonl",
+            "{\"status\":\"approved\"}\n{\"status\":\"unverified\"}\n\n{}\n",
+        );
+        s.write("content/glosses/id/plan.tsv", "1\tyang\t1\n");
+        s.write("content/golden/x.yaml", "items: [1, 2]\n");
+        s.write("content/aksara/glyphs.yaml", "glyphs: [a, b, c]\n");
+        s.write("prompts/gloss@v1.md", "p");
+        s.write("prompts/README.md", "r");
+        s.write("content/packs/id/bipa1.u01.json", "{}");
+        s.write("content/bridge/id.jsonl", "# cards\n{}\n{}\n");
+        s.write("content/javanese/speech-levels.jsonl", "{}\n");
+        s.write("content/pron/id.tsv", "# header\nbaca\tb a c a\nbuku\tb u k u\n");
+        s.write("content/pron/overrides.tsv", "teh\tt e h\n");
+        s.write("content/stories/sinetron/e01.yaml", "id: e01\n");
+        s.write("content/radio/id/r01.yaml", "id: r01\n");
+        s.write("content/pagi/stories.jsonl", "{}\n");
+        s.write("content/games/pasar.toml", "x = 1\n");
+        s
+    }
+
+    #[test]
+    fn renders_the_levels_and_the_reference_counts() {
+        let s = tiny();
+        let block = render(s.path()).unwrap();
+        for line in [
+            "**Indonesian (BIPA 1–7)**",
+            // Two lessons planned, one written; 105 minutes read as hours.
+            "| bipa1 | Jakarta | A1 | 1 | 1 / 2 | 3 | 3 | 3 / 500 | ~2 h | 3 |",
+            "| **Total** |  | — | 1 | 1 / 2 | 3 | 3 | 3 / 500 | ~2 h | 3 |",
+            // buku is an Indonesian twin and udh is marked same_as_id: neither
+            // counts as known Javanese; the false friend mau does.
+            "| j1 | Solo | — | 1 | 1 | 1 | 4 | 2 | 30 min | 0 |",
+            "| Placement test items | 4 | one test, easiest section first |",
+            "| Grammar points | 3 | 2 Indonesian, 1 Javanese |",
+            "| Indonesian glosses | 3 | 2 awaiting your review |",
+            "| Javanese glosses | 0 | all approved |",
+            "| Arabic Bridge entries | 2 |",
+            "| Pronunciation lexicon | 2 | plus 1 hand overrides |",
+            "| Sinetron episodes | 1 |",
+            "| Kabar Radio episodes | 1 |",
+            "| Conversation personas | 0 |  |",
+            "| Games | 1 |",
+            "| Aksara Jawa glyphs | 3 |",
+            "| Golden-set items | 2 | 1 golden sets for the AI tasks |",
+            "| Versioned AI prompts | 1 | `prompts/` |",
+            "| Offline pack manifests | 1 | one per unit |",
+        ] {
+            assert!(block.contains(line), "missing {line:?} in\n{block}");
+        }
+    }
+
+    #[test]
+    fn check_reports_a_stale_block_and_the_rewrite_fixes_it() {
+        let s = tiny();
+        s.write("README.md", format!("# Kabar\n{BEGIN}\nold numbers\n{END}\nmore\n"));
+        let err = run(&s.root(), true).unwrap_err();
+        assert!(err.to_string().contains("out of date"), "{err}");
+        assert!(s.read("README.md").contains("old numbers"), "--check never writes");
+        run(&s.root(), false).unwrap();
+        let readme = s.read("README.md");
+        assert!(readme.starts_with("# Kabar\n") && readme.ends_with(&format!("{END}\nmore\n")));
+        assert!(readme.contains("| j1 | Solo |") && !readme.contains("old numbers"));
+        run(&s.root(), true).unwrap();
+        // Through the command line too.
+        s.cli(&["readme", "--check"]).unwrap();
+    }
+
+    #[test]
+    fn broken_inputs_are_named() {
+        let s = tiny();
+        assert!(run(&s.root(), true).unwrap_err().to_string().contains("README.md"), "no README");
+        s.write("README.md", format!("{END}\n{BEGIN}\n"));
+        assert!(run(&s.root(), false).unwrap_err().to_string().contains("out of order"));
+        s.write("content/tests/bad.yaml", "sections: []\n");
+        assert!(render(s.path()).unwrap_err().to_string().contains("no id"));
+        std::fs::remove_file(s.path().join("content/tests/bad.yaml")).unwrap();
+        s.write("content/lessons/id/bad.yaml", "exercises: []\n");
+        assert!(render(s.path()).unwrap_err().to_string().contains("no id"));
+        std::fs::remove_file(s.path().join("content/lessons/id/bad.yaml")).unwrap();
+        s.write("content/glosses/id/batch-002.jsonl", "not json\n");
+        assert!(render(s.path()).is_err());
+    }
+
+    #[test]
+    fn the_repo_renders() {
+        let block = render(&crate::testkit::repo()).unwrap();
+        assert!(block.contains("**Javanese (J1–J6)**") && block.contains("| BIPA 1 | Jakarta |"), "{block}");
+    }
 }

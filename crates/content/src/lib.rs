@@ -534,3 +534,115 @@ pub fn planned_grammar(report: &Report) -> BTreeMap<String, Vec<String>> {
     }
     out
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn committed() -> Report {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+        let r = check_repo(&root).expect("content files load");
+        assert_eq!(r.problems, Vec::<String>::new());
+        Report { curricula: r.curricula, grammar: r.grammar, ..Report::default() }
+    }
+
+    fn problems(r: &Report, check: fn(&mut Report)) -> Vec<String> {
+        let mut r =
+            Report { curricula: r.curricula.clone(), grammar: r.grammar.clone(), ..Report::default() };
+        check(&mut r);
+        r.problems
+    }
+
+    type Mutation = fn(&mut Report);
+
+    fn expect_each(good: &Report, check: fn(&mut Report), broken: &[(&str, Mutation)]) {
+        assert_eq!(problems(good, check), Vec::<String>::new());
+        for (expected, mutate) in broken {
+            let mut r = Report {
+                curricula: good.curricula.clone(),
+                grammar: good.grammar.clone(),
+                ..Report::default()
+            };
+            mutate(&mut r);
+            let found = problems(&r, check);
+            assert!(found.iter().any(|p| p.contains(expected)), "expected '{expected}', got {found:#?}");
+        }
+    }
+
+    #[test]
+    fn curriculum_and_grammar_mistakes_are_named() {
+        let good = committed();
+        expect_each(
+            &good,
+            check_curricula,
+            &[
+                ("bipa2: vocab_target 1 must be above the previous level's", |r| {
+                    r.curricula[0].levels[1].vocab_target = Some(1)
+                }),
+                ("bipa1: needs a vocab_target", |r| r.curricula[0].levels[0].vocab_target = None),
+                ("level does not belong to 'id'", |r| r.curricula[0].levels[0].id = "j9".into()),
+                ("duplicate id bipa1", |r| r.curricula[0].levels[1].id = "bipa1".into()),
+                ("requires unknown level bipa0", |r| {
+                    r.curricula[0].levels[1].requires = vec!["bipa0".into()]
+                }),
+                ("level test id must be bipa1.test", |r| r.curricula[0].levels[0].level_test.id = "x".into()),
+                ("expected unit id bipa1.u01", |r| r.curricula[0].levels[0].units[0].id = "bipa1.u09".into()),
+                ("duplicate id bipa1.u01", |r| r.curricula[0].levels[0].units[1].id = "bipa1.u01".into()),
+                ("expected lesson id bipa1.u01.l01", |r| {
+                    r.curricula[0].levels[0].units[0].lessons[0].id = "bipa1.u01.l02".into()
+                }),
+                ("unknown lesson kind 'lecture'", |r| {
+                    r.curricula[0].levels[0].units[0].lessons[0].kind = "lecture".into()
+                }),
+                ("minutes; a lesson fits in", |r| r.curricula[0].levels[0].units[0].lessons[0].minutes = 60),
+                ("grammar points; a learn lesson teaches at most", |r| {
+                    let unit = &mut r.curricula[0].levels[0].units[0];
+                    let l = unit.lessons.iter_mut().find(|l| l.kind == "learn").unwrap();
+                    l.grammar = (0..9).map(|i| format!("id.g{i}")).collect();
+                }),
+                ("is not listed on its unit", |r| {
+                    r.curricula[0].levels[0].units[0].lessons[0].grammar.push("id.nowhere".into())
+                }),
+                ("is not taught in any lesson", |r| {
+                    r.curricula[0].levels[0].units[0].grammar.push("id.unused".into())
+                }),
+                ("last lesson must be a review", |r| {
+                    r.curricula[0].levels[0].units[0].lessons.last_mut().unwrap().kind = "learn".into()
+                }),
+            ],
+        );
+        expect_each(
+            &good,
+            check_grammar,
+            &[
+                ("duplicate grammar id", |r| {
+                    let g = r.grammar[0].clone();
+                    r.grammar.push(g);
+                }),
+                ("id must start with 'jv.'", |r| r.grammar[0].language = "jv".into()),
+                ("not used by any unit", |r| r.grammar[0].id = format!("{}.orphan", r.grammar[0].language)),
+                ("but it is first taught in", |r| r.grammar[0].level = "bipa7".into()),
+                ("Javanese stays unverified until approved", |r| {
+                    let g = r.grammar.iter_mut().find(|g| g.language == "jv").unwrap();
+                    g.review.verified = true;
+                    g.review.status = "draft".into();
+                }),
+                ("refers to unknown grammar point id.nope", |r| r.grammar[0].see_also.push("id.nope".into())),
+                ("missing from content/grammar", |r| {
+                    r.grammar.remove(0);
+                }),
+            ],
+        );
+    }
+
+    #[test]
+    fn planned_grammar_lists_unwritten_points_per_level() {
+        let mut r = committed();
+        let g = r.grammar.remove(0);
+        let planned = planned_grammar(&r);
+        assert!(planned.get(&g.level).is_some_and(|ids| ids.contains(&g.id)), "{planned:?}");
+        r.grammar.push(g);
+        let first = planned_grammar(&r);
+        assert!(first.values().all(|ids| !ids.is_empty()));
+    }
+}

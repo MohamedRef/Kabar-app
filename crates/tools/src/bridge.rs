@@ -57,22 +57,27 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
             save_entries(root, &entries)
         }
         Cmd::Stats => {
-            let entries = load_entries(root)?;
-            let mut by: BTreeMap<String, usize> = BTreeMap::new();
-            for e in &entries {
-                *by.entry(format!("shift {:?}", e.shift)).or_default() += 1;
-                *by.entry(format!("confidence {:?}", e.confidence)).or_default() += 1;
-                for r in &e.sound_rules {
-                    *by.entry(format!("rule {r}")).or_default() += 1;
-                }
-            }
-            println!("{} cards", entries.len());
-            for (k, n) in by {
-                println!("{n:5}  {k}");
-            }
+            print!("{}", stats(&load_entries(root)?));
             Ok(())
         }
     }
+}
+
+/// Counts by meaning shift, confidence and sound rule.
+fn stats(entries: &[BridgeEntry]) -> String {
+    let mut by: BTreeMap<String, usize> = BTreeMap::new();
+    for e in entries {
+        *by.entry(format!("shift {:?}", e.shift)).or_default() += 1;
+        *by.entry(format!("confidence {:?}", e.confidence)).or_default() += 1;
+        for r in &e.sound_rules {
+            *by.entry(format!("rule {r}")).or_default() += 1;
+        }
+    }
+    let mut out = format!("{} cards\n", entries.len());
+    for (k, n) in by {
+        out += &format!("{n:5}  {k}\n");
+    }
+    out
 }
 
 fn entries_path(root: &Root) -> PathBuf {
@@ -391,6 +396,118 @@ pub fn lesson_sources(loans: &[LessonLoan], cards: &[BridgeEntry], glosses: &[Gl
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    use crate::testkit::Sandbox;
+
+    fn cards(s: &Sandbox) -> Vec<serde_json::Value> {
+        s.read("content/bridge/id.jsonl").lines().map(|l| serde_json::from_str(l).unwrap()).collect()
+    }
+
+    fn save(s: &Sandbox, cards: &[serde_json::Value]) {
+        let text: String = cards.iter().map(|c| format!("{c}\n")).collect();
+        s.write("content/bridge/id.jsonl", text);
+    }
+
+    #[test]
+    fn the_committed_cards_validate_sort_and_count() {
+        let s = Sandbox::with(&["content/bridge/id.jsonl", "content/bridge/sound-rules.json"]);
+        s.cli(&["bridge", "validate"]).unwrap();
+        let committed = load_entries(&s.root()).unwrap();
+        let sorted = s.read("content/bridge/id.jsonl");
+        let mut lines: Vec<&str> = sorted.lines().collect();
+        lines.reverse();
+        s.write("content/bridge/id.jsonl", lines.join("\n") + "\n");
+        let err = s.cli(&["bridge", "validate"]).unwrap_err();
+        assert!(err.to_string().contains("bridge issue(s)"), "{err}");
+        s.cli(&["bridge", "sort"]).unwrap();
+        assert_eq!(load_entries(&s.root()).unwrap(), committed, "sort restores the committed order");
+        s.cli(&["bridge", "validate"]).unwrap();
+        s.cli(&["bridge", "stats"]).unwrap();
+
+        let entries = load_entries(&s.root()).unwrap();
+        let text = stats(&entries);
+        assert!(text.starts_with(&format!("{} cards\n", entries.len())), "{text}");
+        let shifts: usize = text
+            .lines()
+            .filter(|l| l.contains("  shift "))
+            .map(|l| l.split_whitespace().next().unwrap().parse::<usize>().unwrap())
+            .sum();
+        assert_eq!(shifts, entries.len(), "every card has one shift");
+        assert!(text.contains("rule ta_marbuta_at"), "{text}");
+    }
+
+    #[test]
+    fn crosscheck_confirms_flags_and_lists_missing_cards() {
+        let s = Sandbox::with(&["content/bridge/id.jsonl", "content/bridge/sound-rules.json"]);
+        s.write(
+            "data/raw/kaikki-id.jsonl",
+            std::fs::read(crate::testkit::repo().join("fixtures/kaikki/id-sample.jsonl")).unwrap(),
+        );
+        let err = s.cli(&["bridge", "crosscheck"]).unwrap_err();
+        assert!(format!("{err:#}").contains("run `kabar-tools kaikki`"), "{err:#}");
+        s.cli(&["kaikki", "--lang", "id"]).unwrap();
+        let wikt: Vec<DictEntry> = read_jsonl(&wiktionary_path(&s.root())).unwrap();
+        let words: Vec<&str> = wikt.iter().map(|d| d.word.as_str()).collect();
+        assert_eq!(words, ["kabar", "kalimat", "pikir"], "only Arabic etymologies, sorted");
+        assert!(s.read("build/dict/id.jsonl").lines().count() >= 5, "the full dictionary");
+
+        // kabar now names another source, kalimat lost its Wiktionary mark,
+        // and pikir has no card.
+        let mut all = cards(&s);
+        all.retain(|c| c["word"] != "pikir");
+        for c in &mut all {
+            if c["word"] == "kabar" {
+                c["arabic"] = "سَلَام".into();
+            }
+            if c["word"] == "kalimat" {
+                c["sources"] = serde_json::json!(["claude-code"]);
+            }
+        }
+        save(&s, &all);
+        s.cli(&["bridge", "crosscheck"]).unwrap();
+        assert_eq!(cards(&s), all, "without --write the cards stay");
+        assert_eq!(s.read("build/bridge-todo.txt"), "pikir\n");
+        s.cli(&["bridge", "crosscheck", "--write"]).unwrap();
+        let after = cards(&s);
+        let card = |w: &str| after.iter().find(|c| c["word"] == w).unwrap().clone();
+        assert_eq!(card("kalimat")["sources"], serde_json::json!(["claude-code", "wiktionary"]));
+        // A differing card gains nothing.
+        assert_eq!(card("kabar")["sources"], all.iter().find(|c| c["word"] == "kabar").unwrap()["sources"]);
+    }
+
+    #[test]
+    fn lesson_loans_are_checked_against_the_cards() {
+        let s = Sandbox::with(&["content/bridge/id.jsonl", "content/bridge/sound-rules.json"]);
+        s.write(
+            "content/lessons/id/bipa1.u01.l01.yaml",
+            "id: bipa1.u01.l01\nnew_words:\n  - {word: kabar, arabic: خبر}\n  - {word: rumah}\n  - {word: kalimat, arabic: سلام}\n",
+        );
+        s.write("content/lessons/id/notes.md", "not a lesson");
+        let issues = check_lessons(&s.root()).unwrap();
+        assert_eq!(issues.len(), 1, "{issues:?}");
+        assert!(
+            issues[0].starts_with("bipa1.u01.l01: kalimat: arabic سلام but the Bridge card kalimat says"),
+            "{issues:?}"
+        );
+        // Javanese lessons and glosses are read when they exist.
+        s.write(
+            "content/lessons/jv/j1.u01.l01.yaml",
+            "id: j1.u01.l01\nnew_words:\n  - {word: kabare, arabic: خبر}\n",
+        );
+        s.write("content/glosses/jv/plan.tsv", "");
+        let issues = check_lessons(&s.root()).unwrap();
+        assert!(issues.iter().any(|i| i.starts_with("j1.u01.l01: kabare: no Bridge card")), "{issues:?}");
+    }
+
+    #[test]
+    fn broken_files_are_named() {
+        let s = Sandbox::with(&["content/bridge/sound-rules.json"]);
+        s.write("content/bridge/id.jsonl", "{\"word\":\"x\"}\n");
+        let err = s.cli(&["bridge", "validate"]).unwrap_err();
+        assert!(format!("{err:#}").contains("id.jsonl:1"), "{err:#}");
+        s.write("content/bridge/sound-rules.json", "[");
+        assert!(load_rules(&s.root()).is_err());
+    }
 
     #[test]
     fn validates_cards_and_rules() {

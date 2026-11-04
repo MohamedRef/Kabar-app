@@ -45,16 +45,23 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
             Ok(())
         }
         Cmd::Stats => {
-            let count =
-                |f: fn(&SpeechLevelEntry) -> &Vec<String>| rows.iter().filter(|r| !f(r).is_empty()).count();
-            println!("{} rows", rows.len());
-            println!("{:5}  with madya", count(|r| &r.madya));
-            println!("{:5}  with krama", count(|r| &r.krama));
-            println!("{:5}  with krama inggil", count(|r| &r.krama_inggil));
-            println!("{:5}  with krama andhap", count(|r| &r.krama_andhap));
+            print!("{}", stats(&rows));
             Ok(())
         }
     }
+}
+
+/// Rows, and rows with a form at each level above ngoko.
+fn stats(rows: &[SpeechLevelEntry]) -> String {
+    let count = |f: fn(&SpeechLevelEntry) -> &Vec<String>| rows.iter().filter(|r| !f(r).is_empty()).count();
+    format!(
+        "{} rows\n{:5}  with madya\n{:5}  with krama\n{:5}  with krama inggil\n{:5}  with krama andhap\n",
+        rows.len(),
+        count(|r| &r.madya),
+        count(|r| &r.krama),
+        count(|r| &r.krama_inggil),
+        count(|r| &r.krama_andhap)
+    )
 }
 
 /// Forms at one level of a row.
@@ -136,6 +143,31 @@ pub fn validate(rows: &[SpeechLevelEntry]) -> Vec<String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn the_committed_table_validates_and_counts() {
+        let s = crate::testkit::Sandbox::with(&["content/javanese/speech-levels.jsonl"]);
+        s.cli(&["levels", "validate"]).unwrap();
+        s.cli(&["levels", "stats"]).unwrap();
+        let rows = load(&s.root()).unwrap();
+        let text = stats(&rows);
+        assert!(text.starts_with(&format!("{} rows\n", rows.len())), "{text}");
+        let krama = rows.iter().filter(|r| !r.krama.is_empty()).count();
+        assert!(text.contains(&format!("{krama:5}  with krama\n")), "{text}");
+
+        // A row with no form above ngoko and an unusable id fails the table.
+        let mut bad: serde_json::Value = serde_json::to_value(&rows[0]).unwrap();
+        bad["id"] = "Bad Id".into();
+        for level in ["madya", "krama", "krama_inggil", "krama_andhap"] {
+            bad[level] = serde_json::json!([]);
+        }
+        bad["examples"] = serde_json::json!([]);
+        let mut text = s.read("content/javanese/speech-levels.jsonl");
+        text.push_str(&format!("{bad}\n"));
+        s.write("content/javanese/speech-levels.jsonl", text);
+        let err = s.cli(&["levels", "validate"]).unwrap_err();
+        assert_eq!(err.to_string(), "2 speech-level issue(s)");
+    }
 
     #[test]
     fn validates_rows() {

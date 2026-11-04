@@ -35,6 +35,8 @@ use decision::{ChoiceMark, blank_hugs_next, choice_mark, show_voice_note, voice_
 mod test_player;
 pub use test_player::PlacementInvite;
 pub(crate) use test_player::item_prompt;
+#[cfg(test)]
+pub(crate) mod sim;
 pub(crate) mod text;
 
 use dioxus::prelude::*;
@@ -525,5 +527,7 @@ fn chime(ui: Ui) {
 #[derive(Clone, Copy)]
 pub struct NoSoundBanner;
 
+#[cfg(test)]
+mod play_tests;
 #[cfg(test)]
 mod tests;

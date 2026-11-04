@@ -76,43 +76,52 @@ fn line(i: &Item, words: usize) -> String {
 }
 
 pub fn run(root: &Root, args: Args) -> Result<()> {
+    report_to(root, args, &mut std::io::stdout().lock())
+}
+
+pub fn report_to(root: &Root, args: Args, out: &mut dyn std::io::Write) -> Result<()> {
     let items = report(root.path())?;
-    println!("glossed limit 8% (levels 1-2) / 12% later; raw (notes ignored) limit 15% / 18%");
-    println!("{:<9} {:>6} {:>8} {:>6} {:>8} {:>6}", "kind", "items", "median", "over", "raw med", "over");
+    writeln!(out, "glossed limit 8% (levels 1-2) / 12% later; raw (notes ignored) limit 15% / 18%")?;
+    writeln!(
+        out,
+        "{:<9} {:>6} {:>8} {:>6} {:>8} {:>6}",
+        "kind", "items", "median", "over", "raw med", "over"
+    )?;
     for kind in ["sinetron", "radio", "dialogue"] {
         let of: Vec<&Item> = items.iter().filter(|i| i.kind == kind).collect();
         let over = of.iter().filter(|i| i.over()).count();
         let raw_over = of.iter().filter(|i| i.raw_over()).count();
-        println!(
+        writeln!(
+            out,
             "{kind:<9} {:>6} {:>7.1}% {over:>6} {:>7.1}% {raw_over:>6}",
             of.len(),
             median(of.iter().map(|i| i.percent()).collect()),
             median(of.iter().map(|i| i.raw_percent()).collect())
-        );
+        )?;
     }
-    println!();
+    writeln!(out)?;
     let mut shown: Vec<&Item> = items.iter().filter(|i| args.all || i.over() || i.raw_over()).collect();
     shown.sort_by(|a, b| b.percent().total_cmp(&a.percent()));
     for i in &shown {
-        println!("{}", line(i, if args.words { usize::MAX } else { 6 }));
+        writeln!(out, "{}", line(i, if args.words { usize::MAX } else { 6 }))?;
     }
     let over_dialogues: Vec<&Item> =
         items.iter().filter(|i| i.kind == "dialogue" && (i.over() || i.raw_over())).collect();
     let path = root.path().join(BASELINE);
     if args.baseline {
-        let mut out = String::from(
+        let mut tsv = String::from(
             "# Lesson dialogues over the reading-coverage limit (#371). id<TAB>glossed%<TAB>raw%.\n\
              # Teach or reword to drop a row; `kabar-tools coverage --baseline` rewrites this list.\n",
         );
         for i in &over_dialogues {
-            writeln!(out, "{}\t{:.1}\t{:.1}", i.id, i.percent(), i.raw_percent())?;
+            writeln!(tsv, "{}\t{:.1}\t{:.1}", i.id, i.percent(), i.raw_percent())?;
         }
-        std::fs::write(&path, out)?;
-        println!("wrote {} rows to {BASELINE}", over_dialogues.len());
+        std::fs::write(&path, tsv)?;
+        writeln!(out, "wrote {} rows to {BASELINE}", over_dialogues.len())?;
     }
     if args.warn {
         for i in items.iter().filter(|i| (i.over() || i.raw_over()) && i.kind != "dialogue") {
-            println!("{}", warning(i, ""));
+            writeln!(out, "{}", warning(i, ""))?;
         }
         let known: BTreeSet<String> = std::fs::read_to_string(&path)
             .unwrap_or_default()
@@ -123,19 +132,127 @@ pub fn run(root: &Root, args: Args) -> Result<()> {
             .map(str::to_owned)
             .collect();
         for i in over_dialogues.iter().filter(|i| !known.contains(&i.id)) {
-            println!("{}", warning(i, &format!(" (new: not in {BASELINE})")));
+            writeln!(out, "{}", warning(i, &format!(" (new: not in {BASELINE})")))?;
         }
         let now: BTreeSet<&str> = over_dialogues.iter().map(|i| i.id.as_str()).collect();
         for id in known.iter().filter(|id| !now.contains(id.as_str())) {
-            println!(
+            writeln!(
+                out,
                 "::warning title=Reading coverage::{id} is now within the limit; drop its row from {BASELINE}"
-            );
+            )?;
         }
-        println!(
+        writeln!(
+            out,
             "{} lesson dialogues over a limit ({} listed in {BASELINE})",
             over_dialogues.len(),
             known.len()
-        );
+        )?;
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::testkit::{Sandbox, text};
+
+    fn content() -> Sandbox {
+        // The first units of each track: lessons the curriculum lists but
+        // the tree lacks are skipped, and so are episodes after them.
+        let s = Sandbox::with(&["curriculum", "content/freq", "content/cast.yaml"]);
+        s.copy_matching("content/lessons/id", &["bipa1.u01", "bipa1.u02", "bipa1.u03"]);
+        s.copy_matching("content/lessons/jv", &["j1.u01"]);
+        s.copy_matching("content/radio/id", &["radio.bipa1.u01", "radio.bipa1.u02", "radio.bipa1.u03"]);
+        s.copy_matching("content/stories/sinetron", &["sinetron.e0"]);
+        s
+    }
+
+    fn report(s: &Sandbox, args: Args) -> String {
+        let mut out = Vec::new();
+        report_to(&s.root(), args, &mut out).unwrap();
+        text(out)
+    }
+
+    fn args() -> Args {
+        Args { warn: false, all: false, words: false, baseline: false }
+    }
+
+    #[test]
+    fn the_baseline_ratchet_names_new_and_fixed_dialogues() {
+        let s = content();
+        s.write(BASELINE, "# header\nbipa9.u01.l01\t40.0\t40.0\n\n");
+        let warned = report(&s, Args { warn: true, ..args() });
+        assert!(
+            warned.contains(
+                "::warning title=Reading coverage::bipa9.u01.l01 is now within the limit; drop its row from content/freq/dialogue-over.tsv"
+            ),
+            "{warned}"
+        );
+
+        let wrote = report(&s, Args { baseline: true, ..args() });
+        let rows: Vec<String> =
+            s.read(BASELINE).lines().filter(|l| !l.starts_with('#')).map(str::to_owned).collect();
+        assert!(wrote.contains(&format!("wrote {} rows to {BASELINE}", rows.len())), "{wrote}");
+        for row in &rows {
+            let cols: Vec<&str> = row.split('\t').collect();
+            assert_eq!(cols.len(), 3, "{row}");
+            assert!(cols[1].parse::<f64>().is_ok() && cols[2].parse::<f64>().is_ok(), "{row}");
+        }
+        // Right after a baseline, every over dialogue is listed and none is stale.
+        let warned = report(&s, Args { warn: true, ..args() });
+        assert!(!warned.contains("(new: not in") && !warned.contains("now within"), "{warned}");
+        assert!(
+            warned.contains(&format!(
+                "{} lesson dialogues over a limit ({} listed in",
+                rows.len(),
+                rows.len()
+            )),
+            "{warned}"
+        );
+        // A dialogue missing from the list is new.
+        if let Some(first) = rows.first() {
+            let id = first.split('\t').next().unwrap();
+            s.write(BASELINE, "");
+            let warned = report(&s, Args { warn: true, ..args() });
+            assert!(warned.contains(&format!("{id} has")) && warned.contains("(new: not in"), "{warned}");
+        }
+    }
+
+    #[test]
+    fn lists_every_item_with_all_and_every_word_with_words() {
+        let s = content();
+        let summary = report(&s, args());
+        assert!(summary.starts_with("glossed limit 8% (levels 1-2) / 12% later"), "{summary}");
+        for kind in ["sinetron", "radio", "dialogue"] {
+            assert!(summary.lines().any(|l| l.starts_with(kind)), "{kind} row in\n{summary}");
+        }
+        let all = report(&s, Args { all: true, words: true, ..args() });
+        let items = all.lines().filter(|l| l.contains("% / ") && l.contains("raw")).count();
+        assert!(items > 20, "every Sinetron, Radio and dialogue item: {items}");
+        assert!(all.lines().count() > summary.lines().count());
+        s.cli(&["coverage"]).unwrap();
+    }
+
+    #[test]
+    fn median_and_lines_read_well() {
+        assert_eq!(median(vec![]), 0.0);
+        assert_eq!(median(vec![3.0, 1.0, 2.0]), 2.0);
+        let item = Item {
+            id: "e01".into(),
+            kind: "sinetron",
+            after: "bipa1.u02".into(),
+            level: 0,
+            tokens: 100,
+            unknown: vec!["pasar".into(), "pasar".into(), "ramai".into()],
+            raw: vec!["pasar".into(), "pasar".into(), "ramai".into()],
+        };
+        let l = line(&item, 6);
+        assert!(l.starts_with("e01") && l.contains("pasar×2, ramai"), "{l}");
+        let w = warning(&item, " (x)");
+        assert!(
+            w.starts_with("::warning title=Reading coverage::e01 has 3.0% words not taught by bipa1.u02"),
+            "{w}"
+        );
+        assert!(w.ends_with("pasar, ramai (x)"), "{w}");
+    }
 }
