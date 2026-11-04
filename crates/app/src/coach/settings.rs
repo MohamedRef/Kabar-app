@@ -20,7 +20,9 @@ pub fn CoachSettings() -> Element {
     };
     // Each editor changes one field of the current profile and saves it.
     let edit = move |f: Box<dyn FnOnce(&mut CoachProfile)>| {
-        if let Some(mut p) = coach.profile.peek().clone() {
+        // Clone first: the read guard must be gone before the save writes the signal.
+        let current = coach.profile.peek().clone();
+        if let Some(mut p) = current {
             f(&mut p);
             save.call(p);
         }

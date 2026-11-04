@@ -60,4 +60,31 @@ mod tests {
         let json = serde_json::to_string(&h).unwrap();
         assert_eq!(serde_json::from_str::<Hlc>(&json).unwrap(), h);
     }
+
+    fn arb_hlc() -> impl proptest::strategy::Strategy<Value = Hlc> {
+        use proptest::prelude::*;
+        (0u64..4, 0u32..3, prop_oneof![Just("s24u"), Just("tab-s11"), Just("mac")])
+            .prop_map(|(wall, counter, device)| hlc(wall, counter, device))
+    }
+
+    proptest::proptest! {
+        /// LWW needs a strict total order: exactly one of a<b, a==b, a>b,
+        /// equal only for the same (wall, counter, device), and transitive.
+        #[test]
+        fn is_a_strict_total_order(a in arb_hlc(), b in arb_hlc(), c in arb_hlc()) {
+            let relations = [a < b, a == b, a > b].iter().filter(|r| **r).count();
+            proptest::prop_assert_eq!(relations, 1);
+            proptest::prop_assert_eq!(a == b, (a.wall_ms, a.counter, &a.device) == (b.wall_ms, b.counter, &b.device));
+            proptest::prop_assert_eq!(a.partial_cmp(&b), Some(a.cmp(&b)));
+            if a < b && b < c {
+                proptest::prop_assert!(a < c);
+            }
+        }
+
+        #[test]
+        fn json_keeps_the_order(a in arb_hlc(), b in arb_hlc()) {
+            let back = |h: &Hlc| serde_json::from_str::<Hlc>(&serde_json::to_string(h).unwrap()).unwrap();
+            proptest::prop_assert_eq!(back(&a).cmp(&back(&b)), a.cmp(&b));
+        }
+    }
 }

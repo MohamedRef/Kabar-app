@@ -135,8 +135,7 @@ fn Hub() -> Element {
     let db = use_context::<crate::Db>();
     let known = use_hook(|| content::bridge().as_ref().ok().map(|d| bridge::known_deck(d).len()));
     let pick = HUB_VIEW.pick(&db);
-    let mut games: Vec<&GameCard> = GAMES.iter().collect();
-    crate::views::sort_by(&mut games, pick.sort, |_| false, |g| ui.t(g.title).to_string());
+    let games = hub_order(ui.lang(), pick.sort, known);
 
     rsx! {
         header { class: "play-intro",
@@ -178,6 +177,23 @@ fn Hub() -> Element {
             }
         }
     }
+}
+
+/// The hub's games in `sort` order. Sorting by name uses the title each
+/// tile shows, so the Bridge sorts by its "Kamu sudah tahu N kata" headline
+/// when the deck loaded (`known`).
+fn hub_order(
+    lang: kabar_core::locale::UiLanguage,
+    sort: crate::views::Sort,
+    known: Option<usize>,
+) -> Vec<&'static GameCard> {
+    let mut games: Vec<&GameCard> = GAMES.iter().collect();
+    let shown = |g: &&GameCard| match known {
+        Some(n) if g.route == Route::Deck => deck_headline(n),
+        _ => crate::i18n::t(lang, g.title).to_string(),
+    };
+    crate::views::sort_by(&mut games, sort, |_| false, shown);
+    games
 }
 
 /// The title bar of a Play screen, with the way back to the hub.
@@ -323,5 +339,36 @@ mod tests {
         }
         assert!(Route::Pasar.latin_title());
         assert!(!Route::Deck.latin_title());
+    }
+
+    /// Sorting the hub by name follows the titles on the tiles (the
+    /// Bridge's headline, not its hidden catalog title).
+    #[test]
+    fn the_hub_sorts_by_the_titles_it_shows() {
+        use crate::views::Sort;
+        let names = |known| -> Vec<String> {
+            hub_order(UiLanguage::En, Sort::Name, known)
+                .iter()
+                .map(|g| match known {
+                    Some(n) if g.route == Route::Deck => deck_headline(n),
+                    _ => crate::i18n::t(UiLanguage::En, g.title).to_string(),
+                })
+                .collect()
+        };
+        for known in [Some(493), None] {
+            let shown = names(known);
+            let mut sorted = shown.clone();
+            sorted.sort_by_key(|s| s.to_lowercase());
+            assert_eq!(shown, sorted, "{known:?}");
+        }
+        let routes =
+            |known| hub_order(UiLanguage::En, Sort::Name, known).iter().map(|g| g.route).collect::<Vec<_>>();
+        let with_deck = routes(Some(493));
+        let at = |r| with_deck.iter().position(|x| *x == r).unwrap();
+        assert!(at(Route::Pagi) < at(Route::Deck) && at(Route::Deck) < at(Route::Pasar), "{with_deck:?}");
+        // The hub's own order is kept by default.
+        let course: Vec<Route> =
+            hub_order(UiLanguage::En, Sort::Course, Some(1)).iter().map(|g| g.route).collect();
+        assert_eq!(course, GAMES.iter().map(|g| g.route).collect::<Vec<_>>());
     }
 }

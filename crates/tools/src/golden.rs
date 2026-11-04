@@ -68,23 +68,30 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
             Ok(())
         }
         Cmd::Stats => {
-            for task in Task::ALL {
-                let path = dir(root).join(format!("{}.yaml", task.as_str()));
-                let Ok(set) = load(&path) else {
-                    println!("{:22} missing", task.as_str());
-                    continue;
-                };
-                let verified = set.items.iter().filter(|i| i.verified).count();
-                let capture = set.items.iter().filter(|i| i.tags.iter().any(|t| t == NEEDS_CAPTURE)).count();
-                println!(
-                    "{:22} {:3} items, {verified} verified, {capture} need capture",
-                    task.as_str(),
-                    set.items.len()
-                );
-            }
+            print!("{}", stats(root));
             Ok(())
         }
     }
+}
+
+/// Items per task, verified and pending capture.
+fn stats(root: &Root) -> String {
+    let mut out = String::new();
+    for task in Task::ALL {
+        let path = dir(root).join(format!("{}.yaml", task.as_str()));
+        let Ok(set) = load(&path) else {
+            out += &format!("{:22} missing\n", task.as_str());
+            continue;
+        };
+        let verified = set.items.iter().filter(|i| i.verified).count();
+        let capture = set.items.iter().filter(|i| i.tags.iter().any(|t| t == NEEDS_CAPTURE)).count();
+        out += &format!(
+            "{:22} {:3} items, {verified} verified, {capture} need capture\n",
+            task.as_str(),
+            set.items.len()
+        );
+    }
+    out
 }
 
 pub fn load(path: &Path) -> Result<GoldenSet> {
@@ -313,6 +320,47 @@ fn is_story_level(level: &str) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn validate_names_missing_unreadable_and_short_sets() {
+        let s = crate::testkit::Sandbox::with(&["content/golden", "fixtures/golden"]);
+        s.cli(&["golden", "validate"]).unwrap();
+        let table = stats(&s.root());
+        assert_eq!(table.lines().count(), Task::ALL.len());
+        let line = table.lines().find(|l| l.starts_with("grade_answer ")).unwrap();
+        let n = load(&dir(&s.root()).join("grade_answer.yaml")).unwrap().items.len();
+        assert!(line.contains(&format!("{n:3} items")), "{line}");
+        s.cli(&["golden", "stats"]).unwrap();
+
+        std::fs::remove_file(dir(&s.root()).join("grade_answer.yaml")).unwrap();
+        s.write("content/golden/translate_text.yaml", "task: [");
+        s.write(
+            "content/golden/explain_sentence.yaml",
+            "task: translate_text\nversion: 1\nrubric: \" \"\nitems:\n  - {id: a, input: x}\n  - {id: a, input: {}, expect: null}\n",
+        );
+        let err = s.cli(&["golden", "validate"]).unwrap_err();
+        let issues: usize = err.to_string().split_whitespace().next().unwrap().parse().unwrap();
+        assert!(issues >= 8, "{err}");
+        assert!(stats(&s.root()).contains("grade_answer           missing"));
+    }
+
+    #[test]
+    fn item_rules() {
+        let root = Root::new(Some(std::path::PathBuf::from("/nowhere")));
+        let set: GoldenSet = serde_yaml_ng::from_str(
+            "task: grade_answer\nversion: 1\nrubric: r\nitems:\n  - {id: a, input: {}, image: shots/a.png, criteria: [c]}\n",
+        )
+        .unwrap();
+        let issues = validate(&root, Task::GradeAnswer, &set);
+        for want in [
+            "1 items (30 needed)",
+            "a: image shots/a.png not found",
+            "a: input needs exercise, references[] and answer",
+            "a: expect is required",
+        ] {
+            assert!(issues.iter().any(|i| i == want), "{want}: {issues:?}");
+        }
+    }
     use serde_json::json;
 
     /// The §24 morphology test texts as a small story.

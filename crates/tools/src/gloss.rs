@@ -65,8 +65,13 @@ pub enum Cmd {
 }
 
 pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
+    run_to(root, cmd, &mut std::io::stdout().lock())
+}
+
+/// [`run`], printing to `out`.
+pub fn run_to(root: &Root, cmd: Cmd, out: &mut dyn std::io::Write) -> Result<()> {
     match cmd {
-        Cmd::Plan { lang, count } => plan(root, parse_lang(&lang)?, count),
+        Cmd::Plan { lang, count } => plan(root, parse_lang(&lang)?, count, out),
         Cmd::Status { lang } => {
             let lang = parse_lang(&lang)?;
             let plan = Plan::load(root, lang)?;
@@ -92,9 +97,13 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                         }
                     }
                 };
-                println!("batch {batch:03}: {state}");
+                writeln!(out, "batch {batch:03}: {state}")?;
             }
-            println!("{done} done, {bad} need fixes, {missing} missing ({} words planned)", plan.rows.len());
+            writeln!(
+                out,
+                "{done} done, {bad} need fixes, {missing} missing ({} words planned)",
+                plan.rows.len()
+            )?;
             Ok(())
         }
         Cmd::Next { lang } => {
@@ -104,14 +113,14 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                 let ok = batch_path(root, lang, batch).exists()
                     && validate_batch(root, &plan, batch).is_ok_and(|i| i.is_empty());
                 if !ok {
-                    print_words(&plan, batch);
+                    print_words(&plan, batch, out)?;
                     return Ok(());
                 }
             }
             Ok(())
         }
         Cmd::Words { lang, batch } => {
-            print_words(&Plan::load(root, parse_lang(&lang)?)?, batch);
+            print_words(&Plan::load(root, parse_lang(&lang)?)?, batch, out)?;
             Ok(())
         }
         Cmd::Validate { batch, lang } => {
@@ -131,7 +140,7 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                 for b in batches {
                     let issues = validate_batch(root, &plan, b)?;
                     for issue in &issues {
-                        println!("{}/batch-{b:03}: {issue}", lang.code());
+                        writeln!(out, "{}/batch-{b:03}: {issue}", lang.code())?;
                     }
                     failures += issues.len();
                 }
@@ -139,16 +148,16 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
             if failures > 0 {
                 bail!("{failures} gloss issue(s)");
             }
-            println!("glosses ok");
+            writeln!(out, "glosses ok")?;
             Ok(())
         }
         Cmd::Review { lang, batch } => {
             let lang = parse_lang(&lang)?;
             let entries = read_batch(&batch_path(root, lang, batch))?;
-            let out = root.build().join(format!("review/glosses-{}-{batch:03}.md", lang.code()));
-            fs::create_dir_all(out.parent().unwrap())?;
-            fs::write(&out, review_sheet(lang, batch, &entries))?;
-            println!("wrote {}", out.display());
+            let sheet = root.build().join(format!("review/glosses-{}-{batch:03}.md", lang.code()));
+            fs::create_dir_all(sheet.parent().unwrap())?;
+            fs::write(&sheet, review_sheet(lang, batch, &entries))?;
+            writeln!(out, "wrote {}", sheet.display())?;
             Ok(())
         }
     }
@@ -204,7 +213,7 @@ pub fn batch_path(root: &Root, lang: Lang, batch: u32) -> PathBuf {
 
 /// Append the next most frequent unplanned words until `count` are planned.
 /// Existing rows never move, so finished batches stay valid.
-fn plan(root: &Root, lang: Lang, count: usize) -> Result<()> {
+fn plan(root: &Root, lang: Lang, count: usize, report: &mut dyn std::io::Write) -> Result<()> {
     let freq = read_list(&root.freq_list(lang))?;
     let mut rows = Plan::load(root, lang).map(|p| p.rows).unwrap_or_default();
     let planned: HashSet<String> = rows.iter().map(|r| r.word.clone()).collect();
@@ -226,20 +235,22 @@ fn plan(root: &Root, lang: Lang, count: usize) -> Result<()> {
     let path = plan_path(root, lang);
     fs::create_dir_all(path.parent().unwrap())?;
     fs::write(&path, out)?;
-    println!(
+    writeln!(
+        report,
         "planned {} words ({} new) in {} batches",
         rows.len(),
         rows.len() - before,
         rows.len().div_ceil(BATCH_SIZE)
-    );
+    )?;
     Ok(())
 }
 
-fn print_words(plan: &Plan, batch: u32) {
-    println!("# batch {batch:03} ({})", plan.lang.code());
+fn print_words(plan: &Plan, batch: u32, out: &mut dyn std::io::Write) -> Result<()> {
+    writeln!(out, "# batch {batch:03} ({})", plan.lang.code())?;
     for r in plan.batch(batch) {
-        println!("{}\t{}", r.rank, r.word);
+        writeln!(out, "{}\t{}", r.rank, r.word)?;
     }
+    Ok(())
 }
 
 pub fn read_batch(path: &Path) -> Result<Vec<GlossEntry>> {
@@ -508,6 +519,138 @@ mod tests {
           {"text":"Saya sedang membaca buku.","translation":{"arz":"أنا بقرا كتاب.","ar":"أنا أقرأ كتابًا.","en":"I am reading a book."}},
           {"text":"Dia suka membaca koran.","translation":{"arz":"هو بيحب يقرا الجرنال.","ar":"يحب قراءة الصحف.","en":"He likes reading the newspaper."}}],
         "provenance":{"generator":"claude-code","prompt":"gloss@v1"}}"#;
+
+    use crate::testkit::{Sandbox, text};
+
+    fn glosses() -> Sandbox {
+        let s = Sandbox::with(&["content/freq/id.tsv", "content/glosses/id/plan.tsv"]);
+        s.copy_matching("content/glosses/id", &["batch-001", "batch-002"]);
+        s
+    }
+
+    fn run_text(s: &Sandbox, cmd: Cmd) -> (Result<()>, String) {
+        let mut out = Vec::new();
+        let r = run_to(&s.root(), cmd, &mut out);
+        (r, text(out))
+    }
+
+    fn id() -> String {
+        "id".into()
+    }
+
+    #[test]
+    fn status_and_next_follow_the_batch_files() {
+        let s = glosses();
+        let planned = Plan::load(&s.root(), Lang::Id).unwrap();
+        let batches = planned.batches().count();
+        let (r, status) = run_text(&s, Cmd::Status { lang: id() });
+        r.unwrap();
+        assert!(status.starts_with("batch 001: done\nbatch 002: done\nbatch 003: missing\n"), "{status}");
+        assert!(
+            status.ends_with(&format!(
+                "2 done, 0 need fixes, {} missing ({} words planned)\n",
+                batches - 2,
+                planned.rows.len()
+            )),
+            "{status}"
+        );
+        let (_, next) = run_text(&s, Cmd::Next { lang: id() });
+        assert!(next.starts_with("# batch 003 (id)\n"), "{next}");
+        assert_eq!(next.lines().count(), BATCH_SIZE + 1);
+
+        // A batch missing its last word needs a fix and comes next.
+        let two = s.read("content/glosses/id/batch-002.jsonl");
+        let cut: Vec<&str> = two.lines().take(BATCH_SIZE - 1).collect();
+        s.write("content/glosses/id/batch-002.jsonl", cut.join("\n"));
+        let (_, status) = run_text(&s, Cmd::Status { lang: id() });
+        assert!(status.contains("batch 002: 1 issue(s)\n"), "{status}");
+        let (_, next) = run_text(&s, Cmd::Next { lang: id() });
+        assert!(next.starts_with("# batch 002 (id)\n"), "{next}");
+        let (r, issues) = run_text(&s, Cmd::Validate { batch: None, lang: None });
+        assert_eq!(r.unwrap_err().to_string(), "1 gloss issue(s)");
+        assert!(issues.starts_with("id/batch-002: missing "), "{issues}");
+
+        let (_, words) = run_text(&s, Cmd::Words { lang: id(), batch: 1 });
+        let first = &planned.rows[0];
+        assert!(words.starts_with(&format!("# batch 001 (id)\n{}\t{}\n", first.rank, first.word)), "{words}");
+        assert!(run_text(&s, Cmd::Status { lang: "ms".into() }).0.is_err(), "unknown language");
+    }
+
+    #[test]
+    fn validate_checks_one_batch_or_every_file() {
+        let s = glosses();
+        let (r, out) = run_text(&s, Cmd::Validate { batch: Some(1), lang: Some(id()) });
+        r.unwrap();
+        assert_eq!(out, "glosses ok\n");
+        // Without --lang a batch number only checks languages that have the file.
+        run_text(&s, Cmd::Validate { batch: Some(7), lang: None }).0.unwrap();
+        let (r, out) = run_text(&s, Cmd::Validate { batch: Some(7), lang: Some(id()) });
+        assert!(r.is_err() && out.contains("id/batch-007: reading"), "{out}");
+        s.write("content/glosses/id/batch-001.jsonl", "{not json}\n");
+        let (_, status) = run_text(&s, Cmd::Status { lang: id() });
+        assert!(status.starts_with("batch 001: 1 issue(s)"), "{status}");
+        s.cli(&["gloss", "validate", "--batch", "2"]).unwrap();
+    }
+
+    #[test]
+    fn review_writes_a_sheet() {
+        let s = glosses();
+        let (r, out) = run_text(&s, Cmd::Review { lang: id(), batch: 1 });
+        r.unwrap();
+        assert!(out.starts_with("wrote ") && out.trim_end().ends_with("glosses-id-001.md"), "{out}");
+        let sheet = s.read("build/review/glosses-id-001.md");
+        let entries = read_batch(&batch_path(&s.root(), Lang::Id, 1)).unwrap();
+        assert!(sheet.starts_with("# Glosses id · batch 001\n"));
+        assert_eq!(sheet.matches("\n## ").count(), entries.len(), "one heading per word");
+        let e = &entries[0];
+        assert!(sheet.contains(&format!("## {}. {}", e.rank, e.word)));
+        assert!(sheet.contains(&format!("- > {}", e.examples[0].text)));
+    }
+
+    #[test]
+    fn plan_only_ever_appends() {
+        let s = Sandbox::with(&["content/freq/id.tsv"]);
+        let (r, out) = run_text(&s, Cmd::Plan { lang: id(), count: 150 });
+        r.unwrap();
+        assert_eq!(out, "planned 150 words (150 new) in 2 batches\n");
+        let first = Plan::load(&s.root(), Lang::Id).unwrap();
+        assert_eq!(first.batches().collect::<Vec<_>>(), [1, 2]);
+        let freq = crate::freq::read_list(&s.root().freq_list(Lang::Id)).unwrap();
+        assert_eq!((first.rows[0].rank, first.rows[0].word.as_str()), (freq[0].rank, freq[0].word.as_str()));
+
+        let (_, out) = run_text(&s, Cmd::Plan { lang: id(), count: 250 });
+        assert_eq!(out, "planned 250 words (100 new) in 3 batches\n");
+        let plan_text = s.read("content/glosses/id/plan.tsv");
+        let rows: Vec<&str> = plan_text.lines().filter(|l| !l.starts_with('#')).collect();
+        assert_eq!(rows.len(), 250);
+        assert_eq!(rows[150], format!("{}\t{}\t2", freq[150].rank, freq[150].word), "batch 2 fills up first");
+        s.write("content/glosses/id/plan.tsv", "1\tyang\n");
+        assert!(Plan::load(&s.root(), Lang::Id).is_err(), "a row needs three columns");
+    }
+
+    #[test]
+    fn javanese_and_bridge_rules() {
+        let jv = GOOD
+            .replace("\"lang\":\"id\"", "\"lang\":\"jv\"")
+            .replace("Saya sedang membaca buku.", "Aku maca buku kowé.");
+        let problems = check_entry(&entry(&jv), Lang::Jv);
+        assert!(problems.iter().any(|p| p.contains("without é/è")), "{problems:?}");
+        assert!(problems.iter().any(|p| p.contains("need the Indonesian equivalent")), "{problems:?}");
+        let mut e = entry(GOOD);
+        e.indonesian = Some("baca".into());
+        e.false_friend = e.senses.first().map(|s| s.gloss.clone());
+        e.arabic_origin = Some("qara'a".into());
+        e.affixes = vec!["meN-".into()];
+        e.root = None;
+        let problems = check_entry(&e, Lang::Jv);
+        for want in ["lang is Id", "affixes without a root", "arabic_origin must be in Arabic script"] {
+            assert!(problems.iter().any(|p| p.contains(want)), "{want}: {problems:?}");
+        }
+        let problems = check_entry(&e, Lang::Id);
+        assert!(problems.iter().any(|p| p.contains("for Javanese glosses only")), "{problems:?}");
+        e.arabic_origin = None;
+        assert!(check_entry(&e, Lang::Id).iter().any(|p| p == "false_friend needs arabic_origin"));
+    }
 
     #[test]
     fn good_entry_passes() {

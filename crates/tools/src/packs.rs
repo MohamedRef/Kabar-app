@@ -25,7 +25,9 @@ use kabar_core::packs::{
     self, Budget, DEFAULT_MONTHLY_BUDGET, FREE_MONTHLY_CHARS, PackInput, build_manifest, sha256_hex,
 };
 use kabar_protocol::lesson::LessonContent;
-use kabar_protocol::pack::{AUDIO_EXT, AUDIO_OUTPUT_FORMAT, PACK_FORMAT, PackIndex, PackManifest};
+use kabar_protocol::pack::{
+    AUDIO_EXT, AUDIO_OUTPUT_FORMAT, AudioEntry, PACK_FORMAT, PackIndex, PackManifest,
+};
 use serde::{Deserialize, Serialize};
 
 use crate::paths::Root;
@@ -388,7 +390,60 @@ fn select<'a>(manifests: &'a [PackManifest], units: &[String]) -> Result<Vec<&'a
         .collect()
 }
 
+/// One TTS request: (HTTP status, body) for a clip's SSML.
+type Speak<'a> = Box<dyn FnMut(&AudioEntry) -> Result<(u16, Vec<u8>)> + 'a>;
+
+/// How long to wait between requests, and after a 429 (times the try).
+struct Pace {
+    gap: Duration,
+    backoff: Duration,
+}
+
+/// F0 allows 20 requests a minute: one every 3.1 s stays under it.
+const AZURE_PACE: Pace = Pace { gap: Duration::from_millis(3_100), backoff: Duration::from_secs(15) };
+
 fn synthesize(root: &Root, args: SynthArgs) -> Result<()> {
+    synthesize_with(root, args, azure, AZURE_PACE)
+}
+
+/// Azure neural TTS, with the key and region from the environment.
+fn azure() -> Result<Speak<'static>> {
+    let var = |name: &str| std::env::var(name).ok().map(|v| v.trim().to_owned()).filter(|v| !v.is_empty());
+    let key =
+        var("AZURE_SPEECH_KEY").context("set AZURE_SPEECH_KEY in .env (git-ignored; never commit it)")?;
+    let region = var("AZURE_SPEECH_REGION").context("set AZURE_SPEECH_REGION in .env, e.g. southeastasia")?;
+    let agent: ureq::Agent = ureq::Agent::config_builder()
+        .http_status_as_error(false)
+        .timeout_global(Some(Duration::from_secs(60)))
+        .build()
+        .into();
+    let url = format!("https://{region}.tts.speech.microsoft.com/cognitiveservices/v1");
+    Ok(Box::new(move |entry: &AudioEntry| {
+        let res = agent
+            .post(&url)
+            .header("Ocp-Apim-Subscription-Key", &key)
+            .header("Content-Type", "application/ssml+xml")
+            .header("X-Microsoft-OutputFormat", AUDIO_OUTPUT_FORMAT)
+            .header("User-Agent", "kabar-tools")
+            .send(packs::clip_ssml(entry.voice, &entry.text));
+        let mut res = res.map_err(|e| anyhow::anyhow!("Azure TTS: {e}"))?;
+        let status = res.status().as_u16();
+        let mut buf = Vec::new();
+        if status == 200 {
+            res.body_mut().as_reader().read_to_end(&mut buf)?;
+        } else {
+            buf = res.body_mut().read_to_string().unwrap_or_default().into_bytes();
+        }
+        Ok((status, buf))
+    }))
+}
+
+fn synthesize_with<'a>(
+    root: &Root,
+    args: SynthArgs,
+    connect: impl FnOnce() -> Result<Speak<'a>>,
+    pace: Pace,
+) -> Result<()> {
     let cache = cache_dir(args.cache)?;
     let manifests = load_manifests(root)?;
     let mut chosen = select(&manifests, &args.units)?;
@@ -440,51 +495,30 @@ fn synthesize(root: &Root, args: SynthArgs) -> Result<()> {
         return Ok(());
     }
 
-    let var = |name: &str| std::env::var(name).ok().map(|v| v.trim().to_owned()).filter(|v| !v.is_empty());
-    let key =
-        var("AZURE_SPEECH_KEY").context("set AZURE_SPEECH_KEY in .env (git-ignored; never commit it)")?;
-    let region = var("AZURE_SPEECH_REGION").context("set AZURE_SPEECH_REGION in .env, e.g. southeastasia")?;
+    let mut speak = connect()?;
     fs::create_dir_all(&cache)?;
-    let agent: ureq::Agent = ureq::Agent::config_builder()
-        .http_status_as_error(false)
-        .timeout_global(Some(Duration::from_secs(60)))
-        .build()
-        .into();
-    let url = format!("https://{region}.tts.speech.microsoft.com/cognitiveservices/v1");
     let mut usage = usage;
     let total = todo.len();
-    // F0 allows 20 requests a minute: one every 3.1 s stays under it.
-    let gap = Duration::from_millis(3_100);
-    let mut last = Instant::now() - gap;
+    let mut last = Instant::now().checked_sub(pace.gap).unwrap_or_else(Instant::now);
     for (i, entry) in todo.into_iter().enumerate() {
         let mut tries = 0;
         let bytes = loop {
-            if let Some(wait) = gap.checked_sub(last.elapsed()) {
+            if let Some(wait) = pace.gap.checked_sub(last.elapsed()) {
                 std::thread::sleep(wait);
             }
             last = Instant::now();
-            let res = agent
-                .post(&url)
-                .header("Ocp-Apim-Subscription-Key", &key)
-                .header("Content-Type", "application/ssml+xml")
-                .header("X-Microsoft-OutputFormat", AUDIO_OUTPUT_FORMAT)
-                .header("User-Agent", "kabar-tools")
-                .send(packs::clip_ssml(entry.voice, &entry.text));
-            let mut res = res.map_err(|e| anyhow::anyhow!("Azure TTS: {e}"))?;
-            let status = res.status().as_u16();
+            let (status, body) = speak(entry)?;
             if status == 200 {
-                let mut buf = Vec::new();
-                res.body_mut().as_reader().read_to_end(&mut buf)?;
-                break buf;
+                break body;
             }
             tries += 1;
             if status == 429 && tries < 5 {
-                std::thread::sleep(Duration::from_secs(15 * tries));
+                std::thread::sleep(pace.backoff * tries);
                 continue;
             }
-            let body = res.body_mut().read_to_string().unwrap_or_default();
             // Keep what's done: hashes of the clips so far go into the manifests.
             record_cached(root, &cache)?;
+            let body = String::from_utf8_lossy(&body);
             bail!("Azure TTS answered {status}: {}", body.chars().take(200).collect::<String>());
         };
         ensure!(bytes.len() > 100, "Azure TTS returned an empty clip for {:?}", entry.text);
@@ -568,6 +602,223 @@ fn bundle(root: &Root, args: BundleArgs) -> Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    use crate::testkit::Sandbox;
+    use std::cell::Cell;
+
+    /// The first unit of each track, with its lessons and the curriculum.
+    fn tree() -> Sandbox {
+        let s = Sandbox::with(&["curriculum"]);
+        s.copy_matching("content/lessons/id", &["bipa1.u01."]);
+        s.copy_matching("content/lessons/jv", &["j1.u01."]);
+        s
+    }
+
+    fn manifest(s: &Sandbox, lang: &str, unit: &str) -> PackManifest {
+        serde_json::from_str(&s.read(&format!("content/packs/{lang}/{unit}.json"))).unwrap()
+    }
+
+    fn index(s: &Sandbox) -> PackIndex {
+        serde_json::from_str(&s.read("content/packs/index.json")).unwrap()
+    }
+
+    fn synth(cache: &Path, units: &[&str], budget: u64) -> SynthArgs {
+        SynthArgs {
+            units: units.iter().map(|u| u.to_string()).collect(),
+            budget,
+            fit: false,
+            dry_run: false,
+            cache: Some(cache.to_path_buf()),
+        }
+    }
+
+    const NOW: Pace = Pace { gap: Duration::ZERO, backoff: Duration::ZERO };
+
+    fn clip(entry: &AudioEntry) -> Vec<u8> {
+        format!("{:<200}", entry.key).into_bytes()
+    }
+
+    #[test]
+    fn build_writes_manifests_and_check_finds_them_stale() {
+        let s = tree();
+        let err = s.cli(&["packs", "build", "--check"]).unwrap_err();
+        assert!(err.to_string().contains("3 pack file(s) out of date"), "{err}");
+        assert!(!s.exists("content/packs/index.json"), "--check never writes");
+
+        s.cli(&["packs", "build"]).unwrap();
+        s.cli(&["packs", "build", "--check"]).unwrap();
+        s.cli(&["packs", "stats"]).unwrap();
+        let m = manifest(&s, "id", "bipa1.u01");
+        assert_eq!((m.id.as_str(), m.version), ("id/bipa1.u01", 1));
+        assert_eq!(m.totals.missing, m.totals.clips, "nothing synthesized yet");
+        assert!(m.totals.clips > 10 && m.audio.iter().all(|a| a.sha256.is_none()));
+        let index = index(&s);
+        let units: Vec<&str> = index.packs.iter().map(|p| p.unit.as_str()).collect();
+        assert_eq!(units, ["bipa1.u01", "j1.u01"], "Indonesian first, then Javanese");
+        assert!(index.packs.iter().all(|p| p.stop.as_deref().is_some_and(|s| !s.is_empty())), "towns");
+
+        // Edited lesson text bumps the version; rebuilding unchanged content doesn't.
+        let lesson =
+            fs::read_dir(s.path().join("content/lessons/id")).unwrap().next().unwrap().unwrap().path();
+        let yaml = fs::read_to_string(&lesson).unwrap();
+        fs::write(&lesson, format!("{yaml}\n# edited\n")).unwrap();
+        s.cli(&["packs", "build"]).unwrap();
+        assert_eq!(manifest(&s, "id", "bipa1.u01").version, 2);
+        assert_eq!(manifest(&s, "jv", "j1.u01").version, 1);
+    }
+
+    #[test]
+    fn stats_need_built_manifests() {
+        let s = tree();
+        s.write("content/packs/index.json", r#"{"format":1,"packs":[{"id":"id/bipa1.u01","language":"id","unit":"bipa1.u01","version":1,"content_hash":"x","lessons":1,"clips":1,"chars":1,"audio_bytes":0,"missing":1,"file":"x.tar"}]}"#);
+        let err = s.cli(&["packs", "stats"]).unwrap_err();
+        assert!(format!("{err:#}").contains("missing: run `packs build`"), "{err:#}");
+        s.write("content/packs/index.json", "not json");
+        assert!(s.cli(&["packs", "stats"]).is_err());
+    }
+
+    #[test]
+    fn synthesize_stays_inside_the_budget() {
+        let s = tree();
+        s.cli(&["packs", "build"]).unwrap();
+        let cache = tempfile::tempdir().unwrap();
+        let chars = manifest(&s, "id", "bipa1.u01").totals.chars;
+        let never = || -> Result<Speak<'static>> { panic!("no request may be sent") };
+
+        let err = synthesize_with(&s.root(), synth(cache.path(), &[], FREE_MONTHLY_CHARS + 1), never, NOW)
+            .unwrap_err();
+        assert!(err.to_string().contains("above Azure F0"), "{err}");
+        let err = synthesize_with(&s.root(), synth(cache.path(), &["bipa1.u01"], chars - 1), never, NOW)
+            .unwrap_err();
+        assert!(err.to_string().contains("Pick fewer --units, pass --fit"), "{err}");
+        let err =
+            synthesize_with(&s.root(), synth(cache.path(), &["bipa9.u01"], chars), never, NOW).unwrap_err();
+        assert!(err.to_string().contains("no pack for unit bipa9.u01"), "{err}");
+        // --fit takes whole units while they fit: none here.
+        let args = SynthArgs { fit: true, ..synth(cache.path(), &[], chars - 1) };
+        synthesize_with(&s.root(), args, never, NOW).unwrap();
+        // A dry run prices the work and sends nothing.
+        let path = cache.path().display().to_string();
+        s.cli(&["packs", "synthesize", "--dry-run", "--units", "bipa1.u01", "--cache", &path]).unwrap();
+        assert!(fs::read_dir(cache.path()).unwrap().next().is_none(), "the cache stays empty");
+    }
+
+    #[test]
+    fn synthesize_fills_the_cache_retries_429_and_records_hashes() {
+        let s = tree();
+        s.cli(&["packs", "build"]).unwrap();
+        let cache = tempfile::tempdir().unwrap();
+        let m = manifest(&s, "id", "bipa1.u01");
+        let calls = Cell::new(0);
+        let speak = || -> Result<Speak<'_>> {
+            Ok(Box::new(|e: &AudioEntry| {
+                calls.set(calls.get() + 1);
+                Ok(if calls.get() == 2 { (429, b"slow down".to_vec()) } else { (200, clip(e)) })
+            }))
+        };
+        synthesize_with(&s.root(), synth(cache.path(), &["bipa1.u01"], m.totals.chars), speak, NOW).unwrap();
+        assert_eq!(calls.get() as u32, m.totals.clips + 1, "one retry after the 429");
+        let done = manifest(&s, "id", "bipa1.u01");
+        assert_eq!(done.totals.missing, 0);
+        for a in &done.audio {
+            let bytes = fs::read(clip_path(cache.path(), &a.key)).unwrap();
+            assert_eq!(a.sha256.as_deref(), Some(sha256_hex(&bytes).as_str()));
+            assert_eq!(a.size, Some(bytes.len() as u64));
+        }
+        let usage = read_usage(cache.path()).unwrap();
+        assert_eq!(usage.months.get(&this_month()), Some(&m.totals.chars), "spent characters are counted");
+        assert_eq!(manifest(&s, "jv", "j1.u01").totals.missing, manifest(&s, "jv", "j1.u01").totals.clips);
+
+        // Everything cached: a second run records and sends nothing.
+        let never = || -> Result<Speak<'static>> { panic!("nothing left to synthesize") };
+        synthesize_with(&s.root(), synth(cache.path(), &["bipa1.u01"], m.totals.chars), never, NOW).unwrap();
+    }
+
+    #[test]
+    fn a_failed_request_keeps_the_clips_already_made() {
+        let s = tree();
+        s.cli(&["packs", "build"]).unwrap();
+        let cache = tempfile::tempdir().unwrap();
+        let chars = manifest(&s, "id", "bipa1.u01").totals.chars;
+        let calls = Cell::new(0);
+        let speak = || -> Result<Speak<'_>> {
+            Ok(Box::new(|e: &AudioEntry| {
+                calls.set(calls.get() + 1);
+                Ok(if calls.get() < 3 { (200, clip(e)) } else { (500, b"boom".to_vec()) })
+            }))
+        };
+        let err =
+            synthesize_with(&s.root(), synth(cache.path(), &["bipa1.u01"], chars), speak, NOW).unwrap_err();
+        assert_eq!(err.to_string(), "Azure TTS answered 500: boom");
+        let m = manifest(&s, "id", "bipa1.u01");
+        assert_eq!(
+            m.audio.iter().filter(|a| a.sha256.is_some()).count(),
+            2,
+            "the two clips made are recorded"
+        );
+
+        let short =
+            || -> Result<Speak<'static>> { Ok(Box::new(|_: &AudioEntry| Ok((200, b"tiny".to_vec())))) };
+        let err =
+            synthesize_with(&s.root(), synth(cache.path(), &["bipa1.u01"], chars), short, NOW).unwrap_err();
+        assert!(err.to_string().contains("empty clip"), "{err}");
+
+        let offline = || -> Result<Speak<'static>> { anyhow::bail!("set AZURE_SPEECH_KEY") };
+        let err =
+            synthesize_with(&s.root(), synth(cache.path(), &["bipa1.u01"], chars), offline, NOW).unwrap_err();
+        assert!(err.to_string().contains("AZURE_SPEECH_KEY"));
+    }
+
+    #[test]
+    fn bundle_packs_only_fully_synthesized_units() {
+        let s = tree();
+        s.cli(&["packs", "build"]).unwrap();
+        let cache = tempfile::tempdir().unwrap();
+        // Clips for the Indonesian unit only, straight into the cache.
+        for a in &manifest(&s, "id", "bipa1.u01").audio {
+            fs::write(clip_path(cache.path(), &a.key), clip(a)).unwrap();
+        }
+        fs::write(cache.path().join("notes.txt"), "not a clip").unwrap();
+        let out = tempfile::tempdir().unwrap();
+        let (c, o) = (cache.path().display().to_string(), out.path().display().to_string());
+        let err = s.cli(&["packs", "bundle", "--units", "j1.u01", "--cache", &c, "--out", &o]).unwrap_err();
+        assert!(
+            err.to_string().contains("j1.u01:") && err.to_string().contains("not synthesized yet"),
+            "{err}"
+        );
+
+        s.cli(&["packs", "bundle", "--cache", &c, "--out", &o]).unwrap();
+        let index = index(&s);
+        let row = index.packs.iter().find(|p| p.unit == "bipa1.u01").unwrap();
+        let tar = fs::read(out.path().join(&row.file)).unwrap();
+        assert_eq!(row.file_sha256.as_deref(), Some(sha256_hex(&tar).as_str()));
+        assert_eq!(row.file_size, Some(tar.len() as u64));
+        let jv = index.packs.iter().find(|p| p.unit == "j1.u01").unwrap();
+        assert!(jv.file_sha256.is_none() && !out.path().join(&jv.file).exists(), "skipped, not failed");
+        assert_eq!(
+            fs::read_to_string(out.path().join("index.json")).unwrap(),
+            s.read("content/packs/index.json")
+        );
+
+        // A relative --out lands under the root.
+        s.cli(&["packs", "bundle", "--units", "bipa1.u01", "--cache", &c, "--out", "dist/p"]).unwrap();
+        assert!(s.path().join("dist/p").join(&row.file).exists());
+    }
+
+    #[test]
+    fn the_cache_defaults_to_the_environment_then_home() {
+        assert_eq!(cache_dir(Some(PathBuf::from("/x"))).unwrap(), PathBuf::from("/x"));
+        let default = cache_dir(None).unwrap();
+        assert!(
+            std::env::var_os("KABAR_AUDIO_CACHE").is_some() || default.ends_with(".kabar/audio"),
+            "{}",
+            default.display()
+        );
+        assert_eq!(
+            unit_order(&("jv".into(), "j1.u01".into()), &("id".into(), "bipa2.u01".into())),
+            std::cmp::Ordering::Greater
+        );
+    }
 
     #[test]
     fn bundles_are_reproducible_and_checked() {
