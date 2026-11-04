@@ -19,6 +19,16 @@ use crate::annotated::parts::{ClassChip, Legend, PartsLine, SayWord};
 use crate::i18n::Msg;
 use crate::lesson::Rich;
 
+/// The word-class chip [`MorphDetail`] shows beside "Word breakdown", if
+/// any, so the gloss under it needn't repeat the same word (#603).
+pub(super) fn chip_label(w: &Word, voice: UiLanguage) -> Option<String> {
+    let built = w.analyzed.morph.is_some() || w.analyzed.token.redup.is_some();
+    if lang_of(w).is_none() || (w.class.is_none() && !built) {
+        return None;
+    }
+    w.class.map(|c| c.label().get(super::explain::voice_of(voice)).to_string())
+}
+
 /// The language Kabar treats the word as: its tag, else its dictionary entry.
 fn lang_of(w: &Word) -> Option<Lang> {
     match (w.tag, w.info.as_ref().map(|i| i.lang)) {
