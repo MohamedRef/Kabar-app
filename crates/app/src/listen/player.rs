@@ -405,6 +405,19 @@ pub fn ProgramPlayer(
         finished: Signal::new(false),
         missing: Signal::new(false),
     });
+    // The web reads a downloaded episode's sound from browser storage first.
+    #[cfg(target_arch = "wasm32")]
+    {
+        let (cache, id) = (cache.clone(), program.id.clone());
+        use_future(move || {
+            let (cache, id) = (cache.clone(), id.clone());
+            async move {
+                if let Some(cache) = cache {
+                    cache.load_track(&id).await;
+                }
+            }
+        });
+    }
     // The translation setting decides whether every line starts translated.
     let mut show_all = use_signal(|| ui.settings.peek().translation == TranslationMode::On);
     let mut revealed = use_signal(BTreeSet::<usize>::new);

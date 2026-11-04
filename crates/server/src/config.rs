@@ -59,6 +59,8 @@ pub struct Config {
     pub google_client_ids: Vec<String>,
     /// Lower-cased emails allowed to sign in.
     pub allowed_emails: Vec<String>,
+    /// Web app origins allowed beyond the built-in ones (`web::allowed_origin`).
+    pub web_origins: Vec<String>,
     pub token_key: Option<TokenKey>,
     pub workers_ai_model: String,
     pub workers_ai_vision_model: String,
@@ -115,6 +117,7 @@ impl Config {
             allowed_emails: get("ALLOWED_EMAILS")
                 .map(|v| list(&v).into_iter().map(|e| e.to_lowercase()).collect())
                 .unwrap_or_default(),
+            web_origins: get("WEB_ORIGINS").map(|v| list(&v)).unwrap_or_default(),
             token_key,
             workers_ai_model: get("WORKERS_AI_MODEL").unwrap_or_else(|| DEFAULT_WORKERS_AI_MODEL.into()),
             workers_ai_vision_model: get("WORKERS_AI_VISION_MODEL")

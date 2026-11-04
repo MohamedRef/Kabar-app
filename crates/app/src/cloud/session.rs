@@ -1,6 +1,8 @@
 //! The signed-in session. The refresh token lives in the Android Keystore
 //! (through `keyring-core`) and on the Mac in a file only the user's account
-//! can read (`FileVault`); never in the database.
+//! can read (`FileVault`); never in the database. The web build keeps it in
+//! the browser's `localStorage` for this site only ([`WebVault`]): the
+//! closest thing a browser has to a credential store.
 //!
 //! Why not the Mac Keychain: Kabar.app is self-signed, so it has no Apple
 //! team ID, and the Keychain then trusts only the exact build that saved an
@@ -20,13 +22,17 @@ pub trait SessionVault: Send {
 }
 
 /// The platform credential store.
+#[cfg(not(target_arch = "wasm32"))]
 pub struct KeyringVault {
     entry: Option<keyring_core::Entry>,
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 const SERVICE: &str = "app.kabar.cloud";
+#[cfg(not(target_arch = "wasm32"))]
 const USER: &str = "session";
 
+#[cfg(not(target_arch = "wasm32"))]
 impl KeyringVault {
     pub fn new() -> Self {
         init_default_store();
@@ -37,6 +43,7 @@ impl KeyringVault {
     }
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 impl SessionVault for KeyringVault {
     fn load(&self) -> Option<Session> {
         let json = self.entry.as_ref()?.get_password().ok()?;
@@ -56,6 +63,7 @@ impl SessionVault for KeyringVault {
     }
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 fn init_default_store() {
     static ONCE: std::sync::Once = std::sync::Once::new();
     type Store = keyring_core::Result<std::sync::Arc<keyring_core::CredentialStore>>;
@@ -154,6 +162,66 @@ fn write_private(path: &std::path::Path, bytes: &[u8]) -> std::io::Result<()> {
     std::fs::rename(&tmp, path)
 }
 
+/// The web build's vault, readable only by this site's pages:
+/// `localStorage` (kept across visits) or, on a computer that isn't the
+/// learner's, `sessionStorage` ([`WebVault::tab_only`]: gone when the tab
+/// closes). Signing out clears both.
+#[cfg(target_arch = "wasm32")]
+pub struct WebVault {
+    tab_only: bool,
+}
+
+#[cfg(target_arch = "wasm32")]
+impl WebVault {
+    const KEY: &str = "kabar:session";
+
+    /// Kept for the next visit.
+    pub fn kept() -> Self {
+        Self { tab_only: false }
+    }
+
+    /// Only for this tab.
+    #[allow(dead_code)] // the "not my computer" sign-in uses it
+    pub fn tab_only() -> Self {
+        Self { tab_only: true }
+    }
+
+    fn storage(tab_only: bool) -> Option<web_sys::Storage> {
+        let window = web_sys::window()?;
+        if tab_only { window.session_storage() } else { window.local_storage() }.ok().flatten()
+    }
+}
+
+#[cfg(target_arch = "wasm32")]
+impl SessionVault for WebVault {
+    fn load(&self) -> Option<Session> {
+        [true, false].into_iter().find_map(|tab_only| {
+            let json = Self::storage(tab_only)?.get_item(Self::KEY).ok().flatten()?;
+            serde_json::from_str(&json).ok()
+        })
+    }
+
+    fn save(&self, session: &Session) -> bool {
+        let Some(storage) = Self::storage(self.tab_only) else { return false };
+        let Ok(json) = serde_json::to_string(session) else { return false };
+        if let Some(other) = Self::storage(!self.tab_only) {
+            let _ = other.remove_item(Self::KEY);
+        }
+        storage
+            .set_item(Self::KEY, &json)
+            .map_err(|e| crate::diag::report!("saving the session failed: {e:?}"))
+            .is_ok()
+    }
+
+    fn clear(&self) {
+        for tab_only in [true, false] {
+            if let Some(storage) = Self::storage(tab_only) {
+                let _ = storage.remove_item(Self::KEY);
+            }
+        }
+    }
+}
+
 /// In memory only (tests, and the end-to-end check).
 #[derive(Default)]
 pub struct MemoryVault(std::sync::Mutex<Option<Session>>);
@@ -202,10 +270,10 @@ impl Auth {
     }
 
     /// A valid access token, refreshing (and rotating the refresh token) when
-    /// it is about to expire. Blocking.
-    pub fn access_token(&mut self, api: &Api, now_ms: u64, force: bool) -> Result<String, CloudError> {
+    /// it is about to expire.
+    pub async fn access_token(&mut self, api: &Api, now_ms: u64, force: bool) -> Result<String, CloudError> {
         if force || now_ms + REFRESH_MARGIN_MS >= self.session.access_expires_at_ms {
-            let fresh = api.refresh(&self.session.refresh_token)?;
+            let fresh = api.refresh(&self.session.refresh_token).await?;
             self.session = if self.vault.save(&fresh) {
                 fresh
             } else {

@@ -2761,13 +2761,13 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
             "The browser wouldn't keep your progress just now. Kabar keeps trying; if this stays, export your data from Settings."
         }
         (WebCloudLater, ArEg) => {
-            "نسخة الويب لسه من غير \u{2068}Kabar Cloud\u{2069}: تسجيل الدخول والمزامنة وأسئلة الذكاء الاصطناعي والأصوات جايين في الخطوة الجاية. كل الدروس والمراجعة والألعاب شغالة هنا."
+            "تسجيل الدخول على الويب هيبقى باسم مستخدم وباسورد، وجاي قريب. لحد ما ييجي، كل الدروس والمراجعة والألعاب شغالة هنا، والتقدّم محفوظ في المتصفح."
         }
         (WebCloudLater, Ar) => {
-            "نسخة الويب بلا \u{2068}Kabar Cloud\u{2069} حتى الآن: تسجيل الدخول والمزامنة وأسئلة الذكاء الاصطناعي والأصوات قادمة في المرحلة التالية. كل الدروس والمراجعة والألعاب تعمل هنا."
+            "تسجيل الدخول على الويب سيكون باسم مستخدم وكلمة مرور، وهو قادم قريبًا. حتى ذلك الحين تعمل كل الدروس والمراجعة والألعاب هنا، والتقدّم محفوظ في المتصفح."
         }
         (WebCloudLater, En) => {
-            "The web app doesn't reach Kabar Cloud yet: sign-in, sync, AI answers and cloud voices come next. Every lesson, review and game works here."
+            "On the web you'll sign in with a username and password, coming soon. Until then every lesson, review and game works here, with progress kept in this browser."
         }
     }
 }

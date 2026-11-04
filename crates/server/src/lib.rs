@@ -20,6 +20,7 @@ pub mod time;
 pub mod tokens;
 pub mod tts;
 pub mod usage;
+pub mod web;
 
 #[cfg(target_arch = "wasm32")]
 mod wasm;
