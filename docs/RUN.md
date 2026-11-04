@@ -10,6 +10,7 @@ brew install just
 just setup-mac        # Rust targets, dx 0.7.10, Java 17, Android SDK + NDK r27c
 source ~/.kabar/env.sh   # or open a new terminal
 just check            # fmt + clippy + tests must be green
+just coverage         # line coverage vs the CI floor (docs/TESTING.md)
 ```
 
 8 GB RAM tip: close Chrome/Android Studio while the first Android build runs; it's the heaviest step.
