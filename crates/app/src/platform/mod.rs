@@ -6,6 +6,7 @@ pub mod android;
 #[cfg(target_os = "macos")]
 mod macos;
 // Pure helpers; each native bridge uses a subset, other platforms only in tests.
+pub mod files;
 #[allow(dead_code)]
 mod ocr;
 pub mod time;
@@ -396,7 +397,11 @@ pub fn device_name() -> Option<String> {
         let out = std::process::Command::new("scutil").args(["--get", "ComputerName"]).output().ok()?;
         Some(String::from_utf8_lossy(&out.stdout).trim().to_string()).filter(|s| !s.is_empty())
     }
-    #[cfg(not(any(target_os = "android", target_os = "macos")))]
+    #[cfg(target_arch = "wasm32")]
+    {
+        Some(web::browser_name())
+    }
+    #[cfg(not(any(target_os = "android", target_os = "macos", target_arch = "wasm32")))]
     {
         None
     }

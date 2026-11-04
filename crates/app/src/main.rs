@@ -418,7 +418,6 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
     let db = db.clone();
     let coach = try_use_context::<Coach>();
     let words = use_context::<annotated::Words>();
-    #[cfg(not(target_arch = "wasm32"))]
     use_hook(move || {
         let Some(config) = cloud::CloudConfig::from_env() else { return };
         let device = kabar_protocol::cloud::DeviceInfo {
@@ -427,14 +426,22 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
             model: platform::device_model(),
             platform: if cfg!(target_os = "android") {
                 kabar_protocol::cloud::Platform::Android
+            } else if cfg!(target_arch = "wasm32") {
+                kabar_protocol::cloud::Platform::Web
             } else if cfg!(target_os = "macos") {
                 kabar_protocol::cloud::Platform::Macos
             } else {
                 kabar_protocol::cloud::Platform::Other
             },
         };
-        let vault = Box::new(cloud::session::KeyringVault::new());
-        let mut handle = match cloud::start(config, path, device, vault) {
+        #[cfg(not(target_arch = "wasm32"))]
+        let started = cloud::start(config, path, device, Box::new(cloud::session::KeyringVault::new()));
+        #[cfg(target_arch = "wasm32")]
+        let started = {
+            let _ = path;
+            cloud::start(config, db.clone(), device, Box::new(cloud::session::WebVault::kept()))
+        };
+        let mut handle = match started {
             Ok(h) => h,
             Err(e) => {
                 crate::diag::report!("sync didn't start: {e}");

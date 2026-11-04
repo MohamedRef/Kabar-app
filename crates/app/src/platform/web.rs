@@ -49,6 +49,15 @@ export async function idb_put(key, bytes) {
     tx.onabort = () => fail(tx.error);
   });
 }
+export async function idb_delete(key) {
+  const db = await open();
+  await new Promise((ok, fail) => {
+    const tx = db.transaction(STORE, "readwrite");
+    tx.objectStore(STORE).delete(key);
+    tx.oncomplete = () => ok();
+    tx.onerror = () => fail(tx.error);
+  });
+}
 export function persist() {
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist();
 }
@@ -69,6 +78,8 @@ extern "C" {
     async fn idb_get(key: &str) -> Result<JsValue, JsValue>;
     #[wasm_bindgen(catch)]
     async fn idb_put(key: &str, bytes: &[u8]) -> Result<JsValue, JsValue>;
+    #[wasm_bindgen(catch)]
+    async fn idb_delete(key: &str) -> Result<JsValue, JsValue>;
     fn persist();
     #[wasm_bindgen(js_name = download)]
     fn js_download(name: &str, mime: &str, bytes: &[u8]);
@@ -111,6 +122,29 @@ pub async fn boot() {
             stop_saving(Trouble::Failed);
             crate::diag::report!("browser storage unreadable: {e:?}");
         }
+    }
+    crate::platform::files::boot().await;
+}
+
+/// An IndexedDB entry's bytes (`None`: missing or unreadable).
+pub async fn idb_get_bytes(key: &str) -> Option<Vec<u8>> {
+    match idb_get(key).await {
+        Ok(v) if v.is_null() || v.is_undefined() => None,
+        Ok(v) => Some(js_sys::Uint8Array::new(&v).to_vec()),
+        Err(e) => {
+            crate::diag::report!("reading {key} from browser storage failed: {e:?}");
+            None
+        }
+    }
+}
+
+pub async fn idb_put_bytes(key: &str, bytes: &[u8]) -> Result<(), String> {
+    idb_put(key, bytes).await.map(drop).map_err(|e| format!("{e:?}"))
+}
+
+pub async fn idb_delete_key(key: &str) {
+    if let Err(e) = idb_delete(key).await {
+        crate::diag::report!("deleting {key} from browser storage failed: {e:?}");
     }
 }
 
@@ -225,4 +259,40 @@ pub fn StorageNotice() -> Element {
 pub fn download(name: &str, mime: &str, bytes: &[u8]) -> Result<String, String> {
     js_download(name, mime, bytes);
     Ok(name.to_string())
+}
+
+/// The Devices screen's name for this browser, e.g. "Chrome on Android".
+pub fn browser_name() -> String {
+    let agent = web_sys::window().and_then(|w| w.navigator().user_agent().ok()).unwrap_or_default();
+    browser_from_agent(&agent)
+}
+
+fn browser_from_agent(agent: &str) -> String {
+    let browser = if agent.contains("Edg/") {
+        "Edge"
+    } else if agent.contains("Firefox/") {
+        "Firefox"
+    } else if agent.contains("SamsungBrowser/") {
+        "Samsung Internet"
+    } else if agent.contains("Chrome/") {
+        "Chrome"
+    } else if agent.contains("Safari/") {
+        "Safari"
+    } else {
+        "a browser"
+    };
+    let os = if agent.contains("Android") {
+        "Android"
+    } else if agent.contains("iPhone") || agent.contains("iPad") {
+        "iOS"
+    } else if agent.contains("Mac OS X") {
+        "macOS"
+    } else if agent.contains("Windows") {
+        "Windows"
+    } else if agent.contains("Linux") {
+        "Linux"
+    } else {
+        return format!("Kabar web ({browser})");
+    };
+    format!("Kabar web ({browser} on {os})")
 }

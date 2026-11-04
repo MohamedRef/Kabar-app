@@ -78,8 +78,15 @@ async fn body<T: DeserializeOwned>(req: &mut Request) -> std::result::Result<T, 
 }
 
 fn bearer(req: &Request) -> Option<String> {
-    let h = req.headers().get("authorization").ok().flatten()?;
-    h.strip_prefix("Bearer ").map(|t| t.trim().to_owned())
+    if let Some(h) = req.headers().get("authorization").ok().flatten() {
+        return h.strip_prefix("Bearer ").map(|t| t.trim().to_owned());
+    }
+    // A browser's WebSocket can't carry Authorization (crate::web).
+    if req.path() == "/v1/sync" {
+        let protocols = req.headers().get("sec-websocket-protocol").ok().flatten()?;
+        return crate::web::ws_bearer(&protocols);
+    }
+    None
 }
 
 fn authenticate(req: &Request, key: &TokenKey) -> std::result::Result<AccessClaims, Result<Response>> {
@@ -518,14 +525,40 @@ async fn fetch(req: Request, env: Env, _ctx: Context) -> Result<Response> {
     let cfg = config(&env);
     let path = req.path();
     let method = req.method();
+    // The web app's origin (docs/WEB.md) gets CORS; others get none.
+    let origin = req.headers().get("origin")?.filter(|o| crate::web::allowed_origin(o, &cfg.web_origins));
+    if method == Method::Options && origin.is_some() {
+        return with_cors(Response::empty()?.with_status(204), origin.as_deref());
+    }
     let result = route(req, &env, &cfg, method, &path).await;
-    match result {
+    let response = match result {
         Ok(r) => Ok(r),
         Err(e) => {
             console_error!("{path}: {e}");
             api_error(ErrorCode::Internal, "something went wrong on Kabar Cloud")
         }
+    }?;
+    with_cors(response, origin.as_deref())
+}
+
+/// Adds the CORS headers for an allowed web app origin. A WebSocket upgrade
+/// (status 101) passes through untouched: browsers don't apply CORS to it.
+fn with_cors(mut response: Response, origin: Option<&str>) -> Result<Response> {
+    let Some(origin) = origin else { return Ok(response) };
+    if response.status_code() == 101 {
+        return Ok(response);
     }
+    let headers = Headers::new();
+    for (k, v) in response.headers().entries() {
+        headers.set(&k, &v)?;
+    }
+    headers.set("access-control-allow-origin", origin)?;
+    headers.set("vary", "Origin")?;
+    headers.set("access-control-allow-headers", crate::web::ALLOW_HEADERS)?;
+    headers.set("access-control-allow-methods", crate::web::ALLOW_METHODS)?;
+    headers.set("access-control-max-age", crate::web::MAX_AGE)?;
+    response = response.with_headers(headers);
+    Ok(response)
 }
 
 async fn route(mut req: Request, env: &Env, cfg: &Config, method: Method, path: &str) -> Result<Response> {
@@ -551,6 +584,12 @@ async fn route(mut req: Request, env: &Env, cfg: &Config, method: Method, path: 
                     let headers = Headers::new();
                     headers.set("upgrade", "websocket")?;
                     headers.set(DEVICE_HEADER, &claims.dev.0)?;
+                    // The browser offered its token as a subprotocol: the
+                    // socket must answer with the one it picks.
+                    let offered = req.headers().get("sec-websocket-protocol")?;
+                    if offered.as_deref().and_then(crate::web::ws_bearer).is_some() {
+                        headers.set(crate::web::PROTOCOL_HEADER, crate::web::WS_PROTOCOL)?;
+                    }
                     let mut init = RequestInit::new();
                     init.with_method(Method::Get).with_headers(headers);
                     let forwarded = Request::new_with_init("https://account/ws", &init)?;

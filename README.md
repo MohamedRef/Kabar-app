@@ -56,8 +56,10 @@ waits for the `CLOUDFLARE_API_TOKEN` repo secret.
 the "Crafting Apps" (one codebase, a thin web shell, a static site). Lessons,
 review, stats, Kak Nur, the Reader, Play, Watch & listen and themes all run in
 the browser, with progress kept in the browser's IndexedDB and exports as
-downloads. Kabar Cloud from the browser (sign-in, sync, AI, cloud voices),
-offline packs and OCR come in phase 2 ([docs/WEB.md](docs/WEB.md)).
+downloads. Phase 2 brings Kabar Cloud into the browser: live sync with the
+phone and Mac, AI answers and cloud voices (kept in the browser), signed in
+with a username and password. Offline packs and OCR come in phase 3
+([docs/WEB.md](docs/WEB.md)).
 
 ## Content in numbers
 
@@ -124,7 +126,7 @@ phased for after M13, never dropped.
 | M0 | Research, plan, free-tier check, engine bake-off | 🟡 code done | run the bake-off on the Mac with real keys |
 | M1 | Workspace, Dioxus app on all three devices, i18n + RTL, themes, SQLite, Pen Lab | ✅ done | first install on the devices |
 | M2 | Kabar Cloud v0: Google sign-in, devices, live sync, key vault, AI/TTS proxy | 🟡 code done | add the Cloudflare token secret and run the Deploy Kabar Cloud workflow (no Mac needed); Kabar's own Google client (it borrows Batna's for now) |
-| M2+ | Web app (WebAssembly) on a static Cloudflare Worker | 🟡 phase 1 done | phase 2: Kabar Cloud from the browser (sign-in, sync, AI, voices), offline packs ([docs/WEB.md](docs/WEB.md)) |
+| M2+ | Web app (WebAssembly) on a static Cloudflare Worker | 🟡 phases 1–2 done | sync, AI and cloud voices in the browser; username + password sign-in from the login work; phase 3: offline packs, OCR ([docs/WEB.md](docs/WEB.md)) |
 | M3 | Dictionary import + language engine | ✅ done | |
 | M4 | Content pipeline v1: frequency lists, glosses, grammar library, golden sets | ✅ done | learner review of the content |
 | M5 | Reader, Screenshot Decoder, Share-to-Kabar, pen pointing | ✅ done | pen dragging deferred |
