@@ -38,7 +38,11 @@ All JSON. Authenticated routes take `Authorization: Bearer <access_token>`. Erro
 | `GET /v1/health` | `{ name, protocol }` |
 | `POST /v1/auth/google` | `{ id_token, device }` → `Session` |
 | `POST /v1/auth/refresh` | `{ refresh_token }` → new `Session` (the old refresh token stops working) |
+| `POST /v1/auth/password` | `{ username, password_key, device }` → `Session` (§4.1); `401 wrong_password`, `429 too_many_tries` with `retry_after_ms` |
 | `POST /v1/auth/signout` | signs this device out |
+| `GET /v1/login` | `{ username }` (`null` when none is set) |
+| `POST /v1/login` | `{ username, password_key }` sets or changes them → `{ username }`; `409 username_taken` |
+| `DELETE /v1/login` | turns username sign-in off |
 | `GET /v1/devices` | Devices screen: `{ devices: [DeviceSummary] }` |
 | `DELETE /v1/devices/{id}` | remote sign-out |
 | `PUT /v1/devices/me/push` | `{ token }` (this device's FCM token; `""` turns push off) → `{ registered, push_configured }` |
@@ -148,6 +152,18 @@ just cloud-e2e   # local workerd + fake Google: phone → tablet sync, devices, 
 just cloud-dev   # http://127.0.0.1:8787 (Workers AI calls need `wrangler login`)
 just cloud-logs  # live logs from the deployed Worker
 ```
+
+### 4.1 Username and password
+
+For a borrowed laptop or a library computer, where your Gmail isn't. Set a username and password once from a signed-in device (Settings › Account & sync › "Username and password"); then on any device, signed out, type them in the same screen. It is the same account as Google, so everything syncs down, including where each lesson stands (the `sessions` table). Tick "This isn't my device" on someone else's device: the session then lives only in that browser tab (`sessionStorage`) or, in the Mac and Android apps, in memory, and ends when it closes. Sign out there when you're done, or from your phone's Devices list.
+
+How the password is kept safe:
+
+- **It never leaves the device.** The app stretches it with Argon2id (19 MiB, 2 passes, 1 lane; salt `kabar-login-v1:<username>`; `kabar_protocol::cloud::PASSWORD_PARAMS`) and sends only the 32-byte result. The Worker's 10 ms CPU budget can't run a slow hash; the device can (about a quarter of a second). Changing these parameters changes every key, so they are pinned by a test.
+- **The server keeps no key.** The username's `Login` Durable Object stores a random salt and `SHA-256(salt, key)`, compared in constant time. A copy of its storage still costs the full Argon2id work per guess.
+- **Wrong passwords lock the username**: 5 in a row lock it for a minute, each further one doubles the lock, up to an hour (about 24 guesses a day at most). A wrong password and an unknown username get the same answer (`wrong_password`), and an unknown username writes nothing; a lock answers `too_many_tries` with `retry_after_ms`. Setting a new password lifts a lock.
+- Usernames are 3–32 of `a-z 0-9 . _ -`, matched case-insensitively. Passwords are at least 10 characters.
+- The allowlist still applies: the username carries the Google account's email, checked on every sign-in and refresh.
 
 ## 5. Free-tier hard stops
 

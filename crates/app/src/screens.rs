@@ -39,6 +39,7 @@ pub fn Welcome() -> Element {
                             "{ui.t(Msg::WelcomeStart)}"
                         }
                     }
+                    crate::account::ReturningSignIn {}
                 }
             }
         }

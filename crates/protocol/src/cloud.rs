@@ -33,12 +33,22 @@ pub enum ErrorCode {
     /// (never uploaded, or older than a week): upload it and retry.
     BlobMissing,
     Internal,
+    /// Username and password don't match (`POST /v1/auth/password`). The
+    /// same answer for a username nobody has.
+    WrongPassword,
+    /// Too many wrong passwords for this username: wait `retry_after_ms`.
+    TooManyTries,
+    /// Another account already uses this username.
+    UsernameTaken,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ApiError {
     pub code: ErrorCode,
     pub message: String,
+    /// With [`ErrorCode::TooManyTries`]: how long until the next try counts.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub retry_after_ms: Option<u64>,
 }
 
 // --- auth ------------------------------------------------------------------
@@ -71,6 +81,64 @@ pub struct GoogleSignIn {
     /// Google ID token from Credential Manager (Android) or OAuth + PKCE (Mac).
     pub id_token: String,
     pub device: DeviceInfo,
+}
+
+/// `POST /v1/auth/password`: sign in on a device without Google (a
+/// borrowed laptop, a library computer) with the username and password set
+/// from a signed-in device. It joins the same account, so everything syncs.
+///
+/// The password never leaves the device: the app stretches it with
+/// Argon2id ([`password_salt`], [`PASSWORD_PARAMS`]) and sends only the
+/// 32-byte result, base64url. The server keeps a salted SHA-256 of that,
+/// so a copy of its storage is no shortcut to the password, and every guess
+/// still costs the Argon2id work (docs/CLOUD.md § Username and password).
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct PasswordSignIn {
+    pub username: String,
+    pub password_key: String,
+    pub device: DeviceInfo,
+}
+
+/// `POST /v1/login` (signed in): set the username and password, or change
+/// either. The username must be free; the account's old one is released.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct SetPassword {
+    pub username: String,
+    pub password_key: String,
+}
+
+/// `GET /v1/login`, and the answer to `POST`/`DELETE /v1/login`: the
+/// username this account signs in with, if it has one.
+#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
+pub struct PasswordLogin {
+    #[serde(default)]
+    pub username: Option<String>,
+}
+
+/// Argon2id cost for [`PasswordSignIn::password_key`]: memory in KiB,
+/// passes, lanes (OWASP's 2025 minimum is 19 MiB, 2 passes). Changing any
+/// of these changes every key, so it is part of the protocol.
+pub const PASSWORD_PARAMS: (u32, u32, u32) = (19_456, 2, 1);
+/// The shortest password the app accepts.
+pub const MIN_PASSWORD_CHARS: usize = 10;
+
+/// The username as the server keys it: trimmed and lower-case.
+pub fn normalize_username(s: &str) -> String {
+    s.trim().to_lowercase()
+}
+
+/// 3–32 of `a-z 0-9 . _ -`, starting with a letter or digit. Checked on
+/// the normalized form.
+pub fn valid_username(s: &str) -> bool {
+    (3..=32).contains(&s.len())
+        && s.bytes().all(|b| b.is_ascii_lowercase() || b.is_ascii_digit() || b"._-".contains(&b))
+        && s.bytes().next().is_some_and(|b| b.is_ascii_alphanumeric())
+}
+
+/// The Argon2id salt for a username: fixed per username, so any device
+/// derives the same key, and unique to Kabar, so no other site's table fits.
+pub fn password_salt(username: &str) -> Vec<u8> {
+    format!("kabar-login-v1:{}", normalize_username(username)).into_bytes()
 }
 
 /// `POST /v1/auth/refresh`
@@ -406,5 +474,30 @@ mod tests {
     fn old_vault_status_still_parses() {
         let v: VaultStatus = serde_json::from_str(r#"{"engines":[],"tts_configured":true}"#).unwrap();
         assert!(!v.push_configured);
+    }
+
+    #[test]
+    fn usernames_are_normalized_and_restricted() {
+        assert_eq!(normalize_username("  Mohamed.Refaat "), "mohamed.refaat");
+        assert!(valid_username("mohamed.refaat"));
+        assert!(valid_username("dr_mo-85"));
+        assert!(!valid_username("mo"));
+        assert!(!valid_username(".mo"));
+        assert!(!valid_username("Mohamed"), "checked after normalizing");
+        assert!(!valid_username("محمد"));
+        assert!(!valid_username("mo hamed"));
+        assert!(!valid_username(&"a".repeat(33)));
+        assert_eq!(password_salt(" MO.R "), b"kabar-login-v1:mo.r".to_vec());
+    }
+
+    #[test]
+    fn a_lockout_answer_carries_its_wait() {
+        let e =
+            ApiError { code: ErrorCode::TooManyTries, message: "wait".into(), retry_after_ms: Some(60_000) };
+        let json = serde_json::to_string(&e).unwrap();
+        assert!(json.contains(r#""code":"too_many_tries""#), "{json}");
+        assert_eq!(serde_json::from_str::<ApiError>(&json).unwrap(), e);
+        let plain = ApiError { code: ErrorCode::NotFound, message: "x".into(), retry_after_ms: None };
+        assert!(!serde_json::to_string(&plain).unwrap().contains("retry_after_ms"));
     }
 }

@@ -19,6 +19,10 @@ pub trait SessionVault: Send {
     /// Whether the refresh token was persisted for the next launch.
     fn save(&self, session: &Session) -> bool;
     fn clear(&self);
+    /// False for a session kept only until the app or tab closes.
+    fn remembers(&self) -> bool {
+        true
+    }
 }
 
 /// The platform credential store.
@@ -168,7 +172,9 @@ fn write_private(path: &std::path::Path, bytes: &[u8]) -> std::io::Result<()> {
 /// closes). Signing out clears both.
 #[cfg(target_arch = "wasm32")]
 pub struct WebVault {
-    tab_only: bool,
+    /// Set by a tab-only sign-in, and by loading one after a reload, so a
+    /// refresh never moves it to `localStorage`.
+    tab_only: std::sync::atomic::AtomicBool,
 }
 
 #[cfg(target_arch = "wasm32")]
@@ -177,13 +183,16 @@ impl WebVault {
 
     /// Kept for the next visit.
     pub fn kept() -> Self {
-        Self { tab_only: false }
+        Self { tab_only: false.into() }
     }
 
     /// Only for this tab.
-    #[allow(dead_code)] // the "not my computer" sign-in uses it
     pub fn tab_only() -> Self {
-        Self { tab_only: true }
+        Self { tab_only: true.into() }
+    }
+
+    fn is_tab_only(&self) -> bool {
+        self.tab_only.load(std::sync::atomic::Ordering::Relaxed)
     }
 
     fn storage(tab_only: bool) -> Option<web_sys::Storage> {
@@ -195,16 +204,23 @@ impl WebVault {
 #[cfg(target_arch = "wasm32")]
 impl SessionVault for WebVault {
     fn load(&self) -> Option<Session> {
-        [true, false].into_iter().find_map(|tab_only| {
+        let (tab_only, session) = [true, false].into_iter().find_map(|tab_only| {
             let json = Self::storage(tab_only)?.get_item(Self::KEY).ok().flatten()?;
-            serde_json::from_str(&json).ok()
-        })
+            Some((tab_only, serde_json::from_str(&json).ok()?))
+        })?;
+        self.tab_only.store(tab_only, std::sync::atomic::Ordering::Relaxed);
+        Some(session)
+    }
+
+    fn remembers(&self) -> bool {
+        !self.is_tab_only()
     }
 
     fn save(&self, session: &Session) -> bool {
-        let Some(storage) = Self::storage(self.tab_only) else { return false };
+        let tab_only = self.is_tab_only();
+        let Some(storage) = Self::storage(tab_only) else { return false };
         let Ok(json) = serde_json::to_string(session) else { return false };
-        if let Some(other) = Self::storage(!self.tab_only) {
+        if let Some(other) = Self::storage(!tab_only) {
             let _ = other.remove_item(Self::KEY);
         }
         storage
@@ -219,14 +235,37 @@ impl SessionVault for WebVault {
                 let _ = storage.remove_item(Self::KEY);
             }
         }
+        // The next sign-in decides afresh.
+        self.tab_only.store(false, std::sync::atomic::Ordering::Relaxed);
     }
 }
 
-/// In memory only (tests, and the end-to-end check).
+/// Where a sign-in on someone else's device keeps its session: this tab
+/// in the browser, memory on the Mac and Android, so it ends when the app
+/// or the tab closes.
+pub fn not_remembered() -> Box<dyn SessionVault> {
+    #[cfg(target_arch = "wasm32")]
+    return Box::new(WebVault::tab_only());
+    #[cfg(not(target_arch = "wasm32"))]
+    Box::new(MemoryVault::forgetful())
+}
+
+/// In memory only: tests, the end-to-end check, and a sign-in on someone
+/// else's Mac or phone (`forgetful`), which ends when the app quits.
 #[derive(Default)]
-pub struct MemoryVault(std::sync::Mutex<Option<Session>>);
+pub struct MemoryVault(std::sync::Mutex<Option<Session>>, bool);
+
+impl MemoryVault {
+    pub fn forgetful() -> Self {
+        Self(Default::default(), true)
+    }
+}
 
 impl SessionVault for MemoryVault {
+    fn remembers(&self) -> bool {
+        !self.1
+    }
+
     fn load(&self) -> Option<Session> {
         self.0.lock().ok()?.clone()
     }
@@ -287,6 +326,11 @@ impl Auth {
             };
         }
         Ok(self.session.access_token.clone())
+    }
+
+    /// False when this session ends with the app or the browser tab.
+    pub fn remembered(&self) -> bool {
+        self.vault.remembers()
     }
 
     /// Forgets the session on this device. Returns the vault for the next sign-in.
