@@ -11,6 +11,10 @@ mod converge;
 #[allow(clippy::disallowed_macros)] // the e2e run prints its timings
 mod e2e;
 pub mod engine;
+#[cfg(test)]
+mod engine_tests;
+#[cfg(test)]
+mod fake;
 pub mod link;
 pub mod password;
 // Google's desktop sign-in needs a loopback server; the web signs in with a
@@ -62,16 +66,25 @@ impl CloudConfig {
 
     #[cfg(not(target_arch = "wasm32"))]
     pub fn from_env() -> Option<Self> {
-        let var = |name: &str, built: Option<&'static str>| {
-            std::env::var(name).ok().or(built.map(String::from)).filter(|v| !v.trim().is_empty())
-        };
-        let base_url = var("KABAR_CLOUD_URL", option_env!("KABAR_CLOUD_URL"))?;
-        let google = var("KABAR_GOOGLE_CLIENT_ID", option_env!("KABAR_GOOGLE_CLIENT_ID")).map(|client_id| {
-            GoogleClient {
-                client_id,
-                client_secret: var("KABAR_GOOGLE_CLIENT_SECRET", option_env!("KABAR_GOOGLE_CLIENT_SECRET")),
-            }
-        });
+        Self::from_vars(|name| {
+            let built = match name {
+                "KABAR_CLOUD_URL" => option_env!("KABAR_CLOUD_URL"),
+                "KABAR_GOOGLE_CLIENT_ID" => option_env!("KABAR_GOOGLE_CLIENT_ID"),
+                "KABAR_GOOGLE_CLIENT_SECRET" => option_env!("KABAR_GOOGLE_CLIENT_SECRET"),
+                _ => None,
+            };
+            std::env::var(name).ok().or(built.map(String::from))
+        })
+    }
+
+    /// The config from `var` (run time first, then build time); blank
+    /// values count as unset.
+    #[cfg(not(target_arch = "wasm32"))]
+    fn from_vars(var: impl Fn(&str) -> Option<String>) -> Option<Self> {
+        let var = |name: &str| var(name).filter(|v| !v.trim().is_empty());
+        let base_url = var("KABAR_CLOUD_URL")?;
+        let google = var("KABAR_GOOGLE_CLIENT_ID")
+            .map(|client_id| GoogleClient { client_id, client_secret: var("KABAR_GOOGLE_CLIENT_SECRET") });
         Some(Self { base_url, google })
     }
 }
@@ -281,4 +294,60 @@ pub fn start(
         })
         .map_err(|e| e.to_string())?;
     Ok(CloudHandle { commands: cmd_tx, events: ev_rx })
+}
+
+#[cfg(all(test, not(target_arch = "wasm32")))]
+mod tests {
+    use super::*;
+
+    fn vars(pairs: &'static [(&'static str, &'static str)]) -> impl Fn(&str) -> Option<String> {
+        move |name| pairs.iter().find(|(k, _)| *k == name).map(|(_, v)| (*v).to_string())
+    }
+
+    #[test]
+    fn the_cloud_is_configured_by_its_url_and_google_is_optional() {
+        assert!(CloudConfig::from_vars(vars(&[])).is_none(), "no URL: sync is off");
+        assert!(
+            CloudConfig::from_vars(vars(&[("KABAR_CLOUD_URL", "  ")])).is_none(),
+            "blank counts as unset"
+        );
+
+        let c =
+            CloudConfig::from_vars(vars(&[("KABAR_CLOUD_URL", "https://kabar-cloud.example.workers.dev")]))
+                .unwrap();
+        assert_eq!(c.base_url, "https://kabar-cloud.example.workers.dev");
+        assert!(c.google.is_none());
+
+        let c = CloudConfig::from_vars(vars(&[
+            ("KABAR_CLOUD_URL", "http://127.0.0.1:8787"),
+            ("KABAR_GOOGLE_CLIENT_ID", "123-desk.apps.googleusercontent.com"),
+            ("KABAR_GOOGLE_CLIENT_SECRET", ""),
+        ]))
+        .unwrap();
+        let g = c.google.unwrap();
+        assert_eq!(g.client_id, "123-desk.apps.googleusercontent.com");
+        assert_eq!(g.client_secret, None, "a blank secret is no secret");
+    }
+
+    #[test]
+    fn a_status_without_a_cloud_says_so() {
+        let s = CloudStatus::not_configured(DeviceId("s24u".into()));
+        assert!(!s.configured);
+        assert_eq!((s.sync, s.pending, s.problem), (SyncState::SignedOut, 0, None));
+    }
+
+    #[test]
+    fn the_engine_needs_a_database_it_can_open() {
+        let dir = tempfile::tempdir().unwrap();
+        let info = DeviceInfo {
+            device_id: DeviceId("mac".into()),
+            name: "Mac".into(),
+            model: None,
+            platform: kabar_protocol::cloud::Platform::Macos,
+        };
+        let config = CloudConfig { base_url: "http://127.0.0.1:1".into(), google: None };
+        // A folder is not a database.
+        let err = start(config, dir.path().to_path_buf(), info, Box::new(session::MemoryVault::default()));
+        assert!(err.is_err());
+    }
 }

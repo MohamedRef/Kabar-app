@@ -67,3 +67,28 @@ pub async fn blocking<T: Send + 'static>(f: impl FnOnce() -> T + Send + 'static)
         f()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn timeout_gives_the_answer_in_time_and_elapsed_after() {
+        let rt = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
+        let quick = rt.block_on(timeout(Duration::from_secs(5), async { 7 }));
+        assert_eq!(quick, Ok(7));
+        let slow = rt.block_on(timeout(Duration::from_millis(10), sleep(Duration::from_secs(5))));
+        assert_eq!(slow, Err(Elapsed));
+    }
+
+    #[test]
+    fn spawn_runs_off_this_thread_and_blocking_returns_its_value() {
+        let (tx, rx) = std::sync::mpsc::channel();
+        let here = std::thread::current().id();
+        spawn("kabar-test", move || tx.send(std::thread::current().id()).unwrap()).unwrap();
+        let there = rx.recv_timeout(Duration::from_secs(5)).unwrap();
+        assert_ne!(there, here);
+        let rt = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
+        assert_eq!(rt.block_on(blocking(|| 6 * 7)), 42);
+    }
+}
