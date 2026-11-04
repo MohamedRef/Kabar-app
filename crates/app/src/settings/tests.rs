@@ -90,6 +90,7 @@ fn fixture() -> Element {
                 devices: Signal::new(case.devices.clone()),
                 usage: Signal::new(None),
                 signing_in: Signal::new(case.signing_in),
+                login: Signal::new(Default::default()),
                 revision: Signal::new(0),
                 commands: Signal::new(Some(tx)),
                 push: Signal::new(false),
@@ -704,7 +705,7 @@ fn the_devices_list_marks_this_device_and_signs_others_out() {
     let outs = h.all("click", "Sign it out");
     assert_eq!(outs.len(), 1);
     h.settle();
-    assert_eq!(sent(), ["LoadDevices"], "a live account loads its devices on open");
+    assert_eq!(sent(), ["LoadDevices", "LoadLogin"], "a live account loads its devices and login on open");
     h.fire_click(&outs[0]);
     assert_eq!(sent(), ["RevokeDevice(DeviceId(\"dev-mac\"))"]);
     h.click("Refresh");
