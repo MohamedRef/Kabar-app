@@ -410,6 +410,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
         devices: Signal::new(None),
         usage: Signal::new(None),
         signing_in: Signal::new(false),
+        login: Signal::new(Default::default()),
         revision: Signal::new(0),
         commands: Signal::new(None),
         push: Signal::new(platform::push::pushed()),
@@ -459,8 +460,8 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
         commands.set(Some(handle.commands.clone()));
         link.connect(handle.commands.clone());
         spawn(async move {
-            let (mut status, mut devices, mut signing_in, mut revision) =
-                (cloud.status, cloud.devices, cloud.signing_in, cloud.revision);
+            let (mut status, mut devices, mut signing_in, mut revision, mut login) =
+                (cloud.status, cloud.devices, cloud.signing_in, cloud.revision, cloud.login);
             let (mut usage, mut push, mut push_sent) = (cloud.usage, cloud.push, cloud.push_sent);
             while let Some(event) = handle.events.recv().await {
                 match event {
@@ -472,6 +473,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
                     Event::Devices(d) => devices.set(Some(d)),
                     Event::Usage(u) => usage.set(Some(u)),
                     Event::SigningIn(on) => signing_in.set(on),
+                    Event::Login(l) => login.set(l),
                     Event::Push { token, pushed: Some(pushed) } => {
                         platform::push::set_pushed(&token, pushed);
                         if *push.peek() != pushed {
