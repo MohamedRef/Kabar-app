@@ -162,7 +162,10 @@ pub fn speak(texts: Vec<String>, first: usize, on_sentence: impl FnMut(Option<us
 
 /// Says one word with the device's Javanese voice, or nothing if it has none.
 pub fn speak_javanese(text: String) {
-    speak_in(SpeechLang::Javanese, vec![text], 0, |_| {});
+    // Started right away rather than from a task: the tap that speaks may
+    // also close the screen that made it (Start leaves the Minimal Pairs
+    // intro), and a task dies with its screen before it runs.
+    document::eval(&speak_script(&[text], 0, SpeechLang::Javanese));
 }
 
 /// Stops whatever is being spoken.
