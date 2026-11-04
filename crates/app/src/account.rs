@@ -257,7 +257,11 @@ pub fn ReturningSignIn() -> Element {
                         }
                     }
                 }
-                PasswordSignIn {}
+                // Signed in already (the account is syncing down): a second
+                // sign-in would only replace the session it just got.
+                if status.sync == SyncState::SignedOut {
+                    PasswordSignIn {}
+                }
                 if let Some(p) = status.problem {
                     p { class: "notice", role: "status", "{problem_line(&ui, p)}" }
                 }

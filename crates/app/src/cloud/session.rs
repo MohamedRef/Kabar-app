@@ -310,9 +310,28 @@ impl Auth {
 
     /// A valid access token, refreshing (and rotating the refresh token) when
     /// it is about to expire.
+    ///
+    /// Another holder of the same vault (a second browser tab) may have
+    /// rotated the refresh token already: presenting the old one would be
+    /// refused or, worse, look like reuse and revoke the device. So before a
+    /// refresh, and once more when one is refused, the vault's newer session
+    /// is taken over instead (#562).
     pub async fn access_token(&mut self, api: &Api, now_ms: u64, force: bool) -> Result<String, CloudError> {
-        if force || now_ms + REFRESH_MARGIN_MS >= self.session.access_expires_at_ms {
-            let fresh = api.refresh(&self.session.refresh_token).await?;
+        let due = |s: &Session| now_ms + REFRESH_MARGIN_MS >= s.access_expires_at_ms;
+        if force || due(&self.session) {
+            if self.take_newer() && !due(&self.session) {
+                return Ok(self.session.access_token.clone());
+            }
+            let fresh = match api.refresh(&self.session.refresh_token).await {
+                Ok(fresh) => fresh,
+                Err(e) if e.is_signed_out() && self.take_newer() => {
+                    if !due(&self.session) {
+                        return Ok(self.session.access_token.clone());
+                    }
+                    api.refresh(&self.session.refresh_token).await?
+                }
+                Err(e) => return Err(e),
+            };
             self.session = if self.vault.save(&fresh) {
                 fresh
             } else {
@@ -326,6 +345,21 @@ impl Auth {
             };
         }
         Ok(self.session.access_token.clone())
+    }
+
+    /// Takes the vault's session when someone else sharing it rotated it
+    /// since this one was read. True when it did.
+    fn take_newer(&mut self) -> bool {
+        match self.vault.load() {
+            Some(kept)
+                if kept.device_id == self.session.device_id
+                    && kept.refresh_token != self.session.refresh_token =>
+            {
+                self.session = kept;
+                true
+            }
+            _ => false,
+        }
     }
 
     /// False when this session ends with the app or the browser tab.

@@ -44,9 +44,32 @@ impl EngineStore {
 
 /// Keeps NAT mappings and the Cloudflare edge from dropping an idle socket.
 /// Protocol pings are answered by the runtime, so they don't wake the hub.
+#[cfg(not(test))]
 const PING_EVERY: Duration = Duration::from_secs(30);
+#[cfg(test)]
+const PING_EVERY: Duration = Duration::from_millis(300);
+/// A socket that hears nothing this long after a ping is half-open (a
+/// laptop lid, a Wi-Fi switch, a NAT drop): it's dropped and reopened.
+#[cfg(not(test))]
+const ANSWER_WITHIN: Duration = Duration::from_secs(10);
+#[cfg(test)]
+const ANSWER_WITHIN: Duration = Duration::from_secs(2);
+/// The web can't send protocol pings, and a hub ping wakes the Durable
+/// Object, so an idle web socket is checked only this often (and whenever a
+/// push waits for its ack).
+const IDLE_CHECK_EVERY: Duration = Duration::from_secs(5 * 60);
+/// A socket that hasn't opened by then counts as a failed try (a black-holed
+/// network can otherwise hold the handshake for minutes).
+#[cfg(not(test))]
+const CONNECT_WITHIN: Duration = Duration::from_secs(15);
+#[cfg(test)]
+const CONNECT_WITHIN: Duration = Duration::from_secs(1);
 /// Writes from screens that don't send [`Command::Kick`] still go up this soon.
 const OUTBOX_EVERY: Duration = Duration::from_secs(2);
+
+/// A socket being opened. It runs beside the commands, so AI, voices and
+/// sign-out never wait behind a slow handshake.
+type Opening = std::pin::Pin<Box<dyn std::future::Future<Output = Result<Socket, ConnectError>>>>;
 
 pub struct Engine {
     store: EngineStore,
@@ -58,6 +81,11 @@ pub struct Engine {
     vault: Option<Box<dyn SessionVault>>,
     client: SyncClient,
     ws: Option<Socket>,
+    opening: Option<Opening>,
+    /// When the socket last heard anything.
+    last_heard: Instant,
+    /// When a ping went out that nothing has answered yet.
+    asked_at: Option<Instant>,
     backoff: Backoff,
     retry_at: Instant,
     /// Set after `Revoked`, `Outdated` or sign-out: no reconnects until sign-in.
@@ -98,6 +126,9 @@ impl Engine {
             vault,
             client,
             ws: None,
+            opening: None,
+            last_heard: Instant::now(),
+            asked_at: None,
             backoff: Backoff::default(),
             retry_at: Instant::now(),
             stopped: false,
@@ -117,14 +148,19 @@ impl Engine {
         let mut next_outbox = Instant::now() + OUTBOX_EVERY;
         self.emit_status();
         loop {
-            if self.ws.is_none() && self.wants_socket() && Instant::now() >= self.retry_at {
+            if self.ws.is_none()
+                && self.opening.is_none()
+                && self.wants_socket()
+                && Instant::now() >= self.retry_at
+            {
                 self.connect().await;
-                let now = Instant::now();
-                (next_ping, next_outbox) = (now + PING_EVERY, now + OUTBOX_EVERY);
                 self.emit_status();
             }
             let wait_until = if self.ws.is_some() {
-                next_ping.min(next_outbox)
+                let answer_by = self.asked_at.map(|t| t + ANSWER_WITHIN);
+                next_ping.min(next_outbox).min(answer_by.unwrap_or(next_ping))
+            } else if self.opening.is_some() {
+                Instant::now() + Duration::from_secs(3600)
             } else if self.wants_socket() {
                 self.retry_at
             } else {
@@ -138,21 +174,41 @@ impl Engine {
                     Some(cmd) => self.command(cmd).await,
                 },
                 frame = next_frame(&mut self.ws) => self.frame(frame).await,
+                opened = opened(&mut self.opening) => {
+                    self.opening = None;
+                    self.opened(opened).await;
+                    let now = Instant::now();
+                    (next_ping, next_outbox) = (now + PING_EVERY, now + OUTBOX_EVERY);
+                }
                 () = wait => {
                     let now = Instant::now();
+                    if self.asked_at.is_some_and(|t| now >= t + ANSWER_WITHIN) {
+                        crate::diag::report!("sync socket: no answer to a ping, reconnecting");
+                        if let Some(ws) = self.ws.take() {
+                            ws.close().await;
+                        }
+                        self.drop_socket();
+                    }
                     if self.ws.is_some() && now >= next_outbox {
                         next_outbox = now + OUTBOX_EVERY;
                         self.pump().await;
                     }
                     if now >= next_ping {
                         next_ping = now + PING_EVERY;
-                        if let Some(ws) = &mut self.ws
-                            && ws.ping().await.is_err()
-                        {
-                            self.drop_socket();
-                        }
+                        self.ping(now).await;
                     }
                 }
+            }
+            if !self.wants_socket() {
+                // Signed out or in the background: a handshake in flight is dropped.
+                self.opening = None;
+            }
+            if self.ws.is_some() && !leads() {
+                // A newer tab took over: it syncs from now on.
+                if let Some(ws) = self.ws.take() {
+                    ws.close().await;
+                }
+                self.client.on_close();
             }
             self.emit_status();
         }
@@ -162,7 +218,34 @@ impl Engine {
     }
 
     fn wants_socket(&self) -> bool {
-        self.auth.is_some() && !self.stopped && !self.background
+        self.auth.is_some() && !self.stopped && !self.background && leads()
+    }
+
+    /// Checks the socket is still there. Native sends a protocol ping, which
+    /// the Cloudflare runtime answers without waking the hub; the browser
+    /// can't, so the web asks the hub itself, but only while a push waits for
+    /// its ack or after a long quiet spell.
+    async fn ping(&mut self, now: Instant) {
+        let Some(ws) = &mut self.ws else { return };
+        let sent = if cfg!(target_arch = "wasm32") {
+            let waiting = !self.client.in_flight().is_empty() && now >= self.last_heard + ANSWER_WITHIN;
+            if self.asked_at.is_some() || !(waiting || now >= self.last_heard + IDLE_CHECK_EVERY) {
+                return;
+            }
+            let ping = serde_json::to_string(&kabar_protocol::sync::ClientMsg::Ping).unwrap_or_default();
+            ws.send(ping).await
+        } else {
+            ws.ping().await
+        };
+        match sent {
+            Ok(()) => {
+                self.asked_at.get_or_insert(now);
+            }
+            Err(e) => {
+                crate::diag::report!("sync ping: {e}");
+                self.drop_socket();
+            }
+        }
     }
 
     // --- commands --------------------------------------------------------
@@ -278,6 +361,11 @@ impl Engine {
     /// `remember: false` keeps it until the app or tab closes
     /// ([`super::session::not_remembered`]).
     fn begin_session(&mut self, session: Session, remember: bool) {
+        if self.auth.is_some() {
+            // A sign-in over a live session: the old one is put away first,
+            // so its vault is the one this session is kept in.
+            self.sign_out_locally();
+        }
         let usual = self.vault.take().unwrap_or_else(|| Box::new(super::session::MemoryVault::default()));
         let vault = if remember {
             usual
@@ -298,6 +386,7 @@ impl Engine {
         }
         self.problem = None;
         self.stopped = false;
+        self.opening = None;
         self.client = SyncClient::new(self.store.with(|s| s.last_seq()).unwrap_or(0));
         self.backoff.reset();
         self.retry_at = Instant::now();
@@ -465,6 +554,11 @@ impl Engine {
 
     /// A fresh access token, or `None` (with the reason recorded).
     async fn access(&mut self, force: bool) -> Option<String> {
+        if !leads() {
+            // Only the newest tab touches the session: two tabs refreshing
+            // one refresh token sign each other out (#562).
+            return None;
+        }
         let result = self.auth.as_mut()?.access_token(&self.api, now_ms(), force).await;
         match result {
             Ok(token) => Some(token),
@@ -496,10 +590,23 @@ impl Engine {
             self.schedule_retry();
             return;
         };
-        match Socket::connect(&self.api.sync_url(), &access).await {
+        let url = self.api.sync_url();
+        self.opening = Some(Box::pin(async move {
+            let within = crate::platform::time::sleep(CONNECT_WITHIN);
+            tokio::select! {
+                opened = Socket::connect(&url, &access) => opened,
+                () = within => Err(ConnectError::Failed("the sync socket didn't open in time".into())),
+            }
+        }));
+    }
+
+    async fn opened(&mut self, opened: Result<Socket, ConnectError>) {
+        match opened {
             Ok(ws) => {
                 self.ws = Some(ws);
                 self.problem = None;
+                self.last_heard = Instant::now();
+                self.asked_at = None;
                 let effects = self.client.on_open();
                 self.run_effects(effects).await;
             }
@@ -527,6 +634,8 @@ impl Engine {
 
     fn drop_socket(&mut self) {
         self.ws = None;
+        self.opening = None;
+        self.asked_at = None;
         self.client.on_close();
         if self.wants_socket() {
             self.schedule_retry();
@@ -534,6 +643,9 @@ impl Engine {
     }
 
     async fn frame(&mut self, frame: Frame) {
+        // Anything heard, a pong included, proves the socket is alive.
+        self.last_heard = Instant::now();
+        self.asked_at = None;
         let text = match frame {
             Frame::Text(text) => text,
             Frame::Closed(code) => {
@@ -684,6 +796,22 @@ impl Engine {
             self.last_status = Some(status.clone());
             self.events.send(Event::Status(status)).ok();
         }
+    }
+}
+
+/// On the web, only the tab that owns the database syncs and refreshes the
+/// session; an older tab shows "open in another tab" (`platform::web`).
+fn leads() -> bool {
+    #[cfg(target_arch = "wasm32")]
+    return crate::platform::web::owns_tab();
+    #[cfg(not(target_arch = "wasm32"))]
+    true
+}
+
+async fn opened(opening: &mut Option<Opening>) -> Result<Socket, ConnectError> {
+    match opening {
+        Some(f) => f.await,
+        None => std::future::pending().await,
     }
 }
 
