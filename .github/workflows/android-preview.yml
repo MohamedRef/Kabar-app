@@ -64,13 +64,16 @@ jobs:
           GH_REPO: ${{ github.repository }}
           TAG: preview
         run: |
+          # Whether a release has its update feed. Not `gh release download
+          # -O /dev/null`: gh refuses an output path that exists (#571).
+          has_feed() { gh api "repos/$GH_REPO/releases/tags/$1" --jq '.assets[].name' 2>/dev/null | grep -qx update.json; }
           if [ "$GITHUB_EVENT_NAME" != schedule ]; then
             echo "build=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           if published="$(gh api "repos/$GH_REPO/git/refs/tags/$TAG" --jq .object.sha 2>/dev/null)" \
             && [ "$published" = "$GITHUB_SHA" ] \
-            && gh release download "$TAG" -p update.json -O /dev/null 2>/dev/null; then
+            && has_feed "$TAG"; then
             echo "The preview already carries ${GITHUB_SHA::7}: nothing new on main, no build."
             echo "build=false" >> "$GITHUB_OUTPUT"
           else
@@ -86,7 +89,9 @@ jobs:
     timeout-minutes: 60
     env:
       # A PR's own copy of this workflow runs here, so it must not reach the key.
-      KEEP_KEY: ${{ github.event_name != 'pull_request' }}
+      # Only main gets the release keys: a run by hand on a branch is a test
+      # build with a throwaway key, like a PR run (#572).
+      KEEP_KEY: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -309,7 +314,7 @@ jobs:
   publish:
     name: Publish the preview release
     needs: apk
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
@@ -327,13 +332,16 @@ jobs:
           # Publish whenever this commit is newer than the one the release
           # carries, so a run that finishes after a newer one never rolls the
           # release back, and a busy stretch of merges still publishes.
+          # Whether a release has its update feed. Not `gh release download
+          # -O /dev/null`: gh refuses an output path that exists (#571).
+          has_feed() { gh api "repos/$GH_REPO/releases/tags/$1" --jq '.assets[].name' 2>/dev/null | grep -qx update.json; }
           published="$(gh api "repos/$GH_REPO/git/refs/tags/preview" --jq .object.sha 2>/dev/null || true)"
           if [ -n "$published" ]; then
             status="$(gh api "repos/$GH_REPO/compare/$published...$GITHUB_SHA" --jq .status)"
             # A run that failed halfway (a GitHub 500 mid-upload, 2026-11-04)
             # can leave the tag moved but update.json gone: a re-run of the
             # same commit then publishes again instead of leaving no feed.
-            if [ "$status" = identical ] && ! gh release download preview -p update.json -O /dev/null 2>/dev/null; then
+            if [ "$status" = identical ] && ! has_feed preview; then
               echo "The release carries ${published::7} but has no update.json: publishing again."
             elif [ "$status" != "ahead" ]; then
               echo "The release already carries ${published::7} ($status); nothing to publish."
