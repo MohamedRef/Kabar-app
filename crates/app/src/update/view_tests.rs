@@ -1,11 +1,9 @@
 //! Settings › Updates, the Today banner and the "what's new" sheet, rendered
-//! for each state the updater can be in (Dioxus SSR).
+//! for each state the updater can be in (Dioxus SSR), driven through the
+//! shared test kit ([`TestDom`], `testkit::provide`).
 
-use dioxus::core::{AttributeValue, DynamicNode, TemplateAttribute, TemplateNode, VNode};
 use dioxus::prelude::*;
-use kabar_core::layout::WidthClass;
 use kabar_core::locale::UiLanguage;
-use kabar_core::settings::Settings;
 use kabar_protocol::update::{
     BuildChanges, Change, ChangeKind, Channel, UpdateAsset, UpdateNotes, UpdatePlatform,
 };
@@ -15,6 +13,7 @@ use super::sheet::{SheetFor, SheetMode, UpdateSheetNav};
 use super::text::{U, ut};
 use super::view::{UpdateBannerFor, UpdatesCardFor, summary};
 use super::{Failure, Mode, Off, Offer, Phase, Prefs, Status};
+use crate::test_dom::TestDom;
 use crate::{Screen, Ui};
 
 const EN: UiLanguage = UiLanguage::En;
@@ -91,16 +90,10 @@ struct Case {
     probe: bool,
 }
 
+/// The shared test kit's contexts, on Settings in `lang`.
 fn provide_ui(lang: UiLanguage) -> Ui {
-    use_context_provider(|| Ui {
-        settings: Signal::new(Settings { ui_language: lang, ..Settings::default() }),
-        width: Signal::new(WidthClass::Compact),
-        tablet: Signal::new(false),
-        screen: Signal::new(Screen::Settings),
-        lesson: Signal::new(None),
-        lesson_from: Signal::new(Screen::Journey),
-        focus: Signal::new(false),
-    })
+    crate::testkit::provide(|| crate::testkit::Setup { lang, screen: Screen::Settings, ..Default::default() })
+        .0
 }
 
 fn app(c: Case) -> Element {
@@ -128,9 +121,8 @@ fn app(c: Case) -> Element {
 
 /// The page as text a reader would get, entities decoded.
 fn render(s: Status, lang: UiLanguage, view: View) -> String {
-    let mut dom = VirtualDom::new_with_props(app, Case { s, lang, view, probe: false });
-    dom.rebuild_in_place();
-    decoded(dioxus::ssr::render(&dom))
+    let dom = TestDom::unsettled(VirtualDom::new_with_props(app, Case { s, lang, view, probe: false }));
+    decoded(dom.ssr())
 }
 
 fn decoded(html: String) -> String {
@@ -145,7 +137,7 @@ fn decoded(html: String) -> String {
 /// A rendered page a test can click the way a learner would: by the words
 /// on the button (all the text inside it, as it reads now).
 struct Page {
-    dom: VirtualDom,
+    dom: TestDom,
 }
 
 impl Page {
@@ -153,115 +145,23 @@ impl Page {
         Self::of(VirtualDom::new_with_props(app, Case { s, lang, view, probe: true }))
     }
 
-    fn of(mut dom: VirtualDom) -> Self {
-        dioxus::html::set_event_converter(Box::new(dioxus::html::SerializedHtmlEventConverter));
-        dom.rebuild_in_place();
-        Page { dom }
-    }
-
-    /// Every element with a click handler, in page order, with its text.
-    fn buttons(&self) -> Vec<(dioxus::core::ElementId, String)> {
-        let mut out = Vec::new();
-        walk(&self.dom, self.dom.base_scope().root_node(), &mut out);
-        out
+    fn of(dom: VirtualDom) -> Self {
+        Page { dom: TestDom::unsettled(dom) }
     }
 
     /// Clicks the first button that reads `words`, and draws the result.
     fn click(&mut self, words: &str) -> &mut Self {
-        let buttons = self.buttons();
-        let (id, _) = buttons
-            .iter()
-            .find(|(_, text)| text.contains(words))
-            .unwrap_or_else(|| panic!("no button reads {words:?}: {buttons:?}"));
-        let data =
-            dioxus::html::PlatformEventData::new(Box::new(dioxus::html::SerializedMouseData::default()));
-        let event = dioxus::core::Event::new(std::rc::Rc::new(data) as std::rc::Rc<dyn std::any::Any>, true);
-        self.dom.runtime().handle_event("click", event, *id);
-        self.dom.render_immediate_to_vec();
+        let buttons: Vec<_> = self.dom.nodes().into_iter().filter(|n| n.listens("click")).collect();
+        let b = buttons.iter().find(|n| n.text.contains(words)).unwrap_or_else(|| {
+            panic!("no button reads {words:?}: {:?}", buttons.iter().map(|n| &n.text).collect::<Vec<_>>())
+        });
+        self.dom.dispatch(b.el, "click", Box::new(dioxus::html::SerializedMouseData::default()), true);
+        self.dom.render();
         self
     }
 
     fn html(&self) -> String {
-        decoded(dioxus::ssr::render(&self.dom))
-    }
-}
-
-fn walk(dom: &VirtualDom, node: &VNode, out: &mut Vec<(dioxus::core::ElementId, String)>) {
-    for root in node.template.roots {
-        walk_template(dom, node, root, out);
-    }
-}
-
-fn walk_template(
-    dom: &VirtualDom,
-    node: &VNode,
-    t: &TemplateNode,
-    out: &mut Vec<(dioxus::core::ElementId, String)>,
-) {
-    match t {
-        TemplateNode::Element { attrs, children, .. } => {
-            for a in attrs.iter() {
-                if let TemplateAttribute::Dynamic { id } = a {
-                    let clicks = node.dynamic_attrs[*id]
-                        .iter()
-                        .any(|at| at.name == "onclick" && matches!(at.value, AttributeValue::Listener(_)));
-                    if clicks && let Some(el) = node.mounted_dynamic_attribute(*id, dom) {
-                        let mut text = String::new();
-                        for c in children.iter() {
-                            text_of(dom, node, c, &mut text);
-                        }
-                        out.push((el, text));
-                    }
-                }
-            }
-            for c in children.iter() {
-                walk_template(dom, node, c, out);
-            }
-        }
-        TemplateNode::Text { .. } => {}
-        TemplateNode::Dynamic { id } => match &node.dynamic_nodes[*id] {
-            DynamicNode::Component(c) => {
-                if let Some(scope) = c.mounted_scope(*id, node, dom) {
-                    walk(dom, scope.root_node(), out);
-                }
-            }
-            DynamicNode::Fragment(nodes) => {
-                for n in nodes {
-                    walk(dom, n, out);
-                }
-            }
-            _ => {}
-        },
-    }
-}
-
-fn text_of(dom: &VirtualDom, node: &VNode, t: &TemplateNode, out: &mut String) {
-    match t {
-        TemplateNode::Element { children, .. } => {
-            for c in children.iter() {
-                text_of(dom, node, c, out);
-            }
-        }
-        TemplateNode::Text { text } => out.push_str(text),
-        TemplateNode::Dynamic { id } => match &node.dynamic_nodes[*id] {
-            DynamicNode::Text(t) => out.push_str(&t.value),
-            DynamicNode::Component(c) => {
-                if let Some(scope) = c.mounted_scope(*id, node, dom) {
-                    let root = scope.root_node();
-                    for r in root.template.roots {
-                        text_of(dom, root, r, out);
-                    }
-                }
-            }
-            DynamicNode::Fragment(nodes) => {
-                for n in nodes {
-                    for r in n.template.roots {
-                        text_of(dom, n, r, out);
-                    }
-                }
-            }
-            DynamicNode::Placeholder(_) => {}
-        },
+        decoded(self.dom.ssr())
     }
 }
 
@@ -321,20 +221,11 @@ fn summary_of(s: &Status) -> String {
     struct Probe(Status);
     thread_local!(static OUT: std::cell::RefCell<String> = const { std::cell::RefCell::new(String::new()) });
     fn probe(p: Probe) -> Element {
-        let ui = use_context_provider(|| Ui {
-            settings: Signal::new(Settings { ui_language: UiLanguage::En, ..Settings::default() }),
-            width: Signal::new(WidthClass::Compact),
-            tablet: Signal::new(false),
-            screen: Signal::new(Screen::Settings),
-            lesson: Signal::new(None),
-            lesson_from: Signal::new(Screen::Journey),
-            focus: Signal::new(false),
-        });
+        let ui = provide_ui(EN);
         OUT.with(|o| *o.borrow_mut() = summary(&ui, &p.0));
         rsx! {}
     }
-    let mut dom = VirtualDom::new_with_props(probe, Probe(s.clone()));
-    dom.rebuild_in_place();
+    TestDom::unsettled(VirtualDom::new_with_props(probe, Probe(s.clone())));
     OUT.with(|o| o.borrow().clone())
 }
 
@@ -842,15 +733,12 @@ fn follower() -> Element {
 }
 
 /// Lets the page's tasks and effects run, then draws what changed.
-fn settle(dom: &mut VirtualDom) -> String {
-    let rt = tokio::runtime::Builder::new_current_thread().enable_time().build().unwrap();
-    rt.block_on(async {
-        for _ in 0..5 {
-            let _ = tokio::time::timeout(std::time::Duration::from_millis(20), dom.wait_for_work()).await;
-            dom.render_immediate_to_vec();
-        }
-    });
-    dioxus::ssr::render(dom)
+fn settle(dom: &mut TestDom) -> String {
+    for _ in 0..5 {
+        dom.run_until_quiet(std::time::Duration::from_millis(20), 1);
+        dom.render();
+    }
+    dom.ssr()
 }
 
 #[test]
@@ -870,12 +758,16 @@ fn the_page_follows_the_updater_and_tells_it_the_learners_language() {
         None,
     )));
     FOLLOWED.with(|c| c.set(Some(u)));
-    let mut dom = VirtualDom::new(follower);
-    dom.rebuild_in_place();
+    let mut dom = TestDom::unsettled(VirtualDom::new(follower));
     assert!(settle(&mut dom).contains("phase: Idle"));
-    // The background job will word its notice in Egyptian Arabic.
+    // The background job will word its notice in Egyptian Arabic, on the
+    // coach's clock (no quiet hours before onboarding).
     let ctx = u.status().prefs.notice.expect("the updater was told");
-    assert_eq!((ctx.lang, ctx.quiet, ctx.utc_offset_min), (EG, None, 0));
+    let offset = dom.peek_app(|| {
+        let c = consume_context::<crate::coach::Coach>();
+        (*c.device_offset.peek()).unwrap_or_else(|| c.offset())
+    });
+    assert_eq!((ctx.lang, ctx.quiet, ctx.utc_offset_min), (EG, None, offset));
 
     // A change on the updater's thread reaches the page.
     u.set_phase(Phase::Checking);
@@ -885,8 +777,7 @@ fn the_page_follows_the_updater_and_tells_it_the_learners_language() {
 
     // Without an updater (a build that can't update), there is no status.
     FOLLOWED.with(|c| c.set(None));
-    let mut dom = VirtualDom::new(follower);
-    dom.rebuild_in_place();
+    let mut dom = TestDom::unsettled(VirtualDom::new(follower));
     assert!(settle(&mut dom).contains("phase: none"));
 }
 

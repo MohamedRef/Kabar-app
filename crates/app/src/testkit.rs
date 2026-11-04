@@ -43,6 +43,24 @@ pub struct Script {
     pub calls: RefCell<Vec<EngineCall>>,
 }
 
+impl Script {
+    /// A script that answers `values` (task outputs as JSON text) in order.
+    pub fn answering(values: &[&str]) -> Rc<Self> {
+        let replies = values
+            .iter()
+            .map(|v| {
+                Ok(EngineReply { engine: EngineId::WorkersAi, text: v.to_string(), model: "test".into() })
+            })
+            .collect();
+        Rc::new(Self { replies: RefCell::new(replies), calls: RefCell::default() })
+    }
+
+    /// A script whose every call fails with `e`.
+    pub fn failing(e: EngineError) -> Rc<Self> {
+        Rc::new(Self { replies: RefCell::new(vec![Err(e); 8].into()), calls: RefCell::default() })
+    }
+}
+
 #[derive(Clone)]
 pub struct Scripted {
     pub id: EngineId,
@@ -249,9 +267,12 @@ pub struct Setup {
     /// Settings other than the language (which `lang` sets).
     pub settings: Settings,
     pub width: WidthClass,
+    pub tablet: bool,
     /// The screen `Ui` starts on.
     pub screen: Screen,
     pub engines: Vec<Scripted>,
+    /// Provide the AI router (`engines`); off: no `Ai` context at all.
+    pub ai: bool,
     /// The store to open (an empty in-memory one when neither this nor
     /// `db` is set).
     pub store: Option<Store>,
@@ -266,6 +287,10 @@ pub struct Setup {
     /// The app's Kabar Cloud status (`None`: no `Cloud` context, as in a
     /// build without the account screen).
     pub sync: Option<crate::cloud::SyncState>,
+    /// Provide a `Cloud` context even without `sync`.
+    pub account: bool,
+    /// The `Cloud` context shows an account signed in.
+    pub signed_in: bool,
 }
 
 impl Default for Setup {
@@ -274,14 +299,18 @@ impl Default for Setup {
             lang: UiLanguage::En,
             settings: Settings::default(),
             width: WidthClass::Compact,
+            tablet: false,
             screen: Screen::Today,
             engines: Vec::new(),
+            ai: true,
             store: None,
             db: None,
             doc: None,
             audio_dir: None,
             cloud: false,
             sync: None,
+            account: false,
+            signed_in: false,
         }
     }
 }
@@ -298,10 +327,11 @@ pub fn memory_db() -> Db {
 pub fn provide(setup: impl FnOnce() -> Setup) -> (Ui, Db) {
     let first = use_hook(|| Rc::new(RefCell::new(Some(setup()))));
     // Read once: which contexts exist must not change between renders.
-    let (lang, width, screen, cloud, has_sync, has_audio) = use_hook(|| {
+    let (lang, width, tablet, screen, cloud, has_account, has_ai, has_audio) = use_hook(|| {
         let s = first.borrow();
         let s = s.as_ref().expect("the first render");
-        (s.lang, s.width, s.screen, s.cloud, s.sync.is_some(), s.audio_dir.is_some())
+        let account = s.account || s.signed_in || s.sync.is_some();
+        (s.lang, s.width, s.tablet, s.screen, s.cloud, account, s.ai, s.audio_dir.is_some())
     });
     let setup = || std::cell::RefMut::map(first.borrow_mut(), |s| s.as_mut().expect("the first render"));
     use_context_provider(|| setup().doc.take().unwrap_or_else(FakeDoc::new) as Rc<dyn Document>);
@@ -315,21 +345,26 @@ pub fn provide(setup: impl FnOnce() -> Setup) -> (Ui, Db) {
     let ui = use_context_provider(|| Ui {
         settings: Signal::new(Settings { ui_language: lang, ..setup().settings.clone() }),
         width: Signal::new(width),
-        tablet: Signal::new(false),
+        tablet: Signal::new(tablet),
         screen: Signal::new(screen),
         lesson: Signal::new(None),
         lesson_from: Signal::new(Screen::Journey),
         focus: Signal::new(false),
     });
-    if has_sync {
+    if has_account {
         use_context_provider(|| {
-            let sync = setup().sync.take().unwrap();
+            let mut s = setup();
             let device_id = db.0.borrow().device_id().clone();
+            let mut status = crate::cloud::CloudStatus::not_configured(device_id);
+            if let Some(sync) = s.sync.take() {
+                status.sync = sync;
+            }
+            if s.signed_in {
+                status.configured = true;
+                status.email = Some("learner@example.com".into());
+            }
             crate::account::Cloud {
-                status: Signal::new(crate::cloud::CloudStatus {
-                    sync,
-                    ..crate::cloud::CloudStatus::not_configured(device_id)
-                }),
+                status: Signal::new(status),
                 devices: Signal::new(None),
                 usage: Signal::new(None),
                 signing_in: Signal::new(false),
@@ -356,7 +391,9 @@ pub fn provide(setup: impl FnOnce() -> Setup) -> (Ui, Db) {
             });
         }
     });
-    use_context_provider(|| Ai(Rc::new(router(&setup().engines))));
+    if has_ai {
+        use_context_provider(|| Ai(Rc::new(router(&setup().engines))));
+    }
     use_context_provider(|| TeachInbox(Signal::new(None)));
     use_context_provider(|| crate::settings::device::DevicePrefs::load(&db));
     use_context_provider(crate::settings::SettingsNav::new);
