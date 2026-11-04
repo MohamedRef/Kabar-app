@@ -151,6 +151,8 @@
   padding-block: 0.6rem; box-shadow: 0 6px 20px rgb(35 33 31 / 0.18);
 }
 .continue-word { font-size: 1.15rem; font-weight: 700; }
+/* True black: an outlined Lanjut instead of a bright mint bar (#586). */
+.app[data-theme="black"] button.primary.continue:not(:disabled) { background: var(--surface); color: var(--primary); border: 1px solid var(--primary); box-shadow: none; }
 .continue-sub { font-size: 0.8rem; opacity: 0.92; max-inline-size: 20rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .all-done { text-align: center; }
 

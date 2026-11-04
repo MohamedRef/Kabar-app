@@ -32,6 +32,12 @@ pub fn unit_title(lang: UiLanguage, unit_id: &str) -> Option<String> {
     })
 }
 
+/// A unit's name in the UI language only ("التحية", "Greetings"), for a
+/// sentence; the "local · target" pair is for labels.
+pub fn unit_local_title(lang: UiLanguage, unit_id: &str) -> Option<String> {
+    Some(local(lang, &find_unit(unit_id)?.title).to_string())
+}
+
 /// A lesson's title in its own language (`None` for an unknown id).
 pub fn lesson_title(lesson_id: &str) -> Option<String> {
     let routes = ROUTES.as_ref().ok()?;

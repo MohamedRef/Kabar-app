@@ -57,6 +57,8 @@ pub(super) enum L {
     Words,
     Downloads,
     NoTexts,
+    /// The web: no screenshot button yet (#576).
+    NoTextsPasteOnly,
     NoMatch,
     ClearSearch,
     NoWords,
@@ -100,6 +102,9 @@ pub(super) fn lt(lang: UiLanguage, l: L) -> &'static str {
         (NoTexts, ArEg) => "لسه مافيش نصوص هنا. الصق نص فوق أو افتح سكرين شوت، وهيتحفظ هنا لوحده.",
         (NoTexts, Ar) => "لا نصوص بعد. الصق نصًا في الأعلى أو افتح لقطة شاشة، وستُحفظ هنا تلقائيًا.",
         (NoTexts, En) => "No texts yet. Paste one above or open a screenshot; it's saved here by itself.",
+        (NoTextsPasteOnly, ArEg) => "لسه مافيش نصوص هنا. الصق نص فوق، وهيتحفظ هنا لوحده.",
+        (NoTextsPasteOnly, Ar) => "لا نصوص بعد. الصق نصًا في الأعلى، وسيُحفظ هنا تلقائيًا.",
+        (NoTextsPasteOnly, En) => "No texts yet. Paste one above; it's saved here by itself.",
         (NoMatch, ArEg) => "مالقيناش حاجة بالكلمة دي.",
         (NoMatch, Ar) => "لا نتائج لهذا البحث.",
         (NoMatch, En) => "Nothing matches that.",
@@ -322,8 +327,9 @@ pub(super) fn TextList(recent: Signal<Vec<SavedText>>, q: String, mut query: Sig
         .collect();
     crate::views::sort_by(&mut texts, pick.sort, |_| false, |t| t.title.clone());
     if recent.read().is_empty() {
+        let empty = lt(lang, if crate::platform::OCR { L::NoTexts } else { L::NoTextsPasteOnly });
         return rsx! {
-            crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat lib-empty", "{lt(lang, L::NoTexts)}" }
+            crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "flat lib-empty", "{empty}" }
         };
     }
     if texts.is_empty() {

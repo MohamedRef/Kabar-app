@@ -47,8 +47,19 @@ static RETURN_TO: GlobalSignal<Screen> = Signal::global(|| Screen::Today);
 /// welcome fits how it was reached (see `check::welcome_line`).
 static CHECK_INVITED: GlobalSignal<bool> = Signal::global(|| false);
 
+/// Whether Stats was pushed from another page (Today, Review…) rather than
+/// opened as a rail destination, where a back arrow has nowhere to go (#587).
+static PUSHED: GlobalSignal<bool> = Signal::global(|| true);
+
+/// Stats from the sidebar or rail: a destination of its own, no back arrow.
+pub fn open_from_nav(ui: Ui) {
+    open(ui, Screen::Stats);
+    *PUSHED.write() = false;
+}
+
 /// Opens a stats screen, remembering where the learner came from.
 pub fn open(ui: Ui, screen: Screen) {
+    *PUSHED.write() = true;
     let from = *ui.screen.peek();
     if !matches!(from, Screen::Stats | Screen::LevelCheck) {
         *RETURN_TO.write() = from;
@@ -477,12 +488,14 @@ pub fn StatsScreen() -> Element {
                 }
                 // The header's round arrow (#442, #448); a phone's top bar
                 // already has one, so it shows from the rail up.
+                if *PUSHED.read() {
                 button {
                     class: "icon-button st-back st-back-page round-back",
                     aria_label: st(lang, S::Back),
                     title: st(lang, S::Back),
                     onclick: move |_| back(ui),
                     span { aria_hidden: "true", {back_arrow(lang)} }
+                }
                 }
             }
             PeriodSwitch { period }
@@ -626,7 +639,7 @@ fn ActivityCard(overview: Overview, today: LocalDate, total_minutes: u32) -> Ele
                 ui.t(labels::weekday(b.start.weekday())).to_string()
             }
         } else {
-            stf(lang, S::WeekOf, &[("date", &labels::date(&ui, b.start, today))])
+            stf(lang, S::WeekOf, &[("date", &labels::day_month(&ui, b.start, today))])
         }
     };
     let title = st(lang, if o.period == Period::Week { S::ActivityWeek } else { S::ActivityMonth });

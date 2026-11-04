@@ -1226,6 +1226,7 @@ fn the_library_strings_exist_in_all_three_voices() {
         L::Words,
         L::Downloads,
         L::NoTexts,
+        L::NoTextsPasteOnly,
         L::NoMatch,
         L::ClearSearch,
         L::NoWords,
@@ -1514,4 +1515,13 @@ fn reading_aloud_falls_back_to_the_webview_voice() {
 fn the_reader_tagline_reads_in_every_voice() {
     let lines: std::collections::HashSet<_> = UiLanguage::ALL.map(reading::tagline).into();
     assert_eq!(lines.len(), 3);
+}
+
+#[test]
+fn the_drop_hint_only_promises_what_works() {
+    // A phone has nothing to drag; the web reads no pictures yet.
+    assert_eq!(drop_hint(true, true), None);
+    assert_eq!(drop_hint(true, false), Some(Msg::ReaderDrop));
+    assert_eq!(drop_hint(false, false), Some(Msg::ReaderDropText));
+    assert!(!msg(EN, Msg::ReaderDropText).contains("image"));
 }

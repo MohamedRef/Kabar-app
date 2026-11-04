@@ -425,3 +425,20 @@ fn arabic_article_stays_with_its_latin_word() {
     // Only before a Latin word.
     assert_eq!(glue_articles("الـ كلمة"), "الـ كلمة");
 }
+
+#[test]
+fn hyphen_lines_become_a_list() {
+    use super::reading::{BodyBlock, body_blocks};
+    // The §24-era J1 slide "Pagi, siang, sore, malam" (#587).
+    let body = "The Indonesian day has four parts:\n- pagi: morning, until about 11\n- siang: midday, 11 to 3\nThat's it.\n";
+    assert_eq!(
+        body_blocks(body),
+        vec![
+            BodyBlock::Text("The Indonesian day has four parts:".into()),
+            BodyBlock::List(vec!["pagi: morning, until about 11".into(), "siang: midday, 11 to 3".into()]),
+            BodyBlock::Text("That's it.".into()),
+        ]
+    );
+    // Plain text keeps its line breaks; a hyphen mid-line is just text.
+    assert_eq!(body_blocks("a\nb - c"), vec![BodyBlock::Text("a\nb - c".into())]);
+}

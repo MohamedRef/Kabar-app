@@ -67,6 +67,9 @@
 
 .lp-slide-title { font-family: var(--font-latin); font-size: clamp(1.6rem, 6vw, 2.2rem); color: var(--indigo); margin-block: 0.5rem; }
 .lp-slide-body { font-size: 1.08rem; }
+.lp-slide-body > p { margin-block: 0 0.5rem; }
+.lp-list { margin-block: 0 0.5rem; padding-inline-start: 1.25rem; }
+.lp-list li + li { margin-block-start: 0.2rem; }
 .lp-table-wrap { overflow-x: auto; margin-block: 0.75rem; }
 .lp-table { border-collapse: collapse; inline-size: 100%; font-size: 0.95rem; }
 .lp-table th, .lp-table td { padding-block: 0.4rem; padding-inline: 0.6rem; text-align: start; border-block-end: 1px solid var(--line); }
@@ -400,7 +403,7 @@
 .ln-slides li.done { color: var(--muted); }
 .ln-slides li.current { color: var(--indigo); font-weight: 600; }
 .ln-slides li.current::before { content: "› "; }
-[dir="rtl"] .ln-slides li.current::before { content: "‹ "; }
+.app[dir="rtl"] .ln-slides li.current::before { content: "‹ "; }
 
 .ln-dots { list-style: none; margin: var(--sp-2) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .ln-dot {
@@ -446,7 +449,7 @@
   .ln-dot { transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease); }
 }
 @keyframes ln-in { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: none; } }
-[dir="rtl"] .lp-notes { animation-name: ln-in-rtl; }
+.app[dir="rtl"] .lp-notes { animation-name: ln-in-rtl; }
 @keyframes ln-in-rtl { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
 
 /* ---------- state machine cues (redesign 2026-10-29) ---------- */

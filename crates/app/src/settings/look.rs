@@ -54,7 +54,7 @@ pub fn LookSection() -> Element {
 
             div { class: "field",
                 span { class: "label", id: "appearance-label", "{st(lang, S::Appearance)}" Scope { device_only: true } }
-                div { class: "segmented", role: "radiogroup", aria_labelledby: "appearance-label",
+                div { class: "segmented seg-fill", role: "radiogroup", aria_labelledby: "appearance-label",
                     for &a in Appearance::ALL {
                         button {
                             key: "{a.as_str()}",
@@ -68,6 +68,7 @@ pub fn LookSection() -> Element {
                         }
                     }
                 }
+                p { class: "muted settings-hint", "{st(lang, appearance_hint(appearance))}" }
             }
 
             div { class: "field",
@@ -137,6 +138,16 @@ pub(super) fn swatch(th: Theme) -> String {
             format!("background: linear-gradient(135deg, {} 50%, {} 50%)", day.surface, night.surface)
         }
         (None, None) => String::new(),
+    }
+}
+
+/// One line under the switch for the style in use, so the labels stay
+/// short enough for one row on a phone (#580).
+fn appearance_hint(a: Appearance) -> S {
+    match a {
+        Appearance::Calm => S::AppearanceCalmHint,
+        Appearance::Glossy => S::AppearanceGlossyHint,
+        Appearance::LiquidGlass => S::AppearanceLiquidGlassHint,
     }
 }
 
