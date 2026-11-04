@@ -32,10 +32,15 @@
     <noscript>Kabar needs JavaScript and WebAssembly.</noscript>
     <script type="module">
       import init from "./kabar.js";
-      init({ module_or_path: "./kabar_bg.wasm" }).catch((e) => {
-        document.querySelector("#boot img").style.animation = "none";
-        document.getElementById("boot-msg").textContent = "Kabar مافتحش في المتصفح ده: " + e;
-      });
+      init({ module_or_path: "./kabar_bg.wasm" })
+        .then(() => {
+          // Once this visit has everything, keep it on the device for the next.
+          if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(() => {});
+        })
+        .catch((e) => {
+          document.querySelector("#boot img").style.animation = "none";
+          document.getElementById("boot-msg").textContent = "Kabar مافتحش في المتصفح ده: " + e;
+        });
     </script>
   </body>
 </html>
