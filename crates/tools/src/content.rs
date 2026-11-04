@@ -261,4 +261,72 @@ mod tests {
         assert!(out.contains("changed: LESSONS/a") && out.contains("removed: LESSONS/b"));
         assert_eq!(diff(&base, &base), "no content file differs");
     }
+
+    #[test]
+    fn new_lesson_from_the_command_line() {
+        let dir = repo_copy();
+        let s = crate::testkit::Sandbox::empty();
+        let root = dir.path().display().to_string();
+        let cli = |args: &[&str]| {
+            use clap::Parser as _;
+            let mut all = vec!["kabar-tools", "--root", root.as_str(), "content"];
+            all.extend_from_slice(args);
+            crate::dispatch(crate::Cli::try_parse_from(all).unwrap())
+        };
+        cli(&["new-lesson", "bipa2.u04.l07"]).unwrap();
+        let text = std::fs::read_to_string(dir.path().join("content/lessons/id/bipa2.u04.l07.yaml")).unwrap();
+        assert!(text.contains("language: \"id\""), "{text}");
+        let err = cli(&["new-lesson", "x9.u01.l01"]).unwrap_err();
+        assert!(err.to_string().contains("the level must be bipaN or jN"), "{err}");
+        assert!(cli(&["new-lesson", "jx.u01.l01"]).is_err());
+        assert!(
+            new_lesson(s.path(), "bipa1.u01.l01").unwrap_err().to_string().contains(TEMPLATE),
+            "no template"
+        );
+        assert_eq!(language_of("j12.u01.l01"), Some("jv"));
+        assert_eq!(language_of("j.u01.l01"), None);
+    }
+
+    fn bundle(s: &crate::testkit::Sandbox, name: &str, files: &[(&str, &str)]) -> String {
+        let entries: Vec<(String, Vec<u8>)> = files
+            .iter()
+            .map(|(k, t)| (k.to_string(), miniz_oxide::deflate::compress_to_vec(t.as_bytes(), 6)))
+            .collect();
+        s.write(name, kabar_protocol::bundle::encode(&entries)).display().to_string()
+    }
+
+    #[test]
+    fn diff_compares_bundles_and_needs_a_base() {
+        let s = crate::testkit::Sandbox::empty();
+        let a = bundle(&s, "a.bundle", &[("LESSONS/x", "1"), ("CAST", "c")]);
+        let b = bundle(&s, "b.bundle", &[("LESSONS/x", "2"), ("CAST", "c")]);
+        s.cli(&["content", "diff", "--base-bundle", &a, "--head-bundle", &b]).unwrap();
+        s.cli(&["content", "diff", "--base-bundle", &a]).unwrap();
+        let err = s.cli(&["content", "diff"]).unwrap_err();
+        assert!(err.to_string().contains("give --base <git ref> or --base-bundle <file>"));
+        assert!(s.cli(&["content", "diff", "--base", "HEAD"]).is_err(), "not a git checkout");
+        assert!(s.cli(&["content", "diff", "--base-bundle", "missing.bundle"]).is_err());
+
+        let many: Vec<(String, String)> = (0..25).map(|i| (format!("LESSONS/l{i:02}"), "t".into())).collect();
+        let out = diff(&[], &many);
+        assert!(out.contains("| LESSONS | 25 | 0 | 0 |"), "{out}");
+        assert_eq!(out.matches("added: LESSONS/").count(), 20, "the first 20 by name");
+        assert!(out.ends_with("added: … 5 more LESSONS\n"), "{out}");
+    }
+
+    #[test]
+    fn preflight_reports_every_failed_check() {
+        let s = crate::testkit::Sandbox::empty();
+        let err = s.cli(&["content", "preflight", "--base", "HEAD"]).unwrap_err();
+        assert_eq!(err.to_string(), "4 check(s) failed; see above");
+    }
+
+    #[test]
+    fn preflight_passes_on_the_repo() {
+        let repo = crate::testkit::repo();
+        if ids::git_files(&repo, "HEAD").is_err() {
+            return; // not a git checkout (a source tarball)
+        }
+        preflight(&Root::new(Some(repo)), "HEAD").unwrap();
+    }
 }

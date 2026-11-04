@@ -37,8 +37,11 @@ struct Output {
 }
 
 fn main() -> ExitCode {
-    let args: Vec<String> = std::env::args().skip(1).collect();
-    let [input, out_dir] = args.as_slice() else {
+    cli(&std::env::args().skip(1).collect::<Vec<_>>())
+}
+
+fn cli(args: &[String]) -> ExitCode {
+    let [input, out_dir] = args else {
         eprintln!("usage: journey-map <ne_10m_admin_0_countries.geojson> <out-dir>");
         return ExitCode::from(2);
     };
@@ -161,4 +164,62 @@ Made with Natural Earth (public domain), simplified and restyled for Kabar. -->\
         vw = o.view.w,
         vh = o.view.h,
     )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json::json;
+
+    fn square(lon: f64, lat: f64, w: f64, h: f64) -> Value {
+        json!([[[lon, lat], [lon + w, lat], [lon + w, lat + h], [lon, lat + h], [lon, lat]]])
+    }
+
+    fn countries() -> Value {
+        json!({"features": [
+            // Java, roughly, and a Sumatra-sized block.
+            {"properties": {"ADM0_A3": "IDN"}, "geometry": {"type": "MultiPolygon",
+                "coordinates": [square(105.5, -8.5, 9.0, 2.5), square(96.0, -5.0, 8.0, 8.0)]}},
+            {"properties": {"ADM0_A3": "MYS"}, "geometry": {"type": "Polygon", "coordinates": square(100.5, 1.5, 3.0, 4.5)}},
+            {"properties": {"ADM0_A3": "XXX"}, "geometry": {"type": "Point", "coordinates": [0, 0]}},
+        ]})
+    }
+
+    #[test]
+    fn writes_both_maps_with_land_and_places() {
+        let dir = tempfile::tempdir().unwrap();
+        let input = dir.path().join("countries.geojson");
+        std::fs::write(&input, countries().to_string()).unwrap();
+        let out = dir.path().join("journey");
+        let args = [input.display().to_string(), out.display().to_string()];
+        assert_eq!(cli(&args), ExitCode::SUCCESS);
+        for (file, title) in [("indonesia.svg", "Indonesia"), ("java.svg", "Java")] {
+            let svg = std::fs::read_to_string(out.join(file)).unwrap();
+            assert!(svg.starts_with("<svg xmlns=\"http://www.w3.org/2000/svg\""), "{file}");
+            assert!(svg.contains(&format!("aria-label=\"{title}\"")), "{file}");
+            let land = svg.split("class=\"land-id\"").nth(1).unwrap();
+            assert!(land.contains(" d=\"M"), "{file}: Indonesia is drawn");
+            assert_eq!(svg.matches("<circle").count(), PLACES.len(), "{file}: every route place");
+        }
+        let full = std::fs::read_to_string(out.join("indonesia.svg")).unwrap();
+        let other = full.split("class=\"land-other\"").nth(1).unwrap().split("/>").next().unwrap();
+        assert!(other.contains(" d=\"M"), "the neighbour is drawn on the whole map");
+    }
+
+    #[test]
+    fn refuses_inputs_without_indonesia() {
+        let dir = tempfile::tempdir().unwrap();
+        let input = dir.path().join("x.geojson");
+        std::fs::write(&input, json!({"features": [countries()["features"][1].clone()]}).to_string())
+            .unwrap();
+        let err = run(input.to_str().unwrap(), dir.path()).unwrap_err();
+        assert!(err.contains("no Indonesia"), "{err}");
+        std::fs::write(&input, "{}").unwrap();
+        assert_eq!(run(input.to_str().unwrap(), dir.path()).unwrap_err(), "no features array");
+        std::fs::write(&input, "nope").unwrap();
+        assert!(run(input.to_str().unwrap(), dir.path()).is_err());
+        assert!(run("/nowhere.geojson", dir.path()).unwrap_err().starts_with("/nowhere.geojson"));
+        assert_eq!(cli(&["only-one".into()]), ExitCode::from(2), "usage");
+        assert_eq!(cli(&["/nowhere.geojson".into(), "out".into()]), ExitCode::FAILURE);
+    }
 }

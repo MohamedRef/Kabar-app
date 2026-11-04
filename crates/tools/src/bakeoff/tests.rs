@@ -308,3 +308,107 @@ fn the_bar_counts_unjudged_answers_and_latency() {
     assert_eq!(rows[0].misses, ["only 2 of 3 items run", "1 of 2 answers not judged yet", "p50 2.4 s > 2 s"]);
     assert!(!rows[0].passes());
 }
+
+#[test]
+fn the_run_command_goes_task_by_task_and_drops_a_stopped_engine() {
+    let s = crate::testkit::Sandbox::with(&["content/golden"]);
+    let nope = || (200, json!({"message": {"content": "not json"}}));
+    let http = Scripted::new(vec![
+        nope(),
+        nope(),
+        (429, json!({"errors": [{"message": "daily neurons used"}]})),
+        nope(),
+        nope(),
+    ]);
+    let args = |engines: &str, tasks: &str| RunArgs {
+        engines: engines.split(',').map(str::to_owned).collect(),
+        tasks: tasks.split(',').filter(|t| !t.is_empty()).map(str::to_owned).collect(),
+        limit: Some(1),
+        out: Some("runs/t".into()),
+    };
+    run_with(&s.root(), args("local=m,workers_ai", "grade_answer,translate_text"), &env(KEYS), &http)
+        .unwrap();
+    let sent: Vec<String> = http.sent.borrow().iter().map(|(u, _)| u.clone()).collect();
+    assert_eq!(sent.len(), 5, "a repair retry per local item, one refused Workers AI call, then local only");
+    assert!(sent[2].starts_with(super::engines::CLOUDFLARE_API), "{sent:?}");
+    for task in ["grade_answer", "translate_text"] {
+        let recs = read_records(&s.path().join(format!("runs/t/local-m/{task}.jsonl"))).unwrap();
+        assert_eq!(recs.len(), 1, "{task}: --limit 1");
+        assert!(!recs[0].ok && recs[0].error.is_some(), "{task}: an answer that isn't JSON fails");
+    }
+    assert!(!s.path().join("runs/t/workers_ai").exists(), "an exhausted engine records nothing");
+    // Failed answers are not judged; the report still lists the engine.
+    s.cli(&["bakeoff", "blind", "runs/t"]).unwrap();
+    s.write("docs/README.md", "");
+    s.write("prompts/README.md", "");
+    s.cli(&["bakeoff", "report", "runs/t", "--write"]).unwrap();
+    assert!(s.read("docs/bakeoff-report.md").contains("local-m"), "the report names the engine");
+
+    let err = run_with(&s.root(), args("local=m", "no_such_task"), &env(KEYS), &http).unwrap_err();
+    assert_eq!(err.to_string(), "unknown task `no_such_task`");
+    assert!(run_with(&s.root(), args("gemini_free", ""), &env(&[]), &http).is_err(), "no key");
+}
+
+#[test]
+fn claude_and_gemini_requests_and_replies() {
+    let call = EngineCall {
+        cache_key: CacheKey {
+            task: Task::TranslateText,
+            input_hash: "h".into(),
+            engine: EngineId::Claude,
+            prompt_version: 1,
+            profile_hash: String::new(),
+        },
+        system: "sys".into(),
+        user: "Apa kabar?".into(),
+        image_sha256: None,
+        is_repair: false,
+        json: true,
+        max_tokens: None,
+        personal: false,
+    };
+    let claude = Engine::from_spec("claude", env(KEYS)).unwrap();
+    let (url, headers, body) = claude.request(&call, None);
+    assert_eq!(url, kabar_server::ai::ANTHROPIC_URL);
+    assert_eq!(headers[0], ("x-api-key", "a-key".to_string()));
+    assert_eq!(body, kabar_server::ai::claude_body(&call, &claude.model, None));
+    let reply = json!({"content": [{"type": "text", "text": "{\"ok\":true}"}], "usage": {"input_tokens": 12, "output_tokens": 5}});
+    let r = claude.parse(200, &reply, false).unwrap();
+    assert_eq!((r.text.as_str(), r.tokens_in, r.tokens_out), ("{\"ok\":true}", Some(12), Some(5)));
+    assert!(matches!(claude.parse(200, &json!({"content": []}), false), Err(CallError::Failed(_))));
+
+    let gem = Engine::from_spec("gemini_free", env(KEYS)).unwrap();
+    let (url, headers, _) = gem.request(&call, None);
+    assert_eq!((url, headers[0].0), (kabar_server::ai::gemini_url(&gem.model), "x-goog-api-key"));
+    let reply = json!({"candidates": [{"content": {"parts": [{"text": "Halo"}]}}], "usageMetadata": {"promptTokenCount": 3, "candidatesTokenCount": 1}});
+    let r = gem.parse(200, &reply, false).unwrap();
+    assert_eq!((r.text.as_str(), r.tokens_in), ("Halo", Some(3)));
+    assert_eq!(gem.per_minute(), Some(10), "the free tier's pace");
+    assert!(
+        matches!(gem.parse(400, &json!({"error": {"message": "bad request"}}), false), Err(CallError::Failed(m)) if m.contains("HTTP 400: bad request"))
+    );
+
+    // Ollama: no message, or an empty one, is a failed answer.
+    assert!(
+        matches!(local().parse(200, &json!({"done": true}), false), Err(CallError::Failed(m)) if m.contains("no message.content"))
+    );
+    assert!(
+        matches!(local().parse(200, &json!({"message": {"content": "  "}}), false), Err(CallError::Failed(m)) if m.contains("empty answer"))
+    );
+    // Workers AI that says it failed, with a quota word, is out of quota.
+    let wai = Engine::from_spec("workers_ai", env(KEYS)).unwrap();
+    assert!(matches!(
+        wai.parse(200, &json!({"success": false, "errors": [{"message": "quota reached"}]}), false),
+        Err(CallError::Exhausted(_))
+    ));
+    // An unreachable engine stops for this run.
+    struct Down;
+    impl Http for Down {
+        fn post_json(&self, _: &str, _: &[(&str, String)], _: &Value) -> Result<(u16, Value)> {
+            anyhow::bail!("connection refused")
+        }
+    }
+    assert!(
+        matches!(local().call(&Down, &call, None), Err(CallError::Exhausted(m)) if m.contains("unreachable"))
+    );
+}
