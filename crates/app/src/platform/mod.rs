@@ -756,4 +756,82 @@ mod tests {
         assert_eq!(tts_status(), TtsStatus::WebView);
         assert!(speech_rate(true) < speech_rate(false));
     }
+
+    /// Off Android every native bridge says "not here" in the shape its
+    /// caller falls back on: Settings hides the switch, the Reader uses a
+    /// file input, exports stay in Downloads, reminders stay in the app.
+    #[test]
+    fn off_android_each_bridge_answers_with_its_fallback() {
+        assert!(!metered_network(), "automatic downloads don't wait for Wi-Fi on a desktop");
+        assert!(!can_vibrate());
+        assert_eq!(device_dark(), None, "CSS prefers-color-scheme decides");
+        assert_eq!(install_marker(), None);
+        assert_eq!(take_shared_input(), None);
+        assert_eq!(notifications_enabled(), None);
+        assert!(pick_image().unwrap_err().contains("no native image picker"));
+        assert_eq!(pick_state(), PickState::Done);
+        assert!(save_document(Path::new("/tmp/kabar.json"), "kabar.json").is_err());
+        assert_eq!(save_state(), SaveState::Cancelled);
+        assert_eq!(
+            open_app_page(AppPage::Notifications).unwrap_err(),
+            "Notifications: no system settings page on this platform"
+        );
+        const { assert!(!NATIVE_TTS && !NATIVE_IMAGE_PICKER && !SAVE_DIALOG && !BACKGROUND_AUDIO) };
+        // Painting bars and vibrating do nothing, and never fail.
+        system_bars("#fbf7ee", "#101418");
+        vibrate(Haptic::Correct);
+        guard_webview();
+    }
+
+    #[cfg(not(target_os = "macos"))]
+    #[test]
+    fn off_android_and_the_mac_there_is_no_ocr_name_or_reminders() {
+        assert!(!ocr_available());
+        let why = ocr_image(Path::new("/tmp/screenshot.png")).unwrap_err();
+        assert!(why.contains("isn't available on this platform"), "{why}");
+        assert_eq!(device_model(), None);
+        assert_eq!(device_name(), None);
+        assert!(!LOCAL_REMINDERS && !reminders::available());
+        assert_eq!(reminders::schedule(r#"[{"at":1,"title":"Kak Nur","text":"Ayo!"}]"#), Ok(()));
+        assert!(reminders::take_delivered().is_empty());
+        assert_eq!(reminders::battery_unrestricted(), None);
+        reminders::request();
+        assert!(!crate::platform::update_notice::post(&crate::update::Notice {
+            key: "1.0.0+2:ready".into(),
+            title: "Kabar".into(),
+            body: "Ready".into(),
+            action: "install",
+            button: "Install".into(),
+            channel: "Updates".into(),
+        }));
+        update_notice::clear();
+        update_notice::schedule(true);
+        assert_eq!(update_notice::take_tap(), None);
+    }
+
+    #[test]
+    fn off_android_nothing_is_pushed_and_no_native_player_runs() {
+        assert!(!push::available() && !push::pushed());
+        assert_eq!(push::token(), None);
+        push::set_pushed("fcm", true);
+        assert!(!push::pushed(), "remembering needs Firebase");
+        assert_eq!(push::set_phrasebook("{}"), Ok(()));
+        let none = Err("no native player on this platform".to_string());
+        assert_eq!(track::play("/tmp/ep.mp3", "Episode", "Show", 0.0, 1.0), none);
+        assert_eq!(track::pause(), none);
+        assert_eq!(track::resume(), none);
+        assert_eq!(track::seek(3.0), none);
+        assert_eq!(track::rate(1.25), none);
+        assert_eq!(track::stop(), none);
+        assert_eq!(track::state(), Err("no native player on this platform".to_string()));
+    }
+
+    #[test]
+    fn desktop_data_and_exports_live_in_the_users_folders() {
+        let data = data_dir().unwrap();
+        assert!(data.to_string_lossy().to_lowercase().contains("kabar"), "{data:?}");
+        let exports = export_dir().unwrap();
+        assert!(exports.is_absolute(), "{exports:?}");
+        assert_ne!(exports, data, "exports go where the learner looks, not into the app's data");
+    }
 }

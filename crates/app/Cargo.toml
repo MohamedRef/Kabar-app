@@ -100,6 +100,8 @@ tempfile = "3"
 ed25519-dalek = "2"
 # Two-device sync convergence on the real store (cloud/converge.rs).
 proptest = "1"
+# The sync engine's tests run Kabar Cloud's real hub locally (cloud/fake.rs).
+kabar-server = { path = "../server" }
 
 [features]
 default = ["desktop"]

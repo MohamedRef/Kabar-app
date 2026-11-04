@@ -405,6 +405,15 @@ mod tests {
         assert_eq!(reads.load(std::sync::atomic::Ordering::SeqCst), 0);
     }
 
+    #[test]
+    fn an_unreadable_session_file_means_signed_out() {
+        let dir = tempfile::tempdir().unwrap();
+        // The path is a folder: reading fails, and nothing is guessed.
+        let v = FileVault::new(dir.path().to_path_buf(), None);
+        assert_eq!(v.load(), None);
+        assert!(!v.save(&session("s")), "a folder can't hold the session");
+    }
+
     #[cfg(unix)]
     #[test]
     fn file_vault_is_readable_by_this_user_only() {

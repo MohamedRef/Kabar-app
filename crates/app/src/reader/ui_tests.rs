@@ -1275,7 +1275,7 @@ fn words_tab(lang: UiLanguage, prep: fn(&Db, ReaderState)) -> String {
 
 #[test]
 fn saved_words_show_their_meaning_their_sentence_and_where_they_came_from() {
-    let html = words_tab(EN, |db, st| {
+    let html = words_tab(EN, |db, _| {
         let mut s = db.0.borrow_mut();
         let text = s.save_text(SAYA, TextKind::Pasted, None, None).unwrap();
         s.save_word("id:membaca", "membaca", SAYA, Some(&text.id)).unwrap();
@@ -1284,8 +1284,6 @@ fn saved_words_show_their_meaning_their_sentence_and_where_they_came_from() {
         let t: kabar_protocol::learn::TaughtEntry =
             serde_json::from_str(include_str!("../../../../fixtures/learn/taught.kalimat.json")).unwrap();
         s.save_taught(&t).unwrap();
-        drop(s);
-        st.load(db, db.0.borrow().recent_texts(1).unwrap().remove(0));
     });
     let text = text_of(&html);
     assert!(text.contains("to read"), "the meaning: {text}");

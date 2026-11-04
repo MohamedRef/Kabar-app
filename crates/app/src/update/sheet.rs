@@ -54,7 +54,7 @@ impl UpdateSheetNav {
     /// What the offer brings, or the changelog when nothing is offered
     /// right now (a notification tapped after Kabar restarted).
     pub fn open_offer(self) {
-        let offered = super::get().is_some_and(|u| {
+        let offered = super::view::updater().is_some_and(|u| {
             matches!(
                 u.status().phase,
                 Phase::Available(_)
@@ -221,9 +221,9 @@ fn app_mark() -> Element {
 }
 
 /// The releases page of the channel this build follows.
-fn releases_url() -> String {
+pub(super) fn releases_url() -> String {
     let base = super::FEEDS_URL.replace("/releases/download", "/releases/tag");
-    match super::get() {
+    match super::view::updater() {
         Some(u) => format!("{base}/{}", u.installed().channel.release_tag()),
         None => base.trim_end_matches("/tag").to_owned(),
     }
@@ -291,13 +291,9 @@ fn today(s: &Status) -> i64 {
 /// update that brought something to tell.
 #[component]
 pub fn UpdateSheet() -> Element {
-    let ui = use_context::<Ui>();
     let UpdateSheetNav(mut mode) = use_context::<UpdateSheetNav>();
     let status = use_update_status();
     let mut opened_after_update = use_signal(|| false);
-    let mut open_builds = use_signal(Vec::<String>::new);
-    let mut open_kinds = use_signal(Vec::<String>::new);
-    let mut earlier_shown = use_signal(|| EARLIER_STEP);
 
     use_effect(move || {
         let has = status.read().as_ref().is_some_and(|s| !s.whats_new().is_empty());
@@ -309,10 +305,21 @@ pub fn UpdateSheet() -> Element {
 
     let Some(m) = *mode.read() else { return rsx! {} };
     let Some(s) = status.read().clone() else { return rsx! {} };
+    rsx! { SheetFor { s, m } }
+}
+
+/// The open sheet for one status and mode. Its folds reset when it closes.
+#[component]
+pub(super) fn SheetFor(s: Status, m: SheetMode) -> Element {
+    let ui = use_context::<Ui>();
+    let UpdateSheetNav(mut mode) = use_context::<UpdateSheetNav>();
+    let mut open_builds = use_signal(Vec::<String>::new);
+    let mut open_kinds = use_signal(Vec::<String>::new);
+    let mut earlier_shown = use_signal(|| EARLIER_STEP);
     let lang = ui.lang();
     let close = move |_| {
         if *mode.peek() == Some(SheetMode::Updated)
-            && let Some(u) = super::get()
+            && let Some(u) = super::view::updater()
         {
             u.close_whats_new();
         }
