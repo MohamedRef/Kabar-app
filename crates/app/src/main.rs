@@ -50,6 +50,8 @@ mod stats;
 mod store;
 mod studio;
 mod teach;
+#[cfg(test)]
+mod test_dom;
 mod theme;
 mod ui;
 mod update;

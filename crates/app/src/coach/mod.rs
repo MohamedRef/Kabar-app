@@ -13,6 +13,8 @@ pub mod onboarding;
 pub mod settings;
 pub mod text;
 pub mod today;
+#[cfg(test)]
+mod ui_tests;
 pub mod widgets;
 
 use dioxus::prelude::*;
