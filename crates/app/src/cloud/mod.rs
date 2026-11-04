@@ -10,6 +10,7 @@ pub mod api;
 mod e2e;
 pub mod engine;
 pub mod link;
+pub mod password;
 // Google's desktop sign-in needs a loopback server; the web signs in with a
 // username and password.
 #[cfg(not(target_arch = "wasm32"))]
@@ -76,6 +77,22 @@ impl CloudConfig {
 #[derive(Debug)]
 pub enum Command {
     SignInGoogle,
+    /// Username + password, on a device without Google (and the web app).
+    /// `remember: false` (someone else's device) keeps the session only until
+    /// the app or the browser tab closes.
+    SignInPassword {
+        username: String,
+        password: Secret,
+        remember: bool,
+    },
+    /// Read the account's username (`Event::Login`).
+    LoadLogin,
+    /// Set or change the username and password, from a signed-in device.
+    SetLogin {
+        username: String,
+        password: Secret,
+    },
+    RemoveLogin,
     /// Sign in with an ID token obtained elsewhere (the end-to-end check, and
     /// Android's Credential Manager once its bridge lands).
     #[cfg_attr(not(test), allow(dead_code))]
@@ -105,6 +122,28 @@ pub enum Command {
     Shutdown,
 }
 
+/// A password on its way to the engine: never printed.
+#[derive(Clone, PartialEq, Eq)]
+pub struct Secret(pub String);
+
+impl std::fmt::Debug for Secret {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str("Secret(…)")
+    }
+}
+
+/// The account's username and password, as Settings › Account shows them.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct LoginStatus {
+    /// `None` until Kabar Cloud has answered.
+    pub username: Option<Option<String>>,
+    /// A change is on its way.
+    pub saving: bool,
+    /// The last change went through.
+    pub saved: bool,
+    pub problem: Option<Problem>,
+}
+
 #[derive(Clone, Debug, PartialEq)]
 pub enum Event {
     Status(CloudStatus),
@@ -112,8 +151,9 @@ pub enum Event {
     Usage(Result<UsageReport, Problem>),
     /// Remote ops changed these tables.
     Changed(BTreeSet<String>),
-    /// The browser is open for Google sign-in.
+    /// The browser is open for Google sign-in, or a password is being checked.
     SigningIn(bool),
+    Login(LoginStatus),
     /// Kabar Cloud's answer to [`Command::PushToken`]: whether it now pushes
     /// this device's reminders (`None`: it couldn't be asked).
     Push {
@@ -145,6 +185,17 @@ pub enum Problem {
     Network,
     Server,
     Outdated,
+    /// Username and password don't match.
+    WrongPassword,
+    /// Too many wrong passwords: the next try counts in this many minutes.
+    Locked(u64),
+    UsernameTaken,
+    /// The username isn't 3–32 of a-z 0-9 . _ - (checked before sending).
+    BadUsername,
+    /// The new password is shorter than `MIN_PASSWORD_CHARS`.
+    ShortPassword,
+    /// The two new passwords differ (Settings only).
+    Mismatch,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -158,6 +209,8 @@ pub struct CloudStatus {
     pub pending: u64,
     pub last_sync_ms: Option<u64>,
     pub problem: Option<Problem>,
+    /// Signed in on someone else's device: the session ends with the app or tab.
+    pub temporary: bool,
 }
 
 impl CloudStatus {
@@ -170,6 +223,7 @@ impl CloudStatus {
             pending: 0,
             last_sync_ms: None,
             problem: None,
+            temporary: false,
         }
     }
 }
