@@ -17,6 +17,14 @@ pub const MAX_OPS_PER_PUSH: usize = 50;
 pub const MAX_PAYLOAD_BYTES: usize = 64 * 1024;
 /// Most ops the hub sends in one [`ServerMsg::Ops`] page.
 pub const OPS_PAGE_SIZE: usize = 200;
+/// The WebSocket subprotocol a browser offers on `/v1/sync` alongside its
+/// token (browsers can't set `Authorization` on a WebSocket); the server
+/// picks it.
+pub const WS_PROTOCOL: &str = "kabar.v1";
+/// Prefix of the subprotocol that carries the access token:
+/// `kabar.bearer.<token>`.
+pub const WS_BEARER_PREFIX: &str = "kabar.bearer.";
+
 /// How far ahead of the hub's clock an op's HLC may be. Anything further
 /// would win every last-writer-wins race until the real clock catches up.
 pub const MAX_CLOCK_SKEW_MS: u64 = 5 * 60 * 1000;

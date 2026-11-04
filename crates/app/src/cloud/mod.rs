@@ -1,21 +1,21 @@
 //! Kabar Cloud from the app's side: sign-in, live sync and the Devices
-//! screen. A background thread runs the [`engine::Engine`] on its own tokio
-//! runtime and database connection; the UI talks to it through channels.
+//! screen. The [`engine::Engine`] runs on its own thread, tokio runtime and
+//! database connection on the Mac and Android, and as a task on the page's
+//! one thread (sharing the UI's database) on the web; the UI talks to it
+//! through channels either way.
 
-// Sign-in, the sync engine and the HTTP client run on their own thread with
-// tokio's network stack; the web build reaches Kabar Cloud later (docs/WEB.md).
-#[cfg(not(target_arch = "wasm32"))]
 pub mod api;
 #[cfg(test)]
 #[allow(clippy::disallowed_macros)] // the e2e run prints its timings
 mod e2e;
-#[cfg(not(target_arch = "wasm32"))]
 pub mod engine;
 pub mod link;
+// Google's desktop sign-in needs a loopback server; the web signs in with a
+// username and password.
 #[cfg(not(target_arch = "wasm32"))]
 pub mod oauth;
-#[cfg(not(target_arch = "wasm32"))]
 pub mod session;
+mod socket;
 
 use std::collections::BTreeSet;
 #[cfg(not(target_arch = "wasm32"))]
@@ -30,7 +30,8 @@ use tokio::sync::mpsc::{UnboundedReceiver, UnboundedSender};
 #[cfg(not(target_arch = "wasm32"))]
 use self::oauth::GoogleClient;
 
-/// The Google client the web build will sign in with (docs/WEB.md, phase 2).
+/// The web build has no Google sign-in (docs/WEB.md); the type keeps the
+/// config one shape everywhere.
 #[cfg(target_arch = "wasm32")]
 #[derive(Clone, Debug)]
 pub struct GoogleClient {
@@ -49,10 +50,11 @@ pub struct CloudConfig {
 }
 
 impl CloudConfig {
-    /// The web build doesn't sync yet: Settings says so.
+    /// The web build's server is baked in at build time (`KABAR_CLOUD_URL`).
     #[cfg(target_arch = "wasm32")]
     pub fn from_env() -> Option<Self> {
-        None
+        let base_url = option_env!("KABAR_CLOUD_URL").filter(|v| !v.trim().is_empty())?;
+        Some(Self { base_url: base_url.trim().to_string(), google: None })
     }
 
     #[cfg(not(target_arch = "wasm32"))]
@@ -95,7 +97,6 @@ pub enum Command {
     /// A fresh access token for calls made off the sync thread (AI, TTS).
     /// `None` when signed out. `force` refreshes even an unexpired token
     /// (after a 401).
-    #[cfg(not(target_arch = "wasm32"))]
     Access {
         force: bool,
         reply: tokio::sync::oneshot::Sender<Option<(api::Api, String)>>,
@@ -178,6 +179,23 @@ pub struct CloudHandle {
     pub events: UnboundedReceiver<Event>,
 }
 
+#[cfg(target_arch = "wasm32")]
+/// Starts the engine as a task on the page's thread, sharing `db`.
+pub fn start(
+    config: CloudConfig,
+    db: crate::state::Db,
+    device: DeviceInfo,
+    vault: Box<dyn session::SessionVault>,
+) -> Result<CloudHandle, String> {
+    use tokio::sync::mpsc::unbounded_channel;
+    let (cmd_tx, cmd_rx) = unbounded_channel();
+    let (ev_tx, ev_rx) = unbounded_channel();
+    let api = api::Api::new(&config.base_url);
+    let engine = engine::Engine::new(engine::EngineStore(db), api, config.google, device, vault, ev_tx);
+    wasm_bindgen_futures::spawn_local(engine.run(cmd_rx));
+    Ok(CloudHandle { commands: cmd_tx, events: ev_rx })
+}
+
 #[cfg(not(target_arch = "wasm32"))]
 /// Starts the engine on its own thread. `db_path` is opened a second time
 /// (SQLite WAL), so the UI's connection never waits on the network.
@@ -201,7 +219,8 @@ pub fn start(
                 }
             };
             let api = api::Api::new(&config.base_url);
-            let engine = engine::Engine::new(store, api, config.google, device, vault, ev_tx);
+            let engine =
+                engine::Engine::new(engine::EngineStore(store), api, config.google, device, vault, ev_tx);
             runtime.block_on(engine.run(cmd_rx));
         })
         .map_err(|e| e.to_string())?;

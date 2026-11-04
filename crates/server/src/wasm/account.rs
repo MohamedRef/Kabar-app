@@ -178,7 +178,16 @@ impl Account {
         self.state.accept_websocket_with_tags(&pair.server, &[&device.0]);
         pair.server.serialize_attachment(&conn)?;
         Devices::open(&db).touch(&device, now_ms(), false).map_err(sql_err)?;
-        Response::from_websocket(pair.client)
+        let response = Response::from_websocket(pair.client)?;
+        // A browser that offered its token as a subprotocol (crate::web).
+        match req.headers().get(crate::web::PROTOCOL_HEADER)? {
+            Some(protocol) => {
+                let headers = Headers::new();
+                headers.set("sec-websocket-protocol", &protocol)?;
+                Ok(response.with_headers(headers))
+            }
+            None => Ok(response),
+        }
     }
 }
 

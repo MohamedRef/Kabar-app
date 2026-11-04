@@ -137,14 +137,14 @@ pub fn AccountScreen() -> Element {
         crate::ui::DivCard {
             h2 { bdi { lang: "en", class: "latin", "Kabar Cloud" } }
             if !status.configured {
-                p { class: "muted",
-                    if cfg!(target_arch = "wasm32") { "{ui.t(Msg::WebCloudLater)}" } else { "{ui.t(Msg::CloudNotConfigured)}" }
-                }
+                p { class: "muted", "{ui.t(Msg::CloudNotConfigured)}" }
             } else if signed_in {
                 SignedIn { status: status.clone() }
             } else {
                 p { "{ui.t(Msg::CloudIntro)}" }
-                if *cloud.signing_in.read() {
+                if cfg!(target_arch = "wasm32") {
+                    p { class: "muted", "{ui.t(Msg::WebCloudLater)}" }
+                } else if *cloud.signing_in.read() {
                     p { class: "muted", aria_live: "polite", "{ui.t(Msg::CloudSigningIn)}" }
                 } else {
                     button { class: "primary", onclick: move |_| cloud.send(Command::SignInGoogle), "{ui.t(Msg::CloudSignIn)}" }

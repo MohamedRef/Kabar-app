@@ -1,26 +1,43 @@
-//! The sync engine: one task that owns the session, the WebSocket and its own
-//! database connection. It drives [`SyncClient`] and reports to the UI.
+//! The sync engine: one task that owns the session and the WebSocket. It
+//! drives [`SyncClient`] and reports to the UI. On the Mac and Android it runs
+//! on its own thread with its own database connection; on the web it runs on
+//! the page's one thread and shares the UI's in-memory database
+//! ([`EngineStore`]).
 
 use std::time::Duration;
 
-use futures_util::{SinkExt, StreamExt};
 use kabar_core::sync_client::{Backoff, Effect, Phase, SyncClient};
 use kabar_protocol::cloud::{DeviceInfo, DeviceSummary, ErrorCode, GoogleSignIn};
 use kabar_protocol::sync::{MAX_OPS_PER_PUSH, ServerMsg};
-use tokio::net::TcpStream;
 use tokio::sync::mpsc::{UnboundedReceiver, UnboundedSender};
-use tokio::time::Instant;
-use tokio_tungstenite::tungstenite::Message;
-use tokio_tungstenite::tungstenite::client::IntoClientRequest;
-use tokio_tungstenite::{MaybeTlsStream, WebSocketStream};
+use web_time::Instant;
 
 use super::api::{Api, CloudError};
-use super::oauth::{self, GoogleClient, OAuthError};
 use super::session::{Auth, SessionVault};
-use super::{CloudStatus, Command, Event, Problem, SyncState};
+use super::socket::{ConnectError, Frame, Socket};
+use super::{CloudStatus, Command, Event, GoogleClient, Problem, SyncState};
 use crate::store::Store;
 
-type Ws = WebSocketStream<MaybeTlsStream<TcpStream>>;
+/// The engine's database: its own connection where there are threads, the
+/// UI's shared one on the web (an in-memory database can't be opened twice).
+/// Borrowed only between awaits, so the UI never finds it taken.
+#[cfg(not(target_arch = "wasm32"))]
+pub struct EngineStore(pub Store);
+#[cfg(target_arch = "wasm32")]
+pub struct EngineStore(pub crate::state::Db);
+
+impl EngineStore {
+    fn with<T>(&mut self, f: impl FnOnce(&mut Store) -> T) -> T {
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            f(&mut self.0)
+        }
+        #[cfg(target_arch = "wasm32")]
+        {
+            f(&mut self.0.0.borrow_mut())
+        }
+    }
+}
 
 /// Keeps NAT mappings and the Cloudflare edge from dropping an idle socket.
 /// Protocol pings are answered by the runtime, so they don't wake the hub.
@@ -29,7 +46,7 @@ const PING_EVERY: Duration = Duration::from_secs(30);
 const OUTBOX_EVERY: Duration = Duration::from_secs(2);
 
 pub struct Engine {
-    store: Store,
+    store: EngineStore,
     api: Api,
     google: Option<GoogleClient>,
     device: DeviceInfo,
@@ -37,7 +54,7 @@ pub struct Engine {
     /// Kept while signed out, for the next sign-in.
     vault: Option<Box<dyn SessionVault>>,
     client: SyncClient,
-    ws: Option<Ws>,
+    ws: Option<Socket>,
     backoff: Backoff,
     retry_at: Instant,
     /// Set after `Revoked`, `Outdated` or sign-out: no reconnects until sign-in.
@@ -53,14 +70,14 @@ pub struct Engine {
 
 impl Engine {
     pub fn new(
-        store: Store,
+        mut store: EngineStore,
         api: Api,
         google: Option<GoogleClient>,
         device: DeviceInfo,
         vault: Box<dyn SessionVault>,
         events: UnboundedSender<Event>,
     ) -> Self {
-        let client = SyncClient::new(store.last_seq().unwrap_or(0));
+        let client = SyncClient::new(store.with(|s| s.last_seq()).unwrap_or(0));
         let (auth, vault) = match Auth::restore(vault, now_ms()) {
             Ok(auth) => (Some(auth), None),
             Err(vault) => (None, Some(vault)),
@@ -86,40 +103,52 @@ impl Engine {
     }
 
     pub async fn run(mut self, mut commands: UnboundedReceiver<Command>) {
-        let mut ping = tokio::time::interval(PING_EVERY);
-        let mut outbox = tokio::time::interval(OUTBOX_EVERY);
+        // Both timers only run while a socket is open.
+        let mut next_ping = Instant::now() + PING_EVERY;
+        let mut next_outbox = Instant::now() + OUTBOX_EVERY;
         self.emit_status();
         loop {
             if self.ws.is_none() && self.wants_socket() && Instant::now() >= self.retry_at {
                 self.connect().await;
+                let now = Instant::now();
+                (next_ping, next_outbox) = (now + PING_EVERY, now + OUTBOX_EVERY);
                 self.emit_status();
             }
-            let wait_until = if self.ws.is_none() && self.wants_socket() {
+            let wait_until = if self.ws.is_some() {
+                next_ping.min(next_outbox)
+            } else if self.wants_socket() {
                 self.retry_at
             } else {
                 Instant::now() + Duration::from_secs(3600)
             };
+            let wait = crate::platform::time::sleep(wait_until.saturating_duration_since(Instant::now()));
             tokio::select! {
+                biased;
                 cmd = commands.recv() => match cmd {
                     None | Some(Command::Shutdown) => break,
                     Some(cmd) => self.command(cmd).await,
                 },
                 frame = next_frame(&mut self.ws) => self.frame(frame).await,
-                _ = tokio::time::sleep_until(wait_until) => {}
-                // Both timers only run while a socket is open.
-                _ = outbox.tick(), if self.ws.is_some() => self.pump().await,
-                _ = ping.tick(), if self.ws.is_some() => {
-                    if let Some(ws) = &mut self.ws
-                        && ws.send(Message::Ping(Vec::new().into())).await.is_err()
-                    {
-                        self.drop_socket();
+                () = wait => {
+                    let now = Instant::now();
+                    if self.ws.is_some() && now >= next_outbox {
+                        next_outbox = now + OUTBOX_EVERY;
+                        self.pump().await;
+                    }
+                    if now >= next_ping {
+                        next_ping = now + PING_EVERY;
+                        if let Some(ws) = &mut self.ws
+                            && ws.ping().await.is_err()
+                        {
+                            self.drop_socket();
+                        }
                     }
                 }
             }
             self.emit_status();
         }
-        if let Some(mut ws) = self.ws.take() {
-            let _ = ws.close(None).await;
+        if let Some(ws) = self.ws.take() {
+            ws.close().await;
         }
     }
 
@@ -131,29 +160,11 @@ impl Engine {
 
     async fn command(&mut self, cmd: Command) {
         match cmd {
-            Command::SignInGoogle => {
-                let Some(google) = self.google.clone() else {
-                    self.problem = Some(Problem::NotConfigured);
-                    return;
-                };
-                self.problem = None;
-                self.events.send(Event::SigningIn(true)).ok();
-                let token = oauth::google_id_token(&google).await;
-                self.events.send(Event::SigningIn(false)).ok();
-                match token {
-                    Ok(token) => self.sign_in(token).await,
-                    Err(OAuthError::Cancelled) => self.problem = Some(Problem::SignInCancelled),
-                    Err(e) => {
-                        crate::diag::report!("Google sign-in: {e}");
-                        self.problem = Some(Problem::SignInFailed);
-                    }
-                }
-            }
+            Command::SignInGoogle => self.sign_in_google().await,
             Command::SignInWithIdToken(token) => self.sign_in(token).await,
             Command::SignOut => {
                 if let Some(access) = self.access(false).await {
-                    let api = self.api.clone();
-                    let _ = blocking(move || api.sign_out(&access)).await;
+                    let _ = self.api.sign_out(&access).await;
                 }
                 self.sign_out_locally();
             }
@@ -164,11 +175,10 @@ impl Engine {
                 if device == self.device.device_id {
                     return Box::pin(self.command(Command::SignOut)).await;
                 }
-                if let Some(access) = self.access(false).await {
-                    let api = self.api.clone();
-                    if let Err(e) = blocking(move || api.revoke(&access, &device)).await {
-                        self.cloud_error(&e);
-                    }
+                if let Some(access) = self.access(false).await
+                    && let Err(e) = self.api.revoke(&access, &device).await
+                {
+                    self.cloud_error(&e);
                 }
                 self.load_devices().await;
             }
@@ -176,8 +186,8 @@ impl Engine {
             Command::Background(true) if !self.background => {
                 self.pump().await;
                 self.background = true;
-                if let Some(mut ws) = self.ws.take() {
-                    let _ = ws.close(None).await;
+                if let Some(ws) = self.ws.take() {
+                    ws.close().await;
                     self.client.on_close();
                 }
             }
@@ -195,10 +205,37 @@ impl Engine {
         }
     }
 
+    #[cfg(not(target_arch = "wasm32"))]
+    async fn sign_in_google(&mut self) {
+        use super::oauth::{self, OAuthError};
+        let Some(google) = self.google.clone() else {
+            self.problem = Some(Problem::NotConfigured);
+            return;
+        };
+        self.problem = None;
+        self.events.send(Event::SigningIn(true)).ok();
+        let token = oauth::google_id_token(&google).await;
+        self.events.send(Event::SigningIn(false)).ok();
+        match token {
+            Ok(token) => self.sign_in(token).await,
+            Err(OAuthError::Cancelled) => self.problem = Some(Problem::SignInCancelled),
+            Err(e) => {
+                crate::diag::report!("Google sign-in: {e}");
+                self.problem = Some(Problem::SignInFailed);
+            }
+        }
+    }
+
+    /// The web build signs in with a username and password (docs/WEB.md).
+    #[cfg(target_arch = "wasm32")]
+    async fn sign_in_google(&mut self) {
+        let _ = &self.google;
+        self.problem = Some(Problem::NotConfigured);
+    }
+
     async fn sign_in(&mut self, id_token: String) {
         let body = GoogleSignIn { id_token, device: self.device.clone() };
-        let api = self.api.clone();
-        match blocking(move || api.sign_in_google(&body)).await {
+        match self.api.sign_in_google(&body).await {
             Ok(session) => {
                 let vault =
                     self.vault.take().unwrap_or_else(|| Box::new(super::session::MemoryVault::default()));
@@ -213,7 +250,7 @@ impl Engine {
                 }
                 self.problem = None;
                 self.stopped = false;
-                self.client = SyncClient::new(self.store.last_seq().unwrap_or(0));
+                self.client = SyncClient::new(self.store.with(|s| s.last_seq()).unwrap_or(0));
                 self.backoff.reset();
                 self.retry_at = Instant::now();
             }
@@ -239,8 +276,7 @@ impl Engine {
 
     async fn load_devices(&mut self) {
         let Some(access) = self.access(false).await else { return };
-        let api = self.api.clone();
-        let result = blocking(move || api.devices(&access)).await;
+        let result = self.api.devices(&access).await;
         let devices: Result<Vec<DeviceSummary>, Problem> = match result {
             Ok(list) => Ok(list.devices),
             Err(e) => {
@@ -256,8 +292,7 @@ impl Engine {
             self.events.send(Event::Usage(Err(self.problem.unwrap_or(Problem::Network)))).ok();
             return;
         };
-        let api = self.api.clone();
-        let usage = match blocking(move || api.usage(&access)).await {
+        let usage = match self.api.usage(&access).await {
             Ok(report) => Ok(report),
             Err(e) => {
                 self.cloud_error(&e);
@@ -270,9 +305,7 @@ impl Engine {
     async fn set_push_token(&mut self, token: String) {
         let pushed = match self.access(false).await {
             Some(access) => {
-                let api = self.api.clone();
-                let sent = token.clone();
-                match blocking(move || api.set_push_token(&access, &sent)).await {
+                match self.api.set_push_token(&access, &token).await {
                     // Registered and the Cloud has its Firebase key: it rings here.
                     Ok(reply) => Some(reply.registered && reply.push_configured && !token.is_empty()),
                     // Quietly: local reminders keep ringing until it works.
@@ -293,14 +326,7 @@ impl Engine {
 
     /// A fresh access token, or `None` (with the reason recorded).
     async fn access(&mut self, force: bool) -> Option<String> {
-        let mut auth = self.auth.take()?;
-        let api = self.api.clone();
-        let (auth, result) = blocking(move || {
-            let r = auth.access_token(&api, now_ms(), force);
-            (auth, r)
-        })
-        .await;
-        self.auth = Some(auth);
+        let result = self.auth.as_mut()?.access_token(&self.api, now_ms(), force).await;
         match result {
             Ok(token) => Some(token),
             Err(e) => {
@@ -331,33 +357,23 @@ impl Engine {
             self.schedule_retry();
             return;
         };
-        let mut request = match self.api.sync_url().into_client_request() {
-            Ok(r) => r,
-            Err(e) => {
-                crate::diag::report!("bad sync url: {e}");
-                self.stopped = true;
-                return;
-            }
-        };
-        if let Ok(v) = format!("Bearer {access}").parse() {
-            request.headers_mut().insert("authorization", v);
-        }
-        match tokio_tungstenite::connect_async(request).await {
-            Ok((ws, _)) => {
+        match Socket::connect(&self.api.sync_url(), &access).await {
+            Ok(ws) => {
                 self.ws = Some(ws);
                 self.problem = None;
                 let effects = self.client.on_open();
                 self.run_effects(effects).await;
             }
             Err(e) => {
-                use tokio_tungstenite::tungstenite::Error;
-                if let Error::Http(res) = &e
-                    && res.status().as_u16() == 401
-                {
+                match e {
                     // Expired or revoked: refreshing tells which.
-                    self.force_refresh = true;
-                } else {
-                    self.problem = Some(Problem::Network);
+                    ConnectError::Unauthorized => self.force_refresh = true,
+                    ConnectError::Failed(_) => {
+                        self.problem = Some(Problem::Network);
+                        // A browser doesn't say why a socket failed: the next
+                        // try refreshes, in case the token was refused.
+                        self.force_refresh = cfg!(target_arch = "wasm32");
+                    }
                 }
                 crate::diag::report!("sync connect: {e}");
                 self.schedule_retry();
@@ -378,24 +394,20 @@ impl Engine {
         }
     }
 
-    async fn frame(&mut self, frame: Option<Result<Message, tokio_tungstenite::tungstenite::Error>>) {
+    async fn frame(&mut self, frame: Frame) {
         let text = match frame {
-            Some(Ok(Message::Text(text))) => text,
-            Some(Ok(Message::Close(close))) => {
+            Frame::Text(text) => text,
+            Frame::Closed(code) => {
                 // 4001: signed out from another device (after `revoked`).
-                if close.as_ref().is_some_and(|c| u16::from(c.code) == 4001) {
+                if code == Some(4001) {
                     self.revoked();
                 }
                 self.drop_socket();
                 return;
             }
-            Some(Ok(_)) => return,
-            Some(Err(e)) => {
+            Frame::Other => return,
+            Frame::Error(e) => {
                 crate::diag::report!("sync socket: {e}");
-                self.drop_socket();
-                return;
-            }
-            None => {
                 self.drop_socket();
                 return;
             }
@@ -417,22 +429,24 @@ impl Engine {
         for effect in effects {
             match effect {
                 Effect::Send(msg) => self.send(&msg).await,
-                Effect::Apply { ops, last_seq } => match self.store.apply_remote(&ops, last_seq) {
-                    Ok(changed) => {
-                        self.touch_last_sync();
-                        if !changed.is_empty() {
-                            self.events.send(Event::Changed(changed)).ok();
+                Effect::Apply { ops, last_seq } => {
+                    match self.store.with(|s| s.apply_remote(&ops, last_seq)) {
+                        Ok(changed) => {
+                            self.touch_last_sync();
+                            if !changed.is_empty() {
+                                self.events.send(Event::Changed(changed)).ok();
+                            }
+                        }
+                        Err(e) => {
+                            // Not saved, so the next hello brings them again.
+                            crate::diag::report!("applying remote ops: {e}");
+                            self.drop_socket();
+                            return;
                         }
                     }
-                    Err(e) => {
-                        // Not saved, so the next hello brings them again.
-                        crate::diag::report!("applying remote ops: {e}");
-                        self.drop_socket();
-                        return;
-                    }
-                },
+                }
                 Effect::SaveLastSeq(seq) => {
-                    let _ = self.store.set_last_seq(seq);
+                    let _ = self.store.with(|s| s.set_last_seq(seq));
                 }
                 Effect::Acked { done, rejected } => {
                     for r in &rejected {
@@ -440,15 +454,15 @@ impl Engine {
                     }
                     let ids =
                         done.iter().map(String::as_str).chain(rejected.iter().map(|r| r.op_id.as_str()));
-                    if let Err(e) = self.store.remove_from_outbox(ids) {
+                    if let Err(e) = self.store.with(|s| s.remove_from_outbox(ids)) {
                         crate::diag::report!("outbox: {e}");
                     }
                     self.touch_last_sync();
                 }
                 Effect::Reconnect { reason } => {
                     crate::diag::report!("sync reconnects: {reason}");
-                    if let Some(mut ws) = self.ws.take() {
-                        let _ = ws.close(None).await;
+                    if let Some(ws) = self.ws.take() {
+                        ws.close().await;
                     }
                     self.drop_socket();
                 }
@@ -459,8 +473,8 @@ impl Engine {
                         self.problem = Some(Problem::Outdated);
                         self.stopped = true;
                     }
-                    if let Some(mut ws) = self.ws.take() {
-                        let _ = ws.close(None).await;
+                    if let Some(ws) = self.ws.take() {
+                        ws.close().await;
                     }
                     self.client.on_close();
                 }
@@ -478,7 +492,7 @@ impl Engine {
         if self.ws.is_none() {
             return;
         }
-        let outbox = match self.store.outbox(MAX_OPS_PER_PUSH) {
+        let outbox = match self.store.with(|s| s.outbox(MAX_OPS_PER_PUSH)) {
             Ok(o) => o,
             Err(e) => {
                 crate::diag::report!("reading outbox: {e}");
@@ -493,14 +507,14 @@ impl Engine {
     async fn send(&mut self, msg: &kabar_protocol::sync::ClientMsg) {
         let Some(ws) = &mut self.ws else { return };
         let text = serde_json::to_string(msg).unwrap_or_default();
-        if let Err(e) = ws.send(Message::Text(text.into())).await {
+        if let Err(e) = ws.send(text).await {
             crate::diag::report!("sync send: {e}");
             self.drop_socket();
         }
     }
 
     fn touch_last_sync(&mut self) {
-        let _ = self.store.set_meta("last_sync_ms", Some(&now_ms().to_string()));
+        let _ = self.store.with(|s| s.set_meta("last_sync_ms", Some(&now_ms().to_string())));
     }
 
     fn emit_status(&mut self) {
@@ -517,8 +531,13 @@ impl Engine {
             email: self.auth.as_ref().and_then(|a| a.session().email.clone()),
             device_id: self.device.device_id.clone(),
             sync,
-            pending: self.store.outbox_len().unwrap_or(0),
-            last_sync_ms: self.store.meta("last_sync_ms").ok().flatten().and_then(|v| v.parse().ok()),
+            pending: self.store.with(|s| s.outbox_len()).unwrap_or(0),
+            last_sync_ms: self
+                .store
+                .with(|s| s.meta("last_sync_ms"))
+                .ok()
+                .flatten()
+                .and_then(|v| v.parse().ok()),
             problem: self.problem,
         };
         if self.last_status.as_ref() != Some(&status) {
@@ -528,20 +547,16 @@ impl Engine {
     }
 }
 
-async fn next_frame(ws: &mut Option<Ws>) -> Option<Result<Message, tokio_tungstenite::tungstenite::Error>> {
+async fn next_frame(ws: &mut Option<Socket>) -> Frame {
     match ws {
         Some(ws) => ws.next().await,
         None => std::future::pending().await,
     }
 }
 
-async fn blocking<T: Send + 'static>(f: impl FnOnce() -> T + Send + 'static) -> T {
-    tokio::task::spawn_blocking(f).await.expect("blocking task panicked")
-}
-
 pub fn now_ms() -> u64 {
-    std::time::SystemTime::now()
-        .duration_since(std::time::UNIX_EPOCH)
+    web_time::SystemTime::now()
+        .duration_since(web_time::UNIX_EPOCH)
         .map(|d| d.as_millis() as u64)
         .unwrap_or_default()
 }

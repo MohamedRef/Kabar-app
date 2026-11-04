@@ -310,8 +310,10 @@ just web-release    # target/web/kabar, as Cloudflare serves it
 
 Online: Actions › "Deploy Kabar web" › Run workflow, then open the address in
 the run summary on the Mac, phone or tablet (Chrome › Add to home screen
-installs it). Progress stays in that browser; sync through Kabar Cloud comes in
-phase 2.
+installs it). Progress stays in that browser until you sign in to Kabar Cloud
+(Settings › Kabar Cloud, username and password); then it syncs live with the
+phone and Mac. `just web` talks to the `KABAR_CLOUD_URL` in `.env`; a local
+Kabar Cloud (`just cloud-dev`) already allows `http://localhost:8080`.
 
 ## 16. Troubleshooting
 

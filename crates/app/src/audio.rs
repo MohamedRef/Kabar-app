@@ -10,7 +10,8 @@ use kabar_core::story::mp3_seconds;
 use kabar_protocol::cloud::{TTS_MP3_KBPS, TtsRequest, TtsSegment, Voice};
 use sha2::{Digest, Sha256};
 
-use crate::cloud::link::{CloudLink, Unreachable, off_thread};
+use crate::cloud::link::{CloudLink, Unreachable};
+use crate::platform::files;
 
 #[derive(Clone)]
 pub struct AudioCache {
@@ -38,20 +39,21 @@ impl AudioCache {
     /// The file, if this request was fetched before.
     pub fn cached(&self, req: &TtsRequest) -> Option<PathBuf> {
         let path = self.path(req);
-        path.is_file().then_some(path)
+        files::size(&path).is_some().then_some(path)
     }
 
-    /// The cached file, or fetches it once from Kabar Cloud.
+    /// The cached file, or fetches it once from Kabar Cloud. Either way its
+    /// bytes are ready for [`data_url`].
     pub async fn fetch(&self, req: &TtsRequest) -> Result<PathBuf, Unreachable> {
-        if let Some(path) = self.cached(req) {
+        if let Some(path) = self.cached(req)
+            && files::read(&path).await.is_ok()
+        {
             return Ok(path);
         }
         let bytes = self.link.tts(req.clone()).await?;
-        let (dir, path) = (self.dir.clone(), self.path(req));
-        off_thread(move || write_atomically(&dir, &path, &bytes))
-            .await
-            .map_err(|e| Unreachable::Server(format!("saving audio: {e}")))?;
-        Ok(self.path(req))
+        let path = self.path(req);
+        files::write(&path, bytes).await.map_err(|e| Unreachable::Server(format!("saving audio: {e}")))?;
+        Ok(path)
     }
 
     /// Fetches every request that isn't cached yet, in order, and reports
@@ -74,11 +76,22 @@ impl AudioCache {
         (dir.join(format!("{id}.mp3")), dir.join(format!("{id}.json")))
     }
 
-    /// A downloaded episode, if it's on the device.
+    /// A downloaded episode, if it's on the device. On the web its sound is
+    /// read into memory with [`AudioCache::load_track`] before it plays.
     pub fn track(&self, id: &str) -> Option<Track> {
         let (mp3, starts) = self.track_files(id);
-        let starts: Vec<f64> = serde_json::from_slice(&std::fs::read(starts).ok()?).ok()?;
-        mp3.is_file().then_some(Track { path: mp3, starts })
+        let starts: Vec<f64> = serde_json::from_slice(&files::read_loaded(&starts).ok()?).ok()?;
+        files::size(&mp3).is_some().then_some(Track { path: mp3, starts })
+    }
+
+    /// Reads a downloaded episode's sound so [`data_url`] finds it (the web
+    /// keeps large files out of memory until asked; elsewhere a no-op).
+    #[cfg_attr(not(target_arch = "wasm32"), allow(dead_code))]
+    pub async fn load_track(&self, id: &str) {
+        let (mp3, _) = self.track_files(id);
+        if files::size(&mp3).is_some() {
+            files::read(&mp3).await.ok();
+        }
     }
 
     /// Downloads an episode for offline: every line (progress as `(done,
@@ -93,44 +106,39 @@ impl AudioCache {
         self.download(reqs, progress).await?;
         let parts: Vec<PathBuf> = reqs.iter().map(|r| self.path(r)).collect();
         let (mp3, starts_file) = self.track_files(id);
-        let track = off_thread(move || -> std::io::Result<Track> {
-            let mut starts = Vec::with_capacity(parts.len());
-            let mut at = 0.0;
-            for part in &parts {
-                starts.push(at);
-                at += mp3_seconds(std::fs::metadata(part)?.len(), TTS_MP3_KBPS);
-            }
-            join(&parts, &mp3)?;
-            let dir = mp3.parent().unwrap_or(Path::new("."));
-            write_atomically(dir, &starts_file, &serde_json::to_vec(&starts)?)?;
-            for part in &parts {
-                std::fs::remove_file(part).ok();
-            }
-            Ok(Track { path: mp3, starts })
-        })
-        .await
-        .map_err(|e| Unreachable::Server(format!("saving the episode: {e}")))?;
-        Ok(track)
+        let saving = |e: std::io::Error| Unreachable::Server(format!("saving the episode: {e}"));
+        let mut starts = Vec::with_capacity(parts.len());
+        let mut at = 0.0;
+        for part in &parts {
+            starts.push(at);
+            at += mp3_seconds(files::size(part).unwrap_or(0), TTS_MP3_KBPS);
+        }
+        join(&parts, &mp3).await.map_err(saving)?;
+        let json = serde_json::to_vec(&starts).map_err(|e| saving(e.into()))?;
+        files::write(&starts_file, json).await.map_err(saving)?;
+        for part in &parts {
+            files::remove(part);
+        }
+        Ok(Track { path: mp3, starts })
     }
 
     pub fn remove_track(&self, id: &str) {
         let (mp3, starts) = self.track_files(id);
-        std::fs::remove_file(mp3).ok();
-        std::fs::remove_file(starts).ok();
+        files::remove(&mp3);
+        files::remove(&starts);
     }
 
     /// What all downloaded episodes take.
     pub fn downloads(&self) -> Usage {
-        let entries = std::fs::read_dir(self.dir.join("episodes")).into_iter().flatten().flatten();
-        entries.filter(|e| e.path().extension().is_some_and(|x| x == "mp3")).fold(Usage::default(), |u, e| {
-            Usage { files: u.files + 1, bytes: u.bytes + e.metadata().map(|m| m.len()).unwrap_or(0) }
-        })
+        files::list(&self.dir.join("episodes"), "mp3")
+            .into_iter()
+            .fold(Usage::default(), |u, (_, bytes)| Usage { files: u.files + 1, bytes: u.bytes + bytes })
     }
 
     /// "Free up space": every downloaded episode goes; they can be
     /// downloaded again.
     pub fn remove_downloads(&self) {
-        std::fs::remove_dir_all(self.dir.join("episodes")).ok();
+        files::remove_dir_all(&self.dir.join("episodes"));
     }
 }
 
@@ -194,27 +202,19 @@ pub fn key(req: &TtsRequest) -> String {
 
 /// A `data:` URL the WebView's `<audio>` can play without file access.
 pub fn data_url(path: &Path) -> std::io::Result<String> {
-    let bytes = std::fs::read(path)?;
+    let bytes = files::read_loaded(path)?;
     Ok(format!("data:audio/mpeg;base64,{}", base64::engine::general_purpose::STANDARD.encode(bytes)))
 }
 
 /// Joins MP3 files into one track. Every file comes from the same Azure
 /// output format (constant bitrate, same sample rate, no ID3 tags), so the
 /// frames simply follow each other.
-pub fn join(parts: &[PathBuf], out: &Path) -> std::io::Result<()> {
+pub async fn join(parts: &[PathBuf], out: &Path) -> std::io::Result<()> {
     let mut joined = Vec::new();
     for part in parts {
-        joined.extend(std::fs::read(part)?);
+        joined.extend(files::read(part).await?);
     }
-    let dir = out.parent().unwrap_or(Path::new("."));
-    write_atomically(dir, out, &joined)
-}
-
-fn write_atomically(dir: &Path, path: &Path, bytes: &[u8]) -> std::io::Result<()> {
-    std::fs::create_dir_all(dir)?;
-    let tmp = path.with_extension("part");
-    std::fs::write(&tmp, bytes)?;
-    std::fs::rename(&tmp, path)
+    files::write(out, joined).await
 }
 
 #[cfg(test)]
@@ -234,6 +234,11 @@ mod tests {
             assert_ne!(key(&a), key(&other));
         }
         assert_eq!(key(&a).len(), 64);
+    }
+
+    fn write_atomically(dir: &Path, path: &Path, bytes: &[u8]) -> std::io::Result<()> {
+        std::fs::create_dir_all(dir)?;
+        std::fs::write(path, bytes)
     }
 
     #[test]
@@ -264,7 +269,8 @@ mod tests {
         std::fs::write(&parts[0], [1, 2]).unwrap();
         std::fs::write(&parts[1], [3]).unwrap();
         let out = dir.path().join("episodes/radio.bipa1.u01.mp3");
-        join(&parts, &out).unwrap();
+        let runtime = tokio::runtime::Builder::new_current_thread().build().unwrap();
+        runtime.block_on(join(&parts, &out)).unwrap();
         assert_eq!(std::fs::read(out).unwrap(), [1, 2, 3]);
     }
 

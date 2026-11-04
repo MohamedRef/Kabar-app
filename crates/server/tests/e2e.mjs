@@ -252,6 +252,29 @@ const again = await api("POST", "/v1/auth/refresh", { body: { refresh_token: pho
 assert.equal(again.status, 401);
 assert.equal(again.json.code, "device_revoked");
 
+step("the web app: CORS for its origin only, the socket's token as a subprotocol");
+const WEB = "http://localhost:8080";
+const preflight = await fetch(`${BASE}/v1/devices`, {
+  method: "OPTIONS",
+  headers: { origin: WEB, "access-control-request-method": "GET", "access-control-request-headers": "authorization" },
+});
+assert.equal(preflight.status, 204);
+assert.equal(preflight.headers.get("access-control-allow-origin"), WEB);
+assert.match(preflight.headers.get("access-control-allow-headers") ?? "", /authorization/);
+const fromWeb = await fetch(`${BASE}/v1/devices`, {
+  headers: { origin: WEB, authorization: `Bearer ${refreshed.json.access_token}` },
+});
+assert.equal(fromWeb.status, 200);
+assert.equal(fromWeb.headers.get("access-control-allow-origin"), WEB);
+const elsewhere = await fetch(`${BASE}/v1/health`, { headers: { origin: "https://evil.example" } });
+assert.equal(elsewhere.headers.get("access-control-allow-origin"), null);
+const webWs = new WebSocket(`ws://127.0.0.1:${PORT}/v1/sync`, ["kabar.v1", `kabar.bearer.${refreshed.json.access_token}`]);
+await new Promise((ok, fail) => ((webWs.onopen = ok), (webWs.onerror = fail)));
+assert.equal(webWs.protocol, "kabar.v1");
+webWs.close();
+const badWs = new WebSocket(`ws://127.0.0.1:${PORT}/v1/sync`, ["kabar.v1", "kabar.bearer.nope"]);
+await new Promise((ok, fail) => ((badWs.onopen = () => fail(new Error("a bad token opened a socket"))), (badWs.onerror = ok)));
+
 step("no token, no entry");
 assert.equal((await api("GET", "/v1/devices")).status, 401);
 
@@ -273,4 +296,12 @@ if (!process.env.KABAR_E2E_SKIP_APP) {
 }
 
 console.log(`\n✅ Kabar Cloud end-to-end: all checks passed (phone → tablet in ${latency} ms)`);
+// For trying the web app against this server by hand: a signed-in session to
+// put in the browser (localStorage "kabar:session"); the server keeps running.
+if (process.env.KABAR_E2E_WEB_SESSION) {
+  const web = await signIn("web-e2e", "Kabar web (e2e)");
+  writeFileSync(process.env.KABAR_E2E_WEB_SESSION, JSON.stringify(web.json));
+  console.log(`web session in ${process.env.KABAR_E2E_WEB_SESSION}; Ctrl-C stops the server`);
+  await new Promise(() => {});
+}
 process.exit(0);

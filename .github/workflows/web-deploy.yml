@@ -59,6 +59,9 @@ jobs:
             echo "::warning::binaryen not installed; the wasm is not shrunk"
           fi
       - name: Build
+        # The web app syncs with this Kabar Cloud (CORS allows kabar-web.*).
+        env:
+          KABAR_CLOUD_URL: ${{ vars.KABAR_CLOUD_URL || 'https://kabar-cloud.hamorefaat85.workers.dev' }}
         run: scripts/web/build.sh
       - name: Check the Cloudflare token
         id: ready
