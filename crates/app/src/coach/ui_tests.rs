@@ -13,7 +13,8 @@ use super::text::{T, tt};
 use super::*;
 use crate::Screen;
 use crate::i18n::{Msg, t};
-use crate::test_dom::{App, El, FakeDocument, memory_db};
+use crate::test_dom::{App, El, memory_db};
+use crate::testkit::FakeDoc as FakeDocument;
 
 fn en(msg: Msg) -> &'static str {
     t(En, msg)

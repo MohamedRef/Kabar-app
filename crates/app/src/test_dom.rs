@@ -15,6 +15,8 @@ use dioxus::core::{AttributeValue, ElementId, Template, TemplateAttribute, Templ
 use dioxus::html::{PlatformEventData, SerializedHtmlEventConverter};
 use dioxus::prelude::*;
 
+use crate::testkit::{FakeDoc, Setup};
+
 #[derive(Debug, Clone)]
 enum Kind {
     Element { tag: String, attrs: Vec<(String, String)>, listeners: Vec<String> },
@@ -23,17 +25,49 @@ enum Kind {
 }
 
 #[derive(Debug, Clone)]
-struct Node {
+struct TreeNode {
     kind: Kind,
     parent: Option<usize>,
     children: Vec<usize>,
     id: Option<ElementId>,
 }
 
+/// HTML's boolean attributes: present or absent, never "false".
+const BOOLEAN_ATTRIBUTES: &[&str] = &[
+    "allowfullscreen",
+    "allowpaymentrequest",
+    "async",
+    "autofocus",
+    "autoplay",
+    "checked",
+    "controls",
+    "default",
+    "defer",
+    "disabled",
+    "formnovalidate",
+    "hidden",
+    "inert",
+    "ismap",
+    "itemscope",
+    "loop",
+    "multiple",
+    "muted",
+    "nomodule",
+    "novalidate",
+    "open",
+    "playsinline",
+    "readonly",
+    "required",
+    "reversed",
+    "selected",
+    "truespeed",
+    "webkitdirectory",
+];
+
 /// The mutation target: an arena of nodes, the root at index 0.
 #[derive(Default)]
 struct Tree {
-    nodes: Vec<Node>,
+    nodes: Vec<TreeNode>,
     ids: HashMap<ElementId, usize>,
     stack: Vec<usize>,
 }
@@ -41,7 +75,7 @@ struct Tree {
 impl Tree {
     fn new() -> Self {
         let mut t = Self::default();
-        t.nodes.push(Node {
+        t.nodes.push(TreeNode {
             kind: Kind::Element { tag: "root".into(), attrs: Vec::new(), listeners: Vec::new() },
             parent: None,
             children: Vec::new(),
@@ -52,7 +86,7 @@ impl Tree {
     }
 
     fn add(&mut self, kind: Kind) -> usize {
-        self.nodes.push(Node { kind, parent: None, children: Vec::new(), id: None });
+        self.nodes.push(TreeNode { kind, parent: None, children: Vec::new(), id: None });
         self.nodes.len() - 1
     }
 
@@ -233,7 +267,11 @@ impl WriteMutations for Tree {
             AttributeValue::Float(f) => Some(f.to_string()),
             AttributeValue::Int(i) => Some(i.to_string()),
             AttributeValue::Bool(true) => Some("true".into()),
-            AttributeValue::Bool(false) | AttributeValue::None => None,
+            // As the WebView's interpreter does: a false boolean attribute
+            // (`disabled`, `checked`…) goes away, any other reads "false".
+            AttributeValue::Bool(false) if BOOLEAN_ATTRIBUTES.contains(&name.as_str()) => None,
+            AttributeValue::Bool(false) => Some("false".into()),
+            AttributeValue::None => None,
             AttributeValue::Listener(_) | AttributeValue::Any(_) => return,
         };
         let (attrs, _) = self.element(n);
@@ -274,15 +312,58 @@ impl WriteMutations for Tree {
     }
 }
 
-/// A mounted app plus its DOM.
+/// A mounted app plus its DOM. Tasks run on a tokio runtime of its own, as
+/// in the app (timers, blocking file reads, the local fake cloud).
 pub struct TestDom {
     pub vdom: VirtualDom,
     tree: Tree,
+    rt: tokio::runtime::Runtime,
 }
 
 /// One element found on screen.
 #[derive(Clone, Copy, Debug)]
 pub struct El(usize);
+
+/// An element as it is on screen now (see [`TestDom::nodes`]).
+#[derive(Clone, Debug)]
+pub struct Node {
+    pub el: El,
+    pub tag: String,
+    pub attrs: Vec<(String, String)>,
+    /// All the text inside it.
+    pub text: String,
+    /// The class attributes of its ancestors, outermost first.
+    pub within: Vec<String>,
+    /// The events it listens to itself (`click`, `input`…).
+    pub listeners: Vec<String>,
+}
+
+impl Node {
+    pub fn attr(&self, name: &str) -> Option<&str> {
+        self.attrs.iter().find(|(k, _)| k == name).map(|(_, v)| v.as_str())
+    }
+
+    pub fn class(&self) -> &str {
+        self.attr("class").unwrap_or_default()
+    }
+
+    pub fn has_class(&self, class: &str) -> bool {
+        self.class().split_whitespace().any(|c| c == class)
+    }
+
+    /// Whether an ancestor has `class`.
+    pub fn inside(&self, class: &str) -> bool {
+        self.within.iter().any(|c| c.split_whitespace().any(|c| c == class))
+    }
+
+    pub fn disabled(&self) -> bool {
+        self.attr("disabled").is_some_and(|v| v == "true")
+    }
+
+    pub fn listens(&self, event: &str) -> bool {
+        self.listeners.iter().any(|l| l == event)
+    }
+}
 
 impl TestDom {
     /// Mounts `app` and renders it.
@@ -290,17 +371,27 @@ impl TestDom {
         Self::from_vdom(VirtualDom::new(app))
     }
 
-    pub fn from_vdom(mut vdom: VirtualDom) -> Self {
-        dioxus::html::set_event_converter(Box::new(SerializedHtmlEventConverter));
-        let mut tree = Tree::new();
-        vdom.rebuild(&mut tree);
-        let mut me = Self { vdom, tree };
+    pub fn from_vdom(vdom: VirtualDom) -> Self {
+        let mut me = Self::unsettled(vdom);
         me.settle();
         me
     }
 
+    /// Mounts and renders once, leaving effects and tasks for the caller to run.
+    pub fn unsettled(mut vdom: VirtualDom) -> Self {
+        dioxus::html::set_event_converter(Box::new(SerializedHtmlEventConverter));
+        let rt = tokio::runtime::Builder::new_current_thread().enable_all().build().expect("a tokio runtime");
+        let mut tree = Tree::new();
+        {
+            let _rt = rt.enter();
+            vdom.rebuild(&mut tree);
+        }
+        Self { vdom, tree, rt }
+    }
+
     /// Applies pending work (signal writes, effects, ready tasks).
     pub fn settle(&mut self) {
+        let _rt = self.rt.enter();
         for _ in 0..8 {
             // Effects and ready futures run on `poll`; a bounded loop keeps
             // a test from hanging on a timer that never fires.
@@ -318,11 +409,62 @@ impl TestDom {
         self.vdom.render_immediate(&mut self.tree);
     }
 
+    /// Re-renders what is dirty now, without running any task.
+    pub fn render(&mut self) {
+        let _rt = self.rt.enter();
+        self.vdom.render_immediate(&mut self.tree);
+    }
+
+    /// Runs tasks on the runtime, re-rendering, until none is woken within
+    /// `quiet` (false: still busy after `rounds`).
+    pub fn run_until_quiet(&mut self, quiet: std::time::Duration, rounds: usize) -> bool {
+        for _ in 0..rounds {
+            let vdom = &mut self.vdom;
+            let woke =
+                self.rt.block_on(async { tokio::time::timeout(quiet, vdom.wait_for_work()).await.is_ok() });
+            if !woke {
+                return true;
+            }
+            self.render();
+        }
+        false
+    }
+
+    /// Runs tasks for `ms` of real time, re-rendering as they finish.
+    pub fn run_for(&mut self, ms: u64) {
+        let end = std::time::Instant::now() + std::time::Duration::from_millis(ms);
+        while let Some(left) = end.checked_duration_since(std::time::Instant::now()) {
+            let vdom = &mut self.vdom;
+            if self.rt.block_on(async { tokio::time::timeout(left, vdom.wait_for_work()).await.is_err() }) {
+                break;
+            }
+            self.render();
+        }
+        self.render();
+    }
+
+    /// Lets `ms` of real time pass on the runtime (timers come due) without
+    /// rendering.
+    pub fn sleep(&mut self, ms: u64) {
+        self.rt.block_on(async { tokio::time::sleep(std::time::Duration::from_millis(ms)).await });
+    }
+
     /// Runs `f` inside the app's root scope (to read or write its contexts).
     pub fn in_app<T>(&mut self, f: impl FnOnce() -> T) -> T {
-        let out = self.vdom.in_scope(ScopeId::APP, f);
+        let out = self.peek_app(f);
         self.settle();
         out
+    }
+
+    /// Runs `f` inside the app's root scope without settling after.
+    pub fn peek_app<T>(&self, f: impl FnOnce() -> T) -> T {
+        let _rt = self.rt.enter();
+        self.vdom.in_scope(ScopeId::APP, f)
+    }
+
+    /// The page as the SSR renderer draws it (escaped like a real page).
+    pub fn ssr(&self) -> String {
+        dioxus::ssr::render(&self.vdom)
     }
 
     fn text_of(&self, n: usize, out: &mut String) {
@@ -469,12 +611,46 @@ impl TestDom {
     }
 
     fn fire(&mut self, el: El, name: &str, data: Box<dyn Any>, bubbles: bool) {
+        self.dispatch(el, name, data, bubbles);
+        self.settle();
+    }
+
+    /// Sends `name` to `el` (the runtime bubbles it from the nearest
+    /// listener, as a tap does) without settling after.
+    pub fn dispatch(&mut self, el: El, name: &str, data: Box<dyn Any>, bubbles: bool) {
         let id = self
             .listener_on(el, name)
             .unwrap_or_else(|| panic!("nothing listens to {name} at {:?}:\n{}", self.text(el), self.html()));
         let event = dioxus::core::Event::new(Rc::new(PlatformEventData::new(data)) as Rc<dyn Any>, bubbles);
+        let _rt = self.rt.enter();
         self.vdom.runtime().handle_event(name, event, id);
-        self.settle();
+    }
+
+    /// Every element on screen, in document order, as a snapshot a test can
+    /// filter on (tag, attributes, text, ancestors' classes, listeners).
+    pub fn nodes(&self) -> Vec<Node> {
+        let mut out = Vec::new();
+        self.snapshot(0, &mut Vec::new(), &mut out);
+        out
+    }
+
+    fn snapshot(&self, n: usize, within: &mut Vec<String>, out: &mut Vec<Node>) {
+        let Kind::Element { tag, attrs, listeners } = &self.tree.nodes[n].kind else { return };
+        if n != 0 {
+            out.push(Node {
+                el: El(n),
+                tag: tag.clone(),
+                attrs: attrs.clone(),
+                text: self.text(El(n)),
+                within: within.clone(),
+                listeners: listeners.clone(),
+            });
+        }
+        within.push(self.attr(El(n), "class").unwrap_or_default().to_string());
+        for &c in &self.tree.nodes[n].children {
+            self.snapshot(c, within, out);
+        }
+        within.pop();
     }
 
     /// Taps an element (a click event at it, bubbling).
@@ -514,121 +690,16 @@ impl TestDom {
     }
 }
 
-/// What the fake WebView answers to a script: the values it `dioxus.send`s.
-pub type Replies = Rc<dyn Fn(&str) -> Vec<serde_json::Value>>;
-
-/// A WebView stand-in for `document::eval`: it records every script and
-/// answers with [`Replies`] (nothing by default, as when no voice exists).
-pub struct FakeDocument {
-    scripts: std::cell::RefCell<Vec<String>>,
-    replies: std::cell::RefCell<Replies>,
-    owner: dioxus::signals::Owner<dioxus::signals::UnsyncStorage>,
-}
-
-impl FakeDocument {
-    pub fn new() -> Rc<Self> {
-        Rc::new(Self {
-            scripts: Default::default(),
-            replies: std::cell::RefCell::new(Rc::new(|_| Vec::new())),
-            owner: Default::default(),
-        })
-    }
-
-    /// Answers scripts containing `needle` with `values`; others get nothing.
-    pub fn reply_to(&self, needle: &'static str, values: Vec<serde_json::Value>) {
-        let previous = self.replies.borrow().clone();
-        *self.replies.borrow_mut() =
-            Rc::new(move |js| if js.contains(needle) { values.clone() } else { previous(js) });
-    }
-
-    /// Every script run so far.
-    pub fn scripts(&self) -> Vec<String> {
-        self.scripts.borrow().clone()
-    }
-
-    /// How many scripts so far contain `needle`.
-    pub fn ran(&self, needle: &str) -> usize {
-        self.scripts.borrow().iter().filter(|s| s.contains(needle)).count()
-    }
-}
-
-struct Scripted(std::collections::VecDeque<serde_json::Value>);
-
-impl dioxus::document::Evaluator for Scripted {
-    fn send(&self, _: serde_json::Value) -> Result<(), dioxus::document::EvalError> {
-        Ok(())
-    }
-
-    fn poll_recv(
-        &mut self,
-        _: &mut std::task::Context<'_>,
-    ) -> std::task::Poll<Result<serde_json::Value, dioxus::document::EvalError>> {
-        std::task::Poll::Ready(self.0.pop_front().ok_or(dioxus::document::EvalError::Finished))
-    }
-
-    fn poll_join(
-        &mut self,
-        _: &mut std::task::Context<'_>,
-    ) -> std::task::Poll<Result<serde_json::Value, dioxus::document::EvalError>> {
-        std::task::Poll::Ready(Ok(serde_json::Value::Null))
-    }
-}
-
-impl dioxus::document::Document for FakeDocument {
-    fn eval(&self, js: String) -> dioxus::document::Eval {
-        let values = (self.replies.borrow())(&js);
-        self.scripts.borrow_mut().push(js);
-        let boxed: Box<dyn dioxus::document::Evaluator> = Box::new(Scripted(values.into()));
-        dioxus::document::Eval::new(self.owner.insert(boxed))
-    }
-}
-
-/// The app's shared contexts around one screen, as `App` provides them.
-#[derive(Clone)]
-struct RootProps {
-    db: crate::Db,
-    lang: kabar_core::locale::UiLanguage,
-    doc: Rc<FakeDocument>,
-    body: fn() -> Element,
-}
-
-impl PartialEq for RootProps {
-    fn eq(&self, _: &Self) -> bool {
-        true
-    }
-}
-
-fn root(p: RootProps) -> Element {
-    crate::persistence::use_provide_saves();
-    let db = use_context_provider(|| p.db.clone());
-    use_context_provider(|| crate::Ui {
-        settings: Signal::new(kabar_core::settings::Settings { ui_language: p.lang, ..Default::default() }),
-        width: Signal::new(kabar_core::layout::WidthClass::Compact),
-        tablet: Signal::new(false),
-        screen: Signal::new(crate::Screen::Today),
-        lesson: Signal::new(None),
-        lesson_from: Signal::new(crate::Screen::Journey),
-        focus: Signal::new(false),
-    });
-    use_context_provider(|| crate::settings::device::DevicePrefs::load(&db));
-    use_context_provider(crate::settings::SettingsNav::new);
-    use_context_provider(crate::play::PlayNav::new);
-    crate::annotated::use_words(&db);
-    use_context_provider(|| crate::coach::Coach::load(&db));
-    use_context_provider(|| p.doc.clone() as Rc<dyn dioxus::document::Document>);
-    (p.body)()
-}
-
 /// A fresh in-memory store.
 pub fn memory_db() -> crate::Db {
-    crate::Db(Rc::new(std::cell::RefCell::new(crate::store::Store::open_in_memory().unwrap())))
+    crate::testkit::memory_db()
 }
 
 /// One screen mounted with the app's contexts, its store and its WebView.
 pub struct App {
     pub dom: TestDom,
     pub db: crate::Db,
-    pub doc: Rc<FakeDocument>,
+    pub doc: Rc<FakeDoc>,
 }
 
 impl App {
@@ -636,17 +707,17 @@ impl App {
     pub fn with(
         lang: kabar_core::locale::UiLanguage,
         db: crate::Db,
-        doc: Rc<FakeDocument>,
+        doc: Rc<FakeDoc>,
         body: fn() -> Element,
     ) -> Self {
-        let props = RootProps { db: db.clone(), lang, doc: doc.clone(), body };
-        let dom = TestDom::from_vdom(VirtualDom::new_with_props(root, props));
+        let setup = Setup { lang, db: Some(db.clone()), doc: Some(doc.clone()), ..Setup::default() };
+        let dom = TestDom::from_vdom(crate::testkit::mount(body, setup));
         Self { dom, db, doc }
     }
 
     /// Mounts `body` over an empty store, in `lang`, with no voices.
     pub fn new(lang: kabar_core::locale::UiLanguage, body: fn() -> Element) -> Self {
-        Self::with(lang, memory_db(), FakeDocument::new(), body)
+        Self::with(lang, memory_db(), FakeDoc::new(), body)
     }
 
     /// A context the app provides (Ui, Coach, PlayNav...).
