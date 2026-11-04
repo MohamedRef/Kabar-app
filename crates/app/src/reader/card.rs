@@ -264,7 +264,7 @@ fn WordCard(i: usize) -> Element {
                     if w.taught_approved().is_some() {
                         span { class: "label", "{ui.t(Msg::KabarDictionary)}" }
                     }
-                    InfoView { info, voice }
+                    InfoView { info, voice, chip: super::morph::chip_label(&w, voice) }
                 },
                 None if w.is_english_aside() => rsx! {
                     p { class: "muted", "{ui.t(Msg::EnglishInChat)}" }
@@ -451,13 +451,25 @@ pub(crate) fn teach_word(ui: Ui, inbox: TeachInbox, seed: TeachSeed) {
 
 /// One gloss: meaning, note, example, speech levels and the Bridge card.
 #[component]
-pub(crate) fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
+pub(crate) fn InfoView(
+    info: WordInfo,
+    voice: UiLanguage,
+    /// The word-class chip already on the card; a part of speech that says
+    /// the same isn't repeated (#603).
+    #[props(default)]
+    chip: Option<String>,
+) -> Element {
     let ui = use_context::<Ui>();
+    let pos = info
+        .pos
+        .as_deref()
+        .filter(|p| chip.as_deref() != Some(crate::i18n::part_of_speech(voice, p)))
+        .map(|p| crate::i18n::part_of_speech(ui.lang(), p).to_string());
     let lang = if info.lang == WordLang::Javanese { "jv" } else { "id" };
     rsx! {
         div { class: "field",
-            if let Some(pos) = &info.pos {
-                span { class: "label", "{crate::i18n::part_of_speech(ui.lang(), pos)}" }
+            if let Some(pos) = pos {
+                span { class: "label", "{pos}" }
             }
             p { class: "gloss big", "{info.gloss.get(voice)}" }
             if voice != UiLanguage::En {

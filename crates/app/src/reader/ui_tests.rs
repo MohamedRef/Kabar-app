@@ -1113,6 +1113,39 @@ fn a_javanese_entry_shows_its_speech_levels_and_its_indonesian() {
 }
 
 #[test]
+fn the_part_of_speech_is_not_repeated_under_its_chip() {
+    // #603: «تفصيل الكلمة [اسم]» then «اسم» again over the meaning.
+    fn noun() -> WordInfo {
+        WordInfo {
+            lemma: "perpustakaan".into(),
+            lang: glossary::WordLang::Indonesian,
+            pos: Some("noun".into()),
+            gloss: gloss("library"),
+            indonesian: None,
+            bridge: None,
+            levels: None,
+            note: None,
+            example: None,
+            verified: false,
+        }
+    }
+    let ar = |chip: Option<&'static str>| {
+        thread_local! { static CHIP: std::cell::Cell<Option<&'static str>> = const { std::cell::Cell::new(None) }; }
+        CHIP.with(|c| c.set(chip));
+        let mut case = Case::new(|| {
+            let chip = CHIP.with(|c| c.get()).map(str::to_string);
+            rsx! { card::InfoView { info: noun(), voice: UiLanguage::ArEg, chip } }
+        });
+        case.lang = UiLanguage::ArEg;
+        text_of(&render(case))
+    };
+    let label = crate::i18n::part_of_speech(UiLanguage::ArEg, "noun");
+    assert!(ar(None).contains(label), "no chip: the gloss names its part of speech");
+    assert!(!ar(Some("اسم")).contains(label), "the chip already says it");
+    assert!(ar(Some("فعل")).contains(label), "a different chip keeps it");
+}
+
+#[test]
 fn every_label_has_its_own_words() {
     use std::collections::HashSet;
     let tags: HashSet<_> =
