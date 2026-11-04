@@ -6,6 +6,9 @@
 //!   the content YAML (golden sets included) and every `arz` gloss in the
 //!   word sheets is checked. MSA (`ar`)
 //!   keeps press spellings and is not checked.
+//! - Any other name or Javanese word respelled with غ for a Latin g (#600):
+//!   an `ar_eg`/`arz` word with غ whose consonants match a Latin word with
+//!   g in the same item («توغو» next to Tugu) is flagged, list or no list.
 //! - Aksara letters need distinct hints (#568): in letter-teaching lines the
 //!   Arabic hint is all that tells the learner how a letter sounds, so two
 //!   different letters must never share one (pa and ba were both «بَ»).
@@ -147,6 +150,7 @@ pub fn check(root: &Path, out: &mut Vec<String>) -> Result<(), LoadError> {
         // that spells names the house way must not score as a miss.
         ar_eg_texts(&v, "arz", &mut texts);
         report(&file.display().to_string(), &texts, &names, out);
+        check_ghain(&v, &mut Vec::new(), &file.display().to_string(), &mut BTreeSet::new(), out);
     }
     for lang in ["id", "jv"] {
         let dir = content.join("glosses").join(lang);
@@ -161,13 +165,203 @@ pub fn check(root: &Path, out: &mut Vec<String>) -> Result<(), LoadError> {
             let mut texts = Vec::new();
             let lines: Vec<Value> =
                 read(&file)?.lines().filter_map(|l| serde_json::from_str(l).ok()).collect();
+            let mut seen = BTreeSet::new();
             for v in &lines {
                 ar_eg_texts(v, "arz", &mut texts);
+                check_ghain(v, &mut Vec::new(), &file.display().to_string(), &mut seen, out);
             }
             report(&file.display().to_string(), &texts, &names, out);
         }
     }
     Ok(())
+}
+
+// --- غ for a Latin g (#600) ---------------------------------------------
+
+/// An Arabic transliteration read back as Latin letters, vowels included
+/// (ا a, و u/o, ي i/e), غ and ج both g, marks dropped and doubled letters
+/// folded: «ألينغكا» → "alingka". A hamza seat before و or ي is silent
+/// («إيموغيري» → "imugiri"). `None` when a letter has no reading here.
+fn arabic_reading(word: &str) -> Option<String> {
+    let cs: Vec<char> = word.chars().collect();
+    let mut out = String::new();
+    for (i, &c) in cs.iter().enumerate() {
+        let l = match c {
+            'أ' | 'إ' | 'آ' if matches!(cs.get(i + 1), Some('و' | 'ي')) => "",
+            'ا' | 'أ' | 'إ' | 'آ' | 'ى' => "a",
+            'و' => "u",
+            'ي' => "i",
+            'ب' => "b",
+            'ت' | 'ط' => "t",
+            'ث' | 'س' | 'ص' | 'ش' => "s",
+            'ج' | 'غ' => "g",
+            'ح' | 'ه' | 'ة' => "h",
+            'خ' | 'ق' | 'ك' => "k",
+            'د' | 'ض' => "d",
+            'ذ' | 'ز' | 'ظ' => "z",
+            'ر' => "r",
+            'ف' => "f",
+            'ل' => "l",
+            'م' => "m",
+            'ن' => "n",
+            'ء' | 'ؤ' | 'ئ' | 'ع' | '\u{064B}'..='\u{0652}' | '\u{0670}' | 'ـ' => "",
+            _ => return None,
+        };
+        if !l.is_empty() && !out.ends_with(l) {
+            out.push_str(l);
+        }
+    }
+    Some(out)
+}
+
+/// A Latin word in the alphabet of [`arabic_reading`]: p as b, j as g, c as
+/// ts, o as u, sy as s; `E` marks an e, which a transliteration writes as ي
+/// or leaves out (sengkalan → «سنغكالان»).
+fn latin_reading(word: &str) -> String {
+    let w = word.to_lowercase().replace("sy", "s").replace("kh", "k").replace("dh", "d").replace("th", "t");
+    let mut out = String::new();
+    for c in w.chars() {
+        let l = match c {
+            'a' => "a",
+            'i' | 'y' => "i",
+            'e' => "E",
+            'o' | 'u' | 'w' => "u",
+            'b' | 'p' => "b",
+            't' => "t",
+            'c' => "ts",
+            's' | 'x' => "s",
+            'g' | 'j' => "g",
+            'h' => "h",
+            'k' | 'q' => "k",
+            'd' => "d",
+            'z' => "z",
+            'r' => "r",
+            'f' | 'v' => "f",
+            'l' => "l",
+            'm' => "m",
+            'n' => "n",
+            _ => "",
+        };
+        for ch in l.chars() {
+            if !out.ends_with(ch) {
+                out.push(ch);
+            }
+        }
+    }
+    out
+}
+
+/// Whether the Arabic reading spells the Latin one (`E` is i or nothing).
+fn reads_as(ar: &[u8], la: &[u8]) -> bool {
+    match (ar.first(), la.first()) {
+        (_, Some(b'E')) => {
+            reads_as(ar, &la[1..]) || (ar.first() == Some(&b'i') && reads_as(&ar[1..], &la[1..]))
+        }
+        (None, None) => true,
+        (Some(a), Some(l)) if a == l => reads_as(&ar[1..], &la[1..]),
+        _ => false,
+    }
+}
+
+fn latin_words(text: &str) -> impl Iterator<Item = &str> {
+    text.split(|c: char| !c.is_ascii_alphabetic()).filter(|w| w.len() > 1)
+}
+
+/// Arabic words in `text` that spell, with غ, a Latin word from `latin`
+/// that has a g: «توغو» for Tugu. Arabic loans written gh (maghrib) are
+/// fine, since gh is غ.
+/// Words that keep غ: Arabic words that happen to read like a Latin word
+/// with g, and Chinese and Korean names, which Arabic writes with غ by
+/// convention (kung fu «كونغ فو», Jiang «جيانغ»).
+const GHAIN_WORDS: &[&str] = &[
+    "غايب",
+    "غائب",
+    "غريم",
+    "فوتوغرافي",
+    "فوتوغرافيا",
+    "غوريلا",
+    "كونغ",
+    "جيانغ",
+    "جانغ",
+    "بونغ",
+    "بانغ",
+    "لينغ",
+    "كيونغ",
+];
+
+pub fn ghain_for_g<'a>(text: &'a str, latin: &[&str]) -> Vec<(&'a str, String)> {
+    let targets: Vec<(String, &str)> = latin
+        .iter()
+        .flat_map(|t| latin_words(t))
+        .filter(|w| w.to_lowercase().contains('g'))
+        .map(|w| (latin_reading(w), w))
+        .collect();
+    let mut found = Vec::new();
+    for word in text.split(|c: char| !is_letter(c)).filter(|w| w.contains('غ')) {
+        for base in strip_clitics(word) {
+            if GHAIN_WORDS.contains(&base) {
+                break;
+            }
+            let Some(reading) = arabic_reading(base) else { continue };
+            // A Latin gh (maghrib) is what غ is for, unless the Arabic
+            // writes the h too (Beringharjo «بيرينغهارجو»).
+            let fits = |l: &str| {
+                reads_as(reading.as_bytes(), l.as_bytes()) && (!l.contains("gh") || reading.contains("gh"))
+            };
+            if let Some((_, latin)) = targets.iter().find(|(l, _)| fits(l)) {
+                found.push((word, (*latin).to_owned()));
+                break;
+            }
+        }
+    }
+    found
+}
+
+/// Every object with an `ar_eg`/`arz` text, checked against the Latin
+/// strings of that object and the objects around it (a dialogue line's
+/// `text`, a note's `title`).
+fn check_ghain(
+    v: &Value,
+    context: &mut Vec<String>,
+    file: &str,
+    seen: &mut BTreeSet<String>,
+    out: &mut Vec<String>,
+) {
+    match v {
+        Value::Object(m) => {
+            let pushed = m.values().filter_map(Value::as_str).filter(|s| !s.chars().any(is_letter)).count();
+            context.extend(
+                m.values().filter_map(Value::as_str).filter(|s| !s.chars().any(is_letter)).map(str::to_owned),
+            );
+            for (k, val) in m {
+                if k == "ar_eg" || k == "arz" {
+                    let mut texts = Vec::new();
+                    match val {
+                        Value::String(s) => texts.push(s.as_str()),
+                        Value::Array(a) => texts.extend(a.iter().filter_map(Value::as_str)),
+                        _ => {}
+                    }
+                    for t in texts {
+                        // Latin inside the Arabic text counts too.
+                        let mut latin: Vec<&str> = context.iter().map(String::as_str).collect();
+                        latin.push(t);
+                        for (ar, la) in ghain_for_g(t, &latin) {
+                            if seen.insert(ar.to_owned()) {
+                                out.push(format!(
+                                    "{file}: {k} writes «{ar}» for {la} with غ; g is ج (ng is نج)"
+                                ));
+                            }
+                        }
+                    }
+                } else {
+                    check_ghain(val, context, file, seen, out);
+                }
+            }
+            context.truncate(context.len() - pushed);
+        }
+        Value::Array(a) => a.iter().for_each(|v| check_ghain(v, context, file, seen, out)),
+        _ => {}
+    }
 }
 
 /// A single Javanese-script letter (the aksara block, U+A980–U+A9DF).
@@ -247,6 +441,23 @@ mod tests {
         // The chosen spelling, longer words and MSA forms stay quiet.
         assert!(found("من جوجا بالنجوكو").is_empty());
         assert!(found("جوكجاكرتا").is_empty());
+    }
+
+    #[test]
+    fn ghain_for_a_latin_g_is_flagged() {
+        let hits = |t: &str, latin: &[&str]| {
+            ghain_for_g(t, latin).into_iter().map(|(a, l)| format!("{a}={l}")).collect::<Vec<_>>()
+        };
+        assert_eq!(hits("روح ألينغكا.", &["Hanoman, kowe lunga menyang Alengka."]), ["ألينغكا=Alengka"]);
+        assert_eq!(hits("عند التوغو", &["ing Tugu"]), ["التوغو=Tugu"]);
+        assert_eq!(hits("سوق بيرينغهارجو", &["pasar Beringharjo"]), ["بيرينغهارجو=Beringharjo"]);
+        // ج is right; Arabic words with غ and loans written gh stay quiet.
+        assert!(hits("روح ألينجكا", &["Alengka"]).is_empty());
+        assert!(hits("صلاة المغرب غالي", &["sholat maghrib", "larang"]).is_empty());
+        // Arabic words that only share consonants with a Latin word stay quiet.
+        assert!(hits("غير كده، في أغسطس", &["guru", "agar", "Agustus"]).is_empty());
+        assert_eq!(hits("السنغكالان", &["sengkalan"]), ["السنغكالان=sengkalan"]);
+        assert_eq!(hits("إيموغيري", &["Imogiri"]), ["إيموغيري=Imogiri"]);
     }
 
     #[test]
