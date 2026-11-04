@@ -638,4 +638,61 @@ mod tests {
         assert_eq!(ago(UiLanguage::Ar, true, now - 2 * 86_400_000, now), "منذ يومين");
         assert_eq!(ago(UiLanguage::En, false, now - 5 * MIN, now), "5 min ago");
     }
+
+    #[test]
+    fn hours_and_days_count_in_every_language() {
+        let now = 400 * 86_400_000;
+        const H: u64 = 60 * MIN;
+        const D: u64 = 24 * H;
+        assert_eq!(ago(UiLanguage::En, false, now - 59_000, now), "just now");
+        assert_eq!(ago(UiLanguage::En, false, now - 3 * H, now), "3 h ago");
+        assert_eq!(ago(UiLanguage::En, false, now - 40 * D, now), "40 d ago");
+        assert_eq!(ago(UiLanguage::ArEg, false, now - H, now), "من ساعة");
+        assert_eq!(ago(UiLanguage::ArEg, false, now - 2 * H, now), "من ساعتين");
+        assert_eq!(ago(UiLanguage::ArEg, true, now - 12 * H, now), "من ١٢ ساعة");
+        assert_eq!(ago(UiLanguage::Ar, false, now - D, now), "منذ يوم");
+        assert_eq!(ago(UiLanguage::Ar, false, now - 7 * D, now), "منذ 7 أيام");
+        assert_eq!(ago(UiLanguage::Ar, false, now - 30 * D, now), "منذ 30 يوم");
+        assert_eq!(ago(UiLanguage::Ar, false, now - 11 * MIN, now), "منذ 11 دقيقة");
+        assert_eq!(ago(UiLanguage::ArEg, false, now + MIN, now), "دلوقتي", "a clock running ahead is 'now'");
+    }
+
+    #[test]
+    fn every_problem_and_sync_state_has_its_own_words() {
+        use crate::cloud::{Problem, SyncState};
+        let problems = [
+            Problem::NotConfigured,
+            Problem::NotAllowed,
+            Problem::SignInCancelled,
+            Problem::SignInFailed,
+            Problem::SignedOutRemotely,
+            Problem::Network,
+            Problem::Server,
+            Problem::Outdated,
+        ];
+        let mut msgs: Vec<Msg> = problems.into_iter().map(problem_msg).collect();
+        msgs.dedup();
+        assert_eq!(msgs.len(), problems.len());
+        assert_eq!(sync_msg(SyncState::SignedOut), None, "signed out shows no sync pill");
+        let states = [
+            SyncState::Connecting,
+            SyncState::CatchingUp,
+            SyncState::Live,
+            SyncState::Offline,
+            SyncState::Stopped,
+        ];
+        let mut shown: Vec<Msg> = states.into_iter().filter_map(sync_msg).collect();
+        shown.dedup();
+        assert_eq!(shown.len(), states.len());
+    }
+
+    #[test]
+    fn each_platform_has_its_own_device_icon() {
+        let svg = |p| dioxus::ssr::render_element(platform_icon(p));
+        let (phone, mac, web) = (svg(Platform::Android), svg(Platform::Macos), svg(Platform::Web));
+        assert!(phone.contains("M8 3h8v18H8z") && mac.contains("M5 6h14v9H5z"), "{phone} {mac}");
+        assert_eq!(web, svg(Platform::Other), "the web and other devices share the screen icon");
+        assert!(phone != mac && mac != web);
+        assert!(web.contains("stroke=\"currentColor\""));
+    }
 }

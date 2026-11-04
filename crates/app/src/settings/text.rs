@@ -2,6 +2,7 @@
 
 use kabar_core::locale::UiLanguage;
 
+crate::i18n::catalog! {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum S {
     Close,
@@ -102,6 +103,7 @@ pub enum S {
     // storage and about
     DataFolder,
     Version,
+}
 }
 
 pub fn st(lang: UiLanguage, s: S) -> &'static str {

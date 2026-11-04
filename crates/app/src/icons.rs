@@ -266,4 +266,111 @@ mod tests {
         assert_eq!(svg_body(file), "<path d=\"M1 1\"/>");
         assert_eq!(svg_body("not an svg"), "");
     }
+
+    fn svg(icon: Element) -> String {
+        dioxus::ssr::render_element(icon)
+    }
+
+    /// The drawing: a stroke path's `d`, or a custom icon's inner SVG.
+    fn drawing(html: &str) -> String {
+        assert!(html.starts_with("<svg") && html.contains("viewBox=\"0 0 24 24\""), "{html}");
+        assert!(html.contains("stroke=\"currentColor\"") && html.contains("fill=\"none\""), "{html}");
+        let inner = &html[html.find('>').unwrap() + 1..html.rfind("</svg>").unwrap()];
+        assert!(!inner.trim().is_empty(), "an empty icon: {html}");
+        inner.to_string()
+    }
+
+    fn distinct(name: &str, drawings: Vec<String>, shared: usize) {
+        let mut unique = drawings.clone();
+        unique.sort();
+        unique.dedup();
+        assert_eq!(unique.len(), drawings.len() - shared, "{name}: icons drawn twice");
+    }
+
+    #[test]
+    fn every_screen_has_an_icon_and_few_share_one() {
+        let screens = [
+            Screen::Today,
+            Screen::Journey,
+            Screen::Reader,
+            Screen::Review,
+            Screen::Coach,
+            Screen::Play,
+            Screen::Studio,
+            Screen::Settings,
+            Screen::PenLab,
+            Screen::Devices,
+            Screen::Lesson,
+            Screen::Teach,
+            Screen::Journal,
+            Screen::Cost,
+            Screen::Stats,
+            Screen::LevelCheck,
+            Screen::Listen,
+            Screen::Chat,
+        ];
+        let drawings: Vec<String> = screens.iter().map(|s| drawing(&svg(nav(*s)))).collect();
+        // The Lesson Player wears the Journey's island.
+        distinct("screens", drawings, 1);
+        assert_eq!(drawing(&svg(nav(Screen::Lesson))), drawing(&svg(nav(Screen::Journey))));
+        assert_eq!(drawing(&svg(nav(Screen::Settings))), drawing(&svg(gear())));
+        assert_eq!(drawing(&svg(nav(Screen::Coach))), drawing(&svg(coach())));
+        assert!(svg(nav(Screen::Coach)).contains(svg_body(COACH)), "custom icons embed their file");
+    }
+
+    #[test]
+    fn settings_sections_and_games_have_their_own_icons() {
+        use crate::settings::Section;
+        let sections: Vec<String> =
+            Section::ALL.iter().map(|s| drawing(&svg(settings_section(*s)))).collect();
+        distinct("sections", sections, 0);
+        assert_eq!(drawing(&svg(settings_section(Section::Account))), drawing(&svg(nav(Screen::Devices))));
+        let routes = [
+            Route::Hub,
+            Route::Pagi,
+            Route::Deck,
+            Route::Detective,
+            Route::Alarm,
+            Route::Rupiah,
+            Route::Pasar,
+            Route::Unggah,
+            Route::Pairs,
+        ];
+        let games: Vec<String> = routes.iter().map(|r| drawing(&svg(game(*r)))).collect();
+        distinct("games", games, 0);
+        assert_eq!(drawing(&svg(game(Route::Hub))), drawing(&svg(nav(Screen::Play))));
+        // The detective's magnifier is the search field's.
+        assert_eq!(drawing(&svg(game(Route::Detective))), drawing(&svg(search())));
+    }
+
+    #[test]
+    fn small_icons_are_distinct_strokes() {
+        use crate::views::Layout;
+        let all = vec![
+            svg(more()),
+            svg(lamp()),
+            svg(search()),
+            svg(coin()),
+            svg(star()),
+            svg(send()),
+            svg(speaker()),
+            svg(play()),
+            svg(trash()),
+            svg(bulb()),
+            svg(lock()),
+            svg(sort()),
+            svg(layout(Layout::Cards)),
+            svg(layout(Layout::List)),
+            svg(layout(Layout::Compact)),
+        ];
+        let drawings: Vec<String> = all.iter().map(|s| drawing(s)).collect();
+        assert!(drawings.iter().all(|d| d.starts_with("<path d=\"M")), "plain strokes: {drawings:?}");
+        distinct("small icons", drawings, 0);
+    }
+
+    #[test]
+    fn a_file_without_an_svg_wrapper_draws_nothing() {
+        assert_eq!(svg_body("<path d=\"M1 1\"/>"), "");
+        assert_eq!(svg_body("</svg><svg>"), "", "a closing tag before the opening one");
+    }
 }

@@ -40,6 +40,8 @@ mod pron;
 mod reader;
 mod review;
 mod schedule;
+#[cfg(test)]
+mod screen_kit;
 mod screens;
 mod settings;
 mod sheet;

@@ -14,7 +14,7 @@ const SETTINGS: &str = "kabar.settings";
 const SHORTCUTS: &str = "kabar.shortcuts";
 
 /// Go menu: (id, title, key, screen).
-const GO: [(&str, &str, Code, Screen); 7] = [
+pub(super) const GO: [(&str, &str, Code, Screen); 7] = [
     ("kabar.go.today", "Today", Code::Digit1, Screen::Today),
     ("kabar.go.journey", "Journey", Code::Digit2, Screen::Journey),
     ("kabar.go.reader", "Reader", Code::Digit3, Screen::Reader),
@@ -122,17 +122,36 @@ pub fn use_menu_events(ui: Ui, nav: SettingsNav) {
         }
     });
     dioxus::desktop::use_muda_event_handler(move |event| {
-        let id = event.id().0.as_str();
-        match id {
-            SETTINGS => nav.show(None),
-            SHORTCUTS => nav.show(Some(Section::Mac)),
-            _ => {
-                if let Some((_, _, _, screen)) = GO.iter().find(|(go, ..)| *go == id) {
-                    nav.close();
-                    let mut s = ui.screen;
-                    s.set(*screen);
-                }
-            }
+        if let Some(action) = action(event.id().0.as_str()) {
+            apply(ui, nav, action);
         }
     });
+}
+
+/// What a menu item asks for.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub(super) enum Action {
+    /// Open Settings, on the section list or on one section.
+    Settings(Option<Section>),
+    /// Go to a screen (closing Settings if it is open).
+    Go(Screen),
+}
+
+pub(super) fn action(id: &str) -> Option<Action> {
+    match id {
+        SETTINGS => Some(Action::Settings(None)),
+        SHORTCUTS => Some(Action::Settings(Some(Section::Mac))),
+        _ => GO.iter().find(|(go, ..)| *go == id).map(|(_, _, _, screen)| Action::Go(*screen)),
+    }
+}
+
+pub(super) fn apply(ui: Ui, nav: SettingsNav, action: Action) {
+    match action {
+        Action::Settings(section) => nav.show(section),
+        Action::Go(screen) => {
+            nav.close();
+            let mut s = ui.screen;
+            s.set(screen);
+        }
+    }
 }
