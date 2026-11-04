@@ -24,9 +24,11 @@ on:
 permissions:
   contents: read
 
+# A running deploy always finishes; newer pushes wait as one pending run (the
+# newest), so a busy day of merges can't cancel every deploy in turn.
 concurrency:
   group: web-deploy
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
