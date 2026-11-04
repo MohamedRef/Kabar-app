@@ -2470,7 +2470,7 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RegisterKrama, ArEg) => "كراما (مؤدب)",
         (RegisterKrama, Ar) => "كراما (مهذّب)",
         (RegisterKrama, En) => "krama (polite)",
-        (RegisterNgoko, ArEg) => "نغوكو (بين الأصحاب)",
+        (RegisterNgoko, ArEg) => "نجوكو (بين الأصحاب)",
         (RegisterNgoko, Ar) => "نغوكو (بين المقرّبين)",
         (RegisterNgoko, En) => "ngoko (casual)",
         (RegisterMixed, ArEg) => "خليط",

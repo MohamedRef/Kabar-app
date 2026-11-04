@@ -1,19 +1,50 @@
 name: Settings browser regression
 
+# Mohamed, 2026-11-04: not on every pull request and merge any more (they
+# jammed the Actions queue). It runs on main every 4 hours, skipped when main
+# has not moved since the last green run, and by hand (Actions > this
+# workflow > Run workflow, on any branch). A pull request that changes this
+# test itself still runs it. A red scheduled run is fixed in its own PR.
 on:
+  schedule:
+    - cron: "11 */4 * * *"
+  workflow_dispatch:
   pull_request:
-  push:
-    branches: [main]
+    paths:
+      - .github/workflows/settings-browser.yml
+      - crates/app/tests/settings-browser.cjs
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: settings-browser-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  changed:
+    name: Main changed since the last run?
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          last="$(gh api "repos/${{ github.repository }}/actions/workflows/settings-browser.yml/runs?branch=main&status=success&per_page=1" --jq '.workflow_runs[0].head_sha // ""')"
+          if [ "$GITHUB_EVENT_NAME" = schedule ] && [ "$last" = "$GITHUB_SHA" ]; then
+            echo "main is still at ${GITHUB_SHA::7}, already checked."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
   settings:
+    needs: changed
+    if: needs.changed.outputs.run == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:

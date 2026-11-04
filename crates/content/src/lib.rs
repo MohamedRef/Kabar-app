@@ -14,6 +14,7 @@ pub mod coverage;
 pub mod false_friends;
 pub mod lessons;
 pub mod model;
+pub mod names;
 pub mod retrieval;
 pub mod semantic_sets;
 pub mod unit_shape;
@@ -69,7 +70,7 @@ impl Report {
     }
 }
 
-fn read(path: &Path) -> Result<String, LoadError> {
+pub(crate) fn read(path: &Path) -> Result<String, LoadError> {
     fs::read_to_string(path).map_err(|source| LoadError::Io { path: path.to_owned(), source })
 }
 
@@ -92,7 +93,7 @@ fn schema_problems(validator: &jsonschema::Validator, value: &serde_json::Value,
         .collect()
 }
 
-fn yaml_files(dir: &Path, out: &mut Vec<PathBuf>) -> Result<(), LoadError> {
+pub(crate) fn yaml_files(dir: &Path, out: &mut Vec<PathBuf>) -> Result<(), LoadError> {
     let entries = fs::read_dir(dir).map_err(|source| LoadError::Io { path: dir.to_owned(), source })?;
     for entry in entries {
         let path = entry.map_err(|source| LoadError::Io { path: dir.to_owned(), source })?.path();
@@ -188,6 +189,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
     unit_shape::check(&report.curricula, &lesson_values, &mut problems);
     semantic_sets::check(root, &report.curricula, &lesson_values, &mut problems);
     false_friends::check(&lesson_values, &mut problems);
+    names::check_letter_hints(&lesson_values, &mut problems);
     for level in LESSON_LEVELS {
         for id in index.lessons_of(level) {
             if !report.lessons.iter().any(|l| l == id) {
@@ -250,6 +252,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
     };
     let (cast_file, pending) = (optional("content/cast.yaml")?, optional("content/pending.yaml")?);
     cast::check(cast_file.as_ref(), pending.as_ref(), &personas, &seen, &index, &mut problems);
+    names::check(root, &mut problems)?;
     report.problems.extend(problems);
     Ok(())
 }
