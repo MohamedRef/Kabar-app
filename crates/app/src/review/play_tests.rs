@@ -360,7 +360,8 @@ fn nothing_due_rests_and_offers_new_words() {
     let html = sim.html();
     assert!(html.contains(&en(Msg::RevAllDone)), "{html}");
     assert!(html.contains(&en(Msg::RevNothingHere)));
-    assert!(html.contains("class=\"forecast\""));
+    assert!(html.contains("class=\"forecast empty\""), "nothing due draws flat baselines");
+    assert!(html.contains(&en(Msg::RevForecastEmpty)));
     sim.click(|n| n.has_class("forecast-tap"));
     assert_eq!(*sim.with(consume_context::<Ui>).screen.peek(), Screen::Stats);
     sim.with(|| consume_context::<Ui>().screen.set(Screen::Review));

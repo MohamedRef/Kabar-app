@@ -159,7 +159,7 @@ en = [
 # --- Daily plan (Rencana Hari Ini) -------------------------------------------
 
 [lines.plan_morning]
-moment = "Today's plan card. Omit `count` when no reviews are due; a variant without it is picked."
+moment = "Today's plan card from 04:00 to 11:00 (pagi). Omit `count` when no reviews are due; a variant without it is picked."
 placeholders = ["name", "minutes", "count", "topic"]
 ar-eg = [
   "⁨Selamat pagi⁩ يا ⁨{name}⁩، يعني صباح الخير. خطة النهارده {minutes|دقيقة|دقيقتين|دقايق}: {count|مراجعة|مراجعتين|مراجعات} وبعدها ⁨{topic}⁩.",
@@ -176,6 +176,57 @@ en = [
   "Selamat pagi, {name}: good morning. Today's plan takes {minutes|minute|minutes}: {count|review|reviews}, then {topic}.",
   "Morning, {name}. Today we start with {topic}, {minutes|minute|minutes} in all. Ayo, let's go.",
   "Rencana Hari Ini, today's plan: {count|review|reviews} to warm up, then something new: {topic}. Semangat, you've got this.",
+]
+
+[lines.plan_afternoon]
+moment = "Today's plan card from 11:00 to 15:00 (siang). Omit `count` when no reviews are due; a variant without it is picked."
+placeholders = ["name", "minutes", "count", "topic"]
+ar-eg = [
+  "⁨Selamat siang⁩ يا ⁨{name}⁩، يعني نهارك سعيد. خطة النهارده {minutes|دقيقة|دقيقتين|دقايق}: {count|مراجعة|مراجعتين|مراجعات} وبعدها ⁨{topic}⁩.",
+  "أهلاً يا ⁨{name}⁩، ⁨selamat siang⁩. النهارده عندنا ⁨{topic}⁩، كله في {minutes|دقيقة|دقيقتين|دقايق}. ⁨Ayo⁩، يعني يلا.",
+  "يومك جاهز يا ⁨{name}⁩: ⁨{topic}⁩ في {minutes|دقيقة|دقيقتين|دقايق} على مهلك. ⁨Semangat⁩، يعني شد حيلك.",
+]
+ar = [
+  "⁨Selamat siang⁩ يا ⁨{name}⁩، أي نهارك سعيد. خطة اليوم {minutes|دقيقة|دقيقتان|دقائق}: {count|مراجعة|مراجعتان|مراجعات} ثم ⁨{topic}⁩.",
+  "أهلًا يا ⁨{name}⁩، ⁨selamat siang⁩. نبدأ اليوم بـ⁨{topic}⁩، والمجموع {minutes|دقيقة|دقيقتان|دقائق}. ⁨Ayo⁩، أي هيا.",
+]
+en = [
+  "Selamat siang, {name}: good day. Today's plan takes {minutes|minute|minutes}: {count|review|reviews}, then {topic}.",
+  "Hi, {name}. Selamat siang! Today we start with {topic}, {minutes|minute|minutes} in all. Ayo, let's go.",
+]
+
+[lines.plan_evening]
+moment = "Today's plan card from 15:00 to 18:00 (sore). Omit `count` when no reviews are due; a variant without it is picked."
+placeholders = ["name", "minutes", "count", "topic"]
+ar-eg = [
+  "⁨Selamat sore⁩ يا ⁨{name}⁩، يعني مساء الخير قبل المغرب. خطة النهارده {minutes|دقيقة|دقيقتين|دقايق}: {count|مراجعة|مراجعتين|مراجعات} وبعدها ⁨{topic}⁩.",
+  "عصرية حلوة يا ⁨{name}⁩، ⁨selamat sore⁩. النهارده عندنا ⁨{topic}⁩، كله في {minutes|دقيقة|دقيقتين|دقايق}. ⁨Ayo⁩، يعني يلا.",
+  "⁨Rencana Hari Ini⁩، يعني خطة النهارده: {count|مراجعة|مراجعتين|مراجعات} الأول عشان نسخّن، وبعدين حاجة جديدة: ⁨{topic}⁩.",
+]
+ar = [
+  "⁨Selamat sore⁩ يا ⁨{name}⁩، أي مساء الخير قبل الغروب. خطة اليوم {minutes|دقيقة|دقيقتان|دقائق}: {count|مراجعة|مراجعتان|مراجعات} ثم ⁨{topic}⁩.",
+  "عصرًا طيبًا يا ⁨{name}⁩، ⁨selamat sore⁩. نبدأ اليوم بـ⁨{topic}⁩، والمجموع {minutes|دقيقة|دقيقتان|دقائق}. ⁨Ayo⁩، أي هيا.",
+]
+en = [
+  "Selamat sore, {name}: good afternoon. Today's plan takes {minutes|minute|minutes}: {count|review|reviews}, then {topic}.",
+  "Afternoon, {name}. Selamat sore! Today we start with {topic}, {minutes|minute|minutes} in all. Ayo, let's go.",
+]
+
+[lines.plan_night]
+moment = "Today's plan card from 18:00, and before 04:00 (malam). Omit `count` when no reviews are due; a variant without it is picked."
+placeholders = ["name", "minutes", "count", "topic"]
+ar-eg = [
+  "⁨Selamat malam⁩ يا ⁨{name}⁩، يعني مساء الخير. خطة النهارده {minutes|دقيقة|دقيقتين|دقايق}: {count|مراجعة|مراجعتين|مراجعات} وبعدها ⁨{topic}⁩.",
+  "مساء الفل يا ⁨{name}⁩. الليلة عندنا ⁨{topic}⁩، كله في {minutes|دقيقة|دقيقتين|دقايق} على رواقة. ⁨Ayo⁩، يعني يلا.",
+  "يومك جاهز يا ⁨{name}⁩: ⁨{topic}⁩ في {minutes|دقيقة|دقيقتين|دقايق} على مهلك. ⁨Semangat⁩، يعني شد حيلك.",
+]
+ar = [
+  "⁨Selamat malam⁩ يا ⁨{name}⁩، أي مساء الخير. خطة اليوم {minutes|دقيقة|دقيقتان|دقائق}: {count|مراجعة|مراجعتان|مراجعات} ثم ⁨{topic}⁩.",
+  "مساء الخير يا ⁨{name}⁩. الليلة نبدأ بـ⁨{topic}⁩، والمجموع {minutes|دقيقة|دقيقتان|دقائق} على مهل. ⁨Ayo⁩، أي هيا.",
+]
+en = [
+  "Selamat malam, {name}: good evening. Today's plan takes {minutes|minute|minutes}: {count|review|reviews}, then {topic}.",
+  "Evening, {name}. Selamat malam! Tonight we start with {topic}, {minutes|minute|minutes} in all, nice and easy. Ayo, let's go.",
 ]
 
 [lines.plan_comeback]
@@ -454,6 +505,19 @@ en = [
   "This week was a light one, and that's completely okay, {name}. Life has its weeks. We'll ease into next week.",
   "Even in a busy week you studied {minutes|minute|minutes}, and that kept the thread going. Next week we go pelan-pelan: slow and easy.",
   "Light weeks are a normal part of any journey. Next week's plan is small and easy, to find the rhythm again.",
+]
+
+[lines.report_just_started]
+moment = "Kak Nur's note on the first week's report before any study at all (onboarding just done). A welcome; nothing to sum up yet, never 'get back'."
+placeholders = ["name"]
+ar-eg = [
+  "أول أسبوع ليك مع ⁨Kabar⁩ يا ⁨{name}⁩. لسه مفيش حاجة نحسبها، وأول درس هيبان هنا على طول. ⁨Selamat datang⁩، يعني أهلاً بيك.",
+]
+ar = [
+  "أسبوعك الأول مع ⁨Kabar⁩ يا ⁨{name}⁩. لا شيء نحسبه بعد، وسيظهر أول درس هنا مباشرة. ⁨Selamat datang⁩، أي أهلًا بك.",
+]
+en = [
+  "Your first week with Kabar, {name}. Nothing to add up yet; your first lesson shows up here right away. Selamat datang: welcome.",
 ]
 
 [lines.report_first_week]

@@ -13,7 +13,8 @@ use super::text::{T, tt};
 use super::*;
 use crate::Screen;
 use crate::i18n::{Msg, t};
-use crate::test_dom::{App, El, FakeDocument, memory_db};
+use crate::test_dom::{App, El, memory_db};
+use crate::testkit::FakeDoc as FakeDocument;
 
 fn en(msg: Msg) -> &'static str {
     t(En, msg)
@@ -815,8 +816,17 @@ fn coach_labels_read_dates_times_and_plan_steps() {
             PlanItemKind::WeakSpot { skill: kabar_protocol::coach::Skill::Listening, topic: "angka".into() };
         assert_eq!(
             labels::plan_item_text(ui, &weak),
-            format!("{} (\u{2068}{} · angka\u{2069})", en(Msg::ItemWeakSpot), en(Msg::SkillListening))
+            format!("{}: \u{2068}{} · angka\u{2069}", en(Msg::ItemWeakSpot), en(Msg::SkillListening))
         );
+        // In a sentence: a phrase, not a label (#583).
+        assert_eq!(labels::plan_item_phrase(ui, &weak), "some practice on \u{2068}angka\u{2069}");
+        assert_eq!(labels::plan_item_phrase(ui, &PlanItemKind::Reading), "a short read or listen");
+        let greetings = labels::plan_item_phrase(ui, &PlanItemKind::Lesson { unit_id: "bipa1.u01".into() });
+        assert!(
+            greetings.starts_with("the \u{2068}") && greetings.ends_with("\u{2069} lesson"),
+            "{greetings}"
+        );
+        assert!(!greetings.contains('·') && !greetings.contains('('), "{greetings}");
         let lesson = PlanItemKind::Lesson { unit_id: "bipa1.u01".into() };
         let (msg, detail) = labels::plan_item(ui, &lesson);
         assert_eq!(msg, Msg::ItemLesson);
@@ -829,7 +839,10 @@ fn coach_labels_read_dates_times_and_plan_steps() {
             .enumerate()
             .map(|(i, kind)| kabar_protocol::coach::PlanItem { id: format!("i{i}"), kind, minutes: 5 })
             .collect();
-        assert_eq!(labels::plan_voice_args(ui, &items), ("12".to_string(), en(Msg::ItemReading).to_string()));
+        assert_eq!(
+            labels::plan_voice_args(ui, &items),
+            ("12".to_string(), en(Msg::PhraseReading).to_string())
+        );
         assert_eq!(labels::plan_voice_args(ui, &items[..1]), ("12".to_string(), String::new()));
     });
     with_ui(ArEg, true, |ui| {

@@ -94,6 +94,12 @@ button.tonal:disabled, button.outline:disabled { opacity: 1; background: var(--s
 .card.hero :is(h1, h2, h3, p) { color: inherit; }
 .card.hero .sub { opacity: 0.85; }
 .card.hero button.primary { background: var(--accent); color: var(--accent-ink); }
+/* True black: no bright block on an OLED screen at night (#586). The hero
+   is black with a mint outline and title; only its button stays filled. */
+.app[data-theme="black"] .card.hero { background: var(--surface); color: var(--text); border: 1px solid var(--primary); }
+.app[data-theme="black"] .card.hero .hero-title { color: var(--primary); }
+.app[data-theme="black"] .card.hero button.primary { background: var(--primary); color: var(--on-primary); }
+.app[data-theme="black"] .today-hero .progress { background: var(--line); }
 .grouped { padding: 0; overflow: clip; }
 .grouped > * + * { border-block-start: 1px solid var(--line-soft); }
 button.activity-row {
@@ -245,6 +251,9 @@ button.rating.good small { color: inherit; opacity: 0.85; }
   border-radius: var(--radius-pill);
   background: var(--surface-2);
 }
+/* A switch that fills its row and never wraps (UI style, #580). */
+.segmented.seg-fill { display: flex; flex-wrap: nowrap; }
+.segmented.seg-fill > button { flex: 1 1 0; min-inline-size: 0; padding-inline: var(--sp-2); white-space: nowrap; }
 .segmented > button { border-color: transparent; background: transparent; color: var(--muted); min-block-size: calc(var(--tap) - 0.4rem); }
 .segmented > button:is([aria-checked="true"], [aria-pressed="true"]) { background: var(--surface); color: var(--primary); font-weight: 600; box-shadow: var(--shadow); }
 input.switch {

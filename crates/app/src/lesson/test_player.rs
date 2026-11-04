@@ -568,7 +568,7 @@ fn Intro(test: TestContent) -> Element {
                 span { class: "pill lp-draft", "{lt(lang, L::NotReviewed)}" }
             }
             if let Some(intro) = &test.intro {
-                p { class: "lp-slide-body pre", Rich { text: pick(intro, lang).trim().to_string(), target } }
+                super::reading::SlideBody { text: pick(intro, lang).to_string(), target }
             }
             p { class: "muted", "{minutes_line} {lt(lang, note)}" }
             // The parts in order, as a small route: Jakarta → Bali → …

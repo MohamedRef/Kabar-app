@@ -92,8 +92,7 @@ fn durations_levels_and_isolation_read_naturally() {
         }
         rsx! { for line in out { p { "{line}" } } }
     }
-    let mut dom = VirtualDom::new(app);
-    dom.rebuild_in_place();
+    let dom = crate::test_dom::TestDom::unsettled(VirtualDom::new(app));
     let html = td::html(&dom);
     // Minutes under two hours; then hours, with Arabic count agreement:
     // 3–10 plural (ساعات), 11+ singular (ساعة).
@@ -551,7 +550,7 @@ fn today_previews_the_week_and_invites_the_monthly_check() {
     let mut dom = td::mount(Setup::new(demo(en(Demo::default())), Screen::Today, view));
     td::click_where(&mut dom, |l| l.class() == "primary" && l.text == st(UiLanguage::En, S::CheckDoNow));
     assert_eq!(td::screen(&dom), Screen::LevelCheck);
-    assert!(dom.in_scope(ScopeId::APP, || *CHECK_INVITED.peek()));
+    assert!(dom.peek_app(|| *CHECK_INVITED.peek()));
 }
 
 #[test]
@@ -671,4 +670,31 @@ fn choices_that_cannot_be_saved_still_apply_for_now() {
     td::click_where(&mut dom, |l| l.attr("role") == Some("radio") && l.text.contains("4"));
     assert!(td::html(&dom).contains("data-n=\"4\""));
     assert_eq!(td::db(&dom).0.borrow().local_value("stats_period").unwrap(), None);
+}
+
+#[component]
+fn RailStats() -> Element {
+    let ui = use_context::<crate::Ui>();
+    rsx! { button { class: "rail-stats", onclick: move |_| open_from_nav(ui), "Progress" } }
+}
+
+fn rail_view(screen: Screen) -> Option<Element> {
+    match screen {
+        Screen::Stats => Some(rsx! { StatsScreen {} }),
+        Screen::Today => Some(rsx! { RailStats {} TodayCards {} }),
+        _ => None,
+    }
+}
+
+#[test]
+fn stats_from_the_rail_has_no_back_arrow() {
+    // #587: a rail destination has nowhere to go back to.
+    let mut dom = td::mount(Setup::new(empty(), Screen::Today, rail_view));
+    td::click_where(&mut dom, |l| l.class() == "rail-stats");
+    assert_eq!(td::screen(&dom), Screen::Stats);
+    assert!(!td::html(&dom).contains("st-back-page"));
+    // Pushed from a page, it has one again.
+    let mut dom = td::mount(Setup::new(empty(), Screen::Today, view));
+    td::click_where(&mut dom, |l| l.class() == "st-open");
+    assert!(td::html(&dom).contains("st-back-page"));
 }

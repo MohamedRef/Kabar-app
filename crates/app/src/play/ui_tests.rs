@@ -6,7 +6,8 @@ use kabar_protocol::coach::{ActivityKind, Skill};
 
 use super::*;
 use crate::i18n::t;
-use crate::test_dom::{App, El, FakeDocument, memory_db};
+use crate::test_dom::{App, El, memory_db};
+use crate::testkit::FakeDoc as FakeDocument;
 use serde_json::json;
 
 fn en(msg: Msg) -> &'static str {

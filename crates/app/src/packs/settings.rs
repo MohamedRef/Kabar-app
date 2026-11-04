@@ -406,7 +406,7 @@ mod tests {
         Box::leak(Box::new(PackStore::new(dir.path())))
     }
 
-    fn mount(store: &'static PackStore, base: Option<String>) -> VirtualDom {
+    fn mount(store: &'static PackStore, base: Option<String>) -> crate::test_dom::TestDom {
         CARD.with(|c| *c.borrow_mut() = Some((store, base)));
         td::mount(Setup::new(crate::store::Store::open_in_memory().unwrap(), Screen::Settings, view))
     }
@@ -536,7 +536,7 @@ mod tests {
         td::change(&mut dom, |l| l.class() == "switch", "false");
         assert!(!store.auto());
         let switch = td::find(&dom, "change", |l| l.class() == "switch");
-        assert_eq!(switch.attr("checked"), Some("false"));
+        assert_eq!(switch.attr("checked"), None, "off: a boolean attribute goes away");
     }
 
     /// A row's state: (installed version, busy, job, configured).
@@ -635,8 +635,7 @@ mod tests {
             });
             rsx! { p { "{size_text(&ui, 1)}|{size_text(&ui, 1536)}|{size_text(&ui, 3 * 1024 * 1024 / 2)}" } }
         }
-        let mut dom = VirtualDom::new(app);
-        dom.rebuild_in_place();
+        let dom = crate::test_dom::TestDom::unsettled(VirtualDom::new(app));
         assert_eq!(td::html(&dom), "<p>١ KB|٢ KB|١.٥ MB</p>");
     }
 }

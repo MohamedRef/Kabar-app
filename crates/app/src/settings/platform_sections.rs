@@ -8,7 +8,7 @@ use kabar_core::layout::WidthClass;
 
 use super::device::{DevicePrefs, NavStyle};
 use super::text::{S, st};
-use super::{Scope, SettingsNav};
+use super::{Scope, SettingsNav, WEB};
 use crate::i18n::Msg;
 use crate::platform::{self, AppPage};
 use crate::{Db, Screen, Ui};
@@ -103,16 +103,13 @@ pub fn TabletSection() -> Element {
     }
 }
 
-#[component]
-pub fn MacSection() -> Element {
-    let ui = use_context::<Ui>();
-    let db = use_context::<Db>();
-    let prefs = use_context::<DevicePrefs>();
-    let lang = ui.lang();
-    let hover = *prefs.mouse_hover.read();
-    let rows: [(S, &[&str]); 8] = [
-        (S::ShortcutSettings, &["⌘", ","]),
-        (S::ShortcutScreens, &["⌘1", "…", "⌘7"]),
+/// The keyboard shortcuts this build really handles. The ⌘ ones come from
+/// the Mac menu bar; in a browser ⌘1…⌘7 (Ctrl+1…7) switch tabs and there is
+/// no menu, so the web lists only the in-page keys (#577).
+pub(super) fn shortcut_rows(web: bool) -> Vec<(S, &'static [&'static str])> {
+    let menu: [(S, &'static [&'static str]); 2] =
+        [(S::ShortcutSettings, &["⌘", ","]), (S::ShortcutScreens, &["⌘1", "…", "⌘7"])];
+    let page: [(S, &'static [&'static str]); 6] = [
         (S::ShortcutPick, &["1", "2", "3"]),
         (S::ShortcutCheck, &["Return"]),
         (S::ShortcutReveal, &["Space"]),
@@ -120,10 +117,21 @@ pub fn MacSection() -> Element {
         (S::ShortcutHelp, &["?"]),
         (S::ShortcutClose, &["Esc"]),
     ];
+    let menu = if web { &menu[..0] } else { &menu[..] };
+    menu.iter().chain(page.iter()).copied().collect()
+}
+
+/// The desktop section, shown on the web as "This browser" (#577).
+#[component]
+pub fn MacSection() -> Element {
+    let ui = use_context::<Ui>();
+    let db = use_context::<Db>();
+    let prefs = use_context::<DevicePrefs>();
+    let lang = ui.lang();
+    let hover = *prefs.mouse_hover.read();
+    let rows = shortcut_rows(WEB);
 
     rsx! {
-        Card {
-        }
         Card {
             h2 { "{st(lang, S::Shortcuts)}" }
             table { class: "shortcut-table",
@@ -166,10 +174,12 @@ pub fn MacSection() -> Element {
                 p { class: "muted settings-hint", "{st(lang, S::MouseHoverBody)}" }
             }
             NavStyleField {}
-            div { class: "field",
-                span { class: "label",
-                    bdi { class: "latin", "{st(lang, S::QuickLookup)}" }
-                    span { class: "pill settings-scope", "{st(lang, S::Later)}" }
+            if !WEB {
+                div { class: "field",
+                    span { class: "label",
+                        bdi { class: "latin", "{st(lang, S::QuickLookup)}" }
+                        span { class: "pill settings-scope", "{st(lang, S::Later)}" }
+                    }
                 }
             }
         }
@@ -226,7 +236,12 @@ pub fn StorageSection() -> Element {
         crate::data_export::ExportCard {}
         Card {
             span { class: "label", "{st(ui.lang(), S::DataFolder)}" }
-            p { code { dir: "ltr", bdi { "{dir}" } } }
+            if WEB || dir.is_empty() {
+                // The web keeps everything in the browser's own storage (#585).
+                p { "{st(ui.lang(), S::DataInBrowser)}" }
+            } else {
+                p { code { dir: "ltr", bdi { "{dir}" } } }
+            }
         }
         crate::diag::DiagnosticsCard {}
     }

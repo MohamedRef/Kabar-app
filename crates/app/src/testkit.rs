@@ -5,6 +5,11 @@
 //!
 //! SSR alone never runs `onclick`; this does, so a test can click "Send" and
 //! check the stored row and the HTML that follows.
+//!
+//! This is the one test kit: [`crate::test_dom`] is its DOM driver (real
+//! mutations, real event bubbling), [`FakeDoc`] its WebView and [`provide`]
+//! its contexts. `test_dom::App`, `lesson::sim` and `test_screens` are thin
+//! front ends over the same three pieces, in the styles older tests use.
 
 use std::any::Any;
 use std::cell::RefCell;
@@ -12,12 +17,8 @@ use std::collections::VecDeque;
 use std::rc::Rc;
 use std::task::{Context, Poll, Waker};
 
-use dioxus::core::{AttributeValue, DynamicNode, ElementId, Event, TemplateAttribute, TemplateNode, VNode};
 use dioxus::document::{Document, Eval, EvalError, Evaluator};
-use dioxus::html::{
-    PlatformEventData, SerializedFormData, SerializedHtmlEventConverter, SerializedKeyboardData,
-    SerializedMouseData,
-};
+use dioxus::html::{SerializedFormData, SerializedKeyboardData, SerializedMouseData};
 use dioxus::prelude::*;
 use dioxus::signals::Owner;
 use kabar_core::ai::{EngineFuture, MemoryCache, PromptSet, RouteTable, Router};
@@ -29,6 +30,7 @@ use crate::cloud::link::CloudLink;
 use crate::coach::Coach;
 use crate::store::Store;
 use crate::teach::{Ai, TeachInbox};
+use crate::test_dom::{El, TestDom};
 use crate::{Db, Screen, Ui};
 use kabar_core::layout::WidthClass;
 
@@ -84,21 +86,40 @@ pub fn router(engines: &[Scripted]) -> Router {
 
 // ----------------------------------------------------------------- document
 
+/// What scripts answer right away, from their source (`dioxus.send`).
+type Replies = Box<dyn FnMut(&str) -> Vec<serde_json::Value>>;
+
+/// Messages waiting for Rust on one script, and who waits for them. Scripts
+/// opened with [`FakeDoc::live`] share one per pattern.
+#[derive(Default)]
+struct Channel {
+    queue: RefCell<VecDeque<serde_json::Value>>,
+    wakers: RefCell<Vec<Waker>>,
+}
+
+impl Channel {
+    fn push(&self, v: serde_json::Value) {
+        self.queue.borrow_mut().push_back(v);
+        for w in self.wakers.borrow_mut().drain(..) {
+            w.wake();
+        }
+    }
+}
+
 /// One `eval`: its script, what Rust sent to it, and what "JS" will answer.
 pub struct FakeEval {
     pub script: String,
     pub sent: RefCell<Vec<serde_json::Value>>,
-    inbox: RefCell<VecDeque<serde_json::Value>>,
-    waker: RefCell<Option<Waker>>,
+    inbox: Rc<Channel>,
+    /// Waits for more messages once its replies are read (a key listener, a
+    /// timer, the audio engine); otherwise it finishes, like a one-shot script.
+    open: bool,
 }
 
 impl FakeEval {
     /// Queues a message from JS (`dioxus.send(..)`).
     pub fn reply(&self, v: serde_json::Value) {
-        self.inbox.borrow_mut().push_back(v);
-        if let Some(w) = self.waker.borrow_mut().take() {
-            w.wake();
-        }
+        self.inbox.push(v);
     }
 }
 
@@ -110,12 +131,13 @@ impl Evaluator for Handle {
         Ok(())
     }
     fn poll_recv(&mut self, cx: &mut Context<'_>) -> Poll<Result<serde_json::Value, EvalError>> {
-        match self.0.inbox.borrow_mut().pop_front() {
+        match self.0.inbox.queue.borrow_mut().pop_front() {
             Some(v) => Poll::Ready(Ok(v)),
-            None => {
-                *self.0.waker.borrow_mut() = Some(cx.waker().clone());
+            None if self.0.open => {
+                self.0.inbox.wakers.borrow_mut().push(cx.waker().clone());
                 Poll::Pending
             }
+            None => Poll::Ready(Err(EvalError::Finished)),
         }
     }
     fn poll_join(&mut self, _: &mut Context<'_>) -> Poll<Result<serde_json::Value, EvalError>> {
@@ -123,32 +145,94 @@ impl Evaluator for Handle {
     }
 }
 
-/// A WebView stand-in: keeps every `eval` so tests can read the scripts and
-/// answer the long-lived ones (the audio engine, the ink canvas).
-#[derive(Default)]
+/// The one WebView stand-in for `document::eval` in tests. It keeps every
+/// script; answers each with what [`reply_to`](Self::reply_to) or
+/// [`on_eval`](Self::on_eval) scripted (nothing by default, as when no
+/// voice exists); and keeps [`live`](Self::live) scripts (or every script,
+/// with [`open`](Self::open)) waiting for a test to send them more.
 pub struct FakeDoc {
     pub evals: RefCell<Vec<Rc<FakeEval>>>,
+    replies: RefCell<Replies>,
+    live: RefCell<Vec<(&'static str, Rc<Channel>)>>,
+    all_open: bool,
     owners: RefCell<Vec<Owner>>,
 }
 
 impl FakeDoc {
+    fn build(all_open: bool) -> Rc<Self> {
+        Rc::new(Self {
+            evals: RefCell::default(),
+            replies: RefCell::new(Box::new(|_| Vec::new())),
+            live: RefCell::default(),
+            all_open,
+            owners: RefCell::default(),
+        })
+    }
+
+    /// Scripts finish once their scripted replies are read.
+    pub fn new() -> Rc<Self> {
+        Self::build(false)
+    }
+
+    /// Every script stays open, waiting for [`FakeEval::reply`].
+    pub fn open() -> Rc<Self> {
+        Self::build(true)
+    }
+
+    /// Answers scripts containing `needle` with `values`; others as before.
+    pub fn reply_to(&self, needle: &'static str, values: Vec<serde_json::Value>) {
+        let mut previous = std::mem::replace(&mut *self.replies.borrow_mut(), Box::new(|_| Vec::new()));
+        *self.replies.borrow_mut() =
+            Box::new(move |js| if js.contains(needle) { values.clone() } else { previous(js) });
+    }
+
+    /// Answers every script with what `f` returns for its source.
+    pub fn on_eval(&self, f: impl FnMut(&str) -> Vec<serde_json::Value> + 'static) {
+        *self.replies.borrow_mut() = Box::new(f);
+    }
+
+    /// Scripts containing `pattern` stay open and share one inbox, fed by
+    /// [`send`](Self::send).
+    pub fn live(&self, pattern: &'static str) {
+        self.live.borrow_mut().push((pattern, Rc::default()));
+    }
+
+    /// The live scripts with `pattern` get `value` (a key press, a timer
+    /// tick, a drop on the wall).
+    pub fn send(&self, pattern: &str, value: serde_json::Value) {
+        let live = self.live.borrow();
+        let (_, channel) = live.iter().find(|(p, _)| *p == pattern).expect("not a live script");
+        channel.push(value);
+    }
+
     /// The newest eval whose script contains `needle`.
     pub fn find(&self, needle: &str) -> Option<Rc<FakeEval>> {
         self.evals.borrow().iter().rev().find(|e| e.script.contains(needle)).cloned()
     }
+
+    /// Every script run so far.
     pub fn scripts(&self) -> Vec<String> {
         self.evals.borrow().iter().map(|e| e.script.clone()).collect()
+    }
+
+    /// How many scripts so far contain `needle`.
+    pub fn ran(&self, needle: &str) -> usize {
+        self.evals.borrow().iter().filter(|e| e.script.contains(needle)).count()
     }
 }
 
 impl Document for FakeDoc {
     fn eval(&self, js: String) -> Eval {
-        let e = Rc::new(FakeEval {
-            script: js,
-            sent: RefCell::default(),
-            inbox: RefCell::default(),
-            waker: RefCell::default(),
-        });
+        let live = self.live.borrow().iter().find(|(p, _)| js.contains(p)).map(|(_, c)| c.clone());
+        let (inbox, open) = match live {
+            Some(c) => (c, true),
+            None => {
+                let c = Rc::new(Channel::default());
+                c.queue.borrow_mut().extend((self.replies.borrow_mut())(&js));
+                (c, self.all_open)
+            }
+        };
+        let e = Rc::new(FakeEval { script: js, sent: RefCell::default(), inbox, open });
         self.evals.borrow_mut().push(e.clone());
         let owner = Owner::default();
         let boxed = owner.insert(Box::new(Handle(e)) as Box<dyn Evaluator>);
@@ -164,8 +248,17 @@ pub struct Setup {
     pub lang: UiLanguage,
     /// Settings other than the language (which `lang` sets).
     pub settings: Settings,
+    pub width: WidthClass,
+    /// The screen `Ui` starts on.
+    pub screen: Screen,
     pub engines: Vec<Scripted>,
+    /// The store to open (an empty in-memory one when neither this nor
+    /// `db` is set).
     pub store: Option<Store>,
+    /// A store the test keeps a handle to.
+    pub db: Option<Db>,
+    /// The WebView (a fresh [`FakeDoc::new`] when unset).
+    pub doc: Option<Rc<FakeDoc>>,
     pub audio_dir: Option<std::path::PathBuf>,
     /// A signed-in Kabar Cloud on localhost ([`fake_cloud`]): blobs upload,
     /// TTS answers. Off: the link is not configured, as in a fresh build.
@@ -180,8 +273,12 @@ impl Default for Setup {
         Self {
             lang: UiLanguage::En,
             settings: Settings::default(),
+            width: WidthClass::Compact,
+            screen: Screen::Today,
             engines: Vec::new(),
             store: None,
+            db: None,
+            doc: None,
             audio_dir: None,
             cloud: false,
             sync: None,
@@ -189,38 +286,44 @@ impl Default for Setup {
     }
 }
 
-thread_local! {
-    static SETUP: RefCell<Option<Setup>> = const { RefCell::new(None) };
-    static ROOT: RefCell<Option<fn() -> Element>> = const { RefCell::new(None) };
-    static DOC: RefCell<Option<Rc<FakeDoc>>> = const { RefCell::new(None) };
+/// A fresh in-memory store.
+pub fn memory_db() -> Db {
+    Db(Rc::new(RefCell::new(Store::open_in_memory().unwrap())))
 }
 
-fn harness() -> Element {
-    let (lang, settings, engines, audio_dir, cloud, sync) = use_hook(|| {
-        let s = SETUP.with(|s| s.borrow_mut().take()).unwrap_or_default();
-        Rc::new((s.lang, s.settings, s.engines, s.audio_dir, s.cloud, s.sync))
-    })
-    .as_ref()
-    .clone();
-    use_context_provider(|| DOC.with(|d| d.borrow().clone()).unwrap() as Rc<dyn Document>);
+/// Provides the app's shared contexts (the WebView, store, settings, coach,
+/// navigation, AI router, Kabar Cloud link, reader and word index) from
+/// `setup`, read on the first render. Call it at the top of a test's root
+/// component; it returns the `Ui` and `Db` it provided.
+pub fn provide(setup: impl FnOnce() -> Setup) -> (Ui, Db) {
+    let first = use_hook(|| Rc::new(RefCell::new(Some(setup()))));
+    // Read once: which contexts exist must not change between renders.
+    let (lang, width, screen, cloud, has_sync, has_audio) = use_hook(|| {
+        let s = first.borrow();
+        let s = s.as_ref().expect("the first render");
+        (s.lang, s.width, s.screen, s.cloud, s.sync.is_some(), s.audio_dir.is_some())
+    });
+    let setup = || std::cell::RefMut::map(first.borrow_mut(), |s| s.as_mut().expect("the first render"));
+    use_context_provider(|| setup().doc.take().unwrap_or_else(FakeDoc::new) as Rc<dyn Document>);
     crate::persistence::use_provide_saves();
     let db = use_context_provider(|| {
-        let store =
-            SETUP_STORE.with(|s| s.borrow_mut().take()).unwrap_or_else(|| Store::open_in_memory().unwrap());
-        Db(Rc::new(RefCell::new(store)))
+        let mut s = setup();
+        s.db.take().unwrap_or_else(|| {
+            Db(Rc::new(RefCell::new(s.store.take().unwrap_or_else(|| Store::open_in_memory().unwrap()))))
+        })
     });
     let ui = use_context_provider(|| Ui {
-        settings: Signal::new(Settings { ui_language: lang, ..settings }),
-        width: Signal::new(WidthClass::Compact),
+        settings: Signal::new(Settings { ui_language: lang, ..setup().settings.clone() }),
+        width: Signal::new(width),
         tablet: Signal::new(false),
-        screen: Signal::new(Screen::Today),
+        screen: Signal::new(screen),
         lesson: Signal::new(None),
         lesson_from: Signal::new(Screen::Journey),
         focus: Signal::new(false),
     });
-    let _ = ui;
-    if let Some(sync) = sync {
+    if has_sync {
         use_context_provider(|| {
+            let sync = setup().sync.take().unwrap();
             let device_id = db.0.borrow().device_id().clone();
             crate::account::Cloud {
                 status: Signal::new(crate::cloud::CloudStatus {
@@ -253,72 +356,72 @@ fn harness() -> Element {
             });
         }
     });
-    use_context_provider(|| Ai(Rc::new(router(&engines))));
+    use_context_provider(|| Ai(Rc::new(router(&setup().engines))));
     use_context_provider(|| TeachInbox(Signal::new(None)));
+    use_context_provider(|| crate::settings::device::DevicePrefs::load(&db));
+    use_context_provider(crate::settings::SettingsNav::new);
+    use_context_provider(crate::play::PlayNav::new);
     use_context_provider(|| Coach::load(&db));
     use_context_provider(|| crate::reader::Inbox(Signal::new(None)));
     use_context_provider(|| crate::reader::ReaderState::new(lang));
-    if let Some(dir) = audio_dir {
-        use_context_provider(|| crate::audio::AudioCache::new(dir, link.clone()));
+    if has_audio {
+        use_context_provider(|| {
+            crate::audio::AudioCache::new(setup().audio_dir.take().unwrap(), link.clone())
+        });
     }
     crate::annotated::use_words(&db);
-    let root = ROOT.with(|r| r.borrow().unwrap());
-    rsx! { {root()} }
+    (ui, db)
 }
 
-thread_local! {
-    static SETUP_STORE: RefCell<Option<Store>> = const { RefCell::new(None) };
+#[derive(Clone)]
+struct RootProps {
+    body: fn() -> Element,
+    setup: Rc<RefCell<Option<Setup>>>,
 }
 
-/// A mounted component tree with the app's contexts around `root`.
+impl PartialEq for RootProps {
+    fn eq(&self, _: &Self) -> bool {
+        true
+    }
+}
+
+fn root(p: RootProps) -> Element {
+    provide(|| p.setup.borrow_mut().take().expect("set up once"));
+    (p.body)()
+}
+
+/// A VirtualDom showing `body` inside the contexts `setup` describes.
+pub fn mount(body: fn() -> Element, setup: Setup) -> VirtualDom {
+    VirtualDom::new_with_props(root, RootProps { body, setup: Rc::new(RefCell::new(Some(setup))) })
+}
+
+/// A mounted component tree with the app's contexts around `root`, driven
+/// by labels: what a learner reads on a button or field.
 pub struct App {
-    pub dom: VirtualDom,
+    pub dom: TestDom,
     pub doc: Rc<FakeDoc>,
-    /// File reads and the like run on tokio's blocking pool, as in the app.
-    rt: tokio::runtime::Runtime,
 }
 
 impl App {
     pub fn new(root: fn() -> Element, mut setup: Setup) -> Self {
-        dioxus::html::set_event_converter(Box::new(SerializedHtmlEventConverter));
-        let doc = Rc::new(FakeDoc::default());
-        SETUP_STORE.with(|s| *s.borrow_mut() = setup.store.take());
-        SETUP.with(|s| *s.borrow_mut() = Some(setup));
-        ROOT.with(|r| *r.borrow_mut() = Some(root));
-        DOC.with(|d| *d.borrow_mut() = Some(doc.clone()));
-        let rt = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
-        let mut dom = VirtualDom::new(harness);
-        rt.block_on(async { dom.rebuild_in_place() });
-        // Nothing may outlive the test in thread-locals (their owners drop late).
-        DOC.with(|d| d.borrow_mut().take());
-        let mut app = Self { dom, doc, rt };
+        let doc = setup.doc.get_or_insert_with(FakeDoc::open).clone();
+        let mut app = Self { dom: TestDom::unsettled(mount(root, setup)), doc };
         app.settle();
         app
     }
 
     /// Runs ready tasks and re-renders until nothing is left to do now.
     pub fn settle(&mut self) {
-        for _ in 0..200 {
-            let dom = &mut self.dom;
-            let ready = self.rt.block_on(async {
-                tokio::time::timeout(std::time::Duration::from_millis(25), dom.wait_for_work()).await.is_ok()
-            });
-            if !ready {
-                return;
-            }
-            let dom = &mut self.dom;
-            self.rt.block_on(async { dom.render_immediate(&mut dioxus::core::NoOpMutations) });
-        }
-        panic!("the app never settled");
+        assert!(self.dom.run_until_quiet(std::time::Duration::from_millis(25), 200), "the app never settled");
     }
 
     pub fn html(&self) -> String {
-        dioxus::ssr::render(&self.dom)
+        self.dom.ssr()
     }
 
     /// Runs `f` inside the app's scope (to read contexts).
     pub fn with<T>(&self, f: impl FnOnce() -> T) -> T {
-        self.dom.in_scope(ScopeId::APP, f)
+        self.dom.peek_app(f)
     }
 
     pub fn db(&self) -> Db {
@@ -331,12 +434,12 @@ impl App {
 
     /// Every element with a listener for `event`.
     pub fn targets(&self, event: &str) -> Vec<Target> {
-        let mut out = Vec::new();
-        if let Some(scope) = self.dom.get_scope(ScopeId::APP) {
-            walk(&self.dom, scope.root_node(), &mut out);
-        }
-        out.retain(|t| t.event == event);
-        out
+        self.dom
+            .nodes()
+            .into_iter()
+            .filter(|n| n.listens(event))
+            .map(|n| Target { el: n.el, text: n.text, attrs: n.attrs })
+            .collect()
     }
 
     fn find(&self, event: &str, label: &str) -> Target {
@@ -354,24 +457,22 @@ impl App {
         self.targets(event).iter().any(|t| t.matches(label))
     }
 
-    fn fire(&mut self, event: &str, id: ElementId, data: Box<dyn Any>) {
-        let ev = Event::new(Rc::new(PlatformEventData::new(data)) as Rc<dyn Any>, true);
-        let runtime = self.dom.runtime();
-        self.rt.block_on(async { runtime.handle_event(event, ev, id) });
+    fn fire(&mut self, event: &str, el: El, data: Box<dyn Any>) {
+        self.dom.dispatch(el, event, data, true);
         self.settle();
     }
 
     /// Clicks the element whose text, `aria-label`, `title` or class holds `label`.
     pub fn click(&mut self, label: &str) {
         let t = self.find("click", label);
-        self.fire("click", t.id, Box::new(SerializedMouseData::default()));
+        self.fire("click", t.el, Box::new(SerializedMouseData::default()));
     }
 
     /// Clicks the `n`th element (0-based) matching `label`.
     pub fn click_nth(&mut self, label: &str, n: usize) {
         let all: Vec<_> = self.targets("click").into_iter().filter(|t| t.matches(label)).collect();
         let t = all.get(n).unwrap_or_else(|| panic!("only {} click targets match {label:?}", all.len()));
-        self.fire("click", t.id, Box::new(SerializedMouseData::default()));
+        self.fire("click", t.el, Box::new(SerializedMouseData::default()));
     }
 
     fn form(value: &str) -> Box<dyn Any> {
@@ -381,32 +482,31 @@ impl App {
     /// Types `value` into the field matching `label` (placeholder, aria-label…).
     pub fn input(&mut self, label: &str, value: &str) {
         let t = self.find("input", label);
-        self.fire("input", t.id, Self::form(value));
+        self.fire("input", t.el, Self::form(value));
     }
 
     pub fn change(&mut self, label: &str, value: &str) {
         let t = self.find("change", label);
-        self.fire("change", t.id, Self::form(value));
+        self.fire("change", t.el, Self::form(value));
     }
 
     pub fn submit(&mut self, label: &str) {
         let t = self.find("submit", label);
-        self.fire("submit", t.id, Self::form(""));
+        self.fire("submit", t.el, Self::form(""));
     }
 
     pub fn key(&mut self, label: &str, key: Key, shift: bool) {
         let t = self.find("keydown", label);
         let mods = if shift { Modifiers::SHIFT } else { Modifiers::empty() };
         let data = SerializedKeyboardData::new(key, Code::Enter, Location::Standard, false, mods, false);
-        self.fire("keydown", t.id, Box::new(data));
+        self.fire("keydown", t.el, Box::new(data));
     }
 }
 
 /// An element with a listener, described by what a learner sees on it.
 #[derive(Clone, Debug)]
 pub struct Target {
-    pub id: ElementId,
-    pub event: String,
+    pub el: El,
     pub text: String,
     pub attrs: Vec<(String, String)>,
 }
@@ -423,94 +523,6 @@ impl Target {
     }
     pub fn attr(&self, name: &str) -> Option<&str> {
         self.attrs.iter().find(|(k, _)| k == name || k.replace('_', "-") == name).map(|(_, v)| v.as_str())
-    }
-}
-
-fn walk(dom: &VirtualDom, node: &VNode, out: &mut Vec<Target>) {
-    for (i, root) in node.template.roots.iter().enumerate() {
-        visit(dom, node, root, &mut vec![i as u8], out);
-    }
-}
-
-fn visit(dom: &VirtualDom, vnode: &VNode, t: &TemplateNode, path: &mut Vec<u8>, out: &mut Vec<Target>) {
-    match t {
-        TemplateNode::Element { attrs, children, .. } => {
-            let mut listed = Vec::new();
-            let mut listeners = Vec::new();
-            for a in attrs.iter() {
-                match a {
-                    TemplateAttribute::Static { name, value, .. } => {
-                        listed.push((name.to_string(), value.to_string()))
-                    }
-                    TemplateAttribute::Dynamic { id } => {
-                        for attr in vnode.dynamic_attrs[*id].iter() {
-                            match &attr.value {
-                                AttributeValue::Listener(_) => {
-                                    if let Some(el) = vnode.mounted_dynamic_attribute(*id, dom) {
-                                        listeners.push((attr.name.trim_start_matches("on").to_string(), el));
-                                    }
-                                }
-                                AttributeValue::Text(v) => listed.push((attr.name.to_string(), v.clone())),
-                                AttributeValue::Bool(b) => {
-                                    listed.push((attr.name.to_string(), b.to_string()))
-                                }
-                                AttributeValue::Int(n) => listed.push((attr.name.to_string(), n.to_string())),
-                                AttributeValue::Float(n) => {
-                                    listed.push((attr.name.to_string(), n.to_string()))
-                                }
-                                _ => {}
-                            }
-                        }
-                    }
-                }
-            }
-            if !listeners.is_empty() {
-                let mut text = String::new();
-                for c in children.iter() {
-                    text_of(dom, vnode, c, &mut text);
-                }
-                for (event, id) in listeners {
-                    out.push(Target { id, event, text: text.clone(), attrs: listed.clone() });
-                }
-            }
-            for (j, c) in children.iter().enumerate() {
-                path.push(j as u8);
-                visit(dom, vnode, c, path, out);
-                path.pop();
-            }
-        }
-        TemplateNode::Text { .. } => {}
-        TemplateNode::Dynamic { id } => match &vnode.dynamic_nodes[*id] {
-            DynamicNode::Component(c) => {
-                if let Some(scope) = c.mounted_scope(*id, vnode, dom) {
-                    walk(dom, scope.root_node(), out);
-                }
-            }
-            DynamicNode::Fragment(nodes) => nodes.iter().for_each(|n| walk(dom, n, out)),
-            _ => {}
-        },
-    }
-}
-
-fn text_of(dom: &VirtualDom, vnode: &VNode, t: &TemplateNode, out: &mut String) {
-    match t {
-        TemplateNode::Element { children, .. } => children.iter().for_each(|c| text_of(dom, vnode, c, out)),
-        TemplateNode::Text { text } => out.push_str(text),
-        TemplateNode::Dynamic { id } => match &vnode.dynamic_nodes[*id] {
-            DynamicNode::Text(v) => out.push_str(&v.value),
-            DynamicNode::Fragment(nodes) => {
-                for n in nodes {
-                    n.template.roots.iter().for_each(|r| text_of(dom, n, r, out));
-                }
-            }
-            DynamicNode::Component(c) => {
-                if let Some(scope) = c.mounted_scope(*id, vnode, dom) {
-                    let n = scope.root_node();
-                    n.template.roots.iter().for_each(|r| text_of(dom, n, r, out));
-                }
-            }
-            _ => {}
-        },
     }
 }
 

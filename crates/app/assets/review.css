@@ -86,6 +86,9 @@ button.rev-stat { border-color: transparent; }
 .forecast li.today .fc-fill { background: var(--sawah); opacity: 1; }
 .fc-day { font-size: 0.75rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .forecast li.today .fc-day { color: var(--text); font-weight: 600; }
+/* Nothing due all week: flat baselines, not seven full grey bars (#587). */
+.forecast.empty { block-size: 3.5rem; }
+.forecast.empty .fc-bar { block-size: 3px; }
 
 .rev-modes { display: grid; gap: 1rem; grid-template-columns: 1fr; }
 .app:not([data-width="compact"]) .rev-modes { grid-template-columns: repeat(3, minmax(0, 1fr)); }

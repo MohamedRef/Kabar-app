@@ -91,7 +91,7 @@ fn NextStep(profile: CoachProfile, today: LocalDate) -> Element {
     let line = match (&next, plan.comeback) {
         (None, _) => Line::PlanAllDone,
         (Some(_), true) => Line::PlanComeback,
-        (Some(_), false) => Line::PlanMorning,
+        (Some(_), false) => kabar_core::coach::voice::plan_line(coach.time_of_day().hour()),
     };
     let reminders_on = profile.reminder_style != ReminderStyle::Off;
     rsx! {
@@ -195,7 +195,7 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
                 }
             }
             p { class: "muted small",
-                "{ui.t(Msg::WeekOf)} {labels::date(&ui, r.week_start, today)}"
+                "{ui.t(Msg::WeekOf)} {labels::day_month(&ui, r.week_start, today)}"
                 if so_far { " · {ui.t(Msg::SoFar)}" }
             }
             Nur { mood: Mood::Explaining, text: say(&ui, note, r.week_start, &args) }

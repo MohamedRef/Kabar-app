@@ -1,6 +1,6 @@
 //! Slide, dialogue and audio controls shared by lesson players.
 
-use super::reading::Title;
+use super::reading::{SlideBody, Title};
 use super::*;
 
 /// A play button for target-language audio, with a slow option.
@@ -143,7 +143,7 @@ pub(super) fn SlideView(lesson: LessonContent, index: usize, missing: Signal<boo
             if let Some(title) = &slide.title {
                 h2 { class: "lp-slide-title", Title { text: title.clone(), target } }
             }
-            p { class: "lp-slide-body pre", Rich { text: pick(&slide.body, lang).trim().to_string(), target, pron: true } }
+            SlideBody { text: pick(&slide.body, lang).to_string(), target, pron: true }
             if let Some(table) = &slide.table {
                 div { class: "lp-table-wrap",
                     table { class: "lp-table",

@@ -34,7 +34,11 @@ pub enum Line {
     OnboardStart,
     OnboardDone,
     // Daily plan
+    /// Today's plan, by the hour: pagi, siang, sore, malam ([`plan_line`]).
     PlanMorning,
+    PlanAfternoon,
+    PlanEvening,
+    PlanNight,
     PlanComeback,
     PlanAllDone,
     PlanAskSize,
@@ -57,6 +61,8 @@ pub enum Line {
     ReportComeback,
     /// The learner's first week: a start, not a "busy week".
     ReportFirstWeek,
+    /// The first week, before any study at all (onboarding just done).
+    ReportJustStarted,
     // Rewards
     PelitaLit,
     PelitaFrozen,
@@ -81,7 +87,7 @@ pub enum Line {
 }
 
 impl Line {
-    pub const ALL: [Self; 39] = [
+    pub const ALL: [Self; 43] = [
         Self::OnboardHello,
         Self::OnboardWhy,
         Self::OnboardFocus,
@@ -92,6 +98,9 @@ impl Line {
         Self::OnboardStart,
         Self::OnboardDone,
         Self::PlanMorning,
+        Self::PlanAfternoon,
+        Self::PlanEvening,
+        Self::PlanNight,
         Self::PlanComeback,
         Self::PlanAllDone,
         Self::PlanAskSize,
@@ -109,6 +118,7 @@ impl Line {
         Self::ReportLightWeek,
         Self::ReportComeback,
         Self::ReportFirstWeek,
+        Self::ReportJustStarted,
         Self::PelitaLit,
         Self::PelitaFrozen,
         Self::PelitaRelit,
@@ -136,6 +146,9 @@ impl Line {
             Self::OnboardStart => "onboard_start",
             Self::OnboardDone => "onboard_done",
             Self::PlanMorning => "plan_morning",
+            Self::PlanAfternoon => "plan_afternoon",
+            Self::PlanEvening => "plan_evening",
+            Self::PlanNight => "plan_night",
             Self::PlanComeback => "plan_comeback",
             Self::PlanAllDone => "plan_all_done",
             Self::PlanAskSize => "plan_ask_size",
@@ -153,6 +166,7 @@ impl Line {
             Self::ReportLightWeek => "report_light_week",
             Self::ReportComeback => "report_comeback",
             Self::ReportFirstWeek => "report_first_week",
+            Self::ReportJustStarted => "report_just_started",
             Self::PelitaLit => "pelita_lit",
             Self::PelitaFrozen => "pelita_frozen",
             Self::PelitaRelit => "pelita_relit",
@@ -185,6 +199,18 @@ impl Line {
 /// content is flagged unverified, like other reviewed content.
 pub fn reviewed() -> bool {
     catalog().reviewed
+}
+
+/// Today's plan greeting for the local hour, as the J1 greetings lesson
+/// teaches it: *pagi* until 11, *siang* until 15, *sore* until about
+/// sunset (18), *malam* after, and through the small hours (#581).
+pub fn plan_line(hour: u16) -> Line {
+    match hour {
+        4..=10 => Line::PlanMorning,
+        11..=14 => Line::PlanAfternoon,
+        15..=17 => Line::PlanEvening,
+        _ => Line::PlanNight,
+    }
 }
 
 /// Version of `content/coach/kak-nur.toml`, for content packs.
@@ -524,10 +550,36 @@ mod tests {
     }
 
     #[test]
+    fn the_plan_greeting_follows_the_hour() {
+        assert_eq!(plan_line(4), Line::PlanMorning);
+        assert_eq!(plan_line(10), Line::PlanMorning);
+        assert_eq!(plan_line(11), Line::PlanAfternoon);
+        assert_eq!(plan_line(15), Line::PlanEvening);
+        assert_eq!(plan_line(18), Line::PlanNight);
+        assert_eq!(plan_line(2), Line::PlanNight);
+        // No "good morning" from 11:00 on, in any language (#581).
+        for hour in (11..24).chain(0..4) {
+            let line = plan_line(hour);
+            for lang in LANGS {
+                for v in variants(lang, line) {
+                    let low = v.to_lowercase();
+                    assert!(
+                        !low.contains("pagi") && !low.contains("morning") && !v.contains("صباح"),
+                        "{hour}h: {v}"
+                    );
+                }
+            }
+        }
+    }
+
+    #[test]
     fn every_line_has_variants_in_every_language() {
         // Frequent moments get variety; rare ones may have one or two.
         let frequent = [
             Line::PlanMorning,
+            Line::PlanAfternoon,
+            Line::PlanEvening,
+            Line::PlanNight,
             Line::PlanAllDone,
             Line::PlanAskSize,
             Line::RecapGoalMet,

@@ -260,7 +260,9 @@ pub fn done_events<'a>(events: &'a [ActivityEvent], date: LocalDate, item_id: &s
 /// week light.
 pub fn report_note(report: &WeeklyReport, events: &[ActivityEvent]) -> Line {
     if report.days_studied == 0 {
-        return Line::ReportLightWeek;
+        // Nothing studied yet, ever: Kabar is brand new, not a slump (#582).
+        let started = history::last_study_day(events, report.week_start.add_days(7)).is_some();
+        return if started { Line::ReportLightWeek } else { Line::ReportJustStarted };
     }
     let week = report.week_start..report.week_start.add_days(7);
     let days = history::by_day(events);
@@ -526,7 +528,9 @@ mod tests {
         assert_eq!(report_note(&report(week, 3, 1, 4), &events), Line::ReportGreatWeek);
         assert_eq!(report_note(&report(week, 3, 2, 4), &events), Line::ReportSteadyWeek);
         assert_eq!(report_note(&report(week, 1, 1, 1), &events), Line::ReportLightWeek);
-        assert_eq!(report_note(&report(week, 0, 1, 1), &[]), Line::ReportLightWeek);
+        assert_eq!(report_note(&report(week, 0, 1, 1), &events[5..]), Line::ReportLightWeek);
+        // Onboarding just done, nothing studied yet: a welcome (#582).
+        assert_eq!(report_note(&report(week, 0, 1, 1), &[]), Line::ReportJustStarted);
 
         // Back after two weeks away: a comeback, whatever the numbers.
         let back = vec![ev("x", week.add_days(-15), 0, reviews()), ev("y", week.add_days(2), 1, reviews())];
