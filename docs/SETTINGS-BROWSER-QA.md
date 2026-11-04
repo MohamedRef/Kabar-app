@@ -5,6 +5,11 @@ The dedicated `Settings browser regression` workflow exports the actual Dioxus
 renderer. It uses the app's production stylesheets, bundled fonts, theme
 implementation and preference types. There is no copied Settings HTML or CSS.
 
+It runs on `main` every 4 hours (skipped when `main` has not moved since its
+last green run) and by hand (Actions › this workflow › Run workflow, on any
+branch), not on every pull request. A pull request that edits the test itself
+still runs it. Run it by hand on a branch that changes the screens it covers.
+
 The browser uses Chromium and the production `assets/settings-dialog.js`.
 Playwright is pinned to 1.62.1 in this test job; it is not an app dependency.
 No real user data, live APIs, app launch, installation or release is involved.
