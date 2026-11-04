@@ -54,12 +54,12 @@ fn learner() -> Store {
 
 /// Answers whatever the check shows, like a learner who picks the first
 /// option, and returns the pages it went through.
-fn take_the_check(dom: &mut VirtualDom) -> Vec<String> {
+fn take_the_check(dom: &mut crate::test_dom::TestDom) -> Vec<String> {
     answer_until(dom, "st-outcome")
 }
 
 /// [`take_the_check`] until the page shows `end`.
-fn answer_until(dom: &mut VirtualDom, end: &str) -> Vec<String> {
+fn answer_until(dom: &mut crate::test_dom::TestDom, end: &str) -> Vec<String> {
     let mut pages = Vec::new();
     let (mut pairs_left, mut tries) = (0, 0);
     for _ in 0..80 {
@@ -90,7 +90,7 @@ fn answer_until(dom: &mut VirtualDom, end: &str) -> Vec<String> {
         } else if all.iter().any(|l| l.event == "click" && l.class().starts_with("lp-pair")) {
             // Pair the first unmatched word with each meaning in turn until
             // one sticks (a wrong try is noted as a word to practise).
-            let open = |dom: &VirtualDom| -> Vec<td::Listener> {
+            let open = |dom: &crate::test_dom::TestDom| -> Vec<td::Listener> {
                 td::listeners(dom)
                     .into_iter()
                     .filter(|l| {
@@ -223,7 +223,7 @@ fn outcome_view(screen: Screen) -> Option<Element> {
     Some(rsx! { Outcome { result, previous, pass_mark, has_test } })
 }
 
-fn outcome(moved: LevelMove, score: Option<f32>, pass_mark: Option<f32>) -> VirtualDom {
+fn outcome(moved: LevelMove, score: Option<f32>, pass_mark: Option<f32>) -> crate::test_dom::TestDom {
     let today = td::today_now();
     let result = LevelCheckResult {
         v: LEVEL_CHECK_VERSION,
@@ -346,7 +346,7 @@ fn without_test_items_the_intro_offers_the_result_from_history() {
 #[test]
 fn concluding_from_history_alone_still_decides_and_forecasts() {
     let mut dom = td::mount(Setup::new(learner(), Screen::LevelCheck, |_| Some(rsx! {})));
-    let result = dom.in_scope(ScopeId::APP, || {
+    let result = dom.peek_app(|| {
         let db = consume_context::<Db>();
         let coach = consume_context::<Coach>();
         let mut s = setup(&db, &coach);
@@ -356,7 +356,7 @@ fn concluding_from_history_alone_still_decides_and_forecasts() {
         s.mini = None;
         conclude(&db, coach, &s, None)
     });
-    dom.render_immediate_to_vec();
+    dom.render();
     assert_eq!(result.score, None, "no items, no score");
     assert!(result.missed.is_empty() && result.duration_ms == 0);
     assert_eq!(result.moved, LevelMove::Stay);
@@ -517,7 +517,7 @@ fn past_the_last_test_the_check_concludes_from_history_alone() {
 #[test]
 fn a_check_that_cannot_be_saved_still_shows_its_outcome() {
     let mut dom = td::mount(Setup::new(learner(), Screen::LevelCheck, |_| Some(rsx! {})));
-    let result = dom.in_scope(ScopeId::APP, || {
+    let result = dom.peek_app(|| {
         let db = consume_context::<Db>();
         let coach = consume_context::<Coach>();
         let mut s = setup(&db, &coach);
@@ -525,7 +525,7 @@ fn a_check_that_cannot_be_saved_still_shows_its_outcome() {
         db.0.borrow().refuse_writes();
         conclude(&db, coach, &s, None)
     });
-    dom.render_immediate_to_vec();
+    dom.render();
     assert_eq!((result.level.as_str(), result.moved), ("bipa1", LevelMove::Stay));
     assert!(result.eta.is_some(), "the outcome is worked out all the same");
     assert!(crate::stats::level_checks(&td::db(&dom)).is_empty(), "nothing was written");

@@ -428,7 +428,8 @@ mod tests {
 
     #[test]
     fn the_schedule_follows_the_device_and_the_cloud() {
-        use crate::test_dom::{App, FakeDocument, memory_db};
+        use crate::test_dom::{App, memory_db};
+        use crate::testkit::FakeDoc as FakeDocument;
         let db = memory_db();
         let mut p = profile(ReminderStyle::Gentle);
         p.utc_offset_min = 120;

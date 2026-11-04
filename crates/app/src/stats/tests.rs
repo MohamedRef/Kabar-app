@@ -92,8 +92,7 @@ fn durations_levels_and_isolation_read_naturally() {
         }
         rsx! { for line in out { p { "{line}" } } }
     }
-    let mut dom = VirtualDom::new(app);
-    dom.rebuild_in_place();
+    let dom = crate::test_dom::TestDom::unsettled(VirtualDom::new(app));
     let html = td::html(&dom);
     // Minutes under two hours; then hours, with Arabic count agreement:
     // 3–10 plural (ساعات), 11+ singular (ساعة).
@@ -551,7 +550,7 @@ fn today_previews_the_week_and_invites_the_monthly_check() {
     let mut dom = td::mount(Setup::new(demo(en(Demo::default())), Screen::Today, view));
     td::click_where(&mut dom, |l| l.class() == "primary" && l.text == st(UiLanguage::En, S::CheckDoNow));
     assert_eq!(td::screen(&dom), Screen::LevelCheck);
-    assert!(dom.in_scope(ScopeId::APP, || *CHECK_INVITED.peek()));
+    assert!(dom.peek_app(|| *CHECK_INVITED.peek()));
 }
 
 #[test]

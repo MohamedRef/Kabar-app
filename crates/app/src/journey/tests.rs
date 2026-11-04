@@ -231,16 +231,16 @@ mod screen {
         find_unit(unit).unwrap().lessons.iter().map(|l| l.id.clone()).collect()
     }
 
-    fn phone(store: Store) -> VirtualDom {
+    fn phone(store: Store) -> crate::test_dom::TestDom {
         td::mount(Setup::new(store, Screen::Journey, view).width(PHONE))
     }
 
-    fn mac(store: Store) -> VirtualDom {
+    fn mac(store: Store) -> crate::test_dom::TestDom {
         td::mount(Setup::new(store, Screen::Journey, view))
     }
 
     /// Presses a route's button in the header.
-    fn route(dom: &mut VirtualDom, msg: Msg) {
+    fn route(dom: &mut crate::test_dom::TestDom, msg: Msg) {
         td::click_where(dom, |l| {
             l.attr("aria-pressed").is_some() && l.text.ends_with(crate::i18n::t(EN, msg))
         });
@@ -376,8 +376,8 @@ mod screen {
         let mut store = fresh();
         done(&mut store, unit_lessons("bipa1.u01"));
         let mut dom = td::mount(Setup::new(store, Screen::Today, view));
-        dom.in_scope(ScopeId::APP, || open_suitcase(consume_context::<crate::Ui>(), "bipa1.u01"));
-        dom.render_immediate_to_vec();
+        dom.peek_app(|| open_suitcase(consume_context::<crate::Ui>(), "bipa1.u01"));
+        dom.render();
         assert_eq!(td::screen(&dom), Screen::Journey);
         let html = td::html(&dom);
         assert!(html.contains("souvenir tap found"), "the souvenir is picked out: {html}");
@@ -385,7 +385,7 @@ mod screen {
         td::settle(&mut dom, 50);
         assert!(td::html(&dom).contains("souvenir tap found"));
         // Shown once: the next visit opens on the route.
-        assert!(dom.in_scope(ScopeId::APP, || SUITCASE_AT.peek().is_none()));
+        assert!(dom.peek_app(|| SUITCASE_AT.peek().is_none()));
     }
 
     #[test]
@@ -528,7 +528,7 @@ mod screen {
             l.class() == "jm-pin" && l.attr("aria-label").is_some_and(|a| a.contains(&bipa4.code))
         });
         // The window narrows to a phone: the list, which brings that stop into view.
-        dom.in_scope(ScopeId::APP, || {
+        dom.peek_app(|| {
             let mut w = consume_context::<crate::Ui>().width;
             w.set(WidthClass::Compact);
         });
@@ -536,7 +536,7 @@ mod screen {
         let html = td::html(&dom);
         assert!(html.contains("route-list") && html.contains(&format!("id=\"rl-{}\"", bipa4.id)), "{html}");
         // And wide again: the same stop is still picked.
-        dom.in_scope(ScopeId::APP, || {
+        dom.peek_app(|| {
             let mut w = consume_context::<crate::Ui>().width;
             w.set(WidthClass::Expanded);
         });
