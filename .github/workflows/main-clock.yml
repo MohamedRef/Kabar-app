@@ -1,0 +1,68 @@
+name: Main clock
+
+# GitHub's cron runs hours late on this repo or not at all (#599): the
+# 16:23Z preview and 16:41Z coverage runs of 2026-11-04 never fired, and the
+# nightly Mac run starts 6–7 h late every day. So merges to main start this
+# small clock instead. It waits until 4 hours have passed since the last
+# preview was published, then runs by hand (workflow_dispatch) the jobs that
+# Mohamed wants every 4 hours, not after every merge (2026-11-04): the
+# Android preview, coverage and the Settings browser regression. A newer
+# merge cancels the waiting clock and starts a new one, so a busy stretch of
+# merges still makes one build at most every 4 hours, and the last merge is
+# always built. The jobs' own cron entries stay as a backup.
+#
+# Only this clock is ever cancelled; the builds it starts run in their own
+# workflows and queues, so a publish is never cut off halfway (#222).
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: main-clock
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  wait-and-run:
+    name: Wait for the 4-hour mark, then build
+    runs-on: ubuntu-24.04
+    # 4 h of waiting at most, plus a few minutes to dispatch.
+    timeout-minutes: 250
+    steps:
+      - name: Wait
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          every=$((4 * 3600))
+          last="$(gh api "repos/$GH_REPO/releases/tags/preview" \
+            --jq '[.assets[] | select(.name == "update.json") | .updated_at][0] // empty' 2>/dev/null || true)"
+          if [ -z "$last" ]; then
+            echo "No preview feed yet: building now."
+            exit 0
+          fi
+          age=$(( $(date -u +%s) - $(date -u -d "$last" +%s) ))
+          wait=$(( every - age ))
+          if [ "$wait" -le 0 ]; then
+            echo "The preview is $((age / 60)) min old: building now."
+          else
+            echo "The preview is $((age / 60)) min old: waiting $((wait / 60)) min (a newer merge restarts this wait)."
+            sleep "$wait"
+          fi
+      - name: Run the 4-hourly jobs on main
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          # A run by hand may already have put this commit on the feed.
+          published="$(gh api "repos/$GH_REPO/git/refs/tags/preview" --jq .object.sha 2>/dev/null || true)"
+          if [ "$published" = "$GITHUB_SHA" ]; then
+            echo "The preview already carries ${GITHUB_SHA::7}."
+          else
+            gh workflow run android-preview.yml --ref main
+          fi
+          gh workflow run coverage.yml --ref main
+          gh workflow run settings-browser.yml --ref main
