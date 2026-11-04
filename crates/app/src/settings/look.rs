@@ -111,7 +111,7 @@ pub fn LookSection() -> Element {
     }
 }
 
-fn theme_label(th: Theme) -> Msg {
+pub(super) fn theme_label(th: Theme) -> Msg {
     match th {
         Theme::System => Msg::ThemeSystem,
         Theme::SystemBlack => Msg::ThemeSystemBlack,
@@ -127,7 +127,7 @@ fn theme_label(th: Theme) -> Msg {
 /// A swatch previews the theme itself, not the current one: its surface,
 /// accent and Bridge gold. A theme that follows the OS shows its day and
 /// night surfaces side by side.
-fn swatch(th: Theme) -> String {
+pub(super) fn swatch(th: Theme) -> String {
     match (th.palette(), th.follows_os()) {
         (Some(p), _) => format!(
             "background: linear-gradient(135deg, {} 50%, {} 50%); border-color: {}",

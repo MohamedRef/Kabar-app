@@ -9,6 +9,8 @@
 
 #[cfg(test)]
 mod browser;
+#[cfg(test)]
+mod tests;
 
 pub mod device;
 mod learning;
@@ -375,7 +377,7 @@ pub fn GearButton() -> Element {
 }
 
 #[cfg(test)]
-mod tests {
+mod unit_tests {
     use super::*;
 
     #[test]

@@ -311,4 +311,60 @@ mod tests {
         assert!(remind_default(Some(true), false));
         assert!(!remind_default(Some(false), true));
     }
+
+    #[test]
+    fn reading_and_reminder_choices_survive_a_restart() {
+        use crate::store::Store;
+        use std::{cell::RefCell, rc::Rc};
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("kabar.db");
+        let db = Db(Rc::new(RefCell::new(Store::open(&path).unwrap())));
+        let mut dom = VirtualDom::new_with_props(
+            |db: Db| {
+                use_hook(|| {
+                    let prefs = DevicePrefs::load(&db);
+                    assert_eq!(*prefs.reading.peek(), Reading::default());
+                    assert_eq!(*prefs.remind_here.peek(), None, "no choice yet");
+                    prefs.set_remind_here(&db, true);
+                    let r = Reading {
+                        size: ReadSize::Largest,
+                        spacing: ReadSpacing::Airy,
+                        width: ReadWidth::Narrow,
+                        focus: true,
+                    };
+                    prefs.set_reading(&db, r);
+                    assert_eq!(*prefs.reading.peek(), r);
+                    // Changing one field writes only that one.
+                    prefs.set_reading(&db, Reading { focus: false, ..r });
+                    prefs.set_remind_here(&db, false);
+                });
+                rsx! {}
+            },
+            db.clone(),
+        );
+        dom.rebuild_in_place();
+        drop(dom);
+        let store = db.0.borrow();
+        assert_eq!(store.local_value(READ_SIZE_KEY).unwrap().as_deref(), Some("xl"));
+        assert_eq!(store.local_value(READ_SPACING_KEY).unwrap().as_deref(), Some("airy"));
+        assert_eq!(store.local_value(READ_WIDTH_KEY).unwrap().as_deref(), Some("narrow"));
+        assert_eq!(store.local_value(READ_FOCUS_KEY).unwrap().as_deref(), Some("off"));
+        assert_eq!(store.local_value(REMIND_HERE_KEY).unwrap().as_deref(), Some("off"));
+        drop(store);
+        let mut again = VirtualDom::new_with_props(
+            |db: Db| {
+                let prefs = use_hook(|| DevicePrefs::load(&db));
+                let r = *prefs.reading.peek();
+                let here = prefs.reminds_here(false);
+                rsx! { "{r.size.as_str()} {r.width.as_str()} {r.focus} {here}" }
+            },
+            db,
+        );
+        again.rebuild_in_place();
+        assert_eq!(
+            dioxus::ssr::render(&again),
+            "xl narrow false false",
+            "the Mac doesn't ring once told not to"
+        );
+    }
 }

@@ -283,4 +283,161 @@ mod tests {
         }
         assert!(!under_more(Screen::Lesson));
     }
+
+    use crate::play::{PlayNav, Route};
+    use crate::testkit::Harness;
+    use kabar_core::layout::WidthClass;
+    use std::cell::Cell;
+
+    thread_local! {
+        static LANG: Cell<UiLanguage> = const { Cell::new(UiLanguage::En) };
+        static SCREEN: Cell<Screen> = const { Cell::new(Screen::Today) };
+    }
+
+    fn phone() -> Element {
+        let lang = LANG.with(Cell::get);
+        let ui = use_context_provider(|| Ui {
+            settings: Signal::new(kabar_core::settings::Settings { ui_language: lang, ..Default::default() }),
+            width: Signal::new(WidthClass::Compact),
+            tablet: Signal::new(false),
+            screen: Signal::new(SCREEN.with(Cell::get)),
+            lesson: Signal::new(None),
+            lesson_from: Signal::new(Screen::Today),
+            focus: Signal::new(false),
+        });
+        use_context_provider(MoreNav::new);
+        use_context_provider(SettingsNav::new);
+        use_context_provider(PlayNav::new);
+        use_context_provider(|| crate::reader::ReaderState::new(lang));
+        let current = *ui.screen.read();
+        rsx! {
+            TopBar { current }
+            MoreTab { current }
+            MoreSheet {}
+        }
+    }
+
+    fn open_on(lang: UiLanguage, screen: Screen) -> Harness {
+        LANG.with(|l| l.set(lang));
+        SCREEN.with(|s| s.set(screen));
+        Harness::new(phone)
+    }
+
+    fn screen(h: &Harness) -> Screen {
+        h.read(|| *consume_context::<Ui>().screen.peek())
+    }
+
+    fn sheet_open(h: &Harness) -> bool {
+        h.read(|| *consume_context::<MoreNav>().0.peek())
+    }
+
+    fn more_tab(h: &Harness) -> crate::testkit::Target {
+        h.find("click", |t| t.attr("class") == Some("nav-item nav-more"))
+    }
+
+    #[test]
+    fn the_more_sheet_lists_every_screen_with_a_line_about_it() {
+        let mut h = open_on(UiLanguage::En, Screen::Today);
+        assert!(!h.html().contains("more-sheet"), "the sheet starts closed");
+        assert_eq!(more_tab(&h).attr("aria-current"), Some("false"), "Today is a tab of its own");
+        let tab = more_tab(&h);
+        h.fire_click(&tab);
+        assert!(sheet_open(&h));
+        let html = h.html();
+        for s in MORE {
+            assert!(html.contains(summary(UiLanguage::En, s)), "{s:?}");
+        }
+        assert!(html.contains("Library") && html.contains("Arabic Bridge"));
+        assert!(html.contains(summary(UiLanguage::En, Screen::Settings)));
+        assert_eq!(more_tab(&h).attr("aria-current"), Some("page"), "an open sheet is where you are");
+        h.click("Close");
+        assert!(!sheet_open(&h));
+    }
+
+    #[test]
+    fn picking_a_screen_goes_there_and_closes_the_sheet() {
+        let mut h = open_on(UiLanguage::En, Screen::Review);
+        let tab = more_tab(&h);
+        h.fire_click(&tab);
+        h.click("Journal Every study day and your reflections");
+        assert_eq!(screen(&h), Screen::Journal);
+        assert!(!sheet_open(&h));
+        // The top bar now shows the screen's name and a back arrow.
+        let html = h.html();
+        assert!(html.contains("<h1>Journal</h1>") && html.contains("aria-label=\"Back\""), "{html}");
+        assert_eq!(more_tab(&h).attr("aria-current"), Some("page"));
+
+        let tab = more_tab(&h);
+        h.fire_click(&tab);
+        h.click("Progress Retention, activity, skills and the level check");
+        assert_eq!(screen(&h), Screen::Stats);
+    }
+
+    #[test]
+    fn play_opens_on_its_hub_and_the_bridge_on_its_deck() {
+        let mut h = open_on(UiLanguage::En, Screen::Today);
+        h.read(|| consume_context::<PlayNav>().0).set(Route::Pairs);
+        let tab = more_tab(&h);
+        h.fire_click(&tab);
+        h.click("Play Kabar Pagi, the deck and short games");
+        assert_eq!(screen(&h), Screen::Play);
+        assert_eq!(h.read(|| *consume_context::<PlayNav>().0.peek()), Route::Hub, "Play opens on its hub");
+
+        let tab = more_tab(&h);
+        h.fire_click(&tab);
+        h.click("Arabic Bridge Indonesian words that came from Arabic");
+        assert_eq!(
+            (screen(&h), h.read(|| *consume_context::<PlayNav>().0.peek())),
+            (Screen::Play, Route::Deck)
+        );
+
+        let tab = more_tab(&h);
+        h.fire_click(&tab);
+        h.click("Library Texts you saved or imported");
+        assert_eq!(screen(&h), Screen::Reader);
+        assert!(h.read(|| consume_context::<crate::reader::ReaderState>().open.peek().is_none()));
+    }
+
+    #[test]
+    fn settings_opens_from_the_sheet_and_the_gear() {
+        let mut h = open_on(UiLanguage::En, Screen::Today);
+        let tab = more_tab(&h);
+        h.fire_click(&tab);
+        h.click("Settings Language, look, this device, account");
+        assert!(!sheet_open(&h));
+        assert!(h.read(|| *consume_context::<SettingsNav>().open.peek()));
+    }
+
+    #[test]
+    fn arabic_top_bar_points_back_to_the_right() {
+        let h = open_on(UiLanguage::ArEg, Screen::Teach);
+        let html = h.html();
+        assert!(html.contains("aria-label=\"رجوع\"") && html.contains("→"), "{html}");
+        let tab = open_on(UiLanguage::Ar, Screen::Today).html();
+        assert!(tab.contains("brand-small latin") && tab.contains("المزيد"), "a tab shows the brand: {tab}");
+        let en = open_on(UiLanguage::En, Screen::Chat).html();
+        assert!(en.contains("←"));
+    }
+
+    #[test]
+    fn more_texts_read_right_in_every_language() {
+        use crate::i18n::checks::{LANGS, problems};
+        let screens = MORE.iter().copied().chain([Screen::Settings]);
+        for lang in LANGS {
+            for s in screens.clone() {
+                // Names such as Kabar Pagi sit inside the Arabic lines.
+                assert!(problems(lang, summary(lang, s), false).is_empty(), "{lang:?} {s:?}");
+            }
+            for sc in [Shortcut::Library, Shortcut::Bridge] {
+                let (title, sub) = shortcut_text(lang, sc);
+                assert!(problems(lang, title, false).is_empty() && problems(lang, sub, false).is_empty());
+            }
+            assert!(problems(lang, more_label(lang), false).is_empty());
+            for s in [Screen::Listen, Screen::Teach] {
+                let short = rail_label(lang, s).unwrap();
+                assert!(short.chars().count() <= 6, "{short} fits the rail");
+            }
+            assert_eq!(rail_label(lang, Screen::Today), None, "short names already fit");
+        }
+    }
 }

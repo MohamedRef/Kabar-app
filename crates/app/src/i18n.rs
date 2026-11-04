@@ -6,6 +6,24 @@
 
 use kabar_core::locale::UiLanguage;
 
+/// Declares a fieldless string catalog and, for tests, `ALL`: every key, so
+/// one test can walk every string in every language.
+macro_rules! catalog {
+    ($(#[$m:meta])* $vis:vis enum $name:ident { $($(#[$vm:meta])* $v:ident,)+ }) => {
+        $(#[$m])*
+        $vis enum $name {
+            $($(#[$vm])* $v,)+
+        }
+
+        #[cfg(test)]
+        impl $name {
+            pub const ALL: &'static [Self] = &[$(Self::$v),+];
+        }
+    };
+}
+pub(crate) use catalog;
+
+catalog! {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Msg {
     WelcomeKabarFrom,
@@ -675,6 +693,7 @@ pub enum Msg {
     WebSaveFailed,
     /// The web app: Kabar Cloud (sign-in, sync, AI, voices) comes later.
     WebCloudLater,
+}
 }
 
 /// Fills a template from this catalog: `{n}` as written, `{n|one|two|few[|many]}`
@@ -2847,5 +2866,229 @@ mod grammar_tests {
     fn counted_lines_agree_in_english() {
         assert_eq!(msg(UiLanguage::En, Msg::DiagCount, "1"), format!("1{NB}line"));
         assert_eq!(msg(UiLanguage::En, Msg::ExportSaved, "3"), format!("Saved 3{NB}rows to:"));
+    }
+}
+
+/// Checks any catalog's strings: shared by every catalog in the app.
+#[cfg(test)]
+pub(crate) mod checks {
+    use kabar_core::locale::UiLanguage;
+
+    pub const LANGS: [UiLanguage; 3] = [UiLanguage::ArEg, UiLanguage::Ar, UiLanguage::En];
+
+    /// A `{name}` or `{name|form|…}` slot.
+    #[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
+    pub struct Slot {
+        pub name: String,
+        pub forms: usize,
+    }
+
+    /// The template's slots, or why it would render with a stray brace.
+    pub fn slots(text: &str) -> Result<Vec<Slot>, String> {
+        let mut out = Vec::new();
+        let mut rest = text;
+        while let Some(i) = rest.find(['{', '}']) {
+            if rest.as_bytes()[i] == b'}' {
+                return Err("stray '}'".into());
+            }
+            let after = &rest[i + 1..];
+            let close = after.find('}').ok_or("unclosed '{'")?;
+            let inner = &after[..close];
+            if inner.contains('{') {
+                return Err("nested '{'".into());
+            }
+            let mut parts = inner.split('|');
+            let name = parts.next().unwrap_or_default();
+            if name.is_empty() || !name.chars().all(|c| c.is_ascii_lowercase() || c == '_') {
+                return Err(format!("bad placeholder {{{inner}}}"));
+            }
+            let forms: Vec<&str> = parts.collect();
+            if forms.iter().any(|f| f.trim().is_empty()) {
+                return Err(format!("empty plural form in {{{inner}}}"));
+            }
+            out.push(Slot { name: name.to_string(), forms: forms.len() });
+            rest = &after[close + 1..];
+        }
+        Ok(out)
+    }
+
+    fn arabic_letters(text: &str) -> bool {
+        text.chars().any(|c| matches!(c, '\u{0621}'..='\u{064a}'))
+    }
+
+    /// Whether `text` would read wrongly in its language: blank, padded, a
+    /// broken placeholder, unbalanced bidi isolates, Arabic in English or
+    /// no Arabic at all in Arabic (`mixed_ok` skips the script check, for
+    /// names such as "Kak Nur" that stay Latin in every language).
+    pub fn problems(lang: UiLanguage, text: &str, mixed_ok: bool) -> Vec<String> {
+        let mut out = Vec::new();
+        if text.trim().is_empty() {
+            out.push("blank".to_string());
+        }
+        if text.trim() != text {
+            out.push("leading or trailing space".to_string());
+        }
+        if let Err(e) = slots(text) {
+            out.push(e);
+        }
+        let opens = text.matches(['\u{2066}', '\u{2067}', '\u{2068}']).count();
+        if opens != text.matches('\u{2069}').count() {
+            out.push("unbalanced bidi isolates".to_string());
+        }
+        match lang {
+            _ if mixed_ok => {}
+            UiLanguage::En if arabic_letters(text) => out.push("Arabic letters in English".to_string()),
+            UiLanguage::ArEg | UiLanguage::Ar if !arabic_letters(text) => {
+                out.push("no Arabic in an Arabic string".to_string())
+            }
+            _ => {}
+        }
+        for slot in slots(text).unwrap_or_default() {
+            let ok = matches!(
+                (slot.forms, lang),
+                (0, _) | (2, UiLanguage::En) | (3 | 4, UiLanguage::ArEg | UiLanguage::Ar)
+            );
+            if !ok {
+                out.push(format!("{{{}}} has {} plural forms", slot.name, slot.forms));
+            }
+        }
+        out
+    }
+
+    /// Every key in every language: no problems, the same placeholders in
+    /// each, and filled with any count it leaves no brace behind.
+    pub fn catalog<K: Copy + std::fmt::Debug>(
+        all: &[K],
+        text: impl Fn(UiLanguage, K) -> &'static str,
+        mixed_ok: impl Fn(K) -> bool,
+    ) {
+        let mut bad = Vec::new();
+        for &key in all {
+            let mut names: Vec<Vec<String>> = Vec::new();
+            for lang in LANGS {
+                let s = text(lang, key);
+                for p in problems(lang, s, mixed_ok(key)) {
+                    bad.push(format!("{key:?} {}: {p}: {s:?}", lang.tag()));
+                }
+                let mut n: Vec<String> = slots(s).unwrap_or_default().into_iter().map(|s| s.name).collect();
+                n.sort();
+                n.dedup();
+                for count in ["1", "2", "7", "15", "٣"] {
+                    let args: Vec<(&str, &str)> = n.iter().map(|k| (k.as_str(), count)).collect();
+                    let filled = super::fill(lang, s, &args);
+                    if filled.contains(['{', '}']) {
+                        bad.push(format!("{key:?} {}: left a brace with {count}: {filled:?}", lang.tag()));
+                    }
+                }
+                names.push(n);
+            }
+            if names.iter().any(|n| *n != names[0]) {
+                bad.push(format!("{key:?}: placeholders differ between languages: {names:?}"));
+            }
+        }
+        assert!(bad.is_empty(), "{} catalog problems:\n{}", bad.len(), bad.join("\n"));
+    }
+}
+
+#[cfg(test)]
+mod catalog_tests {
+    use super::checks::{Slot, problems, slots};
+    use super::*;
+
+    /// Keys exempt from the script check: names that stay Latin in Arabic
+    /// (Kak Nur, Kabar Pagi, the Javanese game titles), and English that
+    /// shows Arabic letters on purpose (د and ت beside d and t).
+    fn mixed_script(m: Msg) -> bool {
+        use Msg::*;
+        matches!(
+            m,
+            NavCoach
+                | NavPenLab
+                | TodayTitle
+                | CostUnitNeurons
+                | StatPelita
+                | PagiTitle
+                | PasarTitle
+                | UnggahTitle
+                | PairsTitle
+                | PairsIntro
+        )
+    }
+
+    #[test]
+    fn every_message_reads_right_in_every_language() {
+        assert!(Msg::ALL.len() > 600, "the catalog walk must see every key");
+        checks::catalog(Msg::ALL, t, mixed_script);
+    }
+
+    #[test]
+    fn the_checks_catch_broken_strings() {
+        use UiLanguage::*;
+        assert_eq!(
+            slots("{n|كلمة|كلمتين|كلمات} من {total}"),
+            Ok(vec![Slot { name: "n".into(), forms: 3 }, Slot { name: "total".into(), forms: 0 }])
+        );
+        for broken in ["a } b", "{n", "{a{b}}", "{N}", "{n||x}"] {
+            assert!(slots(broken).is_err(), "{broken}");
+        }
+        assert!(problems(En, "Saved {n|row|rows}", false).is_empty());
+        assert!(problems(ArEg, "اتحفظ {n|صف|صفين|صفوف}", false).is_empty());
+        assert_eq!(problems(En, " Hi", false), ["leading or trailing space"]);
+        assert_eq!(problems(En, "", false)[0], "blank");
+        assert_eq!(problems(En, "Hi يا", false), ["Arabic letters in English"]);
+        assert_eq!(problems(Ar, "Kabar", false), ["no Arabic in an Arabic string"]);
+        assert!(problems(Ar, "Kak Nur", true).is_empty());
+        assert_eq!(problems(Ar, "كلمة \u{2068}kabar", false), ["unbalanced bidi isolates"]);
+        assert_eq!(problems(En, "{n|row}", false), ["{n} has 1 plural forms"]);
+        assert_eq!(problems(ArEg, "{n|صف|صفين}", false), ["{n} has 2 plural forms"]);
+    }
+
+    #[test]
+    fn parts_of_speech_are_named_in_each_language() {
+        use UiLanguage::*;
+        assert_eq!(part_of_speech(ArEg, "noun"), "اسم");
+        assert_eq!(part_of_speech(Ar, "numeral"), "عدد");
+        assert_eq!(part_of_speech(ArEg, "numeral"), "رقم");
+        assert_eq!(part_of_speech(En, "proper noun"), "proper noun");
+        assert_eq!(part_of_speech(ArEg, "proper_noun"), "اسم علم");
+        assert_eq!(part_of_speech(En, "xyz-tag"), "xyz-tag", "unknown tags come back as written");
+        for pos in [
+            "noun",
+            "verb",
+            "adjective",
+            "adverb",
+            "pronoun",
+            "preposition",
+            "conjunction",
+            "particle",
+            "numeral",
+            "classifier",
+            "determiner",
+            "interjection",
+            "phrase",
+        ] {
+            assert_eq!(part_of_speech(En, pos), pos);
+            for lang in [ArEg, Ar] {
+                let ar = part_of_speech(lang, pos);
+                assert!(problems(lang, ar, false).is_empty(), "{pos} {ar}");
+            }
+        }
+    }
+
+    /// The four Arabic count forms (Mohamed, 2026-11-02) for a few counted
+    /// messages, Egyptian and MSA, ASCII and Eastern digits.
+    #[test]
+    fn counts_follow_the_arabic_number_rule() {
+        use UiLanguage::*;
+        const NB: char = '\u{a0}';
+        let f = |lang, m, n: &str| fill(lang, t(lang, m), &[("n", n), ("rows", n)]);
+        assert_eq!(f(ArEg, Msg::ExportSaved, "1"), "اتحفظ صف في:");
+        assert_eq!(f(ArEg, Msg::ExportSaved, "3"), format!("اتحفظ 3{NB}صفوف في:"));
+        assert_eq!(f(ArEg, Msg::ExportSaved, "11"), format!("اتحفظ 11{NB}صف في:"));
+        assert_eq!(f(ArEg, Msg::ExportSaved, "١٠٠"), format!("اتحفظ ١٠٠{NB}صف في:"));
+        assert_eq!(f(Ar, Msg::ExportSaved, "1"), "حُفظ صفّ في:");
+        assert_eq!(f(Ar, Msg::ExportSaved, "2"), "حُفظ صفّان في:");
+        assert_eq!(f(Ar, Msg::ExportSaved, "٤"), format!("حُفظ ٤{NB}صفوف في:"));
+        assert_eq!(f(En, Msg::ExportSaved, "1"), format!("Saved 1{NB}row to:"));
     }
 }

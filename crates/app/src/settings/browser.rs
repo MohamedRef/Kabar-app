@@ -61,44 +61,80 @@ fn fixture() -> Element {
     }
 }
 
+/// Every fixture the browser job checks: each width, direction, theme,
+/// interface style and text size.
+fn all_cases() -> impl Iterator<Item = Case> {
+    use kabar_core::locale::UiLanguage;
+    [320, 384, 600, 840, 1280].into_iter().flat_map(|width| {
+        [UiLanguage::ArEg, UiLanguage::En].into_iter().flat_map(move |lang| {
+            Theme::ALL.into_iter().flat_map(move |theme| {
+                device::Appearance::ALL.iter().copied().flat_map(move |appearance| {
+                    [device::TextSize::Normal, device::TextSize::Larger].into_iter().map(move |size| Case {
+                        width,
+                        lang,
+                        theme,
+                        appearance,
+                        size,
+                    })
+                })
+            })
+        })
+    })
+}
+
+/// Renders each case into `dir` with a `manifest.json` naming them.
+fn export(dir: &std::path::Path, cases: impl Iterator<Item = Case>) -> Vec<serde_json::Value> {
+    std::fs::create_dir_all(dir).unwrap();
+    let mut manifest = Vec::new();
+    for case in cases {
+        let Case { width, lang, theme, appearance, size } = case;
+        CASE.with(|c| *c.borrow_mut() = Some(case));
+        let mut dom = VirtualDom::new(fixture);
+        dom.rebuild_in_place();
+        let html = dioxus::ssr::render(&dom);
+        assert!(html.contains("settings-window") && html.contains("text-sample"));
+        if width >= 600 {
+            assert!(html.contains("settings-index"), "wide Settings must render its section index");
+        }
+        let file = format!(
+            "{width}-{}-{}-{}-{}.html",
+            lang.tag(),
+            theme.as_str(),
+            appearance.as_str(),
+            size.as_str()
+        );
+        std::fs::write(dir.join(&file), format!("<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"></head><body>{html}</body></html>")).unwrap();
+        manifest.push(serde_json::json!({"file":file,"width":width,"dir":lang.dir().as_str(),"theme":theme.as_str(),"appearance":appearance.as_str(),"size":size.as_str()}));
+    }
+    std::fs::write(dir.join("manifest.json"), serde_json::to_vec_pretty(&manifest).unwrap()).unwrap();
+    manifest
+}
+
 #[test]
 #[ignore = "exports production HTML for the dedicated browser CI job"]
 fn export_browser_fixtures() {
-    use kabar_core::locale::UiLanguage;
     let dir =
         std::path::PathBuf::from(std::env::var_os("APP_BROWSER_FIXTURES").expect("APP_BROWSER_FIXTURES"));
-    std::fs::create_dir_all(&dir).unwrap();
-    let mut manifest = Vec::new();
-    for width in [320, 384, 600, 840, 1280] {
-        for lang in [UiLanguage::ArEg, UiLanguage::En] {
-            for theme in Theme::ALL {
-                for appearance in device::Appearance::ALL.iter().copied() {
-                    for size in [device::TextSize::Normal, device::TextSize::Larger] {
-                        let case = Case { width, lang, theme, appearance, size };
-                        CASE.with(|c| *c.borrow_mut() = Some(case));
-                        let mut dom = VirtualDom::new(fixture);
-                        dom.rebuild_in_place();
-                        let html = dioxus::ssr::render(&dom);
-                        assert!(html.contains("settings-window") && html.contains("text-sample"));
-                        if width >= 600 {
-                            assert!(
-                                html.contains("settings-index"),
-                                "wide Settings must render its section index"
-                            );
-                        }
-                        let file = format!(
-                            "{width}-{}-{}-{}-{}.html",
-                            lang.tag(),
-                            theme.as_str(),
-                            appearance.as_str(),
-                            size.as_str()
-                        );
-                        std::fs::write(dir.join(&file), format!("<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"></head><body>{html}</body></html>")).unwrap();
-                        manifest.push(serde_json::json!({"file":file,"width":width,"dir":lang.dir().as_str(),"theme":theme.as_str(),"appearance":appearance.as_str(),"size":size.as_str()}));
-                    }
-                }
-            }
-        }
+    export(&dir, all_cases());
+}
+
+/// A sample of the browser job's fixtures, rendered on every test run so a
+/// broken fixture shows up before the browser job.
+#[test]
+fn browser_fixtures_render_each_direction_and_width() {
+    assert_eq!(all_cases().count(), 5 * 2 * Theme::ALL.len() * device::Appearance::ALL.len() * 2);
+    let dir = tempfile::tempdir().unwrap();
+    let manifest = export(dir.path(), all_cases().step_by(23));
+    assert!(manifest.len() >= 10);
+    let listed: serde_json::Value =
+        serde_json::from_slice(&std::fs::read(dir.path().join("manifest.json")).unwrap()).unwrap();
+    assert_eq!(listed.as_array().unwrap().len(), manifest.len());
+    for entry in &manifest {
+        let html = std::fs::read_to_string(dir.path().join(entry["file"].as_str().unwrap())).unwrap();
+        let dir_attr = format!("dir=\"{}\"", entry["dir"].as_str().unwrap());
+        assert!(html.starts_with("<!doctype html>") && html.contains(&dir_attr), "{entry}");
+        assert!(html.contains(&format!("data-text-size=\"{}\"", entry["size"].as_str().unwrap())));
+        assert!(html.contains(&format!("data-theme=\"{}\"", entry["theme"].as_str().unwrap())));
     }
-    std::fs::write(dir.join("manifest.json"), serde_json::to_vec_pretty(&manifest).unwrap()).unwrap();
+    assert!(manifest.iter().any(|e| e["dir"] == "rtl") && manifest.iter().any(|e| e["dir"] == "ltr"));
 }
