@@ -422,6 +422,7 @@ mod tests {
 
     #[test]
     fn without_a_packs_address_lessons_use_the_device_voice() {
+        let _turn = one_at_a_time();
         let store = new_store();
         let dom = mount(store, None);
         let html = td::html(&dom);
@@ -492,6 +493,7 @@ mod tests {
 
     #[test]
     fn a_failed_check_says_lessons_still_play() {
+        let _turn = one_at_a_time();
         let store = new_store();
         let closed = {
             let l = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
@@ -507,6 +509,7 @@ mod tests {
 
     #[test]
     fn an_older_installed_pack_offers_the_update() {
+        let _turn = one_at_a_time();
         let store = new_store();
         let (_, _, row1, tar) = pack();
         store.install(&row1, &tar).unwrap();
@@ -525,6 +528,7 @@ mod tests {
 
     #[test]
     fn auto_download_is_a_switch_remembered_on_the_device() {
+        let _turn = one_at_a_time();
         let store = new_store();
         let mut dom = mount(store, None);
         let switch = td::find(&dom, "change", |l| l.class() == "switch");
@@ -559,6 +563,7 @@ mod tests {
 
     #[test]
     fn each_row_says_where_its_download_stands() {
+        let _turn = one_at_a_time();
         assert!(td::shows(&row_html(None, true, None, true), pt(EN, P::Downloading)));
         assert!(td::shows(&row_html(None, false, Some(Job::Downloading), true), pt(EN, P::Downloading)));
         assert!(td::shows(&row_html(None, false, Some(Job::Queued), true), pt(EN, P::Queued)));
@@ -573,6 +578,7 @@ mod tests {
 
     #[test]
     fn no_card_before_the_pack_store_opens() {
+        let _turn = one_at_a_time();
         fn view(screen: Screen) -> Option<Element> {
             (screen == Screen::Settings).then(|| rsx! { div { id: "packs", OfflinePacks {} } })
         }
