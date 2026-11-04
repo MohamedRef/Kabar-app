@@ -22,6 +22,18 @@ fn pick(words: Vec<SavedWord>, at: usize) -> Option<SavedWord> {
     (!words.is_empty()).then(|| words[at % words.len()].clone())
 }
 
+/// The saved word's meaning in the learner's voice, from the offline glossary.
+fn meaning(
+    word: &str,
+    lang: WordLang,
+    surface: &str,
+    voice: kabar_core::locale::UiLanguage,
+) -> Option<String> {
+    super::glossary()
+        .lookup(Some(lang), &[word, &surface.to_lowercase()])
+        .map(|i| i.gloss.get(voice).to_string())
+}
+
 #[component]
 pub fn WaitWord() -> Element {
     let ui = use_context::<Ui>();
@@ -37,11 +49,7 @@ pub fn WaitWord() -> Element {
     let lang = if wl == WordLang::Javanese { "jv" } else { "id" };
     // The glossary is looked up on reveal, so a screen that never opened
     // the Reader doesn't parse it just to show the word.
-    let gloss = open().then(|| {
-        super::glossary()
-            .lookup(Some(wl), &[word, &w.surface.to_lowercase()])
-            .map(|i| i.gloss.get(ui.lang()).to_string())
-    });
+    let gloss = open().then(|| meaning(word, wl, &w.surface, ui.lang()));
     rsx! {
         details { class: "wait-word", ontoggle: move |_| open.toggle(),
             summary {
@@ -69,6 +77,18 @@ mod tests {
             sentence: "Saya sedang baca buku.".into(),
             text_id: None,
         }
+    }
+
+    #[test]
+    fn the_revealed_meaning_is_in_the_learners_voice() {
+        use kabar_core::locale::UiLanguage;
+        assert_eq!(
+            meaning("membaca", WordLang::Indonesian, "Membaca", UiLanguage::En).as_deref(),
+            Some("to read")
+        );
+        let arz = meaning("mangan", WordLang::Javanese, "mangan", UiLanguage::ArEg).unwrap();
+        assert!(arz.chars().any(|c| ('\u{0600}'..='\u{06FF}').contains(&c)), "{arz}");
+        assert_eq!(meaning("zxqvbn", WordLang::Indonesian, "zxqvbn", UiLanguage::En), None);
     }
 
     #[test]
