@@ -300,7 +300,7 @@ python3 scripts/assets/synth_sounds.py               # gong, ding and kendang, 3
 
 ## 15b. Web app (any browser)
 
-The same app compiled to WebAssembly ([docs/WEB.md](WEB.md)).
+The same app compiled to WebAssembly ([docs/WEB.md](WEB.md)). After the first visit it opens from the device; a new version downloads in the background and shows from the next open.
 
 ```sh
 cargo install wasm-bindgen-cli@<version in Cargo.lock> --locked   # once
