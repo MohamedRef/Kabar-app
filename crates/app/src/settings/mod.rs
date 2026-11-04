@@ -60,6 +60,8 @@ impl Section {
             Self::Android => cfg!(target_os = "android"),
             Self::Tablet => cfg!(target_os = "android") && tablet,
             Self::Mac => !cfg!(target_os = "android"),
+            // The web app is the newest build on every open (web/sw.js).
+            Self::Updates => !cfg!(target_arch = "wasm32"),
             _ => true,
         }
     }
