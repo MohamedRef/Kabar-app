@@ -290,6 +290,10 @@ Rules (Mohamed's decisions; all in force):
   paused; keep S Pen hover. Widgets and aksara (M13) parked.
 - Not yet verified on a real device: Back-key routing, update notifications.
 - Test debt: merge duplicate click-test helpers.
+- Big files: Rust files over 800 lines are listed by `scripts/check-file-sizes.sh`;
+  split each when a PR already changes it a lot (AGENTS.md § Small files).
+  About 410 strings still sit in the shared `Msg` (some used by several
+  features, some typed as `Msg` in helpers); move them as features change.
 
 ## 10. Resume message
 
@@ -305,5 +309,6 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-05: feature strings moved out of the shared `Msg` into `<feature>/msg.rs` (i18n `Text` trait); `main.rs` split into `screen.rs`, `app_hooks.rs`, `shell.rs`; AGENTS.md § Small files; `check-file-sizes.sh` warns in CI.
 - 2026-11-05: handoff docs added (`AGENTS.md`, this file, curriculum toolkit in `scripts/curriculum/`).
 - 2026-11-04: 1.0.0-alpha.2 released (#607); final critic pass closed.
