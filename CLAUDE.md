@@ -1,5 +1,7 @@
 # Kabar — working conventions
 
+**New here? Start with [`AGENTS.md`](AGENTS.md) and [`docs/HANDOFF.md`](docs/HANDOFF.md).** They hold the full picture (architecture, commands, CI, releases, secrets by name, URLs, content rules, current state).
+
 Kabar is a personal Indonesian + Javanese learning app in Rust for one learner (Egyptian Arabic native, reads English). Private, never published. The full brief is `docs/SPEC.md` (v4 wins over anything older); the agreed design is `docs/PLAN.md`.
 
 ## Non-negotiables
@@ -18,13 +20,14 @@ Kabar is a personal Indonesian + Javanese learning app in Rust for one learner (
 - Before every commit: `just check` (= `scripts/check-tracked-files.sh`, `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test --workspace`). All green. CI also clippy-checks the Android arm64 build.
 - Every PR adds `changes/<topic>.yaml` or appends to one (one line per change the learner can see: `kind` new/improved/fixed, `ar_eg`, `en`); the app's "What's new" is built from these (`docs/RELEASE.md` §5). Housekeeping PRs add a file holding `[]`; a PR that only changes `README.md` needs none. CI fails a PR without one.
 - Run/install instructions live in `docs/RUN.md`; keep them current.
+- **Keep `docs/HANDOFF.md` current**: every PR that changes behaviour, process, commands, CI, secrets, deploys, content rules or the state of the work updates it in the same PR (affected section, Current state, one Log line). See `AGENTS.md`.
 - `README.md` shows the current state. Its content numbers are generated: the daily README routine refreshes them, and running `just readme` in a content PR is welcome but never required (CI only warns, so parallel PRs can't turn main red). Update its feature, roadmap and run tables by hand when a PR changes them.
 - After each milestone: tell the user exactly how to run it on the Mac and install it on the S24 Ultra and Tab S11, summarize changes, commit with a clear message.
 - Tests never call live APIs. AI parsing is tested against recorded JSON fixtures in `fixtures/`.
 - Use the test texts in `docs/SPEC.md` §24 in unit tests, golden sets and demos.
 
 ## Code
-- Rust stable, edition 2024, one Cargo workspace (`crates/core`, `protocol`, `app`, `server`, `home`, `tools`) plus minimal Kotlin in `android/`.
+- Rust stable, edition 2024, one Cargo workspace (`crates/core`, `protocol`, `content`, `app`, `server`, `tools`) plus minimal Kotlin in `android/`.
 - `crates/core` is pure logic: no UI, no network, no filesystem assumptions. It must build for native and wasm32.
 - `crates/protocol` holds every type that crosses a process boundary (serde). Version it; never break old clients silently.
 - Every synced table has `account_id`, `device_id`, an HLC timestamp and a tombstone flag. Reviews/attempts/XP are append-only events; statuses/settings are LWW by HLC; ink strokes are immutable.
