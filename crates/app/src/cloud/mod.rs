@@ -196,6 +196,9 @@ pub enum Problem {
     NotAllowed,
     SignInCancelled,
     SignInFailed,
+    /// Google said yes; the rest of the sign-in waits for the network
+    /// (Android gives a backgrounded app none) and finishes by itself.
+    SignInWaiting,
     SignedOutRemotely,
     Network,
     Server,
