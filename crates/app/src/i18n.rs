@@ -2019,7 +2019,10 @@ mod catalog_tests {
 
     #[test]
     fn every_message_reads_right_in_every_language() {
-        assert!(Msg::ALL.len() > 600, "the catalog walk must see every key");
+        assert!(
+            Msg::ALL.len() > 400,
+            "the catalog walk must see every shared key (feature strings are checked in each msg.rs)"
+        );
         checks::catalog(Msg::ALL, t, mixed_script);
     }
 
