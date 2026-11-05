@@ -20,7 +20,7 @@ dex="$(mktemp)"
 trap 'rm -f "$dex"' EXIT
 unzip -p "$APK" 'classes*.dex' >"$dex"
 missing=0
-for cls in app/kabar/ShareActivity app/kabar/PendingShare app/kabar/OcrBridge app/kabar/ImagePickActivity app/kabar/ExportSaveActivity app/kabar/UpdateInstaller app/kabar/UpdateNotice app/kabar/UpdateCheckJob app/kabar/PushBridge app/kabar/PushService; do
+for cls in app/kabar/ShareActivity app/kabar/PendingShare app/kabar/OcrBridge app/kabar/ImagePickActivity app/kabar/ExportSaveActivity app/kabar/UpdateInstaller app/kabar/UpdateNotice app/kabar/UpdateCheckJob app/kabar/PushBridge app/kabar/PushService app/kabar/SignInReturnActivity; do
   if ! LC_ALL=C grep -aqF "L$cls;" "$dex"; then
     echo "Missing $cls in $APK"
     [ -n "${GITHUB_ACTIONS:-}" ] && echo "::error::Missing $cls in the APK"

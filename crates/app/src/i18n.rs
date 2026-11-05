@@ -135,6 +135,7 @@ pub enum Msg {
     SyncLast,
     ProblemNotAllowed,
     ProblemSignInCancelled,
+    ProblemSignInWaiting,
     ProblemSignInFailed,
     ProblemSignedOutRemotely,
     ProblemNetwork,
@@ -1095,6 +1096,11 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ProblemSignInCancelled, ArEg) => "التسجيل اتلغى. جرّب تاني وقت ما تحب.",
         (ProblemSignInCancelled, Ar) => "أُلغي تسجيل الدخول. حاول مجددًا متى شئت.",
         (ProblemSignInCancelled, En) => "Sign-in was cancelled. Try again whenever you like.",
+        (ProblemSignInWaiting, ArEg) => "جوجل وافق. بنكمّل تسجيل الدخول أول ما النت يوصل، مش محتاج تعمل حاجة.",
+        (ProblemSignInWaiting, Ar) => "وافقت جوجل. سنُكمل تسجيل الدخول فور توفّر الاتصال، دون أي خطوة منك.",
+        (ProblemSignInWaiting, En) => {
+            "Google said yes. Sign-in finishes as soon as the connection is back; nothing to do."
+        }
         (ProblemSignInFailed, ArEg) => "التسجيل ما نجحش المرة دي. جرّب تاني.",
         (ProblemSignInFailed, Ar) => "لم ينجح تسجيل الدخول هذه المرة. حاول مجددًا.",
         (ProblemSignInFailed, En) => "Sign-in didn't work this time. Please try again.",

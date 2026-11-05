@@ -34,6 +34,23 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <!-- Google sign-in: the browser page's "Back to Kabar" link
+             (app.kabar://signed-in, SignInReturn.kt). Invisible; it brings
+             Kabar to the front, where sign-in finishes. -->
+        <activity
+            android:name="app.kabar.SignInReturnActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="app.kabar" android:host="signed-in" />
+            </intent-filter>
+        </activity>
         <!-- Share-to-Kabar: text and images from any app, plus "Kabar" in the
              text-selection menu. Invisible; it hands the item over and opens Kabar. -->
         <activity

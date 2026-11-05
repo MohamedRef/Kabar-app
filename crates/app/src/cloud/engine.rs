@@ -67,6 +67,52 @@ const CONNECT_WITHIN: Duration = Duration::from_secs(1);
 /// Writes from screens that don't send [`Command::Kick`] still go up this soon.
 const OUTBOX_EVERY: Duration = Duration::from_secs(2);
 
+/// How long a sign-in Google already approved keeps retrying: Google's codes
+/// live about ten minutes, its ID tokens an hour.
+const CODE_LIFE: Duration = Duration::from_secs(9 * 60);
+const ID_TOKEN_LIFE: Duration = Duration::from_secs(50 * 60);
+
+/// A sign-in Google approved that still has to reach Google's token endpoint
+/// or Kabar Cloud. Android keeps a backgrounded app off the network, and the
+/// redirect lands while Chrome is still in front, so the network half waits
+/// and retries until Kabar is back in front ([`Command::Background`]) or the
+/// grant runs out. (Adapted from batna-app main: crates/app/src/cloud/engine.rs.)
+struct PendingSignIn {
+    step: SignInStep,
+    until: Instant,
+    retry_at: Instant,
+    attempts: u32,
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+type Authorization = super::oauth::Authorization;
+/// The web has no Google sign-in (docs/WEB.md).
+#[cfg(target_arch = "wasm32")]
+type Authorization = ();
+
+enum SignInStep {
+    /// A code for Google's token endpoint (the Mac and Android).
+    #[cfg_attr(target_arch = "wasm32", allow(dead_code))]
+    Code(Authorization),
+    IdToken(String),
+}
+
+impl PendingSignIn {
+    fn new(step: SignInStep, life: Duration) -> Self {
+        let now = Instant::now();
+        Self { step, until: now + life, retry_at: now, attempts: 0 }
+    }
+
+    /// 1, 2, 4, 8, 15, 15… seconds: quick enough to finish right after the
+    /// app comes back even if no foreground signal arrives, cheap while it can't.
+    fn schedule_retry(&mut self) {
+        const DELAYS: [u64; 5] = [1, 2, 4, 8, 15];
+        let secs = DELAYS[(self.attempts as usize).min(DELAYS.len() - 1)];
+        self.attempts += 1;
+        self.retry_at = Instant::now() + Duration::from_secs(secs);
+    }
+}
+
 /// A socket being opened. It runs beside the commands, so AI, voices and
 /// sign-out never wait behind a slow handshake.
 type Opening = std::pin::Pin<Box<dyn std::future::Future<Output = Result<Socket, ConnectError>>>>;
@@ -96,6 +142,7 @@ pub struct Engine {
     last_status: Option<CloudStatus>,
     force_refresh: bool,
     problem: Option<Problem>,
+    pending_sign_in: Option<PendingSignIn>,
     /// The usual vault, set aside while a sign-in on someone else's device
     /// keeps its session in a forgetful one; back after sign-out.
     spare_vault: Option<Box<dyn SessionVault>>,
@@ -136,6 +183,7 @@ impl Engine {
             last_status: None,
             force_refresh: false,
             problem: None,
+            pending_sign_in: None,
             spare_vault: None,
             login: LoginStatus::default(),
             events,
@@ -148,6 +196,10 @@ impl Engine {
         let mut next_outbox = Instant::now() + OUTBOX_EVERY;
         self.emit_status();
         loop {
+            if self.pending_sign_in.as_ref().is_some_and(|p| Instant::now() >= p.retry_at) {
+                self.finish_sign_in().await;
+                self.emit_status();
+            }
             if self.ws.is_none()
                 && self.opening.is_none()
                 && self.wants_socket()
@@ -156,7 +208,7 @@ impl Engine {
                 self.connect().await;
                 self.emit_status();
             }
-            let wait_until = if self.ws.is_some() {
+            let mut wait_until = if self.ws.is_some() {
                 let answer_by = self.asked_at.map(|t| t + ANSWER_WITHIN);
                 next_ping.min(next_outbox).min(answer_by.unwrap_or(next_ping))
             } else if self.opening.is_some() {
@@ -166,6 +218,9 @@ impl Engine {
             } else {
                 Instant::now() + Duration::from_secs(3600)
             };
+            if let Some(p) = &self.pending_sign_in {
+                wait_until = wait_until.min(p.retry_at);
+            }
             let wait = crate::platform::time::sleep(wait_until.saturating_duration_since(Instant::now()));
             tokio::select! {
                 biased;
@@ -256,6 +311,7 @@ impl Engine {
             Command::SignInWithIdToken(token) => self.sign_in(token).await,
             Command::SignInPassword { username, password, remember } => {
                 self.problem = None;
+                self.pending_sign_in = None;
                 self.events.send(Event::SigningIn(true)).ok();
                 self.sign_in_password(username, password.0, remember).await;
                 self.events.send(Event::SigningIn(false)).ok();
@@ -291,7 +347,10 @@ impl Engine {
                 }
                 self.load_devices().await;
             }
-            Command::Kick => self.pump().await,
+            Command::Kick => {
+                self.retry_sign_in_now();
+                self.pump().await
+            }
             Command::Background(true) if !self.background => {
                 self.pump().await;
                 self.background = true;
@@ -301,11 +360,17 @@ impl Engine {
                 }
             }
             Command::Background(false) if self.background => {
+                // Back in front: a sign-in Google approved meanwhile finishes now.
+                self.retry_sign_in_now();
                 self.background = false;
                 self.backoff.reset();
                 self.retry_at = Instant::now();
             }
-            Command::Background(_) => {}
+            Command::Background(going) => {
+                if !going {
+                    self.retry_sign_in_now();
+                }
+            }
             Command::Access { force, reply } => {
                 let access = self.access(force).await;
                 reply.send(access.map(|token| (self.api.clone(), token))).ok();
@@ -322,17 +387,89 @@ impl Engine {
             return;
         };
         self.problem = None;
+        self.pending_sign_in = None;
         self.events.send(Event::SigningIn(true)).ok();
-        let token = oauth::google_id_token(&google).await;
+        let authorization = oauth::google_authorization(&google).await;
         self.events.send(Event::SigningIn(false)).ok();
-        match token {
-            Ok(token) => self.sign_in(token).await,
+        match authorization {
+            Ok(auth) => {
+                self.pending_sign_in = Some(PendingSignIn::new(SignInStep::Code(auth), CODE_LIFE));
+                self.finish_sign_in().await;
+            }
             Err(OAuthError::Cancelled) => self.problem = Some(Problem::SignInCancelled),
             Err(e) => {
                 crate::diag::report!("Google sign-in: {e}");
                 self.problem = Some(Problem::SignInFailed);
             }
         }
+    }
+
+    /// A waiting sign-in tries again right away (the app came back to the front).
+    fn retry_sign_in_now(&mut self) {
+        if let Some(p) = &mut self.pending_sign_in {
+            p.retry_at = Instant::now();
+        }
+    }
+
+    /// Runs the network half of a sign-in Google approved: the code
+    /// exchange, then Kabar Cloud. A network failure keeps it pending and
+    /// retries ([`PendingSignIn`]); anything else ends it.
+    async fn finish_sign_in(&mut self) {
+        let Some(pending) = self.pending_sign_in.take() else { return };
+        #[cfg(not(target_arch = "wasm32"))]
+        let mut pending = pending;
+        if Instant::now() >= pending.until {
+            crate::diag::report!("Kabar Cloud sign-in: gave up waiting for the network");
+            self.problem = Some(Problem::SignInFailed);
+            return;
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        if let SignInStep::Code(auth) = &pending.step {
+            use super::oauth::{self, OAuthError};
+            let Some(google) = self.google.clone() else {
+                self.problem = Some(Problem::NotConfigured);
+                return;
+            };
+            let auth = auth.clone();
+            let exchanged = tokio::task::spawn_blocking(move || oauth::exchange_code(&google, &auth))
+                .await
+                .unwrap_or_else(|e| Err(OAuthError::Failed(e.to_string())));
+            match exchanged {
+                Ok(id_token) => pending = PendingSignIn::new(SignInStep::IdToken(id_token), ID_TOKEN_LIFE),
+                Err(OAuthError::Network(e)) => {
+                    crate::diag::report!("Google sign-in: network: {e}");
+                    self.wait_for_network(pending);
+                    return;
+                }
+                Err(e) => {
+                    crate::diag::report!("Google sign-in: {e}");
+                    self.problem = Some(Problem::SignInFailed);
+                    return;
+                }
+            }
+        }
+        let SignInStep::IdToken(id_token) = &pending.step else { return };
+        let body = GoogleSignIn { id_token: id_token.clone(), device: self.device.clone() };
+        match self.api.sign_in_google(&body).await {
+            Ok(session) => self.begin_session(session, true),
+            Err(CloudError::Network(e)) => {
+                crate::diag::report!("Kabar Cloud sign-in: network: {e}");
+                self.wait_for_network(pending);
+            }
+            Err(e) => {
+                crate::diag::report!("Kabar Cloud sign-in: {e}");
+                self.problem = Some(match &e {
+                    CloudError::Api { code: ErrorCode::NotAllowed, .. } => Problem::NotAllowed,
+                    _ => Problem::SignInFailed,
+                });
+            }
+        }
+    }
+
+    fn wait_for_network(&mut self, mut pending: PendingSignIn) {
+        pending.schedule_retry();
+        self.pending_sign_in = Some(pending);
+        self.problem = Some(Problem::SignInWaiting);
     }
 
     /// The web build signs in with a username and password (docs/WEB.md).
@@ -491,6 +628,7 @@ impl Engine {
     }
 
     fn sign_out_locally(&mut self) {
+        self.pending_sign_in = None;
         self.drop_socket();
         if let Some(auth) = self.auth.take() {
             let forgetful = auth.forget();
@@ -882,5 +1020,20 @@ mod password_tests {
         assert_eq!(locked(1), Some(Problem::Locked(1)));
         assert_eq!(password_problem(&api(401, r#"{"code":"unauthorized","message":""}"#)), None);
         assert_eq!(password_problem(&CloudError::Network("down".into())), None);
+    }
+
+    #[test]
+    fn a_waiting_sign_in_retries_quickly_then_every_fifteen_seconds() {
+        let mut p = PendingSignIn::new(SignInStep::IdToken("t".into()), ID_TOKEN_LIFE);
+        assert!(p.retry_at <= Instant::now(), "the first try is immediate");
+        let delays: Vec<u64> = (0..7)
+            .map(|_| {
+                p.schedule_retry();
+                // Rounded: a few microseconds pass between the two clock reads.
+                (p.retry_at - Instant::now()).as_secs_f64().round() as u64
+            })
+            .collect();
+        assert_eq!(delays, [1, 2, 4, 8, 15, 15, 15]);
+        assert!(p.until - Instant::now() > CODE_LIFE, "an ID token outlives a code");
     }
 }
