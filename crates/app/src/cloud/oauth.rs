@@ -3,7 +3,10 @@
 //! listener on 127.0.0.1, and the code is exchanged for an ID token, which
 //! Kabar Cloud verifies.
 //!
-//! Used on the Mac, and on Android until the Credential Manager bridge lands.
+//! Used on the Mac and on Android. On Android the redirect lands while Chrome
+//! is in front and Kabar is in the background, where Android gives it no
+//! network: [`google_authorization`] only needs the loopback listener, and the
+//! engine runs [`exchange_code`] (and Kabar Cloud) once Kabar is back.
 
 use std::time::Duration;
 
@@ -35,6 +38,11 @@ pub enum OAuthError {
     TimedOut,
     #[error("couldn't open the browser: {0}")]
     Browser(String),
+    /// The request never got an answer (no network, DNS, a dropped socket):
+    /// what a call made while Kabar is in the background on Android looks
+    /// like, so worth retrying once it's back.
+    #[error("network: {0}")]
+    Network(String),
     #[error("{0}")]
     Failed(String),
 }
@@ -77,8 +85,24 @@ pub fn auth_url(client_id: &str, redirect_uri: &str, pkce: &Pkce, state: &str) -
     format!("{AUTH_URL}?{}", form(&params))
 }
 
-/// Opens the browser, waits for Google's redirect and returns an ID token.
-pub async fn google_id_token(client: &GoogleClient) -> Result<String, OAuthError> {
+/// What the browser hands back: everything [`exchange_code`] needs to turn
+/// the code into an ID token. Google's codes live about ten minutes.
+#[derive(Clone)]
+pub struct Authorization {
+    code: String,
+    verifier: String,
+    redirect_uri: String,
+}
+
+impl std::fmt::Debug for Authorization {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Authorization").field("redirect_uri", &self.redirect_uri).finish_non_exhaustive()
+    }
+}
+
+/// Opens the browser and waits for Google's redirect. No network beyond the
+/// loopback listener, so it works while Kabar is in the background.
+pub async fn google_authorization(client: &GoogleClient) -> Result<Authorization, OAuthError> {
     let listener = TcpListener::bind("127.0.0.1:0").await.map_err(|e| OAuthError::Failed(e.to_string()))?;
     let port = listener.local_addr().map_err(|e| OAuthError::Failed(e.to_string()))?.port();
     let redirect_uri = format!("http://127.0.0.1:{port}");
@@ -90,11 +114,13 @@ pub async fn google_id_token(client: &GoogleClient) -> Result<String, OAuthError
     let code = tokio::time::timeout(WAIT, wait_for_code(&listener, &state))
         .await
         .map_err(|_| OAuthError::TimedOut)??;
+    Ok(Authorization { code, verifier: pkce.verifier, redirect_uri })
+}
 
-    let client = client.clone();
-    tokio::task::spawn_blocking(move || exchange(TOKEN_URL, &client, &code, &pkce.verifier, &redirect_uri))
-        .await
-        .map_err(|e| OAuthError::Failed(e.to_string()))?
+/// Trades the code for an ID token (blocking). A code is single-use: retry
+/// only on [`OAuthError::Network`], when Google may never have seen it.
+pub fn exchange_code(client: &GoogleClient, auth: &Authorization) -> Result<String, OAuthError> {
+    exchange(TOKEN_URL, client, &auth.code, &auth.verifier, &auth.redirect_uri)
 }
 
 async fn wait_for_code(listener: &TcpListener, state: &str) -> Result<String, OAuthError> {
@@ -108,7 +134,7 @@ async fn wait_for_code(listener: &TcpListener, state: &str) -> Result<String, OA
             let _ = stream.write_all(b"HTTP/1.1 404 Not Found\r\ncontent-length: 0\r\n\r\n").await;
             continue;
         };
-        let page = if result.is_ok() { DONE_PAGE } else { CANCELLED_PAGE };
+        let page = page(result.is_ok(), cfg!(target_os = "android"));
         let response = format!(
             "HTTP/1.1 200 OK\r\ncontent-type: text/html; charset=utf-8\r\ncontent-length: {}\r\nconnection: close\r\n\r\n{page}",
             page.len()
@@ -175,7 +201,7 @@ fn exchange(
     if let Some(secret) = &client.client_secret {
         form.push(("client_secret", secret));
     }
-    let mut res = agent.post(token_url).send_form(form).map_err(|e| OAuthError::Failed(e.to_string()))?;
+    let mut res = agent.post(token_url).send_form(form).map_err(|e| OAuthError::Network(e.to_string()))?;
     if !res.status().is_success() {
         let body = res.body_mut().read_to_string().unwrap_or_default();
         return Err(OAuthError::Failed(format!("token exchange {}: {body}", res.status())));
@@ -222,13 +248,33 @@ fn decode(s: &str) -> String {
     String::from_utf8_lossy(&out).into_owned()
 }
 
-const DONE_PAGE: &str = r#"<!doctype html><meta charset="utf-8"><title>Kabar</title>
-<body style="font-family:system-ui;text-align:center;padding:3rem">
-<h1>✓</h1><p>تمام، رجع لـ Kabar.</p><p>All set — go back to Kabar.</p></body>"#;
+/// Opens Kabar from the browser on Android (`SignInReturnActivity` in
+/// android/src/main/AndroidManifest.xml brings the running app to the front).
+pub const RETURN_URL: &str = "app.kabar://signed-in";
 
-const CANCELLED_PAGE: &str = r#"<!doctype html><meta charset="utf-8"><title>Kabar</title>
-<body style="font-family:system-ui;text-align:center;padding:3rem">
-<p>متسجلتش. ارجع لـ Kabar وجرب تاني.</p><p>Not signed in. Go back to Kabar to try again.</p></body>"#;
+/// The page the browser shows once Google sends it back here. On Android it
+/// also tries to bring Kabar back by itself, and offers a big button for when
+/// Chrome wants a tap first: sign-in finishes once Kabar is in front, because
+/// Android keeps a backgrounded app off the network.
+fn page(done: bool, back_button: bool) -> String {
+    let body = if done {
+        "<h1>✓</h1><p>تمام، رجع لـ Kabar.</p><p>All set — go back to Kabar.</p>"
+    } else {
+        "<p>متسجلتش. ارجع لـ Kabar وجرب تاني.</p><p>Not signed in. Go back to Kabar to try again.</p>"
+    };
+    let back = if back_button {
+        format!(
+            r#"<p><a href="{RETURN_URL}" style="display:inline-block;margin-top:1rem;padding:1rem 2rem;border-radius:999px;background:#1f6f5c;color:#fff;text-decoration:none;font-size:1.25rem">ارجع لـ Kabar · Back to Kabar</a></p>
+<script>setTimeout(function(){{location.href="{RETURN_URL}"}},300)</script>"#
+        )
+    } else {
+        String::new()
+    };
+    format!(
+        r#"<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kabar</title>
+<body style="font-family:system-ui;text-align:center;padding:3rem;font-size:1.2rem">{body}{back}</body>"#
+    )
+}
 
 #[cfg(test)]
 mod tests {
@@ -260,6 +306,24 @@ mod tests {
         let forged = "GET /?state=evil&code=x HTTP/1.1\r\n";
         assert!(matches!(parse_redirect(forged, "s1"), Some(Err(OAuthError::Failed(_)))));
         assert_eq!(parse_redirect("GET /favicon.ico HTTP/1.1\r\n", "s1"), None);
+    }
+
+    #[test]
+    fn the_android_page_links_back_to_kabar() {
+        let p = page(true, true);
+        assert!(p.contains(r#"href="app.kabar://signed-in""#), "{p}");
+        assert!(p.contains(r#"location.href="app.kabar://signed-in""#), "{p}");
+        assert!(p.contains("viewport"));
+        assert!(!page(true, false).contains("app.kabar://"));
+        assert!(page(false, true).contains("Not signed in"));
+        let auth = Authorization {
+            code: "secret-code".into(),
+            verifier: "v".into(),
+            redirect_uri: "http://127.0.0.1:1".into(),
+        };
+        let shown = format!("{auth:?}");
+        assert!(shown.contains("127.0.0.1:1") && !shown.contains("secret-code"), "{shown}");
+        assert_eq!(OAuthError::Network("dns".into()).to_string(), "network: dns");
     }
 
     #[test]
@@ -396,6 +460,15 @@ mod tests {
         assert!(matches!(
             exchange(&url, &public, "c", "v", "http://127.0.0.1:5000"),
             Err(OAuthError::Failed(_))
+        ));
+
+        // Nobody answers (Android cut the app off the network): retryable.
+        let closed = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+        let url = format!("http://{}/token", closed.local_addr().unwrap());
+        drop(closed);
+        assert!(matches!(
+            exchange(&url, &public, "c", "v", "http://127.0.0.1:5000"),
+            Err(OAuthError::Network(_))
         ));
     }
 }
