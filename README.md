@@ -10,7 +10,7 @@ the Arabic words Indonesian already borrowed.
 | | |
 |---|---|
 | **Use** | Personal only. Never published to a store. |
-| **Release** | None yet. The first one will be an **alpha**: a signed, sideloaded APK for the phone and tablet plus a local Mac app ([docs/RELEASE.md](docs/RELEASE.md)). |
+| **Release** | **1.0.0-alpha.2** (2026-11-04): a signed, sideloaded APK for the phone and tablet plus a local Mac app ([docs/RELEASE.md](docs/RELEASE.md)). |
 | **Cost to run** | $0/month (free tiers only; see [docs/RESEARCH.md](docs/RESEARCH.md)). |
 | **Devices** | MacBook Air M2, Galaxy S24 Ultra, Galaxy Tab S11. Layout follows window width, not device. |
 | **Content status** | All written content is a draft until the learner approves it. A lesson counts as approved once it is passed with 80% or more. |
@@ -186,14 +186,17 @@ Jump straight into a lesson or test: `KABAR_OPEN_LESSON=bipa1.u01.l01 just run-m
 
 ## Docs
 
+Continuing the work (agents and new chats): start with [AGENTS.md](AGENTS.md) and [docs/HANDOFF.md](docs/HANDOFF.md).
+
 | Doc | What |
 |---|---|
+| [HANDOFF.md](docs/HANDOFF.md) | Start here: architecture, commands, CI, releases, secret names, URLs, rules, current state |
 | [SPEC.md](docs/SPEC.md) | The full brief (v4 wins over anything older) |
 | [PLAN.md](docs/PLAN.md) | The agreed design |
 | [RUN.md](docs/RUN.md) | How to run and install everything |
 | [MAC-TODO.md](docs/MAC-TODO.md) | The first Mac session, step by step |
 | [CLOUD.md](docs/CLOUD.md) | Kabar Cloud setup and deploy |
-| [RELEASE.md](docs/RELEASE.md) | Release checklist (no release yet) |
+| [RELEASE.md](docs/RELEASE.md) | Release checklist and the Release workflow |
 | [AUTHORING.md](docs/AUTHORING.md) | Adding and correcting content: template, preflight, diff |
 | [CONTENT-IDS.md](docs/CONTENT-IDS.md) | Content ids learner records point at, and the check that keeps them |
 | [COMPATIBILITY.md](docs/COMPATIBILITY.md) | What each version number means and what an older or newer app does with it |
