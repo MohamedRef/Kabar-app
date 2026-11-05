@@ -46,6 +46,17 @@ Last full refresh: 2026-11-05, main at `705635c` (1.0.0-alpha.2).
   rules, sizes, output paths in each prompt): [VISUAL-ASSETS.md](VISUAL-ASSETS.md).
   Claude draws SVG itself; painterly art comes from Codex as zips.
 
+### Files outside git
+
+Everything that lived only in the Claude project's shared folder
+(`/mnt/project-files/`: art zips and batches, screenshots, curriculum tool
+specs, critiques, Kabar's pre-purge git bundle, uploads) and the project's
+memory notes are archived in the **private repo `MohamedRef/Batna-sources`**
+(`project-files/`, `project-memory/`; files over 100 MB split in
+`project-files/big/`). Despite its name it holds both apps' files. Clone it
+when a task needs an old asset or note. New large working files that matter
+beyond one task go there too, never into this repo if they are big or private.
+
 ## 2. Architecture
 
 Rust stable (edition 2024, `rust-version` 1.90), one Cargo workspace,
@@ -310,5 +321,6 @@ Mohamed can paste this into any new chat or account to continue:
 Newest first. One line per PR that changes behaviour, process or state.
 
 - 2026-11-05: feature strings moved out of the shared `Msg` into `<feature>/msg.rs` (i18n `Text` trait); `main.rs` split into `screen.rs`, `app_hooks.rs`, `shell.rs`; AGENTS.md § Small files; `check-file-sizes.sh` warns in CI.
+- 2026-11-05: project folder and memory notes archived in the private repo `MohamedRef/Batna-sources` (§ 1).
 - 2026-11-05: handoff docs added (`AGENTS.md`, this file, curriculum toolkit in `scripts/curriculum/`).
 - 2026-11-04: 1.0.0-alpha.2 released (#607); final critic pass closed.
