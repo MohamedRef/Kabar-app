@@ -30,7 +30,6 @@ pub enum Msg {
     WelcomeExplain,
     WelcomeFirstWord,
     WelcomeStart,
-    WelcomeHaveAccount,
     NavToday,
     NavJourney,
     NavReader,
@@ -47,8 +46,6 @@ pub enum Msg {
     NavChat,
     TodayTitle,
     ComingIn,
-    SettingsLanguage,
-    SettingsTheme,
     ThemeSystem,
     ThemeSystemBlack,
     ThemeLight,
@@ -57,25 +54,7 @@ pub enum Msg {
     ThemeNight,
     ThemeBatik,
     ThemeSawah,
-    SettingsDigits,
-    SettingsDevice,
-    SettingsShowWelcome,
-    SettingsSounds,
     CostTitle,
-    CostThisMonth,
-    CostOffline,
-    CostLoading,
-    CostServicesTitle,
-    CostAtTime,
-    CostTomorrowAt,
-    CostOnDate,
-    CostResets,
-    CostNearDay,
-    CostNearMonth,
-    CostPausedDay,
-    CostPausedMonth,
-    CostOff,
-    CostNotSetUp,
     CostUnitRequests,
     CostUnitCharacters,
     CostUnitNeurons,
@@ -83,16 +62,6 @@ pub enum Msg {
     CostUnitRowsWritten,
     CostPerDay,
     CostPerMonth,
-    CostPlatformTitle,
-    CostClaudeTitle,
-    CostClaudeOffBody,
-    CostClaudeOnBody,
-    CostClaudeTurnOn,
-    CostConfirmTitle,
-    CostConfirmBody,
-    CostConfirmNo,
-    CostConfirmYes,
-    CostClaudeHowTo,
     ExportTitle,
     ExportButton,
     ExportSaving,
@@ -119,20 +88,13 @@ pub enum Msg {
     WidthLarge,
     WidthExtraLarge,
     NavDevices,
-    CloudIntro,
-    CloudIntroWeb,
     CloudNotConfigured,
     CloudSignIn,
-    CloudSigningIn,
-    CloudSignOut,
-    CloudSignedInAs,
     SyncLive,
     SyncConnecting,
     SyncCatchingUp,
     SyncOffline,
     SyncStopped,
-    SyncPending,
-    SyncLast,
     ProblemNotAllowed,
     ProblemSignInCancelled,
     ProblemSignInWaiting,
@@ -140,77 +102,27 @@ pub enum Msg {
     ProblemSignedOutRemotely,
     ProblemNetwork,
     ProblemSignInNetwork,
-    ProblemSignInServer,
     ProblemServer,
     ProblemOutdated,
-    DevicesTitle,
     DevicesRefresh,
-    DeviceThis,
-    DeviceNeverSynced,
-    DeviceSignOut,
-    DeviceSignedOut,
-    TrySyncTitle,
-    TrySyncSave,
-    TrySyncSaved,
-    JustNow,
     JourneyIndonesian,
     JourneyJavanese,
     JourneyRoute,
-    JourneyMap,
-    JourneyMapOfIndonesia,
-    JourneyMapOfJava,
-    JourneyContinue,
-    JourneyTakeFlight,
-    JourneyTakeExpress,
-    JourneyBestAfter,
-    JourneyOpenAnyway,
-    JourneySuitcase,
-    JourneySuitcaseEmpty,
-    JourneyUnverified,
-    JourneyDone,
     JourneyUpNext,
-    JourneyAllDone,
-    JourneyZoomIn,
-    JourneyZoomOut,
-    JourneyZoomReset,
-    JourneyClose,
-    JourneyLoadError,
     LessonLearn,
     LessonPractice,
     LessonReview,
     // Review (M6)
     RevSeedTitle,
-    RevSeedBody,
-    RevSeedButton,
     RevDue,
     RevNew,
     RevReviewedToday,
     RevRetention,
-    RevForecast,
     RevForecastEmpty,
-    RevToday,
-    RevTomorrow,
-    RevIn,
-    RevClassic,
-    RevClassicHint,
-    RevWall,
-    RevWallHint,
-    RevWallPhone,
-    RevWallHintTouch,
-    RevWallHintMouse,
-    RevBurst,
-    RevBurstHint,
-    RevStart,
     RevAllDone,
-    RevNextReview,
-    RevLearnNew,
-    RevShowAnswer,
     RevHowWell,
-    RevRateHint,
     RevContentUnchecked,
-    RevContentOk,
     RevContentChecked,
-    RevKeysHint,
     RateAgain,
     RateHard,
     RateGood,
@@ -220,38 +132,14 @@ pub enum Msg {
     RevPromptListen,
     RevPromptCloze,
     RevPromptBridge,
-    RevAnswerPlaceholder,
-    RevCheck,
-    RevExact,
-    RevClose,
-    RevWrong,
-    RevYouWrote,
-    RevPlay,
-    RevUndo,
-    RevFinish,
     RevFromArabic,
     RevFalseFriend,
-    RevNotIndonesian,
-    RevShifted,
     RevUnverified,
-    RevLeft,
-    RevThisSession,
-    RevAnswered,
-    RevRemaining,
-    RevJustReviewed,
-    RevNoneYet,
-    RevTahu,
-    RevBelum,
-    RevWallHelp,
     RevTapToReveal,
-    RevKnow,
-    RevNotYet,
-    RevSecondsLeft,
     RevDoneTitle,
     RevCards,
     RevRemembered,
     RevTime,
-    RevAllRemembered,
     RevStrongest,
     RevRevisit,
     RevBackHome,
@@ -274,82 +162,43 @@ pub enum Msg {
     Fri,
     Sat,
     Sun,
-    MonShort,
-    TueShort,
-    WedShort,
-    ThuShort,
-    FriShort,
-    SatShort,
-    SunShort,
     SkillReading,
     SkillListening,
     SkillWriting,
     SkillSpeaking,
     SkillVocabulary,
-    // --- coach: onboarding ---
-    OnbProgress,
-    OnbNameLabel,
-    OnbWhy,
-    OnbWhyNote,
     WhyTravel,
     WhyWork,
     WhyFamily,
     WhyMedia,
     WhyFaith,
     WhyCuriosity,
-    OnbFocus,
     FocusBoth,
-    OnbTarget,
     OnbBothOrder,
-    OnbTargetLevel,
-    OnbTargetDate,
     OnbNoTarget,
     OnbNoTargetChosen,
     OnbSetTarget,
-    OnbStart,
     StartNew,
     StartNewHint,
     StartBasics,
     StartBasicsHint,
     StartChat,
     StartChatHint,
-    OnbPlacementLater,
     OnbFinish,
     ErrNoStudyTime,
     ErrTargetInPast,
     ErrUnknownLevel,
-    // --- coach: settings shared with onboarding ---
-    DailySize,
-    StudyTimes,
     AddTime,
     RemoveTime,
-    ReminderStyle,
     StyleGentle,
     StyleGentleHint,
     StyleSteady,
     StyleSteadyHint,
     StyleOff,
     StyleOffHint,
-    QuietHours,
-    RemindersElsewhere,
-    RemindersBlocked,
-    RemindersAllow,
-    RemindHere,
-    RemindersAsleep,
-    RemindersBattery,
     QuietFrom,
-    QuietTo,
     ReportWhen,
-    // --- coach: today ---
-    TodayProgress,
-    WelcomeBackTitle,
-    WelcomeBackPlan,
-    WelcomeBackStart,
-    WelcomeBackBigger,
-    PelitaReady,
-    PlanBreakTitle,
     GoalMet,
-    Freezes,
     Cards,
     ItemReview,
     ItemLesson,
@@ -358,12 +207,9 @@ pub enum Msg {
     PhraseLesson,
     PhraseWeakSpot,
     PhraseReading,
-    MarkDone,
     Snooze,
     SnoozedUntil,
     RecapTitle,
-    RecapRemember,
-    RecapTomorrow,
     StatTime,
     StatSteps,
     StatReviews,
@@ -375,23 +221,11 @@ pub enum Msg {
     ReportTitle,
     ReportLast,
     ReportThisWeek,
-    WeekOf,
     SoFar,
-    Strongest,
-    Weakest,
-    NextFocus,
     LeagueRank,
     LeagueXp,
-    AchievementsTitle,
-    Locked,
-    WarungExplain,
-    BatikClassic,
     Buy,
     Use,
-    InUse,
-    NotEnoughKoin,
-    KoinToGo,
-    JournalTitle,
     JournalEmpty,
     NavJournal,
     NavStats,
@@ -404,57 +238,36 @@ pub enum Msg {
     JournalShowAll,
     JournalShowOlder,
     JournalReflectionAdd,
-    JournalReflectionPlaceholder,
     JournalReflectionSave,
     JournalReflectionCancel,
     JournalReflectionEdit,
     JournalReflectionDelete,
     JournalReflectionDeleteSure,
-    JournalReflectionEdited,
-    JournalReflectionLabel,
     JournalTestPassed,
-    JournalSouvenir,
-    JournalTaught,
-    JournalDraft,
     EvReviews,
-    EvNewWords,
     EvLessonStep,
     EvLessonDone,
     EvPlanItem,
-    EvPurchase,
     // --- play ---
     NavPlay,
-    PlayContentProblem,
-    PlayDetails,
     PlayAgain,
     PlayOtherGames,
-    PlayTryInChat,
     PlayFinish,
     PlayRight,
-    PlayNotQuite,
-    PlayGreat,
-    PlayGood,
-    PlayKeepGoing,
     Check,
-    Stop,
     ShowMeaning,
     HideMeaning,
     AudioMissing,
-    Root,
     PagiTitle,
     PagiBlurb,
     PagiListen,
     PagiPlayAll,
     PagiOneByOne,
     PagiAllTranslations,
-    PagiWordsNote,
     PagiDone,
     PagiReadToday,
-    PagiNoStory,
     DeckTitle,
     DeckBlurb,
-    DeckMarked,
-    BridgeFromArabic,
     DeckMarkKnown,
     DeckKnown,
     DetectiveTitle,
@@ -466,37 +279,21 @@ pub enum Msg {
     SoundDropped,
     SoundSukun,
     SoundWordEnd,
-    DetectiveGuessArabic,
-    DetectiveGuessIndonesian,
-    DetectiveNoRounds,
     AlarmTitle,
     AlarmBlurb,
     AlarmIntro,
     AlarmLooksLike,
-    AlarmQuestion,
-    AlarmCaught,
-    AlarmTricky,
     RupiahTitle,
     RupiahBlurb,
-    RupiahIntro,
     RupiahHundreds,
     RupiahThousands,
     RupiahMillions,
     RupiahMixed,
     RupiahBest,
-    RupiahType,
-    RupiahClose,
     RupiahWrong,
-    RupiahScore,
-    RupiahSeconds,
     RupiahNewBest,
     PasarTitle,
     PasarBlurb,
-    PasarIntro,
-    PasarNoItems,
-    PasarBonus,
-    PasarBudget,
-    PasarOnTable,
     PasarAskPrice,
     PasarAskLower,
     PasarOffer,
@@ -506,7 +303,6 @@ pub enum Msg {
     PasarDealOver,
     PasarWalked,
     PasarPaid,
-    PasarSaved,
     ReaderPlaceholder,
     ReaderRead,
     ReaderScreenshot,
@@ -514,27 +310,19 @@ pub enum Msg {
     ReaderDropText,
     ReaderRecent,
     ReaderNew,
-    Voice,
     LangIndonesian,
     LangJavanese,
     LangEnglish,
     LangProper,
     LangUnknown,
-    LangSlang,
     StatusNew,
     StatusLearning,
     StatusKnown,
     StatusIgnored,
-    AddToReview,
     AddedToReview,
     Listen,
     Unverified,
     NoLocalGloss,
-    EnglishInChat,
-    InThisSentence,
-    Breakdown,
-    MorphMore,
-    MorphSoundChange,
     MorphTimeWords,
     MorphGrammar,
     MorphColours,
@@ -559,18 +347,15 @@ pub enum Msg {
     InIndonesian,
     Helpful,
     NotHelpful,
-    ThanksFeedback,
     SavePhrase,
     PhraseSaved,
     RemoveHighlight,
     ExplainSentence,
     ExplainNeedsCloud,
-    ExplainThinking,
     ExplainResetsLater,
     ExplainUnreachable,
     ExplainTryAgain,
     InOtherWords,
-    RegisterLabel,
     RegisterChat,
     RegisterFormal,
     RegisterNeutral,
@@ -580,23 +365,14 @@ pub enum Msg {
     RegisterMixed,
     CultureNote,
     GrammarInSentence,
-    NoGrammarMatched,
-    FoundBy,
     GrammarInText,
     GrammarForWord,
     GrammarLearned,
     GrammarAtLevel,
     GrammarNotYet,
-    GrammarLearnedIn,
-    GrammarTaughtIn,
-    GrammarOpenLesson,
-    GrammarReadMore,
-    CommonMistake,
-    ExplainWord,
     UrlFetching,
     UrlImportFailed,
     OcrWorking,
-    ReaderBusyHint,
     WaitWordPrompt,
     OcrFailed,
     OcrUnavailable,
@@ -609,17 +385,12 @@ pub enum Msg {
     SheetResize,
     /// The word sheet's name for screen readers.
     WordSheet,
-    Delete,
-    Original,
-    Explanation,
     Me,
     PenHint,
-    Example,
     // Reader: the translation under each line
     TranslationTitle,
     TranslationWorking,
     TranslationByAi,
-    TranslationWordByWord,
     TranslationWordByWordShort,
     TranslationNeedsCloud,
     TranslationResetsLater,
@@ -627,13 +398,10 @@ pub enum Msg {
     TranslationTryAgain,
     TranslationRetry,
     ReaderWriteFailed,
-    ReadingSettings,
-    ReadSize,
     ReadSmaller,
     ReadNormal,
     ReadLarger,
     ReadLargest,
-    ReadSpacing,
     ReadSnug,
     ReadAiry,
     ReadWidth,
@@ -645,18 +413,12 @@ pub enum Msg {
     // Unggah-Ungguh Simulator (M11)
     UnggahTitle,
     UnggahBlurb,
-    UnggahIntro,
-    UnggahNoScenes,
     UnggahOpensAt,
-    UnggahMeter,
     UnggahTurn,
-    UnggahYourTurn,
     UnggahFits,
     UnggahTooPlain,
     UnggahTooStiff,
     UnggahSelfRaised,
-    UnggahBetter,
-    UnggahFitting,
     UnggahScenes,
     UnggahEndGreat,
     UnggahEndGood,
@@ -664,7 +426,6 @@ pub enum Msg {
     // Minimal Pairs (M11)
     PairsTitle,
     PairsBlurb,
-    PairsIntro,
     PairsBoth,
     PairsListenMode,
     PairsReadMode,
@@ -672,19 +433,8 @@ pub enum Msg {
     PairsHear,
     PairsWhichHeard,
     PairsWhichSpelling,
-    PairsInJavanese,
-    PairsInIndonesian,
     PairsJavanese,
     PairsIndonesian,
-    PairsTipTitle,
-    PairsTheTwoWords,
-    SettingsPron,
-    SettingsRetention,
-    RetentionLight,
-    RetentionBalanced,
-    RetentionFirm,
-    RetentionTuned,
-    RetentionLearning,
     PronModeOn,
     PronModeTap,
     PronModeOff,
@@ -701,29 +451,6 @@ pub enum Msg {
     WebOtherTab,
     /// The web app: the browser refused to keep the data.
     WebSaveFailed,
-    // Username + password sign-in (docs/CLOUD.md § Username and password).
-    PwTitle,
-    PwIntro,
-    PwUsername,
-    PwPassword,
-    PwNotMine,
-    PwNotMineHint,
-    PwSignIn,
-    PwChecking,
-    PwYours,
-    PwHow,
-    PwNone,
-    PwUsernameHint,
-    PwNew,
-    PwPasswordHint,
-    PwAgain,
-    PwSave,
-    PwSaving,
-    PwSaved,
-    PwChange,
-    PwRemove,
-    PwCancel,
-    PwTemporary,
     ProblemWrongPassword,
     ProblemLocked,
     ProblemTaken,
@@ -739,7 +466,24 @@ pub fn fill(lang: UiLanguage, template: &str, args: &[(&str, &str)]) -> String {
     kabar_core::coach::voice::fill(lang, template, args)
 }
 
-pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
+/// A typed UI string from any catalog: the shared [`Msg`] or a feature's
+/// own (`coach::msg::CoachMsg`, ...).
+pub trait Text: Copy {
+    fn text(self, lang: UiLanguage) -> &'static str;
+}
+
+impl Text for Msg {
+    fn text(self, lang: UiLanguage) -> &'static str {
+        msg_text(lang, self)
+    }
+}
+
+/// A UI string in `lang`, from whichever catalog `msg` belongs to.
+pub fn t<M: Text>(lang: UiLanguage, msg: M) -> &'static str {
+    msg.text(lang)
+}
+
+fn msg_text(lang: UiLanguage, msg: Msg) -> &'static str {
     use Msg::*;
     use UiLanguage::*;
     match (msg, lang) {
@@ -757,9 +501,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (WelcomeStart, ArEg) => "يلا نبدأ",
         (WelcomeStart, Ar) => "لنبدأ",
         (WelcomeStart, En) => "Let's begin",
-        (WelcomeHaveAccount, ArEg) => "بتتعلّم مع Kabar قبل كده؟ ادخل على حسابك",
-        (WelcomeHaveAccount, Ar) => "تتعلّم مع Kabar من قبل؟ سجّل الدخول إلى حسابك",
-        (WelcomeHaveAccount, En) => "Already learning with Kabar? Sign in",
         (NavToday, ArEg | Ar) => "اليوم",
         (NavToday, En) => "Today",
         (NavJourney, ArEg | Ar) => "الرحلة",
@@ -794,11 +535,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ComingIn, ArEg) => "جاي في",
         (ComingIn, Ar) => "قادم في",
         (ComingIn, En) => "Coming in",
-        (SettingsLanguage, ArEg) => "لغة الشرح",
-        (SettingsLanguage, Ar) => "لغة الشرح",
-        (SettingsLanguage, En) => "Explanation language",
-        (SettingsTheme, ArEg | Ar) => "المظهر",
-        (SettingsTheme, En) => "Theme",
         (ThemeSystem, ArEg) => "زي الجهاز",
         (ThemeSystem, Ar) => "حسب النظام",
         (ThemeSystem, En) => "System",
@@ -818,88 +554,8 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ThemeSawah, ArEg) => "أخضر غيطان",
         (ThemeSawah, Ar) => "أخضر الحقول",
         (ThemeSawah, En) => "Sawah green",
-        (SettingsDigits, ArEg) => "أرقام عربية (٠١٢٣)",
-        (SettingsDigits, Ar) => "أرقام عربية مشرقية (٠١٢٣)",
-        (SettingsDigits, En) => "Eastern Arabic digits (٠١٢٣) in Arabic",
-        (SettingsDevice, ArEg | Ar) => "معرّف الجهاز",
-        (SettingsDevice, En) => "Device ID",
-        (SettingsShowWelcome, ArEg) => "اعرض شاشة الترحيب تاني",
-        (SettingsShowWelcome, Ar) => "اعرض شاشة الترحيب مجددًا",
-        (SettingsShowWelcome, En) => "Show the welcome screen again",
-        (SettingsSounds, ArEg) => "أصوات الدروس والمراجعة",
-        (SettingsSounds, Ar) => "أصوات الدروس والمراجعة",
-        (SettingsSounds, En) => "Lesson and review sounds",
         (CostTitle, ArEg | Ar) => "التكلفة والحدود",
         (CostTitle, En) => "Cost & limits",
-        (CostThisMonth, ArEg) => "الشهر ده",
-        (CostThisMonth, Ar) => "هذا الشهر",
-        (CostThisMonth, En) => "this month",
-        (CostOffline, ArEg) => {
-            "\u{2068}Kabar Cloud\u{2069} مش متوصل دلوقتي، فمفيش عدادات نعرضها. بس برضه صفر: كل خدمة بتقف عند حدها المجاني."
-        }
-        (CostOffline, Ar) => {
-            "\u{2068}Kabar Cloud\u{2069} غير متصل الآن، فلا توجد عدادات لعرضها. ومع ذلك فالتكلفة صفر: كل خدمة تتوقف عند حدها المجاني."
-        }
-        (CostOffline, En) => {
-            "Kabar Cloud isn't connected right now, so there are no live counters to show. It's still $0: every service stops at its free limit."
-        }
-        (CostLoading, ArEg) => "بنشوف العدادات…",
-        (CostLoading, Ar) => "جارٍ قراءة العدادات…",
-        (CostLoading, En) => "Checking the counters…",
-        (CostServicesTitle, ArEg | Ar) => "الحصص المجانية",
-        (CostServicesTitle, En) => "Free allowances",
-        (CostAtTime, ArEg | Ar) => "الساعة {time}",
-        (CostAtTime, En) => "at {time}",
-        (CostTomorrowAt, ArEg) => "بكرة الساعة {time}",
-        (CostTomorrowAt, Ar) => "غدًا الساعة {time}",
-        (CostTomorrowAt, En) => "tomorrow at {time}",
-        (CostOnDate, ArEg | Ar) => "يوم {date}",
-        (CostOnDate, En) => "on {date}",
-        (CostResets, ArEg) => "بتتجدد {when}",
-        (CostResets, Ar) => "تتجدد {when}",
-        (CostResets, En) => "Resets {when}",
-        (CostNearDay, ArEg) => {
-            "الحصة المجانية بتاعة {service} النهارده قربت تخلص. لما توصل للحد \u{2068}Kabar\u{2069} هيوقفها بدل ما يدفع، وترجع {when}."
-        }
-        (CostNearDay, Ar) => {
-            "اقتربت حصة {service} المجانية لليوم من النفاد. عند الحد سيوقفها \u{2068}Kabar\u{2069} بدل أن يدفع، وتعود {when}."
-        }
-        (CostNearDay, En) => {
-            "{service}'s free allowance for today is almost used. At the limit Kabar pauses it rather than pay; it's back {when}."
-        }
-        (CostNearMonth, ArEg) => {
-            "الحصة المجانية بتاعة {service} الشهر ده قربت تخلص. لما توصل للحد \u{2068}Kabar\u{2069} هيوقفها بدل ما يدفع، وترجع {when}."
-        }
-        (CostNearMonth, Ar) => {
-            "اقتربت حصة {service} المجانية لهذا الشهر من النفاد. عند الحد سيوقفها \u{2068}Kabar\u{2069} بدل أن يدفع، وتعود {when}."
-        }
-        (CostNearMonth, En) => {
-            "{service}'s free allowance for this month is almost used. At the limit Kabar pauses it rather than pay; it's back {when}."
-        }
-        (CostPausedDay, ArEg) => {
-            "{service} خلّص حصته المجانية النهارده، فـ\u{2068}Kabar\u{2069} وقّفه بدل ما يدفع. هيرجع {when}."
-        }
-        (CostPausedDay, Ar) => {
-            "استنفد {service} حصته المجانية لليوم، فأوقفه \u{2068}Kabar\u{2069} بدل أن يدفع. سيعود {when}."
-        }
-        (CostPausedDay, En) => {
-            "{service} has used today's free allowance, so Kabar paused it rather than pay. It's back {when}."
-        }
-        (CostPausedMonth, ArEg) => {
-            "{service} خلّص حصته المجانية الشهر ده، فـ\u{2068}Kabar\u{2069} وقّفه بدل ما يدفع. هيرجع {when}."
-        }
-        (CostPausedMonth, Ar) => {
-            "استنفد {service} حصته المجانية لهذا الشهر، فأوقفه \u{2068}Kabar\u{2069} بدل أن يدفع. سيعود {when}."
-        }
-        (CostPausedMonth, En) => {
-            "{service} has used this month's free allowance, so Kabar paused it rather than pay. It's back {when}."
-        }
-        (CostOff, ArEg) => "مقفول",
-        (CostOff, Ar) => "متوقف",
-        (CostOff, En) => "Off",
-        (CostNotSetUp, ArEg) => "مش متظبط",
-        (CostNotSetUp, Ar) => "غير مُعدّ",
-        (CostNotSetUp, En) => "Not set up",
         (CostUnitRequests, ArEg | Ar) => "طلب",
         (CostUnitRequests, En) => "requests",
         (CostUnitCharacters, ArEg | Ar) => "حرف",
@@ -914,57 +570,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (CostPerDay, En) => "a day",
         (CostPerMonth, ArEg | Ar) => "في الشهر",
         (CostPerMonth, En) => "a month",
-        (CostPlatformTitle, ArEg | Ar) => "\u{2068}Cloudflare\u{2069} (الخطة المجانية)",
-        (CostPlatformTitle, En) => "Cloudflare (Free plan)",
-        (CostClaudeTitle, ArEg) => "\u{2068}Claude\u{2069} (محرّك بفلوس)",
-        (CostClaudeTitle, Ar) => "\u{2068}Claude\u{2069} (محرّك مدفوع)",
-        (CostClaudeTitle, En) => "Claude (paid engine)",
-        (CostClaudeOffBody, ArEg) => {
-            "\u{2068}Claude\u{2069} مقفول. \u{2068}Kabar\u{2069} بيستعمل المحركات المجانية بس، إلا لو إنت شغّلته."
-        }
-        (CostClaudeOffBody, Ar) => {
-            "\u{2068}Claude\u{2069} متوقف. يستخدم \u{2068}Kabar\u{2069} المحركات المجانية فقط ما لم تشغّله."
-        }
-        (CostClaudeOffBody, En) => "Claude is off. Kabar only uses free engines unless you turn it on.",
-        (CostClaudeOnBody, ArEg) => {
-            "\u{2068}Claude\u{2069} شغّال. بيبقى ببلاش طول ما رصيد \u{2068}Claude Max\u{2069} مغطّيه، وبيقف عند الحد الشهري."
-        }
-        (CostClaudeOnBody, Ar) => {
-            "\u{2068}Claude\u{2069} يعمل. يكون مجانيًا ما دام رصيد \u{2068}Claude Max\u{2069} يغطيه، ويتوقف عند الحد الشهري."
-        }
-        (CostClaudeOnBody, En) => {
-            "Claude is on. It's free while Claude Max credits cover it, and it stops at the monthly limit."
-        }
-        (CostClaudeTurnOn, ArEg) => "شغّل \u{2068}Claude\u{2069}…",
-        (CostClaudeTurnOn, Ar) => "تشغيل \u{2068}Claude\u{2069}…",
-        (CostClaudeTurnOn, En) => "Turn on Claude…",
-        (CostConfirmTitle, ArEg) => "ده ممكن يكلّف فلوس",
-        (CostConfirmTitle, Ar) => "قد يكلّف هذا مالًا",
-        (CostConfirmTitle, En) => "This could cost money",
-        (CostConfirmBody, ArEg) => {
-            "\u{2068}Claude\u{2069} خدمة بفلوس. بيبقى ببلاش بس لو رصيد اشتراك \u{2068}Claude Max\u{2069} بتاعك مغطّيه؛ غير كده \u{2068}Anthropic\u{2069} هتحاسب الحساب اللي عليه المفتاح. \u{2068}Kabar\u{2069} برضه هيقف عند الحد الشهري. تحب تشغّله؟"
-        }
-        (CostConfirmBody, Ar) => {
-            "\u{2068}Claude\u{2069} خدمة مدفوعة. تكون مجانية فقط إذا غطّاها رصيد اشتراك \u{2068}Claude Max\u{2069}؛ وإلا فستحاسب \u{2068}Anthropic\u{2069} الحساب المرتبط بالمفتاح. ومع ذلك سيتوقف \u{2068}Kabar\u{2069} عند الحد الشهري. هل تريد تشغيله؟"
-        }
-        (CostConfirmBody, En) => {
-            "Claude is a paid service. It's free only if your Claude Max plan's credits cover it; otherwise Anthropic bills the account behind the API key. Kabar still stops at the monthly limit. Turn it on?"
-        }
-        (CostConfirmNo, ArEg) => "لأ، خلّيه مقفول",
-        (CostConfirmNo, Ar) => "لا، أبقِه متوقفًا",
-        (CostConfirmNo, En) => "No, keep it off",
-        (CostConfirmYes, ArEg) => "أيوه، شغّله",
-        (CostConfirmYes, Ar) => "نعم، شغّله",
-        (CostConfirmYes, En) => "Yes, turn it on",
-        (CostClaudeHowTo, ArEg) => {
-            "عشان تشغّله: حط \u{2068}CLAUDE_ENABLED = \"true\"\u{2069} في \u{2068}wrangler.toml\u{2069} بتاع \u{2068}Kabar Cloud\u{2069} وشغّل \u{2068}just deploy-cloud\u{2069}. زرار التشغيل جوه التطبيق جاي مع شاشة محركات الذكاء الاصطناعي."
-        }
-        (CostClaudeHowTo, Ar) => {
-            "لتشغيله: اضبط \u{2068}CLAUDE_ENABLED = \"true\"\u{2069} في ملف \u{2068}wrangler.toml\u{2069} الخاص بـ\u{2068}Kabar Cloud\u{2069} ثم شغّل \u{2068}just deploy-cloud\u{2069}. سيأتي زر التشغيل داخل التطبيق مع شاشة محركات الذكاء الاصطناعي."
-        }
-        (CostClaudeHowTo, En) => {
-            "To switch it on, set CLAUDE_ENABLED = \"true\" in Kabar Cloud's wrangler.toml and run just deploy-cloud. An in-app switch comes with the AI engines screen."
-        }
         (DiagTitle, ArEg) => "اللي حصل مؤخرًا",
         (DiagTitle, Ar) => "ما حدث مؤخرًا",
         (DiagTitle, En) => "What happened lately",
@@ -1038,16 +643,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (WidthExtraLarge, En) => "Extra large",
         (NavDevices, ArEg | Ar) => "الحساب والأجهزة",
         (NavDevices, En) => "Account & devices",
-        (CloudIntro, ArEg) => "سجّل دخول بجوجل عشان تقدّمك يتزامن بين الموبايل والتابلت والماك.",
-        (CloudIntro, Ar) => "سجّل الدخول بحساب Google لمزامنة تقدّمك بين الهاتف واللوحي والماك.",
-        (CloudIntro, En) => "Sign in with Google so your progress syncs between your phone, tablet and Mac.",
-        (CloudIntroWeb, ArEg) => {
-            "ادخل باسم المستخدم والباسورد عشان تقدّمك يتزامن مع الموبايل والتابلت والماك."
-        }
-        (CloudIntroWeb, Ar) => "ادخل باسم المستخدم وكلمة المرور لمزامنة تقدّمك مع الهاتف واللوحي والماك.",
-        (CloudIntroWeb, En) => {
-            "Sign in with your username and password to sync with your phone, tablet and Mac."
-        }
         (CloudNotConfigured, ArEg) => {
             "النسخة دي لسه مش متوصلة بـ \u{2068}Kabar Cloud\u{2069}. أول ما السيرفر يشتغل هتقدر تسجّل دخول من هنا، وكل حاجة محفوظة على جهازك لحد ساعتها."
         }
@@ -1060,15 +655,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (CloudSignIn, ArEg) => "سجّل دخول بجوجل",
         (CloudSignIn, Ar) => "تسجيل الدخول بحساب Google",
         (CloudSignIn, En) => "Sign in with Google",
-        (CloudSigningIn, ArEg) => "كمّل تسجيل الدخول في المتصفح، وبعدين ارجع هنا.",
-        (CloudSigningIn, Ar) => "أكمل تسجيل الدخول في المتصفح، ثم عد إلى هنا.",
-        (CloudSigningIn, En) => "Finish signing in in your browser, then come back here.",
-        (CloudSignOut, ArEg) => "سجّل خروج من الجهاز ده",
-        (CloudSignOut, Ar) => "تسجيل الخروج من هذا الجهاز",
-        (CloudSignOut, En) => "Sign out on this device",
-        (CloudSignedInAs, ArEg) => "متسجّل باسم",
-        (CloudSignedInAs, Ar) => "مسجّل الدخول باسم",
-        (CloudSignedInAs, En) => "Signed in as",
         (SyncLive, ArEg | Ar) => "متزامن",
         (SyncLive, En) => "In sync",
         (SyncConnecting, ArEg) => "بيتصل…",
@@ -1085,11 +671,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (SyncStopped, ArEg) => "المزامنة واقفة",
         (SyncStopped, Ar) => "المزامنة متوقفة",
         (SyncStopped, En) => "Sync is paused",
-        (SyncPending, ArEg) => "تغييرات مستنية تتبعت",
-        (SyncPending, Ar) => "تغييرات بانتظار الإرسال",
-        (SyncPending, En) => "changes waiting to sync",
-        (SyncLast, ArEg | Ar) => "آخر مزامنة",
-        (SyncLast, En) => "Last sync",
         (ProblemNotAllowed, ArEg) => "الحساب ده مش من الحسابات المسموح بيها. جرّب الجيميل بتاعك.",
         (ProblemNotAllowed, Ar) => "هذا الحساب ليس من الحسابات المسموح بها. جرّب حساب Gmail الخاص بك.",
         (ProblemNotAllowed, En) => "That Google account isn't on Kabar's allowlist. Try your own Gmail.",
@@ -1119,42 +700,15 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
             "تعذّر الوصول إلى \u{2068}Kabar Cloud\u{2069}. تأكد من الاتصال وحاول مجددًا."
         }
         (ProblemSignInNetwork, En) => "Couldn't reach Kabar Cloud. Check your connection and try again.",
-        (ProblemSignInServer, ArEg) => "\u{2068}Kabar Cloud\u{2069} فيه مشكلة دلوقتي. جرّب تاني بعد شوية.",
-        (ProblemSignInServer, Ar) => "يواجه \u{2068}Kabar Cloud\u{2069} مشكلة الآن. حاول مجددًا بعد قليل.",
-        (ProblemSignInServer, En) => "Kabar Cloud is having trouble right now. Try again in a bit.",
         (ProblemServer, ArEg) => "\u{2068}Kabar Cloud\u{2069} فيه مشكلة دلوقتي. هحاول تاني بعد شوية.",
         (ProblemServer, Ar) => "يواجه \u{2068}Kabar Cloud\u{2069} مشكلة الآن. سأحاول مجددًا بعد قليل.",
         (ProblemServer, En) => "Kabar Cloud is having trouble. I'll try again in a bit.",
         (ProblemOutdated, ArEg) => "المزامنة محتاجة نسخة أحدث من \u{2068}Kabar\u{2069}. حدّث التطبيق.",
         (ProblemOutdated, Ar) => "تحتاج المزامنة إلى نسخة أحدث من \u{2068}Kabar\u{2069}. حدّث التطبيق.",
         (ProblemOutdated, En) => "Sync needs a newer Kabar. Please update the app.",
-        (DevicesTitle, ArEg | Ar) => "الأجهزة",
-        (DevicesTitle, En) => "Devices",
         (DevicesRefresh, ArEg) => "حدّث",
         (DevicesRefresh, Ar) => "تحديث",
         (DevicesRefresh, En) => "Refresh",
-        (DeviceThis, ArEg) => "الجهاز ده",
-        (DeviceThis, Ar) => "هذا الجهاز",
-        (DeviceThis, En) => "This device",
-        (DeviceNeverSynced, ArEg) => "لسه ما اتزامنش",
-        (DeviceNeverSynced, Ar) => "لم يُزامَن بعد",
-        (DeviceNeverSynced, En) => "Not synced yet",
-        (DeviceSignOut, ArEg) => "سجّل خروجه",
-        (DeviceSignOut, Ar) => "تسجيل خروجه",
-        (DeviceSignOut, En) => "Sign it out",
-        (DeviceSignedOut, ArEg) => "متسجّل خروجه",
-        (DeviceSignedOut, Ar) => "مسجَّل خروجه",
-        (DeviceSignedOut, En) => "Signed out",
-        (TrySyncTitle, ArEg | Ar) => "جرّب المزامنة",
-        (TrySyncTitle, En) => "Try sync",
-        (TrySyncSave, ArEg | Ar) => "احفظ",
-        (TrySyncSave, En) => "Save",
-        (TrySyncSaved, ArEg) => "الكلمات المحفوظة",
-        (TrySyncSaved, Ar) => "الكلمات المحفوظة",
-        (TrySyncSaved, En) => "Saved words",
-        (JustNow, ArEg) => "دلوقتي",
-        (JustNow, Ar) => "الآن",
-        (JustNow, En) => "just now",
         (JourneyIndonesian, ArEg | Ar) => "الإندونيسية",
         (JourneyIndonesian, En) => "Indonesian",
         (JourneyJavanese, ArEg | Ar) => "الجاوية",
@@ -1162,60 +716,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JourneyRoute, ArEg) => "المسار",
         (JourneyRoute, Ar) => "المسار",
         (JourneyRoute, En) => "Route",
-        (JourneyMap, ArEg | Ar) => "الخريطة",
-        (JourneyMap, En) => "Map",
-        (JourneyMapOfIndonesia, ArEg | Ar) => "خريطة إندونيسيا",
-        (JourneyMapOfIndonesia, En) => "Map of Indonesia",
-        (JourneyMapOfJava, ArEg | Ar) => "خريطة جاوة",
-        (JourneyMapOfJava, En) => "Map of Java",
-        (JourneyContinue, ArEg) => "كمّل",
-        (JourneyContinue, Ar) => "تابِع",
-        (JourneyContinue, En) => "Continue",
-        (JourneyTakeFlight, ArEg) => "اركب الطيارة: اختبار تحديد مستوى",
-        (JourneyTakeFlight, Ar) => "سافر بالطائرة: اختبار تحديد المستوى",
-        (JourneyTakeFlight, En) => "Take a flight: placement test",
-        (JourneyTakeExpress, ArEg) => "اركب القطر السريع: اختبار تحديد مستوى",
-        (JourneyTakeExpress, Ar) => "اركب القطار السريع: اختبار تحديد المستوى",
-        (JourneyTakeExpress, En) => "Take the express: placement test",
-        (JourneyBestAfter, ArEg) => "أحسن تبدأه بعد",
-        (JourneyBestAfter, Ar) => "يُفضَّل أن تبدأه بعد",
-        (JourneyBestAfter, En) => "Best started after",
-        (JourneyOpenAnyway, ArEg) => "بس هو مفتوح لو حابب تبص عليه دلوقتي.",
-        (JourneyOpenAnyway, Ar) => "لكنه مفتوح إن أحببت أن تلقي نظرة الآن.",
-        (JourneyOpenAnyway, En) => "It's open now if you'd like a look.",
-        (JourneySuitcase, ArEg) => "الشنطة",
-        (JourneySuitcase, Ar) => "حقيبة السفر",
-        (JourneySuitcase, En) => "Suitcase",
-        (JourneySuitcaseEmpty, ArEg) => "خلّص أول محطة، وهتلاقي أول تذكار مستنيك هنا.",
-        (JourneySuitcaseEmpty, Ar) => "أنهِ أول محطة، وستجد تذكارك الأول بانتظارك هنا.",
-        (JourneySuitcaseEmpty, En) => "Finish your first stop and your first souvenir will be waiting here.",
-        (JourneyUnverified, ArEg) => "لسه متراجعش",
-        (JourneyUnverified, Ar) => "لم يُراجَع بعد",
-        (JourneyUnverified, En) => "Not yet verified",
-        (JourneyDone, ArEg) => "خلصته",
-        (JourneyDone, Ar) => "مكتمل",
-        (JourneyDone, En) => "Done",
         (JourneyUpNext, ArEg) => "اللي جاي",
         (JourneyUpNext, Ar) => "التالي",
         (JourneyUpNext, En) => "Up next",
-        (JourneyAllDone, ArEg) => "خلصت المسار كله. \u{2068}Selamat!\u{2069}",
-        (JourneyAllDone, Ar) => "أنهيت المسار كله. \u{2068}Selamat!\u{2069}",
-        (JourneyAllDone, En) => "You've finished the whole route. Selamat!",
-        (JourneyZoomIn, ArEg) => "قرّب",
-        (JourneyZoomIn, Ar) => "تكبير",
-        (JourneyZoomIn, En) => "Zoom in",
-        (JourneyZoomOut, ArEg) => "بعّد",
-        (JourneyZoomOut, Ar) => "تصغير",
-        (JourneyZoomOut, En) => "Zoom out",
-        (JourneyZoomReset, ArEg) => "رجّع الخريطة زي ما كانت",
-        (JourneyZoomReset, Ar) => "إعادة الخريطة كما كانت",
-        (JourneyZoomReset, En) => "Reset the map",
-        (JourneyClose, ArEg) => "اقفل",
-        (JourneyClose, Ar) => "إغلاق",
-        (JourneyClose, En) => "Close",
-        (JourneyLoadError, ArEg) => "معرفناش نقرا المنهج. ده غلط عندنا مش عندك.",
-        (JourneyLoadError, Ar) => "تعذّرت قراءة المنهج. الخطأ من جهتنا لا من جهتك.",
-        (JourneyLoadError, En) => "Kabar couldn't read the curriculum. That's on us, not you.",
         (LessonLearn, ArEg | Ar) => "تعلُّم",
         (LessonLearn, En) => "Learn",
         (LessonPractice, ArEg | Ar) => "تمرين",
@@ -1227,18 +730,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RevSeedTitle, ArEg) => "ابدأ بكلمات إنت أصلاً عارفها",
         (RevSeedTitle, Ar) => "ابدأ بكلمات تعرفها أصلًا",
         (RevSeedTitle, En) => "Start with words you already know",
-        (RevSeedBody, ArEg) => {
-            "{n|كلمة إندونيسي|كلمتين إندونيسي|كلمات إندونيسي|كلمة إندونيسي} أصلها عربي. هتعرف أغلبهم من أول نظرة، وفيهم اتنين بيعملوا مقالب."
-        }
-        (RevSeedBody, Ar) => {
-            "{n|كلمة إندونيسية|كلمتان إندونيسيتان|كلمات إندونيسية|كلمةً إندونيسية} أصلها عربي. ستعرف أغلبها من النظرة الأولى، واثنتان منها تخدعانك."
-        }
-        (RevSeedBody, En) => {
-            "{n|Indonesian word|Indonesian words} that came from Arabic. You'll recognize most at first sight, and two of them play tricks."
-        }
-        (RevSeedButton, ArEg) => "ضيف الكلمات دي",
-        (RevSeedButton, Ar) => "أضف هذه الكلمات",
-        (RevSeedButton, En) => "Add these words",
         (RevDue, ArEg) => "مستنية مراجعة",
         (RevDue, Ar) => "مستحقة الآن",
         (RevDue, En) => "Due now",
@@ -1249,93 +740,21 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RevReviewedToday, En) => "Reviewed today",
         (RevRetention, ArEg | Ar) => "نسبة التذكّر",
         (RevRetention, En) => "Retention",
-        (RevForecast, ArEg) => "الأيام السبعة الجاية",
-        (RevForecast, Ar) => "الأيام السبعة القادمة",
-        (RevForecast, En) => "The next 7 days",
         (RevForecastEmpty, ArEg) => "مفيش مراجعات جاية لسه. أول ما تتعلم كلمات جديدة هتظهر هنا.",
         (RevForecastEmpty, Ar) => "لا مراجعات قادمة بعد. ستظهر هنا حين تتعلم كلمات جديدة.",
         (RevForecastEmpty, En) => "No reviews coming up yet. They show up here as you learn new words.",
-        (RevToday, ArEg) => "النهارده",
-        (RevToday, Ar) => "اليوم",
-        (RevToday, En) => "Today",
-        (RevTomorrow, ArEg) => "بكرة",
-        (RevTomorrow, Ar) => "غدًا",
-        (RevTomorrow, En) => "tomorrow",
-        (RevIn, ArEg | Ar) => "بعد {span}",
-        (RevIn, En) => "in {span}",
-        (RevClassic, ArEg) => "كروت عادية",
-        (RevClassic, Ar) => "البطاقات التقليدية",
-        (RevClassic, En) => "Classic cards",
-        (RevClassicHint, ArEg) => "اكشف الكارت وقول عرفته قد إيه.",
-        (RevClassicHint, Ar) => "اكشف البطاقة وقيّم مدى معرفتك بها.",
-        (RevClassicHint, En) => "Reveal each card, then say how well you knew it.",
-        (RevWall, ArEg) => "طاولة الكروت",
-        (RevWall, Ar) => "طاولة البطاقات",
-        (RevWall, En) => "Card Wall",
-        (RevWallHint, ArEg) => {
-            "زقّ الكروت بالقلم أو بصباعك لكومة \u{2068}tahu\u{2069} (عارفها) أو \u{2068}belum\u{2069} (لسه)."
-        }
-        (RevWallHint, Ar) => {
-            "ادفع البطاقات بالقلم أو بإصبعك إلى كومة \u{2068}tahu\u{2069} (أعرفها) أو \u{2068}belum\u{2069} (ليس بعد)."
-        }
-        (RevWallHint, En) => {
-            "Flick cards with the pen or your finger into tahu (I know it) or belum (not yet)."
-        }
-        (RevWallHintTouch, ArEg) => {
-            "زقّ الكروت بصباعك لكومة \u{2068}tahu\u{2069} (عارفها) أو \u{2068}belum\u{2069} (لسه)."
-        }
-        (RevWallHintTouch, Ar) => {
-            "ادفع البطاقات بإصبعك إلى كومة \u{2068}tahu\u{2069} (أعرفها) أو \u{2068}belum\u{2069} (ليس بعد)."
-        }
-        (RevWallHintTouch, En) => "Flick cards with your finger into tahu (I know it) or belum (not yet).",
-        (RevWallHintMouse, ArEg) => {
-            "اسحب الكروت بالماوس لكومة \u{2068}tahu\u{2069} (عارفها) أو \u{2068}belum\u{2069} (لسه)."
-        }
-        (RevWallHintMouse, Ar) => {
-            "اسحب البطاقات بالفأرة إلى كومة \u{2068}tahu\u{2069} (أعرفها) أو \u{2068}belum\u{2069} (ليس بعد)."
-        }
-        (RevWallHintMouse, En) => "Drag cards with the mouse onto tahu (I know it) or belum (not yet).",
-        (RevWallPhone, ArEg) => "على الموبايل كارت كارت؛ الطاولة الكاملة على التابلت.",
-        (RevWallPhone, Ar) => "على الهاتف بطاقة واحدة في كل مرة؛ والطاولة الكاملة على الجهاز اللوحي.",
-        (RevWallPhone, En) => "One card at a time on the phone; the full table is on the tablet.",
-        (RevBurst, ArEg | Ar) => "دقيقة سريعة",
-        (RevBurst, En) => "1-minute burst",
-        (RevBurstHint, ArEg) => "أكتر عدد كروت تقدر عليه في {n|ثانية|ثانيتين|ثواني}.",
-        (RevBurstHint, Ar) => "أكبر عدد من البطاقات في {n|ثانية|ثانيتين|ثوانٍ|ثانيةً}.",
-        (RevBurstHint, En) => "As many quick cards as fit in {n|second|seconds}.",
-        (RevStart, ArEg) => "يلا",
-        (RevStart, Ar) => "ابدأ",
-        (RevStart, En) => "Start",
         (RevAllDone, ArEg) => "مفيش حاجة مستنياك دلوقتي. استريّح، إنت عامل شغل حلو.",
         (RevAllDone, Ar) => "لا شيء مستحق الآن. خذ راحتك، فأنت تُحسن العمل.",
         (RevAllDone, En) => "Nothing is waiting for you right now. Rest easy, you're doing good work.",
-        (RevNextReview, ArEg) => "المراجعة الجاية: {when}",
-        (RevNextReview, Ar) => "المراجعة القادمة: {when}",
-        (RevNextReview, En) => "Next review: {when}",
-        (RevLearnNew, ArEg) => "عايز كلمات جديدة؟ كمّل رحلتك",
-        (RevLearnNew, Ar) => "تريد كلمات جديدة؟ تابع رحلتك",
-        (RevLearnNew, En) => "Want new words? Continue your journey",
         (RevHowWell, ArEg) => "افتكرتها قد إيه؟",
         (RevHowWell, Ar) => "إلى أي حد تذكّرتها؟",
         (RevHowWell, En) => "How well did you remember it?",
-        (RevRateHint, ArEg) => "قيّم اللي افتكرته، مش سهولة السؤال.",
-        (RevRateHint, Ar) => "قيّم ما تذكّرته، لا سهولة السؤال.",
-        (RevRateHint, En) => "Rate what you remembered, not how easy it looked.",
         (RevContentUnchecked, ArEg) => "صحة المحتوى: لسه ما راجعتهاش",
         (RevContentUnchecked, Ar) => "صحة المحتوى: لم تُراجَع بعد",
         (RevContentUnchecked, En) => "Content: not checked yet",
-        (RevContentOk, ArEg) => "المحتوى سليم",
-        (RevContentOk, Ar) => "المحتوى سليم",
-        (RevContentOk, En) => "The content is right",
         (RevContentChecked, ArEg) => "صحة المحتوى: راجعتها ✓",
         (RevContentChecked, Ar) => "صحة المحتوى: رُوجعت ✓",
         (RevContentChecked, En) => "Content: checked ✓",
-        (RevShowAnswer, ArEg) => "وريني الإجابة",
-        (RevShowAnswer, Ar) => "أظهر الإجابة",
-        (RevShowAnswer, En) => "Show answer",
-        (RevKeysHint, ArEg) => "المسافة تكشف، و1–4 للتقييم",
-        (RevKeysHint, Ar) => "المسافة للكشف، و1–4 للتقييم",
-        (RevKeysHint, En) => "Space reveals, 1–4 rate",
         (RateAgain, ArEg) => "تاني",
         (RateAgain, Ar) => "مجددًا",
         (RateAgain, En) => "Again",
@@ -1363,85 +782,17 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RevPromptBridge, ArEg) => "أنهي كلمة إندونيسي جت من دي؟",
         (RevPromptBridge, Ar) => "أي كلمة إندونيسية جاءت من هذه؟",
         (RevPromptBridge, En) => "Which Indonesian word came from this?",
-        (RevAnswerPlaceholder, ArEg) => "اكتب هنا، بالكيبورد أو بالقلم",
-        (RevAnswerPlaceholder, Ar) => "اكتب هنا، بلوحة المفاتيح أو بالقلم",
-        (RevAnswerPlaceholder, En) => "Type here, or write with the pen",
-        (RevCheck, ArEg) => "شوف",
-        (RevCheck, Ar) => "تحقّق",
-        (RevCheck, En) => "Check",
-        (RevExact, ArEg) => "بالظبط!",
-        (RevExact, Ar) => "تمامًا!",
-        (RevExact, En) => "Spot on!",
-        (RevClose, ArEg) => "قربت أوي، حرف واحد بس.",
-        (RevClose, Ar) => "قريب جدًّا، حرف واحد فقط.",
-        (RevClose, En) => "So close: one letter off.",
-        (RevWrong, ArEg) => "دي الكلمة. المرة الجاية هتفتكرها.",
-        (RevWrong, Ar) => "هذه هي الكلمة، وستتذكرها في المرة القادمة.",
-        (RevWrong, En) => "Here's the word. It'll come easier next time.",
-        (RevYouWrote, ArEg) => "إنت كتبت",
-        (RevYouWrote, Ar) => "كتبتَ",
-        (RevYouWrote, En) => "You wrote",
-        (RevPlay, ArEg | Ar) => "شغّل النطق",
-        (RevPlay, En) => "Play pronunciation",
-        (RevUndo, ArEg) => "رجّع آخر إجابة",
-        (RevUndo, Ar) => "تراجع عن آخر إجابة",
-        (RevUndo, En) => "Undo last answer",
-        (RevFinish, ArEg) => "كفاية كده",
-        (RevFinish, Ar) => "إنهاء الجلسة",
-        (RevFinish, En) => "Finish",
         (RevFromArabic, ArEg | Ar) => "أصلها عربي",
         (RevFromArabic, En) => "From Arabic",
         (RevFalseFriend, ArEg) => "خلّي بالك: صاحب مخادع!",
         (RevFalseFriend, Ar) => "انتبه: صديق مخادع!",
         (RevFalseFriend, En) => "False friend!",
-        (RevNotIndonesian, ArEg) => "مش زي الإندونيسي",
-        (RevNotIndonesian, Ar) => "ليست كالإندونيسية",
-        (RevNotIndonesian, En) => "not like Indonesian",
-        (RevShifted, ArEg) => "المعنى اتغيّر شوية",
-        (RevShifted, Ar) => "تغيّر المعنى قليلًا",
-        (RevShifted, En) => "The meaning shifted",
         (RevUnverified, ArEg) => "لسه متراجعتش",
         (RevUnverified, Ar) => "لم تُراجَع بعد",
         (RevUnverified, En) => "unverified",
-        (RevLeft, ArEg) => "فاضل {n}",
-        (RevLeft, Ar) => "المتبقي {n}",
-        (RevLeft, En) => "{n} left",
-        (RevThisSession, ArEg) => "الجلسة دي",
-        (RevThisSession, Ar) => "هذه الجلسة",
-        (RevThisSession, En) => "This session",
-        (RevAnswered, ArEg) => "جاوبت",
-        (RevAnswered, Ar) => "أجبت",
-        (RevAnswered, En) => "Answered",
-        (RevRemaining, ArEg) => "فاضل",
-        (RevRemaining, Ar) => "متبقٍّ",
-        (RevRemaining, En) => "To go",
-        (RevJustReviewed, ArEg) => "لسه راجعتها",
-        (RevJustReviewed, Ar) => "راجعتها للتو",
-        (RevJustReviewed, En) => "Just reviewed",
-        (RevNoneYet, ArEg) => "أول كلمة بتراجعها هتظهر هنا.",
-        (RevNoneYet, Ar) => "ستظهر هنا أول كلمة تراجعها.",
-        (RevNoneYet, En) => "The words you review show up here.",
-        (RevTahu, ArEg) => "عارفها",
-        (RevTahu, Ar) => "أعرفها",
-        (RevTahu, En) => "I know it",
-        (RevBelum, ArEg) => "لسه",
-        (RevBelum, Ar) => "ليس بعد",
-        (RevBelum, En) => "Not yet",
-        (RevWallHelp, ArEg) => "دوس على الكارت تشوف ضهره، واسحبه أو ازّقه لكومة.",
-        (RevWallHelp, Ar) => "انقر البطاقة لترى ظهرها، ثم اسحبها أو ادفعها إلى كومة.",
-        (RevWallHelp, En) => "Tap a card to peek at its back; drag or flick it onto a pile.",
         (RevTapToReveal, ArEg) => "دوس عشان تشوف المعنى",
         (RevTapToReveal, Ar) => "انقر لترى المعنى",
         (RevTapToReveal, En) => "Tap to see the meaning",
-        (RevKnow, ArEg) => "عارفها",
-        (RevKnow, Ar) => "أعرفها",
-        (RevKnow, En) => "I know it",
-        (RevNotYet, ArEg) => "لسه",
-        (RevNotYet, Ar) => "ليس بعد",
-        (RevNotYet, En) => "Not yet",
-        (RevSecondsLeft, ArEg) => "ثانية فاضلة",
-        (RevSecondsLeft, Ar) => "ثانية متبقية",
-        (RevSecondsLeft, En) => "seconds left",
         (RevDoneTitle, ArEg) => "عاش! خلّصت الجلسة",
         (RevDoneTitle, Ar) => "أحسنت! انتهت الجلسة",
         (RevDoneTitle, En) => "Nicely done!",
@@ -1453,9 +804,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RevRemembered, En) => "Remembered",
         (RevTime, ArEg | Ar) => "الوقت",
         (RevTime, En) => "Time",
-        (RevAllRemembered, ArEg) => "افتكرت كله، ولا غلطة.",
-        (RevAllRemembered, Ar) => "تذكّرت كل شيء، دون خطأ واحد.",
-        (RevAllRemembered, En) => "You remembered every single one.",
         (RevStrongest, ArEg) => "أقوى كلمة النهارده",
         (RevStrongest, Ar) => "أقوى كلمة اليوم",
         (RevStrongest, En) => "Strongest today",
@@ -1513,23 +861,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (Sat, En) => "Saturday",
         (Sun, ArEg | Ar) => "الأحد",
         (Sun, En) => "Sunday",
-        // The Review forecast strip.
-        // One spelling of each day across the app (#587): Progress says
-        // «الأحد، الثلاثاء» too.
-        (MonShort, ArEg | Ar) => "الاثنين",
-        (MonShort, En) => "Mon",
-        (TueShort, ArEg | Ar) => "الثلاثاء",
-        (TueShort, En) => "Tue",
-        (WedShort, ArEg | Ar) => "الأربعاء",
-        (WedShort, En) => "Wed",
-        (ThuShort, ArEg | Ar) => "الخميس",
-        (ThuShort, En) => "Thu",
-        (FriShort, ArEg | Ar) => "الجمعة",
-        (FriShort, En) => "Fri",
-        (SatShort, ArEg | Ar) => "السبت",
-        (SatShort, En) => "Sat",
-        (SunShort, ArEg | Ar) => "الأحد",
-        (SunShort, En) => "Sun",
         (SkillReading, ArEg | Ar) => "القراءة",
         (SkillReading, En) => "Reading",
         (SkillListening, ArEg | Ar) => "الاستماع",
@@ -1542,18 +873,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (SkillVocabulary, ArEg | Ar) => "المفردات",
         (SkillVocabulary, En) => "Vocabulary",
 
-        // --- coach: onboarding ---
-        (OnbProgress, ArEg | Ar) => "خطوات التعارف",
-        (OnbProgress, En) => "Getting to know you",
-        (OnbNameLabel, ArEg) => "أناديك بإيه؟",
-        (OnbNameLabel, Ar) => "بماذا أناديك؟",
-        (OnbNameLabel, En) => "What should I call you?",
-        (OnbWhy, ArEg) => "ليه بتتعلم",
-        (OnbWhy, Ar) => "لماذا تتعلم",
-        (OnbWhy, En) => "Why you're learning",
-        (OnbWhyNote, ArEg) => "عايز تحكيلي أكتر؟ (اختياري)",
-        (OnbWhyNote, Ar) => "هل تريد أن تخبرني بالمزيد؟ (اختياري)",
-        (OnbWhyNote, En) => "Want to tell me more? (optional)",
         (WhyTravel, ArEg | Ar) => "السفر",
         (WhyTravel, En) => "Travel",
         (WhyWork, ArEg | Ar) => "الشغل",
@@ -1569,21 +888,12 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (WhyCuriosity, ArEg) => "فضول وحب للغات",
         (WhyCuriosity, Ar) => "الفضول وحب اللغات",
         (WhyCuriosity, En) => "Curiosity",
-        (OnbFocus, ArEg | Ar) => "اللغة",
-        (OnbFocus, En) => "Language",
         (FocusBoth, ArEg) => "الاتنين",
         (FocusBoth, Ar) => "كلتاهما",
         (FocusBoth, En) => "Both",
-        (OnbTarget, ArEg | Ar) => "الهدف",
-        (OnbTarget, En) => "Target",
         (OnbBothOrder, ArEg) => "هنبدأ بالإندونيسي، والجاوي بيفتح بعد \u{2068}BIPA 1\u{2069}.",
         (OnbBothOrder, Ar) => "نبدأ بالإندونيسية، وتُفتح الجاوية بعد \u{2068}BIPA 1\u{2069}.",
         (OnbBothOrder, En) => "We start with Indonesian; Javanese opens after BIPA 1.",
-        (OnbTargetLevel, ArEg | Ar) => "المستوى",
-        (OnbTargetLevel, En) => "Level",
-        (OnbTargetDate, ArEg) => "لحد إمتى",
-        (OnbTargetDate, Ar) => "بحلول",
-        (OnbTargetDate, En) => "By",
         (OnbNoTarget, ArEg) => "من غير ميعاد محدد",
         (OnbNoTarget, Ar) => "دون موعد محدد",
         (OnbNoTarget, En) => "No fixed date",
@@ -1593,9 +903,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (OnbSetTarget, ArEg) => "حط هدف",
         (OnbSetTarget, Ar) => "حدّد هدفًا",
         (OnbSetTarget, En) => "Set a target",
-        (OnbStart, ArEg) => "نقطة البداية",
-        (OnbStart, Ar) => "نقطة الانطلاق",
-        (OnbStart, En) => "Starting point",
         (StartNew, ArEg) => "لسه هبدأ من الصفر",
         (StartNew, Ar) => "أبدأ من الصفر",
         (StartNew, En) => "Brand new",
@@ -1614,9 +921,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (StartChatHint, ArEg) => "بتفهم وبترد في مواقف كل يوم.",
         (StartChatHint, Ar) => "تفهم وتردّ في مواقف الحياة اليومية.",
         (StartChatHint, En) => "You understand and reply in everyday situations.",
-        (OnbPlacementLater, ArEg) => "اختبار تحديد المستوى الصغير هيظبط نقطة البداية بعدين.",
-        (OnbPlacementLater, Ar) => "سيضبط اختبار تحديد المستوى القصير نقطة البداية لاحقًا.",
-        (OnbPlacementLater, En) => "A short placement check will fine-tune this later.",
         (OnbFinish, ArEg) => "يلا بينا",
         (OnbFinish, Ar) => "لننطلق",
         (OnbFinish, En) => "Let's go",
@@ -1630,21 +934,11 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ErrUnknownLevel, Ar) => "هذا المستوى غير موجود، اختر واحدًا من القائمة.",
         (ErrUnknownLevel, En) => "That level doesn't exist; pick one from the list.",
 
-        // --- coach: settings ---
-        (DailySize, ArEg) => "وقتك المعتاد في اليوم",
-        (DailySize, Ar) => "وقتك المعتاد يوميًا",
-        (DailySize, En) => "Usual time per day",
-        (StudyTimes, ArEg) => "مواعيد المذاكرة",
-        (StudyTimes, Ar) => "مواعيد الدراسة",
-        (StudyTimes, En) => "Study times",
         (AddTime, ArEg) => "ميعاد كمان",
         (AddTime, Ar) => "موعد آخر",
         (AddTime, En) => "Add a time",
         (RemoveTime, ArEg | Ar) => "احذف",
         (RemoveTime, En) => "Remove",
-        (ReminderStyle, ArEg) => "التذكيرات",
-        (ReminderStyle, Ar) => "أسلوب التذكير",
-        (ReminderStyle, En) => "Reminders",
         (StyleGentle, ArEg) => "هادي",
         (StyleGentle, Ar) => "لطيف",
         (StyleGentle, En) => "Gentle",
@@ -1663,82 +957,15 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (StyleOffHint, ArEg) => "التقرير الأسبوعي هيفضل يوصلك جوه التطبيق.",
         (StyleOffHint, Ar) => "سيبقى التقرير الأسبوعي متاحًا داخل التطبيق.",
         (StyleOffHint, En) => "The weekly report still arrives in the app.",
-        (QuietHours, ArEg) => "ساعات الهدوء",
-        (QuietHours, Ar) => "ساعات الهدوء",
-        (QuietHours, En) => "Quiet hours",
-        (RemindersElsewhere, ArEg) => {
-            "التذكيرات بتوصلك على الموبايل. هنا بتشتغل في تطبيق \u{2068}Kabar\u{2069} المتسطّب بس."
-        }
-        (RemindersElsewhere, Ar) => {
-            "تصلك التذكيرات على الهاتف، وهنا تعمل في تطبيق \u{2068}Kabar\u{2069} المثبّت فقط."
-        }
-        (RemindersElsewhere, En) => {
-            "Reminders reach you on your phone. Here they work in the installed Kabar app."
-        }
-        (RemindersBlocked, ArEg) => {
-            "الإشعارات مقفولة لـ\u{2068}Kabar\u{2069} على الجهاز ده، فمش هقدر أفكّرك هنا."
-        }
-        (RemindersBlocked, Ar) => {
-            "الإشعارات مغلقة لـ\u{2068}Kabar\u{2069} على هذا الجهاز، فلن أستطيع تذكيرك هنا."
-        }
-        (RemindersBlocked, En) => {
-            "Notifications are off for Kabar on this device, so I can't remind you here."
-        }
-        (RemindersAllow, ArEg) => "اسمح بالإشعارات",
-        (RemindersAllow, Ar) => "اسمح بالإشعارات",
-        (RemindersAllow, En) => "Allow notifications",
-        (RemindHere, ArEg) => "فكّرني على الجهاز ده",
-        (RemindHere, Ar) => "ذكّرني على هذا الجهاز",
-        (RemindHere, En) => "Remind me on this device",
-        (RemindersAsleep, ArEg) => {
-            "سامسونج ممكن تنيّم \u{2068}Kabar\u{2069} لو مافتحتهوش كام يوم، وساعتها التذكيرات بتقف. من البطارية اختار «بدون قيود» عشان أفضل أفكّرك."
-        }
-        (RemindersAsleep, Ar) => {
-            "قد يُنيم سامسونج \u{2068}Kabar\u{2069} إن لم تفتحه أيامًا فتتوقف التذكيرات. اختر «غير مقيّد» من إعدادات البطارية لأبقى أذكّرك."
-        }
-        (RemindersAsleep, En) => {
-            "Samsung may put Kabar to sleep after a few days unopened, and reminders stop. Set its battery use to Unrestricted so I can keep reminding you."
-        }
-        (RemindersBattery, ArEg) => "افتح إعدادات البطارية",
-        (RemindersBattery, Ar) => "افتح إعدادات البطارية",
-        (RemindersBattery, En) => "Open battery settings",
         (QuietFrom, ArEg | Ar) => "من",
         (QuietFrom, En) => "From",
-        (QuietTo, ArEg) => "لحد",
-        (QuietTo, Ar) => "إلى",
-        (QuietTo, En) => "to",
         (ReportWhen, ArEg) => "ميعاد التقرير الأسبوعي",
         (ReportWhen, Ar) => "موعد التقرير الأسبوعي",
         (ReportWhen, En) => "Weekly report",
 
-        // --- coach: today ---
-        (TodayProgress, ArEg) => "إنجاز النهارده",
-        (TodayProgress, Ar) => "إنجاز اليوم",
-        (TodayProgress, En) => "Today's progress",
-        (WelcomeBackTitle, ArEg) => "أهلاً بيك تاني",
-        (WelcomeBackTitle, Ar) => "مرحبًا بعودتك",
-        (WelcomeBackTitle, En) => "Welcome back",
-        (WelcomeBackPlan, ArEg) => "خطة النهارده الخفيفة",
-        (WelcomeBackPlan, Ar) => "خطة اليوم الخفيفة",
-        (WelcomeBackPlan, En) => "Today's light plan",
-        (WelcomeBackStart, ArEg) => "يلا نبدأ",
-        (WelcomeBackStart, Ar) => "لنبدأ",
-        (WelcomeBackStart, En) => "Let's start",
-        (WelcomeBackBigger, ArEg) => "لو ليك مزاج لأكتر، اختار خطة أكبر",
-        (WelcomeBackBigger, Ar) => "إن رغبت في المزيد، اختر خطة أكبر",
-        (WelcomeBackBigger, En) => "In the mood for more? Pick a bigger plan",
-        (PelitaReady, ArEg) => "جاهزة تنوّر",
-        (PelitaReady, Ar) => "جاهز ليضيء",
-        (PelitaReady, En) => "ready to glow",
-        (PlanBreakTitle, ArEg) => "استراحة صغيرة",
-        (PlanBreakTitle, Ar) => "استراحة قصيرة",
-        (PlanBreakTitle, En) => "A short break",
         (GoalMet, ArEg) => "هدف النهارده خلص",
         (GoalMet, Ar) => "تحقق هدف اليوم",
         (GoalMet, En) => "Today's goal met",
-        (Freezes, ArEg) => "تجميد:",
-        (Freezes, Ar) => "تجميد:",
-        (Freezes, En) => "freezes:",
         (Cards, ArEg | Ar) => "بطاقة",
         (Cards, En) => "cards",
         (ItemReview, ArEg | Ar) => "مراجعة",
@@ -1759,9 +986,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PhraseReading, ArEg) => "قراية أو سماع قصير",
         (PhraseReading, Ar) => "قراءة أو استماع قصير",
         (PhraseReading, En) => "a short read or listen",
-        (MarkDone, ArEg) => "خلصت",
-        (MarkDone, Ar) => "أنجزت",
-        (MarkDone, En) => "Done",
         (Snooze, ArEg) => "أجّل التذكيرات ساعة",
         (Snooze, Ar) => "أجّل التذكيرات ساعة",
         (Snooze, En) => "Snooze reminders for an hour",
@@ -1771,12 +995,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RecapTitle, ArEg) => "خلاصة النهارده",
         (RecapTitle, Ar) => "خلاصة اليوم",
         (RecapTitle, En) => "Today in 30 seconds",
-        (RecapRemember, ArEg) => "حاجة واحدة افتكرها",
-        (RecapRemember, Ar) => "شيء واحد تتذكره",
-        (RecapRemember, En) => "One thing to remember",
-        (RecapTomorrow, ArEg) => "أول خطوة بكرة",
-        (RecapTomorrow, Ar) => "أول خطوة غدًا",
-        (RecapTomorrow, En) => "Tomorrow's first step",
         (StatTime, ArEg | Ar) => "الوقت",
         (StatTime, En) => "Time",
         (StatSteps, ArEg | Ar) => "خطوات",
@@ -1802,54 +1020,20 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ReportThisWeek, ArEg) => "الأسبوع ده",
         (ReportThisWeek, Ar) => "هذا الأسبوع",
         (ReportThisWeek, En) => "This week",
-        (WeekOf, ArEg) => "أسبوع",
-        (WeekOf, Ar) => "أسبوع",
-        (WeekOf, En) => "Week of",
         (SoFar, ArEg) => "لحد دلوقتي",
         (SoFar, Ar) => "حتى الآن",
         (SoFar, En) => "so far",
-        (Strongest, ArEg) => "أقوى مهارة",
-        (Strongest, Ar) => "أقوى مهارة",
-        (Strongest, En) => "Strongest skill",
-        (Weakest, ArEg) => "محتاجة شوية حب",
-        (Weakest, Ar) => "تحتاج إلى اهتمام",
-        (Weakest, En) => "Needs some love",
-        (NextFocus, ArEg) => "تركيز الأسبوع الجاي",
-        (NextFocus, Ar) => "تركيز الأسبوع القادم",
-        (NextFocus, En) => "Next week's focus",
         (LeagueRank, ArEg) => "ترتيب الأسبوع ده",
         (LeagueRank, Ar) => "ترتيب هذا الأسبوع",
         (LeagueRank, En) => "This week's rank",
         (LeagueXp, ArEg | Ar) => "نقاط الخبرة",
         (LeagueXp, En) => "XP",
-        (AchievementsTitle, ArEg | Ar) => "الإنجازات",
-        (AchievementsTitle, En) => "Achievements",
-        (Locked, ArEg) => "لسه جاية",
-        (Locked, Ar) => "لم يُفتح بعد",
-        (Locked, En) => "Still ahead",
-        (WarungExplain, ArEg) => "ثيمات باتيك للزينة بس، بتتشري بالكوين اللي كسبتها",
-        (WarungExplain, Ar) => "سمات باتيك تجميلية فقط، تُشترى بالعملات التي كسبتها",
-        (WarungExplain, En) => "Batik themes, purely cosmetic, bought with the Koin you earned",
-        (BatikClassic, ArEg | Ar) => "الباتيك النيلي الأصلي",
-        (BatikClassic, En) => "Classic indigo batik",
         (Buy, ArEg) => "اشتري",
         (Buy, Ar) => "اشترِ",
         (Buy, En) => "Buy",
         (Use, ArEg) => "استخدمه",
         (Use, Ar) => "استخدم",
         (Use, En) => "Use",
-        (InUse, ArEg) => "مستخدم دلوقتي",
-        (InUse, Ar) => "قيد الاستخدام",
-        (InUse, En) => "In use",
-        (NotEnoughKoin, ArEg) => "محتاج كوين أكتر شوية",
-        (NotEnoughKoin, Ar) => "تحتاج إلى مزيد من العملات",
-        (NotEnoughKoin, En) => "A few more Koin needed",
-        (KoinToGo, ArEg) => "فاضلك {n}",
-        (KoinToGo, Ar) => "يتبقّى لك {n}",
-        (KoinToGo, En) => "{n} more",
-        (JournalTitle, ArEg) => "يومياتك في التعلم",
-        (JournalTitle, Ar) => "سجل التعلّم",
-        (JournalTitle, En) => "Learning journal",
         (JournalEmpty, ArEg) => "كل اللي هتعمله هيتسجل هنا لوحده.",
         (JournalEmpty, Ar) => "سيُسجَّل هنا كل ما تنجزه تلقائيًا.",
         (JournalEmpty, En) => "Everything you do will be recorded here automatically.",
@@ -1882,9 +1066,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JournalReflectionAdd, ArEg) => "اكتب خاطرة عن اليوم ده",
         (JournalReflectionAdd, Ar) => "اكتب خاطرة عن هذا اليوم",
         (JournalReflectionAdd, En) => "Write a reflection",
-        (JournalReflectionPlaceholder, ArEg) => "اتعلمت إيه؟ إيه اللي كان صعب؟ وإيه اللي عجبك؟",
-        (JournalReflectionPlaceholder, Ar) => "ماذا تعلّمت؟ ما الذي كان صعبًا؟ وما الذي أعجبك؟",
-        (JournalReflectionPlaceholder, En) => "What did you learn? What was hard? What did you enjoy?",
         (JournalReflectionSave, ArEg | Ar) => "احفظ",
         (JournalReflectionSave, En) => "Save",
         (JournalReflectionCancel, ArEg | Ar) => "إلغاء",
@@ -1898,27 +1079,11 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JournalReflectionDeleteSure, ArEg) => "أيوه، امسحها",
         (JournalReflectionDeleteSure, Ar) => "نعم، احذفها",
         (JournalReflectionDeleteSure, En) => "Yes, delete it",
-        (JournalReflectionEdited, ArEg) => "اتعدّلت",
-        (JournalReflectionEdited, Ar) => "عُدّلت",
-        (JournalReflectionEdited, En) => "edited",
-        (JournalReflectionLabel, ArEg) => "خاطرتك",
-        (JournalReflectionLabel, Ar) => "خاطرتك",
-        (JournalReflectionLabel, En) => "Your reflection",
         (JournalTestPassed, ArEg) => "عدّيت اختبار المستوى",
         (JournalTestPassed, Ar) => "اجتزت اختبار المستوى",
         (JournalTestPassed, En) => "Passed the level test",
-        (JournalSouvenir, ArEg) => "تذكار جديد في الشنطة",
-        (JournalSouvenir, Ar) => "تذكار جديد في الحقيبة",
-        (JournalSouvenir, En) => "New souvenir in your suitcase",
-        (JournalTaught, ArEg | Ar) => "علّمت \u{2068}Kabar\u{2069} كلمة",
-        (JournalTaught, En) => "Taught Kabar a word",
-        (JournalDraft, ArEg) => "لسه مسودة",
-        (JournalDraft, Ar) => "مسودة",
-        (JournalDraft, En) => "draft",
         (EvReviews, ArEg | Ar) => "مراجعة",
         (EvReviews, En) => "Reviews",
-        (EvNewWords, ArEg | Ar) => "كلمات جديدة",
-        (EvNewWords, En) => "New words",
         (EvLessonStep, ArEg) => "خطوة في درس",
         (EvLessonStep, Ar) => "خطوة في درس",
         (EvLessonStep, En) => "Lesson step",
@@ -1928,57 +1093,24 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (EvPlanItem, ArEg) => "خلّصت خطوة من خطة النهارده",
         (EvPlanItem, Ar) => "أنجزت خطوة من خطة اليوم",
         (EvPlanItem, En) => "Finished a step of the day's plan",
-        (EvPurchase, ArEg) => "اشتريت",
-        (EvPurchase, Ar) => "اشتريت",
-        (EvPurchase, En) => "Bought",
-
         // --- play ---
         (NavPlay, ArEg | Ar) => "ألعاب",
         (NavPlay, En) => "Play",
-        (PlayContentProblem, ArEg) => {
-            "اللعبة دي محتاجة محتوى مقدرتش أفتحه دلوقتي. باقي التطبيق شغال عادي، وهنصلّحها في النسخة الجاية."
-        }
-        (PlayContentProblem, Ar) => {
-            "تحتاج هذه اللعبة إلى محتوى تعذّر فتحه الآن. بقية التطبيق تعمل كالمعتاد، وسنصلحها في الإصدار القادم."
-        }
-        (PlayContentProblem, En) => {
-            "This game needs content that didn't open just now. The rest of Kabar works as usual; the next build fixes it."
-        }
-        (PlayDetails, ArEg | Ar) => "تفاصيل",
-        (PlayDetails, En) => "Details",
         (PlayAgain, ArEg) => "نلعب تاني",
         (PlayAgain, Ar) => "العب مجددًا",
         (PlayAgain, En) => "Play again",
         (PlayOtherGames, ArEg) => "لعبة تانية",
         (PlayOtherGames, Ar) => "لعبة أخرى",
         (PlayOtherGames, En) => "Another game",
-        (PlayTryInChat, ArEg) => "جرّب الكلام في دردشة",
-        (PlayTryInChat, Ar) => "جرّبها في محادثة",
-        (PlayTryInChat, En) => "Try it in a chat",
         (PlayFinish, ArEg) => "خلّصنا",
         (PlayFinish, Ar) => "إنهاء",
         (PlayFinish, En) => "Finish",
         (PlayRight, ArEg) => "صح كده!",
         (PlayRight, Ar) => "أحسنت!",
         (PlayRight, En) => "That's it!",
-        (PlayNotQuite, ArEg) => "قربت! الإجابة:",
-        (PlayNotQuite, Ar) => "اقتربت! الإجابة:",
-        (PlayNotQuite, En) => "Close! The answer:",
-        (PlayGreat, ArEg) => "إيه الحلاوة دي! شغل نضيف.",
-        (PlayGreat, Ar) => "رائع! عمل متقن.",
-        (PlayGreat, En) => "Lovely work, that was sharp.",
-        (PlayGood, ArEg) => "حلو أوي، واللي فاتك هيبقى أسهل المرة الجاية.",
-        (PlayGood, Ar) => "جيد جدًا، وما فاتك سيكون أسهل في المرة القادمة.",
-        (PlayGood, En) => "Nicely done; the ones you missed will come easier next time.",
-        (PlayKeepGoing, ArEg) => "كل جولة بتعلّمك حاجة، والغلطات دي هي خطة بكرة.",
-        (PlayKeepGoing, Ar) => "كل جولة تعلّمك شيئًا، وهذه الأخطاء هي خطة الغد.",
-        (PlayKeepGoing, En) => "Every round teaches something; today's misses are tomorrow's plan.",
         (Check, ArEg) => "اتأكد",
         (Check, Ar) => "تحقّق",
         (Check, En) => "Check",
-        (Stop, ArEg) => "وقّف",
-        (Stop, Ar) => "إيقاف",
-        (Stop, En) => "Stop",
         (ShowMeaning, ArEg) => "يعني إيه؟",
         (ShowMeaning, Ar) => "أظهر المعنى",
         (ShowMeaning, En) => "Show meaning",
@@ -1988,9 +1120,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (AudioMissing, ArEg) => "الصوت محتاج Kabar Cloud أو صوت إندونيسي على الجهاز. النص شغال عادي.",
         (AudioMissing, Ar) => "يحتاج الصوت إلى Kabar Cloud أو صوت إندونيسي على الجهاز. النص متاح كالمعتاد.",
         (AudioMissing, En) => "Audio needs Kabar Cloud or a device voice; the text works as usual.",
-        (Root, ArEg | Ar) => "الجذر:",
-        (Root, En) => "root:",
-
         // --- play: Kabar Pagi ---
         (PagiTitle, _) => "Kabar Pagi",
         (PagiBlurb, ArEg) => "حكاية صباحية في دقيقتين، من كلماتك وكام كلمة جديدة.",
@@ -2008,19 +1137,12 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PagiAllTranslations, ArEg) => "كل الترجمات",
         (PagiAllTranslations, Ar) => "كل الترجمات",
         (PagiAllTranslations, En) => "All translations",
-        (PagiWordsNote, ArEg) => "دي كلمات النهارده؛ الملوّنة بالدهبي جاية من العربي.",
-        (PagiWordsNote, Ar) => "هذه كلمات اليوم؛ الملوّنة بالذهبي أصلها عربي.",
-        (PagiWordsNote, En) => "Today's words; the gold ones come from Arabic.",
         (PagiDone, ArEg) => "سمعتها وفهمتها",
         (PagiDone, Ar) => "استمعت إليها وفهمتها",
         (PagiDone, En) => "I've listened to it",
         (PagiReadToday, ArEg) => "حكاية النهارده خلصت. بكرة فيه واحدة جديدة.",
         (PagiReadToday, Ar) => "انتهت قصة اليوم. غدًا قصة جديدة.",
         (PagiReadToday, En) => "Today's story is done. A new one comes tomorrow.",
-        (PagiNoStory, ArEg) => "مفيش حكاية جاهزة النهارده لسه. جرّب لعبة تانية وارجع بكرة.",
-        (PagiNoStory, Ar) => "لا توجد قصة جاهزة اليوم بعد. جرّب لعبة أخرى وعد غدًا.",
-        (PagiNoStory, En) => "No story is ready today yet. Try another game and come back tomorrow.",
-
         // --- play: the Bridge deck ---
         (DeckTitle, ArEg) => "كلمات إنت عارفها أصلاً",
         (DeckTitle, Ar) => "كلمات تعرفها مسبقًا",
@@ -2028,11 +1150,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (DeckBlurb, ArEg) => "كلمات جاية من العربي ومعناها زي ما إنت فاكره.",
         (DeckBlurb, Ar) => "كلمات أصلها عربي وبقي معناها كما تعرفه.",
         (DeckBlurb, En) => "Words from Arabic that kept the meaning you know.",
-        (DeckMarked, ArEg) => "اللي علّمت عليها:",
-        (DeckMarked, Ar) => "ما أشرت إليه:",
-        (DeckMarked, En) => "Marked as known:",
-        (BridgeFromArabic, ArEg | Ar) => "من العربي للإندونيسي",
-        (BridgeFromArabic, En) => "From Arabic to Indonesian",
         (DeckMarkKnown, ArEg) => "عارفها",
         (DeckMarkKnown, Ar) => "أعرفها",
         (DeckMarkKnown, En) => "I know it",
@@ -2066,16 +1183,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (SoundSukun, En) => "(no vowel)",
         (SoundWordEnd, ArEg | Ar) => "(آخر الكلمة)",
         (SoundWordEnd, En) => "(end of word)",
-        (DetectiveGuessArabic, ArEg) => "إيه الكلمة العربي اللي ورا دي؟",
-        (DetectiveGuessArabic, Ar) => "ما الكلمة العربية وراء هذه الكلمة؟",
-        (DetectiveGuessArabic, En) => "Which Arabic word is behind it?",
-        (DetectiveGuessIndonesian, ArEg) => "الكلمة دي بقت إيه في الإندونيسي؟",
-        (DetectiveGuessIndonesian, Ar) => "إلامَ صارت هذه الكلمة في الإندونيسية؟",
-        (DetectiveGuessIndonesian, En) => "What did this word become in Indonesian?",
-        (DetectiveNoRounds, ArEg) => "مفيش جولات جاهزة هنا لسه. جرّب اختيار تاني.",
-        (DetectiveNoRounds, Ar) => "لا توجد جولات جاهزة هنا بعد. جرّب خيارًا آخر.",
-        (DetectiveNoRounds, En) => "No rounds are ready here yet. Try another choice.",
-
         // --- play: False Friends Alarm ---
         (AlarmTitle, ArEg) => "جرس الكلمات الخدّاعة",
         (AlarmTitle, Ar) => "تنبيه الأصدقاء المخادعين",
@@ -2091,16 +1198,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (AlarmLooksLike, ArEg) => "شبه",
         (AlarmLooksLike, Ar) => "تشبه",
         (AlarmLooksLike, En) => "Looks like",
-        (AlarmQuestion, ArEg) => "معناها إيه في الإندونيسي؟",
-        (AlarmQuestion, Ar) => "ما معناها في الإندونيسية؟",
-        (AlarmQuestion, En) => "What does it mean in Indonesian?",
-        (AlarmCaught, ArEg) => "مسكتها! مضحكتش عليك.",
-        (AlarmCaught, Ar) => "كشفتها! لم تخدعك.",
-        (AlarmCaught, En) => "Caught it! It didn't fool you.",
-        (AlarmTricky, ArEg) => "دي خدّاعة فعلاً، وأهو بقيت عارفها:",
-        (AlarmTricky, Ar) => "إنها مخادعة فعلًا، والآن صرت تعرفها:",
-        (AlarmTricky, En) => "A tricky one, and now you know it:",
-
         // --- play: Rupiah Reader ---
         (RupiahTitle, ArEg) => "اقرا الروبية",
         (RupiahTitle, Ar) => "قراءة الروبية",
@@ -2108,9 +1205,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RupiahBlurb, ArEg) => "اقرا الأسعار زي ما بتتكتب في المحلات، وبسرعة.",
         (RupiahBlurb, Ar) => "اقرأ الأسعار كما تُكتب في المتاجر، وبسرعة.",
         (RupiahBlurb, En) => "Read prices as shops write them, fast.",
-        (RupiahIntro, ArEg) => "هيظهرلك سعر؛ اكتب إزاي بيتقري بالإندونيسي.",
-        (RupiahIntro, Ar) => "سيظهر سعر؛ اكتب كيف يُقرأ بالإندونيسية.",
-        (RupiahIntro, En) => "You'll see a price; type how it's read in Indonesian.",
         (RupiahHundreds, ArEg | Ar) => "مئات",
         (RupiahHundreds, En) => "Hundreds",
         (RupiahThousands, ArEg | Ar) => "آلاف",
@@ -2123,19 +1217,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RupiahBest, ArEg) => "أحسن نتيجة",
         (RupiahBest, Ar) => "أفضل نتيجة",
         (RupiahBest, En) => "best",
-        (RupiahType, ArEg) => "اكتب إزاي بيتقري",
-        (RupiahType, Ar) => "اكتب طريقة قراءته",
-        (RupiahType, En) => "Type the reading",
-        (RupiahClose, ArEg) => "صح! بس دي الطريقة المظبوطة:",
-        (RupiahClose, Ar) => "صحيح! والصيغة الدقيقة هي:",
-        (RupiahClose, En) => "Right! The exact reading is:",
         (RupiahWrong, ArEg) => "رقم تاني، بس ولا يهمك. بيتقري كده:",
         (RupiahWrong, Ar) => "هذا رقم آخر، لا بأس. يُقرأ هكذا:",
         (RupiahWrong, En) => "A different number, no worries. It reads:",
-        (RupiahScore, ArEg | Ar) => "النقاط",
-        (RupiahScore, En) => "Score",
-        (RupiahSeconds, ArEg | Ar) => "ثانية",
-        (RupiahSeconds, En) => "Seconds",
         (RupiahNewBest, ArEg) => "أحسن نتيجة ليك في المستوى ده!",
         (RupiahNewBest, Ar) => "أفضل نتيجة لك في هذا المستوى!",
         (RupiahNewBest, En) => "Your best score at this level!",
@@ -2145,21 +1229,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PasarBlurb, ArEg) => "فاصل مع بياع في السوق وإنت معاك ميزانية.",
         (PasarBlurb, Ar) => "ساوم بائعًا في السوق ضمن ميزانيتك.",
         (PasarBlurb, En) => "Haggle with a market seller on a budget.",
-        (PasarIntro, ArEg) => "اختار حاجة تشتريها. افضل في حدود الميزانية وخليك مؤدب، والبياع هيرد عليك.",
-        (PasarIntro, Ar) => "اختر شيئًا لتشتريه. ابقَ ضمن الميزانية وكن مهذبًا، وسيرد عليك البائع.",
-        (PasarIntro, En) => "Pick something to buy. Stay within budget and stay polite; the seller answers.",
-        (PasarNoItems, ArEg) => "السوق لسه بيفتح. ارجع بعد التحديث الجاي.",
-        (PasarNoItems, Ar) => "السوق لم يفتح بعد. عد بعد التحديث القادم.",
-        (PasarNoItems, En) => "The market is still setting up. Come back after the next update.",
-        (PasarBonus, ArEg) => "جولة بونص",
-        (PasarBonus, Ar) => "جولة إضافية",
-        (PasarBonus, En) => "Bonus round",
-        (PasarBudget, ArEg) => "ميزانيتك:",
-        (PasarBudget, Ar) => "ميزانيتك:",
-        (PasarBudget, En) => "Budget:",
-        (PasarOnTable, ArEg) => "السعر دلوقتي:",
-        (PasarOnTable, Ar) => "السعر الحالي:",
-        (PasarOnTable, En) => "On the table:",
         (PasarAskPrice, ArEg) => "اسأل عن السعر",
         (PasarAskPrice, Ar) => "اسأل عن السعر",
         (PasarAskPrice, En) => "Ask the price",
@@ -2187,11 +1256,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PasarPaid, ArEg) => "دفعت:",
         (PasarPaid, Ar) => "دفعت:",
         (PasarPaid, En) => "You paid:",
-        (PasarSaved, ArEg) => "وفّرت:",
-        (PasarSaved, Ar) => "وفّرت:",
-        (PasarSaved, En) => "You saved:",
-        (Example, ArEg | Ar) => "مثال",
-        (Example, En) => "Example",
         (TranslationTitle, ArEg) => "الترجمة",
         (TranslationTitle, Ar) => "الترجمة",
         (TranslationTitle, En) => "Translation",
@@ -2201,9 +1265,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (TranslationByAi, ArEg) => "ترجمة بالذكاء الاصطناعي حسب السياق. دوس على أي كلمة لمعناها لوحدها.",
         (TranslationByAi, Ar) => "ترجمة بالذكاء الاصطناعي بحسب السياق. انقر أي كلمة لمعناها منفردة.",
         (TranslationByAi, En) => "AI translation in context. Tap any word for its own meaning.",
-        (TranslationWordByWord, ArEg) => "كلمة بكلمة من قاموس \u{2068}Kabar\u{2069}",
-        (TranslationWordByWord, Ar) => "كلمة بكلمة من قاموس \u{2068}Kabar\u{2069}",
-        (TranslationWordByWord, En) => "Word by word, from Kabar's dictionary",
         (TranslationWordByWordShort, ArEg) => "كلمة بكلمة:",
         (TranslationWordByWordShort, Ar) => "كلمة بكلمة:",
         (TranslationWordByWordShort, En) => "Word by word:",
@@ -2247,10 +1308,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ReaderWriteFailed, En) => {
             "Couldn't save that just now, so nothing changed. Please try again in a moment."
         }
-        (ReadingSettings, ArEg | Ar) => "إعدادات القراءة",
-        (ReadingSettings, En) => "Reading settings",
-        (ReadSize, ArEg | Ar) => "حجم النص",
-        (ReadSize, En) => "Text size",
         (ReadSmaller, ArEg | Ar) => "أصغر",
         (ReadSmaller, En) => "Smaller",
         (ReadNormal, ArEg | Ar) => "عادي",
@@ -2260,8 +1317,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ReadLargest, ArEg) => "أكبر كمان",
         (ReadLargest, Ar) => "الأكبر",
         (ReadLargest, En) => "Largest",
-        (ReadSpacing, ArEg | Ar) => "المسافة بين السطور",
-        (ReadSpacing, En) => "Line spacing",
         (ReadSnug, ArEg) => "قريبة",
         (ReadSnug, Ar) => "متقاربة",
         (ReadSnug, En) => "Snug",
@@ -2302,9 +1357,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ReaderRecent, En) => "Recently read",
         (ReaderNew, ArEg | Ar) => "نص جديد",
         (ReaderNew, En) => "New text",
-        (Voice, ArEg) => "الشرح",
-        (Voice, Ar) => "لغة الشرح",
-        (Voice, En) => "Explain in",
         (LangIndonesian, ArEg) => "إندونيسي",
         (LangIndonesian, Ar) => "إندونيسية",
         (LangIndonesian, En) => "Indonesian",
@@ -2319,9 +1371,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (LangUnknown, ArEg) => "لسه مش متأكدين",
         (LangUnknown, Ar) => "غير محددة بعد",
         (LangUnknown, En) => "Not sure yet",
-        (LangSlang, ArEg) => "اختصار شات",
-        (LangSlang, Ar) => "اختصار محادثة",
-        (LangSlang, En) => "Chat slang",
         (StatusNew, ArEg | Ar) => "جديدة",
         (StatusNew, En) => "New",
         (StatusLearning, ArEg) => "بتتعلمها",
@@ -2332,9 +1381,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (StatusKnown, En) => "Known",
         (StatusIgnored, ArEg | Ar) => "تجاهل",
         (StatusIgnored, En) => "Ignore",
-        (AddToReview, ArEg) => "ضيفها للمراجعة",
-        (AddToReview, Ar) => "أضفها إلى المراجعة",
-        (AddToReview, En) => "Add to review",
         (AddedToReview, ArEg) => "اتضافت للمراجعة، هتشوفها تاني قريب",
         (AddedToReview, Ar) => "أُضيفت إلى المراجعة، ستراها قريبًا",
         (AddedToReview, En) => "Added to review, you'll see it again soon",
@@ -2353,24 +1399,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (NoLocalGloss, En) => {
             "This word isn't in the local dictionary yet. You can teach it to Kabar from a source you trust."
         }
-        (EnglishInChat, ArEg) => {
-            "كلمة إنجليزي داخلة في الكلام، زي ما بنعمل إحنا كمان. إنت عارفها، فمش هتتحسب في كلماتك الجديدة."
-        }
-        (EnglishInChat, Ar) => "كلمة إنجليزية ممزوجة بالكلام. أنت تعرفها، فلن تُحسب ضمن كلماتك الجديدة.",
-        (EnglishInChat, En) => {
-            "An English word mixed into the chat. You know it, so it doesn't count as a new word."
-        }
-        (InThisSentence, ArEg) => "في الجملة دي",
-        (InThisSentence, Ar) => "في هذه الجملة",
-        (InThisSentence, En) => "In this sentence",
-        (Breakdown, ArEg | Ar) => "التركيب",
-        (Breakdown, En) => "Built from",
-        (MorphMore, ArEg) => "تفصيل الكلمة",
-        (MorphMore, Ar) => "تفصيل الكلمة",
-        (MorphMore, En) => "Word breakdown",
-        (MorphSoundChange, ArEg) => "أول حرف في الأصل بيتغيّر لما السابقة تلزق فيه",
-        (MorphSoundChange, Ar) => "يتغيّر أول حرف في الجذر عند اتصال السابقة به",
-        (MorphSoundChange, En) => "the root's first sound changes when the prefix joins it",
         (MorphTimeWords, ArEg) => "الزمن في الجملة",
         (MorphTimeWords, Ar) => "الزمن في الجملة",
         (MorphTimeWords, En) => "Time in this sentence",
@@ -2443,9 +1471,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (NotHelpful, ArEg) => "الشرح ده فيه غلط",
         (NotHelpful, Ar) => "الشرح فيه خطأ",
         (NotHelpful, En) => "Something's off",
-        (ThanksFeedback, ArEg) => "شكرًا، ده بيساعدنا نحسّن الشرح",
-        (ThanksFeedback, Ar) => "شكرًا، هذا يساعد على تحسين الشرح",
-        (ThanksFeedback, En) => "Thanks, that helps improve the explanations",
         (SavePhrase, ArEg | Ar) => "احفظ العبارة",
         (SavePhrase, En) => "Save phrase",
         (PhraseSaved, ArEg) => "العبارة اتحفظت",
@@ -2466,9 +1491,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ExplainNeedsCloud, En) => {
             "The full AI explanation (meaning, register, culture) works once Kabar Cloud is connected. The grammar below is from Kabar's own library."
         }
-        (ExplainThinking, ArEg) => "بحضّرلك الشرح…",
-        (ExplainThinking, Ar) => "جارٍ تحضير الشرح…",
-        (ExplainThinking, En) => "Writing the explanation…",
         (ExplainResetsLater, ArEg) => {
             "الشرح بالذكاء الاصطناعي خلص رصيده المجاني النهارده، بيرجع بكرة. القواعد اللي تحت من مكتبة \u{2068}Kabar\u{2069} نفسها."
         }
@@ -2495,9 +1517,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (InOtherWords, ArEg) => "يعني",
         (InOtherWords, Ar) => "المعنى",
         (InOtherWords, En) => "In other words",
-        (RegisterLabel, ArEg) => "الأسلوب:",
-        (RegisterLabel, Ar) => "الأسلوب:",
-        (RegisterLabel, En) => "Register:",
         (RegisterChat, ArEg) => "كلام شات",
         (RegisterChat, Ar) => "أسلوب المحادثة",
         (RegisterChat, En) => "chat",
@@ -2525,14 +1544,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (GrammarInSentence, ArEg) => "القواعد اللي في الجملة",
         (GrammarInSentence, Ar) => "القواعد في هذه الجملة",
         (GrammarInSentence, En) => "Grammar in this sentence",
-        (NoGrammarMatched, ArEg) => "مفيش قاعدة من المكتبة باينة في الجملة دي، معاني الكلمات كفاية هنا.",
-        (NoGrammarMatched, Ar) => "لا تظهر قاعدة من المكتبة في هذه الجملة، ومعاني الكلمات تكفي هنا.",
-        (NoGrammarMatched, En) => {
-            "No library grammar point shows up in this sentence; the word meanings cover it."
-        }
-        (FoundBy, ArEg) => "لقيتها من:",
-        (FoundBy, Ar) => "وُجدت عبر:",
-        (FoundBy, En) => "Spotted by:",
         (GrammarInText, ArEg) => "القواعد اللي في النص",
         (GrammarInText, Ar) => "القواعد في هذا النص",
         (GrammarInText, En) => "Grammar in this text",
@@ -2548,24 +1559,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (GrammarNotYet, ArEg) => "لسه ماوصلتلهاش",
         (GrammarNotYet, Ar) => "لم تُدرَّس بعد",
         (GrammarNotYet, En) => "Not taught yet",
-        (GrammarLearnedIn, ArEg) => "اتعلمتها في درس",
-        (GrammarLearnedIn, Ar) => "تعلّمتَها في درس",
-        (GrammarLearnedIn, En) => "Learned in",
-        (GrammarTaughtIn, ArEg) => "هتيجي في درس",
-        (GrammarTaughtIn, Ar) => "تأتي في درس",
-        (GrammarTaughtIn, En) => "Taught in",
-        (GrammarOpenLesson, ArEg) => "افتح الدرس",
-        (GrammarOpenLesson, Ar) => "افتح الدرس",
-        (GrammarOpenLesson, En) => "Open lesson",
-        (GrammarReadMore, ArEg) => "الشرح كله",
-        (GrammarReadMore, Ar) => "الشرح الكامل",
-        (GrammarReadMore, En) => "Full explanation",
-        (CommonMistake, ArEg) => "غلطة شائعة",
-        (CommonMistake, Ar) => "خطأ شائع",
-        (CommonMistake, En) => "Common mistake",
-        (ExplainWord, ArEg) => "اشرح الجملة دي",
-        (ExplainWord, Ar) => "اشرح هذه الجملة",
-        (ExplainWord, En) => "Explain the sentence",
         (UrlFetching, ArEg) => "بجيب الصفحة…",
         (UrlFetching, Ar) => "جارٍ جلب الصفحة…",
         (UrlFetching, En) => "Fetching the page…",
@@ -2575,9 +1568,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (OcrWorking, ArEg) => "بقرا الصورة…",
         (OcrWorking, Ar) => "جارٍ قراءة الصورة…",
         (OcrWorking, En) => "Reading the image…",
-        (ReaderBusyHint, ArEg) => "هيتفتح لوحده أول ما يجهز. لحد ما يخلص تقدر تتفرج على مكتبتك.",
-        (ReaderBusyHint, Ar) => "سيُفتح وحده حين يجهز. حتى ذلك الحين تصفّح مكتبتك.",
-        (ReaderBusyHint, En) => "It opens by itself when ready. Browse your library meanwhile.",
         (WaitWordPrompt, ArEg) => "وإنت مستني، فاكر دي؟",
         (WaitWordPrompt, Ar) => "أثناء الانتظار، هل تتذكر هذه؟",
         (WaitWordPrompt, En) => "While you wait, remember this one?",
@@ -2614,13 +1604,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (WordSheet, ArEg) => "تفاصيل الكلمة",
         (WordSheet, Ar) => "تفاصيل الكلمة",
         (WordSheet, En) => "Word details",
-        (Delete, ArEg) => "امسح",
-        (Delete, Ar) => "احذف",
-        (Delete, En) => "Delete",
-        (Original, ArEg | Ar) => "الأصل",
-        (Original, En) => "Original",
-        (Explanation, ArEg | Ar) => "الشرح",
-        (Explanation, En) => "Explanation",
         (Me, ArEg | Ar) => "أنا",
         (Me, En) => "Me",
         (PenHint, ArEg) => {
@@ -2638,29 +1621,12 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (UnggahBlurb, En) => {
             "Talk Javanese with a friend, a grandmother and a teacher, and watch the Respect Meter."
         }
-        (UnggahIntro, ArEg) => {
-            "اختار مشهد. في كل دور هتلاقي نفس الكلام بمستويات مختلفة؛ اختار اللي يليق بالشخص اللي قدامك، و«مقياس الاحترام» هيوريك وقعه عليه."
-        }
-        (UnggahIntro, Ar) => {
-            "اختر مشهدًا. في كل دور تجد الكلام نفسه بمستويات مختلفة؛ اختر ما يليق بمن تخاطبه، وسيُريك «مقياس الاحترام» وقعه عليه."
-        }
-        (UnggahIntro, En) => {
-            "Pick a scene. Each turn offers the same thing at different speech levels: choose what suits the person, and the Respect Meter shows how it lands."
-        }
-        (UnggahNoScenes, ArEg) => "المشاهد لسه بتتكتب. ارجع بعد التحديث الجاي.",
-        (UnggahNoScenes, Ar) => "المشاهد قيد الكتابة. عد بعد التحديث القادم.",
-        (UnggahNoScenes, En) => "The scenes are still being written. Come back after the next update.",
         (UnggahOpensAt, ArEg) => "بيفتح في",
         (UnggahOpensAt, Ar) => "يُفتح في",
         (UnggahOpensAt, En) => "Opens at",
-        (UnggahMeter, ArEg | Ar) => "مقياس الاحترام",
-        (UnggahMeter, En) => "Respect Meter",
         (UnggahTurn, ArEg) => "دور",
         (UnggahTurn, Ar) => "الدور",
         (UnggahTurn, En) => "Turn",
-        (UnggahYourTurn, ArEg) => "هتقول إيه؟",
-        (UnggahYourTurn, Ar) => "ماذا ستقول؟",
-        (UnggahYourTurn, En) => "What do you say?",
         (UnggahFits, ArEg) => "في الجون",
         (UnggahFits, Ar) => "في محلّها تمامًا",
         (UnggahFits, En) => "Just right",
@@ -2673,11 +1639,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (UnggahSelfRaised, ArEg) => "كلمة التبجيل دي ليهم، مش ليك",
         (UnggahSelfRaised, Ar) => "لفظ التبجيل لهم، لا لك",
         (UnggahSelfRaised, En) => "Honour words are for them, not for you",
-        (UnggahBetter, ArEg) => "اللي يليق هنا:",
-        (UnggahBetter, Ar) => "الأنسب هنا:",
-        (UnggahBetter, En) => "What fits here:",
-        (UnggahFitting, ArEg | Ar) => "اختيارات في محلّها",
-        (UnggahFitting, En) => "fitting choices",
         (UnggahScenes, ArEg) => "مشاهد تانية",
         (UnggahScenes, Ar) => "مشاهد أخرى",
         (UnggahScenes, En) => "Other scenes",
@@ -2705,15 +1666,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
             "ميّز بين \u{2068}d\u{2069} و\u{2068}dh\u{2069}، و\u{2068}t\u{2069} و\u{2068}th\u{2069} في الجاوية."
         }
         (PairsBlurb, En) => "Tell Javanese d from dh, and t from th.",
-        (PairsIntro, ArEg) => {
-            "الجاوي فيه نوعين من كل حرف: \u{2068}d\u{2069} و\u{2068}t\u{2069} زي الدال والتاء بتوعنا، و\u{2068}dh\u{2069} و\u{2068}th\u{2069} واللسان راجع لورا. في كل جولة كلمتين شبه بعض، اختار الكتابة الصح."
-        }
-        (PairsIntro, Ar) => {
-            "في الجاوية نوعان من كل حرف: \u{2068}d\u{2069} و\u{2068}t\u{2069} كالدال والتاء العربيتين، و\u{2068}dh\u{2069} و\u{2068}th\u{2069} واللسان مرتدّ إلى الخلف. في كل جولة كلمتان متشابهتان، فاختر الكتابة الصحيحة."
-        }
-        (PairsIntro, En) => {
-            "Javanese has two of each: d and t just like Arabic د and ت, and dh and th with the tongue pulled back. Each round has two look-alike words: pick the right spelling."
-        }
         (PairsBoth, ArEg) => "الاتنين",
         (PairsBoth, Ar) => "كلاهما",
         (PairsBoth, En) => "Both",
@@ -2741,51 +1693,12 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PairsWhichSpelling, ArEg) => "أنهي كتابة صح؟",
         (PairsWhichSpelling, Ar) => "أيّ الكتابتين صحيحة؟",
         (PairsWhichSpelling, En) => "Which spelling is it?",
-        (PairsInJavanese, ArEg) => "بالجاوي:",
-        (PairsInJavanese, Ar) => "بالجاوية:",
-        (PairsInJavanese, En) => "In Javanese:",
-        (PairsInIndonesian, ArEg) => "بالإندونيسي:",
-        (PairsInIndonesian, Ar) => "بالإندونيسية:",
-        (PairsInIndonesian, En) => "In Indonesian:",
         (PairsJavanese, ArEg) => "جاوي",
         (PairsJavanese, Ar) => "جاوية",
         (PairsJavanese, En) => "Javanese",
         (PairsIndonesian, ArEg) => "إندونيسي",
         (PairsIndonesian, Ar) => "إندونيسية",
         (PairsIndonesian, En) => "Indonesian",
-        (PairsTipTitle, ArEg) => "إزاي تقولها",
-        (PairsTipTitle, Ar) => "كيف تنطقها",
-        (PairsTipTitle, En) => "How to say it",
-        (PairsTheTwoWords, ArEg) => "الكلمتين",
-        (PairsTheTwoWords, Ar) => "الكلمتان",
-        (PairsTheTwoWords, En) => "The two words",
-        (SettingsPron, ArEg) => "تعريب النطق (النطق بالحروف العربي)",
-        (SettingsPron, Ar) => "النطق بالحروف العربية",
-        (SettingsPron, En) => "Pronunciation in Arabic script",
-        (SettingsRetention, ArEg) => "عايز تفتكر الكلمات قد إيه؟",
-        (SettingsRetention, Ar) => "إلى أي حد تريد أن تتذكر الكلمات؟",
-        (SettingsRetention, En) => "How firmly to remember words",
-        (RetentionLight, ArEg) => "خفيف",
-        (RetentionLight, Ar) => "خفيف",
-        (RetentionLight, En) => "Light",
-        (RetentionBalanced, ArEg) => "متوازن",
-        (RetentionBalanced, Ar) => "متوازن",
-        (RetentionBalanced, En) => "Balanced",
-        (RetentionFirm, ArEg) => "ثابت",
-        (RetentionFirm, Ar) => "ثابت",
-        (RetentionFirm, En) => "Firm",
-        (RetentionTuned, ArEg) => "المواعيد متظبطة على ذاكرتك انت، من {n|مراجعة|مراجعتين|مراجعات}.",
-        (RetentionTuned, Ar) => "المواعيد مضبوطة على ذاكرتك أنت، من {n|مراجعة|مراجعتين|مراجعات|مراجعةً}.",
-        (RetentionTuned, En) => "Timing is tuned to your own memory, from {n|review|reviews}.",
-        (RetentionLearning, ArEg) => {
-            "\u{2068}Kabar\u{2069} بيتعلم ذاكرتك: بعد حوالي {n|مراجعة|مراجعتين|مراجعات} هيظبط المواعيد عليك انت."
-        }
-        (RetentionLearning, Ar) => {
-            "يتعلّم \u{2068}Kabar\u{2069} ذاكرتك: بعد نحو {n|مراجعة|مراجعتين|مراجعات|مراجعةً} سيضبط المواعيد عليك أنت."
-        }
-        (RetentionLearning, En) => {
-            "Kabar is learning your memory: after about {n|review|reviews} it tunes the timing to you."
-        }
         (PronModeOn, ArEg) => "ظاهر على طول",
         (PronModeOn, Ar) => "ظاهر دائمًا",
         (PronModeOn, En) => "Always shown",
@@ -2853,94 +1766,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (WebSaveFailed, En) => {
             "The browser wouldn't keep your progress just now. Kabar keeps trying; if this stays, export your data from Settings."
         }
-        (PwTitle, ArEg) => "الدخول باسم مستخدم وباسورد",
-        (PwTitle, Ar) => "الدخول باسم مستخدم وكلمة مرور",
-        (PwTitle, En) => "Username and password",
-        (PwIntro, ArEg) => {
-            "على جهاز مش بتاعك أو على الويب: ادخل باسم المستخدم والباسورد اللي ظبطتهم من جهازك، وهتلاقي تقدّمك كله وآخر حتة وقفت عندها."
-        }
-        (PwIntro, Ar) => {
-            "على جهاز ليس لك أو على الويب: ادخل باسم المستخدم وكلمة المرور اللذين ضبطتهما من جهازك، وستجد تقدّمك كله وآخر موضع توقفت عنده."
-        }
-        (PwIntro, En) => {
-            "On a device that isn't yours, or on the web: sign in with the username and password you set on your own device, and everything comes back, right where you left off."
-        }
-        (PwUsername, ArEg) => "اسم المستخدم",
-        (PwUsername, Ar) => "اسم المستخدم",
-        (PwUsername, En) => "Username",
-        (PwPassword, ArEg) => "الباسورد",
-        (PwPassword, Ar) => "كلمة المرور",
-        (PwPassword, En) => "Password",
-        (PwNotMine, ArEg) => "الجهاز ده مش بتاعي",
-        (PwNotMine, Ar) => "هذا الجهاز ليس لي",
-        (PwNotMine, En) => "This isn't my device",
-        (PwNotMineHint, ArEg) => "هتخرج لوحدك أول ما تقفل التاب أو التطبيق.",
-        (PwNotMineHint, Ar) => "ستخرج تلقائيًا عند إغلاق التبويب أو التطبيق.",
-        (PwNotMineHint, En) => "You're signed out when the tab or app closes.",
-        (PwSignIn, ArEg) => "ادخل",
-        (PwSignIn, Ar) => "ادخل",
-        (PwSignIn, En) => "Sign in",
-        (PwChecking, ArEg) => "بيدخل…",
-        (PwChecking, Ar) => "جارٍ الدخول…",
-        (PwChecking, En) => "Signing in…",
-        (PwYours, ArEg) => "بتدخل من أي جهاز بـ",
-        (PwYours, Ar) => "تدخل من أي جهاز بـ",
-        (PwYours, En) => "On any device, sign in as",
-        (PwHow, ArEg) => {
-            "على أي جهاز: افتح Kabar، ومن «الإعدادات › الحساب والمزامنة» اكتب اسم المستخدم والباسورد."
-        }
-        (PwHow, Ar) => {
-            "على أي جهاز: افتح Kabar، ومن «الإعدادات › الحساب والمزامنة» اكتب اسم المستخدم وكلمة المرور."
-        }
-        (PwHow, En) => "On any device: open Kabar and type them under Settings › Account & sync.",
-        (PwNone, ArEg) => {
-            "اختار اسم مستخدم وباسورد عشان تدخل من أي جهاز أو من الويب من غير جيميل. حسابك هو هو، فكل حاجة بتتزامن."
-        }
-        (PwNone, Ar) => {
-            "اختر اسم مستخدم وكلمة مرور لتدخل من أي جهاز أو من الويب دون Gmail. الحساب نفسه، فكل شيء يتزامن."
-        }
-        (PwNone, En) => {
-            "Pick a username and password to sign in on any device or on the web without Gmail. It's the same account, so everything syncs."
-        }
-        (PwUsernameHint, ArEg) => "من ٣ لـ ٣٢: حروف إنجليزي صغيرة وأرقام و . _ -",
-        (PwUsernameHint, Ar) => "من ٣ إلى ٣٢: حروف إنجليزية صغيرة وأرقام و . _ -",
-        (PwUsernameHint, En) => "3 to 32 of a–z, 0–9 and . _ -",
-        (PwNew, ArEg) => "الباسورد الجديد",
-        (PwNew, Ar) => "كلمة المرور الجديدة",
-        (PwNew, En) => "New password",
-        (PwPasswordHint, ArEg) => "١٠ حروف على الأقل. جملة قصيرة تفتكرها أحسن من كلمة صعبة.",
-        (PwPasswordHint, Ar) => "١٠ أحرف على الأقل. جملة قصيرة تتذكرها أفضل من كلمة صعبة.",
-        (PwPasswordHint, En) => "At least 10 characters. A short phrase you'll remember beats a hard word.",
-        (PwAgain, ArEg) => "اكتبه تاني",
-        (PwAgain, Ar) => "أعد كتابتها",
-        (PwAgain, En) => "Type it again",
-        (PwSave, ArEg) => "احفظ",
-        (PwSave, Ar) => "احفظ",
-        (PwSave, En) => "Save",
-        (PwSaving, ArEg) => "بيحفظ…",
-        (PwSaving, Ar) => "جارٍ الحفظ…",
-        (PwSaving, En) => "Saving…",
-        (PwSaved, ArEg) => "اتحفظ. تقدر تدخل بيه من أي جهاز دلوقتي.",
-        (PwSaved, Ar) => "تم الحفظ. يمكنك الدخول به من أي جهاز الآن.",
-        (PwSaved, En) => "Saved. You can sign in with it on any device now.",
-        (PwChange, ArEg) => "غيّر",
-        (PwChange, Ar) => "غيّر",
-        (PwChange, En) => "Change",
-        (PwRemove, ArEg) => "اقفل الدخول بالباسورد",
-        (PwRemove, Ar) => "أوقف الدخول بكلمة المرور",
-        (PwRemove, En) => "Turn off password sign-in",
-        (PwCancel, ArEg) => "إلغاء",
-        (PwCancel, Ar) => "إلغاء",
-        (PwCancel, En) => "Cancel",
-        (PwTemporary, ArEg) => {
-            "دخول مؤقت: هتخرج لوحدك لما تقفل التاب أو التطبيق. لو خلصت قبلها، دوس «سجّل خروج من الجهاز ده»."
-        }
-        (PwTemporary, Ar) => {
-            "دخول مؤقت: ستخرج تلقائيًا عند إغلاق التبويب أو التطبيق. إن انتهيت قبل ذلك فاضغط «تسجيل الخروج من هذا الجهاز»."
-        }
-        (PwTemporary, En) => {
-            "Temporary sign-in: you're signed out when the tab or app closes. Done sooner? Tap “Sign out on this device”."
-        }
         (ProblemWrongPassword, ArEg) => "اسم المستخدم أو الباسورد مش مظبوط. جرّب تاني.",
         (ProblemWrongPassword, Ar) => "اسم المستخدم أو كلمة المرور غير صحيحة. حاول مرة أخرى.",
         (ProblemWrongPassword, En) => "That username and password don't match. Try again.",
@@ -3001,7 +1826,7 @@ mod grammar_tests {
 
     const NB: char = '\u{a0}';
 
-    fn msg(lang: UiLanguage, m: Msg, n: &str) -> String {
+    fn msg(lang: UiLanguage, m: impl Text, n: &str) -> String {
         fill(lang, t(lang, m), &[("n", n), ("rows", n)])
     }
 
@@ -3016,9 +1841,18 @@ mod grammar_tests {
         assert_eq!(msg(ArEg, Msg::DiagCount, "12"), format!("12{NB}سطر"));
         assert_eq!(msg(ArEg, Msg::ExportSaved, "٢"), "اتحفظ صفين في:");
         assert_eq!(msg(Ar, Msg::ExportSaved, "15"), format!("حُفظ 15{NB}صفًّا في:"));
-        assert_eq!(msg(ArEg, Msg::RevBurstHint, "60"), format!("أكتر عدد كروت تقدر عليه في 60{NB}ثانية."));
-        assert!(msg(ArEg, Msg::RetentionTuned, "5").ends_with(&format!("من 5{NB}مراجعات.")));
-        assert!(msg(ArEg, Msg::RevSeedBody, "2").starts_with("كلمتين إندونيسي أصلها عربي."));
+        assert_eq!(
+            msg(ArEg, crate::review::msg::ReviewMsg::RevBurstHint, "60"),
+            format!("أكتر عدد كروت تقدر عليه في 60{NB}ثانية.")
+        );
+        assert!(
+            msg(ArEg, crate::settings::msg::SettingsMsg::RetentionTuned, "5")
+                .ends_with(&format!("من 5{NB}مراجعات."))
+        );
+        assert!(
+            msg(ArEg, crate::review::msg::ReviewMsg::RevSeedBody, "2")
+                .starts_with("كلمتين إندونيسي أصلها عربي.")
+        );
         let stat = |lang, s, args: &[(&str, &str)]| fill(lang, st(lang, s), args);
         assert_eq!(stat(ArEg, S::In30Days, &[("n", "30")]), format!("بعد 30{NB}يوم"));
         assert_eq!(stat(ArEg, S::PeriodWeek, &[("n", "7")]), format!("آخر 7{NB}أيام"));
@@ -3186,13 +2020,15 @@ mod catalog_tests {
                 | PasarTitle
                 | UnggahTitle
                 | PairsTitle
-                | PairsIntro
         )
     }
 
     #[test]
     fn every_message_reads_right_in_every_language() {
-        assert!(Msg::ALL.len() > 600, "the catalog walk must see every key");
+        assert!(
+            Msg::ALL.len() > 400,
+            "the catalog walk must see every shared key (feature strings are checked in each msg.rs)"
+        );
         checks::catalog(Msg::ALL, t, mixed_script);
     }
 

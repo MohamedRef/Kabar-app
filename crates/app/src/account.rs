@@ -7,9 +7,12 @@ use kabar_protocol::cloud::{DeviceSummary, Platform, UsageReport};
 use kabar_protocol::sync::OpKind;
 use tokio::sync::mpsc::UnboundedSender;
 
+use crate::account::msg::AccountMsg;
 use crate::cloud::{CloudStatus, Command, LoginStatus, Problem, Secret, SyncState};
 use crate::i18n::Msg;
 use crate::{Db, Ui};
+
+pub mod msg;
 
 /// Kabar Cloud state for the UI, shared through context.
 #[derive(Clone, Copy)]
@@ -64,7 +67,7 @@ pub fn problem_msg(p: Problem) -> Msg {
 pub fn sign_in_problem_line(ui: &Ui, p: Problem) -> String {
     match p {
         Problem::Network => ui.t(Msg::ProblemSignInNetwork).to_string(),
-        Problem::Server => ui.t(Msg::ProblemSignInServer).to_string(),
+        Problem::Server => ui.t(AccountMsg::ProblemSignInServer).to_string(),
         p => problem_line(ui, p),
     }
 }
@@ -97,7 +100,7 @@ pub(crate) fn sync_msg(s: SyncState) -> Option<Msg> {
 pub fn ago(lang: UiLanguage, eastern: bool, then_ms: u64, now_ms: u64) -> String {
     let secs = now_ms.saturating_sub(then_ms) / 1000;
     if secs < 60 {
-        return crate::i18n::t(lang, Msg::JustNow).to_string();
+        return crate::i18n::t(lang, AccountMsg::JustNow).to_string();
     }
     let (n, unit) = match secs {
         s if s < 3600 => (s / 60, 0),
@@ -159,7 +162,7 @@ pub fn AccountScreen() -> Element {
     let PasswordTried(tried) = use_context_provider(|| PasswordTried(Signal::new(false)));
     // A password attempt's problem shows in its own card.
     let card_problem = status.problem.filter(|_| signed_in || !tried());
-    let intro = if cfg!(target_arch = "wasm32") { Msg::CloudIntroWeb } else { Msg::CloudIntro };
+    let intro = if cfg!(target_arch = "wasm32") { AccountMsg::CloudIntroWeb } else { AccountMsg::CloudIntro };
 
     // Load the device list when this screen opens, and again after sign-in.
     let state = use_memo(move || cloud.status.read().sync);
@@ -182,7 +185,7 @@ pub fn AccountScreen() -> Element {
                 p { "{ui.t(intro)}" }
                 if cfg!(target_arch = "wasm32") {
                 } else if *cloud.signing_in.read() {
-                    p { class: "muted", aria_live: "polite", "{ui.t(Msg::CloudSigningIn)}" }
+                    p { class: "muted", aria_live: "polite", "{ui.t(AccountMsg::CloudSigningIn)}" }
                 } else {
                     button { class: "primary", onclick: move |_| cloud.send(Command::SignInGoogle), "{ui.t(Msg::CloudSignIn)}" }
                 }
@@ -213,14 +216,14 @@ fn SignedIn(status: CloudStatus) -> Element {
 
     rsx! {
         div { class: "field",
-            span { class: "label", "{ui.t(Msg::CloudSignedInAs)}" }
+            span { class: "label", "{ui.t(AccountMsg::CloudSignedInAs)}" }
             bdi { class: "latin", "{email}" }
         }
         if status.sync == SyncState::Offline {
             crate::misc_art::Picture { art: crate::misc_art::Art::Offline, class: "empty-art small" }
         }
         if status.temporary {
-            p { class: "notice", role: "note", "{ui.t(Msg::PwTemporary)}" }
+            p { class: "notice", role: "note", "{ui.t(AccountMsg::PwTemporary)}" }
         }
         div { class: "field row",
             if let Some(msg) = sync_msg(status.sync) {
@@ -231,14 +234,14 @@ fn SignedIn(status: CloudStatus) -> Element {
                 }
             }
             if status.pending > 0 {
-                span { class: "muted", "{pending} {ui.t(Msg::SyncPending)}" }
+                span { class: "muted", "{pending} {ui.t(AccountMsg::SyncPending)}" }
             }
             if let Some(last) = last {
-                span { class: "muted", "{ui.t(Msg::SyncLast)}: {last}" }
+                span { class: "muted", "{ui.t(AccountMsg::SyncLast)}: {last}" }
             }
         }
         div { class: "sync-actions",
-            button { onclick: move |_| cloud.send(Command::SignOut), "{ui.t(Msg::CloudSignOut)}" }
+            button { onclick: move |_| cloud.send(Command::SignOut), "{ui.t(AccountMsg::CloudSignOut)}" }
         }
     }
 }
@@ -267,7 +270,7 @@ pub fn ReturningSignIn() -> Element {
     rsx! {
         if !open() {
             p {
-                button { class: "outline", onclick: move |_| open.set(true), "{ui.t(Msg::WelcomeHaveAccount)}" }
+                button { class: "outline", onclick: move |_| open.set(true), "{ui.t(AccountMsg::WelcomeHaveAccount)}" }
             }
         } else {
             div { class: "welcome-sign-in",
@@ -309,8 +312,8 @@ fn PasswordSignIn() -> Element {
     let ready = !username.read().trim().is_empty() && !password.read().is_empty();
     rsx! {
         crate::ui::DivCard { class: "pw-card",
-            h2 { "{ui.t(Msg::PwTitle)}" }
-            p { class: "muted", "{ui.t(Msg::PwIntro)}" }
+            h2 { "{ui.t(AccountMsg::PwTitle)}" }
+            p { class: "muted", "{ui.t(AccountMsg::PwIntro)}" }
             form { class: "pw-form",
                 onsubmit: move |e| {
                     e.prevent_default();
@@ -326,7 +329,7 @@ fn PasswordSignIn() -> Element {
                     tried.set(true);
                 },
                 label { class: "field",
-                    span { class: "label", "{ui.t(Msg::PwUsername)}" }
+                    span { class: "label", "{ui.t(AccountMsg::PwUsername)}" }
                     input {
                         class: "text-input latin", r#type: "text", name: "username", dir: "ltr", lang: "en",
                         autocomplete: "username", autocapitalize: "none", spellcheck: "false",
@@ -335,7 +338,7 @@ fn PasswordSignIn() -> Element {
                     }
                 }
                 label { class: "field",
-                    span { class: "label", "{ui.t(Msg::PwPassword)}" }
+                    span { class: "label", "{ui.t(AccountMsg::PwPassword)}" }
                     input {
                         class: "text-input latin", r#type: "password", name: "password", dir: "ltr",
                         autocomplete: "current-password",
@@ -350,13 +353,13 @@ fn PasswordSignIn() -> Element {
                         onchange: move |e: FormEvent| theirs.set(e.checked()),
                     }
                     span {
-                        "{ui.t(Msg::PwNotMine)}"
-                        small { class: "muted", "{ui.t(Msg::PwNotMineHint)}" }
+                        "{ui.t(AccountMsg::PwNotMine)}"
+                        small { class: "muted", "{ui.t(AccountMsg::PwNotMineHint)}" }
                     }
                 }
                 div { class: "sync-actions",
                     button { class: "primary", r#type: "submit", disabled: !ready || busy,
-                        if busy { "{ui.t(Msg::PwChecking)}" } else { "{ui.t(Msg::PwSignIn)}" }
+                        if busy { "{ui.t(AccountMsg::PwChecking)}" } else { "{ui.t(AccountMsg::PwSignIn)}" }
                     }
                 }
                 if let Some(p) = problem {
@@ -409,20 +412,20 @@ fn LoginCard() -> Element {
     let problem = if mismatch() { Some(Problem::Mismatch) } else { login.problem };
     rsx! {
         crate::ui::DivCard { class: "pw-card",
-            h2 { "{ui.t(Msg::PwTitle)}" }
+            h2 { "{ui.t(AccountMsg::PwTitle)}" }
             match &login.username {
                 None => rsx! { p { class: "muted", "…" } },
                 Some(Some(name)) => rsx! {
                     div { class: "field",
-                        span { class: "label", "{ui.t(Msg::PwYours)}" }
+                        span { class: "label", "{ui.t(AccountMsg::PwYours)}" }
                         bdi { class: "latin", "{name}" }
                     }
                     if saved {
-                        p { class: "notice", role: "status", "{ui.t(Msg::PwSaved)}" }
+                        p { class: "notice", role: "status", "{ui.t(AccountMsg::PwSaved)}" }
                     }
-                    p { class: "muted", "{ui.t(Msg::PwHow)}" }
+                    p { class: "muted", "{ui.t(AccountMsg::PwHow)}" }
                 },
-                Some(None) => rsx! { p { class: "muted", "{ui.t(Msg::PwNone)}" } },
+                Some(None) => rsx! { p { class: "muted", "{ui.t(AccountMsg::PwNone)}" } },
             }
             if open {
                 form { class: "pw-form",
@@ -439,27 +442,27 @@ fn LoginCard() -> Element {
                         });
                     },
                     label { class: "field",
-                        span { class: "label", "{ui.t(Msg::PwUsername)}" }
+                        span { class: "label", "{ui.t(AccountMsg::PwUsername)}" }
                         input {
                             class: "text-input latin", r#type: "text", name: "username", dir: "ltr", lang: "en",
                             autocomplete: "username", autocapitalize: "none", spellcheck: "false",
                             value: "{username}",
                             oninput: move |e| username.set(e.value()),
                         }
-                        p { class: "field-hint", "{ui.t(Msg::PwUsernameHint)}" }
+                        p { class: "field-hint", "{ui.t(AccountMsg::PwUsernameHint)}" }
                     }
                     label { class: "field",
-                        span { class: "label", "{ui.t(Msg::PwNew)}" }
+                        span { class: "label", "{ui.t(AccountMsg::PwNew)}" }
                         input {
                             class: "text-input latin", r#type: "password", name: "new-password", dir: "ltr",
                             autocomplete: "new-password",
                             value: "{password}",
                             oninput: move |e| { password.set(e.value()); mismatch.set(false); },
                         }
-                        p { class: "field-hint", "{ui.t(Msg::PwPasswordHint)}" }
+                        p { class: "field-hint", "{ui.t(AccountMsg::PwPasswordHint)}" }
                     }
                     label { class: "field",
-                        span { class: "label", "{ui.t(Msg::PwAgain)}" }
+                        span { class: "label", "{ui.t(AccountMsg::PwAgain)}" }
                         input {
                             class: "text-input latin", r#type: "password", name: "new-password-again", dir: "ltr",
                             autocomplete: "new-password",
@@ -469,17 +472,17 @@ fn LoginCard() -> Element {
                     }
                     div { class: "sync-actions",
                         if current.is_some() {
-                            button { r#type: "button", onclick: move |_| editing.set(false), "{ui.t(Msg::PwCancel)}" }
+                            button { r#type: "button", onclick: move |_| editing.set(false), "{ui.t(AccountMsg::PwCancel)}" }
                         }
                         button { class: "primary", r#type: "submit", disabled: !ready || login.saving,
-                            if login.saving { "{ui.t(Msg::PwSaving)}" } else { "{ui.t(Msg::PwSave)}" }
+                            if login.saving { "{ui.t(AccountMsg::PwSaving)}" } else { "{ui.t(AccountMsg::PwSave)}" }
                         }
                     }
                 }
             } else if current.is_some() {
                 div { class: "sync-actions",
-                    button { class: "danger", disabled: login.saving, onclick: move |_| cloud.send(Command::RemoveLogin), "{ui.t(Msg::PwRemove)}" }
-                    button { onclick: move |_| editing.set(true), "{ui.t(Msg::PwChange)}" }
+                    button { class: "danger", disabled: login.saving, onclick: move |_| cloud.send(Command::RemoveLogin), "{ui.t(AccountMsg::PwRemove)}" }
+                    button { onclick: move |_| editing.set(true), "{ui.t(AccountMsg::PwChange)}" }
                 }
             }
             if let Some(p) = problem {
@@ -500,7 +503,7 @@ fn DevicesCard() -> Element {
     rsx! {
         crate::ui::DivCard {
             div { class: "row devices-head",
-                h2 { "{ui.t(Msg::DevicesTitle)}" }
+                h2 { "{ui.t(AccountMsg::DevicesTitle)}" }
                 button { onclick: move |_| cloud.send(Command::LoadDevices), "{ui.t(Msg::DevicesRefresh)}" }
             }
             match devices {
@@ -517,7 +520,7 @@ fn DevicesCard() -> Element {
                                     div { class: "row",
                                         bdi { class: "device-name", "{d.name}" }
                                         if d.current {
-                                            span { class: "pill info", "{ui.t(Msg::DeviceThis)}" }
+                                            span { class: "pill info", "{ui.t(AccountMsg::DeviceThis)}" }
                                         }
                                     }
                                     div { class: "muted",
@@ -526,11 +529,11 @@ fn DevicesCard() -> Element {
                                             " · "
                                         }
                                         if d.revoked {
-                                            "{ui.t(Msg::DeviceSignedOut)}"
+                                            "{ui.t(AccountMsg::DeviceSignedOut)}"
                                         } else if let Some(ms) = d.last_sync_ms {
-                                            "{ui.t(Msg::SyncLast)}: {ago(settings.ui_language, settings.eastern_digits, ms, now)}"
+                                            "{ui.t(AccountMsg::SyncLast)}: {ago(settings.ui_language, settings.eastern_digits, ms, now)}"
                                         } else {
-                                            "{ui.t(Msg::DeviceNeverSynced)}"
+                                            "{ui.t(AccountMsg::DeviceNeverSynced)}"
                                         }
                                     }
                                 }
@@ -541,7 +544,7 @@ fn DevicesCard() -> Element {
                                             let id = d.device_id.clone();
                                             move |_| cloud.send(Command::RevokeDevice(id.clone()))
                                         },
-                                        "{ui.t(Msg::DeviceSignOut)}"
+                                        "{ui.t(AccountMsg::DeviceSignOut)}"
                                     }
                                 }
                             }
@@ -600,7 +603,7 @@ fn TrySyncCard() -> Element {
 
     rsx! {
         crate::ui::DivCard {
-            h2 { "{ui.t(Msg::TrySyncTitle)}" }
+            h2 { "{ui.t(AccountMsg::TrySyncTitle)}" }
             form {
                 class: "row",
                 onsubmit: move |e: FormEvent| {
@@ -616,10 +619,10 @@ fn TrySyncCard() -> Element {
                     value: "{word}",
                     oninput: move |e: FormEvent| word.set(e.value()),
                 }
-                button { class: "primary", r#type: "submit", "{ui.t(Msg::TrySyncSave)}" }
+                button { class: "primary", r#type: "submit", "{ui.t(AccountMsg::TrySyncSave)}" }
             }
             if !words.is_empty() {
-                p { class: "label", "{ui.t(Msg::TrySyncSaved)}" }
+                p { class: "label", "{ui.t(AccountMsg::TrySyncSaved)}" }
                 div { class: "row",
                     for w in words {
                         span { key: "{w}", class: "pill latin", lang: "id", bdi { "{w}" } }

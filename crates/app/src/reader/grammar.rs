@@ -19,6 +19,7 @@ use super::explain::{GrammarEntry, library, voice_of};
 use crate::embedded::{Css, css};
 use crate::i18n::Msg;
 use crate::lesson::Rich;
+use crate::reader::msg::ReaderMsg;
 use crate::{Db, Ui};
 
 pub const CSS: Css = css!("assets/reader-grammar.css");
@@ -145,7 +146,11 @@ fn hit_note(h: &Hit, v: Voice) -> Option<String> {
 fn PlaceLine(found: Found) -> Element {
     let ui = use_context::<Ui>();
     let Some(place) = found.place.clone() else { return rsx! {} };
-    let msg = if found.standing == Standing::Learned { Msg::GrammarLearnedIn } else { Msg::GrammarTaughtIn };
+    let msg = if found.standing == Standing::Learned {
+        ReaderMsg::GrammarLearnedIn
+    } else {
+        ReaderMsg::GrammarTaughtIn
+    };
     let lesson = place.lesson.clone();
     rsx! {
         p { class: "muted small gr-place",
@@ -156,7 +161,7 @@ fn PlaceLine(found: Found) -> Element {
             button {
                 class: "ghost small",
                 onclick: move |_| ui.open_lesson(lesson.clone()),
-                "{ui.t(Msg::GrammarOpenLesson)}"
+                "{ui.t(ReaderMsg::GrammarOpenLesson)}"
             }
         }
     }
@@ -209,7 +214,7 @@ pub fn TextGrammar() -> Element {
                         PlaceLine { found: f.clone() }
                         if let Some(p) = library().get(&f.grammar) {
                             details { class: "gr-more",
-                                summary { "{ui.t(Msg::GrammarReadMore)}" }
+                                summary { "{ui.t(ReaderMsg::GrammarReadMore)}" }
                                 GrammarEntry { point: p.clone(), matched: Vec::new(), voice }
                             }
                         }
@@ -265,7 +270,7 @@ pub fn GrammarAt(doc: Rc<ReadDoc>, grammar: Rc<DocGrammar>, i: usize, voice: Voi
                     PlaceLine { found: f.clone() }
                     if let Some(p) = library().get(&f.grammar) {
                         details { class: "gr-more",
-                            summary { "{ui.t(Msg::GrammarReadMore)}" }
+                            summary { "{ui.t(ReaderMsg::GrammarReadMore)}" }
                             GrammarEntry { point: p.clone(), matched: Vec::new(), voice }
                         }
                     }

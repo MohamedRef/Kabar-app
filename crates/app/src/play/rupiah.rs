@@ -9,6 +9,7 @@ use super::speech::{self, Voice};
 use super::{PlayHeader, fresh_seed, logic};
 use crate::coach::Coach;
 use crate::i18n::Msg;
+use crate::play::msg::PlayMsg;
 use crate::{Db, Ui};
 
 pub const DRILLS: usize = 10;
@@ -112,7 +113,7 @@ pub fn RupiahReader() -> Element {
         return rsx! {
             PlayHeader { title: Msg::RupiahTitle }
             crate::ui::DivCard {
-                p { class: "muted", "{ui.t(Msg::RupiahIntro)}" }
+                p { class: "muted", "{ui.t(PlayMsg::RupiahIntro)}" }
                 p { class: "price-example", lang: "id",
                     bdi { class: "latin price", "Rp26.000.000" }
                     span { class: "flip", aria_hidden: "true", " → " }
@@ -168,11 +169,11 @@ pub fn RupiahReader() -> Element {
                 div { class: "stats-row",
                     div { class: "stat-static",
                         span { class: "stat-value", "{ui.num(f.score)}" }
-                        span { class: "stat-label", "{ui.t(Msg::RupiahScore)}" }
+                        span { class: "stat-label", "{ui.t(PlayMsg::RupiahScore)}" }
                     }
                     div { class: "stat-static",
                         span { class: "stat-value", "{ui.num(f.millis / 1000)}" }
-                        span { class: "stat-label", "{ui.t(Msg::RupiahSeconds)}" }
+                        span { class: "stat-label", "{ui.t(PlayMsg::RupiahSeconds)}" }
                     }
                 }
                 if new_best {
@@ -184,7 +185,7 @@ pub fn RupiahReader() -> Element {
     let Some(drill) = s.drills.get(s.index).cloned() else {
         return rsx! {
             PlayHeader { title: Msg::RupiahTitle }
-            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(Msg::DetectiveNoRounds)}" } }
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(PlayMsg::DetectiveNoRounds)}" } }
         };
     };
     let last = s.index + 1 == s.drills.len();
@@ -212,8 +213,8 @@ pub fn RupiahReader() -> Element {
                     autocomplete: "off",
                     autocapitalize: "off",
                     spellcheck: "false",
-                    aria_label: "{ui.t(Msg::RupiahType)}",
-                    placeholder: "{ui.t(Msg::RupiahType)}",
+                    aria_label: "{ui.t(PlayMsg::RupiahType)}",
+                    placeholder: "{ui.t(PlayMsg::RupiahType)}",
                     disabled: answered.is_some(),
                     value: "{s.input}",
                     oninput: move |e: FormEvent| {
@@ -228,7 +229,7 @@ pub fn RupiahReader() -> Element {
                     match check {
                         Check::Correct => rsx! { strong { "{ui.t(Msg::PlayRight)}" } },
                         Check::Close { expected } => rsx! {
-                            strong { "{ui.t(Msg::RupiahClose)}" }
+                            strong { "{ui.t(PlayMsg::RupiahClose)}" }
                             p { lang: "id", bdi { class: "latin", "{expected}" } }
                         },
                         Check::Wrong { expected, .. } => rsx! {

@@ -12,6 +12,7 @@ use super::device::{Appearance, DevicePrefs, TextSize};
 use super::text::{S, st};
 use crate::i18n::Msg;
 use crate::screens::LanguagePicker;
+use crate::settings::msg::SettingsMsg;
 use crate::{Db, Ui};
 
 #[component]
@@ -28,12 +29,12 @@ pub fn LookSection() -> Element {
     rsx! {
         Card {
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::SettingsLanguage)}" }
+                span { class: "label", "{ui.t(SettingsMsg::SettingsLanguage)}" }
                 LanguagePicker {}
             }
 
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::SettingsTheme)}" }
+                span { class: "label", "{ui.t(SettingsMsg::SettingsTheme)}" }
                 div { class: "row", role: "group",
                     for th in Theme::ALL {
                         button {
@@ -105,7 +106,7 @@ pub fn LookSection() -> Element {
                             }
                         },
                     }
-                    " {ui.t(Msg::SettingsDigits)} · {sample}"
+                    " {ui.t(SettingsMsg::SettingsDigits)} · {sample}"
                 }
             }
         }

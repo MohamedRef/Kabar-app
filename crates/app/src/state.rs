@@ -1,6 +1,6 @@
 //! App-wide reactive state and shared update paths.
 
-use crate::i18n::{Msg, t};
+use crate::i18n::t;
 use crate::{Screen, store::Store};
 use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
@@ -32,13 +32,13 @@ pub struct Ui {
 pub struct Db(pub Rc<RefCell<Store>>);
 
 impl Ui {
-    pub fn t(&self, msg: Msg) -> &'static str {
+    pub fn t(&self, msg: impl crate::i18n::Text) -> &'static str {
         t(self.settings.read().ui_language, msg)
     }
 
     /// A catalog line with its `{placeholders}` filled, counts agreeing with
     /// their nouns (`crate::i18n::fill`).
-    pub fn fill(&self, msg: Msg, args: &[(&str, &str)]) -> String {
+    pub fn fill(&self, msg: impl crate::i18n::Text, args: &[(&str, &str)]) -> String {
         crate::i18n::fill(self.lang(), self.t(msg), args)
     }
 

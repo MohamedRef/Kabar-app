@@ -1,6 +1,7 @@
 //! Journey map rendering and collision-aware map geometry.
 
 use super::*;
+use crate::journey::msg::JourneyMsg;
 
 pub(super) const PAN_ZOOM_JS: &str = include_str!("../../assets/journey.js");
 pub(super) const INDONESIA_SVG: &str = include_str!("../../assets/journey/indonesia.svg");
@@ -46,8 +47,8 @@ pub(super) fn MapView(j: Journey, picked: Signal<Option<Option<String>>>) -> Ele
     };
     let (zoom_in, zoom_out, zoom_reset) = (zoom.clone(), zoom.clone(), zoom);
     let map_label = match j.route {
-        Route::Indonesian => Msg::JourneyMapOfIndonesia,
-        Route::Javanese => Msg::JourneyMapOfJava,
+        Route::Indonesian => JourneyMsg::JourneyMapOfIndonesia,
+        Route::Javanese => JourneyMsg::JourneyMapOfJava,
     };
     let base = j.route.base_map();
     let (land_id, land_other) = (land_path(base, "land-id"), land_path(base, "land-other"));
@@ -234,16 +235,16 @@ pub(super) fn MapView(j: Journey, picked: Signal<Option<Option<String>>>) -> Ele
                 // Under the map, never over it, so no zoom button sits on a pin
                 // or a landmark in either reading direction.
                 div { class: "jm-controls", role: "group",
-                    button { aria_label: "{ui.t(Msg::JourneyZoomIn)}", title: "{ui.t(Msg::JourneyZoomIn)}", onclick: move |_| zoom_in("zoom(1.5)"), "+" }
-                    button { aria_label: "{ui.t(Msg::JourneyZoomOut)}", title: "{ui.t(Msg::JourneyZoomOut)}", onclick: move |_| zoom_out("zoom(1 / 1.5)"), "−" }
-                    button { aria_label: "{ui.t(Msg::JourneyZoomReset)}", title: "{ui.t(Msg::JourneyZoomReset)}", onclick: move |_| zoom_reset("reset()"), {icon_reset()} }
+                    button { aria_label: "{ui.t(JourneyMsg::JourneyZoomIn)}", title: "{ui.t(JourneyMsg::JourneyZoomIn)}", onclick: move |_| zoom_in("zoom(1.5)"), "+" }
+                    button { aria_label: "{ui.t(JourneyMsg::JourneyZoomOut)}", title: "{ui.t(JourneyMsg::JourneyZoomOut)}", onclick: move |_| zoom_out("zoom(1 / 1.5)"), "−" }
+                    button { aria_label: "{ui.t(JourneyMsg::JourneyZoomReset)}", title: "{ui.t(JourneyMsg::JourneyZoomReset)}", onclick: move |_| zoom_reset("reset()"), {icon_reset()} }
                 }
                 {continue_bar(&ui, &j, &progress)}
             }
             if let Some(level) = panel_level {
                 aside { class: "jm-panel", aria_label: "{level.place()}",
                     div { class: "jm-panel-close",
-                        button { aria_label: "{ui.t(Msg::JourneyClose)}", title: "{ui.t(Msg::JourneyClose)}", onclick: move |_| picked.set(Some(None)), "×" }
+                        button { aria_label: "{ui.t(JourneyMsg::JourneyClose)}", title: "{ui.t(JourneyMsg::JourneyClose)}", onclick: move |_| picked.set(Some(None)), "×" }
                     }
                     {level_head(&ui, &j, level, &progress, &elsewhere)}
                     crate::views::ViewBar { of: LESSONS_VIEW }

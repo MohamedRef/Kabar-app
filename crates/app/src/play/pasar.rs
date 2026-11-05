@@ -12,6 +12,7 @@ use super::logic::{self, meaning};
 use super::{ContentProblem, PlayHeader, content, fresh_seed, seconds_since};
 use crate::coach::Coach;
 use crate::i18n::Msg;
+use crate::play::msg::PlayMsg;
 use crate::{Db, Ui};
 
 /// One haggle in progress.
@@ -62,10 +63,10 @@ pub fn Pasar() -> Element {
     rsx! {
         PlayHeader { title: Msg::PasarTitle, latin: true }
         crate::ui::DivCard {
-            p { class: "muted", "{ui.t(Msg::PasarIntro)}" }
+            p { class: "muted", "{ui.t(PlayMsg::PasarIntro)}" }
         }
         if data.items.is_empty() {
-            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(Msg::PasarNoItems)}" } }
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(PlayMsg::PasarNoItems)}" } }
         }
         div { class: "play-grid",
             for item in data.items.iter() {
@@ -82,12 +83,12 @@ pub fn Pasar() -> Element {
                     },
                     span { class: "game-text",
                         if item.bonus {
-                            span { class: "pill bonus-pill small", "{ui.t(Msg::PasarBonus)}" }
+                            span { class: "pill bonus-pill small", "{ui.t(PlayMsg::PasarBonus)}" }
                         }
                         strong { lang: seller_lang(item), bdi { class: "latin", "{item.name}" } }
                         span { class: "muted small", "{meaning(ui.lang(), &item.meaning)}" }
                         span { class: "small",
-                            "{ui.t(Msg::PasarBudget)} "
+                            "{ui.t(PlayMsg::PasarBudget)} "
                             bdi { class: "latin", "{rupiah::format_rupiah(logic::budget_for(item.fair))}" }
                         }
                         if item.javanese {
@@ -157,10 +158,10 @@ fn Haggle(current: Signal<Option<Match>>) -> Element {
                 p { class: "item-name", lang, bdi { class: "latin", "{item.name}" } }
                 p { class: "muted small", "{meaning(ui.lang(), &item.meaning)}" }
                 div { class: "row",
-                    span { class: "pill", "{ui.t(Msg::PasarBudget)} " bdi { class: "latin", "{rupiah::format_rupiah(budget)}" } }
+                    span { class: "pill", "{ui.t(PlayMsg::PasarBudget)} " bdi { class: "latin", "{rupiah::format_rupiah(budget)}" } }
                     if let Some(p) = on_table {
                         span { class: "pill price-pill",
-                            "{ui.t(Msg::PasarOnTable)} "
+                            "{ui.t(PlayMsg::PasarOnTable)} "
                             bdi { class: "latin", "{rupiah::format_rupiah(p)}" }
                         }
                     }
@@ -299,7 +300,7 @@ fn ResultCard(result: PasarResult, onagain: EventHandler<()>) -> Element {
                 p { "{ui.t(Msg::PasarPaid)} " bdi { class: "latin", "{rupiah::format_rupiah(price)}" } }
             }
             if result.saved > 0 {
-                p { class: "ok", "{ui.t(Msg::PasarSaved)} " bdi { class: "latin", "{rupiah::format_rupiah(result.saved)}" } }
+                p { class: "ok", "{ui.t(PlayMsg::PasarSaved)} " bdi { class: "latin", "{rupiah::format_rupiah(result.saved)}" } }
             }
             div { class: "row",
                 button { class: "primary", onclick: move |_| onagain.call(()), "{ui.t(Msg::PlayAgain)}" }

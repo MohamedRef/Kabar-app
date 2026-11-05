@@ -3,6 +3,7 @@
 //! confirm card that stands before anything that could cost money.
 
 pub mod logic;
+pub mod msg;
 
 use dioxus::prelude::*;
 use kabar_protocol::ai::EngineId;
@@ -12,6 +13,7 @@ use self::logic::Level;
 use crate::account::{Cloud, problem_msg};
 use crate::cloud::SyncState;
 use crate::coach::Coach;
+use crate::cost::msg::CostMsg;
 use crate::i18n::Msg;
 use crate::{Screen, Ui};
 
@@ -51,18 +53,18 @@ pub fn CostScreen() -> Element {
             p { class: "cost-total",
                 bdi { class: "cost-amount latin", dir: "ltr", "{logic::dollars(spend)}" }
                 " "
-                span { class: "cost-period", "{ui.t(Msg::CostThisMonth)}" }
+                span { class: "cost-period", "{ui.t(CostMsg::CostThisMonth)}" }
             }
         }
         match (connected, usage) {
             (true, Some(Ok(_))) => rsx! {},
             (true, None) => rsx! {
-                crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { class: "muted", aria_live: "polite", "{ui.t(Msg::CostLoading)}" } }
+                crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { class: "muted", aria_live: "polite", "{ui.t(CostMsg::CostLoading)}" } }
             },
             (true, Some(Err(p))) => rsx! {
                 crate::ui::DivCard {
                     p { class: "notice", role: "status", "{ui.t(problem_msg(p))}" }
-                    p { class: "muted", "{ui.t(Msg::CostOffline)}" }
+                    p { class: "muted", "{ui.t(CostMsg::CostOffline)}" }
                 }
             },
             (false, _) => rsx! {
@@ -75,7 +77,7 @@ pub fn CostScreen() -> Element {
                             s.set(Screen::Devices);
                         }
                     },
-                    p { "{ui.t(Msg::CostOffline)}" }
+                    p { "{ui.t(CostMsg::CostOffline)}" }
                     if status.configured {
                         button { "{ui.t(Msg::CloudSignIn)}" }
                     }
@@ -87,7 +89,7 @@ pub fn CostScreen() -> Element {
             Platform { report }
         } else {
             crate::ui::DivCard {
-                h2 { "{ui.t(Msg::CostPlatformTitle)}" }
+                h2 { "{ui.t(CostMsg::CostPlatformTitle)}" }
             }
         }
         ClaudeCard {}
@@ -119,7 +121,7 @@ fn Allowances(report: UsageReport) -> Element {
             }
         }
         crate::ui::DivCard {
-            h2 { "{ui.t(Msg::CostServicesTitle)}" }
+            h2 { "{ui.t(CostMsg::CostServicesTitle)}" }
             ul { class: "cost-list",
                 for u in rows {
                     UsageRow { key: "{u.service:?}", usage: u }
@@ -140,7 +142,7 @@ fn UsageRow(usage: ServiceUsage) -> Element {
     let usable = u.enabled && u.configured;
     let level = if usable { logic::level(u.used, u.limit) } else { Level::Calm };
     let unit = logic::unit_msg(u.unit).map(|m| ui.t(m)).unwrap_or_default();
-    let resets = ui.t(Msg::CostResets).replace(
+    let resets = ui.t(CostMsg::CostResets).replace(
         "{when}",
         &logic::when(logic::reset(u.resets_at_ms, coach.now(), coach.offset()), lang, eastern),
     );
@@ -152,9 +154,9 @@ fn UsageRow(usage: ServiceUsage) -> Element {
             div { class: "row spread",
                 bdi { class: "cost-name latin", "{name}" }
                 if !u.configured {
-                    span { class: "pill", "{ui.t(Msg::CostNotSetUp)}" }
+                    span { class: "pill", "{ui.t(CostMsg::CostNotSetUp)}" }
                 } else if !u.enabled {
-                    span { class: "pill", "{ui.t(Msg::CostOff)}" }
+                    span { class: "pill", "{ui.t(CostMsg::CostOff)}" }
                 }
             }
             div {
@@ -180,7 +182,7 @@ fn Platform(report: UsageReport) -> Element {
     let (lang, eastern) = (ui.lang(), ui.eastern());
     rsx! {
         crate::ui::DivCard {
-            h2 { "{ui.t(Msg::CostPlatformTitle)}" }
+            h2 { "{ui.t(CostMsg::CostPlatformTitle)}" }
             ul { class: "cost-platform",
                 for (i, p) in report.platform.iter().enumerate() {
                     if let (Some(unit), Some(per)) = (logic::unit_msg(p.unit), logic::period_msg(p.period)) {
@@ -218,14 +220,14 @@ fn ClaudeCard() -> Element {
 
     rsx! {
         crate::ui::DivCard {
-            h2 { "{ui.t(Msg::CostClaudeTitle)}" }
+            h2 { "{ui.t(CostMsg::CostClaudeTitle)}" }
             if on {
-                p { "{ui.t(Msg::CostClaudeOnBody)}" }
+                p { "{ui.t(CostMsg::CostClaudeOnBody)}" }
                 if let Some(c) = claude {
                     ul { class: "cost-list", UsageRow { usage: c } }
                 }
             } else if said_yes() {
-                p { class: "note", "{ui.t(Msg::CostClaudeHowTo)}" }
+                p { class: "note", "{ui.t(CostMsg::CostClaudeHowTo)}" }
             } else if asking() {
                 PaidConfirm {
                     engine: EngineId::Claude,
@@ -235,8 +237,8 @@ fn ClaudeCard() -> Element {
                     },
                 }
             } else {
-                p { class: "muted", "{ui.t(Msg::CostClaudeOffBody)}" }
-                button { onclick: move |_| asking.set(true), "{ui.t(Msg::CostClaudeTurnOn)}" }
+                p { class: "muted", "{ui.t(CostMsg::CostClaudeOffBody)}" }
+                button { onclick: move |_| asking.set(true), "{ui.t(CostMsg::CostClaudeTurnOn)}" }
             }
         }
     }
@@ -253,11 +255,11 @@ pub fn PaidConfirm(engine: EngineId, onanswer: EventHandler<bool>) -> Element {
     }
     rsx! {
         div { class: "cost-confirm", role: "alertdialog", aria_labelledby: "cost-confirm-title",
-            h3 { id: "cost-confirm-title", "{ui.t(Msg::CostConfirmTitle)}" }
-            p { "{ui.t(Msg::CostConfirmBody)}" }
+            h3 { id: "cost-confirm-title", "{ui.t(CostMsg::CostConfirmTitle)}" }
+            p { "{ui.t(CostMsg::CostConfirmBody)}" }
             div { class: "row",
-                button { class: "primary", autofocus: true, "data-back": "true", onclick: move |_| onanswer.call(false), "{ui.t(Msg::CostConfirmNo)}" }
-                button { onclick: move |_| onanswer.call(true), "{ui.t(Msg::CostConfirmYes)}" }
+                button { class: "primary", autofocus: true, "data-back": "true", onclick: move |_| onanswer.call(false), "{ui.t(CostMsg::CostConfirmNo)}" }
+                button { onclick: move |_| onanswer.call(true), "{ui.t(CostMsg::CostConfirmYes)}" }
             }
         }
     }

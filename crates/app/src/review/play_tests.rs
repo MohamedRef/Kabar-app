@@ -8,6 +8,7 @@ use kabar_protocol::srs::{ArabicOrigin, CardSource};
 
 use super::*;
 use crate::lesson::sim::{self, Node, Sim};
+use crate::review::msg::ReviewMsg;
 
 thread_local! {
     static WIDTH: std::cell::Cell<WidthClass> = const { std::cell::Cell::new(WidthClass::Compact) };
@@ -38,7 +39,7 @@ fn open(width: WidthClass, lang: UiLanguage, cards: Vec<Card>) -> Sim {
     Sim::new(app)
 }
 
-fn en(m: Msg) -> String {
+fn en(m: impl crate::i18n::Text) -> String {
     esc(crate::i18n::t(UiLanguage::En, m))
 }
 
@@ -128,7 +129,7 @@ fn a_classic_round_rates_undoes_and_finishes_with_a_summary() {
     sim.click(|n| n.has_class("reveal-btn"));
     sim.click(|n| n.has_class("rating") && n.has_class("easy"));
     assert_eq!(log_len(&mut sim), 2);
-    sim.click(button_text(crate::i18n::t(UiLanguage::En, Msg::RevFinish).into()));
+    sim.click(button_text(crate::i18n::t(UiLanguage::En, ReviewMsg::RevFinish).into()));
     let html = sim.html();
     assert!(html.contains(&en(Msg::RevDoneTitle)), "{html}");
     assert!(html.contains(&en(Msg::RevRevisit)), "the Again card is listed to revisit: {html}");
@@ -153,7 +154,9 @@ fn finishing_before_answering_goes_home() {
 #[test]
 fn production_cards_check_the_typed_word() {
     let cards = vec![word("makan", CardKind::Production, StudyLanguage::Id)];
-    for (typed, verdict) in [("makan", Msg::RevExact), ("makon", Msg::RevClose), ("tidur", Msg::RevWrong)] {
+    for (typed, verdict) in
+        [("makan", ReviewMsg::RevExact), ("makon", ReviewMsg::RevClose), ("tidur", ReviewMsg::RevWrong)]
+    {
         let mut sim = open(WidthClass::Compact, UiLanguage::En, cards.clone());
         sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action"));
         let html = sim.html();
@@ -168,7 +171,7 @@ fn production_cards_check_the_typed_word() {
         let html = sim.html();
         assert!(html.contains(&en(verdict)), "{typed}: {html}");
         assert!(sim.find(|n| n.has_class("suggested")).is_some(), "{typed}: a suggested rating");
-        if verdict != Msg::RevExact {
+        if verdict != ReviewMsg::RevExact {
             assert!(html.contains(&format!("class=\"struck\">{typed}<")), "{html}");
         }
         sim.click(|n| n.has_class("rating") && n.has_class("hard"));
@@ -243,7 +246,8 @@ fn wide_windows_show_the_session_pane() {
     sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action"));
     let html = sim.html();
     assert!(
-        html.contains("rev-pane") && html.contains(&esc(crate::i18n::t(UiLanguage::ArEg, Msg::RevNoneYet)))
+        html.contains("rev-pane")
+            && html.contains(&esc(crate::i18n::t(UiLanguage::ArEg, ReviewMsg::RevNoneYet)))
     );
     sim.click(|n| n.has_class("reveal-btn"));
     sim.click(|n| n.has_class("rating") && n.has_class("good"));
@@ -298,13 +302,15 @@ fn the_card_wall_sorts_into_piles_and_undoes() {
     // Three different words, both card kinds each: siblings wait their turn.
     let cards: Vec<Card> = seed_bridge_deck().into_iter().take(6).collect();
     let mut sim = open(WidthClass::Medium, UiLanguage::En, cards);
-    sim.click(|n| n.has_class("rev-mode") && n.text.contains(crate::i18n::t(UiLanguage::En, Msg::RevWall)));
+    sim.click(|n| {
+        n.has_class("rev-mode") && n.text.contains(crate::i18n::t(UiLanguage::En, ReviewMsg::RevWall))
+    });
     let html = sim.html();
     assert!(html.contains("id=\"card-wall\"") && html.contains("data-seats=\"4\""), "{html}");
     let dealt = sim.count(|n| n.has_class("wall-card"));
     assert!((2..=4).contains(&dealt), "{dealt} cards dealt");
-    let tahu = crate::i18n::t(UiLanguage::En, Msg::RevTahu).to_string();
-    let belum = crate::i18n::t(UiLanguage::En, Msg::RevBelum).to_string();
+    let tahu = crate::i18n::t(UiLanguage::En, ReviewMsg::RevTahu).to_string();
+    let belum = crate::i18n::t(UiLanguage::En, ReviewMsg::RevBelum).to_string();
     sim.click({
         let t = tahu.clone();
         move |n| n.inside("wall-keys") && n.text == t
@@ -403,14 +409,14 @@ fn spans_follow_each_languages_number_rules() {
         assert!(say(&ui, Span::Minutes(5), true).ends_with(" دقائق"));
         // Day 0 was a Thursday; the week wraps.
         ui.settings.write().ui_language = UiLanguage::En;
-        assert_eq!(weekday(&ui, 0), crate::i18n::t(UiLanguage::En, Msg::ThuShort));
-        assert_eq!(weekday(&ui, 3), crate::i18n::t(UiLanguage::En, Msg::SunShort));
-        assert_eq!(weekday(&ui, -1), crate::i18n::t(UiLanguage::En, Msg::WedShort));
+        assert_eq!(weekday(&ui, 0), crate::i18n::t(UiLanguage::En, ReviewMsg::ThuShort));
+        assert_eq!(weekday(&ui, 3), crate::i18n::t(UiLanguage::En, ReviewMsg::SunShort));
+        assert_eq!(weekday(&ui, -1), crate::i18n::t(UiLanguage::En, ReviewMsg::WedShort));
         let sched = Scheduler::default();
         let now = 1_761_472_800_000;
         assert_eq!(
             when_text(&ui, &sched, now, now + 86_400_000),
-            crate::i18n::t(UiLanguage::En, Msg::RevTomorrow)
+            crate::i18n::t(UiLanguage::En, ReviewMsg::RevTomorrow)
         );
         assert!(when_text(&ui, &sched, now, now + 600_000).contains("10 minutes"));
         for r in Rating::ALL {
@@ -475,7 +481,7 @@ fn wall_flips_and_drops_from_the_page_are_rated() {
     let mut sim = open(WidthClass::Expanded, UiLanguage::Ar, cards);
     sim.click(|n| {
         n.has_class("rev-mode")
-            && n.text.contains(crate::i18n::t(UiLanguage::Ar, Msg::RevWall))
+            && n.text.contains(crate::i18n::t(UiLanguage::Ar, ReviewMsg::RevWall))
             && n.has_class("card-action")
     });
     let id = sim.find(|n| n.has_class("wall-card")).unwrap().attr("data-id").unwrap().to_string();

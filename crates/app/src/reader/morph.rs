@@ -18,6 +18,7 @@ use crate::Ui;
 use crate::annotated::parts::{ClassChip, Legend, PartsLine, SayWord};
 use crate::i18n::Msg;
 use crate::lesson::Rich;
+use crate::reader::msg::ReaderMsg;
 
 /// The word-class chip [`MorphDetail`] shows beside "Word breakdown", if
 /// any, so the gloss under it needn't repeat the same word (#603).
@@ -154,7 +155,7 @@ pub fn MorphDetail(i: usize) -> Element {
                     e.prevent_default();
                     expanded.toggle();
                 },
-                span { "{ui.t(Msg::MorphMore)}" }
+                span { "{ui.t(ReaderMsg::MorphMore)}" }
                 if let Some(c) = class {
                     ClassChip { class: c, voice: ui_voice }
                 }
@@ -183,7 +184,7 @@ pub(super) fn MorphBody(s: Shown, class: Option<WordClass>, voice: UiLanguage) -
             if let Some(change) = &s.detail.sound_change {
                 p { class: "muted small",
                     bdi { class: "latin", dir: "ltr", "{change}" }
-                    " · {ui.t(Msg::MorphSoundChange)}"
+                    " · {ui.t(ReaderMsg::MorphSoundChange)}"
                 }
             }
             ul { class: "morph-notes",

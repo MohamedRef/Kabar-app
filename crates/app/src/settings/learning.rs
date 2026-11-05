@@ -8,6 +8,7 @@ use kabar_core::settings::{CorrectSound, EndSound, PronMode, RetentionPct, Trans
 
 use super::text::{S, st};
 use crate::i18n::Msg;
+use crate::settings::msg::SettingsMsg;
 use crate::{Db, Ui};
 
 #[component]
@@ -17,15 +18,17 @@ pub fn LearningSection() -> Element {
     let settings = ui.settings.read().clone();
     let lang = ui.lang();
     let tuning = match &settings.fsrs {
-        Some(p) => ui.fill(Msg::RetentionTuned, &[("n", &ui.num(u64::from(p.reviews)))]),
-        None => ui
-            .fill(Msg::RetentionLearning, &[("n", &ui.num(kabar_core::srs::MIN_REVIEWS_TO_OPTIMIZE as u64))]),
+        Some(p) => ui.fill(SettingsMsg::RetentionTuned, &[("n", &ui.num(u64::from(p.reviews)))]),
+        None => ui.fill(
+            SettingsMsg::RetentionLearning,
+            &[("n", &ui.num(kabar_core::srs::MIN_REVIEWS_TO_OPTIMIZE as u64))],
+        ),
     };
 
     rsx! {
         Card {
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::SettingsPron)}" }
+                span { class: "label", "{ui.t(SettingsMsg::SettingsPron)}" }
                 div { class: "segmented", role: "radiogroup",
                     for mode in PronMode::ALL {
                         button {
@@ -103,9 +106,9 @@ pub fn LearningSection() -> Element {
             }
 
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::SettingsRetention)}" }
+                span { class: "label", "{ui.t(SettingsMsg::SettingsRetention)}" }
                 div { class: "segmented", role: "radiogroup",
-                    for (pct, label) in [(85u8, Msg::RetentionLight), (90, Msg::RetentionBalanced), (95, Msg::RetentionFirm)] {
+                    for (pct, label) in [(85u8, SettingsMsg::RetentionLight), (90, SettingsMsg::RetentionBalanced), (95, SettingsMsg::RetentionFirm)] {
                         button {
                             key: "{pct}",
                             role: "radio",
@@ -136,7 +139,7 @@ pub fn LearningSection() -> Element {
                             }
                         },
                     }
-                    " {ui.t(Msg::SettingsSounds)}"
+                    " {ui.t(SettingsMsg::SettingsSounds)}"
                 }
             }
 

@@ -11,6 +11,7 @@ use super::logic::{self, meaning};
 use super::{ContentProblem, PlayHeader, RoundSummary, content, fresh_seed, seconds_since};
 use crate::coach::Coach;
 use crate::i18n::Msg;
+use crate::play::msg::PlayMsg;
 use crate::{Db, Ui};
 
 pub const ROUNDS: usize = 10;
@@ -69,7 +70,7 @@ pub fn Alarm() -> Element {
     if s.rounds.is_empty() {
         return rsx! {
             PlayHeader { title: Msg::AlarmTitle }
-            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(Msg::DetectiveNoRounds)}" } }
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(PlayMsg::DetectiveNoRounds)}" } }
         };
     }
     if s.done {
@@ -94,7 +95,7 @@ pub fn Alarm() -> Element {
                 span { class: "ar", lang: "ar", "«{round.arabic}»" }
             }
             p { class: "prompt latin", lang: "id", bdi { "{round.word}" } }
-            p { class: "muted", "{ui.t(Msg::AlarmQuestion)}" }
+            p { class: "muted", "{ui.t(PlayMsg::AlarmQuestion)}" }
             div { class: "choices two",
                 for (i , choice) in round.choices.iter().enumerate() {
                     button {
@@ -116,7 +117,7 @@ pub fn Alarm() -> Element {
             }
             if let Some(p) = picked {
                 div { class: if p == round.answer { "feedback right reveal" } else { "feedback kind reveal" },
-                    strong { if p == round.answer { "{ui.t(Msg::AlarmCaught)}" } else { "{ui.t(Msg::AlarmTricky)}" } }
+                    strong { if p == round.answer { "{ui.t(PlayMsg::AlarmCaught)}" } else { "{ui.t(PlayMsg::AlarmTricky)}" } }
                     if let Some(note) = &round.note {
                         p { "{meaning(lang, note)}" }
                     }

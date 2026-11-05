@@ -6,11 +6,12 @@ use kabar_protocol::coach::{ActivityKind, Skill};
 
 use super::*;
 use crate::i18n::t;
+use crate::play::msg::PlayMsg;
 use crate::test_dom::{App, El, memory_db};
 use crate::testkit::FakeDoc as FakeDocument;
 use serde_json::json;
 
-fn en(msg: Msg) -> &'static str {
+fn en(msg: impl crate::i18n::Text) -> &'static str {
     t(En, msg)
 }
 
@@ -203,15 +204,15 @@ fn detective_on_one_rule_logs_that_rule_in_arabic() {
         .expect("the card explains its rule");
     app.click_text(t(ArEg, Msg::Start));
     assert!(
-        app.screen().contains(t(ArEg, Msg::DetectiveGuessArabic))
-            || app.screen().contains(t(ArEg, Msg::DetectiveGuessIndonesian))
+        app.screen().contains(t(ArEg, PlayMsg::DetectiveGuessArabic))
+            || app.screen().contains(t(ArEg, PlayMsg::DetectiveGuessIndonesian))
     );
     let rounds = round_total(&app);
     let right = play_choice_rounds(&mut app, ArEg, rounds, |_| 0);
     assert_eq!(practices(&app), vec![(Skill::Vocabulary, format!("bridge:{id}"), right, rounds as u32)]);
     assert!(app.screen().contains(t(ArEg, Msg::PlayOtherGames)));
     // "Try it in a chat" leaves Play for Chat.
-    app.click_text(t(ArEg, Msg::PlayTryInChat));
+    app.click_text(t(ArEg, PlayMsg::PlayTryInChat));
     assert_eq!(app.screen_now(), crate::Screen::Chat);
 }
 
@@ -771,12 +772,12 @@ fn summary_body() -> Element {
 #[test]
 fn round_summary_words_the_score_warmly() {
     for (correct, total, line) in [
-        (8, 10, Msg::PlayGreat),
-        (10, 10, Msg::PlayGreat),
-        (7, 10, Msg::PlayGood),
-        (5, 10, Msg::PlayGood),
-        (4, 10, Msg::PlayKeepGoing),
-        (0, 0, Msg::PlayKeepGoing),
+        (8, 10, PlayMsg::PlayGreat),
+        (10, 10, PlayMsg::PlayGreat),
+        (7, 10, PlayMsg::PlayGood),
+        (5, 10, PlayMsg::PlayGood),
+        (4, 10, PlayMsg::PlayKeepGoing),
+        (0, 0, PlayMsg::PlayKeepGoing),
     ] {
         SCORE.set((correct, total));
         let mut app = App::new(En, summary_body);
@@ -796,10 +797,10 @@ fn Problem() -> Element {
 #[test]
 fn a_content_problem_says_so_kindly_with_the_detail_folded() {
     let app = App::new(ArEg, || rsx! { Problem {} });
-    assert!(app.screen().contains(t(ArEg, Msg::PlayContentProblem)));
+    assert!(app.screen().contains(t(ArEg, PlayMsg::PlayContentProblem)));
     let detail = app.find("p", "bad line 3");
     assert_eq!(app.attr(detail, "dir"), Some("ltr"));
-    assert_eq!(app.tag(app.find("summary", t(ArEg, Msg::PlayDetails))), "summary");
+    assert_eq!(app.tag(app.find("summary", t(ArEg, PlayMsg::PlayDetails))), "summary");
 }
 
 #[component]

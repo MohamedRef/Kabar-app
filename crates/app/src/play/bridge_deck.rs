@@ -14,6 +14,7 @@ use super::{ContentProblem, PlayHeader, PlayNav, Route, content};
 use crate::coach::Coach;
 use crate::embedded::{Css, css};
 use crate::i18n::Msg;
+use crate::play::msg::PlayMsg;
 use crate::{Db, Ui};
 
 const CSS: Css = css!("assets/bridge.css");
@@ -96,10 +97,10 @@ pub fn BridgeDeck() -> Element {
         style { {CSS.text()} }
         PlayHeader { title: Msg::DeckTitle }
         crate::ui::DivCard { class: "flat deck-hero",
-            span { class: "status-chip gold", "{ui.t(Msg::BridgeFromArabic)}" }
+            span { class: "status-chip gold", "{ui.t(PlayMsg::BridgeFromArabic)}" }
             p { class: "deck-count", lang: "id", bdi { "{deck_headline(deck.len())}" } }
             p { class: "small deck-marked",
-                "{ui.t(Msg::DeckMarked)} "
+                "{ui.t(PlayMsg::DeckMarked)} "
                 span { class: "ltr-count", strong { "{ui.num(marked as u64)}" } " / {ui.num(deck.len() as u64)}" }
             }
         }
@@ -181,7 +182,7 @@ fn DeckRow(entry: BridgeEntry, known: bool) -> Element {
             div { class: "deck-detail",
                 if let Some(root) = &entry.root {
                     p { class: "muted small",
-                        "{ui.t(Msg::Root)} "
+                        "{ui.t(PlayMsg::Root)} "
                         span { lang: "ar", dir: "rtl", "{root}" }
                     }
                 }

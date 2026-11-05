@@ -10,6 +10,7 @@ use super::logic::{self, meaning};
 use super::{ContentProblem, PlayHeader, RoundSummary, content, fresh_seed, seconds_since};
 use crate::coach::Coach;
 use crate::i18n::Msg;
+use crate::play::msg::PlayMsg;
 use crate::{Db, Ui};
 
 pub const ROUNDS: usize = 10;
@@ -189,7 +190,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
     if s.rounds.is_empty() {
         return rsx! {
             crate::ui::DivCard {
-                p { "{ui.t(Msg::DetectiveNoRounds)}" }
+                p { "{ui.t(PlayMsg::DetectiveNoRounds)}" }
                 button { onclick: move |_| session.set(None), "{ui.t(Msg::Back)}" }
             }
         };
@@ -216,7 +217,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
         crate::ui::DivCard { class: "round",
             super::RoundCount { at: s.index as u64 + 1, total: total as u64 }
             p { class: "muted",
-                if arabic_choices { "{ui.t(Msg::DetectiveGuessArabic)}" } else { "{ui.t(Msg::DetectiveGuessIndonesian)}" }
+                if arabic_choices { "{ui.t(PlayMsg::DetectiveGuessArabic)}" } else { "{ui.t(PlayMsg::DetectiveGuessIndonesian)}" }
             }
             if arabic_choices {
                 p { class: "prompt latin", lang: "id", bdi { "{round.prompt}" } }
@@ -256,7 +257,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
                     if p == round.answer {
                         strong { "{ui.t(Msg::PlayRight)}" }
                     } else {
-                        strong { "{ui.t(Msg::PlayNotQuite)} " }
+                        strong { "{ui.t(PlayMsg::PlayNotQuite)} " }
                         if arabic_choices {
                             span { class: "ar", lang: "ar", "{round.choices[round.answer]}" }
                         } else {

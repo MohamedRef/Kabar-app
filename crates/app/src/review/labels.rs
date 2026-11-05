@@ -1,6 +1,7 @@
 //! Localized scheduling and review labels.
 
 use super::*;
+use crate::review::msg::ReviewMsg;
 
 pub(super) fn mm_ss(ui: &Ui, ms: u64) -> String {
     let secs = ms / 1000;
@@ -77,21 +78,21 @@ pub(super) fn span_short(ui: &Ui, span: Span) -> String {
 /// "in 10 minutes", "tomorrow", "in 3 days".
 pub(super) fn when_text(ui: &Ui, sched: &Scheduler, now: u64, due: u64) -> String {
     match Span::until(sched, now, due) {
-        Span::Days(1) => ui.t(Msg::RevTomorrow).to_string(),
-        span => ui.t(Msg::RevIn).replace("{span}", &span_text(ui, span, true)),
+        Span::Days(1) => ui.t(ReviewMsg::RevTomorrow).to_string(),
+        span => ui.t(ReviewMsg::RevIn).replace("{span}", &span_text(ui, span, true)),
     }
 }
 pub(super) fn weekday(ui: &Ui, day: i64) -> &'static str {
     // Day 0 of the learner's calendar (1 Jan 1970) was a Thursday.
     let i = (day + 4).rem_euclid(7) as usize;
     ui.t([
-        Msg::SunShort,
-        Msg::MonShort,
-        Msg::TueShort,
-        Msg::WedShort,
-        Msg::ThuShort,
-        Msg::FriShort,
-        Msg::SatShort,
+        ReviewMsg::SunShort,
+        ReviewMsg::MonShort,
+        ReviewMsg::TueShort,
+        ReviewMsg::WedShort,
+        ReviewMsg::ThuShort,
+        ReviewMsg::FriShort,
+        ReviewMsg::SatShort,
     ][i])
 }
 pub(super) fn rating_msg(r: Rating) -> Msg {

@@ -1,6 +1,7 @@
 //! Classic review cards, session controls and undo presentation.
 
 use super::*;
+use crate::review::msg::ReviewMsg;
 
 // ---------------------------------------------------------------- card faces
 
@@ -15,8 +16,8 @@ pub(super) fn Word(card: Card, big: bool) -> Element {
             bdi { class: if big { "rev-word big" } else { "rev-word" }, lang: language.tag(), dir: "ltr", "{card.word}" }
             button {
                 class: "icon-btn",
-                aria_label: ui.t(Msg::RevPlay),
-                title: ui.t(Msg::RevPlay),
+                aria_label: ui.t(ReviewMsg::RevPlay),
+                title: ui.t(ReviewMsg::RevPlay),
                 onclick: move |e| {
                     e.stop_propagation();
                     speak(&text, language);
@@ -91,7 +92,7 @@ pub(super) fn TwinWarning(twin: &'static str) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
         span { class: "badge twin",
-            span { "≠ {ui.t(Msg::RevNotIndonesian)} " }
+            span { "≠ {ui.t(ReviewMsg::RevNotIndonesian)} " }
             bdi { lang: "id", dir: "ltr", class: "latin", "{twin}" }
         }
     }
@@ -122,7 +123,7 @@ pub(super) fn Front(card: Card) -> Element {
             CardKind::AudioMeaning => rsx! {
                 button {
                     class: "rev-listen",
-                    aria_label: ui.t(Msg::RevPlay),
+                    aria_label: ui.t(ReviewMsg::RevPlay),
                     onclick: move |e| {
                         e.stop_propagation();
                         speak(&text, language);
@@ -187,7 +188,7 @@ pub(super) fn Back(card: Card) -> Element {
                     }
                     match a.shift {
                         MeaningShift::FalseFriend => rsx! { p { class: "shift", "{ui.t(Msg::RevFalseFriend)}" } },
-                        MeaningShift::Shifted => rsx! { p { class: "shift", "{ui.t(Msg::RevShifted)}" } },
+                        MeaningShift::Shifted => rsx! { p { class: "shift", "{ui.t(ReviewMsg::RevShifted)}" } },
                         MeaningShift::Same => rsx! {},
                     }
                     if let Some(note) = &a.note {
@@ -329,7 +330,7 @@ pub(super) fn Classic() -> Element {
                             autocapitalize: "off",
                             spellcheck: "false",
                             readonly: revealed(),
-                            placeholder: ui.t(Msg::RevAnswerPlaceholder),
+                            placeholder: ui.t(ReviewMsg::RevAnswerPlaceholder),
                             aria_label: ui.t(Msg::RevPromptProduce),
                             value: "{typed}",
                             oninput: move |e: FormEvent| typed.set(e.value()),
@@ -342,15 +343,15 @@ pub(super) fn Classic() -> Element {
                         p { class: if m == AnswerMatch::Exact { "rev-verdict ok" } else { "rev-verdict" },
                             {
                                 match m {
-                                    AnswerMatch::Exact => ui.t(Msg::RevExact),
-                                    AnswerMatch::Close => ui.t(Msg::RevClose),
-                                    AnswerMatch::Wrong => ui.t(Msg::RevWrong),
+                                    AnswerMatch::Exact => ui.t(ReviewMsg::RevExact),
+                                    AnswerMatch::Close => ui.t(ReviewMsg::RevClose),
+                                    AnswerMatch::Wrong => ui.t(ReviewMsg::RevWrong),
                                 }
                             }
                         }
                         if m != AnswerMatch::Exact && !typed.read().trim().is_empty() {
                             p { class: "muted",
-                                "{ui.t(Msg::RevYouWrote)}: "
+                                "{ui.t(ReviewMsg::RevYouWrote)}: "
                                 bdi { lang: card.language.tag(), dir: "ltr", class: "struck", "{typed}" }
                             }
                         }
@@ -372,7 +373,7 @@ pub(super) fn Classic() -> Element {
             if revealed() {
                 p { class: "rev-ask", id: "rev-ask",
                     strong { "{ui.t(Msg::RevHowWell)}" }
-                    span { class: "muted small", " {ui.t(Msg::RevRateHint)}" }
+                    span { class: "muted small", " {ui.t(ReviewMsg::RevRateHint)}" }
                 }
                 div { class: "rate-row rating-row", role: "group", aria_labelledby: "rev-ask",
                     for (i, p) in previews.iter().enumerate() {
@@ -402,7 +403,7 @@ pub(super) fn Classic() -> Element {
                             let mut check = check.clone();
                             move |_| check()
                         },
-                        "{ui.t(Msg::RevCheck)}"
+                        "{ui.t(ReviewMsg::RevCheck)}"
                     }
                 }
             } else {
@@ -411,13 +412,13 @@ pub(super) fn Classic() -> Element {
                         class: "primary reveal-btn",
                         "aria-keyshortcuts": "Space",
                         onclick: move |_| revealed.set(true),
-                        "{ui.t(Msg::RevShowAnswer)}"
+                        "{ui.t(ReviewMsg::RevShowAnswer)}"
                     }
                 }
             }
             }
             div { class: "rev-foot",
-                span { class: "muted small kbd-hint", {ui.digits(ui.t(Msg::RevKeysHint))} }
+                span { class: "muted small kbd-hint", {ui.digits(ui.t(ReviewMsg::RevKeysHint))} }
                 SessionActions { on_undo: move |_| undo.call(()) }
             }
             if wide {
@@ -441,7 +442,7 @@ pub(super) fn ContentRow(card: Card) -> Element {
                 button {
                     class: "ghost rev-content-ok",
                     onclick: move |_| engine.verify_card(&card),
-                    "{ui.t(Msg::RevContentOk)}"
+                    "{ui.t(ReviewMsg::RevContentOk)}"
                 }
             }
         }
@@ -467,16 +468,16 @@ pub(super) fn SessionPane(left: usize, on_undo: EventHandler<()>) -> Element {
         .collect();
     let can_undo = engine.can_undo();
     rsx! {
-        aside { class: "rev-pane", aria_label: ui.t(Msg::RevThisSession),
-            h2 { class: "rev-pane-title", "{ui.t(Msg::RevThisSession)}" }
+        aside { class: "rev-pane", aria_label: ui.t(ReviewMsg::RevThisSession),
+            h2 { class: "rev-pane-title", "{ui.t(ReviewMsg::RevThisSession)}" }
             div { class: "rev-pane-counts",
                 div { class: "rev-pane-big",
                     span { class: "rev-stat-value", "{ui.num(answers.len() as u64)}" }
-                    span { class: "rev-stat-label", "{ui.t(Msg::RevAnswered)}" }
+                    span { class: "rev-stat-label", "{ui.t(ReviewMsg::RevAnswered)}" }
                 }
                 div { class: "rev-pane-big",
                     span { class: "rev-stat-value", "{ui.num((left + 1) as u64)}" }
-                    span { class: "rev-stat-label", "{ui.t(Msg::RevRemaining)}" }
+                    span { class: "rev-stat-label", "{ui.t(ReviewMsg::RevRemaining)}" }
                 }
             }
             ul { class: "rev-pane-ratings",
@@ -487,9 +488,9 @@ pub(super) fn SessionPane(left: usize, on_undo: EventHandler<()>) -> Element {
                     }
                 }
             }
-            h3 { class: "rev-h3", "{ui.t(Msg::RevJustReviewed)}" }
+            h3 { class: "rev-h3", "{ui.t(ReviewMsg::RevJustReviewed)}" }
             if recent.is_empty() {
-                p { class: "muted small", "{ui.t(Msg::RevNoneYet)}" }
+                p { class: "muted small", "{ui.t(ReviewMsg::RevNoneYet)}" }
             } else {
                 ol { class: "rev-recent",
                     for (i, (key, card, r)) in recent.into_iter().enumerate() {
@@ -499,8 +500,8 @@ pub(super) fn SessionPane(left: usize, on_undo: EventHandler<()>) -> Element {
                             if i == 0 && can_undo {
                                 button {
                                     class: "ghost rev-recent-undo",
-                                    title: ui.t(Msg::RevUndo),
-                                    aria_label: ui.t(Msg::RevUndo),
+                                    title: ui.t(ReviewMsg::RevUndo),
+                                    aria_label: ui.t(ReviewMsg::RevUndo),
                                     "aria-keyshortcuts": "Control+Z Meta+Z",
                                     onclick: move |_| on_undo.call(()),
                                     "↶"
@@ -540,7 +541,7 @@ pub(super) fn SessionBar(left: usize) -> Element {
             }
             // The card in hand out of the session, read left to right.
             span { class: "muted small ltr-count", dir: "ltr", "{ui.num((done + 1) as u64)} / {ui.num(total as u64)}" }
-            span { class: "muted small", {ui.t(Msg::RevLeft).replace("{n}", &ui.num((left + 1) as u64))} }
+            span { class: "muted small", {ui.t(ReviewMsg::RevLeft).replace("{n}", &ui.num((left + 1) as u64))} }
         }
     }
 }
@@ -551,9 +552,9 @@ pub(super) fn SessionActions(on_undo: EventHandler<()>) -> Element {
     let can_undo = engine.can_undo();
     rsx! {
         div { class: "row",
-            button { class: "rev-undo", disabled: !can_undo, onclick: move |_| on_undo.call(()), "{ui.t(Msg::RevUndo)}" }
+            button { class: "rev-undo", disabled: !can_undo, onclick: move |_| on_undo.call(()), "{ui.t(ReviewMsg::RevUndo)}" }
             // Android Back ends the session here (its answers are already saved).
-            button { "data-back": "true", onclick: move |_| engine.finish(), "{ui.t(Msg::RevFinish)}" }
+            button { "data-back": "true", onclick: move |_| engine.finish(), "{ui.t(ReviewMsg::RevFinish)}" }
         }
     }
 }

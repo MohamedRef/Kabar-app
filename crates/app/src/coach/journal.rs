@@ -24,6 +24,7 @@ use super::logic::{self, EntryKind, JournalDay, JournalFilter, JournalSources};
 use super::{Coach, clock, labels};
 use crate::account::Cloud;
 use crate::cloud::Command;
+use crate::coach::msg::CoachMsg;
 use crate::i18n::Msg;
 use crate::store::now_ms;
 use crate::{Db, Screen, Ui};
@@ -102,10 +103,10 @@ pub fn JournalScreen() -> Element {
             header { class: "journal-head",
                 div { class: "page-head",
                     div {
-                        h1 { "{ui.t(Msg::JournalTitle)}" }
+                        h1 { "{ui.t(CoachMsg::JournalTitle)}" }
                     }
                 }
-                div { class: "segmented journal-filters", role: "radiogroup", aria_label: "{ui.t(Msg::JournalTitle)}",
+                div { class: "segmented journal-filters", role: "radiogroup", aria_label: "{ui.t(CoachMsg::JournalTitle)}",
                     for f in JournalFilter::ALL {
                         button {
                             key: "{f:?}",
@@ -243,12 +244,12 @@ fn Reflection(entry: JournalEntry, draft: Signal<Option<Draft>>, local_rev: Sign
     let edited = entry.updated_ms > entry.created_ms;
     let id = entry.id.clone();
     rsx! {
-        article { class: "journal-note", aria_label: "{ui.t(Msg::JournalReflectionLabel)}",
+        article { class: "journal-note", aria_label: "{ui.t(CoachMsg::JournalReflectionLabel)}",
             // The learner may write in any script; `dir: auto` follows it.
             p { class: "journal-note-text", dir: "auto", "{entry.text}" }
             div { class: "row journal-note-actions",
                 if edited {
-                    span { class: "muted small", "{ui.t(Msg::JournalReflectionEdited)}" }
+                    span { class: "muted small", "{ui.t(CoachMsg::JournalReflectionEdited)}" }
                 }
                 if draft.read().is_none() {
                     button {
@@ -322,8 +323,8 @@ fn Editor(draft: Signal<Option<Draft>>, local_rev: Signal<u32>) -> Element {
                 dir: "auto",
                 rows: "4",
                 maxlength: "{MAX_REFLECTION_CHARS}",
-                aria_label: "{ui.t(Msg::JournalReflectionLabel)}",
-                placeholder: "{ui.t(Msg::JournalReflectionPlaceholder)}",
+                aria_label: "{ui.t(CoachMsg::JournalReflectionLabel)}",
+                placeholder: "{ui.t(CoachMsg::JournalReflectionPlaceholder)}",
                 value: "{current.text}",
                 autofocus: true,
                 oninput: move |e| {
@@ -400,14 +401,14 @@ fn EntryLine(kind: EntryKind) -> Element {
             }
         }
         EntryKind::Souvenir { name, .. } => rsx! {
-            "{ui.t(Msg::JournalSouvenir)}: "
+            "{ui.t(CoachMsg::JournalSouvenir)}: "
             bdi { "{name}" }
         },
         EntryKind::Taught { word, draft } => rsx! {
-            "{ui.t(Msg::JournalTaught)}: "
+            "{ui.t(CoachMsg::JournalTaught)}: "
             bdi { lang: "id", "{word}" }
             if draft {
-                span { class: "muted small", " · {ui.t(Msg::JournalDraft)}" }
+                span { class: "muted small", " · {ui.t(CoachMsg::JournalDraft)}" }
             }
         },
     }
@@ -421,7 +422,7 @@ fn ActivityLine(kind: ActivityKind) -> Element {
             "{ui.t(Msg::EvReviews)} · {ui.num(correct.min(cards))} / {ui.num(cards)}"
         },
         ActivityKind::NewWords { words } => rsx! {
-            "{ui.t(Msg::EvNewWords)}: "
+            "{ui.t(CoachMsg::EvNewWords)}: "
             bdi { lang: "id", "{words.join(\", \")}" }
         },
         ActivityKind::LessonStep { unit_id, done } => {
@@ -441,7 +442,7 @@ fn ActivityLine(kind: ActivityKind) -> Element {
             let name =
                 rewards::warung().iter().find(|i| i.id == item_id).map_or(item_id.clone(), |i| i.name.into());
             rsx! {
-                "{ui.t(Msg::EvPurchase)} "
+                "{ui.t(CoachMsg::EvPurchase)} "
                 bdi { lang: "id", "{name}" }
                 " · {ui.num(koin)} "
                 bdi { class: "latin", "Koin" }

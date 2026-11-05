@@ -1,6 +1,7 @@
 //! Existing behavior regressions for the feature facade.
 
 use super::*;
+use crate::journey::msg::JourneyMsg;
 
 #[test]
 fn curricula_parse_and_lay_out() {
@@ -310,7 +311,7 @@ mod screen {
         let mut dom = phone(fresh());
         let flights: Vec<_> = td::listeners(&dom).into_iter().filter(|l| l.class() == "flight").collect();
         assert_eq!(flights.len(), 7, "every unfinished level offers its test");
-        assert!(flights[0].text.contains(crate::i18n::t(EN, Msg::JourneyTakeFlight)));
+        assert!(flights[0].text.contains(crate::i18n::t(EN, JourneyMsg::JourneyTakeFlight)));
         td::click_on(&mut dom, &flights[0]);
         assert_eq!(td::lesson(&dom), first.level_test.as_ref().map(|t| t.id.clone()));
     }
@@ -344,7 +345,7 @@ mod screen {
         let mut dom = phone(fresh());
         td::click_where(&mut dom, |l| l.class() == "suitcase-toggle");
         let html = td::html(&dom);
-        assert!(td::shows(&html, crate::i18n::t(EN, Msg::JourneySuitcaseEmpty)), "{html}");
+        assert!(td::shows(&html, crate::i18n::t(EN, JourneyMsg::JourneySuitcaseEmpty)), "{html}");
         assert!(!html.contains("journey-now"), "the now card steps aside: {html}");
         // Pressing it again goes back to the route.
         td::click_where(&mut dom, |l| l.class() == "suitcase-toggle");
@@ -396,12 +397,12 @@ mod screen {
         let jv = &ROUTES.as_ref().unwrap().jv;
         assert_eq!(html.matches("class=\"rl-level\"").count(), jv.levels.len(), "{html}");
         // Nothing locked, just a note that it's best after BIPA 1.
-        assert!(td::shows(&html, crate::i18n::t(EN, Msg::JourneyBestAfter)), "{html}");
-        assert!(td::shows(&html, crate::i18n::t(EN, Msg::JourneyOpenAnyway)), "{html}");
+        assert!(td::shows(&html, crate::i18n::t(EN, JourneyMsg::JourneyBestAfter)), "{html}");
+        assert!(td::shows(&html, crate::i18n::t(EN, JourneyMsg::JourneyOpenAnyway)), "{html}");
         // Javanese content is flagged until approved; trains, not flights.
-        assert!(td::shows(&html, crate::i18n::t(EN, Msg::JourneyUnverified)), "{html}");
-        assert!(td::shows(&html, crate::i18n::t(EN, Msg::JourneyTakeExpress)), "{html}");
-        assert!(!td::shows(&html, crate::i18n::t(EN, Msg::JourneyTakeFlight)), "{html}");
+        assert!(td::shows(&html, crate::i18n::t(EN, JourneyMsg::JourneyUnverified)), "{html}");
+        assert!(td::shows(&html, crate::i18n::t(EN, JourneyMsg::JourneyTakeExpress)), "{html}");
+        assert!(!td::shows(&html, crate::i18n::t(EN, JourneyMsg::JourneyTakeFlight)), "{html}");
         let pressed = td::find(&dom, "click", |l| {
             l.attr("aria-pressed").is_some() && l.text.ends_with(crate::i18n::t(EN, Msg::JourneyJavanese))
         });
@@ -414,7 +415,7 @@ mod screen {
         route(&mut dom, Msg::JourneyJavanese);
         let html = td::html(&dom);
         let j1 = html.split("id=\"rl-j1\"").nth(1).unwrap().split("</section>").next().unwrap().to_string();
-        assert!(!td::shows(&j1, crate::i18n::t(EN, Msg::JourneyBestAfter)), "{j1}");
+        assert!(!td::shows(&j1, crate::i18n::t(EN, JourneyMsg::JourneyBestAfter)), "{j1}");
     }
 
     #[test]
@@ -450,7 +451,7 @@ mod screen {
         done(&mut store, routes.id.lessons().map(|l| l.id.clone()));
         let dom = phone(store);
         let html = td::html(&dom);
-        assert!(td::shows(&html, crate::i18n::t(EN, Msg::JourneyAllDone)), "{html}");
+        assert!(td::shows(&html, crate::i18n::t(EN, JourneyMsg::JourneyAllDone)), "{html}");
         assert!(!html.contains("journey-now"), "no next stop: {html}");
         assert!(!html.contains("class=\"flight\""), "no test left to offer: {html}");
     }
@@ -513,7 +514,9 @@ mod screen {
         td::click_on(&mut dom, &stickers[first]);
         let now: Vec<_> = td::listeners(&dom).into_iter().filter(|l| l.class() == "jm-sticker").collect();
         assert_eq!(now[first].attr("data-selected"), Some("true"));
-        td::click_where(&mut dom, |l| l.attr("aria-label") == Some(crate::i18n::t(EN, Msg::JourneyClose)));
+        td::click_where(&mut dom, |l| {
+            l.attr("aria-label") == Some(crate::i18n::t(EN, JourneyMsg::JourneyClose))
+        });
         assert!(td::html(&dom).contains("data-panel=\"closed\""));
         // Pressing Map again goes back to the list.
         td::click_where(&mut dom, |l| l.class() == "map-toggle");
@@ -555,7 +558,7 @@ mod screen {
             html.contains("class=\"jm\"") && !html.contains("map-toggle"),
             "a wide window has room for the map: {html}"
         );
-        for msg in [Msg::JourneyZoomIn, Msg::JourneyZoomOut, Msg::JourneyZoomReset] {
+        for msg in [JourneyMsg::JourneyZoomIn, JourneyMsg::JourneyZoomOut, JourneyMsg::JourneyZoomReset] {
             let b = td::find(&dom, "click", |l| l.attr("aria-label") == Some(crate::i18n::t(EN, msg)));
             td::click_on(&mut dom, &b);
         }

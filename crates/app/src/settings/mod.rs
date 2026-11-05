@@ -9,6 +9,7 @@
 
 #[cfg(test)]
 mod browser;
+pub mod msg;
 #[cfg(test)]
 mod tests;
 

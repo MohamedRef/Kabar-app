@@ -4,6 +4,7 @@ use dioxus::prelude::*;
 use kabar_protocol::coach::{LocalTime, PlanSize, QuietHours, ReminderStyle};
 
 use super::{labels, logic};
+use crate::coach::msg::CoachMsg;
 use crate::i18n::Msg;
 use crate::icons;
 use crate::portraits::{self, Face, Mood};
@@ -109,7 +110,7 @@ pub fn SizePicker(value: PlanSize, onpick: EventHandler<PlanSize>) -> Element {
         div {
             class: "segmented size-picker",
             role: "radiogroup",
-            aria_label: "{ui.t(Msg::DailySize)}",
+            aria_label: "{ui.t(CoachMsg::DailySize)}",
             for size in PlanSize::ALL {
                 button {
                     key: "{size:?}",
@@ -177,7 +178,7 @@ pub fn TimesEditor(times: Vec<LocalTime>, onchange: EventHandler<Vec<LocalTime>>
                 li { key: "{i}-{t}", class: "row",
                     TimeInput {
                         value: t,
-                        label: ui.t(Msg::StudyTimes).to_string(),
+                        label: ui.t(CoachMsg::StudyTimes).to_string(),
                         onchange: {
                             let times = times.clone();
                             move |new: LocalTime| {
@@ -251,9 +252,9 @@ pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) ->
         }
         if value != ReminderStyle::Off {
             if !platform::reminders::available() {
-                p { class: "hint", "{ui.t(Msg::RemindersElsewhere)}" }
+                p { class: "hint", "{ui.t(CoachMsg::RemindersElsewhere)}" }
             } else if !allowed {
-                p { class: "hint", "{ui.t(Msg::RemindersBlocked)}" }
+                p { class: "hint", "{ui.t(CoachMsg::RemindersBlocked)}" }
                 button {
                     class: "secondary",
                     onclick: move |_| {
@@ -262,7 +263,7 @@ pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) ->
                         }
                         asked += 1;
                     },
-                    "{ui.t(Msg::RemindersAllow)}"
+                    "{ui.t(CoachMsg::RemindersAllow)}"
                 }
             }
             if platform::reminders::available() {
@@ -272,11 +273,11 @@ pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) ->
                         checked: here,
                         onchange: move |e: FormEvent| prefs.set_remind_here(&db, e.checked()),
                     }
-                    " {ui.t(Msg::RemindHere)}"
+                    " {ui.t(CoachMsg::RemindHere)}"
                 }
             }
             if asleep {
-                p { class: "hint", "{ui.t(Msg::RemindersAsleep)}" }
+                p { class: "hint", "{ui.t(CoachMsg::RemindersAsleep)}" }
                 button {
                     class: "secondary",
                     onclick: move |_| {
@@ -285,7 +286,7 @@ pub fn StylePicker(value: ReminderStyle, onpick: EventHandler<ReminderStyle>) ->
                         }
                         asked += 1;
                     },
-                    "{ui.t(Msg::RemindersBattery)}"
+                    "{ui.t(CoachMsg::RemindersBattery)}"
                 }
             }
         }
@@ -303,10 +304,10 @@ pub fn QuietHoursEditor(value: QuietHours, onchange: EventHandler<QuietHours>) -
                 label: ui.t(Msg::QuietFrom).to_string(),
                 onchange: move |start| onchange.call(QuietHours { start, ..value }),
             }
-            span { "{ui.t(Msg::QuietTo)}" }
+            span { "{ui.t(CoachMsg::QuietTo)}" }
             TimeInput {
                 value: value.end,
-                label: ui.t(Msg::QuietTo).to_string(),
+                label: ui.t(CoachMsg::QuietTo).to_string(),
                 onchange: move |end| onchange.call(QuietHours { end, ..value }),
             }
         }

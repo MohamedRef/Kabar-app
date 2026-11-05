@@ -20,6 +20,7 @@ pub mod glossary;
 pub mod grammar;
 mod library;
 pub mod morph;
+pub mod msg;
 mod reading;
 pub mod translate;
 pub mod wait_word;
@@ -52,6 +53,7 @@ use self::doc::{Lexicon, ReadDoc, SegKind};
 use self::glossary::{Glossary, Shift, WordInfo};
 use crate::account::Cloud;
 use crate::i18n::Msg;
+use crate::reader::msg::ReaderMsg;
 use crate::store::{Highlight, SavedText, Store, StoreError, TextKind};
 use crate::teach::Ai;
 use crate::{Db, Ui, platform};
@@ -443,7 +445,7 @@ pub fn Reader() -> Element {
                 // it opens by itself, so the library stays usable meanwhile.
                 crate::ui::Card { element: crate::ui::CardElement::Div, class: "reader-busy", role: "status", aria_busy: "true",
                     p { strong { "{ui.t(m)}" } }
-                    p { class: "muted small", "{ui.t(Msg::ReaderBusyHint)}" }
+                    p { class: "muted small", "{ui.t(ReaderMsg::ReaderBusyHint)}" }
                     wait_word::WaitWord {}
                 }
             }
@@ -1065,8 +1067,8 @@ fn ReadView(open: Open) -> Element {
                 }
                 translate::TranslationStatus {}
                 div { class: "split-head",
-                    span { "{ui.t(Msg::Original)}" }
-                    span { "{ui.t(Msg::Explanation)}" }
+                    span { "{ui.t(ReaderMsg::Original)}" }
+                    span { "{ui.t(ReaderMsg::Explanation)}" }
                 }
                 div { id: "reader-doc", class: "doc split", {rows} }
                 p { class: "muted small pen-hint", "{input_hint(ui.lang(), *ui.tablet.read())}" }

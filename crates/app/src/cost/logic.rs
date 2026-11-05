@@ -7,6 +7,7 @@ use kabar_protocol::ai::EngineId;
 use kabar_protocol::cloud::{ServiceUsage, UsagePeriod, UsageService, UsageUnit};
 use kabar_protocol::coach::{LocalDate, LocalTime};
 
+use crate::cost::msg::CostMsg;
 use crate::i18n::{Msg, t};
 
 /// Warn from this share of a free allowance on.
@@ -109,11 +110,11 @@ fn isolate(s: &str) -> String {
 /// "at 02:00", "tomorrow at 02:00" or "on 2026-11-01".
 pub fn when(r: Reset, lang: UiLanguage, eastern: bool) -> String {
     match r {
-        Reset::Today(time) => t(lang, Msg::CostAtTime)
+        Reset::Today(time) => t(lang, CostMsg::CostAtTime)
             .replace("{time}", &isolate(&localize_digits(&time.to_string(), lang, eastern))),
-        Reset::Tomorrow(time) => t(lang, Msg::CostTomorrowAt)
+        Reset::Tomorrow(time) => t(lang, CostMsg::CostTomorrowAt)
             .replace("{time}", &isolate(&localize_digits(&time.to_string(), lang, eastern))),
-        Reset::On(date) => t(lang, Msg::CostOnDate)
+        Reset::On(date) => t(lang, CostMsg::CostOnDate)
             .replace("{date}", &isolate(&localize_digits(&date.to_string(), lang, eastern))),
     }
 }
@@ -160,10 +161,10 @@ pub fn warning(
     let name = service_name(u.service)?;
     let monthly = u.period == UsagePeriod::Month;
     let msg = match (warning_level(u)?, monthly) {
-        (Level::Near, false) => Msg::CostNearDay,
-        (Level::Near, true) => Msg::CostNearMonth,
-        (_, false) => Msg::CostPausedDay,
-        (_, true) => Msg::CostPausedMonth,
+        (Level::Near, false) => CostMsg::CostNearDay,
+        (Level::Near, true) => CostMsg::CostNearMonth,
+        (_, false) => CostMsg::CostPausedDay,
+        (_, true) => CostMsg::CostPausedMonth,
     };
     let back = when(reset(u.resets_at_ms, now_ms, offset), lang, eastern);
     Some(t(lang, msg).replace("{service}", &isolate(name)).replace("{when}", &back))

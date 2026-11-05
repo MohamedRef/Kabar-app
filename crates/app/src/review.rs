@@ -2,6 +2,7 @@
 //! bursts, on top of `kabar_core::review` (queues, stats) and the FSRS
 //! scheduler. Card state is always derived from the review log.
 
+pub mod msg;
 mod outcome;
 use outcome::*;
 
@@ -45,6 +46,7 @@ use crate::embedded::{Css, css};
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
 use crate::pron::{Pron, Say};
+use crate::review::msg::ReviewMsg;
 use crate::store::Store;
 use crate::{Db, Ui};
 
@@ -248,7 +250,7 @@ fn SeedInvite() -> Element {
     rsx! {
         crate::ui::DivCard { class: "review-seed",
             h2 { "{ui.t(Msg::RevSeedTitle)}" }
-            p { {ui.fill(Msg::RevSeedBody, &[("n", &count)])} }
+            p { {ui.fill(ReviewMsg::RevSeedBody, &[("n", &count)])} }
             ul { class: "seed-words", lang: "id",
                 for w in seed_words() {
                     li { key: "{w}",
@@ -267,7 +269,7 @@ fn SeedInvite() -> Element {
                     Back { key: "{card.id}", card }
                 }
             }
-            button { class: "primary", onclick: move |_| engine.seed(), "{ui.t(Msg::RevSeedButton)}" }
+            button { class: "primary", onclick: move |_| engine.seed(), "{ui.t(ReviewMsg::RevSeedButton)}" }
         }
     }
 }
@@ -293,20 +295,20 @@ fn ReviewHome() -> Element {
     drop(deck);
     let width = *ui.width.read();
     let modes = [
-        (ReviewMode::Classic, Msg::RevClassic, Msg::RevClassicHint),
+        (ReviewMode::Classic, ReviewMsg::RevClassic, ReviewMsg::RevClassicHint),
         // Say how this device moves cards: pen on the tablet, mouse on the Mac.
         (
             ReviewMode::CardWall,
-            Msg::RevWall,
+            ReviewMsg::RevWall,
             if *ui.tablet.read() {
-                Msg::RevWallHint
+                ReviewMsg::RevWallHint
             } else if cfg!(target_os = "android") {
-                Msg::RevWallHintTouch
+                ReviewMsg::RevWallHintTouch
             } else {
-                Msg::RevWallHintMouse
+                ReviewMsg::RevWallHintMouse
             },
         ),
-        (ReviewMode::Burst, Msg::RevBurst, Msg::RevBurstHint),
+        (ReviewMode::Burst, ReviewMsg::RevBurst, ReviewMsg::RevBurstHint),
     ];
     let nothing_due = stats.due + stats.new_available == 0;
 
@@ -340,7 +342,7 @@ fn ReviewHome() -> Element {
                 crate::misc_art::Picture { art: crate::misc_art::Art::AllReviewed, class: "empty-art" }
                 p { class: "rev-calm", "{ui.t(Msg::RevAllDone)}" }
                 if let Some(when) = &next_due {
-                    p { class: "muted", {ui.t(Msg::RevNextReview).replace("{when}", when)} }
+                    p { class: "muted", {ui.t(ReviewMsg::RevNextReview).replace("{when}", when)} }
                 }
                 // Resting is the default; new words are an option, never a nudge.
                 button {
@@ -349,16 +351,16 @@ fn ReviewHome() -> Element {
                         let mut screen = ui.screen;
                         screen.set(Screen::Journey);
                     },
-                    "{ui.t(Msg::RevLearnNew)}"
+                    "{ui.t(ReviewMsg::RevLearnNew)}"
                 }
             }
         }
         crate::ui::DivCard {
-            h3 { class: "rev-h3", "{ui.t(Msg::RevForecast)}" }
+            h3 { class: "rev-h3", "{ui.t(ReviewMsg::RevForecast)}" }
             // The week's bars open Stats, where the forecast runs further.
             button {
                 class: "tap tap-plain forecast-tap",
-                aria_label: "{ui.t(Msg::RevForecast)}",
+                aria_label: "{ui.t(ReviewMsg::RevForecast)}",
                 onclick: move |_| crate::stats::open(ui, Screen::Stats),
             ol { class: if forecast.iter().all(|&n| n == 0) { "forecast empty" } else { "forecast" },
                 for (i, n) in forecast.iter().copied().enumerate() {
@@ -367,7 +369,7 @@ fn ReviewHome() -> Element {
                         class: if i == 0 { "today" } else { "" },
                         aria_label: format!(
                             "{}: {}",
-                            if i == 0 { ui.t(Msg::RevToday) } else { weekday(&ui, today + i as i64) },
+                            if i == 0 { ui.t(ReviewMsg::RevToday) } else { weekday(&ui, today + i as i64) },
                             ui.num(u64::from(n)),
                         ),
                         span { class: "fc-n", aria_hidden: "true", if n > 0 { "{ui.num(u64::from(n))}" } }
@@ -375,7 +377,7 @@ fn ReviewHome() -> Element {
                             span { class: "fc-fill", style: "block-size: {n * 100 / peak}%" }
                         }
                         span { class: "fc-day", aria_hidden: "true",
-                            if i == 0 { "{ui.t(Msg::RevToday)}" } else { "{weekday(&ui, today + i as i64)}" }
+                            if i == 0 { "{ui.t(ReviewMsg::RevToday)}" } else { "{weekday(&ui, today + i as i64)}" }
                         }
                     }
                 }
@@ -408,7 +410,7 @@ fn ReviewHome() -> Element {
                             h3 { class: "rev-h3", Isolated { text: ui.t(title).to_string() } }
                             p { class: "muted", Isolated { text: ui.fill(hint, &[("n", &burst_secs)]) } }
                             if mode == ReviewMode::CardWall && width == WidthClass::Compact {
-                                p { class: "muted small", "{ui.t(Msg::RevWallPhone)}" }
+                                p { class: "muted small", "{ui.t(ReviewMsg::RevWallPhone)}" }
                             }
                             if count == 0 {
                                 p { class: "muted small", "{ui.t(Msg::RevNothingHere)}" }
@@ -416,7 +418,7 @@ fn ReviewHome() -> Element {
                             button {
                                 class: "primary",
                                 disabled: count == 0,
-                                "{ui.t(Msg::RevStart)}"
+                                "{ui.t(ReviewMsg::RevStart)}"
                                 if count > 0 {
                                     span { class: "count-badge", "{ui.num(count as u64)}" }
                                 }
