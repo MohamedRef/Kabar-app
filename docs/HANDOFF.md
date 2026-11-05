@@ -320,6 +320,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-05: Mac nightly green again (#611): update tests expect the Mac's own button and install message; menu test skipped on macOS (muda needs the main thread).
 - 2026-11-05: feature strings moved out of the shared `Msg` into `<feature>/msg.rs` (i18n `Text` trait); `main.rs` split into `screen.rs`, `app_hooks.rs`, `shell.rs`; AGENTS.md § Small files; `check-file-sizes.sh` warns in CI.
 - 2026-11-05: project folder and memory notes archived in the private repo `MohamedRef/Batna-sources` (§ 1).
 - 2026-11-05: handoff docs added (`AGENTS.md`, this file, curriculum toolkit in `scripts/curriculum/`).
