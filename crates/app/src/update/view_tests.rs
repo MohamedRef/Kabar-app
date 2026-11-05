@@ -165,6 +165,16 @@ impl Page {
     }
 }
 
+/// The Ready button: the Mac installs by restarting, so it says so.
+fn install_label() -> U {
+    if cfg!(target_os = "macos") { U::InstallRestart } else { U::InstallNow }
+}
+
+/// What waiting lessons offer: a restart button on the Mac, a hint elsewhere.
+fn reopen_label() -> U {
+    if cfg!(target_os = "macos") { U::RestartNow } else { U::ReopenHint }
+}
+
 fn card(s: Status) -> String {
     render(s, EN, View::Card)
 }
@@ -273,7 +283,7 @@ fn each_step_of_an_update_has_its_own_headline_and_button() {
     let cases: Vec<(Phase, U, Option<U>)> = vec![
         (Phase::Checking, U::Checking, None),
         (Phase::NotForThisDevice, U::NotForDevice, None),
-        (Phase::Ready(o()), U::Ready, Some(U::InstallNow)),
+        (Phase::Ready(o()), U::Ready, Some(install_label())),
         (Phase::Installing(o()), U::Installing, None),
         (Phase::NeedsPermission(o()), U::NeedsPermission, Some(U::TryAgain)),
         (Phase::Installed(o()), U::Installed, Some(U::RestartNow)),
@@ -313,7 +323,7 @@ fn a_check_by_hand_and_waiting_lessons_are_shown() {
     let html = card(Status { checking_all: true, ..status(Phase::UpToDate) });
     assert!(has(&html, EN, U::Checking) && !has(&html, EN, U::UpToDate), "{html}");
     let html = card(Status { content_waiting: Some(130), content_build: 125, ..status(Phase::UpToDate) });
-    assert!(has(&html, EN, U::ContentWaiting) && has(&html, EN, U::ReopenHint), "{html}");
+    assert!(has(&html, EN, U::ContentWaiting) && has(&html, EN, reopen_label()), "{html}");
     assert!(html.contains(&format!("{} · {} 125", ut(EN, U::ContentUpdated), ut(EN, U::Build))), "{html}");
 }
 
@@ -377,7 +387,7 @@ fn the_banner_appears_only_when_there_is_something_to_do() {
     let html = render(status(Phase::Installed(offer(120, vec![]))), EN, View::Banner);
     assert!(has(&html, EN, U::Installed) && has(&html, EN, U::RestartNow));
     let html = render(status(Phase::Ready(offer(120, vec![]))), EN, View::Banner);
-    assert!(has(&html, EN, U::Ready) && has(&html, EN, U::InstallNow) && html.contains("Faster lessons"));
+    assert!(has(&html, EN, U::Ready) && has(&html, EN, install_label()) && html.contains("Faster lessons"));
 
     // Closed for this offer: gone until the next one.
     let closed = Prefs { dismissed: Some("1.0.0-alpha.1+120".into()), ..Prefs::default() };
@@ -942,7 +952,7 @@ fn installing_from_the_banner_rechecks_the_download_first() {
     let o = offer(101, Vec::new());
     u.set_phase(Phase::Ready(o.clone()));
     let mut page = mounted(u, Mounted::Banner);
-    page.click(ut(EN, U::InstallNow));
+    page.click(ut(EN, install_label()));
     // The download isn't on disk any more: nothing is installed, and the
     // offer stays for a fresh download.
     eventually("the install was refused", || matches!(u.status().phase, Phase::Failed { .. }));

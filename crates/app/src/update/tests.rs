@@ -1136,14 +1136,14 @@ fn installing_rechecks_the_download_and_says_why_it_cannot() {
 
     u.check(true);
     let Phase::Ready(offer) = u.status().phase else { panic!("{:?}", u.status().phase) };
-    // This system has no installer: the failure keeps the offer for "Try again".
+    // This system cannot install (no installer here; on a Mac the tests do
+    // not run from Kabar.app): the failure keeps the offer for "Try again".
     u.install(install_texts());
+    let why =
+        if cfg!(target_os = "macos") { "not running from Kabar.app" } else { "no installer on this system" };
     assert_eq!(
         u.status().phase,
-        Phase::Failed {
-            offer: Some(offer.clone()),
-            why: Failure::Install("no installer on this system".into())
-        }
+        Phase::Failed { offer: Some(offer.clone()), why: Failure::Install(why.into()) }
     );
     // Swapped on disk since: refused, and the download goes.
     fs::write(u.dir.join(&offer.asset.file), b"fixture apk bytez").unwrap();
