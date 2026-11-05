@@ -12,6 +12,7 @@ use kabar_protocol::coach::{
 use super::text::{T, tt};
 use super::*;
 use crate::Screen;
+use crate::coach::msg::CoachMsg;
 use crate::i18n::{Msg, t};
 use crate::test_dom::{App, El, memory_db};
 use crate::testkit::FakeDoc as FakeDocument;
@@ -402,10 +403,10 @@ fn today_after_a_break_opens_on_a_welcome_back() {
     let card = app.by_class("welcome-back");
     assert_eq!(card.len(), 1, "{}", app.screen());
     let text = app.text(card[0]);
-    assert!(text.contains(t(ArEg, Msg::WelcomeBackTitle)));
+    assert!(text.contains(t(ArEg, CoachMsg::WelcomeBackTitle)));
     // No streak talk: the lamp is ready to light, not a count.
-    assert!(app.screen().contains(t(ArEg, Msg::PelitaReady)));
-    app.click_text(t(ArEg, Msg::WelcomeBackStart));
+    assert!(app.screen().contains(t(ArEg, CoachMsg::PelitaReady)));
+    app.click_text(t(ArEg, CoachMsg::WelcomeBackStart));
     assert_ne!(app.screen_now(), Screen::Today);
     // A bigger plan is one tap away, and then the usual Today.
     let deep = labels::minutes_text(

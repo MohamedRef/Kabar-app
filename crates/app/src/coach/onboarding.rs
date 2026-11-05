@@ -9,6 +9,7 @@ use kabar_protocol::coach::{CoachProfile, LanguageFocus, LocalDate, ReminderStyl
 use super::text::{T, tt};
 use super::widgets::{Nur, QuietHoursEditor, SizePicker, StylePicker, TimesEditor};
 use super::{Coach, labels, say};
+use crate::coach::msg::CoachMsg;
 use crate::i18n::Msg;
 use crate::{Db, Ui};
 
@@ -98,7 +99,7 @@ pub fn Onboarding() -> Element {
         style { {super::today::COACH_CSS.text()} }
         div { class: "onboarding",
             crate::ui::DivCard {
-                ol { class: "dots", aria_label: "{ui.t(Msg::OnbProgress)}",
+                ol { class: "dots", aria_label: "{ui.t(CoachMsg::OnbProgress)}",
                     for (i , s) in Step::ALL.iter().enumerate() {
                         li {
                             key: "{s:?}",
@@ -177,7 +178,7 @@ fn NameStep(draft: Signal<CoachProfile>) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
         label { class: "field",
-            span { class: "label", "{ui.t(Msg::OnbNameLabel)}" }
+            span { class: "label", "{ui.t(CoachMsg::OnbNameLabel)}" }
             input {
                 r#type: "text",
                 class: "text-input",
@@ -195,7 +196,7 @@ fn WhyStep(draft: Signal<CoachProfile>) -> Element {
     let chosen = draft.read().motivations.clone();
     let note = draft.read().why_note.clone().unwrap_or_default();
     rsx! {
-        div { class: "row field", role: "group", aria_label: "{ui.t(Msg::OnbWhy)}",
+        div { class: "row field", role: "group", aria_label: "{ui.t(CoachMsg::OnbWhy)}",
             for m in labels::MOTIVATIONS {
                 button {
                     key: "{m:?}",
@@ -218,7 +219,7 @@ fn WhyStep(draft: Signal<CoachProfile>) -> Element {
             }
         }
         label { class: "field",
-            span { class: "label", "{ui.t(Msg::OnbWhyNote)}" }
+            span { class: "label", "{ui.t(CoachMsg::OnbWhyNote)}" }
             textarea {
                 class: "text-input",
                 rows: "3",
@@ -237,7 +238,7 @@ fn FocusStep(draft: Signal<CoachProfile>) -> Element {
     let ui = use_context::<Ui>();
     let current = draft.read().focus;
     rsx! {
-        div { class: "answers", role: "group", aria_label: "{ui.t(Msg::OnbFocus)}",
+        div { class: "answers", role: "group", aria_label: "{ui.t(CoachMsg::OnbFocus)}",
             for f in labels::FOCUSES {
                 button {
                     key: "{f:?}",
@@ -279,7 +280,7 @@ fn TargetStep(draft: Signal<CoachProfile>, touched: Signal<bool>, today: LocalDa
             Some(t) => rsx! {
                 div { class: "row field",
                     label {
-                        span { class: "label", "{ui.t(Msg::OnbTargetLevel)}" }
+                        span { class: "label", "{ui.t(CoachMsg::OnbTargetLevel)}" }
                         select {
                             dir: "ltr",
                             value: "{t.level}",
@@ -324,7 +325,7 @@ fn RemindersStep(draft: Signal<CoachProfile>) -> Element {
     rsx! {
         StylePicker { value: p.reminder_style, onpick: move |s| draft.write().reminder_style = s }
         div { class: "field",
-            span { class: "label", "{ui.t(Msg::QuietHours)}" }
+            span { class: "label", "{ui.t(CoachMsg::QuietHours)}" }
             QuietHoursEditor { value: p.quiet_hours, onchange: move |q| draft.write().quiet_hours = q }
         }
     }
@@ -335,7 +336,7 @@ fn StartStep(draft: Signal<CoachProfile>) -> Element {
     let ui = use_context::<Ui>();
     let current = draft.read().start;
     rsx! {
-        div { class: "answers", role: "group", aria_label: "{ui.t(Msg::OnbStart)}",
+        div { class: "answers", role: "group", aria_label: "{ui.t(CoachMsg::OnbStart)}",
             for s in labels::STARTS {
                 button {
                     key: "{s:?}",
@@ -347,7 +348,7 @@ fn StartStep(draft: Signal<CoachProfile>) -> Element {
                 }
             }
         }
-        p { class: "muted", "{ui.t(Msg::OnbPlacementLater)}" }
+        p { class: "muted", "{ui.t(CoachMsg::OnbPlacementLater)}" }
     }
 }
 
@@ -366,13 +367,13 @@ fn Summary(profile: CoachProfile, today: LocalDate) -> Element {
         });
     rsx! {
         dl { class: "summary",
-            dt { "{ui.t(Msg::OnbNameLabel)}" }
+            dt { "{ui.t(CoachMsg::OnbNameLabel)}" }
             dd { bdi { "{profile.name}" } }
             if !why.is_empty() {
-                dt { "{ui.t(Msg::OnbWhy)}" }
+                dt { "{ui.t(CoachMsg::OnbWhy)}" }
                 dd { "{why}" }
             }
-            dt { "{ui.t(Msg::OnbFocus)}" }
+            dt { "{ui.t(CoachMsg::OnbFocus)}" }
             // The Both note rides in the focus value: a lone `dd` would
             // shift every later label into the value column (#303).
             dd {
@@ -381,17 +382,17 @@ fn Summary(profile: CoachProfile, today: LocalDate) -> Element {
                     span { class: "summary-note muted", "{ui.t(Msg::OnbBothOrder)}" }
                 }
             }
-            dt { "{ui.t(Msg::DailySize)}" }
+            dt { "{ui.t(CoachMsg::DailySize)}" }
             dd { {labels::minutes(&ui, u32::from(profile.daily_size.minutes()))} }
             if let Some(target) = target {
-                dt { "{ui.t(Msg::OnbTarget)}" }
+                dt { "{ui.t(CoachMsg::OnbTarget)}" }
                 dd { "{target}" }
             }
-            dt { "{ui.t(Msg::StudyTimes)}" }
+            dt { "{ui.t(CoachMsg::StudyTimes)}" }
             dd { "{times}" }
-            dt { "{ui.t(Msg::ReminderStyle)}" }
+            dt { "{ui.t(CoachMsg::ReminderStyle)}" }
             dd { "{ui.t(labels::reminder_style(profile.reminder_style).0)}" }
-            dt { "{ui.t(Msg::OnbStart)}" }
+            dt { "{ui.t(CoachMsg::OnbStart)}" }
             dd { "{ui.t(labels::starting_point(profile.start).0)}" }
         }
     }
@@ -420,10 +421,10 @@ fn TargetMonth(value: LocalDate, today: LocalDate, onchange: EventHandler<LocalD
     };
     rsx! {
         label {
-            span { class: "label", "{ui.t(Msg::OnbTargetDate)}" }
+            span { class: "label", "{ui.t(CoachMsg::OnbTargetDate)}" }
             span { class: "row target-month",
                 select {
-                    aria_label: "{ui.t(Msg::OnbTargetDate)}",
+                    aria_label: "{ui.t(CoachMsg::OnbTargetDate)}",
                     onchange: move |e: FormEvent| {
                         if let Ok(m) = e.value().parse() {
                             pick(year, m);
@@ -434,7 +435,7 @@ fn TargetMonth(value: LocalDate, today: LocalDate, onchange: EventHandler<LocalD
                     }
                 }
                 select {
-                    aria_label: "{ui.t(Msg::OnbTargetDate)}",
+                    aria_label: "{ui.t(CoachMsg::OnbTargetDate)}",
                     onchange: move |e: FormEvent| {
                         if let Ok(y) = e.value().parse() {
                             pick(y, month);

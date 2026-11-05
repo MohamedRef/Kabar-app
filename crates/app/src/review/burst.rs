@@ -1,6 +1,7 @@
 //! Timed burst review presentation.
 
 use super::*;
+use crate::review::msg::ReviewMsg;
 
 // ---------------------------------------------------------------- burst
 
@@ -69,7 +70,7 @@ pub(super) fn Burst() -> Element {
         div { class: "burst",
             div { class: "burst-timer", role: "timer",
                 span { class: "burst-secs", "{ui.num(secs)}" }
-                span { class: "muted small", "{ui.t(Msg::RevSecondsLeft)}" }
+                span { class: "muted small", "{ui.t(ReviewMsg::RevSecondsLeft)}" }
                 div { class: "progress",
                     span { class: "progress-fill", style: "inline-size: {left_ms * 100 / BURST_MS}%" }
                 }
@@ -102,7 +103,7 @@ pub(super) fn Burst() -> Element {
                         let mut answer = answer.clone();
                         move |_| answer(Rating::Again)
                     },
-                    "{ui.t(Msg::RevNotYet)}"
+                    "{ui.t(ReviewMsg::RevNotYet)}"
                 }
                 button {
                     class: "rate good",
@@ -110,7 +111,7 @@ pub(super) fn Burst() -> Element {
                         let mut answer = answer.clone();
                         move |_| answer(Rating::Good)
                     },
-                    "{ui.t(Msg::RevKnow)}"
+                    "{ui.t(ReviewMsg::RevKnow)}"
                 }
             }
             div { class: "rev-foot",

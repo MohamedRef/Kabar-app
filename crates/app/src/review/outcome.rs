@@ -1,6 +1,7 @@
 //! Review completion summary.
 
 use super::*;
+use crate::review::msg::ReviewMsg;
 
 // ---------------------------------------------------------------- summary
 
@@ -22,7 +23,7 @@ pub(super) fn Done() -> Element {
             crate::ui::DivCard { class: "rev-done",
                 p { "{ui.t(Msg::RevNothingHere)}" }
                 if let Some(when) = &next {
-                    p { class: "muted", {ui.t(Msg::RevNextReview).replace("{when}", when)} }
+                    p { class: "muted", {ui.t(ReviewMsg::RevNextReview).replace("{when}", when)} }
                 }
                 button { class: "primary", onclick: move |_| engine.home(), "{ui.t(Msg::RevBackHome)}" }
             }
@@ -47,7 +48,7 @@ pub(super) fn Done() -> Element {
                 Stat { label: Msg::RevTime, value: mm_ss(&ui, summary.duration_ms), accent: false }
             }
             if summary.again == 0 {
-                p { class: "rev-cheer", "{ui.t(Msg::RevAllRemembered)}" }
+                p { class: "rev-cheer", "{ui.t(ReviewMsg::RevAllRemembered)}" }
             }
             if let Some((w, lang)) = strongest {
                 p {
@@ -64,7 +65,7 @@ pub(super) fn Done() -> Element {
                 }
             }
             if let Some(when) = &next {
-                p { class: "muted", {ui.t(Msg::RevNextReview).replace("{when}", when)} }
+                p { class: "muted", {ui.t(ReviewMsg::RevNextReview).replace("{when}", when)} }
             }
             button { class: "primary", onclick: move |_| engine.home(), "{ui.t(Msg::RevBackHome)}" }
         }

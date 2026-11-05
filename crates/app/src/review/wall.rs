@@ -1,6 +1,7 @@
 //! Sortable review wall and native drag interactions.
 
 use super::*;
+use crate::review::msg::ReviewMsg;
 
 // ---------------------------------------------------------------- card wall
 
@@ -116,7 +117,7 @@ pub(super) fn CardWall() -> Element {
 
     rsx! {
         div { class: "wall",
-            p { class: "muted small wall-help", "{ui.t(Msg::RevWallHelp)}" }
+            p { class: "muted small wall-help", "{ui.t(ReviewMsg::RevWallHelp)}" }
             div { id: "card-wall", class: "wall-table", "data-seats": "{seats}",
                 // Seats are keyed by their card and deal time, so a new card,
                 // or a "belum" card dealt again, gets a fresh element (no
@@ -134,17 +135,17 @@ pub(super) fn CardWall() -> Element {
             div { class: "piles",
                 div { class: "pile belum", "data-pile": "belum",
                     span { class: "pile-word latin", lang: "id", "belum" }
-                    span { class: "pile-label", "{ui.t(Msg::RevBelum)}" }
+                    span { class: "pile-label", "{ui.t(ReviewMsg::RevBelum)}" }
                     span { class: "pile-count", "{ui.num(belum as u64)}" }
                 }
                 div { class: "pile tahu", "data-pile": "tahu",
                     span { class: "pile-word latin", lang: "id", "tahu" }
-                    span { class: "pile-label", "{ui.t(Msg::RevTahu)}" }
+                    span { class: "pile-label", "{ui.t(ReviewMsg::RevTahu)}" }
                     span { class: "pile-count", "{ui.num(tahu as u64)}" }
                 }
             }
             div { class: "rev-foot",
-                span { class: "muted small", {ui.t(Msg::RevLeft).replace("{n}", &ui.num(left as u64))} }
+                span { class: "muted small", {ui.t(ReviewMsg::RevLeft).replace("{n}", &ui.num(left as u64))} }
                 SessionActions { on_undo: undo }
             }
         }
@@ -201,14 +202,14 @@ pub(super) fn WallCard(card: Card, flipped: bool, sort: Callback<(String, Pile)>
                         let id = id.clone();
                         move |_| sort.call((id.clone(), Pile::Belum))
                     },
-                    "{ui.t(Msg::RevBelum)}"
+                    "{ui.t(ReviewMsg::RevBelum)}"
                 }
                 button {
                     onclick: {
                         let id = id.clone();
                         move |_| sort.call((id.clone(), Pile::Tahu))
                     },
-                    "{ui.t(Msg::RevTahu)}"
+                    "{ui.t(ReviewMsg::RevTahu)}"
                 }
             }
         }

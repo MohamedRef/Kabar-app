@@ -15,6 +15,7 @@ use super::speech::{self, Voice};
 use super::{ContentProblem, PlayHeader, RoundSummary, content, fresh_seed, seconds_since};
 use crate::coach::Coach;
 use crate::i18n::Msg;
+use crate::play::msg::PlayMsg;
 use crate::{Db, Ui};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -128,7 +129,7 @@ fn Intro(
 
     rsx! {
         crate::ui::DivCard { class: "pairs-intro",
-            p { class: "muted", "{ui.t(Msg::PairsIntro)}" }
+            p { class: "muted", "{ui.t(PlayMsg::PairsIntro)}" }
             if !data.reviewed {
                 p {
                     span { class: "pill unverified small", "{ui.t(Msg::Unverified)} · " bdi { "Jawa" } }
@@ -191,7 +192,7 @@ fn TipCard(tip: Tip) -> Element {
     rsx! {
         crate::ui::DivCard { class: "pairs-tip",
             p { class: "pairs-tip-title",
-                strong { "{ui.t(Msg::PairsTipTitle)} " }
+                strong { "{ui.t(PlayMsg::PairsTipTitle)} " }
                 bdi { class: "latin", lang: "jv", "{contrast_label(tip.contrast)}" }
             }
             p { "{meaning(ui.lang(), &tip.text)}" }
@@ -229,7 +230,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
     if s.rounds.is_empty() {
         return rsx! {
             crate::ui::DivCard {
-                p { "{ui.t(Msg::DetectiveNoRounds)}" }
+                p { "{ui.t(PlayMsg::DetectiveNoRounds)}" }
                 button { onclick: move |_| session.set(None), "{ui.t(Msg::Back)}" }
             }
         };
@@ -250,7 +251,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
     let target = round.target_word().clone();
     let reviewed = data.is_some_and(|d| d.reviewed);
     let tip = data.and_then(|d| d.tip(round.pair.contrast)).cloned();
-    let in_lang = if target.lang == "jv" { Msg::PairsInJavanese } else { Msg::PairsInIndonesian };
+    let in_lang = if target.lang == "jv" { PlayMsg::PairsInJavanese } else { PlayMsg::PairsInIndonesian };
 
     rsx! {
         crate::ui::DivCard { class: "round pairs-round",
@@ -308,10 +309,10 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
                     if round.check(p) {
                         strong { "{ui.t(Msg::PlayRight)}" }
                     } else {
-                        strong { "{ui.t(Msg::PlayNotQuite)} " }
+                        strong { "{ui.t(PlayMsg::PlayNotQuite)} " }
                         bdi { class: "latin", lang: "{target.lang}", "{target.word}" }
                     }
-                    p { class: "muted small", "{ui.t(Msg::PairsTheTwoWords)}" }
+                    p { class: "muted small", "{ui.t(PlayMsg::PairsTheTwoWords)}" }
                     ul { class: "pairs-compare",
                         for side in [Side::Plain, Side::Curled] {
                             li {

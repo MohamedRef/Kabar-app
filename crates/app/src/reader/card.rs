@@ -20,6 +20,7 @@ use crate::coach::Coach;
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
 use crate::pron::{Pron, PronGuide, Say};
+use crate::reader::msg::ReaderMsg;
 use crate::sheet::Sheet;
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
@@ -142,7 +143,7 @@ fn Headline(w: Word, surface: String) -> Element {
             }
             span { class: "tag tag-{w.tag:?}", "{ui.t(tag_msg(w.tag))}" }
             if w.slang {
-                span { class: "tag", "{ui.t(Msg::LangSlang)}" }
+                span { class: "tag", "{ui.t(ReaderMsg::LangSlang)}" }
             }
             if w.taught_approved().is_some() {
                 span { class: "tag taught", "{ui.t(Msg::TaughtByYou)}" }
@@ -245,7 +246,7 @@ fn WordCard(i: usize) -> Element {
 
             if let Some((parts, class)) = breakdown {
                 div { class: "field",
-                    span { class: "label", "{ui.t(Msg::Breakdown)}" }
+                    span { class: "label", "{ui.t(ReaderMsg::Breakdown)}" }
                     div { class: "parts-row",
                         PartsLine { parts, class, labels: false, voice }
                         SayWord { text: speak_text.clone(), tag: word_tag, letters: false }
@@ -267,7 +268,7 @@ fn WordCard(i: usize) -> Element {
                     InfoView { info, voice, chip: super::morph::chip_label(&w, voice) }
                 },
                 None if w.is_english_aside() => rsx! {
-                    p { class: "muted", "{ui.t(Msg::EnglishInChat)}" }
+                    p { class: "muted", "{ui.t(ReaderMsg::EnglishInChat)}" }
                 },
                 None if w.taught_approved().is_none() => rsx! {
                     p { class: "muted", "{ui.t(Msg::NoLocalGloss)}" }
@@ -288,7 +289,7 @@ fn WordCard(i: usize) -> Element {
             super::grammar::WordGrammar { i }
 
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::InThisSentence)}" }
+                span { class: "label", "{ui.t(ReaderMsg::InThisSentence)}" }
                 p { class: "sentence", dir: "ltr", lang: "id",
                     bdi { "{sentence}" }
                     Say { text: sentence.clone(), tag: if w.tag == Tag::Javanese { "jv" } else { "id" } }
@@ -297,7 +298,7 @@ fn WordCard(i: usize) -> Element {
                 button {
                     class: "ghost small",
                     onclick: move |_| st.show(Some(Panel::Explain(i))),
-                    "💡 {ui.t(Msg::ExplainWord)}"
+                    "💡 {ui.t(ReaderMsg::ExplainWord)}"
                 }
             }
 
@@ -336,7 +337,7 @@ fn WordCard(i: usize) -> Element {
                                 }
                             }
                         },
-                        if *added.read() || saved_before { "{ui.t(Msg::AddedToReview)}" } else { "{ui.t(Msg::AddToReview)}" }
+                        if *added.read() || saved_before { "{ui.t(Msg::AddedToReview)}" } else { "{ui.t(ReaderMsg::AddToReview)}" }
                     }
                 }
             }
@@ -362,7 +363,7 @@ fn WordCard(i: usize) -> Element {
             if let Some(k) = key {
                 div { class: "row feedback",
                     if *thanks.read() {
-                        span { class: "muted", "{ui.t(Msg::ThanksFeedback)}" }
+                        span { class: "muted", "{ui.t(ReaderMsg::ThanksFeedback)}" }
                     } else {
                         for (up , label , icon) in [(true, Msg::Helpful, "👍"), (false, Msg::NotHelpful, "👎")] {
                             button {
@@ -489,7 +490,7 @@ pub(crate) fn InfoView(
         }
         if let Some((text, tr)) = &info.example {
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::Example)}" }
+                span { class: "label", "{ui.t(ReaderMsg::Example)}" }
                 p { class: "sentence", dir: "ltr", lang,
                     "{text}"
                     Say { text: text.clone(), tag: lang }

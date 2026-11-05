@@ -23,6 +23,7 @@ use crate::i18n::Msg;
 use crate::teach::Ai;
 
 use crate::embedded::{self, GRAMMAR};
+use crate::reader::msg::ReaderMsg;
 
 /// The embedded grammar library, parsed once.
 pub fn library() -> &'static Library {
@@ -133,7 +134,7 @@ pub fn ExplainCard(token: usize) -> Element {
                 image_sha256: None,
             };
             let a = ai.0.run::<ExplainSentence>(&req).await.map_err(|e| friendly(e.friendly()))?;
-            Ok(accept(a.value, &s, a.needs_review || a.provisional))
+            Ok::<_, Msg>(accept(a.value, &s, a.needs_review || a.provisional))
         }
     });
 
@@ -160,7 +161,7 @@ pub fn ExplainCard(token: usize) -> Element {
             p { class: "phrase", dir: "ltr", lang: lang_code, bdi { "{s.text}" } }
             match glue {
                 None => rsx! {
-                    p { class: "muted", aria_busy: "true", "{ui.t(Msg::ExplainThinking)}" }
+                    p { class: "muted", aria_busy: "true", "{ui.t(ReaderMsg::ExplainThinking)}" }
                 },
                 Some(Ok(g)) => rsx! {
                     div { class: "explain-glue",
@@ -173,7 +174,7 @@ pub fn ExplainCard(token: usize) -> Element {
                         }
                         p { "{g.answer.explanation}" }
                         p {
-                            span { class: "label", "{ui.t(Msg::RegisterLabel)} " }
+                            span { class: "label", "{ui.t(ReaderMsg::RegisterLabel)} " }
                             span { class: "chip", "{ui.t(register_msg(g.answer.register))}" }
                         }
                         if let Some(c) = g.answer.culture.as_deref().filter(|c| !c.trim().is_empty()) {
@@ -190,7 +191,7 @@ pub fn ExplainCard(token: usize) -> Element {
             }
             h3 { class: "label", "{ui.t(Msg::GrammarInSentence)}" }
             if ordered.is_empty() {
-                p { class: "muted", "{ui.t(Msg::NoGrammarMatched)}" }
+                p { class: "muted", "{ui.t(ReaderMsg::NoGrammarMatched)}" }
             }
             for c in ordered {
                 if let Some(p) = library().get(&c.id) {
@@ -236,7 +237,7 @@ pub(crate) fn GrammarEntry(point: GrammarPoint, matched: Vec<String>, voice: Voi
             p { {mixed(voice.of(&p.summary))} }
             if !matched.is_empty() {
                 p { class: "muted small",
-                    "{ui.t(Msg::FoundBy)} "
+                    "{ui.t(ReaderMsg::FoundBy)} "
                     for m in matched {
                         bdi { class: "latin chip", dir: "ltr", lang, "{m}" }
                         " "
@@ -249,14 +250,14 @@ pub(crate) fn GrammarEntry(point: GrammarPoint, matched: Vec<String>, voice: Voi
             p { {mixed(voice.of(&p.explanation))} }
             if let Some(e) = ex {
                 div { class: "field",
-                    span { class: "label", "{ui.t(Msg::Example)}" }
+                    span { class: "label", "{ui.t(ReaderMsg::Example)}" }
                     p { dir: "ltr", lang, bdi { class: "latin", "{e.text}" } }
                     p { class: "muted", {mixed(voice.example(&e))} }
                 }
             }
             if let Some(m) = mistake {
                 div { class: "field mistake",
-                    span { class: "label", "{ui.t(Msg::CommonMistake)}" }
+                    span { class: "label", "{ui.t(ReaderMsg::CommonMistake)}" }
                     p { dir: "ltr",
                         s { bdi { class: "latin", "{m.wrong}" } }
                         " → "

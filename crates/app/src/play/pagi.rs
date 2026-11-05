@@ -19,6 +19,7 @@ use super::{ContentProblem, PlayHeader, PlayNav, Route, content};
 use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::i18n::Msg;
+use crate::play::msg::PlayMsg;
 use crate::{Db, Ui};
 
 /// From when the Today card offers the morning story.
@@ -115,7 +116,7 @@ pub fn PagiPlayer() -> Element {
     let Some((words, story)) = story else {
         return rsx! {
             PlayHeader { title: Msg::PagiTitle, latin: true }
-            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(Msg::PagiNoStory)}" } }
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(PlayMsg::PagiNoStory)}" } }
         };
     };
     let read = logic::practiced_on(&coach.events.read(), today, logic::TOPIC_PAGI);
@@ -149,11 +150,11 @@ pub fn PagiPlayer() -> Element {
                         }
                     }
                 }
-                p { class: "muted small", "{ui.t(Msg::PagiWordsNote)}" }
+                p { class: "muted small", "{ui.t(PlayMsg::PagiWordsNote)}" }
                 div { class: "row",
                     if *voice.read() == Voice::Ready {
                         if now.is_some() {
-                            button { onclick: move |_| speech::stop(), "{ui.t(Msg::Stop)}" }
+                            button { onclick: move |_| speech::stop(), "{ui.t(PlayMsg::Stop)}" }
                         } else {
                             button {
                                 class: "primary",

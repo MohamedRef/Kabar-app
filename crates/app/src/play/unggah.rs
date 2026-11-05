@@ -15,6 +15,7 @@ use super::logic::meaning;
 use super::{ContentProblem, PlayHeader, content, fresh_seed, seconds_since};
 use crate::coach::Coach;
 use crate::i18n::Msg;
+use crate::play::msg::PlayMsg;
 use crate::{Db, Ui};
 
 /// Activity-log topic for every scene.
@@ -160,10 +161,10 @@ fn Picker(session: Signal<Option<Session>>, data_reviewed: bool) -> Element {
 
     rsx! {
         crate::ui::DivCard {
-            p { class: "muted", "{ui.t(Msg::UnggahIntro)}" }
+            p { class: "muted", "{ui.t(PlayMsg::UnggahIntro)}" }
         }
         if data.scenarios.is_empty() {
-            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(Msg::UnggahNoScenes)}" } }
+            crate::ui::Card { element: crate::ui::CardElement::Div, class: "", p { "{ui.t(PlayMsg::UnggahNoScenes)}" } }
         }
         div { class: "play-grid",
             for sc in data.scenarios.iter() {
@@ -217,7 +218,7 @@ fn Meter(value: u8, delta: Option<i8>) -> Element {
     rsx! {
         div { class: "uu-meter",
             div { class: "uu-meter-head",
-                span { class: "uu-meter-label", "{ui.t(Msg::UnggahMeter)}" }
+                span { class: "uu-meter-label", "{ui.t(PlayMsg::UnggahMeter)}" }
                 span { class: "uu-meter-value",
                     if let Some(d) = delta.filter(|d| *d != 0) {
                         span {
@@ -232,7 +233,7 @@ fn Meter(value: u8, delta: Option<i8>) -> Element {
             div {
                 class: "uu-meter-track",
                 role: "meter",
-                aria_label: "{ui.t(Msg::UnggahMeter)}",
+                aria_label: "{ui.t(PlayMsg::UnggahMeter)}",
                 aria_valuemin: "0",
                 aria_valuemax: "100",
                 aria_valuenow: "{value}",
@@ -278,7 +279,7 @@ fn SceneView(session: Signal<Option<Session>>) -> Element {
                 p { class: "score",
                     strong { "{ui.num(fitting)}" }
                     span { class: "muted", " / {ui.num(turns)} " }
-                    span { class: "muted small", "{ui.t(Msg::UnggahFitting)}" }
+                    span { class: "muted small", "{ui.t(PlayMsg::UnggahFitting)}" }
                 }
                 p { "{ui.t(end_line(meter))}" }
                 div { class: "row",
@@ -316,7 +317,7 @@ fn SceneView(session: Signal<Option<Session>>) -> Element {
                         p { class: "muted small", "{meaning(ui.lang(), &said.meaning)}" }
                     }
                 }
-                p { class: "muted", "{ui.t(Msg::UnggahYourTurn)}" }
+                p { class: "muted", "{ui.t(PlayMsg::UnggahYourTurn)}" }
                 div { class: "choices uu-choices",
                     for (i , choice) in s.shown.iter().enumerate() {
                         button {
@@ -343,7 +344,7 @@ fn SceneView(session: Signal<Option<Session>>) -> Element {
                         p { "{meaning(ui.lang(), &a.why)}" }
                         if let Some(better) = &a.better {
                             p { class: "small",
-                                "{ui.t(Msg::UnggahBetter)} "
+                                "{ui.t(PlayMsg::UnggahBetter)} "
                                 bdi { class: "latin", lang: "jv", "{better.said.text}" }
                                 " · {meaning(ui.lang(), &better.said.meaning)}"
                             }

@@ -15,6 +15,7 @@ use kabar_protocol::coach::{
 use super::text::{self, T, tt};
 use super::widgets::{Nur, Progress, SizePicker, Stat};
 use super::{Coach, build_plan, labels, logic, plan_for, say};
+use crate::coach::msg::CoachMsg;
 use crate::i18n::Msg;
 use crate::portraits::Mood;
 use crate::{Db, Screen, Ui, icons};
@@ -232,7 +233,7 @@ fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> E
     let goal = u32::from(plan.size.minutes());
     let step = next.and_then(|i| plan.items.get(i)).cloned();
     let time = rsx! {
-        Progress { done: minutes_done, goal, label: ui.t(Msg::TodayProgress).to_string() }
+        Progress { done: minutes_done, goal, label: ui.t(CoachMsg::TodayProgress).to_string() }
         p { class: "hero-count small",
             bdi { "{labels::minutes(&ui, minutes_done)} / {labels::minutes(&ui, goal)}" }
         }
@@ -347,10 +348,10 @@ fn WelcomeBack(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Elem
     let first = plan.items.first().map(|i| i.kind.clone());
     rsx! {
         crate::ui::Card { class: "hero today-hero welcome-back", aria_labelledby: "welcome-back-title",
-            h2 { id: "welcome-back-title", "{ui.t(Msg::WelcomeBackTitle)}" }
+            h2 { id: "welcome-back-title", "{ui.t(CoachMsg::WelcomeBackTitle)}" }
             Nur { text: say(&ui, Line::PlanComeback, today, &args) }
             h3 { class: "welcome-back-plan-title",
-                "{ui.t(Msg::WelcomeBackPlan)} · {labels::minutes(&ui, u32::from(plan.size.minutes()))}"
+                "{ui.t(CoachMsg::WelcomeBackPlan)} · {labels::minutes(&ui, u32::from(plan.size.minutes()))}"
             }
             ul { class: "plan",
                 for item in plan.items.iter() {
@@ -371,11 +372,11 @@ fn WelcomeBack(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Elem
                         let db = db.clone();
                         move |_| start_item(ui, &db, coach, &kind)
                     },
-                    "{ui.t(Msg::WelcomeBackStart)}"
+                    "{ui.t(CoachMsg::WelcomeBackStart)}"
                 }
             }
             details { class: "welcome-back-more",
-                summary { "{ui.t(Msg::WelcomeBackBigger)}" }
+                summary { "{ui.t(CoachMsg::WelcomeBackBigger)}" }
                 div { class: "row", role: "group",
                     for size in [PlanSize::Steady, PlanSize::Deep] {
                         button {
@@ -418,12 +419,12 @@ fn RewardsBar(today: LocalDate, welcome: bool) -> Element {
                 span { class: "reward-icon", aria_hidden: "true", {icons::lamp()} }
                 span { class: "latin", bdi { "Pelita" } }
                 if welcome {
-                    span { class: "small", "{ui.t(Msg::PelitaReady)}" }
+                    span { class: "small", "{ui.t(CoachMsg::PelitaReady)}" }
                 } else {
                     strong { "{ui.num(pelita.streak)}" }
                 }
                 if !welcome && pelita.freezes > 0 {
-                    span { class: "muted small", "· {ui.t(Msg::Freezes)} {ui.num(pelita.freezes)}" }
+                    span { class: "muted small", "· {ui.t(CoachMsg::Freezes)} {ui.num(pelita.freezes)}" }
                 }
             }
             button { class: "reward tap", onclick: move |_| screen.set(Screen::Coach),
@@ -478,8 +479,8 @@ fn PlanRow(
                     class: "check",
                     role: "checkbox",
                     aria_checked: if done { "true" } else { "false" },
-                    aria_label: "{ui.t(Msg::MarkDone)}: {ui.t(title)}",
-                    title: "{ui.t(Msg::MarkDone)}",
+                    aria_label: "{ui.t(CoachMsg::MarkDone)}: {ui.t(title)}",
+                    title: "{ui.t(CoachMsg::MarkDone)}",
                     onclick: move |_| {
                         if done {
                             let ids: Vec<String> = logic::done_events(&coach.events.peek(), today, &id)
@@ -497,7 +498,7 @@ fn PlanRow(
         }
         if let Some(text) = break_text {
             li { class: "plan-break", role: "note",
-                strong { "{ui.t(Msg::PlanBreakTitle)}" }
+                strong { "{ui.t(CoachMsg::PlanBreakTitle)}" }
                 p { class: "muted small", "{text}" }
             }
         }
@@ -594,11 +595,11 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
                 }
             }
             if let Some(text) = remember {
-                h3 { "{ui.t(Msg::RecapRemember)}" }
+                h3 { "{ui.t(CoachMsg::RecapRemember)}" }
                 p { "{text}" }
             }
             if let Some(text) = next {
-                h3 { "{ui.t(Msg::RecapTomorrow)}" }
+                h3 { "{ui.t(CoachMsg::RecapTomorrow)}" }
                 p { "{text}" }
             }
         }

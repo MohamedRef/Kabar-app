@@ -11,6 +11,7 @@ use kabar_protocol::coach::{
 use super::text::{T, tt};
 use super::widgets::{Nur, Stat};
 use super::{Coach, labels, logic, say};
+use crate::coach::msg::CoachMsg;
 use crate::i18n::Msg;
 use crate::portraits::Mood;
 use crate::{Db, Screen, Ui, icons, theme};
@@ -195,7 +196,7 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
                 }
             }
             p { class: "muted small",
-                "{ui.t(Msg::WeekOf)} {labels::day_month(&ui, r.week_start, today)}"
+                "{ui.t(CoachMsg::WeekOf)} {labels::day_month(&ui, r.week_start, today)}"
                 if so_far { " · {ui.t(Msg::SoFar)}" }
             }
             Nur { mood: Mood::Explaining, text: say(&ui, note, r.week_start, &args) }
@@ -208,16 +209,16 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
             }
             dl { class: "summary",
                 if let Some(s) = r.strongest {
-                    dt { "{ui.t(Msg::Strongest)}" }
+                    dt { "{ui.t(CoachMsg::Strongest)}" }
                     dd { "{ui.t(labels::skill(s))}" }
                 }
                 if let Some(s) = r.weakest {
-                    dt { "{ui.t(Msg::Weakest)}" }
+                    dt { "{ui.t(CoachMsg::Weakest)}" }
                     dd { "{ui.t(labels::skill(s))}" }
                 }
             }
             if !r.next_focus.is_empty() {
-                h3 { "{ui.t(Msg::NextFocus)}" }
+                h3 { "{ui.t(CoachMsg::NextFocus)}" }
                 // Each focus opens where that skill is practised.
                 ol { class: "focus-list",
                     for (i , f) in r.next_focus.iter().enumerate() {
@@ -270,7 +271,7 @@ fn Achievements(today: LocalDate) -> Element {
     let unlocked = rewards::unlocked(&events, today);
     rsx! {
         crate::ui::DivCard {
-            h2 { "{ui.t(Msg::AchievementsTitle)}" }
+            h2 { "{ui.t(CoachMsg::AchievementsTitle)}" }
             ul { class: "achievements",
                 for a in rewards::achievements() {
                     {
@@ -283,7 +284,7 @@ fn Achievements(today: LocalDate) -> Element {
                                     div { class: "muted small",
                                         match on {
                                             Some(d) => labels::date(&ui, d, today),
-                                            None => ui.t(Msg::Locked).to_string(),
+                                            None => ui.t(CoachMsg::Locked).to_string(),
                                         }
                                     }
                                 }
@@ -321,7 +322,7 @@ fn Warung(today: LocalDate) -> Element {
         crate::ui::DivCard {
             h2 { bdi { lang: "id", "Warung" } }
             p { class: "muted small",
-                "{ui.t(Msg::WarungExplain)} · "
+                "{ui.t(CoachMsg::WarungExplain)} · "
                 bdi { class: "latin", "Koin" }
                 " {ui.num(balance)}"
             }
@@ -350,9 +351,9 @@ fn Warung(today: LocalDate) -> Element {
             ul { class: "warung",
                 li { class: "ware",
                     div { class: "swatch", style: "background-image: {theme::kawung_tile(super::DEFAULT_BATIK, 0.6, 40)}" }
-                    span { "{ui.t(Msg::BatikClassic)}" }
+                    span { "{ui.t(CoachMsg::BatikClassic)}" }
                     if active.is_none() {
-                        span { class: "pill", "{ui.t(Msg::InUse)}" }
+                        span { class: "pill", "{ui.t(CoachMsg::InUse)}" }
                     } else {
                         button {
                             onclick: {
@@ -371,7 +372,7 @@ fn Warung(today: LocalDate) -> Element {
                             div { class: "muted small", "{ui.num(item.koin)} " bdi { class: "latin", "Koin" } }
                         }
                         if active.as_deref() == Some(item.id) {
-                            span { class: "pill", "{ui.t(Msg::InUse)}" }
+                            span { class: "pill", "{ui.t(CoachMsg::InUse)}" }
                         } else if owned.iter().any(|o| o == item.id) {
                             button {
                                 onclick: {
@@ -385,9 +386,9 @@ fn Warung(today: LocalDate) -> Element {
                             div {
                                 class: "koin-to-go",
                                 role: "img",
-                                aria_label: "{ui.t(Msg::NotEnoughKoin)}",
+                                aria_label: "{ui.t(CoachMsg::NotEnoughKoin)}",
                                 span { class: "small",
-                                    {ui.t(Msg::KoinToGo).replace("{n}", &ui.num(item.koin - balance))}
+                                    {ui.t(CoachMsg::KoinToGo).replace("{n}", &ui.num(item.koin - balance))}
                                     " "
                                     bdi { class: "latin", "Koin" }
                                 }
@@ -434,7 +435,7 @@ fn JournalLink() -> Element {
             },
             h2 {
                 span { class: "nav-icon", aria_hidden: "true", {icons::nav(Screen::Journal)} }
-                " {ui.t(Msg::JournalTitle)}"
+                " {ui.t(CoachMsg::JournalTitle)}"
             }
             button { class: "primary", "{ui.t(Msg::JournalOpen)}" }
         }

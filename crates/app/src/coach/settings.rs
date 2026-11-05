@@ -6,6 +6,7 @@ use kabar_protocol::coach::{CoachProfile, Weekday};
 
 use super::widgets::{QuietHoursEditor, SizePicker, StylePicker, TimeInput, TimesEditor};
 use super::{Coach, labels};
+use crate::coach::msg::CoachMsg;
 use crate::i18n::Msg;
 use crate::{Db, Ui};
 
@@ -32,25 +33,25 @@ pub fn CoachSettings() -> Element {
         crate::ui::DivCard {
             h2 { bdi { class: "latin", "Kak Nur" } }
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::DailySize)}" }
+                span { class: "label", "{ui.t(CoachMsg::DailySize)}" }
                 SizePicker { value: p.daily_size, onpick: move |s| edit(Box::new(move |p| p.daily_size = s)) }
             }
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::StudyTimes)}" }
+                span { class: "label", "{ui.t(CoachMsg::StudyTimes)}" }
                 TimesEditor {
                     times: p.study_times.clone(),
                     onchange: move |t| edit(Box::new(move |p| p.study_times = t)),
                 }
             }
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::ReminderStyle)}" }
+                span { class: "label", "{ui.t(CoachMsg::ReminderStyle)}" }
                 StylePicker {
                     value: p.reminder_style,
                     onpick: move |s| edit(Box::new(move |p| p.reminder_style = s)),
                 }
             }
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::QuietHours)}" }
+                span { class: "label", "{ui.t(CoachMsg::QuietHours)}" }
                 QuietHoursEditor {
                     value: p.quiet_hours,
                     onchange: move |q| edit(Box::new(move |p| p.quiet_hours = q)),

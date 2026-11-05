@@ -1,6 +1,7 @@
 //! Collected Journey souvenirs and suitcase presentation.
 
 use super::*;
+use crate::journey::msg::JourneyMsg;
 
 #[component]
 pub(super) fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> Element {
@@ -27,11 +28,11 @@ pub(super) fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<St
         }
     });
     rsx! {
-        section { class: "suitcase", aria_label: "{ui.t(Msg::JourneySuitcase)}",
+        section { class: "suitcase", aria_label: "{ui.t(JourneyMsg::JourneySuitcase)}",
             if cards.is_empty() {
                 crate::ui::DivCard { class: "suitcase-empty",
                     crate::misc_art::Picture { art: crate::misc_art::Art::EmptySuitcase, class: "empty-art" }
-                    p { "{ui.t(Msg::JourneySuitcaseEmpty)}" }
+                    p { "{ui.t(JourneyMsg::JourneySuitcaseEmpty)}" }
                 }
             }
             ul { class: "souvenirs",
@@ -51,7 +52,7 @@ pub(super) fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<St
                             bdi { lang: tl, dir: "ltr", "{s.stop}" }
                             if s.unverified {
                                 " "
-                                span { class: "badge-unverified", "{ui.t(Msg::JourneyUnverified)}" }
+                                span { class: "badge-unverified", "{ui.t(JourneyMsg::JourneyUnverified)}" }
                             }
                         }
                         if let Some((_, note)) = local_souvenir(&s.unit_id, lang) {

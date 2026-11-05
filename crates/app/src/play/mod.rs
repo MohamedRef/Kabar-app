@@ -8,6 +8,7 @@ pub mod bridge_deck;
 pub mod content;
 pub mod detective;
 pub mod logic;
+pub mod msg;
 pub mod pagi;
 pub mod pairs;
 pub mod pasar;
@@ -22,6 +23,7 @@ use kabar_core::games::bridge;
 
 use crate::embedded::{Css, css};
 use crate::i18n::Msg;
+use crate::play::msg::PlayMsg;
 use crate::{Screen, Ui, icons};
 use logic::deck_headline;
 
@@ -231,9 +233,9 @@ pub fn ContentProblem(detail: String) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
         crate::ui::DivCard {
-            p { "{ui.t(Msg::PlayContentProblem)}" }
+            p { "{ui.t(PlayMsg::PlayContentProblem)}" }
             details {
-                summary { class: "muted small", "{ui.t(Msg::PlayDetails)}" }
+                summary { class: "muted small", "{ui.t(PlayMsg::PlayDetails)}" }
                 p { class: "mono small", dir: "ltr", bdi { "{detail}" } }
             }
         }
@@ -245,11 +247,11 @@ pub fn ContentProblem(detail: String) -> Element {
 pub fn RoundSummary(correct: u32, total: u32, onagain: EventHandler<()>, children: Element) -> Element {
     let ui = use_context::<Ui>();
     let line = if total > 0 && correct * 10 >= total * 8 {
-        Msg::PlayGreat
+        PlayMsg::PlayGreat
     } else if total > 0 && correct * 2 >= total {
-        Msg::PlayGood
+        PlayMsg::PlayGood
     } else {
-        Msg::PlayKeepGoing
+        PlayMsg::PlayKeepGoing
     };
     let PlayNav(nav) = use_context::<PlayNav>();
     rsx! {
@@ -281,7 +283,7 @@ pub fn RoundSummary(correct: u32, total: u32, onagain: EventHandler<()>, childre
                         let mut s = ui.screen;
                         s.set(Screen::Chat);
                     },
-                    "{ui.t(Msg::PlayTryInChat)}"
+                    "{ui.t(PlayMsg::PlayTryInChat)}"
                 }
             }
         }

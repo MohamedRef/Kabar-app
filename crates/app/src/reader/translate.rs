@@ -21,6 +21,7 @@ use crate::Ui;
 use crate::account::Cloud;
 use crate::annotated::text::{T, tt};
 use crate::i18n::Msg;
+use crate::reader::msg::ReaderMsg;
 use crate::teach::Ai;
 
 /// Where the translation of the open text stands.
@@ -317,7 +318,7 @@ pub fn LineUnder(seg: usize) -> Element {
                 class: "tr-line word-by-word",
                 lang,
                 dir: "auto",
-                title: "{ui.t(Msg::TranslationWordByWord)}",
+                title: "{ui.t(ReaderMsg::TranslationWordByWord)}",
                 // Says what it is, so it doesn't read as a translation.
                 span { class: "tr-wbw-label", "{ui.t(Msg::TranslationWordByWordShort)} " }
                 "{words}"

@@ -13,6 +13,7 @@ use super::ReaderState;
 use crate::Db;
 use crate::Ui;
 use crate::i18n::Msg;
+use crate::reader::msg::ReaderMsg;
 use crate::settings::device::{DevicePrefs, ReadSize, ReadSpacing, ReadWidth, Reading};
 
 /// The `data-*` attributes on `.reader` that main.css keys the text on.
@@ -56,8 +57,8 @@ pub fn OpenBar(sheet: Signal<bool>) -> Element {
                 "data-back": if shown { "true" } else { "false" },
                 aria_expanded: if shown { "true" } else { "false" },
                 aria_controls: "read-settings",
-                aria_label: "{ui.t(Msg::ReadingSettings)}",
-                title: "{ui.t(Msg::ReadingSettings)}",
+                aria_label: "{ui.t(ReaderMsg::ReadingSettings)}",
+                title: "{ui.t(ReaderMsg::ReadingSettings)}",
                 onclick: move |_| sheet.set(!shown),
                 span { class: "latin", dir: "ltr", "Aa" }
             }
@@ -103,12 +104,12 @@ fn Sheet() -> Element {
 
     rsx! {
         crate::ui::Card { element: crate::ui::CardElement::Div, id: "read-settings", class: "read-settings", role: "group",
-            aria_label: "{ui.t(Msg::ReadingSettings)}",
+            aria_label: "{ui.t(ReaderMsg::ReadingSettings)}",
             p { class: "read-preview", lang: "id", dir: "ltr", "Apa kabar? Kabar baik, terima kasih." }
             VoicePicker {}
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::ReadSize)}" }
-                div { class: "row", role: "group", aria_label: "{ui.t(Msg::ReadSize)}",
+                span { class: "label", "{ui.t(ReaderMsg::ReadSize)}" }
+                div { class: "row", role: "group", aria_label: "{ui.t(ReaderMsg::ReadSize)}",
                     for &size in ReadSize::ALL {
                         button {
                             key: "{size.as_str()}",
@@ -126,8 +127,8 @@ fn Sheet() -> Element {
                 }
             }
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::ReadSpacing)}" }
-                div { class: "row", role: "group", aria_label: "{ui.t(Msg::ReadSpacing)}",
+                span { class: "label", "{ui.t(ReaderMsg::ReadSpacing)}" }
+                div { class: "row", role: "group", aria_label: "{ui.t(ReaderMsg::ReadSpacing)}",
                     for &spacing in ReadSpacing::ALL {
                         button {
                             key: "{spacing.as_str()}",
@@ -171,8 +172,8 @@ pub fn VoicePicker() -> Element {
     let voice = *st.voice.read();
     rsx! {
         div { class: "row voice-picker",
-            span { class: "muted", "{ui.t(Msg::Voice)}" }
-            div { class: "row", role: "group", aria_label: "{ui.t(Msg::Voice)}",
+            span { class: "muted", "{ui.t(ReaderMsg::Voice)}" }
+            div { class: "row", role: "group", aria_label: "{ui.t(ReaderMsg::Voice)}",
                 for v in UiLanguage::ALL {
                     button {
                         key: "{v.tag()}",

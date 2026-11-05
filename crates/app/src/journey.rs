@@ -5,6 +5,7 @@
 //! with pan and zoom, and a side panel for the chosen place. Nothing is
 //! locked: every lesson opens, and "Take a flight" opens the level test.
 
+pub mod msg;
 mod suitcase;
 use suitcase::*;
 
@@ -43,6 +44,7 @@ pub use today::{
     unit_refresher, unit_title,
 };
 
+use crate::journey::msg::JourneyMsg;
 use text::{T, tt};
 
 const JOURNEY_CSS: Css = css!("assets/journey.css");
@@ -219,7 +221,7 @@ pub fn JourneyScreen() -> Element {
                 style { {JOURNEY_CSS.text()} }
                 crate::ui::DivCard {
                     h2 { "{ui.t(Msg::NavJourney)}" }
-                    p { "{ui.t(Msg::JourneyLoadError)}" }
+                    p { "{ui.t(JourneyMsg::JourneyLoadError)}" }
                     p { class: "mono", dir: "ltr", "{e}" }
                 }
             };
@@ -266,7 +268,7 @@ pub fn JourneyScreen() -> Element {
                     if compact {
                         button {
                             class: "map-toggle",
-                            title: "{ui.t(Msg::JourneyMap)}",
+                            title: "{ui.t(JourneyMsg::JourneyMap)}",
                             aria_pressed: if pane() == Pane::Map { "true" } else { "false" },
                             onclick: move |_| {
                                 let open = pane() != Pane::Map;
@@ -279,16 +281,16 @@ pub fn JourneyScreen() -> Element {
                                 }
                             },
                             span { class: "seg-icon", aria_hidden: "true", {icon_map()} }
-                            span { class: "tool-label", "{ui.t(Msg::JourneyMap)}" }
+                            span { class: "tool-label", "{ui.t(JourneyMsg::JourneyMap)}" }
                         }
                     }
                     button {
                         class: "suitcase-toggle",
-                        title: "{ui.t(Msg::JourneySuitcase)}",
+                        title: "{ui.t(JourneyMsg::JourneySuitcase)}",
                         aria_pressed: if pane() == Pane::Suitcase { "true" } else { "false" },
                         onclick: move |_| pane.set(if pane() == Pane::Suitcase { Pane::Route } else { Pane::Suitcase }),
                         span { class: "seg-icon", aria_hidden: "true", {icon_suitcase()} }
-                        span { class: "tool-label", "{ui.t(Msg::JourneySuitcase)} " }
+                        span { class: "tool-label", "{ui.t(JourneyMsg::JourneySuitcase)} " }
                         span { class: "count", "{ui.num(suitcase_count as u64)}" }
                     }
                 }
@@ -368,7 +370,7 @@ fn continue_bar(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
     let ui = *ui;
     let Some(id) = progress.current() else {
         return rsx! {
-            crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "all-done", crate::review::Isolated { text: ui.t(Msg::JourneyAllDone).to_string() } }
+            crate::ui::Card { element: crate::ui::CardElement::Paragraph, class: "all-done", crate::review::Isolated { text: ui.t(JourneyMsg::JourneyAllDone).to_string() } }
         };
     };
     let title = j.curriculum().lessons().find(|l| l.id == id).map(|l| l.title.clone()).unwrap_or_default();
@@ -378,7 +380,7 @@ fn continue_bar(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
             button { class: "primary continue", onclick: move |_| ui.open_lesson(id.clone()),
                 span { class: "continue-word", bdi { lang: "id", dir: "ltr", "Lanjut" } }
                 span { class: "continue-sub",
-                    "{ui.t(Msg::JourneyContinue)}: "
+                    "{ui.t(JourneyMsg::JourneyContinue)}: "
                     bdi { lang: j.route.target_lang(), dir: "ltr", "{title}" }
                 }
             }
@@ -495,8 +497,8 @@ fn level_head(
         .map(|r| j.routes().id.level(r).map_or(r.to_string(), |l| l.code.clone()))
         .collect();
     let flight = match j.map().style {
-        RouteStyle::Islands => Msg::JourneyTakeFlight,
-        RouteStyle::Rail => Msg::JourneyTakeExpress,
+        RouteStyle::Islands => JourneyMsg::JourneyTakeFlight,
+        RouteStyle::Rail => JourneyMsg::JourneyTakeExpress,
     };
     let test = level.level_test.as_ref().map(|t| t.id.clone());
     let pct = (done * 100).checked_div(total).unwrap_or(0);
@@ -527,7 +529,7 @@ fn level_head(
                         span { class: "pill latin", bdi { "{level.code}" } }
                         if cur.unverified() && !progress.level_approved(level) {
                             " "
-                            span { class: "badge-unverified", "{ui.t(Msg::JourneyUnverified)}" }
+                            span { class: "badge-unverified", "{ui.t(JourneyMsg::JourneyUnverified)}" }
                         }
                     }
                     p { class: "muted level-sub",
@@ -550,22 +552,22 @@ fn level_head(
                     aria_label: "{level.code}",
                     div { class: "fill", style: "inline-size: {pct}%" }
                 }
-                span { class: "count", if finished { "{ui.t(Msg::JourneyDone)} · " } "{ui.num(done as u64)}/{ui.num(total as u64)}" }
+                span { class: "count", if finished { "{ui.t(JourneyMsg::JourneyDone)} · " } "{ui.num(done as u64)}/{ui.num(total as u64)}" }
             }
             if !waiting.is_empty() {
                 p { class: "gentle-note",
-                    "{ui.t(Msg::JourneyBestAfter)} "
+                    "{ui.t(JourneyMsg::JourneyBestAfter)} "
                     for w in waiting {
                         bdi { key: "{w}", class: "latin", "{w}" }
                     }
-                    ". {ui.t(Msg::JourneyOpenAnyway)}"
+                    ". {ui.t(JourneyMsg::JourneyOpenAnyway)}"
                 }
             }
             if let Some(test) = test {
                 if !finished {
                     button { class: "flight", onclick: move |_| ui.open_lesson(test.clone()),
                         span { class: "seg-icon", aria_hidden: "true",
-                            if flight == Msg::JourneyTakeFlight { {icon_plane()} } else { {icon_train()} }
+                            if flight == JourneyMsg::JourneyTakeFlight { {icon_plane()} } else { {icon_train()} }
                         }
                         "{ui.t(flight)}"
                     }
@@ -653,7 +655,7 @@ fn lessons(
                     };
                     // Done / Continue / Upcoming, in words (nothing is locked).
                     let state_text = match state {
-                        LessonState::Done => ui.t(Msg::JourneyDone),
+                        LessonState::Done => ui.t(JourneyMsg::JourneyDone),
                         LessonState::Current => tt(ui.lang(), T::Continue),
                         LessonState::Open => tt(ui.lang(), T::Upcoming),
                     };

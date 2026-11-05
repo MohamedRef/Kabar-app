@@ -39,6 +39,8 @@ jobs:
           fetch-depth: 2
       - name: No build output or huge files in git
         run: scripts/check-tracked-files.sh
+      - name: Big files (warns only, AGENTS.md § Small files)
+        run: scripts/check-file-sizes.sh
       - name: System libraries for the desktop WebView
         # Cached: a slow Ubuntu mirror once held a PR for 16 minutes here.
         uses: awalsh128/cache-apt-pkgs-action@acb598e5ddbc6f68a970c5da0688d2f3a9f04d05 # v1.5.4

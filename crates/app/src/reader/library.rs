@@ -13,6 +13,7 @@ use super::glossary::WordLang;
 use super::{Panel, ReaderState, glossary};
 use crate::embedded::{Css, css};
 use crate::play::{self, PlayNav, Route};
+use crate::reader::msg::ReaderMsg;
 use crate::store::{SavedText, SavedWord, TextKind};
 use crate::{Db, Screen, Ui};
 
@@ -367,8 +368,8 @@ pub(super) fn TextList(recent: Signal<Vec<SavedText>>, q: String, mut query: Sig
                     }
                     button {
                         class: "icon-button lib-delete coll-aside",
-                        aria_label: "{ui.t(crate::i18n::Msg::Delete)}",
-                        title: "{ui.t(crate::i18n::Msg::Delete)}",
+                        aria_label: "{ui.t(ReaderMsg::Delete)}",
+                        title: "{ui.t(ReaderMsg::Delete)}",
                         onclick: {
                             let db = db.clone();
                             let id = text.id.clone();

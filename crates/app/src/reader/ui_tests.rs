@@ -11,6 +11,8 @@ use kabar_protocol::ai::{EngineError, EngineId};
 
 use super::fixture::{Case, Screenful, Script, msg, open_text, render, text_of};
 use super::*;
+use crate::i18n::Text;
+use crate::reader::msg::ReaderMsg;
 
 const EN: UiLanguage = UiLanguage::En;
 const SAYA: &str = "Saya sedang membaca buku.";
@@ -657,19 +659,19 @@ fn the_word_card_explains_the_word_in_its_sentence() {
     assert!(html.contains("read-layout with-panel"), "{html}");
     assert!(html.contains("class=\"w st-new wc-ink wc-verb selected\""), "{html}");
     assert!(html.contains(&format!("aria-label=\"{}\"", msg(EN, Msg::WordSheet))), "{html}");
-    for m in [
-        Msg::Breakdown,
-        Msg::MorphMore,
-        Msg::InThisSentence,
-        Msg::ExplainWord,
-        Msg::AddToReview,
-        Msg::TeachKabar,
-        Msg::Listen,
-        Msg::StatusNew,
-        Msg::StatusKnown,
-        Msg::LangIndonesian,
+    for (s, m) in [
+        (ReaderMsg::Breakdown.text(EN), "Breakdown"),
+        (ReaderMsg::MorphMore.text(EN), "MorphMore"),
+        (ReaderMsg::InThisSentence.text(EN), "InThisSentence"),
+        (ReaderMsg::ExplainWord.text(EN), "ExplainWord"),
+        (ReaderMsg::AddToReview.text(EN), "AddToReview"),
+        (Msg::TeachKabar.text(EN), "TeachKabar"),
+        (Msg::Listen.text(EN), "Listen"),
+        (Msg::StatusNew.text(EN), "StatusNew"),
+        (Msg::StatusKnown.text(EN), "StatusKnown"),
+        (Msg::LangIndonesian.text(EN), "LangIndonesian"),
     ] {
-        assert!(text.contains(msg(EN, m)), "{m:?}: {text}");
+        assert!(text.contains(s), "{m}: {text}");
     }
     assert!(text.contains("to read"), "{text}");
     assert!(html.contains("aria-pressed=\"true\">New</button>"), "the current status is pressed: {html}");
@@ -1006,16 +1008,16 @@ fn the_reading_settings_offer_size_spacing_and_width_where_there_is_room() {
     let html = bar(WidthClass::Expanded, true);
     let text = text_of(&html);
     assert!(html.contains("reader-bar-wrap open") && html.contains("read-settings-scrim"), "{html}");
-    for m in [
-        Msg::ReadSize,
-        Msg::ReadSpacing,
-        Msg::ReadWidth,
-        Msg::ReadSnug,
-        Msg::ReadAiry,
-        Msg::ReadBook,
-        Msg::Voice,
+    for (s, m) in [
+        (ReaderMsg::ReadSize.text(EN), "ReadSize"),
+        (ReaderMsg::ReadSpacing.text(EN), "ReadSpacing"),
+        (Msg::ReadWidth.text(EN), "ReadWidth"),
+        (Msg::ReadSnug.text(EN), "ReadSnug"),
+        (Msg::ReadAiry.text(EN), "ReadAiry"),
+        (Msg::ReadBook.text(EN), "ReadBook"),
+        (ReaderMsg::Voice.text(EN), "Voice"),
     ] {
-        assert!(text.contains(msg(EN, m)), "{m:?}: {text}");
+        assert!(text.contains(s), "{m}: {text}");
     }
     assert!(
         html.contains(&format!("aria-pressed=\"true\" aria-label=\"{}\"", msg(EN, Msg::ReadNormal))),

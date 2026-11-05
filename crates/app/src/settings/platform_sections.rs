@@ -11,6 +11,7 @@ use super::text::{S, st};
 use super::{Scope, SettingsNav, WEB};
 use crate::i18n::Msg;
 use crate::platform::{self, AppPage};
+use crate::settings::msg::SettingsMsg;
 use crate::{Db, Screen, Ui};
 
 #[component]
@@ -285,7 +286,7 @@ pub fn AboutSection() -> Element {
                 code { dir: "ltr", bdi { "{env!(\"CARGO_PKG_VERSION\")}" } }
             }
             div { class: "field",
-                span { class: "label", "{ui.t(Msg::SettingsDevice)}" }
+                span { class: "label", "{ui.t(SettingsMsg::SettingsDevice)}" }
                 if !model.is_empty() {
                     p { class: "settings-hint", bdi { dir: "ltr", "{model}" } }
                 }
@@ -300,7 +301,7 @@ pub fn AboutSection() -> Element {
                         ui.update_settings(&db, |s| s.welcomed = false)
                     }
                 },
-                "{ui.t(Msg::SettingsShowWelcome)}"
+                "{ui.t(SettingsMsg::SettingsShowWelcome)}"
             }
         }
     }
