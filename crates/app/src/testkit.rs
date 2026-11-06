@@ -291,6 +291,10 @@ pub struct Setup {
     pub account: bool,
     /// The `Cloud` context shows an account signed in.
     pub signed_in: bool,
+    /// The coach's clock from the first render (`None`: the real time).
+    /// Screens that act on the time while mounting (a weekly report coming
+    /// due) need it set before, not after.
+    pub now_ms: Option<u64>,
 }
 
 impl Default for Setup {
@@ -311,6 +315,7 @@ impl Default for Setup {
             sync: None,
             account: false,
             signed_in: false,
+            now_ms: None,
         }
     }
 }
@@ -398,7 +403,15 @@ pub fn provide(setup: impl FnOnce() -> Setup) -> (Ui, Db) {
     use_context_provider(|| crate::settings::device::DevicePrefs::load(&db));
     use_context_provider(crate::settings::SettingsNav::new);
     use_context_provider(crate::play::PlayNav::new);
-    use_context_provider(|| Coach::load(&db));
+    let now_ms = setup().now_ms;
+    use_context_provider(|| {
+        let coach = Coach::load(&db);
+        if let Some(now) = now_ms {
+            let mut clock = coach.now_ms;
+            clock.set(now);
+        }
+        coach
+    });
     use_context_provider(|| crate::reader::Inbox(Signal::new(None)));
     use_context_provider(|| crate::reader::ReaderState::new(lang));
     if has_audio {
