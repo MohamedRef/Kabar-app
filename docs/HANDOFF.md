@@ -171,7 +171,7 @@ macOS-15 runners are sometimes not acquired: rerun failed jobs later.
 
 ## 6. Releases and updates
 
-- Version in workspace `Cargo.toml` (now **1.0.0-alpha.2**).
+- Version in workspace `Cargo.toml` (now **1.0.0-alpha.3**).
 - Channels: `preview` (CI), `update-alpha`, `update-beta`, `update-stable`
   (a beta also goes to alpha; stable to every channel). Human release tags:
   `v<version>`.
@@ -293,7 +293,7 @@ Rules (Mohamed's decisions; all in force):
 | Web | phases 1–2 live (sync, AI, voices, password sign-in); phase 3 offline packs + OCR |
 | M9 Studio | mind maps only; pen writing paused |
 | M13 | content done; performance pass open; aksara and widgets parked |
-| Releases | `v1.0.0-alpha.2` published 2026-11-04 (`update-alpha`); previews every 4 h |
+| Releases | `v1.0.0-alpha.3` published 2026-11-06 (`update-alpha`); previews every 4 h |
 | Critic loop | final pass 10 done 2026-11-04; loop closed. Don't start another unless asked. |
 | Open PRs | #608 (Android Google sign-in returns to Kabar) on 2026-11-05 |
 | Coverage | 94.42% (floor 93) |
@@ -328,6 +328,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-06: 1.0.0-alpha.3 released on Mohamed's ask, so the Mac app (alpha feed only; previews carry no Mac build) gets the lock/unlock and update-check fixes.
 - 2026-11-06: Android screen froze after lock/unlock (seen in Batna, same code here): Dioxus's edit socket patched in `vendor/` (edits resent until acknowledged); update check shows the app result before the content bundle downloads, requests time out after 20 s of no progress.
 - 2026-11-05: Mac nightly green again (#611): update tests expect the Mac's own button and install message; menu test skipped on macOS (muda needs the main thread).
 - 2026-11-05: feature strings moved out of the shared `Msg` into `<feature>/msg.rs` (i18n `Text` trait); `main.rs` split into `screen.rs`, `app_hooks.rs`, `shell.rs`; AGENTS.md § Small files; `check-file-sizes.sh` warns in CI.
