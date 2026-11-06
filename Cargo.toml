@@ -64,3 +64,9 @@ strip = false
 [profile.wasm-dev]
 inherits = "dev"
 opt-level = 1
+
+# Dioxus's Android screen-update socket, patched so the screen keeps updating
+# after Android destroys it (phone locked, app frozen). See vendor/README.md.
+[patch.crates-io]
+dioxus-desktop = { path = "vendor/dioxus-desktop" }
+dioxus-interpreter-js = { path = "vendor/dioxus-interpreter-js" }

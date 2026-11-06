@@ -348,9 +348,25 @@ fn range_start<B>(res: &ureq::http::Response<B>) -> Option<u64> {
     v.strip_prefix("bytes ")?.split('-').next()?.trim().parse().ok()
 }
 
+/// How long a lookup, a connection or one read may stall before the
+/// request counts as failed.
+#[cfg(not(target_arch = "wasm32"))]
+const STALL: Duration = Duration::from_secs(20);
+
 #[cfg(not(target_arch = "wasm32"))]
 fn agent(timeout: Duration) -> ureq::Agent {
-    ureq::Agent::config_builder().http_status_as_error(false).timeout_global(Some(timeout)).build().into()
+    // A connection Android cut while Kabar was in the background (screen
+    // locked) fails within seconds instead of holding the check for the
+    // whole `timeout`: every read must make progress.
+    ureq::Agent::config_builder()
+        .http_status_as_error(false)
+        .timeout_global(Some(timeout))
+        .timeout_resolve(Some(STALL))
+        .timeout_connect(Some(STALL))
+        .timeout_per_read(Some(STALL))
+        .timeout_per_write(Some(STALL))
+        .build()
+        .into()
 }
 
 /// The web build never updates itself: each deploy is the newest build.

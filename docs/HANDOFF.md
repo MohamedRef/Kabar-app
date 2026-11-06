@@ -75,7 +75,10 @@ Other paths: `curriculum/` (BIPA 1–7, J1–J6 level → unit → lesson),
 `content/` (lessons, tests, grammar, glosses, Bridge, stories, radio, games,
 personas, cast, packs), `prompts/` (versioned AI prompts + `routes.toml`),
 `schemas/`, `fixtures/` (recorded AI replies), `assets/`, `android/`, `web/`,
-`scripts/` (incl. `scripts/curriculum/` lesson toolkit), `changes/`.
+`scripts/` (incl. `scripts/curriculum/` lesson toolkit), `changes/`, `vendor/`
+(Dioxus 0.7.10 `dioxus-desktop` + `dioxus-interpreter-js` patched so the
+screen survives Android destroying its edit socket; see `vendor/README.md`,
+and re-check it before any Dioxus upgrade).
 
 Key design rules (also in `CLAUDE.md`):
 - Synced tables carry `account_id`, `device_id`, HLC, tombstone. Reviews,
@@ -185,6 +188,10 @@ macOS-15 runners are sometimes not acquired: rerun failed jobs later.
   unit live in the `packs` release. [RELEASE.md](RELEASE.md),
   [COMPATIBILITY.md](COMPATIBILITY.md).
 - What's new comes from `changes/*.yaml` (Morphe-style sheet before/after an update).
+- A check shows the app's answer as soon as the feed is read; a newer
+  content bundle downloads after it. Every update request fails after 20 s
+  without progress (lookup, connect, each read), so a connection Android cut
+  while the phone was locked doesn't hold the check for minutes.
 
 ### Secrets (names only, values never in git)
 
@@ -276,7 +283,7 @@ Rules (Mohamed's decisions; all in force):
 - Android crash reports start from Settings › Storage diagnostics
   (WebViewGuard records renderer loss and exit reasons).
 
-## 9. Current state (2026-11-05)
+## 9. Current state (2026-11-06)
 
 | Milestone | State |
 |---|---|
@@ -299,7 +306,8 @@ Rules (Mohamed's decisions; all in force):
 - Learner review of all content (glosses, Bridge, Javanese).
 - Pen writing features (Notebook, handwritten answers, aksara calligraphy)
   paused; keep S Pen hover. Widgets and aksara (M13) parked.
-- Not yet verified on a real device: Back-key routing, update notifications.
+- Not yet verified on a real device: Back-key routing, update notifications,
+  the lock/unlock freeze fix (`vendor/`, tested on desktop sockets only).
 - Test debt: merge duplicate click-test helpers.
 - Big files: Rust files over 800 lines are listed by `scripts/check-file-sizes.sh`;
   split each when a PR already changes it a lot (AGENTS.md § Small files).
@@ -320,6 +328,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-06: Android screen froze after lock/unlock (seen in Batna, same code here): Dioxus's edit socket patched in `vendor/` (edits resent until acknowledged); update check shows the app result before the content bundle downloads, requests time out after 20 s of no progress.
 - 2026-11-05: Mac nightly green again (#611): update tests expect the Mac's own button and install message; menu test skipped on macOS (muda needs the main thread).
 - 2026-11-05: feature strings moved out of the shared `Msg` into `<feature>/msg.rs` (i18n `Text` trait); `main.rs` split into `screen.rs`, `app_hooks.rs`, `shell.rs`; AGENTS.md § Small files; `check-file-sizes.sh` warns in CI.
 - 2026-11-05: project folder and memory notes archived in the private repo `MohamedRef/Batna-sources` (§ 1).

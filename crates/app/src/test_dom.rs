@@ -715,6 +715,25 @@ impl App {
         Self { dom, db, doc }
     }
 
+    /// [`Self::with`] with the coach's clock at `now_ms` from the first render.
+    pub fn with_clock(
+        lang: kabar_core::locale::UiLanguage,
+        db: crate::Db,
+        doc: Rc<FakeDoc>,
+        now_ms: u64,
+        body: fn() -> Element,
+    ) -> Self {
+        let setup = Setup {
+            lang,
+            db: Some(db.clone()),
+            doc: Some(doc.clone()),
+            now_ms: Some(now_ms),
+            ..Setup::default()
+        };
+        let dom = TestDom::from_vdom(crate::testkit::mount(body, setup));
+        Self { dom, db, doc }
+    }
+
     /// Mounts `body` over an empty store, in `lang`, with no voices.
     pub fn new(lang: kabar_core::locale::UiLanguage, body: fn() -> Element) -> Self {
         Self::with(lang, memory_db(), FakeDoc::new(), body)

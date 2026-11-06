@@ -239,29 +239,52 @@ impl Updater {
             _ => None,
         };
         self.set_phase(Phase::Checking);
-        let result = self.fetch_offer(content);
+        let manifest = self.fetch_manifest();
         self.update_prefs(|p| p.last_check_ms = Some(now_ms()));
-        match result {
-            Ok(Some(offer)) => {
-                if let Some(k) = keep.filter(|k| k.asset == offer.asset) {
+        let m = match manifest {
+            Ok(m) => m,
+            Err(why) => return self.set_phase(Phase::Failed { offer: None, why }),
+        };
+        // The app's answer shows as soon as the feed is read; the content
+        // bundle (megabytes) and the build download come after it.
+        let to_download = match self.offer_from(&m) {
+            Ok(Some(offer)) => match keep.filter(|k| k.asset == offer.asset) {
+                Some(k) => {
                     self.set_phase(match self.status().phase {
                         Phase::Checking => Phase::Ready(k),
                         other => other,
                     });
-                    return;
+                    None
                 }
-                self.set_phase(Phase::Available(offer.clone()));
-                if download {
-                    self.download_locked(offer);
+                None => {
+                    self.set_phase(Phase::Available(offer.clone()));
+                    download.then_some(offer)
                 }
+            },
+            Ok(None) => None,
+            Err(why) => {
+                self.set_phase(Phase::Failed { offer: None, why });
+                None
             }
-            Ok(None) => {}
-            Err(why) => self.set_phase(Phase::Failed { offer: None, why }),
+        };
+        if content && let Some(data) = self.dir.parent() {
+            // An older result doesn't show while this one is on its way.
+            self.tx.send_modify(|s| s.content_check = None);
+            let found = content::refresh(data, &self.installed(), &self.info, &m, &self.feed_url());
+            self.tx.send_modify(|s| {
+                s.content_check = Some(found);
+                if let content::Refresh::Taken(build) = found {
+                    s.content_waiting = Some(build);
+                }
+            });
+        }
+        if let Some(offer) = to_download {
+            self.download_locked(offer);
         }
     }
 
-    /// `Ok(None)` after setting UpToDate / NotForThisDevice.
-    pub(super) fn fetch_offer(&self, content: bool) -> Result<Option<Offer>, Failure> {
+    /// The channel's `update.json`, signature checked; its history is kept.
+    pub(super) fn fetch_manifest(&self) -> Result<UpdateManifest, Failure> {
         let key = self.info.key.ok_or(Failure::Verify("no key".into()))?;
         let base = self.feed_url();
         let fetch = || -> Result<_, Failure> {
@@ -285,17 +308,13 @@ impl Updater {
             other => update_failure(other),
         })?;
         self.remember_history(&m.history);
-        if content && let Some(data) = self.dir.parent() {
-            let found = content::refresh(data, &self.installed(), &self.info, &m, &self.feed_url());
-            self.tx.send_modify(|s| {
-                s.content_check = Some(found);
-                if let content::Refresh::Taken(build) = found {
-                    s.content_waiting = Some(build);
-                }
-            });
-        }
+        Ok(m)
+    }
+
+    /// `Ok(None)` after setting UpToDate / NotForThisDevice.
+    pub(super) fn offer_from(&self, m: &UpdateManifest) -> Result<Option<Offer>, Failure> {
         let platform = self.platform.ok_or(Failure::Verify("no platform".into()))?;
-        match decide(&self.installed(), &m, platform).map_err(update_failure)? {
+        match decide(&self.installed(), m, platform).map_err(update_failure)? {
             Decision::UpToDate => {
                 self.set_phase(Phase::UpToDate);
                 self.clear_downloads(None);
@@ -309,7 +328,7 @@ impl Updater {
                 if asset.size > MAX_BUILD_BYTES {
                     return Err(Failure::Verify("build too large".into()));
                 }
-                Ok(Some(Offer::from_manifest(&m, asset, &self.installed())))
+                Ok(Some(Offer::from_manifest(m, asset, &self.installed())))
             }
         }
     }

@@ -44,9 +44,9 @@ fn db_with(profile: Option<CoachProfile>) -> crate::Db {
 
 /// Mounts `body` with the profile saved, the clock at `now`.
 fn mount(lang: UiLanguage, db: crate::Db, now: u64, body: fn() -> Element) -> App {
-    let mut app = App::with(lang, db, FakeDocument::new(), body);
-    set_clock(&mut app, now);
-    app
+    // The clock is set before the first render: the page writes a report
+    // that came due on mount, and the real time must not decide which.
+    App::with_clock(lang, db, FakeDocument::new(), now, body)
 }
 
 fn set_clock(app: &mut App, now: u64) {
