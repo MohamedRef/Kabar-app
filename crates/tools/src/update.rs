@@ -28,7 +28,9 @@ use base64::engine::general_purpose::STANDARD as B64;
 use clap::{Args, Subcommand};
 use ed25519_dalek::{Signer, SigningKey};
 use kabar_core::packs::sha256_hex;
-use kabar_core::update::{Version, check_download, key_line, parse_public_key, verify_manifest};
+use kabar_core::update::{
+    Version, check_download, key_line, parse_public_key, verify_manifest, version_code,
+};
 use kabar_protocol::update::{
     BuildChanges, Channel, ContentFile, MANIFEST_FILE, SIGNATURE_FILE, UPDATE_FORMAT, UpdateAsset,
     UpdateManifest, UpdateNotes, UpdatePlatform,
@@ -426,7 +428,7 @@ pub fn write_manifest(
             file,
             size: bytes.len() as u64,
             sha256: sha256_hex(&bytes),
-            version_code: (*platform == UpdatePlatform::AndroidArm64).then(|| parsed.version_code()),
+            version_code: (*platform == UpdatePlatform::AndroidArm64).then(|| version_code(build)),
             build: None,
         });
     }
@@ -669,7 +671,7 @@ mod tests {
         )
         .unwrap();
         assert_eq!(m.assets[0].file, "kabar-1.0.0-alpha.2-android-arm64.apk");
-        assert_eq!(m.assets[0].version_code, Some(10_000_102));
+        assert_eq!(m.assets[0].version_code, Some(20_000_000));
 
         // Signing with a secret the app doesn't trust is refused.
         let stranger = B64.encode([1u8; 32]);

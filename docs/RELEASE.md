@@ -13,9 +13,9 @@ routine, but nothing is built for release or tagged before he says so.
 
 | Stage | Version | When |
 |---|---|---|
-| **Alpha** (first) | `1.0.0-alpha.N` | Every milestone M1–M13 is done except what SPEC §23 defers. That includes all content: BIPA 1–7, J1–J6, 10k + 3k glosses. It also includes the performance pass and routes vetted by the bake-off. All §2 gates are green, and the learner says go. |
-| **Beta** | `1.0.0-beta.N` | Later: after daily use of the alpha and the fixes it brings. The learner decides. |
-| **Stable** | `1.0.0` | Later still. The learner decides. |
+| **Alpha** (first) | `1.0.0-alpha.N` until 2026-11-08, then `YEAR.MONTH.N` on the alpha channel (§3) | Every milestone M1–M13 is done except what SPEC §23 defers. That includes all content: BIPA 1–7, J1–J6, 10k + 3k glosses. It also includes the performance pass and routes vetted by the bake-off. All §2 gates are green, and the learner says go. |
+| **Beta** | `YEAR.MONTH.N` on the beta channel | Later: after daily use of the alpha and the fixes it brings. The learner decides. |
+| **Stable** | `YEAR.MONTH.N` on the stable channel | Later still. The learner decides. |
 
 Deferred, after the core (SPEC §23): pen writing on every device
 (handwritten answers, Notebook, Gambar!, Listening Companion scribbles,
@@ -48,8 +48,32 @@ A release is cut only when every gate in this table is green.
 
 ## 3. Versions and updates
 
-- The version is `version` in the root `Cargo.toml`: `1.0.0-alpha.1` for the
-  first alpha, then `-alpha.2`, …, `-beta.1`, …, `1.0.0`.
+- **Numbering (Mohamed, 2026-11-08):** the old `1.0.0-alpha.N` read as
+  silly, and releases said "build 3" while previews said "build 484". Kabar
+  now uses calendar versions and one build counter, the way Ubuntu (`24.04`)
+  and JetBrains (`2024.3`) name releases and the way Android and Apple split
+  the version people read from a build number that only grows:
+
+  | What | Rule | Example |
+  |---|---|---|
+  | Version | `YEAR.MONTH.N` in Cairo time, N = this month's releases so far + 1 | `2026.11.1`, `2026.12.1` |
+  | Build number | Commits on `main` (`git rev-list --count HEAD`): one counter for previews and releases | `900` |
+  | Release tag | `v<version>` | `v2026.11.1` |
+  | Channel | Not part of the number: alpha (default), beta or stable, picked when the Release workflow runs | |
+  | Android `versionCode` | `20000000 + build` (`kabar_core::update::version_code`) | `20000900` |
+  | Mac `CFBundleShortVersionString` / `CFBundleVersion` | The version / the build | `2026.11.1` / `900` |
+  | In the app (Settings › About, Updates) | Version and build | `2026.11.1 · بناء 900` |
+  | Preview build | The latest release's version, its own build | `2026.11.1 · بناء 912` |
+
+  `scripts/version.sh release|preview` prints the version and build;
+  `scripts/version.sh apply V` writes V into `Cargo.toml` for a build (CI
+  only, never committed). The committed `version` stays `2026.11.0`; nothing
+  is bumped by hand. Every calendar version sorts above every
+  `1.0.0-alpha.N` and the new versionCodes are above the old ones
+  (`1.0.0-alpha.3` was `10000103`), so installed apps take the first new
+  build as an ordinary update. The feed tags (`preview`, `update-alpha`, …)
+  never change: installed apps read them. Before 2026-11-08 releases were
+  `1.0.0-alpha.1`…`3`, tagged `v1.0.0-alpha.N`.
 - Every APK is signed with your release key (`~/.kabar/kabar-release.jks`,
   password in Keychain). Android installs an update over the old app only if
   it's signed with the same key. **Back the key up** (MAC-TODO §3): losing
@@ -79,8 +103,8 @@ are only steps 5 to 7.
 4. **Once:** Kabar Cloud. The Google sign-in clients, `just cloud-setup`,
    the keys, then `just deploy-cloud` (MAC-TODO §4–5). Fill `.env` from
    `.env.example`.
-5. Set `version` in `Cargo.toml` (`1.0.0-alpha.1` the first time). `git pull`, then
-   **`just release`**. It runs every check, then puts `Kabar.app` and
+5. `git pull`, then `scripts/version.sh apply "$(scripts/version.sh release | cut -d' ' -f1)"`
+   (don't commit it), then **`just release`**. It runs every check, then puts `Kabar.app` and
    `kabar-<version>.apk` in `dist/release/<version>/`.
 6. Install. The first time by hand; every later release is
    `just publish-update "<what's new>" "<الجديد>"` and the devices update
@@ -92,7 +116,7 @@ are only steps 5 to 7.
 7. Sign in on all three devices (Settings → Account & devices) and walk the
    **devices** gates in §2. Tell me what fails; nothing gets tagged until
    they pass.
-8. Tag it, e.g. `git tag v1.0.0-alpha.1 && git push origin v1.0.0-alpha.1`. This is only a
+8. Tag it, e.g. `git tag v2026.11.1 && git push origin v2026.11.1`. This is only a
    marker. The builds reach your devices only through the update feed
    (§5), which nobody else installs from.
 
@@ -109,13 +133,16 @@ Release › Run workflow, by hand only) does steps 5–6 and 8 without the Mac:
    `KABAR_MAC_CERT_P12`, `KABAR_MAC_CERT_PASSWORD`). Commit
    `crates/app/update-key.pub` the first time. Back up `~/.kabar/` and the
    Keychain items `kabar-update`, `kabar-android`, `kabar-codesign`.
-2. Set `version` in `Cargo.toml` in a PR (with its `changes/` line), merge.
-3. Run the workflow. It builds the content bundle, the release APK (Linux,
+2. Nothing to bump: the workflow names the release (§3).
+3. Run the workflow (channel: alpha unless the learner says beta or
+   stable). It works out the version and build (`scripts/version.sh
+   release`), builds the content bundle, the release APK (Linux,
    with Firebase from `KABAR_GOOGLE_SERVICES_JSON`) and Kabar.app (macOS
    runner), bakes in Kabar Cloud and the Google client (sync), signs
-   everything with the keys above and publishes `v<version>`
-   (`kabar-<version>.apk`, `Kabar-<version>-mac.zip`) and the channel
-   feed(s) `update-alpha`, … (§5).
+   everything with the keys above and publishes `v<version>` (a draft
+   first, published once every file is up: "What's new" from `changes/`,
+   `Kabar-<version>-android.apk`, `Kabar-<version>-mac.zip`,
+   `SHA256SUMS.txt`) and the channel feed(s) `update-alpha`, … (§5).
 4. First time only: install the APK on both Galaxy devices (it installs
    over a preview from main; only one from before 2026-11-02 needs
    uninstalling first); on the Mac move Kabar.app to ~/Applications and run

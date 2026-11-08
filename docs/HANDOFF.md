@@ -171,13 +171,20 @@ macOS-15 runners are sometimes not acquired: rerun failed jobs later.
 
 ## 6. Releases and updates
 
-- Version in workspace `Cargo.toml` (now **1.0.0-alpha.3**).
+- **Numbering (Mohamed, 2026-11-08):** calendar versions `YEAR.MONTH.N`
+  (`2026.11.1` = first release of November 2026) and one build number for
+  every build, preview or release (commits on `main`). Android versionCode
+  = 20000000 + build; Mac CFBundleVersion = build. `scripts/version.sh`
+  works it out; `Cargo.toml` keeps `2026.11.0` and is never bumped by hand.
+  Details: `docs/RELEASE.md` §3. Last old-style release: `1.0.0-alpha.3`.
 - Channels: `preview` (CI), `update-alpha`, `update-beta`, `update-stable`
-  (a beta also goes to alpha; stable to every channel). Human release tags:
-  `v<version>`.
+  (a beta also goes to alpha; stable to every channel; feed tags never
+  change, installed apps read them). Human release tags: `v<version>`
+  (`v2026.11.1`), with "What's new", `Kabar-<v>-android.apk`,
+  `Kabar-<v>-mac.zip` and `SHA256SUMS.txt`.
 - **Alpha only when Mohamed says so** («طلّع ألفا»), together with Batna
-  unless he says otherwise. Steps: PR bumping `version` (+ `changes/` line) →
-  merge → Actions › Release › Run workflow → verify `update.json` with
+  unless he says otherwise. Steps: Actions › Release › Run workflow
+  (channel alpha; no bump PR) → verify `update.json` with
   `kabar-tools update verify` against `crates/app/update-key.pub`.
 - Preview builds are signed with the release keys, so any build can switch
   channel in Settings › Updates.
@@ -328,6 +335,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-08: release numbering switched to calendar versions (`2026.11.N`) and one build counter (commits on main) for previews and releases, on Mohamed's ask; `scripts/version.sh`, versionCode 20000000 + build, channel picked in the Release workflow, cleaner release page (what's new, uniform file names, SHA256SUMS), no bump PR (`docs/RELEASE.md` §3).
 - 2026-11-06: 1.0.0-alpha.3 released on Mohamed's ask, so the Mac app (alpha feed only; previews carry no Mac build) gets the lock/unlock and update-check fixes.
 - 2026-11-06: Android screen froze after lock/unlock (seen in Batna, same code here): Dioxus's edit socket patched in `vendor/` (edits resent until acknowledged); update check shows the app result before the content bundle downloads, requests time out after 20 s of no progress.
 - 2026-11-05: Mac nightly green again (#611): update tests expect the Mac's own button and install message; menu test skipped on macOS (muda needs the main thread).

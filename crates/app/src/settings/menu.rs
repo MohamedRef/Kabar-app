@@ -32,7 +32,10 @@ fn cmd(key: Code) -> Option<Accelerator> {
 pub fn menu_bar() -> Menu {
     let about = AboutMetadata {
         name: Some("Kabar".into()),
-        version: Some(env!("CARGO_PKG_VERSION").into()),
+        version: Some(match crate::version::build() {
+            0 => crate::version::VERSION.to_owned(),
+            b => format!("{} (build {b})", crate::version::VERSION),
+        }),
         comments: Some("Indonesian and Javanese, from Arabic.".into()),
         ..Default::default()
     };

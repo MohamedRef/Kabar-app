@@ -64,6 +64,7 @@ mod testkit;
 mod theme;
 mod ui;
 mod update;
+mod version;
 mod views;
 
 use std::cell::RefCell;
