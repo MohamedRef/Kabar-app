@@ -11,9 +11,9 @@ each rule names where it lives and the test that holds it.
 
 | Thing | Where | What orders it | Who checks it |
 |---|---|---|---|
-| App version | workspace `version` (`1.2.3-alpha.4`) | `Version` in `crates/core/src/update.rs` | the updater; Android's `versionCode` |
-| App build | the CI run number for `preview`, `0` for releases | `(version, build)` | the updater, the content bundle |
-| Android `versionCode` | `Version::version_code` = `scripts/android-release-apk.sh` | must grow on every install | Android itself |
+| App version | workspace `version` (`2026.11.1`; older `1.0.0-alpha.3` still parses) | `Version` in `crates/core/src/update.rs` | the updater; Android's `versionCode` |
+| App build | commits on `main` for every CI build, preview or release (`scripts/version.sh`); `0` for a local build | `(version, build)` | the updater, the content bundle |
+| Android `versionCode` | `version_code(build)` = 20000000 + build = `scripts/android-release-apk.sh` | must grow on every install | Android itself |
 | Feed format | `UPDATE_FORMAT` in `crates/protocol/src/update.rs` | integer | `verify_manifest` |
 | Bundle container | `MAGIC` = `KABARCB1` in `crates/protocol/src/bundle.rs` | the magic bytes | `bundle::decode` |
 | Bundle build | the feed's `(version, build)` | same as the app | `content_update`, `content::validated` |

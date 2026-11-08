@@ -34,7 +34,7 @@ pub mod bundle;
 pub mod changelog;
 pub mod content;
 pub mod sheet;
-mod text;
+pub(crate) mod text;
 pub mod view;
 
 use std::fs;

@@ -283,7 +283,11 @@ pub fn AboutSection() -> Element {
             p { class: "about-name latin", bdi { lang: "id", dir: "ltr", "Kabar" } }
             div { class: "field",
                 span { class: "label", "{st(lang, S::Version)}" }
-                code { dir: "ltr", bdi { "{env!(\"CARGO_PKG_VERSION\")}" } }
+                code { dir: "ltr", bdi { "{crate::version::VERSION}" } }
+                if crate::version::build() > 0 {
+                    " · {crate::update::text::ut(lang, crate::update::text::U::Build)} "
+                    bdi { dir: "ltr", "{ui.num(crate::version::build())}" }
+                }
             }
             div { class: "field",
                 span { class: "label", "{ui.t(SettingsMsg::SettingsDevice)}" }

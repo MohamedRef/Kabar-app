@@ -92,6 +92,15 @@ jobs:
           persist-credentials: false
           # "What's new" reads the changes/ files merged since the build on the feed.
           fetch-depth: 0
+      # docs/RELEASE.md §3 (Mohamed, 2026-11-08): a preview carries the
+      # latest release's calendar version and the build number every build
+      # shares, the commits on main, so it sorts after that release.
+      - name: Preview version and build number
+        run: |
+          read -r v build < <(scripts/version.sh preview)
+          scripts/version.sh apply "$v"
+          echo "KABAR_BUILD=$build" >> "$GITHUB_ENV"
+          echo "Kabar $v, build $build"
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-linux-android
@@ -161,7 +170,6 @@ jobs:
           {
             echo "KABAR_UPDATE_CHANNEL=preview"
             echo "KABAR_UPDATE_KEY=$(grep -v '^#' ~/.kabar-preview-update/key.pub | head -1)"
-            echo "KABAR_BUILD=${{ github.run_number }}"
             echo "KABAR_COMMIT=${GITHUB_SHA::7}"
           } >> "$GITHUB_ENV"
 

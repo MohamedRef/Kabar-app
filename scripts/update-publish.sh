@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Publishes the release that `just release` left in dist/release/<version>/
 # as an over-the-air update (docs/RELEASE.md §5): one signed feed per channel
-# the version belongs to (an alpha → alpha; a beta → alpha + beta; a release
-# → all three), each on its own GitHub release (update-alpha, …).
+# the release reaches (KABAR_CHANNEL, default alpha; a beta also reaches
+# alpha, a stable release all three), each on its own GitHub release
+# (update-alpha, …).
 #
 # Only once the learner says go. Needs `gh auth login` and the Keychain key
 # from `just update-keygen`. Usage: scripts/update-publish.sh "<notes en>" "<notes ar-EG>"
@@ -34,8 +35,14 @@ ditto -c -k --keepParent "$rel/Kabar.app" "$rel/Kabar.app.zip"
 $tools validate
 $tools update bundle --out dist/bundle
 
+case "${KABAR_CHANNEL:-alpha}" in
+  alpha) channels="alpha" ;;
+  beta) channels="alpha beta" ;;
+  stable) channels="alpha beta stable" ;;
+  *) echo "KABAR_CHANNEL is alpha, beta or stable" >&2; exit 2 ;;
+esac
 published=0
-for channel in alpha beta stable; do
+for channel in $channels; do
   out="dist/update/$channel"
   # What's new: changes/ since the version this channel carries now, on top
   # of its history (none yet on a first publish).
@@ -43,7 +50,8 @@ for channel in alpha beta stable; do
   gh release download "update-$channel" --repo "$repo" --pattern update.json --output "$previous" --clobber \
     2>/dev/null || rm -f "$previous"
   # The tool refuses a version that doesn't belong on a channel (an alpha on stable).
-  if ! $tools update manifest --channel "$channel" --version "$v" --commit "$(git rev-parse --short HEAD)" \
+  if ! $tools update manifest --channel "$channel" --version "$v" --build "$(git rev-list --count HEAD)" \
+      --commit "$(git rev-parse --short HEAD)" \
       --notes-en "$notes_en" --notes-ar-eg "$notes_ar_eg" --previous "$previous" --changes \
       --asset "android-arm64=$rel/kabar-$v.apk" --asset "$mac=$rel/Kabar.app.zip" \
       --content dist/bundle/kabar-content.bundle --out "$out" 2>/dev/null; then

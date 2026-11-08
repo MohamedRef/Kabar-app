@@ -8,7 +8,7 @@
 # no R8, and its versionCode is always 1. This script reuses the gradle
 # project dx generated, so the Rust library and the Kotlin glue are the same:
 #
-# - versionCode comes from the workspace version (see version_code below);
+# - versionCode comes from the build number (see BUILD below);
 # - only arm64 native libraries, run straight from the APK;
 # - our R8 keep rules go next to dx's (android/consumer-rules.pro covers
 #   app.kabar.*; the ones here cover dx's own classes that wry calls by name);
@@ -23,26 +23,13 @@ GRADLE_APP="$ROOT/app/build.gradle.kts"
 
 VERSION="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
 
-# 1.2.3-alpha.4 → 10203104: major, minor, patch, then the stage (alpha
-# 100+N, beta 500+N, rc 800+N, a final release 999), so every alpha sorts
-# before its beta and the beta before the release.
-version_code() {
-  local v="$1" core pre major minor patch stage n
-  core="${v%%-*}"
-  pre=""
-  [ "$core" != "$v" ] && pre="${v#*-}"
-  IFS=. read -r major minor patch <<<"$core"
-  n="${pre##*.}"
-  case "$pre" in
-    "") stage=999 ;;
-    alpha.*) stage=$((100 + n)) ;;
-    beta.*) stage=$((500 + n)) ;;
-    rc.*) stage=$((800 + n)) ;;
-    *) echo "Unknown pre-release '$pre' in version $v" >&2; return 1 ;;
-  esac
-  echo $(((major * 10000 + minor * 100 + patch) * 1000 + stage))
-}
-CODE="$(version_code "$VERSION")"
+# versionCode = 20000000 + the build number (kabar_core::update::version_code,
+# docs/RELEASE.md §1): one counter for previews and releases, the commits on
+# main (scripts/version.sh), so every build installs over the one before.
+# CI passes it as KABAR_BUILD; a local build counts the commits itself.
+BUILD="${KABAR_BUILD:-$(git rev-list --count HEAD)}"
+[[ "$BUILD" =~ ^[0-9]+$ ]] || { echo "KABAR_BUILD '$BUILD' isn't a number" >&2; exit 1; }
+CODE=$((20000000 + BUILD))
 
 sed -i.bak -E "s/versionCode = [0-9]+/versionCode = $CODE/" "$GRADLE_APP"
 rm -f "$GRADLE_APP.bak"
