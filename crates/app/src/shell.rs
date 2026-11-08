@@ -44,7 +44,14 @@ pub(super) fn Shell() -> Element {
     rsx! {
         div { class: "shell",
             nav { class: "nav", aria_label: "Kabar",
-                div { class: "brand latin", "Kabar" }
+                div { class: "brand latin",
+                    crate::brand::Mark {}
+                    span { class: "brand-words",
+                        span { "Kabar" }
+                        // Kabar comes from Arabic «خبر» (news).
+                        span { class: "brand-sub", lang: "ar", "خبر" }
+                    }
+                }
                 for (g, (title, screens)) in groups.into_iter().enumerate() {
                     div { key: "{g}", class: "nav-group", role: "group", aria_labelledby: "nav-group-{g}",
                         p { id: "nav-group-{g}", class: "nav-heading", "{ui.t(title)}" }

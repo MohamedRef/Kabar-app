@@ -240,7 +240,10 @@ pub fn TopBar(current: Screen) -> Element {
     rsx! {
         header { class: "top-bar",
             if tab {
-                span { class: "brand-small latin", "Kabar" }
+                span { class: "brand-small latin",
+                    crate::brand::Mark {}
+                    "Kabar"
+                }
             } else {
                 div { class: "top-title",
                     button {
