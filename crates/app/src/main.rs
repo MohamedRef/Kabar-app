@@ -13,6 +13,7 @@ mod annotated;
 mod app_hooks;
 mod audio;
 mod back;
+mod brand;
 mod chat;
 mod cloud;
 mod coach;

@@ -181,7 +181,7 @@ The phone and tablet show Kabar's own launcher icon (adaptive, with a themed-ico
 
 `just apk` builds a real release: dx 0.7.10 only runs gradle's release build when the keystore passwords sit in `Dioxus.toml`, which would put a secret in the repo, so `scripts/android-release-apk.sh` re-runs `assembleRelease` on the gradle project dx generated. The APK is not debuggable, is shrunk by R8, and takes its `versionCode` from the build number (20000000 + the commits on main, `docs/RELEASE.md` §3, so every build installs over the one before). The check stops if an APK is debuggable or still has versionCode 1.
 
-After changing the icon masters in `assets/src/icon/`, run `python3 scripts/assets/export_icons.py`; it refreshes `assets/export/` and the copies in `android/src/main/res/`. The Mac `.app` icon is built by `dx bundle` from the 1024 px PNG in `assets/export/macos/Kabar.iconset/`.
+The icon is drawn in `assets/src/icon/svg/*.svg`. After changing it, run `python3 scripts/assets/render_icon_svgs.py` (needs `pip install cairosvg pillow`) to refresh the PNG masters in `assets/src/icon/`, then `python3 scripts/assets/export_icons.py`; it refreshes `assets/export/` and the copies in `android/src/main/res/`. The Mac `.app` icon is built by `dx bundle` from the 1024 px PNG in `assets/export/macos/Kabar.iconset/`.
 
 The bundled Latin OCR model makes the APK a few MB bigger. OCR runs on the phone; images never leave it.
 

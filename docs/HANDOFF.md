@@ -335,6 +335,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-08: rebrand K2 (Mohamed's pick from the proposal page https://claude.ai/artifact/Y9h75TKgVP3TBEJNX68pKT): the launcher icon is now a drawn kawung (four cream petals and a soga seed on batik indigo `#23305e`), replacing the painted rice-terrace bubble. Sources `assets/src/icon/svg/*.svg` → `scripts/assets/render_icon_svgs.py` → PNG masters → `export_icons.py`. The same mark sits beside "Kabar" (with «خبر» under it) in the sidebar and phone top bar (`crates/app/src/brand.rs`, petals in `--indigo`; a test keeps it equal to the icon).
 - 2026-11-08: release numbering switched to calendar versions (`2026.11.N`) and one build counter (commits on main) for previews and releases, on Mohamed's ask; `scripts/version.sh`, versionCode 20000000 + build, channel picked in the Release workflow, cleaner release page (what's new, uniform file names, SHA256SUMS), no bump PR (`docs/RELEASE.md` §3).
 - 2026-11-06: 1.0.0-alpha.3 released on Mohamed's ask, so the Mac app (alpha feed only; previews carry no Mac build) gets the lock/unlock and update-check fixes.
 - 2026-11-06: Android screen froze after lock/unlock (seen in Batna, same code here): Dioxus's edit socket patched in `vendor/` (edits resent until acknowledged); update check shows the app result before the content bundle downloads, requests time out after 20 s of no progress.

@@ -420,6 +420,20 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .nav-item { justify-content: flex-start; }
 .brand { font-weight: 700; color: var(--indigo); font-size: 1.3rem; padding-block: 0.5rem 1rem; padding-inline: 0.75rem; }
 .app:is([data-width="compact"], [data-width="medium"]) .brand { display: none; }
+/* The Kabar mark beside the name (brand.rs): kawung petals in the brand
+   colour, the seed in soga brown, the dots cut in the surface colour. */
+.brand { display: flex; align-items: center; gap: 0.6rem; }
+.brand-words { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-sub { font-family: "Amiri", var(--font-arabic); font-weight: 400; font-size: 0.95rem; color: var(--muted); }
+.brand-mark {
+  --brand-seed: #c4733a;
+  inline-size: 2.2rem; block-size: 2.2rem; flex: none;
+}
+.brand-mark .petal { fill: var(--indigo); }
+.brand-mark .dot { fill: var(--glass-solid, var(--surface)); }
+.brand-mark .seed { fill: var(--brand-seed); }
+.brand-small { display: inline-flex; align-items: center; gap: 0.45rem; }
+.brand-small .brand-mark { inline-size: 1.5rem; block-size: 1.5rem; }
 
 /* Settings: pinned to the foot of the rail and sidebar; the gear in the phone's top bar */
 .app:not([data-width="compact"]) .nav {
