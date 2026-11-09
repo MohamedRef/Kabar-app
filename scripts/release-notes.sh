@@ -1,50 +1,55 @@
 #!/usr/bin/env bash
-# The GitHub release page for a Kabar release (docs/RELEASE.md §4): what's
-# new from the signed feed's newest history entry (the changes/ lines merged
-# since the last release), how to install, and the checksums.
+# The GitHub release page for a Kabar release (docs/RELEASE.md §4), in
+# Egyptian Arabic (Mohamed, 2026-11-09): what's new from the signed feed's
+# newest history entry (the changes/ lines merged since the last release),
+# how to install, and the checksums. A line without Arabic text is left out.
 #
 #   scripts/release-notes.sh FEED/update.json CHANNEL [NOTES_EN] [NOTES_AR_EG]
 #
 # Prints Markdown. The version, build and commit come from the manifest.
+# NOTES_EN is accepted for the workflow's sake but not shown.
 set -euo pipefail
 
 manifest="${1:?usage: scripts/release-notes.sh FEED/update.json CHANNEL [notes-en] [notes-ar-eg]}"
 channel="${2:?channel}"
-notes_en="${3:-}"
 notes_ar_eg="${4:-}"
 v="$(jq -r .version "$manifest")"
 build="$(jq -r .build "$manifest")"
 commit="$(jq -r '.commit // ""' "$manifest")"
+case "$channel" in
+  alpha) channel_ar="ألفا" ;;
+  beta) channel_ar="بيتا" ;;
+  stable) channel_ar="المستقرة" ;;
+  *) channel_ar="$channel" ;;
+esac
 
-echo "**Kabar $v** · build $build${commit:+ · \`$commit\`} · $channel channel"
+echo "**Kabar $v** · بناء $build${commit:+ · \`$commit\`} · قناة $channel_ar"
 echo
-if [ -n "$notes_en$notes_ar_eg" ]; then
-  [ -z "$notes_ar_eg" ] || echo "$notes_ar_eg"
-  [ -z "$notes_en" ] || echo "$notes_en"
+if [ -n "$notes_ar_eg" ]; then
+  echo "$notes_ar_eg"
   echo
 fi
-echo "## What's new"
+echo "## الجديد"
 echo
-# The newest entry is this release's; a release with no changes/ lines says so.
 lines="$(jq -r '
   def section($k; $title):
-    [.history[0].changes[]? | select(.kind == $k)] as $c
+    [.history[0].changes[]? | select(.kind == $k) | select((.ar_eg // "") != "")] as $c
     | if ($c | length) > 0 then
-        "### \($title)\n\n" + ($c | map("- " + .ar_eg + (if (.en // "") != "" then "<br>_" + .en + "_" else "" end)) | join("\n")) + "\n"
+        "### \($title)\n\n" + ($c | map("- " + .ar_eg) | join("\n")) + "\n"
       else empty end;
-  [section("new"; "New"), section("improved"; "Improved"), section("fixed"; "Fixed")] | join("\n")
+  [section("new"; "جديد"), section("improved"; "اتحسّن"), section("fixed"; "اتصلّح")] | join("\n")
 ' "$manifest")"
-if [ -n "$lines" ]; then echo "$lines"; else echo "Small fixes and housekeeping."; fi
+if [ -n "$lines" ]; then echo "$lines"; else echo "تصليحات صغيرة وتنضيف."; fi
 echo
 cat <<MD
-## Install
+## التثبيت
 
-| Device | File | First time only |
+| الجهاز | الملف | أول مرة بس |
 |---|---|---|
-| Android (S24 Ultra, Tab S11) | \`Kabar-$v-android.apk\` | Open it on the device and allow installs from your browser. It installs over any earlier Kabar and keeps your data. |
-| Mac (Apple silicon) | \`Kabar-$v-mac.zip\` | Unzip, move Kabar.app to ~/Applications, then run \`xattr -dr com.apple.quarantine ~/Applications/Kabar.app\` once (it is self-signed). |
+| أندرويد (S24 Ultra و Tab S11) | \`Kabar-$v-android.apk\` | افتحه على الجهاز واسمح بالتثبيت من المتصفح. بيتثبّت فوق أي نسخة قديمة من Kabar ومش بيمسح بياناتك. |
+| ماك (Apple silicon) | \`Kabar-$v-mac.zip\` | فك الضغط، انقل Kabar.app لـ ~/Applications، وشغّل مرة واحدة \`xattr -dr com.apple.quarantine ~/Applications/Kabar.app\` (التوقيع ذاتي). |
 
-Installed apps update themselves from the $channel feed; you only need these files for a new device.
+الأجهزة المتثبّت عليها Kabar بتتحدّث لوحدها من قناة $channel_ar، والملفات دي محتاجها بس لجهاز جديد.
 
-\`SHA256SUMS.txt\` lists each file's SHA-256 (\`shasum -a 256 -c SHA256SUMS.txt\`).
+ملف \`SHA256SUMS.txt\` فيه بصمة SHA-256 لكل ملف (\`shasum -a 256 -c SHA256SUMS.txt\`).
 MD

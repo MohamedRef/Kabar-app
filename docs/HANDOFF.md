@@ -341,6 +341,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-09: the GitHub release page is written in Egyptian Arabic only (`scripts/release-notes.sh`); a `changes/` line without Arabic text is left out (Mohamed).
 - 2026-11-09: handoff and README reviewed against main: release `v2026.11.1`, Kabar Cloud deployed, open PRs, contents line.
 - 2026-11-08: `v2026.11.1` released (first calendar version), the same day as Batna's.
 - 2026-11-08: rebrand K2 (Mohamed's pick from the proposals): the launcher icon is now a drawn kawung (four cream petals and a soga seed on batik indigo `#23305e`), replacing the painted rice-terrace bubble. Sources `assets/src/icon/svg/*.svg` → `scripts/assets/render_icon_svgs.py` → PNG masters → `export_icons.py`. The same mark sits beside "Kabar" (with «خبر» under it) in the sidebar and phone top bar (`crates/app/src/brand.rs`, petals in `--indigo`; a test keeps it equal to the icon).
