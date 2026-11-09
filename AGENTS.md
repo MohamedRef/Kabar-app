@@ -24,7 +24,8 @@ Everything you need is in this repo.
 - Kabar work never goes to `MohamedRef/Batna-app`, and the reverse.
 - Branch from `origin/main`, PR to `main`, add `changes/<topic>.yaml`, run
   `just check`, wait for green CI, squash-merge yourself.
-- New alpha releases only when Mohamed asks («طلّع ألفا»).
+- New releases (calendar versions, `2026.11.N`) only when Mohamed asks
+  («طلّع ألفا»).
 
 ## Small files (fewer merge conflicts)
 
