@@ -48,11 +48,11 @@ Last full refresh: 2026-11-09, main at `3318e37` (latest release `v2026.11.1`).
 - New alpha releases only when he says «طلّع ألفا» (§ 6).
 - Image/portrait prompts for Codex must be fully self-contained (style block,
   rules, sizes, output paths in each prompt): [VISUAL-ASSETS.md](VISUAL-ASSETS.md).
-  Claude draws SVG itself; painterly art comes from Codex as zips.
+  SVG is drawn in code; painterly art comes from Codex as zips.
 
 ### Files outside git
 
-Everything that lived only in the Claude project's shared folder
+Everything that lived only in the old project's shared folder
 (`/mnt/project-files/`: art zips and batches, screenshots, curriculum tool
 specs, critiques, Kabar's pre-purge git bundle, uploads) and the project's
 memory notes are archived in the **private repo `MohamedRef/Batna-sources`**
@@ -343,7 +343,7 @@ Newest first. One line per PR that changes behaviour, process or state.
 
 - 2026-11-09: handoff and README reviewed against main: release `v2026.11.1`, Kabar Cloud deployed, open PRs, contents line.
 - 2026-11-08: `v2026.11.1` released (first calendar version), the same day as Batna's.
-- 2026-11-08: rebrand K2 (Mohamed's pick from the proposal page https://claude.ai/artifact/Y9h75TKgVP3TBEJNX68pKT): the launcher icon is now a drawn kawung (four cream petals and a soga seed on batik indigo `#23305e`), replacing the painted rice-terrace bubble. Sources `assets/src/icon/svg/*.svg` → `scripts/assets/render_icon_svgs.py` → PNG masters → `export_icons.py`. The same mark sits beside "Kabar" (with «خبر» under it) in the sidebar and phone top bar (`crates/app/src/brand.rs`, petals in `--indigo`; a test keeps it equal to the icon).
+- 2026-11-08: rebrand K2 (Mohamed's pick from the proposals): the launcher icon is now a drawn kawung (four cream petals and a soga seed on batik indigo `#23305e`), replacing the painted rice-terrace bubble. Sources `assets/src/icon/svg/*.svg` → `scripts/assets/render_icon_svgs.py` → PNG masters → `export_icons.py`. The same mark sits beside "Kabar" (with «خبر» under it) in the sidebar and phone top bar (`crates/app/src/brand.rs`, petals in `--indigo`; a test keeps it equal to the icon).
 - 2026-11-08: release numbering switched to calendar versions (`2026.11.N`) and one build counter (commits on main) for previews and releases, on Mohamed's ask; `scripts/version.sh`, versionCode 20000000 + build, channel picked in the Release workflow, cleaner release page (what's new, uniform file names, SHA256SUMS), no bump PR (`docs/RELEASE.md` §3).
 - 2026-11-06: 1.0.0-alpha.3 released on Mohamed's ask, so the Mac app (alpha feed only; previews carry no Mac build) gets the lock/unlock and update-check fixes.
 - 2026-11-06: Android screen froze after lock/unlock (seen in Batna, same code here): Dioxus's edit socket patched in `vendor/` (edits resent until acknowledged); update check shows the app result before the content bundle downloads, requests time out after 20 s of no progress.
