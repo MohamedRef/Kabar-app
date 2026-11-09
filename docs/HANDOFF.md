@@ -8,7 +8,11 @@ last one stopped, with no other history. Read it top to bottom once, then
 secrets, deploys or the state of the work updates this file in the same PR
 (usually § Current state and § Log). See `AGENTS.md`.
 
-Last full refresh: 2026-11-05, main at `705635c` (1.0.0-alpha.2).
+Last full refresh: 2026-11-09, main at `3318e37` (latest release `v2026.11.1`).
+
+**Contents:** 1 What Kabar is · 2 Architecture · 3 Build, test, run · 4 CI ·
+5 Merge routine · 6 Releases, secrets, URLs · 7 Content and pedagogy ·
+8 Testing · 9 Current state and open work · 10 Resume message · 11 Log
 
 ---
 
@@ -176,7 +180,8 @@ macOS-15 runners are sometimes not acquired: rerun failed jobs later.
   every build, preview or release (commits on `main`). Android versionCode
   = 20000000 + build; Mac CFBundleVersion = build. `scripts/version.sh`
   works it out; `Cargo.toml` keeps `2026.11.0` and is never bumped by hand.
-  Details: `docs/RELEASE.md` §3. Last old-style release: `1.0.0-alpha.3`.
+  Details: `docs/RELEASE.md` §3. First calendar release: `v2026.11.1`
+  (2026-11-08); the last old-style one was `v1.0.0-alpha.3` (2026-11-06).
 - Channels: `preview` (CI), `update-alpha`, `update-beta`, `update-stable`
   (a beta also goes to alpha; stable to every channel; feed tags never
   change, installed apps read them). Human release tags: `v<version>`
@@ -290,7 +295,7 @@ Rules (Mohamed's decisions; all in force):
 - Android crash reports start from Settings › Storage diagnostics
   (WebViewGuard records renderer loss and exit reasons).
 
-## 9. Current state (2026-11-06)
+## 9. Current state (2026-11-09)
 
 | Milestone | State |
 |---|---|
@@ -300,10 +305,11 @@ Rules (Mohamed's decisions; all in force):
 | Web | phases 1–2 live (sync, AI, voices, password sign-in); phase 3 offline packs + OCR |
 | M9 Studio | mind maps only; pen writing paused |
 | M13 | content done; performance pass open; aksara and widgets parked |
-| Releases | `v1.0.0-alpha.3` published 2026-11-06 (`update-alpha`); previews every 4 h |
+| Releases | `v2026.11.1` published 2026-11-08 (alpha channel, first calendar version); previews every 4 h |
 | Critic loop | final pass 10 done 2026-11-04; loop closed. Don't start another unless asked. |
-| Open PRs | #608 (Android Google sign-in returns to Kabar) on 2026-11-05 |
-| Coverage | 94.42% (floor 93) |
+| Open PRs / issues | None on 2026-11-09 (#608, Android Google sign-in, merged 2026-11-05) |
+| Brand | K2 since 2026-11-08: kawung launcher icon on batik indigo; the same mark beside the name (`brand.rs`) |
+| Coverage | 94.42% when last measured 2026-11-04 (floor 93) |
 
 ### Open work and known gaps
 
@@ -316,8 +322,8 @@ Rules (Mohamed's decisions; all in force):
 - Not yet verified on a real device: Back-key routing, update notifications,
   the lock/unlock freeze fix (`vendor/`, tested on desktop sockets only).
 - Test debt: merge duplicate click-test helpers.
-- Big files: Rust files over 800 lines are listed by `scripts/check-file-sizes.sh`;
-  split each when a PR already changes it a lot (AGENTS.md § Small files).
+- Big files: two Rust files are over 800 lines (`update/view.rs`, `test_dom.rs`;
+  `scripts/check-file-sizes.sh` lists them); split each when a PR already changes it a lot (AGENTS.md § Small files).
   About 410 strings still sit in the shared `Msg` (some used by several
   features, some typed as `Msg` in helpers); move them as features change.
 
@@ -335,6 +341,8 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-09: handoff and README reviewed against main: release `v2026.11.1`, Kabar Cloud deployed, open PRs, contents line.
+- 2026-11-08: `v2026.11.1` released (first calendar version), the same day as Batna's.
 - 2026-11-08: rebrand K2 (Mohamed's pick from the proposal page https://claude.ai/artifact/Y9h75TKgVP3TBEJNX68pKT): the launcher icon is now a drawn kawung (four cream petals and a soga seed on batik indigo `#23305e`), replacing the painted rice-terrace bubble. Sources `assets/src/icon/svg/*.svg` → `scripts/assets/render_icon_svgs.py` → PNG masters → `export_icons.py`. The same mark sits beside "Kabar" (with «خبر» under it) in the sidebar and phone top bar (`crates/app/src/brand.rs`, petals in `--indigo`; a test keeps it equal to the icon).
 - 2026-11-08: release numbering switched to calendar versions (`2026.11.N`) and one build counter (commits on main) for previews and releases, on Mohamed's ask; `scripts/version.sh`, versionCode 20000000 + build, channel picked in the Release workflow, cleaner release page (what's new, uniform file names, SHA256SUMS), no bump PR (`docs/RELEASE.md` §3).
 - 2026-11-06: 1.0.0-alpha.3 released on Mohamed's ask, so the Mac app (alpha feed only; previews carry no Mac build) gets the lock/unlock and update-check fixes.
