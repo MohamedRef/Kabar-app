@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # The GitHub release page for a Kabar release (docs/RELEASE.md §4), in
 # Egyptian Arabic (Mohamed, 2026-11-09): what's new from the signed feed's
-# newest history entry (the changes/ lines merged since the last release),
+# newest history entry when it is this version's (the changes/ lines merged
+# since the last release; a release without any says so),
 # how to install, and the checksums. A line without Arabic text is left out.
 #
 #   scripts/release-notes.sh FEED/update.json CHANNEL [NOTES_EN] [NOTES_AR_EG]
@@ -33,12 +34,12 @@ echo "## الجديد"
 echo
 lines="$(jq -r '
   def section($k; $title):
-    [.history[0].changes[]? | select(.kind == $k) | select((.ar_eg // "") != "")] as $c
+    [.history[0] | select(.version == $v) | .changes[]? | select(.kind == $k) | select((.ar_eg // "") != "")] as $c
     | if ($c | length) > 0 then
         "### \($title)\n\n" + ($c | map("- " + .ar_eg) | join("\n")) + "\n"
       else empty end;
   [section("new"; "جديد"), section("improved"; "اتحسّن"), section("fixed"; "اتصلّح")] | join("\n")
-' "$manifest")"
+' --arg v "$v" "$manifest")"
 if [ -n "$lines" ]; then echo "$lines"; else echo "تصليحات صغيرة وتنضيف."; fi
 echo
 cat <<MD

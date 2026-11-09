@@ -341,6 +341,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-09: a release with no new `changes/` lines says «تصليحات صغيرة وتنضيف.» on its page instead of repeating the previous release's lines (`scripts/release-notes.sh` reads the feed's newest history entry only when it is this version's).
 - 2026-11-09: the GitHub release page is written in Egyptian Arabic only (`scripts/release-notes.sh`); a `changes/` line without Arabic text is left out (Mohamed).
 - 2026-11-09: handoff and README reviewed against main: release `v2026.11.1`, Kabar Cloud deployed, open PRs, contents line.
 - 2026-11-08: `v2026.11.1` released (first calendar version), the same day as Batna's.
