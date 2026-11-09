@@ -10,7 +10,7 @@ the Arabic words Indonesian already borrowed.
 | | |
 |---|---|
 | **Use** | Personal only. Never published to a store. |
-| **Release** | **1.0.0-alpha.2** (2026-11-04): a signed, sideloaded APK for the phone and tablet plus a local Mac app ([docs/RELEASE.md](docs/RELEASE.md)). |
+| **Release** | **2026.11.1** (alpha, 2026-11-08): a signed, sideloaded APK for the phone and tablet plus a local Mac app. Versions follow the calendar (`YEAR.MONTH.N`); previews every 4 hours ([docs/RELEASE.md](docs/RELEASE.md)). |
 | **Cost to run** | $0/month (free tiers only; see [docs/RESEARCH.md](docs/RESEARCH.md)). |
 | **Devices** | MacBook Air M2, Galaxy S24 Ultra, Galaxy Tab S11. Layout follows window width, not device. |
 | **Content status** | All written content is a draft until the learner approves it. A lesson counts as approved once it is passed with 80% or more. |
@@ -38,7 +38,7 @@ the Arabic words Indonesian already borrowed.
 | Themes: Paper, Merapi, True black (AMOLED), Malam, Batik, Sawah, and two System themes that follow night mode | ✓ | ✓ status and navigation bars match the theme | ✓ status and navigation bars match the theme |
 | Lesson sounds (pick them in Settings) and a light vibration | ✓ sounds | ✓ vibration follows the phone's touch setting | ✓ vibration follows the tablet's touch setting |
 | Offline packs (audio per unit) | ✓ | ✓ | ✓ |
-| Sync through Kabar Cloud, Google sign-in, Devices screen | ✓ | ✓ | ✓ |
+| Sync through Kabar Cloud, Google or username + password sign-in, Devices screen | ✓ | ✓ | ✓ |
 | Updates over the air: signed feed, automatic / tell me first / off, alpha·beta·stable (preview for CI builds), interrupted downloads resume | ✓ swaps Kabar.app | ✓ PackageInstaller | ✓ PackageInstaller |
 | "A new Kabar is out" notification with what's new (keeps quiet hours) | ✓ while open | ✓ even when closed, Download / Install button | ✓ even when closed, Download / Install button |
 | Content and look updates without an app install: a signed content bundle (lessons, stories, Radio, glosses, stylesheets) downloads in the background and applies at the next launch | ✓ | ✓ | ✓ |
@@ -47,19 +47,20 @@ the Arabic words Indonesian already borrowed.
 | Home-screen widgets | — | parked | parked |
 
 Kabar Cloud is a Cloudflare Worker on the free plan (sync hub, key vault, AI
-and TTS proxy). Its code and local end-to-end test are done, and a
-"Deploy Kabar Cloud" GitHub Actions workflow can now deploy it without the Mac
-([docs/CLOUD.md](docs/CLOUD.md) §3.5). It is not deployed yet: the workflow
-waits for the `CLOUDFLARE_API_TOKEN` repo secret.
+and TTS proxy), live since 2026-11-02 and redeployed by GitHub Actions on
+every server change ([docs/CLOUD.md](docs/CLOUD.md)). Sync and sign-in work;
+cloud AI, cloud voices and pushed reminders wait for their keys
+(`GEMINI_API_KEY`, `AZURE_SPEECH_KEY`, `FCM_SERVICE_ACCOUNT`,
+`KABAR_GOOGLE_SERVICES_JSON`).
 
 **Web (any browser)**: the same Rust app compiled to WebAssembly, shaped like
 the "Crafting Apps" (one codebase, a thin web shell, a static site). Lessons,
 review, stats, Kak Nur, the Reader, Play, Watch & listen and themes all run in
 the browser, with progress kept in the browser's IndexedDB and exports as
-downloads. Phase 2 brings Kabar Cloud into the browser: live sync with the
-phone and Mac, AI answers and cloud voices (kept in the browser), signed in
-with a username and password. Offline packs and OCR come in phase 3
-([docs/WEB.md](docs/WEB.md)).
+downloads. Phase 2 (done) brings Kabar Cloud into the browser: live sync with
+the phone and Mac, AI answers and cloud voices, signed in with a username and
+password. Offline packs and OCR come in phase 3 ([docs/WEB.md](docs/WEB.md)).
+Live at https://kabar-web.hamorefaat85.workers.dev.
 
 ## Content in numbers
 
@@ -125,14 +126,14 @@ phased for after M13, never dropped.
 |---|---|---|---|
 | M0 | Research, plan, free-tier check, engine bake-off | 🟡 code done | run the bake-off on the Mac with real keys |
 | M1 | Workspace, Dioxus app on all three devices, i18n + RTL, themes, SQLite, Pen Lab | ✅ done | first install on the devices |
-| M2 | Kabar Cloud v0: Google sign-in, devices, live sync, key vault, AI/TTS proxy | 🟡 code done | add the Cloudflare token secret and run the Deploy Kabar Cloud workflow (no Mac needed); Kabar's own Google client (it borrows Batna's for now) |
-| M2+ | Web app (WebAssembly) on a static Cloudflare Worker | 🟡 phases 1–2 done | sync, AI and cloud voices in the browser; username + password sign-in from the login work; phase 3: offline packs, OCR ([docs/WEB.md](docs/WEB.md)) |
+| M2 | Kabar Cloud v0: Google sign-in, devices, live sync, key vault, AI/TTS proxy | ✅ deployed 2026-11-02 | AI, voice and push keys; Kabar's own Google client (it borrows Batna's for now) |
+| M2+ | Web app (WebAssembly) on a static Cloudflare Worker | 🟡 phases 1–2 done | phase 3: offline packs, OCR ([docs/WEB.md](docs/WEB.md)) |
 | M3 | Dictionary import + language engine | ✅ done | |
 | M4 | Content pipeline v1: frequency lists, glosses, grammar library, golden sets | ✅ done | learner review of the content |
 | M5 | Reader, Screenshot Decoder, Share-to-Kabar, pen pointing | ✅ done | pen dragging deferred |
 | M5+ | Teach Kabar, phase T1 | ✅ done | T2 (link fetch, vision, export) in M13 |
 | M6 | Review (FSRS) + stats | ✅ done | handwritten answers and Card Wall deferred |
-| M7 | Kak Nur coach + reminders | ✅ done | reminders go live with the Cloud deploy |
+| M7 | Kak Nur coach + reminders | ✅ done | pushed reminders need the Firebase keys |
 | M8 | Journey Map, Lesson Player, placement, Lanjut | ✅ done | |
 | M9 | Tablet Studio | 🟡 mind maps only | pen writing tools paused |
 | M10 | Arabic Bridge games, Kabar Pagi, Rupiah Reader, Pasar! | ✅ done | learner review of the lines |
