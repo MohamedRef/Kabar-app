@@ -198,7 +198,7 @@ jobs are periodic or manual. Never re-add PR/push triggers to heavy workflows.
 | `main-clock.yml` | every push to main | GitHub cron runs late here, so this waits until 4 h after the last preview, then dispatches preview APK, coverage and Settings browser. Newer merge restarts it. |
 | `android-preview.yml` | cron every 4 h (backup) + manual + main-clock | signed preview APK → `preview` release + feed (skips if main unchanged) |
 | `coverage.yml` | cron/main-clock + manual | line-coverage floor (93%). Red → fix in its own PR. |
-| `settings-browser.yml` | cron/main-clock + manual; PR only when its test changes | Playwright check of Settings on the web build |
+| `settings-browser.yml` | cron/main-clock + manual; PR only when its test changes | Playwright check of Settings on the web build; `scripts/ci-apt-install.sh` first points apt at an Ubuntu mirror that resolves (Azure, archive.ubuntu.com, kernel.org, MIT), since `--with-deps` calls apt |
 | `android-webview-regression.yml` | `android/**` changes + manual | Kotlin/JVM tests |
 | `mac.yml` | nightly + manual, **never on PRs** | macOS build. Never wait on it to merge. |
 | `web-deploy.yml` | push to main touching app/core/protocol/content/web | deploys Worker `kabar-web` |
@@ -401,6 +401,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-11: Settings browser runs point apt at the first Ubuntu mirror that resolves (`scripts/ci-apt-install.sh`, from Batna #798) after ubuntu.com DNS failures broke `playwright install --with-deps`.
 - 2026-11-11: engineering audit F19 (rest): Stats and Journal read past moments with the offset in force then, so a summer review keeps its day and hour (§ 2).
 - 2026-11-11: engineering audit F23/F24: journey test, native QA matrix, weekly cargo audit, shared `docs/INFRA_PARITY.md` (§ 4, § 8).
 - 2026-11-11: engineering audit F16: UI writes wait at most 750 ms for the sync lock (was 5 s) and take it up front (§ 2).
