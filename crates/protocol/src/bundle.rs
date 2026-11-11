@@ -29,12 +29,20 @@ pub const MAX_FILE_UNPACKED: usize = 16 * 1024 * 1024;
 /// exhaust a phone's memory.
 pub const MAX_UNPACKED: u64 = 256 * 1024 * 1024;
 
+/// A bundle never holds more files than this (the course is ~2,000).
+pub const MAX_ENTRIES: usize = 20_000;
+
+/// No key is longer than this (the longest is under 60 bytes).
+pub const MAX_KEY_BYTES: usize = 512;
+
 #[derive(Debug, PartialEq, Eq)]
 pub enum BundleError {
     /// Not a Kabar content bundle, or a layout this build can't read.
     Magic,
     /// Cut short or garbled.
     Corrupt,
+    /// More files, or a longer key, than any real bundle has.
+    TooBig,
 }
 
 impl std::fmt::Display for BundleError {
@@ -42,6 +50,7 @@ impl std::fmt::Display for BundleError {
         f.write_str(match self {
             BundleError::Magic => "not a Kabar content bundle",
             BundleError::Corrupt => "the content bundle is corrupt",
+            BundleError::TooBig => "the content bundle has too many files or too long a name",
         })
     }
 }
@@ -59,19 +68,28 @@ pub fn encode(entries: &[(String, Vec<u8>)]) -> Vec<u8> {
     out
 }
 
+/// Reads a bundle's records, refusing more than [`MAX_ENTRIES`] files or a
+/// key over [`MAX_KEY_BYTES`] before anything is copied. (Each file's
+/// unpacked size is bounded where it is inflated.)
 pub fn decode(bytes: &[u8]) -> Result<Vec<(String, Vec<u8>)>, BundleError> {
     let mut rest = bytes.strip_prefix(MAGIC.as_slice()).ok_or(BundleError::Magic)?;
-    let take = |rest: &mut &[u8]| -> Result<Vec<u8>, BundleError> {
+    let take = |rest: &mut &[u8], max: usize| -> Result<Vec<u8>, BundleError> {
         let (len, tail) = rest.split_first_chunk::<4>().ok_or(BundleError::Corrupt)?;
         let len = u32::from_le_bytes(*len) as usize;
+        if len > max {
+            return Err(BundleError::TooBig);
+        }
         let part = tail.get(..len).ok_or(BundleError::Corrupt)?.to_vec();
         *rest = &tail[len..];
         Ok(part)
     };
     let mut out = Vec::new();
     while !rest.is_empty() {
-        let key = String::from_utf8(take(&mut rest)?).map_err(|_| BundleError::Corrupt)?;
-        let data = take(&mut rest)?;
+        if out.len() == MAX_ENTRIES {
+            return Err(BundleError::TooBig);
+        }
+        let key = String::from_utf8(take(&mut rest, MAX_KEY_BYTES)?).map_err(|_| BundleError::Corrupt)?;
+        let data = take(&mut rest, usize::MAX)?;
         out.push((key, data));
     }
     Ok(out)
@@ -89,6 +107,15 @@ mod tests {
         assert_eq!(decode(&bytes).unwrap(), entries);
         assert_eq!(decode(b"PK\x03\x04"), Err(BundleError::Magic));
         assert_eq!(decode(&bytes[..bytes.len() - 1]), Err(BundleError::Corrupt));
+    }
+
+    #[test]
+    fn too_many_files_or_too_long_a_key_is_refused() {
+        let long = vec![("K".repeat(MAX_KEY_BYTES + 1), Vec::new())];
+        assert_eq!(decode(&encode(&long)), Err(BundleError::TooBig));
+        let many: Vec<_> = (0..=MAX_ENTRIES).map(|i| (format!("F{i}"), Vec::new())).collect();
+        assert_eq!(decode(&encode(&many)), Err(BundleError::TooBig));
+        assert_eq!(decode(&encode(&many[..MAX_ENTRIES])).unwrap().len(), MAX_ENTRIES);
     }
 
     #[test]

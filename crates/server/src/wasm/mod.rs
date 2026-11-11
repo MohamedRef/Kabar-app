@@ -414,22 +414,44 @@ async fn quota_used(env: &Env, service: Service, now: u64) -> Result<u64> {
     Ok(used.unwrap_or(0.0) as u64)
 }
 
-async fn quota_add(env: &Env, service: Service, now: u64, cost: u64) -> Result<()> {
+/// Reserves `cost` units of `service` for this period in one D1 statement
+/// (`quota::RESERVE`); `Some(period)` when it fits the hard stop, to pass
+/// to [`quota_refund`] if the call then never happens.
+async fn quota_reserve(
+    env: &Env,
+    cfg: &Config,
+    service: Service,
+    now: u64,
+    cost: u64,
+) -> Result<Option<String>> {
+    let period = service.period(now);
+    let limit = service.limit(&cfg.limits);
+    if !quota::allows(0, cost, limit) {
+        return Ok(None);
+    }
     let db = env.d1("DB")?;
-    db.prepare(quota::ADD_USED)
+    let stmt = db.prepare(quota::RESERVE).bind(&[
+        JsValue::from_str(service.name()),
+        JsValue::from_str(&period),
+        JsValue::from_f64(cost as f64),
+        JsValue::from_f64(limit as f64),
+    ])?;
+    let used: Option<f64> = stmt.first(Some("used")).await?;
+    Ok(used.map(|_| period))
+}
+
+/// Gives a reservation back (`quota::REFUND`).
+async fn quota_refund(env: &Env, service: Service, period: &str, cost: u64) -> Result<()> {
+    env.d1("DB")?
+        .prepare(quota::REFUND)
         .bind(&[
             JsValue::from_str(service.name()),
-            JsValue::from_str(&service.period(now)),
+            JsValue::from_str(period),
             JsValue::from_f64(cost as f64),
         ])?
         .run()
         .await?;
     Ok(())
-}
-
-/// `true` when spending `cost` stays inside the hard stop.
-async fn quota_allows(env: &Env, cfg: &Config, service: Service, now: u64, cost: u64) -> Result<bool> {
-    Ok(quota::allows(quota_used(env, service, now).await?, cost, service.limit(&cfg.limits)))
 }
 
 /// `GET /v1/usage`: reads each counter, then `usage::report` builds the answer.
@@ -542,13 +564,19 @@ async fn ai_proxy(mut req: Request, env: &Env, cfg: &Config, claims: &AccessClai
     }
     let now = now_ms();
     let service = route.service();
-    if !quota_allows(env, cfg, service, now, 1).await? {
+    let Some(period) = quota_reserve(env, cfg, service, now, 1).await? else {
         return engine_error(&EngineError::QuotaExhausted {
             retry_after_s: Some(service.retry_after_s(now)),
         });
-    }
-    let result = run_engine(env, &route, &call, image.as_ref(), now).await?;
-    quota_add(env, service, now, 1).await?;
+    };
+    // Reserved before the call; given back only if the call never ran.
+    let result = match run_engine(env, &route, &call, image.as_ref(), now).await {
+        Ok(r) => r,
+        Err(e) => {
+            quota_refund(env, service, &period, 1).await?;
+            return Err(e);
+        }
+    };
     let text = match result.and_then(ai::finish) {
         Ok(t) => t,
         Err(e) => return engine_error(&e),
@@ -641,7 +669,7 @@ async fn tts_proxy(mut req: Request, env: &Env, cfg: &Config, claims: &AccessCla
     }
     let now = now_ms();
     let chars = tts::billable_chars(&tts_req);
-    if !quota_allows(env, cfg, Service::Tts, now, chars).await? {
+    let Some(period) = quota_reserve(env, cfg, Service::Tts, now, chars).await? else {
         let msg = format!("Azure TTS free characters are used up for {}", Service::Tts.period(now));
         let headers = Headers::new();
         headers.set("retry-after", &Service::Tts.retry_after_s(now).to_string())?;
@@ -652,22 +680,38 @@ async fn tts_proxy(mut req: Request, env: &Env, cfg: &Config, claims: &AccessCla
         })?
         .with_status(429)
         .with_headers(headers));
-    }
+    };
+    // Reserved before the call; Azure bills only what it speaks, so a call
+    // that fails gives its characters back.
+    let bytes = match speak_azure(azure_key.expose(), region, &ssml).await {
+        Ok(Ok(bytes)) => bytes,
+        Ok(Err(status)) => {
+            quota_refund(env, Service::Tts, &period, chars).await?;
+            return api_error(ErrorCode::Upstream, format!("azure tts: HTTP {status}"));
+        }
+        Err(e) => {
+            quota_refund(env, Service::Tts, &period, chars).await?;
+            return Err(e);
+        }
+    };
+    cache.put(cache_url.as_str(), audio_response(bytes.clone(), true)?).await?;
+    audio_response(bytes, false)
+}
+
+/// One Azure TTS call: the audio, or the HTTP status it failed with.
+async fn speak_azure(key: &str, region: &str, ssml: &str) -> Result<std::result::Result<Vec<u8>, u16>> {
     let headers = Headers::new();
-    headers.set("ocp-apim-subscription-key", azure_key.expose())?;
+    headers.set("ocp-apim-subscription-key", key)?;
     headers.set("content-type", "application/ssml+xml")?;
     headers.set("x-microsoft-outputformat", tts::OUTPUT_FORMAT)?;
     headers.set("user-agent", "kabar-cloud")?;
     let mut init = RequestInit::new();
-    init.with_method(Method::Post).with_headers(headers).with_body(Some(JsValue::from_str(&ssml)));
+    init.with_method(Method::Post).with_headers(headers).with_body(Some(JsValue::from_str(ssml)));
     let mut resp = Fetch::Request(Request::new_with_init(&tts::azure_url(region), &init)?).send().await?;
     if resp.status_code() != 200 {
-        return api_error(ErrorCode::Upstream, format!("azure tts: HTTP {}", resp.status_code()));
+        return Ok(Err(resp.status_code()));
     }
-    let bytes = resp.bytes().await?;
-    quota_add(env, Service::Tts, now, chars).await?;
-    cache.put(cache_url.as_str(), audio_response(bytes.clone(), true)?).await?;
-    audio_response(bytes, false)
+    Ok(Ok(resp.bytes().await?))
 }
 
 #[event(fetch)]
