@@ -10,6 +10,7 @@ pub mod chat;
 pub mod clock;
 pub mod coach;
 pub mod content_ids;
+pub mod fingerprint;
 pub mod games;
 pub mod grammar;
 pub mod ink;

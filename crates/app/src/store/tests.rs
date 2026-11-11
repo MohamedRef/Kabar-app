@@ -276,6 +276,42 @@ fn checking_content_is_separate_from_passing() {
     );
 }
 
+/// A check is bound to the content it was made on (audit F25): an update
+/// under the same lesson id asks for a new check and keeps the history.
+#[test]
+fn a_check_is_bound_to_the_content_it_was_made_on() {
+    use crate::lesson::fingerprint::pretend;
+    let id = "test.f25.l01";
+    let mut store = Store::open_in_memory().unwrap();
+    pretend(id, Some("v1:aaaa"));
+    store.verify_lesson(id).unwrap();
+    assert_eq!(store.verified_lessons().unwrap().get(id), Some(&Verification::Checked));
+    assert!(store.approved_lessons().unwrap().contains(id));
+
+    // The lesson changes (a new translation or answer) under the same id.
+    pretend(id, Some("v1:bbbb"));
+    assert_eq!(store.verified_lessons().unwrap().get(id), Some(&Verification::Changed));
+    assert!(!store.approved_lessons().unwrap().contains(id), "the old check doesn't carry over");
+    // Checking again binds to the new content; the first check stays in history.
+    store.verify_lesson(id).unwrap();
+    assert_eq!(store.verified_lessons().unwrap().get(id), Some(&Verification::Checked));
+    assert_eq!(store.lesson_events(id).unwrap().iter().filter(|e| e.kind == "verified").count(), 2);
+    // Content this build can't read can't be compared: the check stands.
+    pretend(id, None);
+    assert_eq!(store.verified_lessons().unwrap().get(id), Some(&Verification::Checked));
+
+    // A check from an older build (no fingerprint) is kept and labelled.
+    let old = "test.f25.l02";
+    pretend(old, Some("v1:cccc"));
+    store.record_lesson_event(old, "verified", &serde_json::json!({})).unwrap();
+    assert_eq!(store.verified_lessons().unwrap().get(old), Some(&Verification::CheckedBefore));
+    assert!(store.approved_lessons().unwrap().contains(old));
+    // A changed lesson's check can still be taken back.
+    pretend(id, Some("v1:dddd"));
+    store.unverify_lesson(id).unwrap();
+    assert_eq!(store.verified_lessons().unwrap().get(id), None);
+}
+
 #[test]
 fn lesson_events_are_appended_in_order() {
     use kabar_protocol::lesson::LessonCompleted;

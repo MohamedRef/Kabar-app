@@ -30,6 +30,7 @@ pub(crate) use reading::{Rich, bold_parts};
 pub use reading::{arabic_runs, latin_runs};
 
 mod decision;
+pub(crate) mod fingerprint;
 mod notes;
 use decision::{ChoiceMark, blank_hugs_next, choice_mark, show_voice_note, voice_note_step};
 mod test_player;

@@ -757,15 +757,18 @@ impl Store {
         let rows: Vec<(String, String, String)> = stmt
             .query_map([], |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)))?
             .collect::<rusqlite::Result<_>>()?;
-        let mut checked: BTreeMap<String, bool> = BTreeMap::new();
+        // The newest check per lesson: `Some(fingerprint)` while it stands
+        // (the fingerprint itself optional for checks before 2026-11-11).
+        let mut checked: BTreeMap<String, Option<Option<String>>> = BTreeMap::new();
         let mut passed: BTreeMap<String, u32> = BTreeMap::new();
         for (id, kind, payload) in rows {
             match kind.as_str() {
                 "verified" => {
-                    checked.insert(id, true);
+                    let check = serde_json::from_str::<LessonVerified>(&payload).unwrap_or_default();
+                    checked.insert(id, Some(check.fingerprint));
                 }
                 "unverified" => {
-                    checked.insert(id, false);
+                    checked.insert(id, None);
                 }
                 _ => {
                     let Ok(done) = serde_json::from_str::<LessonCompleted>(&payload) else { continue };
@@ -778,21 +781,32 @@ impl Store {
         }
         let mut out: BTreeMap<String, Verification> =
             passed.into_iter().map(|(id, score)| (id, Verification::PassedEarlier { score })).collect();
-        out.extend(checked.into_iter().filter(|(_, on)| *on).map(|(id, _)| (id, Verification::Checked)));
+        for (id, check) in checked {
+            let Some(made_on) = check else { continue };
+            let how = match (made_on, crate::lesson::fingerprint::current(&id)) {
+                (None, _) => Verification::CheckedBefore,
+                (Some(then), Some(now)) if then != now => Verification::Changed,
+                (Some(_), _) => Verification::Checked,
+            };
+            out.insert(id, how);
+        }
         Ok(out)
     }
 
-    /// Ids of the lessons in [`Store::verified_lessons`].
+    /// Ids of the lessons that count as checked now
+    /// ([`Verification::counts`]: not the ones changed since).
     pub fn approved_lessons(&self) -> Result<BTreeSet<String>> {
-        Ok(self.verified_lessons()?.into_keys().collect())
+        Ok(self.verified_lessons()?.into_iter().filter(|(_, v)| v.counts()).map(|(id, _)| id).collect())
     }
 
     /// The learner checked a lesson's content: a synced `verified` event,
     /// and its review cards lose the unverified flag. Checking a lesson
     /// that is already checked adds nothing.
+    /// The check is bound to the content shipped now (audit F25).
     pub fn verify_lesson(&mut self, lesson_id: &str) -> Result<()> {
         if self.verified_lessons()?.get(lesson_id) != Some(&Verification::Checked) {
-            self.record_lesson_event(lesson_id, "verified", &LessonVerified::default())?;
+            let fingerprint = crate::lesson::fingerprint::current(lesson_id);
+            self.record_lesson_event(lesson_id, "verified", &LessonVerified { fingerprint })?;
         }
         self.set_lesson_cards_verified(lesson_id, true)
     }
@@ -802,10 +816,12 @@ impl Store {
     /// by HLC on every device. The cards go back to unverified unless an
     /// old-rule pass still verifies the lesson.
     pub fn unverify_lesson(&mut self, lesson_id: &str) -> Result<()> {
-        if self.verified_lessons()?.get(lesson_id) == Some(&Verification::Checked) {
+        let check = self.verified_lessons()?.get(lesson_id).copied();
+        if matches!(check, Some(Verification::Checked | Verification::CheckedBefore | Verification::Changed))
+        {
             self.record_lesson_event(lesson_id, "unverified", &LessonVerified::default())?;
         }
-        let still = self.verified_lessons()?.contains_key(lesson_id);
+        let still = self.verified_lessons()?.get(lesson_id).is_some_and(|v| v.counts());
         self.set_lesson_cards_verified(lesson_id, still)
     }
 
