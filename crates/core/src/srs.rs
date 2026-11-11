@@ -16,11 +16,24 @@ const MIN_SHORT_INTERVAL_MS: u64 = 10 * 60_000;
 pub const MIN_REVIEWS_TO_OPTIMIZE: usize = 400;
 
 /// Where the learner's day starts, so "due today" matches their evening, not UTC.
+///
+/// Study-day policy (engineering audit F19): each moment is read with the
+/// UTC offset that was in force *then* in the device's time zone
+/// (`history`), so an answer given in summer time keeps its study day after
+/// the clocks go back, and every device and replay agree. After travel the
+/// new zone's rules apply to the past too: Kabar can't know where the
+/// learner was. Without a history (tests, the server, a device whose zone
+/// can't be read) one fixed offset is used, as before.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct DayClock {
+    /// Minutes east of UTC now; every moment, when there is no `history`.
     pub utc_offset_minutes: i32,
     /// Reviews after midnight but before this hour still count for yesterday.
     pub rollover_hour: u8,
+    /// `(from_ms, minutes east of UTC)`, sorted, the first from `i64::MIN`:
+    /// the device zone's offsets over time. Never stored (`with_history`).
+    #[serde(skip)]
+    pub history: &'static [(i64, i32)],
 }
 
 /// Reviews before 4 am still count for the day before, like Anki.
@@ -30,7 +43,7 @@ impl Default for DayClock {
     fn default() -> Self {
         // Cairo summer time. Tests only: the app builds its clock from the
         // coach's offset (`DayClock::local`).
-        Self { utc_offset_minutes: 180, rollover_hour: ROLLOVER_HOUR }
+        Self { utc_offset_minutes: 180, rollover_hour: ROLLOVER_HOUR, history: &[] }
     }
 }
 
@@ -38,21 +51,50 @@ impl DayClock {
     /// The learner's day in their current time zone (the coach's offset,
     /// minutes east of UTC), rolling over at [`ROLLOVER_HOUR`].
     pub fn local(utc_offset_min: i16) -> Self {
-        Self { utc_offset_minutes: i32::from(utc_offset_min), rollover_hour: ROLLOVER_HOUR }
+        Self { utc_offset_minutes: i32::from(utc_offset_min), rollover_hour: ROLLOVER_HOUR, history: &[] }
     }
 
-    fn shift_ms(&self) -> i64 {
-        i64::from(self.utc_offset_minutes) * 60_000 - i64::from(self.rollover_hour) * 3_600_000
+    /// Reads past moments with the device zone's offset history. A history
+    /// that disagrees with the offset in use now (`now_ms`) is ignored, so
+    /// the clock never contradicts the profile's offset.
+    pub fn with_history(self, history: &'static [(i64, i32)], now_ms: u64) -> Self {
+        let candidate = Self { history, ..self };
+        let agrees = !history.is_empty()
+            && history[0].0 == i64::MIN
+            && history.windows(2).all(|w| w[0].0 < w[1].0)
+            && candidate.offset_at(now_ms as i64) == self.utc_offset_minutes;
+        if agrees { candidate } else { Self { history: &[], ..self } }
+    }
+
+    /// Minutes east of UTC at `ms`.
+    pub fn offset_at(&self, ms: i64) -> i32 {
+        match self.history.partition_point(|(from, _)| *from <= ms) {
+            0 => self.utc_offset_minutes,
+            i => self.history[i - 1].1,
+        }
+    }
+
+    fn rollover_ms(&self) -> i64 {
+        i64::from(self.rollover_hour) * 3_600_000
     }
 
     /// The learner's day number for a timestamp.
     pub fn day(&self, at_ms: u64) -> i64 {
-        (at_ms as i64 + self.shift_ms()).div_euclid(DAY_MS as i64)
+        let at = at_ms as i64;
+        (at + i64::from(self.offset_at(at)) * 60_000 - self.rollover_ms()).div_euclid(DAY_MS as i64)
     }
 
     /// UTC ms at which learner day `day` starts.
     pub fn day_start_ms(&self, day: i64) -> u64 {
-        (day * DAY_MS as i64 - self.shift_ms()).max(0) as u64
+        let local = day * DAY_MS as i64 + self.rollover_ms();
+        // The offset at the start may differ from a first guess a few hours
+        // off; two rounds settle it (adapted from batna-app main:
+        // crates/core/src/zone.rs, Zone::day_start_from).
+        let mut at = local - i64::from(self.utc_offset_minutes) * 60_000;
+        for _ in 0..2 {
+            at = local - i64::from(self.offset_at(at)) * 60_000;
+        }
+        at.max(0) as u64
     }
 }
 
@@ -514,11 +556,48 @@ mod tests {
         assert_eq!(d.day(start - 1), d.day(T0) - 1);
     }
 
+    /// Cairo: summer time (+180) until 2026-10-30 00:00 UTC, then +120.
+    static CAIRO: &[(i64, i32)] = &[(i64::MIN, 180), (1_793_318_400_000, 120)];
+
+    /// An answer given in summer time keeps its study day after the clocks
+    /// go back (engineering audit F19).
+    #[test]
+    fn a_dst_change_doesnt_move_past_study_days() {
+        // 01:30 UTC is 04:30 in summer (+180), a new study day; read with
+        // winter's +120 it would be 03:30, still the day before.
+        let answer = 1_792_459_800_000; // 2026-10-20 01:30 UTC
+        let after = 1_793_664_000_000; // 2026-11-03 00:00 UTC, winter time
+        let fixed_now = DayClock::local(120);
+        let zoned = DayClock::local(120).with_history(CAIRO, after);
+        assert_eq!(zoned.history.len(), 2, "the history agrees with +120 now");
+        let summer = DayClock::local(180);
+        assert_eq!(zoned.day(answer), summer.day(answer), "read with the offset in force then");
+        assert_eq!(fixed_now.day(answer) + 1, zoned.day(answer), "one fixed offset moves it back a day");
+        // Day starts round-trip on both sides of the change.
+        for at in [answer, after] {
+            let start = zoned.day_start_ms(zoned.day(at));
+            assert_eq!(zoned.day(start), zoned.day(at));
+            assert_eq!(zoned.day(start - 1), zoned.day(at) - 1);
+        }
+    }
+
+    #[test]
+    fn a_history_that_disagrees_with_the_offset_now_is_ignored() {
+        let after = 1_793_664_000_000;
+        // Travel: the profile says +420 now, the history says +120.
+        assert!(DayClock::local(420).with_history(CAIRO, after).history.is_empty());
+        assert!(DayClock::local(120).with_history(&[], after).history.is_empty());
+        assert!(
+            DayClock::local(120).with_history(&[(0, 120)], after).history.is_empty(),
+            "must start at MIN"
+        );
+    }
+
     #[test]
     fn scheduler_from_settings_uses_the_offset_retention_and_valid_params() {
         let mut settings = Settings::default();
         let s = Scheduler::from_settings(&settings, 420);
-        assert_eq!(s.day, DayClock { utc_offset_minutes: 420, rollover_hour: 4 });
+        assert_eq!(s.day, DayClock::local(420));
         assert_eq!(s.desired_retention, 0.9);
         // Broken stored parameters fall back to the defaults instead of failing.
         settings.fsrs = Some(FsrsParams { weights: vec![f32::NAN; 3], reviews: 500, trained_at_ms: T0 });

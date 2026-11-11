@@ -67,6 +67,7 @@ mod ui;
 mod update;
 mod version;
 mod views;
+mod zone;
 
 use std::cell::RefCell;
 use std::rc::Rc;
