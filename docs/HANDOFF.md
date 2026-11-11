@@ -200,6 +200,7 @@ jobs are periodic or manual. Never re-add PR/push triggers to heavy workflows.
 | `web-deploy.yml` | push to main touching app/core/protocol/content/web | deploys Worker `kabar-web` |
 | `cloud-deploy.yml` | push to main touching server/protocol + manual | deploys Worker `kabar-cloud` (finds/creates D1, migrations, signing key, allowlist) |
 | `release.yml` | manual only | alpha/beta/stable release (§ 6) |
+| `audit.yml` | weekly (Mon 05:17 UTC) + manual, **never on PRs** | `cargo audit` against RustSec (audit F23). A finding → fix in its own PR. |
 
 Gotcha: `cloud-deploy.yml` finishes **green but skipped** when
 `CLOUDFLARE_API_TOKEN` is missing. Check that the step "Deploy" succeeded.
@@ -343,6 +344,13 @@ Rules (Mohamed's decisions; all in force):
 - Android crash reports start from Settings › Storage diagnostics
   (WebViewGuard records renderer loss and exit reasons).
 
+- Journey test (audit F23): `store/journey_tests.rs` runs first launch →
+  grade → restart → restore (backup on a new phone) → two-device sync on
+  one review state. What only a device can show is the manual matrix in
+  `docs/NATIVE_QA.md`; record runs there against their exact commit.
+- Shared plumbing with Batna: `docs/INFRA_PARITY.md` (audit F24, same file
+  in both repos). A fix there says in its PR whether Batna needs it too.
+
 ## 9. Current state (2026-11-09)
 
 | Milestone | State |
@@ -389,6 +397,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-11: engineering audit F23/F24: journey test, native QA matrix, weekly cargo audit, shared `docs/INFRA_PARITY.md` (§ 4, § 8).
 - 2026-11-11: engineering audit F16: UI writes wait at most 750 ms for the sync lock (was 5 s) and take it up front (§ 2).
 - 2026-11-11: engineering audit F19: study days read each answer with the time zone offset in force then, so DST changes don't move past answers (§ 2).
 - 2026-11-11: engineering audit F25: a lesson's content check is bound to a content fingerprint; a lesson changed since asks to be checked again (§ 2).
