@@ -131,6 +131,14 @@ Key design rules (also in `CLAUDE.md`):
     change does). A check on older content reads `Verification::Changed`,
     doesn't count (`Verification::counts`) and asks again in the summary;
     checks from before 2026-11-11 read `CheckedBefore` and still count.
+  - Two connections, bounded waits (F16, `store/contention.rs`): the UI's
+    connection waits at most `UI_BUSY` (750 ms) for the sync engine's
+    write lock (was 5 s, a frozen screen), then fails into the screen's
+    saving/retry state; the engine's waits `SYNC_BUSY` (5 s). Writes take
+    the lock up front (`BEGIN IMMEDIATE` via `atomically` and the
+    connection's default transaction behaviour), because a read that turns
+    into a write fails at once instead of waiting. The export's snapshot
+    stays a deferred read.
   - Study days (FSRS `DayClock`): each moment is read with the offset in
     force then in the device's zone (`zone::history`, chrono, built once
     per run; `DayClock::with_history`), so DST changes don't move past
@@ -381,6 +389,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-11: engineering audit F16: UI writes wait at most 750 ms for the sync lock (was 5 s) and take it up front (§ 2).
 - 2026-11-11: engineering audit F19: study days read each answer with the time zone offset in force then, so DST changes don't move past answers (§ 2).
 - 2026-11-11: engineering audit F25: a lesson's content check is bound to a content fingerprint; a lesson changed since asks to be checked again (§ 2).
 - 2026-11-11: engineering audit F12: sync ops the hub refuses (or the device can't read) are held with their reason, shown in Settings › Account with send-again / let-go (§ 2).

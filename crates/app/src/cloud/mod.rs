@@ -286,6 +286,8 @@ pub fn start(
     vault: Box<dyn session::SessionVault>,
 ) -> Result<CloudHandle, String> {
     let store = crate::store::Store::open(&db_path).map_err(|e| e.to_string())?;
+    // Off the UI thread, sync can wait longer for the UI's lock.
+    store.set_busy_timeout(crate::store::SYNC_BUSY).map_err(|e| e.to_string())?;
     let (cmd_tx, cmd_rx) = unbounded_channel();
     let (ev_tx, ev_rx) = unbounded_channel();
     std::thread::Builder::new()

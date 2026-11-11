@@ -18,13 +18,13 @@ impl Store {
 
     /// Upserts several cards in one transaction, keeping their order.
     pub fn upsert_cards(&mut self, cards: &[Card]) -> Result<()> {
-        let tx = self.conn.savepoint()?;
-        for card in cards {
-            let payload = Some(serde_json::to_value(card)?);
-            write_synced(&tx, &mut self.clock, "cards", &card.id, OpKind::Upsert, payload)?;
-        }
-        tx.commit()?;
-        Ok(())
+        self.atomically(|s| {
+            for card in cards {
+                let payload = Some(serde_json::to_value(card)?);
+                write_synced(&s.conn, &mut s.clock, "cards", &card.id, OpKind::Upsert, payload)?;
+            }
+            Ok(())
+        })
     }
 
     /// Adds review cards for a finished lesson's new words (synced like any

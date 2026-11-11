@@ -401,8 +401,12 @@ impl Store {
     fn init(mut conn: Connection, marker: Option<&Path>) -> Result<Self> {
         conn.pragma_update(None, "journal_mode", "WAL")?;
         conn.pragma_update(None, "foreign_keys", "ON")?;
-        // The UI and the sync engine each hold a connection.
-        conn.busy_timeout(std::time::Duration::from_secs(5))?;
+        // The UI and the sync engine each hold a connection; this is the
+        // UI's wait, and the engine sets its own (store/contention.rs).
+        conn.busy_timeout(contention::UI_BUSY)?;
+        // Every `transaction()` takes the write lock up front, so it waits
+        // that timeout instead of failing when a read turns into a write.
+        conn.set_transaction_behavior(rusqlite::TransactionBehavior::Immediate);
         migrate(&mut conn)?;
 
         let device = match conn
@@ -466,20 +470,29 @@ impl Store {
     /// Runs `f`'s writes as one: all of them land, or none (engineering
     /// audit F09: a finished lesson's result, its new cards and the cleared
     /// position). The writes inside use savepoints, so they nest.
+    ///
+    /// The outermost call takes the write lock up front (`BEGIN IMMEDIATE`),
+    /// so it waits its busy timeout for the sync connection's lock instead
+    /// of failing at once when a read inside tries to turn into a write
+    /// (audit F16, store/contention.rs). Nested calls are savepoints.
     pub fn atomically<T>(&mut self, f: impl FnOnce(&mut Self) -> Result<T>) -> Result<T> {
-        self.conn.execute_batch("SAVEPOINT atomically")?;
-        match f(self) {
-            Ok(v) => {
-                self.conn.execute_batch("RELEASE atomically")?;
-                Ok(v)
-            }
-            Err(e) => {
-                if let Err(undo) = self.conn.execute_batch("ROLLBACK TO atomically; RELEASE atomically") {
-                    crate::diag::report!("undoing a half-done write failed: {undo}");
-                }
-                Err(e)
-            }
+        let outer = self.conn.is_autocommit();
+        let (begin, done, undo) = if outer {
+            ("BEGIN IMMEDIATE", "COMMIT", "ROLLBACK")
+        } else {
+            ("SAVEPOINT atomically", "RELEASE atomically", "ROLLBACK TO atomically; RELEASE atomically")
+        };
+        self.conn.execute_batch(begin)?;
+        let result = f(self).and_then(|v| Ok(self.conn.execute_batch(done).map(|()| v)?));
+        // A failed COMMIT leaves the transaction open: undo it too.
+        let open = !self.conn.is_autocommit();
+        if result.is_err()
+            && (open || !outer)
+            && let Err(e) = self.conn.execute_batch(undo)
+        {
+            crate::diag::report!("undoing a half-done write failed: {e}");
         }
+        result
     }
 
     /// One local write to a synced table: merge state, outbox and typed table
@@ -491,11 +504,8 @@ impl Store {
         kind: OpKind,
         payload: Option<Value>,
     ) -> Result<Op> {
-        // A savepoint, so it can also run inside [`Store::atomically`].
-        let tx = self.conn.savepoint()?;
-        let op = write_synced(&tx, &mut self.clock, table, row_id, kind, payload)?;
-        tx.commit()?;
-        Ok(op)
+        // Through `atomically`: the write lock up front, and it nests.
+        self.atomically(|s| write_synced(&s.conn, &mut s.clock, table, row_id, kind, payload))
     }
 
     /// Merges ops from Kabar Cloud and saves `last_seq`, in one transaction.
@@ -649,10 +659,7 @@ impl Store {
             hlc,
             payload: Some(payload),
         };
-        let tx = self.conn.savepoint()?;
-        record_local(&tx, op)?;
-        tx.commit()?;
-        Ok(())
+        self.atomically(|s| record_local(&s.conn, op).map(|_| ()))
     }
 
     pub fn coach_profile(&self) -> Result<Option<CoachProfile>> {
@@ -941,6 +948,9 @@ pub mod export;
 mod install;
 // Sync ops that can't go up, kept with their reason (audit F12).
 mod held;
+// How long each connection waits for the other's write lock (audit F16).
+mod contention;
+pub use contention::SYNC_BUSY;
 
 pub fn now_ms() -> u64 {
     web_time::SystemTime::now()
