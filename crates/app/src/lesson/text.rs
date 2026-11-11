@@ -136,12 +136,22 @@ pub enum L {
     ChoiceYours,
     ChoiceYoursCorrect,
     PairMatched,
+    FinishUnsaved,
+    FinishRetry,
 }
 
 pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
     use L::*;
     use UiLanguage::*;
     match (msg, lang) {
+        (FinishUnsaved, ArEg) => "ما عرفتش أحفظ نتيجة الدرس، فمش هيتحسب خلص لحد ما تتحفظ. جرّب تاني.",
+        (FinishUnsaved, Ar) => "تعذّر حفظ نتيجة الدرس، فلن يُحسب منتهيًا حتى تُحفظ. حاول مرة أخرى.",
+        (FinishUnsaved, En) => {
+            "The lesson's result couldn't be saved, so it won't count as done until it is. Try again."
+        }
+        (FinishRetry, ArEg) => "احفظ تاني",
+        (FinishRetry, Ar) => "احفظ مرة أخرى",
+        (FinishRetry, En) => "Save again",
         (Close, ArEg) => "اقفل الدرس (التقدم محفوظ)",
         (Close, Ar) => "أغلق الدرس (التقدم محفوظ)",
         (Close, En) => "Close the lesson (progress is saved)",

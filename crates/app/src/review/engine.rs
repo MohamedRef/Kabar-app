@@ -5,11 +5,11 @@ use super::*;
 pub(super) fn read_deck(db: &Db, sched: &Scheduler) -> Deck {
     let store = db.0.borrow();
     let cards = store.cards().unwrap_or_else(|e| {
-        crate::diag::report!("reading cards failed: {e}");
+        crate::persistence::read_failed("cards", &e);
         Vec::new()
     });
     let log = store.review_log().unwrap_or_else(|e| {
-        crate::diag::report!("reading the review log failed: {e}");
+        crate::persistence::read_failed("the review log", &e);
         Vec::new()
     });
     Deck::new(cards, log, sched)
@@ -81,7 +81,15 @@ pub(super) fn note_evidence_at(
     if signals.is_empty() {
         return 0;
     }
-    let settings = db.0.borrow().settings().unwrap_or_default();
+    // Unreadable settings would schedule with the wrong ones: record no
+    // evidence this time rather than wrong evidence.
+    let settings = match db.0.borrow().settings() {
+        Ok(s) => s,
+        Err(e) => {
+            crate::persistence::read_failed("settings", &e);
+            return 0;
+        }
+    };
     let sched = crate::schedule::scheduler_at(utc_offset_min, &settings);
     let events = kabar_core::review::evidence_reviews(&sched, &deck(db, &sched), language, signals, now);
     let mut store = db.0.borrow_mut();

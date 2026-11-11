@@ -3,7 +3,7 @@
 use super::*;
 
 pub(super) fn write_synced(
-    tx: &Transaction<'_>,
+    tx: &Connection,
     clock: &mut HlcClock,
     table: &str,
     row_id: &str,
@@ -27,7 +27,7 @@ pub(super) fn write_synced(
     record_local(tx, op)
 }
 /// Stores a local op (merge state, typed table) and queues it for push.
-pub(super) fn record_local(tx: &Transaction<'_>, op: Op) -> Result<Op> {
+pub(super) fn record_local(tx: &Connection, op: Op) -> Result<Op> {
     let sync = validate(&op, MAX_PAYLOAD_BYTES).map_err(StoreError::Invalid)?;
     if merge(sync, &op, row_meta(tx, &op.table, &op.row_id)?.as_ref()) == Merge::Ignore {
         // Appending a row that exists, or retracting one twice.
@@ -59,7 +59,7 @@ pub(super) fn row_meta(conn: &Connection, table: &str, row_id: &str) -> Result<O
         )
         .optional()?)
 }
-pub(super) fn store_row(tx: &Transaction<'_>, op: &Op) -> Result<()> {
+pub(super) fn store_row(tx: &Connection, op: &Op) -> Result<()> {
     let deleted = op.kind == OpKind::Delete;
     // A tombstone keeps the last payload of an immutable row (strokes and
     // events are retracted, not lost); LWW rows drop it.
@@ -130,7 +130,7 @@ impl Typed {
     }
 }
 /// Mirrors a stored op into its typed table, for the tables this build reads.
-pub(super) fn materialize(tx: &Transaction<'_>, op: &Op) -> Result<()> {
+pub(super) fn materialize(tx: &Connection, op: &Op) -> Result<()> {
     let Some(typed) = Typed::of(&op.table) else { return Ok(()) };
     let deleted = op.kind == OpKind::Delete;
     let hlc = &op.hlc;

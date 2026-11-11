@@ -454,6 +454,25 @@ impl Store {
         &self.device
     }
 
+    /// Runs `f`'s writes as one: all of them land, or none (engineering
+    /// audit F09: a finished lesson's result, its new cards and the cleared
+    /// position). The writes inside use savepoints, so they nest.
+    pub fn atomically<T>(&mut self, f: impl FnOnce(&mut Self) -> Result<T>) -> Result<T> {
+        self.conn.execute_batch("SAVEPOINT atomically")?;
+        match f(self) {
+            Ok(v) => {
+                self.conn.execute_batch("RELEASE atomically")?;
+                Ok(v)
+            }
+            Err(e) => {
+                if let Err(undo) = self.conn.execute_batch("ROLLBACK TO atomically; RELEASE atomically") {
+                    crate::diag::report!("undoing a half-done write failed: {undo}");
+                }
+                Err(e)
+            }
+        }
+    }
+
     /// One local write to a synced table: merge state, outbox and typed table
     /// in one transaction. Returns the op that will be pushed.
     pub fn write_synced(
@@ -463,7 +482,8 @@ impl Store {
         kind: OpKind,
         payload: Option<Value>,
     ) -> Result<Op> {
-        let tx = self.conn.transaction()?;
+        // A savepoint, so it can also run inside [`Store::atomically`].
+        let tx = self.conn.savepoint()?;
         let op = write_synced(&tx, &mut self.clock, table, row_id, kind, payload)?;
         tx.commit()?;
         Ok(op)
@@ -625,7 +645,7 @@ impl Store {
             hlc,
             payload: Some(payload),
         };
-        let tx = self.conn.transaction()?;
+        let tx = self.conn.savepoint()?;
         record_local(&tx, op)?;
         tx.commit()?;
         Ok(())

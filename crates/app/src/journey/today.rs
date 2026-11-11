@@ -72,7 +72,7 @@ pub fn level_of(unit: &str) -> String {
 
 /// (Indonesian level, Javanese level once that journey has started).
 pub fn learner_levels(db: &Db, profile: Option<&CoachProfile>) -> (String, Option<String>) {
-    let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+    let completed = crate::persistence::read_or("finished lessons", db.0.borrow().completed_lessons());
     let start = start_level(db, profile);
     let id = current_unit(&completed, start.as_deref(), false)
         .map(|u| level_of(&u))

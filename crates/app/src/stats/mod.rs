@@ -131,13 +131,12 @@ pub struct Logs {
 
 pub fn load_logs(db: &Db) -> Logs {
     let store = db.0.borrow();
-    let warn = |what: &str, e: &dyn std::fmt::Display| crate::diag::report!("reading {what} failed: {e}");
     let cards = store.cards().unwrap_or_else(|e| {
-        warn("cards", &e);
+        crate::persistence::read_failed("cards", &e);
         Vec::new()
     });
     let log = store.review_log().unwrap_or_else(|e| {
-        warn("the review log", &e);
+        crate::persistence::read_failed("the review log", &e);
         Vec::new()
     });
     Logs { cards, log, checks: level_checks(db) }
@@ -157,7 +156,7 @@ pub fn level_checks(db: &Db) -> Vec<LevelCheckResult> {
 pub fn journey_position(db: &Db) -> Option<(String, f32)> {
     let cur = curriculum()?;
     let store = db.0.borrow();
-    let completed = store.completed_lessons().unwrap_or_default();
+    let completed = crate::persistence::read_or("finished lessons", store.completed_lessons());
     let mut progress = Progress::new(cur, &completed);
     if let Ok(Some(p)) = store.placement() {
         progress = progress.start_at(cur, p.start_unit.as_deref().unwrap_or(&p.start_level));
@@ -169,7 +168,7 @@ pub fn journey_position(db: &Db) -> Option<(String, f32)> {
 pub fn level_share(db: &Db, level: &str) -> f32 {
     let Some(cur) = curriculum() else { return 0.0 };
     let Some(l) = cur.level(level) else { return 0.0 };
-    let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+    let completed = crate::persistence::read_or("finished lessons", db.0.borrow().completed_lessons());
     let (done, total) = Progress::new(cur, &completed).level_counts(l);
     if total == 0 { 0.0 } else { done as f32 / total as f32 }
 }
@@ -246,7 +245,7 @@ pub fn TodayCards() -> Element {
     // Today's seven-day preview; never count a second, synthetic streak.
     let snapshot = use_memo(move || {
         let events = coach.events.read();
-        let log = db.0.borrow().review_log().unwrap_or_default();
+        let log = crate::persistence::read_or("the review log", db.0.borrow().review_log());
         let totals = core_stats::day_totals(&events, &log, coach.offset());
         let today = coach.today();
         (check_is_due(&totals, &level_checks(&db), today), overview::overview(&totals, today, Period::Week))

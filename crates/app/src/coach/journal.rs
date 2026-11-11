@@ -358,7 +358,8 @@ fn open_entry(ui: Ui, db: &Db, kind: &EntryKind) {
             return;
         }
         EntryKind::Activity(ActivityKind::LessonStep { unit_id, .. }) => {
-            let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+            let completed =
+                crate::persistence::read_or("finished lessons", db.0.borrow().completed_lessons());
             match crate::journey::next_lesson_in(unit_id, &completed) {
                 Some(id) => {
                     ui.open_lesson(id);

@@ -18,7 +18,7 @@ impl Store {
 
     /// Upserts several cards in one transaction, keeping their order.
     pub fn upsert_cards(&mut self, cards: &[Card]) -> Result<()> {
-        let tx = self.conn.transaction()?;
+        let tx = self.conn.savepoint()?;
         for card in cards {
             let payload = Some(serde_json::to_value(card)?);
             write_synced(&tx, &mut self.clock, "cards", &card.id, OpKind::Upsert, payload)?;

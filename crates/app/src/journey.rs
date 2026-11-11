@@ -190,13 +190,13 @@ pub fn JourneyScreen() -> Element {
     // Re-read on every visit: the screen remounts when the player closes.
     let completed = use_hook(|| {
         Rc::new(db.0.borrow().completed_lessons().unwrap_or_else(|e| {
-            crate::diag::report!("reading finished lessons failed: {e}");
+            crate::persistence::read_failed("finished lessons", &e);
             BTreeSet::new()
         }))
     });
     let approved = use_hook(|| {
         Rc::new(db.0.borrow().approved_lessons().unwrap_or_else(|e| {
-            crate::diag::report!("reading approved lessons failed: {e}");
+            crate::persistence::read_failed("approved lessons", &e);
             BTreeSet::new()
         }))
     });

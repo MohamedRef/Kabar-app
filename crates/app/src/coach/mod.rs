@@ -170,7 +170,7 @@ pub fn build_plan(
     picked: bool,
 ) -> DailyPlan {
     let weak = plan::weak_spots(events, date, WEAK_SPOT_WINDOW_DAYS);
-    let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+    let completed = crate::persistence::read_or("finished lessons", db.0.borrow().completed_lessons());
     let start = crate::journey::start_level(db, Some(profile));
     let javanese = profile.focus == LanguageFocus::Javanese;
     let unit = crate::journey::current_unit(&completed, start.as_deref(), javanese)
@@ -192,7 +192,7 @@ pub fn plan_for(db: &Db, profile: &CoachProfile, events: &[ActivityEvent], date:
     if let Ok(Some(plan)) = db.0.borrow().plan_for(date) {
         return plan;
     }
-    let settings = db.0.borrow().settings().unwrap_or_default();
+    let settings = crate::persistence::read_or("settings", db.0.borrow().settings());
     let sched = crate::schedule::scheduler_at(profile.utc_offset_min, &settings);
     let due = crate::review::due_words(db, &sched, crate::store::now_ms()).len() as u32;
     let plan = build_plan(db, due, profile, events, date, profile.daily_size, false);
