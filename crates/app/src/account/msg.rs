@@ -48,6 +48,14 @@ pub enum AccountMsg {
     PwRemove,
     PwCancel,
     PwTemporary,
+    HeldTitle,
+    HeldBody,
+    HeldCount,
+    HeldSendAgain,
+    HeldForget,
+    HeldForgetSure,
+    HeldForgetYes,
+    HeldForgetNo,
 }
 }
 
@@ -203,6 +211,36 @@ fn text(lang: UiLanguage, msg: AccountMsg) -> &'static str {
         (PwTemporary, En) => {
             "Temporary sign-in: you're signed out when the tab or app closes. Done sooner? Tap “Sign out on this device”."
         }
+        (HeldTitle, ArEg) => "تغييرات ما اتبعتتش",
+        (HeldTitle, Ar) => "تغييرات لم تُرسل",
+        (HeldTitle, En) => "Changes that didn't sync",
+        (HeldBody, ArEg) => {
+            "\u{2068}Kabar Cloud\u{2069} ما قبلتش تغييرات من الجهاز ده. هي محفوظة هنا عادي، بس أجهزتك التانية مش شايفاها. ابعتها تاني (بعد تحديث مثلًا)، أو سيبها."
+        }
+        (HeldBody, Ar) => {
+            "لم يقبل \u{2068}Kabar Cloud\u{2069} تغييرات من هذا الجهاز. هي محفوظة هنا، لكن أجهزتك الأخرى لا تراها. أرسلها مرة أخرى (بعد تحديث مثلًا)، أو اتركها."
+        }
+        (HeldBody, En) => {
+            "Kabar Cloud didn't take some changes from this device. They're safe here, but your other devices don't see them. Send them again (after an update, say), or let them go."
+        }
+        (HeldCount, ArEg) => "تغييرات ما اتبعتتش",
+        (HeldCount, Ar) => "تغييرات لم تُرسل",
+        (HeldCount, En) => "changes held back",
+        (HeldSendAgain, ArEg) => "ابعتها تاني",
+        (HeldSendAgain, Ar) => "أرسلها مرة أخرى",
+        (HeldSendAgain, En) => "Send again",
+        (HeldForget, ArEg) => "سيبها",
+        (HeldForget, Ar) => "اتركها",
+        (HeldForget, En) => "Let them go",
+        (HeldForgetSure, ArEg) => "هتفضل على الجهاز ده بس، ومش هتوصل لأجهزتك التانية. متأكد؟",
+        (HeldForgetSure, Ar) => "ستبقى على هذا الجهاز فقط ولن تصل إلى أجهزتك الأخرى. هل أنت متأكد؟",
+        (HeldForgetSure, En) => "They'll stay on this device only and never reach your other devices. Sure?",
+        (HeldForgetYes, ArEg) => "أيوه، سيبها",
+        (HeldForgetYes, Ar) => "نعم، اتركها",
+        (HeldForgetYes, En) => "Yes, let them go",
+        (HeldForgetNo, ArEg) => "لأ",
+        (HeldForgetNo, Ar) => "لا",
+        (HeldForgetNo, En) => "No",
     }
 }
 

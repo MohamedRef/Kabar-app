@@ -118,6 +118,12 @@ Key design rules (also in `CLAUDE.md`):
     never a silent `unwrap_or_default()`; `ReadNotice` says so above every
     screen and «اقرأ تاني» remounts the screen (`READ_RETRY`). Evidence is
     skipped, not scheduled with default settings, when settings can't be read.
+  - Sync ops Kabar Cloud refuses for good, and outbox rows this build can't
+    read, move to the local `held_ops` table (migration 10) with their
+    reason instead of vanishing or blocking the queue (`store/held.rs`;
+    the engine settles a push with `Store::settle_outbox`). Settings ›
+    Account shows a card (`account/held.rs`) with «ابعتها تاني» and
+    «سيبها» (asks first). Newest 1000 kept. Batna has the same design.
 
 ## 3. Build, test, run
 
@@ -360,6 +366,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-11: engineering audit F12: sync ops the hub refuses (or the device can't read) are held with their reason, shown in Settings › Account with send-again / let-go (§ 2).
 - 2026-11-11: engineering audit F09/F10: a lesson's finish is one transaction with a retry; failed reads are announced above every screen with «اقرأ تاني» (§ 2).
 - 2026-11-11: engineering audit F14/F18/F21: export is one snapshot, bundle decode and every inflate are bounded, Cloud quotas are reserved atomically (§ 2).
 - 2026-11-09: a release with no new `changes/` lines says «تصليحات صغيرة وتنضيف.» on its page instead of repeating the previous release's lines (`scripts/release-notes.sh` reads the feed's newest history entry only when it is this version's).

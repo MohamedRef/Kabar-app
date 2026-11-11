@@ -347,6 +347,18 @@ impl Engine {
                 }
                 self.load_devices().await;
             }
+            Command::SendHeldAgain => {
+                match self.store.with(|s| s.send_held_again()) {
+                    Ok(n) => crate::diag::report!("sync: {n} held ops offered again"),
+                    Err(e) => crate::diag::report!("sync: sending held ops again: {e}"),
+                }
+                self.pump().await
+            }
+            Command::ForgetHeld => {
+                if let Err(e) = self.store.with(|s| s.forget_held()) {
+                    crate::diag::report!("sync: forgetting held ops: {e}");
+                }
+            }
             Command::Kick => {
                 self.retry_sign_in_now();
                 self.pump().await
@@ -841,9 +853,9 @@ impl Engine {
                     for r in &rejected {
                         crate::diag::report!("op {} rejected: {:?}", r.op_id, r.reason);
                     }
-                    let ids =
-                        done.iter().map(String::as_str).chain(rejected.iter().map(|r| r.op_id.as_str()));
-                    if let Err(e) = self.store.with(|s| s.remove_from_outbox(ids)) {
+                    // Refused ops are held, not dropped: Settings › Account
+                    // counts them and can send them again (store/held.rs).
+                    if let Err(e) = self.store.with(|s| s.settle_outbox(&done, &rejected)) {
                         crate::diag::report!("outbox: {e}");
                     }
                     self.touch_last_sync();
@@ -921,6 +933,7 @@ impl Engine {
             device_id: self.device.device_id.clone(),
             sync,
             pending: self.store.with(|s| s.outbox_len()).unwrap_or(0),
+            held: self.store.with(|s| s.held_len()).unwrap_or(0),
             last_sync_ms: self
                 .store
                 .with(|s| s.meta("last_sync_ms"))

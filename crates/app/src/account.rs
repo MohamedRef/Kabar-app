@@ -12,6 +12,7 @@ use crate::cloud::{CloudStatus, Command, LoginStatus, Problem, Secret, SyncState
 use crate::i18n::Msg;
 use crate::{Db, Ui};
 
+mod held;
 pub mod msg;
 
 /// Kabar Cloud state for the UI, shared through context.
@@ -196,6 +197,9 @@ pub fn AccountScreen() -> Element {
         }
         if status.configured && !signed_in {
             PasswordSignIn {}
+        }
+        if signed_in && status.held > 0 {
+            held::HeldCard { held: status.held }
         }
         if signed_in {
             LoginCard {}

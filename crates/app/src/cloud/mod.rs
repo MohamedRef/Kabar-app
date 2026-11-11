@@ -122,6 +122,10 @@ pub enum Command {
     PushToken(String),
     /// A local write landed in the outbox.
     Kick,
+    /// Offer the held changes to Kabar Cloud again.
+    SendHeldAgain,
+    /// Let the held changes go: they stay here but won't reach the others.
+    ForgetHeld,
     /// The app went to the background (`true`: push what's waiting, then
     /// close the socket so a phone in a pocket keeps its radio asleep) or came
     /// back (`false`: reconnect and catch up).
@@ -225,6 +229,9 @@ pub struct CloudStatus {
     pub sync: SyncState,
     /// Local changes not yet acked.
     pub pending: u64,
+    /// Changes Kabar Cloud refused for good, or this build couldn't read,
+    /// kept on the device (`store/held.rs`).
+    pub held: u64,
     pub last_sync_ms: Option<u64>,
     pub problem: Option<Problem>,
     /// Signed in on someone else's device: the session ends with the app or tab.
@@ -239,6 +246,7 @@ impl CloudStatus {
             device_id,
             sync: SyncState::SignedOut,
             pending: 0,
+            held: 0,
             last_sync_ms: None,
             problem: None,
             temporary: false,

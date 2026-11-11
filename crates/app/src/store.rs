@@ -266,6 +266,15 @@ const MIGRATIONS: &[&str] = &[
     // 9: Tablet Studio (M9). Ink lives only in `sync_rows`; this finds a
     // page's strokes, items and transcripts without scanning every row.
     "CREATE INDEX sync_rows_doc ON sync_rows (tbl, json_extract(payload, '$.doc'));",
+    // 10: sync ops Kabar Cloud refused for good, and outbox rows this build
+    // can't read (store/held.rs), kept with their reason instead of dropped.
+    // Local to this device, never synced.
+    "CREATE TABLE held_ops (
+        op_id  TEXT PRIMARY KEY,
+        op     TEXT NOT NULL,
+        reason TEXT NOT NULL,
+        at_ms  INTEGER NOT NULL
+    ) STRICT;",
 ];
 
 /// The schema version that added `sync_rows`.
@@ -519,18 +528,13 @@ impl Store {
         set_meta(&self.conn, "last_seq", &last_seq.to_string())
     }
 
-    /// The oldest `limit` ops waiting to be pushed.
-    pub fn outbox(&self, limit: usize) -> Result<Vec<Op>> {
-        let mut stmt = self.conn.prepare("SELECT op FROM outbox ORDER BY seq LIMIT ?1")?;
-        let rows: Vec<String> =
-            stmt.query_map([limit as i64], |r| r.get(0))?.collect::<rusqlite::Result<_>>()?;
-        rows.iter().map(|op| Ok(serde_json::from_str(op)?)).collect()
-    }
-
     pub fn outbox_len(&self) -> Result<u64> {
         Ok(self.conn.query_row("SELECT COUNT(*) FROM outbox", [], |r| r.get::<_, i64>(0))? as u64)
     }
 
+    /// Drops ops from the outbox (tests stand in for the hub with it; the
+    /// engine settles a push with `settle_outbox`).
+    #[cfg(test)]
     pub fn remove_from_outbox<'a>(&mut self, op_ids: impl IntoIterator<Item = &'a str>) -> Result<()> {
         let tx = self.conn.transaction()?;
         for id in op_ids {
@@ -919,6 +923,8 @@ pub use journal::{LessonDone, TaughtAt};
 pub mod export;
 // A database restored from another device takes its own device id.
 mod install;
+// Sync ops that can't go up, kept with their reason (audit F12).
+mod held;
 
 pub fn now_ms() -> u64 {
     web_time::SystemTime::now()
