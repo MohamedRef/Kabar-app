@@ -681,6 +681,29 @@ fn signed_in_account_shows_sync_and_signs_out() {
     assert_eq!(sent(), ["SignOut"]);
 }
 
+/// Refused changes are named, with a way to send them again or let them
+/// go (engineering audit F12).
+#[test]
+fn held_changes_can_be_sent_again_or_let_go() {
+    let html = open(account(signed_in(SyncState::Live))).html();
+    assert!(!html.contains("held-ops"), "nothing held, no card");
+
+    let mut status = signed_in(SyncState::Live);
+    status.held = 2;
+    let mut h = open(account(status));
+    h.settle();
+    let _ = sent(); // the device list it asks for on opening
+    let html = h.html();
+    assert!(html.contains("held-ops") && html.contains("2 changes held back"), "{html}");
+    h.click("Send again");
+    assert_eq!(sent(), ["SendHeldAgain"]);
+    h.click("Let them go");
+    assert!(sent().is_empty(), "letting go asks first");
+    assert!(h.html().contains("never reach your other devices"));
+    h.click("Yes, let them go");
+    assert_eq!(sent(), ["ForgetHeld"]);
+}
+
 #[test]
 fn offline_shows_its_picture_and_problems_show_a_notice() {
     let mut status = signed_in(SyncState::Offline);
