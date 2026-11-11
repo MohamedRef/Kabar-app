@@ -960,4 +960,6 @@ pub fn now_ms() -> u64 {
 }
 
 #[cfg(test)]
+mod journey_tests;
+#[cfg(test)]
 mod tests;

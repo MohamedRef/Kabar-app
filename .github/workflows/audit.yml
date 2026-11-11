@@ -1,0 +1,30 @@
+name: Dependency advisories
+
+# Engineering audit F23 (2026-11-11): checks Cargo.lock against the RustSec
+# advisory database. Weekly and by hand only, never on pull requests
+# (2026-11-04 rule: PRs run only fast checks). It reports; a finding is
+# fixed in its own PR. $0: public advisory data on a hosted runner.
+on:
+  schedule:
+    - cron: "17 5 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: audit
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: cargo audit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install cargo-audit
+        run: cargo install cargo-audit --locked
+      - name: Check Cargo.lock against RustSec
+        run: cargo audit
