@@ -79,7 +79,10 @@ impl Store {
     /// transaction so every table comes from the same snapshot (a write
     /// from another connection between two tables can't half-appear).
     pub fn export(&self, app_version: &str, now_ms: u64) -> Result<Export> {
-        let snapshot = self.conn.unchecked_transaction()?;
+        // Deferred: a read snapshot that never takes the write lock (other
+        // transactions on this connection start IMMEDIATE, contention.rs).
+        let snapshot =
+            rusqlite::Transaction::new_unchecked(&self.conn, rusqlite::TransactionBehavior::Deferred)?;
         let conn: &rusqlite::Connection = &snapshot;
         let names: Vec<String> = {
             let mut stmt = conn.prepare(
