@@ -53,8 +53,9 @@ pub struct DayTotal {
 pub fn day_totals(
     events: &[ActivityEvent],
     log: &[ReviewEvent],
-    utc_offset_min: i16,
+    zone: impl Into<crate::coach::zone::Zone>,
 ) -> BTreeMap<LocalDate, DayTotal> {
+    let zone = zone.into();
     let mut out: BTreeMap<LocalDate, DayTotal> = BTreeMap::new();
     for (date, s) in history::by_day(events) {
         out.insert(date, DayTotal { minutes: s.minutes(), reviews: s.reviews, studied: s.studied() });
@@ -64,7 +65,7 @@ pub fn day_totals(
     let mut by_day: BTreeMap<LocalDate, (u64, u32)> = BTreeMap::new();
     // Lesson and lookup evidence is study the activity log already counts.
     for e in log.iter().filter(|e| seen.insert(e.id.as_str()) && e.evidence.is_review()) {
-        let d = by_day.entry(LocalDate::from_unix_ms(e.at_ms, utc_offset_min)).or_default();
+        let d = by_day.entry(zone.date(e.at_ms)).or_default();
         d.0 += u64::from(e.duration_ms);
         d.1 += 1;
     }

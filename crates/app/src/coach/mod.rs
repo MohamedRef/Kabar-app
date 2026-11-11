@@ -100,6 +100,13 @@ impl Coach {
         clock::time_of_day(self.now(), self.offset())
     }
 
+    /// The zone for reading past moments: today's offset now, the device
+    /// zone's own offsets before (DST, audit F19). Only on this device;
+    /// reminder timing stays on [`Coach::offset`] like Kabar Cloud's cron.
+    pub fn zone(&self) -> kabar_core::coach::zone::Zone {
+        kabar_core::coach::zone::Zone::with_history(self.offset(), crate::zone::history(), self.now())
+    }
+
     pub fn save_profile(mut self, db: &Db, profile: CoachProfile) {
         match db.0.borrow_mut().save_coach_profile(&profile) {
             Ok(()) => self.profile.set(Some(profile)),

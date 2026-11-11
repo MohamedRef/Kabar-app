@@ -144,9 +144,13 @@ Key design rules (also in `CLAUDE.md`):
     per run; `DayClock::with_history`), so DST changes don't move past
     answers across the 4 am line. After travel the new zone's rules apply
     to the past (Kabar can't know where the learner was); a history that
-    disagrees with the profile's offset now is ignored. Still on one fixed
-    offset: the coach's midnight-based dates (streaks, journal, stats,
-    reminders), which only matter within an hour of midnight.
+    disagrees with the profile's offset now is ignored. Past moments on
+    the Stats and Journal screens (review days, journal times, level-test
+    days) read the same history through `kabar_core::coach::zone::Zone`
+    (`Coach::zone`). Activity events keep the day stored when they
+    happened. Reminder timing stays on the profile's offset alone, on
+    purpose: Kabar Cloud's cron has no zone history and must reach the
+    same answer as the device.
 
 ## 3. Build, test, run
 
@@ -397,6 +401,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-11: engineering audit F19 (rest): Stats and Journal read past moments with the offset in force then, so a summer review keeps its day and hour (§ 2).
 - 2026-11-11: engineering audit F23/F24: journey test, native QA matrix, weekly cargo audit, shared `docs/INFRA_PARITY.md` (§ 4, § 8).
 - 2026-11-11: engineering audit F16: UI writes wait at most 750 ms for the sync lock (was 5 s) and take it up front (§ 2).
 - 2026-11-11: engineering audit F19: study days read each answer with the time zone offset in force then, so DST changes don't move past answers (§ 2).

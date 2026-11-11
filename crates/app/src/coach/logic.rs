@@ -149,12 +149,13 @@ pub fn timeline(
     events: &[ActivityEvent],
     src: &JournalSources<'_>,
     catalog: &Catalog,
-    utc_offset_min: i16,
+    zone: impl Into<kabar_core::coach::zone::Zone>,
     today: LocalDate,
     filter: JournalFilter,
 ) -> Vec<JournalDay> {
     let stats = history::by_day(events);
-    let day_of = |ms: u64| LocalDate::from_unix_ms(ms, utc_offset_min);
+    let zone = zone.into();
+    let day_of = |ms: u64| zone.date(ms);
     let mut lines: Vec<(LocalDate, TimelineEntry)> = Vec::new();
 
     let mut seen = HashSet::new();
