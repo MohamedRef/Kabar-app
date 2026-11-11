@@ -259,7 +259,10 @@ pub fn TopBar(current: Screen) -> Element {
                     h1 { "{ui.t(current.label())}" }
                 }
             }
-            GearButton {}
+            div { class: "top-actions",
+                crate::desk::search::SearchButton { compact: true }
+                GearButton {}
+            }
         }
     }
 }

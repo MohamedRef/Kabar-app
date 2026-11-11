@@ -19,6 +19,7 @@ pub(super) fn Shell() -> Element {
     settings::menu::use_menu_events(ui, settings_nav);
     let settings_open = *settings_nav.open.read();
     back::use_back(ui, current);
+    desk::use_desk();
     update::view::use_android_install(ui);
     update::view::use_update_notices(ui, settings_nav);
     update::view::use_content_confirmation();
@@ -90,6 +91,7 @@ pub(super) fn Shell() -> Element {
                     }
                 }
                 more::MoreTab { current }
+                desk::search::SearchButton {}
                 // Pinned to the foot of the rail and sidebar (hidden in the
                 // phone's bottom bar, which has the gear up top instead).
                 button {
@@ -101,6 +103,7 @@ pub(super) fn Shell() -> Element {
                     span { "{ui.t(Msg::NavSettings)}" }
                 }
             }
+            desk::Handle { pane: settings::device::Pane::Nav }
             if top_bar {
                 more::TopBar { current }
             }
@@ -132,6 +135,7 @@ pub(super) fn Shell() -> Element {
             more::MoreSheet {}
             settings::SettingsSheet {}
             update::sheet::UpdateSheet {}
+            desk::search::QuickSearch {}
         }
     }
 }

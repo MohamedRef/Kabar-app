@@ -223,6 +223,9 @@ pub fn ReviewScreen() -> Element {
             if let Some(msg) = error {
                 p { class: "review-error", role: "alert", "{ui.t(msg)}" }
             }
+            if matches!(view, View::Classic | View::Wall | View::Burst) {
+                crate::desk::FocusToggle {}
+            }
             match view {
                 View::Home => rsx! { ReviewHome {} },
                 View::Classic => rsx! { Classic {} },

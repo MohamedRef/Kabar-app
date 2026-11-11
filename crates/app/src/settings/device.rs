@@ -16,6 +16,9 @@ const READ_SPACING_KEY: &str = "pref.read_spacing";
 const READ_WIDTH_KEY: &str = "pref.read_width";
 const READ_FOCUS_KEY: &str = "pref.read_focus";
 const APPEARANCE_KEY: &str = "pref.appearance";
+const NAV_WIDTH_KEY: &str = "pref.nav_width";
+const PANEL_WIDTH_KEY: &str = "pref.panel_width";
+const STUDY_FOCUS_KEY: &str = "pref.study_focus";
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub enum TextSize {
@@ -149,6 +152,80 @@ pub struct DevicePrefs {
     pub remind_here: Signal<Option<bool>>,
     pub reading: Signal<Reading>,
     pub appearance: Signal<Appearance>,
+    /// Panes the learner widened or narrowed by dragging (`crate::desk`).
+    pub panes: Signal<Panes>,
+    /// Tablet and Mac: lessons and review sessions hide the sidebar.
+    pub study_focus: Signal<bool>,
+}
+
+/// Pane widths dragged on a tablet or the Mac, in tenths of a rem so they
+/// follow the text size. Zero is the stylesheet's own width.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct Panes {
+    /// The labelled sidebar (Settings › Mac: sidebar with names).
+    pub nav: u16,
+    /// The Reader's word panel beside the text.
+    pub panel: u16,
+}
+
+/// Which dragged pane (`Panes`) a value is for.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Pane {
+    Nav,
+    Panel,
+}
+
+impl Pane {
+    pub const ALL: [Self; 2] = [Self::Nav, Self::Panel];
+
+    /// The id the drag script sends and the `data-pane` on its handle.
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Nav => "nav",
+            Self::Panel => "panel",
+        }
+    }
+
+    pub fn parse(s: &str) -> Option<Self> {
+        Self::ALL.into_iter().find(|p| p.as_str() == s)
+    }
+
+    /// Narrowest and widest, in tenths of a rem, and the stylesheet's width.
+    pub fn range(self) -> (u16, u16, u16) {
+        match self {
+            Self::Nav => (120, 240, 150),
+            Self::Panel => (180, 360, 220),
+        }
+    }
+
+    /// A stored or sent width, kept in range; zero (or junk) is the default.
+    pub fn clamp(self, tenths: u16) -> u16 {
+        let (min, max, _) = self.range();
+        if tenths == 0 { 0 } else { tenths.clamp(min, max) }
+    }
+
+    fn key(self) -> &'static str {
+        match self {
+            Self::Nav => NAV_WIDTH_KEY,
+            Self::Panel => PANEL_WIDTH_KEY,
+        }
+    }
+}
+
+impl Panes {
+    pub fn get(self, pane: Pane) -> u16 {
+        match pane {
+            Pane::Nav => self.nav,
+            Pane::Panel => self.panel,
+        }
+    }
+
+    fn set(&mut self, pane: Pane, tenths: u16) {
+        match pane {
+            Pane::Nav => self.nav = tenths,
+            Pane::Panel => self.panel = tenths,
+        }
+    }
 }
 
 impl DevicePrefs {
@@ -173,7 +250,31 @@ impl DevicePrefs {
                 focus: get(READ_FOCUS_KEY).as_deref() == Some("on"),
             }),
             appearance: Signal::new(stored_appearance(&store)),
+            panes: Signal::new({
+                let mut panes = Panes::default();
+                for pane in Pane::ALL {
+                    let tenths = get(pane.key()).and_then(|v| v.parse().ok()).unwrap_or(0);
+                    panes.set(pane, pane.clamp(tenths));
+                }
+                panes
+            }),
+            study_focus: Signal::new(get(STUDY_FOCUS_KEY).as_deref() == Some("on")),
         }
+    }
+
+    /// A pane's dragged width (tenths of a rem; zero goes back to the default).
+    pub fn set_pane(mut self, db: &Db, pane: Pane, tenths: u16) {
+        let tenths = pane.clamp(tenths);
+        if self.panes.peek().get(pane) == tenths {
+            return;
+        }
+        save(db, pane.key(), &tenths.to_string());
+        self.panes.write().set(pane, tenths);
+    }
+
+    pub fn set_study_focus(mut self, db: &Db, on: bool) {
+        save(db, STUDY_FOCUS_KEY, if on { "on" } else { "off" });
+        self.study_focus.set(on);
     }
 
     /// Whether this device rings: the learner's choice, else only an
@@ -302,6 +403,57 @@ mod tests {
         drop(store);
         let store = Store::open(&path).unwrap();
         assert_eq!(stored_appearance(&store), Appearance::Glossy);
+    }
+
+    #[test]
+    fn pane_widths_stay_in_range_and_zero_is_the_default() {
+        assert_eq!(Pane::Nav.clamp(0), 0);
+        assert_eq!(Pane::Nav.clamp(1), 120);
+        assert_eq!(Pane::Nav.clamp(9999), 240);
+        assert_eq!(Pane::Panel.clamp(250), 250);
+        for pane in Pane::ALL {
+            assert_eq!(Pane::parse(pane.as_str()), Some(pane));
+            let (min, max, default) = pane.range();
+            assert!(min <= default && default <= max);
+        }
+        assert_eq!(Pane::parse("rail"), None);
+    }
+
+    #[test]
+    fn pane_widths_and_study_focus_survive_a_restart() {
+        use crate::store::Store;
+        use std::{cell::RefCell, rc::Rc};
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("kabar.db");
+        let db = Db(Rc::new(RefCell::new(Store::open(&path).unwrap())));
+        let mut dom = VirtualDom::new_with_props(
+            |db: Db| {
+                use_hook(|| {
+                    let prefs = DevicePrefs::load(&db);
+                    assert_eq!(*prefs.panes.peek(), Panes::default());
+                    assert!(!*prefs.study_focus.peek());
+                    prefs.set_pane(&db, Pane::Nav, 185);
+                    prefs.set_pane(&db, Pane::Panel, 5000);
+                    prefs.set_study_focus(&db, true);
+                });
+                rsx! {}
+            },
+            db.clone(),
+        );
+        dom.rebuild_in_place();
+        drop(dom);
+        // A hand-edited out-of-range value loads clamped.
+        db.0.borrow_mut().set_local_value(NAV_WIDTH_KEY, "9").unwrap();
+        let mut again = VirtualDom::new_with_props(
+            |db: Db| {
+                let prefs = use_hook(|| DevicePrefs::load(&db));
+                let p = *prefs.panes.peek();
+                rsx! { "{p.nav} {p.panel} {prefs.study_focus.peek()}" }
+            },
+            db,
+        );
+        again.rebuild_in_place();
+        assert_eq!(dioxus::ssr::render(&again), "120 360 true");
     }
 
     #[test]

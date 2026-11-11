@@ -110,7 +110,9 @@ pub fn TabletSection() -> Element {
 pub(super) fn shortcut_rows(web: bool) -> Vec<(S, &'static [&'static str])> {
     let menu: [(S, &'static [&'static str]); 2] =
         [(S::ShortcutSettings, &["⌘", ","]), (S::ShortcutScreens, &["⌘1", "…", "⌘7"])];
-    let page: [(S, &'static [&'static str]); 6] = [
+    let page: [(S, &'static [&'static str]); 7] = [
+        // Ctrl+K works on the Mac too; the web lists no ⌘ keys (#577).
+        (S::ShortcutSearch, if web { &["Ctrl", "K"] } else { &["⌘", "K"] }),
         (S::ShortcutPick, &["1", "2", "3"]),
         (S::ShortcutCheck, &["Return"]),
         (S::ShortcutReveal, &["Space"]),

@@ -579,6 +579,7 @@ mod menu_bar {
         assert_eq!(action("kabar.settings"), Some(Action::Settings(None)));
         assert_eq!(action("kabar.shortcuts"), Some(Action::Settings(Some(Section::Mac))));
         assert_eq!(action("kabar.go.listen"), Some(Action::Go(Screen::Listen)));
+        assert_eq!(action("kabar.search"), Some(Action::Search));
         assert_eq!(action("copy"), None, "the standard Edit items are the system's");
         let screens: Vec<Screen> = GO.iter().map(|g| g.3).collect();
         assert_eq!(screens[..4], crate::more::TABS, "⌘1–⌘4 follow the four main tabs");
@@ -618,9 +619,11 @@ mod menu_bar {
             menu.items().iter().filter_map(|i| i.as_submenu().map(|s| s.text())).collect();
         assert_eq!(titles, ["Kabar", "Edit", "Go", "Window", "Help"]);
         let go = menu.items()[2].as_submenu().unwrap().items();
-        assert_eq!(go.len(), 7);
+        assert_eq!(go.len(), 9, "the seven screens, a separator and Quick Search");
         let first = go[0].as_menuitem().unwrap();
         assert_eq!((first.text(), first.id().0.as_str()), ("Today".to_string(), "kabar.go.today"));
+        let search = go[8].as_menuitem().unwrap();
+        assert_eq!(search.id().0.as_str(), "kabar.search");
     }
 }
 

@@ -1,5 +1,6 @@
 //! The Mac menu bar: Kabar › Settings… (⌘,), the standard Edit and Window
-//! menus (so ⌘C, ⌘V and ⌘W work as everywhere else), Go with ⌘1–⌘7, and
+//! menus (so ⌘C, ⌘V and ⌘W work as everywhere else), Go with ⌘1–⌘7 and
+//! Quick Search… (⌘K), and
 //! Help › Keyboard Shortcuts (also the "?" key).
 //! Built on every desktop so it is type-checked here; only macOS installs it.
 
@@ -12,6 +13,7 @@ use crate::{Screen, Ui};
 
 const SETTINGS: &str = "kabar.settings";
 const SHORTCUTS: &str = "kabar.shortcuts";
+const SEARCH: &str = "kabar.search";
 
 /// Go menu: (id, title, key, screen).
 pub(super) const GO: [(&str, &str, Code, Screen); 7] = [
@@ -76,6 +78,8 @@ pub fn menu_bar() -> Menu {
     for (id, title, key, _) in GO {
         go.append(&MenuItem::with_id(id, title, true, cmd(key))).expect("go item");
     }
+    go.append(&PredefinedMenuItem::separator()).expect("go separator");
+    go.append(&MenuItem::with_id(SEARCH, "Quick Search…", true, cmd(Code::KeyK))).expect("search item");
     let window = Submenu::with_items(
         "Window",
         true,
@@ -138,12 +142,15 @@ pub(super) enum Action {
     Settings(Option<Section>),
     /// Go to a screen (closing Settings if it is open).
     Go(Screen),
+    /// Quick search (`crate::desk::search`).
+    Search,
 }
 
 pub(super) fn action(id: &str) -> Option<Action> {
     match id {
         SETTINGS => Some(Action::Settings(None)),
         SHORTCUTS => Some(Action::Settings(Some(Section::Mac))),
+        SEARCH => Some(Action::Search),
         _ => GO.iter().find(|(go, ..)| *go == id).map(|(_, _, _, screen)| Action::Go(*screen)),
     }
 }
@@ -151,6 +158,7 @@ pub(super) fn action(id: &str) -> Option<Action> {
 pub(super) fn apply(ui: Ui, nav: SettingsNav, action: Action) {
     match action {
         Action::Settings(section) => nav.show(section),
+        Action::Search => crate::desk::search::open(true),
         Action::Go(screen) => {
             nav.close();
             let mut s = ui.screen;
