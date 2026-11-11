@@ -13,6 +13,9 @@ path = "src/main.rs"
 [dependencies]
 kabar-core.workspace = true
 kabar-protocol.workspace = true
+# The device time zone's offset history, so past study days keep their day
+# across DST changes (src/zone.rs, audit F19). Already in the tree.
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
 # Dioxus's defaults minus `devtools` (hot reload), which only the native
 # builds take (below): in the web app it would knock on a dx dev server forever.
 dioxus = { version = "0.7.10", default-features = false, features = ["launch", "logger", "lib"] }
@@ -55,6 +58,7 @@ directories = "6"
 # (src/platform/web.rs). SQLite runs in wasm and persists in IndexedDB.
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 tokio = { version = "1", features = ["sync", "macros"] }
+chrono = { version = "0.4", default-features = false, features = ["clock", "std", "wasmbind"] }
 getrandom = { version = "0.3", features = ["wasm_js"] }
 getrandom02 = { package = "getrandom", version = "0.2", features = ["js"] }
 uuid = { version = "1", features = ["v4", "v7", "js"] }

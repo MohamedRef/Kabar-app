@@ -131,6 +131,14 @@ Key design rules (also in `CLAUDE.md`):
     change does). A check on older content reads `Verification::Changed`,
     doesn't count (`Verification::counts`) and asks again in the summary;
     checks from before 2026-11-11 read `CheckedBefore` and still count.
+  - Study days (FSRS `DayClock`): each moment is read with the offset in
+    force then in the device's zone (`zone::history`, chrono, built once
+    per run; `DayClock::with_history`), so DST changes don't move past
+    answers across the 4 am line. After travel the new zone's rules apply
+    to the past (Kabar can't know where the learner was); a history that
+    disagrees with the profile's offset now is ignored. Still on one fixed
+    offset: the coach's midnight-based dates (streaks, journal, stats,
+    reminders), which only matter within an hour of midnight.
 
 ## 3. Build, test, run
 
@@ -373,6 +381,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-11: engineering audit F19: study days read each answer with the time zone offset in force then, so DST changes don't move past answers (§ 2).
 - 2026-11-11: engineering audit F25: a lesson's content check is bound to a content fingerprint; a lesson changed since asks to be checked again (§ 2).
 - 2026-11-11: engineering audit F12: sync ops the hub refuses (or the device can't read) are held with their reason, shown in Settings › Account with send-again / let-go (§ 2).
 - 2026-11-11: engineering audit F09/F10: a lesson's finish is one transaction with a retry; failed reads are announced above every screen with «اقرأ تاني» (§ 2).

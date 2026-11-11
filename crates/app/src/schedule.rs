@@ -47,7 +47,10 @@ pub fn scheduler_at(utc_offset_min: i16, settings: &Settings) -> Rc<Scheduler> {
     if let Some(hit) = CACHE.with_borrow(|c| c.as_ref().filter(|(k, _)| *k == key).map(|(_, s)| s.clone())) {
         return hit;
     }
-    let sched = Rc::new(Scheduler::from_settings(settings, utc_offset_min));
+    let mut sched = Scheduler::from_settings(settings, utc_offset_min);
+    // Past answers keep the study day they had when given (audit F19).
+    sched.day = sched.day.with_history(crate::zone::history(), crate::store::now_ms());
+    let sched = Rc::new(sched);
     CACHE.set(Some((key, sched.clone())));
     sched
 }
