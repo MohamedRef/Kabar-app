@@ -76,6 +76,26 @@ fn review_days_follow_the_local_calendar() {
 }
 
 #[test]
+fn a_summer_review_keeps_its_day_after_the_clocks_go_back() {
+    use crate::coach::zone::Zone;
+    // Cairo: +3 until 2026-10-29 22:00 UTC, then +2 (audit F19).
+    static CAIRO: [(i64, i32); 2] = [(i64::MIN, 180), (1_793_311_200_000, 120)];
+    // 00:30 summer time on the 27th is 21:30 UTC on the 26th.
+    let day = d(2026, 10, 27);
+    let early = (i64::from(day.0) * DAY_MS as i64 - 2 * 3_600_000 - 30 * 60_000) as u64;
+    let now = at(d(2026, 11, 5));
+    let t = day_totals(
+        &[],
+        &[review("r", "c", early, Rating::Good, 1000)],
+        Zone::with_history(OFFSET, &CAIRO, now),
+    );
+    assert!(t.contains_key(&day), "{t:?}");
+    // Today's offset alone would move it to the 26th.
+    let t = day_totals(&[], &[review("r", "c", early, Rating::Good, 1000)], OFFSET);
+    assert!(t.contains_key(&day.add_days(-1)), "{t:?}");
+}
+
+#[test]
 fn heatmap_spans_whole_weeks_and_shades_by_plan_size() {
     let today = d(2026, 10, 29); // a Thursday
     let mut totals = BTreeMap::new();

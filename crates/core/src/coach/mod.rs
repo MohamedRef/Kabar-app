@@ -18,5 +18,6 @@ pub mod reminders;
 pub mod report;
 pub mod rewards;
 pub mod voice;
+pub mod zone;
 
 pub use kabar_protocol::coach::*;

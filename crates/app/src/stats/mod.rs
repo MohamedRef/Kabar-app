@@ -176,9 +176,14 @@ pub fn level_share(db: &Db, level: &str) -> f32 {
 /// (score, local day) of every finished full test of `level`, and the day of
 /// the last passed level test on the route or placement taken (either
 /// resets where the journey stands).
-pub fn level_tests(db: &Db, level: &str, offset: i16) -> (Vec<(f32, LocalDate)>, Option<LocalDate>) {
+pub fn level_tests(
+    db: &Db,
+    level: &str,
+    zone: impl Into<kabar_core::coach::zone::Zone>,
+) -> (Vec<(f32, LocalDate)>, Option<LocalDate>) {
+    let zone = zone.into();
     let store = db.0.borrow();
-    let day = |hlc: &kabar_protocol::Hlc| LocalDate::from_unix_ms(hlc.wall_ms, offset);
+    let day = |hlc: &kabar_protocol::Hlc| zone.date(hlc.wall_ms);
     let results = store
         .lesson_events(&format!("{level}.test"))
         .unwrap_or_default()
@@ -246,7 +251,7 @@ pub fn TodayCards() -> Element {
     let snapshot = use_memo(move || {
         let events = coach.events.read();
         let log = crate::persistence::read_or("the review log", db.0.borrow().review_log());
-        let totals = core_stats::day_totals(&events, &log, coach.offset());
+        let totals = core_stats::day_totals(&events, &log, coach.zone());
         let today = coach.today();
         (check_is_due(&totals, &level_checks(&db), today), overview::overview(&totals, today, Period::Week))
     });
@@ -410,7 +415,7 @@ fn numbers(db: &Db, coach: &Coach) -> Numbers {
     let now = coach.now();
     let Logs { cards, log, checks } = load_logs(db);
     let events = coach.events.read();
-    let totals = core_stats::day_totals(&events, &log, coach.offset());
+    let totals = core_stats::day_totals(&events, &log, coach.zone());
     let sched = crate::schedule::scheduler(coach, &db.0.borrow());
     // One pass over the log for every window and every card's state (#116):
     // the detail table's 7 and 30 days, then each period's own span.

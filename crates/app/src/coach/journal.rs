@@ -21,7 +21,7 @@ use kabar_protocol::coach::{ActivityKind, LocalDate, Skill};
 use kabar_protocol::journal::{JournalEntry, MAX_REFLECTION_CHARS};
 
 use super::logic::{self, EntryKind, JournalDay, JournalFilter, JournalSources};
-use super::{Coach, clock, labels};
+use super::{Coach, labels};
 use crate::account::Cloud;
 use crate::cloud::Command;
 use crate::coach::msg::CoachMsg;
@@ -74,7 +74,7 @@ pub fn JournalScreen() -> Element {
     let _ = (remote_rev, local_rev());
     let events = coach.events.read().clone();
     let today = coach.today();
-    let offset = coach.offset();
+    let zone = coach.zone();
     let (lessons, taught, reflections) = {
         let store = db.0.borrow();
         let log = |what: &str, e: &dyn std::fmt::Display| crate::diag::report!("loading {what} failed: {e}");
@@ -94,7 +94,7 @@ pub fn JournalScreen() -> Element {
         )
     };
     let src = JournalSources { lessons: &lessons, taught: &taught, reflections: &reflections };
-    let days = logic::timeline(&events, &src, &catalog, offset, today, filter());
+    let days = logic::timeline(&events, &src, &catalog, zone, today, filter());
     let nothing = days.iter().all(|d| d.entries.is_empty() && d.reflections.is_empty());
     let inked = *ui.width.read() != WidthClass::Compact;
 
@@ -142,7 +142,7 @@ pub fn JournalScreen() -> Element {
                     key: "{day.date}",
                     day: day.clone(),
                     today,
-                    offset,
+                    zone,
                     reflections_on: matches!(filter(), JournalFilter::All | JournalFilter::Reflections),
                     draft,
                     local_rev,
@@ -159,7 +159,7 @@ pub fn JournalScreen() -> Element {
 fn Day(
     day: JournalDay,
     today: LocalDate,
-    offset: i16,
+    zone: kabar_core::coach::zone::Zone,
     reflections_on: bool,
     draft: Signal<Option<Draft>>,
     local_rev: Signal<u32>,
@@ -216,7 +216,7 @@ fn Day(
                                     move |_| open_entry(ui, &db, &kind)
                                 },
                                 span { class: "muted small journal-time",
-                                    {labels::time(&ui, clock::time_of_day(e.at_ms, offset))}
+                                    {labels::time(&ui, zone.time(e.at_ms))}
                                 }
                                 span { class: "journal-what", EntryLine { kind: e.kind.clone() } }
                                 span { class: "chev", aria_hidden: "true" }

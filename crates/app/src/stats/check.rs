@@ -75,7 +75,7 @@ fn setup(db: &Db, coach: &Coach) -> Setup {
     let today = coach.today();
     let checks = super::level_checks(db);
     let journey = super::journey_position(db).map(|(l, _)| l).unwrap_or_else(|| "bipa1".into());
-    let (_, last_pass) = level_tests(db, &journey, coach.offset());
+    let (_, last_pass) = level_tests(db, &journey, coach.zone());
     let previous = checks.last().cloned();
     let last = previous.as_ref().map(|c| (c.level.as_str(), c.moved, c.date));
     let level = lc::current_level(&journey, last, last_pass);
@@ -97,7 +97,7 @@ fn conclude(db: &Db, coach: Coach, s: &Setup, runner: Option<&TestRunner>) -> Le
     let now = coach.now();
     let logs = load_logs(db);
     let events = coach.events.peek().clone();
-    let totals = core_stats::day_totals(&events, &logs.log, coach.offset());
+    let totals = core_stats::day_totals(&events, &logs.log, coach.zone());
     let res: Option<TestResults> = runner.map(TestRunner::results);
 
     // The radar: this check's skill shares blended with the last month.
@@ -110,7 +110,7 @@ fn conclude(db: &Db, coach: Coach, s: &Setup, runner: Option<&TestRunner>) -> Le
     let sched = crate::schedule::scheduler(&coach, &db.0.borrow());
     let retention = core_stats::retention(&sched, &logs.log, now, lc::LOOKBACK_DAYS as u64);
     let active = core_stats::window(&totals, today, lc::LOOKBACK_DAYS).days;
-    let (tests, _) = level_tests(db, &s.level, coach.offset());
+    let (tests, _) = level_tests(db, &s.level, coach.zone());
     let level_test = s.pass_mark.and_then(|mark| lc::fresh_level_test(&tests, mark, today));
     let stats = lc::check_stats(&events, active, retention.all().share(), level_test, today);
     let decision = decide(&s.level, &stats);
@@ -732,7 +732,7 @@ fn PaceNote() -> Element {
     let db = use_context::<Db>();
     let coach = use_context::<Coach>();
     let log = crate::persistence::read_or("the review log", db.0.borrow().review_log());
-    let totals = core_stats::day_totals(&coach.events.read(), &log, coach.offset());
+    let totals = core_stats::day_totals(&coach.events.read(), &log, coach.zone());
     let Some(p) = pace::pace(&totals, coach.today()) else { return rsx! {} };
     let text = stf(
         ui.lang(),
