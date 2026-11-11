@@ -420,21 +420,55 @@ fn legacy_pass_verifies() -> bool {
 /// lesson's content and found it right) and of an `unverified` row (they
 /// took that back). The newest of the two by HLC stands.
 #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
-pub struct LessonVerified {}
+pub struct LessonVerified {
+    /// The content the check was made on (`kabar_core::fingerprint::lesson`).
+    /// Added 2026-11-11 (audit F25): older checks lack it and older builds
+    /// ignore it, so both directions read each other's events.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub fingerprint: Option<String>,
+}
 
 /// Why a lesson counts as checked, shown next to it so it's never a guess.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Verification {
-    /// The learner tapped "the content is right".
+    /// The learner tapped "the content is right" on the content shipped now.
     Checked,
+    /// Checked before checks recorded which version they were made on
+    /// (2026-11-11). Kept and still counted, but labelled as such.
+    CheckedBefore,
+    /// Checked, but the lesson has changed since: it asks to be checked
+    /// again and doesn't count until it is. The old check stays in history.
+    Changed,
     /// Passed with a good score under the old rule, before the two were
     /// separated (kept, never reset).
     PassedEarlier { score: u32 },
 }
 
+impl Verification {
+    /// Whether the lesson counts as checked now (its cards lose the
+    /// "unverified" flag).
+    pub fn counts(self) -> bool {
+        self != Verification::Changed
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn checks_from_old_and_new_builds_read_each_other() {
+        let old: LessonVerified = serde_json::from_str("{}").unwrap();
+        assert_eq!(old.fingerprint, None);
+        assert_eq!(serde_json::to_string(&old).unwrap(), "{}", "no field, the same shape as before");
+        let new = LessonVerified { fingerprint: Some("v1:ab".into()) };
+        let json = serde_json::to_string(&new).unwrap();
+        // An older build's empty struct ignores the field it doesn't know.
+        #[derive(Deserialize)]
+        struct Before {}
+        let _: Before = serde_json::from_str(&json).unwrap();
+        assert_eq!(serde_json::from_str::<LessonVerified>(&json).unwrap(), new);
+    }
 
     #[test]
     fn old_positions_still_parse() {

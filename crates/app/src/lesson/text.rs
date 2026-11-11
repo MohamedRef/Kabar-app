@@ -73,6 +73,8 @@ pub enum L {
     ContentOk,
     ContentChecked,
     ContentPassedEarlier,
+    ContentCheckedBefore,
+    ContentChanged,
     ContentUndo,
     StepOf,
     Retry,
@@ -349,6 +351,14 @@ pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
         (ContentPassedEarlier, ArEg) => "اتحسب متراجع لما عدّيته بـ {score} (القاعدة القديمة)",
         (ContentPassedEarlier, Ar) => "احتُسب مُراجَعًا حين اجتزته بـ {score} (القاعدة القديمة)",
         (ContentPassedEarlier, En) => "Counted as checked when you passed it with {score} (the old rule)",
+        (ContentCheckedBefore, ArEg) => "راجعته قبل كده وقلت إنه سليم (قبل ما نسجّل أنهي نسخة اتراجعت)",
+        (ContentCheckedBefore, Ar) => "راجعته من قبل ووجدته سليمًا (قبل تسجيل النسخة التي رُوجعت)",
+        (ContentCheckedBefore, En) => {
+            "You checked it earlier (before checks recorded which version they were on)"
+        }
+        (ContentChanged, ArEg) => "الدرس اتغيّر من ساعة ما راجعته. بص عليه تاني؟",
+        (ContentChanged, Ar) => "تغيّر الدرس منذ راجعته. هل تراجعه مرة أخرى؟",
+        (ContentChanged, En) => "This lesson changed since you checked it. Check it again?",
         (ContentUndo, ArEg) => "تراجع",
         (ContentUndo, Ar) => "تراجع",
         (ContentUndo, En) => "Undo",

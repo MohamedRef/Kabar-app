@@ -91,7 +91,8 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
             let mut store = db.0.borrow_mut();
             // The new words join the review deck, checked only if the
             // learner already checked this lesson's content.
-            let approved = store.verified_lessons().is_ok_and(|v| v.contains_key(&p.lesson().id));
+            let approved =
+                store.verified_lessons().is_ok_and(|v| v.get(&p.lesson().id).is_some_and(|c| c.counts()));
             store.atomically(|store| {
                 store.record_lesson_event(&p.lesson().id, "completed", &p.completed())?;
                 if !episode {

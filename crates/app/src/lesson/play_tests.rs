@@ -592,6 +592,27 @@ fn the_content_check_can_be_given_and_taken_back() {
     assert!(sim.html().contains(&esc(lt(UiLanguage::En, L::ContentTitle))));
 }
 
+/// A lesson checked on an older version asks to be checked again (audit
+/// F25), and the new check binds to what is shipped now.
+#[test]
+fn a_lesson_changed_since_its_check_asks_again() {
+    use crate::lesson::fingerprint::pretend;
+    let l = lesson("bipa1.u01.l01");
+    let mut sim = sim_at(WidthClass::Compact);
+    set_lang(&mut sim, UiLanguage::En);
+    let db = db(&mut sim);
+    pretend(&l.id, Some("v1:older"));
+    db.0.borrow_mut().verify_lesson(&l.id).unwrap();
+    pretend(&l.id, Some("v1:newer"));
+    assert_eq!(db.0.borrow().verified_lessons().unwrap().get(&l.id), Some(&Verification::Changed));
+    open_lesson(&mut sim, &l.id, crate::Screen::Journey);
+    play(&mut sim, &l, &|_| false);
+    let html = sim.html();
+    assert!(html.contains(&esc(lt(UiLanguage::En, L::ContentChanged))), "{html}");
+    sim.click(|n| n.has_class("lp-content"));
+    assert_eq!(db.0.borrow().verified_lessons().unwrap().get(&l.id), Some(&Verification::Checked));
+}
+
 /// A lesson already checked adds its words to the deck as checked, and the
 /// first slide doesn't call it "not reviewed".
 #[test]

@@ -124,6 +124,13 @@ Key design rules (also in `CLAUDE.md`):
     the engine settles a push with `Store::settle_outbox`). Settings ›
     Account shows a card (`account/held.rs`) with «ابعتها تاني» and
     «سيبها» (asks first). Newest 1000 kept. Batna has the same design.
+  - A lesson's "the content is right" check is bound to the content it was
+    made on: `LessonVerified.fingerprint` (optional, older builds ignore it)
+    from `kabar_core::fingerprint::lesson` (policy v1: layout, comments, key
+    order, whitespace runs and the `review` block don't count; any other
+    change does). A check on older content reads `Verification::Changed`,
+    doesn't count (`Verification::counts`) and asks again in the summary;
+    checks from before 2026-11-11 read `CheckedBefore` and still count.
 
 ## 3. Build, test, run
 
@@ -366,6 +373,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-11: engineering audit F25: a lesson's content check is bound to a content fingerprint; a lesson changed since asks to be checked again (§ 2).
 - 2026-11-11: engineering audit F12: sync ops the hub refuses (or the device can't read) are held with their reason, shown in Settings › Account with send-again / let-go (§ 2).
 - 2026-11-11: engineering audit F09/F10: a lesson's finish is one transaction with a retry; failed reads are announced above every screen with «اقرأ تاني» (§ 2).
 - 2026-11-11: engineering audit F14/F18/F21: export is one snapshot, bundle decode and every inflate are bounded, Cloud quotas are reserved atomically (§ 2).

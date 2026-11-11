@@ -146,14 +146,27 @@ pub(super) fn ContentCheck(lesson_id: String) -> Element {
         }
     };
     match *state.read() {
-        None => {
+        None | Some(Verification::Changed) => {
+            let changed = *state.read() == Some(Verification::Changed);
             let mut set = set.clone();
             rsx! {
                 crate::ui::Card {
                     class: "card-action lp-content reveal d2",
                     onclick: move |_| set(true),
                     h3 { "{lt(lang, L::ContentTitle)}" }
+                    if changed {
+                        p { class: "muted lp-content-changed", "{lt(lang, L::ContentChanged)}" }
+                    }
                     button { class: "tonal lp-content-ok", "{lt(lang, L::ContentOk)}" }
+                }
+            }
+        }
+        Some(Verification::CheckedBefore) => {
+            let mut set = set.clone();
+            rsx! {
+                div { class: "lp-content-done reveal d2", role: "status",
+                    span { "✓ {lt(lang, L::ContentCheckedBefore)}" }
+                    button { class: "ghost lp-content-undo", onclick: move |_| set(false), "{lt(lang, L::ContentUndo)}" }
                 }
             }
         }
