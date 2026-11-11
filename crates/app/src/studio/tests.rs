@@ -967,7 +967,10 @@ fn the_companion_reads_the_scribble_into_the_box() {
 fn gambar_scores_a_guess_kabar_got_and_one_it_missed() {
     let (_, setup) = cloud_with(vec![
         fixture("guess_sketch.kucing.workers_ai.json"),
-        reply(json!({ "guess_id": "rumah", "alternatives": ["mobil"] })),
+        // The miss guesses `kucing`: the first round's word is in `recent`, so
+        // the randomly drawn second word can never be it (a fixed id like
+        // `rumah` made this test fail whenever the draw landed on that word).
+        reply(json!({ "guess_id": "kucing", "alternatives": [] })),
     ]);
     let mut app = App::new(gambar, Setup { store: Some(knows_kucing()), ..setup });
     app.click("Start");
@@ -982,7 +985,7 @@ fn gambar_scores_a_guess_kabar_got_and_one_it_missed() {
     let c = canvases(&app).pop().unwrap();
     answer_snapshot(&mut app, &c, Some(PNG2));
     let text = visible(&app.html());
-    assert!(text.contains("Kabar saw: rumah") && text.contains("1 / 2 guessed"), "{text}");
+    assert!(text.contains("Kabar saw: kucing") && text.contains("1 / 2 guessed"), "{text}");
 }
 
 #[test]
