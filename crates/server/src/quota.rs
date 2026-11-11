@@ -59,6 +59,19 @@ pub const SELECT_USED: &str = "SELECT used FROM quota_usage WHERE service = ?1 A
 pub const ADD_USED: &str = "INSERT INTO quota_usage (service, period, used) VALUES (?1, ?2, ?3)
     ON CONFLICT (service, period) DO UPDATE SET used = used + excluded.used";
 
+/// Reserves `?3` units against limit `?4` in one statement, so two calls
+/// racing for the last units can't both pass a check made before either
+/// adds (a read-then-add could). Returns a row (`used`) only when the
+/// reservation fits; no row means the limit would be crossed.
+pub const RESERVE: &str = "INSERT INTO quota_usage (service, period, used) SELECT ?1, ?2, ?3 WHERE ?3 <= ?4
+    ON CONFLICT (service, period) DO UPDATE SET used = used + excluded.used
+        WHERE used + excluded.used <= ?4
+    RETURNING used";
+
+/// Gives back `?3` units of a reservation whose call never reached the
+/// provider (or that the provider didn't bill), never below zero.
+pub const REFUND: &str = "UPDATE quota_usage SET used = MAX(used - ?3, 0) WHERE service = ?1 AND period = ?2";
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -87,5 +100,25 @@ mod tests {
         let used: i64 =
             db.query_row(SELECT_USED, rusqlite::params!["azure_tts", "2026-10"], |r| r.get(0)).unwrap();
         assert_eq!(used, 150);
+    }
+
+    #[test]
+    fn a_reservation_is_one_check_and_add() {
+        let db = rusqlite::Connection::open_in_memory().unwrap();
+        db.execute_batch(include_str!("../migrations/0001_init.sql")).unwrap();
+        let reserve = |cost: i64| -> Option<i64> {
+            db.query_row(RESERVE, rusqlite::params!["azure_tts", "2026-10", cost, 150], |r| r.get(0)).ok()
+        };
+        assert_eq!(reserve(200), None, "a first call over the limit adds nothing");
+        assert_eq!(reserve(120), Some(120));
+        assert_eq!(reserve(40), None, "would cross the limit: refused, nothing added");
+        assert_eq!(reserve(30), Some(150), "exactly at the limit is fine");
+        assert_eq!(reserve(1), None);
+        db.execute(REFUND, rusqlite::params!["azure_tts", "2026-10", 30]).unwrap();
+        assert_eq!(reserve(30), Some(150), "a refund frees its units");
+        db.execute(REFUND, rusqlite::params!["azure_tts", "2026-10", 999]).unwrap();
+        let used: i64 =
+            db.query_row(SELECT_USED, rusqlite::params!["azure_tts", "2026-10"], |r| r.get(0)).unwrap();
+        assert_eq!(used, 0, "never below zero");
     }
 }

@@ -99,6 +99,17 @@ Key design rules (also in `CLAUDE.md`):
   never by device. Logical CSS only (RTL); Latin snippets in `<bdi>`.
 - App code must compile for wasm: no `std::time::Instant/SystemTime`, no
   `std::thread::spawn` (use `web_time`, `platform::time`).
+- Robustness rules from the 2026-10-29 engineering audit:
+  - Cloud quotas are **reserved** before a provider call in one D1
+    statement (`quota::RESERVE`, conditional upsert + `RETURNING`), never
+    read-then-add; a call that never ran (AI transport error, Azure non-200)
+    gets its units back (`quota::REFUND`).
+  - Content bundles: `bundle::decode` refuses more than `MAX_ENTRIES` files or
+    a key over `MAX_KEY_BYTES`; every inflate is bounded by
+    `MAX_FILE_UNPACKED` (download check, and `embedded::unpack_bundled` at
+    read time).
+  - `Store::export` reads every table inside one read transaction (one
+    snapshot).
 
 ## 3. Build, test, run
 
@@ -341,6 +352,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-11: engineering audit F14/F18/F21: export is one snapshot, bundle decode and every inflate are bounded, Cloud quotas are reserved atomically (§ 2).
 - 2026-11-09: a release with no new `changes/` lines says «تصليحات صغيرة وتنضيف.» on its page instead of repeating the previous release's lines (`scripts/release-notes.sh` reads the feed's newest history entry only when it is this version's).
 - 2026-11-09: the GitHub release page is written in Egyptian Arabic only (`scripts/release-notes.sh`); a `changes/` line without Arabic text is left out (Mohamed).
 - 2026-11-09: handoff and README reviewed against main: release `v2026.11.1`, Kabar Cloud deployed, open PRs, contents line.

@@ -57,11 +57,13 @@ pub fn unpack(packed: &[u8]) -> String {
     String::from_utf8(bytes).expect("embedded content is UTF-8")
 }
 
-/// A bundle's file, or None when it doesn't unpack (the built-in copy is
-/// used instead; `kabar-tools bundle build` checks every file, so this
-/// takes a broken download).
+/// A bundle's file, or None when it doesn't unpack or unpacks to more than
+/// `MAX_FILE_UNPACKED` (the built-in copy is used instead; `kabar-tools
+/// bundle build` and the download check every file, so this takes a broken
+/// or hostile file on disk).
 fn unpack_bundled(packed: &[u8]) -> Option<String> {
-    let bytes = miniz_oxide::inflate::decompress_to_vec(packed).ok()?;
+    let limit = kabar_protocol::bundle::MAX_FILE_UNPACKED;
+    let bytes = miniz_oxide::inflate::decompress_to_vec_with_limit(packed, limit).ok()?;
     String::from_utf8(bytes).ok()
 }
 
@@ -163,6 +165,16 @@ pub fn cached_data_url(mime: &'static str, bytes: &'static [u8]) -> &'static str
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_bundled_file_that_unpacks_too_big_is_not_used() {
+        let limit = kabar_protocol::bundle::MAX_FILE_UNPACKED;
+        let small = miniz_oxide::deflate::compress_to_vec(b"hello", 10);
+        assert_eq!(unpack_bundled(&small).as_deref(), Some("hello"));
+        let bomb = miniz_oxide::deflate::compress_to_vec(&vec![b'a'; limit + 1], 10);
+        assert!(bomb.len() < 100_000, "a tiny download");
+        assert_eq!(unpack_bundled(&bomb), None);
+    }
 
     #[test]
     fn round_trips_the_files_on_disk() {

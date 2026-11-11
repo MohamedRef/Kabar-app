@@ -75,23 +75,29 @@ fn cell(v: ValueRef<'_>) -> Value {
 }
 
 impl Store {
-    /// The whole local store as one JSON document.
+    /// The whole local store as one JSON document, read inside one read
+    /// transaction so every table comes from the same snapshot (a write
+    /// from another connection between two tables can't half-appear).
     pub fn export(&self, app_version: &str, now_ms: u64) -> Result<Export> {
-        let schema_version: u32 = self.conn.pragma_query_value(None, "user_version", |r| r.get(0))?;
+        let snapshot = self.conn.unchecked_transaction()?;
+        let conn: &rusqlite::Connection = &snapshot;
         let names: Vec<String> = {
-            let mut stmt = self.conn.prepare(
+            let mut stmt = conn.prepare(
                 "SELECT name FROM sqlite_master
                  WHERE type = 'table' AND name NOT LIKE 'sqlite_%' ORDER BY name",
             )?;
             stmt.query_map([], |r| r.get(0))?.collect::<rusqlite::Result<_>>()?
         };
+        let schema_version: u32 = conn.pragma_query_value(None, "user_version", |r| r.get(0))?;
 
         let mut tables = Map::new();
         let mut skipped = Vec::new();
         let mut total = 0u64;
         for name in names.into_iter().filter(|n| !is_secret_name(n)) {
+            #[cfg(test)]
+            tests::BETWEEN_TABLES.with(|f| f.borrow().as_ref().map(|f| f(&name)));
             // `name` comes from sqlite_master; quote it as an identifier anyway.
-            let mut stmt = self.conn.prepare(&format!("SELECT * FROM \"{}\"", name.replace('"', "\"\"")))?;
+            let mut stmt = conn.prepare(&format!("SELECT * FROM \"{}\"", name.replace('"', "\"\"")))?;
             let columns: Vec<String> = stmt.column_names().map(String::from).collect();
             let keep: Vec<bool> = columns.iter().map(|c| !is_secret_name(c)).collect();
             let key_cols: Vec<usize> = columns
@@ -127,6 +133,8 @@ impl Store {
             tables.insert(name, json!({ "columns": kept, "rows": rows }));
         }
 
+        // Read-only: ending it changes nothing.
+        snapshot.rollback()?;
         let count = tables.len();
         let document = json!({
             "format": "kabar-export",
@@ -150,6 +158,41 @@ mod tests {
     use kabar_protocol::sync::OpKind;
 
     use super::*;
+
+    type Hook = Option<Box<dyn Fn(&str)>>;
+
+    thread_local! {
+        /// Runs before each table is read, to write from elsewhere mid-export.
+        pub(super) static BETWEEN_TABLES: std::cell::RefCell<Hook> = const { std::cell::RefCell::new(None) };
+    }
+
+    #[test]
+    fn a_write_from_another_connection_mid_export_is_left_out() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("kabar.sqlite");
+        let store = Store::open(&path).unwrap();
+        store.set_meta("before", Some("1")).unwrap();
+        let other = path.clone();
+        BETWEEN_TABLES.with(|f| {
+            *f.borrow_mut() = Some(Box::new(move |table: &str| {
+                // Another connection (the sync thread, say) writes to a table
+                // this export hasn't read yet.
+                if table == "cards" {
+                    let c = rusqlite::Connection::open(&other).unwrap();
+                    c.execute("INSERT INTO meta (key, value) VALUES ('during', '2')", []).unwrap();
+                }
+            }))
+        });
+        let export = store.export("0.1.0", 1).unwrap();
+        BETWEEN_TABLES.with(|f| *f.borrow_mut() = None);
+        let text = serde_json::to_string(&export.document["tables"]["meta"]).unwrap();
+        assert!(text.contains("before"));
+        assert!(!text.contains("during"), "the export is one snapshot: {text}");
+        // The write itself went through; the next export has it.
+        let again =
+            serde_json::to_string(&store.export("0.1.0", 2).unwrap().document["tables"]["meta"]).unwrap();
+        assert!(again.contains("during"));
+    }
 
     const JWT: &str = "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhIn0.c2ln";
     const REFRESH: &str = "kr1.acct_1.dev-1.AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
