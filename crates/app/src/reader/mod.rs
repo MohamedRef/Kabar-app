@@ -1075,6 +1075,7 @@ fn ReadView(open: Open) -> Element {
                 grammar::TextGrammar {}
             }
             if panel_open {
+                crate::desk::Handle { pane: crate::settings::device::Pane::Panel }
                 card::PanelView {}
             }
         }

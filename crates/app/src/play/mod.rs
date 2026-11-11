@@ -100,15 +100,15 @@ fn screen(route: Route) -> Element {
     }
 }
 
-struct GameCard {
-    route: Route,
-    title: Msg,
-    blurb: Msg,
+pub(crate) struct GameCard {
+    pub(crate) route: Route,
+    pub(crate) title: Msg,
+    pub(crate) blurb: Msg,
     /// `gold` for Arabic Bridge games, `dawn` for the alarm.
     accent: &'static str,
 }
 
-const GAMES: [GameCard; 8] = [
+pub(crate) const GAMES: [GameCard; 8] = [
     GameCard { route: Route::Pagi, title: Msg::PagiTitle, blurb: Msg::PagiBlurb, accent: "indigo" },
     GameCard { route: Route::Deck, title: Msg::DeckTitle, blurb: Msg::DeckBlurb, accent: "gold" },
     GameCard {

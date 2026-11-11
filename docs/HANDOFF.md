@@ -71,7 +71,7 @@ Dioxus 0.7 (HTML/CSS UI in a WebView), SQLite, minimal Kotlin for Android.
 | `crates/core` | `kabar-core` | Pure logic: language engine, FSRS, coach (Kak Nur), journey, lessons, pacing, AI router, update checks. Builds for native and wasm32. |
 | `crates/protocol` | `kabar-protocol` | Every type that crosses a process boundary (sync, AI `EngineCall/Reply/Error`, update feed, content bundle). Versioned serde. |
 | `crates/content` | `kabar-content` | Content model, loaders and validation (`cargo test -p kabar-content` is the content gate). |
-| `crates/app` | `kabar-app` | The Dioxus app for Mac, Android and web (`--no-default-features --features web`): journey, lesson, review, reader, teach, listen, chat, play, studio, stats, settings, update, cloud, store, platform, `i18n.rs` (shared UI strings; a feature's own strings live in its `text.rs` / `msg.rs`). |
+| `crates/app` | `kabar-app` | The Dioxus app for Mac, Android and web (`--no-default-features --features web`): journey, lesson, review, reader, teach, listen, chat, play, studio, stats, settings, desk (⌘K quick search, resizable panes, review focus), update, cloud, store, platform, `i18n.rs` (shared UI strings; a feature's own strings live in its `text.rs` / `msg.rs`). |
 | `crates/server` | `kabar-server` | **Kabar Cloud**: Cloudflare Worker (workers-rs) + Durable Object `Account` per account (devices + sync hub) + `Login` DO per username; D1 `kabar` holds only `ai_cache` and `quota_usage`. `/v1/ai` proxies free AI engines; TTS via Azure F0; FCM push. |
 | `crates/tools` | `kabar-tools` | Build-time content pipeline: glosses, Bridge, bake-off, packs, dialect guard, explains, README numbers, update keygen/manifest/sign/verify (`cargo run -p kabar-tools -- --help`). |
 
@@ -355,7 +355,7 @@ Rules (Mohamed's decisions; all in force):
 - Shared plumbing with Batna: `docs/INFRA_PARITY.md` (audit F24, same file
   in both repos). A fix there says in its PR whether Batna needs it too.
 
-## 9. Current state (2026-11-09)
+## 9. Current state (2026-11-11)
 
 | Milestone | State |
 |---|---|
@@ -368,6 +368,7 @@ Rules (Mohamed's decisions; all in force):
 | Releases | `v2026.11.1` published 2026-11-08 (alpha channel, first calendar version); previews every 4 h |
 | Critic loop | final pass 10 done 2026-11-04; loop closed. Don't start another unless asked. |
 | Open PRs / issues | None on 2026-11-09 (#608, Android Google sign-in, merged 2026-11-05) |
+| Mac desk tools | ⌘K quick search, drag-to-resize sidebar and Reader word panel, review focus mode (`crates/app/src/desk/`, 2026-11-11, ported from Batna) |
 | Brand | K2 since 2026-11-08: kawung launcher icon on batik indigo; the same mark beside the name (`brand.rs`) |
 | Coverage | 94.42% when last measured 2026-11-04 (floor 93) |
 
@@ -401,6 +402,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-11: Mac desk tools ported from Batna (`crates/app/src/desk/`, `assets/desk.css`): ⌘K / Ctrl+K quick search over screens, Settings sections, games and every lesson of both routes (also Go › Quick Search… in the Mac menu, a sidebar row and a phone top-bar button); drag-to-resize sidebar and Reader word panel for mouse pointers (`pref.nav_width`, `pref.panel_width`, tenths of a rem, device-only); review-session focus mode on tablet and Mac (`pref.study_focus`, `data-study-focus`). Lessons already cover the sidebar, so they need no toggle.
 - 2026-11-11: Settings browser runs point apt at the first Ubuntu mirror that resolves (`scripts/ci-apt-install.sh`, from Batna #798) after ubuntu.com DNS failures broke `playwright install --with-deps`.
 - 2026-11-11: engineering audit F19 (rest): Stats and Journal read past moments with the offset in force then, so a summer review keeps its day and hour (§ 2).
 - 2026-11-11: engineering audit F23/F24: journey test, native QA matrix, weekly cargo audit, shared `docs/INFRA_PARITY.md` (§ 4, § 8).

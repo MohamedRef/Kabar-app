@@ -19,7 +19,7 @@ mod look;
 #[cfg(all(feature = "desktop", not(target_os = "android")))]
 pub mod menu;
 mod platform_sections;
-mod search;
+pub(crate) mod search;
 mod text;
 
 use dioxus::prelude::*;
@@ -120,7 +120,12 @@ impl Section {
             Self::About => S::AboutSub,
         }
     }
-    fn matches(self, query: &str) -> bool {
+    /// The section's name in `lang`, for quick search.
+    pub(crate) fn label(self, lang: kabar_core::locale::UiLanguage) -> &'static str {
+        st(lang, self.title())
+    }
+
+    pub(crate) fn matches(self, query: &str) -> bool {
         use kabar_core::locale::UiLanguage;
         let keywords = match self {
             Self::Learning => "pronunciation translation sounds vibration نطق ترجمة صوت اهتزاز",

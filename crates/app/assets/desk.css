@@ -1,0 +1,144 @@
+/* Desk tools (crate::desk): drag-to-resize panes, focus mode for review
+   sessions, and quick search (Ctrl/⌘+K). Logical properties only, so the
+   Arabic UI mirrors. Adapted from batna-app main: crates/app/assets/desk.css. */
+
+/* ---------- resizable panes ---------- */
+/* Saved widths arrive as --kb-nav-w and --kb-panel-w on <html>; main.css
+   reads them for the sidebar and the Reader's word panel. */
+
+/* The handles only exist for a mouse or trackpad: touch keeps the fixed
+   layout, so a tablet never drags the sidebar by accident. */
+.kb-resize { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .kb-resize {
+    display: flex; justify-content: center; align-items: center;
+    inline-size: 0.75rem; padding: 0; border: 0; background: transparent;
+    cursor: col-resize; touch-action: none;
+  }
+  .kb-resize:focus-visible { outline: 3px solid var(--focus, var(--primary)); outline-offset: -2px; border-radius: var(--radius-pill); }
+  .kb-resize-grip {
+    inline-size: 3px; block-size: clamp(3rem, 18vh, 7rem); border-radius: var(--radius-pill);
+    background: var(--line);
+    transition: background-color var(--dur) var(--ease), inline-size var(--dur) var(--ease);
+  }
+  .kb-resize:hover .kb-resize-grip, .kb-resize:focus-visible .kb-resize-grip,
+  .kb-resizing .kb-resize-grip { background: var(--primary, var(--indigo)); inline-size: 5px; }
+  .kb-resizing, .kb-resizing * { cursor: col-resize !important; user-select: none !important; -webkit-user-select: none !important; }
+
+  /* The sidebar's edge: over the line between the sidebar and the page. */
+  .kb-resize[data-pane="nav"] {
+    position: fixed; z-index: 12; inset-block: 0;
+    inset-inline-start: calc(var(--kb-nav-w, 15rem) - 0.375rem);
+  }
+  .kb-resize[data-pane="nav"] .kb-resize-grip { background: transparent; }
+  .kb-resize[data-pane="nav"]:hover .kb-resize-grip,
+  .kb-resize[data-pane="nav"]:focus-visible .kb-resize-grip,
+  .kb-resizing .kb-resize[data-pane="nav"] .kb-resize-grip { background: var(--primary, var(--indigo)); }
+  /* Only the labelled sidebar is resizable; the rail and the phone's bar
+     are not, and a hidden sidebar has no edge. */
+  .app:is([data-width="compact"], [data-width="medium"], [data-nav="slim"]) .kb-resize[data-pane="nav"],
+  .app:has(.reader.focus) .kb-resize[data-pane="nav"],
+  .app[data-study-focus="on"][data-focus="true"] .kb-resize[data-pane="nav"] { display: none; }
+
+  /* The Reader's word panel: a thin column between the text and the card. */
+  .app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .read-layout.with-panel {
+    grid-template-columns: minmax(0, 1fr) 0.75rem var(--kb-panel-w, 22rem);
+    column-gap: 0.25rem;
+  }
+  .read-layout.with-panel > .kb-resize[data-pane="panel"] { align-self: stretch; min-block-size: 8rem; }
+  .app:is([data-width="compact"], [data-width="medium"]) .kb-resize[data-pane="panel"] { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kb-resize-grip { transition: none; }
+}
+
+/* ---------- focus mode for review sessions ---------- */
+.focus-bar { display: none; }
+.app:not([data-width="compact"]) .focus-bar {
+  display: flex; justify-content: flex-end; margin-block-end: var(--sp-2, 0.5rem);
+}
+.focus-toggle {
+  display: inline-flex; align-items: center; gap: var(--sp-1, 0.25rem);
+  min-block-size: var(--tap); padding-inline: var(--sp-3, 0.75rem);
+  border: 1px solid var(--line); border-radius: var(--radius-pill);
+  background: var(--surface); color: var(--text); font-size: var(--fs-sm, 0.875rem); font-weight: 600;
+}
+.focus-toggle:hover { border-color: var(--primary, var(--indigo)); }
+.focus-toggle[aria-pressed="true"] { background: var(--soft); color: var(--indigo); border-color: color-mix(in srgb, var(--indigo) 30%, var(--line)); }
+/* On: the sidebar or rail steps aside while a session holds the screen. */
+.app[data-study-focus="on"][data-focus="true"]:not([data-width="compact"]) .shell { grid-template-columns: minmax(0, 1fr); }
+.app[data-study-focus="on"][data-focus="true"]:not([data-width="compact"]) .nav { display: none; }
+
+/* ---------- quick search ---------- */
+.nav-search .nav-kbd {
+  margin-inline-start: auto; font-size: var(--fs-xs, 0.75rem); color: var(--muted);
+  border: 1px solid var(--line-soft, var(--line)); border-radius: var(--radius-sm, 6px); padding: 0 0.3rem;
+}
+/* The rail and the phone's bar have no room for the key hint. */
+.app:is([data-width="compact"], [data-width="medium"], [data-nav="slim"]) .nav-search .nav-kbd { display: none; }
+.app[data-width="compact"] .nav-search { display: none; }
+@media not ((hover: hover) and (pointer: fine)) {
+  .nav-search .nav-kbd, .qs-kbd { display: none; }
+}
+
+.qs-backdrop { position: fixed; inset: 0; z-index: 60; background: rgb(0 0 0 / 0.35); }
+.quick-search {
+  position: fixed; z-index: 61;
+  inset-block-start: clamp(1rem, 11vh, 6rem); inset-inline: 0; margin-inline: auto;
+  inline-size: min(40rem, calc(100vw - 1.5rem)); max-block-size: calc(100dvh - 2rem);
+  display: flex; flex-direction: column; gap: var(--sp-3, 0.75rem);
+  padding: var(--sp-4, 1rem);
+  background: var(--glass-solid, var(--surface)); color: var(--text);
+  border: 1px solid var(--line); border-radius: var(--radius-sheet, 20px);
+  box-shadow: 0 16px 60px rgb(0 0 0 / 0.22);
+}
+.qs-head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3, 0.75rem); }
+.qs-head h2 { margin: 0; font-size: var(--fs-lg, 1.15rem); }
+.qs-row {
+  display: flex; align-items: center; gap: var(--sp-2, 0.5rem);
+  padding-inline: var(--sp-3, 0.75rem);
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius, 12px);
+}
+.qs-row:focus-within { outline: 3px solid var(--focus, var(--primary)); outline-offset: 1px; }
+.qs-glass { display: inline-flex; color: var(--muted); }
+.qs-glass svg { inline-size: 1.2rem; block-size: 1.2rem; }
+.qs-field {
+  flex: 1; min-inline-size: 0; min-block-size: var(--tap-lg, 52px);
+  padding: 0; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 1.05rem;
+}
+.qs-field:focus, .qs-field:focus-visible { outline: none; }
+.qs-kbd { flex: none; color: var(--muted); }
+.qs-results {
+  display: flex; flex-direction: column; gap: 2px;
+  min-block-size: 0; max-block-size: min(60dvh, 30rem); overflow-y: auto; overscroll-behavior: contain;
+}
+.qs-result {
+  display: flex; flex-direction: column; align-items: stretch; gap: 0.1rem;
+  min-block-size: var(--tap-lg, 52px); padding: var(--sp-2, 0.5rem) var(--sp-3, 0.75rem);
+  border: 1px solid transparent; border-radius: var(--radius, 12px);
+  background: transparent; color: var(--text); text-align: start; cursor: pointer;
+}
+.qs-result:hover, .qs-result:focus-visible { background: var(--soft); border-color: color-mix(in srgb, var(--indigo) 25%, var(--line)); }
+.qs-result:focus-visible { outline: 3px solid var(--focus, var(--primary)); outline-offset: 0; }
+.qs-name { font-weight: 600; overflow-wrap: anywhere; }
+.qs-sub { font-size: var(--fs-sm, 0.875rem); color: var(--muted); overflow-wrap: anywhere; }
+.qs-empty { padding: var(--sp-4, 1rem); color: var(--muted); margin: 0; }
+.qs-hint { margin: 0; color: var(--muted); font-size: var(--fs-sm, 0.875rem); }
+@media not ((hover: hover) and (pointer: fine)) {
+  .qs-hint { display: none; }
+}
+@media (max-width: 599.98px) {
+  /* Room for Android's keyboard: the list shrinks and scrolls. */
+  .quick-search {
+    inset-block-start: max(0.5rem, env(safe-area-inset-top, 0px));
+    max-block-size: calc(100dvh - 1rem - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    padding: var(--sp-3, 0.75rem);
+  }
+  .qs-results { flex: 1 1 auto; max-block-size: none; }
+}
+@media (prefers-contrast: more), (forced-colors: active) {
+  .quick-search, .qs-result:focus-visible { border-width: 2px; }
+}
+
+/* The phone's top bar: quick search beside the gear. */
+.top-actions { display: flex; align-items: center; gap: var(--sp-1, 0.25rem); }

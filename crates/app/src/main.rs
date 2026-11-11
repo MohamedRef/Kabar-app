@@ -20,6 +20,7 @@ mod coach;
 mod cost;
 mod data_export;
 mod dead_ends;
+mod desk;
 mod diag;
 mod embedded;
 mod focus;
@@ -308,6 +309,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         style { {reader::grammar::CSS.text()} }
         style { {sheet::CSS.text()} }
         style { {LIQUID_GLASS_CSS.text()} }
+        style { {desk::CSS.text()} }
         style { {ui_fonts} }
         style { {misc_art::paper_css()} }
         div {
@@ -320,6 +322,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             "data-width": width,
             "data-text-size": text_size,
             "data-nav": nav_style,
+            "data-study-focus": on_off(*prefs.study_focus.read()),
             "data-pen-hover": pen_hover,
             "data-mouse-hover": mouse_hover,
             "data-word-colours": word_colours,

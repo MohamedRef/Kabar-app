@@ -27,6 +27,9 @@ the Arabic words Indonesian already borrowed.
 | Reader with word popovers, Arabic Bridge, speech levels, Arabic-script pronunciation | ✓ | ✓ | ✓ |
 | Reader library (texts, saved words, downloads) and Arabic Bridge list | ✓ | ✓ | ✓ |
 | Reader reading settings (size, spacing, line width) and focus mode | ✓ + focus | ✓ one-line bar | ✓ + focus |
+| Quick search (⌘K / Ctrl+K or the search button): any lesson, screen, game or Settings section, offline | ✓ ⌘K, Go › Quick Search | ✓ search button in the top bar | ✓ |
+| Drag to resize the sidebar and the Reader's word panel (kept per device) | ✓ | — | — |
+| Focus mode for review sessions (hides the sidebar) | ✓ | — (a session already has the whole screen) | ✓ |
 | Screenshot Decoder | ✓ Apple Vision OCR | ✓ ML Kit OCR | ✓ ML Kit OCR |
 | Share-to-Kabar (text, selection, screenshots) | — | ✓ | ✓ |
 | Pen pointing in the Reader: hover to peek, tap, lasso a phrase, highlight | — | ✓ S Pen | ✓ S Pen |

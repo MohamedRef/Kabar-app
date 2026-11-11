@@ -413,7 +413,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .app[data-width="medium"] .nav-item { flex-direction: column; gap: 0.1rem; font-size: 0.72rem; }
 
 /* expanded and up: sidebar */
-.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .shell { grid-template-columns: 15rem 1fr; }
+/* --kb-nav-w: the width dragged on the Mac (desk.css). */
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .shell { grid-template-columns: var(--kb-nav-w, 15rem) 1fr; }
 .app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .nav {
   flex-direction: column; border-inline-end: 1px solid var(--line); padding: 1rem; gap: 0.25rem;
 }
@@ -1055,7 +1056,7 @@ button.icon-button { inline-size: var(--tap); padding: 0; flex: none; }
 .recent-item:hover { background: var(--surface-2); }
 
 .read-layout { display: grid; gap: 1rem; align-items: start; }
-.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .read-layout.with-panel { grid-template-columns: minmax(0, 1fr) 22rem; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .read-layout.with-panel { grid-template-columns: minmax(0, 1fr) var(--kb-panel-w, 22rem); }
 .read-card { position: relative; }
 
 /* the text itself: always Latin, always LTR, generous for reading */

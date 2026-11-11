@@ -32,11 +32,11 @@ Data lives in `~/Library/Application Support/app.Kabar.Kabar/kabar.db`. Delete i
 
 | Where | How to open it |
 |---|---|
-| Mac | **Kabar › Settings…** in the menu bar, or **⌘,**. The menu bar also has Edit (⌘C/⌘V), **Go** (⌘1 Today … ⌘7 Chat), Window and Help › Keyboard Shortcuts. |
+| Mac | **Kabar › Settings…** in the menu bar, or **⌘,**. The menu bar also has Edit (⌘C/⌘V), **Go** (⌘1 Today … ⌘7 Chat, and Quick Search… ⌘K), Window and Help › Keyboard Shortcuts. |
 | Phone | the **gear** at the top of every screen (or Settings in Today's links) |
 | Tablet and wide windows | **Settings**, pinned to the foot of the side bar |
 
-Sections: Learning (pronunciation, translation under sentences, sounds), Look & language (language, theme, text size, digits), Kak Nur & reminders, Android (notifications for the lock-screen player, background audio, S Pen hover, App info), Tablet (slim side bar, layout), Mac (shortcuts, mouse hover peek, slim side bar, Quick Lookup coming later), Offline & storage (packs, export, data folder, what happened lately), Account & sync (Kabar Cloud, devices, Cost & limits) and About. Android, Tablet and Mac only appear on those devices. Choices marked "This device only" (text size, hover peek, side bar) stay on that device; the rest sync. Escape closes the sheet. `KABAR_OPEN_SETTINGS=<section>` (`learning`, `look`, `coach`, `mac`, `storage`, `account`, `about`…) opens it at launch for previews.
+Sections: Learning (pronunciation, translation under sentences, sounds), Look & language (language, theme, text size, digits), Kak Nur & reminders, Android (notifications for the lock-screen player, background audio, S Pen hover, App info), Tablet (slim side bar, layout), Mac (shortcuts, mouse hover peek, slim side bar, Quick Lookup coming later), Offline & storage (packs, export, data folder, what happened lately), Account & sync (Kabar Cloud, devices, Cost & limits) and About. Android, Tablet and Mac only appear on those devices. Choices marked "This device only" (text size, hover peek, side bar) stay on that device; the rest sync. Escape closes the sheet. Settings sections also show up in quick search (⌘K / Ctrl+K, or the search button in the sidebar and the phone's top bar), which jumps to any lesson, screen or game too. On the Mac, drag the sidebar's edge or the line beside the Reader's word panel to resize them (arrow keys on the focused line work too; double-click puts the default back); the widths stay on that device. In a review session on a tablet or the Mac, **Focus mode** hides the sidebar until you press it again. `KABAR_OPEN_SETTINGS=<section>` (`learning`, `look`, `coach`, `mac`, `storage`, `account`, `about`…) opens it at launch for previews.
 
 ## 3. Galaxy S24 Ultra and Tab S11
 
