@@ -80,7 +80,7 @@ impl DocGrammar {
 /// What the learner's routes teach and how far they've got.
 pub fn syllabus(db: &Db) -> Syllabus {
     let store = db.0.borrow();
-    let completed = store.completed_lessons().unwrap_or_default();
+    let completed = crate::persistence::read_or("finished lessons", store.completed_lessons());
     let start = store.placement().ok().flatten().map(|p| p.start_level);
     let mut s = Syllabus::default();
     for lang in ["id", "jv"] {

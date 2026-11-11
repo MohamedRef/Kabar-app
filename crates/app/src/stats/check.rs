@@ -731,7 +731,7 @@ fn PaceNote() -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let coach = use_context::<Coach>();
-    let log = db.0.borrow().review_log().unwrap_or_default();
+    let log = crate::persistence::read_or("the review log", db.0.borrow().review_log());
     let totals = core_stats::day_totals(&coach.events.read(), &log, coach.offset());
     let Some(p) = pace::pace(&totals, coach.today()) else { return rsx! {} };
     let text = stf(

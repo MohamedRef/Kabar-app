@@ -57,7 +57,7 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
     let last = use_signal(now_ms);
     let revealed = use_signal(|| 1usize);
     let audio_missing = use_signal(|| false);
-    let mut finished = use_signal(|| false);
+    let finished = use_signal(|| false);
     // Listening items skipped because the device has no voice for them.
     let mut voice_skips = use_signal(|| 0u32);
     // The one step that carries the "no voice" note (see `voice_note_step`).
@@ -78,6 +78,46 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
             speak(&text, &p.lesson().language, false, audio.as_deref(), audio_missing);
         }
     });
+
+    // The lesson's result, its new cards and the cleared position land in one
+    // transaction (`Store::atomically`), or none of them and the summary says
+    // so with a retry (engineering audit F09). Evidence and the coach's log
+    // follow once it is saved.
+    let finish_failed = use_signal(|| false);
+    let finish_now = move || {
+        let p = player.peek();
+        let saved = {
+            let db = db.read();
+            let mut store = db.0.borrow_mut();
+            // The new words join the review deck, checked only if the
+            // learner already checked this lesson's content.
+            let approved = store.verified_lessons().is_ok_and(|v| v.contains_key(&p.lesson().id));
+            store.atomically(|store| {
+                store.record_lesson_event(&p.lesson().id, "completed", &p.completed())?;
+                if !episode {
+                    store.add_lesson_cards(p.lesson(), approved)?;
+                    store.clear_position()?;
+                }
+                Ok(())
+            })
+        };
+        if let Err(e) = saved {
+            crate::diag::report!("saving the lesson result failed: {e}");
+            let mut failed = finish_failed;
+            failed.set(true);
+            return;
+        }
+        let mut failed = finish_failed;
+        failed.set(false);
+        let mut finished = finished;
+        finished.set(true);
+        // First tries on words already in the deck move their reviews.
+        let language = if p.lesson().language == "jv" { StudyLanguage::Jv } else { StudyLanguage::Id };
+        let signals = kabar_core::review::lesson_signals(p.lesson(), &p.completed().results);
+        let db = db.read();
+        crate::review::note_evidence(&db, &coach, language, &signals);
+        if episode { log_episode(coach, &db, &p) } else { log_activity(coach, &db, &p) }
+    };
 
     // Mutates the player, then: time, Lanjut position, fresh draft, audio,
     // and the `completed` event once the summary is reached.
@@ -103,33 +143,13 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
         let p = player.peek();
         if p.step() == Step::Summary {
             if !*finished.peek() {
-                finished.set(true);
-                let db = db.read();
-                {
-                    let mut store = db.0.borrow_mut();
-                    if let Err(e) = store.record_lesson_event(&p.lesson().id, "completed", &p.completed()) {
-                        crate::diag::report!("saving the lesson result failed: {e}");
-                    }
-                    // The new words join the review deck, checked only if the
-                    // learner already checked this lesson's content.
-                    let approved = store.verified_lessons().is_ok_and(|v| v.contains_key(&p.lesson().id));
-                    if !episode && let Err(e) = store.add_lesson_cards(p.lesson(), approved) {
-                        crate::diag::report!("adding the lesson's words to review failed: {e}");
-                    }
-                    if !episode && let Err(e) = store.clear_position() {
-                        crate::diag::report!("clearing the lesson position failed: {e}");
-                    }
-                }
-                // First tries on words already in the deck move their reviews.
-                let language =
-                    if p.lesson().language == "jv" { StudyLanguage::Jv } else { StudyLanguage::Id };
-                let signals = kabar_core::review::lesson_signals(p.lesson(), &p.completed().results);
-                crate::review::note_evidence(&db, &coach, language, &signals);
-                if episode { log_episode(coach, &db, &p) } else { log_activity(coach, &db, &p) }
+                drop(p);
+                finish_now();
             }
         } else if !episode {
             save(db, &pos);
         }
+        let p = player.peek();
         if let Some((text, audio)) = p.exercise().and_then(autoplay_text) {
             speak(&text, &p.lesson().language, false, audio.as_deref(), audio_missing);
         }
@@ -435,6 +455,12 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
                             }
                         },
                         Step::Summary => rsx! {
+                            if finish_failed() {
+                                div { class: "save-notice lp-finish-unsaved", role: "alert", aria_atomic: "true",
+                                    p { {lt(lang, L::FinishUnsaved)} }
+                                    button { class: "secondary save-retry", onclick: move |_| finish_now(), {lt(lang, L::FinishRetry)} }
+                                }
+                            }
                             SummaryView { lesson: lesson.clone(), passed, check_content: !episode, summary_score: summary.score, summary_xp: summary.xp, duration_ms: summary.duration_ms, mistakes: summary.mistakes.clone(), perfect: summary.graded > 0 && summary.correct == summary.graded }
                         },
                     }

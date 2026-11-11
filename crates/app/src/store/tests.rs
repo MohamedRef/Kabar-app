@@ -337,6 +337,38 @@ fn position_is_last_writer_wins_and_survives_reopen() {
     assert_eq!(store.position().unwrap(), None);
 }
 
+#[test]
+fn a_finish_lands_whole_or_not_at_all() {
+    use kabar_protocol::lesson::LessonStep;
+    let mut store = Store::open_in_memory().unwrap();
+    let pos = LessonPosition {
+        lesson_id: "bipa1.u01.l02".into(),
+        step: LessonStep::Exercise { id: "e04".into(), retry: false },
+        progress: None,
+        response: None,
+    };
+    store.save_position(&pos).unwrap();
+    let finish = |store: &mut Store| {
+        store.atomically(|s| {
+            s.record_lesson_event("bipa1.u01.l02", "completed", &serde_json::json!({ "score": 9 }))?;
+            s.clear_position()?;
+            Ok(())
+        })
+    };
+    // The second write fails (no sessions table): the first is undone too.
+    store.conn.execute_batch("ALTER TABLE sessions RENAME TO away").unwrap();
+    assert!(finish(&mut store).is_err());
+    store.conn.execute_batch("ALTER TABLE away RENAME TO sessions").unwrap();
+    assert!(store.lesson_events("bipa1.u01.l02").unwrap().is_empty(), "no result without its cleared place");
+    assert_eq!(store.position().unwrap(), Some(pos));
+    let queued = store.outbox_len().unwrap();
+    // Retried: both land, and the store works as before.
+    finish(&mut store).unwrap();
+    assert_eq!(store.lesson_events("bipa1.u01.l02").unwrap().len(), 1);
+    assert_eq!(store.position().unwrap(), None);
+    assert_eq!(store.outbox_len().unwrap(), queued + 2);
+}
+
 /// What the hub would send: the ops in `from`'s outbox, numbered.
 fn relay(from: &Store, first_seq: u64) -> Vec<SeqOp> {
     from.outbox(100)

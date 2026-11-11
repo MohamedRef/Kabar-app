@@ -185,7 +185,7 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
     let cache = try_use_context::<AudioCache>();
     let _ = revision; // A new value re-renders the lists.
     let completed: BTreeSet<String> = db.0.borrow().completed_lessons().unwrap_or_else(|e| {
-        crate::diag::report!("reading finished lessons failed: {e}");
+        crate::persistence::read_failed("finished lessons", &e);
         BTreeSet::new()
     });
     let start = db.0.borrow().placement().ok().flatten().map(|p| p.start_level);

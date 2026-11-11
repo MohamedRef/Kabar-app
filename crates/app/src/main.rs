@@ -181,7 +181,7 @@ fn App() -> Element {
 
 #[component]
 fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
-    let initial = use_hook(|| db.0.borrow().settings().unwrap_or_default());
+    let initial = use_hook(|| crate::persistence::read_or("settings", db.0.borrow().settings()));
     // KABAR_OPEN_LESSON=bipa1.u01.l01 opens the Lesson Player at launch
     // (previews and screenshots on the Mac).
     let open_lesson = use_hook(|| std::env::var("KABAR_OPEN_LESSON").ok());

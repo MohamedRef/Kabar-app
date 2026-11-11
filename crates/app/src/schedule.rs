@@ -56,7 +56,7 @@ pub fn scheduler_at(utc_offset_min: i16, settings: &Settings) -> Rc<Scheduler> {
 /// Review, Stats, the level check, Today and Kabar Pagi all use this.
 pub fn scheduler(coach: &Coach, store: &Store) -> Rc<Scheduler> {
     let settings = store.settings().unwrap_or_else(|e| {
-        crate::diag::report!("reading settings for the scheduler failed: {e}");
+        crate::persistence::read_failed("settings for the scheduler", &e);
         Settings::default()
     });
     scheduler_at(coach.offset(), &settings)

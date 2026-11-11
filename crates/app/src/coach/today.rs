@@ -25,7 +25,7 @@ pub(crate) const COACH_CSS: crate::embedded::Css = crate::embedded::css!("assets
 /// The lesson a lesson step opens: the unit's next lesson, or the Journey's
 /// next one once that unit is finished. `None` when neither is known.
 fn lesson_for(db: &Db, coach: Coach, unit_id: &str) -> Option<String> {
-    let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+    let completed = crate::persistence::read_or("finished lessons", db.0.borrow().completed_lessons());
     crate::journey::next_lesson_in(unit_id, &completed).or_else(|| journey_next(db, coach, &completed))
 }
 
@@ -239,7 +239,7 @@ fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> E
         }
     };
     let Some(step) = step else {
-        let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+        let completed = crate::persistence::read_or("finished lessons", db.0.borrow().completed_lessons());
         let more = journey_next(&db, coach, &completed);
         let title = more.as_deref().and_then(crate::journey::lesson_title);
         return rsx! {

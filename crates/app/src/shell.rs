@@ -104,7 +104,8 @@ pub(super) fn Shell() -> Element {
             if top_bar {
                 more::TopBar { current }
             }
-            main { class: "content", key: "{current:?}-{generation}",
+            main { class: "content", key: "{current:?}-{generation}-{persistence::READ_RETRY}",
+                persistence::ReadNotice {}
                 if !settings_open { persistence::SaveNotice {} }
                 match current {
                     Screen::Today => rsx! { coach::today::Today {} },

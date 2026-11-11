@@ -110,6 +110,14 @@ Key design rules (also in `CLAUDE.md`):
     read time).
   - `Store::export` reads every table inside one read transaction (one
     snapshot).
+  - Finishing a lesson (`completed` event, new cards, cleared position) is
+    one write: `Store::atomically` (a savepoint; `write_synced`,
+    `append_event` and `upsert_cards` use savepoints so they nest). A refusal
+    keeps the summary with «احفظ تاني» and doesn't count the lesson.
+  - Store reads in the UI go through `persistence::read_or`/`read_failed`,
+    never a silent `unwrap_or_default()`; `ReadNotice` says so above every
+    screen and «اقرأ تاني» remounts the screen (`READ_RETRY`). Evidence is
+    skipped, not scheduled with default settings, when settings can't be read.
 
 ## 3. Build, test, run
 
@@ -352,6 +360,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-11: engineering audit F09/F10: a lesson's finish is one transaction with a retry; failed reads are announced above every screen with «اقرأ تاني» (§ 2).
 - 2026-11-11: engineering audit F14/F18/F21: export is one snapshot, bundle decode and every inflate are bounded, Cloud quotas are reserved atomically (§ 2).
 - 2026-11-09: a release with no new `changes/` lines says «تصليحات صغيرة وتنضيف.» on its page instead of repeating the previous release's lines (`scripts/release-notes.sh` reads the feed's newest history entry only when it is this version's).
 - 2026-11-09: the GitHub release page is written in Egyptian Arabic only (`scripts/release-notes.sh`); a `changes/` line without Arabic text is left out (Mohamed).
