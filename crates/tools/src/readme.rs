@@ -249,7 +249,7 @@ fn levels(
         let mut r = LevelRow {
             code: str_of(&level["code"]),
             place: str_of(&level["journey"]["place"]),
-            cefr: str_of(&level["cefr"]["approx"]),
+            cefr: cefr_label(&level["cefr"]),
             target: level["vocab_target"].as_u64(),
             ..LevelRow::default()
         };
@@ -304,6 +304,18 @@ fn sum_yaml(dir: &Path, f: impl Fn(&Value) -> usize) -> Result<usize> {
 
 fn len(v: &Value) -> usize {
     v.as_array().map_or(0, Vec::len)
+}
+
+/// A level's CEFR label. A low-confidence one is the level's aim, not a
+/// measured result (#633: BIPA 5–7 lessons don't yet ask more than BIPA 4),
+/// so it says so.
+fn cefr_label(cefr: &Value) -> String {
+    let approx = str_of(&cefr["approx"]);
+    if approx.is_empty() || cefr["confidence"].as_str() != Some("low") {
+        approx
+    } else {
+        format!("{approx} (aim)")
+    }
 }
 
 fn str_of(v: &Value) -> String {

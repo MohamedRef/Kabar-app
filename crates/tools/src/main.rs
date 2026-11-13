@@ -15,6 +15,7 @@ mod bridge;
 mod changes;
 mod content;
 mod coverage;
+mod demand;
 mod dialect;
 mod explains;
 mod freq;
@@ -81,6 +82,8 @@ enum Command {
     Update(update::Cmd),
     /// Unknown-word share of Sinetron, Radio and lesson dialogues against the curriculum.
     Coverage(coverage::Args),
+    /// What an Indonesian lesson asks per level: text lengths, Arabic-only options (#633).
+    Demand(demand::Args),
     /// Share of closed exercises with an `explain`, per level (#140).
     Explains(explains::Args),
     /// Surabaya and Semarang forms left in the Javanese track (Jogja + Madiun only).
@@ -125,6 +128,7 @@ fn dispatch(cli: Cli) -> Result<()> {
         Command::Update(cmd) => update::run(&root, cmd),
         Command::Ids(cmd) => ids::run(&root, cmd),
         Command::Coverage(args) => coverage::run(&root, args),
+        Command::Demand(args) => demand::run(&root, args),
         Command::Explains(args) => explains::run(&root, args),
         Command::Dialect(args) => dialect::run(&root, args),
         Command::Schemas { check } => schemas::run(&root, check),
