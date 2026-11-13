@@ -68,17 +68,21 @@ exercises:
     words: [beta, ale, katong, seng, basudara]
   - id: e02
     type: listen
-    text: Ale dari mana? Beta dari Ambon.
+    text: Di pelabuhan, dua orang muda berkenalan. Yang pertama bertanya, "Ale dari mana?" Yang kedua menjawab, "Beta dari Ambon. Beta datang ke sini untuk kuliah."
     question:
       ar_eg: التاني جاي منين؟
       ar: من أين المتكلّم الثاني؟
       en: Where is the second speaker from?
     options:
-      - من سورونج.
-      - من أمبون.
-      - من مانادو.
+      - Orang kedua berasal dari Sorong dan datang untuk bekerja.
+      - Orang kedua berasal dari Ambon dan datang untuk kuliah.
+      - Orang kedua berasal dari Manado dan sedang berlibur.
     answer: 1
     words: [ale, beta]
+    explain:
+      ar_eg: ale = kamu، وbeta = saya. التاني قال Beta dari Ambon = أنا من أمبون، وجاي عشان الجامعة (kuliah). سورونج ومانادو مااتقالوش.
+      ar: ale = kamu، وbeta = saya، فالثاني من أمبون وجاء للدراسة الجامعيّة، ولم يُذكر سورونغ ولا مانادو.
+      en: 'ale = kamu, beta = saya: the second is from Ambon, there to study.'
   - id: e03
     type: multiple_choice
     question_meaning:
@@ -86,15 +90,15 @@ exercises:
       ar: ما معنى «Beta seng lapar»؟
       en: What does "Beta seng lapar" mean?
     options:
-      - أنا جعان أوي.
-      - إنت جعان؟
-      - أنا مش جعان.
+      - Saya lapar sekali.
+      - Kamu lapar?
+      - Saya tidak lapar.
     answer: 2
     words: [beta, seng]
     explain:
-      ar_eg: في أمبون beta = أنا، وseng = مش. يبقى Beta seng lapar = أنا مش جعان.
-      ar: في أمبون beta = أنا وseng = لا، فـ Beta seng lapar = لست جائعًا.
-      en: "In Ambon beta = I, seng = not: I'm not hungry."
+      ar_eg: beta = saya، وseng = tidak. يبقى «Beta seng lapar» = Saya tidak lapar = أنا مش جعان.
+      ar: beta = saya، وseng = tidak، فـ«Beta seng lapar» = Saya tidak lapar.
+      en: 'beta = saya, seng = tidak: Saya tidak lapar.'
   - id: e04
     type: fill_blank
     sentence: Katong samua ___. Jang bakalai!
@@ -141,18 +145,22 @@ exercises:
   - id: e07
     type: translate
     direction: from_target
-    source_text: Beta pung rumah dekat pantai. Ale mau datang?
+    source_text: Beta pung rumah dekat pantai, jadi kalau ale mau datang, katong bisa makan ikan sama-sama.
     answers_meaning:
       ar_eg:
-        - بيتي جنب البحر. عايز تيجي؟
-        - بيتي قريّب من الشط. تحب تيجي؟
+        - بيتي قريب من البحر، فلو إنت عايز تيجي، نقدر ناكل سمك مع بعض.
+        - بيتي جنب الشط، وعشان كده لو حابب تيجي ناكل سمك سوا.
       ar:
-        - بيتي قرب الشاطئ، أتريد أن تأتي؟
-        - بيتي قريب من البحر، هل تودّ المجيء؟
+        - بيتي قريب من الشاطئ، فإن أردت المجيء أكلنا السمك معًا.
+        - منزلي قرب البحر، لذا إن شئت الحضور تناولنا السمك سويًّا.
       en:
-        - My house is near the beach. Do you want to come?
-        - My place is close to the shore. Want to come over?
+        - My house is near the beach, so if you want to come, we can eat fish together.
+        - My place is close to the beach, so if you'd like to come over we can have fish together.
     words: [beta, ale]
+    explain:
+      ar_eg: beta pung rumah = rumah saya (بيتي)، ale = إنت، katong = kita. jadi = فـ، وkalau = لو.
+      ar: beta pung rumah = بيتي، وale = أنت، وkatong = نحن، وjadi = لذا، وkalau = إن.
+      en: beta pung rumah = my house; ale = you; katong = we; jadi = so; kalau = if.
   - id: e08
     type: speaking
     text: Katong samua basudara.
