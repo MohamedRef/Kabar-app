@@ -88,16 +88,20 @@ exercises:
       en: "\"Following up on\" is Menindaklanjuti. Lampiran is an attachment, and Hormat kami the sign-off."
   - id: e04
     type: listen
-    text: Atas perhatiannya, kami ucapkan terima kasih. Hormat kami, tim penjualan.
+    text: Kami lampirkan daftar harga terbaru dalam email ini. Atas perhatiannya, kami ucapkan terima kasih. Hormat kami, tim penjualan.
     question:
       ar_eg: ده أنهي جزء من الإيميل؟
-      ar: أيّ جزء من الرسالة هذا؟
+      ar: أيّ جزء من البريد هذا؟
       en: Which part of the email is this?
     options:
-      - الختام.
-      - الافتتاح.
-      - المرفق.
+      - Bagian penutup.
+      - Bagian pembuka.
+      - Isi lampiran.
     answer: 0
+    explain:
+      ar_eg: atas perhatiannya … terima kasih وhormat kami = جمل الختام. الافتتاح dengan hormat، والمرفق هو قايمة الأسعار نفسها.
+      ar: atas perhatiannya … terima kasih وhormat kami عبارات الختام؛ أمّا الافتتاح فـ dengan hormat، والمرفق قائمة الأسعار نفسها.
+      en: These are closing lines. The opening is dengan hormat; the attachment is the price list itself.
     words: [atas perhatiannya, hormat kami, tim]
   - id: e05
     type: build_sentence
@@ -159,17 +163,21 @@ exercises:
   - id: e10
     type: translate
     direction: from_target
-    source_text: Dengan hormat, bersama ini kami kirimkan lampiran kontrak.
+    source_text: Dengan hormat, bersama ini kami kirimkan lampiran kontrak supaya Bapak dapat memeriksanya sebelum rapat.
     answers_meaning:
       ar_eg:
-        - تحية طيبة وبعد، مبعوت لكم مع الإيميل ده مرفق العقد.
-        - تحية طيبة، بنبعت لكم العقد كمرفق.
+        - تحية طيبة وبعد، مبعوت لكم مع الإيميل ده مرفق العقد علشان حضرتك تراجعه قبل الاجتماع.
+        - تحية طيبة، بنبعت لحضرتك العقد كمرفق علشان تبص عليه قبل الاجتماع.
       ar:
-        - تحيّة طيّبة وبعد، نرسل إليكم طيّه مرفق العقد.
-        - تحيّة طيّبة، نرفق لكم العقد مع هذه الرسالة.
+        - تحيّة طيّبة وبعد، نرسل إليكم طيّه مرفق العقد لكي تتمكّنوا من مراجعته قبل الاجتماع.
+        - تحيّة طيّبة، نرفق لكم العقد مع هذه الرسالة لتراجعوه قبل الاجتماع.
       en:
-        - Dear Sir, please find the contract attached.
-        - Dear Sir or Madam, we enclose the contract with this email.
+        - Dear Sir, please find the contract attached so that you can check it before the meeting.
+        - Dear Sir or Madam, we enclose the contract so you can review it before the meeting.
+    explain:
+      ar_eg: "bersama ini = مع الجواب ده (مرفق)، وsupaya = علشان (الهدف: يراجعه قبل الاجتماع)."
+      ar: "bersama ini = طيّه / مرفقًا، وsupaya = لكي (الغاية: المراجعة قبل الاجتماع)."
+      en: "bersama ini = herewith; supaya = so that (the aim: checking it before the meeting)."
     words: [dengan hormat, lampiran]
 dialogue:
   title: Email pertama

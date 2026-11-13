@@ -80,17 +80,24 @@ exercises:
     words: [laris, terjangkau, kompetitif, porsi]
   - id: e03
     type: listen
-    text: 'Harga kami kompetitif: lebih murah daripada toko lain.'
+    text: "Rendang kami dibuat dengan resep keluarga dari Bukittinggi. Harga kami kompetitif: lebih murah daripada toko lain. Untuk pembelian grosir, ada potongan harga lagi."
     question:
       ar_eg: أسعارهم عاملة إزاي؟
       ar: كيف أسعارهم؟
       en: What are their prices like?
-    options: [سعرهم منافس, سعرهم غالي, سعرهم ثابت]
+    options:
+      - Lebih murah daripada toko lain.
+      - Lebih mahal daripada toko lain.
+      - Sama untuk semua pembeli.
     answer: 0
     meaning:
-      ar_eg: 'أسعارنا منافسة: أرخص من المحلات التانية.'
-      ar: 'أسعارنا تنافسية: أرخص من المتاجر الأخرى.'
-      en: 'Our prices are competitive: cheaper than other shops.'
+      ar_eg: "الرندانج بتاعنا معمول بوصفة العيلة من بوكيتينجي. أسعارنا منافسة: أرخص من المحلات التانية. وللشرا بالجملة فيه خصم كمان."
+      ar: "يُصنع الرندانغ لدينا بوصفة عائلية من بوكيتينغي. أسعارنا منافسة: أرخص من المتاجر الأخرى، وللشراء بالجملة خصم إضافيّ."
+      en: "Our rendang is made with a family recipe from Bukittinggi. Our prices are competitive: cheaper than other shops. Wholesale buyers get an extra discount."
+    explain:
+      ar_eg: "kompetitif = منافس: أرخص من المحلات التانية، وفيه خصم كمان للجملة. مش غالي، ومش نفس السعر للكل."
+      ar: "kompetitif = منافس: أرخص من المتاجر الأخرى، وفيه خصم إضافيّ للجملة؛ ليس غاليًا ولا واحدًا للجميع."
+      en: "Competitive: cheaper than other shops, with an extra wholesale discount. Not dear, not the same for everyone."
     words: [kompetitif]
   - id: e04
     type: fill_blank
@@ -159,11 +166,20 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Harga yang terjangkau dan kemasan yang menarik membuat produk laris.
+    source_text: Harga yang terjangkau dan kemasan yang menarik membuat produk laris, walaupun mereknya belum terkenal.
     answers_meaning:
-      ar_eg: [السعر المعقول والتغليف الحلو بيخلّوا المنتج عليه طلب, سعر في المتناول وعلبة حلوة يخلّوا المنتج يتباع]
-      ar: [السعر المعقول والتغليف الجذّاب يجعلان المنتج رائجًا]
-      en: [An affordable price and attractive packaging make a product sell well, Good prices and nice packaging make products sell]
+      ar_eg:
+        - السعر المعقول والتغليف الحلو بيخلّوا المنتج عليه طلب، حتى لو الماركة لسه مش مشهورة.
+        - سعر في المتناول وعلبة حلوة يخلّوا المنتج يتباع، رغم إن الماركة لسه مش معروفة.
+      ar:
+        - السعر المعقول والتغليف الجذّاب يجعلان المنتج رائجًا، ولو لم تكن علامته مشهورة بعد.
+      en:
+        - An affordable price and attractive packaging make a product sell well, even though the brand isn't famous yet.
+        - Good prices and nice packaging make products sell, although the brand is still unknown.
+    explain:
+      ar_eg: walaupun = حتى لو / رغم إن، وbelum terkenal = لسه مش مشهورة.
+      ar: walaupun = وإن / رغم أنّ، وbelum terkenal = لم تشتهر بعد.
+      en: walaupun = even though; belum terkenal = not famous yet.
     words: [terjangkau, kemasan, laris]
   - id: e10
     type: speaking
