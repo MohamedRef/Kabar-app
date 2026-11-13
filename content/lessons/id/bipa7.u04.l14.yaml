@@ -67,17 +67,21 @@ exercises:
       en: su = already. bah is Medan, tra is not.
   - id: e04
     type: listen
-    text: Dari aksennya, saya menebak daerah asalnya Sumatra Utara.
+    text: Pembicara di radio itu sering berkata bah dan intonasinya tinggi. Dari aksennya, saya menebak daerah asalnya Sumatra Utara, tetapi saya belum yakin seratus persen.
     question:
       ar_eg: المتكلم خمّن إيه؟
       ar: ماذا خمّن المتحدّث؟
       en: What did the speaker guess?
     options:
-      - إن الشخص أصله من شمال سومطرة.
-      - إن الشخص من بابوا.
-      - إن الشخص مالوش لكنة.
+      - Dia menebak pembicara itu berasal dari Sumatra Utara, tetapi belum pasti.
+      - Dia yakin pembicara itu berasal dari Papua.
+      - Dia berkata pembicara itu tidak punya aksen.
     answer: 0
     words: [aksen, daerah asal]
+    explain:
+      ar_eg: menebak = خمّن إنه من شمال سومطرة عشان bah والنغمة العالية، بس belum yakin = لسه مش متأكد ١٠٠٪. مش بابوا، وعنده لكنة.
+      ar: خمّن أنّه من شمال سومطرة بسبب bah والنغمة المرتفعة، لكنّه غير متأكّد تمامًا، لا بابوا، وله لكنة.
+      en: He guesses North Sumatra from bah and the high intonation, but isn't fully sure.
   - id: e05
     type: match_pairs
     pairs:
@@ -105,15 +109,15 @@ exercises:
       ar: عمَّ يتحدّث جزء «sebaran» في تقرير اللهجة؟
       en: In a dialect report, what does the "sebaran" part cover?
     options:
-      - الضماير.
-      - النغمة.
-      - الأماكن اللي اللهجة منتشرة فيها.
+      - Kata ganti.
+      - Intonasi.
+      - Tempat-tempat dialek itu dipakai.
     answer: 2
     words: [sebaran, kata ganti]
     explain:
-      ar_eg: الـ sebaran بيغطي الأماكن اللي اللهجة منتشرة فيها، مش الضماير ولا النغمة.
-      ar: يغطي قسم sebaran أماكن الانتشار.
-      en: sebaran covers where the dialect is spread.
+      ar_eg: 'sebaran = الانتشار: الأماكن اللي اللهجة بتتقال فيها. الضماير والنغمة جزء العلامات.'
+      ar: 'sebaran = الانتشار: أماكن استعمال اللهجة، أمّا الضمائر والنغمة فمن العلامات.'
+      en: sebaran = where the dialect is spoken.
   - id: e07
     type: translate
     direction: to_target
@@ -128,11 +132,11 @@ exercises:
     words: [wilayah, ragam, ciri khas]
   - id: e08
     type: speaking
-    text: Saya bisa membedakan variasi dialek, tetapi saya tetap berbicara netral.
+    text: Saya bisa membedakan variasi dialek, tetapi saya tetap berbicara netral supaya semua orang mengerti.
     meaning:
-      ar_eg: أقدر أفرّق بين تنوّع اللهجات، بس بفضل أتكلم محايد.
-      ar: أستطيع التمييز بين تنوّع اللهجات، لكنّني أتكلّم بلغة محايدة.
-      en: I can tell dialect variations apart, but I still speak neutrally.
+      ar_eg: أنا أقدر أفرّق بين اللهجات، بس بفضل أتكلم بشكل محايد عشان الكل يفهم.
+      ar: أستطيع التمييز بين اللهجات، لكنّي أظلّ أتكلّم بحياد كي يفهم الجميع.
+      en: I can tell dialect varieties apart, but I keep speaking neutrally so everyone understands.
     words: [membedakan, variasi, netral]
   - id: e09
     type: fill_blank
@@ -189,19 +193,19 @@ exercises:
   - id: e12
     type: multiple_choice
     question_meaning:
-      ar_eg: '«Katong seng pi.» المتكلّم منين، والجملة معناها إيه؟'
-      ar: '«Katong seng pi.» من أين المتكلّم، وما معنى الجملة؟'
-      en: '«Katong seng pi.» Where is the speaker from, and what does it mean?'
+      ar_eg: «Katong seng pi.» المتكلّم منين، والجملة معناها إيه؟
+      ar: «Katong seng pi.» من أين المتكلّم، وما معنى الجملة؟
+      en: «Katong seng pi.» Where is the speaker from, and what does it mean?
     options:
-      - مانادو، «هم مش جايين».
-      - أمبون، «إحنا مش رايحين».
-      - جاكرتا، «أنا رايح».
+      - Manado, artinya "mereka tidak datang".
+      - Ambon, artinya "kita tidak pergi".
+      - Jakarta, artinya "saya pergi".
     answer: 1
-    explain:
-      ar_eg: katong (إحنا) وseng (مش) دلايل أمبون.
-      ar: katong (نحن) وseng (لا) من قرائن أمبون.
-      en: katong (we) and seng (not) are Ambon clues.
     words: [katong, seng, petunjuk]
+    explain:
+      ar_eg: katong = kita وseng = tidak بتوع أمبون، وpi = pergi. يبقى «إحنا مش رايحين».
+      ar: katong = kita وseng = tidak من أمبون، وpi = pergi، أي «لن نذهب».
+      en: 'katong, seng = Ambon; pi = pergi: "we''re not going".'
 dialogue:
   title: Turun dari Piaynemo
   lines:
