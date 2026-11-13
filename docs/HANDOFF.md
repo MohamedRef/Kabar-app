@@ -194,7 +194,7 @@ jobs are periodic or manual. Never re-add PR/push triggers to heavy workflows.
 
 | Workflow | Runs on | What |
 |---|---|---|
-| `ci.yml` | PR + push to main (newer run cancels older) | PR: `check` (fmt, clippy, tests, content, ids, What's new file; advisory: README numbers, reading coverage, explanations, Javanese dialect) + Android arm64 clippy. Main only: wasm32 core/protocol, web build, Cloud Worker build + local e2e. |
+| `ci.yml` | PR + push to main (newer run cancels older) | PR: `check` (fmt, clippy, tests, content, ids, What's new file; lesson demand per level (`kabar-tools demand --check`, #633); advisory: README numbers, reading coverage, explanations, Javanese dialect) + Android arm64 clippy. Main only: wasm32 core/protocol, web build, Cloud Worker build + local e2e. |
 | `main-clock.yml` | every push to main | GitHub cron runs late here, so this waits until 4 h after the last preview, then dispatches preview APK, coverage and Settings browser. Newer merge restarts it. |
 | `android-preview.yml` | cron every 4 h (backup) + manual + main-clock | signed preview APK → `preview` release + feed (skips if main unchanged) |
 | `coverage.yml` | cron/main-clock + manual | line-coverage floor (93%). Red → fix in its own PR. |
@@ -316,7 +316,10 @@ Rules (Mohamed's decisions; all in force):
    exercises of ≥4 types, a 4–6 line dialogue, 8 new words, ~6–7 min; each new
    word in ≥3 exercises of ≥2 types; word lessons go before the unit's
    practice lesson; the unit review retrieves a word from every learn lesson;
-   at most 3 (hard limit 4) words of one tight semantic set per lesson; every
+   at most 3 (hard limit 4) words of one tight semantic set per lesson;
+   listening texts over 12 words and dictations over 10 add time to the
+   estimate; task demand per BIPA level may not slip back
+   (`content/demand-limits.tsv`, #633); every
    text has `ar_eg`, `ar`, `en`; BIPA 3+/J4+ closed items need `explain:`.
    Toolkit and full rules: [scripts/curriculum/README.md](../scripts/curriculum/README.md),
    [PEDAGOGY.md](PEDAGOGY.md), [AUTHORING.md](AUTHORING.md).
@@ -376,6 +379,7 @@ Rules (Mohamed's decisions; all in force):
 
 ### Open work and known gaps
 
+- #633 (BIPA 5–7 task demand): content batches, half a level per PR (BIPA 5 u01–u05, u06–u10, then 6, then 7): Indonesian comprehension options with Arabic in `explain:`, longer listening texts, one multi-clause item per lesson. Each batch tightens `content/demand-limits.tsv`; target: Arabic-only listen options under BIPA 4's 32%, multiple choice near 0%. Drop the README "(aim)" label (`readme.rs cefr_label`) once all three levels are done.
 - Mohamed's steps: Cloud keys (`GEMINI_API_KEY`, `AZURE_SPEECH_KEY`,
   `FCM_SERVICE_ACCOUNT`, `KABAR_GOOGLE_SERVICES_JSON`) so AI, cloud voices and
   pushed reminders work in release builds; bake-off on the Mac.
@@ -404,6 +408,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-13: review #633 (part 1, tooling): `kabar-tools demand` reports task demand per BIPA level and CI fails a level worse than `content/demand-limits.tsv`; long listening/dictation texts count in the 7-minute estimate; README shows BIPA 5–7 CEFR as "(aim)". Content batches follow: half a level per PR (Mohamed approved the plan 2026-11-13).
 - 2026-11-13: review #634: the «ra (Jogja)» slide in `j1.u05.l01` is tagged `jv.negation.ora-dudu`; `jv.dialect.arek` moves to `j1.u05.l06` as a hear-only slide + one closed item (guard `allow:` entry, `gak` in `jv.core-exclude.tsv`) (§ 7).
 - 2026-11-11: Mac desk tools ported from Batna (`crates/app/src/desk/`, `assets/desk.css`): ⌘K / Ctrl+K quick search over screens, Settings sections, games and every lesson of both routes (also Go › Quick Search… in the Mac menu, a sidebar row and a phone top-bar button); drag-to-resize sidebar and Reader word panel for mouse pointers (`pref.nav_width`, `pref.panel_width`, tenths of a rem, device-only); review-session focus mode on tablet and Mac (`pref.study_focus`, `data-study-focus`). Lessons already cover the sidebar, so they need no toggle.
 - 2026-11-11: Settings browser runs point apt at the first Ubuntu mirror that resolves (`scripts/ci-apt-install.sh`, from Batna #798) after ubuntu.com DNS failures broke `playwright install --with-deps`.

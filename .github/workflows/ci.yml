@@ -91,6 +91,10 @@ jobs:
       - name: Answer explanations (advisory)
         run: |
           { echo '```'; cargo run -q -p kabar-tools -- explains --warn; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+      # #633: what an Indonesian lesson asks per level (listening length,
+      # Arabic-only options) must not slip back; content/demand-limits.tsv.
+      - name: Lesson demand per level
+        run: cargo run -q -p kabar-tools -- demand --check
       # Advisory until the Jogja/Madiun relocation lands: Javanese is Jogja + Madiun only.
       - name: Javanese dialect (advisory)
         run: cargo run -q -p kabar-tools -- dialect --warn

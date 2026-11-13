@@ -28,6 +28,15 @@ pub const SLIDE_EXAMPLE_SECONDS: u32 = 10;
 /// A slide table replaces body bullets, so it adds no time but stays small.
 pub const MAX_TABLE_ROWS: usize = 6;
 pub const MAX_TABLE_COLUMNS: usize = 4;
+/// A listening text longer than this many words takes longer to hear (and
+/// replay): each extra word adds [`LISTEN_EXTRA_WORD_SECONDS`]. Short
+/// listening items keep the flat time (#633).
+pub const LISTEN_FREE_WORDS: u32 = 12;
+pub const LISTEN_EXTRA_WORD_SECONDS: u32 = 1;
+/// Writing down a dictation longer than this many words: each extra word
+/// adds [`DICTATION_EXTRA_WORD_SECONDS`].
+pub const DICTATION_FREE_WORDS: u32 = 10;
+pub const DICTATION_EXTRA_WORD_SECONDS: u32 = 2;
 /// Hearing and reading one dialogue line.
 pub const DIALOGUE_LINE_SECONDS: u32 = 8;
 /// The new-words summary, plus each word on it.
@@ -67,12 +76,28 @@ pub fn exercise_seconds(kind: &ExerciseKind) -> u32 {
     }
 }
 
+/// [`exercise_seconds`] plus the extra time a long listening or dictation
+/// text needs.
+pub fn exercise_seconds_for(kind: &ExerciseKind) -> u32 {
+    let words = |t: &str| t.split_whitespace().count() as u32;
+    let extra = match kind {
+        ExerciseKind::Listen { text, .. } => {
+            words(text).saturating_sub(LISTEN_FREE_WORDS) * LISTEN_EXTRA_WORD_SECONDS
+        }
+        ExerciseKind::Dictation { text, .. } => {
+            words(text).saturating_sub(DICTATION_FREE_WORDS) * DICTATION_EXTRA_WORD_SECONDS
+        }
+        _ => 0,
+    };
+    exercise_seconds(kind) + extra
+}
+
 /// Estimated seconds for the whole lesson: slides → exercises → dialogue →
 /// new-words summary.
 pub fn estimate_seconds(lesson: &LessonContent) -> u32 {
     let slides: u32 =
         lesson.slides.iter().map(|s| SLIDE_SECONDS + SLIDE_EXAMPLE_SECONDS * s.examples.len() as u32).sum();
-    let exercises: u32 = lesson.exercises.iter().map(|e| exercise_seconds(&e.kind)).sum();
+    let exercises: u32 = lesson.exercises.iter().map(|e| exercise_seconds_for(&e.kind)).sum();
     let dialogue = lesson.dialogue.as_ref().map_or(0, |d| DIALOGUE_LINE_SECONDS * d.lines.len() as u32);
     let summary = SUMMARY_SECONDS + SUMMARY_WORD_SECONDS * lesson.new_words.len() as u32;
     slides + exercises + dialogue + summary
@@ -134,5 +159,24 @@ mod tests {
         let expected = slides + exercises + 8 * lines + 10 + 3 * lesson.new_words.len() as u32;
         assert_eq!(estimate_seconds(&lesson), expected);
         assert_eq!(estimate_minutes(&lesson), expected.div_ceil(60));
+    }
+
+    #[test]
+    fn long_listening_and_dictation_texts_take_longer() {
+        let listen = |text: &str| ExerciseKind::Listen {
+            text: text.into(),
+            audio: None,
+            options: vec![],
+            answer: None,
+            meaning: None,
+            question: None,
+        };
+        let short = "Kalau gempa besar dan air surut, larilah ke bukit.";
+        assert_eq!(exercise_seconds_for(&listen(short)), exercise_seconds(&listen(short)));
+        let paragraph = [short; 3].join(" "); // 27 words
+        assert_eq!(exercise_seconds_for(&listen(&paragraph)), 20 + (27 - LISTEN_FREE_WORDS));
+        let dictation =
+            ExerciseKind::Dictation { text: paragraph.clone(), audio: None, meaning: Default::default() };
+        assert_eq!(exercise_seconds_for(&dictation), 35 + (27 - DICTATION_FREE_WORDS) * 2);
     }
 }
