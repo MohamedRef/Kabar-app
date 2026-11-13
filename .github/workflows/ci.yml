@@ -95,9 +95,10 @@ jobs:
       # Arabic-only options) must not slip back; content/demand-limits.tsv.
       - name: Lesson demand per level
         run: cargo run -q -p kabar-tools -- demand --check
-      # Advisory until the Jogja/Madiun relocation lands: Javanese is Jogja + Madiun only.
-      - name: Javanese dialect (advisory)
-        run: cargo run -q -p kabar-tools -- dialect --warn
+      # Javanese is Jogja + Madiun only (#636): a Surabaya or Semarang form
+      # outside the guard's allow list fails the check.
+      - name: Javanese dialect
+        run: cargo run -q -p kabar-tools -- dialect
       # Every pull request says what the learner will notice in
       # changes/<topic>.yaml (docs/RELEASE.md §5, "What's new"): new lines in
       # a new or existing file, or a new file holding [] when there is

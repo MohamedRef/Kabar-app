@@ -18,15 +18,20 @@ BIPA 1–2 exists in the library, and that SPEC §24 test sentences appear as ex
 
 ## Indonesian (BIPA 1–7)
 
-| Level | Journey | UKBI band | CEFR (approx.) | Evidence | Units / lessons | Lesson time |
-|---|---|---|---|---|---|---|
-| BIPA 1 | Jakarta | Terbatas | A1 | high: published analysis | 10 / 50 | ~9 h |
-| BIPA 2 | Bali | Marginal | A2 | medium | 10 / 50 | ~9 h |
-| BIPA 3 | Lombok | Semenjana | B1 | high: published analysis | 10 / 40 | ~7.5 h |
-| BIPA 4 | Sulawesi | Madya | B2 | medium: inferred | 10 / 40 | ~8.5 h |
-| BIPA 5 | Kalimantan | Unggul | C1 | low: inferred | 10 / 40 | ~9 h |
-| BIPA 6 | Sumatra | Sangat Unggul | C2 | low: inferred | 10 / 40 | ~9 h |
-| BIPA 7 | Raja Ampat, Papua | Istimewa | C2+ | low: inferred | 10 / 40 | ~9.5 h |
+| Level | Journey | UKBI band | CEFR (approx.) | Evidence |
+|---|---|---|---|---|
+| BIPA 1 | Jakarta | Terbatas | A1 | high: published analysis |
+| BIPA 2 | Bali | Marginal | A2 | medium |
+| BIPA 3 | Lombok | Semenjana | B1 | high: published analysis |
+| BIPA 4 | Sulawesi | Madya | B2 | medium: inferred |
+| BIPA 5 | Kalimantan | Unggul | C1 | low: inferred |
+| BIPA 6 | Sumatra | Sangat Unggul | C2 | low: inferred |
+| BIPA 7 | Raja Ampat, Papua | Istimewa | C2+ | low: inferred |
+
+Units, lessons, exercises, new words and lesson time per level are counted from the files
+by `just readme` and shown in the [README's content table](../README.md); they are not
+repeated here, so they can't go stale. Units hold about 8–15 lessons each (word lessons
+first, then practice, then a review).
 
 - **Official basis:** Permendikbud No. 27/2017 (SKL Kursus dan Pelatihan BIPA). Each level's
   `capability.official` is the regulation's wording; per-skill units are summarised in `skills`.
@@ -46,11 +51,27 @@ BIPA 1–2 exists in the library, and that SPEC §24 test sentences appear as ex
 ## Javanese (J1–J6)
 
 No official foreign-learner standard exists, so the sequence is Kabar's own design on the
-themes fixed in SPEC §21: J1 Surabaya (survival ngoko, chat, a taste of Arek) → J2 Madiun
-(Mataraman ngoko) → J3 Solo (krama basics) → J4 Yogyakarta (krama inggil / andhap,
-etiquette) → J5 Semarang (real texts) → J6 Kotagede (aksara Jawa, plus Pegon — Javanese in
-Arabic script, an easy win for an Arabic reader). 37 units, 148 lessons, ~27 h of lessons.
-J1 unlocks after BIPA 1. **Everything Javanese stays unverified until you approve it.**
+themes fixed in SPEC §21, run as a train line across Java. Javanese here is **Mataraman
+only: Yogyakarta and Madiun**, in street speech (Mohamed, 2026-10-27;
+[JAVANESE-FOCUS.md](../docs/curriculum/JAVANESE-FOCUS.md)).
+
+| Level | Place | Focus |
+|---|---|---|
+| J1 | Malioboro, Yogyakarta | street ngoko and chat Javanese (ra, wis, sik, neng, to, wae beside the standard forms) |
+| J2 | Madiun | everyday Mataraman ngoko |
+| J3 | Pakualaman, Yogyakarta | krama basics: when and with whom |
+| J4 | Kraton, Yogyakarta | krama inggil, krama andhap and etiquette |
+| J5 | Kutha Pendekar (Madiun) | reading real Javanese texts, with day trips to Kudus and Demak |
+| J6 | Kotagede, old Mataram capital | aksara Jawa, plus Pegon (Javanese in Arabic script) |
+
+- **No Arek (Surabaya) or Semarangan forms.** `cargo run -q -p kabar-tools -- dialect`
+  checks every Javanese lesson, Sinetron and Radio file against
+  `content/javanese/dialect-guard.yaml` and fails CI on a hit. The only taught Arek is
+  hear-only: grammar `jv.dialect.arek` in `j1.u05.l06` (hear gak / onok / koen, answer in
+  Jogja ngoko). Every deliberate exception is in the guard's `allow:` list with its reason.
+- J1 unlocks after BIPA 1; each later J level needs the one before. Counts per level are in
+  the [README's content table](../README.md).
+- **Everything Javanese stays unverified until you approve it.**
 
 ## Reviewing
 
