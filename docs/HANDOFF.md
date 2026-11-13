@@ -402,6 +402,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-13: review #635: J3 krama lines use `legi` for a sweet taste (`j3.u02.l03`, `j3.u05.l08`), not Indonesian manis.
 - 2026-11-11: Mac desk tools ported from Batna (`crates/app/src/desk/`, `assets/desk.css`): ⌘K / Ctrl+K quick search over screens, Settings sections, games and every lesson of both routes (also Go › Quick Search… in the Mac menu, a sidebar row and a phone top-bar button); drag-to-resize sidebar and Reader word panel for mouse pointers (`pref.nav_width`, `pref.panel_width`, tenths of a rem, device-only); review-session focus mode on tablet and Mac (`pref.study_focus`, `data-study-focus`). Lessons already cover the sidebar, so they need no toggle.
 - 2026-11-11: Settings browser runs point apt at the first Ubuntu mirror that resolves (`scripts/ci-apt-install.sh`, from Batna #798) after ubuntu.com DNS failures broke `playwright install --with-deps`.
 - 2026-11-11: engineering audit F19 (rest): Stats and Journal read past moments with the offset in force then, so a summer review keeps its day and hour (§ 2).
