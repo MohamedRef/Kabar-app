@@ -81,14 +81,14 @@ exercises:
       ar: قال ضيفك «Wah, sudah jam sepuluh, ya.» فماذا يقصد؟
       en: Your guest says "Wah, sudah jam sepuluh, ya." What do they mean?
     options:
-      - عايز يمشي.
-      - عايز يتعشى.
-      - الساعة بايظة.
+      - Tamu itu ingin pulang karena sudah malam.
+      - Tamu itu ingin makan malam dulu.
+      - Tamu itu mengira jamnya rusak.
     answer: 0
     words: [tersirat]
     explain:
-      ar_eg: الضيف بيلمّح إن الوقت اتأخر، يعني عايز يستأذن ويمشي. مقالش حاجة عن الأكل ولا عن الساعة.
-      ar: يلمّح الضيف إلى تأخّر الوقت، أي أنّه يريد الانصراف، ولم يذكر طعامًا ولا عطلًا في الساعة.
+      ar_eg: الضيف بيلمّح إن الوقت اتأخر، يعني عايز يستأذن ويمشي (ingin pulang). مقالش حاجة عن الأكل ولا عن ساعة بايظة.
+      ar: يلمّح الضيف إلى تأخّر الوقت، أي أنّه يريد الانصراف (ingin pulang)، ولم يذكر طعامًا ولا عطلًا في الساعة.
       en: The guest is hinting that it's late, so they want to leave. Nothing was said about dinner or a broken clock.
   - id: e03
     type: multiple_choice
@@ -97,15 +97,15 @@ exercises:
       ar: ردّت صديقتك «Terserah.» بنبرة جافّة. ماذا يعني ذلك غالبًا؟
       en: Your friend replies "Terserah." flatly. What does it usually mean?
     options:
-      - هي مبسوطة بأي اختيار.
-      - هي مش فاهمة السؤال.
-      - هي مضايقة.
+      - Dia senang dengan semua pilihan.
+      - Dia tidak mengerti pertanyaannya.
+      - Dia sebenarnya kesal.
     answer: 2
     words: [terserah, tersirat]
     explain:
-      ar_eg: «Terserah» بنبرة ناشفة معناها الضمني إنها مضايقة، مش مبسوطة ولا تايهة. المعنى tersirat مش tersurat.
-      ar: «Terserah» بنبرة جافّة تعني ضمنًا أنّها منزعجة، لا راضية ولا حائرة؛ فالمعنى ضمني لا صريح.
-      en: A flat "Terserah" implies she's annoyed, not happy or confused. The meaning is implied, not stated.
+      ar_eg: «Terserah» بنبرة ناشفة معناها الضمني إنها مضايقة (kesal)، مش مبسوطة ولا تايهة. المعنى tersirat مش tersurat.
+      ar: «Terserah» بنبرة جافّة تعني ضمنًا أنّها منزعجة (kesal)، لا راضية ولا حائرة؛ فالمعنى ضمني لا صريح.
+      en: A flat "Terserah" implies she's annoyed (kesal), not happy or confused. The meaning is implied, not stated.
   - id: e04
     type: fill_blank
     sentence: Makna yang ___ adalah makna yang ditulis dengan jelas.
@@ -122,16 +122,20 @@ exercises:
       en: tersurat is the meaning written out plainly. tersirat is the implied one, and terserah means "up to you".
   - id: e05
     type: listen
-    text: Ibu hanya diam, lalu kembali mengaduk teh yang sudah lama dingin.
+    text: Ibu hanya diam, lalu kembali mengaduk teh yang sudah lama dingin. Matanya melihat ke jendela. Dia tidak menjawab pertanyaan anaknya.
     question:
-      ar_eg: إيه اللي الجملة دي بتلمّح له؟
-      ar: إلامَ تلمّح هذه الجملة؟
-      en: What does this sentence hint at?
+      ar_eg: إيه اللي الكلام ده بيلمّح له؟
+      ar: إلامَ يلمّح هذا الكلام؟
+      en: What does this passage hint at?
     options:
-      - إن الأم جعانة.
-      - إن الأم حزينة وسرحانة.
-      - إن الشاي غالي.
+      - Ibu sedang lapar dan menunggu makan malam.
+      - Ibu sedih dan pikirannya ada di tempat lain.
+      - Ibu marah karena tehnya terlalu mahal.
     answer: 1
+    explain:
+      ar_eg: سكوتها، والشاي اللي برد، وعينها على الشباك، وإنها ماردّتش على ابنها، كلها إشارات لحزن وسرحان. مافيش كلام عن جوع ولا عن سعر الشاي.
+      ar: صمتها والشاي البارد ونظرها إلى النافذة وعدم ردّها على ابنها كلّها إشارات إلى حزن وشرود، ولا ذكر لجوع ولا لثمن الشاي.
+      en: Her silence, the cold tea, her eyes on the window and not answering her son all hint at sadness. Hunger or the tea's price never come up.
     words: [isyarat, tersirat]
   - id: e06
     type: build_sentence
@@ -149,17 +153,21 @@ exercises:
   - id: e07
     type: translate
     direction: from_target
-    source_text: Penulis tidak menangis di cerita itu, tetapi isyaratnya jelas.
+    source_text: Penulis tidak menulis kata sedih di cerita itu, tetapi isyaratnya jelas sekali bagi pembaca.
     answers_meaning:
       ar_eg:
-        - الكاتب مابيعيطش في القصة، بس الإشارة واضحة.
-        - مفيش عياط في القصة، لكن الإشارات بتقول كل حاجة.
+        - الكاتب ماكتبش كلمة حزن في القصة، بس الإشارة واضحة جدًا للقارئ.
+        - مفيش كلمة حزينة في القصة، لكن الإشارات واضحة خالص للي بيقرا.
       ar:
-        - لا يبكي الكاتب في القصّة، لكنّ الإشارة واضحة.
-        - لا بكاء في القصّة، غير أنّ الإشارات بيّنة.
+        - لم يكتب الكاتب كلمة حزن في القصّة، لكنّ الإشارة واضحة جدًّا للقارئ.
+        - لا كلمة حزينة في القصّة، غير أنّ الإشارات بيّنة جدًّا للقرّاء.
       en:
-        - The writer doesn't cry in the story, but the signs are clear.
-        - There's no crying in the story, but the hints are obvious.
+        - The writer doesn't write a single sad word in the story, but the signs are very clear to the reader.
+        - There's no sad word in the story, yet the hints are obvious to readers.
+    explain:
+      ar_eg: tetapi بتربط جملتين متعاكستين، وisyaratnya = إشارته، وbagi pembaca = بالنسبة للقارئ.
+      ar: tetapi تربط جملتين متقابلتين، وisyaratnya إشارته، وbagi pembaca للقارئ.
+      en: tetapi joins two contrasting clauses; isyaratnya is its signs; bagi pembaca is to the reader.
     words: [isyarat]
   - id: e08
     type: speaking
