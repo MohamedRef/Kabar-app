@@ -68,17 +68,21 @@ exercises:
     words: [sasi, hasil laut, lestari, tutup sasi, buka sasi]
   - id: e02
     type: listen
-    text: Mulai hari ini tutup sasi. Tidak ada yang boleh mengambil teripang sampai bulan Desember.
+    text: Bapak dan Ibu sekalian, mulai hari ini tutup sasi. Tidak ada yang boleh mengambil teripang sampai bulan Desember. Siapa yang melanggar harus membayar denda adat kepada kampung.
     question:
       ar_eg: إيه اللي اتعلن؟
       ar: ما الذي أُعلن؟
       en: What was announced?
     options:
-      - مسابقة صيد في ديسمبر.
-      - سوق جديد لخيار البحر.
-      - ممنوع حد ياخد خيار البحر لحد ديسمبر.
-    answer: 2
+      - Ada lomba mengambil teripang pada bulan Desember.
+      - Teripang tidak boleh diambil sampai Desember, dan pelanggar membayar denda.
+      - Kampung membuka pasar baru untuk menjual teripang.
+    answer: 1
     words: [tutup sasi]
+    explain:
+      ar_eg: 'tutup sasi = قفل البحر: ممنوع حد ياخد خيار البحر (teripang) لحد ديسمبر، واللي يخالف (melanggar) يدفع غرامة عرفية (denda adat). مش مسابقة ولا سوق.'
+      ar: 'tutup sasi = إغلاق البحر: يُمنع أخذ خيار البحر حتى ديسمبر، ومن يخالف يدفع غرامة عرفية، فلا مسابقة ولا سوق.'
+      en: 'tutup sasi closes the sea: no sea cucumbers until December, and violators pay a customary fine. No contest, no market.'
   - id: e03
     type: multiple_choice
     question_meaning:
@@ -86,15 +90,15 @@ exercises:
       ar: لماذا تفرض القرية الـ sasi؟
       en: Why does a village hold a sasi?
     options:
-      - علشان البحر يرتاح وخيره يرجع يكتر.
-      - علشان يبيعوا تذاكر للسيّاح.
-      - علشان الصيادين ياخدوا إجازة بس.
+      - Supaya laut beristirahat dan hasil laut bertambah lagi.
+      - Supaya kampung bisa menjual tiket kepada turis.
+      - Supaya nelayan bisa berlibur saja.
     answer: 0
     words: [sasi, hasil laut]
     explain:
-      ar_eg: الـ sasi = منع الصيد فترة عشان البحر يرتاح وخيره يكتر تاني، مش لبيع تذاكر ولا للإجازة.
-      ar: السَّاسي منع مؤقت للصيد ليستريح البحر ويتجدد خيره.
-      en: Sasi pauses harvesting so the sea can recover.
+      ar_eg: الساسي بيخلّي البحر يرتاح (beristirahat) وخيره يرجع يكتر. مالوش علاقة بتذاكر السيّاح ولا بإجازة الصيادين بس.
+      ar: يُريح الساسي البحر حتى تكثر خيراته من جديد، ولا علاقة له بتذاكر السيّاح ولا بعطلة الصيّادين.
+      en: Sasi lets the sea rest so its yield grows back, not tickets or fishermen's holidays.
   - id: e04
     type: fill_blank
     sentence: Pada hari ___, seluruh kampung turun ke laut bersama-sama.
@@ -138,18 +142,22 @@ exercises:
   - id: e07
     type: translate
     direction: from_target
-    source_text: Kalau laut kita lestari, anak cucu kita juga bisa menikmati hasil laut.
+    source_text: Kalau laut kita lestari, anak cucu kita juga bisa menikmati hasil laut, jadi kita harus mengikuti aturan sasi.
     answers_meaning:
       ar_eg:
-        - لو بحرنا فضل مستدام، ولادنا وأحفادنا كمان هيستمتعوا بخيره.
-        - لو حافظنا على البحر، ولاد ولادنا كمان هياكلوا من خيره.
+        - لو بحرنا فضل سليم، ولادنا وأحفادنا كمان هيستمتعوا بخيره، فلازم نمشي على قانون الساسي.
+        - لو حافظنا على البحر، أحفادنا هيلاقوا خيره برضه، وعشان كده لازم نلتزم بالساسي.
       ar:
-        - إن بقي بحرنا مستدامًا فسينعم أبناؤنا وأحفادنا أيضًا بخيراته.
-        - إذا حافظنا على بحرنا، تمتّع أحفادنا كذلك بخيراته.
+        - إن بقي بحرنا مستدامًا تمتّع أبناؤنا وأحفادنا بخيراته أيضًا، لذا علينا أن نتّبع قاعدة الساسي.
+        - لو ظلّ بحرنا مصونًا لنعم أحفادنا بخيراته، ولذلك يجب أن نلتزم بقانون الساسي.
       en:
-        - If our sea stays sustainable, our children and grandchildren can enjoy its produce too.
-        - If we keep our sea healthy, our descendants can enjoy what it gives too.
+        - If our sea stays sustainable, our children and grandchildren can enjoy its yield too, so we must follow the sasi rules.
+        - If we keep the sea healthy, our descendants can enjoy what it gives, so we have to respect sasi.
     words: [lestari, hasil laut]
+    explain:
+      ar_eg: kalau = لو (شرط)، وjadi = فـ / عشان كده (النتيجة). lestari = سليم ومستمر.
+      ar: kalau = إن (شرط)، وjadi = لذا (النتيجة)، وlestari = مستدام.
+      en: kalau = if; jadi = so; lestari = sustainable.
   - id: e08
     type: speaking
     text: Di kampung ini, kelompok mama-mama yang mengatur tutup sasi dan buka sasi.
