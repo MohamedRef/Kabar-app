@@ -83,17 +83,24 @@ exercises:
     words: [kayaknya, cuman, lagian, sob]
   - id: e03
     type: listen
-    text: Kayaknya hujan, sob. Kita naik ojek aja.
+    text: Kayaknya hujan, sob. Kita naik ojek aja, soalnya jalan kaki ke sana jauh banget.
     question:
-      ar_eg: الجو عامل إزاي؟
-      ar: كيف الجو؟
-      en: What's the weather doing?
-    options: [شكلها هتمطر, الجو حر, الطريق فاضي]
+      ar_eg: ليه هيركبوا أوجيك؟
+      ar: لماذا سيركبون الأوجيك؟
+      en: Why will they take an ojek?
+    options:
+      - Karena sepertinya akan hujan dan tempatnya jauh.
+      - Karena ojeknya gratis.
+      - Karena jalannya ditutup.
     answer: 0
     meaning:
-      ar_eg: شكلها هتمطر يا صاحبي. نركب أوجيك أحسن.
-      ar: يبدو أنها ستمطر يا صاحبي. لنركب دراجة أجرة.
-      en: Looks like rain, mate. Let's just take an ojek.
+      ar_eg: شكلها هتمطر يا صاحبي. نركب أوجيك أحسن، عشان المشي لهناك بعيد أوي.
+      ar: يبدو أنها ستمطر يا صاحبي. لنركب دراجة أجرة، فالمشي إلى هناك بعيد جدًّا.
+      en: Looks like rain, mate. Let's just take an ojek, since walking there is really far.
+    explain:
+      ar_eg: kayaknya = sepertinya (شكلها)، وsoalnya = karena (عشان)، وjauh banget = jauh sekali (بعيد أوي). ده كلام شارع.
+      ar: kayaknya = sepertinya (يبدو)، وsoalnya = karena (لأنّ)، وjauh banget = jauh sekali (بعيد جدًّا)، وهذه لغة الشارع.
+      en: kayaknya = sepertinya, soalnya = karena, banget = sekali. Street forms.
     words: [kayaknya, sob]
   - id: e04
     type: fill_blank
@@ -162,11 +169,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: 'Gini aja, sob: kita ketemu besok.'
+    source_text: 'Gini aja, sob: kita ketemu besok, soalnya hari ini aku masih kerja sampai malam.'
     answers_meaning:
-      ar_eg: ['خليها كده يا صاحبي: نتقابل بكرة', بص يا صاحبي، نتقابل بكرة]
-      ar: ['لنفعل هكذا يا صاحبي: نلتقي غدًا', إذن يا صاحبي، نلتقي غدًا]
-      en: ['Let''s do this, mate: we''ll meet tomorrow', 'Okay bro, let''s meet tomorrow']
+      ar_eg: ['خليها كده يا صاحبي: نتقابل بكرة، عشان النهارده لسه شغال لحد بالليل', بص يا صاحبي، نتقابل بكرة، أصل أنا النهارده شغال لآخر الليل]
+      ar: ['لنفعل هكذا يا صاحبي: نلتقي غدًا، لأنّي ما زلت أعمل اليوم حتى المساء', إذن يا صاحبي، نلتقي غدًا، فأنا أعمل اليوم حتى الليل]
+      en: ['Let''s do this, mate: we''ll meet tomorrow, because today I''m working till late', 'Okay bro, let''s meet tomorrow, since I''m working until tonight']
+    explain:
+      ar_eg: soalnya = karena (عشان) في كلام الشارع، بتجيب السبب.
+      ar: soalnya = karena (لأنّ) في لغة الشارع، وتأتي بالسبب.
+      en: soalnya = karena (because) in street speech, giving the reason.
     words: [gini, sob]
   - id: e10
     type: speaking
