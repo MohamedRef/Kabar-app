@@ -194,7 +194,7 @@ jobs are periodic or manual. Never re-add PR/push triggers to heavy workflows.
 
 | Workflow | Runs on | What |
 |---|---|---|
-| `ci.yml` | PR + push to main (newer run cancels older) | PR: `check` (fmt, clippy, tests, content, ids, What's new file; advisory: README numbers, reading coverage, explanations, Javanese dialect) + Android arm64 clippy. Main only: wasm32 core/protocol, web build, Cloud Worker build + local e2e. |
+| `ci.yml` | PR + push to main (newer run cancels older) | PR: `check` (fmt, clippy, tests, content, ids, What's new file; advisory: README numbers, reading coverage, explanations; the Javanese dialect check fails, since 2026-11-13) + Android arm64 clippy. Main only: wasm32 core/protocol, web build, Cloud Worker build + local e2e. |
 | `main-clock.yml` | every push to main | GitHub cron runs late here, so this waits until 4 h after the last preview, then dispatches preview APK, coverage and Settings browser. Newer merge restarts it. |
 | `android-preview.yml` | cron every 4 h (backup) + manual + main-clock | signed preview APK → `preview` release + feed (skips if main unchanged) |
 | `coverage.yml` | cron/main-clock + manual | line-coverage floor (93%). Red → fix in its own PR. |
@@ -303,7 +303,8 @@ Rules (Mohamed's decisions; all in force):
 2. **Javanese = Yogyakarta + Madiun (Mataraman)**, street speech: contracted
    ngoko (ra, wis, sik), particles lho/to/ta; shop/neighbour krama. No Arek or
    Semarangan forms (`kabar-tools dialect`, list in
-   `content/javanese/dialect-guard.yaml`). The one exception is recognition:
+   `content/javanese/dialect-guard.yaml`; CI fails on a hit, deliberate
+   uses go in its `allow:` list with a reason). The only Arek taught is recognition:
    grammar `jv.dialect.arek` is taught hear-only in `j1.u05.l06` (hear gak /
    onok / koen, answer in Jogja ngoko), listed in the guard's `allow:`. Plain e, never é/è (except aksara
    items about the vowel). Madiun-only words stay unverified until sourced.
@@ -404,6 +405,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-13: review #636: `curriculum/README.md` rewritten from `javanese.yaml` (Jogja/Madiun route, no stale counts); the Javanese dialect check now fails CI, with every current deliberate use in the guard's `allow:` list (§ 4, § 7).
 - 2026-11-13: review #634: the «ra (Jogja)» slide in `j1.u05.l01` is tagged `jv.negation.ora-dudu`; `jv.dialect.arek` moves to `j1.u05.l06` as a hear-only slide + one closed item (guard `allow:` entry, `gak` in `jv.core-exclude.tsv`) (§ 7).
 - 2026-11-11: Mac desk tools ported from Batna (`crates/app/src/desk/`, `assets/desk.css`): ⌘K / Ctrl+K quick search over screens, Settings sections, games and every lesson of both routes (also Go › Quick Search… in the Mac menu, a sidebar row and a phone top-bar button); drag-to-resize sidebar and Reader word panel for mouse pointers (`pref.nav_width`, `pref.panel_width`, tenths of a rem, device-only); review-session focus mode on tablet and Mac (`pref.study_focus`, `data-study-focus`). Lessons already cover the sidebar, so they need no toggle.
 - 2026-11-11: Settings browser runs point apt at the first Ubuntu mirror that resolves (`scripts/ci-apt-install.sh`, from Batna #798) after ubuntu.com DNS failures broke `playwright install --with-deps`.
