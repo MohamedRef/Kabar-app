@@ -78,16 +78,20 @@ exercises:
       en: membentak is to shout angrily, which fits. berbisik is to whisper, and bergumam is to mumble.
   - id: e03
     type: listen
-    text: Pak Lubis bergumam sendiri di teras, tetapi tidak ada yang mendengar.
+    text: Pak Lubis bergumam sendiri di teras, tetapi tidak ada yang mendengar. Istrinya sedang memasak di dapur. Dia hanya melihat jalan yang kosong sambil memegang cangkirnya.
     question:
       ar_eg: الأستاذ لوبيس كان بيعمل إيه؟
       ar: ماذا كان الأستاذ لوبيس يفعل؟
       en: What was Pak Lubis doing?
     options:
-      - بيغني بصوت عالي.
-      - بيزعق في جاره.
-      - بيبرطم مع نفسه.
+      - Pak Lubis bernyanyi dengan suara keras.
+      - Pak Lubis membentak tetangganya.
+      - Pak Lubis berkata pelan kepada dirinya sendiri.
     answer: 2
+    explain:
+      ar_eg: bergumam sendiri = بيبرطم مع نفسه بصوت واطي، وماحدش سامعه. مكانش بيغني ولا بيزعق.
+      ar: bergumam sendiri يتمتم لنفسه بصوت خافت ولا يسمعه أحد؛ لم يكن يغنّي ولا يصرخ.
+      en: bergumam sendiri is muttering to himself, and nobody hears. He isn't singing or shouting.
     words: [bergumam]
   - id: e04
     type: fill_blank
@@ -110,14 +114,14 @@ exercises:
       ar: '«"Ya, Bu!" sahut anak itu dari dapur.» ماذا يفعل الولد؟'
       en: '«"Ya, Bu!" sahut anak itu dari dapur.» What is the boy doing?'
     options:
-      - بيرد على أمه.
-      - بيوشوش لأخوه.
-      - بيكتب جواب.
+      - Anak itu menjawab panggilan ibunya.
+      - Anak itu berbisik kepada adiknya.
+      - Anak itu menulis surat.
     answer: 0
     explain:
-      ar_eg: sahut هي menyahut من غير me-، زي ما بنقول bisik بدل berbisik بعد الكلام المنقول.
-      ar: sahut هي menyahut بلا me-، كما تأتي bisik بدل berbisik بعد الكلام المنقول.
-      en: sahut is menyahut without me-, just as bisik replaces berbisik after quoted speech.
+      ar_eg: sahut هي menyahut من غير me- = بيرد على حد ندهه، زي ما بنقول bisik بدل berbisik بعد الكلام المنقول.
+      ar: sahut هي menyahut بلا me-، أي يردّ على من ناداه، كما تأتي bisik بدل berbisik بعد الكلام المنقول.
+      en: sahut is menyahut without me-, answering a call, just as bisik replaces berbisik after quoted speech.
     words: [menyahut]
   - id: e06
     type: build_sentence
@@ -135,17 +139,21 @@ exercises:
   - id: e07
     type: translate
     direction: from_target
-    source_text: '"Pergi!" bentak lelaki tua itu, lalu dia menutup pintu.'
+    source_text: '"Pergi!" bentak lelaki tua itu, lalu dia menutup pintu karena tidak mau mendengar alasan anaknya.'
     answers_meaning:
       ar_eg:
-        - «امشي!» زعق الراجل العجوز، وبعدين قفل الباب.
-        - الراجل الكبير زعق «امشي!» وقفل الباب.
+        - «امشي!» زعق الراجل العجوز، وبعدين قفل الباب علشان مش عايز يسمع حجة ابنه.
+        - الراجل الكبير زعق «امشي!» وقفل الباب لأنه مش عايز يسمع مبررات ابنه.
       ar:
-        - «اذهب!» صرخ الرجل العجوز، ثم أغلق الباب.
-        - نهره الشيخ قائلًا «اذهب!» ثم أغلق الباب.
+        - «اذهب!» صرخ الرجل العجوز، ثم أغلق الباب لأنّه لا يريد سماع عذر ابنه.
+        - نهره الشيخ قائلًا «اذهب!» ثم أغلق الباب، إذ لم يرد أن يسمع حجّة ابنه.
       en:
-        - '"Go away!" the old man snapped, then he shut the door.'
-        - The old man barked "Go away!" and closed the door.
+        - '"Go away!" the old man snapped, then he shut the door because he didn''t want to hear his son''s reasons.'
+        - The old man barked "Go away!" and closed the door, since he wouldn't hear his son's excuse.
+    explain:
+      ar_eg: bentak بعد الكلام المنقول = زعق، وlalu = وبعدين، وkarena بتجيب السبب.
+      ar: bentak بعد الكلام المنقول بمعنى صرخ، وlalu ثمّ، وkarena تأتي بالسبب.
+      en: bentak after quoted speech is snapped; lalu is then; karena gives the reason.
     words: [membentak]
   - id: e08
     type: speaking

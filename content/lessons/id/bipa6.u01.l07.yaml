@@ -86,17 +86,24 @@ exercises:
     words: [menghela, tangisan, hampa, haru]
   - id: e03
     type: listen
-    text: Dari kamar sebelah terdengar tangisan seorang ibu.
+    text: Dari kamar sebelah terdengar tangisan seorang ibu. Anaknya berangkat merantau ke Malaysia pagi itu. Di meja, ada surat yang belum dibuka.
     question:
-      ar_eg: سامعين إيه من الأوضة اللي جنب؟
-      ar: ماذا يُسمع من الغرفة المجاورة؟
-      en: What can be heard from the next room?
-    options: [عياط, ضحك, غُنا]
+      ar_eg: سامعين إيه من الأوضة اللي جنب، وليه؟
+      ar: ماذا يُسمع من الغرفة المجاورة، ولماذا؟
+      en: What can be heard from the next room, and why?
+    options:
+      - Ibu itu menangis karena anaknya pergi jauh.
+      - Ibu itu tertawa karena membaca surat lucu.
+      - Ibu itu bernyanyi untuk anaknya di dapur.
     answer: 0
     meaning:
-      ar_eg: من الأوضة اللي جنبنا كان فيه صوت عياط ست.
-      ar: سُمع من الغرفة المجاورة بكاء أمّ.
-      en: From the next room came a mother's crying.
+      ar_eg: من الأوضة اللي جنبنا كان فيه صوت عياط ست. ابنها سافر يشتغل في ماليزيا الصبح ده. على الترابيزة جواب لسه ماتفتحش.
+      ar: سُمع من الغرفة المجاورة بكاء أمّ. سافر ابنها للعمل في ماليزيا ذلك الصباح. وعلى الطاولة رسالة لم تُفتح بعد.
+      en: From the next room came a mother's crying. Her son had left to work in Malaysia that morning. On the table lay an unopened letter.
+    explain:
+      ar_eg: tangisan = عياط، والسبب إن ابنها سافر بعيد (merantau ke Malaysia). الجواب لسه ماتفتحش، فمش بتضحك على جواب.
+      ar: tangisan بكاء، وسببه سفر ابنها بعيدًا (merantau ke Malaysia)؛ والرسالة لم تُفتح، فلا ضحك على رسالة.
+      en: tangisan is crying; the reason is her son leaving for Malaysia. The letter is unopened, so she isn't laughing at it.
     words: [tangisan]
   - id: e04
     type: fill_blank
@@ -165,11 +172,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Kepergian anaknya meninggalkan kerinduan yang panjang.
+    source_text: Kepergian anaknya meninggalkan kerinduan yang panjang, sehingga ibunya sering duduk di depan pintu.
     answers_meaning:
-      ar_eg: [رحيل ابنها ساب حنين طويل, رحيل ابنها خلّاها مشتاقة لمدة طويلة]
-      ar: [ترك رحيل ابنها حنينًا طويلًا, خلّف رحيل ابنها شوقًا طويلًا]
-      en: ['Her son''s departure left a long longing', 'Her son''s leaving left her longing for a long time']
+      ar_eg: [رحيل ابنها ساب حنين طويل، لدرجة إن أمه بقت كتير تقعد قدام الباب, رحيل ابنها خلّاها مشتاقة لمدة طويلة، فبقت تقعد قدام الباب كتير]
+      ar: [ترك رحيل ابنها حنينًا طويلًا، حتى صارت أمّه تجلس كثيرًا أمام الباب, خلّف رحيل ابنها شوقًا طويلًا، فكثيرًا ما تجلس أمّه عند الباب]
+      en: ['Her son''s departure left a long longing, so his mother often sat by the door', 'Her son''s leaving left her longing for a long time, so she often sat in front of the door']
+    explain:
+      ar_eg: sehingga بتجيب النتيجة، وsering = كتير.
+      ar: sehingga تأتي بالنتيجة، وsering كثيرًا.
+      en: sehingga brings the result; sering is often.
     words: [kepergian, kerinduan]
   - id: e10
     type: speaking

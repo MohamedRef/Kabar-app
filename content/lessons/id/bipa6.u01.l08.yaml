@@ -83,17 +83,24 @@ exercises:
     words: [merinding, menoleh, terdiam, terpaku]
   - id: e03
     type: listen
-    text: Ada yang memanggil namanya, tetapi dia tidak menoleh.
+    text: Ada yang memanggil namanya, tetapi dia tidak menoleh. Badannya merinding, dan kakinya tidak bisa bergerak. Rumah tua itu sunyi sekali.
     question:
-      ar_eg: عمل إيه لما ندهوه؟
-      ar: ماذا فعل حين نودي؟
-      en: What did he do when called?
-    options: [ما لفّش, عيّط, جري]
+      ar_eg: عمل إيه لما ندهوه، وليه؟
+      ar: ماذا فعل حين نودي، ولماذا؟
+      en: What did he do when called, and why?
+    options:
+      - Dia tidak menoleh karena takut.
+      - Dia menoleh, lalu tertawa.
+      - Dia langsung lari keluar rumah.
     answer: 0
     meaning:
-      ar_eg: حد نادى اسمه، بس ما لفّش.
-      ar: ناداه أحدهم باسمه، لكنه لم يلتفت.
-      en: Someone called his name, but he didn't turn round.
+      ar_eg: حد نادى اسمه، بس ما لفّش. جسمه قشعر ورجليه ماقدرتش تتحرك. البيت القديم كان هادي خالص.
+      ar: ناداه أحدهم باسمه، لكنه لم يلتفت. اقشعرّ بدنه ولم تستطع قدماه الحركة. كان البيت القديم ساكنًا جدًّا.
+      en: Someone called his name, but he didn't turn round. His skin crawled and his legs wouldn't move. The old house was utterly silent.
+    explain:
+      ar_eg: tidak menoleh = ما لفّش، وmerinding ورجليه اللي ماتحركتش بيقولوا إنه خايف. ماضحكش وماجريش، لأنه ماقدرش يتحرك.
+      ar: tidak menoleh لم يلتفت، وmerinding وعجز قدميه عن الحركة يدلّان على الخوف؛ لم يضحك ولم يجرِ لأنّه لم يقدر على الحركة.
+      en: tidak menoleh is not turning; merinding and frozen legs show fear. He couldn't move, so he didn't run or laugh.
     words: [menoleh]
   - id: e04
     type: fill_blank
@@ -162,11 +169,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Langit kelam, dan dari jauh terdengar bisikan angin.
+    source_text: Langit kelam, dan dari jauh terdengar bisikan angin, padahal tidak ada pohon di sekitar rumah itu.
     answers_meaning:
-      ar_eg: [السما غامقة، ومن بعيد سامعين همس الريح, السما كانت كئيبة وفيه همس ريح من بعيد]
-      ar: [السماء قاتمة، ومن بعيد يُسمع همس الريح]
-      en: ['The sky was dark, and from afar came the whisper of the wind', The sky was gloomy and the wind whispered in the distance]
+      ar_eg: [السما غامقة، ومن بعيد سامعين همس الريح، مع إن مافيش ولا شجرة حوالين البيت ده, السما كانت كئيبة وفيه همس ريح من بعيد، رغم إن مافيش شجر حوالين البيت]
+      ar: [السماء قاتمة، ومن بعيد يُسمع همس الريح، مع أنّه لا شجر حول ذلك البيت]
+      en: ['The sky was dark, and from afar came the whisper of the wind, though there were no trees around that house', The sky was gloomy and the wind whispered in the distance, even though no trees stood near the house]
+    explain:
+      ar_eg: padahal = مع إن، بتجيب حاجة غريبة عكس المتوقع، وdi sekitar = حوالين.
+      ar: padahal بمعنى مع أنّ، تأتي بما يخالف المتوقّع، وdi sekitar حول.
+      en: padahal (even though) adds the eerie contrast; di sekitar is around.
     words: [kelam, bisikan]
   - id: e10
     type: speaking

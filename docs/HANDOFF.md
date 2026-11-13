@@ -410,6 +410,7 @@ Mohamed can paste this into any new chat or account to continue:
 Newest first. One line per PR that changes behaviour, process or state.
 
 - 2026-11-13: review #633 (BIPA 5 u06–u10): 63 lessons get Indonesian comprehension options with Arabic `explain:`, 2–3 sentence listening texts and one compound translate/dictation each; with u01–u05 (#642) the BIPA 5 line in `content/demand-limits.tsv` is now 0.0 / 1.2 / 17.5.
+- 2026-11-13: review #633 (BIPA 6 u01–u05): listen and comprehension choices in Indonesian with the Arabic in `explain:` (etymology items keep Arabic options), listening texts of 3 sentences, one multi-clause translate/dictation per lesson; BIPA 6 limit now 50% / 19.1% / 15.6 words.
 - 2026-11-13: review #633 (BIPA 5 u01–u05): comprehension options in Indonesian with the Arabic in `explain`, longer listening texts, one multi-clause item per lesson; `bipa5` line in `content/demand-limits.tsv` tightened to 47.5 / 15.0 / 12.5. All items stay unverified.
 - 2026-11-13: review #635: J3 krama lines use `legi` for a sweet taste (`j3.u02.l03`, `j3.u05.l08`), not Indonesian manis.
 - 2026-11-13: review #633 (part 1, tooling): `kabar-tools demand` reports task demand per BIPA level and CI fails a level worse than `content/demand-limits.tsv`; long listening/dictation texts count in the 7-minute estimate; README shows BIPA 5–7 CEFR as "(aim)". Content batches follow: half a level per PR (Mohamed approved the plan 2026-11-13).
