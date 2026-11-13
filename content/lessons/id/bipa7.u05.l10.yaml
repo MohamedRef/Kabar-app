@@ -92,18 +92,25 @@ exercises:
     words: [relief, naskah kuno, epigrafi, otentik]
   - id: e03
     type: listen
-    text: Naskah kuno ini ditulis di atas daun lontar.
+    text: Di perpustakaan keraton, saya melihat sebuah buku yang aneh. Naskah kuno ini ditulis di atas daun lontar, karena kertas belum dikenal di Bali pada masa itu.
     question:
-      ar_eg: إيه اللي مكتوب على ورق النخل؟
-      ar: ما المكتوب على سعف النخيل؟
-      en: What's written on palm leaves?
-    options: [مخطوطة قديمة, تمثال, نقش بارز]
-    answer: 0
+      ar_eg: المخطوطة اتكتبت على ورق النخل ليه؟
+      ar: لماذا كُتبت المخطوطة على سعف النخيل؟
+      en: Why was the manuscript written on palm leaves?
+    options:
+      - Karena daun lontar lebih murah daripada kertas.
+      - Karena pada masa itu belum ada kertas di Bali.
+      - Karena raja tidak suka kertas.
+    answer: 1
     meaning:
-      ar_eg: المخطوطة القديمة دي مكتوبة على ورق نخل.
-      ar: كُتب هذا المخطوط القديم على سعف النخيل.
-      en: This ancient manuscript was written on palm leaves.
+      ar_eg: في مكتبة القصر، شفت كتاب غريب. المخطوطة القديمة دي مكتوبة على ورق نخل اللونتار، عشان الورق ماكانش معروف في بالي وقتها.
+      ar: 'رأيت في مكتبة القصر كتابًا غريبًا: مخطوطة قديمة مكتوبة على سعف نخيل اللونتار، لأنّ الورق لم يكن معروفًا في بالي آنذاك.'
+      en: In the palace library I saw a strange book. This ancient manuscript was written on lontar palm leaves, because paper wasn't yet known in Bali then.
     words: [naskah kuno]
+    explain:
+      ar_eg: karena kertas belum dikenal = عشان الورق لسه ماكانش معروف. مش عشان أرخص ولا عشان الملك.
+      ar: السبب أنّ الورق لم يكن معروفًا بعد، لا الرخص ولا ذوق الملك.
+      en: Because paper wasn't known yet, not cost or the king's taste.
   - id: e04
     type: fill_blank
     sentence: Lukisan gua di Maros berasal dari zaman ___.
@@ -161,12 +168,22 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Manusia purba hidup di Jawa jauh sebelum zaman sejarah.
+    source_text: Manusia purba hidup di Jawa jauh sebelum zaman sejarah, karena itu kita mengenal mereka dari fosil, bukan dari tulisan.
     answers_meaning:
-      ar_eg: [الإنسان البدائي عاش في جاوة قبل عصر التاريخ بكتير, الإنسان القديم كان عايش في جاوة قبل التاريخ المكتوب بكتير]
-      ar: [عاش الإنسان القديم في جاوة قبل العصر التاريخي بزمن طويل, سكن الإنسان القديم جاوة قبل عصور التاريخ بكثير]
-      en: [Early humans lived in Java long before recorded history, Hominins lived in Java long before the historical era]
+      ar_eg:
+        - الإنسان القديم عاش في جاوة قبل عصر التاريخ بكتير، وعشان كده بنعرفه من الحفريات مش من الكتابة.
+        - البشر الأوائل كانوا في جاوة قبل التاريخ المكتوب بكتير، فبنعرفهم من الأحافير مش من نصوص.
+      ar:
+        - عاش الإنسان القديم في جاوة قبل العصر التاريخيّ بزمن طويل، ولذلك نعرفه من الأحافير لا من الكتابة.
+        - سكن الإنسان البدائيّ جاوة قبل التاريخ المدوّن بكثير، فمعرفتنا به من المستحاثّات لا من النصوص.
+      en:
+        - Early humans lived in Java long before historical times, so we know them from fossils, not from writing.
+        - Ancient humans lived on Java long before recorded history, which is why we know them through fossils, not texts.
     words: [manusia purba]
+    explain:
+      ar_eg: 'karena itu = عشان كده (النتيجة)، وbukan … = مش …: الحفريات (fosil) بدل الكتابة.'
+      ar: 'karena itu = لذلك، وbukan = لا: الأحافير بدل الكتابة.'
+      en: karena itu = therefore; fossils, not writing.
   - id: e09
     type: speaking
     text: Relief Borobudur adalah peninggalan purbakala yang otentik.
