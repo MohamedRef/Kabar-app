@@ -65,16 +65,20 @@ exercises:
     words: [siaran langsung, ongkos kirim, bayar di tempat, ojek daring, penipuan]
   - id: e02
     type: listen
-    text: Penjual itu berjualan lewat siaran langsung setiap malam.
+    text: Penjual itu berjualan lewat siaran langsung setiap malam. Pembeli bisa bertanya tentang barangnya, lalu langsung memesan di kolom komentar.
     question:
-      ar_eg: البياعة دي بتبيع إزاي؟
-      ar: كيف تبيع هذه البائعة؟
-      en: How does that seller sell?
+      ar_eg: البيع بيحصل إزاي؟
+      ar: كيف يتمّ البيع؟
+      en: How does the selling work?
     options:
-      - في محل في السوق.
-      - في بث مباشر على النت.
-      - من بيت لبيت.
+      - Di toko pasar, dan pembeli datang sendiri.
+      - Lewat live di internet, dan pembeli memesan lewat komentar.
+      - Dari rumah ke rumah setiap malam.
     answer: 1
+    explain:
+      ar_eg: siaran langsung = بث مباشر (live)، والطلب بيحصل في kolom komentar = خانة الكومنتات.
+      ar: siaran langsung = بثّ مباشر (live)، ويتمّ الطلب في kolom komentar = خانة التعليقات.
+      en: siaran langsung = a live stream; orders go in the kolom komentar = comments.
     words: [siaran langsung]
   - id: e03
     type: fill_blank
@@ -92,19 +96,20 @@ exercises:
       en: "Cheap item, pricey shipping: ongkos kirim. siaran langsung (live stream) and penipuan (scam) have no shipping price."
   - id: e04
     type: multiple_choice
+    question: bayar di tempat
     question_meaning:
-      ar_eg: «bayar di tempat» يعني إيه؟
-      ar: ما معنى «bayar di tempat»؟
-      en: What does "bayar di tempat" mean?
+      ar_eg: أنهي جملة بتشرح طريقة الدفع دي؟
+      ar: أيّ جملة تشرح طريقة الدفع هذه؟
+      en: Which sentence explains this way of paying?
     options:
-      - تدفع قبل ما الحاجة تتشحن.
-      - تدفع في البنك.
-      - تدفع للمندوب لما الحاجة توصلك.
+      - Anda membayar sebelum barangnya dikirim.
+      - Anda membayar di bank.
+      - Anda membayar kurir ketika barangnya sampai.
     answer: 2
     explain:
-      ar_eg: bayar = يدفع، di tempat = في المكان، يعني عند الاستلام.
-      ar: bayar = يدفع، وdi tempat = في المكان، أي عند الاستلام.
-      en: bayar = pay, di tempat = on the spot, i.e. on delivery.
+      ar_eg: bayar = يدفع، di tempat = في المكان، يعني تدفع للمندوب (kurir) لما الحاجة توصل.
+      ar: bayar = يدفع، وdi tempat = في المكان، أي تدفع للمندوب (kurir) عند وصول الطلب.
+      en: "bayar = pay, di tempat = on the spot: you pay the courier when it arrives."
     words: [bayar di tempat]
   - id: e05
     type: build_sentence
@@ -122,17 +127,21 @@ exercises:
   - id: e06
     type: translate
     direction: from_target
-    source_text: Hati-hati, banyak penipuan di siaran langsung.
+    source_text: Hati-hati, banyak penipuan di siaran langsung, jadi jangan transfer uang sebelum barangnya sampai.
     answers_meaning:
       ar_eg:
-        - خلي بالك، فيه نصب كتير في البث المباشر.
-        - احترس، النصب كتير في اللايفات.
+        - خلي بالك، فيه نصب كتير في البث المباشر، فماتحوّلش فلوس قبل ما الحاجة توصل.
+        - احترس، النصب كتير في اللايفات، فماتبعتش فلوس قبل ما الطلب يوصلك.
       ar:
-        - احذر، فالاحتيال كثير في البثّ المباشر.
-        - انتبه، هناك عمليات احتيال كثيرة في البثّ المباشر.
+        - احذر، فالاحتيال كثير في البثّ المباشر، فلا تحوّل المال قبل وصول البضاعة.
+        - انتبه، هناك احتيال كثير في البثّ المباشر، لذا لا تحوّل نقودًا قبل أن يصلك الطلب.
       en:
-        - Careful, there's a lot of fraud on live streams.
-        - Watch out, live streams have many scams.
+        - Careful, there's a lot of fraud on live streams, so don't transfer money before the goods arrive.
+        - Watch out, live streams have many scams, so don't send money until the item has arrived.
+    explain:
+      ar_eg: jadi = فـ (نتيجة)، وjangan … sebelum = ماتعملش … قبل.
+      ar: jadi = لذا (نتيجة)، وjangan … sebelum = لا تفعل … قبل.
+      en: jadi = so; jangan … sebelum = don't … before.
     words: [penipuan, siaran langsung]
   - id: e07
     type: multiple_choice

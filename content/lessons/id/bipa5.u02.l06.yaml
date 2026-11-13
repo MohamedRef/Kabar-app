@@ -80,17 +80,24 @@ exercises:
     words: [hektar, dataran, hambatan, berdampak]
   - id: e03
     type: listen
-    text: Truk itu membawa semen untuk jembatan.
+    text: Truk itu membawa semen untuk jembatan, tetapi jalannya rusak karena hujan. Pengirimannya terpaksa ditunda sampai besok pagi.
     question:
-      ar_eg: العربية شايلة إيه؟
-      ar: ماذا تحمل الشاحنة؟
-      en: What is the truck carrying?
-    options: [أسمنت, رز, بنزين]
-    answer: 0
+      ar_eg: إيه اللي حصل للشحنة؟
+      ar: ماذا حدث للشحنة؟
+      en: What happened to the delivery?
+    options:
+      - Semennya sudah sampai di jembatan.
+      - Semennya terlambat karena jalannya rusak.
+      - Truknya membawa beras, bukan semen.
+    answer: 1
     meaning:
-      ar_eg: العربية دي شايلة أسمنت للكوبري.
-      ar: تحمل تلك الشاحنة إسمنتًا للجسر.
-      en: That truck is carrying cement for the bridge.
+      ar_eg: العربية دي شايلة أسمنت للكوبري، بس الطريق باظ من المطر، فالتوصيل اتأجل لبكرة الصبح.
+      ar: تحمل الشاحنة إسمنتًا للجسر، لكنّ الطريق تضرّر من المطر، فتأجّل التسليم إلى صباح الغد.
+      en: That truck is carrying cement for the bridge, but the road is damaged by rain, so the delivery has to wait until tomorrow morning.
+    explain:
+      ar_eg: tetapi بتجيب المشكلة (jalannya rusak)، وditunda = اتأجل. يعني الأسمنت متأخر، لسه ماوصلش.
+      ar: tetapi تذكر المشكلة (jalannya rusak)، وditunda = تأجّل، أي أن الإسمنت تأخّر ولم يصل.
+      en: tetapi brings the problem (jalannya rusak); ditunda = postponed, so the cement is late.
     words: [semen]
   - id: e04
     type: fill_blank
@@ -159,11 +166,21 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Kota itu dibangun di dataran yang luasnya ribuan hektar.
+    source_text: Kota itu dibangun di dataran yang luasnya ribuan hektar, sehingga hutan di sekitarnya ikut berkurang.
     answers_meaning:
-      ar_eg: [المدينة دي اتبنت على أرض منبسطة مساحتها آلاف الهكتارات, المدينة اتبنت في سهل مساحته آلاف الهكتارات]
-      ar: [بُنيت تلك المدينة على سهل تبلغ مساحته آلاف الهكتارات, شُيّدت المدينة على أرض منبسطة مساحتها آلاف الهكتارات]
-      en: [That city is built on a plain thousands of hectares wide, The city was built on flat land covering thousands of hectares]
+      ar_eg:
+        - المدينة دي اتبنت على أرض منبسطة مساحتها آلاف الهكتارات، فالغابة اللي حواليها قلّت هي كمان.
+        - المدينة اتبنت في سهل مساحته آلاف الهكتارات، وده خلّى الغابة اللي جنبها تقل.
+      ar:
+        - بُنيت تلك المدينة على سهل تبلغ مساحته آلاف الهكتارات، فتقلّصت الغابة المحيطة بها أيضًا.
+        - شُيّدت المدينة على أرض منبسطة مساحتها آلاف الهكتارات، ممّا أدّى إلى تقلّص الغابة حولها.
+      en:
+        - That city is built on a plain thousands of hectares wide, so the forest around it has shrunk too.
+        - The city was built on flat land covering thousands of hectares, which made the surrounding forest shrink.
+    explain:
+      ar_eg: sehingga = فـ / لدرجة إن (نتيجة)، وikut berkurang = قلّت هي كمان.
+      ar: sehingga = ممّا أدّى إلى (نتيجة)، وikut berkurang = تقلّصت هي الأخرى.
+      en: sehingga = so, with the result that; ikut berkurang = shrank as well.
     words: [dataran, hektar]
   - id: e10
     type: speaking

@@ -83,17 +83,24 @@ exercises:
     words: [bertiup, kelopak, layu, kupu-kupu]
   - id: e03
     type: listen
-    text: Bunga di meja itu sudah layu karena lupa disiram.
+    text: Bunga di meja itu sudah layu karena lupa disiram. Daunnya kering dan warnanya pucat. Ibu menaruhnya di dekat jendela supaya kena matahari.
     question:
-      ar_eg: الوردة مالها؟
-      ar: ما حال الزهرة؟
-      en: What's wrong with the flower?
-    options: [دبلانة, بتلمع, فراشة]
+      ar_eg: الوردة مالها، وليه؟
+      ar: ما حال الزهرة، ولماذا؟
+      en: What's wrong with the flower, and why?
+    options:
+      - Bunganya layu karena tidak disiram.
+      - Bunganya berkilau karena baru dibeli.
+      - Bunganya dimakan kupu-kupu.
     answer: 0
     meaning:
-      ar_eg: الوردة اللي على الترابيزة دبلت عشان نسينا نسقيها.
-      ar: ذبلت الزهرة على الطاولة لأننا نسينا سقيها.
-      en: The flower on the table has withered; we forgot to water it.
+      ar_eg: الوردة اللي على الترابيزة دبلت عشان نسينا نسقيها. ورقها ناشف ولونها باهت. ماما حطتها جنب الشباك علشان تاخد شمس.
+      ar: ذبلت الزهرة على الطاولة لأننا نسينا سقيها. أوراقها جافّة ولونها باهت. وضعتها أمّي قرب النافذة لتنال الشمس.
+      en: The flower on the table has withered; we forgot to water it. Its leaves are dry and its colour pale. Mum put it by the window to get sun.
+    explain:
+      ar_eg: layu = دبلانة، والسبب lupa disiram = نسيوا يسقوها. مش بتلمع ولا الفراشة أكلتها.
+      ar: layu ذابلة، والسبب lupa disiram أي نُسي سقيها؛ لا تلمع ولا أكلتها فراشة.
+      en: layu is withered, because nobody watered it. It isn't shining, and no butterfly ate it.
     words: [layu]
   - id: e04
     type: fill_blank
@@ -162,11 +169,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Pada waktu petang, kupu-kupu terbang ke cakrawala.
+    source_text: Pada waktu petang, kupu-kupu terbang ke cakrawala, sementara matahari tenggelam di balik sungai.
     answers_meaning:
-      ar_eg: [العصرية، الفراشات بتطير ناحية الأفق, وقت العصر الفراشة طارت للأفق]
-      ar: [في العصر تطير الفراشات نحو الأفق, عند المساء طارت الفراشة إلى الأفق]
-      en: ['In the late afternoon, butterflies fly to the horizon', At dusk a butterfly flew towards the horizon]
+      ar_eg: [العصرية، الفراشات بتطير ناحية الأفق، والشمس بتغرب ورا النهر, وقت العصر الفراشة طارت للأفق، في الوقت اللي الشمس كانت بتغرب ورا النهر]
+      ar: [في العصر تطير الفراشات نحو الأفق، بينما تغرب الشمس خلف النهر, عند المساء طارت الفراشة إلى الأفق، في حين غابت الشمس وراء النهر]
+      en: ['In the late afternoon, butterflies fly to the horizon, while the sun sinks behind the river', At dusk a butterfly flew towards the horizon as the sun went down beyond the river]
+    explain:
+      ar_eg: sementara = في الوقت اللي، بتربط حاجتين بيحصلوا مع بعض.
+      ar: sementara بمعنى بينما، تربط حدثين متزامنين.
+      en: sementara (while) links two things happening at once.
     words: [petang, kupu-kupu, cakrawala]
   - id: e10
     type: speaking

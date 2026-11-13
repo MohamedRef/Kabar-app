@@ -89,17 +89,24 @@ exercises:
     words: [kausalitas, generalisasi, anomali, empiris]
   - id: e03
     type: listen
-    text: 'Ada anomali pada data bulan Maret: penjualan naik sepuluh kali lipat.'
+    text: 'Ada anomali pada data bulan Maret: penjualan naik sepuluh kali lipat. Setelah diperiksa, ternyata ada kesalahan ketik dalam tabel. Karena itu, kita tidak boleh langsung menarik kesimpulan dari satu angka yang aneh.'
     question:
       ar_eg: إيه اللي في بيانات مارس؟
       ar: ماذا في بيانات مارس؟
       en: What's in the March data?
-    options: [شذوذ, متوسّط, تعميم]
+    options:
+      - Angka yang sangat berbeda dari biasanya, yang ternyata salah ketik.
+      - Rata-rata penjualan selama setahun.
+      - Kesimpulan umum untuk semua bulan.
     answer: 0
     meaning:
-      ar_eg: 'فيه حاجة شاذّة في بيانات مارس: المبيعات زادت عشر أضعاف.'
-      ar: 'في بيانات مارس شذوذ: تضاعفت المبيعات عشر مرّات.'
-      en: 'There''s an anomaly in March''s data: sales rose tenfold.'
+      ar_eg: 'فيه شذوذ في بيانات مارس: المبيعات زادت عشر أضعاف. بعد المراجعة طلع فيه غلطة كتابة في الجدول. علشان كده، مانقدرش نطلع باستنتاج على طول من رقم واحد غريب.'
+      ar: 'في بيانات مارس شذوذ: ارتفعت المبيعات عشرة أضعاف. وبعد الفحص تبيّن أنّ في الجدول خطأً مطبعيًّا. لذلك لا يجوز أن نستنتج مباشرة من رقم غريب واحد.'
+      en: 'There''s an anomaly in March''s data: sales rose tenfold. On checking, it turned out to be a typo in the table. So we must not jump to conclusions from one odd number.'
+    explain:
+      ar_eg: anomali = شذوذ، رقم غريب جدًّا عن العادي، وطلع غلطة كتابة (ternyata). مش متوسّط ولا تعميم.
+      ar: anomali = شذوذ، رقم بعيد جدًّا عن المعتاد، وتبيّن أنّه خطأ مطبعي (ternyata). ليس متوسّطًا ولا تعميمًا.
+      en: anomali is an anomaly, a number far from normal, which turned out to be a typo (ternyata). Not an average or a generalisation.
     words: [anomali]
   - id: e04
     type: fill_blank
@@ -158,11 +165,17 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Untuk membuktikan kausalitas, kita butuh eksperimen.
+    source_text: Untuk membuktikan kausalitas, kita butuh eksperimen, karena korelasi saja tidak menunjukkan sebab dan akibat.
     answers_meaning:
-      ar_eg: [علشان نثبت السببية، محتاجين تجربة, لو عايزين نثبت إن ده سبب ده، لازم تجربة]
-      ar: [لإثبات السببية نحتاج إلى تجربة, يتطلّب إثبات السببية إجراء تجربة]
-      en: ['To prove causality, we need an experiment', Proving causation requires an experiment]
+      ar_eg:
+        - علشان نثبت السببية محتاجين تجربة، لأن الارتباط لوحده مابيبيّنش السبب والنتيجة.
+        - إثبات السببية محتاج تجربة، علشان العلاقة بين رقمين لوحدها مش بتقول مين سبب مين.
+      ar:
+        - لإثبات السببية نحتاج إلى تجربة، لأنّ الارتباط وحده لا يبيّن السبب والنتيجة.
+        - يتطلّب إثبات العلاقة السببية تجربة، إذ لا يكشف الارتباط وحده عن العلّة والمعلول.
+      en:
+        - To prove causality, we need an experiment, because correlation alone does not show cause and effect.
+        - Proving causation requires an experiment, since a correlation by itself says nothing about cause and effect.
     words: [kausalitas]
   - id: e09
     type: speaking

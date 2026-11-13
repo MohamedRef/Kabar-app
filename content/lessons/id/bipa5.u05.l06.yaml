@@ -83,17 +83,20 @@ exercises:
     words: [kera, kelelawar, nyamuk, buas]
   - id: e03
     type: listen
-    text: Pakai obat nyamuk, ya. Di rawa banyak sekali.
+    text: Pakai obat nyamuk, ya. Di rawa banyak sekali, apalagi waktu malam. Kalau digigit, kulitmu bisa gatal sampai pagi.
     question:
-      ar_eg: إيه اللي كتير في المستنقع؟
-      ar: ما الكثير في المستنقع؟
-      en: What is there a lot of in the swamp?
-    options: [ناموس, تعابين, قرود]
+      ar_eg: إيه اللي كتير في المستنقع، وإمتى؟
+      ar: ما الكثير في المستنقع، ومتى؟
+      en: What is there a lot of in the swamp, and when?
+    options:
+      - Nyamuk, terutama malam hari.
+      - Ular, terutama siang hari.
+      - Monyet, terutama pagi hari.
     answer: 0
     meaning:
-      ar_eg: حط دهان الناموس. في المستنقع فيه كتير أوي.
-      ar: ضع طارد البعوض، ففي المستنقع منه الكثير.
-      en: Put on mosquito repellent. There are loads in the swamp.
+      ar_eg: حط دهان الناموس. في المستنقع فيه كتير أوي، خصوصًا بالليل. لو قرصك، جلدك ممكن يفضل يهرش لحد الصبح.
+      ar: ضع طارد البعوض، ففي المستنقع منه الكثير، لا سيّما ليلًا. وإن لدغك فقد يحكّك جلدك حتى الصباح.
+      en: Put on mosquito repellent. There are loads in the swamp, especially at night. If you get bitten, you could itch till morning.
     words: [nyamuk, rawa]
   - id: e04
     type: fill_blank
@@ -162,11 +165,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Saat matahari terbenam, ribuan kelelawar terbang di atas sungai.
+    source_text: Saat matahari terbenam, ribuan kelelawar terbang di atas sungai, sementara monyet-monyet kembali ke pohon.
     answers_meaning:
-      ar_eg: [وقت المغرب آلاف الخفافيش بتطير فوق النهر, لما الشمس بتغيب، آلاف الخفافيش بتطير فوق النهر]
-      ar: [عند الغروب تطير آلاف الخفافيش فوق النهر, حين تغرب الشمس تطير آلاف الخفافيش فوق النهر]
-      en: ['At sunset, thousands of bats fly over the river', 'When the sun sets, thousands of bats fly above the river']
+      ar_eg: [وقت المغرب آلاف الخفافيش بتطير فوق النهر، والقرود بترجع للشجر, لما الشمس بتغيب، آلاف الخفافيش بتطير فوق النهر في الوقت اللي القرود بترجع فيه للشجر]
+      ar: [عند الغروب تطير آلاف الخفافيش فوق النهر، بينما تعود القرود إلى الأشجار, حين تغرب الشمس تطير آلاف الخفافيش فوق النهر وتعود القرود إلى الشجر]
+      en: ['At sunset, thousands of bats fly over the river while the monkeys go back to the trees', 'When the sun sets, thousands of bats fly above the river, and the monkeys return to the trees']
+    explain:
+      ar_eg: "جملتين في وقت واحد: saat (لما) في الأول، وsementara (في الوقت اللي / بينما) بتربط الحدثين."
+      ar: "حدثان متزامنان: saat (عندما) في البداية، وsementara (بينما) تربط بينهما."
+      en: "Two things at once: saat (when) opens, and sementara (while) links the two events."
     words: [kelelawar]
   - id: e10
     type: speaking

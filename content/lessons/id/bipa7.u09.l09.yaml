@@ -83,17 +83,24 @@ exercises:
     words: [korban konflik, sumpah adat, panas pela, hukum adat]
   - id: e03
     type: listen
-    text: Banyak korban konflik masih menunggu bantuan rumah.
+    text: Banyak korban konflik masih menunggu bantuan rumah. Rumah mereka terbakar dua puluh tahun yang lalu, dan sampai sekarang mereka tinggal di rumah kerabat. Pemerintah berjanji membangun rumah baru tahun depan.
     question:
       ar_eg: مين اللي لسه مستني مساعدة؟
       ar: مَن ما زال ينتظر المساعدة؟
       en: Who is still waiting for aid?
-    options: [ضحايا الصراع, الوسطاء, زعماء العرف]
+    options:
+      - Orang-orang yang kehilangan rumah karena konflik.
+      - Para juru damai dari kedua pihak.
+      - Para tokoh adat di negeri itu.
     answer: 0
     meaning:
-      ar_eg: ضحايا صراع كتير لسه مستنيين مساعدة في السكن.
-      ar: ما زال كثير من ضحايا النزاع ينتظرون المساعدة في السكن.
-      en: Many conflict victims are still waiting for housing aid.
+      ar_eg: ضحايا كتير للصراع لسه مستنّيين مساعدة في السكن. بيوتهم اتحرقت من عشرين سنة، ولحد دلوقتي عايشين عند قرايبهم. الحكومة وعدت تبني بيوت جديدة السنة الجاية.
+      ar: لا يزال كثير من ضحايا الصراع ينتظرون مساعدات السكن. احترقت بيوتهم قبل عشرين عامًا، وما زالوا حتى الآن يقيمون عند أقاربهم. ووعدت الحكومة ببناء بيوت جديدة العام المقبل.
+      en: Many conflict victims are still waiting for housing aid. Their homes burned twenty years ago, and they still live with relatives. The government has promised new houses next year.
+    explain:
+      ar_eg: 'korban konflik = ضحايا الصراع: بيوتهم اتحرقت من عشرين سنة ولسه قاعدين عند قرايبهم. الوسطا (juru damai) وزعما العرف مش هم اللي مستنّيين.'
+      ar: 'korban konflik = ضحايا الصراع: احترقت بيوتهم قبل عشرين عامًا وما زالوا عند أقاربهم. ليس الوسطاء (juru damai) ولا زعماء العرف من ينتظرون.'
+      en: 'korban konflik are conflict victims: their homes burned twenty years ago and they still live with relatives. Not the peacemakers (juru damai) or customary leaders.'
     words: [korban konflik]
   - id: e04
     type: fill_blank
@@ -152,11 +159,17 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Sumpah adat leluhur melarang dua negeri itu saling menyakiti.
+    source_text: Sumpah adat leluhur melarang dua negeri itu saling menyakiti, sehingga para tokoh adat ikut mendamaikan warga.
     answers_meaning:
-      ar_eg: [اليمين العرفي بتاع الأجداد بيمنع القريتين يأذوا بعض, يمين الأجداد العرفي بيحرّم على القريتين الأذى]
-      ar: [يحرّم القسم العرفي للأجداد على القريتين أن تؤذي إحداهما الأخرى, يمنع قسم الأسلاف العرفي القريتين من التآذي]
-      en: ['The ancestors'' customary oath forbids the two villages to harm each other', An ancestral oath bars the two villages from hurting one another]
+      ar_eg:
+        - قَسَم العرف بتاع الأجداد بيمنع القريتين دول يأذوا بعض، فزعما العرف شاركوا في الصلح بين الناس.
+        - يمين الأجداد بيحرّم على القريتين إنهم يضرّوا بعض، علشان كده كبار العرف ساعدوا يصالحوا الناس.
+      ar:
+        - يحرّم قَسَم الأجداد العرفيّ على القريتين أن تؤذي إحداهما الأخرى، لذا شارك زعماء العرف في مصالحة الناس.
+        - يمنع يمين الأسلاف القريتين من إيذاء بعضهما، فأسهم وجهاء العرف في الصلح بين السكّان.
+      en:
+        - The ancestors' customary oath forbids the two villages to harm each other, so customary leaders helped reconcile the people.
+        - An ancestral oath bars the two villages from hurting one another, which is why the elders joined the peacemaking.
     words: [sumpah adat]
   - id: e09
     type: speaking

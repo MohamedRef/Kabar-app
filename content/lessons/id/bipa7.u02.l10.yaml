@@ -83,18 +83,25 @@ exercises:
     words: [hujan meteor, rasi bintang, bioluminesensi, plankton]
   - id: e03
     type: listen
-    text: Petani dulu menanam padi ketika rasi bintang Waluku muncul.
+    text: Petani dulu menanam padi ketika rasi bintang Waluku muncul. Bintang itu terlihat di langit timur sebelum musim hujan datang. Jadi, langit malam menjadi kalender bagi mereka.
     question:
-      ar_eg: كانوا بيزرعوا إمتى؟
-      ar: متى كانوا يزرعون؟
-      en: When did they plant?
-    options: [كوكبة نجوم, كسوف, زخّة شهب]
-    answer: 0
+      ar_eg: ليه الفلاحين كانوا بيبصّوا للنجوم؟
+      ar: لماذا كان الفلّاحون ينظرون إلى النجوم؟
+      en: Why did farmers watch the stars?
+    options:
+      - Karena mereka ingin melihat gerhana matahari.
+      - Karena bintang memberi tahu waktu untuk menanam padi.
+      - Karena mereka takut pada hujan meteor.
+    answer: 1
     meaning:
-      ar_eg: الفلاحين زمان كانوا بيزرعوا الرز لما كوكبة والوكو تظهر.
-      ar: كان الفلّاحون قديمًا يزرعون الأرز حين تظهر كوكبة والوكو.
-      en: Farmers used to plant rice when the Waluku constellation appeared.
+      ar_eg: الفلاحين زمان كانوا بيزرعوا الرز لما كوكبة واولوكو تطلع. النجوم دي بتبان في السما الشرقية قبل موسم المطر. يعني السما بالليل كانت نتيجة (تقويم) ليهم.
+      ar: كان الفلّاحون قديمًا يزرعون الأرز حين تظهر كوكبة والوكو، وهي تُرى في السماء الشرقيّة قبل موسم المطر، فكانت سماء الليل تقويمًا لهم.
+      en: Farmers used to plant rice when the Waluku constellation appeared. It shows in the eastern sky before the rainy season. So the night sky was their calendar.
     words: [rasi bintang]
+    explain:
+      ar_eg: rasi bintang = كوكبة نجوم، وكانت بتبان قبل المطر، فالسما بقت kalender = تقويم بيقولهم إمتى يزرعوا. مفيش كسوف ولا خوف من الشهب.
+      ar: rasi bintang = كوكبة تظهر قبل المطر، فصارت السماء تقويمًا يحدّد موعد الزراعة، ولا ذكر لكسوف ولا خوف من الشهب.
+      en: The constellation appears before the rains, so the sky was a calendar for planting. No eclipse, no fear of meteors.
   - id: e04
     type: fill_blank
     sentence: Matahari berada tepat di atas kepala saat ___.
@@ -152,12 +159,22 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Hari tanpa bayangan terjadi dua kali setahun di Indonesia.
+    source_text: Hari tanpa bayangan terjadi dua kali setahun di Indonesia, karena matahari tepat berada di atas kepala kita.
     answers_meaning:
-      ar_eg: [اليوم اللي من غير ضل بيحصل مرتين في السنة في إندونيسيا, يوم من غير ضل بييجي مرتين كل سنة في إندونيسيا]
-      ar: [يحدث يوم انعدام الظلّ مرّتين في السنة في إندونيسيا, يقع يوم انعدام الظلّ مرّتين سنويًّا في إندونيسيا]
-      en: [The shadowless day happens twice a year in Indonesia, Indonesia has a shadowless day twice a year]
+      ar_eg:
+        - اليوم اللي من غير ضل بيحصل مرتين في السنة في إندونيسيا، عشان الشمس بتبقى فوق راسنا بالظبط.
+        - يوم من غير ظل بييجي مرتين في السنة في إندونيسيا، لأن الشمس بتبقى عمودي فوقنا.
+      ar:
+        - يحدث يوم بلا ظلّ مرّتين في السنة في إندونيسيا، لأنّ الشمس تكون فوق رؤوسنا تمامًا.
+        - يتكرّر اليوم الخالي من الظلّ مرّتين سنويًّا في إندونيسيا، إذ تتعامد الشمس فوق رؤوسنا.
+      en:
+        - The day without shadows happens twice a year in Indonesia, because the sun is right above our heads.
+        - Shadowless day comes twice a year in Indonesia since the sun stands directly overhead.
     words: [hari tanpa bayangan]
+    explain:
+      ar_eg: 'karena بتجيب السبب: الشمس tepat di atas kepala = فوق الراس بالظبط.'
+      ar: 'karena تأتي بالسبب: الشمس فوق الرؤوس تمامًا.'
+      en: 'karena gives the reason: the sun is directly overhead.'
   - id: e09
     type: speaking
     text: Kami menonton hujan meteor dan mencari rasi bintang.

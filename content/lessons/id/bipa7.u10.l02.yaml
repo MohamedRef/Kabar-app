@@ -87,16 +87,20 @@ exercises:
       en: Read the abstrak (abstract) for a quick summary.
   - id: e04
     type: listen
-    text: Setelah semua pemakalah selesai, kita masuk ke sesi tanya jawab.
+    text: Setelah semua pemakalah selesai, kita masuk ke sesi tanya jawab. Setiap penanya hanya boleh mengajukan satu pertanyaan. Mohon sebutkan nama dan asal lembaga Anda sebelum bertanya.
     question:
       ar_eg: إيه اللي هييجي بعد ما كل أصحاب الأوراق يخلّصوا؟
       ar: ماذا يأتي بعد أن ينتهي جميع أصحاب الأوراق؟
       en: What comes after all the presenters finish?
     options:
-      - جلسة الأسئلة والأجوبة.
-      - الغدا.
-      - امتحان.
+      - Sesi tanya jawab dengan aturan satu pertanyaan per orang.
+      - Makan siang bersama.
+      - Ujian untuk para peserta.
     answer: 0
+    explain:
+      ar_eg: بعد ما المحاضرين (pemakalah) يخلّصوا ييجي sesi tanya jawab (أسئلة وأجوبة)، وكل واحد سؤال واحد بس. مفيش غدا ولا امتحان.
+      ar: بعد انتهاء المحاضرين (pemakalah) تأتي sesi tanya jawab (الأسئلة والأجوبة)، ولكلّ سائل سؤال واحد. لا غداء ولا امتحان.
+      en: After the presenters (pemakalah) comes the sesi tanya jawab (Q&A), one question each. No lunch or exam.
     words: [pemakalah, sesi tanya jawab]
   - id: e05
     type: build_sentence
@@ -118,15 +122,15 @@ exercises:
       ar: قال مدير الجلسة «Waktu kami terbatas»، فماذا يقصد؟
       en: The moderator said "Waktu kami terbatas". What does he mean?
     options:
-      - الندوة اتلغت.
-      - عايز أسئلة كتير.
-      - الوقت قليل، فلازم نختصر.
+      - Seminarnya dibatalkan.
+      - Ia ingin banyak pertanyaan.
+      - Waktunya sedikit, jadi semua harus singkat.
     answer: 2
-    words: [moderator]
     explain:
-      ar_eg: Waktu kami terbatas = وقتنا محدود، يعني لازم نختصر. مش إلغا.
-      ar: Waktu kami terbatas = وقتنا محدود فلنوجز.
-      en: "terbatas means limited: keep it short."
+      ar_eg: 'terbatas = محدود: الوقت قليل، فلازم نختصر.'
+      ar: 'terbatas = محدود: الوقت قليل فينبغي الإيجاز.'
+      en: 'terbatas means limited: time is short, so keep it brief.'
+    words: [moderator]
   - id: e07
     type: translate
     direction: to_target
@@ -149,11 +153,11 @@ exercises:
     words: [moderator, sesi tanya jawab]
   - id: e09
     type: dictation
-    text: Abstrak makalah itu hanya dua ratus kata.
+    text: Abstrak makalah itu hanya dua ratus kata, tetapi isinya sudah mencakup tujuan, metode, dan hasil.
     meaning:
-      ar_eg: ملخّص الورقة دي ميتين كلمة بس.
-      ar: لا يتجاوز ملخّص تلك الورقة مئتي كلمة.
-      en: That paper's abstract is only two hundred words.
+      ar_eg: ملخّص الورقة دي ميتين كلمة بس، بس فيه الهدف والطريقة والنتايج.
+      ar: لا يتجاوز ملخّص تلك الورقة مئتي كلمة، لكنّه يشمل الهدف والمنهج والنتائج.
+      en: That paper's abstract is only two hundred words, but it already covers the aim, method and results.
     words: [abstrak, makalah]
   - id: e10
     type: translate

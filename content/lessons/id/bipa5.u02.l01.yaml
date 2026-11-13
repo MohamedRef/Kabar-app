@@ -116,16 +116,20 @@ exercises:
     words: [menolak, meskipun]
   - id: e04
     type: listen
-    text: Sebagian Jakarta tenggelam, padahal jutaan orang tinggal di sana.
+    text: Sebagian Jakarta tenggelam, padahal jutaan orang tinggal di sana. Meskipun tanggul sudah dibangun, air laut terus naik setiap tahun.
     question:
-      ar_eg: إيه المشكلة اللي في الجملة؟
-      ar: ما المشكلة المذكورة؟
-      en: What problem does the sentence describe?
+      ar_eg: المتكلم بيوصف مشكلة إيه؟
+      ar: أيّ مشكلة يصف المتكلّم؟
+      en: What problem is the speaker describing?
     options:
-      - جزء من جاكرتا بيغرق، مع إن ملايين ساكنين فيه.
-      - جاكرتا فاضية من السكان.
-      - ملايين ناس بيعزّلوا لجاكرتا.
-    answer: 0
+      - Jakarta kosong karena penduduknya pindah.
+      - Sebagian kota tenggelam walaupun banyak orang tinggal di sana dan ada tanggul.
+      - Tanggul baru membuat air laut turun.
+    answer: 1
+    explain:
+      ar_eg: padahal = مع إن (ملايين ساكنين فيه)، وmeskipun = رغم إن السدود اتبنت، الميه لسه بتعلى. مفيش حد عزّل ولا الميه نزلت.
+      ar: padahal = مع أنّ ملايين يسكنونها، وmeskipun = رغم بناء السدود ما زال الماء يرتفع؛ لم يرحل أحد ولم ينخفض الماء.
+      en: padahal = even though millions live there; meskipun = although dykes were built, the sea keeps rising. Nobody left, and the water didn't drop.
     words: [tenggelam]
   - id: e05
     type: build_sentence
@@ -142,20 +146,22 @@ exercises:
       en: "\"Nevertheless\" opening a new sentence is Namun plus a comma. tetapi joins within one sentence, and padahal means \"even though\"."
   - id: e06
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: التكلفة بتزيد، مع إن الميزانية محدودة.
-      ar: التكلفة في ازدياد، مع أنّ الميزانية محدودة.
-      en: The cost keeps rising, even though the budget is limited.
-    answers:
-      - Biayanya naik terus, padahal anggarannya terbatas.
-      - Biaya terus naik, padahal anggarannya terbatas.
-      - Biayanya terus naik, padahal anggarannya terbatas.
-      - Biayanya naik terus, padahal anggaran terbatas.
+    direction: from_target
+    source_text: Biayanya naik terus, padahal anggarannya terbatas dan proyeknya belum selesai.
+    answers_meaning:
+      ar_eg:
+        - التكلفة بتزيد على طول، مع إن الميزانية محدودة والمشروع لسه ماخلصش.
+        - التكاليف بتعلى، رغم إن الميزانية محدودة والمشروع لسه ما خلصش.
+      ar:
+        - التكلفة في ازدياد مستمر، مع أنّ الميزانية محدودة والمشروع لم ينتهِ بعد.
+        - تواصل التكاليف ارتفاعها، رغم محدودية الميزانية وعدم اكتمال المشروع.
+      en:
+        - The cost keeps rising, even though the budget is limited and the project isn't finished yet.
+        - Costs keep going up, although the budget is limited and the project is still unfinished.
     explain:
-      ar_eg: «مع إن والمفروض العكس» بعد الجملة = padahal.
-      ar: «مع أنّ» المخالِفة للمتوقّع بعد الجملة = padahal.
-      en: An against-expectation "even though" after the clause is padahal.
+      ar_eg: padahal بعد الجملة = «مع إن، والمفروض العكس»، وبعدها حاجتين متوصلين بـ dan.
+      ar: padahal بعد الجملة = «مع أنّ» المخالفة للمتوقّع، ويليها أمران يربطهما dan.
+      en: padahal after the clause = an against-expectation "even though", followed by two facts joined by dan.
     words: [biaya]
   - id: e07
     type: multiple_choice
