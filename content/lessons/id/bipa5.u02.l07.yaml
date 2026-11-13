@@ -80,17 +80,24 @@ exercises:
     words: [deputi, kontroversi, perdebatan, konsekuensi]
   - id: e03
     type: listen
-    text: Perdebatan di parlemen berlangsung sampai tengah malam.
+    text: Perdebatan di parlemen berlangsung sampai tengah malam. Akhirnya, undang-undang itu disetujui, walaupun dua partai menolak.
     question:
-      ar_eg: النقاش فضل لحد إمتى؟
-      ar: إلى متى استمرت المناظرة؟
-      en: How long did the debate last?
-    options: [لنص الليل, ساعة واحدة, للصبح بس]
-    answer: 0
+      ar_eg: النقاش انتهى بإيه؟
+      ar: بمَ انتهت المناظرة؟
+      en: How did the debate end?
+    options:
+      - Undang-undangnya ditolak oleh semua partai.
+      - Undang-undangnya disetujui, tetapi tidak semua partai setuju.
+      - Perdebatannya selesai dalam satu jam.
+    answer: 1
     meaning:
-      ar_eg: النقاش في البرلمان فضل لنص الليل.
-      ar: استمرت المناظرة في البرلمان حتى منتصف الليل.
-      en: The debate in parliament went on until midnight.
+      ar_eg: النقاش في البرلمان فضل لنص الليل. وفي الآخر القانون اتوافق عليه، مع إن حزبين رفضوه.
+      ar: استمرت المناظرة في البرلمان حتى منتصف الليل، ثم أُقرّ القانون في النهاية رغم رفض حزبين.
+      en: The debate in parliament went on until midnight. In the end the law was passed, although two parties voted against it.
+    explain:
+      ar_eg: disetujui = اتوافق عليه، وwalaupun dua partai menolak = مع إن حزبين رفضوا، يعني مش الكل موافق.
+      ar: disetujui = أُقرّ، وwalaupun dua partai menolak = رغم رفض حزبين، أي لم يوافق الجميع.
+      en: disetujui = approved; walaupun dua partai menolak = although two parties refused, so not everyone agreed.
     words: [perdebatan, parlemen]
   - id: e04
     type: fill_blank
@@ -159,11 +166,21 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Presiden mengumumkan kabinet baru kemarin.
+    source_text: Presiden mengumumkan kabinet baru kemarin, dan beberapa menterinya langsung menuai kontroversi.
     answers_meaning:
-      ar_eg: [الرئيس أعلن الوزارة الجديدة امبارح, امبارح الرئيس أعلن الحكومة الجديدة]
-      ar: [أعلن الرئيس الحكومة الجديدة أمس, أعلن الرئيس أمس مجلس الوزراء الجديد]
-      en: [The president announced the new cabinet yesterday, Yesterday the president announced a new cabinet]
+      ar_eg:
+        - الرئيس أعلن الوزارة الجديدة امبارح، وكام وزير فيها عملوا جدل على طول.
+        - امبارح الرئيس أعلن الحكومة الجديدة، وبعض الوزرا اتعمل عليهم جدل فورًا.
+      ar:
+        - أعلن الرئيس الحكومة الجديدة أمس، وأثار بعض وزرائها الجدل فورًا.
+        - أعلن الرئيس أمس مجلس الوزراء الجديد، وسرعان ما أثار عدد من وزرائه جدلًا.
+      en:
+        - The president announced the new cabinet yesterday, and some of its ministers drew controversy at once.
+        - Yesterday the president announced a new cabinet, and several of its ministers immediately sparked controversy.
+    explain:
+      ar_eg: menuai kontroversi = حصد جدل، يعني عمل جدل. والجملتين متوصلين بـ dan.
+      ar: "menuai kontroversi = أثار الجدل (حرفيًا: حصد)، والجملتان مربوطتان بـ dan."
+      en: menuai kontroversi = drew (literally "reaped") controversy; the two clauses are joined by dan.
     words: [kabinet]
   - id: e10
     type: speaking
