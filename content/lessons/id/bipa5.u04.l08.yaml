@@ -83,18 +83,25 @@ exercises:
     words: [kangen, betah, pertimbangan, beragama]
   - id: e03
     type: listen
-    text: Kurma ini harus diperiksa di bea cukai.
+    text: Kurma ini harus diperiksa di bea cukai. Kalau tidak ada surat karantina, petugas bisa menahannya di bandara.
     question:
-      ar_eg: هيتفتش فين؟
-      ar: أين سيُفتَّش؟
-      en: Where will it be checked?
-    options: [الجمارك, المطعم, السفارة]
+      ar_eg: إيه المشكلة اللي ممكن تحصل؟
+      ar: ما المشكلة التي قد تحدث؟
+      en: What problem could happen?
+    options:
+      - Kurmanya bisa ditahan kalau tidak ada surat karantina.
+      - Kurmanya harus dimakan di restoran bandara.
+      - Kedutaan akan mengirim kurmanya ke rumah.
     answer: 0
     meaning:
-      ar_eg: البلح ده لازم يتفتش في الجمارك.
-      ar: يجب تفتيش هذا التمر في الجمارك.
-      en: These dates must be checked at customs.
-    words: [bea]
+      ar_eg: البلح ده لازم يتفتش في الجمارك. لو مفيش شهادة حجر صحي، الموظف ممكن يحجزه في المطار.
+      ar: يجب تفتيش هذا التمر في الجمارك، وإن لم تكن معه شهادة حجر صحي فقد يحجزه الموظف في المطار.
+      en: These dates must be checked at customs. Without a quarantine certificate, officers can hold them at the airport.
+    explain:
+      ar_eg: kalau tidak ada surat karantina = لو مفيش شهادة حجر صحي، ساعتها menahannya = يحجزه.
+      ar: kalau tidak ada surat karantina = إن لم توجد شهادة حجر صحي، فعندها menahannya = يحجزه.
+      en: kalau tidak ada surat karantina = without a quarantine certificate; menahannya = hold it.
+    words: [bea, karantina]
   - id: e04
     type: fill_blank
     sentence: Sebelum masuk negara itu, kucing kami harus ___ dua minggu.
@@ -162,12 +169,22 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Setelah banyak pertimbangan, saya memilih kuliah di Kairo.
+    source_text: Setelah banyak pertimbangan, saya memilih kuliah di Kairo, walaupun saya pasti akan kangen keluarga.
     answers_meaning:
-      ar_eg: [بعد تفكير كتير، اخترت أدرس في القاهرة, بعد ما فكرت كتير، قررت أدرس في القاهرة]
-      ar: [بعد تفكير طويل اخترت الدراسة في القاهرة, بعد اعتبارات كثيرة اخترت الدراسة في القاهرة]
-      en: ['After much thought, I chose to study in Cairo', 'After a lot of consideration, I decided to study in Cairo']
-    words: [pertimbangan]
+      ar_eg:
+        - بعد تفكير كتير، اخترت أدرس في القاهرة، حتى لو أكيد هتوحشني عيلتي.
+        - بعد ما فكرت كتير، قررت أدرس في القاهرة، مع إن أكيد أهلي هيوحشوني.
+      ar:
+        - بعد تفكير طويل اخترت الدراسة في القاهرة، وإن كنت سأشتاق إلى أهلي حتمًا.
+        - بعد اعتبارات كثيرة اخترت الدراسة في القاهرة، رغم أنّني سأشتاق إلى عائلتي بالتأكيد.
+      en:
+        - After much thought, I chose to study in Cairo, even though I'll surely miss my family.
+        - After a lot of consideration, I decided to study in Cairo, although I'll definitely miss my family.
+    explain:
+      ar_eg: walaupun = حتى لو / مع إن، وkangen = يوحشه.
+      ar: walaupun = وإن / رغم أنّ، وkangen = يشتاق.
+      en: walaupun = even though; kangen = to miss.
+    words: [pertimbangan, kangen]
   - id: e10
     type: speaking
     text: Visa dari kedutaan sudah ada, tinggal urusan bea cukai.

@@ -83,18 +83,25 @@ exercises:
     words: [bacaan, rumus, intelektual, seputar]
   - id: e03
     type: listen
-    text: Kita makan siang di kantin saja, ya.
+    text: Seminarnya selesai jam dua belas. Kita makan siang di kantin saja, ya, karena jam satu kita sudah harus masuk kelas lagi.
     question:
-      ar_eg: هيتغدوا فين؟
-      ar: أين سيتغدّون؟
-      en: Where will they have lunch?
-    options: [في الكانتين, في البيت, في المطعم الغالي]
-    answer: 0
+      ar_eg: ليه هيتغدوا في الكانتين؟
+      ar: لماذا سيتغدّون في المقصف؟
+      en: Why will they eat in the canteen?
+    options:
+      - Karena makanannya paling enak di kota.
+      - Karena waktunya sempit sebelum kelas berikutnya.
+      - Karena restoran mahal sudah tutup.
+    answer: 1
     meaning:
-      ar_eg: خلينا نتغدى في الكانتين وخلاص.
-      ar: لنتغدَّ في المقصف فحسب.
-      en: Let's just have lunch in the canteen.
-    words: [kantin]
+      ar_eg: السيمينار بيخلص الساعة اتناشر. خلينا نتغدى في الكانتين وخلاص، عشان الساعة واحدة لازم نرجع الفصل.
+      ar: تنتهي الندوة في الثانية عشرة. لنتغدَّ في المقصف فحسب، لأنّ علينا العودة إلى الصفّ في الواحدة.
+      en: The seminar ends at twelve. Let's just eat in the canteen, because at one we have to be back in class.
+    explain:
+      ar_eg: karena jam satu … harus masuk kelas = عشان عندهم محاضرة الساعة واحدة، يعني الوقت ضيق (waktunya sempit).
+      ar: karena jam satu … harus masuk kelas = لأنّ لديهم محاضرة في الواحدة، أي الوقت ضيّق (waktunya sempit).
+      en: karena jam satu … harus masuk kelas = class at one, so time is short (waktunya sempit).
+    words: [kantin, seminar]
   - id: e04
     type: fill_blank
     sentence: Kunci ___ saya hilang, jadi buku saya tidak bisa diambil.
@@ -162,11 +169,21 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Mahasiswi itu sangat intelektual.
+    source_text: Mahasiswi itu sangat intelektual, sehingga dosen sering memintanya memimpin diskusi.
     answers_meaning:
-      ar_eg: [الطالبة دي مثقفة جدًا, البنت دي في الجامعة ومثقفة أوي]
-      ar: [تلك الطالبة مثقّفة جدًا, هذه الطالبة الجامعية مثقّفة للغاية]
-      en: [That student is very intellectual, That university student is highly intellectual]
+      ar_eg:
+        - الطالبة دي مثقفة جدًا، فالدكتور ساعات كتير بيطلب منها تدير النقاش.
+        - البنت دي في الجامعة ومثقفة أوي، لدرجة إن الدكتور بيخليها تقود المناقشة كتير.
+      ar:
+        - تلك الطالبة مثقّفة جدًّا، حتى إنّ المحاضر كثيرًا ما يطلب منها إدارة النقاش.
+        - هذه الطالبة الجامعية مثقّفة للغاية، ولذا يكلّفها الأستاذ غالبًا بقيادة الحوار.
+      en:
+        - That student is very intellectual, so the lecturer often asks her to lead the discussion.
+        - That university student is highly intellectual, which is why the lecturer often has her lead discussions.
+    explain:
+      ar_eg: sehingga = لدرجة إن (نتيجة)، وmemintanya memimpin = يطلب منها تقود.
+      ar: sehingga = حتى إنّ (نتيجة)، وmemintanya memimpin = يطلب منها أن تقود.
+      en: sehingga = so that (result); memintanya memimpin = asks her to lead.
     words: [mahasiswi, intelektual]
   - id: e10
     type: speaking
