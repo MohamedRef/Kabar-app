@@ -81,17 +81,21 @@ exercises:
       en: petunjuk = a clue.
   - id: e04
     type: listen
-    text: Maaf, Ibu daerah asalnya dari mana?
+    text: Di kereta, seorang mahasiswa duduk di samping seorang ibu. Dia mendengar logat yang menarik dan bertanya dengan sopan, "Maaf, Ibu daerah asalnya dari mana?" Ibu itu tersenyum dan menjawab, "Dari Padang."
     question:
       ar_eg: المتكلم بيسأل عن إيه؟
       ar: عمَّ يسأل المتحدّث؟
       en: What is the speaker asking about?
     options:
-      - الست جاية منين أصلًا.
-      - الست ساكنة فين دلوقتي.
-      - الست رايحة فين.
+      - Dia bertanya dari daerah mana ibu itu berasal.
+      - Dia bertanya di mana ibu itu tinggal sekarang.
+      - Dia bertanya ke mana ibu itu akan pergi.
     answer: 0
     words: [daerah asal]
+    explain:
+      ar_eg: daerah asal = البلد الأصلي، فالسؤال الست أصلها منين، وهي ردّت «من بادانج». مش ساكنة فين دلوقتي ولا رايحة فين.
+      ar: daerah asal = موطن الأصل، فالسؤال عن أصلها، وأجابت «من بادانغ»، لا عن سكنها الحاليّ ولا وجهتها.
+      en: 'daerah asal = home region: where she''s originally from (Padang).'
   - id: e05
     type: build_sentence
     source:
@@ -112,15 +116,15 @@ exercises:
       ar: لماذا الأفضل ألّا تقلّد اللهجة أمام أهلها؟
       en: Why is it better not to imitate a dialect in front of its speakers?
     options:
-      - علشان اللهجات ممنوعة.
-      - علشان ممكن تتفهم سخرية.
-      - علشان مش هيفهموك خالص.
+      - Karena dialek dilarang.
+      - Karena bisa dianggap mengejek.
+      - Karena mereka tidak akan mengerti sama sekali.
     answer: 1
     words: [netral]
     explain:
-      ar_eg: تقليد اللهجة قدام أهلها ممكن يتفهم سخرية، حتى لو نيتك كويسة.
-      ar: قد يُفهم تقليد اللهجة أمام أهلها سخريةً.
-      en: Imitating a dialect can come across as mockery.
+      ar_eg: تقليد اللهجة قدّام أهلها ممكن يتفهم سخرية (mengejek). اللهجات مش ممنوعة، وهيفهموك.
+      ar: قد يُفهم تقليد اللهجة أمام أهلها سخريةً، فاللهجات غير ممنوعة وسيفهمونك.
+      en: Imitating a dialect to its speakers can come across as mocking.
   - id: e07
     type: translate
     direction: to_target

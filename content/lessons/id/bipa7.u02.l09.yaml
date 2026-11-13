@@ -89,18 +89,25 @@ exercises:
     words: [tanah longsor, rob, pasang surut, kemarau panjang]
   - id: e03
     type: listen
-    text: Puting beliung merusak dua puluh atap rumah di Sidoarjo.
+    text: Sore kemarin, puting beliung merusak dua puluh atap rumah di Sidoarjo. Angin datang tiba-tiba hanya selama lima menit. Untungnya, tidak ada korban jiwa, tetapi banyak warga harus tidur di balai desa.
     question:
-      ar_eg: إيه اللي بوّظ الأسقف؟
-      ar: ما الذي خرّب السقوف؟
-      en: What damaged the roofs?
-    options: [زوبعة, جفاف, مد]
-    answer: 0
+      ar_eg: حصل إيه في سيدوارجو؟
+      ar: ماذا حدث في سيدوارجو؟
+      en: What happened in Sidoarjo?
+    options:
+      - Banjir besar merendam desa selama seminggu.
+      - Angin kencang merusak atap, tetapi tidak ada yang meninggal.
+      - Kemarau panjang membuat sawah kering.
+    answer: 1
     meaning:
-      ar_eg: زوبعة بوّظت أسقف عشرين بيت في سيدوارجو.
-      ar: خرّبت زوبعة سقوف عشرين بيتًا في سيدوارجو.
-      en: A whirlwind damaged twenty roofs in Sidoarjo.
+      ar_eg: امبارح العصر، زوبعة بوّظت سقف عشرين بيت في سيدوارجو. الريح جت فجأة لمدة خمس دقايق بس. الحمد لله مفيش ضحايا، بس ناس كتير اضطروا يناموا في دار القرية.
+      ar: عصر أمس أتلف إعصار قمعيّ أسقف عشرين منزلًا في سيدوارجو، وهبّت الريح فجأة خمس دقائق فقط. لحسن الحظّ لم يسقط ضحايا، لكنّ كثيرين اضطرّوا للنوم في قاعة القرية.
+      en: Yesterday afternoon a whirlwind damaged twenty roofs in Sidoarjo. The wind came suddenly for just five minutes. Luckily no one died, but many residents had to sleep in the village hall.
     words: [puting beliung]
+    explain:
+      ar_eg: puting beliung = زوبعة / إعصار صغير، بوّظ السقوف، وtidak ada korban jiwa = مفيش حد مات. مش فيضان ولا جفاف.
+      ar: puting beliung = إعصار قمعيّ أتلف الأسقف، ولم يسقط ضحايا، فلا فيضان ولا جفاف.
+      en: puting beliung = whirlwind; roofs damaged, no deaths. Not a flood or drought.
   - id: e04
     type: fill_blank
     sentence: Jalan ke desa itu tertutup karena ___ setelah hujan semalam.
@@ -158,12 +165,22 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Siklon itu membawa curah hujan yang sangat tinggi ke Kupang.
+    source_text: Siklon itu membawa curah hujan yang sangat tinggi ke Kupang, sehingga banyak jalan tertutup tanah longsor.
     answers_meaning:
-      ar_eg: [الإعصار ده جاب مطر كتير جدًا لكوبانج, الإعصار جاب أمطار غزيرة جدًا على كوبانج]
-      ar: [جلب ذلك الإعصار أمطارًا غزيرة جدًا إلى كوبانغ, حمل الإعصار معدّلات أمطار مرتفعة جدًا إلى كوبانغ]
-      en: [That cyclone brought very heavy rainfall to Kupang, The cyclone brought extremely high rainfall to Kupang]
+      ar_eg:
+        - الإعصار ده جاب أمطار عالية جدًا لكوبانج، فشوارع كتير اتقفلت بانهيارات أرضية.
+        - السيكلون جاب مطر كتير جدًا على كوبانج، وعشان كده طرق كتير اتسدّت من الانهيارات.
+      ar:
+        - جلب ذلك الإعصار أمطارًا غزيرة جدًّا إلى كوبانغ، فأغلقت الانهيارات الأرضيّة طرقًا كثيرة.
+        - حمل الإعصار هطولًا شديدًا إلى كوبانغ، حتى سدّت الانهيارات الطينيّة كثيرًا من الطرق.
+      en:
+        - That cyclone brought very heavy rainfall to Kupang, so many roads were blocked by landslides.
+        - The cyclone dumped extremely heavy rain on Kupang, leaving many roads blocked by landslides.
     words: [siklon, curah hujan]
+    explain:
+      ar_eg: 'sehingga = فـ (النتيجة): المطر الكتير عمل انهيارات (tanah longsor) قفلت الطرق.'
+      ar: 'sehingga = فـ (النتيجة): المطر الغزير سبّب انهيارات أغلقت الطرق.'
+      en: 'sehingga gives the result: heavy rain caused landslides that blocked roads.'
   - id: e09
     type: speaking
     text: Kemarau panjang dan rob sama-sama berbahaya bagi petani.

@@ -89,18 +89,25 @@ exercises:
     words: [keramat, sakral, keris, moksa]
   - id: e03
     type: listen
-    text: Menurut cerita, raja itu tidak meninggal, tetapi moksa.
+    text: Menurut cerita, raja itu tidak meninggal, tetapi moksa. Suatu malam dia masuk ke gua di gunung untuk bertapa. Pagi harinya gua itu kosong, dan tubuhnya tidak pernah ditemukan.
     question:
       ar_eg: حصل إيه للملك؟
       ar: ماذا جرى للملك؟
       en: What happened to the king?
-    options: [اختفى بجسمه, اعتكف في الجبل, خد قوة خارقة]
-    answer: 0
+    options:
+      - Raja itu meninggal dan dimakamkan di gunung.
+      - Raja itu hilang bersama tubuhnya tanpa meninggal.
+      - Raja itu kembali ke istana dengan kesaktian baru.
+    answer: 1
     meaning:
-      ar_eg: على حسب الحكاية، الملك ده ما ماتش، ده اختفى بجسمه.
-      ar: تقول الحكاية إنّ الملك لم يمت بل اختفى بجسده.
-      en: According to the story, the king didn't die but vanished, body and soul.
+      ar_eg: حسب الحكاية، الملك ده ماماتش، لكنه اختفى بجسمه (موكسا). في ليلة دخل مغارة في الجبل يتعبّد. تاني يوم الصبح المغارة كانت فاضية، وجسمه عمره ما اتلاقى.
+      ar: تقول الحكاية إنّ الملك لم يمت بل اختفى بجسده (موكسا)، فقد دخل ليلةً كهفًا في الجبل للتعبّد، وفي الصباح كان الكهف خاليًا ولم يُعثر على جسده قطّ.
+      en: According to the story, the king didn't die but attained moksa. One night he entered a mountain cave to meditate. By morning it was empty, and his body was never found.
     words: [moksa]
+    explain:
+      ar_eg: 'moksa = اختفى بجسمه من غير ما يموت: المغارة فضيت وجسمه (tubuhnya) مااتلاقاش. مااتدفنش ولا رجع القصر.'
+      ar: 'moksa = الاختفاء بالجسد دون موت: خلا الكهف ولم يُعثر على جسده، فلم يُدفن ولم يرجع إلى القصر.'
+      en: 'moksa = vanishing bodily without death: the cave was empty, no body. No burial, no return.'
   - id: e04
     type: fill_blank
     sentence: Tari itu hanya ditampilkan pada upacara ___.
@@ -158,12 +165,22 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Dalam legenda, kesaktiannya datang setelah bertapa bertahun-tahun.
+    source_text: Dalam legenda, kesaktiannya datang setelah bertapa bertahun-tahun, tetapi dia tidak pernah memakainya untuk dirinya sendiri.
     answers_meaning:
-      ar_eg: [في الأسطورة، قوته الخارقة جت بعد ما اعتكف سنين, في الحكاية، خد القوة الخارقة بعد سنين من العزلة]
-      ar: [في الأسطورة جاءته قوّته الخارقة بعد اعتزال دام سنوات, تقول الأسطورة إنّ قوّته الخارقة أتت بعد سنوات من التنسّك]
-      en: ['In the legend, his power came after years of meditation', 'In the legend, he gained his power after meditating for years']
+      ar_eg:
+        - في الأسطورة، قوته الخارقة جت بعد ما اعتكف سنين، بس عمره ما استعملها لنفسه.
+        - حسب الحكاية، خد القوة الخارقة بعد سنين من التعبّد، لكنه ما استخدمهاش لمصلحته أبدًا.
+      ar:
+        - في الأسطورة جاءته قوّته الخارقة بعد سنوات من التعبّد، لكنّه لم يستعملها لنفسه قطّ.
+        - تروي الأسطورة أنّ قدرته الخارقة أتت بعد خلوة دامت سنين، غير أنّه لم يسخّرها لمصلحته أبدًا.
+      en:
+        - In the legend, his supernatural power came after years of meditation, but he never used it for himself.
+        - The legend says his magic power came after years as a hermit, yet he never used it for his own benefit.
     words: [kesaktian, bertapa]
+    explain:
+      ar_eg: 'setelah = بعد، وtetapi بتعارض: القوة موجودة بس مابيستعملهاش لنفسه (untuk dirinya sendiri).'
+      ar: 'setelah = بعد، وtetapi للاستدراك: له القوّة لكنّه لا يستعملها لنفسه.'
+      en: 'setelah = after; tetapi contrasts: he had the power but never used it for himself.'
   - id: e09
     type: speaking
     text: Pertapa itu menyimpan sebilah keris tua.
