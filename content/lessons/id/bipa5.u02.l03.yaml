@@ -58,15 +58,15 @@ exercises:
       ar: بحسب المقالة، ما السبب الرئيسي لنقل العاصمة؟
       en: According to the article, what is the main reason for the move?
     options:
-      - إن جاكرتا عليها ضغط كبير قوي.
-      - إن كاليمانتان فيها بترول.
-      - إن الحكومة عايزة توفّر فلوس.
+      - Beban Jakarta sudah terlalu berat.
+      - Kalimantan punya banyak minyak.
+      - Pemerintah ingin menghemat uang.
     answer: 0
     words: [alasan]
     explain:
-      ar_eg: المقال بيقول إن جاكرتا عليها ضغط كبير (زحمة وغرق). البترول وتوفير الفلوس مش هما السبب اللي اتذكر.
-      ar: تذكر المقالة أنّ جاكرتا تحت ضغط كبير (ازدحام وغرق). أما النفط وتوفير المال فلم يُذكرا سببًا.
-      en: The article says Jakarta is under heavy pressure (traffic, sinking). Oil and saving money aren't the reason it gives.
+      ar_eg: المقال بيقول إن جاكرتا عليها ضغط كبير (زحمة وغرق)، يعني bebannya terlalu berat. البترول وتوفير الفلوس مش هما السبب اللي اتذكر.
+      ar: تذكر المقالة أنّ جاكرتا تحت ضغط كبير (ازدحام وغرق)، أي bebannya terlalu berat، ولم يُذكر النفط ولا توفير المال.
+      en: "The article says Jakarta is under heavy pressure (traffic, sinking): its load is too heavy. Oil and saving money aren't the reason given."
   - id: e03
     type: multiple_choice
     question_meaning:
@@ -74,9 +74,9 @@ exercises:
       ar: مِمّ يقلق النقّاد؟
       en: What are the critics worried about?
     options:
-      - الزحمة في نوسانتارا.
-      - الزلازل في جاكرتا.
-      - الغابة وميزانية الدولة.
+      - Kemacetan di Nusantara.
+      - Gempa bumi di Jakarta.
+      - Nasib hutan dan anggaran negara.
     answer: 2
     words: [kritikus, khawatir, anggaran]
     explain:
@@ -108,20 +108,22 @@ exercises:
     words: [alasan]
   - id: e06
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ناس كتير قلقانين إن الميزانية مش هتكفي.
-      ar: يخشى كثيرون ألّا تكفي الميزانية.
-      en: Many people are worried that the budget won't be enough.
-    answers:
-      - Banyak orang khawatir anggarannya tidak cukup.
-      - Banyak orang khawatir anggaran tidak cukup.
-      - Banyak orang khawatir bahwa anggarannya tidak cukup.
-      - Banyak orang khawatir anggarannya tidak akan cukup.
-      - Banyak orang khawatir anggarannya nggak cukup.
-      - Banyak orang khawatir anggaran nggak cukup.
-      - Banyak orang khawatir bahwa anggarannya nggak cukup.
-      - Banyak orang khawatir anggarannya nggak akan cukup.
+    direction: from_target
+    source_text: Banyak orang khawatir anggarannya tidak cukup, karena pembangunan kota baru itu memakan waktu bertahun-tahun.
+    answers_meaning:
+      ar_eg:
+        - ناس كتير قلقانين إن الميزانية مش هتكفي، عشان بنا المدينة الجديدة بياخد سنين.
+        - كتير من الناس خايفين الميزانية ماتكفيش، لإن بناء المدينة دي هياخد سنين طويلة.
+      ar:
+        - يخشى كثيرون ألّا تكفي الميزانية، لأنّ بناء المدينة الجديدة يستغرق سنوات.
+        - يقلق كثير من الناس من عدم كفاية الميزانية، إذ يستغرق بناء تلك المدينة الجديدة سنوات طويلة.
+      en:
+        - Many people worry the budget won't be enough, because building the new city takes years.
+        - Lots of people fear the budget will fall short, since building that new city takes many years.
+    explain:
+      ar_eg: khawatir = قلقان، وkarena بتجيب السبب، وmemakan waktu = بياخد وقت.
+      ar: khawatir = قلق، وkarena تذكر السبب، وmemakan waktu = يستغرق وقتًا.
+      en: khawatir = worried; karena gives the reason; memakan waktu = takes time.
     words: [khawatir, anggaran]
   - id: e07
     type: build_sentence

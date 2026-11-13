@@ -83,17 +83,24 @@ exercises:
     words: [spesialis, kompensasi, persaingan, upah]
   - id: e03
     type: listen
-    text: Kami merekrut spesialis keselamatan kerja.
+    text: Kami merekrut spesialis keselamatan kerja untuk tambang di Kutai. Pelamar harus berpengalaman tiga tahun dan siap bekerja di lapangan.
     question:
-      ar_eg: الشركة بتدور على مين؟
-      ar: عمّن تبحث الشركة؟
-      en: Who is the company looking for?
-    options: [متخصص سلامة, محاسب, سواق]
-    answer: 0
+      ar_eg: الشركة عايزة مين، وبشروط إيه؟
+      ar: من تريد الشركة، وبأيّ شروط؟
+      en: Who does the company want, and on what terms?
+    options:
+      - Akuntan yang bekerja di kantor pusat.
+      - Spesialis keselamatan yang berpengalaman dan mau bekerja di lapangan.
+      - Sopir truk untuk tambang di Kutai.
+    answer: 1
     meaning:
-      ar_eg: بنعيّن متخصص سلامة مهنية.
-      ar: نوظّف متخصّصًا في السلامة المهنية.
-      en: We're recruiting a work-safety specialist.
+      ar_eg: بنعيّن متخصص سلامة مهنية لمنجم في كوتاي. المتقدم لازم يكون عنده خبرة تلات سنين ومستعد يشتغل في الموقع.
+      ar: نوظّف متخصّصًا في السلامة المهنية لمنجم في كوتاي، على أن تكون لديه خبرة ثلاث سنوات ويستعدّ للعمل الميداني.
+      en: We're recruiting a work-safety specialist for a mine in Kutai. Applicants need three years' experience and must be ready to work on site.
+    explain:
+      ar_eg: spesialis keselamatan kerja = متخصص سلامة، وdi lapangan = في الموقع، مش في المكتب.
+      ar: spesialis keselamatan kerja = متخصص سلامة، وdi lapangan = في الموقع لا في المكتب.
+      en: spesialis keselamatan kerja = safety specialist; di lapangan = on site, not in the office.
     words: [merekrut, spesialis]
   - id: e04
     type: fill_blank
@@ -162,11 +169,21 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Persaingan di dunia pertambangan makin ketat.
+    source_text: Persaingan di dunia pertambangan makin ketat, jadi perusahaan mencari pelamar yang punya sertifikat.
     answers_meaning:
-      ar_eg: [المنافسة في مجال التعدين بقت أشد, المنافسة في شغل التعدين بتزيد]
-      ar: [تشتدّ المنافسة في قطاع التعدين, المنافسة في عالم التعدين تزداد شدة]
-      en: [Competition in mining is getting fiercer, Competition in the mining industry is getting tougher]
+      ar_eg:
+        - المنافسة في مجال التعدين بقت أشد، فالشركات بتدور على متقدمين معاهم شهادات.
+        - المنافسة في شغل التعدين بتزيد، عشان كده الشركة عايزة ناس عندها شهادة.
+      ar:
+        - تشتدّ المنافسة في قطاع التعدين، لذا تبحث الشركة عن متقدّمين يحملون شهادات.
+        - المنافسة في عالم التعدين تزداد، ولهذا تطلب الشركة متقدّمين لديهم شهادة.
+      en:
+        - Competition in mining is getting fiercer, so the company is looking for applicants with certificates.
+        - Competition in the mining industry is getting tougher, so companies want applicants who hold a certificate.
+    explain:
+      ar_eg: جملتين، والتانية نتيجة الأولى بـ jadi (فـ / عشان كده).
+      ar: جملتان، والثانية نتيجة الأولى بـ jadi (لذا).
+      en: Two clauses; the second is the result of the first, with jadi (so).
     words: [persaingan, pertambangan]
   - id: e10
     type: speaking
