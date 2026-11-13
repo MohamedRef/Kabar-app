@@ -89,17 +89,24 @@ exercises:
     words: [pracetak, sitasi, disertasi, promotor]
   - id: e03
     type: listen
-    text: Artikel itu sudah mendapat seratus sitasi dalam dua tahun.
+    text: Artikel itu sudah mendapat seratus sitasi dalam dua tahun. Artinya, banyak peneliti lain memakai temuannya dalam tulisan mereka. Penulisnya kini diundang menjadi penelaah di jurnal yang sama.
     question:
       ar_eg: المقالة خدت مية إيه؟
       ar: مئة ماذا نالت المقالة؟
       en: A hundred what did the article get?
-    options: [استشهاد, محكّم, نسخة قبل النشر]
+    options:
+      - Seratus kali dikutip oleh peneliti lain.
+      - Seratus penelaah yang memeriksanya.
+      - Seratus versi pracetak.
     answer: 0
     meaning:
-      ar_eg: المقالة دي خدت مية استشهاد في سنتين.
-      ar: نالت تلك المقالة مئة استشهاد في عامين.
-      en: That article has been cited a hundred times in two years.
+      ar_eg: المقالة دي خدت ميت استشهاد في سنتين. يعني باحثين تانيين كتير استعملوا نتايجها في كتاباتهم. وكاتبها دلوقتي اتعزم يبقى محكّم في نفس المجلّة.
+      ar: حصلت تلك المقالة على مئة استشهاد في عامين، أي إنّ كثيرًا من الباحثين استعملوا نتائجها في كتاباتهم. ودُعي كاتبها الآن ليكون محكّمًا في المجلّة نفسها.
+      en: That article has been cited a hundred times in two years. That means many other researchers used its findings in their work. Its author is now invited to review for the same journal.
+    explain:
+      ar_eg: 'sitasi = استشهاد: ميت مرة باحثين تانيين استشهدوا بالمقالة (memakai temuannya). الكاتب هو اللي بقى محكّم (penelaah).'
+      ar: 'sitasi = استشهاد: استشهد باحثون آخرون بالمقالة مئة مرّة (memakai temuannya)، وصار كاتبها محكّمًا (penelaah).'
+      en: 'sitasi means citations: other researchers cited it a hundred times (memakai temuannya). The author became a reviewer (penelaah).'
     words: [sitasi]
   - id: e04
     type: fill_blank
@@ -158,11 +165,17 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Penelaah pertama menerima artikel itu dengan revisi kecil.
+    source_text: Penelaah pertama menerima artikel itu dengan revisi kecil, tetapi penelaah kedua meminta data tambahan.
     answers_meaning:
-      ar_eg: [المحكّم الأول قبل المقالة بتعديلات بسيطة, أول محكّم وافق على المقالة بشوية تعديلات صغيّرة]
-      ar: [قبل المحكّم الأوّل المقالة بتعديلات طفيفة, وافق المحكّم الأول على المقالة مع تعديلات صغيرة]
-      en: [The first reviewer accepted the article with minor revisions, Reviewer one accepted the paper with small revisions]
+      ar_eg:
+        - المحكّم الأول قبل المقالة بتعديلات بسيطة، بس المحكّم التاني طلب بيانات زيادة.
+        - أول محكّم وافق على الورقة بشوية تعديلات صغيرة، لكن التاني عايز بيانات أكتر.
+      ar:
+        - قبل المحكّم الأوّل المقالة بتعديلات طفيفة، لكنّ المحكّم الثاني طلب بيانات إضافية.
+        - وافق المراجع الأوّل على البحث مع تعديلات صغيرة، أمّا الثاني فطلب مزيدًا من البيانات.
+      en:
+        - The first reviewer accepted the article with minor revisions, but the second reviewer asked for more data.
+        - Reviewer one accepted the paper with small revisions, while reviewer two wanted additional data.
     words: [penelaah]
   - id: e09
     type: speaking
