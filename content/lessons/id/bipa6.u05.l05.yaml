@@ -73,27 +73,31 @@ exercises:
       ar: سمعت الـ sirene. ماذا تفعل أوّلًا؟
       en: You hear the sirene. What do you do first?
     options:
-      - تروح البحر تتفرج.
-      - تمشي في طريق الإخلاء.
-      - تكمل نوم.
+      - Pergi ke pantai untuk melihat laut.
+      - Berjalan mengikuti jalur evakuasi.
+      - Tidur lagi.
     answer: 1
     words: [sirene, jalur evakuasi]
     explain:
-      ar_eg: أول ما تسمع السرينة تمشي في طريق الإخلاء. التفرّج على البحر أو إنك تكمّل نوم خطر.
-      ar: عند سماع الصفّارة تسلك طريق الإخلاء؛ أمّا التفرّج على البحر أو مواصلة النوم فخطر.
+      ar_eg: أول ما تسمع السرينة تمشي في طريق الإخلاء (jalur evakuasi). التفرّج على البحر أو إنك تكمّل نوم خطر.
+      ar: عند سماع الصفّارة تسلك طريق الإخلاء (jalur evakuasi)؛ أمّا التفرّج على البحر أو مواصلة النوم فخطر.
       en: When the siren sounds, take the evacuation route. Watching the sea or sleeping on is dangerous.
   - id: e03
     type: listen
-    text: Sistem peringatan dini mengirim pesan ke ponsel warga dalam beberapa menit.
+    text: Sistem peringatan dini mengirim pesan ke ponsel warga dalam beberapa menit. Pesannya pendek dan jelas, yaitu tinggalkan pantai sekarang. Sirene di menara juga berbunyi.
     question:
       ar_eg: نظام الإنذار المبكر بيعمل إيه؟
       ar: ماذا يفعل نظام الإنذار المبكّر؟
       en: What does the early-warning system do?
     options:
-      - بيبني بيوت جديدة.
-      - بيقفل المدارس.
-      - بيبعت رسايل لموبايلات الناس.
+      - Sistem itu membangun rumah baru.
+      - Sistem itu menutup sekolah.
+      - Sistem itu mengirim pesan peringatan ke ponsel warga.
     answer: 2
+    explain:
+      ar_eg: peringatan dini = إنذار مبكر، بيبعت رسالة قصيرة للموبايلات «سيبوا الشط دلوقتي»، والسرينة بتضرب كمان. مابيبنيش بيوت ومابيقفلش مدارس.
+      ar: peringatan dini إنذار مبكّر يرسل إلى الهواتف رسالة قصيرة «غادروا الشاطئ الآن»، وتدوّي الصفّارة أيضًا؛ لا يبني بيوتًا ولا يغلق مدارس.
+      en: The early warning texts phones a short "leave the beach now", and the tower siren sounds too.
     words: [peringatan dini]
   - id: e04
     type: fill_blank
@@ -141,17 +145,21 @@ exercises:
   - id: e07
     type: translate
     direction: from_target
-    source_text: Jangan menunggu sirene. Kalau gempa kuat, langsung ikuti jalur evakuasi.
+    source_text: Jangan menunggu sirene kalau gempanya kuat, tetapi langsung ikuti jalur evakuasi ke bukit.
     answers_meaning:
       ar_eg:
-        - ماتستناش صفارة الإنذار. لو الزلزال قوي، امشي في طريق الإخلاء على طول.
-        - ماتستناش الصفارة. لو الهزة جامدة، اتبع طريق الإخلاء فورًا.
+        - ماتستناش صفارة الإنذار لو الزلزال قوي، لكن امشي في طريق الإخلاء للتل على طول.
+        - لو الهزة جامدة ماتستناش الصفارة، اتبع طريق الإخلاء للتل فورًا.
       ar:
-        - لا تنتظر صفّارة الإنذار؛ إن كان الزلزال قويًّا فاتّبع مسار الإخلاء فورًا.
-        - لا تنتظر الصفّارة، وإذا اشتدّ الزلزال فاسلك مسار الإخلاء مباشرة.
+        - لا تنتظر صفّارة الإنذار إن كان الزلزال قويًّا، بل اتّبع مسار الإخلاء إلى التلّ فورًا.
+        - إذا اشتدّ الزلزال فلا تنتظر الصفّارة، واسلك مسار الإخلاء إلى التلّ مباشرة.
       en:
-        - Don't wait for the siren. If the quake is strong, follow the evacuation route at once.
-        - Don't wait for the siren; in a strong quake, take the evacuation route straight away.
+        - Don't wait for the siren if the quake is strong; follow the evacuation route to the hill at once.
+        - In a strong quake, don't wait for the siren but take the evacuation route uphill straight away.
+    explain:
+      ar_eg: kalau = لو (شرط)، وtetapi بتجيب البديل، وlangsung = على طول.
+      ar: kalau إن (شرط)، وtetapi تأتي بالبديل، وlangsung فورًا.
+      en: kalau sets the condition; tetapi brings the alternative; langsung is at once.
     words: [sirene, jalur evakuasi]
   - id: e08
     type: speaking

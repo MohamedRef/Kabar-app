@@ -86,17 +86,24 @@ exercises:
     words: [haluan, berlabuh, jangkar, perompak]
   - id: e03
     type: listen
-    text: Perompak menyerang kapal itu di Selat Malaka.
+    text: Perompak menyerang kapal itu di Selat Malaka. Mereka mengambil semua lada dan sutra. Untungnya, tidak ada awak kapal yang terluka.
     question:
-      ar_eg: مين هجم على المركب؟
-      ar: من هاجم السفينة؟
-      en: Who attacked the ship?
-    options: [قراصنة, تجار, صيادين]
+      ar_eg: مين هجم على المركب، وحصل إيه؟
+      ar: من هاجم السفينة، وماذا حدث؟
+      en: Who attacked the ship, and what happened?
+    options:
+      - Perompak menyerang dan mengambil muatannya.
+      - Pedagang lain membeli muatannya.
+      - Nelayan menolong kapal itu.
     answer: 0
     meaning:
-      ar_eg: قراصنة هجموا على المركب ده في مضيق ملقا.
-      ar: هاجم قراصنةٌ تلك السفينة في مضيق ملقا.
-      en: Pirates attacked the ship in the Strait of Malacca.
+      ar_eg: قراصنة هجموا على المركب ده في مضيق ملقا. خدوا كل الفلفل والحرير. الحمد لله، ماحدش من الطاقم اتعوّر.
+      ar: هاجم قراصنةٌ تلك السفينة في مضيق ملقا وأخذوا كلّ الفلفل والحرير، ولحسن الحظّ لم يُصب أحد من الطاقم.
+      en: Pirates attacked the ship in the Strait of Malacca. They took all the pepper and silk. Luckily no crew member was hurt.
+    explain:
+      ar_eg: perompak = قراصنة، وخدوا الحمولة كلها. مش تجار اشتروا ولا صيادين ساعدوا.
+      ar: perompak قراصنة أخذوا الحمولة كلّها، لا تجّار اشتروا ولا صيّادون أعانوا.
+      en: perompak are pirates, and they took the whole cargo. Not traders buying or fishermen helping.
     words: [perompak]
   - id: e04
     type: fill_blank
@@ -165,11 +172,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Tanpa navigasi yang baik, kapal bisa tersesat di samudra.
+    source_text: Tanpa navigasi yang baik, kapal bisa tersesat di samudra, padahal air minumnya hanya cukup untuk seminggu.
     answers_meaning:
-      ar_eg: [من غير ملاحة كويسة، المركب ممكن يتوه في المحيط, لو الملاحة مش كويسة المركب يضيع في المحيط]
-      ar: [بلا ملاحة جيدة قد تضلّ السفينة في المحيط]
-      en: ['Without good navigation, a ship can get lost on the ocean', Without proper navigation a ship may be lost at sea]
+      ar_eg: [من غير ملاحة كويسة، المركب ممكن يتوه في المحيط، مع إن مية الشرب يدوب تكفي أسبوع, لو الملاحة مش كويسة المركب يضيع في المحيط، والمية اللي معاه يادوب لأسبوع]
+      ar: [بلا ملاحة جيدة قد تضلّ السفينة في المحيط، مع أنّ ماء الشرب لا يكفي إلّا أسبوعًا]
+      en: ['Without good navigation, a ship can get lost on the ocean, even though its drinking water only lasts a week', Without proper navigation a ship may be lost at sea, while its water is enough for just a week]
+    explain:
+      ar_eg: padahal = مع إن، وهنا بتورّي الخطر، وcukup untuk seminggu = تكفي أسبوع.
+      ar: padahal مع أنّ، وهنا تُبرز الخطر، وcukup untuk seminggu تكفي أسبوعًا.
+      en: padahal stresses the danger; cukup untuk seminggu is enough for a week.
     words: [navigasi, samudra]
   - id: e10
     type: speaking
