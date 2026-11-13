@@ -304,7 +304,9 @@ Rules (Mohamed's decisions; all in force):
    ngoko (ra, wis, sik), particles lho/to/ta; shop/neighbour krama. No Arek or
    Semarangan forms (`kabar-tools dialect`, list in
    `content/javanese/dialect-guard.yaml`; CI fails on a hit, deliberate
-   uses go in its `allow:` list with a reason). Plain e, never é/è (except aksara
+   uses go in its `allow:` list with a reason). The only Arek taught is recognition:
+   grammar `jv.dialect.arek` is taught hear-only in `j1.u05.l06` (hear gak /
+   onok / koen, answer in Jogja ngoko), listed in the guard's `allow:`. Plain e, never é/è (except aksara
    items about the vowel). Madiun-only words stay unverified until sourced.
    [curriculum/JAVANESE-FOCUS.md](curriculum/JAVANESE-FOCUS.md).
 3. **Indonesian street speech** in dialogues (nggak, udah, aja…), formal in
@@ -404,6 +406,7 @@ Mohamed can paste this into any new chat or account to continue:
 Newest first. One line per PR that changes behaviour, process or state.
 
 - 2026-11-13: review #636: `curriculum/README.md` rewritten from `javanese.yaml` (Jogja/Madiun route, no stale counts); the Javanese dialect check now fails CI, with every current deliberate use in the guard's `allow:` list (§ 4, § 7).
+- 2026-11-13: review #634: the «ra (Jogja)» slide in `j1.u05.l01` is tagged `jv.negation.ora-dudu`; `jv.dialect.arek` moves to `j1.u05.l06` as a hear-only slide + one closed item (guard `allow:` entry, `gak` in `jv.core-exclude.tsv`) (§ 7).
 - 2026-11-11: Mac desk tools ported from Batna (`crates/app/src/desk/`, `assets/desk.css`): ⌘K / Ctrl+K quick search over screens, Settings sections, games and every lesson of both routes (also Go › Quick Search… in the Mac menu, a sidebar row and a phone top-bar button); drag-to-resize sidebar and Reader word panel for mouse pointers (`pref.nav_width`, `pref.panel_width`, tenths of a rem, device-only); review-session focus mode on tablet and Mac (`pref.study_focus`, `data-study-focus`). Lessons already cover the sidebar, so they need no toggle.
 - 2026-11-11: Settings browser runs point apt at the first Ubuntu mirror that resolves (`scripts/ci-apt-install.sh`, from Batna #798) after ubuntu.com DNS failures broke `playwright install --with-deps`.
 - 2026-11-11: engineering audit F19 (rest): Stats and Journal read past moments with the offset in force then, so a summer review keeps its day and hour (§ 2).
