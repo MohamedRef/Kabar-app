@@ -89,18 +89,25 @@ exercises:
     words: [pujangga, sesepuh, juru cerita, lakon]
   - id: e03
     type: listen
-    text: Babad itu ditulis oleh seorang pujangga keraton.
+    text: Babad itu ditulis oleh seorang pujangga keraton. Sebelumnya, cerita itu hanya dituturkan dari mulut ke mulut oleh para sesepuh. Karena ditulis, cerita itu tidak hilang ketika para sesepuh meninggal.
     question:
-      ar_eg: مين كتب الحوليات؟
-      ar: مَن كتب الحوليّة؟
-      en: Who wrote the chronicle?
-    options: [شاعر البلاط, الحكواتي, كبير البلد]
-    answer: 0
+      ar_eg: الكتابة فادت الحكاية بإيه؟
+      ar: كيف أفادت الكتابة الحكاية؟
+      en: How did writing it down help the story?
+    options:
+      - Ceritanya menjadi lebih pendek.
+      - Ceritanya tetap ada walaupun para sesepuh sudah meninggal.
+      - Ceritanya hanya boleh dibaca oleh raja.
+    answer: 1
     meaning:
-      ar_eg: الحوليات دي كتبها شاعر من شعراء البلاط.
-      ar: كتب تلك الحوليّة شاعر من شعراء البلاط.
-      en: That chronicle was written by a court poet.
+      ar_eg: التاريخ ده (بابد) كتبه شاعر البلاط. قبل كده، الحكاية كانت بتتحكي من بق لبق بس من الكبار. وعشان اتكتبت، مااتنسيتش لما الكبار ماتوا.
+      ar: كتب هذه الحوليّة شاعر البلاط، وكانت قبلها تُروى شفاهةً على ألسنة الشيوخ، فلمّا كُتبت لم تضِع بموتهم.
+      en: A court poet wrote the chronicle. Before that, elders only passed the story on by word of mouth. Because it was written, it wasn't lost when the elders died.
     words: [babad, pujangga]
+    explain:
+      ar_eg: karena ditulis = عشان اتكتبت، الحكاية tidak hilang = ماضاعتش لما الكبار ماتوا. مافيش حاجة عن طولها ولا إنها للملك بس.
+      ar: لأنّها كُتبت لم تضِع بموت الشيوخ، ولم يُذكر طولها ولا اقتصارها على الملك.
+      en: Because it was written, it wasn't lost when the elders died. Nothing about length or kings only.
   - id: e04
     type: fill_blank
     sentence: Hikayat ditulis dalam bentuk ___, bukan puisi.
@@ -158,12 +165,22 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Ramayana adalah epos yang sangat panjang.
+    source_text: Ramayana adalah epos yang sangat panjang, tetapi juru cerita di Bali masih bisa menuturkannya tanpa membaca buku.
     answers_meaning:
-      ar_eg: [الرامايانا ملحمة طويلة جدًا, الرامايانا دي ملحمة طويلة أوي]
-      ar: [الرامايانا ملحمة طويلة جدًا, الرامايانا ملحمة بالغة الطول]
-      en: [The Ramayana is a very long epic, Ramayana is an extremely long epic]
+      ar_eg:
+        - الرامايانا ملحمة طويلة جدًا، بس الحكواتية في بالي لسه بيقدروا يحكوها من غير ما يقروا من كتاب.
+        - الرامايانا ملحمة طويلة أوي، لكن الرواة في بالي لسه بيحكوها من دماغهم.
+      ar:
+        - الرامايانا ملحمة طويلة جدًّا، لكنّ الرواة في بالي ما زالوا يروونها دون قراءة من كتاب.
+        - رغم طول ملحمة الرامايانا، ما زال رواة بالي يقصّونها عن ظهر قلب.
+      en:
+        - The Ramayana is a very long epic, but storytellers in Bali can still tell it without reading a book.
+        - The Ramayana is an extremely long epic, yet Balinese storytellers still recite it from memory.
     words: [epos]
+    explain:
+      ar_eg: 'tetapi بتعارض: طويلة جدًا ومع ذلك بيحكوها tanpa membaca buku = من غير كتاب.'
+      ar: 'tetapi للاستدراك: طويلة جدًّا ومع ذلك تُروى بلا كتاب.'
+      en: 'tetapi contrasts: very long, yet told without a book.'
   - id: e09
     type: speaking
     text: Kami merekam sastra lisan dari para sesepuh.

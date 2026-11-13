@@ -86,18 +86,25 @@ exercises:
     words: [selendang, sayembara, kualat, petaka]
   - id: e03
     type: listen
-    text: Jangan melawan orang tua, nanti kualat!
+    text: Nenek selalu berkata kepada cucunya, "Jangan melawan orang tua, nanti kualat!" Menurut kepercayaan orang Jawa, anak yang durhaka akan mendapat petaka, misalnya sakit atau gagal dalam hidupnya.
     question:
-      ar_eg: هيحصل إيه لو عاند الكبار؟
-      ar: ماذا يحدث إن عصى الكبار؟
-      en: What happens if you defy your elders?
-    options: [هيتصاب بسوء, هيتحوّل, هيكسب المسابقة]
+      ar_eg: الجدة بتحذّر من إيه؟
+      ar: مِمّ تحذّر الجدّة؟
+      en: What is the grandmother warning about?
+    options:
+      - Anak yang melawan orang tua akan mendapat kesialan.
+      - Anak yang melawan orang tua akan berubah menjadi batu.
+      - Anak yang melawan orang tua akan menang sayembara.
     answer: 0
     meaning:
-      ar_eg: ما تعاندش الكبار، لحسن يجيلك نحس!
-      ar: لا تعصِ والديك، وإلا أصابك سوء العاقبة!
-      en: Don't defy your parents, or you'll be cursed!
+      ar_eg: 'الجدة دايمًا بتقول لحفيدها: «ماتعاندش الكبار، هيجيلك سوء (كوالات)!» وحسب اعتقاد الجاويين، العيل العاق هتجيله مصيبة، زي مرض أو فشل في حياته.'
+      ar: 'تقول الجدّة دائمًا لحفيدها: «لا تعصِ الكبار وإلّا أصابك سوء (كوالات)!» وفي معتقد الجاويّين ينال العاقّ مصيبة كالمرض أو الفشل.'
+      en: Grandma always tells her grandchild, "Don't defy your elders, or you'll be cursed!" In Javanese belief, a disobedient child meets calamity, such as illness or failure.
     words: [kualat]
+    explain:
+      ar_eg: kualat = يتصاب بسوء عشان عاند الكبار، والنص قال petaka = مصيبة زي مرض أو فشل. مافيش تحوّل لحجر (دي حكاية تانية) ولا مسابقة.
+      ar: kualat = إصابة بسوء جزاء عصيان الكبار، والنصّ يذكر petaka كالمرض أو الفشل، لا التحوّل إلى حجر ولا الفوز بمسابقة.
+      en: kualat = misfortune for defying elders; petaka = calamity like illness or failure. No turning to stone, no contest.
   - id: e04
     type: fill_blank
     sentence: Bidadari itu tidak bisa pulang ke ___ tanpa selendangnya.
@@ -155,12 +162,22 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Kucing hitam itu ternyata jelmaan bidadari dari kahyangan.
+    source_text: Kucing hitam itu ternyata jelmaan bidadari dari kahyangan, sehingga tidak ada yang berani mengusirnya dari rumah.
     answers_meaning:
-      ar_eg: [القطة السودا دي طلعت حورية من السما متحوّلة, القطة السودا طلعت في الحقيقة حورية من دار الآلهة]
-      ar: [تبيّن أنّ القطّة السوداء حوريّة من السماء متحوّلة, كانت القطّة السوداء في الحقيقة حوريّة من مسكن الآلهة في صورة أخرى]
-      en: [The black cat turned out to be a nymph from the heavens in disguise, That black cat was really a heavenly nymph in another form]
+      ar_eg:
+        - القطة السودة طلعت في الآخر جنّية من السما متحوّلة، فمحدش اتجرّأ يطردها من البيت.
+        - اتضح إن القطة السودة دي حورية من السما في شكل قطة، وعشان كده محدش قدر يطلّعها برّه البيت.
+      ar:
+        - تبيّن أنّ القطّة السوداء جنّيّة من السماء متحوّلة، فلم يجرؤ أحد على طردها من البيت.
+        - اتّضح أنّ تلك القطّة السوداء حوريّة سماويّة في هيئة قطّة، ولذلك لم يجسر أحد على إخراجها من المنزل.
+      en:
+        - The black cat turned out to be a nymph from heaven in disguise, so nobody dared chase it out of the house.
+        - That black cat was really a heavenly nymph in another form, so no one dared drive it from the house.
     words: [jelmaan, kahyangan]
+    explain:
+      ar_eg: 'ternyata = اتّضح، وsehingga = فـ (النتيجة): محدش اتجرّأ (berani) يطردها.'
+      ar: 'ternyata = تبيّن، وsehingga = فـ (النتيجة): لم يجرؤ أحد على طردها.'
+      en: 'ternyata = it turned out; sehingga gives the result: nobody dared chase it away.'
   - id: e09
     type: speaking
     text: Siapa pun yang menang sayembara boleh menikahi sang putri.
