@@ -91,17 +91,21 @@ exercises:
       en: ujarnya ("she said") follows a quote in news style. diduga (suspected) and meraih (won) don't introduce speech.
   - id: e04
     type: listen
-    text: Kebakaran di pasar itu diduga karena korsleting listrik.
+    text: Kebakaran di pasar itu diduga karena korsleting listrik. Polisi masih memeriksa lokasi dan belum memberikan keterangan resmi. Sementara itu, para pedagang diminta tidak kembali ke kios mereka sampai besok pagi.
     question:
       ar_eg: سبب الحريق إيه، وقد إيه الخبر متأكّد؟
       ar: ما سبب الحريق، وما مدى يقين الخبر؟
       en: What caused the fire, and how sure is the report?
     options:
-      - ماس كهربا، بس لسه مش مؤكّد.
-      - ماس كهربا، ومؤكّد رسمي.
-      - حد ولّع فيه عمدًا.
-    answer: 0
+      - Penyebabnya sudah pasti dan polisi sudah mengumumkannya.
+      - Penyebabnya mungkin korsleting, tetapi belum dipastikan.
+      - Pasar itu dibakar dengan sengaja oleh pedagang.
+    answer: 1
     words: [diduga]
+    explain:
+      ar_eg: diduga = يُشتبه، وbelum memberikan keterangan resmi = لسه مافيش بيان رسمي، يعني السبب مش مؤكّد. ومحدش قال إن التجار ولّعوا فيه.
+      ar: diduga = يُشتبه، وbelum memberikan keterangan resmi = لم يصدر بيان رسمي بعد، فالسبب غير مؤكّد، ولم يُتّهم التجّار.
+      en: diduga = suspected, and no official statement yet, so the cause isn't confirmed. Nobody says the traders set it.
   - id: e05
     type: build_sentence
     source:
@@ -122,15 +126,15 @@ exercises:
       ar: لماذا يكتب الصحفي «diduga» بدل أن يجزم؟
       en: Why does a journalist write "diduga" instead of stating it as fact?
     options:
-      - علشان الكلمة أقصر.
-      - علشان القارئ يحب الغموض.
-      - علشان الأمر لسه ما اتثبتش، والصحفي مايحكمش.
+      - Supaya judulnya lebih pendek.
+      - Supaya pembaca penasaran.
+      - Karena hal itu belum terbukti, jadi wartawan tidak boleh menghakimi.
     answer: 2
     words: [diduga]
     explain:
-      ar_eg: "diduga معناها «يُشتبه»: الصحفي مابيحكمش قبل ما الحاجة تتثبت. مالهاش علاقة بطول الكلمة ولا بالغموض."
-      ar: diduga = «يُشتبه»، فالصحفي لا يحكم قبل ثبوت الأمر. لا علاقة لذلك بطول الكلمة ولا بالتشويق.
-      en: diduga ("suspected") keeps the reporter from judging before it's proven. It's not about length or mystery.
+      ar_eg: 'diduga معناها «يُشتبه»: الصحفي مابيحكمش قبل ما الحاجة تتثبت (belum terbukti). مالهاش علاقة بطول العنوان ولا بإثارة الفضول.'
+      ar: diduga = «يُشتبه»، فالصحفي لا يحكم قبل ثبوت الأمر (belum terbukti)، ولا علاقة لذلك بطول العنوان ولا بالتشويق.
+      en: diduga keeps the reporter from judging before it's proven (belum terbukti). It's not about length or curiosity.
   - id: e07
     type: translate
     direction: to_target
@@ -163,18 +167,22 @@ exercises:
   - id: e10
     type: translate
     direction: from_target
-    source_text: Pelajar itu meraih medali emas dan dilaporkan akan mendapat beasiswa.
+    source_text: Pelajar itu meraih medali emas, sehingga dia dilaporkan akan mendapat beasiswa dari pemerintah daerah.
     answers_meaning:
       ar_eg:
-        - الطالب ده كسب ميدالية دهب، وبيقولوا إنه هياخد منحة.
-        - الطالب حقّق ميدالية دهب، وأفادت التقارير إنه هياخد منحة.
+        - الطالب ده كسب ميدالية دهب، فبيقولوا إنه هياخد منحة من حكومة المنطقة.
+        - الطالب حقّق ميدالية دهب، وعشان كده أفادت التقارير إنه هياخد منحة من المحافظة.
       ar:
-        - أحرز الطالب ميدالية ذهبية، وأفادت التقارير بأنّه سينال منحة.
-        - فاز الطالب بميدالية ذهبية، ويُقال إنّه سيحصل على منحة دراسية.
+        - أحرز الطالب ميدالية ذهبية، ولذلك أفادت التقارير بأنّه سينال منحة من الحكومة المحلّية.
+        - فاز الطالب بميدالية ذهبية، فيُقال إنّه سيحصل على منحة من حكومة الإقليم.
       en:
-        - The student won a gold medal and will reportedly get a scholarship.
-        - The student took gold and is reported to be getting a scholarship.
+        - The student won a gold medal, so he will reportedly get a scholarship from the local government.
+        - The student took gold, and as a result is reported to be getting a regional government scholarship.
     words: [meraih, medali, dilaporkan]
+    explain:
+      ar_eg: 'sehingga بتجيب النتيجة: الميدالية هي السبب في المنحة. dilaporkan = أفادت التقارير، يعني لسه مش رسمي.'
+      ar: 'sehingga تأتي بالنتيجة: الميدالية سبب المنحة، وdilaporkan = أفادت التقارير، أي أنّ الأمر لم يُعلن رسميًّا.'
+      en: 'sehingga introduces the result: the medal leads to the scholarship; dilaporkan = reportedly, not official yet.'
 dialogue:
   title: Di ruang redaksi Sorong
   lines:
