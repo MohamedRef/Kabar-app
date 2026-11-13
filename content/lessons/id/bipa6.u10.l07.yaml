@@ -83,17 +83,24 @@ exercises:
     words: [merujuk, menekankan, indikasi, spekulasi]
   - id: e03
     type: listen
-    text: Bab empat berisi hasil dan pembahasan.
+    text: Skripsi ini punya lima bab. Bab empat berisi hasil dan pembahasan. Bab lima berisi kesimpulan dan saran.
     question:
       ar_eg: الفصل الرابع فيه إيه غير النتايج؟
-      ar: ماذا يتضمّن الفصل الرابع غير النتائج؟
+      ar: ماذا في الفصل الرابع غير النتائج؟
       en: Besides results, what's in chapter four?
-    options: [المناقشة, المقدمة, المراجع]
+    options:
+      - Pembahasan hasil itu.
+      - Pendahuluan.
+      - Daftar pustaka.
     answer: 0
     meaning:
-      ar_eg: الفصل الرابع فيه النتايج والمناقشة.
-      ar: يتضمّن الفصل الرابع النتائج والمناقشة.
-      en: Chapter four contains the results and discussion.
+      ar_eg: الرسالة دي فيها خمس فصول. الفصل الرابع فيه النتايج والمناقشة. والفصل الخامس فيه الخلاصة والاقتراحات.
+      ar: لهذه الرسالة خمسة فصول. يتضمّن الفصل الرابع النتائج والمناقشة، والخامس الخلاصة والتوصيات.
+      en: This thesis has five chapters. Chapter four contains the results and discussion. Chapter five contains the conclusion and suggestions.
+    explain:
+      ar_eg: bab empat berisi hasil dan pembahasan = الفصل الرابع فيه النتايج والمناقشة، والخامس الخلاصة والاقتراحات. المقدمة والمراجع مش فيه.
+      ar: bab empat = النتائج والمناقشة، والخامس الخلاصة والتوصيات؛ لا المقدّمة ولا المراجع.
+      en: Chapter four holds results and discussion; chapter five the conclusion and suggestions. Not the introduction or references.
     words: [pembahasan]
   - id: e04
     type: fill_blank
@@ -162,11 +169,20 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Penulis merujuk pada tiga sumber dan menekankan sumber pertama.
+    source_text: Penulis merujuk pada tiga sumber dan menekankan sumber pertama, karena sumber itu paling baru.
     answers_meaning:
-      ar_eg: [الكاتب بيرجع لتلات مصادر وبيأكد على أول مصدر, الكاتب استند لتلات مراجع وركّز على الأول]
-      ar: [يحيل الكاتب إلى ثلاثة مصادر ويؤكّد المصدر الأول]
-      en: [The author refers to three sources and emphasises the first, 'The writer cites three sources, stressing the first one']
+      ar_eg:
+        - الكاتب بيرجع لتلات مصادر وبيأكد على أول مصدر، علشان هو الأحدث.
+        - الكاتب استند لتلات مراجع وركّز على الأول لأنه أجدد واحد.
+      ar:
+        - يحيل الكاتب إلى ثلاثة مصادر ويركّز على الأوّل، لأنّه الأحدث.
+      en:
+        - The author refers to three sources and emphasises the first, because it is the most recent.
+        - The writer cites three sources, stressing the first one since it's the newest.
+    explain:
+      ar_eg: "karena بتجيب السبب: paling baru = الأحدث."
+      ar: "karena تأتي بالسبب: paling baru = الأحدث."
+      en: "karena gives the reason: paling baru = the newest."
     words: [merujuk, menekankan]
   - id: e10
     type: speaking
