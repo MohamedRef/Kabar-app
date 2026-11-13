@@ -83,17 +83,24 @@ exercises:
     words: [pakar, kontraktor, desainer, akuntan]
   - id: e03
     type: listen
-    text: Akuntan kami sedang memeriksa laporan pajak.
+    text: Akuntan kami sedang memeriksa laporan pajak, jadi dia belum bisa ikut rapat. Nanti siang dia akan menemui Anda.
     question:
-      ar_eg: مين بيراجع التقرير؟
-      ar: من يراجع التقرير؟
-      en: Who is checking the report?
-    options: [المصمم, المقاول, المحاسب]
-    answer: 2
+      ar_eg: ليه المحاسب مش في الاجتماع؟
+      ar: لماذا لا يحضر المحاسب الاجتماع؟
+      en: Why isn't the accountant at the meeting?
+    options:
+      - Karena dia sedang sakit.
+      - Karena dia masih mengecek laporan pajak.
+      - Karena dia tidak mau bertemu karyawan baru.
+    answer: 1
     meaning:
-      ar_eg: المحاسب بتاعنا بيراجع تقرير الضرايب.
-      ar: محاسبنا يراجع تقرير الضرائب.
-      en: Our accountant is checking the tax report.
+      ar_eg: المحاسب بتاعنا بيراجع تقرير الضرايب، فلسه مش هيقدر يحضر الاجتماع. الضهر هيقابلك.
+      ar: محاسبنا يراجع تقرير الضرائب، فلا يستطيع حضور الاجتماع الآن، وسيلقاك ظهرًا.
+      en: Our accountant is checking the tax report, so he can't join the meeting yet. He'll see you at midday.
+    explain:
+      ar_eg: "memeriksa = mengecek (يراجع)، وjadi بتقول النتيجة: مش هيحضر عشان مشغول بالتقرير."
+      ar: "memeriksa = mengecek (يراجع)، وjadi تذكر النتيجة: لن يحضر لانشغاله بالتقرير."
+      en: "memeriksa = mengecek (check); jadi gives the result: he's busy with the report."
     words: [akuntan]
   - id: e04
     type: fill_blank
@@ -162,11 +169,21 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Saya berkomitmen pada pekerjaan ini.
+    source_text: Saya berkomitmen pada pekerjaan ini, dan saya siap belajar dari mentor saya setiap hari.
     answers_meaning:
-      ar_eg: [أنا ملتزم بالشغل ده, أنا ملتزم في الشغلانة دي]
-      ar: [أنا ملتزم بهذا العمل, ألتزم بهذا العمل]
-      en: ['I''m committed to this job', I am committed to this work]
+      ar_eg:
+        - أنا ملتزم بالشغل ده، ومستعد أتعلم من المرشد بتاعي كل يوم.
+        - أنا ملتزم بالشغلانة دي، وجاهز أتعلم من المنتور بتاعي كل يوم.
+      ar:
+        - أنا ملتزم بهذا العمل، ومستعدّ للتعلّم من مرشدي كل يوم.
+        - ألتزم بهذا العمل، وأنا جاهز لأتعلّم من مرشدي يوميًا.
+      en:
+        - I'm committed to this job, and I'm ready to learn from my mentor every day.
+        - I am committed to this work and ready to learn from my mentor daily.
+    explain:
+      ar_eg: "berkomitmen pada = ملتزم بـ، وdan بتوصّل جملة تانية: siap belajar = مستعد يتعلم."
+      ar: "berkomitmen pada = ملتزم بـ، وdan تصل جملة ثانية: siap belajar = مستعدّ للتعلّم."
+      en: "berkomitmen pada = committed to; dan adds a second clause: siap belajar = ready to learn."
     words: [berkomitmen]
   - id: e10
     type: speaking
