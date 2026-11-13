@@ -83,17 +83,24 @@ exercises:
     words: [iseng, cerewet, galau, curhat]
   - id: e03
     type: listen
-    text: Kenapa kamu galau? Ayo curhat saja.
+    text: Kenapa kamu galau? Dari tadi kamu diam saja dan kopimu sudah dingin. Ayo curhat saja, kami siap mendengarkan.
     question:
       ar_eg: صاحبه حاله إيه؟
       ar: ما حال صديقه؟
       en: How is his friend feeling?
-    options: [متضايق, جعان, مستعجل]
+    options:
+      - Dia sedih dan banyak pikiran.
+      - Dia sangat lapar.
+      - Dia sedang terburu-buru.
     answer: 0
     meaning:
-      ar_eg: مالك متضايق كده؟ يلا فضفض.
-      ar: لماذا أنت مضطرب؟ هيّا، بُح بما في قلبك.
-      en: Why so down? Come on, get it off your chest.
+      ar_eg: مالك متضايق كده؟ من بدري وانت ساكت وقهوتك بردت. يلا فضفض، إحنا سامعينك.
+      ar: لماذا أنت مضطرب؟ أنت صامت منذ مدّة وقهوتك بردت. هيّا، بُح بما في قلبك، نحن نسمعك.
+      en: Why so down? You've been quiet for ages and your coffee's cold. Come on, get it off your chest; we're listening.
+    explain:
+      ar_eg: galau = متضايق ومحتار، وكمان ساكت والقهوة بردت. مش جعان ولا مستعجل.
+      ar: galau = حائر مضطرب، وهو صامت وقهوته بردت؛ لا جائع ولا مستعجل.
+      en: galau = low and mixed-up; he's silent and his coffee's gone cold. Not hungry or in a hurry.
     words: [galau, curhat]
   - id: e04
     type: fill_blank
@@ -162,11 +169,20 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Bapak tua itu terkekeh ketika kami bergurau.
+    source_text: Bapak tua itu terkekeh ketika kami bergurau, padahal tadinya dia kelihatan sangat serius.
     answers_meaning:
-      ar_eg: [الراجل العجوز ضحك ضحكة مكتومة لما سمع هزارنا, العجوز ضحك على هزارنا]
-      ar: [قهقه ذلك الشيخ حين سمع مزاحنا]
-      en: [The old man chuckled at our jokes, That old man chuckled when he heard our joking]
+      ar_eg:
+        - الراجل العجوز ضحك ضحكة مكتومة لما هزرنا، مع إنه كان باين جد جدًا قبلها.
+        - العجوز ضحك على هزارنا، رغم إنه كان شكله جد قوي في الأول.
+      ar:
+        - قهقه ذلك الشيخ حين مزحنا، مع أنّه كان يبدو جادًّا جدًّا قبل ذلك.
+      en:
+        - The old man chuckled when we joked, even though he had looked very serious before.
+        - That old man chuckled at our joking, although he'd seemed very serious at first.
+    explain:
+      ar_eg: padahal = مع إن (عكس المتوقع)، وtadinya = قبلها / في الأول.
+      ar: padahal = مع أنّ (خلاف المتوقّع)، وtadinya = قبل ذلك.
+      en: padahal = even though (against expectation); tadinya = earlier, at first.
     words: [terkekeh, bergurau]
   - id: e10
     type: speaking

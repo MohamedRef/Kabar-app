@@ -65,33 +65,37 @@ exercises:
     words: [agenda, usulan, pemungutan suara, notulen, ditunda]
   - id: e02
     type: listen
-    text: Agenda pertama rapat hari ini adalah promosi Ramadan.
+    text: Selamat pagi, semuanya. Agenda pertama rapat hari ini adalah promosi Ramadan. Setelah itu, kita membahas gaji karyawan baru.
     question:
       ar_eg: أول بند في الاجتماع إيه؟
-      ar: ما البند الأوّل في الاجتماع؟
+      ar: ما أوّل بند في الاجتماع؟
       en: What is the first item on the agenda?
     options:
-      - المرتبات.
-      - عرض رمضان.
-      - فرع جديد.
+      - Gaji karyawan.
+      - Promosi Ramadan.
+      - Cabang baru.
     answer: 1
+    explain:
+      ar_eg: "agenda pertama = البند الأول: عرض رمضان، والمرتبات بعده (setelah itu). الفرع الجديد مااتذكرش."
+      ar: "agenda pertama = البند الأوّل: عرض رمضان، والرواتب بعده (setelah itu)؛ ولم يُذكر فرع جديد."
+      en: "First item: the Ramadan promotion; salaries come after (setelah itu). No new branch is mentioned."
     words: [agenda]
   - id: e03
     type: multiple_choice
     question_meaning:
       ar_eg: مين بيكتب الـ notulen؟
-      ar: من يكتب الـ notulen؟
+      ar: مَن يكتب الـ notulen؟
       en: Who writes the notulen?
     options:
-      - الزبون.
-      - المورّد.
-      - السكرتير اللي بيكتب كل اللي اتقال.
+      - Pelanggan.
+      - Pemasok.
+      - Sekretaris yang mencatat semua yang dibicarakan.
     answer: 2
-    words: [notulen]
     explain:
-      ar_eg: المحضر notulen بيكتبه السكرتير اللي بيسجّل كل اللي اتقال. مش الزبون ولا المورّد.
-      ar: يكتب المحضر notulen أمين السرّ الذي يدوّن كلّ ما قيل، لا الزبون ولا المورّد.
-      en: The notulen, minutes, are written by the secretary recording everything, not a customer or supplier.
+      ar_eg: المحضر notulen بيكتبه السكرتير اللي بيسجّل (mencatat) كل اللي اتقال. مش الزبون ولا المورّد.
+      ar: المحضر notulen يكتبه السكرتير الذي يدوّن (mencatat) كلّ ما قيل، لا الزبون ولا المورّد.
+      en: The notulen, minutes, are written by the secretary recording (mencatat) everything, not a customer or supplier.
+    words: [notulen]
   - id: e04
     type: fill_blank
     sentence: Karena waktunya habis, pembahasan tentang cabang baru ___ sampai Senin.
@@ -110,17 +114,17 @@ exercises:
     type: multiple_choice
     question_meaning:
       ar_eg: الناس مش متفقين. الإندونيسيين بيعملوا إيه الأول عادةً؟
-      ar: لم يتّفق الحاضرون. ماذا يفعل الإندونيسيون أوّلًا عادةً؟
+      ar: الناس مختلفون. ماذا يجرّب الإندونيسيون أوّلًا عادةً؟
       en: People disagree. What do Indonesians usually try first?
     options:
-      - يتناقشوا لحد ما يتفقوا (mufakat).
-      - تصويت على طول.
-      - يلغوا الاجتماع.
+      - Berdiskusi sampai semua setuju (mufakat).
+      - Langsung pemungutan suara.
+      - Membatalkan rapat.
     answer: 0
     explain:
-      ar_eg: pemungutan suara آخر حل بعد ما الـ mufakat مايحصلش.
-      ar: يأتي pemungutan suara آخرًا إن تعذّر الـ mufakat.
-      en: pemungutan suara comes last, when mufakat can't be reached.
+      ar_eg: الأول بيتناقشوا لحد ما يتفقوا (mufakat)، وpemungutan suara (التصويت) آخر حل. إلغاء الاجتماع مش عادة.
+      ar: يتناقشون أوّلًا حتى يتّفقوا (mufakat)، والتصويت pemungutan suara آخر الحلول؛ وإلغاء الاجتماع ليس عادة.
+      en: They discuss until everyone agrees (mufakat); pemungutan suara (a vote) comes last. Cancelling isn't the norm.
     words: [pemungutan suara, mufakat]
   - id: e06
     type: build_sentence
@@ -162,11 +166,11 @@ exercises:
     words: [pemungutan suara, mufakat]
   - id: e09
     type: dictation
-    text: Usulan itu ditunda karena biayanya terlalu tinggi.
+    text: Usulan itu ditunda karena biayanya terlalu tinggi, padahal semua orang menyukainya.
     meaning:
-      ar_eg: الاقتراح ده اتأجّل عشان تكلفته عالية أوي.
-      ar: أُجّل ذلك الاقتراح لارتفاع تكلفته.
-      en: That proposal was postponed because its cost was too high.
+      ar_eg: الاقتراح ده اتأجّل عشان تكلفته عالية أوي، مع إن كل الناس عجبهم.
+      ar: أُجّل ذلك الاقتراح لأنّ تكلفته مرتفعة جدًّا، مع أنّ الجميع أحبّوه.
+      en: That proposal was postponed because it cost too much, even though everyone liked it.
     words: [usulan, ditunda]
   - id: e10
     type: fill_blank

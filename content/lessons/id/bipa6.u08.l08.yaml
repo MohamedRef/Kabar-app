@@ -80,17 +80,24 @@ exercises:
     words: [nadi, sendi, pencernaan, sindrom]
   - id: e03
     type: listen
-    text: Cuci tangan sebelum makan supaya kuman tidak masuk.
+    text: Anak-anak, dengarkan dokter dulu. Cuci tangan sebelum makan supaya kuman tidak masuk. Pakai sabun dan air yang mengalir selama dua puluh detik.
     question:
-      ar_eg: بنغسل إيدينا عشان إيه؟
-      ar: لماذا نغسل أيدينا؟
-      en: Why do we wash our hands?
-    options: [الميكروبات, الأكل, الميه]
+      ar_eg: الدكتورة بتنصح بإيه، وليه؟
+      ar: بمَ تنصح الطبيبة، ولماذا؟
+      en: What does the doctor advise, and why?
+    options:
+      - Mencuci tangan, supaya kuman tidak masuk ke tubuh.
+      - Makan lebih banyak, supaya kuat.
+      - Minum air, supaya tidak haus.
     answer: 0
     meaning:
-      ar_eg: اغسل إيدك قبل الأكل عشان الميكروبات ما تدخلش.
-      ar: اغسل يديك قبل الأكل كي لا تدخل الجراثيم.
-      en: Wash your hands before eating so germs don't get in.
+      ar_eg: يا ولاد، اسمعوا الدكتورة الأول. اغسلوا إيديكم قبل الأكل عشان الميكروبات ما تدخلش. استعملوا صابون ومية جارية عشرين ثانية.
+      ar: يا أطفال، استمعوا إلى الطبيبة أوّلًا. اغسلوا أيديكم قبل الأكل لئلّا تدخل الجراثيم، بالصابون والماء الجاري عشرين ثانية.
+      en: Children, listen to the doctor first. Wash your hands before eating so germs don't get in. Use soap and running water for twenty seconds.
+    explain:
+      ar_eg: cuci tangan supaya kuman tidak masuk = اغسلوا إيديكم علشان الميكروبات ماتدخلش، بالصابون عشرين ثانية. الأكل والشرب مش النصيحة.
+      ar: cuci tangan supaya kuman tidak masuk = اغسلوا أيديكم لئلّا تدخل الجراثيم، بالصابون عشرين ثانية؛ والأكل والشرب ليسا النصيحة.
+      en: Wash hands so germs don't get in, with soap for twenty seconds. Eating or drinking isn't the advice.
     words: [kuman]
   - id: e04
     type: fill_blank
@@ -159,11 +166,20 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Kelenjar di leher membengkak karena radang.
+    source_text: Kelenjar di leher membengkak karena radang, jadi dokter memberi obat dan meminta pasien banyak istirahat.
     answers_meaning:
-      ar_eg: [الغدد اللي في الرقبة نفخت بسبب الالتهاب, غدد الرقبة ورمت من الالتهاب]
-      ar: [تورّمت الغدد في الرقبة بسبب الالتهاب]
-      en: [The glands in the neck swelled because of inflammation, Neck glands swell with inflammation]
+      ar_eg:
+        - الغدد اللي في الرقبة نفخت بسبب الالتهاب، فالدكتور إدّى دوا وطلب من العيّان يرتاح كتير.
+        - غدد الرقبة ورمت من الالتهاب، علشان كده الدكتور كتب دوا وقال للمريض يستريح.
+      ar:
+        - تورّمت الغدد في الرقبة بسبب الالتهاب، فأعطى الطبيب دواءً وطلب من المريض أن يرتاح كثيرًا.
+      en:
+        - The glands in the neck swelled because of inflammation, so the doctor gave medicine and told the patient to rest a lot.
+        - Neck glands swelled with inflammation, so the doctor prescribed medicine and asked the patient to rest.
+    explain:
+      ar_eg: karena = السبب (الالتهاب)، وjadi = النتيجة (الدوا والراحة).
+      ar: karena للسبب (الالتهاب)، وjadi للنتيجة (الدواء والراحة).
+      en: karena gives the cause (inflammation); jadi the outcome (medicine and rest).
     words: [kelenjar, radang]
   - id: e10
     type: speaking

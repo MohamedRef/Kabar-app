@@ -80,17 +80,24 @@ exercises:
     words: [diameter, pengukuran, hidrogen, polusi]
   - id: e03
     type: listen
-    text: Di kota, polusi cahaya membuat bintang tidak terlihat.
+    text: Malam ini kita pergi ke bukit di luar kota. Di kota, polusi cahaya membuat bintang tidak terlihat. Di bukit, langitnya gelap dan bintangnya jelas sekali.
     question:
-      ar_eg: إيه اللي بيخبّي النجوم في المدينة؟
-      ar: ما الذي يحجب النجوم في المدينة؟
-      en: What hides the stars in the city?
-    options: [التلوث الضوئي, السحاب, المطر]
+      ar_eg: ليه رايحين التل؟
+      ar: لماذا يذهبون إلى التلّ؟
+      en: Why are they going to the hill?
+    options:
+      - Karena lampu kota menutupi cahaya bintang.
+      - Karena di kota banyak awan.
+      - Karena di kota sedang hujan.
     answer: 0
     meaning:
-      ar_eg: في المدينة، التلوث الضوئي بيخلي النجوم مش باينة.
-      ar: في المدينة يحجب التلوث الضوئي النجوم.
-      en: In the city, light pollution hides the stars.
+      ar_eg: الليلة هنروح تل برّه المدينة. في المدينة، التلوث الضوئي بيخلي النجوم مش باينة. على التل، السما ضلمة والنجوم واضحة جدًا.
+      ar: سنذهب الليلة إلى تلّ خارج المدينة. في المدينة يحجب التلوّث الضوئي النجوم، أمّا على التلّ فالسماء مظلمة والنجوم واضحة جدًّا.
+      en: Tonight we're going to a hill outside town. In the city, light pollution hides the stars. On the hill the sky is dark and the stars are very clear.
+    explain:
+      ar_eg: polusi cahaya = التلوث الضوئي (نور المدينة) بيخبّي النجوم، وفوق التل السما ضلمة. السحاب والمطر مااتذكروش.
+      ar: polusi cahaya = التلوّث الضوئي (أضواء المدينة) يحجب النجوم، والسماء فوق التلّ مظلمة؛ ولم تُذكر الغيوم ولا المطر.
+      en: Light pollution (city lights) hides the stars; the sky on the hill is dark. Clouds and rain aren't mentioned.
     words: [polusi]
   - id: e04
     type: fill_blank
@@ -159,11 +166,20 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Asteroid itu lewat dekat Bumi, tetapi tidak berbahaya.
+    source_text: Asteroid itu lewat dekat Bumi, tetapi tidak berbahaya karena jaraknya masih jutaan kilometer.
     answers_meaning:
-      ar_eg: [الكويكب ده عدّى قريب من الأرض، بس مش خطير, كويكب عدّى جنب الأرض ومفيش خطر]
-      ar: [مرّ ذلك الكويكب قرب الأرض، لكنه غير خطير]
-      en: ['The asteroid passed close to Earth, but it isn''t dangerous', That asteroid flew near Earth but posed no danger]
+      ar_eg:
+        - الكويكب ده عدّى قريب من الأرض، بس مش خطير علشان المسافة لسه ملايين الكيلومترات.
+        - كويكب عدّى جنب الأرض ومفيش خطر، لأنه لسه بعيد بملايين الكيلو.
+      ar:
+        - مرّ ذلك الكويكب قرب الأرض، لكنّه غير خطير لأنّ المسافة ما زالت ملايين الكيلومترات.
+      en:
+        - The asteroid passed close to Earth, but it isn't dangerous because it's still millions of kilometres away.
+        - That asteroid flew near Earth but posed no danger, since the distance is still millions of kilometres.
+    explain:
+      ar_eg: tetapi بتعارض «قريب»، وkarena بتشرح ليه مش خطير.
+      ar: tetapi تعارض «قريب»، وkarena تعلّل عدم الخطر.
+      en: tetapi contrasts with 'close'; karena explains why it's safe.
     words: [asteroid]
   - id: e10
     type: speaking

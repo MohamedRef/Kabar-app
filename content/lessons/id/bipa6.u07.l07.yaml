@@ -83,17 +83,24 @@ exercises:
     words: [akta, stempel, borgol, napi]
   - id: e03
     type: listen
-    text: Dua napi kabur dari lembaga pemasyarakatan semalam.
+    text: Dua napi kabur dari lembaga pemasyarakatan semalam. Polisi sudah menangkap satu orang di terminal bus. Satu orang lagi masih dicari.
     question:
-      ar_eg: مين اللي هرب؟
-      ar: من الذي فرّ؟
-      en: Who escaped?
-    options: [مسجونين, قضاة, محامين]
+      ar_eg: مين اللي هرب، وإيه اللي حصل بعد كده؟
+      ar: مَن فرّ، وماذا حدث بعد ذلك؟
+      en: Who escaped, and what happened next?
+    options:
+      - Dua tahanan, dan satu sudah tertangkap lagi.
+      - Dua hakim, dan keduanya masih dicari.
+      - Dua pengacara, dan keduanya sudah kembali.
     answer: 0
     meaning:
-      ar_eg: اتنين مساجين هربوا من السجن امبارح بالليل.
-      ar: فرّ سجينان من السجن الليلة الماضية.
-      en: Two inmates escaped from prison last night.
+      ar_eg: اتنين مساجين هربوا من السجن امبارح بالليل. الشرطة مسكت واحد في موقف الأتوبيس. والتاني لسه بيدوّروا عليه.
+      ar: فرّ سجينان من السجن الليلة الماضية. قبضت الشرطة على أحدهما في موقف الحافلات، وما زال الآخر مطلوبًا.
+      en: Two inmates escaped from prison last night. Police caught one at the bus terminal. The other is still being sought.
+    explain:
+      ar_eg: napi = مسجون، واحد اتمسك في موقف الأتوبيس والتاني لسه بيدوّروا عليه. مش قضاة ولا محامين.
+      ar: napi = سجين؛ قُبض على أحدهما في موقف الحافلات وما زال الآخر مطلوبًا؛ لا قضاة ولا محامون.
+      en: napi = inmate; one was caught at the bus terminal, the other is still being sought. Not judges or lawyers.
     words: [napi]
   - id: e04
     type: fill_blank
@@ -162,11 +169,20 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Pegawai itu diadili karena memalsukan stempel.
+    source_text: Pegawai itu diadili karena memalsukan stempel, padahal dia sudah bekerja di kantor itu selama dua puluh tahun.
     answers_meaning:
-      ar_eg: [الموظف ده اتحاكم عشان زوّر ختم, الموظف اتحاكم بتهمة تزوير ختم]
-      ar: [حوكم ذلك الموظف لتزويره ختمًا, حوكم الموظف بتهمة تزوير ختم]
-      en: [That employee was tried for forging a stamp, The employee was tried for forging a seal]
+      ar_eg:
+        - الموظف ده اتحاكم عشان زوّر ختم، مع إنه شغال في المكتب ده بقاله عشرين سنة.
+        - الموظف اتحاكم بتهمة تزوير ختم، رغم إنه قضّى عشرين سنة في المكتب ده.
+      ar:
+        - حوكم ذلك الموظف لتزويره ختمًا، مع أنّه عمل في ذلك المكتب عشرين عامًا.
+      en:
+        - That employee was tried for forging a stamp, even though he had worked in that office for twenty years.
+        - The employee was tried for forging a seal, although he'd been at that office for twenty years.
+    explain:
+      ar_eg: karena = السبب، وpadahal = مع إن (المفاجأة إنه قديم في الشغل).
+      ar: karena للسبب، وpadahal = مع أنّ (والمفارقة قِدمه في العمل).
+      en: karena gives the reason; padahal = even though (the surprise is his long service).
     words: [diadili, memalsukan, stempel]
   - id: e10
     type: speaking

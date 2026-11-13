@@ -80,17 +80,24 @@ exercises:
     words: [sampul, ilustrasi, primer, sekunder]
   - id: e03
     type: listen
-    text: Proses penerbitan buku ini memakan waktu enam bulan.
+    text: Naskahnya selesai bulan Januari. Proses penerbitan buku ini memakan waktu enam bulan. Bukunya baru bisa dibeli bulan Juli.
     question:
       ar_eg: إيه اللي أخد ست شهور؟
-      ar: ما الذي استغرق ستة أشهر؟
+      ar: ما الذي استغرق ستّة أشهر؟
       en: What took six months?
-    options: [النشر, الكتابة, الترجمة]
+    options:
+      - Penerbitan bukunya.
+      - Penulisan naskahnya.
+      - Penerjemahannya.
     answer: 0
     meaning:
-      ar_eg: نشر الكتاب ده أخد ست شهور.
-      ar: استغرقت عملية نشر هذا الكتاب ستة أشهر.
-      en: Publishing this book took six months.
+      ar_eg: المخطوطة خلصت في يناير. نشر الكتاب ده أخد ست شهور. والكتاب ماتباعش غير في يوليو.
+      ar: اكتملت المخطوطة في يناير، واستغرق نشر الكتاب ستّة أشهر، فلم يُتح للشراء إلّا في يوليو.
+      en: The manuscript was finished in January. Publishing this book took six months. It only went on sale in July.
+    explain:
+      ar_eg: proses penerbitan = النشر أخد ست شهور، من يناير (المخطوطة خلصت) لحد يوليو. الكتابة خلصت قبلها، والترجمة مااتذكرتش.
+      ar: proses penerbitan = النشر استغرق ستّة أشهر من يناير (اكتمال المخطوطة) إلى يوليو؛ والكتابة انتهت قبله، ولم تُذكر الترجمة.
+      en: Publishing took six months, January (manuscript done) to July. Writing finished before; translation isn't mentioned.
     words: [penerbitan]
   - id: e04
     type: fill_blank
@@ -159,11 +166,20 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Artikel ini memakai sumber sekunder saja.
+    source_text: Artikel ini memakai sumber sekunder saja, padahal sumber primernya mudah ditemukan di perpustakaan.
     answers_meaning:
-      ar_eg: [المقالة دي بتستخدم مصادر ثانوية بس, المقال ده معتمد على مصادر ثانوية وبس]
-      ar: [تعتمد هذه المقالة على مصادر ثانوية فقط]
-      en: [This article uses only secondary sources, The article relies on secondary sources alone]
+      ar_eg:
+        - المقالة دي بتستخدم مصادر ثانوية بس، مع إن المصادر الأولية سهل تلاقيها في المكتبة.
+        - المقال ده معتمد على مصادر ثانوية وبس، رغم إن الأصلية موجودة في المكتبة بسهولة.
+      ar:
+        - يستعمل هذا المقال مصادر ثانوية فقط، مع أنّ مصادره الأوّلية سهلة المنال في المكتبة.
+      en:
+        - This article uses only secondary sources, even though the primary sources are easy to find in the library.
+        - The article relies on secondary sources alone, although the primary ones are easily found in the library.
+    explain:
+      ar_eg: "padahal = مع إن (نقد: الأولية كانت متاحة)."
+      ar: "padahal = مع أنّ (نقد: الأوّلية متاحة)."
+      en: "padahal = even though (a criticism: the primary sources were available)."
     words: [sekunder]
   - id: e10
     type: speaking

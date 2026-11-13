@@ -380,7 +380,7 @@ Rules (Mohamed's decisions; all in force):
 
 ### Open work and known gaps
 
-- #633 (BIPA 5–7 task demand): content batches, half a level per PR (BIPA 5 u01–u05, u06–u10, then 6, then 7): Indonesian comprehension options with Arabic in `explain:`, longer listening texts, one multi-clause item per lesson. Each batch tightens `content/demand-limits.tsv`; target: Arabic-only listen options under BIPA 4's 32%, multiple choice near 0%. Drop the README "(aim)" label (`readme.rs cefr_label`) once all three levels are done.
+- #633 (BIPA 5–7 task demand): all six content batches merged (#642, #644, #645, #646, #647, #643); Arabic-only listen options are 0% at BIPA 5–7 and the ratchet holds them there. The README keeps "(aim)" on BIPA 5–7 CEFR labels: the mappings stay low-confidence and listening texts (17–28 words) are still short of C1 length. Drop it in `readme.rs cefr_label` only when Mohamed decides.
 - Mohamed's steps: Cloud keys (`GEMINI_API_KEY`, `AZURE_SPEECH_KEY`,
   `FCM_SERVICE_ACCOUNT`, `KABAR_GOOGLE_SERVICES_JSON`) so AI, cloud voices and
   pushed reminders work in release builds; bake-off on the Mac.
@@ -415,6 +415,7 @@ Newest first. One line per PR that changes behaviour, process or state.
 - 2026-11-13: review #633 (BIPA 6 u01–u05): listen and comprehension choices in Indonesian with the Arabic in `explain:` (etymology items keep Arabic options), listening texts of 3 sentences, one multi-clause translate/dictation per lesson; BIPA 6 limit now 50% / 19.1% / 15.6 words.
 - 2026-11-13: review #633 (BIPA 5 u01–u05): comprehension options in Indonesian with the Arabic in `explain`, longer listening texts, one multi-clause item per lesson; `bipa5` line in `content/demand-limits.tsv` tightened to 47.5 / 15.0 / 12.5. All items stay unverified.
 - 2026-11-13: review #635: J3 krama lines use `legi` for a sweet taste (`j3.u02.l03`, `j3.u05.l08`), not Indonesian manis.
+- 2026-11-13: #633 batch BIPA 6 u06–u10: 108 listen/choice items now have Indonesian options with Arabic `explain:`, listening texts 3–4 sentences, one compound item per lesson; `content/demand-limits.tsv` bipa6 tightened to 0.0 / 2.0 / 22.5 (whole level, after u01–u05).
 - 2026-11-13: review #633 (part 1, tooling): `kabar-tools demand` reports task demand per BIPA level and CI fails a level worse than `content/demand-limits.tsv`; long listening/dictation texts count in the 7-minute estimate; README shows BIPA 5–7 CEFR as "(aim)". Content batches follow: half a level per PR (Mohamed approved the plan 2026-11-13).
 - 2026-11-13: review #636: `curriculum/README.md` rewritten from `javanese.yaml` (Jogja/Madiun route, no stale counts); the Javanese dialect check now fails CI, with every current deliberate use in the guard's `allow:` list (§ 4, § 7).
 - 2026-11-13: review #634: the «ra (Jogja)» slide in `j1.u05.l01` is tagged `jv.negation.ora-dudu`; `jv.dialect.arek` moves to `j1.u05.l06` as a hear-only slide + one closed item (guard `allow:` entry, `gak` in `jv.core-exclude.tsv`) (§ 7).
