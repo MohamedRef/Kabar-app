@@ -83,17 +83,24 @@ exercises:
     words: [aparat, remeh, ironis, heboh]
   - id: e03
     type: listen
-    text: Berita itu heboh, tetapi isinya remeh.
+    text: Semua televisi membicarakan berita itu sejak pagi. Berita itu heboh, tetapi isinya remeh. Ternyata seorang politikus hanya mengganti warna mobilnya.
     question:
       ar_eg: الخبر عامل إزاي؟
       ar: كيف هو الخبر؟
       en: What's the story like?
-    options: [عامل دوشة بس تافه, مهم وخطير, قديم ومنسي]
+    options:
+      - Ramai dibicarakan, tetapi sebenarnya tidak penting.
+      - Sangat penting dan berbahaya.
+      - Sudah lama dan dilupakan orang.
     answer: 0
     meaning:
-      ar_eg: الخبر ده عامل ضجة، بس محتواه تافه.
-      ar: أثار الخبر ضجة، لكن مضمونه تافه.
-      en: The story made a big fuss, but its content is trivial.
+      ar_eg: كل القنوات بتتكلم عن الخبر ده من الصبح. الخبر عامل ضجة، بس محتواه تافه. طلع سياسي غيّر لون عربيته بس.
+      ar: تتحدّث كلّ القنوات عن الخبر منذ الصباح. أثار ضجة، لكن مضمونه تافه؛ فقد غيّر سياسيّ لون سيارته فحسب.
+      en: "Every channel has talked about the story since morning. It made a big fuss, but it's trivial: a politician just changed his car's colour."
+    explain:
+      ar_eg: "heboh = عامل ضجة، وremeh = تافه: السياسي غيّر لون عربيته بس. مش مهم ولا قديم."
+      ar: "heboh = أثار ضجّة، وremeh = تافه: غيّر السياسي لون سيارته فقط؛ ليس مهمًّا ولا قديمًا."
+      en: "heboh = a big fuss; remeh = trivial: a politician just changed his car's colour. Not important, not old."
     words: [heboh, remeh]
   - id: e04
     type: fill_blank
@@ -162,11 +169,20 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Aparat keamanan menjaga gedung parlemen.
+    source_text: Aparat keamanan menjaga gedung parlemen karena ribuan mahasiswa akan berdemo di depannya.
     answers_meaning:
-      ar_eg: [الأجهزة الأمنية بتحرس مبنى البرلمان, الأمن بيحمي البرلمان]
-      ar: [تحرس الأجهزة الأمنية مبنى البرلمان]
-      en: [Security forces guard the parliament building, The security forces are guarding parliament]
+      ar_eg:
+        - الأجهزة الأمنية بتحرس مبنى البرلمان علشان آلاف الطلبة هيتظاهروا قدامه.
+        - الأمن بيحمي البرلمان لأن آلاف من الطلبة هيعملوا مظاهرة قدامه.
+      ar:
+        - تحرس الأجهزة الأمنية مبنى البرلمان لأنّ آلاف الطلاب سيتظاهرون أمامه.
+      en:
+        - Security forces are guarding the parliament building because thousands of students will demonstrate in front of it.
+        - The security forces guard parliament since thousands of students are going to protest outside.
+    explain:
+      ar_eg: karena بتجيب السبب، وakan berdemo = هيتظاهروا.
+      ar: karena تأتي بالسبب، وakan berdemo = سيتظاهرون.
+      en: karena gives the reason; akan berdemo = will demonstrate.
     words: [aparat]
   - id: e10
     type: speaking
