@@ -80,17 +80,24 @@ exercises:
     words: [pengembalian, diwajibkan, bersyarat, diberlakukan]
   - id: e03
     type: listen
-    text: Registrasi online dibuka sampai tanggal tiga puluh.
+    text: Untuk kelas bahasa semester depan, registrasi online dibuka sampai tanggal tiga puluh. Setelah tanggal itu, pendaftar harus datang langsung ke kantor. Biayanya juga lebih mahal.
     question:
       ar_eg: إيه اللي مفتوح لحد يوم تلاتين؟
       ar: ما الذي يبقى مفتوحًا حتى الثلاثين؟
       en: What's open until the thirtieth?
-    options: [التسجيل, الإلغاء, الاسترجاع]
+    options:
+      - Pendaftaran lewat internet.
+      - Pembatalan kelas.
+      - Pengembalian uang.
     answer: 0
     meaning:
-      ar_eg: التسجيل أونلاين مفتوح لحد يوم تلاتين.
-      ar: التسجيل الإلكتروني مفتوح حتى يوم الثلاثين.
-      en: Online registration is open until the thirtieth.
+      ar_eg: لكورس اللغة الترم الجاي، التسجيل أونلاين مفتوح لحد يوم تلاتين. بعد اليوم ده، المتقدم لازم ييجي المكتب بنفسه. والمصاريف كمان أغلى.
+      ar: لدروس اللغة في الفصل القادم، التسجيل الإلكتروني مفتوح حتى الثلاثين. بعد ذلك على المتقدّم الحضور إلى المكتب، والرسوم أعلى أيضًا.
+      en: For next semester's language class, online registration is open until the thirtieth. After that, applicants must come to the office in person, and it costs more.
+    explain:
+      ar_eg: registrasi online = التسجيل أونلاين، وبعد يوم تلاتين لازم تروح المكتب وتدفع أكتر. الإلغاء والاسترجاع مااتذكروش.
+      ar: registrasi online = التسجيل الإلكتروني، وبعد الثلاثين يجب الحضور إلى المكتب بكلفة أعلى؛ ولم يُذكر الإلغاء ولا الاسترداد.
+      en: Online registration; after the thirtieth you go in person and pay more. Cancellation and refunds aren't mentioned.
     words: [registrasi]
   - id: e04
     type: fill_blank
@@ -159,11 +166,20 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Saya datang ke kantor imigrasi untuk perpanjangan izin tinggal.
+    source_text: Saya datang ke kantor imigrasi untuk perpanjangan izin tinggal, tetapi sistemnya sedang rusak.
     answers_meaning:
-      ar_eg: [جيت مكتب الهجرة عشان أجدد الإقامة, أنا جاي الجوازات عشان تجديد الإقامة]
-      ar: [جئت إلى مكتب الهجرة لتجديد الإقامة]
-      en: [I came to the immigration office to extend my stay permit, 'I''m at immigration to renew my residence permit']
+      ar_eg:
+        - جيت مكتب الهجرة عشان أجدد الإقامة، بس السيستم كان عطلان.
+        - أنا جاي الجوازات عشان تجديد الإقامة، لكن النظام واقع.
+      ar:
+        - جئت إلى مكتب الهجرة لتجديد الإقامة، لكنّ النظام معطّل.
+      en:
+        - I came to the immigration office to extend my stay permit, but the system is down.
+        - I'm at immigration to renew my residence permit, but the system isn't working.
+    explain:
+      ar_eg: "untuk = علشان (الغرض)، وtetapi بتجيب المشكلة: sedang rusak = عطلان دلوقتي."
+      ar: "untuk للغرض، وtetapi تأتي بالمشكلة: sedang rusak = معطّل الآن."
+      en: "untuk gives the purpose; tetapi brings the problem: sedang rusak = down right now."
     words: [perpanjangan]
   - id: e10
     type: speaking

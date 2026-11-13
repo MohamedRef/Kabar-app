@@ -62,16 +62,20 @@ exercises:
     words: [konsumen, label, kedaluwarsa, garansi, struk]
   - id: e02
     type: listen
-    text: Susu ini sudah kedaluwarsa sejak minggu lalu.
+    text: Maaf, Mbak, saya baru membeli susu ini kemarin. Tetapi susu ini sudah kedaluwarsa sejak minggu lalu. Saya mau menukarnya dengan yang baru.
     question:
       ar_eg: مشكلة اللبن إيه؟
       ar: ما مشكلة الحليب؟
       en: What's wrong with the milk?
     options:
-      - غالي أوي.
-      - صلاحيته خلصت من الأسبوع اللي فات.
-      - مافيهوش ملصق.
+      - Harganya terlalu mahal.
+      - Tanggal pakainya sudah lewat, jadi dia minta ganti.
+      - Tidak ada labelnya.
     answer: 1
+    explain:
+      ar_eg: kedaluwarsa sejak minggu lalu = صلاحيته خلصت من الأسبوع اللي فات، فعايز يبدّله (menukar). مااشتكاش من السعر ولا الملصق.
+      ar: kedaluwarsa sejak minggu lalu = انتهت صلاحيته منذ الأسبوع الماضي، فيريد استبداله (menukar)؛ لم يشكُ من السعر ولا الملصق.
+      en: Expired since last week, so he wants to swap it (menukar). No complaint about price or label.
     words: [kedaluwarsa]
   - id: e03
     type: multiple_choice
@@ -80,15 +84,15 @@ exercises:
       ar: تريد إرجاع هاتف معطوب. ماذا تحتاج؟
       en: You want to return a faulty phone. What do you need?
     options:
-      - كارت فيزيت.
-      - صورة شخصية.
-      - الإيصال والضمان.
+      - Kartu nama.
+      - Foto diri.
+      - Struk dan kartu garansi.
     answer: 2
-    words: [struk, garansi]
     explain:
       ar_eg: عشان ترجّع حاجة بايظة محتاج الإيصال struk والضمان garansi. الكارت والصورة مالهمش لازمة.
       ar: لإرجاع سلعة معطوبة تحتاج الإيصال struk والضمان garansi؛ لا بطاقة تعريف ولا صورة.
       en: To return a faulty item you need the receipt and the warranty. A business card or photo won't help.
+    words: [struk, garansi]
   - id: e04
     type: fill_blank
     sentence: Laptop ini masih dalam masa ___, jadi perbaikannya gratis.
@@ -110,15 +114,15 @@ exercises:
       ar: أين تجد تاريخ انتهاء الصلاحية؟
       en: Where do you find the expiry date?
     options:
-      - على ملصق المنتج.
-      - على باب المحل.
-      - في الجرنال.
+      - Di label produk.
+      - Di pintu toko.
+      - Di koran.
     answer: 0
-    words: [label, kedaluwarsa]
     explain:
       ar_eg: تاريخ الانتهاء على ملصق المنتج label. مش على باب المحل ولا في الجرنال.
       ar: تاريخ الانتهاء على ملصق المنتج label، لا على باب المتجر ولا في الصحيفة.
       en: The expiry date is on the product label, not the shop door or a newspaper.
+    words: [label, kedaluwarsa]
   - id: e06
     type: build_sentence
     source:
@@ -158,11 +162,11 @@ exercises:
     words: [kedaluwarsa]
   - id: e09
     type: dictation
-    text: Konsumen harus membaca label sebelum membeli makanan.
+    text: Konsumen harus membaca label sebelum membeli makanan, karena tanggal kedaluwarsa tertulis di sana.
     meaning:
-      ar_eg: المستهلك لازم يقرا الملصق قبل ما يشتري الأكل.
-      ar: على المستهلك أن يقرأ الملصق قبل شراء الطعام.
-      en: Consumers should read the label before buying food.
+      ar_eg: المستهلك لازم يقرا الملصق قبل ما يشتري الأكل، علشان تاريخ الانتهاء مكتوب هناك.
+      ar: على المستهلك أن يقرأ الملصق قبل شراء الطعام، لأنّ تاريخ انتهاء الصلاحية مكتوب عليه.
+      en: Consumers should read the label before buying food, because the expiry date is written there.
     words: [konsumen, label]
   - id: e10
     type: fill_blank
