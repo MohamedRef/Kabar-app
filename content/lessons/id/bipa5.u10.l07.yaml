@@ -86,17 +86,24 @@ exercises:
     words: [kecenderungan, sebanding, radius, mengacu]
   - id: e03
     type: listen
-    text: Penjualan terendah terjadi pada bulan Februari.
+    text: Penjualan terendah terjadi pada bulan Februari. Setelah itu penjualan naik terus dan mencapai puncaknya pada bulan Desember.
     question:
-      ar_eg: أقل مبيعات كانت إمتى؟
-      ar: متى كانت أدنى المبيعات؟
-      en: When were sales lowest?
-    options: [فبراير, ديسمبر, مايو]
+      ar_eg: المبيعات اتحركت إزاي على مدار السنة؟
+      ar: كيف تحرّكت المبيعات خلال السنة؟
+      en: How did sales move over the year?
+    options:
+      - Paling rendah pada bulan Februari, lalu naik sampai Desember.
+      - Paling tinggi pada bulan Februari, lalu turun.
+      - Sama saja setiap bulan.
     answer: 0
     meaning:
-      ar_eg: أقل مبيعات كانت في شهر فبراير.
-      ar: سُجّلت أدنى المبيعات في فبراير.
-      en: The lowest sales were in February.
+      ar_eg: أقل مبيعات كانت في شهر فبراير. بعد كده المبيعات فضلت تزيد ووصلت لأعلى نقطة في ديسمبر.
+      ar: سُجّلت أدنى المبيعات في فبراير، ثم ظلّت ترتفع حتى بلغت ذروتها في ديسمبر.
+      en: The lowest sales were in February. After that, sales kept rising and peaked in December.
+    explain:
+      ar_eg: terendah = الأقل (فبراير)، وnaik terus = فضلت تزيد، وpuncaknya = أعلى نقطة (ديسمبر).
+      ar: terendah = الأدنى (فبراير)، وnaik terus = ظلّت ترتفع، وpuncaknya = ذروتها (ديسمبر).
+      en: terendah = lowest (February); naik terus = kept rising; puncaknya = its peak (December).
     words: [terendah]
   - id: e04
     type: fill_blank
@@ -165,11 +172,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Volume penjualan terbanyak terjadi pada bulan Desember.
+    source_text: Volume penjualan terbanyak terjadi pada bulan Desember, karena banyak orang membeli hadiah untuk tahun baru.
     answers_meaning:
-      ar_eg: [أكبر حجم مبيعات كان في ديسمبر, أكتر مبيعات كانت في شهر ديسمبر]
-      ar: [سُجّل أعلى حجم مبيعات في ديسمبر, كان أكبر حجم للمبيعات في شهر ديسمبر]
-      en: [The highest sales volume was in December, Sales volume peaked in December]
+      ar_eg: [أكبر حجم مبيعات كان في ديسمبر، عشان ناس كتير بيشتروا هدايا لراس السنة, أكتر مبيعات كانت في شهر ديسمبر، لأن الناس بتشتري هدايا للسنة الجديدة]
+      ar: [سُجّل أعلى حجم مبيعات في ديسمبر، لأنّ كثيرين يشترون هدايا رأس السنة, كان أكبر حجم للمبيعات في شهر ديسمبر، إذ يشتري الناس هدايا العام الجديد]
+      en: [The highest sales volume was in December, because many people buy New Year gifts, 'Sales volume peaked in December, since people buy presents for the new year']
+    explain:
+      ar_eg: karena = عشان، بتجيب سبب أعلى مبيعات.
+      ar: karena = لأنّ، وتأتي بسبب ذروة المبيعات.
+      en: karena = because, explaining the peak.
     words: [volume, terbanyak]
   - id: e10
     type: speaking

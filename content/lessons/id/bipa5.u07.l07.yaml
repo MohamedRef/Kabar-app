@@ -80,17 +80,24 @@ exercises:
     words: [gandum, tepung, kaleng, sosis]
   - id: e03
     type: listen
-    text: Kapal kargo itu membawa gandum dari Australia.
+    text: Kapal kargo itu membawa gandum dari Australia. Gandumnya akan disimpan di gudang pelabuhan, lalu dijadikan tepung di pabrik.
     question:
-      ar_eg: المركب شايلة إيه؟
-      ar: ماذا تحمل السفينة؟
-      en: What is the ship carrying?
-    options: [قمح, رز, بترول]
-    answer: 0
+      ar_eg: إيه اللي هيحصل للقمح الأول؟
+      ar: ماذا سيحدث للقمح أولًا؟
+      en: What happens to the wheat first?
+    options:
+      - Gandumnya langsung dijual di pasar.
+      - Gandumnya disimpan di gudang dulu, kemudian dibuat tepung.
+      - Gandumnya dikirim kembali ke Australia.
+    answer: 1
     meaning:
-      ar_eg: مركب الشحن ده شايل قمح من أستراليا.
-      ar: تحمل سفينة الشحن قمحًا من أستراليا.
-      en: That cargo ship carries wheat from Australia.
+      ar_eg: مركب الشحن ده شايل قمح من أستراليا. القمح هيتخزّن في مخزن الميناء، وبعدين هيتعمل دقيق في المصنع.
+      ar: تحمل سفينة الشحن قمحًا من أستراليا، وسيُخزَّن في مستودع الميناء ثم يُطحن دقيقًا في المصنع.
+      en: That cargo ship carries wheat from Australia. The wheat will be stored in the port warehouse, then made into flour at the factory.
+    explain:
+      ar_eg: disimpan di gudang = هيتخزّن في المخزن (الأول)، وlalu dijadikan tepung = وبعدين يتعمل دقيق.
+      ar: disimpan di gudang = يُخزَّن في المستودع (أولًا)، ثم lalu dijadikan tepung = يُجعل دقيقًا.
+      en: disimpan di gudang = stored in the warehouse (first); lalu dijadikan tepung = then made into flour.
     words: [kargo, gandum]
   - id: e04
     type: fill_blank
@@ -159,11 +166,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Konsumsi gandum di Indonesia terus naik.
+    source_text: Konsumsi gandum di Indonesia terus naik, padahal gandum tidak bisa ditanam di sini.
     answers_meaning:
-      ar_eg: [استهلاك القمح في إندونيسيا بيزيد على طول, إندونيسيا بتستهلك قمح أكتر وأكتر]
-      ar: [يستمر استهلاك القمح في إندونيسيا في الارتفاع, يتزايد استهلاك القمح في إندونيسيا]
-      en: [Wheat consumption in Indonesia keeps rising, 'Indonesia''s wheat consumption continues to grow']
+      ar_eg: [استهلاك القمح في إندونيسيا بيزيد على طول، مع إن القمح مابيتزرعش هنا, إندونيسيا بتستهلك قمح أكتر وأكتر، رغم إنه مش بيتزرع عندها]
+      ar: [يستمر استهلاك القمح في إندونيسيا في الارتفاع، مع أنّ القمح لا يُزرع هنا, يتزايد استهلاك القمح في إندونيسيا، رغم أنّه لا يمكن زراعته فيها]
+      en: [Wheat consumption in Indonesia keeps rising, even though wheat can't be grown here, 'Indonesia''s wheat consumption continues to grow, although wheat doesn''t grow here']
+    explain:
+      ar_eg: padahal = مع إن، بتجيب حقيقة عكس المتوقع.
+      ar: padahal = مع أنّ، وتأتي بحقيقة تخالف المتوقَّع.
+      en: padahal = even though, adding a surprising fact.
     words: [konsumsi, gandum]
   - id: e10
     type: speaking

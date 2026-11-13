@@ -68,16 +68,24 @@ exercises:
     words: [jajak pendapat, sampel, margin kesalahan, tingkat kepuasan, lembaga survei]
   - id: e02
     type: listen
-    text: Lembaga survei itu mewawancarai sampel 1.200 orang di seluruh Indonesia.
+    text: Lembaga survei itu mewawancarai sampel 1.200 orang di seluruh Indonesia. Margin kesalahannya tiga persen, jadi hasilnya cukup bisa dipercaya.
     question:
-      ar_eg: العينة كانت كام واحد؟
-      ar: كم كان حجم العيّنة؟
-      en: How big was the sample?
+      ar_eg: نقول إيه عن الاستطلاع ده؟
+      ar: ماذا نقول عن هذا الاستطلاع؟
+      en: What can we say about this poll?
     options:
-      - ١٢٠ واحد.
-      - ١٢٠٠ واحد.
-      - ١٢٠٠٠ واحد.
+      - Sampelnya kecil, jadi hasilnya tidak bisa dipercaya.
+      - Sampelnya 1.200 orang, dan hasilnya cukup dapat dipercaya.
+      - Lembaga survei itu hanya bertanya kepada orang Jakarta.
     answer: 1
+    meaning:
+      ar_eg: مؤسسة الاستطلاع دي عملت مقابلات مع عينة ١٢٠٠ واحد في إندونيسيا كلها. هامش الخطأ ٣٪، فالنتيجة ممكن نثق فيها لحد كبير.
+      ar: قابلت مؤسسة الاستطلاع عيّنة من ١٢٠٠ شخص في أنحاء إندونيسيا، وهامش الخطأ ٣٪، فالنتيجة جديرة بالثقة إلى حدّ ما.
+      en: The polling institute interviewed a sample of 1,200 people across Indonesia. The margin of error is three percent, so the results are fairly reliable.
+    explain:
+      ar_eg: 1.200 = ألف ومتين (النقطة في الإندونيسي بتفصل الآلاف)، وdi seluruh Indonesia = في البلد كلها، وcukup bisa dipercaya = ممكن نثق فيها.
+      ar: 1.200 = ألف ومئتان (النقطة تفصل الآلاف)، وdi seluruh Indonesia = في البلاد كلّها، وcukup bisa dipercaya = جديرة بالثقة.
+      en: 1.200 = 1,200 (the dot separates thousands); di seluruh Indonesia = nationwide; cukup bisa dipercaya = fairly reliable.
     words: [lembaga survei, sampel]
   - id: e03
     type: fill_blank
@@ -100,15 +108,15 @@ exercises:
       ar: ما معنى «Tingkat kepuasan terhadap transportasi umum naik menjadi 70 persen.»؟
       en: What does "Tingkat kepuasan terhadap transportasi umum naik menjadi 70 persen." mean?
     options:
-      - ٧٠٪ من الناس مش راضيين.
-      - ٧٠٪ من الناس بيركبوا المواصلات العامة.
-      - نسبة الرضا عن المواصلات العامة طلعت لـ ٧٠٪.
+      - Tujuh puluh persen orang tidak puas.
+      - Tujuh puluh persen orang naik transportasi umum.
+      - Sekarang tujuh puluh persen orang puas dengan transportasi umum.
     answer: 2
     words: [tingkat kepuasan, transportasi umum]
     explain:
-      ar_eg: tingkat kepuasan naik menjadi 70% = نسبة الرضا طلعت لـ ٧٠٪. مش ٧٠٪ مش راضيين، ومش عدد الركاب.
-      ar: tingkat kepuasan naik menjadi 70% = ارتفعت نسبة الرضا إلى ٧٠٪، لا نسبة غير الراضين ولا عدد الركّاب.
-      en: Satisfaction rose to 70%. It isn't 70% unhappy, or 70% who ride.
+      ar_eg: tingkat kepuasan naik menjadi 70% = نسبة الرضا طلعت لـ ٧٠٪. مش ٧٠٪ مش راضيين، ومش عدد الركاب (naik هنا = زاد، مش ركب).
+      ar: tingkat kepuasan naik menjadi 70% = ارتفعت نسبة الرضا إلى ٧٠٪، لا غير الراضين ولا عدد الركّاب (naik هنا = ارتفع لا ركب).
+      en: Satisfaction rose to 70%. It isn't 70% unhappy, or 70% who ride (naik here = rose, not ride).
   - id: e05
     type: build_sentence
     source:
@@ -125,17 +133,21 @@ exercises:
   - id: e06
     type: translate
     direction: from_target
-    source_text: Sampelnya terlalu kecil, jadi hasilnya kurang mewakili.
+    source_text: Sampelnya terlalu kecil, jadi hasilnya kurang mewakili pendapat seluruh warga kota.
     answers_meaning:
       ar_eg:
-        - العينة صغيرة أوي، فالنتيجة مش معبّرة عن الكل.
-        - العينة قليلة زيادة عن اللزوم، فالنتيجة مش ممثّلة كويس.
+        - العينة صغيرة أوي، فالنتيجة مش معبّرة عن رأي كل سكان المدينة.
+        - العينة قليلة زيادة عن اللزوم، فالنتيجة مش ممثّلة كويس لرأي أهل المدينة كلهم.
       ar:
-        - العيّنة صغيرة جدًا، فالنتيجة لا تمثّل الجميع تمثيلًا كافيًا.
-        - العيّنة أصغر من اللازم، لذا النتائج قليلة التمثيل.
+        - العيّنة صغيرة جدًا، فالنتيجة لا تمثّل رأي جميع سكّان المدينة تمثيلًا كافيًا.
+        - العيّنة أصغر من اللازم، لذا لا تعبّر النتائج جيّدًا عن رأي كلّ أهل المدينة.
       en:
-        - The sample is too small, so the result isn't very representative.
-        - The sample is too small for the results to represent everyone.
+        - The sample is too small, so the result doesn't really represent the opinion of all the city's residents.
+        - The sample is too small for the results to represent what the whole city thinks.
+    explain:
+      ar_eg: jadi = فـ، بتجيب النتيجة. kurang mewakili = مش ممثّلة كويس (kurang = نفي مؤدب).
+      ar: jadi = لذلك، وتأتي بالنتيجة. kurang mewakili = لا تمثّل جيّدًا (kurang نفي مهذّب).
+      en: jadi = so, the result; kurang mewakili = doesn't quite represent (kurang as a polite "not").
     words: [sampel]
   - id: e07
     type: multiple_choice
@@ -144,14 +156,14 @@ exercises:
       ar: هامش الخطأ ٣٪، ولمرشّح ٥١٪ وللآخر ٤٩٪. ماذا تقول؟
       en: The margin of error is 3%; one candidate has 51% and the other 49%. What do you say?
     options:
-      - الفرق ممكن مايكونش حقيقي، لأنه جوه هامش الخطأ.
-      - الأول كسب أكيد.
-      - الاستطلاع لازم يتلغي.
+      - Tampaknya keduanya bersaing ketat.
+      - Calon pertama pasti menang.
+      - Jajak pendapat itu harus dibatalkan.
     answer: 0
     explain:
-      ar_eg: 'الفرق ٢٪ بس، وده أقل من الـ ٣٪، فالأحسن تقول: Tampaknya keduanya bersaing ketat.'
-      ar: 'الفرق ٢٪ فقط، وهو أقلّ من ٣٪، فالأدقّ أن تقول: Tampaknya keduanya bersaing ketat.'
-      en: The 2% gap is under 3%, so better to say Tampaknya keduanya bersaing ketat.
+      ar_eg: 'الفرق ٢٪ بس، وده أقل من الـ ٣٪، فالفرق ممكن مايكونش حقيقي. الأحسن تقول: Tampaknya keduanya bersaing ketat (يبدو إنهم متقاربين جدًا).'
+      ar: 'الفرق ٢٪ فقط، وهو أقلّ من ٣٪، فقد لا يكون حقيقيًّا، والأدقّ أن تقول: Tampaknya keduanya bersaing ketat (يبدو أنّهما متقاربان جدًّا).'
+      en: The 2% gap is under 3%, so it may not be real. Better to say Tampaknya keduanya bersaing ketat (they look neck and neck).
     words: [margin kesalahan]
   - id: e08
     type: speaking

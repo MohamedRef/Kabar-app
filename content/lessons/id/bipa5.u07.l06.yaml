@@ -83,17 +83,24 @@ exercises:
     words: [udang, labu, cabe, wangi]
   - id: e03
     type: listen
-    text: Maaf, stok kue labu sudah habis.
+    text: Maaf, stok kue labu sudah habis. Kami baru akan membuatnya lagi besok pagi, jadi silakan datang sebelum jam tujuh.
     question:
-      ar_eg: كيكة القرع مالها؟
-      ar: ما خبر كعك القرع؟
-      en: What about the pumpkin cakes?
-    options: [خلصت, لسه بتتعمل, ببلاش]
+      ar_eg: البياع بيقترح إيه؟
+      ar: ماذا يقترح البائع؟
+      en: What does the seller suggest?
+    options:
+      - Datang lagi besok pagi-pagi untuk membeli kue labu.
+      - Menunggu satu jam sampai kuenya selesai.
+      - Membeli kue labu di toko lain sekarang.
     answer: 0
     meaning:
-      ar_eg: آسفين، كيكة القرع خلصت.
-      ar: عذرًا، نفد مخزون كعك القرع.
-      en: Sorry, the pumpkin cakes are sold out.
+      ar_eg: آسفين، كيكة القرع خلصت. هنعملها تاني بكرة الصبح، فاتفضل تعالى قبل الساعة سبعة.
+      ar: عذرًا، نفد كعك القرع، وسنصنعه مجدّدًا صباح الغد، فتفضّل بالحضور قبل السابعة.
+      en: Sorry, the pumpkin cakes are sold out. We'll make more tomorrow morning, so please come before seven.
+    explain:
+      ar_eg: besok pagi = بكرة الصبح، وsilakan datang sebelum jam tujuh = تعالى قبل سبعة. مفيش انتظار ساعة ولا محل تاني.
+      ar: besok pagi = صباح الغد، وsilakan datang sebelum jam tujuh = تعالَ قبل السابعة، ولا انتظار ساعة ولا متجر آخر.
+      en: besok pagi = tomorrow morning; silakan datang sebelum jam tujuh = come before seven. No hour's wait, no other shop.
     words: [stok, labu]
   - id: e04
     type: fill_blank
@@ -162,11 +169,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Barang dagangannya sudah habis sebelum jam sembilan.
+    source_text: Barang dagangannya sudah habis sebelum jam sembilan, karena banyak pembeli datang dari kota.
     answers_meaning:
-      ar_eg: [بضاعته خلصت قبل الساعة تسعة, باع كل بضاعته قبل تسعة]
-      ar: [نفدت بضاعته قبل التاسعة, بيعت كل بضاعتها قبل الساعة التاسعة]
-      en: [His goods were sold out before nine, 'She sold all her goods before nine o''clock']
+      ar_eg: [بضاعته خلصت قبل الساعة تسعة، عشان زباين كتير جم من المدينة, باع كل بضاعته قبل تسعة، لأن ناس كتير جت تشتري من البلد]
+      ar: [نفدت بضاعته قبل التاسعة، لأنّ مشترين كثيرين جاؤوا من المدينة, بيعت كل بضاعتها قبل الساعة التاسعة، إذ جاء مشترون كثر من المدينة]
+      en: [His goods were sold out before nine, because many buyers came from the city, 'She sold all her goods before nine o''clock, since lots of buyers came from town']
+    explain:
+      ar_eg: karena = عشان، بتجيب سبب إن البضاعة خلصت بدري.
+      ar: karena = لأنّ، وتأتي بسبب نفاد البضاعة مبكّرًا.
+      en: karena = because, explaining why the goods sold out early.
     words: [dagang]
   - id: e10
     type: speaking

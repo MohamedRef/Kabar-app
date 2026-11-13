@@ -88,16 +88,24 @@ exercises:
       en: "\"According to another source\" is menurut sumber lain. tanggapan (response) and sebagian (part) aren't sources."
   - id: e04
     type: listen
-    text: Tanggapan Anda sangat berimbang dan sopan.
+    text: Tanggapan Anda sangat berimbang dan sopan. Anda setuju dengan sebagian pendapat penulis, tetapi juga memberi bukti yang berbeda.
     question:
-      ar_eg: الردّ اتوصف إزاي؟
-      ar: كيف وُصف الردّ؟
-      en: How is the response described?
+      ar_eg: الرد عمل إيه؟
+      ar: ماذا فعل الردّ؟
+      en: What did the response do?
     options:
-      - قصير وزعلان.
-      - متوازن ومؤدب.
-      - طويل ومن غير دليل.
-    answer: 1
+      - Menolak semua pendapat penulis dengan marah.
+      - Setuju dengan semua pendapat penulis.
+      - Setuju sebagian, dan juga menunjukkan bukti lain.
+    answer: 2
+    meaning:
+      ar_eg: ردّك متوازن ومؤدب جدًا. إنت موافق على جزء من رأي الكاتب، بس كمان جبت دليل مختلف.
+      ar: ردّك متوازن ومهذّب جدًّا؛ فأنت توافق الكاتب في بعض رأيه، لكنك تقدّم دليلًا مختلفًا أيضًا.
+      en: Your response is very balanced and polite. You agree with part of the writer's view, but also give different evidence.
+    explain:
+      ar_eg: setuju dengan sebagian = موافق على جزء، وtetapi juga memberi bukti yang berbeda = بس جاب دليل تاني. ده معنى berimbang.
+      ar: setuju dengan sebagian = يوافق جزئيًّا، وtetapi juga memberi bukti yang berbeda = لكنه يقدّم دليلًا آخر، وهذا معنى berimbang.
+      en: setuju dengan sebagian = agrees in part; tetapi juga memberi bukti yang berbeda = but adds other evidence. That's berimbang.
     words: [tanggapan, berimbang]
   - id: e05
     type: build_sentence
@@ -128,17 +136,21 @@ exercises:
   - id: e07
     type: translate
     direction: from_target
-    source_text: Saya ingin menulis tanggapan terhadap opini kemarin.
+    source_text: Saya ingin menulis tanggapan terhadap opini kemarin, karena penulisnya tidak menyebut sumber datanya.
     answers_meaning:
       ar_eg:
-        - عايز أكتب ردّ على مقال الرأي بتاع امبارح.
-        - نفسي أكتب تعليق على مقال الرأي اللي نزل امبارح.
+        - عايز أكتب ردّ على مقال الرأي بتاع امبارح، عشان الكاتب ماذكرش مصدر بياناته.
+        - نفسي أكتب تعليق على مقال الرأي اللي نزل امبارح، لأن كاتبه ماقالش البيانات جاية منين.
       ar:
-        - أريد أن أكتب ردًّا على مقالة الرأي المنشورة أمس.
-        - أودّ كتابة تعليق على مقالة رأي الأمس.
+        - أريد أن أكتب ردًّا على مقالة الرأي المنشورة أمس، لأنّ كاتبها لم يذكر مصدر بياناته.
+        - أودّ كتابة تعليق على مقالة رأي الأمس، إذ لم يذكر كاتبها مصدر البيانات.
       en:
-        - I want to write a response to yesterday's op-ed.
-        - I'd like to write a reply to yesterday's opinion piece.
+        - I want to write a response to yesterday's op-ed, because the writer didn't name his data source.
+        - I'd like to reply to yesterday's opinion piece, since its author didn't cite where the data came from.
+    explain:
+      ar_eg: karena = عشان، بتجيب سبب الرد.
+      ar: karena = لأنّ، وتأتي بسبب الردّ.
+      en: karena = because, giving the reason for the reply.
     words: [tanggapan]
   - id: e08
     type: speaking

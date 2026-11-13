@@ -83,17 +83,24 @@ exercises:
     words: [karangan, identik, karakteristik, tingkatan]
   - id: e03
     type: listen
-    text: Terjemahan harfiahnya lucu sekali.
+    text: Terjemahan harfiahnya lucu sekali. Kalau diterjemahkan kata per kata, artinya menjadi aneh, jadi kita harus mencari maknanya.
     question:
-      ar_eg: إيه اللي بيضحك؟
-      ar: ما المضحك؟
-      en: What is funny?
-    options: [الترجمة الحرفية, الصورة, الأغنية]
+      ar_eg: المتكلم بينصح بإيه؟
+      ar: بماذا ينصح المتكلّم؟
+      en: What does the speaker recommend?
+    options:
+      - Menerjemahkan maknanya, bukan kata per kata.
+      - Menerjemahkan setiap kata dengan teliti.
+      - Tidak menerjemahkan ungkapan sama sekali.
     answer: 0
     meaning:
-      ar_eg: الترجمة الحرفية بتاعته تضحك أوي.
-      ar: ترجمته الحرفية مضحكة جدًا.
-      en: The literal translation is hilarious.
+      ar_eg: الترجمة الحرفية بتاعته تضحك أوي. لو اتترجمت كلمة كلمة، المعنى بيبقى غريب، فلازم ندوّر على المعنى.
+      ar: ترجمته الحرفية مضحكة جدًّا؛ فإذا تُرجم كلمة كلمة صار المعنى غريبًا، لذا علينا أن نبحث عن المعنى.
+      en: The literal translation is hilarious. Word for word, the meaning gets strange, so we have to look for the sense.
+    explain:
+      ar_eg: kata per kata = كلمة كلمة (حرفي) بيطلّع معنى aneh (غريب)، jadi harus mencari maknanya = فلازم ندوّر على المعنى.
+      ar: kata per kata = كلمة كلمة (حرفيًّا) يعطي معنى aneh (غريبًا)، فـ harus mencari maknanya = يجب البحث عن المعنى.
+      en: kata per kata = word for word gives an aneh (odd) meaning, so harus mencari maknanya = translate the sense.
     words: [harfiah]
   - id: e04
     type: fill_blank
@@ -162,11 +169,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Karangannya berisi deskripsi pasar dan dialog dengan penjual.
+    source_text: Karangannya berisi deskripsi pasar dan dialog dengan penjual, sehingga pembaca seperti ikut berbelanja.
     answers_meaning:
-      ar_eg: [الإنشا بتاعه فيه وصف للسوق وحوار مع بياع, موضوع التعبير فيه وصف السوق وحوار مع البياع]
-      ar: [يتضمّن إنشاؤه وصفًا للسوق وحوارًا مع بائع, في إنشائها وصف للسوق وحوار مع البائع]
-      en: [His essay has a description of the market and a dialogue with a seller, Her composition describes the market and includes a dialogue with a vendor]
+      ar_eg: [الإنشا بتاعه فيه وصف للسوق وحوار مع بياع، فالقارئ يحس كأنه بيشتري معاه, موضوع التعبير فيه وصف السوق وحوار مع البياع، لدرجة إن القارئ كأنه بيتسوّق]
+      ar: [يتضمّن إنشاؤه وصفًا للسوق وحوارًا مع بائع، حتى ليشعر القارئ كأنّه يتسوّق معه, في إنشائها وصف للسوق وحوار مع البائع، فيبدو القارئ كأنّه يشتري أيضًا]
+      en: [His essay has a description of the market and a dialogue with a seller, so readers feel they're shopping too, 'Her composition describes the market and includes a dialogue with a vendor, so the reader seems to join in the shopping']
+    explain:
+      ar_eg: sehingga = فـ / لدرجة إن، بتجيب النتيجة. seperti ikut = كأنه معاهم.
+      ar: sehingga = حتى إنّ، وتأتي بالنتيجة. seperti ikut = كأنّه يشارك.
+      en: sehingga = so that, the result; seperti ikut = as if joining in.
     words: [karangan, deskripsi, dialog]
   - id: e10
     type: speaking
