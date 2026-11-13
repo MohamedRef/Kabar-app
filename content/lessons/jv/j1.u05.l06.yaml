@@ -37,6 +37,39 @@ slides:
         ar_eg: إنت بتتكلم زي أهل يوجيا!
         ar: أنت تتكلم مثل أهل يوجياكرتا!
         en: You talk like a Jogja local!
+  - title: Wong Suroboyo neng pantai
+    body:
+      ar_eg: |
+        على شط باراندجتريتيس هتقابل زوار من سورابايا بيتكلموا جاوي «Arek». افهمه لما تسمعه، بس إنت اتكلم زي يوجيا:
+        - **gak** = ora (مش): «Aku gak ngerti» = Aku ora ngerti.
+        - **onok** = ana (فيه): «Gak onok kopi» = Ora ana kopi.
+        - **koen** = kowe (إنت)، و**kate** = arep (هـ)، و**nang** = neng (لـ / في).
+        - **rek** في آخر الجملة = cah (يا جماعة).
+        دي كلمات للسمع بس. Kabar مش هيطلب منك تقولها.
+      ar: |
+        ستقابل على شاطئ باراندجتريتيس زوارًا من سورابايا يتكلمون جاوية «Arek». افهمها حين تسمعها، وتكلّم أنت بلهجة يوجياكرتا:
+        - **gak** = ora (لا): «Aku gak ngerti» = Aku ora ngerti.
+        - **onok** = ana (يوجد): «Gak onok kopi» = Ora ana kopi.
+        - **koen** = kowe (أنت)، و**kate** = arep (سـ)، و**nang** = neng (إلى / في).
+        - **rek** في آخر الجملة = cah (يا جماعة).
+        هذه كلمات للفهم فقط، ولن يطلب منك Kabar أن تقولها.
+      en: |
+        At Parangtritis you'll meet visitors from Surabaya who speak "Arek" Javanese. Understand it when you hear it, but you speak like Jogja:
+        - **gak** = ora (not): "Aku gak ngerti" = Aku ora ngerti.
+        - **onok** = ana (there is): "Gak onok kopi" = Ora ana kopi.
+        - **koen** = kowe (you), **kate** = arep (going to), **nang** = neng (to / at).
+        - **rek** at the end of a sentence = cah (guys).
+        These are for listening only. Kabar never asks you to say them.
+    grammar: jv.dialect.arek
+    examples:
+      - text: Kowe arep neng endi, cah?
+        ar_eg: رايحين فين يا جماعة؟ (في سورابايا هتسمعها Koen kate nang endi, rek?)
+        ar: إلى أين أنتم ذاهبون يا جماعة؟ (وفي سورابايا تسمعها Koen kate nang endi, rek?)
+        en: Where are you off to, guys? (In Surabaya you'll hear Koen kate nang endi, rek?)
+      - text: Ora ana kopi.
+        ar_eg: مفيش قهوة. (في سورابايا Gak onok kopi.)
+        ar: لا توجد قهوة. (وفي سورابايا Gak onok kopi.)
+        en: There's no coffee. (In Surabaya, Gak onok kopi.)
 exercises:
   - id: e01
     type: match_pairs
@@ -143,6 +176,20 @@ exercises:
       ar: سعيد جدًا، كل شيء جميل!
       en: So happy, everything's great!
     words: [seneng, kabeh]
+  - id: e09
+    type: multiple_choice
+    question: Aku gak ngerti, rek.
+    question_meaning:
+      ar_eg: زائر من سورابايا قال كده. إزاي تقولها زي يوجيا؟
+      ar: قال زائر من سورابايا هذه الجملة. كيف تقولها بلهجة يوجياكرتا؟
+      en: A visitor from Surabaya says this. How do you say it the Jogja way?
+    options: ["Aku ora ngerti, cah.", "Aku wis ngerti, cah.", "Aku seneng kabeh, cah."]
+    answer: 0
+    explain:
+      ar_eg: gak = ora (مش)، وrek = cah (يا جماعة). wis = خلاص، وseneng kabeh = مبسوط من كله.
+      ar: gak = ora (لا)، وrek = cah (يا جماعة)؛ أما wis فقد، وseneng kabeh سعيد بكل شيء.
+      en: gak = ora (not), rek = cah (guys). wis = already, seneng kabeh = happy with everything.
+    words: [ora, ngerti, seneng, kabeh]
 dialogue:
   lines:
     - speaker: Mas Yudha
