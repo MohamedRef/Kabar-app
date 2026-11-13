@@ -89,18 +89,25 @@ exercises:
     words: [korpus, transkripsi, penutur asli, ahli bahasa]
   - id: e03
     type: listen
-    text: Korpus kami sudah berisi dua ratus cerita rakyat.
+    text: Tim kami merekam penutur asli di dua puluh kampung. Korpus kami sudah berisi dua ratus cerita rakyat. Dari korpus itu, kami memilih kata-kata untuk kamus.
     question:
-      ar_eg: إيه اللي فيه ميتين حكاية؟
-      ar: ما الذي يضمّ مئتي حكاية؟
-      en: What holds two hundred tales?
-    options: [مدوّنة النصوص, قايمة المصطلحات, مدخل القاموس]
-    answer: 0
+      ar_eg: الفريق بيعمل إيه بالمدوّنة؟
+      ar: ماذا يفعل الفريق بالمدوّنة؟
+      en: What does the team do with the corpus?
+    options:
+      - Mereka menjual cerita-cerita itu kepada turis.
+      - Mereka memakai rekaman cerita itu untuk memilih kata kamus.
+      - Mereka menghapus cerita yang terlalu panjang.
+    answer: 1
     meaning:
-      ar_eg: المدوّنة بتاعتنا فيها خلاص ميتين حكاية شعبية.
-      ar: تضمّ مدوّنتنا الآن مئتي حكاية شعبية.
-      en: Our corpus now holds two hundred folk tales.
+      ar_eg: فريقنا سجّل متكلّمين أصليين في عشرين قرية. المدوّنة بتاعتنا فيها خلاص مية حكاية شعبية. ومن المدوّنة دي بنختار كلمات القاموس.
+      ar: سجّل فريقنا متكلّمين أصليّين في عشرين قرية، وتضمّ مدوّنتنا مئتي حكاية شعبيّة، ومنها نختار كلمات القاموس.
+      en: Our team recorded native speakers in twenty villages. Our corpus already holds two hundred folk tales. From it we pick words for the dictionary.
     words: [korpus]
+    explain:
+      ar_eg: korpus = مدوّنة نصوص (٢٠٠ حكاية متسجّلة)، ومنها (dari korpus itu) بيختاروا كلمات القاموس. مش للبيع ولا بيمسحوا حكايات.
+      ar: korpus = مدوّنة نصوص من مئتي حكاية، ومنها تُختار كلمات القاموس، فلا بيع ولا حذف.
+      en: The corpus of 200 recorded tales is where they pick dictionary words.
   - id: e04
     type: fill_blank
     sentence: Kamus ini punya lima ribu ___.
@@ -158,12 +165,22 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Leksikon bahasa Melayu Papua banyak menyerap kata dari bahasa daerah.
+    source_text: Leksikon bahasa Melayu Papua banyak menyerap kata dari bahasa daerah, sehingga kamusnya harus mencatat asal setiap kata.
     answers_meaning:
-      ar_eg: [مفردات الملايو البابوي خدت كلمات كتير من اللغات المحلية, الملايو البابوي استلف كلمات كتير من لغات المناطق]
-      ar: [استوعب الرصيد اللفظي للملايوية البابوية كلمات كثيرة من اللغات المحلية, أخذت مفردات الملايوية البابوية كثيرًا من اللغات المحلية]
-      en: ['Papuan Malay''s lexicon absorbs many words from local languages', The Papuan Malay lexicon has borrowed many words from regional languages]
+      ar_eg:
+        - معجم الملايو البابوي خد كلمات كتير من اللغات المحلية، فالقاموس لازم يسجّل أصل كل كلمة.
+        - مفردات ملايو بابوا فيها كلمات كتير من لغات المنطقة، وعشان كده القاموس لازم يكتب أصل كل كلمة.
+      ar:
+        - استعار معجم الملايويّة البابويّة كلمات كثيرة من اللغات المحلّيّة، لذا يجب أن يسجّل القاموس أصل كلّ كلمة.
+        - اقتبست مفردات ملايويّة بابوا الكثير من اللغات المحلّيّة، حتى صار على القاموس تدوين أصل كلّ كلمة.
+      en:
+        - The Papuan Malay lexicon absorbs many words from local languages, so its dictionary must record each word's origin.
+        - Papuan Malay's vocabulary borrows heavily from local languages, so the dictionary has to note every word's source.
     words: [leksikon]
+    explain:
+      ar_eg: 'sehingga = فـ (النتيجة): عشان الكلمات جاية من لغات تانية، القاموس لازم يكتب أصلها.'
+      ar: 'sehingga = فـ (النتيجة): لتعدّد مصادر الكلمات يلزم تدوين أصولها.'
+      en: 'sehingga gives the result: borrowed words need their origin recorded.'
   - id: e09
     type: speaking
     text: Ahli bahasa itu meneliti etimologi nama-nama pulau.

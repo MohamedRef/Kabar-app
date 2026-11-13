@@ -70,28 +70,32 @@ exercises:
       ar: قال شخص من مانادو «Kita mau pulang». من يقصد؟
       en: A Manado speaker says "Kita mau pulang". Who is going home?
     options:
-      - هو نفسه بس.
-      - كلنا.
-      - هم.
+      - Hanya pembicara sendiri.
+      - Kita semua.
+      - Mereka.
     answer: 0
-    explain:
-      ar_eg: في مانادو kita = أنا. علشان «إحنا» بيقولوا torang.
-      ar: kita في مانادو = أنا، أمّا «نحن» فهي torang.
-      en: In Manado kita = I. For "we" they say torang.
     words: [torang]
+    explain:
+      ar_eg: في مانادو kita = saya (أنا)، مش إحنا. «إحنا» عندهم torang، و«هم» dorang.
+      ar: في مانادو kita = saya (أنا) لا نحن، فـ«نحن» عندهم torang و«هم» dorang.
+      en: In Manado kita = saya (I). "We" is torang; "they" is dorang.
   - id: e03
     type: listen
-    text: Dorang nyanda datang, jadi torang makan tinutuan berdua saja.
+    text: Kami sudah memesan meja untuk empat orang. Dorang nyanda datang, jadi torang makan tinutuan berdua saja. Untung tinutuannya enak sekali.
     question:
       ar_eg: إيه اللي حصل؟
       ar: ماذا حدث؟
       en: What happened?
     options:
-      - كلهم جم وأكلوا.
-      - التانيين ماجوش، فاتنين بس أكلوا.
-      - المطعم كان مقفول.
+      - Semua teman datang dan makan bersama.
+      - Teman-teman yang lain tidak datang, jadi hanya dua orang yang makan.
+      - Restorannya tutup, jadi mereka tidak makan.
     answer: 1
     words: [dorang, nyanda, torang]
+    explain:
+      ar_eg: dorang nyanda datang = mereka tidak datang (هم ماجوش)، وtorang berdua = إحنا الاتنين بس اللي أكلنا. المطعم كان فاتح والأكل حلو.
+      ar: dorang nyanda datang = لم يأتوا، فأكل الاثنان وحدهما، والمطعم مفتوح والطعام لذيذ.
+      en: dorang nyanda datang = they didn't come, so just the two of them ate.
   - id: e04
     type: fill_blank
     sentence: ___ dari mana? Kita dari Manado.
@@ -126,15 +130,15 @@ exercises:
       ar: ما معنى «Torang samua basudara»؟
       en: What does "Torang samua basudara" mean?
     options:
-      - إحنا كلنا جعانين.
-      - هم كلهم مسافرين.
-      - كلنا إخوات.
+      - Kita semua lapar.
+      - Mereka semua bepergian.
+      - Kita semua bersaudara.
     answer: 2
     words: [torang, basudara]
     explain:
-      ar_eg: Torang samua basudara = كلنا إخوات، شعار مانادو المشهور.
-      ar: Torang samua basudara = كلنا إخوة، شعار مانادو.
-      en: Torang samua basudara = we're all brothers and sisters.
+      ar_eg: torang = kita، samua = semua، basudara = bersaudara. يبقى «كلنا إخوات».
+      ar: torang = kita، وsamua = semua، وbasudara = bersaudara، أي «كلّنا إخوة».
+      en: 'torang samua basudara = kita semua bersaudara: we are all siblings.'
   - id: e07
     type: translate
     direction: to_target
@@ -157,11 +161,11 @@ exercises:
     words: [torang]
   - id: e09
     type: dictation
-    text: Dorang so pulang ke Manado.
+    text: Dorang so pulang ke Manado kemarin, karena dorang pe mama ada sakit.
     meaning:
-      ar_eg: هم رجعوا مانادو خلاص.
-      ar: لقد عادوا إلى مانادو.
-      en: They've already gone back to Manado.
+      ar_eg: هم رجعوا مانادو امبارح خلاص، عشان مامتهم عيانة.
+      ar: عادوا إلى مانادو أمس، لأنّ أمّهم مريضة.
+      en: They already went home to Manado yesterday, because their mother is ill.
     words: [dorang]
   - id: e10
     type: fill_blank
