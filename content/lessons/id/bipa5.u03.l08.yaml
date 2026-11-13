@@ -80,17 +80,24 @@ exercises:
     words: [mekanisme, rasional, monitor, antena]
   - id: e03
     type: listen
-    text: Menurut prediksi, hujan akan turun malam ini.
+    text: Menurut prediksi, hujan akan turun malam ini. Karena itu, mesin pintar di tambang akan dimatikan sampai besok pagi.
     question:
-      ar_eg: مين بيقول إن المطر هينزل؟
-      ar: من يقول إنها ستمطر؟
-      en: What says it will rain?
-    options: [التوقعات, الإشاعات, الجرايد]
+      ar_eg: ليه هيطفّوا الماكينات؟
+      ar: لماذا ستُطفأ الآلات؟
+      en: Why will the machines be switched off?
+    options:
+      - Karena diperkirakan akan hujan.
+      - Karena mesinnya rusak.
+      - Karena para pekerja libur.
     answer: 0
     meaning:
-      ar_eg: حسب التوقعات، المطر هينزل الليلة.
-      ar: وفق التوقّعات، ستمطر الليلة.
-      en: According to the forecast, it will rain tonight.
+      ar_eg: حسب التوقعات، المطر هينزل الليلة. عشان كده، الماكينات الذكية في المنجم هتتطفي لحد بكرة الصبح.
+      ar: وفق التوقّعات ستمطر الليلة، ولذلك ستُطفأ الآلات الذكية في المنجم حتى صباح الغد.
+      en: According to the forecast, it will rain tonight. So the smart machines at the mine will be switched off until tomorrow morning.
+    explain:
+      ar_eg: menurut prediksi = حسب التوقعات (diperkirakan)، وkarena itu = عشان كده. مفيش عطل ولا إجازة.
+      ar: menurut prediksi = وفق التوقّعات (diperkirakan)، وkarena itu = لذلك، ولا عطل ولا إجازة.
+      en: menurut prediksi = according to the forecast (diperkirakan); karena itu = therefore. No breakdown, no holiday.
     words: [prediksi]
   - id: e04
     type: fill_blank
@@ -159,11 +166,21 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Ini terobosan besar dalam rekayasa tambang.
+    source_text: Ini terobosan besar dalam rekayasa tambang, karena simulasinya bisa memprediksi longsor.
     answers_meaning:
-      ar_eg: [ده إنجاز كبير في هندسة المناجم, دي نقلة كبيرة في هندسة التعدين]
-      ar: [هذا إنجاز كبير في هندسة التعدين, هذه قفزة كبيرة في هندسة المناجم]
-      en: [This is a big breakthrough in mining engineering, This is a major breakthrough in mine engineering]
+      ar_eg:
+        - ده إنجاز كبير في هندسة المناجم، عشان المحاكاة تقدر تتوقع الانهيارات.
+        - دي نقلة كبيرة في هندسة التعدين، لإن السيميوليشن بتتنبأ بانهيار الأرض.
+      ar:
+        - هذا إنجاز كبير في هندسة التعدين، لأنّ المحاكاة تستطيع التنبّؤ بالانهيارات الأرضية.
+        - هذه قفزة كبيرة في هندسة المناجم، إذ يمكن للمحاكاة توقّع الانهيارات.
+      en:
+        - This is a big breakthrough in mining engineering, because the simulation can predict landslides.
+        - This is a major breakthrough in mine engineering, since the simulation can forecast landslides.
+    explain:
+      ar_eg: karena = عشان (السبب)، وmemprediksi = يتوقع، وlongsor = انهيار أرضي.
+      ar: karena = لأنّ (السبب)، وmemprediksi = يتنبّأ، وlongsor = انهيار أرضي.
+      en: karena = because; memprediksi = predict; longsor = landslide.
     words: [terobosan, rekayasa]
   - id: e10
     type: speaking

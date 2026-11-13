@@ -83,18 +83,25 @@ exercises:
     words: [software, update, logis, asumsi]
   - id: e03
     type: listen
-    text: Ganti password Anda sekarang juga.
+    text: Akun Anda dibobol tadi malam. Ganti password Anda sekarang juga, lalu laporkan kejadian ini ke admin.
     question:
-      ar_eg: المطلوب إيه؟
-      ar: ما المطلوب؟
-      en: What is he told to do?
-    options: [يغيّر الباسورد, يقفل الموبايل, يكلم الأدمن]
+      ar_eg: المطلوب منه إيه، وبأنهي ترتيب؟
+      ar: ما المطلوب منه، وبأيّ ترتيب؟
+      en: What is he asked to do, and in what order?
+    options:
+      - Mengganti password dulu, kemudian melapor ke admin.
+      - Mematikan ponsel dan menunggu besok.
+      - Menelepon admin dulu, lalu membuat akun baru.
     answer: 0
     meaning:
-      ar_eg: غيّر الباسورد بتاعك دلوقتي حالًا.
-      ar: غيّر كلمة مرورك الآن فورًا.
-      en: Change your password right now.
-    words: [password]
+      ar_eg: حسابك اتسرق امبارح بالليل. غيّر الباسورد دلوقتي حالًا، وبعدين بلّغ الأدمن.
+      ar: اختُرق حسابك الليلة الماضية. غيّر كلمة مرورك فورًا، ثم أبلغ المسؤول.
+      en: Your account was hacked last night. Change your password right now, then report it to the admin.
+    explain:
+      ar_eg: sekarang juga = حالًا (الأول)، وlalu = وبعدين بلّغ (laporkan) الأدمن.
+      ar: sekarang juga = فورًا (أولًا)، ثم lalu = بعد ذلك أبلغ (laporkan) المسؤول.
+      en: sekarang juga = right now (first); lalu = then report (laporkan) to the admin.
+    words: [password, admin]
   - id: e04
     type: fill_blank
     sentence: Laptop saya lambat karena ___ terbaru belum dipasang.
@@ -162,11 +169,21 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Kebocoran data itu sudah dilaporkan ke polisi.
+    source_text: Kebocoran data itu sudah dilaporkan ke polisi, dan semua karyawan diminta memperbarui aplikasinya.
     answers_meaning:
-      ar_eg: [تسريب الداتا ده اتبلغ عنه البوليس, بلّغوا البوليس عن تسريب البيانات]
-      ar: [أُبلغت الشرطة بتسريب البيانات, تم الإبلاغ عن تسريب البيانات للشرطة]
-      en: [The data leak has been reported to the police, The data leak was reported to the police]
+      ar_eg:
+        - تسريب الداتا ده اتبلغ عنه البوليس، وكل الموظفين اتطلب منهم يحدّثوا التطبيق.
+        - بلّغوا البوليس عن تسريب البيانات، وطلبوا من كل الموظفين يعملوا أبديت للتطبيق.
+      ar:
+        - أُبلغت الشرطة بتسريب البيانات، وطُلب من جميع الموظفين تحديث التطبيق.
+        - تم الإبلاغ عن تسريب البيانات للشرطة، ودُعي كلّ الموظفين إلى تحديث تطبيقاتهم.
+      en:
+        - The data leak has been reported to the police, and all staff have been asked to update the app.
+        - The data leak was reported to the police, and every employee was told to update their apps.
+    explain:
+      ar_eg: جملتين مبني للمجهول (dilaporkan، diminta) متوصلين بـ dan.
+      ar: جملتان بالمبني للمجهول (dilaporkan وdiminta) يربطهما dan.
+      en: Two passive clauses (dilaporkan, diminta) joined by dan.
     words: [kebocoran]
   - id: e10
     type: speaking

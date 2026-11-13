@@ -83,17 +83,24 @@ exercises:
     words: [posting, upload, drone, audio]
   - id: e03
     type: listen
-    text: Pemirsa, kita sekarang di tengah Sungai Mahakam!
+    text: Pemirsa, kita sekarang di tengah Sungai Mahakam! Siaran ini didukung oleh sponsor kita, dan videonya akan diunggah besok pagi.
     question:
-      ar_eg: بيكلم مين؟
-      ar: يخاطب مَن؟
-      en: Who is he talking to?
-    options: [المشاهدين, الركاب, الطلبة]
-    answer: 0
+      ar_eg: إيه اللي هيحصل بكرة الصبح؟
+      ar: ماذا سيحدث صباح الغد؟
+      en: What will happen tomorrow morning?
+    options:
+      - Siarannya akan dimulai.
+      - Videonya akan di-upload.
+      - Sponsornya akan datang ke sungai.
+    answer: 1
     meaning:
-      ar_eg: يا مشاهدين، إحنا دلوقتي في نص نهر ماهاكام!
-      ar: أعزائي المشاهدين، نحن الآن في وسط نهر ماهاكام!
-      en: Viewers, we're now in the middle of the Mahakam River!
+      ar_eg: يا مشاهدين، إحنا دلوقتي في نص نهر ماهاكام! البث ده برعاية الراعي بتاعنا، والفيديو هيترفع بكرة الصبح.
+      ar: أعزائي المشاهدين، نحن الآن في وسط نهر ماهاكام! هذا البثّ برعاية راعينا، وسيُرفع الفيديو صباح الغد.
+      en: Viewers, we're now in the middle of the Mahakam River! This stream is supported by our sponsor, and the video goes up tomorrow morning.
+    explain:
+      ar_eg: diunggah = يترفع (upload)، وbesok pagi = بكرة الصبح. البث شغال دلوقتي، مش بكرة.
+      ar: diunggah = يُرفع (upload)، وbesok pagi = صباح الغد، أما البثّ فجارٍ الآن.
+      en: diunggah = uploaded; besok pagi = tomorrow morning. The stream is live now, not tomorrow.
     words: [pemirsa]
   - id: e04
     type: fill_blank
@@ -162,11 +169,21 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Popularitasnya naik setelah posting itu.
+    source_text: Popularitasnya naik setelah posting itu, sehingga banyak sponsor mulai menghubunginya.
     answers_meaning:
-      ar_eg: [شهرته زادت بعد البوست ده, بعد البوست ده بقى مشهور أكتر]
-      ar: [زادت شهرته بعد ذلك المنشور, ارتفعت شهرتها بعد ذلك المنشور]
-      en: [His popularity rose after that post, She became more popular after that post]
+      ar_eg:
+        - شهرته زادت بعد البوست ده، فرعاة كتير ابتدوا يكلموه.
+        - بعد البوست ده بقى مشهور أكتر، لدرجة إن سبونسرز كتير بدأوا يتواصلوا معاه.
+      ar:
+        - زادت شهرته بعد ذلك المنشور، حتى بدأ كثير من الرعاة يتواصلون معه.
+        - ارتفعت شهرتها بعد ذلك المنشور، فأخذ رعاة كثيرون يتصلون بها.
+      en:
+        - His popularity rose after that post, so many sponsors started contacting him.
+        - She became more popular after that post, and many sponsors began reaching out to her.
+    explain:
+      ar_eg: sehingga = فـ / لدرجة إن، بتجيب النتيجة.
+      ar: sehingga = حتى إنّ، وتأتي بالنتيجة.
+      en: sehingga = so that, bringing the result.
     words: [popularitas, posting]
   - id: e10
     type: speaking

@@ -64,9 +64,9 @@ exercises:
       ar: ما الذي لا يوضع في الملخّص؟
       en: What doesn't belong in a summary?
     options:
-      - الفكرة الأساسية.
-      - كل الأمثلة والأرقام اللي في المقال.
-      - رأي الكاتب.
+      - gagasan utama artikel
+      - semua contoh dan angka di artikel
+      - pendapat penulis
     answer: 1
     words: [ringkasan, gagasan utama]
     explain:
@@ -105,17 +105,21 @@ exercises:
       en: "\"In short\" is Secara singkat. Pertama-tama (first of all) and Padahal (even though) don't summarise."
   - id: e05
     type: listen
-    text: Gagasan utama artikel itu ada di paragraf pertama.
+    text: Gagasan utama artikel itu ada di paragraf pertama. Paragraf berikutnya hanya memberi contoh dan angka, jadi tidak perlu masuk ringkasan.
     question:
-      ar_eg: الفكرة الأساسية فين؟
-      ar: أين الفكرة الرئيسة؟
-      en: Where is the main idea?
+      ar_eg: إيه اللي يدخل الملخص حسب الكلام ده؟
+      ar: ما الذي يدخل الملخّص بحسب هذا الكلام؟
+      en: According to this, what goes into the summary?
     options:
-      - في آخر فقرة.
-      - في العنوان بس.
-      - في أول فقرة.
+      - Contoh dan angka dari semua paragraf.
+      - Hanya judul artikel.
+      - Gagasan utama dari paragraf pertama.
     answer: 2
-    words: [gagasan utama]
+    explain:
+      ar_eg: الفكرة الأساسية في أول فقرة، والباقي أمثلة وأرقام tidak perlu masuk = مش لازم تدخل.
+      ar: الفكرة الرئيسة في الفقرة الأولى، والباقي أمثلة وأرقام tidak perlu masuk = لا يلزم إدخالها.
+      en: The main idea is in paragraph one; the rest is examples and figures that needn't go in.
+    words: [gagasan utama, ringkasan]
   - id: e06
     type: build_sentence
     source:
@@ -131,17 +135,23 @@ exercises:
       en: "\"Increase\" here is the noun peningkatan. meningkat is the verb, and singkat means \"brief\"."
   - id: e07
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: حسب الكاتب، الملخص لازم يكون قصير.
-      ar: بحسب الكاتب، يجب أن يكون الملخّص قصيرًا.
-      en: According to the writer, a summary must be short.
-    answers:
-      - Menurut penulis, ringkasan harus singkat.
-      - Menurut penulis, ringkasan harus pendek.
-      - Menurut penulis, ringkasannya harus singkat.
-      - Menurut penulis, sebuah ringkasan harus singkat.
-    words: [ringkasan]
+    direction: from_target
+    source_text: Menurut penulis, ringkasan harus singkat, tetapi tidak boleh mengubah gagasan utama artikel.
+    answers_meaning:
+      ar_eg:
+        - حسب الكاتب، الملخص لازم يكون قصير، بس مايغيّرش الفكرة الأساسية للمقال.
+        - الكاتب بيقول إن الملخص لازم يبقى مختصر، لكن ممنوع يغيّر فكرة المقال الأساسية.
+      ar:
+        - بحسب الكاتب، يجب أن يكون الملخّص قصيرًا، لكن لا يجوز أن يغيّر الفكرة الرئيسة للمقالة.
+        - يرى الكاتب أنّ الملخّص ينبغي أن يكون موجزًا دون أن يبدّل فكرة المقالة الأساسية.
+      en:
+        - According to the writer, a summary must be short, but it must not change the article's main idea.
+        - The writer says a summary should be brief, but it can't alter the main idea of the article.
+    explain:
+      ar_eg: harus = لازم، وtetapi tidak boleh = بس ممنوع.
+      ar: harus = يجب، وtetapi tidak boleh = لكن لا يجوز.
+      en: harus = must; tetapi tidak boleh = but must not.
+    words: [ringkasan, gagasan utama]
   - id: e08
     type: speaking
     text: Secara singkat, gagasan utamanya adalah perubahan cara belanja.
