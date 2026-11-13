@@ -83,17 +83,24 @@ exercises:
     words: [pamit, segan, pantang, beradab]
   - id: e03
     type: listen
-    text: Dia anak sulung, jadi dia yang menikah lebih dulu.
+    text: Dia anak sulung, jadi dia yang menikah lebih dulu. Adik-adiknya harus menunggu. Di Minang, keluarga perempuan yang datang melamar.
     question:
       ar_eg: ترتيبه إيه في إخواته؟
       ar: ما ترتيبه بين إخوته؟
       en: Where is he among his siblings?
-    options: [الكبير, الصغير, الوحيد]
+    options:
+      - Dia anak paling tua, jadi menikah lebih dulu.
+      - Dia anak bungsu, jadi menikah terakhir.
+      - Dia anak tunggal, jadi tidak punya adik.
     answer: 0
     meaning:
-      ar_eg: هو الابن الكبير، عشان كده هو اللي هيتجوز الأول.
-      ar: إنه الابن البِكر، لذا يتزوج أولًا.
-      en: He's the eldest, so he marries first.
+      ar_eg: هو الابن الكبير، عشان كده هو اللي هيتجوز الأول. إخواته الصغيرين لازم يستنوا. في المينانج، عيلة البنت هي اللي بتيجي تطلب.
+      ar: إنه الابن البِكر، لذا يتزوج أولًا، وعلى إخوته الصغار الانتظار. وعند المينانغ تأتي أسرة الفتاة لتخطب.
+      en: He's the eldest, so he marries first. His younger siblings must wait. Among the Minang, the woman's family comes to propose.
+    explain:
+      ar_eg: sulung = الكبير، وإخواته الصغيرين (adik-adiknya) مستنيين، فمش الصغير ولا الوحيد.
+      ar: sulung البِكر، وإخوته الصغار (adik-adiknya) ينتظرون، فليس الأصغر ولا الوحيد.
+      en: sulung is the eldest, and his younger siblings wait, so he's neither the youngest nor an only child.
     words: [sulung]
   - id: e04
     type: fill_blank
@@ -162,11 +169,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Masyarakat yang beradab menghormati tamu.
+    source_text: Masyarakat yang beradab menghormati tamu, walaupun tamu itu datang dari tempat yang jauh dan asing.
     answers_meaning:
-      ar_eg: [المجتمع المتحضر بيحترم الضيف, الناس المؤدبة بتكرم الضيوف]
-      ar: [المجتمع المتحضّر يكرم الضيف, يحترم المجتمع المهذّب الضيوف]
-      en: [A civilised society respects its guests, Well-mannered people honour guests]
+      ar_eg: [المجتمع المتحضر بيحترم الضيف، حتى لو جاي من مكان بعيد وغريب, الناس المؤدبة بتكرم الضيوف، مع إنهم جايين من حتة بعيدة وغريبة]
+      ar: [المجتمع المتحضّر يكرم الضيف، وإن جاء من مكان بعيد غريب, يحترم المجتمع المهذّب الضيوف، مع أنّهم قادمون من مكان بعيد غريب]
+      en: [A civilised society respects its guests, even if they come from far and strange places, Well-mannered people honour guests although they come from a distant and foreign place]
+    explain:
+      ar_eg: walaupun = حتى لو / مع إن، وasing = غريب.
+      ar: walaupun بمعنى وإن / مع أنّ، وasing غريب.
+      en: walaupun is even though; asing is foreign.
     words: [beradab]
   - id: e10
     type: speaking
