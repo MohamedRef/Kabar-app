@@ -80,17 +80,24 @@ exercises:
     words: [institusi, perekonomian, kesejahteraan, persoalan]
   - id: e03
     type: listen
-    text: Perekonomian desa ini bergantung pada kebun karet.
+    text: Perekonomian desa ini bergantung pada kebun karet. Kalau harga karet turun, banyak keluarga tidak bisa membayar sekolah anaknya.
     question:
-      ar_eg: اقتصاد القرية معتمد على إيه؟
-      ar: علامَ يعتمد اقتصاد القرية؟
-      en: What does the village economy depend on?
-    options: [على المطاط, على السياحة, على البترول]
-    answer: 0
+      ar_eg: ليه سعر المطاط مهم للقرية؟
+      ar: لماذا يهمّ سعر المطاط القرية؟
+      en: Why does the rubber price matter to the village?
+    options:
+      - Karena desa itu hidup dari pariwisata.
+      - Karena penghasilan keluarga di sana datang dari karet.
+      - Karena sekolahnya dibangun dari karet.
+    answer: 1
     meaning:
-      ar_eg: اقتصاد القرية دي معتمد على جناين المطاط.
-      ar: يعتمد اقتصاد هذه القرية على مزارع المطاط.
-      en: This village's economy depends on rubber gardens.
+      ar_eg: اقتصاد القرية دي معتمد على جناين المطاط. لو سعر المطاط نزل، عيلات كتير مش هتقدر تدفع مصاريف مدارس ولادها.
+      ar: يعتمد اقتصاد هذه القرية على مزارع المطاط، فإن انخفض سعره عجزت أسر كثيرة عن دفع رسوم مدارس أبنائها.
+      en: This village's economy depends on rubber gardens. If the rubber price falls, many families can't pay their children's school fees.
+    explain:
+      ar_eg: bergantung pada = معتمد على، يعني دخل العيلات من المطاط، ولما السعر ينزل الفلوس تقل.
+      ar: bergantung pada = يعتمد على، أي أن دخل الأسر من المطاط، فإن نزل السعر قلّ المال.
+      en: "bergantung pada = depends on: families' income comes from rubber, so a lower price means less money."
     words: [perekonomian]
   - id: e04
     type: fill_blank
@@ -159,11 +166,21 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Persoalan ini harus segera diselesaikan.
+    source_text: Persoalan ini harus segera diselesaikan, karena kesejahteraan warga desa sedang terancam.
     answers_meaning:
-      ar_eg: [المشكلة دي لازم تتحل بسرعة, القضية دي لازم تتحل حالًا]
-      ar: [يجب حلّ هذه المسألة سريعًا, ينبغي حلّ هذه القضية فورًا]
-      en: [This issue must be solved quickly, This problem has to be solved soon]
+      ar_eg:
+        - المشكلة دي لازم تتحل بسرعة، عشان رفاهية أهل القرية في خطر.
+        - القضية دي لازم تتحل حالًا، لإن معيشة أهل القرية مهددة.
+      ar:
+        - يجب حلّ هذه المسألة سريعًا، لأنّ رفاهية أهل القرية مهدّدة.
+        - ينبغي حلّ هذه القضية فورًا، إذ إنّ رفاه سكّان القرية في خطر.
+      en:
+        - This issue must be solved quickly, because the villagers' welfare is under threat.
+        - This problem has to be resolved soon, since the villagers' well-being is at risk.
+    explain:
+      ar_eg: karena = عشان (سبب)، وsedang terancam = في خطر دلوقتي.
+      ar: karena = لأنّ (سبب)، وsedang terancam = مهدّد الآن.
+      en: karena = because; sedang terancam = currently under threat.
     words: [persoalan]
   - id: e10
     type: speaking

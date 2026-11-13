@@ -83,17 +83,24 @@ exercises:
     words: [komersial, eksklusif, idola, lensa]
   - id: e03
     type: listen
-    text: Wawancara eksklusif ini hanya ada di kanal kami.
+    text: Wawancara eksklusif ini hanya ada di kanal kami. Penonton di platform lain bisa menontonnya mulai minggu depan.
     question:
-      ar_eg: الحوار ده نوعه إيه؟
-      ar: ما نوع هذه المقابلة؟
-      en: What kind of interview is it?
-    options: [حصري, قديم, ممنوع]
+      ar_eg: مين يقدر يتفرج على الحوار دلوقتي؟
+      ar: من يستطيع مشاهدة المقابلة الآن؟
+      en: Who can watch the interview now?
+    options:
+      - Hanya penonton kanal ini.
+      - Semua platform, mulai hari ini.
+      - Tidak ada yang boleh menontonnya.
     answer: 0
     meaning:
-      ar_eg: الحوار الحصري ده موجود على قناتنا بس.
-      ar: هذه المقابلة الحصرية متاحة على قناتنا فقط.
-      en: This exclusive interview is only on our channel.
+      ar_eg: الحوار الحصري ده موجود على قناتنا بس. المتفرجين على المنصات التانية يقدروا يشوفوه من الأسبوع الجاي.
+      ar: هذه المقابلة الحصرية متاحة على قناتنا فقط، ويمكن لمشاهدي المنصّات الأخرى متابعتها بدءًا من الأسبوع المقبل.
+      en: This exclusive interview is only on our channel. Viewers on other platforms can watch it from next week.
+    explain:
+      ar_eg: eksklusif … hanya ada di kanal kami = حصري على قناتنا بس دلوقتي، والباقيين mulai minggu depan = من الأسبوع الجاي.
+      ar: eksklusif … hanya ada di kanal kami = حصري على قناتنا الآن، والبقية mulai minggu depan = من الأسبوع المقبل.
+      en: eksklusif … hanya ada di kanal kami = only on this channel now; others mulai minggu depan = from next week.
     words: [eksklusif]
   - id: e04
     type: fill_blank
@@ -162,12 +169,22 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Rapat virtual ini dimulai jam sembilan.
+    source_text: Rapat virtual ini dimulai jam sembilan, jadi siapkan data tren pasar sebelumnya.
     answers_meaning:
-      ar_eg: [الاجتماع الأونلاين ده هيبدأ الساعة تسعة, الاجتماع الافتراضي بيبدأ تسعة]
-      ar: [يبدأ هذا الاجتماع الافتراضي في التاسعة, يبدأ الاجتماع الافتراضي الساعة التاسعة]
-      en: [This virtual meeting starts at nine, 'The online meeting begins at nine o''clock']
-    words: [virtual]
+      ar_eg:
+        - الاجتماع الأونلاين ده هيبدأ الساعة تسعة، فجهّز بيانات اتجاهات السوق قبلها.
+        - الاجتماع الافتراضي بيبدأ تسعة، فحضّر داتا ترندات السوق قبل كده.
+      ar:
+        - يبدأ هذا الاجتماع الافتراضي في التاسعة، فجهّز بيانات اتجاهات السوق مسبقًا.
+        - يبدأ الاجتماع الافتراضي الساعة التاسعة، لذا أعدّ بيانات توجّهات السوق قبله.
+      en:
+        - This virtual meeting starts at nine, so prepare the market-trend data beforehand.
+        - The online meeting begins at nine, so get the market trend figures ready before then.
+    explain:
+      ar_eg: jadi = فـ، وsiapkan = جهّز (أمر)، وsebelumnya = قبلها.
+      ar: jadi = لذا، وsiapkan = جهّز (أمر)، وsebelumnya = قبله.
+      en: jadi = so; siapkan = prepare (imperative); sebelumnya = beforehand.
+    words: [virtual, tren]
   - id: e10
     type: speaking
     text: Tren ini datang dari platform video pendek.

@@ -86,17 +86,17 @@ exercises:
     words: [putusan, sanksi, penolakan, moyang]
   - id: e03
     type: listen
-    text: Persidangan ditunda sampai minggu depan.
+    text: Persidangan ditunda sampai minggu depan, karena saksi dari desa belum bisa datang ke pengadilan.
     question:
-      ar_eg: الجلسة اتأجلت لإمتى؟
-      ar: إلى متى أُجّلت الجلسة؟
-      en: Until when was the hearing postponed?
-    options: [للأسبوع الجاي, لبكرة, لآخر السنة]
+      ar_eg: الجلسة اتأجلت لإمتى، وليه؟
+      ar: إلى متى أُجّلت الجلسة، ولماذا؟
+      en: Until when was the hearing postponed, and why?
+    options: [Minggu depan; saksi belum datang, Besok; hakim sakit, Akhir tahun; tidak ada alasan]
     answer: 0
     meaning:
-      ar_eg: الجلسة اتأجلت للأسبوع الجاي.
-      ar: أُجّلت الجلسة إلى الأسبوع القادم.
-      en: The hearing has been postponed to next week.
+      ar_eg: الجلسة اتأجلت للأسبوع الجاي، عشان الشاهد اللي من القرية لسه مايقدرش ييجي المحكمة.
+      ar: أُجّلت الجلسة إلى الأسبوع القادم لأنّ الشاهد من القرية لم يتمكّن بعد من الحضور إلى المحكمة.
+      en: The hearing has been postponed to next week because the witness from the village can't come to court yet.
     words: [persidangan]
   - id: e04
     type: fill_blank
@@ -165,11 +165,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Warga desa mengajukan gugatan terhadap perusahaan itu.
+    source_text: Warga desa mengajukan gugatan terhadap perusahaan itu karena tanah leluhur mereka dijadikan kebun sawit.
     answers_meaning:
-      ar_eg: [أهالي القرية رفعوا دعوى على الشركة دي, ناس القرية رفعوا قضية على الشركة]
-      ar: [رفع سكان القرية دعوى ضد تلك الشركة, أقام أهل القرية دعوى على الشركة]
-      en: [The villagers filed a lawsuit against that company, The villagers sued the company]
+      ar_eg: [أهالي القرية رفعوا دعوى على الشركة دي عشان أرض أجدادهم اتحوّلت لمزرعة نخيل, ناس القرية رفعوا قضية على الشركة لأن أرض جدودهم بقت مزرعة نخيل زيت]
+      ar: [رفع سكان القرية دعوى ضد تلك الشركة لأنّ أرض أجدادهم حُوّلت إلى مزرعة نخيل, أقام أهل القرية دعوى على الشركة لأنّ أرض آبائهم صارت مزرعة نخيل زيت]
+      en: [The villagers filed a lawsuit against that company because their ancestral land was turned into an oil-palm plantation, The villagers sued the company because their ancestors' land was made into a palm plantation]
+    explain:
+      ar_eg: "الجملة التانية مبني للمجهول: dijadikan = اتعملت / اتحوّلت لـ، وkarena بتربطها بالدعوى."
+      ar: "الجملة الثانية مبنية للمجهول: dijadikan = جُعلت / حُوّلت إلى، وkarena تربطها بالدعوى."
+      en: "The second clause is passive: dijadikan = was made into; karena ties it to the lawsuit."
     words: [gugatan]
   - id: e10
     type: speaking

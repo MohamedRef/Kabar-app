@@ -68,16 +68,20 @@ exercises:
     words: [sekolah negeri, sekolah swasta, rapor, kelulusan, jurusan]
   - id: e02
     type: listen
-    text: Anak saya belajar di sekolah swasta karena dekat dengan rumah.
+    text: Anak saya belajar di sekolah swasta karena dekat dengan rumah. Biayanya memang lebih mahal, tetapi dia tidak perlu naik angkot setiap pagi.
     question:
-      ar_eg: الابن بيدرس في مدرسة إيه؟
-      ar: في أيّ مدرسة يدرس الابن؟
-      en: What kind of school does the child attend?
+      ar_eg: ليه الأم اختارت المدرسة دي؟
+      ar: لماذا اختارت الأمّ هذه المدرسة؟
+      en: Why did the parent choose this school?
     options:
-      - حكومية.
-      - خاصة.
-      - دولية في جاكرتا.
+      - Karena sekolah negeri itu gratis.
+      - Karena sekolah swasta itu dekat, walaupun lebih mahal.
+      - Karena sekolahnya sekolah internasional di Jakarta.
     answer: 1
+    explain:
+      ar_eg: karena dekat dengan rumah = عشان قريبة من البيت، والتمن أغلى (lebih mahal) بس مش محتاج مواصلات.
+      ar: karena dekat dengan rumah = لقربها من البيت، وهي أغلى (lebih mahal) لكنه لا يحتاج إلى المواصلات.
+      en: karena dekat dengan rumah = because it's close to home; it costs more, but no daily minibus.
     words: [sekolah swasta]
   - id: e03
     type: fill_blank
@@ -95,19 +99,20 @@ exercises:
       en: A government-backed school is sekolah negeri. sekolah swasta is private (usually dearer), and rapor is a report card.
   - id: e04
     type: multiple_choice
+    question: rapor
     question_meaning:
-      ar_eg: «rapor» يعني إيه؟
-      ar: ما معنى «rapor»؟
-      en: What is a "rapor"?
+      ar_eg: أنهي جملة بتشرح الكلمة دي؟
+      ar: أيّ جملة تشرح هذه الكلمة؟
+      en: Which sentence explains this word?
     options:
-      - شهادة الميلاد.
-      - جدول الحصص.
-      - كشف الدرجات آخر الترم.
+      - surat keterangan lahir
+      - jadwal pelajaran setiap hari
+      - laporan nilai siswa di akhir semester
     answer: 2
     explain:
-      ar_eg: rapor جاية من الهولندي rapport، يعني تقرير عن مستوى الطالب.
-      ar: rapor من الهولندية rapport، أي تقرير عن مستوى الطالب.
-      en: rapor comes from Dutch rapport, a report on the pupil's progress.
+      ar_eg: rapor جاية من الهولندي rapport، يعني تقرير عن درجات الطالب آخر الترم (laporan nilai).
+      ar: rapor من الهولندية rapport، أي تقرير درجات الطالب في نهاية الفصل (laporan nilai).
+      en: rapor comes from Dutch rapport, the report of a pupil's marks at the end of term (laporan nilai).
     words: [rapor]
   - id: e05
     type: build_sentence
@@ -163,11 +168,11 @@ exercises:
     words: [kelulusan, jurusan]
   - id: e09
     type: dictation
-    text: Sekolah swasta itu lebih mahal daripada sekolah negeri.
+    text: Sekolah swasta itu lebih mahal daripada sekolah negeri, tetapi kelasnya lebih kecil.
     meaning:
-      ar_eg: المدرسة الخاصة دي أغلى من المدرسة الحكومية.
-      ar: تلك المدرسة الخاصة أغلى من المدرسة الحكومية.
-      en: That private school costs more than a state school.
+      ar_eg: المدرسة الخاصة دي أغلى من المدرسة الحكومية، بس الفصول فيها أصغر.
+      ar: تلك المدرسة الخاصة أغلى من المدرسة الحكومية، لكنّ فصولها أصغر.
+      en: That private school costs more than a state school, but its classes are smaller.
     words: [sekolah swasta, sekolah negeri]
   - id: e10
     type: fill_blank
