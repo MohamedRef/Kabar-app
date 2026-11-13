@@ -83,17 +83,24 @@ exercises:
     words: [imbalan, majikan, konsultan, profesi]
   - id: e03
     type: listen
-    text: Tabungan saya cukup untuk tiga bulan.
+    text: Tabungan saya cukup untuk tiga bulan. Kalau belum dapat kerja setelah itu, saya terpaksa pinjam uang dari keluarga.
     question:
-      ar_eg: إيه اللي يكفي تلات شهور؟
-      ar: ما الذي يكفي ثلاثة أشهر؟
-      en: What is enough for three months?
-    options: [ديونه, مرتبه, تحويشه]
-    answer: 2
+      ar_eg: هو قلقان من إيه؟
+      ar: ممّ يقلق؟
+      en: What is he worried about?
+    options:
+      - Tabungannya bisa habis sebelum dia mendapat pekerjaan.
+      - Keluarganya meminjam uangnya.
+      - Gajinya terlalu kecil untuk tiga bulan.
+    answer: 0
     meaning:
-      ar_eg: التحويشة بتاعتي تكفي تلات شهور.
-      ar: مدّخراتي تكفي ثلاثة أشهر.
-      en: My savings are enough for three months.
+      ar_eg: التحويشة بتاعتي تكفي تلات شهور. لو مالقيتش شغل بعدها، هضطر أستلف من العيلة.
+      ar: مدّخراتي تكفي ثلاثة أشهر، فإن لم أجد عملًا بعدها اضطررت إلى الاقتراض من عائلتي.
+      en: My savings are enough for three months. If I haven't found work after that, I'll have to borrow from family.
+    explain:
+      ar_eg: tabungan = التحويشة، وterpaksa pinjam = هيضطر يستلف هو، يعني خايف الفلوس تخلص قبل الشغل.
+      ar: tabungan = المدّخرات، وterpaksa pinjam = سيضطر هو للاقتراض، أي يخشى نفاد المال قبل العمل.
+      en: tabungan = savings; terpaksa pinjam = he'll be forced to borrow, so he fears the money runs out first.
     words: [tabungan]
   - id: e04
     type: fill_blank
@@ -162,11 +169,21 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Dia membantu saya tanpa minta imbalan.
+    source_text: Dia membantu saya menyusun rencana keuangan tanpa minta imbalan, padahal dia konsultan profesional.
     answers_meaning:
-      ar_eg: [ساعدني من غير ما يطلب مقابل, ساعدني ببلاش من غير مقابل]
-      ar: [ساعدني دون أن يطلب مقابلًا, ساعدني بلا مقابل]
-      en: [He helped me without asking for anything in return, She helped me without asking for a reward]
+      ar_eg:
+        - ساعدني أعمل خطة مالية من غير ما يطلب مقابل، مع إنه مستشار محترف.
+        - ساعدني أرتّب خطة فلوسي ببلاش، رغم إنه مستشار محترف.
+      ar:
+        - ساعدني في إعداد خطة مالية دون أن يطلب مقابلًا، مع أنه مستشار محترف.
+        - أعانني على وضع خطتي المالية بلا مقابل، رغم كونه مستشارًا محترفًا.
+      en:
+        - He helped me draw up a financial plan without asking for anything in return, even though he's a professional consultant.
+        - She helped me put together a money plan for free, although she's a professional consultant.
+    explain:
+      ar_eg: "padahal = مع إن، بتوري التناقض: محترف، وبرضه ماخدش imbalan (مقابل)."
+      ar: "padahal = مع أنّ، وتُظهر المفارقة: محترف ومع ذلك لم يأخذ imbalan (مقابلًا)."
+      en: "padahal = even though, showing the contrast: a professional, yet no imbalan (fee)."
     words: [imbalan]
   - id: e10
     type: speaking

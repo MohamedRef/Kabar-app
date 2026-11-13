@@ -160,20 +160,22 @@ exercises:
       en: This is formal work language, so it's belum mengirimkan. udah and gue are street forms, and udah means the opposite of belum.
   - id: e07
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: هو الأستاذ (المدير) استلم الورق؟
-      ar: هل استلم المديرُ الملفّ؟
-      en: Has the boss (sir) received the documents?
-    answers:
-      - Apakah Bapak sudah menerima berkasnya?
-      - Apakah Bapak sudah menerima berkas itu?
-      - Apakah atasan sudah menerima berkasnya?
-      - Apakah atasan sudah menerima berkas itu?
+    direction: from_target
+    source_text: Apakah atasan sudah menerima berkas saya, atau saya perlu mengirimkannya sekali lagi?
+    answers_meaning:
+      ar_eg:
+        - هو المدير استلم ورقي، ولا محتاج أبعته تاني؟
+        - المدير وصله الملف بتاعي، ولا أبعته مرة كمان؟
+      ar:
+        - هل استلم المدير ملفي، أم عليّ أن أرسله مرة أخرى؟
+        - هل وصل ملفي إلى المدير، أم أحتاج إلى إرساله ثانية؟
+      en:
+        - Has the boss received my documents, or do I need to send them again?
+        - Did my superior get my file, or should I send it once more?
     explain:
-      ar_eg: سؤال رسمي يبدأ بـ Apakah، والمدير اسمه Bapak، وsudah مش udah.
-      ar: سؤال رسمي يبدأ بـ Apakah، ونخاطب المدير بـ Bapak، ونقول sudah لا udah.
-      en: A formal question starts with Apakah; the boss is Bapak; sudah, not udah.
+      ar_eg: جملتين متوصلين بـ atau (ولا). mengirimkannya = يبعته (‑nya = الورق).
+      ar: جملتان يربطهما atau (أم)، وmengirimkannya = يرسله (‑nya تعود على الملف).
+      en: Two clauses joined by atau (or); mengirimkannya = send it (‑nya = the documents).
     words: [atasan, berkas]
   - id: e08
     type: speaking

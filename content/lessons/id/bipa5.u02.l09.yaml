@@ -83,17 +83,24 @@ exercises:
     words: [motel, pengamat, rintangan, mendominasi]
   - id: e03
     type: listen
-    text: Motel di dekat pelabuhan sudah penuh.
+    text: Motel di dekat pelabuhan sudah penuh, jadi para pendatang tidur di masjid. Pengurus masjid menyediakan tikar dan air minum.
     question:
-      ar_eg: إيه اللي اتملى؟
-      ar: ما الذي امتلأ؟
-      en: What is full?
-    options: [الموتيلات, المطاعم, المدارس]
-    answer: 0
+      ar_eg: الناس الجاية نامت فين وليه؟
+      ar: أين نام الوافدون ولماذا؟
+      en: Where did the newcomers sleep, and why?
+    options:
+      - Di motel, karena harganya murah.
+      - Di masjid, karena motelnya penuh.
+      - Di pelabuhan, karena masjidnya tutup.
+    answer: 1
     meaning:
-      ar_eg: الموتيلات اللي جنب الميناء كلها اتملت.
-      ar: امتلأت النُّزُل الصغيرة القريبة من الميناء.
-      en: The motels near the port are full.
+      ar_eg: الموتيلات اللي جنب الميناء اتملت، فالناس الجاية نامت في الجامع، والقايمين على الجامع جابولهم حُصر وميه.
+      ar: امتلأت النُّزُل القريبة من الميناء، فنام الوافدون في المسجد، ووفّر لهم القائمون عليه الحُصر والماء.
+      en: The motels near the port are full, so the newcomers slept in the mosque. The mosque's caretakers provided mats and drinking water.
+    explain:
+      ar_eg: "sudah penuh = اتملا، وjadi = فـ، النتيجة: tidur di masjid. الجامع كان مفتوح وبيساعد."
+      ar: "sudah penuh = امتلأ، وjadi = لذا، والنتيجة: tidur di masjid، والمسجد كان مفتوحًا يساعد."
+      en: "sudah penuh = full; jadi = so, the result: they slept in the mosque, which was open and helping."
     words: [motel]
   - id: e04
     type: fill_blank
@@ -162,11 +169,21 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Menurut pengamat, rintangan terbesar adalah biaya.
+    source_text: Menurut pengamat, rintangan terbesar adalah biaya, bukan jumlah pendatang yang terus bertambah.
     answers_meaning:
-      ar_eg: [حسب المراقبين، أكبر عقبة هي التكلفة, المراقبين بيقولوا إن أكبر عقبة هي الفلوس]
-      ar: [يرى المراقبون أن أكبر عقبة هي التكلفة, بحسب المراقبين، فإن التكلفة أكبر عائق]
-      en: ['According to observers, the biggest hurdle is cost', Observers say the biggest obstacle is the cost]
+      ar_eg:
+        - حسب المراقبين، أكبر عقبة هي التكلفة، مش عدد الناس الجاية اللي بيزيد على طول.
+        - المراقبين بيقولوا إن أكبر عقبة هي الفلوس، مش عدد الوافدين اللي بيكتر.
+      ar:
+        - يرى المراقبون أن أكبر عقبة هي التكلفة، لا عدد الوافدين المتزايد.
+        - بحسب المراقبين، فإن التكلفة أكبر عائق، وليس عدد الوافدين الذي يتزايد باستمرار.
+      en:
+        - According to observers, the biggest hurdle is cost, not the ever-growing number of newcomers.
+        - Observers say the biggest obstacle is the cost, not the number of new arrivals, which keeps rising.
+    explain:
+      ar_eg: "bukan بتنفي الاسم: مش العدد. yang terus bertambah = اللي بيزيد على طول."
+      ar: "bukan تنفي الاسم: لا العدد، وyang terus bertambah = الذي يتزايد باستمرار."
+      en: "bukan negates the noun: not the number; yang terus bertambah = which keeps growing."
     words: [pengamat, rintangan]
   - id: e10
     type: speaking

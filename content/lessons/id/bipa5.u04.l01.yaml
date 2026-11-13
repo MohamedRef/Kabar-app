@@ -113,16 +113,20 @@ exercises:
       en: A reported question uses bertanya apakah. meminta (ask for) goes with agar, and mengatakan (say) with bahwa.
   - id: e04
     type: listen
-    text: Katanya, ribuan santri Indonesia belajar di Kairo.
+    text: Katanya, ribuan santri Indonesia belajar di Kairo. Kebanyakan dari mereka kuliah di Al-Azhar dan tinggal bersama teman-teman dari daerah yang sama.
     question:
-      ar_eg: إيه الخبر؟
-      ar: ما الخبر؟
-      en: What is the news?
+      ar_eg: الخبر بيقول إيه؟
+      ar: ماذا يقول الخبر؟
+      en: What does the report say?
     options:
-      - إن طلاب مصريين كتير في إندونيسيا.
-      - بيقولوا إن آلاف الطلاب الإندونيسيين بيدرسوا في القاهرة.
-      - إن القاهرة فيها معهد إندونيسي واحد.
+      - Banyak mahasiswa Mesir belajar di Indonesia.
+      - Ribuan santri Indonesia belajar di Kairo, terutama di Al-Azhar.
+      - Di Kairo hanya ada satu pesantren Indonesia.
     answer: 1
+    explain:
+      ar_eg: katanya = بيقولوا، وkebanyakan … di Al-Azhar = أغلبهم في الأزهر (terutama). الطلبة إندونيسيين في القاهرة، مش العكس.
+      ar: katanya = يُقال، وkebanyakan … di Al-Azhar = معظمهم في الأزهر (terutama)، والطلّاب إندونيسيون في القاهرة لا العكس.
+      en: katanya = reportedly; kebanyakan … di Al-Azhar = most at Al-Azhar (terutama). Indonesians in Cairo, not the reverse.
     words: [katanya, santri]
   - id: e05
     type: build_sentence
@@ -139,21 +143,22 @@ exercises:
       en: A reported request is meminta agar. bahwa is for reported statements and apakah for questions.
   - id: e06
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: محمد قال إن الأزهر قديم قوي.
-      ar: قال محمد إنّ الأزهر قديم جدًّا.
-      en: Mohamed said that Al-Azhar is very old.
-    answers:
-      - Mohamed mengatakan bahwa Al-Azhar sangat tua.
-      - Mohamed mengatakan bahwa Al-Azhar sudah sangat tua.
-      - Mohamed mengatakan Al-Azhar sangat tua.
-      - Mohamed mengatakan bahwa Al-Azhar tua sekali.
-      - Mohamed mengatakan bahwa Al-Azhar udah sangat tua.
+    direction: from_target
+    source_text: Mohamed mengatakan bahwa Al-Azhar sangat tua, dan dia bertanya apakah kita mau berkunjung ke sana.
+    answers_meaning:
+      ar_eg:
+        - محمد قال إن الأزهر قديم قوي، وسأل إذا كنا عايزين نزوره.
+        - محمد قال إن الأزهر قديم جدًا، وسألنا لو عايزين نروح هناك.
+      ar:
+        - قال محمد إنّ الأزهر قديم جدًّا، وسأل إن كنّا نريد زيارته.
+        - ذكر محمد أنّ الأزهر عريق جدًّا، وسألنا هل نودّ أن نزوره.
+      en:
+        - Mohamed said that Al-Azhar is very old, and he asked whether we wanted to visit it.
+        - Mohamed said Al-Azhar is very old and asked if we'd like to go there.
     explain:
-      ar_eg: mengatakan bahwa، وزمن الفعل زي ما هو.
-      ar: mengatakan bahwa، ولا يتغيّر زمن الفعل.
-      en: mengatakan bahwa, with no tense shift.
+      ar_eg: "كلام منقول مرتين: mengatakan bahwa (قال إن) وbertanya apakah (سأل إذا). الزمن مابيتغيرش."
+      ar: "نقل مزدوج: mengatakan bahwa (قال إنّ) وbertanya apakah (سأل هل)، ولا يتغيّر الزمن."
+      en: "Reported twice: mengatakan bahwa (said that) and bertanya apakah (asked whether); no tense shift."
     words: [mengatakan]
   - id: e07
     type: multiple_choice
