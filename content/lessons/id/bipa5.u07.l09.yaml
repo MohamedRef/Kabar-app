@@ -86,17 +86,24 @@ exercises:
     words: [lemon, salad, bakso, pangan]
   - id: e03
     type: listen
-    text: Minum kapsul herbal ini sebelum tidur.
+    text: Minum kapsul herbal ini sebelum tidur. Jangan minum kopi pada malam hari, supaya tidurmu lebih nyenyak.
     question:
-      ar_eg: ياخد إيه قبل النوم؟
-      ar: ماذا يتناول قبل النوم؟
-      en: What should he take before bed?
-    options: [كبسولة أعشاب, قهوة, عصير ليمون]
+      ar_eg: ليه مايشربش قهوة بالليل؟
+      ar: لماذا لا يشرب القهوة ليلًا؟
+      en: Why shouldn't he drink coffee at night?
+    options:
+      - Supaya dia bisa tidur lebih baik.
+      - Karena kopi membuat kapsulnya tidak manis.
+      - Karena dia harus minum kopi pagi-pagi.
     answer: 0
     meaning:
-      ar_eg: خد كبسولة الأعشاب دي قبل النوم.
-      ar: تناول كبسولة الأعشاب هذه قبل النوم.
-      en: Take this herbal capsule before bed.
+      ar_eg: خد كبسولة الأعشاب دي قبل النوم. ماتشربش قهوة بالليل، عشان نومك يبقى أعمق.
+      ar: تناول كبسولة الأعشاب هذه قبل النوم، ولا تشرب القهوة ليلًا كي يكون نومك أعمق.
+      en: Take this herbal capsule before bed. Don't drink coffee at night, so you sleep more soundly.
+    explain:
+      ar_eg: supaya tidurmu lebih nyenyak = عشان نومك يبقى أعمق، يعني تنام أحسن.
+      ar: supaya tidurmu lebih nyenyak = كي يكون نومك أعمق، أي تنام أفضل.
+      en: supaya tidurmu lebih nyenyak = so you sleep more soundly, i.e. better.
     words: [kapsul, herbal]
   - id: e04
     type: fill_blank
@@ -165,11 +172,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Salad ini banyak vitamin dan rendah kalori.
+    source_text: Salad ini banyak vitamin dan rendah kalori, tetapi saya tetap mau makan bakso juga.
     answers_meaning:
-      ar_eg: [السلطة دي فيها فيتامينات كتير وسعرات قليلة, السلطة دي مليانة فيتامينات وقليلة السعرات]
-      ar: [هذه السلطة غنية بالفيتامينات قليلة السعرات, في هذه السلطة فيتامينات كثيرة وسعرات قليلة]
-      en: [This salad has lots of vitamins and few calories, This salad is vitamin-rich and low in calories]
+      ar_eg: [السلطة دي فيها فيتامينات كتير وسعرات قليلة، بس برضه عايز آكل باكسو, السلطة دي مليانة فيتامينات وقليلة السعرات، لكن أنا برضه عايز باكسو]
+      ar: [هذه السلطة غنية بالفيتامينات قليلة السعرات، لكنّي ما زلت أريد أكل الباكسو أيضًا, في هذه السلطة فيتامينات كثيرة وسعرات قليلة، ومع ذلك أريد الباكسو كذلك]
+      en: [This salad has lots of vitamins and few calories, but I still want to eat bakso too, 'This salad is vitamin-rich and low in calories, but I want bakso as well anyway']
+    explain:
+      ar_eg: tetapi… tetap = بس… برضه، بتجيب رغبة عكس المتوقع.
+      ar: tetapi… tetap = لكنّ… مع ذلك، وتأتي برغبة تخالف المتوقَّع.
+      en: tetapi… tetap = but… still, a wish against expectation.
     words: [salad, vitamin, kalori]
   - id: e10
     type: speaking

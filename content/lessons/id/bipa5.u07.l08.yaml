@@ -83,17 +83,24 @@ exercises:
     words: [jijik, kepiting, kerang, mentega]
   - id: e03
     type: listen
-    text: Saya puasa, jadi saya makan setelah azan magrib.
+    text: Saya puasa, jadi saya makan setelah azan magrib. Biasanya saya minum teh manis dulu, lalu salat, dan baru makan nasi.
     question:
-      ar_eg: هياكل إمتى؟
-      ar: متى سيأكل؟
-      en: When will he eat?
-    options: [بعد المغرب, الضهر, الصبح بدري]
-    answer: 0
+      ar_eg: بيعمل إيه الأول لما يفطر؟
+      ar: ماذا يفعل أولًا عند الإفطار؟
+      en: What does he do first when he breaks the fast?
+    options:
+      - Dia langsung makan nasi.
+      - Dia salat dulu sebelum minum.
+      - Dia minum teh manis dulu.
+    answer: 2
     meaning:
-      ar_eg: أنا صايم، فهاكل بعد أدان المغرب.
-      ar: أنا صائم، فسآكل بعد أذان المغرب.
-      en: I'm fasting, so I'll eat after the maghrib call to prayer.
+      ar_eg: أنا صايم، فهاكل بعد أدان المغرب. عادةً بشرب شاي بسكر الأول، وبعدين أصلي، وبعدها بس آكل رز.
+      ar: أنا صائم، فسآكل بعد أذان المغرب. عادةً أشرب شايًا محلًّى أولًا، ثم أصلّي، وبعدها آكل الأرز.
+      en: I'm fasting, so I eat after the maghrib call. Usually I drink sweet tea first, then pray, and only then eat rice.
+    explain:
+      ar_eg: minum teh manis dulu = يشرب شاي الأول، lalu salat = وبعدين يصلي، dan baru makan nasi = وبعدها ياكل.
+      ar: minum teh manis dulu = يشرب الشاي أولًا، ثم lalu salat = يصلّي، ثم baru makan nasi = يأكل.
+      en: minum teh manis dulu = sweet tea first; lalu salat = then prays; baru makan nasi = only then rice.
     words: [puasa]
   - id: e04
     type: fill_blank
@@ -162,11 +169,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Malam ini saya traktir, ya!
+    source_text: Malam ini saya traktir, ya, karena kemarin kalian sudah membayar makan siang saya!
     answers_meaning:
-      ar_eg: [الليلة أنا اللي عازم!, الليلة على حسابي!]
-      ar: [الحساب عليّ الليلة!, أنا أدعوكم الليلة!]
-      en: ['Tonight it''s on me!', 'Tonight I''m paying!']
+      ar_eg: [الليلة أنا اللي عازم، عشان إنتو امبارح دفعتوا الغدا بتاعي!, الليلة على حسابي، لأنكم امبارح حاسبتوا على غدايا!]
+      ar: [الحساب عليّ الليلة، لأنّكم دفعتم ثمن غدائي أمس!, أنا أدعوكم الليلة، فقد دفعتم غدائي البارحة!]
+      en: ['Tonight it''s on me, because you paid for my lunch yesterday!', 'Tonight I''m paying, since you covered my lunch yesterday!']
+    explain:
+      ar_eg: karena = عشان، بتجيب سبب العزومة.
+      ar: karena = لأنّ، وتأتي بسبب الدعوة.
+      en: karena = because, giving the reason for the treat.
     words: [traktir]
   - id: e10
     type: speaking
