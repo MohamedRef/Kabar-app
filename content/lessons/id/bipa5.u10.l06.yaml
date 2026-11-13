@@ -83,17 +83,24 @@ exercises:
     words: [segi, demo, zoom, merekomendasikan]
   - id: e03
     type: listen
-    text: Rapat hari ini lewat Zoom, bukan di kantor.
+    text: Rapat hari ini lewat Zoom, bukan di kantor. Tolong siapkan tayangan Anda dan kirim tautannya sebelum jam sepuluh.
     question:
-      ar_eg: الاجتماع فين؟
-      ar: أين الاجتماع؟
-      en: Where is the meeting?
-    options: [على الزوم, في المكتب, في الكافيه]
+      ar_eg: مطلوب منك إيه؟
+      ar: ما المطلوب منك؟
+      en: What are you asked to do?
+    options:
+      - Menyiapkan tayangan dan mengirim tautannya sebelum rapat.
+      - Datang ke kantor jam sepuluh.
+      - Membatalkan rapat hari ini.
     answer: 0
     meaning:
-      ar_eg: اجتماع النهارده على الزوم، مش في المكتب.
-      ar: اجتماع اليوم عبر زوم، لا في المكتب.
-      en: Today's meeting is on Zoom, not at the office.
+      ar_eg: اجتماع النهارده على الزوم، مش في المكتب. من فضلك جهّز الشرايح بتاعتك وابعت اللينك قبل الساعة عشرة.
+      ar: اجتماع اليوم عبر زوم لا في المكتب. رجاءً جهّز شرائحك وأرسل الرابط قبل العاشرة.
+      en: Today's meeting is on Zoom, not at the office. Please prepare your slides and send the link before ten.
+    explain:
+      ar_eg: siapkan tayangan = جهّز الشرايح، وkirim tautannya sebelum jam sepuluh = ابعت اللينك قبل عشرة. bukan di kantor = مش في المكتب.
+      ar: siapkan tayangan = جهّز الشرائح، وkirim tautannya sebelum jam sepuluh = أرسل الرابط قبل العاشرة، وbukan di kantor = لا في المكتب.
+      en: siapkan tayangan = prepare slides; kirim tautannya sebelum jam sepuluh = send the link before ten; not at the office.
     words: [zoom]
   - id: e04
     type: fill_blank
@@ -162,11 +169,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Kami merekomendasikan demo produk lewat Zoom.
+    source_text: Kami merekomendasikan demo produk lewat Zoom, karena banyak pelanggan tinggal di luar kota.
     answers_meaning:
-      ar_eg: [بنوصي بعرض تجريبي للمنتج على الزوم, إحنا بنوصي بديمو للمنتج على الزوم]
-      ar: [نوصي بعرض تجريبي للمنتج عبر زوم, نوصي بتقديم عرض تجريبي للمنتج عبر زوم]
-      en: [We recommend a product demo over Zoom, We recommend demoing the product on Zoom]
+      ar_eg: [بنوصي بعرض تجريبي للمنتج على الزوم، عشان زباين كتير ساكنين برا المدينة, إحنا بنوصي بديمو للمنتج على الزوم، لأن عملاء كتير عايشين في مدن تانية]
+      ar: [نوصي بعرض تجريبي للمنتج عبر زوم، لأنّ كثيرًا من العملاء يسكنون خارج المدينة, نوصي بتقديم عرض تجريبي للمنتج عبر زوم، إذ يقيم عملاء كثيرون خارج المدينة]
+      en: [We recommend a product demo over Zoom, because many customers live out of town, 'We recommend demoing the product on Zoom, since lots of customers live in other cities']
+    explain:
+      ar_eg: karena = عشان، بتجيب سبب التوصية.
+      ar: karena = لأنّ، وتأتي بسبب التوصية.
+      en: karena = because, giving the reason for the recommendation.
     words: [merekomendasikan, demo, zoom]
   - id: e10
     type: speaking

@@ -83,17 +83,24 @@ exercises:
     words: [maksimum, minimum, optimis, realistis]
   - id: e03
     type: listen
-    text: Pesertanya berjumlah lima ratus orang.
+    text: Pesertanya berjumlah lima ratus orang. Panitia hanya menyiapkan empat ratus kursi, jadi seratus orang harus berdiri.
     question:
-      ar_eg: المشاركين كام واحد؟
-      ar: كم عدد المشاركين؟
-      en: How many participants are there?
-    options: [خمسمية, خمسين, خمستلاف]
+      ar_eg: إيه المشكلة؟
+      ar: ما المشكلة؟
+      en: What is the problem?
+    options:
+      - Kursinya tidak cukup untuk semua peserta.
+      - Pesertanya hanya seratus orang.
+      - Panitia menyiapkan terlalu banyak kursi.
     answer: 0
     meaning:
-      ar_eg: المشاركين عددهم خمسمية واحد.
-      ar: يبلغ عدد المشاركين خمسمئة شخص.
-      en: There are five hundred participants.
+      ar_eg: المشاركين عددهم خمسمية واحد. المنظمين جهزوا أربعمية كرسي بس، فمية واحد لازم يقفوا.
+      ar: يبلغ عدد المشاركين خمسمئة شخص، ولم يُعدّ المنظّمون إلا أربعمئة كرسي، فعلى مئة شخص أن يقفوا.
+      en: There are five hundred participants. The organisers only set out four hundred chairs, so a hundred people must stand.
+    explain:
+      ar_eg: lima ratus = ٥٠٠ مشارك، وempat ratus kursi = ٤٠٠ كرسي بس، jadi = فالكراسي مش مكفية.
+      ar: lima ratus = ٥٠٠ مشارك، وempat ratus kursi = ٤٠٠ كرسي فقط، وjadi = لذا لا تكفي الكراسي.
+      en: lima ratus = 500 people; empat ratus kursi = only 400 chairs; jadi = so there aren't enough.
     words: [berjumlah]
   - id: e04
     type: fill_blank
@@ -162,11 +169,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Saya optimis, tapi tetap realistis.
+    source_text: Saya optimis, tapi tetap realistis, karena anggaran tahun ini lebih kecil daripada tahun lalu.
     answers_meaning:
-      ar_eg: [أنا متفائل، بس برضه واقعي, أنا متفائلة، لكن واقعية]
-      ar: [أنا متفائل لكني واقعي, أنا متفائلة، ومع ذلك واقعية]
-      en: ['I''m optimistic, but still realistic', 'I''m hopeful but realistic']
+      ar_eg: [أنا متفائل، بس برضه واقعي، عشان ميزانية السنة دي أقل من السنة اللي فاتت, أنا متفائلة، لكن واقعية، لأن ميزانية السنة دي أصغر من اللي فاتت]
+      ar: [أنا متفائل لكني واقعي، لأنّ ميزانية هذا العام أصغر من ميزانية العام الماضي, أنا متفائلة، ومع ذلك واقعية، إذ إنّ ميزانية هذا العام أقلّ من العام الماضي]
+      en: ['I''m optimistic, but still realistic, because this year''s budget is smaller than last year''s', 'I''m hopeful but realistic, since the budget this year is smaller than last year']
+    explain:
+      ar_eg: tapi tetap = بس برضه، وkarena = عشان، بتجيب سبب الواقعية.
+      ar: tapi tetap = لكن مع ذلك، وkarena = لأنّ، وتأتي بسبب الواقعية.
+      en: tapi tetap = but still; karena = because, the reason for being realistic.
     words: [optimis, realistis]
   - id: e10
     type: speaking
