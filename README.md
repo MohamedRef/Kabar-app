@@ -80,22 +80,22 @@ every morning. CI warns when the table below is behind the content.
 | BIPA 2 | Bali | A2 | 10 | 86 | 810 | 516 | 1,128 / 1,100 | ~10 h | 35 |
 | BIPA 3 | Lombok | B1 | 10 | 97 | 936 | 506 | 1,634 / 1,600 | ~11 h | 39 |
 | BIPA 4 | Sulawesi | B2 | 10 | 126 | 1,182 | 599 | 2,233 / 2,100 | ~14 h | 37 |
-| BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,236 | 606 | 2,838 / 2,700 | ~13 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 606 | 3,444 / 3,300 | ~13 h | 38 |
-| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 704 | 4,148 / 4,000 | ~15 h | 38 |
+| BIPA 5 | Kalimantan | C1 (aim) | 10 | 127 | 1,236 | 606 | 2,838 / 2,700 | ~13 h | 38 |
+| BIPA 6 | Sumatra | C2 (aim) | 10 | 127 | 1,269 | 606 | 3,444 / 3,300 | ~13 h | 38 |
+| BIPA 7 | Raja Ampat, Papua | C2+ (aim) | 10 | 140 | 1,418 | 704 | 4,148 / 4,000 | ~15 h | 38 |
 | **Total** |  | — | 70 | 801 | 7,791 | 4,150 | 4,148 / 4,000 | ~87 h | 260 |
 
 **Javanese (J1–J6)**
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
-| J1 | Malioboro, Yogyakarta | — | 7 | 62 | 580 | 332 | 277 / 250 | ~7 h | 34 |
+| J1 | Malioboro, Yogyakarta | — | 7 | 62 | 581 | 332 | 277 / 250 | ~7 h | 34 |
 | J2 | Madiun | — | 6 | 57 | 551 | 284 | 511 / 500 | ~6 h | 35 |
 | J3 | Pakualaman, Yogyakarta | — | 6 | 71 | 655 | 305 | 773 / 750 | ~8 h | 35 |
 | J4 | Kraton, Yogyakarta | — | 6 | 73 | 687 | 270 | 1,018 / 1,000 | ~8 h | 38 |
 | J5 | Kutha Pendekar (Madiun) | — | 6 | 72 | 683 | 293 | 1,256 / 1,250 | ~8 h | 39 |
 | J6 | Kotagede, old Mataram capital | — | 6 | 86 | 810 | 292 | 1,511 / 1,500 | ~9 h | 37 |
-| **Total** |  | — | 37 | 421 | 3,966 | 1,776 | 1,511 / 1,500 | ~46 h | 218 |
+| **Total** |  | — | 37 | 421 | 3,967 | 1,776 | 1,511 / 1,500 | ~46 h | 218 |
 
 **Reference content and stories**
 
