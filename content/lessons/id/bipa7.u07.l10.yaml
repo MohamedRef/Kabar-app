@@ -89,17 +89,24 @@ exercises:
     words: [kebebasan berekspresi, swasensor, vonis, advokat]
   - id: e03
     type: listen
-    text: Hakim menjatuhkan vonis tiga bulan penjara.
+    text: Hakim menjatuhkan vonis tiga bulan penjara. Terdakwa dihukum karena unggahannya dianggap mencemarkan nama baik seorang pejabat. Pengacaranya akan mengajukan banding, karena menurutnya kritik bukan kejahatan.
     question:
       ar_eg: القاضي عمل إيه؟
       ar: ماذا فعل القاضي؟
       en: What did the judge do?
-    options: [حكم, إنذار, تشهير]
+    options:
+      - Menjatuhkan hukuman penjara kepada terdakwa.
+      - Memberi peringatan tanpa hukuman.
+      - Membebaskan terdakwa dari semua tuduhan.
     answer: 0
     meaning:
-      ar_eg: القاضي حكم بتلات شهور سجن.
-      ar: أصدر القاضي حكمًا بالسجن ثلاثة أشهر.
-      en: The judge handed down a three-month prison sentence.
+      ar_eg: القاضي حكم بتلات شهور سجن. المتّهم اتعاقب لأن البوست بتاعه اتعتبر تشهير بمسؤول. المحامي بتاعه هيستأنف، لأنه شايف إن النقد مش جريمة.
+      ar: أصدر القاضي حكمًا بالسجن ثلاثة أشهر. عوقب المتّهم لأنّ منشوره عُدّ تشهيرًا بأحد المسؤولين. وسيستأنف محاميه لأنّه يرى أنّ النقد ليس جريمة.
+      en: The judge handed down a three-month prison sentence. The defendant was punished because his post was deemed to defame an official. His lawyer will appeal, saying criticism is not a crime.
+    explain:
+      ar_eg: menjatuhkan vonis = أصدر حكم، هنا تلات شهور سجن. مش مجرّد إنذار ولا براءة، والمحامي هيستأنف (banding).
+      ar: menjatuhkan vonis = أصدر حكمًا، وهو هنا سجن ثلاثة أشهر، لا مجرّد إنذار ولا براءة، وسيستأنف المحامي (banding).
+      en: 'menjatuhkan vonis means handing down a sentence, here three months in prison: not a warning or an acquittal. The lawyer will appeal (banding).'
     words: [vonis]
   - id: e04
     type: fill_blank
@@ -158,11 +165,17 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Kebebasan berekspresi dilindungi oleh konstitusi.
+    source_text: Kebebasan berekspresi dilindungi oleh konstitusi, tetapi pasal karet masih dipakai untuk melaporkan pengkritik.
     answers_meaning:
-      ar_eg: [حرية التعبير محمية بالدستور, الدستور بيحمي حرية التعبير]
-      ar: [حرّية التعبير يحميها الدستور, يكفل الدستور حرّية التعبير]
-      en: [Freedom of expression is protected by the constitution, The constitution protects freedom of expression]
+      ar_eg:
+        - حرية التعبير الدستور بيحميها، بس المواد المطّاطة لسه بتستعمل علشان يبلّغوا عن اللي بينتقدوا.
+        - الدستور بيحمي حرية التعبير، لكن البنود المطّاطة لسه بتتستغل ضد الناس اللي بتنتقد.
+      ar:
+        - يحمي الدستور حرّية التعبير، لكنّ المواد المطّاطة ما زالت تُستعمل للإبلاغ عن المنتقدين.
+        - حرّية التعبير مصونة دستوريًّا، غير أنّ النصوص المطّاطة لا تزال تُستغلّ ضدّ المنتقدين.
+      en:
+        - Freedom of expression is protected by the constitution, but rubber articles are still used to report critics.
+        - The constitution protects free expression, yet vague "rubber" clauses are still used against critics.
     words: [kebebasan berekspresi]
   - id: e09
     type: speaking

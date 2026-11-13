@@ -71,16 +71,20 @@ exercises:
     words: [jejak digital, data pribadi, peretas, tautan, mencurigakan]
   - id: e02
     type: listen
-    text: Jangan pernah memberikan kode OTP kepada siapa pun, termasuk orang yang mengaku dari bank.
+    text: Jangan pernah memberikan kode OTP kepada siapa pun, termasuk orang yang mengaku dari bank. Bank tidak akan pernah meminta kode itu lewat telepon atau pesan. Kalau ada yang memintanya, tutup teleponnya dan hubungi bank langsung.
     question:
       ar_eg: النصيحة إيه؟
       ar: ما النصيحة؟
       en: What's the advice?
     options:
-      - ابعت الكود للبنك بس.
-      - غيّر تليفونك كل شهر.
-      - ماتديش كود الـ OTP لأي حد خالص.
+      - Berikan kode OTP hanya kepada petugas bank.
+      - Ganti nomor telepon setiap bulan.
+      - Siapa pun yang meminta kode OTP, jangan berikan; hubungi bank sendiri.
     answer: 2
+    explain:
+      ar_eg: النص بيقول ماتديش الـ OTP لأي حد حتى لو قال إنه من البنك، لأن البنك عمره ما بيطلبه. فالاختيار الأول هو الغلطة اللي النص بيحذّر منها.
+      ar: يقول النص لا تعطِ رمز OTP لأحد ولو ادّعى أنّه من البنك، لأنّ البنك لا يطلبه أبدًا. فالخيار الأول هو الخطأ الذي يحذّر منه النص.
+      en: The text says never give the OTP to anyone, even someone claiming to be the bank, because banks never ask for it. The first option is exactly the mistake it warns about.
     words: [data pribadi]
   - id: e03
     type: multiple_choice
@@ -89,15 +93,15 @@ exercises:
       ar: وصلتك رسالة «ربحت جائزة! اضغط الرابط». ماذا تفعل؟
       en: You get "You won a prize! Tap the link". What do you do?
     options:
-      - مادوسش عليه، اللينك ده مشبوه.
-      - أدوس بسرعة قبل ما الجايزة تخلص.
-      - أبعته لكل صحابي.
+      - Tidak mengekliknya karena tautan itu mencurigakan.
+      - Cepat mengekliknya sebelum hadiahnya habis.
+      - Meneruskannya ke semua teman.
     answer: 0
-    words: [tautan, mencurigakan]
     explain:
       ar_eg: «كسبت جايزة، دوس على اللينك» خدعة معروفة (pengelabuan). ماتدوسش ولا تبعته لحد.
-      ar: «ربحت جائزة، اضغط الرابط» خدعة تصيّد معروفة، فلا تضغط ولا تنشر.
-      en: "\"You won, tap the link\" is classic phishing. Don't tap or forward it."
+      ar: «ربحت جائزة، اضغط الرابط» خدعة تصيّد معروفة، فلا تضغط ولا ترسله لأحد.
+      en: '"You won, tap the link" is classic phishing. Don''t tap it or forward it.'
+    words: [tautan, mencurigakan]
   - id: e04
     type: fill_blank
     sentence: Seorang ___ mencuri kata sandi dan masuk ke akun Instagram saya.
@@ -132,15 +136,15 @@ exercises:
       ar: أيّ ممّا يلي من الـ data pribadi؟
       en: Which of these is data pribadi?
     options:
-      - لون السما النهارده.
-      - رقم بطاقتك وعنوان بيتك.
-      - اسم عاصمة إندونيسيا.
+      - Warna langit hari ini.
+      - Nomor KTP dan alamat rumahmu.
+      - Nama ibu kota Indonesia.
     answer: 1
-    words: [data pribadi]
     explain:
-      ar_eg: "data pribadi = بيانات شخصية: رقم بطاقتك وعنوانك. لون السما والعاصمة معلومات عامة."
-      ar: data pribadi = بيانات شخصية كرقم الهوية والعنوان.
-      en: "data pribadi is personal data: your ID number and address."
+      ar_eg: 'data pribadi = بيانات شخصية: رقم بطاقتك (KTP) وعنوانك. لون السما والعاصمة معلومات عامة.'
+      ar: 'data pribadi = بيانات شخصية: رقم الهوية (KTP) والعنوان. لون السماء والعاصمة معلومات عامة.'
+      en: 'data pribadi is personal data: your ID (KTP) number and address. The sky and the capital are public facts.'
+    words: [data pribadi]
   - id: e07
     type: translate
     direction: from_target
@@ -166,11 +170,11 @@ exercises:
     words: [mencurigakan, tautan, pesan]
   - id: e09
     type: dictation
-    text: Peretas sering mencari data pribadi lewat tautan palsu.
+    text: Peretas sering mencari data pribadi lewat tautan palsu, karena banyak orang mengeklik tanpa berpikir.
     meaning:
-      ar_eg: الهاكرز كتير بيدوّروا على البيانات الشخصية عن طريق لينكات مزيّفة.
-      ar: كثيرًا ما يبحث المخترقون عن البيانات الشخصية عبر روابط مزيّفة.
-      en: Hackers often fish for personal data through fake links.
+      ar_eg: الهاكرز كتير بيدوّروا على البيانات الشخصية عن طريق لينكات مزيّفة، لأن ناس كتير بتدوس من غير ما تفكّر.
+      ar: كثيرًا ما يبحث المخترقون عن البيانات الشخصية عبر روابط مزيّفة، لأنّ كثيرًا من الناس ينقرون دون تفكير.
+      en: Hackers often fish for personal data through fake links, because many people click without thinking.
     words: [peretas, data pribadi, tautan]
   - id: e10
     type: fill_blank
