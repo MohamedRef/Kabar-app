@@ -86,17 +86,24 @@ exercises:
     words: [insentif, subsidi, pemulihan ekonomi, jaring pengaman]
   - id: e03
     type: listen
-    text: Harga sayur turun tiga bulan berturut-turut. Para ahli bicara tentang deflasi.
+    text: Harga sayur turun tiga bulan berturut-turut. Para ahli bicara tentang deflasi. Kedengarannya bagus untuk pembeli, tetapi petani rugi dan banyak orang menunda belanja karena menunggu harga turun lagi.
     question:
       ar_eg: الخبرا بيتكلّموا عن إيه؟
       ar: عمّ يتحدّث الخبراء؟
       en: What are experts talking about?
-    options: [انكماش الأسعار, حزمة تحفيز, شبكة أمان]
+    options:
+      - Harga-harga yang terus turun, yang ternyata juga merugikan.
+      - Paket bantuan dari pemerintah.
+      - Jaring pengaman untuk warga miskin.
     answer: 0
     meaning:
-      ar_eg: أسعار الخضار نزلت تلات شهور ورا بعض. الخبرا بيتكلّموا عن انكماش.
-      ar: هبطت أسعار الخضار ثلاثة أشهر متتالية، فتحدّث الخبراء عن انكماش.
-      en: Vegetable prices fell three months in a row. Experts talk of deflation.
+      ar_eg: أسعار الخضار نزلت تلات شهور ورا بعض. الخبرا بيتكلّموا عن انكماش. يبان حلو للمشترين، بس الفلاحين بيخسروا وناس كتير بتأجّل الشرا لأنهم مستنّيين الأسعار تنزل تاني.
+      ar: انخفضت أسعار الخضار ثلاثة أشهر متتالية، ويتحدّث الخبراء عن الانكماش. يبدو ذلك جيّدًا للمشترين، لكنّ المزارعين يخسرون ويؤجّل كثيرون الشراء انتظارًا لانخفاض آخر.
+      en: Vegetable prices fell three months in a row. Experts talk of deflation. It sounds good for buyers, but farmers lose out and many people delay shopping, waiting for prices to fall further.
+    explain:
+      ar_eg: deflasi = انكماش (الأسعار بتنزل على طول). النص بيقول إنه شكله حلو للمشتري، بس الفلاحين بيخسروا والناس بتأجّل الشرا (tetapi).
+      ar: deflasi = انكماش الأسعار المستمرّ. يبدو حسنًا للمشتري، لكنّ المزارعين يخسرون ويؤجّل الناس الشراء (tetapi).
+      en: deflasi means prices keep falling. It sounds good for buyers, but farmers lose and people put off spending (tetapi).
     words: [deflasi]
   - id: e04
     type: fill_blank
@@ -155,11 +162,17 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Pemulihan ekonomi berjalan lebih cepat di kota besar.
+    source_text: Pemulihan ekonomi berjalan lebih cepat di kota besar, sedangkan desa-desa masih menunggu bantuan modal.
     answers_meaning:
-      ar_eg: [التعافي الاقتصادي ماشي أسرع في المدن الكبيرة, الاقتصاد بيتعافى أسرع في المدن الكبيرة]
-      ar: [يسير التعافي الاقتصادي أسرع في المدن الكبرى, التعافي الاقتصادي أسرع في المدن الكبيرة]
-      en: [Economic recovery is faster in big cities, The economy is recovering more quickly in large cities]
+      ar_eg:
+        - التعافي الاقتصادي ماشي أسرع في المدن الكبيرة، بينما القرى لسه مستنّية دعم رأس مال.
+        - الاقتصاد بيتعافى أسرع في المدن الكبيرة، لكن القرى لسه مستنية فلوس تساعدها تبدأ.
+      ar:
+        - يسير التعافي الاقتصادي أسرع في المدن الكبرى، بينما لا تزال القرى تنتظر دعمًا لرأس المال.
+        - يتعافى الاقتصاد بوتيرة أسرع في المدن الكبيرة، في حين ما زالت القرى تنتظر مساعدات رأسمالية.
+      en:
+        - Economic recovery is faster in big cities, whereas villages are still waiting for capital support.
+        - The economy is recovering more quickly in large cities, while villages still await help with capital.
     words: [pemulihan ekonomi]
   - id: e09
     type: speaking

@@ -86,17 +86,24 @@ exercises:
     words: [terverifikasi, pemalsuan, deepfake, blokir]
   - id: e03
     type: listen
-    text: Para pendengung dibayar untuk memuji calon itu setiap hari.
+    text: Para pendengung dibayar untuk memuji calon itu setiap hari. Akun mereka baru dibuat, tidak punya foto asli, dan selalu menulis kalimat yang sama. Jadi, dukungan yang terlihat besar itu sebenarnya tidak nyata.
     question:
       ar_eg: مين بيمدح المرشّح؟
       ar: مَن يمدح المرشّح؟
       en: Who praises the candidate?
-    options: [حسابات مدفوعة بتطبّل, حسابات موثّقة, جيش حقيقي]
+    options:
+      - Akun-akun palsu yang dibayar.
+      - Akun resmi yang sudah terverifikasi.
+      - Pendukung sungguhan dari kampung calon itu.
     answer: 0
     meaning:
-      ar_eg: البازرز بياخدوا فلوس علشان يمدحوا المرشّح ده كل يوم.
-      ar: يتقاضى المروّجون أجرًا ليمدحوا ذلك المرشّح يوميًا.
-      en: The buzzers are paid to praise that candidate every day.
+      ar_eg: البازرز بياخدوا فلوس علشان يمدحوا المرشّح ده كل يوم. حساباتهم لسه معمولة جديد، ومن غير صور حقيقية، وبيكتبوا نفس الجملة على طول. يعني التأييد اللي باين كبير ده مش حقيقي.
+      ar: يتقاضى المطبّلون أجرًا ليمدحوا ذلك المرشّح كل يوم. حساباتهم حديثة الإنشاء، بلا صور حقيقية، وتكتب الجملة نفسها دائمًا. فالتأييد الذي يبدو كبيرًا ليس حقيقيًّا في الواقع.
+      en: The buzzers are paid to praise that candidate every day. Their accounts are new, have no real photos and always post the same sentence. So the support that looks huge is not real.
+    explain:
+      ar_eg: pendengung = بازرز، حسابات بتاخد فلوس علشان تطبّل. والنص بيقول إنها جديدة ومن غير صور حقيقية وبتكرّر نفس الجملة، يعني مزيّفة، مش موثّقة ولا مؤيدين بجد.
+      ar: pendengung = حسابات مأجورة للتطبيل. ويذكر النص أنّها حديثة بلا صور حقيقية وتكرّر الجملة نفسها، أي مزيّفة، لا موثّقة ولا مؤيّدون حقيقيون.
+      en: 'pendengung are paid buzzer accounts. The text says they are new, have no real photos and repeat the same line: fake, not verified accounts or real supporters.'
     words: [pendengung]
   - id: e04
     type: fill_blank
@@ -155,11 +162,17 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Suara dalam rekaman itu ternyata deepfake.
+    source_text: Suara dalam rekaman itu ternyata deepfake, walaupun banyak orang yakin itu suara asli sang menteri.
     answers_meaning:
-      ar_eg: [الصوت اللي في التسجيل ده طلع متزيّف بالذكاء الاصطناعي, الصوت في التسجيل طلع ديب فيك]
-      ar: [تبيّن أنّ الصوت في ذلك التسجيل مزيّف بالذكاء الاصطناعي, كان الصوت في التسجيل تزييفًا عميقًا]
-      en: [The voice in that recording turned out to be a deepfake, 'That recording''s voice was actually a deepfake']
+      ar_eg:
+        - الصوت اللي في التسجيل ده طلع ديب فيك، مع إن ناس كتير كانت متأكدة إنه صوت الوزير الحقيقي.
+        - الصوت في التسجيل طلع متزيّف، رغم إن كتير صدّقوا إنه صوت الوزير بجد.
+      ar:
+        - تبيّن أنّ الصوت في ذلك التسجيل مزيّف بالتزييف العميق، مع أنّ كثيرين كانوا واثقين أنّه صوت الوزير الحقيقي.
+        - اتّضح أنّ صوت التسجيل مزيّف، وإن كان كثير من الناس متيقّنين أنّه صوت الوزير نفسه.
+      en:
+        - The voice in that recording turned out to be a deepfake, although many people were sure it was the minister's real voice.
+        - That recording's voice was actually a deepfake, even though plenty of people believed it was really the minister.
     words: [deepfake]
   - id: e09
     type: speaking

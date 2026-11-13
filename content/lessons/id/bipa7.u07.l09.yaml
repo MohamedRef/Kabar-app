@@ -86,17 +86,24 @@ exercises:
     words: [kolusi, akuntabilitas, transparansi, pelapor]
   - id: e03
     type: listen
-    text: Petugas itu meminta uang tambahan yang tidak resmi. Itu pungutan liar.
+    text: Petugas itu meminta uang tambahan yang tidak resmi. Itu pungutan liar. Ia bilang surat izin baru selesai besok kalau tidak ada "uang rokok". Warga merekamnya, lalu melaporkannya ke kantor ombudsman.
     question:
       ar_eg: الموظّف عمل إيه؟
       ar: ماذا فعل الموظّف؟
       en: What did the officer do?
-    options: [إتاوة, هدية, شفافية]
+    options:
+      - Meminta uang tambahan tanpa dasar hukum.
+      - Memberi hadiah kepada warga.
+      - Menjelaskan anggaran secara terbuka.
     answer: 0
     meaning:
-      ar_eg: الموظّف ده طلب فلوس زيادة مش رسمية. دي إتاوة.
-      ar: طلب ذلك الموظّف مالًا إضافيًا غير رسمي، وهذه جباية غير قانونية.
-      en: That officer asked for unofficial extra money. That's an illegal levy.
+      ar_eg: الموظف ده طلب فلوس زيادة مش رسمية. دي إتاوة. قال إن التصريح مش هيخلص غير بكرة لو مفيش «فلوس سجاير». الناس صوّرته وبعدين بلّغوا عنه مكتب الأمبودسمان.
+      ar: طلب ذلك الموظّف مالًا إضافيًّا غير رسمي. هذه إتاوة. قال إنّ التصريح لن يُنجز قبل الغد إن لم يكن هناك «مال للسجائر». فصوّره المواطنون ثم أبلغوا عنه مكتب أمين المظالم.
+      en: That officer asked for unofficial extra money. That's an illegal levy. He said the permit would only be ready tomorrow without some "cigarette money". Residents filmed him, then reported him to the ombudsman.
+    explain:
+      ar_eg: pungutan liar = إتاوة، فلوس زيادة مش رسمية. «uang rokok» (فلوس سجاير) كناية عن الرشوة. الموظف ماادّاش هدية ولا شرح الميزانية، والناس صوّرته واشتكته.
+      ar: pungutan liar = إتاوة غير رسمية، و«uang rokok» (مال السجائر) كناية عن الرشوة. لم يقدّم الموظّف هدية ولا شرح الميزانية، وقد صوّره الناس وأبلغوا عنه.
+      en: pungutan liar is an illegal levy; "uang rokok" (cigarette money) is a euphemism for a bribe. The officer gave no gift and explained no budget; residents filmed and reported him.
     words: [pungutan liar]
   - id: e04
     type: fill_blank
@@ -155,11 +162,17 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Transparansi anggaran mencegah korupsi.
+    source_text: Transparansi anggaran mencegah korupsi, karena warga bisa melihat ke mana setiap rupiah dibelanjakan.
     answers_meaning:
-      ar_eg: [شفافية الميزانية بتمنع الفساد, لما الميزانية تبقى شفافة الفساد بيقلّ]
-      ar: [شفافية الميزانية تمنع الفساد, تحول الشفافية في الميزانية دون الفساد]
-      en: [Budget transparency prevents corruption, Transparent budgets stop corruption]
+      ar_eg:
+        - شفافية الميزانية بتمنع الفساد، لأن الناس تقدر تشوف كل روبية بتتصرف فين.
+        - لما الميزانية تبقى شفافة الفساد بيقلّ، علشان المواطنين بيعرفوا كل قرش راح فين.
+      ar:
+        - تمنع شفافية الميزانية الفساد، لأنّ المواطنين يرون أين تُنفق كل روبية.
+        - الميزانية الشفّافة تحول دون الفساد، إذ يستطيع الناس معرفة وجهة إنفاق كل روبية.
+      en:
+        - Budget transparency prevents corruption, because citizens can see where every rupiah is spent.
+        - Transparent budgets stop corruption, since people can track where each rupiah goes.
     words: [transparansi]
   - id: e09
     type: speaking

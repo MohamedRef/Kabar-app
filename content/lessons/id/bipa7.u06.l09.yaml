@@ -92,17 +92,24 @@ exercises:
     words: [kebocoran data, pelindungan data, doksing, perundungan siber]
   - id: e03
     type: listen
-    text: Setelah kebocoran data, jutaan nomor telepon dijual di internet.
+    text: Setelah kebocoran data, jutaan nomor telepon dijual di internet. Sejak itu, banyak orang menerima pesan penipuan setiap hari. Karena itu, aktifkan verifikasi dua langkah dan jangan pernah membagikan kode OTP.
     question:
       ar_eg: حصل إيه قبل ما الأرقام تتباع؟
       ar: ماذا حدث قبل بيع الأرقام؟
       en: What happened before the numbers were sold?
-    options: [تسريب بيانات, تحقّق بخطوتين, تنمّر]
+    options:
+      - Data bocor dari sebuah sistem.
+      - Orang-orang mengaktifkan verifikasi dua langkah.
+      - Banyak orang menerima pesan penipuan.
     answer: 0
     meaning:
-      ar_eg: بعد تسريب البيانات، ملايين أرقام التليفون اتباعت على الإنترنت.
-      ar: بعد تسرّب البيانات بيعت ملايين أرقام الهواتف على الإنترنت.
-      en: After the data leak, millions of phone numbers were sold online.
+      ar_eg: بعد تسريب البيانات، ملايين أرقام التليفون اتباعت على الإنترنت. ومن ساعتها ناس كتير بتجيلها رسايل نصب كل يوم. علشان كده، شغّل التحقّق بخطوتين وماتشاركش كود الـ OTP أبدًا.
+      ar: بعد تسريب البيانات بيعت ملايين أرقام الهواتف على الإنترنت. ومنذ ذلك الحين يتلقّى كثيرون رسائل احتيال كل يوم. لذلك فعّل التحقّق بخطوتين ولا تشارك رمز OTP أبدًا.
+      en: After the data leak, millions of phone numbers were sold online. Since then, many people get scam messages every day. So turn on two-step verification and never share an OTP code.
+    explain:
+      ar_eg: 'الترتيب: الأول kebocoran data (تسريب)، بعدها الأرقام اتباعت، وبعدها رسايل النصب (sejak itu). التحقّق بخطوتين نصيحة في الآخر، مش حاجة حصلت قبل.'
+      ar: 'الترتيب: أوّلًا kebocoran data (التسريب)، ثم بيعت الأرقام، ثم جاءت رسائل الاحتيال (sejak itu). والتحقّق بخطوتين نصيحة في الختام لا حدث سابق.'
+      en: 'The order: first kebocoran data (the leak), then the numbers were sold, then the scam messages (sejak itu). Two-step verification is advice at the end, not an earlier event.'
     words: [kebocoran data]
   - id: e04
     type: fill_blank
@@ -161,11 +168,17 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Jangan klik tautan pengelabuan, sekalipun pesannya tampak resmi.
+    source_text: Jangan klik tautan pengelabuan, sekalipun pesannya tampak resmi dan memakai logo bank yang asli.
     answers_meaning:
-      ar_eg: [ما تدوسش على لينك التصيّد حتى لو الرسالة باينة رسمية, ما تفتحش لينكات الفيشينج حتى لو الرسالة شكلها رسمي]
-      ar: [لا تنقر رابط التصيّد حتى لو بدت الرسالة رسمية, لا تفتح روابط التصيّد الاحتيالي وإن بدت الرسالة رسمية]
-      en: ['Don''t click a phishing link, even if the message looks official', 'Never open phishing links, however official the message seems']
+      ar_eg:
+        - ماتدوسش على لينك التصيّد حتى لو الرسالة باينة رسمية وعليها لوجو البنك الحقيقي.
+        - ماتفتحش لينكات الفيشينج حتى لو الرسالة شكلها رسمي وفيها شعار البنك الأصلي.
+      ar:
+        - لا تنقر رابط التصيّد ولو بدت الرسالة رسمية وحملت شعار البنك الحقيقي.
+        - إيّاك وفتح روابط الاحتيال حتى لو ظهرت الرسالة رسمية واستعملت شعار البنك الأصلي.
+      en:
+        - Don't click a phishing link, even if the message looks official and uses the bank's real logo.
+        - Never open phishing links, however official the message seems, even with the genuine bank logo.
     words: [pengelabuan]
   - id: e09
     type: speaking
