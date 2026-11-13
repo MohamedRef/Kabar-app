@@ -1,7 +1,7 @@
 //! `kabar-tools dialect`: Surabaya (Arek) and Semarang forms left in the
 //! Javanese track, which teaches only Yogyakarta and Madiun speech
-//! (`content/javanese/dialect-guard.yaml`). Advisory until the J1, J3 and
-//! J5 relocations land; then CI makes it an error.
+//! (`content/javanese/dialect-guard.yaml`). CI fails on any hit outside the
+//! guard's `allow:` list (#636); `--warn` only prints annotations.
 
 use std::collections::BTreeMap;
 use std::fs;
