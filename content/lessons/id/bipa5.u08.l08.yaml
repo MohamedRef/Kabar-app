@@ -83,17 +83,24 @@ exercises:
     words: [perspektif, enggan, minus, kadar]
   - id: e03
     type: listen
-    text: Pejabat itu enggan menjawab pertanyaan wartawan.
+    text: Pejabat itu enggan menjawab pertanyaan wartawan. Dia hanya tersenyum, lalu masuk ke mobilnya tanpa berkata apa-apa.
     question:
       ar_eg: المسؤول عمل إيه؟
       ar: ماذا فعل المسؤول؟
       en: What did the official do?
-    options: [مش عايز يرد, رد بسرعة, ضحك]
-    answer: 0
+    options:
+      - Dia menjawab semua pertanyaan dengan cepat.
+      - Dia tidak mau menjawab dan langsung pergi.
+      - Dia marah kepada wartawan.
+    answer: 1
     meaning:
-      ar_eg: المسؤول ده ما كانش عايز يرد على سؤال الصحفي.
-      ar: تردّد ذلك المسؤول في الإجابة عن سؤال الصحفي.
-      en: That official was reluctant to answer the reporter's question.
+      ar_eg: المسؤول ده ما كانش عايز يرد على سؤال الصحفي. ابتسم بس، وبعدين ركب عربيته من غير ما يقول أي حاجة.
+      ar: تردّد ذلك المسؤول في الإجابة عن سؤال الصحفي؛ اكتفى بالابتسام ثم دخل سيارته دون أن يقول شيئًا.
+      en: That official was reluctant to answer the reporter's question. He just smiled, then got into his car without saying anything.
+    explain:
+      ar_eg: enggan = مش عايز، وtanpa berkata apa-apa = من غير ما يقول حاجة. ابتسم، يعني مازعلش.
+      ar: enggan = غير راغب، وtanpa berkata apa-apa = دون أن يقول شيئًا، وقد ابتسم فلم يغضب.
+      en: enggan = reluctant; tanpa berkata apa-apa = without a word. He smiled, so he wasn't angry.
     words: [enggan]
   - id: e04
     type: fill_blank
@@ -162,11 +169,15 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Setiap pilihan punya plus dan minus.
+    source_text: Setiap pilihan punya plus dan minus, jadi kita perlu membaca dari beberapa perspektif.
     answers_meaning:
-      ar_eg: [كل اختيار ليه مميزات وعيوب, كل اختيار ليه الحلو والوحش]
-      ar: [لكل خيار مزايا وعيوب, لكل اختيار إيجابيات وسلبيات]
-      en: [Every choice has pros and cons, Every option has its pluses and minuses]
+      ar_eg: [كل اختيار ليه مميزات وعيوب، فمحتاجين نقرا من كذا وجهة نظر, كل اختيار ليه الحلو والوحش، عشان كده لازم نشوفه من أكتر من زاوية]
+      ar: [لكل خيار مزايا وعيوب، لذا نحتاج إلى القراءة من عدّة وجهات نظر, لكل اختيار إيجابيات وسلبيات، فعلينا أن ننظر إليه من زوايا مختلفة]
+      en: [Every choice has pros and cons, so we need to read from several perspectives, 'Every option has its pluses and minuses, so we should look at it from different angles']
+    explain:
+      ar_eg: jadi = فـ / عشان كده، بتجيب النتيجة.
+      ar: jadi = لذلك، وتأتي بالنتيجة.
+      en: jadi = so, bringing the result.
     words: [minus]
   - id: e10
     type: speaking
