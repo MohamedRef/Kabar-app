@@ -380,7 +380,7 @@ Rules (Mohamed's decisions; all in force):
 
 ### Open work and known gaps
 
-- #633 (BIPA 5–7 task demand): content batches, half a level per PR (BIPA 5 u01–u05, u06–u10, then 6, then 7): Indonesian comprehension options with Arabic in `explain:`, longer listening texts, one multi-clause item per lesson. Each batch tightens `content/demand-limits.tsv`; target: Arabic-only listen options under BIPA 4's 32%, multiple choice near 0%. Drop the README "(aim)" label (`readme.rs cefr_label`) once all three levels are done.
+- #633 (BIPA 5–7 task demand): all six content batches merged (#642, #644, #645, #646, #647, #643); Arabic-only listen options are 0% at BIPA 5–7 and the ratchet holds them there. The README keeps "(aim)" on BIPA 5–7 CEFR labels: the mappings stay low-confidence and listening texts (17–28 words) are still short of C1 length. Drop it in `readme.rs cefr_label` only when Mohamed decides.
 - Mohamed's steps: Cloud keys (`GEMINI_API_KEY`, `AZURE_SPEECH_KEY`,
   `FCM_SERVICE_ACCOUNT`, `KABAR_GOOGLE_SERVICES_JSON`) so AI, cloud voices and
   pushed reminders work in release builds; bake-off on the Mac.
