@@ -86,17 +86,24 @@ exercises:
     words: [pembingkaian, polarisasi, ruang gema, umpan klik]
   - id: e03
     type: listen
-    text: Di ruang gema, kita hanya mendengar pendapat yang sama dengan kita.
+    text: Di ruang gema, kita hanya mendengar pendapat yang sama dengan kita. Algoritma terus menampilkan unggahan yang kita sukai. Akibatnya, kita jarang bertemu pendapat yang berbeda dan makin mudah menganggap kelompok lain sebagai musuh.
     question:
       ar_eg: بنسمع إيه بس؟
       ar: ماذا نسمع فقط؟
       en: What do we only hear?
-    options: [غرفة صدى, طُعم كليكات, دعاية]
+    options:
+      - Pendapat yang mirip dengan pendapat kita sendiri.
+      - Berita dari kelompok yang berbeda.
+      - Iklan dari merek yang kita sukai.
     answer: 0
     meaning:
-      ar_eg: في غرفة الصدى، بنسمع بس الآراء اللي زيّنا.
-      ar: في غرفة الصدى لا نسمع إلا آراء تشبه آراءنا.
-      en: In an echo chamber, we only hear opinions like our own.
+      ar_eg: في غرفة الصدى، بنسمع بس الآراء اللي زيّنا. الخوارزمية فضلت تورّينا البوستات اللي بنحبّها. فبقينا نادرًا ما نقابل رأي مختلف، وبقى أسهل نعتبر الجماعات التانية أعدا.
+      ar: في غرفة الصدى لا نسمع إلا الآراء المماثلة لآرائنا. تعرض الخوارزمية باستمرار المنشورات التي نحبّها، فقلّما نصادف رأيًا مختلفًا ويسهل علينا أن نعدّ الجماعات الأخرى أعداء.
+      en: In an echo chamber, we only hear opinions like our own. The algorithm keeps showing posts we like. As a result, we rarely meet different views and find it ever easier to see other groups as enemies.
+    explain:
+      ar_eg: في ruang gema (غرفة الصدى) بنسمع بس الآراء اللي شبهنا، لأن الخوارزمية بتورّينا اللي بنحبّه. يعني بنقابل آراء مختلفة قليل (jarang)، مش كتير.
+      ar: في ruang gema (غرفة الصدى) لا نسمع إلا آراء تشبهنا، لأنّ الخوارزمية تعرض ما نحبّه، فقلّما (jarang) نلقى رأيًا مختلفًا.
+      en: In an ruang gema (echo chamber) we only hear views like ours, because the algorithm shows what we like, so we rarely (jarang) meet different ones.
     words: [ruang gema]
   - id: e04
     type: fill_blank
@@ -155,11 +162,17 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Propaganda perang sering memakai foto lama.
+    source_text: Propaganda perang sering memakai foto lama, sehingga orang marah pada kejadian yang tidak pernah terjadi.
     answers_meaning:
-      ar_eg: [دعاية الحرب كتير بتستعمل صور قديمة, الدعاية وقت الحرب غالبًا بتستخدم صور قديمة]
-      ar: [كثيرًا ما تستعمل دعاية الحرب صورًا قديمة, تلجأ دعاية الحرب غالبًا إلى صور قديمة]
-      en: [War propaganda often uses old photos, Wartime propaganda frequently relies on old pictures]
+      ar_eg:
+        - دعاية الحرب كتير بتستعمل صور قديمة، فالناس بتغضب من حاجات عمرها ما حصلت.
+        - الدعاية وقت الحرب غالبًا بتستخدم صور قديمة، لدرجة إن الناس بتتعصّب على أحداث ماحصلتش أصلًا.
+      ar:
+        - كثيرًا ما تستعمل دعاية الحرب صورًا قديمة، فيغضب الناس من أحداث لم تقع قط.
+        - تعتمد الدعاية الحربية غالبًا على صور قديمة، ممّا يُغضب الناس من وقائع لم تحدث أبدًا.
+      en:
+        - War propaganda often uses old photos, so people get angry about events that never happened.
+        - Wartime propaganda frequently relies on old pictures, making people furious over things that never took place.
     words: [propaganda]
   - id: e09
     type: speaking

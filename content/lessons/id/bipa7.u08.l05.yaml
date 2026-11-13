@@ -68,16 +68,20 @@ exercises:
     words: [QRIS, nontunai, saldo, transaksi, memindai]
   - id: e02
     type: listen
-    text: Silakan pindai kode QRIS di meja kasir.
+    text: Silakan pindai kode QRIS di meja kasir. Setelah membayar, tunjukkan layar ponsel Anda kepada saya. Maaf, mesin kartu kami sedang rusak, jadi hari ini kami tidak bisa menerima kartu debit.
     question:
       ar_eg: الكاشير بيطلب إيه؟
       ar: ماذا يطلب أمين الصندوق؟
       en: What is the cashier asking?
     options:
-      - تدفع كاش.
-      - تعمل سكان لكود QRIS اللي على الترابيزة.
-      - تستنّى برّه.
+      - Membayar dengan uang tunai saja.
+      - Memindai kode QRIS, lalu menunjukkan bukti pembayaran di layar.
+      - Menunggu di luar sampai mesin kartu diperbaiki.
     answer: 1
+    explain:
+      ar_eg: الكاشير طالب تعمل سكان (pindai) لكود QRIS وبعدين توريه الشاشة. مكنة الكروت عطلانة، بس ماقالش ادفع كاش ولا استنّى برّه.
+      ar: يطلب الكاشير مسح (pindai) رمز QRIS ثم إظهار الشاشة. آلة البطاقات معطّلة، لكنّه لم يطلب الدفع نقدًا ولا الانتظار خارجًا.
+      en: The cashier asks you to scan (pindai) the QRIS code and show the screen. The card machine is broken, but they did not ask for cash or for you to wait outside.
     words: [memindai, QRIS]
   - id: e03
     type: multiple_choice
@@ -86,15 +90,15 @@ exercises:
       ar: من أطلق الـ QRIS؟
       en: Who created QRIS?
     options:
-      - بنك إندونيسيا.
-      - شركة تليفونات.
-      - مدينة سورونج.
+      - Bank Indonesia.
+      - Sebuah perusahaan telepon.
+      - Kota Sorong.
     answer: 0
-    words: [QRIS]
     explain:
-      ar_eg: QRIS (كود الدفع الموحّد) عمله بنك إندونيسيا، البنك المركزي.
+      ar_eg: بنك إندونيسيا (البنك المركزي) هو اللي عمل QRIS.
       ar: أنشأ بنك إندونيسيا (المصرف المركزي) نظام QRIS.
-      en: Bank Indonesia created QRIS.
+      en: Bank Indonesia, the central bank, created QRIS.
+    words: [QRIS]
   - id: e04
     type: fill_blank
     sentence: Sebelum membayar, cek dulu ___ di aplikasimu.
@@ -116,15 +120,15 @@ exercises:
       ar: ما معنى «Transaksi berhasil»؟
       en: What does "Transaksi berhasil" mean?
     options:
-      - العملية فشلت.
-      - الرصيد خلص.
-      - العملية تمّت بنجاح.
+      - Transaksinya gagal.
+      - Saldonya habis.
+      - Transaksinya sudah selesai dengan baik.
     answer: 2
-    words: [transaksi]
     explain:
-      ar_eg: Transaksi berhasil = العملية نجحت (berhasil = نجح).
-      ar: Transaksi berhasil = تمت العملية بنجاح.
-      en: berhasil means succeeded.
+      ar_eg: berhasil = نجحت، يعني العملية تمّت.
+      ar: berhasil = نجحت، أي تمّت العملية.
+      en: 'berhasil means succeeded: the payment went through.'
+    words: [transaksi]
   - id: e06
     type: build_sentence
     source:
@@ -161,11 +165,11 @@ exercises:
     words: [memindai, transaksi]
   - id: e09
     type: dictation
-    text: Pembayaran nontunai membuat saldo mudah dipantau.
+    text: Pembayaran nontunai membuat saldo mudah dipantau, tetapi kita jadi lebih mudah belanja berlebihan.
     meaning:
-      ar_eg: الدفع من غير كاش بيخلّي الرصيد سهل تتابعه.
-      ar: يُسهّل الدفع غير النقديّ مراقبة الرصيد.
-      en: Cashless payment makes your balance easy to track.
+      ar_eg: الدفع من غير كاش بيخلّي متابعة الرصيد سهلة، بس بيخلّينا نصرف زيادة بسهولة.
+      ar: يسهّل الدفع غير النقدي متابعة الرصيد، لكنّه يجعلنا نُسرف في الشراء بسهولة أكبر.
+      en: Cashless payment makes your balance easy to track, but it also makes overspending easier.
     words: [nontunai, saldo]
   - id: e10
     type: speaking

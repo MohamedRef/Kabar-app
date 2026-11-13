@@ -89,17 +89,24 @@ exercises:
     words: [upah minimum, angkatan kerja, sektor informal, pekerja lepas]
   - id: e03
     type: listen
-    text: Pedagang kaki lima dan tukang ojek bekerja di sektor informal.
+    text: Pedagang kaki lima dan tukang ojek bekerja di sektor informal. Penghasilan mereka tidak tetap, dan mereka tidak punya asuransi kesehatan. Kalau sakit seminggu saja, keluarga mereka bisa langsung kekurangan uang.
     question:
       ar_eg: بيشتغلوا فين؟
       ar: أين يعملون؟
       en: Where do they work?
-    options: [القطاع غير الرسمي, الحد الأدنى للأجور, خط الفقر]
+    options:
+      - Di pekerjaan tanpa gaji tetap dan tanpa asuransi.
+      - Di kantor dengan upah minimum.
+      - Di bawah garis kemiskinan resmi.
     answer: 0
     meaning:
-      ar_eg: بيّاعين الرصيف وسوّاقين الأوجيك بيشتغلوا في القطاع غير الرسمي.
-      ar: يعمل باعة الأرصفة وسائقو الأوجيك في القطاع غير الرسمي.
-      en: Street vendors and ojek drivers work in the informal sector.
+      ar_eg: بيّاعين الرصيف وسوّاقين الأوجيك بيشتغلوا في القطاع غير الرسمي. دخلهم مش ثابت، ومعندهمش تأمين صحي. لو عيّوا أسبوع بس، عيلتهم ممكن تقع في عجز فلوس على طول.
+      ar: يعمل الباعة الجائلون وسائقو الأوجيك في القطاع غير الرسمي. دخلهم غير ثابت وليس لديهم تأمين صحّي. وإن مرضوا أسبوعًا واحدًا فقد تعاني أسرهم فورًا من نقص المال.
+      en: Street vendors and ojek drivers work in the informal sector. Their income isn't fixed and they have no health insurance. If they're sick for just a week, their families can run short of money at once.
+    explain:
+      ar_eg: 'sektor informal = القطاع غير الرسمي: دخل مش ثابت ومن غير تأمين صحي. الحد الأدنى للأجور وخط الفقر مصطلحات تانية.'
+      ar: 'sektor informal = القطاع غير الرسمي: دخل غير ثابت ولا تأمين صحّي. أمّا الحدّ الأدنى للأجور وخطّ الفقر فمصطلحان آخران.'
+      en: 'sektor informal is the informal sector: no fixed income and no health insurance. Minimum wage and the poverty line are other terms.'
     words: [sektor informal]
   - id: e04
     type: fill_blank
@@ -158,11 +165,17 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Pekerja lepas tidak mendapat upah minimum atau asuransi.
+    source_text: Pekerja lepas tidak mendapat upah minimum atau asuransi, padahal jam kerja mereka sering lebih panjang.
     answers_meaning:
-      ar_eg: [الشغّال الحر ما بياخدش الحد الأدنى للأجور ولا تأمين, الفري لانسر مالوش حد أدنى للأجر ولا تأمين]
-      ar: [لا يحصل العامل الحرّ على الحدّ الأدنى للأجور ولا على تأمين, العامل الحرّ محروم من الحدّ الأدنى للأجور والتأمين]
-      en: ['Freelancers don''t get the minimum wage or insurance', A freelance worker has no minimum wage or insurance]
+      ar_eg:
+        - العامل الحرّ مابياخدش الحد الأدنى للأجر ولا تأمين، مع إن ساعات شغله غالبًا أطول.
+        - الفريلانسرز مالهمش حد أدنى للأجور ولا تأمين، رغم إنهم بيشتغلوا ساعات أكتر في الغالب.
+      ar:
+        - لا يحصل العامل الحرّ على الحدّ الأدنى للأجر ولا على تأمين، مع أنّ ساعات عمله كثيرًا ما تكون أطول.
+        - لا يتمتّع العاملون المستقلّون بحدّ أدنى للأجور ولا بتأمين، رغم أنّهم يعملون ساعات أطول غالبًا.
+      en:
+        - Freelancers don't get the minimum wage or insurance, even though their hours are often longer.
+        - A freelance worker has no minimum wage or insurance, although they often work longer hours.
     words: [pekerja lepas, upah minimum]
   - id: e09
     type: speaking

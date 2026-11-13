@@ -68,16 +68,20 @@ exercises:
     words: [tabel, sumbu, signifikan, diagram batang, nilai tertinggi]
   - id: e02
     type: listen
-    text: Tabel satu menunjukkan bahwa nilai tertinggi terdapat di Distrik Kurulu.
+    text: Tabel satu menunjukkan bahwa nilai tertinggi terdapat di Distrik Kurulu. Sebaliknya, nilai terendah terdapat di Distrik Asolokobal. Perbedaan antara kedua distrik itu cukup besar dan signifikan.
     question:
       ar_eg: أعلى قيمة فين؟
       ar: أين أعلى قيمة؟
       en: Where is the highest value?
     options:
-      - في حيّ كورولو.
-      - في جاكرتا.
-      - مافيش أعلى قيمة.
+      - Di Distrik Kurulu, dan perbedaannya dengan Asolokobal signifikan.
+      - Di Distrik Asolokobal.
+      - Tidak ada nilai tertinggi.
     answer: 0
+    explain:
+      ar_eg: nilai tertinggi = أعلى قيمة، وهي في كورولو. أسولوكوبال فيها أقل قيمة (terendah، sebaliknya)، والفرق كبير ومعنوي.
+      ar: nilai tertinggi = أعلى قيمة، وهي في كورولو، أمّا أسولوكوبال ففيها الأدنى (terendah، sebaliknya)، والفرق كبير ودالّ.
+      en: nilai tertinggi is the highest value, in Kurulu. Asolokobal has the lowest (terendah, sebaliknya), and the gap is significant.
     words: [tabel, nilai tertinggi]
   - id: e03
     type: multiple_choice
@@ -86,15 +90,15 @@ exercises:
       ar: إن كان الفرق «tidak signifikan» فما معنى ذلك؟
       en: If a difference is "tidak signifikan", what does that mean?
     options:
-      - الفرق كبير جدًا.
-      - الجدول غلط.
-      - الفرق ممكن يبقى صدفة.
+      - Perbedaannya sangat besar.
+      - Tabelnya salah.
+      - Perbedaannya mungkin hanya kebetulan.
     answer: 2
-    words: [signifikan]
     explain:
-      ar_eg: tidak signifikan = مش دال إحصائيًا، يعني الفرق ممكن يكون صدفة. مش معناه إنه كبير.
-      ar: tidak signifikan = غير دال إحصائيًا، فقد يكون الفرق مصادفة.
-      en: tidak signifikan means the gap may be chance.
+      ar_eg: 'tidak signifikan = غير دالّ إحصائيًّا: الفرق ممكن يبقى صدفة (kebetulan).'
+      ar: 'tidak signifikan = غير دالّ إحصائيًّا: قد يكون الفرق مصادفة (kebetulan).'
+      en: tidak signifikan means the gap may be chance (kebetulan).
+    words: [signifikan]
   - id: e04
     type: fill_blank
     sentence: Pada ___ X, kita melihat tahun dari 2015 sampai 2025.
@@ -161,11 +165,11 @@ exercises:
     words: [diagram batang, nilai tertinggi]
   - id: e09
     type: dictation
-    text: Sumbu Y menunjukkan hasil panen dalam ton.
+    text: Sumbu Y menunjukkan hasil panen dalam ton, sedangkan sumbu X menunjukkan tahun penelitian.
     meaning:
-      ar_eg: المحور Y بيبيّن المحصول بالطن.
-      ar: يبيّن المحور Y المحصول بالأطنان.
-      en: The Y axis shows the harvest in tonnes.
+      ar_eg: المحور الصادي بيبيّن المحصول بالطن، والمحور السيني بيبيّن سنين البحث.
+      ar: يبيّن المحور الصادي المحصول بالطن، بينما يبيّن المحور السيني سنوات البحث.
+      en: The Y axis shows the harvest in tonnes, while the X axis shows the years of the study.
     words: [sumbu]
   - id: e10
     type: fill_blank
