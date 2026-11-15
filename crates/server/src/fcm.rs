@@ -13,7 +13,7 @@ use std::fmt;
 use base64::Engine as _;
 use base64::engine::general_purpose::URL_SAFE_NO_PAD;
 use kabar_protocol::cloud::{MAX_PUSH_TOKEN_LEN, PushNotice};
-use rsa::RsaPrivateKey;
+use rsa::PrivateKey;
 use rsa::pkcs1v15::SigningKey;
 use rsa::pkcs8::DecodePrivateKey;
 use rsa::signature::{SignatureEncoding, Signer};
@@ -62,8 +62,8 @@ impl ServiceAccount {
         Ok(sa)
     }
 
-    fn key(&self) -> Result<RsaPrivateKey, FcmError> {
-        RsaPrivateKey::from_pkcs8_pem(&self.private_key)
+    fn key(&self) -> Result<PrivateKey, FcmError> {
+        PrivateKey::from_pkcs8_pem(&self.private_key)
             .map_err(|e| FcmError::BadServiceAccount(format!("private_key: {e}")))
     }
 
