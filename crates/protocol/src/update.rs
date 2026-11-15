@@ -208,6 +208,87 @@ pub struct Change {
     /// The line itself; Egyptian Arabic is required, the others fall back to it.
     #[serde(flatten)]
     pub text: UpdateNotes,
+    /// What it is about: a level (`bipa3`, `j2`) or an app area
+    /// ([`AREAS`]). The sheet groups a build's lines by it. Older apps
+    /// ignore it.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub scope: Option<String>,
+    /// What a tap on the line opens ([`Open`]): a lesson, a unit or a
+    /// screen. Older apps ignore it.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub open: Option<String>,
+}
+
+impl Change {
+    /// A line with no scope and nothing to open.
+    pub fn new(kind: ChangeKind, text: UpdateNotes) -> Self {
+        Self { kind, text, scope: None, open: None }
+    }
+
+    /// Where the line belongs: its scope, else the level of the lesson or
+    /// unit it opens. An area of the app is [`APP`]; `None` is a line
+    /// nothing places (older feeds).
+    pub fn group(&self) -> Option<&str> {
+        let scope = self.scope.as_deref().map(str::trim).filter(|s| !s.is_empty());
+        let scope = scope.or_else(|| match self.open.as_deref().and_then(Open::parse) {
+            Some(Open::Lesson(id) | Open::Unit(id)) => id.split('.').next(),
+            _ => None,
+        })?;
+        Some(if AREAS.contains(&scope) { APP } else { scope })
+    }
+}
+
+/// The scope of a line about the app as a whole.
+pub const APP: &str = "app";
+
+/// Scopes that name a part of the app rather than a level; the sheet puts
+/// them all under one "app" group, first.
+pub const AREAS: [&str; 20] = [
+    APP, "today", "journey", "lesson", "reader", "review", "coach", "play", "studio", "listen", "chat",
+    "teach", "journal", "stats", "pron", "aksara", "sync", "updates", "settings", "mac",
+];
+
+/// Screens a line can open (`open: reader`).
+pub const SCREENS: [&str; 12] = [
+    "today", "journey", "reader", "review", "coach", "play", "studio", "listen", "chat", "teach", "journal",
+    "stats",
+];
+
+/// A level id: `bipa1`…, `j1`….
+pub fn is_level(s: &str) -> bool {
+    let digits = s.strip_prefix("bipa").or_else(|| s.strip_prefix('j'));
+    digits.is_some_and(|n| !n.is_empty() && n.bytes().all(|b| b.is_ascii_digit()))
+}
+
+/// What a line's `open` names.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Open<'a> {
+    /// `bipa1.u01.l01`.
+    Lesson(&'a str),
+    /// `bipa1.u01`: the unit on the Journey.
+    Unit(&'a str),
+    /// One of [`SCREENS`].
+    Screen(&'a str),
+}
+
+impl<'a> Open<'a> {
+    pub fn parse(s: &'a str) -> Option<Self> {
+        let s = s.trim();
+        if SCREENS.contains(&s) {
+            return Some(Self::Screen(s));
+        }
+        let numbered = |t: &str, p: char| {
+            t.strip_prefix(p).is_some_and(|n| !n.is_empty() && n.bytes().all(|b| b.is_ascii_digit()))
+        };
+        let parts: Vec<&str> = s.split('.').collect();
+        match parts.as_slice() {
+            [level, unit] if is_level(level) && numbered(unit, 'u') => Some(Self::Unit(s)),
+            [level, unit, lesson] if is_level(level) && numbered(unit, 'u') && numbered(lesson, 'l') => {
+                Some(Self::Lesson(s))
+            }
+            _ => None,
+        }
+    }
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
@@ -354,5 +435,38 @@ mod tests {
             serde_json::from_str(include_str!("../../../fixtures/update/update.json")).unwrap();
         v["assets"][0].as_object_mut().unwrap().remove("sha256");
         assert!(serde_json::from_value::<UpdateManifest>(v).is_err());
+    }
+
+    #[test]
+    fn a_line_names_its_level_and_what_it_opens() {
+        let line = |json: serde_json::Value| serde_json::from_value::<Change>(json).unwrap();
+        let c = line(
+            serde_json::json!({"kind": "new", "en": "x", "ar_eg": "س", "scope": "bipa3", "open": "bipa3.u02.l04"}),
+        );
+        assert_eq!(
+            (c.group(), c.open.as_deref().and_then(Open::parse)),
+            (Some("bipa3"), Some(Open::Lesson("bipa3.u02.l04")))
+        );
+        assert_eq!(
+            line(serde_json::json!({"kind": "new", "en": "x", "ar_eg": "س", "open": "j2.u05"})).group(),
+            Some("j2")
+        );
+        assert_eq!(
+            line(serde_json::json!({"kind": "new", "en": "x", "ar_eg": "س", "scope": "reader"})).group(),
+            Some(APP)
+        );
+        assert_eq!(
+            line(serde_json::json!({"kind": "new", "en": "x", "ar_eg": "س", "open": "reader"})).group(),
+            None
+        );
+        let plain = Change::new(
+            ChangeKind::Fixed,
+            UpdateNotes { en: "x".into(), ar_eg: "س".into(), ar: String::new() },
+        );
+        assert!(!serde_json::to_string(&plain).unwrap().contains("scope"), "older apps read the same bytes");
+        for bad in ["", "bipa", "bipa1", "x1.u01", "bipa1.u01.003", "bipa1.u01.l01.x", "https://x"] {
+            assert_eq!(Open::parse(bad), None, "{bad}");
+        }
+        assert!(is_level("j6") && is_level("bipa7") && !is_level("jv") && !is_level("app"));
     }
 }

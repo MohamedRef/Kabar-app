@@ -20,7 +20,7 @@ const EN: UiLanguage = UiLanguage::En;
 const EG: UiLanguage = UiLanguage::ArEg;
 
 fn change(kind: ChangeKind, en: &str) -> Change {
-    Change { kind, text: UpdateNotes { en: en.into(), ar_eg: format!("مصري: {en}"), ar: String::new() } }
+    Change::new(kind, UpdateNotes { en: en.into(), ar_eg: format!("مصري: {en}"), ar: String::new() })
 }
 
 fn build(b: u64, changes: Vec<Change>) -> BuildChanges {

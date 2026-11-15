@@ -33,6 +33,7 @@ pub use model::{Failure, Mode, Notice, NoticeContext, Off, Offer, Phase, Prefs, 
 pub mod bundle;
 pub mod changelog;
 pub mod content;
+pub mod groups;
 pub mod sheet;
 pub mod stage;
 pub(crate) mod text;
