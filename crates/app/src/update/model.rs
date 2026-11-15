@@ -51,6 +51,10 @@ pub struct Prefs {
     /// before: "What's new" opens once for what came since, then clears it.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub whats_new_from: Option<String>,
+    /// A tap on "download" on mobile data that chose to wait for Wi-Fi: the
+    /// offer (`version+build`) downloads at the next unmetered step.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub wifi_download: Option<String>,
 }
 pub(super) fn yes() -> bool {
     true
@@ -68,6 +72,7 @@ impl Default for Prefs {
             notice: None,
             last_run: None,
             whats_new_from: None,
+            wifi_download: None,
         }
     }
 }
@@ -345,6 +350,9 @@ impl Status {
         let offer = match &self.phase {
             Phase::Available(o) if self.prefs.mode == Mode::Notify => o,
             Phase::Ready(o) | Phase::NeedsPermission(o) | Phase::Installed(o) => o,
+            // A failed download or install stays in sight until it works or
+            // the learner closes it (Batna #1338).
+            Phase::Failed { offer: Some(o), .. } => o,
             _ => return None,
         };
         (self.prefs.dismissed.as_deref() != Some(offer.key().as_str())).then_some(offer)

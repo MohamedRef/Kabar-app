@@ -35,13 +35,14 @@ pub mod changelog;
 pub mod content;
 pub mod groups;
 pub mod sheet;
+pub mod stage;
 pub(crate) mod text;
 pub mod view;
 
 use std::fs;
 use std::io::{Read as _, Write as _};
 use std::path::{Path, PathBuf};
-use std::sync::{Mutex, OnceLock};
+use std::sync::{Mutex, OnceLock, PoisonError};
 use std::time::Duration;
 use web_time::{SystemTime, UNIX_EPOCH};
 
@@ -99,6 +100,9 @@ pub struct Updater {
     tx: watch::Sender<Status>,
     /// One check, download or install at a time.
     job: Mutex<()>,
+    /// One content-bundle fetch at a time. Kept apart from `job`: the
+    /// bundle is megabytes, and a tap on "download" must not wait for it.
+    content_job: Mutex<()>,
 }
 
 /// The one updater in this process, whichever opens it first: the app's

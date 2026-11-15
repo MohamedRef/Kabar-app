@@ -107,7 +107,9 @@ fn app(c: Case) -> Element {
     // Which sheet the shell would show, so a click that opens or closes one
     // can be seen on the page.
     let probe = nav.filter(|_| c.probe).map(|n| format!("[sheet: {:?}]", *n.0.read()));
+    let held = use_signal(|| Some(s.clone()));
     rsx! {
+        super::stage::MeteredConfirmView { status: held }
         match c.view {
             View::Card | View::CardAlone => rsx! { UpdatesCardFor { s } },
             View::Banner => rsx! { UpdateBannerFor { s } },
@@ -301,7 +303,7 @@ fn each_step_of_an_update_has_its_own_headline_and_button() {
         let html = card(status(phase.clone()));
         assert!(has(&html, EN, headline), "{phase:?}: {html}");
         if let Some(b) = button {
-            assert!(html.contains(&format!(">{}</button>", ut(EN, b))), "{phase:?} needs {b:?}: {html}");
+            assert!(html.contains(&format!(">{}", ut(EN, b))), "{phase:?} needs {b:?}: {html}");
         }
     }
     // The installing permission gets a second button to Android's settings.
@@ -440,12 +442,14 @@ fn the_offer_sheet_counts_builds_and_kinds_and_holds_the_button() {
     };
     let html = render(s, EN, View::Sheet(SheetMode::Offer));
     assert!(html.contains("1.0 MB / 3.3 MB"), "{html}");
-    assert!(html.contains("Faster lessons"), "notes when there are no change lines");
+    // The step replaces the notes; they are one tap away.
+    assert!(!html.contains("Faster lessons") && has(&html, EN, U::StageShowNotes), "{html}");
 
-    // A failed download is named at the foot.
+    // A failed download is the sheet's own step, with its way out.
     let s = status(Phase::Failed { offer: Some(offer(122, vec![])), why: Failure::Network });
     let html = render(s, EN, View::Sheet(SheetMode::Offer));
-    assert!(html.contains(r#"role="alert""#) && has(&html, EN, U::FailedDownload), "{html}");
+    assert!(html.contains(r#"data-stage="failed""#) && has(&html, EN, U::FailedDownload), "{html}");
+    assert!(has(&html, EN, U::TryAgain) && !has(&html, EN, U::Available), "{html}");
 }
 
 #[test]
@@ -959,4 +963,90 @@ fn installing_from_the_banner_rechecks_the_download_first() {
     let Phase::Failed { offer, why } = u.status().phase else { unreachable!() };
     assert_eq!(offer, Some(o));
     assert!(matches!(why, Failure::Verify(_) | Failure::Install(_)), "{why:?}");
+}
+
+fn big_offer() -> Offer {
+    let mut o = offer(122, vec![build(122, vec![change(ChangeKind::New, "Story mode")])]);
+    o.asset.size = 48_873_640;
+    o
+}
+
+/// Past the tap, Offer mode shows one view per step instead of the notes,
+/// the footer says the step, and the notes are one tap away (Batna #1339).
+#[test]
+fn each_step_has_its_own_view_and_the_footer_says_it() {
+    let o = big_offer();
+    let sheet = |p: Phase| render(status(p), EN, View::Sheet(SheetMode::Offer));
+    let html = sheet(Phase::Available(o.clone()));
+    assert!(
+        !html.contains(r#"class="us-stage-view""#) && html.contains("Story mode"),
+        "notes before the tap: {html}"
+    );
+    assert!(html.contains(&format!("{} · ", ut(EN, U::Download))) && html.contains("46.6 MB"), "{html}");
+
+    let html = sheet(Phase::Downloading { offer: o.clone(), done: o.asset.size / 2 });
+    for text in
+        [r#"data-stage="downloading""#, r#"class="us-ring""#, "50%", "23.3 MB", r#"class="us-foot-state""#]
+    {
+        assert!(html.contains(text), "downloading: missing {text}: {html}");
+    }
+    assert!(has(&html, EN, U::StageBackground) && !html.contains("Story mode"), "{html}");
+    for (phase, kind) in [
+        (Phase::Installing(o.clone()), "installing"),
+        (Phase::Installed(o.clone()), "done"),
+        (Phase::NeedsPermission(o.clone()), "permission"),
+        (Phase::Failed { offer: Some(o.clone()), why: Failure::Verify("sha256 mismatch".into()) }, "failed"),
+    ] {
+        let html = sheet(phase.clone());
+        assert!(html.contains(&format!(r#"class="us-stage-view" data-stage="{kind}""#)), "{kind}: {html}");
+        assert!(!html.contains("Story mode"), "{kind}: {html}");
+    }
+    let html = sheet(Phase::NeedsPermission(o.clone()));
+    assert!(has(&html, EN, U::OpenPermission) && has(&html, EN, U::PermissionHint), "{html}");
+    let html = sheet(Phase::Failed { offer: None, why: Failure::TooNew });
+    assert!(has(&html, EN, U::TooNew) && has(&html, EN, U::OpenReleases), "{html}");
+
+    let mut p = Page::new(status(Phase::Installed(o)), EN, View::Sheet(SheetMode::Offer));
+    p.click(ut(EN, U::StageShowNotes));
+    assert!(p.html().contains("Story mode") && has(&p.html(), EN, U::StageHideNotes), "{}", p.html());
+}
+
+/// A failed download keeps its banner until "Later".
+#[test]
+fn a_failed_download_keeps_its_banner() {
+    let o = big_offer();
+    let failed = status(Phase::Failed { offer: Some(o.clone()), why: Failure::Network });
+    let html = render(failed.clone(), EN, View::Banner);
+    assert!(has(&html, EN, U::FailedDownload) && has(&html, EN, U::TryAgain), "{html}");
+    let mut closed = failed;
+    closed.prefs.dismissed = Some(o.key());
+    assert!(!has(&render(closed, EN, View::Banner), EN, U::FailedDownload));
+}
+
+/// On mobile data a manual download asks first, with the size; on Wi-Fi
+/// it doesn't (Batna #1339).
+#[test]
+fn a_download_on_mobile_data_asks_first() {
+    let s = status(Phase::Available(big_offer()));
+    let mut p = Page::new(s.clone(), EN, View::Sheet(SheetMode::Offer));
+    p.click(ut(EN, U::Download));
+    assert!(!has(&p.html(), EN, U::MeteredTitle), "Wi-Fi: no question: {}", p.html());
+
+    super::stage::FAKE_METERED.with(|m| m.set(true));
+    let mut p = Page::new(s.clone(), EN, View::Sheet(SheetMode::Offer));
+    p.click(ut(EN, U::Download));
+    let html = p.html();
+    super::stage::FAKE_METERED.with(|m| m.set(false));
+    for u in [U::MeteredTitle, U::MeteredNow, U::MeteredWait] {
+        assert!(has(&html, EN, u), "missing {u:?}: {html}");
+    }
+    assert!(html.contains("46.6 MB"), "{html}");
+    p.click(ut(EN, U::MeteredWait));
+    assert!(!has(&p.html(), EN, U::MeteredTitle), "answered: {}", p.html());
+
+    let mut waiting = s;
+    if let Phase::Available(o) = &waiting.phase {
+        waiting.prefs.wifi_download = Some(o.key());
+    }
+    assert!(has(&card(waiting), EN, U::WifiQueued));
 }
