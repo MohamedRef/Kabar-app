@@ -24,7 +24,9 @@ use std::path::Path;
 use std::process::Command;
 
 use anyhow::{Context, Result, bail, ensure};
-use kabar_protocol::update::{BuildChanges, Change, ChangeKind, HISTORY_BUILDS, UpdateManifest, UpdateNotes};
+use kabar_protocol::update::{
+    AREAS, BuildChanges, Change, ChangeKind, HISTORY_BUILDS, Open, UpdateManifest, UpdateNotes, is_level,
+};
 use serde::Deserialize;
 
 /// Where the files live, from the repository root.
@@ -45,6 +47,13 @@ struct Line {
     en: String,
     #[serde(default)]
     ar: String,
+    /// A level (`bipa3`, `j2`) or an app area ([`AREAS`]): the sheet
+    /// groups by it.
+    #[serde(default)]
+    scope: Option<String>,
+    /// A lesson (`bipa3.u02.l04`), a unit (`bipa3.u02`) or a screen.
+    #[serde(default)]
+    open: Option<String>,
 }
 
 /// Parses and checks one `changes/*.yaml`.
@@ -77,14 +86,24 @@ fn convert(lines: Vec<Line>) -> Result<Vec<Change>> {
                 ensure!(!s.contains('\n'), "{lang} is more than one line");
             }
             ensure!(l.ar_eg.chars().any(is_arabic), "ar_eg has no Arabic: {:?}", l.ar_eg);
-            Ok(Change {
-                kind: l.kind,
-                text: UpdateNotes {
-                    en: l.en.trim().into(),
-                    ar_eg: l.ar_eg.trim().into(),
-                    ar: l.ar.trim().into(),
-                },
-            })
+            let scope = l.scope.map(|s| s.trim().to_owned());
+            if let Some(s) = scope.as_deref() {
+                ensure!(
+                    is_level(s) || AREAS.contains(&s),
+                    "scope {s:?}: a level such as bipa3 or j2, or an app area ({})",
+                    AREAS.join(", ")
+                );
+            }
+            let open = l.open.map(|s| s.trim().to_owned());
+            if let Some(o) = open.as_deref() {
+                ensure!(
+                    Open::parse(o).is_some(),
+                    "open {o:?}: a lesson (bipa3.u02.l04), a unit (bipa3.u02) or a screen"
+                );
+            }
+            let text =
+                UpdateNotes { en: l.en.trim().into(), ar_eg: l.ar_eg.trim().into(), ar: l.ar.trim().into() };
+            Ok(Change { scope, open, ..Change::new(l.kind, text) })
         })
         .collect()
 }
@@ -113,7 +132,7 @@ pub fn from_title(title: &str) -> Option<Change> {
         _ => ChangeKind::Improved,
     };
     let en: String = t.chars().take(MAX_CHARS).collect();
-    Some(Change { kind, text: UpdateNotes { en, ..UpdateNotes::default() } })
+    Some(Change::new(kind, UpdateNotes { en, ..UpdateNotes::default() }))
 }
 
 /// A pull request's title as the feed shows it: no "(#123)", "(Fixes
@@ -194,10 +213,77 @@ pub fn collect(root: &Path, since: Option<&str>) -> Result<Vec<Change>> {
                 ("M", Some(p)) => parse(&git(root, &["show", &format!("{p}:{f}")])?).unwrap_or_default(),
                 _ => Vec::new(),
             };
-            out.extend(now.into_iter().filter(|l| !before.contains(l)));
+            // By its words: a scope or target added later doesn't make it new.
+            out.extend(
+                now.into_iter().filter(|l| !before.iter().any(|b| b.kind == l.kind && b.text == l.text)),
+            );
         }
     }
     Ok(out)
+}
+
+/// Scope and target by a line's Egyptian Arabic ([`labels`]).
+pub type Labels = BTreeMap<String, (Option<String>, Option<String>)>;
+
+/// Where each line of every file points, by its Egyptian Arabic: older
+/// feeds carry lines from before `scope` and `open`, and [`label`] gives
+/// them what the files say now.
+pub fn labels(root: &Path) -> Result<Labels> {
+    let mut out = BTreeMap::new();
+    // No folder (a feed built outside the repository): nothing to give.
+    for e in std::fs::read_dir(root.join(DIR)).into_iter().flatten().flatten() {
+        let path = e.path();
+        if path.extension().is_some_and(|x| x == "yaml") {
+            let text = std::fs::read_to_string(&path)?;
+            for c in parse(&text).with_context(|| path.display().to_string())? {
+                if c.scope.is_some() || c.open.is_some() {
+                    out.insert(c.text.ar_eg, (c.scope, c.open));
+                }
+            }
+        }
+    }
+    Ok(out)
+}
+
+/// Gives lines with neither a scope nor a target what [`labels`] knows.
+pub fn label(history: &mut [BuildChanges], labels: &Labels) {
+    for c in history.iter_mut().flat_map(|b| b.changes.iter_mut()) {
+        if c.scope.is_none()
+            && c.open.is_none()
+            && let Some((scope, open)) = labels.get(c.text.ar_eg.trim())
+        {
+            c.scope.clone_from(scope);
+            c.open.clone_from(open);
+        }
+    }
+}
+
+/// The lessons of a checkout (`content/lessons/<lang>/<id>.yaml`), or
+/// `None` without content.
+fn lesson_ids(root: &Path) -> Option<Vec<String>> {
+    let dir = root.join("content/lessons");
+    let mut out = Vec::new();
+    for lang in std::fs::read_dir(&dir).ok()?.flatten() {
+        for f in std::fs::read_dir(lang.path()).into_iter().flatten().flatten() {
+            let name = f.file_name().to_string_lossy().into_owned();
+            if let Some(id) = name.strip_suffix(".yaml") {
+                out.push(id.to_owned());
+            }
+        }
+    }
+    Some(out)
+}
+
+/// What's wrong with where `c` points, if anything.
+fn target_problem(lessons: &[String], c: &Change) -> Option<String> {
+    let missing = match c.open.as_deref().and_then(Open::parse)? {
+        Open::Lesson(id) => !lessons.iter().any(|l| l == id),
+        Open::Unit(id) => !lessons.iter().any(|l| l.starts_with(&format!("{id}."))),
+        Open::Screen(_) => false,
+    };
+    missing.then(|| {
+        format!("{:?}: open {:?} is not in content/lessons", c.text.ar_eg, c.open.as_deref().unwrap_or(""))
+    })
 }
 
 /// This build's entry on top of the previous feed's history (same channel),
@@ -261,11 +347,18 @@ pub fn notes_from(changes: &[Change]) -> UpdateNotes {
 /// Checks every file under `changes/`.
 pub fn check_all(root: &Path) -> Result<usize> {
     let dir = root.join(DIR);
+    let lessons = lesson_ids(root);
     let mut n = 0;
     for e in std::fs::read_dir(&dir).with_context(|| dir.display().to_string())? {
         let path = e?.path();
         if path.extension().is_some_and(|x| x == "yaml") {
-            parse(&std::fs::read_to_string(&path)?).with_context(|| path.display().to_string())?;
+            let lines =
+                parse(&std::fs::read_to_string(&path)?).with_context(|| path.display().to_string())?;
+            if let Some(lessons) = &lessons
+                && let Some(p) = lines.iter().find_map(|c| target_problem(lessons, c))
+            {
+                bail!("{}: {p}", path.display());
+            }
             n += 1;
         }
     }
@@ -292,6 +385,40 @@ mod tests {
         assert!(parse("- kind: new\n  ar_eg: صوت\n").is_err());
         assert!(parse("- kind: moved\n  ar_eg: صوت\n  en: x\n").is_err());
         assert!(parse("[]").unwrap().is_empty());
+    }
+
+    #[test]
+    fn a_line_can_name_its_level_and_what_it_opens() {
+        let base = "- kind: new\n  ar_eg: درس جديد\n  en: A new lesson\n";
+        let c = parse(&format!("{base}  scope: bipa3\n  open: bipa3.u02.l04\n")).unwrap();
+        assert_eq!((c[0].scope.as_deref(), c[0].open.as_deref()), (Some("bipa3"), Some("bipa3.u02.l04")));
+        assert!(parse(&format!("{base}  scope: hb\n")).is_err(), "neither a level nor an area");
+        assert!(parse(&format!("{base}  open: https://x\n")).is_err());
+        let lessons = vec!["bipa3.u02.l04".to_owned()];
+        let line = |open: &str| parse(&format!("{base}  open: {open}\n")).unwrap().remove(0);
+        for ok in ["bipa3.u02.l04", "bipa3.u02", "reader"] {
+            assert_eq!(target_problem(&lessons, &line(ok)), None, "{ok}");
+        }
+        for bad in ["bipa3.u02.l05", "bipa3.u03"] {
+            assert!(target_problem(&lessons, &line(bad)).is_some(), "{bad}");
+        }
+    }
+
+    #[test]
+    fn older_feed_lines_take_the_scope_the_files_give_them() {
+        let dir = tempfile::tempdir().unwrap();
+        std::fs::create_dir_all(dir.path().join(DIR)).unwrap();
+        let one = "- kind: new\n  ar_eg: درس جديد\n  en: A new lesson\n";
+        std::fs::write(dir.path().join("changes/a.yaml"), format!("{one}  scope: j2\n")).unwrap();
+        let mut h = vec![BuildChanges {
+            version: "1.0.0".into(),
+            build: 1,
+            published_at: String::new(),
+            changes: parse(one).unwrap(),
+            content_only: false,
+        }];
+        label(&mut h, &labels(dir.path()).unwrap());
+        assert_eq!(h[0].changes[0].scope.as_deref(), Some("j2"));
     }
 
     #[test]

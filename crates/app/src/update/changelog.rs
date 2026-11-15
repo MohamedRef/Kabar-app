@@ -158,13 +158,15 @@ mod tests {
             changes: kinds
                 .iter()
                 .enumerate()
-                .map(|(i, k)| Change {
-                    kind: *k,
-                    text: UpdateNotes {
-                        en: format!("change {i}"),
-                        ar_eg: format!("تغيير {i}"),
-                        ar: String::new(),
-                    },
+                .map(|(i, k)| {
+                    Change::new(
+                        *k,
+                        UpdateNotes {
+                            en: format!("change {i}"),
+                            ar_eg: format!("تغيير {i}"),
+                            ar: String::new(),
+                        },
+                    )
                 })
                 .collect(),
             content_only: false,
@@ -206,10 +208,8 @@ mod tests {
 
     #[test]
     fn english_only_lines_are_marked_latin_in_arabic() {
-        let c = Change {
-            kind: ChangeKind::Improved,
-            text: UpdateNotes { en: "Journey bar".into(), ..Default::default() },
-        };
+        let c =
+            Change::new(ChangeKind::Improved, UpdateNotes { en: "Journey bar".into(), ..Default::default() });
         assert_eq!(line(UiLanguage::ArEg, &c), ("Journey bar".into(), true));
         assert_eq!(line(UiLanguage::En, &c), ("Journey bar".into(), false));
     }

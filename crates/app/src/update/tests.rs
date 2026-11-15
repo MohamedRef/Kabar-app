@@ -20,7 +20,7 @@ fn offer(version: &str, build: u64) -> Offer {
     }
 }
 
-fn status(phase: Phase, mode: Mode) -> Status {
+pub(super) fn status(phase: Phase, mode: Mode) -> Status {
     Status {
         off: None,
         phase,

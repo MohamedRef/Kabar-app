@@ -216,6 +216,9 @@ macOS-15 runners are sometimes not acquired: rerun failed jobs later.
 2. Add `changes/<topic>.yaml` (every PR; CI fails without one):
    `- {kind: new|improved|fixed, ar_eg: "...", en: "..."}` (optional `ar`),
    one line per change the learner can see; quote lines containing `:`.
+   Give a `scope` (level such as `bipa3`/`j2`, or app area) whenever you can,
+   and an `open` (lesson, unit or screen) when the line is about one; the
+   What's new sheet groups by scope and opens the target (RELEASE.md §5).
    Housekeeping PRs add a file holding `[]`; a README-only PR needs none.
 3. Update this file if behaviour, process, commands or state changed; update
    README's hand-written feature/roadmap/run tables when they change.
@@ -253,6 +256,8 @@ macOS-15 runners are sometimes not acquired: rerun failed jobs later.
   unit live in the `packs` release. [RELEASE.md](RELEASE.md),
   [COMPATIBILITY.md](COMPATIBILITY.md).
 - What's new comes from `changes/*.yaml` (Morphe-style sheet before/after an update).
+  A release groups by level/app (`scope`), and a line with `open` opens its
+  lesson, unit or screen.
 - A check shows the app's answer as soon as the feed is read; a newer
   content bundle downloads after it. Every update request fails after 20 s
   without progress (lookup, connect, each read), so a connection Android cut
@@ -409,6 +414,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-15: What's new groups a release by level (same design as Batna #1340): `changes/*.yaml` lines take an optional `scope` (level or app area) and `open` (lesson, unit or screen), carried in the feed; the sheet shows the app, then one row per level with counts, and a line opens its lesson (closing it brings the sheet back), unit or screen. A one-off pass scoped 213 of 230 existing lines; old feed lines get theirs by their Arabic text when a manifest is built.
 - 2026-11-15: dependency advisories green: `rsa` 0.9 → 0.10 + `sha2` 0.11 (`crates/server`, RUSTSEC-2023-0071; `pkcs1v15` feature now opt-in, keys decode with `BoxedUint`, FCM signing uses `PrivateKey`), `quick-xml` 0.38 → 0.41 (`crates/tools`, RUSTSEC-2026-0194/0195), `rustix` 1.1.6. The 6 remaining audit lines are warnings with no upstream fix or GTK-only.
 - 2026-11-13: review #633 (BIPA 5 u06–u10): 63 lessons get Indonesian comprehension options with Arabic `explain:`, 2–3 sentence listening texts and one compound translate/dictation each; with u01–u05 (#642) the BIPA 5 line in `content/demand-limits.tsv` is now 0.0 / 1.2 / 17.5.
 - 2026-11-13: review #633 (BIPA 7 u06–u10): comprehension options in Indonesian with the Arabic in `explain`, listening texts grown to a short paragraph (~25–35 words), one multi-clause item per lesson; with both BIPA 7 halves in, `bipa7` line in `content/demand-limits.tsv` tightened to 0.0 / 1.5 / 28.1. All items stay unverified.
