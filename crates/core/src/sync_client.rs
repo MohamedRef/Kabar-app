@@ -177,7 +177,10 @@ pub struct Backoff {
 }
 
 impl Backoff {
-    pub const MAX_MS: u64 = 5 * 60 * 1000;
+    /// One minute: Kabar Cloud is one learner's hub, so a quick retry costs
+    /// nothing, while five minutes left changes waiting long after the
+    /// network was back.
+    pub const MAX_MS: u64 = 60 * 1000;
 
     /// Delay before the next attempt. `jitter` is uniform in `0.0..1.0`.
     pub fn next_delay_ms(&mut self, jitter: f64) -> u64 {
@@ -318,7 +321,7 @@ mod tests {
     }
 
     #[test]
-    fn backoff_doubles_up_to_five_minutes() {
+    fn backoff_doubles_up_to_a_minute() {
         let mut b = Backoff::default();
         assert_eq!(b.next_delay_ms(1.0), 1000);
         assert_eq!(b.next_delay_ms(1.0), 2000);

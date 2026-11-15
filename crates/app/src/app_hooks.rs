@@ -212,6 +212,19 @@ pub(super) fn refresh(ui: Ui, mut device_dark: Signal<Option<bool>>) {
 /// at start and whenever the window comes back.
 pub(super) fn use_share_inbox(ui: Ui, inbox: reader::Inbox) {
     let cloud = use_context::<Cloud>();
+    // The network came back (the WebView's `online` event): sync now
+    // rather than wait out the backoff.
+    use_future(move || async move {
+        let mut eval = document::eval(
+            r#"
+            window.addEventListener("online", () => dioxus.send(true));
+            await new Promise(() => {});
+            "#,
+        );
+        while eval.recv::<bool>().await.is_ok() {
+            cloud.send(Command::SyncNow);
+        }
+    });
     use_future(move || async move {
         let mut eval = document::eval(
             r#"

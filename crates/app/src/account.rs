@@ -245,6 +245,17 @@ fn SignedIn(status: CloudStatus) -> Element {
             }
         }
         div { class: "sync-actions",
+            button {
+                class: "primary",
+                // Already on its way: pressing again would only restart it.
+                disabled: matches!(status.sync, SyncState::Connecting | SyncState::CatchingUp),
+                onclick: move |_| cloud.send(Command::SyncNow),
+                if matches!(status.sync, SyncState::Connecting | SyncState::CatchingUp) {
+                    "{ui.t(AccountMsg::Syncing)}"
+                } else {
+                    "{ui.t(AccountMsg::SyncNow)}"
+                }
+            }
             button { onclick: move |_| cloud.send(Command::SignOut), "{ui.t(AccountMsg::CloudSignOut)}" }
         }
     }
