@@ -409,7 +409,7 @@ Rules (Mohamed's decisions; all in force):
 | Web | phases 1–2 live (sync, AI, voices, password sign-in); phase 3 offline packs + OCR |
 | M9 Studio | mind maps only; pen writing paused |
 | M13 | content done; performance pass open; aksara and widgets parked |
-| Releases | `v2026.11.1` published 2026-11-08 (alpha channel, first calendar version); previews every 4 h |
+| Releases | `v2026.11.10` published 2026-11-15 (alpha channel; calendar versions since `v2026.11.1`, 2026-11-08); previews every 4 h |
 | Critic loop | final pass 10 done 2026-11-04; loop closed. Don't start another unless asked. |
 | Open PRs / issues | None on 2026-11-09 (#608, Android Google sign-in, merged 2026-11-05) |
 | Mac desk tools | ⌘K quick search, drag-to-resize sidebar and Reader word panel, review focus mode (`crates/app/src/desk/`, 2026-11-11, ported from Batna) |
@@ -448,6 +448,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-15: Text size («أكبر» etc.) now sits on `<html data-text-size>` too, set by the shell (`text_size_script` in `main.rs`); main.css reads it there and keeps `html:has(.app[…])` as the fallback. Chromium sometimes left the `:has()` rule stale, so «أكبر» stayed at 16px (Settings browser run failed twice on 2026-11-15, different cases each time).
 - 2026-11-15: What's new gets a digest line per release (changes, levels, the busiest level), a box of lessons you had finished that the release changed (each opens), and changelog search with level and kind filters across every kept build (same design as Batna #1346).
 - 2026-11-15: «ابدأ من الأول» per level or the whole course (ported from Batna #1341): one synced `reset.*` setting whose row HLC is the cutoff for answers, finished lessons and Lanjut; nothing deleted, undo removes it; backup first.
 - 2026-11-15: What's new groups a release by level (same design as Batna #1340): `changes/*.yaml` lines take an optional `scope` (level or app area) and `open` (lesson, unit or screen), carried in the feed; the sheet shows the app, then one row per level with counts, and a line opens its lesson (closing it brings the sheet back), unit or screen. A one-off pass scoped 213 of 230 existing lines; old feed lines get theirs by their Arabic text when a manifest is built.

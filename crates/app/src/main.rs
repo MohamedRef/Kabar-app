@@ -272,6 +272,13 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         ));
     });
 
+    // Text size scales rem units, so it has to sit on <html>; main.css
+    // reads it there (html:has() alone is sometimes left stale by Chromium).
+    use_effect(move || {
+        let size = prefs.text_size.read().as_str();
+        document::eval(&text_size_script(size));
+    });
+
     let settings = ui.settings.read();
     let lang = settings.ui_language;
     let theme = settings.theme.resolved(*device_dark.read()).as_str();
@@ -351,4 +358,20 @@ fn WebNotice() -> Element {
     return rsx! { platform::web::StorageNotice {} };
     #[cfg(not(target_arch = "wasm32"))]
     rsx! {}
+}
+
+/// Puts the text size on the page root, where rem units read it.
+pub(crate) fn text_size_script(size: &str) -> String {
+    format!("document.documentElement.setAttribute('data-text-size',{size:?});")
+}
+
+#[cfg(test)]
+mod text_size_tests {
+    #[test]
+    fn text_size_goes_on_the_page_root() {
+        assert_eq!(
+            super::text_size_script("larger"),
+            "document.documentElement.setAttribute('data-text-size',\"larger\");"
+        );
+    }
 }
