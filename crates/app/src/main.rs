@@ -41,6 +41,7 @@ mod play;
 mod portraits;
 mod pron;
 mod reader;
+mod reset;
 mod review;
 mod schedule;
 mod screen;

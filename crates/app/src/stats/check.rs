@@ -97,7 +97,9 @@ fn conclude(db: &Db, coach: Coach, s: &Setup, runner: Option<&TestRunner>) -> Le
     let now = coach.now();
     let logs = load_logs(db);
     let events = coach.events.peek().clone();
-    let totals = core_stats::day_totals(&events, &logs.log, coach.zone());
+    // Study time is history: the whole log, a reset's older answers too.
+    let history = crate::persistence::read_or("the review log", db.0.borrow().review_log());
+    let totals = core_stats::day_totals(&events, &history, coach.zone());
     let res: Option<TestResults> = runner.map(TestRunner::results);
 
     // The radar: this check's skill shares blended with the last month.

@@ -25,6 +25,7 @@ pub mod pagi;
 pub mod penlab;
 pub mod pron;
 pub mod reader;
+pub mod reset;
 pub mod review;
 pub mod settings;
 pub mod srs;

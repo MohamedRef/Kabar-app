@@ -741,12 +741,26 @@ impl Store {
 
 impl Store {
     /// Ids of finished lessons and passed level tests, for the Journey Map.
+    /// A finish from before a reset of its level is left out (`resets`).
     pub fn completed_lessons(&self) -> Result<BTreeSet<String>> {
         let mut stmt = self.conn.prepare(
-            "SELECT DISTINCT lesson_id FROM lesson_events WHERE kind = 'completed' AND deleted = 0",
+            "SELECT lesson_id, hlc_wall, hlc_counter, device_id FROM lesson_events
+             WHERE kind = 'completed' AND deleted = 0",
         )?;
-        let ids = stmt.query_map([], |r| r.get::<_, String>(0))?.collect::<rusqlite::Result<_>>()?;
-        Ok(ids)
+        let rows = stmt
+            .query_map([], |r| {
+                Ok((
+                    r.get::<_, String>(0)?,
+                    Hlc {
+                        wall_ms: r.get::<_, i64>(1)? as u64,
+                        counter: r.get(2)?,
+                        device: DeviceId(r.get(3)?),
+                    },
+                ))
+            })?
+            .collect::<rusqlite::Result<Vec<_>>>()?;
+        let resets = self.resets()?;
+        Ok(rows.into_iter().filter(|(id, hlc)| resets.lesson_counts(id, hlc)).map(|(id, _)| id).collect())
     }
 
     /// Lessons whose content the learner checked, on any device, and how:
@@ -902,20 +916,9 @@ impl Store {
     }
 
     /// The newest unfinished lesson position from any device (Lanjut).
+    /// A position from before a reset of its level is left out.
     pub fn position(&self) -> Result<Option<LessonPosition>> {
-        let payload = self
-            .conn
-            .query_row(
-                "SELECT payload FROM sessions WHERE deleted = 0
-                 ORDER BY hlc_wall DESC, hlc_counter DESC, device_id DESC LIMIT 1",
-                [],
-                |r| r.get::<_, String>(0),
-            )
-            .optional()?;
-        Ok(match payload {
-            Some(p) => Some(serde_json::from_str(&p)?),
-            None => None,
-        })
+        self.position_after_resets()
     }
 }
 
@@ -932,6 +935,8 @@ pub struct LessonEvent {
 // Review cards and the review log (M6).
 mod reader;
 mod reviews;
+// «ابدأ من الأول»: reset markers and the readers that honour them.
+mod resets;
 pub use reader::{Highlight, SavedText, SavedWord, TextKind};
 // Tablet Studio ink: notebooks, pages, strokes, items, transcripts (M9).
 mod ink;
@@ -961,5 +966,7 @@ pub fn now_ms() -> u64 {
 
 #[cfg(test)]
 mod journey_tests;
+#[cfg(test)]
+mod reset_tests;
 #[cfg(test)]
 mod tests;

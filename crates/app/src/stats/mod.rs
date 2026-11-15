@@ -135,7 +135,8 @@ pub fn load_logs(db: &Db) -> Logs {
         crate::persistence::read_failed("cards", &e);
         Vec::new()
     });
-    let log = store.review_log().unwrap_or_else(|e| {
+    // Word strength follows a reset; minutes and streaks read the whole log.
+    let log = store.progress_log().unwrap_or_else(|e| {
         crate::persistence::read_failed("the review log", &e);
         Vec::new()
     });
