@@ -185,7 +185,25 @@ goes out at the next run.
 - kind: fixed
   ar_eg: الصوت مبقاش بيقطع لما تقفل الشاشة
   en: Audio no longer cuts out with the screen off
+  scope: listen          # optional, give it whenever you can
+  open: listen           # optional
 ```
+
+`scope` says what the line is about, so the sheet can group a release: a
+level (`bipa1`…`bipa7`, `j1`…`j6`) or an app area (`app`, `today`,
+`journey`, `lesson`, `reader`, `review`, `coach`, `play`, `studio`,
+`listen`, `chat`, `teach`, `journal`, `stats`, `pron`, `aksara`, `sync`,
+`updates`, `settings`, `mac`; `kabar_protocol::update::AREAS`). `open`
+makes the line a link: a lesson (`bipa3.u02.l04`), a unit (`bipa3.u02`, the
+Journey) or a screen (`today`, `journey`, `reader`, `review`, `coach`,
+`play`, `studio`, `listen`, `chat`, `teach`, `journal`, `stats`). A line
+that opens a lesson or unit needs no scope. `update changes` refuses an
+unknown scope and a lesson or unit that isn't in `content/lessons/`. Both
+are optional and older apps ignore them. On 2026-11-15 a one-off pass gave
+213 of the 230 existing lines a scope from the files the commit that wrote
+each line touched; older feed lines get theirs by their Egyptian Arabic
+when a manifest is built (`changes::label`), and adding a scope to an
+existing line doesn't make it a new line. Same design as Batna (#1340).
 
 A file holding `[]` says there's nothing to tell (CI, refactors, docs).
 A PR that only changes `README.md` (the daily refresh) needs no file.
@@ -207,7 +225,12 @@ The app keeps every history it verifies (`updates/history.json`) and shows
 it in one sheet, laid out like Morphe Manager's update dialog: the installed
 build → the new one, how many builds that is and a count per kind, then a
 timeline with the newest build open and a card per kind ("Show all" past
-six lines). It opens from the Today banner's "What's new?", from the
+six lines). A build whose lines span more than one group shows a row per
+group instead (`update/groups.rs`): the app first, then each level (BIPA,
+then Javanese), then lines nothing places, each with its count and a chip
+per kind, folded when the build has more than eight lines. A line with a
+target is a button: a lesson opens in the player and closing it brings the
+sheet back; a unit opens the Journey; a screen opens that screen. It opens from the Today banner's "What's new?", from the
 notification, and from Settings › Updates (also "Changelog": every
 build so far); downloading and installing happen in it too. At the first
 launch after an update it opens once by itself, listing everything since

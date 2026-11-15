@@ -205,7 +205,8 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
                     content_only: !carried.is_empty(),
                 });
             }
-            let history = changes::history(previous.as_ref(), entry, &changes::retro(root.path())?);
+            let mut history = changes::history(previous.as_ref(), entry, &changes::retro(root.path())?);
+            changes::label(&mut history, &changes::labels(root.path())?);
             let m = write_manifest(
                 &args.out,
                 args.channel,

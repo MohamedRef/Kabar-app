@@ -1,0 +1,40 @@
+/* A release's lines by level: one quiet row per group, folded on long
+   releases; kinds as small chips; a line that opens something is a button
+   with an arrow at its reading end (same design as Batna's groups.css). */
+.us-groups { display: grid; gap: .55rem; margin-block: .25rem .6rem; }
+.us-group { border: 1px solid var(--line); border-radius: 1.1rem; overflow: hidden; background: var(--us-surface); }
+.us-group-head {
+  inline-size: 100%; min-block-size: 3rem; display: flex; align-items: center; gap: .6rem;
+  padding: .55rem .875rem; border: 0; background: var(--us-raised); color: inherit;
+  font: inherit; text-align: start; cursor: pointer;
+}
+.us-group-name { margin: 0; font-size: .9375rem; font-weight: 700; }
+.us-group-kinds { display: inline-flex; flex-wrap: wrap; gap: .3rem; }
+.us-mini {
+  display: inline-flex; align-items: center; gap: .2rem; padding: .1rem .4rem;
+  border-radius: 999px; font-size: .75rem; font-weight: 600; font-variant-numeric: tabular-nums;
+  background: color-mix(in srgb, var(--hue) 12%, var(--bg));
+}
+.us-mini svg { inline-size: .75rem; block-size: .75rem; color: var(--hue); }
+.us-group-head .us-chevron { display: inline-grid; color: var(--muted); transition: transform var(--dur) var(--ease); }
+.us-group-head .us-chevron svg { inline-size: 1.25rem; block-size: 1.25rem; }
+.us-group-head[aria-expanded="true"] .us-chevron { transform: rotate(180deg); }
+.us-group-head .us-chip { margin-inline-start: auto; }
+.us-items li[data-kind] { --hue: inherit; }
+.us-items li[data-kind="new"] { --hue: var(--us-new); }
+.us-items li[data-kind="improved"] { --hue: var(--us-improved); }
+.us-items li[data-kind="fixed"] { --hue: var(--us-fixed); }
+.us-items li.us-linked { padding: 0; }
+.us-link {
+  inline-size: 100%; display: flex; align-items: center; gap: .5rem;
+  padding: .8rem .875rem; padding-inline-start: 2rem; border: 0; background: transparent;
+  color: inherit; font: inherit; line-height: 1.6; text-align: start; cursor: pointer;
+}
+.us-link-text { flex: 1; min-inline-size: 0; }
+.us-go-icon { flex: none; display: inline-grid; color: var(--us-new); }
+.us-go-icon svg { inline-size: 1.1rem; block-size: 1.1rem; }
+.app[dir="rtl"] .us-go-icon svg { transform: scaleX(-1); }
+.us-link:active { background: var(--us-raised); }
+@media (hover: hover) { .us-link:hover { background: color-mix(in srgb, var(--text) 4%, var(--us-surface)); } }
+@media (prefers-reduced-motion: reduce) { .us-group-head .us-chevron { transition: none; } }
+@media (forced-colors: active) { .us-mini { border: 1px solid ButtonText; } }
