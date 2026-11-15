@@ -152,6 +152,25 @@ Key design rules (also in `CLAUDE.md`):
     purpose: Kabar Cloud's cron has no zone history and must reach the
     same answer as the device.
 
+### Start over («ابدأ من الأول»)
+
+Ported from Batna #1341 (`crates/core/src/reset.rs`, `crates/app/src/reset/`,
+`store/resets.rs`). A reset is one synced LWW setting, `reset.<level>`
+(`bipa1`, `j3`) or `reset.all`; **its row's HLC is the cutoff** and
+**nothing is deleted**. Readers leave out progress at or before it:
+`Store::progress_log` (the review deck and word stats; `review_log` stays the
+whole log for minutes, streaks and the journal), `completed_lessons` (the
+Journey, stats, coach) and `position` (Lanjut). Cards a lesson added
+(`lesson.<level>.…`) belong to their level; every other card (Bridge seed,
+Reader, taught words) restarts only with `reset.all`. Lesson checks, saved
+and known words, the personal dictionary, highlights, XP/streak, the journal,
+placement and settings are never touched. Undo = a tombstone on the marker.
+Settings › Offline & storage has the card (pick a level or the whole course);
+each level head on the Journey has «ابدأ المستوى ده من الأول» once it has
+progress. A backup is saved first (no backup, no reset); a level takes a
+second tap, the whole course the typed word «ابدأ». Tests:
+`store/reset_tests.rs`, `reset/tests.rs`.
+
 ## 3. Build, test, run
 
 `just` drives everything (`brew install just`; in a cloud container it is
@@ -376,6 +395,7 @@ Rules (Mohamed's decisions; all in force):
 | Open PRs / issues | None on 2026-11-09 (#608, Android Google sign-in, merged 2026-11-05) |
 | Mac desk tools | ⌘K quick search, drag-to-resize sidebar and Reader word panel, review focus mode (`crates/app/src/desk/`, 2026-11-11, ported from Batna) |
 | Brand | K2 since 2026-11-08: kawung launcher icon on batik indigo; the same mark beside the name (`brand.rs`) |
+| Start over | «ابدأ من الأول» per level or the whole course (ported from Batna #1341): one synced marker `reset.<level>` / `reset.all` in `settings`, its row HLC is the cutoff; nothing deleted, undo removes it (see § 2 Start over) |
 | Coverage | 94.42% when last measured 2026-11-04 (floor 93) |
 
 ### Open work and known gaps
@@ -409,6 +429,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-15: «ابدأ من الأول» per level or the whole course (ported from Batna #1341): one synced `reset.*` setting whose row HLC is the cutoff for answers, finished lessons and Lanjut; nothing deleted, undo removes it; backup first.
 - 2026-11-15: dependency advisories green: `rsa` 0.9 → 0.10 + `sha2` 0.11 (`crates/server`, RUSTSEC-2023-0071; `pkcs1v15` feature now opt-in, keys decode with `BoxedUint`, FCM signing uses `PrivateKey`), `quick-xml` 0.38 → 0.41 (`crates/tools`, RUSTSEC-2026-0194/0195), `rustix` 1.1.6. The 6 remaining audit lines are warnings with no upstream fix or GTK-only.
 - 2026-11-13: review #633 (BIPA 5 u06–u10): 63 lessons get Indonesian comprehension options with Arabic `explain:`, 2–3 sentence listening texts and one compound translate/dictation each; with u01–u05 (#642) the BIPA 5 line in `content/demand-limits.tsv` is now 0.0 / 1.2 / 17.5.
 - 2026-11-13: review #633 (BIPA 7 u06–u10): comprehension options in Indonesian with the Arabic in `explain`, listening texts grown to a short paragraph (~25–35 words), one multi-clause item per lesson; with both BIPA 7 halves in, `bipa7` line in `content/demand-limits.tsv` tightened to 0.0 / 1.5 / 28.1. All items stay unverified.

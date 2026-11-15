@@ -237,6 +237,7 @@ pub fn StorageSection() -> Element {
     rsx! {
         crate::packs::settings::OfflinePacks {}
         crate::data_export::ExportCard {}
+        crate::reset::ResetCard {}
         Card {
             span { class: "label", "{st(ui.lang(), S::DataFolder)}" }
             if WEB || dir.is_empty() {
