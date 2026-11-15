@@ -7,6 +7,7 @@ use kabar_core::locale::{UiLanguage, eastern_arabic_digits};
 use kabar_protocol::update::{Channel, UpdateNotes};
 
 use super::sheet::{SheetMode, UpdateSheetNav};
+use super::stage::{ActLabel, StageButtons, StageExtras, stage};
 use super::text::{U, more_changes, ut};
 use super::{Failure, InstallTexts, Mode, NoticeContext, Off, Offer, Phase, Status, Updater};
 use crate::coach::Coach;
@@ -27,6 +28,15 @@ pub(super) const UPDATE_CSS: &str = r#"
   border-inline-start: 4px solid var(--sawah); }
 .update-banner .ub-text { flex: 1 1 14rem; min-inline-size: 0; }
 .update-banner .ub-text p { margin: 0; }
+.um-backdrop { position: fixed; inset: 0; z-index: 70; background: rgb(0 0 0 / .45); }
+.um-dialog {
+  position: fixed; z-index: 71; inset-inline: 1rem; inset-block-end: 1rem; margin-inline: auto; max-inline-size: 26rem;
+  display: grid; gap: .6rem; padding: 1.1rem 1.1rem 1rem; border-radius: 1.1rem;
+  background: var(--bg); color: var(--text); box-shadow: 0 12px 40px rgb(0 0 0 / .25);
+}
+.um-dialog h2 { margin: 0; font-size: 1.05rem; }
+.um-dialog p { margin: 0; }
+@media (min-width: 600px) { .um-dialog { inset-block: auto 30%; } }
 "#;
 
 /// The updater's status, following its thread.
@@ -108,34 +118,6 @@ fn channel_label(c: Channel) -> U {
         Channel::Alpha => U::Alpha,
         Channel::Beta => U::Beta,
         Channel::Stable => U::Stable,
-    }
-}
-
-/// The button that moves an offer forward, for the card and the banner.
-pub(super) fn primary_action(lang: UiLanguage, phase: &Phase) -> Option<(U, fn(UiLanguage))> {
-    fn download(_: UiLanguage) {
-        work(Updater::download);
-    }
-    fn install(lang: UiLanguage) {
-        let t = texts(lang);
-        work(move |u| u.install(t));
-    }
-    fn restart(_: UiLanguage) {
-        #[cfg(target_os = "macos")]
-        super::restart();
-    }
-    let _ = lang;
-    match phase {
-        Phase::Available(_) => Some((U::Download, download)),
-        Phase::Ready(_) if cfg!(target_os = "macos") => Some((U::InstallRestart, install)),
-        Phase::Ready(_) => Some((U::InstallNow, install)),
-        Phase::NeedsPermission(_) => Some((U::TryAgain, install)),
-        Phase::Installed(_) => Some((U::RestartNow, restart)),
-        Phase::Failed { offer: Some(_), why: Failure::Install(_) } => Some((U::TryAgain, install)),
-        Phase::Failed { offer: Some(_), why: Failure::Network | Failure::Verify(_) } => {
-            Some((U::TryAgain, download))
-        }
-        _ => None,
     }
 }
 
@@ -266,7 +248,7 @@ pub(super) fn UpdatesCardFor(s: Status) -> Element {
                         p { strong { "{ut(lang, U::Checking)}" } }
                     }
                 } else {
-                    PhaseView { phase: s.phase.clone(), auto: s.prefs.mode == Mode::Auto }
+                    PhaseView { phase: s.phase.clone(), queued: queued(&s) }
                 }
                 div { class: "update-found", role: "status", aria_live: "polite",
                     p { class: "muted small", "{last_checked(&ui, &s)}" }
@@ -430,32 +412,19 @@ fn restart_now() {
     super::restart();
 }
 
+/// The learner chose to wait for Wi-Fi for the offer on screen.
+pub(super) fn queued(s: &Status) -> bool {
+    matches!(&s.phase, Phase::Available(o) if s.prefs.wifi_download.as_deref() == Some(o.key().as_str()))
+}
+
 #[component]
-fn PhaseView(phase: Phase, auto: bool) -> Element {
+fn PhaseView(phase: Phase, queued: bool) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
-    let action = primary_action(lang, &phase);
-    let offer: Option<Offer> = match &phase {
-        Phase::Available(o)
-        | Phase::Ready(o)
-        | Phase::Installing(o)
-        | Phase::NeedsPermission(o)
-        | Phase::Installed(o)
-        | Phase::Downloading { offer: o, .. } => Some(o.clone()),
-        Phase::Failed { offer, .. } => offer.clone(),
-        _ => None,
-    };
-    let headline = headline(&phase);
-    let Some(headline) = headline else { return rsx! {} };
-    let detail = match &phase {
-        Phase::Failed { why: Failure::Verify(d) | Failure::Install(d), .. } => Some(d.clone()),
-        _ => None,
-    };
-    let progress = match &phase {
-        Phase::Downloading { offer, done } => Some((*done, offer.asset.size.max(1))),
-        _ => None,
-    };
-    let what_new = offer
+    let Some(st) = stage(&phase, cfg!(target_os = "android")) else { return rsx! {} };
+    let failed = st.failed;
+    let what_new = st
+        .offer
         .as_ref()
         .map(|o| {
             if o.changes.is_empty() {
@@ -464,15 +433,16 @@ fn PhaseView(phase: Phase, auto: bool) -> Element {
                 super::changelog::notice_lines(lang, &o.changes, |n| more_changes(lang, n))
             }
         })
-        .filter(|n| !n.is_empty());
+        .filter(|n| !n.is_empty() && !failed);
+    let size = st.offer.as_ref().map(|o| o.asset.size);
     rsx! {
         div { class: "update-state", role: "status", aria_live: "polite",
             p {
                 strong {
                     if matches!(phase, Phase::UpToDate) { "✓ " }
-                    "{ut(lang, headline)}"
+                    "{ut(lang, st.headline)}"
                 }
-                if let Some(o) = offer.as_ref().filter(|_| !matches!(phase, Phase::Failed { .. })) {
+                if let Some(o) = st.offer.as_ref().filter(|_| !failed) {
                     " "
                     bdi { dir: "ltr", class: "latin", "{o.label()}" }
                     if matches!(phase, Phase::Available(_)) {
@@ -483,44 +453,21 @@ fn PhaseView(phase: Phase, auto: bool) -> Element {
                     }
                 }
             }
-            if let Some((done, total)) = progress {
+            if let Some((done, total)) = st.progress {
                 progress { max: "{total}", value: "{done}" }
             }
-            if matches!(phase, Phase::Installing(_)) && cfg!(target_os = "android") {
-                p { class: "muted", "{ut(lang, U::InstallingAndroid)}" }
-            }
-            if matches!(phase, Phase::Available(_)) && auto && cfg!(target_os = "android") {
-            }
-            if matches!(phase, Phase::Installed(_)) {
-                p { class: "muted", "{ut(lang, U::NextLaunch)}" }
-            }
+            StageExtras { stage: st.clone() }
             if let Some(n) = what_new {
-                if !matches!(phase, Phase::Failed { .. }) {
-                    p { class: "update-notes",
-                        span { class: "muted update-notes-label", "{ut(lang, U::WhatsNew)}" }
-                        "{n}"
-                    }
+                p { class: "update-notes",
+                    span { class: "muted update-notes-label", "{ut(lang, U::WhatsNew)}" }
+                    "{n}"
                 }
             }
-            if let Some(d) = detail {
-                p { class: "muted lp-small", dir: "ltr", bdi { "{d}" } }
-            }
-            if let Some((label, run)) = action {
-                div { class: "row",
-                    button { class: "primary", onclick: move |_| run(lang), "{ut(lang, label)}" }
-                    if matches!(phase, Phase::NeedsPermission(_)) {
-                        button { onclick: move |_| open_install_permission(), "{ut(lang, U::OpenPermission)}" }
-                    }
-                }
+            StageButtons { phase: phase.clone(), acts: st.acts.clone(), size }
+            if queued {
+                p { class: "muted", "{ut(lang, U::WifiQueued)}" }
             }
         }
-    }
-}
-
-fn open_install_permission() {
-    #[cfg(target_os = "android")]
-    if let Err(e) = crate::platform::android::open_install_permission() {
-        crate::diag::report!("{e}");
     }
 }
 
@@ -562,13 +509,11 @@ pub(super) fn UpdateBannerFor(s: Status) -> Element {
             }
         };
     };
-    let Some((label, run)) = primary_action(lang, &s.phase) else { return rsx! {} };
-    let headline = match s.phase {
-        Phase::Available(_) => U::Available,
-        Phase::Installed(_) => U::Installed,
-        Phase::NeedsPermission(_) => U::NeedsPermission,
-        _ => U::Ready,
-    };
+    let Some(st) = stage(&s.phase, cfg!(target_os = "android")) else { return rsx! {} };
+    if st.acts.is_empty() {
+        return rsx! {};
+    }
+    let headline = st.headline;
     // The banner stays short: two lines, the sheet has the rest.
     let what_new = if offer.changes.is_empty() {
         notes(lang, &offer.notes)
@@ -590,7 +535,14 @@ pub(super) fn UpdateBannerFor(s: Status) -> Element {
                 }
             }
             div { class: "row",
-                button { class: "primary", onclick: move |_| run(lang), "{ut(lang, label)}" }
+                for (i, act) in st.acts.iter().copied().enumerate() {
+                    button {
+                        key: "{i}",
+                        class: if i == 0 { "primary" } else { "" },
+                        onclick: move |_| act.run(lang),
+                        ActLabel { act, phase: s.phase.clone(), size: Some(offer.asset.size) }
+                    }
+                }
                 if let Some(sheet) = sheet {
                     button { onclick: move |_| sheet.open(SheetMode::Offer), "{ut(lang, U::WhatsNewAsk)}" }
                 }

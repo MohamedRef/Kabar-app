@@ -135,6 +135,8 @@ pub(super) fn Shell() -> Element {
             more::MoreSheet {}
             settings::SettingsSheet {}
             update::sheet::UpdateSheet {}
+            // Over the sheet, whose download button can ask it.
+            update::stage::MeteredConfirm {}
             desk::search::QuickSearch {}
         }
     }

@@ -1351,3 +1351,22 @@ fn a_shown_notice_and_a_closed_whats_new_are_remembered_once() {
     assert_eq!(load_prefs(&u.dir).whats_new_from, None, "closing is saved");
     u.close_whats_new();
 }
+
+/// "Wait for Wi-Fi" downloads at the first unmetered step, in any mode,
+/// and only then (Batna #1339).
+#[test]
+fn a_download_queued_for_wifi_runs_on_the_next_unmetered_step() {
+    let feed = fixture_feed();
+    let url = serve(feed.path().to_path_buf());
+    let (u, _data) = updater(&url, "1.0.0-alpha.1");
+    u.set_mode(Mode::Notify);
+    u.check(false);
+    assert!(matches!(u.status().phase, Phase::Available(_)), "{:?}", u.status().phase);
+    u.download_on_wifi();
+    assert!(u.status().prefs.wifi_download.is_some());
+    u.step(Duration::from_secs(3600), true);
+    assert!(matches!(u.status().phase, Phase::Available(_)), "still on mobile data");
+    u.step(Duration::from_secs(3600), false);
+    assert!(matches!(u.status().phase, Phase::Ready(_)), "{:?}", u.status().phase);
+    assert_eq!(u.status().prefs.wifi_download, None, "done: the wish is cleared");
+}
