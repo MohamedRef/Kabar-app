@@ -25,6 +25,15 @@ async function run() {
       await page.emulateMedia({ colorScheme: item.scheme });
       await page.goto(pathToFileURL(path.join(fixtures, item.file)).href);
       await page.evaluate(() => document.fonts.ready);
+      // Under CPU load Chromium can hand back the root's computed font size
+      // from before the text-size rule applied (16px for «larger»); a frame
+      // or two later it is right. Wait, up to 3 s, for the page the learner
+      // sees; a size that never applies still fails the check below.
+      const expectedSize = (item.width < 600 ? 15 : 16) * (item.size === 'larger' ? 1.25 : 1);
+      await page.waitForFunction(
+        want => Math.abs(parseFloat(getComputedStyle(document.querySelector('.app')).fontSize) - want) <= 0.2,
+        expectedSize, { polling: 'raf', timeout: 3000 },
+      ).catch(() => {});
       const layout = await page.evaluate(() => {
         const root = document.querySelector('.app');
         const dialog = document.querySelector('.settings-window');
@@ -89,7 +98,6 @@ async function run() {
       // The production compact scale is 15px (normal) on phones; wider screens
       // use 16px. The "larger" accessibility setting scales both by 125%.
       // Check the intended scale at every width instead of imposing 16px on phones.
-      const expectedSize = (item.width < 600 ? 15 : 16) * (item.size === 'larger' ? 1.25 : 1);
       assert.ok(Math.abs(layout.fontSize - expectedSize) <= 0.2,
         `${name}: unexpected text scale ${layout.fontSize}px (expected ${expectedSize}px; ` +
         `data-text-size=${layout.textSize}, html:has() matched=${layout.textSizeRuleMatches}, ` +
