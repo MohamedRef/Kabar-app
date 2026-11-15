@@ -363,6 +363,18 @@ impl Engine {
                 self.retry_sign_in_now();
                 self.pump().await
             }
+            Command::SyncNow => {
+                self.retry_sign_in_now();
+                if let Some(ws) = self.ws.take() {
+                    ws.close().await;
+                    self.client.on_close();
+                }
+                self.opening = None;
+                self.asked_at = None;
+                self.problem = self.problem.filter(|p| !matches!(p, Problem::Network | Problem::Server));
+                self.backoff.reset();
+                self.retry_at = Instant::now();
+            }
             Command::Background(true) if !self.background => {
                 self.pump().await;
                 self.background = true;

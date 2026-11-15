@@ -122,6 +122,10 @@ pub enum Command {
     PushToken(String),
     /// A local write landed in the outbox.
     Kick,
+    /// «Sync now», or the network came back: a fresh connection right
+    /// away, skipping the backoff; it pulls what the other devices sent and
+    /// pushes the outbox.
+    SyncNow,
     /// Offer the held changes to Kabar Cloud again.
     SendHeldAgain,
     /// Let the held changes go: they stay here but won't reach the others.

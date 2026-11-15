@@ -695,3 +695,29 @@ fn two_holders_of_one_vault_take_turns_refreshing_without_signing_out() {
     assert!(rt.block_on(c.access_token(&api, super::engine::now_ms(), true)).is_ok());
     assert!(kept.load().is_some(), "still signed in");
 }
+
+#[test]
+fn sync_now_connects_at_once_instead_of_waiting_out_the_backoff() {
+    let cloud = FakeCloud::start();
+    let dir = tempfile::tempdir().unwrap();
+    let mut phone = signed_in(dir.path(), &cloud, "phone");
+    let knobs = &cloud.state.knobs;
+    knobs.socket_status.store(503, Ordering::SeqCst);
+    knobs.refuse_sockets.store(1000, Ordering::SeqCst);
+    let id = phone.store.device_id().clone();
+    cloud.close_sockets(&id, 1011);
+    // Tries up to 1, 2, 4 seconds apart: after the third the next waits 4 to 8.
+    eventually("three failed tries", || knobs.refuse_sockets.load(Ordering::SeqCst) <= 997);
+    phone.wait_status("offline", |s| s.sync == SyncState::Offline);
+    knobs.refuse_sockets.store(0, Ordering::SeqCst);
+    word(&mut phone, "id:rumah", "learning");
+    let pressed = std::time::Instant::now();
+    phone.send(Command::SyncNow);
+    phone.wait_status("synced", |s| s.sync == SyncState::Live && s.pending == 0 && s.problem.is_none());
+    assert!(pressed.elapsed() < Duration::from_millis(1500), "took {:?}", pressed.elapsed());
+
+    // While live it opens a fresh connection, which catches up again.
+    phone.send(Command::SyncNow);
+    phone.wait_status("reconnecting", |s| s.sync != SyncState::Live);
+    phone.wait_live();
+}
