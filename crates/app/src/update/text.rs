@@ -85,6 +85,16 @@ pub enum U {
     DaysAgo,
     ShowAll,
     ShowLess,
+    // a long release's summary, its finished lessons, and changelog search
+    Digest,
+    AndApp,
+    FinishedChanged,
+    Search,
+    AllLevels,
+    AllKinds,
+    ClearSearch,
+    NoMatch,
+    Found,
     Earlier,
     ShowOlder,
     Close,
@@ -388,6 +398,41 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (ShowAll, ArEg) => "اعرض الكل ({n})",
         (ShowAll, Ar) => "عرض الكل ({n})",
         (ShowAll, En) => "Show all ({n})",
+        (Digest, ArEg) => {
+            "{changes|تغيير واحد|تغييرين|تغييرات|تغيير} في {levels|مستوى واحد|مستويين|مستويات|مستوى}{app}؛ الأكتر: {top} ({n})"
+        }
+        (Digest, Ar) => {
+            "{changes|تغيير واحد|تغييران|تغييرات|تغييرًا} في {levels|مستوى واحد|مستويين|مستويات|مستوًى}{app}؛ الأكثر: {top} ({n})"
+        }
+        (Digest, En) => "{changes|change|changes} in {levels|level|levels}{app}; most: {top} ({n})",
+        (AndApp, ArEg) => " والتطبيق",
+        (AndApp, Ar) => " والتطبيق",
+        (AndApp, En) => " and the app",
+        (FinishedChanged, ArEg) => {
+            "{n|درس خلصته اتغيّر|درسين خلصتهم اتغيّروا|دروس خلصتها اتغيّرت|درس خلصتهم اتغيّروا}"
+        }
+        (FinishedChanged, Ar) => {
+            "{n|درس أنهيته تغيّر|درسان أنهيتهما تغيّرا|دروس أنهيتها تغيّرت|درسًا أنهيتها تغيّرت}"
+        }
+        (FinishedChanged, En) => "{n|lesson you finished changed|lessons you finished changed}",
+        (Search, ArEg) => "دوّر في التغييرات",
+        (Search, Ar) => "ابحث في التغييرات",
+        (Search, En) => "Search the changes",
+        (AllLevels, ArEg) => "كل المستويات",
+        (AllLevels, Ar) => "كل المستويات",
+        (AllLevels, En) => "All levels",
+        (AllKinds, ArEg) => "كل الأنواع",
+        (AllKinds, Ar) => "كل الأنواع",
+        (AllKinds, En) => "All kinds",
+        (ClearSearch, ArEg) => "امسح البحث",
+        (ClearSearch, Ar) => "امسح البحث",
+        (ClearSearch, En) => "Clear search",
+        (NoMatch, ArEg) => "مفيش تغيير بالكلام ده",
+        (NoMatch, Ar) => "لا يوجد تغيير بهذه الكلمات",
+        (NoMatch, En) => "No change has these words",
+        (Found, ArEg) => "{n|تغيير واحد|تغييرين|تغييرات|تغيير} في {b|نسخة واحدة|نسختين|نسخ|نسخة}",
+        (Found, Ar) => "{n|تغيير واحد|تغييران|تغييرات|تغييرًا} في {b|إصدار واحد|إصدارين|إصدارات|إصدارًا}",
+        (Found, En) => "{n|change|changes} in {b|build|builds}",
         (ShowLess, ArEg) => "اعرض أقل",
         (ShowLess, Ar) => "عرض أقل",
         (ShowLess, En) => "Show less",

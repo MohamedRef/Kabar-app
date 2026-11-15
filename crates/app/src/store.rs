@@ -763,6 +763,18 @@ impl Store {
         Ok(rows.into_iter().filter(|(id, hlc)| resets.lesson_counts(id, hlc)).map(|(id, _)| id).collect())
     }
 
+    /// When each lesson was first finished, on any device (ms since the
+    /// epoch, its event's HLC wall clock): the "what's new" sheet lists the
+    /// finished lessons a release changed.
+    pub fn first_completions(&self) -> Result<BTreeMap<String, i64>> {
+        let mut stmt = self.conn.prepare(
+            "SELECT lesson_id, MIN(hlc_wall) FROM lesson_events
+             WHERE kind = 'completed' AND deleted = 0 GROUP BY lesson_id",
+        )?;
+        let rows = stmt.query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?.collect::<rusqlite::Result<_>>()?;
+        Ok(rows)
+    }
+
     /// Lessons whose content the learner checked, on any device, and how:
     /// their newest `verified` / `unverified` event says checked, or (kept
     /// from before the two were separated on 2026-10-29) a pass recorded

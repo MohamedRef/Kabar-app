@@ -38,6 +38,11 @@ pub fn unit_local_title(lang: UiLanguage, unit_id: &str) -> Option<String> {
     Some(local(lang, &find_unit(unit_id)?.title).to_string())
 }
 
+/// The lesson ids of a unit, in order (empty for an unknown unit).
+pub fn unit_lessons(unit_id: &str) -> Vec<String> {
+    find_unit(unit_id).map(|u| u.lessons.iter().map(|l| l.id.clone()).collect()).unwrap_or_default()
+}
+
 /// A lesson's title in its own language (`None` for an unknown id).
 pub fn lesson_title(lesson_id: &str) -> Option<String> {
     let routes = ROUTES.as_ref().ok()?;
