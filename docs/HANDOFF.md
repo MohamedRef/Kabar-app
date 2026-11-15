@@ -257,6 +257,18 @@ macOS-15 runners are sometimes not acquired: rerun failed jobs later.
   content bundle downloads after it. Every update request fails after 20 s
   without progress (lookup, connect, each read), so a connection Android cut
   while the phone was locked doesn't hold the check for minutes.
+- The content bundle has its own lock (`Updater::content_job`), apart from
+  `job` (check/download/install): taps on download or install wait for a
+  running job instead of being dropped, and never wait for the bundle.
+- One function says what each update phase shows (`update/stage.rs`:
+  headline, detail, hint, buttons); Settings, the Today banner and the sheet
+  render it, so failures show everywhere and a failed download keeps its
+  banner. The sheet's offer mode swaps its body by step (ring while
+  downloading, installing, done, failed, permission; notes behind one tap),
+  the footer always shows the step, and the download button carries the
+  size. On a metered network a manual download asks first
+  (`stage::MeteredConfirm`, mounted in the shell); «استنى الواي فاي» sets
+  `prefs.wifi_download` and the next unmetered `step` downloads it.
 
 ### Secrets (names only, values never in git)
 
@@ -409,6 +421,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-15: update screens at Batna's level (Batna #1337, #1338, #1339): download tap no longer dropped while the content bundle downloads; shared `update::stage` for Settings/banner/sheet with failures and the permission button in the sheet; step views, size on the button, mobile-data confirm with wait-for-Wi-Fi.
 - 2026-11-15: dependency advisories green: `rsa` 0.9 → 0.10 + `sha2` 0.11 (`crates/server`, RUSTSEC-2023-0071; `pkcs1v15` feature now opt-in, keys decode with `BoxedUint`, FCM signing uses `PrivateKey`), `quick-xml` 0.38 → 0.41 (`crates/tools`, RUSTSEC-2026-0194/0195), `rustix` 1.1.6. The 6 remaining audit lines are warnings with no upstream fix or GTK-only.
 - 2026-11-13: review #633 (BIPA 5 u06–u10): 63 lessons get Indonesian comprehension options with Arabic `explain:`, 2–3 sentence listening texts and one compound translate/dictation each; with u01–u05 (#642) the BIPA 5 line in `content/demand-limits.tsv` is now 0.0 / 1.2 / 17.5.
 - 2026-11-13: review #633 (BIPA 7 u06–u10): comprehension options in Indonesian with the Arabic in `explain`, listening texts grown to a short paragraph (~25–35 words), one multi-clause item per lesson; with both BIPA 7 halves in, `bipa7` line in `content/demand-limits.tsv` tightened to 0.0 / 1.5 / 28.1. All items stay unverified.
