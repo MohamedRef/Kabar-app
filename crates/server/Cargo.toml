@@ -18,8 +18,8 @@ thiserror.workspace = true
 base64 = "0.22"
 ed25519-dalek = "2"
 getrandom = "0.2"
-rsa = { version = "0.9", default-features = false, features = ["std", "sha2", "pem"] }
-sha2 = "0.10"
+rsa = { version = "0.10", default-features = false, features = ["std", "encoding", "pkcs1v15"] }
+sha2 = "0.11"
 
 # Only the Worker build talks to the Cloudflare runtime. Everything else is
 # plain Rust and tested natively.
@@ -29,8 +29,7 @@ wasm-bindgen = "0.2"
 worker = { version = "0.8", features = ["d1"] }
 
 [dev-dependencies]
-rand = "0.8"
-rsa = { version = "0.9", features = ["sha2", "pem"] }
+rsa = { version = "0.10", features = ["pkcs1v15"] }
 rusqlite = { version = "0.41", features = ["bundled"] }
 
 [lints]

@@ -5,7 +5,7 @@ use base64::Engine as _;
 use base64::engine::general_purpose::URL_SAFE_NO_PAD;
 use rsa::pkcs1v15::{Signature, VerifyingKey};
 use rsa::signature::Verifier;
-use rsa::{BigUint, RsaPublicKey};
+use rsa::{BoxedUint, PublicKey};
 use serde::Deserialize;
 use sha2::Sha256;
 
@@ -121,9 +121,10 @@ pub fn verify_id_token(
         .iter()
         .find(|k| k.kid == header.kid && k.kty == "RSA" && k.alg.as_deref().is_none_or(|a| a == "RS256"))
         .ok_or(GoogleError::UnknownKey)?;
-    let public =
-        RsaPublicKey::new(BigUint::from_bytes_be(&b64(&jwk.n)?), BigUint::from_bytes_be(&b64(&jwk.e)?))
-            .map_err(|_| GoogleError::Malformed)?;
+    // Public values: variable-time decoding is fine.
+    let n = BoxedUint::from_be_slice_vartime(&b64(&jwk.n)?);
+    let e = BoxedUint::from_be_slice_vartime(&b64(&jwk.e)?);
+    let public = PublicKey::new(n, e).map_err(|_| GoogleError::Malformed)?;
     let signature = Signature::try_from(b64(s)?.as_slice()).map_err(|_| GoogleError::Malformed)?;
     VerifyingKey::<Sha256>::new(public)
         .verify(&id_token.as_bytes()[..h.len() + 1 + c.len()], &signature)
@@ -167,10 +168,10 @@ pub(crate) mod testing {
     //! A fake Google: an RSA key that signs ID tokens, and its JWKS.
     use std::sync::OnceLock;
 
-    use rsa::RsaPrivateKey;
     use rsa::pkcs1v15::SigningKey;
     use rsa::signature::{SignatureEncoding, Signer};
     use rsa::traits::PublicKeyParts;
+    use rsa::{Generate, PrivateKey};
     use serde_json::{Value, json};
 
     use super::*;
@@ -178,9 +179,9 @@ pub(crate) mod testing {
     pub const CLIENT_ID: &str = "kabar-android.apps.googleusercontent.com";
     pub const KID: &str = "test-kid";
 
-    pub fn key() -> &'static RsaPrivateKey {
-        static KEY: OnceLock<RsaPrivateKey> = OnceLock::new();
-        KEY.get_or_init(|| RsaPrivateKey::new(&mut rand::thread_rng(), 2048).unwrap())
+    pub fn key() -> &'static PrivateKey {
+        static KEY: OnceLock<PrivateKey> = OnceLock::new();
+        KEY.get_or_init(PrivateKey::generate)
     }
 
     pub fn jwks() -> Jwks {
@@ -190,8 +191,8 @@ pub(crate) mod testing {
                 kid: KID.into(),
                 kty: "RSA".into(),
                 alg: Some("RS256".into()),
-                n: URL_SAFE_NO_PAD.encode(public.n().to_bytes_be()),
-                e: URL_SAFE_NO_PAD.encode(public.e().to_bytes_be()),
+                n: URL_SAFE_NO_PAD.encode(public.n_bytes()),
+                e: URL_SAFE_NO_PAD.encode(public.e_bytes()),
             }],
         }
     }

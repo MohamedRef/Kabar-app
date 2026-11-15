@@ -409,6 +409,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-15: dependency advisories green: `rsa` 0.9 → 0.10 + `sha2` 0.11 (`crates/server`, RUSTSEC-2023-0071; `pkcs1v15` feature now opt-in, keys decode with `BoxedUint`, FCM signing uses `PrivateKey`), `quick-xml` 0.38 → 0.41 (`crates/tools`, RUSTSEC-2026-0194/0195), `rustix` 1.1.6. The 6 remaining audit lines are warnings with no upstream fix or GTK-only.
 - 2026-11-13: review #633 (BIPA 5 u06–u10): 63 lessons get Indonesian comprehension options with Arabic `explain:`, 2–3 sentence listening texts and one compound translate/dictation each; with u01–u05 (#642) the BIPA 5 line in `content/demand-limits.tsv` is now 0.0 / 1.2 / 17.5.
 - 2026-11-13: review #633 (BIPA 7 u06–u10): comprehension options in Indonesian with the Arabic in `explain`, listening texts grown to a short paragraph (~25–35 words), one multi-clause item per lesson; with both BIPA 7 halves in, `bipa7` line in `content/demand-limits.tsv` tightened to 0.0 / 1.5 / 28.1. All items stay unverified.
 - 2026-11-13: review #633 (BIPA 7 u01–u05): 70 lessons get Indonesian comprehension/listen options with Arabic `explain:` (etymology and Arabic-culture items keep Arabic), listening texts grow to a short paragraph (~25 words), one compound translate/dictation/speaking item per lesson; `demand-limits.tsv` bipa7 tightened to 50.4 / 23.4 / 17.9.
