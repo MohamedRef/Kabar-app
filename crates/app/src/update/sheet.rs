@@ -445,6 +445,7 @@ pub(super) fn SheetFor(s: Status, m: SheetMode) -> Element {
     let first_earlier = earlier_divider(&shown, m, &this_key);
     let more_earlier = earlier.len() > show_earlier;
     let empty = shown.is_empty();
+    let searching = m == SheetMode::History && super::filter::filtering();
     let fallback_notes = offer
         .as_ref()
         .filter(|o| m == SheetMode::Offer && o.changes.is_empty())
@@ -522,10 +523,13 @@ pub(super) fn SheetFor(s: Status, m: SheetMode) -> Element {
                 if let Some(n) = fallback_notes {
                     p { class: "update-notes", "{n}" }
                 }
+                if m == SheetMode::History && !empty {
+                    super::filter::HistoryFilter { history: s.history.clone() }
+                }
                 if empty {
                     p { class: "muted", {ut(lang, if m == SheetMode::History { U::HistoryEmpty } else { U::NoDetails })} }
                 }
-                ol { class: "us-timeline",
+                ol { class: "us-timeline", hidden: searching,
                     for (i, (is_earlier, b)) in shown.into_iter().enumerate() {
                         if Some(i) == first_earlier {
                             li { key: "{i}-earlier", class: "us-divider", role: "presentation", "{ut(lang, U::Earlier)}" }
@@ -574,7 +578,7 @@ pub(super) fn SheetFor(s: Status, m: SheetMode) -> Element {
                         }
                     }
                 }
-                if more_earlier {
+                if more_earlier && !searching {
                     button { class: "us-more", onclick: move |_| earlier_shown += EARLIER_STEP, "{ut(lang, U::ShowOlder)}" }
                 }
                 }

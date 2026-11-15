@@ -77,7 +77,7 @@ pub fn groups(b: &BuildChanges) -> Vec<Group<'_>> {
 }
 
 /// A group's name: "BIPA 3", "J2" as the Journey names levels.
-fn group_name(lang: UiLanguage, id: &str) -> String {
+pub(super) fn group_name(lang: UiLanguage, id: &str) -> String {
     let ar = lang != UiLanguage::En;
     match id {
         APP if ar => "التطبيق".to_owned(),
@@ -175,7 +175,12 @@ pub(super) fn use_return(mut mode: Signal<Option<SheetMode>>) {
         let Some(ui) = ui else { return };
         let open = ui.lesson.read().is_some() && *ui.screen.read() == Screen::Lesson;
         let screen = *ui.screen.read();
-        let Some(p) = *PARKED.peek() else { return };
+        let Some(p) = *PARKED.peek() else {
+            if mode.read().is_none() {
+                super::filter::clear();
+            }
+            return;
+        };
         if open {
             return;
         }
@@ -196,7 +201,7 @@ fn go_icon() -> Element {
 }
 
 /// One line: plain, or a button when it opens something.
-fn line_item(lang: UiLanguage, c: &Change, key: usize) -> Element {
+pub(super) fn line_item(lang: UiLanguage, c: &Change, key: usize) -> Element {
     let (text, latin) = line(lang, c);
     let kind = kind_id(c.kind);
     let words = rsx! {
@@ -221,6 +226,98 @@ fn line_item(lang: UiLanguage, c: &Change, key: usize) -> Element {
     }
 }
 
+/// One line over a release that spans two or more levels: how many
+/// changes, over how many levels (and the app), and the busiest level.
+pub fn digest(ui: &Ui, total: usize, groups: &[Group<'_>]) -> Option<String> {
+    let lang = ui.lang();
+    let levels: Vec<&Group<'_>> = groups.iter().filter(|g| g.id != APP && !g.id.is_empty()).collect();
+    if levels.len() < 2 {
+        return None;
+    }
+    let app = groups.iter().any(|g| g.id == APP);
+    let top = levels.iter().max_by_key(|g| (g.lines.len(), std::cmp::Reverse(level_rank(&g.id))))?;
+    let d = |n: usize| digits(ui, n.to_string());
+    Some(crate::i18n::fill(
+        lang,
+        ut(lang, U::Digest),
+        &[
+            ("changes", &d(total)),
+            ("levels", &d(levels.len())),
+            ("app", if app { ut(lang, U::AndApp) } else { "" }),
+            ("top", &group_name(lang, &top.id)),
+            ("n", &d(top.lines.len())),
+        ],
+    ))
+}
+
+/// Lessons finished before the day `b` came out that its lines open (a
+/// lesson, or every finished lesson of a unit), in order, once each.
+/// `done` is when a lesson was first finished (ms), if it was.
+pub fn finished_changed(b: &BuildChanges, done: impl Fn(&str) -> Option<i64>) -> Vec<String> {
+    let Some(day) = super::changelog::day_of(&b.published_at) else { return Vec::new() };
+    let before = |id: &str| done(id).is_some_and(|ms| ms.div_euclid(86_400_000) < day);
+    let mut out: Vec<String> = Vec::new();
+    for c in &b.changes {
+        let ids = match target(c) {
+            Some(Target::Lesson(id)) => vec![id],
+            Some(Target::Unit(id)) => crate::journey::unit_lessons(&id),
+            _ => Vec::new(),
+        };
+        for id in ids {
+            if before(&id) && !out.contains(&id) {
+                out.push(id);
+            }
+        }
+    }
+    out
+}
+
+/// What leads an open release: the finished lessons it changed, and the
+/// digest of a release over several levels.
+fn release_head(ui: &Ui, b: &BuildChanges, groups: &[Group<'_>]) -> Element {
+    let lang = ui.lang();
+    let firsts = try_consume_context::<crate::Db>()
+        .and_then(|db| db.0.borrow().first_completions().ok())
+        .unwrap_or_default();
+    let changed = finished_changed(b, |id| firsts.get(id).copied());
+    let digest = digest(ui, b.changes.len(), groups);
+    let head = crate::i18n::fill(
+        lang,
+        ut(lang, U::FinishedChanged),
+        &[("n", &digits(ui, changed.len().to_string()))],
+    );
+    rsx! {
+        if let Some(d) = digest {
+            p { class: "us-digest", "{d}" }
+        }
+        if !changed.is_empty() {
+            section { class: "us-changed",
+                h3 { "{head}" }
+                ul { class: "us-items",
+                    for id in changed {
+                        {
+                            let title = crate::journey::lesson_title(&id).unwrap_or_else(|| id.clone());
+                            let level = group_name(lang, id.split('.').next().unwrap_or_default());
+                            let t = Target::Lesson(id.clone());
+                            rsx! {
+                                li { key: "{id}", class: "us-linked",
+                                    button { class: "us-link", aria_label: "{open_word(lang)}: {title}", onclick: move |_| follow(&t),
+                                        span { class: "us-link-text",
+                                            span { class: "us-crumb", bdi { "{level}" } " · " }
+                                            bdi { "{title}" }
+                                        }
+                                        span { class: "us-go-icon", {go_icon()} }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 /// The open part of a release on the timeline: kind cards, or level rows
 /// when its lines span more than one group.
 #[component]
@@ -241,10 +338,12 @@ pub(super) fn ReleaseBody(release: BuildChanges) -> Element {
     };
     let groups = groups(&release);
     let start_open = release.changes.len() <= OPEN_UPTO;
+    let head = release_head(&ui, &release, &groups);
 
     if groups.len() < 2 {
         return rsx! {
             style { {CSS} }
+            {head}
             div { class: "us-kinds",
                 for k in ChangeKind::ALL {
                     {
@@ -288,6 +387,7 @@ pub(super) fn ReleaseBody(release: BuildChanges) -> Element {
 
     rsx! {
         style { {CSS} }
+        {head}
         div { class: "us-groups",
             for g in groups {
                 {
@@ -399,6 +499,49 @@ mod tests {
         assert_eq!(groups(&b)[1].tally(), [(New, 1), (Fixed, 1)]);
         assert_eq!(group_name(UiLanguage::En, "bipa3"), "BIPA 3");
         assert_eq!(group_name(UiLanguage::ArEg, "j2"), "J2");
+    }
+
+    #[test]
+    fn a_release_over_several_levels_gets_one_summary_line() {
+        use ChangeKind::*;
+        fn app() -> Element {
+            crate::testkit::provide(|| crate::testkit::Setup { lang: UiLanguage::En, ..Default::default() });
+            let ui = use_context::<Ui>();
+            let b = build(vec![
+                c(New, "a", Some("bipa3"), None),
+                c(New, "b", Some("bipa3"), None),
+                c(Fixed, "c", Some("j2"), None),
+                c(Improved, "d", Some("reader"), None),
+            ]);
+            let one = build(vec![c(New, "a", Some("bipa3"), None), c(New, "d", Some("reader"), None)]);
+            let d = digest(&ui, b.changes.len(), &groups(&b)).unwrap_or_default();
+            let none = digest(&ui, one.changes.len(), &groups(&one)).is_none();
+            rsx! { p { "[{d}] [{none}]" } }
+        }
+        let t = crate::test_dom::TestDom::new(app);
+        assert!(
+            t.html().contains("[4\u{a0}changes in 2\u{a0}levels and the app; most: BIPA 3 (2)] [true]"),
+            "{}",
+            t.html()
+        );
+    }
+
+    #[test]
+    fn finished_lessons_a_release_changed() {
+        let unit = crate::journey::unit_lessons("bipa1.u01");
+        let (first, second) = (unit[0].clone(), unit[1].clone());
+        let mut b = build(vec![
+            c(ChangeKind::New, "unit", None, Some("bipa1.u01")),
+            c(ChangeKind::Fixed, "lesson", None, Some(&first)),
+            c(ChangeKind::Fixed, "screen", None, Some("reader")),
+        ]);
+        b.published_at = "2026-11-15T05:00:00Z".into();
+        let day = super::super::changelog::day_of(&b.published_at).unwrap() * 86_400_000;
+        let done = |id: &str| (id == first || id == second).then_some(day - 1);
+        assert_eq!(finished_changed(&b, done), [first.clone(), second.clone()]);
+        assert_eq!(finished_changed(&b, |id| (id == first).then_some(day + 1)), Vec::<String>::new());
+        b.published_at.clear();
+        assert_eq!(finished_changed(&b, done), Vec::<String>::new());
     }
 
     #[test]

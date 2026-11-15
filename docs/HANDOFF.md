@@ -257,7 +257,9 @@ macOS-15 runners are sometimes not acquired: rerun failed jobs later.
   [COMPATIBILITY.md](COMPATIBILITY.md).
 - What's new comes from `changes/*.yaml` (Morphe-style sheet before/after an update).
   A release groups by level/app (`scope`), and a line with `open` opens its
-  lesson, unit or screen.
+  lesson, unit or screen. A digest line, a box of finished lessons the
+  release changed, and a search/filter over the changelog sit on top
+  (`crates/app/src/update/groups.rs`, `filter.rs`).
 - A check shows the app's answer as soon as the feed is read; a newer
   content bundle downloads after it. Every update request fails after 20 s
   without progress (lookup, connect, each read), so a connection Android cut
@@ -426,6 +428,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-15: What's new gets a digest line per release (changes, levels, the busiest level), a box of lessons you had finished that the release changed (each opens), and changelog search with level and kind filters across every kept build (same design as Batna #1346).
 - 2026-11-15: What's new groups a release by level (same design as Batna #1340): `changes/*.yaml` lines take an optional `scope` (level or app area) and `open` (lesson, unit or screen), carried in the feed; the sheet shows the app, then one row per level with counts, and a line opens its lesson (closing it brings the sheet back), unit or screen. A one-off pass scoped 213 of 230 existing lines; old feed lines get theirs by their Arabic text when a manifest is built.
 - 2026-11-15: update screens at Batna's level (Batna #1337, #1338, #1339): download tap no longer dropped while the content bundle downloads; shared `update::stage` for Settings/banner/sheet with failures and the permission button in the sheet; step views, size on the button, mobile-data confirm with wait-for-Wi-Fi.
 - 2026-11-15: dependency advisories green: `rsa` 0.9 → 0.10 + `sha2` 0.11 (`crates/server`, RUSTSEC-2023-0071; `pkcs1v15` feature now opt-in, keys decode with `BoxedUint`, FCM signing uses `PrivateKey`), `quick-xml` 0.38 → 0.41 (`crates/tools`, RUSTSEC-2026-0194/0195), `rustix` 1.1.6. The 6 remaining audit lines are warnings with no upstream fix or GTK-only.

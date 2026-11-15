@@ -40,7 +40,7 @@ mod text;
 mod today;
 use today::find_unit;
 pub use today::{
-    current_unit, learner_levels, lesson_title, next_lesson_in, start_level, unit_local_title,
+    current_unit, learner_levels, lesson_title, next_lesson_in, start_level, unit_lessons, unit_local_title,
     unit_refresher, unit_title,
 };
 

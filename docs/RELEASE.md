@@ -205,6 +205,15 @@ each line touched; older feed lines get theirs by their Egyptian Arabic
 when a manifest is built (`changes::label`), and adding a scope to an
 existing line doesn't make it a new line. Same design as Batna (#1340).
 
+Above the level rows, a release with lines in two or more levels opens
+with one digest line ("306 changes in 9 levels and the app; most: BIPA 3
+(46)"), and a box lists the lessons you had first finished before that
+build that its lines open (a line opening a unit counts each of its
+lessons); each one opens the lesson. Settings › Updates › history has a
+search box, a level picker and kind chips: while any is set, the matching
+lines of every kept build replace the timeline, newest first (Arabic marks
+and alef forms are ignored, as in Settings search).
+
 A file holding `[]` says there's nothing to tell (CI, refactors, docs).
 A PR that only changes `README.md` (the daily refresh) needs no file.
 When a feed is built (CI for `preview`, `just publish-update` for releases),
