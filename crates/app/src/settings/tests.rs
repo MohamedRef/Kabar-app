@@ -680,6 +680,8 @@ fn signed_in_account_shows_sync_and_signs_out() {
     assert!(html.contains("learner@example.com") && html.contains("class=\"pill ok\""), "{html}");
     assert!(html.contains("3 changes waiting to sync") && html.contains("Last sync: 5 min ago"), "{html}");
     assert!(sent().contains(&"LoadDevices".to_string()), "opening Account loads the device list");
+    h.click("Sync now");
+    assert_eq!(sent(), ["SyncNow"]);
     h.click("Sign out on this device");
     assert_eq!(sent(), ["SignOut"]);
 }

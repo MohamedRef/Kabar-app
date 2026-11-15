@@ -118,6 +118,11 @@ Key design rules (also in `CLAUDE.md`):
     never a silent `unwrap_or_default()`; `ReadNotice` says so above every
     screen and «اقرأ تاني» remounts the screen (`READ_RETRY`). Evidence is
     skipped, not scheduled with default settings, when settings can't be read.
+  - Sync retries: `Backoff::MAX_MS` (core `sync_client.rs`) is 1 minute
+    (was 5). Settings › Account «زامن دلوقتي» and the WebView's `online`
+    event send `Command::SyncNow`: close the socket, skip the backoff and
+    connect at once. Connect (`CONNECT_WITHIN`) and half-open sockets
+    (`ANSWER_WITHIN`) were already bounded; Batna got the same in #1347.
   - Sync ops Kabar Cloud refuses for good, and outbox rows this build can't
     read, move to the local `held_ops` table (migration 10) with their
     reason instead of vanishing or blocking the queue (`store/held.rs`;
@@ -448,6 +453,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-15: Settings › Account «زامن دلوقتي» forces a sync now; the sync backoff caps at 1 minute (was 5) and the network coming back retries at once (§ 2).
 - 2026-11-15: What's new gets a digest line per release (changes, levels, the busiest level), a box of lessons you had finished that the release changed (each opens), and changelog search with level and kind filters across every kept build (same design as Batna #1346).
 - 2026-11-15: «ابدأ من الأول» per level or the whole course (ported from Batna #1341): one synced `reset.*` setting whose row HLC is the cutoff for answers, finished lessons and Lanjut; nothing deleted, undo removes it; backup first.
 - 2026-11-15: What's new groups a release by level (same design as Batna #1340): `changes/*.yaml` lines take an optional `scope` (level or app area) and `open` (lesson, unit or screen), carried in the feed; the sheet shows the app, then one row per level with counts, and a line opens its lesson (closing it brings the sheet back), unit or screen. A one-off pass scoped 213 of 230 existing lines; old feed lines get theirs by their Arabic text when a manifest is built.
