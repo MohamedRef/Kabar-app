@@ -64,7 +64,6 @@
 .us-summary progress { inline-size: 100%; accent-color: var(--us-new); }
 .us-summary .us-mb { margin: 0; font-size: .8125rem; color: var(--muted); }
 .app:has(.us-sheet) .settings-head > .icon-button { visibility: hidden; }
-.us-failed { margin: 0; font-size: var(--fs-sm); color: var(--text); }
 
 /* One unobtrusive rail with a dot for each release. Logical properties follow RTL. */
 .us-timeline { list-style: none; margin: 0; padding: 0; }
@@ -174,4 +173,36 @@
 @media (forced-colors: active) {
   .us-kind-icon, .us-pill { border: 1px solid ButtonText; }
   .us-release::after { outline: 1px solid CanvasText; }
+}
+
+/* Step views: one clear view per step in place of the notes. */
+.us-context-title[data-failed="true"] { color: var(--bad); }
+.us-stage-view {
+  display: grid; justify-items: center; gap: .6rem; text-align: center;
+  padding: 1.25rem 1rem; margin-block-end: 1rem; border-radius: 1rem; background: var(--us-surface);
+  animation: us-fade .22s ease-out;
+}
+.us-stage-view p { margin: 0; }
+.us-ring { position: relative; inline-size: 5.5rem; block-size: 5.5rem; }
+.us-ring svg { inline-size: 100%; block-size: 100%; }
+.us-ring circle { fill: none; stroke-width: 6; }
+.us-ring-track { stroke: var(--us-raised); }
+.us-ring-fill { stroke: var(--sawah); stroke-linecap: round; transition: stroke-dashoffset .3s linear; }
+.us-ring-pc { position: absolute; inset: 0; display: grid; place-items: center; font-size: 1.15rem; font-weight: 700; }
+.us-stage-mark {
+  display: grid; place-items: center; inline-size: 3.5rem; block-size: 3.5rem; border-radius: 50%;
+  color: var(--sawah); background: color-mix(in srgb, var(--sawah) 14%, transparent);
+}
+.us-stage-mark svg { inline-size: 1.75rem; block-size: 1.75rem; }
+.us-stage-mark[data-stage="failed"], .us-stage-mark[data-stage="permission"] {
+  color: var(--bad); background: color-mix(in srgb, var(--bad) 12%, transparent);
+}
+.us-stage-mark[data-stage="installing"] { animation: us-pulse 1.4s ease-in-out infinite; }
+.us-notes-toggle { justify-self: center; margin-block-end: .75rem; }
+.us-foot-state { margin-inline-end: auto; align-self: center; font-weight: 650; font-variant-numeric: tabular-nums; }
+@keyframes us-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes us-pulse { 50% { transform: scale(.92); opacity: .7; } }
+@media (prefers-reduced-motion: reduce) {
+  .us-stage-view, .us-stage-mark[data-stage="installing"] { animation: none; }
+  .us-ring-fill { transition: none; }
 }
