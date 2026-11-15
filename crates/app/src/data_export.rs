@@ -56,6 +56,17 @@ fn download(store: &Store, now_ms: u64, utc_offset_min: i16) -> Result<(PathBuf,
     crate::platform::web::download(&name, "application/json", &text).map(|n| (PathBuf::from(n), export.rows))
 }
 
+/// Writes a backup right now (a reset saves one first) and says where:
+/// the file's path, or on the web the downloaded file's name.
+pub fn backup_now(store: &Store, now_ms: u64, utc_offset_min: i16) -> Result<String, String> {
+    #[cfg(target_arch = "wasm32")]
+    return download(store, now_ms, utc_offset_min).map(|(p, _)| p.display().to_string());
+    #[cfg(not(target_arch = "wasm32"))]
+    platform_dir()
+        .and_then(|dir| save(store, &dir, now_ms, utc_offset_min))
+        .map(|(p, _)| p.display().to_string())
+}
+
 #[derive(Clone, Debug, PartialEq)]
 enum Outcome {
     Saved {

@@ -56,6 +56,15 @@ struct Routes {
     jv_map: MapLayout,
 }
 
+/// Every level on both routes as (id, code), Indonesian first, for the
+/// reset picker (`crate::reset`).
+pub fn levels() -> Vec<(String, String)> {
+    ROUTES
+        .as_ref()
+        .map(|r| r.id.levels.iter().chain(&r.jv.levels).map(|l| (l.id.clone(), l.code.clone())).collect())
+        .unwrap_or_default()
+}
+
 static ROUTES: LazyLock<Result<Routes, String>> = LazyLock::new(|| {
     use crate::embedded::{CURRICULUM_ID, CURRICULUM_JV, text};
     let id = parse_curriculum(&text(CURRICULUM_ID)).map_err(|e| e.to_string())?;
@@ -188,12 +197,17 @@ pub fn JourneyScreen() -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     // Re-read on every visit: the screen remounts when the player closes.
-    let completed = use_hook(|| {
-        Rc::new(db.0.borrow().completed_lessons().unwrap_or_else(|e| {
-            crate::persistence::read_failed("finished lessons", &e);
-            BTreeSet::new()
-        }))
-    });
+    // …and again after a reset or its undo on this screen.
+    let completed = use_memo({
+        let db = db.clone();
+        move || {
+            let _ = crate::reset::REV();
+            Rc::new(db.0.borrow().completed_lessons().unwrap_or_else(|e| {
+                crate::persistence::read_failed("finished lessons", &e);
+                BTreeSet::new()
+            }))
+        }
+    })();
     let approved = use_hook(|| {
         Rc::new(db.0.borrow().approved_lessons().unwrap_or_else(|e| {
             crate::persistence::read_failed("approved lessons", &e);
@@ -562,6 +576,9 @@ fn level_head(
                     }
                     ". {ui.t(JourneyMsg::JourneyOpenAnyway)}"
                 }
+            }
+            if done > 0 || crate::reset::in_force(&level.id) {
+                crate::reset::LevelReset { level: level.id.clone(), code: level.code.clone() }
             }
             if let Some(test) = test {
                 if !finished {

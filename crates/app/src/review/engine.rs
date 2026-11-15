@@ -8,7 +8,8 @@ pub(super) fn read_deck(db: &Db, sched: &Scheduler) -> Deck {
         crate::persistence::read_failed("cards", &e);
         Vec::new()
     });
-    let log = store.review_log().unwrap_or_else(|e| {
+    // What counts as progress: a reset's older answers are left out.
+    let log = store.progress_log().unwrap_or_else(|e| {
         crate::persistence::read_failed("the review log", &e);
         Vec::new()
     });
