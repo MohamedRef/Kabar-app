@@ -453,7 +453,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
-- 2026-11-15: Text size («أكبر» etc.) now sits on `<html data-text-size>` too, set by the shell (`text_size_script` in `main.rs`); main.css reads it there and keeps `html:has(.app[…])` as the fallback. Chromium sometimes left the `:has()` rule stale, so «أكبر» stayed at 16px (Settings browser run failed twice on 2026-11-15, different cases each time).
+- 2026-11-15: Settings browser check waits (up to 3 s, per frame) for the expected text scale before measuring. Under CPU load Chromium sometimes returned the root font size from before the text-size rule applied (16px for «أكبر»), so 2026-11-15 runs failed on a random case; the app itself was fine (the same page read 20px a frame later). Locally under 3× load: 8 of 18 runs failed before, 0 of 12 after.
 - 2026-11-15: Settings › Account «زامن دلوقتي» forces a sync now; the sync backoff caps at 1 minute (was 5) and the network coming back retries at once (§ 2).
 - 2026-11-15: What's new gets a digest line per release (changes, levels, the busiest level), a box of lessons you had finished that the release changed (each opens), and changelog search with level and kind filters across every kept build (same design as Batna #1346).
 - 2026-11-15: «ابدأ من الأول» per level or the whole course (ported from Batna #1341): one synced `reset.*` setting whose row HLC is the cutoff for answers, finished lessons and Lanjut; nothing deleted, undo removes it; backup first.

@@ -535,13 +535,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 }
 .app[data-nav="slim"] .brand { display: none; }
 
-/* Settings › Look: text size, per device. The shell mirrors the choice
-   onto <html> (data-text-size), so rem sizes scale without waiting on
-   :has() invalidation, which Chromium sometimes leaves stale on first
-   paint; :has() stays as the fallback before that script runs. */
-:is(html[data-text-size="small"], html:has(.app[data-text-size="small"])) { font-size: 93.75%; }
-:is(html[data-text-size="large"], html:has(.app[data-text-size="large"])) { font-size: 112.5%; }
-:is(html[data-text-size="larger"], html:has(.app[data-text-size="larger"])) { font-size: 125%; }
+/* Settings › Look: text size, per device */
+html:has(.app[data-text-size="small"]) { font-size: 93.75%; }
+html:has(.app[data-text-size="large"]) { font-size: 112.5%; }
+html:has(.app[data-text-size="larger"]) { font-size: 125%; }
 
 /* ---------- Cards ---------- */
 .card {

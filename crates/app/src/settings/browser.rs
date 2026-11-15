@@ -52,7 +52,6 @@ fn fixture() -> Element {
         style { {crate::LIQUID_GLASS_CSS.text()} }
         style { {kabar_core::theme::stylesheet()} }
         style { {crate::fonts::css()} }
-        script { {crate::text_size_script(case.size.as_str())} }
         div { class: "app", lang: ui.lang().tag(), dir: ui.lang().dir().as_str(),
             "data-theme": case.theme.as_str(), "data-width": ui.width.read().as_str(),
             "data-text-size": case.size.as_str(), "data-appearance": case.appearance.as_str(),
