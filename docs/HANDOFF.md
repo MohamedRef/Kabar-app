@@ -218,7 +218,7 @@ jobs are periodic or manual. Never re-add PR/push triggers to heavy workflows.
 
 | Workflow | Runs on | What |
 |---|---|---|
-| `ci.yml` | PR + push to main (newer run cancels older) | PR: `check` (fmt, clippy, tests, content, ids, What's new file; lesson demand per level (`kabar-tools demand --check`, #633); advisory: README numbers, reading coverage, explanations; the Javanese dialect check fails, since 2026-11-13) + Android arm64 clippy. Main only: wasm32 core/protocol, web build, Cloud Worker build + local e2e. |
+| `ci.yml` | PR + push to main (newer run cancels older) | PR: `check` (fmt, clippy, tests, content, ids, What's new file; lesson demand per level (`kabar-tools demand --check`, #633, #655); advisory: README numbers, reading coverage, explanations; the Javanese dialect check fails, since 2026-11-13) + Android arm64 clippy. Main only: wasm32 core/protocol, web build, Cloud Worker build + local e2e. |
 | `main-clock.yml` | every push to main | GitHub cron runs late here, so this waits until 4 h after the last preview, then dispatches preview APK, coverage and Settings browser. Newer merge restarts it. |
 | `android-preview.yml` | cron every 4 h (backup) + manual + main-clock | signed preview APK → `preview` release + feed (skips if main unchanged) |
 | `coverage.yml` | cron/main-clock + manual | line-coverage floor (93%). Red → fix in its own PR. |
@@ -370,7 +370,10 @@ Rules (Mohamed's decisions; all in force):
    at most 3 (hard limit 4) words of one tight semantic set per lesson;
    listening texts over 12 words and dictations over 10 add time to the
    estimate; task demand per BIPA level may not slip back
-   (`content/demand-limits.tsv`, #633); every
+   (`content/demand-limits.tsv`, #633); every option in a listen or
+   multiple-choice item has the same shape and about the same length, and the
+   share of items where the longest option is the answer may not rise per
+   level, BIPA and J (same file, #655); every
    text has `ar_eg`, `ar`, `en`; BIPA 3+/J4+ closed items need `explain:`.
    Toolkit and full rules: [scripts/curriculum/README.md](../scripts/curriculum/README.md),
    [PEDAGOGY.md](PEDAGOGY.md), [AUTHORING.md](AUTHORING.md).
@@ -431,6 +434,7 @@ Rules (Mohamed's decisions; all in force):
 
 ### Open work and known gaps
 
+- #655 (longest option is the answer): `kabar-tools demand` measures it per level and the ratchet holds it (2026-11-16 baseline: listening BIPA 5–7 79/90/85%, multiple choice 57/58/71%; Javanese listening 44–64%). Rewrites of the wrong options follow, BIPA 5–7 first, then Javanese listening and BIPA 3–4; aim under 40%.
 - #633 (BIPA 5–7 task demand): all six content batches merged (#642, #644, #645, #646, #647, #643); Arabic-only listen options are 0% at BIPA 5–7 and the ratchet holds them there. The README keeps "(aim)" on BIPA 5–7 CEFR labels: the mappings stay low-confidence and listening texts (17–28 words) are still short of C1 length. Drop it in `readme.rs cefr_label` only when Mohamed decides.
 - Mohamed's steps: Cloud keys (`GEMINI_API_KEY`, `AZURE_SPEECH_KEY`,
   `FCM_SERVICE_ACCOUNT`, `KABAR_GOOGLE_SERVICES_JSON`) so AI, cloud voices and
@@ -461,6 +465,7 @@ Mohamed can paste this into any new chat or account to continue:
 Newest first. One line per PR that changes behaviour, process or state.
 
 - 2026-11-16: Updates: a channel with no feed (404, beta and stable today) is "nothing published here yet", not a network failure; picking one is refused with a note, and a device already on one gets one tap back to alpha (#656).
+- 2026-11-16: `kabar-tools demand` measures, for every BIPA and J level, how often the longest option is the answer in listen and multiple-choice items (ties split evenly), and `--longest <level>` lists those items; `content/demand-limits.tsv` gains two ratchet columns at today's values, `-` for no limit (#655). Content rule 10 in `scripts/curriculum/README.md`: every option has the same shape and length.
 - 2026-11-15: Settings browser check waits (up to 3 s, per frame) for the expected text scale before measuring. Under CPU load Chromium sometimes returned the root font size from before the text-size rule applied (16px for «أكبر»), so 2026-11-15 runs failed on a random case; the app itself was fine (the same page read 20px a frame later). Locally under 3× load: 8 of 18 runs failed before, 0 of 12 after.
 - 2026-11-15: Settings › Account «زامن دلوقتي» forces a sync now; the sync backoff caps at 1 minute (was 5) and the network coming back retries at once (§ 2).
 - 2026-11-15: What's new gets a digest line per release (changes, levels, the busiest level), a box of lessons you had finished that the release changed (each opens), and changelog search with level and kind filters across every kept build (same design as Batna #1346).
