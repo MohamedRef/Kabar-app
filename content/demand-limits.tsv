@@ -1,10 +1,17 @@
-# Lesson demand ratchet per Indonesian level (#633), checked by `kabar-tools demand --check` in CI.
-# level<TAB>max % of listen items with only Arabic options<TAB>max % of multiple-choice items with only Arabic options<TAB>min words per listening text
+# Lesson demand ratchet per level (#633, #655), checked by `kabar-tools demand --check` in CI.
+# level<TAB>max % of listen items with only Arabic options<TAB>max % of multiple-choice items with only Arabic options<TAB>min words per listening text<TAB>max % of listen items where the longest option is the answer<TAB>max % of multiple-choice items where the longest option is the answer
+# `-` is no limit (Javanese levels carry only the longest-option columns). Aim for the longest-option columns: under 40.
 # A batch that improves a level tightens its line in the same PR; never loosen one.
-bipa1	19.3	0.6	4.7
-bipa2	21.3	1.4	5.6
-bipa3	23.9	0.5	7.4
-bipa4	32.0	0.4	6.9
-bipa5	0.0	1.2	17.5
-bipa6	0.0	2.0	22.5
-bipa7	0.0	1.5	28.1
+bipa1	19.3	0.6	4.7	38.3	34.8
+bipa2	21.3	1.4	5.6	45.7	37.3
+bipa3	23.9	0.5	7.4	51.6	37.6
+bipa4	32.0	0.4	6.9	44.3	43.3
+bipa5	0.0	1.2	17.5	79.4	57.0
+bipa6	0.0	2.0	22.5	89.5	58.3
+bipa7	0.0	1.5	28.1	84.9	71.0
+j1	-	-	-	45.1	46.8
+j2	-	-	-	56.4	41.0
+j3	-	-	-	44.0	44.0
+j4	-	-	-	54.2	46.6
+j5	-	-	-	63.7	44.9
+j6	-	-	-	57.8	42.1

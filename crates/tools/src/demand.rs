@@ -13,6 +13,14 @@
 //! like `dialogue-over.tsv`): a level whose Arabic-option shares rise above
 //! its limit, or whose listening texts get shorter than its floor, fails.
 //! A batch that improves a level lowers (or raises) its line in the same PR.
+//!
+//! It also measures option shape for every level, Indonesian and Javanese
+//! (#655): the share of `listen` and `multiple_choice` items where "pick the
+//! longest option" finds the answer (ties split evenly; chance is 1 / options).
+//! A learner who can score by shape is not listening. The two "longest"
+//! columns of the limits file only go down. `--longest <level>` lists the
+//! items of a level whose answer is the single longest option, with the
+//! lengths, so a rewrite batch knows where to start.
 
 use std::collections::BTreeMap;
 use std::fs;
@@ -28,6 +36,10 @@ pub struct Args {
     /// Fail when a level is worse than its line in `content/demand-limits.tsv`.
     #[arg(long)]
     pub check: bool,
+    /// List the items of this level (e.g. `bipa5`, `j2`) whose answer is the
+    /// single longest option.
+    #[arg(long, value_name = "LEVEL")]
+    pub longest: Option<String>,
 }
 
 pub const LIMITS: &str = "content/demand-limits.tsv";
@@ -45,6 +57,12 @@ pub struct Level {
     pub listen_arabic: usize,
     pub choice: usize,
     pub choice_arabic: usize,
+    /// `listen` / `multiple_choice` items with options and an answer index.
+    pub listen_shaped: usize,
+    pub choice_shaped: usize,
+    /// How often "pick the longest" wins, ties split evenly.
+    pub listen_longest: f64,
+    pub choice_longest: f64,
 }
 
 fn ratio(a: usize, b: usize) -> f64 {
@@ -72,6 +90,35 @@ impl Level {
     pub fn choice_arabic_pct(&self) -> f64 {
         100.0 * ratio(self.choice_arabic, self.choice)
     }
+    /// Percent of `listen` items where the longest option is the answer.
+    pub fn listen_longest_pct(&self) -> f64 {
+        if self.listen_shaped == 0 { 0.0 } else { 100.0 * self.listen_longest / self.listen_shaped as f64 }
+    }
+    /// Percent of `multiple_choice` items where the longest option is the answer.
+    pub fn choice_longest_pct(&self) -> f64 {
+        if self.choice_shaped == 0 { 0.0 } else { 100.0 * self.choice_longest / self.choice_shaped as f64 }
+    }
+}
+
+/// An option's length as the eye sees it: characters, outer spaces trimmed.
+pub fn option_len(o: &str) -> usize {
+    o.trim().chars().count()
+}
+
+/// The options and answer index of a closed item, if it has both.
+fn shaped(e: &Value) -> Option<(Vec<&str>, usize)> {
+    let opts: Vec<&str> = e.get("options")?.as_array()?.iter().filter_map(Value::as_str).collect();
+    let answer = usize::try_from(e.get("answer")?.as_u64()?).ok()?;
+    (opts.len() >= 2 && answer < opts.len()).then_some((opts, answer))
+}
+
+/// What "pick the longest option" scores on one item: 1 when the answer is
+/// the only longest, 1/n when it ties with n−1 others, else 0.
+pub fn longest_score(opts: &[&str], answer: usize) -> f64 {
+    let lens: Vec<usize> = opts.iter().map(|o| option_len(o)).collect();
+    let max = lens.iter().copied().max().unwrap_or(0);
+    let ties = lens.iter().filter(|&&l| l == max).count();
+    if lens.get(answer) == Some(&max) { 1.0 / ties as f64 } else { 0.0 }
 }
 
 fn words(t: &str) -> usize {
@@ -111,24 +158,44 @@ pub fn add(level: &mut Level, lesson: &Value) {
                 level.listen += 1;
                 level.listen_words += words(text);
                 level.listen_arabic += usize::from(all_arabic(e));
+                if let Some((opts, answer)) = shaped(e) {
+                    level.listen_shaped += 1;
+                    level.listen_longest += longest_score(&opts, answer);
+                }
             }
             "multiple_choice" => {
                 level.choice += 1;
                 level.choice_arabic += usize::from(all_arabic(e));
+                if let Some((opts, answer)) = shaped(e) {
+                    level.choice_shaped += 1;
+                    level.choice_longest += longest_score(&opts, answer);
+                }
             }
             _ => {}
         }
     }
 }
 
-/// Every Indonesian level, from the lesson files.
-pub fn levels(root: &Root) -> Result<BTreeMap<String, Level>> {
-    let dir = root.path().join("content/lessons/id");
-    let mut files: Vec<_> = fs::read_dir(&dir)?.filter_map(|e| e.ok().map(|e| e.path())).collect();
+/// The lesson files of every language, sorted.
+fn lesson_files(root: &Root) -> Result<Vec<std::path::PathBuf>> {
+    let mut files = Vec::new();
+    for lang in ["id", "jv"] {
+        let dir = root.path().join("content/lessons").join(lang);
+        if !dir.is_dir() {
+            continue;
+        }
+        files.extend(fs::read_dir(&dir)?.filter_map(|e| e.ok().map(|e| e.path())));
+    }
+    files.retain(|f| f.extension().is_some_and(|x| x == "yaml"));
     files.sort();
+    Ok(files)
+}
+
+/// Every level (BIPA 1–7, then J1–J6), from the lesson files.
+pub fn levels(root: &Root) -> Result<BTreeMap<String, Level>> {
     let mut out: BTreeMap<String, Level> = BTreeMap::new();
-    for f in files.iter().filter(|f| f.extension().is_some_and(|x| x == "yaml")) {
-        let doc = kabar_content::yaml_value(f).map_err(|e| anyhow!("{e}"))?;
+    for f in lesson_files(root)? {
+        let doc = kabar_content::yaml_value(&f).map_err(|e| anyhow!("{e}"))?;
         let Some(id) = doc.get("id").and_then(Value::as_str) else { continue };
         let level = id.split('.').next().unwrap_or(id).to_owned();
         add(out.entry(level).or_default(), &doc);
@@ -136,24 +203,80 @@ pub fn levels(root: &Root) -> Result<BTreeMap<String, Level>> {
     Ok(out)
 }
 
-/// A level's line in the limits file.
-#[derive(Debug, Clone, Copy, PartialEq)]
-pub struct Limit {
-    pub max_listen_arabic_pct: f64,
-    pub max_choice_arabic_pct: f64,
-    pub min_listen_words: f64,
+/// One item whose answer is the single longest option.
+#[derive(Debug, Clone, PartialEq)]
+pub struct Longest {
+    pub lesson: String,
+    pub exercise: String,
+    pub kind: String,
+    /// Option lengths in characters, answer first.
+    pub answer_len: usize,
+    pub wrong_lens: Vec<usize>,
 }
 
-/// `level<TAB>max listen Arabic %<TAB>max choice Arabic %<TAB>min listen words`.
+/// The items of `level` whose answer is the single longest option.
+pub fn longest_items(root: &Root, level: &str) -> Result<Vec<Longest>> {
+    let mut out = Vec::new();
+    for f in lesson_files(root)? {
+        let doc = kabar_content::yaml_value(&f).map_err(|e| anyhow!("{e}"))?;
+        let Some(id) = doc.get("id").and_then(Value::as_str) else { continue };
+        if id.split('.').next() != Some(level) {
+            continue;
+        }
+        for e in doc.get("exercises").and_then(Value::as_array).into_iter().flatten() {
+            let kind = e.get("type").and_then(Value::as_str).unwrap_or_default();
+            if !matches!(kind, "listen" | "multiple_choice") {
+                continue;
+            }
+            let Some((opts, answer)) = shaped(e) else { continue };
+            if longest_score(&opts, answer) < 1.0 {
+                continue;
+            }
+            out.push(Longest {
+                lesson: id.to_owned(),
+                exercise: e.get("id").and_then(Value::as_str).unwrap_or("?").to_owned(),
+                kind: kind.to_owned(),
+                answer_len: option_len(opts[answer]),
+                wrong_lens: opts
+                    .iter()
+                    .enumerate()
+                    .filter(|(i, _)| *i != answer)
+                    .map(|(_, o)| option_len(o))
+                    .collect(),
+            });
+        }
+    }
+    Ok(out)
+}
+
+/// A level's line in the limits file. `None` is a `-` column: no limit.
+#[derive(Debug, Clone, Copy, PartialEq, Default)]
+pub struct Limit {
+    pub max_listen_arabic_pct: Option<f64>,
+    pub max_choice_arabic_pct: Option<f64>,
+    pub min_listen_words: Option<f64>,
+    pub max_listen_longest_pct: Option<f64>,
+    pub max_choice_longest_pct: Option<f64>,
+}
+
+/// `level<TAB>max listen Arabic %<TAB>max choice Arabic %<TAB>min listen
+/// words<TAB>max listen longest %<TAB>max choice longest %`; `-` is no limit.
 pub fn limits(root: &Root) -> Result<BTreeMap<String, Limit>> {
     let text = fs::read_to_string(root.path().join(LIMITS)).map_err(|e| anyhow!("{LIMITS}: {e}"))?;
     let mut out = BTreeMap::new();
     for (n, line) in text.lines().enumerate().filter(|(_, l)| !l.trim().is_empty() && !l.starts_with('#')) {
         let cols: Vec<&str> = line.split('\t').collect();
-        let num = |i: usize| -> Result<f64> {
-            cols.get(i)
-                .and_then(|c| c.trim().parse().ok())
-                .ok_or_else(|| anyhow!("{LIMITS}:{}: column {} is not a number", n + 1, i + 1))
+        if cols.len() != 6 {
+            bail!("{LIMITS}:{}: expected 6 tab-separated columns, found {}", n + 1, cols.len());
+        }
+        let num = |i: usize| -> Result<Option<f64>> {
+            let c = cols[i].trim();
+            if c == "-" {
+                return Ok(None);
+            }
+            c.parse()
+                .map(Some)
+                .map_err(|_| anyhow!("{LIMITS}:{}: column {} is not a number or -", n + 1, i + 1))
         };
         out.insert(
             cols[0].trim().to_owned(),
@@ -161,6 +284,8 @@ pub fn limits(root: &Root) -> Result<BTreeMap<String, Limit>> {
                 max_listen_arabic_pct: num(1)?,
                 max_choice_arabic_pct: num(2)?,
                 min_listen_words: num(3)?,
+                max_listen_longest_pct: num(4)?,
+                max_choice_longest_pct: num(5)?,
             },
         );
     }
@@ -170,25 +295,31 @@ pub fn limits(root: &Root) -> Result<BTreeMap<String, Limit>> {
 /// What is wrong with `level` against its limit, if anything.
 pub fn breaches(name: &str, level: &Level, limit: &Limit) -> Vec<String> {
     let mut out = Vec::new();
-    if level.listen_arabic_pct() > limit.max_listen_arabic_pct + 1e-9 {
+    let mut over = |value: f64, max: Option<f64>, what: &str| {
+        if let Some(max) = max.filter(|&m| value > m + 0.05) {
+            out.push(format!("{name}: {value:.1}% of {what} (limit {max:.1}%)"));
+        }
+    };
+    over(level.listen_arabic_pct(), limit.max_listen_arabic_pct, "listen items have only Arabic options");
+    over(
+        level.choice_arabic_pct(),
+        limit.max_choice_arabic_pct,
+        "multiple-choice items have only Arabic options",
+    );
+    over(
+        level.listen_longest_pct(),
+        limit.max_listen_longest_pct,
+        "listen items have the longest option as the answer",
+    );
+    over(
+        level.choice_longest_pct(),
+        limit.max_choice_longest_pct,
+        "multiple-choice items have the longest option as the answer",
+    );
+    if let Some(min) = limit.min_listen_words.filter(|&m| level.listen_words() + 0.05 < m) {
         out.push(format!(
-            "{name}: {:.0}% of listen items have only Arabic options (limit {:.0}%)",
-            level.listen_arabic_pct(),
-            limit.max_listen_arabic_pct
-        ));
-    }
-    if level.choice_arabic_pct() > limit.max_choice_arabic_pct + 1e-9 {
-        out.push(format!(
-            "{name}: {:.0}% of multiple-choice items have only Arabic options (limit {:.0}%)",
-            level.choice_arabic_pct(),
-            limit.max_choice_arabic_pct
-        ));
-    }
-    if level.listen_words() + 1e-9 < limit.min_listen_words {
-        out.push(format!(
-            "{name}: listening texts average {:.1} words (floor {:.1})",
-            level.listen_words(),
-            limit.min_listen_words
+            "{name}: listening texts average {:.1} words (floor {min:.1})",
+            level.listen_words()
         ));
     }
     out
@@ -199,10 +330,19 @@ pub fn run(root: &Root, args: Args) -> Result<()> {
 }
 
 pub fn report_to(root: &Root, args: Args, out: &mut dyn std::io::Write) -> Result<()> {
+    if let Some(level) = &args.longest {
+        let items = longest_items(root, level)?;
+        for i in &items {
+            let wrong: Vec<String> = i.wrong_lens.iter().map(usize::to_string).collect();
+            writeln!(out, "{}\t{}\t{}\t{}\t{}", i.lesson, i.exercise, i.kind, i.answer_len, wrong.join(","))?;
+        }
+        writeln!(out, "{level}: answer is the single longest option in {} of the items above", items.len())?;
+        return Ok(());
+    }
     let levels = levels(root)?;
     writeln!(
         out,
-        "{:<6} {:>7} {:>10} {:>11} {:>14} {:>12} {:>13} {:>13}",
+        "{:<6} {:>7} {:>10} {:>11} {:>14} {:>12} {:>13} {:>13} {:>16} {:>16}",
         "level",
         "lessons",
         "words/line",
@@ -210,19 +350,23 @@ pub fn report_to(root: &Root, args: Args, out: &mut dyn std::io::Write) -> Resul
         "words/sentence",
         "listen words",
         "listen ar %",
-        "choice ar %"
+        "choice ar %",
+        "listen longest %",
+        "choice longest %"
     )?;
     for (name, l) in &levels {
         writeln!(
             out,
-            "{name:<6} {:>7} {:>10.1} {:>11.1} {:>14.1} {:>12.1} {:>12.0}% {:>12.0}%",
+            "{name:<6} {:>7} {:>10.1} {:>11.1} {:>14.1} {:>12.1} {:>12.0}% {:>12.0}% {:>15.1}% {:>15.1}%",
             l.lessons,
             l.words_per_line(),
             l.lines_per_lesson(),
             l.words_per_sentence(),
             l.listen_words(),
             l.listen_arabic_pct(),
-            l.choice_arabic_pct()
+            l.choice_arabic_pct(),
+            l.listen_longest_pct(),
+            l.choice_longest_pct()
         )?;
     }
     if args.check {
@@ -236,7 +380,7 @@ pub fn report_to(root: &Root, args: Args, out: &mut dyn std::io::Write) -> Resul
             writeln!(out, "{p}")?;
         }
         if !problems.is_empty() {
-            bail!("lesson demand went down; see {LIMITS} and #633");
+            bail!("lesson demand went down; see {LIMITS}, #633 and #655");
         }
     }
     Ok(())
@@ -284,20 +428,59 @@ exercises:
     }
 
     #[test]
+    fn longest_option_counts_ties_evenly() {
+        assert_eq!(longest_score(&["Ya.", "Tidak sama sekali.", "Ya"], 1), 1.0);
+        assert_eq!(longest_score(&["Ya.", "Tidak sama sekali.", "Ya"], 0), 0.0);
+        assert_eq!(longest_score(&["Satu", "Dua.", "Tiga"], 0), 1.0 / 3.0, "three of four characters tie");
+        assert_eq!(option_len("  Ini  "), 3, "outer spaces do not count");
+        let mut l = Level::default();
+        add(
+            &mut l,
+            &lesson(
+                "exercises:
+  - {type: listen, text: Satu, options: [Pendek., Jawaban yang panjang sekali.], answer: 1}
+  - {type: listen, text: Dua, options: [Jawaban yang panjang sekali., Pendek.], answer: 1}
+  - {type: listen, text: Tiga, options: [Sama, Sama], answer: 0}
+  - {type: listen, text: Empat, options: [Diketik]}
+  - {type: multiple_choice, options: [Panjang sekali, Ya], answer: 0}
+",
+            ),
+        );
+        assert_eq!(l.listen_shaped, 3, "an item without an answer index has no shape");
+        assert_eq!(l.listen_longest_pct(), 50.0);
+        assert_eq!(l.choice_longest_pct(), 100.0);
+    }
+
+    #[test]
     fn breaches_name_each_limit() {
         let mut l = Level::default();
         add(
             &mut l,
             &lesson(
-                "exercises: [{type: listen, text: Satu dua, options: [نعم]}, {type: multiple_choice, options: [لا]}]",
+                "exercises: [{type: listen, text: Satu dua, options: [نعم, لا], answer: 1}, {type: multiple_choice, options: [لا, Ya sekali], answer: 1}]",
             ),
         );
-        let ok = Limit { max_listen_arabic_pct: 100.0, max_choice_arabic_pct: 100.0, min_listen_words: 2.0 };
+        let ok = Limit {
+            max_listen_arabic_pct: Some(100.0),
+            max_choice_arabic_pct: Some(100.0),
+            min_listen_words: Some(2.0),
+            max_listen_longest_pct: Some(100.0),
+            max_choice_longest_pct: Some(100.0),
+        };
         assert!(breaches("bipa5", &l, &ok).is_empty());
-        let tight = Limit { max_listen_arabic_pct: 30.0, max_choice_arabic_pct: 5.0, min_listen_words: 20.0 };
+        assert!(breaches("bipa5", &l, &Limit::default()).is_empty(), "- means no limit");
+        let tight = Limit {
+            max_listen_arabic_pct: Some(30.0),
+            max_choice_arabic_pct: Some(5.0),
+            min_listen_words: Some(20.0),
+            max_listen_longest_pct: Some(40.0),
+            max_choice_longest_pct: Some(40.0),
+        };
         let b = breaches("bipa5", &l, &tight);
         assert_eq!(b.len(), 3, "{b:?}");
-        assert!(b[0].starts_with("bipa5: 100% of listen items"), "{b:?}");
+        assert!(b[0].starts_with("bipa5: 100.0% of listen items"), "{b:?}");
+        assert!(b.iter().any(|x| x.contains("multiple-choice items have the longest option")), "{b:?}");
+        assert!(!b.iter().any(|x| x.contains("listen items have the longest")), "the short answer: {b:?}");
     }
 
     #[test]
@@ -305,20 +488,37 @@ exercises:
         let s = crate::testkit::Sandbox::empty();
         s.write(
             "content/lessons/id/bipa5.u01.l01.yaml",
-            "id: bipa5.u01.l01\nexercises:\n  - {type: listen, text: Satu dua tiga, options: [نعم, لا]}\n",
+            "id: bipa5.u01.l01\nexercises:\n  - {id: e01, type: listen, text: Satu dua tiga, options: [نعم, لا يا], answer: 1}\n",
         );
         s.write("content/lessons/id/notes.yaml", "title: no id\n");
-        s.write(LIMITS, "# level\tlisten\tchoice\twords\nbipa5\t100\t0\t3\n");
+        s.write(
+            "content/lessons/jv/j1.u01.l01.yaml",
+            "id: j1.u01.l01\nexercises:\n  - {id: e02, type: multiple_choice, options: [Inggih, Mboten], answer: 0}\n",
+        );
+        s.write(
+            LIMITS,
+            "# level\tlisten\tchoice\twords\tlonger\tlonger\nbipa5\t100\t0\t3\t100\t-\nj1\t-\t-\t-\t-\t100\n",
+        );
         let mut out = Vec::new();
-        report_to(&s.root(), Args { check: true }, &mut out).unwrap();
+        report_to(&s.root(), Args { check: true, longest: None }, &mut out).unwrap();
         let text = crate::testkit::text(out);
-        assert!(text.contains("bipa5"), "{text}");
-        s.write(LIMITS, "bipa5\t50\t0\t3\n");
+        assert!(text.contains("bipa5") && text.contains("j1"), "{text}");
+        s.write(LIMITS, "bipa5\t50\t0\t3\t-\t-\n");
         let mut out = Vec::new();
-        assert!(report_to(&s.root(), Args { check: true }, &mut out).is_err());
-        assert!(crate::testkit::text(out).contains("limit 50%"));
-        s.write(LIMITS, "bipa5\tmany\t0\t3\n");
+        assert!(report_to(&s.root(), Args { check: true, longest: None }, &mut out).is_err());
+        assert!(crate::testkit::text(out).contains("limit 50.0%"));
+        s.write(LIMITS, "bipa5\t100\t0\t3\t90\t-\n");
+        assert!(s.cli(&["demand", "--check"]).is_err(), "the longest option wins every listen item");
+        s.write(LIMITS, "bipa5\tmany\t0\t3\t-\t-\n");
         assert!(s.cli(&["demand", "--check"]).is_err());
+        s.write(LIMITS, "bipa5\t100\t0\t3\n");
+        assert!(s.cli(&["demand", "--check"]).is_err(), "every line has six columns");
         assert!(s.cli(&["demand"]).is_ok(), "the report alone never reads the limits");
+        let mut out = Vec::new();
+        report_to(&s.root(), Args { check: false, longest: Some("bipa5".into()) }, &mut out).unwrap();
+        let text = crate::testkit::text(out);
+        assert!(text.contains("bipa5.u01.l01\te01\tlisten\t5\t3"), "{text}");
+        assert!(text.contains("bipa5: answer is the single longest option in 1 "), "{text}");
+        assert!(s.cli(&["demand", "--longest", "j1"]).is_ok());
     }
 }
