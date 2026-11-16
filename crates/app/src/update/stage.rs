@@ -9,6 +9,7 @@
 
 use dioxus::prelude::*;
 use kabar_core::locale::UiLanguage;
+use kabar_protocol::update::Channel;
 
 use super::text::{U, ut};
 use super::view::{UPDATE_CSS, failure_text, megabytes, texts, updater, use_update_status, work};
@@ -44,6 +45,8 @@ pub enum Act {
     OpenPermission,
     /// The channel's release page, to install one build by hand.
     OpenReleases,
+    /// Back to alpha, the release channel that always has builds.
+    FollowAlpha,
 }
 
 impl Act {
@@ -59,6 +62,7 @@ impl Act {
             Self::Restart => U::RestartNow,
             Self::OpenPermission => U::OpenPermission,
             Self::OpenReleases => U::OpenReleases,
+            Self::FollowAlpha => U::FollowAlpha,
         }
     }
 
@@ -86,6 +90,7 @@ impl Act {
             Self::OpenReleases => {
                 let _ = crate::platform::open_url(&super::sheet::releases_url());
             }
+            Self::FollowAlpha => work(|u| u.set_channel(Channel::Alpha)),
         }
     }
 }
@@ -139,6 +144,8 @@ pub fn stage(phase: &Phase, android: bool) -> Option<Stage> {
                 Failure::Network | Failure::Verify(_) => retry(Act::Download),
                 Failure::Install(_) => retry(Act::Install),
                 Failure::TooNew | Failure::KeyChanged => vec![Act::OpenReleases],
+                Failure::NotPublished(c) if *c != Channel::Alpha => vec![Act::FollowAlpha],
+                Failure::NotPublished(_) => vec![],
             };
             (failure_text(why, offer.as_ref()), None, acts)
         }

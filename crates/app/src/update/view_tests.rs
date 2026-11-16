@@ -68,6 +68,7 @@ fn status(phase: Phase) -> Status {
         content_check: None,
         packs_refreshed: 0,
         checking_all: false,
+        unpublished: None,
         history: Vec::new(),
     }
 }
@@ -298,6 +299,11 @@ fn each_step_of_an_update_has_its_own_headline_and_button() {
         ),
         (Phase::Failed { offer: None, why: Failure::TooNew }, U::TooNew, None),
         (Phase::Failed { offer: None, why: Failure::KeyChanged }, U::KeyChanged, None),
+        (
+            Phase::Failed { offer: None, why: Failure::NotPublished(Channel::Stable) },
+            U::NotPublished,
+            Some(U::FollowAlpha),
+        ),
     ];
     for (phase, headline, button) in cases {
         let html = card(status(phase.clone()));
@@ -349,6 +355,21 @@ fn mode_and_channel_show_the_learners_choice() {
     });
     assert!(has(&html, EN, U::ModeOffHint) && !has(&html, EN, U::NotifyToggle), "no notifications when off");
     assert!(has(&html, EN, U::PreviewChannelNote));
+}
+
+#[test]
+fn a_channel_with_nothing_published_says_so_and_offers_alpha() {
+    // The refused pick: the picker says why it didn't move.
+    let html = card(Status { unpublished: Some(Channel::Stable), ..status(Phase::Idle) });
+    assert!(html.contains(&format!("«{}»: {}", ut(EN, U::Stable), ut(EN, U::NothingPublishedYet))), "{html}");
+    assert!(!has(&card(status(Phase::Idle)), EN, U::NothingPublishedYet));
+    // A device already on an empty channel: not a network problem, and one
+    // tap back to alpha. Alpha itself missing has nowhere to send it.
+    let failed =
+        |c| super::stage::stage(&Phase::Failed { offer: None, why: Failure::NotPublished(c) }, false);
+    let beta = failed(Channel::Beta).unwrap();
+    assert_eq!((beta.headline, beta.acts), (U::NotPublished, vec![super::stage::Act::FollowAlpha]));
+    assert!(failed(Channel::Alpha).unwrap().acts.is_empty());
 }
 
 #[test]

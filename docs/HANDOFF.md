@@ -273,6 +273,13 @@ macOS-15 runners are sometimes not acquired: rerun failed jobs later.
   `kabar-tools update verify` against `crates/app/update-key.pub`.
 - Preview builds are signed with the release keys, so any build can switch
   channel in Settings › Updates.
+- **Beta and stable are not published yet** (no `update-beta` or
+  `update-stable` release; starting them waits on Mohamed). A 404 feed is
+  `Failure::NotPublished`, not a network failure: picking a channel probes
+  its `update.json` first and a 404 refuses the pick (`Status::unpublished`,
+  a note under the picker); a device already on an empty channel sees
+  "nothing published here yet" with «ارجع لألفا» (`Act::FollowAlpha`).
+  Offline, the pick goes through as before. Issue #656.
 - Over the air: signed `update.json` (+ `.sig`) per channel; a separate signed
   **content bundle** (lessons, stories, radio, glosses, CSS) applies at the
   next launch without reinstalling; CI skips the APK when only
@@ -458,9 +465,8 @@ Mohamed can paste this into any new chat or account to continue:
 Newest first. One line per PR that changes behaviour, process or state.
 
 - 2026-11-16: #655 content: wrong options in listen and multiple-choice items rewritten to the answer's length and shape at BIPA 2–7 and J1–J6 (built from details in the audio or lesson that answer a different question; `explain:` updated where it named old options); `content/demand-limits.tsv` longest-option columns tightened to the new values; packs rebuilt.
-
+- 2026-11-16: Updates: a channel with no feed (404, beta and stable today) is "nothing published here yet", not a network failure; picking one is refused with a note, and a device already on one gets one tap back to alpha (#656).
 - 2026-11-16: `kabar-tools demand` measures, for every BIPA and J level, how often the longest option is the answer in listen and multiple-choice items (ties split evenly), and `--longest <level>` lists those items; `content/demand-limits.tsv` gains two ratchet columns at today's values, `-` for no limit (#655). Content rule 10 in `scripts/curriculum/README.md`: every option has the same shape and length.
-
 - 2026-11-15: Settings browser check waits (up to 3 s, per frame) for the expected text scale before measuring. Under CPU load Chromium sometimes returned the root font size from before the text-size rule applied (16px for «أكبر»), so 2026-11-15 runs failed on a random case; the app itself was fine (the same page read 20px a frame later). Locally under 3× load: 8 of 18 runs failed before, 0 of 12 after.
 - 2026-11-15: Settings › Account «زامن دلوقتي» forces a sync now; the sync backoff caps at 1 minute (was 5) and the network coming back retries at once (§ 2).
 - 2026-11-15: What's new gets a digest line per release (changes, levels, the busiest level), a box of lessons you had finished that the release changed (each opens), and changelog search with level and kind filters across every kept build (same design as Batna #1346).
