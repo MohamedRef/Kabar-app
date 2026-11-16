@@ -35,6 +35,7 @@ pub(super) fn status(phase: Phase, mode: Mode) -> Status {
         content_check: None,
         packs_refreshed: 0,
         checking_all: false,
+        unpublished: None,
         history: Vec::new(),
     }
 }
@@ -1369,4 +1370,37 @@ fn a_download_queued_for_wifi_runs_on_the_next_unmetered_step() {
     u.step(Duration::from_secs(3600), false);
     assert!(matches!(u.status().phase, Phase::Ready(_)), "{:?}", u.status().phase);
     assert_eq!(u.status().prefs.wifi_download, None, "done: the wish is cleared");
+}
+
+#[test]
+fn a_channel_with_nothing_published_is_not_a_network_failure() {
+    // An empty feed folder answers 404, like GitHub for a release never made.
+    let empty = tempfile::tempdir().unwrap();
+    let url = serve(empty.path().to_path_buf());
+    let (u, data) = updater(&url, "1.0.0-alpha.1");
+    u.check(false);
+    assert_eq!(
+        u.status().phase,
+        Phase::Failed { offer: None, why: Failure::NotPublished(Channel::Alpha) },
+        "a 404 is not 'no connection'"
+    );
+    // Picking a channel with nothing on it is refused: the device keeps
+    // following the one it had, and the picker says why.
+    u.set_channel(Channel::Stable);
+    assert_eq!(u.status().channel, Channel::Alpha);
+    assert_eq!(u.status().unpublished, Some(Channel::Stable));
+    assert_eq!(load_prefs(&data.path().join("updates")).channel, None, "nothing saved");
+    // Tapping the channel already followed clears the note.
+    u.set_channel(Channel::Alpha);
+    assert_eq!(u.status().unpublished, None);
+}
+
+#[test]
+fn a_missing_signature_is_a_feed_mid_upload_not_an_empty_channel() {
+    let feed = fixture_feed();
+    fs::remove_file(feed.path().join(SIGNATURE_FILE)).unwrap();
+    let url = serve(feed.path().to_path_buf());
+    let (u, _data) = updater(&url, "1.0.0-alpha.1");
+    u.check(false);
+    assert_eq!(u.status().phase, Phase::Failed { offer: None, why: Failure::Network });
 }

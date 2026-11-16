@@ -377,15 +377,19 @@ fn agent(timeout: Duration) -> ureq::Agent {
 
 /// The web build never updates itself: each deploy is the newest build.
 #[cfg(target_arch = "wasm32")]
-fn get_small(_url: &str) -> Result<Vec<u8>, Failure> {
+fn get_small(_url: &str, _channel: Channel) -> Result<Vec<u8>, Failure> {
     Err(Failure::Network)
 }
 
+/// A small feed file of `channel`.
 #[cfg(not(target_arch = "wasm32"))]
-fn get_small(url: &str) -> Result<Vec<u8>, Failure> {
+fn get_small(url: &str, channel: Channel) -> Result<Vec<u8>, Failure> {
     let mut res = agent(Duration::from_secs(30)).get(url).call().map_err(|_| Failure::Network)?;
-    if res.status().as_u16() != 200 {
-        return Err(Failure::Network);
+    match res.status().as_u16() {
+        200 => {}
+        // GitHub answers 404 for a release (channel) never published.
+        404 => return Err(Failure::NotPublished(channel)),
+        _ => return Err(Failure::Network),
     }
     let mut bytes = Vec::new();
     res.body_mut()

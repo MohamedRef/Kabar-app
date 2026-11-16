@@ -264,6 +264,9 @@ pub enum Failure {
     /// Preview only: CI's signing key was renewed; install the newest
     /// preview by hand once.
     KeyChanged,
+    /// The channel's feed doesn't exist (404): nothing has been published
+    /// on it yet. Not a network problem; another channel has builds.
+    NotPublished(Channel),
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Phase {
@@ -317,6 +320,9 @@ pub struct Status {
     pub packs_refreshed: usize,
     /// A check by hand is running (the feed, then the audio packs).
     pub checking_all: bool,
+    /// The channel last picked whose feed isn't published yet: the pick
+    /// was refused, and the picker says why.
+    pub unpublished: Option<Channel>,
     /// Every build's changes seen so far, newest first (changelog.rs).
     pub history: Vec<BuildChanges>,
 }

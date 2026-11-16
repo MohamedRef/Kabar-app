@@ -109,6 +109,7 @@ pub(super) fn failure_text(why: &Failure, offer: Option<&Offer>) -> U {
         Failure::Install(_) => U::FailedInstall,
         Failure::TooNew => U::TooNew,
         Failure::KeyChanged => U::KeyChanged,
+        Failure::NotPublished(_) => U::NotPublished,
     }
 }
 
@@ -396,6 +397,11 @@ pub(super) fn UpdatesCardFor(s: Status) -> Element {
                                 onclick: move |_| work(move |u| u.set_channel(c)),
                                 "{ut(lang, channel_label(c))}"
                             }
+                        }
+                    }
+                    if let Some(c) = s.unpublished {
+                        p { class: "muted small", role: "status",
+                            "«{ut(lang, channel_label(c))}»: {ut(lang, U::NothingPublishedYet)}"
                         }
                     }
                     if s.channel == Channel::Preview {

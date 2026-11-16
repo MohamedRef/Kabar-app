@@ -36,6 +36,9 @@ pub enum U {
     FailedInstall,
     TooNew,
     KeyChanged,
+    NotPublished,
+    FollowAlpha,
+    NothingPublishedYet,
     Later,
     // mode and channel
     Mode,
@@ -255,6 +258,21 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (KeyChanged, En) => {
             "The preview signing key changed, so this build can't verify new ones. Install the newest kabar-preview.apk by hand once; after that it's automatic again."
         }
+        (NotPublished, ArEg) => {
+            "لسه مفيش ولا نسخة اتنشرت على القناة دي، فمفيش منها تحديثات ولا دروس جديدة. ارجع لألفا عشان التحديثات توصلك."
+        }
+        (NotPublished, Ar) => {
+            "لم يُنشر أي إصدار على هذه القناة بعد، فلا تصل منها تحديثات ولا دروس جديدة. ارجع إلى ألفا لتصلك التحديثات."
+        }
+        (NotPublished, En) => {
+            "Nothing has been published on this channel yet, so no updates or new lessons come from it. Switch back to alpha to get them."
+        }
+        (FollowAlpha, ArEg) => "ارجع لألفا",
+        (FollowAlpha, Ar) => "ارجع إلى ألفا",
+        (FollowAlpha, En) => "Switch to alpha",
+        (NothingPublishedYet, ArEg) => "لسه مفيش نسخ اتنشرت عليها، فالقناة ماتغيّرتش.",
+        (NothingPublishedYet, Ar) => "لم يُنشر عليها أي إصدار بعد، فلم تتغيّر القناة.",
+        (NothingPublishedYet, En) => "nothing has been published there yet, so the channel didn't change.",
         (Later, ArEg) => "بعدين",
         (Later, Ar) => "لاحقًا",
         (Later, En) => "Later",
