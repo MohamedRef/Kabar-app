@@ -17,8 +17,12 @@
 //! It also measures option shape for every level, Indonesian and Javanese
 //! (#655): the share of `listen` and `multiple_choice` items where "pick the
 //! longest option" finds the answer (ties split evenly; chance is 1 / options).
-//! A learner who can score by shape is not listening. The two "longest"
-//! columns of the limits file only go down. `--longest <level>` lists the
+//! A learner who can score by shape is not listening, and that holds in both
+//! directions: a level where the longest option is almost never the answer
+//! gives the answer away as surely as one where it almost always is (#661).
+//! So the two "longest" columns of the limits file hold the share last
+//! measured, and a level may only stay inside the band around chance
+//! (`BAND_LOW`–`BAND_HIGH`) or move toward it. `--longest <level>` lists the
 //! items of a level whose answer is the single longest option, with the
 //! lengths, so a rewrite batch knows where to start.
 
@@ -255,12 +259,30 @@ pub struct Limit {
     pub max_listen_arabic_pct: Option<f64>,
     pub max_choice_arabic_pct: Option<f64>,
     pub min_listen_words: Option<f64>,
-    pub max_listen_longest_pct: Option<f64>,
-    pub max_choice_longest_pct: Option<f64>,
+    /// The share last recorded for the level, not a ceiling: see [`off_band`].
+    pub seen_listen_longest_pct: Option<f64>,
+    pub seen_choice_longest_pct: Option<f64>,
+}
+
+/// The band around chance for "the longest option is the answer". Items
+/// have three options (chance 33%) or four (25%).
+pub const BAND_LOW: f64 = 25.0;
+pub const BAND_HIGH: f64 = 40.0;
+
+/// How far a "longest option" share is from the band; 0 inside it.
+pub fn off_band(pct: f64) -> f64 {
+    if pct < BAND_LOW {
+        BAND_LOW - pct
+    } else if pct > BAND_HIGH {
+        pct - BAND_HIGH
+    } else {
+        0.0
+    }
 }
 
 /// `level<TAB>max listen Arabic %<TAB>max choice Arabic %<TAB>min listen
-/// words<TAB>max listen longest %<TAB>max choice longest %`; `-` is no limit.
+/// words<TAB>listen longest % last recorded<TAB>choice longest % last
+/// recorded`; `-` is no limit.
 pub fn limits(root: &Root) -> Result<BTreeMap<String, Limit>> {
     let text = fs::read_to_string(root.path().join(LIMITS)).map_err(|e| anyhow!("{LIMITS}: {e}"))?;
     let mut out = BTreeMap::new();
@@ -284,8 +306,8 @@ pub fn limits(root: &Root) -> Result<BTreeMap<String, Limit>> {
                 max_listen_arabic_pct: num(1)?,
                 max_choice_arabic_pct: num(2)?,
                 min_listen_words: num(3)?,
-                max_listen_longest_pct: num(4)?,
-                max_choice_longest_pct: num(5)?,
+                seen_listen_longest_pct: num(4)?,
+                seen_choice_longest_pct: num(5)?,
             },
         );
     }
@@ -306,14 +328,21 @@ pub fn breaches(name: &str, level: &Level, limit: &Limit) -> Vec<String> {
         limit.max_choice_arabic_pct,
         "multiple-choice items have only Arabic options",
     );
-    over(
+    let mut shape = |value: f64, seen: Option<f64>, what: &str| {
+        if let Some(seen) = seen.filter(|&s| off_band(value) > off_band(s) + 0.05) {
+            out.push(format!(
+                "{name}: {value:.1}% of {what} (recorded {seen:.1}%; stay inside {BAND_LOW:.0}–{BAND_HIGH:.0}% or move toward it)"
+            ));
+        }
+    };
+    shape(
         level.listen_longest_pct(),
-        limit.max_listen_longest_pct,
+        limit.seen_listen_longest_pct,
         "listen items have the longest option as the answer",
     );
-    over(
+    shape(
         level.choice_longest_pct(),
-        limit.max_choice_longest_pct,
+        limit.seen_choice_longest_pct,
         "multiple-choice items have the longest option as the answer",
     );
     if let Some(min) = limit.min_listen_words.filter(|&m| level.listen_words() + 0.05 < m) {
@@ -464,8 +493,8 @@ exercises:
             max_listen_arabic_pct: Some(100.0),
             max_choice_arabic_pct: Some(100.0),
             min_listen_words: Some(2.0),
-            max_listen_longest_pct: Some(100.0),
-            max_choice_longest_pct: Some(100.0),
+            seen_listen_longest_pct: Some(0.0),
+            seen_choice_longest_pct: Some(100.0),
         };
         assert!(breaches("bipa5", &l, &ok).is_empty());
         assert!(breaches("bipa5", &l, &Limit::default()).is_empty(), "- means no limit");
@@ -473,14 +502,37 @@ exercises:
             max_listen_arabic_pct: Some(30.0),
             max_choice_arabic_pct: Some(5.0),
             min_listen_words: Some(20.0),
-            max_listen_longest_pct: Some(40.0),
-            max_choice_longest_pct: Some(40.0),
+            seen_listen_longest_pct: Some(0.0),
+            seen_choice_longest_pct: Some(40.0),
         };
         let b = breaches("bipa5", &l, &tight);
         assert_eq!(b.len(), 3, "{b:?}");
         assert!(b[0].starts_with("bipa5: 100.0% of listen items"), "{b:?}");
         assert!(b.iter().any(|x| x.contains("multiple-choice items have the longest option")), "{b:?}");
         assert!(!b.iter().any(|x| x.contains("listen items have the longest")), "the short answer: {b:?}");
+    }
+
+    #[test]
+    fn a_longest_share_may_only_stay_in_the_band_or_move_toward_it() {
+        let level = |listen_longest: f64| Level { listen_shaped: 100, listen_longest, ..Level::default() };
+        let seen = |pct: f64| Limit { seen_listen_longest_pct: Some(pct), ..Limit::default() };
+        let breached = |now: f64, was: f64| !breaches("bipa5", &level(now), &seen(was)).is_empty();
+        assert_eq!((off_band(7.1), off_band(33.0), off_band(55.0)), (BAND_LOW - 7.1, 0.0, 15.0));
+        // Recorded far below chance: it may rise toward the band, not fall further.
+        assert!(!breached(7.1, 7.1));
+        assert!(!breached(20.0, 7.1), "toward chance is an improvement");
+        assert!(!breached(33.0, 7.1));
+        assert!(breached(5.0, 7.1), "further below chance is a cue too");
+        assert!(breached(60.0, 7.1), "past the band and further out on the other side");
+        // Recorded inside the band: anywhere in the band is fine, outside is not.
+        assert!(!breached(26.0, 38.3));
+        assert!(breached(41.0, 38.3));
+        assert!(breached(20.0, 38.3));
+        // Recorded above the band: the old ratchet, downward.
+        assert!(!breached(45.0, 53.7));
+        assert!(breached(56.0, 53.7));
+        let b = breaches("bipa5", &level(5.0), &seen(7.1));
+        assert!(b[0].contains("recorded 7.1%") && b[0].contains("25–40%"), "{b:?}");
     }
 
     #[test]

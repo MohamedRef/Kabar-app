@@ -1,7 +1,7 @@
 # Lesson demand ratchet per level (#633, #655), checked by `kabar-tools demand --check` in CI.
-# level<TAB>max % of listen items with only Arabic options<TAB>max % of multiple-choice items with only Arabic options<TAB>min words per listening text<TAB>max % of listen items where the longest option is the answer<TAB>max % of multiple-choice items where the longest option is the answer
-# `-` is no limit (Javanese levels carry only the longest-option columns). Aim for the longest-option columns: under 40.
-# A batch that improves a level tightens its line in the same PR; never loosen one.
+# level<TAB>max % of listen items with only Arabic options<TAB>max % of multiple-choice items with only Arabic options<TAB>min words per listening text<TAB>% of listen items where the longest option is the answer, as last recorded<TAB>the same for multiple-choice items
+# `-` is no limit (Javanese levels carry only the longest-option columns). The longest-option columns are not ceilings (#661): chance is 33% with three options, and far below it is as much a cue as far above. A level must stay inside 25-40%, or be no further from that band than the value recorded here.
+# A batch that improves a level updates its line in the same PR: tighten the first three columns, and move the last two toward the band. Never loosen one or move it away from the band.
 bipa1	19.3	0.6	4.7	38.3	34.8
 bipa2	21.3	1.4	5.6	25.8	32.7
 bipa3	23.9	0.5	7.4	28.2	30.1
