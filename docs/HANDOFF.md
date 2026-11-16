@@ -427,7 +427,7 @@ Rules (Mohamed's decisions; all in force):
 
 ### Open work and known gaps
 
-- #655 (longest option is the answer): `kabar-tools demand` measures it per level and the ratchet holds it (2026-11-16 baseline: listening BIPA 5–7 79/90/85%, multiple choice 57/58/71%; Javanese listening 44–64%). Rewrites of the wrong options follow, BIPA 5–7 first, then Javanese listening and BIPA 3–4; aim under 40%.
+- #655 (longest option is the answer): measured by `kabar-tools demand`, held by the ratchet. Wrong options rewritten at BIPA 2–7 and J1–J6 (about 1,090 items, 2026-11-16): listening went from 46–90% to 7–36% per level, multiple choice from 37–71% to 16–35%; "pick the shortest" stays under ~35%. BIPA 1 (38/35%) was already under 40% and untouched. Left alone on purpose: single-word items whose distractors are pinned by `words:`, proper names, aksara/spelling pairs. All rewrites unverified until Mohamed reviews them.
 - #633 (BIPA 5–7 task demand): all six content batches merged (#642, #644, #645, #646, #647, #643); Arabic-only listen options are 0% at BIPA 5–7 and the ratchet holds them there. The README keeps "(aim)" on BIPA 5–7 CEFR labels: the mappings stay low-confidence and listening texts (17–28 words) are still short of C1 length. Drop it in `readme.rs cefr_label` only when Mohamed decides.
 - Mohamed's steps: Cloud keys (`GEMINI_API_KEY`, `AZURE_SPEECH_KEY`,
   `FCM_SERVICE_ACCOUNT`, `KABAR_GOOGLE_SERVICES_JSON`) so AI, cloud voices and
@@ -456,6 +456,8 @@ Mohamed can paste this into any new chat or account to continue:
 ## 11. Log
 
 Newest first. One line per PR that changes behaviour, process or state.
+
+- 2026-11-16: #655 content: wrong options in listen and multiple-choice items rewritten to the answer's length and shape at BIPA 2–7 and J1–J6 (built from details in the audio or lesson that answer a different question; `explain:` updated where it named old options); `content/demand-limits.tsv` longest-option columns tightened to the new values; packs rebuilt.
 
 - 2026-11-16: `kabar-tools demand` measures, for every BIPA and J level, how often the longest option is the answer in listen and multiple-choice items (ties split evenly), and `--longest <level>` lists those items; `content/demand-limits.tsv` gains two ratchet columns at today's values, `-` for no limit (#655). Content rule 10 in `scripts/curriculum/README.md`: every option has the same shape and length.
 
