@@ -851,8 +851,10 @@ impl Engine {
                             }
                         }
                         Err(e) => {
-                            // Not saved, so the next hello brings them again.
+                            // Not saved: the next hello asks from what the store
+                            // holds, so the hub sends them again.
                             crate::diag::report!("applying remote ops: {e}");
+                            self.client.rewind(self.store.with(|s| s.last_seq()).unwrap_or(0));
                             self.drop_socket();
                             return;
                         }
