@@ -469,6 +469,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-19: content review of BIPA 7 (#670): distractor tiles and options that also made correct answers (sakral, alkisah, moksa, pemulihan ekonomi…), 11 BUILD word orders, 12 explains that named options by position, story and history facts made to agree with their slides (the eggs of u03.l03, direct elections from 2004), an all-Arabic option set moved to Indonesian. Demand line updated. All unverified.
 - 2026-11-19: the web build gets the preview version and build number (`web-deploy.yml` runs `scripts/version.sh preview` on a full checkout), so Settings › About on the web says e.g. «2026.11.13 · بناء 906» instead of the never-released placeholder 2026.11.0 (#666).
 - 2026-11-19: 27 compound translations in BIPA 5–6 had their English accepted answers split at every comma (unquoted YAML flow lists), so half a translation graded Correct and the full one went to review; the answers are quoted again and the content check now fails an English `answers_meaning` answer that starts in lower case (#663).
 - 2026-11-16: `kabar-tools demand --check` holds the longest-option share inside a band around chance (25–40%) or no further from it than the value recorded in `content/demand-limits.tsv`, instead of under a ceiling that only went down (#661): BIPA 5 listening is recorded at 7.1%, where the longest option is wrong 93% of the time, and the old rule forbade moving back toward chance. No content changed.
