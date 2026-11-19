@@ -159,11 +159,29 @@ fn word_lang(w: &Word, text_lang: CoreLang) -> CoreLang {
 }
 
 /// The first sense, short enough to sit under a word: "going to, will ·
-/// to want" → "going to".
+/// to want" → "going to". A note in brackets at the start is dropped
+/// ("(phone) call" → "call"), or is the gloss when nothing follows it. A
+/// slash between single words of a longer phrase stays ("his/her father",
+/// «ابن/بنت عم»): cutting there would leave a different word (#665).
 fn short(gloss: &str) -> &str {
-    let first =
-        gloss.split([';', '·', ',', '،', '؛', '(', '/']).map(str::trim).find(|s| !s.is_empty()).unwrap_or("");
-    if first.chars().count() > 22 { "" } else { first }
+    const MAX: usize = 22;
+    let mut g = gloss.trim();
+    if let Some(rest) = g.strip_prefix('(')
+        && let Some(end) = rest.find(')')
+    {
+        let after = rest[end + 1..].trim_start();
+        g = if after.is_empty() { &rest[..end] } else { after };
+    }
+    let first = g.split([';', '·', ',', '،', '؛', '(']).map(str::trim).find(|s| !s.is_empty()).unwrap_or("");
+    let first = match first.split_once('/').map(|(b, a)| (b.trim(), a.trim())) {
+        Some((before, after))
+            if before.contains(' ') || !after.contains(' ') || first.chars().count() > MAX =>
+        {
+            before
+        }
+        _ => first,
+    };
+    if first.chars().count() > MAX { "" } else { first }
 }
 
 fn pieces(doc: &ReadDoc, marked: &[String], text_lang: CoreLang) -> Vec<Piece> {
@@ -660,6 +678,30 @@ mod tests {
         assert_eq!(short("going to, will · to want"), "going to");
         assert_eq!(short("ده، دي، دول"), "ده");
         assert_eq!(short("مساء الخير بالليل / تصبح على خير"), "مساء الخير بالليل");
+    }
+
+    /// Real glosses that came out broken or as a different word (#665).
+    #[test]
+    fn short_meanings_keep_brackets_and_phrases_whole() {
+        // A note in brackets first: dropped, or the gloss when it is all there is.
+        assert_eq!(short("(في التحيات) صباح/مساء الخير…؛ مبروك"), "صباح/مساء الخير…");
+        assert_eq!(short("(in greetings) good …; congratulations"), "good …");
+        assert_eq!(short("(phone) call"), "call");
+        assert_eq!(short("(يـ)عمل"), "عمل");
+        assert_eq!(short("(bertanggung jawab) مسؤول، يشيل المسؤولية"), "مسؤول");
+        assert_eq!(short("(علامة جمع للناس)"), "علامة جمع للناس");
+        assert_eq!(short("(أداة توكيد: بقى، يا عم)"), "أداة توكيد: بقى");
+        // A slash inside a phrase stays; one between whole alternatives cuts.
+        assert_eq!(short("ابن/بنت عم أو خال"), "ابن/بنت عم أو خال");
+        assert_eq!(short("his/her father"), "his/her father");
+        assert_eq!(short("أخوه / أخته الكبير"), "أخوه / أخته الكبير");
+        assert_eq!(short("عريس / عروسة"), "عريس");
+        assert_eq!(short("جين / جان (اسم)"), "جين");
+        // Too long whole: the first alternative, never nothing when it fits.
+        assert_eq!(short("emphasis/softening particle"), "emphasis");
+        assert_eq!(short("(emphasis/softening particle)"), "emphasis");
+        // An unclosed bracket is ignored, as before.
+        assert_eq!(short("(foo"), "foo");
     }
 
     #[test]
