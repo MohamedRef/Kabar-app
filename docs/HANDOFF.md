@@ -466,6 +466,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-19: the short meaning under a word (`annotated::short`) drops a leading bracketed note and keeps a slash between single words of a phrase («ابن/بنت عم», "his/her father"); about 370 of the 13,000 glosses read differently, none broken (#665).
 - 2026-11-16: `kabar-tools demand --check` holds the longest-option share inside a band around chance (25–40%) or no further from it than the value recorded in `content/demand-limits.tsv`, instead of under a ceiling that only went down (#661): BIPA 5 listening is recorded at 7.1%, where the longest option is wrong 93% of the time, and the old rule forbade moving back toward chance. No content changed.
 - 2026-11-16: #655 content: wrong options in listen and multiple-choice items rewritten to the answer's length and shape at BIPA 2–7 and J1–J6 (built from details in the audio or lesson that answer a different question; `explain:` updated where it named old options); `content/demand-limits.tsv` longest-option columns tightened to the new values; packs rebuilt.
 - 2026-11-16: Updates: a channel with no feed (404, beta and stable today) is "nothing published here yet", not a network failure; picking one is refused with a note, and a device already on one gets one tap back to alpha (#656).
