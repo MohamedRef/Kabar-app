@@ -956,6 +956,40 @@ fn lines_get_their_translation_in_the_learners_voice() {
     assert!(text.contains(msg(EN, Msg::Unverified)), "Javanese stays unverified: {text}");
 }
 
+/// The `dir` of every translation line in `html`, in order.
+fn line_dirs(html: &str) -> Vec<String> {
+    html.match_indices("class=\"tr-line")
+        .map(|(i, _)| {
+            let tag = &html[i..i + html[i..].find('>').unwrap()];
+            tag.split("dir=\"").nth(1).and_then(|rest| rest.split('"').next()).unwrap_or("").to_string()
+        })
+        .collect()
+}
+
+#[test]
+fn a_translation_line_reads_in_its_voices_direction() {
+    // An Arabic line that starts with a Latin name («iPhone 17 Pro Max …»)
+    // must still run right to left, so the line can't guess with dir=auto.
+    let answer = include_str!("../../../../fixtures/ai/translate_text.arp_dicul_piro.workers_ai.json");
+    for (lang, signed_in, dir, shown) in [
+        (UiLanguage::ArEg, true, "rtl", "هيتباع بكام؟"),
+        (UiLanguage::ArEg, false, "rtl", msg(UiLanguage::ArEg, Msg::TranslationWordByWordShort)),
+        (EN, true, "ltr", "How much will it be sold for?"),
+    ] {
+        let mut case = with_open(
+            || rsx! { Reader {} },
+            |db, st| open_text(db, st, "arp dicul piro\n\nSek tak lapor pusat"),
+        );
+        case.lang = lang;
+        case.ai = Some(Script::answering(&[answer]));
+        case.signed_in = signed_in;
+        let html = render(case);
+        assert!(text_of(&html).contains(shown), "{lang:?}, signed in {signed_in}: {html}");
+        let dirs = line_dirs(&html);
+        assert_eq!(dirs, vec![dir; 2], "{lang:?}, signed in {signed_in}: {html}");
+    }
+}
+
 #[test]
 fn signed_out_lines_fall_back_to_word_by_word() {
     let answer = include_str!("../../../../fixtures/ai/translate_text.arp_dicul_piro.workers_ai.json");

@@ -294,7 +294,13 @@ pub fn LineUnder(seg: usize) -> Element {
             ),
         }
     });
-    let lang = st.voice.read().tag();
+    let voice = *st.voice.read();
+    let lang = voice.tag();
+    // The line is in the voice's language, so it takes the voice's direction.
+    // `dir=auto` would guess from the first letter, and an Arabic line that
+    // starts with a name («iPhone 17 Pro Max …», «Prabowo …») would come out
+    // left to right.
+    let dir = voice.dir().as_str();
     match ui.settings.read().translation {
         TranslationMode::Off => return rsx! {},
         TranslationMode::Tap if !revealed() => {
@@ -308,7 +314,7 @@ pub fn LineUnder(seg: usize) -> Element {
     }
     match under() {
         Under::Line(text) => rsx! {
-            p { class: "tr-line", lang, dir: "auto", "{text}" }
+            p { class: "tr-line", lang, dir, "{text}" }
         },
         Under::Pending => rsx! {
             p { class: "tr-line pending", aria_hidden: "true", "…" }
@@ -317,7 +323,7 @@ pub fn LineUnder(seg: usize) -> Element {
             p {
                 class: "tr-line word-by-word",
                 lang,
-                dir: "auto",
+                dir,
                 title: "{ui.t(ReaderMsg::TranslationWordByWord)}",
                 // Says what it is, so it doesn't read as a translation.
                 span { class: "tr-wbw-label", "{ui.t(Msg::TranslationWordByWordShort)} " }
