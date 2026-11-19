@@ -714,12 +714,15 @@ fn coach_settings_edit_one_field_at_a_time() {
     let minute = selects[selects.len() - 1];
     app.change(minute, "35");
     assert_eq!(stored_profile(&app).report_time, LocalTime::hm(8, 35));
-    // Quiet hours: the start hour.
+    // Quiet hours: the start hour. Each select names its half (#674).
+    let from_hour = format!("{}: {}", en(Msg::QuietFrom), t(En, CoachMsg::TimeHour));
     let quiet_from = app
         .find_all("select")
         .into_iter()
-        .find(|&s| app.attr(s, "aria-label") == Some(en(Msg::QuietFrom)))
+        .find(|&s| app.attr(s, "aria-label") == Some(from_hour.as_str()))
         .unwrap();
+    let from_minute = format!("{}: {}", en(Msg::QuietFrom), t(En, CoachMsg::TimeMinute));
+    assert!(app.find_all("select").iter().any(|&s| app.attr(s, "aria-label") == Some(from_minute.as_str())));
     app.change(quiet_from, "23");
     assert_eq!(stored_profile(&app).quiet_hours.start.hour(), 23);
     // Not a number: nothing changes.
