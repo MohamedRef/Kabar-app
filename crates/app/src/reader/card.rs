@@ -169,8 +169,10 @@ pub fn PanelView() -> Element {
             on_close: move |_| st.show(None),
             div { class: "panel", aria_live: "polite",
                 match panel {
+                    // Keyed like ExplainCard: a new word is a new card, so
+                    // "Added to review" and the 👍/👎 thanks don't carry over.
                     Some(Panel::Word(i)) => rsx! {
-                        WordCard { i }
+                        WordCard { key: "{text_id}-{i}", i }
                     },
                     Some(Panel::Phrase { tokens, save_first }) => rsx! {
                         PhraseCard { tokens, save_first }

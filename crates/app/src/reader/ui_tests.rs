@@ -762,6 +762,29 @@ fn a_word_saved_before_says_so_on_the_card() {
 }
 
 #[test]
+fn the_next_word_gets_its_own_card_not_the_last_ones_added_state() {
+    // #712: WordCard had no key, so "Added to review" stayed on the next word
+    // tapped with the sheet open, and that word could never be saved.
+    let mut s = Screenful::new(with_open(|| rsx! { Reader {} }, |db, st| open_text(db, st, SAYA)));
+    s.act(|_, st| {
+        let mut p = st.panel;
+        p.set(Some(Panel::Word(2)));
+    });
+    s.settle();
+    s.dom.click_on("button", ReaderMsg::AddToReview.text(EN));
+    let added = msg(EN, Msg::AddedToReview).replace('\'', "&#39;");
+    assert!(s.settle().contains(&added), "membaca is added");
+    s.act(|_, st| {
+        let mut p = st.panel;
+        p.set(Some(Panel::Word(3)));
+    });
+    let html = s.settle();
+    assert!(!html.contains(&added), "buku isn't added yet: {html}");
+    s.dom.click_on("button", ReaderMsg::AddToReview.text(EN));
+    assert_eq!(s.act(|db, _| db.0.borrow().saved_word_count("id:buku").unwrap()), 1);
+}
+
+#[test]
 fn adding_a_word_to_review_turns_it_learning_and_survives_a_refused_write() {
     let mut s = Screenful::new(with_open(|| rsx! { Reader {} }, |db, st| open_text(db, st, SAYA)));
     s.act(|db, st| {
