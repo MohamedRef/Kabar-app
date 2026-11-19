@@ -614,10 +614,21 @@ pub fn grade(ex: &Exercise, answer: &Answer, lang: UiLanguage, lesson_language: 
         (K::Listen { options, answer: Some(right), .. }, Answer::Choice(i)) if !options.is_empty() => {
             if i == right { Grade::Correct } else { Grade::Wrong }
         }
-        (K::FillBlank { options, answers, .. }, Answer::Choice(i)) => match options.get(*i) {
-            Some(o) if answers.iter().any(|a| canonical(a, target) == canonical(o, target)) => Grade::Correct,
-            _ => Grade::Wrong,
-        },
+        (K::FillBlank { options, answers, .. }, Answer::Choice(i)) => {
+            // Either register is the right chip ("udah" for "sudah"), unless
+            // the options hold the answer as written and its twin too: then
+            // the item asks which register ("tulis" or "menulis", "Monggo"
+            // or "Mangga"), and a chip is right only as written, as the chip
+            // marks and retries already read it.
+            let right = |o: &str, c: Compare| answers.iter().any(|a| canonical(a, c) == canonical(o, c));
+            let written = options.iter().any(|o| right(o, Compare::Plain));
+            let twin = options.iter().any(|o| !right(o, Compare::Plain) && right(o, target));
+            let compare = if written && twin { Compare::Plain } else { target };
+            match options.get(*i) {
+                Some(o) if right(o, compare) => Grade::Correct,
+                _ => Grade::Wrong,
+            }
+        }
         (K::BuildSentence { answer, alternatives, .. }, a) => {
             let refs: Vec<String> =
                 std::iter::once(answer.clone()).chain(alternatives.iter().cloned()).collect();
