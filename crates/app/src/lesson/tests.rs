@@ -288,6 +288,51 @@ fn pronunciation_is_drawn_after_its_word_and_quote_outside_the_latin_isolate() {
 }
 
 #[test]
+fn each_phrase_on_a_slide_line_takes_its_closing_quote() {
+    // bipa1.u01.l01 slide 3. The bracket closes inside its own run, so the
+    // whole line is one stretch of runs and pron_units sees every closer.
+    let line = "للي ماشي «selamat jalan» (يعني امشي بالسلامة)، وللي قاعد «selamat tinggal». \
+                الأسهل «Sampai jumpa!» يعني «أشوفك بعدين».";
+    let drawn = chunks(bracket_groups(latin_runs(line)));
+    let [Chunk::Runs(runs)] = &drawn[..] else { panic!("{drawn:?}") };
+    let closes: Vec<String> = pron_units(runs.clone(), "id", true)
+        .into_iter()
+        .filter_map(|u| match u {
+            Unit::Latin { close, .. } => Some(close),
+            Unit::Plain(_) => None,
+        })
+        .collect();
+    assert_eq!(closes, ["»", "»", "»"]);
+    // A bracket group still stands alone between two stretches.
+    let drawn = chunks(bracket_groups(latin_runs("قول «nggih» للكبير (هو ngendika) وبس")));
+    assert!(matches!(&drawn[..], [Chunk::Runs(_), Chunk::Group(_), Chunk::Runs(_)]), "{drawn:?}");
+}
+
+fn quoted_phrase_line() -> Element {
+    rsx! {
+        RichRuns {
+            text: "في الوداع، اللي قاعد بيقول للي ماشي «selamat jalan» (يعني امشي بالسلامة).".to_string(),
+            target: "id",
+            pron: true,
+        }
+    }
+}
+
+/// The pronunciation reads after the closing quote, not inside the quotes
+/// (where Chromium also drew that quote backwards, #664).
+#[test]
+fn a_quoted_phrase_closes_its_quote_before_its_pronunciation() {
+    let mut case = crate::reader::fixture::Case::new(quoted_phrase_line);
+    case.lang = UiLanguage::ArEg;
+    let html = crate::reader::fixture::Screenful::new(case).settle();
+    let unit = &html[html.find("pron-unit").expect("a Latin unit")..];
+    let close = unit.find("»").expect("the closing quote is in the unit");
+    let say = unit.find("class=\"say\"").expect("the phrase is said");
+    assert!(close < say, "{unit}");
+    assert!(unit.find("سِلَامَاتْ").is_some_and(|pron| close < pron), "{unit}");
+}
+
+#[test]
 fn brackets_around_mixed_text_form_one_group() {
     let pieces = bracket_groups(latin_runs("كلامك إنت للكبير (هو ngendika)"));
     assert_eq!(
