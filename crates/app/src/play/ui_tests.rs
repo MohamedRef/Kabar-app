@@ -258,9 +258,11 @@ fn the_bridge_deck_searches_pages_and_marks_words_known() {
     app.input(search, "zzzzqq");
     assert!(app.by_class("deck-row").is_empty());
     assert!(app.screen().contains(no_match_text()));
-    // The games button goes back to the hub.
+    // The games button starts a game with these words: the Sound-Shift
+    // Detective, not the games list (#689).
     app.click_on("button", "🎲");
-    assert_eq!(route_now(&mut app), Route::Hub);
+    assert_eq!(route_now(&mut app), Route::Detective);
+    assert!(app.try_find("button", en(Msg::DetectiveAllRules)).is_some(), "{}", app.screen());
 }
 
 fn no_match_text() -> &'static str {
