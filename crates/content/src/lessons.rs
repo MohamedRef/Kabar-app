@@ -217,6 +217,13 @@ impl Check<'_> {
                             if k != "en" && list.iter().any(|s| !has_arabic(s)) {
                                 self.push(format_args!("{at}.answers_meaning.{k}: answers must be Arabic"));
                             }
+                            // A comma in an unquoted YAML list ([A, because B]) splits one
+                            // answer in two, and the second half starts in lower case.
+                            if k == "en" && list.iter().any(|s| s.starts_with(char::is_lowercase)) {
+                                self.push(format_args!(
+                                    "{at}.answers_meaning.en: an answer starts in lower case (quote answers that contain a comma)"
+                                ));
+                            }
                         }
                     }
                     for k in ["source_meaning", "answers"] {

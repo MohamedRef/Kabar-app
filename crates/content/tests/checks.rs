@@ -102,6 +102,14 @@ fn lesson_mistakes_are_named() {
                     "source_text": "Selamat pagi", "answers": ["x"],
                     "answers_meaning": {"ar_eg": ["صباح الخير"], "ar": ["good morning"], "en": ["Good morning"]}})
             }),
+            ("answers_meaning.en: an answer starts in lower case", |v| {
+                // What `en: [I stayed home, because it rained]` loads as.
+                v["exercises"][5] = json!({"id": "e06", "type": "translate", "direction": "from_target",
+                    "source_text": "Saya di rumah, karena hujan",
+                    "answers_meaning": {"ar_eg": ["قعدت في البيت، عشان كانت بتمطر"],
+                        "ar": ["بقيت في البيت، لأنها كانت تمطر"],
+                        "en": ["I stayed home", "because it rained"]}})
+            }),
             ("from_target must not have answers", |v| {
                 v["exercises"][5] = json!({"id": "e06", "type": "translate", "direction": "from_target",
                     "source_text": "Selamat pagi", "answers": ["x"],
