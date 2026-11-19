@@ -93,8 +93,6 @@ button.rev-stat { border-color: transparent; }
 .rev-modes { display: grid; gap: 1rem; grid-template-columns: 1fr; }
 .app:not([data-width="compact"]) .rev-modes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .rev-mode { display: flex; flex-direction: column; margin: 0; }
-/* The burst is the phone's own way to review: first on compact. */
-.app[data-width="compact"] .rev-mode.mode-burst { order: -1; }
 .rev-mode p { margin-block: 0 0.75rem; }
 .rev-mode button { margin-block-start: auto; align-self: flex-start; display: inline-flex; gap: 0.5rem; align-items: center; }
 .count-badge {

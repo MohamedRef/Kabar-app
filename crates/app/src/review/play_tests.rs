@@ -142,7 +142,8 @@ fn a_classic_round_rates_undoes_and_finishes_with_a_summary() {
 #[test]
 fn finishing_before_answering_goes_home() {
     let mut sim = open(WidthClass::Compact, UiLanguage::ArEg, seed_bridge_deck());
-    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action"));
+    // Classic: the first card that isn't the burst (first on a phone).
+    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action") && !n.has_class("mode-burst"));
     assert!(sim.html().contains("id=\"review-classic\""));
     sim.click(|n| n.attr("data-back") == Some("true"));
     assert!(sim.html().contains("rev-modes"));
@@ -158,7 +159,8 @@ fn production_cards_check_the_typed_word() {
         [("makan", ReviewMsg::RevExact), ("makon", ReviewMsg::RevClose), ("tidur", ReviewMsg::RevWrong)]
     {
         let mut sim = open(WidthClass::Compact, UiLanguage::En, cards.clone());
-        sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action"));
+        // Classic: the first card that isn't the burst (first on a phone).
+        sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action") && !n.has_class("mode-burst"));
         let html = sim.html();
         assert!(html.contains(&en(Msg::RevPromptProduce)), "{html}");
         assert!(html.contains("meaning of makan"), "the front shows the meaning");
@@ -201,7 +203,8 @@ fn each_card_kind_has_its_front_and_a_full_back() {
     for (card, prompt, front) in cases {
         let kind = card.kind;
         let mut sim = open(WidthClass::Compact, UiLanguage::En, vec![card]);
-        sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action"));
+        // Classic: the first card that isn't the burst (first on a phone).
+        sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action") && !n.has_class("mode-burst"));
         let html = sim.html();
         assert!(html.contains(&en(prompt)) && html.contains(front), "{kind:?}: {html}");
         sim.click(|n| n.has_class("reveal-btn"));
@@ -227,7 +230,8 @@ fn each_card_kind_has_its_front_and_a_full_back() {
 fn javanese_cards_can_be_checked_apart_from_the_rating() {
     let card = word("awan", CardKind::Recognition, StudyLanguage::Jv);
     let mut sim = open(WidthClass::Compact, UiLanguage::En, vec![card.clone()]);
-    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action"));
+    // Classic: the first card that isn't the burst (first on a phone).
+    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action") && !n.has_class("mode-burst"));
     sim.click(|n| n.has_class("reveal-btn"));
     let html = sim.html();
     assert!(html.contains(&en(Msg::RevUnverified)) && html.contains(&en(Msg::RevContentUnchecked)), "{html}");
@@ -243,7 +247,8 @@ fn javanese_cards_can_be_checked_apart_from_the_rating() {
 #[test]
 fn wide_windows_show_the_session_pane() {
     let mut sim = open(WidthClass::Expanded, UiLanguage::ArEg, seed_bridge_deck());
-    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action"));
+    // Classic: the first card that isn't the burst (first on a phone).
+    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action") && !n.has_class("mode-burst"));
     let html = sim.html();
     assert!(
         html.contains("rev-pane")
@@ -261,7 +266,8 @@ fn wide_windows_show_the_session_pane() {
 #[test]
 fn a_failed_save_shows_an_alert_and_keeps_the_card() {
     let mut sim = open(WidthClass::Compact, UiLanguage::En, seed_bridge_deck());
-    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action"));
+    // Classic: the first card that isn't the burst (first on a phone).
+    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action") && !n.has_class("mode-burst"));
     sim.click(|n| n.has_class("reveal-btn"));
     db(&mut sim).0.borrow().refuse_writes();
     sim.click(|n| n.has_class("rating") && n.has_class("good"));
@@ -457,7 +463,8 @@ fn due_words_list_each_due_word_once() {
 fn classic_keys_reveal_rate_and_undo() {
     sim::live("__kabarKeys");
     let mut sim = open(WidthClass::Compact, UiLanguage::En, seed_bridge_deck());
-    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action"));
+    // Classic: the first card that isn't the burst (first on a phone).
+    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action") && !n.has_class("mode-burst"));
     let key = |sim: &mut Sim, k: &str| sim.page_sends("__kabarKeys", serde_json::json!(k));
     key(&mut sim, "3");
     assert_eq!(log_len(&mut sim), 0, "nothing rated before the answer shows");
@@ -529,7 +536,8 @@ fn refused_writes_are_reported_not_lost_silently() {
 
     let card = word("awan", CardKind::Recognition, StudyLanguage::Jv);
     let mut sim = open(WidthClass::Compact, UiLanguage::En, vec![card.clone()]);
-    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action"));
+    // Classic: the first card that isn't the burst (first on a phone).
+    sim.click(|n| n.has_class("rev-mode") && n.has_class("card-action") && !n.has_class("mode-burst"));
     sim.click(|n| n.has_class("reveal-btn"));
     db(&mut sim).0.borrow().refuse_writes();
     sim.click(|n| n.has_class("rev-content-ok"));
@@ -543,4 +551,18 @@ fn no_evidence_records_nothing() {
     let db = Db(Rc::new(RefCell::new(Store::open_in_memory().unwrap())));
     assert_eq!(note_evidence_at(&db, 0, StudyLanguage::Id, &[], 1_761_472_800_000), 0);
     assert!(db.0.borrow().review_log().unwrap().is_empty());
+}
+
+#[test]
+fn the_burst_comes_first_on_a_phone_in_the_page_order_too() {
+    // The first mode card in the markup: a Tab key and a screen reader meet
+    // the cards in this order.
+    let burst_first = |width| {
+        let html = open(width, UiLanguage::En, seed_bridge_deck()).html();
+        let burst = html.find("mode-burst").expect("the burst card");
+        let other = html.find("rev-mode\"").expect("another mode card");
+        burst < other
+    };
+    assert!(burst_first(WidthClass::Compact), "first on a phone");
+    assert!(!burst_first(WidthClass::Expanded), "last on a wide screen, as drawn");
 }

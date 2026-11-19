@@ -116,6 +116,15 @@ pub fn Today() -> Element {
     let break_at = plan::break_after(&plan);
     let minutes = ui.num(goal);
     let (count, topic) = labels::plan_voice_args(&ui, &plan.items);
+    // Once an item is done, the line names the next open one, as the plan
+    // card does (#682).
+    let topic = plan
+        .items
+        .iter()
+        .zip(progress.done.iter())
+        .find(|(item, done)| !**done && !matches!(item.kind, PlanItemKind::Review { .. }))
+        .map(|(item, _)| labels::plan_item_phrase(&ui, &item.kind))
+        .unwrap_or(topic);
     let args = [
         ("name", profile.name.as_str()),
         ("minutes", minutes.as_str()),

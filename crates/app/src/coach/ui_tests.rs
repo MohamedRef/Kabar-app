@@ -325,6 +325,38 @@ fn today_steps_tick_off_and_untick() {
     assert!(hero.contains(tt(En, T::ContinuePlan)), "{hero}");
 }
 
+#[test]
+fn kak_nurs_line_moves_on_with_the_plan() {
+    let db = db_with(Some(CoachProfile { daily_size: PlanSize::Deep, ..profile() }));
+    let mut app = today_app(En, db, MORNING);
+    let plan = stored_plan(&app, today_of(MORNING));
+    // What Kak Nur's English line says for a step (see `labels::plan_item_phrase`).
+    let phrase = |i: usize| match &plan.items[i].kind {
+        PlanItemKind::Lesson { unit_id } => {
+            crate::journey::unit_local_title(En, unit_id).unwrap_or_else(|| unit_id.clone())
+        }
+        PlanItemKind::WeakSpot { topic, .. } => topic.clone(),
+        PlanItemKind::Reading => crate::i18n::t(En, crate::i18n::Msg::PhraseReading).to_string(),
+        PlanItemKind::Review { .. } => String::new(),
+    };
+    let not_review = |i: &usize| !matches!(plan.items[*i].kind, PlanItemKind::Review { .. });
+    let first = (0..plan.items.len()).find(not_review).expect("a lesson or read");
+    let next = (first + 1..plan.items.len())
+        .filter(not_review)
+        .find(|&i| phrase(i) != phrase(first))
+        .expect("another kind of step later in a 30-minute plan");
+    let nur = |app: &App| app.text(app.by_class("nur-card")[0]);
+    assert!(nur(&app).contains(&phrase(first)), "{}", nur(&app));
+    // Every step up to the next kind done: the line names that one now.
+    let coach = coach_of(&mut app);
+    let db = app.db.clone();
+    for item in &plan.items[..next] {
+        let id = item.id.clone();
+        app.dom.in_app(|| coach.record(&db, ActivityKind::PlanItemDone { item_id: id }, 60));
+    }
+    assert!(nur(&app).contains(&phrase(next)), "{}", nur(&app));
+}
+
 /// Logs `seconds` of reviewing today through the coach (the screen updates).
 fn seed_minutes(app: &mut App, seconds: u32) {
     let coach = coach_of(app);
