@@ -185,7 +185,7 @@ pub fn ListeningScreen() -> Element {
                 button {
                     onclick: move |_| {
                         let (mut seed, mut screen) = (inbox.0, ui.screen);
-                        seed.set(Some(TeachSeed { lang: lang(), word: heard().trim().to_string(), context: None }));
+                        seed.set(Some(TeachSeed { lang: lang(), word: heard().trim().to_string(), context: None, personal: false }));
                         screen.set(Screen::Teach);
                     },
                     "{tr(l, T::TeachIt)}"

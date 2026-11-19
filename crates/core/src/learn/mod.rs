@@ -53,6 +53,10 @@ pub struct TeachRequest {
     /// The sentence the learner met the word in.
     pub context: Option<String>,
     pub sources: Vec<SourceInput>,
+    /// The context is the learner's own text (a Reader page, a chat
+    /// screenshot): the request is personal, so it never reaches
+    /// gemini_free or a shared cache (HANDOFF §2).
+    pub personal: bool,
 }
 
 /// Why a request can't be sent yet; the screen says so warmly.
@@ -111,7 +115,7 @@ pub fn prepare(req: &TeachRequest, engine: &Engine) -> Result<Prepared, TeachErr
         .filter(|c| !c.is_empty());
 
     let mut sources = Vec::new();
-    let mut personal = false;
+    let mut personal = req.personal;
     for s in req.sources.iter().take(MAX_SOURCES) {
         let source = match s {
             SourceInput::Pasted { text } => TeachSource {

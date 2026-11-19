@@ -29,6 +29,9 @@ pub struct TeachSeed {
     pub word: String,
     /// The sentence the word was met in.
     pub context: Option<String>,
+    /// The sentence is the learner's own text (the Reader), so the request
+    /// is personal: never gemini_free, never a shared cache.
+    pub personal: bool,
 }
 
 /// Shared through context: set it, then switch to `Screen::Teach`.
@@ -108,6 +111,7 @@ pub fn TeachScreen() -> Element {
     let mut lang = use_signal(|| Lang::Id);
     let mut word = use_signal(String::new);
     let mut context = use_signal(String::new);
+    let mut personal = use_signal(|| false);
     let mut mode = use_signal(|| Mode::Paste);
     let mut pasted = use_signal(String::new);
     let mut link = use_signal(String::new);
@@ -122,6 +126,7 @@ pub fn TeachScreen() -> Element {
             lang.set(s.lang);
             word.set(s.word);
             context.set(s.context.unwrap_or_default());
+            personal.set(s.personal);
             current.set(None);
             status.set(Status::Idle);
         }
@@ -177,6 +182,7 @@ pub fn TeachScreen() -> Element {
                     word: w,
                     context: (!ctx.trim().is_empty()).then_some(ctx),
                     sources: vec![source],
+                    personal: personal(),
                 };
                 let prepared = match learn::prepare(&req, &engine) {
                     Ok(p) => p,

@@ -223,6 +223,8 @@ fn WordCard(i: usize) -> Element {
         },
         word: w.info.as_ref().map_or_else(|| w.analyzed.lookup_form(), |i| i.lemma.clone()),
         context: Some(sentence.clone()),
+        // A Reader page is the learner's own text (HANDOFF §2).
+        personal: true,
     });
 
     // Opening a deck word's card to read its meaning is evidence for its review.

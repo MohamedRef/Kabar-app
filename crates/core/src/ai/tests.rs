@@ -167,6 +167,10 @@ fn every_failure_is_reported() {
         [EngineId::WorkersAi, EngineId::GeminiFree]
     );
     assert_eq!(err.friendly(), FriendlyReason::ResetsLater);
+    // Nothing left to try (the only other engine was just turned down) is
+    // no reason to blame today's quotas.
+    let none_left = AiError::AllFailed { task: Task::AnalyzeText, attempts: Vec::new() };
+    assert_eq!(none_left.friendly(), FriendlyReason::TryAgain);
 
     let home =
         Scripted::new(EngineId::Local, vec![Err(EngineError::Unavailable { reason: "asleep".into() })]);
