@@ -522,12 +522,17 @@ fn distance(a: &str, b: &str) -> usize {
 fn is_close(given: &str, expected: &str) -> bool {
     let (g, e): (Vec<&str>, Vec<&str>) = (given.split(' ').collect(), expected.split(' ').collect());
     if g.len() == e.len() {
+        // A one-word answer needs a longer word for typo slack: one edit
+        // off a short word is often another real word (sudah / susah,
+        // baru / biru, كبير / كثير), and alone there's no context to show
+        // the learner meant the right one.
+        let shortest = if e.len() == 1 { 6 } else { 4 };
         let mut typos = 0;
         for (a, b) in g.iter().zip(&e) {
             if a == b {
                 continue;
             }
-            if squashed(a) != squashed(b) && (b.chars().count() < 4 || distance(a, b) > 1) {
+            if squashed(a) != squashed(b) && (b.chars().count() < shortest || distance(a, b) > 1) {
                 return false;
             }
             typos += 1;
@@ -562,28 +567,51 @@ enum Compare {
     Registers(Lang),
 }
 
-fn canonical(s: &str, compare: Compare) -> String {
-    let n = normalize(s);
-    match compare {
-        Compare::Plain => n,
-        Compare::Registers(lang) => n
-            .split(' ')
-            .map(|w| crate::lang::normalize::formal_twin(lang, w).unwrap_or(w))
-            .collect::<Vec<_>>()
-            .join(" "),
-    }
+/// Words that fold onto a twin in the street lists but are words of their
+/// own in an answer: the bare root of a meN- verb is the imperative and the
+/// object-focus passive ("Tunggu di sini", "Buku itu sudah saya baca"), and
+/// nikah is also a noun (akad nikah); niki (this) and niku (that) share one
+/// krama twin. When the reference has one of these, the answer needs that
+/// word as written. A street root typed for the meN- verb still folds
+/// ("baca" for "membaca").
+const KEEP_IN_ANSWERS: &[&str] = &["baca", "lihat", "nikah", "tulis", "tunggu", "niki", "niku"];
+
+/// The answer and a reference as compared: normalized, and with
+/// `Compare::Registers` each word folded onto its formal twin, except where
+/// the reference's word at that place is in [`KEEP_IN_ANSWERS`].
+fn canonical_pair(given: &str, reference: &str, compare: Compare) -> (String, String) {
+    let (g, r) = (normalize(given), normalize(reference));
+    let Compare::Registers(lang) = compare else { return (g, r) };
+    let fold = |w: &str| crate::lang::normalize::formal_twin(lang, w).unwrap_or(w).to_owned();
+    let kept = |w: &str| KEEP_IN_ANSWERS.contains(&w);
+    let (gw, rw): (Vec<&str>, Vec<&str>) = (g.split(' ').collect(), r.split(' ').collect());
+    let refs: Vec<String> = rw.iter().map(|w| if kept(w) { (*w).to_owned() } else { fold(w) }).collect();
+    let given: Vec<String> = if gw.len() == rw.len() {
+        gw.iter().zip(&rw).map(|(g, r)| if kept(r) { (*g).to_owned() } else { fold(g) }).collect()
+    } else {
+        gw.iter().map(|w| fold(w)).collect()
+    };
+    (given.join(" "), refs.join(" "))
+}
+
+/// The same answer once normalized (and folded, with `Compare::Registers`).
+fn same_answer(given: &str, reference: &str, compare: Compare) -> bool {
+    let (g, r) = canonical_pair(given, reference, compare);
+    g == r
 }
 
 fn grade_text(given: &str, refs: &[String], allow_almost: bool, compare: Compare) -> Option<Grade> {
-    let g = canonical(given, compare);
-    if g.is_empty() {
+    if normalize(given).is_empty() {
         return None;
     }
-    if refs.iter().any(|r| canonical(r, compare) == g) {
+    if refs.iter().any(|r| same_answer(given, r, compare)) {
         return Some(Grade::Correct);
     }
     refs.iter()
-        .find(|r| allow_almost && is_close(&g, &canonical(r, compare)))
+        .find(|r| {
+            let (g, r) = canonical_pair(given, r, compare);
+            allow_almost && is_close(&g, &r)
+        })
         .map(|r| Grade::Almost { expected: r.clone() })
 }
 
@@ -620,7 +648,7 @@ pub fn grade(ex: &Exercise, answer: &Answer, lang: UiLanguage, lesson_language: 
             // the item asks which register ("tulis" or "menulis", "Monggo"
             // or "Mangga"), and a chip is right only as written, as the chip
             // marks and retries already read it.
-            let right = |o: &str, c: Compare| answers.iter().any(|a| canonical(a, c) == canonical(o, c));
+            let right = |o: &str, c: Compare| answers.iter().any(|a| same_answer(o, a, c));
             let written = options.iter().any(|o| right(o, Compare::Plain));
             let twin = options.iter().any(|o| !right(o, Compare::Plain) && right(o, target));
             let compare = if written && twin { Compare::Plain } else { target };
