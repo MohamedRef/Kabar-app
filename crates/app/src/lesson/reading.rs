@@ -290,10 +290,10 @@ pub(super) fn RichRuns(text: String, target: &'static str, pron: bool) -> Elemen
         }
     };
     rsx! {
-        for (i, piece) in bracket_groups(latin_runs(&text)).into_iter().enumerate() {
-            match piece {
-                Piece::Run(latin, text) => runs(format!("{i}"), vec![(latin, text)]),
-                Piece::Group(g) => {
+        for (i, chunk) in chunks(bracket_groups(latin_runs(&text))).into_iter().enumerate() {
+            match chunk {
+                Chunk::Runs(r) => runs(format!("{i}"), r),
+                Chunk::Group(g) => {
                     let short = g.iter().map(|(_, r)| r.chars().count()).sum::<usize>() <= 28;
                     rsx! {
                         span { key: "{i}", dir, class: if short { "bidi-group nowrap" } else { "bidi-group" },
@@ -412,6 +412,27 @@ pub(super) fn is_indonesian(phrase: &str) -> bool {
     let tokens = crate::reader::doc::engine().analyze(phrase);
     let mut words = tokens.iter().filter(|t| t.token.is_wordlike()).peekable();
     words.peek().is_some() && words.all(|t| t.lang.lang == Lang::Indonesian)
+}
+/// What [`RichRuns`] draws, in order: a stretch of consecutive top-level
+/// runs, or one bracket group. The runs of a stretch go to [`pron_units`]
+/// together, so a Latin run still takes the closing quote that starts the
+/// run after it: «selamat jalan» then its pronunciation, never the
+/// pronunciation inside the quotes.
+#[derive(Debug, PartialEq)]
+pub(super) enum Chunk {
+    Runs(Vec<(bool, String)>),
+    Group(Vec<(bool, String)>),
+}
+pub(super) fn chunks(pieces: Vec<Piece>) -> Vec<Chunk> {
+    let mut out = Vec::new();
+    for piece in pieces {
+        match (piece, out.last_mut()) {
+            (Piece::Run(latin, text), Some(Chunk::Runs(runs))) => runs.push((latin, text)),
+            (Piece::Run(latin, text), _) => out.push(Chunk::Runs(vec![(latin, text)])),
+            (Piece::Group(g), _) => out.push(Chunk::Group(g)),
+        }
+    }
+    out
 }
 /// A run of [`latin_runs`] output, or a bracketed group that mixes the UI
 /// language with a Latin run ("(هو ngendika)"). The group is isolated in
