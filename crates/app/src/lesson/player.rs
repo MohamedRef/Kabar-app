@@ -271,31 +271,11 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
         }
     });
 
-    // Keys are caught on the document, not on the player element: a tapped
-    // tile or option can be disabled under the focus, and the next Enter must
-    // still check. Enter = check/continue (Shift+Enter is a new line in text
-    // answers), 1–9 = pick an option or a fill-in chip. Buttons in the feedback sheet and the
-    // close button keep their native Enter.
+    // Enter = check/continue, 1–9 = pick an option or a fill-in chip; every
+    // other button keeps its own Enter. The rules are in the script, tested
+    // by `crates/app/tests/ui-runtime.test.mjs`.
     use_future(move || async move {
-        let mut eval = document::eval(
-            r#"
-            if (window.__kabarLessonKeys) document.removeEventListener("keydown", window.__kabarLessonKeys, true);
-            window.__kabarLessonKeys = (e) => {
-                if (!document.querySelector(".lp") || e.isComposing) return;
-                const t = e.target;
-                if (t.closest && t.closest(".lp-feedback, .lp-top")) return;
-                const typing = t.tagName === "TEXTAREA" || t.tagName === "INPUT";
-                if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    dioxus.send("enter");
-                } else if (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && /^[1-9]$/.test(e.key)) {
-                    dioxus.send(e.key);
-                }
-            };
-            document.addEventListener("keydown", window.__kabarLessonKeys, true);
-            await new Promise(() => {});
-            "#,
-        );
+        let mut eval = document::eval(include_str!("../../assets/lesson-keys.js"));
         while let Ok(key) = eval.recv::<String>().await {
             match key.as_str() {
                 "enter" => primary(),

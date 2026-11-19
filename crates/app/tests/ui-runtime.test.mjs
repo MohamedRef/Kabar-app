@@ -216,3 +216,91 @@ test('Settings traps Tab, handles Escape and restores inert background', () => {
   assert.equal(h.outside.inert, false);
   assert.equal(h.document.activeElement, h.previous);
 });
+
+function lessonKeysHarness() {
+  const handlers = {};
+  const messages = [];
+  let open = true;
+  const document = {
+    querySelector: (selector) => (selector === '.lp' && open ? {} : null),
+    addEventListener: (type, handler) => { handlers[type] = handler; },
+    removeEventListener: (type) => { delete handlers[type]; },
+  };
+  vm.runInNewContext('(async () => {\n' + asset('lesson-keys.js') + '\n})()', {
+    window: {},
+    document,
+    dioxus: { send: (message) => messages.push(message) },
+  });
+  return {
+    messages,
+    close() { open = false; },
+    // A focused element: its tag and every selector it matches or sits
+    // inside ("button", ".lp-choices", …), as `closest` would find them.
+    node: (tagName, within = []) => ({
+      tagName,
+      closest: (selector) => (selector.split(',').some((s) => within.includes(s.trim())) ? {} : null),
+    }),
+    press(key, target, modifiers = {}) {
+      const event = {
+        key,
+        target,
+        shiftKey: false,
+        ctrlKey: false,
+        metaKey: false,
+        altKey: false,
+        isComposing: false,
+        prevented: false,
+        preventDefault() { this.prevented = true; },
+        ...modifiers,
+      };
+      handlers.keydown?.(event);
+      return event;
+    },
+  };
+}
+
+test('Lesson Enter checks from the answer, and other buttons keep their own Enter', () => {
+  const h = lessonKeysHarness();
+  const body = h.node('BODY');
+  const answer = h.node('TEXTAREA');
+  const option = h.node('BUTTON', ['button', '.lp-choices']);
+  const tile = h.node('BUTTON', ['button', '.lp-bank']);
+  const pair = h.node('BUTTON', ['button', '.lp-pairs']);
+  const primary = h.node('BUTTON', ['button', '.lp-primary']);
+  // Nothing focused (a tapped tile went disabled), the answer box, an
+  // option, a tile, a pair and the primary button: Enter checks/continues.
+  for (const target of [body, answer, option, tile, pair, primary]) {
+    const event = h.press('Enter', target);
+    assert.equal(event.prevented, true);
+  }
+  assert.deepEqual(h.messages, ['enter', 'enter', 'enter', 'enter', 'enter', 'enter']);
+  h.messages.length = 0;
+  // «احفظ تاني», Back, ↻, a play button, a link, the feedback sheet and the
+  // close button do what they say.
+  const own = [
+    h.node('BUTTON', ['button']),
+    h.node('A', ['a[href]']),
+    h.node('BUTTON', ['button', '.lp-feedback']),
+    h.node('BUTTON', ['button', '.lp-top']),
+  ];
+  for (const target of own) {
+    assert.equal(h.press('Enter', target).prevented, false);
+  }
+  assert.deepEqual(h.messages, []);
+  // Shift+Enter is a new line in a text answer.
+  assert.equal(h.press('Enter', answer, { shiftKey: true }).prevented, false);
+  assert.deepEqual(h.messages, []);
+});
+
+test('Lesson digits pick an option, but not while typing or with a modifier', () => {
+  const h = lessonKeysHarness();
+  h.press('2', h.node('BODY'));
+  h.press('3', h.node('BUTTON', ['button', '.lp-choices']));
+  h.press('4', h.node('INPUT'));
+  h.press('5', h.node('BODY'), { ctrlKey: true });
+  assert.deepEqual(h.messages, ['2', '3']);
+  h.close();
+  h.press('Enter', h.node('BODY'));
+  h.press('2', h.node('BODY'));
+  assert.deepEqual(h.messages, ['2', '3'], 'no player open: keys go nowhere');
+});
