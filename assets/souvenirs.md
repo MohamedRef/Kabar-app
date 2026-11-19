@@ -167,7 +167,7 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
-| j6.u01 | Pasar Kotagedhe | Perak Kotagedhe (Kotagede silver) | `j6.u01.png` |
+| j6.u01 | Pasar Kotagedhe | Perak Kotagede (Kotagede silver) | `j6.u01.png` |
 | j6.u02 | Masjid Gedhe Mataram | Masjid Gedhe Mataram (Kotagede Grand Mosque) | `j6.u02.png` |
 | j6.u03 | Makam Raja Mataram | Makam Raja Mataram (Royal graves of Mataram) | `j6.u03.png` |
 | j6.u04 | Jagalan | Jalan Rukunan (Jalan Rukunan lanes) | `j6.u04.png` |
