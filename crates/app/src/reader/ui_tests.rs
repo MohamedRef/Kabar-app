@@ -805,6 +805,7 @@ fn teaching_a_word_opens_teach_kabar_with_the_sentence() {
             lang: kabar_protocol::content::Lang::Id,
             word: "mantul".into(),
             context: Some("Mantul banget!".into()),
+            personal: true,
         };
         card::teach_word(ui, inbox, seed.clone());
         assert_eq!(*ui.screen.peek(), crate::Screen::Teach);

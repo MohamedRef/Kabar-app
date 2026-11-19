@@ -76,6 +76,7 @@ fn dicul_request() -> TeachRequest {
             text: "dicul (bahasa Jawa) = diculke, dijual. Contoh: motore arep dicul. Hubungi 0812-3456-7890"
                 .into(),
         }],
+        personal: false,
     }
 }
 
@@ -128,6 +129,7 @@ fn invalid_reply_moves_on_to_the_next_engine() {
                 "<title>Arti mantul</title><p>Mantul artinya mantap betul, alias keren banget.</p>".into(),
             ),
         }],
+        personal: false,
     };
     let prepared = prepare(&req, &engine()).unwrap();
     assert_eq!(prepared.sources[0].title.as_deref(), Some("Arti mantul"));
@@ -151,12 +153,24 @@ fn invalid_reply_moves_on_to_the_next_engine() {
 }
 
 #[test]
+fn a_reader_sentence_is_personal_and_never_reaches_gemini() {
+    // The Reader's word card seeds Teach with the learner's own sentence.
+    let req = TeachRequest { personal: true, ..dicul_request() };
+    let prepared = prepare(&req, &engine()).unwrap();
+    assert!(prepared.request.personal);
+    let gem = Scripted::new(EngineId::GeminiFree, vec![]);
+    let r = router(&[&gem]);
+    assert!(matches!(r.plan(Task::LearnEntry, prepared.request.personal), Err(AiError::NoEngine { .. })));
+}
+
+#[test]
 fn screenshots_are_personal_and_never_reach_gemini() {
     let req = TeachRequest {
         lang: Lang::Jv,
         word: "piye".into(),
         context: None,
         sources: vec![SourceInput::Screenshot { ocr_text: "Pakdhe: piye dhe?\nAku: apik".into() }],
+        personal: false,
     };
     let prepared = prepare(&req, &engine()).unwrap();
     assert!(prepared.request.personal);
@@ -200,6 +214,7 @@ fn bad_requests_say_why() {
             word: "kabar".into(),
             context: None,
             sources: vec![SourceInput::Wiktionary { json: wiki }],
+            personal: false,
         },
         &e,
     )
@@ -215,6 +230,7 @@ fn kalimat() -> (Prepared, Answer<LearnEntry>) {
         word: "kalimat".into(),
         context: None,
         sources: vec![SourceInput::Pasted { text: "kalimat: satuan bahasa, sentence".into() }],
+        personal: false,
     };
     let prepared = prepare(&req, &engine()).unwrap();
     let local = Scripted::new(EngineId::Local, vec![Ok(fixture!("learn_entry.kalimat.local.json"))]);

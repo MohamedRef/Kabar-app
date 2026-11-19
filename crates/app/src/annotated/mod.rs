@@ -498,6 +498,8 @@ fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandl
         lang: if word_tag == "jv" { Lang::Jv } else { Lang::Id },
         word: w.analyzed.lookup_form(),
         context: Some(doc.sentence_of(i).to_string()),
+        // Course text: lessons, reviews, Listen.
+        personal: false,
     });
 
     rsx! {

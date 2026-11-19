@@ -157,6 +157,9 @@ impl AiError {
     pub fn friendly(&self) -> FriendlyReason {
         match self {
             Self::NoPrompt(_) | Self::NoEngine { .. } => FriendlyReason::NotAvailable,
+            // No engine left to try (the only other one was just turned
+            // down): nothing to blame on today's quotas.
+            Self::AllFailed { attempts, .. } if attempts.is_empty() => FriendlyReason::TryAgain,
             Self::AllFailed { attempts, .. } => {
                 let all = |f: fn(&AttemptError) -> bool| attempts.iter().all(|a| f(&a.error));
                 if all(|e| {

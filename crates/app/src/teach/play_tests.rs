@@ -126,6 +126,7 @@ fn teaching_a_word_makes_a_draft_that_can_be_approved() {
     let call = &engine.calls.borrow()[0];
     assert!(call.user.contains("arp dicul piro"));
     assert!(!call.user.contains("0812"), "phone numbers never leave the device");
+    assert!(!call.personal, "a typed sentence and a pasted note aren't personal (SPEC §24)");
     let html = sim.html();
     assert!(html.contains("teach-review") && html.contains(&en(T::Draft)), "{html}");
     assert!(html.contains(&en(T::Unverified)), "Javanese stays unverified");
@@ -262,11 +263,16 @@ fn a_seed_from_the_reader_fills_the_form() {
         lang: Lang::Jv,
         word: "dicul".into(),
         context: Some("arp dicul piro".into()),
+        personal: true,
     }));
-    let (mut sim, _) = open(Some(vec![]));
+    let (mut sim, engine) = open(Some(vec![Ok(fixture!("learn_entry.dicul.workers_ai.json"))]));
     let html = sim.html();
     assert!(html.contains("value=\"dicul\"") && html.contains("value=\"arp dicul piro\""), "{html}");
     assert!(sim.find(|n| n.attr("aria-checked") == Some("true")).unwrap().text.contains("Basa Jawa"));
+    // The Reader's sentence is the learner's own text: the call is personal.
+    sim.input(|n| n.tag == "textarea", "dicul (bahasa Jawa) = diculke, dijual.");
+    sim.click(button(T::Teach));
+    assert!(engine.calls.borrow()[0].personal, "never gemini_free, never a shared cache");
 }
 
 #[test]
