@@ -29,6 +29,22 @@ fn lesson_for(db: &Db, coach: Coach, unit_id: &str) -> Option<String> {
     crate::journey::next_lesson_in(unit_id, &completed).or_else(|| journey_next(db, coach, &completed))
 }
 
+/// The minutes a plan step shows. An open lesson step that is a whole lesson
+/// shows the estimate of the lesson it opens, the number the Journey shows
+/// beside that lesson (#682); the plan keeps its slot for sizing and
+/// progress. A 5-minute or welcome-back plan only does the next part of a
+/// lesson, and a done step is history, so they keep the slot, as do the
+/// other kinds of step. `done` is the plan's progress (shorter: not done).
+pub(super) fn step_minutes(db: &Db, coach: Coach, plan: &DailyPlan, done: &[bool], i: usize) -> u32 {
+    let Some(item) = plan.items.get(i) else { return 0 };
+    let slot = u32::from(item.minutes);
+    let PlanItemKind::Lesson { unit_id } = &item.kind else { return slot };
+    if plan.size == PlanSize::Quick || plan.comeback || done.get(i).copied().unwrap_or(false) {
+        return slot;
+    }
+    lesson_for(db, coach, unit_id).and_then(|l| crate::journey::lesson_minutes(&l)).unwrap_or(slot)
+}
+
 /// The Journey's next lesson on the learner's own route.
 pub(super) fn journey_next(
     db: &Db,
@@ -184,6 +200,7 @@ pub fn Today() -> Element {
                                         PlanRow {
                                             key: "{item.id}",
                                             item: item.clone(),
+                                            shown_minutes: step_minutes(&db, coach, &plan, &progress.done, i),
                                             done: progress.done.get(i).copied().unwrap_or(false),
                                             today,
                                             break_text: (break_at == Some(i))
@@ -282,6 +299,7 @@ fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> E
         }
         _ => None,
     };
+    let shown = next.map_or(0, |i| step_minutes(&db, coach, &plan, &[], i));
     let started = minutes_done > 0;
     let label = if started {
         format!("{} · {}", tt(lang, T::ContinuePlan), text::left(lang, &labels::minutes(&ui, left)))
@@ -306,7 +324,7 @@ fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> E
                 p { class: "hero-sub",
                     "{tt(lang, T::LessonIn)} "
                     if let Some(d) = &detail { bdi { "{d}" } }
-                    " · {labels::minutes(&ui, u32::from(step.minutes))}"
+                    " · {labels::minutes(&ui, shown)}"
                 }
             } else {
                 h2 { id: "hero-title", class: "hero-title", "{ui.t(kind_msg)}" }
@@ -315,7 +333,7 @@ fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> E
                         bdi { lang: "id", "{d}" }
                         " · "
                     }
-                    "{labels::minutes(&ui, u32::from(step.minutes))}"
+                    "{labels::minutes(&ui, shown)}"
                 }
             }
             {time}
@@ -449,10 +467,13 @@ fn RewardsBar(today: LocalDate, welcome: bool) -> Element {
 /// round check beside it ticks it off by hand (or unticks it), so starting
 /// and marking done never look like the same button. `tick: false` drops
 /// the check (the welcome-back card). `break_text`: Kak Nur's break offer,
-/// shown after this step when a 30-minute plan breaks here.
+/// shown after this step when a 30-minute plan breaks here. `shown_minutes`:
+/// what the row says the step takes (see [`step_minutes`]); the slot when
+/// left out.
 #[component]
 fn PlanRow(
     item: PlanItem,
+    #[props(default)] shown_minutes: Option<u32>,
     done: bool,
     today: LocalDate,
     #[props(default = true)] tick: bool,
@@ -479,7 +500,7 @@ fn PlanRow(
                     }
                 }
                 span { class: "row-end",
-                    {labels::minutes(&ui, u32::from(item.minutes))}
+                    {labels::minutes(&ui, shown_minutes.unwrap_or(u32::from(item.minutes)))}
                     span { class: "chev", aria_hidden: "true" }
                 }
             }

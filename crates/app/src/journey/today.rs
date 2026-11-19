@@ -49,6 +49,19 @@ pub fn lesson_title(lesson_id: &str) -> Option<String> {
     routes.id.lessons().chain(routes.jv.lessons()).find(|l| l.id == lesson_id).map(|l| l.title.clone())
 }
 
+/// A lesson's estimated minutes, the number the Journey shows beside it
+/// (`None` for an unknown id or a lesson with no estimate).
+pub fn lesson_minutes(lesson_id: &str) -> Option<u32> {
+    let routes = ROUTES.as_ref().ok()?;
+    routes
+        .id
+        .lessons()
+        .chain(routes.jv.lessons())
+        .find(|l| l.id == lesson_id)
+        .map(|l| l.minutes)
+        .filter(|&m| m > 0)
+}
+
 /// The lesson a plan's "Start" opens: the unit's first unfinished lesson.
 /// `None` for an unknown unit or one already finished.
 pub fn next_lesson_in(unit_id: &str, completed: &BTreeSet<String>) -> Option<String> {

@@ -80,7 +80,10 @@ fn NextStep(profile: CoachProfile, today: LocalDate) -> Element {
     let events = coach.events.read().clone();
     let plan = super::plan_for(&db, &profile, &events, today);
     let progress = plan::progress(&plan, &history::day(&events, today));
-    let next = plan.items.iter().zip(&progress.done).find(|(_, d)| !**d).map(|(i, _)| i.clone());
+    let next_at = progress.done.iter().position(|d| !*d).filter(|&i| i < plan.items.len());
+    let next = next_at.map(|i| plan.items[i].clone());
+    let next_minutes =
+        next_at.map_or(0, |i| super::today::step_minutes(&db, coach, &plan, &progress.done, i));
     let minutes = ui.num(plan.size.minutes());
     let (count, topic) = labels::plan_voice_args(&ui, &plan.items);
     let args = [
@@ -109,7 +112,7 @@ fn NextStep(profile: CoachProfile, today: LocalDate) -> Element {
                         let kind = item.kind.clone();
                         move |_| super::today::start_item(ui, &db, coach, &kind)
                     },
-                    "{labels::plan_item_text(&ui, &item.kind)} · {labels::minutes(&ui, u32::from(item.minutes))}"
+                    "{labels::plan_item_text(&ui, &item.kind)} · {labels::minutes(&ui, next_minutes)}"
                 }
             }
             crate::ui::DivCard { class: "grouped coach-links",

@@ -5,8 +5,8 @@
 use kabar_core::coach::rewards;
 use kabar_core::locale::UiLanguage::{self, ArEg, En};
 use kabar_protocol::coach::{
-    ActivityKind, CoachProfile, LanguageFocus, LocalDate, LocalTime, PlanItemKind, PlanSize, ReminderStyle,
-    StartingPoint, Weekday,
+    ActivityKind, CoachProfile, LanguageFocus, LocalDate, LocalTime, PlanItem, PlanItemKind, PlanSize,
+    ReminderStyle, StartingPoint, Weekday,
 };
 
 use super::text::{T, tt};
@@ -392,6 +392,41 @@ fn today_rows_open_what_they_say() {
     app.dom.in_app(|| screen.set(Screen::Today));
     app.click_on("button", tt(En, T::StartPlan));
     assert_ne!(app.screen_now(), Screen::Today);
+}
+
+#[test]
+fn a_lesson_step_says_the_minutes_the_journey_shows() {
+    // #682: Today said «6 دقايق» (the plan's slot) for a lesson the Journey
+    // lists at 7. A whole-lesson step now says its lesson's own estimate.
+    let date = today_of(MORNING);
+    for size in [PlanSize::Steady, PlanSize::Deep] {
+        let db = db_with(Some(CoachProfile { daily_size: size, ..profile() }));
+        let app = today_app(En, db, MORNING);
+        let plan = stored_plan(&app, date);
+        let lessons: Vec<&PlanItem> =
+            plan.items.iter().filter(|i| matches!(i.kind, PlanItemKind::Lesson { .. })).collect();
+        let PlanItemKind::Lesson { unit_id } = &lessons[0].kind else { unreachable!() };
+        let lesson = crate::journey::next_lesson_in(unit_id, &Default::default()).expect("the unit's lesson");
+        let minutes = crate::journey::lesson_minutes(&lesson).expect("an estimate");
+        let shown = labels::minutes_text(En, minutes, &minutes.to_string());
+        // A new profile has nothing due, so the lesson is the hero's step.
+        assert!(matches!(plan.items[0].kind, PlanItemKind::Lesson { .. }), "{size:?}: {:?}", plan.items);
+        let hero = app.text(app.by_class("today-hero")[0]);
+        assert!(hero.contains(&format!("· {shown}")), "{size:?}: {hero}");
+        // A 30-minute plan's second lesson row says it too (it opens the same
+        // next lesson until the first is done).
+        if lessons.len() > 1 {
+            let rows: Vec<String> = app.by_class("row-end").into_iter().map(|r| app.text(r)).collect();
+            assert!(rows.iter().any(|r| r.contains(&shown)), "{size:?}: {rows:?}");
+        }
+    }
+    // A 5-minute plan only does the next part of a lesson: it keeps its slot.
+    let db = db_with(Some(CoachProfile { daily_size: PlanSize::Quick, ..profile() }));
+    let app = today_app(En, db, MORNING);
+    let plan = stored_plan(&app, date);
+    let slot = u32::from(plan.items[0].minutes);
+    let hero = app.text(app.by_class("today-hero")[0]);
+    assert!(hero.contains(&format!("· {}", labels::minutes_text(En, slot, &slot.to_string()))), "{hero}");
 }
 
 #[test]
