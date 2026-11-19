@@ -225,7 +225,7 @@ jobs are periodic or manual. Never re-add PR/push triggers to heavy workflows.
 | `settings-browser.yml` | cron/main-clock + manual; PR only when its test changes | Playwright check of Settings on the web build; `scripts/ci-apt-install.sh` first points apt at an Ubuntu mirror that resolves (Azure, archive.ubuntu.com, kernel.org, MIT), since `--with-deps` calls apt |
 | `android-webview-regression.yml` | `android/**` changes + manual | Kotlin/JVM tests |
 | `mac.yml` | nightly + manual, **never on PRs** | macOS build. Never wait on it to merge. |
-| `web-deploy.yml` | push to main touching app/core/protocol/content/web | deploys Worker `kabar-web` |
+| `web-deploy.yml` | push to main touching app/core/protocol/content/web | deploys Worker `kabar-web`, stamped with the preview version and build (`scripts/version.sh preview`, like the preview APK) |
 | `cloud-deploy.yml` | push to main touching server/protocol + manual | deploys Worker `kabar-cloud` (finds/creates D1, migrations, signing key, allowlist) |
 | `release.yml` | manual only | alpha/beta/stable release (§ 6) |
 | `audit.yml` | weekly (Mon 05:17 UTC) + manual, **never on PRs** | `cargo audit` against RustSec (audit F23). A finding → fix in its own PR. |
@@ -466,6 +466,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-19: the web build gets the preview version and build number (`web-deploy.yml` runs `scripts/version.sh preview` on a full checkout), so Settings › About on the web says e.g. «2026.11.13 · بناء 906» instead of the never-released placeholder 2026.11.0 (#666).
 - 2026-11-16: `kabar-tools demand --check` holds the longest-option share inside a band around chance (25–40%) or no further from it than the value recorded in `content/demand-limits.tsv`, instead of under a ceiling that only went down (#661): BIPA 5 listening is recorded at 7.1%, where the longest option is wrong 93% of the time, and the old rule forbade moving back toward chance. No content changed.
 - 2026-11-16: #655 content: wrong options in listen and multiple-choice items rewritten to the answer's length and shape at BIPA 2–7 and J1–J6 (built from details in the audio or lesson that answer a different question; `explain:` updated where it named old options); `content/demand-limits.tsv` longest-option columns tightened to the new values; packs rebuilt.
 - 2026-11-16: Updates: a channel with no feed (404, beta and stable today) is "nothing published here yet", not a network failure; picking one is refused with a note, and a device already on one gets one tap back to alpha (#656).
