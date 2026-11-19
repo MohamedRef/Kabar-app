@@ -138,10 +138,16 @@ pub fn TimeInput(value: LocalTime, label: String, onchange: EventHandler<LocalTi
         minutes.sort_unstable();
     }
     let set = move |h: u16, m: u16| onchange.call(LocalTime::hm(h, m));
+    // Each select says which half it sets: a screen reader read the same
+    // label for both.
+    let (hour_label, minute_label) = (
+        format!("{label}: {}", ui.t(CoachMsg::TimeHour)),
+        format!("{label}: {}", ui.t(CoachMsg::TimeMinute)),
+    );
     rsx! {
         span { class: "time-input", dir: "ltr", role: "group", aria_label: "{label}",
             select {
-                aria_label: "{label}",
+                aria_label: "{hour_label}",
                 onchange: move |e: FormEvent| {
                     if let Ok(h) = e.value().parse() {
                         set(h, minute);
@@ -153,7 +159,7 @@ pub fn TimeInput(value: LocalTime, label: String, onchange: EventHandler<LocalTi
             }
             span { aria_hidden: "true", ":" }
             select {
-                aria_label: "{label}",
+                aria_label: "{minute_label}",
                 onchange: move |e: FormEvent| {
                     if let Ok(m) = e.value().parse() {
                         set(hour, m);
