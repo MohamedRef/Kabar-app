@@ -209,6 +209,25 @@ fn indonesian_answers_take_either_register() {
     });
     assert_eq!(grade(&blank, &Answer::Choice(0), EG), Grade::Correct);
     assert_eq!(grade(&blank, &Answer::Choice(1), EG), Grade::Wrong);
+    // ...unless the chips hold a form and its twin: the item asks which
+    // register, so the twin is the wrong chip (bipa1.u06.l01 e07, j5.u03.l10
+    // e05 graded the designed distractor Correct).
+    let register = ex(ExerciseKind::FillBlank {
+        sentence: "Rina ___ surat.".into(),
+        meaning: Localized::default(),
+        options: vec!["tulis".into(), "menulis".into(), "membaca".into()],
+        answers: vec!["menulis".into()],
+    });
+    assert_eq!(grade(&register, &Answer::Choice(0), EG), Grade::Wrong);
+    assert_eq!(grade(&register, &Answer::Choice(1), EG), Grade::Correct);
+    let spelling = ex(ExerciseKind::FillBlank {
+        sentence: "___ pinarak, Mas!".into(),
+        meaning: Localized::default(),
+        options: vec!["Monggo".into(), "Mangga".into()],
+        answers: vec!["Mangga".into()],
+    });
+    assert_eq!(super::grade(&spelling, &Answer::Choice(0), EG, "jv"), Grade::Wrong);
+    assert_eq!(super::grade(&spelling, &Answer::Choice(1), EG, "jv"), Grade::Correct);
 
     // Dictation is writing down what was said: the register heard is the answer.
     let dict = ex(ExerciseKind::Dictation {
