@@ -41,6 +41,17 @@ jobs:
       - uses: actions/checkout@v5
         with:
           persist-credentials: false
+          # scripts/version.sh counts commits and reads the release tags.
+          fetch-depth: 0
+      # Settings › About shows the version and build (docs/RELEASE.md §1),
+      # the same as a preview APK from this commit (#666).
+      - name: Version and build number
+        run: |
+          read -r v build < <(scripts/version.sh preview)
+          scripts/version.sh apply "$v"
+          echo "KABAR_BUILD=$build" >> "$GITHUB_ENV"
+          echo "KABAR_VERSION=$v" >> "$GITHUB_ENV"
+          echo "Kabar web $v, build $build"
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown
@@ -80,4 +91,4 @@ jobs:
           npx -y wrangler@4 deploy 2>&1 | tee deploy.log
           url="$(grep -oE 'https://[a-z0-9.-]+\.workers\.dev' deploy.log | head -1 || true)"
           rm -f deploy.log
-          { echo "### Kabar web is deployed"; [ -n "$url" ] && echo "Open: $url"; } >> "$GITHUB_STEP_SUMMARY"
+          { echo "### Kabar web $KABAR_VERSION (build $KABAR_BUILD) is deployed"; [ -n "$url" ] && echo "Open: $url"; } >> "$GITHUB_STEP_SUMMARY"
