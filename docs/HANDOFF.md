@@ -469,6 +469,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-19: content review of BIPA 1–4 (#667): 29 items no longer grade a right answer wrong or explain it wrongly (satu juta, kado, distractors that also fit replaced, blank meanings written out, 7 BUILD word orders added, garbled explains rewritten). Two BUILD items whose correct sentence leaves an answer tile unused (punya, yang) need a rule decision; left for Mohamed. All unverified.
 - 2026-11-19: content review of Javanese (#671): two J3 krama listening keys pointed at the wrong option (an unquoted comma in #660's options split «Inggih, kepareng» in two); 20 more J1–J4 items no longer grade a right answer wrong (meanings written out, distractors that also fit replaced, word orders added). adem/adhem and beda/bedha spellings left for Mohamed. All unverified.
 - 2026-11-19: time pickers label each select with its half («مواعيد المذاكرة: الساعة» / «…: الدقايق», `CoachMsg::TimeHour`/`TimeMinute`), and the onboarding's «Basa Jawa» is `lang="jv"` (#674).
 - 2026-11-19: the short meaning under a word (`annotated::short`) drops a leading bracketed note and keeps a slash between single words of a phrase («ابن/بنت عم», "his/her father"); about 370 of the 13,000 glosses read differently, none broken (#665).
