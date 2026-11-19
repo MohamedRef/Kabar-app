@@ -245,6 +245,58 @@ fn indonesian_answers_take_either_register() {
 }
 
 #[test]
+fn a_twin_never_stands_in_for_a_word_with_its_own_grammar() {
+    let ex = |answers: &[&str]| Exercise {
+        id: "x".into(),
+        kind: ExerciseKind::Translate {
+            direction: Direction::ToTarget,
+            source_meaning: Some(Localized::default()),
+            source_text: None,
+            answers: answers.iter().map(|a| a.to_string()).collect(),
+            answers_meaning: None,
+        },
+        explain: None,
+        words: vec![],
+    };
+    // The bare root is the imperative and the object-focus passive: the
+    // meN- verb (or its street form) is a different form there.
+    let wait = ex(&["Tunggu di sini."]);
+    assert_eq!(grade(&wait, &text("tunggu di sini"), EG), Grade::Correct);
+    for wrong in ["Menunggu di sini", "Nunggu di sini"] {
+        assert_ne!(grade(&wait, &text(wrong), EG), Grade::Correct, "{wrong}");
+    }
+    let read = ex(&["Buku itu sudah saya baca."]);
+    assert_eq!(grade(&read, &text("Buku itu udah saya baca"), EG), Grade::Correct);
+    assert_ne!(grade(&read, &text("Buku itu sudah saya membaca"), EG), Grade::Correct);
+    // The other way round is street speech dropping meN-, and still right.
+    let reads = ex(&["Saya membaca buku."]);
+    assert_eq!(grade(&reads, &text("Saya baca buku"), EG), Grade::Correct);
+    // niki (this) and niku (that) share a krama twin but aren't one word.
+    let this = ex(&["Batik niki sae sanget!"]);
+    assert_eq!(super::grade(&this, &text("Batik niki sae sanget"), EG, "jv"), Grade::Correct);
+    assert_ne!(super::grade(&this, &text("Batik niku sae sanget"), EG, "jv"), Grade::Correct);
+    let krama = ex(&["Batik menika sae sanget!"]);
+    assert_eq!(super::grade(&krama, &text("Batik niki sae sanget"), EG, "jv"), Grade::Correct);
+}
+
+#[test]
+fn a_one_word_answer_gets_typo_slack_only_when_it_is_long() {
+    let ex = |answer: &str| Exercise {
+        id: "x".into(),
+        kind: ExerciseKind::Dictation { text: answer.into(), audio: None, meaning: Localized::default() },
+        explain: None,
+        words: vec![],
+    };
+    // One edit off a short word is often another word: sudah / susah, baru / biru.
+    assert_eq!(grade(&ex("sudah"), &text("susah"), EG), Grade::Wrong);
+    assert_eq!(grade(&ex("baru"), &text("biru"), EG), Grade::Wrong);
+    // A long word keeps it.
+    assert!(matches!(grade(&ex("membaca"), &text("membca"), EG), Grade::Almost { .. }));
+    // In a sentence the other words show what was meant, as before.
+    assert!(matches!(grade(&ex("Selamat sore, Bu."), &text("Selamat sor, Bu"), EG), Grade::Almost { .. }));
+}
+
+#[test]
 fn grading_spec_sentences() {
     let dict = |t: &str| Exercise {
         id: "x".into(),
