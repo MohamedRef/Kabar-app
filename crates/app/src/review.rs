@@ -297,7 +297,7 @@ fn ReviewHome() -> Element {
     let next_due = deck.next_due_ms(now).map(|d| when_text(&ui, &sched, now, d));
     drop(deck);
     let width = *ui.width.read();
-    let modes = [
+    let mut modes = [
         (ReviewMode::Classic, ReviewMsg::RevClassic, ReviewMsg::RevClassicHint),
         // Say how this device moves cards: pen on the tablet, mouse on the Mac.
         (
@@ -313,6 +313,12 @@ fn ReviewHome() -> Element {
         ),
         (ReviewMode::Burst, ReviewMsg::RevBurst, ReviewMsg::RevBurstHint),
     ];
+    // The burst is the phone's own way to review, so it comes first there,
+    // in the page's order too: a CSS reorder would leave the Tab key and
+    // screen readers on the old order (#682).
+    if width == WidthClass::Compact {
+        modes.rotate_right(1);
+    }
     let nothing_due = stats.due + stats.new_available == 0;
 
     rsx! {
