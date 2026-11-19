@@ -49,6 +49,9 @@ fn search_label(lang: kabar_core::locale::UiLanguage) -> &'static str {
     }
 }
 
+/// The button under the deck. It starts the Sound-Shift Detective, the game
+/// played with these same Arabic-origin words; it used to open the games
+/// list, which the label doesn't promise (#689).
 fn games_label(lang: kabar_core::locale::UiLanguage) -> &'static str {
     use kabar_core::locale::UiLanguage::*;
     match lang {
@@ -137,7 +140,7 @@ pub fn BridgeDeck() -> Element {
         }
         button {
             class: "tonal wide deck-games",
-            onclick: move |_| nav.set(Route::Hub),
+            onclick: move |_| nav.set(Route::Detective),
             "🎲 {games_label(ui.lang())}"
         }
     }
