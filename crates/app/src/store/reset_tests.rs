@@ -64,6 +64,39 @@ fn an_offline_tablets_older_answers_stay_out_and_its_newer_ones_count() {
 }
 
 #[test]
+fn a_reset_outranks_answers_from_a_device_whose_clock_runs_ahead() {
+    // #687: the phone's UI connection writes the marker, but only its sync
+    // engine's connection had seen the tablet's stamps. The tablet's clock
+    // runs four minutes ahead (the hub takes up to five), so its earlier
+    // answer sorted after the cutoff and still counted.
+    let dir = tempfile::tempdir().unwrap();
+    let path = dir.path().join("kabar.db");
+    let (mut engine, mut ui) = (Store::open(&path).unwrap(), Store::open(&path).unwrap());
+    let mut tablet = Store::open_in_memory().unwrap();
+    answer(&mut tablet, BIPA1);
+    let ops: Vec<SeqOp> = tablet
+        .outbox(500)
+        .unwrap()
+        .into_iter()
+        .enumerate()
+        .map(|(i, mut op)| {
+            op.hlc.wall_ms += 4 * 60_000;
+            SeqOp { seq: 1 + i as u64, op }
+        })
+        .collect();
+    engine.apply_remote(&ops, ops.len() as u64).unwrap();
+    assert!(state(&ui).contains_key(BIPA1));
+    later();
+    let cutoff = ui.put_reset(&level("bipa1")).unwrap();
+    assert!(cutoff.wall_ms >= ops[0].op.hlc.wall_ms, "{cutoff:?}");
+    assert!(!state(&ui).contains_key(BIPA1), "the tablet's earlier answer is reset too");
+    assert!(!state(&engine).contains_key(BIPA1));
+    // An answer after the reset still counts.
+    answer(&mut ui, BIPA1);
+    assert!(state(&ui).contains_key(BIPA1));
+}
+
+#[test]
 fn the_whole_course_restarts_every_card_and_undo_is_exact() {
     let mut s = Store::open_in_memory().unwrap();
     for card in [BIPA1, BIPA2, SEED, BIPA1] {

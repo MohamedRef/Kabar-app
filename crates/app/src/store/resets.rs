@@ -35,7 +35,37 @@ impl Store {
     /// Restarts `scope` now: one synced setting. Returns its stamp.
     pub fn put_reset(&mut self, scope: &Scope) -> Result<Hlc> {
         let payload = serde_json::json!({ "value": { "scope": scope.id() } });
-        Ok(self.write_synced("settings", &scope.key(), OpKind::Upsert, Some(payload))?.hlc)
+        self.atomically(|s| {
+            // The stamp is the cutoff, so it outranks every row already here,
+            // other devices' too. This connection's clock only knows its own
+            // rows (the sync engine's connection observes what arrives), and
+            // a device whose clock runs ahead (the hub takes up to five
+            // minutes) would otherwise keep answers the reset meant to leave
+            // out (#687).
+            if let Some(newest) = s.newest_stamp()? {
+                s.clock.observe(&newest, super::now_ms());
+            }
+            Ok(s.write_synced("settings", &scope.key(), OpKind::Upsert, Some(payload))?.hlc)
+        })
+    }
+
+    /// The newest stamp of any synced row, whichever device wrote it.
+    fn newest_stamp(&self) -> Result<Option<Hlc>> {
+        Ok(self
+            .conn
+            .query_row(
+                "SELECT device_id, hlc_wall, hlc_counter FROM sync_rows
+                 ORDER BY hlc_wall DESC, hlc_counter DESC LIMIT 1",
+                [],
+                |r| {
+                    Ok(Hlc {
+                        device: DeviceId(r.get(0)?),
+                        wall_ms: r.get::<_, i64>(1)? as u64,
+                        counter: r.get(2)?,
+                    })
+                },
+            )
+            .optional()?)
     }
 
     /// Takes a reset back: a tombstone on its setting, on every device.

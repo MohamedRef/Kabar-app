@@ -494,8 +494,17 @@ fn cached_lines_play_as_neural_audio_and_download_into_one_track() {
     assert!(load["src"].as_str().unwrap().starts_with("data:audio/mpeg;base64,"), "{load}");
     assert!(!visible(&app.html()).contains(tt(UiLanguage::En, T::SystemVoice)));
 
-    // Download: every line is cached, so it joins them offline.
+    // Download: every line is cached, so it joins them offline. The files
+    // are read and written on a blocking thread, which a slow runner may
+    // still be on when the click settles (the Mac nightly of 2026-11-19 saw
+    // "Downloading… 3/3", #702): wait up to two seconds for it.
     app.click("Download");
+    for _ in 0..100 {
+        if visible(&app.html()).contains("✓ Downloaded") {
+            break;
+        }
+        app.dom.run_for(20);
+    }
     let text = visible(&app.html());
     assert!(text.contains("✓ Downloaded"), "{text}");
     let track =

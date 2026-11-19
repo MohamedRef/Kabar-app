@@ -658,14 +658,15 @@ async fn tts_proxy(mut req: Request, env: &Env, cfg: &Config, claims: &AccessCla
     let (Some(azure_key), Some(region)) = (&cfg.azure_key, &cfg.azure_region) else {
         return api_error(ErrorCode::NotConfigured, "AZURE_SPEECH_KEY / AZURE_SPEECH_REGION are not set");
     };
+    // A revoked device hears nothing, cached audio included (as `ai_proxy`).
+    if let Some(revoked) = ensure_active(env, claims).await? {
+        return Ok(revoked);
+    }
     let ssml = tts::ssml(&tts_req);
     let cache_url = format!("https://kabar-cache.invalid/tts/{}.mp3", tts::cache_key(&ssml));
     let cache = Cache::default();
     if let Some(mut hit) = cache.get(cache_url.as_str(), false).await? {
         return audio_response(hit.bytes().await?, true);
-    }
-    if let Some(revoked) = ensure_active(env, claims).await? {
-        return Ok(revoked);
     }
     let now = now_ms();
     let chars = tts::billable_chars(&tts_req);

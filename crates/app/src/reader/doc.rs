@@ -197,8 +197,11 @@ impl ReadDoc {
         let s = &self.body[seg.start..seg.end];
         let rel = t.start - seg.start;
         let is_end = |c: char| matches!(c, '.' | '!' | '?' | '…');
-        let from = s[..rel].rfind(is_end).map_or(0, |i| i + 1);
-        let to = s[rel..].find(is_end).map_or(s.len(), |i| rel + i + 1);
+        // Just past the end mark at byte `i`: "…" is three bytes, so stepping
+        // one byte would slice inside it and panic.
+        let past = |i: usize| i + s[i..].chars().next().map_or(0, char::len_utf8);
+        let from = s[..rel].rfind(is_end).map_or(0, past);
+        let to = s[rel..].find(is_end).map_or(s.len(), |i| past(rel + i));
         let lead = s[from..to].len() - s[from..to].trim_start().len();
         let start = seg.start + from + lead;
         (start, start + s[from..to].trim().len())
@@ -483,6 +486,21 @@ mod tests {
         let (s, e) = d.span_of(&[i, i + 1]).unwrap();
         assert_eq!(d.text(s, e), "itu penting");
         assert_eq!(d.tokens_in(s, e).count(), 2);
+    }
+
+    #[test]
+    fn a_sentence_ending_in_an_ellipsis_slices_on_char_boundaries() {
+        // "…" is three bytes: a sentence end found by `rfind`/`find` must be
+        // stepped over by its own length, or slicing panics mid-character.
+        let d = doc("Sik, Bu… aku isih ngantuk. Wis, ayo!");
+        for i in 0..d.tokens.len() {
+            let sentence = d.sentence_of(i);
+            assert!(!sentence.is_empty(), "token {i}");
+        }
+        let aku = d.tokens.iter().position(|t| d.text(t.start, t.end) == "aku").unwrap();
+        assert_eq!(d.sentence_of(aku), "aku isih ngantuk.");
+        let sik = d.tokens.iter().position(|t| d.text(t.start, t.end) == "Sik").unwrap();
+        assert_eq!(d.sentence_of(sik), "Sik, Bu…");
     }
 
     #[test]
