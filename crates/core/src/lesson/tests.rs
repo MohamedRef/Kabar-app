@@ -124,6 +124,10 @@ fn normalize_folds_case_punctuation_and_arabic_variants() {
     assert_eq!(normalize("إلى اللقاء"), normalize("الي اللقاء"));
     assert_eq!(normalize("سلامة"), normalize("سلامه"));
     assert_eq!(normalize("I'm fine — thanks"), "im fine thanks");
+    // Decomposed accents (e + U+0300) and every kind of apostrophe.
+    assert_eq!(normalize("Kowe\u{0301} de\u{0300}re\u{0300}ng"), "kowe dereng");
+    assert_eq!(normalize("Jumʼat"), "jumat");
+    assert_eq!(normalize("‘Jum’at’"), "jumat");
 }
 
 #[test]
@@ -237,6 +241,10 @@ fn grading_spec_sentences() {
     let d = dict("Anak-anak bermain di taman.");
     assert_eq!(grade(&d, &text("anak-anak bermain di taman"), EG), Grade::Correct);
     assert!(matches!(grade(&d, &text("Anak-anak bermain di tamam"), EG), Grade::Almost { .. }));
+    // A reduplication written with a space or a 2 is close, not wrong.
+    assert!(matches!(grade(&d, &text("Anak anak bermain di taman"), EG), Grade::Almost { .. }));
+    assert!(matches!(grade(&d, &text("Anak2 bermain di taman"), EG), Grade::Almost { .. }));
+    assert_eq!(grade(&d, &text("Anak bermain di taman"), EG), Grade::Wrong);
     let d = dict("Rumahnya dibersihkan kemarin.");
     assert_eq!(grade(&d, &text("Rumahnya dibersihkan kemarin"), EG), Grade::Correct);
     assert_eq!(grade(&d, &text("Rumahnya membersihkan kemarin"), EG), Grade::Wrong);
@@ -575,6 +583,31 @@ fn a_retried_choice_item_reshuffles_its_options_and_grades_the_same() {
     assert_eq!(q3.check(&Answer::Choice(right), EG), Grade::Correct);
     // The first time, an item keeps its written order.
     assert_eq!(&first, ex(&l01(), "e03"));
+}
+
+#[test]
+fn a_retry_always_moves_the_right_option() {
+    fn right(ex: &Exercise) -> Option<usize> {
+        match &ex.kind {
+            ExerciseKind::MultipleChoice { answer, .. } => Some(*answer),
+            ExerciseKind::Listen { answer, .. } => *answer,
+            ExerciseKind::FillBlank { options, answers, .. } => {
+                options.iter().position(|o| answers.iter().any(|a| normalize(a) == normalize(o)))
+            }
+            _ => None,
+        }
+    }
+    let mut checked = 0;
+    for l in [l01(), l02()] {
+        for ex in &l.exercises {
+            for seed in 0..64 {
+                let (Some(view), Some(before)) = (retry_options(ex, seed), right(ex)) else { continue };
+                assert_ne!(right(&view), Some(before), "{} seed {seed}", ex.id);
+                checked += 1;
+            }
+        }
+    }
+    assert!(checked > 0);
 }
 
 #[test]

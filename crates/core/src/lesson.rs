@@ -456,7 +456,8 @@ impl Grade {
 /// Folds an answer for comparison: case, punctuation and whitespace, Arabic
 /// diacritics, tatweel and letter variants (أ إ آ ٱ → ا, ى → ي, ة → ه), and
 /// the Javanese dictionary accents (kowé, dèrèng → kowe, dereng), since Kabar
-/// writes plain e.
+/// writes plain e, typed precomposed or decomposed (e + U+0300…U+036F).
+/// Apostrophes of every kind drop out (Jum'at, Jum’at, Jumʼat → jumat).
 /// Hyphens inside words stay (anak-anak).
 pub fn normalize(s: &str) -> String {
     let mut out = String::with_capacity(s.len());
@@ -466,6 +467,7 @@ pub fn normalize(s: &str) -> String {
             '\u{064B}'..='\u{065F}'
             | '\u{0670}'
             | '\u{0640}'
+            | '\u{0300}'..='\u{036F}'
             | '\u{200C}'..='\u{200F}'
             | '\u{2066}'..='\u{2069}' => {
                 continue;
@@ -476,7 +478,7 @@ pub fn normalize(s: &str) -> String {
             'ؤ' => 'و',
             'ئ' => 'ي',
             'é' | 'è' | 'ê' => 'e',
-            '’' | '\'' | '`' => continue,
+            '’' | '‘' | 'ʼ' | '\'' | '`' => continue,
             '-' | '‑' => '-',
             c if c.is_alphanumeric() => c,
             _ => ' ',
@@ -515,7 +517,8 @@ fn distance(a: &str, b: &str) -> usize {
 
 /// One small typo: the same words, each at most one edit off (words of 4+
 /// letters only, so "ya"/"yo" never pass), one typo per four words at most;
-/// or one missing/extra space.
+/// or one missing/extra space, or a reduplication written with a space or a
+/// 2 ("anak anak", "anak2" for "anak-anak").
 fn is_close(given: &str, expected: &str) -> bool {
     let (g, e): (Vec<&str>, Vec<&str>) = (given.split(' ').collect(), expected.split(' ').collect());
     if g.len() == e.len() {
@@ -524,14 +527,26 @@ fn is_close(given: &str, expected: &str) -> bool {
             if a == b {
                 continue;
             }
-            if b.chars().count() < 4 || distance(a, b) > 1 {
+            if squashed(a) != squashed(b) && (b.chars().count() < 4 || distance(a, b) > 1) {
                 return false;
             }
             typos += 1;
         }
         return typos <= (e.len() / 4).max(1);
     }
-    given.replace(' ', "") == expected.replace(' ', "")
+    squashed(given) == squashed(expected)
+}
+
+/// Text with its spaces and hyphens gone and a chat reduplication spelled
+/// out ("anak2" → "anakanak"), so the ways of writing one word meet.
+fn squashed(s: &str) -> String {
+    s.split(' ')
+        .map(|w| match w.strip_suffix('2') {
+            Some(base) if base.chars().count() > 1 && base.chars().all(char::is_alphabetic) => base.repeat(2),
+            _ => w.to_owned(),
+        })
+        .collect::<String>()
+        .replace('-', "")
 }
 
 /// Grades text against references: exact (normalized) → Correct, one small
@@ -1175,6 +1190,16 @@ pub fn retry_options(ex: &Exercise, seed: u64) -> Option<Exercise> {
         order.iter().map(|&i| items[i].clone()).collect()
     }
     let moved = |order: &[usize], answer: usize| order.iter().position(|&i| i == answer).unwrap_or(answer);
+    // A retry never leaves the right option where it was: a remembered
+    // position isn't the answer.
+    fn moving(mut order: Vec<usize>, right: Option<usize>) -> Vec<usize> {
+        if let Some(r) = right
+            && order.get(r) == Some(&r)
+        {
+            order.rotate_left(1);
+        }
+        order
+    }
     let mut out = ex.clone();
     match &mut out.kind {
         K::MultipleChoice { options, options_meaning, answer, .. } => {
@@ -1182,7 +1207,7 @@ pub fn retry_options(ex: &Exercise, seed: u64) -> Option<Exercise> {
             if n < 2 {
                 return None;
             }
-            let o = order(n);
+            let o = moving(order(n), Some(*answer));
             if options.len() == n {
                 *options = apply(options, &o);
             }
@@ -1192,13 +1217,14 @@ pub fn retry_options(ex: &Exercise, seed: u64) -> Option<Exercise> {
             *answer = moved(&o, *answer);
         }
         K::Listen { options, answer, .. } if options.len() > 1 => {
-            let o = order(options.len());
+            let o = moving(order(options.len()), *answer);
             *options = apply(options, &o);
             *answer = answer.map(|a| moved(&o, a));
         }
         // Graded by the picked text, so only the order changes.
-        K::FillBlank { options, .. } if options.len() > 1 => {
-            let o = order(options.len());
+        K::FillBlank { options, answers, .. } if options.len() > 1 => {
+            let right = options.iter().position(|o| answers.iter().any(|a| normalize(a) == normalize(o)));
+            let o = moving(order(options.len()), right);
             *options = apply(options, &o);
         }
         _ => return None,
