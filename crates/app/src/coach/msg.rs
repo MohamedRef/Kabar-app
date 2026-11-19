@@ -30,6 +30,8 @@ pub enum CoachMsg {
     RemindersAsleep,
     RemindersBattery,
     QuietTo,
+    TimeHour,
+    TimeMinute,
     // --- coach: today ---
     TodayProgress,
     WelcomeBackTitle,
@@ -154,6 +156,11 @@ fn text(lang: UiLanguage, msg: CoachMsg) -> &'static str {
         (QuietTo, ArEg) => "لحد",
         (QuietTo, Ar) => "إلى",
         (QuietTo, En) => "to",
+        (TimeHour, ArEg | Ar) => "الساعة",
+        (TimeHour, En) => "hour",
+        (TimeMinute, ArEg) => "الدقايق",
+        (TimeMinute, Ar) => "الدقائق",
+        (TimeMinute, En) => "minutes",
         // --- coach: today ---
         (TodayProgress, ArEg) => "إنجاز النهارده",
         (TodayProgress, Ar) => "إنجاز اليوم",
