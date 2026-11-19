@@ -115,7 +115,7 @@ the honorific or the name (`crates/core/src/packs.rs`).
 | `bu-siti` | Bu Siti | Solo (Pasar Gede) | chat, lessons, games | 8 units, bipa2.u04 … j3.u06 |
 | `kak-tiara` | Kak Tiara | Jakarta | radio | levels bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7 |
 | `kak-reza` | Kak Reza | Bandung | radio | levels bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7 |
-| `cak-heru` | Cak Heru | Surabaya | lessons | j1.u01, j1.u02, j1.u03, j1.u04, j1.u05, j1.u06, j1.u07 |
+| `cak-heru` | Mas Heru | Yogyakarta | sinetron, lessons | j1.u01, j1.u02, j1.u03, j1.u04, j1.u05, j1.u06, j1.u07 |
 | `mas-yudha` | Mas Yudha | Surabaya (Gubeng) | lessons | j1.u02, j1.u07, j5.u04 |
 | `bu-darmi` | Bu Darmi | Caruban | lessons | j2.u02 |
 | `pak-harjo` | Pak Harjo | Solo | lessons, games | j3.u03, j3.u06, j5.u02, j6.u05 |
