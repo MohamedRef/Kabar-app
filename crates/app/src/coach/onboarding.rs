@@ -246,7 +246,10 @@ fn FocusStep(draft: Signal<CoachProfile>) -> Element {
                     aria_pressed: if f == current { "true" } else { "false" },
                     onclick: move |_| draft.write().focus = f,
                     match labels::focus(f) {
-                        Some(name) => rsx! { strong { lang: "id", bdi { "{name}" } } },
+                        // "Basa Jawa" is Javanese, so a screen reader says it in Javanese.
+                        Some(name) => rsx! {
+                            strong { lang: if f == LanguageFocus::Javanese { "jv" } else { "id" }, bdi { "{name}" } }
+                        },
                         None => rsx! { strong { "{ui.t(Msg::FocusBoth)}" } },
                     }
                 }
