@@ -94,7 +94,11 @@ Key design rules (also in `CLAUDE.md`):
   with serde (retry once, then a friendly message). `routes.toml` lists
   engines per task, best first: `workers_ai`, `gemini_free`, `local`
   (Ollama on the Mac), `claude` (off: paid). **Nothing personal goes to
-  gemini_free** (it trains on inputs); personal tasks are never cached.
+  gemini_free** (it trains on inputs). Personal answers are never cached on
+  Kabar Cloud (`may_cache` keeps them out of D1); the device's own
+  `ai_cache` keeps them on purpose, so reopening a text costs no free quota
+  (it's the learner's own data, and the data export includes it; decided
+  2026-11-19).
 - Layout by window width (compact <600dp, medium <840dp, expanded ≥840dp),
   never by device. Logical CSS only (RTL); Latin snippets in `<bdi>`.
 - App code must compile for wasm: no `std::time::Instant/SystemTime`, no
@@ -442,7 +446,7 @@ Rules (Mohamed's decisions; all in force):
 | M13 | content done; performance pass open; aksara and widgets parked |
 | Releases | `v2026.11.10` published 2026-11-15 (alpha channel; calendar versions since `v2026.11.1`, 2026-11-08); previews every 4 h |
 | Critic loop | final pass 10 done 2026-11-04; loop closed. Don't start another unless asked. |
-| Open PRs / issues | 2026-11-19: no open PRs from the cloud session. Open issues: #661, #687, #688, #689 (web at phone width; the 2026-11-19 sweep is in its comments), #692 and the code review's #710–#715 (see Open work) |
+| Open PRs / issues | 2026-11-19: no open PRs from the cloud session. Open issues: #661, #687, #688 (item 6), #689 (web at phone width; the 2026-11-19 sweep is in its comments), #692 (all its points decided, see Open work) and the code review's #710–#715 |
 | Mac desk tools | ⌘K quick search, drag-to-resize sidebar and Reader word panel, review focus mode (`crates/app/src/desk/`, 2026-11-11, ported from Batna) |
 | Brand | K2 since 2026-11-08: kawung launcher icon on batik indigo; the same mark beside the name (`brand.rs`) |
 | Start over | «ابدأ من الأول» per level or the whole course (ported from Batna #1341): one synced marker `reset.<level>` / `reset.all` in `settings`, its row HLC is the cutoff; nothing deleted, undo removes it (see § 2 Start over) |
@@ -458,15 +462,22 @@ Rules (Mohamed's decisions; all in force):
   #714 coach, #715 accounts and sign-in. Fixed: #711 items 1 and 3 (#709,
   #718), #712 items 1, 2 and 4 (#706, #716, #717). From the earlier sync,
   grading and web reviews: #687's cached TTS for a revoked device and reset
-  cutoff (#703, #705), #688 items 4–5 (#694), two #689 points (#700); the
-  rest of each issue is open.
+  cutoff (#703, #705), #688 items 1–5 (#694, #720), two #689 points (#700);
+  the rest of each issue is open.
 - Content review of 2026-11-19, waves 1–4 (#667–#671, #684–#686, #691, #697,
   #698, #701, #707, #708): one line-by-line pass over every lesson, test,
   Sinetron episode, radio script, grammar entry and Bridge card. The points
-  that need Mohamed's decision are in #692's comments (about 380, each marked
-  FOR MOHAMED). Nothing was checked by a native speaker; all of it stays
-  unverified. Two BIPA 7 radio lines changed spoken text (#697), so their
-  audio needs regenerating once audio isn't device TTS.
+  left for Mohamed (#692's comments and the wave PRs) were decided on
+  2026-11-19 after he delegated them («الباقي اختار الانسب والادق»: most
+  suitable, most accurate): #720 (grading), #721 Sinetron, #722 Radio, #723
+  grammar, #724 Bridge, #725 cast, #726 lessons. Each PR lists every
+  decision under «Every decision», so any one can be undone on its own.
+  Rules used: accurate first (KBBI, `speech-levels.jsonl`, a quick web
+  check), then what the course teaches (krama for elders, strangers and
+  shops; never krama inggil for yourself; cast roles), then natural
+  Egyptian Arabic. Nothing was checked by a native speaker; all of it stays
+  unverified. Two BIPA 7 radio lines changed spoken text (#697); audio is
+  TTS from the text, so nothing to regenerate today.
 - Mohamed's steps: Cloud keys (`GEMINI_API_KEY`, `AZURE_SPEECH_KEY`,
   `FCM_SERVICE_ACCOUNT`, `KABAR_GOOGLE_SERVICES_JSON`) so AI, cloud voices and
   pushed reminders work in release builds; bake-off on the Mac.
@@ -495,6 +506,8 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-19: Mohamed delegated the open content decisions («الباقي اختار الانسب والادق»); all of them are decided and applied, each PR listing every decision: lessons (#726: BIPA and Javanese, one spelling per Javanese word, mp.beda-bedha removed since Javanese beda is written with d, titles for 40 BIPA 7 dialogues), cast (#725: Pak Wiryo and Pak Sastro registered with portrait entries), Bridge (#724: 26 cards; lezat stays `same` per SPEC), grammar (#723: 119 points; cue notes name other common uses), Radio (#722: J2–J6), Sinetron (#721: e52–e94; «راهايو» and «مباك» spelled one way). All unverified.
+- 2026-11-19: grading keeps words with their own grammar as written (`KEEP_IN_ANSWERS`: baca, lihat, tulis, tunggu, nikah; niki, niku), comparing word by word (`canonical_pair`, `same_answer`) for typed answers and chips; a one-word answer gets typo slack only at 6+ letters, so «susah» is no longer almost «sudah» (#720, #688 items 1–3).
 - 2026-11-19: lesson keys move to `assets/lesson-keys.js` with Node tests: Enter checks or continues only from the answer's own controls (options, chips, tiles, pairs), the answer box, the primary button or nothing focused; every other button keeps its own Enter («احفظ تاني», Back, ↻, a play button, the summary's buttons), where Enter on them used to do Continue (#718, #711 item 3).
 - 2026-11-19: a Reader translation line takes the voice's direction (`rtl` for ar-EG and ar, `ltr` for en) instead of `dir=auto`, so an Arabic line that starts with a Latin name no longer runs left to right (#717, #712 item 4).
 - 2026-11-19: a fill-in chip that is the written answer's street/formal twin grades Wrong when the item offers both (the item asks which register); a lone twin still folds, so «udah» is right for «sudah» (#709, #711 item 1).
