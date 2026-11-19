@@ -179,8 +179,14 @@ fn validated(dir: &Path, info: &BuildInfo, selector: &str) -> Option<(BundleInfo
         crate::diag::report!("content bundle {} not used: {first}", meta.build);
         return None;
     }
-    let look = meta.order() == Some((info.version, meta.ui_build));
+    let look = look_fits(&meta, info);
     Some((meta, entries, look))
+}
+
+/// Whether a bundle's stylesheets fit the running app: only on the exact
+/// build they were made for (`ui_build`), never on an older or newer one.
+pub(super) fn look_fits(meta: &BundleInfo, info: &BuildInfo) -> bool {
+    meta.ui_build == info.build && Version::parse(&meta.version) == Some(info.version)
 }
 
 /// Unpacks every file of a bundle as text, within

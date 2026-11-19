@@ -90,6 +90,13 @@ impl SyncClient {
         self.in_flight = None;
     }
 
+    /// The app couldn't store the ops it was given, so its store still ends
+    /// at `applied`: the next hello asks from there and the hub sends them
+    /// again. Never moves forward.
+    pub fn rewind(&mut self, applied: u64) {
+        self.last_seq = self.last_seq.min(applied);
+    }
+
     /// One message from the hub.
     pub fn on_message(&mut self, msg: ServerMsg) -> Vec<Effect> {
         match msg {
@@ -286,6 +293,20 @@ mod tests {
         assert_eq!(c.on_open(), vec![hello(3)]);
         c.on_message(ServerMsg::CaughtUp { head_seq: 3 });
         assert!(c.next_push(&[op("a")]).is_some());
+    }
+
+    #[test]
+    fn ops_that_fail_to_apply_come_again() {
+        let mut c = live(40);
+        let fx = c.on_message(ServerMsg::Ops { ops: vec![seq(41), seq(42), seq(43)], more: false });
+        assert_eq!(fx, vec![Effect::Apply { ops: vec![seq(41), seq(42), seq(43)], last_seq: 43 }]);
+        // The store was busy: it still ends at 40, so the next hello asks from there.
+        c.rewind(40);
+        c.on_close();
+        assert_eq!(c.on_open(), vec![hello(40)]);
+        // A rewind never moves it forward.
+        c.rewind(99);
+        assert_eq!(c.last_seq(), 40);
     }
 
     #[test]

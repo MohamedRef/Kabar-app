@@ -257,6 +257,28 @@ fn whats_new_before_and_after_an_update() {
 }
 
 #[test]
+fn a_bundles_look_applies_only_on_the_build_it_fits() {
+    let app = |build| BuildInfo {
+        version: kabar_core::update::Version::parse("1.0.0-alpha.1").unwrap(),
+        build,
+        preview: true,
+        key: None,
+    };
+    let bundle = |build, ui_build| content::BundleInfo {
+        version: "1.0.0-alpha.1".into(),
+        build,
+        sha256: String::new(),
+        ui_build,
+        fetched_ms: None,
+    };
+    // A content-only preview feed (965) carries stylesheets made for APK 960.
+    assert!(content::look_fits(&bundle(965, 960), &app(960)), "the look reaches the APK it fits");
+    // A full feed's bundle waits for its APK: build 960 keeps its own look.
+    assert!(!content::look_fits(&bundle(970, 970), &app(960)), "not on an older APK");
+    assert!(content::look_fits(&bundle(970, 970), &app(970)));
+}
+
+#[test]
 fn a_content_bundle_comes_without_an_install() {
     use base64::Engine as _;
     use ed25519_dalek::Signer as _;
