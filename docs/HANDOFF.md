@@ -176,6 +176,13 @@ progress. A backup is saved first (no backup, no reset); a level takes a
 second tap, the whole course the typed word «ابدأ». Tests:
 `store/reset_tests.rs`, `reset/tests.rs`.
 
+`Store::put_reset` observes the newest stamp in `sync_rows`, from any device,
+before it writes the marker, in one transaction. So the cutoff outranks every
+row already on the device, answers from a device whose clock runs ahead
+included (#705). An answer such a device made before the reset but hasn't
+synced here yet can still sort after the cutoff; only the hub stamping rows
+would close that.
+
 ## 3. Build, test, run
 
 `just` drives everything (`brew install just`; in a cloud container it is
@@ -406,6 +413,10 @@ Rules (Mohamed's decisions; all in force):
 - Harnesses: FakeCloud hub, click-through Dioxus DOM tests (`test_dom.rs`,
   `testkit.rs`, `test_screens.rs`, `screen_kit.rs`; merging them is open
   work), scripted AI, workerd e2e, Playwright `settings-browser.cjs`.
+- Page scripts have Node tests (`crates/app/tests/*.test.cjs|mjs`, run by CI
+  with `node --test`, no npm deps): Android Back, the Settings keyboard trap
+  and the lesson keys (`assets/lesson-keys.js`). A script tested there is
+  loaded with `include_str!`, never written inline in Rust.
 - Android Back: `system-back.js` keeps one history trap; `BackKey.kt` routes
   the Back key through the page (every Back = one step; exit only from Today).
   Tests use `history.system()`, not `history.back()`.
@@ -431,7 +442,7 @@ Rules (Mohamed's decisions; all in force):
 | M13 | content done; performance pass open; aksara and widgets parked |
 | Releases | `v2026.11.10` published 2026-11-15 (alpha channel; calendar versions since `v2026.11.1`, 2026-11-08); previews every 4 h |
 | Critic loop | final pass 10 done 2026-11-04; loop closed. Don't start another unless asked. |
-| Open PRs / issues | None on 2026-11-09 (#608, Android Google sign-in, merged 2026-11-05) |
+| Open PRs / issues | 2026-11-19: no open PRs from the cloud session. Open issues: #661, #687, #688, #689 (web at phone width; the 2026-11-19 sweep is in its comments), #692 and the code review's #710–#715 (see Open work) |
 | Mac desk tools | ⌘K quick search, drag-to-resize sidebar and Reader word panel, review focus mode (`crates/app/src/desk/`, 2026-11-11, ported from Batna) |
 | Brand | K2 since 2026-11-08: kawung launcher icon on batik indigo; the same mark beside the name (`brand.rs`) |
 | Start over | «ابدأ من الأول» per level or the whole course (ported from Batna #1341): one synced marker `reset.<level>` / `reset.all` in `settings`, its row HLC is the cutoff; nothing deleted, undo removes it (see § 2 Start over) |
@@ -441,6 +452,21 @@ Rules (Mohamed's decisions; all in force):
 
 - #655 (longest option is the answer): measured by `kabar-tools demand`, held by the ratchet. Wrong options rewritten at BIPA 2–7 and J1–J6 (about 1,090 items, 2026-11-16): listening went from 46–90% to 7–36% per level, multiple choice from 37–71% to 16–35%; "pick the shortest" stays under ~35%. BIPA 1 (38/35%) was already under 40% and untouched. Left alone on purpose: single-word items whose distractors are pinned by `words:`, proper names, aksara/spelling pairs. All rewrites unverified until Mohamed reviews them.
 - #633 (BIPA 5–7 task demand): all six content batches merged (#642, #644, #645, #646, #647, #643); Arabic-only listen options are 0% at BIPA 5–7 and the ratchet holds them there. The README keeps "(aim)" on BIPA 5–7 CEFR labels: the mappings stay low-confidence and listening texts (17–28 words) are still short of C1 length. Drop it in `readme.rs cefr_label` only when Mohamed decides.
+- Code review of 2026-11-19 (read-only, one agent per area, nothing
+  reproduced; each item has file:line, a scenario and a fix idea): #710
+  offline packs, #711 lesson player and Review, #712 Reader, #713 updates,
+  #714 coach, #715 accounts and sign-in. Fixed: #711 items 1 and 3 (#709,
+  #718), #712 items 1, 2 and 4 (#706, #716, #717). From the earlier sync,
+  grading and web reviews: #687's cached TTS for a revoked device and reset
+  cutoff (#703, #705), #688 items 4–5 (#694), two #689 points (#700); the
+  rest of each issue is open.
+- Content review of 2026-11-19, waves 1–4 (#667–#671, #684–#686, #691, #697,
+  #698, #701, #707, #708): one line-by-line pass over every lesson, test,
+  Sinetron episode, radio script, grammar entry and Bridge card. The points
+  that need Mohamed's decision are in #692's comments (about 380, each marked
+  FOR MOHAMED). Nothing was checked by a native speaker; all of it stays
+  unverified. Two BIPA 7 radio lines changed spoken text (#697), so their
+  audio needs regenerating once audio isn't device TTS.
 - Mohamed's steps: Cloud keys (`GEMINI_API_KEY`, `AZURE_SPEECH_KEY`,
   `FCM_SERVICE_ACCOUNT`, `KABAR_GOOGLE_SERVICES_JSON`) so AI, cloud voices and
   pushed reminders work in release builds; bake-off on the Mac.
@@ -469,6 +495,24 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-19: lesson keys move to `assets/lesson-keys.js` with Node tests: Enter checks or continues only from the answer's own controls (options, chips, tiles, pairs), the answer box, the primary button or nothing focused; every other button keeps its own Enter («احفظ تاني», Back, ↻, a play button, the summary's buttons), where Enter on them used to do Continue (#718, #711 item 3).
+- 2026-11-19: a Reader translation line takes the voice's direction (`rtl` for ar-EG and ar, `ltr` for en) instead of `dir=auto`, so an Arabic line that starts with a Latin name no longer runs left to right (#717, #712 item 4).
+- 2026-11-19: a fill-in chip that is the written answer's street/formal twin grades Wrong when the item offers both (the item asks which register); a lone twin still folds, so «udah» is right for «sudah» (#709, #711 item 1).
+- 2026-11-19: the Reader's word card is keyed per word, so «Added to review» and 👍/👎 no longer carry over to the next word tapped (#716, #712 item 2).
+- 2026-11-19: content review wave 4, the Arabic Bridge (#708): all 633 cards checked, 30 fixed (roots, sound rules, shift labels their own notes contradicted, meanings); bipa2.u01.l06's kuat now gives قوة like its card. All unverified.
+- 2026-11-19: `ReadDoc::sentence_span` steps over «…» by its byte length, so a text or lesson with «…» no longer panics on open or on a word tap (#706, #712 item 1).
+- 2026-11-19: content review wave 4, the grammar library (#707): 45 Indonesian and all 47 Javanese entries, about 240 fixes (MSA text that had dropped examples and lines, rules and comparisons); j3.u02.l11 and j3.u04.l11 say Lempuyangan, not Balapan. All unverified.
+- 2026-11-19: a reset observes the newest stamp of any device before writing its marker (§ 2 Start over), so «ابدأ من الأول» also drops answers from a device whose clock runs ahead (#705, #687 item 3).
+- 2026-11-19: the Listen download test waits up to 2 s for the joined download; the Mac nightly failed on a slow runner (#704, #702).
+- 2026-11-19: Kabar Cloud's TTS proxy checks that the device is active before its cache, so a revoked device hears no cached audio either, as `ai_proxy` already did (#703, #687).
+- 2026-11-19: content review wave 4, Javanese radio J2–J6 (#701): about 90 fixes (krama inggil used for oneself, mixed speech levels, notes) and one J1 u05 line. All unverified.
+- 2026-11-19: the Bridge deck's 🎲 button opens the Detective; kak's first gloss («older sibling (addressing)») fits a sister too (#700, #689).
+- 2026-11-19: content review wave 4, Sinetron e52–e61, e67–e72, e82–e94 (#698): 63 fixes (words missing from translations, Arabic agreement, names and facts, Javanese speech levels); every question key was already right. All unverified.
+- 2026-11-19: a Today lesson step shows the lesson's own minutes, as the Journey does (`coach::today::step_minutes`); quick and comeback plans and done steps keep the plan's slot (#699, #682).
+- 2026-11-19: content review wave 3 (#697): #692's J5 u01–u03 fixes, radio BIPA 1–2 and 6–7, Sinetron e62–e66 and e95–e107; runs cut short are listed in the PR. All unverified.
+- 2026-11-19: a Reader sentence seeded into Teach Kabar makes the request personal, so it never reaches gemini_free or the shared cache; with no engine left the message says try again, not "quota used up" (#696).
+- 2026-11-19: Kak Nur's Today line names the first open non-review step; on phones the quick-minute review card comes first in the page order, not just on screen (the CSS `order` rule is gone) (#695, #682).
+- 2026-11-19: a lesson retry always moves the right option; typed answers fold decomposed accents and the ‘ ʼ apostrophes, and «anak anak» / «anak2» is Almost for anak-anak (#694, #688 items 4–5).
 - 2026-11-19: sync rewinds the client to the store's `last_seq` when storing incoming ops fails (`SyncClient::rewind`), so the hub sends them again instead of the device skipping them; a content bundle's stylesheets apply only when `ui_build` is the running build (`update::content::look_fits`) (#690). The review's other sync, server and grading risks are #687 and #688; web games-screen issues #689.
 - 2026-11-19: content review wave 2, stories, radio, tests, chat (#691): Sinetron keys e01–e49 and e73–e81, radio BIPA 3–6 and J1 notes, every level and placement test key, J3 test title (Jogja), J5 t30 two answers, Serat Wedhatama, persona speech levels. Not reached (timeouts) and J5 u01–u03 findings not applied: #692.
 - 2026-11-19: content review wave 2, Javanese J1–J6 lessons (#686): open FILL blanks written out, BUILD alternatives, krama/ngoko per speech-levels.jsonl (kangge, tamu, lami, pripun), casual Jogja lines say kuwi, aksara explains match their slides.
