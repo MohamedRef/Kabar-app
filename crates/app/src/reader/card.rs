@@ -206,7 +206,9 @@ fn WordCard(i: usize) -> Element {
     // What the review card is made from (a taught meaning wins).
     let info = w.shown();
     // Saved before (here or from another text): the button says so.
-    let saved_before = key.as_deref().is_some_and(|k| db.0.borrow().saved_word_count(k).unwrap_or(0) > 0);
+    let saved_before = key
+        .as_deref()
+        .is_some_and(|k| crate::persistence::read_or("saved words", db.0.borrow().saved_word_count(k)) > 0);
     let breakdown = w.breakdown().map(|_| (parts_of_token(&w.analyzed), w.class));
     let speak_text = w.analyzed.normalized.as_ref().map_or(surface.clone(), |n| n.full.clone());
     let taught = w.taught_approved().and_then(taught_info);

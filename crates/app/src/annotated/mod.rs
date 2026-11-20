@@ -78,7 +78,7 @@ impl Words {
 }
 
 fn taught(db: &Db) -> PersonalDictionary {
-    PersonalDictionary::new(db.0.borrow().taught_entries().unwrap_or_default())
+    PersonalDictionary::new(crate::persistence::read_or("taught words", db.0.borrow().taught_entries()))
 }
 
 /// Provides [`Words`] to the app. Nothing is parsed until a sentence shows.

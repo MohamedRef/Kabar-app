@@ -462,9 +462,10 @@ Rules (Mohamed's decisions; all in force):
 - #633 (BIPA 5–7 task demand): all six content batches merged (#642, #644, #645, #646, #647, #643); Arabic-only listen options are 0% at BIPA 5–7 and the ratchet holds them there. The README keeps "(aim)" on BIPA 5–7 CEFR labels: the mappings stay low-confidence and listening texts (17–28 words) are still short of C1 length. Drop it in `readme.rs cefr_label` only when Mohamed decides.
 - Code review of 2026-11-19 (read-only, one agent per area, nothing
   reproduced; each item has file:line, a scenario and a fix idea): #710
-  offline packs, #711 lesson player and Review, #712 Reader, #713 updates,
-  #714 coach, #715 accounts and sign-in. Fixed: #711 items 1 and 3 (#709,
-  #718), #712 items 1, 2 and 4 (#706, #716, #717). From the earlier sync,
+  offline packs, #711 lesson player and Review, #712 Reader (done), #713
+  updates, #714 coach, #715 accounts and sign-in. Fixed: #711 items 1 and
+  3 (#709, #718), #712 all items (#706, #716, #717, and this PR). From
+  the earlier sync,
   grading and web reviews: #687's cached TTS for a revoked device and reset
   cutoff (#703, #705), #688 items 1–5 (#694, #720), two #689 points (#700);
   the rest of each issue is open.
@@ -510,6 +511,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-20: Reader (#712): digit-2 chat reduplications (`hati2`, `anak2`, `sama2`) expand to their base for glosses, status and pronunciation; AI sentence explanations isolate Latin runs in `<bdi>`; `use_translation` hashes segment layout and `ReaderState::load` keeps the open panel across screenshot restructuring; `reader_card` keys on the lemma, `add_to_review` and `save_phrase` run inside `Store::atomically`, and Reader store reads go through `persistence::read_or`.
 - 2026-11-20: CI: APK builds retry Maven (`scripts/android-bundle.sh`), and `dx` comes from the Actions cache on Linux and macOS (`.github/actions/dx`, adapted from Steps-app #837).
 - 2026-11-19: Mohamed delegated the open content decisions («الباقي اختار الانسب والادق»); all of them are decided and applied, each PR listing every decision: lessons (#726: BIPA and Javanese, one spelling per Javanese word, mp.beda-bedha removed since Javanese beda is written with d, titles for 40 BIPA 7 dialogues), cast (#725: Pak Wiryo and Pak Sastro registered with portrait entries), Bridge (#724: 26 cards; lezat stays `same` per SPEC), grammar (#723: 119 points; cue notes name other common uses), Radio (#722: J2–J6), Sinetron (#721: e52–e94; «راهايو» and «مباك» spelled one way). All unverified.
 - 2026-11-19: grading keeps words with their own grammar as written (`KEEP_IN_ANSWERS`: baca, lihat, tulis, tunggu, nikah; niki, niku), comparing word by word (`canonical_pair`, `same_answer`) for typed answers and chips; a one-word answer gets typo slack only at 6+ letters, so «susah» is no longer almost «sudah» (#720, #688 items 1–3).

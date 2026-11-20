@@ -185,8 +185,18 @@ fn scan_unit_suffix(chars: &[(usize, char)], k: usize) -> usize {
     if ["rb", "ribu", "k", "jt", "juta", "m"].contains(&unit.as_str()) { m } else { k }
 }
 
+/// Chat shorthand: "hati2", "anak2", "sama2" repeat a word with a final "2".
+fn digit_redup(lower: &str) -> Option<&str> {
+    let base = lower.strip_suffix('2')?;
+    (base.chars().count() >= 3 && base != "bipa" && base.chars().all(char::is_alphabetic)).then_some(base)
+}
+
 fn annotate_hyphen(t: &mut Token) {
     let lower = t.text.to_lowercase();
+    if let Some(base) = digit_redup(&lower) {
+        t.redup = Some((Reduplication::Full, base.to_string()));
+        return;
+    }
     let Some((a, b)) = lower.split_once('-') else { return };
     if b.contains('-') || a.is_empty() || b.is_empty() {
         return;
@@ -261,6 +271,12 @@ mod tests {
         assert_eq!(tokenize("anak-anaknya")[0].redup, Some((Reduplication::Full, "anak".into())));
         assert_eq!(tokenize("sayur-mayur")[0].redup.as_ref().map(|r| r.0), Some(Reduplication::Imitative));
         assert_eq!(tokenize("bolak-balik")[0].redup.as_ref().map(|r| r.0), Some(Reduplication::Imitative));
+        for (chat, base) in [("hati2", "hati"), ("Anak2", "anak"), ("sama2", "sama"), ("lumba2", "lumba")] {
+            assert_eq!(tokenize(chat)[0].redup, Some((Reduplication::Full, base.into())), "{chat}");
+        }
+        for plain in ["s24", "512gb", "co2", "bipa2", "mp4"] {
+            assert_eq!(tokenize(plain)[0].redup, None, "{plain}");
+        }
     }
 
     #[test]

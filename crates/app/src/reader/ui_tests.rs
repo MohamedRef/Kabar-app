@@ -224,12 +224,22 @@ fn the_ai_layout_replaces_the_on_device_one_unless_a_phrase_is_highlighted() {
     s.act(|db, st| {
         let ai = try_consume_context::<Ai>();
         open_ocr(db, st, Signal::new(Vec::new()), Ok(ocr_fixture()), None, ai);
+        let i = token(&st, "dicul");
+        st.show(Some(Panel::Word(i)));
     });
     s.settle();
-    let layout = s.act(|db, st| {
-        let id = st.open.peek().as_ref().unwrap().text.id.clone();
-        db.0.borrow().text(&id).unwrap().unwrap().layout.unwrap()
+    let (layout, kept_word) = s.act(|db, st| {
+        let open = st.open.peek().clone().unwrap();
+        let kept = match *st.panel.peek() {
+            Some(Panel::Word(i)) => {
+                let t = &open.doc.tokens[i];
+                open.doc.text(t.start, t.end).to_string()
+            }
+            ref other => panic!("expected open Word panel, got {other:?}"),
+        };
+        (db.0.borrow().text(&open.text.id).unwrap().unwrap().layout.unwrap(), kept)
     });
+    assert_eq!(kept_word, "dicul", "the open word card survives the AI layout pass");
     let layout: serde_json::Value = serde_json::from_str(&layout).unwrap();
     assert_eq!(layout["structured_by"]["task"], "structure_screenshot");
     assert_eq!(layout["structured_by"]["engine"], "local");
@@ -1584,12 +1594,16 @@ fn a_culture_note_shows_when_the_engine_gives_one() {
     let answer =
         include_str!("../../../../fixtures/ai/explain_sentence.saya_sedang_membaca_buku.workers_ai.json");
     let mut v: serde_json::Value = serde_json::from_str(answer).unwrap();
+    v["paraphrase"] = "يعني sedang بقرا دلوقتي.".into();
+    v["explanation"] = "اللاحقة meN- مع baca بتدي الفعل.".into();
     v["culture"] = "في إندونيسيا بيقولوا sedang في الكلام الرسمي أكتر.".into();
     let answer = v.to_string();
     let html = explain(Some(Script::answering(&[&answer])), UiLanguage::ArEg);
     let text = text_of(&html);
     assert!(text.contains(msg(UiLanguage::ArEg, Msg::CultureNote)), "{text}");
     assert!(text.contains("في الكلام الرسمي"), "{text}");
+    assert!(html.contains("<bdi class=\"latin\" dir=\"ltr\">sedang</bdi>"), "{html}");
+    assert!(html.contains("<bdi class=\"latin\" dir=\"ltr\">meN-</bdi>"), "{html}");
 }
 
 #[test]

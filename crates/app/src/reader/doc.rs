@@ -473,9 +473,23 @@ mod tests {
 
     #[test]
     fn reduplication_shares_the_base_lemma() {
-        let d = doc("Anak-anak bermain di taman.");
+        let d = doc("Anak-anak bermain di taman. Anak2 juga ikut.");
         assert_eq!(word(&d, "Anak-anak").key.as_deref(), Some("id:anak"));
+        assert_eq!(word(&d, "Anak2").key.as_deref(), Some("id:anak"));
+        assert_eq!(word(&d, "Anak2").info.as_ref().map(|i| i.gloss.en.as_str()), Some("child"));
         assert_eq!(word(&d, "bermain").key.as_deref(), Some("id:main"));
+
+        let g = crate::reader::content::LocalGlossary::load();
+        let chat = ReadDoc::from_text(
+            "hati2 di jln ya. hati-hati! sama2.",
+            Lexicon { glossary: &g, taught: &PersonalDictionary::default() },
+        );
+        let h2 = word(&chat, "hati2");
+        let full = word(&chat, "hati-hati");
+        assert!(h2.has_gloss());
+        assert_eq!(h2.key, full.key);
+        assert_eq!(h2.info.as_ref().map(|i| &i.gloss), full.info.as_ref().map(|i| &i.gloss));
+        assert!(word(&chat, "sama2").has_gloss());
     }
 
     #[test]

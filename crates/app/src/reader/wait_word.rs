@@ -40,7 +40,7 @@ pub fn WaitWord() -> Element {
     let db = use_context::<Db>();
     // One pick per wait, so the word doesn't change under the learner.
     let pick = use_hook(|| {
-        let words = db.0.borrow().saved_words(RECENT).unwrap_or_default();
+        let words = crate::persistence::read_or("saved words", db.0.borrow().saved_words(RECENT));
         pick(words, (crate::store::now_ms() / 1000) as usize)
     });
     let mut open = use_signal(|| false);
