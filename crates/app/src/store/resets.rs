@@ -119,11 +119,8 @@ impl Store {
         )?;
         let mut rows = stmt.query(rusqlite::params![lesson_id, since.wall_ms as i64])?;
         while let Some(r) = rows.next()? {
-            let hlc = Hlc {
-                wall_ms: r.get::<_, i64>(0)? as u64,
-                counter: r.get(1)?,
-                device: DeviceId(r.get(2)?),
-            };
+            let hlc =
+                Hlc { wall_ms: r.get::<_, i64>(0)? as u64, counter: r.get(1)?, device: DeviceId(r.get(2)?) };
             if hlc >= *since {
                 return Ok(true);
             }

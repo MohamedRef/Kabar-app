@@ -98,8 +98,7 @@ pub(super) fn CardWall() -> Element {
             {
                 engine.put_back(current.card_id);
             }
-            slots.write()[i] =
-                undone.map(|card_id| Slot { card_id, dealt_ms: now_ms(), flipped: false });
+            slots.write()[i] = undone.map(|card_id| Slot { card_id, dealt_ms: now_ms(), flipped: false });
         }
     };
 

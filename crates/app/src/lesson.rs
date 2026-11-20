@@ -229,6 +229,7 @@ pub(crate) fn save_draft(ex: &Exercise, d: &Draft, tiles: &[String]) -> SavedRes
         matched: d.matched.iter().filter_map(pair_word).collect(),
         missed: d.missed.clone(),
         checked: None,
+        practice: false,
     }
 }
 
