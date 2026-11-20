@@ -41,6 +41,7 @@ use self::fetch::{TarFetch, fetch_tar, get_index};
 const EMBEDDED_INDEX: &str = include_str!("../../../../content/packs/index.json");
 
 /// Largest pack tar accepted (a unit is about 1–5 MB).
+#[cfg(not(target_arch = "wasm32"))]
 pub(super) const MAX_PACK_BYTES: u64 = 64 * 1024 * 1024;
 
 static STORE: OnceLock<PackStore> = OnceLock::new();
@@ -106,6 +107,14 @@ pub struct PackStore {
     /// never delete clips of an `install` whose manifest isn't written yet.
     ops: Mutex<()>,
 }
+
+impl PartialEq for PackStore {
+    fn eq(&self, other: &Self) -> bool {
+        self.audio == other.audio && self.packs == other.packs
+    }
+}
+
+impl Eq for PackStore {}
 
 impl PackStore {
     pub fn new(data_dir: &Path) -> Self {
@@ -389,8 +398,8 @@ pub fn embedded_index() -> PackIndex {
 
 /// Fetches the `index.json` of the release at `base` and remembers it.
 fn refresh_index_from(store: &PackStore, base: &str) -> Result<PackIndex, String> {
-    let index: PackIndex =
-        serde_json::from_slice(&get_index(&format!("{base}/index.json"))?).map_err(|e| format!("index: {e}"))?;
+    let index: PackIndex = serde_json::from_slice(&get_index(&format!("{base}/index.json"))?)
+        .map_err(|e| format!("index: {e}"))?;
     if index.format > PACK_FORMAT {
         return Err(TOO_NEW.into());
     }

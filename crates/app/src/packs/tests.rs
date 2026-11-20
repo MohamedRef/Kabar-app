@@ -255,9 +255,8 @@ pub(super) fn serve(files: BTreeMap<String, Vec<u8>>) -> (String, std::sync::Arc
                         .as_bytes(),
                     )
                     .and_then(|()| stream.write_all(body)),
-                None => stream.write_all(
-                    b"HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\nConnection: close\r\n\r\n",
-                ),
+                None => stream
+                    .write_all(b"HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\nConnection: close\r\n\r\n"),
             };
         }
     });
@@ -410,10 +409,8 @@ fn interrupted_pack_download_resumes_with_http_range() {
             let mut stream = reader.into_inner();
             if i == 0 {
                 // Advertise full Content-Length, then drop the socket halfway.
-                let head = format!(
-                    "HTTP/1.1 200 OK\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
-                    body.len()
-                );
+                let head =
+                    format!("HTTP/1.1 200 OK\r\nContent-Length: {}\r\nConnection: close\r\n\r\n", body.len());
                 let _ = stream.write_all(head.as_bytes()).and_then(|()| stream.write_all(&body[..cut]));
             } else {
                 let rest = &body[cut..];

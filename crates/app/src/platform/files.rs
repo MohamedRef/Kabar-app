@@ -9,12 +9,14 @@
 use std::io;
 use std::path::{Path, PathBuf};
 
+#[cfg(any(target_arch = "wasm32", test))]
 use serde::{Deserialize, Serialize};
 
 /// One entry in the web build's `files.json` index. Legacy `inline` byte
 /// arrays from older builds still deserialize so `boot` can migrate them out
 /// to their own `file:<key>` entries, and are omitted when `files.json` is
 /// saved back.
+#[cfg(any(target_arch = "wasm32", test))]
 #[derive(Default, Debug, PartialEq, Eq, Serialize, Deserialize)]
 struct IndexEntry {
     size: u64,

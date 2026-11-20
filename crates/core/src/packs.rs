@@ -155,7 +155,7 @@ fn gender_of(speaker: &str) -> Option<Gender> {
     } else if NEUTRAL_TITLES.contains(&first.as_str()) {
         return by_name().or((first == "kak").then_some(Gender::Female));
     } else if FEMALE_TITLES.contains(&first.as_str()) {
-        return Some(Gender::Female)
+        return Some(Gender::Female);
     } else if MALE_TITLES.contains(&first.as_str()) {
         return Some(Gender::Male);
     }

@@ -13,11 +13,14 @@ use kabar_core::packs::{is_unit_id, sha256_hex};
 use kabar_protocol::pack::PackSummary;
 #[cfg(not(target_arch = "wasm32"))]
 use kabar_protocol::pack::pack_file;
+#[cfg(not(target_arch = "wasm32"))]
 use serde::{Deserialize, Serialize};
 
-use super::{NOT_CONFIGURED, PackStore};
 #[cfg(not(target_arch = "wasm32"))]
 use super::{MAX_PACK_BYTES, write_atomic};
+#[cfg(target_arch = "wasm32")]
+use super::NOT_CONFIGURED;
+use super::PackStore;
 
 /// Largest `index.json` accepted.
 #[cfg(not(target_arch = "wasm32"))]
@@ -32,6 +35,7 @@ const INDEX_TIMEOUT: Duration = Duration::from_secs(30);
 #[cfg(not(target_arch = "wasm32"))]
 const PACK_TIMEOUT: Duration = Duration::from_secs(15 * 60);
 
+#[cfg(not(target_arch = "wasm32"))]
 #[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]
 struct PartMeta {
     sha256: String,
@@ -39,6 +43,7 @@ struct PartMeta {
     size: Option<u64>,
 }
 
+#[cfg_attr(target_arch = "wasm32", allow(dead_code))]
 pub(super) enum TarFetch {
     Verified(Vec<u8>),
     /// Full HTTP body arrived, but its SHA-256 differed from `expected`

@@ -282,7 +282,9 @@ pub fn Library(recent: Signal<Vec<SavedText>>) -> Element {
             }
             match current {
                 Tab::Texts => rsx! { TextList { recent, q, query } },
-                Tab::Words => rsx! { WordList { words.read().clone(), taught: *taught.read(), q, query } },
+                Tab::Words => rsx! {
+                    WordList { words: words.read().clone(), taught: *taught.read(), q, query }
+                },
                 Tab::Downloads => {
                     if crate::packs::store().is_some() {
                         rsx! { crate::packs::settings::OfflinePacks {} }
