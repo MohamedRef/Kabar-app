@@ -243,7 +243,11 @@ jobs are periodic or manual. Never re-add PR/push triggers to heavy workflows.
 
 Gotcha: `cloud-deploy.yml` finishes **green but skipped** when
 `CLOUDFLARE_API_TOKEN` is missing. Check that the step "Deploy" succeeded.
-macOS-15 runners are sometimes not acquired: rerun failed jobs later.
+macOS-15 runners are sometimes not acquired: rerun failed jobs later. APK
+bundling (`android-preview.yml`, `release.yml`) goes through
+`scripts/android-bundle.sh` (retries Maven up to twice), and every bundling
+job (`android-preview.yml`, `release.yml`, `mac.yml`) gets `dx` from
+`.github/actions/dx` (Actions cache per version/OS/arch).
 
 ## 5. Merge routine
 
@@ -506,6 +510,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-20: CI: APK builds retry Maven (`scripts/android-bundle.sh`), and `dx` comes from the Actions cache on Linux and macOS (`.github/actions/dx`, adapted from Steps-app #837).
 - 2026-11-19: Mohamed delegated the open content decisions («الباقي اختار الانسب والادق»); all of them are decided and applied, each PR listing every decision: lessons (#726: BIPA and Javanese, one spelling per Javanese word, mp.beda-bedha removed since Javanese beda is written with d, titles for 40 BIPA 7 dialogues), cast (#725: Pak Wiryo and Pak Sastro registered with portrait entries), Bridge (#724: 26 cards; lezat stays `same` per SPEC), grammar (#723: 119 points; cue notes name other common uses), Radio (#722: J2–J6), Sinetron (#721: e52–e94; «راهايو» and «مباك» spelled one way). All unverified.
 - 2026-11-19: grading keeps words with their own grammar as written (`KEEP_IN_ANSWERS`: baca, lihat, tulis, tunggu, nikah; niki, niku), comparing word by word (`canonical_pair`, `same_answer`) for typed answers and chips; a one-word answer gets typo slack only at 6+ letters, so «susah» is no longer almost «sudah» (#720, #688 items 1–3).
 - 2026-11-19: lesson keys move to `assets/lesson-keys.js` with Node tests: Enter checks or continues only from the answer's own controls (options, chips, tiles, pairs), the answer box, the primary button or nothing focused; every other button keeps its own Enter («احفظ تاني», Back, ↻, a play button, the summary's buttons), where Enter on them used to do Continue (#718, #711 item 3).
