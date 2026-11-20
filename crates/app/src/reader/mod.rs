@@ -315,8 +315,7 @@ pub(crate) fn add_to_review(
             store.upsert_card(&card)?;
         }
         store.save_word(key, surface, sentence, Some(text_id))?;
-        let promote =
-            store.word_statuses([key])?.get(key).copied().unwrap_or_default() == WordStatus::New;
+        let promote = store.word_statuses([key])?.get(key).copied().unwrap_or_default() == WordStatus::New;
         if promote {
             store.set_word_status(key, WordStatus::Learning)?;
         }
@@ -618,7 +617,8 @@ fn open_new(
     match saved {
         Ok(text) => {
             st.load(db, text.clone());
-            recent.set(crate::persistence::read_or("saved texts", db.0.borrow().recent_texts(library::TEXTS)));
+            recent
+                .set(crate::persistence::read_or("saved texts", db.0.borrow().recent_texts(library::TEXTS)));
             Some(text)
         }
         Err(e) => {

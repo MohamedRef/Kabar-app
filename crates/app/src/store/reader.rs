@@ -506,7 +506,9 @@ mod tests {
                  BEGIN SELECT RAISE(ABORT, 'busy'); END;",
             )
             .unwrap();
-        let g = crate::reader::glossary::Gloss { arz: "يقرا".into(), ar: "يقرأ".into(), en: "read".into() };
+        let g = crate::reader::glossary::Gloss {
+            arz: "يقرا".into(), ar: "يقرأ".into(), en: "read".into()
+        };
         let info = crate::reader::glossary::WordInfo {
             lemma: "baca".into(),
             lang: crate::reader::glossary::WordLang::Indonesian,

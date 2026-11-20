@@ -222,8 +222,7 @@ pub fn Library(recent: Signal<Vec<SavedText>>) -> Element {
     let lang = ui.lang();
     let mut tab = use_signal(|| Tab::Texts);
     let mut query = use_signal(String::new);
-    let words =
-        use_signal(|| crate::persistence::read_or("saved words", db.0.borrow().saved_words(WORDS)));
+    let words = use_signal(|| crate::persistence::read_or("saved words", db.0.borrow().saved_words(WORDS)));
     let taught =
         use_signal(|| crate::persistence::read_or("taught words", db.0.borrow().taught_entries()).len());
     let q = query.read().trim().to_lowercase();
