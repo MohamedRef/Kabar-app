@@ -145,9 +145,8 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-      - uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
       - name: Install dx 0.7.10
-        run: cargo binstall -y --force dioxus-cli@0.7.10
+        uses: ./.github/actions/dx
       - uses: actions/download-artifact@v4
         with:
           name: kabar-release-pack
@@ -170,9 +169,8 @@ jobs:
         env:
           KABAR_GOOGLE_CLIENT_SECRET: ${{ secrets.KABAR_GOOGLE_CLIENT_SECRET }}
         run: |
-          dx bundle --platform android --release --package-types apk \
-            --target aarch64-linux-android --no-default-features --features mobile \
-            --out-dir ../../dist/android/raw
+          # Tries again when Maven doesn't answer (the script says why).
+          ../../scripts/android-bundle.sh ../../dist/android/raw
       - name: Rebuild as a release APK (not debuggable, R8, versionCode)
         run: |
           APK="$(scripts/android-release-apk.sh)"
@@ -203,7 +201,7 @@ jobs:
     name: Release Kabar.app
     needs: prepare
     runs-on: macos-15
-    timeout-minutes: 60
+    timeout-minutes: 75
     env:
       KABAR_BUILD: ${{ needs.prepare.outputs.build }}
     steps:
@@ -220,10 +218,7 @@ jobs:
           key: macos
           save-if: false
       - name: Install dx 0.7.10
-        run: |
-          if ! dx --version 2>/dev/null | grep -q '0.7.10'; then
-            cargo install dioxus-cli --version 0.7.10 --locked
-          fi
+        uses: ./.github/actions/dx
       - uses: actions/download-artifact@v4
         with:
           name: kabar-release-pack

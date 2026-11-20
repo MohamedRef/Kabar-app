@@ -143,11 +143,9 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-      - uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
-        if: env.CONTENT_ONLY != 'true'
       - name: Install dx 0.7.10
         if: env.CONTENT_ONLY != 'true'
-        run: cargo binstall -y --force dioxus-cli@0.7.10
+        uses: ./.github/actions/dx
 
       # The update key comes first: its public half is built into the app.
       # Pushes use the release key; pull requests a one-off key.
@@ -216,9 +214,8 @@ jobs:
           KABAR_GOOGLE_CLIENT_ID: ${{ env.KEEP_KEY == 'true' && (vars.KABAR_GOOGLE_CLIENT_ID || '1001052243528-3d8bmf0efprgdvov9f663fm8u63kblck.apps.googleusercontent.com') || '' }}
           KABAR_GOOGLE_CLIENT_SECRET: ${{ env.KEEP_KEY == 'true' && secrets.KABAR_GOOGLE_CLIENT_SECRET || '' }}
         run: |
-          dx bundle --platform android --release --package-types apk \
-            --target aarch64-linux-android --no-default-features --features mobile \
-            --out-dir ../../dist/android/raw
+          # Tries again when Maven doesn't answer (the script says why).
+          ../../scripts/android-bundle.sh ../../dist/android/raw
 
       - name: Rebuild as a release APK (not debuggable, R8, versionCode)
         if: env.CONTENT_ONLY != 'true'

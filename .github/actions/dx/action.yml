@@ -1,0 +1,47 @@
+# Adapted from Steps-app main: .github/actions/dx/action.yml
+name: Dioxus CLI (dx), cached
+description: >
+  Puts dx at one version on the PATH. It comes from the Actions cache when a
+  run on main already installed it, so a build doesn't spend minutes on it.
+  On a miss: Linux downloads the prebuilt dx (cargo-binstall, with the job's
+  token so GitHub's API doesn't refuse it and fall back to a 7-minute
+  compile); macOS builds it from source, because the prebuilt macOS dx links
+  Homebrew's OpenSSL at the Intel path, which Apple-silicon runners don't
+  have. Each runner OS and architecture has its own cache entry.
+inputs:
+  version:
+    description: The dioxus-cli version
+    required: false
+    default: "0.7.10"
+runs:
+  using: composite
+  steps:
+    - id: cache
+      uses: actions/cache@v4
+      with:
+        path: ~/.cargo/bin/dx
+        key: dx-${{ inputs.version }}-${{ runner.os }}-${{ runner.arch }}
+    - if: steps.cache.outputs.cache-hit != 'true' && runner.os == 'Linux'
+      uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
+    - if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
+        GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        set -euo pipefail
+        # Swatinem/rust-cache may have brought it back with ~/.cargo/bin.
+        if dx --version 2>/dev/null | grep -qF "$VERSION"; then
+          exit 0
+        fi
+        if [ "$RUNNER_OS" = Linux ]; then
+          cargo binstall -y --force "dioxus-cli@$VERSION"
+        else
+          cargo install dioxus-cli --version "$VERSION" --locked
+        fi
+    - shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
+      run: |
+        dx --version
+        dx --version | grep -qF "$VERSION" || { echo "::error::dx isn't $VERSION"; exit 1; }
