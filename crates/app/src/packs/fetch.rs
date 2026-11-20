@@ -16,11 +16,11 @@ use kabar_protocol::pack::pack_file;
 #[cfg(not(target_arch = "wasm32"))]
 use serde::{Deserialize, Serialize};
 
-#[cfg(not(target_arch = "wasm32"))]
-use super::{MAX_PACK_BYTES, write_atomic};
 #[cfg(target_arch = "wasm32")]
 use super::NOT_CONFIGURED;
 use super::PackStore;
+#[cfg(not(target_arch = "wasm32"))]
+use super::{MAX_PACK_BYTES, write_atomic};
 
 /// Largest `index.json` accepted.
 #[cfg(not(target_arch = "wasm32"))]
