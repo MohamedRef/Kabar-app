@@ -463,8 +463,8 @@ Rules (Mohamed's decisions; all in force):
 - Code review of 2026-11-19 (read-only, one agent per area, nothing
   reproduced; each item has file:line, a scenario and a fix idea): #710
   offline packs, #711 lesson player and Review, #712 Reader, #713 updates,
-  #714 coach, #715 accounts and sign-in. Fixed: #711 items 1 and 3 (#709,
-  #718), #712 items 1, 2 and 4 (#706, #716, #717). From the earlier sync,
+  #714 coach, #715 accounts and sign-in. Fixed: #711 (all items: #709, #718
+  and Lanjut/level-test/practice/Card Wall), #712 items 1, 2 and 4 (#706, #716, #717). From the earlier sync,
   grading and web reviews: #687's cached TTS for a revoked device and reset
   cutoff (#703, #705), #688 items 1–5 (#694, #720), two #689 points (#700);
   the rest of each issue is open.
@@ -510,6 +510,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-20: Lesson player & Review (#711): `position_after_resets` skips any Lanjut row whose lesson was completed at or after that stamp on another device; level and placement tests save events in one `Store::atomically` write with a «Save again» notice before logging coach practice; ↻ Try again waits until a `NeedsReview` self-check is answered, and `SavedResponse.practice` survives a reopen so practice self-checks never overwrite the first try; Card Wall `undo` runs `engine.undo()` before touching the seat or queue.
 - 2026-11-20: CI: APK builds retry Maven (`scripts/android-bundle.sh`), and `dx` comes from the Actions cache on Linux and macOS (`.github/actions/dx`, adapted from Steps-app #837).
 - 2026-11-19: Mohamed delegated the open content decisions («الباقي اختار الانسب والادق»); all of them are decided and applied, each PR listing every decision: lessons (#726: BIPA and Javanese, one spelling per Javanese word, mp.beda-bedha removed since Javanese beda is written with d, titles for 40 BIPA 7 dialogues), cast (#725: Pak Wiryo and Pak Sastro registered with portrait entries), Bridge (#724: 26 cards; lezat stays `same` per SPEC), grammar (#723: 119 points; cue notes name other common uses), Radio (#722: J2–J6), Sinetron (#721: e52–e94; «راهايو» and «مباك» spelled one way). All unverified.
 - 2026-11-19: grading keeps words with their own grammar as written (`KEEP_IN_ANSWERS`: baca, lihat, tulis, tunggu, nikah; niki, niku), comparing word by word (`canonical_pair`, `same_answer`) for typed answers and chips; a one-word answer gets typo slack only at 6+ letters, so «susah» is no longer almost «sudah» (#720, #688 items 1–3).

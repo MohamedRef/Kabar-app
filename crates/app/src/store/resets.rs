@@ -80,29 +80,54 @@ impl Store {
         Ok(self.resets()?.progress(self.review_log()?))
     }
 
-    /// Lanjut's position, unless a reset of its level came after it.
+    /// Lanjut's position: the newest live session row whose lesson was not
+    /// reset or finished at or after that row's stamp (#711).
     pub(super) fn position_after_resets(&self) -> Result<Option<LessonPosition>> {
-        let row = self
-            .conn
-            .query_row(
-                "SELECT payload, hlc_wall, hlc_counter, device_id FROM sessions WHERE deleted = 0
-                 ORDER BY hlc_wall DESC, hlc_counter DESC, device_id DESC LIMIT 1",
-                [],
-                |r| {
-                    Ok((
-                        r.get::<_, String>(0)?,
-                        Hlc {
-                            wall_ms: r.get::<_, i64>(1)? as u64,
-                            counter: r.get(2)?,
-                            device: DeviceId(r.get(3)?),
-                        },
-                    ))
-                },
-            )
-            .optional()?;
-        let Some((payload, hlc)) = row else { return Ok(None) };
-        let position: Option<LessonPosition> = serde_json::from_str(&payload)?;
+        let mut stmt = self.conn.prepare(
+            "SELECT payload, hlc_wall, hlc_counter, device_id FROM sessions WHERE deleted = 0
+             ORDER BY hlc_wall DESC, hlc_counter DESC, device_id DESC",
+        )?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok((
+                    r.get::<_, String>(0)?,
+                    Hlc {
+                        wall_ms: r.get::<_, i64>(1)? as u64,
+                        counter: r.get(2)?,
+                        device: DeviceId(r.get(3)?),
+                    },
+                ))
+            })?
+            .collect::<rusqlite::Result<Vec<_>>>()?;
+        if rows.is_empty() {
+            return Ok(None);
+        }
         let resets = self.resets()?;
-        Ok(position.filter(|p| resets.lesson_counts(&p.lesson_id, &hlc)))
+        for (payload, hlc) in rows {
+            let Some(pos) = serde_json::from_str::<Option<LessonPosition>>(&payload)? else { continue };
+            if resets.lesson_counts(&pos.lesson_id, &hlc) && !self.completed_since(&pos.lesson_id, &hlc)? {
+                return Ok(Some(pos));
+            }
+        }
+        Ok(None)
+    }
+
+    fn completed_since(&self, lesson_id: &str, since: &Hlc) -> Result<bool> {
+        let mut stmt = self.conn.prepare(
+            "SELECT hlc_wall, hlc_counter, device_id FROM lesson_events
+             WHERE lesson_id = ?1 AND kind = 'completed' AND deleted = 0 AND hlc_wall >= ?2",
+        )?;
+        let mut rows = stmt.query(rusqlite::params![lesson_id, since.wall_ms as i64])?;
+        while let Some(r) = rows.next()? {
+            let hlc = Hlc {
+                wall_ms: r.get::<_, i64>(0)? as u64,
+                counter: r.get(1)?,
+                device: DeviceId(r.get(2)?),
+            };
+            if hlc >= *since {
+                return Ok(true);
+            }
+        }
+        Ok(false)
     }
 }

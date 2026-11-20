@@ -328,6 +328,12 @@ fn the_card_wall_sorts_into_piles_and_undoes() {
     assert_eq!(log_len(&mut sim), 2);
     let html = sim.html();
     assert!(html.contains("class=\"pile-count\">1<"), "one card on each pile: {html}");
+    // A failed undo leaves the seat, queue and log untouched so a retry works.
+    db(&mut sim).0.borrow().refuse_writes();
+    sim.click(|n| n.has_class("rev-undo"));
+    assert!(sim.html().contains(&en(Msg::RevUndoFailed)));
+    assert_eq!(log_len(&mut sim), 2);
+    db(&mut sim).0.borrow().allow_writes();
     sim.click(|n| n.has_class("rev-undo"));
     assert_eq!(log_len(&mut sim), 1);
     // Sort everything left: the round ends by itself.
