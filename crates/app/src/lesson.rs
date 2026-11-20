@@ -362,6 +362,13 @@ fn speak_line(dialogue: &Dialogue, index: usize, language: &str, missing: Signal
     }
 }
 
+fn fallback_voice(
+    language: &str,
+    voice: Option<kabar_protocol::cloud::Voice>,
+) -> kabar_protocol::cloud::Voice {
+    voice.unwrap_or_else(|| crate::audio::default_voice(language))
+}
+
 fn speak_as(
     text: &str,
     language: &str,
@@ -376,7 +383,7 @@ fn speak_as(
     if let Some(clip) = crate::packs::clip_url(text, language, voice) {
         return speak_with(text, language, slow, Some(&clip), missing);
     }
-    if let Some(url) = crate::audio::neural(text, language) {
+    if let Some(url) = crate::audio::neural_in(text, fallback_voice(language, voice)) {
         let (text, language) = (text.to_owned(), language.to_owned());
         spawn(async move {
             let url = url.await;
