@@ -36,10 +36,8 @@ impl Updater {
                 Some(p) if this_order > p => {
                     // Updated (not a first install): say what's new once, keeping
                     // an earlier unseen baseline across back-to-back updates.
-                    if let Some(prev) = prefs.last_run.take()
-                        && prefs.whats_new_from.is_none()
-                    {
-                        prefs.whats_new_from = Some(prev);
+                    if prefs.whats_new_from.is_none() {
+                        prefs.whats_new_from = prefs.last_run.take();
                     }
                 }
                 Some(p) if this_order < p => prefs.whats_new_from = None,
