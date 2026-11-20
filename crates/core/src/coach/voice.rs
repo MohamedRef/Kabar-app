@@ -264,10 +264,10 @@ pub fn say(lang: UiLanguage, line: Line, seed: u64, args: &[(&str, &str)]) -> St
 }
 
 /// Fills one of the app's own UI templates (not Kak Nur's lines): `{name}`
-/// takes its argument as written and `{name|one|two|few[|many]}` the count
-/// with its noun, by the same rules as Kak Nur's lines (see `plural`), so no
-/// screen reads "7 ساعة" or "2 أيام". A template that does not parse falls
-/// back to plain replacement.
+/// takes its argument as written and `{name|one|two|few[|many[|other]]}` the
+/// count with its noun, by the same rules as Kak Nur's lines (see `plural`),
+/// so no screen reads "7 ساعة" or "2 أيام". A template that does not parse
+/// falls back to plain replacement.
 pub fn fill(lang: UiLanguage, template: &str, args: &[(&str, &str)]) -> String {
     match parse(template) {
         Ok(segs) => render(lang, &segs, args),
@@ -398,12 +398,15 @@ fn render(lang: UiLanguage, segs: &[Seg<'_>], args: &[(&str, &str)]) -> String {
     if missing { tidy(&out) } else { out }
 }
 
-/// A count with its noun. Arabic forms are `one|two|few[|many]`: 1 and 2 are
-/// said by the noun alone ("دقيقة", "دقيقتين"), 3–10 take the plural, 11–99 the
-/// `many` form (defaults to `one`, e.g. "15 دقيقة"), and 0 or 100+ the `one`
-/// form. English forms are `one|other`. Without a value, the plural noun alone.
-/// The count and its noun are joined by a no-break space, so a wrap never
-/// leaves "5" at the end of one line and "دقايق" at the start of the next.
+/// A count with its noun. Arabic forms are `one|two|few[|many[|other]]`: 1 and
+/// 2 are said by the noun alone ("دقيقة", "دقيقتين"), 3–10 take the plural,
+/// 11–99 the `many` form (defaults to `one`, e.g. "15 دقيقة"), and 0 or 100+
+/// with last two digits 0–2 take `other` (defaults to `one`, so bare nouns
+/// read "200 يوم" while templates whose `one` says "واحد" give an explicit
+/// `other`). English forms are `one|other`. Without a value, the plural noun
+/// alone. The count and its noun are joined by a no-break space, so a wrap
+/// never leaves "5" at the end of one line and "دقايق" at the start of the
+/// next.
 fn plural(lang: UiLanguage, value: Option<&str>, forms: &[&str]) -> String {
     let form = |i: usize| forms.get(i).or(forms.last()).copied().unwrap_or_default();
     let Some(value) = value else {
@@ -423,7 +426,7 @@ fn plural(lang: UiLanguage, value: Option<&str>, forms: &[&str]) -> String {
             Some(n) if (11..=99).contains(&(n % 100)) => {
                 format!("{value}\u{a0}{}", forms.get(3).unwrap_or(&form(0)))
             }
-            Some(_) => format!("{value}\u{a0}{}", form(0)),
+            Some(_) => format!("{value}\u{a0}{}", forms.get(4).unwrap_or(&form(0))),
             None => format!("{value}\u{a0}{}", form(2)),
         },
     }
@@ -637,7 +640,7 @@ mod tests {
                         if !forms.is_empty() {
                             assert!(numeric, "{} {lang:?}: plural forms on text {{{name}}}", line.key());
                             let ok = if is_arabic(lang) {
-                                (3..=4).contains(&forms.len())
+                                (3..=5).contains(&forms.len())
                             } else {
                                 forms.len() == 2
                             };
@@ -912,6 +915,13 @@ mod tests {
         let msa = ["يوم", "يومين", "أيام", "يومًا"];
         assert_eq!(plural(UiLanguage::Ar, Some("15"), &msa), "15\u{a0}يومًا");
         assert_eq!(plural(UiLanguage::Ar, Some("200"), &msa), "200\u{a0}يوم");
+        let five = ["تغيير واحد", "تغييران", "تغييرات", "تغييرًا", "تغيير"];
+        assert_eq!(plural(UiLanguage::Ar, Some("0"), &five), "0\u{a0}تغيير");
+        assert_eq!(plural(UiLanguage::Ar, Some("1"), &five), "تغيير واحد");
+        assert_eq!(plural(UiLanguage::Ar, Some("15"), &five), "15\u{a0}تغييرًا");
+        assert_eq!(plural(UiLanguage::Ar, Some("100"), &five), "100\u{a0}تغيير");
+        assert_eq!(plural(UiLanguage::Ar, Some("201"), &five), "201\u{a0}تغيير");
+        assert_eq!(plural(UiLanguage::Ar, Some("203"), &five), "203\u{a0}تغييرات");
         let en = ["day", "days"];
         assert_eq!(plural(UiLanguage::En, Some("1"), &en), "1\u{a0}day");
         assert_eq!(plural(UiLanguage::En, Some("0"), &en), "0\u{a0}days");

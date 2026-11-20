@@ -1426,3 +1426,121 @@ fn a_missing_signature_is_a_feed_mid_upload_not_an_empty_channel() {
     u.check(false);
     assert_eq!(u.status().phase, Phase::Failed { offer: None, why: Failure::Network });
 }
+
+#[test]
+fn a_failed_check_keeps_a_ready_or_installing_update_and_reuses_staged_bytes() {
+    let apk = "kabar-1.0.0-alpha.2-android-arm64.apk";
+    let feed = fixture_feed();
+    let (url, log) = serve_logged(feed.path().to_path_buf());
+    let (u, _data) = updater(&url, "1.0.0-alpha.1");
+    u.check(true);
+    let Phase::Ready(ready) = u.status().phase else { panic!("{:?}", u.status().phase) };
+
+    // Feed goes down: Ready stays intact, along with its banner.
+    fs::remove_file(feed.path().join(MANIFEST_FILE)).unwrap();
+    u.check(false);
+    assert_eq!(u.status().phase, Phase::Ready(ready.clone()));
+    assert!(u.status().banner().is_some());
+
+    // Installing also survives a transient feed failure and a good re-check.
+    u.set_phase(Phase::Installing(ready.clone()));
+    u.check(false);
+    assert_eq!(u.status().phase, Phase::Installing(ready.clone()));
+    let src = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../fixtures/update");
+    fs::copy(src.join(MANIFEST_FILE), feed.path().join(MANIFEST_FILE)).unwrap();
+    u.check(false);
+    assert_eq!(u.status().phase, Phase::Installing(ready.clone()));
+
+    // If the phase fell back to Available while the verified APK is already
+    // on disk, downloading reuses it without requesting the APK again.
+    log.lock().unwrap().clear();
+    u.set_phase(Phase::Available(ready.clone()));
+    u.download();
+    assert_eq!(u.status().phase, Phase::Ready(ready));
+    let apk_requests = log.lock().unwrap().iter().filter(|(p, _)| p == apk).count();
+    assert_eq!(apk_requests, 0, "verified staged APK is reused without HTTP fetch");
+}
+
+#[test]
+fn a_full_builds_bundle_waits_for_its_apk_before_counting_as_updated() {
+    let data = tempfile::tempdir().unwrap();
+    let updates_dir = data.path().join("updates");
+    let content_dir = data.path().join("content");
+    fs::create_dir_all(&updates_dir).unwrap();
+    fs::create_dir_all(&content_dir).unwrap();
+    let key = parse_public_key(include_str!("../../../../fixtures/update/test-key.pub")).unwrap();
+    let build_info = |build| BuildInfo {
+        version: Version::parse("1.0.0-alpha.1").unwrap(),
+        build,
+        preview: true,
+        key: Some(key),
+    };
+    let history = vec![
+        BuildChanges {
+            version: "1.0.0-alpha.1".into(),
+            build: 940,
+            published_at: "2026-11-19T12:00:00Z".into(),
+            changes: vec![kabar_protocol::update::Change::new(
+                kabar_protocol::update::ChangeKind::Improved,
+                UpdateNotes { en: "Faster Reader".into(), ar_eg: "القارئ أسرع".into(), ar: String::new() },
+            )],
+            content_only: false,
+        },
+        BuildChanges {
+            version: "1.0.0-alpha.1".into(),
+            build: 938,
+            published_at: "2026-11-19T08:00:00Z".into(),
+            changes: vec![kabar_protocol::update::Change::new(
+                kabar_protocol::update::ChangeKind::New,
+                UpdateNotes { en: "New story".into(), ar_eg: "قصة جديدة".into(), ar: String::new() },
+            )],
+            content_only: true,
+        },
+    ];
+    write_json(&updates_dir, changelog::FILE, &history).unwrap();
+    let open = |build| {
+        Updater::new(
+            updates_dir.clone(),
+            build_info(build),
+            Some(UpdatePlatform::AndroidArm64),
+            Some("http://127.0.0.1:9".into()),
+            None,
+        )
+    };
+
+    // First launch on APK 935.
+    let u = open(935);
+    assert_eq!(u.status().shown_build(), 935);
+    assert!(u.status().whats_new().is_empty());
+
+    // Full feed 940's bundle lands before APK 940 is installed: content-only
+    // 938 counts now, while 940 waits for its APK.
+    let bytes = cast_bundle("cast: [b940]\n");
+    let mut b940 = stored(&content_dir, &bytes, 940);
+    b940.ui_build = 940;
+    select(&content_dir, "content.json", &b940);
+    let u = open(935);
+    assert_eq!(u.status().shown_build(), 938);
+    assert_eq!(u.status().whats_new().iter().map(|b| b.build).collect::<Vec<_>>(), [938]);
+
+    // Without closing 938's What's new, APK 940 installs: both 938 and 940
+    // show together instead of losing 938 or hiding 940.
+    let u = open(940);
+    assert_eq!(u.status().shown_build(), 940);
+    assert_eq!(u.status().whats_new().iter().map(|b| b.build).collect::<Vec<_>>(), [940, 938]);
+}
+
+#[test]
+fn poisoned_update_locks_do_not_block_later_checks() {
+    let feed = fixture_feed();
+    let url = serve(feed.path().to_path_buf());
+    let (u, _data) = updater(&url, "1.0.0-alpha.1");
+    let _ = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let _g = u.job.lock().unwrap();
+        let _c = u.content_job.lock().unwrap();
+        panic!("simulated panic under update locks");
+    }));
+    assert!(u.job.is_poisoned() && u.content_job.is_poisoned());
+    assert!(u.check_with(false, true));
+    assert!(matches!(u.status().phase, Phase::Available(_)));
+}

@@ -417,20 +417,20 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (ShowAll, Ar) => "عرض الكل ({n})",
         (ShowAll, En) => "Show all ({n})",
         (Digest, ArEg) => {
-            "{changes|تغيير واحد|تغييرين|تغييرات|تغيير} في {levels|مستوى واحد|مستويين|مستويات|مستوى}{app}؛ الأكتر: {top} ({n})"
+            "{changes|تغيير واحد|تغييرين|تغييرات|تغيير|تغيير} في {levels|مستوى واحد|مستويين|مستويات|مستوى|مستوى}{app}؛ الأكتر: {top} ({n})"
         }
         (Digest, Ar) => {
-            "{changes|تغيير واحد|تغييران|تغييرات|تغييرًا} في {levels|مستوى واحد|مستويين|مستويات|مستوًى}{app}؛ الأكثر: {top} ({n})"
+            "{changes|تغيير واحد|تغييران|تغييرات|تغييرًا|تغيير} في {levels|مستوى واحد|مستويين|مستويات|مستوًى|مستوى}{app}؛ الأكثر: {top} ({n})"
         }
         (Digest, En) => "{changes|change|changes} in {levels|level|levels}{app}; most: {top} ({n})",
         (AndApp, ArEg) => " والتطبيق",
         (AndApp, Ar) => " والتطبيق",
         (AndApp, En) => " and the app",
         (FinishedChanged, ArEg) => {
-            "{n|درس خلصته اتغيّر|درسين خلصتهم اتغيّروا|دروس خلصتها اتغيّرت|درس خلصتهم اتغيّروا}"
+            "{n|درس خلصته اتغيّر|درسين خلصتهم اتغيّروا|دروس خلصتها اتغيّرت|درس خلصتهم اتغيّروا|درس خلصتهم اتغيّروا}"
         }
         (FinishedChanged, Ar) => {
-            "{n|درس أنهيته تغيّر|درسان أنهيتهما تغيّرا|دروس أنهيتها تغيّرت|درسًا أنهيتها تغيّرت}"
+            "{n|درس أنهيته تغيّر|درسان أنهيتهما تغيّرا|دروس أنهيتها تغيّرت|درسًا أنهيتها تغيّرت|درس أنهيته تغيّر}"
         }
         (FinishedChanged, En) => "{n|lesson you finished changed|lessons you finished changed}",
         (Search, ArEg) => "دوّر في التغييرات",
@@ -448,8 +448,10 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (NoMatch, ArEg) => "مفيش تغيير بالكلام ده",
         (NoMatch, Ar) => "لا يوجد تغيير بهذه الكلمات",
         (NoMatch, En) => "No change has these words",
-        (Found, ArEg) => "{n|تغيير واحد|تغييرين|تغييرات|تغيير} في {b|نسخة واحدة|نسختين|نسخ|نسخة}",
-        (Found, Ar) => "{n|تغيير واحد|تغييران|تغييرات|تغييرًا} في {b|إصدار واحد|إصدارين|إصدارات|إصدارًا}",
+        (Found, ArEg) => "{n|تغيير واحد|تغييرين|تغييرات|تغيير|تغيير} في {b|نسخة واحدة|نسختين|نسخ|نسخة|نسخة}",
+        (Found, Ar) => {
+            "{n|تغيير واحد|تغييران|تغييرات|تغييرًا|تغيير} في {b|إصدار واحد|إصدارين|إصدارات|إصدارًا|إصدار}"
+        }
         (Found, En) => "{n|change|changes} in {b|build|builds}",
         (ShowLess, ArEg) => "اعرض أقل",
         (ShowLess, Ar) => "عرض أقل",
@@ -487,9 +489,9 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
         (ContentFailed, ArEg) => "في دروس جديدة بس ماعرفناش ننزّلها. هنجرّب تاني في الفحص الجاي.",
         (ContentFailed, Ar) => "يوجد محتوى جديد لكن تعذّر تنزيله. سنحاول في الفحص القادم.",
         (ContentFailed, En) => "New lessons are out but didn't come through. The next check tries again.",
-        (PacksRefreshed, ArEg) => "واتحدّث كمان {n} من باكات الصوت.",
-        (PacksRefreshed, Ar) => "وحُدِّثت أيضًا {n} من حزم الصوت.",
-        (PacksRefreshed, En) => "{n} audio packs were refreshed too.",
+        (PacksRefreshed, ArEg) => "واتحدّث كمان {n|باك صوت واحد|باكين صوت|باكات صوت|باك صوت|باك صوت}.",
+        (PacksRefreshed, Ar) => "وحُدِّثت أيضًا {n|حزمة صوت واحدة|حزمتا صوت|حزم صوت|حزمة صوت|حزمة صوت}.",
+        (PacksRefreshed, En) => "{n|audio pack was|audio packs were} refreshed too.",
         (LastChecked, ArEg) => "آخر فحص: {when}",
         (LastChecked, Ar) => "آخر فحص: {when}",
         (LastChecked, En) => "Last checked: {when}",
@@ -547,20 +549,27 @@ pub fn ut(lang: UiLanguage, u: U) -> &'static str {
     }
 }
 
+impl crate::i18n::Text for U {
+    fn text(self, lang: UiLanguage) -> &'static str {
+        ut(lang, self)
+    }
+}
+
 /// "and 3 more" after a short list of changes, with Arabic's dual and plural.
 pub fn more_changes(lang: UiLanguage, n: usize) -> String {
     match lang {
         UiLanguage::ArEg => match n {
             1 => "وحاجة كمان".to_owned(),
             2 => "وحاجتين كمان".to_owned(),
-            3..=10 => format!("و{n} حاجات كمان"),
+            _ if (3..=10).contains(&(n % 100)) => format!("و{n} حاجات كمان"),
             _ => format!("و{n} حاجة كمان"),
         },
         UiLanguage::Ar => match n {
             1 => "وتغيير آخر".to_owned(),
             2 => "وتغييران آخران".to_owned(),
-            3..=10 => format!("و{n} تغييرات أخرى"),
-            _ => format!("و{n} تغييرًا آخر"),
+            _ if (3..=10).contains(&(n % 100)) => format!("و{n} تغييرات أخرى"),
+            _ if (11..=99).contains(&(n % 100)) => format!("و{n} تغييرًا آخر"),
+            _ => format!("و{n} تغيير آخر"),
         },
         UiLanguage::En => format!("and {n} more"),
     }
@@ -572,9 +581,40 @@ mod tests {
 
     #[test]
     fn more_changes_counts_like_arabic_does() {
-        let eg: Vec<String> = [1, 2, 3, 11].map(|n| more_changes(UiLanguage::ArEg, n)).into();
-        assert_eq!(eg, ["وحاجة كمان", "وحاجتين كمان", "و3 حاجات كمان", "و11 حاجة كمان"]);
+        let eg: Vec<String> = [1, 2, 3, 11, 100, 303].map(|n| more_changes(UiLanguage::ArEg, n)).into();
+        assert_eq!(
+            eg,
+            [
+                "وحاجة كمان",
+                "وحاجتين كمان",
+                "و3 حاجات كمان",
+                "و11 حاجة كمان",
+                "و100 حاجة كمان",
+                "و303 حاجات كمان",
+            ]
+        );
         assert_eq!(more_changes(UiLanguage::Ar, 2), "وتغييران آخران");
+        assert_eq!(more_changes(UiLanguage::Ar, 115), "و115 تغييرًا آخر");
+        assert_eq!(more_changes(UiLanguage::Ar, 100), "و100 تغيير آخر");
+        assert_eq!(more_changes(UiLanguage::Ar, 303), "و303 تغييرات أخرى");
         assert_eq!(more_changes(UiLanguage::En, 1), "and 1 more");
+    }
+
+    #[test]
+    fn update_templates_agree_for_zero_and_hundreds() {
+        fn found(lang: UiLanguage, n: &str, b: &str) -> String {
+            crate::i18n::fill(lang, ut(lang, U::Found), &[("n", n), ("b", b)])
+        }
+        fn packs(lang: UiLanguage, n: &str) -> String {
+            crate::i18n::fill(lang, ut(lang, U::PacksRefreshed), &[("n", n)])
+        }
+        assert_eq!(found(UiLanguage::ArEg, "100", "201"), "100\u{a0}تغيير في 201\u{a0}نسخة");
+        assert_eq!(found(UiLanguage::Ar, "100", "201"), "100\u{a0}تغيير في 201\u{a0}إصدار");
+        assert_eq!(found(UiLanguage::ArEg, "0", "0"), "0\u{a0}تغيير في 0\u{a0}نسخة");
+        assert_eq!(packs(UiLanguage::En, "1"), "1\u{a0}audio pack was refreshed too.");
+        assert_eq!(packs(UiLanguage::En, "2"), "2\u{a0}audio packs were refreshed too.");
+        assert_eq!(packs(UiLanguage::ArEg, "1"), "واتحدّث كمان باك صوت واحد.");
+        assert_eq!(packs(UiLanguage::ArEg, "2"), "واتحدّث كمان باكين صوت.");
+        assert_eq!(packs(UiLanguage::ArEg, "5"), "واتحدّث كمان 5\u{a0}باكات صوت.");
     }
 }

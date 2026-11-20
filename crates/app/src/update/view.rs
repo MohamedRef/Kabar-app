@@ -207,7 +207,7 @@ pub(super) fn UpdatesCardFor(s: Status) -> Element {
         super::content::Refresh::Failed => U::ContentFailed,
     });
     let packs = (done && s.packs_refreshed > 0)
-        .then(|| ut(lang, U::PacksRefreshed).replace("{n}", &ui.num(s.packs_refreshed as u64)));
+        .then(|| ui.fill(U::PacksRefreshed, &[("n", &ui.num(s.packs_refreshed as u64))]));
     let content_line = match (s.content_build, s.content_since_ms) {
         (0, _) => String::new(),
         (b, since) => {
@@ -701,11 +701,8 @@ pub fn use_update_notices(ui: Ui, nav: SettingsNav) {
             }
             let lang = ui.lang();
             match tap_action(&tap) {
-                Some(TapAction::Download) => work(Updater::download),
-                Some(TapAction::Install) => {
-                    let t = texts(lang);
-                    work(move |u| u.install(t));
-                }
+                Some(TapAction::Download) => super::stage::Act::Download.run(lang),
+                Some(TapAction::Install) => super::stage::Act::Install.run(lang),
                 None => {}
             }
         }

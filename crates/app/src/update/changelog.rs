@@ -32,7 +32,27 @@ fn order_of(b: &BuildChanges) -> Option<(Version, u64)> {
 }
 
 pub(super) fn load(dir: &Path) -> Vec<BuildChanges> {
-    fs::read(dir.join(FILE)).ok().and_then(|b| serde_json::from_slice(&b).ok()).unwrap_or_default()
+    let mut all: Vec<BuildChanges> =
+        fs::read(dir.join(FILE)).ok().and_then(|b| serde_json::from_slice(&b).ok()).unwrap_or_default();
+    dedup_older(&mut all);
+    all
+}
+
+/// Strips lines from older builds when a newer build (such as a release that
+/// rolled up earlier previews) already lists the same change, dropping older
+/// builds whose lines were all rolled up.
+pub(super) fn dedup_older(builds: &mut Vec<BuildChanges>) {
+    let mut seen = std::collections::HashSet::new();
+    builds.retain_mut(|b| {
+        if b.changes.is_empty() {
+            return true;
+        }
+        b.changes.retain(|c| {
+            let key = (c.kind, c.text.ar_eg.trim().to_owned(), c.text.en.trim().to_owned());
+            seen.insert(key)
+        });
+        !b.changes.is_empty()
+    });
 }
 
 /// `fresh` (a verified feed's history) over `known`, newest first. Returns
@@ -45,6 +65,7 @@ pub(super) fn merge(known: &[BuildChanges], fresh: &[BuildChanges]) -> Option<Ve
         }
     }
     all.sort_by_key(|a| std::cmp::Reverse(order_of(a)));
+    dedup_older(&mut all);
     all.truncate(KEEP);
     (all != known).then_some(all)
 }
@@ -181,9 +202,11 @@ mod tests {
         let all = merge(&known, &fresh).unwrap();
         assert_eq!(all.iter().map(|x| x.build).collect::<Vec<_>>(), [7, 5, 3]);
         assert_eq!(merge(&all, &fresh), None, "nothing new, nothing to write");
-        // A release sorts after every preview of the version before it.
+        // A release sorts after every preview of the version before it, and
+        // drops preview entries whose lines are now rolled into the release.
         let all = merge(&all, &[b("1.0.0-alpha.1", 0, &[New])]).unwrap();
         assert_eq!(all[0].version, "1.0.0-alpha.1");
+        assert!(!all.iter().any(|x| x.version == "0.1.0" && x.build == 5));
     }
 
     #[test]

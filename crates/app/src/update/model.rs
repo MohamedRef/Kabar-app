@@ -348,7 +348,10 @@ impl Status {
         if from.is_none() {
             return Vec::new();
         }
-        changelog::between(&self.history, from, to).into_iter().cloned().collect()
+        let mut out: Vec<BuildChanges> =
+            changelog::between(&self.history, from, to).into_iter().cloned().collect();
+        changelog::dedup_older(&mut out);
+        out
     }
 
     /// The offer the banner should mention, unless closed for it.
