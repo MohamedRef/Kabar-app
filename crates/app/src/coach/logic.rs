@@ -164,7 +164,7 @@ pub fn timeline(
             continue; // a replayed event
         }
         if let ActivityKind::LessonStep { unit_id, done: true } = &e.kind {
-            let prefix = format!("{unit_id}.");
+            let prefix = format!("{}.", unit_id.id);
             let folded = src.lessons.iter().any(|l| {
                 l.lesson_id.starts_with(&prefix) && l.at_ms.abs_diff(e.at_ms) <= SAME_LESSON_WINDOW_MS
             });

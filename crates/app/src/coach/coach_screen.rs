@@ -109,8 +109,8 @@ fn NextStep(profile: CoachProfile, today: LocalDate) -> Element {
                     class: "primary wide",
                     onclick: {
                         let db = db.clone();
-                        let kind = item.kind.clone();
-                        move |_| super::today::start_item(ui, &db, coach, &kind)
+                        let start = item.clone();
+                        move |_| super::today::start_item(ui, &db, coach, &start, today)
                     },
                     "{labels::plan_item_text(&ui, &item.kind)} · {labels::minutes(&ui, next_minutes)}"
                 }

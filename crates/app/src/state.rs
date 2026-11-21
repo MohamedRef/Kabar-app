@@ -6,8 +6,16 @@ use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
 use kabar_core::locale::{UiLanguage, format_number, format_percent, localize_digits, uses_eastern_digits};
 use kabar_core::settings::Settings;
+use kabar_protocol::coach::LaunchedPlanStep;
 use std::cell::RefCell;
 use std::rc::Rc;
+
+// Navigation carries the step only until the player saves its session.
+static LESSON_PLAN_STEP: GlobalSignal<Option<(String, LaunchedPlanStep)>> = Signal::global(|| None);
+
+pub(crate) fn lesson_plan_step(lesson_id: &str) -> Option<LaunchedPlanStep> {
+    LESSON_PLAN_STEP.read().as_ref().filter(|(id, _)| id == lesson_id).map(|(_, step)| step.clone())
+}
 
 /// App-wide UI state, shared through context.
 #[derive(Clone, Copy)]
@@ -108,18 +116,28 @@ impl Ui {
     }
 
     /// Opens the Lesson Player on a lesson (from the Journey Map, Today or Lanjut).
-    pub fn open_lesson(mut self, lesson_id: impl Into<String>) {
+    pub fn open_lesson(self, lesson_id: impl Into<String>) {
+        self.open_lesson_with_plan_step(lesson_id.into(), None);
+    }
+
+    pub(crate) fn open_lesson_with_plan_step(
+        mut self,
+        lesson_id: String,
+        plan_step: Option<LaunchedPlanStep>,
+    ) {
         let from = *self.screen.peek();
         if from != Screen::Lesson {
             self.lesson_from.set(from);
         }
-        self.lesson.set(Some(lesson_id.into()));
+        *LESSON_PLAN_STEP.write() = plan_step.map(|step| (lesson_id.clone(), step));
+        self.lesson.set(Some(lesson_id));
         self.screen.set(Screen::Lesson);
     }
 
     /// Leaves the Lesson Player back to the screen it was opened from.
     pub fn close_lesson(mut self) {
         let back = *self.lesson_from.peek();
+        *LESSON_PLAN_STEP.write() = None;
         self.lesson.set(None);
         self.screen.set(back);
     }

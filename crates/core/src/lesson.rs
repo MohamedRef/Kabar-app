@@ -7,6 +7,7 @@
 
 use std::collections::HashSet;
 
+use kabar_protocol::coach::LaunchedPlanStep;
 use kabar_protocol::lesson::{
     AcceptedMeanings, Direction, Exercise, ExerciseKind, ExerciseResult, LESSON_SCHEMA, LessonCompleted,
     LessonContent, LessonPosition, LessonProgress, LessonStep, Localized, Outcome, SavedGrade, SavedResponse,
@@ -905,6 +906,14 @@ impl Player {
 
     pub fn lesson(&self) -> &LessonContent {
         &self.lesson
+    }
+
+    pub fn set_plan_step(&mut self, step: LaunchedPlanStep) {
+        self.progress.plan_step = Some(step);
+    }
+
+    pub fn plan_step(&self) -> Option<&LaunchedPlanStep> {
+        self.progress.plan_step.as_ref()
     }
 
     pub fn step(&self) -> Step {

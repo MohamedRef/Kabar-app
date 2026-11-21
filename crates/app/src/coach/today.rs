@@ -8,8 +8,8 @@ use dioxus::prelude::*;
 use kabar_core::coach::voice::Line;
 use kabar_core::coach::{history, plan, recap, reminders, rewards};
 use kabar_protocol::coach::{
-    ActivityKind, CoachProfile, DailyPlan, LanguageFocus, LocalDate, PlanItem, PlanItemKind, PlanSize,
-    ReminderStyle,
+    ActivityKind, CoachProfile, DailyPlan, LanguageFocus, LaunchedPlanStep, LocalDate, PlanItem,
+    PlanItemKind, PlanSize, ReminderStyle,
 };
 
 use super::text::{self, T, tt};
@@ -61,12 +61,14 @@ pub(super) fn journey_next(
 /// Opens what a plan item asks for: a lesson item goes straight into the
 /// unit's next lesson, or the Journey's next one once that unit is finished
 /// (the Journey itself only when neither is known).
-pub(super) fn start_item(ui: Ui, db: &Db, coach: Coach, kind: &PlanItemKind) {
-    let screen = match kind {
+pub(super) fn start_item(ui: Ui, db: &Db, coach: Coach, item: &PlanItem, date: LocalDate) {
+    let screen = match &item.kind {
         PlanItemKind::Review { .. } => Screen::Review,
         PlanItemKind::Lesson { unit_id } => {
             if let Some(lesson) = lesson_for(db, coach, unit_id) {
-                ui.open_lesson(lesson);
+                let fallback = lesson.rsplit_once('.').is_none_or(|(unit, _)| unit != unit_id);
+                let plan_step = fallback.then(|| LaunchedPlanStep { date, item_id: item.id.clone() });
+                ui.open_lesson_with_plan_step(lesson, plan_step);
                 return;
             }
             Screen::Journey
@@ -309,7 +311,8 @@ fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> E
     // Lessons and reviews tick themselves; the rest can be ticked by hand.
     let manual = matches!(step.kind, PlanItemKind::Reading | PlanItemKind::WeakSpot { .. });
     let seconds = u32::from(step.minutes) * 60;
-    let kind = step.kind.clone();
+    let start = step.clone();
+    let date = plan.date;
     let id = step.id.clone();
     rsx! {
         crate::ui::Card { class: "hero today-hero", aria_labelledby: "hero-title",
@@ -341,7 +344,7 @@ fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> E
                 class: "primary wide hero-start",
                 onclick: {
                     let db = db.clone();
-                    move |_| start_item(ui, &db, coach, &kind)
+                    move |_| start_item(ui, &db, coach, &start, date)
                 },
                 "{label}"
                 span { class: "chev hero-arrow", aria_hidden: "true" }
@@ -372,7 +375,7 @@ fn WelcomeBack(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Elem
     let coach = use_context::<Coach>();
     let minutes = ui.num(plan.size.minutes());
     let args = [("name", profile.name.as_str()), ("minutes", minutes.as_str())];
-    let first = plan.items.first().map(|i| i.kind.clone());
+    let first = plan.items.first().cloned();
     rsx! {
         crate::ui::Card { class: "hero today-hero welcome-back", aria_labelledby: "welcome-back-title",
             h2 { id: "welcome-back-title", "{ui.t(CoachMsg::WelcomeBackTitle)}" }
@@ -392,12 +395,12 @@ fn WelcomeBack(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Elem
                     }
                 }
             }
-            if let Some(kind) = first {
+            if let Some(item) = first {
                 button {
                     class: "primary wide welcome-back-start",
                     onclick: {
                         let db = db.clone();
-                        move |_| start_item(ui, &db, coach, &kind)
+                        move |_| start_item(ui, &db, coach, &item, today)
                     },
                     "{ui.t(CoachMsg::WelcomeBackStart)}"
                 }
@@ -483,7 +486,7 @@ fn PlanRow(
     let db = use_context::<Db>();
     let coach = use_context::<Coach>();
     let (title, detail) = labels::plan_item(&ui, &item.kind);
-    let kind = item.kind.clone();
+    let start = item.clone();
     let id = item.id.clone();
     let seconds = u32::from(item.minutes) * 60;
     let text_db = db.clone();
@@ -491,7 +494,7 @@ fn PlanRow(
         li { class: if done { "plan-item done" } else { "plan-item" },
             button {
                 class: "activity-row plan-text",
-                onclick: move |_| start_item(ui, &text_db, coach, &kind),
+                onclick: move |_| start_item(ui, &text_db, coach, &start, today),
                 span { class: "row-icon", aria_hidden: "true", {item_icon(&item.kind)} }
                 span { class: "row-copy",
                     strong { "{ui.t(title)}" }

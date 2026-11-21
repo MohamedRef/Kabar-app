@@ -18,6 +18,8 @@ pub struct DayStats {
     /// Lessons finished per unit today (a unit has several short lessons, so
     /// a 30-minute plan can ask for two from the same unit).
     pub lessons_finished: BTreeMap<String, u32>,
+    /// Plan lesson items completed by a fallback lesson from another unit.
+    pub lesson_items_done: BTreeSet<String>,
     pub items_done: BTreeSet<String>,
     pub practice: Vec<PracticeTally>,
     pub xp: u32,
@@ -63,12 +65,15 @@ impl DayStats {
                     }
                 }
             }
-            ActivityKind::LessonStep { unit_id, done } => {
+            ActivityKind::LessonStep { unit_id: unit, done } => {
                 if *done {
-                    if !self.lessons_done.contains(unit_id) {
-                        self.lessons_done.push(unit_id.clone());
+                    if !self.lessons_done.contains(&unit.id) {
+                        self.lessons_done.push(unit.id.clone());
                     }
-                    *self.lessons_finished.entry(unit_id.clone()).or_default() += 1;
+                    *self.lessons_finished.entry(unit.id.clone()).or_default() += 1;
+                    if let Some(id) = &unit.plan_item_id {
+                        self.lesson_items_done.insert(id.clone());
+                    }
                 }
             }
             ActivityKind::Practice { skill, topic, correct, total } => {
