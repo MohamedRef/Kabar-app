@@ -215,8 +215,7 @@ impl<'a, S: Sql> Login<'a, S> {
         }
         self.db.exec("INSERT INTO try_times (at_ms) VALUES (?)", &[now_ms.into()])?;
         let count_rows = self.db.exec("SELECT COUNT(*) FROM try_times", &[])?;
-        let failures =
-            count_rows.first().and_then(|r| r.first()).and_then(Value::as_u64).unwrap_or(1) as u32;
+        let failures = count_rows.first().and_then(|r| r.first()).and_then(Value::as_u64).unwrap_or(1) as u32;
         let lock = lock_for(failures);
         self.db.exec(
             "INSERT INTO tries (one, failures, locked_until_ms) VALUES (1, ?, ?)

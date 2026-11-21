@@ -155,8 +155,7 @@ mod tests {
         };
         assert!(s.apply_remote(&[future], 1).unwrap().is_empty());
         assert_eq!(s.last_seq().unwrap(), 1);
-        let kept: i64 =
-            s.conn.query_row("SELECT COUNT(*) FROM deferred_ops", [], |r| r.get(0)).unwrap();
+        let kept: i64 = s.conn.query_row("SELECT COUNT(*) FROM deferred_ops", [], |r| r.get(0)).unwrap();
         assert_eq!(kept, 1, "unknown table op is deferred instead of lost");
 
         // Simulate an app update where the deferred row is now a known table (`word_status`).

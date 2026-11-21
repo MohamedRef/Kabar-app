@@ -331,7 +331,9 @@ async fn update_login_state(
     change: Option<&LoginName>,
 ) -> Result<std::result::Result<AccountLoginState, Response>> {
     let mut resp = match change {
-        Some(name) => call_do(env, &claims.sub, Method::Post, "/login", Some(&claims.dev), Some(name)).await?,
+        Some(name) => {
+            call_do(env, &claims.sub, Method::Post, "/login", Some(&claims.dev), Some(name)).await?
+        }
         None => call_do(env, &claims.sub, Method::Get, "/login", Some(&claims.dev), None::<&()>).await?,
     };
     if resp.status_code() != 200 {
@@ -342,26 +344,14 @@ async fn update_login_state(
 
 /// Clears retired usernames from their `Login` DOs; any failure stays in
 /// `login_retire` for the next `GET` or `DELETE` to finish (#715).
-async fn sweep_retire(
-    env: &Env,
-    claims: &AccessClaims,
-    retire: &[String],
-    strict: bool,
-) -> Result<()> {
+async fn sweep_retire(env: &Env, claims: &AccessClaims, retire: &[String], strict: bool) -> Result<()> {
     let clear = LoginClear { account_id: claims.sub.clone() };
     for old in retire {
         match call_login(env, old, "/clear", &clear).await {
             Ok(r) if r.status_code() == 200 => {
                 let done = LoginName { retired: Some(old.clone()), ..Default::default() };
-                let _ = call_do(
-                    env,
-                    &claims.sub,
-                    Method::Post,
-                    "/login",
-                    Some(&claims.dev),
-                    Some(&done),
-                )
-                .await;
+                let _ =
+                    call_do(env, &claims.sub, Method::Post, "/login", Some(&claims.dev), Some(&done)).await;
             }
             Ok(r) if strict => return Err(js_err(format!("login clear HTTP {}", r.status_code()))),
             Err(e) if strict => return Err(e),
