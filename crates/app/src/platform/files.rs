@@ -1,12 +1,28 @@
 //! The few files Kabar keeps outside its database (cloud voices, downloaded
 //! episodes), on every target: plain files on the Mac and Android; on the web,
-//! IndexedDB entries named by path, with an index (path and size, and the
-//! bytes of small files) loaded at start-up so `size` and small reads stay
-//! synchronous. A large file's bytes are read into memory on its first
-//! [`read`], so [`read_loaded`] finds them afterwards.
+//! one IndexedDB entry (`file:<path>`) per file plus a slim `files.json`
+//! index (`path -> size`) loaded at start-up so `size` stays synchronous.
+//! Metadata `.json` files (such as downloaded episode cue lists) are preloaded
+//! at boot, and audio files enter memory on their first [`read`] or [`write`],
+//! so [`read_loaded`] finds them afterwards without bloating `files.json`.
 
 use std::io;
 use std::path::{Path, PathBuf};
+
+#[cfg(any(target_arch = "wasm32", test))]
+use serde::{Deserialize, Serialize};
+
+/// One entry in the web build's `files.json` index. Legacy `inline` byte
+/// arrays from older builds still deserialize so `boot` can migrate them out
+/// to their own `file:<key>` entries, and are omitted when `files.json` is
+/// saved back.
+#[cfg(any(target_arch = "wasm32", test))]
+#[derive(Default, Debug, PartialEq, Eq, Serialize, Deserialize)]
+struct IndexEntry {
+    size: u64,
+    #[serde(default, skip_serializing)]
+    inline: Option<Vec<u8>>,
+}
 
 /// The file's size, if it exists.
 pub fn size(path: &Path) -> Option<u64> {
@@ -19,7 +35,8 @@ pub async fn read(path: &Path) -> io::Result<Vec<u8>> {
 }
 
 /// The file's bytes without waiting: always on the Mac and Android; on the
-/// web for small files and ones [`read`] or [`write`] touched this session.
+/// web for `.json` metadata files and any file [`read`] or [`write`] touched
+/// this session.
 pub fn read_loaded(path: &Path) -> io::Result<Vec<u8>> {
     imp::read_loaded(path)
 }
@@ -45,7 +62,11 @@ pub fn remove_dir_all(dir: &Path) {
 
 #[cfg(not(target_arch = "wasm32"))]
 mod imp {
+    use std::sync::atomic::{AtomicU64, Ordering};
+
     use super::*;
+
+    static TMP_SEQ: AtomicU64 = AtomicU64::new(0);
 
     pub fn size(path: &Path) -> Option<u64> {
         std::fs::metadata(path).ok().filter(|m| m.is_file()).map(|m| m.len())
@@ -66,9 +87,15 @@ mod imp {
             if let Some(dir) = path.parent() {
                 std::fs::create_dir_all(dir)?;
             }
-            let tmp = path.with_extension("part");
+            let n = TMP_SEQ.fetch_add(1, Ordering::Relaxed);
+            let name = path.file_name().map(|f| f.to_string_lossy()).unwrap_or_default();
+            let tmp = path.with_file_name(format!(".{name}.{}.{n}.part", std::process::id()));
             std::fs::write(&tmp, bytes)?;
-            std::fs::rename(&tmp, &path)
+            if let Err(e) = std::fs::rename(&tmp, &path) {
+                let _ = std::fs::remove_file(&tmp);
+                return Err(e);
+            }
+            Ok(())
         })
         .await
     }
@@ -92,29 +119,24 @@ mod imp {
 
 #[cfg(target_arch = "wasm32")]
 mod imp {
-    use std::cell::RefCell;
+    use std::cell::{Cell, RefCell};
     use std::collections::{BTreeMap, HashMap};
-
-    use serde::{Deserialize, Serialize};
+    use std::time::Duration;
 
     use super::*;
-    use crate::platform::web::{idb_delete_key, idb_get_bytes, idb_put_bytes};
+    use crate::platform::web::{idb_delete_key, idb_get_bytes, idb_get_checked, idb_put_bytes};
 
-    /// Files this small live in the index itself.
-    const INLINE_BYTES: usize = 16 * 1024;
     const INDEX_KEY: &str = "files.json";
 
-    #[derive(Default, Serialize, Deserialize)]
-    struct Entry {
-        size: u64,
-        #[serde(default, skip_serializing_if = "Option::is_none")]
-        inline: Option<Vec<u8>>,
-    }
-
     thread_local! {
-        static INDEX: RefCell<BTreeMap<String, Entry>> = const { RefCell::new(BTreeMap::new()) };
-        /// Large files read or written this session.
+        static INDEX: RefCell<BTreeMap<String, IndexEntry>> = const { RefCell::new(BTreeMap::new()) };
+        /// `.json` metadata files and files read or written this session.
         static LOADED: RefCell<HashMap<String, Vec<u8>>> = RefCell::new(HashMap::new());
+        /// Set when `files.json` could not be read or parsed at boot, so a
+        /// later write never clobbers the existing index and orphans files.
+        static INDEX_UNREADABLE: Cell<bool> = const { Cell::new(false) };
+        static SAVE_QUEUED: Cell<bool> = const { Cell::new(false) };
+        static SAVE_AGAIN: Cell<bool> = const { Cell::new(false) };
     }
 
     fn key(path: &Path) -> String {
@@ -131,19 +153,69 @@ mod imp {
 
     /// Before the app starts (from `platform::web::boot`).
     pub async fn boot() {
-        let Some(bytes) = idb_get_bytes(INDEX_KEY).await else { return };
-        match serde_json::from_slice(&bytes) {
-            Ok(index) => INDEX.with(|i| *i.borrow_mut() = index),
-            Err(e) => crate::diag::report!("the browser's file list is unreadable: {e}"),
+        let bytes = match idb_get_checked(INDEX_KEY).await {
+            Ok(Some(bytes)) => bytes,
+            Ok(None) => return,
+            Err(e) => {
+                INDEX_UNREADABLE.with(|u| u.set(true));
+                crate::diag::report!("reading the browser's file list failed: {e}");
+                return;
+            }
+        };
+        let mut parsed: BTreeMap<String, IndexEntry> = match serde_json::from_slice(&bytes) {
+            Ok(index) => index,
+            Err(e) => {
+                INDEX_UNREADABLE.with(|u| u.set(true));
+                crate::diag::report!("the browser's file list is unreadable: {e}");
+                return;
+            }
+        };
+        let mut migrated = false;
+        let mut preload_json = Vec::new();
+        for (k, entry) in &mut parsed {
+            if let Some(inline) = entry.inline.take() {
+                if idb_put_bytes(&content_key(k), &inline).await.is_ok() {
+                    migrated = true;
+                }
+                LOADED.with(|l| l.borrow_mut().insert(k.clone(), inline));
+            } else if k.ends_with(".json") {
+                preload_json.push(k.clone());
+            }
+        }
+        INDEX.with(|i| *i.borrow_mut() = parsed);
+        for k in preload_json {
+            if let Some(data) = idb_get_bytes(&content_key(&k)).await {
+                LOADED.with(|l| l.borrow_mut().insert(k, data));
+            }
+        }
+        if migrated {
+            save_index();
         }
     }
 
     fn save_index() {
-        let json = INDEX.with(|i| serde_json::to_vec(&*i.borrow())).unwrap_or_default();
+        if INDEX_UNREADABLE.with(Cell::get) {
+            return;
+        }
+        if SAVE_QUEUED.with(Cell::get) {
+            SAVE_AGAIN.with(|a| a.set(true));
+            return;
+        }
+        SAVE_QUEUED.with(|q| q.set(true));
         wasm_bindgen_futures::spawn_local(async move {
-            if let Err(e) = idb_put_bytes(INDEX_KEY, &json).await {
-                crate::diag::report!("saving the browser's file list failed: {e}");
+            loop {
+                SAVE_AGAIN.with(|a| a.set(false));
+                // Coalesce bursts of writes or deletes in the same tick into one save.
+                crate::platform::time::sleep(Duration::ZERO).await;
+                let json = INDEX.with(|i| serde_json::to_vec(&*i.borrow())).unwrap_or_default();
+                if let Err(e) = idb_put_bytes(INDEX_KEY, &json).await {
+                    crate::diag::report!("saving the browser's file list failed: {e}");
+                }
+                if !SAVE_AGAIN.with(Cell::get) {
+                    break;
+                }
             }
+            SAVE_QUEUED.with(|q| q.set(false));
         });
     }
 
@@ -153,9 +225,6 @@ mod imp {
 
     pub fn read_loaded(path: &Path) -> io::Result<Vec<u8>> {
         let key = key(path);
-        if let Some(bytes) = INDEX.with(|i| i.borrow().get(&key).and_then(|e| e.inline.clone())) {
-            return Ok(bytes);
-        }
         LOADED.with(|l| l.borrow().get(&key).cloned()).ok_or_else(not_found)
     }
 
@@ -175,14 +244,9 @@ mod imp {
     pub async fn write(path: &Path, bytes: Vec<u8>) -> io::Result<()> {
         let key = key(path);
         let size = bytes.len() as u64;
-        let inline = if bytes.len() <= INLINE_BYTES {
-            Some(bytes)
-        } else {
-            idb_put_bytes(&content_key(&key), &bytes).await.map_err(io::Error::other)?;
-            LOADED.with(|l| l.borrow_mut().insert(key.clone(), bytes));
-            None
-        };
-        INDEX.with(|i| i.borrow_mut().insert(key, Entry { size, inline }));
+        idb_put_bytes(&content_key(&key), &bytes).await.map_err(io::Error::other)?;
+        LOADED.with(|l| l.borrow_mut().insert(key.clone(), bytes));
+        INDEX.with(|i| i.borrow_mut().insert(key, IndexEntry { size, inline: None }));
         save_index();
         Ok(())
     }
@@ -191,11 +255,11 @@ mod imp {
         if keys.is_empty() {
             return;
         }
-        for key in &keys {
-            let inline = INDEX.with(|i| i.borrow_mut().remove(key)).is_some_and(|e| e.inline.is_some());
-            LOADED.with(|l| l.borrow_mut().remove(key));
-            if !inline {
-                let content = content_key(key);
+        for key in keys {
+            let existed = INDEX.with(|i| i.borrow_mut().remove(&key).is_some());
+            LOADED.with(|l| l.borrow_mut().remove(&key));
+            if existed {
+                let content = content_key(&key);
                 wasm_bindgen_futures::spawn_local(async move { idb_delete_key(&content).await });
             }
         }
@@ -233,3 +297,39 @@ mod imp {
 
 #[cfg(target_arch = "wasm32")]
 pub use imp::boot;
+
+#[cfg(test)]
+mod tests {
+    use std::collections::BTreeMap;
+
+    use super::*;
+
+    #[test]
+    fn web_index_reads_legacy_inline_bytes_and_saves_only_sizes() {
+        let legacy = r#"{"audio/clip.mp3":{"size":3,"inline":[1,2,3]}}"#;
+        let parsed: BTreeMap<String, IndexEntry> = serde_json::from_str(legacy).unwrap();
+        assert_eq!(parsed["audio/clip.mp3"].size, 3);
+        assert_eq!(parsed["audio/clip.mp3"].inline.as_deref(), Some(&[1, 2, 3][..]));
+
+        let slim = serde_json::to_string(&parsed).unwrap();
+        assert_eq!(slim, r#"{"audio/clip.mp3":{"size":3}}"#, "no inline byte arrays written back");
+    }
+
+    #[test]
+    fn native_files_write_atomically_list_and_clean_up() {
+        let dir = tempfile::tempdir().unwrap();
+        let rt = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
+        let a = dir.path().join("episodes/one.mp3");
+        let b = dir.path().join("episodes/one.json");
+        rt.block_on(write(&a, vec![10, 20, 30])).unwrap();
+        rt.block_on(write(&b, br#"[0.0]"#.to_vec())).unwrap();
+        assert_eq!(size(&a), Some(3));
+        assert_eq!(read_loaded(&a).unwrap(), [10, 20, 30]);
+        assert_eq!(rt.block_on(read(&b)).unwrap(), br#"[0.0]"#);
+        assert_eq!(list(&dir.path().join("episodes"), "mp3"), [(a.clone(), 3)]);
+        remove(&a);
+        assert_eq!(size(&a), None);
+        remove_dir_all(&dir.path().join("episodes"));
+        assert_eq!(size(&b), None);
+    }
+}

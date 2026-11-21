@@ -57,6 +57,7 @@ pub(super) enum L {
     Texts,
     Words,
     Downloads,
+    DownloadsUnavailable,
     NoTexts,
     /// The web: no screenshot button yet (#576).
     NoTextsPasteOnly,
@@ -100,6 +101,15 @@ pub(super) fn lt(lang: UiLanguage, l: L) -> &'static str {
         (Words, En) => "Words",
         (Downloads, ArEg | Ar) => "التنزيلات",
         (Downloads, En) => "Downloads",
+        (DownloadsUnavailable, ArEg) => {
+            "الباكات من غير نت بتشتغل في تطبيق الموبايل والماك. هنا الدروس بتشتغل بصوت الجهاز أو السحابة."
+        }
+        (DownloadsUnavailable, Ar) => {
+            "تعمل الحزم دون اتصال في تطبيق الهاتف والماك. وهنا تعمل الدروس بصوت الجهاز أو السحابة."
+        }
+        (DownloadsUnavailable, En) => {
+            "Offline packs live in the Mac and Android apps. Here, lessons use cloud or device voices."
+        }
         (NoTexts, ArEg) => "لسه مافيش نصوص هنا. الصق نص فوق أو افتح سكرين شوت، وهيتحفظ هنا لوحده.",
         (NoTexts, Ar) => "لا نصوص بعد. الصق نصًا في الأعلى أو افتح لقطة شاشة، وستُحفظ هنا تلقائيًا.",
         (NoTexts, En) => "No texts yet. Paste one above or open a screenshot; it's saved here by itself.",
@@ -273,8 +283,22 @@ pub fn Library(recent: Signal<Vec<SavedText>>) -> Element {
             }
             match current {
                 Tab::Texts => rsx! { TextList { recent, q, query } },
-                Tab::Words => rsx! { WordList { words: words.read().clone(), taught: *taught.read(), q, query } },
-                Tab::Downloads => rsx! { crate::packs::settings::OfflinePacks {} },
+                Tab::Words => rsx! {
+                    WordList { words: words.read().clone(), taught: *taught.read(), q, query }
+                },
+                Tab::Downloads => {
+                    if crate::packs::store().is_some() {
+                        rsx! { crate::packs::settings::OfflinePacks {} }
+                    } else {
+                        rsx! {
+                            crate::ui::Card {
+                                element: crate::ui::CardElement::Paragraph,
+                                class: "flat lib-empty",
+                                "{lt(lang, L::DownloadsUnavailable)}"
+                            }
+                        }
+                    }
+                }
             }
         }
     }
