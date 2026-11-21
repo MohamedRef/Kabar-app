@@ -963,7 +963,8 @@ fn plan_steps_open_their_screen() {
         let mut screen = ui.screen;
         app.dom.in_app(|| {
             screen.set(Screen::Today);
-            today::start_item(ui, &db, coach, &kind);
+            let item = PlanItem { id: plan::item_id(&kind), kind: kind.clone(), minutes: 6 };
+            today::start_item(ui, &db, coach, &item, coach.today());
         });
         assert_eq!(app.screen_now(), expected, "{kind:?}");
     }
@@ -972,7 +973,11 @@ fn plan_steps_open_their_screen() {
     // Without a profile there is no Journey lesson to fall back on.
     let mut bare = mount(En, memory_db(), MORNING, || rsx! {});
     let (ui, coach, db) = (bare.ctx::<crate::Ui>(), coach_of(&mut bare), bare.db.clone());
-    bare.dom.in_app(|| today::start_item(ui, &db, coach, &PlanItemKind::Lesson { unit_id: "zz.u99".into() }));
+    bare.dom.in_app(|| {
+        let kind = PlanItemKind::Lesson { unit_id: "zz.u99".into() };
+        let item = PlanItem { id: plan::item_id(&kind), kind, minutes: 6 };
+        today::start_item(ui, &db, coach, &item, coach.today());
+    });
     assert_eq!(bare.screen_now(), Screen::Journey);
 }
 

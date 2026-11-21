@@ -360,7 +360,7 @@ fn open_entry(ui: Ui, db: &Db, kind: &EntryKind) {
         EntryKind::Activity(ActivityKind::LessonStep { unit_id, .. }) => {
             let completed =
                 crate::persistence::read_or("finished lessons", db.0.borrow().completed_lessons());
-            match crate::journey::next_lesson_in(unit_id, &completed) {
+            match crate::journey::next_lesson_in(&unit_id.id, &completed) {
                 Some(id) => {
                     ui.open_lesson(id);
                     return;
@@ -427,10 +427,11 @@ fn ActivityLine(kind: ActivityKind) -> Element {
             bdi { lang: "id", "{words.join(\", \")}" }
         },
         ActivityKind::LessonStep { unit_id, done } => {
+            let unit = &unit_id.id;
             let what = ui.t(if done { Msg::EvLessonDone } else { Msg::EvLessonStep });
             rsx! {
                 "{what} · "
-                bdi { lang: "id", "{unit_id}" }
+                bdi { lang: "id", "{unit}" }
             }
         }
         ActivityKind::Practice { skill, topic, correct, total } => rsx! {

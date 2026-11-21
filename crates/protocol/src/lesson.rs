@@ -5,6 +5,8 @@
 
 use serde::{Deserialize, Serialize};
 
+use crate::coach::LaunchedPlanStep;
+
 /// The `schema:` tag every lesson file carries.
 pub const LESSON_SCHEMA: &str = "kabar.lesson/v1";
 
@@ -367,6 +369,9 @@ pub struct LessonProgress {
     /// Active time spent in the lesson so far.
     #[serde(default)]
     pub elapsed_ms: u64,
+    /// A fallback lesson's original plan step, for same-day credit after Lanjut.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub plan_step: Option<LaunchedPlanStep>,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
