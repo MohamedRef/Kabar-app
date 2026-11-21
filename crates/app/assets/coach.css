@@ -72,7 +72,7 @@ button.nur-card .nur-bubble { background: transparent; padding: 0; }
 /* The two columns stack on a phone: keep the same rhythm between the main
    column and the side cards (Pelita/Koin used to touch Kabar Pagi), and
    between the side cards themselves. */
-.today-grid { row-gap: var(--sp-4); }
+.today-grid { grid-template-columns: minmax(0, 1fr); row-gap: var(--sp-4); }
 .today-side { display: grid; gap: var(--sp-4); min-inline-size: 0; align-content: start; }
 .today-side > * { margin-block: 0; }
 .today-side:empty { display: none; }

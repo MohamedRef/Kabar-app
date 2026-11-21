@@ -305,7 +305,7 @@ fn ReviewHome() -> Element {
             ReviewMsg::RevWall,
             if *ui.tablet.read() {
                 ReviewMsg::RevWallHint
-            } else if cfg!(target_os = "android") {
+            } else if platform::touch_screen() {
                 ReviewMsg::RevWallHintTouch
             } else {
                 ReviewMsg::RevWallHintMouse

@@ -254,7 +254,7 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
                                     }
                                 },
                                 "{ui.t(labels::skill(f.skill))} · "
-                                bdi { lang: "id", "{f.topic}" }
+                                bdi { dir: "auto", "{labels::topic_title(ui.lang(), &f.topic)}" }
                             }
                         }
                     }

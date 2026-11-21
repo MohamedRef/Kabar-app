@@ -164,6 +164,7 @@ fn all_lines() -> Vec<S> {
         AllTime,
         ForecastTitle,
         ForecastSummary,
+        ForecastUnderOne,
         ForecastEmpty,
         ForecastBar,
         Today,
@@ -237,7 +238,8 @@ fn all_lines() -> Vec<S> {
             Title | Back | OpenStats | HeatTitle | HeatSummary | HeatLess | HeatMore | HeatCell
             | HeatCellEmpty | WordsTitle | Known | Learning | New | NoWords | LangId | LangJv
             | WordsSummary | RetentionTitle | Week | Month | Mature | Young | AllReviews | NoReviewsYet
-            | RetentionRule | TimeTitle | AllTime | ForecastTitle | ForecastSummary | ForecastEmpty
+            | RetentionRule | TimeTitle | AllTime | ForecastTitle | ForecastSummary | ForecastUnderOne
+            | ForecastEmpty
             | ForecastBar | Today | In30Days | CheckTitle | CheckIntro | CheckNoTest | CheckStart
             | CheckSeeResult | CheckLater | CheckNext | CheckClose | CheckLast | CheckNever | CheckDoNow
             | CheckNotDue | ResultUp | ResultStay | ResultDown | StayBody | DownBody | FlightInvite
@@ -256,7 +258,7 @@ fn all_lines() -> Vec<S> {
 #[test]
 fn every_line_is_translated_with_the_same_placeholders() {
     let lines = all_lines();
-    assert_eq!(lines.len(), 95);
+    assert_eq!(lines.len(), 96);
     for s in lines {
         let en = st(UiLanguage::En, s);
         let eg = st(UiLanguage::ArEg, s);

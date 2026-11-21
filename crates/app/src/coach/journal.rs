@@ -434,11 +434,14 @@ fn ActivityLine(kind: ActivityKind) -> Element {
                 bdi { lang: "id", "{unit}" }
             }
         }
-        ActivityKind::Practice { skill, topic, correct, total } => rsx! {
-            "{ui.t(labels::skill(skill))} · "
-            bdi { lang: "id", "{topic}" }
-            " · {ui.num(correct.min(total))} / {ui.num(total)}"
-        },
+        ActivityKind::Practice { skill, topic, correct, total } => {
+            let title = labels::topic_title(ui.lang(), &topic);
+            rsx! {
+                "{ui.t(labels::skill(skill))} · "
+                bdi { dir: "auto", "{title}" }
+                " · {ui.num(correct.min(total))} / {ui.num(total)}"
+            }
+        }
         ActivityKind::PlanItemDone { .. } => rsx! { "{ui.t(Msg::EvPlanItem)}" },
         ActivityKind::Purchase { item_id, koin } => {
             let name =

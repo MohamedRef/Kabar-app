@@ -250,8 +250,9 @@ pub fn TeachScreen() -> Element {
                     id: "teach-context",
                     class: "latin",
                     dir: "ltr",
+                    lang: lang().code(),
                     value: "{context}",
-                    placeholder: "arp dicul piro",
+                    placeholder: if lang() == Lang::Jv { "arp dicul piro" } else { "mau dilepas berapa" },
                     oninput: move |e| context.set(e.value()),
                 }
             }

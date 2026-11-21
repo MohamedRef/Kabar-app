@@ -86,6 +86,21 @@ pub fn weekday(w: Weekday) -> Msg {
     }
 }
 
+/// Compact chart label ("Mon" in English, where "Wednesday" overflows a
+/// seven-bar phone card; Arabic day names already fit).
+pub fn weekday_short(lang: UiLanguage, w: Weekday) -> &'static str {
+    match (lang, w) {
+        (UiLanguage::En, Weekday::Mon) => "Mon",
+        (UiLanguage::En, Weekday::Tue) => "Tue",
+        (UiLanguage::En, Weekday::Wed) => "Wed",
+        (UiLanguage::En, Weekday::Thu) => "Thu",
+        (UiLanguage::En, Weekday::Fri) => "Fri",
+        (UiLanguage::En, Weekday::Sat) => "Sat",
+        (UiLanguage::En, Weekday::Sun) => "Sun",
+        (UiLanguage::ArEg | UiLanguage::Ar, _) => crate::i18n::t(lang, weekday(w)),
+    }
+}
+
 pub fn skill(s: Skill) -> Msg {
     match s {
         Skill::Reading => Msg::SkillReading,
@@ -113,6 +128,38 @@ pub fn minutes_text(lang: UiLanguage, n: u32, num: &str) -> String {
         (UiLanguage::ArEg, 3..=10) => format!("{num} دقايق"),
         (UiLanguage::Ar, 3..=10) => format!("{num} دقائق"),
         _ => format!("{num} دقيقة"),
+    }
+}
+
+/// "بطاقة", "بطاقتين", "5 بطاقات", "12 بطاقة", "1 card", "12 cards".
+pub fn cards_text(lang: UiLanguage, n: u32, num: &str) -> String {
+    match (lang, n) {
+        (UiLanguage::En, 1) => format!("{num} card"),
+        (UiLanguage::En, _) => format!("{num} cards"),
+        (_, 1) => "بطاقة".into(),
+        (UiLanguage::ArEg, 2) => "بطاقتين".into(),
+        (UiLanguage::Ar, 2) => "بطاقتان".into(),
+        (_, 3..=10) => format!("{num} بطاقات"),
+        _ => format!("{num} بطاقة"),
+    }
+}
+
+/// A practice topic's learner-facing name (#741): game ids show the game's
+/// title instead of raw slugs like "false-friends" or "kabar-pagi".
+pub fn topic_title(lang: UiLanguage, topic: &str) -> String {
+    let t = |m| crate::i18n::t(lang, m).to_string();
+    match topic {
+        "kabar-pagi" => "Kabar Pagi".into(),
+        "false-friends" => t(Msg::AlarmTitle),
+        "rupiah" => t(Msg::RupiahTitle),
+        "pasar" => t(Msg::PasarTitle),
+        "unggah-ungguh" => t(Msg::UnggahTitle),
+        "d-dh" => "d / dh".into(),
+        "t-th" => "t / th".into(),
+        s if s == "bridge:all" || s.starts_with("bridge:") => t(Msg::DetectiveTitle),
+        s if s.starts_with("gambar:") => format!("Gambar! · {}", &s["gambar:".len()..]),
+        s if s.starts_with("aksara:") => format!("Aksara · {}", &s["aksara:".len()..]),
+        _ => topic.to_string(),
     }
 }
 
@@ -210,7 +257,7 @@ pub fn time(ui: &Ui, t: LocalTime) -> String {
 pub fn plan_item(ui: &Ui, kind: &PlanItemKind) -> (Msg, Option<String>) {
     match kind {
         PlanItemKind::Review { cards } if *cards > 0 => {
-            (Msg::ItemReview, Some(format!("{} {}", ui.num(*cards), ui.t(Msg::Cards))))
+            (Msg::ItemReview, Some(cards_text(ui.lang(), *cards, &ui.num(*cards))))
         }
         PlanItemKind::Review { .. } => (Msg::ItemReview, None),
         PlanItemKind::Lesson { unit_id } => {
@@ -221,7 +268,8 @@ pub fn plan_item(ui: &Ui, kind: &PlanItemKind) -> (Msg, Option<String>) {
             )
         }
         PlanItemKind::WeakSpot { skill: s, topic } => {
-            (Msg::ItemWeakSpot, Some(format!("{} · {topic}", ui.t(skill(*s)))))
+            let name = topic_title(ui.lang(), topic);
+            (Msg::ItemWeakSpot, Some(format!("{} · {name}", ui.t(skill(*s)))))
         }
         PlanItemKind::Reading => (Msg::ItemReading, None),
     }
@@ -246,7 +294,7 @@ pub fn plan_item_phrase(ui: &Ui, kind: &PlanItemKind) -> String {
             let title = crate::journey::unit_local_title(lang, unit_id).unwrap_or_else(|| unit_id.clone());
             fill(Msg::PhraseLesson, &title)
         }
-        PlanItemKind::WeakSpot { topic, .. } => fill(Msg::PhraseWeakSpot, topic),
+        PlanItemKind::WeakSpot { topic, .. } => fill(Msg::PhraseWeakSpot, &topic_title(lang, topic)),
         PlanItemKind::Reading => ui.t(Msg::PhraseReading).to_string(),
         PlanItemKind::Review { .. } => plan_item_text(ui, kind),
     }
@@ -294,5 +342,21 @@ mod tests {
         // The target picker offers exactly the ids `onboarding::finish` accepts.
         assert!(LEVELS.iter().all(|l| kabar_core::coach::onboarding::is_known_level(l)));
         assert_eq!(level_name(LEVELS[1]), "BIPA 2");
+    }
+
+    #[test]
+    fn cards_and_practice_topics_read_in_the_ui_language() {
+        let eg = |n: u32| cards_text(UiLanguage::ArEg, n, &n.to_string());
+        assert_eq!(eg(1), "بطاقة");
+        assert_eq!(eg(2), "بطاقتين");
+        assert_eq!(eg(3), "3 بطاقات");
+        assert_eq!(eg(12), "12 بطاقة");
+        assert_eq!(cards_text(UiLanguage::Ar, 2, "٢"), "بطاقتان");
+        assert_eq!(cards_text(UiLanguage::En, 1, "1"), "1 card");
+        assert_eq!(cards_text(UiLanguage::En, 12, "12"), "12 cards");
+        assert_eq!(topic_title(UiLanguage::ArEg, "false-friends"), "جرس الكلمات الخدّاعة");
+        assert_eq!(topic_title(UiLanguage::ArEg, "kabar-pagi"), "Kabar Pagi");
+        assert_eq!(topic_title(UiLanguage::En, "d-dh"), "d / dh");
+        assert_eq!(weekday_short(UiLanguage::En, Weekday::Wed), "Wed");
     }
 }

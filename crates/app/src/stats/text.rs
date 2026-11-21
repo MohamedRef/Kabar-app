@@ -106,6 +106,7 @@ pub enum S {
     WeakPlay,
     WeakVocabulary,
     WeakJourney,
+    ForecastUnderOne,
     MoreDetail,
     Done,
 }
@@ -220,6 +221,15 @@ pub fn st(lang: UiLanguage, msg: S) -> &'static str {
         }
         (ForecastSummary, En) => {
             "Next {n|day|days}: {total|review|reviews}, about {avg} a day. Busiest: {day} ({peak})."
+        }
+        (ForecastUnderOne, ArEg) => {
+            "في {n|اليوم الجاي|اليومين الجايين|أيام جاية|يوم جايين}: {total|مراجعة|مراجعتين|مراجعات} في المجموع، أقل من مراجعة في اليوم. أكتر يوم: {day} ({peak})."
+        }
+        (ForecastUnderOne, Ar) => {
+            "خلال {n|اليوم القادم|اليومين القادمين|أيام قادمة|يومًا قادمًا}: مجموع المراجعات {total}، أقل من مراجعة يوميًّا. أكثر الأيام: {day} ({peak})."
+        }
+        (ForecastUnderOne, En) => {
+            "Next {n|day|days}: {total|review|reviews}, under one a day. Busiest: {day} ({peak})."
         }
         (ForecastEmpty, ArEg) => {
             "مفيش مراجعات متجدولة في {n|اليوم الجاي|اليومين الجايين|أيام جاية|يوم جايين}. الكلمات مرتاحة."

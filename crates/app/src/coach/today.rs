@@ -621,7 +621,8 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     ];
     let headline = say(&ui, if r.goal_met { Line::RecapGoalMet } else { Line::RecapSomeStudy }, today, &base);
     let remember = r.remember.as_ref().map(|f| {
-        let topic = format!("{} · \u{2068}{}\u{2069}", ui.t(labels::skill(f.skill)), f.topic);
+        let title = labels::topic_title(ui.lang(), &f.topic);
+        let topic = format!("{} · \u{2068}{title}\u{2069}", ui.t(labels::skill(f.skill)));
         say(&ui, Line::RecapRemember, today, &[("topic", topic.as_str())])
     });
     let next = r.tomorrow.as_ref().map(|first| {

@@ -704,22 +704,22 @@ fn the_journal_lists_the_days_activity_and_filters_it() {
     let mut app = journal_app(db);
     let screen = app.screen();
     for part in
-        [en(Msg::EvReviews), "12 / 12", "rumah, makan", "kabar-pagi", "Kawung Senja", en(Msg::Yesterday)]
+        [en(Msg::EvReviews), "12 / 12", "rumah, makan", "Kabar Pagi", "Kawung Senja", en(Msg::Yesterday)]
     {
         assert!(screen.contains(part), "missing {part}: {screen}");
     }
     // Words only.
     app.click_text(en(Msg::JournalFilterWords));
     assert!(app.screen().contains("rumah"));
-    assert!(!app.screen().contains("kabar-pagi"));
+    assert!(!app.screen().contains("Kabar Pagi"));
     // Reflections only, and there are none: the way back to everything.
     app.click_text(en(Msg::JournalFilterReflections));
     assert!(app.screen().contains(en(Msg::JournalNothingHere)));
     app.click_text(en(Msg::JournalShowAll));
-    assert!(app.screen().contains("kabar-pagi"));
+    assert!(app.screen().contains("Kabar Pagi"));
     // Each line opens what it was.
     for (text, screen) in
-        [("12 / 12", Screen::Review), ("kabar-pagi", Screen::Listen), ("Kawung Senja", Screen::Coach)]
+        [("12 / 12", Screen::Review), ("Kabar Pagi", Screen::Listen), ("Kawung Senja", Screen::Coach)]
     {
         app.click_on("button", text);
         assert_eq!(app.screen_now(), screen, "{text}");
