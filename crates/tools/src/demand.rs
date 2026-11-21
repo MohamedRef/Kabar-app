@@ -550,11 +550,7 @@ pub fn report_to(root: &Root, args: Args, out: &mut dyn std::io::Write) -> Resul
     writeln!(
         out,
         "\n{:<6} {:>22} {:>13} {:>22} {:>13}",
-        "level",
-        "listen long/mid/short",
-        "listen ratio",
-        "choice long/mid/short",
-        "choice ratio"
+        "level", "listen long/mid/short", "listen ratio", "choice long/mid/short", "choice ratio"
     )?;
     for (name, l) in &levels {
         let listen_ranks = format!(
