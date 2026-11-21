@@ -5,8 +5,8 @@
 use kabar_core::coach::rewards;
 use kabar_core::locale::UiLanguage::{self, ArEg, En};
 use kabar_protocol::coach::{
-    ActivityKind, CoachProfile, LanguageFocus, LocalDate, LocalTime, PlanItem, PlanItemKind, PlanSize,
-    ReminderStyle, StartingPoint, Weekday,
+    ActivityKind, CoachProfile, DailyPlan, LanguageFocus, LocalDate, LocalTime, PlanItem, PlanItemKind,
+    PlanSize, ReminderStyle, StartingPoint, Weekday,
 };
 
 use super::text::{T, tt};
@@ -1107,4 +1107,63 @@ fn minutes_left_agree_with_the_progress_line() {
     assert_eq!(minutes_left(15, 0, 15), 15);
     // Past the goal with a step still open: that step's minutes.
     assert_eq!(minutes_left(15, 16, 5), 5);
+}
+
+#[test]
+fn finished_week_report_includes_friday_through_sunday_study() {
+    let date = today_of(MORNING);
+    let db = db_with(Some(profile()));
+    let last = date.week_start().add_days(-7);
+    // Studied Mon-Thu (saved on Thursday), then Fri-Sun too (#714).
+    for d in 0..4 {
+        seed(&db, reviews(20), last.add_days(d), 600);
+    }
+    let thursday_snapshot = kabar_core::coach::report::weekly_report(
+        &db.0.borrow().activity(None).unwrap(),
+        last,
+        4,
+        rewards::league(&db.0.borrow().activity(None).unwrap(), last, 8),
+    );
+    assert_eq!(thursday_snapshot.days_studied, 4);
+    db.0.borrow_mut().save_report(&thursday_snapshot).unwrap();
+    for d in 4..7 {
+        seed(&db, reviews(20), last.add_days(d), 600);
+    }
+    let app = coach_page(En, db, MORNING);
+    let refreshed = app.db.0.borrow().report_for(last).unwrap().expect("refreshed report");
+    assert_eq!(refreshed.days_studied, 7);
+    assert_eq!(refreshed.minutes, 70);
+    assert!(app.screen().contains("70 min"), "{}", app.screen());
+}
+
+#[test]
+fn auto_done_plan_row_shows_static_check_not_dead_button() {
+    let date = today_of(MORNING);
+    let db = db_with(Some(CoachProfile { daily_size: PlanSize::Steady, ..profile() }));
+    let plan = DailyPlan {
+        date,
+        size: PlanSize::Steady,
+        comeback: false,
+        items: vec![
+            PlanItem { id: "reading".into(), kind: PlanItemKind::Reading, minutes: 6 },
+            PlanItem { id: "review".into(), kind: PlanItemKind::Review { cards: 5 }, minutes: 9 },
+        ],
+    };
+    db.0.borrow_mut().save_plan(&plan).unwrap();
+    seed(&db, reviews(5), date, 120);
+    let app = today_app(En, db, MORNING);
+    // Hero is `reading`; `review` in the list below is auto-done via `span.check`, not `button.check`.
+    assert!(app.find_all("button").into_iter().all(|b| !app.has_class(b, "check")));
+    assert_eq!(app.by_class("check").len(), 1);
+}
+
+#[test]
+fn plan_due_at_waits_for_rollover_between_midnight_and_four_am() {
+    let day = LocalDate::from_ymd(2026, 11, 5).unwrap();
+    let offset = 120;
+    let midnight_thirty = kabar_protocol::coach::to_unix_ms(day, LocalTime::hm(0, 30), offset);
+    let four_am = kabar_protocol::coach::to_unix_ms(day, LocalTime::hm(4, 0), offset);
+    let nine_am = kabar_protocol::coach::to_unix_ms(day, LocalTime::hm(9, 0), offset);
+    assert_eq!(plan_due_at(midnight_thirty, day, offset), four_am);
+    assert_eq!(plan_due_at(nine_am, day, offset), nine_am);
 }
