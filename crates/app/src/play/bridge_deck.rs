@@ -161,6 +161,7 @@ fn DeckRow(entry: BridgeEntry, known: bool) -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let coach = use_context::<Coach>();
+    let mut expanded = use_signal(|| false);
     let word = entry.word.clone();
     let shift = match entry.shift {
         MeaningShift::Narrowed => Some(Msg::ShiftNarrowed),
@@ -169,8 +170,12 @@ fn DeckRow(entry: BridgeEntry, known: bool) -> Element {
     };
 
     rsx! {
-        details { class: if known { "deck-row known" } else { "deck-row" },
+        details { class: if known { "deck-row known" } else { "deck-row" }, open: expanded(),
             summary { class: "coll-btn",
+                onclick: move |e| {
+                    e.prevent_default();
+                    expanded.toggle();
+                },
                 span { class: "coll-main deck-word",
                     bdi { class: "coll-title bridge-word latin", lang: "id", dir: "ltr", "{entry.shown()}" }
                     span { class: "coll-sub", "{meaning(ui.lang(), &entry.meaning)}" }
@@ -182,35 +187,37 @@ fn DeckRow(entry: BridgeEntry, known: bool) -> Element {
                     }
                 }
             }
-            div { class: "deck-detail",
-                if let Some(root) = &entry.root {
-                    p { class: "muted small",
-                        "{ui.t(PlayMsg::Root)} "
-                        span { lang: "ar", dir: "rtl", "{root}" }
+            if expanded() {
+                div { class: "deck-detail",
+                    if let Some(root) = &entry.root {
+                        p { class: "muted small",
+                            "{ui.t(PlayMsg::Root)} "
+                            span { lang: "ar", dir: "rtl", "{root}" }
+                        }
                     }
-                }
-                if says_more(&entry, meaning(ui.lang(), &entry.arabic_meaning), meaning(ui.lang(), &entry.meaning)) {
-                    p { class: "small",
-                        span { class: "ar", lang: "ar", "{entry.arabic}" }
-                        " · {meaning(ui.lang(), &entry.arabic_meaning)}"
+                    if says_more(&entry, meaning(ui.lang(), &entry.arabic_meaning), meaning(ui.lang(), &entry.meaning)) {
+                        p { class: "small",
+                            span { class: "ar", lang: "ar", "{entry.arabic}" }
+                            " · {meaning(ui.lang(), &entry.arabic_meaning)}"
+                        }
                     }
-                }
-                if let Some(shift) = shift {
-                    span { class: "status-chip gold", "{ui.t(shift)}" }
-                }
-                if known {
-                    span { class: "status-chip good", "✓ {ui.t(Msg::DeckKnown)}" }
-                } else {
-                    button {
-                        class: "tonal",
-                        onclick: move |_| {
-                            let logged = logic::logged_words(&coach.events.peek());
-                            let words = logic::unlogged(std::slice::from_ref(&word), &logged);
-                            if !words.is_empty() {
-                                coach.record(&db, ActivityKind::NewWords { words }, SECONDS_PER_WORD);
-                            }
-                        },
-                        "{ui.t(Msg::DeckMarkKnown)}"
+                    if let Some(shift) = shift {
+                        span { class: "status-chip gold", "{ui.t(shift)}" }
+                    }
+                    if known {
+                        span { class: "status-chip good", "✓ {ui.t(Msg::DeckKnown)}" }
+                    } else {
+                        button {
+                            class: "tonal",
+                            onclick: move |_| {
+                                let logged = logic::logged_words(&coach.events.peek());
+                                let words = logic::unlogged(std::slice::from_ref(&word), &logged);
+                                if !words.is_empty() {
+                                    coach.record(&db, ActivityKind::NewWords { words }, SECONDS_PER_WORD);
+                                }
+                            },
+                            "{ui.t(Msg::DeckMarkKnown)}"
+                        }
                     }
                 }
             }

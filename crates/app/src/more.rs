@@ -114,14 +114,18 @@ pub fn MoreTab(current: Screen) -> Element {
     let ui = use_context::<Ui>();
     let MoreNav(mut open) = use_context::<MoreNav>();
     let here = under_more(current) || open();
+    let label = more_label(ui.lang());
     rsx! {
         button {
             class: "nav-item nav-more",
+            aria_label: "{label}",
             aria_current: if here { "page" } else { "false" },
+            aria_expanded: if open() { "true" } else { "false" },
             aria_haspopup: "dialog",
+            title: "{label}",
             onclick: move |_| open.toggle(),
             span { class: "nav-icon", aria_hidden: "true", {icons::more()} }
-            span { "{more_label(ui.lang())}" }
+            span { class: "nav-label", "{label}" }
         }
     }
 }
@@ -159,6 +163,7 @@ pub fn MoreSheet() -> Element {
                 for screen in MORE {
                     li { key: "{screen:?}",
                         button {
+                            aria_label: "{ui.t(screen.label())} — {summary(lang, screen)}",
                             aria_current: if screen == current { "page" } else { "false" },
                             onclick: move |_| {
                                 open.set(false);
@@ -183,6 +188,7 @@ pub fn MoreSheet() -> Element {
                 for shortcut in [Shortcut::Library, Shortcut::Bridge] {
                     li { key: "{shortcut:?}",
                         button {
+                            aria_label: "{shortcut_text(lang, shortcut).0} — {shortcut_text(lang, shortcut).1}",
                             onclick: move |_| {
                                 open.set(false);
                                 let screen = match shortcut {
@@ -212,6 +218,7 @@ pub fn MoreSheet() -> Element {
                 }
                 li { key: "settings",
                     button {
+                        aria_label: "{ui.t(Msg::NavSettings)} — {summary(lang, Screen::Settings)}",
                         onclick: move |_| {
                             open.set(false);
                             settings.show(None);
@@ -416,9 +423,18 @@ mod tests {
 
     #[test]
     fn arabic_top_bar_points_back_to_the_right() {
-        let h = open_on(UiLanguage::ArEg, Screen::Teach);
+        let mut h = open_on(UiLanguage::ArEg, Screen::Teach);
         let html = h.html();
         assert!(html.contains("aria-label=\"رجوع\"") && html.contains("→"), "{html}");
+        assert_eq!(more_tab(&h).attr("aria-label"), Some("المزيد"));
+        let tab_target = more_tab(&h);
+        h.fire_click(&tab_target);
+        let items: Vec<_> = h
+            .targets()
+            .into_iter()
+            .filter(|t| t.tag == "button" && t.attr("aria-label").is_some_and(|l| l.contains(" — ")))
+            .collect();
+        assert_eq!(items.len(), 10, "every More-sheet item carries an accessible name");
         let tab = open_on(UiLanguage::Ar, Screen::Today).html();
         assert!(tab.contains("brand-small latin") && tab.contains("المزيد"), "a tab shows the brand: {tab}");
         let en = open_on(UiLanguage::En, Screen::Chat).html();

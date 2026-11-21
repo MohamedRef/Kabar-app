@@ -188,11 +188,13 @@ fn round_total(app: &App) -> usize {
 fn detective_on_one_rule_logs_that_rule_in_arabic() {
     let mut app = play_at(ArEg, Route::Detective);
     let data = content::bridge().as_ref().unwrap();
+    assert!(app.html().contains("<bdi class=\"rule-pair\" dir=\"rtl\">"), "{}", app.html());
     let rule = app
         .buttons()
         .into_iter()
         .find(|&b| app.attr(b, "aria-pressed") == Some("false"))
         .expect("a rule button");
+    assert!(app.text(rule).contains(" ← ") && !app.text(rule).contains(" → "), "{}", app.text(rule));
     // Which rule this button is: the one whose card is then the only one.
     app.click(rule);
     let card = app.text(app.by_class("rule-card")[0]);
@@ -233,6 +235,10 @@ fn the_bridge_deck_searches_pages_and_marks_words_known() {
     let deck = bridge::known_deck(content::bridge().as_ref().unwrap());
     assert!(app.screen().contains(&deck_headline(deck.len())));
     assert!(app.text(app.by_class("deck-marked")[0]).contains(&format!("0 / {}", deck.len())));
+    // Proper nouns are capitalised, and collapsed rows mount no "I know it" buttons (#689).
+    let words: Vec<String> = app.by_class("bridge-word").into_iter().map(|w| app.text(w)).collect();
+    assert!(words.iter().any(|w| w == "Allah") && !words.iter().any(|w| w == "allah"), "{words:?}");
+    assert!(app.try_find("button", en(Msg::DeckMarkKnown)).is_none());
     // A page of rows, then a page more.
     assert_eq!(app.by_class("deck-row").len(), 24.min(deck.len()));
     app.click_text(en(Msg::ShowMore));
@@ -245,9 +251,10 @@ fn the_bridge_deck_searches_pages_and_marks_words_known() {
     assert!(
         rows.iter().all(|&r| app.text(r).to_lowercase().contains("kabar") || app.text(r).contains("خبر"))
     );
-    // "I know it" logs the word once and ticks the row.
+    // Opening the row reveals "I know it", which logs the word once and ticks the row.
     let kabar = rows.into_iter().find(|&r| app.text(r).starts_with("kabar")).expect("kabar row");
     assert!(!app.has_class(kabar, "known"));
+    app.click_on("summary", "kabar");
     app.click_on("button", en(Msg::DeckMarkKnown));
     assert_eq!(met_words(&app), vec!["kabar".to_string()]);
     let kabar = app.by_class("deck-row").into_iter().find(|&r| app.text(r).starts_with("kabar")).unwrap();
@@ -277,6 +284,7 @@ fn the_bridge_deck_finds_words_by_their_arabic() {
     let search = app.find_all("input")[0];
     assert_eq!(app.attr(search, "placeholder"), Some("دوّر على كلمة بالإندونيسي أو بالعربي…"));
     app.input(search, &entry.arabic);
+    app.click_on("summary", &entry.arabic);
     let row = app.by_class("deck-row")[0];
     let text = app.text(row);
     assert!(text.contains(&entry.arabic) && text.contains(entry.root.as_deref().unwrap()), "{text}");
