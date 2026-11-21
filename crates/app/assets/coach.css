@@ -48,8 +48,8 @@
 .today-rest .plan-break { padding: var(--sp-3) var(--card-pad); }
 .today-rest button.activity-row { flex: 1; min-inline-size: 0; }
 /* The tick: small and round, clearly not a Start button… */
-.plan-item button.check { inline-size: 1.75rem; block-size: 1.75rem; min-block-size: 0; border-width: 1.5px; border-color: var(--primary); font-size: var(--fs-sm); position: relative; }
-.plan-item button.check[aria-checked="true"] { background: var(--primary); color: var(--on-primary); }
+.plan-item :is(button.check, span.check) { inline-size: 1.75rem; block-size: 1.75rem; min-block-size: 0; border-width: 1.5px; border-color: var(--primary); font-size: var(--fs-sm); position: relative; }
+.plan-item :is(button.check[aria-checked="true"], span.check) { background: var(--primary); color: var(--on-primary); }
 /* …with a full-size touch target around it. */
 .plan-item button.check::after { content: ""; position: absolute; inset: -0.6rem; }
 

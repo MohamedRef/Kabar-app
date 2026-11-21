@@ -730,16 +730,19 @@ button.reward { min-block-size: 0; font-weight: inherit; inline-size: auto; }
 .plan-item.next .plan-text strong { font-size: var(--fs-lg); }
 .plan-item.done .plan-text strong { color: var(--muted); }
 .plan-text { flex: 1; min-inline-size: 0; }
-button.check {
+button.check, span.check {
   flex: none;
+  display: inline-grid;
+  place-items: center;
   inline-size: var(--tap);
+  block-size: var(--tap);
   padding: 0;
   border-radius: 50%;
   border: 2px solid var(--sawah);
   color: var(--glass-solid, var(--surface));
   font-weight: 700;
 }
-button.check[aria-checked="true"] { background: var(--sawah); }
+button.check[aria-checked="true"], span.check { background: var(--sawah); }
 
 /* numbers */
 .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(5.5rem, 100%), 1fr)); gap: 0.5rem; margin-block: 0.75rem; }
