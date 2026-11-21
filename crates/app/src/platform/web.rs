@@ -101,6 +101,7 @@ pub enum Trouble {
 thread_local! {
     static SNAPSHOT: RefCell<Option<Vec<u8>>> = const { RefCell::new(None) };
     static SAVING: Cell<bool> = const { Cell::new(true) };
+    static TEMPORARY: Cell<bool> = const { Cell::new(false) };
     /// SQLite's change count at the last save.
     static SAVED_AT: Cell<Option<u64>> = const { Cell::new(None) };
     static TAB: RefCell<String> = const { RefCell::new(String::new()) };
@@ -167,6 +168,16 @@ pub fn stop_saving(why: Trouble) {
     TROUBLE.with(|t| t.set(Some(why)));
 }
 
+/// Keeps a temporary ("This isn't my device") session in memory only and
+/// removes any `kabar.db` snapshot from IndexedDB (#715).
+pub fn set_temporary(temporary: bool) {
+    TEMPORARY.with(|t| t.set(temporary));
+    if temporary {
+        SAVED_AT.with(|s| s.set(None));
+        wasm_bindgen_futures::spawn_local(idb_delete_key(DB_KEY));
+    }
+}
+
 /// Whether this tab is the newest one, which alone saves and syncs.
 pub fn owns_tab() -> bool {
     TAB.with(|t| ls_get(OWNER_KEY).is_none_or(|owner| owner == *t.borrow()))
@@ -174,7 +185,7 @@ pub fn owns_tab() -> bool {
 
 /// Writes the database to IndexedDB when it changed since the last save.
 async fn save_now(db: &Db) {
-    if !SAVING.with(Cell::get) {
+    if !SAVING.with(Cell::get) || TEMPORARY.with(Cell::get) {
         return;
     }
     if !owns_tab() {

@@ -152,9 +152,11 @@ fn text(lang: UiLanguage, msg: AccountMsg) -> &'static str {
         (PwNotMine, ArEg) => "الجهاز ده مش بتاعي",
         (PwNotMine, Ar) => "هذا الجهاز ليس لي",
         (PwNotMine, En) => "This isn't my device",
-        (PwNotMineHint, ArEg) => "هتخرج لوحدك أول ما تقفل التاب أو التطبيق.",
-        (PwNotMineHint, Ar) => "ستخرج تلقائيًا عند إغلاق التبويب أو التطبيق.",
-        (PwNotMineHint, En) => "You're signed out when the tab or app closes.",
+        (PwNotMineHint, ArEg) => "بياناتك بتتمسح من الجهاز ده أول ما تخرج أو تقفل التاب أو التطبيق.",
+        (PwNotMineHint, Ar) => "تُمسح بياناتك من هذا الجهاز فور تسجيل الخروج أو إغلاق التبويب أو التطبيق.",
+        (PwNotMineHint, En) => {
+            "Your data is cleared from this device when you sign out or close the tab or app."
+        }
         (PwSignIn, ArEg) => "ادخل",
         (PwSignIn, Ar) => "ادخل",
         (PwSignIn, En) => "Sign in",

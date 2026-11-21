@@ -250,6 +250,19 @@ pub fn not_remembered() -> Box<dyn SessionVault> {
     Box::new(MemoryVault::forgetful())
 }
 
+/// True on the web while this tab still holds a tab-only session in
+/// `sessionStorage`, so reloading the tab doesn't mistake it for a closed tab.
+pub fn tab_session_kept() -> bool {
+    #[cfg(target_arch = "wasm32")]
+    {
+        WebVault::storage(true).and_then(|s| s.get_item(WebVault::KEY).ok().flatten()).is_some()
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        false
+    }
+}
+
 /// In memory only: tests, the end-to-end check, and a sign-in on someone
 /// else's Mac or phone (`forgetful`), which ends when the app quits.
 #[derive(Default)]
@@ -345,6 +358,13 @@ impl Auth {
             };
         }
         Ok(self.session.access_token.clone())
+    }
+
+    /// Syncs any newer session from a shared vault without rotating tokens,
+    /// and returns the latest access token for best-effort sign-out (#715).
+    pub fn cached_access_token(&mut self) -> String {
+        self.take_newer();
+        self.session.access_token.clone()
     }
 
     /// Takes the vault's session when someone else sharing it rotated it

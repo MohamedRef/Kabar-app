@@ -294,7 +294,7 @@ async fn sign_in_password(mut req: Request, env: &Env, cfg: &Config) -> Result<R
     if !valid_username(&username) || pw::parse_key(&sign_in.password_key).is_none() {
         return api_error(ErrorCode::WrongPassword, "username or password is wrong");
     }
-    let check = LoginCheck { key: sign_in.password_key };
+    let check = LoginCheck { username: username.clone(), key: sign_in.password_key };
     let mut resp = call_login(env, &username, "/check", &check).await?;
     if resp.status_code() != 200 {
         return Ok(resp);
@@ -324,16 +324,41 @@ async fn sign_in_password(mut req: Request, env: &Env, cfg: &Config) -> Result<R
     session_response(&key, &account_id, device, refresh, expiry).await
 }
 
-/// The account's username now, and the caller's email; or the error answer.
-async fn login_state(
+/// Reads or updates the account's login state in its Durable Object.
+async fn update_login_state(
     env: &Env,
     claims: &AccessClaims,
+    change: Option<&LoginName>,
 ) -> Result<std::result::Result<AccountLoginState, Response>> {
-    let mut resp = call_do(env, &claims.sub, Method::Get, "/login", Some(&claims.dev), None::<&()>).await?;
+    let mut resp = match change {
+        Some(name) => {
+            call_do(env, &claims.sub, Method::Post, "/login", Some(&claims.dev), Some(name)).await?
+        }
+        None => call_do(env, &claims.sub, Method::Get, "/login", Some(&claims.dev), None::<&()>).await?,
+    };
     if resp.status_code() != 200 {
         return Ok(Err(resp));
     }
     Ok(Ok(resp.json().await?))
+}
+
+/// Clears retired usernames from their `Login` DOs; any failure stays in
+/// `login_retire` for the next `GET` or `DELETE` to finish (#715).
+async fn sweep_retire(env: &Env, claims: &AccessClaims, retire: &[String], strict: bool) -> Result<()> {
+    let clear = LoginClear { account_id: claims.sub.clone() };
+    for old in retire {
+        match call_login(env, old, "/clear", &clear).await {
+            Ok(r) if r.status_code() == 200 => {
+                let done = LoginName { retired: Some(old.clone()), ..Default::default() };
+                let _ =
+                    call_do(env, &claims.sub, Method::Post, "/login", Some(&claims.dev), Some(&done)).await;
+            }
+            Ok(r) if strict => return Err(js_err(format!("login clear HTTP {}", r.status_code()))),
+            Err(e) if strict => return Err(e),
+            _ => {}
+        }
+    }
+    Ok(())
 }
 
 /// `GET`, `POST` and `DELETE /v1/login`: the username and password of the
@@ -344,12 +369,15 @@ async fn manage_login(
     claims: &AccessClaims,
     method: Method,
 ) -> Result<Response> {
-    let state = match login_state(env, claims).await? {
-        Ok(s) => s,
-        Err(resp) => return Ok(resp),
-    };
-    let username = match method {
-        Method::Get => state.username,
+    match method {
+        Method::Get => {
+            let state = match update_login_state(env, claims, None).await? {
+                Ok(s) => s,
+                Err(resp) => return Ok(resp),
+            };
+            sweep_retire(env, claims, &state.retire, false).await?;
+            Response::from_json(&PasswordLogin { username: state.username })
+        }
         Method::Post => {
             let set: SetPassword = match body(&mut req).await {
                 Ok(b) => b,
@@ -362,6 +390,11 @@ async fn manage_login(
             let Some(key) = pw::parse_key(&set.password_key) else {
                 return api_error(ErrorCode::InvalidRequest, "password_key must be 32 bytes, base64url");
             };
+            let staged = LoginName { stage: Some(username.clone()), ..Default::default() };
+            let state = match update_login_state(env, claims, Some(&staged)).await? {
+                Ok(s) => s,
+                Err(resp) => return Ok(resp),
+            };
             let salt = random_hex(16).map_err(js_err)?;
             let put = LoginSet {
                 account_id: claims.sub.clone(),
@@ -371,28 +404,30 @@ async fn manage_login(
             };
             let resp = call_login(env, &username, "/set", &put).await?;
             if resp.status_code() != 200 {
+                if state.username.as_deref() != Some(username.as_str()) {
+                    let undo = LoginName { retired: Some(username), ..Default::default() };
+                    let _ = update_login_state(env, claims, Some(&undo)).await;
+                }
                 return Ok(resp);
             }
-            if let Some(old) = state.username.filter(|old| *old != username) {
-                call_login(env, &old, "/clear", &LoginClear { account_id: claims.sub.clone() }).await?;
-            }
-            Some(username)
+            let commit = LoginName { username: Some(username.clone()), ..Default::default() };
+            let committed = match update_login_state(env, claims, Some(&commit)).await? {
+                Ok(s) => s,
+                Err(resp) => return Ok(resp),
+            };
+            sweep_retire(env, claims, &committed.retire, false).await?;
+            Response::from_json(&PasswordLogin { username: Some(username) })
         }
         _ => {
-            if let Some(old) = &state.username {
-                call_login(env, old, "/clear", &LoginClear { account_id: claims.sub.clone() }).await?;
-            }
-            None
-        }
-    };
-    if method != Method::Get {
-        let name = LoginName { username: username.clone() };
-        let resp = call_do(env, &claims.sub, Method::Post, "/login", Some(&claims.dev), Some(&name)).await?;
-        if resp.status_code() != 200 {
-            return Ok(resp);
+            let clear_all = LoginName::default();
+            let state = match update_login_state(env, claims, Some(&clear_all)).await? {
+                Ok(s) => s,
+                Err(resp) => return Ok(resp),
+            };
+            sweep_retire(env, claims, &state.retire, true).await?;
+            Response::from_json(&PasswordLogin { username: None })
         }
     }
-    Response::from_json(&PasswordLogin { username })
 }
 
 fn js_err(e: impl std::fmt::Display) -> worker::Error {
@@ -812,7 +847,7 @@ async fn route(mut req: Request, env: &Env, cfg: &Config, method: Method, path: 
                         return api_error(ErrorCode::InvalidRequest, "bad device id");
                     }
                     let revoke = Revoke { device: DeviceId(id.to_owned()) };
-                    call_do(env, &claims.sub, Method::Post, "/revoke", None, Some(&revoke)).await
+                    call_do(env, &claims.sub, Method::Post, "/revoke", Some(&claims.dev), Some(&revoke)).await
                 }
                 (m @ (Method::Get | Method::Post | Method::Delete), "/v1/login") => {
                     manage_login(req, env, &claims, m).await
@@ -821,8 +856,18 @@ async fn route(mut req: Request, env: &Env, cfg: &Config, method: Method, path: 
                     let revoke = Revoke { device: claims.dev.clone() };
                     call_do(env, &claims.sub, Method::Post, "/revoke", None, Some(&revoke)).await
                 }
-                (Method::Get, "/v1/vault") => Response::from_json(&cfg.vault_status()),
-                (Method::Get, "/v1/usage") => usage_report(env, cfg).await,
+                (Method::Get, "/v1/vault") => {
+                    if let Some(revoked) = ensure_active(env, &claims).await? {
+                        return Ok(revoked);
+                    }
+                    Response::from_json(&cfg.vault_status())
+                }
+                (Method::Get, "/v1/usage") => {
+                    if let Some(revoked) = ensure_active(env, &claims).await? {
+                        return Ok(revoked);
+                    }
+                    usage_report(env, cfg).await
+                }
                 (Method::Post, "/v1/ai") => ai_proxy(req, env, cfg, &claims).await,
                 (Method::Post, "/v1/ai/reject") => ai_reject(req, env, &claims).await,
                 (Method::Post, "/v1/tts") => tts_proxy(req, env, cfg, &claims).await,

@@ -92,6 +92,7 @@ impl CloudConfig {
 #[derive(Debug)]
 pub enum Command {
     SignInGoogle,
+    CancelSignIn,
     /// Username + password, on a device without Google (and the web app).
     /// `remember: false` (someone else's device) keeps the session only until
     /// the app or the browser tab closes.

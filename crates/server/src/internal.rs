@@ -59,18 +59,25 @@ pub struct BlobData {
     pub data_b64: String,
 }
 
-/// Account object `GET /login`: the caller's email (to put on a new
-/// username) and the username the account has now.
+/// Account object `GET /login` and `POST /login`: the caller's email,
+/// current username, and any staged/retired usernames still to clear.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AccountLoginState {
     pub email: String,
     pub username: Option<String>,
+    #[serde(default)]
+    pub retire: Vec<String>,
 }
 
-/// Account object `POST /login`: the username it has from now on.
-#[derive(Debug, Serialize, Deserialize)]
+/// Account object `POST /login`: stages a rename, commits the username, or
+/// marks a retired username cleared.
+#[derive(Debug, Default, Serialize, Deserialize)]
 pub struct LoginName {
     pub username: Option<String>,
+    #[serde(default)]
+    pub stage: Option<String>,
+    #[serde(default)]
+    pub retired: Option<String>,
 }
 
 /// Login object `POST /set`.
@@ -91,5 +98,7 @@ pub struct LoginClear {
 /// Login object `POST /check`: the app's stretched key, base64url.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct LoginCheck {
+    #[serde(default)]
+    pub username: String,
     pub key: String,
 }

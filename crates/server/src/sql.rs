@@ -96,6 +96,13 @@ pub trait Sql {
         }
         Ok(())
     }
+
+    /// Runs `f` as one atomic unit: all writes commit together, or none do.
+    /// Durable Objects roll back an entire turn on error automatically (and
+    /// forbid raw SQL `BEGIN`/`SAVEPOINT`), so the default delegates to `f`.
+    fn transaction<T>(&self, f: impl FnOnce() -> Result<T, SqlError>) -> Result<T, SqlError> {
+        f()
+    }
 }
 
 /// Reads column `i` of a row, or fails with a message naming the column.
@@ -196,6 +203,21 @@ pub(crate) mod testing {
                 out.push(r);
             }
             Ok(out)
+        }
+
+        fn transaction<T>(&self, f: impl FnOnce() -> Result<T, SqlError>) -> Result<T, SqlError> {
+            self.exec("SAVEPOINT sql_tx", &[])?;
+            match f() {
+                Ok(v) => {
+                    self.exec("RELEASE sql_tx", &[])?;
+                    Ok(v)
+                }
+                Err(e) => {
+                    let _ = self.exec("ROLLBACK TO sql_tx", &[]);
+                    let _ = self.exec("RELEASE sql_tx", &[]);
+                    Err(e)
+                }
+            }
         }
     }
 }
