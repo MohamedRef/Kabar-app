@@ -1,6 +1,7 @@
 //! Lesson player stages, progress and session orchestration.
 
 use super::*;
+use kabar_protocol::coach::{LaunchedPlanStep, LessonActivityUnit};
 
 // ---------------------------------------------------------------------------
 // The player
@@ -18,7 +19,11 @@ pub fn EpisodeQuiz(lesson: LessonContent, on_close: EventHandler) -> Element {
 /// Runs a lesson. With `on_close` it runs an episode quiz instead: no
 /// Lanjut position, and closing calls it rather than going to the Journey.
 #[component]
-pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element {
+pub(super) fn PlayerView(
+    lesson: LessonContent,
+    on_close: Option<EventHandler>,
+    plan_step: Option<LaunchedPlanStep>,
+) -> Element {
     let ui = use_context::<Ui>();
     let episode = on_close.is_some();
     let close = move || match on_close {
@@ -36,9 +41,15 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
         let saved = if episode { None } else { db.read().0.borrow().position().ok().flatten() };
         saved.filter(|p| p.lesson_id == lesson.id && p.step != LessonStep::Summary)
     });
-    let mut player = use_signal(|| match &saved {
-        Some(p) => Player::resume(lesson.clone(), p),
-        None => Player::new(lesson.clone()),
+    let mut player = use_signal(|| {
+        let mut p = match &saved {
+            Some(p) => Player::resume(lesson.clone(), p),
+            None => Player::new(lesson.clone()),
+        };
+        if let Some(step) = plan_step {
+            p.set_plan_step(step);
+        }
+        p
     });
     // The answer comes back before Check or Continue is decided from it.
     let draft = use_signal(|| {
@@ -79,13 +90,15 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
         }
     });
 
-    // The lesson's result, its new cards and the cleared position land in one
-    // transaction (`Store::atomically`), or none of them and the summary says
-    // so with a retry (engineering audit F09). Evidence and the coach's log
-    // follow once it is saved.
+    // The result, new cards, cleared position and lesson activity land in
+    // one transaction, or the summary offers a retry. Review evidence and
+    // practice activity follow once the result is saved.
     let finish_failed = use_signal(|| false);
     let finish_now = move || {
         let p = player.peek();
+        let completed = p.completed();
+        let lesson_id = &p.lesson().id;
+        let date = coach.today();
         let saved = {
             let db = db.read();
             let mut store = db.0.borrow_mut();
@@ -94,19 +107,32 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
             let approved =
                 store.verified_lessons().is_ok_and(|v| v.get(&p.lesson().id).is_some_and(|c| c.counts()));
             store.atomically(|store| {
-                store.record_lesson_event(&p.lesson().id, "completed", &p.completed())?;
-                if !episode {
-                    store.add_lesson_cards(p.lesson(), approved)?;
-                    store.clear_position()?;
+                store.record_lesson_event(lesson_id, "completed", &completed)?;
+                if episode {
+                    return Ok(None);
                 }
-                Ok(())
+                store.add_lesson_cards(p.lesson(), approved)?;
+                store.clear_position()?;
+                let unit_id = lesson_id.rsplit_once('.').map_or(lesson_id.as_str(), |(unit, _)| unit);
+                let plan_item_id =
+                    p.plan_step().filter(|step| step.date == date).map(|step| step.item_id.clone());
+                let unit = LessonActivityUnit { id: unit_id.to_owned(), plan_item_id };
+                let kind = ActivityKind::LessonStep { unit_id: unit, done: true };
+                store.add_activity(kind, date, (completed.duration_ms / 1000) as u32).map(Some)
             })
         };
-        if let Err(e) = saved {
-            crate::diag::report!("saving the lesson result failed: {e}");
-            let mut failed = finish_failed;
-            failed.set(true);
-            return;
+        match saved {
+            Ok(Some(event)) => {
+                let mut events = coach.events;
+                events.write().push(event);
+            }
+            Ok(None) => {}
+            Err(e) => {
+                crate::diag::report!("saving the lesson result failed: {e}");
+                let mut failed = finish_failed;
+                failed.set(true);
+                return;
+            }
         }
         let mut failed = finish_failed;
         failed.set(false);
@@ -114,7 +140,7 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
         finished.set(true);
         // First tries on words already in the deck move their reviews.
         let language = if p.lesson().language == "jv" { StudyLanguage::Jv } else { StudyLanguage::Id };
-        let signals = kabar_core::review::lesson_signals(p.lesson(), &p.completed().results);
+        let signals = kabar_core::review::lesson_signals(p.lesson(), &completed.results);
         let db = db.read();
         crate::review::note_evidence(&db, &coach, language, &signals);
         if episode { log_episode(coach, &db, &p) } else { log_activity(coach, &db, &p) }

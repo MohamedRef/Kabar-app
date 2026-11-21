@@ -245,6 +245,9 @@ impl DurableObject for Account {
             }
             (Method::Get, "/devices") => {
                 let current = Self::device_header(&req)?;
+                if !devices.is_active(&current).map_err(sql_err)? {
+                    return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
+                }
                 let list = devices.list(&current).map_err(sql_err)?;
                 Response::from_json(&DeviceList { devices: list })
             }
@@ -260,24 +263,41 @@ impl DurableObject for Account {
                 }
                 Response::from_json(&PushTokenReply { registered: body.token.is_some(), push_configured })
             }
-            // Username + password (`crate::login`): only a signed-in device
-            // may read or change it.
+            // Username + password (`crate::login`): only an active signed-in
+            // device may read or change it.
             (Method::Get, "/login") => {
                 let caller = Self::device_header(&req)?;
+                if !devices.is_active(&caller).map_err(sql_err)? {
+                    return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
+                }
                 let Some(email) = devices.email(&caller).map_err(sql_err)? else {
                     return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
                 };
-                let username = AccountLogin::open(&db).username().map_err(sql_err)?;
-                Response::from_json(&AccountLoginState { email, username })
+                let login = AccountLogin::open(&db);
+                let username = login.username().map_err(sql_err)?;
+                let retire = login.retiring().map_err(sql_err)?;
+                Response::from_json(&AccountLoginState { email, username, retire })
             }
             (Method::Post, "/login") => {
                 let caller = Self::device_header(&req)?;
                 if !devices.is_active(&caller).map_err(sql_err)? {
                     return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
                 }
+                let Some(email) = devices.email(&caller).map_err(sql_err)? else {
+                    return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
+                };
                 let body: LoginName = req.json().await?;
-                AccountLogin::open(&db).set_username(body.username.as_deref()).map_err(sql_err)?;
-                Response::empty()
+                let login = AccountLogin::open(&db);
+                if let Some(pending) = &body.stage {
+                    login.stage_username(pending).map_err(sql_err)?;
+                } else if let Some(retired) = &body.retired {
+                    login.finish_retire(retired).map_err(sql_err)?;
+                } else {
+                    login.set_username(body.username.as_deref()).map_err(sql_err)?;
+                }
+                let username = login.username().map_err(sql_err)?;
+                let retire = login.retiring().map_err(sql_err)?;
+                Response::from_json(&AccountLoginState { email, username, retire })
             }
             (Method::Get, "/active") => {
                 let device = Self::device_header(&req)?;
@@ -288,6 +308,11 @@ impl DurableObject for Account {
                 }
             }
             (Method::Post, "/revoke") => {
+                if let Some(caller) = req.headers().get(DEVICE_HEADER)?.map(DeviceId)
+                    && !devices.is_active(&caller).map_err(sql_err)?
+                {
+                    return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
+                }
                 let body: Revoke = req.json().await?;
                 if devices.revoke(&body.device, now).map_err(sql_err)? {
                     self.close_device(&body.device);

@@ -73,10 +73,7 @@ const CODE_LIFE: Duration = Duration::from_secs(9 * 60);
 const ID_TOKEN_LIFE: Duration = Duration::from_secs(50 * 60);
 
 /// A sign-in Google approved that still has to reach Google's token endpoint
-/// or Kabar Cloud. Android keeps a backgrounded app off the network, and the
-/// redirect lands while Chrome is still in front, so the network half waits
-/// and retries until Kabar is back in front ([`Command::Background`]) or the
-/// grant runs out. (Adapted from batna-app main: crates/app/src/cloud/engine.rs.)
+/// or Kabar Cloud.
 struct PendingSignIn {
     step: SignInStep,
     until: Instant,
@@ -86,12 +83,15 @@ struct PendingSignIn {
 
 #[cfg(not(target_arch = "wasm32"))]
 type Authorization = super::oauth::Authorization;
-/// The web has no Google sign-in (docs/WEB.md).
 #[cfg(target_arch = "wasm32")]
 type Authorization = ();
 
+#[cfg(not(target_arch = "wasm32"))]
+type AuthGrant = Result<super::oauth::Authorization, super::oauth::OAuthError>;
+#[cfg(target_arch = "wasm32")]
+type AuthGrant = std::convert::Infallible;
+
 enum SignInStep {
-    /// A code for Google's token endpoint (the Mac and Android).
     #[cfg_attr(target_arch = "wasm32", allow(dead_code))]
     Code(Authorization),
     IdToken(String),
@@ -103,8 +103,6 @@ impl PendingSignIn {
         Self { step, until: now + life, retry_at: now, attempts: 0 }
     }
 
-    /// 1, 2, 4, 8, 15, 15… seconds: quick enough to finish right after the
-    /// app comes back even if no foreground signal arrives, cheap while it can't.
     fn schedule_retry(&mut self) {
         const DELAYS: [u64; 5] = [1, 2, 4, 8, 15];
         let secs = DELAYS[(self.attempts as usize).min(DELAYS.len() - 1)];
@@ -113,20 +111,9 @@ impl PendingSignIn {
     }
 }
 
-/// A socket being opened. It runs beside the commands, so AI, voices and
-/// sign-out never wait behind a slow handshake.
 type Opening = std::pin::Pin<Box<dyn std::future::Future<Output = Result<Socket, ConnectError>>>>;
-
-/// Google's answer from the browser (the loopback redirect, Mac and Android).
-#[cfg(not(target_arch = "wasm32"))]
-type Authorized = Result<super::oauth::Authorization, super::oauth::OAuthError>;
-/// The web build signs in with a password only.
-#[cfg(target_arch = "wasm32")]
-type Authorized = std::convert::Infallible;
-
-/// The wait for the browser to come back. It runs beside the commands, so a
-/// password sign-in or a Cancel isn't stuck behind it for minutes (#715).
-type Authorizing = std::pin::Pin<Box<dyn std::future::Future<Output = Authorized>>>;
+/// A loopback Google browser authorization running beside commands (#715).
+type Authorizing = std::pin::Pin<Box<dyn std::future::Future<Output = AuthGrant>>>;
 
 pub struct Engine {
     store: EngineStore,
@@ -134,29 +121,21 @@ pub struct Engine {
     google: Option<GoogleClient>,
     device: DeviceInfo,
     auth: Option<Auth>,
-    /// Kept while signed out, for the next sign-in.
     vault: Option<Box<dyn SessionVault>>,
     client: SyncClient,
     ws: Option<Socket>,
     opening: Option<Opening>,
     authorizing: Option<Authorizing>,
-    /// When the socket last heard anything.
     last_heard: Instant,
-    /// When a ping went out that nothing has answered yet.
     asked_at: Option<Instant>,
     backoff: Backoff,
     retry_at: Instant,
-    /// Set after `Revoked`, `Outdated` or sign-out: no reconnects until sign-in.
     stopped: bool,
-    /// The app is in the background: no socket until it's back.
     background: bool,
-    /// The last status sent, so an unchanged one isn't sent again.
     last_status: Option<CloudStatus>,
     force_refresh: bool,
     problem: Option<Problem>,
     pending_sign_in: Option<PendingSignIn>,
-    /// The usual vault, set aside while a sign-in on someone else's device
-    /// keeps its session in a forgetful one; back after sign-out.
     spare_vault: Option<Box<dyn SessionVault>>,
     login: LoginStatus,
     events: UnboundedSender<Event>,
@@ -176,8 +155,11 @@ impl Engine {
             Ok(auth) => (Some(auth), None),
             Err(vault) => (None, Some(vault)),
         };
-        let temporary = auth.as_ref().is_some_and(|a| !a.remembered());
-        let mut engine = Self {
+        #[cfg(target_arch = "wasm32")]
+        if auth.as_ref().is_some_and(|a| !a.remembered()) {
+            crate::platform::web::set_temporary(true);
+        }
+        Self {
             store,
             api,
             google,
@@ -201,16 +183,10 @@ impl Engine {
             spare_vault: None,
             login: LoginStatus::default(),
             events,
-        };
-        if temporary {
-            // A browser tab reloaded during a sign-in on someone else's computer.
-            engine.hold_temporary();
         }
-        engine
     }
 
     pub async fn run(mut self, mut commands: UnboundedReceiver<Command>) {
-        // Both timers only run while a socket is open.
         let mut next_ping = Instant::now() + PING_EVERY;
         let mut next_outbox = Instant::now() + OUTBOX_EVERY;
         self.emit_status();
@@ -230,7 +206,7 @@ impl Engine {
             let mut wait_until = if self.ws.is_some() {
                 let answer_by = self.asked_at.map(|t| t + ANSWER_WITHIN);
                 next_ping.min(next_outbox).min(answer_by.unwrap_or(next_ping))
-            } else if self.opening.is_some() {
+            } else if self.opening.is_some() || self.authorizing.is_some() {
                 Instant::now() + Duration::from_secs(3600)
             } else if self.wants_socket() {
                 self.retry_at
@@ -247,11 +223,12 @@ impl Engine {
                     None | Some(Command::Shutdown) => break,
                     Some(cmd) => self.command(cmd).await,
                 },
-                frame = next_frame(&mut self.ws) => self.frame(frame).await,
-                authorized = authorized(&mut self.authorizing) => {
+                granted = authorized(&mut self.authorizing) => {
                     self.authorizing = None;
-                    self.authorized(authorized).await;
+                    self.events.send(Event::SigningIn(false)).ok();
+                    self.on_google_authorized(granted).await;
                 }
+                frame = next_frame(&mut self.ws) => self.frame(frame).await,
                 opened = opened(&mut self.opening) => {
                     self.opening = None;
                     self.opened(opened).await;
@@ -278,11 +255,9 @@ impl Engine {
                 }
             }
             if !self.wants_socket() {
-                // Signed out or in the background: a handshake in flight is dropped.
                 self.opening = None;
             }
             if self.ws.is_some() && !leads() {
-                // A newer tab took over: it syncs from now on.
                 if let Some(ws) = self.ws.take() {
                     ws.close().await;
                 }
@@ -299,10 +274,6 @@ impl Engine {
         self.auth.is_some() && !self.stopped && !self.background && leads()
     }
 
-    /// Checks the socket is still there. Native sends a protocol ping, which
-    /// the Cloudflare runtime answers without waking the hub; the browser
-    /// can't, so the web asks the hub itself, but only while a push waits for
-    /// its ack or after a long quiet spell.
     async fn ping(&mut self, now: Instant) {
         let Some(ws) = &mut self.ws else { return };
         let sent = if cfg!(target_arch = "wasm32") {
@@ -326,22 +297,31 @@ impl Engine {
         }
     }
 
+    fn cancel_google_wait(&mut self) -> bool {
+        let had = self.authorizing.take().is_some();
+        if had {
+            self.events.send(Event::SigningIn(false)).ok();
+        }
+        had
+    }
+
     // --- commands --------------------------------------------------------
 
     async fn command(&mut self, cmd: Command) {
         match cmd {
             Command::SignInGoogle => self.sign_in_google(),
             Command::CancelSignIn => {
-                let waiting = self.authorizing.take().is_some() | self.pending_sign_in.take().is_some();
-                if waiting {
-                    self.events.send(Event::SigningIn(false)).ok();
+                let cancelled = self.cancel_google_wait() | self.pending_sign_in.take().is_some();
+                if cancelled {
                     self.problem = Some(Problem::SignInCancelled);
                 }
             }
-            Command::SignInWithIdToken(token) => self.sign_in(token).await,
+            Command::SignInWithIdToken(token) => {
+                self.cancel_google_wait();
+                self.sign_in(token).await;
+            }
             Command::SignInPassword { username, password, remember } => {
-                // A Google sign-in still waiting for the browser gives way.
-                self.authorizing = None;
+                self.cancel_google_wait();
                 self.problem = None;
                 self.pending_sign_in = None;
                 self.events.send(Event::SigningIn(true)).ok();
@@ -360,7 +340,15 @@ impl Engine {
                 self.login_answer(result);
             }
             Command::SignOut => {
-                if let Some(access) = self.sign_out_access().await {
+                // Even in a non-leading web tab, tell Kabar Cloud with the
+                // latest cached access token so the device is revoked and the
+                // leading tab can't re-save the session (#715).
+                let access = if leads() {
+                    self.access(false).await
+                } else {
+                    self.auth.as_mut().map(Auth::cached_access_token)
+                };
+                if let Some(access) = access {
                     let _ = self.api.sign_out(&access).await;
                 }
                 self.sign_out_locally();
@@ -372,14 +360,19 @@ impl Engine {
                 if device == self.device.device_id {
                     return Box::pin(self.command(Command::SignOut)).await;
                 }
-                let call = move |api: Api, access: String| {
-                    let device = device.clone();
-                    async move { api.revoke(&access, &device).await }
-                };
-                if let Some(Err(e)) = self.with_access(call).await {
+                let target = device.clone();
+                let result = self
+                    .with_access(move |api, access| {
+                        let target = target.clone();
+                        async move { api.revoke(&access, &target).await }
+                    })
+                    .await;
+                if let Some(Err(e)) = result {
                     self.cloud_error(&e);
                 }
-                self.load_devices().await;
+                if self.auth.is_some() {
+                    self.load_devices().await;
+                }
             }
             Command::SendHeldAgain => {
                 match self.store.with(|s| s.send_held_again()) {
@@ -418,7 +411,6 @@ impl Engine {
                 }
             }
             Command::Background(false) if self.background => {
-                // Back in front: a sign-in Google approved meanwhile finishes now.
                 self.retry_sign_in_now();
                 self.background = false;
                 self.backoff.reset();
@@ -437,7 +429,6 @@ impl Engine {
         }
     }
 
-    /// Opens Google in the browser; [`Self::authorized`] takes it from there.
     #[cfg(not(target_arch = "wasm32"))]
     fn sign_in_google(&mut self) {
         let Some(google) = self.google.clone() else {
@@ -451,9 +442,8 @@ impl Engine {
     }
 
     #[cfg(not(target_arch = "wasm32"))]
-    async fn authorized(&mut self, authorization: Authorized) {
+    async fn on_google_authorized(&mut self, authorization: AuthGrant) {
         use super::oauth::OAuthError;
-        self.events.send(Event::SigningIn(false)).ok();
         match authorization {
             Ok(auth) => {
                 self.pending_sign_in = Some(PendingSignIn::new(SignInStep::Code(auth), CODE_LIFE));
@@ -467,21 +457,12 @@ impl Engine {
         }
     }
 
-    #[cfg(target_arch = "wasm32")]
-    async fn authorized(&mut self, authorization: Authorized) {
-        match authorization {}
-    }
-
-    /// A waiting sign-in tries again right away (the app came back to the front).
     fn retry_sign_in_now(&mut self) {
         if let Some(p) = &mut self.pending_sign_in {
             p.retry_at = Instant::now();
         }
     }
 
-    /// Runs the network half of a sign-in Google approved: the code
-    /// exchange, then Kabar Cloud. A network failure keeps it pending and
-    /// retries ([`PendingSignIn`]); anything else ends it.
     async fn finish_sign_in(&mut self) {
         let Some(pending) = self.pending_sign_in.take() else { return };
         #[cfg(not(target_arch = "wasm32"))]
@@ -540,11 +521,15 @@ impl Engine {
         self.problem = Some(Problem::SignInWaiting);
     }
 
-    /// The web build signs in with a username and password (docs/WEB.md).
     #[cfg(target_arch = "wasm32")]
     fn sign_in_google(&mut self) {
         let _ = &self.google;
         self.problem = Some(Problem::NotConfigured);
+    }
+
+    #[cfg(target_arch = "wasm32")]
+    async fn on_google_authorized(&mut self, authorization: AuthGrant) {
+        match authorization {}
     }
 
     async fn sign_in(&mut self, id_token: String) {
@@ -564,29 +549,22 @@ impl Engine {
 
     /// Keeps a session Kabar Cloud just gave and starts syncing.
     /// `remember: false` keeps it until the app or tab closes
-    /// ([`super::session::not_remembered`]).
+    /// ([`super::session::not_remembered`]), and wipes study data on sign-out.
     fn begin_session(&mut self, session: Session, remember: bool) {
         if self.auth.is_some() {
-            // A sign-in over a live session: the old one is put away first,
-            // so its vault is the one this session is kept in.
             self.sign_out_locally();
         }
         let usual = self.vault.take().unwrap_or_else(|| Box::new(super::session::MemoryVault::default()));
         let vault = if remember {
             usual
         } else {
-            // An older session for this device mustn't outlive this one.
             usual.clear();
             self.spare_vault = Some(usual);
             super::session::not_remembered()
         };
+        let account_id = session.account_id.clone();
         match Auth::new(session, vault) {
-            Ok(auth) => {
-                self.auth = Some(auth);
-                if !remember {
-                    self.hold_temporary();
-                }
-            }
+            Ok(auth) => self.auth = Some(auth),
             Err(vault) => {
                 crate::diag::report!("Kabar Cloud: sign-in session was not saved");
                 self.vault = Some(self.spare_vault.take().unwrap_or(vault));
@@ -594,6 +572,11 @@ impl Engine {
                 return;
             }
         }
+        if let Err(e) = self.store.with(|s| s.begin_account(&account_id, !remember)) {
+            crate::diag::report!("Kabar Cloud: preparing account state failed: {e}");
+        }
+        #[cfg(target_arch = "wasm32")]
+        crate::platform::web::set_temporary(!remember);
         self.problem = None;
         self.stopped = false;
         self.opening = None;
@@ -626,8 +609,7 @@ impl Engine {
     }
 
     /// Runs a call with an access token; a 401 refreshes once and retries
-    /// (this device's clock may run behind the server's). `None` when there
-    /// is no token (the reason is recorded).
+    /// (this device's clock may run behind the server's).
     async fn with_access<T, F>(&mut self, call: impl Fn(Api, String) -> F) -> Option<Result<T, CloudError>>
     where
         F: std::future::Future<Output = Result<T, CloudError>>,
@@ -649,8 +631,6 @@ impl Engine {
         self.events.send(Event::Login(self.login.clone())).ok();
     }
 
-    /// Settings shows what Kabar Cloud said about the username, or why it
-    /// couldn't say.
     fn login_answer(&mut self, result: Option<Result<PasswordLogin, CloudError>>) {
         let was_saving = std::mem::take(&mut self.login.saving);
         match result {
@@ -701,15 +681,26 @@ impl Engine {
     }
 
     fn sign_out_locally(&mut self) {
+        self.cancel_google_wait();
         self.pending_sign_in = None;
         self.drop_socket();
+        let was_temporary =
+            self.auth.as_ref().is_some_and(|a| !a.remembered()) || self.store.with(|s| s.is_borrowed());
         if let Some(auth) = self.auth.take() {
-            let temporary = !auth.remembered();
             let forgetful = auth.forget();
             self.vault = Some(self.spare_vault.take().unwrap_or(forgetful));
-            if temporary {
-                self.wipe_temporary();
+        }
+        if was_temporary {
+            #[cfg(target_arch = "wasm32")]
+            crate::platform::web::set_temporary(false);
+            match self.store.with(|s| s.forget_study()) {
+                Ok(changed) if !changed.is_empty() => {
+                    self.events.send(Event::Changed(changed)).ok();
+                }
+                Ok(_) => {}
+                Err(e) => crate::diag::report!("Kabar Cloud: wiping temporary study data failed: {e}"),
             }
+            self.client = SyncClient::new(0);
         }
         self.login = LoginStatus::default();
         self.events.send(Event::Login(LoginStatus::default())).ok();
@@ -749,16 +740,21 @@ impl Engine {
     }
 
     async fn set_push_token(&mut self, token: String) {
-        let sent = token.clone();
-        let call = move |api: Api, access: String| {
-            let token = sent.clone();
-            async move { api.set_push_token(&access, &token).await }
-        };
-        let pushed = match self.with_access(call).await {
-            // Registered and the Cloud has its Firebase key: it rings here.
+        let body = token.clone();
+        let result = self
+            .with_access(move |api, access| {
+                let body = body.clone();
+                async move { api.set_push_token(&access, &body).await }
+            })
+            .await;
+        let pushed = match result {
             Some(Ok(reply)) => Some(reply.registered && reply.push_configured && !token.is_empty()),
-            // Quietly: local reminders keep ringing until it works.
-            Some(Err(e)) if e.is_signed_out() => {
+            Some(Err(e))
+                if matches!(
+                    e,
+                    CloudError::Api { code: ErrorCode::DeviceRevoked | ErrorCode::NotAllowed, .. }
+                ) =>
+            {
                 self.cloud_error(&e);
                 None
             }
@@ -771,71 +767,49 @@ impl Engine {
         self.events.send(Event::Push { token, pushed }).ok();
     }
 
-    /// A fresh access token, or `None` (with the reason recorded).
     async fn access(&mut self, force: bool) -> Option<String> {
         if !leads() {
-            // Only the newest tab touches the session: two tabs refreshing
-            // one refresh token sign each other out (#562).
             return None;
         }
         let result = self.auth.as_mut()?.access_token(&self.api, now_ms(), force).await;
         match result {
             Ok(token) => Some(token),
             Err(e) => {
-                self.cloud_error(&e);
+                self.refresh_error(&e);
                 None
             }
         }
     }
 
-    /// The token that signs this device out. Any tab may: the session ends
-    /// either way, so a refresh here can't cost another tab its session.
-    async fn sign_out_access(&mut self) -> Option<String> {
-        self.auth.as_mut()?.access_token(&self.api, now_ms(), false).await.ok()
-    }
-
-    /// A sign-in on someone else's device: the web tab keeps its rows in
-    /// memory, and the database is marked so they never outlive the session
-    /// (`store/temporary.rs`).
-    fn hold_temporary(&mut self) {
-        #[cfg(target_arch = "wasm32")]
-        crate::platform::web::keep_in_memory(true);
-        if let Err(e) = self.store.with(|s| s.mark_temporary(true)) {
-            crate::diag::report!("marking a temporary sign-in: {e}");
-        }
-    }
-
-    /// Signing out of a temporary sign-in takes the account's rows with it.
-    fn wipe_temporary(&mut self) {
-        match self.store.with(|s| s.wipe_account_data()) {
-            Ok(tables) => {
-                self.client = SyncClient::new(0);
-                self.events.send(Event::Changed(tables)).ok();
-                // The browser's copy becomes the empty database.
-                #[cfg(target_arch = "wasm32")]
-                crate::platform::web::keep_in_memory(false);
+    fn refresh_error(&mut self, e: &CloudError) {
+        crate::diag::report!("Kabar Cloud refresh: {e}");
+        match e {
+            CloudError::Api { code: ErrorCode::NotAllowed, .. } => {
+                self.problem = Some(Problem::NotAllowed);
+                self.sign_out_locally();
             }
-            // The marker stays, so the next start tries again; the web tab
-            // keeps working in memory meanwhile.
-            Err(e) => crate::diag::report!("wiping a temporary sign-in: {e}"),
+            e if e.is_signed_out() => {
+                self.problem = Some(Problem::SignedOutRemotely);
+                self.sign_out_locally();
+            }
+            CloudError::Network(_) => self.problem = Some(Problem::Network),
+            _ => self.problem = Some(Problem::Server),
         }
     }
 
     fn cloud_error(&mut self, e: &CloudError) {
         crate::diag::report!("Kabar Cloud: {e}");
-        if let CloudError::Api { code: ErrorCode::NotAllowed, .. } = e {
-            // Refresh refused: the account left the allowlist, and the
-            // device is signed out on the server already.
-            self.problem = Some(Problem::NotAllowed);
-            self.sign_out_locally();
-        } else if e.is_signed_out() {
-            self.problem = Some(Problem::SignedOutRemotely);
-            self.sign_out_locally();
-        } else {
-            self.problem = Some(match e {
-                CloudError::Network(_) => Problem::Network,
-                _ => Problem::Server,
-            });
+        match e {
+            CloudError::Api { code: ErrorCode::DeviceRevoked, .. } => {
+                self.problem = Some(Problem::SignedOutRemotely);
+                self.sign_out_locally();
+            }
+            CloudError::Api { code: ErrorCode::NotAllowed, .. } => {
+                self.problem = Some(Problem::NotAllowed);
+                self.sign_out_locally();
+            }
+            CloudError::Network(_) => self.problem = Some(Problem::Network),
+            _ => self.problem = Some(Problem::Server),
         }
     }
 
@@ -869,12 +843,9 @@ impl Engine {
             }
             Err(e) => {
                 match e {
-                    // Expired or revoked: refreshing tells which.
                     ConnectError::Unauthorized => self.force_refresh = true,
                     ConnectError::Failed(_) => {
                         self.problem = Some(Problem::Network);
-                        // A browser doesn't say why a socket failed: the next
-                        // try refreshes, in case the token was refused.
                         self.force_refresh = cfg!(target_arch = "wasm32");
                     }
                 }
@@ -900,13 +871,11 @@ impl Engine {
     }
 
     async fn frame(&mut self, frame: Frame) {
-        // Anything heard, a pong included, proves the socket is alive.
         self.last_heard = Instant::now();
         self.asked_at = None;
         let text = match frame {
             Frame::Text(text) => text,
             Frame::Closed(code) => {
-                // 4001: signed out from another device (after `revoked`).
                 if code == Some(4001) {
                     self.revoked();
                 }
@@ -946,8 +915,6 @@ impl Engine {
                             }
                         }
                         Err(e) => {
-                            // Not saved: the next hello asks from what the store
-                            // holds, so the hub sends them again.
                             crate::diag::report!("applying remote ops: {e}");
                             self.client.rewind(self.store.with(|s| s.last_seq()).unwrap_or(0));
                             self.drop_socket();
@@ -962,8 +929,6 @@ impl Engine {
                     for r in &rejected {
                         crate::diag::report!("op {} rejected: {:?}", r.op_id, r.reason);
                     }
-                    // Refused ops are held, not dropped: Settings › Account
-                    // counts them and can send them again (store/held.rs).
                     if let Err(e) = self.store.with(|s| s.settle_outbox(&done, &rejected)) {
                         crate::diag::report!("outbox: {e}");
                     }
@@ -997,7 +962,6 @@ impl Engine {
         self.sign_out_locally();
     }
 
-    /// Pushes the next outbox batch if the socket can take it.
     async fn pump(&mut self) {
         if self.ws.is_none() {
             return;
@@ -1059,8 +1023,6 @@ impl Engine {
     }
 }
 
-/// On the web, only the tab that owns the database syncs and refreshes the
-/// session; an older tab shows "open in another tab" (`platform::web`).
 fn leads() -> bool {
     #[cfg(target_arch = "wasm32")]
     return crate::platform::web::owns_tab();
@@ -1068,15 +1030,15 @@ fn leads() -> bool {
     true
 }
 
-async fn authorized(authorizing: &mut Option<Authorizing>) -> Authorized {
-    match authorizing {
+async fn opened(opening: &mut Option<Opening>) -> Result<Socket, ConnectError> {
+    match opening {
         Some(f) => f.await,
         None => std::future::pending().await,
     }
 }
 
-async fn opened(opening: &mut Option<Opening>) -> Result<Socket, ConnectError> {
-    match opening {
+async fn authorized(authorizing: &mut Option<Authorizing>) -> AuthGrant {
+    match authorizing {
         Some(f) => f.await,
         None => std::future::pending().await,
     }
@@ -1089,9 +1051,6 @@ async fn next_frame(ws: &mut Option<Socket>) -> Frame {
     }
 }
 
-/// Stretches the password (`password::password_key`) off the UI thread
-/// where there is one. The browser has one thread: a short nap first lets
-/// the page show that it's signing in before the work starts.
 async fn stretch(username: String, password: String) -> Result<String, String> {
     #[cfg(not(target_arch = "wasm32"))]
     return tokio::task::spawn_blocking(move || password::password_key(&username, &password))
@@ -1104,7 +1063,6 @@ async fn stretch(username: String, password: String) -> Result<String, String> {
     }
 }
 
-/// What a password answer means for the learner, when it's about the password.
 fn password_problem(e: &CloudError) -> Option<Problem> {
     match e {
         CloudError::Api { code: ErrorCode::WrongPassword, .. } => Some(Problem::WrongPassword),
@@ -1138,7 +1096,6 @@ mod password_tests {
             password_problem(&api(409, r#"{"code":"username_taken","message":""}"#)),
             Some(Problem::UsernameTaken)
         );
-        // Minutes, rounded up: 61 seconds is "2 minutes", never "0".
         let locked = |ms: u64| {
             password_problem(&api(
                 429,
@@ -1158,7 +1115,6 @@ mod password_tests {
         let delays: Vec<u64> = (0..7)
             .map(|_| {
                 p.schedule_retry();
-                // Rounded: a few microseconds pass between the two clock reads.
                 (p.retry_at - Instant::now()).as_secs_f64().round() as u64
             })
             .collect();

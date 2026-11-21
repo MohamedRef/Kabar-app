@@ -315,7 +315,7 @@ pub struct PlanProgress {
 /// for is visibly done (enough reviews, the lesson finished).
 ///
 /// The n-th lesson item of a unit is done once n lessons of that unit were
-/// finished today.
+/// finished today, or when the fallback lesson it opened was finished today.
 pub fn progress(plan: &DailyPlan, today: &DayStats) -> PlanProgress {
     let done: Vec<bool> = plan
         .items
@@ -333,6 +333,7 @@ pub fn progress(plan: &DailyPlan, today: &DayStats) -> PlanProgress {
                             )
                             .count() as u32;
                         today.lessons_finished.get(unit_id).copied().unwrap_or(0) >= part
+                            || today.lesson_items_done.contains(&item.id)
                     }
                     PlanItemKind::WeakSpot { .. } | PlanItemKind::Reading => false,
                 }

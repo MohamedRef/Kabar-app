@@ -230,21 +230,23 @@ impl<'a, S: Sql> Hub<'a, S> {
         ops: Vec<Op>,
         now_ms: u64,
     ) -> Result<(ServerMsg, Vec<SeqOp>), SqlError> {
-        let mut done = Vec::new();
-        let mut rejected = Vec::new();
-        let mut applied = Vec::new();
-        for op in ops {
-            match self.apply(device, op, now_ms)? {
-                Ok((id, Some(seq_op))) => {
-                    done.push(id);
-                    applied.push(seq_op);
+        self.db.transaction(|| {
+            let mut done = Vec::new();
+            let mut rejected = Vec::new();
+            let mut applied = Vec::new();
+            for op in ops {
+                match self.apply(device, op, now_ms)? {
+                    Ok((id, Some(seq_op))) => {
+                        done.push(id);
+                        applied.push(seq_op);
+                    }
+                    Ok((id, None)) => done.push(id),
+                    Err(r) => rejected.push(r),
                 }
-                Ok((id, None)) => done.push(id),
-                Err(r) => rejected.push(r),
             }
-        }
-        let ack = ServerMsg::Ack { batch, done, rejected, head_seq: self.head_seq()? };
-        Ok((ack, applied))
+            let ack = ServerMsg::Ack { batch, done, rejected, head_seq: self.head_seq()? };
+            Ok((ack, applied))
+        })
     }
 
     /// Kabar Cloud's own write to an LWW row (e.g. the reminder state after a
@@ -882,5 +884,35 @@ mod tests {
         assert_eq!(hub.compact_once().unwrap(), 1);
         assert_eq!(replay(&hub.catch_up(0).unwrap()), before);
         assert_eq!(hub.compact_once().unwrap(), 0, "only once");
+    }
+
+    #[test]
+    fn a_failed_push_rolls_back_earlier_ops_in_the_batch() {
+        struct FailOnSecond<'a> {
+            inner: &'a MemSql,
+            inserts: std::cell::Cell<u32>,
+        }
+        impl Sql for FailOnSecond<'_> {
+            fn exec(&self, sql: &str, params: &[Value]) -> Result<Vec<Row>, SqlError> {
+                if sql.starts_with("INSERT INTO ops") {
+                    let n = self.inserts.get() + 1;
+                    self.inserts.set(n);
+                    if n == 2 {
+                        return Err(SqlError("disk full".into()));
+                    }
+                }
+                self.inner.exec(sql, params)
+            }
+            fn transaction<T>(&self, f: impl FnOnce() -> Result<T, SqlError>) -> Result<T, SqlError> {
+                self.inner.transaction(f)
+            }
+        }
+        let mem = MemSql::new();
+        Hub::new(&mem).unwrap();
+        let flaky = FailOnSecond { inner: &mem, inserts: std::cell::Cell::new(0) };
+        let hub = Hub::open(&flaky);
+        let ops = vec![word("a", "s24u", NOW, "rumah", "known"), word("b", "s24u", NOW, "buku", "new")];
+        assert!(hub.push(&DeviceId("s24u".into()), 1, ops, NOW).is_err());
+        assert_eq!(Hub::open(&mem).head_seq().unwrap(), 0, "partial batch rolled back");
     }
 }

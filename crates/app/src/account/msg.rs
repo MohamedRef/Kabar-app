@@ -152,10 +152,10 @@ fn text(lang: UiLanguage, msg: AccountMsg) -> &'static str {
         (PwNotMine, ArEg) => "الجهاز ده مش بتاعي",
         (PwNotMine, Ar) => "هذا الجهاز ليس لي",
         (PwNotMine, En) => "This isn't my device",
-        (PwNotMineHint, ArEg) => "هتخرج لوحدك أول ما تقفل التاب أو التطبيق، وبياناتك بتتمسح من الجهاز ده.",
-        (PwNotMineHint, Ar) => "ستخرج تلقائيًا عند إغلاق التبويب أو التطبيق، وتُمسح بياناتك من هذا الجهاز.",
+        (PwNotMineHint, ArEg) => "بياناتك بتتمسح من الجهاز ده أول ما تخرج أو تقفل التاب أو التطبيق.",
+        (PwNotMineHint, Ar) => "تُمسح بياناتك من هذا الجهاز فور تسجيل الخروج أو إغلاق التبويب أو التطبيق.",
         (PwNotMineHint, En) => {
-            "You're signed out when the tab or app closes, and your Kabar data is wiped from this device."
+            "Your data is cleared from this device when you sign out or close the tab or app."
         }
         (PwSignIn, ArEg) => "ادخل",
         (PwSignIn, Ar) => "ادخل",
@@ -213,13 +213,13 @@ fn text(lang: UiLanguage, msg: AccountMsg) -> &'static str {
         (PwCancel, Ar) => "إلغاء",
         (PwCancel, En) => "Cancel",
         (PwTemporary, ArEg) => {
-            "دخول مؤقت: لما تقفل التاب أو التطبيق هتخرج لوحدك وبياناتك هتتمسح من الجهاز ده. لو خلصت قبلها، دوس «سجّل خروج من الجهاز ده»."
+            "دخول مؤقت: هتخرج لوحدك لما تقفل التاب أو التطبيق. لو خلصت قبلها، دوس «سجّل خروج من الجهاز ده»."
         }
         (PwTemporary, Ar) => {
-            "دخول مؤقت: عند إغلاق التبويب أو التطبيق ستخرج تلقائيًا وتُمسح بياناتك من هذا الجهاز. إن انتهيت قبل ذلك فاضغط «تسجيل الخروج من هذا الجهاز»."
+            "دخول مؤقت: ستخرج تلقائيًا عند إغلاق التبويب أو التطبيق. إن انتهيت قبل ذلك فاضغط «تسجيل الخروج من هذا الجهاز»."
         }
         (PwTemporary, En) => {
-            "Temporary sign-in: when the tab or app closes, you're signed out and your data is wiped from this device. Done sooner? Tap “Sign out on this device”."
+            "Temporary sign-in: you're signed out when the tab or app closes. Done sooner? Tap “Sign out on this device”."
         }
         (HeldTitle, ArEg) => "تغييرات ما اتبعتتش",
         (HeldTitle, Ar) => "تغييرات لم تُرسل",

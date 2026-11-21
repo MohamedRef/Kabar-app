@@ -1,13 +1,19 @@
 //! One username's Durable Object (`crate::login`): who owns it, and the
 //! wrong-password count.
 
+use std::cell::RefCell;
+
 use worker::{DurableObject, Env, Method, Request, Response, Result, State, durable_object};
 
 use super::do_sql::DoSql;
 use super::{api_error, now_ms};
 use crate::internal::{LoginCheck, LoginClear, LoginSet};
-use crate::login::{Login as Store, parse_key};
+use crate::login::{Login as Store, UnknownTries, parse_key};
 use kabar_protocol::cloud::ErrorCode;
+
+thread_local! {
+    static UNKNOWN_TRIES: RefCell<UnknownTries> = RefCell::default();
+}
 
 #[durable_object]
 pub struct Login {
@@ -33,7 +39,10 @@ impl DurableObject for Login {
                 let Some(key) = parse_key(&body.key) else {
                     return api_error(ErrorCode::InvalidRequest, "password_key must be 32 bytes, base64url");
                 };
-                Response::from_json(&login.check(&key, now).map_err(sql_err)?)
+                let checked = UNKNOWN_TRIES
+                    .with_borrow_mut(|u| login.check_named(&body.username, &key, now, u))
+                    .map_err(sql_err)?;
+                Response::from_json(&checked)
             }
             (Method::Post, "/set") => {
                 let b: LoginSet = req.json().await?;

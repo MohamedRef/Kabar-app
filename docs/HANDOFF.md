@@ -353,9 +353,7 @@ Public (not secret): `GOOGLE_CLIENT_IDS` in `crates/server/wrangler.toml`
 
 Sign-in: Google (PKCE loopback) **or username + password** (Argon2id on
 device, `Login` DO; changing `PASSWORD_PARAMS` or the salt prefix invalidates
-every password). "This isn't my device" (a temporary sign-in) keeps the web
-database in memory and marks the store; signing out wipes the account's rows,
-and an app closed first wipes them at its next start (`store/temporary.rs`). On macOS the session lives in `<data dir>/cloud-session.json`,
+every password). On macOS the session lives in `<data dir>/cloud-session.json`,
 not the Keychain (self-signed apps re-prompt). [CLOUD.md](CLOUD.md) § 4.1.
 
 ## 7. Content and pedagogy
@@ -452,9 +450,9 @@ Rules (Mohamed's decisions; all in force):
 | Web | phases 1–2 live (sync, AI, voices, password sign-in); phase 3 offline packs + OCR |
 | M9 Studio | mind maps only; pen writing paused |
 | M13 | content done; performance pass open; aksara and widgets parked |
-| Releases | `v2026.11.14` published 2026-11-20 (alpha channel, build 947; calendar versions since `v2026.11.1`, 2026-11-08); previews every 4 h |
+| Releases | `v2026.11.10` published 2026-11-15 (alpha channel; calendar versions since `v2026.11.1`, 2026-11-08); previews every 4 h |
 | Critic loop | final pass 10 done 2026-11-04; loop closed. Don't start another unless asked. |
-| Open PRs / issues | 2026-11-21: the cloud session stopped on Mohamed's word with three PRs open, all green locally, none merged yet: #733 (#715 app side), #734 (#715 server side), #735 (#689's last points). Merge them in that order (merge main into the next branch, never force-push; #733 holds the HANDOFF update for all three). Still open after them: #687 (sync items 1, 2, 4), #661 point 2, #688 item 6 and #714 (both taken by the Mac session). No release was made after `v2026.11.14`. |
+| Open PRs / issues | 2026-11-19: no open PRs from the cloud session. Open issues: #661, #687, #688 (item 6), #689 (web at phone width; the 2026-11-19 sweep is in its comments), #692 (all its points decided, see Open work) and the code review's #710–#715 |
 | Mac desk tools | ⌘K quick search, drag-to-resize sidebar and Reader word panel, review focus mode (`crates/app/src/desk/`, 2026-11-11, ported from Batna) |
 | Brand | K2 since 2026-11-08: kawung launcher icon on batik indigo; the same mark beside the name (`brand.rs`) |
 | Start over | «ابدأ من الأول» per level or the whole course (ported from Batna #1341): one synced marker `reset.<level>` / `reset.all` in `settings`, its row HLC is the cutoff; nothing deleted, undo removes it (see § 2 Start over) |
@@ -467,8 +465,7 @@ Rules (Mohamed's decisions; all in force):
 - Code review of 2026-11-19 (read-only, one agent per area, nothing
   reproduced; each item has file:line, a scenario and a fix idea): #710
   offline packs, #711 lesson player and Review, #712 Reader, #713 updates,
-  #714 coach, #715 accounts and sign-in (all 8 items in PRs #733 app side
-  and #734 server side, open 2026-11-21). Fixed: #710 (all 11 items), #711
+  #714 coach, #715 accounts and sign-in. Fixed: #710 (all 11 items), #711
   (all items: #709, #718 and Lanjut/level-test/practice/Card Wall), #712
   (all items: #706, #716, #717, #731), #713 (all items: #732). From the earlier sync,
   grading and web reviews: #687's cached TTS for a revoked device and reset
@@ -516,10 +513,8 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
-- 2026-11-21: Accounts (#733, #715 app side): a temporary sign-in's web tab never saves the database and sign-out wipes every account row, the outbox and `last_seq` (`Store::wipe_account_data`; the `account.temporary` marker wipes at the next start); Devices/usage/push/remote sign-out go through `with_access`; `not_allowed` on refresh signs out as `Problem::NotAllowed`; sign-out works from a non-leading tab; Google's browser wait runs beside the commands with `Command::CancelSignIn`. Open, not merged.
-- 2026-11-21: Kabar Cloud (#734, #715 server side): signed-out callers can't list or revoke devices or read usage/vault; unknown usernames lock in the Login object's memory; username changes keep `login_release` (pending/adopt/released) so a failed step is cleared on the next GET. Open, not merged; the Worker deploys on merge.
-- 2026-11-21: Web and Reader (#735, #689): the Reader hint follows `platform::touch_screen()`; closing punctuation joins the word's box (`annotated::glue_punctuation`); Bridge cards take an optional `display` spelling (33 proper nouns, unverified). Open, not merged.
-
+- 2026-11-21: Accounts & sync (#715, #687): temporary ("This isn't my device") sessions keep the web DB out of IndexedDB and wipe local study tables on sign-out or next launch; switching accounts resets `last_seq` and holds the previous account's outbox; unknown-table remote ops are kept in `deferred_ops` and replayed after an update; `Hub::push` runs in one transaction; `load_devices`/`load_usage`/`set_push_token`/`RevokeDevice` refresh once on clock-skew 401s, `NotAllowed` on refresh surfaces `Problem::NotAllowed`, non-leading web tabs still send `/v1/auth/signout`, Google loopback sign-in runs non-blocking with Cancel, `/v1/devices`, `/v1/usage` and `/v1/vault` verify active devices, password tries decay after an hour and lock unknown usernames in memory, and `manage_login` stages/retires usernames recoverably.
+- 2026-11-21: Kak Nur (#714 finding 1): a lesson opened from the next unit carries its original plan step through Lanjut and credits it on same-day completion. The credit is part of the synced lesson activity for the actual unit.
 - 2026-11-20: Updates (#713): a failed feed check preserves Ready/Installing/NeedsPermission/Installed and `download_locked` reuses an already-verified build; full builds' content bundles wait for their APK before advancing `shown_build` or `last_run`; `set_channel` serializes under `job`, poisoned update locks recover, notification downloads ask `MeteredConfirm`, What's new deduplicates preview/release lines and preserves unseen baselines, and Arabic counts handle 0 and 100+.
 - 2026-11-20: Reader (#712): digit-2 chat reduplications (`hati2`, `anak2`, `sama2`) expand to their base for glosses, status and pronunciation; AI sentence explanations isolate Latin runs in `<bdi>`; `use_translation` hashes segment layout and `ReaderState::load` keeps the open panel across screenshot restructuring; `reader_card` keys on the lemma, `add_to_review` and `save_phrase` run inside `Store::atomically`, and Reader store reads go through `persistence::read_or`.
 - 2026-11-20: Lesson player & Review (#711): `position_after_resets` skips any Lanjut row whose lesson was completed at or after that stamp on another device; level and placement tests save events in one `Store::atomically` write with a «Save again» notice before logging coach practice; ↻ Try again waits until a `NeedsReview` self-check is answered, and `SavedResponse.practice` survives a reopen so practice self-checks never overwrite the first try; Card Wall `undo` runs `engine.undo()` before touching the seat or queue.
