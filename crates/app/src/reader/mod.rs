@@ -198,37 +198,40 @@ impl ReaderState {
     }
 
     fn load(mut self, db: &Db, text: SavedText) {
+        use crate::persistence::read_or;
+        let prev = self.open.peek().clone().filter(|o| o.text.id == text.id);
+        let panel = prev.as_ref().and_then(|_| self.panel.peek().clone());
         let store = db.0.borrow();
-        let taught = PersonalDictionary::new(store.taught_entries().unwrap_or_default());
+        let taught = PersonalDictionary::new(read_or("taught words", store.taught_entries()));
         let lex = Lexicon { glossary: glossary(), taught: &taught };
         let doc = match text.layout.as_deref().and_then(|l| serde_json::from_str::<ScreenDoc>(l).ok()) {
             Some(screen) => ReadDoc::from_screen(&screen, lex),
             None => ReadDoc::from_text(&text.body, lex),
         };
-        self.statuses.set(store.word_statuses(doc.keys()).unwrap_or_default());
-        self.highlights.set(store.highlights(&text.id).unwrap_or_default());
+        self.statuses.set(read_or("word statuses", store.word_statuses(doc.keys())));
+        self.highlights.set(read_or("highlights", store.highlights(&text.id)));
         drop(store);
+        let next_panel = prev.and_then(|o| panel.and_then(|p| keep_panel(p, &o.doc, &doc)));
         self.grammar.set(Some(Rc::new(grammar::DocGrammar::new(&doc, &grammar::syllabus(db)))));
         self.peek.set(None);
-        self.panel.set(None);
+        self.panel.set(next_panel);
         self.open.set(Some(Open { text, doc: Rc::new(doc) }));
     }
 
     /// Statuses and highlights changed on another device: recolor in place.
     fn reload_marks(mut self, db: &Db) {
+        use crate::persistence::read_or;
         let Some(open) = self.open.peek().clone() else { return };
         let store = db.0.borrow();
-        self.statuses.set(store.word_statuses(open.doc.keys()).unwrap_or_default());
-        self.highlights.set(store.highlights(&open.text.id).unwrap_or_default());
+        self.statuses.set(read_or("word statuses", store.word_statuses(open.doc.keys())));
+        self.highlights.set(read_or("highlights", store.highlights(&open.text.id)));
     }
 
     /// Re-reads the open text, picking up words taught since it was opened;
     /// the word card stays open.
-    fn refresh(mut self, db: &Db) {
+    fn refresh(self, db: &Db) {
         let Some(open) = self.open.peek().clone() else { return };
-        let panel = self.panel.peek().clone();
         self.load(db, open.text);
-        self.panel.set(panel);
     }
 
     /// Shows `panel` in the side panel / bottom sheet (None closes it).
@@ -244,8 +247,41 @@ impl ReaderState {
     }
 }
 
+/// Keeps the open panel when the same text is reloaded (after Teach Kabar or
+/// the background AI screenshot pass), following the token if layout shifted.
+fn keep_panel(panel: Panel, old: &ReadDoc, new: &ReadDoc) -> Option<Panel> {
+    let remap = |i: usize| -> Option<usize> {
+        let t = old.tokens.get(i)?;
+        let surface = old.text(t.start, t.end);
+        let key = t.word.as_ref().and_then(|w| w.key.as_deref());
+        if new.tokens.get(i).is_some_and(|n| n.word.is_some() && new.text(n.start, n.end) == surface) {
+            return Some(i);
+        }
+        new.tokens
+            .iter()
+            .enumerate()
+            .filter(|(_, n)| {
+                n.word.is_some()
+                    && (new.text(n.start, n.end) == surface
+                        || (key.is_some() && n.word.as_ref().and_then(|w| w.key.as_deref()) == key))
+            })
+            .min_by_key(|(j, _)| j.abs_diff(i))
+            .map(|(j, _)| j)
+    };
+    match panel {
+        Panel::Word(i) => remap(i).map(Panel::Word),
+        Panel::Explain(i) => remap(i).map(Panel::Explain),
+        Panel::Phrase { tokens, save_first } => {
+            let old_span = old.span_of(&tokens).map(|(s, e)| old.text(s, e))?;
+            let tokens: Vec<usize> = tokens.into_iter().filter_map(remap).collect();
+            let new_span = new.span_of(&tokens).map(|(s, e)| new.text(s, e))?;
+            (old_span == new_span).then_some(Panel::Phrase { tokens, save_first })
+        }
+    }
+}
+
 /// A highlighted phrase is also a review item, met in its sentence. Both
-/// rows or neither: when the review item can't be saved, the highlight goes too.
+/// rows or neither, in one transaction.
 fn save_phrase(
     store: &mut Store,
     text_id: &str,
@@ -254,19 +290,18 @@ fn save_phrase(
     phrase: &str,
     sentence: &str,
 ) -> Result<Highlight, StoreError> {
-    let h = store.add_highlight(text_id, start, end, phrase)?;
-    let key = format!("phrase:{}", phrase.to_lowercase());
-    if let Err(e) = store.save_word(&key, phrase, sentence, Some(text_id)) {
-        store.remove_highlight(&h.id).ok();
-        return Err(e);
-    }
-    Ok(h)
+    store.atomically(|store| {
+        let h = store.add_highlight(text_id, start, end, phrase)?;
+        let key = format!("phrase:{}", phrase.to_lowercase());
+        store.save_word(&key, phrase, sentence, Some(text_id))?;
+        Ok(h)
+    })
 }
 
 /// "Add to review": the word becomes a real review card (when Kabar can
 /// explain it) and is remembered with its sentence for the Library; only
-/// once that's done does a new word count as learning. Returns whether the
-/// word was promoted to learning.
+/// once that's done does a new word count as learning. All three writes run
+/// in one transaction. Returns whether the word was promoted to learning.
 pub(crate) fn add_to_review(
     store: &mut Store,
     key: &str,
@@ -275,22 +310,24 @@ pub(crate) fn add_to_review(
     text_id: &str,
     info: Option<&WordInfo>,
 ) -> Result<bool, StoreError> {
-    if let Some(card) = reader_card(key, surface, info, sentence, text_id, &store.cards()?) {
-        store.upsert_card(&card)?;
-    }
-    store.save_word(key, surface, sentence, Some(text_id))?;
-    let promote = store.word_statuses([key])?.get(key).copied().unwrap_or_default() == WordStatus::New;
-    if promote {
-        store.set_word_status(key, WordStatus::Learning)?;
-    }
-    Ok(promote)
+    store.atomically(|store| {
+        if let Some(card) = reader_card(key, surface, info, sentence, text_id, &store.cards()?) {
+            store.upsert_card(&card)?;
+        }
+        store.save_word(key, surface, sentence, Some(text_id))?;
+        let promote = store.word_statuses([key])?.get(key).copied().unwrap_or_default() == WordStatus::New;
+        if promote {
+            store.set_word_status(key, WordStatus::Learning)?;
+        }
+        Ok(promote)
+    })
 }
 
 /// The recognition card "Add to review" makes: the word as it was met, its
 /// meaning, the sentence it was met in and its Arabic Bridge. None when
 /// there's no meaning to recall (Teach Kabar covers those) or when the deck
-/// already holds a recognition card for the word. The id is stable, so the
-/// same word saved on two devices is one card.
+/// already holds a recognition card for the lemma. Keyed on the lemma so two
+/// inflections ("membaca", "dibaca") or two devices share one card.
 pub(crate) fn reader_card(
     key: &str,
     surface: &str,
@@ -302,13 +339,19 @@ pub(crate) fn reader_card(
     let info = info?;
     let language = if key.starts_with("jv:") { StudyLanguage::Jv } else { StudyLanguage::Id };
     let word = surface.trim().to_lowercase();
-    if word.is_empty() || info.gloss.en.trim().is_empty() && info.gloss.arz.trim().is_empty() {
+    let lemma = info.lemma.trim().to_lowercase();
+    if word.is_empty()
+        || lemma.is_empty()
+        || info.gloss.en.trim().is_empty() && info.gloss.arz.trim().is_empty()
+    {
         return None;
     }
+    let id = format!("reader.{}.{lemma}.recognition", language.tag());
     let held = existing.iter().any(|c| {
-        c.kind == CardKind::Recognition
-            && c.language == language
-            && (c.word.eq_ignore_ascii_case(&word) || c.word.eq_ignore_ascii_case(&info.lemma))
+        c.id == id
+            || (c.kind == CardKind::Recognition
+                && c.language == language
+                && (c.word.eq_ignore_ascii_case(&word) || c.word.eq_ignore_ascii_case(&lemma)))
     });
     if held {
         return None;
@@ -318,7 +361,7 @@ pub(crate) fn reader_card(
     let empty = Localized { ar_eg: String::new(), ar: String::new(), en: String::new() };
     Some(Card {
         v: kabar_protocol::srs::CARD_VERSION,
-        id: format!("reader.{}.{word}.recognition", language.tag()),
+        id,
         word,
         language,
         kind: CardKind::Recognition,
@@ -390,7 +433,8 @@ pub fn Reader() -> Element {
     });
     translate::use_translation(st);
     let busy = use_signal(|| None::<Msg>);
-    let recent = use_signal(|| db.0.borrow().recent_texts(library::TEXTS).unwrap_or_default());
+    let recent =
+        use_signal(|| crate::persistence::read_or("saved texts", db.0.borrow().recent_texts(library::TEXTS)));
     // The reading settings popover under Aa.
     let sheet = use_signal(|| false);
 
@@ -573,7 +617,8 @@ fn open_new(
     match saved {
         Ok(text) => {
             st.load(db, text.clone());
-            recent.set(db.0.borrow().recent_texts(library::TEXTS).unwrap_or_default());
+            recent
+                .set(crate::persistence::read_or("saved texts", db.0.borrow().recent_texts(library::TEXTS)));
             Some(text)
         }
         Err(e) => {
@@ -671,7 +716,13 @@ fn refine_with_ai(
         let screen = screen_ai::to_screen_doc(&answer.value, &ocr);
         let body = screen.reading_text();
         // Highlights are byte ranges in the old body: don't move text under them.
-        let marked = db.0.borrow().highlights(&text.id).map_or(true, |h| !h.is_empty());
+        let marked = match db.0.borrow().highlights(&text.id) {
+            Ok(h) => !h.is_empty(),
+            Err(e) => {
+                crate::persistence::read_failed("highlights", &e);
+                true
+            }
+        };
         if body.trim().is_empty() || marked {
             return;
         }
@@ -690,7 +741,10 @@ fn refine_with_ai(
                 if st.open.peek().as_ref().is_some_and(|o| o.text.id == t.id) {
                     st.load(&db, t);
                 }
-                recent.set(db.0.borrow().recent_texts(library::TEXTS).unwrap_or_default());
+                recent.set(crate::persistence::read_or(
+                    "saved texts",
+                    db.0.borrow().recent_texts(library::TEXTS),
+                ));
             }
             Err(e) => st.write_failed("saving the AI layout", &e),
         }
@@ -722,7 +776,10 @@ fn import_url(
         match saved {
             Ok(text) => {
                 st.load(&db, text);
-                recent.set(db.0.borrow().recent_texts(library::TEXTS).unwrap_or_default());
+                recent.set(crate::persistence::read_or(
+                    "saved texts",
+                    db.0.borrow().recent_texts(library::TEXTS),
+                ));
             }
             Err(e) => st.write_failed("saving the page", &e),
         }
@@ -1200,11 +1257,12 @@ mod tests {
         let info = baca();
         add_to_review(&mut store, "id:baca", "Membaca", s, &text.id, Some(&info)).unwrap();
         add_to_review(&mut store, "id:baca", "membaca", s, &text.id, Some(&info)).unwrap();
+        add_to_review(&mut store, "id:baca", "dibaca", "Buku itu dibaca.", &text.id, Some(&info)).unwrap();
         let cards: Vec<Card> =
             store.cards().unwrap().into_iter().filter(|c| c.source == CardSource::Reader).collect();
-        assert_eq!(cards.len(), 1, "saving twice is one card");
+        assert_eq!(cards.len(), 1, "inflections of one lemma share one card");
         let c = &cards[0];
-        assert_eq!((c.id.as_str(), c.word.as_str()), ("reader.id.membaca.recognition", "membaca"));
+        assert_eq!((c.id.as_str(), c.word.as_str()), ("reader.id.baca.recognition", "membaca"));
         assert_eq!(c.meaning.en, "read");
         assert_eq!(c.example.as_ref().unwrap().text, s);
         assert_eq!(c.source_ref.as_deref(), Some(text.id.as_str()));

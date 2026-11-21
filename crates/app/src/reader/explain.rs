@@ -170,9 +170,9 @@ pub fn ExplainCard(token: usize) -> Element {
                         }
                         div { class: "field",
                             span { class: "label", "{ui.t(Msg::InOtherWords)}" }
-                            p { class: "big", "{g.answer.paraphrase}" }
+                            p { class: "big", {mixed(&g.answer.paraphrase)} }
                         }
-                        p { "{g.answer.explanation}" }
+                        p { {mixed(&g.answer.explanation)} }
                         p {
                             span { class: "label", "{ui.t(ReaderMsg::RegisterLabel)} " }
                             span { class: "chip", "{ui.t(register_msg(g.answer.register))}" }
@@ -180,7 +180,7 @@ pub fn ExplainCard(token: usize) -> Element {
                         if let Some(c) = g.answer.culture.as_deref().filter(|c| !c.trim().is_empty()) {
                             div { class: "field note",
                                 span { class: "label", "{ui.t(Msg::CultureNote)}" }
-                                p { "{c}" }
+                                p { {mixed(c)} }
                             }
                         }
                     }

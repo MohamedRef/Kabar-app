@@ -37,8 +37,9 @@ pub enum Progress {
 /// The open text's translations, by segment.
 #[derive(Clone, Debug, Default, PartialEq)]
 pub struct Translated {
-    /// The text these belong to, so a late answer never lands on another.
+    /// The text and segment layout these belong to, so a late answer never lands on another.
     pub text_id: String,
+    pub stamp: u64,
     pub lines: Vec<Option<LineTranslation>>,
     pub progress: Progress,
     /// Javanese, or a route that hasn't passed the bake-off.
@@ -153,19 +154,37 @@ pub(super) fn failure(r: FriendlyReason) -> Msg {
     }
 }
 
+/// Fingerprint of the document's segment layout: merging two bubbles ("\n" → " ")
+/// keeps `body.len()` unchanged, so length alone would reuse shifted line slots.
+pub(crate) fn doc_stamp(doc: &ReadDoc) -> u64 {
+    let mut h = 0xcbf2_9ce4_8422_2325u64;
+    let mut mix = |bytes: &[u8]| {
+        for &b in bytes {
+            h ^= u64::from(b);
+            h = h.wrapping_mul(0x0100_0000_01b3);
+        }
+    };
+    mix(&(doc.segments.len() as u64).to_le_bytes());
+    for s in &doc.segments {
+        mix(&[u8::from(s.kind != SegKind::Chrome), 0xff]);
+        mix(doc.text(s.start, s.end).as_bytes());
+    }
+    h
+}
+
 /// Translates the open text in chunks, filling `st.translated` line by line
 /// as answers arrive. Lives as long as the Reader view; restarts when another
-/// text opens (or on "try again"), and answers come from the router's cache
-/// the second time, offline too.
+/// text opens, its segments change, or on "try again", and answers come from
+/// the router's cache the second time, offline too.
 pub fn use_translation(st: ReaderState) {
     let retry = st.retry;
     let ui = consume_context::<Ui>();
     let ai = try_consume_context::<Ai>();
     let cloud = try_consume_context::<Cloud>();
-    // Only a different text (or a retry) starts over, not a re-read of this one.
+    // Only a different text, a restructured layout, or a retry starts over.
     let key = use_memo(move || {
         let open = st.open.read();
-        open.as_ref().map(|o| (o.text.id.clone(), o.doc.body.len(), *retry.read()))
+        open.as_ref().map(|o| (o.text.id.clone(), doc_stamp(&o.doc), *retry.read()))
     });
     use_resource(move || {
         let ai = ai.clone();
@@ -173,7 +192,7 @@ pub fn use_translation(st: ReaderState) {
         // Off spends no quota; turning it back on starts again (from cache).
         let off = ui.settings.read().translation == TranslationMode::Off;
         async move {
-            let Some((text_id, _, _)) = key.read().clone() else { return };
+            let Some((text_id, stamp, _)) = key.read().clone() else { return };
             let Some(doc) = st.open.peek().as_ref().map(|o| o.doc.clone()) else { return };
             let segs = lines(&doc);
             let lang = text_lang(&doc);
@@ -183,6 +202,7 @@ pub fn use_translation(st: ReaderState) {
                 .into();
             translated.set(Translated {
                 text_id: text_id.clone(),
+                stamp,
                 lines: vec![None; doc.segments.len()],
                 progress: Progress::Working,
                 unverified: lang == Lang::Javanese,
@@ -209,8 +229,9 @@ pub fn use_translation(st: ReaderState) {
             for range in translate::chunks(&texts, MAX_LINES, MAX_CHARS) {
                 let req = translate::request(lang, &texts[range.clone()]);
                 let answer = ai.0.run::<TranslateText>(&req).await;
-                // Another text opened meanwhile: drop this answer.
-                if translated.peek().text_id != text_id {
+                // Another text or segment layout opened meanwhile: drop this answer.
+                if (translated.peek().text_id.as_str(), translated.peek().stamp) != (text_id.as_str(), stamp)
+                {
                     return;
                 }
                 match answer {
@@ -382,5 +403,14 @@ mod tests {
         let a: TranslateText = serde_json::from_str(fixture).unwrap();
         assert_eq!(in_voice(&a.lines[0], UiLanguage::ArEg), "هيتباع بكام؟");
         assert_eq!(in_voice(&a.lines[1], UiLanguage::En), "Hold on, I'll report to HQ.");
+    }
+
+    #[test]
+    fn merging_two_bubbles_with_the_same_body_length_changes_the_stamp() {
+        let split = doc("Sek tak lapor\npusat");
+        let merged = doc("Sek tak lapor pusat");
+        assert_eq!(split.body.len(), merged.body.len());
+        assert_ne!(doc_stamp(&split), doc_stamp(&merged));
+        assert_eq!(doc_stamp(&merged), doc_stamp(&doc("Sek tak lapor pusat")));
     }
 }

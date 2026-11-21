@@ -98,7 +98,12 @@ impl Engine {
             .collect();
         for (wi, &ti) in words.iter().enumerate() {
             let a = &mut out[ti];
-            a.normalized = norms[wi].map(|n| Normalized { full: n.full.into(), alt: n.alt.map(Into::into) });
+            a.normalized = norms[wi]
+                .map(|n| Normalized { full: n.full.into(), alt: n.alt.map(Into::into) })
+                .or_else(|| {
+                    let (_, base) = a.token.redup.as_ref().filter(|_| a.token.text.ends_with('2'))?;
+                    Some(Normalized { full: format!("{base}-{base}"), alt: None })
+                });
             a.lang = guesses[wi];
             a.morph = self.morph(&forms[wi], guesses[wi].lang);
         }
