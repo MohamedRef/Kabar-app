@@ -274,6 +274,95 @@ fn groups(parts: &[Piece]) -> Vec<(Option<Gloss>, Vec<Piece>)> {
     out
 }
 
+/// One unit in the rendered sentence: plain text, a word, or a fixed phrase,
+/// carrying any attached punctuation so a wide gloss never pushes `!` away (#689).
+#[derive(Clone, Debug, PartialEq)]
+enum DrawRun {
+    Plain(String),
+    Word { p: Piece, i: usize, lead: String, trail: String },
+    Phrase { gloss: Gloss, runs: Vec<Piece>, lead: String, trail: String },
+}
+
+impl DrawRun {
+    fn trail_mut(&mut self) -> Option<&mut String> {
+        match self {
+            Self::Word { trail, .. } | Self::Phrase { trail, .. } => Some(trail),
+            Self::Plain(_) => None,
+        }
+    }
+
+    fn lead_mut(&mut self) -> Option<&mut String> {
+        match self {
+            Self::Word { lead, .. } | Self::Phrase { lead, .. } => Some(lead),
+            Self::Plain(_) => None,
+        }
+    }
+}
+
+fn ws_bounds(s: &str) -> Option<(usize, usize)> {
+    let first = s.find(char::is_whitespace)?;
+    let last = s.rfind(char::is_whitespace)?;
+    let ch = s[last..].chars().next()?;
+    Some((first, last + ch.len_utf8()))
+}
+
+fn draw_runs(parts: &[Piece], glosses: bool) -> Vec<DrawRun> {
+    let mut out = Vec::new();
+    for (phrase, group) in groups(parts) {
+        if let Some(gloss) = phrase {
+            out.push(DrawRun::Phrase { gloss, runs: group, lead: String::new(), trail: String::new() });
+        } else {
+            for p in group {
+                match p.word {
+                    Some(i) => out.push(DrawRun::Word { p, i, lead: String::new(), trail: String::new() }),
+                    None => out.push(DrawRun::Plain(p.text)),
+                }
+            }
+        }
+    }
+    if !glosses {
+        return out;
+    }
+    for idx in 0..out.len() {
+        let DrawRun::Plain(text) = out[idx].clone() else { continue };
+        let has_prev = idx > 0 && !matches!(out[idx - 1], DrawRun::Plain(_));
+        let has_next = idx + 1 < out.len() && !matches!(out[idx + 1], DrawRun::Plain(_));
+        let mut rest = text.as_str();
+        if let Some((first_ws, last_ws_end)) = ws_bounds(rest) {
+            let before_ws = &rest[..first_ws];
+            let after_ws = &rest[last_ws_end..];
+            let mut start = 0;
+            let mut end = rest.len();
+            if has_prev && !before_ws.is_empty() {
+                if let Some(t) = out[idx - 1].trail_mut() {
+                    t.push_str(before_ws);
+                }
+                start = first_ws;
+            }
+            if has_next && !after_ws.is_empty() {
+                if let Some(l) = out[idx + 1].lead_mut() {
+                    l.insert_str(0, after_ws);
+                }
+                end = last_ws_end;
+            }
+            rest = &rest[start..end];
+        } else if !has_prev && has_next {
+            if let Some(l) = out[idx + 1].lead_mut() {
+                l.insert_str(0, rest);
+            }
+            rest = "";
+        } else if has_prev {
+            if let Some(t) = out[idx - 1].trail_mut() {
+                t.push_str(rest);
+            }
+            rest = "";
+        }
+        out[idx] = DrawRun::Plain(rest.to_string());
+    }
+    out.retain(|r| !matches!(r, DrawRun::Plain(t) if t.is_empty()));
+    out
+}
+
 /// Analyzes `text` with the Reader's engine and glossary, words the learner
 /// taught Kabar on top, and splits it into runs. Once per text: callers
 /// memoize it.
@@ -306,7 +395,14 @@ fn toggle(mut open: Signal<Option<usize>>, i: usize) {
 /// One tappable word: its colours, and its short meaning under it when
 /// `glosses` is on (a name says it's a name).
 #[component]
-fn WordRun(p: Piece, i: usize, open: Signal<Option<usize>>, glosses: bool) -> Element {
+fn WordRun(
+    p: Piece,
+    i: usize,
+    open: Signal<Option<usize>>,
+    glosses: bool,
+    #[props(default)] lead: String,
+    #[props(default)] trail: String,
+) -> Element {
     let ui = use_context::<Ui>();
     let voice = ui.lang();
     let under =
@@ -333,12 +429,18 @@ fn WordRun(p: Piece, i: usize, open: Signal<Option<usize>>, glosses: bool) -> El
                 }
             },
             span { class: "annot-word",
+                if !lead.is_empty() {
+                    span { class: "annot-punct", "{lead}" }
+                }
                 if p.class.is_some() && !p.spans.is_empty() {
                     for (j , (run , css)) in p.spans.iter().enumerate() {
                         span { key: "{j}", class: *css, "{run}" }
                     }
                 } else {
                     "{p.text}"
+                }
+                if !trail.is_empty() {
+                    span { class: "annot-punct", "{trail}" }
                 }
             }
             if glosses {
@@ -413,34 +515,37 @@ pub fn Annotated(
     rsx! {
         span { class: "{kind} {lang_class}",
             bdi { class: "latin annot-text {class}", lang: tag, dir: "ltr",
-                for (k , (phrase , group)) in groups(&parts).into_iter().enumerate() {
-                    if let Some(g) = phrase {
-                        // A fixed expression: its words keep their own taps
-                        // and colours, and one meaning sits under all of them.
-                        span { key: "{k}", class: if glosses { "annot-phrase glossed" } else { "annot-phrase" },
-                            span { class: "annot-phrase-words",
-                                for (m , p) in group.into_iter().enumerate() {
-                                    match p.word {
-                                        Some(i) => rsx! {
-                                            WordRun { key: "{m}", p, i, open, glosses: false }
-                                        },
-                                        None => rsx! { span { key: "{m}", "{p.text}" } },
+                for (k , run) in draw_runs(&parts, glosses).into_iter().enumerate() {
+                    match run {
+                        DrawRun::Phrase { gloss: g, runs, lead, trail } => rsx! {
+                            // A fixed expression: its words keep their own taps
+                            // and colours, and one meaning sits under all of them.
+                            span { key: "{k}", class: if glosses { "annot-phrase glossed" } else { "annot-phrase" },
+                                span { class: "annot-phrase-words",
+                                    if !lead.is_empty() {
+                                        span { class: "annot-punct", "{lead}" }
+                                    }
+                                    for (m , p) in runs.into_iter().enumerate() {
+                                        match p.word {
+                                            Some(i) => rsx! {
+                                                WordRun { key: "{m}", p, i, open, glosses: false }
+                                            },
+                                            None => rsx! { span { key: "{m}", "{p.text}" } },
+                                        }
+                                    }
+                                    if !trail.is_empty() {
+                                        span { class: "annot-punct", "{trail}" }
                                     }
                                 }
+                                if glosses {
+                                    span { class: "annot-g", lang: voice.tag(), dir: voice.dir().as_str(), "{short(g.get(voice))}" }
+                                }
                             }
-                            if glosses {
-                                span { class: "annot-g", lang: voice.tag(), dir: voice.dir().as_str(), "{short(g.get(voice))}" }
-                            }
-                        }
-                    } else {
-                        for (m , p) in group.into_iter().enumerate() {
-                            match p.word {
-                                Some(i) => rsx! {
-                                    WordRun { key: "{k}.{m}", p, i, open, glosses }
-                                },
-                                None => rsx! { span { key: "{k}.{m}", "{p.text}" } },
-                            }
-                        }
+                        },
+                        DrawRun::Word { p, i, lead, trail } => rsx! {
+                            WordRun { key: "{k}", p, i, open, glosses, lead, trail }
+                        },
+                        DrawRun::Plain(t) => rsx! { span { key: "{k}", "{t}" } },
                     }
                 }
             }

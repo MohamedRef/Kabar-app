@@ -131,23 +131,26 @@ fn Intro(rule: Signal<Option<String>>, session: Signal<Option<Session>>) -> Elem
 }
 
 /// "ف → p": the Arabic side, an arrow that follows the reading direction, and
-/// the Indonesian side. A side that describes rather than spells ("(vowel)",
-/// "(سكون)") comes from the UI text tables in the learner's language.
+/// the Indonesian side, each bidi-isolated inside a directional pair (#689).
 #[component]
 fn RuleShift(from: String, to: String) -> Element {
     let ui = use_context::<Ui>();
+    let dir = ui.lang().dir();
+    let arrow = if dir == kabar_core::locale::Direction::Rtl { " ← " } else { " → " };
     let from = match logic::rule_placeholder(&from) {
-        Some(msg) => rsx! { span { class: "rule-note", "{ui.t(msg)}" } },
-        None => rsx! { span { class: "ar", lang: "ar", "{from}" } },
+        Some(msg) => rsx! { bdi { class: "rule-note", dir: dir.as_str(), "{ui.t(msg)}" } },
+        None => rsx! { bdi { class: "ar", lang: "ar", dir: "rtl", "{from}" } },
     };
     let to = match logic::rule_placeholder(&to) {
-        Some(msg) => rsx! { span { class: "rule-note", "{ui.t(msg)}" } },
+        Some(msg) => rsx! { bdi { class: "rule-note", dir: dir.as_str(), "{ui.t(msg)}" } },
         None => rsx! { bdi { class: "latin", lang: "id", dir: "ltr", "{to}" } },
     };
     rsx! {
-        {from}
-        span { class: "flip", aria_hidden: "true", " → " }
-        {to}
+        bdi { class: "rule-pair", dir: dir.as_str(),
+            {from}
+            span { "{arrow}" }
+            {to}
+        }
     }
 }
 
@@ -165,7 +168,7 @@ fn RuleCard(rule: SoundRule) -> Element {
             ul { class: "examples",
                 for ex in rule.examples.iter() {
                     li { key: "{ex}",
-                        bdi { class: "bridge-word latin", lang: "id", "{ex}" }
+                        bdi { class: "bridge-word latin", lang: "id", "{logic::display_word(ex)}" }
                         if let Some(entry) = data.and_then(|d| d.entry(ex)) {
                             span { aria_hidden: "true", " · " }
                             span { class: "ar gold-text", lang: "ar", "{entry.arabic}" }
@@ -220,7 +223,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
                 if arabic_choices { "{ui.t(PlayMsg::DetectiveGuessArabic)}" } else { "{ui.t(PlayMsg::DetectiveGuessIndonesian)}" }
             }
             if arabic_choices {
-                p { class: "prompt latin", lang: "id", bdi { "{round.prompt}" } }
+                p { class: "prompt latin", lang: "id", bdi { "{logic::display_word(&round.prompt)}" } }
             } else {
                 p { class: "prompt ar", lang: "ar", dir: "rtl", "{round.prompt}" }
                 if let Some(r) = rule {
@@ -247,7 +250,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
                         if arabic_choices {
                             span { class: "ar", lang: "ar", dir: "rtl", "{choice}" }
                         } else {
-                            bdi { class: "latin", lang: "id", "{choice}" }
+                            bdi { class: "latin", lang: "id", "{logic::display_word(choice)}" }
                         }
                     }
                 }
@@ -261,12 +264,16 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
                         if arabic_choices {
                             span { class: "ar", lang: "ar", "{round.choices[round.answer]}" }
                         } else {
-                            bdi { class: "latin", lang: "id", "{round.choices[round.answer]}" }
+                            bdi {
+                                class: "latin",
+                                lang: "id",
+                                "{logic::display_word(&round.choices[round.answer])}"
+                            }
                         }
                     }
                     if let Some(e) = entry {
                         p { class: "small",
-                            bdi { class: "bridge-word latin", lang: "id", "{e.word}" }
+                            bdi { class: "bridge-word latin", lang: "id", "{logic::display_word(&e.word)}" }
                             " · "
                             span { class: "ar", lang: "ar", "{e.arabic}" }
                             " · {meaning(ui.lang(), &e.meaning)}"

@@ -66,6 +66,24 @@ fn word_parts_take_their_colours_inside_the_sentence() {
 }
 
 #[test]
+fn attached_punctuation_stays_next_to_a_glossed_word() {
+    let html = ready(
+        || rsx! { Annotated { text: "\"Terima kasih, Kak! Ayo main bola!\"", tag: "id" } },
+        |_| {},
+        UiLanguage::ArEg,
+    );
+    // Punctuation sits inside .annot-word / .annot-phrase-words before .annot-g (#689).
+    assert!(html.contains("<span class=\"annot-punct\">,</span></span><span class=\"annot-g\""), "{html}");
+    assert!(html.contains("<span class=\"annot-punct\">!</span></span><span class=\"annot-g\""), "{html}");
+    assert!(
+        html.contains("<span class=\"annot-punct\">\"</span>")
+            || html.contains("<span class=\"annot-punct\">&quot;</span>"),
+        "{html}"
+    );
+    assert!(text_of(&html).contains("\"Terima kasih, Kak! Ayo main bola!\""), "{}", text_of(&html));
+}
+
+#[test]
 fn on_tap_the_translation_waits_behind_a_chip() {
     let html = ready(greeting, |s| s.translation = TranslationMode::Tap, EN);
     assert!(html.contains("annot-reveal") && text_of(&html).contains(tt(EN, T::ShowTranslation)), "{html}");
