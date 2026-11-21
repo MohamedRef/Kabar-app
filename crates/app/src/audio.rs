@@ -154,17 +154,9 @@ pub fn default_voice(language: &str) -> Voice {
     if language == "jv" { Voice::JvSiti } else { Voice::IdGadis }
 }
 
-/// From a component: the neural voice for `text` as a playable URL, when it
-/// is on the device or Kabar Cloud is reachable right now. `None` means use
-/// the device's own voice; it never waits on a network that is down.
-pub fn neural(
-    text: &str,
-    language: &str,
-) -> Option<impl std::future::Future<Output = Option<String>> + use<>> {
-    neural_in(text, default_voice(language))
-}
-
-/// [`neural`] in a given voice (a persona's).
+/// From a component: the neural voice for `text` in `voice` as a playable URL,
+/// when it is on the device or Kabar Cloud is reachable right now. `None` means
+/// use the device's own voice; it never waits on a network that is down.
 pub fn neural_in(
     text: &str,
     voice: Voice,

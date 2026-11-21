@@ -487,3 +487,12 @@ fn hyphen_lines_become_a_list() {
     // Plain text keeps its line breaks; a hyphen mid-line is just text.
     assert_eq!(body_blocks("a\nb - c"), vec![BodyBlock::Text("a\nb - c".into())]);
 }
+
+#[test]
+fn neural_fallback_keeps_a_dialogue_speakers_voice() {
+    use kabar_protocol::cloud::Voice;
+    assert_eq!(fallback_voice("id", Some(Voice::IdArdi)), Voice::IdArdi);
+    assert_eq!(fallback_voice("jv", Some(Voice::JvDimas)), Voice::JvDimas);
+    assert_eq!(fallback_voice("id", None), Voice::IdGadis);
+    assert_eq!(fallback_voice("jv", None), Voice::JvSiti);
+}
