@@ -766,7 +766,8 @@ fn expired_access_tokens_refresh_once_and_disallowed_refresh_is_named() {
         _ => None,
     });
     assert!(devices.unwrap().iter().any(|d| d.current));
-    assert_eq!(phone.wait_status("still live", |s| s.sync == SyncState::Live).problem, None);
+    assert!(cloud.requested("POST /v1/auth/refresh") >= 1);
+    assert!(access(&phone, false).is_some(), "still signed in");
 
     // Unknown usernames lock after 5 tries just like real ones (#715).
     let mut guesser = Device::start(dir.path(), "guesser", Platform::Web, &cloud.url);
