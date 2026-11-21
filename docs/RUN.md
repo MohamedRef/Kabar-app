@@ -263,7 +263,7 @@ git add content/packs && git commit -m "Packs: audio hashes" && git push
 
 Commit `content/packs/` after bundling: the app build embeds `content/packs/index.json`, so it lists every unit offline. Javanese text is still unverified; if a reviewed lesson changes, `just packs` marks only the changed lines as missing and `just packs-audio` regenerates just those.
 
-**In the app:** Settings → **Offline packs** lists every unit with its size, Download / Update / Remove, total storage, and "Download the current and next unit automatically" (on by default: opening a lesson fetches its unit and the next one in the background). The Lesson Player plays a downloaded clip first, then the device's own voice (Android TextToSpeech, or the WebView voice on the Mac), exactly as before. A run-time `KABAR_PACKS_URL` points the app at another release; an empty one turns downloads off.
+**In the app:** Settings → **Offline packs** lists every unit with its size, Download / Update / Remove, total storage (`<data>/packs/audio/`, separate from `<data>/audio/`), and "Download the current and next unit automatically" (on by default: opening a lesson fetches its unit and the next one in the background). The Lesson Player plays a downloaded pack clip first, then Kabar Cloud's neural voice (keeping each dialogue speaker's voice), then the device's own voice (Android TextToSpeech, or the WebView voice on the Mac). A run-time `https://` `KABAR_PACKS_URL` points the app at another release; an empty one turns downloads off.
 
 ## 14. Watch & listen and persona chats (M12)
 

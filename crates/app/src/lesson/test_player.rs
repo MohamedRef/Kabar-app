@@ -147,49 +147,48 @@ fn percent(share: f32) -> u32 {
     (share * 100.0).round() as u32
 }
 
-/// Saves the outcome once Results is reached: the test events, the coach's
-/// practice log and, for placement, where the journey starts.
-fn record(db: &Db, coach: Coach, r: &TestRunner) {
+/// Saves the outcome once Results is reached: the test events in one atomic
+/// write, then the coach's practice log and (for placement) where the journey
+/// starts. Returns `false` if the database write failed so the UI can offer a
+/// retry without logging duplicate practice.
+fn record(db: &Db, coach: Coach, r: &TestRunner) -> bool {
     let test = r.test();
     let res = r.results();
-    {
-        let mut store = db.0.borrow_mut();
-        match test.kind {
-            TestKind::Level => {
-                if let Err(e) = store.record_lesson_event(&test.id, "test_finished", &r.finished()) {
-                    crate::diag::report!("saving the test result failed: {e}");
-                }
-                if res.passed == Some(true) {
-                    let mut mistakes: Vec<String> = Vec::new();
-                    for m in &res.missed {
-                        let item = &test.sections[m.section].items[m.item];
-                        for w in item.exercise().map(|ex| mistake_words(&ex)).unwrap_or_default() {
-                            if !mistakes.contains(&w) {
-                                mistakes.push(w);
-                            }
+    let saved = db.0.borrow_mut().atomically(|store| match test.kind {
+        TestKind::Level => {
+            store.record_lesson_event(&test.id, "test_finished", &r.finished())?;
+            if res.passed == Some(true) {
+                let mut mistakes: Vec<String> = Vec::new();
+                for m in &res.missed {
+                    let item = &test.sections[m.section].items[m.item];
+                    for w in item.exercise().map(|ex| mistake_words(&ex)).unwrap_or_default() {
+                        if !mistakes.contains(&w) {
+                            mistakes.push(w);
                         }
                     }
-                    let done = LessonCompleted {
-                        score: percent(res.total.share().unwrap_or(0.0)),
-                        xp: XP_FINISH,
-                        duration_ms: res.duration_ms,
-                        mistakes,
-                        results: Vec::new(),
-                        pass_verifies: false,
-                    };
-                    if let Err(e) = store.record_lesson_event(&test.id, "completed", &done) {
-                        crate::diag::report!("marking the level done failed: {e}");
-                    }
                 }
+                let done = LessonCompleted {
+                    score: percent(res.total.share().unwrap_or(0.0)),
+                    xp: XP_FINISH,
+                    duration_ms: res.duration_ms,
+                    mistakes,
+                    results: Vec::new(),
+                    pass_verifies: false,
+                };
+                store.record_lesson_event(&test.id, "completed", &done)?;
             }
-            TestKind::Placement => {
-                if let Some(p) = r.placement()
-                    && let Err(e) = store.record_lesson_event(&test.id, "placed", &p)
-                {
-                    crate::diag::report!("saving the placement failed: {e}");
-                }
-            }
+            Ok(())
         }
+        TestKind::Placement => {
+            if let Some(p) = r.placement() {
+                store.record_lesson_event(&test.id, "placed", &p)?;
+            }
+            Ok(())
+        }
+    });
+    if let Err(e) = saved {
+        crate::diag::report!("saving the test result failed: {e}");
+        return false;
     }
     // Kak Nur: one practice entry per skill (feeds the radar and reports).
     let mut seconds = (res.duration_ms / 1000) as u32;
@@ -223,6 +222,7 @@ fn record(db: &Db, coach: Coach, r: &TestRunner) {
             coach.save_profile(db, profile);
         }
     }
+    true
 }
 
 #[cfg(test)]
@@ -252,10 +252,27 @@ fn TestView(test: TestContent) -> Element {
     // The banner below says it once; the prompts don't repeat it.
     use_context_provider(|| NoSoundBanner);
     let mut recorded = use_signal(|| false);
+    let mut save_failed = use_signal(|| false);
     // Listening items skipped because the device has no voice for them.
     let mut voice_skips = use_signal(|| 0u32);
     // "Leave the test?" is showing.
     let mut confirm_close = use_signal(|| false);
+
+    let mut save_now = move || {
+        if *recorded.peek() {
+            return;
+        }
+        let ok = {
+            let r = runner.peek();
+            record(&db.read(), coach, &r)
+        };
+        if ok {
+            save_failed.set(false);
+            recorded.set(true);
+        } else {
+            save_failed.set(true);
+        }
+    };
 
     // Runs an operation on the runner, then: time, fresh draft, audio, and
     // the saved outcome once the results are reached.
@@ -273,11 +290,10 @@ fn TestView(test: TestContent) -> Element {
         }
         let mut draft = draft;
         draft.set(Draft::default());
-        let r = runner.peek();
-        if r.step() == TestStep::Results && !*recorded.peek() {
-            recorded.set(true);
-            record(&db.read(), coach, &r);
+        if runner.peek().step() == TestStep::Results && !*recorded.peek() {
+            save_now();
         }
+        let r = runner.peek();
         if let Some((text, audio)) = r.exercise().and_then(|ex| autoplay_text(&ex)) {
             speak(&text, &r.test().language, false, audio.as_deref(), audio_missing);
         }
@@ -342,7 +358,7 @@ fn TestView(test: TestContent) -> Element {
             window.__kabarTestKeys = (e) => {
                 if (!document.querySelector(".lt") || e.isComposing) return;
                 const t = e.target;
-                if (t.closest && t.closest(".lp-top, .lt-selfcheck, .lt-results, .lt-confirm")) return;
+                if (t.closest && t.closest(".lp-top, .lt-selfcheck, .lt-results, .lt-confirm, .lp-finish-unsaved")) return;
                 const typing = t.tagName === "TEXTAREA" || t.tagName === "INPUT";
                 if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
@@ -501,9 +517,16 @@ fn TestView(test: TestContent) -> Element {
                         },
                         TestStep::SelfCheck => rsx! { SelfCheck { runner } },
                         TestStep::Results => rsx! {
+                            if save_failed() {
+                                div { class: "save-notice lp-finish-unsaved", role: "alert", aria_atomic: "true",
+                                    p { {lt(lang, L::TestUnsaved)} }
+                                    button { class: "secondary save-retry", onclick: move |_| save_now(), {lt(lang, L::FinishRetry)} }
+                                }
+                            }
                             if let Some(res) = results.clone() {
                                 Results { test: t.clone(), results: res, on_retry: move |_| {
                                     recorded.set(false);
+                                    save_failed.set(false);
                                     let test = runner.peek().test().clone();
                                     runner.set(TestRunner::new(test));
                                 } }

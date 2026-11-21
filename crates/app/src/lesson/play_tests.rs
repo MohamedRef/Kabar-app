@@ -824,10 +824,17 @@ fn open_test_sim(id: &str, lang: UiLanguage) -> Sim {
 #[test]
 fn a_level_test_taken_well_passes_and_is_recorded() {
     let mut sim = open_test_sim("bipa1.test", UiLanguage::ArEg);
+    db(&mut sim).0.borrow().refuse_writes();
     let twin = take_test(&mut sim, "bipa1.test", true, L::GradeFully);
     assert_eq!(twin.results().passed, Some(true));
     let html = sim.html();
     assert!(html.contains("lt-results"), "{html}");
+    assert!(html.contains(&esc(lt(UiLanguage::ArEg, L::TestUnsaved))), "failed save asks to retry: {html}");
+    assert!(db(&mut sim).0.borrow().lesson_events("bipa1.test").unwrap().is_empty());
+    db(&mut sim).0.borrow().allow_writes();
+    sim.click(|n| n.has_class("save-retry"));
+    let html = sim.html();
+    assert!(!html.contains("lp-finish-unsaved"), "{html}");
     assert!(html.contains(&esc(lt(UiLanguage::ArEg, L::PassedTitle))), "{html}");
     assert!(!html.contains("class=\"lt-retry\""), "nothing to retry");
     let db = db(&mut sim);
@@ -1227,6 +1234,9 @@ fn every_player_string_is_translated_with_its_placeholders() {
         L::ChoiceYours,
         L::ChoiceYoursCorrect,
         L::PairMatched,
+        L::FinishUnsaved,
+        L::TestUnsaved,
+        L::FinishRetry,
     ];
     let holes = |s: &str| {
         let mut h: Vec<String> =

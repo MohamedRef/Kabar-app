@@ -876,22 +876,30 @@ impl Player {
         if let Some(step) = step {
             p.go(step);
         }
-        p.pending = p.restored_grade(position.response.as_ref().and_then(|r| r.checked.as_ref()));
+        let resp = position.response.as_ref();
+        if resp.is_some_and(|r| r.practice) && p.recorded_outcome().is_some() {
+            p.practice = true;
+        }
+        p.pending = p.restored_grade(resp);
         p
+    }
+
+    fn recorded_outcome(&self) -> Option<Outcome> {
+        let Step::Exercise { index, retry } = self.step else { return None };
+        let r = self.result(index)?;
+        if retry { r.retry } else { Some(r.first) }
     }
 
     /// The feedback a resumed exercise shows: an exercise answered before
     /// the lesson was closed is never asked (and graded) again. The saved
     /// grade wins; a position from before grades were saved falls back to
-    /// the recorded outcome. Nothing if this pass has no result (the content
-    /// changed, or the answer was never checked).
-    fn restored_grade(&self, saved: Option<&SavedGrade>) -> Option<Grade> {
-        let Step::Exercise { index, retry } = self.step else { return None };
-        let r = self.result(index)?;
-        let outcome = if retry { r.retry? } else { r.first };
+    /// the recorded outcome, unless `practice` is open for a fresh second go.
+    fn restored_grade(&self, saved: Option<&SavedResponse>) -> Option<Grade> {
+        let outcome = self.recorded_outcome()?;
         match saved {
-            Some(g) => Some(Grade::from_saved(g)),
-            None => Grade::of_outcome(outcome, self.exercise()?),
+            Some(s) if s.practice => s.checked.as_ref().map(Grade::from_saved),
+            Some(s) if s.checked.is_some() => s.checked.as_ref().map(Grade::from_saved),
+            _ => Grade::of_outcome(outcome, self.exercise()?),
         }
     }
 
@@ -927,8 +935,15 @@ impl Player {
             Step::Dialogue => LessonStep::Dialogue,
             Step::Summary => LessonStep::Summary,
         };
-        let response =
-            self.pending.as_ref().map(|g| SavedResponse { checked: Some(g.saved()), ..Default::default() });
+        let response = if self.pending.is_some() || self.practice {
+            Some(SavedResponse {
+                checked: self.pending.as_ref().map(Grade::saved),
+                practice: self.practice,
+                ..Default::default()
+            })
+        } else {
+            None
+        };
         LessonPosition {
             lesson_id: self.lesson.id.clone(),
             step,
@@ -1001,8 +1016,11 @@ impl Player {
 
     /// "Try again" on a checked exercise: clears its feedback so it can be
     /// answered once more. The first grade stays the one that counts.
+    /// Unavailable while `NeedsReview` waits for the learner's self-check.
     pub fn try_again(&mut self) -> Option<LessonPosition> {
-        if !matches!(self.step, Step::Exercise { .. }) || self.pending.is_none() {
+        if !matches!(self.step, Step::Exercise { .. })
+            || matches!(self.pending, None | Some(Grade::NeedsReview))
+        {
             return None;
         }
         self.pending = None;

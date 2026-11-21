@@ -126,13 +126,21 @@ pub async fn boot() {
     crate::platform::files::boot().await;
 }
 
+/// An IndexedDB entry's bytes (`Ok(None)` when not stored yet).
+pub async fn idb_get_checked(key: &str) -> Result<Option<Vec<u8>>, String> {
+    match idb_get(key).await {
+        Ok(v) if v.is_null() || v.is_undefined() => Ok(None),
+        Ok(v) => Ok(Some(js_sys::Uint8Array::new(&v).to_vec())),
+        Err(e) => Err(format!("{e:?}")),
+    }
+}
+
 /// An IndexedDB entry's bytes (`None`: missing or unreadable).
 pub async fn idb_get_bytes(key: &str) -> Option<Vec<u8>> {
-    match idb_get(key).await {
-        Ok(v) if v.is_null() || v.is_undefined() => None,
-        Ok(v) => Some(js_sys::Uint8Array::new(&v).to_vec()),
+    match idb_get_checked(key).await {
+        Ok(bytes) => bytes,
         Err(e) => {
-            crate::diag::report!("reading {key} from browser storage failed: {e:?}");
+            crate::diag::report!("reading {key} from browser storage failed: {e}");
             None
         }
     }

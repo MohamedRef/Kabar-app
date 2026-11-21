@@ -1318,6 +1318,7 @@ fn the_library_strings_exist_in_all_three_voices() {
         L::Texts,
         L::Words,
         L::Downloads,
+        L::DownloadsUnavailable,
         L::NoTexts,
         L::NoTextsPasteOnly,
         L::NoMatch,
