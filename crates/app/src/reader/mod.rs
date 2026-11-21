@@ -1128,7 +1128,9 @@ fn ReadView(open: Open) -> Element {
                     span { "{ui.t(ReaderMsg::Explanation)}" }
                 }
                 div { id: "reader-doc", class: "doc split", {rows} }
-                p { class: "muted small pen-hint", "{input_hint(ui.lang(), *ui.tablet.read())}" }
+                p { class: "muted small pen-hint",
+                    "{input_hint(ui.lang(), *ui.tablet.read(), crate::platform::touch_screen())}"
+                }
                 grammar::TextGrammar {}
             }
             if panel_open {
@@ -1143,13 +1145,14 @@ fn ReadView(open: Open) -> Element {
 }
 
 /// How to use the words below the text, for this device's input: the pen
-/// sentence on the tablet (S Pen), touch on a phone, the mouse on the Mac.
-fn input_hint(lang: kabar_core::locale::UiLanguage, tablet: bool) -> &'static str {
+/// sentence on the tablet (S Pen), touch on a phone or in a phone's browser,
+/// the mouse on the Mac and a desktop browser.
+fn input_hint(lang: kabar_core::locale::UiLanguage, tablet: bool, touch: bool) -> &'static str {
     use kabar_core::locale::UiLanguage::*;
     if tablet {
         return crate::i18n::t(lang, Msg::PenHint);
     }
-    match (cfg!(target_os = "android"), lang) {
+    match (touch, lang) {
         (true, ArEg) => {
             "دوس على أي كلمة تشوف معناها، ودوس مطوّل تفتح الكارت أو تحفظها. اسحب على عبارة تشرحها."
         }

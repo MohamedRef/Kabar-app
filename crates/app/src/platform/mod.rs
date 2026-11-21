@@ -138,6 +138,26 @@ pub fn can_vibrate() -> bool {
     }
 }
 
+/// The screen is touched, not pointed at: Android, and a phone or tablet
+/// browser (`(hover: none) and (pointer: coarse)`), so hints say "tap", not
+/// "rest the mouse" (#689).
+pub fn touch_screen() -> bool {
+    #[cfg(target_os = "android")]
+    {
+        true
+    }
+    #[cfg(target_arch = "wasm32")]
+    {
+        web_sys::window()
+            .and_then(|w| w.match_media("(hover: none) and (pointer: coarse)").ok().flatten())
+            .is_some_and(|m| m.matches())
+    }
+    #[cfg(not(any(target_os = "android", target_arch = "wasm32")))]
+    {
+        false
+    }
+}
+
 /// Whether the device is in dark mode, where the platform can tell
 /// (Android: the system uiMode, which the WebView may misreport); `None`
 /// elsewhere, where CSS `prefers-color-scheme` is right.

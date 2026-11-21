@@ -15,6 +15,13 @@
     "confidence": {
       "$ref": "#/$defs/Confidence"
     },
+    "display": {
+      "description": "How the word is written when it isn't all lowercase: names, days,\nmonths and faiths take a capital (`Allah`, `Senin`, `Islam`). Must\nlowercase to `word`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "lang": {
       "$ref": "#/$defs/Lang"
     },
@@ -69,7 +76,7 @@
       ]
     },
     "word": {
-      "description": "The Indonesian/Javanese word, lowercase.",
+      "description": "The Indonesian/Javanese word, lowercase: the card's key.",
       "type": "string"
     }
   },

@@ -172,7 +172,7 @@ fn DeckRow(entry: BridgeEntry, known: bool) -> Element {
         details { class: if known { "deck-row known" } else { "deck-row" },
             summary { class: "coll-btn",
                 span { class: "coll-main deck-word",
-                    bdi { class: "coll-title bridge-word latin", lang: "id", dir: "ltr", "{entry.word}" }
+                    bdi { class: "coll-title bridge-word latin", lang: "id", dir: "ltr", "{entry.shown()}" }
                     span { class: "coll-sub", "{meaning(ui.lang(), &entry.meaning)}" }
                 }
                 span { class: "coll-end deck-end",
@@ -234,5 +234,14 @@ mod tests {
         assert!(!says_more(kabar, &kabar.arabic, "news"), "the Arabic word again says nothing new");
         assert!(!says_more(kabar, "أخبار", "أخبار"));
         assert!(says_more(kabar, "نبأ", "أخبار"));
+    }
+
+    #[test]
+    fn names_days_and_faiths_keep_their_capital() {
+        let data = content::bridge().as_ref().expect("bridge content");
+        let shown = |w: &str| data.entries.iter().find(|e| e.word == w).map(|e| e.shown().to_string());
+        assert_eq!(shown("allah").as_deref(), Some("Allah"), "#689");
+        assert_eq!(shown("senin").as_deref(), Some("Senin"));
+        assert_eq!(shown("kabar").as_deref(), Some("kabar"));
     }
 }

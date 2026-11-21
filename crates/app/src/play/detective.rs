@@ -266,7 +266,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
                     }
                     if let Some(e) = entry {
                         p { class: "small",
-                            bdi { class: "bridge-word latin", lang: "id", "{e.word}" }
+                            bdi { class: "bridge-word latin", lang: "id", "{e.shown()}" }
                             " · "
                             span { class: "ar", lang: "ar", "{e.arabic}" }
                             " · {meaning(ui.lang(), &e.meaning)}"

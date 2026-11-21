@@ -250,8 +250,13 @@ pub enum Confidence {
 #[serde(deny_unknown_fields)]
 pub struct BridgeEntry {
     pub lang: Lang,
-    /// The Indonesian/Javanese word, lowercase.
+    /// The Indonesian/Javanese word, lowercase: the card's key.
     pub word: String,
+    /// How the word is written when it isn't all lowercase: names, days,
+    /// months and faiths take a capital (`Allah`, `Senin`, `Islam`). Must
+    /// lowercase to `word`.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub display: Option<String>,
     /// The Arabic source word, vocalized where it helps (خَبَر).
     pub arabic: String,
     /// Arabic root letters separated by spaces (خ ب ر); absent for non-triliteral words.
@@ -278,6 +283,13 @@ pub struct BridgeEntry {
     pub sources: Vec<String>,
     #[serde(default)]
     pub status: ReviewStatus,
+}
+
+impl BridgeEntry {
+    /// The word as it is written ([`Self::display`], else [`Self::word`]).
+    pub fn shown(&self) -> &str {
+        self.display.as_deref().unwrap_or(&self.word)
+    }
 }
 
 /// A regular sound change from Arabic, e.g. ف → p.
