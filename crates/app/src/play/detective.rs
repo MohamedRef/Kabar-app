@@ -130,6 +130,12 @@ fn Intro(rule: Signal<Option<String>>, session: Signal<Option<Session>>) -> Elem
     }
 }
 
+/// A Bridge word as it is written ("Allah"), from its entry's `display`
+/// spelling (#689); a word with no entry stays as it is.
+fn shown(word: &str) -> &str {
+    content::bridge().as_ref().ok().and_then(|d| d.entry(word)).map_or(word, |e| e.shown())
+}
+
 /// "ف → p": the Arabic side, an arrow that follows the reading direction, and
 /// the Indonesian side, each bidi-isolated inside a directional pair (#689).
 #[component]
@@ -168,7 +174,7 @@ fn RuleCard(rule: SoundRule) -> Element {
             ul { class: "examples",
                 for ex in rule.examples.iter() {
                     li { key: "{ex}",
-                        bdi { class: "bridge-word latin", lang: "id", "{logic::display_word(ex)}" }
+                        bdi { class: "bridge-word latin", lang: "id", "{shown(ex)}" }
                         if let Some(entry) = data.and_then(|d| d.entry(ex)) {
                             span { aria_hidden: "true", " · " }
                             span { class: "ar gold-text", lang: "ar", "{entry.arabic}" }
@@ -223,7 +229,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
                 if arabic_choices { "{ui.t(PlayMsg::DetectiveGuessArabic)}" } else { "{ui.t(PlayMsg::DetectiveGuessIndonesian)}" }
             }
             if arabic_choices {
-                p { class: "prompt latin", lang: "id", bdi { "{logic::display_word(&round.prompt)}" } }
+                p { class: "prompt latin", lang: "id", bdi { "{shown(&round.prompt)}" } }
             } else {
                 p { class: "prompt ar", lang: "ar", dir: "rtl", "{round.prompt}" }
                 if let Some(r) = rule {
@@ -250,7 +256,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
                         if arabic_choices {
                             span { class: "ar", lang: "ar", dir: "rtl", "{choice}" }
                         } else {
-                            bdi { class: "latin", lang: "id", "{logic::display_word(choice)}" }
+                            bdi { class: "latin", lang: "id", "{shown(choice)}" }
                         }
                     }
                 }
@@ -267,13 +273,13 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
                             bdi {
                                 class: "latin",
                                 lang: "id",
-                                "{logic::display_word(&round.choices[round.answer])}"
+                                "{shown(&round.choices[round.answer])}"
                             }
                         }
                     }
                     if let Some(e) = entry {
                         p { class: "small",
-                            bdi { class: "bridge-word latin", lang: "id", "{logic::display_word(&e.word)}" }
+                            bdi { class: "bridge-word latin", lang: "id", "{e.shown()}" }
                             " · "
                             span { class: "ar", lang: "ar", "{e.arabic}" }
                             " · {meaning(ui.lang(), &e.meaning)}"

@@ -148,12 +148,17 @@ fn the_tablet_hint_is_the_pen_sentence() {
 #[test]
 fn input_hints_speak_the_learners_language() {
     for lang in UiLanguage::ALL {
-        let hint = input_hint(lang, false);
-        assert!(!hint.is_empty());
-        assert_eq!(input_hint(lang, true), msg(lang, Msg::PenHint));
-        let arabic = hint.chars().any(|c| ('\u{0600}'..='\u{06FF}').contains(&c));
-        assert_eq!(arabic, lang != UiLanguage::En, "{hint}");
+        for touch in [false, true] {
+            let hint = input_hint(lang, false, touch);
+            assert!(!hint.is_empty());
+            assert_eq!(input_hint(lang, true, touch), msg(lang, Msg::PenHint));
+            let arabic = hint.chars().any(|c| ('\u{0600}'..='\u{06FF}').contains(&c));
+            assert_eq!(arabic, lang != UiLanguage::En, "{hint}");
+        }
     }
+    // A phone's browser has no mouse or right-click (#689).
+    assert!(input_hint(UiLanguage::En, false, true).starts_with("Tap"));
+    assert!(input_hint(UiLanguage::En, false, false).contains("mouse"));
 }
 
 #[test]

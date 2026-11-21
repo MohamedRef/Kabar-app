@@ -105,7 +105,7 @@ object ReminderBridge {
         }
     }
 
-    /** Remembers that the reminder planned for `at` was shown. */
+    /** Remembers that a reminder was shown at `at` (unix ms). */
     fun markDelivered(context: Context, at: Long) {
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         val list = try { JSONArray(prefs.getString(DELIVERED, "[]")) } catch (e: org.json.JSONException) { JSONArray() }
@@ -169,7 +169,8 @@ class ReminderReceiver : BroadcastReceiver() {
                 val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
                 if (nm.areNotificationsEnabled()) {
                     ReminderBridge.show(context, title, text)
-                    ReminderBridge.markDelivered(context, intent.getLongExtra("at", 0))
+                    // Stamp the real firing instant so DST changes never skew last_sent_ms (#714).
+                    ReminderBridge.markDelivered(context, System.currentTimeMillis())
                 }
             }
         }

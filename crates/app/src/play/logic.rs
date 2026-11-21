@@ -185,47 +185,6 @@ pub fn deck_headline(n: usize) -> String {
     format!("Kamu sudah tahu {n} kata")
 }
 
-/// Capitalises Indonesian proper nouns stored lowercase in Bridge keys (#689).
-pub fn display_word(word: &str) -> &str {
-    match word {
-        "ahad" => "Ahad",
-        "ali" => "Ali",
-        "alkitab" => "Alkitab",
-        "allah" => "Allah",
-        "arab" => "Arab",
-        "badui" => "Badui",
-        "hijriah" => "Hijriah",
-        "iblis" => "Iblis",
-        "idul" => "Idul",
-        "iduladha" => "Iduladha",
-        "idulfitri" => "Idulfitri",
-        "injil" => "Injil",
-        "islam" => "Islam",
-        "jumat" => "Jumat",
-        "kamis" => "Kamis",
-        "masehi" => "Masehi",
-        "muharam" => "Muharam",
-        "muslim" => "Muslim",
-        "nasrani" => "Nasrani",
-        "quran" => "Quran",
-        "rabu" => "Rabu",
-        "rajab" => "Rajab",
-        "ramadan" => "Ramadan",
-        "sabtu" => "Sabtu",
-        "selasa" => "Selasa",
-        "senin" => "Senin",
-        "sufi" => "Sufi",
-        "syakban" => "Syakban",
-        "syawal" => "Syawal",
-        "taurat" => "Taurat",
-        "yahudi" => "Yahudi",
-        "yunani" => "Yunani",
-        "zabur" => "Zabur",
-        "zulhijah" => "Zulhijah",
-        _ => word,
-    }
-}
-
 /// A sound-rule side that is a description, not letters ("(vowel)",
 /// "(dropped)", "(سكون)", "(آخر الكلمة)"), shown from the UI text tables in
 /// the learner's language instead of as raw content.
@@ -334,9 +293,6 @@ mod tests {
         assert_eq!(day_seed(LocalDate(-1)), 0);
         assert_eq!(best_key("Millions"), "play.rupiah.best.Millions");
         assert_eq!(deck_headline(312), "Kamu sudah tahu 312 kata");
-        assert_eq!(display_word("allah"), "Allah");
-        assert_eq!(display_word("jumat"), "Jumat");
-        assert_eq!(display_word("kabar"), "kabar");
     }
 
     #[test]
