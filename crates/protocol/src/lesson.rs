@@ -319,6 +319,10 @@ pub struct SavedResponse {
     /// Set once the answer was checked: the grade its feedback shows.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub checked: Option<SavedGrade>,
+    /// Set after tapping ↻ Try again: a second go on screen that never
+    /// overwrites the recorded first grade.
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub practice: bool,
 }
 
 impl SavedResponse {

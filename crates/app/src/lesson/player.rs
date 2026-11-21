@@ -481,7 +481,7 @@ pub(super) fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) 
                                 "{lt(lang, L::CantListenNow)}"
                             }
                         }
-                        if pending.is_some() && exercise.is_some() {
+                        if matches!(&pending, Some(g) if *g != Grade::NeedsReview) && exercise.is_some() {
                             button {
                                 class: "lp-again",
                                 aria_label: "{lt(lang, L::TryAgain)}",
@@ -538,8 +538,12 @@ pub(super) fn exercise_marks(p: &Player) -> Vec<notes::Mark> {
 pub(super) fn save_with(db: CopyValue<Db>, p: &Player, d: &Draft) {
     let mut pos = p.position();
     if let Some(ex) = p.exercise() {
-        let checked = pos.response.take().and_then(|r| r.checked);
-        let r = SavedResponse { checked, ..save_draft(ex, d, &p.tiles(ex)) };
+        let prev = pos.response.take().unwrap_or_default();
+        let r = SavedResponse {
+            checked: prev.checked,
+            practice: prev.practice,
+            ..save_draft(ex, d, &p.tiles(ex))
+        };
         pos.response = (!r.is_empty()).then_some(r);
     }
     save(db, &pos);

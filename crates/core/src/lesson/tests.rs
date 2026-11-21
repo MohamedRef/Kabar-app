@@ -844,12 +844,20 @@ fn trying_again_is_practice_and_keeps_the_first_grade() {
     let recorded = p.completed().results;
     let pos = p.try_again().expect("a checked exercise can be tried again");
     assert_eq!(p.pending(), None);
-    assert_eq!(pos.response, None, "the old feedback is cleared");
+    assert_eq!(
+        pos.response,
+        Some(SavedResponse { practice: true, ..Default::default() }),
+        "the old feedback is cleared, and practice survives a reopen"
+    );
+    let mut reopened = reopen(l01(), &pos);
+    assert_eq!(reopened.pending(), None, "still unanswered on reopen");
     let right = Answer::Choice(match &ex(&l01(), "e03").kind {
         ExerciseKind::MultipleChoice { answer, .. } => *answer,
         ExerciseKind::Listen { answer: Some(a), .. } => *a,
         k => panic!("{k:?}"),
     });
+    assert_eq!(reopened.check(&right, EG), Grade::Correct, "graded on screen");
+    assert_eq!(reopened.completed().results, recorded, "but never recorded");
     assert_eq!(p.check(&right, EG), Grade::Correct, "graded on screen");
     assert_eq!(p.completed().results, recorded, "but never recorded");
     p.advance();
@@ -857,4 +865,27 @@ fn trying_again_is_practice_and_keeps_the_first_grade() {
     let before = p.completed().results.len();
     answer(&mut p, &[]);
     assert_eq!(p.completed().results.len(), before + 1);
+}
+
+#[test]
+fn needs_review_answers_finish_self_check_before_try_again_and_keep_first_grade_after_reopen() {
+    let mut p = Player::new(l01());
+    walk_to(&mut p, "e08");
+    assert_eq!(p.check(&text("نورت"), EG), Grade::NeedsReview);
+    assert_eq!(p.try_again(), None, "self-check comes before Try again");
+    p.self_assess(false);
+    let recorded = p.completed().results;
+    assert_eq!(recorded.last().unwrap().first, Outcome::Missed);
+
+    p.try_again().expect("available once self-checked");
+    assert_eq!(p.check(&text("يا هلا"), EG), Grade::NeedsReview);
+    let mut q = reopen(l01(), &p.position());
+    assert_eq!(q.pending(), Some(&Grade::NeedsReview));
+    q.self_assess(true);
+    assert_eq!(q.pending(), Some(&Grade::Correct));
+    assert_eq!(
+        q.completed().results,
+        recorded,
+        "practice self-check after reopen never overwrites first try"
+    );
 }

@@ -139,6 +139,7 @@ pub enum L {
     ChoiceYoursCorrect,
     PairMatched,
     FinishUnsaved,
+    TestUnsaved,
     FinishRetry,
 }
 
@@ -150,6 +151,11 @@ pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
         (FinishUnsaved, Ar) => "تعذّر حفظ نتيجة الدرس، فلن يُحسب منتهيًا حتى تُحفظ. حاول مرة أخرى.",
         (FinishUnsaved, En) => {
             "The lesson's result couldn't be saved, so it won't count as done until it is. Try again."
+        }
+        (TestUnsaved, ArEg) => "ما عرفتش أحفظ نتيجة الاختبار، فمش هيتحسب خلص لحد ما تتحفظ. جرّب تاني.",
+        (TestUnsaved, Ar) => "تعذّر حفظ نتيجة الاختبار، فلن يُحسب منتهيًا حتى تُحفظ. حاول مرة أخرى.",
+        (TestUnsaved, En) => {
+            "The test's result couldn't be saved, so it won't count as done until it is. Try again."
         }
         (FinishRetry, ArEg) => "احفظ تاني",
         (FinishRetry, Ar) => "احفظ مرة أخرى",

@@ -173,3 +173,32 @@ fn an_export_carries_the_marker() {
     let doc = s.export("test", now_ms()).unwrap().document;
     assert!(doc.to_string().contains("reset.j3"));
 }
+
+#[test]
+fn finishing_on_another_device_drops_older_lanjut_for_that_lesson_only() {
+    let (mut phone, mut tablet) = (Store::open_in_memory().unwrap(), Store::open_in_memory().unwrap());
+    let mid = LessonPosition {
+        lesson_id: "bipa1.u01.l01".into(),
+        step: LessonStep::Exercise { id: "e07".into(), retry: false },
+        progress: None,
+        response: None,
+    };
+    phone.save_position(&mid).unwrap();
+    let seq = relay(&mut phone, &mut tablet, 1);
+    assert_eq!(tablet.position().unwrap(), Some(mid.clone()));
+
+    later();
+    tablet.save_position(&mid).unwrap();
+    tablet.record_lesson_event("bipa1.u01.l01", "completed", &serde_json::json!({})).unwrap();
+    tablet.clear_position().unwrap();
+    relay(&mut tablet, &mut phone, seq);
+
+    assert_eq!(tablet.position().unwrap(), None, "finished on tablet: phone's older row no longer resumes");
+    assert_eq!(phone.position().unwrap(), None, "synced back to phone: nothing left to resume");
+
+    // Starting a new replay later saves a fresher stamp and resumes normally.
+    later();
+    let replay = LessonPosition { step: LessonStep::Exercise { id: "e02".into(), retry: false }, ..mid };
+    phone.save_position(&replay).unwrap();
+    assert_eq!(phone.position().unwrap(), Some(replay));
+}

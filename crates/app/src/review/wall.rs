@@ -87,14 +87,18 @@ pub(super) fn CardWall() -> Element {
     let undo = {
         let engine = engine.clone();
         move |_| {
-            let Some(i) = freed.write().pop() else { return };
-            if let Some(Some(current)) = slots.peek().get(i).cloned() {
+            let Some(&i) = freed.peek().last() else { return };
+            if !engine.undo() {
+                return;
+            }
+            freed.write().pop();
+            let undone = engine.pull();
+            if let Some(Some(current)) = slots.peek().get(i).cloned()
+                && undone.as_deref() != Some(current.card_id.as_str())
+            {
                 engine.put_back(current.card_id);
             }
-            if engine.undo() {
-                slots.write()[i] =
-                    engine.pull().map(|card_id| Slot { card_id, dealt_ms: now_ms(), flipped: false });
-            }
+            slots.write()[i] = undone.map(|card_id| Slot { card_id, dealt_ms: now_ms(), flipped: false });
         }
     };
 
