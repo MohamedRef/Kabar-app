@@ -221,7 +221,8 @@ fn before_and_after_a_check_the_card_says_where_things_stand() {
     assert!(html.contains(&format!("✓ {}", ut(EN, U::UpToDate))), "{html}");
     assert!(html.contains(&ut(EN, U::LastChecked).replace("{when}", "Today")), "{html}");
     assert!(html.contains(&format!("✓ {}", ut(EN, U::ContentSame))));
-    assert!(html.contains(&format!("✓ {}", ut(EN, U::PacksRefreshed).replace("{n}", "2"))));
+    let refreshed = crate::i18n::fill(EN, ut(EN, U::PacksRefreshed), &[("n", "2")]);
+    assert!(html.contains(&format!("✓ {refreshed}")), "{html}");
     assert!(summary_of(&s).starts_with(&ut(EN, U::LastChecked).replace("{when}", "Today")));
 
     // A check that failed for the lessons says so too.
@@ -614,10 +615,15 @@ fn every_update_string_exists_in_all_three_languages_with_the_same_slots() {
         ReopenHint,
         OnThisDevice,
         HowItWorks,
+        Digest,
+        FinishedChanged,
+        Found,
     ];
     fn slots(s: &str) -> Vec<&str> {
-        let mut v: Vec<&str> =
-            s.match_indices('{').filter_map(|(i, _)| s[i..].split_once('}').map(|(a, _)| a)).collect();
+        let mut v: Vec<&str> = s
+            .match_indices('{')
+            .filter_map(|(i, _)| s[i + 1..].split_once('}').map(|(a, _)| a.split('|').next().unwrap_or(a)))
+            .collect();
         v.sort();
         v
     }
@@ -1070,4 +1076,18 @@ fn a_download_on_mobile_data_asks_first() {
         waiting.prefs.wifi_download = Some(o.key());
     }
     assert!(has(&card(waiting), EN, U::WifiQueued));
+}
+
+#[test]
+fn switching_from_the_updated_sheet_to_an_offer_marks_whats_new_as_seen() {
+    let (u, _data) = own_updater(2);
+    let dated = |b| build(b, vec![change(ChangeKind::New, &format!("Thing {b}"))]);
+    u.remember_history(&[dated(2), dated(1), dated(0)]);
+    u.update_prefs(|p| p.whats_new_from = Some("1.0.0-alpha.1+0".into()));
+    u.set_phase(Phase::Available(offer(3, vec![dated(3)])));
+    let mut page = mounted(u, Mounted::Sheet);
+    assert!(page.settled().contains("[sheet: Some(Updated)]"));
+    let html = page.click("[notification tapped]").settled();
+    assert!(html.contains("[sheet: Some(Offer)]"), "{html}");
+    assert_eq!(u.status().prefs.whats_new_from, None, "switching away marks Updated seen");
 }

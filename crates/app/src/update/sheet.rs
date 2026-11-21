@@ -49,6 +49,12 @@ impl UpdateSheetNav {
     }
 
     pub fn open(mut self, mode: SheetMode) {
+        if *self.0.peek() == Some(SheetMode::Updated)
+            && mode != SheetMode::Updated
+            && let Some(u) = super::view::updater()
+        {
+            u.close_whats_new();
+        }
         self.0.set(Some(mode));
     }
 
@@ -132,14 +138,15 @@ fn builds_count(ui: &Ui, n: usize) -> String {
         UiLanguage::ArEg => match n {
             1 => "نسخة جديدة".to_owned(),
             2 => "نسختين جداد".to_owned(),
-            3..=10 => format!("{n} نسخ جديدة"),
+            _ if (3..=10).contains(&(n % 100)) => format!("{n} نسخ جديدة"),
             _ => format!("{n} نسخة جديدة"),
         },
         UiLanguage::Ar => match n {
             1 => "إصدار جديد".to_owned(),
             2 => "إصداران جديدان".to_owned(),
-            3..=10 => format!("{n} إصدارات جديدة"),
-            _ => format!("{n} إصدارًا جديدًا"),
+            _ if (3..=10).contains(&(n % 100)) => format!("{n} إصدارات جديدة"),
+            _ if (11..=99).contains(&(n % 100)) => format!("{n} إصدارًا جديدًا"),
+            _ => format!("{n} إصدار جديد"),
         },
         UiLanguage::En if n == 1 => "1 new build".to_owned(),
         UiLanguage::En => format!("{n} new builds"),

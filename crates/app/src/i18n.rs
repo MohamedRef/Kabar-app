@@ -460,8 +460,9 @@ pub enum Msg {
 }
 }
 
-/// Fills a template from this catalog: `{n}` as written, `{n|one|two|few[|many]}`
-/// with Arabic's dual and plural (`kabar_core::coach::voice::fill`).
+/// Fills a template from this catalog: `{n}` as written,
+/// `{n|one|two|few[|many[|other]]}` with Arabic's dual and plural
+/// (`kabar_core::coach::voice::fill`).
 pub fn fill(lang: UiLanguage, template: &str, args: &[(&str, &str)]) -> String {
     kabar_core::coach::voice::fill(lang, template, args)
 }
@@ -1955,7 +1956,7 @@ pub(crate) mod checks {
         for slot in slots(text).unwrap_or_default() {
             let ok = matches!(
                 (slot.forms, lang),
-                (0, _) | (2, UiLanguage::En) | (3 | 4, UiLanguage::ArEg | UiLanguage::Ar)
+                (0, _) | (2, UiLanguage::En) | (3..=5, UiLanguage::ArEg | UiLanguage::Ar)
             );
             if !ok {
                 out.push(format!("{{{}}} has {} plural forms", slot.name, slot.forms));

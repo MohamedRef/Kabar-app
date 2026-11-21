@@ -19,21 +19,35 @@ impl Updater {
             None
         });
         let mut prefs = prefs;
+        let history = changelog::load(&dir);
         let in_use = dir.parent().and_then(|d| content::in_use(d, &info));
-        let content_build = in_use.as_ref().map_or(0, |c| c.build);
-        let content_since_ms = in_use.and_then(|c| c.fetched_ms);
-        let this = format!("{}+{}", info.version, info.build.max(content_build));
+        let content_build = active_content_build(&info, in_use.as_ref(), &history);
+        let content_since_ms = (content_build > 0).then(|| in_use.and_then(|c| c.fetched_ms)).flatten();
+        let shown = info.build.max(content_build);
+        let this = format!("{}+{shown}", info.version);
+        let this_order = (info.version, shown);
+        let prev_order = prefs
+            .last_run
+            .as_deref()
+            .and_then(|k| k.split_once('+'))
+            .and_then(|(v, b)| changelog::order(v, b.parse().ok()?));
         if off.is_none() && prefs.last_run.as_deref() != Some(this.as_str()) {
-            // Updated (not a first install): say what's new once.
-            if let Some(prev) = prefs.last_run.take() {
-                prefs.whats_new_from = Some(prev);
+            match prev_order {
+                Some(p) if this_order > p => {
+                    // Updated (not a first install): say what's new once, keeping
+                    // an earlier unseen baseline across back-to-back updates.
+                    if prefs.whats_new_from.is_none() {
+                        prefs.whats_new_from = prefs.last_run.take();
+                    }
+                }
+                Some(p) if this_order < p => prefs.whats_new_from = None,
+                _ => {}
             }
             prefs.last_run = Some(this);
             if let Err(e) = save_prefs(&dir, &prefs) {
                 crate::diag::report!("update prefs: {e}");
             }
         }
-        let history = changelog::load(&dir);
         let installed = info.installed(prefs.channel);
         let mut phase = Phase::Idle;
         if off.is_none()
@@ -151,7 +165,7 @@ impl Updater {
             self.check_with(auto, !metered);
         } else if auto && let Phase::Available(_) = s.phase {
             // Not behind a job already running: the next step comes soon.
-            if let Ok(_job) = self.job.try_lock() {
+            if let Some(_job) = try_lock_unpoisoned(&self.job) {
                 self.download_now();
             }
         }
@@ -220,6 +234,8 @@ impl Updater {
     }
 
     /// Looks at the feed; with `download`, fetches a newer build right away.
+    /// Only tests call it: the app goes through [`Self::check_with`].
+    #[cfg(test)]
     pub fn check(&'static self, download: bool) {
         self.check_with(download, true);
     }
@@ -239,8 +255,7 @@ impl Updater {
         if !started {
             return;
         }
-        self.check(false);
-        let reached = !matches!(self.status().phase, Phase::Failed { offer: None, .. });
+        let reached = self.check_with(false, true);
         let n = if self.status().off.is_none() && reached { crate::packs::update_installed(true) } else { 0 };
         self.tx.send_modify(|s| {
             s.packs_refreshed = n;
@@ -248,33 +263,57 @@ impl Updater {
         });
     }
 
-    /// [`Self::check`]; with `content`, a newer content bundle is fetched too.
-    pub(super) fn check_with(&'static self, download: bool, content: bool) {
-        let Ok(job) = self.job.try_lock() else { return };
+    /// Looks at the feed; with `download`, fetches a newer build right away,
+    /// and with `content`, a newer content bundle too.
+    pub(super) fn check_with(&'static self, download: bool, content: bool) -> bool {
+        let Some(job) = try_lock_unpoisoned(&self.job) else { return false };
+        self.check_locked(job, download, content)
+    }
+
+    fn check_locked(
+        &'static self,
+        job: std::sync::MutexGuard<'_, ()>,
+        download: bool,
+        content: bool,
+    ) -> bool {
         if self.status().off.is_some() {
-            return;
+            return false;
         }
-        let keep = match self.status().phase {
-            // A finished download for the same offer stays; it's re-checked anyway.
-            Phase::Ready(o) | Phase::Installed(o) | Phase::NeedsPermission(o) => Some(o),
-            _ => None,
+        let keep = Kept::from_phase(&self.status().phase);
+        if !matches!(keep, Some(Kept::Installing(_))) {
+            self.set_phase(Phase::Checking);
+        }
+        let restore_or_fail = |keep: Option<Kept>, why: Failure| match keep {
+            Some(kept) => {
+                if matches!(self.status().phase, Phase::Checking) {
+                    self.set_phase(kept.into_phase(None));
+                }
+            }
+            None => self.set_phase(Phase::Failed { offer: None, why }),
         };
-        self.set_phase(Phase::Checking);
         let manifest = self.fetch_manifest();
         self.update_prefs(|p| p.last_check_ms = Some(now_ms()));
         let m = match manifest {
             Ok(m) => m,
-            Err(why) => return self.set_phase(Phase::Failed { offer: None, why }),
+            Err(why) => {
+                restore_or_fail(keep, why);
+                return false;
+            }
         };
         // The app's answer shows as soon as the feed is read; the content
         // bundle (megabytes) and the build download come after it.
+        let mut reached = true;
         let to_download = match self.offer_from(&m) {
-            Ok(Some(offer)) => match keep.filter(|k| k.asset == offer.asset) {
-                Some(k) => {
-                    self.set_phase(match self.status().phase {
-                        Phase::Checking => Phase::Ready(k),
-                        other => other,
-                    });
+            Ok(Some(offer)) => match keep.filter(|k| k.offer().asset == offer.asset) {
+                Some(kept) => {
+                    if matches!(self.status().phase, Phase::Checking | Phase::Installing(_)) {
+                        if matches!(&kept, Kept::Ready(_))
+                            && let Err(e) = save_staged(&self.dir, &offer)
+                        {
+                            crate::diag::report!("update staged.json: {e}");
+                        }
+                        self.set_phase(kept.into_phase(Some(offer)));
+                    }
                     None
                 }
                 None => {
@@ -284,7 +323,8 @@ impl Updater {
             },
             Ok(None) => None,
             Err(why) => {
-                self.set_phase(Phase::Failed { offer: None, why });
+                restore_or_fail(keep, why);
+                reached = false;
                 None
             }
         };
@@ -292,15 +332,18 @@ impl Updater {
         // may start now instead of waiting for the content bundle below.
         drop(job);
         if content
+            && reached
             && let Some(data) = self.dir.parent()
-            && let Ok(_content) = self.content_job.try_lock()
+            && let Some(_content) = try_lock_unpoisoned(&self.content_job)
         {
             // An older result doesn't show while this one is on its way.
             self.tx.send_modify(|s| s.content_check = None);
             let found = content::refresh(data, &self.installed(), &self.info, &m, &self.feed_url());
             self.tx.send_modify(|s| {
                 s.content_check = Some(found);
-                if let content::Refresh::Taken(build) = found {
+                if let content::Refresh::Taken(build) = found
+                    && matches!(s.phase, Phase::UpToDate | Phase::NotForThisDevice)
+                {
                     s.content_waiting = Some(build);
                 }
             });
@@ -309,6 +352,7 @@ impl Updater {
             let _job = self.job.lock().unwrap_or_else(PoisonError::into_inner);
             self.download_now();
         }
+        reached
     }
 
     /// The channel's `update.json`, signature checked; its history is kept.
@@ -417,6 +461,10 @@ impl Updater {
         let base = self.feed_url();
         let _ = fs::create_dir_all(&self.dir);
         self.clear_downloads(Some(&offer.asset.file));
+        if self.verified_staged(&offer).is_ok() {
+            self.finish_staged(offer);
+            return;
+        }
         let path = self.dir.join(&offer.asset.file);
         self.set_phase(Phase::Downloading { offer: offer.clone(), done: 0 });
         let url = format!("{base}/{}", offer.asset.file);
@@ -433,20 +481,22 @@ impl Updater {
             }
         }
         match result.map_err(|f| f.why) {
-            Ok(()) => {
-                if let Err(e) = save_staged(&self.dir, &offer) {
-                    crate::diag::report!("update staged.json: {e}");
-                }
-                if self.status().prefs.wifi_download.is_some() {
-                    self.update_prefs(|p| p.wifi_download = None);
-                }
-                self.set_phase(Phase::Ready(offer));
-            }
+            Ok(()) => self.finish_staged(offer),
             Err(why) => {
                 let _ = fs::remove_file(&path);
                 self.set_phase(Phase::Failed { offer: Some(offer), why });
             }
         }
+    }
+
+    fn finish_staged(&self, offer: Offer) {
+        if let Err(e) = save_staged(&self.dir, &offer) {
+            crate::diag::report!("update staged.json: {e}");
+        }
+        if self.status().prefs.wifi_download.is_some() {
+            self.update_prefs(|p| p.wifi_download = None);
+        }
+        self.set_phase(Phase::Ready(offer));
     }
 
     /// Streams the build to `<file>.part` while hashing it, checks size and
@@ -597,6 +647,7 @@ impl Updater {
     /// published on it yet is refused (`Status::unpublished` says so):
     /// following it would stop every app and content update.
     pub fn set_channel(&'static self, channel: Channel) {
+        let job = self.job.lock().unwrap_or_else(PoisonError::into_inner);
         if self.status().channel == channel {
             self.tx.send_if_modified(|s| s.unpublished.take().is_some());
             return;
@@ -605,12 +656,20 @@ impl Updater {
             self.tx.send_modify(|s| s.unpublished = Some(channel));
             return;
         }
-        self.tx.send_modify(|s| s.unpublished = None);
-        self.update_prefs(|p| p.channel = Some(channel));
+        drop(self.content_job.lock().unwrap_or_else(PoisonError::into_inner));
+        self.tx.send_modify(|s| {
+            s.unpublished = None;
+            s.content_waiting = None;
+            s.content_check = None;
+        });
+        self.update_prefs(|p| {
+            p.channel = Some(channel);
+            p.wifi_download = None;
+        });
         self.clear_downloads(None);
         self.set_phase(Phase::Idle);
         let auto = self.status().prefs.mode == Mode::Auto;
-        let _ = crate::platform::time::spawn("kabar-update", move || self.check(auto));
+        self.check_locked(job, auto, true);
     }
 
     pub fn dismiss(&self) {
@@ -656,4 +715,92 @@ impl Updater {
             let _ = fs::remove_file(e.path());
         }
     }
+}
+
+pub(super) fn try_lock_unpoisoned(mutex: &Mutex<()>) -> Option<std::sync::MutexGuard<'_, ()>> {
+    match mutex.try_lock() {
+        Ok(guard) => Some(guard),
+        Err(std::sync::TryLockError::Poisoned(e)) => Some(e.into_inner()),
+        Err(std::sync::TryLockError::WouldBlock) => None,
+    }
+}
+
+#[derive(Clone)]
+enum Kept {
+    Ready(Offer),
+    Installing(Offer),
+    NeedsPermission(Offer),
+    Installed(Offer),
+}
+
+impl Kept {
+    fn from_phase(phase: &Phase) -> Option<Self> {
+        match phase {
+            Phase::Ready(o) => Some(Self::Ready(o.clone())),
+            Phase::Installing(o) => Some(Self::Installing(o.clone())),
+            Phase::NeedsPermission(o) => Some(Self::NeedsPermission(o.clone())),
+            Phase::Installed(o) => Some(Self::Installed(o.clone())),
+            _ => None,
+        }
+    }
+
+    fn offer(&self) -> &Offer {
+        match self {
+            Self::Ready(o) | Self::Installing(o) | Self::NeedsPermission(o) | Self::Installed(o) => o,
+        }
+    }
+
+    fn into_phase(self, fresh: Option<Offer>) -> Phase {
+        let pick = |old| fresh.unwrap_or(old);
+        match self {
+            Self::Ready(o) => Phase::Ready(pick(o)),
+            Self::Installing(o) => Phase::Installing(pick(o)),
+            Self::NeedsPermission(o) => Phase::NeedsPermission(pick(o)),
+            Self::Installed(o) => Phase::Installed(pick(o)),
+        }
+    }
+}
+
+/// Highest content-only build active on top of `info`, if any. A full build's
+/// bundle (`ui_build > info.build`, or `content_only == false` in `history`)
+/// does not advance the app's own build number before its binary installs.
+fn active_content_build(
+    info: &BuildInfo,
+    in_use: Option<&content::BundleInfo>,
+    history: &[BuildChanges],
+) -> u64 {
+    let Some(c) = in_use else { return 0 };
+    if Version::parse(&c.version) != Some(info.version) || c.build <= info.build {
+        return 0;
+    }
+    let full_in_history = |b: u64| {
+        history
+            .iter()
+            .any(|h| Version::parse(&h.version) == Some(info.version) && h.build == b && !h.content_only)
+    };
+    if c.ui_build <= info.build && !full_in_history(c.build) {
+        return c.build;
+    }
+    let first_full = history
+        .iter()
+        .filter(|h| {
+            Version::parse(&h.version) == Some(info.version)
+                && h.build > info.build
+                && h.build <= c.build
+                && !h.content_only
+        })
+        .map(|h| h.build)
+        .min()
+        .unwrap_or(c.ui_build);
+    history
+        .iter()
+        .filter(|h| {
+            Version::parse(&h.version) == Some(info.version)
+                && h.build > info.build
+                && h.build < first_full
+                && h.content_only
+        })
+        .map(|h| h.build)
+        .max()
+        .unwrap_or(0)
 }

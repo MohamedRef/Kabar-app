@@ -159,8 +159,20 @@ fn follow(t: &Target) {
             ui.open_lesson(id.clone());
             *PARKED.write() = Some(Parked { mode, screen });
         }
-        Target::Unit(id) => crate::journey::open_suitcase(ui, id),
+        Target::Unit(id) => {
+            if mode == SheetMode::Updated
+                && let Some(u) = super::view::updater()
+            {
+                u.close_whats_new();
+            }
+            crate::journey::open_suitcase(ui, id);
+        }
         Target::Screen(s) => {
+            if mode == SheetMode::Updated
+                && let Some(u) = super::view::updater()
+            {
+                u.close_whats_new();
+            }
             let mut screen = ui.screen;
             screen.set(*s);
         }
