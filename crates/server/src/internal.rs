@@ -59,36 +59,25 @@ pub struct BlobData {
     pub data_b64: String,
 }
 
-/// Account object `GET /login`: the caller's email (to put on a new
-/// username) and the username the account has now.
+/// Account object `GET /login` and `POST /login`: the caller's email,
+/// current username, and any staged/retired usernames still to clear.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AccountLoginState {
     pub email: String,
     pub username: Option<String>,
-    /// Names that may still hold the account's password, due to be cleared
-    /// (`crate::login::AccountLogin::to_release`).
     #[serde(default)]
-    pub release: Vec<String>,
+    pub retire: Vec<String>,
 }
 
-/// Account object `POST /login`: one step of a username change.
-#[derive(Debug, Serialize, Deserialize)]
+/// Account object `POST /login`: stages a rename, commits the username, or
+/// marks a retired username cleared.
+#[derive(Debug, Default, Serialize, Deserialize)]
 pub struct LoginName {
     pub username: Option<String>,
     #[serde(default)]
-    pub step: LoginStep,
-}
-
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub enum LoginStep {
-    /// The username the account has from now on.
-    #[default]
-    Adopt,
-    /// A name about to get the password: cleared later if the change stops.
-    Pending,
-    /// The name no longer holds the password.
-    Released,
+    pub stage: Option<String>,
+    #[serde(default)]
+    pub retired: Option<String>,
 }
 
 /// Login object `POST /set`.
@@ -109,5 +98,7 @@ pub struct LoginClear {
 /// Login object `POST /check`: the app's stretched key, base64url.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct LoginCheck {
+    #[serde(default)]
+    pub username: String,
     pub key: String,
 }

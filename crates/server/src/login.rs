@@ -5,14 +5,14 @@
 //! `u:<username>`), so a sign-in finds its account without a database, and
 //! the object being single-threaded makes the wrong-password count exact.
 //! The account's own object remembers which username it has ([`AccountLogin`]),
-//! so a change releases the old one. A change touches three objects, so the
-//! account also lists the names that may still hold its password until each
-//! one is cleared: a step that fails is finished on the next visit (#715).
+//! so a change releases the old one.
 //!
 //! The app stretches the password with Argon2id and sends only the 32-byte
-//! key (`batna_protocol::cloud::PasswordSignIn`): the Worker's 10 ms CPU
+//! key (`kabar_protocol::cloud::PasswordSignIn`): the Worker's 10 ms CPU
 //! budget can't afford a slow hash, and the device can. Here the key gets a
 //! random salt and one SHA-256, compared in constant time.
+
+use std::collections::BTreeMap;
 
 use base64::Engine as _;
 use base64::engine::general_purpose::URL_SAFE_NO_PAD;
@@ -25,10 +25,11 @@ use crate::tokens::sha256_hex;
 pub const LOCK_AFTER: u32 = 5;
 /// The first lock; each further wrong password doubles it, up to [`MAX_LOCK_MS`].
 pub const FIRST_LOCK_MS: u64 = 60_000;
-/// One hour at most, so a stranger gets about 24 guesses a day. One wrong try
-/// an hour keeps the name locked, though: the way back in is a device signed
-/// in with Google, where a new password clears the lock ([`Login::set`]).
+/// One hour at most, so a stranger hammering the username can't keep Mohamed
+/// out for long, and still only gets about 24 guesses a day.
 pub const MAX_LOCK_MS: u64 = 60 * 60_000;
+/// Cap on in-memory tracking of nonexistent usernames per isolate.
+const MAX_UNKNOWN_NAMES: usize = 1024;
 
 /// The key from the app: base64url of exactly 32 bytes.
 pub fn parse_key(b64: &str) -> Option<[u8; 32]> {
@@ -68,6 +69,9 @@ CREATE TABLE IF NOT EXISTS tries (
     one INTEGER PRIMARY KEY CHECK (one = 1),
     failures INTEGER NOT NULL,
     locked_until_ms INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS try_times (
+    at_ms INTEGER NOT NULL
 )";
 
 /// The answer to a sign-in attempt.
@@ -85,27 +89,52 @@ pub enum Checked {
     },
 }
 
-/// One username's wrong-password count.
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
-pub struct Tries {
-    pub failures: u32,
-    pub locked_until_ms: u64,
+/// In-memory wrong-password counter for usernames nobody owns (#715), so
+/// 5 wrong guesses lock just like a real username without writing SQLite.
+#[derive(Default)]
+pub struct UnknownTries {
+    entries: BTreeMap<String, (Vec<u64>, u64)>,
 }
 
-impl Tries {
-    fn locked(&self, now_ms: u64) -> Option<Checked> {
-        (self.locked_until_ms > now_ms)
-            .then(|| Checked::Locked { retry_after_ms: self.locked_until_ms - now_ms })
+impl UnknownTries {
+    pub fn record_wrong(&mut self, username: &str, now_ms: u64) -> Checked {
+        let cutoff = now_ms.saturating_sub(MAX_LOCK_MS);
+        self.entries.retain(|_, (times, until)| {
+            times.retain(|&t| t > cutoff);
+            !times.is_empty() || *until > now_ms
+        });
+        if let Some((_, until)) = self.entries.get(username)
+            && *until > now_ms
+        {
+            return Checked::Locked { retry_after_ms: *until - now_ms };
+        }
+        if !self.entries.contains_key(username)
+            && self.entries.len() >= MAX_UNKNOWN_NAMES
+            && let Some(oldest) = self
+                .entries
+                .iter()
+                .min_by_key(|(_, (times, _))| times.last().copied().unwrap_or(0))
+                .map(|(k, _)| k.clone())
+        {
+            self.entries.remove(&oldest);
+        }
+        let (times, until) = self.entries.entry(username.to_owned()).or_default();
+        times.retain(|&t| t > cutoff);
+        times.push(now_ms);
+        match lock_for(times.len() as u32) {
+            Some(retry_after_ms) => {
+                *until = now_ms + retry_after_ms;
+                Checked::Locked { retry_after_ms }
+            }
+            None => {
+                *until = 0;
+                Checked::Wrong
+            }
+        }
     }
 
-    fn wrong(&mut self, now_ms: u64) -> Checked {
-        self.failures = self.failures.saturating_add(1);
-        let lock = lock_for(self.failures);
-        self.locked_until_ms = lock.map_or(0, |l| now_ms + l);
-        match lock {
-            Some(retry_after_ms) => Checked::Locked { retry_after_ms },
-            None => Checked::Wrong,
-        }
+    pub fn forget(&mut self, username: &str) {
+        self.entries.remove(username);
     }
 }
 
@@ -149,6 +178,7 @@ impl<'a, S: Sql> Login<'a, S> {
             &[account_id.into(), email.into(), salt_hex.into(), verifier.into(), now_ms.into()],
         )?;
         self.db.exec("DELETE FROM tries", &[])?;
+        self.db.exec("DELETE FROM try_times", &[])?;
         Ok(true)
     }
 
@@ -158,46 +188,61 @@ impl<'a, S: Sql> Login<'a, S> {
             self.db.exec("DELETE FROM login WHERE account_id = ? RETURNING one", &[account_id.into()])?;
         if !rows.is_empty() {
             self.db.exec("DELETE FROM tries", &[])?;
+            self.db.exec("DELETE FROM try_times", &[])?;
         }
         Ok(!rows.is_empty())
     }
 
-    /// Checks a key, counting wrong ones.
+    /// Checks a key, counting wrong ones in a decaying [`MAX_LOCK_MS`] window
+    /// so a single wrong guess per hour can never hold the lock forever (#715).
+    /// Nothing is written for a username nobody has.
     pub fn check(&self, key: &[u8; 32], now_ms: u64) -> Result<Checked, SqlError> {
-        self.check_with(key, now_ms, &mut Tries::default())
-    }
-
-    /// [`Self::check`], where a username nobody has counts its wrong tries in
-    /// `unknown` (the object's memory): it locks like a real one, so five
-    /// tries can't tell whether a username exists (#715), and nothing is
-    /// written, so guessing names leaves no storage behind.
-    pub fn check_with(&self, key: &[u8; 32], now_ms: u64, unknown: &mut Tries) -> Result<Checked, SqlError> {
         let Some((account_id, email, salt, stored)) = self.owner()? else {
-            return Ok(unknown.locked(now_ms).unwrap_or_else(|| unknown.wrong(now_ms)));
+            return Ok(Checked::Wrong);
         };
         let rows = self.db.exec("SELECT failures, locked_until_ms FROM tries WHERE one = 1", &[])?;
-        let mut tries = match rows.first() {
-            Some(row) => Tries {
-                failures: col(row, 0, "failures")?.as_u64().unwrap_or(0) as u32,
-                locked_until_ms: col(row, 1, "locked_until_ms")?.as_u64().unwrap_or(0),
-            },
-            None => Tries::default(),
-        };
-        if let Some(locked) = tries.locked(now_ms) {
-            return Ok(locked);
+        let locked_until =
+            rows.first().and_then(|r| col(r, 1, "locked_until_ms").ok()).and_then(Value::as_u64).unwrap_or(0);
+        if locked_until > now_ms {
+            return Ok(Checked::Locked { retry_after_ms: locked_until - now_ms });
         }
+        let cutoff = now_ms.saturating_sub(MAX_LOCK_MS);
+        self.db.exec("DELETE FROM try_times WHERE at_ms <= ?", &[cutoff.into()])?;
         if same(&verifier(&salt, key), &stored) {
             self.db.exec("DELETE FROM tries", &[])?;
+            self.db.exec("DELETE FROM try_times", &[])?;
             return Ok(Checked::Ok { account_id, email });
         }
-        let answer = tries.wrong(now_ms);
+        self.db.exec("INSERT INTO try_times (at_ms) VALUES (?)", &[now_ms.into()])?;
+        let count_rows = self.db.exec("SELECT COUNT(*) FROM try_times", &[])?;
+        let failures = count_rows.first().and_then(|r| r.first()).and_then(Value::as_u64).unwrap_or(1) as u32;
+        let lock = lock_for(failures);
         self.db.exec(
             "INSERT INTO tries (one, failures, locked_until_ms) VALUES (1, ?, ?)
              ON CONFLICT (one) DO UPDATE SET failures = excluded.failures,
                 locked_until_ms = excluded.locked_until_ms",
-            &[u64::from(tries.failures).into(), tries.locked_until_ms.into()],
+            &[u64::from(failures).into(), lock.map_or(0, |l| now_ms + l).into()],
         )?;
-        Ok(answer)
+        Ok(match lock {
+            Some(retry_after_ms) => Checked::Locked { retry_after_ms },
+            None => Checked::Wrong,
+        })
+    }
+
+    /// Like [`Self::check`], and locks nonexistent usernames in memory so
+    /// probing 5 wrong passwords never reveals whether a username exists (#715).
+    pub fn check_named(
+        &self,
+        username: &str,
+        key: &[u8; 32],
+        now_ms: u64,
+        unknown: &mut UnknownTries,
+    ) -> Result<Checked, SqlError> {
+        if self.owner()?.is_none() {
+            return Ok(unknown.record_wrong(username, now_ms));
+        }
+        unknown.forget(username);
+        self.check(key, now_ms)
     }
 }
 
@@ -206,15 +251,12 @@ CREATE TABLE IF NOT EXISTS login_name (
     one INTEGER PRIMARY KEY CHECK (one = 1),
     username TEXT NOT NULL
 );
-CREATE TABLE IF NOT EXISTS login_release (
-    username TEXT PRIMARY KEY,
-    due_ms INTEGER NOT NULL
+CREATE TABLE IF NOT EXISTS login_retire (
+    username TEXT PRIMARY KEY
 )";
 
-/// How long a name being set is left alone: its change is still on the way.
-pub const PENDING_MS: u64 = 60_000;
-
-/// The account object's side: which username it has.
+/// The account object's side: which username it has, plus staged/old names
+/// still waiting for their `Login` object to clear (#715).
 pub struct AccountLogin<'a, S: Sql> {
     db: &'a S,
 }
@@ -230,64 +272,50 @@ impl<'a, S: Sql> AccountLogin<'a, S> {
         Ok(rows.into_iter().next().and_then(|r| r.into_iter().next()).and_then(Value::into_string))
     }
 
-    pub fn set_username(&self, username: Option<&str>) -> Result<(), SqlError> {
-        match username {
-            Some(u) => self.db.exec(
-                "INSERT INTO login_name (one, username) VALUES (1, ?)
-                 ON CONFLICT (one) DO UPDATE SET username = excluded.username",
-                &[u.into()],
-            )?,
-            None => self.db.exec("DELETE FROM login_name", &[])?,
-        };
-        Ok(())
-    }
-
-    /// Before a name is given this account's password: should the change
-    /// stop half-way, the name is cleared on a later visit.
-    pub fn pending(&self, username: &str, now_ms: u64) -> Result<(), SqlError> {
-        self.db.exec(
-            "INSERT INTO login_release (username, due_ms) VALUES (?, ?)
-             ON CONFLICT (username) DO UPDATE SET due_ms = MAX(due_ms, excluded.due_ms)",
-            &[username.into(), (now_ms + PENDING_MS).into()],
-        )?;
-        Ok(())
-    }
-
-    /// The account's name from now on (`None`: password sign-in off). The
-    /// name it had is listed for clearing.
-    pub fn adopt(&self, username: Option<&str>) -> Result<(), SqlError> {
-        if let Some(old) = self.username()?.filter(|old| Some(old.as_str()) != username) {
-            self.db.exec(
-                "INSERT INTO login_release (username, due_ms) VALUES (?, 0)
-                 ON CONFLICT (username) DO UPDATE SET due_ms = 0",
-                &[old.into()],
-            )?;
-        }
-        if let Some(u) = username {
-            self.db.exec("DELETE FROM login_release WHERE username = ?", &[u.into()])?;
-        }
-        self.set_username(username)
-    }
-
-    /// Names that may still hold this account's password and are due to be
-    /// cleared.
-    pub fn to_release(&self, now_ms: u64) -> Result<Vec<String>, SqlError> {
-        let rows = self.db.exec(
-            "SELECT username FROM login_release
-             WHERE due_ms <= ? AND username NOT IN (SELECT username FROM login_name)
-             ORDER BY username",
-            &[now_ms.into()],
-        )?;
+    /// Usernames whose `Login` object still needs `/clear` (a half-done
+    /// rename or a failed delete).
+    pub fn retiring(&self) -> Result<Vec<String>, SqlError> {
+        let rows = self.db.exec("SELECT username FROM login_retire ORDER BY username", &[])?;
         Ok(rows.into_iter().filter_map(|r| r.into_iter().next().and_then(Value::into_string)).collect())
     }
 
-    /// `username` no longer holds this account's password.
-    pub fn released(&self, username: &str) -> Result<(), SqlError> {
-        self.db.exec(
-            "DELETE FROM login_release
-             WHERE username = ? AND username NOT IN (SELECT username FROM login_name)",
-            &[username.into()],
-        )?;
+    /// Records `pending` before calling `Login /set`, so if the change stops
+    /// midway, a later `GET` or `DELETE` still knows to clear it (#715).
+    pub fn stage_username(&self, pending: &str) -> Result<(), SqlError> {
+        if self.username()?.as_deref() != Some(pending) {
+            self.db.exec("INSERT OR IGNORE INTO login_retire (username) VALUES (?)", &[pending.into()])?;
+        }
+        Ok(())
+    }
+
+    pub fn set_username(&self, username: Option<&str>) -> Result<(), SqlError> {
+        let prev = self.username()?;
+        match username {
+            Some(u) => {
+                if let Some(old) = prev.filter(|old| old != u) {
+                    self.db
+                        .exec("INSERT OR IGNORE INTO login_retire (username) VALUES (?)", &[old.into()])?;
+                }
+                self.db.exec("DELETE FROM login_retire WHERE username = ?", &[u.into()])?;
+                self.db.exec(
+                    "INSERT INTO login_name (one, username) VALUES (1, ?)
+                     ON CONFLICT (one) DO UPDATE SET username = excluded.username",
+                    &[u.into()],
+                )?;
+            }
+            None => {
+                if let Some(old) = prev {
+                    self.db
+                        .exec("INSERT OR IGNORE INTO login_retire (username) VALUES (?)", &[old.into()])?;
+                }
+                self.db.exec("DELETE FROM login_name", &[])?;
+            }
+        }
+        Ok(())
+    }
+
+    pub fn finish_retire(&self, username: &str) -> Result<(), SqlError> {
+        self.db.exec("DELETE FROM login_retire WHERE username = ?", &[username.into()])?;
         Ok(())
     }
 }
@@ -355,6 +383,31 @@ mod tests {
     }
 
     #[test]
+    fn old_failures_decay_and_unknown_usernames_lock_the_same_way() {
+        let db = MemSql::new();
+        let l = Login::new(&db).unwrap();
+        let mut unknown = UnknownTries::default();
+        let wrong = [9; 32];
+        for _ in 1..LOCK_AFTER {
+            assert_eq!(l.check_named("nobody", &wrong, NOW, &mut unknown).unwrap(), Checked::Wrong);
+        }
+        assert_eq!(
+            l.check_named("nobody", &wrong, NOW, &mut unknown).unwrap(),
+            Checked::Locked { retry_after_ms: FIRST_LOCK_MS }
+        );
+        assert!(db.exec("SELECT * FROM tries", &[]).unwrap().is_empty(), "nothing stored for nobody");
+
+        set(&l, "gacc", &KEY);
+        for _ in 0..LOCK_AFTER {
+            l.check(&wrong, NOW).unwrap();
+        }
+        // Once a full 1-hour window passes after the tries, one stray guess cannot re-lock at 1 hour.
+        let after_window = NOW + MAX_LOCK_MS;
+        assert_eq!(l.check(&wrong, after_window).unwrap(), Checked::Wrong);
+        assert!(matches!(l.check(&KEY, after_window).unwrap(), Checked::Ok { .. }));
+    }
+
+    #[test]
     fn locks_never_pass_an_hour() {
         assert_eq!(lock_for(LOCK_AFTER - 1), None);
         assert_eq!(lock_for(LOCK_AFTER), Some(FIRST_LOCK_MS));
@@ -399,71 +452,25 @@ mod tests {
     }
 
     #[test]
-    fn the_account_remembers_its_username() {
+    fn the_account_remembers_its_username_and_retiring_names() {
         let db = MemSql::new();
         crate::account::migrate(&db).unwrap();
         let a = AccountLogin::open(&db);
         assert_eq!(a.username().unwrap(), None);
+        a.stage_username("mo.r").unwrap();
+        assert_eq!(a.retiring().unwrap(), vec!["mo.r"]);
         a.set_username(Some("mo.r")).unwrap();
+        assert!(a.retiring().unwrap().is_empty());
+        a.stage_username("mo.refaat").unwrap();
         a.set_username(Some("mo.refaat")).unwrap();
         assert_eq!(a.username().unwrap().as_deref(), Some("mo.refaat"));
+        assert_eq!(a.retiring().unwrap(), vec!["mo.r"]);
+        a.finish_retire("mo.r").unwrap();
+        assert!(a.retiring().unwrap().is_empty());
+        // Half-done rename to "mo.next", then Remove clears both!
+        a.stage_username("mo.next").unwrap();
         a.set_username(None).unwrap();
         assert_eq!(a.username().unwrap(), None);
-    }
-
-    #[test]
-    fn a_username_nobody_has_locks_like_a_real_one() {
-        let (real, nobody) = (MemSql::new(), MemSql::new());
-        let r = Login::new(&real).unwrap();
-        assert!(set(&r, "gacc", &KEY));
-        let n = Login::new(&nobody).unwrap();
-        let mut memory = Tries::default();
-        for i in 0..LOCK_AFTER + 2 {
-            let now = NOW + u64::from(i);
-            let answer = r.check(&[8; 32], now).unwrap();
-            assert_eq!(n.check_with(&[8; 32], now, &mut memory).unwrap(), answer, "try {i}");
-        }
-        assert!(matches!(n.check_with(&KEY, NOW + 10, &mut memory).unwrap(), Checked::Locked { .. }));
-        assert!(nobody.exec("SELECT * FROM tries", &[]).unwrap().is_empty(), "nothing written");
-    }
-
-    #[test]
-    fn a_name_change_that_stops_half_way_is_finished_later() {
-        let db = MemSql::new();
-        crate::account::migrate(&db).unwrap();
-        let a = AccountLogin::open(&db);
-        a.adopt(Some("a.name")).unwrap();
-        assert!(a.to_release(NOW).unwrap().is_empty());
-
-        // "a.name" -> "b.name": b gets the password, then the account
-        // object refused (a revoked device): b holds a password nobody sees.
-        a.pending("b.name", NOW).unwrap();
-        assert!(a.to_release(NOW).unwrap().is_empty(), "left alone while the change is on its way");
-        assert_eq!(a.to_release(NOW + PENDING_MS).unwrap(), ["b.name"]);
-        a.released("b.name").unwrap();
-        assert!(a.to_release(NOW + PENDING_MS).unwrap().is_empty());
-        assert_eq!(a.username().unwrap().as_deref(), Some("a.name"));
-
-        // A change that lands lists the old name until it is cleared.
-        a.pending("c.name", NOW).unwrap();
-        a.adopt(Some("c.name")).unwrap();
-        assert_eq!(a.to_release(NOW).unwrap(), ["a.name"]);
-        a.released("a.name").unwrap();
-        assert!(a.to_release(NOW + PENDING_MS).unwrap().is_empty());
-
-        // Two devices at once: whichever lands last is the name; the other
-        // is cleared.
-        a.pending("d.name", NOW).unwrap();
-        a.pending("e.name", NOW).unwrap();
-        a.adopt(Some("d.name")).unwrap();
-        a.adopt(Some("e.name")).unwrap();
-        assert_eq!(a.to_release(NOW).unwrap(), ["c.name", "d.name"]);
-        assert_eq!(a.username().unwrap().as_deref(), Some("e.name"));
-
-        // Turning password sign-in off releases the name too; the current
-        // name is never released by mistake.
-        a.released("e.name").unwrap();
-        a.adopt(None).unwrap();
-        assert_eq!(a.to_release(NOW).unwrap(), ["c.name", "d.name", "e.name"]);
+        assert_eq!(a.retiring().unwrap(), vec!["mo.next", "mo.refaat"]);
     }
 }

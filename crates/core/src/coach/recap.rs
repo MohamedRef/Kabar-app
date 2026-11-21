@@ -32,6 +32,22 @@ pub fn day_recap(
     }
 }
 
+/// [`day_recap`] when today's plan is known, so visibly finished review and
+/// lesson items count toward `goal_met` just like Today's hero.
+pub fn day_recap_for_plan(
+    events: &[ActivityEvent],
+    date: LocalDate,
+    plan: &kabar_protocol::coach::DailyPlan,
+    tomorrow_first: Option<PlanItemKind>,
+) -> DayRecap {
+    let mut r = day_recap(events, date, plan.size.minutes(), plan.items.len(), tomorrow_first);
+    if plan.date == date {
+        let stats = history::day(events, date);
+        r.goal_met |= super::plan::progress(plan, &stats).goal_met;
+    }
+    r
+}
+
 /// The practice topic with the most wrong answers; ties go to the topic
 /// practised first. `None` on a day without mistakes.
 fn most_missed(stats: &DayStats) -> Option<Focus> {
@@ -139,5 +155,25 @@ mod tests {
         assert!(recap_ready(false, true, at(21, 30), &[]));
         // Order of study times doesn't matter.
         assert!(recap_ready(false, true, at(20, 0), &[at(19, 0), at(7, 30)]));
+    }
+
+    #[test]
+    fn recap_for_plan_marks_goal_met_when_all_steps_finish_fast() {
+        use kabar_protocol::coach::{DailyPlan, PlanItem, PlanSize};
+        let today = d(2026, 10, 26);
+        let plan = DailyPlan {
+            date: today,
+            size: PlanSize::Steady,
+            comeback: false,
+            items: vec![
+                PlanItem { id: "review".into(), kind: PlanItemKind::Review { cards: 10 }, minutes: 6 },
+                PlanItem { id: "reading".into(), kind: PlanItemKind::Reading, minutes: 9 },
+            ],
+        };
+        let events = [
+            event("r", today, 90, ActivityKind::Reviews { cards: 10, correct: 10 }),
+            event("rd", today, 180, ActivityKind::PlanItemDone { item_id: "reading".into() }),
+        ];
+        assert!(day_recap_for_plan(&events, today, &plan, None).goal_met);
     }
 }

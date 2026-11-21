@@ -275,6 +275,12 @@ const MIGRATIONS: &[&str] = &[
         reason TEXT NOT NULL,
         at_ms  INTEGER NOT NULL
     ) STRICT;",
+    // 11: remote ops for tables/kinds an older build didn't know yet (#687),
+    // kept in seq order and applied on startup once a newer build knows them.
+    "CREATE TABLE deferred_ops (
+        seq INTEGER PRIMARY KEY,
+        op  TEXT NOT NULL
+    ) STRICT;",
 ];
 
 /// The schema version that added `sync_rows`.
@@ -424,6 +430,7 @@ impl Store {
             Some(m) => install::check(&mut conn, m, device)?,
             None => device,
         };
+        account::clean_borrowed_on_boot(&mut conn)?;
 
         // Never issue a timestamp at or below the newest one already written here.
         let union = SYNCED_TABLES
@@ -447,10 +454,11 @@ impl Store {
                 },
             )
             .optional()?;
-        let clock = match &last {
+        let mut clock = match &last {
             Some(h) => HlcClock::resume(device.clone(), h),
             None => HlcClock::new(device.clone()),
         };
+        account::replay_deferred(&mut conn, &mut clock)?;
 
         Ok(Self { conn, device, clock })
     }
@@ -514,10 +522,20 @@ impl Store {
         let tx = self.conn.transaction()?;
         let mut changed = BTreeSet::new();
         let now = now_ms();
-        for SeqOp { op, .. } in ops {
-            // The hub already validated it; an older build may not know the
-            // table's rules yet, and then it is skipped, never half-applied.
-            let Ok(sync) = validate(op, MAX_PAYLOAD_BYTES) else { continue };
+        for SeqOp { seq, op } in ops {
+            // Keep ops for tables or kinds an older build doesn't know yet so
+            // upgrading replays them instead of moving `last_seq` past them (#687).
+            let sync = match validate(op, MAX_PAYLOAD_BYTES) {
+                Ok(s) => s,
+                Err(RejectReason::UnknownTable | RejectReason::KindNotAllowed) => {
+                    tx.execute(
+                        "INSERT OR REPLACE INTO deferred_ops (seq, op) VALUES (?1, ?2)",
+                        params![*seq as i64, serde_json::to_string(op)?],
+                    )?;
+                    continue;
+                }
+                Err(_) => continue,
+            };
             self.clock.observe(&op.hlc, now);
             if merge(sync, op, row_meta(&tx, &op.table, &op.row_id)?.as_ref()) == Merge::Apply {
                 store_row(&tx, op)?;
@@ -963,6 +981,8 @@ pub use journal::{LessonDone, TaughtAt};
 pub mod export;
 // A database restored from another device takes its own device id.
 mod install;
+// Account-scoped sync cursor, borrowed-device wipe and deferred ops.
+mod account;
 // Sync ops that can't go up, kept with their reason (audit F12).
 mod held;
 // How long each connection waits for the other's write lock (audit F16).

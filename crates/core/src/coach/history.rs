@@ -18,6 +18,8 @@ pub struct DayStats {
     /// Lessons finished per unit today (a unit has several short lessons, so
     /// a 30-minute plan can ask for two from the same unit).
     pub lessons_finished: BTreeMap<String, u32>,
+    /// Plan lesson items completed by a fallback lesson from another unit.
+    pub lesson_items_done: BTreeSet<String>,
     pub items_done: BTreeSet<String>,
     pub practice: Vec<PracticeTally>,
     pub xp: u32,
@@ -48,7 +50,18 @@ impl DayStats {
         self.minutes() >= u32::from(goal_minutes) || (plan_items > 0 && self.items_done.len() >= plan_items)
     }
 
-    fn add(&mut self, event: &ActivityEvent) {
+    fn add(&mut self, event: &ActivityEvent, bought: &mut BTreeSet<String>) {
+        if let ActivityKind::PlanItemDone { item_id } = &event.kind
+            && !self.items_done.insert(item_id.clone())
+        {
+            return;
+        }
+        if let ActivityKind::Purchase { item_id, koin } = &event.kind {
+            if bought.insert(item_id.clone()) {
+                self.koin_spent += koin;
+            }
+            return;
+        }
         self.seconds += event.seconds;
         self.xp += xp(&event.kind);
         match &event.kind {
@@ -63,12 +76,15 @@ impl DayStats {
                     }
                 }
             }
-            ActivityKind::LessonStep { unit_id, done } => {
+            ActivityKind::LessonStep { unit_id: unit, done } => {
                 if *done {
-                    if !self.lessons_done.contains(unit_id) {
-                        self.lessons_done.push(unit_id.clone());
+                    if !self.lessons_done.contains(&unit.id) {
+                        self.lessons_done.push(unit.id.clone());
                     }
-                    *self.lessons_finished.entry(unit_id.clone()).or_default() += 1;
+                    *self.lessons_finished.entry(unit.id.clone()).or_default() += 1;
+                    if let Some(id) = &unit.plan_item_id {
+                        self.lesson_items_done.insert(id.clone());
+                    }
                 }
             }
             ActivityKind::Practice { skill, topic, correct, total } => {
@@ -85,10 +101,7 @@ impl DayStats {
                     }),
                 }
             }
-            ActivityKind::PlanItemDone { item_id } => {
-                self.items_done.insert(item_id.clone());
-            }
-            ActivityKind::Purchase { koin, .. } => self.koin_spent += koin,
+            ActivityKind::PlanItemDone { .. } | ActivityKind::Purchase { .. } => {}
         }
     }
 }
@@ -113,21 +126,22 @@ pub fn xp(kind: &ActivityKind) -> u32 {
 }
 
 /// Every day that has events, oldest first. Duplicate event ids (a replayed
-/// sync op) are counted once.
+/// sync op), cross-device ticks of the same plan item on the same day, and
+/// duplicate offline purchases of the same Warung item are counted once.
 pub fn by_day(events: &[ActivityEvent]) -> BTreeMap<LocalDate, DayStats> {
     let mut seen = BTreeSet::new();
+    let mut bought = BTreeSet::new();
     let mut days: BTreeMap<LocalDate, DayStats> = BTreeMap::new();
     for e in events {
         if seen.insert(e.id.as_str()) {
-            days.entry(e.date).or_default().add(e);
+            days.entry(e.date).or_default().add(e, &mut bought);
         }
     }
     days
 }
 
 pub fn day(events: &[ActivityEvent], date: LocalDate) -> DayStats {
-    let only: Vec<ActivityEvent> = events.iter().filter(|e| e.date == date).cloned().collect();
-    by_day(&only).remove(&date).unwrap_or_default()
+    by_day(events).remove(&date).unwrap_or_default()
 }
 
 /// The most recent day with any study before `before`.
@@ -185,5 +199,20 @@ pub(crate) mod tests {
         let s = day(&[event("p", today, 0, ActivityKind::Purchase { item_id: "x".into(), koin: 50 })], today);
         assert!(!s.studied());
         assert_eq!(s.koin_spent, 50);
+    }
+
+    #[test]
+    fn cross_device_ticks_and_offline_purchases_never_double_count() {
+        let today = d(2026, 10, 26);
+        let events = vec![
+            event("tick1", today, 180, ActivityKind::PlanItemDone { item_id: "reading".into() }),
+            event("tick2", today, 180, ActivityKind::PlanItemDone { item_id: "reading".into() }),
+            event("buy1", today.add_days(-1), 0, ActivityKind::Purchase { item_id: "x".into(), koin: 100 }),
+            event("buy2", today, 0, ActivityKind::Purchase { item_id: "x".into(), koin: 100 }),
+        ];
+        let s = day(&events, today);
+        assert_eq!((s.seconds, s.xp, s.koin_spent), (180, 5, 0));
+        let total_spent: u32 = by_day(&events).values().map(|d| d.koin_spent).sum();
+        assert_eq!(total_spent, 100);
     }
 }

@@ -185,10 +185,23 @@ pub fn AccountScreen() -> Element {
                 // (below), so it doesn't point to a Google button (#578).
                 p { "{ui.t(intro)}" }
                 if cfg!(target_arch = "wasm32") {
-                } else if *cloud.signing_in.read() {
+                } else if *cloud.signing_in.read() && !tried() {
                     p { class: "muted", aria_live: "polite", "{ui.t(AccountMsg::CloudSigningIn)}" }
+                    div { class: "sync-actions",
+                        button { onclick: move |_| cloud.send(Command::CancelSignIn), "{ui.t(AccountMsg::PwCancel)}" }
+                    }
                 } else {
-                    button { class: "primary", onclick: move |_| cloud.send(Command::SignInGoogle), "{ui.t(Msg::CloudSignIn)}" }
+                    button {
+                        class: "primary",
+                        onclick: {
+                            let mut tried = tried;
+                            move |_| {
+                                tried.set(false);
+                                cloud.send(Command::SignInGoogle);
+                            }
+                        },
+                        "{ui.t(Msg::CloudSignIn)}"
+                    }
                 }
             }
             if let Some(p) = card_problem {
@@ -290,11 +303,23 @@ pub fn ReturningSignIn() -> Element {
         } else {
             div { class: "welcome-sign-in",
                 if !cfg!(target_arch = "wasm32") {
-                    p {
-                        button {
-                            disabled: *cloud.signing_in.read(),
-                            onclick: move |_| cloud.send(Command::SignInGoogle),
-                            "{ui.t(Msg::CloudSignIn)}"
+                    if *cloud.signing_in.read() && !tried() {
+                        p { class: "muted", aria_live: "polite", "{ui.t(AccountMsg::CloudSigningIn)}" }
+                        p {
+                            button { onclick: move |_| cloud.send(Command::CancelSignIn), "{ui.t(AccountMsg::PwCancel)}" }
+                        }
+                    } else {
+                        p {
+                            button {
+                                onclick: {
+                                    let mut tried = tried;
+                                    move |_| {
+                                        tried.set(false);
+                                        cloud.send(Command::SignInGoogle);
+                                    }
+                                },
+                                "{ui.t(Msg::CloudSignIn)}"
+                            }
                         }
                     }
                 }
@@ -322,7 +347,7 @@ fn PasswordSignIn() -> Element {
     let mut theirs = use_signal(|| false);
     let local = use_signal(|| false);
     let mut tried = try_use_context::<PasswordTried>().map_or(local, |t| t.0);
-    let busy = *cloud.signing_in.read();
+    let busy = tried() && *cloud.signing_in.read();
     let problem = cloud.status.read().problem.filter(|_| tried() && !busy);
     let ready = !username.read().trim().is_empty() && !password.read().is_empty();
     rsx! {
