@@ -266,9 +266,7 @@ pub fn plan_for(db: &Db, profile: &CoachProfile, events: &[ActivityEvent], date:
     let at_ms = plan_due_at(crate::store::now_ms(), date, profile.utc_offset_min);
     let due = crate::review::due_words(db, &sched, at_ms).len() as u32;
     let plan = build_plan(db, due, profile, events, date, profile.daily_size, false);
-    if read_ok
-        && let Err(e) = db.0.borrow_mut().save_plan(&plan)
-    {
+    if read_ok && let Err(e) = db.0.borrow_mut().save_plan(&plan) {
         crate::diag::report!("saving today's plan failed: {e}");
     }
     plan

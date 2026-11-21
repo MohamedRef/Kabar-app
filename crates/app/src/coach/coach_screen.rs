@@ -169,9 +169,8 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
     let mut show_saved = use_signal(|| true);
     let events = coach.events.read().clone();
     let this_week = today.week_start();
-    let saved_week =
-        crate::persistence::read_or("latest weekly report", db.0.borrow().latest_report_week())
-            .filter(|w| *w != this_week);
+    let saved_week = crate::persistence::read_or("latest weekly report", db.0.borrow().latest_report_week())
+        .filter(|w| *w != this_week);
     let saved = saved_week.and_then(|w| {
         let stored = crate::persistence::read_or("weekly report", db.0.borrow().report_for(w))?;
         let fresh = report_for_week(&events, w, today);

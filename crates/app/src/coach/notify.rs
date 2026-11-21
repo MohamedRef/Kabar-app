@@ -209,10 +209,8 @@ fn local_schedule(db: &Db, coach: Coach, ui: Ui, prefs: DevicePrefs, pushed: boo
     };
     let now_ms = *coach.now_ms.peek();
     let offset = profile.as_ref().map_or(CoachProfile::default().utc_offset_min, |p| p.utc_offset_min);
-    let plan = crate::persistence::read_or(
-        "today's plan",
-        db.0.borrow().plan_for(clock::today(now_ms, offset)),
-    );
+    let plan =
+        crate::persistence::read_or("today's plan", db.0.borrow().plan_for(clock::today(now_ms, offset)));
     schedule(Inputs {
         lang,
         eastern_digits,

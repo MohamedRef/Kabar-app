@@ -114,10 +114,8 @@ fn decide_with(ctx: &ReminderContext, times: &[LocalTime]) -> Decision {
     let today = LocalDate::from_unix_ms(now, off);
     let stats = history::day(ctx.events, today);
     let (goal_minutes, plan_items) = goal(p, ctx.plan, today);
-    let plan_done = ctx
-        .plan
-        .filter(|pl| pl.date == today)
-        .is_some_and(|pl| super::plan::progress(pl, &stats).goal_met);
+    let plan_done =
+        ctx.plan.filter(|pl| pl.date == today).is_some_and(|pl| super::plan::progress(pl, &stats).goal_met);
     if plan_done || stats.goal_met(goal_minutes, plan_items) {
         return Decision::Silent(Silence::GoalMet);
     }
