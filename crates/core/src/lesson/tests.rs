@@ -363,6 +363,9 @@ fn speaking_and_match_pairs_never_fail() {
     let l = l01();
     assert_eq!(grade(ex(&l, "e11"), &Answer::Practiced, EG), Grade::Practiced);
     assert_eq!(grade(ex(&l, "e02"), &Answer::Matched { missed: vec!["sore".into()] }, EG), Grade::Correct);
+    for id in ["e01", "e06", "e10"] {
+        assert_eq!(grade(ex(&l, id), &Answer::Practiced, EG), Grade::Wrong, "{id}");
+    }
 }
 
 #[test]
