@@ -61,6 +61,21 @@ impl Sql for MemSql {
         }
         Ok(out)
     }
+
+    fn transaction<T>(&self, f: impl FnOnce() -> Result<T, SqlError>) -> Result<T, SqlError> {
+        self.exec("SAVEPOINT sql_tx", &[])?;
+        match f() {
+            Ok(v) => {
+                self.exec("RELEASE sql_tx", &[])?;
+                Ok(v)
+            }
+            Err(e) => {
+                let _ = self.exec("ROLLBACK TO sql_tx", &[]);
+                let _ = self.exec("RELEASE sql_tx", &[]);
+                Err(e)
+            }
+        }
+    }
 }
 
 struct Device {
@@ -104,6 +119,8 @@ pub struct Knobs {
     pub stall_sockets: AtomicBool,
     /// Open sockets go quiet for good: no replies, no pongs (half-open).
     pub deaf_sockets: AtomicBool,
+    /// Refresh answers 403 `not_allowed` and revokes the device.
+    pub disallow_refresh: AtomicBool,
 }
 
 pub struct State {
@@ -111,6 +128,7 @@ pub struct State {
     /// Each username's own store, like its Durable Object, and the
     /// account's username.
     logins: Mutex<BTreeMap<String, MemSql>>,
+    unknown_tries: Mutex<kabar_server::login::UnknownTries>,
     username: Mutex<Option<String>>,
     tokens: Mutex<Tokens>,
     devices: Mutex<BTreeMap<DeviceId, Device>>,
@@ -136,6 +154,7 @@ impl FakeCloud {
         let state = Arc::new(State {
             hub: Mutex::new(db),
             logins: Mutex::default(),
+            unknown_tries: Mutex::default(),
             username: Mutex::default(),
             tokens: Mutex::default(),
             devices: Mutex::default(),
@@ -233,8 +252,12 @@ impl State {
         tokens.access.insert(access_token.clone(), device.clone());
         tokens.refresh.insert(refresh_token.clone(), device.clone());
         let short = self.knobs.short_tokens.load(Ordering::SeqCst);
+        let account_id = match email.as_deref() {
+            None | Some("learner@example.com") => "acc".into(),
+            Some(e) => format!("acc-{e}"),
+        };
         Session {
-            account_id: "acc".into(),
+            account_id,
             device_id: device.clone(),
             email,
             access_token,
@@ -305,12 +328,18 @@ impl State {
                 };
                 let username = normalize_username(&req.username);
                 let key = kabar_server::login::parse_key(&req.password_key);
-                let logins = self.logins.lock().unwrap();
-                let (Some(db), Some(key), true) = (logins.get(&username), key, valid_username(&username))
-                else {
+                let (Some(key), true) = (key, valid_username(&username)) else {
                     return fail(401, ErrorCode::WrongPassword);
                 };
-                match Login::new(db).unwrap().check(&key, now_ms()).unwrap() {
+                let logins = self.logins.lock().unwrap();
+                let checked = match logins.get(&username) {
+                    Some(db) => {
+                        let mut unknown = self.unknown_tries.lock().unwrap();
+                        Login::new(db).unwrap().check_named(&username, &key, now_ms(), &mut unknown).unwrap()
+                    }
+                    None => self.unknown_tries.lock().unwrap().record_wrong(&username, now_ms()),
+                };
+                match checked {
                     Checked::Ok { email, .. } => {
                         drop(logins);
                         let id = req.device.device_id.clone();
@@ -343,6 +372,10 @@ impl State {
                 };
                 let device = self.tokens.lock().unwrap().refresh.remove(&req.refresh_token);
                 let Some(device) = device else { return fail(401, ErrorCode::DeviceRevoked) };
+                if self.knobs.disallow_refresh.load(Ordering::SeqCst) {
+                    self.revoke(&device);
+                    return fail(403, ErrorCode::NotAllowed);
+                }
                 let email =
                     self.devices.lock().unwrap().get(&device).map(|_| "learner@example.com".to_string());
                 json(200, &self.issue(&device, email))

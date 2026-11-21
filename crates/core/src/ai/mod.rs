@@ -284,6 +284,13 @@ impl Router {
         self.run_plan(req, &after).await
     }
 
+    /// Runs `plan` against the local cache first, then live engines.
+    ///
+    /// Personal answers (`req.personal` or `task.is_personal()`) are cached in
+    /// the device's own `ai_cache` on purpose so reopening a text costs no
+    /// quota (HANDOFF §2); Kabar Cloud's `ai::may_cache` keeps them out of the
+    /// shared D1 cache, and `Store::forget_study` wipes `ai_cache` when a
+    /// temporary ("This isn't my device") session signs out.
     async fn run_plan<T: AiOutput>(&self, req: &AiRequest, plan: &[EngineId]) -> Result<Answer<T>, AiError> {
         let task = T::TASK;
         let route = self.routes.get(task);

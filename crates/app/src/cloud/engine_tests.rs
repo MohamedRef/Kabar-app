@@ -721,3 +721,70 @@ fn sync_now_connects_at_once_instead_of_waiting_out_the_backoff() {
     phone.wait_status("reconnecting", |s| s.sync != SyncState::Live);
     phone.wait_live();
 }
+
+#[test]
+fn temporary_sign_in_wipes_synced_study_data_on_sign_out() {
+    let cloud = FakeCloud::start();
+    let dir = tempfile::tempdir().unwrap();
+    let mut phone = signed_in(dir.path(), &cloud, "phone");
+    word(&mut phone, "id:rumah", "known");
+    phone.wait_status("phone pushed", |s| s.pending == 0);
+    phone.send(Command::SetLogin {
+        username: "mo.kabar".into(),
+        password: super::Secret("correct horse battery".into()),
+    });
+    login_event(&mut phone, "login set", |l| l.saved);
+
+    let mut borrowed = Device::start(dir.path(), "library-pc", Platform::Web, &cloud.url);
+    borrowed.send(Command::SignInPassword {
+        username: "mo.kabar".into(),
+        password: super::Secret("correct horse battery".into()),
+        remember: false,
+    });
+    let s = borrowed.wait_status("borrowed live", |s| s.sync == SyncState::Live);
+    assert!(s.temporary);
+    eventually("word synced down", || status_of(&borrowed, "id:rumah") == WordStatus::Known);
+
+    borrowed.send(Command::SignOut);
+    borrowed.wait_status("signed out", |s| s.sync == SyncState::SignedOut);
+    assert!(borrowed.store.synced_rows("word_status").unwrap().is_empty());
+    assert_eq!(borrowed.store.last_seq().unwrap(), 0);
+}
+
+#[test]
+fn expired_access_tokens_refresh_once_and_disallowed_refresh_is_named() {
+    let cloud = FakeCloud::start();
+    let dir = tempfile::tempdir().unwrap();
+    let mut phone = signed_in(dir.path(), &cloud, "phone");
+
+    // Clock skew / rotated signing key: access token gets 401 `unauthorized`,
+    // `with_access` refreshes once instead of signing the device out (#715).
+    cloud.forget_access_tokens();
+    phone.send(Command::LoadDevices);
+    let devices = phone.wait("devices refreshed", |e| match e {
+        Event::Devices(d) => Some(d.clone()),
+        _ => None,
+    });
+    assert!(devices.unwrap().iter().any(|d| d.current));
+    assert_eq!(phone.wait_status("still live", |s| s.sync == SyncState::Live).problem, None);
+
+    // Unknown usernames lock after 5 tries just like real ones (#715).
+    let mut guesser = Device::start(dir.path(), "guesser", Platform::Web, &cloud.url);
+    for _ in 0..kabar_server::login::LOCK_AFTER {
+        guesser.send(Command::SignInPassword {
+            username: "no.such.user".into(),
+            password: super::Secret("wrong horse battery".into()),
+            remember: false,
+        });
+        guesser.wait("checked", |e| matches!(e, Event::SigningIn(false)).then_some(()));
+    }
+    let locked = guesser.wait_status("unknown locked", |s| matches!(s.problem, Some(Problem::Locked(_))));
+    assert_eq!(locked.problem, Some(Problem::Locked(1)));
+
+    // Allowlist removal on refresh reports `Problem::NotAllowed` (#715).
+    cloud.state.knobs.disallow_refresh.store(true, Ordering::SeqCst);
+    cloud.forget_access_tokens();
+    phone.send(Command::LoadUsage);
+    let out = phone.wait_status("disallowed", |s| s.sync == SyncState::SignedOut);
+    assert_eq!(out.problem, Some(Problem::NotAllowed));
+}

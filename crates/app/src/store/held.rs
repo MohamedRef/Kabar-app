@@ -20,7 +20,7 @@ const UNREADABLE: &str = "unreadable";
 const KEEP: i64 = 1000;
 
 /// Moves one outbox op to `held_ops`.
-fn hold(conn: &Connection, op_id: &str, reason: &str, at_ms: u64) -> rusqlite::Result<()> {
+pub(super) fn hold(conn: &Connection, op_id: &str, reason: &str, at_ms: u64) -> rusqlite::Result<()> {
     conn.execute(
         "INSERT OR REPLACE INTO held_ops (op_id, op, reason, at_ms)
          SELECT op_id, op, ?2, ?3 FROM outbox WHERE op_id = ?1",
@@ -30,7 +30,18 @@ fn hold(conn: &Connection, op_id: &str, reason: &str, at_ms: u64) -> rusqlite::R
     Ok(())
 }
 
-fn trim(conn: &Connection) -> rusqlite::Result<()> {
+/// Moves every waiting outbox op to `held_ops` (e.g. on an account switch).
+pub(super) fn hold_all(conn: &Connection, reason: &str, at_ms: u64) -> rusqlite::Result<()> {
+    conn.execute(
+        "INSERT OR REPLACE INTO held_ops (op_id, op, reason, at_ms)
+         SELECT op_id, op, ?1, ?2 FROM outbox",
+        params![reason, at_ms as i64],
+    )?;
+    conn.execute("DELETE FROM outbox", [])?;
+    trim(conn)
+}
+
+pub(super) fn trim(conn: &Connection) -> rusqlite::Result<()> {
     let gone = conn.execute(
         "DELETE FROM held_ops WHERE op_id NOT IN
            (SELECT op_id FROM held_ops ORDER BY at_ms DESC, op_id LIMIT ?1)",
