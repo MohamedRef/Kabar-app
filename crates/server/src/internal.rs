@@ -65,12 +65,30 @@ pub struct BlobData {
 pub struct AccountLoginState {
     pub email: String,
     pub username: Option<String>,
+    /// Names that may still hold the account's password, due to be cleared
+    /// (`crate::login::AccountLogin::to_release`).
+    #[serde(default)]
+    pub release: Vec<String>,
 }
 
-/// Account object `POST /login`: the username it has from now on.
+/// Account object `POST /login`: one step of a username change.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct LoginName {
     pub username: Option<String>,
+    #[serde(default)]
+    pub step: LoginStep,
+}
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum LoginStep {
+    /// The username the account has from now on.
+    #[default]
+    Adopt,
+    /// A name about to get the password: cleared later if the change stops.
+    Pending,
+    /// The name no longer holds the password.
+    Released,
 }
 
 /// Login object `POST /set`.

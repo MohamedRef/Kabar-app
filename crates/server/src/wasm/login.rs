@@ -6,12 +6,14 @@ use worker::{DurableObject, Env, Method, Request, Response, Result, State, durab
 use super::do_sql::DoSql;
 use super::{api_error, now_ms};
 use crate::internal::{LoginCheck, LoginClear, LoginSet};
-use crate::login::{Login as Store, parse_key};
+use crate::login::{Login as Store, Tries, parse_key};
 use kabar_protocol::cloud::ErrorCode;
 
 #[durable_object]
 pub struct Login {
     state: State,
+    /// Wrong tries at a username nobody has, kept in memory only.
+    unknown: std::cell::Cell<Tries>,
 }
 
 fn sql_err(e: crate::sql::SqlError) -> worker::Error {
@@ -20,7 +22,7 @@ fn sql_err(e: crate::sql::SqlError) -> worker::Error {
 
 impl DurableObject for Login {
     fn new(state: State, _env: Env) -> Self {
-        Self { state }
+        Self { state, unknown: Default::default() }
     }
 
     async fn fetch(&self, mut req: Request) -> Result<Response> {
@@ -33,7 +35,10 @@ impl DurableObject for Login {
                 let Some(key) = parse_key(&body.key) else {
                     return api_error(ErrorCode::InvalidRequest, "password_key must be 32 bytes, base64url");
                 };
-                Response::from_json(&login.check(&key, now).map_err(sql_err)?)
+                let mut unknown = self.unknown.get();
+                let checked = login.check_with(&key, now, &mut unknown).map_err(sql_err)?;
+                self.unknown.set(unknown);
+                Response::from_json(&checked)
             }
             (Method::Post, "/set") => {
                 let b: LoginSet = req.json().await?;

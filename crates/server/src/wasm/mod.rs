@@ -29,7 +29,7 @@ use crate::fcm;
 use crate::google::{self, Jwks};
 use crate::internal::{
     AccountLoginState, BlobData, BlobGet, BlobPut, DEVICE_HEADER, Expiry, LoginCheck, LoginClear, LoginName,
-    LoginSet, Refresh, Register, Revoke, SetPush,
+    LoginSet, LoginStep, Refresh, Register, Revoke, SetPush,
 };
 use crate::login::{self as pw, Checked};
 use crate::quota::{self, Service};
@@ -338,6 +338,11 @@ async fn login_state(
 
 /// `GET`, `POST` and `DELETE /v1/login`: the username and password of the
 /// signed-in account.
+///
+/// A change spans three objects (the new name's, the old name's, the
+/// account's), so the account lists every name that may still hold its
+/// password until that name is cleared; whatever a failed step left behind
+/// is cleared on the next visit (`crate::login::AccountLogin`, #715).
 async fn manage_login(
     mut req: Request,
     env: &Env,
@@ -348,8 +353,11 @@ async fn manage_login(
         Ok(s) => s,
         Err(resp) => return Ok(resp),
     };
+    for name in &state.release {
+        release_login(env, claims, name).await?;
+    }
     let username = match method {
-        Method::Get => state.username,
+        Method::Get => state.username.clone(),
         Method::Post => {
             let set: SetPassword = match body(&mut req).await {
                 Ok(b) => b,
@@ -362,6 +370,10 @@ async fn manage_login(
             let Some(key) = pw::parse_key(&set.password_key) else {
                 return api_error(ErrorCode::InvalidRequest, "password_key must be 32 bytes, base64url");
             };
+            let resp = login_step(env, claims, Some(&username), LoginStep::Pending).await?;
+            if resp.status_code() != 200 {
+                return Ok(resp);
+            }
             let salt = random_hex(16).map_err(js_err)?;
             let put = LoginSet {
                 account_id: claims.sub.clone(),
@@ -373,26 +385,45 @@ async fn manage_login(
             if resp.status_code() != 200 {
                 return Ok(resp);
             }
-            if let Some(old) = state.username.filter(|old| *old != username) {
-                call_login(env, &old, "/clear", &LoginClear { account_id: claims.sub.clone() }).await?;
-            }
             Some(username)
         }
-        _ => {
-            if let Some(old) = &state.username {
-                call_login(env, old, "/clear", &LoginClear { account_id: claims.sub.clone() }).await?;
-            }
-            None
-        }
+        _ => None,
     };
     if method != Method::Get {
-        let name = LoginName { username: username.clone() };
-        let resp = call_do(env, &claims.sub, Method::Post, "/login", Some(&claims.dev), Some(&name)).await?;
+        let resp = login_step(env, claims, username.as_deref(), LoginStep::Adopt).await?;
         if resp.status_code() != 200 {
             return Ok(resp);
         }
+        if let Some(old) = state.username.filter(|old| Some(old) != username.as_ref()) {
+            release_login(env, claims, &old).await?;
+        }
     }
     Response::from_json(&PasswordLogin { username })
+}
+
+/// One step of a username change, in the account object.
+async fn login_step(
+    env: &Env,
+    claims: &AccessClaims,
+    name: Option<&str>,
+    step: LoginStep,
+) -> Result<Response> {
+    let body = LoginName { username: name.map(str::to_owned), step };
+    call_do(env, &claims.sub, Method::Post, "/login", Some(&claims.dev), Some(&body)).await
+}
+
+/// Clears `name`'s password if this account holds it, and tells the account
+/// object. A failure is left for the next visit.
+async fn release_login(env: &Env, claims: &AccessClaims, name: &str) -> Result<()> {
+    let cleared = call_login(env, name, "/clear", &LoginClear { account_id: claims.sub.clone() }).await;
+    match cleared {
+        Ok(resp) if resp.status_code() == 200 => {
+            login_step(env, claims, Some(name), LoginStep::Released).await?;
+        }
+        Ok(resp) => console_error!("clearing the username {name}: status {}", resp.status_code()),
+        Err(e) => console_error!("clearing the username {name}: {e}"),
+    }
+    Ok(())
 }
 
 fn js_err(e: impl std::fmt::Display) -> worker::Error {
@@ -812,7 +843,8 @@ async fn route(mut req: Request, env: &Env, cfg: &Config, method: Method, path: 
                         return api_error(ErrorCode::InvalidRequest, "bad device id");
                     }
                     let revoke = Revoke { device: DeviceId(id.to_owned()) };
-                    call_do(env, &claims.sub, Method::Post, "/revoke", None, Some(&revoke)).await
+                    // The caller must still be signed in itself (#715).
+                    call_do(env, &claims.sub, Method::Post, "/revoke", Some(&claims.dev), Some(&revoke)).await
                 }
                 (m @ (Method::Get | Method::Post | Method::Delete), "/v1/login") => {
                     manage_login(req, env, &claims, m).await
@@ -821,8 +853,14 @@ async fn route(mut req: Request, env: &Env, cfg: &Config, method: Method, path: 
                     let revoke = Revoke { device: claims.dev.clone() };
                     call_do(env, &claims.sub, Method::Post, "/revoke", None, Some(&revoke)).await
                 }
-                (Method::Get, "/v1/vault") => Response::from_json(&cfg.vault_status()),
-                (Method::Get, "/v1/usage") => usage_report(env, cfg).await,
+                (Method::Get, "/v1/vault") => match ensure_active(env, &claims).await? {
+                    Some(revoked) => Ok(revoked),
+                    None => Response::from_json(&cfg.vault_status()),
+                },
+                (Method::Get, "/v1/usage") => match ensure_active(env, &claims).await? {
+                    Some(revoked) => Ok(revoked),
+                    None => usage_report(env, cfg).await,
+                },
                 (Method::Post, "/v1/ai") => ai_proxy(req, env, cfg, &claims).await,
                 (Method::Post, "/v1/ai/reject") => ai_reject(req, env, &claims).await,
                 (Method::Post, "/v1/tts") => tts_proxy(req, env, cfg, &claims).await,

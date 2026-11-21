@@ -20,8 +20,8 @@ use crate::devices::{Devices, PushTarget, RefreshError};
 use crate::fcm::{self, AccessToken, SendOutcome, ServiceAccount};
 use crate::hub::{Conn, Hub};
 use crate::internal::{
-    AccountLoginState, BlobData, BlobGet, BlobPut, DEVICE_HEADER, Expiry, LoginName, Refresh, Register,
-    Revoke, SetPush,
+    AccountLoginState, BlobData, BlobGet, BlobPut, DEVICE_HEADER, Expiry, LoginName, LoginStep, Refresh,
+    Register, Revoke, SetPush,
 };
 use crate::login::AccountLogin;
 
@@ -245,6 +245,11 @@ impl DurableObject for Account {
             }
             (Method::Get, "/devices") => {
                 let current = Self::device_header(&req)?;
+                // A signed-out device's token lives on for up to 15 minutes:
+                // it mustn't read the list (#715).
+                if !devices.is_active(&current).map_err(sql_err)? {
+                    return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
+                }
                 let list = devices.list(&current).map_err(sql_err)?;
                 Response::from_json(&DeviceList { devices: list })
             }
@@ -267,8 +272,10 @@ impl DurableObject for Account {
                 let Some(email) = devices.email(&caller).map_err(sql_err)? else {
                     return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
                 };
-                let username = AccountLogin::open(&db).username().map_err(sql_err)?;
-                Response::from_json(&AccountLoginState { email, username })
+                let names = AccountLogin::open(&db);
+                let username = names.username().map_err(sql_err)?;
+                let release = names.to_release(now).map_err(sql_err)?;
+                Response::from_json(&AccountLoginState { email, username, release })
             }
             (Method::Post, "/login") => {
                 let caller = Self::device_header(&req)?;
@@ -276,7 +283,15 @@ impl DurableObject for Account {
                     return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
                 }
                 let body: LoginName = req.json().await?;
-                AccountLogin::open(&db).set_username(body.username.as_deref()).map_err(sql_err)?;
+                let names = AccountLogin::open(&db);
+                let name = body.username.as_deref();
+                match (body.step, name) {
+                    (LoginStep::Adopt, _) => names.adopt(name),
+                    (LoginStep::Pending, Some(n)) => names.pending(n, now),
+                    (LoginStep::Released, Some(n)) => names.released(n),
+                    (_, None) => return api_error(ErrorCode::InvalidRequest, "which username?"),
+                }
+                .map_err(sql_err)?;
                 Response::empty()
             }
             (Method::Get, "/active") => {
@@ -288,6 +303,13 @@ impl DurableObject for Account {
                 }
             }
             (Method::Post, "/revoke") => {
+                // Signing another device out: the caller must still be signed
+                // in (#715). Sign-out and the allowlist pass no caller.
+                if let Some(caller) = req.headers().get(DEVICE_HEADER)?.map(DeviceId)
+                    && !devices.is_active(&caller).map_err(sql_err)?
+                {
+                    return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
+                }
                 let body: Revoke = req.json().await?;
                 if devices.revoke(&body.device, now).map_err(sql_err)? {
                     self.close_device(&body.device);
