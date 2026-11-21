@@ -433,7 +433,7 @@ pub struct AlarmRound {
 }
 
 /// The spec's own alarm examples (§12); always in a session when in the data.
-const ALARM_MUST: [&str; 2] = ["kalimat", "mungkin"];
+const ALARM_MUST: [&str; 2] = ["kalimat", "selamat"];
 
 fn same_meaning(a: &Trilingual, b: &Trilingual) -> bool {
     a.en.trim().eq_ignore_ascii_case(b.en.trim())
@@ -750,7 +750,7 @@ mod tests {
         assert_eq!(rounds, alarm_rounds(&d, 12, 5));
         let words: HashSet<_> = rounds.iter().map(|r| r.word.as_str()).collect();
         assert_eq!(words.len(), 12);
-        assert!(words.contains("kalimat") && words.contains("mungkin"));
+        assert!(words.contains("kalimat") && words.contains("selamat"));
         let mut seen_shifted = false;
         for r in &rounds {
             let e = d.entry(&r.word).unwrap();
@@ -774,7 +774,7 @@ mod tests {
         for seed in 0..10 {
             let two = alarm_rounds(&d, 2, seed);
             let w: HashSet<_> = two.iter().map(|r| r.word.as_str()).collect();
-            assert_eq!(w, HashSet::from(["kalimat", "mungkin"]));
+            assert_eq!(w, HashSet::from(["kalimat", "selamat"]));
         }
         let all = alarm_rounds(&d, 1000, 1);
         let expected = d

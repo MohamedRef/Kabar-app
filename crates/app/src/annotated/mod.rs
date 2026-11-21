@@ -223,13 +223,19 @@ fn pieces(doc: &ReadDoc, marked: &[String], text_lang: CoreLang) -> Vec<Piece> {
                 (end, p.gloss.clone())
             }),
         };
+        let id = text_lang == CoreLang::Indonesian;
+        let gloss = if name {
+            None
+        } else {
+            phrases::address(doc, i, &text, id).or_else(|| info.map(|i| i.gloss))
+        };
         out.push(Piece {
             word: Some(i),
             bridge: w.is_bridge(),
             marked: !marked.is_empty() && is_marked(w, &text, marked),
             class: class.map(WordClass::css),
             spans,
-            gloss: if name { None } else { info.map(|i| i.gloss) },
+            gloss,
             name,
             phrase,
             text,
@@ -755,5 +761,33 @@ mod tests {
         let selamat = parts.iter().find(|p| p.text == "Selamat").unwrap();
         assert!(selamat.bridge);
         assert!(!parts.iter().find(|p| p.text == "pagi").unwrap().bridge);
+    }
+
+    #[test]
+    fn radio_greetings_place_names_and_polite_address_keep_context() {
+        let gimana = pieces(&doc("Pagi, Reza! Gimana kabarnya?"), &[], CoreLang::Indonesian);
+        let (_, g) = gimana.iter().find(|p| p.text == "Gimana").unwrap().phrase.clone().unwrap();
+        assert!(g.arz.contains("أخبارك"), "{g:?}");
+
+        let kota = pieces(&doc("Kita di Kota Tua."), &[], CoreLang::Indonesian);
+        let (_, g) = kota.iter().find(|p| p.text == "Kota").unwrap().phrase.clone().unwrap();
+        assert!(g.arz.contains("القديمة") && g.en == "Old Town", "{g:?}");
+
+        let polite = pieces(&doc("Sama Bapak, Ibu: saya, Anda."), &[], CoreLang::Indonesian);
+        let bapak = polite.iter().find(|p| p.text == "Bapak").unwrap().gloss.as_ref().unwrap();
+        let ibu = polite.iter().find(|p| p.text == "Ibu").unwrap().gloss.as_ref().unwrap();
+        assert_eq!(short(&bapak.arz), "حضرتك");
+        assert_eq!(short(&ibu.arz), "حضرتك");
+        assert_eq!(short(&bapak.en), "sir");
+        assert_eq!(short(&ibu.en), "ma'am");
+
+        let named = pieces(&doc("Ibu Yanti datang."), &[], CoreLang::Indonesian);
+        let title = named.iter().find(|p| p.text == "Ibu").unwrap().gloss.as_ref().unwrap();
+        assert_eq!(short(&title.arz), "مدام");
+
+        let kinship = pieces(&doc("Ibu saya guru. Ibu Anda sehat?"), &[], CoreLang::Indonesian);
+        for p in kinship.iter().filter(|p| p.text == "Ibu") {
+            assert!(!p.gloss.as_ref().unwrap().arz.contains("مدام"));
+        }
     }
 }

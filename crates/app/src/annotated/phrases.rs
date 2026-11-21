@@ -35,6 +35,9 @@ const SEED: &[(&str, &str, [&str; 3])] = &[
     ("id", "terima kasih", ["شكرًا", "شكرًا", "thank you"]),
     ("id", "sampai jumpa", ["أشوفك بعدين", "إلى اللقاء", "see you"]),
     ("id", "apa kabar", ["إزيك؟", "كيف حالك؟", "how are you?"]),
+    ("id", "gimana kabarnya", ["أخبارك إيه؟", "كيف الحال؟", "how's it going?"]),
+    ("id", "bagaimana kabarnya", ["أخبارك إيه؟", "كيف الحال؟", "how's it going?"]),
+    ("id", "kota tua", ["البلد القديمة", "المدينة القديمة", "Old Town"]),
     ("jv", "sugeng enjing", ["صباح الخير", "صباح الخير", "good morning"]),
     ("jv", "sugeng siang", ["نهارك سعيد", "نهارك سعيد", "good day"]),
     ("jv", "sugeng sonten", ["مسا الخير", "مساء الخير", "good afternoon"]),
@@ -108,4 +111,33 @@ pub fn at(doc: &ReadDoc, i: usize, lang: &str) -> Option<(usize, &'static Phrase
     };
     let mine = list.iter().filter(|p| p.lang == lang).find_map(|p| fits(p).map(|l| (l, p)));
     mine.or_else(|| list.iter().find_map(|p| fits(p).map(|l| (l, p))))
+}
+
+/// Capitalized "Bapak" / "Ibu" mid-sentence or before a name is polite
+/// address ("sir" / "ma'am", «حضرتك»), not kinship "father" / "mother" (#742).
+pub fn address(doc: &ReadDoc, i: usize, text: &str, id: bool) -> Option<Gloss> {
+    if !id || !matches!(text, "Bapak" | "Ibu") {
+        return None;
+    }
+    let t = &doc.tokens[i];
+    let before_name = doc.tokens.get(i + 1).is_some_and(|next| {
+        let gap = doc.text(t.end, next.start);
+        let w = doc.text(next.start, next.end);
+        next.word.is_some()
+            && !gap.is_empty()
+            && gap.chars().all(char::is_whitespace)
+            && w.starts_with(char::is_uppercase)
+            && !matches!(w, "Anda" | "Bapak" | "Ibu")
+    });
+    let (sent_start, _) = doc.sentence_span(i);
+    let before = &doc.tokens[..i];
+    let mid = before.iter().rev().take_while(|p| p.start >= sent_start).any(|p| p.word.is_some());
+    let [arz, ar, en] = match (text, before_name, mid) {
+        ("Bapak", true, _) => ["أستاذ، حضرتك", "السيد، حضرتك", "Mr., sir"],
+        ("Ibu", true, _) => ["مدام، حضرتك", "السيدة، حضرتكِ", "Mrs., ma'am"],
+        ("Bapak", false, true) => ["حضرتك، أستاذ", "حضرتك، سيدي", "sir, you"],
+        ("Ibu", false, true) => ["حضرتك، مدام", "حضرتكِ، سيدتي", "ma'am, you"],
+        _ => return None,
+    };
+    Some(Gloss { arz: arz.into(), ar: ar.into(), en: en.into() })
 }
