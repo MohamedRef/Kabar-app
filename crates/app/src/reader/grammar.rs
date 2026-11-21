@@ -81,7 +81,7 @@ impl DocGrammar {
 pub fn syllabus(db: &Db) -> Syllabus {
     let store = db.0.borrow();
     let completed = crate::persistence::read_or("finished lessons", store.completed_lessons());
-    let start = store.placement().ok().flatten().map(|p| p.start_level);
+    let start = crate::persistence::read_or("placement", store.placement()).map(|p| p.start_level);
     let mut s = Syllabus::default();
     for lang in ["id", "jv"] {
         let Some(cur) = crate::journey::curriculum(lang) else { continue };

@@ -493,4 +493,46 @@ mod tests {
         let next = s.clock.tick(0);
         assert!((next.wall_ms as i64, next.counter) > written);
     }
+
+    #[test]
+    fn add_to_review_rolls_back_the_card_when_a_later_step_fails() {
+        let mut s = Store::open_in_memory().unwrap();
+        let t = s.save_text("Saya sedang membaca buku.", TextKind::Pasted, None, None).unwrap();
+        let ids: Vec<String> = s.outbox(10).unwrap().into_iter().map(|o| o.id).collect();
+        s.remove_from_outbox(ids.iter().map(String::as_str)).unwrap();
+        s.conn
+            .execute_batch(
+                "CREATE TRIGGER fail_saved_word BEFORE INSERT ON saved_words
+                 BEGIN SELECT RAISE(ABORT, 'busy'); END;",
+            )
+            .unwrap();
+        let g = crate::reader::glossary::Gloss {
+            arz: "يقرا".into(), ar: "يقرأ".into(), en: "read".into()
+        };
+        let info = crate::reader::glossary::WordInfo {
+            lemma: "baca".into(),
+            lang: crate::reader::glossary::WordLang::Indonesian,
+            pos: None,
+            gloss: g,
+            indonesian: None,
+            bridge: None,
+            levels: None,
+            note: None,
+            example: None,
+            verified: true,
+        };
+        assert!(
+            crate::reader::add_to_review(
+                &mut s,
+                "id:baca",
+                "membaca",
+                "Saya sedang membaca buku.",
+                &t.id,
+                Some(&info),
+            )
+            .is_err()
+        );
+        assert!(s.cards().unwrap().is_empty(), "upsert_card rolled back with saved_words");
+        assert_eq!(s.outbox_len().unwrap(), 0, "no orphaned card op in outbox");
+    }
 }

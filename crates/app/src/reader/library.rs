@@ -220,7 +220,7 @@ pub(super) fn open_at(db: &Db, st: ReaderState, text: SavedText, lexeme: &str) {
 pub(super) fn delete_text(db: &Db, st: ReaderState, mut recent: Signal<Vec<SavedText>>, id: &str) {
     let deleted = db.0.borrow_mut().delete_text(id);
     match deleted {
-        Ok(()) => recent.set(db.0.borrow().recent_texts(TEXTS).unwrap_or_default()),
+        Ok(()) => recent.set(crate::persistence::read_or("saved texts", db.0.borrow().recent_texts(TEXTS))),
         Err(e) => st.write_failed("deleting a text", &e),
     }
 }
@@ -232,8 +232,9 @@ pub fn Library(recent: Signal<Vec<SavedText>>) -> Element {
     let lang = ui.lang();
     let mut tab = use_signal(|| Tab::Texts);
     let mut query = use_signal(String::new);
-    let words = use_signal(|| db.0.borrow().saved_words(WORDS).unwrap_or_default());
-    let taught = use_signal(|| db.0.borrow().taught_entries().map(|t| t.len()).unwrap_or(0));
+    let words = use_signal(|| crate::persistence::read_or("saved words", db.0.borrow().saved_words(WORDS)));
+    let taught =
+        use_signal(|| crate::persistence::read_or("taught words", db.0.borrow().taught_entries()).len());
     let q = query.read().trim().to_lowercase();
     let current = *tab.read();
 
@@ -459,7 +460,10 @@ pub(super) fn WordList(
     let (statuses, live_texts) = {
         let store = db.0.borrow();
         let keys = shown.iter().map(|(w, _)| w.lexeme.as_str()).filter(|k| !k.starts_with("phrase:"));
-        (store.word_statuses(keys).unwrap_or_default(), store.live_text_ids().unwrap_or_default())
+        (
+            crate::persistence::read_or("word statuses", store.word_statuses(keys)),
+            crate::persistence::read_or("saved texts", store.live_text_ids()),
+        )
     };
     rsx! {
         if taught > 0 {
@@ -562,7 +566,7 @@ fn SavedWordRow(w: SavedWord, gloss: Option<String>, learning: bool, has_text: b
                             let id = w.text_id.clone().unwrap_or_default();
                             // The body is read only when it's opened.
                             move |_| {
-                                let text = db.0.borrow().text(&id).ok().flatten();
+                                let text = crate::persistence::read_or("saved text", db.0.borrow().text(&id));
                                 if let Some(text) = text {
                                     open_at(&db, st, text, &lexeme);
                                 }

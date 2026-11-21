@@ -467,7 +467,7 @@ Rules (Mohamed's decisions; all in force):
   offline packs, #711 lesson player and Review, #712 Reader, #713 updates,
   #714 coach, #715 accounts and sign-in. Fixed: #710 (all 11 items), #711
   (all items: #709, #718 and Lanjut/level-test/practice/Card Wall), #712
-  items 1, 2 and 4 (#706, #716, #717). From the earlier sync,
+  (all items: #706, #716, #717, #731). From the earlier sync,
   grading and web reviews: #687's cached TTS for a revoked device and reset
   cutoff (#703, #705), #688 items 1–5 (#694, #720), two #689 points (#700);
   the rest of each issue is open.
@@ -513,6 +513,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-20: Reader (#712): digit-2 chat reduplications (`hati2`, `anak2`, `sama2`) expand to their base for glosses, status and pronunciation; AI sentence explanations isolate Latin runs in `<bdi>`; `use_translation` hashes segment layout and `ReaderState::load` keeps the open panel across screenshot restructuring; `reader_card` keys on the lemma, `add_to_review` and `save_phrase` run inside `Store::atomically`, and Reader store reads go through `persistence::read_or`.
 - 2026-11-20: Lesson player & Review (#711): `position_after_resets` skips any Lanjut row whose lesson was completed at or after that stamp on another device; level and placement tests save events in one `Store::atomically` write with a «Save again» notice before logging coach practice; ↻ Try again waits until a `NeedsReview` self-check is answered, and `SavedResponse.practice` survives a reopen so practice self-checks never overwrite the first try; Card Wall `undo` runs `engine.undo()` before touching the seat or queue.
 - 2026-11-20: Offline packs (#710): pack clips live in `<data>/packs/audio/` (one-time move of manifest keys from `<data>/audio/`, leaving the cloud-voice cache and Radio downloads untouched); installs, removals and orphan/`.part` sweeps serialize on a store lock with unique atomic temp files; downloads use 20 s stall timeouts, HTTP `Range` resume and a single index refresh when a tar was re-uploaded; `unit` ids and `https://` URLs are validated; Settings tells 404/newer-format/network apart and keeps `Downloaded` + `Remove` across failed updates and retired units; dialogue lines keep each speaker's voice on cloud fallback; web `files.json` stores sizes only with coalesced saves, and Library › Downloads explains web voices.
 - 2026-11-20: CI: APK builds retry Maven (`scripts/android-bundle.sh`), and `dx` comes from the Actions cache on Linux and macOS (`.github/actions/dx`, adapted from Steps-app #837).
