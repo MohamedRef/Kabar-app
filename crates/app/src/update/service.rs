@@ -234,6 +234,8 @@ impl Updater {
     }
 
     /// Looks at the feed; with `download`, fetches a newer build right away.
+    /// Only tests call it: the app goes through [`Self::check_with`].
+    #[cfg(test)]
     pub fn check(&'static self, download: bool) {
         self.check_with(download, true);
     }
@@ -261,7 +263,8 @@ impl Updater {
         });
     }
 
-    /// [`Self::check`]; with `content`, a newer content bundle is fetched too.
+    /// Looks at the feed; with `download`, fetches a newer build right away,
+    /// and with `content`, a newer content bundle too.
     pub(super) fn check_with(&'static self, download: bool, content: bool) -> bool {
         let Some(job) = try_lock_unpoisoned(&self.job) else { return false };
         self.check_locked(job, download, content)

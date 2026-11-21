@@ -1482,7 +1482,9 @@ fn a_full_builds_bundle_waits_for_its_apk_before_counting_as_updated() {
             published_at: "2026-11-19T12:00:00Z".into(),
             changes: vec![kabar_protocol::update::Change::new(
                 kabar_protocol::update::ChangeKind::Improved,
-                UpdateNotes { en: "Faster Reader".into(), ar_eg: "القارئ أسرع".into(), ar: String::new() },
+                UpdateNotes {
+                    en: "Faster Reader".into(), ar_eg: "القارئ أسرع".into(), ar: String::new()
+                },
             )],
             content_only: false,
         },
