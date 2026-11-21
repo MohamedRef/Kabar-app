@@ -408,6 +408,7 @@ impl Store {
         // that timeout instead of failing when a read turns into a write.
         conn.set_transaction_behavior(rusqlite::TransactionBehavior::Immediate);
         migrate(&mut conn)?;
+        Self::wipe_if_left_behind(&mut conn)?;
 
         let device = match conn
             .query_row("SELECT value FROM meta WHERE key = 'device_id'", [], |r| r.get::<_, String>(0))
@@ -963,6 +964,8 @@ pub use journal::{LessonDone, TaughtAt};
 pub mod export;
 // A database restored from another device takes its own device id.
 mod install;
+// A sign-in on someone else's device leaves nothing behind (#715).
+mod temporary;
 // Sync ops that can't go up, kept with their reason (audit F12).
 mod held;
 // How long each connection waits for the other's write lock (audit F16).

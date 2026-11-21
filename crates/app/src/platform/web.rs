@@ -4,6 +4,9 @@
 //!   IndexedDB (`kabar` › `files` › `kabar.db`): loaded once before the app
 //!   starts, and written back a moment after anything changes, and when the
 //!   tab is hidden or closed.
+//! - **A sign-in on someone else's computer** ("This isn't my device") is
+//!   never written there: the tab works in memory until it signs out, which
+//!   wipes the account's rows and saves the empty database (#715).
 //! - **One tab writes.** The newest tab owns the database; an older one stops
 //!   saving and says so, so two tabs never overwrite each other's work.
 //! - **Exports** are browser downloads.
@@ -101,6 +104,8 @@ pub enum Trouble {
 thread_local! {
     static SNAPSHOT: RefCell<Option<Vec<u8>>> = const { RefCell::new(None) };
     static SAVING: Cell<bool> = const { Cell::new(true) };
+    /// A temporary sign-in's data stays in this tab's memory (#715).
+    static IN_MEMORY: Cell<bool> = const { Cell::new(false) };
     /// SQLite's change count at the last save.
     static SAVED_AT: Cell<Option<u64>> = const { Cell::new(None) };
     static TAB: RefCell<String> = const { RefCell::new(String::new()) };
@@ -167,6 +172,12 @@ pub fn stop_saving(why: Trouble) {
     TROUBLE.with(|t| t.set(Some(why)));
 }
 
+/// While a sign-in on someone else's computer lasts, nothing is written to
+/// the browser's copy: closing the tab leaves only what was there before.
+pub fn keep_in_memory(on: bool) {
+    IN_MEMORY.with(|m| m.set(on));
+}
+
 /// Whether this tab is the newest one, which alone saves and syncs.
 pub fn owns_tab() -> bool {
     TAB.with(|t| ls_get(OWNER_KEY).is_none_or(|owner| owner == *t.borrow()))
@@ -174,7 +185,7 @@ pub fn owns_tab() -> bool {
 
 /// Writes the database to IndexedDB when it changed since the last save.
 async fn save_now(db: &Db) {
-    if !SAVING.with(Cell::get) {
+    if !SAVING.with(Cell::get) || IN_MEMORY.with(Cell::get) {
         return;
     }
     if !owns_tab() {

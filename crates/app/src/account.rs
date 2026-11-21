@@ -187,6 +187,8 @@ pub fn AccountScreen() -> Element {
                 if cfg!(target_arch = "wasm32") {
                 } else if *cloud.signing_in.read() {
                     p { class: "muted", aria_live: "polite", "{ui.t(AccountMsg::CloudSigningIn)}" }
+                    // Back in Chrome, or a closed tab: no waiting it out (#715).
+                    button { onclick: move |_| cloud.send(Command::CancelSignIn), "{ui.t(AccountMsg::PwCancel)}" }
                 } else {
                     button { class: "primary", onclick: move |_| cloud.send(Command::SignInGoogle), "{ui.t(Msg::CloudSignIn)}" }
                 }
@@ -295,6 +297,9 @@ pub fn ReturningSignIn() -> Element {
                             disabled: *cloud.signing_in.read(),
                             onclick: move |_| cloud.send(Command::SignInGoogle),
                             "{ui.t(Msg::CloudSignIn)}"
+                        }
+                        if *cloud.signing_in.read() {
+                            button { onclick: move |_| cloud.send(Command::CancelSignIn), "{ui.t(AccountMsg::PwCancel)}" }
                         }
                     }
                 }

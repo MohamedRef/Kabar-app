@@ -155,7 +155,7 @@ just cloud-logs  # live logs from the deployed Worker
 
 ### 4.1 Username and password
 
-For a borrowed laptop or a library computer, where your Gmail isn't. Set a username and password once from a signed-in device (Settings › Account & sync › "Username and password"); then on any device, signed out, type them in the same screen. It is the same account as Google, so everything syncs down, including where each lesson stands (the `sessions` table). Tick "This isn't my device" on someone else's device: the session then lives only in that browser tab (`sessionStorage`) or, in the Mac and Android apps, in memory, and ends when it closes. Sign out there when you're done, or from your phone's Devices list.
+For a borrowed laptop or a library computer, where your Gmail isn't. Set a username and password once from a signed-in device (Settings › Account & sync › "Username and password"); then on any device, signed out, type them in the same screen. It is the same account as Google, so everything syncs down, including where each lesson stands (the `sessions` table). Tick "This isn't my device" on someone else's device: the session then lives only in that browser tab (`sessionStorage`) or, in the Mac and Android apps, in memory, and ends when it closes. Its data goes with it: the web tab never writes the database to the browser, and signing out wipes the account's rows (on the Mac and Android, an app closed before signing out wipes them at its next start). Sign out there when you're done, or from your phone's Devices list.
 
 How the password is kept safe:
 

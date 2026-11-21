@@ -104,6 +104,9 @@ pub struct Knobs {
     pub stall_sockets: AtomicBool,
     /// Open sockets go quiet for good: no replies, no pongs (half-open).
     pub deaf_sockets: AtomicBool,
+    /// The account left the allowlist: a refresh signs the device out with
+    /// `not_allowed`, as `crates/server/src/wasm/mod.rs` does.
+    pub disallowed: AtomicBool,
 }
 
 pub struct State {
@@ -343,6 +346,10 @@ impl State {
                 };
                 let device = self.tokens.lock().unwrap().refresh.remove(&req.refresh_token);
                 let Some(device) = device else { return fail(401, ErrorCode::DeviceRevoked) };
+                if self.knobs.disallowed.load(Ordering::SeqCst) {
+                    self.revoke(&device);
+                    return fail(403, ErrorCode::NotAllowed);
+                }
                 let email =
                     self.devices.lock().unwrap().get(&device).map(|_| "learner@example.com".to_string());
                 json(200, &self.issue(&device, email))

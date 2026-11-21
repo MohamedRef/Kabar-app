@@ -4,6 +4,8 @@
 //! one thread (sharing the UI's database) on the web; the UI talks to it
 //! through channels either way.
 
+#[cfg(test)]
+mod account_tests;
 pub mod api;
 #[cfg(test)]
 mod converge;
@@ -92,6 +94,9 @@ impl CloudConfig {
 #[derive(Debug)]
 pub enum Command {
     SignInGoogle,
+    /// Stop waiting for the browser (or for the network) to finish a Google
+    /// sign-in.
+    CancelSignIn,
     /// Username + password, on a device without Google (and the web app).
     /// `remember: false` (someone else's device) keeps the session only until
     /// the app or the browser tab closes.
