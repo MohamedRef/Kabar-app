@@ -109,6 +109,9 @@ struct Piece {
     /// On the first word of a fixed expression: the index of the part that
     /// ends it and what the whole means ("Selamat pagi" = صباح الخير).
     phrase: Option<(usize, Gloss)>,
+    /// Closing punctuation right after the word ("Kak!"): drawn in the
+    /// word's box, so a gloss wider than the word can't push it away (#689).
+    tail: String,
 }
 
 impl Piece {
@@ -230,6 +233,7 @@ fn pieces(doc: &ReadDoc, marked: &[String], text_lang: CoreLang) -> Vec<Piece> {
             name,
             phrase,
             text,
+            tail: String::new(),
         });
         close_phrase(&mut out, &mut phrase_end, i);
         at = t.end;
@@ -237,7 +241,31 @@ fn pieces(doc: &ReadDoc, marked: &[String], text_lang: CoreLang) -> Vec<Piece> {
     if at < doc.body.len() {
         out.push(plain(doc.text(at, doc.body.len())));
     }
+    glue_punctuation(&mut out);
     out
+}
+
+/// Moves closing punctuation that touches a word into that word's box. The
+/// plain run it came from stays (maybe empty), so phrase indices hold.
+fn glue_punctuation(out: &mut [Piece]) {
+    let closing = |c: char| {
+        matches!(
+            c,
+            '.' | ',' | '!' | '?' | ';' | ':' | ')' | ']' | '}' | '"' | '»' | '”' | '’' | '…' | '،' | '؟'
+        )
+    };
+    for i in 1..out.len() {
+        let (before, after) = out.split_at_mut(i);
+        let (word, next) = (&mut before[i - 1], &mut after[0]);
+        if word.word.is_none() || next.word.is_some() {
+            continue;
+        }
+        let cut = next.text.find(|c: char| !closing(c)).unwrap_or(next.text.len());
+        if cut > 0 {
+            word.tail = next.text[..cut].to_string();
+            next.text.drain(..cut);
+        }
+    }
 }
 
 /// At the phrase's last token, turn the token index its first word holds
@@ -339,6 +367,9 @@ fn WordRun(p: Piece, i: usize, open: Signal<Option<usize>>, glosses: bool) -> El
                     }
                 } else {
                     "{p.text}"
+                }
+                if !p.tail.is_empty() {
+                    span { class: "annot-tail", "{p.tail}" }
                 }
             }
             if glosses {
@@ -612,10 +643,22 @@ mod tests {
     fn pieces_keep_the_text_and_mark_story_words() {
         let text = "Saya sedang membaca buku.";
         let parts = pieces(&doc(text), &["baca".to_string()], CoreLang::Indonesian);
-        assert_eq!(parts.iter().map(|p| p.text.as_str()).collect::<String>(), text);
+        assert_eq!(parts.iter().map(|p| format!("{}{}", p.text, p.tail)).collect::<String>(), text);
         let marked: Vec<&str> = parts.iter().filter(|p| p.marked).map(|p| p.text.as_str()).collect();
         assert_eq!(marked, ["membaca"]);
         assert!(parts.iter().filter(|p| p.word.is_some()).count() >= 4, "every word is tappable");
+    }
+
+    #[test]
+    fn closing_punctuation_sits_in_the_words_box() {
+        let text = "Terima kasih, Kak! Ayo main bola! (Kata \"ayo\")";
+        let parts = pieces(&doc(text), &[], CoreLang::Indonesian);
+        assert_eq!(parts.iter().map(|p| format!("{}{}", p.text, p.tail)).collect::<String>(), text);
+        let tail = |w: &str| parts.iter().find(|p| p.text == w).map(|p| p.tail.as_str()).unwrap();
+        assert_eq!((tail("kasih"), tail("Kak"), tail("bola")), (",", "!", "!"));
+        assert_eq!(tail("Ayo"), "", "a space isn't punctuation");
+        // An opening bracket stays with the text after it.
+        assert!(parts.iter().any(|p| p.word.is_none() && p.text.contains('(')));
     }
 
     #[test]

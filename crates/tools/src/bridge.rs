@@ -146,6 +146,11 @@ pub fn validate(entries: &[BridgeEntry], rules: &[SoundRule]) -> Vec<String> {
         if !is_latin_word(w) {
             p.push("word must be lowercase Latin".into());
         }
+        if let Some(d) = &e.display
+            && (d.to_lowercase() != *w || d == w)
+        {
+            p.push(format!("display {d:?} must be the word with capitals"));
+        }
         if !has_arabic(&e.arabic) {
             p.push("arabic must be in Arabic script".into());
         }
