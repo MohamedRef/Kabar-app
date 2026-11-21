@@ -638,7 +638,7 @@ pub fn grade(ex: &Exercise, answer: &Answer, lang: UiLanguage, lesson_language: 
             }
         }
         (K::MatchPairs { .. }, Answer::Matched { .. }) => Grade::Correct,
-        (K::Speaking { .. }, _) | (_, Answer::Practiced) => Grade::Practiced,
+        (K::Speaking { .. }, _) => Grade::Practiced,
         (K::Listen { options, answer: Some(right), .. }, Answer::Choice(i)) if !options.is_empty() => {
             if i == right { Grade::Correct } else { Grade::Wrong }
         }
