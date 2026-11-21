@@ -1,0 +1,9 @@
+# One line per change the learner can see (docs/RELEASE.md §5).
+- kind: fixed
+  ar_eg: الجهاز اللي اتسجّل خروجه مابقاش يقدر يشوف قايمة أجهزتك أو يخرّج أجهزة تانية
+  en: A device that was signed out can no longer see your devices list or sign other devices out
+  scope: sync
+- kind: fixed
+  ar_eg: تغيير اسم المستخدم لو وقف في النص بيكمل لوحده المرة الجاية، ومحدش يقدر يعرف اسم مستخدم موجود ولا لأ من محاولات الدخول
+  en: A username change that stops half-way now finishes next time, and wrong tries no longer reveal whether a username exists
+  scope: sync
