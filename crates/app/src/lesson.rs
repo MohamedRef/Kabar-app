@@ -106,7 +106,9 @@ pub fn LessonScreen() -> Element {
         Opened::Broken(problems) => rsx! {
             Notice { title: lt(lang, L::BrokenTitle), body: problems.clone(), id: id.clone() }
         },
-        Opened::Lesson(lesson) => rsx! { PlayerView { key: "{id}", lesson: (**lesson).clone() } },
+        Opened::Lesson(lesson) => rsx! {
+            PlayerView { key: "{id}", lesson: (**lesson).clone(), plan_step: crate::state::lesson_plan_step(&id) }
+        },
     };
     rsx! {
         style { {LESSON_CSS.text()} }
@@ -484,14 +486,10 @@ pub(crate) fn speak_with(
     });
 }
 
-/// Tells Kak Nur about the finished lesson: the unit step, the words taught
-/// and how the exercises went (the coach's daily plan and reports read these).
+/// Tells Kak Nur which words the lesson taught and how the exercises went.
 fn log_activity(coach: Coach, db: &Db, p: &Player) {
     let lesson = p.lesson();
     let summary = p.summary();
-    let seconds = (summary.duration_ms / 1000) as u32;
-    let unit_id = lesson.id.rsplit_once('.').map_or(lesson.id.as_str(), |(unit, _)| unit).to_owned();
-    coach.record(db, ActivityKind::LessonStep { unit_id, done: true }, seconds);
     let words: Vec<String> = lesson.new_words.iter().map(|w| w.word.clone()).collect();
     if !words.is_empty() {
         coach.record(db, ActivityKind::NewWords { words }, 0);
@@ -536,6 +534,8 @@ fn chime(ui: Ui) {
 #[derive(Clone, Copy)]
 pub struct NoSoundBanner;
 
+#[cfg(test)]
+mod coach_plan_tests;
 #[cfg(test)]
 mod play_tests;
 #[cfg(test)]

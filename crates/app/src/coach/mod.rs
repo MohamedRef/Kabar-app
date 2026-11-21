@@ -39,9 +39,14 @@ const BATIK_KEY: &str = "batik";
 #[derive(Clone, Copy)]
 pub struct Coach {
     pub profile: Signal<Option<CoachProfile>>,
+    /// True when reading `coach_profile` failed, so `main.rs` shows `Shell`
+    /// with `ReadNotice` instead of sending an onboarded learner through
+    /// onboarding again and overwriting their synced profile.
+    pub profile_unreadable: Signal<bool>,
     /// The whole activity log, oldest first.
     pub events: Signal<Vec<ActivityEvent>>,
     pub reminders: Signal<ReminderState>,
+    pub reminders_unreadable: Signal<bool>,
     /// Wall clock, refreshed every minute so "today" rolls over at midnight.
     pub now_ms: Signal<u64>,
     /// This device's UTC offset, as its WebView reports it.
@@ -53,29 +58,56 @@ pub struct Coach {
 }
 
 impl Coach {
+    fn read_store(
+        db: &Db,
+    ) -> (Option<CoachProfile>, bool, Vec<ActivityEvent>, ReminderState, bool, Option<String>) {
+        let store = db.0.borrow();
+        let (profile, profile_unreadable) = match store.coach_profile() {
+            Ok(p) => (p, false),
+            Err(e) => {
+                crate::persistence::read_failed("coach profile", &e);
+                (None, true)
+            }
+        };
+        let events = crate::persistence::read_or("activity", store.activity(None));
+        let (reminders, reminders_unreadable) = match store.reminder_state() {
+            Ok(r) => (r, false),
+            Err(e) => {
+                crate::persistence::read_failed("reminder state", &e);
+                (ReminderState::default(), true)
+            }
+        };
+        let batik = store.local_value(BATIK_KEY).ok().flatten();
+        (profile, profile_unreadable, events, reminders, reminders_unreadable, batik)
+    }
+
     /// Call inside `use_context_provider`.
     pub fn load(db: &Db) -> Self {
-        let store = db.0.borrow();
-        let log = |what: &str, e: &dyn std::fmt::Display| crate::diag::report!("loading {what} failed: {e}");
-        let profile = store.coach_profile().unwrap_or_else(|e| {
-            log("coach profile", &e);
-            None
-        });
-        let events = store.activity(None).unwrap_or_else(|e| {
-            log("activity", &e);
-            Vec::new()
-        });
-        let reminders = store.reminder_state().unwrap_or_default();
-        let batik = store.local_value(BATIK_KEY).ok().flatten();
+        let (profile, profile_unreadable, events, reminders, reminders_unreadable, batik) =
+            Self::read_store(db);
         Self {
             profile: Signal::new(profile),
+            profile_unreadable: Signal::new(profile_unreadable),
             events: Signal::new(events),
             reminders: Signal::new(reminders),
+            reminders_unreadable: Signal::new(reminders_unreadable),
             now_ms: Signal::new(crate::store::now_ms()),
             device_offset: Signal::new(None),
             batik: Signal::new(batik),
             plan_rev: Signal::new(0),
         }
+    }
+
+    /// Re-reads the synced coach rows after `ReadNotice`'s «اقرأ تاني».
+    pub fn reload(mut self, db: &Db) {
+        let (profile, profile_unreadable, events, reminders, reminders_unreadable, batik) =
+            Self::read_store(db);
+        self.profile.set(profile);
+        self.profile_unreadable.set(profile_unreadable);
+        self.events.set(events);
+        self.reminders.set(reminders);
+        self.reminders_unreadable.set(reminders_unreadable);
+        self.batik.set(batik);
     }
 
     /// The learner's UTC offset: the profile's, else this device's.
@@ -109,7 +141,10 @@ impl Coach {
 
     pub fn save_profile(mut self, db: &Db, profile: CoachProfile) {
         match db.0.borrow_mut().save_coach_profile(&profile) {
-            Ok(()) => self.profile.set(Some(profile)),
+            Ok(()) => {
+                self.profile_unreadable.set(false);
+                self.profile.set(Some(profile));
+            }
             Err(e) => crate::diag::report!("saving the coach profile failed: {e}"),
         }
     }
@@ -141,6 +176,15 @@ impl Coach {
     }
 
     pub fn save_reminders(mut self, db: &Db, state: ReminderState) {
+        if *self.reminders_unreadable.peek() {
+            match db.0.borrow().reminder_state() {
+                Ok(_) => self.reminders_unreadable.set(false),
+                Err(e) => {
+                    crate::persistence::read_failed("reminder state", &e);
+                    return;
+                }
+            }
+        }
         match db.0.borrow_mut().save_reminder_state(&state) {
             Ok(()) => self.reminders.set(state),
             Err(e) => crate::diag::report!("saving reminders failed: {e}"),
@@ -193,17 +237,36 @@ pub fn build_plan(
     })
 }
 
+/// Moment used to size today's due reviews: at least `date`'s FSRS rollover
+/// (04:00 local), so a plan built between midnight and 04:00 includes cards
+/// falling due on `date` (#714).
+pub(crate) fn plan_due_at(now_ms: u64, date: LocalDate, utc_offset_min: i16) -> u64 {
+    let rollover = kabar_protocol::coach::to_unix_ms(
+        date,
+        LocalTime::hm(u16::from(kabar_core::srs::ROLLOVER_HOUR), 0),
+        utc_offset_min,
+    );
+    now_ms.max(rollover)
+}
+
 /// Today's plan: the stored one (so every device shows the same plan), or a
-/// fresh one at the learner's usual size, saved for the others.
+/// fresh one at the learner's usual size, saved for the others. Never saves
+/// over a plan row whose read failed.
 pub fn plan_for(db: &Db, profile: &CoachProfile, events: &[ActivityEvent], date: LocalDate) -> DailyPlan {
-    if let Ok(Some(plan)) = db.0.borrow().plan_for(date) {
-        return plan;
-    }
+    let read_ok = match db.0.borrow().plan_for(date) {
+        Ok(Some(plan)) => return plan,
+        Ok(None) => true,
+        Err(e) => {
+            crate::persistence::read_failed("today's plan", &e);
+            false
+        }
+    };
     let settings = crate::persistence::read_or("settings", db.0.borrow().settings());
     let sched = crate::schedule::scheduler_at(profile.utc_offset_min, &settings);
-    let due = crate::review::due_words(db, &sched, crate::store::now_ms()).len() as u32;
+    let at_ms = plan_due_at(crate::store::now_ms(), date, profile.utc_offset_min);
+    let due = crate::review::due_words(db, &sched, at_ms).len() as u32;
     let plan = build_plan(db, due, profile, events, date, profile.daily_size, false);
-    if let Err(e) = db.0.borrow_mut().save_plan(&plan) {
+    if read_ok && let Err(e) = db.0.borrow_mut().save_plan(&plan) {
         crate::diag::report!("saving today's plan failed: {e}");
     }
     plan

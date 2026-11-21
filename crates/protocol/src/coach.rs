@@ -392,34 +392,36 @@ pub struct ActivityEvent {
 #[serde(tag = "type", rename_all = "snake_case")]
 pub enum ActivityKind {
     /// A batch of reviews.
-    Reviews {
-        cards: u32,
-        correct: u32,
-    },
+    Reviews { cards: u32, correct: u32 },
     /// Words met for the first time (saved in the reader, taught in a lesson).
-    NewWords {
-        words: Vec<String>,
-    },
+    NewWords { words: Vec<String> },
     LessonStep {
-        unit_id: String,
+        #[serde(flatten)]
+        unit_id: LessonActivityUnit,
         done: bool,
     },
     /// A practice result on one skill and topic (e.g. writing, "-kan verbs").
-    Practice {
-        skill: Skill,
-        topic: String,
-        correct: u32,
-        total: u32,
-    },
+    Practice { skill: Skill, topic: String, correct: u32, total: u32 },
     /// An item of today's plan was finished.
-    PlanItemDone {
-        item_id: String,
-    },
+    PlanItemDone { item_id: String },
     /// Koin spent in the Warung.
-    Purchase {
-        item_id: String,
-        koin: u32,
-    },
+    Purchase { item_id: String, koin: u32 },
+}
+
+/// The actual unit and optional credit for the plan step that launched it.
+/// Flattened into the activity to retain the existing `unit_id` wire field.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct LessonActivityUnit {
+    #[serde(rename = "unit_id")]
+    pub id: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub plan_item_id: Option<String>,
+}
+
+impl From<&str> for LessonActivityUnit {
+    fn from(id: &str) -> Self {
+        Self { id: id.into(), plan_item_id: None }
+    }
 }
 
 // --- daily plan --------------------------------------------------------------
@@ -440,6 +442,13 @@ pub struct PlanItem {
     pub id: String,
     pub kind: PlanItemKind,
     pub minutes: u16,
+}
+
+/// A plan step carried by a fallback lesson's resumable session.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LaunchedPlanStep {
+    pub date: LocalDate,
+    pub item_id: String,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -582,6 +591,21 @@ mod tests {
         assert!(!q.contains(LocalTime::hm(20, 0)));
         let day = QuietHours { start: LocalTime::hm(13, 0), end: LocalTime::hm(14, 0) };
         assert!(day.contains(LocalTime::hm(13, 30)) && !day.contains(LocalTime::hm(14, 0)));
+    }
+
+    #[test]
+    fn lesson_activity_retains_its_wire_shape() {
+        let old = serde_json::json!({ "type": "lesson_step", "unit_id": "u02", "done": true });
+        let lesson: ActivityKind = serde_json::from_value(old.clone()).unwrap();
+        assert_eq!(lesson, ActivityKind::LessonStep { unit_id: "u02".into(), done: true });
+        assert_eq!(serde_json::to_value(lesson).unwrap(), old);
+
+        let unit_id = LessonActivityUnit { id: "u02".into(), plan_item_id: Some("lesson:u01:2".into()) };
+        let credited = ActivityKind::LessonStep { unit_id, done: true };
+        let json = serde_json::to_value(&credited).unwrap();
+        assert_eq!(json["unit_id"], "u02");
+        assert_eq!(json["plan_item_id"], "lesson:u01:2");
+        assert_eq!(serde_json::from_value::<ActivityKind>(json).unwrap(), credited);
     }
 
     #[test]
