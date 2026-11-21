@@ -92,7 +92,8 @@ pub(super) fn item_icon(kind: &PlanItemKind) -> Element {
 fn pick_size(db: &Db, coach: Coach, profile: &CoachProfile, today: LocalDate, size: PlanSize) {
     let events = coach.events.peek().clone();
     let sched = crate::schedule::scheduler(&coach, &db.0.borrow());
-    let due = crate::review::due_words(db, &sched, coach.now()).len() as u32;
+    let at_ms = super::plan_due_at(coach.now(), today, profile.utc_offset_min);
+    let due = crate::review::due_words(db, &sched, at_ms).len() as u32;
     let fresh = build_plan(db, due, profile, &events, today, size, true);
     if let Err(e) = db.0.borrow_mut().save_plan(&fresh) {
         crate::diag::report!("saving today's plan failed: {e}");
@@ -306,8 +307,11 @@ fn Hero(plan: DailyPlan, next: Option<usize>, minutes_done: u32, left: u32) -> E
     } else {
         format!("{} · {}", tt(lang, T::StartPlan), labels::minutes(&ui, goal))
     };
-    // Lessons and reviews tick themselves; the rest can be ticked by hand.
-    let manual = matches!(step.kind, PlanItemKind::Reading | PlanItemKind::WeakSpot { .. });
+    // Reviews tick themselves; reading, weak spots and a lesson step can also be ticked by hand.
+    let manual = matches!(
+        step.kind,
+        PlanItemKind::Reading | PlanItemKind::WeakSpot { .. } | PlanItemKind::Lesson { .. }
+    );
     let seconds = u32::from(step.minutes) * 60;
     let kind = step.kind.clone();
     let id = step.id.clone();
@@ -486,6 +490,7 @@ fn PlanRow(
     let kind = item.kind.clone();
     let id = item.id.clone();
     let seconds = u32::from(item.minutes) * 60;
+    let manual_done = !logic::done_events(&coach.events.read(), today, &id).is_empty();
     let text_db = db.clone();
     rsx! {
         li { class: if done { "plan-item done" } else { "plan-item" },
@@ -505,24 +510,37 @@ fn PlanRow(
                 }
             }
             if tick {
-                button {
-                    class: "check",
-                    role: "checkbox",
-                    aria_checked: if done { "true" } else { "false" },
-                    aria_label: "{ui.t(CoachMsg::MarkDone)}: {ui.t(title)}",
-                    title: "{ui.t(CoachMsg::MarkDone)}",
-                    onclick: move |_| {
-                        if done {
-                            let ids: Vec<String> = logic::done_events(&coach.events.peek(), today, &id)
-                                .into_iter()
-                                .map(str::to_string)
-                                .collect();
-                            coach.retract(&db, &ids);
-                        } else {
-                            coach.record(&db, ActivityKind::PlanItemDone { item_id: id.clone() }, seconds);
-                        }
-                    },
-                    if done { "✓" }
+                if done && !manual_done {
+                    span {
+                        class: "check",
+                        role: "img",
+                        aria_label: "{ui.t(CoachMsg::MarkDone)}: {ui.t(title)}",
+                        "✓"
+                    }
+                } else {
+                    button {
+                        class: "check",
+                        role: "checkbox",
+                        aria_checked: if done { "true" } else { "false" },
+                        aria_label: "{ui.t(CoachMsg::MarkDone)}: {ui.t(title)}",
+                        title: "{ui.t(CoachMsg::MarkDone)}",
+                        onclick: move |_| {
+                            if done {
+                                let ids: Vec<String> = logic::done_events(&coach.events.peek(), today, &id)
+                                    .into_iter()
+                                    .map(str::to_string)
+                                    .collect();
+                                coach.retract(&db, &ids);
+                            } else {
+                                coach.record(
+                                    &db,
+                                    ActivityKind::PlanItemDone { item_id: id.clone() },
+                                    seconds,
+                                );
+                            }
+                        },
+                        if done { "✓" }
+                    }
                 }
             }
         }
@@ -573,7 +591,7 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     let due = crate::review::due_words(&db, &sched, coach.now() + 86_400_000).len() as u32;
     let tomorrow = build_plan(&db, due, &profile, &events, today.add_days(1), profile.daily_size, false);
     let tomorrow_first = tomorrow.items.first().map(|i| i.kind.clone());
-    let r = recap::day_recap(&events, today, plan.size.minutes(), plan.items.len(), tomorrow_first);
+    let r = recap::day_recap_for_plan(&events, today, &plan, tomorrow_first);
 
     // Voice placeholders: text already localized, numbers in the UI's digits,
     // and empty when they don't apply (say then picks a variant without them).

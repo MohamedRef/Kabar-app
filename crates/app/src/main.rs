@@ -236,6 +236,14 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let audio_dir = path.parent().map(|d| d.join("audio")).unwrap_or_else(|| "audio".into());
     use_context_provider(|| audio::AudioCache::new(audio_dir, link.clone()));
     let coach = use_context_provider(|| Coach::load(&db));
+    {
+        let retry_db = db.clone();
+        use_effect(move || {
+            if *persistence::READ_RETRY.read() > 0 {
+                coach.reload(&retry_db);
+            }
+        });
+    }
     annotated::use_words(&db);
     use_width_tracking(ui.width, ui.tablet);
     sheet::use_gestures();
@@ -289,7 +297,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             String::new()
         }
     });
-    let onboarded = coach.profile.read().is_some();
+    let onboarded = coach.profile.read().is_some() || *coach.profile_unreadable.read();
     let text_size = prefs.text_size.read().as_str();
     let nav_style = prefs.nav_style.read().as_str();
     let appearance = prefs.appearance.read().as_str();

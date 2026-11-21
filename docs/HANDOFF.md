@@ -466,7 +466,8 @@ Rules (Mohamed's decisions; all in force):
   reproduced; each item has file:line, a scenario and a fix idea): #710
   offline packs, #711 lesson player and Review, #712 Reader, #713 updates,
   #714 coach, #715 accounts and sign-in. Fixed: #710 (all 11 items), #711
-  items 1 and 3 (#709, #718), #712 items 1, 2 and 4 (#706, #716, #717). From the earlier sync,
+  items 1 and 3 (#709, #718), #712 items 1, 2 and 4 (#706, #716, #717), #714 (all 9 items).
+- 2026-11-20: Coach (#714) — see Log below. From the earlier sync,
   grading and web reviews: #687's cached TTS for a revoked device and reset
   cutoff (#703, #705), #688 items 1–5 (#694, #720), two #689 points (#700);
   the rest of each issue is open.
@@ -512,6 +513,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-20: Coach (#714): lesson plan steps count lessons finished in later units on the same route and get the hero's quiet mark-done fallback; reminders and the evening recap share `plan::progress(..).goal_met`; past weekly reports refresh with Fri–Sun study; failed profile/plan/reminder/report reads go through `persistence::read_failed` without re-onboarding or overwriting synced rows; `history::by_day` deduplicates cross-device `PlanItemDone` XP/seconds and offline `Purchase` Koin; auto-done plan rows show a non-interactive check; `KoinToGo` uses `Ui::fill`; plans built 00:00–04:00 size reviews at the 04:00 study-day rollover; Android marks reminders delivered at `System.currentTimeMillis()`.
 - 2026-11-20: Offline packs (#710): pack clips live in `<data>/packs/audio/` (one-time move of manifest keys from `<data>/audio/`, leaving the cloud-voice cache and Radio downloads untouched); installs, removals and orphan/`.part` sweeps serialize on a store lock with unique atomic temp files; downloads use 20 s stall timeouts, HTTP `Range` resume and a single index refresh when a tar was re-uploaded; `unit` ids and `https://` URLs are validated; Settings tells 404/newer-format/network apart and keeps `Downloaded` + `Remove` across failed updates and retired units; dialogue lines keep each speaker's voice on cloud fallback; web `files.json` stores sizes only with coalesced saves, and Library › Downloads explains web voices.
 - 2026-11-20: CI: APK builds retry Maven (`scripts/android-bundle.sh`), and `dx` comes from the Actions cache on Linux and macOS (`.github/actions/dx`, adapted from Steps-app #837).
 - 2026-11-19: Mohamed delegated the open content decisions («الباقي اختار الانسب والادق»); all of them are decided and applied, each PR listing every decision: lessons (#726: BIPA and Javanese, one spelling per Javanese word, mp.beda-bedha removed since Javanese beda is written with d, titles for 40 BIPA 7 dialogues), cast (#725: Pak Wiryo and Pak Sastro registered with portrait entries), Bridge (#724: 26 cards; lezat stays `same` per SPEC), grammar (#723: 119 points; cue notes name other common uses), Radio (#722: J2–J6), Sinetron (#721: e52–e94; «راهايو» and «مباك» spelled one way). All unverified.

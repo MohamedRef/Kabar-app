@@ -169,7 +169,7 @@ class ReminderReceiver : BroadcastReceiver() {
                 val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
                 if (nm.areNotificationsEnabled()) {
                     ReminderBridge.show(context, title, text)
-                    ReminderBridge.markDelivered(context, intent.getLongExtra("at", 0))
+                    ReminderBridge.markDelivered(context, System.currentTimeMillis())
                 }
             }
         }

@@ -311,11 +311,46 @@ pub struct PlanProgress {
     pub goal_met: bool,
 }
 
+fn unit_order(id: &str) -> Option<(char, u32, u32)> {
+    let (lvl, unit) = id.split_once('.')?;
+    let u: u32 = unit.strip_prefix('u')?.parse().ok()?;
+    if let Some(l) = lvl.strip_prefix("bipa") {
+        Some(('b', l.parse().ok()?, u))
+    } else if let Some(l) = lvl.strip_prefix('j') {
+        Some(('j', l.parse().ok()?, u))
+    } else {
+        None
+    }
+}
+
+fn lesson_done(plan: &DailyPlan, index: usize, unit_id: &str, today: &DayStats) -> bool {
+    let Some((route, lvl, u)) = unit_order(unit_id) else {
+        let part = plan.items[..=index]
+            .iter()
+            .filter(|it| matches!(&it.kind, PlanItemKind::Lesson { unit_id: prev } if prev == unit_id))
+            .count() as u32;
+        return today.lessons_finished.get(unit_id).copied().unwrap_or(0) >= part;
+    };
+    let same_route = |id: &str| unit_order(id).is_some_and(|(r, _, _)| r == route);
+    let part = plan.items[..=index]
+        .iter()
+        .filter(|it| matches!(&it.kind, PlanItemKind::Lesson { unit_id: prev } if same_route(prev)))
+        .count() as u32;
+    let finished: u32 = today
+        .lessons_finished
+        .iter()
+        .filter(|(id, _)| unit_order(id).is_some_and(|(r, dl, du)| r == route && (dl, du) >= (lvl, u)))
+        .map(|(_, &n)| n)
+        .sum();
+    finished >= part
+}
+
 /// An item counts as done when it was ticked off, or when the work it asks
 /// for is visibly done (enough reviews, the lesson finished).
 ///
-/// The n-th lesson item of a unit is done once n lessons of that unit were
-/// finished today.
+/// The n-th lesson item on the route is done once n lessons from its unit
+/// onward on the same route were finished today (so finishing a unit's last
+/// lesson and moving on to the next unit still ticks the second lesson slot).
 pub fn progress(plan: &DailyPlan, today: &DayStats) -> PlanProgress {
     let done: Vec<bool> = plan
         .items
@@ -325,15 +360,7 @@ pub fn progress(plan: &DailyPlan, today: &DayStats) -> PlanProgress {
             today.items_done.contains(&item.id)
                 || match &item.kind {
                     PlanItemKind::Review { cards } => today.reviews >= *cards,
-                    PlanItemKind::Lesson { unit_id } => {
-                        let part = plan.items[..=i]
-                            .iter()
-                            .filter(
-                                |it| matches!(&it.kind, PlanItemKind::Lesson { unit_id: u } if u == unit_id),
-                            )
-                            .count() as u32;
-                        today.lessons_finished.get(unit_id).copied().unwrap_or(0) >= part
-                    }
+                    PlanItemKind::Lesson { unit_id } => lesson_done(plan, i, unit_id, today),
                     PlanItemKind::WeakSpot { .. } | PlanItemKind::Reading => false,
                 }
         })
@@ -653,5 +680,16 @@ mod tests {
         let long = [event("t", today, 15 * 60, ActivityKind::Reviews { cards: 3, correct: 3 })];
         let p = progress(&plan, &history::day(&long, today));
         assert!(p.goal_met && !p.done[0]);
+    }
+
+    #[test]
+    fn second_lesson_ticks_after_moving_to_the_next_unit() {
+        let plan = build_plan(&inputs(PlanSize::Deep, 0, Some("bipa1.u03"), &[]));
+        let today = plan.date;
+        let events = vec![
+            event("a", today, 360, ActivityKind::LessonStep { unit_id: "bipa1.u03".into(), done: true }),
+            event("b", today, 360, ActivityKind::LessonStep { unit_id: "bipa1.u04".into(), done: true }),
+        ];
+        assert_eq!(progress(&plan, &history::day(&events, today)).done, [true, true, false]);
     }
 }

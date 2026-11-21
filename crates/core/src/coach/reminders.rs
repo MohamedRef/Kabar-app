@@ -114,7 +114,11 @@ fn decide_with(ctx: &ReminderContext, times: &[LocalTime]) -> Decision {
     let today = LocalDate::from_unix_ms(now, off);
     let stats = history::day(ctx.events, today);
     let (goal_minutes, plan_items) = goal(p, ctx.plan, today);
-    if stats.goal_met(goal_minutes, plan_items) {
+    let plan_done = ctx
+        .plan
+        .filter(|pl| pl.date == today)
+        .is_some_and(|pl| super::plan::progress(pl, &stats).goal_met);
+    if plan_done || stats.goal_met(goal_minutes, plan_items) {
         return Decision::Silent(Silence::GoalMet);
     }
     if ctx.state.snoozed_until_ms.is_some_and(|until| until > now) {
@@ -658,5 +662,33 @@ mod tests {
         assert_eq!(minutes_between(LocalTime::hm(23, 30), LocalTime::hm(0, 10)), 40);
         assert_eq!(minutes_between(LocalTime::hm(0, 10), LocalTime::hm(23, 30)), -40);
         assert_eq!((round_to_5(-3), round_to_5(2), round_to_5(62), round_to_5(0)), (-5, 0, 60, 0));
+    }
+
+    #[test]
+    fn visibly_completed_plan_steps_silence_reminders_under_goal_minutes() {
+        let today = d(2026, 10, 26);
+        let p = profile(ReminderStyle::Steady, &[(20, 0)]);
+        let s = ReminderState::default();
+        let plan = DailyPlan {
+            date: today,
+            size: PlanSize::Steady,
+            comeback: false,
+            items: vec![
+                PlanItem { id: "review".into(), kind: PlanItemKind::Review { cards: 10 }, minutes: 3 },
+                PlanItem {
+                    id: "lesson:bipa1.u03".into(),
+                    kind: PlanItemKind::Lesson { unit_id: "bipa1.u03".into() },
+                    minutes: 6,
+                },
+                PlanItem { id: "reading".into(), kind: PlanItemKind::Reading, minutes: 6 },
+            ],
+        };
+        let events = [
+            event("r", today, 90, ActivityKind::Reviews { cards: 10, correct: 9 }),
+            event("l", today, 300, ActivityKind::LessonStep { unit_id: "bipa1.u03".into(), done: true }),
+            event("rd", today, 360, ActivityKind::PlanItemDone { item_id: "reading".into() }),
+        ];
+        let c = ReminderContext { plan: Some(&plan), ..ctx(&p, &s, &events, at(today, 20, 0)) };
+        assert_eq!(decide(&c), Decision::Silent(Silence::GoalMet));
     }
 }

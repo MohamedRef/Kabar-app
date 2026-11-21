@@ -25,14 +25,31 @@ fn report_for_week(events: &[ActivityEvent], week: LocalDate, today: LocalDate) 
 }
 
 /// Writes the weekly report once it's due (Kabar Cloud does the same from
-/// its cron; the row is LWW, so both writing it is harmless).
+/// its cron; the row is LWW, so both writing it is harmless), and refreshes a
+/// saved past week when Friday–Sunday study happened after Thursday's snapshot.
 fn make_due_report(db: &Db, coach: Coach, profile: &CoachProfile) {
-    let latest = db.0.borrow().latest_report_week().ok().flatten();
-    let Some(week) = report::report_due(profile, coach.now(), latest) else { return };
+    let latest = crate::persistence::read_or("latest report week", db.0.borrow().latest_report_week());
+    let today = coach.today();
+    let this_week = today.week_start();
     let events = coach.events.peek().clone();
-    let r = report_for_week(&events, week, coach.today());
-    if let Err(e) = db.0.borrow_mut().save_report(&r) {
-        crate::diag::report!("saving the weekly report failed: {e}");
+    if let Some(week) = report::report_due(profile, coach.now(), latest) {
+        let r = report_for_week(&events, week, today);
+        if let Err(e) = db.0.borrow_mut().save_report(&r) {
+            crate::diag::report!("saving the weekly report failed: {e}");
+        }
+        return;
+    }
+    if let Some(week) = latest.filter(|&w| w < this_week)
+        && let Some(saved) = crate::persistence::read_or("weekly report", db.0.borrow().report_for(week))
+    {
+        let live = report_for_week(&events, week, today);
+        if live != saved
+            && live.days_studied >= saved.days_studied
+            && live.minutes >= saved.minutes
+            && let Err(e) = db.0.borrow_mut().save_report(&live)
+        {
+            crate::diag::report!("refreshing the weekly report failed: {e}");
+        }
     }
 }
 
@@ -151,13 +168,15 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
     let mut show_saved = use_signal(|| true);
     let events = coach.events.read().clone();
     let this_week = today.week_start();
-    let saved =
-        db.0.borrow()
-            .latest_report_week()
-            .ok()
-            .flatten()
-            .filter(|w| *w != this_week)
-            .and_then(|w| db.0.borrow().report_for(w).ok().flatten());
+    let saved = crate::persistence::read_or("latest report week", db.0.borrow().latest_report_week())
+        .filter(|w| *w != this_week)
+        .and_then(|w| crate::persistence::read_or("weekly report", db.0.borrow().report_for(w)))
+        .map(|s| {
+            let live = report_for_week(&events, s.week_start, today);
+            let newer =
+                s.week_start < this_week && live.days_studied >= s.days_studied && live.minutes >= s.minutes;
+            if newer { live } else { s }
+        });
     let (r, so_far) = match (&saved, show_saved()) {
         (Some(s), true) => (s.clone(), false),
         _ => (report_for_week(&events, this_week, today), true),
@@ -391,7 +410,7 @@ fn Warung(today: LocalDate) -> Element {
                                 role: "img",
                                 aria_label: "{ui.t(CoachMsg::NotEnoughKoin)}",
                                 span { class: "small",
-                                    {ui.t(CoachMsg::KoinToGo).replace("{n}", &ui.num(item.koin - balance))}
+                                    {ui.fill(CoachMsg::KoinToGo, &[("n", &ui.num(item.koin - balance))])}
                                     " "
                                     bdi { class: "latin", "Koin" }
                                 }
