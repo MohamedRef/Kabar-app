@@ -1,17 +1,25 @@
-# Lesson demand ratchet per level (#633, #655), checked by `kabar-tools demand --check` in CI.
-# level<TAB>max % of listen items with only Arabic options<TAB>max % of multiple-choice items with only Arabic options<TAB>min words per listening text<TAB>% of listen items where the longest option is the answer, as last recorded<TAB>the same for multiple-choice items
-# `-` is no limit (Javanese levels carry only the longest-option columns). The longest-option columns are not ceilings (#661): chance is 33% with three options, and far below it is as much a cue as far above. A level must stay inside 25-40%, or be no further from that band than the value recorded here.
-# A batch that improves a level updates its line in the same PR: tighten the first three columns, and move the last two toward the band. Never loosen one or move it away from the band.
-bipa1	19.3	0.6	4.7	38.3	34.8
-bipa2	21.3	1.4	5.6	25.8	32.7
-bipa3	23.9	0.5	7.4	28.2	30.1
-bipa4	32.0	0.4	6.9	21.1	30.5
-bipa5	0.0	1.2	17.5	7.1	21.3
-bipa6	0.0	2.0	22.6	14.7	21.7
-bipa7	0.0	1.5	28.2	17.9	16.2
-j1	-	-	-	24.5	29.9
-j2	-	-	-	26.8	27.0
-j3	-	-	-	30.0	35.1
-j4	-	-	-	22.7	30.0
-j5	-	-	-	20.7	25.8
-j6	-	-	-	35.6	35.1
+# Lesson demand and option-shape ratchet per level (#633, #655, #661), checked by `kabar-tools demand --check` in CI.
+# Columns (12 tab-separated):
+#   1: level
+#   2: max % of listen items with only Arabic options
+#   3: max % of multiple-choice items with only Arabic options
+#   4: min words per listening text
+#   5..6: % of listen / multiple-choice items where the longest option is the answer, as last recorded
+#   7..8: % of listen items where the middle / shortest option is the answer, as last recorded
+#   9..10: % of multiple-choice items where the middle / shortest option is the answer, as last recorded
+#   11..12: median key length / mean wrong-option length ratio for listen / multiple-choice items
+# `-` is no limit (Javanese levels carry only the option-shape columns).
+# Rank shares (columns 5..10) must stay inside 25-40% or move toward it; length ratios (columns 11..12) must stay inside 0.90-1.10 or move toward it (#661).
+bipa1	19.3	0.6	4.7	38.3	34.8	38.7	22.9	37.4	27.9	1.01	1.00
+bipa2	21.3	1.4	5.6	25.8	32.3	58.6	15.6	34.4	33.2	1.01	1.00
+bipa3	23.9	0.5	7.4	28.2	29.6	58.3	13.6	45.5	24.8	1.03	1.00
+bipa4	32.0	0.4	6.9	21.1	30.6	58.2	20.7	41.5	27.9	1.00	1.00
+bipa5	0.0	1.2	17.5	7.1	21.3	69.1	23.8	44.5	34.2	0.99	0.98
+bipa6	0.0	2.0	22.6	14.7	21.7	56.3	29.0	48.5	29.8	0.99	1.00
+bipa7	0.0	1.5	28.2	17.9	16.2	66.8	15.3	57.9	25.9	1.00	1.00
+j1	-	-	-	24.5	29.9	51.2	24.3	46.0	24.1	1.02	1.02
+j2	-	-	-	26.8	27.0	53.9	19.3	41.1	31.9	1.02	1.00
+j3	-	-	-	30.0	35.1	48.1	21.9	34.8	30.0	1.03	1.03
+j4	-	-	-	22.7	30.7	59.4	17.9	46.3	23.0	1.02	1.02
+j5	-	-	-	20.7	25.1	64.7	14.7	48.0	27.0	1.00	1.00
+j6	-	-	-	35.6	35.1	47.9	16.5	40.1	24.8	1.00	1.00
