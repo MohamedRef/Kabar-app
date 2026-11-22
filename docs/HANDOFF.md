@@ -440,7 +440,7 @@ Rules (Mohamed's decisions; all in force):
 - Shared plumbing with Batna: `docs/INFRA_PARITY.md` (audit F24, same file
   in both repos). A fix there says in its PR whether Batna needs it too.
 
-## 9. Current state (2026-11-11)
+## 9. Current state (2026-11-22)
 
 | Milestone | State |
 |---|---|
@@ -450,7 +450,7 @@ Rules (Mohamed's decisions; all in force):
 | Web | phases 1–2 live (sync, AI, voices, password sign-in); phase 3 offline packs + OCR |
 | M9 Studio | mind maps only; pen writing paused |
 | M13 | content done; performance pass open; aksara and widgets parked |
-| Releases | `v2026.11.10` published 2026-11-15 (alpha channel; calendar versions since `v2026.11.1`, 2026-11-08); previews every 4 h |
+| Releases | `v2026.11.15` (2026-11-22, alpha, build 962 at `baffc4e`); `v2026.11.10` published 2026-11-15 (alpha channel; calendar versions since `v2026.11.1`, 2026-11-08); previews every 4 h |
 | Critic loop | final pass 10 done 2026-11-04; loop closed. Don't start another unless asked. |
 | Open PRs / issues | 2026-11-19: no open PRs from the cloud session. Open issues: #661, #687, #688 (item 6), #689 (web at phone width; the 2026-11-19 sweep is in its comments), #692 (all its points decided, see Open work) and the code review's #710–#715 |
 | Mac desk tools | ⌘K quick search, drag-to-resize sidebar and Reader word panel, review focus mode (`crates/app/src/desk/`, 2026-11-11, ported from Batna) |
@@ -513,6 +513,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-22: released `v2026.11.15` on alpha for Mac and Android, including the navigation fix to return to the Play hub from the Mac Go menu (⌘5, #747).
 - 2026-11-22: the Mac Go → Play entry (⌘5) opens the Play hub, matching the sidebar after visiting a game.
 - 2026-11-21: Accounts & sync (#715, #687): temporary ("This isn't my device") sessions keep the web DB out of IndexedDB and wipe local study tables on sign-out or next launch; switching accounts resets `last_seq` and holds the previous account's outbox; unknown-table remote ops are kept in `deferred_ops` and replayed after an update; `Hub::push` runs in one transaction; `load_devices`/`load_usage`/`set_push_token`/`RevokeDevice` refresh once on clock-skew 401s, `NotAllowed` on refresh surfaces `Problem::NotAllowed`, non-leading web tabs still send `/v1/auth/signout`, Google loopback sign-in runs non-blocking with Cancel, `/v1/devices`, `/v1/usage` and `/v1/vault` verify active devices, password tries decay after an hour and lock unknown usernames in memory, and `manage_login` stages/retires usernames recoverably.
 - 2026-11-21: Kak Nur (#714 finding 1): a lesson opened from the next unit carries its original plan step through Lanjut and credits it on same-day completion. The credit is part of the synced lesson activity for the actual unit.
