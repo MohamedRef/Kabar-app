@@ -787,7 +787,7 @@ mod tests {
 
         let kinship = pieces(&doc("Ibu saya guru. Ibu Anda sehat?"), &[], CoreLang::Indonesian);
         for p in kinship.iter().filter(|p| p.text == "Ibu") {
-            assert!(!p.gloss.as_ref().unwrap().arz.contains("مدام"));
+            assert_eq!(short(&p.gloss.as_ref().unwrap().arz), "أم");
         }
     }
 }
