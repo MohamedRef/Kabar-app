@@ -572,6 +572,7 @@ fn settings_nav_starts_closed_without_a_preview_section() {
 #[cfg(all(feature = "desktop", not(target_os = "android")))]
 mod menu_bar {
     use super::*;
+    use crate::play::{PlayNav, Route};
     use crate::settings::menu::{Action, GO, action, apply};
 
     #[test]
@@ -592,7 +593,12 @@ mod menu_bar {
     fn going_somewhere_closes_settings() {
         let mut h = open(Case::new(UiLanguage::En, Some(Section::Look)));
         h.read(|| {
-            apply(consume_context::<Ui>(), consume_context::<SettingsNav>(), Action::Go(Screen::Review))
+            apply(
+                consume_context::<Ui>(),
+                consume_context::<SettingsNav>(),
+                PlayNav::new(),
+                Action::Go(Screen::Review),
+            )
         });
         h.settle();
         assert!(!nav(&h).0);
@@ -601,12 +607,29 @@ mod menu_bar {
             apply(
                 consume_context::<Ui>(),
                 consume_context::<SettingsNav>(),
+                PlayNav::new(),
                 Action::Settings(Some(Section::Mac)),
             )
         });
         h.settle();
         assert_eq!(nav(&h), (true, Some(Section::Mac)));
         assert!(h.html().contains("Keyboard shortcuts"));
+    }
+
+    #[test]
+    fn the_play_menu_returns_to_the_hub_from_a_game() {
+        let mut h = open(Case::new(UiLanguage::En, Some(Section::Look)));
+        h.read(|| {
+            let ui = consume_context::<Ui>();
+            let settings = consume_context::<SettingsNav>();
+            let PlayNav(mut route) = PlayNav::new();
+            route.set(Route::Pairs);
+            apply(ui, settings, PlayNav(route), action("kabar.go.play").unwrap());
+            assert_eq!(*route.peek(), Route::Hub);
+            assert_eq!(*ui.screen.peek(), Screen::Play);
+        });
+        h.settle();
+        assert!(!nav(&h).0);
     }
 
     // muda builds macOS menus only on the main thread, and the test harness
