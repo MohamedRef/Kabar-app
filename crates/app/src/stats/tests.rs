@@ -164,7 +164,6 @@ fn all_lines() -> Vec<S> {
         AllTime,
         ForecastTitle,
         ForecastSummary,
-        ForecastUnderOne,
         ForecastEmpty,
         ForecastBar,
         Today,
@@ -229,6 +228,7 @@ fn all_lines() -> Vec<S> {
         WeakPlay,
         WeakVocabulary,
         WeakJourney,
+        ForecastUnderOne,
         MoreDetail,
         Done,
     ];
@@ -238,8 +238,7 @@ fn all_lines() -> Vec<S> {
             Title | Back | OpenStats | HeatTitle | HeatSummary | HeatLess | HeatMore | HeatCell
             | HeatCellEmpty | WordsTitle | Known | Learning | New | NoWords | LangId | LangJv
             | WordsSummary | RetentionTitle | Week | Month | Mature | Young | AllReviews | NoReviewsYet
-            | RetentionRule | TimeTitle | AllTime | ForecastTitle | ForecastSummary | ForecastUnderOne
-            | ForecastEmpty
+            | RetentionRule | TimeTitle | AllTime | ForecastTitle | ForecastSummary | ForecastEmpty
             | ForecastBar | Today | In30Days | CheckTitle | CheckIntro | CheckNoTest | CheckStart
             | CheckSeeResult | CheckLater | CheckNext | CheckClose | CheckLast | CheckNever | CheckDoNow
             | CheckNotDue | ResultUp | ResultStay | ResultDown | StayBody | DownBody | FlightInvite
@@ -249,7 +248,7 @@ fn all_lines() -> Vec<S> {
             | RingLow | RingReview | RingStart | ActivityWeek | ActivityWeekEmpty | ActivityMonth
             | ActivityUp | ActivityDown | ActivitySame | ActivityEmpty | ActivityBar | WeekOf | TileDays
             | TileReviews | WeakTitle | WeakNone | WeakNoData | WeakLine | WeakReading | WeakListening
-            | WeakPlay | WeakVocabulary | WeakJourney | MoreDetail | Done => {}
+            | WeakPlay | WeakVocabulary | WeakJourney | ForecastUnderOne | MoreDetail | Done => {}
         }
     }
     all.to_vec()
