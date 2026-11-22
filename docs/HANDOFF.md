@@ -513,6 +513,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 Newest first. One line per PR that changes behaviour, process or state.
 
+- 2026-11-22: lesson choice keyboard numbers use the selected button’s foreground colour and outline.
 - 2026-11-22: released `v2026.11.15` on alpha for Mac and Android, including the navigation fix to return to the Play hub from the Mac Go menu (⌘5, #747).
 - 2026-11-22: the Mac Go → Play entry (⌘5) opens the Play hub, matching the sidebar after visiting a game.
 - 2026-11-21: Accounts & sync (#715, #687): temporary ("This isn't my device") sessions keep the web DB out of IndexedDB and wipe local study tables on sign-out or next launch; switching accounts resets `last_seq` and holds the previous account's outbox; unknown-table remote ops are kept in `deferred_ops` and replayed after an update; `Hub::push` runs in one transaction; `load_devices`/`load_usage`/`set_push_token`/`RevokeDevice` refresh once on clock-skew 401s, `NotAllowed` on refresh surfaces `Problem::NotAllowed`, non-leading web tabs still send `/v1/auth/signout`, Google loopback sign-in runs non-blocking with Cancel, `/v1/devices`, `/v1/usage` and `/v1/vault` verify active devices, password tries decay after an hour and lock unknown usernames in memory, and `manage_login` stages/retires usernames recoverably.

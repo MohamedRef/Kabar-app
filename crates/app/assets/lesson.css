@@ -123,6 +123,7 @@
 @media (hover: none) and (pointer: coarse) { .chips .lp-key:not(.lp-mark) { display: none; } }
 .lp-voice-note { margin-block: 0 0.75rem; }
 .lp-choice[aria-pressed="true"] { background: var(--soft); color: var(--text); border-color: var(--primary); }
+.lp-choice[aria-pressed="true"] .lp-key:not(.lp-mark) { color: inherit; border-color: currentColor; }
 .lp-choice.right { background: var(--good-bg); border-color: var(--good); color: var(--text); }
 .lp-choice.wrong { background: var(--bad-bg); border-color: var(--bad); color: var(--text); }
 .lp-choice:disabled { cursor: default; opacity: 1; }
