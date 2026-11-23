@@ -511,3 +511,13 @@
 /* A short step is centered in the reading pane. Long steps start at the top. */
 .lp-body:has(> [data-lesson-stage]) { display: flex; flex-direction: column; }
 .lp-body > [data-lesson-stage] { margin-block: auto; flex: 0 0 auto; }
+
+@media (min-width: 900px) {
+  .lp-feedback:has(> .lp-feedback-reading) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    align-items: start;
+    column-gap: clamp(1rem, 2vw, 2rem);
+  }
+  .lp-feedback-reading { min-inline-size: 0; overflow-wrap: anywhere; }
+}

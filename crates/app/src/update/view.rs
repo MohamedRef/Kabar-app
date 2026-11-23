@@ -19,6 +19,12 @@ pub(super) const UPDATE_CSS: &str = r#"
   border-radius: 12px; background: var(--surface-2); margin-block: 0.5rem; }
 .update-state p { margin: 0; }
 .update-state progress { inline-size: 100%; accent-color: var(--sawah); }
+.update-transfer { display: grid; gap: .45rem; }
+.update-transfer progress { display: block; inline-size: 100%; block-size: .65rem; accent-color: var(--sawah); }
+.update-transfer-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem; justify-content: space-between; }
+.update-transfer bdi { font-variant-numeric: tabular-nums; }
+.update-summary > summary { cursor: pointer; inline-size: fit-content; padding-block: .35rem; }
+.update-versions { display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
 .update-notes { white-space: pre-line; }
 .update-notes-label { display: block; }
 .update-covers { margin-block: 0.5rem 0; }
@@ -249,7 +255,7 @@ pub(super) fn UpdatesCardFor(s: Status) -> Element {
                         p { strong { "{ut(lang, U::Checking)}" } }
                     }
                 } else {
-                    PhaseView { phase: s.phase.clone(), queued: queued(&s) }
+                    PhaseView { phase: s.phase.clone(), installed: "{s.version} ({s.build})", queued: queued(&s) }
                 }
                 div { class: "update-found", role: "status", aria_live: "polite",
                     p { class: "muted small", "{last_checked(&ui, &s)}" }
@@ -423,8 +429,41 @@ pub(super) fn queued(s: &Status) -> bool {
     matches!(&s.phase, Phase::Available(o) if s.prefs.wifi_download.as_deref() == Some(o.key().as_str()))
 }
 
+/// Used by both Settings and the update sheet, including resumed downloads.
 #[component]
-fn PhaseView(phase: Phase, queued: bool) -> Element {
+pub(super) fn DownloadProgress(done: u64, total: u64) -> Element {
+    let ui = use_context::<Ui>();
+    let (label, of, remaining_label, verify) = match ui.lang() {
+        UiLanguage::En => ("Download progress", "of", "Remaining", "Checking the downloaded file…"),
+        UiLanguage::Ar => ("تقدم التنزيل", "من", "المتبقي", "جارٍ التحقق من الملف…"),
+        UiLanguage::ArEg => ("تقدّم التنزيل", "من", "فاضل", "بنتأكّد من الملف…"),
+    };
+    let total = total.max(1);
+    let done = done.min(total);
+    let percent = u128::from(done) * 100 / u128::from(total);
+    let percent =
+        if ui.eastern() { eastern_arabic_digits(&percent.to_string()) } else { percent.to_string() };
+    let received = megabytes(&ui, done);
+    let size = megabytes(&ui, total);
+    let remaining = megabytes(&ui, total - done);
+    rsx! {
+        div { class: "update-transfer",
+            div { class: "update-transfer-line",
+                span { bdi { dir: "ltr", "{received}" } " {of} " bdi { dir: "ltr", "{size}" } }
+                strong { bdi { dir: "ltr", "{percent}%" } }
+            }
+            progress { aria_label: label, max: "{total}", value: "{done}" }
+            if done < total {
+                span { class: "muted small", "{remaining_label} " bdi { dir: "ltr", "{remaining}" } }
+            } else {
+                span { class: "muted small", "{verify}" }
+            }
+        }
+    }
+}
+
+#[component]
+fn PhaseView(phase: Phase, installed: String, queued: bool) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
     let Some(st) = stage(&phase, cfg!(target_os = "android")) else { return rsx! {} };
@@ -459,14 +498,27 @@ fn PhaseView(phase: Phase, queued: bool) -> Element {
                     }
                 }
             }
+            if let Some(o) = st.offer.as_ref().filter(|_| !failed) {
+                div { class: "update-versions muted small",
+                    span { {if lang == UiLanguage::En { "Installed" } else { "المثبّتة" }} " " bdi { dir: "ltr", "{installed}" } }
+                    span { {if lang == UiLanguage::En { "Update" } else { "التحديث" }} " " bdi { dir: "ltr", "{o.label()}" } }
+                }
+            }
             if let Some((done, total)) = st.progress {
-                progress { max: "{total}", value: "{done}" }
+                DownloadProgress { done, total }
             }
             StageExtras { stage: st.clone() }
             if let Some(n) = what_new {
+                if matches!(phase, Phase::Downloading { .. }) {
+                    details { class: "update-summary",
+                        summary { {ut(lang, U::WhatsNew)} }
+                        p { class: "update-notes", "{n}" }
+                    }
+                } else {
                 p { class: "update-notes",
                     span { class: "muted update-notes-label", "{ut(lang, U::WhatsNew)}" }
                     "{n}"
+                }
                 }
             }
             StageButtons { phase: phase.clone(), acts: st.acts.clone(), size }

@@ -22,7 +22,7 @@ use kabar_protocol::update::{BuildChanges, ChangeKind};
 use super::changelog::{self, between, civil, day_of, label, tally};
 use super::stage::{ActLabel, Stage, StageExtras, stage};
 use super::text::{U, ut};
-use super::view::{UPDATE_CSS, megabytes, use_update_status};
+use super::view::{DownloadProgress, UPDATE_CSS, megabytes, use_update_status};
 use super::{Phase, Status};
 use crate::Ui;
 
@@ -522,7 +522,7 @@ pub(super) fn SheetFor(s: Status, m: SheetMode) -> Element {
                             }
                         }
                         if let Some((done, total)) = progress {
-                            progress { max: "{total}", value: "{done}" }
+                            DownloadProgress { done, total }
                             p { class: "us-mb", "{megabytes(&ui, done)} / {megabytes(&ui, total)}" }
                         }
                     }

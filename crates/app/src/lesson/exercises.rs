@@ -44,66 +44,72 @@ pub(super) fn Feedback(
     };
     rsx! {
         div { class: "lp-feedback lp-enter", role: "status", aria_live: "polite",
-            match &grade {
-                Grade::Correct => rsx! {
-                    p { class: "lp-verdict", "{lt(lang, praise)}" }
-                    if let Some(w) = &word {
-                        p {
-                            Rich { text: lt(lang, L::CorrectWord).replace("{w}", w), target }
-                            Say { text: w.clone(), tag: target }
+            div { class: "lp-verdict-main",
+                match &grade {
+                    Grade::Correct => rsx! {
+                        p { class: "lp-verdict", "{lt(lang, praise)}" }
+                        if let Some(w) = &word {
+                            p {
+                                Rich { text: lt(lang, L::CorrectWord).replace("{w}", w), target }
+                                Say { text: w.clone(), tag: target }
+                            }
+                            Pron { text: w.clone(), tag: target }
                         }
-                        Pron { text: w.clone(), tag: target }
-                    }
-                },
-                Grade::Practiced => rsx! {
-                    p { class: "lp-verdict", "{lt(lang, L::Practiced)}" }
-                },
-                Grade::Almost { expected } => rsx! {
-                    p { class: "lp-verdict", "{lt(lang, L::Almost)}" }
-                    p { Annotated { text: expected.clone(), tag: target, class: "lp-answer" } }
-                },
-                Grade::Wrong => rsx! {
-                    p { class: "lp-verdict", "{lt(lang, L::NotYet)}" }
-                    if answer_tag == target {
-                        p { Annotated { text: answer.clone(), tag: target, class: "lp-answer" } }
-                    } else {
-                        p { bdi { lang: answer_tag, dir: "auto", class: "lp-answer", "{answer}" } }
-                    }
-                    if !retry {
-                        p { class: "muted lp-small", "{lt(lang, L::AgainAtEnd)}" }
-                    }
-                },
-                Grade::NeedsReview => rsx! {
-                    p { class: "lp-verdict", "{lt(lang, L::NeedsReview)}" }
-                    ul { class: "lp-refs",
-                        for r in references(&ex, lang).into_iter().take(3) {
-                            li { key: "{r}", bdi { lang: answer_tag, dir: if answer_tag == target { "ltr" } else { "auto" }, class: "lp-answer", "{r}" } }
+                    },
+                    Grade::Practiced => rsx! {
+                        p { class: "lp-verdict", "{lt(lang, L::Practiced)}" }
+                    },
+                    Grade::Almost { expected } => rsx! {
+                        p { class: "lp-verdict", "{lt(lang, L::Almost)}" }
+                        p { Annotated { text: expected.clone(), tag: target, class: "lp-answer" } }
+                    },
+                    Grade::Wrong => rsx! {
+                        p { class: "lp-verdict", "{lt(lang, L::NotYet)}" }
+                        if answer_tag == target {
+                            p { Annotated { text: answer.clone(), tag: target, class: "lp-answer" } }
+                        } else {
+                            p { bdi { lang: answer_tag, dir: "auto", class: "lp-answer", "{answer}" } }
                         }
-                    }
-                    p { "{lt(lang, L::SameMeaning)}" }
-                    div { class: "row",
-                        button { class: "primary", onclick: move |_| on_assess.call(true), "{lt(lang, L::YesSame)}" }
-                        button { onclick: move |_| on_assess.call(false), "{lt(lang, L::NotQuite)}" }
-                    }
-                },
-            }
-            if let Some(t) = transcript {
-                p { class: "lp-small",
-                    span { class: "muted", "{lt(lang, L::Transcript)} " }
-                    Annotated { text: t.clone(), tag: target, class: "lp-target" }
+                        if !retry {
+                            p { class: "muted lp-small", "{lt(lang, L::AgainAtEnd)}" }
+                        }
+                    },
+                    Grade::NeedsReview => rsx! {
+                        p { class: "lp-verdict", "{lt(lang, L::NeedsReview)}" }
+                        ul { class: "lp-refs",
+                            for r in references(&ex, lang).into_iter().take(3) {
+                                li { key: "{r}", bdi { lang: answer_tag, dir: if answer_tag == target { "ltr" } else { "auto" }, class: "lp-answer", "{r}" } }
+                            }
+                        }
+                        p { "{lt(lang, L::SameMeaning)}" }
+                        div { class: "row",
+                            button { class: "primary", onclick: move |_| on_assess.call(true), "{lt(lang, L::YesSame)}" }
+                            button { onclick: move |_| on_assess.call(false), "{lt(lang, L::NotQuite)}" }
+                        }
+                    },
                 }
             }
-            if let Some(m) = meaning {
-                p { class: "muted", Rich { text: m, target } }
-            }
-            // Keep optional teaching notes discoverable after a correct answer,
-            // while showing them automatically when a learner needs help.
-            if let Some(e) = explain {
-                details {
-                    class: "lp-why",
-                    open: !matches!(grade, Grade::Correct | Grade::Practiced),
-                    summary { "{lt(lang, L::Why)}" }
-                    p { Rich { text: e, target } }
+            if transcript.is_some() || meaning.is_some() || explain.is_some() {
+                div { class: "lp-feedback-reading",
+                    if let Some(t) = transcript {
+                        p { class: "lp-small",
+                            span { class: "muted", "{lt(lang, L::Transcript)} " }
+                            Annotated { text: t.clone(), tag: target, class: "lp-target" }
+                        }
+                    }
+                    if let Some(m) = meaning {
+                        p { class: "muted", Rich { text: m, target } }
+                    }
+                    // Keep optional teaching notes discoverable after a correct answer,
+                    // while showing them automatically when a learner needs help.
+                    if let Some(e) = explain {
+                        details {
+                            class: "lp-why",
+                            open: !matches!(grade, Grade::Correct | Grade::Practiced),
+                            summary { "{lt(lang, L::Why)}" }
+                            p { Rich { text: e, target } }
+                        }
+                    }
                 }
             }
         }
