@@ -85,7 +85,7 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
     );
     let left = schedule.unassigned_minutes;
     rsx! {
-        section { class: "card coach-agenda",
+        crate::ui::Card { class: "coach-agenda",
             h2 { "{title}" }
             label { "{day_label} "
                 select { value: "{day_index}", onchange: move |e| if let Ok(i) = e.value().parse() { selected.set(i); unavailable.set(false); },
