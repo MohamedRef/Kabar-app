@@ -520,6 +520,8 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
+- 2026-11-24. Update the lockfile to `cookie` 0.18.3 and `url` 2.5.9 for RUSTSEC-2026-0594 and RUSTSEC-2026-0592.
+
 - 2026-11-23. Adopt the reviewed study-libs infrastructure and protect the preceding beta wire shape in a regression test.
 
 - **Shared UI primitives.** Cards, card actions and settings navigation rows use the pinned study-libs components. Feature classes and theme values come from the app.
