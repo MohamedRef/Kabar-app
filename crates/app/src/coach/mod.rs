@@ -3,6 +3,7 @@
 //! `kabar_core::coach`; this module keeps the synced data in signals and
 //! draws it.
 
+mod agenda;
 pub mod clock;
 pub mod coach_screen;
 pub mod journal;

@@ -1532,3 +1532,53 @@ fn answers_can_be_taken_apart_and_honestly_self_rated() {
     }
     assert!(built);
 }
+
+#[test]
+fn a_planned_lesson_test_saves_practice_and_keeps_the_regular_lesson_position() {
+    fn root() -> Element {
+        sim::provide(WidthClass::Compact);
+        let mut l = lesson("bipa1.u01.l01");
+        l.exercises.retain(|e| matches!(e.kind, ExerciseKind::MultipleChoice { .. }));
+        l.exercises.truncate(1);
+        rsx! { PracticeQuiz { lesson: l, on_close: move |_| {} } }
+    }
+    let mut sim = Sim::new(root);
+    set_lang(&mut sim, UiLanguage::En);
+    let store = db(&mut sim);
+    let place = LessonPosition {
+        lesson_id: "bipa1.u01.l02".into(),
+        step: LessonStep::Slide { index: 1 },
+        progress: None,
+        response: None,
+    };
+    store.0.borrow_mut().save_position(&place).unwrap();
+    let content = lesson("bipa1.u01.l01");
+    let correct = content
+        .exercises
+        .iter()
+        .find_map(|ex| match ex.kind {
+            ExerciseKind::MultipleChoice { answer, .. } => Some(answer),
+            _ => None,
+        })
+        .unwrap();
+    for _ in 0..10 {
+        if sim.html().contains("class=\"lp-summary\"") {
+            break;
+        }
+        if sim.find(|n| n.has_class("lp-choice")).is_some() {
+            pick_option(&mut sim, correct);
+            sim.click(primary);
+        }
+        sim.click(primary);
+    }
+    assert!(sim.html().contains("class=\"lp-summary\""));
+    let db = store.0.borrow();
+    assert_eq!(db.position().unwrap(), Some(place));
+    assert!(!db.completed_lessons().unwrap().contains("bipa1.u01.l01"));
+    assert!(
+        db.activity(None)
+            .unwrap()
+            .iter()
+            .any(|a| matches!(a.kind, ActivityKind::Practice { total: 1, correct: 1, .. }))
+    );
+}

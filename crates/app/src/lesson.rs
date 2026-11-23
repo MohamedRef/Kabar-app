@@ -18,8 +18,8 @@ use slides::*;
 pub(crate) use slides::{no_audio_msg, speaker_icon};
 
 mod player;
-pub use player::EpisodeQuiz;
 use player::*;
+pub use player::{EpisodeQuiz, PracticeQuiz};
 
 mod reading;
 use reading::*;

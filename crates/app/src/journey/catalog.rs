@@ -63,3 +63,35 @@ pub(super) fn souvenir_lesson(unit_id: &str) -> Option<String> {
         .or(unit.lessons.last())
         .map(|l| l.id.clone())
 }
+
+/// Keep curriculum levels in order; interleave units within a level while
+/// preserving the instructional order of each unit and the placement start.
+pub fn target_lessons(
+    target: &str,
+    start: Option<&str>,
+    lang: UiLanguage,
+) -> Vec<(String, &'static kabar_core::journey::Lesson)> {
+    let Ok(routes) = &*ROUTES else { return Vec::new() };
+    let mut result = Vec::new();
+    for route in [&routes.id, &routes.jv] {
+        let Some(end) = route.levels.iter().position(|l| l.id == target) else { continue };
+        let start_level = start.and_then(|s| s.split('.').next());
+        let first = route.levels.iter().position(|l| Some(l.id.as_str()) == start_level).unwrap_or(0);
+        if first > end {
+            return result;
+        }
+        for level in &route.levels[first..=end] {
+            let at = level.units.iter().position(|u| Some(u.id.as_str()) == start).unwrap_or(0);
+            let units = &level.units[at..];
+            let longest = units.iter().map(|u| u.lessons.len()).max().unwrap_or(0);
+            for i in 0..longest {
+                for unit in units {
+                    if let Some(lesson) = unit.lessons.get(i) {
+                        result.push((local(lang, &unit.title).to_owned(), lesson));
+                    }
+                }
+            }
+        }
+    }
+    result
+}
