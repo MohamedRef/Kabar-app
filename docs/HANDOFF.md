@@ -515,6 +515,8 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
+- 2026-11-23: The update settings and offer sheet use the shared study-libs download-progress view. Update state, labels and theme stay with the app.
+
 - 2026-11-23: Lesson scheduling uses the same pinned study-libs crate as the other apps. This app supplies eligible lessons, days and time budgets.
 
 - 2026-11-23: Opening a learning step focuses it and centers short content within the reading pane. Larger activities start at the top. Touch, keyboard and mouse keep using the same player.

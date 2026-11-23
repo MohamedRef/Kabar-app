@@ -5,6 +5,7 @@
 use dioxus::prelude::*;
 use kabar_core::locale::{UiLanguage, eastern_arabic_digits};
 use kabar_protocol::update::{Channel, UpdateNotes};
+use study_update_ui::{TransferLabels, TransferProgress, TransferProgressView};
 
 use super::sheet::{SheetMode, UpdateSheetNav};
 use super::stage::{ActLabel, StageButtons, StageExtras, stage};
@@ -19,10 +20,6 @@ pub(super) const UPDATE_CSS: &str = r#"
   border-radius: 12px; background: var(--surface-2); margin-block: 0.5rem; }
 .update-state p { margin: 0; }
 .update-state progress { inline-size: 100%; accent-color: var(--sawah); }
-.update-transfer { display: grid; gap: .45rem; }
-.update-transfer progress { display: block; inline-size: 100%; block-size: .65rem; accent-color: var(--sawah); }
-.update-transfer-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem; justify-content: space-between; }
-.update-transfer bdi { font-variant-numeric: tabular-nums; }
 .update-summary > summary { cursor: pointer; inline-size: fit-content; padding-block: .35rem; }
 .update-versions { display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
 .update-notes { white-space: pre-line; }
@@ -438,26 +435,18 @@ pub(super) fn DownloadProgress(done: u64, total: u64) -> Element {
         UiLanguage::Ar => ("تقدم التنزيل", "من", "المتبقي", "جارٍ التحقق من الملف…"),
         UiLanguage::ArEg => ("تقدّم التنزيل", "من", "فاضل", "بنتأكّد من الملف…"),
     };
-    let total = total.max(1);
-    let done = done.min(total);
-    let percent = u128::from(done) * 100 / u128::from(total);
-    let percent =
-        if ui.eastern() { eastern_arabic_digits(&percent.to_string()) } else { percent.to_string() };
-    let received = megabytes(&ui, done);
-    let size = megabytes(&ui, total);
-    let remaining = megabytes(&ui, total - done);
+    let progress = TransferProgress::new(done, total);
+    let percent = progress.percent().to_string();
+    let percent = if ui.eastern() { eastern_arabic_digits(&percent) } else { percent };
     rsx! {
-        div { class: "update-transfer",
-            div { class: "update-transfer-line",
-                span { bdi { dir: "ltr", "{received}" } " {of} " bdi { dir: "ltr", "{size}" } }
-                strong { bdi { dir: "ltr", "{percent}%" } }
-            }
-            progress { aria_label: label, max: "{total}", value: "{done}" }
-            if done < total {
-                span { class: "muted small", "{remaining_label} " bdi { dir: "ltr", "{remaining}" } }
-            } else {
-                span { class: "muted small", "{verify}" }
-            }
+        TransferProgressView {
+            progress,
+            labels: TransferLabels { progress: label, of, remaining: remaining_label, verifying: verify },
+            received: megabytes(&ui, progress.received()),
+            total: megabytes(&ui, progress.total()),
+            remaining: megabytes(&ui, progress.remaining()),
+            percent,
+            accent: "var(--sawah)",
         }
     }
 }
