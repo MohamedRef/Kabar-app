@@ -188,8 +188,9 @@ pub(super) fn PlayerView(
             op(&mut p)
         };
         let Some(pos) = pos else { return };
-        // A new screen starts at its top, not where the last one was scrolled.
+        // The next keyed stage centers and receives focus after it mounts.
         document::eval(r#"document.querySelector(".lp-body")?.scrollTo(0, 0);"#);
+
         let mut draft = draft;
         draft.set(Draft::default());
         saved_draft.set(Draft::default());
@@ -466,7 +467,8 @@ pub(super) fn PlayerView(
                 }
             }
             div { class: "lp-body",
-                div { class: "lp-col", key: "{step:?}",
+                div { class: "lp-col", key: "{step:?}", tabindex: "-1", "data-lesson-stage": "true",
+                    onmounted: move |_| { document::eval(include_str!("../../assets/lesson-focus.js")); },
                     if show_voice_note(*voice_note_at.read(), *voice_skips.read(), step) {
                         p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
                     }
