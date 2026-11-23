@@ -131,6 +131,7 @@ pub(super) fn SlideView(lesson: LessonContent, index: usize, missing: Signal<boo
     let language = lesson.language.clone();
     rsx! {
         article { class: "lp-slide lp-enter",
+            "data-study-split": if slide.examples.is_empty() { "stack" } else { "columns" },
             div { class: "lp-slide-main",
                 if index == 0 {
                     p { class: "lp-lesson-title",

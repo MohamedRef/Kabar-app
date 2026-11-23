@@ -1,5 +1,6 @@
 //! Regression coverage of the production card contract.
 use super::*;
+use dioxus::prelude::*;
 
 #[test]
 fn native_root_and_accessibility_attributes_are_preserved() {

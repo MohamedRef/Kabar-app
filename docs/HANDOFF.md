@@ -515,6 +515,8 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
+- **Shared UI primitives.** Cards, card actions and settings navigation rows use the pinned study-libs components. Feature classes and theme values come from the app.
+
 - 2026-11-23: The update settings and offer sheet use the shared study-libs download-progress view. Update state, labels and theme stay with the app.
 
 - 2026-11-23: Lesson scheduling uses the same pinned study-libs crate as the other apps. This app supplies eligible lessons, days and time budgets.
