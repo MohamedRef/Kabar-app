@@ -224,11 +224,8 @@ fn pieces(doc: &ReadDoc, marked: &[String], text_lang: CoreLang) -> Vec<Piece> {
             }),
         };
         let id = text_lang == CoreLang::Indonesian;
-        let gloss = if name {
-            None
-        } else {
-            phrases::address(doc, i, &text, id).or_else(|| info.map(|i| i.gloss))
-        };
+        let gloss =
+            if name { None } else { phrases::address(doc, i, &text, id).or_else(|| info.map(|i| i.gloss)) };
         out.push(Piece {
             word: Some(i),
             bridge: w.is_bridge(),
