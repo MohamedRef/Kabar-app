@@ -16,6 +16,22 @@ pub fn EpisodeQuiz(lesson: LessonContent, on_close: EventHandler) -> Element {
         PlayerView { lesson, on_close }
     }
 }
+/// A lesson's own exercises as a practice test. Its result counts as practice
+/// and the learner's regular lesson position stays available.
+#[component]
+pub fn PracticeQuiz(mut lesson: LessonContent, on_close: EventHandler) -> Element {
+    lesson.slides.clear();
+    lesson.dialogue = None;
+    lesson.new_words.clear();
+    lesson.souvenir = None;
+    let n = lesson.exercises.len();
+    let seed = use_hook(now_ms);
+    if n > 0 {
+        lesson.exercises.rotate_left((seed % n as u64) as usize);
+        lesson.exercises.truncate(10);
+    }
+    rsx! { style { {LESSON_CSS.text()} } PlayerView { lesson, on_close, practice_only: true } }
+}
 /// Runs a lesson. With `on_close` it runs an episode quiz instead: no
 /// Lanjut position, and closing calls it rather than going to the Journey.
 #[component]
@@ -23,6 +39,7 @@ pub(super) fn PlayerView(
     lesson: LessonContent,
     on_close: Option<EventHandler>,
     plan_step: Option<LaunchedPlanStep>,
+    #[props(default)] practice_only: bool,
 ) -> Element {
     let ui = use_context::<Ui>();
     let episode = on_close.is_some();
@@ -107,6 +124,16 @@ pub(super) fn PlayerView(
             let approved =
                 store.verified_lessons().is_ok_and(|v| v.get(&p.lesson().id).is_some_and(|c| c.counts()));
             store.atomically(|store| {
+                if practice_only {
+                    let summary = p.summary();
+                    let activity = ActivityKind::Practice {
+                        skill: Skill::Vocabulary,
+                        topic: p.lesson().title.clone(),
+                        correct: summary.correct,
+                        total: summary.graded,
+                    };
+                    return store.add_activity(activity, date, (summary.duration_ms / 1000) as u32).map(Some);
+                }
                 store.record_lesson_event(lesson_id, "completed", &completed)?;
                 if episode {
                     return Ok(None);
@@ -143,7 +170,9 @@ pub(super) fn PlayerView(
         let signals = kabar_core::review::lesson_signals(p.lesson(), &completed.results);
         let db = db.read();
         crate::review::note_evidence(&db, &coach, language, &signals);
-        if episode { log_episode(coach, &db, &p) } else { log_activity(coach, &db, &p) }
+        if !practice_only {
+            if episode { log_episode(coach, &db, &p) } else { log_activity(coach, &db, &p) }
+        }
     };
 
     // Mutates the player, then: time, Lanjut position, fresh draft, audio,
@@ -359,7 +388,19 @@ pub(super) fn PlayerView(
             let n = l.dialogue.as_ref().map_or(0, |d| d.lines.len());
             if *revealed.read() < n { (lt(lang, L::NextLine), true) } else { (lt(lang, L::Continue), true) }
         }
-        (Step::Summary, _) => (lt(lang, if episode { L::BackToEpisodes } else { back_label(ui) }), true),
+        (Step::Summary, _) => (
+            lt(
+                lang,
+                if practice_only {
+                    L::BackToToday
+                } else if episode {
+                    L::BackToEpisodes
+                } else {
+                    back_label(ui)
+                },
+            ),
+            true,
+        ),
         (Step::Slide(_), _) => (lt(lang, L::Continue), true),
     };
     let feedback_class = match &pending {

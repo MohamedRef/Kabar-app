@@ -162,6 +162,7 @@ pub fn Today() -> Element {
         // Kabar Pagi) in a second column when there are any.
         div { class: "coach-grid today-grid",
             div { class: "today-main",
+                if profile.target.is_some() { super::agenda::Agenda { profile: profile.clone(), today_minutes: goal } }
                 if welcome {
                     WelcomeBack { profile: profile.clone(), plan: plan.clone(), today }
                 } else {

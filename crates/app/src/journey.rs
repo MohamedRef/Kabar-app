@@ -10,8 +10,8 @@ mod suitcase;
 use suitcase::*;
 
 mod catalog;
-pub use catalog::journal_catalog;
 use catalog::*;
+pub use catalog::{journal_catalog, target_lessons};
 
 mod map_view;
 use map_view::*;
