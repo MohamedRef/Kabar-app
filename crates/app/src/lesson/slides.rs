@@ -132,69 +132,69 @@ pub(super) fn SlideView(lesson: LessonContent, index: usize, missing: Signal<boo
     rsx! {
         article { class: "lp-slide lp-enter",
             div { class: "lp-slide-main",
-            if index == 0 {
-                p { class: "lp-lesson-title",
-                    bdi { lang: target, dir: "ltr", "{lesson.title}" }
-                    if !lesson.review.verified && !approved {
-                        span { class: "pill lp-draft", "{lt(lang, L::NotReviewed)}" }
-                    }
-                }
-                p { class: "muted", Rich { text: pick(&lesson.can_do, lang).to_string(), target } }
-            }
-            if let Some(title) = &slide.title {
-                h2 { class: "lp-slide-title", Title { text: title.clone(), target } }
-            }
-            SlideBody { text: pick(&slide.body, lang).to_string(), target, pron: true }
-            if let Some(table) = &slide.table {
-                div { class: "lp-table-wrap",
-                    table { class: "lp-table",
-                        thead {
-                            tr {
-                                for (i, h) in table.head.iter().enumerate() {
-                                    th { key: "{i}", bdi { lang: target, dir: "ltr", "{h}" } }
-                                }
-                                th { "{lt(lang, L::TableMeaning)}" }
-                            }
+                if index == 0 {
+                    p { class: "lp-lesson-title",
+                        bdi { lang: target, dir: "ltr", "{lesson.title}" }
+                        if !lesson.review.verified && !approved {
+                            span { class: "pill lp-draft", "{lt(lang, L::NotReviewed)}" }
                         }
-                        tbody {
-                            for (i, row) in table.rows.iter().enumerate() {
-                                tr { key: "{i}",
-                                    for (j, cell) in row.cells.iter().enumerate() {
-                                        {
-                                            let tag = column_tag(table.head.get(j).map(String::as_str), target);
-                                            rsx! {
-                                                td { key: "{j}", lang: tag, TableCell { text: cell.clone(), tag } }
+                    }
+                    p { class: "muted", Rich { text: pick(&lesson.can_do, lang).to_string(), target } }
+                }
+                if let Some(title) = &slide.title {
+                    h2 { class: "lp-slide-title", Title { text: title.clone(), target } }
+                }
+                SlideBody { text: pick(&slide.body, lang).to_string(), target, pron: true }
+                if let Some(table) = &slide.table {
+                    div { class: "lp-table-wrap",
+                        table { class: "lp-table",
+                            thead {
+                                tr {
+                                    for (i, h) in table.head.iter().enumerate() {
+                                        th { key: "{i}", bdi { lang: target, dir: "ltr", "{h}" } }
+                                    }
+                                    th { "{lt(lang, L::TableMeaning)}" }
+                                }
+                            }
+                            tbody {
+                                for (i, row) in table.rows.iter().enumerate() {
+                                    tr { key: "{i}",
+                                        for (j, cell) in row.cells.iter().enumerate() {
+                                            {
+                                                let tag = column_tag(table.head.get(j).map(String::as_str), target);
+                                                rsx! {
+                                                    td { key: "{j}", lang: tag, TableCell { text: cell.clone(), tag } }
+                                                }
                                             }
                                         }
+                                        td { class: "muted", "{pick(&row.meaning, lang)}" }
                                     }
-                                    td { class: "muted", "{pick(&row.meaning, lang)}" }
                                 }
                             }
                         }
                     }
                 }
-            }
             }
             if !slide.examples.is_empty() {
                 section { class: "lp-slide-examples",
-                p { class: "muted lp-small", "{lt(lang, L::Examples)}" }
-                ul { class: "lp-examples",
-                    for (i, ex) in slide.examples.iter().enumerate() {
-                        li { key: "{i}",
-                            button {
-                                class: "lp-example",
-                                onclick: {
-                                    let (t, l) = (ex.text.clone(), language.clone());
-                                    move |_| speak(&t, &l, false, None, missing)
-                                },
-                                span { class: "lp-example-icon", {speaker_icon()} }
-                                span { class: "lp-example-text",
-                                    Annotated { text: ex.text.clone(), tag: target, meaning: pick(&ex.meaning, lang).to_string(), class: "lp-target", say: false }
+                    p { class: "muted lp-small", "{lt(lang, L::Examples)}" }
+                    ul { class: "lp-examples",
+                        for (i, ex) in slide.examples.iter().enumerate() {
+                            li { key: "{i}",
+                                button {
+                                    class: "lp-example",
+                                    onclick: {
+                                        let (t, l) = (ex.text.clone(), language.clone());
+                                        move |_| speak(&t, &l, false, None, missing)
+                                    },
+                                    span { class: "lp-example-icon", {speaker_icon()} }
+                                    span { class: "lp-example-text",
+                                        Annotated { text: ex.text.clone(), tag: target, meaning: pick(&ex.meaning, lang).to_string(), class: "lp-target", say: false }
+                                    }
                                 }
                             }
                         }
                     }
-                }
                 }
             }
         }
