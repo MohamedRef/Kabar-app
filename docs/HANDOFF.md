@@ -515,6 +515,8 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
+- 2026-11-23: Lesson scheduling uses the same pinned study-libs crate as the other apps. This app supplies eligible lessons, days and time budgets.
+
 - 2026-11-23: Opening a learning step focuses it and centers short content within the reading pane. Larger activities start at the top. Touch, keyboard and mouse keep using the same player.
 
 - 2026-11-23: Today assigns named lessons up to the target level and date across units, leaves the end of the schedule for review and lets a learner practice a lesson without completing it or overwriting their position.
