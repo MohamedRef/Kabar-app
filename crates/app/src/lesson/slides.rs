@@ -131,6 +131,7 @@ pub(super) fn SlideView(lesson: LessonContent, index: usize, missing: Signal<boo
     let language = lesson.language.clone();
     rsx! {
         article { class: "lp-slide lp-enter",
+            div { class: "lp-slide-main",
             if index == 0 {
                 p { class: "lp-lesson-title",
                     bdi { lang: target, dir: "ltr", "{lesson.title}" }
@@ -173,7 +174,9 @@ pub(super) fn SlideView(lesson: LessonContent, index: usize, missing: Signal<boo
                     }
                 }
             }
+            }
             if !slide.examples.is_empty() {
+                section { class: "lp-slide-examples",
                 p { class: "muted lp-small", "{lt(lang, L::Examples)}" }
                 ul { class: "lp-examples",
                     for (i, ex) in slide.examples.iter().enumerate() {
@@ -191,6 +194,7 @@ pub(super) fn SlideView(lesson: LessonContent, index: usize, missing: Signal<boo
                             }
                         }
                     }
+                }
                 }
             }
         }

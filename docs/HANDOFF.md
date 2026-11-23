@@ -442,6 +442,8 @@ Rules (Mohamed's decisions; all in force):
 
 ## 9. Current state (2026-11-22)
 
+Lesson and test choices can use several columns. Slides pair the teaching text with the example list on a wide reading surface.
+
 | Milestone | State |
 |---|---|
 | M0 bake-off | code done; run on the Mac with real keys |
@@ -510,6 +512,8 @@ Mohamed can paste this into any new chat or account to continue:
 > behaviour, process or state.
 
 ## 11. Log
+
+- 2026-11-23. Lesson slides place examples beside their explanation and exercises wrap choices into columns when the player has room after the notes pane.
 
 Newest first. One line per PR that changes behaviour, process or state.
 
