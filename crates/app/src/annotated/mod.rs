@@ -343,6 +343,12 @@ fn toggle(mut open: Signal<Option<usize>>, i: usize) {
 fn WordRun(p: Piece, i: usize, open: Signal<Option<usize>>, glosses: bool) -> Element {
     let ui = use_context::<Ui>();
     let voice = ui.lang();
+    let device = try_use_context::<crate::settings::device::DevicePrefs>();
+    let mouse_hint = device
+        .as_ref()
+        .is_none_or(|d| (d.mouse_hover)())
+        .then(|| p.gloss.as_ref().map(|g| g.get(voice).to_string()))
+        .flatten();
     let under =
         if p.name { tt(voice, T::Name) } else { p.gloss.as_ref().map(|g| short(g.get(voice))).unwrap_or("") };
     rsx! {
@@ -350,19 +356,21 @@ fn WordRun(p: Piece, i: usize, open: Signal<Option<usize>>, glosses: bool) -> El
             class: p.classes(open() == Some(i), glosses),
             role: "button",
             tabindex: "0",
+            title: mouse_hint,
             // Annotated text often sits inside a button (examples, dialogue lines).
             onclick: move |e| {
                 e.stop_propagation();
                 toggle(open, i);
             },
             onkeydown: move |e: KeyboardEvent| {
-                if e.key() == Key::Enter {
+                if e.key() == Key::Enter || e.key() == Key::Character(" ".into()) {
+                    e.prevent_default();
                     e.stop_propagation();
                     open.set(Some(i));
                 }
             },
             onpointerenter: move |e| {
-                if e.data().pointer_type() == "pen" {
+                if e.data().pointer_type() == "pen" && device.as_ref().is_none_or(|d| (d.pen_hover)()) {
                     open.set(Some(i));
                 }
             },
