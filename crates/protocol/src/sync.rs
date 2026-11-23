@@ -214,6 +214,24 @@ mod tests {
     use super::*;
     use crate::DeviceId;
 
+    /// Wire shapes from Kabar beta v2026.11.18 at d5876ae6, before the library migration.
+    #[test]
+    fn released_client_and_server_payloads_keep_their_wire_shape() {
+        for fixture in [
+            r#"{"type":"hello","protocol":1,"last_seq":14}"#,
+            r#"{"type":"push","batch":3,"ops":[{"id":"op-2","table":"settings","row_id":"ui_language","kind":"upsert","hlc":{"wall_ms":42,"counter":1,"device":"fixture"},"payload":{"value":"ar"}}]}"#,
+        ] {
+            study_testkit::unchanged_json::<ClientMsg>(fixture).unwrap();
+        }
+        for fixture in [
+            r#"{"type":"ops","ops":[{"seq":15,"id":"op-2","table":"settings","row_id":"ui_language","kind":"upsert","hlc":{"wall_ms":42,"counter":1,"device":"fixture"},"payload":{"value":"ar"}}],"more":true}"#,
+            r#"{"type":"caught_up","head_seq":15}"#,
+            r#"{"type":"ack","batch":3,"done":["op-2"],"rejected":[{"op_id":"op-3","reason":"unknown_table"}],"head_seq":15}"#,
+        ] {
+            study_testkit::unchanged_json::<ServerMsg>(fixture).unwrap();
+        }
+    }
+
     #[test]
     fn every_table_is_listed_once() {
         for (i, (name, _)) in TABLES.iter().enumerate() {

@@ -194,7 +194,7 @@ pub fn save_state() -> Result<super::SaveState, String> {
         let class = app_class(env, activity, jni_str!("app.kabar.ExportSave"))?;
         let state = env.call_static_method(&class, jni_str!("state"), jni_sig!("()I"), &[])?.i()?;
         let out = match state {
-            1 => return Ok(super::SaveState::Open),
+            1 => return Ok(super::SaveState::Busy),
             2 => super::SaveState::Failed,
             3 => {
                 let name = env

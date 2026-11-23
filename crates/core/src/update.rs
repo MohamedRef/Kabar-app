@@ -6,13 +6,15 @@
 use std::cmp::Ordering;
 use std::fmt;
 
+#[cfg(test)]
 use base64::Engine as _;
+#[cfg(test)]
 use base64::engine::general_purpose::STANDARD as B64;
-pub use ed25519_dalek::VerifyingKey;
-use ed25519_dalek::{Signature, Verifier};
 use kabar_protocol::update::{
     Channel, ContentFile, UPDATE_FORMAT, UpdateAsset, UpdateManifest, UpdatePlatform,
 };
+use study_update_verify::ManifestError;
+pub use study_update_verify::{VerifyingKey, is_plain_file_name, key_line};
 
 /// Android's `versionCode` for a build: [`VERSION_CODE_BASE`] plus the
 /// build number, the same recipe as `scripts/android-release-apk.sh`. Since
@@ -180,34 +182,19 @@ impl std::error::Error for UpdateError {}
 /// Parses a base64 Ed25519 public key (32 bytes). Lines starting with `#`
 /// and blank lines are skipped, so a key file can carry a comment.
 pub fn parse_public_key(text: &str) -> Result<VerifyingKey, UpdateError> {
-    let line = key_line(text).ok_or(UpdateError::BadKey)?;
-    let bytes: [u8; 32] = B64.decode(line).ok().and_then(|b| b.try_into().ok()).ok_or(UpdateError::BadKey)?;
-    VerifyingKey::from_bytes(&bytes).map_err(|_| UpdateError::BadKey)
-}
-
-/// The first line that isn't blank or a `#` comment.
-pub fn key_line(text: &str) -> Option<&str> {
-    text.lines().map(str::trim).find(|l| !l.is_empty() && !l.starts_with('#'))
+    study_update_verify::parse_public_key(text).ok_or(UpdateError::BadKey)
 }
 
 /// Checks `sig` (base64) over the exact bytes of `update.json`, then parses
 /// it. Nothing in an unsigned or altered manifest is ever looked at.
 pub fn verify_manifest(json: &[u8], sig: &str, key: &VerifyingKey) -> Result<UpdateManifest, UpdateError> {
-    let sig: [u8; 64] =
-        B64.decode(sig.trim()).ok().and_then(|b| b.try_into().ok()).ok_or(UpdateError::BadSignature)?;
-    key.verify(json, &Signature::from_bytes(&sig)).map_err(|_| UpdateError::NotSigned)?;
-    // The format is read first, so a newer feed says "too new" rather than
-    // failing on a field this build doesn't know.
-    #[derive(serde::Deserialize)]
-    struct Head {
-        format: u32,
-    }
-    let head: Head = serde_json::from_slice(json).map_err(|e| UpdateError::BadManifest(e.to_string()))?;
-    if head.format > UPDATE_FORMAT {
-        return Err(UpdateError::TooNew);
-    }
     let m: UpdateManifest =
-        serde_json::from_slice(json).map_err(|e| UpdateError::BadManifest(e.to_string()))?;
+        study_update_verify::verify_manifest(json, sig, key, UPDATE_FORMAT).map_err(|error| match error {
+            ManifestError::BadSignature => UpdateError::BadSignature,
+            ManifestError::NotSigned => UpdateError::NotSigned,
+            ManifestError::BadManifest(message) => UpdateError::BadManifest(message),
+            ManifestError::TooNew => UpdateError::TooNew,
+        })?;
     if Version::parse(&m.version).is_none() {
         return Err(UpdateError::BadManifest(format!("version {:?}", m.version)));
     }
@@ -222,15 +209,6 @@ pub fn verify_manifest(json: &[u8], sig: &str, key: &VerifyingKey) -> Result<Upd
         }
     }
     Ok(m)
-}
-
-/// A name with no directory part, so it can only resolve next to `update.json`.
-pub fn is_plain_file_name(name: &str) -> bool {
-    !name.is_empty()
-        && name.len() <= 128
-        && name != "."
-        && name != ".."
-        && name.chars().all(|c| c.is_ascii_alphanumeric() || matches!(c, '.' | '-' | '_' | '+'))
 }
 
 /// What a verified manifest means for this build.

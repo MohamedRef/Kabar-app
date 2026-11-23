@@ -496,12 +496,6 @@
   .lp-col:has(.lp-slide-examples, .lp-choices:not(.chips)), .lp-top, .lp-actions-inner {
     max-inline-size: 76rem;
   }
-  .lp-slide:has(> .lp-slide-examples) {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    align-items: start;
-    gap: clamp(1.25rem, 3vw, 3rem);
-  }
   .lp-choices:not(.chips) {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
   }
@@ -512,12 +506,6 @@
 .lp-body:has(> [data-lesson-stage]) { display: flex; flex-direction: column; }
 .lp-body > [data-lesson-stage] { margin-block: auto; flex: 0 0 auto; }
 
-@media (min-width: 900px) {
-  .lp-feedback:has(> .lp-feedback-reading) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-    align-items: start;
-    column-gap: clamp(1rem, 2vw, 2rem);
-  }
-  .lp-feedback-reading { min-inline-size: 0; overflow-wrap: anywhere; }
-}
+.lp-slide { --study-split-primary: 1.2fr; --study-split-gap: clamp(1.25rem, 3cqi, 3rem); }
+.lp-feedback { --study-split-primary: .8fr; }
+.lp-feedback-reading { overflow-wrap: anywhere; }

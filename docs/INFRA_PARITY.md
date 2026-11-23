@@ -2,6 +2,8 @@
 
 Engineering audit F24 (2026-10-29). Batna and Kabar are separate apps in
 separate repositories. Both may pin reviewed capabilities from [study-libs](https://github.com/MohamedRef/study-libs), including lesson scheduling and download progress.
+The shared infrastructure revision also provides reusable sync retry, metadata reads and update verification. Each app keeps its wire types and release keys. Batna uses the shared Anki collection encoder with its own templates and media.
+
 Much of their plumbing was copied from one to the other
 (sync, store, install identity, auth, updates), and a fix that lands in one
 can miss the other. This file is the same in both repos.

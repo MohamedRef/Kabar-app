@@ -12,8 +12,7 @@ use crate::settings::Settings;
 
 const DAY_MS: u64 = 86_400_000;
 const MIN_SHORT_INTERVAL_MS: u64 = 10 * 60_000;
-/// Below this many reviews, personal parameters are noise; keep the defaults.
-pub const MIN_REVIEWS_TO_OPTIMIZE: usize = 400;
+pub use study_review::MIN_REVIEWS_TO_OPTIMIZE;
 
 /// Where the learner's day starts, so "due today" matches their evening, not UTC.
 ///
@@ -339,23 +338,11 @@ impl Scheduler {
         let mut items = Vec::new();
         for evs in by_card.values_mut() {
             evs.sort_by(|a, b| a.hlc.cmp(&b.hlc));
-            let reviews: Vec<FSRSReview> = evs
-                .iter()
-                .enumerate()
-                .map(|(i, e)| FSRSReview {
-                    rating: e.rating as u32,
-                    delta_t: if i == 0 {
-                        0
-                    } else {
-                        (self.day.day(e.at_ms) - self.day.day(evs[i - 1].at_ms)).max(0) as u32
-                    },
-                })
-                .collect();
-            // Same-day repeats are short-term steps, not something FSRS can
-            // fit (it rejects an item without a gap of a day or more), as in Anki.
-            for end in (2..=reviews.len()).filter(|&end| reviews[end - 1].delta_t > 0) {
-                items.push(FSRSItem { reviews: reviews[..end].to_vec() });
-            }
+            let reviews = evs.iter().map(|e| (self.day.day(e.at_ms), e.rating as u32));
+            items.extend(
+                study_review::training_prefixes(reviews, |rating, delta_t| FSRSReview { rating, delta_t })
+                    .map(|reviews| FSRSItem { reviews }),
+            );
         }
         items
     }

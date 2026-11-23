@@ -312,6 +312,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         document::Title { "Kabar" }
         style { {MAIN_CSS.text()} }
         style { {COMPONENTS_CSS.text()} }
+        style { {study_ui::LESSON_LAYOUT_CSS} }
         style { {theme_css} }
         style { {pron_font} }
         style { {annotated::CSS.text()} }

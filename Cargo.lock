@@ -3525,6 +3525,10 @@ dependencies = [
  "serde_json",
  "sha2 0.10.9",
  "sqlite-wasm-rs",
+ "study-platform",
+ "study-shell",
+ "study-storage",
+ "study-ui",
  "study-update-ui",
  "tar",
  "tempfile",
@@ -3569,6 +3573,9 @@ dependencies = [
  "serde_yaml_ng",
  "sha2 0.11.1",
  "study-lesson-scheduler",
+ "study-review",
+ "study-sync",
+ "study-update-verify",
  "toml 1.1.8+spec-1.1.0",
 ]
 
@@ -3581,6 +3588,7 @@ dependencies = [
  "serde",
  "serde_ignored",
  "serde_json",
+ "study-testkit",
 ]
 
 [[package]]
@@ -6446,14 +6454,70 @@ dependencies = [
 [[package]]
 name = "study-lesson-scheduler"
 version = "0.1.0"
-source = "git+https://github.com/MohamedRef/study-libs?rev=7d9c0e62a3f39e622e161d322690a194a4a65c9d#7d9c0e62a3f39e622e161d322690a194a4a65c9d"
+source = "git+https://github.com/MohamedRef/study-libs?rev=d60b723ec20c76465be782c4144ad8bfc0cd9b04#d60b723ec20c76465be782c4144ad8bfc0cd9b04"
+
+[[package]]
+name = "study-platform"
+version = "0.1.0"
+source = "git+https://github.com/MohamedRef/study-libs?rev=d60b723ec20c76465be782c4144ad8bfc0cd9b04#d60b723ec20c76465be782c4144ad8bfc0cd9b04"
+
+[[package]]
+name = "study-review"
+version = "0.1.0"
+source = "git+https://github.com/MohamedRef/study-libs?rev=d60b723ec20c76465be782c4144ad8bfc0cd9b04#d60b723ec20c76465be782c4144ad8bfc0cd9b04"
+
+[[package]]
+name = "study-shell"
+version = "0.1.0"
+source = "git+https://github.com/MohamedRef/study-libs?rev=d60b723ec20c76465be782c4144ad8bfc0cd9b04#d60b723ec20c76465be782c4144ad8bfc0cd9b04"
+
+[[package]]
+name = "study-storage"
+version = "0.1.0"
+source = "git+https://github.com/MohamedRef/study-libs?rev=d60b723ec20c76465be782c4144ad8bfc0cd9b04#d60b723ec20c76465be782c4144ad8bfc0cd9b04"
+dependencies = [
+ "rusqlite",
+]
+
+[[package]]
+name = "study-sync"
+version = "0.1.0"
+source = "git+https://github.com/MohamedRef/study-libs?rev=d60b723ec20c76465be782c4144ad8bfc0cd9b04#d60b723ec20c76465be782c4144ad8bfc0cd9b04"
+
+[[package]]
+name = "study-testkit"
+version = "0.1.0"
+source = "git+https://github.com/MohamedRef/study-libs?rev=d60b723ec20c76465be782c4144ad8bfc0cd9b04#d60b723ec20c76465be782c4144ad8bfc0cd9b04"
+dependencies = [
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "study-ui"
+version = "0.2.0"
+source = "git+https://github.com/MohamedRef/study-libs?rev=d60b723ec20c76465be782c4144ad8bfc0cd9b04#d60b723ec20c76465be782c4144ad8bfc0cd9b04"
+dependencies = [
+ "dioxus",
+]
 
 [[package]]
 name = "study-update-ui"
 version = "0.1.0"
-source = "git+https://github.com/MohamedRef/study-libs?rev=7d9c0e62a3f39e622e161d322690a194a4a65c9d#7d9c0e62a3f39e622e161d322690a194a4a65c9d"
+source = "git+https://github.com/MohamedRef/study-libs?rev=d60b723ec20c76465be782c4144ad8bfc0cd9b04#d60b723ec20c76465be782c4144ad8bfc0cd9b04"
 dependencies = [
  "dioxus",
+]
+
+[[package]]
+name = "study-update-verify"
+version = "0.1.0"
+source = "git+https://github.com/MohamedRef/study-libs?rev=d60b723ec20c76465be782c4144ad8bfc0cd9b04#d60b723ec20c76465be782c4144ad8bfc0cd9b04"
+dependencies = [
+ "base64 0.22.1",
+ "ed25519-dalek",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

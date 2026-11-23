@@ -42,8 +42,10 @@ pub(super) fn Feedback(
         ExerciseKind::Translate { direction: Direction::FromTarget, .. } => lang.tag(),
         _ => target,
     };
+    let show_reading = transcript.is_some() || meaning.is_some() || explain.is_some();
     rsx! {
         div { class: "lp-feedback lp-enter", role: "status", aria_live: "polite",
+            "data-study-split": if show_reading { "columns" } else { "stack" },
             div { class: "lp-verdict-main",
                 match &grade {
                     Grade::Correct => rsx! {
@@ -89,7 +91,7 @@ pub(super) fn Feedback(
                     },
                 }
             }
-            if transcript.is_some() || meaning.is_some() || explain.is_some() {
+            if show_reading {
                 div { class: "lp-feedback-reading",
                     if let Some(t) = transcript {
                         p { class: "lp-small",

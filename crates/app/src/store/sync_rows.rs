@@ -199,7 +199,7 @@ pub(super) fn materialize(tx: &Connection, op: &Op) -> Result<()> {
     Ok(())
 }
 pub(super) fn meta(conn: &Connection, key: &str) -> Result<Option<String>> {
-    Ok(conn.query_row("SELECT value FROM meta WHERE key = ?1", [key], |r| r.get(0)).optional()?)
+    Ok(study_storage::read_meta(conn, key)?)
 }
 pub(super) fn set_meta(conn: &Connection, key: &str, value: &str) -> Result<()> {
     conn.execute(
