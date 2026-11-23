@@ -1,8 +1,8 @@
 # Infrastructure parity: Batna ↔ Kabar
 
 Engineering audit F24 (2026-10-29). Batna and Kabar are separate apps in
-separate repos and stay that way: no shared crate, no merged repo, no mass
-renames. But much of their plumbing was copied from one to the other
+separate repositories. Both may pin reviewed capabilities from [study-libs](https://github.com/MohamedRef/study-libs), starting with lesson scheduling.
+Much of their plumbing was copied from one to the other
 (sync, store, install identity, auth, updates), and a fix that lands in one
 can miss the other. This file is the same in both repos.
 
