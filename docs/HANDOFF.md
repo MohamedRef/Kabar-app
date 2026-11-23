@@ -513,6 +513,8 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
+- 2026-11-23. Compact dashboards wrap long labels, localize game names and counts, and show the review gesture that matches the device.
+
 - 2026-11-23. Lesson slides place examples beside their explanation and exercises wrap choices into columns when the player has room after the notes pane. Annotated lesson words offer their gloss on mouse hover and still open the full entry on activation.
 
 Newest first. One line per PR that changes behaviour, process or state.

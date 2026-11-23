@@ -258,20 +258,26 @@ pub fn TodayCards() -> Element {
     });
     let (due, week) = snapshot.read().clone();
     let peak = week.buckets.iter().map(|b| b.minutes).max().unwrap_or(0).max(1);
+    let compact = *ui.width.read() == kabar_core::layout::WidthClass::Compact;
     let bars: Vec<(String, String, f32, bool)> = week
         .buckets
         .iter()
         .map(|b| {
-            let day = if b.start == today {
+            let full = if b.start == today {
                 st(lang, S::Today).to_string()
             } else {
                 ui.t(labels::weekday(b.start.weekday())).to_string()
+            };
+            let day = if b.start != today && compact {
+                labels::weekday_short(lang, b.start.weekday()).to_string()
+            } else {
+                full.clone()
             };
             let detail = stf(
                 lang,
                 S::ActivityBar,
                 &[
-                    ("label", &day),
+                    ("label", &full),
                     ("minutes", &labels::minutes(&ui, b.minutes)),
                     ("reviews", &ui.num(b.reviews)),
                 ],
@@ -647,6 +653,7 @@ fn ActivityCard(overview: Overview, today: LocalDate, total_minutes: u32) -> Ele
             stf(lang, S::WeekOf, &[("date", &labels::day_month(&ui, b.start, today))])
         }
     };
+    let compact = *ui.width.read() == kabar_core::layout::WidthClass::Compact;
     let title = st(lang, if o.period == Period::Week { S::ActivityWeek } else { S::ActivityMonth });
     let diff = o.minutes.abs_diff(o.previous_minutes);
     let compare = if o.minutes == 0 {
@@ -662,12 +669,17 @@ fn ActivityCard(overview: Overview, today: LocalDate, total_minutes: u32) -> Ele
         .buckets
         .iter()
         .map(|b| {
-            let name = label(b);
+            let full = label(b);
+            let name = if b.days == 1 && b.start != today && compact {
+                labels::weekday_short(lang, b.start.weekday()).to_string()
+            } else {
+                full.clone()
+            };
             let tip = stf(
                 lang,
                 S::ActivityBar,
                 &[
-                    ("label", &name),
+                    ("label", &full),
                     ("minutes", &labels::minutes(&ui, b.minutes)),
                     ("reviews", &ui.num(b.reviews)),
                 ],
@@ -937,6 +949,17 @@ fn ForecastCard(days: Vec<u32>, today: LocalDate) -> Element {
     let n_days = ui.num(days.len() as u64);
     let summary = if s.total == 0 {
         stf(lang, S::ForecastEmpty, &[("n", &n_days)])
+    } else if (s.total as usize) < days.len() {
+        stf(
+            lang,
+            S::ForecastUnderOne,
+            &[
+                ("n", &n_days),
+                ("total", &ui.num(s.total)),
+                ("day", &day_name(s.peak_day)),
+                ("peak", &ui.num(s.peak)),
+            ],
+        )
     } else {
         stf(
             lang,

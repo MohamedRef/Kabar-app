@@ -228,6 +228,7 @@ fn all_lines() -> Vec<S> {
         WeakPlay,
         WeakVocabulary,
         WeakJourney,
+        ForecastUnderOne,
         MoreDetail,
         Done,
     ];
@@ -247,7 +248,7 @@ fn all_lines() -> Vec<S> {
             | RingLow | RingReview | RingStart | ActivityWeek | ActivityWeekEmpty | ActivityMonth
             | ActivityUp | ActivityDown | ActivitySame | ActivityEmpty | ActivityBar | WeekOf | TileDays
             | TileReviews | WeakTitle | WeakNone | WeakNoData | WeakLine | WeakReading | WeakListening
-            | WeakPlay | WeakVocabulary | WeakJourney | MoreDetail | Done => {}
+            | WeakPlay | WeakVocabulary | WeakJourney | ForecastUnderOne | MoreDetail | Done => {}
         }
     }
     all.to_vec()
@@ -256,7 +257,7 @@ fn all_lines() -> Vec<S> {
 #[test]
 fn every_line_is_translated_with_the_same_placeholders() {
     let lines = all_lines();
-    assert_eq!(lines.len(), 95);
+    assert_eq!(lines.len(), 96);
     for s in lines {
         let en = st(UiLanguage::En, s);
         let eg = st(UiLanguage::ArEg, s);

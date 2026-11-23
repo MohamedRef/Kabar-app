@@ -386,6 +386,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   border-radius: var(--radius-pill);
   background: var(--surface);
   box-shadow: var(--shadow-raised);
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .app[data-width="compact"] .nav-item {
   flex: 1 1 0; min-inline-size: 0;
@@ -394,6 +396,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   padding-inline: 0;
   font-size: max(0.6875rem, 11px);
   border-radius: var(--radius-pill);
+  overflow: hidden;
 }
 .app[data-width="compact"] .nav-item[aria-current="page"] { background: transparent; color: var(--primary); }
 .app[data-width="compact"] .nav-item .nav-icon {
