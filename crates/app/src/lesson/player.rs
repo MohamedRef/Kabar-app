@@ -188,7 +188,8 @@ pub(super) fn PlayerView(
             op(&mut p)
         };
         let Some(pos) = pos else { return };
-        // A new screen starts at its top, not where the last one was scrolled.
+        // The next keyed stage centers and receives focus after it mounts.
+        document::eval(r#"document.querySelector(".lp-body")?.scrollTo(0, 0);"#);
 
         let mut draft = draft;
         draft.set(Draft::default());
