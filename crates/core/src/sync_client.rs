@@ -176,32 +176,8 @@ impl SyncClient {
     }
 }
 
-/// Reconnect delays: 1 s, 2 s, 4 s … up to 5 minutes, with jitter so two
-/// devices don't retry in lockstep.
-#[derive(Clone, Debug, Default)]
-pub struct Backoff {
-    attempt: u32,
-}
-
-impl Backoff {
-    /// One minute: Kabar Cloud is one learner's hub, so a quick retry costs
-    /// nothing, while five minutes left changes waiting long after the
-    /// network was back.
-    pub const MAX_MS: u64 = 60 * 1000;
-
-    /// Delay before the next attempt. `jitter` is uniform in `0.0..1.0`.
-    pub fn next_delay_ms(&mut self, jitter: f64) -> u64 {
-        let base = 1000u64.saturating_mul(1 << self.attempt.min(20)).min(Self::MAX_MS);
-        self.attempt += 1;
-        // 50–100 % of the base.
-        (base as f64 * (0.5 + jitter.clamp(0.0, 1.0) / 2.0)) as u64
-    }
-
-    /// A connection reached `Live`.
-    pub fn reset(&mut self) {
-        self.attempt = 0;
-    }
-}
+/// Reconnect delays capped at one minute, with jitter between devices.
+pub type Backoff = study_sync::Backoff<{ 60 * 1000 }>;
 
 #[cfg(test)]
 mod tests {

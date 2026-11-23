@@ -5,7 +5,7 @@ use super::*;
 impl Store {
     /// A device-local value that never syncs (e.g. the batik in use here).
     pub fn local_value(&self, key: &str) -> Result<Option<String>> {
-        Ok(self.conn.query_row("SELECT value FROM meta WHERE key = ?1", [key], |r| r.get(0)).optional()?)
+        Ok(study_storage::read_meta(&self.conn, key)?)
     }
 
     pub fn set_local_value(&mut self, key: &str, value: &str) -> Result<()> {

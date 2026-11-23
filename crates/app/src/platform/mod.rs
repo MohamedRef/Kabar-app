@@ -367,16 +367,7 @@ pub fn pick_state() -> PickState {
     }
 }
 
-/// Where the "Save to" dialog of [`save_document`] is.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[allow(dead_code)] // each platform builds only some variants
-pub enum SaveState {
-    Open,
-    /// Copied; the name the learner gave it, when the provider says.
-    Saved(Option<String>),
-    Cancelled,
-    Failed,
-}
+pub use study_platform::DocumentState as SaveState;
 
 /// Whether a written file is handed to the system "Save to" dialog after
 /// writing (Android: app files are out of the Files app's reach).

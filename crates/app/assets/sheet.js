@@ -11,11 +11,6 @@
 // Listeners are delegated from document, installed once.
 if (!window.__kabarSheetInit) {
   window.__kabarSheetInit = true;
-  const STOPS = [0.32, 0.56, 0.9];
-  const MIN = 0.12; // let go below this and the sheet closes
-  const MAX = 0.94;
-  const PULL = 0.05; // a stop this close catches the sheet
-  const FLING = 0.5; // px per ms
   const KEY = "kabar.sheet.f";
 
   let last = 0.56;
@@ -67,18 +62,9 @@ if (!window.__kabarSheetInit) {
   // Settle after a drag: fling to the next stop, else stay where let go
   // unless a stop is near. Below the floor, close.
   const settle = (el, f, v) => {
-    if (v > FLING) {
-      const lower = [...STOPS].reverse().find((s) => s < f - 0.02);
-      if (lower === undefined) return close(el);
-      return land(el, lower);
-    }
-    if (v < -FLING) {
-      const higher = STOPS.find((s) => s > f + 0.02);
-      return land(el, higher ?? MAX);
-    }
-    if (f < MIN) return close(el);
-    const near = STOPS.find((s) => Math.abs(s - f) <= PULL);
-    land(el, near ?? f);
+    const next = sheetStop(f, v);
+    if (next === null) close(el);
+    else land(el, next);
   };
   const land = (el, f) => {
     setF(el, f, true);

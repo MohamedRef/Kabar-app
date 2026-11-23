@@ -25,7 +25,7 @@ const SHEET_JS: &str = include_str!("../assets/sheet.js");
 /// from `document`, so sheets opened later need nothing).
 pub fn use_gestures() {
     use_hook(|| {
-        document::eval(SHEET_JS);
+        document::eval(&format!("{{\n{}\n{SHEET_JS}\n}}", study_shell::SHEET_STOPS_JS));
     });
 }
 

@@ -68,6 +68,11 @@ The update settings and offer sheet show the package transfer in bytes and perce
 Rust stable (edition 2024, `rust-version` 1.90), one Cargo workspace,
 Dioxus 0.7 (HTML/CSS UI in a WebView), SQLite, minimal Kotlin for Android.
 
+Kabar pins study-libs rev `d60b723` for UI primitives, lesson layout, review
+history, sync retry, update verification, document save polling, sheet snapping,
+read-only metadata and wire fixtures. Kabar retains its feed checks, save and
+image chooser adapters, one-minute retry limit and language learning surface.
+
 | Crate | Package | What |
 |---|---|---|
 | `crates/core` | `kabar-core` | Pure logic: language engine, FSRS, coach (Kak Nur), journey, lessons, pacing, AI router, update checks. Builds for native and wasm32. |
@@ -442,7 +447,7 @@ Rules (Mohamed's decisions; all in force):
 - Shared plumbing with Batna: `docs/INFRA_PARITY.md` (audit F24, same file
   in both repos). A fix there says in its PR whether Batna needs it too.
 
-## 9. Current state (2026-11-22)
+## 9. Current state (2026-11-23)
 
 Lesson and test choices can use several columns. Slides pair the teaching text with the example list on a wide reading surface.
 
@@ -514,6 +519,8 @@ Mohamed can paste this into any new chat or account to continue:
 > behaviour, process or state.
 
 ## 11. Log
+
+- 2026-11-23. Adopt the reviewed study-libs infrastructure and protect the preceding beta wire shape in a regression test.
 
 - **Shared UI primitives.** Cards, card actions and settings navigation rows use the pinned study-libs components. Feature classes and theme values come from the app.
 

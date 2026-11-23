@@ -106,13 +106,12 @@ pub fn ExportCard() -> Element {
                 outcome.set(Some(Outcome::Choosing));
                 spawn(async move {
                     use crate::platform::SaveState;
-                    let state = loop {
-                        crate::platform::time::sleep(std::time::Duration::from_millis(300)).await;
-                        match crate::platform::save_state() {
-                            SaveState::Open => {}
-                            other => break other,
-                        }
-                    };
+                    crate::platform::time::sleep(std::time::Duration::from_millis(300)).await;
+                    let state = study_platform::finish_document_dialog(
+                        crate::platform::save_state,
+                        crate::platform::time::sleep,
+                    )
+                    .await;
                     outcome.set(Some(match state {
                         SaveState::Saved(name) => Outcome::Placed { name, rows },
                         // Cancelled or failed: the copy in Kabar's folder is still there.
