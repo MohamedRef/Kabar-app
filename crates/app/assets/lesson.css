@@ -489,3 +489,21 @@
 .lp-again { inline-size: 3rem; block-size: 3rem; padding: 0; display: inline-grid; place-items: center; border-radius: 999px; flex: none; background: var(--surface-2); color: var(--primary); border: 1px solid var(--line); }
 .app[data-width="compact"] .lp-buttons:has(.lp-again) { flex-wrap: nowrap; }
 .app[data-width="compact"] .lp-buttons:has(.lp-again) .lp-primary { flex: 1 1 auto; }
+
+/* Size the lesson area after the notes pane has taken its share. */
+.lp-main, .lp.lt > .lp-body { container: lesson-room / inline-size; }
+@container lesson-room (min-width: 52rem) {
+  .lp-col:has(.lp-slide-examples, .lp-choices:not(.chips)), .lp-top, .lp-actions-inner {
+    max-inline-size: 76rem;
+  }
+  .lp-slide:has(> .lp-slide-examples) {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(1.25rem, 3vw, 3rem);
+  }
+  .lp-choices:not(.chips) {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+  }
+  .lp-choice, .lp-slide-examples, .lp-slide-main { min-inline-size: 0; overflow-wrap: anywhere; }
+}

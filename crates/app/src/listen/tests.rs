@@ -439,7 +439,7 @@ fn controls_step_pause_slow_down_and_reveal() {
     app.click("Normal speed");
     assert_eq!(e.sent.borrow().last().unwrap()["rate"], json!(1.0));
 
-    app.click_nth("…", 0);
+    app.click_nth("lx-reveal", 0);
     let text = visible(&app.html());
     assert!(text.contains("Good morning, sir!") && !text.contains("See you!"), "{text}");
     app.click("lx-tr");
