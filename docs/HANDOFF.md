@@ -61,6 +61,8 @@ memory notes are archived in the **private repo `MohamedRef/Batna-sources`**
 when a task needs an old asset or note. New large working files that matter
 beyond one task go there too, never into this repo if they are big or private.
 
+The update settings and offer sheet show the package transfer in bytes and percent. Update settings also show the installed and offered builds together.
+
 ## 2. Architecture
 
 Rust stable (edition 2024, `rust-version` 1.90), one Cargo workspace,
