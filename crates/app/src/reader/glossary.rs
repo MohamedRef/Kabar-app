@@ -205,7 +205,7 @@ const SEED: &[Seed] = &[
     ("paham", WordLang::Indonesian, "verb", ["يفهم", "يفهم", "understand"]),
     ("kalbu", WordLang::Indonesian, "noun", ["قلب (أدبي)", "قلب", "heart (literary)"]),
     ("kalimat", WordLang::Indonesian, "noun", ["جملة", "جملة", "sentence"]),
-    ("mungkin", WordLang::Indonesian, "adverb", ["يمكن / جايز", "ربما", "maybe"]),
+    ("mungkin", WordLang::Indonesian, "adverb", ["يمكن / ممكن", "ربما / ممكن", "maybe; possible"]),
     // English loans common in chat and listings
     ("iphone", WordLang::English, "noun", ["آيفون", "آيفون", "iPhone"]),
     (
@@ -275,11 +275,11 @@ const BRIDGE: &[BridgeSeed] = &[
         "mungkin",
         "ممكن",
         "م ك ن",
-        Shift::Shifted,
+        Shift::Broadened,
         Some([
-            "معناها «يمكن / جايز» مش «ممكن» بمعنى مُتاح",
-            "تعني «ربما» لا «ممكن» بمعنى متاح",
-            "means 'maybe', not 'possible'",
+            "زي «ممكن تمطر» وtidak mungkin = مش ممكن؛ وللاستئذان قول boleh",
+            "تعني «ربما» و«ممكن»؛ وللاستئذان يقال boleh",
+            "means 'maybe' and 'possible'; for 'may I?', say boleh",
         ]),
     ),
 ];
