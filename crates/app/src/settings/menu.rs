@@ -108,6 +108,7 @@ pub fn menu_bar() -> Menu {
 /// Answers the menu's own items, and "?" (outside text fields) opens the
 /// shortcut list like Help › Keyboard Shortcuts.
 pub fn use_menu_events(ui: Ui, nav: SettingsNav) {
+    let play_nav = use_context::<crate::play::PlayNav>();
     use_future(move || async move {
         let mut eval = document::eval(
             r#"
@@ -130,7 +131,7 @@ pub fn use_menu_events(ui: Ui, nav: SettingsNav) {
     });
     dioxus::desktop::use_muda_event_handler(move |event| {
         if let Some(action) = action(event.id().0.as_str()) {
-            apply(ui, nav, action);
+            apply(ui, nav, play_nav, action);
         }
     });
 }
@@ -155,10 +156,14 @@ pub(super) fn action(id: &str) -> Option<Action> {
     }
 }
 
-pub(super) fn apply(ui: Ui, nav: SettingsNav, action: Action) {
+pub(super) fn apply(ui: Ui, nav: SettingsNav, play_nav: crate::play::PlayNav, action: Action) {
     match action {
         Action::Settings(section) => nav.show(section),
         Action::Search => crate::desk::search::open(true),
+        Action::Go(Screen::Play) => {
+            nav.close();
+            crate::play::open(ui, play_nav, crate::play::Route::Hub);
+        }
         Action::Go(screen) => {
             nav.close();
             let mut s = ui.screen;
