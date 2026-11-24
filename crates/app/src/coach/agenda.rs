@@ -2,9 +2,10 @@
 use super::{Coach, labels};
 use crate::{Db, Ui};
 use dioxus::prelude::*;
-use kabar_core::assignments::{LessonWork, schedule};
+use kabar_core::assignments::{DayBudget, LessonWork, agenda};
 use kabar_core::locale::UiLanguage;
 use kabar_protocol::coach::{CoachProfile, LocalDate};
+use study_ui::{AgendaLessonRow, AgendaOption, AgendaOverview, AgendaSelect, LessonAgendaCard};
 
 #[component]
 pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
@@ -55,20 +56,21 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
         rows.push((group, l, done.is_some()));
     }
     let span = span as usize;
-    let day_index = selected().min(span - 1);
     let regular = u32::from(profile.daily_size.minutes());
     let reserved_days = if span > 1 { span.div_ceil(5).min(7) } else { 0 };
     // Keep the calendar allocation bounded for imported distant dates.
     let horizon = span.min(3660);
-    let day_index = day_index.min(horizon - 1);
     let study_days = span - reserved_days;
-    let capacity: Vec<_> = (0..horizon)
-        .map(|i| if i >= study_days { 0 } else { (if i == 0 { today_minutes } else { regular }) * 2 / 3 })
+    let budgets: Vec<_> = (0..horizon)
+        .map(|i| DayBudget {
+            minutes: if i == 0 { today_minutes } else { regular },
+            new_lessons: i < study_days,
+            practice: true,
+        })
         .collect();
-    let schedule = schedule(&work, &capacity);
-    let card = &schedule.days[day_index];
-    let total = if day_index == 0 { today_minutes } else { regular };
-    let practice = total.saturating_sub(card.iter().map(|p| p.minutes).sum::<u32>());
+    let Some(agenda) = agenda(&work, &budgets, selected(), |index| rows[index].2) else { return rsx! {} };
+    let day_index = agenda.index;
+    let practice = agenda.practice_minutes;
     let title = words("واجب الدروس", "دروس اليوم", "Lesson assignments");
     let test = words("اختبار الدرس", "اختبار الدرس", "Lesson test");
     let revise = words("مراجعة وتمارين", "مراجعة وتدريب", "Review and practice");
@@ -83,30 +85,54 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
         "لا تتوفر تمارين لهذا الدرس",
         "No exercises available for this lesson",
     );
-    let left = schedule.unassigned_minutes;
+    let left = agenda.unassigned_minutes;
+    let day_options = (0..horizon)
+        .map(|value| {
+            let date = labels::long_date(&ui, LocalDate(today.0 + value as i32));
+            let label = if value == 0 {
+                format!("{} · {date}", words("النهارده", "اليوم", "Today"))
+            } else {
+                date
+            };
+            AgendaOption { value, label }
+        })
+        .collect();
     rsx! {
-        crate::ui::Card { class: "coach-agenda",
-            h2 { "{title}" }
-            label { "{day_label} "
-                select { value: "{day_index}", onchange: move |e| if let Ok(i) = e.value().parse() { selected.set(i); unavailable.set(false); },
-                    for i in 0..horizon { option { value: "{i}", selected: day_index == i, "{labels::long_date(&ui,LocalDate(today.0+i as i32))}" } }
+        LessonAgendaCard { class: "coach-agenda", title,
+            overview: rsx! { AgendaOverview {
+                lessons_label: words("الدروس المتبقية", "الدروس المتبقية", "Lessons left"),
+                lessons_value: ui.num(agenda.lessons_left),
+                time_label: words("وقت الدروس المتبقي", "وقت الدروس المتبقي", "Lesson time left"),
+                time_value: labels::minutes(&ui, agenda.minutes_left),
+            } },
+            controls: rsx! {
+                if horizon > 1 {
+                    AgendaSelect { label: day_label, value: day_index, options: day_options,
+                        on_select: move |i| {
+                            selected.set(i);
+                            unavailable.set(false);
+                        },
+                    }
                 }
-            }
-            for part in card {
+            },
+            ul { class: "study-agenda-list", aria_label: "{title}",
+            for part in &agenda.portions {
                 {
                     let (group,l,done) = &rows[part.lesson];
                     let id = l.id.as_str();
                     let time = labels::minutes(&ui,part.minutes);
-                    rsx! { div { key: "{id}", class: "agenda-row",
-                        button { class: "text-btn", onclick: move |_| ui.open_lesson(id.to_string()), "{l.title}" }
-                        span { "{group} · {time}" if *done { " ✓" } }
-                        button { class: "secondary", onclick: move |_| {
+                    rsx! { AgendaLessonRow { key: "{id}", title: l.title.clone(),
+                        title_class: "text-btn", test_class: "secondary", test_label: test,
+                        detail: rsx! { span { "{group} · {time}" if *done { " ✓" } } },
+                        on_open: move |_| ui.open_lesson(id.to_string()),
+                        on_test: move |_| {
                             let parsed = crate::lesson::lesson_content(id).and_then(|s| kabar_core::lesson::parse_lesson(&s).ok()).filter(|l| !l.exercises.is_empty());
                             unavailable.set(parsed.is_none());
                             quiz.set(parsed);
-                        }, "{test}" }
+                        },
                     }}
                 }
+            }
             }
             if practice > 0 { p { "{revise} · {labels::minutes(&ui,practice)}" } }
             if left > 0 { p { class: "muted", "{excess_label} · {labels::minutes(&ui,left)}" } }

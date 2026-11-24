@@ -520,6 +520,8 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
+- 2026-11-24. The lesson agenda shows the unfinished lesson count and time for the selected day in the chosen language. The plan date control uses the shared responsive layout.
+
 - 2026-11-24. Use shared SQLite snapshot encoding and Mac bundle staging. Keep schema migrations, update policy and signing checks with the app.
 
 - 2026-11-24. Pin the common Dioxus renderer, use shared settings search, and compute FSRS review intervals with the shared rounding rule. Keep local study clocks and serialized ratings.
