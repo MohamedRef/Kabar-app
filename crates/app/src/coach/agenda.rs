@@ -5,6 +5,7 @@ use dioxus::prelude::*;
 use kabar_core::assignments::{LessonWork, schedule};
 use kabar_core::locale::UiLanguage;
 use kabar_protocol::coach::{CoachProfile, LocalDate};
+use study_ui::AgendaOverview;
 
 #[component]
 pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
@@ -67,6 +68,9 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
         .collect();
     let schedule = schedule(&work, &capacity);
     let card = &schedule.days[day_index];
+    let unfinished = card.iter().filter(|part| !rows[part.lesson].2);
+    let lessons_left = unfinished.clone().count() as u32;
+    let minutes_left: u32 = unfinished.map(|part| part.minutes).sum();
     let total = if day_index == 0 { today_minutes } else { regular };
     let practice = total.saturating_sub(card.iter().map(|p| p.minutes).sum::<u32>());
     let title = words("واجب الدروس", "دروس اليوم", "Lesson assignments");
@@ -87,9 +91,17 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
     rsx! {
         crate::ui::Card { class: "coach-agenda",
             h2 { "{title}" }
-            label { "{day_label} "
-                select { value: "{day_index}", onchange: move |e| if let Ok(i) = e.value().parse() { selected.set(i); unavailable.set(false); },
-                    for i in 0..horizon { option { value: "{i}", selected: day_index == i, "{labels::long_date(&ui,LocalDate(today.0+i as i32))}" } }
+            AgendaOverview {
+                lessons_label: words("الدروس المتبقية", "الدروس المتبقية", "Lessons left"),
+                lessons_value: ui.num(lessons_left),
+                time_label: words("وقت الدروس المتبقي", "وقت الدروس المتبقي", "Lesson time left"),
+                time_value: labels::minutes(&ui, minutes_left),
+            }
+            div { class: "study-agenda-controls",
+                label { "{day_label}"
+                    select { value: "{day_index}", onchange: move |e| if let Ok(i) = e.value().parse() { selected.set(i); unavailable.set(false); },
+                        for i in 0..horizon { option { value: "{i}", selected: day_index == i, "{labels::long_date(&ui,LocalDate(today.0+i as i32))}" } }
+                    }
                 }
             }
             for part in card {
