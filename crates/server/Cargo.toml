@@ -10,6 +10,7 @@ publish.workspace = true
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
+study-sql.workspace = true
 kabar-core.workspace = true
 kabar-protocol.workspace = true
 serde.workspace = true
@@ -26,9 +27,11 @@ sha2 = "0.11"
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 getrandom = { version = "0.2", features = ["js"] }
 wasm-bindgen = "0.2"
+study-sql = { workspace = true, features = ["worker"] }
 worker = { version = "0.8", features = ["d1"] }
 
 [dev-dependencies]
+study-sql = { workspace = true, features = ["test-support"] }
 rsa = { version = "0.10", features = ["pkcs1v15"] }
 rusqlite = { version = "0.41", features = ["bundled"] }
 

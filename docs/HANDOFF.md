@@ -520,6 +520,10 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
+- 2026-11-24. Use shared SQLite snapshot encoding and Mac bundle staging. Keep schema migrations, update policy and signing checks with the app.
+
+- 2026-11-24. Use shared Worker SQL, settings navigation and the pinned Dioxus installer.
+
 - 2026-11-24. Update the lockfile to `cookie` 0.18.3 and `url` 2.5.9 for RUSTSEC-2026-0594 and RUSTSEC-2026-0592.
 
 - 2026-11-23. Adopt the reviewed study-libs infrastructure and protect the preceding beta wire shape in a regression test.

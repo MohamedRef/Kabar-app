@@ -365,16 +365,12 @@ impl Store {
     /// browser kept (`platform::web`), and migrated like a file would be.
     #[cfg_attr(not(target_arch = "wasm32"), allow(dead_code))] // web, and tests
     pub fn from_snapshot(bytes: &[u8]) -> Result<Self> {
-        let mut conn = Connection::open_in_memory()?;
-        if !bytes.is_empty() {
-            let mut bytes = bytes.to_vec();
-            // A WAL-mode header (file format 2) can't be read from memory.
-            if bytes.len() > 19 && bytes[18] == 2 && bytes[19] == 2 {
-                (bytes[18], bytes[19]) = (1, 1);
-            }
-            let len = bytes.len();
-            conn.deserialize_read_exact(rusqlite::MAIN_DB, &bytes[..], len, false)?;
+        let mut bytes = bytes.to_vec();
+        // A WAL-mode header (file format 2) can't be read from memory.
+        if bytes.len() > 19 && bytes[18] == 2 && bytes[19] == 2 {
+            (bytes[18], bytes[19]) = (1, 1);
         }
+        let conn = study_storage::open_snapshot(&bytes)?;
         Self::init(conn, None)
     }
 
@@ -382,8 +378,7 @@ impl Store {
     /// build keeps it in the browser only when something changed.
     #[cfg_attr(not(target_arch = "wasm32"), allow(dead_code))] // web, and tests
     pub fn snapshot(&mut self) -> Result<(u64, Vec<u8>)> {
-        let bytes = self.conn.serialize(rusqlite::MAIN_DB)?.to_vec();
-        Ok((self.conn.total_changes(), bytes))
+        Ok(study_storage::snapshot(&mut self.conn)?)
     }
 
     /// SQLite's count of rows this connection changed.

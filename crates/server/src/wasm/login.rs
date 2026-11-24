@@ -5,11 +5,11 @@ use std::cell::RefCell;
 
 use worker::{DurableObject, Env, Method, Request, Response, Result, State, durable_object};
 
-use super::do_sql::DoSql;
 use super::{api_error, now_ms};
 use crate::internal::{LoginCheck, LoginClear, LoginSet};
 use crate::login::{Login as Store, UnknownTries, parse_key};
 use kabar_protocol::cloud::ErrorCode;
+use study_sql::durable::DoSql;
 
 thread_local! {
     static UNKNOWN_TRIES: RefCell<UnknownTries> = RefCell::default();

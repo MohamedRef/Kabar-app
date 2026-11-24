@@ -16,7 +16,7 @@ pub mod hub;
 pub mod internal;
 pub mod login;
 pub mod quota;
-pub mod sql;
+pub use study_sql as sql;
 pub mod time;
 pub mod tokens;
 pub mod tts;

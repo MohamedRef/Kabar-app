@@ -2,7 +2,6 @@
 //! token, call the plain-Rust modules, talk to bindings and upstreams.
 
 mod account;
-mod do_sql;
 mod login;
 
 use std::cell::{Cell, RefCell};
