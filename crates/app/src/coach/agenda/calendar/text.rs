@@ -66,3 +66,6 @@ pub(super) fn summary(lang: UiLanguage, done: usize, duration: &str, reviews: u3
         UiLanguage::En => format!("{done} lessons finished · {duration} studied · {} reviews", reviews),
     }
 }
+
+#[cfg(test)]
+mod tests;
