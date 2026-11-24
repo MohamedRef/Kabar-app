@@ -522,7 +522,8 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
-- 2026-11-24. Today groups assigned lessons by course in curriculum order, shows the next unfinished lesson, and folds extra lessons into each course card. The shared study-ui component also presents lesson durations and optional quizzes.
+- 2026-11-24. Shared lesson cards use compact mobile rows with local scrolling, stronger subject headings, and localized minute badges.
+- 2026-11-24. Today groups assigned lessons by course in curriculum order, shows the next unfinished lesson, and folds extra lessons into each course card. The shared study-ui component presents compact mobile rows, theme-aware scrolling and subject headings, localized minute badges, and optional quizzes.
 
 - 2026-11-24. Adopt the shared study calendar in Stats. The coach supplies the language curriculum, lesson completions, practice window and target level date.
 

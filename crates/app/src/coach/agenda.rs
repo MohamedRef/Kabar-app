@@ -134,7 +134,9 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
                         let (unit, reference) = lesson.id.rsplit_once('.').unwrap_or((&lesson.id, ""));
                         LessonCardItem {
                             id: lesson.id.clone(), group: unit.to_owned(), group_title: group.clone(),
-                            title: lesson.title.clone(), duration: labels::minutes(&ui, part.minutes),
+                            title: lesson.title.clone(), minutes: ui.num(part.minutes),
+                            minute_unit: if ui.lang() == UiLanguage::En { "min" } else { "د" }.into(),
+                            duration: labels::minutes(&ui, part.minutes),
                             reference: reference.to_owned(), note: String::new(), done: *done, order: part.lesson,
                         }
                     }).collect::<Vec<_>>(),
