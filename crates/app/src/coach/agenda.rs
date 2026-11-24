@@ -7,7 +7,7 @@ use dioxus::prelude::*;
 use kabar_core::assignments::{DayBudget, LessonWork, agendas};
 use kabar_core::locale::UiLanguage;
 use kabar_protocol::coach::{CoachProfile, LocalDate};
-use study_ui::{AgendaLessonRow, AgendaOption, AgendaOverview, AgendaSelect, LessonAgendaCard};
+use study_ui::{AgendaOption, AgendaSelect, CompactLessonCards, LessonAgendaCard, LessonCardItem};
 
 type LessonEntry = (String, &'static kabar_core::journey::Lesson, bool);
 
@@ -98,6 +98,7 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
         "No exercises available for this lesson",
     );
     let left = agenda.unassigned_minutes;
+    let left_label = words("دروس متبقية", "دروس متبقية", "lessons left");
     let day_options = (0..horizon)
         .map(|value| {
             let date = labels::long_date(&ui, LocalDate(today.0 + value as i32));
@@ -111,12 +112,11 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
         .collect();
     rsx! {
         LessonAgendaCard { class: "coach-agenda", title,
-            overview: rsx! { AgendaOverview {
-                lessons_label: words("الدروس المتبقية", "الدروس المتبقية", "Lessons left"),
-                lessons_value: ui.num(agenda.lessons_left),
-                time_label: words("وقت الدروس المتبقي", "وقت الدروس المتبقي", "Lesson time left"),
-                time_value: labels::minutes(&ui, agenda.minutes_left),
-            } },
+            overview: rsx! {
+                p { class: "muted",
+                    "{ui.num(agenda.lessons_left)} {left_label} · {labels::minutes(&ui, agenda.minutes_left)}"
+                }
+            },
             controls: rsx! {
                 if horizon > 1 {
                     AgendaSelect { label: day_label, value: day_index, options: day_options,
@@ -127,24 +127,29 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
                     }
                 }
             },
-            ul { class: "study-agenda-list", aria_label: "{title}",
-            for part in &agenda.portions {
-                {
-                    let (group,l,done) = &rows[part.lesson];
-                    let id = l.id.as_str();
-                    let time = labels::minutes(&ui,part.minutes);
-                    rsx! { AgendaLessonRow { key: "{id}", title: l.title.clone(),
-                        title_class: "text-btn", test_class: "secondary", test_label: test,
-                        detail: rsx! { span { "{group} · {time}" if *done { " ✓" } } },
-                        on_open: move |_| ui.open_lesson(id.to_string()),
-                        on_test: move |_| {
-                            let parsed = crate::lesson::lesson_content(id).and_then(|s| kabar_core::lesson::parse_lesson(&s).ok()).filter(|l| !l.exercises.is_empty());
-                            unavailable.set(parsed.is_none());
-                            quiz.set(parsed);
-                        },
-                    }}
+            if !agenda.portions.is_empty() {
+                CompactLessonCards {
+                    items: agenda.portions.iter().map(|part| {
+                        let (group, lesson, done) = &rows[part.lesson];
+                        let (unit, reference) = lesson.id.rsplit_once('.').unwrap_or((&lesson.id, ""));
+                        LessonCardItem {
+                            id: lesson.id.clone(), group: unit.to_owned(), group_title: group.clone(),
+                            title: lesson.title.clone(), duration: labels::minutes(&ui, part.minutes),
+                            reference: reference.to_owned(), note: String::new(), done: *done, order: part.lesson,
+                        }
+                    }).collect::<Vec<_>>(),
+                    more_label: words("باقي الدروس", "باقي الدروس", "More lessons"),
+                    done_label: words("خلصته", "مكتمل", "Completed"),
+                    test_label: test.to_owned(),
+                    on_open: move |id: String| ui.open_lesson(id),
+                    on_test: move |id: String| {
+                        let parsed = crate::lesson::lesson_content(&id)
+                            .and_then(|s| kabar_core::lesson::parse_lesson(&s).ok())
+                            .filter(|lesson| !lesson.exercises.is_empty());
+                        unavailable.set(parsed.is_none());
+                        quiz.set(parsed);
+                    },
                 }
-            }
             }
             if practice > 0 { p { "{revise} · {labels::minutes(&ui,practice)}" } }
             if left > 0 { p { class: "muted", "{excess_label} · {labels::minutes(&ui,left)}" } }

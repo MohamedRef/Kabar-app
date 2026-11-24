@@ -449,7 +449,7 @@ Rules (Mohamed's decisions; all in force):
 
 ## 9. Current state (2026-11-24)
 
-Stats shows the monthly study calendar with recorded activity and any named assignments before the learner's target level date.
+Today uses shared compact cards for the coach’s assigned lessons. Stats shows the monthly study calendar with recorded activity and any named assignments before the learner's target level date.
 
 Lesson and test choices can use several columns. Slides pair the teaching text with the example list on a wide reading surface.
 
@@ -521,6 +521,8 @@ Mohamed can paste this into any new chat or account to continue:
 > behaviour, process or state.
 
 ## 11. Log
+
+- 2026-11-24. Today groups assigned lessons by course in curriculum order, shows the next unfinished lesson, and folds extra lessons into each course card. The shared study-ui component also presents lesson durations and optional quizzes.
 
 - 2026-11-24. Adopt the shared study calendar in Stats. The coach supplies the language curriculum, lesson completions, practice window and target level date.
 
