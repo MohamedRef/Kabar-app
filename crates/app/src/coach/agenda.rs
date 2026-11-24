@@ -5,7 +5,7 @@ use dioxus::prelude::*;
 use kabar_core::assignments::{DayBudget, LessonWork, agenda};
 use kabar_core::locale::UiLanguage;
 use kabar_protocol::coach::{CoachProfile, LocalDate};
-use study_ui::{AgendaDays, AgendaLessonRow, AgendaOverview, AgendaSelect, LessonAgendaCard};
+use study_ui::{AgendaLessonRow, AgendaOption, AgendaOverview, AgendaSelect, LessonAgendaCard};
 
 #[component]
 pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
@@ -86,11 +86,17 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
         "No exercises available for this lesson",
     );
     let left = agenda.unassigned_minutes;
-    let days_label = if day_index == 0 {
-        words("أيام تانية", "أيام أخرى", "Other days").to_string()
-    } else {
-        labels::long_date(&ui, LocalDate(today.0 + day_index as i32))
-    };
+    let day_options = (0..horizon)
+        .map(|value| {
+            let date = labels::long_date(&ui, LocalDate(today.0 + value as i32));
+            let label = if value == 0 {
+                format!("{} · {date}", words("النهارده", "اليوم", "Today"))
+            } else {
+                date
+            };
+            AgendaOption { value, label }
+        })
+        .collect();
     rsx! {
         LessonAgendaCard { class: "coach-agenda", title,
             overview: rsx! { AgendaOverview {
@@ -101,15 +107,11 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
             } },
             controls: rsx! {
                 if horizon > 1 {
-                    AgendaDays { label: days_label,
-                        AgendaSelect { label: day_label, value: day_index, on_select: move |i| {
+                    AgendaSelect { label: day_label, value: day_index, options: day_options,
+                        on_select: move |i| {
                             selected.set(i);
                             unavailable.set(false);
                         },
-                            for i in 0..horizon {
-                                option { value: "{i}", selected: day_index == i, "{labels::long_date(&ui, LocalDate(today.0 + i as i32))}" }
-                            }
-                        }
                     }
                 }
             },
