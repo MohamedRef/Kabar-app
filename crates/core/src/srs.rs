@@ -11,7 +11,6 @@ use serde::{Deserialize, Serialize};
 use crate::settings::Settings;
 
 const DAY_MS: u64 = 86_400_000;
-const MIN_SHORT_INTERVAL_MS: u64 = 10 * 60_000;
 pub use study_review::MIN_REVIEWS_TO_OPTIMIZE;
 
 /// Where the learner's day starts, so "due today" matches their evening, not UTC.
@@ -223,11 +222,9 @@ impl Scheduler {
     /// Under a day: due after the exact interval (at least 10 min).
     /// Otherwise: due at the start of the learner's day `interval` days later.
     fn due_after(&self, at_ms: u64, interval_days: f32) -> u64 {
-        if interval_days < 1.0 {
-            at_ms + ((interval_days * DAY_MS as f32) as u64).max(MIN_SHORT_INTERVAL_MS)
-        } else {
-            let days = interval_days.round() as i64;
-            self.day.day_start_ms(self.day.day(at_ms) + days)
+        match study_review::review_delay(interval_days) {
+            study_review::ReviewDelay::Millis(millis) => at_ms + millis as u64,
+            study_review::ReviewDelay::StudyDays(days) => self.day.day_start_ms(self.day.day(at_ms) + days),
         }
     }
 

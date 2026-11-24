@@ -19,7 +19,7 @@ mod look;
 #[cfg(all(feature = "desktop", not(target_os = "android")))]
 pub mod menu;
 mod platform_sections;
-pub(crate) mod search;
+pub(crate) use study_ui::settings_search as search;
 mod text;
 
 use dioxus::prelude::*;

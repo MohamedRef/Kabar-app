@@ -44,7 +44,7 @@ jobs:
       - run: cargo test -p kabar-app
       # From the cache, else built from source (.github/actions/dx says why).
       - name: Install dx 0.7.10
-        uses: MohamedRef/study-libs/.github/actions/dx@f5941708f654dff7091dc7abc58108e32876cebf
+        uses: MohamedRef/study-libs/.github/actions/dx@41bdefdc2292b56c9d0f5ff6df46623cebf00535
       - name: Bundle Kabar.app
         run: |
           cd crates/app
