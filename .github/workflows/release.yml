@@ -79,12 +79,20 @@ jobs:
         with:
           key: release-tools
           save-if: false
+      - name: Compute calendar version
+        id: calendar_version
+        uses: MohamedRef/study-libs/.github/actions/release-version@dab3e6d8a3c9055eb8064d7bc7ed7a9c542103d8
+        with:
+          mode: release
       - name: Release version, build number and channels
         id: v
         env:
+          VERSION: ${{ steps.calendar_version.outputs.version }}
+          BUILD: ${{ steps.calendar_version.outputs.build }}
           CHANNEL: ${{ inputs.channel || 'alpha' }}
         run: |
-          read -r v build < <(scripts/version.sh release)
+          v="$VERSION"
+          build="$BUILD"
           [ -z "$(git tag -l "v$v")" ] || { echo "::error::v$v exists already"; exit 1; }
           scripts/version.sh apply "$v"
           # A beta also reaches alpha followers, a stable release everyone.
@@ -133,7 +141,10 @@ jobs:
         with:
           persist-credentials: false
       - name: Release version into Cargo.toml (the app's label, versionName, CFBundleShortVersionString)
-        run: scripts/version.sh apply "${{ needs.prepare.outputs.version }}"
+        uses: MohamedRef/study-libs/.github/actions/release-version@dab3e6d8a3c9055eb8064d7bc7ed7a9c542103d8
+        with:
+          mode: apply
+          version: ${{ needs.prepare.outputs.version }}
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-linux-android
@@ -209,7 +220,10 @@ jobs:
         with:
           persist-credentials: false
       - name: Release version into Cargo.toml (the app's label, versionName, CFBundleShortVersionString)
-        run: scripts/version.sh apply "${{ needs.prepare.outputs.version }}"
+        uses: MohamedRef/study-libs/.github/actions/release-version@dab3e6d8a3c9055eb8064d7bc7ed7a9c542103d8
+        with:
+          mode: apply
+          version: ${{ needs.prepare.outputs.version }}
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: llvm-tools
