@@ -1,43 +1,35 @@
 //! Lessons leading up to the learner's target level, alongside the coach's daily activities.
+mod calendar;
 use super::{Coach, labels};
 use crate::{Db, Ui};
+pub(crate) use calendar::LessonCalendar;
 use dioxus::prelude::*;
-use kabar_core::assignments::{DayBudget, LessonWork, agenda};
+use kabar_core::assignments::{DayBudget, LessonWork, agendas};
 use kabar_core::locale::UiLanguage;
 use kabar_protocol::coach::{CoachProfile, LocalDate};
 use study_ui::{AgendaLessonRow, AgendaOption, AgendaOverview, AgendaSelect, LessonAgendaCard};
 
-#[component]
-pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
-    let ui = use_context::<Ui>();
-    let db = use_context::<Db>();
-    let coach = use_context::<Coach>();
-    let mut selected = use_signal(|| 0usize);
-    let mut quiz = use_signal(|| None::<kabar_protocol::lesson::LessonContent>);
-    let mut unavailable = use_signal(|| false);
-    let Some(target) = &profile.target else { return rsx! {} };
+type LessonEntry = (String, &'static kabar_core::journey::Lesson, bool);
+
+fn assignments(
+    db: &Db,
+    coach: &Coach,
+    profile: &CoachProfile,
+    today_minutes: u32,
+    lang: UiLanguage,
+) -> (Vec<LessonEntry>, Vec<kabar_core::assignments::Agenda>) {
+    let Some(target) = &profile.target else { return Default::default() };
     let today = coach.today();
-    let span = target.by.0.saturating_sub(today.0);
+    let span = target.by.days_since(today);
     if span <= 0 {
-        return rsx! {};
+        return Default::default();
     }
-    let lang = ui.lang();
-    let words = |eg, ar, en| match lang {
-        UiLanguage::ArEg => eg,
-        UiLanguage::Ar => ar,
-        UiLanguage::En => en,
-    };
-    if let Some(lesson) = quiz() {
-        return rsx! {crate::lesson::PracticeQuiz { lesson, on_close: move |_| quiz.set(None) }};
-    }
-    let _events = coach.events.read();
     let completed = crate::persistence::read_or("lesson completions", db.0.borrow().lesson_completions());
     let mut first = std::collections::HashMap::<String, u64>::new();
     for event in completed {
         first.entry(event.lesson_id).and_modify(|t| *t = (*t).min(event.at_ms)).or_insert(event.at_ms);
     }
-    let position = db.0.borrow().position().ok().flatten();
-    let start = crate::journey::start_level(&db, Some(&profile));
+    let start = crate::journey::start_level(db, Some(profile));
     let catalog = crate::journey::target_lessons(&target.level, start.as_deref(), lang);
     let mut work = Vec::new();
     let mut rows = Vec::new();
@@ -46,13 +38,8 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
         if done.is_some_and(|d| d < today) {
             continue;
         }
-        let spent = position
-            .as_ref()
-            .filter(|p| p.lesson_id == l.id)
-            .and_then(|p| p.progress.as_ref())
-            .map_or(0, |p| (p.elapsed_ms / 60_000).min(u64::from(l.minutes)) as u32);
         // The catalog already rotates units within each curriculum level.
-        work.push(LessonWork { group: String::new(), minutes: l.minutes.saturating_sub(spent).max(1) });
+        work.push(LessonWork { group: String::new(), minutes: l.minutes.max(1) });
         rows.push((group, l, done.is_some()));
     }
     let span = span as usize;
@@ -68,7 +55,32 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
             practice: true,
         })
         .collect();
-    let Some(agenda) = agenda(&work, &budgets, selected(), |index| rows[index].2) else { return rsx! {} };
+    let assignments = agendas(&work, &budgets, |index| rows[index].2);
+    (rows, assignments)
+}
+
+#[component]
+pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
+    let ui = use_context::<Ui>();
+    let db = use_context::<Db>();
+    let coach = use_context::<Coach>();
+    let mut selected = use_signal(|| 0usize);
+    let mut quiz = use_signal(|| None::<kabar_protocol::lesson::LessonContent>);
+    let mut unavailable = use_signal(|| false);
+    let today = coach.today();
+    let lang = ui.lang();
+    let words = |eg, ar, en| match lang {
+        UiLanguage::ArEg => eg,
+        UiLanguage::Ar => ar,
+        UiLanguage::En => en,
+    };
+    if let Some(lesson) = quiz() {
+        return rsx! {crate::lesson::PracticeQuiz { lesson, on_close: move |_| quiz.set(None) }};
+    }
+    let _events = coach.events.read();
+    let (rows, calendar) = assignments(&db, &coach, &profile, today_minutes, lang);
+    let Some(agenda) = calendar.get(selected().min(calendar.len().saturating_sub(1))) else { return rsx! {} };
+    let horizon = calendar.len();
     let day_index = agenda.index;
     let practice = agenda.practice_minutes;
     let title = words("واجب الدروس", "دروس اليوم", "Lesson assignments");
