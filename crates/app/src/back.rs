@@ -21,13 +21,13 @@ use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 
 use dioxus::prelude::*;
+use study_shell::BackTrail;
 
 use crate::{Screen, Ui};
 
-const BACK_JS: &str = include_str!("../assets/system-back.js");
-
-/// How many screens Back remembers.
-const DEPTH: usize = 30;
+pub(crate) fn back_script() -> String {
+    study_shell::system_back_script("kabar")
+}
 
 /// Screens Back never returns to: full-screen players are left with their
 /// own close button, and Settings is a sheet.
@@ -35,54 +35,14 @@ fn remembered(screen: Screen) -> bool {
     !matches!(screen, Screen::Lesson | Screen::LevelCheck | Screen::Settings)
 }
 
-/// The screens visited, newest last.
-#[derive(Default)]
-struct Trail {
-    stack: Vec<Screen>,
-    last: Option<Screen>,
-    /// The next screen change comes from Back: don't remember it.
-    popping: bool,
-}
-
-impl Trail {
-    /// Records a move to `now`; returns whether Back has somewhere to go.
-    fn visit(&mut self, now: Screen) -> bool {
-        if let Some(last) = self.last
-            && last != now
-            && !std::mem::take(&mut self.popping)
-        {
-            if remembered(last) {
-                self.stack.push(last);
-                if self.stack.len() > DEPTH {
-                    self.stack.remove(0);
-                }
-            }
-            // Today is home: reaching it clears the trail, so Back there
-            // leaves the app. Coming back to a screen already on the trail
-            // closes the loop, so Back never walks round A, B, A, B; this also
-            // drops the origin a closed transient screen (Settings) returns to.
-            if now == Screen::Today {
-                self.stack.clear();
-            } else if let Some(at) = self.stack.iter().position(|s| *s == now) {
-                self.stack.truncate(at);
-            }
-        }
-        self.last = Some(now);
-        !self.stack.is_empty() || now != Screen::Today
-    }
-
-    /// Where Back goes from `now`, if anywhere.
-    fn back(&mut self, now: Screen) -> Option<Screen> {
-        let to = self.stack.pop().or((now != Screen::Today).then_some(Screen::Today))?;
-        self.popping = true;
-        Some(to)
-    }
+fn trail() -> BackTrail<Screen> {
+    BackTrail::new(Screen::Today, remembered)
 }
 
 /// One navigation trail for top-level screens. Every visible control with
 /// data-back="true" participates automatically, without feature-specific flags.
 pub fn use_back(ui: Ui, current: Screen) {
-    let trail = use_hook(|| Rc::new(RefCell::new(Trail::default())));
+    let trail = use_hook(|| Rc::new(RefCell::new(trail())));
     // What the script was last told: the Shell re-renders often, and only a
     // change needs a round trip to the WebView.
     let told = use_hook(|| Rc::new(Cell::new(None::<bool>)));
@@ -98,7 +58,7 @@ pub fn use_back(ui: Ui, current: Screen) {
             let trail = trail.clone();
             let told = told.clone();
             async move {
-                let mut eval = document::eval(BACK_JS);
+                let mut eval = document::eval(&back_script());
                 while let Ok(message) = eval.recv::<String>().await {
                     if message == "back" {
                         let now = *ui.screen.peek();
@@ -134,7 +94,7 @@ mod tests {
 
     #[test]
     fn back_walks_the_visited_screens_then_today() {
-        let mut t = Trail::default();
+        let mut t = trail();
         assert!(!t.visit(Screen::Today), "nothing to go back to on Today");
         assert!(t.visit(Screen::Journey));
         assert!(t.visit(Screen::Reader));
@@ -147,7 +107,7 @@ mod tests {
 
     #[test]
     fn players_are_not_returned_to() {
-        let mut t = Trail::default();
+        let mut t = trail();
         t.visit(Screen::Journey);
         t.visit(Screen::Lesson);
         t.visit(Screen::Journey); // the player closed itself
@@ -156,7 +116,7 @@ mod tests {
 
     #[test]
     fn going_round_in_circles_never_lengthens_the_way_back() {
-        let mut t = Trail::default();
+        let mut t = trail();
         for screen in [
             Screen::Today,
             Screen::Journey,
@@ -177,7 +137,7 @@ mod tests {
 
     #[test]
     fn back_on_today_leaves_once_today_is_reached_again() {
-        let mut t = Trail::default();
+        let mut t = trail();
         for screen in [Screen::Today, Screen::Journey, Screen::Reader, Screen::Today] {
             t.visit(screen);
         }
@@ -187,7 +147,7 @@ mod tests {
 
     #[test]
     fn closing_a_transient_screen_does_not_create_a_ghost_step() {
-        let mut t = Trail::default();
+        let mut t = trail();
         t.visit(Screen::Today);
         t.visit(Screen::Journey);
         t.visit(Screen::Reader);

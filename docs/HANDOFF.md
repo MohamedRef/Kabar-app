@@ -434,7 +434,7 @@ Rules (Mohamed's decisions; all in force):
   with `node --test`, no npm deps): Android Back, the Settings keyboard trap
   and the lesson keys (`assets/lesson-keys.js`). A script tested there is
   loaded with `include_str!`, never written inline in Rust.
-- Android Back: `system-back.js` keeps one history trap; `BackKey.kt` routes
+- Android Back: the shared `study-shell` controller keeps one history trap; `BackKey.kt` routes
   the Back key through the page (every Back = one step; exit only from Today).
   Tests use `history.system()`, not `history.back()`.
 - Android crash reports start from Settings › Storage diagnostics
