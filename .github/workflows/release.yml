@@ -146,7 +146,7 @@ jobs:
           distribution: temurin
           java-version: "17"
       - name: Install dx 0.7.10
-        uses: MohamedRef/study-libs/.github/actions/dx@c1ff1c6877d7a8c0d23f72eefd607b29948e986b
+        uses: MohamedRef/study-libs/.github/actions/dx@4714c11f14e7583b28e950be16526afbe661f141
       - uses: actions/download-artifact@v4
         with:
           name: kabar-release-pack
@@ -218,7 +218,7 @@ jobs:
           key: macos
           save-if: false
       - name: Install dx 0.7.10
-        uses: MohamedRef/study-libs/.github/actions/dx@c1ff1c6877d7a8c0d23f72eefd607b29948e986b
+        uses: MohamedRef/study-libs/.github/actions/dx@4714c11f14e7583b28e950be16526afbe661f141
       - uses: actions/download-artifact@v4
         with:
           name: kabar-release-pack
