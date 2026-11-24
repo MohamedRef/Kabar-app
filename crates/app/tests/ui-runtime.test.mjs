@@ -4,11 +4,12 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import vm from 'node:vm';
+import sharedShell from './system-back.test.cjs';
 
 const asset = (name) => readFileSync(new URL('../assets/' + name, import.meta.url), 'utf8');
 
 function backHarness() {
-  const source = asset('system-back.js');
+  const source = sharedShell.source();
   const prefix = source.match(/window\.__([a-z]+)BackSend/)?.[1];
   assert.ok(prefix, 'expected the app-specific production Back script');
   const handlers = {};
@@ -173,7 +174,7 @@ function settingsHarness() {
     observe() {}
     disconnect() {}
   }
-  vm.runInNewContext(asset('settings-dialog.js'), { document, MutationObserver: Observer });
+  vm.runInNewContext(sharedShell.asset('settings-dialog.js'), { document, MutationObserver: Observer });
   return {
     document,
     dialog,

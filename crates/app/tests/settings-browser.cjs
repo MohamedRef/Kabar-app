@@ -12,7 +12,7 @@ async function run() {
   await fs.mkdir(output, { recursive: true });
   const fixturesManifest = JSON.parse(await fs.readFile(path.join(fixtures, 'manifest.json'), 'utf8'));
   const manifest = fixturesManifest.flatMap(item => (item.theme.startsWith('system') ? ['light', 'dark'] : ['light']).map(scheme => ({ ...item, scheme })));
-  const controller = await fs.readFile(path.join(__dirname, '../assets/settings-dialog.js'), 'utf8');
+  const controller = require('./system-back.test.cjs').asset('settings-dialog.js');
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ reducedMotion: 'reduce' });
   const errors = [];

@@ -217,7 +217,7 @@ pub fn SettingsSheet() -> Element {
             tabindex: "-1",
             "data-drilled": if drilled { "true" } else { "false" },
             onmounted: move |_| {
-                document::eval(include_str!("../../assets/settings-dialog.js"));
+                document::eval(study_shell::SETTINGS_DIALOG_JS);
             },
             header { class: "settings-head",
                 if drilled {
