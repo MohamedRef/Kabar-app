@@ -10,17 +10,17 @@ license = "LicenseRef-Private"
 publish = false
 
 [workspace.dependencies]
-study-lesson-scheduler = { git = "https://github.com/MohamedRef/study-libs", rev = "f5941708f654dff7091dc7abc58108e32876cebf" }
-study-review = { git = "https://github.com/MohamedRef/study-libs", rev = "f5941708f654dff7091dc7abc58108e32876cebf" }
-study-ui = { git = "https://github.com/MohamedRef/study-libs", rev = "f5941708f654dff7091dc7abc58108e32876cebf" }
-study-update-ui = { git = "https://github.com/MohamedRef/study-libs", rev = "f5941708f654dff7091dc7abc58108e32876cebf" }
-study-platform = { git = "https://github.com/MohamedRef/study-libs", rev = "f5941708f654dff7091dc7abc58108e32876cebf" }
-study-shell = { git = "https://github.com/MohamedRef/study-libs", rev = "f5941708f654dff7091dc7abc58108e32876cebf" }
-study-sql = { git = "https://github.com/MohamedRef/study-libs", rev = "f5941708f654dff7091dc7abc58108e32876cebf" }
-study-storage = { git = "https://github.com/MohamedRef/study-libs", rev = "f5941708f654dff7091dc7abc58108e32876cebf" }
-study-testkit = { git = "https://github.com/MohamedRef/study-libs", rev = "f5941708f654dff7091dc7abc58108e32876cebf" }
-study-sync = { git = "https://github.com/MohamedRef/study-libs", rev = "f5941708f654dff7091dc7abc58108e32876cebf" }
-study-update-verify = { git = "https://github.com/MohamedRef/study-libs", rev = "f5941708f654dff7091dc7abc58108e32876cebf" }
+study-lesson-scheduler = { git = "https://github.com/MohamedRef/study-libs", rev = "41bdefdc2292b56c9d0f5ff6df46623cebf00535" }
+study-review = { git = "https://github.com/MohamedRef/study-libs", rev = "41bdefdc2292b56c9d0f5ff6df46623cebf00535" }
+study-ui = { git = "https://github.com/MohamedRef/study-libs", rev = "41bdefdc2292b56c9d0f5ff6df46623cebf00535" }
+study-update-ui = { git = "https://github.com/MohamedRef/study-libs", rev = "41bdefdc2292b56c9d0f5ff6df46623cebf00535" }
+study-platform = { git = "https://github.com/MohamedRef/study-libs", rev = "41bdefdc2292b56c9d0f5ff6df46623cebf00535" }
+study-shell = { git = "https://github.com/MohamedRef/study-libs", rev = "41bdefdc2292b56c9d0f5ff6df46623cebf00535" }
+study-sql = { git = "https://github.com/MohamedRef/study-libs", rev = "41bdefdc2292b56c9d0f5ff6df46623cebf00535" }
+study-storage = { git = "https://github.com/MohamedRef/study-libs", rev = "41bdefdc2292b56c9d0f5ff6df46623cebf00535" }
+study-testkit = { git = "https://github.com/MohamedRef/study-libs", rev = "41bdefdc2292b56c9d0f5ff6df46623cebf00535" }
+study-sync = { git = "https://github.com/MohamedRef/study-libs", rev = "41bdefdc2292b56c9d0f5ff6df46623cebf00535" }
+study-update-verify = { git = "https://github.com/MohamedRef/study-libs", rev = "41bdefdc2292b56c9d0f5ff6df46623cebf00535" }
 kabar-core = { path = "crates/core" }
 kabar-protocol = { path = "crates/protocol" }
 serde = { version = "1", features = ["derive"] }
@@ -79,5 +79,5 @@ opt-level = 1
 # Dioxus's Android screen-update socket, patched so the screen keeps updating
 # after Android destroys it (phone locked, app frozen). See vendor/README.md.
 [patch.crates-io]
-dioxus-desktop = { path = "vendor/dioxus-desktop" }
-dioxus-interpreter-js = { path = "vendor/dioxus-interpreter-js" }
+dioxus-desktop = { git = "https://github.com/MohamedRef/study-libs", rev = "2190779e1c0ce2e10e54178b1dceb57c02bedc38" }
+dioxus-interpreter-js = { git = "https://github.com/MohamedRef/study-libs", rev = "2190779e1c0ce2e10e54178b1dceb57c02bedc38" }

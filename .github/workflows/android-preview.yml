@@ -145,7 +145,7 @@ jobs:
           java-version: "17"
       - name: Install dx 0.7.10
         if: env.CONTENT_ONLY != 'true'
-        uses: MohamedRef/study-libs/.github/actions/dx@f5941708f654dff7091dc7abc58108e32876cebf
+        uses: MohamedRef/study-libs/.github/actions/dx@41bdefdc2292b56c9d0f5ff6df46623cebf00535
 
       # The update key comes first: its public half is built into the app.
       # Pushes use the release key; pull requests a one-off key.
