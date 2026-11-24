@@ -70,7 +70,7 @@ Dioxus 0.7 (HTML/CSS UI in a WebView), SQLite, minimal Kotlin for Android.
 
 Kabar pins study-libs rev `d60b723` for UI primitives, lesson layout, review
 history, sync retry, update verification, document save polling, sheet snapping,
-read-only metadata and wire fixtures. Kabar retains its feed checks, save and
+read-only metadata and wire fixtures. The shared monthly calendar and lesson allocator use rev `dd49f10`. Kabar retains its feed checks, save and
 image chooser adapters, one-minute retry limit and language learning surface.
 
 | Crate | Package | What |
@@ -447,7 +447,9 @@ Rules (Mohamed's decisions; all in force):
 - Shared plumbing with Batna: `docs/INFRA_PARITY.md` (audit F24, same file
   in both repos). A fix there says in its PR whether Batna needs it too.
 
-## 9. Current state (2026-11-23)
+## 9. Current state (2026-11-24)
+
+Stats shows the monthly study calendar with recorded activity and any named assignments before the learner's target level date.
 
 Lesson and test choices can use several columns. Slides pair the teaching text with the example list on a wide reading surface.
 
@@ -519,6 +521,8 @@ Mohamed can paste this into any new chat or account to continue:
 > behaviour, process or state.
 
 ## 11. Log
+
+- 2026-11-24. Adopt the shared study calendar in Stats. The coach supplies the language curriculum, lesson completions, practice window and target level date.
 
 - 2026-11-24. The lesson agenda shows the unfinished lesson count and time for the selected day in the chosen language. The plan date control uses the shared responsive layout.
 

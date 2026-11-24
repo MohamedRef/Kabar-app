@@ -4,6 +4,7 @@
 //! draws it.
 
 mod agenda;
+pub(crate) use agenda::LessonCalendar;
 pub mod clock;
 pub mod coach_screen;
 pub mod journal;

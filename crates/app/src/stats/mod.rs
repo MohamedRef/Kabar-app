@@ -402,6 +402,7 @@ struct Numbers {
     today: LocalDate,
     periods: Vec<(Period, PeriodNumbers)>,
     heat: core_stats::Heatmap,
+    totals: std::collections::BTreeMap<LocalDate, DayTotal>,
     total_minutes: u32,
     words: Vec<WordCounts>,
     week: Retention,
@@ -453,6 +454,7 @@ fn numbers(db: &Db, coach: &Coach) -> Numbers {
         periods,
         heat: core_stats::heatmap(&totals, today, HEATMAP_WEEKS),
         total_minutes: totals.values().map(|t| t.minutes).sum(),
+        totals,
         words,
         week,
         month,
@@ -511,6 +513,7 @@ pub fn StatsScreen() -> Element {
             }
             PeriodSwitch { period }
             PeriodView { p: n.period(period()).clone(), today: n.today, total_minutes: n.total_minutes }
+            crate::coach::LessonCalendar { totals: n.totals.clone() }
             div { class: "section-head", h2 { "{st(lang, S::MoreDetail)}" } }
             div { class: "st-grid",
                 HeatCard { heat: n.heat.clone(), today: n.today }
