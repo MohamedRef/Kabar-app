@@ -5,7 +5,7 @@ use dioxus::prelude::*;
 use kabar_core::assignments::{DayBudget, LessonWork, agenda};
 use kabar_core::locale::UiLanguage;
 use kabar_protocol::coach::{CoachProfile, LocalDate};
-use study_ui::{AgendaLessonRow, AgendaOverview, LessonAgendaCard};
+use study_ui::{AgendaLessonRow, AgendaOverview, AgendaSelect, LessonAgendaCard};
 
 #[component]
 pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
@@ -95,9 +95,12 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
                 time_value: labels::minutes(&ui, agenda.minutes_left),
             } },
             controls: rsx! {
-                label { "{day_label}"
-                    select { value: "{day_index}", onchange: move |e| if let Ok(i) = e.value().parse() { selected.set(i); unavailable.set(false); },
-                        for i in 0..horizon { option { value: "{i}", selected: day_index == i, "{labels::long_date(&ui,LocalDate(today.0+i as i32))}" } }
+                AgendaSelect { label: day_label, value: day_index, on_select: move |i| {
+                    selected.set(i);
+                    unavailable.set(false);
+                },
+                    for i in 0..horizon {
+                        option { value: "{i}", selected: day_index == i, "{labels::long_date(&ui, LocalDate(today.0 + i as i32))}" }
                     }
                 }
             },
