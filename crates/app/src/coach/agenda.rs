@@ -5,7 +5,7 @@ use dioxus::prelude::*;
 use kabar_core::assignments::{DayBudget, LessonWork, agenda};
 use kabar_core::locale::UiLanguage;
 use kabar_protocol::coach::{CoachProfile, LocalDate};
-use study_ui::{AgendaLessonRow, AgendaOverview, AgendaSelect, LessonAgendaCard};
+use study_ui::{AgendaDays, AgendaLessonRow, AgendaOverview, AgendaSelect, LessonAgendaCard};
 
 #[component]
 pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
@@ -86,6 +86,11 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
         "No exercises available for this lesson",
     );
     let left = agenda.unassigned_minutes;
+    let days_label = if day_index == 0 {
+        words("أيام تانية", "أيام أخرى", "Other days").to_string()
+    } else {
+        labels::long_date(&ui, LocalDate(today.0 + day_index as i32))
+    };
     rsx! {
         LessonAgendaCard { class: "coach-agenda", title,
             overview: rsx! { AgendaOverview {
@@ -95,12 +100,16 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
                 time_value: labels::minutes(&ui, agenda.minutes_left),
             } },
             controls: rsx! {
-                AgendaSelect { label: day_label, value: day_index, on_select: move |i| {
-                    selected.set(i);
-                    unavailable.set(false);
-                },
-                    for i in 0..horizon {
-                        option { value: "{i}", selected: day_index == i, "{labels::long_date(&ui, LocalDate(today.0 + i as i32))}" }
+                if horizon > 1 {
+                    AgendaDays { label: days_label,
+                        AgendaSelect { label: day_label, value: day_index, on_select: move |i| {
+                            selected.set(i);
+                            unavailable.set(false);
+                        },
+                            for i in 0..horizon {
+                                option { value: "{i}", selected: day_index == i, "{labels::long_date(&ui, LocalDate(today.0 + i as i32))}" }
+                            }
+                        }
                     }
                 }
             },

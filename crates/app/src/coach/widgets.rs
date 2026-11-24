@@ -345,5 +345,5 @@ pub fn Stat(value: String, label: Msg, #[props(default = Screen::Stats)] to: Scr
 /// A bar that fills toward a goal.
 #[component]
 pub fn Progress(done: u32, goal: u32, label: String) -> Element {
-    rsx! { study_ui::StudyProgress { done, total: goal, label, empty_is_complete: true } }
+    rsx! { study_ui::StudyProgress { done: u64::from(done), total: u64::from(goal), label, empty_is_complete: true } }
 }
