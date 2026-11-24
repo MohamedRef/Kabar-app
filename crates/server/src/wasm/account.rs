@@ -12,7 +12,6 @@ use worker::{
     WebSocketIncomingMessage, WebSocketPair, console_error, console_log, durable_object,
 };
 
-use super::do_sql::DoSql;
 use super::{api_error, now_ms, post, post_json, random_hex};
 use crate::blobs::{self, Image};
 use crate::coach::{self, KakNur};
@@ -24,6 +23,7 @@ use crate::internal::{
     Revoke, SetPush,
 };
 use crate::login::AccountLogin;
+use study_sql::durable::DoSql;
 
 /// Close code sent to a signed-out device.
 const CLOSE_REVOKED: u16 = 4001;

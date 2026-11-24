@@ -27,6 +27,7 @@ use kabar_core::layout::WidthClass;
 
 use crate::Ui;
 use crate::ui::{ActionRow, Card};
+use study_ui::{SettingsGroup, SettingsIndex};
 use text::{S, st};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -277,7 +278,7 @@ fn SectionList(sections: Vec<Section>, current: Option<Section>) -> Element {
     let cloud = try_use_context::<crate::Cloud>();
     let lang = ui.lang();
     let mut section = nav.section;
-    let mut query = nav.query;
+    let query = nav.query;
     let name = coach.profile.read().as_ref().map(|p| p.name.trim().to_string()).filter(|n| !n.is_empty());
     let sync = cloud.map(|c| c.status.read().sync);
     let updates = crate::update::view::use_update_status().read().clone();
@@ -300,50 +301,43 @@ fn SectionList(sections: Vec<Section>, current: Option<Section>) -> Element {
             s => st(lang, s.summary()).to_string(),
         }
     };
-    rsx! {
-        aside { class: "settings-index",
-            div { class: "settings-tools",
-                input {
-                    class: "settings-search", r#type: "search",
-                    aria_label: "{st(lang, S::Search)}", placeholder: "{st(lang, S::Search)}",
-                    value: "{query}", oninput: move |event| query.set(event.value()),
+    let profile = if query.read().trim().is_empty() {
+        name.map(|name| rsx! {
+            Card { class: "grouped settings-me",
+                ActionRow {
+                    title: name.clone(), detail: st(lang, S::ProfileSub),
+                    icon: rsx! { span { class: "settings-avatar", {name.chars().next().map(|c| c.to_uppercase().to_string()).unwrap_or_default()} } },
+                    onclick: move |_| section.set(Some(Section::Coach)),
                 }
             }
-            nav { class: "settings-sections", aria_label: "{st(lang, S::Sections)}",
-                if query.read().trim().is_empty() {
-                    if let Some(name) = name {
-                        Card { class: "grouped settings-me",
-                            ActionRow {
-                                title: name.clone(), detail: st(lang, S::ProfileSub),
-                                icon: rsx! { span { class: "settings-avatar", {name.chars().next().map(|c| c.to_uppercase().to_string()).unwrap_or_default()} } },
-                                onclick: move |_| section.set(Some(Section::Coach)),
-                            }
-                        }
-                    }
-                }
-                for (title, members) in GROUPS {
-                    {
-                        let shown: Vec<Section> = members.iter().copied().filter(|s| filtered.contains(s)).collect();
-                        rsx! {
-                            if !shown.is_empty() {
-                                div { key: "{st(lang, title)}", class: "section-head", h2 { "{st(lang, title)}" } }
-                                Card { class: "grouped",
-                                    for s in shown {
-                                        ActionRow {
-                                            key: "{s.id()}", title: st(lang, s.title()), detail: detail(s),
-                                            selected: current == Some(s), icon: crate::icons::settings_section(s),
-                                            onclick: move |_| section.set(Some(s)),
-                                        }
+        })
+    } else {
+        None
+    };
+    rsx! {
+        SettingsIndex {
+            query,
+            search_label: st(lang, S::Search),
+            sections_label: st(lang, S::Sections),
+            empty_label: st(lang, S::NoResults),
+            clear_label: st(lang, S::ClearSearch),
+            is_empty: filtered.is_empty(),
+            profile,
+            for (title, members) in GROUPS {
+                {
+                    let shown: Vec<Section> = members.iter().copied().filter(|s| filtered.contains(s)).collect();
+                    rsx! {
+                        if !shown.is_empty() {
+                            SettingsGroup { key: "{st(lang, title)}", title: st(lang, title),
+                                for s in shown {
+                                    ActionRow {
+                                        key: "{s.id()}", title: st(lang, s.title()), detail: detail(s),
+                                        selected: current == Some(s), icon: crate::icons::settings_section(s),
+                                        onclick: move |_| section.set(Some(s)),
                                     }
                                 }
                             }
                         }
-                    }
-                }
-                if filtered.is_empty() {
-                    div { class: "settings-empty", role: "status",
-                        p { "{st(lang, S::NoResults)}" }
-                        button { r#type: "button", onclick: move |_| query.set(String::new()), "{st(lang, S::ClearSearch)}" }
                     }
                 }
             }

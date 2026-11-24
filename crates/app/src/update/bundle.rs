@@ -6,26 +6,19 @@
 //! while Kabar runs; it only restarts when the learner says so, or at the
 //! next launch in automatic mode.
 
+#[cfg(test)]
 use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::Path;
+#[cfg(test)]
+use std::path::PathBuf;
 
-/// The `.app` this binary runs from (`Kabar.app/Contents/MacOS/kabar`), if any.
-pub fn running_bundle() -> Option<PathBuf> {
-    let exe = std::env::current_exe().ok()?.canonicalize().ok()?;
-    bundle_of(&exe)
-}
+#[cfg(test)]
+use study_update_verify::bundle::bundle_of;
+#[cfg(target_os = "macos")]
+pub use study_update_verify::bundle::ditto_extract;
+pub use study_update_verify::bundle::running_bundle;
 
-fn bundle_of(exe: &Path) -> Option<PathBuf> {
-    let macos = exe.parent()?;
-    let contents = macos.parent()?;
-    let app = contents.parent()?;
-    (macos.file_name()? == "MacOS" && contents.file_name()? == "Contents" && app.extension()? == "app")
-        .then(|| app.to_path_buf())
-}
-
-/// Unzips `zip` with `extract` into a folder beside `bundle`, checks it holds
-/// one complete `.app` that passes `check` (the code signature on the Mac),
-/// and swaps it in.
+/// Verify the staged bundle and preserve the existing bundle on failure.
 #[cfg_attr(not(target_os = "macos"), allow(dead_code))]
 pub fn install_zip(
     zip: &Path,
@@ -33,62 +26,7 @@ pub fn install_zip(
     extract: impl FnOnce(&Path, &Path) -> Result<(), String>,
     check: impl FnOnce(&Path) -> Result<(), String>,
 ) -> Result<(), String> {
-    let parent = bundle.parent().ok_or("Kabar.app has no folder")?;
-    let stage = parent.join(format!(".kabar-update-{}", std::process::id()));
-    let _ = fs::remove_dir_all(&stage);
-    fs::create_dir_all(&stage).map_err(|e| format!("{}: {e}", stage.display()))?;
-    let result = (|| {
-        extract(zip, &stage)?;
-        let apps: Vec<PathBuf> = fs::read_dir(&stage)
-            .map_err(|e| e.to_string())?
-            .flatten()
-            .map(|e| e.path())
-            .filter(|p| p.extension().is_some_and(|x| x == "app"))
-            .collect();
-        let [new] = apps.as_slice() else {
-            return Err(format!("the zip holds {} apps, not one", apps.len()));
-        };
-        if !new.join("Contents/Info.plist").is_file() || !new.join("Contents/MacOS").is_dir() {
-            return Err("the zip's Kabar.app is incomplete".into());
-        }
-        check(new)?;
-        swap(bundle, new)
-    })();
-    let _ = fs::remove_dir_all(&stage);
-    result
-}
-
-/// Puts `new` where `current` is; on failure the old bundle goes back.
-#[cfg_attr(not(target_os = "macos"), allow(dead_code))]
-pub fn swap(current: &Path, new: &Path) -> Result<(), String> {
-    let parent = current.parent().ok_or("no parent folder")?;
-    let old = parent.join(format!(".Kabar-old-{}.app", std::process::id()));
-    let _ = fs::remove_dir_all(&old);
-    fs::rename(current, &old).map_err(|e| format!("{}: {e}", current.display()))?;
-    if let Err(e) = fs::rename(new, current) {
-        let _ = fs::rename(&old, current);
-        return Err(format!("{}: {e}", current.display()));
-    }
-    let _ = fs::remove_dir_all(&old);
-    Ok(())
-}
-
-/// `ditto -x -k`: the unzip that keeps a bundle's symlinks, modes and
-/// signature intact (the feed's zip is made with `ditto -c -k --keepParent`).
-#[cfg(target_os = "macos")]
-pub fn ditto_extract(zip: &Path, into: &Path) -> Result<(), String> {
-    let out = std::process::Command::new("/usr/bin/ditto")
-        .arg("-x")
-        .arg("-k")
-        .arg(zip)
-        .arg(into)
-        .output()
-        .map_err(|e| format!("ditto: {e}"))?;
-    if out.status.success() {
-        Ok(())
-    } else {
-        Err(format!("ditto: {}", String::from_utf8_lossy(&out.stderr).trim()))
-    }
+    study_update_verify::bundle::install_zip("Kabar", zip, bundle, extract, check)
 }
 
 /// The new bundle's code signature must be intact, and when the running
