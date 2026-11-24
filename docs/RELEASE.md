@@ -1,5 +1,7 @@
 # Kabar releases: alpha, then beta, then stable
 
+CI computes calendar versions and stamps the build through the pinned study-libs release-version action. Local release commands still use `scripts/version.sh`.
+
 Kabar is for one learner on his own devices: the Galaxy S24 Ultra, the Galaxy
 Tab S11 and the Mac. A release is a signed APK sideloaded onto both Galaxy
 devices and a Kabar.app built on the Mac. There are no store listings and no
