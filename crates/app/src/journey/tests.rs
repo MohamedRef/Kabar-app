@@ -384,7 +384,10 @@ mod screen {
             let html = td::html(&dom);
             assert!(html.contains(&format!("data-unit=\"{}\"", unit.id)));
             assert_eq!(html.matches("class=\"lesson\"").count(), unit.lessons.len());
-            td::click_where(&mut dom, |node| node.class() == "lesson");
+            td::click_where(&mut dom, |node| {
+                node.class() == "lesson"
+                    && node.attr("aria-label").is_some_and(|label| label.starts_with(&unit.lessons[0].title))
+            });
             assert_eq!(td::lesson(&dom), Some(unit.lessons[0].id.clone()));
         }
     }
