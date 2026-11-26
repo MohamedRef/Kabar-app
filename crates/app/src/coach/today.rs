@@ -162,9 +162,9 @@ pub fn Today() -> Element {
         // Kabar Pagi) in a second column when there are any.
         div { class: "coach-grid today-grid",
             div { class: "today-main",
-                if profile.target.is_some() { super::agenda::Agenda { profile: profile.clone(), today_minutes: goal } }
                 if welcome {
                     WelcomeBack { profile: profile.clone(), plan: plan.clone(), today }
+                    if profile.target.is_some() { super::agenda::Agenda { profile: profile.clone(), today_minutes: goal } }
                 } else {
                     div { class: "today-size", role: "group", aria_label: "{tt(ui.lang(), T::HowLong)}",
                         span { class: "muted small", "{tt(ui.lang(), T::HowLong)}" }
@@ -193,6 +193,9 @@ pub fn Today() -> Element {
                                 .sum::<u32>(),
                         ),
                     }
+                    // The lesson plan follows the one next step, so the hero
+                    // is the first thing on the screen (UI review 2026-11-26).
+                    if profile.target.is_some() { super::agenda::Agenda { profile: profile.clone(), today_minutes: goal } }
                     if plan.items.len() > 1 {
                         section { class: "today-rest", aria_labelledby: "today-rest-title",
                             div { class: "section-head",

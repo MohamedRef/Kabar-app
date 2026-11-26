@@ -524,6 +524,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
+- 2026-11-26: Today puts the hero (the one next step) above the lesson-plan card, the plan's lessons-left count agrees with its noun (`coach/agenda.rs` `lessons_left`), and the theme sets study-ui's role tokens `--ui-brand` (primary green) and `--ui-ok`, so shared calendar ink never uses the pale `--accent` container.
 - 2026-11-26. Calendar and agenda unit headings open that exact unit on its own route. Lesson titles open their players.
 
 - 2026-11-26: restored the full-month calendar at every viewport width. The approved grouped design is recorded below.

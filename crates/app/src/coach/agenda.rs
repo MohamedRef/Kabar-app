@@ -126,7 +126,6 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
         "No exercises available for this lesson",
     );
     let left = agenda.unassigned_minutes;
-    let left_label = words("دروس متبقية", "دروس متبقية", "lessons left");
     let day_options = (0..horizon)
         .map(|value| {
             let date = labels::long_date(&ui, LocalDate(today.0 + value as i32));
@@ -142,7 +141,7 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
         LessonAgendaCard { class: "coach-agenda", title,
             overview: rsx! {
                 p { class: "muted",
-                    "{ui.num(agenda.lessons_left)} {left_label} · {labels::minutes(&ui, agenda.minutes_left)}"
+                    "{lessons_left(&ui, agenda.lessons_left)} · {labels::minutes(&ui, agenda.minutes_left)}"
                 }
             },
             controls: rsx! {
@@ -176,5 +175,26 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
             if left > 0 { p { class: "muted", "{excess_label} · {labels::minutes(&ui,left)}" } }
             if unavailable() { p { role: "status", "{empty_label}" } }
         }
+    }
+}
+
+/// "درس واحد متبقي", "درسين متبقيين", "3 دروس متبقية": the count agrees with
+/// its noun (1 singular, 2 dual, 3–10 plural, 11+ singular), never "1 دروس".
+fn lessons_left(ui: &Ui, n: u32) -> String {
+    let n_text = ui.num(n as u64);
+    match (ui.lang(), n) {
+        (UiLanguage::ArEg, 0) => "مفيش دروس متبقية".to_string(),
+        (UiLanguage::Ar, 0) => "لا دروس متبقية".to_string(),
+        (UiLanguage::En, 0) => "No lessons left".to_string(),
+        (UiLanguage::ArEg, 1) => "درس واحد متبقي".to_string(),
+        (UiLanguage::ArEg, 2) => "درسين متبقيين".to_string(),
+        (UiLanguage::ArEg, 3..=10) => format!("{n_text} دروس متبقية"),
+        (UiLanguage::ArEg, _) => format!("{n_text} درس متبقي"),
+        (UiLanguage::Ar, 1) => "درس واحد متبقٍ".to_string(),
+        (UiLanguage::Ar, 2) => "درسان متبقيان".to_string(),
+        (UiLanguage::Ar, 3..=10) => format!("{n_text} دروس متبقية"),
+        (UiLanguage::Ar, _) => format!("{n_text} درسًا متبقيًا"),
+        (UiLanguage::En, 1) => "1 lesson left".to_string(),
+        (UiLanguage::En, _) => format!("{n_text} lessons left"),
     }
 }
