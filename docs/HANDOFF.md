@@ -522,6 +522,8 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
+- 2026-11-26: restored the full-month calendar at every viewport width. Lesson list design alternatives are awaiting review.
+
 - 2026-11-26: the README reads the beta feed, and open browser sessions check for new builds through study-shell.
 
 - 2026-11-26. Updated calendar navigation, workload labels and lesson rows.
