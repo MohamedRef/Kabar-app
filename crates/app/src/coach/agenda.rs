@@ -59,6 +59,34 @@ fn assignments(
     (rows, assignments)
 }
 
+fn agenda_cards(
+    ui: &Ui,
+    agenda: &kabar_core::assignments::Agenda,
+    rows: &[LessonEntry],
+) -> Vec<LessonCardItem> {
+    agenda
+        .portions
+        .iter()
+        .map(|part| {
+            let (group, lesson, done) = &rows[part.lesson];
+            let (unit, reference) = lesson.id.rsplit_once('.').unwrap_or((&lesson.id, ""));
+            LessonCardItem {
+                id: lesson.id.clone(),
+                group: unit.to_owned(),
+                group_title: group.clone(),
+                title: lesson.title.clone(),
+                minutes: ui.num(part.minutes),
+                minute_unit: if ui.lang() == UiLanguage::En { "min" } else { "د" }.into(),
+                duration: labels::minutes(ui, part.minutes),
+                reference: reference.to_owned(),
+                note: String::new(),
+                done: *done,
+                order: part.lesson,
+            }
+        })
+        .collect::<Vec<_>>()
+}
+
 #[component]
 pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
     let ui = use_context::<Ui>();
@@ -129,20 +157,11 @@ pub(super) fn Agenda(profile: CoachProfile, today_minutes: u32) -> Element {
             },
             if !agenda.portions.is_empty() {
                 CompactLessonCards {
-                    items: agenda.portions.iter().map(|part| {
-                        let (group, lesson, done) = &rows[part.lesson];
-                        let (unit, reference) = lesson.id.rsplit_once('.').unwrap_or((&lesson.id, ""));
-                        LessonCardItem {
-                            id: lesson.id.clone(), group: unit.to_owned(), group_title: group.clone(),
-                            title: lesson.title.clone(), minutes: ui.num(part.minutes),
-                            minute_unit: if ui.lang() == UiLanguage::En { "min" } else { "د" }.into(),
-                            duration: labels::minutes(&ui, part.minutes),
-                            reference: reference.to_owned(), note: String::new(), done: *done, order: part.lesson,
-                        }
-                    }).collect::<Vec<_>>(),
+                    items: agenda_cards(&ui, agenda, &rows),
                     more_label: words("باقي الدروس", "باقي الدروس", "More lessons"),
                     done_label: words("خلصته", "مكتمل", "Completed"),
                     test_label: test.to_owned(),
+                    on_group: move |id: String| crate::journey::open_unit(ui, id),
                     on_open: move |id: String| ui.open_lesson(id),
                     on_test: move |id: String| {
                         let parsed = crate::lesson::lesson_content(&id)
