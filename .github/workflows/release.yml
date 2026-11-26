@@ -36,6 +36,11 @@ on:
         description: "Short notes (Egyptian Arabic, optional)"
         required: false
         default: ""
+      dry_run:
+        description: "Dry run: build and sign the APK and Kabar.app, publish nothing"
+        type: boolean
+        required: false
+        default: false
 
 concurrency:
   group: release
@@ -288,6 +293,8 @@ jobs:
   publish:
     name: Publish the release and its update feed
     needs: [prepare, android, mac]
+    # A dry run stops after the signed builds (their artifacts stay on the run).
+    if: ${{ !inputs.dry_run }}
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     permissions:

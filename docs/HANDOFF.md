@@ -277,6 +277,7 @@ job (`android-preview.yml`, `release.yml`, `mac.yml`) gets `dx` from
 
 ## 6. Releases and updates
 
+- **One release flow (Mohamed, 2026-11-26):** Batna, Kabar and Steps run Release the same way: a run publishes; tick "Dry run" to only build and sign the APK and Kabar.app.
 - **Numbering (Mohamed, 2026-11-08):** calendar versions `YEAR.MONTH.N`
   (`2026.11.1` = first release of November 2026) and one build number for
   every build, preview or release (commits on `main`). Android versionCode
@@ -524,6 +525,7 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
+- 2026-11-26: Release gained a "Dry run" option (off by default), matching Steps; the three apps share one release flow.
 - 2026-11-26: Today puts the hero (the one next step) above the lesson-plan card, the plan's lessons-left count agrees with its noun (`coach/agenda.rs` `lessons_left`), and the theme sets study-ui's role tokens `--ui-brand` (primary green) and `--ui-ok`, so shared calendar ink never uses the pale `--accent` container.
 - 2026-11-26. Calendar and agenda unit headings open that exact unit on its own route. Lesson titles open their players.
 
