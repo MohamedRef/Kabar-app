@@ -373,6 +373,23 @@ mod screen {
     }
 
     #[test]
+    fn opening_a_scheduled_unit_shows_only_its_lessons_on_both_routes() {
+        let routes = ROUTES.as_ref().unwrap();
+        for (width, curriculum) in [(PHONE, &routes.id), (1200.0, &routes.jv)] {
+            let unit = &curriculum.levels[0].units[1];
+            let mut dom = td::mount(Setup::new(fresh(), Screen::Today, view).width(width));
+            dom.peek_app(|| open_unit(consume_context::<crate::Ui>(), unit.id.clone()));
+            dom.render();
+            assert_eq!(td::screen(&dom), Screen::Journey);
+            let html = td::html(&dom);
+            assert!(html.contains(&format!("data-unit=\"{}\"", unit.id)));
+            assert_eq!(html.matches("class=\"lesson\"").count(), unit.lessons.len());
+            td::click_where(&mut dom, |node| node.class() == "lesson");
+            assert_eq!(td::lesson(&dom), Some(unit.lessons[0].id.clone()));
+        }
+    }
+
+    #[test]
     fn the_journals_souvenir_line_opens_the_suitcase_on_it() {
         let mut store = fresh();
         done(&mut store, unit_lessons("bipa1.u01"));

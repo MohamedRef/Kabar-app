@@ -185,6 +185,14 @@ enum Pane {
 /// Journal's "new souvenir" line).
 static SUITCASE_AT: GlobalSignal<Option<String>> = Signal::global(|| None);
 
+/// A unit selected by its curriculum ID in the study agenda.
+static UNIT_AT: GlobalSignal<Option<String>> = Signal::global(|| None);
+
+pub(crate) fn open_unit(mut ui: Ui, id: String) {
+    *UNIT_AT.write() = Some(id);
+    ui.screen.set(crate::Screen::Journey);
+}
+
 /// Opens Journey on the Suitcase, scrolled to the souvenir of `unit_id`.
 pub fn open_suitcase(ui: Ui, unit_id: &str) {
     *SUITCASE_AT.write() = Some(unit_id.to_string());
@@ -216,10 +224,27 @@ pub fn JourneyScreen() -> Element {
     });
     let coach = use_context::<crate::coach::Coach>();
     let start = use_hook(|| start_level(&db, coach.profile.peek().as_ref()));
+    let mut selected_unit = use_signal(|| UNIT_AT.write().take());
     // Opens on the learner's own route (Javanese when that is their only focus).
-    let mut route = use_signal(|| match coach.profile.peek().as_ref().map(|p| p.focus) {
-        Some(kabar_protocol::coach::LanguageFocus::Javanese) => Route::Javanese,
-        _ => Route::Indonesian,
+    let mut route = use_signal(|| {
+        if let (Some(id), Ok(routes)) = (selected_unit.peek().as_deref(), ROUTES.as_ref()) {
+            for route in [Route::Indonesian, Route::Javanese] {
+                if route
+                    .parts(routes)
+                    .0
+                    .levels
+                    .iter()
+                    .flat_map(|level| &level.units)
+                    .any(|unit| unit.id == id)
+                {
+                    return route;
+                }
+            }
+        }
+        match coach.profile.peek().as_ref().map(|p| p.focus) {
+            Some(kabar_protocol::coach::LanguageFocus::Javanese) => Route::Javanese,
+            _ => Route::Indonesian,
+        }
     });
     let mut pane = use_signal(|| if SUITCASE_AT.peek().is_some() { Pane::Suitcase } else { Pane::Route });
     // The stop picked on each route lives here, above the phone list and the
@@ -253,6 +278,18 @@ pub fn JourneyScreen() -> Element {
         .sum::<usize>();
     let compact = *ui.width.read() == WidthClass::Compact;
     let picked = move || if route() == Route::Indonesian { pick_id } else { pick_jv };
+
+    if let Some(unit) = selected_unit.read().as_deref().and_then(find_unit) {
+        let layout = LESSONS_VIEW.pick(&db).layout;
+        return rsx! {
+            style { {JOURNEY_CSS.text()} }
+            section { class: "journey", "data-unit": "{unit.id}",
+                button { r#type: "button", class: "tap", onclick: move |_| selected_unit.set(None), "{ui.t(Msg::NavJourney)}" }
+                h2 { bdi { "{local(ui.lang(), &unit.title)}" } }
+                {lessons(&ui, j.route.target_lang(), unit, &j.progress(), false, layout)}
+            }
+        };
+    }
 
     rsx! {
         style { {JOURNEY_CSS.text()} }

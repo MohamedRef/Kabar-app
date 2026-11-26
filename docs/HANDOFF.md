@@ -512,6 +512,8 @@ Lesson and test choices can use several columns. Slides pair the teaching text w
 
 ## 10. Resume message
 
+- 2026-11-26. The full-month study calendar groups scheduled lessons under linked curriculum headings. Both calendar and agenda route each heading to its course or unit and each lesson to its player.
+
 Mohamed can paste this into any new chat or account to continue:
 
 > Continue work on my apps Kabar (`MohamedRef/Kabar-app`) and Batna
@@ -522,7 +524,9 @@ Mohamed can paste this into any new chat or account to continue:
 
 ## 11. Log
 
-- 2026-11-26: restored the full-month calendar at every viewport width. Lesson list design alternatives are awaiting review.
+- 2026-11-26. Calendar and agenda unit headings open that exact unit on its own route. Lesson titles open their players.
+
+- 2026-11-26: restored the full-month calendar at every viewport width. The approved grouped design is recorded below.
 
 - 2026-11-26: the README reads the beta feed, and open browser sessions check for new builds through study-shell.
 

@@ -13,7 +13,7 @@ pub(crate) fn LessonCalendar(
 ) -> Element {
     use kabar_protocol::coach::Weekday;
     use std::collections::BTreeMap;
-    use study_ui::{CalendarDay, CalendarLesson, StudyCalendar, calendar_months};
+    use study_ui::{CalendarDay, CalendarLessonGroups, StudyCalendar, calendar_months};
 
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
@@ -113,19 +113,11 @@ pub(crate) fn LessonCalendar(
                 }
             }
             if let Some(agenda) = agenda_on(date) {
-                ul { class: "study-calendar-lessons",
-                    for part in &agenda.portions {
-                        {
-                            let (group, lesson, done) = &lessons[part.lesson];
-                            let id = lesson.id.as_str();
-                            let time = labels::minutes(&ui, part.minutes);
-                            rsx! { CalendarLesson { key: "{id}", title: lesson.title.clone(),
-                                group: group.clone(), duration: time,
-                                completed_label: done.then(|| ui.t(M::Completed).to_owned()),
-                                on_open: move |_| ui.open_lesson(id.to_string()),
-                            } }
-                        }
-                    }
+                CalendarLessonGroups {
+                    items: super::agenda_cards(&ui, agenda, &lessons),
+                    done_label: ui.t(M::Completed),
+                    on_group: move |id: String| crate::journey::open_unit(ui, id),
+                    on_open: move |id: String| ui.open_lesson(id),
                 }
                 if agenda.practice_minutes > 0 {
                     p { "{practice_label} · {labels::minutes(&ui, agenda.practice_minutes)}" }
@@ -136,7 +128,12 @@ pub(crate) fn LessonCalendar(
                 if let Some(rows) = completed.get(&date) {
                     ul { class: "study-calendar-finished",
                         for (id, title) in rows {
-                            li { key: "{id}", bdi { "{title}" } }
+                            li { key: "{id}",
+                                button { r#type: "button", class: "study-calendar-lesson",
+                                    onclick: { let id = id.clone(); move |_| ui.open_lesson(id.clone()) },
+                                    bdi { "{title}" }
+                                }
+                            }
                         }
                     }
                 }
