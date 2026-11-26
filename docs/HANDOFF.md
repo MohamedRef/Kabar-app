@@ -243,7 +243,7 @@ jobs are periodic or manual. Never re-add PR/push triggers to heavy workflows.
 | `settings-browser.yml` | cron/main-clock + manual; PR only when its test changes | Playwright check of Settings on the web build; `scripts/ci-apt-install.sh` first points apt at an Ubuntu mirror that resolves (Azure, archive.ubuntu.com, kernel.org, MIT), since `--with-deps` calls apt |
 | `android-webview-regression.yml` | `android/**` changes + manual | Kotlin/JVM tests |
 | `mac.yml` | nightly + manual, **never on PRs** | macOS build. Never wait on it to merge. |
-| `web-deploy.yml` | push to main touching app/core/protocol/content/web | deploys Worker `kabar-web`, stamped with the preview version and build (`scripts/version.sh preview`, like the preview APK) |
+| `web-deploy.yml` | push to main touching app/core/protocol/content/web, and after a release | deploys Worker `kabar-web`, stamped with the preview version and build (`scripts/version.sh preview`, like the preview APK) |
 | `cloud-deploy.yml` | push to main touching server/protocol + manual | deploys Worker `kabar-cloud` (finds/creates D1, migrations, signing key, allowlist) |
 | `release.yml` | manual only | alpha/beta/stable release (§ 6) |
 | `audit.yml` | weekly (Mon 05:17 UTC) + manual, **never on PRs** | `cargo audit` against RustSec (audit F23). A finding → fix in its own PR. |
@@ -521,6 +521,8 @@ Mohamed can paste this into any new chat or account to continue:
 > behaviour, process or state.
 
 ## 11. Log
+
+- 2026-11-26: the README reads the beta feed, and open browser sessions check for new builds through study-shell.
 
 - 2026-11-26. Updated calendar navigation, workload labels and lesson rows.
 

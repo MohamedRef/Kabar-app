@@ -32,10 +32,15 @@ fi
 cp web/index.html web/manifest.webmanifest web/_headers "$out/"
 cp assets/export/web/favicon-32.png assets/export/web/icon-192.png assets/export/web/icon-512.png \
   assets/export/web/maskable-512.png "$out/"
+# Ship the update UI from the same study-shell revision as the app.
+shell_manifest=$(cargo metadata --format-version 1 --filter-platform wasm32-unknown-unknown |
+  python3 -c 'import json,sys; print(next(p["manifest_path"] for p in json.load(sys.stdin)["packages"] if p["name"] == "study-shell"))')
+shell_web="$(dirname "$shell_manifest")/web"
+cp "$shell_web/web-update.mjs" "$shell_web/web-update.css" "$out/"
 # The service worker keeps exactly this build's files: its name is their
 # hash, so any change makes a new worker the browser installs in the background.
 files=$(cd "$out" && find . -type f ! -name _headers ! -name index.html | sed 's|^\./||' | sort)
-build=$(cd "$out" && sha256sum index.html $files | sha256sum | cut -c1-16)
+build=$(cd "$out" && { sha256sum index.html $files; sha256sum < "$root/web/sw.js"; } | sha256sum | cut -c1-16)
 list=$(printf '"./"'; for f in $files; do printf ', "./%s"' "$f"; done)
 sed -e "s|__BUILD__|$build|" -e "s|\"__FILES__\"|$list|" web/sw.js > "$out/sw.js"
 echo "Kabar web: $out ($(du -sh "$out" | cut -f1))"

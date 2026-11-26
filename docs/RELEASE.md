@@ -1,5 +1,7 @@
 # Kabar releases: alpha, then beta, then stable
 
+Current beta for Android and Mac [![Current beta](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FMohamedRef%2FKabar-app%2Freleases%2Fdownload%2Fupdate-beta%2Fupdate.json&query=%24.version&label=beta)](https://github.com/MohamedRef/Kabar-app/releases/tag/update-beta)
+
 CI computes calendar versions and stamps the build through the pinned study-libs release-version action. Local release commands still use `scripts/version.sh`.
 
 Kabar is for one learner on his own devices: the Galaxy S24 Ultra, the Galaxy

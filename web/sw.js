@@ -9,7 +9,7 @@ const CACHE = "kabar-" + BUILD;
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(FILES)).then(() => self.skipWaiting()),
+    caches.open(CACHE).then((cache) => cache.addAll(FILES.map((path) => new Request(path, { cache: "reload" })))).then(() => self.skipWaiting()),
   );
 });
 

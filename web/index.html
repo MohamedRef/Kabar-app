@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="favicon-32.png" />
     <link rel="apple-touch-icon" href="icon-192.png" />
     <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="./web-update.css" />
     <style>
       html, body { margin: 0; min-height: 100%; background: #f7f8ef; }
       @media (prefers-color-scheme: dark) { html, body { background: #000; color: #eee; } }
@@ -31,12 +32,10 @@
     </div>
     <noscript>Kabar needs JavaScript and WebAssembly.</noscript>
     <script type="module">
+      import { watchWebUpdates, showWebUpdate } from "./web-update.mjs";
+      watchWebUpdates(navigator.serviceWorker, () => showWebUpdate("نسخة أحدث من Kabar وصلت."));
       import init from "./kabar.js";
       init({ module_or_path: "./kabar_bg.wasm" })
-        .then(() => {
-          // Once this visit has everything, keep it on the device for the next.
-          if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(() => {});
-        })
         .catch((e) => {
           document.querySelector("#boot img").style.animation = "none";
           document.getElementById("boot-msg").textContent = "Kabar مافتحش في المتصفح ده: " + e;
