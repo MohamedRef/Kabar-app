@@ -13,7 +13,7 @@ pub(crate) fn LessonCalendar(
 ) -> Element {
     use kabar_protocol::coach::Weekday;
     use std::collections::BTreeMap;
-    use study_ui::{CalendarDay, StudyCalendar, calendar_months};
+    use study_ui::{CalendarDay, CalendarLesson, StudyCalendar, calendar_months};
 
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
@@ -74,7 +74,10 @@ pub(crate) fn LessonCalendar(
             let long_date = labels::long_date(&ui, day);
             let phase = if deadline { ui.t(M::TargetDay) } else { "" };
             let progress = text::progress(lang, assigned, done);
+            let minutes = agenda_on(day).map_or(0, |agenda| agenda.scheduled_minutes());
+            let unit = if lang == kabar_core::locale::UiLanguage::En { "min" } else { "د" };
             CalendarDay {
+                workload: (minutes > 0).then(|| format!("{} {unit}", ui.num(minutes))),
                 date,
                 number: ui.num(day.ymd().2),
                 label: format!("{long_date} · {phase} {progress}"),
@@ -110,16 +113,16 @@ pub(crate) fn LessonCalendar(
                 }
             }
             if let Some(agenda) = agenda_on(date) {
-                ul { class: "study-agenda-preview",
+                ul { class: "study-calendar-lessons",
                     for part in &agenda.portions {
                         {
                             let (group, lesson, done) = &lessons[part.lesson];
                             let id = lesson.id.as_str();
                             let time = labels::minutes(&ui, part.minutes);
-                            rsx! { li { key: "{id}",
-                                button { class: "text-btn", onclick: move |_| ui.open_lesson(id.to_string()),
-                                    bdi { "{lesson.title}" } }
-                                small { "{group} · {time}" if *done { " ✓" } }
+                            rsx! { CalendarLesson { key: "{id}", title: lesson.title.clone(),
+                                group: group.clone(), duration: time,
+                                completed_label: done.then(|| ui.t(M::Completed).to_owned()),
+                                on_open: move |_| ui.open_lesson(id.to_string()),
                             } }
                         }
                     }
@@ -131,7 +134,7 @@ pub(crate) fn LessonCalendar(
             if date <= today {
                 p { {summary} }
                 if let Some(rows) = completed.get(&date) {
-                    ul { class: "study-agenda-preview",
+                    ul { class: "study-calendar-finished",
                         for (id, title) in rows {
                             li { key: "{id}", bdi { "{title}" } }
                         }
