@@ -495,6 +495,11 @@ impl Palette {
             ("gold-soft", self.gold_soft),
             ("gold-bg", self.gold_soft),
             ("primary", self.sawah),
+            // study-ui's role tokens (study-libs README § Theme contract):
+            // Kabar's --accent is a pale container, so shared ink takes the
+            // primary green instead.
+            ("ui-brand", self.sawah),
+            ("ui-ok", self.good),
             ("on-primary", self.on_primary),
             ("accent", self.accent),
             // Batna names its accent container --accent-soft (its --accent
@@ -828,6 +833,8 @@ mod tests {
         assert_eq!(css.matches("@media (prefers-color-scheme: dark)").count(), 2);
         assert!(css.contains("--status-known"));
         for role in [
+            "--ui-brand:",
+            "--ui-ok:",
             "--primary:",
             "--on-primary:",
             "--accent-ink:",

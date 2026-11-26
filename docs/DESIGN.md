@@ -87,6 +87,7 @@ solid surfaces. See `assets/liquid-glass.css`.
 | `--indigo` | selected state and headings (the primary green in Light/Dark) |
 | `--dawn`, `--dawn-soft` | warnings and the default pill |
 | `--sheet` | the word sheet's own layer |
+| `--ui-brand`, `--ui-ok` | study-ui's role tokens (study-libs README § Theme contract): primary green and right, so shared components never take ink from `--accent` |
 
 Feature CSS takes colours from these tokens only
 (`stylesheets_take_colours_from_tokens`).
