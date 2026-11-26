@@ -10,7 +10,7 @@ the Arabic words Indonesian already borrowed.
 | | |
 |---|---|
 | **Use** | Personal only. Never published to a store. |
-| **Release** | **2026.11.1** (alpha, 2026-11-08): a signed, sideloaded APK for the phone and tablet plus a local Mac app. Versions follow the calendar (`YEAR.MONTH.N`); previews every 4 hours ([docs/RELEASE.md](docs/RELEASE.md)). |
+| **Release** | [![Current beta](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FMohamedRef%2FKabar-app%2Freleases%2Fdownload%2Fupdate-beta%2Fupdate.json&query=%24.version&label=beta)](https://github.com/MohamedRef/Kabar-app/releases/tag/update-beta) · [Android and Mac downloads](https://github.com/MohamedRef/Kabar-app/releases/tag/update-beta) · [Release guide](docs/RELEASE.md) |
 | **Cost to run** | $0/month (free tiers only; see [docs/RESEARCH.md](docs/RESEARCH.md)). |
 | **Devices** | MacBook Air M2, Galaxy S24 Ultra, Galaxy Tab S11. Layout follows window width, not device. |
 | **Content status** | All written content is a draft until the learner approves it. A lesson counts as approved once it is passed with 80% or more. |

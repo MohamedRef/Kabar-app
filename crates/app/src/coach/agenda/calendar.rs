@@ -103,6 +103,7 @@ pub(crate) fn LessonCalendar(
             previous: ui.t(M::Previous),
             next: ui.t(M::Next),
             today_label: ui.t(M::Today),
+            week_navigation: [ui.t(M::PreviousWeek).to_owned(), ui.t(M::NextWeek).to_owned()],
             planned_label: ui.t(M::Planned),
             completed_label: ui.t(M::Completed),
             deadline_label: ui.t(M::Deadline),

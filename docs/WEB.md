@@ -113,3 +113,5 @@ secret Kabar Cloud uses; the run summary prints the address
   web). Network calls to Kabar Cloud go through `cloud::api::Api`.
 - Network and file code that has no browser twin yet is `#[cfg(not(target_arch
   = "wasm32"))]` with a web stub that says why.
+
+The README badge reads the beta feed. The web build picks up new release tags after publication. Open tabs check for a new build every five minutes while visible and when returning to the app. The learner chooses when to reload.
