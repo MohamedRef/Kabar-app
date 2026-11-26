@@ -449,7 +449,7 @@ Rules (Mohamed's decisions; all in force):
 
 ## 9. Current state (2026-11-24)
 
-Today uses shared compact cards for the coach’s assigned lessons. Stats shows the monthly study calendar with recorded activity and any named assignments before the learner's target level date.
+Today uses shared compact cards for the coach’s assigned lessons. Stats shows the monthly study calendar with recorded activity and any named assignments before the learner's target level date. The study calendar shows total planned minutes in each date cell and opens a lesson from its full row. The month and selected day sit side by side when the calendar has enough space.
 
 Lesson and test choices can use several columns. Slides pair the teaching text with the example list on a wide reading surface.
 
@@ -521,6 +521,8 @@ Mohamed can paste this into any new chat or account to continue:
 > behaviour, process or state.
 
 ## 11. Log
+
+- 2026-11-26. Updated calendar navigation, workload labels and lesson rows.
 
 - 2026-11-24. The shared agenda disclosure expands in place without launching a lesson or its exercise quiz.
 - 2026-11-24. Shared lesson cards use compact mobile rows with local scrolling, stronger subject headings, and localized minute badges.
