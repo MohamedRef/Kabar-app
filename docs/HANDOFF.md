@@ -660,3 +660,10 @@ Newest first. One line per PR that changes behaviour, process or state.
 - 2026-11-05: project folder and memory notes archived in the private repo `MohamedRef/Batna-sources` (§ 1).
 - 2026-11-05: handoff docs added (`AGENTS.md`, this file, curriculum toolkit in `scripts/curriculum/`).
 - 2026-11-04: 1.0.0-alpha.2 released (#607); final critic pass closed.
+
+### Release signing change, 2026-11-28
+
+The first build using the new Android certificate and update verification key requires a manual installation. Export the existing Android data before uninstalling. The macOS bundle uses a new per-app self-signed certificate with the same common name. Verify the new fingerprints before installing.
+
+- Android release certificate SHA-256: `4a871cca0e018fbe39abc7d5dcdf77e136f8549ac844362bf36b1ec5445b0e4f`
+- macOS signing certificate SHA-256: `460e3759080559843b8568254526f9ebbb6a501611accd5a8c0c465e1fd6af8e`
